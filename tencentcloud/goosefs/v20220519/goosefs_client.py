@@ -693,6 +693,29 @@ class GoosefsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyDataRepositoryTaskStatus(self, request):
+        r"""修改数据流动任务状态，目前支持任务暂停/恢复
+
+        :param request: Request instance for ModifyDataRepositoryTaskStatus.
+        :type request: :class:`tencentcloud.goosefs.v20220519.models.ModifyDataRepositoryTaskStatusRequest`
+        :rtype: :class:`tencentcloud.goosefs.v20220519.models.ModifyDataRepositoryTaskStatusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyDataRepositoryTaskStatus", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyDataRepositoryTaskStatusResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def MountMultipleStorageFileSystem(self, request):
         r"""客户端集群挂载存储集群
 

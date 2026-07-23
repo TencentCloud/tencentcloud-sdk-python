@@ -97,6 +97,42 @@ class CfwClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CheckClusterNatFwPreAccess(
+            self,
+            request: models.CheckClusterNatFwPreAccessRequest,
+            opts: Dict = None,
+    ) -> models.CheckClusterNatFwPreAccessResponse:
+        """
+        发起 NAT CCN 集群模式防火墙预接入检查（仅支持自动接入模式）。入参与 OpenClusterNatFwSwitch 完全相同，传入相同的 NatCcnSwitch 配置 JSON 即可发起检查。检查为异步执行：接口立即返回 CheckItems 检查项清单，前端轮询 DescribeClusterNatCcnFwSwitchList 接口读取 CheckResult 获取各阶段的通过/失败状态。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CheckClusterNatFwPreAccess"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CheckClusterNatFwPreAccessResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def CheckClusterVpcFwPreAccess(
+            self,
+            request: models.CheckClusterVpcFwPreAccessRequest,
+            opts: Dict = None,
+    ) -> models.CheckClusterVpcFwPreAccessResponse:
+        """
+        发起 VPC 集群防火墙预接入检查（仅支持自动接入模式）。入参与 ModifyClusterVpcFwSwitch 完全相同，传入相同的 CcnSwitch 配置 JSON 即可发起检查。检查为异步执行：接口立即返回 CheckItems 检查项清单，前端轮询 DescribeClusterVpcFwSwitchs 接口读取 CheckResult 获取各阶段的通过/失败状态。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CheckClusterVpcFwPreAccess"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CheckClusterVpcFwPreAccessResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CloseClusterNatFwSwitch(
             self,
             request: models.CloseClusterNatFwSwitchRequest,
@@ -709,6 +745,24 @@ class CfwClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeBlockList(
+            self,
+            request: models.DescribeBlockListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeBlockListResponse:
+        """
+        DescribeBlockList 告警中心阻断资产视图列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeBlockList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeBlockListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeBlockStaticList(
             self,
             request: models.DescribeBlockStaticListRequest,
@@ -1143,6 +1197,24 @@ class CfwClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeFwGroupIdNames(
+            self,
+            request: models.DescribeFwGroupIdNamesRequest,
+            opts: Dict = None,
+    ) -> models.DescribeFwGroupIdNamesResponse:
+        """
+        获取用户防火墙(组)的ID名称列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeFwGroupIdNames"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeFwGroupIdNamesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeFwGroupInstanceInfo(
             self,
             request: models.DescribeFwGroupInstanceInfoRequest,
@@ -1228,6 +1300,24 @@ class CfwClient(AbstractClient):
         kwargs["action"] = "DescribeIpsModeSwitch"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeIpsModeSwitchResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeIpsRuleListNew(
+            self,
+            request: models.DescribeIpsRuleListNewRequest,
+            opts: Dict = None,
+    ) -> models.DescribeIpsRuleListNewResponse:
+        """
+        IPS规则查询接口新
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeIpsRuleListNew"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeIpsRuleListNewResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -1485,6 +1575,24 @@ class CfwClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeNatRuleScopes(
+            self,
+            request: models.DescribeNatRuleScopesRequest,
+            opts: Dict = None,
+    ) -> models.DescribeNatRuleScopesResponse:
+        """
+        查询nat规则的配额和使用情况
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeNatRuleScopes"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeNatRuleScopesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeOfflineExportTask(
             self,
             request: models.DescribeOfflineExportTaskRequest,
@@ -1588,6 +1696,24 @@ class CfwClient(AbstractClient):
         kwargs["action"] = "DescribeSecurityGroupList"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeSecurityGroupListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeSecurityGroupRegionList(
+            self,
+            request: models.DescribeSecurityGroupRegionListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeSecurityGroupRegionListResponse:
+        """
+        查询地域配置信息-DescribeAllRegionList
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeSecurityGroupRegionList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeSecurityGroupRegionListResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -1750,6 +1876,24 @@ class CfwClient(AbstractClient):
         kwargs["action"] = "DescribeVpcAcRule"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeVpcAcRuleResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeVpcAclEdgeRange(
+            self,
+            request: models.DescribeVpcAclEdgeRangeRequest,
+            opts: Dict = None,
+    ) -> models.DescribeVpcAclEdgeRangeResponse:
+        """
+        查询内网间访问控制规则的生效范围
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeVpcAclEdgeRange"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeVpcAclEdgeRangeResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

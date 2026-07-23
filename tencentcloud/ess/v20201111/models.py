@@ -10850,20 +10850,15 @@ class CreateFlowEvidenceReportRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Operator: 执行本接口操作的员工信息。
-注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+        :param _Operator: <p>执行本接口操作的员工信息。<br>注: <code>在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。</code></p>
         :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
-        :param _FlowId: 合同流程ID，为32位字符串。
-可登录腾讯电子签控制台，在 "合同"->"合同中心" 中查看某个合同的FlowId(在页面中展示为合同ID)。
+        :param _FlowId: <p>合同流程ID，为32位字符串。<br>可登录腾讯电子签控制台，在 &quot;合同&quot;-&gt;&quot;合同中心&quot; 中查看某个合同的FlowId(在页面中展示为合同ID)。</p>
         :type FlowId: str
-        :param _Agent: 代理企业和员工的信息。
-在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
+        :param _Agent: <p>代理企业和员工的信息。<br>在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。</p>
         :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
-        :param _ReportType: 指定申请的报告类型，可选类型如下：
-<ul><li> **0** :合同签署报告（默认）</li>
-<li> **1** :公证处核验报告</li></ul>
+        :param _ReportType: <p>指定申请的报告类型，可选类型如下：<ul><li> <strong>0</strong> :合同签署报告（默认）</li></ul></p><p>枚举值：</p><ul><li>0： 合同签署报告</li></ul>
         :type ReportType: int
-        :param _HybridEvidenceFlowFile: 混合云模式获取合同文件合并出证，默认：不同意。注：此参数需要联系腾讯电子签运营进行开通后生效
+        :param _HybridEvidenceFlowFile: <p>混合云模式获取合同文件合并出证，默认：不同意。注：此参数需要联系腾讯电子签运营进行开通后生效</p>
         :type HybridEvidenceFlowFile: bool
         """
         self._Operator = None
@@ -10874,8 +10869,7 @@ class CreateFlowEvidenceReportRequest(AbstractModel):
 
     @property
     def Operator(self):
-        r"""执行本接口操作的员工信息。
-注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+        r"""<p>执行本接口操作的员工信息。<br>注: <code>在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。</code></p>
         :rtype: :class:`tencentcloud.ess.v20201111.models.UserInfo`
         """
         return self._Operator
@@ -10886,8 +10880,7 @@ class CreateFlowEvidenceReportRequest(AbstractModel):
 
     @property
     def FlowId(self):
-        r"""合同流程ID，为32位字符串。
-可登录腾讯电子签控制台，在 "合同"->"合同中心" 中查看某个合同的FlowId(在页面中展示为合同ID)。
+        r"""<p>合同流程ID，为32位字符串。<br>可登录腾讯电子签控制台，在 &quot;合同&quot;-&gt;&quot;合同中心&quot; 中查看某个合同的FlowId(在页面中展示为合同ID)。</p>
         :rtype: str
         """
         return self._FlowId
@@ -10898,8 +10891,7 @@ class CreateFlowEvidenceReportRequest(AbstractModel):
 
     @property
     def Agent(self):
-        r"""代理企业和员工的信息。
-在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
+        r"""<p>代理企业和员工的信息。<br>在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。</p>
         :rtype: :class:`tencentcloud.ess.v20201111.models.Agent`
         """
         return self._Agent
@@ -10910,9 +10902,7 @@ class CreateFlowEvidenceReportRequest(AbstractModel):
 
     @property
     def ReportType(self):
-        r"""指定申请的报告类型，可选类型如下：
-<ul><li> **0** :合同签署报告（默认）</li>
-<li> **1** :公证处核验报告</li></ul>
+        r"""<p>指定申请的报告类型，可选类型如下：<ul><li> <strong>0</strong> :合同签署报告（默认）</li></ul></p><p>枚举值：</p><ul><li>0： 合同签署报告</li></ul>
         :rtype: int
         """
         return self._ReportType
@@ -10923,7 +10913,7 @@ class CreateFlowEvidenceReportRequest(AbstractModel):
 
     @property
     def HybridEvidenceFlowFile(self):
-        r"""混合云模式获取合同文件合并出证，默认：不同意。注：此参数需要联系腾讯电子签运营进行开通后生效
+        r"""<p>混合云模式获取合同文件合并出证，默认：不同意。注：此参数需要联系腾讯电子签运营进行开通后生效</p>
         :rtype: bool
         """
         return self._HybridEvidenceFlowFile
@@ -10960,16 +10950,11 @@ class CreateFlowEvidenceReportResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ReportId: 出证报告 ID，可用于<a href="https://qian.tencent.com/developers/companyApis/certificate/DescribeFlowEvidenceReport" target="_blank">获取出证报告任务执行结果</a>查询出证任务结果和出证PDF的下载URL
+        :param _ReportId: <p>出证报告 ID，可用于<a href="https://qian.tencent.com/developers/companyApis/certificate/DescribeFlowEvidenceReport" target="_blank">获取出证报告任务执行结果</a>查询出证任务结果和出证PDF的下载URL</p>
         :type ReportId: str
-        :param _Status: 出证任务执行的状态, 状态含义如下：
-
-<ul><li>**EvidenceStatusExecuting**：  出证任务在执行中</li>
-<li>**EvidenceStatusSuccess**：  出证任务执行成功</li>
-<li>**EvidenceStatusFailed** ： 出证任务执行失败</li></ul>
+        :param _Status: <p>出证任务执行的状态, 状态含义如下：</p><ul><li>**EvidenceStatusExecuting**：  出证任务在执行中</li><li>**EvidenceStatusSuccess**：  出证任务执行成功</li><li>**EvidenceStatusFailed** ： 出证任务执行失败</li></ul>
         :type Status: str
-        :param _ReportUrl: 此字段已经废除,不再使用.
-出证的PDF下载地址请调用DescribeChannelFlowEvidenceReport接口获取
+        :param _ReportUrl: <p>此字段已经废除,不再使用.<br>出证的PDF下载地址请调用DescribeChannelFlowEvidenceReport接口获取</p>
         :type ReportUrl: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -10981,7 +10966,7 @@ class CreateFlowEvidenceReportResponse(AbstractModel):
 
     @property
     def ReportId(self):
-        r"""出证报告 ID，可用于<a href="https://qian.tencent.com/developers/companyApis/certificate/DescribeFlowEvidenceReport" target="_blank">获取出证报告任务执行结果</a>查询出证任务结果和出证PDF的下载URL
+        r"""<p>出证报告 ID，可用于<a href="https://qian.tencent.com/developers/companyApis/certificate/DescribeFlowEvidenceReport" target="_blank">获取出证报告任务执行结果</a>查询出证任务结果和出证PDF的下载URL</p>
         :rtype: str
         """
         return self._ReportId
@@ -10992,11 +10977,7 @@ class CreateFlowEvidenceReportResponse(AbstractModel):
 
     @property
     def Status(self):
-        r"""出证任务执行的状态, 状态含义如下：
-
-<ul><li>**EvidenceStatusExecuting**：  出证任务在执行中</li>
-<li>**EvidenceStatusSuccess**：  出证任务执行成功</li>
-<li>**EvidenceStatusFailed** ： 出证任务执行失败</li></ul>
+        r"""<p>出证任务执行的状态, 状态含义如下：</p><ul><li>**EvidenceStatusExecuting**：  出证任务在执行中</li><li>**EvidenceStatusSuccess**：  出证任务执行成功</li><li>**EvidenceStatusFailed** ： 出证任务执行失败</li></ul>
         :rtype: str
         """
         return self._Status
@@ -11009,8 +10990,7 @@ class CreateFlowEvidenceReportResponse(AbstractModel):
     def ReportUrl(self):
         warnings.warn("parameter `ReportUrl` is deprecated", DeprecationWarning) 
 
-        r"""此字段已经废除,不再使用.
-出证的PDF下载地址请调用DescribeChannelFlowEvidenceReport接口获取
+        r"""<p>此字段已经废除,不再使用.<br>出证的PDF下载地址请调用DescribeChannelFlowEvidenceReport接口获取</p>
         :rtype: str
         """
         return self._ReportUrl
@@ -17102,29 +17082,17 @@ class CreatePartnerAutoSignAuthUrlRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Agent: 代理企业和员工的信息。<br/>在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
+        :param _Agent: <p>代理企业和员工的信息。<br>在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。</p>
         :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
-        :param _Operator: 执行本接口操作的员工信息。<br/>注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+        :param _Operator: <p>执行本接口操作的员工信息。<br>注: <code>在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。</code></p>
         :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
-        :param _AuthorizedOrganizationId: 被授企业id/授权方企业id（即OrganizationId），和AuthorizedOrganizationName二选一传入
+        :param _AuthorizedOrganizationId: <p>被授企业id/授权方企业id（即OrganizationId），和AuthorizedOrganizationName二选一传入</p>
         :type AuthorizedOrganizationId: str
-        :param _AuthorizedOrganizationName: 被授企业名称/授权方企业的名字，和AuthorizedOrganizationId二选一传入即可。请确认该名称与企业营业执照中注册的名称一致。
-注: `如果名称中包含英文括号()，请使用中文括号（）代替。`
+        :param _AuthorizedOrganizationName: <p>被授企业名称/授权方企业的名字，和AuthorizedOrganizationId二选一传入即可。请确认该名称与企业营业执照中注册的名称一致。<br>注: <code>如果名称中包含英文括号()，请使用中文括号（）代替。</code></p>
         :type AuthorizedOrganizationName: str
-        :param _SealTypes: 在设置印章授权时，可以指定特定的印章类型，以确保在授权过程中只使用相应类型的印章。支持的印章类型包括：
-
-<ul>
-<li><strong>OFFICIAL</strong>：企业公章，用于代表企业对外的正式文件和重要事务的认证。</li>
-<li><strong>CONTRACT</strong>：合同专用章，专门用于签署各类合同。</li>
-<li><strong>FINANCE</strong>：财务专用章，用于企业的财务相关文件，如发票、收据等财务凭证的认证。</li>
-<li><strong>PERSONNEL</strong>：人事专用章，用于人事管理相关文件，如劳动合同、人事任命等。</li>
-</ul>
+        :param _SealTypes: <p>在设置印章授权时，可以指定特定的印章类型，以确保在授权过程中只使用相应类型的印章。</p><p>枚举值：</p><ul><li>OFFICIAL： 企业公章，用于代表企业对外的正式文件和重要事务的认证</li><li>CONTRACT： 合同专用章，专门用于签署各类合同。</li><li>FINANCE： 财务专用章，用于企业的财务相关文件，如发票、收据等财务凭证的认证</li><li>PERSONNEL： 人事专用章，用于人事管理相关文件，如劳动合同、人事任命等。</li><li>OTHER： 其他类型印章，包含子类型</li></ul>
         :type SealTypes: list of str
-        :param _AuthToMe: 在处理授权关系时，授权的方向
-<ul>
-<li><strong>false</strong>（默认值）：表示我方授权他方。在这种情况下，<code>AuthorizedOrganizationName</code> 代表的是【被授权方】的企业名称，即接收授权的企业。</li>
-<li><strong>true</strong>：表示他方授权我方。在这种情况下，<code>AuthorizedOrganizationName</code> 代表的是【授权方】的企业名称，即提供授权的企业。</li>
-</ul>
+        :param _AuthToMe: <p>在处理授权关系时，授权的方向</p><ul><li><strong>false</strong>（默认值）：表示我方授权他方。在这种情况下，<code>AuthorizedOrganizationName</code> 代表的是【被授权方】的企业名称，即接收授权的企业。</li><li><strong>true</strong>：表示他方授权我方。在这种情况下，<code>AuthorizedOrganizationName</code> 代表的是【授权方】的企业名称，即提供授权的企业。</li></ul>
         :type AuthToMe: bool
         """
         self._Agent = None
@@ -17136,7 +17104,7 @@ class CreatePartnerAutoSignAuthUrlRequest(AbstractModel):
 
     @property
     def Agent(self):
-        r"""代理企业和员工的信息。<br/>在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
+        r"""<p>代理企业和员工的信息。<br>在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。</p>
         :rtype: :class:`tencentcloud.ess.v20201111.models.Agent`
         """
         return self._Agent
@@ -17147,7 +17115,7 @@ class CreatePartnerAutoSignAuthUrlRequest(AbstractModel):
 
     @property
     def Operator(self):
-        r"""执行本接口操作的员工信息。<br/>注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+        r"""<p>执行本接口操作的员工信息。<br>注: <code>在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。</code></p>
         :rtype: :class:`tencentcloud.ess.v20201111.models.UserInfo`
         """
         return self._Operator
@@ -17158,7 +17126,7 @@ class CreatePartnerAutoSignAuthUrlRequest(AbstractModel):
 
     @property
     def AuthorizedOrganizationId(self):
-        r"""被授企业id/授权方企业id（即OrganizationId），和AuthorizedOrganizationName二选一传入
+        r"""<p>被授企业id/授权方企业id（即OrganizationId），和AuthorizedOrganizationName二选一传入</p>
         :rtype: str
         """
         return self._AuthorizedOrganizationId
@@ -17169,8 +17137,7 @@ class CreatePartnerAutoSignAuthUrlRequest(AbstractModel):
 
     @property
     def AuthorizedOrganizationName(self):
-        r"""被授企业名称/授权方企业的名字，和AuthorizedOrganizationId二选一传入即可。请确认该名称与企业营业执照中注册的名称一致。
-注: `如果名称中包含英文括号()，请使用中文括号（）代替。`
+        r"""<p>被授企业名称/授权方企业的名字，和AuthorizedOrganizationId二选一传入即可。请确认该名称与企业营业执照中注册的名称一致。<br>注: <code>如果名称中包含英文括号()，请使用中文括号（）代替。</code></p>
         :rtype: str
         """
         return self._AuthorizedOrganizationName
@@ -17181,14 +17148,7 @@ class CreatePartnerAutoSignAuthUrlRequest(AbstractModel):
 
     @property
     def SealTypes(self):
-        r"""在设置印章授权时，可以指定特定的印章类型，以确保在授权过程中只使用相应类型的印章。支持的印章类型包括：
-
-<ul>
-<li><strong>OFFICIAL</strong>：企业公章，用于代表企业对外的正式文件和重要事务的认证。</li>
-<li><strong>CONTRACT</strong>：合同专用章，专门用于签署各类合同。</li>
-<li><strong>FINANCE</strong>：财务专用章，用于企业的财务相关文件，如发票、收据等财务凭证的认证。</li>
-<li><strong>PERSONNEL</strong>：人事专用章，用于人事管理相关文件，如劳动合同、人事任命等。</li>
-</ul>
+        r"""<p>在设置印章授权时，可以指定特定的印章类型，以确保在授权过程中只使用相应类型的印章。</p><p>枚举值：</p><ul><li>OFFICIAL： 企业公章，用于代表企业对外的正式文件和重要事务的认证</li><li>CONTRACT： 合同专用章，专门用于签署各类合同。</li><li>FINANCE： 财务专用章，用于企业的财务相关文件，如发票、收据等财务凭证的认证</li><li>PERSONNEL： 人事专用章，用于人事管理相关文件，如劳动合同、人事任命等。</li><li>OTHER： 其他类型印章，包含子类型</li></ul>
         :rtype: list of str
         """
         return self._SealTypes
@@ -17199,11 +17159,7 @@ class CreatePartnerAutoSignAuthUrlRequest(AbstractModel):
 
     @property
     def AuthToMe(self):
-        r"""在处理授权关系时，授权的方向
-<ul>
-<li><strong>false</strong>（默认值）：表示我方授权他方。在这种情况下，<code>AuthorizedOrganizationName</code> 代表的是【被授权方】的企业名称，即接收授权的企业。</li>
-<li><strong>true</strong>：表示他方授权我方。在这种情况下，<code>AuthorizedOrganizationName</code> 代表的是【授权方】的企业名称，即提供授权的企业。</li>
-</ul>
+        r"""<p>在处理授权关系时，授权的方向</p><ul><li><strong>false</strong>（默认值）：表示我方授权他方。在这种情况下，<code>AuthorizedOrganizationName</code> 代表的是【被授权方】的企业名称，即接收授权的企业。</li><li><strong>true</strong>：表示他方授权我方。在这种情况下，<code>AuthorizedOrganizationName</code> 代表的是【授权方】的企业名称，即提供授权的企业。</li></ul>
         :rtype: bool
         """
         return self._AuthToMe
@@ -17241,11 +17197,11 @@ class CreatePartnerAutoSignAuthUrlResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Url: 授权链接，以短链形式返回，短链的有效期参考回参中的 ExpiredTime。
+        :param _Url: <p>授权链接，以短链形式返回，短链的有效期参考回参中的 ExpiredTime。</p>
         :type Url: str
-        :param _MiniAppPath: 从客户小程序或者客户APP跳转至腾讯电子签小程序进行批量签署的跳转路径
+        :param _MiniAppPath: <p>从客户小程序或者客户APP跳转至腾讯电子签小程序进行批量签署的跳转路径</p>
         :type MiniAppPath: str
-        :param _ExpireTime: 链接过期时间以 Unix 时间戳格式表示，从生成链接时间起，往后7天有效期。过期后短链将失效，无法打开。
+        :param _ExpireTime: <p>链接过期时间以 Unix 时间戳格式表示，从生成链接时间起，往后7天有效期。过期后短链将失效，无法打开。</p>
         :type ExpireTime: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -17257,7 +17213,7 @@ class CreatePartnerAutoSignAuthUrlResponse(AbstractModel):
 
     @property
     def Url(self):
-        r"""授权链接，以短链形式返回，短链的有效期参考回参中的 ExpiredTime。
+        r"""<p>授权链接，以短链形式返回，短链的有效期参考回参中的 ExpiredTime。</p>
         :rtype: str
         """
         return self._Url
@@ -17268,7 +17224,7 @@ class CreatePartnerAutoSignAuthUrlResponse(AbstractModel):
 
     @property
     def MiniAppPath(self):
-        r"""从客户小程序或者客户APP跳转至腾讯电子签小程序进行批量签署的跳转路径
+        r"""<p>从客户小程序或者客户APP跳转至腾讯电子签小程序进行批量签署的跳转路径</p>
         :rtype: str
         """
         return self._MiniAppPath
@@ -17279,7 +17235,7 @@ class CreatePartnerAutoSignAuthUrlResponse(AbstractModel):
 
     @property
     def ExpireTime(self):
-        r"""链接过期时间以 Unix 时间戳格式表示，从生成链接时间起，往后7天有效期。过期后短链将失效，无法打开。
+        r"""<p>链接过期时间以 Unix 时间戳格式表示，从生成链接时间起，往后7天有效期。过期后短链将失效，无法打开。</p>
         :rtype: int
         """
         return self._ExpireTime
@@ -26943,17 +26899,13 @@ class DescribeFlowEvidenceReportRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Operator: 执行本接口操作的员工信息。
-注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+        :param _Operator: <p>执行本接口操作的员工信息。<br>注: <code>在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。</code></p>
         :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
-        :param _ReportId: 签署报告编号, 由<a href="https://qian.tencent.com/developers/companyApis/certificate/CreateFlowEvidenceReport" target="_blank">提交申请出证报告任务</a>产生
+        :param _ReportId: <p>签署报告编号, 由<a href="https://qian.tencent.com/developers/companyApis/certificate/CreateFlowEvidenceReport" target="_blank">提交申请出证报告任务</a>产生</p>
         :type ReportId: str
-        :param _Agent: 代理企业和员工的信息。
-在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
+        :param _Agent: <p>代理企业和员工的信息。<br>在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。</p>
         :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
-        :param _ReportType: 指定申请的报告类型，可选类型如下：
-<ul><li> **0** :合同签署报告（默认）</li>
-<li> **1** :公证处核验报告</li></ul>
+        :param _ReportType: <p>指定申请的报告类型，可选类型如下：<ul><li> <strong>0</strong> :合同签署报告（默认）</li></ul></p><p>枚举值：</p><ul><li>0： 合同签署报告</li></ul>
         :type ReportType: int
         """
         self._Operator = None
@@ -26963,8 +26915,7 @@ class DescribeFlowEvidenceReportRequest(AbstractModel):
 
     @property
     def Operator(self):
-        r"""执行本接口操作的员工信息。
-注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+        r"""<p>执行本接口操作的员工信息。<br>注: <code>在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。</code></p>
         :rtype: :class:`tencentcloud.ess.v20201111.models.UserInfo`
         """
         return self._Operator
@@ -26975,7 +26926,7 @@ class DescribeFlowEvidenceReportRequest(AbstractModel):
 
     @property
     def ReportId(self):
-        r"""签署报告编号, 由<a href="https://qian.tencent.com/developers/companyApis/certificate/CreateFlowEvidenceReport" target="_blank">提交申请出证报告任务</a>产生
+        r"""<p>签署报告编号, 由<a href="https://qian.tencent.com/developers/companyApis/certificate/CreateFlowEvidenceReport" target="_blank">提交申请出证报告任务</a>产生</p>
         :rtype: str
         """
         return self._ReportId
@@ -26986,8 +26937,7 @@ class DescribeFlowEvidenceReportRequest(AbstractModel):
 
     @property
     def Agent(self):
-        r"""代理企业和员工的信息。
-在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
+        r"""<p>代理企业和员工的信息。<br>在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。</p>
         :rtype: :class:`tencentcloud.ess.v20201111.models.Agent`
         """
         return self._Agent
@@ -26998,9 +26948,7 @@ class DescribeFlowEvidenceReportRequest(AbstractModel):
 
     @property
     def ReportType(self):
-        r"""指定申请的报告类型，可选类型如下：
-<ul><li> **0** :合同签署报告（默认）</li>
-<li> **1** :公证处核验报告</li></ul>
+        r"""<p>指定申请的报告类型，可选类型如下：<ul><li> <strong>0</strong> :合同签署报告（默认）</li></ul></p><p>枚举值：</p><ul><li>0： 合同签署报告</li></ul>
         :rtype: int
         """
         return self._ReportType
@@ -27036,13 +26984,9 @@ class DescribeFlowEvidenceReportResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ReportUrl: 出证报告PDF的下载 URL，`有效期为5分钟`，超过有效期后将无法再下载。
+        :param _ReportUrl: <p>出证报告PDF的下载 URL，<code>有效期为5分钟</code>，超过有效期后将无法再下载。</p>
         :type ReportUrl: str
-        :param _Status: 出证任务执行的状态, 状态含义如下：
-
-<ul><li>**EvidenceStatusExecuting**：  出证任务在执行中</li>
-<li>**EvidenceStatusSuccess**：  出证任务执行成功</li>
-<li>**EvidenceStatusFailed** ： 出证任务执行失败</li></ul>
+        :param _Status: <p>出证任务执行的状态, 状态含义如下：</p><ul><li>**EvidenceStatusExecuting**：  出证任务在执行中</li><li>**EvidenceStatusSuccess**：  出证任务执行成功</li><li>**EvidenceStatusFailed** ： 出证任务执行失败</li></ul>
         :type Status: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -27053,7 +26997,7 @@ class DescribeFlowEvidenceReportResponse(AbstractModel):
 
     @property
     def ReportUrl(self):
-        r"""出证报告PDF的下载 URL，`有效期为5分钟`，超过有效期后将无法再下载。
+        r"""<p>出证报告PDF的下载 URL，<code>有效期为5分钟</code>，超过有效期后将无法再下载。</p>
         :rtype: str
         """
         return self._ReportUrl
@@ -27064,11 +27008,7 @@ class DescribeFlowEvidenceReportResponse(AbstractModel):
 
     @property
     def Status(self):
-        r"""出证任务执行的状态, 状态含义如下：
-
-<ul><li>**EvidenceStatusExecuting**：  出证任务在执行中</li>
-<li>**EvidenceStatusSuccess**：  出证任务执行成功</li>
-<li>**EvidenceStatusFailed** ： 出证任务执行失败</li></ul>
+        r"""<p>出证任务执行的状态, 状态含义如下：</p><ul><li>**EvidenceStatusExecuting**：  出证任务在执行中</li><li>**EvidenceStatusSuccess**：  出证任务执行成功</li><li>**EvidenceStatusFailed** ： 出证任务执行失败</li></ul>
         :rtype: str
         """
         return self._Status

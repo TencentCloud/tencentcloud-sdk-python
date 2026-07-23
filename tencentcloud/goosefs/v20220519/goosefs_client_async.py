@@ -547,6 +547,24 @@ class GoosefsClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def ModifyDataRepositoryTaskStatus(
+            self,
+            request: models.ModifyDataRepositoryTaskStatusRequest,
+            opts: Dict = None,
+    ) -> models.ModifyDataRepositoryTaskStatusResponse:
+        """
+        修改数据流动任务状态，目前支持任务暂停/恢复
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyDataRepositoryTaskStatus"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyDataRepositoryTaskStatusResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def MountMultipleStorageFileSystem(
             self,
             request: models.MountMultipleStorageFileSystemRequest,

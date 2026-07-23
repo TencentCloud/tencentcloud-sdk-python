@@ -7494,11 +7494,11 @@ class CreateSparkAppTaskRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _JobName: spark作业名
+        :param _JobName: <p>spark作业名</p>
         :type JobName: str
-        :param _CmdArgs: spark作业程序入参，以空格分隔；一般用于周期性调用使用
+        :param _CmdArgs: <p>spark作业程序入参，以空格分隔；一般用于周期性调用使用</p>
         :type CmdArgs: str
-        :param _SourceInfo: 任务来源信息
+        :param _SourceInfo: <p>任务来源信息</p>
         :type SourceInfo: list of KVPair
         """
         self._JobName = None
@@ -7507,7 +7507,7 @@ class CreateSparkAppTaskRequest(AbstractModel):
 
     @property
     def JobName(self):
-        r"""spark作业名
+        r"""<p>spark作业名</p>
         :rtype: str
         """
         return self._JobName
@@ -7518,7 +7518,7 @@ class CreateSparkAppTaskRequest(AbstractModel):
 
     @property
     def CmdArgs(self):
-        r"""spark作业程序入参，以空格分隔；一般用于周期性调用使用
+        r"""<p>spark作业程序入参，以空格分隔；一般用于周期性调用使用</p>
         :rtype: str
         """
         return self._CmdArgs
@@ -7529,7 +7529,7 @@ class CreateSparkAppTaskRequest(AbstractModel):
 
     @property
     def SourceInfo(self):
-        r"""任务来源信息
+        r"""<p>任务来源信息</p>
         :rtype: list of KVPair
         """
         return self._SourceInfo
@@ -7565,9 +7565,9 @@ class CreateSparkAppTaskResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _BatchId: 批Id
+        :param _BatchId: <p>批Id</p>
         :type BatchId: str
-        :param _TaskId: 任务Id
+        :param _TaskId: <p>任务Id</p>
         :type TaskId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -7578,7 +7578,7 @@ class CreateSparkAppTaskResponse(AbstractModel):
 
     @property
     def BatchId(self):
-        r"""批Id
+        r"""<p>批Id</p>
         :rtype: str
         """
         return self._BatchId
@@ -7589,7 +7589,7 @@ class CreateSparkAppTaskResponse(AbstractModel):
 
     @property
     def TaskId(self):
-        r"""任务Id
+        r"""<p>任务Id</p>
         :rtype: str
         """
         return self._TaskId

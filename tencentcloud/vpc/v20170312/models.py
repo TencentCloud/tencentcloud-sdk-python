@@ -32669,20 +32669,13 @@ class DescribeNetworkAclQuintupleEntriesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _NetworkAclId: 网络ACL实例ID。形如：acl-12345678。
+        :param _NetworkAclId: <p>网络ACL实例ID。形如：acl-12345678。</p>
         :type NetworkAclId: str
-        :param _Offset: 偏移量，默认为0。
+        :param _Offset: <p>偏移量，默认为0。</p>
         :type Offset: int
-        :param _Limit: 返回数量，默认为20，最小值为1，最大值为100。
+        :param _Limit: <p>返回数量，默认为20，最小值为1，最大值为100。</p>
         :type Limit: int
-        :param _Filters: 过滤条件，参数不支持同时指定`NetworkAclId`和`Filters`。
-<li>protocol - String - 协议，形如：`TCP`。</li>
-<li>description - String - 描述。</li>
-<li>destination-cidr - String - 目的CIDR， 形如：'192.168.0.0/24'。</li>
-<li>source-cidr- String - 源CIDR， 形如：'192.168.0.0/24'。</li>
-<li>action - String - 动作，形如ACCEPT或DROP。</li>
-<li>network-acl-quintuple-entry-id - String - 五元组唯一ID，形如：'acli45-ahnu4rv5'。</li>
-<li>network-acl-direction - String - 方向，形如：'INGRESS'或'EGRESS'。</li>
+        :param _Filters: <p>过滤条件，参数不支持同时指定<code>NetworkAclId</code>和<code>Filters</code>。</p><li>protocol - String - 协议，形如：<code>TCP</code>。</li><li>description - String - 描述。</li><li>destination-cidr - String - 目的CIDR， 形如：'192.168.0.0/24'。</li><li>source-cidr- String - 源CIDR， 形如：'192.168.0.0/24'。</li><li>action - String - 动作，形如ACCEPT或DROP。</li><li>network-acl-quintuple-entry-id - String - 五元组唯一ID，形如：'acli45-ahnu4rv5'。</li><li>network-acl-direction - String - 方向，形如：'INGRESS'或'EGRESS'。</li>
         :type Filters: list of Filter
         """
         self._NetworkAclId = None
@@ -32692,7 +32685,7 @@ class DescribeNetworkAclQuintupleEntriesRequest(AbstractModel):
 
     @property
     def NetworkAclId(self):
-        r"""网络ACL实例ID。形如：acl-12345678。
+        r"""<p>网络ACL实例ID。形如：acl-12345678。</p>
         :rtype: str
         """
         return self._NetworkAclId
@@ -32703,7 +32696,7 @@ class DescribeNetworkAclQuintupleEntriesRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""偏移量，默认为0。
+        r"""<p>偏移量，默认为0。</p>
         :rtype: int
         """
         return self._Offset
@@ -32714,7 +32707,7 @@ class DescribeNetworkAclQuintupleEntriesRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""返回数量，默认为20，最小值为1，最大值为100。
+        r"""<p>返回数量，默认为20，最小值为1，最大值为100。</p>
         :rtype: int
         """
         return self._Limit
@@ -32725,14 +32718,7 @@ class DescribeNetworkAclQuintupleEntriesRequest(AbstractModel):
 
     @property
     def Filters(self):
-        r"""过滤条件，参数不支持同时指定`NetworkAclId`和`Filters`。
-<li>protocol - String - 协议，形如：`TCP`。</li>
-<li>description - String - 描述。</li>
-<li>destination-cidr - String - 目的CIDR， 形如：'192.168.0.0/24'。</li>
-<li>source-cidr- String - 源CIDR， 形如：'192.168.0.0/24'。</li>
-<li>action - String - 动作，形如ACCEPT或DROP。</li>
-<li>network-acl-quintuple-entry-id - String - 五元组唯一ID，形如：'acli45-ahnu4rv5'。</li>
-<li>network-acl-direction - String - 方向，形如：'INGRESS'或'EGRESS'。</li>
+        r"""<p>过滤条件，参数不支持同时指定<code>NetworkAclId</code>和<code>Filters</code>。</p><li>protocol - String - 协议，形如：<code>TCP</code>。</li><li>description - String - 描述。</li><li>destination-cidr - String - 目的CIDR， 形如：'192.168.0.0/24'。</li><li>source-cidr- String - 源CIDR， 形如：'192.168.0.0/24'。</li><li>action - String - 动作，形如ACCEPT或DROP。</li><li>network-acl-quintuple-entry-id - String - 五元组唯一ID，形如：'acli45-ahnu4rv5'。</li><li>network-acl-direction - String - 方向，形如：'INGRESS'或'EGRESS'。</li>
         :rtype: list of Filter
         """
         return self._Filters
@@ -32769,9 +32755,9 @@ class DescribeNetworkAclQuintupleEntriesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _NetworkAclQuintupleSet: 网络ACL条目列表（NetworkAclTuple5Entry）
+        :param _NetworkAclQuintupleSet: <p>网络ACL条目列表（NetworkAclTuple5Entry）</p>
         :type NetworkAclQuintupleSet: list of NetworkAclQuintupleEntry
-        :param _TotalCount: 符合条件的实例数量。
+        :param _TotalCount: <p>符合条件的实例数量。</p>
         :type TotalCount: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -32782,7 +32768,7 @@ class DescribeNetworkAclQuintupleEntriesResponse(AbstractModel):
 
     @property
     def NetworkAclQuintupleSet(self):
-        r"""网络ACL条目列表（NetworkAclTuple5Entry）
+        r"""<p>网络ACL条目列表（NetworkAclTuple5Entry）</p>
         :rtype: list of NetworkAclQuintupleEntry
         """
         return self._NetworkAclQuintupleSet
@@ -32793,7 +32779,7 @@ class DescribeNetworkAclQuintupleEntriesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        r"""符合条件的实例数量。
+        r"""<p>符合条件的实例数量。</p>
         :rtype: int
         """
         return self._TotalCount
@@ -32832,20 +32818,17 @@ class DescribeNetworkAclsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Filters: 过滤条件，参数不支持同时指定NetworkAclIds和Filters。
-<li>vpc-id - String - （过滤条件）VPC实例ID，形如：vpc-12345678。</li>
-<li>network-acl-id - String - （过滤条件）网络ACL实例ID，形如：acl-12345678。</li>
-<li>network-acl-name - String - （过滤条件）网络ACL实例名称。</li>
+        :param _Filters: <p>过滤条件，参数不支持同时指定NetworkAclIds和Filters。</p><li>vpc-id - String - （过滤条件）VPC实例ID，形如：vpc-12345678。</li><li>network-acl-id - String - （过滤条件）网络ACL实例ID，形如：acl-12345678。</li><li>network-acl-name - String - （过滤条件）网络ACL实例名称。</li>
         :type Filters: list of Filter
-        :param _NetworkAclIds: 网络ACL实例ID数组。形如：[acl-12345678]。每次请求的实例的上限为100。参数不支持同时指定NetworkAclIds和Filters。
+        :param _NetworkAclIds: <p>网络ACL实例ID数组。形如：[acl-12345678]。每次请求的实例的上限为100。参数不支持同时指定NetworkAclIds和Filters。</p>
         :type NetworkAclIds: list of str
-        :param _Offset: 偏移量，默认为0。
+        :param _Offset: <p>偏移量，默认为0。</p>
         :type Offset: int
-        :param _Limit: 返回数量，默认为20，最小值为1，最大值为100。
+        :param _Limit: <p>返回数量，默认为20，最小值为1，最大值为100。</p>
         :type Limit: int
-        :param _OrderField: 排序字段。支持：NetworkAclId,NetworkAclName,CreatedTime
+        :param _OrderField: <p>排序字段。支持：NetworkAclId,NetworkAclName,CreatedTime,ModifyTime</p>
         :type OrderField: str
-        :param _OrderDirection: 排序方法。顺序：ASC，倒序：DESC。
+        :param _OrderDirection: <p>排序方法。顺序：ASC，倒序：DESC。</p>
         :type OrderDirection: str
         """
         self._Filters = None
@@ -32857,10 +32840,7 @@ class DescribeNetworkAclsRequest(AbstractModel):
 
     @property
     def Filters(self):
-        r"""过滤条件，参数不支持同时指定NetworkAclIds和Filters。
-<li>vpc-id - String - （过滤条件）VPC实例ID，形如：vpc-12345678。</li>
-<li>network-acl-id - String - （过滤条件）网络ACL实例ID，形如：acl-12345678。</li>
-<li>network-acl-name - String - （过滤条件）网络ACL实例名称。</li>
+        r"""<p>过滤条件，参数不支持同时指定NetworkAclIds和Filters。</p><li>vpc-id - String - （过滤条件）VPC实例ID，形如：vpc-12345678。</li><li>network-acl-id - String - （过滤条件）网络ACL实例ID，形如：acl-12345678。</li><li>network-acl-name - String - （过滤条件）网络ACL实例名称。</li>
         :rtype: list of Filter
         """
         return self._Filters
@@ -32871,7 +32851,7 @@ class DescribeNetworkAclsRequest(AbstractModel):
 
     @property
     def NetworkAclIds(self):
-        r"""网络ACL实例ID数组。形如：[acl-12345678]。每次请求的实例的上限为100。参数不支持同时指定NetworkAclIds和Filters。
+        r"""<p>网络ACL实例ID数组。形如：[acl-12345678]。每次请求的实例的上限为100。参数不支持同时指定NetworkAclIds和Filters。</p>
         :rtype: list of str
         """
         return self._NetworkAclIds
@@ -32882,7 +32862,7 @@ class DescribeNetworkAclsRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""偏移量，默认为0。
+        r"""<p>偏移量，默认为0。</p>
         :rtype: int
         """
         return self._Offset
@@ -32893,7 +32873,7 @@ class DescribeNetworkAclsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""返回数量，默认为20，最小值为1，最大值为100。
+        r"""<p>返回数量，默认为20，最小值为1，最大值为100。</p>
         :rtype: int
         """
         return self._Limit
@@ -32904,7 +32884,7 @@ class DescribeNetworkAclsRequest(AbstractModel):
 
     @property
     def OrderField(self):
-        r"""排序字段。支持：NetworkAclId,NetworkAclName,CreatedTime
+        r"""<p>排序字段。支持：NetworkAclId,NetworkAclName,CreatedTime,ModifyTime</p>
         :rtype: str
         """
         return self._OrderField
@@ -32915,7 +32895,7 @@ class DescribeNetworkAclsRequest(AbstractModel):
 
     @property
     def OrderDirection(self):
-        r"""排序方法。顺序：ASC，倒序：DESC。
+        r"""<p>排序方法。顺序：ASC，倒序：DESC。</p>
         :rtype: str
         """
         return self._OrderDirection
@@ -32954,9 +32934,9 @@ class DescribeNetworkAclsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _NetworkAclSet: 实例详细信息列表。
+        :param _NetworkAclSet: <p>实例详细信息列表。</p>
         :type NetworkAclSet: list of NetworkAcl
-        :param _TotalCount: 符合条件的实例数量。
+        :param _TotalCount: <p>符合条件的实例数量。</p>
         :type TotalCount: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -32967,7 +32947,7 @@ class DescribeNetworkAclsResponse(AbstractModel):
 
     @property
     def NetworkAclSet(self):
-        r"""实例详细信息列表。
+        r"""<p>实例详细信息列表。</p>
         :rtype: list of NetworkAcl
         """
         return self._NetworkAclSet
@@ -32978,7 +32958,7 @@ class DescribeNetworkAclsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        r"""符合条件的实例数量。
+        r"""<p>符合条件的实例数量。</p>
         :rtype: int
         """
         return self._TotalCount
@@ -33171,36 +33151,13 @@ class DescribeNetworkInterfacesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _NetworkInterfaceIds: 弹性网卡实例ID查询。形如：eni-pxir56ns。每次请求的实例的上限为100。参数不支持同时指定NetworkInterfaceIds和Filters。可通过[DescribeNetworkInterfaces](https://cloud.tencent.com/document/product/215/15817)接口获取。
-
+        :param _NetworkInterfaceIds: <p>弹性网卡实例ID查询。形如：eni-pxir56ns。每次请求的实例的上限为100。参数不支持同时指定NetworkInterfaceIds和Filters。可通过<a href="https://cloud.tencent.com/document/product/215/15817">DescribeNetworkInterfaces</a>接口获取。</p>
         :type NetworkInterfaceIds: list of str
-        :param _Filters: 过滤条件，参数不支持同时指定NetworkInterfaceIds和Filters。
-<li>vpc-id - String - （过滤条件）VPC实例ID，形如：vpc-f49l6u0z。可通过可通过[DescribeVpcs](https://cloud.tencent.com/document/product/215/15778)接口获取。
-</li>
-<li>subnet-id - String - （过滤条件）所属子网实例ID，形如：subnet-f49l6u0z。可通过[DescribeSubnets](https://cloud.tencent.com/document/product/215/15784)接口获取。
-</li>
-<li>network-interface-id - String - （过滤条件）弹性网卡实例ID，形如：eni-5k56k7k7。可通过[DescribeNetworkInterfaces](https://cloud.tencent.com/document/product/215/15817)接口获取。
-</li>
-<li>attachment.instance-id - String - （过滤条件）绑定的云服务器实例ID，形如：ins-3nqpdn3i。可通过[DescribeInstances](https://cloud.tencent.com/document/product/213/15728)接口获取。
-</li>
-<li>groups.security-group-id - String - （过滤条件）绑定的安全组实例ID，例如：sg-f9ekbxeq。可通过[DescribeSecurityGroups](https://cloud.tencent.com/document/product/215/15808)接口获取。
-</li>
-<li>network-interface-name - String - （过滤条件）网卡实例名称。</li>
-<li>network-interface-description - String - （过滤条件）网卡实例描述。</li>
-<li>address-ip - String - （过滤条件）内网IPv4地址，单IP后缀模糊匹配，多IP精确匹配。可以与`ip-exact-match`配合做单IP的精确匹配查询。</li>
-<li>ip-exact-match - Boolean - （过滤条件）内网IPv4精确匹配查询，存在多值情况，只取第一个。</li>
-<li>tag-key - String -是否必填：否- （过滤条件）按照标签键进行过滤。使用请参考示例2</li>
-<li>tag:tag-key - String - 是否必填：否 - （过滤条件）按照标签键值对进行过滤。 tag-key使用具体的标签键进行替换。使用请参考示例2。</li>
-<li>is-primary - Boolean - 是否必填：否 - （过滤条件）按照是否主网卡进行过滤。值为true时，仅过滤主网卡；值为false时，仅过滤辅助网卡；此过滤参数未提供时，同时过滤主网卡和辅助网卡。</li>
-<li>eni-type - String -是否必填：否- （过滤条件）按照网卡类型进行过滤。“0”-辅助网卡，“1”-主网卡，“2”：中继网卡。</li>
-<li>eni-qos - String -是否必填：否- （过滤条件）按照网卡服务质量进行过滤。PT（云金）、AU（云银）、AG(云铜）、DEFAULT（默认）。</li>
-<li>address-ipv6 - String - 是否必填：否 -（过滤条件）内网IPv6地址过滤，支持多ipv6地址查询，如果和address-ip一起使用取交集。</li>
-<li>public-address-ip - String - （过滤条件）公网IPv4地址，精确匹配。</li>
-<li>address-type - String - （过滤条件）IPv6 Cidr 的类型，精确匹配。`GUA`(全球单播地址), `ULA`(唯一本地地址)。</li>
+        :param _Filters: <p>过滤条件，参数不支持同时指定NetworkInterfaceIds和Filters。</p><li>vpc-id - String - （过滤条件）VPC实例ID，形如：vpc-f49l6u0z。可通过可通过[DescribeVpcs](https://cloud.tencent.com/document/product/215/15778)接口获取。</li><li>subnet-id - String - （过滤条件）所属子网实例ID，形如：subnet-f49l6u0z。可通过[DescribeSubnets](https://cloud.tencent.com/document/product/215/15784)接口获取。</li><li>network-interface-id - String - （过滤条件）弹性网卡实例ID，形如：eni-5k56k7k7。可通过[DescribeNetworkInterfaces](https://cloud.tencent.com/document/product/215/15817)接口获取。</li><li>attachment.instance-id - String - （过滤条件）绑定的云服务器实例ID，形如：ins-3nqpdn3i。可通过[DescribeInstances](https://cloud.tencent.com/document/product/213/15728)接口获取。</li><li>groups.security-group-id - String - （过滤条件）绑定的安全组实例ID，例如：sg-f9ekbxeq。可通过[DescribeSecurityGroups](https://cloud.tencent.com/document/product/215/15808)接口获取。</li><li>network-interface-name - String - （过滤条件）网卡实例名称。</li><li>network-interface-description - String - （过滤条件）网卡实例描述。</li><li>address-ip - String - （过滤条件）内网IPv4地址，单IP后缀模糊匹配，多IP精确匹配。可以与<code>ip-exact-match</code>配合做单IP的精确匹配查询。</li><li>ip-exact-match - Boolean - （过滤条件）内网IPv4精确匹配查询，存在多值情况，只取第一个。</li><li>tag-key - String -是否必填：否- （过滤条件）按照标签键进行过滤。使用请参考示例2</li><li>tag:tag-key - String - 是否必填：否 - （过滤条件）按照标签键值对进行过滤。 tag-key使用具体的标签键进行替换。使用请参考示例2。</li><li>is-primary - Boolean - 是否必填：否 - （过滤条件）按照是否主网卡进行过滤。值为true时，仅过滤主网卡；值为false时，仅过滤辅助网卡；此过滤参数未提供时，同时过滤主网卡和辅助网卡。</li><li>eni-type - String -是否必填：否- （过滤条件）按照网卡类型进行过滤。“0”-辅助网卡，“1”-主网卡，“2”：中继网卡。</li><li>eni-qos - String -是否必填：否- （过滤条件）按照网卡服务质量进行过滤。PT（云金）、AU（云银）、AG(云铜）、DEFAULT（默认）。</li><li>address-ipv6 - String - 是否必填：否 -（过滤条件）内网IPv6地址过滤，支持多ipv6地址查询，如果和address-ip一起使用取交集。</li><li>public-address-ip - String - （过滤条件）公网IPv4地址，精确匹配。</li><li>address-type - String - （过滤条件）IPv6 Cidr 的类型，精确匹配。<code>GUA</code>(全球单播地址), <code>ULA</code>(唯一本地地址)。</li><li>termination-protection - String - 删除保护。取值: true; false。</li><li>traffic-protection - String - 流量保护。取值: true; false。</li>
         :type Filters: list of Filter
-        :param _Offset: 偏移量，默认为0。
+        :param _Offset: <p>偏移量，默认为0。</p>
         :type Offset: int
-        :param _Limit: 返回数量，默认为20，最大值为100。
+        :param _Limit: <p>返回数量，默认为20，最大值为100。</p>
         :type Limit: int
         """
         self._NetworkInterfaceIds = None
@@ -33210,8 +33167,7 @@ class DescribeNetworkInterfacesRequest(AbstractModel):
 
     @property
     def NetworkInterfaceIds(self):
-        r"""弹性网卡实例ID查询。形如：eni-pxir56ns。每次请求的实例的上限为100。参数不支持同时指定NetworkInterfaceIds和Filters。可通过[DescribeNetworkInterfaces](https://cloud.tencent.com/document/product/215/15817)接口获取。
-
+        r"""<p>弹性网卡实例ID查询。形如：eni-pxir56ns。每次请求的实例的上限为100。参数不支持同时指定NetworkInterfaceIds和Filters。可通过<a href="https://cloud.tencent.com/document/product/215/15817">DescribeNetworkInterfaces</a>接口获取。</p>
         :rtype: list of str
         """
         return self._NetworkInterfaceIds
@@ -33222,29 +33178,7 @@ class DescribeNetworkInterfacesRequest(AbstractModel):
 
     @property
     def Filters(self):
-        r"""过滤条件，参数不支持同时指定NetworkInterfaceIds和Filters。
-<li>vpc-id - String - （过滤条件）VPC实例ID，形如：vpc-f49l6u0z。可通过可通过[DescribeVpcs](https://cloud.tencent.com/document/product/215/15778)接口获取。
-</li>
-<li>subnet-id - String - （过滤条件）所属子网实例ID，形如：subnet-f49l6u0z。可通过[DescribeSubnets](https://cloud.tencent.com/document/product/215/15784)接口获取。
-</li>
-<li>network-interface-id - String - （过滤条件）弹性网卡实例ID，形如：eni-5k56k7k7。可通过[DescribeNetworkInterfaces](https://cloud.tencent.com/document/product/215/15817)接口获取。
-</li>
-<li>attachment.instance-id - String - （过滤条件）绑定的云服务器实例ID，形如：ins-3nqpdn3i。可通过[DescribeInstances](https://cloud.tencent.com/document/product/213/15728)接口获取。
-</li>
-<li>groups.security-group-id - String - （过滤条件）绑定的安全组实例ID，例如：sg-f9ekbxeq。可通过[DescribeSecurityGroups](https://cloud.tencent.com/document/product/215/15808)接口获取。
-</li>
-<li>network-interface-name - String - （过滤条件）网卡实例名称。</li>
-<li>network-interface-description - String - （过滤条件）网卡实例描述。</li>
-<li>address-ip - String - （过滤条件）内网IPv4地址，单IP后缀模糊匹配，多IP精确匹配。可以与`ip-exact-match`配合做单IP的精确匹配查询。</li>
-<li>ip-exact-match - Boolean - （过滤条件）内网IPv4精确匹配查询，存在多值情况，只取第一个。</li>
-<li>tag-key - String -是否必填：否- （过滤条件）按照标签键进行过滤。使用请参考示例2</li>
-<li>tag:tag-key - String - 是否必填：否 - （过滤条件）按照标签键值对进行过滤。 tag-key使用具体的标签键进行替换。使用请参考示例2。</li>
-<li>is-primary - Boolean - 是否必填：否 - （过滤条件）按照是否主网卡进行过滤。值为true时，仅过滤主网卡；值为false时，仅过滤辅助网卡；此过滤参数未提供时，同时过滤主网卡和辅助网卡。</li>
-<li>eni-type - String -是否必填：否- （过滤条件）按照网卡类型进行过滤。“0”-辅助网卡，“1”-主网卡，“2”：中继网卡。</li>
-<li>eni-qos - String -是否必填：否- （过滤条件）按照网卡服务质量进行过滤。PT（云金）、AU（云银）、AG(云铜）、DEFAULT（默认）。</li>
-<li>address-ipv6 - String - 是否必填：否 -（过滤条件）内网IPv6地址过滤，支持多ipv6地址查询，如果和address-ip一起使用取交集。</li>
-<li>public-address-ip - String - （过滤条件）公网IPv4地址，精确匹配。</li>
-<li>address-type - String - （过滤条件）IPv6 Cidr 的类型，精确匹配。`GUA`(全球单播地址), `ULA`(唯一本地地址)。</li>
+        r"""<p>过滤条件，参数不支持同时指定NetworkInterfaceIds和Filters。</p><li>vpc-id - String - （过滤条件）VPC实例ID，形如：vpc-f49l6u0z。可通过可通过[DescribeVpcs](https://cloud.tencent.com/document/product/215/15778)接口获取。</li><li>subnet-id - String - （过滤条件）所属子网实例ID，形如：subnet-f49l6u0z。可通过[DescribeSubnets](https://cloud.tencent.com/document/product/215/15784)接口获取。</li><li>network-interface-id - String - （过滤条件）弹性网卡实例ID，形如：eni-5k56k7k7。可通过[DescribeNetworkInterfaces](https://cloud.tencent.com/document/product/215/15817)接口获取。</li><li>attachment.instance-id - String - （过滤条件）绑定的云服务器实例ID，形如：ins-3nqpdn3i。可通过[DescribeInstances](https://cloud.tencent.com/document/product/213/15728)接口获取。</li><li>groups.security-group-id - String - （过滤条件）绑定的安全组实例ID，例如：sg-f9ekbxeq。可通过[DescribeSecurityGroups](https://cloud.tencent.com/document/product/215/15808)接口获取。</li><li>network-interface-name - String - （过滤条件）网卡实例名称。</li><li>network-interface-description - String - （过滤条件）网卡实例描述。</li><li>address-ip - String - （过滤条件）内网IPv4地址，单IP后缀模糊匹配，多IP精确匹配。可以与<code>ip-exact-match</code>配合做单IP的精确匹配查询。</li><li>ip-exact-match - Boolean - （过滤条件）内网IPv4精确匹配查询，存在多值情况，只取第一个。</li><li>tag-key - String -是否必填：否- （过滤条件）按照标签键进行过滤。使用请参考示例2</li><li>tag:tag-key - String - 是否必填：否 - （过滤条件）按照标签键值对进行过滤。 tag-key使用具体的标签键进行替换。使用请参考示例2。</li><li>is-primary - Boolean - 是否必填：否 - （过滤条件）按照是否主网卡进行过滤。值为true时，仅过滤主网卡；值为false时，仅过滤辅助网卡；此过滤参数未提供时，同时过滤主网卡和辅助网卡。</li><li>eni-type - String -是否必填：否- （过滤条件）按照网卡类型进行过滤。“0”-辅助网卡，“1”-主网卡，“2”：中继网卡。</li><li>eni-qos - String -是否必填：否- （过滤条件）按照网卡服务质量进行过滤。PT（云金）、AU（云银）、AG(云铜）、DEFAULT（默认）。</li><li>address-ipv6 - String - 是否必填：否 -（过滤条件）内网IPv6地址过滤，支持多ipv6地址查询，如果和address-ip一起使用取交集。</li><li>public-address-ip - String - （过滤条件）公网IPv4地址，精确匹配。</li><li>address-type - String - （过滤条件）IPv6 Cidr 的类型，精确匹配。<code>GUA</code>(全球单播地址), <code>ULA</code>(唯一本地地址)。</li><li>termination-protection - String - 删除保护。取值: true; false。</li><li>traffic-protection - String - 流量保护。取值: true; false。</li>
         :rtype: list of Filter
         """
         return self._Filters
@@ -33255,7 +33189,7 @@ class DescribeNetworkInterfacesRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""偏移量，默认为0。
+        r"""<p>偏移量，默认为0。</p>
         :rtype: int
         """
         return self._Offset
@@ -33266,7 +33200,7 @@ class DescribeNetworkInterfacesRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""返回数量，默认为20，最大值为100。
+        r"""<p>返回数量，默认为20，最大值为100。</p>
         :rtype: int
         """
         return self._Limit
@@ -33303,9 +33237,9 @@ class DescribeNetworkInterfacesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _NetworkInterfaceSet: 实例详细信息列表。
+        :param _NetworkInterfaceSet: <p>实例详细信息列表。</p>
         :type NetworkInterfaceSet: list of NetworkInterface
-        :param _TotalCount: 符合条件的实例数量。
+        :param _TotalCount: <p>符合条件的实例数量。</p>
         :type TotalCount: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -33316,7 +33250,7 @@ class DescribeNetworkInterfacesResponse(AbstractModel):
 
     @property
     def NetworkInterfaceSet(self):
-        r"""实例详细信息列表。
+        r"""<p>实例详细信息列表。</p>
         :rtype: list of NetworkInterface
         """
         return self._NetworkInterfaceSet
@@ -33327,7 +33261,7 @@ class DescribeNetworkInterfacesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        r"""符合条件的实例数量。
+        r"""<p>符合条件的实例数量。</p>
         :rtype: int
         """
         return self._TotalCount
@@ -35462,37 +35396,15 @@ class DescribeRouteTablesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Filters: 过滤条件，参数不支持同时指定RouteTableIds和Filters。
-<li>route-table-id - String - （过滤条件）路由表实例ID。</li>
-<li>route-table-name - String - （过滤条件）路由表名称。</li>
-<li>vpc-id - String - （过滤条件）VPC实例ID，形如：vpc-f49l6u0z。</li>
-<li>association.main - String - （过滤条件）是否主路由表。</li>
-<li>tag-key - String -是否必填：否 - （过滤条件）按照标签键进行过滤。</li>
-<li>tag:tag-key - String - 是否必填：否 - （过滤条件）按照标签键值对进行过滤。 tag-key使用具体的标签键进行替换。使用请参考示例2。</li>
-<li>visible - String - （过滤条件）是否可见。</li>
-<li>next-hop-type - String - 是否必填：否 - （过滤条件）按下一跳类型进行过滤。使用next-hop-type进行过滤时，必须同时携带route-table-id与vpc-id。
-目前我们支持的类型有：
-LOCAL: 本地路由
-CVM：公网网关类型的云服务器；
-VPN：VPN网关；
-DIRECTCONNECT：专线网关；
-PEERCONNECTION：对等连接；
-HAVIP：高可用虚拟IP；
-NAT：NAT网关; 
-NORMAL_CVM：普通云服务器；
-EIP：云服务器的公网IP；
-CCN：云联网；
-LOCAL_GATEWAY：本地网关。
-GWLB_ENDPOINT：网关负载均衡终端节点。
-</li>
+        :param _Filters: <p>过滤条件，参数不支持同时指定RouteTableIds和Filters。</p><li>route-table-id - String - （过滤条件）路由表实例ID。</li><li>route-table-name - String - （过滤条件）路由表名称。</li><li>vpc-id - String - （过滤条件）VPC实例ID，形如：vpc-f49l6u0z。</li><li>association.main - String - （过滤条件）是否主路由表。</li><li>tag-key - String -是否必填：否 - （过滤条件）按照标签键进行过滤。</li><li>tag:tag-key - String - 是否必填：否 - （过滤条件）按照标签键值对进行过滤。 tag-key使用具体的标签键进行替换。使用请参考示例2。</li><li>visible - String - （过滤条件）是否可见。</li><li>next-hop-type - String - 是否必填：否 - （过滤条件）按下一跳类型进行过滤。使用next-hop-type进行过滤时，必须同时携带route-table-id与vpc-id。目前我们支持的类型有：LOCAL: 本地路由CVM：公网网关类型的云服务器；VPN：VPN网关；DIRECTCONNECT：专线网关；PEERCONNECTION：对等连接；HAVIP：高可用虚拟IP；NAT：NAT网关; NORMAL_CVM：普通云服务器；EIP：云服务器的公网IP；CCN：云联网；LOCAL_GATEWAY：本地网关。GWLB_ENDPOINT：网关负载均衡终端节点。</li>
         :type Filters: list of Filter
-        :param _RouteTableIds: 路由表实例ID，例如：rtb-azd4dt1c。
+        :param _RouteTableIds: <p>路由表实例ID，例如：rtb-azd4dt1c。</p>
         :type RouteTableIds: list of str
-        :param _Offset: 偏移量。
+        :param _Offset: <p>偏移量。</p>
         :type Offset: str
-        :param _Limit: 返回数量，默认为20，最大值为100。
+        :param _Limit: <p>返回数量，默认为20，最大值为100。</p>
         :type Limit: str
-        :param _NeedRouterInfo: 是否需要获取路由策略信息，默认获取，当控制台不需要拉取路由策略信息时，改为False。
+        :param _NeedRouterInfo: <p>是否需要获取路由策略信息，默认获取，当控制台不需要拉取路由策略信息时，改为False。</p>
         :type NeedRouterInfo: bool
         """
         self._Filters = None
@@ -35503,29 +35415,7 @@ GWLB_ENDPOINT：网关负载均衡终端节点。
 
     @property
     def Filters(self):
-        r"""过滤条件，参数不支持同时指定RouteTableIds和Filters。
-<li>route-table-id - String - （过滤条件）路由表实例ID。</li>
-<li>route-table-name - String - （过滤条件）路由表名称。</li>
-<li>vpc-id - String - （过滤条件）VPC实例ID，形如：vpc-f49l6u0z。</li>
-<li>association.main - String - （过滤条件）是否主路由表。</li>
-<li>tag-key - String -是否必填：否 - （过滤条件）按照标签键进行过滤。</li>
-<li>tag:tag-key - String - 是否必填：否 - （过滤条件）按照标签键值对进行过滤。 tag-key使用具体的标签键进行替换。使用请参考示例2。</li>
-<li>visible - String - （过滤条件）是否可见。</li>
-<li>next-hop-type - String - 是否必填：否 - （过滤条件）按下一跳类型进行过滤。使用next-hop-type进行过滤时，必须同时携带route-table-id与vpc-id。
-目前我们支持的类型有：
-LOCAL: 本地路由
-CVM：公网网关类型的云服务器；
-VPN：VPN网关；
-DIRECTCONNECT：专线网关；
-PEERCONNECTION：对等连接；
-HAVIP：高可用虚拟IP；
-NAT：NAT网关; 
-NORMAL_CVM：普通云服务器；
-EIP：云服务器的公网IP；
-CCN：云联网；
-LOCAL_GATEWAY：本地网关。
-GWLB_ENDPOINT：网关负载均衡终端节点。
-</li>
+        r"""<p>过滤条件，参数不支持同时指定RouteTableIds和Filters。</p><li>route-table-id - String - （过滤条件）路由表实例ID。</li><li>route-table-name - String - （过滤条件）路由表名称。</li><li>vpc-id - String - （过滤条件）VPC实例ID，形如：vpc-f49l6u0z。</li><li>association.main - String - （过滤条件）是否主路由表。</li><li>tag-key - String -是否必填：否 - （过滤条件）按照标签键进行过滤。</li><li>tag:tag-key - String - 是否必填：否 - （过滤条件）按照标签键值对进行过滤。 tag-key使用具体的标签键进行替换。使用请参考示例2。</li><li>visible - String - （过滤条件）是否可见。</li><li>next-hop-type - String - 是否必填：否 - （过滤条件）按下一跳类型进行过滤。使用next-hop-type进行过滤时，必须同时携带route-table-id与vpc-id。目前我们支持的类型有：LOCAL: 本地路由CVM：公网网关类型的云服务器；VPN：VPN网关；DIRECTCONNECT：专线网关；PEERCONNECTION：对等连接；HAVIP：高可用虚拟IP；NAT：NAT网关; NORMAL_CVM：普通云服务器；EIP：云服务器的公网IP；CCN：云联网；LOCAL_GATEWAY：本地网关。GWLB_ENDPOINT：网关负载均衡终端节点。</li>
         :rtype: list of Filter
         """
         return self._Filters
@@ -35536,7 +35426,7 @@ GWLB_ENDPOINT：网关负载均衡终端节点。
 
     @property
     def RouteTableIds(self):
-        r"""路由表实例ID，例如：rtb-azd4dt1c。
+        r"""<p>路由表实例ID，例如：rtb-azd4dt1c。</p>
         :rtype: list of str
         """
         return self._RouteTableIds
@@ -35547,7 +35437,7 @@ GWLB_ENDPOINT：网关负载均衡终端节点。
 
     @property
     def Offset(self):
-        r"""偏移量。
+        r"""<p>偏移量。</p>
         :rtype: str
         """
         return self._Offset
@@ -35558,7 +35448,7 @@ GWLB_ENDPOINT：网关负载均衡终端节点。
 
     @property
     def Limit(self):
-        r"""返回数量，默认为20，最大值为100。
+        r"""<p>返回数量，默认为20，最大值为100。</p>
         :rtype: str
         """
         return self._Limit
@@ -35569,7 +35459,7 @@ GWLB_ENDPOINT：网关负载均衡终端节点。
 
     @property
     def NeedRouterInfo(self):
-        r"""是否需要获取路由策略信息，默认获取，当控制台不需要拉取路由策略信息时，改为False。
+        r"""<p>是否需要获取路由策略信息，默认获取，当控制台不需要拉取路由策略信息时，改为False。</p>
         :rtype: bool
         """
         return self._NeedRouterInfo
@@ -35607,9 +35497,9 @@ class DescribeRouteTablesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TotalCount: 符合条件的实例数量。
+        :param _TotalCount: <p>符合条件的实例数量。</p>
         :type TotalCount: int
-        :param _RouteTableSet: 路由表对象。
+        :param _RouteTableSet: <p>路由表对象。</p>
         :type RouteTableSet: list of RouteTable
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -35620,7 +35510,7 @@ class DescribeRouteTablesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        r"""符合条件的实例数量。
+        r"""<p>符合条件的实例数量。</p>
         :rtype: int
         """
         return self._TotalCount
@@ -35631,7 +35521,7 @@ class DescribeRouteTablesResponse(AbstractModel):
 
     @property
     def RouteTableSet(self):
-        r"""路由表对象。
+        r"""<p>路由表对象。</p>
         :rtype: list of RouteTable
         """
         return self._RouteTableSet
@@ -38068,31 +37958,17 @@ class DescribeSubnetsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SubnetIds: 子网实例ID查询。形如：subnet-pxir56ns。每次请求的实例的上限为100（该参数指定的子网是否返回，需要结合分页拉取参数Limit和Offset）。参数不支持同时指定SubnetIds和Filters。
+        :param _SubnetIds: <p>子网实例ID查询。形如：subnet-pxir56ns。每次请求的实例的上限为100（该参数指定的子网是否返回，需要结合分页拉取参数Limit和Offset）。参数不支持同时指定SubnetIds和Filters。</p>
         :type SubnetIds: list of str
-        :param _Filters: 过滤条件，参数不支持同时指定SubnetIds和Filters。
-<li>subnet-id - String - （过滤条件）Subnet实例名称。</li>
-<li>vpc-id - String - （过滤条件）VPC实例ID，形如：vpc-f49l6u0z。</li>
-<li>cidr-block - String - （过滤条件）子网网段，形如: 192.168.1.0 。</li>
-<li>is-default - Boolean - （过滤条件）是否是默认子网。</li>
-<li>is-remote-vpc-snat - Boolean - （过滤条件）是否为VPC SNAT地址池子网。</li>
-<li>subnet-name - String - （过滤条件）子网名称。</li>
-<li>zone - String - （过滤条件）可用区。</li>
-<li>tag-key - String -是否必填：否- （过滤条件）按照标签键进行过滤。</li>
-<li>tag:tag-key - String - 是否必填：否 - （过滤条件）按照标签键值对进行过滤。 tag-key使用具体的标签键进行替换。使用请参考示例2。</li>
-<li>cdc-id - String - 是否必填：否 - （过滤条件）按照cdc信息进行过滤。过滤出来制定cdc下的子网。</li>
-<li>is-cdc-subnet - String - 是否必填：否 - （过滤条件）按照是否是cdc子网进行过滤。取值：“0”-非cdc子网，“1”--cdc子网</li>
-<li>ipv6-cidr-block - String - （过滤条件）IPv6子网网段，形如: 2402:4e00:1717:8700::/64 。</li>
-<li>isp-type  - String - （过滤条件）运营商类型，形如: BGP 。</li>
-<li>address-type - String - （过滤条件）IPv6 Cidr 的类型，精确匹配。`GUA`(全球单播地址), `ULA`(唯一本地地址)。</li>
+        :param _Filters: <p>过滤条件，参数不支持同时指定SubnetIds和Filters。</p><li>subnet-id - String - （过滤条件）Subnet实例名称。</li><li>vpc-id - String - （过滤条件）VPC实例ID，形如：vpc-f49l6u0z。</li><li>cidr-block - String - （过滤条件）子网网段，形如: 192.168.1.0 。</li><li>is-default - Boolean - （过滤条件）是否是默认子网。</li><li>is-remote-vpc-snat - Boolean - （过滤条件）是否为VPC SNAT地址池子网。</li><li>subnet-name - String - （过滤条件）子网名称。</li><li>zone - String - （过滤条件）可用区。</li><li>tag-key - String -是否必填：否- （过滤条件）按照标签键进行过滤。</li><li>tag:tag-key - String - 是否必填：否 - （过滤条件）按照标签键值对进行过滤。 tag-key使用具体的标签键进行替换。使用请参考示例2。</li><li>cdc-id - String - 是否必填：否 - （过滤条件）按照cdc信息进行过滤。过滤出来制定cdc下的子网。</li><li>is-cdc-subnet - String - 是否必填：否 - （过滤条件）按照是否是cdc子网进行过滤。取值：“0”-非cdc子网，“1”--cdc子网</li><li>ipv6-cidr-block - String - （过滤条件）IPv6子网网段，形如: 2402:4e00:1717:8700::/64 。</li><li>isp-type  - String - （过滤条件）运营商类型，形如: BGP 。</li><li>address-type - String - （过滤条件）IPv6 Cidr 的类型，精确匹配。<code>GUA</code>(全球单播地址), <code>ULA</code>(唯一本地地址)。</li>
         :type Filters: list of Filter
-        :param _Offset: 偏移量，默认为0。
+        :param _Offset: <p>偏移量，默认为0。</p>
         :type Offset: str
-        :param _Limit: 返回数量，默认为20，最大值为100。
+        :param _Limit: <p>返回数量，默认为20，最大值为100。</p>
         :type Limit: str
-        :param _MaxResults: 每次调用返回的最大结果数。如果查询返回的时候有NextToken返回，您可以使用NextToken值获取更多页结果， 当NextToke返回空或者返回的结果数量小于MaxResults时，表示没有更多数据了。允许的最大页面大小为 100。
+        :param _MaxResults: <p>每次调用返回的最大结果数。如果查询返回的时候有NextToken返回，您可以使用NextToken值获取更多页结果， 当NextToke返回空或者返回的结果数量小于MaxResults时，表示没有更多数据了。允许的最大页面大小为 100。</p>
         :type MaxResults: int
-        :param _NextToken: 如果NextToken返回非空字符串 ，表示还有更多可用结果。 NextToken是每个页面唯一的分页令牌。使用返回的令牌再次调用以检索下一页。需要保持所有其他参数不变。每个分页令牌在 24 小时后过期。
+        :param _NextToken: <p>如果NextToken返回非空字符串 ，表示还有更多可用结果。 NextToken是每个页面唯一的分页令牌。使用返回的令牌再次调用以检索下一页。需要保持所有其他参数不变。每个分页令牌在 24 小时后过期。</p>
         :type NextToken: str
         """
         self._SubnetIds = None
@@ -38104,7 +37980,7 @@ class DescribeSubnetsRequest(AbstractModel):
 
     @property
     def SubnetIds(self):
-        r"""子网实例ID查询。形如：subnet-pxir56ns。每次请求的实例的上限为100（该参数指定的子网是否返回，需要结合分页拉取参数Limit和Offset）。参数不支持同时指定SubnetIds和Filters。
+        r"""<p>子网实例ID查询。形如：subnet-pxir56ns。每次请求的实例的上限为100（该参数指定的子网是否返回，需要结合分页拉取参数Limit和Offset）。参数不支持同时指定SubnetIds和Filters。</p>
         :rtype: list of str
         """
         return self._SubnetIds
@@ -38115,21 +37991,7 @@ class DescribeSubnetsRequest(AbstractModel):
 
     @property
     def Filters(self):
-        r"""过滤条件，参数不支持同时指定SubnetIds和Filters。
-<li>subnet-id - String - （过滤条件）Subnet实例名称。</li>
-<li>vpc-id - String - （过滤条件）VPC实例ID，形如：vpc-f49l6u0z。</li>
-<li>cidr-block - String - （过滤条件）子网网段，形如: 192.168.1.0 。</li>
-<li>is-default - Boolean - （过滤条件）是否是默认子网。</li>
-<li>is-remote-vpc-snat - Boolean - （过滤条件）是否为VPC SNAT地址池子网。</li>
-<li>subnet-name - String - （过滤条件）子网名称。</li>
-<li>zone - String - （过滤条件）可用区。</li>
-<li>tag-key - String -是否必填：否- （过滤条件）按照标签键进行过滤。</li>
-<li>tag:tag-key - String - 是否必填：否 - （过滤条件）按照标签键值对进行过滤。 tag-key使用具体的标签键进行替换。使用请参考示例2。</li>
-<li>cdc-id - String - 是否必填：否 - （过滤条件）按照cdc信息进行过滤。过滤出来制定cdc下的子网。</li>
-<li>is-cdc-subnet - String - 是否必填：否 - （过滤条件）按照是否是cdc子网进行过滤。取值：“0”-非cdc子网，“1”--cdc子网</li>
-<li>ipv6-cidr-block - String - （过滤条件）IPv6子网网段，形如: 2402:4e00:1717:8700::/64 。</li>
-<li>isp-type  - String - （过滤条件）运营商类型，形如: BGP 。</li>
-<li>address-type - String - （过滤条件）IPv6 Cidr 的类型，精确匹配。`GUA`(全球单播地址), `ULA`(唯一本地地址)。</li>
+        r"""<p>过滤条件，参数不支持同时指定SubnetIds和Filters。</p><li>subnet-id - String - （过滤条件）Subnet实例名称。</li><li>vpc-id - String - （过滤条件）VPC实例ID，形如：vpc-f49l6u0z。</li><li>cidr-block - String - （过滤条件）子网网段，形如: 192.168.1.0 。</li><li>is-default - Boolean - （过滤条件）是否是默认子网。</li><li>is-remote-vpc-snat - Boolean - （过滤条件）是否为VPC SNAT地址池子网。</li><li>subnet-name - String - （过滤条件）子网名称。</li><li>zone - String - （过滤条件）可用区。</li><li>tag-key - String -是否必填：否- （过滤条件）按照标签键进行过滤。</li><li>tag:tag-key - String - 是否必填：否 - （过滤条件）按照标签键值对进行过滤。 tag-key使用具体的标签键进行替换。使用请参考示例2。</li><li>cdc-id - String - 是否必填：否 - （过滤条件）按照cdc信息进行过滤。过滤出来制定cdc下的子网。</li><li>is-cdc-subnet - String - 是否必填：否 - （过滤条件）按照是否是cdc子网进行过滤。取值：“0”-非cdc子网，“1”--cdc子网</li><li>ipv6-cidr-block - String - （过滤条件）IPv6子网网段，形如: 2402:4e00:1717:8700::/64 。</li><li>isp-type  - String - （过滤条件）运营商类型，形如: BGP 。</li><li>address-type - String - （过滤条件）IPv6 Cidr 的类型，精确匹配。<code>GUA</code>(全球单播地址), <code>ULA</code>(唯一本地地址)。</li>
         :rtype: list of Filter
         """
         return self._Filters
@@ -38140,7 +38002,7 @@ class DescribeSubnetsRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""偏移量，默认为0。
+        r"""<p>偏移量，默认为0。</p>
         :rtype: str
         """
         return self._Offset
@@ -38151,7 +38013,7 @@ class DescribeSubnetsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""返回数量，默认为20，最大值为100。
+        r"""<p>返回数量，默认为20，最大值为100。</p>
         :rtype: str
         """
         return self._Limit
@@ -38162,7 +38024,7 @@ class DescribeSubnetsRequest(AbstractModel):
 
     @property
     def MaxResults(self):
-        r"""每次调用返回的最大结果数。如果查询返回的时候有NextToken返回，您可以使用NextToken值获取更多页结果， 当NextToke返回空或者返回的结果数量小于MaxResults时，表示没有更多数据了。允许的最大页面大小为 100。
+        r"""<p>每次调用返回的最大结果数。如果查询返回的时候有NextToken返回，您可以使用NextToken值获取更多页结果， 当NextToke返回空或者返回的结果数量小于MaxResults时，表示没有更多数据了。允许的最大页面大小为 100。</p>
         :rtype: int
         """
         return self._MaxResults
@@ -38173,7 +38035,7 @@ class DescribeSubnetsRequest(AbstractModel):
 
     @property
     def NextToken(self):
-        r"""如果NextToken返回非空字符串 ，表示还有更多可用结果。 NextToken是每个页面唯一的分页令牌。使用返回的令牌再次调用以检索下一页。需要保持所有其他参数不变。每个分页令牌在 24 小时后过期。
+        r"""<p>如果NextToken返回非空字符串 ，表示还有更多可用结果。 NextToken是每个页面唯一的分页令牌。使用返回的令牌再次调用以检索下一页。需要保持所有其他参数不变。每个分页令牌在 24 小时后过期。</p>
         :rtype: str
         """
         return self._NextToken
@@ -38212,11 +38074,11 @@ class DescribeSubnetsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TotalCount: 符合条件的实例数量。
+        :param _TotalCount: <p>符合条件的实例数量。</p>
         :type TotalCount: int
-        :param _SubnetSet: 子网对象。
+        :param _SubnetSet: <p>子网对象。</p>
         :type SubnetSet: list of Subnet
-        :param _NextToken: 如果NextToken返回非空字符串 ，表示还有更多可用结果。 NextToken是每个页面唯一的分页令牌。使用返回的令牌再次调用以检索下一页。需要保持所有其他参数不变。每个分页令牌在 24 小时后过期。
+        :param _NextToken: <p>如果NextToken返回非空字符串 ，表示还有更多可用结果。 NextToken是每个页面唯一的分页令牌。使用返回的令牌再次调用以检索下一页。需要保持所有其他参数不变。每个分页令牌在 24 小时后过期。</p>
         :type NextToken: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -38228,7 +38090,7 @@ class DescribeSubnetsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        r"""符合条件的实例数量。
+        r"""<p>符合条件的实例数量。</p>
         :rtype: int
         """
         return self._TotalCount
@@ -38239,7 +38101,7 @@ class DescribeSubnetsResponse(AbstractModel):
 
     @property
     def SubnetSet(self):
-        r"""子网对象。
+        r"""<p>子网对象。</p>
         :rtype: list of Subnet
         """
         return self._SubnetSet
@@ -38250,7 +38112,7 @@ class DescribeSubnetsResponse(AbstractModel):
 
     @property
     def NextToken(self):
-        r"""如果NextToken返回非空字符串 ，表示还有更多可用结果。 NextToken是每个页面唯一的分页令牌。使用返回的令牌再次调用以检索下一页。需要保持所有其他参数不变。每个分页令牌在 24 小时后过期。
+        r"""<p>如果NextToken返回非空字符串 ，表示还有更多可用结果。 NextToken是每个页面唯一的分页令牌。使用返回的令牌再次调用以检索下一页。需要保持所有其他参数不变。每个分页令牌在 24 小时后过期。</p>
         :rtype: str
         """
         return self._NextToken
@@ -40883,24 +40745,13 @@ class DescribeVpcsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _VpcIds: VPC实例ID。形如：vpc-f49l6u0z。每次请求的实例的上限为100。参数不支持同时指定VpcIds和Filters。
+        :param _VpcIds: <p>VPC实例ID。形如：vpc-f49l6u0z。每次请求的实例的上限为100。参数不支持同时指定VpcIds和Filters。</p>
         :type VpcIds: list of str
-        :param _Filters: 过滤条件，不支持同时指定VpcIds和Filters参数。
-支持的过滤条件如下：
-<li>vpc-name：VPC实例名称，支持模糊查询。</li>
-<li>is-default ：是否默认VPC。</li>
-<li>vpc-id ：VPC实例ID，例如：vpc-f49l6u0z。</li>
-<li>cidr-block：VPC的CIDR。</li>
-<li>tag-key ：按照标签键进行过滤，非必填参数。</li>
-<li>tag:tag-key：按照标签键值对进行过滤，非必填参数。 其中 tag-key 请使用具体的标签键进行替换，可参考示例2。</li>
-  **说明：**若同一个过滤条件（Filter）存在多个Values，则同一Filter下Values间的关系为逻辑或（OR）关系；若存在多个过滤条件（Filter），Filter之间的关系为逻辑与（AND）关系。
-<li>ipv6-cidr-block - String - （过滤条件）IPv6子网网段，形如: 2402:4e00:1717:8700::/64 。</li>
-<li>isp-type  - String - （过滤条件）运营商类型，形如: BGP 取值范围：'BGP'-默认, 'CMCC'-中国移动, 'CTCC'-中国电信, 'CUCC'-中国联通。</li>
-<li>address-type - String - （过滤条件）IPv6 Cidr 的类型，精确匹配。`GUA`(全球单播地址), `ULA`(唯一本地地址)。</li>
+        :param _Filters: <p>过滤条件，不支持同时指定VpcIds和Filters参数。<br>支持的过滤条件如下：</p><li>vpc-name：VPC实例名称，支持模糊查询。</li><li>is-default ：是否默认VPC。</li><li>vpc-id ：VPC实例ID，例如：vpc-f49l6u0z。</li><li>cidr-block：VPC的CIDR。</li><li>tag-key ：按照标签键进行过滤，非必填参数。</li><li>tag:tag-key：按照标签键值对进行过滤，非必填参数。 其中 tag-key 请使用具体的标签键进行替换，可参考示例2。</li>  **说明：**若同一个过滤条件（Filter）存在多个Values，则同一Filter下Values间的关系为逻辑或（OR）关系；若存在多个过滤条件（Filter），Filter之间的关系为逻辑与（AND）关系。<li>ipv6-cidr-block - String - （过滤条件）IPv6子网网段，形如: 2402:4e00:1717:8700::/64 。</li><li>isp-type  - String - （过滤条件）运营商类型，形如: BGP 取值范围：'BGP'-默认, 'CMCC'-中国移动, 'CTCC'-中国电信, 'CUCC'-中国联通。</li><li>address-type - String - （过滤条件）IPv6 Cidr 的类型，精确匹配。<code>GUA</code>(全球单播地址), <code>ULA</code>(唯一本地地址)。</li>
         :type Filters: list of Filter
-        :param _Offset: 偏移量，默认为0。
+        :param _Offset: <p>偏移量，默认为0。</p>
         :type Offset: str
-        :param _Limit: 返回数量，默认为20，最大值为100。
+        :param _Limit: <p>返回数量，默认为20，最大值为100。</p>
         :type Limit: str
         """
         self._VpcIds = None
@@ -40910,7 +40761,7 @@ class DescribeVpcsRequest(AbstractModel):
 
     @property
     def VpcIds(self):
-        r"""VPC实例ID。形如：vpc-f49l6u0z。每次请求的实例的上限为100。参数不支持同时指定VpcIds和Filters。
+        r"""<p>VPC实例ID。形如：vpc-f49l6u0z。每次请求的实例的上限为100。参数不支持同时指定VpcIds和Filters。</p>
         :rtype: list of str
         """
         return self._VpcIds
@@ -40921,18 +40772,7 @@ class DescribeVpcsRequest(AbstractModel):
 
     @property
     def Filters(self):
-        r"""过滤条件，不支持同时指定VpcIds和Filters参数。
-支持的过滤条件如下：
-<li>vpc-name：VPC实例名称，支持模糊查询。</li>
-<li>is-default ：是否默认VPC。</li>
-<li>vpc-id ：VPC实例ID，例如：vpc-f49l6u0z。</li>
-<li>cidr-block：VPC的CIDR。</li>
-<li>tag-key ：按照标签键进行过滤，非必填参数。</li>
-<li>tag:tag-key：按照标签键值对进行过滤，非必填参数。 其中 tag-key 请使用具体的标签键进行替换，可参考示例2。</li>
-  **说明：**若同一个过滤条件（Filter）存在多个Values，则同一Filter下Values间的关系为逻辑或（OR）关系；若存在多个过滤条件（Filter），Filter之间的关系为逻辑与（AND）关系。
-<li>ipv6-cidr-block - String - （过滤条件）IPv6子网网段，形如: 2402:4e00:1717:8700::/64 。</li>
-<li>isp-type  - String - （过滤条件）运营商类型，形如: BGP 取值范围：'BGP'-默认, 'CMCC'-中国移动, 'CTCC'-中国电信, 'CUCC'-中国联通。</li>
-<li>address-type - String - （过滤条件）IPv6 Cidr 的类型，精确匹配。`GUA`(全球单播地址), `ULA`(唯一本地地址)。</li>
+        r"""<p>过滤条件，不支持同时指定VpcIds和Filters参数。<br>支持的过滤条件如下：</p><li>vpc-name：VPC实例名称，支持模糊查询。</li><li>is-default ：是否默认VPC。</li><li>vpc-id ：VPC实例ID，例如：vpc-f49l6u0z。</li><li>cidr-block：VPC的CIDR。</li><li>tag-key ：按照标签键进行过滤，非必填参数。</li><li>tag:tag-key：按照标签键值对进行过滤，非必填参数。 其中 tag-key 请使用具体的标签键进行替换，可参考示例2。</li>  **说明：**若同一个过滤条件（Filter）存在多个Values，则同一Filter下Values间的关系为逻辑或（OR）关系；若存在多个过滤条件（Filter），Filter之间的关系为逻辑与（AND）关系。<li>ipv6-cidr-block - String - （过滤条件）IPv6子网网段，形如: 2402:4e00:1717:8700::/64 。</li><li>isp-type  - String - （过滤条件）运营商类型，形如: BGP 取值范围：'BGP'-默认, 'CMCC'-中国移动, 'CTCC'-中国电信, 'CUCC'-中国联通。</li><li>address-type - String - （过滤条件）IPv6 Cidr 的类型，精确匹配。<code>GUA</code>(全球单播地址), <code>ULA</code>(唯一本地地址)。</li>
         :rtype: list of Filter
         """
         return self._Filters
@@ -40943,7 +40783,7 @@ class DescribeVpcsRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""偏移量，默认为0。
+        r"""<p>偏移量，默认为0。</p>
         :rtype: str
         """
         return self._Offset
@@ -40954,7 +40794,7 @@ class DescribeVpcsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""返回数量，默认为20，最大值为100。
+        r"""<p>返回数量，默认为20，最大值为100。</p>
         :rtype: str
         """
         return self._Limit
@@ -40991,9 +40831,9 @@ class DescribeVpcsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TotalCount: 符合条件的对象数。
+        :param _TotalCount: <p>符合条件的对象数。</p>
         :type TotalCount: int
-        :param _VpcSet: VPC对象。
+        :param _VpcSet: <p>VPC对象。</p>
         :type VpcSet: list of Vpc
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -41004,7 +40844,7 @@ class DescribeVpcsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        r"""符合条件的对象数。
+        r"""<p>符合条件的对象数。</p>
         :rtype: int
         """
         return self._TotalCount
@@ -41015,7 +40855,7 @@ class DescribeVpcsResponse(AbstractModel):
 
     @property
     def VpcSet(self):
-        r"""VPC对象。
+        r"""<p>VPC对象。</p>
         :rtype: list of Vpc
         """
         return self._VpcSet
@@ -60736,23 +60576,23 @@ class NetworkAcl(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _VpcId: `VPC`实例`ID`。
+        :param _VpcId: <p><code>VPC</code>实例<code>ID</code>。</p>
         :type VpcId: str
-        :param _NetworkAclId: 网络ACL实例`ID`。
+        :param _NetworkAclId: <p>网络ACL实例<code>ID</code>。</p>
         :type NetworkAclId: str
-        :param _NetworkAclName: 网络ACL名称，最大长度为60。
+        :param _NetworkAclName: <p>网络ACL名称，最大长度为60。</p>
         :type NetworkAclName: str
-        :param _CreatedTime: 创建时间。
+        :param _CreatedTime: <p>创建时间。</p>
         :type CreatedTime: str
-        :param _SubnetSet: 网络ACL关联的子网数组。
+        :param _SubnetSet: <p>网络ACL关联的子网数组。</p>
         :type SubnetSet: list of Subnet
-        :param _IngressEntries: 该参数仅对三元组ACL有效，网络ACl入站规则。
+        :param _IngressEntries: <p>该参数仅对三元组ACL有效，网络ACl入站规则。</p>
         :type IngressEntries: list of NetworkAclEntry
-        :param _EgressEntries: 该参数仅对三元组ACL有效，网络ACL出站规则。
+        :param _EgressEntries: <p>该参数仅对三元组ACL有效，网络ACL出站规则。</p>
         :type EgressEntries: list of NetworkAclEntry
-        :param _NetworkAclType: 网络ACL类型。三元组：'TRIPLE'   五元组：'QUINTUPLE'
+        :param _NetworkAclType: <p>网络ACL类型。三元组：&#39;TRIPLE&#39;   五元组：&#39;QUINTUPLE&#39;</p>
         :type NetworkAclType: str
-        :param _TagSet: 标签键值对
+        :param _TagSet: <p>标签键值对</p>
         :type TagSet: list of Tag
         """
         self._VpcId = None
@@ -60767,7 +60607,7 @@ class NetworkAcl(AbstractModel):
 
     @property
     def VpcId(self):
-        r"""`VPC`实例`ID`。
+        r"""<p><code>VPC</code>实例<code>ID</code>。</p>
         :rtype: str
         """
         return self._VpcId
@@ -60778,7 +60618,7 @@ class NetworkAcl(AbstractModel):
 
     @property
     def NetworkAclId(self):
-        r"""网络ACL实例`ID`。
+        r"""<p>网络ACL实例<code>ID</code>。</p>
         :rtype: str
         """
         return self._NetworkAclId
@@ -60789,7 +60629,7 @@ class NetworkAcl(AbstractModel):
 
     @property
     def NetworkAclName(self):
-        r"""网络ACL名称，最大长度为60。
+        r"""<p>网络ACL名称，最大长度为60。</p>
         :rtype: str
         """
         return self._NetworkAclName
@@ -60800,7 +60640,7 @@ class NetworkAcl(AbstractModel):
 
     @property
     def CreatedTime(self):
-        r"""创建时间。
+        r"""<p>创建时间。</p>
         :rtype: str
         """
         return self._CreatedTime
@@ -60811,7 +60651,7 @@ class NetworkAcl(AbstractModel):
 
     @property
     def SubnetSet(self):
-        r"""网络ACL关联的子网数组。
+        r"""<p>网络ACL关联的子网数组。</p>
         :rtype: list of Subnet
         """
         return self._SubnetSet
@@ -60822,7 +60662,7 @@ class NetworkAcl(AbstractModel):
 
     @property
     def IngressEntries(self):
-        r"""该参数仅对三元组ACL有效，网络ACl入站规则。
+        r"""<p>该参数仅对三元组ACL有效，网络ACl入站规则。</p>
         :rtype: list of NetworkAclEntry
         """
         return self._IngressEntries
@@ -60833,7 +60673,7 @@ class NetworkAcl(AbstractModel):
 
     @property
     def EgressEntries(self):
-        r"""该参数仅对三元组ACL有效，网络ACL出站规则。
+        r"""<p>该参数仅对三元组ACL有效，网络ACL出站规则。</p>
         :rtype: list of NetworkAclEntry
         """
         return self._EgressEntries
@@ -60844,7 +60684,7 @@ class NetworkAcl(AbstractModel):
 
     @property
     def NetworkAclType(self):
-        r"""网络ACL类型。三元组：'TRIPLE'   五元组：'QUINTUPLE'
+        r"""<p>网络ACL类型。三元组：&#39;TRIPLE&#39;   五元组：&#39;QUINTUPLE&#39;</p>
         :rtype: str
         """
         return self._NetworkAclType
@@ -60855,7 +60695,7 @@ class NetworkAcl(AbstractModel):
 
     @property
     def TagSet(self):
-        r"""标签键值对
+        r"""<p>标签键值对</p>
         :rtype: list of Tag
         """
         return self._TagSet
@@ -68656,23 +68496,23 @@ class RouteTable(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _VpcId: VPC实例ID。
+        :param _VpcId: <p>VPC实例ID。</p>
         :type VpcId: str
-        :param _RouteTableId: 路由表实例ID，例如：rtb-azd4dt1c。
+        :param _RouteTableId: <p>路由表实例ID，例如：rtb-azd4dt1c。</p>
         :type RouteTableId: str
-        :param _RouteTableName: 路由表名称。
+        :param _RouteTableName: <p>路由表名称。</p>
         :type RouteTableName: str
-        :param _AssociationSet: 路由表关联关系。
+        :param _AssociationSet: <p>路由表关联关系。</p>
         :type AssociationSet: list of RouteTableAssociation
-        :param _RouteSet: IPv4路由策略集合。
+        :param _RouteSet: <p>IPv4路由策略集合。</p>
         :type RouteSet: list of Route
-        :param _Main: 是否默认路由表。
+        :param _Main: <p>是否默认路由表。</p>
         :type Main: bool
-        :param _CreatedTime: 创建时间。
+        :param _CreatedTime: <p>创建时间。</p>
         :type CreatedTime: str
-        :param _TagSet: 标签键值对。
+        :param _TagSet: <p>标签键值对。</p>
         :type TagSet: list of Tag
-        :param _LocalCidrForCcn: local路由是否发布云联网。
+        :param _LocalCidrForCcn: <p>local路由是否发布云联网。</p>
         :type LocalCidrForCcn: list of CidrForCcn
         """
         self._VpcId = None
@@ -68687,7 +68527,7 @@ class RouteTable(AbstractModel):
 
     @property
     def VpcId(self):
-        r"""VPC实例ID。
+        r"""<p>VPC实例ID。</p>
         :rtype: str
         """
         return self._VpcId
@@ -68698,7 +68538,7 @@ class RouteTable(AbstractModel):
 
     @property
     def RouteTableId(self):
-        r"""路由表实例ID，例如：rtb-azd4dt1c。
+        r"""<p>路由表实例ID，例如：rtb-azd4dt1c。</p>
         :rtype: str
         """
         return self._RouteTableId
@@ -68709,7 +68549,7 @@ class RouteTable(AbstractModel):
 
     @property
     def RouteTableName(self):
-        r"""路由表名称。
+        r"""<p>路由表名称。</p>
         :rtype: str
         """
         return self._RouteTableName
@@ -68720,7 +68560,7 @@ class RouteTable(AbstractModel):
 
     @property
     def AssociationSet(self):
-        r"""路由表关联关系。
+        r"""<p>路由表关联关系。</p>
         :rtype: list of RouteTableAssociation
         """
         return self._AssociationSet
@@ -68731,7 +68571,7 @@ class RouteTable(AbstractModel):
 
     @property
     def RouteSet(self):
-        r"""IPv4路由策略集合。
+        r"""<p>IPv4路由策略集合。</p>
         :rtype: list of Route
         """
         return self._RouteSet
@@ -68742,7 +68582,7 @@ class RouteTable(AbstractModel):
 
     @property
     def Main(self):
-        r"""是否默认路由表。
+        r"""<p>是否默认路由表。</p>
         :rtype: bool
         """
         return self._Main
@@ -68753,7 +68593,7 @@ class RouteTable(AbstractModel):
 
     @property
     def CreatedTime(self):
-        r"""创建时间。
+        r"""<p>创建时间。</p>
         :rtype: str
         """
         return self._CreatedTime
@@ -68764,7 +68604,7 @@ class RouteTable(AbstractModel):
 
     @property
     def TagSet(self):
-        r"""标签键值对。
+        r"""<p>标签键值对。</p>
         :rtype: list of Tag
         """
         return self._TagSet
@@ -68775,7 +68615,7 @@ class RouteTable(AbstractModel):
 
     @property
     def LocalCidrForCcn(self):
-        r"""local路由是否发布云联网。
+        r"""<p>local路由是否发布云联网。</p>
         :rtype: list of CidrForCcn
         """
         return self._LocalCidrForCcn
@@ -71545,39 +71385,39 @@ class Subnet(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _VpcId: `VPC`实例`ID`。
+        :param _VpcId: <p><code>VPC</code>实例<code>ID</code>。</p>
         :type VpcId: str
-        :param _SubnetId: 子网实例`ID`，例如：subnet-bthucmmy。
+        :param _SubnetId: <p>子网实例<code>ID</code>，例如：subnet-bthucmmy。</p>
         :type SubnetId: str
-        :param _SubnetName: 子网名称。
+        :param _SubnetName: <p>子网名称。</p>
         :type SubnetName: str
-        :param _CidrBlock: 子网的 `IPv4` `CIDR`。
+        :param _CidrBlock: <p>子网的 <code>IPv4</code> <code>CIDR</code>。</p>
         :type CidrBlock: str
-        :param _IsDefault: 是否默认子网。
+        :param _IsDefault: <p>是否默认子网。</p>
         :type IsDefault: bool
-        :param _EnableBroadcast: 是否开启广播。
+        :param _EnableBroadcast: <p>是否开启广播。</p>
         :type EnableBroadcast: bool
-        :param _Zone: 可用区。
+        :param _Zone: <p>可用区。</p>
         :type Zone: str
-        :param _RouteTableId: 路由表实例ID，例如：rtb-l2h8d7c2。
+        :param _RouteTableId: <p>路由表实例ID，例如：rtb-l2h8d7c2。</p>
         :type RouteTableId: str
-        :param _CreatedTime: 创建时间。
+        :param _CreatedTime: <p>创建时间。</p>
         :type CreatedTime: str
-        :param _AvailableIpAddressCount: 可用`IPv4`数。
+        :param _AvailableIpAddressCount: <p>可用<code>IPv4</code>数。</p>
         :type AvailableIpAddressCount: int
-        :param _Ipv6CidrBlock: 子网的 `IPv6` `CIDR`。
+        :param _Ipv6CidrBlock: <p>子网的 <code>IPv6</code> <code>CIDR</code>。</p>
         :type Ipv6CidrBlock: str
-        :param _NetworkAclId: 关联`ACL`ID
+        :param _NetworkAclId: <p>关联<code>ACL</code>ID</p>
         :type NetworkAclId: str
-        :param _IsRemoteVpcSnat: 是否为 `SNAT` 地址池子网。
+        :param _IsRemoteVpcSnat: <p>是否为 <code>SNAT</code> 地址池子网。</p>
         :type IsRemoteVpcSnat: bool
-        :param _TotalIpAddressCount: 子网`IPv4`总数。
+        :param _TotalIpAddressCount: <p>子网<code>IPv4</code>总数。</p>
         :type TotalIpAddressCount: int
-        :param _TagSet: 标签键值对。
+        :param _TagSet: <p>标签键值对。</p>
         :type TagSet: list of Tag
-        :param _CdcId: CDC实例ID。
+        :param _CdcId: <p>CDC实例ID。</p>
         :type CdcId: str
-        :param _IsCdcSubnet: 是否是CDC所属子网。0:否 1:是
+        :param _IsCdcSubnet: <p>是否是CDC所属子网。0:否 1:是</p>
         :type IsCdcSubnet: int
         """
         self._VpcId = None
@@ -71600,7 +71440,7 @@ class Subnet(AbstractModel):
 
     @property
     def VpcId(self):
-        r"""`VPC`实例`ID`。
+        r"""<p><code>VPC</code>实例<code>ID</code>。</p>
         :rtype: str
         """
         return self._VpcId
@@ -71611,7 +71451,7 @@ class Subnet(AbstractModel):
 
     @property
     def SubnetId(self):
-        r"""子网实例`ID`，例如：subnet-bthucmmy。
+        r"""<p>子网实例<code>ID</code>，例如：subnet-bthucmmy。</p>
         :rtype: str
         """
         return self._SubnetId
@@ -71622,7 +71462,7 @@ class Subnet(AbstractModel):
 
     @property
     def SubnetName(self):
-        r"""子网名称。
+        r"""<p>子网名称。</p>
         :rtype: str
         """
         return self._SubnetName
@@ -71633,7 +71473,7 @@ class Subnet(AbstractModel):
 
     @property
     def CidrBlock(self):
-        r"""子网的 `IPv4` `CIDR`。
+        r"""<p>子网的 <code>IPv4</code> <code>CIDR</code>。</p>
         :rtype: str
         """
         return self._CidrBlock
@@ -71644,7 +71484,7 @@ class Subnet(AbstractModel):
 
     @property
     def IsDefault(self):
-        r"""是否默认子网。
+        r"""<p>是否默认子网。</p>
         :rtype: bool
         """
         return self._IsDefault
@@ -71655,7 +71495,7 @@ class Subnet(AbstractModel):
 
     @property
     def EnableBroadcast(self):
-        r"""是否开启广播。
+        r"""<p>是否开启广播。</p>
         :rtype: bool
         """
         return self._EnableBroadcast
@@ -71666,7 +71506,7 @@ class Subnet(AbstractModel):
 
     @property
     def Zone(self):
-        r"""可用区。
+        r"""<p>可用区。</p>
         :rtype: str
         """
         return self._Zone
@@ -71677,7 +71517,7 @@ class Subnet(AbstractModel):
 
     @property
     def RouteTableId(self):
-        r"""路由表实例ID，例如：rtb-l2h8d7c2。
+        r"""<p>路由表实例ID，例如：rtb-l2h8d7c2。</p>
         :rtype: str
         """
         return self._RouteTableId
@@ -71688,7 +71528,7 @@ class Subnet(AbstractModel):
 
     @property
     def CreatedTime(self):
-        r"""创建时间。
+        r"""<p>创建时间。</p>
         :rtype: str
         """
         return self._CreatedTime
@@ -71699,7 +71539,7 @@ class Subnet(AbstractModel):
 
     @property
     def AvailableIpAddressCount(self):
-        r"""可用`IPv4`数。
+        r"""<p>可用<code>IPv4</code>数。</p>
         :rtype: int
         """
         return self._AvailableIpAddressCount
@@ -71710,7 +71550,7 @@ class Subnet(AbstractModel):
 
     @property
     def Ipv6CidrBlock(self):
-        r"""子网的 `IPv6` `CIDR`。
+        r"""<p>子网的 <code>IPv6</code> <code>CIDR</code>。</p>
         :rtype: str
         """
         return self._Ipv6CidrBlock
@@ -71721,7 +71561,7 @@ class Subnet(AbstractModel):
 
     @property
     def NetworkAclId(self):
-        r"""关联`ACL`ID
+        r"""<p>关联<code>ACL</code>ID</p>
         :rtype: str
         """
         return self._NetworkAclId
@@ -71732,7 +71572,7 @@ class Subnet(AbstractModel):
 
     @property
     def IsRemoteVpcSnat(self):
-        r"""是否为 `SNAT` 地址池子网。
+        r"""<p>是否为 <code>SNAT</code> 地址池子网。</p>
         :rtype: bool
         """
         return self._IsRemoteVpcSnat
@@ -71743,7 +71583,7 @@ class Subnet(AbstractModel):
 
     @property
     def TotalIpAddressCount(self):
-        r"""子网`IPv4`总数。
+        r"""<p>子网<code>IPv4</code>总数。</p>
         :rtype: int
         """
         return self._TotalIpAddressCount
@@ -71754,7 +71594,7 @@ class Subnet(AbstractModel):
 
     @property
     def TagSet(self):
-        r"""标签键值对。
+        r"""<p>标签键值对。</p>
         :rtype: list of Tag
         """
         return self._TagSet
@@ -71765,7 +71605,7 @@ class Subnet(AbstractModel):
 
     @property
     def CdcId(self):
-        r"""CDC实例ID。
+        r"""<p>CDC实例ID。</p>
         :rtype: str
         """
         return self._CdcId
@@ -71776,7 +71616,7 @@ class Subnet(AbstractModel):
 
     @property
     def IsCdcSubnet(self):
-        r"""是否是CDC所属子网。0:否 1:是
+        r"""<p>是否是CDC所属子网。0:否 1:是</p>
         :rtype: int
         """
         return self._IsCdcSubnet
@@ -74711,37 +74551,37 @@ class Vpc(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _VpcName: `VPC`名称。
+        :param _VpcName: <p><code>VPC</code>名称。</p>
         :type VpcName: str
-        :param _VpcId: `VPC`实例`ID`，例如：vpc-azd4dt1c。
+        :param _VpcId: <p><code>VPC</code>实例<code>ID</code>，例如：vpc-azd4dt1c。</p>
         :type VpcId: str
-        :param _CidrBlock: `VPC`的`IPv4` `CIDR`。
+        :param _CidrBlock: <p><code>VPC</code>的<code>IPv4</code> <code>CIDR</code>。</p>
         :type CidrBlock: str
-        :param _IsDefault: 是否默认`VPC`。
+        :param _IsDefault: <p>是否默认<code>VPC</code>。</p>
         :type IsDefault: bool
-        :param _EnableMulticast: 是否开启组播。
+        :param _EnableMulticast: <p>是否开启组播。</p>
         :type EnableMulticast: bool
-        :param _CreatedTime: 创建时间。
+        :param _CreatedTime: <p>创建时间。</p>
         :type CreatedTime: str
-        :param _DnsServerSet: `DNS`列表。
+        :param _DnsServerSet: <p><code>DNS</code>列表。</p>
         :type DnsServerSet: list of str
-        :param _DomainName: `DHCP`域名选项值。
+        :param _DomainName: <p><code>DHCP</code>域名选项值。</p>
         :type DomainName: str
-        :param _DhcpOptionsId: `DHCP`选项集`ID`。
+        :param _DhcpOptionsId: <p><code>DHCP</code>选项集<code>ID</code>。</p>
         :type DhcpOptionsId: str
-        :param _EnableDhcp: 是否开启`DHCP`。
+        :param _EnableDhcp: <p>是否开启<code>DHCP</code>。</p>
         :type EnableDhcp: bool
-        :param _Ipv6CidrBlock: `VPC`的`IPv6` `CIDR`。
+        :param _Ipv6CidrBlock: <p><code>VPC</code>的<code>IPv6</code> <code>CIDR</code>。</p>
         :type Ipv6CidrBlock: str
-        :param _TagSet: 标签键值对
+        :param _TagSet: <p>标签键值对</p>
         :type TagSet: list of Tag
-        :param _AssistantCidrSet: 辅助CIDR
+        :param _AssistantCidrSet: <p>辅助CIDR</p>
         :type AssistantCidrSet: list of AssistantCidr
-        :param _EnableRouteVpcPublish: vpc关联云联网时路由发布策略， true：开启cidr路由发布，false：开启subnet子网路由发布。创建vpc时默认为子网路由发布，当选择cidr路由发布时,请通过工单加入白名单
+        :param _EnableRouteVpcPublish: <p>vpc关联云联网时路由发布策略， true：开启cidr路由发布，false：开启subnet子网路由发布。创建vpc时默认为子网路由发布，当选择cidr路由发布时,请通过工单加入白名单</p>
         :type EnableRouteVpcPublish: bool
-        :param _Ipv6CidrBlockSet: 返回多运营商IPv6 Cidr Block
+        :param _Ipv6CidrBlockSet: <p>返回多运营商IPv6 Cidr Block</p>
         :type Ipv6CidrBlockSet: list of ISPIPv6CidrBlock
-        :param _EnableRouteVpcPublishIpv6: vpc关联云联网时IPv6类型路由发布策略， true：开启cidr路由发布，false：开启subnet子网路由发布。创建vpc时默认为子网路由发布，当选择cidr路由发布时，请通过工单加入白名单。
+        :param _EnableRouteVpcPublishIpv6: <p>vpc关联云联网时IPv6类型路由发布策略， true：开启cidr路由发布，false：开启subnet子网路由发布。创建vpc时默认为子网路由发布，当选择cidr路由发布时，请通过工单加入白名单。</p>
         :type EnableRouteVpcPublishIpv6: bool
         """
         self._VpcName = None
@@ -74763,7 +74603,7 @@ class Vpc(AbstractModel):
 
     @property
     def VpcName(self):
-        r"""`VPC`名称。
+        r"""<p><code>VPC</code>名称。</p>
         :rtype: str
         """
         return self._VpcName
@@ -74774,7 +74614,7 @@ class Vpc(AbstractModel):
 
     @property
     def VpcId(self):
-        r"""`VPC`实例`ID`，例如：vpc-azd4dt1c。
+        r"""<p><code>VPC</code>实例<code>ID</code>，例如：vpc-azd4dt1c。</p>
         :rtype: str
         """
         return self._VpcId
@@ -74785,7 +74625,7 @@ class Vpc(AbstractModel):
 
     @property
     def CidrBlock(self):
-        r"""`VPC`的`IPv4` `CIDR`。
+        r"""<p><code>VPC</code>的<code>IPv4</code> <code>CIDR</code>。</p>
         :rtype: str
         """
         return self._CidrBlock
@@ -74796,7 +74636,7 @@ class Vpc(AbstractModel):
 
     @property
     def IsDefault(self):
-        r"""是否默认`VPC`。
+        r"""<p>是否默认<code>VPC</code>。</p>
         :rtype: bool
         """
         return self._IsDefault
@@ -74807,7 +74647,7 @@ class Vpc(AbstractModel):
 
     @property
     def EnableMulticast(self):
-        r"""是否开启组播。
+        r"""<p>是否开启组播。</p>
         :rtype: bool
         """
         return self._EnableMulticast
@@ -74818,7 +74658,7 @@ class Vpc(AbstractModel):
 
     @property
     def CreatedTime(self):
-        r"""创建时间。
+        r"""<p>创建时间。</p>
         :rtype: str
         """
         return self._CreatedTime
@@ -74829,7 +74669,7 @@ class Vpc(AbstractModel):
 
     @property
     def DnsServerSet(self):
-        r"""`DNS`列表。
+        r"""<p><code>DNS</code>列表。</p>
         :rtype: list of str
         """
         return self._DnsServerSet
@@ -74840,7 +74680,7 @@ class Vpc(AbstractModel):
 
     @property
     def DomainName(self):
-        r"""`DHCP`域名选项值。
+        r"""<p><code>DHCP</code>域名选项值。</p>
         :rtype: str
         """
         return self._DomainName
@@ -74851,7 +74691,7 @@ class Vpc(AbstractModel):
 
     @property
     def DhcpOptionsId(self):
-        r"""`DHCP`选项集`ID`。
+        r"""<p><code>DHCP</code>选项集<code>ID</code>。</p>
         :rtype: str
         """
         return self._DhcpOptionsId
@@ -74862,7 +74702,7 @@ class Vpc(AbstractModel):
 
     @property
     def EnableDhcp(self):
-        r"""是否开启`DHCP`。
+        r"""<p>是否开启<code>DHCP</code>。</p>
         :rtype: bool
         """
         return self._EnableDhcp
@@ -74873,7 +74713,7 @@ class Vpc(AbstractModel):
 
     @property
     def Ipv6CidrBlock(self):
-        r"""`VPC`的`IPv6` `CIDR`。
+        r"""<p><code>VPC</code>的<code>IPv6</code> <code>CIDR</code>。</p>
         :rtype: str
         """
         return self._Ipv6CidrBlock
@@ -74884,7 +74724,7 @@ class Vpc(AbstractModel):
 
     @property
     def TagSet(self):
-        r"""标签键值对
+        r"""<p>标签键值对</p>
         :rtype: list of Tag
         """
         return self._TagSet
@@ -74895,7 +74735,7 @@ class Vpc(AbstractModel):
 
     @property
     def AssistantCidrSet(self):
-        r"""辅助CIDR
+        r"""<p>辅助CIDR</p>
         :rtype: list of AssistantCidr
         """
         return self._AssistantCidrSet
@@ -74906,7 +74746,7 @@ class Vpc(AbstractModel):
 
     @property
     def EnableRouteVpcPublish(self):
-        r"""vpc关联云联网时路由发布策略， true：开启cidr路由发布，false：开启subnet子网路由发布。创建vpc时默认为子网路由发布，当选择cidr路由发布时,请通过工单加入白名单
+        r"""<p>vpc关联云联网时路由发布策略， true：开启cidr路由发布，false：开启subnet子网路由发布。创建vpc时默认为子网路由发布，当选择cidr路由发布时,请通过工单加入白名单</p>
         :rtype: bool
         """
         return self._EnableRouteVpcPublish
@@ -74917,7 +74757,7 @@ class Vpc(AbstractModel):
 
     @property
     def Ipv6CidrBlockSet(self):
-        r"""返回多运营商IPv6 Cidr Block
+        r"""<p>返回多运营商IPv6 Cidr Block</p>
         :rtype: list of ISPIPv6CidrBlock
         """
         return self._Ipv6CidrBlockSet
@@ -74928,7 +74768,7 @@ class Vpc(AbstractModel):
 
     @property
     def EnableRouteVpcPublishIpv6(self):
-        r"""vpc关联云联网时IPv6类型路由发布策略， true：开启cidr路由发布，false：开启subnet子网路由发布。创建vpc时默认为子网路由发布，当选择cidr路由发布时，请通过工单加入白名单。
+        r"""<p>vpc关联云联网时IPv6类型路由发布策略， true：开启cidr路由发布，false：开启subnet子网路由发布。创建vpc时默认为子网路由发布，当选择cidr路由发布时，请通过工单加入白名单。</p>
         :rtype: bool
         """
         return self._EnableRouteVpcPublishIpv6

@@ -44366,6 +44366,8 @@ class DescribeVoicesResponse(AbstractModel):
         :type ErrorCode: int
         :param _Msg: <p>错误信息，成功时返回success</p>
         :type Msg: str
+        :param _TotalCount: <p>符合查询条件的音色总数</p>
+        :type TotalCount: int
         :param _Voices: <p>可用音色列表</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Voices: list of VoiceInfo
@@ -44374,6 +44376,7 @@ class DescribeVoicesResponse(AbstractModel):
         """
         self._ErrorCode = None
         self._Msg = None
+        self._TotalCount = None
         self._Voices = None
         self._RequestId = None
 
@@ -44398,6 +44401,17 @@ class DescribeVoicesResponse(AbstractModel):
     @Msg.setter
     def Msg(self, Msg):
         self._Msg = Msg
+
+    @property
+    def TotalCount(self):
+        r"""<p>符合查询条件的音色总数</p>
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
 
     @property
     def Voices(self):
@@ -44426,6 +44440,7 @@ class DescribeVoicesResponse(AbstractModel):
     def _deserialize(self, params):
         self._ErrorCode = params.get("ErrorCode")
         self._Msg = params.get("Msg")
+        self._TotalCount = params.get("TotalCount")
         if params.get("Voices") is not None:
             self._Voices = []
             for item in params.get("Voices"):

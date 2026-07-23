@@ -19855,11 +19855,11 @@ class DescribeRumLogExportsV2Request(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _PageSize: <p>Page size</p>
+        :param _PageSize: <p>每页返回任务数</p>
         :type PageSize: int
-        :param _PageNum: <p>Page number</p>
+        :param _PageNum: <p>当前页码</p>
         :type PageNum: int
-        :param _ID: <p>Project ID</p>
+        :param _ID: <p>项目ID</p>
         :type ID: int
         """
         self._PageSize = None
@@ -19868,7 +19868,7 @@ class DescribeRumLogExportsV2Request(AbstractModel):
 
     @property
     def PageSize(self):
-        r"""<p>Page size</p>
+        r"""<p>每页返回任务数</p>
         :rtype: int
         """
         return self._PageSize
@@ -19879,7 +19879,7 @@ class DescribeRumLogExportsV2Request(AbstractModel):
 
     @property
     def PageNum(self):
-        r"""<p>Page number</p>
+        r"""<p>当前页码</p>
         :rtype: int
         """
         return self._PageNum
@@ -19890,7 +19890,7 @@ class DescribeRumLogExportsV2Request(AbstractModel):
 
     @property
     def ID(self):
-        r"""<p>Project ID</p>
+        r"""<p>项目ID</p>
         :rtype: int
         """
         return self._ID

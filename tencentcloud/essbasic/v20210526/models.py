@@ -14029,24 +14029,13 @@ class CreateChannelFlowEvidenceReportRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Agent: 关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
-
-此接口下面信息必填。
-<ul>
-<li>渠道应用标识:  Agent.AppId</li>
-<li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId</li>
-<li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li>
-</ul>
-第三方平台子客企业和员工必须已经经过实名认证
+        :param _Agent: <p>关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。</p><p>此接口下面信息必填。</p><ul><li>渠道应用标识:  Agent.AppId</li><li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId</li><li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li></ul>第三方平台子客企业和员工必须已经经过实名认证
         :type Agent: :class:`tencentcloud.essbasic.v20210526.models.Agent`
-        :param _FlowId: 合同流程ID，为32位字符串。
-建议开发者妥善保存此流程ID，以便于顺利进行后续操作。
+        :param _FlowId: <p>合同流程ID，为32位字符串。<br>建议开发者妥善保存此流程ID，以便于顺利进行后续操作。</p>
         :type FlowId: str
-        :param _Operator: 暂未开放
+        :param _Operator: <p>暂未开放</p>
         :type Operator: :class:`tencentcloud.essbasic.v20210526.models.UserInfo`
-        :param _ReportType: 指定申请的报告类型，可选类型如下：
-<ul><li> **0** :合同签署报告（默认）</li>
-<li> **1** :公证处核验报告</li></ul>
+        :param _ReportType: <p>指定申请的报告类型，可选类型如下：<ul><li> <strong>0</strong> :合同签署报告（默认）</li></ul></p><p>枚举值：</p><ul><li>0： 合同签署报告</li></ul>
         :type ReportType: int
         """
         self._Agent = None
@@ -14056,15 +14045,7 @@ class CreateChannelFlowEvidenceReportRequest(AbstractModel):
 
     @property
     def Agent(self):
-        r"""关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
-
-此接口下面信息必填。
-<ul>
-<li>渠道应用标识:  Agent.AppId</li>
-<li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId</li>
-<li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li>
-</ul>
-第三方平台子客企业和员工必须已经经过实名认证
+        r"""<p>关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。</p><p>此接口下面信息必填。</p><ul><li>渠道应用标识:  Agent.AppId</li><li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId</li><li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li></ul>第三方平台子客企业和员工必须已经经过实名认证
         :rtype: :class:`tencentcloud.essbasic.v20210526.models.Agent`
         """
         return self._Agent
@@ -14075,8 +14056,7 @@ class CreateChannelFlowEvidenceReportRequest(AbstractModel):
 
     @property
     def FlowId(self):
-        r"""合同流程ID，为32位字符串。
-建议开发者妥善保存此流程ID，以便于顺利进行后续操作。
+        r"""<p>合同流程ID，为32位字符串。<br>建议开发者妥善保存此流程ID，以便于顺利进行后续操作。</p>
         :rtype: str
         """
         return self._FlowId
@@ -14089,7 +14069,7 @@ class CreateChannelFlowEvidenceReportRequest(AbstractModel):
     def Operator(self):
         warnings.warn("parameter `Operator` is deprecated", DeprecationWarning) 
 
-        r"""暂未开放
+        r"""<p>暂未开放</p>
         :rtype: :class:`tencentcloud.essbasic.v20210526.models.UserInfo`
         """
         return self._Operator
@@ -14102,9 +14082,7 @@ class CreateChannelFlowEvidenceReportRequest(AbstractModel):
 
     @property
     def ReportType(self):
-        r"""指定申请的报告类型，可选类型如下：
-<ul><li> **0** :合同签署报告（默认）</li>
-<li> **1** :公证处核验报告</li></ul>
+        r"""<p>指定申请的报告类型，可选类型如下：<ul><li> <strong>0</strong> :合同签署报告（默认）</li></ul></p><p>枚举值：</p><ul><li>0： 合同签署报告</li></ul>
         :rtype: int
         """
         return self._ReportType
@@ -14140,15 +14118,11 @@ class CreateChannelFlowEvidenceReportResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ReportId: 出证报告 ID，可用于<a href="https://qian.tencent.com/developers/partnerApis/certificate/DescribeChannelFlowEvidenceReport" target="_blank">获取出证报告任务执行结果</a>查询出证任务结果和出证PDF的下载URL
+        :param _ReportId: <p>出证报告 ID，可用于<a href="https://qian.tencent.com/developers/partnerApis/certificate/DescribeChannelFlowEvidenceReport" target="_blank">获取出证报告任务执行结果</a>查询出证任务结果和出证PDF的下载URL</p>
         :type ReportId: str
-        :param _Status: 出证任务执行的状态, 状态含义如下：
-
-<ul><li>**EvidenceStatusExecuting**：  出证任务在执行中</li>
-<li>**EvidenceStatusSuccess**：  出证任务执行成功</li>
-<li>**EvidenceStatusFailed** ： 出证任务执行失败</li></ul>
+        :param _Status: <p>出证任务执行的状态, 状态含义如下：</p><ul><li>**EvidenceStatusExecuting**：  出证任务在执行中</li><li>**EvidenceStatusSuccess**：  出证任务执行成功</li><li>**EvidenceStatusFailed** ： 出证任务执行失败</li></ul>
         :type Status: str
-        :param _ReportUrl: 废除，字段无效
+        :param _ReportUrl: <p>废除，字段无效</p>
         :type ReportUrl: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -14160,7 +14134,7 @@ class CreateChannelFlowEvidenceReportResponse(AbstractModel):
 
     @property
     def ReportId(self):
-        r"""出证报告 ID，可用于<a href="https://qian.tencent.com/developers/partnerApis/certificate/DescribeChannelFlowEvidenceReport" target="_blank">获取出证报告任务执行结果</a>查询出证任务结果和出证PDF的下载URL
+        r"""<p>出证报告 ID，可用于<a href="https://qian.tencent.com/developers/partnerApis/certificate/DescribeChannelFlowEvidenceReport" target="_blank">获取出证报告任务执行结果</a>查询出证任务结果和出证PDF的下载URL</p>
         :rtype: str
         """
         return self._ReportId
@@ -14171,11 +14145,7 @@ class CreateChannelFlowEvidenceReportResponse(AbstractModel):
 
     @property
     def Status(self):
-        r"""出证任务执行的状态, 状态含义如下：
-
-<ul><li>**EvidenceStatusExecuting**：  出证任务在执行中</li>
-<li>**EvidenceStatusSuccess**：  出证任务执行成功</li>
-<li>**EvidenceStatusFailed** ： 出证任务执行失败</li></ul>
+        r"""<p>出证任务执行的状态, 状态含义如下：</p><ul><li>**EvidenceStatusExecuting**：  出证任务在执行中</li><li>**EvidenceStatusSuccess**：  出证任务执行成功</li><li>**EvidenceStatusFailed** ： 出证任务执行失败</li></ul>
         :rtype: str
         """
         return self._Status
@@ -14186,7 +14156,7 @@ class CreateChannelFlowEvidenceReportResponse(AbstractModel):
 
     @property
     def ReportUrl(self):
-        r"""废除，字段无效
+        r"""<p>废除，字段无效</p>
         :rtype: str
         """
         return self._ReportUrl
@@ -17205,53 +17175,21 @@ class CreatePartnerAutoSignAuthUrlRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Agent: 关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
-
-此接口下面信息必填。
-<ul>
-<li>渠道应用标识:  Agent.AppId</li>
-<li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId</li>
-<li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li>
-</ul>
-第三方平台子客企业和员工必须已经经过实名认证
+        :param _Agent: <p>关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。</p><p>此接口下面信息必填。</p><ul><li>渠道应用标识:  Agent.AppId</li><li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId</li><li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li></ul>第三方平台子客企业和员工必须已经经过实名认证
         :type Agent: :class:`tencentcloud.essbasic.v20210526.models.Agent`
-        :param _AuthorizedOrganizationId: 被授企业id/授权方企业id（即OrganizationId），如果是企业之间授权和AuthorizedOrganizationName二选一传入。
-
-注：`被授权企业必须和当前企业在同一应用号下`
+        :param _AuthorizedOrganizationId: <p>被授企业id/授权方企业id（即OrganizationId），如果是企业之间授权和AuthorizedOrganizationName二选一传入。</p><p>注：<code>被授权企业必须和当前企业在同一应用号下</code></p>
         :type AuthorizedOrganizationId: str
-        :param _AuthorizedOrganizationName: 被授企业名称/授权方企业的名字，如果是企业之间授权和AuthorizedOrganizationId二选一传入即可。请确认该名称与企业营业执照中注册的名称一致。
-
-注: 
-1. 如果名称中包含英文括号()，请使用中文括号（）代替。
-2. 被授权企业必须和当前企业在同一应用号下
+        :param _AuthorizedOrganizationName: <p>被授企业名称/授权方企业的名字，如果是企业之间授权和AuthorizedOrganizationId二选一传入即可。请确认该名称与企业营业执照中注册的名称一致。</p><p>注: </p><ol><li>如果名称中包含英文括号()，请使用中文括号（）代替。</li><li>被授权企业必须和当前企业在同一应用号下</li></ol>
         :type AuthorizedOrganizationName: str
-        :param _PlatformAppAuthorization: 是否给平台应用授权
-
-<ul>
-<li><strong>true</strong>: 表示是，授权平台应用。在此情况下，无需设置<code>AuthorizedOrganizationIds</code>和<code>AuthorizedOrganizationNames</code>。</li>
-<li><strong>false</strong>: （默认）表示否，不是授权平台应用。</li>
-</ul>
-
- 注：授权给平台应用需要开通【基于子客授权第三方应用可文件发起子客自动签署】白名单，请联系运营经理开通。
+        :param _PlatformAppAuthorization: <p>是否给平台应用授权</p><ul><li><strong>true</strong>: 表示是，授权平台应用。在此情况下，无需设置<code>AuthorizedOrganizationIds</code>和<code>AuthorizedOrganizationNames</code>。</li><li><strong>false</strong>: （默认）表示否，不是授权平台应用。</li></ul><p> 注：授权给平台应用需要开通【基于子客授权第三方应用可文件发起子客自动签署】白名单，请联系运营经理开通。</p>
         :type PlatformAppAuthorization: bool
-        :param _SealTypes: 在设置印章授权时，可以指定特定的印章类型，以确保在授权过程中只使用相应类型的印章。支持的印章类型包括：
-
-<ul>
-<li><strong>OFFICIAL</strong>：企业公章，用于代表企业对外的正式文件和重要事务的认证。</li>
-<li><strong>CONTRACT</strong>：合同专用章，专门用于签署各类合同。</li>
-<li><strong>FINANCE</strong>：财务专用章，用于企业的财务相关文件，如发票、收据等财务凭证的认证。</li>
-<li><strong>PERSONNEL</strong>：人事专用章，用于人事管理相关文件，如劳动合同、人事任命等。</li>
-</ul>
+        :param _SealTypes: <p>在设置印章授权时，可以指定特定的印章类型，以确保在授权过程中只使用相应类型的印章。</p><p>枚举值：</p><ul><li>OFFICIAL： 企业公章，用于代表企业对外的正式文件和重要事务的认证。</li><li>CONTRACT： 合同专用章，专门用于签署各类合同</li><li>FINANCE： 财务专用章，用于企业的财务相关文件，如发票、收据等财务凭证的认证。</li><li>PERSONNEL： 人事专用章，用于人事管理相关文件，如劳动合同、人事任命等。</li><li>OTHER： 其他类型印章，包含子类型</li></ul>
         :type SealTypes: list of str
-        :param _AuthToMe: 在处理授权关系时，授权的方向
-<ul>
-<li><strong>false</strong>（默认值）：表示我方授权他方。在这种情况下，<code>AuthorizedOrganizationNames</code> 代表的是【被授权方】的企业名称，即接收授权的企业。</li>
-<li><strong>true</strong>：表示他方授权我方。在这种情况下，<code>AuthorizedOrganizationNames</code> 代表的是【授权方】的企业名称，即提供授权的企业。此场景下不支持批量</li>
-</ul>
+        :param _AuthToMe: <p>在处理授权关系时，授权的方向</p><ul><li><strong>false</strong>（默认值）：表示我方授权他方。在这种情况下，<code>AuthorizedOrganizationNames</code> 代表的是【被授权方】的企业名称，即接收授权的企业。</li><li><strong>true</strong>：表示他方授权我方。在这种情况下，<code>AuthorizedOrganizationNames</code> 代表的是【授权方】的企业名称，即提供授权的企业。此场景下不支持批量</li></ul>
         :type AuthToMe: bool
-        :param _AuthorizedOrganizationIds: 被授企业id/授权方企业id（即OrganizationId），如果是企业之间授权和AuthorizedOrganizationNames二选一传入，最大支持50个，注：`被授权企业必须和当前企业在同一应用号下`
+        :param _AuthorizedOrganizationIds: <p>被授企业id/授权方企业id（即OrganizationId），如果是企业之间授权和AuthorizedOrganizationNames二选一传入，最大支持50个，注：<code>被授权企业必须和当前企业在同一应用号下</code></p>
         :type AuthorizedOrganizationIds: list of str
-        :param _AuthorizedOrganizationNames: 被授企业名称/授权方企业的名字，如果是企业之间授权和AuthorizedOrganizationIds二选一传入即可。请确认该名称与企业营业执照中注册的名称一致。注: 1. 如果名称中包含英文括号()，请使用中文括号（）代替。2. 被授权企业必须和当前企业在同一应用号下 3. 数组最大长度50
+        :param _AuthorizedOrganizationNames: <p>被授企业名称/授权方企业的名字，如果是企业之间授权和AuthorizedOrganizationIds二选一传入即可。请确认该名称与企业营业执照中注册的名称一致。注: 1. 如果名称中包含英文括号()，请使用中文括号（）代替。2. 被授权企业必须和当前企业在同一应用号下 3. 数组最大长度50</p>
         :type AuthorizedOrganizationNames: list of str
         """
         self._Agent = None
@@ -17265,15 +17203,7 @@ class CreatePartnerAutoSignAuthUrlRequest(AbstractModel):
 
     @property
     def Agent(self):
-        r"""关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
-
-此接口下面信息必填。
-<ul>
-<li>渠道应用标识:  Agent.AppId</li>
-<li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId</li>
-<li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li>
-</ul>
-第三方平台子客企业和员工必须已经经过实名认证
+        r"""<p>关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。</p><p>此接口下面信息必填。</p><ul><li>渠道应用标识:  Agent.AppId</li><li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId</li><li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li></ul>第三方平台子客企业和员工必须已经经过实名认证
         :rtype: :class:`tencentcloud.essbasic.v20210526.models.Agent`
         """
         return self._Agent
@@ -17286,9 +17216,7 @@ class CreatePartnerAutoSignAuthUrlRequest(AbstractModel):
     def AuthorizedOrganizationId(self):
         warnings.warn("parameter `AuthorizedOrganizationId` is deprecated", DeprecationWarning) 
 
-        r"""被授企业id/授权方企业id（即OrganizationId），如果是企业之间授权和AuthorizedOrganizationName二选一传入。
-
-注：`被授权企业必须和当前企业在同一应用号下`
+        r"""<p>被授企业id/授权方企业id（即OrganizationId），如果是企业之间授权和AuthorizedOrganizationName二选一传入。</p><p>注：<code>被授权企业必须和当前企业在同一应用号下</code></p>
         :rtype: str
         """
         return self._AuthorizedOrganizationId
@@ -17303,11 +17231,7 @@ class CreatePartnerAutoSignAuthUrlRequest(AbstractModel):
     def AuthorizedOrganizationName(self):
         warnings.warn("parameter `AuthorizedOrganizationName` is deprecated", DeprecationWarning) 
 
-        r"""被授企业名称/授权方企业的名字，如果是企业之间授权和AuthorizedOrganizationId二选一传入即可。请确认该名称与企业营业执照中注册的名称一致。
-
-注: 
-1. 如果名称中包含英文括号()，请使用中文括号（）代替。
-2. 被授权企业必须和当前企业在同一应用号下
+        r"""<p>被授企业名称/授权方企业的名字，如果是企业之间授权和AuthorizedOrganizationId二选一传入即可。请确认该名称与企业营业执照中注册的名称一致。</p><p>注: </p><ol><li>如果名称中包含英文括号()，请使用中文括号（）代替。</li><li>被授权企业必须和当前企业在同一应用号下</li></ol>
         :rtype: str
         """
         return self._AuthorizedOrganizationName
@@ -17320,14 +17244,7 @@ class CreatePartnerAutoSignAuthUrlRequest(AbstractModel):
 
     @property
     def PlatformAppAuthorization(self):
-        r"""是否给平台应用授权
-
-<ul>
-<li><strong>true</strong>: 表示是，授权平台应用。在此情况下，无需设置<code>AuthorizedOrganizationIds</code>和<code>AuthorizedOrganizationNames</code>。</li>
-<li><strong>false</strong>: （默认）表示否，不是授权平台应用。</li>
-</ul>
-
- 注：授权给平台应用需要开通【基于子客授权第三方应用可文件发起子客自动签署】白名单，请联系运营经理开通。
+        r"""<p>是否给平台应用授权</p><ul><li><strong>true</strong>: 表示是，授权平台应用。在此情况下，无需设置<code>AuthorizedOrganizationIds</code>和<code>AuthorizedOrganizationNames</code>。</li><li><strong>false</strong>: （默认）表示否，不是授权平台应用。</li></ul><p> 注：授权给平台应用需要开通【基于子客授权第三方应用可文件发起子客自动签署】白名单，请联系运营经理开通。</p>
         :rtype: bool
         """
         return self._PlatformAppAuthorization
@@ -17338,14 +17255,7 @@ class CreatePartnerAutoSignAuthUrlRequest(AbstractModel):
 
     @property
     def SealTypes(self):
-        r"""在设置印章授权时，可以指定特定的印章类型，以确保在授权过程中只使用相应类型的印章。支持的印章类型包括：
-
-<ul>
-<li><strong>OFFICIAL</strong>：企业公章，用于代表企业对外的正式文件和重要事务的认证。</li>
-<li><strong>CONTRACT</strong>：合同专用章，专门用于签署各类合同。</li>
-<li><strong>FINANCE</strong>：财务专用章，用于企业的财务相关文件，如发票、收据等财务凭证的认证。</li>
-<li><strong>PERSONNEL</strong>：人事专用章，用于人事管理相关文件，如劳动合同、人事任命等。</li>
-</ul>
+        r"""<p>在设置印章授权时，可以指定特定的印章类型，以确保在授权过程中只使用相应类型的印章。</p><p>枚举值：</p><ul><li>OFFICIAL： 企业公章，用于代表企业对外的正式文件和重要事务的认证。</li><li>CONTRACT： 合同专用章，专门用于签署各类合同</li><li>FINANCE： 财务专用章，用于企业的财务相关文件，如发票、收据等财务凭证的认证。</li><li>PERSONNEL： 人事专用章，用于人事管理相关文件，如劳动合同、人事任命等。</li><li>OTHER： 其他类型印章，包含子类型</li></ul>
         :rtype: list of str
         """
         return self._SealTypes
@@ -17356,11 +17266,7 @@ class CreatePartnerAutoSignAuthUrlRequest(AbstractModel):
 
     @property
     def AuthToMe(self):
-        r"""在处理授权关系时，授权的方向
-<ul>
-<li><strong>false</strong>（默认值）：表示我方授权他方。在这种情况下，<code>AuthorizedOrganizationNames</code> 代表的是【被授权方】的企业名称，即接收授权的企业。</li>
-<li><strong>true</strong>：表示他方授权我方。在这种情况下，<code>AuthorizedOrganizationNames</code> 代表的是【授权方】的企业名称，即提供授权的企业。此场景下不支持批量</li>
-</ul>
+        r"""<p>在处理授权关系时，授权的方向</p><ul><li><strong>false</strong>（默认值）：表示我方授权他方。在这种情况下，<code>AuthorizedOrganizationNames</code> 代表的是【被授权方】的企业名称，即接收授权的企业。</li><li><strong>true</strong>：表示他方授权我方。在这种情况下，<code>AuthorizedOrganizationNames</code> 代表的是【授权方】的企业名称，即提供授权的企业。此场景下不支持批量</li></ul>
         :rtype: bool
         """
         return self._AuthToMe
@@ -17371,7 +17277,7 @@ class CreatePartnerAutoSignAuthUrlRequest(AbstractModel):
 
     @property
     def AuthorizedOrganizationIds(self):
-        r"""被授企业id/授权方企业id（即OrganizationId），如果是企业之间授权和AuthorizedOrganizationNames二选一传入，最大支持50个，注：`被授权企业必须和当前企业在同一应用号下`
+        r"""<p>被授企业id/授权方企业id（即OrganizationId），如果是企业之间授权和AuthorizedOrganizationNames二选一传入，最大支持50个，注：<code>被授权企业必须和当前企业在同一应用号下</code></p>
         :rtype: list of str
         """
         return self._AuthorizedOrganizationIds
@@ -17382,7 +17288,7 @@ class CreatePartnerAutoSignAuthUrlRequest(AbstractModel):
 
     @property
     def AuthorizedOrganizationNames(self):
-        r"""被授企业名称/授权方企业的名字，如果是企业之间授权和AuthorizedOrganizationIds二选一传入即可。请确认该名称与企业营业执照中注册的名称一致。注: 1. 如果名称中包含英文括号()，请使用中文括号（）代替。2. 被授权企业必须和当前企业在同一应用号下 3. 数组最大长度50
+        r"""<p>被授企业名称/授权方企业的名字，如果是企业之间授权和AuthorizedOrganizationIds二选一传入即可。请确认该名称与企业营业执照中注册的名称一致。注: 1. 如果名称中包含英文括号()，请使用中文括号（）代替。2. 被授权企业必须和当前企业在同一应用号下 3. 数组最大长度50</p>
         :rtype: list of str
         """
         return self._AuthorizedOrganizationNames
@@ -17420,12 +17326,11 @@ class CreatePartnerAutoSignAuthUrlResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Url: 授权链接，以短链形式返回，短链的有效期参考回参中的 ExpiredTime。
+        :param _Url: <p>授权链接，以短链形式返回，短链的有效期参考回参中的 ExpiredTime。</p>
         :type Url: str
-        :param _MiniAppPath: 从客户小程序或者客户APP跳转至腾讯电子签小程序进行批量签署的跳转路径
-
+        :param _MiniAppPath: <p>从客户小程序或者客户APP跳转至腾讯电子签小程序进行批量签署的跳转路径</p>
         :type MiniAppPath: str
-        :param _ExpireTime: 链接过期时间以 Unix 时间戳格式表示，从生成链接时间起，往后7天有效期。过期后短链将失效，无法打开。
+        :param _ExpireTime: <p>链接过期时间以 Unix 时间戳格式表示，从生成链接时间起，往后7天有效期。过期后短链将失效，无法打开。</p>
         :type ExpireTime: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -17437,7 +17342,7 @@ class CreatePartnerAutoSignAuthUrlResponse(AbstractModel):
 
     @property
     def Url(self):
-        r"""授权链接，以短链形式返回，短链的有效期参考回参中的 ExpiredTime。
+        r"""<p>授权链接，以短链形式返回，短链的有效期参考回参中的 ExpiredTime。</p>
         :rtype: str
         """
         return self._Url
@@ -17448,8 +17353,7 @@ class CreatePartnerAutoSignAuthUrlResponse(AbstractModel):
 
     @property
     def MiniAppPath(self):
-        r"""从客户小程序或者客户APP跳转至腾讯电子签小程序进行批量签署的跳转路径
-
+        r"""<p>从客户小程序或者客户APP跳转至腾讯电子签小程序进行批量签署的跳转路径</p>
         :rtype: str
         """
         return self._MiniAppPath
@@ -17460,7 +17364,7 @@ class CreatePartnerAutoSignAuthUrlResponse(AbstractModel):
 
     @property
     def ExpireTime(self):
-        r"""链接过期时间以 Unix 时间戳格式表示，从生成链接时间起，往后7天有效期。过期后短链将失效，无法打开。
+        r"""<p>链接过期时间以 Unix 时间戳格式表示，从生成链接时间起，往后7天有效期。过期后短链将失效，无法打开。</p>
         :rtype: int
         """
         return self._ExpireTime
@@ -19167,23 +19071,13 @@ class DescribeChannelFlowEvidenceReportRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Agent: 关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
-
-此接口下面信息必填。
-<ul>
-<li>渠道应用标识:  Agent.AppId</li>
-<li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId</li>
-<li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li>
-</ul>
-第三方平台子客企业和员工必须已经经过实名认证
+        :param _Agent: <p>关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。</p><p>此接口下面信息必填。</p><ul><li>渠道应用标识:  Agent.AppId</li><li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId</li><li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li></ul>第三方平台子客企业和员工必须已经经过实名认证
         :type Agent: :class:`tencentcloud.essbasic.v20210526.models.Agent`
-        :param _ReportId: 签署报告编号, 由<a href="https://qian.tencent.com/developers/partnerApis/certificate/CreateChannelFlowEvidenceReport" target="_blank">提交申请出证报告任务</a>产生
+        :param _ReportId: <p>签署报告编号, 由<a href="https://qian.tencent.com/developers/partnerApis/certificate/CreateChannelFlowEvidenceReport" target="_blank">提交申请出证报告任务</a>产生</p>
         :type ReportId: str
-        :param _Operator: 暂未开放
+        :param _Operator: <p>暂未开放</p>
         :type Operator: :class:`tencentcloud.essbasic.v20210526.models.UserInfo`
-        :param _ReportType: 指定申请的报告类型，可选类型如下：
-<ul><li> **0** :合同签署报告（默认）</li>
-<li> **1** :公证处核验报告</li></ul>
+        :param _ReportType: <p>指定申请的报告类型，可选类型如下：<ul><li> <strong>0</strong> :合同签署报告（默认）</li></ul></p><p>枚举值：</p><ul><li>0： 合同签署报告</li></ul>
         :type ReportType: int
         """
         self._Agent = None
@@ -19193,15 +19087,7 @@ class DescribeChannelFlowEvidenceReportRequest(AbstractModel):
 
     @property
     def Agent(self):
-        r"""关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
-
-此接口下面信息必填。
-<ul>
-<li>渠道应用标识:  Agent.AppId</li>
-<li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId</li>
-<li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li>
-</ul>
-第三方平台子客企业和员工必须已经经过实名认证
+        r"""<p>关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。</p><p>此接口下面信息必填。</p><ul><li>渠道应用标识:  Agent.AppId</li><li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId</li><li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li></ul>第三方平台子客企业和员工必须已经经过实名认证
         :rtype: :class:`tencentcloud.essbasic.v20210526.models.Agent`
         """
         return self._Agent
@@ -19212,7 +19098,7 @@ class DescribeChannelFlowEvidenceReportRequest(AbstractModel):
 
     @property
     def ReportId(self):
-        r"""签署报告编号, 由<a href="https://qian.tencent.com/developers/partnerApis/certificate/CreateChannelFlowEvidenceReport" target="_blank">提交申请出证报告任务</a>产生
+        r"""<p>签署报告编号, 由<a href="https://qian.tencent.com/developers/partnerApis/certificate/CreateChannelFlowEvidenceReport" target="_blank">提交申请出证报告任务</a>产生</p>
         :rtype: str
         """
         return self._ReportId
@@ -19225,7 +19111,7 @@ class DescribeChannelFlowEvidenceReportRequest(AbstractModel):
     def Operator(self):
         warnings.warn("parameter `Operator` is deprecated", DeprecationWarning) 
 
-        r"""暂未开放
+        r"""<p>暂未开放</p>
         :rtype: :class:`tencentcloud.essbasic.v20210526.models.UserInfo`
         """
         return self._Operator
@@ -19238,9 +19124,7 @@ class DescribeChannelFlowEvidenceReportRequest(AbstractModel):
 
     @property
     def ReportType(self):
-        r"""指定申请的报告类型，可选类型如下：
-<ul><li> **0** :合同签署报告（默认）</li>
-<li> **1** :公证处核验报告</li></ul>
+        r"""<p>指定申请的报告类型，可选类型如下：<ul><li> <strong>0</strong> :合同签署报告（默认）</li></ul></p><p>枚举值：</p><ul><li>0： 合同签署报告</li></ul>
         :rtype: int
         """
         return self._ReportType
@@ -19276,13 +19160,9 @@ class DescribeChannelFlowEvidenceReportResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ReportUrl: 出证报告PDF的下载 URL，有效期为5分钟，超过有效期后将无法再下载。
+        :param _ReportUrl: <p>出证报告PDF的下载 URL，有效期为5分钟，超过有效期后将无法再下载。</p>
         :type ReportUrl: str
-        :param _Status: 出证任务执行的状态, 状态含义如下：
-
-<ul><li>**EvidenceStatusExecuting**：  出证任务在执行中</li>
-<li>**EvidenceStatusSuccess**：  出证任务执行成功</li>
-<li>**EvidenceStatusFailed** ： 出证任务执行失败</li></ul>
+        :param _Status: <p>出证任务执行的状态, 状态含义如下：</p><ul><li>**EvidenceStatusExecuting**：  出证任务在执行中</li><li>**EvidenceStatusSuccess**：  出证任务执行成功</li><li>**EvidenceStatusFailed** ： 出证任务执行失败</li></ul>
         :type Status: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -19293,7 +19173,7 @@ class DescribeChannelFlowEvidenceReportResponse(AbstractModel):
 
     @property
     def ReportUrl(self):
-        r"""出证报告PDF的下载 URL，有效期为5分钟，超过有效期后将无法再下载。
+        r"""<p>出证报告PDF的下载 URL，有效期为5分钟，超过有效期后将无法再下载。</p>
         :rtype: str
         """
         return self._ReportUrl
@@ -19304,11 +19184,7 @@ class DescribeChannelFlowEvidenceReportResponse(AbstractModel):
 
     @property
     def Status(self):
-        r"""出证任务执行的状态, 状态含义如下：
-
-<ul><li>**EvidenceStatusExecuting**：  出证任务在执行中</li>
-<li>**EvidenceStatusSuccess**：  出证任务执行成功</li>
-<li>**EvidenceStatusFailed** ： 出证任务执行失败</li></ul>
+        r"""<p>出证任务执行的状态, 状态含义如下：</p><ul><li>**EvidenceStatusExecuting**：  出证任务在执行中</li><li>**EvidenceStatusSuccess**：  出证任务执行成功</li><li>**EvidenceStatusFailed** ： 出证任务执行失败</li></ul>
         :rtype: str
         """
         return self._Status
@@ -19342,31 +19218,15 @@ class DescribeChannelOrganizationsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Agent: 关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
-
-此接口下面信息必填。
-
-渠道应用标识: Agent.AppId
-第三方平台子客企业标识: Agent.ProxyOrganizationOpenId
-第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId
-
-第三方平台子客企业和员工必须已经经过实名认证
+        :param _Agent: <p>关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。</p><p>此接口下面信息必填。</p><p>渠道应用标识: Agent.AppId<br>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId<br>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</p><p>第三方平台子客企业和员工必须已经经过实名认证</p>
         :type Agent: :class:`tencentcloud.essbasic.v20210526.models.Agent`
-        :param _Limit: 指定分页每页返回的数据条数，单页最大支持 200。
+        :param _Limit: <p>指定分页每页返回的数据条数，单页最大支持 200。</p>
         :type Limit: int
-        :param _OrganizationOpenId: 该字段是指第三方平台子客企业的唯一标识，用于查询单独某个子客的企业数据。
-
-**注**：`如果需要批量查询本应用下的所有企业的信息，则该字段不需要赋值`
+        :param _OrganizationOpenId: <p>该字段是指第三方平台子客企业的唯一标识，用于查询单独某个子客的企业数据。</p><p><strong>注</strong>：<code>如果需要批量查询本应用下的所有企业的信息，则该字段不需要赋值</code></p>
         :type OrganizationOpenId: str
-        :param _AuthorizationStatusList: 可以按照当前企业的认证状态进行过滤。可值如下：
-<ul><li>**"UNVERIFIED"**： 未认证的企业</li>
-  <li>**"VERIFYINGLEGALPENDINGAUTHORIZATION"**： 认证中待法人授权的企业</li>
-  <li>**"VERIFYINGAUTHORIZATIONFILEPENDING"**： 认证中授权书审核中的企业</li>
-  <li>**"VERIFYINGAUTHORIZATIONFILEREJECT"**： 认证中授权书已驳回的企业</li>
-  <li>**"VERIFYING"**： 认证进行中的企业</li>
-  <li>**"VERIFIED"**： 已认证完成的企业</li></ul>
+        :param _AuthorizationStatusList: <p>可以按照当前企业的认证状态进行过滤。可值如下：</p><ul><li>**"UNVERIFIED"**： 未认证的企业</li>  <li>**"VERIFYINGLEGALPENDINGAUTHORIZATION"**： 认证中待法人授权的企业</li>  <li>**"VERIFYINGAUTHORIZATIONFILEPENDING"**： 认证中授权书审核中的企业</li>  <li>**"VERIFYINGAUTHORIZATIONFILEREJECT"**： 认证中授权书已驳回的企业</li>  <li>**"VERIFYING"**： 认证进行中的企业</li>  <li>**"VERIFIED"**： 已认证完成的企业</li></ul>
         :type AuthorizationStatusList: list of str
-        :param _Offset: 指定分页返回第几页的数据，如果不传默认返回第一页。 页码从 0 开始，即首页为 0，最大20000。
+        :param _Offset: <p>偏移量:从 0 开始，最大20000。</p>
         :type Offset: int
         """
         self._Agent = None
@@ -19377,15 +19237,7 @@ class DescribeChannelOrganizationsRequest(AbstractModel):
 
     @property
     def Agent(self):
-        r"""关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
-
-此接口下面信息必填。
-
-渠道应用标识: Agent.AppId
-第三方平台子客企业标识: Agent.ProxyOrganizationOpenId
-第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId
-
-第三方平台子客企业和员工必须已经经过实名认证
+        r"""<p>关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。</p><p>此接口下面信息必填。</p><p>渠道应用标识: Agent.AppId<br>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId<br>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</p><p>第三方平台子客企业和员工必须已经经过实名认证</p>
         :rtype: :class:`tencentcloud.essbasic.v20210526.models.Agent`
         """
         return self._Agent
@@ -19396,7 +19248,7 @@ class DescribeChannelOrganizationsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""指定分页每页返回的数据条数，单页最大支持 200。
+        r"""<p>指定分页每页返回的数据条数，单页最大支持 200。</p>
         :rtype: int
         """
         return self._Limit
@@ -19407,9 +19259,7 @@ class DescribeChannelOrganizationsRequest(AbstractModel):
 
     @property
     def OrganizationOpenId(self):
-        r"""该字段是指第三方平台子客企业的唯一标识，用于查询单独某个子客的企业数据。
-
-**注**：`如果需要批量查询本应用下的所有企业的信息，则该字段不需要赋值`
+        r"""<p>该字段是指第三方平台子客企业的唯一标识，用于查询单独某个子客的企业数据。</p><p><strong>注</strong>：<code>如果需要批量查询本应用下的所有企业的信息，则该字段不需要赋值</code></p>
         :rtype: str
         """
         return self._OrganizationOpenId
@@ -19420,13 +19270,7 @@ class DescribeChannelOrganizationsRequest(AbstractModel):
 
     @property
     def AuthorizationStatusList(self):
-        r"""可以按照当前企业的认证状态进行过滤。可值如下：
-<ul><li>**"UNVERIFIED"**： 未认证的企业</li>
-  <li>**"VERIFYINGLEGALPENDINGAUTHORIZATION"**： 认证中待法人授权的企业</li>
-  <li>**"VERIFYINGAUTHORIZATIONFILEPENDING"**： 认证中授权书审核中的企业</li>
-  <li>**"VERIFYINGAUTHORIZATIONFILEREJECT"**： 认证中授权书已驳回的企业</li>
-  <li>**"VERIFYING"**： 认证进行中的企业</li>
-  <li>**"VERIFIED"**： 已认证完成的企业</li></ul>
+        r"""<p>可以按照当前企业的认证状态进行过滤。可值如下：</p><ul><li>**"UNVERIFIED"**： 未认证的企业</li>  <li>**"VERIFYINGLEGALPENDINGAUTHORIZATION"**： 认证中待法人授权的企业</li>  <li>**"VERIFYINGAUTHORIZATIONFILEPENDING"**： 认证中授权书审核中的企业</li>  <li>**"VERIFYINGAUTHORIZATIONFILEREJECT"**： 认证中授权书已驳回的企业</li>  <li>**"VERIFYING"**： 认证进行中的企业</li>  <li>**"VERIFIED"**： 已认证完成的企业</li></ul>
         :rtype: list of str
         """
         return self._AuthorizationStatusList
@@ -19437,7 +19281,7 @@ class DescribeChannelOrganizationsRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""指定分页返回第几页的数据，如果不传默认返回第一页。 页码从 0 开始，即首页为 0，最大20000。
+        r"""<p>偏移量:从 0 开始，最大20000。</p>
         :rtype: int
         """
         return self._Offset
@@ -19472,13 +19316,13 @@ class DescribeChannelOrganizationsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ChannelOrganizationInfos: 满足查询条件的企业信息列表。
+        :param _ChannelOrganizationInfos: <p>满足查询条件的企业信息列表。</p>
         :type ChannelOrganizationInfos: list of ChannelOrganizationInfo
-        :param _Offset: 指定分页返回第几页的数据。页码从 0 开始，即首页为 0，最大20000。
+        :param _Offset: <p>偏移量:从 0 开始，最大20000。</p>
         :type Offset: int
-        :param _Limit: 指定分页每页返回的数据条数，单页最大支持 200。
+        :param _Limit: <p>指定分页每页返回的数据条数，单页最大支持 200。</p>
         :type Limit: int
-        :param _Total: 满足查询条件的企业总数量。
+        :param _Total: <p>满足查询条件的企业总数量。</p>
         :type Total: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -19491,7 +19335,7 @@ class DescribeChannelOrganizationsResponse(AbstractModel):
 
     @property
     def ChannelOrganizationInfos(self):
-        r"""满足查询条件的企业信息列表。
+        r"""<p>满足查询条件的企业信息列表。</p>
         :rtype: list of ChannelOrganizationInfo
         """
         return self._ChannelOrganizationInfos
@@ -19502,7 +19346,7 @@ class DescribeChannelOrganizationsResponse(AbstractModel):
 
     @property
     def Offset(self):
-        r"""指定分页返回第几页的数据。页码从 0 开始，即首页为 0，最大20000。
+        r"""<p>偏移量:从 0 开始，最大20000。</p>
         :rtype: int
         """
         return self._Offset
@@ -19513,7 +19357,7 @@ class DescribeChannelOrganizationsResponse(AbstractModel):
 
     @property
     def Limit(self):
-        r"""指定分页每页返回的数据条数，单页最大支持 200。
+        r"""<p>指定分页每页返回的数据条数，单页最大支持 200。</p>
         :rtype: int
         """
         return self._Limit
@@ -19524,7 +19368,7 @@ class DescribeChannelOrganizationsResponse(AbstractModel):
 
     @property
     def Total(self):
-        r"""满足查询条件的企业总数量。
+        r"""<p>满足查询条件的企业总数量。</p>
         :rtype: int
         """
         return self._Total
@@ -20471,76 +20315,31 @@ class DescribeTemplatesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Agent: 关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
-
-此接口下面信息必填。
-<ul>
-<li>渠道应用标识:  Agent.AppId</li>
-<li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId</li>
-<li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li>
-</ul>
-第三方平台子客企业和员工必须已经经过实名认证
+        :param _Agent: <p>关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。</p><p>此接口下面信息必填。</p><ul><li>渠道应用标识:  Agent.AppId</li><li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId</li><li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li></ul>第三方平台子客企业和员工必须已经经过实名认证
         :type Agent: :class:`tencentcloud.essbasic.v20210526.models.Agent`
-        :param _TemplateId: 合同模板ID，为32位字符串。
-
-可以通过<a href="https://qian.tencent.com/developers/partnerApis/accounts/CreateConsoleLoginUrl" target="_blank">生成子客登录链接</a>登录企业控制台, 在企业模板中得到合同模板ID。
-
-[点击查看模板Id在控制台上的位置](https://qcloudimg.tencent-cloud.cn/raw/e988be12bf28a89b4716aed4502c2e02.png)
+        :param _TemplateId: <p>合同模板ID，为32位字符串。</p><p>可以通过<a href="https://qian.tencent.com/developers/partnerApis/accounts/CreateConsoleLoginUrl" target="_blank">生成子客登录链接</a>登录企业控制台, 在企业模板中得到合同模板ID。</p><p><a href="https://qcloudimg.tencent-cloud.cn/raw/e988be12bf28a89b4716aed4502c2e02.png">点击查看模板Id在控制台上的位置</a></p>
         :type TemplateId: str
-        :param _ContentType: 查询模板的内容
-
-<ul><li>**0**：（默认）模板列表及详情</li>
-<li>**1**：仅模板列表, 不会返回模板中的签署控件, 填写控件, 参与方角色列表等信息</li></ul>
+        :param _ContentType: <p>查询模板的内容</p><ul><li>**0**：（默认）模板列表及详情</li><li>**1**：仅模板列表, 不会返回模板中的签署控件, 填写控件, 参与方角色列表等信息</li></ul>
         :type ContentType: int
-        :param _TemplateIds: 合同模板ID数组，每一个合同模板ID为32位字符串,  最多支持100个模板的批量查询。
-
-注意: 
-1.` 此参数TemplateIds与TemplateId互为独立，若两者均传入，以TemplateId为准。`
-2. `请确保每个模板均正确且属于当前企业，若有任一模板不存在，则返回错误。`
-4. `若传递此参数，分页参数(Limit,Offset)无效`
-
-
-[点击查看模板Id在控制台上的位置](https://qcloudimg.tencent-cloud.cn/raw/e988be12bf28a89b4716aed4502c2e02.png)
-
+        :param _TemplateIds: <p>合同模板ID数组，每一个合同模板ID为32位字符串,  最多支持100个模板的批量查询。</p><p>注意:<br>1.<code>此参数TemplateIds与TemplateId互为独立，若两者均传入，以TemplateId为准。</code></p><ol start="2"><li><code>请确保每个模板均正确且属于当前企业，若有任一模板不存在，则返回错误。</code></li><li><code>若传递此参数，分页参数(Limit,Offset)无效</code></li></ol><p><a href="https://qcloudimg.tencent-cloud.cn/raw/e988be12bf28a89b4716aed4502c2e02.png">点击查看模板Id在控制台上的位置</a></p>
         :type TemplateIds: list of str
-        :param _Limit: 指定每页返回的数据条数，和Offset参数配合使用。
-
-注：`1.默认值为20，单页做大值为100。`
+        :param _Limit: <p>指定每页返回的数据条数，和Offset参数配合使用。</p><p>注：<code>1.默认值为20，单页做大值为100。</code></p>
         :type Limit: int
-        :param _Offset: 查询结果分页返回，指定从第几页返回数据，和Limit参数配合使用。
-
-注：`1.offset从0开始，即第一页为0。`
-`2.默认从第一页返回。`
+        :param _Offset: <p>偏移量:从 0 开始，最大20000。</p>
         :type Offset: int
-        :param _TemplateName: 模糊搜索的模板名称，注意是模板名的连续部分，长度不能超过200，可支持由中文、字母、数字和下划线组成字符串。
+        :param _TemplateName: <p>模糊搜索的模板名称，注意是模板名的连续部分，长度不能超过200，可支持由中文、字母、数字和下划线组成字符串。</p>
         :type TemplateName: str
-        :param _ChannelTemplateId: 对应第三方应用平台企业的模板ID，通过此值可以搜索由第三方应用平台模板ID下发或领取得到的子客模板列表。
+        :param _ChannelTemplateId: <p>对应第三方应用平台企业的模板ID，通过此值可以搜索由第三方应用平台模板ID下发或领取得到的子客模板列表。</p>
         :type ChannelTemplateId: str
-        :param _QueryAllComponents: 返回控件的范围, 是只返回发起方自己的还是所有参与方的
-
-<ul><li>**false**：（默认）只返回发起方控件</li>
-<li>**true**：返回所有参与方(包括发起方和签署方)控件</li></ul>
+        :param _QueryAllComponents: <p>返回控件的范围, 是只返回发起方自己的还是所有参与方的</p><ul><li>**false**：（默认）只返回发起方控件</li><li>**true**：返回所有参与方(包括发起方和签署方)控件</li></ul>
         :type QueryAllComponents: bool
-        :param _WithPreviewUrl: 是否获取模板预览链接。
-
-<ul><li>**false**：不获取（默认）</li>
-<li>**true**：获取</li></ul>
-
-设置为true之后， 返回参数PreviewUrl，为模板的H5预览链接,  有效期5分钟。可以通过浏览器打开此链接预览模板，或者嵌入到iframe中预览模板。
-
+        :param _WithPreviewUrl: <p>是否获取模板预览链接。</p><ul><li>**false**：不获取（默认）</li><li>**true**：获取</li></ul><p>设置为true之后， 返回参数PreviewUrl，为模板的H5预览链接,  有效期5分钟。可以通过浏览器打开此链接预览模板，或者嵌入到iframe中预览模板。</p>
         :type WithPreviewUrl: bool
-        :param _WithPdfUrl: 是否获取模板的PDF文件链接。
-
-<ul><li>**false**：不获取（默认）</li>
-<li>**true**：获取</li></ul>
-
-设置为true之后， 返回参数PdfUrl，为模板PDF文件链接，有效期5分钟, 可以用于将PDF文件下载到本地
-
-注: `此功能需要开通功能白名单【第三方应用集成企业获取模板PDF下载链接】，使用前请联系对接的客户经理沟通。`
+        :param _WithPdfUrl: <p>是否获取模板的PDF文件链接。</p><ul><li>**false**：不获取（默认）</li><li>**true**：获取</li></ul><p>设置为true之后， 返回参数PdfUrl，为模板PDF文件链接，有效期5分钟, 可以用于将PDF文件下载到本地</p><p>注: <code>此功能需要开通功能白名单【第三方应用集成企业获取模板PDF下载链接】，使用前请联系对接的客户经理沟通。</code></p>
         :type WithPdfUrl: bool
-        :param _Operator: 操作者的信息
+        :param _Operator: <p>操作者的信息</p>
         :type Operator: :class:`tencentcloud.essbasic.v20210526.models.UserInfo`
-        :param _UserFlowTypeId: 用户合同类型id
+        :param _UserFlowTypeId: <p>用户合同类型id</p>
         :type UserFlowTypeId: str
         """
         self._Agent = None
@@ -20559,15 +20358,7 @@ class DescribeTemplatesRequest(AbstractModel):
 
     @property
     def Agent(self):
-        r"""关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
-
-此接口下面信息必填。
-<ul>
-<li>渠道应用标识:  Agent.AppId</li>
-<li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId</li>
-<li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li>
-</ul>
-第三方平台子客企业和员工必须已经经过实名认证
+        r"""<p>关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。</p><p>此接口下面信息必填。</p><ul><li>渠道应用标识:  Agent.AppId</li><li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId</li><li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li></ul>第三方平台子客企业和员工必须已经经过实名认证
         :rtype: :class:`tencentcloud.essbasic.v20210526.models.Agent`
         """
         return self._Agent
@@ -20578,11 +20369,7 @@ class DescribeTemplatesRequest(AbstractModel):
 
     @property
     def TemplateId(self):
-        r"""合同模板ID，为32位字符串。
-
-可以通过<a href="https://qian.tencent.com/developers/partnerApis/accounts/CreateConsoleLoginUrl" target="_blank">生成子客登录链接</a>登录企业控制台, 在企业模板中得到合同模板ID。
-
-[点击查看模板Id在控制台上的位置](https://qcloudimg.tencent-cloud.cn/raw/e988be12bf28a89b4716aed4502c2e02.png)
+        r"""<p>合同模板ID，为32位字符串。</p><p>可以通过<a href="https://qian.tencent.com/developers/partnerApis/accounts/CreateConsoleLoginUrl" target="_blank">生成子客登录链接</a>登录企业控制台, 在企业模板中得到合同模板ID。</p><p><a href="https://qcloudimg.tencent-cloud.cn/raw/e988be12bf28a89b4716aed4502c2e02.png">点击查看模板Id在控制台上的位置</a></p>
         :rtype: str
         """
         return self._TemplateId
@@ -20593,10 +20380,7 @@ class DescribeTemplatesRequest(AbstractModel):
 
     @property
     def ContentType(self):
-        r"""查询模板的内容
-
-<ul><li>**0**：（默认）模板列表及详情</li>
-<li>**1**：仅模板列表, 不会返回模板中的签署控件, 填写控件, 参与方角色列表等信息</li></ul>
+        r"""<p>查询模板的内容</p><ul><li>**0**：（默认）模板列表及详情</li><li>**1**：仅模板列表, 不会返回模板中的签署控件, 填写控件, 参与方角色列表等信息</li></ul>
         :rtype: int
         """
         return self._ContentType
@@ -20607,16 +20391,7 @@ class DescribeTemplatesRequest(AbstractModel):
 
     @property
     def TemplateIds(self):
-        r"""合同模板ID数组，每一个合同模板ID为32位字符串,  最多支持100个模板的批量查询。
-
-注意: 
-1.` 此参数TemplateIds与TemplateId互为独立，若两者均传入，以TemplateId为准。`
-2. `请确保每个模板均正确且属于当前企业，若有任一模板不存在，则返回错误。`
-4. `若传递此参数，分页参数(Limit,Offset)无效`
-
-
-[点击查看模板Id在控制台上的位置](https://qcloudimg.tencent-cloud.cn/raw/e988be12bf28a89b4716aed4502c2e02.png)
-
+        r"""<p>合同模板ID数组，每一个合同模板ID为32位字符串,  最多支持100个模板的批量查询。</p><p>注意:<br>1.<code>此参数TemplateIds与TemplateId互为独立，若两者均传入，以TemplateId为准。</code></p><ol start="2"><li><code>请确保每个模板均正确且属于当前企业，若有任一模板不存在，则返回错误。</code></li><li><code>若传递此参数，分页参数(Limit,Offset)无效</code></li></ol><p><a href="https://qcloudimg.tencent-cloud.cn/raw/e988be12bf28a89b4716aed4502c2e02.png">点击查看模板Id在控制台上的位置</a></p>
         :rtype: list of str
         """
         return self._TemplateIds
@@ -20627,9 +20402,7 @@ class DescribeTemplatesRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""指定每页返回的数据条数，和Offset参数配合使用。
-
-注：`1.默认值为20，单页做大值为100。`
+        r"""<p>指定每页返回的数据条数，和Offset参数配合使用。</p><p>注：<code>1.默认值为20，单页做大值为100。</code></p>
         :rtype: int
         """
         return self._Limit
@@ -20640,10 +20413,7 @@ class DescribeTemplatesRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""查询结果分页返回，指定从第几页返回数据，和Limit参数配合使用。
-
-注：`1.offset从0开始，即第一页为0。`
-`2.默认从第一页返回。`
+        r"""<p>偏移量:从 0 开始，最大20000。</p>
         :rtype: int
         """
         return self._Offset
@@ -20654,7 +20424,7 @@ class DescribeTemplatesRequest(AbstractModel):
 
     @property
     def TemplateName(self):
-        r"""模糊搜索的模板名称，注意是模板名的连续部分，长度不能超过200，可支持由中文、字母、数字和下划线组成字符串。
+        r"""<p>模糊搜索的模板名称，注意是模板名的连续部分，长度不能超过200，可支持由中文、字母、数字和下划线组成字符串。</p>
         :rtype: str
         """
         return self._TemplateName
@@ -20665,7 +20435,7 @@ class DescribeTemplatesRequest(AbstractModel):
 
     @property
     def ChannelTemplateId(self):
-        r"""对应第三方应用平台企业的模板ID，通过此值可以搜索由第三方应用平台模板ID下发或领取得到的子客模板列表。
+        r"""<p>对应第三方应用平台企业的模板ID，通过此值可以搜索由第三方应用平台模板ID下发或领取得到的子客模板列表。</p>
         :rtype: str
         """
         return self._ChannelTemplateId
@@ -20676,10 +20446,7 @@ class DescribeTemplatesRequest(AbstractModel):
 
     @property
     def QueryAllComponents(self):
-        r"""返回控件的范围, 是只返回发起方自己的还是所有参与方的
-
-<ul><li>**false**：（默认）只返回发起方控件</li>
-<li>**true**：返回所有参与方(包括发起方和签署方)控件</li></ul>
+        r"""<p>返回控件的范围, 是只返回发起方自己的还是所有参与方的</p><ul><li>**false**：（默认）只返回发起方控件</li><li>**true**：返回所有参与方(包括发起方和签署方)控件</li></ul>
         :rtype: bool
         """
         return self._QueryAllComponents
@@ -20690,13 +20457,7 @@ class DescribeTemplatesRequest(AbstractModel):
 
     @property
     def WithPreviewUrl(self):
-        r"""是否获取模板预览链接。
-
-<ul><li>**false**：不获取（默认）</li>
-<li>**true**：获取</li></ul>
-
-设置为true之后， 返回参数PreviewUrl，为模板的H5预览链接,  有效期5分钟。可以通过浏览器打开此链接预览模板，或者嵌入到iframe中预览模板。
-
+        r"""<p>是否获取模板预览链接。</p><ul><li>**false**：不获取（默认）</li><li>**true**：获取</li></ul><p>设置为true之后， 返回参数PreviewUrl，为模板的H5预览链接,  有效期5分钟。可以通过浏览器打开此链接预览模板，或者嵌入到iframe中预览模板。</p>
         :rtype: bool
         """
         return self._WithPreviewUrl
@@ -20707,14 +20468,7 @@ class DescribeTemplatesRequest(AbstractModel):
 
     @property
     def WithPdfUrl(self):
-        r"""是否获取模板的PDF文件链接。
-
-<ul><li>**false**：不获取（默认）</li>
-<li>**true**：获取</li></ul>
-
-设置为true之后， 返回参数PdfUrl，为模板PDF文件链接，有效期5分钟, 可以用于将PDF文件下载到本地
-
-注: `此功能需要开通功能白名单【第三方应用集成企业获取模板PDF下载链接】，使用前请联系对接的客户经理沟通。`
+        r"""<p>是否获取模板的PDF文件链接。</p><ul><li>**false**：不获取（默认）</li><li>**true**：获取</li></ul><p>设置为true之后， 返回参数PdfUrl，为模板PDF文件链接，有效期5分钟, 可以用于将PDF文件下载到本地</p><p>注: <code>此功能需要开通功能白名单【第三方应用集成企业获取模板PDF下载链接】，使用前请联系对接的客户经理沟通。</code></p>
         :rtype: bool
         """
         return self._WithPdfUrl
@@ -20727,7 +20481,7 @@ class DescribeTemplatesRequest(AbstractModel):
     def Operator(self):
         warnings.warn("parameter `Operator` is deprecated", DeprecationWarning) 
 
-        r"""操作者的信息
+        r"""<p>操作者的信息</p>
         :rtype: :class:`tencentcloud.essbasic.v20210526.models.UserInfo`
         """
         return self._Operator
@@ -20740,7 +20494,7 @@ class DescribeTemplatesRequest(AbstractModel):
 
     @property
     def UserFlowTypeId(self):
-        r"""用户合同类型id
+        r"""<p>用户合同类型id</p>
         :rtype: str
         """
         return self._UserFlowTypeId
@@ -20785,13 +20539,13 @@ class DescribeTemplatesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Templates: 模板详情列表数据
+        :param _Templates: <p>模板详情列表数据</p>
         :type Templates: list of TemplateInfo
-        :param _TotalCount: 查询到的模板总数
+        :param _TotalCount: <p>查询到的模板总数</p>
         :type TotalCount: int
-        :param _Limit: 每页返回的数据条数
+        :param _Limit: <p>每页返回的数据条数</p>
         :type Limit: int
-        :param _Offset: 查询结果分页返回，此处指定第几页。页码从0开始，即首页为0。
+        :param _Offset: <p>偏移量:从 0 开始，最大20000。</p>
         :type Offset: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -20804,7 +20558,7 @@ class DescribeTemplatesResponse(AbstractModel):
 
     @property
     def Templates(self):
-        r"""模板详情列表数据
+        r"""<p>模板详情列表数据</p>
         :rtype: list of TemplateInfo
         """
         return self._Templates
@@ -20815,7 +20569,7 @@ class DescribeTemplatesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        r"""查询到的模板总数
+        r"""<p>查询到的模板总数</p>
         :rtype: int
         """
         return self._TotalCount
@@ -20826,7 +20580,7 @@ class DescribeTemplatesResponse(AbstractModel):
 
     @property
     def Limit(self):
-        r"""每页返回的数据条数
+        r"""<p>每页返回的数据条数</p>
         :rtype: int
         """
         return self._Limit
@@ -20837,7 +20591,7 @@ class DescribeTemplatesResponse(AbstractModel):
 
     @property
     def Offset(self):
-        r"""查询结果分页返回，此处指定第几页。页码从0开始，即首页为0。
+        r"""<p>偏移量:从 0 开始，最大20000。</p>
         :rtype: int
         """
         return self._Offset

@@ -25214,6 +25214,8 @@ class CreateAigcVideoRedrawTaskRequest(AbstractModel):
         :type SubAppId: int
         :param _FileInfo: <p>AIGC 视频转绘任务的输入视频的文件信息。输入视频时长需短于 90 秒，大小在2GB内。</p>
         :type FileInfo: :class:`tencentcloud.vod.v20180717.models.AigcVideoRedrawTaskInputFileInfo`
+        :param _TaskInfo: <p>AIGC 视频转绘任务参数信息。</p>
+        :type TaskInfo: :class:`tencentcloud.vod.v20180717.models.AigcVideoRedrawTaskInfo`
         :param _OutputConfig: <p>AIGC 视频转绘任务的输出媒体文件配置。</p>
         :type OutputConfig: :class:`tencentcloud.vod.v20180717.models.AigcVideoRedrawOutputConfig`
         :param _SessionId: <p>用于去重的识别码，如果三天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。</p>
@@ -25227,6 +25229,7 @@ class CreateAigcVideoRedrawTaskRequest(AbstractModel):
         """
         self._SubAppId = None
         self._FileInfo = None
+        self._TaskInfo = None
         self._OutputConfig = None
         self._SessionId = None
         self._SessionContext = None
@@ -25254,6 +25257,17 @@ class CreateAigcVideoRedrawTaskRequest(AbstractModel):
     @FileInfo.setter
     def FileInfo(self, FileInfo):
         self._FileInfo = FileInfo
+
+    @property
+    def TaskInfo(self):
+        r"""<p>AIGC 视频转绘任务参数信息。</p>
+        :rtype: :class:`tencentcloud.vod.v20180717.models.AigcVideoRedrawTaskInfo`
+        """
+        return self._TaskInfo
+
+    @TaskInfo.setter
+    def TaskInfo(self, TaskInfo):
+        self._TaskInfo = TaskInfo
 
     @property
     def OutputConfig(self):
@@ -25316,6 +25330,9 @@ class CreateAigcVideoRedrawTaskRequest(AbstractModel):
         if params.get("FileInfo") is not None:
             self._FileInfo = AigcVideoRedrawTaskInputFileInfo()
             self._FileInfo._deserialize(params.get("FileInfo"))
+        if params.get("TaskInfo") is not None:
+            self._TaskInfo = AigcVideoRedrawTaskInfo()
+            self._TaskInfo._deserialize(params.get("TaskInfo"))
         if params.get("OutputConfig") is not None:
             self._OutputConfig = AigcVideoRedrawOutputConfig()
             self._OutputConfig._deserialize(params.get("OutputConfig"))
@@ -28850,38 +28867,44 @@ class CreateQualityInspectTemplateRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SubAppId: <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
+        :param _SubAppId: <p><b>点播<a href="/document/product/266/14574">应用</a> ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b></p>
         :type SubAppId: int
-        :param _Name: 音画质检测模板名称。
+        :param _Name: <p>音画质检测模板名称。</p>
         :type Name: str
-        :param _Comment: 音画质检测模板描述。
+        :param _Comment: <p>音画质检测模板描述。</p>
         :type Comment: str
-        :param _ScreenshotInterval: 截帧间隔，单位为秒，最小值为 1。当不填时，默认截帧间隔为 1 秒。
+        :param _Configs: <p>音画质检测配置参数。</p>
+        :type Configs: list of QualityInspectConfig
+        :param _Strategy: <p>音画质检测的抽检策略参数。</p>
+        :type Strategy: :class:`tencentcloud.vod.v20180717.models.QualityInspectStrategy`
+        :param _ScreenshotInterval: <p>（不推荐，使用 Configs 替代）截帧间隔，单位为秒，最小值为 1。当不填时，默认截帧间隔为 1 秒。</p>
         :type ScreenshotInterval: float
-        :param _JitterConfigure: 视频画面抖动重影检测的控制参数。
+        :param _JitterConfigure: <p>（不推荐，使用 Configs 替代）视频画面抖动重影检测的控制参数。</p>
         :type JitterConfigure: :class:`tencentcloud.vod.v20180717.models.JitterConfigureInfo`
-        :param _BlurConfigure: 视频画面模糊检测的控制参数。
+        :param _BlurConfigure: <p>（不推荐，使用 Configs 替代）视频画面模糊检测的控制参数。</p>
         :type BlurConfigure: :class:`tencentcloud.vod.v20180717.models.BlurConfigureInfo`
-        :param _AbnormalLightingConfigure: 视频画面低光、过曝检测的控制参数。
+        :param _AbnormalLightingConfigure: <p>（不推荐，使用 Configs 替代）视频画面低光、过曝检测的控制参数。</p>
         :type AbnormalLightingConfigure: :class:`tencentcloud.vod.v20180717.models.AbnormalLightingConfigureInfo`
-        :param _CrashScreenConfigure: 视频画面花屏检测的控制参数。
+        :param _CrashScreenConfigure: <p>（不推荐，使用 Configs 替代）视频画面花屏检测的控制参数。</p>
         :type CrashScreenConfigure: :class:`tencentcloud.vod.v20180717.models.CrashScreenConfigureInfo`
-        :param _BlackWhiteEdgeConfigure: 视频画面黑边、白边、黑屏、白屏检测的控制参数。
+        :param _BlackWhiteEdgeConfigure: <p>（不推荐，使用 Configs 替代）视频画面黑边、白边、黑屏、白屏检测的控制参数。</p>
         :type BlackWhiteEdgeConfigure: :class:`tencentcloud.vod.v20180717.models.BlackWhiteEdgeConfigureInfo`
-        :param _NoiseConfigure: 视频画面噪点检测的控制参数。
+        :param _NoiseConfigure: <p>（不推荐，使用 Configs 替代）视频画面噪点检测的控制参数。</p>
         :type NoiseConfigure: :class:`tencentcloud.vod.v20180717.models.NoiseConfigureInfo`
-        :param _MosaicConfigure: 视频画面马赛克检测的控制参数。
+        :param _MosaicConfigure: <p>（不推荐，使用 Configs 替代）视频画面马赛克检测的控制参数。</p>
         :type MosaicConfigure: :class:`tencentcloud.vod.v20180717.models.MosaicConfigureInfo`
-        :param _QRCodeConfigure: 视频画面二维码检测的控制参数。
+        :param _QRCodeConfigure: <p>（不推荐，使用 Configs 替代）视频画面二维码检测的控制参数。</p>
         :type QRCodeConfigure: :class:`tencentcloud.vod.v20180717.models.QRCodeConfigureInfo`
-        :param _VoiceConfigure: 音频（静音、低音、爆音）检测的控制参数。
+        :param _VoiceConfigure: <p>（不推荐，使用 Configs 替代）音频（静音、低音、爆音）检测的控制参数。</p>
         :type VoiceConfigure: :class:`tencentcloud.vod.v20180717.models.VoiceConfigureInfo`
-        :param _QualityEvaluationConfigure: 视频画面质量评价的控制参数。
+        :param _QualityEvaluationConfigure: <p>（不推荐，使用 Configs 替代）视频画面质量评价的控制参数。</p>
         :type QualityEvaluationConfigure: :class:`tencentcloud.vod.v20180717.models.QualityEvaluationConfigureInfo`
         """
         self._SubAppId = None
         self._Name = None
         self._Comment = None
+        self._Configs = None
+        self._Strategy = None
         self._ScreenshotInterval = None
         self._JitterConfigure = None
         self._BlurConfigure = None
@@ -28896,7 +28919,7 @@ class CreateQualityInspectTemplateRequest(AbstractModel):
 
     @property
     def SubAppId(self):
-        r"""<b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
+        r"""<p><b>点播<a href="/document/product/266/14574">应用</a> ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b></p>
         :rtype: int
         """
         return self._SubAppId
@@ -28907,7 +28930,7 @@ class CreateQualityInspectTemplateRequest(AbstractModel):
 
     @property
     def Name(self):
-        r"""音画质检测模板名称。
+        r"""<p>音画质检测模板名称。</p>
         :rtype: str
         """
         return self._Name
@@ -28918,7 +28941,7 @@ class CreateQualityInspectTemplateRequest(AbstractModel):
 
     @property
     def Comment(self):
-        r"""音画质检测模板描述。
+        r"""<p>音画质检测模板描述。</p>
         :rtype: str
         """
         return self._Comment
@@ -28928,8 +28951,30 @@ class CreateQualityInspectTemplateRequest(AbstractModel):
         self._Comment = Comment
 
     @property
+    def Configs(self):
+        r"""<p>音画质检测配置参数。</p>
+        :rtype: list of QualityInspectConfig
+        """
+        return self._Configs
+
+    @Configs.setter
+    def Configs(self, Configs):
+        self._Configs = Configs
+
+    @property
+    def Strategy(self):
+        r"""<p>音画质检测的抽检策略参数。</p>
+        :rtype: :class:`tencentcloud.vod.v20180717.models.QualityInspectStrategy`
+        """
+        return self._Strategy
+
+    @Strategy.setter
+    def Strategy(self, Strategy):
+        self._Strategy = Strategy
+
+    @property
     def ScreenshotInterval(self):
-        r"""截帧间隔，单位为秒，最小值为 1。当不填时，默认截帧间隔为 1 秒。
+        r"""<p>（不推荐，使用 Configs 替代）截帧间隔，单位为秒，最小值为 1。当不填时，默认截帧间隔为 1 秒。</p>
         :rtype: float
         """
         return self._ScreenshotInterval
@@ -28940,7 +28985,7 @@ class CreateQualityInspectTemplateRequest(AbstractModel):
 
     @property
     def JitterConfigure(self):
-        r"""视频画面抖动重影检测的控制参数。
+        r"""<p>（不推荐，使用 Configs 替代）视频画面抖动重影检测的控制参数。</p>
         :rtype: :class:`tencentcloud.vod.v20180717.models.JitterConfigureInfo`
         """
         return self._JitterConfigure
@@ -28951,7 +28996,7 @@ class CreateQualityInspectTemplateRequest(AbstractModel):
 
     @property
     def BlurConfigure(self):
-        r"""视频画面模糊检测的控制参数。
+        r"""<p>（不推荐，使用 Configs 替代）视频画面模糊检测的控制参数。</p>
         :rtype: :class:`tencentcloud.vod.v20180717.models.BlurConfigureInfo`
         """
         return self._BlurConfigure
@@ -28962,7 +29007,7 @@ class CreateQualityInspectTemplateRequest(AbstractModel):
 
     @property
     def AbnormalLightingConfigure(self):
-        r"""视频画面低光、过曝检测的控制参数。
+        r"""<p>（不推荐，使用 Configs 替代）视频画面低光、过曝检测的控制参数。</p>
         :rtype: :class:`tencentcloud.vod.v20180717.models.AbnormalLightingConfigureInfo`
         """
         return self._AbnormalLightingConfigure
@@ -28973,7 +29018,7 @@ class CreateQualityInspectTemplateRequest(AbstractModel):
 
     @property
     def CrashScreenConfigure(self):
-        r"""视频画面花屏检测的控制参数。
+        r"""<p>（不推荐，使用 Configs 替代）视频画面花屏检测的控制参数。</p>
         :rtype: :class:`tencentcloud.vod.v20180717.models.CrashScreenConfigureInfo`
         """
         return self._CrashScreenConfigure
@@ -28984,7 +29029,7 @@ class CreateQualityInspectTemplateRequest(AbstractModel):
 
     @property
     def BlackWhiteEdgeConfigure(self):
-        r"""视频画面黑边、白边、黑屏、白屏检测的控制参数。
+        r"""<p>（不推荐，使用 Configs 替代）视频画面黑边、白边、黑屏、白屏检测的控制参数。</p>
         :rtype: :class:`tencentcloud.vod.v20180717.models.BlackWhiteEdgeConfigureInfo`
         """
         return self._BlackWhiteEdgeConfigure
@@ -28995,7 +29040,7 @@ class CreateQualityInspectTemplateRequest(AbstractModel):
 
     @property
     def NoiseConfigure(self):
-        r"""视频画面噪点检测的控制参数。
+        r"""<p>（不推荐，使用 Configs 替代）视频画面噪点检测的控制参数。</p>
         :rtype: :class:`tencentcloud.vod.v20180717.models.NoiseConfigureInfo`
         """
         return self._NoiseConfigure
@@ -29006,7 +29051,7 @@ class CreateQualityInspectTemplateRequest(AbstractModel):
 
     @property
     def MosaicConfigure(self):
-        r"""视频画面马赛克检测的控制参数。
+        r"""<p>（不推荐，使用 Configs 替代）视频画面马赛克检测的控制参数。</p>
         :rtype: :class:`tencentcloud.vod.v20180717.models.MosaicConfigureInfo`
         """
         return self._MosaicConfigure
@@ -29017,7 +29062,7 @@ class CreateQualityInspectTemplateRequest(AbstractModel):
 
     @property
     def QRCodeConfigure(self):
-        r"""视频画面二维码检测的控制参数。
+        r"""<p>（不推荐，使用 Configs 替代）视频画面二维码检测的控制参数。</p>
         :rtype: :class:`tencentcloud.vod.v20180717.models.QRCodeConfigureInfo`
         """
         return self._QRCodeConfigure
@@ -29028,7 +29073,7 @@ class CreateQualityInspectTemplateRequest(AbstractModel):
 
     @property
     def VoiceConfigure(self):
-        r"""音频（静音、低音、爆音）检测的控制参数。
+        r"""<p>（不推荐，使用 Configs 替代）音频（静音、低音、爆音）检测的控制参数。</p>
         :rtype: :class:`tencentcloud.vod.v20180717.models.VoiceConfigureInfo`
         """
         return self._VoiceConfigure
@@ -29039,7 +29084,7 @@ class CreateQualityInspectTemplateRequest(AbstractModel):
 
     @property
     def QualityEvaluationConfigure(self):
-        r"""视频画面质量评价的控制参数。
+        r"""<p>（不推荐，使用 Configs 替代）视频画面质量评价的控制参数。</p>
         :rtype: :class:`tencentcloud.vod.v20180717.models.QualityEvaluationConfigureInfo`
         """
         return self._QualityEvaluationConfigure
@@ -29053,6 +29098,15 @@ class CreateQualityInspectTemplateRequest(AbstractModel):
         self._SubAppId = params.get("SubAppId")
         self._Name = params.get("Name")
         self._Comment = params.get("Comment")
+        if params.get("Configs") is not None:
+            self._Configs = []
+            for item in params.get("Configs"):
+                obj = QualityInspectConfig()
+                obj._deserialize(item)
+                self._Configs.append(obj)
+        if params.get("Strategy") is not None:
+            self._Strategy = QualityInspectStrategy()
+            self._Strategy._deserialize(params.get("Strategy"))
         self._ScreenshotInterval = params.get("ScreenshotInterval")
         if params.get("JitterConfigure") is not None:
             self._JitterConfigure = JitterConfigureInfo()
@@ -29101,7 +29155,7 @@ class CreateQualityInspectTemplateResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Definition: 音画质检测模板 ID。
+        :param _Definition: <p>音画质检测模板 ID。</p>
         :type Definition: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -29111,7 +29165,7 @@ class CreateQualityInspectTemplateResponse(AbstractModel):
 
     @property
     def Definition(self):
-        r"""音画质检测模板 ID。
+        r"""<p>音画质检测模板 ID。</p>
         :rtype: int
         """
         return self._Definition
@@ -69519,41 +69573,47 @@ class ModifyQualityInspectTemplateRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Definition: 模板 ID。
+        :param _Definition: <p>模板 ID。</p>
         :type Definition: int
-        :param _SubAppId: <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
+        :param _SubAppId: <p><b>点播<a href="/document/product/266/14574">应用</a> ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b></p>
         :type SubAppId: int
-        :param _Name: 模板名称，长度限制：64 个字符。
+        :param _Name: <p>模板名称，长度限制：64 个字符。</p>
         :type Name: str
-        :param _Comment: 模板描述信息，长度限制：256 个字符。
+        :param _Comment: <p>模板描述信息，长度限制：256 个字符。</p>
         :type Comment: str
-        :param _ScreenshotInterval: 截帧间隔，单位为秒，最小值为 1。
+        :param _Configs: <p>音画质检测的配置参数。</p>
+        :type Configs: list of QualityInspectConfig
+        :param _Strategy: <p>音画质检测的抽检策略。</p>
+        :type Strategy: :class:`tencentcloud.vod.v20180717.models.QualityInspectStrategy`
+        :param _ScreenshotInterval: <p>（不推荐，使用 Configs 替代）截帧间隔，单位为秒，最小值为 1。</p>
         :type ScreenshotInterval: float
-        :param _JitterConfigure: 视频画面抖动重影检测的控制参数。
+        :param _JitterConfigure: <p>（不推荐，使用 Configs 替代）视频画面抖动重影检测的控制参数。</p>
         :type JitterConfigure: :class:`tencentcloud.vod.v20180717.models.JitterConfigureInfoForUpdate`
-        :param _BlurConfigure: 视频画面模糊检测的控制参数。
+        :param _BlurConfigure: <p>（不推荐，使用 Configs 替代）视频画面模糊检测的控制参数。</p>
         :type BlurConfigure: :class:`tencentcloud.vod.v20180717.models.BlurConfigureInfoForUpdate`
-        :param _AbnormalLightingConfigure: 视频画面低光、过曝检测的控制参数。
+        :param _AbnormalLightingConfigure: <p>（不推荐，使用 Configs 替代）视频画面低光、过曝检测的控制参数。</p>
         :type AbnormalLightingConfigure: :class:`tencentcloud.vod.v20180717.models.AbnormalLightingConfigureInfoForUpdate`
-        :param _CrashScreenConfigure: 视频画面花屏检测的控制参数。
+        :param _CrashScreenConfigure: <p>（不推荐，使用 Configs 替代）视频画面花屏检测的控制参数。</p>
         :type CrashScreenConfigure: :class:`tencentcloud.vod.v20180717.models.CrashScreenConfigureInfoForUpdate`
-        :param _BlackWhiteEdgeConfigure: 视频画面黑边、白边、黑屏、白屏检测的控制参数。
+        :param _BlackWhiteEdgeConfigure: <p>（不推荐，使用 Configs 替代）视频画面黑边、白边、黑屏、白屏检测的控制参数。</p>
         :type BlackWhiteEdgeConfigure: :class:`tencentcloud.vod.v20180717.models.BlackWhiteEdgeConfigureInfoForUpdate`
-        :param _NoiseConfigure: 视频画面噪点检测的控制参数。
+        :param _NoiseConfigure: <p>（不推荐，使用 Configs 替代）视频画面噪点检测的控制参数。</p>
         :type NoiseConfigure: :class:`tencentcloud.vod.v20180717.models.NoiseConfigureInfoForUpdate`
-        :param _MosaicConfigure: 视频画面马赛克检测的控制参数。
+        :param _MosaicConfigure: <p>（不推荐，使用 Configs 替代）视频画面马赛克检测的控制参数。</p>
         :type MosaicConfigure: :class:`tencentcloud.vod.v20180717.models.MosaicConfigureInfoForUpdate`
-        :param _QRCodeConfigure: 视频画面二维码检测的控制参数。
+        :param _QRCodeConfigure: <p>（不推荐，使用 Configs 替代）视频画面二维码检测的控制参数。</p>
         :type QRCodeConfigure: :class:`tencentcloud.vod.v20180717.models.QRCodeConfigureInfoForUpdate`
-        :param _VoiceConfigure: 音频（静音、低音、爆音）检测的控制参数。
+        :param _VoiceConfigure: <p>（不推荐，使用 Configs 替代）音频（静音、低音、爆音）检测的控制参数。</p>
         :type VoiceConfigure: :class:`tencentcloud.vod.v20180717.models.VoiceConfigureInfoForUpdate`
-        :param _QualityEvaluationConfigure: 视频画面质量评价的控制参数。
+        :param _QualityEvaluationConfigure: <p>（不推荐，使用 Configs 替代）视频画面质量评价的控制参数。</p>
         :type QualityEvaluationConfigure: :class:`tencentcloud.vod.v20180717.models.QualityEvaluationConfigureInfoForUpdate`
         """
         self._Definition = None
         self._SubAppId = None
         self._Name = None
         self._Comment = None
+        self._Configs = None
+        self._Strategy = None
         self._ScreenshotInterval = None
         self._JitterConfigure = None
         self._BlurConfigure = None
@@ -69568,7 +69628,7 @@ class ModifyQualityInspectTemplateRequest(AbstractModel):
 
     @property
     def Definition(self):
-        r"""模板 ID。
+        r"""<p>模板 ID。</p>
         :rtype: int
         """
         return self._Definition
@@ -69579,7 +69639,7 @@ class ModifyQualityInspectTemplateRequest(AbstractModel):
 
     @property
     def SubAppId(self):
-        r"""<b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
+        r"""<p><b>点播<a href="/document/product/266/14574">应用</a> ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b></p>
         :rtype: int
         """
         return self._SubAppId
@@ -69590,7 +69650,7 @@ class ModifyQualityInspectTemplateRequest(AbstractModel):
 
     @property
     def Name(self):
-        r"""模板名称，长度限制：64 个字符。
+        r"""<p>模板名称，长度限制：64 个字符。</p>
         :rtype: str
         """
         return self._Name
@@ -69601,7 +69661,7 @@ class ModifyQualityInspectTemplateRequest(AbstractModel):
 
     @property
     def Comment(self):
-        r"""模板描述信息，长度限制：256 个字符。
+        r"""<p>模板描述信息，长度限制：256 个字符。</p>
         :rtype: str
         """
         return self._Comment
@@ -69611,8 +69671,30 @@ class ModifyQualityInspectTemplateRequest(AbstractModel):
         self._Comment = Comment
 
     @property
+    def Configs(self):
+        r"""<p>音画质检测的配置参数。</p>
+        :rtype: list of QualityInspectConfig
+        """
+        return self._Configs
+
+    @Configs.setter
+    def Configs(self, Configs):
+        self._Configs = Configs
+
+    @property
+    def Strategy(self):
+        r"""<p>音画质检测的抽检策略。</p>
+        :rtype: :class:`tencentcloud.vod.v20180717.models.QualityInspectStrategy`
+        """
+        return self._Strategy
+
+    @Strategy.setter
+    def Strategy(self, Strategy):
+        self._Strategy = Strategy
+
+    @property
     def ScreenshotInterval(self):
-        r"""截帧间隔，单位为秒，最小值为 1。
+        r"""<p>（不推荐，使用 Configs 替代）截帧间隔，单位为秒，最小值为 1。</p>
         :rtype: float
         """
         return self._ScreenshotInterval
@@ -69623,7 +69705,7 @@ class ModifyQualityInspectTemplateRequest(AbstractModel):
 
     @property
     def JitterConfigure(self):
-        r"""视频画面抖动重影检测的控制参数。
+        r"""<p>（不推荐，使用 Configs 替代）视频画面抖动重影检测的控制参数。</p>
         :rtype: :class:`tencentcloud.vod.v20180717.models.JitterConfigureInfoForUpdate`
         """
         return self._JitterConfigure
@@ -69634,7 +69716,7 @@ class ModifyQualityInspectTemplateRequest(AbstractModel):
 
     @property
     def BlurConfigure(self):
-        r"""视频画面模糊检测的控制参数。
+        r"""<p>（不推荐，使用 Configs 替代）视频画面模糊检测的控制参数。</p>
         :rtype: :class:`tencentcloud.vod.v20180717.models.BlurConfigureInfoForUpdate`
         """
         return self._BlurConfigure
@@ -69645,7 +69727,7 @@ class ModifyQualityInspectTemplateRequest(AbstractModel):
 
     @property
     def AbnormalLightingConfigure(self):
-        r"""视频画面低光、过曝检测的控制参数。
+        r"""<p>（不推荐，使用 Configs 替代）视频画面低光、过曝检测的控制参数。</p>
         :rtype: :class:`tencentcloud.vod.v20180717.models.AbnormalLightingConfigureInfoForUpdate`
         """
         return self._AbnormalLightingConfigure
@@ -69656,7 +69738,7 @@ class ModifyQualityInspectTemplateRequest(AbstractModel):
 
     @property
     def CrashScreenConfigure(self):
-        r"""视频画面花屏检测的控制参数。
+        r"""<p>（不推荐，使用 Configs 替代）视频画面花屏检测的控制参数。</p>
         :rtype: :class:`tencentcloud.vod.v20180717.models.CrashScreenConfigureInfoForUpdate`
         """
         return self._CrashScreenConfigure
@@ -69667,7 +69749,7 @@ class ModifyQualityInspectTemplateRequest(AbstractModel):
 
     @property
     def BlackWhiteEdgeConfigure(self):
-        r"""视频画面黑边、白边、黑屏、白屏检测的控制参数。
+        r"""<p>（不推荐，使用 Configs 替代）视频画面黑边、白边、黑屏、白屏检测的控制参数。</p>
         :rtype: :class:`tencentcloud.vod.v20180717.models.BlackWhiteEdgeConfigureInfoForUpdate`
         """
         return self._BlackWhiteEdgeConfigure
@@ -69678,7 +69760,7 @@ class ModifyQualityInspectTemplateRequest(AbstractModel):
 
     @property
     def NoiseConfigure(self):
-        r"""视频画面噪点检测的控制参数。
+        r"""<p>（不推荐，使用 Configs 替代）视频画面噪点检测的控制参数。</p>
         :rtype: :class:`tencentcloud.vod.v20180717.models.NoiseConfigureInfoForUpdate`
         """
         return self._NoiseConfigure
@@ -69689,7 +69771,7 @@ class ModifyQualityInspectTemplateRequest(AbstractModel):
 
     @property
     def MosaicConfigure(self):
-        r"""视频画面马赛克检测的控制参数。
+        r"""<p>（不推荐，使用 Configs 替代）视频画面马赛克检测的控制参数。</p>
         :rtype: :class:`tencentcloud.vod.v20180717.models.MosaicConfigureInfoForUpdate`
         """
         return self._MosaicConfigure
@@ -69700,7 +69782,7 @@ class ModifyQualityInspectTemplateRequest(AbstractModel):
 
     @property
     def QRCodeConfigure(self):
-        r"""视频画面二维码检测的控制参数。
+        r"""<p>（不推荐，使用 Configs 替代）视频画面二维码检测的控制参数。</p>
         :rtype: :class:`tencentcloud.vod.v20180717.models.QRCodeConfigureInfoForUpdate`
         """
         return self._QRCodeConfigure
@@ -69711,7 +69793,7 @@ class ModifyQualityInspectTemplateRequest(AbstractModel):
 
     @property
     def VoiceConfigure(self):
-        r"""音频（静音、低音、爆音）检测的控制参数。
+        r"""<p>（不推荐，使用 Configs 替代）音频（静音、低音、爆音）检测的控制参数。</p>
         :rtype: :class:`tencentcloud.vod.v20180717.models.VoiceConfigureInfoForUpdate`
         """
         return self._VoiceConfigure
@@ -69722,7 +69804,7 @@ class ModifyQualityInspectTemplateRequest(AbstractModel):
 
     @property
     def QualityEvaluationConfigure(self):
-        r"""视频画面质量评价的控制参数。
+        r"""<p>（不推荐，使用 Configs 替代）视频画面质量评价的控制参数。</p>
         :rtype: :class:`tencentcloud.vod.v20180717.models.QualityEvaluationConfigureInfoForUpdate`
         """
         return self._QualityEvaluationConfigure
@@ -69737,6 +69819,15 @@ class ModifyQualityInspectTemplateRequest(AbstractModel):
         self._SubAppId = params.get("SubAppId")
         self._Name = params.get("Name")
         self._Comment = params.get("Comment")
+        if params.get("Configs") is not None:
+            self._Configs = []
+            for item in params.get("Configs"):
+                obj = QualityInspectConfig()
+                obj._deserialize(item)
+                self._Configs.append(obj)
+        if params.get("Strategy") is not None:
+            self._Strategy = QualityInspectStrategy()
+            self._Strategy._deserialize(params.get("Strategy"))
         self._ScreenshotInterval = params.get("ScreenshotInterval")
         if params.get("JitterConfigure") is not None:
             self._JitterConfigure = JitterConfigureInfoForUpdate()
@@ -79991,6 +80082,198 @@ class QualityEvaluationConfigureInfoForUpdate(AbstractModel):
         
 
 
+class QualityInspectConfig(AbstractModel):
+    r"""音画质检测的控制参数配置。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Type: <p>检测项名称。</p><p>枚举值：</p><ul><li>LowEvaluation： 视频无参考评分（MOS）</li><li>AudioEvaluation： 音频无参考评分（MOS）</li><li>Mosaic： 马赛克检测</li><li>CrashScreen： 花屏检测</li><li>Blur： 模糊检测</li><li>Jitter： 抖动检测</li><li>Noise： 噪点检测</li><li>QRCode： 二维码检测</li><li>BarCode： 条形码检测</li><li>AppletCode： 小程序码检测</li><li>BlackWhiteEdge： 黑白边检测</li><li>SolidColorScreen： 纯色屏检测</li><li>LowLighting： 低光照</li><li>HighLighting： 过曝</li><li>NoVoice： 静音检测</li><li>LowVoice： 低音检测</li><li>HighVoice： 爆音检测</li><li>AudioNoise： 音频噪声检测</li><li>VideoResolutionChanged： 视频分辨率变化</li><li>AudioSampleRateChanged： 音频采样率变化</li><li>AudioChannelsChanged： 音频通道数变化</li><li>ParameterSetsChanged： 流参数集信息发生变化</li><li>DarOrSarInvalid： 视频的宽高比异常</li><li>TimestampFallback： DTS时间戳回退</li><li>DtsJitter： DTS抖动过大</li><li>PtsJitter： PTS抖动过大</li><li>AACDurationDeviation： AAC帧时间戳间隔不合理</li><li>AudioDroppingFrames： 音频丢帧</li><li>VideoDroppingFrames： 视频丢帧</li><li>AVTimestampInterleave： 音视频交织不合理</li><li>PtsLessThanDts： 媒体流的 pts 小于 dts</li><li>ReceiveFpsJitter： 网络接收帧率抖动过大</li><li>ReceiveFpsTooSmall： 网络接收视频帧率过小</li><li>FpsJitter： 通过PTS计算得到的流帧率抖动过大</li><li>StreamOpenFailed： 流打开失败</li><li>StreamEnd： 流结束</li><li>StreamParseFailed： 流解析失败</li><li>VideoFirstFrameNotIdr： 首帧不是IDR帧</li><li>StreamNALUError： NALU起始码错误</li><li>TsStreamNoAud： mpegts的H26x流缺失 AUD NALU</li><li>AudioStreamLack： 无音频流</li><li>VideoStreamLack： 无视频流</li><li>LackAudioRecover： 缺失音频流恢复</li><li>LackVideoRecover： 缺失视频流恢复</li><li>VideoBitrateOutofRange： 视频流码率(kbps)超出范围</li><li>AudioBitrateOutofRange： 音频流码率(kbps)超出范围</li><li>VideoDecodeFailed： 视频解码错误</li><li>AudioDecodeFailed： 音频解码错误</li><li>AudioOutOfPhase： 双通道音频相位相反</li><li>VideoDuplicatedFrame： 视频流中存在重复帧</li><li>AudioDuplicatedFrame： 音频流中存在重复帧</li><li>VideoRotation： 视频画面旋转</li><li>TsMultiPrograms： MPEG2-TS流有多个program</li><li>Mp4InvalidCodecFourcc： MP4中codec fourcc不符合Apple HLS要求</li><li>HLSBadM3u8Format： 无效的m3u8文件</li><li>HLSInvalidMasterM3u8： 无效的main m3u8文件</li><li>HLSInvalidMediaM3u8： 无效的media m3u8文件</li><li>HLSMasterM3u8Recommended： main m3u8缺少标准推荐的参数</li><li>HLSMediaM3u8Recommended： media m3u8缺少标准推荐的参数</li><li>HLSMediaM3u8DiscontinuityExist： media m3u8存在EXT-X-DISCONTINUITY</li><li>HLSMediaSegmentsStreamNumChange： 切片的流数目发生变化</li><li>HLSMediaSegmentsPTSJitterDeviation： 切片间PTS跳变且没有EXT-X-DISCONTINUITY</li><li>HLSMediaSegmentsDTSJitterDeviation： 切片间DTS跳变且没有EXT-X-DISCONTINUITY</li><li>TimecodeTrackExist： MP4存在tmcd轨道</li><li>BodyPoseCheck： 人体姿态异常</li><li>BodyDetailCheck： 人体细节异常</li><li>PhysicRulesCheck： 物理规律违反</li><li>ObjectConsistencyCheck： 物体一致性异常</li><li>FormatCheck： 格式异常</li><li>AudioReverb： 混响程度</li><li>AudioDiscontinuity： 音频不连续</li><li>AudioSpeechQuality： 语音清晰度</li><li>AudioHighLoudness： 响度失真</li><li>AudioLoudnessJitter： 音量变化剧烈</li><li>BackgroundMusic： 存在背景音乐</li><li>NoBackgroundMusic： 不存在背景音乐</li><li>VideoAesthetic： 视频美学评分</li><li>AudioVideoAsync： 音画不同步</li><li>AudioSubtitleAsync： 音频与字幕不同步</li></ul>
+        :type Type: str
+        :param _Switch: <p>能力配置开关。</p><p>枚举值：</p><ul><li>ON： 开启。</li><li>OFF： 关闭。</li></ul><p>默认值：ON</p>
+        :type Switch: str
+        :param _Sampling: <p>采样方式</p><p>枚举值：</p><ul><li>Time： 根据时间间隔采样。</li></ul>
+        :type Sampling: str
+        :param _IntervalTime: <p>采样间隔时间</p><p>单位：毫秒。</p>
+        :type IntervalTime: int
+        :param _Duration: <p>异常持续时间。</p><p>单位：毫秒。</p>
+        :type Duration: int
+        :param _Threshold: <p>检测项对应的阈值，不同检测项对应阈值不同。</p>
+        :type Threshold: str
+        """
+        self._Type = None
+        self._Switch = None
+        self._Sampling = None
+        self._IntervalTime = None
+        self._Duration = None
+        self._Threshold = None
+
+    @property
+    def Type(self):
+        r"""<p>检测项名称。</p><p>枚举值：</p><ul><li>LowEvaluation： 视频无参考评分（MOS）</li><li>AudioEvaluation： 音频无参考评分（MOS）</li><li>Mosaic： 马赛克检测</li><li>CrashScreen： 花屏检测</li><li>Blur： 模糊检测</li><li>Jitter： 抖动检测</li><li>Noise： 噪点检测</li><li>QRCode： 二维码检测</li><li>BarCode： 条形码检测</li><li>AppletCode： 小程序码检测</li><li>BlackWhiteEdge： 黑白边检测</li><li>SolidColorScreen： 纯色屏检测</li><li>LowLighting： 低光照</li><li>HighLighting： 过曝</li><li>NoVoice： 静音检测</li><li>LowVoice： 低音检测</li><li>HighVoice： 爆音检测</li><li>AudioNoise： 音频噪声检测</li><li>VideoResolutionChanged： 视频分辨率变化</li><li>AudioSampleRateChanged： 音频采样率变化</li><li>AudioChannelsChanged： 音频通道数变化</li><li>ParameterSetsChanged： 流参数集信息发生变化</li><li>DarOrSarInvalid： 视频的宽高比异常</li><li>TimestampFallback： DTS时间戳回退</li><li>DtsJitter： DTS抖动过大</li><li>PtsJitter： PTS抖动过大</li><li>AACDurationDeviation： AAC帧时间戳间隔不合理</li><li>AudioDroppingFrames： 音频丢帧</li><li>VideoDroppingFrames： 视频丢帧</li><li>AVTimestampInterleave： 音视频交织不合理</li><li>PtsLessThanDts： 媒体流的 pts 小于 dts</li><li>ReceiveFpsJitter： 网络接收帧率抖动过大</li><li>ReceiveFpsTooSmall： 网络接收视频帧率过小</li><li>FpsJitter： 通过PTS计算得到的流帧率抖动过大</li><li>StreamOpenFailed： 流打开失败</li><li>StreamEnd： 流结束</li><li>StreamParseFailed： 流解析失败</li><li>VideoFirstFrameNotIdr： 首帧不是IDR帧</li><li>StreamNALUError： NALU起始码错误</li><li>TsStreamNoAud： mpegts的H26x流缺失 AUD NALU</li><li>AudioStreamLack： 无音频流</li><li>VideoStreamLack： 无视频流</li><li>LackAudioRecover： 缺失音频流恢复</li><li>LackVideoRecover： 缺失视频流恢复</li><li>VideoBitrateOutofRange： 视频流码率(kbps)超出范围</li><li>AudioBitrateOutofRange： 音频流码率(kbps)超出范围</li><li>VideoDecodeFailed： 视频解码错误</li><li>AudioDecodeFailed： 音频解码错误</li><li>AudioOutOfPhase： 双通道音频相位相反</li><li>VideoDuplicatedFrame： 视频流中存在重复帧</li><li>AudioDuplicatedFrame： 音频流中存在重复帧</li><li>VideoRotation： 视频画面旋转</li><li>TsMultiPrograms： MPEG2-TS流有多个program</li><li>Mp4InvalidCodecFourcc： MP4中codec fourcc不符合Apple HLS要求</li><li>HLSBadM3u8Format： 无效的m3u8文件</li><li>HLSInvalidMasterM3u8： 无效的main m3u8文件</li><li>HLSInvalidMediaM3u8： 无效的media m3u8文件</li><li>HLSMasterM3u8Recommended： main m3u8缺少标准推荐的参数</li><li>HLSMediaM3u8Recommended： media m3u8缺少标准推荐的参数</li><li>HLSMediaM3u8DiscontinuityExist： media m3u8存在EXT-X-DISCONTINUITY</li><li>HLSMediaSegmentsStreamNumChange： 切片的流数目发生变化</li><li>HLSMediaSegmentsPTSJitterDeviation： 切片间PTS跳变且没有EXT-X-DISCONTINUITY</li><li>HLSMediaSegmentsDTSJitterDeviation： 切片间DTS跳变且没有EXT-X-DISCONTINUITY</li><li>TimecodeTrackExist： MP4存在tmcd轨道</li><li>BodyPoseCheck： 人体姿态异常</li><li>BodyDetailCheck： 人体细节异常</li><li>PhysicRulesCheck： 物理规律违反</li><li>ObjectConsistencyCheck： 物体一致性异常</li><li>FormatCheck： 格式异常</li><li>AudioReverb： 混响程度</li><li>AudioDiscontinuity： 音频不连续</li><li>AudioSpeechQuality： 语音清晰度</li><li>AudioHighLoudness： 响度失真</li><li>AudioLoudnessJitter： 音量变化剧烈</li><li>BackgroundMusic： 存在背景音乐</li><li>NoBackgroundMusic： 不存在背景音乐</li><li>VideoAesthetic： 视频美学评分</li><li>AudioVideoAsync： 音画不同步</li><li>AudioSubtitleAsync： 音频与字幕不同步</li></ul>
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Switch(self):
+        r"""<p>能力配置开关。</p><p>枚举值：</p><ul><li>ON： 开启。</li><li>OFF： 关闭。</li></ul><p>默认值：ON</p>
+        :rtype: str
+        """
+        return self._Switch
+
+    @Switch.setter
+    def Switch(self, Switch):
+        self._Switch = Switch
+
+    @property
+    def Sampling(self):
+        r"""<p>采样方式</p><p>枚举值：</p><ul><li>Time： 根据时间间隔采样。</li></ul>
+        :rtype: str
+        """
+        return self._Sampling
+
+    @Sampling.setter
+    def Sampling(self, Sampling):
+        self._Sampling = Sampling
+
+    @property
+    def IntervalTime(self):
+        r"""<p>采样间隔时间</p><p>单位：毫秒。</p>
+        :rtype: int
+        """
+        return self._IntervalTime
+
+    @IntervalTime.setter
+    def IntervalTime(self, IntervalTime):
+        self._IntervalTime = IntervalTime
+
+    @property
+    def Duration(self):
+        r"""<p>异常持续时间。</p><p>单位：毫秒。</p>
+        :rtype: int
+        """
+        return self._Duration
+
+    @Duration.setter
+    def Duration(self, Duration):
+        self._Duration = Duration
+
+    @property
+    def Threshold(self):
+        r"""<p>检测项对应的阈值，不同检测项对应阈值不同。</p>
+        :rtype: str
+        """
+        return self._Threshold
+
+    @Threshold.setter
+    def Threshold(self, Threshold):
+        self._Threshold = Threshold
+
+
+    def _deserialize(self, params):
+        self._Type = params.get("Type")
+        self._Switch = params.get("Switch")
+        self._Sampling = params.get("Sampling")
+        self._IntervalTime = params.get("IntervalTime")
+        self._Duration = params.get("Duration")
+        self._Threshold = params.get("Threshold")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class QualityInspectContainerDiagnoseResultItem(AbstractModel):
+    r"""音画质检测的格式诊断检出异常项。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Category: <p>诊断出的异常类别</p><p>枚举值：</p><ul><li>DecodeParamException： 解码参数异常。</li><li>TimeStampException： 时间戳异常。</li><li>FrameException： 帧率异常。</li><li>StreamStatusException： 流状态异常。</li><li>StreamInfo： 流信息异常。</li><li>StreamAbnormalCharacteristics： 流特征异常。</li><li>DecodeException： 解码异常。</li><li>HLSRequirements： HLS 格式异常。</li></ul>
+        :type Category: str
+        :param _Type: <p>诊断出的具体异常类型。</p><p>枚举值：</p><ul><li>VideoResolutionChanged： 视频分辨率变化。</li><li>AudioSampleRateChanged： 音频采样率变化。</li><li>AudioChannelsChanged： 音频通道数变化。</li><li>ParameterSetsChanged： 流参数集信息发生变化。</li><li>DarOrSarInvalid： 视频的宽高比异常。</li><li>TimestampFallback： DTS时间戳回退。</li><li>DtsJitter： DTS抖动过大。</li><li>PtsJitter： PTS抖动过大。</li><li>AACDurationDeviation： AAC帧时间戳间隔不合理。</li><li>AudioDroppingFrames： 音频丢帧。</li><li>VideoDroppingFrames： 视频丢帧。</li><li>AVTimestampInterleave： 音视频交织不合理。</li><li>PtsLessThanDts： 媒体流的 pts 小于 dts。</li><li>ReceiveFpsJitter： 网络接收帧率抖动过大。</li><li>ReceiveFpsTooSmall： 网络接收视频帧率过小。</li><li>FpsJitter： 通过PTS计算得到的流帧率抖动过大。</li><li>StreamOpenFailed： 流打开失败。</li><li>StreamEnd： 流结束。</li><li>StreamParseFailed： 流解析失败。</li><li>VideoFirstFrameNotIdr： 首帧不是IDR帧。</li><li>StreamNALUError： NALU起始码错误。</li><li>TsStreamNoAud： mpegts 的 H26x 流缺失 AUD NALU。</li><li>AudioStreamLack： 无音频流。</li><li>VideoStreamLack： 无视频流。</li><li>LackAudioRecover： 缺失音频流恢复。</li><li>LackVideoRecover： 缺失视频流恢复。</li><li>VideoBitrateOutofRange： 视频流码率(kbps)超出范围。</li><li>AudioBitrateOutofRange： 音频流码率(kbps)超出范围。</li><li>VideoDecodeFailed： 视频解码错误。</li><li>AudioDecodeFailed： 音频解码错误。</li><li>AudioOutOfPhase： 双通道音频相位相反。</li><li>VideoDuplicatedFrame： 视频流中存在重复帧。</li><li>AudioDuplicatedFrame： 音频流中存在重复帧。</li><li>VideoRotation： 视频画面旋转。</li><li>TsMultiPrograms： MPEG2-TS流有多个program。</li><li>Mp4InvalidCodecFourcc： MP4中codec fourcc不符合Apple HLS要求。</li><li>HLSBadM3u8Format： 无效的m3u8文件。</li><li>HLSInvalidMasterM3u8： 无效的main m3u8文件。</li><li>HLSInvalidMediaM3u8： 无效的media m3u8文件。</li><li>HLSMasterM3u8Recommended： main m3u8缺少标准推荐的参数。</li><li>HLSMediaM3u8Recommended： media m3u8缺少标准推荐的参数。</li><li>HLSMediaM3u8DiscontinuityExist： media m3u8存在 EXT-X-DISCONTINUITY。</li><li>HLSMediaSegmentsStreamNumChange： 切片的流数目发生变化。</li><li>HLSMediaSegmentsPTSJitterDeviation： 切片间 PTS 跳变且没有 EXT-X-DISCONTINUITY。</li><li>HLSMediaSegmentsDTSJitterDeviation： 切片间 DTS 跳变且没有 EXT-X-DISCONTINUITY。</li><li>TimecodeTrackExist： MP4存在tmcd轨道</li></ul>
+        :type Type: str
+        :param _SeverityLevel: <p>诊断出的异常级别。</p><p>枚举值：</p><ul><li>Fatal： 影响后续播放和解析。</li><li>Error： 可能会影响播放。</li><li>Warning： 可能会有潜在风险，但不一定会影响播放。</li><li>Notice： 比较重要的流信息。</li><li>Info： 一般性的流信息。</li></ul>
+        :type SeverityLevel: str
+        :param _TimestampSet: <p>时间戳。</p>
+        :type TimestampSet: list of float
+        """
+        self._Category = None
+        self._Type = None
+        self._SeverityLevel = None
+        self._TimestampSet = None
+
+    @property
+    def Category(self):
+        r"""<p>诊断出的异常类别</p><p>枚举值：</p><ul><li>DecodeParamException： 解码参数异常。</li><li>TimeStampException： 时间戳异常。</li><li>FrameException： 帧率异常。</li><li>StreamStatusException： 流状态异常。</li><li>StreamInfo： 流信息异常。</li><li>StreamAbnormalCharacteristics： 流特征异常。</li><li>DecodeException： 解码异常。</li><li>HLSRequirements： HLS 格式异常。</li></ul>
+        :rtype: str
+        """
+        return self._Category
+
+    @Category.setter
+    def Category(self, Category):
+        self._Category = Category
+
+    @property
+    def Type(self):
+        r"""<p>诊断出的具体异常类型。</p><p>枚举值：</p><ul><li>VideoResolutionChanged： 视频分辨率变化。</li><li>AudioSampleRateChanged： 音频采样率变化。</li><li>AudioChannelsChanged： 音频通道数变化。</li><li>ParameterSetsChanged： 流参数集信息发生变化。</li><li>DarOrSarInvalid： 视频的宽高比异常。</li><li>TimestampFallback： DTS时间戳回退。</li><li>DtsJitter： DTS抖动过大。</li><li>PtsJitter： PTS抖动过大。</li><li>AACDurationDeviation： AAC帧时间戳间隔不合理。</li><li>AudioDroppingFrames： 音频丢帧。</li><li>VideoDroppingFrames： 视频丢帧。</li><li>AVTimestampInterleave： 音视频交织不合理。</li><li>PtsLessThanDts： 媒体流的 pts 小于 dts。</li><li>ReceiveFpsJitter： 网络接收帧率抖动过大。</li><li>ReceiveFpsTooSmall： 网络接收视频帧率过小。</li><li>FpsJitter： 通过PTS计算得到的流帧率抖动过大。</li><li>StreamOpenFailed： 流打开失败。</li><li>StreamEnd： 流结束。</li><li>StreamParseFailed： 流解析失败。</li><li>VideoFirstFrameNotIdr： 首帧不是IDR帧。</li><li>StreamNALUError： NALU起始码错误。</li><li>TsStreamNoAud： mpegts 的 H26x 流缺失 AUD NALU。</li><li>AudioStreamLack： 无音频流。</li><li>VideoStreamLack： 无视频流。</li><li>LackAudioRecover： 缺失音频流恢复。</li><li>LackVideoRecover： 缺失视频流恢复。</li><li>VideoBitrateOutofRange： 视频流码率(kbps)超出范围。</li><li>AudioBitrateOutofRange： 音频流码率(kbps)超出范围。</li><li>VideoDecodeFailed： 视频解码错误。</li><li>AudioDecodeFailed： 音频解码错误。</li><li>AudioOutOfPhase： 双通道音频相位相反。</li><li>VideoDuplicatedFrame： 视频流中存在重复帧。</li><li>AudioDuplicatedFrame： 音频流中存在重复帧。</li><li>VideoRotation： 视频画面旋转。</li><li>TsMultiPrograms： MPEG2-TS流有多个program。</li><li>Mp4InvalidCodecFourcc： MP4中codec fourcc不符合Apple HLS要求。</li><li>HLSBadM3u8Format： 无效的m3u8文件。</li><li>HLSInvalidMasterM3u8： 无效的main m3u8文件。</li><li>HLSInvalidMediaM3u8： 无效的media m3u8文件。</li><li>HLSMasterM3u8Recommended： main m3u8缺少标准推荐的参数。</li><li>HLSMediaM3u8Recommended： media m3u8缺少标准推荐的参数。</li><li>HLSMediaM3u8DiscontinuityExist： media m3u8存在 EXT-X-DISCONTINUITY。</li><li>HLSMediaSegmentsStreamNumChange： 切片的流数目发生变化。</li><li>HLSMediaSegmentsPTSJitterDeviation： 切片间 PTS 跳变且没有 EXT-X-DISCONTINUITY。</li><li>HLSMediaSegmentsDTSJitterDeviation： 切片间 DTS 跳变且没有 EXT-X-DISCONTINUITY。</li><li>TimecodeTrackExist： MP4存在tmcd轨道</li></ul>
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def SeverityLevel(self):
+        r"""<p>诊断出的异常级别。</p><p>枚举值：</p><ul><li>Fatal： 影响后续播放和解析。</li><li>Error： 可能会影响播放。</li><li>Warning： 可能会有潜在风险，但不一定会影响播放。</li><li>Notice： 比较重要的流信息。</li><li>Info： 一般性的流信息。</li></ul>
+        :rtype: str
+        """
+        return self._SeverityLevel
+
+    @SeverityLevel.setter
+    def SeverityLevel(self, SeverityLevel):
+        self._SeverityLevel = SeverityLevel
+
+    @property
+    def TimestampSet(self):
+        r"""<p>时间戳。</p>
+        :rtype: list of float
+        """
+        return self._TimestampSet
+
+    @TimestampSet.setter
+    def TimestampSet(self, TimestampSet):
+        self._TimestampSet = TimestampSet
+
+
+    def _deserialize(self, params):
+        self._Category = params.get("Category")
+        self._Type = params.get("Type")
+        self._SeverityLevel = params.get("SeverityLevel")
+        self._TimestampSet = params.get("TimestampSet")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class QualityInspectItem(AbstractModel):
     r"""音画质检测异常片段信息。
 
@@ -80094,6 +80377,304 @@ class QualityInspectItem(AbstractModel):
         
 
 
+class QualityInspectLLMDetectionIssue(AbstractModel):
+    r"""音画质检测的LLM 大模型检测发现的单条问题。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Tag: <p>问题分类标签。</p>
+        :type Tag: str
+        :param _Description: <p>问题描述。</p>
+        :type Description: str
+        :param _Score: <p>该问题的质量得分</p><p>取值范围：[0, 100]</p>
+        :type Score: float
+        :param _Confidence: <p>该问题的判断置信度</p><p>取值范围：[0, 100]</p>
+        :type Confidence: float
+        :param _StartTimeMs: <p>问题起始时间。</p><p>单位：毫秒。</p>
+        :type StartTimeMs: int
+        :param _EndTimeMs: <p>问题结束时间。</p><p>单位：毫秒。</p>
+        :type EndTimeMs: int
+        :param _ExtraData: <p>附加数据（JSON 格式），如严重程度等补充信息。</p>
+        :type ExtraData: str
+        """
+        self._Tag = None
+        self._Description = None
+        self._Score = None
+        self._Confidence = None
+        self._StartTimeMs = None
+        self._EndTimeMs = None
+        self._ExtraData = None
+
+    @property
+    def Tag(self):
+        r"""<p>问题分类标签。</p>
+        :rtype: str
+        """
+        return self._Tag
+
+    @Tag.setter
+    def Tag(self, Tag):
+        self._Tag = Tag
+
+    @property
+    def Description(self):
+        r"""<p>问题描述。</p>
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def Score(self):
+        r"""<p>该问题的质量得分</p><p>取值范围：[0, 100]</p>
+        :rtype: float
+        """
+        return self._Score
+
+    @Score.setter
+    def Score(self, Score):
+        self._Score = Score
+
+    @property
+    def Confidence(self):
+        r"""<p>该问题的判断置信度</p><p>取值范围：[0, 100]</p>
+        :rtype: float
+        """
+        return self._Confidence
+
+    @Confidence.setter
+    def Confidence(self, Confidence):
+        self._Confidence = Confidence
+
+    @property
+    def StartTimeMs(self):
+        r"""<p>问题起始时间。</p><p>单位：毫秒。</p>
+        :rtype: int
+        """
+        return self._StartTimeMs
+
+    @StartTimeMs.setter
+    def StartTimeMs(self, StartTimeMs):
+        self._StartTimeMs = StartTimeMs
+
+    @property
+    def EndTimeMs(self):
+        r"""<p>问题结束时间。</p><p>单位：毫秒。</p>
+        :rtype: int
+        """
+        return self._EndTimeMs
+
+    @EndTimeMs.setter
+    def EndTimeMs(self, EndTimeMs):
+        self._EndTimeMs = EndTimeMs
+
+    @property
+    def ExtraData(self):
+        r"""<p>附加数据（JSON 格式），如严重程度等补充信息。</p>
+        :rtype: str
+        """
+        return self._ExtraData
+
+    @ExtraData.setter
+    def ExtraData(self, ExtraData):
+        self._ExtraData = ExtraData
+
+
+    def _deserialize(self, params):
+        self._Tag = params.get("Tag")
+        self._Description = params.get("Description")
+        self._Score = params.get("Score")
+        self._Confidence = params.get("Confidence")
+        self._StartTimeMs = params.get("StartTimeMs")
+        self._EndTimeMs = params.get("EndTimeMs")
+        self._ExtraData = params.get("ExtraData")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class QualityInspectLLMDetectionReport(AbstractModel):
+    r"""音画质检测的LLM大模型AIGC质量检测结果。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ResultCount: <p>检测结果数量。</p>
+        :type ResultCount: int
+        :param _ResultSet: <p>各检测项结果列表。</p>
+        :type ResultSet: list of QualityInspectLLMDetectionResultItem
+        """
+        self._ResultCount = None
+        self._ResultSet = None
+
+    @property
+    def ResultCount(self):
+        r"""<p>检测结果数量。</p>
+        :rtype: int
+        """
+        return self._ResultCount
+
+    @ResultCount.setter
+    def ResultCount(self, ResultCount):
+        self._ResultCount = ResultCount
+
+    @property
+    def ResultSet(self):
+        r"""<p>各检测项结果列表。</p>
+        :rtype: list of QualityInspectLLMDetectionResultItem
+        """
+        return self._ResultSet
+
+    @ResultSet.setter
+    def ResultSet(self, ResultSet):
+        self._ResultSet = ResultSet
+
+
+    def _deserialize(self, params):
+        self._ResultCount = params.get("ResultCount")
+        if params.get("ResultSet") is not None:
+            self._ResultSet = []
+            for item in params.get("ResultSet"):
+                obj = QualityInspectLLMDetectionResultItem()
+                obj._deserialize(item)
+                self._ResultSet.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class QualityInspectLLMDetectionResultItem(AbstractModel):
+    r"""音画质检测的LLM 大模型单个检测项的聚合结果。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Category: <p>检测分类。</p><p>枚举值：</p><ul><li>AIGCQualityCharacteristics： AIGC 质量特征。</li></ul>
+        :type Category: str
+        :param _Group: <p>检测分组。</p><p>枚举值：</p><ul><li>AIGCAuthenticity： AIGC 真实性，包括人体合理性、物理合理性、跨帧一致性等。</li><li>AIGCTechQuality： AIGC 技术质量，包括画幅、黑边、强行竖屏等。</li></ul>
+        :type Group: str
+        :param _Type: <p>检测类型名称。</p><p>枚举值：</p><ul><li>BodyPoseCheck： 人体姿态合理性，属于 AIGCAuthenticity。</li><li>BodyDetailCheck： 人体细节合理性，包括手指数、五官对称等，属于 AIGCAuthenticity。</li><li>PhysicRulesCheck： 物理规律合理性，包括透视、光影、重力等，属于 AIGCAuthenticity。</li><li>ObjectConsistencyCheck： 跨帧物体一致性，属于 AIGCAuthenticity。</li><li>FormatCheck： 画幅、黑边、强行竖屏等格式问题，属于 AIGCTechQuality。</li></ul>
+        :type Type: str
+        :param _Score: <p>整体质量得分，范围 [0, 100]，越高表示越好。</p>
+        :type Score: float
+        :param _Confidence: <p>判断置信度，范围 [0, 100]，越高表示越确定。</p>
+        :type Confidence: float
+        :param _IssueSet: <p>检测发现的问题列表，无问题时为空。</p>
+        :type IssueSet: list of QualityInspectLLMDetectionIssue
+        """
+        self._Category = None
+        self._Group = None
+        self._Type = None
+        self._Score = None
+        self._Confidence = None
+        self._IssueSet = None
+
+    @property
+    def Category(self):
+        r"""<p>检测分类。</p><p>枚举值：</p><ul><li>AIGCQualityCharacteristics： AIGC 质量特征。</li></ul>
+        :rtype: str
+        """
+        return self._Category
+
+    @Category.setter
+    def Category(self, Category):
+        self._Category = Category
+
+    @property
+    def Group(self):
+        r"""<p>检测分组。</p><p>枚举值：</p><ul><li>AIGCAuthenticity： AIGC 真实性，包括人体合理性、物理合理性、跨帧一致性等。</li><li>AIGCTechQuality： AIGC 技术质量，包括画幅、黑边、强行竖屏等。</li></ul>
+        :rtype: str
+        """
+        return self._Group
+
+    @Group.setter
+    def Group(self, Group):
+        self._Group = Group
+
+    @property
+    def Type(self):
+        r"""<p>检测类型名称。</p><p>枚举值：</p><ul><li>BodyPoseCheck： 人体姿态合理性，属于 AIGCAuthenticity。</li><li>BodyDetailCheck： 人体细节合理性，包括手指数、五官对称等，属于 AIGCAuthenticity。</li><li>PhysicRulesCheck： 物理规律合理性，包括透视、光影、重力等，属于 AIGCAuthenticity。</li><li>ObjectConsistencyCheck： 跨帧物体一致性，属于 AIGCAuthenticity。</li><li>FormatCheck： 画幅、黑边、强行竖屏等格式问题，属于 AIGCTechQuality。</li></ul>
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Score(self):
+        r"""<p>整体质量得分，范围 [0, 100]，越高表示越好。</p>
+        :rtype: float
+        """
+        return self._Score
+
+    @Score.setter
+    def Score(self, Score):
+        self._Score = Score
+
+    @property
+    def Confidence(self):
+        r"""<p>判断置信度，范围 [0, 100]，越高表示越确定。</p>
+        :rtype: float
+        """
+        return self._Confidence
+
+    @Confidence.setter
+    def Confidence(self, Confidence):
+        self._Confidence = Confidence
+
+    @property
+    def IssueSet(self):
+        r"""<p>检测发现的问题列表，无问题时为空。</p>
+        :rtype: list of QualityInspectLLMDetectionIssue
+        """
+        return self._IssueSet
+
+    @IssueSet.setter
+    def IssueSet(self, IssueSet):
+        self._IssueSet = IssueSet
+
+
+    def _deserialize(self, params):
+        self._Category = params.get("Category")
+        self._Group = params.get("Group")
+        self._Type = params.get("Type")
+        self._Score = params.get("Score")
+        self._Confidence = params.get("Confidence")
+        if params.get("IssueSet") is not None:
+            self._IssueSet = []
+            for item in params.get("IssueSet"):
+                obj = QualityInspectLLMDetectionIssue()
+                obj._deserialize(item)
+                self._IssueSet.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class QualityInspectResultItem(AbstractModel):
     r"""音画质检测异常结果信息。
 
@@ -80101,30 +80682,13 @@ class QualityInspectResultItem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Type: 异常类型，取值范围：
-<li>Jitter：抖动；</li>
-<li>Blur：模糊；</li>
-<li>LowLighting：低光照；</li>
-<li>HighLighting：过曝；</li>
-<li>CrashScreen：花屏；</li>
-<li>BlackWhiteEdge：黑白边；</li>
-<li>SolidColorScreen：纯色屏；</li>
-<li>Noise：噪点；</li>
-<li>Mosaic：马赛克；</li>
-<li>QRCode：二维码；</li>
-<li>AppletCode：小程序码；</li>
-<li>BarCode：条形码；</li>
-<li>LowVoice：低音；</li>
-<li>HighVoice：爆音；</li>
-<li>NoVoice：静音；</li>
-<li>LowEvaluation：无参考打分低于阈值。</li>
+        :param _Type: <p>异常类型，取值范围：</p><li>Jitter：抖动；</li><li>Blur：模糊；</li><li>LowLighting：低光照；</li><li>HighLighting：过曝；</li><li>CrashScreen：花屏；</li><li>BlackWhiteEdge：黑白边；</li><li>SolidColorScreen：纯色屏；</li><li>Noise：噪点；</li><li>Mosaic：马赛克；</li><li>QRCode：二维码；</li><li>AppletCode：小程序码；</li><li>BarCode：条形码；</li><li>LowVoice：低音；</li><li>HighVoice：爆音；</li><li>NoVoice：静音；</li><li>LowEvaluation：无参考打分低于阈值。</li><li> LowColorfulness：色彩丰富度信息。</li><li> AudioVideoAsync：音画不同步。</li><li> AudioSubtitleAsync：音频与字幕不同步。</li><li> VideoAesthetic：视频美学评分低。</li><li> AudioDiscontinuity：音频不连续。</li><li> AudioVolume：音量信息。</li><li> AudioLoudnessJitter：音量变化剧烈。</li><li> BackgroundMusic：存在背景音乐。</li><li> AudioEvaluation：低音质。</li><li> AudioNoise：噪声。</li><li> AudioSpeechQuality：语音清晰度低。</li><li> AudioReverb：混响程度高。</li><li> AudioHighLoudness：响度失真。</li>
         :type Type: str
-        :param _SegmentSet: 异常片段列表。
-<font color=red>注意：</font> 该列表最多仅展示前 100 个元素。如希望获得完整结果，请从 SegmentSetFileUrl 对应的文件中获取。
+        :param _SegmentSet: <p>异常片段列表。<br><font color="red">注意：</font> 该列表最多仅展示前 100 个元素。如希望获得完整结果，请从 SegmentSetFileUrl 对应的文件中获取。</p>
         :type SegmentSet: list of QualityInspectItem
-        :param _SegmentSetFileUrl: 异常片段列表文件 URL。文件 内容 为  JSON，数据结构与 SegmentSet 字段一致。（文件不会永久存储，到达SegmentSetFileUrlExpireTime 时间点后文件将被删除）。
+        :param _SegmentSetFileUrl: <p>异常片段列表文件 URL。文件 内容 为  JSON，数据结构与 SegmentSet 字段一致。（文件不会永久存储，到达SegmentSetFileUrlExpireTime 时间点后文件将被删除）。</p>
         :type SegmentSetFileUrl: str
-        :param _SegmentSetFileUrlExpireTime: 异常片段列表文件 URL 失效时间，使用  [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+        :param _SegmentSetFileUrlExpireTime: <p>异常片段列表文件 URL 失效时间，使用  <a href="https://cloud.tencent.com/document/product/266/11732#I">ISO 日期格式</a>。</p>
         :type SegmentSetFileUrlExpireTime: str
         """
         self._Type = None
@@ -80134,23 +80698,7 @@ class QualityInspectResultItem(AbstractModel):
 
     @property
     def Type(self):
-        r"""异常类型，取值范围：
-<li>Jitter：抖动；</li>
-<li>Blur：模糊；</li>
-<li>LowLighting：低光照；</li>
-<li>HighLighting：过曝；</li>
-<li>CrashScreen：花屏；</li>
-<li>BlackWhiteEdge：黑白边；</li>
-<li>SolidColorScreen：纯色屏；</li>
-<li>Noise：噪点；</li>
-<li>Mosaic：马赛克；</li>
-<li>QRCode：二维码；</li>
-<li>AppletCode：小程序码；</li>
-<li>BarCode：条形码；</li>
-<li>LowVoice：低音；</li>
-<li>HighVoice：爆音；</li>
-<li>NoVoice：静音；</li>
-<li>LowEvaluation：无参考打分低于阈值。</li>
+        r"""<p>异常类型，取值范围：</p><li>Jitter：抖动；</li><li>Blur：模糊；</li><li>LowLighting：低光照；</li><li>HighLighting：过曝；</li><li>CrashScreen：花屏；</li><li>BlackWhiteEdge：黑白边；</li><li>SolidColorScreen：纯色屏；</li><li>Noise：噪点；</li><li>Mosaic：马赛克；</li><li>QRCode：二维码；</li><li>AppletCode：小程序码；</li><li>BarCode：条形码；</li><li>LowVoice：低音；</li><li>HighVoice：爆音；</li><li>NoVoice：静音；</li><li>LowEvaluation：无参考打分低于阈值。</li><li> LowColorfulness：色彩丰富度信息。</li><li> AudioVideoAsync：音画不同步。</li><li> AudioSubtitleAsync：音频与字幕不同步。</li><li> VideoAesthetic：视频美学评分低。</li><li> AudioDiscontinuity：音频不连续。</li><li> AudioVolume：音量信息。</li><li> AudioLoudnessJitter：音量变化剧烈。</li><li> BackgroundMusic：存在背景音乐。</li><li> AudioEvaluation：低音质。</li><li> AudioNoise：噪声。</li><li> AudioSpeechQuality：语音清晰度低。</li><li> AudioReverb：混响程度高。</li><li> AudioHighLoudness：响度失真。</li>
         :rtype: str
         """
         return self._Type
@@ -80161,8 +80709,7 @@ class QualityInspectResultItem(AbstractModel):
 
     @property
     def SegmentSet(self):
-        r"""异常片段列表。
-<font color=red>注意：</font> 该列表最多仅展示前 100 个元素。如希望获得完整结果，请从 SegmentSetFileUrl 对应的文件中获取。
+        r"""<p>异常片段列表。<br><font color="red">注意：</font> 该列表最多仅展示前 100 个元素。如希望获得完整结果，请从 SegmentSetFileUrl 对应的文件中获取。</p>
         :rtype: list of QualityInspectItem
         """
         return self._SegmentSet
@@ -80173,7 +80720,7 @@ class QualityInspectResultItem(AbstractModel):
 
     @property
     def SegmentSetFileUrl(self):
-        r"""异常片段列表文件 URL。文件 内容 为  JSON，数据结构与 SegmentSet 字段一致。（文件不会永久存储，到达SegmentSetFileUrlExpireTime 时间点后文件将被删除）。
+        r"""<p>异常片段列表文件 URL。文件 内容 为  JSON，数据结构与 SegmentSet 字段一致。（文件不会永久存储，到达SegmentSetFileUrlExpireTime 时间点后文件将被删除）。</p>
         :rtype: str
         """
         return self._SegmentSetFileUrl
@@ -80184,7 +80731,7 @@ class QualityInspectResultItem(AbstractModel):
 
     @property
     def SegmentSetFileUrlExpireTime(self):
-        r"""异常片段列表文件 URL 失效时间，使用  [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+        r"""<p>异常片段列表文件 URL 失效时间，使用  <a href="https://cloud.tencent.com/document/product/266/11732#I">ISO 日期格式</a>。</p>
         :rtype: str
         """
         return self._SegmentSetFileUrlExpireTime
@@ -80204,6 +80751,59 @@ class QualityInspectResultItem(AbstractModel):
                 self._SegmentSet.append(obj)
         self._SegmentSetFileUrl = params.get("SegmentSetFileUrl")
         self._SegmentSetFileUrlExpireTime = params.get("SegmentSetFileUrlExpireTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class QualityInspectStrategy(AbstractModel):
+    r"""音画质检测策略信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _StrategyType: <p>策略类型。</p><p>枚举值：</p><ul><li>TimeSpotCheck： 根据时间的抽检策略。</li></ul>
+        :type StrategyType: str
+        :param _TimeSpotCheck: <p>根据时间的抽检策略参数，当 StrategyType 为 TimeSpotCheck 时有效。</p>
+        :type TimeSpotCheck: :class:`tencentcloud.vod.v20180717.models.QualityInspectTimeSpotCheck`
+        """
+        self._StrategyType = None
+        self._TimeSpotCheck = None
+
+    @property
+    def StrategyType(self):
+        r"""<p>策略类型。</p><p>枚举值：</p><ul><li>TimeSpotCheck： 根据时间的抽检策略。</li></ul>
+        :rtype: str
+        """
+        return self._StrategyType
+
+    @StrategyType.setter
+    def StrategyType(self, StrategyType):
+        self._StrategyType = StrategyType
+
+    @property
+    def TimeSpotCheck(self):
+        r"""<p>根据时间的抽检策略参数，当 StrategyType 为 TimeSpotCheck 时有效。</p>
+        :rtype: :class:`tencentcloud.vod.v20180717.models.QualityInspectTimeSpotCheck`
+        """
+        return self._TimeSpotCheck
+
+    @TimeSpotCheck.setter
+    def TimeSpotCheck(self, TimeSpotCheck):
+        self._TimeSpotCheck = TimeSpotCheck
+
+
+    def _deserialize(self, params):
+        self._StrategyType = params.get("StrategyType")
+        if params.get("TimeSpotCheck") is not None:
+            self._TimeSpotCheck = QualityInspectTimeSpotCheck()
+            self._TimeSpotCheck._deserialize(params.get("TimeSpotCheck"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -80440,29 +81040,35 @@ class QualityInspectTaskOutput(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _NoAudio: 媒体文件是否无音频轨，取值范围：
-<li>0：否，即有音频轨；</li>
-<li>1：是，即无音频轨。</li>
+        :param _NoAudio: <p>媒体文件是否无音频轨，取值范围：</p><li>0：否，即有音频轨；</li><li>1：是，即无音频轨。</li>
         :type NoAudio: int
-        :param _NoVideo: 媒体文件是否无视频轨，取值范围：
-<li>0：否，即有视频轨；</li>
-<li>1：是，即无视频轨。</li>
+        :param _NoVideo: <p>媒体文件是否无视频轨，取值范围：</p><li>0：否，即有视频轨；</li><li>1：是，即无视频轨。</li>
         :type NoVideo: int
-        :param _QualityEvaluationScore: 视频画面质量评分，取值范围：[0, 100]。
+        :param _QualityEvaluationScore: <p>视频画面质量评分，取值范围：[0, 100]。</p>
         :type QualityEvaluationScore: int
-        :param _QualityInspectResultSet: 音画质检测出的异常项列表。
+        :param _QualityInspectResultSet: <p>音画质检测出的异常项列表。</p>
         :type QualityInspectResultSet: list of QualityInspectResultItem
+        :param _QualityEvaluationMeanOpinionScore: <p>视频无参考质量评分，MOS分数。</p>
+        :type QualityEvaluationMeanOpinionScore: float
+        :param _AestheticEvaluationScore: <p>视频美学评分，范围：[0,100]。</p>
+        :type AestheticEvaluationScore: int
+        :param _ContainerDiagnoseResultSet: <p>格式诊断检出异常项。</p>
+        :type ContainerDiagnoseResultSet: list of QualityInspectContainerDiagnoseResultItem
+        :param _LLMDetectionReport: <p>LLM 大模型 AIGC 质量检测结果。</p>
+        :type LLMDetectionReport: :class:`tencentcloud.vod.v20180717.models.QualityInspectLLMDetectionReport`
         """
         self._NoAudio = None
         self._NoVideo = None
         self._QualityEvaluationScore = None
         self._QualityInspectResultSet = None
+        self._QualityEvaluationMeanOpinionScore = None
+        self._AestheticEvaluationScore = None
+        self._ContainerDiagnoseResultSet = None
+        self._LLMDetectionReport = None
 
     @property
     def NoAudio(self):
-        r"""媒体文件是否无音频轨，取值范围：
-<li>0：否，即有音频轨；</li>
-<li>1：是，即无音频轨。</li>
+        r"""<p>媒体文件是否无音频轨，取值范围：</p><li>0：否，即有音频轨；</li><li>1：是，即无音频轨。</li>
         :rtype: int
         """
         return self._NoAudio
@@ -80473,9 +81079,7 @@ class QualityInspectTaskOutput(AbstractModel):
 
     @property
     def NoVideo(self):
-        r"""媒体文件是否无视频轨，取值范围：
-<li>0：否，即有视频轨；</li>
-<li>1：是，即无视频轨。</li>
+        r"""<p>媒体文件是否无视频轨，取值范围：</p><li>0：否，即有视频轨；</li><li>1：是，即无视频轨。</li>
         :rtype: int
         """
         return self._NoVideo
@@ -80486,7 +81090,7 @@ class QualityInspectTaskOutput(AbstractModel):
 
     @property
     def QualityEvaluationScore(self):
-        r"""视频画面质量评分，取值范围：[0, 100]。
+        r"""<p>视频画面质量评分，取值范围：[0, 100]。</p>
         :rtype: int
         """
         return self._QualityEvaluationScore
@@ -80497,7 +81101,7 @@ class QualityInspectTaskOutput(AbstractModel):
 
     @property
     def QualityInspectResultSet(self):
-        r"""音画质检测出的异常项列表。
+        r"""<p>音画质检测出的异常项列表。</p>
         :rtype: list of QualityInspectResultItem
         """
         return self._QualityInspectResultSet
@@ -80505,6 +81109,50 @@ class QualityInspectTaskOutput(AbstractModel):
     @QualityInspectResultSet.setter
     def QualityInspectResultSet(self, QualityInspectResultSet):
         self._QualityInspectResultSet = QualityInspectResultSet
+
+    @property
+    def QualityEvaluationMeanOpinionScore(self):
+        r"""<p>视频无参考质量评分，MOS分数。</p>
+        :rtype: float
+        """
+        return self._QualityEvaluationMeanOpinionScore
+
+    @QualityEvaluationMeanOpinionScore.setter
+    def QualityEvaluationMeanOpinionScore(self, QualityEvaluationMeanOpinionScore):
+        self._QualityEvaluationMeanOpinionScore = QualityEvaluationMeanOpinionScore
+
+    @property
+    def AestheticEvaluationScore(self):
+        r"""<p>视频美学评分，范围：[0,100]。</p>
+        :rtype: int
+        """
+        return self._AestheticEvaluationScore
+
+    @AestheticEvaluationScore.setter
+    def AestheticEvaluationScore(self, AestheticEvaluationScore):
+        self._AestheticEvaluationScore = AestheticEvaluationScore
+
+    @property
+    def ContainerDiagnoseResultSet(self):
+        r"""<p>格式诊断检出异常项。</p>
+        :rtype: list of QualityInspectContainerDiagnoseResultItem
+        """
+        return self._ContainerDiagnoseResultSet
+
+    @ContainerDiagnoseResultSet.setter
+    def ContainerDiagnoseResultSet(self, ContainerDiagnoseResultSet):
+        self._ContainerDiagnoseResultSet = ContainerDiagnoseResultSet
+
+    @property
+    def LLMDetectionReport(self):
+        r"""<p>LLM 大模型 AIGC 质量检测结果。</p>
+        :rtype: :class:`tencentcloud.vod.v20180717.models.QualityInspectLLMDetectionReport`
+        """
+        return self._LLMDetectionReport
+
+    @LLMDetectionReport.setter
+    def LLMDetectionReport(self, LLMDetectionReport):
+        self._LLMDetectionReport = LLMDetectionReport
 
 
     def _deserialize(self, params):
@@ -80517,6 +81165,17 @@ class QualityInspectTaskOutput(AbstractModel):
                 obj = QualityInspectResultItem()
                 obj._deserialize(item)
                 self._QualityInspectResultSet.append(obj)
+        self._QualityEvaluationMeanOpinionScore = params.get("QualityEvaluationMeanOpinionScore")
+        self._AestheticEvaluationScore = params.get("AestheticEvaluationScore")
+        if params.get("ContainerDiagnoseResultSet") is not None:
+            self._ContainerDiagnoseResultSet = []
+            for item in params.get("ContainerDiagnoseResultSet"):
+                obj = QualityInspectContainerDiagnoseResultItem()
+                obj._deserialize(item)
+                self._ContainerDiagnoseResultSet.append(obj)
+        if params.get("LLMDetectionReport") is not None:
+            self._LLMDetectionReport = QualityInspectLLMDetectionReport()
+            self._LLMDetectionReport._deserialize(params.get("LLMDetectionReport"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -80534,47 +81193,53 @@ class QualityInspectTemplateItem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Definition: 模板 ID。
+        :param _Definition: <p>模板 ID。</p>
         :type Definition: int
-        :param _Type: 模板类型，可选值：
-<li>Preset：系统预置模板；</li>
-<li>Custom：用户自定义模板。</li>
+        :param _Type: <p>模板类型，可选值：</p><li>Preset：系统预置模板；</li><li>Custom：用户自定义模板。</li>
         :type Type: str
-        :param _Name: 模板名称。
+        :param _Name: <p>模板名称。</p>
         :type Name: str
-        :param _Comment: 模板描述。
+        :param _Comment: <p>模板描述。</p>
         :type Comment: str
-        :param _ScreenshotInterval: 截帧间隔，单位为秒。
-        :type ScreenshotInterval: float
-        :param _JitterConfigure: 视频画面抖动重影检测的控制参数。
-        :type JitterConfigure: :class:`tencentcloud.vod.v20180717.models.JitterConfigureInfo`
-        :param _BlurConfigure: 视频画面模糊检测的控制参数。
-        :type BlurConfigure: :class:`tencentcloud.vod.v20180717.models.BlurConfigureInfo`
-        :param _AbnormalLightingConfigure: 视频画面低光、过曝检测的控制参数。
-        :type AbnormalLightingConfigure: :class:`tencentcloud.vod.v20180717.models.AbnormalLightingConfigureInfo`
-        :param _CrashScreenConfigure: 视频画面花屏检测的控制参数。
-        :type CrashScreenConfigure: :class:`tencentcloud.vod.v20180717.models.CrashScreenConfigureInfo`
-        :param _BlackWhiteEdgeConfigure: 视频画面黑边、白边、黑屏、白屏检测的控制参数。
-        :type BlackWhiteEdgeConfigure: :class:`tencentcloud.vod.v20180717.models.BlackWhiteEdgeConfigureInfo`
-        :param _NoiseConfigure: 视频画面噪点检测的控制参数。
-        :type NoiseConfigure: :class:`tencentcloud.vod.v20180717.models.NoiseConfigureInfo`
-        :param _MosaicConfigure: 视频画面马赛克检测的控制参数。
-        :type MosaicConfigure: :class:`tencentcloud.vod.v20180717.models.MosaicConfigureInfo`
-        :param _QRCodeConfigure: 视频画面二维码检测的控制参数。
-        :type QRCodeConfigure: :class:`tencentcloud.vod.v20180717.models.QRCodeConfigureInfo`
-        :param _QualityEvaluationConfigure: 视频画面质量评价的控制参数。
-        :type QualityEvaluationConfigure: :class:`tencentcloud.vod.v20180717.models.QualityEvaluationConfigureInfo`
-        :param _VoiceConfigure: 音频（静音、低音、爆音）检测的控制参数。
-        :type VoiceConfigure: :class:`tencentcloud.vod.v20180717.models.VoiceConfigureInfo`
-        :param _CreateTime: 模板创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+        :param _Configs: <p>音画质检测的配置参数。</p>
+        :type Configs: list of QualityInspectConfig
+        :param _Strategy: <p>音画质检测的抽检策略。</p>
+        :type Strategy: :class:`tencentcloud.vod.v20180717.models.QualityInspectStrategy`
+        :param _CreateTime: <p>模板创建时间，使用 <a href="https://cloud.tencent.com/document/product/266/11732#I">ISO 日期格式</a>。</p>
         :type CreateTime: str
-        :param _UpdateTime: 模板最后修改时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+        :param _UpdateTime: <p>模板最后修改时间，使用 <a href="https://cloud.tencent.com/document/product/266/11732#I">ISO 日期格式</a>。</p>
         :type UpdateTime: str
+        :param _ScreenshotInterval: <p>（不推荐，使用 Configs 替代）截帧间隔，单位为秒。</p>
+        :type ScreenshotInterval: float
+        :param _JitterConfigure: <p>（不推荐，使用 Configs 替代）视频画面抖动重影检测的控制参数。</p>
+        :type JitterConfigure: :class:`tencentcloud.vod.v20180717.models.JitterConfigureInfo`
+        :param _BlurConfigure: <p>（不推荐，使用 Configs 替代）视频画面模糊检测的控制参数。</p>
+        :type BlurConfigure: :class:`tencentcloud.vod.v20180717.models.BlurConfigureInfo`
+        :param _AbnormalLightingConfigure: <p>（不推荐，使用 Configs 替代）视频画面低光、过曝检测的控制参数。</p>
+        :type AbnormalLightingConfigure: :class:`tencentcloud.vod.v20180717.models.AbnormalLightingConfigureInfo`
+        :param _CrashScreenConfigure: <p>（不推荐，使用 Configs 替代）视频画面花屏检测的控制参数。</p>
+        :type CrashScreenConfigure: :class:`tencentcloud.vod.v20180717.models.CrashScreenConfigureInfo`
+        :param _BlackWhiteEdgeConfigure: <p>视频画面黑边、白边、黑屏、白屏检测的控制参数。</p>
+        :type BlackWhiteEdgeConfigure: :class:`tencentcloud.vod.v20180717.models.BlackWhiteEdgeConfigureInfo`
+        :param _NoiseConfigure: <p>（不推荐，使用 Configs 替代）视频画面噪点检测的控制参数。</p>
+        :type NoiseConfigure: :class:`tencentcloud.vod.v20180717.models.NoiseConfigureInfo`
+        :param _MosaicConfigure: <p>（不推荐，使用 Configs 替代）视频画面马赛克检测的控制参数。</p>
+        :type MosaicConfigure: :class:`tencentcloud.vod.v20180717.models.MosaicConfigureInfo`
+        :param _QRCodeConfigure: <p>（不推荐，使用 Configs 替代）视频画面二维码检测的控制参数。</p>
+        :type QRCodeConfigure: :class:`tencentcloud.vod.v20180717.models.QRCodeConfigureInfo`
+        :param _QualityEvaluationConfigure: <p>（不推荐，使用 Configs 替代）视频画面质量评价的控制参数。</p>
+        :type QualityEvaluationConfigure: :class:`tencentcloud.vod.v20180717.models.QualityEvaluationConfigureInfo`
+        :param _VoiceConfigure: <p>（不推荐，使用 Configs 替代）音频（静音、低音、爆音）检测的控制参数。</p>
+        :type VoiceConfigure: :class:`tencentcloud.vod.v20180717.models.VoiceConfigureInfo`
         """
         self._Definition = None
         self._Type = None
         self._Name = None
         self._Comment = None
+        self._Configs = None
+        self._Strategy = None
+        self._CreateTime = None
+        self._UpdateTime = None
         self._ScreenshotInterval = None
         self._JitterConfigure = None
         self._BlurConfigure = None
@@ -80586,12 +81251,10 @@ class QualityInspectTemplateItem(AbstractModel):
         self._QRCodeConfigure = None
         self._QualityEvaluationConfigure = None
         self._VoiceConfigure = None
-        self._CreateTime = None
-        self._UpdateTime = None
 
     @property
     def Definition(self):
-        r"""模板 ID。
+        r"""<p>模板 ID。</p>
         :rtype: int
         """
         return self._Definition
@@ -80602,9 +81265,7 @@ class QualityInspectTemplateItem(AbstractModel):
 
     @property
     def Type(self):
-        r"""模板类型，可选值：
-<li>Preset：系统预置模板；</li>
-<li>Custom：用户自定义模板。</li>
+        r"""<p>模板类型，可选值：</p><li>Preset：系统预置模板；</li><li>Custom：用户自定义模板。</li>
         :rtype: str
         """
         return self._Type
@@ -80615,7 +81276,7 @@ class QualityInspectTemplateItem(AbstractModel):
 
     @property
     def Name(self):
-        r"""模板名称。
+        r"""<p>模板名称。</p>
         :rtype: str
         """
         return self._Name
@@ -80626,7 +81287,7 @@ class QualityInspectTemplateItem(AbstractModel):
 
     @property
     def Comment(self):
-        r"""模板描述。
+        r"""<p>模板描述。</p>
         :rtype: str
         """
         return self._Comment
@@ -80636,129 +81297,30 @@ class QualityInspectTemplateItem(AbstractModel):
         self._Comment = Comment
 
     @property
-    def ScreenshotInterval(self):
-        r"""截帧间隔，单位为秒。
-        :rtype: float
+    def Configs(self):
+        r"""<p>音画质检测的配置参数。</p>
+        :rtype: list of QualityInspectConfig
         """
-        return self._ScreenshotInterval
+        return self._Configs
 
-    @ScreenshotInterval.setter
-    def ScreenshotInterval(self, ScreenshotInterval):
-        self._ScreenshotInterval = ScreenshotInterval
+    @Configs.setter
+    def Configs(self, Configs):
+        self._Configs = Configs
 
     @property
-    def JitterConfigure(self):
-        r"""视频画面抖动重影检测的控制参数。
-        :rtype: :class:`tencentcloud.vod.v20180717.models.JitterConfigureInfo`
+    def Strategy(self):
+        r"""<p>音画质检测的抽检策略。</p>
+        :rtype: :class:`tencentcloud.vod.v20180717.models.QualityInspectStrategy`
         """
-        return self._JitterConfigure
+        return self._Strategy
 
-    @JitterConfigure.setter
-    def JitterConfigure(self, JitterConfigure):
-        self._JitterConfigure = JitterConfigure
-
-    @property
-    def BlurConfigure(self):
-        r"""视频画面模糊检测的控制参数。
-        :rtype: :class:`tencentcloud.vod.v20180717.models.BlurConfigureInfo`
-        """
-        return self._BlurConfigure
-
-    @BlurConfigure.setter
-    def BlurConfigure(self, BlurConfigure):
-        self._BlurConfigure = BlurConfigure
-
-    @property
-    def AbnormalLightingConfigure(self):
-        r"""视频画面低光、过曝检测的控制参数。
-        :rtype: :class:`tencentcloud.vod.v20180717.models.AbnormalLightingConfigureInfo`
-        """
-        return self._AbnormalLightingConfigure
-
-    @AbnormalLightingConfigure.setter
-    def AbnormalLightingConfigure(self, AbnormalLightingConfigure):
-        self._AbnormalLightingConfigure = AbnormalLightingConfigure
-
-    @property
-    def CrashScreenConfigure(self):
-        r"""视频画面花屏检测的控制参数。
-        :rtype: :class:`tencentcloud.vod.v20180717.models.CrashScreenConfigureInfo`
-        """
-        return self._CrashScreenConfigure
-
-    @CrashScreenConfigure.setter
-    def CrashScreenConfigure(self, CrashScreenConfigure):
-        self._CrashScreenConfigure = CrashScreenConfigure
-
-    @property
-    def BlackWhiteEdgeConfigure(self):
-        r"""视频画面黑边、白边、黑屏、白屏检测的控制参数。
-        :rtype: :class:`tencentcloud.vod.v20180717.models.BlackWhiteEdgeConfigureInfo`
-        """
-        return self._BlackWhiteEdgeConfigure
-
-    @BlackWhiteEdgeConfigure.setter
-    def BlackWhiteEdgeConfigure(self, BlackWhiteEdgeConfigure):
-        self._BlackWhiteEdgeConfigure = BlackWhiteEdgeConfigure
-
-    @property
-    def NoiseConfigure(self):
-        r"""视频画面噪点检测的控制参数。
-        :rtype: :class:`tencentcloud.vod.v20180717.models.NoiseConfigureInfo`
-        """
-        return self._NoiseConfigure
-
-    @NoiseConfigure.setter
-    def NoiseConfigure(self, NoiseConfigure):
-        self._NoiseConfigure = NoiseConfigure
-
-    @property
-    def MosaicConfigure(self):
-        r"""视频画面马赛克检测的控制参数。
-        :rtype: :class:`tencentcloud.vod.v20180717.models.MosaicConfigureInfo`
-        """
-        return self._MosaicConfigure
-
-    @MosaicConfigure.setter
-    def MosaicConfigure(self, MosaicConfigure):
-        self._MosaicConfigure = MosaicConfigure
-
-    @property
-    def QRCodeConfigure(self):
-        r"""视频画面二维码检测的控制参数。
-        :rtype: :class:`tencentcloud.vod.v20180717.models.QRCodeConfigureInfo`
-        """
-        return self._QRCodeConfigure
-
-    @QRCodeConfigure.setter
-    def QRCodeConfigure(self, QRCodeConfigure):
-        self._QRCodeConfigure = QRCodeConfigure
-
-    @property
-    def QualityEvaluationConfigure(self):
-        r"""视频画面质量评价的控制参数。
-        :rtype: :class:`tencentcloud.vod.v20180717.models.QualityEvaluationConfigureInfo`
-        """
-        return self._QualityEvaluationConfigure
-
-    @QualityEvaluationConfigure.setter
-    def QualityEvaluationConfigure(self, QualityEvaluationConfigure):
-        self._QualityEvaluationConfigure = QualityEvaluationConfigure
-
-    @property
-    def VoiceConfigure(self):
-        r"""音频（静音、低音、爆音）检测的控制参数。
-        :rtype: :class:`tencentcloud.vod.v20180717.models.VoiceConfigureInfo`
-        """
-        return self._VoiceConfigure
-
-    @VoiceConfigure.setter
-    def VoiceConfigure(self, VoiceConfigure):
-        self._VoiceConfigure = VoiceConfigure
+    @Strategy.setter
+    def Strategy(self, Strategy):
+        self._Strategy = Strategy
 
     @property
     def CreateTime(self):
-        r"""模板创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+        r"""<p>模板创建时间，使用 <a href="https://cloud.tencent.com/document/product/266/11732#I">ISO 日期格式</a>。</p>
         :rtype: str
         """
         return self._CreateTime
@@ -80769,7 +81331,7 @@ class QualityInspectTemplateItem(AbstractModel):
 
     @property
     def UpdateTime(self):
-        r"""模板最后修改时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+        r"""<p>模板最后修改时间，使用 <a href="https://cloud.tencent.com/document/product/266/11732#I">ISO 日期格式</a>。</p>
         :rtype: str
         """
         return self._UpdateTime
@@ -80778,12 +81340,144 @@ class QualityInspectTemplateItem(AbstractModel):
     def UpdateTime(self, UpdateTime):
         self._UpdateTime = UpdateTime
 
+    @property
+    def ScreenshotInterval(self):
+        r"""<p>（不推荐，使用 Configs 替代）截帧间隔，单位为秒。</p>
+        :rtype: float
+        """
+        return self._ScreenshotInterval
+
+    @ScreenshotInterval.setter
+    def ScreenshotInterval(self, ScreenshotInterval):
+        self._ScreenshotInterval = ScreenshotInterval
+
+    @property
+    def JitterConfigure(self):
+        r"""<p>（不推荐，使用 Configs 替代）视频画面抖动重影检测的控制参数。</p>
+        :rtype: :class:`tencentcloud.vod.v20180717.models.JitterConfigureInfo`
+        """
+        return self._JitterConfigure
+
+    @JitterConfigure.setter
+    def JitterConfigure(self, JitterConfigure):
+        self._JitterConfigure = JitterConfigure
+
+    @property
+    def BlurConfigure(self):
+        r"""<p>（不推荐，使用 Configs 替代）视频画面模糊检测的控制参数。</p>
+        :rtype: :class:`tencentcloud.vod.v20180717.models.BlurConfigureInfo`
+        """
+        return self._BlurConfigure
+
+    @BlurConfigure.setter
+    def BlurConfigure(self, BlurConfigure):
+        self._BlurConfigure = BlurConfigure
+
+    @property
+    def AbnormalLightingConfigure(self):
+        r"""<p>（不推荐，使用 Configs 替代）视频画面低光、过曝检测的控制参数。</p>
+        :rtype: :class:`tencentcloud.vod.v20180717.models.AbnormalLightingConfigureInfo`
+        """
+        return self._AbnormalLightingConfigure
+
+    @AbnormalLightingConfigure.setter
+    def AbnormalLightingConfigure(self, AbnormalLightingConfigure):
+        self._AbnormalLightingConfigure = AbnormalLightingConfigure
+
+    @property
+    def CrashScreenConfigure(self):
+        r"""<p>（不推荐，使用 Configs 替代）视频画面花屏检测的控制参数。</p>
+        :rtype: :class:`tencentcloud.vod.v20180717.models.CrashScreenConfigureInfo`
+        """
+        return self._CrashScreenConfigure
+
+    @CrashScreenConfigure.setter
+    def CrashScreenConfigure(self, CrashScreenConfigure):
+        self._CrashScreenConfigure = CrashScreenConfigure
+
+    @property
+    def BlackWhiteEdgeConfigure(self):
+        r"""<p>视频画面黑边、白边、黑屏、白屏检测的控制参数。</p>
+        :rtype: :class:`tencentcloud.vod.v20180717.models.BlackWhiteEdgeConfigureInfo`
+        """
+        return self._BlackWhiteEdgeConfigure
+
+    @BlackWhiteEdgeConfigure.setter
+    def BlackWhiteEdgeConfigure(self, BlackWhiteEdgeConfigure):
+        self._BlackWhiteEdgeConfigure = BlackWhiteEdgeConfigure
+
+    @property
+    def NoiseConfigure(self):
+        r"""<p>（不推荐，使用 Configs 替代）视频画面噪点检测的控制参数。</p>
+        :rtype: :class:`tencentcloud.vod.v20180717.models.NoiseConfigureInfo`
+        """
+        return self._NoiseConfigure
+
+    @NoiseConfigure.setter
+    def NoiseConfigure(self, NoiseConfigure):
+        self._NoiseConfigure = NoiseConfigure
+
+    @property
+    def MosaicConfigure(self):
+        r"""<p>（不推荐，使用 Configs 替代）视频画面马赛克检测的控制参数。</p>
+        :rtype: :class:`tencentcloud.vod.v20180717.models.MosaicConfigureInfo`
+        """
+        return self._MosaicConfigure
+
+    @MosaicConfigure.setter
+    def MosaicConfigure(self, MosaicConfigure):
+        self._MosaicConfigure = MosaicConfigure
+
+    @property
+    def QRCodeConfigure(self):
+        r"""<p>（不推荐，使用 Configs 替代）视频画面二维码检测的控制参数。</p>
+        :rtype: :class:`tencentcloud.vod.v20180717.models.QRCodeConfigureInfo`
+        """
+        return self._QRCodeConfigure
+
+    @QRCodeConfigure.setter
+    def QRCodeConfigure(self, QRCodeConfigure):
+        self._QRCodeConfigure = QRCodeConfigure
+
+    @property
+    def QualityEvaluationConfigure(self):
+        r"""<p>（不推荐，使用 Configs 替代）视频画面质量评价的控制参数。</p>
+        :rtype: :class:`tencentcloud.vod.v20180717.models.QualityEvaluationConfigureInfo`
+        """
+        return self._QualityEvaluationConfigure
+
+    @QualityEvaluationConfigure.setter
+    def QualityEvaluationConfigure(self, QualityEvaluationConfigure):
+        self._QualityEvaluationConfigure = QualityEvaluationConfigure
+
+    @property
+    def VoiceConfigure(self):
+        r"""<p>（不推荐，使用 Configs 替代）音频（静音、低音、爆音）检测的控制参数。</p>
+        :rtype: :class:`tencentcloud.vod.v20180717.models.VoiceConfigureInfo`
+        """
+        return self._VoiceConfigure
+
+    @VoiceConfigure.setter
+    def VoiceConfigure(self, VoiceConfigure):
+        self._VoiceConfigure = VoiceConfigure
+
 
     def _deserialize(self, params):
         self._Definition = params.get("Definition")
         self._Type = params.get("Type")
         self._Name = params.get("Name")
         self._Comment = params.get("Comment")
+        if params.get("Configs") is not None:
+            self._Configs = []
+            for item in params.get("Configs"):
+                obj = QualityInspectConfig()
+                obj._deserialize(item)
+                self._Configs.append(obj)
+        if params.get("Strategy") is not None:
+            self._Strategy = QualityInspectStrategy()
+            self._Strategy._deserialize(params.get("Strategy"))
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
         self._ScreenshotInterval = params.get("ScreenshotInterval")
         if params.get("JitterConfigure") is not None:
             self._JitterConfigure = JitterConfigureInfo()
@@ -80815,8 +81509,87 @@ class QualityInspectTemplateItem(AbstractModel):
         if params.get("VoiceConfigure") is not None:
             self._VoiceConfigure = VoiceConfigureInfo()
             self._VoiceConfigure._deserialize(params.get("VoiceConfigure"))
-        self._CreateTime = params.get("CreateTime")
-        self._UpdateTime = params.get("UpdateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class QualityInspectTimeSpotCheck(AbstractModel):
+    r"""音画质检测的时间抽检策略。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CheckDuration: <p>每次循环检测的时长。</p><p>取值范围：[10, 86400]</p><p>单位：秒。</p>
+        :type CheckDuration: int
+        :param _CheckInterval: <p>抽检间隔，表示在一次检测结束后，等待多长时间后，再次检测</p><p>取值范围：[10, 3600]</p><p>单位：秒。</p>
+        :type CheckInterval: int
+        :param _SkipDuration: <p>片头跳过时长。</p><p>取值范围：[1, 1800]</p><p>单位：秒。</p>
+        :type SkipDuration: int
+        :param _CirclesNumber: <p>循环次数。</p><p>取值范围：[0, 1000]</p>
+        :type CirclesNumber: int
+        """
+        self._CheckDuration = None
+        self._CheckInterval = None
+        self._SkipDuration = None
+        self._CirclesNumber = None
+
+    @property
+    def CheckDuration(self):
+        r"""<p>每次循环检测的时长。</p><p>取值范围：[10, 86400]</p><p>单位：秒。</p>
+        :rtype: int
+        """
+        return self._CheckDuration
+
+    @CheckDuration.setter
+    def CheckDuration(self, CheckDuration):
+        self._CheckDuration = CheckDuration
+
+    @property
+    def CheckInterval(self):
+        r"""<p>抽检间隔，表示在一次检测结束后，等待多长时间后，再次检测</p><p>取值范围：[10, 3600]</p><p>单位：秒。</p>
+        :rtype: int
+        """
+        return self._CheckInterval
+
+    @CheckInterval.setter
+    def CheckInterval(self, CheckInterval):
+        self._CheckInterval = CheckInterval
+
+    @property
+    def SkipDuration(self):
+        r"""<p>片头跳过时长。</p><p>取值范围：[1, 1800]</p><p>单位：秒。</p>
+        :rtype: int
+        """
+        return self._SkipDuration
+
+    @SkipDuration.setter
+    def SkipDuration(self, SkipDuration):
+        self._SkipDuration = SkipDuration
+
+    @property
+    def CirclesNumber(self):
+        r"""<p>循环次数。</p><p>取值范围：[0, 1000]</p>
+        :rtype: int
+        """
+        return self._CirclesNumber
+
+    @CirclesNumber.setter
+    def CirclesNumber(self, CirclesNumber):
+        self._CirclesNumber = CirclesNumber
+
+
+    def _deserialize(self, params):
+        self._CheckDuration = params.get("CheckDuration")
+        self._CheckInterval = params.get("CheckInterval")
+        self._SkipDuration = params.get("SkipDuration")
+        self._CirclesNumber = params.get("CirclesNumber")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

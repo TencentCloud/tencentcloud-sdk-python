@@ -118,6 +118,52 @@ class CfwClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CheckClusterNatFwPreAccess(self, request):
+        r"""发起 NAT CCN 集群模式防火墙预接入检查（仅支持自动接入模式）。入参与 OpenClusterNatFwSwitch 完全相同，传入相同的 NatCcnSwitch 配置 JSON 即可发起检查。检查为异步执行：接口立即返回 CheckItems 检查项清单，前端轮询 DescribeClusterNatCcnFwSwitchList 接口读取 CheckResult 获取各阶段的通过/失败状态。
+
+        :param request: Request instance for CheckClusterNatFwPreAccess.
+        :type request: :class:`tencentcloud.cfw.v20190904.models.CheckClusterNatFwPreAccessRequest`
+        :rtype: :class:`tencentcloud.cfw.v20190904.models.CheckClusterNatFwPreAccessResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CheckClusterNatFwPreAccess", params, headers=headers)
+            response = json.loads(body)
+            model = models.CheckClusterNatFwPreAccessResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CheckClusterVpcFwPreAccess(self, request):
+        r"""发起 VPC 集群防火墙预接入检查（仅支持自动接入模式）。入参与 ModifyClusterVpcFwSwitch 完全相同，传入相同的 CcnSwitch 配置 JSON 即可发起检查。检查为异步执行：接口立即返回 CheckItems 检查项清单，前端轮询 DescribeClusterVpcFwSwitchs 接口读取 CheckResult 获取各阶段的通过/失败状态。
+
+        :param request: Request instance for CheckClusterVpcFwPreAccess.
+        :type request: :class:`tencentcloud.cfw.v20190904.models.CheckClusterVpcFwPreAccessRequest`
+        :rtype: :class:`tencentcloud.cfw.v20190904.models.CheckClusterVpcFwPreAccessResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CheckClusterVpcFwPreAccess", params, headers=headers)
+            response = json.loads(body)
+            model = models.CheckClusterVpcFwPreAccessResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CloseClusterNatFwSwitch(self, request):
         r"""关闭NAT CCN集群模式防火墙开关
 
@@ -900,6 +946,29 @@ class CfwClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeBlockList(self, request):
+        r"""DescribeBlockList 告警中心阻断资产视图列表
+
+        :param request: Request instance for DescribeBlockList.
+        :type request: :class:`tencentcloud.cfw.v20190904.models.DescribeBlockListRequest`
+        :rtype: :class:`tencentcloud.cfw.v20190904.models.DescribeBlockListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeBlockList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeBlockListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeBlockStaticList(self, request):
         r"""DescribeBlockStaticList 告警中心柱形图
 
@@ -1454,6 +1523,29 @@ class CfwClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeFwGroupIdNames(self, request):
+        r"""获取用户防火墙(组)的ID名称列表
+
+        :param request: Request instance for DescribeFwGroupIdNames.
+        :type request: :class:`tencentcloud.cfw.v20190904.models.DescribeFwGroupIdNamesRequest`
+        :rtype: :class:`tencentcloud.cfw.v20190904.models.DescribeFwGroupIdNamesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeFwGroupIdNames", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeFwGroupIdNamesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeFwGroupInstanceInfo(self, request):
         r"""获取租户所有VPC防火墙(组)及VPC防火墙实例卡片信息
 
@@ -1560,6 +1652,29 @@ class CfwClient(AbstractClient):
             body = self.call("DescribeIpsModeSwitch", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeIpsModeSwitchResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeIpsRuleListNew(self, request):
+        r"""IPS规则查询接口新
+
+        :param request: Request instance for DescribeIpsRuleListNew.
+        :type request: :class:`tencentcloud.cfw.v20190904.models.DescribeIpsRuleListNewRequest`
+        :rtype: :class:`tencentcloud.cfw.v20190904.models.DescribeIpsRuleListNewResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeIpsRuleListNew", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeIpsRuleListNewResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1891,6 +2006,29 @@ class CfwClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeNatRuleScopes(self, request):
+        r"""查询nat规则的配额和使用情况
+
+        :param request: Request instance for DescribeNatRuleScopes.
+        :type request: :class:`tencentcloud.cfw.v20190904.models.DescribeNatRuleScopesRequest`
+        :rtype: :class:`tencentcloud.cfw.v20190904.models.DescribeNatRuleScopesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeNatRuleScopes", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeNatRuleScopesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeOfflineExportTask(self, request):
         r"""获取日志离线导出任务列表
 
@@ -2020,6 +2158,29 @@ class CfwClient(AbstractClient):
             body = self.call("DescribeSecurityGroupList", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeSecurityGroupListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeSecurityGroupRegionList(self, request):
+        r"""查询地域配置信息-DescribeAllRegionList
+
+        :param request: Request instance for DescribeSecurityGroupRegionList.
+        :type request: :class:`tencentcloud.cfw.v20190904.models.DescribeSecurityGroupRegionListRequest`
+        :rtype: :class:`tencentcloud.cfw.v20190904.models.DescribeSecurityGroupRegionListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeSecurityGroupRegionList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeSecurityGroupRegionListResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -2227,6 +2388,29 @@ class CfwClient(AbstractClient):
             body = self.call("DescribeVpcAcRule", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeVpcAcRuleResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeVpcAclEdgeRange(self, request):
+        r"""查询内网间访问控制规则的生效范围
+
+        :param request: Request instance for DescribeVpcAclEdgeRange.
+        :type request: :class:`tencentcloud.cfw.v20190904.models.DescribeVpcAclEdgeRangeRequest`
+        :rtype: :class:`tencentcloud.cfw.v20190904.models.DescribeVpcAclEdgeRangeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeVpcAclEdgeRange", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeVpcAclEdgeRangeResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

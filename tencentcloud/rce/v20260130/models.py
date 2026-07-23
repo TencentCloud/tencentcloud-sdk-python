@@ -27,7 +27,7 @@ class AssessDeviceRiskPremiumProRequest(AbstractModel):
         r"""
         :param _DeviceToken: <p>用户设备指纹token标识，在您的网站或者应用程序中集成设备指纹的SDK后获取</p>
         :type DeviceToken: str
-        :param _UserIp: <p>客户端 IP 地址</p>
+        :param _UserIp: <p>客户端 IP 地址（IPv4或IPv6）</p>
         :type UserIp: str
         """
         self._DeviceToken = None
@@ -46,7 +46,7 @@ class AssessDeviceRiskPremiumProRequest(AbstractModel):
 
     @property
     def UserIp(self):
-        r"""<p>客户端 IP 地址</p>
+        r"""<p>客户端 IP 地址（IPv4或IPv6）</p>
         :rtype: str
         """
         return self._UserIp
@@ -214,7 +214,7 @@ class AssessDeviceRiskProRequest(AbstractModel):
         r"""
         :param _DeviceToken: <p>用户设备指纹token标识，在您的网站或者应用程序中集成设备指纹的SDK后获取</p>
         :type DeviceToken: str
-        :param _UserIp: <p>客户端 IP 地址</p>
+        :param _UserIp: <p>客户端 IP 地址（IPv4或IPv6）</p>
         :type UserIp: str
         """
         self._DeviceToken = None
@@ -233,7 +233,7 @@ class AssessDeviceRiskProRequest(AbstractModel):
 
     @property
     def UserIp(self):
-        r"""<p>客户端 IP 地址</p>
+        r"""<p>客户端 IP 地址（IPv4或IPv6）</p>
         :rtype: str
         """
         return self._UserIp
@@ -363,14 +363,14 @@ class AssessEnvironmentRiskRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _UserIp: <p>客户端 IP 地址</p>
+        :param _UserIp: <p>客户端 IP 地址（IPv4或IPv6）</p>
         :type UserIp: str
         """
         self._UserIp = None
 
     @property
     def UserIp(self):
-        r"""<p>客户端 IP 地址</p>
+        r"""<p>客户端 IP 地址（IPv4或IPv6）</p>
         :rtype: str
         """
         return self._UserIp

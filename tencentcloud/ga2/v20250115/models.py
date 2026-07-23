@@ -1720,11 +1720,11 @@ class CreateListenerRequest(AbstractModel):
         r"""
         :param _GlobalAcceleratorId: <p>全球加速实例ID。</p>
         :type GlobalAcceleratorId: str
-        :param _Name: <p>名称，最大长度不能超过60个字节。</p>
+        :param _Name: <p>名称，最大长度不能超过128个字符。</p>
         :type Name: str
         :param _PortRanges: <p>端口范围。</p>
         :type PortRanges: :class:`tencentcloud.ga2.v20250115.models.PortRanges`
-        :param _Description: <p>描述信息，最大长度不能超过100个字节。</p>
+        :param _Description: <p>描述信息，最大长度不能超过100个字符。</p>
         :type Description: str
         :param _ListenerType: <p>监听类型，默认为智能路由。</p><p>枚举值：</p><ul><li>Standard： 智能路由。</li></ul>
         :type ListenerType: str
@@ -1781,7 +1781,7 @@ class CreateListenerRequest(AbstractModel):
 
     @property
     def Name(self):
-        r"""<p>名称，最大长度不能超过60个字节。</p>
+        r"""<p>名称，最大长度不能超过128个字符。</p>
         :rtype: str
         """
         return self._Name
@@ -1803,7 +1803,7 @@ class CreateListenerRequest(AbstractModel):
 
     @property
     def Description(self):
-        r"""<p>描述信息，最大长度不能超过100个字节。</p>
+        r"""<p>描述信息，最大长度不能超过100个字符。</p>
         :rtype: str
         """
         return self._Description

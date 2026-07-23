@@ -38942,9 +38942,9 @@ class ImportZoneConfigRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ZoneId: 站点 ID。
+        :param _ZoneId: <p>站点 ID。</p>
         :type ZoneId: str
-        :param _Content: 待导入的配置内容。要求采用 JSON 格式，按照 UTF-8 方式进行编码。配置内容可通过站点配置导出接口（ExportZoneConfig）获取。您可以单独导入「站点加速-全局加速配置」或「站点加速-规则引擎」，传入对应的字段即可，详情可以参考下方示例。
+        :param _Content: <p>待导入的配置内容。要求采用 JSON 格式，按照 UTF-8 方式进行编码。配置内容可通过站点配置导出接口（ExportZoneConfig）获取。您可以单独导入「站点加速-全局加速配置」或「站点加速-规则引擎」，传入对应的字段即可，详情可以参考下方示例。<br>注意：ExportZoneConfig 导出的 AccelerationDomain（加速域名配置）、Origin（源站配置）暂不支持通过本接口导入，若 Content 中包含上述配置内容，将导致导入失败。</p>
         :type Content: str
         """
         self._ZoneId = None
@@ -38952,7 +38952,7 @@ class ImportZoneConfigRequest(AbstractModel):
 
     @property
     def ZoneId(self):
-        r"""站点 ID。
+        r"""<p>站点 ID。</p>
         :rtype: str
         """
         return self._ZoneId
@@ -38963,7 +38963,7 @@ class ImportZoneConfigRequest(AbstractModel):
 
     @property
     def Content(self):
-        r"""待导入的配置内容。要求采用 JSON 格式，按照 UTF-8 方式进行编码。配置内容可通过站点配置导出接口（ExportZoneConfig）获取。您可以单独导入「站点加速-全局加速配置」或「站点加速-规则引擎」，传入对应的字段即可，详情可以参考下方示例。
+        r"""<p>待导入的配置内容。要求采用 JSON 格式，按照 UTF-8 方式进行编码。配置内容可通过站点配置导出接口（ExportZoneConfig）获取。您可以单独导入「站点加速-全局加速配置」或「站点加速-规则引擎」，传入对应的字段即可，详情可以参考下方示例。<br>注意：ExportZoneConfig 导出的 AccelerationDomain（加速域名配置）、Origin（源站配置）暂不支持通过本接口导入，若 Content 中包含上述配置内容，将导致导入失败。</p>
         :rtype: str
         """
         return self._Content
@@ -38993,7 +38993,7 @@ class ImportZoneConfigResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskId: 表示该次导入配置的任务 Id，通过查询站点配置导入结果接口（DescribeZoneConfigImportResult）获取本次导入任务执行的结果。注意：导入任务 Id 仅支持查询最近 7 天的导入任务。
+        :param _TaskId: <p>表示该次导入配置的任务 Id，通过查询站点配置导入结果接口（DescribeZoneConfigImportResult）获取本次导入任务执行的结果。注意：导入任务 Id 仅支持查询最近 7 天的导入任务。</p>
         :type TaskId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -39003,7 +39003,7 @@ class ImportZoneConfigResponse(AbstractModel):
 
     @property
     def TaskId(self):
-        r"""表示该次导入配置的任务 Id，通过查询站点配置导入结果接口（DescribeZoneConfigImportResult）获取本次导入任务执行的结果。注意：导入任务 Id 仅支持查询最近 7 天的导入任务。
+        r"""<p>表示该次导入配置的任务 Id，通过查询站点配置导入结果接口（DescribeZoneConfigImportResult）获取本次导入任务执行的结果。注意：导入任务 Id 仅支持查询最近 7 天的导入任务。</p>
         :rtype: str
         """
         return self._TaskId

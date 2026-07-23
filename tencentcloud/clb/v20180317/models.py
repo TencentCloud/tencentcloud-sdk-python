@@ -37221,6 +37221,12 @@ class UserGroupInfo(AbstractModel):
         :param _BudgetName: <p>关联的Budget名称。</p><p>未关联时为空；「未分组」虚拟分组恒为空。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type BudgetName: str
+        :param _PromptId: <p>关联的提示词 ID。</p><p>未关联时为空；「未分组」虚拟分组恒为空。</p><p>参数格式：pmt-1a2b3c4d</p>
+        :type PromptId: str
+        :param _PromptVersion: <p>关联的提示词版本。</p><p>未关联时为空；「未分组」虚拟分组恒为空。</p>
+        :type PromptVersion: str
+        :param _PromptName: <p>关联的提示词名称。</p><p>未关联时为空；「未分组」虚拟分组恒为空。</p>
+        :type PromptName: str
         :param _CreditUsageSet: <p>用户组多刷新周期 Credit 使用情况。</p><p>无多周期预算时为空数组。</p>
         :type CreditUsageSet: list of CreditUsage
         :param _KeyCount: <p>用户组当前包含的 Key 数量。「未分组」虚拟分组（ugrp-ungrouped）返回该模型路由实例下未归属任何用户组的 Key 数量。</p>
@@ -37240,6 +37246,9 @@ class UserGroupInfo(AbstractModel):
         self._IntentRouters = None
         self._BudgetId = None
         self._BudgetName = None
+        self._PromptId = None
+        self._PromptVersion = None
+        self._PromptName = None
         self._CreditUsageSet = None
         self._KeyCount = None
         self._Tags = None
@@ -37337,6 +37346,39 @@ class UserGroupInfo(AbstractModel):
         self._BudgetName = BudgetName
 
     @property
+    def PromptId(self):
+        r"""<p>关联的提示词 ID。</p><p>未关联时为空；「未分组」虚拟分组恒为空。</p><p>参数格式：pmt-1a2b3c4d</p>
+        :rtype: str
+        """
+        return self._PromptId
+
+    @PromptId.setter
+    def PromptId(self, PromptId):
+        self._PromptId = PromptId
+
+    @property
+    def PromptVersion(self):
+        r"""<p>关联的提示词版本。</p><p>未关联时为空；「未分组」虚拟分组恒为空。</p>
+        :rtype: str
+        """
+        return self._PromptVersion
+
+    @PromptVersion.setter
+    def PromptVersion(self, PromptVersion):
+        self._PromptVersion = PromptVersion
+
+    @property
+    def PromptName(self):
+        r"""<p>关联的提示词名称。</p><p>未关联时为空；「未分组」虚拟分组恒为空。</p>
+        :rtype: str
+        """
+        return self._PromptName
+
+    @PromptName.setter
+    def PromptName(self, PromptName):
+        self._PromptName = PromptName
+
+    @property
     def CreditUsageSet(self):
         r"""<p>用户组多刷新周期 Credit 使用情况。</p><p>无多周期预算时为空数组。</p>
         :rtype: list of CreditUsage
@@ -37401,6 +37443,9 @@ class UserGroupInfo(AbstractModel):
         self._IntentRouters = params.get("IntentRouters")
         self._BudgetId = params.get("BudgetId")
         self._BudgetName = params.get("BudgetName")
+        self._PromptId = params.get("PromptId")
+        self._PromptVersion = params.get("PromptVersion")
+        self._PromptName = params.get("PromptName")
         if params.get("CreditUsageSet") is not None:
             self._CreditUsageSet = []
             for item in params.get("CreditUsageSet"):

@@ -5732,7 +5732,7 @@ class AnalyseConditions(AbstractModel):
         :type ActionTypes: str
         :param _Tags: <p>分账标签</p>
         :type Tags: str
-        :param _FeeType: <p>费用类型，查询费用类型（请使用费用类型code入参)入参枚举如下：<br>cashPayAmount:现金<br>incentivePayAmount:赠送金<br>voucherPayAmount:优惠券<br>tax:税金<br>costBeforeTax:税前价</p>
+        :param _FeeType: <p>费用类型，查询费用类型（请使用费用类型code入参）入参枚举如下</p><p>枚举值：</p><ul><li>cashPayAmount： 现金</li><li>incentivePayAmount： 赠送金</li><li>voucherPayAmount： 优惠券</li><li>transferPayAmount： 分成金</li></ul>
         :type FeeType: str
         :param _PayerUins: <p>查询成本分析数据的用户UIN</p>
         :type PayerUins: str
@@ -5856,7 +5856,7 @@ class AnalyseConditions(AbstractModel):
 
     @property
     def FeeType(self):
-        r"""<p>费用类型，查询费用类型（请使用费用类型code入参)入参枚举如下：<br>cashPayAmount:现金<br>incentivePayAmount:赠送金<br>voucherPayAmount:优惠券<br>tax:税金<br>costBeforeTax:税前价</p>
+        r"""<p>费用类型，查询费用类型（请使用费用类型code入参）入参枚举如下</p><p>枚举值：</p><ul><li>cashPayAmount： 现金</li><li>incentivePayAmount： 赠送金</li><li>voucherPayAmount： 优惠券</li><li>transferPayAmount： 分成金</li></ul>
         :rtype: str
         """
         return self._FeeType

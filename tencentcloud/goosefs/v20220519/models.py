@@ -5194,6 +5194,100 @@ class ModifyDataRepositoryBandwidthResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyDataRepositoryTaskStatusRequest(AbstractModel):
+    r"""ModifyDataRepositoryTaskStatus请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FileSystemId: <p>文件系统ID</p>
+        :type FileSystemId: str
+        :param _TaskId: <p>数据流动任务ID</p>
+        :type TaskId: str
+        :param _ModifyType: <p>修改数据流动任务目标状态对应的类型，仅支持任务暂停和恢复（暂停对应pause，恢复对应resume）</p><p>枚举值：</p><ul><li>pause： 暂停</li><li>resume： 恢复</li></ul>
+        :type ModifyType: str
+        """
+        self._FileSystemId = None
+        self._TaskId = None
+        self._ModifyType = None
+
+    @property
+    def FileSystemId(self):
+        r"""<p>文件系统ID</p>
+        :rtype: str
+        """
+        return self._FileSystemId
+
+    @FileSystemId.setter
+    def FileSystemId(self, FileSystemId):
+        self._FileSystemId = FileSystemId
+
+    @property
+    def TaskId(self):
+        r"""<p>数据流动任务ID</p>
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def ModifyType(self):
+        r"""<p>修改数据流动任务目标状态对应的类型，仅支持任务暂停和恢复（暂停对应pause，恢复对应resume）</p><p>枚举值：</p><ul><li>pause： 暂停</li><li>resume： 恢复</li></ul>
+        :rtype: str
+        """
+        return self._ModifyType
+
+    @ModifyType.setter
+    def ModifyType(self, ModifyType):
+        self._ModifyType = ModifyType
+
+
+    def _deserialize(self, params):
+        self._FileSystemId = params.get("FileSystemId")
+        self._TaskId = params.get("TaskId")
+        self._ModifyType = params.get("ModifyType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyDataRepositoryTaskStatusResponse(AbstractModel):
+    r"""ModifyDataRepositoryTaskStatus返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class MountMultipleStorageFileSystemRequest(AbstractModel):
     r"""MountMultipleStorageFileSystem请求参数结构体
 

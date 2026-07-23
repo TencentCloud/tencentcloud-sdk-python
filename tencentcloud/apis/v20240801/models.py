@@ -1761,54 +1761,56 @@ class CreateMcpServerRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Mode: 模式：proxy代理模式； wrap封装模式；
+        :param _Mode: <p>模式：proxy代理模式； wrap封装模式；</p>
         :type Mode: str
-        :param _McpVersion: 版本号：2024-11-05 2025-03-26
+        :param _McpVersion: <p>版本号：2024-11-05 2025-03-26</p>
         :type McpVersion: str
-        :param _InstanceID: 实例ID
+        :param _InstanceID: <p>实例ID</p>
         :type InstanceID: str
-        :param _Name: 名称
+        :param _Name: <p>名称</p>
         :type Name: str
-        :param _Description: 描述
+        :param _Description: <p>描述</p>
         :type Description: str
-        :param _WrapServices: 封装服务列表
+        :param _WrapServices: <p>封装服务列表</p>
         :type WrapServices: list of str
-        :param _TargetSelect: 负载方式，robin random consistentHash
+        :param _TargetSelect: <p>负载方式，robin random consistentHash</p>
         :type TargetSelect: str
-        :param _TargetHosts: 目标服务器
+        :param _TargetHosts: <p>目标服务器</p>
         :type TargetHosts: list of TargetHostDTO
-        :param _HttpProtocolType: 后端协议：http https
+        :param _HttpProtocolType: <p>后端协议：http https</p>
         :type HttpProtocolType: str
-        :param _CheckTargetCertsError: 证书检查
+        :param _CheckTargetCertsError: <p>证书检查</p>
         :type CheckTargetCertsError: bool
-        :param _TargetPath: 目标路径
+        :param _TargetPath: <p>目标路径</p>
         :type TargetPath: str
-        :param _InvokeLimitConfigStatus: 流量控制开启状态
+        :param _InvokeLimitConfigStatus: <p>流量控制开启状态</p>
         :type InvokeLimitConfigStatus: bool
-        :param _InvokeLimitConfig: 流量控制配置
+        :param _InvokeLimitConfig: <p>流量控制配置</p>
         :type InvokeLimitConfig: :class:`tencentcloud.apis.v20240801.models.InvokeLimitConfigDTO`
-        :param _IpWhiteStatus: IP白名单开启状态
+        :param _IpWhiteStatus: <p>IP白名单开启状态</p>
         :type IpWhiteStatus: bool
-        :param _IpWhiteConfig: IP白名单配置
+        :param _IpWhiteConfig: <p>IP白名单配置</p>
         :type IpWhiteConfig: :class:`tencentcloud.apis.v20240801.models.IpConfig`
-        :param _IpBlackStatus: IP黑名单开启状态
+        :param _IpBlackStatus: <p>IP黑名单开启状态</p>
         :type IpBlackStatus: bool
-        :param _IpBlackConfig: IP黑名单配置
+        :param _IpBlackConfig: <p>IP黑名单配置</p>
         :type IpBlackConfig: :class:`tencentcloud.apis.v20240801.models.IpConfig`
-        :param _CustomHttpHost: 自定义host
+        :param _CustomHttpHost: <p>自定义host</p>
         :type CustomHttpHost: str
-        :param _HttpHostType: Http 请求host类型：useRequestHost 保持源请求；host targetHost 修正为源站host；  customHost 自定义host
+        :param _HttpHostType: <p>Http 请求host类型：useRequestHost 保持源请求；host targetHost 修正为源站host；  customHost 自定义host</p>
         :type HttpHostType: str
-        :param _Timeout: 请求的超时时间
+        :param _Timeout: <p>请求的超时时间</p>
         :type Timeout: int
-        :param _McpSecurityRules: 安全规则集
+        :param _McpSecurityRules: <p>安全规则集</p>
         :type McpSecurityRules: list of McpSecurityRule
-        :param _ToolConfigs: 工具集配置（openapi时或许用的是）
+        :param _ToolConfigs: <p>工具集配置（openapi时或许用的是）</p>
         :type ToolConfigs: list of ToolConfigDTO
-        :param _WrapPaasID: 封装的API分组ID
+        :param _WrapPaasID: <p>封装的API分组ID</p>
         :type WrapPaasID: str
-        :param _PluginConfigs: 插件配置
+        :param _PluginConfigs: <p>插件配置</p>
         :type PluginConfigs: list of PluginConfigDTO
+        :param _IgnoreHealthCheck: <p>是否忽略健康检查</p>
+        :type IgnoreHealthCheck: bool
         """
         self._Mode = None
         self._McpVersion = None
@@ -1834,10 +1836,11 @@ class CreateMcpServerRequest(AbstractModel):
         self._ToolConfigs = None
         self._WrapPaasID = None
         self._PluginConfigs = None
+        self._IgnoreHealthCheck = None
 
     @property
     def Mode(self):
-        r"""模式：proxy代理模式； wrap封装模式；
+        r"""<p>模式：proxy代理模式； wrap封装模式；</p>
         :rtype: str
         """
         return self._Mode
@@ -1848,7 +1851,7 @@ class CreateMcpServerRequest(AbstractModel):
 
     @property
     def McpVersion(self):
-        r"""版本号：2024-11-05 2025-03-26
+        r"""<p>版本号：2024-11-05 2025-03-26</p>
         :rtype: str
         """
         return self._McpVersion
@@ -1859,7 +1862,7 @@ class CreateMcpServerRequest(AbstractModel):
 
     @property
     def InstanceID(self):
-        r"""实例ID
+        r"""<p>实例ID</p>
         :rtype: str
         """
         return self._InstanceID
@@ -1870,7 +1873,7 @@ class CreateMcpServerRequest(AbstractModel):
 
     @property
     def Name(self):
-        r"""名称
+        r"""<p>名称</p>
         :rtype: str
         """
         return self._Name
@@ -1881,7 +1884,7 @@ class CreateMcpServerRequest(AbstractModel):
 
     @property
     def Description(self):
-        r"""描述
+        r"""<p>描述</p>
         :rtype: str
         """
         return self._Description
@@ -1892,7 +1895,7 @@ class CreateMcpServerRequest(AbstractModel):
 
     @property
     def WrapServices(self):
-        r"""封装服务列表
+        r"""<p>封装服务列表</p>
         :rtype: list of str
         """
         return self._WrapServices
@@ -1903,7 +1906,7 @@ class CreateMcpServerRequest(AbstractModel):
 
     @property
     def TargetSelect(self):
-        r"""负载方式，robin random consistentHash
+        r"""<p>负载方式，robin random consistentHash</p>
         :rtype: str
         """
         return self._TargetSelect
@@ -1914,7 +1917,7 @@ class CreateMcpServerRequest(AbstractModel):
 
     @property
     def TargetHosts(self):
-        r"""目标服务器
+        r"""<p>目标服务器</p>
         :rtype: list of TargetHostDTO
         """
         return self._TargetHosts
@@ -1925,7 +1928,7 @@ class CreateMcpServerRequest(AbstractModel):
 
     @property
     def HttpProtocolType(self):
-        r"""后端协议：http https
+        r"""<p>后端协议：http https</p>
         :rtype: str
         """
         return self._HttpProtocolType
@@ -1936,7 +1939,7 @@ class CreateMcpServerRequest(AbstractModel):
 
     @property
     def CheckTargetCertsError(self):
-        r"""证书检查
+        r"""<p>证书检查</p>
         :rtype: bool
         """
         return self._CheckTargetCertsError
@@ -1947,7 +1950,7 @@ class CreateMcpServerRequest(AbstractModel):
 
     @property
     def TargetPath(self):
-        r"""目标路径
+        r"""<p>目标路径</p>
         :rtype: str
         """
         return self._TargetPath
@@ -1958,7 +1961,7 @@ class CreateMcpServerRequest(AbstractModel):
 
     @property
     def InvokeLimitConfigStatus(self):
-        r"""流量控制开启状态
+        r"""<p>流量控制开启状态</p>
         :rtype: bool
         """
         return self._InvokeLimitConfigStatus
@@ -1969,7 +1972,7 @@ class CreateMcpServerRequest(AbstractModel):
 
     @property
     def InvokeLimitConfig(self):
-        r"""流量控制配置
+        r"""<p>流量控制配置</p>
         :rtype: :class:`tencentcloud.apis.v20240801.models.InvokeLimitConfigDTO`
         """
         return self._InvokeLimitConfig
@@ -1980,7 +1983,7 @@ class CreateMcpServerRequest(AbstractModel):
 
     @property
     def IpWhiteStatus(self):
-        r"""IP白名单开启状态
+        r"""<p>IP白名单开启状态</p>
         :rtype: bool
         """
         return self._IpWhiteStatus
@@ -1991,7 +1994,7 @@ class CreateMcpServerRequest(AbstractModel):
 
     @property
     def IpWhiteConfig(self):
-        r"""IP白名单配置
+        r"""<p>IP白名单配置</p>
         :rtype: :class:`tencentcloud.apis.v20240801.models.IpConfig`
         """
         return self._IpWhiteConfig
@@ -2002,7 +2005,7 @@ class CreateMcpServerRequest(AbstractModel):
 
     @property
     def IpBlackStatus(self):
-        r"""IP黑名单开启状态
+        r"""<p>IP黑名单开启状态</p>
         :rtype: bool
         """
         return self._IpBlackStatus
@@ -2013,7 +2016,7 @@ class CreateMcpServerRequest(AbstractModel):
 
     @property
     def IpBlackConfig(self):
-        r"""IP黑名单配置
+        r"""<p>IP黑名单配置</p>
         :rtype: :class:`tencentcloud.apis.v20240801.models.IpConfig`
         """
         return self._IpBlackConfig
@@ -2024,7 +2027,7 @@ class CreateMcpServerRequest(AbstractModel):
 
     @property
     def CustomHttpHost(self):
-        r"""自定义host
+        r"""<p>自定义host</p>
         :rtype: str
         """
         return self._CustomHttpHost
@@ -2035,7 +2038,7 @@ class CreateMcpServerRequest(AbstractModel):
 
     @property
     def HttpHostType(self):
-        r"""Http 请求host类型：useRequestHost 保持源请求；host targetHost 修正为源站host；  customHost 自定义host
+        r"""<p>Http 请求host类型：useRequestHost 保持源请求；host targetHost 修正为源站host；  customHost 自定义host</p>
         :rtype: str
         """
         return self._HttpHostType
@@ -2046,7 +2049,7 @@ class CreateMcpServerRequest(AbstractModel):
 
     @property
     def Timeout(self):
-        r"""请求的超时时间
+        r"""<p>请求的超时时间</p>
         :rtype: int
         """
         return self._Timeout
@@ -2057,7 +2060,7 @@ class CreateMcpServerRequest(AbstractModel):
 
     @property
     def McpSecurityRules(self):
-        r"""安全规则集
+        r"""<p>安全规则集</p>
         :rtype: list of McpSecurityRule
         """
         return self._McpSecurityRules
@@ -2068,7 +2071,7 @@ class CreateMcpServerRequest(AbstractModel):
 
     @property
     def ToolConfigs(self):
-        r"""工具集配置（openapi时或许用的是）
+        r"""<p>工具集配置（openapi时或许用的是）</p>
         :rtype: list of ToolConfigDTO
         """
         return self._ToolConfigs
@@ -2079,7 +2082,7 @@ class CreateMcpServerRequest(AbstractModel):
 
     @property
     def WrapPaasID(self):
-        r"""封装的API分组ID
+        r"""<p>封装的API分组ID</p>
         :rtype: str
         """
         return self._WrapPaasID
@@ -2090,7 +2093,7 @@ class CreateMcpServerRequest(AbstractModel):
 
     @property
     def PluginConfigs(self):
-        r"""插件配置
+        r"""<p>插件配置</p>
         :rtype: list of PluginConfigDTO
         """
         return self._PluginConfigs
@@ -2098,6 +2101,17 @@ class CreateMcpServerRequest(AbstractModel):
     @PluginConfigs.setter
     def PluginConfigs(self, PluginConfigs):
         self._PluginConfigs = PluginConfigs
+
+    @property
+    def IgnoreHealthCheck(self):
+        r"""<p>是否忽略健康检查</p>
+        :rtype: bool
+        """
+        return self._IgnoreHealthCheck
+
+    @IgnoreHealthCheck.setter
+    def IgnoreHealthCheck(self, IgnoreHealthCheck):
+        self._IgnoreHealthCheck = IgnoreHealthCheck
 
 
     def _deserialize(self, params):
@@ -2151,6 +2165,7 @@ class CreateMcpServerRequest(AbstractModel):
                 obj = PluginConfigDTO()
                 obj._deserialize(item)
                 self._PluginConfigs.append(obj)
+        self._IgnoreHealthCheck = params.get("IgnoreHealthCheck")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2168,7 +2183,7 @@ class CreateMcpServerResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Data: mcp server ID
+        :param _Data: <p>mcp server ID</p>
         :type Data: :class:`tencentcloud.apis.v20240801.models.ResultIDVO`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -2178,7 +2193,7 @@ class CreateMcpServerResponse(AbstractModel):
 
     @property
     def Data(self):
-        r"""mcp server ID
+        r"""<p>mcp server ID</p>
         :rtype: :class:`tencentcloud.apis.v20240801.models.ResultIDVO`
         """
         return self._Data
@@ -5527,120 +5542,122 @@ class DescribeMcpServerResponseVO(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceID: 实例ID
+        :param _InstanceID: <p>实例ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceID: str
-        :param _Name: 名称
+        :param _Name: <p>名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
-        :param _Description: 描述
+        :param _Description: <p>描述</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Description: str
-        :param _LabelIDs: 标签ID数组
+        :param _LabelIDs: <p>标签ID数组</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type LabelIDs: list of str
-        :param _CategoryIDs: 目录ID数组
+        :param _CategoryIDs: <p>目录ID数组</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type CategoryIDs: list of str
-        :param _TargetSelect: 负载方式，robin random consistentHash
+        :param _TargetSelect: <p>负载方式，robin random consistentHash</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TargetSelect: str
-        :param _TargetHosts: 目标服务器
+        :param _TargetHosts: <p>目标服务器</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TargetHosts: list of TargetHostDTO
-        :param _HttpProtocolType: 后端协议：http https
+        :param _HttpProtocolType: <p>后端协议：http https</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type HttpProtocolType: str
-        :param _CheckTargetCertsError: 证书检查
+        :param _CheckTargetCertsError: <p>证书检查</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type CheckTargetCertsError: bool
-        :param _TargetPath: 目标路径
+        :param _TargetPath: <p>目标路径</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TargetPath: str
-        :param _InvokeLimitConfigStatus: 流量控制状态
+        :param _InvokeLimitConfigStatus: <p>流量控制状态</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type InvokeLimitConfigStatus: bool
-        :param _InvokeLimitConfig: 流量控制配置
+        :param _InvokeLimitConfig: <p>流量控制配置</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type InvokeLimitConfig: :class:`tencentcloud.apis.v20240801.models.InvokeLimitConfigDTO`
-        :param _IpWhiteStatus: IP白名单开启状态
+        :param _IpWhiteStatus: <p>IP白名单开启状态</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type IpWhiteStatus: bool
-        :param _IpWhiteConfig: IP白名单配置
+        :param _IpWhiteConfig: <p>IP白名单配置</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type IpWhiteConfig: :class:`tencentcloud.apis.v20240801.models.IpConfig`
-        :param _IpBlackStatus: IP黑名单开启状态
+        :param _IpBlackStatus: <p>IP黑名单开启状态</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type IpBlackStatus: bool
-        :param _IpBlackConfig: IP黑名单配置
+        :param _IpBlackConfig: <p>IP黑名单配置</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type IpBlackConfig: :class:`tencentcloud.apis.v20240801.models.IpConfig`
-        :param _ID: mcp server ID
+        :param _ID: <p>mcp server ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ID: str
-        :param _Status: 状态
+        :param _Status: <p>状态</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Status: str
-        :param _Url: 预览地址
+        :param _Url: <p>预览地址</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Url: str
-        :param _App: 应用
+        :param _App: <p>应用</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type App: :class:`tencentcloud.apis.v20240801.models.IDNameVO`
-        :param _Catalogs: 目录
+        :param _Catalogs: <p>目录</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Catalogs: list of IDNameVO
-        :param _Labels: 标签
+        :param _Labels: <p>标签</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Labels: list of IDNameVO
-        :param _CreateTime: 创建时间
+        :param _CreateTime: <p>创建时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type CreateTime: str
-        :param _LastUpdateTime: 最后修改时间
+        :param _LastUpdateTime: <p>最后修改时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type LastUpdateTime: str
-        :param _AppID: 用户appID
+        :param _AppID: <p>用户appID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type AppID: int
-        :param _Uin: 用户ID
+        :param _Uin: <p>用户ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Uin: str
-        :param _CustomHttpHost: 自定义host
+        :param _CustomHttpHost: <p>自定义host</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type CustomHttpHost: str
-        :param _HttpHostType:  Http 请求host类型 useRequestHost 保持源请求host targetHost 修正为源站host  customHost 自定义host
+        :param _HttpHostType: <p>Http 请求host类型 useRequestHost 保持源请求host targetHost 修正为源站host  customHost 自定义host</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type HttpHostType: str
-        :param _Timeout: 请求的超时时间
+        :param _Timeout: <p>请求的超时时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Timeout: int
-        :param _Mode: mcp server模式
+        :param _Mode: <p>mcp server模式</p>
         :type Mode: str
-        :param _McpVersion: mcp version
+        :param _McpVersion: <p>mcp version</p>
         :type McpVersion: str
-        :param _WrapServices: 封装模式下绑定的服务ID列表
+        :param _WrapServices: <p>封装模式下绑定的服务ID列表</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type WrapServices: list of str
-        :param _ToolNum: 工具数量
+        :param _ToolNum: <p>工具数量</p>
         :type ToolNum: int
-        :param _McpSecurityRulesVO: 安全规则集响应
+        :param _McpSecurityRulesVO: <p>安全规则集响应</p>
         :type McpSecurityRulesVO: list of McpSecurityRulesVO
-        :param _ToolConfigs: 真实工具级别配置，实时拉取了tool/list做渲染的，如果tool/list不通，就拉不到。
+        :param _ToolConfigs: <p>真实工具级别配置，实时拉取了tool/list做渲染的，如果tool/list不通，就拉不到。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ToolConfigs: list of ToolConfigVO
-        :param _UrlObj: 访问URL
+        :param _UrlObj: <p>访问URL</p>
         :type UrlObj: :class:`tencentcloud.apis.v20240801.models.McpUrlObj`
-        :param _ToolMessage: 后端mcp服务是否正常
+        :param _ToolMessage: <p>后端mcp服务是否正常</p>
         :type ToolMessage: str
-        :param _Tools: 后端mcp服务的工具列表
+        :param _Tools: <p>后端mcp服务的工具列表</p>
         :type Tools: list of McpTool
-        :param _WrapPaasID: 封装的API分组ID
+        :param _WrapPaasID: <p>封装的API分组ID</p>
         :type WrapPaasID: str
-        :param _RelateAgentAppNum: 关联的agentApp数量
+        :param _RelateAgentAppNum: <p>关联的agentApp数量</p>
         :type RelateAgentAppNum: int
-        :param _PluginConfigs: 插件配置
+        :param _PluginConfigs: <p>插件配置</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type PluginConfigs: list of PluginConfigDTO
+        :param _IgnoreHealthCheck: <p>是否忽略健康检查</p>
+        :type IgnoreHealthCheck: bool
         """
         self._InstanceID = None
         self._Name = None
@@ -5683,10 +5700,11 @@ class DescribeMcpServerResponseVO(AbstractModel):
         self._WrapPaasID = None
         self._RelateAgentAppNum = None
         self._PluginConfigs = None
+        self._IgnoreHealthCheck = None
 
     @property
     def InstanceID(self):
-        r"""实例ID
+        r"""<p>实例ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -5698,7 +5716,7 @@ class DescribeMcpServerResponseVO(AbstractModel):
 
     @property
     def Name(self):
-        r"""名称
+        r"""<p>名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -5710,7 +5728,7 @@ class DescribeMcpServerResponseVO(AbstractModel):
 
     @property
     def Description(self):
-        r"""描述
+        r"""<p>描述</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -5722,7 +5740,7 @@ class DescribeMcpServerResponseVO(AbstractModel):
 
     @property
     def LabelIDs(self):
-        r"""标签ID数组
+        r"""<p>标签ID数组</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -5734,7 +5752,7 @@ class DescribeMcpServerResponseVO(AbstractModel):
 
     @property
     def CategoryIDs(self):
-        r"""目录ID数组
+        r"""<p>目录ID数组</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -5746,7 +5764,7 @@ class DescribeMcpServerResponseVO(AbstractModel):
 
     @property
     def TargetSelect(self):
-        r"""负载方式，robin random consistentHash
+        r"""<p>负载方式，robin random consistentHash</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -5758,7 +5776,7 @@ class DescribeMcpServerResponseVO(AbstractModel):
 
     @property
     def TargetHosts(self):
-        r"""目标服务器
+        r"""<p>目标服务器</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of TargetHostDTO
         """
@@ -5770,7 +5788,7 @@ class DescribeMcpServerResponseVO(AbstractModel):
 
     @property
     def HttpProtocolType(self):
-        r"""后端协议：http https
+        r"""<p>后端协议：http https</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -5782,7 +5800,7 @@ class DescribeMcpServerResponseVO(AbstractModel):
 
     @property
     def CheckTargetCertsError(self):
-        r"""证书检查
+        r"""<p>证书检查</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
@@ -5794,7 +5812,7 @@ class DescribeMcpServerResponseVO(AbstractModel):
 
     @property
     def TargetPath(self):
-        r"""目标路径
+        r"""<p>目标路径</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -5806,7 +5824,7 @@ class DescribeMcpServerResponseVO(AbstractModel):
 
     @property
     def InvokeLimitConfigStatus(self):
-        r"""流量控制状态
+        r"""<p>流量控制状态</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
@@ -5818,7 +5836,7 @@ class DescribeMcpServerResponseVO(AbstractModel):
 
     @property
     def InvokeLimitConfig(self):
-        r"""流量控制配置
+        r"""<p>流量控制配置</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.apis.v20240801.models.InvokeLimitConfigDTO`
         """
@@ -5830,7 +5848,7 @@ class DescribeMcpServerResponseVO(AbstractModel):
 
     @property
     def IpWhiteStatus(self):
-        r"""IP白名单开启状态
+        r"""<p>IP白名单开启状态</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
@@ -5842,7 +5860,7 @@ class DescribeMcpServerResponseVO(AbstractModel):
 
     @property
     def IpWhiteConfig(self):
-        r"""IP白名单配置
+        r"""<p>IP白名单配置</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.apis.v20240801.models.IpConfig`
         """
@@ -5854,7 +5872,7 @@ class DescribeMcpServerResponseVO(AbstractModel):
 
     @property
     def IpBlackStatus(self):
-        r"""IP黑名单开启状态
+        r"""<p>IP黑名单开启状态</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
@@ -5866,7 +5884,7 @@ class DescribeMcpServerResponseVO(AbstractModel):
 
     @property
     def IpBlackConfig(self):
-        r"""IP黑名单配置
+        r"""<p>IP黑名单配置</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.apis.v20240801.models.IpConfig`
         """
@@ -5878,7 +5896,7 @@ class DescribeMcpServerResponseVO(AbstractModel):
 
     @property
     def ID(self):
-        r"""mcp server ID
+        r"""<p>mcp server ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -5890,7 +5908,7 @@ class DescribeMcpServerResponseVO(AbstractModel):
 
     @property
     def Status(self):
-        r"""状态
+        r"""<p>状态</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -5902,7 +5920,7 @@ class DescribeMcpServerResponseVO(AbstractModel):
 
     @property
     def Url(self):
-        r"""预览地址
+        r"""<p>预览地址</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -5914,7 +5932,7 @@ class DescribeMcpServerResponseVO(AbstractModel):
 
     @property
     def App(self):
-        r"""应用
+        r"""<p>应用</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.apis.v20240801.models.IDNameVO`
         """
@@ -5926,7 +5944,7 @@ class DescribeMcpServerResponseVO(AbstractModel):
 
     @property
     def Catalogs(self):
-        r"""目录
+        r"""<p>目录</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of IDNameVO
         """
@@ -5938,7 +5956,7 @@ class DescribeMcpServerResponseVO(AbstractModel):
 
     @property
     def Labels(self):
-        r"""标签
+        r"""<p>标签</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of IDNameVO
         """
@@ -5950,7 +5968,7 @@ class DescribeMcpServerResponseVO(AbstractModel):
 
     @property
     def CreateTime(self):
-        r"""创建时间
+        r"""<p>创建时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -5962,7 +5980,7 @@ class DescribeMcpServerResponseVO(AbstractModel):
 
     @property
     def LastUpdateTime(self):
-        r"""最后修改时间
+        r"""<p>最后修改时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -5974,7 +5992,7 @@ class DescribeMcpServerResponseVO(AbstractModel):
 
     @property
     def AppID(self):
-        r"""用户appID
+        r"""<p>用户appID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -5986,7 +6004,7 @@ class DescribeMcpServerResponseVO(AbstractModel):
 
     @property
     def Uin(self):
-        r"""用户ID
+        r"""<p>用户ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -5998,7 +6016,7 @@ class DescribeMcpServerResponseVO(AbstractModel):
 
     @property
     def CustomHttpHost(self):
-        r"""自定义host
+        r"""<p>自定义host</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -6010,7 +6028,7 @@ class DescribeMcpServerResponseVO(AbstractModel):
 
     @property
     def HttpHostType(self):
-        r""" Http 请求host类型 useRequestHost 保持源请求host targetHost 修正为源站host  customHost 自定义host
+        r"""<p>Http 请求host类型 useRequestHost 保持源请求host targetHost 修正为源站host  customHost 自定义host</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -6022,7 +6040,7 @@ class DescribeMcpServerResponseVO(AbstractModel):
 
     @property
     def Timeout(self):
-        r"""请求的超时时间
+        r"""<p>请求的超时时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -6034,7 +6052,7 @@ class DescribeMcpServerResponseVO(AbstractModel):
 
     @property
     def Mode(self):
-        r"""mcp server模式
+        r"""<p>mcp server模式</p>
         :rtype: str
         """
         return self._Mode
@@ -6045,7 +6063,7 @@ class DescribeMcpServerResponseVO(AbstractModel):
 
     @property
     def McpVersion(self):
-        r"""mcp version
+        r"""<p>mcp version</p>
         :rtype: str
         """
         return self._McpVersion
@@ -6056,7 +6074,7 @@ class DescribeMcpServerResponseVO(AbstractModel):
 
     @property
     def WrapServices(self):
-        r"""封装模式下绑定的服务ID列表
+        r"""<p>封装模式下绑定的服务ID列表</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -6068,7 +6086,7 @@ class DescribeMcpServerResponseVO(AbstractModel):
 
     @property
     def ToolNum(self):
-        r"""工具数量
+        r"""<p>工具数量</p>
         :rtype: int
         """
         return self._ToolNum
@@ -6079,7 +6097,7 @@ class DescribeMcpServerResponseVO(AbstractModel):
 
     @property
     def McpSecurityRulesVO(self):
-        r"""安全规则集响应
+        r"""<p>安全规则集响应</p>
         :rtype: list of McpSecurityRulesVO
         """
         return self._McpSecurityRulesVO
@@ -6090,7 +6108,7 @@ class DescribeMcpServerResponseVO(AbstractModel):
 
     @property
     def ToolConfigs(self):
-        r"""真实工具级别配置，实时拉取了tool/list做渲染的，如果tool/list不通，就拉不到。
+        r"""<p>真实工具级别配置，实时拉取了tool/list做渲染的，如果tool/list不通，就拉不到。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ToolConfigVO
         """
@@ -6102,7 +6120,7 @@ class DescribeMcpServerResponseVO(AbstractModel):
 
     @property
     def UrlObj(self):
-        r"""访问URL
+        r"""<p>访问URL</p>
         :rtype: :class:`tencentcloud.apis.v20240801.models.McpUrlObj`
         """
         return self._UrlObj
@@ -6113,7 +6131,7 @@ class DescribeMcpServerResponseVO(AbstractModel):
 
     @property
     def ToolMessage(self):
-        r"""后端mcp服务是否正常
+        r"""<p>后端mcp服务是否正常</p>
         :rtype: str
         """
         return self._ToolMessage
@@ -6124,7 +6142,7 @@ class DescribeMcpServerResponseVO(AbstractModel):
 
     @property
     def Tools(self):
-        r"""后端mcp服务的工具列表
+        r"""<p>后端mcp服务的工具列表</p>
         :rtype: list of McpTool
         """
         return self._Tools
@@ -6135,7 +6153,7 @@ class DescribeMcpServerResponseVO(AbstractModel):
 
     @property
     def WrapPaasID(self):
-        r"""封装的API分组ID
+        r"""<p>封装的API分组ID</p>
         :rtype: str
         """
         return self._WrapPaasID
@@ -6146,7 +6164,7 @@ class DescribeMcpServerResponseVO(AbstractModel):
 
     @property
     def RelateAgentAppNum(self):
-        r"""关联的agentApp数量
+        r"""<p>关联的agentApp数量</p>
         :rtype: int
         """
         return self._RelateAgentAppNum
@@ -6157,7 +6175,7 @@ class DescribeMcpServerResponseVO(AbstractModel):
 
     @property
     def PluginConfigs(self):
-        r"""插件配置
+        r"""<p>插件配置</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of PluginConfigDTO
         """
@@ -6166,6 +6184,17 @@ class DescribeMcpServerResponseVO(AbstractModel):
     @PluginConfigs.setter
     def PluginConfigs(self, PluginConfigs):
         self._PluginConfigs = PluginConfigs
+
+    @property
+    def IgnoreHealthCheck(self):
+        r"""<p>是否忽略健康检查</p>
+        :rtype: bool
+        """
+        return self._IgnoreHealthCheck
+
+    @IgnoreHealthCheck.setter
+    def IgnoreHealthCheck(self, IgnoreHealthCheck):
+        self._IgnoreHealthCheck = IgnoreHealthCheck
 
 
     def _deserialize(self, params):
@@ -6255,6 +6284,7 @@ class DescribeMcpServerResponseVO(AbstractModel):
                 obj = PluginConfigDTO()
                 obj._deserialize(item)
                 self._PluginConfigs.append(obj)
+        self._IgnoreHealthCheck = params.get("IgnoreHealthCheck")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -9881,58 +9911,60 @@ class ModifyMcpServerRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ID: mcp server ID
+        :param _ID: <p>mcp server ID</p>
         :type ID: str
-        :param _Mode: 模式：proxy代理模式； wrap封装模式；
+        :param _Mode: <p>模式：proxy代理模式； wrap封装模式；</p>
         :type Mode: str
-        :param _McpVersion: 版本号：2024-11-05 2025-03-26
+        :param _McpVersion: <p>版本号：2024-11-05 2025-03-26</p>
         :type McpVersion: str
-        :param _InstanceID: 实例ID
+        :param _InstanceID: <p>实例ID</p>
         :type InstanceID: str
-        :param _Name: 名称
+        :param _Name: <p>名称</p>
         :type Name: str
-        :param _Description: 描述
+        :param _Description: <p>描述</p>
         :type Description: str
-        :param _WrapServices: 封装服务列表
+        :param _WrapServices: <p>封装服务列表</p>
         :type WrapServices: list of str
-        :param _TargetSelect: 负载方式，robin random consistentHash
+        :param _TargetSelect: <p>负载方式，robin random consistentHash</p>
         :type TargetSelect: str
-        :param _TargetHosts: 目标服务器
+        :param _TargetHosts: <p>目标服务器</p>
         :type TargetHosts: list of TargetHostDTO
-        :param _HttpProtocolType: 后端协议：http https
+        :param _HttpProtocolType: <p>后端协议：http https</p>
         :type HttpProtocolType: str
-        :param _CheckTargetCertsError: 证书检查
+        :param _CheckTargetCertsError: <p>证书检查</p>
         :type CheckTargetCertsError: bool
-        :param _TargetPath: 目标路径
+        :param _TargetPath: <p>目标路径</p>
         :type TargetPath: str
-        :param _InvokeLimitConfigStatus: 流量控制开启状态
+        :param _InvokeLimitConfigStatus: <p>流量控制开启状态</p>
         :type InvokeLimitConfigStatus: bool
-        :param _InvokeLimitConfig: 流量控制配置
+        :param _InvokeLimitConfig: <p>流量控制配置</p>
         :type InvokeLimitConfig: :class:`tencentcloud.apis.v20240801.models.InvokeLimitConfigDTO`
-        :param _IpWhiteStatus: IP白名单开启状态
+        :param _IpWhiteStatus: <p>IP白名单开启状态</p>
         :type IpWhiteStatus: bool
-        :param _IpWhiteConfig: IP白名单配置
+        :param _IpWhiteConfig: <p>IP白名单配置</p>
         :type IpWhiteConfig: :class:`tencentcloud.apis.v20240801.models.IpConfig`
-        :param _IpBlackStatus: IP黑名单开启状态
+        :param _IpBlackStatus: <p>IP黑名单开启状态</p>
         :type IpBlackStatus: bool
-        :param _IpBlackConfig: IP黑名单配置
+        :param _IpBlackConfig: <p>IP黑名单配置</p>
         :type IpBlackConfig: :class:`tencentcloud.apis.v20240801.models.IpConfig`
-        :param _TargetHostType: 目标Host类型 0 默认 1 vpc
+        :param _TargetHostType: <p>目标Host类型 0 默认 1 vpc</p>
         :type TargetHostType: int
-        :param _CustomHttpHost: 自定义host
+        :param _CustomHttpHost: <p>自定义host</p>
         :type CustomHttpHost: str
-        :param _HttpHostType: Http 请求host类型：useRequestHost 保持源请求；host targetHost 修正为源站host； customHost 自定义host
+        :param _HttpHostType: <p>Http 请求host类型：useRequestHost 保持源请求；host targetHost 修正为源站host； customHost 自定义host</p>
         :type HttpHostType: str
-        :param _Timeout: 请求的超时时间
+        :param _Timeout: <p>请求的超时时间</p>
         :type Timeout: int
-        :param _McpSecurityRules: 安全规则集
+        :param _McpSecurityRules: <p>安全规则集</p>
         :type McpSecurityRules: list of McpSecurityRule
-        :param _ToolConfigs: 工具集配置（openapi可能会用到）
+        :param _ToolConfigs: <p>工具集配置（openapi可能会用到）</p>
         :type ToolConfigs: list of ToolConfigDTO
-        :param _WrapPaasID: 封装的API分组ID
+        :param _WrapPaasID: <p>封装的API分组ID</p>
         :type WrapPaasID: str
-        :param _PluginConfigs: 插件配置
+        :param _PluginConfigs: <p>插件配置</p>
         :type PluginConfigs: list of PluginConfigDTO
+        :param _IgnoreHealthCheck: <p>是否忽略健康检查</p>
+        :type IgnoreHealthCheck: bool
         """
         self._ID = None
         self._Mode = None
@@ -9960,10 +9992,11 @@ class ModifyMcpServerRequest(AbstractModel):
         self._ToolConfigs = None
         self._WrapPaasID = None
         self._PluginConfigs = None
+        self._IgnoreHealthCheck = None
 
     @property
     def ID(self):
-        r"""mcp server ID
+        r"""<p>mcp server ID</p>
         :rtype: str
         """
         return self._ID
@@ -9974,7 +10007,7 @@ class ModifyMcpServerRequest(AbstractModel):
 
     @property
     def Mode(self):
-        r"""模式：proxy代理模式； wrap封装模式；
+        r"""<p>模式：proxy代理模式； wrap封装模式；</p>
         :rtype: str
         """
         return self._Mode
@@ -9985,7 +10018,7 @@ class ModifyMcpServerRequest(AbstractModel):
 
     @property
     def McpVersion(self):
-        r"""版本号：2024-11-05 2025-03-26
+        r"""<p>版本号：2024-11-05 2025-03-26</p>
         :rtype: str
         """
         return self._McpVersion
@@ -9996,7 +10029,7 @@ class ModifyMcpServerRequest(AbstractModel):
 
     @property
     def InstanceID(self):
-        r"""实例ID
+        r"""<p>实例ID</p>
         :rtype: str
         """
         return self._InstanceID
@@ -10007,7 +10040,7 @@ class ModifyMcpServerRequest(AbstractModel):
 
     @property
     def Name(self):
-        r"""名称
+        r"""<p>名称</p>
         :rtype: str
         """
         return self._Name
@@ -10018,7 +10051,7 @@ class ModifyMcpServerRequest(AbstractModel):
 
     @property
     def Description(self):
-        r"""描述
+        r"""<p>描述</p>
         :rtype: str
         """
         return self._Description
@@ -10029,7 +10062,7 @@ class ModifyMcpServerRequest(AbstractModel):
 
     @property
     def WrapServices(self):
-        r"""封装服务列表
+        r"""<p>封装服务列表</p>
         :rtype: list of str
         """
         return self._WrapServices
@@ -10040,7 +10073,7 @@ class ModifyMcpServerRequest(AbstractModel):
 
     @property
     def TargetSelect(self):
-        r"""负载方式，robin random consistentHash
+        r"""<p>负载方式，robin random consistentHash</p>
         :rtype: str
         """
         return self._TargetSelect
@@ -10051,7 +10084,7 @@ class ModifyMcpServerRequest(AbstractModel):
 
     @property
     def TargetHosts(self):
-        r"""目标服务器
+        r"""<p>目标服务器</p>
         :rtype: list of TargetHostDTO
         """
         return self._TargetHosts
@@ -10062,7 +10095,7 @@ class ModifyMcpServerRequest(AbstractModel):
 
     @property
     def HttpProtocolType(self):
-        r"""后端协议：http https
+        r"""<p>后端协议：http https</p>
         :rtype: str
         """
         return self._HttpProtocolType
@@ -10073,7 +10106,7 @@ class ModifyMcpServerRequest(AbstractModel):
 
     @property
     def CheckTargetCertsError(self):
-        r"""证书检查
+        r"""<p>证书检查</p>
         :rtype: bool
         """
         return self._CheckTargetCertsError
@@ -10084,7 +10117,7 @@ class ModifyMcpServerRequest(AbstractModel):
 
     @property
     def TargetPath(self):
-        r"""目标路径
+        r"""<p>目标路径</p>
         :rtype: str
         """
         return self._TargetPath
@@ -10095,7 +10128,7 @@ class ModifyMcpServerRequest(AbstractModel):
 
     @property
     def InvokeLimitConfigStatus(self):
-        r"""流量控制开启状态
+        r"""<p>流量控制开启状态</p>
         :rtype: bool
         """
         return self._InvokeLimitConfigStatus
@@ -10106,7 +10139,7 @@ class ModifyMcpServerRequest(AbstractModel):
 
     @property
     def InvokeLimitConfig(self):
-        r"""流量控制配置
+        r"""<p>流量控制配置</p>
         :rtype: :class:`tencentcloud.apis.v20240801.models.InvokeLimitConfigDTO`
         """
         return self._InvokeLimitConfig
@@ -10117,7 +10150,7 @@ class ModifyMcpServerRequest(AbstractModel):
 
     @property
     def IpWhiteStatus(self):
-        r"""IP白名单开启状态
+        r"""<p>IP白名单开启状态</p>
         :rtype: bool
         """
         return self._IpWhiteStatus
@@ -10128,7 +10161,7 @@ class ModifyMcpServerRequest(AbstractModel):
 
     @property
     def IpWhiteConfig(self):
-        r"""IP白名单配置
+        r"""<p>IP白名单配置</p>
         :rtype: :class:`tencentcloud.apis.v20240801.models.IpConfig`
         """
         return self._IpWhiteConfig
@@ -10139,7 +10172,7 @@ class ModifyMcpServerRequest(AbstractModel):
 
     @property
     def IpBlackStatus(self):
-        r"""IP黑名单开启状态
+        r"""<p>IP黑名单开启状态</p>
         :rtype: bool
         """
         return self._IpBlackStatus
@@ -10150,7 +10183,7 @@ class ModifyMcpServerRequest(AbstractModel):
 
     @property
     def IpBlackConfig(self):
-        r"""IP黑名单配置
+        r"""<p>IP黑名单配置</p>
         :rtype: :class:`tencentcloud.apis.v20240801.models.IpConfig`
         """
         return self._IpBlackConfig
@@ -10161,7 +10194,7 @@ class ModifyMcpServerRequest(AbstractModel):
 
     @property
     def TargetHostType(self):
-        r"""目标Host类型 0 默认 1 vpc
+        r"""<p>目标Host类型 0 默认 1 vpc</p>
         :rtype: int
         """
         return self._TargetHostType
@@ -10172,7 +10205,7 @@ class ModifyMcpServerRequest(AbstractModel):
 
     @property
     def CustomHttpHost(self):
-        r"""自定义host
+        r"""<p>自定义host</p>
         :rtype: str
         """
         return self._CustomHttpHost
@@ -10183,7 +10216,7 @@ class ModifyMcpServerRequest(AbstractModel):
 
     @property
     def HttpHostType(self):
-        r"""Http 请求host类型：useRequestHost 保持源请求；host targetHost 修正为源站host； customHost 自定义host
+        r"""<p>Http 请求host类型：useRequestHost 保持源请求；host targetHost 修正为源站host； customHost 自定义host</p>
         :rtype: str
         """
         return self._HttpHostType
@@ -10194,7 +10227,7 @@ class ModifyMcpServerRequest(AbstractModel):
 
     @property
     def Timeout(self):
-        r"""请求的超时时间
+        r"""<p>请求的超时时间</p>
         :rtype: int
         """
         return self._Timeout
@@ -10205,7 +10238,7 @@ class ModifyMcpServerRequest(AbstractModel):
 
     @property
     def McpSecurityRules(self):
-        r"""安全规则集
+        r"""<p>安全规则集</p>
         :rtype: list of McpSecurityRule
         """
         return self._McpSecurityRules
@@ -10216,7 +10249,7 @@ class ModifyMcpServerRequest(AbstractModel):
 
     @property
     def ToolConfigs(self):
-        r"""工具集配置（openapi可能会用到）
+        r"""<p>工具集配置（openapi可能会用到）</p>
         :rtype: list of ToolConfigDTO
         """
         return self._ToolConfigs
@@ -10227,7 +10260,7 @@ class ModifyMcpServerRequest(AbstractModel):
 
     @property
     def WrapPaasID(self):
-        r"""封装的API分组ID
+        r"""<p>封装的API分组ID</p>
         :rtype: str
         """
         return self._WrapPaasID
@@ -10238,7 +10271,7 @@ class ModifyMcpServerRequest(AbstractModel):
 
     @property
     def PluginConfigs(self):
-        r"""插件配置
+        r"""<p>插件配置</p>
         :rtype: list of PluginConfigDTO
         """
         return self._PluginConfigs
@@ -10246,6 +10279,17 @@ class ModifyMcpServerRequest(AbstractModel):
     @PluginConfigs.setter
     def PluginConfigs(self, PluginConfigs):
         self._PluginConfigs = PluginConfigs
+
+    @property
+    def IgnoreHealthCheck(self):
+        r"""<p>是否忽略健康检查</p>
+        :rtype: bool
+        """
+        return self._IgnoreHealthCheck
+
+    @IgnoreHealthCheck.setter
+    def IgnoreHealthCheck(self, IgnoreHealthCheck):
+        self._IgnoreHealthCheck = IgnoreHealthCheck
 
 
     def _deserialize(self, params):
@@ -10301,6 +10345,7 @@ class ModifyMcpServerRequest(AbstractModel):
                 obj = PluginConfigDTO()
                 obj._deserialize(item)
                 self._PluginConfigs.append(obj)
+        self._IgnoreHealthCheck = params.get("IgnoreHealthCheck")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -10318,7 +10363,7 @@ class ModifyMcpServerResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Data: mcp server ID
+        :param _Data: <p>mcp server ID</p>
         :type Data: :class:`tencentcloud.apis.v20240801.models.ResultIDVO`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -10328,7 +10373,7 @@ class ModifyMcpServerResponse(AbstractModel):
 
     @property
     def Data(self):
-        r"""mcp server ID
+        r"""<p>mcp server ID</p>
         :rtype: :class:`tencentcloud.apis.v20240801.models.ResultIDVO`
         """
         return self._Data

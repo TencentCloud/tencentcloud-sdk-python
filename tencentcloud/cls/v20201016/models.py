@@ -15408,6 +15408,8 @@ class CreateTopicRequest(AbstractModel):
         :type HotPeriod: int
         :param _Encryption: <p>加密相关参数。 支持加密地域并且开白用户可以传此参数，其他场景不能传递该参数。<br>0或者不传： 不加密<br>1：kms-cls 云产品密钥加密</p><p>支持地域：ap-beijing,ap-guangzhou,ap-shanghai,ap-singapore,ap-bangkok,ap-jakarta,eu-frankfurt,ap-seoul,ap-tokyo</p>
         :type Encryption: int
+        :param _CustomKmsInfo: <p>用户自定义 KMS 密钥信息；为空则使用默认密钥（别名 KMS-CLS）</p><p>当参数 Encryption为 1 时有效。</p>
+        :type CustomKmsInfo: :class:`tencentcloud.cls.v20201016.models.CustomKmsInfo`
         :param _BizType: <p>主题类型</p><ul><li>0:日志主题，默认值</li><li>1:指标主题</li></ul>
         :type BizType: int
         :param _TopicId: <p>主题自定义ID，格式为：用户自定义部分-用户APPID。未填写该参数时将自动生成ID。</p><ul><li>用户自定义部分仅支持小写字母、数字和-，且不能以-开头和结尾，长度为3至40字符</li><li>尾部需要使用-拼接用户APPID，APPID可在https://console.cloud.tencent.com/developer页面查询。</li><li>如果指定该字段，需保证全地域唯一</li></ul>
@@ -15432,6 +15434,7 @@ class CreateTopicRequest(AbstractModel):
         self._Describes = None
         self._HotPeriod = None
         self._Encryption = None
+        self._CustomKmsInfo = None
         self._BizType = None
         self._TopicId = None
         self._IsWebTracking = None
@@ -15561,6 +15564,17 @@ class CreateTopicRequest(AbstractModel):
         self._Encryption = Encryption
 
     @property
+    def CustomKmsInfo(self):
+        r"""<p>用户自定义 KMS 密钥信息；为空则使用默认密钥（别名 KMS-CLS）</p><p>当参数 Encryption为 1 时有效。</p>
+        :rtype: :class:`tencentcloud.cls.v20201016.models.CustomKmsInfo`
+        """
+        return self._CustomKmsInfo
+
+    @CustomKmsInfo.setter
+    def CustomKmsInfo(self, CustomKmsInfo):
+        self._CustomKmsInfo = CustomKmsInfo
+
+    @property
     def BizType(self):
         r"""<p>主题类型</p><ul><li>0:日志主题，默认值</li><li>1:指标主题</li></ul>
         :rtype: int
@@ -15644,6 +15658,9 @@ class CreateTopicRequest(AbstractModel):
         self._Describes = params.get("Describes")
         self._HotPeriod = params.get("HotPeriod")
         self._Encryption = params.get("Encryption")
+        if params.get("CustomKmsInfo") is not None:
+            self._CustomKmsInfo = CustomKmsInfo()
+            self._CustomKmsInfo._deserialize(params.get("CustomKmsInfo"))
         self._BizType = params.get("BizType")
         self._TopicId = params.get("TopicId")
         self._IsWebTracking = params.get("IsWebTracking")
@@ -15940,6 +15957,57 @@ class CsvInfo(AbstractModel):
         self._Delimiter = params.get("Delimiter")
         self._EscapeChar = params.get("EscapeChar")
         self._NonExistingField = params.get("NonExistingField")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CustomKmsInfo(AbstractModel):
+    r"""自定义 KMS 密钥
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _KmsRegion: <p>KMS支持的地域，详见 腾讯云-密钥管理系统 官方文档</p><p>参数格式：ap-guangzhou</p>
+        :type KmsRegion: str
+        :param _KmsKeyId: <p>KMS秘钥ID</p>
+        :type KmsKeyId: str
+        """
+        self._KmsRegion = None
+        self._KmsKeyId = None
+
+    @property
+    def KmsRegion(self):
+        r"""<p>KMS支持的地域，详见 腾讯云-密钥管理系统 官方文档</p><p>参数格式：ap-guangzhou</p>
+        :rtype: str
+        """
+        return self._KmsRegion
+
+    @KmsRegion.setter
+    def KmsRegion(self, KmsRegion):
+        self._KmsRegion = KmsRegion
+
+    @property
+    def KmsKeyId(self):
+        r"""<p>KMS秘钥ID</p>
+        :rtype: str
+        """
+        return self._KmsKeyId
+
+    @KmsKeyId.setter
+    def KmsKeyId(self, KmsKeyId):
+        self._KmsKeyId = KmsKeyId
+
+
+    def _deserialize(self, params):
+        self._KmsRegion = params.get("KmsRegion")
+        self._KmsKeyId = params.get("KmsKeyId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -29919,28 +29987,15 @@ class DescribeTopicsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Filters: <ul><li>topicName 按照【主题名称】进行过滤，默认为模糊匹配，可使用 PreciseSearch 参数设置为精确匹配。类型：String。必选：否</li>
-<li>logsetName 按照【日志集名称】进行过滤，默认为模糊匹配，可使用 PreciseSearch 参数设置为精确匹配。类型：String。必选：否</li>
-<li>topicId 按照【主题ID】进行过滤。类型：String。必选：否</li>
-<li>logsetId 按照【日志集ID】进行过滤，可通过调用 <a href="https://cloud.tencent.com/document/product/614/58624">DescribeLogsets</a> 查询已创建的日志集列表或登录控制台进行查看；也可以调用<a href="https://cloud.tencent.com/document/product/614/58626">CreateLogset</a> 创建新的日志集。类型：String。必选：否</li>
-<li>tagKey 按照【标签键】进行过滤。类型：String。必选：否</li>
-<li>tag:tagKey 按照【标签键值对】进行过滤。tagKey 使用具体的标签键进行替换，例如 tag:exampleKey。类型：String。必选：否</li>
-<li>storageType 按照【主题的存储类型】进行过滤。可选值 hot（标准存储），cold（低频存储）类型：String。必选：否</li></ul>
-注意：每次请求的 Filters 的上限为10，Filter.Values 的上限为100。
+        :param _Filters: <ul><li>topicName 按照【主题名称】进行过滤，默认为模糊匹配，可使用 PreciseSearch 参数设置为精确匹配。类型：String。必选：否</li><li>logsetName 按照【日志集名称】进行过滤，默认为模糊匹配，可使用 PreciseSearch 参数设置为精确匹配。类型：String。必选：否</li><li>topicId 按照【主题ID】进行过滤。类型：String。必选：否</li><li>logsetId 按照【日志集ID】进行过滤，可通过调用 <a href="https://cloud.tencent.com/document/product/614/58624">DescribeLogsets</a> 查询已创建的日志集列表或登录控制台进行查看；也可以调用<a href="https://cloud.tencent.com/document/product/614/58626">CreateLogset</a> 创建新的日志集。类型：String。必选：否</li><li>tagKey 按照【标签键】进行过滤。类型：String。必选：否</li><li>tag:tagKey 按照【标签键值对】进行过滤。tagKey 使用具体的标签键进行替换，例如 tag:exampleKey。类型：String。必选：否</li><li>storageType 按照【主题的存储类型】进行过滤。可选值 hot（标准存储），cold（低频存储）类型：String。必选：否</li></ul>注意：每次请求的 Filters 的上限为10，Filter.Values 的上限为100。
         :type Filters: list of Filter
-        :param _Offset: 分页的偏移量，默认值为0。
+        :param _Offset: <p>分页的偏移量，默认值为0。</p>
         :type Offset: int
-        :param _Limit: 分页单页限制数目，默认值为20，最大值100。
+        :param _Limit: <p>分页单页限制数目，默认值为20，最大值100。</p>
         :type Limit: int
-        :param _PreciseSearch: 控制Filters相关字段是否为精确匹配。
-<ul><li>0: 默认值，topicName 和 logsetName 模糊匹配</li>
-<li>1: topicName   精确匹配</li>
-<li>2: logsetName精确匹配</li>
-<li>3: topicName 和logsetName 都精确匹配</li></ul>
+        :param _PreciseSearch: <p>控制Filters相关字段是否为精确匹配。</p><ul><li>0: 默认值，topicName 和 logsetName 模糊匹配</li><li>1: topicName   精确匹配</li><li>2: logsetName精确匹配</li><li>3: topicName 和logsetName 都精确匹配</li></ul>
         :type PreciseSearch: int
-        :param _BizType: 主题类型
-- 0:日志主题，默认值
-- 1:指标主题
+        :param _BizType: <p>主题类型</p><ul><li>0:日志主题，默认值</li><li>1:指标主题</li></ul>
         :type BizType: int
         """
         self._Filters = None
@@ -29951,14 +30006,7 @@ class DescribeTopicsRequest(AbstractModel):
 
     @property
     def Filters(self):
-        r"""<ul><li>topicName 按照【主题名称】进行过滤，默认为模糊匹配，可使用 PreciseSearch 参数设置为精确匹配。类型：String。必选：否</li>
-<li>logsetName 按照【日志集名称】进行过滤，默认为模糊匹配，可使用 PreciseSearch 参数设置为精确匹配。类型：String。必选：否</li>
-<li>topicId 按照【主题ID】进行过滤。类型：String。必选：否</li>
-<li>logsetId 按照【日志集ID】进行过滤，可通过调用 <a href="https://cloud.tencent.com/document/product/614/58624">DescribeLogsets</a> 查询已创建的日志集列表或登录控制台进行查看；也可以调用<a href="https://cloud.tencent.com/document/product/614/58626">CreateLogset</a> 创建新的日志集。类型：String。必选：否</li>
-<li>tagKey 按照【标签键】进行过滤。类型：String。必选：否</li>
-<li>tag:tagKey 按照【标签键值对】进行过滤。tagKey 使用具体的标签键进行替换，例如 tag:exampleKey。类型：String。必选：否</li>
-<li>storageType 按照【主题的存储类型】进行过滤。可选值 hot（标准存储），cold（低频存储）类型：String。必选：否</li></ul>
-注意：每次请求的 Filters 的上限为10，Filter.Values 的上限为100。
+        r"""<ul><li>topicName 按照【主题名称】进行过滤，默认为模糊匹配，可使用 PreciseSearch 参数设置为精确匹配。类型：String。必选：否</li><li>logsetName 按照【日志集名称】进行过滤，默认为模糊匹配，可使用 PreciseSearch 参数设置为精确匹配。类型：String。必选：否</li><li>topicId 按照【主题ID】进行过滤。类型：String。必选：否</li><li>logsetId 按照【日志集ID】进行过滤，可通过调用 <a href="https://cloud.tencent.com/document/product/614/58624">DescribeLogsets</a> 查询已创建的日志集列表或登录控制台进行查看；也可以调用<a href="https://cloud.tencent.com/document/product/614/58626">CreateLogset</a> 创建新的日志集。类型：String。必选：否</li><li>tagKey 按照【标签键】进行过滤。类型：String。必选：否</li><li>tag:tagKey 按照【标签键值对】进行过滤。tagKey 使用具体的标签键进行替换，例如 tag:exampleKey。类型：String。必选：否</li><li>storageType 按照【主题的存储类型】进行过滤。可选值 hot（标准存储），cold（低频存储）类型：String。必选：否</li></ul>注意：每次请求的 Filters 的上限为10，Filter.Values 的上限为100。
         :rtype: list of Filter
         """
         return self._Filters
@@ -29969,7 +30017,7 @@ class DescribeTopicsRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""分页的偏移量，默认值为0。
+        r"""<p>分页的偏移量，默认值为0。</p>
         :rtype: int
         """
         return self._Offset
@@ -29980,7 +30028,7 @@ class DescribeTopicsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""分页单页限制数目，默认值为20，最大值100。
+        r"""<p>分页单页限制数目，默认值为20，最大值100。</p>
         :rtype: int
         """
         return self._Limit
@@ -29991,11 +30039,7 @@ class DescribeTopicsRequest(AbstractModel):
 
     @property
     def PreciseSearch(self):
-        r"""控制Filters相关字段是否为精确匹配。
-<ul><li>0: 默认值，topicName 和 logsetName 模糊匹配</li>
-<li>1: topicName   精确匹配</li>
-<li>2: logsetName精确匹配</li>
-<li>3: topicName 和logsetName 都精确匹配</li></ul>
+        r"""<p>控制Filters相关字段是否为精确匹配。</p><ul><li>0: 默认值，topicName 和 logsetName 模糊匹配</li><li>1: topicName   精确匹配</li><li>2: logsetName精确匹配</li><li>3: topicName 和logsetName 都精确匹配</li></ul>
         :rtype: int
         """
         return self._PreciseSearch
@@ -30006,9 +30050,7 @@ class DescribeTopicsRequest(AbstractModel):
 
     @property
     def BizType(self):
-        r"""主题类型
-- 0:日志主题，默认值
-- 1:指标主题
+        r"""<p>主题类型</p><ul><li>0:日志主题，默认值</li><li>1:指标主题</li></ul>
         :rtype: int
         """
         return self._BizType
@@ -30046,9 +30088,9 @@ class DescribeTopicsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Topics: 主题列表
+        :param _Topics: <p>主题列表</p>
         :type Topics: list of TopicInfo
-        :param _TotalCount: 总数目
+        :param _TotalCount: <p>总数目</p>
         :type TotalCount: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -30059,7 +30101,7 @@ class DescribeTopicsResponse(AbstractModel):
 
     @property
     def Topics(self):
-        r"""主题列表
+        r"""<p>主题列表</p>
         :rtype: list of TopicInfo
         """
         return self._Topics
@@ -30070,7 +30112,7 @@ class DescribeTopicsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        r"""总数目
+        r"""<p>总数目</p>
         :rtype: int
         """
         return self._TotalCount
@@ -45493,6 +45535,8 @@ class ModifyTopicRequest(AbstractModel):
         :type CancelTopicAsyncTaskID: str
         :param _Encryption: <p>加密相关参数。 支持加密地域并且开白用户可以传此参数，其他场景不能传递该参数。<br>只支持传入1：kms-cls 云产品秘钥加密</p>
         :type Encryption: int
+        :param _CustomKmsInfo: <p>用户自定义 KMS 密钥信息；为空则使用默认密钥（别名 KMS-CLS）</p><p>当参数 Encryption为 1 时生效</p>
+        :type CustomKmsInfo: :class:`tencentcloud.cls.v20201016.models.CustomKmsInfo`
         :param _IsSourceFrom: <p>开启记录公网来源ip和服务端接收时间</p>
         :type IsSourceFrom: bool
         :param _BillingMode: <p>计费模式</p><p>枚举值：</p><ul><li>0： 按使用功能计费</li><li>1： 按原始日志量计费（目前仅面向少部分客户支持）</li></ul><p>默认值：0</p>
@@ -45513,6 +45557,7 @@ class ModifyTopicRequest(AbstractModel):
         self._PartitionCount = None
         self._CancelTopicAsyncTaskID = None
         self._Encryption = None
+        self._CustomKmsInfo = None
         self._IsSourceFrom = None
         self._BillingMode = None
 
@@ -45682,6 +45727,17 @@ class ModifyTopicRequest(AbstractModel):
         self._Encryption = Encryption
 
     @property
+    def CustomKmsInfo(self):
+        r"""<p>用户自定义 KMS 密钥信息；为空则使用默认密钥（别名 KMS-CLS）</p><p>当参数 Encryption为 1 时生效</p>
+        :rtype: :class:`tencentcloud.cls.v20201016.models.CustomKmsInfo`
+        """
+        return self._CustomKmsInfo
+
+    @CustomKmsInfo.setter
+    def CustomKmsInfo(self, CustomKmsInfo):
+        self._CustomKmsInfo = CustomKmsInfo
+
+    @property
     def IsSourceFrom(self):
         r"""<p>开启记录公网来源ip和服务端接收时间</p>
         :rtype: bool
@@ -45727,6 +45783,9 @@ class ModifyTopicRequest(AbstractModel):
         self._PartitionCount = params.get("PartitionCount")
         self._CancelTopicAsyncTaskID = params.get("CancelTopicAsyncTaskID")
         self._Encryption = params.get("Encryption")
+        if params.get("CustomKmsInfo") is not None:
+            self._CustomKmsInfo = CustomKmsInfo()
+            self._CustomKmsInfo._deserialize(params.get("CustomKmsInfo"))
         self._IsSourceFrom = params.get("IsSourceFrom")
         self._BillingMode = params.get("BillingMode")
         memeber_set = set(params.keys())
@@ -54084,8 +54143,10 @@ class TopicInfo(AbstractModel):
         :type Describes: str
         :param _HotPeriod: <p>开启日志沉降，标准存储的生命周期， hotPeriod &lt; Period。<br>标准存储为 hotPeriod, 低频存储则为 Period-hotPeriod。（主题类型需为日志主题）<br>HotPeriod=0为没有开启日志沉降。</p>
         :type HotPeriod: int
-        :param _KeyId: <p>kms-cls服务秘钥id</p>
+        :param _KeyId: <p>kms-cls服务秘钥id</p><p>CustomKmsInfo为空时为系统默认密钥，CustomKmsInfo不为空时为用户自定义密钥</p>
         :type KeyId: str
+        :param _CustomKmsInfo: <p>用户自定义 KMS 密钥信息</p>
+        :type CustomKmsInfo: :class:`tencentcloud.cls.v20201016.models.CustomKmsInfo`
         :param _BizType: <p>主题类型。</p><ul><li>0: 日志主题 </li><li>1: 指标主题</li></ul>
         :type BizType: int
         :param _IsWebTracking: <p>免鉴权开关。 false：关闭； true：开启。<br>开启后将支持指定操作匿名访问该日志主题。详情请参见<a href="https://cloud.tencent.com/document/product/614/41035">日志主题</a>。</p>
@@ -54124,6 +54185,7 @@ class TopicInfo(AbstractModel):
         self._Describes = None
         self._HotPeriod = None
         self._KeyId = None
+        self._CustomKmsInfo = None
         self._BizType = None
         self._IsWebTracking = None
         self._Extends = None
@@ -54334,7 +54396,7 @@ class TopicInfo(AbstractModel):
 
     @property
     def KeyId(self):
-        r"""<p>kms-cls服务秘钥id</p>
+        r"""<p>kms-cls服务秘钥id</p><p>CustomKmsInfo为空时为系统默认密钥，CustomKmsInfo不为空时为用户自定义密钥</p>
         :rtype: str
         """
         return self._KeyId
@@ -54342,6 +54404,17 @@ class TopicInfo(AbstractModel):
     @KeyId.setter
     def KeyId(self, KeyId):
         self._KeyId = KeyId
+
+    @property
+    def CustomKmsInfo(self):
+        r"""<p>用户自定义 KMS 密钥信息</p>
+        :rtype: :class:`tencentcloud.cls.v20201016.models.CustomKmsInfo`
+        """
+        return self._CustomKmsInfo
+
+    @CustomKmsInfo.setter
+    def CustomKmsInfo(self, CustomKmsInfo):
+        self._CustomKmsInfo = CustomKmsInfo
 
     @property
     def BizType(self):
@@ -54468,6 +54541,9 @@ class TopicInfo(AbstractModel):
         self._Describes = params.get("Describes")
         self._HotPeriod = params.get("HotPeriod")
         self._KeyId = params.get("KeyId")
+        if params.get("CustomKmsInfo") is not None:
+            self._CustomKmsInfo = CustomKmsInfo()
+            self._CustomKmsInfo._deserialize(params.get("CustomKmsInfo"))
         self._BizType = params.get("BizType")
         self._IsWebTracking = params.get("IsWebTracking")
         if params.get("Extends") is not None:

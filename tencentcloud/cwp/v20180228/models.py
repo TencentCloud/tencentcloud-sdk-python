@@ -58458,14 +58458,14 @@ class DescribeSkillInfoRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Ids: 事件id
+        :param _Ids: <p>事件id</p>
         :type Ids: list of int non-negative
         """
         self._Ids = None
 
     @property
     def Ids(self):
-        r"""事件id
+        r"""<p>事件id</p>
         :rtype: list of int non-negative
         """
         return self._Ids
@@ -58494,7 +58494,7 @@ class DescribeSkillInfoResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SkillInfoList: skill信息列表
+        :param _SkillInfoList: <p>skill信息列表</p>
         :type SkillInfoList: list of SkillInfo
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -58504,7 +58504,7 @@ class DescribeSkillInfoResponse(AbstractModel):
 
     @property
     def SkillInfoList(self):
-        r"""skill信息列表
+        r"""<p>skill信息列表</p>
         :rtype: list of SkillInfo
         """
         return self._SkillInfoList
