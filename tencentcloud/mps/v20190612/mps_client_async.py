@@ -134,6 +134,24 @@ class MpsClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CloneViral(
+            self,
+            request: models.CloneViralRequest,
+            opts: Dict = None,
+    ) -> models.CloneViralResponse:
+        """
+        爆款复刻。输入爆款参考视频+商品图，生成风格/节奏对齐的视频
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CloneViral"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CloneViralResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateAIAnalysisTemplate(
             self,
             request: models.CreateAIAnalysisTemplateRequest,
@@ -1780,6 +1798,24 @@ class MpsClient(AbstractClient):
         kwargs["action"] = "DescribeBlindWatermarkTemplates"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeBlindWatermarkTemplatesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeCloneViralTask(
+            self,
+            request: models.DescribeCloneViralTaskRequest,
+            opts: Dict = None,
+    ) -> models.DescribeCloneViralTaskResponse:
+        """
+        查询爆款复刻任务结果
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeCloneViralTask"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeCloneViralTaskResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

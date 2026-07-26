@@ -17380,6 +17380,492 @@ class ClipRangeInfo(AbstractModel):
         
 
 
+class CloneViralAIGC(AbstractModel):
+    r"""爆款复刻 AIGC 生视频相关参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Duration: <p>视频时长</p><p>取值范围：[4, 15]</p>
+        :type Duration: int
+        :param _AspectRatio: <p>宽高比。可选 16:9/4:3/1:1/3:4/9:16/21:9/adaptive</p>
+        :type AspectRatio: str
+        :param _Resolution: <p>分辨率。支持720p（默认）/1080p/2k/4k</p>
+        :type Resolution: str
+        :param _ModelTier: <p>模型等级。flagship（VS2.0，默认）、standard（Kling3.0-Omni）</p>
+        :type ModelTier: str
+        """
+        self._Duration = None
+        self._AspectRatio = None
+        self._Resolution = None
+        self._ModelTier = None
+
+    @property
+    def Duration(self):
+        r"""<p>视频时长</p><p>取值范围：[4, 15]</p>
+        :rtype: int
+        """
+        return self._Duration
+
+    @Duration.setter
+    def Duration(self, Duration):
+        self._Duration = Duration
+
+    @property
+    def AspectRatio(self):
+        r"""<p>宽高比。可选 16:9/4:3/1:1/3:4/9:16/21:9/adaptive</p>
+        :rtype: str
+        """
+        return self._AspectRatio
+
+    @AspectRatio.setter
+    def AspectRatio(self, AspectRatio):
+        self._AspectRatio = AspectRatio
+
+    @property
+    def Resolution(self):
+        r"""<p>分辨率。支持720p（默认）/1080p/2k/4k</p>
+        :rtype: str
+        """
+        return self._Resolution
+
+    @Resolution.setter
+    def Resolution(self, Resolution):
+        self._Resolution = Resolution
+
+    @property
+    def ModelTier(self):
+        r"""<p>模型等级。flagship（VS2.0，默认）、standard（Kling3.0-Omni）</p>
+        :rtype: str
+        """
+        return self._ModelTier
+
+    @ModelTier.setter
+    def ModelTier(self, ModelTier):
+        self._ModelTier = ModelTier
+
+
+    def _deserialize(self, params):
+        self._Duration = params.get("Duration")
+        self._AspectRatio = params.get("AspectRatio")
+        self._Resolution = params.get("Resolution")
+        self._ModelTier = params.get("ModelTier")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CloneViralContent(AbstractModel):
+    r"""爆款复刻内容/风格参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _UserPrompt: <p>自定义提示词，对生成视频的要求</p>
+        :type UserPrompt: str
+        :param _Language: <p>生成视频的目标语言，默认不指定，支持zh / en / ja / ko / es / pt / instrumental（纯音乐无口播）</p>
+        :type Language: str
+        :param _Market: <p>目标市场，默认不指定。可选north_america / europe / china / japan / korea / sea / brazil</p>
+        :type Market: str
+        :param _FissionLevel: <p>裂变程度。exact/low/medium/high，默认exact 1:1复刻</p>
+        :type FissionLevel: str
+        """
+        self._UserPrompt = None
+        self._Language = None
+        self._Market = None
+        self._FissionLevel = None
+
+    @property
+    def UserPrompt(self):
+        r"""<p>自定义提示词，对生成视频的要求</p>
+        :rtype: str
+        """
+        return self._UserPrompt
+
+    @UserPrompt.setter
+    def UserPrompt(self, UserPrompt):
+        self._UserPrompt = UserPrompt
+
+    @property
+    def Language(self):
+        r"""<p>生成视频的目标语言，默认不指定，支持zh / en / ja / ko / es / pt / instrumental（纯音乐无口播）</p>
+        :rtype: str
+        """
+        return self._Language
+
+    @Language.setter
+    def Language(self, Language):
+        self._Language = Language
+
+    @property
+    def Market(self):
+        r"""<p>目标市场，默认不指定。可选north_america / europe / china / japan / korea / sea / brazil</p>
+        :rtype: str
+        """
+        return self._Market
+
+    @Market.setter
+    def Market(self, Market):
+        self._Market = Market
+
+    @property
+    def FissionLevel(self):
+        r"""<p>裂变程度。exact/low/medium/high，默认exact 1:1复刻</p>
+        :rtype: str
+        """
+        return self._FissionLevel
+
+    @FissionLevel.setter
+    def FissionLevel(self, FissionLevel):
+        self._FissionLevel = FissionLevel
+
+
+    def _deserialize(self, params):
+        self._UserPrompt = params.get("UserPrompt")
+        self._Language = params.get("Language")
+        self._Market = params.get("Market")
+        self._FissionLevel = params.get("FissionLevel")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CloneViralPersona(AbstractModel):
+    r"""爆款复刻模特形象
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Gender: <p>模特性别。male/female/any</p>
+        :type Gender: str
+        :param _Age: <p>年龄段。teenager/youth/middle_aged/senior</p>
+        :type Age: str
+        :param _Ethnicity: <p>外观特征。caucasian/asian/latino/african/middle_eastern</p>
+        :type Ethnicity: str
+        :param _BodyType: <p>体型。slim / standard / athletic / chubby</p>
+        :type BodyType: str
+        """
+        self._Gender = None
+        self._Age = None
+        self._Ethnicity = None
+        self._BodyType = None
+
+    @property
+    def Gender(self):
+        r"""<p>模特性别。male/female/any</p>
+        :rtype: str
+        """
+        return self._Gender
+
+    @Gender.setter
+    def Gender(self, Gender):
+        self._Gender = Gender
+
+    @property
+    def Age(self):
+        r"""<p>年龄段。teenager/youth/middle_aged/senior</p>
+        :rtype: str
+        """
+        return self._Age
+
+    @Age.setter
+    def Age(self, Age):
+        self._Age = Age
+
+    @property
+    def Ethnicity(self):
+        r"""<p>外观特征。caucasian/asian/latino/african/middle_eastern</p>
+        :rtype: str
+        """
+        return self._Ethnicity
+
+    @Ethnicity.setter
+    def Ethnicity(self, Ethnicity):
+        self._Ethnicity = Ethnicity
+
+    @property
+    def BodyType(self):
+        r"""<p>体型。slim / standard / athletic / chubby</p>
+        :rtype: str
+        """
+        return self._BodyType
+
+    @BodyType.setter
+    def BodyType(self, BodyType):
+        self._BodyType = BodyType
+
+
+    def _deserialize(self, params):
+        self._Gender = params.get("Gender")
+        self._Age = params.get("Age")
+        self._Ethnicity = params.get("Ethnicity")
+        self._BodyType = params.get("BodyType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CloneViralProduct(AbstractModel):
+    r"""爆款复刻产品信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Images: <p>产品图</p>
+        :type Images: list of str
+        :param _Name: <p>产品名</p>
+        :type Name: str
+        :param _Description: <p>产品描述</p>
+        :type Description: str
+        """
+        self._Images = None
+        self._Name = None
+        self._Description = None
+
+    @property
+    def Images(self):
+        r"""<p>产品图</p>
+        :rtype: list of str
+        """
+        return self._Images
+
+    @Images.setter
+    def Images(self, Images):
+        self._Images = Images
+
+    @property
+    def Name(self):
+        r"""<p>产品名</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Description(self):
+        r"""<p>产品描述</p>
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+
+    def _deserialize(self, params):
+        self._Images = params.get("Images")
+        self._Name = params.get("Name")
+        self._Description = params.get("Description")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CloneViralRequest(AbstractModel):
+    r"""CloneViral请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VideoUrl: <p>爆款视频Url</p>
+        :type VideoUrl: str
+        :param _Product: <p>产品信息</p>
+        :type Product: :class:`tencentcloud.mps.v20190612.models.CloneViralProduct`
+        :param _AIGCParam: <p>AIGC生视频相关参数</p>
+        :type AIGCParam: :class:`tencentcloud.mps.v20190612.models.CloneViralAIGC`
+        :param _ContentParam: <p>内容/风格相关参数</p>
+        :type ContentParam: :class:`tencentcloud.mps.v20190612.models.CloneViralContent`
+        :param _Persona: <p>模特形象</p>
+        :type Persona: :class:`tencentcloud.mps.v20190612.models.CloneViralPersona`
+        """
+        self._VideoUrl = None
+        self._Product = None
+        self._AIGCParam = None
+        self._ContentParam = None
+        self._Persona = None
+
+    @property
+    def VideoUrl(self):
+        r"""<p>爆款视频Url</p>
+        :rtype: str
+        """
+        return self._VideoUrl
+
+    @VideoUrl.setter
+    def VideoUrl(self, VideoUrl):
+        self._VideoUrl = VideoUrl
+
+    @property
+    def Product(self):
+        r"""<p>产品信息</p>
+        :rtype: :class:`tencentcloud.mps.v20190612.models.CloneViralProduct`
+        """
+        return self._Product
+
+    @Product.setter
+    def Product(self, Product):
+        self._Product = Product
+
+    @property
+    def AIGCParam(self):
+        r"""<p>AIGC生视频相关参数</p>
+        :rtype: :class:`tencentcloud.mps.v20190612.models.CloneViralAIGC`
+        """
+        return self._AIGCParam
+
+    @AIGCParam.setter
+    def AIGCParam(self, AIGCParam):
+        self._AIGCParam = AIGCParam
+
+    @property
+    def ContentParam(self):
+        r"""<p>内容/风格相关参数</p>
+        :rtype: :class:`tencentcloud.mps.v20190612.models.CloneViralContent`
+        """
+        return self._ContentParam
+
+    @ContentParam.setter
+    def ContentParam(self, ContentParam):
+        self._ContentParam = ContentParam
+
+    @property
+    def Persona(self):
+        r"""<p>模特形象</p>
+        :rtype: :class:`tencentcloud.mps.v20190612.models.CloneViralPersona`
+        """
+        return self._Persona
+
+    @Persona.setter
+    def Persona(self, Persona):
+        self._Persona = Persona
+
+
+    def _deserialize(self, params):
+        self._VideoUrl = params.get("VideoUrl")
+        if params.get("Product") is not None:
+            self._Product = CloneViralProduct()
+            self._Product._deserialize(params.get("Product"))
+        if params.get("AIGCParam") is not None:
+            self._AIGCParam = CloneViralAIGC()
+            self._AIGCParam._deserialize(params.get("AIGCParam"))
+        if params.get("ContentParam") is not None:
+            self._ContentParam = CloneViralContent()
+            self._ContentParam._deserialize(params.get("ContentParam"))
+        if params.get("Persona") is not None:
+            self._Persona = CloneViralPersona()
+            self._Persona._deserialize(params.get("Persona"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CloneViralResponse(AbstractModel):
+    r"""CloneViral返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Status: <p>任务状态，失败时返回FAIL</p>
+        :type Status: str
+        :param _Message: <p>失败时返回错误信息</p>
+        :type Message: str
+        :param _TaskId: <p>任务创建成功后，返回的任务ID。 调用查询接口，轮询获取任务进度及生成结果。</p>
+        :type TaskId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Status = None
+        self._Message = None
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def Status(self):
+        r"""<p>任务状态，失败时返回FAIL</p>
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Message(self):
+        r"""<p>失败时返回错误信息</p>
+        :rtype: str
+        """
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+    @property
+    def TaskId(self):
+        r"""<p>任务创建成功后，返回的任务ID。 调用查询接口，轮询获取任务进度及生成结果。</p>
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Status = params.get("Status")
+        self._Message = params.get("Message")
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
+
+
 class ColorEnhanceConfig(AbstractModel):
     r"""色彩增强配置
 
@@ -33688,6 +34174,115 @@ class DescribeBlindWatermarkTemplatesResponse(AbstractModel):
                 obj = BlindWatermarkTemplate()
                 obj._deserialize(item)
                 self._BlindWatermarkTemplateSet.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeCloneViralTaskRequest(AbstractModel):
+    r"""DescribeCloneViralTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: <p>创建爆款复刻任务返回的任务ID</p>
+        :type TaskId: str
+        """
+        self._TaskId = None
+
+    @property
+    def TaskId(self):
+        r"""<p>创建爆款复刻任务返回的任务ID</p>
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCloneViralTaskResponse(AbstractModel):
+    r"""DescribeCloneViralTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Status: <p>任务状态</p><p>枚举值：</p><ul><li>WAIT： 等待中</li><li>RUN： 执行中</li><li>FAIL： 任务失败</li><li>DONE： 任务成功</li></ul>
+        :type Status: str
+        :param _Message: <p>失败时返回错误信息</p>
+        :type Message: str
+        :param _VideoUrls: <p>当任务状态为 DONE时，返回视频Url列表，视频存储24小时</p>
+        :type VideoUrls: list of str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Status = None
+        self._Message = None
+        self._VideoUrls = None
+        self._RequestId = None
+
+    @property
+    def Status(self):
+        r"""<p>任务状态</p><p>枚举值：</p><ul><li>WAIT： 等待中</li><li>RUN： 执行中</li><li>FAIL： 任务失败</li><li>DONE： 任务成功</li></ul>
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Message(self):
+        r"""<p>失败时返回错误信息</p>
+        :rtype: str
+        """
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+    @property
+    def VideoUrls(self):
+        r"""<p>当任务状态为 DONE时，返回视频Url列表，视频存储24小时</p>
+        :rtype: list of str
+        """
+        return self._VideoUrls
+
+    @VideoUrls.setter
+    def VideoUrls(self, VideoUrls):
+        self._VideoUrls = VideoUrls
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Status = params.get("Status")
+        self._Message = params.get("Message")
+        self._VideoUrls = params.get("VideoUrls")
         self._RequestId = params.get("RequestId")
 
 

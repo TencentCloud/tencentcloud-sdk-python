@@ -4640,6 +4640,1543 @@ class AppToolConfig(AbstractModel):
         
 
 
+class AppTrigger(AbstractModel):
+    r"""AppTrigger
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TriggerId: 
+        :type TriggerId: str
+        :param _AppId: 
+        :type AppId: str
+        :param _TriggerName: 
+        :type TriggerName: str
+        :param _TriggerType: <table><tr><td>枚举项</td><td>枚举值</td><td>描述</td></tr><tr><td>APP_TRIGGER_TYPE_UNSPECIFIED</td><td>0</td><td>未指定</td></tr><tr><td>APP_TRIGGER_TYPE_SCHEDULED</td><td>1</td><td>定时触发</td></tr><tr><td>APP_TRIGGER_TYPE_WEBHOOK</td><td>2</td><td>Webhook 触发</td></tr></table>
+        :type TriggerType: int
+        :param _ExecuteType: <table><tr><td>枚举项</td><td>枚举值</td><td>描述</td></tr><tr><td>APP_TRIGGER_EXECUTE_TYPE_UNSPECIFIED</td><td>0</td><td>未指定</td></tr><tr><td>APP_TRIGGER_EXECUTE_TYPE_PROMPT</td><td>1</td><td>指令执行</td></tr><tr><td>APP_TRIGGER_EXECUTE_TYPE_WORKFLOW</td><td>2</td><td>工作流执行</td></tr></table>
+        :type ExecuteType: int
+        :param _PushConfig: 
+        :type PushConfig: :class:`tencentcloud.adp.v20260520.models.TimerPushConfig`
+        :param _Status: <table><tr><td>枚举项</td><td>枚举值</td><td>描述</td></tr><tr><td>APP_TRIGGER_STATUS_UNSPECIFIED</td><td>0</td><td>未指定</td></tr><tr><td>APP_TRIGGER_STATUS_ENABLED</td><td>1</td><td>启用</td></tr><tr><td>APP_TRIGGER_STATUS_PAUSED</td><td>2</td><td>暂停</td></tr><tr><td>APP_TRIGGER_STATUS_DELETED</td><td>3</td><td>已删除</td></tr></table>
+        :type Status: int
+        :param _SuccessCount: 
+        :type SuccessCount: str
+        :param _FailedCount: 
+        :type FailedCount: str
+        :param _TriggerConfig: 
+        :type TriggerConfig: :class:`tencentcloud.adp.v20260520.models.TriggerConfig`
+        :param _ExecuteConfig: 
+        :type ExecuteConfig: :class:`tencentcloud.adp.v20260520.models.ExecuteConfig`
+        :param _TriggerStatus: 
+        :type TriggerStatus: :class:`tencentcloud.adp.v20260520.models.TriggerStatus`
+        """
+        self._TriggerId = None
+        self._AppId = None
+        self._TriggerName = None
+        self._TriggerType = None
+        self._ExecuteType = None
+        self._PushConfig = None
+        self._Status = None
+        self._SuccessCount = None
+        self._FailedCount = None
+        self._TriggerConfig = None
+        self._ExecuteConfig = None
+        self._TriggerStatus = None
+
+    @property
+    def TriggerId(self):
+        r"""
+        :rtype: str
+        """
+        return self._TriggerId
+
+    @TriggerId.setter
+    def TriggerId(self, TriggerId):
+        self._TriggerId = TriggerId
+
+    @property
+    def AppId(self):
+        r"""
+        :rtype: str
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def TriggerName(self):
+        r"""
+        :rtype: str
+        """
+        return self._TriggerName
+
+    @TriggerName.setter
+    def TriggerName(self, TriggerName):
+        self._TriggerName = TriggerName
+
+    @property
+    def TriggerType(self):
+        r"""<table><tr><td>枚举项</td><td>枚举值</td><td>描述</td></tr><tr><td>APP_TRIGGER_TYPE_UNSPECIFIED</td><td>0</td><td>未指定</td></tr><tr><td>APP_TRIGGER_TYPE_SCHEDULED</td><td>1</td><td>定时触发</td></tr><tr><td>APP_TRIGGER_TYPE_WEBHOOK</td><td>2</td><td>Webhook 触发</td></tr></table>
+        :rtype: int
+        """
+        return self._TriggerType
+
+    @TriggerType.setter
+    def TriggerType(self, TriggerType):
+        self._TriggerType = TriggerType
+
+    @property
+    def ExecuteType(self):
+        r"""<table><tr><td>枚举项</td><td>枚举值</td><td>描述</td></tr><tr><td>APP_TRIGGER_EXECUTE_TYPE_UNSPECIFIED</td><td>0</td><td>未指定</td></tr><tr><td>APP_TRIGGER_EXECUTE_TYPE_PROMPT</td><td>1</td><td>指令执行</td></tr><tr><td>APP_TRIGGER_EXECUTE_TYPE_WORKFLOW</td><td>2</td><td>工作流执行</td></tr></table>
+        :rtype: int
+        """
+        return self._ExecuteType
+
+    @ExecuteType.setter
+    def ExecuteType(self, ExecuteType):
+        self._ExecuteType = ExecuteType
+
+    @property
+    def PushConfig(self):
+        r"""
+        :rtype: :class:`tencentcloud.adp.v20260520.models.TimerPushConfig`
+        """
+        return self._PushConfig
+
+    @PushConfig.setter
+    def PushConfig(self, PushConfig):
+        self._PushConfig = PushConfig
+
+    @property
+    def Status(self):
+        r"""<table><tr><td>枚举项</td><td>枚举值</td><td>描述</td></tr><tr><td>APP_TRIGGER_STATUS_UNSPECIFIED</td><td>0</td><td>未指定</td></tr><tr><td>APP_TRIGGER_STATUS_ENABLED</td><td>1</td><td>启用</td></tr><tr><td>APP_TRIGGER_STATUS_PAUSED</td><td>2</td><td>暂停</td></tr><tr><td>APP_TRIGGER_STATUS_DELETED</td><td>3</td><td>已删除</td></tr></table>
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def SuccessCount(self):
+        r"""
+        :rtype: str
+        """
+        return self._SuccessCount
+
+    @SuccessCount.setter
+    def SuccessCount(self, SuccessCount):
+        self._SuccessCount = SuccessCount
+
+    @property
+    def FailedCount(self):
+        r"""
+        :rtype: str
+        """
+        return self._FailedCount
+
+    @FailedCount.setter
+    def FailedCount(self, FailedCount):
+        self._FailedCount = FailedCount
+
+    @property
+    def TriggerConfig(self):
+        r"""
+        :rtype: :class:`tencentcloud.adp.v20260520.models.TriggerConfig`
+        """
+        return self._TriggerConfig
+
+    @TriggerConfig.setter
+    def TriggerConfig(self, TriggerConfig):
+        self._TriggerConfig = TriggerConfig
+
+    @property
+    def ExecuteConfig(self):
+        r"""
+        :rtype: :class:`tencentcloud.adp.v20260520.models.ExecuteConfig`
+        """
+        return self._ExecuteConfig
+
+    @ExecuteConfig.setter
+    def ExecuteConfig(self, ExecuteConfig):
+        self._ExecuteConfig = ExecuteConfig
+
+    @property
+    def TriggerStatus(self):
+        r"""
+        :rtype: :class:`tencentcloud.adp.v20260520.models.TriggerStatus`
+        """
+        return self._TriggerStatus
+
+    @TriggerStatus.setter
+    def TriggerStatus(self, TriggerStatus):
+        self._TriggerStatus = TriggerStatus
+
+
+    def _deserialize(self, params):
+        self._TriggerId = params.get("TriggerId")
+        self._AppId = params.get("AppId")
+        self._TriggerName = params.get("TriggerName")
+        self._TriggerType = params.get("TriggerType")
+        self._ExecuteType = params.get("ExecuteType")
+        if params.get("PushConfig") is not None:
+            self._PushConfig = TimerPushConfig()
+            self._PushConfig._deserialize(params.get("PushConfig"))
+        self._Status = params.get("Status")
+        self._SuccessCount = params.get("SuccessCount")
+        self._FailedCount = params.get("FailedCount")
+        if params.get("TriggerConfig") is not None:
+            self._TriggerConfig = TriggerConfig()
+            self._TriggerConfig._deserialize(params.get("TriggerConfig"))
+        if params.get("ExecuteConfig") is not None:
+            self._ExecuteConfig = ExecuteConfig()
+            self._ExecuteConfig._deserialize(params.get("ExecuteConfig"))
+        if params.get("TriggerStatus") is not None:
+            self._TriggerStatus = TriggerStatus()
+            self._TriggerStatus._deserialize(params.get("TriggerStatus"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AppTriggerInstance(AbstractModel):
+    r"""AppTriggerInstance
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AppId: 
+        :type AppId: str
+        :param _ConversationId: 
+        :type ConversationId: str
+        :param _CreatedAt: 
+        :type CreatedAt: str
+        :param _FinishedAt: 
+        :type FinishedAt: str
+        :param _InstanceId: 
+        :type InstanceId: str
+        :param _RequestId: 
+        :type RequestId: str
+        :param _ResultCode: 
+        :type ResultCode: str
+        :param _ResultSummary: 
+        :type ResultSummary: str
+        :param _RunId: 
+        :type RunId: str
+        :param _Source: <table><tr><td>枚举项</td><td>枚举值</td><td>描述</td></tr><tr><td>APP_TRIGGER_INSTANCE_SOURCE_UNSPECIFIED</td><td>0</td><td>未指定</td></tr><tr><td>APP_TRIGGER_INSTANCE_SOURCE_APP_TRIGGER</td><td>1</td><td>来源于应用触发器</td></tr></table>
+        :type Source: int
+        :param _StartedAt: 
+        :type StartedAt: str
+        :param _Status: <table><tr><td>枚举项</td><td>枚举值</td><td>描述</td></tr><tr><td>TIMER_RUN_STATUS_UNSPECIFIED</td><td>0</td><td>未指定</td></tr><tr><td>TIMER_RUN_STATUS_PENDING</td><td>1</td><td>等待执行</td></tr><tr><td>TIMER_RUN_STATUS_RUNNING</td><td>2</td><td>执行中</td></tr><tr><td>TIMER_RUN_STATUS_RETRY_WAIT</td><td>3</td><td>等待重试</td></tr><tr><td>TIMER_RUN_STATUS_SUCCESS</td><td>4</td><td>成功</td></tr><tr><td>TIMER_RUN_STATUS_DEAD</td><td>5</td><td>失败终态 (重试耗尽 / 不可重试)</td></tr><tr><td>TIMER_RUN_STATUS_CANCELLED</td><td>6</td><td>被任务暂停/删除/修改取消</td></tr></table>
+        :type Status: int
+        :param _TraceId: 
+        :type TraceId: str
+        :param _TriggerId: 
+        :type TriggerId: str
+        :param _WorkflowRunId: 
+        :type WorkflowRunId: str
+        """
+        self._AppId = None
+        self._ConversationId = None
+        self._CreatedAt = None
+        self._FinishedAt = None
+        self._InstanceId = None
+        self._RequestId = None
+        self._ResultCode = None
+        self._ResultSummary = None
+        self._RunId = None
+        self._Source = None
+        self._StartedAt = None
+        self._Status = None
+        self._TraceId = None
+        self._TriggerId = None
+        self._WorkflowRunId = None
+
+    @property
+    def AppId(self):
+        r"""
+        :rtype: str
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def ConversationId(self):
+        r"""
+        :rtype: str
+        """
+        return self._ConversationId
+
+    @ConversationId.setter
+    def ConversationId(self, ConversationId):
+        self._ConversationId = ConversationId
+
+    @property
+    def CreatedAt(self):
+        r"""
+        :rtype: str
+        """
+        return self._CreatedAt
+
+    @CreatedAt.setter
+    def CreatedAt(self, CreatedAt):
+        self._CreatedAt = CreatedAt
+
+    @property
+    def FinishedAt(self):
+        r"""
+        :rtype: str
+        """
+        return self._FinishedAt
+
+    @FinishedAt.setter
+    def FinishedAt(self, FinishedAt):
+        self._FinishedAt = FinishedAt
+
+    @property
+    def InstanceId(self):
+        r"""
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def RequestId(self):
+        r"""
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+    @property
+    def ResultCode(self):
+        r"""
+        :rtype: str
+        """
+        return self._ResultCode
+
+    @ResultCode.setter
+    def ResultCode(self, ResultCode):
+        self._ResultCode = ResultCode
+
+    @property
+    def ResultSummary(self):
+        r"""
+        :rtype: str
+        """
+        return self._ResultSummary
+
+    @ResultSummary.setter
+    def ResultSummary(self, ResultSummary):
+        self._ResultSummary = ResultSummary
+
+    @property
+    def RunId(self):
+        r"""
+        :rtype: str
+        """
+        return self._RunId
+
+    @RunId.setter
+    def RunId(self, RunId):
+        self._RunId = RunId
+
+    @property
+    def Source(self):
+        r"""<table><tr><td>枚举项</td><td>枚举值</td><td>描述</td></tr><tr><td>APP_TRIGGER_INSTANCE_SOURCE_UNSPECIFIED</td><td>0</td><td>未指定</td></tr><tr><td>APP_TRIGGER_INSTANCE_SOURCE_APP_TRIGGER</td><td>1</td><td>来源于应用触发器</td></tr></table>
+        :rtype: int
+        """
+        return self._Source
+
+    @Source.setter
+    def Source(self, Source):
+        self._Source = Source
+
+    @property
+    def StartedAt(self):
+        r"""
+        :rtype: str
+        """
+        return self._StartedAt
+
+    @StartedAt.setter
+    def StartedAt(self, StartedAt):
+        self._StartedAt = StartedAt
+
+    @property
+    def Status(self):
+        r"""<table><tr><td>枚举项</td><td>枚举值</td><td>描述</td></tr><tr><td>TIMER_RUN_STATUS_UNSPECIFIED</td><td>0</td><td>未指定</td></tr><tr><td>TIMER_RUN_STATUS_PENDING</td><td>1</td><td>等待执行</td></tr><tr><td>TIMER_RUN_STATUS_RUNNING</td><td>2</td><td>执行中</td></tr><tr><td>TIMER_RUN_STATUS_RETRY_WAIT</td><td>3</td><td>等待重试</td></tr><tr><td>TIMER_RUN_STATUS_SUCCESS</td><td>4</td><td>成功</td></tr><tr><td>TIMER_RUN_STATUS_DEAD</td><td>5</td><td>失败终态 (重试耗尽 / 不可重试)</td></tr><tr><td>TIMER_RUN_STATUS_CANCELLED</td><td>6</td><td>被任务暂停/删除/修改取消</td></tr></table>
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def TraceId(self):
+        r"""
+        :rtype: str
+        """
+        return self._TraceId
+
+    @TraceId.setter
+    def TraceId(self, TraceId):
+        self._TraceId = TraceId
+
+    @property
+    def TriggerId(self):
+        r"""
+        :rtype: str
+        """
+        return self._TriggerId
+
+    @TriggerId.setter
+    def TriggerId(self, TriggerId):
+        self._TriggerId = TriggerId
+
+    @property
+    def WorkflowRunId(self):
+        r"""
+        :rtype: str
+        """
+        return self._WorkflowRunId
+
+    @WorkflowRunId.setter
+    def WorkflowRunId(self, WorkflowRunId):
+        self._WorkflowRunId = WorkflowRunId
+
+
+    def _deserialize(self, params):
+        self._AppId = params.get("AppId")
+        self._ConversationId = params.get("ConversationId")
+        self._CreatedAt = params.get("CreatedAt")
+        self._FinishedAt = params.get("FinishedAt")
+        self._InstanceId = params.get("InstanceId")
+        self._RequestId = params.get("RequestId")
+        self._ResultCode = params.get("ResultCode")
+        self._ResultSummary = params.get("ResultSummary")
+        self._RunId = params.get("RunId")
+        self._Source = params.get("Source")
+        self._StartedAt = params.get("StartedAt")
+        self._Status = params.get("Status")
+        self._TraceId = params.get("TraceId")
+        self._TriggerId = params.get("TriggerId")
+        self._WorkflowRunId = params.get("WorkflowRunId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AppTriggerParamBinding(AbstractModel):
+    r"""AppTriggerParamBinding
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ParamName: <p>参数名字</p>
+        :type ParamName: str
+        :param _ParamType: <p>参数类型</p><p>枚举值：</p><ul><li>0： 字符串</li><li>1： 整数</li><li>2： 浮点数</li><li>4： 对象</li><li>5： 字符串数组</li><li>6： 整数数组</li><li>7： 浮点数数组</li><li>8： 布尔值数组</li><li>3： 布尔值</li><li>9： 对象数组</li><li>10： 文件</li><li>11： 文档</li><li>12： 图片</li><li>13： 音频</li><li>14： 视频</li><li>15： 文件数组</li><li>16： 文档数组</li><li>17： 图片数组</li><li>18： 音频数组</li><li>19： 视频数组</li><li>20： 数组嵌套</li><li>22： 密钥</li><li>99： 空值</li><li>100： 未指定类型，用于OneOf和AnyOf场景</li></ul>
+        :type ParamType: int
+        :param _Value: <p>参数值</p>
+        :type Value: :class:`tencentcloud.adp.v20260520.models.AppTriggerParamBindingValue`
+        """
+        self._ParamName = None
+        self._ParamType = None
+        self._Value = None
+
+    @property
+    def ParamName(self):
+        r"""<p>参数名字</p>
+        :rtype: str
+        """
+        return self._ParamName
+
+    @ParamName.setter
+    def ParamName(self, ParamName):
+        self._ParamName = ParamName
+
+    @property
+    def ParamType(self):
+        r"""<p>参数类型</p><p>枚举值：</p><ul><li>0： 字符串</li><li>1： 整数</li><li>2： 浮点数</li><li>4： 对象</li><li>5： 字符串数组</li><li>6： 整数数组</li><li>7： 浮点数数组</li><li>8： 布尔值数组</li><li>3： 布尔值</li><li>9： 对象数组</li><li>10： 文件</li><li>11： 文档</li><li>12： 图片</li><li>13： 音频</li><li>14： 视频</li><li>15： 文件数组</li><li>16： 文档数组</li><li>17： 图片数组</li><li>18： 音频数组</li><li>19： 视频数组</li><li>20： 数组嵌套</li><li>22： 密钥</li><li>99： 空值</li><li>100： 未指定类型，用于OneOf和AnyOf场景</li></ul>
+        :rtype: int
+        """
+        return self._ParamType
+
+    @ParamType.setter
+    def ParamType(self, ParamType):
+        self._ParamType = ParamType
+
+    @property
+    def Value(self):
+        r"""<p>参数值</p>
+        :rtype: :class:`tencentcloud.adp.v20260520.models.AppTriggerParamBindingValue`
+        """
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+
+    def _deserialize(self, params):
+        self._ParamName = params.get("ParamName")
+        self._ParamType = params.get("ParamType")
+        if params.get("Value") is not None:
+            self._Value = AppTriggerParamBindingValue()
+            self._Value._deserialize(params.get("Value"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AppTriggerParamBindingConfig(AbstractModel):
+    r"""AppTriggerParamBindingConfig
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ParamList: 
+        :type ParamList: list of AppTriggerParamBinding
+        """
+        self._ParamList = None
+
+    @property
+    def ParamList(self):
+        r"""
+        :rtype: list of AppTriggerParamBinding
+        """
+        return self._ParamList
+
+    @ParamList.setter
+    def ParamList(self, ParamList):
+        self._ParamList = ParamList
+
+
+    def _deserialize(self, params):
+        if params.get("ParamList") is not None:
+            self._ParamList = []
+            for item in params.get("ParamList"):
+                obj = AppTriggerParamBinding()
+                obj._deserialize(item)
+                self._ParamList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AppTriggerParamBindingValue(AbstractModel):
+    r"""AppTriggerParamBindingValue
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ParamValue: <p>参数值</p>
+        :type ParamValue: str
+        :param _VariableName: <p>应用变量名</p>
+        :type VariableName: str
+        """
+        self._ParamValue = None
+        self._VariableName = None
+
+    @property
+    def ParamValue(self):
+        r"""<p>参数值</p>
+        :rtype: str
+        """
+        return self._ParamValue
+
+    @ParamValue.setter
+    def ParamValue(self, ParamValue):
+        self._ParamValue = ParamValue
+
+    @property
+    def VariableName(self):
+        r"""<p>应用变量名</p>
+        :rtype: str
+        """
+        return self._VariableName
+
+    @VariableName.setter
+    def VariableName(self, VariableName):
+        self._VariableName = VariableName
+
+
+    def _deserialize(self, params):
+        self._ParamValue = params.get("ParamValue")
+        self._VariableName = params.get("VariableName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AppTriggerParamSchema(AbstractModel):
+    r"""AppTriggerParamSchema
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ParamName: 
+        :type ParamName: str
+        :param _ParamType: <table><tr><td>枚举项</td><td>枚举值</td><td>描述</td></tr><tr><td>PARAM_TYPE_STRING</td><td>0</td><td>字符串</td></tr><tr><td>PARAM_TYPE_INT</td><td>1</td><td>整数</td></tr><tr><td>PARAM_TYPE_FLOAT</td><td>2</td><td>浮点数</td></tr><tr><td>PARAM_TYPE_BOOL</td><td>3</td><td>布尔值</td></tr><tr><td>PARAM_TYPE_OBJECT</td><td>4</td><td>对象</td></tr><tr><td>PARAM_TYPE_ARRAY_STRING</td><td>5</td><td>字符串数组</td></tr><tr><td>PARAM_TYPE_ARRAY_INT</td><td>6</td><td>整数数组</td></tr><tr><td>PARAM_TYPE_ARRAY_FLOAT</td><td>7</td><td>浮点数数组</td></tr><tr><td>PARAM_TYPE_ARRAY_BOOL</td><td>8</td><td>布尔值数组</td></tr><tr><td>PARAM_TYPE_ARRAY_OBJECT</td><td>9</td><td>对象数组</td></tr><tr><td>PARAM_TYPE_ARRAY_ARRAY</td><td>20</td><td>数组嵌套</td></tr><tr><td>PARAM_TYPE_NULL</td><td>99</td><td>空值</td></tr><tr><td>PARAM_TYPE_UNSPECIFIED</td><td>100</td><td>未指定类型，用于OneOf和AnyOf场景</td></tr></table>
+        :type ParamType: int
+        :param _Required: 
+        :type Required: bool
+        :param _SubParamList: 
+        :type SubParamList: list of AppTriggerParamSchema
+        """
+        self._ParamName = None
+        self._ParamType = None
+        self._Required = None
+        self._SubParamList = None
+
+    @property
+    def ParamName(self):
+        r"""
+        :rtype: str
+        """
+        return self._ParamName
+
+    @ParamName.setter
+    def ParamName(self, ParamName):
+        self._ParamName = ParamName
+
+    @property
+    def ParamType(self):
+        r"""<table><tr><td>枚举项</td><td>枚举值</td><td>描述</td></tr><tr><td>PARAM_TYPE_STRING</td><td>0</td><td>字符串</td></tr><tr><td>PARAM_TYPE_INT</td><td>1</td><td>整数</td></tr><tr><td>PARAM_TYPE_FLOAT</td><td>2</td><td>浮点数</td></tr><tr><td>PARAM_TYPE_BOOL</td><td>3</td><td>布尔值</td></tr><tr><td>PARAM_TYPE_OBJECT</td><td>4</td><td>对象</td></tr><tr><td>PARAM_TYPE_ARRAY_STRING</td><td>5</td><td>字符串数组</td></tr><tr><td>PARAM_TYPE_ARRAY_INT</td><td>6</td><td>整数数组</td></tr><tr><td>PARAM_TYPE_ARRAY_FLOAT</td><td>7</td><td>浮点数数组</td></tr><tr><td>PARAM_TYPE_ARRAY_BOOL</td><td>8</td><td>布尔值数组</td></tr><tr><td>PARAM_TYPE_ARRAY_OBJECT</td><td>9</td><td>对象数组</td></tr><tr><td>PARAM_TYPE_ARRAY_ARRAY</td><td>20</td><td>数组嵌套</td></tr><tr><td>PARAM_TYPE_NULL</td><td>99</td><td>空值</td></tr><tr><td>PARAM_TYPE_UNSPECIFIED</td><td>100</td><td>未指定类型，用于OneOf和AnyOf场景</td></tr></table>
+        :rtype: int
+        """
+        return self._ParamType
+
+    @ParamType.setter
+    def ParamType(self, ParamType):
+        self._ParamType = ParamType
+
+    @property
+    def Required(self):
+        r"""
+        :rtype: bool
+        """
+        return self._Required
+
+    @Required.setter
+    def Required(self, Required):
+        self._Required = Required
+
+    @property
+    def SubParamList(self):
+        r"""
+        :rtype: list of AppTriggerParamSchema
+        """
+        return self._SubParamList
+
+    @SubParamList.setter
+    def SubParamList(self, SubParamList):
+        self._SubParamList = SubParamList
+
+
+    def _deserialize(self, params):
+        self._ParamName = params.get("ParamName")
+        self._ParamType = params.get("ParamType")
+        self._Required = params.get("Required")
+        if params.get("SubParamList") is not None:
+            self._SubParamList = []
+            for item in params.get("SubParamList"):
+                obj = AppTriggerParamSchema()
+                obj._deserialize(item)
+                self._SubParamList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AppTriggerPromptExecuteConfig(AbstractModel):
+    r"""AppTriggerPromptExecuteConfig
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ExecutePrompt: 
+        :type ExecutePrompt: str
+        :param _ParamBindingsApi: 
+        :type ParamBindingsApi: :class:`tencentcloud.adp.v20260520.models.AppTriggerParamBindingConfig`
+        """
+        self._ExecutePrompt = None
+        self._ParamBindingsApi = None
+
+    @property
+    def ExecutePrompt(self):
+        r"""
+        :rtype: str
+        """
+        return self._ExecutePrompt
+
+    @ExecutePrompt.setter
+    def ExecutePrompt(self, ExecutePrompt):
+        self._ExecutePrompt = ExecutePrompt
+
+    @property
+    def ParamBindingsApi(self):
+        r"""
+        :rtype: :class:`tencentcloud.adp.v20260520.models.AppTriggerParamBindingConfig`
+        """
+        return self._ParamBindingsApi
+
+    @ParamBindingsApi.setter
+    def ParamBindingsApi(self, ParamBindingsApi):
+        self._ParamBindingsApi = ParamBindingsApi
+
+
+    def _deserialize(self, params):
+        self._ExecutePrompt = params.get("ExecutePrompt")
+        if params.get("ParamBindingsApi") is not None:
+            self._ParamBindingsApi = AppTriggerParamBindingConfig()
+            self._ParamBindingsApi._deserialize(params.get("ParamBindingsApi"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AppTriggerRunLog(AbstractModel):
+    r"""AppTriggerRunLog
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ConversationId: 
+        :type ConversationId: str
+        :param _DurationMs: 
+        :type DurationMs: str
+        :param _EndTime: 
+        :type EndTime: str
+        :param _FireType: <table><tr><td>枚举项</td><td>枚举值</td><td>描述</td></tr><tr><td>APP_TRIGGER_FIRE_TYPE_UNSPECIFIED</td><td>0</td><td>未指定</td></tr><tr><td>APP_TRIGGER_FIRE_TYPE_SCHEDULED</td><td>1</td><td>定时触发</td></tr><tr><td>APP_TRIGGER_FIRE_TYPE_WEBHOOK</td><td>2</td><td>Webhook 触发</td></tr><tr><td>APP_TRIGGER_FIRE_TYPE_MANUAL_RUN</td><td>3</td><td>手动立即执行</td></tr><tr><td>APP_TRIGGER_FIRE_TYPE_TEST_RUN</td><td>4</td><td>测试执行</td></tr></table>
+        :type FireType: int
+        :param _InstanceId: 
+        :type InstanceId: str
+        :param _PushStatus: <table><tr><td>枚举项</td><td>枚举值</td><td>描述</td></tr><tr><td>TIMER_RUN_PUSH_STATUS_UNSPECIFIED</td><td>0</td><td>未指定</td></tr><tr><td>TIMER_RUN_PUSH_STATUS_NONE</td><td>1</td><td>未配置推送</td></tr><tr><td>TIMER_RUN_PUSH_STATUS_WAITING</td><td>2</td><td>等待推送</td></tr><tr><td>TIMER_RUN_PUSH_STATUS_SUCCESS</td><td>3</td><td>推送成功</td></tr><tr><td>TIMER_RUN_PUSH_STATUS_FAILED</td><td>4</td><td>推送失败</td></tr></table>
+        :type PushStatus: int
+        :param _ResultCode: 
+        :type ResultCode: str
+        :param _ResultSummary: 
+        :type ResultSummary: str
+        :param _RunId: 
+        :type RunId: str
+        :param _ScheduledFireTime: 
+        :type ScheduledFireTime: str
+        :param _StartTime: 
+        :type StartTime: str
+        :param _Status: <table><tr><td>枚举项</td><td>枚举值</td><td>描述</td></tr><tr><td>TIMER_RUN_STATUS_UNSPECIFIED</td><td>0</td><td>未指定</td></tr><tr><td>TIMER_RUN_STATUS_PENDING</td><td>1</td><td>等待执行</td></tr><tr><td>TIMER_RUN_STATUS_RUNNING</td><td>2</td><td>执行中</td></tr><tr><td>TIMER_RUN_STATUS_RETRY_WAIT</td><td>3</td><td>等待重试</td></tr><tr><td>TIMER_RUN_STATUS_SUCCESS</td><td>4</td><td>成功</td></tr><tr><td>TIMER_RUN_STATUS_DEAD</td><td>5</td><td>失败终态 (重试耗尽 / 不可重试)</td></tr><tr><td>TIMER_RUN_STATUS_CANCELLED</td><td>6</td><td>被任务暂停/删除/修改取消</td></tr></table>
+        :type Status: int
+        :param _TriggerId: 
+        :type TriggerId: str
+        :param _Unread: 
+        :type Unread: bool
+        :param _WorkflowRunId: 
+        :type WorkflowRunId: str
+        """
+        self._ConversationId = None
+        self._DurationMs = None
+        self._EndTime = None
+        self._FireType = None
+        self._InstanceId = None
+        self._PushStatus = None
+        self._ResultCode = None
+        self._ResultSummary = None
+        self._RunId = None
+        self._ScheduledFireTime = None
+        self._StartTime = None
+        self._Status = None
+        self._TriggerId = None
+        self._Unread = None
+        self._WorkflowRunId = None
+
+    @property
+    def ConversationId(self):
+        r"""
+        :rtype: str
+        """
+        return self._ConversationId
+
+    @ConversationId.setter
+    def ConversationId(self, ConversationId):
+        self._ConversationId = ConversationId
+
+    @property
+    def DurationMs(self):
+        r"""
+        :rtype: str
+        """
+        return self._DurationMs
+
+    @DurationMs.setter
+    def DurationMs(self, DurationMs):
+        self._DurationMs = DurationMs
+
+    @property
+    def EndTime(self):
+        r"""
+        :rtype: str
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def FireType(self):
+        r"""<table><tr><td>枚举项</td><td>枚举值</td><td>描述</td></tr><tr><td>APP_TRIGGER_FIRE_TYPE_UNSPECIFIED</td><td>0</td><td>未指定</td></tr><tr><td>APP_TRIGGER_FIRE_TYPE_SCHEDULED</td><td>1</td><td>定时触发</td></tr><tr><td>APP_TRIGGER_FIRE_TYPE_WEBHOOK</td><td>2</td><td>Webhook 触发</td></tr><tr><td>APP_TRIGGER_FIRE_TYPE_MANUAL_RUN</td><td>3</td><td>手动立即执行</td></tr><tr><td>APP_TRIGGER_FIRE_TYPE_TEST_RUN</td><td>4</td><td>测试执行</td></tr></table>
+        :rtype: int
+        """
+        return self._FireType
+
+    @FireType.setter
+    def FireType(self, FireType):
+        self._FireType = FireType
+
+    @property
+    def InstanceId(self):
+        r"""
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def PushStatus(self):
+        r"""<table><tr><td>枚举项</td><td>枚举值</td><td>描述</td></tr><tr><td>TIMER_RUN_PUSH_STATUS_UNSPECIFIED</td><td>0</td><td>未指定</td></tr><tr><td>TIMER_RUN_PUSH_STATUS_NONE</td><td>1</td><td>未配置推送</td></tr><tr><td>TIMER_RUN_PUSH_STATUS_WAITING</td><td>2</td><td>等待推送</td></tr><tr><td>TIMER_RUN_PUSH_STATUS_SUCCESS</td><td>3</td><td>推送成功</td></tr><tr><td>TIMER_RUN_PUSH_STATUS_FAILED</td><td>4</td><td>推送失败</td></tr></table>
+        :rtype: int
+        """
+        return self._PushStatus
+
+    @PushStatus.setter
+    def PushStatus(self, PushStatus):
+        self._PushStatus = PushStatus
+
+    @property
+    def ResultCode(self):
+        r"""
+        :rtype: str
+        """
+        return self._ResultCode
+
+    @ResultCode.setter
+    def ResultCode(self, ResultCode):
+        self._ResultCode = ResultCode
+
+    @property
+    def ResultSummary(self):
+        r"""
+        :rtype: str
+        """
+        return self._ResultSummary
+
+    @ResultSummary.setter
+    def ResultSummary(self, ResultSummary):
+        self._ResultSummary = ResultSummary
+
+    @property
+    def RunId(self):
+        r"""
+        :rtype: str
+        """
+        return self._RunId
+
+    @RunId.setter
+    def RunId(self, RunId):
+        self._RunId = RunId
+
+    @property
+    def ScheduledFireTime(self):
+        r"""
+        :rtype: str
+        """
+        return self._ScheduledFireTime
+
+    @ScheduledFireTime.setter
+    def ScheduledFireTime(self, ScheduledFireTime):
+        self._ScheduledFireTime = ScheduledFireTime
+
+    @property
+    def StartTime(self):
+        r"""
+        :rtype: str
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def Status(self):
+        r"""<table><tr><td>枚举项</td><td>枚举值</td><td>描述</td></tr><tr><td>TIMER_RUN_STATUS_UNSPECIFIED</td><td>0</td><td>未指定</td></tr><tr><td>TIMER_RUN_STATUS_PENDING</td><td>1</td><td>等待执行</td></tr><tr><td>TIMER_RUN_STATUS_RUNNING</td><td>2</td><td>执行中</td></tr><tr><td>TIMER_RUN_STATUS_RETRY_WAIT</td><td>3</td><td>等待重试</td></tr><tr><td>TIMER_RUN_STATUS_SUCCESS</td><td>4</td><td>成功</td></tr><tr><td>TIMER_RUN_STATUS_DEAD</td><td>5</td><td>失败终态 (重试耗尽 / 不可重试)</td></tr><tr><td>TIMER_RUN_STATUS_CANCELLED</td><td>6</td><td>被任务暂停/删除/修改取消</td></tr></table>
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def TriggerId(self):
+        r"""
+        :rtype: str
+        """
+        return self._TriggerId
+
+    @TriggerId.setter
+    def TriggerId(self, TriggerId):
+        self._TriggerId = TriggerId
+
+    @property
+    def Unread(self):
+        r"""
+        :rtype: bool
+        """
+        return self._Unread
+
+    @Unread.setter
+    def Unread(self, Unread):
+        self._Unread = Unread
+
+    @property
+    def WorkflowRunId(self):
+        r"""
+        :rtype: str
+        """
+        return self._WorkflowRunId
+
+    @WorkflowRunId.setter
+    def WorkflowRunId(self, WorkflowRunId):
+        self._WorkflowRunId = WorkflowRunId
+
+
+    def _deserialize(self, params):
+        self._ConversationId = params.get("ConversationId")
+        self._DurationMs = params.get("DurationMs")
+        self._EndTime = params.get("EndTime")
+        self._FireType = params.get("FireType")
+        self._InstanceId = params.get("InstanceId")
+        self._PushStatus = params.get("PushStatus")
+        self._ResultCode = params.get("ResultCode")
+        self._ResultSummary = params.get("ResultSummary")
+        self._RunId = params.get("RunId")
+        self._ScheduledFireTime = params.get("ScheduledFireTime")
+        self._StartTime = params.get("StartTime")
+        self._Status = params.get("Status")
+        self._TriggerId = params.get("TriggerId")
+        self._Unread = params.get("Unread")
+        self._WorkflowRunId = params.get("WorkflowRunId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AppTriggerScheduleConfig(AbstractModel):
+    r"""AppTriggerScheduleConfig
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Schedule: 
+        :type Schedule: :class:`tencentcloud.adp.v20260520.models.TimerScheduleConfig`
+        """
+        self._Schedule = None
+
+    @property
+    def Schedule(self):
+        r"""
+        :rtype: :class:`tencentcloud.adp.v20260520.models.TimerScheduleConfig`
+        """
+        return self._Schedule
+
+    @Schedule.setter
+    def Schedule(self, Schedule):
+        self._Schedule = Schedule
+
+
+    def _deserialize(self, params):
+        if params.get("Schedule") is not None:
+            self._Schedule = TimerScheduleConfig()
+            self._Schedule._deserialize(params.get("Schedule"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AppTriggerScheduleStatus(AbstractModel):
+    r"""AppTriggerScheduleStatus
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _LastFireTime: 
+        :type LastFireTime: str
+        :param _NextFireTime: 
+        :type NextFireTime: str
+        :param _PolicySummary: 
+        :type PolicySummary: str
+        """
+        self._LastFireTime = None
+        self._NextFireTime = None
+        self._PolicySummary = None
+
+    @property
+    def LastFireTime(self):
+        r"""
+        :rtype: str
+        """
+        return self._LastFireTime
+
+    @LastFireTime.setter
+    def LastFireTime(self, LastFireTime):
+        self._LastFireTime = LastFireTime
+
+    @property
+    def NextFireTime(self):
+        r"""
+        :rtype: str
+        """
+        return self._NextFireTime
+
+    @NextFireTime.setter
+    def NextFireTime(self, NextFireTime):
+        self._NextFireTime = NextFireTime
+
+    @property
+    def PolicySummary(self):
+        r"""
+        :rtype: str
+        """
+        return self._PolicySummary
+
+    @PolicySummary.setter
+    def PolicySummary(self, PolicySummary):
+        self._PolicySummary = PolicySummary
+
+
+    def _deserialize(self, params):
+        self._LastFireTime = params.get("LastFireTime")
+        self._NextFireTime = params.get("NextFireTime")
+        self._PolicySummary = params.get("PolicySummary")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AppTriggerSummary(AbstractModel):
+    r"""AppTriggerSummary
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AppId: 
+        :type AppId: str
+        :param _ExecuteType: <table><tr><td>枚举项</td><td>枚举值</td><td>描述</td></tr><tr><td>APP_TRIGGER_EXECUTE_TYPE_UNSPECIFIED</td><td>0</td><td>未指定</td></tr><tr><td>APP_TRIGGER_EXECUTE_TYPE_PROMPT</td><td>1</td><td>指令执行</td></tr><tr><td>APP_TRIGGER_EXECUTE_TYPE_WORKFLOW</td><td>2</td><td>工作流执行</td></tr></table>
+        :type ExecuteType: int
+        :param _FailedCount: 
+        :type FailedCount: str
+        :param _LastSessionId: 
+        :type LastSessionId: str
+        :param _Status: <table><tr><td>枚举项</td><td>枚举值</td><td>描述</td></tr><tr><td>APP_TRIGGER_STATUS_UNSPECIFIED</td><td>0</td><td>未指定</td></tr><tr><td>APP_TRIGGER_STATUS_ENABLED</td><td>1</td><td>启用</td></tr><tr><td>APP_TRIGGER_STATUS_PAUSED</td><td>2</td><td>暂停</td></tr><tr><td>APP_TRIGGER_STATUS_DELETED</td><td>3</td><td>已删除</td></tr></table>
+        :type Status: int
+        :param _SuccessCount: 
+        :type SuccessCount: str
+        :param _TriggerId: 
+        :type TriggerId: str
+        :param _TriggerName: 
+        :type TriggerName: str
+        :param _TriggerStatus: 
+        :type TriggerStatus: :class:`tencentcloud.adp.v20260520.models.TriggerStatus`
+        :param _TriggerType: <table><tr><td>枚举项</td><td>枚举值</td><td>描述</td></tr><tr><td>APP_TRIGGER_TYPE_UNSPECIFIED</td><td>0</td><td>未指定</td></tr><tr><td>APP_TRIGGER_TYPE_SCHEDULED</td><td>1</td><td>定时触发</td></tr><tr><td>APP_TRIGGER_TYPE_WEBHOOK</td><td>2</td><td>Webhook 触发</td></tr></table>
+        :type TriggerType: int
+        :param _UnreadRunLogCount: 
+        :type UnreadRunLogCount: str
+        """
+        self._AppId = None
+        self._ExecuteType = None
+        self._FailedCount = None
+        self._LastSessionId = None
+        self._Status = None
+        self._SuccessCount = None
+        self._TriggerId = None
+        self._TriggerName = None
+        self._TriggerStatus = None
+        self._TriggerType = None
+        self._UnreadRunLogCount = None
+
+    @property
+    def AppId(self):
+        r"""
+        :rtype: str
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def ExecuteType(self):
+        r"""<table><tr><td>枚举项</td><td>枚举值</td><td>描述</td></tr><tr><td>APP_TRIGGER_EXECUTE_TYPE_UNSPECIFIED</td><td>0</td><td>未指定</td></tr><tr><td>APP_TRIGGER_EXECUTE_TYPE_PROMPT</td><td>1</td><td>指令执行</td></tr><tr><td>APP_TRIGGER_EXECUTE_TYPE_WORKFLOW</td><td>2</td><td>工作流执行</td></tr></table>
+        :rtype: int
+        """
+        return self._ExecuteType
+
+    @ExecuteType.setter
+    def ExecuteType(self, ExecuteType):
+        self._ExecuteType = ExecuteType
+
+    @property
+    def FailedCount(self):
+        r"""
+        :rtype: str
+        """
+        return self._FailedCount
+
+    @FailedCount.setter
+    def FailedCount(self, FailedCount):
+        self._FailedCount = FailedCount
+
+    @property
+    def LastSessionId(self):
+        r"""
+        :rtype: str
+        """
+        return self._LastSessionId
+
+    @LastSessionId.setter
+    def LastSessionId(self, LastSessionId):
+        self._LastSessionId = LastSessionId
+
+    @property
+    def Status(self):
+        r"""<table><tr><td>枚举项</td><td>枚举值</td><td>描述</td></tr><tr><td>APP_TRIGGER_STATUS_UNSPECIFIED</td><td>0</td><td>未指定</td></tr><tr><td>APP_TRIGGER_STATUS_ENABLED</td><td>1</td><td>启用</td></tr><tr><td>APP_TRIGGER_STATUS_PAUSED</td><td>2</td><td>暂停</td></tr><tr><td>APP_TRIGGER_STATUS_DELETED</td><td>3</td><td>已删除</td></tr></table>
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def SuccessCount(self):
+        r"""
+        :rtype: str
+        """
+        return self._SuccessCount
+
+    @SuccessCount.setter
+    def SuccessCount(self, SuccessCount):
+        self._SuccessCount = SuccessCount
+
+    @property
+    def TriggerId(self):
+        r"""
+        :rtype: str
+        """
+        return self._TriggerId
+
+    @TriggerId.setter
+    def TriggerId(self, TriggerId):
+        self._TriggerId = TriggerId
+
+    @property
+    def TriggerName(self):
+        r"""
+        :rtype: str
+        """
+        return self._TriggerName
+
+    @TriggerName.setter
+    def TriggerName(self, TriggerName):
+        self._TriggerName = TriggerName
+
+    @property
+    def TriggerStatus(self):
+        r"""
+        :rtype: :class:`tencentcloud.adp.v20260520.models.TriggerStatus`
+        """
+        return self._TriggerStatus
+
+    @TriggerStatus.setter
+    def TriggerStatus(self, TriggerStatus):
+        self._TriggerStatus = TriggerStatus
+
+    @property
+    def TriggerType(self):
+        r"""<table><tr><td>枚举项</td><td>枚举值</td><td>描述</td></tr><tr><td>APP_TRIGGER_TYPE_UNSPECIFIED</td><td>0</td><td>未指定</td></tr><tr><td>APP_TRIGGER_TYPE_SCHEDULED</td><td>1</td><td>定时触发</td></tr><tr><td>APP_TRIGGER_TYPE_WEBHOOK</td><td>2</td><td>Webhook 触发</td></tr></table>
+        :rtype: int
+        """
+        return self._TriggerType
+
+    @TriggerType.setter
+    def TriggerType(self, TriggerType):
+        self._TriggerType = TriggerType
+
+    @property
+    def UnreadRunLogCount(self):
+        r"""
+        :rtype: str
+        """
+        return self._UnreadRunLogCount
+
+    @UnreadRunLogCount.setter
+    def UnreadRunLogCount(self, UnreadRunLogCount):
+        self._UnreadRunLogCount = UnreadRunLogCount
+
+
+    def _deserialize(self, params):
+        self._AppId = params.get("AppId")
+        self._ExecuteType = params.get("ExecuteType")
+        self._FailedCount = params.get("FailedCount")
+        self._LastSessionId = params.get("LastSessionId")
+        self._Status = params.get("Status")
+        self._SuccessCount = params.get("SuccessCount")
+        self._TriggerId = params.get("TriggerId")
+        self._TriggerName = params.get("TriggerName")
+        if params.get("TriggerStatus") is not None:
+            self._TriggerStatus = TriggerStatus()
+            self._TriggerStatus._deserialize(params.get("TriggerStatus"))
+        self._TriggerType = params.get("TriggerType")
+        self._UnreadRunLogCount = params.get("UnreadRunLogCount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AppTriggerWebhookConfig(AbstractModel):
+    r"""AppTriggerWebhookConfig
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ParamSchemaConfig: 
+        :type ParamSchemaConfig: :class:`tencentcloud.adp.v20260520.models.AppTriggerWebhookParamSchemaConfig`
+        :param _WebhookKey: 
+        :type WebhookKey: str
+        :param _WebhookToken: 
+        :type WebhookToken: str
+        :param _WebhookUrl: 
+        :type WebhookUrl: str
+        """
+        self._ParamSchemaConfig = None
+        self._WebhookKey = None
+        self._WebhookToken = None
+        self._WebhookUrl = None
+
+    @property
+    def ParamSchemaConfig(self):
+        r"""
+        :rtype: :class:`tencentcloud.adp.v20260520.models.AppTriggerWebhookParamSchemaConfig`
+        """
+        return self._ParamSchemaConfig
+
+    @ParamSchemaConfig.setter
+    def ParamSchemaConfig(self, ParamSchemaConfig):
+        self._ParamSchemaConfig = ParamSchemaConfig
+
+    @property
+    def WebhookKey(self):
+        r"""
+        :rtype: str
+        """
+        return self._WebhookKey
+
+    @WebhookKey.setter
+    def WebhookKey(self, WebhookKey):
+        self._WebhookKey = WebhookKey
+
+    @property
+    def WebhookToken(self):
+        r"""
+        :rtype: str
+        """
+        return self._WebhookToken
+
+    @WebhookToken.setter
+    def WebhookToken(self, WebhookToken):
+        self._WebhookToken = WebhookToken
+
+    @property
+    def WebhookUrl(self):
+        r"""
+        :rtype: str
+        """
+        return self._WebhookUrl
+
+    @WebhookUrl.setter
+    def WebhookUrl(self, WebhookUrl):
+        self._WebhookUrl = WebhookUrl
+
+
+    def _deserialize(self, params):
+        if params.get("ParamSchemaConfig") is not None:
+            self._ParamSchemaConfig = AppTriggerWebhookParamSchemaConfig()
+            self._ParamSchemaConfig._deserialize(params.get("ParamSchemaConfig"))
+        self._WebhookKey = params.get("WebhookKey")
+        self._WebhookToken = params.get("WebhookToken")
+        self._WebhookUrl = params.get("WebhookUrl")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AppTriggerWebhookParamSchemaConfig(AbstractModel):
+    r"""AppTriggerWebhookParamSchemaConfig
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SchemaList: 
+        :type SchemaList: list of AppTriggerParamSchema
+        """
+        self._SchemaList = None
+
+    @property
+    def SchemaList(self):
+        r"""
+        :rtype: list of AppTriggerParamSchema
+        """
+        return self._SchemaList
+
+    @SchemaList.setter
+    def SchemaList(self, SchemaList):
+        self._SchemaList = SchemaList
+
+
+    def _deserialize(self, params):
+        if params.get("SchemaList") is not None:
+            self._SchemaList = []
+            for item in params.get("SchemaList"):
+                obj = AppTriggerParamSchema()
+                obj._deserialize(item)
+                self._SchemaList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AppTriggerWebhookStatus(AbstractModel):
+    r"""AppTriggerWebhookStatus
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _WebhookUrl: 
+        :type WebhookUrl: str
+        """
+        self._WebhookUrl = None
+
+    @property
+    def WebhookUrl(self):
+        r"""
+        :rtype: str
+        """
+        return self._WebhookUrl
+
+    @WebhookUrl.setter
+    def WebhookUrl(self, WebhookUrl):
+        self._WebhookUrl = WebhookUrl
+
+
+    def _deserialize(self, params):
+        self._WebhookUrl = params.get("WebhookUrl")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AppTriggerWorkflowExecuteConfig(AbstractModel):
+    r"""AppTriggerWorkflowExecuteConfig
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ParamBindingsApi: <p>工作流API参数绑定</p>
+        :type ParamBindingsApi: :class:`tencentcloud.adp.v20260520.models.AppTriggerParamBindingConfig`
+        :param _ParamBindingsWorkflow: <p>工作流参数绑定</p>
+        :type ParamBindingsWorkflow: :class:`tencentcloud.adp.v20260520.models.AppTriggerParamBindingConfig`
+        :param _WorkflowId: <p>工作流ID</p>
+        :type WorkflowId: str
+        :param _WorkflowName: <p>工作流名字</p>
+        :type WorkflowName: str
+        """
+        self._ParamBindingsApi = None
+        self._ParamBindingsWorkflow = None
+        self._WorkflowId = None
+        self._WorkflowName = None
+
+    @property
+    def ParamBindingsApi(self):
+        r"""<p>工作流API参数绑定</p>
+        :rtype: :class:`tencentcloud.adp.v20260520.models.AppTriggerParamBindingConfig`
+        """
+        return self._ParamBindingsApi
+
+    @ParamBindingsApi.setter
+    def ParamBindingsApi(self, ParamBindingsApi):
+        self._ParamBindingsApi = ParamBindingsApi
+
+    @property
+    def ParamBindingsWorkflow(self):
+        r"""<p>工作流参数绑定</p>
+        :rtype: :class:`tencentcloud.adp.v20260520.models.AppTriggerParamBindingConfig`
+        """
+        return self._ParamBindingsWorkflow
+
+    @ParamBindingsWorkflow.setter
+    def ParamBindingsWorkflow(self, ParamBindingsWorkflow):
+        self._ParamBindingsWorkflow = ParamBindingsWorkflow
+
+    @property
+    def WorkflowId(self):
+        r"""<p>工作流ID</p>
+        :rtype: str
+        """
+        return self._WorkflowId
+
+    @WorkflowId.setter
+    def WorkflowId(self, WorkflowId):
+        self._WorkflowId = WorkflowId
+
+    @property
+    def WorkflowName(self):
+        r"""<p>工作流名字</p>
+        :rtype: str
+        """
+        return self._WorkflowName
+
+    @WorkflowName.setter
+    def WorkflowName(self, WorkflowName):
+        self._WorkflowName = WorkflowName
+
+
+    def _deserialize(self, params):
+        if params.get("ParamBindingsApi") is not None:
+            self._ParamBindingsApi = AppTriggerParamBindingConfig()
+            self._ParamBindingsApi._deserialize(params.get("ParamBindingsApi"))
+        if params.get("ParamBindingsWorkflow") is not None:
+            self._ParamBindingsWorkflow = AppTriggerParamBindingConfig()
+            self._ParamBindingsWorkflow._deserialize(params.get("ParamBindingsWorkflow"))
+        self._WorkflowId = params.get("WorkflowId")
+        self._WorkflowName = params.get("WorkflowName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AppWebSearchConfig(AbstractModel):
     r"""联网搜索配置(国际版使用)
 
@@ -7494,6 +9031,181 @@ class CreateAppResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateAppTriggerRequest(AbstractModel):
+    r"""CreateAppTrigger请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AppId: <p>应用ID</p>
+        :type AppId: str
+        :param _ExecuteConfig: <p>应用触发器执行配置</p>
+        :type ExecuteConfig: :class:`tencentcloud.adp.v20260520.models.ExecuteConfig`
+        :param _ExecuteType: <table><tbody><tr><td>枚举项</td><td>枚举值</td><td>描述</td></tr><tr><td>APP_TRIGGER_EXECUTE_TYPE_UNSPECIFIED</td><td>0</td><td>未指定</td></tr><tr><td>APP_TRIGGER_EXECUTE_TYPE_PROMPT</td><td>1</td><td>指令执行</td></tr><tr><td>APP_TRIGGER_EXECUTE_TYPE_WORKFLOW</td><td>2</td><td>工作流执行</td></tr></tbody></table>
+        :type ExecuteType: int
+        :param _PushConfig: <p>第三方推送配置</p>
+        :type PushConfig: :class:`tencentcloud.adp.v20260520.models.TimerPushConfig`
+        :param _TriggerConfig: <p>触发器配置</p>
+        :type TriggerConfig: :class:`tencentcloud.adp.v20260520.models.TriggerConfig`
+        :param _TriggerName: <p>触发器名字</p>
+        :type TriggerName: str
+        :param _TriggerType: <table><tbody><tr><td>枚举项</td><td>枚举值</td><td>描述</td></tr><tr><td>APP_TRIGGER_TYPE_UNSPECIFIED</td><td>0</td><td>未指定</td></tr><tr><td>APP_TRIGGER_TYPE_SCHEDULED</td><td>1</td><td>定时触发</td></tr><tr><td>APP_TRIGGER_TYPE_WEBHOOK</td><td>2</td><td>Webhook 触发</td></tr></tbody></table>
+        :type TriggerType: int
+        """
+        self._AppId = None
+        self._ExecuteConfig = None
+        self._ExecuteType = None
+        self._PushConfig = None
+        self._TriggerConfig = None
+        self._TriggerName = None
+        self._TriggerType = None
+
+    @property
+    def AppId(self):
+        r"""<p>应用ID</p>
+        :rtype: str
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def ExecuteConfig(self):
+        r"""<p>应用触发器执行配置</p>
+        :rtype: :class:`tencentcloud.adp.v20260520.models.ExecuteConfig`
+        """
+        return self._ExecuteConfig
+
+    @ExecuteConfig.setter
+    def ExecuteConfig(self, ExecuteConfig):
+        self._ExecuteConfig = ExecuteConfig
+
+    @property
+    def ExecuteType(self):
+        r"""<table><tbody><tr><td>枚举项</td><td>枚举值</td><td>描述</td></tr><tr><td>APP_TRIGGER_EXECUTE_TYPE_UNSPECIFIED</td><td>0</td><td>未指定</td></tr><tr><td>APP_TRIGGER_EXECUTE_TYPE_PROMPT</td><td>1</td><td>指令执行</td></tr><tr><td>APP_TRIGGER_EXECUTE_TYPE_WORKFLOW</td><td>2</td><td>工作流执行</td></tr></tbody></table>
+        :rtype: int
+        """
+        return self._ExecuteType
+
+    @ExecuteType.setter
+    def ExecuteType(self, ExecuteType):
+        self._ExecuteType = ExecuteType
+
+    @property
+    def PushConfig(self):
+        r"""<p>第三方推送配置</p>
+        :rtype: :class:`tencentcloud.adp.v20260520.models.TimerPushConfig`
+        """
+        return self._PushConfig
+
+    @PushConfig.setter
+    def PushConfig(self, PushConfig):
+        self._PushConfig = PushConfig
+
+    @property
+    def TriggerConfig(self):
+        r"""<p>触发器配置</p>
+        :rtype: :class:`tencentcloud.adp.v20260520.models.TriggerConfig`
+        """
+        return self._TriggerConfig
+
+    @TriggerConfig.setter
+    def TriggerConfig(self, TriggerConfig):
+        self._TriggerConfig = TriggerConfig
+
+    @property
+    def TriggerName(self):
+        r"""<p>触发器名字</p>
+        :rtype: str
+        """
+        return self._TriggerName
+
+    @TriggerName.setter
+    def TriggerName(self, TriggerName):
+        self._TriggerName = TriggerName
+
+    @property
+    def TriggerType(self):
+        r"""<table><tbody><tr><td>枚举项</td><td>枚举值</td><td>描述</td></tr><tr><td>APP_TRIGGER_TYPE_UNSPECIFIED</td><td>0</td><td>未指定</td></tr><tr><td>APP_TRIGGER_TYPE_SCHEDULED</td><td>1</td><td>定时触发</td></tr><tr><td>APP_TRIGGER_TYPE_WEBHOOK</td><td>2</td><td>Webhook 触发</td></tr></tbody></table>
+        :rtype: int
+        """
+        return self._TriggerType
+
+    @TriggerType.setter
+    def TriggerType(self, TriggerType):
+        self._TriggerType = TriggerType
+
+
+    def _deserialize(self, params):
+        self._AppId = params.get("AppId")
+        if params.get("ExecuteConfig") is not None:
+            self._ExecuteConfig = ExecuteConfig()
+            self._ExecuteConfig._deserialize(params.get("ExecuteConfig"))
+        self._ExecuteType = params.get("ExecuteType")
+        if params.get("PushConfig") is not None:
+            self._PushConfig = TimerPushConfig()
+            self._PushConfig._deserialize(params.get("PushConfig"))
+        if params.get("TriggerConfig") is not None:
+            self._TriggerConfig = TriggerConfig()
+            self._TriggerConfig._deserialize(params.get("TriggerConfig"))
+        self._TriggerName = params.get("TriggerName")
+        self._TriggerType = params.get("TriggerType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateAppTriggerResponse(AbstractModel):
+    r"""CreateAppTrigger返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TriggerId: <p>应用触发器ID</p>
+        :type TriggerId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TriggerId = None
+        self._RequestId = None
+
+    @property
+    def TriggerId(self):
+        r"""<p>应用触发器ID</p>
+        :rtype: str
+        """
+        return self._TriggerId
+
+    @TriggerId.setter
+    def TriggerId(self, TriggerId):
+        self._TriggerId = TriggerId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TriggerId = params.get("TriggerId")
+        self._RequestId = params.get("RequestId")
+
+
 class CreateConversationRequest(AbstractModel):
     r"""CreateConversation请求参数结构体
 
@@ -8461,6 +10173,281 @@ class CreateSpaceResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateTimerTaskRequest(AbstractModel):
+    r"""CreateTimerTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CreateSource: 
+枚举值:
+| uint | 描述 |
+| --- | --- |
+| 0 |  |
+| 1 | 页面手动创建 |
+| 2 | 自然语言对话创建 |
+        :type CreateSource: int
+        :param _InputContextSnapshot: 输入上下文
+        :type InputContextSnapshot: str
+        :param _ModelId: 模型
+        :type ModelId: str
+        :param _Prompt: 提示词
+        :type Prompt: str
+        :param _PushConfig: 推送配置
+        :type PushConfig: :class:`tencentcloud.adp.v20260520.models.TimerPushConfig`
+        :param _Schedule: 定时配置
+        :type Schedule: :class:`tencentcloud.adp.v20260520.models.TimerScheduleConfig`
+        :param _SkillSnapshot: skill
+        :type SkillSnapshot: str
+        :param _SpaceId: 空间
+        :type SpaceId: str
+        :param _TaskName: 任务名称
+        :type TaskName: str
+        :param _ToolSnapshot: 工具
+        :type ToolSnapshot: str
+        :param _WorkspaceId: 工作空间
+        :type WorkspaceId: str
+        :param _LoginUin: 主用户
+        :type LoginUin: str
+        :param _LoginSubAccountUin: 子用户
+        :type LoginSubAccountUin: str
+        """
+        self._CreateSource = None
+        self._InputContextSnapshot = None
+        self._ModelId = None
+        self._Prompt = None
+        self._PushConfig = None
+        self._Schedule = None
+        self._SkillSnapshot = None
+        self._SpaceId = None
+        self._TaskName = None
+        self._ToolSnapshot = None
+        self._WorkspaceId = None
+        self._LoginUin = None
+        self._LoginSubAccountUin = None
+
+    @property
+    def CreateSource(self):
+        r"""
+枚举值:
+| uint | 描述 |
+| --- | --- |
+| 0 |  |
+| 1 | 页面手动创建 |
+| 2 | 自然语言对话创建 |
+        :rtype: int
+        """
+        return self._CreateSource
+
+    @CreateSource.setter
+    def CreateSource(self, CreateSource):
+        self._CreateSource = CreateSource
+
+    @property
+    def InputContextSnapshot(self):
+        r"""输入上下文
+        :rtype: str
+        """
+        return self._InputContextSnapshot
+
+    @InputContextSnapshot.setter
+    def InputContextSnapshot(self, InputContextSnapshot):
+        self._InputContextSnapshot = InputContextSnapshot
+
+    @property
+    def ModelId(self):
+        r"""模型
+        :rtype: str
+        """
+        return self._ModelId
+
+    @ModelId.setter
+    def ModelId(self, ModelId):
+        self._ModelId = ModelId
+
+    @property
+    def Prompt(self):
+        r"""提示词
+        :rtype: str
+        """
+        return self._Prompt
+
+    @Prompt.setter
+    def Prompt(self, Prompt):
+        self._Prompt = Prompt
+
+    @property
+    def PushConfig(self):
+        r"""推送配置
+        :rtype: :class:`tencentcloud.adp.v20260520.models.TimerPushConfig`
+        """
+        return self._PushConfig
+
+    @PushConfig.setter
+    def PushConfig(self, PushConfig):
+        self._PushConfig = PushConfig
+
+    @property
+    def Schedule(self):
+        r"""定时配置
+        :rtype: :class:`tencentcloud.adp.v20260520.models.TimerScheduleConfig`
+        """
+        return self._Schedule
+
+    @Schedule.setter
+    def Schedule(self, Schedule):
+        self._Schedule = Schedule
+
+    @property
+    def SkillSnapshot(self):
+        r"""skill
+        :rtype: str
+        """
+        return self._SkillSnapshot
+
+    @SkillSnapshot.setter
+    def SkillSnapshot(self, SkillSnapshot):
+        self._SkillSnapshot = SkillSnapshot
+
+    @property
+    def SpaceId(self):
+        r"""空间
+        :rtype: str
+        """
+        return self._SpaceId
+
+    @SpaceId.setter
+    def SpaceId(self, SpaceId):
+        self._SpaceId = SpaceId
+
+    @property
+    def TaskName(self):
+        r"""任务名称
+        :rtype: str
+        """
+        return self._TaskName
+
+    @TaskName.setter
+    def TaskName(self, TaskName):
+        self._TaskName = TaskName
+
+    @property
+    def ToolSnapshot(self):
+        r"""工具
+        :rtype: str
+        """
+        return self._ToolSnapshot
+
+    @ToolSnapshot.setter
+    def ToolSnapshot(self, ToolSnapshot):
+        self._ToolSnapshot = ToolSnapshot
+
+    @property
+    def WorkspaceId(self):
+        r"""工作空间
+        :rtype: str
+        """
+        return self._WorkspaceId
+
+    @WorkspaceId.setter
+    def WorkspaceId(self, WorkspaceId):
+        self._WorkspaceId = WorkspaceId
+
+    @property
+    def LoginUin(self):
+        r"""主用户
+        :rtype: str
+        """
+        return self._LoginUin
+
+    @LoginUin.setter
+    def LoginUin(self, LoginUin):
+        self._LoginUin = LoginUin
+
+    @property
+    def LoginSubAccountUin(self):
+        r"""子用户
+        :rtype: str
+        """
+        return self._LoginSubAccountUin
+
+    @LoginSubAccountUin.setter
+    def LoginSubAccountUin(self, LoginSubAccountUin):
+        self._LoginSubAccountUin = LoginSubAccountUin
+
+
+    def _deserialize(self, params):
+        self._CreateSource = params.get("CreateSource")
+        self._InputContextSnapshot = params.get("InputContextSnapshot")
+        self._ModelId = params.get("ModelId")
+        self._Prompt = params.get("Prompt")
+        if params.get("PushConfig") is not None:
+            self._PushConfig = TimerPushConfig()
+            self._PushConfig._deserialize(params.get("PushConfig"))
+        if params.get("Schedule") is not None:
+            self._Schedule = TimerScheduleConfig()
+            self._Schedule._deserialize(params.get("Schedule"))
+        self._SkillSnapshot = params.get("SkillSnapshot")
+        self._SpaceId = params.get("SpaceId")
+        self._TaskName = params.get("TaskName")
+        self._ToolSnapshot = params.get("ToolSnapshot")
+        self._WorkspaceId = params.get("WorkspaceId")
+        self._LoginUin = params.get("LoginUin")
+        self._LoginSubAccountUin = params.get("LoginSubAccountUin")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateTimerTaskResponse(AbstractModel):
+    r"""CreateTimerTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TimerId: 任务ID
+        :type TimerId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TimerId = None
+        self._RequestId = None
+
+    @property
+    def TimerId(self):
+        r"""任务ID
+        :rtype: str
+        """
+        return self._TimerId
+
+    @TimerId.setter
+    def TimerId(self, TimerId):
+        self._TimerId = TimerId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TimerId = params.get("TimerId")
+        self._RequestId = params.get("RequestId")
+
+
 class CreateVariableRequest(AbstractModel):
     r"""CreateVariable请求参数结构体
 
@@ -8942,6 +10929,78 @@ class CreateWorkspaceCredentialResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CronSchedule(AbstractModel):
+    r"""CronSchedule
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Expression: cron表达式
+        :type Expression: str
+        """
+        self._Expression = None
+
+    @property
+    def Expression(self):
+        r"""cron表达式
+        :rtype: str
+        """
+        return self._Expression
+
+    @Expression.setter
+    def Expression(self, Expression):
+        self._Expression = Expression
+
+
+    def _deserialize(self, params):
+        self._Expression = params.get("Expression")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DailySchedule(AbstractModel):
+    r"""DailySchedule
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TimeOfDay: 时间
+        :type TimeOfDay: str
+        """
+        self._TimeOfDay = None
+
+    @property
+    def TimeOfDay(self):
+        r"""时间
+        :rtype: str
+        """
+        return self._TimeOfDay
+
+    @TimeOfDay.setter
+    def TimeOfDay(self, TimeOfDay):
+        self._TimeOfDay = TimeOfDay
+
+
+    def _deserialize(self, params):
+        self._TimeOfDay = params.get("TimeOfDay")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DeleteAgentRequest(AbstractModel):
     r"""DeleteAgent请求参数结构体
 
@@ -9089,6 +11148,85 @@ class DeleteAppRequest(AbstractModel):
 
 class DeleteAppResponse(AbstractModel):
     r"""DeleteApp返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteAppTriggerRequest(AbstractModel):
+    r"""DeleteAppTrigger请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AppId: <p>应用ID</p>
+        :type AppId: str
+        :param _TriggerId: <p>触发器ID</p>
+        :type TriggerId: str
+        """
+        self._AppId = None
+        self._TriggerId = None
+
+    @property
+    def AppId(self):
+        r"""<p>应用ID</p>
+        :rtype: str
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def TriggerId(self):
+        r"""<p>触发器ID</p>
+        :rtype: str
+        """
+        return self._TriggerId
+
+    @TriggerId.setter
+    def TriggerId(self, TriggerId):
+        self._TriggerId = TriggerId
+
+
+    def _deserialize(self, params):
+        self._AppId = params.get("AppId")
+        self._TriggerId = params.get("TriggerId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteAppTriggerResponse(AbstractModel):
+    r"""DeleteAppTrigger返回参数结构体
 
     """
 
@@ -9589,6 +11727,115 @@ class DeleteSpaceRequest(AbstractModel):
 
 class DeleteSpaceResponse(AbstractModel):
     r"""DeleteSpace返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteTimerTaskRequest(AbstractModel):
+    r"""DeleteTimerTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SpaceId: 空间ID
+        :type SpaceId: str
+        :param _TimerId: 任务ID
+        :type TimerId: str
+        :param _LoginUin: 主用户
+        :type LoginUin: str
+        :param _LoginSubAccountUin: 子用户
+        :type LoginSubAccountUin: str
+        """
+        self._SpaceId = None
+        self._TimerId = None
+        self._LoginUin = None
+        self._LoginSubAccountUin = None
+
+    @property
+    def SpaceId(self):
+        r"""空间ID
+        :rtype: str
+        """
+        return self._SpaceId
+
+    @SpaceId.setter
+    def SpaceId(self, SpaceId):
+        self._SpaceId = SpaceId
+
+    @property
+    def TimerId(self):
+        r"""任务ID
+        :rtype: str
+        """
+        return self._TimerId
+
+    @TimerId.setter
+    def TimerId(self, TimerId):
+        self._TimerId = TimerId
+
+    @property
+    def LoginUin(self):
+        r"""主用户
+        :rtype: str
+        """
+        return self._LoginUin
+
+    @LoginUin.setter
+    def LoginUin(self, LoginUin):
+        self._LoginUin = LoginUin
+
+    @property
+    def LoginSubAccountUin(self):
+        r"""子用户
+        :rtype: str
+        """
+        return self._LoginSubAccountUin
+
+    @LoginSubAccountUin.setter
+    def LoginSubAccountUin(self, LoginSubAccountUin):
+        self._LoginSubAccountUin = LoginSubAccountUin
+
+
+    def _deserialize(self, params):
+        self._SpaceId = params.get("SpaceId")
+        self._TimerId = params.get("TimerId")
+        self._LoginUin = params.get("LoginUin")
+        self._LoginSubAccountUin = params.get("LoginSubAccountUin")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteTimerTaskResponse(AbstractModel):
+    r"""DeleteTimerTask返回参数结构体
 
     """
 
@@ -10556,6 +12803,526 @@ class DescribeAppSummaryListResponse(AbstractModel):
                 obj._deserialize(item)
                 self._AppSummaryList.append(obj)
         self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeAppTriggerInstanceRequest(AbstractModel):
+    r"""DescribeAppTriggerInstance请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AppId: <p>应用ID</p>
+        :type AppId: str
+        :param _InstanceId: <p>触发器运行实例ID</p>
+        :type InstanceId: str
+        """
+        self._AppId = None
+        self._InstanceId = None
+
+    @property
+    def AppId(self):
+        r"""<p>应用ID</p>
+        :rtype: str
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def InstanceId(self):
+        r"""<p>触发器运行实例ID</p>
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+
+    def _deserialize(self, params):
+        self._AppId = params.get("AppId")
+        self._InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAppTriggerInstanceResponse(AbstractModel):
+    r"""DescribeAppTriggerInstance返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Instance: <p>应用触发器实例</p>
+        :type Instance: :class:`tencentcloud.adp.v20260520.models.AppTriggerInstance`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Instance = None
+        self._RequestId = None
+
+    @property
+    def Instance(self):
+        r"""<p>应用触发器实例</p>
+        :rtype: :class:`tencentcloud.adp.v20260520.models.AppTriggerInstance`
+        """
+        return self._Instance
+
+    @Instance.setter
+    def Instance(self, Instance):
+        self._Instance = Instance
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Instance") is not None:
+            self._Instance = AppTriggerInstance()
+            self._Instance._deserialize(params.get("Instance"))
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeAppTriggerRequest(AbstractModel):
+    r"""DescribeAppTrigger请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AppId: <p>应用ID</p>
+        :type AppId: str
+        :param _TriggerId: <p>应用触发器ID</p>
+        :type TriggerId: str
+        """
+        self._AppId = None
+        self._TriggerId = None
+
+    @property
+    def AppId(self):
+        r"""<p>应用ID</p>
+        :rtype: str
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def TriggerId(self):
+        r"""<p>应用触发器ID</p>
+        :rtype: str
+        """
+        return self._TriggerId
+
+    @TriggerId.setter
+    def TriggerId(self, TriggerId):
+        self._TriggerId = TriggerId
+
+
+    def _deserialize(self, params):
+        self._AppId = params.get("AppId")
+        self._TriggerId = params.get("TriggerId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAppTriggerResponse(AbstractModel):
+    r"""DescribeAppTrigger返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Trigger: <p>应用触发器信息</p>
+        :type Trigger: :class:`tencentcloud.adp.v20260520.models.AppTrigger`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Trigger = None
+        self._RequestId = None
+
+    @property
+    def Trigger(self):
+        r"""<p>应用触发器信息</p>
+        :rtype: :class:`tencentcloud.adp.v20260520.models.AppTrigger`
+        """
+        return self._Trigger
+
+    @Trigger.setter
+    def Trigger(self, Trigger):
+        self._Trigger = Trigger
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Trigger") is not None:
+            self._Trigger = AppTrigger()
+            self._Trigger._deserialize(params.get("Trigger"))
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeAppTriggerRunLogListRequest(AbstractModel):
+    r"""DescribeAppTriggerRunLogList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AppId: <p>应用ID</p>
+        :type AppId: str
+        :param _FilterList: <p>过滤参数</p>
+        :type FilterList: list of Filter
+        :param _PageNumber: <p>页码</p><p>取值范围：[1, 1000000]</p>
+        :type PageNumber: int
+        :param _PageSize: <p>每页数据量</p><p>取值范围：[1, 100]</p>
+        :type PageSize: int
+        :param _TriggerId: <p>应用触发器ID</p>
+        :type TriggerId: str
+        """
+        self._AppId = None
+        self._FilterList = None
+        self._PageNumber = None
+        self._PageSize = None
+        self._TriggerId = None
+
+    @property
+    def AppId(self):
+        r"""<p>应用ID</p>
+        :rtype: str
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def FilterList(self):
+        r"""<p>过滤参数</p>
+        :rtype: list of Filter
+        """
+        return self._FilterList
+
+    @FilterList.setter
+    def FilterList(self, FilterList):
+        self._FilterList = FilterList
+
+    @property
+    def PageNumber(self):
+        r"""<p>页码</p><p>取值范围：[1, 1000000]</p>
+        :rtype: int
+        """
+        return self._PageNumber
+
+    @PageNumber.setter
+    def PageNumber(self, PageNumber):
+        self._PageNumber = PageNumber
+
+    @property
+    def PageSize(self):
+        r"""<p>每页数据量</p><p>取值范围：[1, 100]</p>
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def TriggerId(self):
+        r"""<p>应用触发器ID</p>
+        :rtype: str
+        """
+        return self._TriggerId
+
+    @TriggerId.setter
+    def TriggerId(self, TriggerId):
+        self._TriggerId = TriggerId
+
+
+    def _deserialize(self, params):
+        self._AppId = params.get("AppId")
+        if params.get("FilterList") is not None:
+            self._FilterList = []
+            for item in params.get("FilterList"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._FilterList.append(obj)
+        self._PageNumber = params.get("PageNumber")
+        self._PageSize = params.get("PageSize")
+        self._TriggerId = params.get("TriggerId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAppTriggerRunLogListResponse(AbstractModel):
+    r"""DescribeAppTriggerRunLogList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RunLogList: <p>日志列表</p>
+        :type RunLogList: list of AppTriggerRunLog
+        :param _TotalCount: <p>日志列表数量</p>
+        :type TotalCount: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RunLogList = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def RunLogList(self):
+        r"""<p>日志列表</p>
+        :rtype: list of AppTriggerRunLog
+        """
+        return self._RunLogList
+
+    @RunLogList.setter
+    def RunLogList(self, RunLogList):
+        self._RunLogList = RunLogList
+
+    @property
+    def TotalCount(self):
+        r"""<p>日志列表数量</p>
+        :rtype: str
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("RunLogList") is not None:
+            self._RunLogList = []
+            for item in params.get("RunLogList"):
+                obj = AppTriggerRunLog()
+                obj._deserialize(item)
+                self._RunLogList.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeAppTriggerSummaryListRequest(AbstractModel):
+    r"""DescribeAppTriggerSummaryList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AppId: <p>应用ID</p>
+        :type AppId: str
+        :param _FilterList: <p>参数过滤列表</p>
+        :type FilterList: list of Filter
+        :param _PageNumber: <p>页码</p><p>取值范围：[1, 1000000]</p>
+        :type PageNumber: int
+        :param _PageSize: <p>每页大小</p><p>取值范围：[1, 100]</p>
+        :type PageSize: int
+        :param _Query: <p>模糊查询字符串</p>
+        :type Query: str
+        """
+        self._AppId = None
+        self._FilterList = None
+        self._PageNumber = None
+        self._PageSize = None
+        self._Query = None
+
+    @property
+    def AppId(self):
+        r"""<p>应用ID</p>
+        :rtype: str
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def FilterList(self):
+        r"""<p>参数过滤列表</p>
+        :rtype: list of Filter
+        """
+        return self._FilterList
+
+    @FilterList.setter
+    def FilterList(self, FilterList):
+        self._FilterList = FilterList
+
+    @property
+    def PageNumber(self):
+        r"""<p>页码</p><p>取值范围：[1, 1000000]</p>
+        :rtype: int
+        """
+        return self._PageNumber
+
+    @PageNumber.setter
+    def PageNumber(self, PageNumber):
+        self._PageNumber = PageNumber
+
+    @property
+    def PageSize(self):
+        r"""<p>每页大小</p><p>取值范围：[1, 100]</p>
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def Query(self):
+        r"""<p>模糊查询字符串</p>
+        :rtype: str
+        """
+        return self._Query
+
+    @Query.setter
+    def Query(self, Query):
+        self._Query = Query
+
+
+    def _deserialize(self, params):
+        self._AppId = params.get("AppId")
+        if params.get("FilterList") is not None:
+            self._FilterList = []
+            for item in params.get("FilterList"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._FilterList.append(obj)
+        self._PageNumber = params.get("PageNumber")
+        self._PageSize = params.get("PageSize")
+        self._Query = params.get("Query")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAppTriggerSummaryListResponse(AbstractModel):
+    r"""DescribeAppTriggerSummaryList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: <p>应用触发器数量</p>
+        :type TotalCount: str
+        :param _TriggerList: <p>应用触发器列表</p>
+        :type TriggerList: list of AppTriggerSummary
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._TriggerList = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        r"""<p>应用触发器数量</p>
+        :rtype: str
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def TriggerList(self):
+        r"""<p>应用触发器列表</p>
+        :rtype: list of AppTriggerSummary
+        """
+        return self._TriggerList
+
+    @TriggerList.setter
+    def TriggerList(self, TriggerList):
+        self._TriggerList = TriggerList
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("TriggerList") is not None:
+            self._TriggerList = []
+            for item in params.get("TriggerList"):
+                obj = AppTriggerSummary()
+                obj._deserialize(item)
+                self._TriggerList.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -13153,6 +15920,485 @@ class DescribeSystemVariableListResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeTimerTaskRequest(AbstractModel):
+    r"""DescribeTimerTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SpaceId: 空间id
+        :type SpaceId: str
+        :param _TimerId: 任务id
+        :type TimerId: str
+        :param _LoginUin: <p>主用户Uin</p>
+        :type LoginUin: str
+        :param _LoginSubAccountUin: <p>子用户Uin</p>
+        :type LoginSubAccountUin: str
+        """
+        self._SpaceId = None
+        self._TimerId = None
+        self._LoginUin = None
+        self._LoginSubAccountUin = None
+
+    @property
+    def SpaceId(self):
+        r"""空间id
+        :rtype: str
+        """
+        return self._SpaceId
+
+    @SpaceId.setter
+    def SpaceId(self, SpaceId):
+        self._SpaceId = SpaceId
+
+    @property
+    def TimerId(self):
+        r"""任务id
+        :rtype: str
+        """
+        return self._TimerId
+
+    @TimerId.setter
+    def TimerId(self, TimerId):
+        self._TimerId = TimerId
+
+    @property
+    def LoginUin(self):
+        r"""<p>主用户Uin</p>
+        :rtype: str
+        """
+        return self._LoginUin
+
+    @LoginUin.setter
+    def LoginUin(self, LoginUin):
+        self._LoginUin = LoginUin
+
+    @property
+    def LoginSubAccountUin(self):
+        r"""<p>子用户Uin</p>
+        :rtype: str
+        """
+        return self._LoginSubAccountUin
+
+    @LoginSubAccountUin.setter
+    def LoginSubAccountUin(self, LoginSubAccountUin):
+        self._LoginSubAccountUin = LoginSubAccountUin
+
+
+    def _deserialize(self, params):
+        self._SpaceId = params.get("SpaceId")
+        self._TimerId = params.get("TimerId")
+        self._LoginUin = params.get("LoginUin")
+        self._LoginSubAccountUin = params.get("LoginSubAccountUin")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeTimerTaskResponse(AbstractModel):
+    r"""DescribeTimerTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Task: 任务
+        :type Task: :class:`tencentcloud.adp.v20260520.models.TimerTask`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Task = None
+        self._RequestId = None
+
+    @property
+    def Task(self):
+        r"""任务
+        :rtype: :class:`tencentcloud.adp.v20260520.models.TimerTask`
+        """
+        return self._Task
+
+    @Task.setter
+    def Task(self, Task):
+        self._Task = Task
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Task") is not None:
+            self._Task = TimerTask()
+            self._Task._deserialize(params.get("Task"))
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeTimerTaskRunLogListRequest(AbstractModel):
+    r"""DescribeTimerTaskRunLogList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SpaceId: 工作空间ID
+        :type SpaceId: str
+        :param _TimerId: 定时任务ID，必须按任务维度查询
+        :type TimerId: str
+        :param _FilterList: 过滤条件，支持: Status(执行状态，值为枚举int); Unread(仅未读，值为"true"/"false")
+        :type FilterList: list of Filter
+        :param _LoginSubAccountUin: <p>子用户Uin</p>
+        :type LoginSubAccountUin: str
+        :param _LoginUin: <p>主用户Uin</p>
+        :type LoginUin: str
+        :param _PageNumber: 页码，从0开始
+        :type PageNumber: int
+        :param _PageSize: 每页数目，最大100
+        :type PageSize: int
+        """
+        self._SpaceId = None
+        self._TimerId = None
+        self._FilterList = None
+        self._LoginSubAccountUin = None
+        self._LoginUin = None
+        self._PageNumber = None
+        self._PageSize = None
+
+    @property
+    def SpaceId(self):
+        r"""工作空间ID
+        :rtype: str
+        """
+        return self._SpaceId
+
+    @SpaceId.setter
+    def SpaceId(self, SpaceId):
+        self._SpaceId = SpaceId
+
+    @property
+    def TimerId(self):
+        r"""定时任务ID，必须按任务维度查询
+        :rtype: str
+        """
+        return self._TimerId
+
+    @TimerId.setter
+    def TimerId(self, TimerId):
+        self._TimerId = TimerId
+
+    @property
+    def FilterList(self):
+        r"""过滤条件，支持: Status(执行状态，值为枚举int); Unread(仅未读，值为"true"/"false")
+        :rtype: list of Filter
+        """
+        return self._FilterList
+
+    @FilterList.setter
+    def FilterList(self, FilterList):
+        self._FilterList = FilterList
+
+    @property
+    def LoginSubAccountUin(self):
+        r"""<p>子用户Uin</p>
+        :rtype: str
+        """
+        return self._LoginSubAccountUin
+
+    @LoginSubAccountUin.setter
+    def LoginSubAccountUin(self, LoginSubAccountUin):
+        self._LoginSubAccountUin = LoginSubAccountUin
+
+    @property
+    def LoginUin(self):
+        r"""<p>主用户Uin</p>
+        :rtype: str
+        """
+        return self._LoginUin
+
+    @LoginUin.setter
+    def LoginUin(self, LoginUin):
+        self._LoginUin = LoginUin
+
+    @property
+    def PageNumber(self):
+        r"""页码，从0开始
+        :rtype: int
+        """
+        return self._PageNumber
+
+    @PageNumber.setter
+    def PageNumber(self, PageNumber):
+        self._PageNumber = PageNumber
+
+    @property
+    def PageSize(self):
+        r"""每页数目，最大100
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+
+    def _deserialize(self, params):
+        self._SpaceId = params.get("SpaceId")
+        self._TimerId = params.get("TimerId")
+        if params.get("FilterList") is not None:
+            self._FilterList = []
+            for item in params.get("FilterList"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._FilterList.append(obj)
+        self._LoginSubAccountUin = params.get("LoginSubAccountUin")
+        self._LoginUin = params.get("LoginUin")
+        self._PageNumber = params.get("PageNumber")
+        self._PageSize = params.get("PageSize")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeTimerTaskRunLogListResponse(AbstractModel):
+    r"""DescribeTimerTaskRunLogList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeTimerTaskSummaryListRequest(AbstractModel):
+    r"""DescribeTimerTaskSummaryList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FilterList: 查询条件
+        :type FilterList: list of Filter
+        :param _PageNumber: 页码
+        :type PageNumber: int
+        :param _PageSize: 页大小
+        :type PageSize: int
+        :param _Query: 查询关键字
+        :type Query: str
+        :param _SpaceId: 空间ID
+        :type SpaceId: str
+        :param _LoginSubAccountUin: <p>子用户Uin</p>
+        :type LoginSubAccountUin: str
+        :param _LoginUin: <p>主用户Uin</p>
+        :type LoginUin: str
+        """
+        self._FilterList = None
+        self._PageNumber = None
+        self._PageSize = None
+        self._Query = None
+        self._SpaceId = None
+        self._LoginSubAccountUin = None
+        self._LoginUin = None
+
+    @property
+    def FilterList(self):
+        r"""查询条件
+        :rtype: list of Filter
+        """
+        return self._FilterList
+
+    @FilterList.setter
+    def FilterList(self, FilterList):
+        self._FilterList = FilterList
+
+    @property
+    def PageNumber(self):
+        r"""页码
+        :rtype: int
+        """
+        return self._PageNumber
+
+    @PageNumber.setter
+    def PageNumber(self, PageNumber):
+        self._PageNumber = PageNumber
+
+    @property
+    def PageSize(self):
+        r"""页大小
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def Query(self):
+        r"""查询关键字
+        :rtype: str
+        """
+        return self._Query
+
+    @Query.setter
+    def Query(self, Query):
+        self._Query = Query
+
+    @property
+    def SpaceId(self):
+        r"""空间ID
+        :rtype: str
+        """
+        return self._SpaceId
+
+    @SpaceId.setter
+    def SpaceId(self, SpaceId):
+        self._SpaceId = SpaceId
+
+    @property
+    def LoginSubAccountUin(self):
+        r"""<p>子用户Uin</p>
+        :rtype: str
+        """
+        return self._LoginSubAccountUin
+
+    @LoginSubAccountUin.setter
+    def LoginSubAccountUin(self, LoginSubAccountUin):
+        self._LoginSubAccountUin = LoginSubAccountUin
+
+    @property
+    def LoginUin(self):
+        r"""<p>主用户Uin</p>
+        :rtype: str
+        """
+        return self._LoginUin
+
+    @LoginUin.setter
+    def LoginUin(self, LoginUin):
+        self._LoginUin = LoginUin
+
+
+    def _deserialize(self, params):
+        if params.get("FilterList") is not None:
+            self._FilterList = []
+            for item in params.get("FilterList"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._FilterList.append(obj)
+        self._PageNumber = params.get("PageNumber")
+        self._PageSize = params.get("PageSize")
+        self._Query = params.get("Query")
+        self._SpaceId = params.get("SpaceId")
+        self._LoginSubAccountUin = params.get("LoginSubAccountUin")
+        self._LoginUin = params.get("LoginUin")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeTimerTaskSummaryListResponse(AbstractModel):
+    r"""DescribeTimerTaskSummaryList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskList: 任务列表
+        :type TaskList: list of TimerTaskSummary
+        :param _TotalCount: 总数量
+        :type TotalCount: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TaskList = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def TaskList(self):
+        r"""任务列表
+        :rtype: list of TimerTaskSummary
+        """
+        return self._TaskList
+
+    @TaskList.setter
+    def TaskList(self, TaskList):
+        self._TaskList = TaskList
+
+    @property
+    def TotalCount(self):
+        r"""总数量
+        :rtype: str
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("TaskList") is not None:
+            self._TaskList = []
+            for item in params.get("TaskList"):
+                obj = TimerTaskSummary()
+                obj._deserialize(item)
+                self._TaskList.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeVariableListRequest(AbstractModel):
     r"""DescribeVariableList请求参数结构体
 
@@ -13625,6 +16871,61 @@ class DuplexBilling(AbstractModel):
         self._InputPuPrice = params.get("InputPuPrice")
         self._OutputCashPrice = params.get("OutputCashPrice")
         self._OutputPuPrice = params.get("OutputPuPrice")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ExecuteConfig(AbstractModel):
+    r"""ExecuteConfig
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PromptConfig: <p>Prompt配置</p>
+        :type PromptConfig: :class:`tencentcloud.adp.v20260520.models.AppTriggerPromptExecuteConfig`
+        :param _WorkflowConfig: <p>工作流配置</p>
+        :type WorkflowConfig: :class:`tencentcloud.adp.v20260520.models.AppTriggerWorkflowExecuteConfig`
+        """
+        self._PromptConfig = None
+        self._WorkflowConfig = None
+
+    @property
+    def PromptConfig(self):
+        r"""<p>Prompt配置</p>
+        :rtype: :class:`tencentcloud.adp.v20260520.models.AppTriggerPromptExecuteConfig`
+        """
+        return self._PromptConfig
+
+    @PromptConfig.setter
+    def PromptConfig(self, PromptConfig):
+        self._PromptConfig = PromptConfig
+
+    @property
+    def WorkflowConfig(self):
+        r"""<p>工作流配置</p>
+        :rtype: :class:`tencentcloud.adp.v20260520.models.AppTriggerWorkflowExecuteConfig`
+        """
+        return self._WorkflowConfig
+
+    @WorkflowConfig.setter
+    def WorkflowConfig(self, WorkflowConfig):
+        self._WorkflowConfig = WorkflowConfig
+
+
+    def _deserialize(self, params):
+        if params.get("PromptConfig") is not None:
+            self._PromptConfig = AppTriggerPromptExecuteConfig()
+            self._PromptConfig._deserialize(params.get("PromptConfig"))
+        if params.get("WorkflowConfig") is not None:
+            self._WorkflowConfig = AppTriggerWorkflowExecuteConfig()
+            self._WorkflowConfig._deserialize(params.get("WorkflowConfig"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -14189,6 +17490,84 @@ class IntentAchievementInfo(AbstractModel):
         
 
 
+class IntervalSchedule(AbstractModel):
+    r"""IntervalSchedule
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _StartAt: 开始时间
+        :type StartAt: str
+        :param _Unit: 
+枚举值:
+| 枚举值 | uint |
+| --- | --- |
+| INTERVAL_UNIT_UNSPECIFIED | 0 |
+| INTERVAL_UNIT_HOUR | 1 |
+| INTERVAL_UNIT_DAY | 2 |
+        :type Unit: int
+        :param _Value: 值
+        :type Value: int
+        """
+        self._StartAt = None
+        self._Unit = None
+        self._Value = None
+
+    @property
+    def StartAt(self):
+        r"""开始时间
+        :rtype: str
+        """
+        return self._StartAt
+
+    @StartAt.setter
+    def StartAt(self, StartAt):
+        self._StartAt = StartAt
+
+    @property
+    def Unit(self):
+        r"""
+枚举值:
+| 枚举值 | uint |
+| --- | --- |
+| INTERVAL_UNIT_UNSPECIFIED | 0 |
+| INTERVAL_UNIT_HOUR | 1 |
+| INTERVAL_UNIT_DAY | 2 |
+        :rtype: int
+        """
+        return self._Unit
+
+    @Unit.setter
+    def Unit(self, Unit):
+        self._Unit = Unit
+
+    @property
+    def Value(self):
+        r"""值
+        :rtype: int
+        """
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+
+    def _deserialize(self, params):
+        self._StartAt = params.get("StartAt")
+        self._Unit = params.get("Unit")
+        self._Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class MCPPluginConfig(AbstractModel):
     r"""MCP插件配置信息
 
@@ -14401,6 +17780,290 @@ class MCPToolConfig(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class ManualOnlySchedule(AbstractModel):
+    r"""ManualOnlySchedule
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Enabled: 启用
+        :type Enabled: bool
+        """
+        self._Enabled = None
+
+    @property
+    def Enabled(self):
+        r"""启用
+        :rtype: bool
+        """
+        return self._Enabled
+
+    @Enabled.setter
+    def Enabled(self, Enabled):
+        self._Enabled = Enabled
+
+
+    def _deserialize(self, params):
+        self._Enabled = params.get("Enabled")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class MarkAppTriggerRunLogReadRequest(AbstractModel):
+    r"""MarkAppTriggerRunLogRead请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AppId: <p>应用ID</p>
+        :type AppId: str
+        :param _InstanceIdList: <p>应用触发器运行实例ID列表</p>
+        :type InstanceIdList: list of str
+        :param _TriggerId: <p>应用触发器ID</p>
+        :type TriggerId: str
+        """
+        self._AppId = None
+        self._InstanceIdList = None
+        self._TriggerId = None
+
+    @property
+    def AppId(self):
+        r"""<p>应用ID</p>
+        :rtype: str
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def InstanceIdList(self):
+        r"""<p>应用触发器运行实例ID列表</p>
+        :rtype: list of str
+        """
+        return self._InstanceIdList
+
+    @InstanceIdList.setter
+    def InstanceIdList(self, InstanceIdList):
+        self._InstanceIdList = InstanceIdList
+
+    @property
+    def TriggerId(self):
+        r"""<p>应用触发器ID</p>
+        :rtype: str
+        """
+        return self._TriggerId
+
+    @TriggerId.setter
+    def TriggerId(self, TriggerId):
+        self._TriggerId = TriggerId
+
+
+    def _deserialize(self, params):
+        self._AppId = params.get("AppId")
+        self._InstanceIdList = params.get("InstanceIdList")
+        self._TriggerId = params.get("TriggerId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class MarkAppTriggerRunLogReadResponse(AbstractModel):
+    r"""MarkAppTriggerRunLogRead返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MarkedCount: <p>成功标记个数</p>
+        :type MarkedCount: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._MarkedCount = None
+        self._RequestId = None
+
+    @property
+    def MarkedCount(self):
+        r"""<p>成功标记个数</p>
+        :rtype: int
+        """
+        return self._MarkedCount
+
+    @MarkedCount.setter
+    def MarkedCount(self, MarkedCount):
+        self._MarkedCount = MarkedCount
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._MarkedCount = params.get("MarkedCount")
+        self._RequestId = params.get("RequestId")
+
+
+class MarkTimerTaskRunLogReadRequest(AbstractModel):
+    r"""MarkTimerTaskRunLogRead请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FireInstanceIdList: 实例列表
+        :type FireInstanceIdList: list of str
+        :param _SpaceId: 空间ID
+        :type SpaceId: str
+        :param _TimerId: 任务ID
+        :type TimerId: str
+        :param _LoginUin: 主用户
+        :type LoginUin: str
+        :param _LoginSubAccountUin: 子用户
+        :type LoginSubAccountUin: str
+        """
+        self._FireInstanceIdList = None
+        self._SpaceId = None
+        self._TimerId = None
+        self._LoginUin = None
+        self._LoginSubAccountUin = None
+
+    @property
+    def FireInstanceIdList(self):
+        r"""实例列表
+        :rtype: list of str
+        """
+        return self._FireInstanceIdList
+
+    @FireInstanceIdList.setter
+    def FireInstanceIdList(self, FireInstanceIdList):
+        self._FireInstanceIdList = FireInstanceIdList
+
+    @property
+    def SpaceId(self):
+        r"""空间ID
+        :rtype: str
+        """
+        return self._SpaceId
+
+    @SpaceId.setter
+    def SpaceId(self, SpaceId):
+        self._SpaceId = SpaceId
+
+    @property
+    def TimerId(self):
+        r"""任务ID
+        :rtype: str
+        """
+        return self._TimerId
+
+    @TimerId.setter
+    def TimerId(self, TimerId):
+        self._TimerId = TimerId
+
+    @property
+    def LoginUin(self):
+        r"""主用户
+        :rtype: str
+        """
+        return self._LoginUin
+
+    @LoginUin.setter
+    def LoginUin(self, LoginUin):
+        self._LoginUin = LoginUin
+
+    @property
+    def LoginSubAccountUin(self):
+        r"""子用户
+        :rtype: str
+        """
+        return self._LoginSubAccountUin
+
+    @LoginSubAccountUin.setter
+    def LoginSubAccountUin(self, LoginSubAccountUin):
+        self._LoginSubAccountUin = LoginSubAccountUin
+
+
+    def _deserialize(self, params):
+        self._FireInstanceIdList = params.get("FireInstanceIdList")
+        self._SpaceId = params.get("SpaceId")
+        self._TimerId = params.get("TimerId")
+        self._LoginUin = params.get("LoginUin")
+        self._LoginSubAccountUin = params.get("LoginSubAccountUin")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class MarkTimerTaskRunLogReadResponse(AbstractModel):
+    r"""MarkTimerTaskRunLogRead返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MarkedCount: 标记为已读的数量
+        :type MarkedCount: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._MarkedCount = None
+        self._RequestId = None
+
+    @property
+    def MarkedCount(self):
+        r"""标记为已读的数量
+        :rtype: int
+        """
+        return self._MarkedCount
+
+    @MarkedCount.setter
+    def MarkedCount(self, MarkedCount):
+        self._MarkedCount = MarkedCount
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._MarkedCount = params.get("MarkedCount")
+        self._RequestId = params.get("RequestId")
 
 
 class Model(AbstractModel):
@@ -15781,6 +19444,119 @@ class ModifyAppResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyAppTriggerRequest(AbstractModel):
+    r"""ModifyAppTrigger请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AppId: <p>应用ID</p>
+        :type AppId: str
+        :param _Trigger: <p>触发器信息</p>
+        :type Trigger: :class:`tencentcloud.adp.v20260520.models.AppTrigger`
+        :param _TriggerId: <p>触发器唯一ID</p>
+        :type TriggerId: str
+        :param _UpdateMask: <p>修改字段</p>
+        :type UpdateMask: :class:`tencentcloud.adp.v20260520.models.FieldMask`
+        """
+        self._AppId = None
+        self._Trigger = None
+        self._TriggerId = None
+        self._UpdateMask = None
+
+    @property
+    def AppId(self):
+        r"""<p>应用ID</p>
+        :rtype: str
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def Trigger(self):
+        r"""<p>触发器信息</p>
+        :rtype: :class:`tencentcloud.adp.v20260520.models.AppTrigger`
+        """
+        return self._Trigger
+
+    @Trigger.setter
+    def Trigger(self, Trigger):
+        self._Trigger = Trigger
+
+    @property
+    def TriggerId(self):
+        r"""<p>触发器唯一ID</p>
+        :rtype: str
+        """
+        return self._TriggerId
+
+    @TriggerId.setter
+    def TriggerId(self, TriggerId):
+        self._TriggerId = TriggerId
+
+    @property
+    def UpdateMask(self):
+        r"""<p>修改字段</p>
+        :rtype: :class:`tencentcloud.adp.v20260520.models.FieldMask`
+        """
+        return self._UpdateMask
+
+    @UpdateMask.setter
+    def UpdateMask(self, UpdateMask):
+        self._UpdateMask = UpdateMask
+
+
+    def _deserialize(self, params):
+        self._AppId = params.get("AppId")
+        if params.get("Trigger") is not None:
+            self._Trigger = AppTrigger()
+            self._Trigger._deserialize(params.get("Trigger"))
+        self._TriggerId = params.get("TriggerId")
+        if params.get("UpdateMask") is not None:
+            self._UpdateMask = FieldMask()
+            self._UpdateMask._deserialize(params.get("UpdateMask"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyAppTriggerResponse(AbstractModel):
+    r"""ModifyAppTrigger返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyConversationRequest(AbstractModel):
     r"""ModifyConversation请求参数结构体
 
@@ -16425,6 +20201,164 @@ class ModifySpaceResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyTimerTaskRequest(AbstractModel):
+    r"""ModifyTimerTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SpaceId: 空间ID
+        :type SpaceId: str
+        :param _TimerId: 任务ID
+        :type TimerId: str
+        :param _TimerTask: 任务
+        :type TimerTask: :class:`tencentcloud.adp.v20260520.models.TimerTask`
+        :param _UpdateMask: 修改的内容
+        :type UpdateMask: :class:`tencentcloud.adp.v20260520.models.FieldMask`
+        :param _LoginUin: <p>主用户Uin</p>
+        :type LoginUin: str
+        :param _LoginSubAccountUin: <p>子用户Uin</p>
+        :type LoginSubAccountUin: str
+        """
+        self._SpaceId = None
+        self._TimerId = None
+        self._TimerTask = None
+        self._UpdateMask = None
+        self._LoginUin = None
+        self._LoginSubAccountUin = None
+
+    @property
+    def SpaceId(self):
+        r"""空间ID
+        :rtype: str
+        """
+        return self._SpaceId
+
+    @SpaceId.setter
+    def SpaceId(self, SpaceId):
+        self._SpaceId = SpaceId
+
+    @property
+    def TimerId(self):
+        r"""任务ID
+        :rtype: str
+        """
+        return self._TimerId
+
+    @TimerId.setter
+    def TimerId(self, TimerId):
+        self._TimerId = TimerId
+
+    @property
+    def TimerTask(self):
+        r"""任务
+        :rtype: :class:`tencentcloud.adp.v20260520.models.TimerTask`
+        """
+        return self._TimerTask
+
+    @TimerTask.setter
+    def TimerTask(self, TimerTask):
+        self._TimerTask = TimerTask
+
+    @property
+    def UpdateMask(self):
+        r"""修改的内容
+        :rtype: :class:`tencentcloud.adp.v20260520.models.FieldMask`
+        """
+        return self._UpdateMask
+
+    @UpdateMask.setter
+    def UpdateMask(self, UpdateMask):
+        self._UpdateMask = UpdateMask
+
+    @property
+    def LoginUin(self):
+        r"""<p>主用户Uin</p>
+        :rtype: str
+        """
+        return self._LoginUin
+
+    @LoginUin.setter
+    def LoginUin(self, LoginUin):
+        self._LoginUin = LoginUin
+
+    @property
+    def LoginSubAccountUin(self):
+        r"""<p>子用户Uin</p>
+        :rtype: str
+        """
+        return self._LoginSubAccountUin
+
+    @LoginSubAccountUin.setter
+    def LoginSubAccountUin(self, LoginSubAccountUin):
+        self._LoginSubAccountUin = LoginSubAccountUin
+
+
+    def _deserialize(self, params):
+        self._SpaceId = params.get("SpaceId")
+        self._TimerId = params.get("TimerId")
+        if params.get("TimerTask") is not None:
+            self._TimerTask = TimerTask()
+            self._TimerTask._deserialize(params.get("TimerTask"))
+        if params.get("UpdateMask") is not None:
+            self._UpdateMask = FieldMask()
+            self._UpdateMask._deserialize(params.get("UpdateMask"))
+        self._LoginUin = params.get("LoginUin")
+        self._LoginSubAccountUin = params.get("LoginSubAccountUin")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyTimerTaskResponse(AbstractModel):
+    r"""ModifyTimerTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _NextFireTime: 下次触发时间
+        :type NextFireTime: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._NextFireTime = None
+        self._RequestId = None
+
+    @property
+    def NextFireTime(self):
+        r"""下次触发时间
+        :rtype: str
+        """
+        return self._NextFireTime
+
+    @NextFireTime.setter
+    def NextFireTime(self, NextFireTime):
+        self._NextFireTime = NextFireTime
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._NextFireTime = params.get("NextFireTime")
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyVariableRequest(AbstractModel):
     r"""ModifyVariable请求参数结构体
 
@@ -16720,6 +20654,230 @@ class OAuthConfig(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class OnceSchedule(AbstractModel):
+    r"""OnceSchedule
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FireTime: 触发时间
+        :type FireTime: str
+        """
+        self._FireTime = None
+
+    @property
+    def FireTime(self):
+        r"""触发时间
+        :rtype: str
+        """
+        return self._FireTime
+
+    @FireTime.setter
+    def FireTime(self, FireTime):
+        self._FireTime = FireTime
+
+
+    def _deserialize(self, params):
+        self._FireTime = params.get("FireTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PauseAppTriggerRequest(AbstractModel):
+    r"""PauseAppTrigger请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AppId: <p>应用ID</p>
+        :type AppId: str
+        :param _TriggerId: <p>应用触发器ID</p>
+        :type TriggerId: str
+        """
+        self._AppId = None
+        self._TriggerId = None
+
+    @property
+    def AppId(self):
+        r"""<p>应用ID</p>
+        :rtype: str
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def TriggerId(self):
+        r"""<p>应用触发器ID</p>
+        :rtype: str
+        """
+        return self._TriggerId
+
+    @TriggerId.setter
+    def TriggerId(self, TriggerId):
+        self._TriggerId = TriggerId
+
+
+    def _deserialize(self, params):
+        self._AppId = params.get("AppId")
+        self._TriggerId = params.get("TriggerId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PauseAppTriggerResponse(AbstractModel):
+    r"""PauseAppTrigger返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class PauseTimerTaskRequest(AbstractModel):
+    r"""PauseTimerTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SpaceId: 空间ID
+        :type SpaceId: str
+        :param _TimerId: 任务ID
+        :type TimerId: str
+        :param _LoginUin: 主用户
+        :type LoginUin: str
+        :param _LoginSubAccountUin: 子用户
+        :type LoginSubAccountUin: str
+        """
+        self._SpaceId = None
+        self._TimerId = None
+        self._LoginUin = None
+        self._LoginSubAccountUin = None
+
+    @property
+    def SpaceId(self):
+        r"""空间ID
+        :rtype: str
+        """
+        return self._SpaceId
+
+    @SpaceId.setter
+    def SpaceId(self, SpaceId):
+        self._SpaceId = SpaceId
+
+    @property
+    def TimerId(self):
+        r"""任务ID
+        :rtype: str
+        """
+        return self._TimerId
+
+    @TimerId.setter
+    def TimerId(self, TimerId):
+        self._TimerId = TimerId
+
+    @property
+    def LoginUin(self):
+        r"""主用户
+        :rtype: str
+        """
+        return self._LoginUin
+
+    @LoginUin.setter
+    def LoginUin(self, LoginUin):
+        self._LoginUin = LoginUin
+
+    @property
+    def LoginSubAccountUin(self):
+        r"""子用户
+        :rtype: str
+        """
+        return self._LoginSubAccountUin
+
+    @LoginSubAccountUin.setter
+    def LoginSubAccountUin(self, LoginSubAccountUin):
+        self._LoginSubAccountUin = LoginSubAccountUin
+
+
+    def _deserialize(self, params):
+        self._SpaceId = params.get("SpaceId")
+        self._TimerId = params.get("TimerId")
+        self._LoginUin = params.get("LoginUin")
+        self._LoginSubAccountUin = params.get("LoginSubAccountUin")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PauseTimerTaskResponse(AbstractModel):
+    r"""PauseTimerTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
 
 
 class Plugin(AbstractModel):
@@ -18499,6 +22657,194 @@ class ResponseParam(AbstractModel):
         
 
 
+class ResumeAppTriggerRequest(AbstractModel):
+    r"""ResumeAppTrigger请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AppId: <p>应用ID</p>
+        :type AppId: str
+        :param _TriggerId: <p>应用触发器ID</p>
+        :type TriggerId: str
+        """
+        self._AppId = None
+        self._TriggerId = None
+
+    @property
+    def AppId(self):
+        r"""<p>应用ID</p>
+        :rtype: str
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def TriggerId(self):
+        r"""<p>应用触发器ID</p>
+        :rtype: str
+        """
+        return self._TriggerId
+
+    @TriggerId.setter
+    def TriggerId(self, TriggerId):
+        self._TriggerId = TriggerId
+
+
+    def _deserialize(self, params):
+        self._AppId = params.get("AppId")
+        self._TriggerId = params.get("TriggerId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ResumeAppTriggerResponse(AbstractModel):
+    r"""ResumeAppTrigger返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ResumeTimerTaskRequest(AbstractModel):
+    r"""ResumeTimerTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SpaceId: 空间ID
+        :type SpaceId: str
+        :param _TimerId: 任务ID
+        :type TimerId: str
+        :param _LoginUin: 主用户
+        :type LoginUin: str
+        :param _LoginSubAccountUin: 子用户
+        :type LoginSubAccountUin: str
+        """
+        self._SpaceId = None
+        self._TimerId = None
+        self._LoginUin = None
+        self._LoginSubAccountUin = None
+
+    @property
+    def SpaceId(self):
+        r"""空间ID
+        :rtype: str
+        """
+        return self._SpaceId
+
+    @SpaceId.setter
+    def SpaceId(self, SpaceId):
+        self._SpaceId = SpaceId
+
+    @property
+    def TimerId(self):
+        r"""任务ID
+        :rtype: str
+        """
+        return self._TimerId
+
+    @TimerId.setter
+    def TimerId(self, TimerId):
+        self._TimerId = TimerId
+
+    @property
+    def LoginUin(self):
+        r"""主用户
+        :rtype: str
+        """
+        return self._LoginUin
+
+    @LoginUin.setter
+    def LoginUin(self, LoginUin):
+        self._LoginUin = LoginUin
+
+    @property
+    def LoginSubAccountUin(self):
+        r"""子用户
+        :rtype: str
+        """
+        return self._LoginSubAccountUin
+
+    @LoginSubAccountUin.setter
+    def LoginSubAccountUin(self, LoginSubAccountUin):
+        self._LoginSubAccountUin = LoginSubAccountUin
+
+
+    def _deserialize(self, params):
+        self._SpaceId = params.get("SpaceId")
+        self._TimerId = params.get("TimerId")
+        self._LoginUin = params.get("LoginUin")
+        self._LoginSubAccountUin = params.get("LoginSubAccountUin")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ResumeTimerTaskResponse(AbstractModel):
+    r"""ResumeTimerTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class RetryReleaseRequest(AbstractModel):
     r"""RetryRelease请求参数结构体
 
@@ -18690,6 +23036,224 @@ class RollbackReleaseResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class RunAppTriggerNowRequest(AbstractModel):
+    r"""RunAppTriggerNow请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AppId: <p>应用ID</p>
+        :type AppId: str
+        :param _TriggerId: <p>应用触发器ID</p>
+        :type TriggerId: str
+        """
+        self._AppId = None
+        self._TriggerId = None
+
+    @property
+    def AppId(self):
+        r"""<p>应用ID</p>
+        :rtype: str
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def TriggerId(self):
+        r"""<p>应用触发器ID</p>
+        :rtype: str
+        """
+        return self._TriggerId
+
+    @TriggerId.setter
+    def TriggerId(self, TriggerId):
+        self._TriggerId = TriggerId
+
+
+    def _deserialize(self, params):
+        self._AppId = params.get("AppId")
+        self._TriggerId = params.get("TriggerId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RunAppTriggerNowResponse(AbstractModel):
+    r"""RunAppTriggerNow返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: <p>应用触发器实例ID</p>
+        :type InstanceId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._InstanceId = None
+        self._RequestId = None
+
+    @property
+    def InstanceId(self):
+        r"""<p>应用触发器实例ID</p>
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._RequestId = params.get("RequestId")
+
+
+class RunTimerTaskNowRequest(AbstractModel):
+    r"""RunTimerTaskNow请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SpaceId: 空间ID
+        :type SpaceId: str
+        :param _TimerId: 任务ID
+        :type TimerId: str
+        :param _LoginUin: 主用户
+        :type LoginUin: str
+        :param _LoginSubAccountUin: 子用户
+        :type LoginSubAccountUin: str
+        """
+        self._SpaceId = None
+        self._TimerId = None
+        self._LoginUin = None
+        self._LoginSubAccountUin = None
+
+    @property
+    def SpaceId(self):
+        r"""空间ID
+        :rtype: str
+        """
+        return self._SpaceId
+
+    @SpaceId.setter
+    def SpaceId(self, SpaceId):
+        self._SpaceId = SpaceId
+
+    @property
+    def TimerId(self):
+        r"""任务ID
+        :rtype: str
+        """
+        return self._TimerId
+
+    @TimerId.setter
+    def TimerId(self, TimerId):
+        self._TimerId = TimerId
+
+    @property
+    def LoginUin(self):
+        r"""主用户
+        :rtype: str
+        """
+        return self._LoginUin
+
+    @LoginUin.setter
+    def LoginUin(self, LoginUin):
+        self._LoginUin = LoginUin
+
+    @property
+    def LoginSubAccountUin(self):
+        r"""子用户
+        :rtype: str
+        """
+        return self._LoginSubAccountUin
+
+    @LoginSubAccountUin.setter
+    def LoginSubAccountUin(self, LoginSubAccountUin):
+        self._LoginSubAccountUin = LoginSubAccountUin
+
+
+    def _deserialize(self, params):
+        self._SpaceId = params.get("SpaceId")
+        self._TimerId = params.get("TimerId")
+        self._LoginUin = params.get("LoginUin")
+        self._LoginSubAccountUin = params.get("LoginSubAccountUin")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RunTimerTaskNowResponse(AbstractModel):
+    r"""RunTimerTaskNow返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FireInstanceId: 实例ID
+        :type FireInstanceId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._FireInstanceId = None
+        self._RequestId = None
+
+    @property
+    def FireInstanceId(self):
+        r"""实例ID
+        :rtype: str
+        """
+        return self._FireInstanceId
+
+    @FireInstanceId.setter
+    def FireInstanceId(self, FireInstanceId):
+        self._FireInstanceId = FireInstanceId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._FireInstanceId = params.get("FireInstanceId")
         self._RequestId = params.get("RequestId")
 
 
@@ -20460,6 +25024,879 @@ class ThinkModel(AbstractModel):
         
 
 
+class TimerConfig(AbstractModel):
+    r"""TimerConfig
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PushConfig: 推送配置
+        :type PushConfig: :class:`tencentcloud.adp.v20260520.models.TimerPushConfig`
+        :param _Schedule: 定时配置
+        :type Schedule: :class:`tencentcloud.adp.v20260520.models.TimerScheduleConfig`
+        """
+        self._PushConfig = None
+        self._Schedule = None
+
+    @property
+    def PushConfig(self):
+        r"""推送配置
+        :rtype: :class:`tencentcloud.adp.v20260520.models.TimerPushConfig`
+        """
+        return self._PushConfig
+
+    @PushConfig.setter
+    def PushConfig(self, PushConfig):
+        self._PushConfig = PushConfig
+
+    @property
+    def Schedule(self):
+        r"""定时配置
+        :rtype: :class:`tencentcloud.adp.v20260520.models.TimerScheduleConfig`
+        """
+        return self._Schedule
+
+    @Schedule.setter
+    def Schedule(self, Schedule):
+        self._Schedule = Schedule
+
+
+    def _deserialize(self, params):
+        if params.get("PushConfig") is not None:
+            self._PushConfig = TimerPushConfig()
+            self._PushConfig._deserialize(params.get("PushConfig"))
+        if params.get("Schedule") is not None:
+            self._Schedule = TimerScheduleConfig()
+            self._Schedule._deserialize(params.get("Schedule"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TimerProfile(AbstractModel):
+    r"""TimerProfile
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CreateSource: 
+枚举值:
+| uint | 描述 |
+| --- | --- |
+| 0 |  |
+| 1 | 页面手动创建 |
+| 2 | 自然语言对话创建 |
+        :type CreateSource: int
+        :param _InputContextSnapshot: 输入上下文快照
+        :type InputContextSnapshot: str
+        :param _ModelId: 模型
+        :type ModelId: str
+        :param _Prompt: 提示词
+        :type Prompt: str
+        :param _SkillSnapshot: skill快照
+        :type SkillSnapshot: str
+        :param _TaskName: 任务名称
+        :type TaskName: str
+        :param _ToolSnapshot: 工具快照
+        :type ToolSnapshot: str
+        :param _WorkspaceId: 工作目录
+        :type WorkspaceId: str
+        """
+        self._CreateSource = None
+        self._InputContextSnapshot = None
+        self._ModelId = None
+        self._Prompt = None
+        self._SkillSnapshot = None
+        self._TaskName = None
+        self._ToolSnapshot = None
+        self._WorkspaceId = None
+
+    @property
+    def CreateSource(self):
+        r"""
+枚举值:
+| uint | 描述 |
+| --- | --- |
+| 0 |  |
+| 1 | 页面手动创建 |
+| 2 | 自然语言对话创建 |
+        :rtype: int
+        """
+        return self._CreateSource
+
+    @CreateSource.setter
+    def CreateSource(self, CreateSource):
+        self._CreateSource = CreateSource
+
+    @property
+    def InputContextSnapshot(self):
+        r"""输入上下文快照
+        :rtype: str
+        """
+        return self._InputContextSnapshot
+
+    @InputContextSnapshot.setter
+    def InputContextSnapshot(self, InputContextSnapshot):
+        self._InputContextSnapshot = InputContextSnapshot
+
+    @property
+    def ModelId(self):
+        r"""模型
+        :rtype: str
+        """
+        return self._ModelId
+
+    @ModelId.setter
+    def ModelId(self, ModelId):
+        self._ModelId = ModelId
+
+    @property
+    def Prompt(self):
+        r"""提示词
+        :rtype: str
+        """
+        return self._Prompt
+
+    @Prompt.setter
+    def Prompt(self, Prompt):
+        self._Prompt = Prompt
+
+    @property
+    def SkillSnapshot(self):
+        r"""skill快照
+        :rtype: str
+        """
+        return self._SkillSnapshot
+
+    @SkillSnapshot.setter
+    def SkillSnapshot(self, SkillSnapshot):
+        self._SkillSnapshot = SkillSnapshot
+
+    @property
+    def TaskName(self):
+        r"""任务名称
+        :rtype: str
+        """
+        return self._TaskName
+
+    @TaskName.setter
+    def TaskName(self, TaskName):
+        self._TaskName = TaskName
+
+    @property
+    def ToolSnapshot(self):
+        r"""工具快照
+        :rtype: str
+        """
+        return self._ToolSnapshot
+
+    @ToolSnapshot.setter
+    def ToolSnapshot(self, ToolSnapshot):
+        self._ToolSnapshot = ToolSnapshot
+
+    @property
+    def WorkspaceId(self):
+        r"""工作目录
+        :rtype: str
+        """
+        return self._WorkspaceId
+
+    @WorkspaceId.setter
+    def WorkspaceId(self, WorkspaceId):
+        self._WorkspaceId = WorkspaceId
+
+
+    def _deserialize(self, params):
+        self._CreateSource = params.get("CreateSource")
+        self._InputContextSnapshot = params.get("InputContextSnapshot")
+        self._ModelId = params.get("ModelId")
+        self._Prompt = params.get("Prompt")
+        self._SkillSnapshot = params.get("SkillSnapshot")
+        self._TaskName = params.get("TaskName")
+        self._ToolSnapshot = params.get("ToolSnapshot")
+        self._WorkspaceId = params.get("WorkspaceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TimerPushConfig(AbstractModel):
+    r"""TimerPushConfig
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PushChannel: 
+枚举值:
+| uint | 描述 |
+| --- | --- |
+| 0 |  |
+| 1 | 不推送 |
+| 2 | 微信公众号 |
+| 3 | 企业微信 AI 机器人 |
+        :type PushChannel: int
+        :param _PushTargetId: 推送会话ID
+        :type PushTargetId: str
+        :param _PushTargetType: 
+枚举值:
+| uint | 描述 |
+| --- | --- |
+| 0 |  |
+| 1 | 用户 (微信公众号 openid) |
+| 2 | 群聊 (企微机器人 chat_id) |
+        :type PushTargetType: int
+        :param _PushWebhookUrl: 
+        :type PushWebhookUrl: str
+        """
+        self._PushChannel = None
+        self._PushTargetId = None
+        self._PushTargetType = None
+        self._PushWebhookUrl = None
+
+    @property
+    def PushChannel(self):
+        r"""
+枚举值:
+| uint | 描述 |
+| --- | --- |
+| 0 |  |
+| 1 | 不推送 |
+| 2 | 微信公众号 |
+| 3 | 企业微信 AI 机器人 |
+        :rtype: int
+        """
+        return self._PushChannel
+
+    @PushChannel.setter
+    def PushChannel(self, PushChannel):
+        self._PushChannel = PushChannel
+
+    @property
+    def PushTargetId(self):
+        r"""推送会话ID
+        :rtype: str
+        """
+        return self._PushTargetId
+
+    @PushTargetId.setter
+    def PushTargetId(self, PushTargetId):
+        self._PushTargetId = PushTargetId
+
+    @property
+    def PushTargetType(self):
+        r"""
+枚举值:
+| uint | 描述 |
+| --- | --- |
+| 0 |  |
+| 1 | 用户 (微信公众号 openid) |
+| 2 | 群聊 (企微机器人 chat_id) |
+        :rtype: int
+        """
+        return self._PushTargetType
+
+    @PushTargetType.setter
+    def PushTargetType(self, PushTargetType):
+        self._PushTargetType = PushTargetType
+
+    @property
+    def PushWebhookUrl(self):
+        r"""
+        :rtype: str
+        """
+        return self._PushWebhookUrl
+
+    @PushWebhookUrl.setter
+    def PushWebhookUrl(self, PushWebhookUrl):
+        self._PushWebhookUrl = PushWebhookUrl
+
+
+    def _deserialize(self, params):
+        self._PushChannel = params.get("PushChannel")
+        self._PushTargetId = params.get("PushTargetId")
+        self._PushTargetType = params.get("PushTargetType")
+        self._PushWebhookUrl = params.get("PushWebhookUrl")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TimerScheduleConfig(AbstractModel):
+    r"""TimerScheduleConfig
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Cron: cron配置
+        :type Cron: :class:`tencentcloud.adp.v20260520.models.CronSchedule`
+        :param _Daily: 每日触发
+        :type Daily: :class:`tencentcloud.adp.v20260520.models.DailySchedule`
+        :param _Interval: 固定间隔
+        :type Interval: :class:`tencentcloud.adp.v20260520.models.IntervalSchedule`
+        :param _ManualOnly: 仅手动
+        :type ManualOnly: :class:`tencentcloud.adp.v20260520.models.ManualOnlySchedule`
+        :param _Once: 单次
+        :type Once: :class:`tencentcloud.adp.v20260520.models.OnceSchedule`
+        :param _ScheduleType: 
+枚举值:
+| uint | 描述 |
+| --- | --- |
+| 0 |  |
+| 1 | 仅手动 |
+| 2 | 每天 |
+| 3 | 每周 |
+| 4 | 按间隔 |
+| 5 | 一次性 |
+| 6 | Cron |
+        :type ScheduleType: int
+        :param _Timezone: 时区
+        :type Timezone: str
+        :param _Weekly: 每周固定时间触发
+        :type Weekly: :class:`tencentcloud.adp.v20260520.models.WeeklySchedule`
+        """
+        self._Cron = None
+        self._Daily = None
+        self._Interval = None
+        self._ManualOnly = None
+        self._Once = None
+        self._ScheduleType = None
+        self._Timezone = None
+        self._Weekly = None
+
+    @property
+    def Cron(self):
+        r"""cron配置
+        :rtype: :class:`tencentcloud.adp.v20260520.models.CronSchedule`
+        """
+        return self._Cron
+
+    @Cron.setter
+    def Cron(self, Cron):
+        self._Cron = Cron
+
+    @property
+    def Daily(self):
+        r"""每日触发
+        :rtype: :class:`tencentcloud.adp.v20260520.models.DailySchedule`
+        """
+        return self._Daily
+
+    @Daily.setter
+    def Daily(self, Daily):
+        self._Daily = Daily
+
+    @property
+    def Interval(self):
+        r"""固定间隔
+        :rtype: :class:`tencentcloud.adp.v20260520.models.IntervalSchedule`
+        """
+        return self._Interval
+
+    @Interval.setter
+    def Interval(self, Interval):
+        self._Interval = Interval
+
+    @property
+    def ManualOnly(self):
+        r"""仅手动
+        :rtype: :class:`tencentcloud.adp.v20260520.models.ManualOnlySchedule`
+        """
+        return self._ManualOnly
+
+    @ManualOnly.setter
+    def ManualOnly(self, ManualOnly):
+        self._ManualOnly = ManualOnly
+
+    @property
+    def Once(self):
+        r"""单次
+        :rtype: :class:`tencentcloud.adp.v20260520.models.OnceSchedule`
+        """
+        return self._Once
+
+    @Once.setter
+    def Once(self, Once):
+        self._Once = Once
+
+    @property
+    def ScheduleType(self):
+        r"""
+枚举值:
+| uint | 描述 |
+| --- | --- |
+| 0 |  |
+| 1 | 仅手动 |
+| 2 | 每天 |
+| 3 | 每周 |
+| 4 | 按间隔 |
+| 5 | 一次性 |
+| 6 | Cron |
+        :rtype: int
+        """
+        return self._ScheduleType
+
+    @ScheduleType.setter
+    def ScheduleType(self, ScheduleType):
+        self._ScheduleType = ScheduleType
+
+    @property
+    def Timezone(self):
+        r"""时区
+        :rtype: str
+        """
+        return self._Timezone
+
+    @Timezone.setter
+    def Timezone(self, Timezone):
+        self._Timezone = Timezone
+
+    @property
+    def Weekly(self):
+        r"""每周固定时间触发
+        :rtype: :class:`tencentcloud.adp.v20260520.models.WeeklySchedule`
+        """
+        return self._Weekly
+
+    @Weekly.setter
+    def Weekly(self, Weekly):
+        self._Weekly = Weekly
+
+
+    def _deserialize(self, params):
+        if params.get("Cron") is not None:
+            self._Cron = CronSchedule()
+            self._Cron._deserialize(params.get("Cron"))
+        if params.get("Daily") is not None:
+            self._Daily = DailySchedule()
+            self._Daily._deserialize(params.get("Daily"))
+        if params.get("Interval") is not None:
+            self._Interval = IntervalSchedule()
+            self._Interval._deserialize(params.get("Interval"))
+        if params.get("ManualOnly") is not None:
+            self._ManualOnly = ManualOnlySchedule()
+            self._ManualOnly._deserialize(params.get("ManualOnly"))
+        if params.get("Once") is not None:
+            self._Once = OnceSchedule()
+            self._Once._deserialize(params.get("Once"))
+        self._ScheduleType = params.get("ScheduleType")
+        self._Timezone = params.get("Timezone")
+        if params.get("Weekly") is not None:
+            self._Weekly = WeeklySchedule()
+            self._Weekly._deserialize(params.get("Weekly"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TimerStatus(AbstractModel):
+    r"""TimerStatus
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FailedCount: 失败次数
+        :type FailedCount: str
+        :param _LastFireTime: 上次触发时间
+        :type LastFireTime: str
+        :param _LastSessionId: 最近一次会话ID
+        :type LastSessionId: str
+        :param _NextFireTime: 下次触发时间
+        :type NextFireTime: str
+        :param _Status: 
+枚举值:
+| uint | 描述 |
+| --- | --- |
+| 0 |  |
+| 1 | 启用 |
+| 2 | 暂停 |
+| 3 | 一次性任务已完成 |
+        :type Status: int
+        :param _SuccessCount: 成功次数
+        :type SuccessCount: str
+        :param _UnreadRunLogCount: 未读数量
+        :type UnreadRunLogCount: str
+        """
+        self._FailedCount = None
+        self._LastFireTime = None
+        self._LastSessionId = None
+        self._NextFireTime = None
+        self._Status = None
+        self._SuccessCount = None
+        self._UnreadRunLogCount = None
+
+    @property
+    def FailedCount(self):
+        r"""失败次数
+        :rtype: str
+        """
+        return self._FailedCount
+
+    @FailedCount.setter
+    def FailedCount(self, FailedCount):
+        self._FailedCount = FailedCount
+
+    @property
+    def LastFireTime(self):
+        r"""上次触发时间
+        :rtype: str
+        """
+        return self._LastFireTime
+
+    @LastFireTime.setter
+    def LastFireTime(self, LastFireTime):
+        self._LastFireTime = LastFireTime
+
+    @property
+    def LastSessionId(self):
+        r"""最近一次会话ID
+        :rtype: str
+        """
+        return self._LastSessionId
+
+    @LastSessionId.setter
+    def LastSessionId(self, LastSessionId):
+        self._LastSessionId = LastSessionId
+
+    @property
+    def NextFireTime(self):
+        r"""下次触发时间
+        :rtype: str
+        """
+        return self._NextFireTime
+
+    @NextFireTime.setter
+    def NextFireTime(self, NextFireTime):
+        self._NextFireTime = NextFireTime
+
+    @property
+    def Status(self):
+        r"""
+枚举值:
+| uint | 描述 |
+| --- | --- |
+| 0 |  |
+| 1 | 启用 |
+| 2 | 暂停 |
+| 3 | 一次性任务已完成 |
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def SuccessCount(self):
+        r"""成功次数
+        :rtype: str
+        """
+        return self._SuccessCount
+
+    @SuccessCount.setter
+    def SuccessCount(self, SuccessCount):
+        self._SuccessCount = SuccessCount
+
+    @property
+    def UnreadRunLogCount(self):
+        r"""未读数量
+        :rtype: str
+        """
+        return self._UnreadRunLogCount
+
+    @UnreadRunLogCount.setter
+    def UnreadRunLogCount(self, UnreadRunLogCount):
+        self._UnreadRunLogCount = UnreadRunLogCount
+
+
+    def _deserialize(self, params):
+        self._FailedCount = params.get("FailedCount")
+        self._LastFireTime = params.get("LastFireTime")
+        self._LastSessionId = params.get("LastSessionId")
+        self._NextFireTime = params.get("NextFireTime")
+        self._Status = params.get("Status")
+        self._SuccessCount = params.get("SuccessCount")
+        self._UnreadRunLogCount = params.get("UnreadRunLogCount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TimerTask(AbstractModel):
+    r"""TimerTask
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Config: 任务配置
+        :type Config: :class:`tencentcloud.adp.v20260520.models.TimerConfig`
+        :param _OwnerUserId: staffBizId
+        :type OwnerUserId: str
+        :param _PolicySummary: 定时配置概要
+        :type PolicySummary: str
+        :param _Profile: 概要信息
+        :type Profile: :class:`tencentcloud.adp.v20260520.models.TimerProfile`
+        :param _SpaceId: 空间ID
+        :type SpaceId: str
+        :param _Status: 任务状态
+        :type Status: :class:`tencentcloud.adp.v20260520.models.TimerStatus`
+        :param _TimerId: 任务ID
+        :type TimerId: str
+        """
+        self._Config = None
+        self._OwnerUserId = None
+        self._PolicySummary = None
+        self._Profile = None
+        self._SpaceId = None
+        self._Status = None
+        self._TimerId = None
+
+    @property
+    def Config(self):
+        r"""任务配置
+        :rtype: :class:`tencentcloud.adp.v20260520.models.TimerConfig`
+        """
+        return self._Config
+
+    @Config.setter
+    def Config(self, Config):
+        self._Config = Config
+
+    @property
+    def OwnerUserId(self):
+        r"""staffBizId
+        :rtype: str
+        """
+        return self._OwnerUserId
+
+    @OwnerUserId.setter
+    def OwnerUserId(self, OwnerUserId):
+        self._OwnerUserId = OwnerUserId
+
+    @property
+    def PolicySummary(self):
+        r"""定时配置概要
+        :rtype: str
+        """
+        return self._PolicySummary
+
+    @PolicySummary.setter
+    def PolicySummary(self, PolicySummary):
+        self._PolicySummary = PolicySummary
+
+    @property
+    def Profile(self):
+        r"""概要信息
+        :rtype: :class:`tencentcloud.adp.v20260520.models.TimerProfile`
+        """
+        return self._Profile
+
+    @Profile.setter
+    def Profile(self, Profile):
+        self._Profile = Profile
+
+    @property
+    def SpaceId(self):
+        r"""空间ID
+        :rtype: str
+        """
+        return self._SpaceId
+
+    @SpaceId.setter
+    def SpaceId(self, SpaceId):
+        self._SpaceId = SpaceId
+
+    @property
+    def Status(self):
+        r"""任务状态
+        :rtype: :class:`tencentcloud.adp.v20260520.models.TimerStatus`
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def TimerId(self):
+        r"""任务ID
+        :rtype: str
+        """
+        return self._TimerId
+
+    @TimerId.setter
+    def TimerId(self, TimerId):
+        self._TimerId = TimerId
+
+
+    def _deserialize(self, params):
+        if params.get("Config") is not None:
+            self._Config = TimerConfig()
+            self._Config._deserialize(params.get("Config"))
+        self._OwnerUserId = params.get("OwnerUserId")
+        self._PolicySummary = params.get("PolicySummary")
+        if params.get("Profile") is not None:
+            self._Profile = TimerProfile()
+            self._Profile._deserialize(params.get("Profile"))
+        self._SpaceId = params.get("SpaceId")
+        if params.get("Status") is not None:
+            self._Status = TimerStatus()
+            self._Status._deserialize(params.get("Status"))
+        self._TimerId = params.get("TimerId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TimerTaskSummary(AbstractModel):
+    r"""TimerTaskSummary
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _OwnerUserId: OwnerUserId
+        :type OwnerUserId: str
+        :param _PolicySummary: 定时配置概要
+        :type PolicySummary: str
+        :param _SpaceId: 空间ID
+        :type SpaceId: str
+        :param _Status: 任务相关状态
+        :type Status: :class:`tencentcloud.adp.v20260520.models.TimerStatus`
+        :param _TaskName: 任务名称
+        :type TaskName: str
+        :param _TimerId: 任务ID
+        :type TimerId: str
+        """
+        self._OwnerUserId = None
+        self._PolicySummary = None
+        self._SpaceId = None
+        self._Status = None
+        self._TaskName = None
+        self._TimerId = None
+
+    @property
+    def OwnerUserId(self):
+        r"""OwnerUserId
+        :rtype: str
+        """
+        return self._OwnerUserId
+
+    @OwnerUserId.setter
+    def OwnerUserId(self, OwnerUserId):
+        self._OwnerUserId = OwnerUserId
+
+    @property
+    def PolicySummary(self):
+        r"""定时配置概要
+        :rtype: str
+        """
+        return self._PolicySummary
+
+    @PolicySummary.setter
+    def PolicySummary(self, PolicySummary):
+        self._PolicySummary = PolicySummary
+
+    @property
+    def SpaceId(self):
+        r"""空间ID
+        :rtype: str
+        """
+        return self._SpaceId
+
+    @SpaceId.setter
+    def SpaceId(self, SpaceId):
+        self._SpaceId = SpaceId
+
+    @property
+    def Status(self):
+        r"""任务相关状态
+        :rtype: :class:`tencentcloud.adp.v20260520.models.TimerStatus`
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def TaskName(self):
+        r"""任务名称
+        :rtype: str
+        """
+        return self._TaskName
+
+    @TaskName.setter
+    def TaskName(self, TaskName):
+        self._TaskName = TaskName
+
+    @property
+    def TimerId(self):
+        r"""任务ID
+        :rtype: str
+        """
+        return self._TimerId
+
+    @TimerId.setter
+    def TimerId(self, TimerId):
+        self._TimerId = TimerId
+
+
+    def _deserialize(self, params):
+        self._OwnerUserId = params.get("OwnerUserId")
+        self._PolicySummary = params.get("PolicySummary")
+        self._SpaceId = params.get("SpaceId")
+        if params.get("Status") is not None:
+            self._Status = TimerStatus()
+            self._Status._deserialize(params.get("Status"))
+        self._TaskName = params.get("TaskName")
+        self._TimerId = params.get("TimerId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Tool(AbstractModel):
     r"""Tool
 
@@ -20872,6 +26309,116 @@ class ToolSummary(AbstractModel):
         
 
 
+class TriggerConfig(AbstractModel):
+    r"""TriggerConfig
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ScheduledConfig: <p>定时器配置</p>
+        :type ScheduledConfig: :class:`tencentcloud.adp.v20260520.models.AppTriggerScheduleConfig`
+        :param _WebhookConfig: <p>Webhook配置</p>
+        :type WebhookConfig: :class:`tencentcloud.adp.v20260520.models.AppTriggerWebhookConfig`
+        """
+        self._ScheduledConfig = None
+        self._WebhookConfig = None
+
+    @property
+    def ScheduledConfig(self):
+        r"""<p>定时器配置</p>
+        :rtype: :class:`tencentcloud.adp.v20260520.models.AppTriggerScheduleConfig`
+        """
+        return self._ScheduledConfig
+
+    @ScheduledConfig.setter
+    def ScheduledConfig(self, ScheduledConfig):
+        self._ScheduledConfig = ScheduledConfig
+
+    @property
+    def WebhookConfig(self):
+        r"""<p>Webhook配置</p>
+        :rtype: :class:`tencentcloud.adp.v20260520.models.AppTriggerWebhookConfig`
+        """
+        return self._WebhookConfig
+
+    @WebhookConfig.setter
+    def WebhookConfig(self, WebhookConfig):
+        self._WebhookConfig = WebhookConfig
+
+
+    def _deserialize(self, params):
+        if params.get("ScheduledConfig") is not None:
+            self._ScheduledConfig = AppTriggerScheduleConfig()
+            self._ScheduledConfig._deserialize(params.get("ScheduledConfig"))
+        if params.get("WebhookConfig") is not None:
+            self._WebhookConfig = AppTriggerWebhookConfig()
+            self._WebhookConfig._deserialize(params.get("WebhookConfig"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TriggerStatus(AbstractModel):
+    r"""TriggerStatus
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ScheduledStatus: <p>定时器状态</p>
+        :type ScheduledStatus: :class:`tencentcloud.adp.v20260520.models.AppTriggerScheduleStatus`
+        :param _WebhookStatus: <p>Webhook状态</p>
+        :type WebhookStatus: :class:`tencentcloud.adp.v20260520.models.AppTriggerWebhookStatus`
+        """
+        self._ScheduledStatus = None
+        self._WebhookStatus = None
+
+    @property
+    def ScheduledStatus(self):
+        r"""<p>定时器状态</p>
+        :rtype: :class:`tencentcloud.adp.v20260520.models.AppTriggerScheduleStatus`
+        """
+        return self._ScheduledStatus
+
+    @ScheduledStatus.setter
+    def ScheduledStatus(self, ScheduledStatus):
+        self._ScheduledStatus = ScheduledStatus
+
+    @property
+    def WebhookStatus(self):
+        r"""<p>Webhook状态</p>
+        :rtype: :class:`tencentcloud.adp.v20260520.models.AppTriggerWebhookStatus`
+        """
+        return self._WebhookStatus
+
+    @WebhookStatus.setter
+    def WebhookStatus(self, WebhookStatus):
+        self._WebhookStatus = WebhookStatus
+
+
+    def _deserialize(self, params):
+        if params.get("ScheduledStatus") is not None:
+            self._ScheduledStatus = AppTriggerScheduleStatus()
+            self._ScheduledStatus._deserialize(params.get("ScheduledStatus"))
+        if params.get("WebhookStatus") is not None:
+            self._WebhookStatus = AppTriggerWebhookStatus()
+            self._WebhookStatus._deserialize(params.get("WebhookStatus"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class UnfavoritePluginRequest(AbstractModel):
     r"""UnfavoritePlugin请求参数结构体
 
@@ -21242,6 +26789,98 @@ class VoiceConfig(AbstractModel):
         self._TimbreKey = params.get("TimbreKey")
         self._VoiceName = params.get("VoiceName")
         self._VoiceType = params.get("VoiceType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class WeeklySchedule(AbstractModel):
+    r"""WeeklySchedule
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Times: 定时配置（星期）
+        :type Times: list of WeeklyTime
+        """
+        self._Times = None
+
+    @property
+    def Times(self):
+        r"""定时配置（星期）
+        :rtype: list of WeeklyTime
+        """
+        return self._Times
+
+    @Times.setter
+    def Times(self, Times):
+        self._Times = Times
+
+
+    def _deserialize(self, params):
+        if params.get("Times") is not None:
+            self._Times = []
+            for item in params.get("Times"):
+                obj = WeeklyTime()
+                obj._deserialize(item)
+                self._Times.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class WeeklyTime(AbstractModel):
+    r"""WeeklyTime
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TimeOfDay: 时间
+        :type TimeOfDay: str
+        :param _Weekday: 周几
+        :type Weekday: int
+        """
+        self._TimeOfDay = None
+        self._Weekday = None
+
+    @property
+    def TimeOfDay(self):
+        r"""时间
+        :rtype: str
+        """
+        return self._TimeOfDay
+
+    @TimeOfDay.setter
+    def TimeOfDay(self, TimeOfDay):
+        self._TimeOfDay = TimeOfDay
+
+    @property
+    def Weekday(self):
+        r"""周几
+        :rtype: int
+        """
+        return self._Weekday
+
+    @Weekday.setter
+    def Weekday(self, Weekday):
+        self._Weekday = Weekday
+
+
+    def _deserialize(self, params):
+        self._TimeOfDay = params.get("TimeOfDay")
+        self._Weekday = params.get("Weekday")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

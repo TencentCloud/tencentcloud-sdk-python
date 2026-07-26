@@ -118,6 +118,29 @@ class AdpClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateAppTrigger(self, request):
+        r"""CreateAppTrigger
+
+        :param request: Request instance for CreateAppTrigger.
+        :type request: :class:`tencentcloud.adp.v20260520.models.CreateAppTriggerRequest`
+        :rtype: :class:`tencentcloud.adp.v20260520.models.CreateAppTriggerResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateAppTrigger", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateAppTriggerResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateConversation(self, request):
         r"""新建会话
 
@@ -256,6 +279,29 @@ class AdpClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateTimerTask(self, request):
+        r"""CreateTimerTask
+
+        :param request: Request instance for CreateTimerTask.
+        :type request: :class:`tencentcloud.adp.v20260520.models.CreateTimerTaskRequest`
+        :rtype: :class:`tencentcloud.adp.v20260520.models.CreateTimerTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateTimerTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateTimerTaskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateVariable(self, request):
         r"""创建参数变量
 
@@ -371,6 +417,29 @@ class AdpClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DeleteAppTrigger(self, request):
+        r"""DeleteAppTrigger
+
+        :param request: Request instance for DeleteAppTrigger.
+        :type request: :class:`tencentcloud.adp.v20260520.models.DeleteAppTriggerRequest`
+        :rtype: :class:`tencentcloud.adp.v20260520.models.DeleteAppTriggerResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteAppTrigger", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteAppTriggerResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DeleteConversation(self, request):
         r"""删除会话
 
@@ -477,6 +546,29 @@ class AdpClient(AbstractClient):
             body = self.call("DeleteSpace", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteSpaceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteTimerTask(self, request):
+        r"""DeleteTimerTask
+
+        :param request: Request instance for DeleteTimerTask.
+        :type request: :class:`tencentcloud.adp.v20260520.models.DeleteTimerTaskRequest`
+        :rtype: :class:`tencentcloud.adp.v20260520.models.DeleteTimerTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteTimerTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteTimerTaskResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -638,6 +730,98 @@ class AdpClient(AbstractClient):
             body = self.call("DescribeAppSummaryList", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeAppSummaryListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeAppTrigger(self, request):
+        r"""DescribeAppTrigger
+
+        :param request: Request instance for DescribeAppTrigger.
+        :type request: :class:`tencentcloud.adp.v20260520.models.DescribeAppTriggerRequest`
+        :rtype: :class:`tencentcloud.adp.v20260520.models.DescribeAppTriggerResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAppTrigger", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeAppTriggerResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeAppTriggerInstance(self, request):
+        r"""DescribeAppTriggerInstance
+
+        :param request: Request instance for DescribeAppTriggerInstance.
+        :type request: :class:`tencentcloud.adp.v20260520.models.DescribeAppTriggerInstanceRequest`
+        :rtype: :class:`tencentcloud.adp.v20260520.models.DescribeAppTriggerInstanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAppTriggerInstance", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeAppTriggerInstanceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeAppTriggerRunLogList(self, request):
+        r"""DescribeAppTriggerRunLogList
+
+        :param request: Request instance for DescribeAppTriggerRunLogList.
+        :type request: :class:`tencentcloud.adp.v20260520.models.DescribeAppTriggerRunLogListRequest`
+        :rtype: :class:`tencentcloud.adp.v20260520.models.DescribeAppTriggerRunLogListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAppTriggerRunLogList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeAppTriggerRunLogListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeAppTriggerSummaryList(self, request):
+        r"""DescribeAppTriggerSummaryList
+
+        :param request: Request instance for DescribeAppTriggerSummaryList.
+        :type request: :class:`tencentcloud.adp.v20260520.models.DescribeAppTriggerSummaryListRequest`
+        :rtype: :class:`tencentcloud.adp.v20260520.models.DescribeAppTriggerSummaryListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAppTriggerSummaryList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeAppTriggerSummaryListResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1038,6 +1222,75 @@ class AdpClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeTimerTask(self, request):
+        r"""DescribeTimerTask
+
+        :param request: Request instance for DescribeTimerTask.
+        :type request: :class:`tencentcloud.adp.v20260520.models.DescribeTimerTaskRequest`
+        :rtype: :class:`tencentcloud.adp.v20260520.models.DescribeTimerTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeTimerTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeTimerTaskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeTimerTaskRunLogList(self, request):
+        r"""查询定时任务执行记录列表
+
+        :param request: Request instance for DescribeTimerTaskRunLogList.
+        :type request: :class:`tencentcloud.adp.v20260520.models.DescribeTimerTaskRunLogListRequest`
+        :rtype: :class:`tencentcloud.adp.v20260520.models.DescribeTimerTaskRunLogListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeTimerTaskRunLogList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeTimerTaskRunLogListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeTimerTaskSummaryList(self, request):
+        r"""查询定时任务列表
+
+        :param request: Request instance for DescribeTimerTaskSummaryList.
+        :type request: :class:`tencentcloud.adp.v20260520.models.DescribeTimerTaskSummaryListRequest`
+        :rtype: :class:`tencentcloud.adp.v20260520.models.DescribeTimerTaskSummaryListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeTimerTaskSummaryList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeTimerTaskSummaryListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeVariable(self, request):
         r"""获取参数变量
 
@@ -1130,6 +1383,52 @@ class AdpClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def MarkAppTriggerRunLogRead(self, request):
+        r"""MarkAppTriggerRunLogRead
+
+        :param request: Request instance for MarkAppTriggerRunLogRead.
+        :type request: :class:`tencentcloud.adp.v20260520.models.MarkAppTriggerRunLogReadRequest`
+        :rtype: :class:`tencentcloud.adp.v20260520.models.MarkAppTriggerRunLogReadResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("MarkAppTriggerRunLogRead", params, headers=headers)
+            response = json.loads(body)
+            model = models.MarkAppTriggerRunLogReadResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def MarkTimerTaskRunLogRead(self, request):
+        r"""MarkTimerTaskRunLogRead
+
+        :param request: Request instance for MarkTimerTaskRunLogRead.
+        :type request: :class:`tencentcloud.adp.v20260520.models.MarkTimerTaskRunLogReadRequest`
+        :rtype: :class:`tencentcloud.adp.v20260520.models.MarkTimerTaskRunLogReadResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("MarkTimerTaskRunLogRead", params, headers=headers)
+            response = json.loads(body)
+            model = models.MarkTimerTaskRunLogReadResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyAgent(self, request):
         r"""修改Agent配置信息
 
@@ -1167,6 +1466,29 @@ class AdpClient(AbstractClient):
             body = self.call("ModifyApp", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyAppResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyAppTrigger(self, request):
+        r"""ModifyAppTrigger
+
+        :param request: Request instance for ModifyAppTrigger.
+        :type request: :class:`tencentcloud.adp.v20260520.models.ModifyAppTriggerRequest`
+        :rtype: :class:`tencentcloud.adp.v20260520.models.ModifyAppTriggerResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyAppTrigger", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyAppTriggerResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1268,6 +1590,29 @@ class AdpClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyTimerTask(self, request):
+        r"""ModifyTimerTask
+
+        :param request: Request instance for ModifyTimerTask.
+        :type request: :class:`tencentcloud.adp.v20260520.models.ModifyTimerTaskRequest`
+        :rtype: :class:`tencentcloud.adp.v20260520.models.ModifyTimerTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyTimerTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyTimerTaskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyVariable(self, request):
         r"""更新参数变量
 
@@ -1282,6 +1627,52 @@ class AdpClient(AbstractClient):
             body = self.call("ModifyVariable", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyVariableResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def PauseAppTrigger(self, request):
+        r"""PauseAppTrigger
+
+        :param request: Request instance for PauseAppTrigger.
+        :type request: :class:`tencentcloud.adp.v20260520.models.PauseAppTriggerRequest`
+        :rtype: :class:`tencentcloud.adp.v20260520.models.PauseAppTriggerResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("PauseAppTrigger", params, headers=headers)
+            response = json.loads(body)
+            model = models.PauseAppTriggerResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def PauseTimerTask(self, request):
+        r"""PauseTimerTask
+
+        :param request: Request instance for PauseTimerTask.
+        :type request: :class:`tencentcloud.adp.v20260520.models.PauseTimerTaskRequest`
+        :rtype: :class:`tencentcloud.adp.v20260520.models.PauseTimerTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("PauseTimerTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.PauseTimerTaskResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1337,6 +1728,52 @@ class AdpClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ResumeAppTrigger(self, request):
+        r"""ResumeAppTrigger
+
+        :param request: Request instance for ResumeAppTrigger.
+        :type request: :class:`tencentcloud.adp.v20260520.models.ResumeAppTriggerRequest`
+        :rtype: :class:`tencentcloud.adp.v20260520.models.ResumeAppTriggerResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ResumeAppTrigger", params, headers=headers)
+            response = json.loads(body)
+            model = models.ResumeAppTriggerResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ResumeTimerTask(self, request):
+        r"""ResumeTimerTask
+
+        :param request: Request instance for ResumeTimerTask.
+        :type request: :class:`tencentcloud.adp.v20260520.models.ResumeTimerTaskRequest`
+        :rtype: :class:`tencentcloud.adp.v20260520.models.ResumeTimerTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ResumeTimerTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.ResumeTimerTaskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def RetryRelease(self, request):
         r"""重试发布(发布暂停之后再次重新发布)
 
@@ -1374,6 +1811,52 @@ class AdpClient(AbstractClient):
             body = self.call("RollbackRelease", params, headers=headers)
             response = json.loads(body)
             model = models.RollbackReleaseResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def RunAppTriggerNow(self, request):
+        r"""RunAppTriggerNow
+
+        :param request: Request instance for RunAppTriggerNow.
+        :type request: :class:`tencentcloud.adp.v20260520.models.RunAppTriggerNowRequest`
+        :rtype: :class:`tencentcloud.adp.v20260520.models.RunAppTriggerNowResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("RunAppTriggerNow", params, headers=headers)
+            response = json.loads(body)
+            model = models.RunAppTriggerNowResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def RunTimerTaskNow(self, request):
+        r"""RunTimerTaskNow
+
+        :param request: Request instance for RunTimerTaskNow.
+        :type request: :class:`tencentcloud.adp.v20260520.models.RunTimerTaskNowRequest`
+        :rtype: :class:`tencentcloud.adp.v20260520.models.RunTimerTaskNowResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("RunTimerTaskNow", params, headers=headers)
+            response = json.loads(body)
+            model = models.RunTimerTaskNowResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

@@ -97,6 +97,24 @@ class AdpClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateAppTrigger(
+            self,
+            request: models.CreateAppTriggerRequest,
+            opts: Dict = None,
+    ) -> models.CreateAppTriggerResponse:
+        """
+        CreateAppTrigger
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateAppTrigger"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateAppTriggerResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateConversation(
             self,
             request: models.CreateConversationRequest,
@@ -205,6 +223,24 @@ class AdpClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateTimerTask(
+            self,
+            request: models.CreateTimerTaskRequest,
+            opts: Dict = None,
+    ) -> models.CreateTimerTaskResponse:
+        """
+        CreateTimerTask
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateTimerTask"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateTimerTaskResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateVariable(
             self,
             request: models.CreateVariableRequest,
@@ -295,6 +331,24 @@ class AdpClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DeleteAppTrigger(
+            self,
+            request: models.DeleteAppTriggerRequest,
+            opts: Dict = None,
+    ) -> models.DeleteAppTriggerResponse:
+        """
+        DeleteAppTrigger
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteAppTrigger"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteAppTriggerResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DeleteConversation(
             self,
             request: models.DeleteConversationRequest,
@@ -380,6 +434,24 @@ class AdpClient(AbstractClient):
         kwargs["action"] = "DeleteSpace"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DeleteSpaceResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteTimerTask(
+            self,
+            request: models.DeleteTimerTaskRequest,
+            opts: Dict = None,
+    ) -> models.DeleteTimerTaskResponse:
+        """
+        DeleteTimerTask
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteTimerTask"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteTimerTaskResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -506,6 +578,78 @@ class AdpClient(AbstractClient):
         kwargs["action"] = "DescribeAppSummaryList"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeAppSummaryListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeAppTrigger(
+            self,
+            request: models.DescribeAppTriggerRequest,
+            opts: Dict = None,
+    ) -> models.DescribeAppTriggerResponse:
+        """
+        DescribeAppTrigger
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeAppTrigger"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeAppTriggerResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeAppTriggerInstance(
+            self,
+            request: models.DescribeAppTriggerInstanceRequest,
+            opts: Dict = None,
+    ) -> models.DescribeAppTriggerInstanceResponse:
+        """
+        DescribeAppTriggerInstance
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeAppTriggerInstance"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeAppTriggerInstanceResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeAppTriggerRunLogList(
+            self,
+            request: models.DescribeAppTriggerRunLogListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeAppTriggerRunLogListResponse:
+        """
+        DescribeAppTriggerRunLogList
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeAppTriggerRunLogList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeAppTriggerRunLogListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeAppTriggerSummaryList(
+            self,
+            request: models.DescribeAppTriggerSummaryListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeAppTriggerSummaryListResponse:
+        """
+        DescribeAppTriggerSummaryList
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeAppTriggerSummaryList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeAppTriggerSummaryListResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -817,6 +961,60 @@ class AdpClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeTimerTask(
+            self,
+            request: models.DescribeTimerTaskRequest,
+            opts: Dict = None,
+    ) -> models.DescribeTimerTaskResponse:
+        """
+        DescribeTimerTask
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeTimerTask"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeTimerTaskResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeTimerTaskRunLogList(
+            self,
+            request: models.DescribeTimerTaskRunLogListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeTimerTaskRunLogListResponse:
+        """
+        查询定时任务执行记录列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeTimerTaskRunLogList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeTimerTaskRunLogListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeTimerTaskSummaryList(
+            self,
+            request: models.DescribeTimerTaskSummaryListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeTimerTaskSummaryListResponse:
+        """
+        查询定时任务列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeTimerTaskSummaryList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeTimerTaskSummaryListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeVariable(
             self,
             request: models.DescribeVariableRequest,
@@ -889,6 +1087,42 @@ class AdpClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def MarkAppTriggerRunLogRead(
+            self,
+            request: models.MarkAppTriggerRunLogReadRequest,
+            opts: Dict = None,
+    ) -> models.MarkAppTriggerRunLogReadResponse:
+        """
+        MarkAppTriggerRunLogRead
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "MarkAppTriggerRunLogRead"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.MarkAppTriggerRunLogReadResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def MarkTimerTaskRunLogRead(
+            self,
+            request: models.MarkTimerTaskRunLogReadRequest,
+            opts: Dict = None,
+    ) -> models.MarkTimerTaskRunLogReadResponse:
+        """
+        MarkTimerTaskRunLogRead
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "MarkTimerTaskRunLogRead"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.MarkTimerTaskRunLogReadResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ModifyAgent(
             self,
             request: models.ModifyAgentRequest,
@@ -920,6 +1154,24 @@ class AdpClient(AbstractClient):
         kwargs["action"] = "ModifyApp"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ModifyAppResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyAppTrigger(
+            self,
+            request: models.ModifyAppTriggerRequest,
+            opts: Dict = None,
+    ) -> models.ModifyAppTriggerResponse:
+        """
+        ModifyAppTrigger
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyAppTrigger"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyAppTriggerResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -997,6 +1249,24 @@ class AdpClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def ModifyTimerTask(
+            self,
+            request: models.ModifyTimerTaskRequest,
+            opts: Dict = None,
+    ) -> models.ModifyTimerTaskResponse:
+        """
+        ModifyTimerTask
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyTimerTask"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyTimerTaskResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ModifyVariable(
             self,
             request: models.ModifyVariableRequest,
@@ -1010,6 +1280,42 @@ class AdpClient(AbstractClient):
         kwargs["action"] = "ModifyVariable"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ModifyVariableResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def PauseAppTrigger(
+            self,
+            request: models.PauseAppTriggerRequest,
+            opts: Dict = None,
+    ) -> models.PauseAppTriggerResponse:
+        """
+        PauseAppTrigger
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "PauseAppTrigger"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.PauseAppTriggerResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def PauseTimerTask(
+            self,
+            request: models.PauseTimerTaskRequest,
+            opts: Dict = None,
+    ) -> models.PauseTimerTaskResponse:
+        """
+        PauseTimerTask
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "PauseTimerTask"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.PauseTimerTaskResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -1051,6 +1357,42 @@ class AdpClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def ResumeAppTrigger(
+            self,
+            request: models.ResumeAppTriggerRequest,
+            opts: Dict = None,
+    ) -> models.ResumeAppTriggerResponse:
+        """
+        ResumeAppTrigger
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ResumeAppTrigger"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ResumeAppTriggerResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ResumeTimerTask(
+            self,
+            request: models.ResumeTimerTaskRequest,
+            opts: Dict = None,
+    ) -> models.ResumeTimerTaskResponse:
+        """
+        ResumeTimerTask
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ResumeTimerTask"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ResumeTimerTaskResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def RetryRelease(
             self,
             request: models.RetryReleaseRequest,
@@ -1082,6 +1424,42 @@ class AdpClient(AbstractClient):
         kwargs["action"] = "RollbackRelease"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.RollbackReleaseResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def RunAppTriggerNow(
+            self,
+            request: models.RunAppTriggerNowRequest,
+            opts: Dict = None,
+    ) -> models.RunAppTriggerNowResponse:
+        """
+        RunAppTriggerNow
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "RunAppTriggerNow"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.RunAppTriggerNowResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def RunTimerTaskNow(
+            self,
+            request: models.RunTimerTaskNowRequest,
+            opts: Dict = None,
+    ) -> models.RunTimerTaskNowResponse:
+        """
+        RunTimerTaskNow
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "RunTimerTaskNow"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.RunTimerTaskNowResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

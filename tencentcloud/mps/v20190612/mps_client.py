@@ -165,6 +165,29 @@ class MpsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CloneViral(self, request):
+        r"""爆款复刻。输入爆款参考视频+商品图，生成风格/节奏对齐的视频
+
+        :param request: Request instance for CloneViral.
+        :type request: :class:`tencentcloud.mps.v20190612.models.CloneViralRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.CloneViralResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CloneViral", params, headers=headers)
+            response = json.loads(body)
+            model = models.CloneViralResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateAIAnalysisTemplate(self, request):
         r"""创建用户自定义内容分析模板，数量上限：50。
 
@@ -2257,6 +2280,29 @@ class MpsClient(AbstractClient):
             body = self.call("DescribeBlindWatermarkTemplates", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeBlindWatermarkTemplatesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeCloneViralTask(self, request):
+        r"""查询爆款复刻任务结果
+
+        :param request: Request instance for DescribeCloneViralTask.
+        :type request: :class:`tencentcloud.mps.v20190612.models.DescribeCloneViralTaskRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.DescribeCloneViralTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeCloneViralTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeCloneViralTaskResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

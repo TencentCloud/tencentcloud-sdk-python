@@ -692,11 +692,11 @@ class AddAclRuleRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Rules: 待添加的互联网边界规则列表，不能为空。每条规则都解析并校验方向、源目的、动作、范围、协议端口和模板；整个请求还会校验规则配额及可下发规则数量。批量覆盖的删除方向例外地只取首条规则。
+        :param _Rules: 待添加的互联网边界规则列表，不能为空。每条规则均须满足方向、访问源和目的、动作、范围、协议端口及模板限制；整个请求还须满足规则配额和可生效规则数量限制。账号相关值必须来自只读查询：地址模板调用 DescribeAddressTemplateList，请求用 TemplateType=1 或 5 过滤，并确认返回项 Data[].Type 为 1 或 5；将 Data[].Uuid（mb_ 前缀）写入对应 Content，不要使用 Data[].TemplateId（ip-/dm- 前缀）。协议端口模板请求用 TemplateType=6 过滤，并将 Data[].TemplateId（pp- 前缀）写入 ParamTemplateId。资产实例调用 DescribeCfwAssets，解析返回结果后使用 assets[].instance_id；资产分组调用 DescribeResourceGroupNew，传 QueryType=resource、GroupId="0"、ShowType=all，解析返回结果后使用 GroupId；资源标签传 QueryType=tag，跳过“全部资产”根节点，以一级节点 GroupName 为 Key、所选二级子节点 GroupName 为 Value 构造 JSON，不要写入 GroupId。地域调用 DescribeAclRegInfo：Scope=serial 传 FwType=["SERIAL"]，Scope=side 传 FwType=["BYPASS"]，Scope=all 同时传两项，并使用 Data[].RegionCode。不得使用展示名称或自行拼接。覆盖导入的范围仅由首条规则的 Direction 决定。
         :type Rules: list of CreateRuleItem
         :param _CfwAiAgentOperationSource: <p>AI操作来源</p><p>枚举值：</p><ul><li>console： 控制台来源值</li><li>wechat： 微信</li></ul>。
         :type CfwAiAgentOperationSource: str
-        :param _From: 添加方式。省略或空字符串执行普通新增；insert_rule 标记为指定位置新增；batch_import 标记为批量导入；batch_import_cover 执行覆盖导入，在独立事务中先删除首条规则 Direction 对应的当前账号可操作分区旧规则，再插入 Rules；删除提交后，插入失败不会恢复旧规则。覆盖导入不会校验 Rules 的 Direction 全部相同，删除范围仍只由首条规则决定。其它字符串未由入口统一拒绝，但不属于本接口定义的支持合同，调用方不得依赖其行为。
+        :param _From: 添加方式。省略或空字符串表示普通新增；insert_rule 表示指定位置新增；batch_import 表示非覆盖批量导入；batch_import_cover 表示覆盖导入，会删除首条规则 Direction 对应的现有可操作规则后再添加 Rules，添加失败时已删除的规则不会恢复，风险极高。覆盖范围仅由首条规则决定，调用方应确保 Rules 的 Direction 一致。仅支持上述取值。
         :type From: str
         """
         self._Rules = None
@@ -705,7 +705,7 @@ class AddAclRuleRequest(AbstractModel):
 
     @property
     def Rules(self):
-        r"""待添加的互联网边界规则列表，不能为空。每条规则都解析并校验方向、源目的、动作、范围、协议端口和模板；整个请求还会校验规则配额及可下发规则数量。批量覆盖的删除方向例外地只取首条规则。
+        r"""待添加的互联网边界规则列表，不能为空。每条规则均须满足方向、访问源和目的、动作、范围、协议端口及模板限制；整个请求还须满足规则配额和可生效规则数量限制。账号相关值必须来自只读查询：地址模板调用 DescribeAddressTemplateList，请求用 TemplateType=1 或 5 过滤，并确认返回项 Data[].Type 为 1 或 5；将 Data[].Uuid（mb_ 前缀）写入对应 Content，不要使用 Data[].TemplateId（ip-/dm- 前缀）。协议端口模板请求用 TemplateType=6 过滤，并将 Data[].TemplateId（pp- 前缀）写入 ParamTemplateId。资产实例调用 DescribeCfwAssets，解析返回结果后使用 assets[].instance_id；资产分组调用 DescribeResourceGroupNew，传 QueryType=resource、GroupId="0"、ShowType=all，解析返回结果后使用 GroupId；资源标签传 QueryType=tag，跳过“全部资产”根节点，以一级节点 GroupName 为 Key、所选二级子节点 GroupName 为 Value 构造 JSON，不要写入 GroupId。地域调用 DescribeAclRegInfo：Scope=serial 传 FwType=["SERIAL"]，Scope=side 传 FwType=["BYPASS"]，Scope=all 同时传两项，并使用 Data[].RegionCode。不得使用展示名称或自行拼接。覆盖导入的范围仅由首条规则的 Direction 决定。
         :rtype: list of CreateRuleItem
         """
         return self._Rules
@@ -727,7 +727,7 @@ class AddAclRuleRequest(AbstractModel):
 
     @property
     def From(self):
-        r"""添加方式。省略或空字符串执行普通新增；insert_rule 标记为指定位置新增；batch_import 标记为批量导入；batch_import_cover 执行覆盖导入，在独立事务中先删除首条规则 Direction 对应的当前账号可操作分区旧规则，再插入 Rules；删除提交后，插入失败不会恢复旧规则。覆盖导入不会校验 Rules 的 Direction 全部相同，删除范围仍只由首条规则决定。其它字符串未由入口统一拒绝，但不属于本接口定义的支持合同，调用方不得依赖其行为。
+        r"""添加方式。省略或空字符串表示普通新增；insert_rule 表示指定位置新增；batch_import 表示非覆盖批量导入；batch_import_cover 表示覆盖导入，会删除首条规则 Direction 对应的现有可操作规则后再添加 Rules，添加失败时已删除的规则不会恢复，风险极高。覆盖范围仅由首条规则决定，调用方应确保 Rules 的 Direction 一致。仅支持上述取值。
         :rtype: str
         """
         return self._From
@@ -763,7 +763,7 @@ class AddAclRuleResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RuleUuid: 数据库插入成功后返回的新规则数值 ID 列表，顺序与已插入的 Rules 顺序一致；不表示异步规则下发已经完成。
+        :param _RuleUuid: 新增规则的 ID 列表，顺序与 Rules 一致。
         :type RuleUuid: list of int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -773,7 +773,7 @@ class AddAclRuleResponse(AbstractModel):
 
     @property
     def RuleUuid(self):
-        r"""数据库插入成功后返回的新规则数值 ID 列表，顺序与已插入的 Rules 顺序一致；不表示异步规则下发已经完成。
+        r"""新增规则的 ID 列表，顺序与 Rules 一致。
         :rtype: list of int
         """
         return self._RuleUuid
@@ -806,32 +806,32 @@ class AddEnterpriseSecurityGroupRulesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Data: <p>创建规则数据</p>
+        :param _Data: 待创建的规则数组，不能为空。每条规则必须提供访问源、访问目的、动作、非空描述和字符串 OrderIndex。未使用 ServiceTemplateId 时必须提供 Protocol 和 Port；使用 ServiceTemplateId 时二者可同时省略或留空，如填写非空值则必须为 Protocol=ANY、Port=-1/-1。Scope 可省略，默认使用 SG。
         :type Data: list of SecurityGroupRule
-        :param _CfwAiAgentOperationSource: <p>AI操作来源</p><p>枚举值：</p><ul><li>console： 控制台来源值</li><li>wechat： 微信</li></ul>
+        :param _CfwAiAgentOperationSource: <p>AI操作来源</p><p>枚举值：</p><ul><li>console： 控制台来源值</li><li>wechat： 微信</li></ul>。
         :type CfwAiAgentOperationSource: str
-        :param _Type: <p>添加类型，0：添加到最后，1：添加到最前；2：中间插入；默认0添加到最后</p>
-        :type Type: int
-        :param _ClientToken: <p>保证请求幂等性。从您的客户端生成一个参数值，确保不同请求间该参数值唯一。ClientToken只支持ASCII字符，且不能超过64个字符。</p>
+        :param _ClientToken: 保留字段，不提供幂等保证；重复请求仍可能重复创建规则，建议省略。
         :type ClientToken: str
-        :param _IsDelay: <p>（IsDelay为老版参数，新版无需输入）是否延迟下发，1则延迟下发，否则立即下发</p>
-        :type IsDelay: int
-        :param _From: <p>来源 默认空 覆盖导入是 batch_import_cover</p>
+        :param _From: 添加方式。batch_import 表示非覆盖批量导入；batch_import_cover 表示覆盖导入，会删除当前账号的全部可操作企业安全组规则后再添加 Data，添加失败时已删除的规则不会恢复，风险极高。两种批量导入都会使用 Data.Enable。其它值按普通新增处理。
         :type From: str
-        :param _IsUseId: <p>是否复用rule id，1为是，默认不需要</p>
+        :param _IsDelay: 延迟生效标记。1 表示将规则保留为待生效状态，0 表示按账号当前发布设置处理；省略等同于 0。账号停止自动发布时，规则仍保持待生效。
+        :type IsDelay: int
+        :param _IsUseId: 规则 ID 复用标记。1 表示使用每条规则的 Data.Id，此时 Data.Id 传十进制数字字符串；其它值由系统分配 ID。重复 ID 会导致创建失败。
         :type IsUseId: int
+        :param _Type: 添加位置类型，可省略，默认为 0：0 添加到末尾，1 添加到最前，2 从指定顺序插入。Type=0 或 1 按 Data 数组顺序确定最终顺序；Type=2 使用首条 Data.OrderIndex 作为插入位置，超过当前最大顺序时添加到末尾。
+        :type Type: int
         """
         self._Data = None
         self._CfwAiAgentOperationSource = None
-        self._Type = None
         self._ClientToken = None
-        self._IsDelay = None
         self._From = None
+        self._IsDelay = None
         self._IsUseId = None
+        self._Type = None
 
     @property
     def Data(self):
-        r"""<p>创建规则数据</p>
+        r"""待创建的规则数组，不能为空。每条规则必须提供访问源、访问目的、动作、非空描述和字符串 OrderIndex。未使用 ServiceTemplateId 时必须提供 Protocol 和 Port；使用 ServiceTemplateId 时二者可同时省略或留空，如填写非空值则必须为 Protocol=ANY、Port=-1/-1。Scope 可省略，默认使用 SG。
         :rtype: list of SecurityGroupRule
         """
         return self._Data
@@ -842,7 +842,7 @@ class AddEnterpriseSecurityGroupRulesRequest(AbstractModel):
 
     @property
     def CfwAiAgentOperationSource(self):
-        r"""<p>AI操作来源</p><p>枚举值：</p><ul><li>console： 控制台来源值</li><li>wechat： 微信</li></ul>
+        r"""<p>AI操作来源</p><p>枚举值：</p><ul><li>console： 控制台来源值</li><li>wechat： 微信</li></ul>。
         :rtype: str
         """
         return self._CfwAiAgentOperationSource
@@ -852,19 +852,8 @@ class AddEnterpriseSecurityGroupRulesRequest(AbstractModel):
         self._CfwAiAgentOperationSource = CfwAiAgentOperationSource
 
     @property
-    def Type(self):
-        r"""<p>添加类型，0：添加到最后，1：添加到最前；2：中间插入；默认0添加到最后</p>
-        :rtype: int
-        """
-        return self._Type
-
-    @Type.setter
-    def Type(self, Type):
-        self._Type = Type
-
-    @property
     def ClientToken(self):
-        r"""<p>保证请求幂等性。从您的客户端生成一个参数值，确保不同请求间该参数值唯一。ClientToken只支持ASCII字符，且不能超过64个字符。</p>
+        r"""保留字段，不提供幂等保证；重复请求仍可能重复创建规则，建议省略。
         :rtype: str
         """
         return self._ClientToken
@@ -874,19 +863,8 @@ class AddEnterpriseSecurityGroupRulesRequest(AbstractModel):
         self._ClientToken = ClientToken
 
     @property
-    def IsDelay(self):
-        r"""<p>（IsDelay为老版参数，新版无需输入）是否延迟下发，1则延迟下发，否则立即下发</p>
-        :rtype: int
-        """
-        return self._IsDelay
-
-    @IsDelay.setter
-    def IsDelay(self, IsDelay):
-        self._IsDelay = IsDelay
-
-    @property
     def From(self):
-        r"""<p>来源 默认空 覆盖导入是 batch_import_cover</p>
+        r"""添加方式。batch_import 表示非覆盖批量导入；batch_import_cover 表示覆盖导入，会删除当前账号的全部可操作企业安全组规则后再添加 Data，添加失败时已删除的规则不会恢复，风险极高。两种批量导入都会使用 Data.Enable。其它值按普通新增处理。
         :rtype: str
         """
         return self._From
@@ -896,8 +874,19 @@ class AddEnterpriseSecurityGroupRulesRequest(AbstractModel):
         self._From = From
 
     @property
+    def IsDelay(self):
+        r"""延迟生效标记。1 表示将规则保留为待生效状态，0 表示按账号当前发布设置处理；省略等同于 0。账号停止自动发布时，规则仍保持待生效。
+        :rtype: int
+        """
+        return self._IsDelay
+
+    @IsDelay.setter
+    def IsDelay(self, IsDelay):
+        self._IsDelay = IsDelay
+
+    @property
     def IsUseId(self):
-        r"""<p>是否复用rule id，1为是，默认不需要</p>
+        r"""规则 ID 复用标记。1 表示使用每条规则的 Data.Id，此时 Data.Id 传十进制数字字符串；其它值由系统分配 ID。重复 ID 会导致创建失败。
         :rtype: int
         """
         return self._IsUseId
@@ -905,6 +894,17 @@ class AddEnterpriseSecurityGroupRulesRequest(AbstractModel):
     @IsUseId.setter
     def IsUseId(self, IsUseId):
         self._IsUseId = IsUseId
+
+    @property
+    def Type(self):
+        r"""添加位置类型，可省略，默认为 0：0 添加到末尾，1 添加到最前，2 从指定顺序插入。Type=0 或 1 按 Data 数组顺序确定最终顺序；Type=2 使用首条 Data.OrderIndex 作为插入位置，超过当前最大顺序时添加到末尾。
+        :rtype: int
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
 
 
     def _deserialize(self, params):
@@ -915,11 +915,11 @@ class AddEnterpriseSecurityGroupRulesRequest(AbstractModel):
                 obj._deserialize(item)
                 self._Data.append(obj)
         self._CfwAiAgentOperationSource = params.get("CfwAiAgentOperationSource")
-        self._Type = params.get("Type")
         self._ClientToken = params.get("ClientToken")
-        self._IsDelay = params.get("IsDelay")
         self._From = params.get("From")
+        self._IsDelay = params.get("IsDelay")
         self._IsUseId = params.get("IsUseId")
+        self._Type = params.get("Type")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -937,31 +937,20 @@ class AddEnterpriseSecurityGroupRulesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Status: <p>状态值，0：添加成功，非0：添加失败</p>
-        :type Status: int
-        :param _Rules: <p>添加成功的规则详情</p>
+        :param _Rules: 新增规则的摘要列表。
         :type Rules: list of SecurityGroupSimplifyRule
+        :param _Status: 处理状态：0 表示成功。
+        :type Status: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self._Status = None
         self._Rules = None
+        self._Status = None
         self._RequestId = None
 
     @property
-    def Status(self):
-        r"""<p>状态值，0：添加成功，非0：添加失败</p>
-        :rtype: int
-        """
-        return self._Status
-
-    @Status.setter
-    def Status(self, Status):
-        self._Status = Status
-
-    @property
     def Rules(self):
-        r"""<p>添加成功的规则详情</p>
+        r"""新增规则的摘要列表。
         :rtype: list of SecurityGroupSimplifyRule
         """
         return self._Rules
@@ -969,6 +958,17 @@ class AddEnterpriseSecurityGroupRulesResponse(AbstractModel):
     @Rules.setter
     def Rules(self, Rules):
         self._Rules = Rules
+
+    @property
+    def Status(self):
+        r"""处理状态：0 表示成功。
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
 
     @property
     def RequestId(self):
@@ -983,13 +983,13 @@ class AddEnterpriseSecurityGroupRulesResponse(AbstractModel):
 
 
     def _deserialize(self, params):
-        self._Status = params.get("Status")
         if params.get("Rules") is not None:
             self._Rules = []
             for item in params.get("Rules"):
                 obj = SecurityGroupSimplifyRule()
                 obj._deserialize(item)
                 self._Rules.append(obj)
+        self._Status = params.get("Status")
         self._RequestId = params.get("RequestId")
 
 
@@ -1000,11 +1000,11 @@ class AddNatAcRuleRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Rules: <p>需要添加的nat访问控制规则列表</p>
+        :param _Rules: <p>要添加的 NAT 访问控制规则列表，至少一项。Direction、地址类型与内容、Protocol、RuleAction 和 Scope 会逐项校验；Description、Enable、OrderIndex 和 Scope 的缺省或归一化行为见对应字段说明。Scope 调用无业务参数的 DescribeNatRuleScopes，使用 ScopeItems[].Scope，不要使用 ScopeDesc。地址模板调用 DescribeAddressTemplateList，请求用 TemplateType=1 或 5 过滤，并确认返回项 Data[].Type 为 1 或 5；将 Data[].Uuid（mb_ 前缀）写入对应 Content，不要使用 Data[].TemplateId（ip-/dm- 前缀）。协议端口模板请求用 TemplateType=6 过滤，并将 Data[].TemplateId（pp- 前缀）写入 ParamTemplateId。资产实例调用 DescribeCfwAssets，解析返回结果后使用 assets[].instance_id；资产分组调用 DescribeResourceGroupNew，传 QueryType=resource、GroupId="0"、ShowType=all，解析返回结果后使用 GroupId；资源标签传 QueryType=tag，跳过“全部资产”根节点，以一级节点 GroupName 为 Key、所选二级子节点 GroupName 为 Value 构造 JSON 字符串 {"Key":"标签键","Value":"标签值"}，不要写入 GroupId；地域调用 DescribeAclRegInfo，传 FwType=["NAT"] 并使用 Data[].RegionCode。不得使用展示名称或自行拼接。</p>
         :type Rules: list of CreateNatRuleItem
-        :param _CfwAiAgentOperationSource: <p>AI操作来源</p><p>枚举值：</p><ul><li>console： 控制台来源值</li><li>wechat： 微信</li></ul>
+        :param _CfwAiAgentOperationSource: <p>AI操作来源</p><p>枚举值：</p><ul><li>console： 控制台来源值</li><li>wechat： 微信</li></ul>。
         :type CfwAiAgentOperationSource: str
-        :param _From: <p>添加规则的来源，一般不需要使用，值insert_rule 表示插入指定位置的规则；值batch_import 表示批量导入规则；为空时表示添加规则</p>
+        :param _From: <p>添加方式。省略或为空表示普通新增；insert_rule 表示指定位置新增；batch_import 表示非覆盖批量导入；batch_import_cover 表示覆盖导入，会删除当前账号中与首条规则同方向的全部可操作 NAT边界规则后再添加 Rules，添加失败时已删除的规则不会恢复，风险极高。仅支持上述取值。</p>
         :type From: str
         """
         self._Rules = None
@@ -1013,7 +1013,7 @@ class AddNatAcRuleRequest(AbstractModel):
 
     @property
     def Rules(self):
-        r"""<p>需要添加的nat访问控制规则列表</p>
+        r"""<p>要添加的 NAT 访问控制规则列表，至少一项。Direction、地址类型与内容、Protocol、RuleAction 和 Scope 会逐项校验；Description、Enable、OrderIndex 和 Scope 的缺省或归一化行为见对应字段说明。Scope 调用无业务参数的 DescribeNatRuleScopes，使用 ScopeItems[].Scope，不要使用 ScopeDesc。地址模板调用 DescribeAddressTemplateList，请求用 TemplateType=1 或 5 过滤，并确认返回项 Data[].Type 为 1 或 5；将 Data[].Uuid（mb_ 前缀）写入对应 Content，不要使用 Data[].TemplateId（ip-/dm- 前缀）。协议端口模板请求用 TemplateType=6 过滤，并将 Data[].TemplateId（pp- 前缀）写入 ParamTemplateId。资产实例调用 DescribeCfwAssets，解析返回结果后使用 assets[].instance_id；资产分组调用 DescribeResourceGroupNew，传 QueryType=resource、GroupId="0"、ShowType=all，解析返回结果后使用 GroupId；资源标签传 QueryType=tag，跳过“全部资产”根节点，以一级节点 GroupName 为 Key、所选二级子节点 GroupName 为 Value 构造 JSON 字符串 {"Key":"标签键","Value":"标签值"}，不要写入 GroupId；地域调用 DescribeAclRegInfo，传 FwType=["NAT"] 并使用 Data[].RegionCode。不得使用展示名称或自行拼接。</p>
         :rtype: list of CreateNatRuleItem
         """
         return self._Rules
@@ -1024,7 +1024,7 @@ class AddNatAcRuleRequest(AbstractModel):
 
     @property
     def CfwAiAgentOperationSource(self):
-        r"""<p>AI操作来源</p><p>枚举值：</p><ul><li>console： 控制台来源值</li><li>wechat： 微信</li></ul>
+        r"""<p>AI操作来源</p><p>枚举值：</p><ul><li>console： 控制台来源值</li><li>wechat： 微信</li></ul>。
         :rtype: str
         """
         return self._CfwAiAgentOperationSource
@@ -1035,7 +1035,7 @@ class AddNatAcRuleRequest(AbstractModel):
 
     @property
     def From(self):
-        r"""<p>添加规则的来源，一般不需要使用，值insert_rule 表示插入指定位置的规则；值batch_import 表示批量导入规则；为空时表示添加规则</p>
+        r"""<p>添加方式。省略或为空表示普通新增；insert_rule 表示指定位置新增；batch_import 表示非覆盖批量导入；batch_import_cover 表示覆盖导入，会删除当前账号中与首条规则同方向的全部可操作 NAT边界规则后再添加 Rules，添加失败时已删除的规则不会恢复，风险极高。仅支持上述取值。</p>
         :rtype: str
         """
         return self._From
@@ -1071,7 +1071,7 @@ class AddNatAcRuleResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RuleUuid: <p>创建成功后返回新策略ID列表</p>
+        :param _RuleUuid: 新增规则的 ID 列表，顺序与 Rules 一致。
         :type RuleUuid: list of int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1081,7 +1081,7 @@ class AddNatAcRuleResponse(AbstractModel):
 
     @property
     def RuleUuid(self):
-        r"""<p>创建成功后返回新策略ID列表</p>
+        r"""新增规则的 ID 列表，顺序与 Rules 一致。
         :rtype: list of int
         """
         return self._RuleUuid
@@ -1114,11 +1114,11 @@ class AddVpcAcRuleRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Rules: <p>需要添加的vpc内网间规则列表</p>
+        :param _Rules: 待添加的 VPC边界规则列表，至少包含一条，可包含不同 IpVersion。EdgeId 调用 DescribeVpcAclEdgeRange，传 FromList=switchs，并使用 EdgeRanges[].EdgeId；FromList=rules 只返回已有规则使用过的范围，不用于发现可新增范围。FwGroupId 调用 DescribeFwGroupIdNames，IpVersion 使用与目标规则相同的 JSON 整数 0 或 1，并使用 Data[].FwGroupId，不要使用 FwGroupName。地址模板调用 DescribeAddressTemplateList，请求用 TemplateType=1 或 5 过滤，并确认返回项 Data[].Type 为 1 或 5；将 Data[].Uuid（mb_ 前缀）写入对应 Content，不要使用 Data[].TemplateId（ip-/dm- 前缀）。协议端口模板请求用 TemplateType=6 过滤，并将 Data[].TemplateId（pp- 前缀）写入 ParamTemplateId。资产实例调用 DescribeCfwAssets，解析返回结果后使用 assets[].instance_id；资产分组调用 DescribeResourceGroupNew，传 QueryType=resource、GroupId="0"、ShowType=all，解析返回结果后使用 GroupId；资源标签传 QueryType=tag，跳过“全部资产”根节点，以一级节点 GroupName 为 Key、所选二级子节点 GroupName 为 Value 构造 JSON，不要写入 GroupId。batch_import_cover 的覆盖范围仅由首条规则的 IpVersion 决定。
         :type Rules: list of VpcRuleItem
-        :param _CfwAiAgentOperationSource: <p>AI操作来源</p><p>枚举值：</p><ul><li>console： 控制台来源值</li><li>wechat： 微信</li></ul>
+        :param _CfwAiAgentOperationSource: <p>AI操作来源</p><p>枚举值：</p><ul><li>console： 控制台来源值</li><li>wechat： 微信</li></ul>。
         :type CfwAiAgentOperationSource: str
-        :param _From: <p>添加规则的来源，一般不需要使用，值insert_rule 表示插入指定位置的规则；值batch_import 表示批量导入规则；为空时表示添加规则</p>
+        :param _From: 添加方式。省略或为空表示普通新增；insert_rule 表示按 OrderIndex 插入；batch_import 表示非覆盖批量导入；batch_import_cover 表示覆盖导入，会删除首条规则 IpVersion 对应的现有可操作规则后再按 Rules 顺序添加，添加失败时已删除的规则不会恢复，风险极高。仅支持上述取值。
         :type From: str
         """
         self._Rules = None
@@ -1127,7 +1127,7 @@ class AddVpcAcRuleRequest(AbstractModel):
 
     @property
     def Rules(self):
-        r"""<p>需要添加的vpc内网间规则列表</p>
+        r"""待添加的 VPC边界规则列表，至少包含一条，可包含不同 IpVersion。EdgeId 调用 DescribeVpcAclEdgeRange，传 FromList=switchs，并使用 EdgeRanges[].EdgeId；FromList=rules 只返回已有规则使用过的范围，不用于发现可新增范围。FwGroupId 调用 DescribeFwGroupIdNames，IpVersion 使用与目标规则相同的 JSON 整数 0 或 1，并使用 Data[].FwGroupId，不要使用 FwGroupName。地址模板调用 DescribeAddressTemplateList，请求用 TemplateType=1 或 5 过滤，并确认返回项 Data[].Type 为 1 或 5；将 Data[].Uuid（mb_ 前缀）写入对应 Content，不要使用 Data[].TemplateId（ip-/dm- 前缀）。协议端口模板请求用 TemplateType=6 过滤，并将 Data[].TemplateId（pp- 前缀）写入 ParamTemplateId。资产实例调用 DescribeCfwAssets，解析返回结果后使用 assets[].instance_id；资产分组调用 DescribeResourceGroupNew，传 QueryType=resource、GroupId="0"、ShowType=all，解析返回结果后使用 GroupId；资源标签传 QueryType=tag，跳过“全部资产”根节点，以一级节点 GroupName 为 Key、所选二级子节点 GroupName 为 Value 构造 JSON，不要写入 GroupId。batch_import_cover 的覆盖范围仅由首条规则的 IpVersion 决定。
         :rtype: list of VpcRuleItem
         """
         return self._Rules
@@ -1138,7 +1138,7 @@ class AddVpcAcRuleRequest(AbstractModel):
 
     @property
     def CfwAiAgentOperationSource(self):
-        r"""<p>AI操作来源</p><p>枚举值：</p><ul><li>console： 控制台来源值</li><li>wechat： 微信</li></ul>
+        r"""<p>AI操作来源</p><p>枚举值：</p><ul><li>console： 控制台来源值</li><li>wechat： 微信</li></ul>。
         :rtype: str
         """
         return self._CfwAiAgentOperationSource
@@ -1149,7 +1149,7 @@ class AddVpcAcRuleRequest(AbstractModel):
 
     @property
     def From(self):
-        r"""<p>添加规则的来源，一般不需要使用，值insert_rule 表示插入指定位置的规则；值batch_import 表示批量导入规则；为空时表示添加规则</p>
+        r"""添加方式。省略或为空表示普通新增；insert_rule 表示按 OrderIndex 插入；batch_import 表示非覆盖批量导入；batch_import_cover 表示覆盖导入，会删除首条规则 IpVersion 对应的现有可操作规则后再按 Rules 顺序添加，添加失败时已删除的规则不会恢复，风险极高。仅支持上述取值。
         :rtype: str
         """
         return self._From
@@ -1185,7 +1185,7 @@ class AddVpcAcRuleResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RuleUuids: <p>创建成功后返回新策略ID列表</p>
+        :param _RuleUuids: 新增规则的 ID 列表，顺序与 Rules 一致。
         :type RuleUuids: list of int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1195,7 +1195,7 @@ class AddVpcAcRuleResponse(AbstractModel):
 
     @property
     def RuleUuids(self):
-        r"""<p>创建成功后返回新策略ID列表</p>
+        r"""新增规则的 ID 列表，顺序与 Rules 一致。
         :rtype: list of int
         """
         return self._RuleUuids
@@ -1535,13 +1535,13 @@ class BanAndAllowRule(AbstractModel):
         :type Comment: str
         :param _CustomRule: 自定义放通规则详情。RuleType=6 时使用；其它规则类型不读取此字段。
         :type CustomRule: :class:`tencentcloud.cfw.v20190904.models.CustomWhiteRule`
-        :param _DirectionList: 生效方向，使用逗号分隔的整数：0 互联网出站、1 互联网入站、2 双向、3 东西向、4 情报误报反馈、5 内网访问源、6 内网访问目的；每项都必须属于 0 至 6。该字段不可为空；RuleType=6 时通过初始校验后，处理器会根据 CustomRule 的源、目的地址重新计算方向。
+        :param _DirectionList: 生效方向，使用逗号分隔的整数：0 互联网出站、1 互联网入站、2 双向、3 东西向、4 情报误报反馈、5 内网访问源、6 内网访问目的。所有 RuleType 均须显式传入非空值。RuleType=6 会先校验本字段，再根据 CustomRule 重新计算最终方向；例如私网源到私网目的可传 5,6，创建后应查询确认最终方向。
         :type DirectionList: str
-        :param _EndTime: 规则截止时间，必须使用 YYYY-MM-DD HH:MM:SS 格式且不得早于服务器处理时刻；3000-01-01 00:00:00 作为长期有效时间。
+        :param _EndTime: 规则截止时间，使用北京时间（UTC+8）的 YYYY-MM-DD HH:MM:SS 格式，且不得早于服务器处理时刻；3000-01-01 00:00:00 表示长期有效。
         :type EndTime: str
-        :param _FwType: 自定义放通规则的生效引擎位图：1 互联网边界旁路、2 NAT 防火墙、4 VPC 防火墙、8 互联网边界串行、16 NDR，组合值按位相加。处理器接受 0 至 31。RuleType=6 时，非零值会按源、目的地址组合与适用引擎位求交，并保留 NDR 位 16；归一化结果大于 0 时使用该结果，结果为 0 时与省略或传 0 相同：任一地址为 IPv6 或私网 IPv4 则实际使用 6，否则实际使用 15。其它 RuleType 仅校验该字段而不使用其值。
+        :param _FwType: RuleType=6 的生效引擎位图：1 互联网边界旁路、2 NAT 防火墙、4 VPC 防火墙、8 互联网边界串行、16 NDR；组合值按位相加，取值范围为 0 至 31。非零值会与源、目的地址适用的引擎取交集，并保留 NDR 位；结果为 0 时，IPv6 或私网 IPv4 地址使用 6，其它地址使用 15。其它 RuleType 不使用该字段。
         :type FwType: int
-        :param _Ioc: 规则对象。RuleType=1 或 2 时必须是 IP 地址，RuleType=3 时必须是合法域名，RuleType=4 时不能为空，RuleType=5 时必须是资产表中存在的实例 ID；RuleType=6 时表示自定义规则 ID：新增时可省略并由处理器生成；修改时作为既有规则的查询和更新键，省略时不会命中既有规则。其它受理的 RuleType 不校验对象格式。
+        :param _Ioc: 规则对象。RuleType=1 或 2 时传 IP 地址，RuleType=3 时传域名，RuleType=4 时传情报标识，RuleType=5 时使用 DescribeCfwAssets 返回的 assets[].instance_id。RuleType=6 新建时必须显式传空字符串，由服务生成规则 ID，不可省略。更新既有自定义规则时传入该规则的现有 ID。
         :type Ioc: str
         """
         self._Comment = None
@@ -1575,7 +1575,7 @@ class BanAndAllowRule(AbstractModel):
 
     @property
     def DirectionList(self):
-        r"""生效方向，使用逗号分隔的整数：0 互联网出站、1 互联网入站、2 双向、3 东西向、4 情报误报反馈、5 内网访问源、6 内网访问目的；每项都必须属于 0 至 6。该字段不可为空；RuleType=6 时通过初始校验后，处理器会根据 CustomRule 的源、目的地址重新计算方向。
+        r"""生效方向，使用逗号分隔的整数：0 互联网出站、1 互联网入站、2 双向、3 东西向、4 情报误报反馈、5 内网访问源、6 内网访问目的。所有 RuleType 均须显式传入非空值。RuleType=6 会先校验本字段，再根据 CustomRule 重新计算最终方向；例如私网源到私网目的可传 5,6，创建后应查询确认最终方向。
         :rtype: str
         """
         return self._DirectionList
@@ -1586,7 +1586,7 @@ class BanAndAllowRule(AbstractModel):
 
     @property
     def EndTime(self):
-        r"""规则截止时间，必须使用 YYYY-MM-DD HH:MM:SS 格式且不得早于服务器处理时刻；3000-01-01 00:00:00 作为长期有效时间。
+        r"""规则截止时间，使用北京时间（UTC+8）的 YYYY-MM-DD HH:MM:SS 格式，且不得早于服务器处理时刻；3000-01-01 00:00:00 表示长期有效。
         :rtype: str
         """
         return self._EndTime
@@ -1597,7 +1597,7 @@ class BanAndAllowRule(AbstractModel):
 
     @property
     def FwType(self):
-        r"""自定义放通规则的生效引擎位图：1 互联网边界旁路、2 NAT 防火墙、4 VPC 防火墙、8 互联网边界串行、16 NDR，组合值按位相加。处理器接受 0 至 31。RuleType=6 时，非零值会按源、目的地址组合与适用引擎位求交，并保留 NDR 位 16；归一化结果大于 0 时使用该结果，结果为 0 时与省略或传 0 相同：任一地址为 IPv6 或私网 IPv4 则实际使用 6，否则实际使用 15。其它 RuleType 仅校验该字段而不使用其值。
+        r"""RuleType=6 的生效引擎位图：1 互联网边界旁路、2 NAT 防火墙、4 VPC 防火墙、8 互联网边界串行、16 NDR；组合值按位相加，取值范围为 0 至 31。非零值会与源、目的地址适用的引擎取交集，并保留 NDR 位；结果为 0 时，IPv6 或私网 IPv4 地址使用 6，其它地址使用 15。其它 RuleType 不使用该字段。
         :rtype: int
         """
         return self._FwType
@@ -1608,7 +1608,7 @@ class BanAndAllowRule(AbstractModel):
 
     @property
     def Ioc(self):
-        r"""规则对象。RuleType=1 或 2 时必须是 IP 地址，RuleType=3 时必须是合法域名，RuleType=4 时不能为空，RuleType=5 时必须是资产表中存在的实例 ID；RuleType=6 时表示自定义规则 ID：新增时可省略并由处理器生成；修改时作为既有规则的查询和更新键，省略时不会命中既有规则。其它受理的 RuleType 不校验对象格式。
+        r"""规则对象。RuleType=1 或 2 时传 IP 地址，RuleType=3 时传域名，RuleType=4 时传情报标识，RuleType=5 时使用 DescribeCfwAssets 返回的 assets[].instance_id。RuleType=6 新建时必须显式传空字符串，由服务生成规则 ID，不可省略。更新既有自定义规则时传入该规则的现有 ID。
         :rtype: str
         """
         return self._Ioc
@@ -1644,11 +1644,11 @@ class BanAndAllowRuleDel(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DirectionList: 规则适用方向，0 表示互联网出站，1 表示互联网入站，2 表示双向，3 表示东西向，4 表示情报误报反馈，5 表示内网访问源，6 表示内网访问目的；多个值以逗号分隔。
+        :param _DirectionList: 规则的完整适用方向列表，多个值以逗号分隔：0 互联网出站，1 互联网入站，2 双向，3 东西向，4 情报误报反馈，5 内网访问源，6 内网访问目的。通过 DescribeBlockIgnoreList 查询时传顶层 Direction=""，并使用目标 Data[].DirectionList。
         :type DirectionList: str
-        :param _Ioc: 封禁或放通对象值。
+        :param _Ioc: 封禁或放通对象值。通过 DescribeBlockIgnoreList 查询并使用完全匹配目标的 Data[].Ioc。
         :type Ioc: str
-        :param _RuleType: 规则类型标识。服务端定义的常用值为：1 封禁 IP，2 放通 IP，3 放通域名，4 威胁情报地址，5 资产实例，6 自定义策略，7 入侵防御规则，8 扩展 IP 规则，9 扩展自定义规则。
+        :param _RuleType: 规则类型标识。通过 DescribeBlockIgnoreList 查询并使用目标 Data[].RuleType。常用值：1 封禁 IP，2 放通 IP，3 放通域名，4 威胁情报地址，5 资产实例，6 自定义策略，7 入侵防御规则，8 扩展 IP 规则，9 扩展自定义规则。
         :type RuleType: int
         """
         self._DirectionList = None
@@ -1657,7 +1657,7 @@ class BanAndAllowRuleDel(AbstractModel):
 
     @property
     def DirectionList(self):
-        r"""规则适用方向，0 表示互联网出站，1 表示互联网入站，2 表示双向，3 表示东西向，4 表示情报误报反馈，5 表示内网访问源，6 表示内网访问目的；多个值以逗号分隔。
+        r"""规则的完整适用方向列表，多个值以逗号分隔：0 互联网出站，1 互联网入站，2 双向，3 东西向，4 情报误报反馈，5 内网访问源，6 内网访问目的。通过 DescribeBlockIgnoreList 查询时传顶层 Direction=""，并使用目标 Data[].DirectionList。
         :rtype: str
         """
         return self._DirectionList
@@ -1668,7 +1668,7 @@ class BanAndAllowRuleDel(AbstractModel):
 
     @property
     def Ioc(self):
-        r"""封禁或放通对象值。
+        r"""封禁或放通对象值。通过 DescribeBlockIgnoreList 查询并使用完全匹配目标的 Data[].Ioc。
         :rtype: str
         """
         return self._Ioc
@@ -1679,7 +1679,7 @@ class BanAndAllowRuleDel(AbstractModel):
 
     @property
     def RuleType(self):
-        r"""规则类型标识。服务端定义的常用值为：1 封禁 IP，2 放通 IP，3 放通域名，4 威胁情报地址，5 资产实例，6 自定义策略，7 入侵防御规则，8 扩展 IP 规则，9 扩展自定义规则。
+        r"""规则类型标识。通过 DescribeBlockIgnoreList 查询并使用目标 Data[].RuleType。常用值：1 封禁 IP，2 放通 IP，3 放通域名，4 威胁情报地址，5 资产实例，6 自定义策略，7 入侵防御规则，8 扩展 IP 规则，9 扩展自定义规则。
         :rtype: int
         """
         return self._RuleType
@@ -4975,13 +4975,13 @@ class CreateAlertCenterOmitRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _HandleIdList: <p>直接处置的记录 ID 列表，公共请求结构要求提供。TableType=AlertTable 时元素为告警日志 logid；TableType=InterceptionTable 时元素为拦截记录 unique_id。处理时会与 HandleEventIdList 解析出的日志 ID 合并，再删除空字符串并去重；因此仅按聚合事件处置时可传 [""] 作为空占位。HandleIdList 与 HandleEventIdList 不能同时为空。</p>
+        :param _HandleIdList: <p>要忽略的记录 ID 列表。TableType=AlertTable 时，使用 DescribeLogs（Index=rule_threatinfo）返回的 log_id；仅通过 HandleEventIdList 指定事件时传 [""]。TableType=InterceptionTable 时，使用 DescribeBlockList 返回的 Data[].UniqueId 或 TopData[].UniqueId。</p>
         :type HandleIdList: list of str
-        :param _TableType: <p>必填的忽略数据来源，只接受 AlertTable 或 InterceptionTable。AlertTable 更新租户告警表中 logid 命中的记录；InterceptionTable 更新租户拦截表中 unique_id 命中的记录。字段没有默认值，缺失、空字符串或其它值均返回参数错误。</p>
+        :param _TableType: <p>必填的记录来源类型：AlertTable 表示告警中心，InterceptionTable 表示拦截列表。</p>
         :type TableType: str
         :param _CfwAiAgentOperationSource: <p>AI操作来源</p><p>枚举值：</p><ul><li>console： 控制台来源值</li><li>wechat： 微信</li></ul>。
         :type CfwAiAgentOperationSource: str
-        :param _HandleEventIdList: <p>可选的告警聚合事件 ID 列表。处理时逐个事件 ID 查询其对应的告警日志 logid，并将查询结果并入 HandleIdList；无法解析的事件 ID 不会产生目标 ID。该解析不会改写 TableType：若 TableType=InterceptionTable，解析出的 logid 仍会作为 unique_id 查询拦截表。字段可省略或传空数组，但 HandleIdList 与本字段不能同时为空；若最终合并、去空和去重后没有目标 ID，业务状态为失败。</p>
+        :param _HandleEventIdList: <p>告警事件 ID 列表，可省略且仅用于 TableType=AlertTable。HandleEventIdList 与 HandleIdList 至少指定一种目标；仅按事件忽略时，HandleIdList 固定传 [""]。事件 ID 通过 DescribeCfwAlerts 获取，返回 alerts[].current_event_id 时使用该值，否则使用 alerts[].event_id。</p>
         :type HandleEventIdList: list of str
         """
         self._HandleIdList = None
@@ -4991,7 +4991,7 @@ class CreateAlertCenterOmitRequest(AbstractModel):
 
     @property
     def HandleIdList(self):
-        r"""<p>直接处置的记录 ID 列表，公共请求结构要求提供。TableType=AlertTable 时元素为告警日志 logid；TableType=InterceptionTable 时元素为拦截记录 unique_id。处理时会与 HandleEventIdList 解析出的日志 ID 合并，再删除空字符串并去重；因此仅按聚合事件处置时可传 [""] 作为空占位。HandleIdList 与 HandleEventIdList 不能同时为空。</p>
+        r"""<p>要忽略的记录 ID 列表。TableType=AlertTable 时，使用 DescribeLogs（Index=rule_threatinfo）返回的 log_id；仅通过 HandleEventIdList 指定事件时传 [""]。TableType=InterceptionTable 时，使用 DescribeBlockList 返回的 Data[].UniqueId 或 TopData[].UniqueId。</p>
         :rtype: list of str
         """
         return self._HandleIdList
@@ -5002,7 +5002,7 @@ class CreateAlertCenterOmitRequest(AbstractModel):
 
     @property
     def TableType(self):
-        r"""<p>必填的忽略数据来源，只接受 AlertTable 或 InterceptionTable。AlertTable 更新租户告警表中 logid 命中的记录；InterceptionTable 更新租户拦截表中 unique_id 命中的记录。字段没有默认值，缺失、空字符串或其它值均返回参数错误。</p>
+        r"""<p>必填的记录来源类型：AlertTable 表示告警中心，InterceptionTable 表示拦截列表。</p>
         :rtype: str
         """
         return self._TableType
@@ -5024,7 +5024,7 @@ class CreateAlertCenterOmitRequest(AbstractModel):
 
     @property
     def HandleEventIdList(self):
-        r"""<p>可选的告警聚合事件 ID 列表。处理时逐个事件 ID 查询其对应的告警日志 logid，并将查询结果并入 HandleIdList；无法解析的事件 ID 不会产生目标 ID。该解析不会改写 TableType：若 TableType=InterceptionTable，解析出的 logid 仍会作为 unique_id 查询拦截表。字段可省略或传空数组，但 HandleIdList 与本字段不能同时为空；若最终合并、去空和去重后没有目标 ID，业务状态为失败。</p>
+        r"""<p>告警事件 ID 列表，可省略且仅用于 TableType=AlertTable。HandleEventIdList 与 HandleIdList 至少指定一种目标；仅按事件忽略时，HandleIdList 固定传 [""]。事件 ID 通过 DescribeCfwAlerts 获取，返回 alerts[].current_event_id 时使用该值，否则使用 alerts[].event_id。</p>
         :rtype: list of str
         """
         return self._HandleEventIdList
@@ -5056,11 +5056,11 @@ class CreateAlertCenterOmitResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ReturnCode: <p>Cloud API 处理返回码。0 表示 Action 处理函数未返回顶层错误，-1 表示入口参数校验或路由处理失败。忽略记录的数据库处理结果由 Status 表示；ReturnCode=0 不代表一定有记录被更新。</p>
+        :param _ReturnCode: 请求返回码，0 表示请求已执行；忽略结果见 Status。
         :type ReturnCode: int
-        :param _ReturnMsg: <p>Cloud API 处理信息。Action 处理函数未返回顶层错误时为 success；入口参数校验或路由处理失败时为 failed，并同时返回 Error。</p>
+        :param _ReturnMsg: 与 ReturnCode 对应的结果信息，成功时为 success。
         :type ReturnMsg: str
-        :param _Status: <p>忽略处理状态。0 表示目标表更新语句执行时未返回数据库错误，但接口不检查受影响行数，因此不保证有记录命中；-1 表示参数归一化后无有效目标或下游处理失败；-3 表示下游报告重复记录错误。应结合 ReturnCode 判断入口校验是否通过。</p>
+        :param _Status: 忽略处理状态，0 表示成功，非 0 表示未成功。
         :type Status: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -5072,7 +5072,7 @@ class CreateAlertCenterOmitResponse(AbstractModel):
 
     @property
     def ReturnCode(self):
-        r"""<p>Cloud API 处理返回码。0 表示 Action 处理函数未返回顶层错误，-1 表示入口参数校验或路由处理失败。忽略记录的数据库处理结果由 Status 表示；ReturnCode=0 不代表一定有记录被更新。</p>
+        r"""请求返回码，0 表示请求已执行；忽略结果见 Status。
         :rtype: int
         """
         return self._ReturnCode
@@ -5083,7 +5083,7 @@ class CreateAlertCenterOmitResponse(AbstractModel):
 
     @property
     def ReturnMsg(self):
-        r"""<p>Cloud API 处理信息。Action 处理函数未返回顶层错误时为 success；入口参数校验或路由处理失败时为 failed，并同时返回 Error。</p>
+        r"""与 ReturnCode 对应的结果信息，成功时为 success。
         :rtype: str
         """
         return self._ReturnMsg
@@ -5094,7 +5094,7 @@ class CreateAlertCenterOmitResponse(AbstractModel):
 
     @property
     def Status(self):
-        r"""<p>忽略处理状态。0 表示目标表更新语句执行时未返回数据库错误，但接口不检查受影响行数，因此不保证有记录命中；-1 表示参数归一化后无有效目标或下游处理失败；-3 表示下游报告重复记录错误。应结合 ReturnCode 判断入口校验是否通过。</p>
+        r"""忽略处理状态，0 表示成功，非 0 表示未成功。
         :rtype: int
         """
         return self._Status
@@ -5129,78 +5129,56 @@ class CreateAlertCenterRuleAsyncRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _HandleTime: <p>处置时间<br>1  1天<br>7   7天<br>-2 永久</p>
-        :type HandleTime: int
-        :param _HandleType: <p>处置类型<br>当HandleIdList 不为空时：1封禁 2放通<br>当HandleIpList 不为空时：3放通 4封禁</p>
-        :type HandleType: int
-        :param _AlertDirection: <p>当前日志方向： 0 出向 1 入向</p>
+        :param _AlertDirection: <p>必填的告警方向：0 出向，1 入向，3 内网。用于 HandleIpList 中 IP 目标的处置方向；其它目标也必须传上述有效值。从 DescribeCfwAlerts 复制方向时，将 alerts[].direction 的 outbound、inbound、lateral 分别转换为 JSON 整数 0、1、3。</p>
         :type AlertDirection: int
-        :param _HandleDirection: <p>处置方向： 0出向 1入向 0,1出入向 3内网</p>
+        :param _HandleDirection: <p>必填的处置生效方向。支持空字符串、0（互联网出向）、1（互联网入向）、0,1/1,0（互联网双向）、3（内网访问）、5（内网访问源）、6（内网访问目的）及 5,6/6,5。空字符串表示按告警原方向处置；同一 IP 的已有规则方向会与本次方向合并。</p>
         :type HandleDirection: str
-        :param _CfwAiAgentOperationSource: <p>AI操作来源</p><p>枚举值：</p><ul><li>console： 控制台来源值</li><li>wechat： 微信</li></ul>
-        :type CfwAiAgentOperationSource: str
-        :param _HandleIdList: <p>处置对象,ID列表，  IdLists,IpList,EventIdList三选一</p>
-        :type HandleIdList: list of str
-        :param _HandleIpList: <p>处置对象,IP列表，  IdLists,IpList,EventIdList三选一</p>
-        :type HandleIpList: list of str
-        :param _HandleComment: <p>处置描述</p>
-        :type HandleComment: str
-        :param _IgnoreReason: <p>放通原因:<br>0默认 1重复 2误报 3紧急放通</p>
-        :type IgnoreReason: int
-        :param _BlockDomain: <p>封禁域名-保留字段</p>
-        :type BlockDomain: str
-        :param _HandleEventIdList: <p>处置对象,事件ID列表，  IdLists,IpList,EventIdList三选一</p>
-        :type HandleEventIdList: list of str
-        :param _WhiteIpList: <p>加白IP列表 隔离时放通的ip列表</p>
-        :type WhiteIpList: list of str
-        :param _IsolateType: <p>隔离类型 1 互联网入站 2 互联网出站 4 内网访问</p>
-        :type IsolateType: list of int
-        :param _AssetIdList: <p>隔离资产列表</p>
+        :param _HandleTime: <p>处置有效期：1 表示 1 天，7 表示 7 天，-2 表示永久。</p>
+        :type HandleTime: int
+        :param _HandleType: <p>必填的处置类型：1 按 HandleIdList 或 HandleEventIdList 封禁，2 按 HandleIdList、HandleEventIdList 或 BlockDomain 加白，3 按 HandleIpList 加白 IP，4 按 HandleIpList 封禁 IP，5 将 HandleIdList 或 HandleEventIdList 对应的安全基线告警地址加入指定方向的安全基线列表，8 按 HandleEventIdList 关联资产或 AssetIdList 新增隔离。五类目标至少提供一类；HandleType=8 未能从事件解析出资产时必须提供 AssetIdList。IsolateType 和 WhiteIpList 仅用于类型 8。</p>
+        :type HandleType: int
+        :param _AssetIdList: <p>资产隔离目标列表，可省略；仅 HandleType=8 使用。直接按资产隔离时，调用 DescribeCfwAssets，传 AssetType=host 和目标 InstanceId，解析返回结果；仅在唯一 assets[].instance_id 与目标完全相等时将其写入本字段，不使用资产名称。</p>
         :type AssetIdList: list of str
-        :param _TargetEventIdList: <p>处置HandleIpList，属于的告警事件ID</p>
+        :param _BlockDomain: <p>域名加白目标，传合法域名；HandleType 必须为 2，并同时传 TargetEventIdList。</p>
+        :type BlockDomain: str
+        :param _CfwAiAgentOperationSource: <p>AI操作来源</p><p>枚举值：</p><ul><li>console： 控制台来源值</li><li>wechat： 微信</li></ul>。
+        :type CfwAiAgentOperationSource: str
+        :param _HandleComment: <p>可选处置说明，最多 50 个 Unicode 字符。</p>
+        :type HandleComment: str
+        :param _HandleEventIdList: <p>告警事件 ID 列表，可省略。通过 DescribeCfwAlerts 获取，返回 alerts[].current_event_id 时使用该值，否则使用 alerts[].event_id。事件对应的告警日志会与 HandleIdList 合并后参与处置。</p>
+        :type HandleEventIdList: list of str
+        :param _HandleIdList: <p>告警日志 ID 列表，可省略；可与 HandleEventIdList 同时使用。调用 DescribeLogs，传 Index=rule_threatinfo 和目标日志的查询条件，解析返回结果，仅使用目标记录的 log_id。告警事件 ID 使用 HandleEventIdList。</p>
+        :type HandleIdList: list of str
+        :param _HandleIpList: <p>IP 处置目标列表，每项必须是有效 IP 地址。HandleType=3 表示加白，HandleType=4 表示封禁；可使用 DescribeCfwAlerts 返回的 alerts[].src_ip_list 或 alerts[].dst_ip_list。</p>
+        :type HandleIpList: list of str
+        :param _IgnoreReason: <p>处置原因，可省略：0 未指定原因，1 重复，2 误报，3 紧急加白；主要用于加白记录。</p>
+        :type IgnoreReason: int
+        :param _IsolateType: <p>隔离范围数组，可省略：1 互联网入站，2 互联网出站，4 内网访问。仅 HandleType=8 使用；组合多个范围时传入对应值且不要重复，重复值会改变最终隔离范围。</p>
+        :type IsolateType: list of int
+        :param _TargetEventIdList: <p>处置关联的来源事件 ID 列表，仅用于 HandleIpList 或 BlockDomain。BlockDomain 处置时必填，HandleIpList 处置时可省略；通过 DescribeCfwAlerts 获取，返回 alerts[].current_event_id 时使用该值，否则使用 alerts[].event_id。</p>
         :type TargetEventIdList: list of str
+        :param _WhiteIpList: <p>隔离后仍允许通信的 IPv4 地址列表，仅 HandleType=8 使用。可省略或传空数组；非空时每项必须是有效 IPv4 地址。</p>
+        :type WhiteIpList: list of str
         """
-        self._HandleTime = None
-        self._HandleType = None
         self._AlertDirection = None
         self._HandleDirection = None
+        self._HandleTime = None
+        self._HandleType = None
+        self._AssetIdList = None
+        self._BlockDomain = None
         self._CfwAiAgentOperationSource = None
+        self._HandleComment = None
+        self._HandleEventIdList = None
         self._HandleIdList = None
         self._HandleIpList = None
-        self._HandleComment = None
         self._IgnoreReason = None
-        self._BlockDomain = None
-        self._HandleEventIdList = None
-        self._WhiteIpList = None
         self._IsolateType = None
-        self._AssetIdList = None
         self._TargetEventIdList = None
-
-    @property
-    def HandleTime(self):
-        r"""<p>处置时间<br>1  1天<br>7   7天<br>-2 永久</p>
-        :rtype: int
-        """
-        return self._HandleTime
-
-    @HandleTime.setter
-    def HandleTime(self, HandleTime):
-        self._HandleTime = HandleTime
-
-    @property
-    def HandleType(self):
-        r"""<p>处置类型<br>当HandleIdList 不为空时：1封禁 2放通<br>当HandleIpList 不为空时：3放通 4封禁</p>
-        :rtype: int
-        """
-        return self._HandleType
-
-    @HandleType.setter
-    def HandleType(self, HandleType):
-        self._HandleType = HandleType
+        self._WhiteIpList = None
 
     @property
     def AlertDirection(self):
-        r"""<p>当前日志方向： 0 出向 1 入向</p>
+        r"""<p>必填的告警方向：0 出向，1 入向，3 内网。用于 HandleIpList 中 IP 目标的处置方向；其它目标也必须传上述有效值。从 DescribeCfwAlerts 复制方向时，将 alerts[].direction 的 outbound、inbound、lateral 分别转换为 JSON 整数 0、1、3。</p>
         :rtype: int
         """
         return self._AlertDirection
@@ -5211,7 +5189,7 @@ class CreateAlertCenterRuleAsyncRequest(AbstractModel):
 
     @property
     def HandleDirection(self):
-        r"""<p>处置方向： 0出向 1入向 0,1出入向 3内网</p>
+        r"""<p>必填的处置生效方向。支持空字符串、0（互联网出向）、1（互联网入向）、0,1/1,0（互联网双向）、3（内网访问）、5（内网访问源）、6（内网访问目的）及 5,6/6,5。空字符串表示按告警原方向处置；同一 IP 的已有规则方向会与本次方向合并。</p>
         :rtype: str
         """
         return self._HandleDirection
@@ -5221,8 +5199,52 @@ class CreateAlertCenterRuleAsyncRequest(AbstractModel):
         self._HandleDirection = HandleDirection
 
     @property
+    def HandleTime(self):
+        r"""<p>处置有效期：1 表示 1 天，7 表示 7 天，-2 表示永久。</p>
+        :rtype: int
+        """
+        return self._HandleTime
+
+    @HandleTime.setter
+    def HandleTime(self, HandleTime):
+        self._HandleTime = HandleTime
+
+    @property
+    def HandleType(self):
+        r"""<p>必填的处置类型：1 按 HandleIdList 或 HandleEventIdList 封禁，2 按 HandleIdList、HandleEventIdList 或 BlockDomain 加白，3 按 HandleIpList 加白 IP，4 按 HandleIpList 封禁 IP，5 将 HandleIdList 或 HandleEventIdList 对应的安全基线告警地址加入指定方向的安全基线列表，8 按 HandleEventIdList 关联资产或 AssetIdList 新增隔离。五类目标至少提供一类；HandleType=8 未能从事件解析出资产时必须提供 AssetIdList。IsolateType 和 WhiteIpList 仅用于类型 8。</p>
+        :rtype: int
+        """
+        return self._HandleType
+
+    @HandleType.setter
+    def HandleType(self, HandleType):
+        self._HandleType = HandleType
+
+    @property
+    def AssetIdList(self):
+        r"""<p>资产隔离目标列表，可省略；仅 HandleType=8 使用。直接按资产隔离时，调用 DescribeCfwAssets，传 AssetType=host 和目标 InstanceId，解析返回结果；仅在唯一 assets[].instance_id 与目标完全相等时将其写入本字段，不使用资产名称。</p>
+        :rtype: list of str
+        """
+        return self._AssetIdList
+
+    @AssetIdList.setter
+    def AssetIdList(self, AssetIdList):
+        self._AssetIdList = AssetIdList
+
+    @property
+    def BlockDomain(self):
+        r"""<p>域名加白目标，传合法域名；HandleType 必须为 2，并同时传 TargetEventIdList。</p>
+        :rtype: str
+        """
+        return self._BlockDomain
+
+    @BlockDomain.setter
+    def BlockDomain(self, BlockDomain):
+        self._BlockDomain = BlockDomain
+
+    @property
     def CfwAiAgentOperationSource(self):
-        r"""<p>AI操作来源</p><p>枚举值：</p><ul><li>console： 控制台来源值</li><li>wechat： 微信</li></ul>
+        r"""<p>AI操作来源</p><p>枚举值：</p><ul><li>console： 控制台来源值</li><li>wechat： 微信</li></ul>。
         :rtype: str
         """
         return self._CfwAiAgentOperationSource
@@ -5232,8 +5254,30 @@ class CreateAlertCenterRuleAsyncRequest(AbstractModel):
         self._CfwAiAgentOperationSource = CfwAiAgentOperationSource
 
     @property
+    def HandleComment(self):
+        r"""<p>可选处置说明，最多 50 个 Unicode 字符。</p>
+        :rtype: str
+        """
+        return self._HandleComment
+
+    @HandleComment.setter
+    def HandleComment(self, HandleComment):
+        self._HandleComment = HandleComment
+
+    @property
+    def HandleEventIdList(self):
+        r"""<p>告警事件 ID 列表，可省略。通过 DescribeCfwAlerts 获取，返回 alerts[].current_event_id 时使用该值，否则使用 alerts[].event_id。事件对应的告警日志会与 HandleIdList 合并后参与处置。</p>
+        :rtype: list of str
+        """
+        return self._HandleEventIdList
+
+    @HandleEventIdList.setter
+    def HandleEventIdList(self, HandleEventIdList):
+        self._HandleEventIdList = HandleEventIdList
+
+    @property
     def HandleIdList(self):
-        r"""<p>处置对象,ID列表，  IdLists,IpList,EventIdList三选一</p>
+        r"""<p>告警日志 ID 列表，可省略；可与 HandleEventIdList 同时使用。调用 DescribeLogs，传 Index=rule_threatinfo 和目标日志的查询条件，解析返回结果，仅使用目标记录的 log_id。告警事件 ID 使用 HandleEventIdList。</p>
         :rtype: list of str
         """
         return self._HandleIdList
@@ -5244,7 +5288,7 @@ class CreateAlertCenterRuleAsyncRequest(AbstractModel):
 
     @property
     def HandleIpList(self):
-        r"""<p>处置对象,IP列表，  IdLists,IpList,EventIdList三选一</p>
+        r"""<p>IP 处置目标列表，每项必须是有效 IP 地址。HandleType=3 表示加白，HandleType=4 表示封禁；可使用 DescribeCfwAlerts 返回的 alerts[].src_ip_list 或 alerts[].dst_ip_list。</p>
         :rtype: list of str
         """
         return self._HandleIpList
@@ -5254,19 +5298,8 @@ class CreateAlertCenterRuleAsyncRequest(AbstractModel):
         self._HandleIpList = HandleIpList
 
     @property
-    def HandleComment(self):
-        r"""<p>处置描述</p>
-        :rtype: str
-        """
-        return self._HandleComment
-
-    @HandleComment.setter
-    def HandleComment(self, HandleComment):
-        self._HandleComment = HandleComment
-
-    @property
     def IgnoreReason(self):
-        r"""<p>放通原因:<br>0默认 1重复 2误报 3紧急放通</p>
+        r"""<p>处置原因，可省略：0 未指定原因，1 重复，2 误报，3 紧急加白；主要用于加白记录。</p>
         :rtype: int
         """
         return self._IgnoreReason
@@ -5276,41 +5309,8 @@ class CreateAlertCenterRuleAsyncRequest(AbstractModel):
         self._IgnoreReason = IgnoreReason
 
     @property
-    def BlockDomain(self):
-        r"""<p>封禁域名-保留字段</p>
-        :rtype: str
-        """
-        return self._BlockDomain
-
-    @BlockDomain.setter
-    def BlockDomain(self, BlockDomain):
-        self._BlockDomain = BlockDomain
-
-    @property
-    def HandleEventIdList(self):
-        r"""<p>处置对象,事件ID列表，  IdLists,IpList,EventIdList三选一</p>
-        :rtype: list of str
-        """
-        return self._HandleEventIdList
-
-    @HandleEventIdList.setter
-    def HandleEventIdList(self, HandleEventIdList):
-        self._HandleEventIdList = HandleEventIdList
-
-    @property
-    def WhiteIpList(self):
-        r"""<p>加白IP列表 隔离时放通的ip列表</p>
-        :rtype: list of str
-        """
-        return self._WhiteIpList
-
-    @WhiteIpList.setter
-    def WhiteIpList(self, WhiteIpList):
-        self._WhiteIpList = WhiteIpList
-
-    @property
     def IsolateType(self):
-        r"""<p>隔离类型 1 互联网入站 2 互联网出站 4 内网访问</p>
+        r"""<p>隔离范围数组，可省略：1 互联网入站，2 互联网出站，4 内网访问。仅 HandleType=8 使用；组合多个范围时传入对应值且不要重复，重复值会改变最终隔离范围。</p>
         :rtype: list of int
         """
         return self._IsolateType
@@ -5320,19 +5320,8 @@ class CreateAlertCenterRuleAsyncRequest(AbstractModel):
         self._IsolateType = IsolateType
 
     @property
-    def AssetIdList(self):
-        r"""<p>隔离资产列表</p>
-        :rtype: list of str
-        """
-        return self._AssetIdList
-
-    @AssetIdList.setter
-    def AssetIdList(self, AssetIdList):
-        self._AssetIdList = AssetIdList
-
-    @property
     def TargetEventIdList(self):
-        r"""<p>处置HandleIpList，属于的告警事件ID</p>
+        r"""<p>处置关联的来源事件 ID 列表，仅用于 HandleIpList 或 BlockDomain。BlockDomain 处置时必填，HandleIpList 处置时可省略；通过 DescribeCfwAlerts 获取，返回 alerts[].current_event_id 时使用该值，否则使用 alerts[].event_id。</p>
         :rtype: list of str
         """
         return self._TargetEventIdList
@@ -5341,23 +5330,34 @@ class CreateAlertCenterRuleAsyncRequest(AbstractModel):
     def TargetEventIdList(self, TargetEventIdList):
         self._TargetEventIdList = TargetEventIdList
 
+    @property
+    def WhiteIpList(self):
+        r"""<p>隔离后仍允许通信的 IPv4 地址列表，仅 HandleType=8 使用。可省略或传空数组；非空时每项必须是有效 IPv4 地址。</p>
+        :rtype: list of str
+        """
+        return self._WhiteIpList
+
+    @WhiteIpList.setter
+    def WhiteIpList(self, WhiteIpList):
+        self._WhiteIpList = WhiteIpList
+
 
     def _deserialize(self, params):
-        self._HandleTime = params.get("HandleTime")
-        self._HandleType = params.get("HandleType")
         self._AlertDirection = params.get("AlertDirection")
         self._HandleDirection = params.get("HandleDirection")
+        self._HandleTime = params.get("HandleTime")
+        self._HandleType = params.get("HandleType")
+        self._AssetIdList = params.get("AssetIdList")
+        self._BlockDomain = params.get("BlockDomain")
         self._CfwAiAgentOperationSource = params.get("CfwAiAgentOperationSource")
+        self._HandleComment = params.get("HandleComment")
+        self._HandleEventIdList = params.get("HandleEventIdList")
         self._HandleIdList = params.get("HandleIdList")
         self._HandleIpList = params.get("HandleIpList")
-        self._HandleComment = params.get("HandleComment")
         self._IgnoreReason = params.get("IgnoreReason")
-        self._BlockDomain = params.get("BlockDomain")
-        self._HandleEventIdList = params.get("HandleEventIdList")
-        self._WhiteIpList = params.get("WhiteIpList")
         self._IsolateType = params.get("IsolateType")
-        self._AssetIdList = params.get("AssetIdList")
         self._TargetEventIdList = params.get("TargetEventIdList")
+        self._WhiteIpList = params.get("WhiteIpList")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5375,11 +5375,11 @@ class CreateAlertCenterRuleAsyncResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ReturnCode: <p>返回状态码：<br>0 成功<br>非0 失败</p>
+        :param _ReturnCode: 请求返回码，0 表示已进入异步处理；处理进度见 Status。
         :type ReturnCode: int
-        :param _ReturnMsg: <p>返回信息：<br>success 成功<br>其他</p>
+        :param _ReturnMsg: 与 ReturnCode 对应的结果信息，成功时为 success。
         :type ReturnMsg: str
-        :param _Status: <p>处置状态码：0  处置成功 1处置中  -1 通用错误，不用处理-3 表示重复，需重新刷新列表其他</p>
+        :param _Status: 异步处理状态：1 表示处理中，使用完全相同的请求参数继续查询；修改参数会发起新的操作。0 表示处理结束，处置结果通过对应查询接口获取。
         :type Status: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -5391,7 +5391,7 @@ class CreateAlertCenterRuleAsyncResponse(AbstractModel):
 
     @property
     def ReturnCode(self):
-        r"""<p>返回状态码：<br>0 成功<br>非0 失败</p>
+        r"""请求返回码，0 表示已进入异步处理；处理进度见 Status。
         :rtype: int
         """
         return self._ReturnCode
@@ -5402,7 +5402,7 @@ class CreateAlertCenterRuleAsyncResponse(AbstractModel):
 
     @property
     def ReturnMsg(self):
-        r"""<p>返回信息：<br>success 成功<br>其他</p>
+        r"""与 ReturnCode 对应的结果信息，成功时为 success。
         :rtype: str
         """
         return self._ReturnMsg
@@ -5413,7 +5413,7 @@ class CreateAlertCenterRuleAsyncResponse(AbstractModel):
 
     @property
     def Status(self):
-        r"""<p>处置状态码：0  处置成功 1处置中  -1 通用错误，不用处理-3 表示重复，需重新刷新列表其他</p>
+        r"""异步处理状态：1 表示处理中，使用完全相同的请求参数继续查询；修改参数会发起新的操作。0 表示处理结束，处置结果通过对应查询接口获取。
         :rtype: int
         """
         return self._Status
@@ -5824,34 +5824,23 @@ class CreateBlockIgnoreRuleNewRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Rules: <p>非自定义类型规则列表</p>
-        :type Rules: list of BanAndAllowRule
-        :param _RuleType: <p>RuleType: 1黑名单 2外部IP 3域名 4情报 5资产 6自定义规则  7入侵防御规则</p>
+        :param _RuleType: 规则类型：1 IP 封禁，2 IP 放通，3 域名放通，4 情报放通，5 资产放通，6 自定义放通。
         :type RuleType: int
-        :param _CfwAiAgentOperationSource: <p>AI操作来源</p><p>枚举值：</p><ul><li>console： 控制台来源值</li><li>wechat： 微信</li></ul>
+        :param _Rules: 待新增规则列表；可为空，空数组返回成功且不新增规则。
+        :type Rules: list of BanAndAllowRule
+        :param _CfwAiAgentOperationSource: <p>AI操作来源</p><p>枚举值：</p><ul><li>console： 控制台来源值</li><li>wechat： 微信</li></ul>。
         :type CfwAiAgentOperationSource: str
-        :param _CoverDuplicate: <p>删除白名单冲突地址并继续添加/删除封禁列表冲突地址并继续添加；表示是否覆盖重复数据，1为覆盖，非1不覆盖，跳过重复数据</p>
+        :param _CoverDuplicate: 互斥列表冲突处理，仅 RuleType=1 或 2 生效。0 表示保留已有互斥规则并跳过冲突新增项；1 表示保留新增项并删除同 IP、同方向的互斥规则；省略时不处理互斥冲突。填写本字段时，同一请求内相同 Ioc 会合并为一项，DirectionList 按输入顺序合并，时间和备注采用首次出现项的值。已有同类型、同 Ioc 规则的方向会与本次方向合并，其它字段按本次请求更新。
         :type CoverDuplicate: int
         """
-        self._Rules = None
         self._RuleType = None
+        self._Rules = None
         self._CfwAiAgentOperationSource = None
         self._CoverDuplicate = None
 
     @property
-    def Rules(self):
-        r"""<p>非自定义类型规则列表</p>
-        :rtype: list of BanAndAllowRule
-        """
-        return self._Rules
-
-    @Rules.setter
-    def Rules(self, Rules):
-        self._Rules = Rules
-
-    @property
     def RuleType(self):
-        r"""<p>RuleType: 1黑名单 2外部IP 3域名 4情报 5资产 6自定义规则  7入侵防御规则</p>
+        r"""规则类型：1 IP 封禁，2 IP 放通，3 域名放通，4 情报放通，5 资产放通，6 自定义放通。
         :rtype: int
         """
         return self._RuleType
@@ -5861,8 +5850,19 @@ class CreateBlockIgnoreRuleNewRequest(AbstractModel):
         self._RuleType = RuleType
 
     @property
+    def Rules(self):
+        r"""待新增规则列表；可为空，空数组返回成功且不新增规则。
+        :rtype: list of BanAndAllowRule
+        """
+        return self._Rules
+
+    @Rules.setter
+    def Rules(self, Rules):
+        self._Rules = Rules
+
+    @property
     def CfwAiAgentOperationSource(self):
-        r"""<p>AI操作来源</p><p>枚举值：</p><ul><li>console： 控制台来源值</li><li>wechat： 微信</li></ul>
+        r"""<p>AI操作来源</p><p>枚举值：</p><ul><li>console： 控制台来源值</li><li>wechat： 微信</li></ul>。
         :rtype: str
         """
         return self._CfwAiAgentOperationSource
@@ -5873,7 +5873,7 @@ class CreateBlockIgnoreRuleNewRequest(AbstractModel):
 
     @property
     def CoverDuplicate(self):
-        r"""<p>删除白名单冲突地址并继续添加/删除封禁列表冲突地址并继续添加；表示是否覆盖重复数据，1为覆盖，非1不覆盖，跳过重复数据</p>
+        r"""互斥列表冲突处理，仅 RuleType=1 或 2 生效。0 表示保留已有互斥规则并跳过冲突新增项；1 表示保留新增项并删除同 IP、同方向的互斥规则；省略时不处理互斥冲突。填写本字段时，同一请求内相同 Ioc 会合并为一项，DirectionList 按输入顺序合并，时间和备注采用首次出现项的值。已有同类型、同 Ioc 规则的方向会与本次方向合并，其它字段按本次请求更新。
         :rtype: int
         """
         return self._CoverDuplicate
@@ -5884,13 +5884,13 @@ class CreateBlockIgnoreRuleNewRequest(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._RuleType = params.get("RuleType")
         if params.get("Rules") is not None:
             self._Rules = []
             for item in params.get("Rules"):
                 obj = BanAndAllowRule()
                 obj._deserialize(item)
                 self._Rules.append(obj)
-        self._RuleType = params.get("RuleType")
         self._CfwAiAgentOperationSource = params.get("CfwAiAgentOperationSource")
         self._CoverDuplicate = params.get("CoverDuplicate")
         memeber_set = set(params.keys())
@@ -6643,33 +6643,33 @@ class CreateNatRuleItem(AbstractModel):
         r"""
         :param _Direction: <p>规则方向，JSON 整数：0 表示出站，1 表示入站；其他值被拒绝。方向决定可用的源和目的类型及协议组合。</p>
         :type Direction: int
-        :param _OrderIndex: <p>规则序号。入口按 int64 读取后转换为 uint32，转换结果为 0 时归一化为 1；负值不会被单独拒绝，而会按 uint32 转换。写入中间分区时，序号为 1 或不大于当前同方向最大序号会按该位置插入并后移原规则，超过最大序号时通常归一化为末尾序号。新增且 From 不等于 insert_rule 时，如果本批首条规则转换后的序号为 1，则批内后续规则即使超过最大序号也按各自转换后的序号直接插入。</p>
+        :param _OrderIndex: <p>规则顺序。使用 -1 追加到当前方向末尾，使用正序号在对应位置插入并顺延后续规则；0 按 1 处理，其他负数及超范围值不应使用。批量新增时按 Rules 顺序依次处理。</p>
         :type OrderIndex: int
         :param _Port: <p>目的端口字符串。支持逗号分隔的单端口或以斜杠分隔的起止范围，例如 80、80,443、80/443；-1/-1 表示全部端口。单端口必须是大于 0 的整数；范围只要求两个端点均为整数且起点不大于终点。Protocol 归一化为 ICMP 时忽略该字段并保存为空字符串；FTP 只接受单端口，不接受逗号列表或斜杠范围。</p>
         :type Port: str
-        :param _Protocol: <p>协议，大小写不敏感并归一化为大写。四层值为 TCP、UDP、ICMP、ICMPV6、ANY；应用层值为 HTTP、HTTPS、HTTP/HTTPS、TLS/SSL、SMTP、SMTPS、SMTP/SMTPS、FTP、DNS，其中 domain、tls、ssl 也归一化为 TLS/SSL；ANY 同时可按四层协议和应用协议解析。入站仅允许 ANY、TCP、UDP；domain 目的及解析为域名模板的 template 目的接受上述应用层协议及 ANY，但不接受 FTP；dnsparse 和 domainiptwoverify 目的仅允许 TCP 或 UDP；其他目的不接受 FTP 和 ANY 之外的应用层协议。Protocol=DNS 且目的不是域名模板或单独的 * 时，目的列表只能包含域名，不能包含 IP。</p>
+        :param _Protocol: <p>协议，大小写不敏感并归一化为大写。四层值为 TCP、UDP、ICMP、ICMPV6、ANY；应用层值为 HTTP、HTTPS、HTTP/HTTPS、TLS/SSL、SMTP、SMTPS、SMTP/SMTPS、FTP、DNS，其中 domain、tls、ssl 也归一化为 TLS/SSL；ANY 表示不限定协议，不表示省略 Protocol；它同时可按四层协议和应用协议解析。入站仅允许 ANY、TCP、UDP；domain 目的及解析为域名模板的 template 目的接受上述应用层协议及 ANY，但不接受 FTP；dnsparse 和 domainiptwoverify 目的仅允许 TCP 或 UDP；其他目的不接受 FTP 和 ANY 之外的应用层协议。Protocol=DNS 且目的不是域名模板或单独的 * 时，目的列表只能包含域名，不能包含 IP。</p>
         :type Protocol: str
-        :param _RuleAction: <p>流量处理方式，大小写不敏感：accept 表示放行，drop 表示拒绝，log 表示观察；isolateinaccept、isolateoutaccept 归一化为 accept，isolateindrop、isolateoutdrop 归一化为 drop。</p>
+        :param _RuleAction: <p>流量处理方式，大小写不敏感：accept 表示放行，drop 表示拒绝，log 表示观察；isolateinaccept 表示放行访问隔离资产的白名单流量，isolateindrop 表示阻断访问隔离资产的其它流量，isolateoutaccept 表示放行隔离资产访问白名单目标，isolateoutdrop 表示阻断隔离资产访问其它目标。</p>
         :type RuleAction: str
-        :param _SourceContent: <p>访问源内容，格式由 SourceType 和 Direction 决定。net/ip 使用合法 IP 或 CIDR 的逗号列表，最多 10 项；location 使用地域 code，空字符串归一化为默认全地域掩码；vendor 使用 tencent、aliyun、aws、huawei、azure 或 all，可用逗号分隔；template 使用当前账号可解析的地址模板标识；instance 和 tag 必须引用当前账号已有对象；group 使用资源组标识，入口不校验其是否存在。</p>
+        :param _SourceContent: <p>访问源内容，格式由 SourceType 和 Direction 决定。net/ip 使用合法 IP 或 CIDR 的逗号列表，最多 10 项；location 使用地域 code，空字符串表示全部地域；vendor 使用 tencent、aliyun、aws、huawei、azure 或 all，可用逗号分隔；template 使用地址模板 ID；instance 使用资产实例 ID；group 使用资源组 ID；tag 使用 JSON 字符串 {"Key":"标签键","Value":"标签值"}，Key 和 Value 大小写固定。</p>
         :type SourceContent: str
-        :param _SourceType: <p>访问源类型，大小写不敏感。入站支持 net、ip、template、location、vendor；出站支持 net、ip、template、instance、group、tag。ip 和 net 均归一化为 IP 类型；template 会解析为模板的实际类型。</p>
+        :param _SourceType: <p>访问源类型，大小写不敏感。net、ip 均表示 IP/CIDR，template 表示地址模板，instance 表示资产实例，group 表示资产分组，tag 表示资源标签，location 表示地域，vendor 表示云厂商。入站支持 net、ip、template、location、vendor；出站支持 net、ip、template、instance、group、tag。</p>
         :type SourceType: str
-        :param _TargetContent: <p>访问目的内容，格式由 TargetType 和 Direction 决定。net/ip 使用合法 IP 或 CIDR 的逗号列表；domain 使用合法域名或 IP 的逗号列表，也接受单独的 *，标准泛域名和段内通配域名最多 5 级，段内通配域名还要求对应引擎版本支持；dnsparse 使用单个精确域名、最多 5 级的标准泛域名或相应域名模板，不接受单独的 *、段内通配域名、IP 或逗号列表；domainiptwoverify 使用单个精确域名或不含通配符的相应域名模板，不接受单独的 *、任何通配域名、IP 或逗号列表；location 使用地域 code，空字符串归一化为默认全地域掩码；vendor 使用 tencent、aliyun、aws、huawei、azure 或 all，可用逗号分隔；template 使用当前账号可解析的地址模板标识；instance 和 tag 必须引用当前账号已有对象；group 使用资源组标识，入口不校验其是否存在。解析后的目的内容最长 1023 字节；IP 或 domain 目的最多包含 10 个逗号分隔项。</p>
+        :param _TargetContent: <p>访问目的内容，格式由 TargetType 和 Direction 决定。net/ip 使用合法 IP 或 CIDR 的逗号列表；domain 使用合法域名或 IP 的逗号列表，也接受单独的 *，泛域名最多 5 级，段内通配域名要求当前环境支持对应能力；dnsparse 使用单个精确域名、最多 5 级的标准泛域名或相应域名模板，不接受单独的 *、段内通配域名、IP 或逗号列表；domainiptwoverify 使用单个精确域名或不含通配符的相应域名模板，不接受单独的 *、任何通配域名、IP 或逗号列表；location 使用地域 code，空字符串表示全部地域；vendor 使用 tencent、aliyun、aws、huawei、azure 或 all，可用逗号分隔；template 使用地址模板 ID；instance 使用资产实例 ID；group 使用资源组 ID；tag 使用 JSON 字符串 {"Key":"标签键","Value":"标签值"}，Key 和 Value 大小写固定。规范化后的目的内容最长 1023 字节；IP 或 domain 目的最多包含 10 项。</p>
         :type TargetContent: str
-        :param _TargetType: <p>访问目的类型，大小写不敏感。入站支持 net、ip、template、instance、group、tag；出站支持 net、ip、template、domain、dnsparse、domainiptwoverify、location、vendor。ip 和 net 均归一化为 IP 类型；template 会解析为模板的实际类型，入站解析为域名模板时被拒绝。dnsparse 和 domainiptwoverify 分别要求对应引擎版本支持；domainiptwoverify 使用域名模板时还要求严格模式域名模板版本支持；domain 目的使用段内通配域名时要求段内通配域名版本支持。</p>
+        :param _TargetType: <p>访问目的类型，大小写不敏感。net、ip 均表示 IP/CIDR，template 表示地址模板，instance 表示资产实例，group 表示资产分组，tag 表示资源标签，location 表示地域，vendor 表示云厂商，domain 表示 FQDN 匹配（内容也可传 IP 或 *），dnsparse 表示宽松匹配：Host/SNI 与域名匹配，或目的 IP 属于该域名当前 DNS 解析结果，满足任一条件即命中；domainiptwoverify 表示严格匹配：上述两个条件必须同时满足。入站支持 net、ip、template、instance、group、tag；出站支持 net、ip、template、domain、dnsparse、domainiptwoverify、location、vendor。template 按模板实际类型处理，入站不接受域名模板；部分域名模式要求当前环境支持对应能力。</p>
         :type TargetType: str
-        :param _Description: <p>规则描述。省略或传空字符串时保存为空；入口不裁剪内容，也不执行长度归一化或字符数校验。</p>
+        :param _Description: <p>规则描述，不超过 100 个字符。新增时按请求值保存；修改时完整替换，不继承旧值。</p>
         :type Description: str
         :param _Enable: <p>规则状态。字符串 true 表示启用，false 表示禁用，大小写不敏感。省略或传空字符串时读取当前账号的访问控制规则默认状态；配置不存在或无法解析时默认为启用。</p>
         :type Enable: str
-        :param _InternalUuid: <p>规则内部 UUID。新增请求仅在 From=batch_import_cover 时采用正整数值替换自动生成的内部 UUID；其他新增路径和修改请求忽略该字段。</p>
+        :param _InternalUuid: <p>覆盖导入规则标识。仅 From=batch_import_cover 接受正整数值；其它新增方式和修改请求忽略该字段。</p>
         :type InternalUuid: int
-        :param _ParamTemplateId: <p>端口协议模板 ID。省略或传空字符串时直接使用请求中的 Protocol 和 Port；非空时必须指向当前账号已有的端口协议模板，模板条目会逐项参与协议与目的类型联动校验。使用模板时，入口仍先校验请求中的 Protocol，并在该协议不是 ICMP 时校验请求中的 Port；请求值不要求固定为 ANY 和 -1/-1。</p>
+        :param _ParamTemplateId: <p>端口协议模板 ID。省略或传空字符串时使用 Protocol 和 Port；非空时必须指向当前账号已有的模板，模板条目须满足协议与目的类型的联动限制。使用模板时，Protocol 仍须有效；Protocol 不是 ICMP 时，Port 也须有效，但二者不要求固定为 ANY 和 -1/-1。</p>
         :type ParamTemplateId: str
         :param _Scope: <p>规则生效范围，值中不能含空白字符。ALL 表示全部 NAT 实例；地域 ID（如 ap-guangzhou）表示地域范围；cfwnat- 或 nat- 开头的实例 ID 表示实例范围。非空值必须是已知地域或当前账号已有的 NAT 实例。省略或传空字符串时，有请求 Region 则使用 Region，否则归一化为 ALL。</p>
         :type Scope: str
-        :param _Uuid: <p>规则数据库 ID。普通新增、insert_rule 和 batch_import 忽略该字段；batch_import_cover 新增会采用正整数值作为待写入记录 ID。修改请求使用正整数定位中间分区中的现有规则，先删除该记录再以同一 Uuid 重建并返回该 ID；省略、0 或负值无法定位修改目标。</p>
+        :param _Uuid: <p>规则 ID。普通新增、insert_rule 和 batch_import 忽略该字段；batch_import_cover 可使用正整数 ID。修改时必须提供当前账号已有且可修改的正整数 ID，并以请求中的完整字段替换该规则，同时保留并返回同一 Uuid；省略、0 或负值无法定位修改目标。</p>
         :type Uuid: int
         """
         self._Direction = None
@@ -6701,7 +6701,7 @@ class CreateNatRuleItem(AbstractModel):
 
     @property
     def OrderIndex(self):
-        r"""<p>规则序号。入口按 int64 读取后转换为 uint32，转换结果为 0 时归一化为 1；负值不会被单独拒绝，而会按 uint32 转换。写入中间分区时，序号为 1 或不大于当前同方向最大序号会按该位置插入并后移原规则，超过最大序号时通常归一化为末尾序号。新增且 From 不等于 insert_rule 时，如果本批首条规则转换后的序号为 1，则批内后续规则即使超过最大序号也按各自转换后的序号直接插入。</p>
+        r"""<p>规则顺序。使用 -1 追加到当前方向末尾，使用正序号在对应位置插入并顺延后续规则；0 按 1 处理，其他负数及超范围值不应使用。批量新增时按 Rules 顺序依次处理。</p>
         :rtype: int
         """
         return self._OrderIndex
@@ -6723,7 +6723,7 @@ class CreateNatRuleItem(AbstractModel):
 
     @property
     def Protocol(self):
-        r"""<p>协议，大小写不敏感并归一化为大写。四层值为 TCP、UDP、ICMP、ICMPV6、ANY；应用层值为 HTTP、HTTPS、HTTP/HTTPS、TLS/SSL、SMTP、SMTPS、SMTP/SMTPS、FTP、DNS，其中 domain、tls、ssl 也归一化为 TLS/SSL；ANY 同时可按四层协议和应用协议解析。入站仅允许 ANY、TCP、UDP；domain 目的及解析为域名模板的 template 目的接受上述应用层协议及 ANY，但不接受 FTP；dnsparse 和 domainiptwoverify 目的仅允许 TCP 或 UDP；其他目的不接受 FTP 和 ANY 之外的应用层协议。Protocol=DNS 且目的不是域名模板或单独的 * 时，目的列表只能包含域名，不能包含 IP。</p>
+        r"""<p>协议，大小写不敏感并归一化为大写。四层值为 TCP、UDP、ICMP、ICMPV6、ANY；应用层值为 HTTP、HTTPS、HTTP/HTTPS、TLS/SSL、SMTP、SMTPS、SMTP/SMTPS、FTP、DNS，其中 domain、tls、ssl 也归一化为 TLS/SSL；ANY 表示不限定协议，不表示省略 Protocol；它同时可按四层协议和应用协议解析。入站仅允许 ANY、TCP、UDP；domain 目的及解析为域名模板的 template 目的接受上述应用层协议及 ANY，但不接受 FTP；dnsparse 和 domainiptwoverify 目的仅允许 TCP 或 UDP；其他目的不接受 FTP 和 ANY 之外的应用层协议。Protocol=DNS 且目的不是域名模板或单独的 * 时，目的列表只能包含域名，不能包含 IP。</p>
         :rtype: str
         """
         return self._Protocol
@@ -6734,7 +6734,7 @@ class CreateNatRuleItem(AbstractModel):
 
     @property
     def RuleAction(self):
-        r"""<p>流量处理方式，大小写不敏感：accept 表示放行，drop 表示拒绝，log 表示观察；isolateinaccept、isolateoutaccept 归一化为 accept，isolateindrop、isolateoutdrop 归一化为 drop。</p>
+        r"""<p>流量处理方式，大小写不敏感：accept 表示放行，drop 表示拒绝，log 表示观察；isolateinaccept 表示放行访问隔离资产的白名单流量，isolateindrop 表示阻断访问隔离资产的其它流量，isolateoutaccept 表示放行隔离资产访问白名单目标，isolateoutdrop 表示阻断隔离资产访问其它目标。</p>
         :rtype: str
         """
         return self._RuleAction
@@ -6745,7 +6745,7 @@ class CreateNatRuleItem(AbstractModel):
 
     @property
     def SourceContent(self):
-        r"""<p>访问源内容，格式由 SourceType 和 Direction 决定。net/ip 使用合法 IP 或 CIDR 的逗号列表，最多 10 项；location 使用地域 code，空字符串归一化为默认全地域掩码；vendor 使用 tencent、aliyun、aws、huawei、azure 或 all，可用逗号分隔；template 使用当前账号可解析的地址模板标识；instance 和 tag 必须引用当前账号已有对象；group 使用资源组标识，入口不校验其是否存在。</p>
+        r"""<p>访问源内容，格式由 SourceType 和 Direction 决定。net/ip 使用合法 IP 或 CIDR 的逗号列表，最多 10 项；location 使用地域 code，空字符串表示全部地域；vendor 使用 tencent、aliyun、aws、huawei、azure 或 all，可用逗号分隔；template 使用地址模板 ID；instance 使用资产实例 ID；group 使用资源组 ID；tag 使用 JSON 字符串 {"Key":"标签键","Value":"标签值"}，Key 和 Value 大小写固定。</p>
         :rtype: str
         """
         return self._SourceContent
@@ -6756,7 +6756,7 @@ class CreateNatRuleItem(AbstractModel):
 
     @property
     def SourceType(self):
-        r"""<p>访问源类型，大小写不敏感。入站支持 net、ip、template、location、vendor；出站支持 net、ip、template、instance、group、tag。ip 和 net 均归一化为 IP 类型；template 会解析为模板的实际类型。</p>
+        r"""<p>访问源类型，大小写不敏感。net、ip 均表示 IP/CIDR，template 表示地址模板，instance 表示资产实例，group 表示资产分组，tag 表示资源标签，location 表示地域，vendor 表示云厂商。入站支持 net、ip、template、location、vendor；出站支持 net、ip、template、instance、group、tag。</p>
         :rtype: str
         """
         return self._SourceType
@@ -6767,7 +6767,7 @@ class CreateNatRuleItem(AbstractModel):
 
     @property
     def TargetContent(self):
-        r"""<p>访问目的内容，格式由 TargetType 和 Direction 决定。net/ip 使用合法 IP 或 CIDR 的逗号列表；domain 使用合法域名或 IP 的逗号列表，也接受单独的 *，标准泛域名和段内通配域名最多 5 级，段内通配域名还要求对应引擎版本支持；dnsparse 使用单个精确域名、最多 5 级的标准泛域名或相应域名模板，不接受单独的 *、段内通配域名、IP 或逗号列表；domainiptwoverify 使用单个精确域名或不含通配符的相应域名模板，不接受单独的 *、任何通配域名、IP 或逗号列表；location 使用地域 code，空字符串归一化为默认全地域掩码；vendor 使用 tencent、aliyun、aws、huawei、azure 或 all，可用逗号分隔；template 使用当前账号可解析的地址模板标识；instance 和 tag 必须引用当前账号已有对象；group 使用资源组标识，入口不校验其是否存在。解析后的目的内容最长 1023 字节；IP 或 domain 目的最多包含 10 个逗号分隔项。</p>
+        r"""<p>访问目的内容，格式由 TargetType 和 Direction 决定。net/ip 使用合法 IP 或 CIDR 的逗号列表；domain 使用合法域名或 IP 的逗号列表，也接受单独的 *，泛域名最多 5 级，段内通配域名要求当前环境支持对应能力；dnsparse 使用单个精确域名、最多 5 级的标准泛域名或相应域名模板，不接受单独的 *、段内通配域名、IP 或逗号列表；domainiptwoverify 使用单个精确域名或不含通配符的相应域名模板，不接受单独的 *、任何通配域名、IP 或逗号列表；location 使用地域 code，空字符串表示全部地域；vendor 使用 tencent、aliyun、aws、huawei、azure 或 all，可用逗号分隔；template 使用地址模板 ID；instance 使用资产实例 ID；group 使用资源组 ID；tag 使用 JSON 字符串 {"Key":"标签键","Value":"标签值"}，Key 和 Value 大小写固定。规范化后的目的内容最长 1023 字节；IP 或 domain 目的最多包含 10 项。</p>
         :rtype: str
         """
         return self._TargetContent
@@ -6778,7 +6778,7 @@ class CreateNatRuleItem(AbstractModel):
 
     @property
     def TargetType(self):
-        r"""<p>访问目的类型，大小写不敏感。入站支持 net、ip、template、instance、group、tag；出站支持 net、ip、template、domain、dnsparse、domainiptwoverify、location、vendor。ip 和 net 均归一化为 IP 类型；template 会解析为模板的实际类型，入站解析为域名模板时被拒绝。dnsparse 和 domainiptwoverify 分别要求对应引擎版本支持；domainiptwoverify 使用域名模板时还要求严格模式域名模板版本支持；domain 目的使用段内通配域名时要求段内通配域名版本支持。</p>
+        r"""<p>访问目的类型，大小写不敏感。net、ip 均表示 IP/CIDR，template 表示地址模板，instance 表示资产实例，group 表示资产分组，tag 表示资源标签，location 表示地域，vendor 表示云厂商，domain 表示 FQDN 匹配（内容也可传 IP 或 *），dnsparse 表示宽松匹配：Host/SNI 与域名匹配，或目的 IP 属于该域名当前 DNS 解析结果，满足任一条件即命中；domainiptwoverify 表示严格匹配：上述两个条件必须同时满足。入站支持 net、ip、template、instance、group、tag；出站支持 net、ip、template、domain、dnsparse、domainiptwoverify、location、vendor。template 按模板实际类型处理，入站不接受域名模板；部分域名模式要求当前环境支持对应能力。</p>
         :rtype: str
         """
         return self._TargetType
@@ -6789,7 +6789,7 @@ class CreateNatRuleItem(AbstractModel):
 
     @property
     def Description(self):
-        r"""<p>规则描述。省略或传空字符串时保存为空；入口不裁剪内容，也不执行长度归一化或字符数校验。</p>
+        r"""<p>规则描述，不超过 100 个字符。新增时按请求值保存；修改时完整替换，不继承旧值。</p>
         :rtype: str
         """
         return self._Description
@@ -6811,7 +6811,7 @@ class CreateNatRuleItem(AbstractModel):
 
     @property
     def InternalUuid(self):
-        r"""<p>规则内部 UUID。新增请求仅在 From=batch_import_cover 时采用正整数值替换自动生成的内部 UUID；其他新增路径和修改请求忽略该字段。</p>
+        r"""<p>覆盖导入规则标识。仅 From=batch_import_cover 接受正整数值；其它新增方式和修改请求忽略该字段。</p>
         :rtype: int
         """
         return self._InternalUuid
@@ -6822,7 +6822,7 @@ class CreateNatRuleItem(AbstractModel):
 
     @property
     def ParamTemplateId(self):
-        r"""<p>端口协议模板 ID。省略或传空字符串时直接使用请求中的 Protocol 和 Port；非空时必须指向当前账号已有的端口协议模板，模板条目会逐项参与协议与目的类型联动校验。使用模板时，入口仍先校验请求中的 Protocol，并在该协议不是 ICMP 时校验请求中的 Port；请求值不要求固定为 ANY 和 -1/-1。</p>
+        r"""<p>端口协议模板 ID。省略或传空字符串时使用 Protocol 和 Port；非空时必须指向当前账号已有的模板，模板条目须满足协议与目的类型的联动限制。使用模板时，Protocol 仍须有效；Protocol 不是 ICMP 时，Port 也须有效，但二者不要求固定为 ANY 和 -1/-1。</p>
         :rtype: str
         """
         return self._ParamTemplateId
@@ -6844,7 +6844,7 @@ class CreateNatRuleItem(AbstractModel):
 
     @property
     def Uuid(self):
-        r"""<p>规则数据库 ID。普通新增、insert_rule 和 batch_import 忽略该字段；batch_import_cover 新增会采用正整数值作为待写入记录 ID。修改请求使用正整数定位中间分区中的现有规则，先删除该记录再以同一 Uuid 重建并返回该 ID；省略、0 或负值无法定位修改目标。</p>
+        r"""<p>规则 ID。普通新增、insert_rule 和 batch_import 忽略该字段；batch_import_cover 可使用正整数 ID。修改时必须提供当前账号已有且可修改的正整数 ID，并以请求中的完整字段替换该规则，同时保留并返回同一 Uuid；省略、0 或负值无法定位修改目标。</p>
         :rtype: int
         """
         return self._Uuid
@@ -6881,7 +6881,7 @@ class CreateNatRuleItem(AbstractModel):
 
 
 class CreateRuleItem(AbstractModel):
-    r"""互联网边界访问控制规则参数结构，供新增和修改共用。每个对象都会被解析为一条完整的新规则记录；替换现有规则时，请求中省略的字段不会从旧记录自动继承，仅内部 AutoTask 字段由服务端保留。
+    r"""互联网边界访问控制规则的完整内容，供新增和修改共用。新增时缺省值按各字段说明处理；修改时完整替换可写内容，省略的可写字段不继承旧值，系统管理字段不受影响。
 
     """
 
@@ -6889,35 +6889,35 @@ class CreateRuleItem(AbstractModel):
         r"""
         :param _Direction: 规则方向：1 表示入站，0 表示出站；其它整数或省略会校验失败。方向还决定 SourceType、TargetType、Scope 与 Protocol 的可用组合。
         :type Direction: int
-        :param _OrderIndex: 规则在当前方向可操作分区内的序号。Handler 先把 int64 转为 uint32：转换结果 0 归一化为 1；结果不超过当前最大序号时在该位置插入并顺延后续规则，否则追加到末尾。省略或传 -1 会追加；超出 uint32 范围的整数会绕回，调用方不应依赖该转换。当 Rules 含多条规则时，只用首条规则的序号和方向决定整批进入插入或追加分支：追加时整批改写为该方向末尾的连续序号，插入时其余规则保留各自解析后的序号。
+        :param _OrderIndex: 规则顺序，必须填写。传 -1 时追加到当前方向末尾；正序号表示在对应位置插入并顺延后续规则；0 按 1 处理，其他负数及超范围值不应使用。新增请求包含多条规则时，Direction 必须相同；追加时全部传 -1，插入时按请求顺序传连续递增的正序号。修改请求只接受一条规则。
         :type OrderIndex: int
-        :param _Port: 目的端口。Protocol 归一化为 ICMP 时本字段被忽略并保存为空字符串；其它协议必须提供可解析字符串，按逗号分隔为单个正整数或“起始/结束”整数范围，范围起始值不得大于结束值，Handler 未对范围端点设置显式上下界，-1/-1 表示全部端口。FTP 只接受不含逗号和斜杠的单个正整数。domain 或域名模板目的在 side 或 all 范围下不接受除 -1/-1、0/65535 之外的端口范围。
+        :param _Port: 目的端口。Protocol 为 ICMP 时忽略本字段并置为空字符串；其它协议必须提供可解析字符串，可按逗号分隔填写正整数单端口或“起始/结束”范围，起始值不得大于结束值，-1/-1 表示全部端口。FTP 只接受单个正整数。domain 或域名模板目的在 side 或 all 范围下仅接受 -1/-1 或 0/65535。
         :type Port: str
-        :param _Protocol: 协议，解析不区分大小写。四层值 TCP、UDP、ICMP、ICMPV6、ANY 归一化为大写；应用层值 HTTP、HTTPS、HTTP/HTTPS、SMTP、SMTPS、SMTP/SMTPS、FTP、DNS、TLS/SSL 及别名 domain、TLS、SSL 归一化为对应标准值。ANY 同时属于可解析的四层协议和应用协议，domain、TLS、SSL 均归一化为 TLS/SSL。domain 或域名模板目的接受上述应用层协议及 ANY，但不接受 FTP 和其它四层协议；dnsparse、domainiptwoverify 仅接受 TCP 或 UDP 且仅支持 serial；其它目的在公有云环境不接受 FTP、ANY 之外的应用层协议。side 或 all 范围下，入站仅接受 TCP，出站仅接受 TCP、HTTP/HTTPS 或 TLS/SSL。DNS 用于非 domain 目的且目的不是 * 时，目的内容还必须是非 IP 的合法域名规则列表。使用协议端口模板时，模板中的每组协议和端口也执行这些联动校验。
+        :param _Protocol: 协议，解析不区分大小写。四层值 TCP、UDP、ICMP、ICMPV6、ANY 归一化为大写；应用层值 HTTP、HTTPS、HTTP/HTTPS、SMTP、SMTPS、SMTP/SMTPS、FTP、DNS、TLS/SSL 及别名 domain、TLS、SSL 归一化为对应标准值。ANY 表示不限定协议，不表示省略 Protocol；它同时属于可解析的四层协议和应用协议，domain、TLS、SSL 均归一化为 TLS/SSL。domain 或域名模板目的接受上述应用层协议及 ANY，但不接受 FTP 和其它四层协议；dnsparse、domainiptwoverify 仅接受 TCP 或 UDP 且仅支持 serial；其它目的在公有云环境不接受 FTP、ANY 之外的应用层协议。side 或 all 范围下，入站仅接受 TCP，出站仅接受 TCP、HTTP/HTTPS 或 TLS/SSL。DNS 用于非 domain 目的且目的不是 * 时，目的内容还必须是非 IP 的合法域名规则列表。使用协议端口模板时，模板中的每组协议和端口也执行这些联动校验。
         :type Protocol: str
-        :param _RuleAction: 流量处理动作，解析不区分大小写。accept 表示放行，drop 表示拒绝，log 表示观察；isolateinaccept、isolateoutaccept 归一化为放行，isolateindrop、isolateoutdrop 归一化为拒绝。drop 及其拒绝别名还会校验当前账号是否具备互联网边界阻断能力。
+        :param _RuleAction: 流量处理动作，解析不区分大小写。accept 表示放行，drop 表示拒绝，log 表示观察；isolateinaccept 表示放行访问隔离资产的白名单流量，isolateindrop 表示阻断访问隔离资产的其它流量，isolateoutaccept 表示放行隔离资产访问白名单目标，isolateoutdrop 表示阻断隔离资产访问其它目标。drop 及其拒绝别名还会校验当前账号是否具备互联网边界阻断能力。
         :type RuleAction: str
-        :param _SourceContent: 访问源内容。ip 或 net 使用合法 IP/CIDR 列表，普通列表最多 10 项；template 使用当前账号可解析的地址模板标识；Direction=0 时，instance、group、tag 使用相应资源标识，其中 instance 必须能解析到公网 IP，tag 必须存在；Direction=1 时，location 使用地域 code CSV 并须通过当前账号的新地域规则能力校验，vendor 使用 tencent、aliyun、aws、huawei、azure 或 all 的 CSV。location、vendor 保存时会转换为地域或厂商匹配信息。
+        :param _SourceContent: 访问源内容。ip 或 net 使用合法 IP/CIDR 列表，普通列表最多 10 项；template 使用当前账号可解析的地址模板标识；Direction=0 时，instance、group、tag 使用相应资源标识，其中 instance 必须能解析到公网 IP，tag 必须存在且格式为 {"Key":"标签键","Value":"标签值"}；Direction=1 时，location 使用地域 code CSV 并须通过当前账号的新地域规则能力校验，vendor 使用 tencent、aliyun、aws、huawei、azure 或 all 的 CSV。location、vendor 保存时会转换为地域或厂商匹配信息。
         :type SourceContent: str
-        :param _SourceType: 访问源类型，解析不区分大小写。Direction=1 接受 ip、net、template、location、vendor；Direction=0 接受 ip、net、template、instance、group、tag。ip 与 net 归一化为同一 IP/CIDR 类型；其它已解析但不在对应方向处理分支中的类型会校验失败。
+        :param _SourceType: 访问源类型，解析不区分大小写。net、ip 均表示 IP/CIDR，template 表示地址模板，instance 表示资产实例，group 表示资产分组，tag 表示资源标签，location 表示地域，vendor 表示云厂商。Direction=1 接受 ip、net、template、location、vendor；Direction=0 接受 ip、net、template、instance、group、tag。ip 与 net 按同一类型处理。
         :type SourceType: str
-        :param _TargetContent: 访问目的内容。ip 或 net 使用合法 IP/CIDR 列表；domain 使用后端域名规则校验接受的列表（包括 IP、普通域名和通配域名）或 *；普通 IP/CIDR/domain 列表最多 10 项，通配域名最多 5 级。domain 配合 DNS 协议时例外地不接受 IP。dnsparse 使用单个合法域名、泛域名或当前账号可解析的 mb_ 域名模板，domainiptwoverify 使用单个不含任何通配符的合法域名或此类 mb_ 域名模板；两者都不接受单独的 *、IP、逗号列表或段内通配域名。串行 domain 段内通配和串行 domainiptwoverify 的 mb_ 域名模板分别要求对应集群引擎版本支持。template 使用当前账号可解析的地址模板标识；Direction=1 时，instance、group、tag 使用相应资源标识，其中 instance 必须能解析到公网 IP，tag 必须存在；Direction=0 时，location 使用地域 code CSV 并须通过当前账号的新地域规则能力校验，vendor 使用 tencent、aliyun、aws、huawei、azure 或 all 的 CSV。解析并归一化后的目的内容长度不得超过 1023。
+        :param _TargetContent: 访问目的内容。ip 或 net 使用合法 IP/CIDR 列表；domain 使用合法的 IP、普通域名或通配域名列表，也接受单独的 *；普通列表最多 10 项，通配域名最多 5 级。domain 配合 DNS 协议时不接受 IP。dnsparse 使用单个合法域名、泛域名或当前账号可解析的 mb_ 域名模板，domainiptwoverify 使用单个不含通配符的合法域名或此类模板；两者均不接受单独的 *、IP、逗号列表或段内通配域名。串行 domain 段内通配和 domainiptwoverify 模板要求当前环境支持对应能力。template 使用当前账号可解析的地址模板标识；Direction=1 时，instance、group、tag 使用相应资源标识，其中 instance 必须能解析到公网 IP，tag 必须存在且格式为 {"Key":"标签键","Value":"标签值"}；Direction=0 时，location 使用地域 code CSV，vendor 使用 tencent、aliyun、aws、huawei、azure 或 all 的 CSV。规范化后的内容最长 1023。
         :type TargetContent: str
-        :param _TargetType: 访问目的类型，解析不区分大小写。Direction=1 接受 ip、net、template、domain、instance、group、tag；Direction=0 接受 ip、net、template、domain、dnsparse、domainiptwoverify、location、vendor。ip 与 net 归一化为同一 IP/CIDR 类型；其它已解析但不在对应方向处理分支中的类型会校验失败。
+        :param _TargetType: 访问目的类型，解析不区分大小写。net、ip 均表示 IP/CIDR，template 表示地址模板，instance 表示资产实例，group 表示资产分组，tag 表示资源标签，location 表示地域，vendor 表示云厂商，domain 表示 FQDN 匹配（内容也可传 IP 或 *），dnsparse 表示宽松匹配：Host/SNI 与域名匹配，或目的 IP 属于该域名当前 DNS 解析结果，满足任一条件即命中；domainiptwoverify 表示严格匹配：上述两个条件必须同时满足。Direction=1 接受 ip、net、template、domain、instance、group、tag；Direction=0 接受 ip、net、template、domain、dnsparse、domainiptwoverify、location、vendor。
         :type TargetType: str
-        :param _Description: 规则描述。省略或传空字符串时保存为空；替换现有规则时不继承旧值。Handler 未对字符数设置显式限制。
+        :param _Description: 规则描述，不超过 100 个字符。新增时按请求值保存；修改时完整替换，不继承旧值。
         :type Description: str
         :param _Enable: 启用状态。非空值不区分大小写接受字符串 true 或 false，并归一化为启用或停用；省略或传空字符串时读取当前账号的访问控制默认启用配置，该配置不可用时默认启用。替换现有规则时不继承旧值。
         :type Enable: str
-        :param _LogId: 关联告警或来源事件 ID。省略或传空字符串时保存为空，替换现有规则时不继承旧值；From=batch_import_cover 时，非空值还会作为覆盖导入后规则的内部字符串 UUID 复用。
+        :param _LogId: 关联告警或来源事件 ID。新增时省略或传空字符串表示不关联；修改时应将 DescribeCfwRules 返回的 rules[].log_id 原样传入，未返回时省略或传空字符串。替换时不会自动继承旧值；From=batch_import_cover 时，非空值还会作为覆盖导入后规则的字符串标识复用。
         :type LogId: str
-        :param _ParamTemplateId: 协议端口模板 ID。省略或传空字符串表示不使用模板；非空时按当前账号和 ID 加载模板，找不到会失败。受支持输入应指向内容格式为“协议:端口”的协议端口模板；其中格式有效的每组协议和端口都会执行 Direction、TargetType 与 Scope 联动校验，异常模板内容不属于受支持输入。Protocol 和 Port 仍会在加载模板前按各自字段规则解析，原生 Handler 不要求固定填写 ANY、-1/-1 或 serial。
+        :param _ParamTemplateId: 协议端口模板 ID。省略或传空字符串表示不使用模板；非空时必须指向当前账号已有且内容格式为“协议:端口”的模板，否则请求失败。模板中的协议和端口须满足 Direction、TargetType 与 Scope 的联动限制。Protocol 和 Port 仍须符合各自字段规则，但不要求固定填写 ANY、-1/-1 或 serial。
         :type ParamTemplateId: str
-        :param _RuleSource: 规则来源。整数 2 原样保存；省略或传入其它整数均归一化为 0。
+        :param _RuleSource: 规则来源：0 表示普通规则，2 表示隔离资产出向访问规则。新增时可以省略，省略按 0 处理；显式传值及修改时仅接受 0 或 2，修改时应传入原规则值。
         :type RuleSource: int
-        :param _Scope: 生效范围，解析不区分大小写：serial 表示串行，side 表示旁路，all 表示全局；省略、空字符串或其它值会校验失败。国际站环境会将有效输入统一归一化为 serial。协议、端口、目的类型及协议端口模板的联动限制见 Protocol、Port 和 ParamTemplateId。
+        :param _Scope: 生效范围，解析不区分大小写：serial 表示仅互联网边界串行防火墙，side 表示仅互联网边界旁路防火墙，all 表示同时作用于串行和旁路防火墙；省略、空字符串或其它值会校验失败。国际站环境会将有效输入统一归一化为 serial。协议、端口、目的类型及协议端口模板的联动限制见 Protocol、Port 和 ParamTemplateId。
         :type Scope: str
-        :param _Uuid: 规则数值 ID。普通新增、指定位置新增和批量导入会忽略该字段；From=batch_import_cover 时正整数 ID 会作为覆盖导入后的规则 ID 复用；修改时必须提供当前账号可操作分区内已存在的正整数 ID，用于定位并替换原规则，省略、非正整数或不存在的 ID 会导致规则查询失败。
+        :param _Uuid: 规则数值 ID。普通新增、指定位置新增和批量导入会忽略该字段；From=batch_import_cover 时可使用正整数 ID；修改时必须提供当前账号已有且可修改的正整数 ID，用于定位并完整替换原规则，省略、非正整数或不存在的 ID 会导致请求失败。
         :type Uuid: int
         """
         self._Direction = None
@@ -6950,7 +6950,7 @@ class CreateRuleItem(AbstractModel):
 
     @property
     def OrderIndex(self):
-        r"""规则在当前方向可操作分区内的序号。Handler 先把 int64 转为 uint32：转换结果 0 归一化为 1；结果不超过当前最大序号时在该位置插入并顺延后续规则，否则追加到末尾。省略或传 -1 会追加；超出 uint32 范围的整数会绕回，调用方不应依赖该转换。当 Rules 含多条规则时，只用首条规则的序号和方向决定整批进入插入或追加分支：追加时整批改写为该方向末尾的连续序号，插入时其余规则保留各自解析后的序号。
+        r"""规则顺序，必须填写。传 -1 时追加到当前方向末尾；正序号表示在对应位置插入并顺延后续规则；0 按 1 处理，其他负数及超范围值不应使用。新增请求包含多条规则时，Direction 必须相同；追加时全部传 -1，插入时按请求顺序传连续递增的正序号。修改请求只接受一条规则。
         :rtype: int
         """
         return self._OrderIndex
@@ -6961,7 +6961,7 @@ class CreateRuleItem(AbstractModel):
 
     @property
     def Port(self):
-        r"""目的端口。Protocol 归一化为 ICMP 时本字段被忽略并保存为空字符串；其它协议必须提供可解析字符串，按逗号分隔为单个正整数或“起始/结束”整数范围，范围起始值不得大于结束值，Handler 未对范围端点设置显式上下界，-1/-1 表示全部端口。FTP 只接受不含逗号和斜杠的单个正整数。domain 或域名模板目的在 side 或 all 范围下不接受除 -1/-1、0/65535 之外的端口范围。
+        r"""目的端口。Protocol 为 ICMP 时忽略本字段并置为空字符串；其它协议必须提供可解析字符串，可按逗号分隔填写正整数单端口或“起始/结束”范围，起始值不得大于结束值，-1/-1 表示全部端口。FTP 只接受单个正整数。domain 或域名模板目的在 side 或 all 范围下仅接受 -1/-1 或 0/65535。
         :rtype: str
         """
         return self._Port
@@ -6972,7 +6972,7 @@ class CreateRuleItem(AbstractModel):
 
     @property
     def Protocol(self):
-        r"""协议，解析不区分大小写。四层值 TCP、UDP、ICMP、ICMPV6、ANY 归一化为大写；应用层值 HTTP、HTTPS、HTTP/HTTPS、SMTP、SMTPS、SMTP/SMTPS、FTP、DNS、TLS/SSL 及别名 domain、TLS、SSL 归一化为对应标准值。ANY 同时属于可解析的四层协议和应用协议，domain、TLS、SSL 均归一化为 TLS/SSL。domain 或域名模板目的接受上述应用层协议及 ANY，但不接受 FTP 和其它四层协议；dnsparse、domainiptwoverify 仅接受 TCP 或 UDP 且仅支持 serial；其它目的在公有云环境不接受 FTP、ANY 之外的应用层协议。side 或 all 范围下，入站仅接受 TCP，出站仅接受 TCP、HTTP/HTTPS 或 TLS/SSL。DNS 用于非 domain 目的且目的不是 * 时，目的内容还必须是非 IP 的合法域名规则列表。使用协议端口模板时，模板中的每组协议和端口也执行这些联动校验。
+        r"""协议，解析不区分大小写。四层值 TCP、UDP、ICMP、ICMPV6、ANY 归一化为大写；应用层值 HTTP、HTTPS、HTTP/HTTPS、SMTP、SMTPS、SMTP/SMTPS、FTP、DNS、TLS/SSL 及别名 domain、TLS、SSL 归一化为对应标准值。ANY 表示不限定协议，不表示省略 Protocol；它同时属于可解析的四层协议和应用协议，domain、TLS、SSL 均归一化为 TLS/SSL。domain 或域名模板目的接受上述应用层协议及 ANY，但不接受 FTP 和其它四层协议；dnsparse、domainiptwoverify 仅接受 TCP 或 UDP 且仅支持 serial；其它目的在公有云环境不接受 FTP、ANY 之外的应用层协议。side 或 all 范围下，入站仅接受 TCP，出站仅接受 TCP、HTTP/HTTPS 或 TLS/SSL。DNS 用于非 domain 目的且目的不是 * 时，目的内容还必须是非 IP 的合法域名规则列表。使用协议端口模板时，模板中的每组协议和端口也执行这些联动校验。
         :rtype: str
         """
         return self._Protocol
@@ -6983,7 +6983,7 @@ class CreateRuleItem(AbstractModel):
 
     @property
     def RuleAction(self):
-        r"""流量处理动作，解析不区分大小写。accept 表示放行，drop 表示拒绝，log 表示观察；isolateinaccept、isolateoutaccept 归一化为放行，isolateindrop、isolateoutdrop 归一化为拒绝。drop 及其拒绝别名还会校验当前账号是否具备互联网边界阻断能力。
+        r"""流量处理动作，解析不区分大小写。accept 表示放行，drop 表示拒绝，log 表示观察；isolateinaccept 表示放行访问隔离资产的白名单流量，isolateindrop 表示阻断访问隔离资产的其它流量，isolateoutaccept 表示放行隔离资产访问白名单目标，isolateoutdrop 表示阻断隔离资产访问其它目标。drop 及其拒绝别名还会校验当前账号是否具备互联网边界阻断能力。
         :rtype: str
         """
         return self._RuleAction
@@ -6994,7 +6994,7 @@ class CreateRuleItem(AbstractModel):
 
     @property
     def SourceContent(self):
-        r"""访问源内容。ip 或 net 使用合法 IP/CIDR 列表，普通列表最多 10 项；template 使用当前账号可解析的地址模板标识；Direction=0 时，instance、group、tag 使用相应资源标识，其中 instance 必须能解析到公网 IP，tag 必须存在；Direction=1 时，location 使用地域 code CSV 并须通过当前账号的新地域规则能力校验，vendor 使用 tencent、aliyun、aws、huawei、azure 或 all 的 CSV。location、vendor 保存时会转换为地域或厂商匹配信息。
+        r"""访问源内容。ip 或 net 使用合法 IP/CIDR 列表，普通列表最多 10 项；template 使用当前账号可解析的地址模板标识；Direction=0 时，instance、group、tag 使用相应资源标识，其中 instance 必须能解析到公网 IP，tag 必须存在且格式为 {"Key":"标签键","Value":"标签值"}；Direction=1 时，location 使用地域 code CSV 并须通过当前账号的新地域规则能力校验，vendor 使用 tencent、aliyun、aws、huawei、azure 或 all 的 CSV。location、vendor 保存时会转换为地域或厂商匹配信息。
         :rtype: str
         """
         return self._SourceContent
@@ -7005,7 +7005,7 @@ class CreateRuleItem(AbstractModel):
 
     @property
     def SourceType(self):
-        r"""访问源类型，解析不区分大小写。Direction=1 接受 ip、net、template、location、vendor；Direction=0 接受 ip、net、template、instance、group、tag。ip 与 net 归一化为同一 IP/CIDR 类型；其它已解析但不在对应方向处理分支中的类型会校验失败。
+        r"""访问源类型，解析不区分大小写。net、ip 均表示 IP/CIDR，template 表示地址模板，instance 表示资产实例，group 表示资产分组，tag 表示资源标签，location 表示地域，vendor 表示云厂商。Direction=1 接受 ip、net、template、location、vendor；Direction=0 接受 ip、net、template、instance、group、tag。ip 与 net 按同一类型处理。
         :rtype: str
         """
         return self._SourceType
@@ -7016,7 +7016,7 @@ class CreateRuleItem(AbstractModel):
 
     @property
     def TargetContent(self):
-        r"""访问目的内容。ip 或 net 使用合法 IP/CIDR 列表；domain 使用后端域名规则校验接受的列表（包括 IP、普通域名和通配域名）或 *；普通 IP/CIDR/domain 列表最多 10 项，通配域名最多 5 级。domain 配合 DNS 协议时例外地不接受 IP。dnsparse 使用单个合法域名、泛域名或当前账号可解析的 mb_ 域名模板，domainiptwoverify 使用单个不含任何通配符的合法域名或此类 mb_ 域名模板；两者都不接受单独的 *、IP、逗号列表或段内通配域名。串行 domain 段内通配和串行 domainiptwoverify 的 mb_ 域名模板分别要求对应集群引擎版本支持。template 使用当前账号可解析的地址模板标识；Direction=1 时，instance、group、tag 使用相应资源标识，其中 instance 必须能解析到公网 IP，tag 必须存在；Direction=0 时，location 使用地域 code CSV 并须通过当前账号的新地域规则能力校验，vendor 使用 tencent、aliyun、aws、huawei、azure 或 all 的 CSV。解析并归一化后的目的内容长度不得超过 1023。
+        r"""访问目的内容。ip 或 net 使用合法 IP/CIDR 列表；domain 使用合法的 IP、普通域名或通配域名列表，也接受单独的 *；普通列表最多 10 项，通配域名最多 5 级。domain 配合 DNS 协议时不接受 IP。dnsparse 使用单个合法域名、泛域名或当前账号可解析的 mb_ 域名模板，domainiptwoverify 使用单个不含通配符的合法域名或此类模板；两者均不接受单独的 *、IP、逗号列表或段内通配域名。串行 domain 段内通配和 domainiptwoverify 模板要求当前环境支持对应能力。template 使用当前账号可解析的地址模板标识；Direction=1 时，instance、group、tag 使用相应资源标识，其中 instance 必须能解析到公网 IP，tag 必须存在且格式为 {"Key":"标签键","Value":"标签值"}；Direction=0 时，location 使用地域 code CSV，vendor 使用 tencent、aliyun、aws、huawei、azure 或 all 的 CSV。规范化后的内容最长 1023。
         :rtype: str
         """
         return self._TargetContent
@@ -7027,7 +7027,7 @@ class CreateRuleItem(AbstractModel):
 
     @property
     def TargetType(self):
-        r"""访问目的类型，解析不区分大小写。Direction=1 接受 ip、net、template、domain、instance、group、tag；Direction=0 接受 ip、net、template、domain、dnsparse、domainiptwoverify、location、vendor。ip 与 net 归一化为同一 IP/CIDR 类型；其它已解析但不在对应方向处理分支中的类型会校验失败。
+        r"""访问目的类型，解析不区分大小写。net、ip 均表示 IP/CIDR，template 表示地址模板，instance 表示资产实例，group 表示资产分组，tag 表示资源标签，location 表示地域，vendor 表示云厂商，domain 表示 FQDN 匹配（内容也可传 IP 或 *），dnsparse 表示宽松匹配：Host/SNI 与域名匹配，或目的 IP 属于该域名当前 DNS 解析结果，满足任一条件即命中；domainiptwoverify 表示严格匹配：上述两个条件必须同时满足。Direction=1 接受 ip、net、template、domain、instance、group、tag；Direction=0 接受 ip、net、template、domain、dnsparse、domainiptwoverify、location、vendor。
         :rtype: str
         """
         return self._TargetType
@@ -7038,7 +7038,7 @@ class CreateRuleItem(AbstractModel):
 
     @property
     def Description(self):
-        r"""规则描述。省略或传空字符串时保存为空；替换现有规则时不继承旧值。Handler 未对字符数设置显式限制。
+        r"""规则描述，不超过 100 个字符。新增时按请求值保存；修改时完整替换，不继承旧值。
         :rtype: str
         """
         return self._Description
@@ -7060,7 +7060,7 @@ class CreateRuleItem(AbstractModel):
 
     @property
     def LogId(self):
-        r"""关联告警或来源事件 ID。省略或传空字符串时保存为空，替换现有规则时不继承旧值；From=batch_import_cover 时，非空值还会作为覆盖导入后规则的内部字符串 UUID 复用。
+        r"""关联告警或来源事件 ID。新增时省略或传空字符串表示不关联；修改时应将 DescribeCfwRules 返回的 rules[].log_id 原样传入，未返回时省略或传空字符串。替换时不会自动继承旧值；From=batch_import_cover 时，非空值还会作为覆盖导入后规则的字符串标识复用。
         :rtype: str
         """
         return self._LogId
@@ -7071,7 +7071,7 @@ class CreateRuleItem(AbstractModel):
 
     @property
     def ParamTemplateId(self):
-        r"""协议端口模板 ID。省略或传空字符串表示不使用模板；非空时按当前账号和 ID 加载模板，找不到会失败。受支持输入应指向内容格式为“协议:端口”的协议端口模板；其中格式有效的每组协议和端口都会执行 Direction、TargetType 与 Scope 联动校验，异常模板内容不属于受支持输入。Protocol 和 Port 仍会在加载模板前按各自字段规则解析，原生 Handler 不要求固定填写 ANY、-1/-1 或 serial。
+        r"""协议端口模板 ID。省略或传空字符串表示不使用模板；非空时必须指向当前账号已有且内容格式为“协议:端口”的模板，否则请求失败。模板中的协议和端口须满足 Direction、TargetType 与 Scope 的联动限制。Protocol 和 Port 仍须符合各自字段规则，但不要求固定填写 ANY、-1/-1 或 serial。
         :rtype: str
         """
         return self._ParamTemplateId
@@ -7082,7 +7082,7 @@ class CreateRuleItem(AbstractModel):
 
     @property
     def RuleSource(self):
-        r"""规则来源。整数 2 原样保存；省略或传入其它整数均归一化为 0。
+        r"""规则来源：0 表示普通规则，2 表示隔离资产出向访问规则。新增时可以省略，省略按 0 处理；显式传值及修改时仅接受 0 或 2，修改时应传入原规则值。
         :rtype: int
         """
         return self._RuleSource
@@ -7093,7 +7093,7 @@ class CreateRuleItem(AbstractModel):
 
     @property
     def Scope(self):
-        r"""生效范围，解析不区分大小写：serial 表示串行，side 表示旁路，all 表示全局；省略、空字符串或其它值会校验失败。国际站环境会将有效输入统一归一化为 serial。协议、端口、目的类型及协议端口模板的联动限制见 Protocol、Port 和 ParamTemplateId。
+        r"""生效范围，解析不区分大小写：serial 表示仅互联网边界串行防火墙，side 表示仅互联网边界旁路防火墙，all 表示同时作用于串行和旁路防火墙；省略、空字符串或其它值会校验失败。国际站环境会将有效输入统一归一化为 serial。协议、端口、目的类型及协议端口模板的联动限制见 Protocol、Port 和 ParamTemplateId。
         :rtype: str
         """
         return self._Scope
@@ -7104,7 +7104,7 @@ class CreateRuleItem(AbstractModel):
 
     @property
     def Uuid(self):
-        r"""规则数值 ID。普通新增、指定位置新增和批量导入会忽略该字段；From=batch_import_cover 时正整数 ID 会作为覆盖导入后的规则 ID 复用；修改时必须提供当前账号可操作分区内已存在的正整数 ID，用于定位并替换原规则，省略、非正整数或不存在的 ID 会导致规则查询失败。
+        r"""规则数值 ID。普通新增、指定位置新增和批量导入会忽略该字段；From=batch_import_cover 时可使用正整数 ID；修改时必须提供当前账号已有且可修改的正整数 ID，用于定位并完整替换原规则，省略、非正整数或不存在的 ID 会导致请求失败。
         :rtype: int
         """
         return self._Uuid
@@ -7470,7 +7470,7 @@ class CustomWhiteRule(AbstractModel):
         r"""
         :param _DstIP: 自定义规则的目的地址。SrcIP、DstIP 至少一项必须是具体 IP；本字段仅在 SrcIP 为具体 IP 时可省略或使用与 SrcIP 同版本的通配网段。两项均为具体 IP 时，源 IPv6、目的 IPv4 会被拒绝，源 IPv4、目的 IPv6 当前不受该版本检查限制。私网 IPv4 和任意 IPv6 直接通过资产判定，公网 IPv4 必须存在于当前账号 cfw_public_ip；是否要求通过资产判定由两侧地址与实际 FwType 联动决定。
         :type DstIP: str
-        :param _IdsRuleId: 自定义规则关联的入侵防御规则 ID；必须是可转换为整数且在入侵防御规则模板中存在的 ID。
+        :param _IdsRuleId: 自定义规则关联的入侵防御规则 ID。调用 DescribeIpsRuleListNew，传目标规则的查询条件，仅使用 Data[].RuleID；该值必须可转换为整数且对应现有入侵防御规则。
         :type IdsRuleId: str
         :param _IdsRuleName: 自定义规则名称；处理器不对内容做额外校验。
         :type IdsRuleName: str
@@ -7495,7 +7495,7 @@ class CustomWhiteRule(AbstractModel):
 
     @property
     def IdsRuleId(self):
-        r"""自定义规则关联的入侵防御规则 ID；必须是可转换为整数且在入侵防御规则模板中存在的 ID。
+        r"""自定义规则关联的入侵防御规则 ID。调用 DescribeIpsRuleListNew，传目标规则的查询条件，仅使用 Data[].RuleID；该值必须可转换为整数且对应现有入侵防御规则。
         :rtype: str
         """
         return self._IdsRuleId
@@ -8067,26 +8067,26 @@ class DeleteBlockIgnoreRuleNewRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DeleteAll: <p>是否删除全部</p>
+        :param _DeleteAll: 删除模式，必传且只接受整数 0 或 1。0 表示按 Rules 中的 RuleType 与 Ioc 删除匹配记录；1 表示按 ShowType 清空对应列表，其中 blocklist 删除全部 RuleType=1 记录，whitelist 删除全部 RuleType>=2 记录，风险极高。
         :type DeleteAll: int
-        :param _ShowType: <p>blocklist 封禁列表 whitelist 白名单列表</p>
-        :type ShowType: str
-        :param _CfwAiAgentOperationSource: <p>AI操作来源</p><p>枚举值：</p><ul><li>console： 控制台来源值</li><li>wechat： 微信</li></ul>
+        :param _CfwAiAgentOperationSource: <p>AI操作来源</p><p>枚举值：</p><ul><li>console： 控制台来源值</li><li>wechat： 微信</li></ul>。
         :type CfwAiAgentOperationSource: str
-        :param _Rules: <p>规则列表</p>
-        :type Rules: list of BanAndAllowRuleDel
-        :param _RuleType: <p>封禁：1，放通：100，<br>主要用于全部删除时区分列表类型</p>
+        :param _RuleType: 可省略。当前处理逻辑不读取该顶层字段；传入值不参与精确删除或整表删除的目标选择。
         :type RuleType: int
+        :param _Rules: 待删除规则列表。DeleteAll=0 时必填，每项删除所有与 RuleType、Ioc 匹配的记录；DirectionList 不参与目标匹配，但 RuleType=1、2、3 时必须使用 DescribeBlockIgnoreList 返回的完整方向列表。同一请求混合 RuleType 时，引擎更新使用最后一项的 RuleType。DeleteAll=1 时省略。
+        :type Rules: list of BanAndAllowRuleDel
+        :param _ShowType: 列表类型，处理时必传且只接受 blocklist 或 whitelist。DeleteAll=1 时，blocklist 选择全部 RuleType=1 记录，whitelist 选择全部 RuleType>=2 记录；DeleteAll=0 时该字段仅校验取值，不限制 Rules 指定的删除目标。
+        :type ShowType: str
         """
         self._DeleteAll = None
-        self._ShowType = None
         self._CfwAiAgentOperationSource = None
-        self._Rules = None
         self._RuleType = None
+        self._Rules = None
+        self._ShowType = None
 
     @property
     def DeleteAll(self):
-        r"""<p>是否删除全部</p>
+        r"""删除模式，必传且只接受整数 0 或 1。0 表示按 Rules 中的 RuleType 与 Ioc 删除匹配记录；1 表示按 ShowType 清空对应列表，其中 blocklist 删除全部 RuleType=1 记录，whitelist 删除全部 RuleType>=2 记录，风险极高。
         :rtype: int
         """
         return self._DeleteAll
@@ -8096,19 +8096,8 @@ class DeleteBlockIgnoreRuleNewRequest(AbstractModel):
         self._DeleteAll = DeleteAll
 
     @property
-    def ShowType(self):
-        r"""<p>blocklist 封禁列表 whitelist 白名单列表</p>
-        :rtype: str
-        """
-        return self._ShowType
-
-    @ShowType.setter
-    def ShowType(self, ShowType):
-        self._ShowType = ShowType
-
-    @property
     def CfwAiAgentOperationSource(self):
-        r"""<p>AI操作来源</p><p>枚举值：</p><ul><li>console： 控制台来源值</li><li>wechat： 微信</li></ul>
+        r"""<p>AI操作来源</p><p>枚举值：</p><ul><li>console： 控制台来源值</li><li>wechat： 微信</li></ul>。
         :rtype: str
         """
         return self._CfwAiAgentOperationSource
@@ -8118,8 +8107,19 @@ class DeleteBlockIgnoreRuleNewRequest(AbstractModel):
         self._CfwAiAgentOperationSource = CfwAiAgentOperationSource
 
     @property
+    def RuleType(self):
+        r"""可省略。当前处理逻辑不读取该顶层字段；传入值不参与精确删除或整表删除的目标选择。
+        :rtype: int
+        """
+        return self._RuleType
+
+    @RuleType.setter
+    def RuleType(self, RuleType):
+        self._RuleType = RuleType
+
+    @property
     def Rules(self):
-        r"""<p>规则列表</p>
+        r"""待删除规则列表。DeleteAll=0 时必填，每项删除所有与 RuleType、Ioc 匹配的记录；DirectionList 不参与目标匹配，但 RuleType=1、2、3 时必须使用 DescribeBlockIgnoreList 返回的完整方向列表。同一请求混合 RuleType 时，引擎更新使用最后一项的 RuleType。DeleteAll=1 时省略。
         :rtype: list of BanAndAllowRuleDel
         """
         return self._Rules
@@ -8129,28 +8129,28 @@ class DeleteBlockIgnoreRuleNewRequest(AbstractModel):
         self._Rules = Rules
 
     @property
-    def RuleType(self):
-        r"""<p>封禁：1，放通：100，<br>主要用于全部删除时区分列表类型</p>
-        :rtype: int
+    def ShowType(self):
+        r"""列表类型，处理时必传且只接受 blocklist 或 whitelist。DeleteAll=1 时，blocklist 选择全部 RuleType=1 记录，whitelist 选择全部 RuleType>=2 记录；DeleteAll=0 时该字段仅校验取值，不限制 Rules 指定的删除目标。
+        :rtype: str
         """
-        return self._RuleType
+        return self._ShowType
 
-    @RuleType.setter
-    def RuleType(self, RuleType):
-        self._RuleType = RuleType
+    @ShowType.setter
+    def ShowType(self, ShowType):
+        self._ShowType = ShowType
 
 
     def _deserialize(self, params):
         self._DeleteAll = params.get("DeleteAll")
-        self._ShowType = params.get("ShowType")
         self._CfwAiAgentOperationSource = params.get("CfwAiAgentOperationSource")
+        self._RuleType = params.get("RuleType")
         if params.get("Rules") is not None:
             self._Rules = []
             for item in params.get("Rules"):
                 obj = BanAndAllowRuleDel()
                 obj._deserialize(item)
                 self._Rules.append(obj)
-        self._RuleType = params.get("RuleType")
+        self._ShowType = params.get("ShowType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -26026,9 +26026,9 @@ class ModifyAclRuleRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Rules: <p>需要编辑的规则数组，基于Uuid唯一id修改该规则</p>
+        :param _Rules: 待修改的规则数组，必须恰好包含一条完整规则，不是局部更新。调用 DescribeCfwRules，传 RuleType=border、目标 RuleUuid、ExpandNames=false 获取原规则。字段转换：uuid→Uuid，sequence→OrderIndex，src_ip→SourceContent，src_type→SourceType，dst_content→TargetContent，dst_type→TargetType，dst_port→Port，detail→Description；action 的 0、1、2 分别转换为 log、drop、accept，enabled 的布尔值转换为字符串 true、false；protocol、direction、scope、param_template_id、rule_source、log_id 分别写入 Protocol、Direction、Scope、ParamTemplateId、RuleSource、LogId。src_type 和 dst_type 的 1、2、3、4/5、6、8、9、10、100、101、102 分别对应 net、url、domain、template、instance、tag、dnsparse、domainiptwoverify、group、location、vendor；仅当转换结果属于对应 SourceType 或 TargetType 的有效取值时才能提交。用户要求改为某地域时，调用 DescribeAclRegInfo：Scope=serial 传 FwType=["SERIAL"]，Scope=side 传 FwType=["BYPASS"]，Scope=all 同时传两项，按用户地域名称匹配 Data[].RegionName，并将对应 Data[].RegionCode 写入 location 类型的 Content；不得使用 ap-guangzhou 等云资源地域、中文地域名称或自行拼接代码。vendor 类型的 Content 仅使用 tencent、aliyun、aws、huawei、azure 或 all，不使用“腾讯云”等展示名称。省略的可写字段不会继承旧值。
         :type Rules: list of CreateRuleItem
-        :param _CfwAiAgentOperationSource: <p>AI操作来源</p><p>枚举值：</p><ul><li>console： 控制台来源值</li><li>wechat： 微信</li></ul>
+        :param _CfwAiAgentOperationSource: <p>AI操作来源</p><p>枚举值：</p><ul><li>console： 控制台来源值</li><li>wechat： 微信</li></ul>。
         :type CfwAiAgentOperationSource: str
         """
         self._Rules = None
@@ -26036,7 +26036,7 @@ class ModifyAclRuleRequest(AbstractModel):
 
     @property
     def Rules(self):
-        r"""<p>需要编辑的规则数组，基于Uuid唯一id修改该规则</p>
+        r"""待修改的规则数组，必须恰好包含一条完整规则，不是局部更新。调用 DescribeCfwRules，传 RuleType=border、目标 RuleUuid、ExpandNames=false 获取原规则。字段转换：uuid→Uuid，sequence→OrderIndex，src_ip→SourceContent，src_type→SourceType，dst_content→TargetContent，dst_type→TargetType，dst_port→Port，detail→Description；action 的 0、1、2 分别转换为 log、drop、accept，enabled 的布尔值转换为字符串 true、false；protocol、direction、scope、param_template_id、rule_source、log_id 分别写入 Protocol、Direction、Scope、ParamTemplateId、RuleSource、LogId。src_type 和 dst_type 的 1、2、3、4/5、6、8、9、10、100、101、102 分别对应 net、url、domain、template、instance、tag、dnsparse、domainiptwoverify、group、location、vendor；仅当转换结果属于对应 SourceType 或 TargetType 的有效取值时才能提交。用户要求改为某地域时，调用 DescribeAclRegInfo：Scope=serial 传 FwType=["SERIAL"]，Scope=side 传 FwType=["BYPASS"]，Scope=all 同时传两项，按用户地域名称匹配 Data[].RegionName，并将对应 Data[].RegionCode 写入 location 类型的 Content；不得使用 ap-guangzhou 等云资源地域、中文地域名称或自行拼接代码。vendor 类型的 Content 仅使用 tencent、aliyun、aws、huawei、azure 或 all，不使用“腾讯云”等展示名称。省略的可写字段不会继承旧值。
         :rtype: list of CreateRuleItem
         """
         return self._Rules
@@ -26047,7 +26047,7 @@ class ModifyAclRuleRequest(AbstractModel):
 
     @property
     def CfwAiAgentOperationSource(self):
-        r"""<p>AI操作来源</p><p>枚举值：</p><ul><li>console： 控制台来源值</li><li>wechat： 微信</li></ul>
+        r"""<p>AI操作来源</p><p>枚举值：</p><ul><li>console： 控制台来源值</li><li>wechat： 微信</li></ul>。
         :rtype: str
         """
         return self._CfwAiAgentOperationSource
@@ -26082,7 +26082,7 @@ class ModifyAclRuleResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RuleUuid: <p>编辑成功后返回新策略ID列表</p>
+        :param _RuleUuid: 修改后的规则 ID 列表，成功时包含请求规则的 Uuid。
         :type RuleUuid: list of int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -26092,7 +26092,7 @@ class ModifyAclRuleResponse(AbstractModel):
 
     @property
     def RuleUuid(self):
-        r"""<p>编辑成功后返回新策略ID列表</p>
+        r"""修改后的规则 ID 列表，成功时包含请求规则的 Uuid。
         :rtype: list of int
         """
         return self._RuleUuid
@@ -27851,37 +27851,26 @@ class ModifyEnterpriseSecurityGroupRuleRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RuleUuid: <p>规则的uuid，可通过查询规则列表获取</p>
-        :type RuleUuid: int
-        :param _ModifyType: <p>修改类型，0：修改规则内容；1：修改单条规则开关状态；2：修改所有规则开关状态</p>
+        :param _ModifyType: 修改类型，仅接受 0、1、2。0：用 Data 完整替换 RuleUuid 指定规则的可写内容；1：修改 RuleUuid 指定规则的启停状态；2：修改当前账号全部可操作规则的启停状态。
         :type ModifyType: int
-        :param _CfwAiAgentOperationSource: <p>AI操作来源</p><p>枚举值：</p><ul><li>console： 控制台来源值</li><li>wechat： 微信</li></ul>
+        :param _RuleUuid: 规则数值 ID。ModifyType=0 或 1 时，调用 DescribeCfwRules，传 RuleType=enterprise_sg、RuleId=<数值 RuleUuid>、ExpandNames=false，并使用返回的 rules[].uuid；ModifyType=2 时传 0。
+        :type RuleUuid: int
+        :param _CfwAiAgentOperationSource: <p>AI操作来源</p><p>枚举值：</p><ul><li>console： 控制台来源值</li><li>wechat： 微信</li></ul>。
         :type CfwAiAgentOperationSource: str
-        :param _Data: <p>编辑后的企业安全组规则数据；修改规则状态不用填该字段</p>
+        :param _Data: ModifyType=0 时必填的完整规则内容对象，不是局部更新。调用 DescribeCfwRules，传 RuleType=enterprise_sg、RuleId=<数值 RuleUuid>、ExpandNames=false 获取原规则：src_content、dst_content 分别写入 SourceContent、DestContent；src_type 和 dst_type 的 0、1/2/3/4/5/6/16/24/25、7、8、9/10、100 分别对应 net、instance、template、tag、region、resourcegroup，DestType 的 20 对应 dnsparse；未列出的数值类型不能转换。再调用 DescribeEnterpriseSecurityGroupRule，使用同一 RuleUuid 获取 OrderIndex、Protocol、Port、RuleAction、Description、Scope 和 ServiceTemplateId。缺失字段按空值处理，仅 Scope 省略时保留原值。ModifyType=1 或 2 时不传 Data。
         :type Data: :class:`tencentcloud.cfw.v20190904.models.SecurityGroupRule`
-        :param _Enable: <p>0是关闭,1是开启</p>
+        :param _Enable: 规则状态，JSON 整数：0 表示关闭，1 表示开启。ModifyType=1 时修改 RuleUuid 指定规则，ModifyType=2 时修改当前账号的全部可操作规则；这两种模式下应显式填写。ModifyType=0 时忽略该字段。
         :type Enable: int
         """
-        self._RuleUuid = None
         self._ModifyType = None
+        self._RuleUuid = None
         self._CfwAiAgentOperationSource = None
         self._Data = None
         self._Enable = None
 
     @property
-    def RuleUuid(self):
-        r"""<p>规则的uuid，可通过查询规则列表获取</p>
-        :rtype: int
-        """
-        return self._RuleUuid
-
-    @RuleUuid.setter
-    def RuleUuid(self, RuleUuid):
-        self._RuleUuid = RuleUuid
-
-    @property
     def ModifyType(self):
-        r"""<p>修改类型，0：修改规则内容；1：修改单条规则开关状态；2：修改所有规则开关状态</p>
+        r"""修改类型，仅接受 0、1、2。0：用 Data 完整替换 RuleUuid 指定规则的可写内容；1：修改 RuleUuid 指定规则的启停状态；2：修改当前账号全部可操作规则的启停状态。
         :rtype: int
         """
         return self._ModifyType
@@ -27891,8 +27880,19 @@ class ModifyEnterpriseSecurityGroupRuleRequest(AbstractModel):
         self._ModifyType = ModifyType
 
     @property
+    def RuleUuid(self):
+        r"""规则数值 ID。ModifyType=0 或 1 时，调用 DescribeCfwRules，传 RuleType=enterprise_sg、RuleId=<数值 RuleUuid>、ExpandNames=false，并使用返回的 rules[].uuid；ModifyType=2 时传 0。
+        :rtype: int
+        """
+        return self._RuleUuid
+
+    @RuleUuid.setter
+    def RuleUuid(self, RuleUuid):
+        self._RuleUuid = RuleUuid
+
+    @property
     def CfwAiAgentOperationSource(self):
-        r"""<p>AI操作来源</p><p>枚举值：</p><ul><li>console： 控制台来源值</li><li>wechat： 微信</li></ul>
+        r"""<p>AI操作来源</p><p>枚举值：</p><ul><li>console： 控制台来源值</li><li>wechat： 微信</li></ul>。
         :rtype: str
         """
         return self._CfwAiAgentOperationSource
@@ -27903,7 +27903,7 @@ class ModifyEnterpriseSecurityGroupRuleRequest(AbstractModel):
 
     @property
     def Data(self):
-        r"""<p>编辑后的企业安全组规则数据；修改规则状态不用填该字段</p>
+        r"""ModifyType=0 时必填的完整规则内容对象，不是局部更新。调用 DescribeCfwRules，传 RuleType=enterprise_sg、RuleId=<数值 RuleUuid>、ExpandNames=false 获取原规则：src_content、dst_content 分别写入 SourceContent、DestContent；src_type 和 dst_type 的 0、1/2/3/4/5/6/16/24/25、7、8、9/10、100 分别对应 net、instance、template、tag、region、resourcegroup，DestType 的 20 对应 dnsparse；未列出的数值类型不能转换。再调用 DescribeEnterpriseSecurityGroupRule，使用同一 RuleUuid 获取 OrderIndex、Protocol、Port、RuleAction、Description、Scope 和 ServiceTemplateId。缺失字段按空值处理，仅 Scope 省略时保留原值。ModifyType=1 或 2 时不传 Data。
         :rtype: :class:`tencentcloud.cfw.v20190904.models.SecurityGroupRule`
         """
         return self._Data
@@ -27914,7 +27914,7 @@ class ModifyEnterpriseSecurityGroupRuleRequest(AbstractModel):
 
     @property
     def Enable(self):
-        r"""<p>0是关闭,1是开启</p>
+        r"""规则状态，JSON 整数：0 表示关闭，1 表示开启。ModifyType=1 时修改 RuleUuid 指定规则，ModifyType=2 时修改当前账号的全部可操作规则；这两种模式下应显式填写。ModifyType=0 时忽略该字段。
         :rtype: int
         """
         return self._Enable
@@ -27925,8 +27925,8 @@ class ModifyEnterpriseSecurityGroupRuleRequest(AbstractModel):
 
 
     def _deserialize(self, params):
-        self._RuleUuid = params.get("RuleUuid")
         self._ModifyType = params.get("ModifyType")
+        self._RuleUuid = params.get("RuleUuid")
         self._CfwAiAgentOperationSource = params.get("CfwAiAgentOperationSource")
         if params.get("Data") is not None:
             self._Data = SecurityGroupRule()
@@ -27949,31 +27949,20 @@ class ModifyEnterpriseSecurityGroupRuleResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Status: <p>状态值，0：编辑成功，非0：编辑失败</p>
-        :type Status: int
-        :param _NewRuleUuid: <p>编辑后新生成规则的Id</p>
+        :param _NewRuleUuid: ModifyType=0/1 返回规则 ID；ModifyType=2 回显请求中的 RuleUuid。
         :type NewRuleUuid: int
+        :param _Status: 处理状态：0 表示成功。
+        :type Status: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
-        self._Status = None
         self._NewRuleUuid = None
+        self._Status = None
         self._RequestId = None
 
     @property
-    def Status(self):
-        r"""<p>状态值，0：编辑成功，非0：编辑失败</p>
-        :rtype: int
-        """
-        return self._Status
-
-    @Status.setter
-    def Status(self, Status):
-        self._Status = Status
-
-    @property
     def NewRuleUuid(self):
-        r"""<p>编辑后新生成规则的Id</p>
+        r"""ModifyType=0/1 返回规则 ID；ModifyType=2 回显请求中的 RuleUuid。
         :rtype: int
         """
         return self._NewRuleUuid
@@ -27981,6 +27970,17 @@ class ModifyEnterpriseSecurityGroupRuleResponse(AbstractModel):
     @NewRuleUuid.setter
     def NewRuleUuid(self, NewRuleUuid):
         self._NewRuleUuid = NewRuleUuid
+
+    @property
+    def Status(self):
+        r"""处理状态：0 表示成功。
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
 
     @property
     def RequestId(self):
@@ -27995,8 +27995,8 @@ class ModifyEnterpriseSecurityGroupRuleResponse(AbstractModel):
 
 
     def _deserialize(self, params):
-        self._Status = params.get("Status")
         self._NewRuleUuid = params.get("NewRuleUuid")
+        self._Status = params.get("Status")
         self._RequestId = params.get("RequestId")
 
 
@@ -28170,37 +28170,26 @@ class ModifyIsolateTableRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceID: <p>资产唯一id</p>
-        :type InstanceID: str
-        :param _ButtonAction: <p>操作动作：编辑、删除</p>
+        :param _ButtonAction: <p>操作动作，仅接受精确值 edit 或 delete。ButtonAction 为 edit 时修改该资产所有匹配隔离记录的有效期，需传 StartTime 和 EndTime；ButtonAction 为 delete 时解除该资产的全部匹配隔离，StartTime 和 EndTime 可省略。</p>
         :type ButtonAction: str
-        :param _CfwAiAgentOperationSource: <p>AI操作来源</p><p>枚举值：</p><ul><li>console： 控制台来源值</li><li>wechat： 微信</li></ul>
+        :param _InstanceID: <p>必填的资产实例 ID。调用 DescribeCfwRules，传 RuleType=intrusion_prevention、ListType=isolate 和目标 InstanceId，并使用完全匹配的 rules[].instance_id。edit 或 delete 作用于该实例的全部隔离记录。</p>
+        :type InstanceID: str
+        :param _CfwAiAgentOperationSource: <p>AI操作来源</p><p>枚举值：</p><ul><li>console： 控制台来源值</li><li>wechat： 微信</li></ul>。
         :type CfwAiAgentOperationSource: str
-        :param _StartTime: <p>起始时间</p>
-        :type StartTime: str
-        :param _EndTime: <p>结束时间</p>
+        :param _EndTime: <p>隔离结束时间。ButtonAction 为 edit 时必填，格式为 YYYY-MM-DD HH:MM:SS，且不得早于 StartTime；除永久隔离值 3000-01-01 00:00:00 外，必须晚于当前时间。ButtonAction 为 delete 时可省略。</p>
         :type EndTime: str
+        :param _StartTime: <p>隔离起始时间。ButtonAction 为 edit 时必填，格式为 YYYY-MM-DD HH:MM:SS，且不得晚于 EndTime；该时间将应用于该实例的全部匹配隔离记录。ButtonAction 为 delete 时可省略。</p>
+        :type StartTime: str
         """
-        self._InstanceID = None
         self._ButtonAction = None
+        self._InstanceID = None
         self._CfwAiAgentOperationSource = None
-        self._StartTime = None
         self._EndTime = None
-
-    @property
-    def InstanceID(self):
-        r"""<p>资产唯一id</p>
-        :rtype: str
-        """
-        return self._InstanceID
-
-    @InstanceID.setter
-    def InstanceID(self, InstanceID):
-        self._InstanceID = InstanceID
+        self._StartTime = None
 
     @property
     def ButtonAction(self):
-        r"""<p>操作动作：编辑、删除</p>
+        r"""<p>操作动作，仅接受精确值 edit 或 delete。ButtonAction 为 edit 时修改该资产所有匹配隔离记录的有效期，需传 StartTime 和 EndTime；ButtonAction 为 delete 时解除该资产的全部匹配隔离，StartTime 和 EndTime 可省略。</p>
         :rtype: str
         """
         return self._ButtonAction
@@ -28210,8 +28199,19 @@ class ModifyIsolateTableRequest(AbstractModel):
         self._ButtonAction = ButtonAction
 
     @property
+    def InstanceID(self):
+        r"""<p>必填的资产实例 ID。调用 DescribeCfwRules，传 RuleType=intrusion_prevention、ListType=isolate 和目标 InstanceId，并使用完全匹配的 rules[].instance_id。edit 或 delete 作用于该实例的全部隔离记录。</p>
+        :rtype: str
+        """
+        return self._InstanceID
+
+    @InstanceID.setter
+    def InstanceID(self, InstanceID):
+        self._InstanceID = InstanceID
+
+    @property
     def CfwAiAgentOperationSource(self):
-        r"""<p>AI操作来源</p><p>枚举值：</p><ul><li>console： 控制台来源值</li><li>wechat： 微信</li></ul>
+        r"""<p>AI操作来源</p><p>枚举值：</p><ul><li>console： 控制台来源值</li><li>wechat： 微信</li></ul>。
         :rtype: str
         """
         return self._CfwAiAgentOperationSource
@@ -28221,19 +28221,8 @@ class ModifyIsolateTableRequest(AbstractModel):
         self._CfwAiAgentOperationSource = CfwAiAgentOperationSource
 
     @property
-    def StartTime(self):
-        r"""<p>起始时间</p>
-        :rtype: str
-        """
-        return self._StartTime
-
-    @StartTime.setter
-    def StartTime(self, StartTime):
-        self._StartTime = StartTime
-
-    @property
     def EndTime(self):
-        r"""<p>结束时间</p>
+        r"""<p>隔离结束时间。ButtonAction 为 edit 时必填，格式为 YYYY-MM-DD HH:MM:SS，且不得早于 StartTime；除永久隔离值 3000-01-01 00:00:00 外，必须晚于当前时间。ButtonAction 为 delete 时可省略。</p>
         :rtype: str
         """
         return self._EndTime
@@ -28242,13 +28231,24 @@ class ModifyIsolateTableRequest(AbstractModel):
     def EndTime(self, EndTime):
         self._EndTime = EndTime
 
+    @property
+    def StartTime(self):
+        r"""<p>隔离起始时间。ButtonAction 为 edit 时必填，格式为 YYYY-MM-DD HH:MM:SS，且不得晚于 EndTime；该时间将应用于该实例的全部匹配隔离记录。ButtonAction 为 delete 时可省略。</p>
+        :rtype: str
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
 
     def _deserialize(self, params):
-        self._InstanceID = params.get("InstanceID")
         self._ButtonAction = params.get("ButtonAction")
+        self._InstanceID = params.get("InstanceID")
         self._CfwAiAgentOperationSource = params.get("CfwAiAgentOperationSource")
-        self._StartTime = params.get("StartTime")
         self._EndTime = params.get("EndTime")
+        self._StartTime = params.get("StartTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -28266,9 +28266,9 @@ class ModifyIsolateTableResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ReturnCode: <p>0 成功  非0失败</p>
+        :param _ReturnCode: 处理返回码：0 表示成功。
         :type ReturnCode: int
-        :param _ReturnMsg: <p>success 成功 其他失败</p>
+        :param _ReturnMsg: 处理结果信息，成功时为 success。
         :type ReturnMsg: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -28279,7 +28279,7 @@ class ModifyIsolateTableResponse(AbstractModel):
 
     @property
     def ReturnCode(self):
-        r"""<p>0 成功  非0失败</p>
+        r"""处理返回码：0 表示成功。
         :rtype: int
         """
         return self._ReturnCode
@@ -28290,7 +28290,7 @@ class ModifyIsolateTableResponse(AbstractModel):
 
     @property
     def ReturnMsg(self):
-        r"""<p>success 成功 其他失败</p>
+        r"""处理结果信息，成功时为 success。
         :rtype: str
         """
         return self._ReturnMsg
@@ -28324,9 +28324,9 @@ class ModifyNatAcRuleRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Rules: <p>需要编辑的规则数组,基于Uuid唯一id来修改该规则</p>
+        :param _Rules: <p>待修改的规则数组，必须恰好包含一条完整规则，不是局部更新。调用 DescribeCfwRules，传 RuleType=nat、目标 RuleUuid、ExpandNames=false 获取原规则。字段转换：uuid→Uuid，sequence→OrderIndex，src_ip→SourceContent，src_type→SourceType，dst_content→TargetContent，dst_type→TargetType，dst_port→Port，detail→Description；action 的 0、1、2 分别转换为 log、drop、accept，enabled 的布尔值转换为字符串 true、false；protocol、direction、scope、param_template_id 分别写入 Protocol、Direction、Scope、ParamTemplateId。src_type 和 dst_type 的 1、2、3、4/5、6、8、9、10、100、101、102 分别对应 net、url、domain、template、instance、tag、dnsparse、domainiptwoverify、group、location、vendor；仅当转换结果属于对应 SourceType 或 TargetType 的有效取值时才能提交。用户要求改为某地域时，调用 DescribeAclRegInfo，传 FwType=["NAT"]，按用户地域名称匹配 Data[].RegionName，并将对应 Data[].RegionCode 写入 location 类型的 Content；不得使用 ap-guangzhou 等云资源地域、中文地域名称或自行拼接代码。vendor 类型的 Content 仅使用 tencent、aliyun、aws、huawei、azure 或 all，不使用“腾讯云”等展示名称。省略字段使用对应参数的默认值或空值，不继承旧值。地址模板和协议端口模板通过 DescribeAddressTemplateList 查询，资产实例通过 DescribeCfwAssets 查询，资源组和标签通过 DescribeResourceGroupNew 查询。</p>
         :type Rules: list of CreateNatRuleItem
-        :param _CfwAiAgentOperationSource: <p>AI操作来源</p><p>枚举值：</p><ul><li>console： 控制台来源值</li><li>wechat： 微信</li></ul>
+        :param _CfwAiAgentOperationSource: <p>AI操作来源</p><p>枚举值：</p><ul><li>console： 控制台来源值</li><li>wechat： 微信</li></ul>。
         :type CfwAiAgentOperationSource: str
         """
         self._Rules = None
@@ -28334,7 +28334,7 @@ class ModifyNatAcRuleRequest(AbstractModel):
 
     @property
     def Rules(self):
-        r"""<p>需要编辑的规则数组,基于Uuid唯一id来修改该规则</p>
+        r"""<p>待修改的规则数组，必须恰好包含一条完整规则，不是局部更新。调用 DescribeCfwRules，传 RuleType=nat、目标 RuleUuid、ExpandNames=false 获取原规则。字段转换：uuid→Uuid，sequence→OrderIndex，src_ip→SourceContent，src_type→SourceType，dst_content→TargetContent，dst_type→TargetType，dst_port→Port，detail→Description；action 的 0、1、2 分别转换为 log、drop、accept，enabled 的布尔值转换为字符串 true、false；protocol、direction、scope、param_template_id 分别写入 Protocol、Direction、Scope、ParamTemplateId。src_type 和 dst_type 的 1、2、3、4/5、6、8、9、10、100、101、102 分别对应 net、url、domain、template、instance、tag、dnsparse、domainiptwoverify、group、location、vendor；仅当转换结果属于对应 SourceType 或 TargetType 的有效取值时才能提交。用户要求改为某地域时，调用 DescribeAclRegInfo，传 FwType=["NAT"]，按用户地域名称匹配 Data[].RegionName，并将对应 Data[].RegionCode 写入 location 类型的 Content；不得使用 ap-guangzhou 等云资源地域、中文地域名称或自行拼接代码。vendor 类型的 Content 仅使用 tencent、aliyun、aws、huawei、azure 或 all，不使用“腾讯云”等展示名称。省略字段使用对应参数的默认值或空值，不继承旧值。地址模板和协议端口模板通过 DescribeAddressTemplateList 查询，资产实例通过 DescribeCfwAssets 查询，资源组和标签通过 DescribeResourceGroupNew 查询。</p>
         :rtype: list of CreateNatRuleItem
         """
         return self._Rules
@@ -28345,7 +28345,7 @@ class ModifyNatAcRuleRequest(AbstractModel):
 
     @property
     def CfwAiAgentOperationSource(self):
-        r"""<p>AI操作来源</p><p>枚举值：</p><ul><li>console： 控制台来源值</li><li>wechat： 微信</li></ul>
+        r"""<p>AI操作来源</p><p>枚举值：</p><ul><li>console： 控制台来源值</li><li>wechat： 微信</li></ul>。
         :rtype: str
         """
         return self._CfwAiAgentOperationSource
@@ -28380,7 +28380,7 @@ class ModifyNatAcRuleResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RuleUuid: <p>编辑成功后返回新策略ID列表</p>
+        :param _RuleUuid: 修改后的规则 ID 列表，成功时包含请求规则的 Uuid。
         :type RuleUuid: list of int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -28390,7 +28390,7 @@ class ModifyNatAcRuleResponse(AbstractModel):
 
     @property
     def RuleUuid(self):
-        r"""<p>编辑成功后返回新策略ID列表</p>
+        r"""修改后的规则 ID 列表，成功时包含请求规则的 Uuid。
         :rtype: list of int
         """
         return self._RuleUuid
@@ -29846,9 +29846,9 @@ class ModifyVpcAcRuleRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Rules: <p>需要编辑的规则数组</p>
+        :param _Rules: 待修改的规则数组，必须恰好包含一条完整规则，不是局部更新。调用 DescribeCfwRules，传 RuleType=vpc、目标 RuleUuid、ExpandNames=false 获取原规则。字段转换：uuid→Uuid，sequence→OrderIndex，src_ip→SourceContent，src_type→SourceType，dst_content→DestContent，dst_type→DestType，dst_port→Port，detail→Description，edge_id→EdgeId，fwgroupid→FwGroupId，ip_version→IpVersion；action 的 0、1、2 分别转换为 log、drop、accept，enabled 的布尔值转换为字符串 true、false；protocol、param_template_id、dest_value_type 分别写入 Protocol、ParamTemplateId、DestValueType。src_type 和 dst_type 的 1、2、3、4/5、6、8、9、10、100 分别对应 net、url、domain、template、instance、tag、dnsparse、domainiptwoverify、group；仅当转换结果属于对应 SourceType 或 DestType 的有效取值时才能提交。省略的可写字段不会继承旧值，IpVersion=0 也必须传入。不修改生效范围时，将原规则的 edge_id 和 fwgroupid 原样写入 EdgeId 和 FwGroupId；主动更换时，EdgeId 通过 DescribeVpcAclEdgeRange 查询，FwGroupId 通过 DescribeFwGroupIdNames 查询。
         :type Rules: list of VpcRuleItem
-        :param _CfwAiAgentOperationSource: <p>AI操作来源</p><p>枚举值：</p><ul><li>console： 控制台来源值</li><li>wechat： 微信</li></ul>
+        :param _CfwAiAgentOperationSource: <p>AI操作来源</p><p>枚举值：</p><ul><li>console： 控制台来源值</li><li>wechat： 微信</li></ul>。
         :type CfwAiAgentOperationSource: str
         """
         self._Rules = None
@@ -29856,7 +29856,7 @@ class ModifyVpcAcRuleRequest(AbstractModel):
 
     @property
     def Rules(self):
-        r"""<p>需要编辑的规则数组</p>
+        r"""待修改的规则数组，必须恰好包含一条完整规则，不是局部更新。调用 DescribeCfwRules，传 RuleType=vpc、目标 RuleUuid、ExpandNames=false 获取原规则。字段转换：uuid→Uuid，sequence→OrderIndex，src_ip→SourceContent，src_type→SourceType，dst_content→DestContent，dst_type→DestType，dst_port→Port，detail→Description，edge_id→EdgeId，fwgroupid→FwGroupId，ip_version→IpVersion；action 的 0、1、2 分别转换为 log、drop、accept，enabled 的布尔值转换为字符串 true、false；protocol、param_template_id、dest_value_type 分别写入 Protocol、ParamTemplateId、DestValueType。src_type 和 dst_type 的 1、2、3、4/5、6、8、9、10、100 分别对应 net、url、domain、template、instance、tag、dnsparse、domainiptwoverify、group；仅当转换结果属于对应 SourceType 或 DestType 的有效取值时才能提交。省略的可写字段不会继承旧值，IpVersion=0 也必须传入。不修改生效范围时，将原规则的 edge_id 和 fwgroupid 原样写入 EdgeId 和 FwGroupId；主动更换时，EdgeId 通过 DescribeVpcAclEdgeRange 查询，FwGroupId 通过 DescribeFwGroupIdNames 查询。
         :rtype: list of VpcRuleItem
         """
         return self._Rules
@@ -29867,7 +29867,7 @@ class ModifyVpcAcRuleRequest(AbstractModel):
 
     @property
     def CfwAiAgentOperationSource(self):
-        r"""<p>AI操作来源</p><p>枚举值：</p><ul><li>console： 控制台来源值</li><li>wechat： 微信</li></ul>
+        r"""<p>AI操作来源</p><p>枚举值：</p><ul><li>console： 控制台来源值</li><li>wechat： 微信</li></ul>。
         :rtype: str
         """
         return self._CfwAiAgentOperationSource
@@ -29902,7 +29902,7 @@ class ModifyVpcAcRuleResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RuleUuids: <p>编辑成功后返回新策略ID列表</p>
+        :param _RuleUuids: 修改后的规则 ID 列表，成功时包含请求规则的 Uuid。
         :type RuleUuids: list of int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -29912,7 +29912,7 @@ class ModifyVpcAcRuleResponse(AbstractModel):
 
     @property
     def RuleUuids(self):
-        r"""<p>编辑成功后返回新策略ID列表</p>
+        r"""修改后的规则 ID 列表，成功时包含请求规则的 Uuid。
         :rtype: list of int
         """
         return self._RuleUuids
@@ -33228,11 +33228,11 @@ class RemoveAclRuleRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RuleUuid: <p>规则的uuid列表，可通过查询规则列表获取，注意：如果传入的是[-1]将删除所有规则</p>
+        :param _RuleUuid: <p>必填的规则 ID 列表。具体规则 ID 通过 DescribeCfwRules 查询 RuleType=border 和目标 RuleUuid，并使用返回的 rules[].uuid。列表恰为 [-1] 时删除 Direction 指定方向下当前账号的全部可操作规则，风险极高；其它列表按 ID 删除匹配规则。空列表返回 InternalError，不删除规则。成功响应回显请求中的 ID 列表。</p>
         :type RuleUuid: list of int
-        :param _CfwAiAgentOperationSource: <p>AI操作来源</p><p>枚举值：</p><ul><li>console： 控制台来源值</li><li>wechat： 微信</li></ul>
+        :param _CfwAiAgentOperationSource: <p>AI操作来源</p><p>枚举值：</p><ul><li>console： 控制台来源值</li><li>wechat： 微信</li></ul>。
         :type CfwAiAgentOperationSource: str
-        :param _Direction: <p>规则方向：1，入站；0，出站</p>
+        :param _Direction: <p>规则方向，JSON 整数：1 表示入站，0 表示出站。</p><p>RuleUuid 恰为 [-1] 时，本字段决定全量删除的方向；RuleUuid 为具体 ID 列表时，仅按 ID 匹配，不使用 Direction 筛选。字段省略时取值为 -1，不会按出站处理。</p>
         :type Direction: int
         """
         self._RuleUuid = None
@@ -33241,7 +33241,7 @@ class RemoveAclRuleRequest(AbstractModel):
 
     @property
     def RuleUuid(self):
-        r"""<p>规则的uuid列表，可通过查询规则列表获取，注意：如果传入的是[-1]将删除所有规则</p>
+        r"""<p>必填的规则 ID 列表。具体规则 ID 通过 DescribeCfwRules 查询 RuleType=border 和目标 RuleUuid，并使用返回的 rules[].uuid。列表恰为 [-1] 时删除 Direction 指定方向下当前账号的全部可操作规则，风险极高；其它列表按 ID 删除匹配规则。空列表返回 InternalError，不删除规则。成功响应回显请求中的 ID 列表。</p>
         :rtype: list of int
         """
         return self._RuleUuid
@@ -33252,7 +33252,7 @@ class RemoveAclRuleRequest(AbstractModel):
 
     @property
     def CfwAiAgentOperationSource(self):
-        r"""<p>AI操作来源</p><p>枚举值：</p><ul><li>console： 控制台来源值</li><li>wechat： 微信</li></ul>
+        r"""<p>AI操作来源</p><p>枚举值：</p><ul><li>console： 控制台来源值</li><li>wechat： 微信</li></ul>。
         :rtype: str
         """
         return self._CfwAiAgentOperationSource
@@ -33263,7 +33263,7 @@ class RemoveAclRuleRequest(AbstractModel):
 
     @property
     def Direction(self):
-        r"""<p>规则方向：1，入站；0，出站</p>
+        r"""<p>规则方向，JSON 整数：1 表示入站，0 表示出站。</p><p>RuleUuid 恰为 [-1] 时，本字段决定全量删除的方向；RuleUuid 为具体 ID 列表时，仅按 ID 匹配，不使用 Direction 筛选。字段省略时取值为 -1，不会按出站处理。</p>
         :rtype: int
         """
         return self._Direction
@@ -33294,7 +33294,7 @@ class RemoveAclRuleResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RuleUuid: <p>删除成功后返回被删除策略的uuid列表</p>
+        :param _RuleUuid: 回显请求中的规则 ID 列表；全量删除返回 [-1]。
         :type RuleUuid: list of int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -33304,7 +33304,7 @@ class RemoveAclRuleResponse(AbstractModel):
 
     @property
     def RuleUuid(self):
-        r"""<p>删除成功后返回被删除策略的uuid列表</p>
+        r"""回显请求中的规则 ID 列表；全量删除返回 [-1]。
         :rtype: list of int
         """
         return self._RuleUuid
@@ -33337,31 +33337,20 @@ class RemoveEnterpriseSecurityGroupRuleRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RuleUuid: <p>规则的uuid，可通过查询规则列表获取</p>
-        :type RuleUuid: int
-        :param _RemoveType: <p>删除类型，0是单条删除，RuleUuid填写删除规则id，1为全部删除，RuleUuid填0即可</p>
+        :param _RemoveType: <p>必填的删除类型，只使用 0 或 1。0 表示删除 RuleUuid 指定的单条规则；1 表示删除当前账号的全部可操作企业安全组规则，风险极高。</p>
         :type RemoveType: int
-        :param _CfwAiAgentOperationSource: <p>AI操作来源</p><p>枚举值：</p><ul><li>console： 控制台来源值</li><li>wechat： 微信</li></ul>
+        :param _RuleUuid: <p>必填的规则数值 ID。RemoveType=0 时，调用 DescribeCfwRules，传 RuleType=enterprise_sg、RuleId=&lt;数值 RuleUuid&gt;，并使用返回的 rules[].uuid；规则不存在时返回 ResourceNotFound。RemoveType=1 时传 0，删除当前账号的全部可操作企业安全组规则。成功响应回显请求中的 RuleUuid。</p>
+        :type RuleUuid: int
+        :param _CfwAiAgentOperationSource: <p>AI操作来源</p><p>枚举值：</p><ul><li>console： 控制台来源值</li><li>wechat： 微信</li></ul>。
         :type CfwAiAgentOperationSource: str
         """
-        self._RuleUuid = None
         self._RemoveType = None
+        self._RuleUuid = None
         self._CfwAiAgentOperationSource = None
 
     @property
-    def RuleUuid(self):
-        r"""<p>规则的uuid，可通过查询规则列表获取</p>
-        :rtype: int
-        """
-        return self._RuleUuid
-
-    @RuleUuid.setter
-    def RuleUuid(self, RuleUuid):
-        self._RuleUuid = RuleUuid
-
-    @property
     def RemoveType(self):
-        r"""<p>删除类型，0是单条删除，RuleUuid填写删除规则id，1为全部删除，RuleUuid填0即可</p>
+        r"""<p>必填的删除类型，只使用 0 或 1。0 表示删除 RuleUuid 指定的单条规则；1 表示删除当前账号的全部可操作企业安全组规则，风险极高。</p>
         :rtype: int
         """
         return self._RemoveType
@@ -33371,8 +33360,19 @@ class RemoveEnterpriseSecurityGroupRuleRequest(AbstractModel):
         self._RemoveType = RemoveType
 
     @property
+    def RuleUuid(self):
+        r"""<p>必填的规则数值 ID。RemoveType=0 时，调用 DescribeCfwRules，传 RuleType=enterprise_sg、RuleId=&lt;数值 RuleUuid&gt;，并使用返回的 rules[].uuid；规则不存在时返回 ResourceNotFound。RemoveType=1 时传 0，删除当前账号的全部可操作企业安全组规则。成功响应回显请求中的 RuleUuid。</p>
+        :rtype: int
+        """
+        return self._RuleUuid
+
+    @RuleUuid.setter
+    def RuleUuid(self, RuleUuid):
+        self._RuleUuid = RuleUuid
+
+    @property
     def CfwAiAgentOperationSource(self):
-        r"""<p>AI操作来源</p><p>枚举值：</p><ul><li>console： 控制台来源值</li><li>wechat： 微信</li></ul>
+        r"""<p>AI操作来源</p><p>枚举值：</p><ul><li>console： 控制台来源值</li><li>wechat： 微信</li></ul>。
         :rtype: str
         """
         return self._CfwAiAgentOperationSource
@@ -33383,8 +33383,8 @@ class RemoveEnterpriseSecurityGroupRuleRequest(AbstractModel):
 
 
     def _deserialize(self, params):
-        self._RuleUuid = params.get("RuleUuid")
         self._RemoveType = params.get("RemoveType")
+        self._RuleUuid = params.get("RuleUuid")
         self._CfwAiAgentOperationSource = params.get("CfwAiAgentOperationSource")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -33403,9 +33403,9 @@ class RemoveEnterpriseSecurityGroupRuleResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RuleUuid: <p>删除成功后返回被删除策略的uuid</p>
+        :param _RuleUuid: 回显请求中的 RuleUuid。
         :type RuleUuid: int
-        :param _Status: <p>0代表成功，-1代表失败</p>
+        :param _Status: 处理状态：0 表示成功。
         :type Status: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -33416,7 +33416,7 @@ class RemoveEnterpriseSecurityGroupRuleResponse(AbstractModel):
 
     @property
     def RuleUuid(self):
-        r"""<p>删除成功后返回被删除策略的uuid</p>
+        r"""回显请求中的 RuleUuid。
         :rtype: int
         """
         return self._RuleUuid
@@ -33427,7 +33427,7 @@ class RemoveEnterpriseSecurityGroupRuleResponse(AbstractModel):
 
     @property
     def Status(self):
-        r"""<p>0代表成功，-1代表失败</p>
+        r"""处理状态：0 表示成功。
         :rtype: int
         """
         return self._Status
@@ -33461,11 +33461,11 @@ class RemoveNatAcRuleRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RuleUuid: <p>规则的uuid列表，可通过查询规则列表获取，注意：如果传入的是[-1]将删除所有规则</p>
+        :param _RuleUuid: <p>NAT 边界访问控制规则 ID 列表。具体规则 ID 通过 DescribeCfwRules 查询 RuleType=nat 和目标 RuleUuid，并使用返回的 rules[].uuid。数组仅含 -1 时删除 Direction 指定方向下当前账号的全部可操作规则，风险极高；其它数组按 ID 删除。至少匹配一条即成功；具体 ID 删除不按 Direction 筛选。成功响应回显请求中的 ID 列表。</p>
         :type RuleUuid: list of int
-        :param _CfwAiAgentOperationSource: <p>AI操作来源</p><p>枚举值：</p><ul><li>console： 控制台来源值</li><li>wechat： 微信</li></ul>
+        :param _CfwAiAgentOperationSource: <p>AI操作来源</p><p>枚举值：</p><ul><li>console： 控制台来源值</li><li>wechat： 微信</li></ul>。
         :type CfwAiAgentOperationSource: str
-        :param _Direction: <p>规则方向：1，入站；0，出站</p>
+        :param _Direction: <p>规则方向：1 表示入站，0 表示出站。仅 RuleUuid 恰好为 [-1] 时用于选择全删方向；按具体 ID 删除时可省略，Direction 不参与 ID 筛选。全删时必须使用 0 或 1。</p>
         :type Direction: int
         """
         self._RuleUuid = None
@@ -33474,7 +33474,7 @@ class RemoveNatAcRuleRequest(AbstractModel):
 
     @property
     def RuleUuid(self):
-        r"""<p>规则的uuid列表，可通过查询规则列表获取，注意：如果传入的是[-1]将删除所有规则</p>
+        r"""<p>NAT 边界访问控制规则 ID 列表。具体规则 ID 通过 DescribeCfwRules 查询 RuleType=nat 和目标 RuleUuid，并使用返回的 rules[].uuid。数组仅含 -1 时删除 Direction 指定方向下当前账号的全部可操作规则，风险极高；其它数组按 ID 删除。至少匹配一条即成功；具体 ID 删除不按 Direction 筛选。成功响应回显请求中的 ID 列表。</p>
         :rtype: list of int
         """
         return self._RuleUuid
@@ -33485,7 +33485,7 @@ class RemoveNatAcRuleRequest(AbstractModel):
 
     @property
     def CfwAiAgentOperationSource(self):
-        r"""<p>AI操作来源</p><p>枚举值：</p><ul><li>console： 控制台来源值</li><li>wechat： 微信</li></ul>
+        r"""<p>AI操作来源</p><p>枚举值：</p><ul><li>console： 控制台来源值</li><li>wechat： 微信</li></ul>。
         :rtype: str
         """
         return self._CfwAiAgentOperationSource
@@ -33496,7 +33496,7 @@ class RemoveNatAcRuleRequest(AbstractModel):
 
     @property
     def Direction(self):
-        r"""<p>规则方向：1，入站；0，出站</p>
+        r"""<p>规则方向：1 表示入站，0 表示出站。仅 RuleUuid 恰好为 [-1] 时用于选择全删方向；按具体 ID 删除时可省略，Direction 不参与 ID 筛选。全删时必须使用 0 或 1。</p>
         :rtype: int
         """
         return self._Direction
@@ -33527,7 +33527,7 @@ class RemoveNatAcRuleResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RuleUuid: <p>删除成功后返回被删除策略的uuid列表</p>
+        :param _RuleUuid: 回显请求中的规则 ID 列表；全量删除返回 [-1]。
         :type RuleUuid: list of int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -33537,7 +33537,7 @@ class RemoveNatAcRuleResponse(AbstractModel):
 
     @property
     def RuleUuid(self):
-        r"""<p>删除成功后返回被删除策略的uuid列表</p>
+        r"""回显请求中的规则 ID 列表；全量删除返回 [-1]。
         :rtype: list of int
         """
         return self._RuleUuid
@@ -33679,11 +33679,11 @@ class RemoveVpcAcRuleRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RuleUuids: <p>规则的uuid列表，可通过查询规则列表获取，注意：如果传入的是[-1]将删除所有规则</p>
+        :param _RuleUuids: <p>待删除规则 ID 列表。具体规则 ID 通过 DescribeCfwRules 查询 RuleType=vpc 和目标 RuleUuid，并使用返回的 rules[].uuid。数组恰为 [-1] 时删除当前账号中 IpVersion 指定版本的全部可操作规则，风险极高；其它数组按 ID 批量删除。具体 ID 删除忽略 IpVersion；至少匹配一条即成功，全部未找到时返回 ResourceNotFound。成功响应回显请求中的 ID 列表。</p>
         :type RuleUuids: list of int
-        :param _CfwAiAgentOperationSource: <p>AI操作来源</p><p>枚举值：</p><ul><li>console： 控制台来源值</li><li>wechat： 微信</li></ul>
+        :param _CfwAiAgentOperationSource: <p>AI操作来源</p><p>枚举值：</p><ul><li>console： 控制台来源值</li><li>wechat： 微信</li></ul>。
         :type CfwAiAgentOperationSource: str
-        :param _IpVersion: <p>仅当RuleUuids为-1时有效；0：删除Ipv4规则，1：删除Ipv6规则；默认为Ipv4类型规则</p>
+        :param _IpVersion: <p>IP 版本，仅 RuleUuids 恰为 [-1] 时生效：1 表示 IPv6，0、省略或其它整数表示 IPv4。按具体规则 ID 删除时忽略。</p>
         :type IpVersion: int
         """
         self._RuleUuids = None
@@ -33692,7 +33692,7 @@ class RemoveVpcAcRuleRequest(AbstractModel):
 
     @property
     def RuleUuids(self):
-        r"""<p>规则的uuid列表，可通过查询规则列表获取，注意：如果传入的是[-1]将删除所有规则</p>
+        r"""<p>待删除规则 ID 列表。具体规则 ID 通过 DescribeCfwRules 查询 RuleType=vpc 和目标 RuleUuid，并使用返回的 rules[].uuid。数组恰为 [-1] 时删除当前账号中 IpVersion 指定版本的全部可操作规则，风险极高；其它数组按 ID 批量删除。具体 ID 删除忽略 IpVersion；至少匹配一条即成功，全部未找到时返回 ResourceNotFound。成功响应回显请求中的 ID 列表。</p>
         :rtype: list of int
         """
         return self._RuleUuids
@@ -33703,7 +33703,7 @@ class RemoveVpcAcRuleRequest(AbstractModel):
 
     @property
     def CfwAiAgentOperationSource(self):
-        r"""<p>AI操作来源</p><p>枚举值：</p><ul><li>console： 控制台来源值</li><li>wechat： 微信</li></ul>
+        r"""<p>AI操作来源</p><p>枚举值：</p><ul><li>console： 控制台来源值</li><li>wechat： 微信</li></ul>。
         :rtype: str
         """
         return self._CfwAiAgentOperationSource
@@ -33714,7 +33714,7 @@ class RemoveVpcAcRuleRequest(AbstractModel):
 
     @property
     def IpVersion(self):
-        r"""<p>仅当RuleUuids为-1时有效；0：删除Ipv4规则，1：删除Ipv6规则；默认为Ipv4类型规则</p>
+        r"""<p>IP 版本，仅 RuleUuids 恰为 [-1] 时生效：1 表示 IPv6，0、省略或其它整数表示 IPv4。按具体规则 ID 删除时忽略。</p>
         :rtype: int
         """
         return self._IpVersion
@@ -33745,7 +33745,7 @@ class RemoveVpcAcRuleResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RuleUuids: <p>删除成功后返回被删除策略的uuid列表</p>
+        :param _RuleUuids: 回显请求中的规则 ID 列表；全量删除返回 [-1]。
         :type RuleUuids: list of int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -33755,7 +33755,7 @@ class RemoveVpcAcRuleResponse(AbstractModel):
 
     @property
     def RuleUuids(self):
-        r"""<p>删除成功后返回被删除策略的uuid列表</p>
+        r"""回显请求中的规则 ID 列表；全量删除返回 [-1]。
         :rtype: list of int
         """
         return self._RuleUuids
@@ -35960,31 +35960,31 @@ class SecurityGroupRule(AbstractModel):
         r"""
         :param _Description: 规则用途或使用场景的描述，不能为空，最多 100 个 Unicode 字符。
         :type Description: str
-        :param _DestContent: 访问目的内容，非空且最多 512 字节，格式由 DestType 决定：net 使用 IPv4 IP/CIDR，且不接受裸地址 0.0.0.0，表示全部 IPv4 地址时使用 0.0.0.0/0；template 使用可用的地址模板 ID；instance 使用属于当前账号的资产实例 ID；resourcegroup 使用当前账号的资产分组 ID；tag 使用当前账号已存在的资源标签 JSON 字符串，例如 {\"Key\":\"标签键\",\"Value\":\"标签值\"}；region 使用支持的地域标识；dnsparse 使用合法域名。DestType=dnsparse 时服务端将内容转换为小写，并检查域名格式和域名解析配额。
+        :param _DestContent: 访问目的内容，非空且最多 512 字节，格式由 DestType 决定：net 使用 IPv4 IP/CIDR，且不接受裸地址 0.0.0.0，表示全部 IPv4 地址时使用 0.0.0.0/0；template 使用通过 VPC DescribeAddressTemplates 或 DescribeAddressTemplateGroups 查询的广州地域（ap-guangzhou）地址模板 ID，即 AddressTemplateId（ipm-）或 AddressTemplateGroupId（ipmg-）；instance 使用 DescribeCfwAssets 返回的 assets[].instance_id；resourcegroup 使用 DescribeResourceGroupNew（QueryType=resource）返回的 GroupId；tag 根据 DescribeResourceGroupNew（QueryType=tag）返回的 GroupName 构造 {\"Key\":\"标签键\",\"Value\":\"标签值\"}；region 使用 DescribeSecurityGroupRegionList 返回的 Data[].Region；dnsparse 使用合法域名并按小写处理，同时受域名解析配额限制。
         :type DestContent: str
-        :param _DestType: 访问目的类型，不区分大小写，可传 net、template、instance、resourcegroup、tag、region 或 dnsparse。instance 的具体资产类型由 DestContent 的实例 ID 前缀识别；template、instance、resourcegroup、tag、region 对应的内容必须对当前账号有效。
+        :param _DestType: 访问目的类型，不区分大小写：net 表示 IP/CIDR，template 表示地址模板，instance 表示资产实例，resourcegroup 表示资产分组，tag 表示资源标签，region 表示资产地域，dnsparse 表示 DNS 解析匹配。内容必须与类型匹配，并且对当前账号有效。
         :type DestType: str
         :param _OrderIndex: 规则顺序的十进制整数字符串；-1 转换为 uint32 最大值。新增时 Type=0 或 1 会按 Data 数组顺序重新计算最终 Sequence；Type=2 使用首条规则的 OrderIndex 作为插入位置，超过当前最大 Sequence 时按末尾新增处理。修改规则内容时 -1 会被拒绝，超过当前最大 Sequence 的值归一化为当前最大 Sequence。
         :type OrderIndex: str
-        :param _RuleAction: 访问控制动作，不区分大小写。accept 表示放行，drop 表示拒绝，log 表示仅记录；isolateinaccept、isolateoutaccept 分别按放行动作写入并标记入向或出向隔离来源，isolateindrop、isolateoutdrop 分别按拒绝动作写入并标记入向或出向隔离来源。
+        :param _RuleAction: 访问控制动作，不区分大小写：accept 表示放行，drop 表示拒绝，log 表示观察；isolateinaccept 表示放行访问隔离资产的白名单流量，isolateindrop 表示阻断访问隔离资产的其它流量，isolateoutaccept 表示放行隔离资产访问白名单目标，isolateoutdrop 表示阻断隔离资产访问其它目标。
         :type RuleAction: str
-        :param _SourceContent: 访问源内容，非空且最多 512 字节，格式由 SourceType 决定：net 使用 IPv4 IP/CIDR，且不接受裸地址 0.0.0.0，表示全部 IPv4 地址时使用 0.0.0.0/0；template 使用可用的地址模板 ID；instance 使用属于当前账号的资产实例 ID；resourcegroup 使用当前账号的资产分组 ID；tag 使用当前账号已存在的资源标签 JSON 字符串，例如 {\"Key\":\"标签键\",\"Value\":\"标签值\"}；region 使用支持的地域标识；dnsparse 使用字符串内容。SourceType=dnsparse 时，服务端接受该类型，但不执行目的域名的小写归一化、域名格式校验或域名解析配额检查。
+        :param _SourceContent: 访问源内容，非空且最多 512 字节，格式由 SourceType 决定：net 使用 IPv4 IP/CIDR，且不接受裸地址 0.0.0.0，表示全部 IPv4 地址时使用 0.0.0.0/0；template 使用通过 VPC DescribeAddressTemplates 或 DescribeAddressTemplateGroups 查询的广州地域（ap-guangzhou）地址模板 ID，即 AddressTemplateId（ipm-）或 AddressTemplateGroupId（ipmg-）；instance 使用 DescribeCfwAssets 返回的 assets[].instance_id；resourcegroup 使用 DescribeResourceGroupNew（QueryType=resource）返回的 GroupId；tag 根据 DescribeResourceGroupNew（QueryType=tag）返回的 GroupName 构造 {\"Key\":\"标签键\",\"Value\":\"标签值\"}；region 使用 DescribeSecurityGroupRegionList 返回的 Data[].Region。
         :type SourceContent: str
-        :param _SourceType: 访问源类型，不区分大小写，可传 net、template、instance、resourcegroup、tag、region 或 dnsparse。instance 的具体资产类型由 SourceContent 的实例 ID 前缀识别；template、instance、resourcegroup、tag、region 对应的内容必须对当前账号有效。dnsparse 作为访问源时不执行目的域名的小写归一化、域名格式校验或域名解析配额检查。
+        :param _SourceType: 访问源类型，不区分大小写：net 表示 IP/CIDR，template 表示地址模板，instance 表示资产实例，resourcegroup 表示资产分组，tag 表示资源标签，region 表示资产地域。内容必须与类型匹配，并且对当前账号有效；dnsparse 作为 SourceType 时仅按普通字符串保存，不提供 DNS 解析匹配，请勿使用；DNS 解析匹配仅用于 DestType。
         :type SourceType: str
         :param _Enable: 规则状态字符串，不区分大小写；true 表示启用，false 表示禁用，省略或空字符串在结构转换时按 true 解析。普通新增最终使用账号的新增规则默认状态；batch_import 和 batch_import_cover 新增保留 Data.Enable 的解析结果；修改规则内容时保留原规则状态，因此 Data.Enable 不改变该修改的启停结果。
         :type Enable: str
-        :param _Id: 规则数据库数值 ID。普通新增由服务端生成；新增请求仅在 IsUseId=1 时采用 Data.Id。修改规则内容时 Data.Id 不改变目标规则 ID，服务端保留由外层 RuleUuid 定位的原 ID。当前 Schema 将本字段声明为字符串，而后端请求结构按 JSON 整数解析；传入字符串会导致请求解析失败。
+        :param _Id: 规则 ID，使用十进制数字字符串。普通新增由系统分配；仅 IsUseId=1 的新增请求采用 Data.Id。修改规则内容时忽略 Data.Id，并保留 RuleUuid 指定的规则 ID。
         :type Id: str
-        :param _Port: 访问控制端口字符串，最多 200 字节。未使用服务模板时不能为空，可传 1..65535 的单端口、以斜杠连接且两端分别位于 1..65535 的范围、最多 15 个逗号分隔项，或以 -1/-1 表示全部端口；Protocol 为 ANY 或 ICMP 时必须为 -1/-1。使用服务模板时 Protocol、Port 可同时省略或留空；若任一字段非空，则只接受 Protocol=ANY 且 Port=-1/-1。
+        :param _Port: 访问控制端口字符串，最多 200 字节。未使用服务模板时必填，可传 1..65535 的单端口、斜杠连接的端口范围、最多 15 个逗号分隔项，或 -1/-1 表示全部端口；Protocol 为 ANY 或 ICMP 时必须为 -1/-1。使用 ServiceTemplateId 时，Protocol 和 Port 可同时省略或留空；如填写非空值则必须为 Protocol=ANY、Port=-1/-1。
         :type Port: str
-        :param _Protocol: IPv4 企业安全组协议，区分大小写。未使用服务模板时必须填写 ANY、TCP、UDP 或 ICMP；ANY 和 ICMP 仅支持 Port=-1/-1。使用服务模板时 Protocol、Port 可同时省略或留空；若填写则只接受 Protocol=ANY 且 Port=-1/-1。ICMPv6 由独立的 IPv6 企业安全组接口处理。
+        :param _Protocol: IPv4 企业安全组协议，使用区分大小写的大写值 ANY、TCP、UDP 或 ICMP；ANY 表示所有 IPv4 协议。未使用服务模板时必填，ANY 和 ICMP 必须搭配 Port=-1/-1；使用 ServiceTemplateId 时，Protocol 和 Port 可同时省略或留空，如填写非空值则必须为 Protocol=ANY、Port=-1/-1。ICMPv6 使用独立的 IPv6 企业安全组接口。
         :type Protocol: str
-        :param _Scope: 规则生效范围，使用大写 SG、LH 或无空格的逗号分隔组合；SG 表示安全组，LH 表示轻量应用服务器。新增时省略默认补为 SG；修改规则内容时省略表示保留原范围。范围包含 LH 时，SourceType、DestType 均不能为 template，且不能使用 ServiceTemplateId。
+        :param _Scope: 规则生效范围，使用大写 SG、LH、NONE 或无空格的逗号分隔组合；SG 表示安全组，LH 表示轻量应用服务器，NONE 表示未设置范围。新增时省略默认为 SG；修改规则内容时省略或使用 NONE 均保留原范围。组合项会去重。范围包含 LH 时，SourceType、DestType 均不能为 template，且不能使用 ServiceTemplateId。
         :type Scope: str
-        :param _ServiceTemplateId: 协议端口模板 ID，最多 50 字节，必须属于当前账号或为当前账号可用的公共模板。非空时 Protocol、Port 可同时省略或留空；若任一字段非空，则只接受 Protocol=ANY 且 Port=-1/-1。Scope 包含 LH 时不能使用服务模板。
+        :param _ServiceTemplateId: 协议端口模板 ID，最多 50 字节。仅支持通过 VPC DescribeServiceTemplates 或 DescribeServiceTemplateGroups 查询的广州地域（ap-guangzhou）服务模板，即 ServiceTemplateId（ppm-）或 ServiceTemplateGroupId（ppmg-）。非空时 Protocol 和 Port 可同时省略或留空；如填写非空值则必须为 Protocol=ANY、Port=-1/-1。Scope 包含 LH 时不能使用服务模板。
         :type ServiceTemplateId: str
-        :param _Uid: Schema 中声明的规则内部 UUID 字段。当前新增和修改请求结构绑定的 JSON 键名为 UuId 而不是 Uid，因此传入本字段不会参与这两个接口的内部 UUID 生成或复用。
+        :param _Uid: 保留字段。新增和修改请求均忽略 Uid，无法通过该字段指定或保留规则标识，建议省略。
         :type Uid: str
         """
         self._Description = None
@@ -36015,7 +36015,7 @@ class SecurityGroupRule(AbstractModel):
 
     @property
     def DestContent(self):
-        r"""访问目的内容，非空且最多 512 字节，格式由 DestType 决定：net 使用 IPv4 IP/CIDR，且不接受裸地址 0.0.0.0，表示全部 IPv4 地址时使用 0.0.0.0/0；template 使用可用的地址模板 ID；instance 使用属于当前账号的资产实例 ID；resourcegroup 使用当前账号的资产分组 ID；tag 使用当前账号已存在的资源标签 JSON 字符串，例如 {\"Key\":\"标签键\",\"Value\":\"标签值\"}；region 使用支持的地域标识；dnsparse 使用合法域名。DestType=dnsparse 时服务端将内容转换为小写，并检查域名格式和域名解析配额。
+        r"""访问目的内容，非空且最多 512 字节，格式由 DestType 决定：net 使用 IPv4 IP/CIDR，且不接受裸地址 0.0.0.0，表示全部 IPv4 地址时使用 0.0.0.0/0；template 使用通过 VPC DescribeAddressTemplates 或 DescribeAddressTemplateGroups 查询的广州地域（ap-guangzhou）地址模板 ID，即 AddressTemplateId（ipm-）或 AddressTemplateGroupId（ipmg-）；instance 使用 DescribeCfwAssets 返回的 assets[].instance_id；resourcegroup 使用 DescribeResourceGroupNew（QueryType=resource）返回的 GroupId；tag 根据 DescribeResourceGroupNew（QueryType=tag）返回的 GroupName 构造 {\"Key\":\"标签键\",\"Value\":\"标签值\"}；region 使用 DescribeSecurityGroupRegionList 返回的 Data[].Region；dnsparse 使用合法域名并按小写处理，同时受域名解析配额限制。
         :rtype: str
         """
         return self._DestContent
@@ -36026,7 +36026,7 @@ class SecurityGroupRule(AbstractModel):
 
     @property
     def DestType(self):
-        r"""访问目的类型，不区分大小写，可传 net、template、instance、resourcegroup、tag、region 或 dnsparse。instance 的具体资产类型由 DestContent 的实例 ID 前缀识别；template、instance、resourcegroup、tag、region 对应的内容必须对当前账号有效。
+        r"""访问目的类型，不区分大小写：net 表示 IP/CIDR，template 表示地址模板，instance 表示资产实例，resourcegroup 表示资产分组，tag 表示资源标签，region 表示资产地域，dnsparse 表示 DNS 解析匹配。内容必须与类型匹配，并且对当前账号有效。
         :rtype: str
         """
         return self._DestType
@@ -36048,7 +36048,7 @@ class SecurityGroupRule(AbstractModel):
 
     @property
     def RuleAction(self):
-        r"""访问控制动作，不区分大小写。accept 表示放行，drop 表示拒绝，log 表示仅记录；isolateinaccept、isolateoutaccept 分别按放行动作写入并标记入向或出向隔离来源，isolateindrop、isolateoutdrop 分别按拒绝动作写入并标记入向或出向隔离来源。
+        r"""访问控制动作，不区分大小写：accept 表示放行，drop 表示拒绝，log 表示观察；isolateinaccept 表示放行访问隔离资产的白名单流量，isolateindrop 表示阻断访问隔离资产的其它流量，isolateoutaccept 表示放行隔离资产访问白名单目标，isolateoutdrop 表示阻断隔离资产访问其它目标。
         :rtype: str
         """
         return self._RuleAction
@@ -36059,7 +36059,7 @@ class SecurityGroupRule(AbstractModel):
 
     @property
     def SourceContent(self):
-        r"""访问源内容，非空且最多 512 字节，格式由 SourceType 决定：net 使用 IPv4 IP/CIDR，且不接受裸地址 0.0.0.0，表示全部 IPv4 地址时使用 0.0.0.0/0；template 使用可用的地址模板 ID；instance 使用属于当前账号的资产实例 ID；resourcegroup 使用当前账号的资产分组 ID；tag 使用当前账号已存在的资源标签 JSON 字符串，例如 {\"Key\":\"标签键\",\"Value\":\"标签值\"}；region 使用支持的地域标识；dnsparse 使用字符串内容。SourceType=dnsparse 时，服务端接受该类型，但不执行目的域名的小写归一化、域名格式校验或域名解析配额检查。
+        r"""访问源内容，非空且最多 512 字节，格式由 SourceType 决定：net 使用 IPv4 IP/CIDR，且不接受裸地址 0.0.0.0，表示全部 IPv4 地址时使用 0.0.0.0/0；template 使用通过 VPC DescribeAddressTemplates 或 DescribeAddressTemplateGroups 查询的广州地域（ap-guangzhou）地址模板 ID，即 AddressTemplateId（ipm-）或 AddressTemplateGroupId（ipmg-）；instance 使用 DescribeCfwAssets 返回的 assets[].instance_id；resourcegroup 使用 DescribeResourceGroupNew（QueryType=resource）返回的 GroupId；tag 根据 DescribeResourceGroupNew（QueryType=tag）返回的 GroupName 构造 {\"Key\":\"标签键\",\"Value\":\"标签值\"}；region 使用 DescribeSecurityGroupRegionList 返回的 Data[].Region。
         :rtype: str
         """
         return self._SourceContent
@@ -36070,7 +36070,7 @@ class SecurityGroupRule(AbstractModel):
 
     @property
     def SourceType(self):
-        r"""访问源类型，不区分大小写，可传 net、template、instance、resourcegroup、tag、region 或 dnsparse。instance 的具体资产类型由 SourceContent 的实例 ID 前缀识别；template、instance、resourcegroup、tag、region 对应的内容必须对当前账号有效。dnsparse 作为访问源时不执行目的域名的小写归一化、域名格式校验或域名解析配额检查。
+        r"""访问源类型，不区分大小写：net 表示 IP/CIDR，template 表示地址模板，instance 表示资产实例，resourcegroup 表示资产分组，tag 表示资源标签，region 表示资产地域。内容必须与类型匹配，并且对当前账号有效；dnsparse 作为 SourceType 时仅按普通字符串保存，不提供 DNS 解析匹配，请勿使用；DNS 解析匹配仅用于 DestType。
         :rtype: str
         """
         return self._SourceType
@@ -36092,7 +36092,7 @@ class SecurityGroupRule(AbstractModel):
 
     @property
     def Id(self):
-        r"""规则数据库数值 ID。普通新增由服务端生成；新增请求仅在 IsUseId=1 时采用 Data.Id。修改规则内容时 Data.Id 不改变目标规则 ID，服务端保留由外层 RuleUuid 定位的原 ID。当前 Schema 将本字段声明为字符串，而后端请求结构按 JSON 整数解析；传入字符串会导致请求解析失败。
+        r"""规则 ID，使用十进制数字字符串。普通新增由系统分配；仅 IsUseId=1 的新增请求采用 Data.Id。修改规则内容时忽略 Data.Id，并保留 RuleUuid 指定的规则 ID。
         :rtype: str
         """
         return self._Id
@@ -36103,7 +36103,7 @@ class SecurityGroupRule(AbstractModel):
 
     @property
     def Port(self):
-        r"""访问控制端口字符串，最多 200 字节。未使用服务模板时不能为空，可传 1..65535 的单端口、以斜杠连接且两端分别位于 1..65535 的范围、最多 15 个逗号分隔项，或以 -1/-1 表示全部端口；Protocol 为 ANY 或 ICMP 时必须为 -1/-1。使用服务模板时 Protocol、Port 可同时省略或留空；若任一字段非空，则只接受 Protocol=ANY 且 Port=-1/-1。
+        r"""访问控制端口字符串，最多 200 字节。未使用服务模板时必填，可传 1..65535 的单端口、斜杠连接的端口范围、最多 15 个逗号分隔项，或 -1/-1 表示全部端口；Protocol 为 ANY 或 ICMP 时必须为 -1/-1。使用 ServiceTemplateId 时，Protocol 和 Port 可同时省略或留空；如填写非空值则必须为 Protocol=ANY、Port=-1/-1。
         :rtype: str
         """
         return self._Port
@@ -36114,7 +36114,7 @@ class SecurityGroupRule(AbstractModel):
 
     @property
     def Protocol(self):
-        r"""IPv4 企业安全组协议，区分大小写。未使用服务模板时必须填写 ANY、TCP、UDP 或 ICMP；ANY 和 ICMP 仅支持 Port=-1/-1。使用服务模板时 Protocol、Port 可同时省略或留空；若填写则只接受 Protocol=ANY 且 Port=-1/-1。ICMPv6 由独立的 IPv6 企业安全组接口处理。
+        r"""IPv4 企业安全组协议，使用区分大小写的大写值 ANY、TCP、UDP 或 ICMP；ANY 表示所有 IPv4 协议。未使用服务模板时必填，ANY 和 ICMP 必须搭配 Port=-1/-1；使用 ServiceTemplateId 时，Protocol 和 Port 可同时省略或留空，如填写非空值则必须为 Protocol=ANY、Port=-1/-1。ICMPv6 使用独立的 IPv6 企业安全组接口。
         :rtype: str
         """
         return self._Protocol
@@ -36125,7 +36125,7 @@ class SecurityGroupRule(AbstractModel):
 
     @property
     def Scope(self):
-        r"""规则生效范围，使用大写 SG、LH 或无空格的逗号分隔组合；SG 表示安全组，LH 表示轻量应用服务器。新增时省略默认补为 SG；修改规则内容时省略表示保留原范围。范围包含 LH 时，SourceType、DestType 均不能为 template，且不能使用 ServiceTemplateId。
+        r"""规则生效范围，使用大写 SG、LH、NONE 或无空格的逗号分隔组合；SG 表示安全组，LH 表示轻量应用服务器，NONE 表示未设置范围。新增时省略默认为 SG；修改规则内容时省略或使用 NONE 均保留原范围。组合项会去重。范围包含 LH 时，SourceType、DestType 均不能为 template，且不能使用 ServiceTemplateId。
         :rtype: str
         """
         return self._Scope
@@ -36136,7 +36136,7 @@ class SecurityGroupRule(AbstractModel):
 
     @property
     def ServiceTemplateId(self):
-        r"""协议端口模板 ID，最多 50 字节，必须属于当前账号或为当前账号可用的公共模板。非空时 Protocol、Port 可同时省略或留空；若任一字段非空，则只接受 Protocol=ANY 且 Port=-1/-1。Scope 包含 LH 时不能使用服务模板。
+        r"""协议端口模板 ID，最多 50 字节。仅支持通过 VPC DescribeServiceTemplates 或 DescribeServiceTemplateGroups 查询的广州地域（ap-guangzhou）服务模板，即 ServiceTemplateId（ppm-）或 ServiceTemplateGroupId（ppmg-）。非空时 Protocol 和 Port 可同时省略或留空；如填写非空值则必须为 Protocol=ANY、Port=-1/-1。Scope 包含 LH 时不能使用服务模板。
         :rtype: str
         """
         return self._ServiceTemplateId
@@ -36147,7 +36147,7 @@ class SecurityGroupRule(AbstractModel):
 
     @property
     def Uid(self):
-        r"""Schema 中声明的规则内部 UUID 字段。当前新增和修改请求结构绑定的 JSON 键名为 UuId 而不是 Uid，因此传入本字段不会参与这两个接口的内部 UUID 生成或复用。
+        r"""保留字段。新增和修改请求均忽略 Uid，无法通过该字段指定或保留规则标识，建议省略。
         :rtype: str
         """
         return self._Uid
@@ -36183,13 +36183,13 @@ class SecurityGroupRule(AbstractModel):
 
 
 class SecurityGroupSimplifyRule(AbstractModel):
-    r"""创建请求写入成功后返回的企业安全组规则摘要。
+    r"""企业安全组规则摘要。
 
     """
 
     def __init__(self):
         r"""
-        :param _Description: 写入规则的描述。
+        :param _Description: 规则描述。
         :type Description: str
         :param _DestContent: 访问目的示例：
 net：IP/CIDR(192.168.0.2)
@@ -36201,11 +36201,11 @@ region：地域(ap-gaungzhou)
         :type DestContent: str
         :param _Protocol: 写入规则的协议。普通 IPv4 规则返回 ANY、TCP、UDP 或 ICMP；使用服务模板时，Protocol 可省略或留空，此时返回空字符串；若仍显式填写 Protocol，则只接受 ANY 并返回 ANY。
         :type Protocol: str
-        :param _RuleUuid: 服务端写入后生成或采用的规则数据库 ID。
+        :param _RuleUuid: 规则 ID。
         :type RuleUuid: int
         :param _Scope: 写入后的规则生效范围；SG 表示安全组，LH 表示轻量应用服务器，组合范围以逗号分隔。
         :type Scope: str
-        :param _Sequence: 服务端写入后的实际规则顺序。
+        :param _Sequence: 写入后的实际规则顺序。
         :type Sequence: int
         :param _SourceContent: 访问源示例：
 net：IP/CIDR(192.168.0.2)
@@ -36226,7 +36226,7 @@ region：地域(ap-gaungzhou)
 
     @property
     def Description(self):
-        r"""写入规则的描述。
+        r"""规则描述。
         :rtype: str
         """
         return self._Description
@@ -36265,7 +36265,7 @@ region：地域(ap-gaungzhou)
 
     @property
     def RuleUuid(self):
-        r"""服务端写入后生成或采用的规则数据库 ID。
+        r"""规则 ID。
         :rtype: int
         """
         return self._RuleUuid
@@ -36287,7 +36287,7 @@ region：地域(ap-gaungzhou)
 
     @property
     def Sequence(self):
-        r"""服务端写入后的实际规则顺序。
+        r"""写入后的实际规则顺序。
         :rtype: int
         """
         return self._Sequence
@@ -39605,69 +39605,69 @@ class VpcFwJoinInstanceType(AbstractModel):
 
 
 class VpcRuleItem(AbstractModel):
-    r"""VPC 内网间访问控制规则。新增和修改均根据请求中的源、目的、协议、动作、端口、顺序、状态、生效范围、IP 版本和模板等配置字段重新构造规则；修改是整条替换而不是局部更新。命中信息、名称、时间及其它查询展示字段不参与规则构造。
+    r"""VPC边界访问控制规则参数结构，供新增和修改共用。修改时整条替换，省略的可写字段不会继承旧值；查询展示字段在新增和修改请求中均忽略。
 
     """
 
     def __init__(self):
         r"""
-        :param _Description: <p>规则描述。新增和修改按请求中的字符串保存。</p>
+        :param _Description: 规则描述，不超过 100 个字符。新增时按请求值保存；修改时完整替换，不继承旧值。
         :type Description: str
-        :param _DestContent: <p>访问目的内容，由 DestType 决定格式和校验。net/ip 接受合法 IP 或 CIDR 的逗号分隔列表，最多 10 项；domain 接受合法域名的逗号分隔列表或单独的 *，最多 10 项，通配域名最多 5 级，段内通配域名还要求引擎支持对应能力；template 接受当前租户的地址模板标识并归一化为模板 UUID，IP 地址模板必须与 IpVersion 一致，域名地址模板按域名目的校验；dnsparse 接受单个非 IP 域名或当前租户的域名模板，可使用符合级数限制的 *. 前缀泛域名，但不接受单独的 * 或段内通配；domainiptwoverify 接受单个非 IP 精确域名或不含任何通配符的当前租户域名模板；instance 和 tag 必须在当前租户存在，其中 instance 必须具有 IpVersion 对应的私网地址；group 接受资源组标识。location 会校验地域代码，但解析出的地域代码未写入 VPC 规则且目的内容保存为空；vendor 会校验厂商名称并将其归一化代码写入目的内容。归一化后的目的内容超过 1023 字节时请求失败。</p>
+        :param _DestContent: 访问目的内容，由 DestType 决定格式和校验。net/ip 接受合法 IP 或 CIDR 的逗号分隔列表，最多 10 项；domain 接受合法域名的逗号分隔列表或单独的 *，最多 10 项，通配域名最多 5 级，段内通配域名还要求引擎支持对应能力；template 接受当前租户的地址模板标识并归一化为模板 UUID，IP 地址模板必须与 IpVersion 一致，域名地址模板按域名目的校验；dnsparse 接受单个非 IP 域名或当前租户的域名模板，可使用符合级数限制的 *. 前缀泛域名，但不接受单独的 * 或段内通配；domainiptwoverify 接受单个非 IP 精确域名或不含任何通配符的当前租户域名模板；instance 和 tag 必须在当前租户存在，其中 instance 必须具有 IpVersion 对应的私网地址；group 接受资源组标识。归一化后的目的内容超过 1023 字节时请求失败。
         :type DestContent: str
-        :param _DestType: <p>访问目的类型，不区分大小写。VPC 规则可用 net（ip 为同义值）、domain、template、dnsparse、domainiptwoverify、instance、tag、group、location 或 vendor；url 虽可被通用类型映射识别，但 VPC 出向内容解析不支持。地址模板、dnsparse、domainiptwoverify、严格模式域名模板和段内通配域名分别要求当前 VPC 防火墙引擎支持对应能力，否则返回 UnsupportedOperation。类型及地址模板查询到的实际类型共同决定 DestContent 和 Protocol 的校验。</p>
+        :param _DestType: 访问目的类型，不区分大小写。net、ip 均表示 IP/CIDR，template 表示地址模板，instance 表示资产实例，group 表示资产分组，tag 表示资源标签，domain 表示 FQDN 匹配，dnsparse 表示宽松匹配：Host/SNI 与域名匹配，或目的 IP 属于该域名当前 DNS 解析结果，满足任一条件即命中；domainiptwoverify 表示严格匹配：上述两个条件必须同时满足。url 虽可被通用类型映射识别，但 VPC 目的内容不支持。地址模板和部分域名模式要求当前 VPC 防火墙引擎支持对应能力；类型及模板实际类型共同决定 DestContent 和 Protocol 的校验。
         :type DestType: str
-        :param _EdgeId: <p>规则生效的 VPC 边范围，不区分大小写。ALL 表示全部 VPC 间，cfws- 前缀表示指定 VPC 边；其它格式返回参数错误。ALL 还要求相关 VPC 防火墙引擎支持全局规则，否则返回 UnsupportedOperation。</p>
+        :param _EdgeId: 规则生效的 VPC 边范围，不区分大小写。ALL 表示全部 VPC 边，cfws- 前缀表示指定 VPC 边；其它格式无效。ALL 要求当前环境支持 VPC 全局规则。
         :type EdgeId: str
-        :param _Enable: <p>规则状态。字符串 true 表示启用，false 表示禁用，大小写不敏感；省略或传空字符串时使用租户通知配置中的默认规则状态，该配置没有可用值时默认启用；其它字符串返回参数错误。</p>
+        :param _Enable: 规则状态，不区分大小写：true 表示启用，false 表示禁用。省略或为空时使用账号默认状态；没有可用默认值时启用。
         :type Enable: str
-        :param _OrderIndex: <p>规则在相同 IpVersion 的中间分区内的顺序。请求整数先转换为 uint32，0 归一化为 1，负整数及超出 uint32 范围的整数按该转换结果处理；写入时，顺序为 1 或不大于当前最大顺序的规则在该位置插入并将现有规则后移，通常大于当前最大顺序的值归一化为末尾。例外是 AddVpcAcRule 未使用精确值 insert_rule 且首条规则解析后的顺序为 1 时，本批每条规则都保留其解析后顺序并按该值移动现有规则，因此后续规则即使大于当前最大顺序也不会归一化为末尾。</p>
+        :param _OrderIndex: 规则在相同 IpVersion 下的顺序。-1 表示追加到末尾；正序号表示在对应位置插入并顺延后续规则。0、其它负数及超范围值不应使用。批量新增按 Rules 顺序依次处理。
         :type OrderIndex: int
-        :param _Port: <p>访问控制策略的端口。除 ICMP 和 ICMPV6 外，该字段按逗号拆分；每项可以是正整数单端口，或以斜杠分隔且起点不大于终点的两个整数，-1/-1 表示全部端口。ICMP 和 ICMPV6 忽略请求值并保存为空字符串；其它协议的空值或非法格式返回参数错误。FTP 只接受正整数单端口，不接受逗号组合或斜杠区间。</p>
+        :param _Port: 访问端口。除 ICMP 和 ICMPV6 外，支持逗号分隔的正整数单端口或“起始/结束”范围，且起始值不大于结束值；-1/-1 表示全部端口。ICMP 和 ICMPV6 忽略该字段；FTP 仅支持单个正整数端口。
         :type Port: str
-        :param _Protocol: <p>协议名称，不区分大小写并归一化。IP、instance、tag、group、location、vendor 及 IP 地址模板目的支持 TCP、UDP、ICMP、ICMPV6、ANY 和 FTP，其中 FTP 只接受单端口；domain 及域名地址模板目的支持 ANY、HTTP、HTTPS、HTTP/HTTPS、TLS/SSL、SMTP、SMTPS、SMTP/SMTPS 和 DNS，不支持 FTP，domain、tls、ssl 归一化为 TLS/SSL；dnsparse 和 domainiptwoverify 仅支持 TCP 或 UDP。template 按查询到的实际模板类型应用上述限制；填写 ParamTemplateId 时，组内每个协议端口项还会应用相同的目的类型限制。</p>
+        :param _Protocol: 协议名称，不区分大小写并归一化。ANY 表示不限定协议，不表示省略 Protocol。IP、instance、tag、group 及 IP 地址模板目的支持 TCP、UDP、ICMP、ICMPV6、ANY 和 FTP，其中 FTP 只接受单端口；domain 及域名地址模板目的支持 ANY、HTTP、HTTPS、HTTP/HTTPS、TLS/SSL、SMTP、SMTPS、SMTP/SMTPS 和 DNS，不支持 FTP，domain、tls、ssl 归一化为 TLS/SSL；dnsparse 和 domainiptwoverify 仅支持 TCP 或 UDP。template 按查询到的实际模板类型应用上述限制；填写 ParamTemplateId 时，组内每个协议端口项还会应用相同的目的类型限制。
         :type Protocol: str
-        :param _RuleAction: <p>流量通过云防火墙时的处理方式，不区分大小写。accept 表示放行，drop 表示拒绝，log 表示观察；isolateinaccept 和 isolateoutaccept 归一化为放行，isolateindrop 和 isolateoutdrop 归一化为拒绝；其它值返回参数错误。</p>
+        :param _RuleAction: 流量通过云防火墙时的处理方式，不区分大小写。accept 表示放行，drop 表示拒绝，log 表示观察；isolateinaccept 表示放行访问隔离资产的白名单流量，isolateindrop 表示阻断访问隔离资产的其它流量，isolateoutaccept 表示放行隔离资产访问白名单目标，isolateoutdrop 表示阻断隔离资产访问其它目标；其它值返回参数错误。
         :type RuleAction: str
-        :param _SourceContent: <p>访问源内容，由 SourceType 决定格式和校验。net/ip 接受合法 IP 或 CIDR 的逗号分隔列表，最多 10 项；template 接受当前租户的地址模板标识并归一化为模板 UUID，只允许与 IpVersion 一致的 IP 地址模板，域名地址模板不能作为访问源；instance 和 tag 必须在当前租户存在，其中 instance 必须具有 IpVersion 对应的私网地址；group 接受资源组标识。</p>
+        :param _SourceContent: 访问源内容，格式由 SourceType 决定：net/ip 使用最多 10 个逗号分隔的 IP 或 CIDR；template 使用当前账号且匹配 IpVersion 的 IP 地址模板 ID，不支持域名模板；instance、tag 必须属于当前账号，instance 须有对应 IpVersion 的私网地址；group 使用资源组 ID。
         :type SourceContent: str
-        :param _SourceType: <p>访问源类型，不区分大小写。VPC 规则可用 net（ip 为同义值）、template、instance、tag 或 group；url、location 和 vendor 虽可被通用类型映射识别，但 VPC 出向源内容解析不支持。使用 template 要求当前 VPC 防火墙引擎支持地址模板能力。类型及模板查询到的实际类型共同决定 SourceContent 的校验。</p>
+        :param _SourceType: 访问源类型，不区分大小写：net、ip 均表示 IP/CIDR，template 表示地址模板，instance 表示资产实例，tag 表示资源标签，group 表示资产分组。类型及模板实际类型决定 SourceContent 的格式；template 要求当前环境支持地址模板。
         :type SourceType: str
-        :param _BetaList: <p>规则关联的 beta 任务详情。请求中的该字段不参与新增或修改规则构造，主要用于查询返回。</p>
+        :param _BetaList: 规则关联的 beta 任务详情。请求中的该字段不参与新增或修改规则构造，主要用于查询返回。
         :type BetaList: list of BetaInfoByACL
-        :param _CreateTime: <p>规则创建时间。请求中的该字段不参与新增或修改规则构造，主要用于查询返回。</p>
+        :param _CreateTime: 规则创建时间。请求中的该字段不参与新增或修改规则构造，主要用于查询返回。
         :type CreateTime: str
-        :param _Deleted: <p>规则删除标记，1 表示已删除，0 表示未删除。请求中的该字段不参与新增或修改规则构造，主要用于查询返回。</p>
+        :param _Deleted: 规则删除标记，1 表示已删除，0 表示未删除。请求中的该字段不参与新增或修改规则构造，主要用于查询返回。
         :type Deleted: int
-        :param _DestValueType: <p>查询结果中对目的实际类型的补充提示，例如 template 可区分 IP 地址模板和域名地址模板。新增和修改处理程序不读取请求中的该字段；实际目的类型由 DestType、DestContent 和模板查询结果确定。</p>
+        :param _DestValueType: 目的实际类型提示，例如区分 IP 地址模板和域名地址模板；新增和修改请求中忽略。
         :type DestValueType: str
-        :param _DetectedTimes: <p>规则命中次数。请求中的该字段不参与新增或修改规则构造，主要用于查询返回。</p>
+        :param _DetectedTimes: 规则命中次数。请求中的该字段不参与新增或修改规则构造，主要用于查询返回。
         :type DetectedTimes: int
-        :param _EdgeName: <p>EdgeId 对应的 VPC 边名称。请求中的该字段不参与新增或修改规则构造，主要用于查询返回和操作记录展示。</p>
+        :param _EdgeName: EdgeId 对应的 VPC 边名称。请求中的该字段不参与新增或修改规则构造，主要用于查询返回和操作记录展示。
         :type EdgeName: str
-        :param _FwGroupId: <p>规则生效的防火墙组或 CCN 范围，格式比较不区分大小写。ALL 归一化为大写 ALL；cfwg- 前缀和 ccn- 前缀的值保留请求原文；省略、空字符串或其它格式归一化为 ALL，处理程序不因格式无效而返回错误。</p>
+        :param _FwGroupId: 规则生效的防火墙组或 CCN 范围，不区分大小写。支持 ALL、cfwg- 前缀和 ccn- 前缀；省略、为空或格式无效时按 ALL 处理。
         :type FwGroupId: str
-        :param _FwGroupName: <p>防火墙组或 CCN 名称。请求中的该字段不参与新增或修改规则构造，主要用于查询返回和操作记录展示。</p>
+        :param _FwGroupName: 防火墙组或 CCN 名称。请求中的该字段不参与新增或修改规则构造，主要用于查询返回和操作记录展示。
         :type FwGroupName: str
-        :param _InternalUuid: <p>内部规则标识。AddVpcAcRule 的精确 batch_import_cover 分支会采用正整数 InternalUuid 替换自动生成的内部标识；其它新增分支和 ModifyVpcAcRule 不读取请求中的该字段。</p>
+        :param _InternalUuid: 覆盖导入规则标识。仅 batch_import_cover 接受正整数值；其它新增方式和修改请求中忽略。
         :type InternalUuid: int
-        :param _Invalid: <p>查询结果中的规则有效性标记，0 表示有效，1 表示无效。请求中的该字段不参与新增或修改规则构造。</p>
+        :param _Invalid: 查询结果中的规则有效性标记，0 表示有效，1 表示无效。请求中的该字段不参与新增或修改规则构造。
         :type Invalid: int
-        :param _IpVersion: <p>IP 版本，0 表示 IPv4，1 表示 IPv6。省略或传入 0、1 以外的整数时按 IPv4 处理；instance 必须具有对应版本的私网地址，IP 地址模板必须与解析后的版本一致。处理程序不使用该字段校验直接填写的 net IP/CIDR 版本。</p>
+        :param _IpVersion: IP 版本：0 表示 IPv4，1 表示 IPv6；省略或传入其它整数时按 IPv4 处理。instance 和 IP 地址模板须匹配该版本；直接填写的 net IP/CIDR 也应使用相同版本。
         :type IpVersion: int
-        :param _ParamTemplateId: <p>端口协议组 ID。省略或传空字符串时直接使用 Protocol 和 Port；非空时查询当前租户的端口协议组并用组内协议端口项执行目的类型和协议类别校验，模板查询失败时请求失败。无论是否填写该字段，请求中的 Protocol 和非 ICMP/ICMPV6 Port 都会先按普通规则解析，格式无效时请求失败。</p>
+        :param _ParamTemplateId: 端口协议组 ID。省略或为空时使用 Protocol 和 Port；非空时必须是当前账号可用的端口协议组，组内协议端口须满足目的类型限制。Protocol 和非 ICMP/ICMPV6 的 Port 仍须使用有效格式。
         :type ParamTemplateId: str
-        :param _ParamTemplateName: <p>端口协议组名称。请求中的该字段不参与新增或修改规则构造，主要用于查询返回。</p>
+        :param _ParamTemplateName: 端口协议组名称。请求中的该字段不参与新增或修改规则构造，主要用于查询返回。
         :type ParamTemplateName: str
-        :param _RulePartition: <p>规则分区展示值，1 表示最前分区，2 表示中间分区，3 表示最后分区。新增和修改处理程序不读取请求中的该字段，写入时固定为中间分区；ModifyVpcAcRule 只能定位并替换中间分区中的现有规则。</p>
+        :param _RulePartition: 规则位置展示值：1 表示最前，2 表示中间，3 表示最后。新增和修改请求中忽略；仅位置为 2 的规则可修改。
         :type RulePartition: int
-        :param _SourceName: <p>访问源名称。请求中的该字段不参与新增或修改规则构造，主要用于查询返回和操作记录展示。</p>
+        :param _SourceName: 访问源名称。请求中的该字段不参与新增或修改规则构造，主要用于查询返回和操作记录展示。
         :type SourceName: str
-        :param _TargetName: <p>访问目的名称。请求中的该字段不参与新增或修改规则构造，主要用于查询返回和操作记录展示。</p>
+        :param _TargetName: 访问目的名称。请求中的该字段不参与新增或修改规则构造，主要用于查询返回和操作记录展示。
         :type TargetName: str
-        :param _UpdateTime: <p>规则最近更新时间。请求中的该字段不参与新增或修改规则构造，主要用于查询返回。</p>
+        :param _UpdateTime: 规则最近更新时间。请求中的该字段不参与新增或修改规则构造，主要用于查询返回。
         :type UpdateTime: str
-        :param _Uuid: <p>规则数据库 ID。ModifyVpcAcRule 必须传当前租户中间分区内既有规则的正整数 Uuid；处理程序按该 ID 删除原记录并以同一 ID 插入替换后的规则。AddVpcAcRule 的普通新增、insert_rule 和 batch_import 分支忽略该字段；精确 batch_import_cover 分支会采用正整数 Uuid 作为新记录 ID，非正数值仍由数据库生成 ID。</p>
+        :param _Uuid: 规则 ID。修改时必须提供当前账号已有且可修改的正整数 Uuid，并完整替换该规则。普通新增、insert_rule 和 batch_import 忽略该字段；batch_import_cover 可使用正整数 ID，非正数值由系统分配。
         :type Uuid: int
         """
         self._Description = None
@@ -39702,7 +39702,7 @@ class VpcRuleItem(AbstractModel):
 
     @property
     def Description(self):
-        r"""<p>规则描述。新增和修改按请求中的字符串保存。</p>
+        r"""规则描述，不超过 100 个字符。新增时按请求值保存；修改时完整替换，不继承旧值。
         :rtype: str
         """
         return self._Description
@@ -39713,7 +39713,7 @@ class VpcRuleItem(AbstractModel):
 
     @property
     def DestContent(self):
-        r"""<p>访问目的内容，由 DestType 决定格式和校验。net/ip 接受合法 IP 或 CIDR 的逗号分隔列表，最多 10 项；domain 接受合法域名的逗号分隔列表或单独的 *，最多 10 项，通配域名最多 5 级，段内通配域名还要求引擎支持对应能力；template 接受当前租户的地址模板标识并归一化为模板 UUID，IP 地址模板必须与 IpVersion 一致，域名地址模板按域名目的校验；dnsparse 接受单个非 IP 域名或当前租户的域名模板，可使用符合级数限制的 *. 前缀泛域名，但不接受单独的 * 或段内通配；domainiptwoverify 接受单个非 IP 精确域名或不含任何通配符的当前租户域名模板；instance 和 tag 必须在当前租户存在，其中 instance 必须具有 IpVersion 对应的私网地址；group 接受资源组标识。location 会校验地域代码，但解析出的地域代码未写入 VPC 规则且目的内容保存为空；vendor 会校验厂商名称并将其归一化代码写入目的内容。归一化后的目的内容超过 1023 字节时请求失败。</p>
+        r"""访问目的内容，由 DestType 决定格式和校验。net/ip 接受合法 IP 或 CIDR 的逗号分隔列表，最多 10 项；domain 接受合法域名的逗号分隔列表或单独的 *，最多 10 项，通配域名最多 5 级，段内通配域名还要求引擎支持对应能力；template 接受当前租户的地址模板标识并归一化为模板 UUID，IP 地址模板必须与 IpVersion 一致，域名地址模板按域名目的校验；dnsparse 接受单个非 IP 域名或当前租户的域名模板，可使用符合级数限制的 *. 前缀泛域名，但不接受单独的 * 或段内通配；domainiptwoverify 接受单个非 IP 精确域名或不含任何通配符的当前租户域名模板；instance 和 tag 必须在当前租户存在，其中 instance 必须具有 IpVersion 对应的私网地址；group 接受资源组标识。归一化后的目的内容超过 1023 字节时请求失败。
         :rtype: str
         """
         return self._DestContent
@@ -39724,7 +39724,7 @@ class VpcRuleItem(AbstractModel):
 
     @property
     def DestType(self):
-        r"""<p>访问目的类型，不区分大小写。VPC 规则可用 net（ip 为同义值）、domain、template、dnsparse、domainiptwoverify、instance、tag、group、location 或 vendor；url 虽可被通用类型映射识别，但 VPC 出向内容解析不支持。地址模板、dnsparse、domainiptwoverify、严格模式域名模板和段内通配域名分别要求当前 VPC 防火墙引擎支持对应能力，否则返回 UnsupportedOperation。类型及地址模板查询到的实际类型共同决定 DestContent 和 Protocol 的校验。</p>
+        r"""访问目的类型，不区分大小写。net、ip 均表示 IP/CIDR，template 表示地址模板，instance 表示资产实例，group 表示资产分组，tag 表示资源标签，domain 表示 FQDN 匹配，dnsparse 表示宽松匹配：Host/SNI 与域名匹配，或目的 IP 属于该域名当前 DNS 解析结果，满足任一条件即命中；domainiptwoverify 表示严格匹配：上述两个条件必须同时满足。url 虽可被通用类型映射识别，但 VPC 目的内容不支持。地址模板和部分域名模式要求当前 VPC 防火墙引擎支持对应能力；类型及模板实际类型共同决定 DestContent 和 Protocol 的校验。
         :rtype: str
         """
         return self._DestType
@@ -39735,7 +39735,7 @@ class VpcRuleItem(AbstractModel):
 
     @property
     def EdgeId(self):
-        r"""<p>规则生效的 VPC 边范围，不区分大小写。ALL 表示全部 VPC 间，cfws- 前缀表示指定 VPC 边；其它格式返回参数错误。ALL 还要求相关 VPC 防火墙引擎支持全局规则，否则返回 UnsupportedOperation。</p>
+        r"""规则生效的 VPC 边范围，不区分大小写。ALL 表示全部 VPC 边，cfws- 前缀表示指定 VPC 边；其它格式无效。ALL 要求当前环境支持 VPC 全局规则。
         :rtype: str
         """
         return self._EdgeId
@@ -39746,7 +39746,7 @@ class VpcRuleItem(AbstractModel):
 
     @property
     def Enable(self):
-        r"""<p>规则状态。字符串 true 表示启用，false 表示禁用，大小写不敏感；省略或传空字符串时使用租户通知配置中的默认规则状态，该配置没有可用值时默认启用；其它字符串返回参数错误。</p>
+        r"""规则状态，不区分大小写：true 表示启用，false 表示禁用。省略或为空时使用账号默认状态；没有可用默认值时启用。
         :rtype: str
         """
         return self._Enable
@@ -39757,7 +39757,7 @@ class VpcRuleItem(AbstractModel):
 
     @property
     def OrderIndex(self):
-        r"""<p>规则在相同 IpVersion 的中间分区内的顺序。请求整数先转换为 uint32，0 归一化为 1，负整数及超出 uint32 范围的整数按该转换结果处理；写入时，顺序为 1 或不大于当前最大顺序的规则在该位置插入并将现有规则后移，通常大于当前最大顺序的值归一化为末尾。例外是 AddVpcAcRule 未使用精确值 insert_rule 且首条规则解析后的顺序为 1 时，本批每条规则都保留其解析后顺序并按该值移动现有规则，因此后续规则即使大于当前最大顺序也不会归一化为末尾。</p>
+        r"""规则在相同 IpVersion 下的顺序。-1 表示追加到末尾；正序号表示在对应位置插入并顺延后续规则。0、其它负数及超范围值不应使用。批量新增按 Rules 顺序依次处理。
         :rtype: int
         """
         return self._OrderIndex
@@ -39768,7 +39768,7 @@ class VpcRuleItem(AbstractModel):
 
     @property
     def Port(self):
-        r"""<p>访问控制策略的端口。除 ICMP 和 ICMPV6 外，该字段按逗号拆分；每项可以是正整数单端口，或以斜杠分隔且起点不大于终点的两个整数，-1/-1 表示全部端口。ICMP 和 ICMPV6 忽略请求值并保存为空字符串；其它协议的空值或非法格式返回参数错误。FTP 只接受正整数单端口，不接受逗号组合或斜杠区间。</p>
+        r"""访问端口。除 ICMP 和 ICMPV6 外，支持逗号分隔的正整数单端口或“起始/结束”范围，且起始值不大于结束值；-1/-1 表示全部端口。ICMP 和 ICMPV6 忽略该字段；FTP 仅支持单个正整数端口。
         :rtype: str
         """
         return self._Port
@@ -39779,7 +39779,7 @@ class VpcRuleItem(AbstractModel):
 
     @property
     def Protocol(self):
-        r"""<p>协议名称，不区分大小写并归一化。IP、instance、tag、group、location、vendor 及 IP 地址模板目的支持 TCP、UDP、ICMP、ICMPV6、ANY 和 FTP，其中 FTP 只接受单端口；domain 及域名地址模板目的支持 ANY、HTTP、HTTPS、HTTP/HTTPS、TLS/SSL、SMTP、SMTPS、SMTP/SMTPS 和 DNS，不支持 FTP，domain、tls、ssl 归一化为 TLS/SSL；dnsparse 和 domainiptwoverify 仅支持 TCP 或 UDP。template 按查询到的实际模板类型应用上述限制；填写 ParamTemplateId 时，组内每个协议端口项还会应用相同的目的类型限制。</p>
+        r"""协议名称，不区分大小写并归一化。ANY 表示不限定协议，不表示省略 Protocol。IP、instance、tag、group 及 IP 地址模板目的支持 TCP、UDP、ICMP、ICMPV6、ANY 和 FTP，其中 FTP 只接受单端口；domain 及域名地址模板目的支持 ANY、HTTP、HTTPS、HTTP/HTTPS、TLS/SSL、SMTP、SMTPS、SMTP/SMTPS 和 DNS，不支持 FTP，domain、tls、ssl 归一化为 TLS/SSL；dnsparse 和 domainiptwoverify 仅支持 TCP 或 UDP。template 按查询到的实际模板类型应用上述限制；填写 ParamTemplateId 时，组内每个协议端口项还会应用相同的目的类型限制。
         :rtype: str
         """
         return self._Protocol
@@ -39790,7 +39790,7 @@ class VpcRuleItem(AbstractModel):
 
     @property
     def RuleAction(self):
-        r"""<p>流量通过云防火墙时的处理方式，不区分大小写。accept 表示放行，drop 表示拒绝，log 表示观察；isolateinaccept 和 isolateoutaccept 归一化为放行，isolateindrop 和 isolateoutdrop 归一化为拒绝；其它值返回参数错误。</p>
+        r"""流量通过云防火墙时的处理方式，不区分大小写。accept 表示放行，drop 表示拒绝，log 表示观察；isolateinaccept 表示放行访问隔离资产的白名单流量，isolateindrop 表示阻断访问隔离资产的其它流量，isolateoutaccept 表示放行隔离资产访问白名单目标，isolateoutdrop 表示阻断隔离资产访问其它目标；其它值返回参数错误。
         :rtype: str
         """
         return self._RuleAction
@@ -39801,7 +39801,7 @@ class VpcRuleItem(AbstractModel):
 
     @property
     def SourceContent(self):
-        r"""<p>访问源内容，由 SourceType 决定格式和校验。net/ip 接受合法 IP 或 CIDR 的逗号分隔列表，最多 10 项；template 接受当前租户的地址模板标识并归一化为模板 UUID，只允许与 IpVersion 一致的 IP 地址模板，域名地址模板不能作为访问源；instance 和 tag 必须在当前租户存在，其中 instance 必须具有 IpVersion 对应的私网地址；group 接受资源组标识。</p>
+        r"""访问源内容，格式由 SourceType 决定：net/ip 使用最多 10 个逗号分隔的 IP 或 CIDR；template 使用当前账号且匹配 IpVersion 的 IP 地址模板 ID，不支持域名模板；instance、tag 必须属于当前账号，instance 须有对应 IpVersion 的私网地址；group 使用资源组 ID。
         :rtype: str
         """
         return self._SourceContent
@@ -39812,7 +39812,7 @@ class VpcRuleItem(AbstractModel):
 
     @property
     def SourceType(self):
-        r"""<p>访问源类型，不区分大小写。VPC 规则可用 net（ip 为同义值）、template、instance、tag 或 group；url、location 和 vendor 虽可被通用类型映射识别，但 VPC 出向源内容解析不支持。使用 template 要求当前 VPC 防火墙引擎支持地址模板能力。类型及模板查询到的实际类型共同决定 SourceContent 的校验。</p>
+        r"""访问源类型，不区分大小写：net、ip 均表示 IP/CIDR，template 表示地址模板，instance 表示资产实例，tag 表示资源标签，group 表示资产分组。类型及模板实际类型决定 SourceContent 的格式；template 要求当前环境支持地址模板。
         :rtype: str
         """
         return self._SourceType
@@ -39823,7 +39823,7 @@ class VpcRuleItem(AbstractModel):
 
     @property
     def BetaList(self):
-        r"""<p>规则关联的 beta 任务详情。请求中的该字段不参与新增或修改规则构造，主要用于查询返回。</p>
+        r"""规则关联的 beta 任务详情。请求中的该字段不参与新增或修改规则构造，主要用于查询返回。
         :rtype: list of BetaInfoByACL
         """
         return self._BetaList
@@ -39834,7 +39834,7 @@ class VpcRuleItem(AbstractModel):
 
     @property
     def CreateTime(self):
-        r"""<p>规则创建时间。请求中的该字段不参与新增或修改规则构造，主要用于查询返回。</p>
+        r"""规则创建时间。请求中的该字段不参与新增或修改规则构造，主要用于查询返回。
         :rtype: str
         """
         return self._CreateTime
@@ -39845,7 +39845,7 @@ class VpcRuleItem(AbstractModel):
 
     @property
     def Deleted(self):
-        r"""<p>规则删除标记，1 表示已删除，0 表示未删除。请求中的该字段不参与新增或修改规则构造，主要用于查询返回。</p>
+        r"""规则删除标记，1 表示已删除，0 表示未删除。请求中的该字段不参与新增或修改规则构造，主要用于查询返回。
         :rtype: int
         """
         return self._Deleted
@@ -39856,7 +39856,7 @@ class VpcRuleItem(AbstractModel):
 
     @property
     def DestValueType(self):
-        r"""<p>查询结果中对目的实际类型的补充提示，例如 template 可区分 IP 地址模板和域名地址模板。新增和修改处理程序不读取请求中的该字段；实际目的类型由 DestType、DestContent 和模板查询结果确定。</p>
+        r"""目的实际类型提示，例如区分 IP 地址模板和域名地址模板；新增和修改请求中忽略。
         :rtype: str
         """
         return self._DestValueType
@@ -39867,7 +39867,7 @@ class VpcRuleItem(AbstractModel):
 
     @property
     def DetectedTimes(self):
-        r"""<p>规则命中次数。请求中的该字段不参与新增或修改规则构造，主要用于查询返回。</p>
+        r"""规则命中次数。请求中的该字段不参与新增或修改规则构造，主要用于查询返回。
         :rtype: int
         """
         return self._DetectedTimes
@@ -39878,7 +39878,7 @@ class VpcRuleItem(AbstractModel):
 
     @property
     def EdgeName(self):
-        r"""<p>EdgeId 对应的 VPC 边名称。请求中的该字段不参与新增或修改规则构造，主要用于查询返回和操作记录展示。</p>
+        r"""EdgeId 对应的 VPC 边名称。请求中的该字段不参与新增或修改规则构造，主要用于查询返回和操作记录展示。
         :rtype: str
         """
         return self._EdgeName
@@ -39889,7 +39889,7 @@ class VpcRuleItem(AbstractModel):
 
     @property
     def FwGroupId(self):
-        r"""<p>规则生效的防火墙组或 CCN 范围，格式比较不区分大小写。ALL 归一化为大写 ALL；cfwg- 前缀和 ccn- 前缀的值保留请求原文；省略、空字符串或其它格式归一化为 ALL，处理程序不因格式无效而返回错误。</p>
+        r"""规则生效的防火墙组或 CCN 范围，不区分大小写。支持 ALL、cfwg- 前缀和 ccn- 前缀；省略、为空或格式无效时按 ALL 处理。
         :rtype: str
         """
         return self._FwGroupId
@@ -39900,7 +39900,7 @@ class VpcRuleItem(AbstractModel):
 
     @property
     def FwGroupName(self):
-        r"""<p>防火墙组或 CCN 名称。请求中的该字段不参与新增或修改规则构造，主要用于查询返回和操作记录展示。</p>
+        r"""防火墙组或 CCN 名称。请求中的该字段不参与新增或修改规则构造，主要用于查询返回和操作记录展示。
         :rtype: str
         """
         return self._FwGroupName
@@ -39911,7 +39911,7 @@ class VpcRuleItem(AbstractModel):
 
     @property
     def InternalUuid(self):
-        r"""<p>内部规则标识。AddVpcAcRule 的精确 batch_import_cover 分支会采用正整数 InternalUuid 替换自动生成的内部标识；其它新增分支和 ModifyVpcAcRule 不读取请求中的该字段。</p>
+        r"""覆盖导入规则标识。仅 batch_import_cover 接受正整数值；其它新增方式和修改请求中忽略。
         :rtype: int
         """
         return self._InternalUuid
@@ -39922,7 +39922,7 @@ class VpcRuleItem(AbstractModel):
 
     @property
     def Invalid(self):
-        r"""<p>查询结果中的规则有效性标记，0 表示有效，1 表示无效。请求中的该字段不参与新增或修改规则构造。</p>
+        r"""查询结果中的规则有效性标记，0 表示有效，1 表示无效。请求中的该字段不参与新增或修改规则构造。
         :rtype: int
         """
         return self._Invalid
@@ -39933,7 +39933,7 @@ class VpcRuleItem(AbstractModel):
 
     @property
     def IpVersion(self):
-        r"""<p>IP 版本，0 表示 IPv4，1 表示 IPv6。省略或传入 0、1 以外的整数时按 IPv4 处理；instance 必须具有对应版本的私网地址，IP 地址模板必须与解析后的版本一致。处理程序不使用该字段校验直接填写的 net IP/CIDR 版本。</p>
+        r"""IP 版本：0 表示 IPv4，1 表示 IPv6；省略或传入其它整数时按 IPv4 处理。instance 和 IP 地址模板须匹配该版本；直接填写的 net IP/CIDR 也应使用相同版本。
         :rtype: int
         """
         return self._IpVersion
@@ -39944,7 +39944,7 @@ class VpcRuleItem(AbstractModel):
 
     @property
     def ParamTemplateId(self):
-        r"""<p>端口协议组 ID。省略或传空字符串时直接使用 Protocol 和 Port；非空时查询当前租户的端口协议组并用组内协议端口项执行目的类型和协议类别校验，模板查询失败时请求失败。无论是否填写该字段，请求中的 Protocol 和非 ICMP/ICMPV6 Port 都会先按普通规则解析，格式无效时请求失败。</p>
+        r"""端口协议组 ID。省略或为空时使用 Protocol 和 Port；非空时必须是当前账号可用的端口协议组，组内协议端口须满足目的类型限制。Protocol 和非 ICMP/ICMPV6 的 Port 仍须使用有效格式。
         :rtype: str
         """
         return self._ParamTemplateId
@@ -39955,7 +39955,7 @@ class VpcRuleItem(AbstractModel):
 
     @property
     def ParamTemplateName(self):
-        r"""<p>端口协议组名称。请求中的该字段不参与新增或修改规则构造，主要用于查询返回。</p>
+        r"""端口协议组名称。请求中的该字段不参与新增或修改规则构造，主要用于查询返回。
         :rtype: str
         """
         return self._ParamTemplateName
@@ -39966,7 +39966,7 @@ class VpcRuleItem(AbstractModel):
 
     @property
     def RulePartition(self):
-        r"""<p>规则分区展示值，1 表示最前分区，2 表示中间分区，3 表示最后分区。新增和修改处理程序不读取请求中的该字段，写入时固定为中间分区；ModifyVpcAcRule 只能定位并替换中间分区中的现有规则。</p>
+        r"""规则位置展示值：1 表示最前，2 表示中间，3 表示最后。新增和修改请求中忽略；仅位置为 2 的规则可修改。
         :rtype: int
         """
         return self._RulePartition
@@ -39977,7 +39977,7 @@ class VpcRuleItem(AbstractModel):
 
     @property
     def SourceName(self):
-        r"""<p>访问源名称。请求中的该字段不参与新增或修改规则构造，主要用于查询返回和操作记录展示。</p>
+        r"""访问源名称。请求中的该字段不参与新增或修改规则构造，主要用于查询返回和操作记录展示。
         :rtype: str
         """
         return self._SourceName
@@ -39988,7 +39988,7 @@ class VpcRuleItem(AbstractModel):
 
     @property
     def TargetName(self):
-        r"""<p>访问目的名称。请求中的该字段不参与新增或修改规则构造，主要用于查询返回和操作记录展示。</p>
+        r"""访问目的名称。请求中的该字段不参与新增或修改规则构造，主要用于查询返回和操作记录展示。
         :rtype: str
         """
         return self._TargetName
@@ -39999,7 +39999,7 @@ class VpcRuleItem(AbstractModel):
 
     @property
     def UpdateTime(self):
-        r"""<p>规则最近更新时间。请求中的该字段不参与新增或修改规则构造，主要用于查询返回。</p>
+        r"""规则最近更新时间。请求中的该字段不参与新增或修改规则构造，主要用于查询返回。
         :rtype: str
         """
         return self._UpdateTime
@@ -40010,7 +40010,7 @@ class VpcRuleItem(AbstractModel):
 
     @property
     def Uuid(self):
-        r"""<p>规则数据库 ID。ModifyVpcAcRule 必须传当前租户中间分区内既有规则的正整数 Uuid；处理程序按该 ID 删除原记录并以同一 ID 插入替换后的规则。AddVpcAcRule 的普通新增、insert_rule 和 batch_import 分支忽略该字段；精确 batch_import_cover 分支会采用正整数 Uuid 作为新记录 ID，非正数值仍由数据库生成 ID。</p>
+        r"""规则 ID。修改时必须提供当前账号已有且可修改的正整数 Uuid，并完整替换该规则。普通新增、insert_rule 和 batch_import 忽略该字段；batch_import_cover 可使用正整数 ID，非正数值由系统分配。
         :rtype: int
         """
         return self._Uuid
