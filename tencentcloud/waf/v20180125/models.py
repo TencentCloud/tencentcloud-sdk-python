@@ -35355,14 +35355,13 @@ class FieldWriteConfig(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _EnableHeaders: 1:开启 0:不开启
+        :param _EnableHeaders: <p>1:开启 0:不开启</p>
         :type EnableHeaders: int
-        :param _EnableBody: 1:开启 0:不开启
+        :param _EnableBody: <p>1:开启 0:不开启</p>
         :type EnableBody: int
-        :param _EnableBot: 1:开启 0:不开启
+        :param _EnableBot: <p>1:开启 0:不开启</p>
         :type EnableBot: int
-        :param _EnableResponse: 响应方向body
-1:开启 0:不开启
+        :param _EnableResponse: <p>响应方向body<br>1:开启 0:不开启</p>
         :type EnableResponse: int
         """
         self._EnableHeaders = None
@@ -35372,7 +35371,7 @@ class FieldWriteConfig(AbstractModel):
 
     @property
     def EnableHeaders(self):
-        r"""1:开启 0:不开启
+        r"""<p>1:开启 0:不开启</p>
         :rtype: int
         """
         return self._EnableHeaders
@@ -35383,7 +35382,7 @@ class FieldWriteConfig(AbstractModel):
 
     @property
     def EnableBody(self):
-        r"""1:开启 0:不开启
+        r"""<p>1:开启 0:不开启</p>
         :rtype: int
         """
         return self._EnableBody
@@ -35394,7 +35393,7 @@ class FieldWriteConfig(AbstractModel):
 
     @property
     def EnableBot(self):
-        r"""1:开启 0:不开启
+        r"""<p>1:开启 0:不开启</p>
         :rtype: int
         """
         return self._EnableBot
@@ -35405,8 +35404,7 @@ class FieldWriteConfig(AbstractModel):
 
     @property
     def EnableResponse(self):
-        r"""响应方向body
-1:开启 0:不开启
+        r"""<p>响应方向body<br>1:开启 0:不开启</p>
         :rtype: int
         """
         return self._EnableResponse

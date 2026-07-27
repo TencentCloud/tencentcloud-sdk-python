@@ -727,6 +727,24 @@ class DlcClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateSparkAppForTDLC(
+            self,
+            request: models.CreateSparkAppForTDLCRequest,
+            opts: Dict = None,
+    ) -> models.CreateSparkAppForTDLCResponse:
+        """
+        创建tdlc spark作业
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateSparkAppForTDLC"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateSparkAppForTDLCResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateSparkAppTask(
             self,
             request: models.CreateSparkAppTaskRequest,
@@ -1696,6 +1714,24 @@ class DlcClient(AbstractClient):
         kwargs["action"] = "DescribeLakeFsTaskResult"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeLakeFsTaskResultResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeMCPSubUin(
+            self,
+            request: models.DescribeMCPSubUinRequest,
+            opts: Dict = None,
+    ) -> models.DescribeMCPSubUinResponse:
+        """
+        获取账户子账户信息
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeMCPSubUin"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeMCPSubUinResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -2992,6 +3028,24 @@ class DlcClient(AbstractClient):
         kwargs["action"] = "ModifySparkAppBatch"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ModifySparkAppBatchResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifySparkAppForTDLC(
+            self,
+            request: models.ModifySparkAppForTDLCRequest,
+            opts: Dict = None,
+    ) -> models.ModifySparkAppForTDLCResponse:
+        """
+        更新tdlc spark作业
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifySparkAppForTDLC"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifySparkAppForTDLCResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

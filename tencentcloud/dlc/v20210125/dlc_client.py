@@ -923,6 +923,29 @@ class DlcClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateSparkAppForTDLC(self, request):
+        r"""创建tdlc spark作业
+
+        :param request: Request instance for CreateSparkAppForTDLC.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.CreateSparkAppForTDLCRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.CreateSparkAppForTDLCResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateSparkAppForTDLC", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateSparkAppForTDLCResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateSparkAppTask(self, request):
         r"""启动Spark作业
 
@@ -2158,6 +2181,29 @@ class DlcClient(AbstractClient):
             body = self.call("DescribeLakeFsTaskResult", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeLakeFsTaskResultResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeMCPSubUin(self, request):
+        r"""获取账户子账户信息
+
+        :param request: Request instance for DescribeMCPSubUin.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.DescribeMCPSubUinRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.DescribeMCPSubUinResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeMCPSubUin", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeMCPSubUinResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -3814,6 +3860,29 @@ class DlcClient(AbstractClient):
             body = self.call("ModifySparkAppBatch", params, headers=headers)
             response = json.loads(body)
             model = models.ModifySparkAppBatchResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifySparkAppForTDLC(self, request):
+        r"""更新tdlc spark作业
+
+        :param request: Request instance for ModifySparkAppForTDLC.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.ModifySparkAppForTDLCRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.ModifySparkAppForTDLCResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifySparkAppForTDLC", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifySparkAppForTDLCResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

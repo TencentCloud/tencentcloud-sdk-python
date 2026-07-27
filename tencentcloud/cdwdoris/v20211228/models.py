@@ -247,66 +247,74 @@ class BackUpJobDisplay(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _JobId: 备份实例id
+        :param _JobId: <p>备份实例id</p>
         :type JobId: int
-        :param _Snapshot: 备份实例名
+        :param _Snapshot: <p>备份实例名</p>
         :type Snapshot: str
-        :param _BackUpSize: 备份数据量
+        :param _BackUpSize: <p>备份数据量</p>
         :type BackUpSize: int
-        :param _BackUpSingleSize: 备份单副本数据量
+        :param _BackUpSingleSize: <p>备份单副本数据量</p>
         :type BackUpSingleSize: int
-        :param _BackUpTime: 实例创建时间
+        :param _BackUpTime: <p>实例创建时间</p>
         :type BackUpTime: str
-        :param _ExpireTime: 实例过期时间
+        :param _ExpireTime: <p>实例过期时间</p>
         :type ExpireTime: str
-        :param _JobStatus: 实例状态
+        :param _JobStatus: <p>实例状态</p>
         :type JobStatus: str
-        :param _BackupType: 0为默认。1时是对远端的doris进行备份，不周期，一次性
+        :param _BackupType: <p>0为默认。1时是对远端的doris进行备份，不周期，一次性</p>
         :type BackupType: int
-        :param _BackupTimeType: 0为默认。1时是立即备份。2时是迁移
+        :param _BackupTimeType: <p>0为默认。1时是立即备份。2时是迁移</p>
         :type BackupTimeType: int
-        :param _DorisSourceInfo: 远端doris的连接信息
+        :param _DorisSourceInfo: <p>远端doris的连接信息</p>
         :type DorisSourceInfo: :class:`tencentcloud.cdwdoris.v20211228.models.DorisSourceInfo`
-        :param _JobStatusNum: 实例状态对应的数值
+        :param _JobStatusNum: <p>实例状态对应的数值</p>
         :type JobStatusNum: int
-        :param _BackupCosInfo: 备份实例中关于cos的信息	
+        :param _BackupCosInfo: <p>备份实例中关于cos的信息</p>
         :type BackupCosInfo: :class:`tencentcloud.cdwdoris.v20211228.models.BackupCosInfo`
-        :param _IsUserDefineBucket: 是否使用的自定义桶
+        :param _IsUserDefineBucket: <p>是否使用的自定义桶</p>
         :type IsUserDefineBucket: bool
-        :param _ErrorReason: 错误原因
+        :param _ErrorReason: <p>错误原因</p>
         :type ErrorReason: str
-        :param _SnapshotRemainPolicy: 快照保留策略
+        :param _SnapshotRemainPolicy: <p>快照保留策略</p>
         :type SnapshotRemainPolicy: :class:`tencentcloud.cdwdoris.v20211228.models.SnapshotRemainPolicy`
-        :param _IsolationCount: 隔离次数
+        :param _IsolationCount: <p>隔离次数</p>
         :type IsolationCount: int
-        :param _EnableSecurityLock: 是否开启安全锁
+        :param _EnableSecurityLock: <p>是否开启安全锁</p>
         :type EnableSecurityLock: int
-        :param _GracePeriod: 宽限期天数
+        :param _GracePeriod: <p>宽限期天数</p>
         :type GracePeriod: int
-        :param _GraceStartTime: 宽限期开始时间
+        :param _GraceStartTime: <p>宽限期开始时间</p>
         :type GraceStartTime: str
-        :param _IsWithinGracePeriod: 是否在宽限期内
+        :param _IsWithinGracePeriod: <p>是否在宽限期内</p>
         :type IsWithinGracePeriod: bool
-        :param _UseManagedBucket: 是否使用托管桶
+        :param _UseManagedBucket: <p>是否使用托管桶</p>
         :type UseManagedBucket: bool
-        :param _InstanceId: 实例ID
+        :param _InstanceId: <p>实例ID</p>
         :type InstanceId: str
-        :param _InstanceName: 实例名称
+        :param _InstanceName: <p>实例名称</p>
         :type InstanceName: str
-        :param _InstanceStatus: 实例状态
+        :param _InstanceStatus: <p>实例状态</p>
         :type InstanceStatus: str
-        :param _InstanceStatusDesc: 实例状态描述
+        :param _InstanceStatusDesc: <p>实例状态描述</p>
         :type InstanceStatusDesc: str
-        :param _DataRemoteRegion: 备份远程桶地域
+        :param _DataRemoteRegion: <p>备份远程桶地域</p>
         :type DataRemoteRegion: str
-        :param _BucketEncryption: 桶加密状态信息
+        :param _BucketEncryption: <p>桶加密状态信息</p>
         :type BucketEncryption: :class:`tencentcloud.cdwdoris.v20211228.models.BucketEncryptionInfo`
-        :param _Encryption: 备份任务创建时记录的加密类型：SSE-COS/SSE-KMS/disabled
+        :param _Encryption: <p>备份任务创建时记录的加密类型：SSE-COS/SSE-KMS/disabled</p>
         :type Encryption: str
-        :param _EncryptionEnabled: 是否开通加密存储：0-未开通，1-已开通
+        :param _EncryptionEnabled: <p>是否开通加密存储：0-未开通，1-已开通</p>
         :type EncryptionEnabled: bool
-        :param _ScheduleId: 任务调度id
+        :param _ScheduleId: <p>任务调度id</p>
         :type ScheduleId: int
+        :param _TotalTasks: <p>总任务数（库数）</p>
+        :type TotalTasks: int
+        :param _CompletedTasks: <p>已完成任务数</p>
+        :type CompletedTasks: int
+        :param _FailedTasks: <p>失败任务数</p>
+        :type FailedTasks: int
+        :param _BackupProgress: <p>备份进度描述，如 3/5</p>
+        :type BackupProgress: str
         """
         self._JobId = None
         self._Snapshot = None
@@ -338,10 +346,14 @@ class BackUpJobDisplay(AbstractModel):
         self._Encryption = None
         self._EncryptionEnabled = None
         self._ScheduleId = None
+        self._TotalTasks = None
+        self._CompletedTasks = None
+        self._FailedTasks = None
+        self._BackupProgress = None
 
     @property
     def JobId(self):
-        r"""备份实例id
+        r"""<p>备份实例id</p>
         :rtype: int
         """
         return self._JobId
@@ -352,7 +364,7 @@ class BackUpJobDisplay(AbstractModel):
 
     @property
     def Snapshot(self):
-        r"""备份实例名
+        r"""<p>备份实例名</p>
         :rtype: str
         """
         return self._Snapshot
@@ -363,7 +375,7 @@ class BackUpJobDisplay(AbstractModel):
 
     @property
     def BackUpSize(self):
-        r"""备份数据量
+        r"""<p>备份数据量</p>
         :rtype: int
         """
         return self._BackUpSize
@@ -374,7 +386,7 @@ class BackUpJobDisplay(AbstractModel):
 
     @property
     def BackUpSingleSize(self):
-        r"""备份单副本数据量
+        r"""<p>备份单副本数据量</p>
         :rtype: int
         """
         return self._BackUpSingleSize
@@ -385,7 +397,7 @@ class BackUpJobDisplay(AbstractModel):
 
     @property
     def BackUpTime(self):
-        r"""实例创建时间
+        r"""<p>实例创建时间</p>
         :rtype: str
         """
         return self._BackUpTime
@@ -396,7 +408,7 @@ class BackUpJobDisplay(AbstractModel):
 
     @property
     def ExpireTime(self):
-        r"""实例过期时间
+        r"""<p>实例过期时间</p>
         :rtype: str
         """
         return self._ExpireTime
@@ -407,7 +419,7 @@ class BackUpJobDisplay(AbstractModel):
 
     @property
     def JobStatus(self):
-        r"""实例状态
+        r"""<p>实例状态</p>
         :rtype: str
         """
         return self._JobStatus
@@ -418,7 +430,7 @@ class BackUpJobDisplay(AbstractModel):
 
     @property
     def BackupType(self):
-        r"""0为默认。1时是对远端的doris进行备份，不周期，一次性
+        r"""<p>0为默认。1时是对远端的doris进行备份，不周期，一次性</p>
         :rtype: int
         """
         return self._BackupType
@@ -429,7 +441,7 @@ class BackUpJobDisplay(AbstractModel):
 
     @property
     def BackupTimeType(self):
-        r"""0为默认。1时是立即备份。2时是迁移
+        r"""<p>0为默认。1时是立即备份。2时是迁移</p>
         :rtype: int
         """
         return self._BackupTimeType
@@ -440,7 +452,7 @@ class BackUpJobDisplay(AbstractModel):
 
     @property
     def DorisSourceInfo(self):
-        r"""远端doris的连接信息
+        r"""<p>远端doris的连接信息</p>
         :rtype: :class:`tencentcloud.cdwdoris.v20211228.models.DorisSourceInfo`
         """
         return self._DorisSourceInfo
@@ -451,7 +463,7 @@ class BackUpJobDisplay(AbstractModel):
 
     @property
     def JobStatusNum(self):
-        r"""实例状态对应的数值
+        r"""<p>实例状态对应的数值</p>
         :rtype: int
         """
         return self._JobStatusNum
@@ -462,7 +474,7 @@ class BackUpJobDisplay(AbstractModel):
 
     @property
     def BackupCosInfo(self):
-        r"""备份实例中关于cos的信息	
+        r"""<p>备份实例中关于cos的信息</p>
         :rtype: :class:`tencentcloud.cdwdoris.v20211228.models.BackupCosInfo`
         """
         return self._BackupCosInfo
@@ -473,7 +485,7 @@ class BackUpJobDisplay(AbstractModel):
 
     @property
     def IsUserDefineBucket(self):
-        r"""是否使用的自定义桶
+        r"""<p>是否使用的自定义桶</p>
         :rtype: bool
         """
         return self._IsUserDefineBucket
@@ -484,7 +496,7 @@ class BackUpJobDisplay(AbstractModel):
 
     @property
     def ErrorReason(self):
-        r"""错误原因
+        r"""<p>错误原因</p>
         :rtype: str
         """
         return self._ErrorReason
@@ -495,7 +507,7 @@ class BackUpJobDisplay(AbstractModel):
 
     @property
     def SnapshotRemainPolicy(self):
-        r"""快照保留策略
+        r"""<p>快照保留策略</p>
         :rtype: :class:`tencentcloud.cdwdoris.v20211228.models.SnapshotRemainPolicy`
         """
         return self._SnapshotRemainPolicy
@@ -506,7 +518,7 @@ class BackUpJobDisplay(AbstractModel):
 
     @property
     def IsolationCount(self):
-        r"""隔离次数
+        r"""<p>隔离次数</p>
         :rtype: int
         """
         return self._IsolationCount
@@ -517,7 +529,7 @@ class BackUpJobDisplay(AbstractModel):
 
     @property
     def EnableSecurityLock(self):
-        r"""是否开启安全锁
+        r"""<p>是否开启安全锁</p>
         :rtype: int
         """
         return self._EnableSecurityLock
@@ -528,7 +540,7 @@ class BackUpJobDisplay(AbstractModel):
 
     @property
     def GracePeriod(self):
-        r"""宽限期天数
+        r"""<p>宽限期天数</p>
         :rtype: int
         """
         return self._GracePeriod
@@ -539,7 +551,7 @@ class BackUpJobDisplay(AbstractModel):
 
     @property
     def GraceStartTime(self):
-        r"""宽限期开始时间
+        r"""<p>宽限期开始时间</p>
         :rtype: str
         """
         return self._GraceStartTime
@@ -550,7 +562,7 @@ class BackUpJobDisplay(AbstractModel):
 
     @property
     def IsWithinGracePeriod(self):
-        r"""是否在宽限期内
+        r"""<p>是否在宽限期内</p>
         :rtype: bool
         """
         return self._IsWithinGracePeriod
@@ -561,7 +573,7 @@ class BackUpJobDisplay(AbstractModel):
 
     @property
     def UseManagedBucket(self):
-        r"""是否使用托管桶
+        r"""<p>是否使用托管桶</p>
         :rtype: bool
         """
         return self._UseManagedBucket
@@ -572,7 +584,7 @@ class BackUpJobDisplay(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""实例ID
+        r"""<p>实例ID</p>
         :rtype: str
         """
         return self._InstanceId
@@ -583,7 +595,7 @@ class BackUpJobDisplay(AbstractModel):
 
     @property
     def InstanceName(self):
-        r"""实例名称
+        r"""<p>实例名称</p>
         :rtype: str
         """
         return self._InstanceName
@@ -594,7 +606,7 @@ class BackUpJobDisplay(AbstractModel):
 
     @property
     def InstanceStatus(self):
-        r"""实例状态
+        r"""<p>实例状态</p>
         :rtype: str
         """
         return self._InstanceStatus
@@ -605,7 +617,7 @@ class BackUpJobDisplay(AbstractModel):
 
     @property
     def InstanceStatusDesc(self):
-        r"""实例状态描述
+        r"""<p>实例状态描述</p>
         :rtype: str
         """
         return self._InstanceStatusDesc
@@ -616,7 +628,7 @@ class BackUpJobDisplay(AbstractModel):
 
     @property
     def DataRemoteRegion(self):
-        r"""备份远程桶地域
+        r"""<p>备份远程桶地域</p>
         :rtype: str
         """
         return self._DataRemoteRegion
@@ -627,7 +639,7 @@ class BackUpJobDisplay(AbstractModel):
 
     @property
     def BucketEncryption(self):
-        r"""桶加密状态信息
+        r"""<p>桶加密状态信息</p>
         :rtype: :class:`tencentcloud.cdwdoris.v20211228.models.BucketEncryptionInfo`
         """
         return self._BucketEncryption
@@ -638,7 +650,7 @@ class BackUpJobDisplay(AbstractModel):
 
     @property
     def Encryption(self):
-        r"""备份任务创建时记录的加密类型：SSE-COS/SSE-KMS/disabled
+        r"""<p>备份任务创建时记录的加密类型：SSE-COS/SSE-KMS/disabled</p>
         :rtype: str
         """
         return self._Encryption
@@ -649,7 +661,7 @@ class BackUpJobDisplay(AbstractModel):
 
     @property
     def EncryptionEnabled(self):
-        r"""是否开通加密存储：0-未开通，1-已开通
+        r"""<p>是否开通加密存储：0-未开通，1-已开通</p>
         :rtype: bool
         """
         return self._EncryptionEnabled
@@ -660,7 +672,7 @@ class BackUpJobDisplay(AbstractModel):
 
     @property
     def ScheduleId(self):
-        r"""任务调度id
+        r"""<p>任务调度id</p>
         :rtype: int
         """
         return self._ScheduleId
@@ -668,6 +680,50 @@ class BackUpJobDisplay(AbstractModel):
     @ScheduleId.setter
     def ScheduleId(self, ScheduleId):
         self._ScheduleId = ScheduleId
+
+    @property
+    def TotalTasks(self):
+        r"""<p>总任务数（库数）</p>
+        :rtype: int
+        """
+        return self._TotalTasks
+
+    @TotalTasks.setter
+    def TotalTasks(self, TotalTasks):
+        self._TotalTasks = TotalTasks
+
+    @property
+    def CompletedTasks(self):
+        r"""<p>已完成任务数</p>
+        :rtype: int
+        """
+        return self._CompletedTasks
+
+    @CompletedTasks.setter
+    def CompletedTasks(self, CompletedTasks):
+        self._CompletedTasks = CompletedTasks
+
+    @property
+    def FailedTasks(self):
+        r"""<p>失败任务数</p>
+        :rtype: int
+        """
+        return self._FailedTasks
+
+    @FailedTasks.setter
+    def FailedTasks(self, FailedTasks):
+        self._FailedTasks = FailedTasks
+
+    @property
+    def BackupProgress(self):
+        r"""<p>备份进度描述，如 3/5</p>
+        :rtype: str
+        """
+        return self._BackupProgress
+
+    @BackupProgress.setter
+    def BackupProgress(self, BackupProgress):
+        self._BackupProgress = BackupProgress
 
 
     def _deserialize(self, params):
@@ -709,6 +765,10 @@ class BackUpJobDisplay(AbstractModel):
         self._Encryption = params.get("Encryption")
         self._EncryptionEnabled = params.get("EncryptionEnabled")
         self._ScheduleId = params.get("ScheduleId")
+        self._TotalTasks = params.get("TotalTasks")
+        self._CompletedTasks = params.get("CompletedTasks")
+        self._FailedTasks = params.get("FailedTasks")
+        self._BackupProgress = params.get("BackupProgress")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -807,40 +867,39 @@ class BackupScheduleInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _BackupType: 迁移类型：
-1-远端集群迁移；2-COS迁移
+        :param _BackupType: <p>迁移类型：<br>1-远端集群迁移；2-COS迁移</p>
         :type BackupType: int
-        :param _ExistCount: 当前任务现存实例数
+        :param _ExistCount: <p>当前任务现存实例数</p>
         :type ExistCount: int
-        :param _CosSourceInfo: cos信息
+        :param _CosSourceInfo: <p>cos信息</p>
         :type CosSourceInfo: str
-        :param _DorisSourceInfo: doris信息
+        :param _DorisSourceInfo: <p>doris信息</p>
         :type DorisSourceInfo: str
-        :param _RestoreType: 恢复类型
+        :param _RestoreType: <p>恢复类型</p>
         :type RestoreType: int
-        :param _SnapshotRemainPolicy: 快照保留策略
+        :param _SnapshotRemainPolicy: <p>快照保留策略</p>
         :type SnapshotRemainPolicy: :class:`tencentcloud.cdwdoris.v20211228.models.SnapshotRemainPolicy`
-        :param _DataRemoteRegion: 远程备份地域
+        :param _DataRemoteRegion: <p>远程备份地域</p>
         :type DataRemoteRegion: str
-        :param _IsWithinGracePeriod: 是否在宽限期内
+        :param _IsWithinGracePeriod: <p>是否在宽限期内</p>
         :type IsWithinGracePeriod: bool
-        :param _GracePeriod: 宽限期（天数）
+        :param _GracePeriod: <p>宽限期（天数）</p>
         :type GracePeriod: int
-        :param _GraceStartTime: 宽限开始时间
+        :param _GraceStartTime: <p>宽限开始时间</p>
         :type GraceStartTime: str
-        :param _BucketType: 托管桶类型：standard-标准，多可用区-MAZ
+        :param _BucketType: <p>托管桶类型：standard-标准，多可用区-MAZ</p>
         :type BucketType: str
-        :param _EnableSecurityLock: 是否开启安全锁：0-未开启，1-已开启
+        :param _EnableSecurityLock: <p>是否开启安全锁：0-未开启，1-已开启</p>
         :type EnableSecurityLock: int
-        :param _InstanceId: 实例ID
+        :param _InstanceId: <p>实例ID</p>
         :type InstanceId: str
-        :param _InstanceName: 实例名
+        :param _InstanceName: <p>实例名</p>
         :type InstanceName: str
-        :param _InstanceStatus: 实例状态
+        :param _InstanceStatus: <p>实例状态</p>
         :type InstanceStatus: str
-        :param _InstanceStatusDesc: 实例状态描述
+        :param _InstanceStatusDesc: <p>实例状态描述</p>
         :type InstanceStatusDesc: str
-        :param _BucketEncryption: 桶加密状态信息
+        :param _BucketEncryption: <p>桶加密状态信息</p>
         :type BucketEncryption: :class:`tencentcloud.cdwdoris.v20211228.models.BucketEncryptionInfo`
         """
         self._BackupType = None
@@ -863,8 +922,7 @@ class BackupScheduleInfo(AbstractModel):
 
     @property
     def BackupType(self):
-        r"""迁移类型：
-1-远端集群迁移；2-COS迁移
+        r"""<p>迁移类型：<br>1-远端集群迁移；2-COS迁移</p>
         :rtype: int
         """
         return self._BackupType
@@ -875,7 +933,7 @@ class BackupScheduleInfo(AbstractModel):
 
     @property
     def ExistCount(self):
-        r"""当前任务现存实例数
+        r"""<p>当前任务现存实例数</p>
         :rtype: int
         """
         return self._ExistCount
@@ -886,7 +944,7 @@ class BackupScheduleInfo(AbstractModel):
 
     @property
     def CosSourceInfo(self):
-        r"""cos信息
+        r"""<p>cos信息</p>
         :rtype: str
         """
         return self._CosSourceInfo
@@ -897,7 +955,7 @@ class BackupScheduleInfo(AbstractModel):
 
     @property
     def DorisSourceInfo(self):
-        r"""doris信息
+        r"""<p>doris信息</p>
         :rtype: str
         """
         return self._DorisSourceInfo
@@ -908,7 +966,7 @@ class BackupScheduleInfo(AbstractModel):
 
     @property
     def RestoreType(self):
-        r"""恢复类型
+        r"""<p>恢复类型</p>
         :rtype: int
         """
         return self._RestoreType
@@ -919,7 +977,7 @@ class BackupScheduleInfo(AbstractModel):
 
     @property
     def SnapshotRemainPolicy(self):
-        r"""快照保留策略
+        r"""<p>快照保留策略</p>
         :rtype: :class:`tencentcloud.cdwdoris.v20211228.models.SnapshotRemainPolicy`
         """
         return self._SnapshotRemainPolicy
@@ -930,7 +988,7 @@ class BackupScheduleInfo(AbstractModel):
 
     @property
     def DataRemoteRegion(self):
-        r"""远程备份地域
+        r"""<p>远程备份地域</p>
         :rtype: str
         """
         return self._DataRemoteRegion
@@ -941,7 +999,7 @@ class BackupScheduleInfo(AbstractModel):
 
     @property
     def IsWithinGracePeriod(self):
-        r"""是否在宽限期内
+        r"""<p>是否在宽限期内</p>
         :rtype: bool
         """
         return self._IsWithinGracePeriod
@@ -952,7 +1010,7 @@ class BackupScheduleInfo(AbstractModel):
 
     @property
     def GracePeriod(self):
-        r"""宽限期（天数）
+        r"""<p>宽限期（天数）</p>
         :rtype: int
         """
         return self._GracePeriod
@@ -963,7 +1021,7 @@ class BackupScheduleInfo(AbstractModel):
 
     @property
     def GraceStartTime(self):
-        r"""宽限开始时间
+        r"""<p>宽限开始时间</p>
         :rtype: str
         """
         return self._GraceStartTime
@@ -974,7 +1032,7 @@ class BackupScheduleInfo(AbstractModel):
 
     @property
     def BucketType(self):
-        r"""托管桶类型：standard-标准，多可用区-MAZ
+        r"""<p>托管桶类型：standard-标准，多可用区-MAZ</p>
         :rtype: str
         """
         return self._BucketType
@@ -985,7 +1043,7 @@ class BackupScheduleInfo(AbstractModel):
 
     @property
     def EnableSecurityLock(self):
-        r"""是否开启安全锁：0-未开启，1-已开启
+        r"""<p>是否开启安全锁：0-未开启，1-已开启</p>
         :rtype: int
         """
         return self._EnableSecurityLock
@@ -996,7 +1054,7 @@ class BackupScheduleInfo(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""实例ID
+        r"""<p>实例ID</p>
         :rtype: str
         """
         return self._InstanceId
@@ -1007,7 +1065,7 @@ class BackupScheduleInfo(AbstractModel):
 
     @property
     def InstanceName(self):
-        r"""实例名
+        r"""<p>实例名</p>
         :rtype: str
         """
         return self._InstanceName
@@ -1018,7 +1076,7 @@ class BackupScheduleInfo(AbstractModel):
 
     @property
     def InstanceStatus(self):
-        r"""实例状态
+        r"""<p>实例状态</p>
         :rtype: str
         """
         return self._InstanceStatus
@@ -1029,7 +1087,7 @@ class BackupScheduleInfo(AbstractModel):
 
     @property
     def InstanceStatusDesc(self):
-        r"""实例状态描述
+        r"""<p>实例状态描述</p>
         :rtype: str
         """
         return self._InstanceStatusDesc
@@ -1040,7 +1098,7 @@ class BackupScheduleInfo(AbstractModel):
 
     @property
     def BucketEncryption(self):
-        r"""桶加密状态信息
+        r"""<p>桶加密状态信息</p>
         :rtype: :class:`tencentcloud.cdwdoris.v20211228.models.BucketEncryptionInfo`
         """
         return self._BucketEncryption

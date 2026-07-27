@@ -2521,6 +2521,8 @@ class CreateModelServiceRequest(AbstractModel):
         :type GatewayLogConfig: :class:`tencentcloud.tione.v20211111.models.LogConfig`
         :param _GatewayConfig: <p>网关相关配置</p>
         :type GatewayConfig: :class:`tencentcloud.tione.v20211111.models.GatewayConfig`
+        :param _ResourceSupplyAttribute: <p>资源供应属性(潮汐/竞价等供应模式);空表示常规按量后付费</p>
+        :type ResourceSupplyAttribute: :class:`tencentcloud.tione.v20211111.models.ResourceSupplyAttribute`
         """
         self._TiProjectId = None
         self._ServiceGroupId = None
@@ -2568,6 +2570,7 @@ class CreateModelServiceRequest(AbstractModel):
         self._SchedulingStrategy = None
         self._GatewayLogConfig = None
         self._GatewayConfig = None
+        self._ResourceSupplyAttribute = None
 
     @property
     def TiProjectId(self):
@@ -3075,6 +3078,17 @@ class CreateModelServiceRequest(AbstractModel):
     def GatewayConfig(self, GatewayConfig):
         self._GatewayConfig = GatewayConfig
 
+    @property
+    def ResourceSupplyAttribute(self):
+        r"""<p>资源供应属性(潮汐/竞价等供应模式);空表示常规按量后付费</p>
+        :rtype: :class:`tencentcloud.tione.v20211111.models.ResourceSupplyAttribute`
+        """
+        return self._ResourceSupplyAttribute
+
+    @ResourceSupplyAttribute.setter
+    def ResourceSupplyAttribute(self, ResourceSupplyAttribute):
+        self._ResourceSupplyAttribute = ResourceSupplyAttribute
+
 
     def _deserialize(self, params):
         self._TiProjectId = params.get("TiProjectId")
@@ -3171,6 +3185,9 @@ class CreateModelServiceRequest(AbstractModel):
         if params.get("GatewayConfig") is not None:
             self._GatewayConfig = GatewayConfig()
             self._GatewayConfig._deserialize(params.get("GatewayConfig"))
+        if params.get("ResourceSupplyAttribute") is not None:
+            self._ResourceSupplyAttribute = ResourceSupplyAttribute()
+            self._ResourceSupplyAttribute._deserialize(params.get("ResourceSupplyAttribute"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -24945,6 +24962,42 @@ class ResourceSpec(AbstractModel):
         
 
 
+class ResourceSupplyAttribute(AbstractModel):
+    r"""资源供应属性
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SupplyType: <p>资源供应类型。TIDE:潮汐;SPOT:竞价;空:常规按量后付费</p>
+        :type SupplyType: str
+        """
+        self._SupplyType = None
+
+    @property
+    def SupplyType(self):
+        r"""<p>资源供应类型。TIDE:潮汐;SPOT:竞价;空:常规按量后付费</p>
+        :rtype: str
+        """
+        return self._SupplyType
+
+    @SupplyType.setter
+    def SupplyType(self, SupplyType):
+        self._SupplyType = SupplyType
+
+
+    def _deserialize(self, params):
+        self._SupplyType = params.get("SupplyType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class RollingUpdate(AbstractModel):
     r"""滚动更新策略
 
@@ -25429,6 +25482,9 @@ class Service(AbstractModel):
         :type Changer: str
         :param _ChangerName: <p>变更服务的子账户名称</p>
         :type ChangerName: str
+        :param _ResourceSupplyAttribute: <p>资源供应属性(潮汐/竞价等供应模式);空表示常规按量后付费</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResourceSupplyAttribute: :class:`tencentcloud.tione.v20211111.models.ResourceSupplyAttribute`
         """
         self._ServiceGroupId = None
         self._ServiceId = None
@@ -25470,6 +25526,7 @@ class Service(AbstractModel):
         self._ProjectId = None
         self._Changer = None
         self._ChangerName = None
+        self._ResourceSupplyAttribute = None
 
     @property
     def ServiceGroupId(self):
@@ -25947,6 +26004,18 @@ class Service(AbstractModel):
     def ChangerName(self, ChangerName):
         self._ChangerName = ChangerName
 
+    @property
+    def ResourceSupplyAttribute(self):
+        r"""<p>资源供应属性(潮汐/竞价等供应模式);空表示常规按量后付费</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.tione.v20211111.models.ResourceSupplyAttribute`
+        """
+        return self._ResourceSupplyAttribute
+
+    @ResourceSupplyAttribute.setter
+    def ResourceSupplyAttribute(self, ResourceSupplyAttribute):
+        self._ResourceSupplyAttribute = ResourceSupplyAttribute
+
 
     def _deserialize(self, params):
         self._ServiceGroupId = params.get("ServiceGroupId")
@@ -26007,6 +26076,9 @@ class Service(AbstractModel):
         self._ProjectId = params.get("ProjectId")
         self._Changer = params.get("Changer")
         self._ChangerName = params.get("ChangerName")
+        if params.get("ResourceSupplyAttribute") is not None:
+            self._ResourceSupplyAttribute = ResourceSupplyAttribute()
+            self._ResourceSupplyAttribute._deserialize(params.get("ResourceSupplyAttribute"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

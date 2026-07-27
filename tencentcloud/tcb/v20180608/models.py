@@ -3103,9 +3103,9 @@ class CreateHTTPServiceRouteRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _EnvId: 环境ID
+        :param _EnvId: <p>环境ID</p>
         :type EnvId: str
-        :param _Domain: 域名路由信息
+        :param _Domain: <p>域名路由信息</p>
         :type Domain: :class:`tencentcloud.tcb.v20180608.models.HTTPServiceDomainParam`
         """
         self._EnvId = None
@@ -3113,7 +3113,7 @@ class CreateHTTPServiceRouteRequest(AbstractModel):
 
     @property
     def EnvId(self):
-        r"""环境ID
+        r"""<p>环境ID</p>
         :rtype: str
         """
         return self._EnvId
@@ -3124,7 +3124,7 @@ class CreateHTTPServiceRouteRequest(AbstractModel):
 
     @property
     def Domain(self):
-        r"""域名路由信息
+        r"""<p>域名路由信息</p>
         :rtype: :class:`tencentcloud.tcb.v20180608.models.HTTPServiceDomainParam`
         """
         return self._Domain
@@ -3156,10 +3156,24 @@ class CreateHTTPServiceRouteResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _OwnershipVerification: <p>归属权校验不通过返回信息，根据校验信息配置dns或者文件验证，可通过VerifyHTTPServiceRoute接口验证归属权是否通过</p>
+        :type OwnershipVerification: :class:`tencentcloud.tcb.v20180608.models.OwnershipVerificationInfo`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._OwnershipVerification = None
         self._RequestId = None
+
+    @property
+    def OwnershipVerification(self):
+        r"""<p>归属权校验不通过返回信息，根据校验信息配置dns或者文件验证，可通过VerifyHTTPServiceRoute接口验证归属权是否通过</p>
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.OwnershipVerificationInfo`
+        """
+        return self._OwnershipVerification
+
+    @OwnershipVerification.setter
+    def OwnershipVerification(self, OwnershipVerification):
+        self._OwnershipVerification = OwnershipVerification
 
     @property
     def RequestId(self):
@@ -3174,6 +3188,9 @@ class CreateHTTPServiceRouteResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        if params.get("OwnershipVerification") is not None:
+            self._OwnershipVerification = OwnershipVerificationInfo()
+            self._OwnershipVerification._deserialize(params.get("OwnershipVerification"))
         self._RequestId = params.get("RequestId")
 
 
@@ -13380,7 +13397,7 @@ class HTTPServiceDomainParam(AbstractModel):
         r"""
         :param _Domain: <p>域名。全局唯一。如果域名在其他环境下占用或者腾讯云CDN占用，可能会导致创建失败</p>
         :type Domain: str
-        :param _AccessType: <p>绑定类型</p><p>枚举值：</p><ul><li>DIRECT： 直连到HTTP访问服务</li><li>CDN： 接入云开发CDN</li><li>CUSTOM： 自定义接入类型（CDN、EO、WAF等接入）</li></ul><p>默认值：DIRECT</p>
+        :param _AccessType: <p>绑定类型</p><p>枚举值：</p><ul><li>DIRECT： 直连到HTTP访问服务</li><li>CDN： 接入云开发CDN（即将下线）</li><li>CUSTOM： 自定义接入类型（CDN、EO、WAF等接入）</li><li>EO： 接入云开发EdgeOne</li></ul><p>默认值：DIRECT</p>
         :type AccessType: str
         :param _CertId: <p>证书ID。当前账户下SSL平台的证书ID，无证书无法使用https访问</p>
         :type CertId: str
@@ -13417,7 +13434,7 @@ class HTTPServiceDomainParam(AbstractModel):
 
     @property
     def AccessType(self):
-        r"""<p>绑定类型</p><p>枚举值：</p><ul><li>DIRECT： 直连到HTTP访问服务</li><li>CDN： 接入云开发CDN</li><li>CUSTOM： 自定义接入类型（CDN、EO、WAF等接入）</li></ul><p>默认值：DIRECT</p>
+        r"""<p>绑定类型</p><p>枚举值：</p><ul><li>DIRECT： 直连到HTTP访问服务</li><li>CDN： 接入云开发CDN（即将下线）</li><li>CUSTOM： 自定义接入类型（CDN、EO、WAF等接入）</li><li>EO： 接入云开发EdgeOne</li></ul><p>默认值：DIRECT</p>
         :rtype: str
         """
         return self._AccessType
@@ -14017,9 +14034,9 @@ class HTTPServiceRouteParam(AbstractModel):
         r"""
         :param _Path: <p>路径</p>
         :type Path: str
-        :param _UpstreamResourceType: <p>上游服务类型。创建时必填，修改时可选填</p><p>枚举值：</p><ul><li>SCF： 云函数</li><li>CBR： 云托管</li><li>STATIC_STORE： 静态托管</li><li>WEB_SCF： web云函数</li><li>LH： Lighthouse</li></ul>
+        :param _UpstreamResourceType: <p>上游服务类型。创建时必填，修改时可选填</p><p>枚举值：</p><ul><li>SCF： 云函数</li><li>CBR： 云托管</li><li>STATIC_STORE： 静态托管</li><li>WEB_SCF： web云函数</li><li>LH： Lighthouse</li><li>STORAGE： 云存储</li></ul>
         :type UpstreamResourceType: str
-        :param _UpstreamResourceName: <p>上游服务名。创建时必填，修改时可选填</p>
+        :param _UpstreamResourceName: <p>上游服务名。创建时必填，修改时可选填。HTTPServiceRouteServiceType类型为STATIC_STORE时，可不填，默认staticstore；HTTPServiceRouteServiceType类型为STORAGE时，可不填，默认storage。其他上游类型必须填写准确的服务名</p>
         :type UpstreamResourceName: str
         :param _PathRewrite: <p>路径重写</p>
         :type PathRewrite: :class:`tencentcloud.tcb.v20180608.models.HTTPServicePathRewrite`
@@ -14060,7 +14077,7 @@ class HTTPServiceRouteParam(AbstractModel):
 
     @property
     def UpstreamResourceType(self):
-        r"""<p>上游服务类型。创建时必填，修改时可选填</p><p>枚举值：</p><ul><li>SCF： 云函数</li><li>CBR： 云托管</li><li>STATIC_STORE： 静态托管</li><li>WEB_SCF： web云函数</li><li>LH： Lighthouse</li></ul>
+        r"""<p>上游服务类型。创建时必填，修改时可选填</p><p>枚举值：</p><ul><li>SCF： 云函数</li><li>CBR： 云托管</li><li>STATIC_STORE： 静态托管</li><li>WEB_SCF： web云函数</li><li>LH： Lighthouse</li><li>STORAGE： 云存储</li></ul>
         :rtype: str
         """
         return self._UpstreamResourceType
@@ -14071,7 +14088,7 @@ class HTTPServiceRouteParam(AbstractModel):
 
     @property
     def UpstreamResourceName(self):
-        r"""<p>上游服务名。创建时必填，修改时可选填</p>
+        r"""<p>上游服务名。创建时必填，修改时可选填。HTTPServiceRouteServiceType类型为STATIC_STORE时，可不填，默认staticstore；HTTPServiceRouteServiceType类型为STORAGE时，可不填，默认storage。其他上游类型必须填写准确的服务名</p>
         :rtype: str
         """
         return self._UpstreamResourceName
@@ -19040,6 +19057,199 @@ class OrderInfo(AbstractModel):
         self._ResourceReady = params.get("ResourceReady")
         self._Flag = params.get("Flag")
         self._ReqBody = params.get("ReqBody")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class OwnershipVerificationDnsInfo(AbstractModel):
+    r"""域名归属权验证指引DNS验证信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Subdomain: <p>归属权校验dns子域名</p>
+        :type Subdomain: str
+        :param _RecordType: <p>归属权校验dns记录类型</p>
+        :type RecordType: str
+        :param _RecordValue: <p>归属权校验dns记录值</p>
+        :type RecordValue: str
+        """
+        self._Subdomain = None
+        self._RecordType = None
+        self._RecordValue = None
+
+    @property
+    def Subdomain(self):
+        r"""<p>归属权校验dns子域名</p>
+        :rtype: str
+        """
+        return self._Subdomain
+
+    @Subdomain.setter
+    def Subdomain(self, Subdomain):
+        self._Subdomain = Subdomain
+
+    @property
+    def RecordType(self):
+        r"""<p>归属权校验dns记录类型</p>
+        :rtype: str
+        """
+        return self._RecordType
+
+    @RecordType.setter
+    def RecordType(self, RecordType):
+        self._RecordType = RecordType
+
+    @property
+    def RecordValue(self):
+        r"""<p>归属权校验dns记录值</p>
+        :rtype: str
+        """
+        return self._RecordValue
+
+    @RecordValue.setter
+    def RecordValue(self, RecordValue):
+        self._RecordValue = RecordValue
+
+
+    def _deserialize(self, params):
+        self._Subdomain = params.get("Subdomain")
+        self._RecordType = params.get("RecordType")
+        self._RecordValue = params.get("RecordValue")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class OwnershipVerificationFileInfo(AbstractModel):
+    r"""域名归属权验证指引文件验证信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Path: <p>归属权校验文件路径</p>
+        :type Path: str
+        :param _Content: <p>归属权校验文件内容</p>
+        :type Content: str
+        """
+        self._Path = None
+        self._Content = None
+
+    @property
+    def Path(self):
+        r"""<p>归属权校验文件路径</p>
+        :rtype: str
+        """
+        return self._Path
+
+    @Path.setter
+    def Path(self, Path):
+        self._Path = Path
+
+    @property
+    def Content(self):
+        r"""<p>归属权校验文件内容</p>
+        :rtype: str
+        """
+        return self._Content
+
+    @Content.setter
+    def Content(self, Content):
+        self._Content = Content
+
+
+    def _deserialize(self, params):
+        self._Path = params.get("Path")
+        self._Content = params.get("Content")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class OwnershipVerificationInfo(AbstractModel):
+    r"""域名归属权验证指引信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Domain: <p>归属权校验的域名</p>
+        :type Domain: str
+        :param _DnsVerification: <p>归属权校验dns校验信息</p>
+        :type DnsVerification: list of OwnershipVerificationDnsInfo
+        :param _FileVerification: <p>归属权校验文件校验信息</p>
+        :type FileVerification: list of OwnershipVerificationFileInfo
+        """
+        self._Domain = None
+        self._DnsVerification = None
+        self._FileVerification = None
+
+    @property
+    def Domain(self):
+        r"""<p>归属权校验的域名</p>
+        :rtype: str
+        """
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def DnsVerification(self):
+        r"""<p>归属权校验dns校验信息</p>
+        :rtype: list of OwnershipVerificationDnsInfo
+        """
+        return self._DnsVerification
+
+    @DnsVerification.setter
+    def DnsVerification(self, DnsVerification):
+        self._DnsVerification = DnsVerification
+
+    @property
+    def FileVerification(self):
+        r"""<p>归属权校验文件校验信息</p>
+        :rtype: list of OwnershipVerificationFileInfo
+        """
+        return self._FileVerification
+
+    @FileVerification.setter
+    def FileVerification(self, FileVerification):
+        self._FileVerification = FileVerification
+
+
+    def _deserialize(self, params):
+        self._Domain = params.get("Domain")
+        if params.get("DnsVerification") is not None:
+            self._DnsVerification = []
+            for item in params.get("DnsVerification"):
+                obj = OwnershipVerificationDnsInfo()
+                obj._deserialize(item)
+                self._DnsVerification.append(obj)
+        if params.get("FileVerification") is not None:
+            self._FileVerification = []
+            for item in params.get("FileVerification"):
+                obj = OwnershipVerificationFileInfo()
+                obj._deserialize(item)
+                self._FileVerification.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

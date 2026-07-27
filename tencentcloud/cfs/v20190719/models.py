@@ -3083,37 +3083,37 @@ class CreateMigrationTaskRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskName: 迁移任务名称
+        :param _TaskName: <p>迁移任务名称</p>
         :type TaskName: str
-        :param _MigrationType: 迁移方式标志位，默认为0。0：桶迁移；1：清单迁移
+        :param _MigrationType: <p>迁移方式标志位，默认为0。0：桶迁移；1：清单迁移</p>
         :type MigrationType: int
-        :param _MigrationMode: 迁移模式，默认为0。0: 全量迁移
+        :param _MigrationMode: <p>迁移模式，默认为0。0: 全量迁移</p>
         :type MigrationMode: int
-        :param _SrcSecretId: 数据源账号的 SecretId
+        :param _SrcSecretId: <p>数据源账号的 SecretId</p>
         :type SrcSecretId: str
-        :param _SrcSecretKey: 数据源账号的 SecretKey
+        :param _SrcSecretKey: <p>数据源账号的 SecretKey</p>
         :type SrcSecretKey: str
-        :param _FileSystemId: 文件系统实例 ID，通过查询文件系统 [DescribeCfsFileSystems](https://cloud.tencent.com/document/product/582/38170) 获取
+        :param _FileSystemId: <p>文件系统实例 ID，通过查询文件系统 <a href="https://cloud.tencent.com/document/product/582/38170">DescribeCfsFileSystems</a> 获取</p>
         :type FileSystemId: str
-        :param _FsPath: 文件系统路径
+        :param _FsPath: <p>文件系统路径</p>
         :type FsPath: str
-        :param _CoverType: 同名文件迁移时覆盖策略，默认为0。0: 最后修改时间优先；1: 全覆盖；2: 不覆盖
+        :param _CoverType: <p>同名文件迁移时覆盖策略，默认为0。0: 最后修改时间优先；1: 全覆盖；2: 不覆盖</p>
         :type CoverType: int
-        :param _SrcService: 数据源服务商。COS：腾讯云COS，OSS：阿里云OSS，OBS：华为云OBS
+        :param _SrcService: <p>数据源服务商</p><p>枚举值：</p><ul><li>COS： 腾讯云COS</li><li>OSS： 阿里云OSS</li><li>OBS： 华为云OBS</li><li>BOS： 百度云BOS</li><li>TOS： 火山引擎TOS</li></ul>
         :type SrcService: str
-        :param _BucketName: 数据源桶名称；桶迁移时，BucketName 和 BucketAddress 必填其一，清单迁移时无需填写此参数
+        :param _BucketName: <p>数据源桶名称；桶迁移时，BucketName 和 BucketAddress 必填其一，清单迁移时无需填写此参数</p>
         :type BucketName: str
-        :param _BucketRegion: 数据源桶地域
+        :param _BucketRegion: <p>数据源桶地域</p>
         :type BucketRegion: str
-        :param _BucketAddress: 数据源桶地址；桶迁移时，BucketName 和 BucketAddress 必填其一，清单迁移时无需填写此参数
+        :param _BucketAddress: <p>数据源桶地址；桶迁移时，BucketName 和 BucketAddress 必填其一，清单迁移时无需填写此参数</p>
         :type BucketAddress: str
-        :param _ListAddress: 清单地址，迁移方式为清单迁移时必填
+        :param _ListAddress: <p>清单地址，迁移方式为清单迁移时必填</p>
         :type ListAddress: str
-        :param _FsName: 目标文件系统名称
+        :param _FsName: <p>目标文件系统名称</p>
         :type FsName: str
-        :param _BucketPath: 源桶路径，默认为 /
+        :param _BucketPath: <p>源桶路径，默认为 /</p>
         :type BucketPath: str
-        :param _Direction: 迁移方向；0：对象存储迁移至文件系统，1：文件系统迁移至对象存储。默认为0
+        :param _Direction: <p>迁移方向；0：对象存储迁移至文件系统，1：文件系统迁移至对象存储。默认为0</p>
         :type Direction: int
         """
         self._TaskName = None
@@ -3135,7 +3135,7 @@ class CreateMigrationTaskRequest(AbstractModel):
 
     @property
     def TaskName(self):
-        r"""迁移任务名称
+        r"""<p>迁移任务名称</p>
         :rtype: str
         """
         return self._TaskName
@@ -3146,7 +3146,7 @@ class CreateMigrationTaskRequest(AbstractModel):
 
     @property
     def MigrationType(self):
-        r"""迁移方式标志位，默认为0。0：桶迁移；1：清单迁移
+        r"""<p>迁移方式标志位，默认为0。0：桶迁移；1：清单迁移</p>
         :rtype: int
         """
         return self._MigrationType
@@ -3157,7 +3157,7 @@ class CreateMigrationTaskRequest(AbstractModel):
 
     @property
     def MigrationMode(self):
-        r"""迁移模式，默认为0。0: 全量迁移
+        r"""<p>迁移模式，默认为0。0: 全量迁移</p>
         :rtype: int
         """
         return self._MigrationMode
@@ -3168,7 +3168,7 @@ class CreateMigrationTaskRequest(AbstractModel):
 
     @property
     def SrcSecretId(self):
-        r"""数据源账号的 SecretId
+        r"""<p>数据源账号的 SecretId</p>
         :rtype: str
         """
         return self._SrcSecretId
@@ -3179,7 +3179,7 @@ class CreateMigrationTaskRequest(AbstractModel):
 
     @property
     def SrcSecretKey(self):
-        r"""数据源账号的 SecretKey
+        r"""<p>数据源账号的 SecretKey</p>
         :rtype: str
         """
         return self._SrcSecretKey
@@ -3190,7 +3190,7 @@ class CreateMigrationTaskRequest(AbstractModel):
 
     @property
     def FileSystemId(self):
-        r"""文件系统实例 ID，通过查询文件系统 [DescribeCfsFileSystems](https://cloud.tencent.com/document/product/582/38170) 获取
+        r"""<p>文件系统实例 ID，通过查询文件系统 <a href="https://cloud.tencent.com/document/product/582/38170">DescribeCfsFileSystems</a> 获取</p>
         :rtype: str
         """
         return self._FileSystemId
@@ -3201,7 +3201,7 @@ class CreateMigrationTaskRequest(AbstractModel):
 
     @property
     def FsPath(self):
-        r"""文件系统路径
+        r"""<p>文件系统路径</p>
         :rtype: str
         """
         return self._FsPath
@@ -3212,7 +3212,7 @@ class CreateMigrationTaskRequest(AbstractModel):
 
     @property
     def CoverType(self):
-        r"""同名文件迁移时覆盖策略，默认为0。0: 最后修改时间优先；1: 全覆盖；2: 不覆盖
+        r"""<p>同名文件迁移时覆盖策略，默认为0。0: 最后修改时间优先；1: 全覆盖；2: 不覆盖</p>
         :rtype: int
         """
         return self._CoverType
@@ -3223,7 +3223,7 @@ class CreateMigrationTaskRequest(AbstractModel):
 
     @property
     def SrcService(self):
-        r"""数据源服务商。COS：腾讯云COS，OSS：阿里云OSS，OBS：华为云OBS
+        r"""<p>数据源服务商</p><p>枚举值：</p><ul><li>COS： 腾讯云COS</li><li>OSS： 阿里云OSS</li><li>OBS： 华为云OBS</li><li>BOS： 百度云BOS</li><li>TOS： 火山引擎TOS</li></ul>
         :rtype: str
         """
         return self._SrcService
@@ -3234,7 +3234,7 @@ class CreateMigrationTaskRequest(AbstractModel):
 
     @property
     def BucketName(self):
-        r"""数据源桶名称；桶迁移时，BucketName 和 BucketAddress 必填其一，清单迁移时无需填写此参数
+        r"""<p>数据源桶名称；桶迁移时，BucketName 和 BucketAddress 必填其一，清单迁移时无需填写此参数</p>
         :rtype: str
         """
         return self._BucketName
@@ -3245,7 +3245,7 @@ class CreateMigrationTaskRequest(AbstractModel):
 
     @property
     def BucketRegion(self):
-        r"""数据源桶地域
+        r"""<p>数据源桶地域</p>
         :rtype: str
         """
         return self._BucketRegion
@@ -3256,7 +3256,7 @@ class CreateMigrationTaskRequest(AbstractModel):
 
     @property
     def BucketAddress(self):
-        r"""数据源桶地址；桶迁移时，BucketName 和 BucketAddress 必填其一，清单迁移时无需填写此参数
+        r"""<p>数据源桶地址；桶迁移时，BucketName 和 BucketAddress 必填其一，清单迁移时无需填写此参数</p>
         :rtype: str
         """
         return self._BucketAddress
@@ -3267,7 +3267,7 @@ class CreateMigrationTaskRequest(AbstractModel):
 
     @property
     def ListAddress(self):
-        r"""清单地址，迁移方式为清单迁移时必填
+        r"""<p>清单地址，迁移方式为清单迁移时必填</p>
         :rtype: str
         """
         return self._ListAddress
@@ -3278,7 +3278,7 @@ class CreateMigrationTaskRequest(AbstractModel):
 
     @property
     def FsName(self):
-        r"""目标文件系统名称
+        r"""<p>目标文件系统名称</p>
         :rtype: str
         """
         return self._FsName
@@ -3289,7 +3289,7 @@ class CreateMigrationTaskRequest(AbstractModel):
 
     @property
     def BucketPath(self):
-        r"""源桶路径，默认为 /
+        r"""<p>源桶路径，默认为 /</p>
         :rtype: str
         """
         return self._BucketPath
@@ -3300,7 +3300,7 @@ class CreateMigrationTaskRequest(AbstractModel):
 
     @property
     def Direction(self):
-        r"""迁移方向；0：对象存储迁移至文件系统，1：文件系统迁移至对象存储。默认为0
+        r"""<p>迁移方向；0：对象存储迁移至文件系统，1：文件系统迁移至对象存储。默认为0</p>
         :rtype: int
         """
         return self._Direction
@@ -3344,7 +3344,7 @@ class CreateMigrationTaskResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskId: 迁移任务 ID
+        :param _TaskId: <p>迁移任务 ID</p>
         :type TaskId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -3354,7 +3354,7 @@ class CreateMigrationTaskResponse(AbstractModel):
 
     @property
     def TaskId(self):
-        r"""迁移任务 ID
+        r"""<p>迁移任务 ID</p>
         :rtype: str
         """
         return self._TaskId
@@ -9037,58 +9037,60 @@ class MigrationTaskInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskName: 迁移任务名称
+        :param _TaskName: <p>迁移任务名称</p>
         :type TaskName: str
-        :param _TaskId: 迁移任务id
+        :param _TaskId: <p>迁移任务id</p>
         :type TaskId: str
-        :param _MigrationType: 迁移方式标志位，默认为0。0: 桶迁移；1: 清单迁移
+        :param _MigrationType: <p>迁移方式标志位，默认为0。0: 桶迁移；1: 清单迁移</p>
         :type MigrationType: int
-        :param _MigrationMode: 迁移模式，默认为0。0: 全量迁移
+        :param _MigrationMode: <p>迁移模式，默认为0。0: 全量迁移</p>
         :type MigrationMode: int
-        :param _BucketName: 数据源桶名称
+        :param _BucketName: <p>数据源桶名称</p>
         :type BucketName: str
-        :param _BucketRegion: 数据源桶地域
+        :param _BucketRegion: <p>数据源桶地域</p>
         :type BucketRegion: str
-        :param _BucketAddress: 数据源桶地址
+        :param _BucketAddress: <p>数据源桶地址</p>
         :type BucketAddress: str
-        :param _ListAddress: 清单地址
+        :param _ListAddress: <p>清单地址</p>
         :type ListAddress: str
-        :param _FsName: 文件系统实例名称
+        :param _FsName: <p>文件系统实例名称</p>
         :type FsName: str
-        :param _FileSystemId: 文件系统实例Id
+        :param _FileSystemId: <p>文件系统实例Id</p>
         :type FileSystemId: str
-        :param _FsPath: 文件系统路径
+        :param _FsPath: <p>文件系统路径</p>
         :type FsPath: str
-        :param _CoverType: 同名文件迁移时覆盖策略，默认为0。0: 最后修改时间优先；1: 全覆盖；2: 不覆盖
+        :param _CoverType: <p>同名文件迁移时覆盖策略，默认为0。0: 最后修改时间优先；1: 全覆盖；2: 不覆盖</p>
         :type CoverType: int
-        :param _CreateTime: 创建时间
+        :param _CreateTime: <p>创建时间</p>
         :type CreateTime: int
-        :param _EndTime: 完成/终止时间
+        :param _EndTime: <p>完成/终止时间</p>
         :type EndTime: int
-        :param _Status: 迁移状态。0: 已完成；1: 创建中；2: 运行中；3: 终止中；4: 已终止；5: 创建失败；6: 运行失败；7: 结束中；8: 删除中；9: 等待中
+        :param _Status: <p>迁移状态。0: 已完成；1: 创建中；2: 运行中；3: 终止中；4: 已终止；5: 创建失败；6: 运行失败；7: 结束中；8: 删除中；9: 等待中</p>
         :type Status: int
-        :param _FileTotalCount: 文件数量
+        :param _FileTotalCount: <p>文件数量</p>
         :type FileTotalCount: int
-        :param _FileMigratedCount: 已迁移文件数量
+        :param _FileMigratedCount: <p>已迁移文件数量</p>
         :type FileMigratedCount: int
-        :param _FileFailedCount: 迁移失败文件数量
+        :param _FileFailedCount: <p>迁移失败文件数量</p>
         :type FileFailedCount: int
-        :param _FileTotalSize: 文件容量，单位Byte
+        :param _FileTotalSize: <p>文件容量，单位Byte</p>
         :type FileTotalSize: int
-        :param _FileMigratedSize: 已迁移文件容量，单位Byte
+        :param _FileMigratedSize: <p>已迁移文件容量，单位Byte</p>
         :type FileMigratedSize: int
-        :param _FileFailedSize: 迁移失败文件容量，单位Byte
+        :param _FileFailedSize: <p>迁移失败文件容量，单位Byte</p>
         :type FileFailedSize: int
-        :param _FileTotalList: 全部清单
+        :param _FileTotalList: <p>全部清单</p>
         :type FileTotalList: str
-        :param _FileCompletedList: 已完成文件清单
+        :param _FileCompletedList: <p>已完成文件清单</p>
         :type FileCompletedList: str
-        :param _FileFailedList: 失败文件清单
+        :param _FileFailedList: <p>失败文件清单</p>
         :type FileFailedList: str
-        :param _BucketPath: 源桶路径
+        :param _BucketPath: <p>源桶路径</p>
         :type BucketPath: str
-        :param _Direction: 迁移方向。0: 对象存储迁移至文件系统，1: 文件系统迁移至对象存储。默认 0
+        :param _Direction: <p>迁移方向。0: 对象存储迁移至文件系统，1: 文件系统迁移至对象存储。默认 0</p>
         :type Direction: int
+        :param _SrcService: <p>数据源服务商</p><p>枚举值：</p><ul><li>COS： 腾讯云COS</li><li>OSS： 阿里云OSS</li><li>OBS： 华为云OBS</li><li>BOS： 百度云BOS</li><li>TOS： 火山引擎TOS</li></ul>
+        :type SrcService: str
         """
         self._TaskName = None
         self._TaskId = None
@@ -9116,10 +9118,11 @@ class MigrationTaskInfo(AbstractModel):
         self._FileFailedList = None
         self._BucketPath = None
         self._Direction = None
+        self._SrcService = None
 
     @property
     def TaskName(self):
-        r"""迁移任务名称
+        r"""<p>迁移任务名称</p>
         :rtype: str
         """
         return self._TaskName
@@ -9130,7 +9133,7 @@ class MigrationTaskInfo(AbstractModel):
 
     @property
     def TaskId(self):
-        r"""迁移任务id
+        r"""<p>迁移任务id</p>
         :rtype: str
         """
         return self._TaskId
@@ -9141,7 +9144,7 @@ class MigrationTaskInfo(AbstractModel):
 
     @property
     def MigrationType(self):
-        r"""迁移方式标志位，默认为0。0: 桶迁移；1: 清单迁移
+        r"""<p>迁移方式标志位，默认为0。0: 桶迁移；1: 清单迁移</p>
         :rtype: int
         """
         return self._MigrationType
@@ -9152,7 +9155,7 @@ class MigrationTaskInfo(AbstractModel):
 
     @property
     def MigrationMode(self):
-        r"""迁移模式，默认为0。0: 全量迁移
+        r"""<p>迁移模式，默认为0。0: 全量迁移</p>
         :rtype: int
         """
         return self._MigrationMode
@@ -9163,7 +9166,7 @@ class MigrationTaskInfo(AbstractModel):
 
     @property
     def BucketName(self):
-        r"""数据源桶名称
+        r"""<p>数据源桶名称</p>
         :rtype: str
         """
         return self._BucketName
@@ -9174,7 +9177,7 @@ class MigrationTaskInfo(AbstractModel):
 
     @property
     def BucketRegion(self):
-        r"""数据源桶地域
+        r"""<p>数据源桶地域</p>
         :rtype: str
         """
         return self._BucketRegion
@@ -9185,7 +9188,7 @@ class MigrationTaskInfo(AbstractModel):
 
     @property
     def BucketAddress(self):
-        r"""数据源桶地址
+        r"""<p>数据源桶地址</p>
         :rtype: str
         """
         return self._BucketAddress
@@ -9196,7 +9199,7 @@ class MigrationTaskInfo(AbstractModel):
 
     @property
     def ListAddress(self):
-        r"""清单地址
+        r"""<p>清单地址</p>
         :rtype: str
         """
         return self._ListAddress
@@ -9207,7 +9210,7 @@ class MigrationTaskInfo(AbstractModel):
 
     @property
     def FsName(self):
-        r"""文件系统实例名称
+        r"""<p>文件系统实例名称</p>
         :rtype: str
         """
         return self._FsName
@@ -9218,7 +9221,7 @@ class MigrationTaskInfo(AbstractModel):
 
     @property
     def FileSystemId(self):
-        r"""文件系统实例Id
+        r"""<p>文件系统实例Id</p>
         :rtype: str
         """
         return self._FileSystemId
@@ -9229,7 +9232,7 @@ class MigrationTaskInfo(AbstractModel):
 
     @property
     def FsPath(self):
-        r"""文件系统路径
+        r"""<p>文件系统路径</p>
         :rtype: str
         """
         return self._FsPath
@@ -9240,7 +9243,7 @@ class MigrationTaskInfo(AbstractModel):
 
     @property
     def CoverType(self):
-        r"""同名文件迁移时覆盖策略，默认为0。0: 最后修改时间优先；1: 全覆盖；2: 不覆盖
+        r"""<p>同名文件迁移时覆盖策略，默认为0。0: 最后修改时间优先；1: 全覆盖；2: 不覆盖</p>
         :rtype: int
         """
         return self._CoverType
@@ -9251,7 +9254,7 @@ class MigrationTaskInfo(AbstractModel):
 
     @property
     def CreateTime(self):
-        r"""创建时间
+        r"""<p>创建时间</p>
         :rtype: int
         """
         return self._CreateTime
@@ -9262,7 +9265,7 @@ class MigrationTaskInfo(AbstractModel):
 
     @property
     def EndTime(self):
-        r"""完成/终止时间
+        r"""<p>完成/终止时间</p>
         :rtype: int
         """
         return self._EndTime
@@ -9273,7 +9276,7 @@ class MigrationTaskInfo(AbstractModel):
 
     @property
     def Status(self):
-        r"""迁移状态。0: 已完成；1: 创建中；2: 运行中；3: 终止中；4: 已终止；5: 创建失败；6: 运行失败；7: 结束中；8: 删除中；9: 等待中
+        r"""<p>迁移状态。0: 已完成；1: 创建中；2: 运行中；3: 终止中；4: 已终止；5: 创建失败；6: 运行失败；7: 结束中；8: 删除中；9: 等待中</p>
         :rtype: int
         """
         return self._Status
@@ -9284,7 +9287,7 @@ class MigrationTaskInfo(AbstractModel):
 
     @property
     def FileTotalCount(self):
-        r"""文件数量
+        r"""<p>文件数量</p>
         :rtype: int
         """
         return self._FileTotalCount
@@ -9295,7 +9298,7 @@ class MigrationTaskInfo(AbstractModel):
 
     @property
     def FileMigratedCount(self):
-        r"""已迁移文件数量
+        r"""<p>已迁移文件数量</p>
         :rtype: int
         """
         return self._FileMigratedCount
@@ -9306,7 +9309,7 @@ class MigrationTaskInfo(AbstractModel):
 
     @property
     def FileFailedCount(self):
-        r"""迁移失败文件数量
+        r"""<p>迁移失败文件数量</p>
         :rtype: int
         """
         return self._FileFailedCount
@@ -9317,7 +9320,7 @@ class MigrationTaskInfo(AbstractModel):
 
     @property
     def FileTotalSize(self):
-        r"""文件容量，单位Byte
+        r"""<p>文件容量，单位Byte</p>
         :rtype: int
         """
         return self._FileTotalSize
@@ -9328,7 +9331,7 @@ class MigrationTaskInfo(AbstractModel):
 
     @property
     def FileMigratedSize(self):
-        r"""已迁移文件容量，单位Byte
+        r"""<p>已迁移文件容量，单位Byte</p>
         :rtype: int
         """
         return self._FileMigratedSize
@@ -9339,7 +9342,7 @@ class MigrationTaskInfo(AbstractModel):
 
     @property
     def FileFailedSize(self):
-        r"""迁移失败文件容量，单位Byte
+        r"""<p>迁移失败文件容量，单位Byte</p>
         :rtype: int
         """
         return self._FileFailedSize
@@ -9350,7 +9353,7 @@ class MigrationTaskInfo(AbstractModel):
 
     @property
     def FileTotalList(self):
-        r"""全部清单
+        r"""<p>全部清单</p>
         :rtype: str
         """
         return self._FileTotalList
@@ -9361,7 +9364,7 @@ class MigrationTaskInfo(AbstractModel):
 
     @property
     def FileCompletedList(self):
-        r"""已完成文件清单
+        r"""<p>已完成文件清单</p>
         :rtype: str
         """
         return self._FileCompletedList
@@ -9372,7 +9375,7 @@ class MigrationTaskInfo(AbstractModel):
 
     @property
     def FileFailedList(self):
-        r"""失败文件清单
+        r"""<p>失败文件清单</p>
         :rtype: str
         """
         return self._FileFailedList
@@ -9383,7 +9386,7 @@ class MigrationTaskInfo(AbstractModel):
 
     @property
     def BucketPath(self):
-        r"""源桶路径
+        r"""<p>源桶路径</p>
         :rtype: str
         """
         return self._BucketPath
@@ -9394,7 +9397,7 @@ class MigrationTaskInfo(AbstractModel):
 
     @property
     def Direction(self):
-        r"""迁移方向。0: 对象存储迁移至文件系统，1: 文件系统迁移至对象存储。默认 0
+        r"""<p>迁移方向。0: 对象存储迁移至文件系统，1: 文件系统迁移至对象存储。默认 0</p>
         :rtype: int
         """
         return self._Direction
@@ -9402,6 +9405,17 @@ class MigrationTaskInfo(AbstractModel):
     @Direction.setter
     def Direction(self, Direction):
         self._Direction = Direction
+
+    @property
+    def SrcService(self):
+        r"""<p>数据源服务商</p><p>枚举值：</p><ul><li>COS： 腾讯云COS</li><li>OSS： 阿里云OSS</li><li>OBS： 华为云OBS</li><li>BOS： 百度云BOS</li><li>TOS： 火山引擎TOS</li></ul>
+        :rtype: str
+        """
+        return self._SrcService
+
+    @SrcService.setter
+    def SrcService(self, SrcService):
+        self._SrcService = SrcService
 
 
     def _deserialize(self, params):
@@ -9431,6 +9445,7 @@ class MigrationTaskInfo(AbstractModel):
         self._FileFailedList = params.get("FileFailedList")
         self._BucketPath = params.get("BucketPath")
         self._Direction = params.get("Direction")
+        self._SrcService = params.get("SrcService")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

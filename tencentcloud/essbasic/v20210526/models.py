@@ -12157,33 +12157,20 @@ class CommonApproverOption(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _CanEditApprover: 是否允许修改签署人信息
+        :param _CanEditApprover: <p>是否允许修改签署人信息</p>
         :type CanEditApprover: bool
-        :param _NoRefuse: 是否可以拒签 默认false-可以拒签 true-不可以拒签
+        :param _NoRefuse: <p>是否可以拒签 默认false-可以拒签 true-不可以拒签</p>
         :type NoRefuse: bool
-        :param _NoTransfer: 是否可以转发 默认false-可以转发 true-不可以转发
+        :param _NoTransfer: <p>是否可以转发 默认false-可以转发 true-不可以转发</p>
         :type NoTransfer: bool
-        :param _HideOneKeySign: 当签署方有多个签署区时候，是否隐藏一键所有的签署区
-
-false：（默认）不隐藏
-true：隐藏，每个签署区要单独选择印章或者签名
+        :param _HideOneKeySign: <p>当签署方有多个签署区时候，是否隐藏一键所有的签署区</p><p>false：（默认）不隐藏<br>true：隐藏，每个签署区要单独选择印章或者签名</p>
         :type HideOneKeySign: bool
-        :param _FlowReadLimit: 签署人阅读合同限制参数
- <br/>取值：
-<ul>
-<li> LimitReadTimeAndBottom，阅读合同必须限制阅读时长并且必须阅读到底</li>
-<li> LimitReadTime，阅读合同仅限制阅读时长</li>
-<li> LimitBottom，阅读合同仅限制必须阅读到底</li>
-<li> NoReadTimeAndBottom，阅读合同不限制阅读时长且不限制阅读到底（白名单功能，请联系客户经理开白使用）</li>
-</ul>
+        :param _FlowReadLimit: <p>签署人阅读合同限制参数<br> <br>取值：</p><ul><li> LimitReadTimeAndBottom，阅读合同必须限制阅读时长并且必须阅读到底</li><li> LimitReadTime，阅读合同仅限制阅读时长</li><li> LimitBottom，阅读合同仅限制必须阅读到底</li><li> NoReadTimeAndBottom，阅读合同不限制阅读时长且不限制阅读到底（白名单功能，请联系客户经理开白使用）</li></ul>
         :type FlowReadLimit: str
-        :param _ForbidAddSignDate: 禁止在签署过程中添加签署日期控件
- <br/>前置条件：文件发起合同时，指定SignBeanTag=1（可以在签署过程中添加签署控件）：
-<ul>
-<li> 默认值：false，在开启：签署过程中添加签署控件时，添加签署控件会默认自带签署日期控件</li>
-<li> 可选值：true，在开启：签署过程中添加签署控件时，添加签署控件不会自带签署日期控件</li>
-</ul>
+        :param _ForbidAddSignDate: <p>禁止在签署过程中添加签署日期控件<br> <br>前置条件：文件发起合同时，指定SignBeanTag=1（可以在签署过程中添加签署控件）：</p><ul><li> 默认值：false，在开启：签署过程中添加签署控件时，添加签署控件会默认自带签署日期控件</li><li> 可选值：true，在开启：签署过程中添加签署控件时，添加签署控件不会自带签署日期控件</li></ul>
         :type ForbidAddSignDate: bool
+        :param _ForbidModifySealInfos: <p>在嵌入式文件发起下,若合同是通过文件,当签署人控件指定了印章类型（或印章Id）,在嵌入页面上是否能修改</p>
+        :type ForbidModifySealInfos: bool
         """
         self._CanEditApprover = None
         self._NoRefuse = None
@@ -12191,10 +12178,11 @@ true：隐藏，每个签署区要单独选择印章或者签名
         self._HideOneKeySign = None
         self._FlowReadLimit = None
         self._ForbidAddSignDate = None
+        self._ForbidModifySealInfos = None
 
     @property
     def CanEditApprover(self):
-        r"""是否允许修改签署人信息
+        r"""<p>是否允许修改签署人信息</p>
         :rtype: bool
         """
         return self._CanEditApprover
@@ -12205,7 +12193,7 @@ true：隐藏，每个签署区要单独选择印章或者签名
 
     @property
     def NoRefuse(self):
-        r"""是否可以拒签 默认false-可以拒签 true-不可以拒签
+        r"""<p>是否可以拒签 默认false-可以拒签 true-不可以拒签</p>
         :rtype: bool
         """
         return self._NoRefuse
@@ -12216,7 +12204,7 @@ true：隐藏，每个签署区要单独选择印章或者签名
 
     @property
     def NoTransfer(self):
-        r"""是否可以转发 默认false-可以转发 true-不可以转发
+        r"""<p>是否可以转发 默认false-可以转发 true-不可以转发</p>
         :rtype: bool
         """
         return self._NoTransfer
@@ -12227,10 +12215,7 @@ true：隐藏，每个签署区要单独选择印章或者签名
 
     @property
     def HideOneKeySign(self):
-        r"""当签署方有多个签署区时候，是否隐藏一键所有的签署区
-
-false：（默认）不隐藏
-true：隐藏，每个签署区要单独选择印章或者签名
+        r"""<p>当签署方有多个签署区时候，是否隐藏一键所有的签署区</p><p>false：（默认）不隐藏<br>true：隐藏，每个签署区要单独选择印章或者签名</p>
         :rtype: bool
         """
         return self._HideOneKeySign
@@ -12241,14 +12226,7 @@ true：隐藏，每个签署区要单独选择印章或者签名
 
     @property
     def FlowReadLimit(self):
-        r"""签署人阅读合同限制参数
- <br/>取值：
-<ul>
-<li> LimitReadTimeAndBottom，阅读合同必须限制阅读时长并且必须阅读到底</li>
-<li> LimitReadTime，阅读合同仅限制阅读时长</li>
-<li> LimitBottom，阅读合同仅限制必须阅读到底</li>
-<li> NoReadTimeAndBottom，阅读合同不限制阅读时长且不限制阅读到底（白名单功能，请联系客户经理开白使用）</li>
-</ul>
+        r"""<p>签署人阅读合同限制参数<br> <br>取值：</p><ul><li> LimitReadTimeAndBottom，阅读合同必须限制阅读时长并且必须阅读到底</li><li> LimitReadTime，阅读合同仅限制阅读时长</li><li> LimitBottom，阅读合同仅限制必须阅读到底</li><li> NoReadTimeAndBottom，阅读合同不限制阅读时长且不限制阅读到底（白名单功能，请联系客户经理开白使用）</li></ul>
         :rtype: str
         """
         return self._FlowReadLimit
@@ -12259,12 +12237,7 @@ true：隐藏，每个签署区要单独选择印章或者签名
 
     @property
     def ForbidAddSignDate(self):
-        r"""禁止在签署过程中添加签署日期控件
- <br/>前置条件：文件发起合同时，指定SignBeanTag=1（可以在签署过程中添加签署控件）：
-<ul>
-<li> 默认值：false，在开启：签署过程中添加签署控件时，添加签署控件会默认自带签署日期控件</li>
-<li> 可选值：true，在开启：签署过程中添加签署控件时，添加签署控件不会自带签署日期控件</li>
-</ul>
+        r"""<p>禁止在签署过程中添加签署日期控件<br> <br>前置条件：文件发起合同时，指定SignBeanTag=1（可以在签署过程中添加签署控件）：</p><ul><li> 默认值：false，在开启：签署过程中添加签署控件时，添加签署控件会默认自带签署日期控件</li><li> 可选值：true，在开启：签署过程中添加签署控件时，添加签署控件不会自带签署日期控件</li></ul>
         :rtype: bool
         """
         return self._ForbidAddSignDate
@@ -12272,6 +12245,17 @@ true：隐藏，每个签署区要单独选择印章或者签名
     @ForbidAddSignDate.setter
     def ForbidAddSignDate(self, ForbidAddSignDate):
         self._ForbidAddSignDate = ForbidAddSignDate
+
+    @property
+    def ForbidModifySealInfos(self):
+        r"""<p>在嵌入式文件发起下,若合同是通过文件,当签署人控件指定了印章类型（或印章Id）,在嵌入页面上是否能修改</p>
+        :rtype: bool
+        """
+        return self._ForbidModifySealInfos
+
+    @ForbidModifySealInfos.setter
+    def ForbidModifySealInfos(self, ForbidModifySealInfos):
+        self._ForbidModifySealInfos = ForbidModifySealInfos
 
 
     def _deserialize(self, params):
@@ -12281,6 +12265,7 @@ true：隐藏，每个签署区要单独选择印章或者签名
         self._HideOneKeySign = params.get("HideOneKeySign")
         self._FlowReadLimit = params.get("FlowReadLimit")
         self._ForbidAddSignDate = params.get("ForbidAddSignDate")
+        self._ForbidModifySealInfos = params.get("ForbidModifySealInfos")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

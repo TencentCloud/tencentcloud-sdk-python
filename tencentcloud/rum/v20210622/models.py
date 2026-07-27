@@ -19072,13 +19072,13 @@ class DescribeRumGroupLogV2Request(AbstractModel):
         r"""
         :param _OrderBy: <p>排序方式 desc asc（必填）</p>
         :type OrderBy: str
-        :param _StartTime: <p>开始时间（必填）</p>
+        :param _StartTime: <p>查询日志开始时间（必填）</p>
         :type StartTime: int
         :param _Limit: <p>单次查询返回的原始日志条数，最大值为100（必填）</p>
         :type Limit: int
-        :param _Filter: <p>过滤条件</p>
+        :param _Filter: <p>过滤条件，其中key与运算符(Operator)对应可选字段枚举值与示例查看文档：https://cloud.tencent.com/document/product/248/87223</p>
         :type Filter: str
-        :param _EndTime: <p>结束时间（必填）</p>
+        :param _EndTime: <p>查询日志结束时间（必填）</p>
         :type EndTime: int
         :param _ID: <p>项目ID（必填）</p>
         :type ID: int
@@ -19109,7 +19109,7 @@ class DescribeRumGroupLogV2Request(AbstractModel):
 
     @property
     def StartTime(self):
-        r"""<p>开始时间（必填）</p>
+        r"""<p>查询日志开始时间（必填）</p>
         :rtype: int
         """
         return self._StartTime
@@ -19131,7 +19131,7 @@ class DescribeRumGroupLogV2Request(AbstractModel):
 
     @property
     def Filter(self):
-        r"""<p>过滤条件</p>
+        r"""<p>过滤条件，其中key与运算符(Operator)对应可选字段枚举值与示例查看文档：https://cloud.tencent.com/document/product/248/87223</p>
         :rtype: str
         """
         return self._Filter
@@ -19142,7 +19142,7 @@ class DescribeRumGroupLogV2Request(AbstractModel):
 
     @property
     def EndTime(self):
-        r"""<p>结束时间（必填）</p>
+        r"""<p>查询日志结束时间（必填）</p>
         :rtype: int
         """
         return self._EndTime
@@ -19211,7 +19211,7 @@ class DescribeRumGroupLogV2Response(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Result: <p>Query result in JSON string format</p>
+        :param _Result: <p>日志聚合结果</p>
         :type Result: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -19221,7 +19221,7 @@ class DescribeRumGroupLogV2Response(AbstractModel):
 
     @property
     def Result(self):
-        r"""<p>Query result in JSON string format</p>
+        r"""<p>日志聚合结果</p>
         :rtype: str
         """
         return self._Result
@@ -19254,21 +19254,21 @@ class DescribeRumLogDetailsV2Request(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _OrderBy: 排序方式 desc asc
+        :param _OrderBy: <p>排序方式 desc asc</p>
         :type OrderBy: str
-        :param _StartTime: 开始时间（必填）格式为时间戳 毫秒
+        :param _StartTime: <p>查询日志开始时间（必填）格式为时间戳 毫秒</p>
         :type StartTime: int
-        :param _Limit: 单次查询返回的原始日志条数，最大值为100（必填）
+        :param _Limit: <p>单次查询返回的原始日志条数，最大值为100（必填）</p>
         :type Limit: int
-        :param _Filter: 查询的相关参数
+        :param _Filter: <p>过滤条件，其中key与运算符(Operator)对应可选字段枚举值与示例查看文档：https://cloud.tencent.com/document/product/248/87223</p>
         :type Filter: str
-        :param _EndTime: 结束时间（必填）格式为时间戳 毫秒
+        :param _EndTime: <p>查询日志结束时间（必填）格式为时间戳 毫秒</p>
         :type EndTime: int
-        :param _ID: 项目ID（必填）
+        :param _ID: <p>项目ID（必填）</p>
         :type ID: int
-        :param _LastTime: 上次查询的最后一个日志的时间戳
+        :param _LastTime: <p>上次查询的最后一个日志的时间戳</p>
         :type LastTime: int
-        :param _LastRowId: 上次查询的最后一个日志的rowId
+        :param _LastRowId: <p>上次查询的最后一个日志的rowId</p>
         :type LastRowId: int
         """
         self._OrderBy = None
@@ -19282,7 +19282,7 @@ class DescribeRumLogDetailsV2Request(AbstractModel):
 
     @property
     def OrderBy(self):
-        r"""排序方式 desc asc
+        r"""<p>排序方式 desc asc</p>
         :rtype: str
         """
         return self._OrderBy
@@ -19293,7 +19293,7 @@ class DescribeRumLogDetailsV2Request(AbstractModel):
 
     @property
     def StartTime(self):
-        r"""开始时间（必填）格式为时间戳 毫秒
+        r"""<p>查询日志开始时间（必填）格式为时间戳 毫秒</p>
         :rtype: int
         """
         return self._StartTime
@@ -19304,7 +19304,7 @@ class DescribeRumLogDetailsV2Request(AbstractModel):
 
     @property
     def Limit(self):
-        r"""单次查询返回的原始日志条数，最大值为100（必填）
+        r"""<p>单次查询返回的原始日志条数，最大值为100（必填）</p>
         :rtype: int
         """
         return self._Limit
@@ -19315,7 +19315,7 @@ class DescribeRumLogDetailsV2Request(AbstractModel):
 
     @property
     def Filter(self):
-        r"""查询的相关参数
+        r"""<p>过滤条件，其中key与运算符(Operator)对应可选字段枚举值与示例查看文档：https://cloud.tencent.com/document/product/248/87223</p>
         :rtype: str
         """
         return self._Filter
@@ -19326,7 +19326,7 @@ class DescribeRumLogDetailsV2Request(AbstractModel):
 
     @property
     def EndTime(self):
-        r"""结束时间（必填）格式为时间戳 毫秒
+        r"""<p>查询日志结束时间（必填）格式为时间戳 毫秒</p>
         :rtype: int
         """
         return self._EndTime
@@ -19337,7 +19337,7 @@ class DescribeRumLogDetailsV2Request(AbstractModel):
 
     @property
     def ID(self):
-        r"""项目ID（必填）
+        r"""<p>项目ID（必填）</p>
         :rtype: int
         """
         return self._ID
@@ -19348,7 +19348,7 @@ class DescribeRumLogDetailsV2Request(AbstractModel):
 
     @property
     def LastTime(self):
-        r"""上次查询的最后一个日志的时间戳
+        r"""<p>上次查询的最后一个日志的时间戳</p>
         :rtype: int
         """
         return self._LastTime
@@ -19359,7 +19359,7 @@ class DescribeRumLogDetailsV2Request(AbstractModel):
 
     @property
     def LastRowId(self):
-        r"""上次查询的最后一个日志的rowId
+        r"""<p>上次查询的最后一个日志的rowId</p>
         :rtype: int
         """
         return self._LastRowId
@@ -19395,7 +19395,7 @@ class DescribeRumLogDetailsV2Response(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Result: 日志明细
+        :param _Result: <p>日志明细</p>
         :type Result: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -19405,7 +19405,7 @@ class DescribeRumLogDetailsV2Response(AbstractModel):
 
     @property
     def Result(self):
-        r"""日志明细
+        r"""<p>日志明细</p>
         :rtype: str
         """
         return self._Result
@@ -19592,17 +19592,17 @@ class DescribeRumLogExportV2Request(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Name: Export name
+        :param _Name: <p>Name（string，必填）：导出任务名称标识，需要在使用API创建导出任务时填写。此字段为后续能力扩展预留，不在查询结果中返回。</p>
         :type Name: str
-        :param _StartTime: Start time
+        :param _StartTime: <p>查询日志开始时间(必填)</p>
         :type StartTime: int
-        :param _Filter: Query statement
+        :param _Filter: <p>过滤条件，其中key与运算符(Operator)对应可选字段枚举值与示例查看文档：https://cloud.tencent.com/document/product/248/87223</p>
         :type Filter: str
-        :param _EndTime: End time
+        :param _EndTime: <p>查询日志结束时间(必填)</p>
         :type EndTime: int
-        :param _ID: Project ID
+        :param _ID: <p>项目ID</p>
         :type ID: int
-        :param _Fields: c字段
+        :param _Fields: <p>注意：这个字段必选，不能为空！选择要导出哪些字段的参数，对应日志的列，可查看文档：https://cloud.tencent.com/document/product/248/87223</p><p>枚举值：</p><ul><li>level： 日志类型</li><li>url： URL</li><li>ip： 用户终端IP</li><li>version： 版本</li></ul>
         :type Fields: list of str
         """
         self._Name = None
@@ -19614,7 +19614,7 @@ class DescribeRumLogExportV2Request(AbstractModel):
 
     @property
     def Name(self):
-        r"""Export name
+        r"""<p>Name（string，必填）：导出任务名称标识，需要在使用API创建导出任务时填写。此字段为后续能力扩展预留，不在查询结果中返回。</p>
         :rtype: str
         """
         return self._Name
@@ -19625,7 +19625,7 @@ class DescribeRumLogExportV2Request(AbstractModel):
 
     @property
     def StartTime(self):
-        r"""Start time
+        r"""<p>查询日志开始时间(必填)</p>
         :rtype: int
         """
         return self._StartTime
@@ -19636,7 +19636,7 @@ class DescribeRumLogExportV2Request(AbstractModel):
 
     @property
     def Filter(self):
-        r"""Query statement
+        r"""<p>过滤条件，其中key与运算符(Operator)对应可选字段枚举值与示例查看文档：https://cloud.tencent.com/document/product/248/87223</p>
         :rtype: str
         """
         return self._Filter
@@ -19647,7 +19647,7 @@ class DescribeRumLogExportV2Request(AbstractModel):
 
     @property
     def EndTime(self):
-        r"""End time
+        r"""<p>查询日志结束时间(必填)</p>
         :rtype: int
         """
         return self._EndTime
@@ -19658,7 +19658,7 @@ class DescribeRumLogExportV2Request(AbstractModel):
 
     @property
     def ID(self):
-        r"""Project ID
+        r"""<p>项目ID</p>
         :rtype: int
         """
         return self._ID
@@ -19669,7 +19669,7 @@ class DescribeRumLogExportV2Request(AbstractModel):
 
     @property
     def Fields(self):
-        r"""c字段
+        r"""<p>注意：这个字段必选，不能为空！选择要导出哪些字段的参数，对应日志的列，可查看文档：https://cloud.tencent.com/document/product/248/87223</p><p>枚举值：</p><ul><li>level： 日志类型</li><li>url： URL</li><li>ip： 用户终端IP</li><li>version： 版本</li></ul>
         :rtype: list of str
         """
         return self._Fields
@@ -19703,7 +19703,7 @@ class DescribeRumLogExportV2Response(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Result: Query result in JSON string format
+        :param _Result: <p>日志导出任务TaskId</p>
         :type Result: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -19713,7 +19713,7 @@ class DescribeRumLogExportV2Response(AbstractModel):
 
     @property
     def Result(self):
-        r"""Query result in JSON string format
+        r"""<p>日志导出任务TaskId</p>
         :rtype: str
         """
         return self._Result
@@ -20133,21 +20133,21 @@ class DescribeRumLogTotalV2Request(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _OrderBy: 排序方式 desc asc
+        :param _OrderBy: <p>排序方式 desc asc</p>
         :type OrderBy: str
-        :param _StartTime: 开始时间（必填）格式为时间戳 毫秒
+        :param _StartTime: <p>查询日志开始时间（必填）格式为时间戳 毫秒</p>
         :type StartTime: int
-        :param _Limit: 单次查询返回的原始日志条数，最大值为100（必填）
+        :param _Limit: <p>单次查询返回的原始日志条数，最大值为100（必填）</p>
         :type Limit: int
-        :param _Filter: 查询的相关参数
+        :param _Filter: <p>过滤条件，其中key与运算符(Operator)对应可选字段枚举值与示例查看文档：https://cloud.tencent.com/document/product/248/87223</p>
         :type Filter: str
-        :param _EndTime: 结束时间（必填）格式为时间戳 毫秒
+        :param _EndTime: <p>查询日志结束时间（必填）格式为时间戳 毫秒</p>
         :type EndTime: int
-        :param _ID: 项目ID（必填）
+        :param _ID: <p>项目ID（必填）</p>
         :type ID: int
-        :param _LastTime: 上次查询的最后一个日志的时间戳
+        :param _LastTime: <p>上次查询的最后一个日志的时间戳</p>
         :type LastTime: int
-        :param _LastRowId: 上次查询的最后一个日志的rowId
+        :param _LastRowId: <p>上次查询的最后一个日志的rowId</p>
         :type LastRowId: int
         """
         self._OrderBy = None
@@ -20161,7 +20161,7 @@ class DescribeRumLogTotalV2Request(AbstractModel):
 
     @property
     def OrderBy(self):
-        r"""排序方式 desc asc
+        r"""<p>排序方式 desc asc</p>
         :rtype: str
         """
         return self._OrderBy
@@ -20172,7 +20172,7 @@ class DescribeRumLogTotalV2Request(AbstractModel):
 
     @property
     def StartTime(self):
-        r"""开始时间（必填）格式为时间戳 毫秒
+        r"""<p>查询日志开始时间（必填）格式为时间戳 毫秒</p>
         :rtype: int
         """
         return self._StartTime
@@ -20183,7 +20183,7 @@ class DescribeRumLogTotalV2Request(AbstractModel):
 
     @property
     def Limit(self):
-        r"""单次查询返回的原始日志条数，最大值为100（必填）
+        r"""<p>单次查询返回的原始日志条数，最大值为100（必填）</p>
         :rtype: int
         """
         return self._Limit
@@ -20194,7 +20194,7 @@ class DescribeRumLogTotalV2Request(AbstractModel):
 
     @property
     def Filter(self):
-        r"""查询的相关参数
+        r"""<p>过滤条件，其中key与运算符(Operator)对应可选字段枚举值与示例查看文档：https://cloud.tencent.com/document/product/248/87223</p>
         :rtype: str
         """
         return self._Filter
@@ -20205,7 +20205,7 @@ class DescribeRumLogTotalV2Request(AbstractModel):
 
     @property
     def EndTime(self):
-        r"""结束时间（必填）格式为时间戳 毫秒
+        r"""<p>查询日志结束时间（必填）格式为时间戳 毫秒</p>
         :rtype: int
         """
         return self._EndTime
@@ -20216,7 +20216,7 @@ class DescribeRumLogTotalV2Request(AbstractModel):
 
     @property
     def ID(self):
-        r"""项目ID（必填）
+        r"""<p>项目ID（必填）</p>
         :rtype: int
         """
         return self._ID
@@ -20227,7 +20227,7 @@ class DescribeRumLogTotalV2Request(AbstractModel):
 
     @property
     def LastTime(self):
-        r"""上次查询的最后一个日志的时间戳
+        r"""<p>上次查询的最后一个日志的时间戳</p>
         :rtype: int
         """
         return self._LastTime
@@ -20238,7 +20238,7 @@ class DescribeRumLogTotalV2Request(AbstractModel):
 
     @property
     def LastRowId(self):
-        r"""上次查询的最后一个日志的rowId
+        r"""<p>上次查询的最后一个日志的rowId</p>
         :rtype: int
         """
         return self._LastRowId
@@ -20274,7 +20274,7 @@ class DescribeRumLogTotalV2Response(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Result: 日志总量
+        :param _Result: <p>日志总量</p>
         :type Result: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -20284,7 +20284,7 @@ class DescribeRumLogTotalV2Response(AbstractModel):
 
     @property
     def Result(self):
-        r"""日志总量
+        r"""<p>日志总量</p>
         :rtype: str
         """
         return self._Result
@@ -20456,15 +20456,15 @@ class DescribeRumStatsLogListV2Request(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _StartTime: 开始时间（必填）
+        :param _StartTime: <p>查询日志开始时间（必填）</p>
         :type StartTime: int
-        :param _Limit: 单次查询返回的原始日志条数，最大值为100（必填）
+        :param _Limit: <p>单次查询返回的原始日志条数，最大值为100（必填）</p>
         :type Limit: int
-        :param _Filter: 过滤条件
+        :param _Filter: <p>过滤条件，其中key与运算符(Operator)对应可选字段枚举值与示例查看文档：https://cloud.tencent.com/document/product/248/87223</p>
         :type Filter: str
-        :param _EndTime: 结束时间（必填）
+        :param _EndTime: <p>查询日志结束时间（必填）</p>
         :type EndTime: int
-        :param _ID: 项目ID（必填）
+        :param _ID: <p>项目ID（必填）</p>
         :type ID: int
         """
         self._StartTime = None
@@ -20475,7 +20475,7 @@ class DescribeRumStatsLogListV2Request(AbstractModel):
 
     @property
     def StartTime(self):
-        r"""开始时间（必填）
+        r"""<p>查询日志开始时间（必填）</p>
         :rtype: int
         """
         return self._StartTime
@@ -20486,7 +20486,7 @@ class DescribeRumStatsLogListV2Request(AbstractModel):
 
     @property
     def Limit(self):
-        r"""单次查询返回的原始日志条数，最大值为100（必填）
+        r"""<p>单次查询返回的原始日志条数，最大值为100（必填）</p>
         :rtype: int
         """
         return self._Limit
@@ -20497,7 +20497,7 @@ class DescribeRumStatsLogListV2Request(AbstractModel):
 
     @property
     def Filter(self):
-        r"""过滤条件
+        r"""<p>过滤条件，其中key与运算符(Operator)对应可选字段枚举值与示例查看文档：https://cloud.tencent.com/document/product/248/87223</p>
         :rtype: str
         """
         return self._Filter
@@ -20508,7 +20508,7 @@ class DescribeRumStatsLogListV2Request(AbstractModel):
 
     @property
     def EndTime(self):
-        r"""结束时间（必填）
+        r"""<p>查询日志结束时间（必填）</p>
         :rtype: int
         """
         return self._EndTime
@@ -20519,7 +20519,7 @@ class DescribeRumStatsLogListV2Request(AbstractModel):
 
     @property
     def ID(self):
-        r"""项目ID（必填）
+        r"""<p>项目ID（必填）</p>
         :rtype: int
         """
         return self._ID
@@ -20552,7 +20552,7 @@ class DescribeRumStatsLogListV2Response(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Result: Query result in JSON string format
+        :param _Result: <p>日志时间分布</p>
         :type Result: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -20562,7 +20562,7 @@ class DescribeRumStatsLogListV2Response(AbstractModel):
 
     @property
     def Result(self):
-        r"""Query result in JSON string format
+        r"""<p>日志时间分布</p>
         :rtype: str
         """
         return self._Result

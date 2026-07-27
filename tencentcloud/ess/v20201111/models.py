@@ -916,6 +916,8 @@ class ApproverOption(AbstractModel):
         :type ForbidAddSignDate: bool
         :param _ApproverMobileMode: <p>签署人手机号传参模式</p><p>枚举值：</p><ul><li>REPLACE： 接受已有认证手机号并替换</li><li>GIVEN： 以客户入参输入手机号为主</li><li>VALIDATE： 若与认证手机号不一致则报错</li><li>&quot;&quot;： 不走手机号传参模式</li></ul><p>默认值：&quot;&quot;</p><p>会触发手机号传参模式的前提是：签署人是指定了具体身份信息的</p><ul><li>在指定签署人姓名，证件号的情况下会触发</li></ul>
         :type ApproverMobileMode: str
+        :param _ForbidModifySealInfos: <p>在嵌入式文件发起下,若合同是通过文件,当签署人控件指定了印章类型（或印章Id）,在嵌入页面上是否能修改</p>
+        :type ForbidModifySealInfos: bool
         """
         self._NoRefuse = None
         self._NoTransfer = None
@@ -924,6 +926,7 @@ class ApproverOption(AbstractModel):
         self._FlowReadLimit = None
         self._ForbidAddSignDate = None
         self._ApproverMobileMode = None
+        self._ForbidModifySealInfos = None
 
     @property
     def NoRefuse(self):
@@ -1002,6 +1005,17 @@ class ApproverOption(AbstractModel):
     def ApproverMobileMode(self, ApproverMobileMode):
         self._ApproverMobileMode = ApproverMobileMode
 
+    @property
+    def ForbidModifySealInfos(self):
+        r"""<p>在嵌入式文件发起下,若合同是通过文件,当签署人控件指定了印章类型（或印章Id）,在嵌入页面上是否能修改</p>
+        :rtype: bool
+        """
+        return self._ForbidModifySealInfos
+
+    @ForbidModifySealInfos.setter
+    def ForbidModifySealInfos(self, ForbidModifySealInfos):
+        self._ForbidModifySealInfos = ForbidModifySealInfos
+
 
     def _deserialize(self, params):
         self._NoRefuse = params.get("NoRefuse")
@@ -1011,6 +1025,7 @@ class ApproverOption(AbstractModel):
         self._FlowReadLimit = params.get("FlowReadLimit")
         self._ForbidAddSignDate = params.get("ForbidAddSignDate")
         self._ApproverMobileMode = params.get("ApproverMobileMode")
+        self._ForbidModifySealInfos = params.get("ForbidModifySealInfos")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
