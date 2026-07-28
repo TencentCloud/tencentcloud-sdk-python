@@ -58439,9 +58439,9 @@ class ManifestInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Windows: 单位秒。
+        :param _Windows: <p>单位秒。</p>
         :type Windows: int
-        :param _AdMarkupType: 打到output广告标签的格式，可选Date Range和Enhanced SCTE-35。
+        :param _AdMarkupType: <p>打到output广告标签的格式，可选Date Range、Enhanced SCTE-35和Standard SCTE-35。</p>
         :type AdMarkupType: str
         """
         self._Windows = None
@@ -58449,7 +58449,7 @@ class ManifestInfo(AbstractModel):
 
     @property
     def Windows(self):
-        r"""单位秒。
+        r"""<p>单位秒。</p>
         :rtype: int
         """
         return self._Windows
@@ -58460,7 +58460,7 @@ class ManifestInfo(AbstractModel):
 
     @property
     def AdMarkupType(self):
-        r"""打到output广告标签的格式，可选Date Range和Enhanced SCTE-35。
+        r"""<p>打到output广告标签的格式，可选Date Range、Enhanced SCTE-35和Standard SCTE-35。</p>
         :rtype: str
         """
         return self._AdMarkupType

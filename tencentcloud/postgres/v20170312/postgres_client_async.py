@@ -205,6 +205,24 @@ class PostgresClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateDBProxy(
+            self,
+            request: models.CreateDBProxyRequest,
+            opts: Dict = None,
+    ) -> models.CreateDBProxyResponse:
+        """
+        本接口（CreateDBProxy）用于为指定的 PostgreSQL 实例创建数据库代理（Proxy）。走计费下单流程，下单成功后异步发起 Proxy 创建任务，同步返回订单号 DealName 与 Proxy 实例 ID ProxyGroupId。当前仅支持后付费按量计费。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateDBProxy"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateDBProxyResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateDatabase(
             self,
             request: models.CreateDatabaseRequest,
@@ -875,6 +893,42 @@ class PostgresClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeDBProxy(
+            self,
+            request: models.DescribeDBProxyRequest,
+            opts: Dict = None,
+    ) -> models.DescribeDBProxyResponse:
+        """
+        本接口（DescribeDBProxy）用于查询指定 PostgreSQL 实例下的数据库代理（Proxy）信息，包含 Proxy 节点列表与接入地址列表。可选传入 ProxyGroupId 精确查询某一 Proxy；不传则返回该实例下的全部 Proxy。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeDBProxy"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeDBProxyResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeDBProxySpecs(
+            self,
+            request: models.DescribeDBProxySpecsRequest,
+            opts: Dict = None,
+    ) -> models.DescribeDBProxySpecsResponse:
+        """
+        查询代理可售规格
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeDBProxySpecs"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeDBProxySpecsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeDBVersions(
             self,
             request: models.DescribeDBVersionsRequest,
@@ -1249,6 +1303,24 @@ class PostgresClient(AbstractClient):
         kwargs["action"] = "DestroyDBInstance"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DestroyDBInstanceResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DestroyDBProxy(
+            self,
+            request: models.DestroyDBProxyRequest,
+            opts: Dict = None,
+    ) -> models.DestroyDBProxyResponse:
+        """
+        本接口（DestroyDBProxy）用于销毁指定的数据库代理（Proxy）。接口仅返回 RequestId，销毁动作由计费回调异步触发 ProxyDestroy 任务，内部统一完成「隔离 + 销毁」全部步骤（释放 VIP、解绑安全组、回收资源、上报计费等），用户无需先调用隔离接口。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DestroyDBProxy"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DestroyDBProxyResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -1670,6 +1742,42 @@ class PostgresClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def ModifyDBProxy(
+            self,
+            request: models.ModifyDBProxyRequest,
+            opts: Dict = None,
+    ) -> models.ModifyDBProxyResponse:
+        """
+        本接口（ModifyDBProxy）用于修改数据库代理（Proxy）。支持两种模式：①仅修改 Description 时同步生效，不下单，DealName 为空；②变更 Proxy 节点规格或数量（ProxyNodeCustom）时走计费下单流程，异步触发变配任务，返回 DealName。可通过 SwitchTag 控制变配执行时机。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyDBProxy"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyDBProxyResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyDBProxyAddress(
+            self,
+            request: models.ModifyDBProxyAddressRequest,
+            opts: Dict = None,
+    ) -> models.ModifyDBProxyAddressResponse:
+        """
+        修改代理地址配置
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyDBProxyAddress"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyDBProxyAddressResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ModifyDatabaseOwner(
             self,
             request: models.ModifyDatabaseOwnerRequest,
@@ -1863,6 +1971,24 @@ class PostgresClient(AbstractClient):
         kwargs["action"] = "RefreshAccountPassword"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.RefreshAccountPasswordResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ReloadBalanceDBProxyNode(
+            self,
+            request: models.ReloadBalanceDBProxyNodeRequest,
+            opts: Dict = None,
+    ) -> models.ReloadBalanceDBProxyNodeResponse:
+        """
+        本接口（ReloadBalanceDBProxyNode）用于重新均衡数据库代理节点
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ReloadBalanceDBProxyNode"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ReloadBalanceDBProxyNodeResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

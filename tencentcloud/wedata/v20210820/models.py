@@ -35378,6 +35378,107 @@ class DescribeInstanceLogResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeInstancesByExecutorsRequest(AbstractModel):
+    r"""DescribeInstancesByExecutors请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProjectId: <p>项目ID</p>
+        :type ProjectId: str
+        :param _ExecutorGroupIdList: <p>执行资源组ID</p>
+        :type ExecutorGroupIdList: list of str
+        """
+        self._ProjectId = None
+        self._ExecutorGroupIdList = None
+
+    @property
+    def ProjectId(self):
+        r"""<p>项目ID</p>
+        :rtype: str
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def ExecutorGroupIdList(self):
+        r"""<p>执行资源组ID</p>
+        :rtype: list of str
+        """
+        return self._ExecutorGroupIdList
+
+    @ExecutorGroupIdList.setter
+    def ExecutorGroupIdList(self, ExecutorGroupIdList):
+        self._ExecutorGroupIdList = ExecutorGroupIdList
+
+
+    def _deserialize(self, params):
+        self._ProjectId = params.get("ProjectId")
+        self._ExecutorGroupIdList = params.get("ExecutorGroupIdList")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeInstancesByExecutorsResponse(AbstractModel):
+    r"""DescribeInstancesByExecutors返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: <p>实例状态统计结果</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: list of ExecutorTaskInstanceCount
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""<p>实例状态统计结果</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of ExecutorTaskInstanceCount
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = []
+            for item in params.get("Data"):
+                obj = ExecutorTaskInstanceCount()
+                obj._deserialize(item)
+                self._Data.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeIntegrationNodeRequest(AbstractModel):
     r"""DescribeIntegrationNode请求参数结构体
 
@@ -58700,6 +58801,146 @@ class ExecutorResourcePackageUsageInfo(AbstractModel):
                 obj = ExecutorUsageTrendInfo()
                 obj._deserialize(item)
                 self._UsageTrendList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ExecutorTaskInstanceCount(AbstractModel):
+    r"""ExecutorTaskInstanceCount
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ExecutorGroupId: 执行资源组ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExecutorGroupId: str
+        :param _SchedulingTaskCount: 数据开发中的任务类型绑定的资源组数量等待调度的任务实例数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SchedulingTaskCount: int
+        :param _RunningInstanceCount: 数据开发中的任务类型绑定的资源组数量运行中的人物实例数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RunningInstanceCount: int
+        :param _WaitingInstanceCount: 数据开发中的任务类型绑定的资源组数量等待运行的任务实例数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WaitingInstanceCount: int
+        :param _OthersTaskTypeSchedulingTaskCount: 非离线开发调度中任务数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OthersTaskTypeSchedulingTaskCount: int
+        :param _OthersTaskTypeRunningInstanceCount: 非离线开发运行中实例数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OthersTaskTypeRunningInstanceCount: int
+        :param _OthersTaskTypeWaitingInstanceCount: 非离线开发等待运行实例数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OthersTaskTypeWaitingInstanceCount: str
+        """
+        self._ExecutorGroupId = None
+        self._SchedulingTaskCount = None
+        self._RunningInstanceCount = None
+        self._WaitingInstanceCount = None
+        self._OthersTaskTypeSchedulingTaskCount = None
+        self._OthersTaskTypeRunningInstanceCount = None
+        self._OthersTaskTypeWaitingInstanceCount = None
+
+    @property
+    def ExecutorGroupId(self):
+        r"""执行资源组ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ExecutorGroupId
+
+    @ExecutorGroupId.setter
+    def ExecutorGroupId(self, ExecutorGroupId):
+        self._ExecutorGroupId = ExecutorGroupId
+
+    @property
+    def SchedulingTaskCount(self):
+        r"""数据开发中的任务类型绑定的资源组数量等待调度的任务实例数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._SchedulingTaskCount
+
+    @SchedulingTaskCount.setter
+    def SchedulingTaskCount(self, SchedulingTaskCount):
+        self._SchedulingTaskCount = SchedulingTaskCount
+
+    @property
+    def RunningInstanceCount(self):
+        r"""数据开发中的任务类型绑定的资源组数量运行中的人物实例数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._RunningInstanceCount
+
+    @RunningInstanceCount.setter
+    def RunningInstanceCount(self, RunningInstanceCount):
+        self._RunningInstanceCount = RunningInstanceCount
+
+    @property
+    def WaitingInstanceCount(self):
+        r"""数据开发中的任务类型绑定的资源组数量等待运行的任务实例数量
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._WaitingInstanceCount
+
+    @WaitingInstanceCount.setter
+    def WaitingInstanceCount(self, WaitingInstanceCount):
+        self._WaitingInstanceCount = WaitingInstanceCount
+
+    @property
+    def OthersTaskTypeSchedulingTaskCount(self):
+        r"""非离线开发调度中任务数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._OthersTaskTypeSchedulingTaskCount
+
+    @OthersTaskTypeSchedulingTaskCount.setter
+    def OthersTaskTypeSchedulingTaskCount(self, OthersTaskTypeSchedulingTaskCount):
+        self._OthersTaskTypeSchedulingTaskCount = OthersTaskTypeSchedulingTaskCount
+
+    @property
+    def OthersTaskTypeRunningInstanceCount(self):
+        r"""非离线开发运行中实例数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._OthersTaskTypeRunningInstanceCount
+
+    @OthersTaskTypeRunningInstanceCount.setter
+    def OthersTaskTypeRunningInstanceCount(self, OthersTaskTypeRunningInstanceCount):
+        self._OthersTaskTypeRunningInstanceCount = OthersTaskTypeRunningInstanceCount
+
+    @property
+    def OthersTaskTypeWaitingInstanceCount(self):
+        r"""非离线开发等待运行实例数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._OthersTaskTypeWaitingInstanceCount
+
+    @OthersTaskTypeWaitingInstanceCount.setter
+    def OthersTaskTypeWaitingInstanceCount(self, OthersTaskTypeWaitingInstanceCount):
+        self._OthersTaskTypeWaitingInstanceCount = OthersTaskTypeWaitingInstanceCount
+
+
+    def _deserialize(self, params):
+        self._ExecutorGroupId = params.get("ExecutorGroupId")
+        self._SchedulingTaskCount = params.get("SchedulingTaskCount")
+        self._RunningInstanceCount = params.get("RunningInstanceCount")
+        self._WaitingInstanceCount = params.get("WaitingInstanceCount")
+        self._OthersTaskTypeSchedulingTaskCount = params.get("OthersTaskTypeSchedulingTaskCount")
+        self._OthersTaskTypeRunningInstanceCount = params.get("OthersTaskTypeRunningInstanceCount")
+        self._OthersTaskTypeWaitingInstanceCount = params.get("OthersTaskTypeWaitingInstanceCount")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

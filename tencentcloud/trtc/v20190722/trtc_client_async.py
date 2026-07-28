@@ -172,6 +172,26 @@ class TrtcClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateLiveStreamModeration(
+            self,
+            request: models.CreateLiveStreamModerationRequest,
+            opts: Dict = None,
+    ) -> models.CreateLiveStreamModerationResponse:
+        """
+        启动一路直播流审核。服务端异步拉流、定频截帧、音频切片、送审，通过回调返回结果。一次一个任务（一路流）。您可以通过此接口实现如下目标：
+        ●指定内容参数（LiveModerationParams）来指定内容理解需要的详细参数。
+        ●指定存储参数（LiveModerationStorageParams）将命中的切片文件指定上传到您希望的云存储，目前支持腾讯云（对象存储COS）以及第三方AWS（S3）和阿里云（OSS）
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateLiveStreamModeration"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateLiveStreamModerationResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreatePicture(
             self,
             request: models.CreatePictureRequest,
@@ -275,6 +295,24 @@ class TrtcClient(AbstractClient):
         kwargs["action"] = "DeleteCloudTranscription"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DeleteCloudTranscriptionResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteLiveStreamModeration(
+            self,
+            request: models.DeleteLiveStreamModerationRequest,
+            opts: Dict = None,
+    ) -> models.DeleteLiveStreamModerationResponse:
+        """
+        成功开启直播流AI 内容理解任务后，可以使用此接口来停止进行内容识别。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteLiveStreamModeration"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteLiveStreamModerationResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -461,6 +499,24 @@ class TrtcClient(AbstractClient):
         kwargs["action"] = "DescribeCloudTranscription"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeCloudTranscriptionResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeLiveStreamModeration(
+            self,
+            request: models.DescribeLiveStreamModerationRequest,
+            opts: Dict = None,
+    ) -> models.DescribeLiveStreamModerationResponse:
+        """
+        成功开启直播流AI 内容理解任务后，可以使用此接口来查询AI 内容理解任务状态，仅在任务进行时有效，任务退出后查询将会返回错误。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeLiveStreamModeration"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeLiveStreamModerationResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

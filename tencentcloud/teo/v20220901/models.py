@@ -7795,32 +7795,25 @@ class ClientAttester(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Id: 认证选项 ID。
+        :param _Id: <p>认证选项 ID。</p>
         :type Id: str
-        :param _Name: 认证选项名称。
+        :param _Name: <p>认证选项名称。</p>
         :type Name: str
-        :param _Type: 认证规则类型。仅出参返回，取值有：
-<li>PRESET: 系统预置规则，仅允许修改 AttesterDuration；</li>
-<li>CUSTOM: 用户自定义规则。</li>
+        :param _Type: <p>认证规则类型。仅出参返回，取值有：</p><li>PRESET: 系统预置规则，仅允许修改 AttesterDuration；</li><li>CUSTOM: 用户自定义规则。</li>
         :type Type: str
-        :param _AttesterSource: 认证方法。取值有：
-<li>TC-RCE: 使用风险识别 RCE 进行认证；</li>
-<li>TC-CAPTCHA: 使用天御验证码进行认证；</li>
-<li>TC-EO-CAPTCHA: 使用 EdgeOne 人机校验进行认证。</li>
+        :param _AttesterSource: <p>认证方法。取值有：</p><li>TC-RCE: 使用风险识别 RCE 进行认证；</li><li>TC-CAPTCHA: 使用天御验证码进行认证；</li><li>TC-EO-CAPTCHA: 使用 EdgeOne 人机校验进行认证。</li>
         :type AttesterSource: str
-        :param _AttesterDuration: 认证有效时间。默认为 60s，支持的单位有：
-<li>s：秒，取值范围 60～43200；</li>
-<li>m：分，取值范围 1～720；</li>
-<li>h：小时，取值范围 1～12。</li>
+        :param _AttesterDuration: <p>认证有效时间。默认为 60s，支持的单位有：</p><li>s：秒，取值范围 60～43200；</li><li>m：分，取值范围 1～720；</li><li>h：小时，取值范围 1～12。</li>
         :type AttesterDuration: str
-        :param _TCRCEOption: TC-RCE 认证的配置信息。
-<li>当 AttesterSource 参数值为 TC-RCE 时，此字段必填。</li>
+        :param _UsageLimit: <p>是否开启认证结果使用限制。 </p><p>枚举值：</p><ul><li>on： 开启</li><li>off： 关闭</li></ul><p>默认值：off</p>
+        :type UsageLimit: str
+        :param _MaxUsageCount: <p>认证结果最大使用次数。当 UsageLimit 为 on 时，此字段必填。</p><p>取值范围：[1, 100000]</p>
+        :type MaxUsageCount: int
+        :param _TCRCEOption: <p>TC-RCE 认证的配置信息。</p><li>当 AttesterSource 参数值为 TC-RCE 时，此字段必填。</li>
         :type TCRCEOption: :class:`tencentcloud.teo.v20220901.models.TCRCEOption`
-        :param _TCCaptchaOption: TC-CAPTCHA 认证的配置信息。
-<li>当 AttesterSource 参数值为 TC-CAPTCHA 时，此字段必填。</li>
+        :param _TCCaptchaOption: <p>TC-CAPTCHA 认证的配置信息。</p><li>当 AttesterSource 参数值为 TC-CAPTCHA 时，此字段必填。</li>
         :type TCCaptchaOption: :class:`tencentcloud.teo.v20220901.models.TCCaptchaOption`
-        :param _TCEOCaptchaOption: TC-EO-CAPTCHA 认证的配置信息。
-<li>当 AttesterSource 参数值为 TC-EO-CAPTCHA 时，此字段必填。</li>
+        :param _TCEOCaptchaOption: <p>TC-EO-CAPTCHA 认证的配置信息。</p><li>当 AttesterSource 参数值为 TC-EO-CAPTCHA 时，此字段必填。</li>
         :type TCEOCaptchaOption: :class:`tencentcloud.teo.v20220901.models.TCEOCaptchaOption`
         """
         self._Id = None
@@ -7828,13 +7821,15 @@ class ClientAttester(AbstractModel):
         self._Type = None
         self._AttesterSource = None
         self._AttesterDuration = None
+        self._UsageLimit = None
+        self._MaxUsageCount = None
         self._TCRCEOption = None
         self._TCCaptchaOption = None
         self._TCEOCaptchaOption = None
 
     @property
     def Id(self):
-        r"""认证选项 ID。
+        r"""<p>认证选项 ID。</p>
         :rtype: str
         """
         return self._Id
@@ -7845,7 +7840,7 @@ class ClientAttester(AbstractModel):
 
     @property
     def Name(self):
-        r"""认证选项名称。
+        r"""<p>认证选项名称。</p>
         :rtype: str
         """
         return self._Name
@@ -7856,9 +7851,7 @@ class ClientAttester(AbstractModel):
 
     @property
     def Type(self):
-        r"""认证规则类型。仅出参返回，取值有：
-<li>PRESET: 系统预置规则，仅允许修改 AttesterDuration；</li>
-<li>CUSTOM: 用户自定义规则。</li>
+        r"""<p>认证规则类型。仅出参返回，取值有：</p><li>PRESET: 系统预置规则，仅允许修改 AttesterDuration；</li><li>CUSTOM: 用户自定义规则。</li>
         :rtype: str
         """
         return self._Type
@@ -7869,10 +7862,7 @@ class ClientAttester(AbstractModel):
 
     @property
     def AttesterSource(self):
-        r"""认证方法。取值有：
-<li>TC-RCE: 使用风险识别 RCE 进行认证；</li>
-<li>TC-CAPTCHA: 使用天御验证码进行认证；</li>
-<li>TC-EO-CAPTCHA: 使用 EdgeOne 人机校验进行认证。</li>
+        r"""<p>认证方法。取值有：</p><li>TC-RCE: 使用风险识别 RCE 进行认证；</li><li>TC-CAPTCHA: 使用天御验证码进行认证；</li><li>TC-EO-CAPTCHA: 使用 EdgeOne 人机校验进行认证。</li>
         :rtype: str
         """
         return self._AttesterSource
@@ -7883,10 +7873,7 @@ class ClientAttester(AbstractModel):
 
     @property
     def AttesterDuration(self):
-        r"""认证有效时间。默认为 60s，支持的单位有：
-<li>s：秒，取值范围 60～43200；</li>
-<li>m：分，取值范围 1～720；</li>
-<li>h：小时，取值范围 1～12。</li>
+        r"""<p>认证有效时间。默认为 60s，支持的单位有：</p><li>s：秒，取值范围 60～43200；</li><li>m：分，取值范围 1～720；</li><li>h：小时，取值范围 1～12。</li>
         :rtype: str
         """
         return self._AttesterDuration
@@ -7896,9 +7883,30 @@ class ClientAttester(AbstractModel):
         self._AttesterDuration = AttesterDuration
 
     @property
+    def UsageLimit(self):
+        r"""<p>是否开启认证结果使用限制。 </p><p>枚举值：</p><ul><li>on： 开启</li><li>off： 关闭</li></ul><p>默认值：off</p>
+        :rtype: str
+        """
+        return self._UsageLimit
+
+    @UsageLimit.setter
+    def UsageLimit(self, UsageLimit):
+        self._UsageLimit = UsageLimit
+
+    @property
+    def MaxUsageCount(self):
+        r"""<p>认证结果最大使用次数。当 UsageLimit 为 on 时，此字段必填。</p><p>取值范围：[1, 100000]</p>
+        :rtype: int
+        """
+        return self._MaxUsageCount
+
+    @MaxUsageCount.setter
+    def MaxUsageCount(self, MaxUsageCount):
+        self._MaxUsageCount = MaxUsageCount
+
+    @property
     def TCRCEOption(self):
-        r"""TC-RCE 认证的配置信息。
-<li>当 AttesterSource 参数值为 TC-RCE 时，此字段必填。</li>
+        r"""<p>TC-RCE 认证的配置信息。</p><li>当 AttesterSource 参数值为 TC-RCE 时，此字段必填。</li>
         :rtype: :class:`tencentcloud.teo.v20220901.models.TCRCEOption`
         """
         return self._TCRCEOption
@@ -7909,8 +7917,7 @@ class ClientAttester(AbstractModel):
 
     @property
     def TCCaptchaOption(self):
-        r"""TC-CAPTCHA 认证的配置信息。
-<li>当 AttesterSource 参数值为 TC-CAPTCHA 时，此字段必填。</li>
+        r"""<p>TC-CAPTCHA 认证的配置信息。</p><li>当 AttesterSource 参数值为 TC-CAPTCHA 时，此字段必填。</li>
         :rtype: :class:`tencentcloud.teo.v20220901.models.TCCaptchaOption`
         """
         return self._TCCaptchaOption
@@ -7921,8 +7928,7 @@ class ClientAttester(AbstractModel):
 
     @property
     def TCEOCaptchaOption(self):
-        r"""TC-EO-CAPTCHA 认证的配置信息。
-<li>当 AttesterSource 参数值为 TC-EO-CAPTCHA 时，此字段必填。</li>
+        r"""<p>TC-EO-CAPTCHA 认证的配置信息。</p><li>当 AttesterSource 参数值为 TC-EO-CAPTCHA 时，此字段必填。</li>
         :rtype: :class:`tencentcloud.teo.v20220901.models.TCEOCaptchaOption`
         """
         return self._TCEOCaptchaOption
@@ -7938,6 +7944,8 @@ class ClientAttester(AbstractModel):
         self._Type = params.get("Type")
         self._AttesterSource = params.get("AttesterSource")
         self._AttesterDuration = params.get("AttesterDuration")
+        self._UsageLimit = params.get("UsageLimit")
+        self._MaxUsageCount = params.get("MaxUsageCount")
         if params.get("TCRCEOption") is not None:
             self._TCRCEOption = TCRCEOption()
             self._TCRCEOption._deserialize(params.get("TCRCEOption"))

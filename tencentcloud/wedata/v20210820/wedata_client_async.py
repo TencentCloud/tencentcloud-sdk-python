@@ -2149,6 +2149,24 @@ class WedataClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeInstancesByExecutors(
+            self,
+            request: models.DescribeInstancesByExecutorsRequest,
+            opts: Dict = None,
+    ) -> models.DescribeInstancesByExecutorsResponse:
+        """
+        按执行资源组查询任务调度与运行实例数量统计
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeInstancesByExecutors"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeInstancesByExecutorsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeIntegrationNode(
             self,
             request: models.DescribeIntegrationNodeRequest,

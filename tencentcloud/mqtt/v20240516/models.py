@@ -4525,6 +4525,180 @@ class DescribeClientListResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeDeviceCertificateBackupHistoryRequest(AbstractModel):
+    r"""DescribeDeviceCertificateBackupHistory请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: <p>腾讯云MQTT实例ID，从 <a href="https://cloud.tencent.com/document/api/1778/111029">DescribeInstanceList</a>接口或控制台获得。</p>
+        :type InstanceId: str
+        :param _Destination: <p>目标集群的集群ID</p>
+        :type Destination: str
+        :param _CaSn: <p>CA证书的SN</p>
+        :type CaSn: str
+        :param _DeviceCertificateSn: <p>设备证书的SN</p>
+        :type DeviceCertificateSn: str
+        :param _ModificationTimeStart: <p>同步发生开始时间（毫秒级时间戳）</p>
+        :type ModificationTimeStart: int
+        :param _ModificationTimeEnd: <p>同步结束时间（毫秒级时间戳）</p>
+        :type ModificationTimeEnd: int
+        :param _Limit: <p>查询条数，默认20，最大1024</p>
+        :type Limit: int
+        """
+        self._InstanceId = None
+        self._Destination = None
+        self._CaSn = None
+        self._DeviceCertificateSn = None
+        self._ModificationTimeStart = None
+        self._ModificationTimeEnd = None
+        self._Limit = None
+
+    @property
+    def InstanceId(self):
+        r"""<p>腾讯云MQTT实例ID，从 <a href="https://cloud.tencent.com/document/api/1778/111029">DescribeInstanceList</a>接口或控制台获得。</p>
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Destination(self):
+        r"""<p>目标集群的集群ID</p>
+        :rtype: str
+        """
+        return self._Destination
+
+    @Destination.setter
+    def Destination(self, Destination):
+        self._Destination = Destination
+
+    @property
+    def CaSn(self):
+        r"""<p>CA证书的SN</p>
+        :rtype: str
+        """
+        return self._CaSn
+
+    @CaSn.setter
+    def CaSn(self, CaSn):
+        self._CaSn = CaSn
+
+    @property
+    def DeviceCertificateSn(self):
+        r"""<p>设备证书的SN</p>
+        :rtype: str
+        """
+        return self._DeviceCertificateSn
+
+    @DeviceCertificateSn.setter
+    def DeviceCertificateSn(self, DeviceCertificateSn):
+        self._DeviceCertificateSn = DeviceCertificateSn
+
+    @property
+    def ModificationTimeStart(self):
+        r"""<p>同步发生开始时间（毫秒级时间戳）</p>
+        :rtype: int
+        """
+        return self._ModificationTimeStart
+
+    @ModificationTimeStart.setter
+    def ModificationTimeStart(self, ModificationTimeStart):
+        self._ModificationTimeStart = ModificationTimeStart
+
+    @property
+    def ModificationTimeEnd(self):
+        r"""<p>同步结束时间（毫秒级时间戳）</p>
+        :rtype: int
+        """
+        return self._ModificationTimeEnd
+
+    @ModificationTimeEnd.setter
+    def ModificationTimeEnd(self, ModificationTimeEnd):
+        self._ModificationTimeEnd = ModificationTimeEnd
+
+    @property
+    def Limit(self):
+        r"""<p>查询条数，默认20，最大1024</p>
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._Destination = params.get("Destination")
+        self._CaSn = params.get("CaSn")
+        self._DeviceCertificateSn = params.get("DeviceCertificateSn")
+        self._ModificationTimeStart = params.get("ModificationTimeStart")
+        self._ModificationTimeEnd = params.get("ModificationTimeEnd")
+        self._Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDeviceCertificateBackupHistoryResponse(AbstractModel):
+    r"""DescribeDeviceCertificateBackupHistory返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: <p>设备证书列表</p>
+        :type Data: list of DeviceCertificateBackupHistoryItem
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""<p>设备证书列表</p>
+        :rtype: list of DeviceCertificateBackupHistoryItem
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = []
+            for item in params.get("Data"):
+                obj = DeviceCertificateBackupHistoryItem()
+                obj._deserialize(item)
+                self._Data.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeDeviceCertificateRequest(AbstractModel):
     r"""DescribeDeviceCertificate请求参数结构体
 
@@ -5140,6 +5314,165 @@ class DescribeDeviceIdentitiesResponse(AbstractModel):
             self._Data = []
             for item in params.get("Data"):
                 obj = DeviceIdentityItem()
+                obj._deserialize(item)
+                self._Data.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeDeviceIdentityBackupHistoryRequest(AbstractModel):
+    r"""DescribeDeviceIdentityBackupHistory请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: <p>集群id</p>
+        :type InstanceId: str
+        :param _Destination: <p>灾备集群的集群ID</p>
+        :type Destination: str
+        :param _DeviceId: <p>设备ID</p>
+        :type DeviceId: str
+        :param _ModificationTimeStart: <p>同步发生的开始时间</p>
+        :type ModificationTimeStart: int
+        :param _ModificationTimeEnd: <p>同步发生的结束时间</p>
+        :type ModificationTimeEnd: int
+        :param _Limit: <p>查询条数</p>
+        :type Limit: int
+        """
+        self._InstanceId = None
+        self._Destination = None
+        self._DeviceId = None
+        self._ModificationTimeStart = None
+        self._ModificationTimeEnd = None
+        self._Limit = None
+
+    @property
+    def InstanceId(self):
+        r"""<p>集群id</p>
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Destination(self):
+        r"""<p>灾备集群的集群ID</p>
+        :rtype: str
+        """
+        return self._Destination
+
+    @Destination.setter
+    def Destination(self, Destination):
+        self._Destination = Destination
+
+    @property
+    def DeviceId(self):
+        r"""<p>设备ID</p>
+        :rtype: str
+        """
+        return self._DeviceId
+
+    @DeviceId.setter
+    def DeviceId(self, DeviceId):
+        self._DeviceId = DeviceId
+
+    @property
+    def ModificationTimeStart(self):
+        r"""<p>同步发生的开始时间</p>
+        :rtype: int
+        """
+        return self._ModificationTimeStart
+
+    @ModificationTimeStart.setter
+    def ModificationTimeStart(self, ModificationTimeStart):
+        self._ModificationTimeStart = ModificationTimeStart
+
+    @property
+    def ModificationTimeEnd(self):
+        r"""<p>同步发生的结束时间</p>
+        :rtype: int
+        """
+        return self._ModificationTimeEnd
+
+    @ModificationTimeEnd.setter
+    def ModificationTimeEnd(self, ModificationTimeEnd):
+        self._ModificationTimeEnd = ModificationTimeEnd
+
+    @property
+    def Limit(self):
+        r"""<p>查询条数</p>
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._Destination = params.get("Destination")
+        self._DeviceId = params.get("DeviceId")
+        self._ModificationTimeStart = params.get("ModificationTimeStart")
+        self._ModificationTimeEnd = params.get("ModificationTimeEnd")
+        self._Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDeviceIdentityBackupHistoryResponse(AbstractModel):
+    r"""DescribeDeviceIdentityBackupHistory返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: <p>返回的设备标识列表</p>
+        :type Data: list of DeviceIdentityBackupHistoryItem
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""<p>返回的设备标识列表</p>
+        :rtype: list of DeviceIdentityBackupHistoryItem
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = []
+            for item in params.get("Data"):
+                obj = DeviceIdentityBackupHistoryItem()
                 obj._deserialize(item)
                 self._Data.append(obj)
         self._RequestId = params.get("RequestId")
@@ -8202,6 +8535,546 @@ class DescribeUserListResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeWillMessageRequest(AbstractModel):
+    r"""DescribeWillMessage请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: <p>实例ID，从 <a href="https://cloud.tencent.com/document/api/1778/111029">DescribeInstanceList</a>接口或控制台获得。</p>
+        :type InstanceId: str
+        :param _ClientId: <p>客户端id</p>
+        :type ClientId: str
+        """
+        self._InstanceId = None
+        self._ClientId = None
+
+    @property
+    def InstanceId(self):
+        r"""<p>实例ID，从 <a href="https://cloud.tencent.com/document/api/1778/111029">DescribeInstanceList</a>接口或控制台获得。</p>
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def ClientId(self):
+        r"""<p>客户端id</p>
+        :rtype: str
+        """
+        return self._ClientId
+
+    @ClientId.setter
+    def ClientId(self, ClientId):
+        self._ClientId = ClientId
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._ClientId = params.get("ClientId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeWillMessageResponse(AbstractModel):
+    r"""DescribeWillMessage返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Topic: <p>保留消息Topic</p>
+        :type Topic: str
+        :param _Qos: <p>消息服务质量</p>
+        :type Qos: int
+        :param _Retained: <p>是否保留消息</p>
+        :type Retained: bool
+        :param _Payload: <p>消息负载(Base64编码)</p>
+        :type Payload: str
+        :param _CreateTime: <p>创建时间，毫秒级时间戳 。</p>
+        :type CreateTime: int
+        :param _UpdateTime: <p>更新时间，毫秒级时间戳 。</p>
+        :type UpdateTime: int
+        :param _WillDelayInterval: <p>遗嘱消息延迟时间，单位秒</p>
+        :type WillDelayInterval: int
+        :param _ContentType: <p>响应内容类型</p>
+        :type ContentType: str
+        :param _ResponseTopic: <p>响应主题</p>
+        :type ResponseTopic: str
+        :param _CorrelationData: <p>关联数据（Base64编码）</p>
+        :type CorrelationData: str
+        :param _MessageExpiryInterval: <p>消息过期时间，单位秒</p>
+        :type MessageExpiryInterval: int
+        :param _PayloadFormatIndicator: <p>负载格式指示器 1:UTF-8文本</p>
+        :type PayloadFormatIndicator: int
+        :param _UserProperties: <p>用户属性</p>
+        :type UserProperties: list of UserProperty
+        :param _PublishAfter: <p>遗嘱消息发布时间</p>
+        :type PublishAfter: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Topic = None
+        self._Qos = None
+        self._Retained = None
+        self._Payload = None
+        self._CreateTime = None
+        self._UpdateTime = None
+        self._WillDelayInterval = None
+        self._ContentType = None
+        self._ResponseTopic = None
+        self._CorrelationData = None
+        self._MessageExpiryInterval = None
+        self._PayloadFormatIndicator = None
+        self._UserProperties = None
+        self._PublishAfter = None
+        self._RequestId = None
+
+    @property
+    def Topic(self):
+        r"""<p>保留消息Topic</p>
+        :rtype: str
+        """
+        return self._Topic
+
+    @Topic.setter
+    def Topic(self, Topic):
+        self._Topic = Topic
+
+    @property
+    def Qos(self):
+        r"""<p>消息服务质量</p>
+        :rtype: int
+        """
+        return self._Qos
+
+    @Qos.setter
+    def Qos(self, Qos):
+        self._Qos = Qos
+
+    @property
+    def Retained(self):
+        r"""<p>是否保留消息</p>
+        :rtype: bool
+        """
+        return self._Retained
+
+    @Retained.setter
+    def Retained(self, Retained):
+        self._Retained = Retained
+
+    @property
+    def Payload(self):
+        r"""<p>消息负载(Base64编码)</p>
+        :rtype: str
+        """
+        return self._Payload
+
+    @Payload.setter
+    def Payload(self, Payload):
+        self._Payload = Payload
+
+    @property
+    def CreateTime(self):
+        r"""<p>创建时间，毫秒级时间戳 。</p>
+        :rtype: int
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        r"""<p>更新时间，毫秒级时间戳 。</p>
+        :rtype: int
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def WillDelayInterval(self):
+        r"""<p>遗嘱消息延迟时间，单位秒</p>
+        :rtype: int
+        """
+        return self._WillDelayInterval
+
+    @WillDelayInterval.setter
+    def WillDelayInterval(self, WillDelayInterval):
+        self._WillDelayInterval = WillDelayInterval
+
+    @property
+    def ContentType(self):
+        r"""<p>响应内容类型</p>
+        :rtype: str
+        """
+        return self._ContentType
+
+    @ContentType.setter
+    def ContentType(self, ContentType):
+        self._ContentType = ContentType
+
+    @property
+    def ResponseTopic(self):
+        r"""<p>响应主题</p>
+        :rtype: str
+        """
+        return self._ResponseTopic
+
+    @ResponseTopic.setter
+    def ResponseTopic(self, ResponseTopic):
+        self._ResponseTopic = ResponseTopic
+
+    @property
+    def CorrelationData(self):
+        r"""<p>关联数据（Base64编码）</p>
+        :rtype: str
+        """
+        return self._CorrelationData
+
+    @CorrelationData.setter
+    def CorrelationData(self, CorrelationData):
+        self._CorrelationData = CorrelationData
+
+    @property
+    def MessageExpiryInterval(self):
+        r"""<p>消息过期时间，单位秒</p>
+        :rtype: int
+        """
+        return self._MessageExpiryInterval
+
+    @MessageExpiryInterval.setter
+    def MessageExpiryInterval(self, MessageExpiryInterval):
+        self._MessageExpiryInterval = MessageExpiryInterval
+
+    @property
+    def PayloadFormatIndicator(self):
+        r"""<p>负载格式指示器 1:UTF-8文本</p>
+        :rtype: int
+        """
+        return self._PayloadFormatIndicator
+
+    @PayloadFormatIndicator.setter
+    def PayloadFormatIndicator(self, PayloadFormatIndicator):
+        self._PayloadFormatIndicator = PayloadFormatIndicator
+
+    @property
+    def UserProperties(self):
+        r"""<p>用户属性</p>
+        :rtype: list of UserProperty
+        """
+        return self._UserProperties
+
+    @UserProperties.setter
+    def UserProperties(self, UserProperties):
+        self._UserProperties = UserProperties
+
+    @property
+    def PublishAfter(self):
+        r"""<p>遗嘱消息发布时间</p>
+        :rtype: int
+        """
+        return self._PublishAfter
+
+    @PublishAfter.setter
+    def PublishAfter(self, PublishAfter):
+        self._PublishAfter = PublishAfter
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Topic = params.get("Topic")
+        self._Qos = params.get("Qos")
+        self._Retained = params.get("Retained")
+        self._Payload = params.get("Payload")
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
+        self._WillDelayInterval = params.get("WillDelayInterval")
+        self._ContentType = params.get("ContentType")
+        self._ResponseTopic = params.get("ResponseTopic")
+        self._CorrelationData = params.get("CorrelationData")
+        self._MessageExpiryInterval = params.get("MessageExpiryInterval")
+        self._PayloadFormatIndicator = params.get("PayloadFormatIndicator")
+        if params.get("UserProperties") is not None:
+            self._UserProperties = []
+            for item in params.get("UserProperties"):
+                obj = UserProperty()
+                obj._deserialize(item)
+                self._UserProperties.append(obj)
+        self._PublishAfter = params.get("PublishAfter")
+        self._RequestId = params.get("RequestId")
+
+
+class DeviceCertificateBackupHistoryItem(AbstractModel):
+    r"""设备证书信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClientId: <p>客户端id</p>
+        :type ClientId: str
+        :param _DeviceCertificate: <p>设备证书</p>
+        :type DeviceCertificate: str
+        :param _DeviceCertificateSn: <p>设备证书SN序列号，用于唯一标识一个设备证书</p>
+        :type DeviceCertificateSn: str
+        :param _DeviceCertificateCn: <p>设备证书Cn</p>
+        :type DeviceCertificateCn: str
+        :param _CaSn: <p>签发该证书的CA证书的序列号</p>
+        :type CaSn: str
+        :param _Format: <p>证书格式，当前仅支持PEM</p>
+        :type Format: str
+        :param _Status: <p>设备证书状态<br>    ACTIVE：激活<br>    INACTIVE：未激活<br>    REVOKED：吊销<br>    PENDING_ACTIVATION：注册待激活</p>
+        :type Status: str
+        :param _OrganizationalUnit: <p>组织单位</p>
+        :type OrganizationalUnit: str
+        :param _LastActivationTime: <p>上次激活时间，毫秒级时间戳 。</p>
+        :type LastActivationTime: int
+        :param _LastInactivationTime: <p>上次取消激活时间，毫秒级时间戳 。</p>
+        :type LastInactivationTime: int
+        :param _CertificateSource: <p>证书来源：<br>API, 手动注册<br>JITP 自动注册</p>
+        :type CertificateSource: str
+        :param _NotAfterTime: <p>证书失效日期，毫秒级时间戳 。</p>
+        :type NotAfterTime: int
+        :param _NotBeforeTime: <p>证书生效开始日期，毫秒级时间戳 。</p>
+        :type NotBeforeTime: int
+        :param _Source: <p>数据来源</p>
+        :type Source: str
+        :param _ModificationTime: <p>修改时间</p><p>单位：毫秒级时间戳</p>
+        :type ModificationTime: int
+        """
+        self._ClientId = None
+        self._DeviceCertificate = None
+        self._DeviceCertificateSn = None
+        self._DeviceCertificateCn = None
+        self._CaSn = None
+        self._Format = None
+        self._Status = None
+        self._OrganizationalUnit = None
+        self._LastActivationTime = None
+        self._LastInactivationTime = None
+        self._CertificateSource = None
+        self._NotAfterTime = None
+        self._NotBeforeTime = None
+        self._Source = None
+        self._ModificationTime = None
+
+    @property
+    def ClientId(self):
+        r"""<p>客户端id</p>
+        :rtype: str
+        """
+        return self._ClientId
+
+    @ClientId.setter
+    def ClientId(self, ClientId):
+        self._ClientId = ClientId
+
+    @property
+    def DeviceCertificate(self):
+        r"""<p>设备证书</p>
+        :rtype: str
+        """
+        return self._DeviceCertificate
+
+    @DeviceCertificate.setter
+    def DeviceCertificate(self, DeviceCertificate):
+        self._DeviceCertificate = DeviceCertificate
+
+    @property
+    def DeviceCertificateSn(self):
+        r"""<p>设备证书SN序列号，用于唯一标识一个设备证书</p>
+        :rtype: str
+        """
+        return self._DeviceCertificateSn
+
+    @DeviceCertificateSn.setter
+    def DeviceCertificateSn(self, DeviceCertificateSn):
+        self._DeviceCertificateSn = DeviceCertificateSn
+
+    @property
+    def DeviceCertificateCn(self):
+        r"""<p>设备证书Cn</p>
+        :rtype: str
+        """
+        return self._DeviceCertificateCn
+
+    @DeviceCertificateCn.setter
+    def DeviceCertificateCn(self, DeviceCertificateCn):
+        self._DeviceCertificateCn = DeviceCertificateCn
+
+    @property
+    def CaSn(self):
+        r"""<p>签发该证书的CA证书的序列号</p>
+        :rtype: str
+        """
+        return self._CaSn
+
+    @CaSn.setter
+    def CaSn(self, CaSn):
+        self._CaSn = CaSn
+
+    @property
+    def Format(self):
+        r"""<p>证书格式，当前仅支持PEM</p>
+        :rtype: str
+        """
+        return self._Format
+
+    @Format.setter
+    def Format(self, Format):
+        self._Format = Format
+
+    @property
+    def Status(self):
+        r"""<p>设备证书状态<br>    ACTIVE：激活<br>    INACTIVE：未激活<br>    REVOKED：吊销<br>    PENDING_ACTIVATION：注册待激活</p>
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def OrganizationalUnit(self):
+        r"""<p>组织单位</p>
+        :rtype: str
+        """
+        return self._OrganizationalUnit
+
+    @OrganizationalUnit.setter
+    def OrganizationalUnit(self, OrganizationalUnit):
+        self._OrganizationalUnit = OrganizationalUnit
+
+    @property
+    def LastActivationTime(self):
+        r"""<p>上次激活时间，毫秒级时间戳 。</p>
+        :rtype: int
+        """
+        return self._LastActivationTime
+
+    @LastActivationTime.setter
+    def LastActivationTime(self, LastActivationTime):
+        self._LastActivationTime = LastActivationTime
+
+    @property
+    def LastInactivationTime(self):
+        r"""<p>上次取消激活时间，毫秒级时间戳 。</p>
+        :rtype: int
+        """
+        return self._LastInactivationTime
+
+    @LastInactivationTime.setter
+    def LastInactivationTime(self, LastInactivationTime):
+        self._LastInactivationTime = LastInactivationTime
+
+    @property
+    def CertificateSource(self):
+        r"""<p>证书来源：<br>API, 手动注册<br>JITP 自动注册</p>
+        :rtype: str
+        """
+        return self._CertificateSource
+
+    @CertificateSource.setter
+    def CertificateSource(self, CertificateSource):
+        self._CertificateSource = CertificateSource
+
+    @property
+    def NotAfterTime(self):
+        r"""<p>证书失效日期，毫秒级时间戳 。</p>
+        :rtype: int
+        """
+        return self._NotAfterTime
+
+    @NotAfterTime.setter
+    def NotAfterTime(self, NotAfterTime):
+        self._NotAfterTime = NotAfterTime
+
+    @property
+    def NotBeforeTime(self):
+        r"""<p>证书生效开始日期，毫秒级时间戳 。</p>
+        :rtype: int
+        """
+        return self._NotBeforeTime
+
+    @NotBeforeTime.setter
+    def NotBeforeTime(self, NotBeforeTime):
+        self._NotBeforeTime = NotBeforeTime
+
+    @property
+    def Source(self):
+        r"""<p>数据来源</p>
+        :rtype: str
+        """
+        return self._Source
+
+    @Source.setter
+    def Source(self, Source):
+        self._Source = Source
+
+    @property
+    def ModificationTime(self):
+        r"""<p>修改时间</p><p>单位：毫秒级时间戳</p>
+        :rtype: int
+        """
+        return self._ModificationTime
+
+    @ModificationTime.setter
+    def ModificationTime(self, ModificationTime):
+        self._ModificationTime = ModificationTime
+
+
+    def _deserialize(self, params):
+        self._ClientId = params.get("ClientId")
+        self._DeviceCertificate = params.get("DeviceCertificate")
+        self._DeviceCertificateSn = params.get("DeviceCertificateSn")
+        self._DeviceCertificateCn = params.get("DeviceCertificateCn")
+        self._CaSn = params.get("CaSn")
+        self._Format = params.get("Format")
+        self._Status = params.get("Status")
+        self._OrganizationalUnit = params.get("OrganizationalUnit")
+        self._LastActivationTime = params.get("LastActivationTime")
+        self._LastInactivationTime = params.get("LastInactivationTime")
+        self._CertificateSource = params.get("CertificateSource")
+        self._NotAfterTime = params.get("NotAfterTime")
+        self._NotBeforeTime = params.get("NotBeforeTime")
+        self._Source = params.get("Source")
+        self._ModificationTime = params.get("ModificationTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DeviceCertificateItem(AbstractModel):
     r"""设备证书信息
 
@@ -8450,6 +9323,137 @@ JITP 自动注册
         self._CertificateSource = params.get("CertificateSource")
         self._NotAfterTime = params.get("NotAfterTime")
         self._NotBeforeTime = params.get("NotBeforeTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeviceIdentityBackupHistoryItem(AbstractModel):
+    r"""设备标识列表
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DeviceId: <p>设备id</p>
+        :type DeviceId: str
+        :param _Status: <p>1:ENABLED-可用2:DISABLE-不可用</p>
+        :type Status: int
+        :param _PrimaryKey: <p>主要签名key（Base64编码）</p>
+        :type PrimaryKey: str
+        :param _SecondaryKey: <p>次要签名key（Base64编码）</p>
+        :type SecondaryKey: str
+        :param _PropagatingProperties: <p>传播属性列表</p>
+        :type PropagatingProperties: list of PropagatingProperty
+        :param _Source: <p>数据来源</p>
+        :type Source: str
+        :param _ModificationTime: <p>修改时间</p><p>单位：毫秒级时间戳</p>
+        :type ModificationTime: int
+        """
+        self._DeviceId = None
+        self._Status = None
+        self._PrimaryKey = None
+        self._SecondaryKey = None
+        self._PropagatingProperties = None
+        self._Source = None
+        self._ModificationTime = None
+
+    @property
+    def DeviceId(self):
+        r"""<p>设备id</p>
+        :rtype: str
+        """
+        return self._DeviceId
+
+    @DeviceId.setter
+    def DeviceId(self, DeviceId):
+        self._DeviceId = DeviceId
+
+    @property
+    def Status(self):
+        r"""<p>1:ENABLED-可用2:DISABLE-不可用</p>
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def PrimaryKey(self):
+        r"""<p>主要签名key（Base64编码）</p>
+        :rtype: str
+        """
+        return self._PrimaryKey
+
+    @PrimaryKey.setter
+    def PrimaryKey(self, PrimaryKey):
+        self._PrimaryKey = PrimaryKey
+
+    @property
+    def SecondaryKey(self):
+        r"""<p>次要签名key（Base64编码）</p>
+        :rtype: str
+        """
+        return self._SecondaryKey
+
+    @SecondaryKey.setter
+    def SecondaryKey(self, SecondaryKey):
+        self._SecondaryKey = SecondaryKey
+
+    @property
+    def PropagatingProperties(self):
+        r"""<p>传播属性列表</p>
+        :rtype: list of PropagatingProperty
+        """
+        return self._PropagatingProperties
+
+    @PropagatingProperties.setter
+    def PropagatingProperties(self, PropagatingProperties):
+        self._PropagatingProperties = PropagatingProperties
+
+    @property
+    def Source(self):
+        r"""<p>数据来源</p>
+        :rtype: str
+        """
+        return self._Source
+
+    @Source.setter
+    def Source(self, Source):
+        self._Source = Source
+
+    @property
+    def ModificationTime(self):
+        r"""<p>修改时间</p><p>单位：毫秒级时间戳</p>
+        :rtype: int
+        """
+        return self._ModificationTime
+
+    @ModificationTime.setter
+    def ModificationTime(self, ModificationTime):
+        self._ModificationTime = ModificationTime
+
+
+    def _deserialize(self, params):
+        self._DeviceId = params.get("DeviceId")
+        self._Status = params.get("Status")
+        self._PrimaryKey = params.get("PrimaryKey")
+        self._SecondaryKey = params.get("SecondaryKey")
+        if params.get("PropagatingProperties") is not None:
+            self._PropagatingProperties = []
+            for item in params.get("PropagatingProperties"):
+                obj = PropagatingProperty()
+                obj._deserialize(item)
+                self._PropagatingProperties.append(obj)
+        self._Source = params.get("Source")
+        self._ModificationTime = params.get("ModificationTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

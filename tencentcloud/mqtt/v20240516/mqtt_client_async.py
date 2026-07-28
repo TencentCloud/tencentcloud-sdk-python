@@ -619,6 +619,24 @@ class MqttClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeDeviceCertificateBackupHistory(
+            self,
+            request: models.DescribeDeviceCertificateBackupHistoryRequest,
+            opts: Dict = None,
+    ) -> models.DescribeDeviceCertificateBackupHistoryResponse:
+        """
+        跨集群灾备场景下查询设备证书同步记录
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeDeviceCertificateBackupHistory"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeDeviceCertificateBackupHistoryResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeDeviceCertificates(
             self,
             request: models.DescribeDeviceCertificatesRequest,
@@ -668,6 +686,24 @@ class MqttClient(AbstractClient):
         kwargs["action"] = "DescribeDeviceIdentity"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeDeviceIdentityResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeDeviceIdentityBackupHistory(
+            self,
+            request: models.DescribeDeviceIdentityBackupHistoryRequest,
+            opts: Dict = None,
+    ) -> models.DescribeDeviceIdentityBackupHistoryResponse:
+        """
+        跨集群容灾场景下查询设备标识同步记录
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeDeviceIdentityBackupHistory"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeDeviceIdentityBackupHistoryResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -984,6 +1020,24 @@ class MqttClient(AbstractClient):
         kwargs["action"] = "DescribeUserList"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeUserListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeWillMessage(
+            self,
+            request: models.DescribeWillMessageRequest,
+            opts: Dict = None,
+    ) -> models.DescribeWillMessageResponse:
+        """
+        遗嘱消息查询
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeWillMessage"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeWillMessageResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

@@ -18064,26 +18064,28 @@ class CreateMalwareWhiteListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Mode: 白名单模式； 0 MD5白名单，1自定义
+        :param _Mode: <p>白名单模式； 0 MD5白名单，1自定义</p>
         :type Mode: int
-        :param _QuuidList: quuid 列表
+        :param _QuuidList: <p>quuid 列表</p>
         :type QuuidList: list of str
-        :param _IsGlobal: 是否全部主机； 0否，1是。
+        :param _IsGlobal: <p>是否全部主机； 0否，1是。</p>
         :type IsGlobal: int
-        :param _MatchType: 匹配模式 ；0 精确匹配，1模糊匹配（废弃）
+        :param _MatchType: <p>匹配模式 ；0 精确匹配，1模糊匹配（废弃）</p>
         :type MatchType: int
-        :param _FileName: 文件名称(正则)；长度不超过200个
+        :param _FileName: <p>文件名称(正则)；长度不超过200个</p>
         :type FileName: list of str
-        :param _FileDirectory: 文件目录(正则)；长度不超过200个,内容base64转义
+        :param _FileDirectory: <p>文件目录(正则)；长度不超过200个,内容base64转义</p>
         :type FileDirectory: list of str
-        :param _FileExtension: 文件后缀；长度不超过200个,内容base64转义（废弃）
+        :param _FileExtension: <p>文件后缀；长度不超过200个,内容base64转义（废弃）</p>
         :type FileExtension: list of str
-        :param _Md5List: MD5列表
+        :param _Md5List: <p>MD5列表</p>
         :type Md5List: list of str
-        :param _EventId: 木马事件ID
+        :param _EventId: <p>木马事件ID</p>
         :type EventId: int
-        :param _IsHandleHistoryEvents: 对历史待处理执行加白操作；0是不处理，1是处理
+        :param _IsHandleHistoryEvents: <p>对历史待处理执行加白操作；0是不处理，1是处理</p>
         :type IsHandleHistoryEvents: int
+        :param _ProcessEventID: <p>恶意进程告警id</p>
+        :type ProcessEventID: int
         """
         self._Mode = None
         self._QuuidList = None
@@ -18095,10 +18097,11 @@ class CreateMalwareWhiteListRequest(AbstractModel):
         self._Md5List = None
         self._EventId = None
         self._IsHandleHistoryEvents = None
+        self._ProcessEventID = None
 
     @property
     def Mode(self):
-        r"""白名单模式； 0 MD5白名单，1自定义
+        r"""<p>白名单模式； 0 MD5白名单，1自定义</p>
         :rtype: int
         """
         return self._Mode
@@ -18109,7 +18112,7 @@ class CreateMalwareWhiteListRequest(AbstractModel):
 
     @property
     def QuuidList(self):
-        r"""quuid 列表
+        r"""<p>quuid 列表</p>
         :rtype: list of str
         """
         return self._QuuidList
@@ -18120,7 +18123,7 @@ class CreateMalwareWhiteListRequest(AbstractModel):
 
     @property
     def IsGlobal(self):
-        r"""是否全部主机； 0否，1是。
+        r"""<p>是否全部主机； 0否，1是。</p>
         :rtype: int
         """
         return self._IsGlobal
@@ -18131,7 +18134,7 @@ class CreateMalwareWhiteListRequest(AbstractModel):
 
     @property
     def MatchType(self):
-        r"""匹配模式 ；0 精确匹配，1模糊匹配（废弃）
+        r"""<p>匹配模式 ；0 精确匹配，1模糊匹配（废弃）</p>
         :rtype: int
         """
         return self._MatchType
@@ -18142,7 +18145,7 @@ class CreateMalwareWhiteListRequest(AbstractModel):
 
     @property
     def FileName(self):
-        r"""文件名称(正则)；长度不超过200个
+        r"""<p>文件名称(正则)；长度不超过200个</p>
         :rtype: list of str
         """
         return self._FileName
@@ -18153,7 +18156,7 @@ class CreateMalwareWhiteListRequest(AbstractModel):
 
     @property
     def FileDirectory(self):
-        r"""文件目录(正则)；长度不超过200个,内容base64转义
+        r"""<p>文件目录(正则)；长度不超过200个,内容base64转义</p>
         :rtype: list of str
         """
         return self._FileDirectory
@@ -18164,7 +18167,7 @@ class CreateMalwareWhiteListRequest(AbstractModel):
 
     @property
     def FileExtension(self):
-        r"""文件后缀；长度不超过200个,内容base64转义（废弃）
+        r"""<p>文件后缀；长度不超过200个,内容base64转义（废弃）</p>
         :rtype: list of str
         """
         return self._FileExtension
@@ -18175,7 +18178,7 @@ class CreateMalwareWhiteListRequest(AbstractModel):
 
     @property
     def Md5List(self):
-        r"""MD5列表
+        r"""<p>MD5列表</p>
         :rtype: list of str
         """
         return self._Md5List
@@ -18186,7 +18189,7 @@ class CreateMalwareWhiteListRequest(AbstractModel):
 
     @property
     def EventId(self):
-        r"""木马事件ID
+        r"""<p>木马事件ID</p>
         :rtype: int
         """
         return self._EventId
@@ -18197,7 +18200,7 @@ class CreateMalwareWhiteListRequest(AbstractModel):
 
     @property
     def IsHandleHistoryEvents(self):
-        r"""对历史待处理执行加白操作；0是不处理，1是处理
+        r"""<p>对历史待处理执行加白操作；0是不处理，1是处理</p>
         :rtype: int
         """
         return self._IsHandleHistoryEvents
@@ -18205,6 +18208,17 @@ class CreateMalwareWhiteListRequest(AbstractModel):
     @IsHandleHistoryEvents.setter
     def IsHandleHistoryEvents(self, IsHandleHistoryEvents):
         self._IsHandleHistoryEvents = IsHandleHistoryEvents
+
+    @property
+    def ProcessEventID(self):
+        r"""<p>恶意进程告警id</p>
+        :rtype: int
+        """
+        return self._ProcessEventID
+
+    @ProcessEventID.setter
+    def ProcessEventID(self, ProcessEventID):
+        self._ProcessEventID = ProcessEventID
 
 
     def _deserialize(self, params):
@@ -18218,6 +18232,7 @@ class CreateMalwareWhiteListRequest(AbstractModel):
         self._Md5List = params.get("Md5List")
         self._EventId = params.get("EventId")
         self._IsHandleHistoryEvents = params.get("IsHandleHistoryEvents")
+        self._ProcessEventID = params.get("ProcessEventID")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -103691,46 +103706,50 @@ class RiskProcessEvent(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _EventId: 事件ID
+        :param _EventId: <p>事件ID</p>
         :type EventId: int
-        :param _HostName: 主机名称
+        :param _HostName: <p>主机名称</p>
         :type HostName: str
-        :param _HostIp: 主机IP
+        :param _HostIp: <p>主机IP</p>
         :type HostIp: str
-        :param _WanIp: 外网IP
+        :param _WanIp: <p>外网IP</p>
         :type WanIp: str
-        :param _ProcessId: 进程ID
+        :param _ProcessId: <p>进程ID</p>
         :type ProcessId: int
-        :param _FilePath: 文件路径
+        :param _FilePath: <p>文件路径</p>
         :type FilePath: str
-        :param _CmdLine: 执行命令
+        :param _CmdLine: <p>执行命令</p>
         :type CmdLine: str
-        :param _StartTime: 进程启动时间
+        :param _StartTime: <p>进程启动时间</p>
         :type StartTime: str
-        :param _DetectTime: 最近检测时间
+        :param _DetectTime: <p>最近检测时间</p>
         :type DetectTime: str
-        :param _VirusName: 病毒名称
+        :param _VirusName: <p>病毒名称</p>
         :type VirusName: str
-        :param _CheckPlatform: 木马检测平台 [1:云查杀引擎|2:TAV|3:binaryAi|4:异常行为|5:威胁情报]
+        :param _CheckPlatform: <p>木马检测平台 [1:云查杀引擎|2:TAV|3:binaryAi|4:异常行为|5:威胁情报]</p>
         :type CheckPlatform: list of str
-        :param _VirusTags: 病毒标签
+        :param _VirusTags: <p>病毒标签</p>
         :type VirusTags: list of str
-        :param _ThreatDesc: 威胁描述
+        :param _ThreatDesc: <p>威胁描述</p>
         :type ThreatDesc: str
-        :param _SuggestSolution: 建议方案
+        :param _SuggestSolution: <p>建议方案</p>
         :type SuggestSolution: str
-        :param _ReferenceLink: 参考链接
+        :param _ReferenceLink: <p>参考链接</p>
         :type ReferenceLink: str
-        :param _HandleStatus: 处理状态[0待处理;1已处理;2查杀中;3已查杀;4已退出;5忽略]
+        :param _HandleStatus: <p>处理状态[0待处理;1已处理;2查杀中;3已查杀;4已退出;5忽略]</p>
         :type HandleStatus: int
-        :param _OnlineStatus: 主机在线状态
+        :param _OnlineStatus: <p>主机在线状态</p>
         :type OnlineStatus: int
-        :param _MachineExtraInfo: 附加信息
+        :param _MachineExtraInfo: <p>附加信息</p>
         :type MachineExtraInfo: :class:`tencentcloud.cwp.v20180228.models.MachineExtraInfo`
-        :param _Uuid: 主机uuid
+        :param _Uuid: <p>主机uuid</p>
         :type Uuid: str
-        :param _FirstDetectionMethod: 首次检出方式 0扫描;1实时监控
+        :param _FirstDetectionMethod: <p>首次检出方式 0扫描;1实时监控</p>
         :type FirstDetectionMethod: int
+        :param _QUUID: <p>quuid</p>
+        :type QUUID: str
+        :param _ExeMd5: <p>进程md5</p>
+        :type ExeMd5: str
         """
         self._EventId = None
         self._HostName = None
@@ -103752,10 +103771,12 @@ class RiskProcessEvent(AbstractModel):
         self._MachineExtraInfo = None
         self._Uuid = None
         self._FirstDetectionMethod = None
+        self._QUUID = None
+        self._ExeMd5 = None
 
     @property
     def EventId(self):
-        r"""事件ID
+        r"""<p>事件ID</p>
         :rtype: int
         """
         return self._EventId
@@ -103766,7 +103787,7 @@ class RiskProcessEvent(AbstractModel):
 
     @property
     def HostName(self):
-        r"""主机名称
+        r"""<p>主机名称</p>
         :rtype: str
         """
         return self._HostName
@@ -103777,7 +103798,7 @@ class RiskProcessEvent(AbstractModel):
 
     @property
     def HostIp(self):
-        r"""主机IP
+        r"""<p>主机IP</p>
         :rtype: str
         """
         return self._HostIp
@@ -103788,7 +103809,7 @@ class RiskProcessEvent(AbstractModel):
 
     @property
     def WanIp(self):
-        r"""外网IP
+        r"""<p>外网IP</p>
         :rtype: str
         """
         return self._WanIp
@@ -103799,7 +103820,7 @@ class RiskProcessEvent(AbstractModel):
 
     @property
     def ProcessId(self):
-        r"""进程ID
+        r"""<p>进程ID</p>
         :rtype: int
         """
         return self._ProcessId
@@ -103810,7 +103831,7 @@ class RiskProcessEvent(AbstractModel):
 
     @property
     def FilePath(self):
-        r"""文件路径
+        r"""<p>文件路径</p>
         :rtype: str
         """
         return self._FilePath
@@ -103821,7 +103842,7 @@ class RiskProcessEvent(AbstractModel):
 
     @property
     def CmdLine(self):
-        r"""执行命令
+        r"""<p>执行命令</p>
         :rtype: str
         """
         return self._CmdLine
@@ -103832,7 +103853,7 @@ class RiskProcessEvent(AbstractModel):
 
     @property
     def StartTime(self):
-        r"""进程启动时间
+        r"""<p>进程启动时间</p>
         :rtype: str
         """
         return self._StartTime
@@ -103843,7 +103864,7 @@ class RiskProcessEvent(AbstractModel):
 
     @property
     def DetectTime(self):
-        r"""最近检测时间
+        r"""<p>最近检测时间</p>
         :rtype: str
         """
         return self._DetectTime
@@ -103854,7 +103875,7 @@ class RiskProcessEvent(AbstractModel):
 
     @property
     def VirusName(self):
-        r"""病毒名称
+        r"""<p>病毒名称</p>
         :rtype: str
         """
         return self._VirusName
@@ -103865,7 +103886,7 @@ class RiskProcessEvent(AbstractModel):
 
     @property
     def CheckPlatform(self):
-        r"""木马检测平台 [1:云查杀引擎|2:TAV|3:binaryAi|4:异常行为|5:威胁情报]
+        r"""<p>木马检测平台 [1:云查杀引擎|2:TAV|3:binaryAi|4:异常行为|5:威胁情报]</p>
         :rtype: list of str
         """
         return self._CheckPlatform
@@ -103876,7 +103897,7 @@ class RiskProcessEvent(AbstractModel):
 
     @property
     def VirusTags(self):
-        r"""病毒标签
+        r"""<p>病毒标签</p>
         :rtype: list of str
         """
         return self._VirusTags
@@ -103887,7 +103908,7 @@ class RiskProcessEvent(AbstractModel):
 
     @property
     def ThreatDesc(self):
-        r"""威胁描述
+        r"""<p>威胁描述</p>
         :rtype: str
         """
         return self._ThreatDesc
@@ -103898,7 +103919,7 @@ class RiskProcessEvent(AbstractModel):
 
     @property
     def SuggestSolution(self):
-        r"""建议方案
+        r"""<p>建议方案</p>
         :rtype: str
         """
         return self._SuggestSolution
@@ -103909,7 +103930,7 @@ class RiskProcessEvent(AbstractModel):
 
     @property
     def ReferenceLink(self):
-        r"""参考链接
+        r"""<p>参考链接</p>
         :rtype: str
         """
         return self._ReferenceLink
@@ -103920,7 +103941,7 @@ class RiskProcessEvent(AbstractModel):
 
     @property
     def HandleStatus(self):
-        r"""处理状态[0待处理;1已处理;2查杀中;3已查杀;4已退出;5忽略]
+        r"""<p>处理状态[0待处理;1已处理;2查杀中;3已查杀;4已退出;5忽略]</p>
         :rtype: int
         """
         return self._HandleStatus
@@ -103931,7 +103952,7 @@ class RiskProcessEvent(AbstractModel):
 
     @property
     def OnlineStatus(self):
-        r"""主机在线状态
+        r"""<p>主机在线状态</p>
         :rtype: int
         """
         return self._OnlineStatus
@@ -103942,7 +103963,7 @@ class RiskProcessEvent(AbstractModel):
 
     @property
     def MachineExtraInfo(self):
-        r"""附加信息
+        r"""<p>附加信息</p>
         :rtype: :class:`tencentcloud.cwp.v20180228.models.MachineExtraInfo`
         """
         return self._MachineExtraInfo
@@ -103953,7 +103974,7 @@ class RiskProcessEvent(AbstractModel):
 
     @property
     def Uuid(self):
-        r"""主机uuid
+        r"""<p>主机uuid</p>
         :rtype: str
         """
         return self._Uuid
@@ -103964,7 +103985,7 @@ class RiskProcessEvent(AbstractModel):
 
     @property
     def FirstDetectionMethod(self):
-        r"""首次检出方式 0扫描;1实时监控
+        r"""<p>首次检出方式 0扫描;1实时监控</p>
         :rtype: int
         """
         return self._FirstDetectionMethod
@@ -103972,6 +103993,28 @@ class RiskProcessEvent(AbstractModel):
     @FirstDetectionMethod.setter
     def FirstDetectionMethod(self, FirstDetectionMethod):
         self._FirstDetectionMethod = FirstDetectionMethod
+
+    @property
+    def QUUID(self):
+        r"""<p>quuid</p>
+        :rtype: str
+        """
+        return self._QUUID
+
+    @QUUID.setter
+    def QUUID(self, QUUID):
+        self._QUUID = QUUID
+
+    @property
+    def ExeMd5(self):
+        r"""<p>进程md5</p>
+        :rtype: str
+        """
+        return self._ExeMd5
+
+    @ExeMd5.setter
+    def ExeMd5(self, ExeMd5):
+        self._ExeMd5 = ExeMd5
 
 
     def _deserialize(self, params):
@@ -103997,6 +104040,8 @@ class RiskProcessEvent(AbstractModel):
             self._MachineExtraInfo._deserialize(params.get("MachineExtraInfo"))
         self._Uuid = params.get("Uuid")
         self._FirstDetectionMethod = params.get("FirstDetectionMethod")
+        self._QUUID = params.get("QUUID")
+        self._ExeMd5 = params.get("ExeMd5")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -5390,23 +5390,26 @@ class CreateDeviceSDPAnswerRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ProductId: 产品ID
+        :param _ProductId: <p>产品ID</p>
         :type ProductId: str
-        :param _DeviceName: 设备名称
+        :param _DeviceName: <p>设备名称</p>
         :type DeviceName: str
-        :param _SDPOffer: SDP提议
+        :param _SDPOffer: <p>SDP提议</p>
         :type SDPOffer: str
-        :param _RequesterTag: 客户自定义拉流标识
+        :param _RequesterTag: <p>客户自定义拉流标识</p>
         :type RequesterTag: str
+        :param _EnableSubPub: <p>默认值：0，如果需要webrtc推流拉流在同一个SDP中，需要值为1，常用于单PC模式</p><p>枚举值：</p><ul><li>0： 默认值，传统多pc推流模式</li><li>1： 单pc模式，如果需要webrtc单pc推拉流，采用此模式，此模式下注意SDP需要包含推拉流全部信息</li></ul><p>默认值：0</p>
+        :type EnableSubPub: int
         """
         self._ProductId = None
         self._DeviceName = None
         self._SDPOffer = None
         self._RequesterTag = None
+        self._EnableSubPub = None
 
     @property
     def ProductId(self):
-        r"""产品ID
+        r"""<p>产品ID</p>
         :rtype: str
         """
         return self._ProductId
@@ -5417,7 +5420,7 @@ class CreateDeviceSDPAnswerRequest(AbstractModel):
 
     @property
     def DeviceName(self):
-        r"""设备名称
+        r"""<p>设备名称</p>
         :rtype: str
         """
         return self._DeviceName
@@ -5428,7 +5431,7 @@ class CreateDeviceSDPAnswerRequest(AbstractModel):
 
     @property
     def SDPOffer(self):
-        r"""SDP提议
+        r"""<p>SDP提议</p>
         :rtype: str
         """
         return self._SDPOffer
@@ -5439,7 +5442,7 @@ class CreateDeviceSDPAnswerRequest(AbstractModel):
 
     @property
     def RequesterTag(self):
-        r"""客户自定义拉流标识
+        r"""<p>客户自定义拉流标识</p>
         :rtype: str
         """
         return self._RequesterTag
@@ -5448,12 +5451,24 @@ class CreateDeviceSDPAnswerRequest(AbstractModel):
     def RequesterTag(self, RequesterTag):
         self._RequesterTag = RequesterTag
 
+    @property
+    def EnableSubPub(self):
+        r"""<p>默认值：0，如果需要webrtc推流拉流在同一个SDP中，需要值为1，常用于单PC模式</p><p>枚举值：</p><ul><li>0： 默认值，传统多pc推流模式</li><li>1： 单pc模式，如果需要webrtc单pc推拉流，采用此模式，此模式下注意SDP需要包含推拉流全部信息</li></ul><p>默认值：0</p>
+        :rtype: int
+        """
+        return self._EnableSubPub
+
+    @EnableSubPub.setter
+    def EnableSubPub(self, EnableSubPub):
+        self._EnableSubPub = EnableSubPub
+
 
     def _deserialize(self, params):
         self._ProductId = params.get("ProductId")
         self._DeviceName = params.get("DeviceName")
         self._SDPOffer = params.get("SDPOffer")
         self._RequesterTag = params.get("RequesterTag")
+        self._EnableSubPub = params.get("EnableSubPub")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5471,7 +5486,7 @@ class CreateDeviceSDPAnswerResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SDPAnswer: SDP应答
+        :param _SDPAnswer: <p>SDP应答</p>
         :type SDPAnswer: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -5481,7 +5496,7 @@ class CreateDeviceSDPAnswerResponse(AbstractModel):
 
     @property
     def SDPAnswer(self):
-        r"""SDP应答
+        r"""<p>SDP应答</p>
         :rtype: str
         """
         return self._SDPAnswer

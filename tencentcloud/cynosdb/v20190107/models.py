@@ -127,29 +127,29 @@ class Ability(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _IsSupportSlaveZone: 是否支持从可用区
+        :param _IsSupportSlaveZone: <p>是否支持从可用区</p>
         :type IsSupportSlaveZone: str
-        :param _NonsupportSlaveZoneReason: 不支持从可用区的原因
+        :param _NonsupportSlaveZoneReason: <p>不支持从可用区的原因</p>
         :type NonsupportSlaveZoneReason: str
-        :param _IsSupportRo: 是否支持RO实例
+        :param _IsSupportRo: <p>是否支持RO实例</p>
         :type IsSupportRo: str
-        :param _NonsupportRoReason: 不支持RO实例的原因
+        :param _NonsupportRoReason: <p>不支持RO实例的原因</p>
         :type NonsupportRoReason: str
-        :param _IsSupportManualSnapshot: 是否支持手动发起快照备份
+        :param _IsSupportManualSnapshot: <p>是否支持手动发起快照备份</p>
         :type IsSupportManualSnapshot: str
-        :param _IsSupportTransparentDataEncryption: 是否支持透明数据加密
+        :param _IsSupportTransparentDataEncryption: <p>是否支持透明数据加密</p>
         :type IsSupportTransparentDataEncryption: str
-        :param _NoSupportTransparentDataEncryptionReason: 不支持透明数据加密原因
+        :param _NoSupportTransparentDataEncryptionReason: <p>不支持透明数据加密原因</p>
         :type NoSupportTransparentDataEncryptionReason: str
-        :param _IsSupportManualLogic: 是否支持手动发起逻辑备份
+        :param _IsSupportManualLogic: <p>是否支持手动发起逻辑备份</p>
         :type IsSupportManualLogic: str
-        :param _IsSupportGlobalEncryption: 是否支持开启全局加密
+        :param _IsSupportGlobalEncryption: <p>是否支持开启全局加密</p>
         :type IsSupportGlobalEncryption: str
-        :param _NoSupportGlobalEncryptionReason: 不支持全局加密的原因
+        :param _NoSupportGlobalEncryptionReason: <p>不支持全局加密的原因</p>
         :type NoSupportGlobalEncryptionReason: str
-        :param _NoSupportTransparentDataEncryptionReasonCode: 不支持透明加密原因状态码
+        :param _NoSupportTransparentDataEncryptionReasonCode: <p>不支持透明加密原因状态码</p>
         :type NoSupportTransparentDataEncryptionReasonCode: str
-        :param _NoSupportGlobalEncryptionReasonCode: 不支持全局加密原因状态码
+        :param _NoSupportGlobalEncryptionReasonCode: <p>不支持全局加密原因状态码</p>
         :type NoSupportGlobalEncryptionReasonCode: str
         """
         self._IsSupportSlaveZone = None
@@ -167,7 +167,7 @@ class Ability(AbstractModel):
 
     @property
     def IsSupportSlaveZone(self):
-        r"""是否支持从可用区
+        r"""<p>是否支持从可用区</p>
         :rtype: str
         """
         return self._IsSupportSlaveZone
@@ -178,7 +178,7 @@ class Ability(AbstractModel):
 
     @property
     def NonsupportSlaveZoneReason(self):
-        r"""不支持从可用区的原因
+        r"""<p>不支持从可用区的原因</p>
         :rtype: str
         """
         return self._NonsupportSlaveZoneReason
@@ -189,7 +189,7 @@ class Ability(AbstractModel):
 
     @property
     def IsSupportRo(self):
-        r"""是否支持RO实例
+        r"""<p>是否支持RO实例</p>
         :rtype: str
         """
         return self._IsSupportRo
@@ -200,7 +200,7 @@ class Ability(AbstractModel):
 
     @property
     def NonsupportRoReason(self):
-        r"""不支持RO实例的原因
+        r"""<p>不支持RO实例的原因</p>
         :rtype: str
         """
         return self._NonsupportRoReason
@@ -211,7 +211,7 @@ class Ability(AbstractModel):
 
     @property
     def IsSupportManualSnapshot(self):
-        r"""是否支持手动发起快照备份
+        r"""<p>是否支持手动发起快照备份</p>
         :rtype: str
         """
         return self._IsSupportManualSnapshot
@@ -222,7 +222,7 @@ class Ability(AbstractModel):
 
     @property
     def IsSupportTransparentDataEncryption(self):
-        r"""是否支持透明数据加密
+        r"""<p>是否支持透明数据加密</p>
         :rtype: str
         """
         return self._IsSupportTransparentDataEncryption
@@ -233,7 +233,7 @@ class Ability(AbstractModel):
 
     @property
     def NoSupportTransparentDataEncryptionReason(self):
-        r"""不支持透明数据加密原因
+        r"""<p>不支持透明数据加密原因</p>
         :rtype: str
         """
         return self._NoSupportTransparentDataEncryptionReason
@@ -244,7 +244,7 @@ class Ability(AbstractModel):
 
     @property
     def IsSupportManualLogic(self):
-        r"""是否支持手动发起逻辑备份
+        r"""<p>是否支持手动发起逻辑备份</p>
         :rtype: str
         """
         return self._IsSupportManualLogic
@@ -255,7 +255,7 @@ class Ability(AbstractModel):
 
     @property
     def IsSupportGlobalEncryption(self):
-        r"""是否支持开启全局加密
+        r"""<p>是否支持开启全局加密</p>
         :rtype: str
         """
         return self._IsSupportGlobalEncryption
@@ -266,7 +266,7 @@ class Ability(AbstractModel):
 
     @property
     def NoSupportGlobalEncryptionReason(self):
-        r"""不支持全局加密的原因
+        r"""<p>不支持全局加密的原因</p>
         :rtype: str
         """
         return self._NoSupportGlobalEncryptionReason
@@ -277,7 +277,7 @@ class Ability(AbstractModel):
 
     @property
     def NoSupportTransparentDataEncryptionReasonCode(self):
-        r"""不支持透明加密原因状态码
+        r"""<p>不支持透明加密原因状态码</p>
         :rtype: str
         """
         return self._NoSupportTransparentDataEncryptionReasonCode
@@ -288,7 +288,7 @@ class Ability(AbstractModel):
 
     @property
     def NoSupportGlobalEncryptionReasonCode(self):
-        r"""不支持全局加密原因状态码
+        r"""<p>不支持全局加密原因状态码</p>
         :rtype: str
         """
         return self._NoSupportGlobalEncryptionReasonCode
@@ -328,19 +328,19 @@ class Account(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AccountName: 数据库账号名
+        :param _AccountName: <p>数据库账号名</p>
         :type AccountName: str
-        :param _Host: 主机
+        :param _Host: <p>主机</p>
         :type Host: str
-        :param _Description: 数据库账号描述
+        :param _Description: <p>数据库账号描述</p>
         :type Description: str
-        :param _CreateTime: 创建时间
+        :param _CreateTime: <p>创建时间</p>
         :type CreateTime: str
-        :param _UpdateTime: 更新时间
+        :param _UpdateTime: <p>更新时间</p>
         :type UpdateTime: str
-        :param _MaxUserConnections: 用户最大连接数
+        :param _MaxUserConnections: <p>用户最大连接数</p>
         :type MaxUserConnections: int
-        :param _PasswordRotation: 是否开启密码轮转(0:关闭;1:开启)
+        :param _PasswordRotation: <p>是否开启密码轮转(0:关闭;1:开启)</p>
         :type PasswordRotation: int
         """
         self._AccountName = None
@@ -353,7 +353,7 @@ class Account(AbstractModel):
 
     @property
     def AccountName(self):
-        r"""数据库账号名
+        r"""<p>数据库账号名</p>
         :rtype: str
         """
         return self._AccountName
@@ -364,7 +364,7 @@ class Account(AbstractModel):
 
     @property
     def Host(self):
-        r"""主机
+        r"""<p>主机</p>
         :rtype: str
         """
         return self._Host
@@ -375,7 +375,7 @@ class Account(AbstractModel):
 
     @property
     def Description(self):
-        r"""数据库账号描述
+        r"""<p>数据库账号描述</p>
         :rtype: str
         """
         return self._Description
@@ -386,7 +386,7 @@ class Account(AbstractModel):
 
     @property
     def CreateTime(self):
-        r"""创建时间
+        r"""<p>创建时间</p>
         :rtype: str
         """
         return self._CreateTime
@@ -397,7 +397,7 @@ class Account(AbstractModel):
 
     @property
     def UpdateTime(self):
-        r"""更新时间
+        r"""<p>更新时间</p>
         :rtype: str
         """
         return self._UpdateTime
@@ -408,7 +408,7 @@ class Account(AbstractModel):
 
     @property
     def MaxUserConnections(self):
-        r"""用户最大连接数
+        r"""<p>用户最大连接数</p>
         :rtype: int
         """
         return self._MaxUserConnections
@@ -419,7 +419,7 @@ class Account(AbstractModel):
 
     @property
     def PasswordRotation(self):
-        r"""是否开启密码轮转(0:关闭;1:开启)
+        r"""<p>是否开启密码轮转(0:关闭;1:开启)</p>
         :rtype: int
         """
         return self._PasswordRotation
@@ -8430,9 +8430,9 @@ class CreateAccountsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ClusterId: 集群id
+        :param _ClusterId: <p>集群id</p>
         :type ClusterId: str
-        :param _Accounts: 新账户列表
+        :param _Accounts: <p>新账户列表</p>
         :type Accounts: list of NewAccount
         """
         self._ClusterId = None
@@ -8440,7 +8440,7 @@ class CreateAccountsRequest(AbstractModel):
 
     @property
     def ClusterId(self):
-        r"""集群id
+        r"""<p>集群id</p>
         :rtype: str
         """
         return self._ClusterId
@@ -8451,7 +8451,7 @@ class CreateAccountsRequest(AbstractModel):
 
     @property
     def Accounts(self):
-        r"""新账户列表
+        r"""<p>新账户列表</p>
         :rtype: list of NewAccount
         """
         return self._Accounts
@@ -17339,9 +17339,9 @@ class DeleteAccountsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ClusterId: 集群ID
+        :param _ClusterId: <p>集群ID</p>
         :type ClusterId: str
-        :param _Accounts: 账号数组，包含account和host
+        :param _Accounts: <p>账号数组，包含account和host</p>
         :type Accounts: list of InputAccount
         """
         self._ClusterId = None
@@ -17349,7 +17349,7 @@ class DeleteAccountsRequest(AbstractModel):
 
     @property
     def ClusterId(self):
-        r"""集群ID
+        r"""<p>集群ID</p>
         :rtype: str
         """
         return self._ClusterId
@@ -17360,7 +17360,7 @@ class DeleteAccountsRequest(AbstractModel):
 
     @property
     def Accounts(self):
-        r"""账号数组，包含account和host
+        r"""<p>账号数组，包含account和host</p>
         :rtype: list of InputAccount
         """
         return self._Accounts
@@ -47425,17 +47425,17 @@ class NewAccount(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AccountName: 账户名，包含字母数字_,以字母开头，字母或数字结尾，长度1-30
+        :param _AccountName: <p>账户名，包含字母数字_,以字母开头，字母或数字结尾，长度1-30</p>
         :type AccountName: str
-        :param _Host: 主机(%或ipv4地址)
+        :param _Host: <p>主机(%或ipv4地址)</p>
         :type Host: str
-        :param _AccountPassword: 密码，密码长度范围为8到64个字符
+        :param _AccountPassword: <p>密码，密码长度范围为8到64个字符</p>
         :type AccountPassword: str
-        :param _PasswordRotation: 是否开启密码轮转(0:关闭;1:开启)
+        :param _PasswordRotation: <p>是否开启密码轮转(0:关闭;1:开启)</p>
         :type PasswordRotation: int
-        :param _Description: 描述
+        :param _Description: <p>描述</p>
         :type Description: str
-        :param _MaxUserConnections: 用户最大连接数，不能大于10240
+        :param _MaxUserConnections: <p>用户最大连接数，不能大于10240</p>
         :type MaxUserConnections: int
         """
         self._AccountName = None
@@ -47447,7 +47447,7 @@ class NewAccount(AbstractModel):
 
     @property
     def AccountName(self):
-        r"""账户名，包含字母数字_,以字母开头，字母或数字结尾，长度1-30
+        r"""<p>账户名，包含字母数字_,以字母开头，字母或数字结尾，长度1-30</p>
         :rtype: str
         """
         return self._AccountName
@@ -47458,7 +47458,7 @@ class NewAccount(AbstractModel):
 
     @property
     def Host(self):
-        r"""主机(%或ipv4地址)
+        r"""<p>主机(%或ipv4地址)</p>
         :rtype: str
         """
         return self._Host
@@ -47469,7 +47469,7 @@ class NewAccount(AbstractModel):
 
     @property
     def AccountPassword(self):
-        r"""密码，密码长度范围为8到64个字符
+        r"""<p>密码，密码长度范围为8到64个字符</p>
         :rtype: str
         """
         return self._AccountPassword
@@ -47480,7 +47480,7 @@ class NewAccount(AbstractModel):
 
     @property
     def PasswordRotation(self):
-        r"""是否开启密码轮转(0:关闭;1:开启)
+        r"""<p>是否开启密码轮转(0:关闭;1:开启)</p>
         :rtype: int
         """
         return self._PasswordRotation
@@ -47491,7 +47491,7 @@ class NewAccount(AbstractModel):
 
     @property
     def Description(self):
-        r"""描述
+        r"""<p>描述</p>
         :rtype: str
         """
         return self._Description
@@ -47502,7 +47502,7 @@ class NewAccount(AbstractModel):
 
     @property
     def MaxUserConnections(self):
-        r"""用户最大连接数，不能大于10240
+        r"""<p>用户最大连接数，不能大于10240</p>
         :rtype: int
         """
         return self._MaxUserConnections

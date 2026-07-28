@@ -256,6 +256,29 @@ class PostgresClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateDBProxy(self, request):
+        r"""本接口（CreateDBProxy）用于为指定的 PostgreSQL 实例创建数据库代理（Proxy）。走计费下单流程，下单成功后异步发起 Proxy 创建任务，同步返回订单号 DealName 与 Proxy 实例 ID ProxyGroupId。当前仅支持后付费按量计费。
+
+        :param request: Request instance for CreateDBProxy.
+        :type request: :class:`tencentcloud.postgres.v20170312.models.CreateDBProxyRequest`
+        :rtype: :class:`tencentcloud.postgres.v20170312.models.CreateDBProxyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateDBProxy", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateDBProxyResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateDatabase(self, request):
         r"""此接口用于创建数据库，需指定数据库名及所有者。
 
@@ -1111,6 +1134,52 @@ class PostgresClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeDBProxy(self, request):
+        r"""本接口（DescribeDBProxy）用于查询指定 PostgreSQL 实例下的数据库代理（Proxy）信息，包含 Proxy 节点列表与接入地址列表。可选传入 ProxyGroupId 精确查询某一 Proxy；不传则返回该实例下的全部 Proxy。
+
+        :param request: Request instance for DescribeDBProxy.
+        :type request: :class:`tencentcloud.postgres.v20170312.models.DescribeDBProxyRequest`
+        :rtype: :class:`tencentcloud.postgres.v20170312.models.DescribeDBProxyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDBProxy", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDBProxyResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeDBProxySpecs(self, request):
+        r"""查询代理可售规格
+
+        :param request: Request instance for DescribeDBProxySpecs.
+        :type request: :class:`tencentcloud.postgres.v20170312.models.DescribeDBProxySpecsRequest`
+        :rtype: :class:`tencentcloud.postgres.v20170312.models.DescribeDBProxySpecsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDBProxySpecs", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDBProxySpecsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeDBVersions(self, request):
         r"""本接口（DescribeDBVersions）用于查询支持的数据库版本。
 
@@ -1586,6 +1655,29 @@ class PostgresClient(AbstractClient):
             body = self.call("DestroyDBInstance", params, headers=headers)
             response = json.loads(body)
             model = models.DestroyDBInstanceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DestroyDBProxy(self, request):
+        r"""本接口（DestroyDBProxy）用于销毁指定的数据库代理（Proxy）。接口仅返回 RequestId，销毁动作由计费回调异步触发 ProxyDestroy 任务，内部统一完成「隔离 + 销毁」全部步骤（释放 VIP、解绑安全组、回收资源、上报计费等），用户无需先调用隔离接口。
+
+        :param request: Request instance for DestroyDBProxy.
+        :type request: :class:`tencentcloud.postgres.v20170312.models.DestroyDBProxyRequest`
+        :rtype: :class:`tencentcloud.postgres.v20170312.models.DestroyDBProxyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DestroyDBProxy", params, headers=headers)
+            response = json.loads(body)
+            model = models.DestroyDBProxyResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -2126,6 +2218,52 @@ class PostgresClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyDBProxy(self, request):
+        r"""本接口（ModifyDBProxy）用于修改数据库代理（Proxy）。支持两种模式：①仅修改 Description 时同步生效，不下单，DealName 为空；②变更 Proxy 节点规格或数量（ProxyNodeCustom）时走计费下单流程，异步触发变配任务，返回 DealName。可通过 SwitchTag 控制变配执行时机。
+
+        :param request: Request instance for ModifyDBProxy.
+        :type request: :class:`tencentcloud.postgres.v20170312.models.ModifyDBProxyRequest`
+        :rtype: :class:`tencentcloud.postgres.v20170312.models.ModifyDBProxyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyDBProxy", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyDBProxyResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyDBProxyAddress(self, request):
+        r"""修改代理地址配置
+
+        :param request: Request instance for ModifyDBProxyAddress.
+        :type request: :class:`tencentcloud.postgres.v20170312.models.ModifyDBProxyAddressRequest`
+        :rtype: :class:`tencentcloud.postgres.v20170312.models.ModifyDBProxyAddressResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyDBProxyAddress", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyDBProxyAddressResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyDatabaseOwner(self, request):
         r"""修改数据库所有者
 
@@ -2370,6 +2508,29 @@ class PostgresClient(AbstractClient):
             body = self.call("RefreshAccountPassword", params, headers=headers)
             response = json.loads(body)
             model = models.RefreshAccountPasswordResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ReloadBalanceDBProxyNode(self, request):
+        r"""本接口（ReloadBalanceDBProxyNode）用于重新均衡数据库代理节点
+
+        :param request: Request instance for ReloadBalanceDBProxyNode.
+        :type request: :class:`tencentcloud.postgres.v20170312.models.ReloadBalanceDBProxyNodeRequest`
+        :rtype: :class:`tencentcloud.postgres.v20170312.models.ReloadBalanceDBProxyNodeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ReloadBalanceDBProxyNode", params, headers=headers)
+            response = json.loads(body)
+            model = models.ReloadBalanceDBProxyNodeResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

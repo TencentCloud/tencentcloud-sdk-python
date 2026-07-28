@@ -2740,6 +2740,29 @@ class WedataClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeInstancesByExecutors(self, request):
+        r"""按执行资源组查询任务调度与运行实例数量统计
+
+        :param request: Request instance for DescribeInstancesByExecutors.
+        :type request: :class:`tencentcloud.wedata.v20210820.models.DescribeInstancesByExecutorsRequest`
+        :rtype: :class:`tencentcloud.wedata.v20210820.models.DescribeInstancesByExecutorsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeInstancesByExecutors", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeInstancesByExecutorsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeIntegrationNode(self, request):
         r"""查询集成节点
 

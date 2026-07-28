@@ -4443,6 +4443,10 @@ class CreateTrainingTaskRequest(AbstractModel):
         :type ExposeNetworkConfig: :class:`tencentcloud.tione.v20211111.models.ExposeNetworkConfig`
         :param _Envs: <p>环境变量</p>
         :type Envs: list of EnvVar
+        :param _TrainToolConfig: <p>训练诊断工具配置</p>
+        :type TrainToolConfig: :class:`tencentcloud.tione.v20211111.models.TrainToolConfig`
+        :param _ResourceSupplyAttribute: <p>资源供应属性</p>
+        :type ResourceSupplyAttribute: :class:`tencentcloud.tione.v20211111.models.ResourceSupplyAttribute`
         """
         self._Name = None
         self._ChargeType = None
@@ -4471,6 +4475,8 @@ class CreateTrainingTaskRequest(AbstractModel):
         self._CodeRepos = None
         self._ExposeNetworkConfig = None
         self._Envs = None
+        self._TrainToolConfig = None
+        self._ResourceSupplyAttribute = None
 
     @property
     def Name(self):
@@ -4769,6 +4775,28 @@ class CreateTrainingTaskRequest(AbstractModel):
     def Envs(self, Envs):
         self._Envs = Envs
 
+    @property
+    def TrainToolConfig(self):
+        r"""<p>训练诊断工具配置</p>
+        :rtype: :class:`tencentcloud.tione.v20211111.models.TrainToolConfig`
+        """
+        return self._TrainToolConfig
+
+    @TrainToolConfig.setter
+    def TrainToolConfig(self, TrainToolConfig):
+        self._TrainToolConfig = TrainToolConfig
+
+    @property
+    def ResourceSupplyAttribute(self):
+        r"""<p>资源供应属性</p>
+        :rtype: :class:`tencentcloud.tione.v20211111.models.ResourceSupplyAttribute`
+        """
+        return self._ResourceSupplyAttribute
+
+    @ResourceSupplyAttribute.setter
+    def ResourceSupplyAttribute(self, ResourceSupplyAttribute):
+        self._ResourceSupplyAttribute = ResourceSupplyAttribute
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -4837,6 +4865,12 @@ class CreateTrainingTaskRequest(AbstractModel):
                 obj = EnvVar()
                 obj._deserialize(item)
                 self._Envs.append(obj)
+        if params.get("TrainToolConfig") is not None:
+            self._TrainToolConfig = TrainToolConfig()
+            self._TrainToolConfig._deserialize(params.get("TrainToolConfig"))
+        if params.get("ResourceSupplyAttribute") is not None:
+            self._ResourceSupplyAttribute = ResourceSupplyAttribute()
+            self._ResourceSupplyAttribute._deserialize(params.get("ResourceSupplyAttribute"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -10067,6 +10101,8 @@ class DescribeLogsRequest(AbstractModel):
         :type Filters: list of Filter
         :param _Offset: <p>使用OFFSET分页查询时，指定返回的数据偏移量，默认为0</p>
         :type Offset: int
+        :param _LogStream: <p>日志类别</p><p>枚举值：</p><ul><li>stdout： stdout</li><li>stderr： stderr</li></ul><p>默认值：&quot;&quot;</p>
+        :type LogStream: str
         """
         self._Service = None
         self._TiProjectId = None
@@ -10080,6 +10116,7 @@ class DescribeLogsRequest(AbstractModel):
         self._Context = None
         self._Filters = None
         self._Offset = None
+        self._LogStream = None
 
     @property
     def Service(self):
@@ -10213,6 +10250,17 @@ class DescribeLogsRequest(AbstractModel):
     def Offset(self, Offset):
         self._Offset = Offset
 
+    @property
+    def LogStream(self):
+        r"""<p>日志类别</p><p>枚举值：</p><ul><li>stdout： stdout</li><li>stderr： stderr</li></ul><p>默认值：&quot;&quot;</p>
+        :rtype: str
+        """
+        return self._LogStream
+
+    @LogStream.setter
+    def LogStream(self, LogStream):
+        self._LogStream = LogStream
+
 
     def _deserialize(self, params):
         self._Service = params.get("Service")
@@ -10232,6 +10280,7 @@ class DescribeLogsRequest(AbstractModel):
                 obj._deserialize(item)
                 self._Filters.append(obj)
         self._Offset = params.get("Offset")
+        self._LogStream = params.get("LogStream")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -16513,27 +16562,33 @@ class LogIdentity(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Id: 单条日志的ID
+        :param _Id: <p>单条日志的ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Id: str
-        :param _Message: 单条日志的内容
+        :param _Message: <p>单条日志的内容</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Message: str
-        :param _PodName: 这条日志对应的Pod名称
+        :param _PodName: <p>这条日志对应的Pod名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type PodName: str
-        :param _Timestamp: 日志的时间戳（RFC3339格式的时间字符串）
+        :param _Timestamp: <p>日志的时间戳（RFC3339格式的时间字符串）</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Timestamp: str
+        :param _PkgId: <p>日志上报请求包的ID</p>
+        :type PkgId: str
+        :param _PkgLogId: <p>请求包内日志的ID</p>
+        :type PkgLogId: str
         """
         self._Id = None
         self._Message = None
         self._PodName = None
         self._Timestamp = None
+        self._PkgId = None
+        self._PkgLogId = None
 
     @property
     def Id(self):
-        r"""单条日志的ID
+        r"""<p>单条日志的ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -16545,7 +16600,7 @@ class LogIdentity(AbstractModel):
 
     @property
     def Message(self):
-        r"""单条日志的内容
+        r"""<p>单条日志的内容</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -16557,7 +16612,7 @@ class LogIdentity(AbstractModel):
 
     @property
     def PodName(self):
-        r"""这条日志对应的Pod名称
+        r"""<p>这条日志对应的Pod名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -16569,7 +16624,7 @@ class LogIdentity(AbstractModel):
 
     @property
     def Timestamp(self):
-        r"""日志的时间戳（RFC3339格式的时间字符串）
+        r"""<p>日志的时间戳（RFC3339格式的时间字符串）</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -16579,12 +16634,36 @@ class LogIdentity(AbstractModel):
     def Timestamp(self, Timestamp):
         self._Timestamp = Timestamp
 
+    @property
+    def PkgId(self):
+        r"""<p>日志上报请求包的ID</p>
+        :rtype: str
+        """
+        return self._PkgId
+
+    @PkgId.setter
+    def PkgId(self, PkgId):
+        self._PkgId = PkgId
+
+    @property
+    def PkgLogId(self):
+        r"""<p>请求包内日志的ID</p>
+        :rtype: str
+        """
+        return self._PkgLogId
+
+    @PkgLogId.setter
+    def PkgLogId(self, PkgLogId):
+        self._PkgLogId = PkgLogId
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
         self._Message = params.get("Message")
         self._PodName = params.get("PodName")
         self._Timestamp = params.get("Timestamp")
+        self._PkgId = params.get("PkgId")
+        self._PkgLogId = params.get("PkgLogId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -29307,6 +29386,72 @@ class TrainParam(AbstractModel):
         self._Value = params.get("Value")
         self._Range = params.get("Range")
         self._Enum = params.get("Enum")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TrainToolConfig(AbstractModel):
+    r"""训练诊断工具配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EnableHangMonitor: <p>是否开启 Hang 检测</p><p>默认值：false</p>
+        :type EnableHangMonitor: bool
+        :param _HangMonitorNodes: <p>Hang 检测的节点列表</p>
+        :type HangMonitorNodes: list of str
+        :param _LogHangTimeoutInMinute: <p>Hang 超时时间</p><p>取值范围：[1, 14400]</p><p>单位：分</p>
+        :type LogHangTimeoutInMinute: int
+        """
+        self._EnableHangMonitor = None
+        self._HangMonitorNodes = None
+        self._LogHangTimeoutInMinute = None
+
+    @property
+    def EnableHangMonitor(self):
+        r"""<p>是否开启 Hang 检测</p><p>默认值：false</p>
+        :rtype: bool
+        """
+        return self._EnableHangMonitor
+
+    @EnableHangMonitor.setter
+    def EnableHangMonitor(self, EnableHangMonitor):
+        self._EnableHangMonitor = EnableHangMonitor
+
+    @property
+    def HangMonitorNodes(self):
+        r"""<p>Hang 检测的节点列表</p>
+        :rtype: list of str
+        """
+        return self._HangMonitorNodes
+
+    @HangMonitorNodes.setter
+    def HangMonitorNodes(self, HangMonitorNodes):
+        self._HangMonitorNodes = HangMonitorNodes
+
+    @property
+    def LogHangTimeoutInMinute(self):
+        r"""<p>Hang 超时时间</p><p>取值范围：[1, 14400]</p><p>单位：分</p>
+        :rtype: int
+        """
+        return self._LogHangTimeoutInMinute
+
+    @LogHangTimeoutInMinute.setter
+    def LogHangTimeoutInMinute(self, LogHangTimeoutInMinute):
+        self._LogHangTimeoutInMinute = LogHangTimeoutInMinute
+
+
+    def _deserialize(self, params):
+        self._EnableHangMonitor = params.get("EnableHangMonitor")
+        self._HangMonitorNodes = params.get("HangMonitorNodes")
+        self._LogHangTimeoutInMinute = params.get("LogHangTimeoutInMinute")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -3416,6 +3416,195 @@ class CreateDBInstanceNetworkAccessResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateDBProxyRequest(AbstractModel):
+    r"""CreateDBProxy请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DBInstanceId: <p>实例 ID，格式形如：postgres-xxxxxxxx</p>
+        :type DBInstanceId: str
+        :param _VpcId: <p>Proxy 所在私有网络 ID，需与主实例所在 VPC 一致</p>
+        :type VpcId: str
+        :param _SubnetId: <p>Proxy 所在私有网络子网 ID</p>
+        :type SubnetId: str
+        :param _ProxyNodeCustom: <p>Proxy 节点自定义规格列表，至少一个元素，按可用区分组</p>
+        :type ProxyNodeCustom: list of ProxyNodeCustom
+        :param _SecurityGroup: <p>Proxy 关联的安全组 ID 列表</p>
+        :type SecurityGroup: list of str
+        :param _Description: <p>Proxy 描述信息</p><p>长度范围：[0, 256]</p>
+        :type Description: str
+        :param _ConnectionPoolLimit: <p>连接池阈值（连接数），单位：个</p>
+        :type ConnectionPoolLimit: int
+        """
+        self._DBInstanceId = None
+        self._VpcId = None
+        self._SubnetId = None
+        self._ProxyNodeCustom = None
+        self._SecurityGroup = None
+        self._Description = None
+        self._ConnectionPoolLimit = None
+
+    @property
+    def DBInstanceId(self):
+        r"""<p>实例 ID，格式形如：postgres-xxxxxxxx</p>
+        :rtype: str
+        """
+        return self._DBInstanceId
+
+    @DBInstanceId.setter
+    def DBInstanceId(self, DBInstanceId):
+        self._DBInstanceId = DBInstanceId
+
+    @property
+    def VpcId(self):
+        r"""<p>Proxy 所在私有网络 ID，需与主实例所在 VPC 一致</p>
+        :rtype: str
+        """
+        return self._VpcId
+
+    @VpcId.setter
+    def VpcId(self, VpcId):
+        self._VpcId = VpcId
+
+    @property
+    def SubnetId(self):
+        r"""<p>Proxy 所在私有网络子网 ID</p>
+        :rtype: str
+        """
+        return self._SubnetId
+
+    @SubnetId.setter
+    def SubnetId(self, SubnetId):
+        self._SubnetId = SubnetId
+
+    @property
+    def ProxyNodeCustom(self):
+        r"""<p>Proxy 节点自定义规格列表，至少一个元素，按可用区分组</p>
+        :rtype: list of ProxyNodeCustom
+        """
+        return self._ProxyNodeCustom
+
+    @ProxyNodeCustom.setter
+    def ProxyNodeCustom(self, ProxyNodeCustom):
+        self._ProxyNodeCustom = ProxyNodeCustom
+
+    @property
+    def SecurityGroup(self):
+        r"""<p>Proxy 关联的安全组 ID 列表</p>
+        :rtype: list of str
+        """
+        return self._SecurityGroup
+
+    @SecurityGroup.setter
+    def SecurityGroup(self, SecurityGroup):
+        self._SecurityGroup = SecurityGroup
+
+    @property
+    def Description(self):
+        r"""<p>Proxy 描述信息</p><p>长度范围：[0, 256]</p>
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def ConnectionPoolLimit(self):
+        r"""<p>连接池阈值（连接数），单位：个</p>
+        :rtype: int
+        """
+        return self._ConnectionPoolLimit
+
+    @ConnectionPoolLimit.setter
+    def ConnectionPoolLimit(self, ConnectionPoolLimit):
+        self._ConnectionPoolLimit = ConnectionPoolLimit
+
+
+    def _deserialize(self, params):
+        self._DBInstanceId = params.get("DBInstanceId")
+        self._VpcId = params.get("VpcId")
+        self._SubnetId = params.get("SubnetId")
+        if params.get("ProxyNodeCustom") is not None:
+            self._ProxyNodeCustom = []
+            for item in params.get("ProxyNodeCustom"):
+                obj = ProxyNodeCustom()
+                obj._deserialize(item)
+                self._ProxyNodeCustom.append(obj)
+        self._SecurityGroup = params.get("SecurityGroup")
+        self._Description = params.get("Description")
+        self._ConnectionPoolLimit = params.get("ConnectionPoolLimit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateDBProxyResponse(AbstractModel):
+    r"""CreateDBProxy返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DealName: <p>订单号，下单成功返回。</p>
+        :type DealName: str
+        :param _ProxyGroupId: <p>创建出的 Proxy 实例 ID，格式形如：proxy-xxxxxxxx。</p>
+        :type ProxyGroupId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._DealName = None
+        self._ProxyGroupId = None
+        self._RequestId = None
+
+    @property
+    def DealName(self):
+        r"""<p>订单号，下单成功返回。</p>
+        :rtype: str
+        """
+        return self._DealName
+
+    @DealName.setter
+    def DealName(self, DealName):
+        self._DealName = DealName
+
+    @property
+    def ProxyGroupId(self):
+        r"""<p>创建出的 Proxy 实例 ID，格式形如：proxy-xxxxxxxx。</p>
+        :rtype: str
+        """
+        return self._ProxyGroupId
+
+    @ProxyGroupId.setter
+    def ProxyGroupId(self, ProxyGroupId):
+        self._ProxyGroupId = ProxyGroupId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._DealName = params.get("DealName")
+        self._ProxyGroupId = params.get("ProxyGroupId")
+        self._RequestId = params.get("RequestId")
+
+
 class CreateDatabaseRequest(AbstractModel):
     r"""CreateDatabase请求参数结构体
 
@@ -10825,6 +11014,234 @@ class DescribeDBInstancesResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeDBProxyRequest(AbstractModel):
+    r"""DescribeDBProxy请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DBInstanceId: <p>实例 ID，格式形如：postgres-xxxxxxxx</p>
+        :type DBInstanceId: str
+        :param _ProxyGroupId: <p>Proxy 实例 ID，格式形如：proxy-xxxxxxxx；不传则查询该实例下全部 Proxy</p>
+        :type ProxyGroupId: str
+        """
+        self._DBInstanceId = None
+        self._ProxyGroupId = None
+
+    @property
+    def DBInstanceId(self):
+        r"""<p>实例 ID，格式形如：postgres-xxxxxxxx</p>
+        :rtype: str
+        """
+        return self._DBInstanceId
+
+    @DBInstanceId.setter
+    def DBInstanceId(self, DBInstanceId):
+        self._DBInstanceId = DBInstanceId
+
+    @property
+    def ProxyGroupId(self):
+        r"""<p>Proxy 实例 ID，格式形如：proxy-xxxxxxxx；不传则查询该实例下全部 Proxy</p>
+        :rtype: str
+        """
+        return self._ProxyGroupId
+
+    @ProxyGroupId.setter
+    def ProxyGroupId(self, ProxyGroupId):
+        self._ProxyGroupId = ProxyGroupId
+
+
+    def _deserialize(self, params):
+        self._DBInstanceId = params.get("DBInstanceId")
+        self._ProxyGroupId = params.get("ProxyGroupId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDBProxyResponse(AbstractModel):
+    r"""DescribeDBProxy返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Count: <p>Proxy 实例数量。</p>
+        :type Count: int
+        :param _ProxyInfos: <p>Proxy 实例详情列表。</p>
+        :type ProxyInfos: list of ProxyGroupInfo
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Count = None
+        self._ProxyInfos = None
+        self._RequestId = None
+
+    @property
+    def Count(self):
+        r"""<p>Proxy 实例数量。</p>
+        :rtype: int
+        """
+        return self._Count
+
+    @Count.setter
+    def Count(self, Count):
+        self._Count = Count
+
+    @property
+    def ProxyInfos(self):
+        r"""<p>Proxy 实例详情列表。</p>
+        :rtype: list of ProxyGroupInfo
+        """
+        return self._ProxyInfos
+
+    @ProxyInfos.setter
+    def ProxyInfos(self, ProxyInfos):
+        self._ProxyInfos = ProxyInfos
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Count = params.get("Count")
+        if params.get("ProxyInfos") is not None:
+            self._ProxyInfos = []
+            for item in params.get("ProxyInfos"):
+                obj = ProxyGroupInfo()
+                obj._deserialize(item)
+                self._ProxyInfos.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeDBProxySpecsRequest(AbstractModel):
+    r"""DescribeDBProxySpecs请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DBInstanceId: <p>实例ID。传入时返回该实例的 Proxy 支持情况和可用区</p>
+        :type DBInstanceId: str
+        """
+        self._DBInstanceId = None
+
+    @property
+    def DBInstanceId(self):
+        r"""<p>实例ID。传入时返回该实例的 Proxy 支持情况和可用区</p>
+        :rtype: str
+        """
+        return self._DBInstanceId
+
+    @DBInstanceId.setter
+    def DBInstanceId(self, DBInstanceId):
+        self._DBInstanceId = DBInstanceId
+
+
+    def _deserialize(self, params):
+        self._DBInstanceId = params.get("DBInstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDBProxySpecsResponse(AbstractModel):
+    r"""DescribeDBProxySpecs返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SpecSet: <p>规格列表</p>
+        :type SpecSet: list of ProxySpecItem
+        :param _SupportProxy: <p>该实例是否支持开通 Proxy（仅传 DBInstanceId 时返回）</p>
+        :type SupportProxy: bool
+        :param _AvailableZones: <p>可部署可用区列表（仅传 DBInstanceId 时返回）</p>
+        :type AvailableZones: list of str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._SpecSet = None
+        self._SupportProxy = None
+        self._AvailableZones = None
+        self._RequestId = None
+
+    @property
+    def SpecSet(self):
+        r"""<p>规格列表</p>
+        :rtype: list of ProxySpecItem
+        """
+        return self._SpecSet
+
+    @SpecSet.setter
+    def SpecSet(self, SpecSet):
+        self._SpecSet = SpecSet
+
+    @property
+    def SupportProxy(self):
+        r"""<p>该实例是否支持开通 Proxy（仅传 DBInstanceId 时返回）</p>
+        :rtype: bool
+        """
+        return self._SupportProxy
+
+    @SupportProxy.setter
+    def SupportProxy(self, SupportProxy):
+        self._SupportProxy = SupportProxy
+
+    @property
+    def AvailableZones(self):
+        r"""<p>可部署可用区列表（仅传 DBInstanceId 时返回）</p>
+        :rtype: list of str
+        """
+        return self._AvailableZones
+
+    @AvailableZones.setter
+    def AvailableZones(self, AvailableZones):
+        self._AvailableZones = AvailableZones
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("SpecSet") is not None:
+            self._SpecSet = []
+            for item in params.get("SpecSet"):
+                obj = ProxySpecItem()
+                obj._deserialize(item)
+                self._SpecSet.append(obj)
+        self._SupportProxy = params.get("SupportProxy")
+        self._AvailableZones = params.get("AvailableZones")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeDBVersionsRequest(AbstractModel):
     r"""DescribeDBVersions请求参数结构体
 
@@ -13679,6 +14096,85 @@ class DestroyDBInstanceRequest(AbstractModel):
 
 class DestroyDBInstanceResponse(AbstractModel):
     r"""DestroyDBInstance返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DestroyDBProxyRequest(AbstractModel):
+    r"""DestroyDBProxy请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DBInstanceId: <p>实例 ID，格式形如：postgres-xxxxxxxx</p>
+        :type DBInstanceId: str
+        :param _ProxyGroupId: <p>Proxy 实例 ID，格式形如：proxy-xxxxxxxx；不传时若实例下仅有一个 Proxy 则销毁该 Proxy，存在多个 Proxy 必须显式传入</p>
+        :type ProxyGroupId: str
+        """
+        self._DBInstanceId = None
+        self._ProxyGroupId = None
+
+    @property
+    def DBInstanceId(self):
+        r"""<p>实例 ID，格式形如：postgres-xxxxxxxx</p>
+        :rtype: str
+        """
+        return self._DBInstanceId
+
+    @DBInstanceId.setter
+    def DBInstanceId(self, DBInstanceId):
+        self._DBInstanceId = DBInstanceId
+
+    @property
+    def ProxyGroupId(self):
+        r"""<p>Proxy 实例 ID，格式形如：proxy-xxxxxxxx；不传时若实例下仅有一个 Proxy 则销毁该 Proxy，存在多个 Proxy 必须显式传入</p>
+        :rtype: str
+        """
+        return self._ProxyGroupId
+
+    @ProxyGroupId.setter
+    def ProxyGroupId(self, ProxyGroupId):
+        self._ProxyGroupId = ProxyGroupId
+
+
+    def _deserialize(self, params):
+        self._DBInstanceId = params.get("DBInstanceId")
+        self._ProxyGroupId = params.get("ProxyGroupId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DestroyDBProxyResponse(AbstractModel):
+    r"""DestroyDBProxy返回参数结构体
 
     """
 
@@ -17753,6 +18249,319 @@ class ModifyDBInstancesProjectResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyDBProxyAddressRequest(AbstractModel):
+    r"""ModifyDBProxyAddress请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DBInstanceId: <p>实例ID</p>
+        :type DBInstanceId: str
+        :param _AddressId: <p>Proxy地址ID</p>
+        :type AddressId: str
+        :param _ProxyGroupId: <p>Proxy代理组 ID（不传则默认操作该实例下唯一的代理）</p>
+        :type ProxyGroupId: str
+        :param _Description: <p>地址描述/备注（最多 256 字符）</p>
+        :type Description: str
+        :param _ConnectionPool: <p>连接池开关</p><p>枚举值：</p><ul><li>true： 开启</li><li>false： 关闭</li></ul>
+        :type ConnectionPool: bool
+        """
+        self._DBInstanceId = None
+        self._AddressId = None
+        self._ProxyGroupId = None
+        self._Description = None
+        self._ConnectionPool = None
+
+    @property
+    def DBInstanceId(self):
+        r"""<p>实例ID</p>
+        :rtype: str
+        """
+        return self._DBInstanceId
+
+    @DBInstanceId.setter
+    def DBInstanceId(self, DBInstanceId):
+        self._DBInstanceId = DBInstanceId
+
+    @property
+    def AddressId(self):
+        r"""<p>Proxy地址ID</p>
+        :rtype: str
+        """
+        return self._AddressId
+
+    @AddressId.setter
+    def AddressId(self, AddressId):
+        self._AddressId = AddressId
+
+    @property
+    def ProxyGroupId(self):
+        r"""<p>Proxy代理组 ID（不传则默认操作该实例下唯一的代理）</p>
+        :rtype: str
+        """
+        return self._ProxyGroupId
+
+    @ProxyGroupId.setter
+    def ProxyGroupId(self, ProxyGroupId):
+        self._ProxyGroupId = ProxyGroupId
+
+    @property
+    def Description(self):
+        r"""<p>地址描述/备注（最多 256 字符）</p>
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def ConnectionPool(self):
+        r"""<p>连接池开关</p><p>枚举值：</p><ul><li>true： 开启</li><li>false： 关闭</li></ul>
+        :rtype: bool
+        """
+        return self._ConnectionPool
+
+    @ConnectionPool.setter
+    def ConnectionPool(self, ConnectionPool):
+        self._ConnectionPool = ConnectionPool
+
+
+    def _deserialize(self, params):
+        self._DBInstanceId = params.get("DBInstanceId")
+        self._AddressId = params.get("AddressId")
+        self._ProxyGroupId = params.get("ProxyGroupId")
+        self._Description = params.get("Description")
+        self._ConnectionPool = params.get("ConnectionPool")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyDBProxyAddressResponse(AbstractModel):
+    r"""ModifyDBProxyAddress返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyDBProxyRequest(AbstractModel):
+    r"""ModifyDBProxy请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DBInstanceId: <p>实例 ID，格式形如：postgres-xxxxxxxx</p>
+        :type DBInstanceId: str
+        :param _ProxyGroupId: <p>Proxy 实例 ID，格式形如：proxy-xxxxxxxx；不传时若实例下仅有一个 Proxy 则修改该 Proxy</p>
+        :type ProxyGroupId: str
+        :param _Description: <p>Proxy 描述信息，长度范围 [0, 256]</p>
+        :type Description: str
+        :param _ProxyNodeCustom: <p>Proxy 节点变配规格列表，按可用区分组；变配时必填</p>
+        :type ProxyNodeCustom: list of ProxyNodeCustom
+        :param _ReloadBalance: <p>负载均衡刷新策略：auto-自动；manual-手动；默认 auto</p>
+        :type ReloadBalance: str
+        :param _SwitchTag: <p>变配执行时机：0-立即执行（默认），1-维护时间窗内执行，2-指定时间窗执行（需配合 SwitchStartTime/SwitchEndTime）</p>
+        :type SwitchTag: int
+        :param _SwitchStartTime: <p>指定时间窗执行的开始时间，格式 HH:MM:SS，仅 SwitchTag=2 时生效</p>
+        :type SwitchStartTime: str
+        :param _SwitchEndTime: <p>指定时间窗执行的结束时间，格式 HH:MM:SS，仅 SwitchTag=2 时生效</p>
+        :type SwitchEndTime: str
+        """
+        self._DBInstanceId = None
+        self._ProxyGroupId = None
+        self._Description = None
+        self._ProxyNodeCustom = None
+        self._ReloadBalance = None
+        self._SwitchTag = None
+        self._SwitchStartTime = None
+        self._SwitchEndTime = None
+
+    @property
+    def DBInstanceId(self):
+        r"""<p>实例 ID，格式形如：postgres-xxxxxxxx</p>
+        :rtype: str
+        """
+        return self._DBInstanceId
+
+    @DBInstanceId.setter
+    def DBInstanceId(self, DBInstanceId):
+        self._DBInstanceId = DBInstanceId
+
+    @property
+    def ProxyGroupId(self):
+        r"""<p>Proxy 实例 ID，格式形如：proxy-xxxxxxxx；不传时若实例下仅有一个 Proxy 则修改该 Proxy</p>
+        :rtype: str
+        """
+        return self._ProxyGroupId
+
+    @ProxyGroupId.setter
+    def ProxyGroupId(self, ProxyGroupId):
+        self._ProxyGroupId = ProxyGroupId
+
+    @property
+    def Description(self):
+        r"""<p>Proxy 描述信息，长度范围 [0, 256]</p>
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def ProxyNodeCustom(self):
+        r"""<p>Proxy 节点变配规格列表，按可用区分组；变配时必填</p>
+        :rtype: list of ProxyNodeCustom
+        """
+        return self._ProxyNodeCustom
+
+    @ProxyNodeCustom.setter
+    def ProxyNodeCustom(self, ProxyNodeCustom):
+        self._ProxyNodeCustom = ProxyNodeCustom
+
+    @property
+    def ReloadBalance(self):
+        r"""<p>负载均衡刷新策略：auto-自动；manual-手动；默认 auto</p>
+        :rtype: str
+        """
+        return self._ReloadBalance
+
+    @ReloadBalance.setter
+    def ReloadBalance(self, ReloadBalance):
+        self._ReloadBalance = ReloadBalance
+
+    @property
+    def SwitchTag(self):
+        r"""<p>变配执行时机：0-立即执行（默认），1-维护时间窗内执行，2-指定时间窗执行（需配合 SwitchStartTime/SwitchEndTime）</p>
+        :rtype: int
+        """
+        return self._SwitchTag
+
+    @SwitchTag.setter
+    def SwitchTag(self, SwitchTag):
+        self._SwitchTag = SwitchTag
+
+    @property
+    def SwitchStartTime(self):
+        r"""<p>指定时间窗执行的开始时间，格式 HH:MM:SS，仅 SwitchTag=2 时生效</p>
+        :rtype: str
+        """
+        return self._SwitchStartTime
+
+    @SwitchStartTime.setter
+    def SwitchStartTime(self, SwitchStartTime):
+        self._SwitchStartTime = SwitchStartTime
+
+    @property
+    def SwitchEndTime(self):
+        r"""<p>指定时间窗执行的结束时间，格式 HH:MM:SS，仅 SwitchTag=2 时生效</p>
+        :rtype: str
+        """
+        return self._SwitchEndTime
+
+    @SwitchEndTime.setter
+    def SwitchEndTime(self, SwitchEndTime):
+        self._SwitchEndTime = SwitchEndTime
+
+
+    def _deserialize(self, params):
+        self._DBInstanceId = params.get("DBInstanceId")
+        self._ProxyGroupId = params.get("ProxyGroupId")
+        self._Description = params.get("Description")
+        if params.get("ProxyNodeCustom") is not None:
+            self._ProxyNodeCustom = []
+            for item in params.get("ProxyNodeCustom"):
+                obj = ProxyNodeCustom()
+                obj._deserialize(item)
+                self._ProxyNodeCustom.append(obj)
+        self._ReloadBalance = params.get("ReloadBalance")
+        self._SwitchTag = params.get("SwitchTag")
+        self._SwitchStartTime = params.get("SwitchStartTime")
+        self._SwitchEndTime = params.get("SwitchEndTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyDBProxyResponse(AbstractModel):
+    r"""ModifyDBProxy返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DealName: <p>订单号，仅变配（节点规格/数量变更）下单成功时返回；仅修改 Description 时不下单，本字段为空。</p>
+        :type DealName: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._DealName = None
+        self._RequestId = None
+
+    @property
+    def DealName(self):
+        r"""<p>订单号，仅变配（节点规格/数量变更）下单成功时返回；仅修改 Description 时不下单，本字段为空。</p>
+        :rtype: str
+        """
+        return self._DealName
+
+    @DealName.setter
+    def DealName(self, DealName):
+        self._DealName = DealName
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._DealName = params.get("DealName")
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyDatabaseOwnerRequest(AbstractModel):
     r"""ModifyDatabaseOwner请求参数结构体
 
@@ -19903,6 +20712,687 @@ class PolicyRule(AbstractModel):
         
 
 
+class ProxyAddress(AbstractModel):
+    r"""Proxy 接入地址信息，包含 VIP/VPort、读写分离与连接池相关配置以及对应路由列表。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AddressId: <p>Proxy 接入地址 ID</p>
+        :type AddressId: str
+        :param _Vip: <p>Proxy 接入地址 IP</p>
+        :type Vip: str
+        :param _Vport: <p>Proxy 接入地址端口</p>
+        :type Vport: int
+        :param _VpcId: <p>VPC ID</p>
+        :type VpcId: str
+        :param _SubnetId: <p>子网 ID</p>
+        :type SubnetId: str
+        :param _Description: <p>接入地址描述</p>
+        :type Description: str
+        :param _ConnectionPool: <p>是否开启连接池：0-未开启，1-开启</p>
+        :type ConnectionPool: bool
+        :param _Routes: <p>路由列表</p>
+        :type Routes: list of ProxyRoute
+        :param _ConnectionPoolLimit: <p>连接池大小</p>
+        :type ConnectionPoolLimit: int
+        """
+        self._AddressId = None
+        self._Vip = None
+        self._Vport = None
+        self._VpcId = None
+        self._SubnetId = None
+        self._Description = None
+        self._ConnectionPool = None
+        self._Routes = None
+        self._ConnectionPoolLimit = None
+
+    @property
+    def AddressId(self):
+        r"""<p>Proxy 接入地址 ID</p>
+        :rtype: str
+        """
+        return self._AddressId
+
+    @AddressId.setter
+    def AddressId(self, AddressId):
+        self._AddressId = AddressId
+
+    @property
+    def Vip(self):
+        r"""<p>Proxy 接入地址 IP</p>
+        :rtype: str
+        """
+        return self._Vip
+
+    @Vip.setter
+    def Vip(self, Vip):
+        self._Vip = Vip
+
+    @property
+    def Vport(self):
+        r"""<p>Proxy 接入地址端口</p>
+        :rtype: int
+        """
+        return self._Vport
+
+    @Vport.setter
+    def Vport(self, Vport):
+        self._Vport = Vport
+
+    @property
+    def VpcId(self):
+        r"""<p>VPC ID</p>
+        :rtype: str
+        """
+        return self._VpcId
+
+    @VpcId.setter
+    def VpcId(self, VpcId):
+        self._VpcId = VpcId
+
+    @property
+    def SubnetId(self):
+        r"""<p>子网 ID</p>
+        :rtype: str
+        """
+        return self._SubnetId
+
+    @SubnetId.setter
+    def SubnetId(self, SubnetId):
+        self._SubnetId = SubnetId
+
+    @property
+    def Description(self):
+        r"""<p>接入地址描述</p>
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def ConnectionPool(self):
+        r"""<p>是否开启连接池：0-未开启，1-开启</p>
+        :rtype: bool
+        """
+        return self._ConnectionPool
+
+    @ConnectionPool.setter
+    def ConnectionPool(self, ConnectionPool):
+        self._ConnectionPool = ConnectionPool
+
+    @property
+    def Routes(self):
+        r"""<p>路由列表</p>
+        :rtype: list of ProxyRoute
+        """
+        return self._Routes
+
+    @Routes.setter
+    def Routes(self, Routes):
+        self._Routes = Routes
+
+    @property
+    def ConnectionPoolLimit(self):
+        r"""<p>连接池大小</p>
+        :rtype: int
+        """
+        return self._ConnectionPoolLimit
+
+    @ConnectionPoolLimit.setter
+    def ConnectionPoolLimit(self, ConnectionPoolLimit):
+        self._ConnectionPoolLimit = ConnectionPoolLimit
+
+
+    def _deserialize(self, params):
+        self._AddressId = params.get("AddressId")
+        self._Vip = params.get("Vip")
+        self._Vport = params.get("Vport")
+        self._VpcId = params.get("VpcId")
+        self._SubnetId = params.get("SubnetId")
+        self._Description = params.get("Description")
+        self._ConnectionPool = params.get("ConnectionPool")
+        if params.get("Routes") is not None:
+            self._Routes = []
+            for item in params.get("Routes"):
+                obj = ProxyRoute()
+                obj._deserialize(item)
+                self._Routes.append(obj)
+        self._ConnectionPoolLimit = params.get("ConnectionPoolLimit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ProxyGroupInfo(AbstractModel):
+    r"""Proxy 实例（组）详细信息，包含基础信息、节点列表、接入地址列表。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProxyGroupId: <p>Proxy 实例 ID，格式形如：proxygroup-xxxxxxxx</p>
+        :type ProxyGroupId: str
+        :param _Status: <p>Proxy 状态：running/isolated/offline 等</p>
+        :type Status: str
+        :param _TaskStatus: <p>Proxy 任务状态，无任务时为空</p>
+        :type TaskStatus: str
+        :param _Description: <p>Proxy 描述</p>
+        :type Description: str
+        :param _ProxyVersion: <p>Proxy 内核版本号</p>
+        :type ProxyVersion: str
+        :param _ConnectionPoolLimit: <p>连接池阈值（连接数）</p>
+        :type ConnectionPoolLimit: int
+        :param _ProxyNodeSet: <p>Proxy 节点列表</p>
+        :type ProxyNodeSet: list of ProxyNode
+        :param _ProxyAddressSet: <p>Proxy 接入地址列表</p>
+        :type ProxyAddressSet: list of ProxyAddress
+        :param _CreateTime: <p>创建时间，格式：YYYY-MM-DD HH:MM:SS</p>
+        :type CreateTime: str
+        """
+        self._ProxyGroupId = None
+        self._Status = None
+        self._TaskStatus = None
+        self._Description = None
+        self._ProxyVersion = None
+        self._ConnectionPoolLimit = None
+        self._ProxyNodeSet = None
+        self._ProxyAddressSet = None
+        self._CreateTime = None
+
+    @property
+    def ProxyGroupId(self):
+        r"""<p>Proxy 实例 ID，格式形如：proxygroup-xxxxxxxx</p>
+        :rtype: str
+        """
+        return self._ProxyGroupId
+
+    @ProxyGroupId.setter
+    def ProxyGroupId(self, ProxyGroupId):
+        self._ProxyGroupId = ProxyGroupId
+
+    @property
+    def Status(self):
+        r"""<p>Proxy 状态：running/isolated/offline 等</p>
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def TaskStatus(self):
+        r"""<p>Proxy 任务状态，无任务时为空</p>
+        :rtype: str
+        """
+        return self._TaskStatus
+
+    @TaskStatus.setter
+    def TaskStatus(self, TaskStatus):
+        self._TaskStatus = TaskStatus
+
+    @property
+    def Description(self):
+        r"""<p>Proxy 描述</p>
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def ProxyVersion(self):
+        r"""<p>Proxy 内核版本号</p>
+        :rtype: str
+        """
+        return self._ProxyVersion
+
+    @ProxyVersion.setter
+    def ProxyVersion(self, ProxyVersion):
+        self._ProxyVersion = ProxyVersion
+
+    @property
+    def ConnectionPoolLimit(self):
+        r"""<p>连接池阈值（连接数）</p>
+        :rtype: int
+        """
+        return self._ConnectionPoolLimit
+
+    @ConnectionPoolLimit.setter
+    def ConnectionPoolLimit(self, ConnectionPoolLimit):
+        self._ConnectionPoolLimit = ConnectionPoolLimit
+
+    @property
+    def ProxyNodeSet(self):
+        r"""<p>Proxy 节点列表</p>
+        :rtype: list of ProxyNode
+        """
+        return self._ProxyNodeSet
+
+    @ProxyNodeSet.setter
+    def ProxyNodeSet(self, ProxyNodeSet):
+        self._ProxyNodeSet = ProxyNodeSet
+
+    @property
+    def ProxyAddressSet(self):
+        r"""<p>Proxy 接入地址列表</p>
+        :rtype: list of ProxyAddress
+        """
+        return self._ProxyAddressSet
+
+    @ProxyAddressSet.setter
+    def ProxyAddressSet(self, ProxyAddressSet):
+        self._ProxyAddressSet = ProxyAddressSet
+
+    @property
+    def CreateTime(self):
+        r"""<p>创建时间，格式：YYYY-MM-DD HH:MM:SS</p>
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+
+    def _deserialize(self, params):
+        self._ProxyGroupId = params.get("ProxyGroupId")
+        self._Status = params.get("Status")
+        self._TaskStatus = params.get("TaskStatus")
+        self._Description = params.get("Description")
+        self._ProxyVersion = params.get("ProxyVersion")
+        self._ConnectionPoolLimit = params.get("ConnectionPoolLimit")
+        if params.get("ProxyNodeSet") is not None:
+            self._ProxyNodeSet = []
+            for item in params.get("ProxyNodeSet"):
+                obj = ProxyNode()
+                obj._deserialize(item)
+                self._ProxyNodeSet.append(obj)
+        if params.get("ProxyAddressSet") is not None:
+            self._ProxyAddressSet = []
+            for item in params.get("ProxyAddressSet"):
+                obj = ProxyAddress()
+                obj._deserialize(item)
+                self._ProxyAddressSet.append(obj)
+        self._CreateTime = params.get("CreateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ProxyNode(AbstractModel):
+    r"""Proxy 节点信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProxyNodeId: <p>Proxy 节点 ID</p>
+        :type ProxyNodeId: str
+        :param _Zone: <p>Proxy 节点所在可用区</p>
+        :type Zone: str
+        :param _Cpu: <p>节点 CPU 核数（核）</p>
+        :type Cpu: int
+        :param _Mem: <p>节点内存大小（MB）</p><p>单位：MB</p>
+        :type Mem: int
+        :param _Status: <p>节点状态：running/isolated/abnormal 等</p>
+        :type Status: str
+        :param _Connection: <p>节点当前连接数</p>
+        :type Connection: int
+        """
+        self._ProxyNodeId = None
+        self._Zone = None
+        self._Cpu = None
+        self._Mem = None
+        self._Status = None
+        self._Connection = None
+
+    @property
+    def ProxyNodeId(self):
+        r"""<p>Proxy 节点 ID</p>
+        :rtype: str
+        """
+        return self._ProxyNodeId
+
+    @ProxyNodeId.setter
+    def ProxyNodeId(self, ProxyNodeId):
+        self._ProxyNodeId = ProxyNodeId
+
+    @property
+    def Zone(self):
+        r"""<p>Proxy 节点所在可用区</p>
+        :rtype: str
+        """
+        return self._Zone
+
+    @Zone.setter
+    def Zone(self, Zone):
+        self._Zone = Zone
+
+    @property
+    def Cpu(self):
+        r"""<p>节点 CPU 核数（核）</p>
+        :rtype: int
+        """
+        return self._Cpu
+
+    @Cpu.setter
+    def Cpu(self, Cpu):
+        self._Cpu = Cpu
+
+    @property
+    def Mem(self):
+        r"""<p>节点内存大小（MB）</p><p>单位：MB</p>
+        :rtype: int
+        """
+        return self._Mem
+
+    @Mem.setter
+    def Mem(self, Mem):
+        self._Mem = Mem
+
+    @property
+    def Status(self):
+        r"""<p>节点状态：running/isolated/abnormal 等</p>
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Connection(self):
+        r"""<p>节点当前连接数</p>
+        :rtype: int
+        """
+        return self._Connection
+
+    @Connection.setter
+    def Connection(self, Connection):
+        self._Connection = Connection
+
+
+    def _deserialize(self, params):
+        self._ProxyNodeId = params.get("ProxyNodeId")
+        self._Zone = params.get("Zone")
+        self._Cpu = params.get("Cpu")
+        self._Mem = params.get("Mem")
+        self._Status = params.get("Status")
+        self._Connection = params.get("Connection")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ProxyNodeCustom(AbstractModel):
+    r"""Proxy 节点自定义规格信息，每个 Zone 对应一组节点配置。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _NodeCount: <p>该可用区下的 Proxy 节点数量</p><p>取值范围：[1, 16]</p>
+        :type NodeCount: int
+        :param _Zone: <p>Proxy 节点所在可用区</p>
+        :type Zone: str
+        :param _Cpu: <p>Proxy 节点 CPU 核数（核）</p>
+        :type Cpu: int
+        :param _Mem: <p>Proxy 节点内存大小（MB）</p><p>单位：MB</p>
+        :type Mem: int
+        """
+        self._NodeCount = None
+        self._Zone = None
+        self._Cpu = None
+        self._Mem = None
+
+    @property
+    def NodeCount(self):
+        r"""<p>该可用区下的 Proxy 节点数量</p><p>取值范围：[1, 16]</p>
+        :rtype: int
+        """
+        return self._NodeCount
+
+    @NodeCount.setter
+    def NodeCount(self, NodeCount):
+        self._NodeCount = NodeCount
+
+    @property
+    def Zone(self):
+        r"""<p>Proxy 节点所在可用区</p>
+        :rtype: str
+        """
+        return self._Zone
+
+    @Zone.setter
+    def Zone(self, Zone):
+        self._Zone = Zone
+
+    @property
+    def Cpu(self):
+        r"""<p>Proxy 节点 CPU 核数（核）</p>
+        :rtype: int
+        """
+        return self._Cpu
+
+    @Cpu.setter
+    def Cpu(self, Cpu):
+        self._Cpu = Cpu
+
+    @property
+    def Mem(self):
+        r"""<p>Proxy 节点内存大小（MB）</p><p>单位：MB</p>
+        :rtype: int
+        """
+        return self._Mem
+
+    @Mem.setter
+    def Mem(self, Mem):
+        self._Mem = Mem
+
+
+    def _deserialize(self, params):
+        self._NodeCount = params.get("NodeCount")
+        self._Zone = params.get("Zone")
+        self._Cpu = params.get("Cpu")
+        self._Mem = params.get("Mem")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ProxyRoute(AbstractModel):
+    r"""Proxy 路由信息，描述某个 Proxy 接入地址下到具体 PG 节点的路由规则。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _NodeId: <p>路由指向的 PG 节点 ID（实例或只读节点 ID）</p>
+        :type NodeId: str
+        :param _Role: <p>节点角色：master/slave/readonly</p>
+        :type Role: str
+        :param _Weight: <p>路由权重，取值范围 [0, 100]</p>
+        :type Weight: int
+        :param _Status: <p>路由状态：available/unavailable</p>
+        :type Status: str
+        """
+        self._NodeId = None
+        self._Role = None
+        self._Weight = None
+        self._Status = None
+
+    @property
+    def NodeId(self):
+        r"""<p>路由指向的 PG 节点 ID（实例或只读节点 ID）</p>
+        :rtype: str
+        """
+        return self._NodeId
+
+    @NodeId.setter
+    def NodeId(self, NodeId):
+        self._NodeId = NodeId
+
+    @property
+    def Role(self):
+        r"""<p>节点角色：master/slave/readonly</p>
+        :rtype: str
+        """
+        return self._Role
+
+    @Role.setter
+    def Role(self, Role):
+        self._Role = Role
+
+    @property
+    def Weight(self):
+        r"""<p>路由权重，取值范围 [0, 100]</p>
+        :rtype: int
+        """
+        return self._Weight
+
+    @Weight.setter
+    def Weight(self, Weight):
+        self._Weight = Weight
+
+    @property
+    def Status(self):
+        r"""<p>路由状态：available/unavailable</p>
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+
+    def _deserialize(self, params):
+        self._NodeId = params.get("NodeId")
+        self._Role = params.get("Role")
+        self._Weight = params.get("Weight")
+        self._Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ProxySpecItem(AbstractModel):
+    r"""Proxy可售规格信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Cpu: <p>CPU 核数</p><p>单位：核</p>
+        :type Cpu: int
+        :param _Memory: <p>内存大小</p><p>单位：MB</p>
+        :type Memory: int
+        :param _MinNodeNum: <p>最小节点数</p>
+        :type MinNodeNum: int
+        :param _MaxNodeNum: <p>最大节点数</p>
+        :type MaxNodeNum: int
+        """
+        self._Cpu = None
+        self._Memory = None
+        self._MinNodeNum = None
+        self._MaxNodeNum = None
+
+    @property
+    def Cpu(self):
+        r"""<p>CPU 核数</p><p>单位：核</p>
+        :rtype: int
+        """
+        return self._Cpu
+
+    @Cpu.setter
+    def Cpu(self, Cpu):
+        self._Cpu = Cpu
+
+    @property
+    def Memory(self):
+        r"""<p>内存大小</p><p>单位：MB</p>
+        :rtype: int
+        """
+        return self._Memory
+
+    @Memory.setter
+    def Memory(self, Memory):
+        self._Memory = Memory
+
+    @property
+    def MinNodeNum(self):
+        r"""<p>最小节点数</p>
+        :rtype: int
+        """
+        return self._MinNodeNum
+
+    @MinNodeNum.setter
+    def MinNodeNum(self, MinNodeNum):
+        self._MinNodeNum = MinNodeNum
+
+    @property
+    def MaxNodeNum(self):
+        r"""<p>最大节点数</p>
+        :rtype: int
+        """
+        return self._MaxNodeNum
+
+    @MaxNodeNum.setter
+    def MaxNodeNum(self, MaxNodeNum):
+        self._MaxNodeNum = MaxNodeNum
+
+
+    def _deserialize(self, params):
+        self._Cpu = params.get("Cpu")
+        self._Memory = params.get("Memory")
+        self._MinNodeNum = params.get("MinNodeNum")
+        self._MaxNodeNum = params.get("MaxNodeNum")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class RawSlowQuery(AbstractModel):
     r"""慢SQL查询接口返回 慢SQL列表详情
 
@@ -20644,6 +22134,100 @@ class RegionInfo(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class ReloadBalanceDBProxyNodeRequest(AbstractModel):
+    r"""ReloadBalanceDBProxyNode请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DBInstanceId: <p>实例ID</p>
+        :type DBInstanceId: str
+        :param _ProxyGroupId: <p>Proxy代理组ID（不传则默认操作该实例下唯一的代理）</p>
+        :type ProxyGroupId: str
+        :param _AddressId: <p>Proxy地址ID。传入时校验归属，实际重平衡为代理组维度</p>
+        :type AddressId: str
+        """
+        self._DBInstanceId = None
+        self._ProxyGroupId = None
+        self._AddressId = None
+
+    @property
+    def DBInstanceId(self):
+        r"""<p>实例ID</p>
+        :rtype: str
+        """
+        return self._DBInstanceId
+
+    @DBInstanceId.setter
+    def DBInstanceId(self, DBInstanceId):
+        self._DBInstanceId = DBInstanceId
+
+    @property
+    def ProxyGroupId(self):
+        r"""<p>Proxy代理组ID（不传则默认操作该实例下唯一的代理）</p>
+        :rtype: str
+        """
+        return self._ProxyGroupId
+
+    @ProxyGroupId.setter
+    def ProxyGroupId(self, ProxyGroupId):
+        self._ProxyGroupId = ProxyGroupId
+
+    @property
+    def AddressId(self):
+        r"""<p>Proxy地址ID。传入时校验归属，实际重平衡为代理组维度</p>
+        :rtype: str
+        """
+        return self._AddressId
+
+    @AddressId.setter
+    def AddressId(self, AddressId):
+        self._AddressId = AddressId
+
+
+    def _deserialize(self, params):
+        self._DBInstanceId = params.get("DBInstanceId")
+        self._ProxyGroupId = params.get("ProxyGroupId")
+        self._AddressId = params.get("AddressId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ReloadBalanceDBProxyNodeResponse(AbstractModel):
+    r"""ReloadBalanceDBProxyNode返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
 
 
 class RemoveDBInstanceFromReadOnlyGroupRequest(AbstractModel):

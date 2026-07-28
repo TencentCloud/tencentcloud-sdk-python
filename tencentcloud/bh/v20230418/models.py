@@ -14420,23 +14420,26 @@ class LoginSetting(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TimeOut: 登录会话超时，10分钟，20分钟，30分钟，默认20分钟
+        :param _TimeOut: <p>登录会话超时，10分钟，20分钟，30分钟，默认20分钟</p>
         :type TimeOut: int
-        :param _LockThreshold: 连续密码错误次数，超过锁定账号，3-5
+        :param _LockThreshold: <p>连续密码错误次数，超过锁定账号，3-5</p>
         :type LockThreshold: int
-        :param _LockTime: 账号锁定时长，10分钟，20分钟，30分钟
+        :param _LockTime: <p>账号锁定时长，10分钟，20分钟，30分钟</p>
         :type LockTime: int
-        :param _InactiveUserLock: 用户多少天不活跃，账号自动锁定
+        :param _InactiveUserLock: <p>用户多少天不活跃，账号自动锁定</p>
         :type InactiveUserLock: int
+        :param _EnableSingleLogin: <p>运维账号单点登录开关：0-关闭，1-开启</p>
+        :type EnableSingleLogin: int
         """
         self._TimeOut = None
         self._LockThreshold = None
         self._LockTime = None
         self._InactiveUserLock = None
+        self._EnableSingleLogin = None
 
     @property
     def TimeOut(self):
-        r"""登录会话超时，10分钟，20分钟，30分钟，默认20分钟
+        r"""<p>登录会话超时，10分钟，20分钟，30分钟，默认20分钟</p>
         :rtype: int
         """
         return self._TimeOut
@@ -14447,7 +14450,7 @@ class LoginSetting(AbstractModel):
 
     @property
     def LockThreshold(self):
-        r"""连续密码错误次数，超过锁定账号，3-5
+        r"""<p>连续密码错误次数，超过锁定账号，3-5</p>
         :rtype: int
         """
         return self._LockThreshold
@@ -14458,7 +14461,7 @@ class LoginSetting(AbstractModel):
 
     @property
     def LockTime(self):
-        r"""账号锁定时长，10分钟，20分钟，30分钟
+        r"""<p>账号锁定时长，10分钟，20分钟，30分钟</p>
         :rtype: int
         """
         return self._LockTime
@@ -14469,7 +14472,7 @@ class LoginSetting(AbstractModel):
 
     @property
     def InactiveUserLock(self):
-        r"""用户多少天不活跃，账号自动锁定
+        r"""<p>用户多少天不活跃，账号自动锁定</p>
         :rtype: int
         """
         return self._InactiveUserLock
@@ -14478,12 +14481,24 @@ class LoginSetting(AbstractModel):
     def InactiveUserLock(self, InactiveUserLock):
         self._InactiveUserLock = InactiveUserLock
 
+    @property
+    def EnableSingleLogin(self):
+        r"""<p>运维账号单点登录开关：0-关闭，1-开启</p>
+        :rtype: int
+        """
+        return self._EnableSingleLogin
+
+    @EnableSingleLogin.setter
+    def EnableSingleLogin(self, EnableSingleLogin):
+        self._EnableSingleLogin = EnableSingleLogin
+
 
     def _deserialize(self, params):
         self._TimeOut = params.get("TimeOut")
         self._LockThreshold = params.get("LockThreshold")
         self._LockTime = params.get("LockTime")
         self._InactiveUserLock = params.get("InactiveUserLock")
+        self._EnableSingleLogin = params.get("EnableSingleLogin")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -32970,51 +32970,40 @@ class FlowApproverDetail(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ApproveMessage: 签署时的相关信息
+        :param _ApproveMessage: <p>签署时的相关信息</p>
         :type ApproveMessage: str
-        :param _ApproveName: 签署方姓名
+        :param _ApproveName: <p>签署方姓名</p>
         :type ApproveName: str
-        :param _ApproveStatus: 签署方的签署状态
-0：还没有发起
-1：流程中 没有开始处理
-2：待签署
-3：已签署
-4：已拒绝
-5：已过期
-6：已撤销
-7：还没有预发起
-8：待填写
-9：因为各种原因而终止
-10：填写完成
-15：已解除
-19：转他人处理
+        :param _ApproveStatus: <p>签署方的签署状态<br>0：还没有发起<br>1：流程中 没有开始处理<br>2：待签署<br>3：已签署<br>4：已拒绝<br>5：已过期<br>6：已撤销<br>7：还没有预发起<br>8：待填写<br>9：因为各种原因而终止<br>10：填写完成<br>15：已解除<br>19：转他人处理</p>
         :type ApproveStatus: int
-        :param _ReceiptId: 模板配置中的参与方ID,与控件绑定
+        :param _ReceiptId: <p>模板配置中的参与方ID,与控件绑定</p>
         :type ReceiptId: str
-        :param _CustomUserId: 客户自定义的用户ID
+        :param _CustomUserId: <p>客户自定义的用户ID</p>
         :type CustomUserId: str
-        :param _Mobile: 签署人手机号
+        :param _Mobile: <p>签署人手机号</p>
         :type Mobile: str
-        :param _SignOrder: 签署顺序，如果是有序签署，签署顺序从小到大
+        :param _SignOrder: <p>签署顺序，如果是有序签署，签署顺序从小到大</p>
         :type SignOrder: int
-        :param _ApproveTime: 签署人签署时间，时间戳，单位秒
+        :param _ApproveTime: <p>签署人签署时间，时间戳，单位秒</p>
         :type ApproveTime: int
-        :param _ApproveType: 签署方类型，ORGANIZATION-企业员工，PERSON-个人，ENTERPRISESERVER-企业静默签
+        :param _ApproveType: <p>签署方类型，ORGANIZATION-企业员工，PERSON-个人，ENTERPRISESERVER-企业静默签</p>
         :type ApproveType: str
-        :param _ApproverSource: 签署方侧用户来源，如WEWORKAPP-企业微信等
+        :param _ApproverSource: <p>签署方侧用户来源，如WEWORKAPP-企业微信等</p>
         :type ApproverSource: str
-        :param _CustomApproverTag: 客户自定义签署方标识
+        :param _CustomApproverTag: <p>客户自定义签署方标识</p>
         :type CustomApproverTag: str
-        :param _OrganizationId: 签署方企业Id
+        :param _OrganizationId: <p>签署方企业Id</p>
         :type OrganizationId: str
-        :param _OrganizationName: 签署方企业名称
+        :param _OrganizationName: <p>签署方企业名称</p>
         :type OrganizationName: str
-        :param _SignId: 签署参与人在本流程中的编号ID（每个流程不同），可用此ID来定位签署参与人在本流程的签署节点，也可用于后续创建签署链接等操作。
+        :param _SignId: <p>签署参与人在本流程中的编号ID（每个流程不同），可用此ID来定位签署参与人在本流程的签署节点，也可用于后续创建签署链接等操作。</p>
         :type SignId: str
-        :param _ApproverRoleName: 自定义签署人角色
+        :param _ApproverRoleName: <p>自定义签署人角色</p>
         :type ApproverRoleName: str
-        :param _RecipientId: 模板配置中的参与方ID,与控件绑定
+        :param _RecipientId: <p>模板配置中的参与方ID,与控件绑定</p>
         :type RecipientId: str
+        :param _ForwardRecords: <p>签署方转交记录列表，标识该签署方是由谁转交而来，按转交时间由远到近进行排序</p>
+        :type ForwardRecords: list of ForwardRecord
         """
         self._ApproveMessage = None
         self._ApproveName = None
@@ -33032,10 +33021,11 @@ class FlowApproverDetail(AbstractModel):
         self._SignId = None
         self._ApproverRoleName = None
         self._RecipientId = None
+        self._ForwardRecords = None
 
     @property
     def ApproveMessage(self):
-        r"""签署时的相关信息
+        r"""<p>签署时的相关信息</p>
         :rtype: str
         """
         return self._ApproveMessage
@@ -33046,7 +33036,7 @@ class FlowApproverDetail(AbstractModel):
 
     @property
     def ApproveName(self):
-        r"""签署方姓名
+        r"""<p>签署方姓名</p>
         :rtype: str
         """
         return self._ApproveName
@@ -33057,20 +33047,7 @@ class FlowApproverDetail(AbstractModel):
 
     @property
     def ApproveStatus(self):
-        r"""签署方的签署状态
-0：还没有发起
-1：流程中 没有开始处理
-2：待签署
-3：已签署
-4：已拒绝
-5：已过期
-6：已撤销
-7：还没有预发起
-8：待填写
-9：因为各种原因而终止
-10：填写完成
-15：已解除
-19：转他人处理
+        r"""<p>签署方的签署状态<br>0：还没有发起<br>1：流程中 没有开始处理<br>2：待签署<br>3：已签署<br>4：已拒绝<br>5：已过期<br>6：已撤销<br>7：还没有预发起<br>8：待填写<br>9：因为各种原因而终止<br>10：填写完成<br>15：已解除<br>19：转他人处理</p>
         :rtype: int
         """
         return self._ApproveStatus
@@ -33083,7 +33060,7 @@ class FlowApproverDetail(AbstractModel):
     def ReceiptId(self):
         warnings.warn("parameter `ReceiptId` is deprecated", DeprecationWarning) 
 
-        r"""模板配置中的参与方ID,与控件绑定
+        r"""<p>模板配置中的参与方ID,与控件绑定</p>
         :rtype: str
         """
         return self._ReceiptId
@@ -33096,7 +33073,7 @@ class FlowApproverDetail(AbstractModel):
 
     @property
     def CustomUserId(self):
-        r"""客户自定义的用户ID
+        r"""<p>客户自定义的用户ID</p>
         :rtype: str
         """
         return self._CustomUserId
@@ -33107,7 +33084,7 @@ class FlowApproverDetail(AbstractModel):
 
     @property
     def Mobile(self):
-        r"""签署人手机号
+        r"""<p>签署人手机号</p>
         :rtype: str
         """
         return self._Mobile
@@ -33118,7 +33095,7 @@ class FlowApproverDetail(AbstractModel):
 
     @property
     def SignOrder(self):
-        r"""签署顺序，如果是有序签署，签署顺序从小到大
+        r"""<p>签署顺序，如果是有序签署，签署顺序从小到大</p>
         :rtype: int
         """
         return self._SignOrder
@@ -33129,7 +33106,7 @@ class FlowApproverDetail(AbstractModel):
 
     @property
     def ApproveTime(self):
-        r"""签署人签署时间，时间戳，单位秒
+        r"""<p>签署人签署时间，时间戳，单位秒</p>
         :rtype: int
         """
         return self._ApproveTime
@@ -33140,7 +33117,7 @@ class FlowApproverDetail(AbstractModel):
 
     @property
     def ApproveType(self):
-        r"""签署方类型，ORGANIZATION-企业员工，PERSON-个人，ENTERPRISESERVER-企业静默签
+        r"""<p>签署方类型，ORGANIZATION-企业员工，PERSON-个人，ENTERPRISESERVER-企业静默签</p>
         :rtype: str
         """
         return self._ApproveType
@@ -33151,7 +33128,7 @@ class FlowApproverDetail(AbstractModel):
 
     @property
     def ApproverSource(self):
-        r"""签署方侧用户来源，如WEWORKAPP-企业微信等
+        r"""<p>签署方侧用户来源，如WEWORKAPP-企业微信等</p>
         :rtype: str
         """
         return self._ApproverSource
@@ -33162,7 +33139,7 @@ class FlowApproverDetail(AbstractModel):
 
     @property
     def CustomApproverTag(self):
-        r"""客户自定义签署方标识
+        r"""<p>客户自定义签署方标识</p>
         :rtype: str
         """
         return self._CustomApproverTag
@@ -33173,7 +33150,7 @@ class FlowApproverDetail(AbstractModel):
 
     @property
     def OrganizationId(self):
-        r"""签署方企业Id
+        r"""<p>签署方企业Id</p>
         :rtype: str
         """
         return self._OrganizationId
@@ -33184,7 +33161,7 @@ class FlowApproverDetail(AbstractModel):
 
     @property
     def OrganizationName(self):
-        r"""签署方企业名称
+        r"""<p>签署方企业名称</p>
         :rtype: str
         """
         return self._OrganizationName
@@ -33195,7 +33172,7 @@ class FlowApproverDetail(AbstractModel):
 
     @property
     def SignId(self):
-        r"""签署参与人在本流程中的编号ID（每个流程不同），可用此ID来定位签署参与人在本流程的签署节点，也可用于后续创建签署链接等操作。
+        r"""<p>签署参与人在本流程中的编号ID（每个流程不同），可用此ID来定位签署参与人在本流程的签署节点，也可用于后续创建签署链接等操作。</p>
         :rtype: str
         """
         return self._SignId
@@ -33206,7 +33183,7 @@ class FlowApproverDetail(AbstractModel):
 
     @property
     def ApproverRoleName(self):
-        r"""自定义签署人角色
+        r"""<p>自定义签署人角色</p>
         :rtype: str
         """
         return self._ApproverRoleName
@@ -33217,7 +33194,7 @@ class FlowApproverDetail(AbstractModel):
 
     @property
     def RecipientId(self):
-        r"""模板配置中的参与方ID,与控件绑定
+        r"""<p>模板配置中的参与方ID,与控件绑定</p>
         :rtype: str
         """
         return self._RecipientId
@@ -33225,6 +33202,17 @@ class FlowApproverDetail(AbstractModel):
     @RecipientId.setter
     def RecipientId(self, RecipientId):
         self._RecipientId = RecipientId
+
+    @property
+    def ForwardRecords(self):
+        r"""<p>签署方转交记录列表，标识该签署方是由谁转交而来，按转交时间由远到近进行排序</p>
+        :rtype: list of ForwardRecord
+        """
+        return self._ForwardRecords
+
+    @ForwardRecords.setter
+    def ForwardRecords(self, ForwardRecords):
+        self._ForwardRecords = ForwardRecords
 
 
     def _deserialize(self, params):
@@ -33244,6 +33232,12 @@ class FlowApproverDetail(AbstractModel):
         self._SignId = params.get("SignId")
         self._ApproverRoleName = params.get("ApproverRoleName")
         self._RecipientId = params.get("RecipientId")
+        if params.get("ForwardRecords") is not None:
+            self._ForwardRecords = []
+            for item in params.get("ForwardRecords"):
+                obj = ForwardRecord()
+                obj._deserialize(item)
+                self._ForwardRecords.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -35722,6 +35716,102 @@ class FormField(AbstractModel):
         self._ComponentValue = params.get("ComponentValue")
         self._ComponentId = params.get("ComponentId")
         self._ComponentName = params.get("ComponentName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ForwardRecord(AbstractModel):
+    r"""签署人的转交记录详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: <p>转交人打码后的姓名</p>
+        :type Name: str
+        :param _Mobile: <p>转交人打码后的手机号</p>
+        :type Mobile: str
+        :param _ForwardType: <p>进行转交的原因</p><p>枚举值：</p><ul><li>QUIT_FORWARD： 离职转交</li><li>FORWARD： 员工操作转交</li></ul>
+        :type ForwardType: str
+        :param _ForwardMessage: <p>转交的详情信息</p>
+        :type ForwardMessage: str
+        :param _ForwardTime: <p>转交时间</p><p>单位：时间戳（秒级）</p>
+        :type ForwardTime: int
+        """
+        self._Name = None
+        self._Mobile = None
+        self._ForwardType = None
+        self._ForwardMessage = None
+        self._ForwardTime = None
+
+    @property
+    def Name(self):
+        r"""<p>转交人打码后的姓名</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Mobile(self):
+        r"""<p>转交人打码后的手机号</p>
+        :rtype: str
+        """
+        return self._Mobile
+
+    @Mobile.setter
+    def Mobile(self, Mobile):
+        self._Mobile = Mobile
+
+    @property
+    def ForwardType(self):
+        r"""<p>进行转交的原因</p><p>枚举值：</p><ul><li>QUIT_FORWARD： 离职转交</li><li>FORWARD： 员工操作转交</li></ul>
+        :rtype: str
+        """
+        return self._ForwardType
+
+    @ForwardType.setter
+    def ForwardType(self, ForwardType):
+        self._ForwardType = ForwardType
+
+    @property
+    def ForwardMessage(self):
+        r"""<p>转交的详情信息</p>
+        :rtype: str
+        """
+        return self._ForwardMessage
+
+    @ForwardMessage.setter
+    def ForwardMessage(self, ForwardMessage):
+        self._ForwardMessage = ForwardMessage
+
+    @property
+    def ForwardTime(self):
+        r"""<p>转交时间</p><p>单位：时间戳（秒级）</p>
+        :rtype: int
+        """
+        return self._ForwardTime
+
+    @ForwardTime.setter
+    def ForwardTime(self, ForwardTime):
+        self._ForwardTime = ForwardTime
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Mobile = params.get("Mobile")
+        self._ForwardType = params.get("ForwardType")
+        self._ForwardMessage = params.get("ForwardMessage")
+        self._ForwardTime = params.get("ForwardTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

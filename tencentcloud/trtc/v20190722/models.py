@@ -2992,6 +2992,183 @@ class CreateCloudTranscriptionResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateLiveStreamModerationRequest(AbstractModel):
+    r"""CreateLiveStreamModeration请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SdkAppId: <p>TRTC的<a href="https://cloud.tencent.com/document/product/647/46351#sdkappid">SdkAppId</a>。</p>
+        :type SdkAppId: int
+        :param _Input: <p>直播流输入源</p>
+        :type Input: :class:`tencentcloud.trtc.v20190722.models.Input`
+        :param _LiveModerationParams: <p>直播流ai理解审核参数</p>
+        :type LiveModerationParams: :class:`tencentcloud.trtc.v20190722.models.LiveModerationParams`
+        :param _DataId: <p>业务自定义唯一标识，原样透传到回调</p><p>入参限制：长度限制60字符</p>
+        :type DataId: str
+        :param _SourceInfo: <p>额外信息透传结构体（房间/主播/业务自定义），原样回带到回调</p>
+        :type SourceInfo: :class:`tencentcloud.trtc.v20190722.models.SourceInfo`
+        :param _LiveModerationStorageParams: <p>直播流ai理解转存文件存储参数</p>
+        :type LiveModerationStorageParams: :class:`tencentcloud.trtc.v20190722.models.LiveModerationStorageParams`
+        :param _ResourceExpiredHour: <p>单路任务最大的生命周期</p><p>取值范围：[1, 72]</p><p>单位：小时</p><p>默认值：48</p>
+        :type ResourceExpiredHour: int
+        """
+        self._SdkAppId = None
+        self._Input = None
+        self._LiveModerationParams = None
+        self._DataId = None
+        self._SourceInfo = None
+        self._LiveModerationStorageParams = None
+        self._ResourceExpiredHour = None
+
+    @property
+    def SdkAppId(self):
+        r"""<p>TRTC的<a href="https://cloud.tencent.com/document/product/647/46351#sdkappid">SdkAppId</a>。</p>
+        :rtype: int
+        """
+        return self._SdkAppId
+
+    @SdkAppId.setter
+    def SdkAppId(self, SdkAppId):
+        self._SdkAppId = SdkAppId
+
+    @property
+    def Input(self):
+        r"""<p>直播流输入源</p>
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.Input`
+        """
+        return self._Input
+
+    @Input.setter
+    def Input(self, Input):
+        self._Input = Input
+
+    @property
+    def LiveModerationParams(self):
+        r"""<p>直播流ai理解审核参数</p>
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.LiveModerationParams`
+        """
+        return self._LiveModerationParams
+
+    @LiveModerationParams.setter
+    def LiveModerationParams(self, LiveModerationParams):
+        self._LiveModerationParams = LiveModerationParams
+
+    @property
+    def DataId(self):
+        r"""<p>业务自定义唯一标识，原样透传到回调</p><p>入参限制：长度限制60字符</p>
+        :rtype: str
+        """
+        return self._DataId
+
+    @DataId.setter
+    def DataId(self, DataId):
+        self._DataId = DataId
+
+    @property
+    def SourceInfo(self):
+        r"""<p>额外信息透传结构体（房间/主播/业务自定义），原样回带到回调</p>
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.SourceInfo`
+        """
+        return self._SourceInfo
+
+    @SourceInfo.setter
+    def SourceInfo(self, SourceInfo):
+        self._SourceInfo = SourceInfo
+
+    @property
+    def LiveModerationStorageParams(self):
+        r"""<p>直播流ai理解转存文件存储参数</p>
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.LiveModerationStorageParams`
+        """
+        return self._LiveModerationStorageParams
+
+    @LiveModerationStorageParams.setter
+    def LiveModerationStorageParams(self, LiveModerationStorageParams):
+        self._LiveModerationStorageParams = LiveModerationStorageParams
+
+    @property
+    def ResourceExpiredHour(self):
+        r"""<p>单路任务最大的生命周期</p><p>取值范围：[1, 72]</p><p>单位：小时</p><p>默认值：48</p>
+        :rtype: int
+        """
+        return self._ResourceExpiredHour
+
+    @ResourceExpiredHour.setter
+    def ResourceExpiredHour(self, ResourceExpiredHour):
+        self._ResourceExpiredHour = ResourceExpiredHour
+
+
+    def _deserialize(self, params):
+        self._SdkAppId = params.get("SdkAppId")
+        if params.get("Input") is not None:
+            self._Input = Input()
+            self._Input._deserialize(params.get("Input"))
+        if params.get("LiveModerationParams") is not None:
+            self._LiveModerationParams = LiveModerationParams()
+            self._LiveModerationParams._deserialize(params.get("LiveModerationParams"))
+        self._DataId = params.get("DataId")
+        if params.get("SourceInfo") is not None:
+            self._SourceInfo = SourceInfo()
+            self._SourceInfo._deserialize(params.get("SourceInfo"))
+        if params.get("LiveModerationStorageParams") is not None:
+            self._LiveModerationStorageParams = LiveModerationStorageParams()
+            self._LiveModerationStorageParams._deserialize(params.get("LiveModerationStorageParams"))
+        self._ResourceExpiredHour = params.get("ResourceExpiredHour")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateLiveStreamModerationResponse(AbstractModel):
+    r"""CreateLiveStreamModeration返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: <p>AI 内容理解服务分配的任务ID。任务ID是对一次切片任务生命周期过程的唯一标识，结束任务时会失去意义。任务ID需要业务保存下来，作为下次针对这个任务操作的参数</p>
+        :type TaskId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        r"""<p>AI 内容理解服务分配的任务ID。任务ID是对一次切片任务生命周期过程的唯一标识，结束任务时会失去意义。任务ID需要业务保存下来，作为下次针对这个任务操作的参数</p>
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
+
+
 class CreatePictureRequest(AbstractModel):
     r"""CreatePicture请求参数结构体
 
@@ -3606,6 +3783,100 @@ class DeleteCloudTranscriptionResponse(AbstractModel):
     @property
     def TaskId(self):
         r"""转录服务分配的任务 ID。任务 ID 是对一次转录生命周期过程的唯一标识，结束转录时会失去意义。
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteLiveStreamModerationRequest(AbstractModel):
+    r"""DeleteLiveStreamModeration请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SdkAppId: <p>TRTC的SDKAppId，和TRTC的房间所对应的SDKAppId相同。</p>
+        :type SdkAppId: int
+        :param _TaskId: <p>AI 内容理解任务的唯一Id，在启动切片任务成功后会返回。</p>
+        :type TaskId: str
+        """
+        self._SdkAppId = None
+        self._TaskId = None
+
+    @property
+    def SdkAppId(self):
+        r"""<p>TRTC的SDKAppId，和TRTC的房间所对应的SDKAppId相同。</p>
+        :rtype: int
+        """
+        return self._SdkAppId
+
+    @SdkAppId.setter
+    def SdkAppId(self, SdkAppId):
+        self._SdkAppId = SdkAppId
+
+    @property
+    def TaskId(self):
+        r"""<p>AI 内容理解任务的唯一Id，在启动切片任务成功后会返回。</p>
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+
+    def _deserialize(self, params):
+        self._SdkAppId = params.get("SdkAppId")
+        self._TaskId = params.get("TaskId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteLiveStreamModerationResponse(AbstractModel):
+    r"""DeleteLiveStreamModeration返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: <p>AI 内容理解任务的唯一Id，在启动切片任务成功后会返回。</p>
+        :type TaskId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        r"""<p>AI 内容理解任务的唯一Id，在启动切片任务成功后会返回。</p>
         :rtype: str
         """
         return self._TaskId
@@ -5021,6 +5292,115 @@ class DescribeCloudTranscriptionResponse(AbstractModel):
         self._StartTime = params.get("StartTime")
         self._Status = params.get("Status")
         self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeLiveStreamModerationRequest(AbstractModel):
+    r"""DescribeLiveStreamModeration请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SdkAppId: <p>TRTC的SDKAppId，和录制的房间所对应的SDKAppId相同。</p>
+        :type SdkAppId: int
+        :param _TaskId: <p>AI 内容理解任务的唯一Id，在启动切片任务成功后会返回。</p>
+        :type TaskId: str
+        """
+        self._SdkAppId = None
+        self._TaskId = None
+
+    @property
+    def SdkAppId(self):
+        r"""<p>TRTC的SDKAppId，和录制的房间所对应的SDKAppId相同。</p>
+        :rtype: int
+        """
+        return self._SdkAppId
+
+    @SdkAppId.setter
+    def SdkAppId(self, SdkAppId):
+        self._SdkAppId = SdkAppId
+
+    @property
+    def TaskId(self):
+        r"""<p>AI 内容理解任务的唯一Id，在启动切片任务成功后会返回。</p>
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+
+    def _deserialize(self, params):
+        self._SdkAppId = params.get("SdkAppId")
+        self._TaskId = params.get("TaskId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeLiveStreamModerationResponse(AbstractModel):
+    r"""DescribeLiveStreamModeration返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: <p>AI 内容理解任务的唯一Id，在启动切片任务成功后会返回。</p>
+        :type TaskId: str
+        :param _Status: <p>AI内容理解任务的状态信息。Idle:表示当前任务空闲中,InProgress:表示当前任务正在进行中,Exited:表示当前任务正在退出的过程中。</p><p>枚举值：</p><ul><li>InProgress： 进行中</li></ul>
+        :type Status: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._Status = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        r"""<p>AI 内容理解任务的唯一Id，在启动切片任务成功后会返回。</p>
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def Status(self):
+        r"""<p>AI内容理解任务的状态信息。Idle:表示当前任务空闲中,InProgress:表示当前任务正在进行中,Exited:表示当前任务正在退出的过程中。</p><p>枚举值：</p><ul><li>InProgress： 进行中</li></ul>
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._Status = params.get("Status")
         self._RequestId = params.get("RequestId")
 
 
@@ -8994,6 +9374,57 @@ class EventMessage(AbstractModel):
         
 
 
+class Input(AbstractModel):
+    r"""拉流输入源
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Url: <p>直播拉流地址</p><p>入参限制：字符长度小于2048</p>
+        :type Url: str
+        :param _Format: <p>显式协议</p><p>枚举值：</p><ul><li>rtmp： rtmp协议</li></ul>
+        :type Format: str
+        """
+        self._Url = None
+        self._Format = None
+
+    @property
+    def Url(self):
+        r"""<p>直播拉流地址</p><p>入参限制：字符长度小于2048</p>
+        :rtype: str
+        """
+        return self._Url
+
+    @Url.setter
+    def Url(self, Url):
+        self._Url = Url
+
+    @property
+    def Format(self):
+        r"""<p>显式协议</p><p>枚举值：</p><ul><li>rtmp： rtmp协议</li></ul>
+        :rtype: str
+        """
+        return self._Format
+
+    @Format.setter
+    def Format(self, Format):
+        self._Format = Format
+
+
+    def _deserialize(self, params):
+        self._Url = params.get("Url")
+        self._Format = params.get("Format")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class InvokeLLM(AbstractModel):
     r"""调用服务端主动发起请求到LLM
 
@@ -9245,6 +9676,155 @@ class LayoutParams(AbstractModel):
             self._WaterMarkParams = WaterMarkParams()
             self._WaterMarkParams._deserialize(params.get("WaterMarkParams"))
         self._RenderMode = params.get("RenderMode")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class LiveModerationParams(AbstractModel):
+    r"""直播流ai内容理解参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ModerationType: <p>AI 内容理解任务类型</p><p>枚举值：</p><ul><li>1： 音频切片理解</li><li>2： 视频截帧理解</li><li>3： 音视切片+视频截帧理解 </li></ul><p>默认值：3</p>
+        :type ModerationType: int
+        :param _MaxIdleTime: <p>持续没有上行推流的状态超过MaxIdleTime的时长，自动停止切片。</p><p>取值范围：[30, 1800]</p><p>单位：秒</p><p>默认值：30</p>
+        :type MaxIdleTime: int
+        :param _SliceVideo: <p>视频截帧间隔</p><p>取值范围：[1, 60]</p><p>单位：秒</p><p>默认值：5</p>
+        :type SliceVideo: int
+        :param _SliceAudio: <p>音频切片时长</p><p>取值范围：[5, 60]</p><p>单位：秒</p><p>默认值：15</p>
+        :type SliceAudio: int
+        :param _SaveModerationFile: <p>是否保存文件</p><p>枚举值：</p><ul><li>0： 0不保存</li><li>1： 1保存所有</li><li>2： 仅命中</li></ul><p>默认值：1</p>
+        :type SaveModerationFile: int
+        :param _CallbackAllResults: <p>是否回调所有内容理解结果</p><p>枚举值：</p><ul><li>0： 回调所有结果</li><li>1： 仅回调命中结果</li></ul><p>默认值：0</p>
+        :type CallbackAllResults: int
+        """
+        self._ModerationType = None
+        self._MaxIdleTime = None
+        self._SliceVideo = None
+        self._SliceAudio = None
+        self._SaveModerationFile = None
+        self._CallbackAllResults = None
+
+    @property
+    def ModerationType(self):
+        r"""<p>AI 内容理解任务类型</p><p>枚举值：</p><ul><li>1： 音频切片理解</li><li>2： 视频截帧理解</li><li>3： 音视切片+视频截帧理解 </li></ul><p>默认值：3</p>
+        :rtype: int
+        """
+        return self._ModerationType
+
+    @ModerationType.setter
+    def ModerationType(self, ModerationType):
+        self._ModerationType = ModerationType
+
+    @property
+    def MaxIdleTime(self):
+        r"""<p>持续没有上行推流的状态超过MaxIdleTime的时长，自动停止切片。</p><p>取值范围：[30, 1800]</p><p>单位：秒</p><p>默认值：30</p>
+        :rtype: int
+        """
+        return self._MaxIdleTime
+
+    @MaxIdleTime.setter
+    def MaxIdleTime(self, MaxIdleTime):
+        self._MaxIdleTime = MaxIdleTime
+
+    @property
+    def SliceVideo(self):
+        r"""<p>视频截帧间隔</p><p>取值范围：[1, 60]</p><p>单位：秒</p><p>默认值：5</p>
+        :rtype: int
+        """
+        return self._SliceVideo
+
+    @SliceVideo.setter
+    def SliceVideo(self, SliceVideo):
+        self._SliceVideo = SliceVideo
+
+    @property
+    def SliceAudio(self):
+        r"""<p>音频切片时长</p><p>取值范围：[5, 60]</p><p>单位：秒</p><p>默认值：15</p>
+        :rtype: int
+        """
+        return self._SliceAudio
+
+    @SliceAudio.setter
+    def SliceAudio(self, SliceAudio):
+        self._SliceAudio = SliceAudio
+
+    @property
+    def SaveModerationFile(self):
+        r"""<p>是否保存文件</p><p>枚举值：</p><ul><li>0： 0不保存</li><li>1： 1保存所有</li><li>2： 仅命中</li></ul><p>默认值：1</p>
+        :rtype: int
+        """
+        return self._SaveModerationFile
+
+    @SaveModerationFile.setter
+    def SaveModerationFile(self, SaveModerationFile):
+        self._SaveModerationFile = SaveModerationFile
+
+    @property
+    def CallbackAllResults(self):
+        r"""<p>是否回调所有内容理解结果</p><p>枚举值：</p><ul><li>0： 回调所有结果</li><li>1： 仅回调命中结果</li></ul><p>默认值：0</p>
+        :rtype: int
+        """
+        return self._CallbackAllResults
+
+    @CallbackAllResults.setter
+    def CallbackAllResults(self, CallbackAllResults):
+        self._CallbackAllResults = CallbackAllResults
+
+
+    def _deserialize(self, params):
+        self._ModerationType = params.get("ModerationType")
+        self._MaxIdleTime = params.get("MaxIdleTime")
+        self._SliceVideo = params.get("SliceVideo")
+        self._SliceAudio = params.get("SliceAudio")
+        self._SaveModerationFile = params.get("SaveModerationFile")
+        self._CallbackAllResults = params.get("CallbackAllResults")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class LiveModerationStorageParams(AbstractModel):
+    r"""直播流aI理解的转存文件存储参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CloudModerationStorage: <p>直播流ai理解文件转存</p>
+        :type CloudModerationStorage: :class:`tencentcloud.trtc.v20190722.models.CloudModerationStorage`
+        """
+        self._CloudModerationStorage = None
+
+    @property
+    def CloudModerationStorage(self):
+        r"""<p>直播流ai理解文件转存</p>
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.CloudModerationStorage`
+        """
+        return self._CloudModerationStorage
+
+    @CloudModerationStorage.setter
+    def CloudModerationStorage(self, CloudModerationStorage):
+        self._CloudModerationStorage = CloudModerationStorage
+
+
+    def _deserialize(self, params):
+        if params.get("CloudModerationStorage") is not None:
+            self._CloudModerationStorage = CloudModerationStorage()
+            self._CloudModerationStorage._deserialize(params.get("CloudModerationStorage"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -15290,6 +15870,72 @@ class SmallVideoLayoutParams(AbstractModel):
         self._ImageHeight = params.get("ImageHeight")
         self._LocationX = params.get("LocationX")
         self._LocationY = params.get("LocationY")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SourceInfo(AbstractModel):
+    r"""额外信息透传结构体（房间/主播/业务自定义），原样回带到回调
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RoomId: <p>直播间 ID（用于结果透传与去重；数字房间号也用 string 传）</p>
+        :type RoomId: str
+        :param _RoomIdType: <p>房间号类型</p><p>枚举值：</p><ul><li>0： 字符串房间号</li><li>1： 数字房间号</li></ul>
+        :type RoomIdType: int
+        :param _UserId: <p>主播/被审核方 ID</p>
+        :type UserId: str
+        """
+        self._RoomId = None
+        self._RoomIdType = None
+        self._UserId = None
+
+    @property
+    def RoomId(self):
+        r"""<p>直播间 ID（用于结果透传与去重；数字房间号也用 string 传）</p>
+        :rtype: str
+        """
+        return self._RoomId
+
+    @RoomId.setter
+    def RoomId(self, RoomId):
+        self._RoomId = RoomId
+
+    @property
+    def RoomIdType(self):
+        r"""<p>房间号类型</p><p>枚举值：</p><ul><li>0： 字符串房间号</li><li>1： 数字房间号</li></ul>
+        :rtype: int
+        """
+        return self._RoomIdType
+
+    @RoomIdType.setter
+    def RoomIdType(self, RoomIdType):
+        self._RoomIdType = RoomIdType
+
+    @property
+    def UserId(self):
+        r"""<p>主播/被审核方 ID</p>
+        :rtype: str
+        """
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
+
+
+    def _deserialize(self, params):
+        self._RoomId = params.get("RoomId")
+        self._RoomIdType = params.get("RoomIdType")
+        self._UserId = params.get("UserId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -785,6 +785,29 @@ class MqttClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeDeviceCertificateBackupHistory(self, request):
+        r"""跨集群灾备场景下查询设备证书同步记录
+
+        :param request: Request instance for DescribeDeviceCertificateBackupHistory.
+        :type request: :class:`tencentcloud.mqtt.v20240516.models.DescribeDeviceCertificateBackupHistoryRequest`
+        :rtype: :class:`tencentcloud.mqtt.v20240516.models.DescribeDeviceCertificateBackupHistoryResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDeviceCertificateBackupHistory", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDeviceCertificateBackupHistoryResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeDeviceCertificates(self, request):
         r"""分页查询设备证书
 
@@ -845,6 +868,29 @@ class MqttClient(AbstractClient):
             body = self.call("DescribeDeviceIdentity", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeDeviceIdentityResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeDeviceIdentityBackupHistory(self, request):
+        r"""跨集群容灾场景下查询设备标识同步记录
+
+        :param request: Request instance for DescribeDeviceIdentityBackupHistory.
+        :type request: :class:`tencentcloud.mqtt.v20240516.models.DescribeDeviceIdentityBackupHistoryRequest`
+        :rtype: :class:`tencentcloud.mqtt.v20240516.models.DescribeDeviceIdentityBackupHistoryResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDeviceIdentityBackupHistory", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDeviceIdentityBackupHistoryResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1246,6 +1292,29 @@ class MqttClient(AbstractClient):
             body = self.call("DescribeUserList", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeUserListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeWillMessage(self, request):
+        r"""遗嘱消息查询
+
+        :param request: Request instance for DescribeWillMessage.
+        :type request: :class:`tencentcloud.mqtt.v20240516.models.DescribeWillMessageRequest`
+        :rtype: :class:`tencentcloud.mqtt.v20240516.models.DescribeWillMessageResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeWillMessage", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeWillMessageResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
