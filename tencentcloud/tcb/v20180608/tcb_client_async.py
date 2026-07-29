@@ -213,6 +213,24 @@ class TcbClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateCloudApp(
+            self,
+            request: models.CreateCloudAppRequest,
+            opts: Dict = None,
+    ) -> models.CreateCloudAppResponse:
+        """
+        创建云应用
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateCloudApp"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateCloudAppResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateCustomLoginKey(
             self,
             request: models.CreateCustomLoginKeyRequest,
@@ -481,6 +499,42 @@ class TcbClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DeleteCloudApp(
+            self,
+            request: models.DeleteCloudAppRequest,
+            opts: Dict = None,
+    ) -> models.DeleteCloudAppResponse:
+        """
+        删除云应用服务
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteCloudApp"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteCloudAppResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteCloudAppVersion(
+            self,
+            request: models.DeleteCloudAppVersionRequest,
+            opts: Dict = None,
+    ) -> models.DeleteCloudAppVersionResponse:
+        """
+        删除云应用服务版本
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteCloudAppVersion"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteCloudAppVersionResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DeleteHTTPServiceRoute(
             self,
             request: models.DeleteHTTPServiceRouteRequest,
@@ -692,6 +746,42 @@ class TcbClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeCloudAppCosInfo(
+            self,
+            request: models.DescribeCloudAppCosInfoRequest,
+            opts: Dict = None,
+    ) -> models.DescribeCloudAppCosInfoResponse:
+        """
+        获取云应用cos信息
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeCloudAppCosInfo"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeCloudAppCosInfoResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeCloudAppInfo(
+            self,
+            request: models.DescribeCloudAppInfoRequest,
+            opts: Dict = None,
+    ) -> models.DescribeCloudAppInfoResponse:
+        """
+        查询应用服务信息
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeCloudAppInfo"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeCloudAppInfoResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeCloudAppList(
             self,
             request: models.DescribeCloudAppListRequest,
@@ -705,6 +795,42 @@ class TcbClient(AbstractClient):
         kwargs["action"] = "DescribeCloudAppList"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeCloudAppListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeCloudAppVersion(
+            self,
+            request: models.DescribeCloudAppVersionRequest,
+            opts: Dict = None,
+    ) -> models.DescribeCloudAppVersionResponse:
+        """
+        查询云应用服务版本信息
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeCloudAppVersion"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeCloudAppVersionResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeCloudAppVersionList(
+            self,
+            request: models.DescribeCloudAppVersionListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeCloudAppVersionListResponse:
+        """
+        查询云应用服务版本列表信息
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeCloudAppVersionList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeCloudAppVersionListResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

@@ -4112,26 +4112,11 @@ class DescribeLoadBalancersRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Filters: 查询过滤条件，支持以下几个字段
-- **LoadBalancerId**: 负载均衡实例 ID
-- **LoadBalancerName**: 负载均衡名称
-- **LoadBalancerStatus**: 负载均衡状态
-- **VpcId**: 私有网络 ID
-- **tag:tag-key**：按标签键值对筛选，tag-key 请替换为实际的标签键。例如 `tag:env` 表示按标签键 `env` 筛选。
-- **AddressType**: 网络类型
-    - **Intranet**: 内网
-    - **Internet**: 公网 
-- **AddressIpVersion**:
-    - **IPv4**: IPv4 地址
-    - **IPv6** IPv6 地址
+        :param _Filters: <p>查询过滤条件，支持以下几个字段</p><ul><li><strong>LoadBalancerId</strong>: 负载均衡实例 ID</li><li><strong>LoadBalancerName</strong>: 负载均衡名称</li><li><strong>LoadBalancerStatus</strong>: 负载均衡状态</li><li><strong>VpcId</strong>: 私有网络 ID</li><li><strong>tag:tag-key</strong>：按标签键值对筛选，tag-key 请替换为实际的标签键。例如 <code>tag:env</code> 表示按标签键 <code>env</code> 筛选。</li><li><strong>AddressType</strong>: 网络类型<ul><li><strong>Intranet</strong>: 内网</li><li><strong>Internet</strong>: 公网 </li></ul></li><li><strong>AddressIpVersion</strong>:<ul><li><strong>IPv4</strong>: IPv4 地址</li><li><strong>IPv6</strong> IPv6 地址</li></ul></li><li><strong>SecurityGroupId</strong>: 安全组ID</li></ul>
         :type Filters: list of Filter
-        :param _MaxResults: 分批次查询时每次显示的条目数。取值范围：**1**~**100**，默认值：**20**。
-
-
+        :param _MaxResults: <p>分批次查询时每次显示的条目数。取值范围：<strong>1</strong>~<strong>100</strong>，默认值：<strong>20</strong>。</p>
         :type MaxResults: int
-        :param _NextToken: 是否拥有下一次查询的令牌（Token）。取值：
-- 第一次查询和没有下一次查询时，均无需填写。
-- 如果有下一次查询，取值为上一次API调用返回的**NextToken**值。
+        :param _NextToken: <p>是否拥有下一次查询的令牌（Token）。取值：</p><ul><li>第一次查询和没有下一次查询时，均无需填写。</li><li>如果有下一次查询，取值为上一次API调用返回的<strong>NextToken</strong>值。</li></ul>
         :type NextToken: str
         """
         self._Filters = None
@@ -4140,18 +4125,7 @@ class DescribeLoadBalancersRequest(AbstractModel):
 
     @property
     def Filters(self):
-        r"""查询过滤条件，支持以下几个字段
-- **LoadBalancerId**: 负载均衡实例 ID
-- **LoadBalancerName**: 负载均衡名称
-- **LoadBalancerStatus**: 负载均衡状态
-- **VpcId**: 私有网络 ID
-- **tag:tag-key**：按标签键值对筛选，tag-key 请替换为实际的标签键。例如 `tag:env` 表示按标签键 `env` 筛选。
-- **AddressType**: 网络类型
-    - **Intranet**: 内网
-    - **Internet**: 公网 
-- **AddressIpVersion**:
-    - **IPv4**: IPv4 地址
-    - **IPv6** IPv6 地址
+        r"""<p>查询过滤条件，支持以下几个字段</p><ul><li><strong>LoadBalancerId</strong>: 负载均衡实例 ID</li><li><strong>LoadBalancerName</strong>: 负载均衡名称</li><li><strong>LoadBalancerStatus</strong>: 负载均衡状态</li><li><strong>VpcId</strong>: 私有网络 ID</li><li><strong>tag:tag-key</strong>：按标签键值对筛选，tag-key 请替换为实际的标签键。例如 <code>tag:env</code> 表示按标签键 <code>env</code> 筛选。</li><li><strong>AddressType</strong>: 网络类型<ul><li><strong>Intranet</strong>: 内网</li><li><strong>Internet</strong>: 公网 </li></ul></li><li><strong>AddressIpVersion</strong>:<ul><li><strong>IPv4</strong>: IPv4 地址</li><li><strong>IPv6</strong> IPv6 地址</li></ul></li><li><strong>SecurityGroupId</strong>: 安全组ID</li></ul>
         :rtype: list of Filter
         """
         return self._Filters
@@ -4162,9 +4136,7 @@ class DescribeLoadBalancersRequest(AbstractModel):
 
     @property
     def MaxResults(self):
-        r"""分批次查询时每次显示的条目数。取值范围：**1**~**100**，默认值：**20**。
-
-
+        r"""<p>分批次查询时每次显示的条目数。取值范围：<strong>1</strong>~<strong>100</strong>，默认值：<strong>20</strong>。</p>
         :rtype: int
         """
         return self._MaxResults
@@ -4175,9 +4147,7 @@ class DescribeLoadBalancersRequest(AbstractModel):
 
     @property
     def NextToken(self):
-        r"""是否拥有下一次查询的令牌（Token）。取值：
-- 第一次查询和没有下一次查询时，均无需填写。
-- 如果有下一次查询，取值为上一次API调用返回的**NextToken**值。
+        r"""<p>是否拥有下一次查询的令牌（Token）。取值：</p><ul><li>第一次查询和没有下一次查询时，均无需填写。</li><li>如果有下一次查询，取值为上一次API调用返回的<strong>NextToken</strong>值。</li></ul>
         :rtype: str
         """
         return self._NextToken
@@ -4213,17 +4183,13 @@ class DescribeLoadBalancersResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _LoadBalancers: 应用型负载均衡实例列表。
+        :param _LoadBalancers: <p>应用型负载均衡实例列表。</p>
         :type LoadBalancers: list of LoadBalancer
-        :param _MaxResults: 分批次查询时每次显示的条目数。
-
-
+        :param _MaxResults: <p>分批次查询时每次显示的条目数。</p>
         :type MaxResults: int
-        :param _NextToken: 是否拥有下一次查询的令牌（Token）。取值：
-- 如果**NextToken**为空表示没有下一次查询。
-- 如果**NextToken**有返回值，该取值表示下一次查询开始的令牌。
+        :param _NextToken: <p>是否拥有下一次查询的令牌（Token）。取值：</p><ul><li>如果<strong>NextToken</strong>为空表示没有下一次查询。</li><li>如果<strong>NextToken</strong>有返回值，该取值表示下一次查询开始的令牌。</li></ul>
         :type NextToken: str
-        :param _TotalCount: 列表条目数。
+        :param _TotalCount: <p>列表条目数。</p>
         :type TotalCount: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -4236,7 +4202,7 @@ class DescribeLoadBalancersResponse(AbstractModel):
 
     @property
     def LoadBalancers(self):
-        r"""应用型负载均衡实例列表。
+        r"""<p>应用型负载均衡实例列表。</p>
         :rtype: list of LoadBalancer
         """
         return self._LoadBalancers
@@ -4247,9 +4213,7 @@ class DescribeLoadBalancersResponse(AbstractModel):
 
     @property
     def MaxResults(self):
-        r"""分批次查询时每次显示的条目数。
-
-
+        r"""<p>分批次查询时每次显示的条目数。</p>
         :rtype: int
         """
         return self._MaxResults
@@ -4260,9 +4224,7 @@ class DescribeLoadBalancersResponse(AbstractModel):
 
     @property
     def NextToken(self):
-        r"""是否拥有下一次查询的令牌（Token）。取值：
-- 如果**NextToken**为空表示没有下一次查询。
-- 如果**NextToken**有返回值，该取值表示下一次查询开始的令牌。
+        r"""<p>是否拥有下一次查询的令牌（Token）。取值：</p><ul><li>如果<strong>NextToken</strong>为空表示没有下一次查询。</li><li>如果<strong>NextToken</strong>有返回值，该取值表示下一次查询开始的令牌。</li></ul>
         :rtype: str
         """
         return self._NextToken
@@ -4273,7 +4235,7 @@ class DescribeLoadBalancersResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        r"""列表条目数。
+        r"""<p>列表条目数。</p>
         :rtype: int
         """
         return self._TotalCount

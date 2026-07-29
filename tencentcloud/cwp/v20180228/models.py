@@ -107014,17 +107014,17 @@ class SearchLogRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _StartTime: 要检索分析的日志的起始时间，Unix时间戳（毫秒）
+        :param _StartTime: <p>要检索分析的日志的起始时间，Unix时间戳（毫秒）</p>
         :type StartTime: int
-        :param _EndTime: 要检索分析的日志的结束时间，Unix时间戳（毫秒）
+        :param _EndTime: <p>要检索分析的日志的结束时间，Unix时间戳（毫秒）</p>
         :type EndTime: int
-        :param _QueryString: 检索分析语句，最大长度为12KB，查询语法可参考文档 https://cloud.tencent.com/document/product/296/50508
+        :param _QueryString: <p>检索分析语句，最大长度为12KB，查询语法可参考文档 https://cloud.tencent.com/document/product/296/50508</p>
         :type QueryString: str
-        :param _Count: 表示单次查询返回的原始日志条数，最大值为1000，获取后续日志需使用Context参数
+        :param _Count: <p>表示单次查询返回的原始日志条数，最大值为1000，获取后续日志需使用Context参数</p>
         :type Count: int
-        :param _Sort: 原始日志是否按时间排序返回；可选值：asc(升序)、desc(降序)，默认为 desc
+        :param _Sort: <p>原始日志是否按时间排序返回；可选值：asc(升序)、desc(降序)，默认为 desc</p>
         :type Sort: str
-        :param _Context: 透传上次接口返回的Context值，可获取后续更多日志，总计最多可获取1万条原始日志，过期时间1小时
+        :param _Context: <p>透传上次接口返回的Context值，可获取后续更多日志，总计最多可获取1万条原始日志，过期时间1小时</p>
         :type Context: str
         """
         self._StartTime = None
@@ -107036,7 +107036,7 @@ class SearchLogRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        r"""要检索分析的日志的起始时间，Unix时间戳（毫秒）
+        r"""<p>要检索分析的日志的起始时间，Unix时间戳（毫秒）</p>
         :rtype: int
         """
         return self._StartTime
@@ -107047,7 +107047,7 @@ class SearchLogRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        r"""要检索分析的日志的结束时间，Unix时间戳（毫秒）
+        r"""<p>要检索分析的日志的结束时间，Unix时间戳（毫秒）</p>
         :rtype: int
         """
         return self._EndTime
@@ -107058,7 +107058,7 @@ class SearchLogRequest(AbstractModel):
 
     @property
     def QueryString(self):
-        r"""检索分析语句，最大长度为12KB，查询语法可参考文档 https://cloud.tencent.com/document/product/296/50508
+        r"""<p>检索分析语句，最大长度为12KB，查询语法可参考文档 https://cloud.tencent.com/document/product/296/50508</p>
         :rtype: str
         """
         return self._QueryString
@@ -107069,7 +107069,7 @@ class SearchLogRequest(AbstractModel):
 
     @property
     def Count(self):
-        r"""表示单次查询返回的原始日志条数，最大值为1000，获取后续日志需使用Context参数
+        r"""<p>表示单次查询返回的原始日志条数，最大值为1000，获取后续日志需使用Context参数</p>
         :rtype: int
         """
         return self._Count
@@ -107080,7 +107080,7 @@ class SearchLogRequest(AbstractModel):
 
     @property
     def Sort(self):
-        r"""原始日志是否按时间排序返回；可选值：asc(升序)、desc(降序)，默认为 desc
+        r"""<p>原始日志是否按时间排序返回；可选值：asc(升序)、desc(降序)，默认为 desc</p>
         :rtype: str
         """
         return self._Sort
@@ -107091,7 +107091,7 @@ class SearchLogRequest(AbstractModel):
 
     @property
     def Context(self):
-        r"""透传上次接口返回的Context值，可获取后续更多日志，总计最多可获取1万条原始日志，过期时间1小时
+        r"""<p>透传上次接口返回的Context值，可获取后续更多日志，总计最多可获取1万条原始日志，过期时间1小时</p>
         :rtype: str
         """
         return self._Context
@@ -107125,15 +107125,15 @@ class SearchLogResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Count: 匹配检索条件的原始日志的数量
+        :param _Count: <p>匹配检索条件的原始日志的数量</p>
         :type Count: int
-        :param _Context: 透传本次接口返回的Context值，可获取后续更多日志，过期时间1小时
+        :param _Context: <p>透传本次接口返回的Context值，可获取后续更多日志，过期时间1小时</p>
         :type Context: str
-        :param _ListOver: 符合检索条件的日志是否已全部返回，如未全部返回可使用Context参数获取后续更多日志
+        :param _ListOver: <p>符合检索条件的日志是否已全部返回，如未全部返回可使用Context参数获取后续更多日志</p>
         :type ListOver: bool
-        :param _Analysis: 返回的是否为统计分析（即SQL）结果
+        :param _Analysis: <p>返回的是否为统计分析（即SQL）结果</p>
         :type Analysis: bool
-        :param _Data: 匹配检索条件的原始日志
+        :param _Data: <p>匹配检索条件的原始日志</p>
         :type Data: list of LogInfo
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -107147,7 +107147,7 @@ class SearchLogResponse(AbstractModel):
 
     @property
     def Count(self):
-        r"""匹配检索条件的原始日志的数量
+        r"""<p>匹配检索条件的原始日志的数量</p>
         :rtype: int
         """
         return self._Count
@@ -107158,7 +107158,7 @@ class SearchLogResponse(AbstractModel):
 
     @property
     def Context(self):
-        r"""透传本次接口返回的Context值，可获取后续更多日志，过期时间1小时
+        r"""<p>透传本次接口返回的Context值，可获取后续更多日志，过期时间1小时</p>
         :rtype: str
         """
         return self._Context
@@ -107169,7 +107169,7 @@ class SearchLogResponse(AbstractModel):
 
     @property
     def ListOver(self):
-        r"""符合检索条件的日志是否已全部返回，如未全部返回可使用Context参数获取后续更多日志
+        r"""<p>符合检索条件的日志是否已全部返回，如未全部返回可使用Context参数获取后续更多日志</p>
         :rtype: bool
         """
         return self._ListOver
@@ -107180,7 +107180,7 @@ class SearchLogResponse(AbstractModel):
 
     @property
     def Analysis(self):
-        r"""返回的是否为统计分析（即SQL）结果
+        r"""<p>返回的是否为统计分析（即SQL）结果</p>
         :rtype: bool
         """
         return self._Analysis
@@ -107191,7 +107191,7 @@ class SearchLogResponse(AbstractModel):
 
     @property
     def Data(self):
-        r"""匹配检索条件的原始日志
+        r"""<p>匹配检索条件的原始日志</p>
         :rtype: list of LogInfo
         """
         return self._Data

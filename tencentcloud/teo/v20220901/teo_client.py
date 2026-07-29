@@ -2434,6 +2434,29 @@ class TeoClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeIPGroupReferences(self, request):
+        r"""获取使用 IP 分组的策略配置。
+
+        :param request: Request instance for DescribeIPGroupReferences.
+        :type request: :class:`tencentcloud.teo.v20220901.models.DescribeIPGroupReferencesRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.DescribeIPGroupReferencesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeIPGroupReferences", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeIPGroupReferencesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeIPRegion(self, request):
         r"""该接口可用于查询 IP 是否为 EdgeOne IP。
 

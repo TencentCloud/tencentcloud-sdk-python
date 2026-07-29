@@ -1364,6 +1364,217 @@ class DBCustomClusterNode(AbstractModel):
         
 
 
+class DBCustomClusterNodeConfig(AbstractModel):
+    r"""DB Custom 集群内节点配置信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _NodeId: <p>节点ID</p>
+        :type NodeId: str
+        :param _Labels: <p>节点的标签信息</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Labels: list of Label
+        :param _Taints: <p>节点的污点信息</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Taints: list of Taint
+        """
+        self._NodeId = None
+        self._Labels = None
+        self._Taints = None
+
+    @property
+    def NodeId(self):
+        r"""<p>节点ID</p>
+        :rtype: str
+        """
+        return self._NodeId
+
+    @NodeId.setter
+    def NodeId(self, NodeId):
+        self._NodeId = NodeId
+
+    @property
+    def Labels(self):
+        r"""<p>节点的标签信息</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of Label
+        """
+        return self._Labels
+
+    @Labels.setter
+    def Labels(self, Labels):
+        self._Labels = Labels
+
+    @property
+    def Taints(self):
+        r"""<p>节点的污点信息</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of Taint
+        """
+        return self._Taints
+
+    @Taints.setter
+    def Taints(self, Taints):
+        self._Taints = Taints
+
+
+    def _deserialize(self, params):
+        self._NodeId = params.get("NodeId")
+        if params.get("Labels") is not None:
+            self._Labels = []
+            for item in params.get("Labels"):
+                obj = Label()
+                obj._deserialize(item)
+                self._Labels.append(obj)
+        if params.get("Taints") is not None:
+            self._Taints = []
+            for item in params.get("Taints"):
+                obj = Taint()
+                obj._deserialize(item)
+                self._Taints.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DBCustomClusterNodeResource(AbstractModel):
+    r"""DB Custom 集群内节点资源信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _NodeId: <p>节点ID</p>
+        :type NodeId: str
+        :param _Capacity: <p>节点物理资源总容量</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Capacity: :class:`tencentcloud.dbdc.v20201029.models.MetaResource`
+        :param _Allocatable: <p>节点可分配容量= Capacity - 系统预留</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Allocatable: :class:`tencentcloud.dbdc.v20201029.models.MetaResource`
+        :param _Requests: <p>节点上所有非终态 Pod 的 requests 申请量之和（含系统 Pod）</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Requests: :class:`tencentcloud.dbdc.v20201029.models.MetaResource`
+        :param _Limits: <p>节点上所有非终态 Pod 的 limits 上限之和（含系统 Pod）</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Limits: :class:`tencentcloud.dbdc.v20201029.models.MetaResource`
+        :param _Available: <p>节点可再调度余量 = max(0, Allocatable - Requests)</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Available: :class:`tencentcloud.dbdc.v20201029.models.MetaResource`
+        """
+        self._NodeId = None
+        self._Capacity = None
+        self._Allocatable = None
+        self._Requests = None
+        self._Limits = None
+        self._Available = None
+
+    @property
+    def NodeId(self):
+        r"""<p>节点ID</p>
+        :rtype: str
+        """
+        return self._NodeId
+
+    @NodeId.setter
+    def NodeId(self, NodeId):
+        self._NodeId = NodeId
+
+    @property
+    def Capacity(self):
+        r"""<p>节点物理资源总容量</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.dbdc.v20201029.models.MetaResource`
+        """
+        return self._Capacity
+
+    @Capacity.setter
+    def Capacity(self, Capacity):
+        self._Capacity = Capacity
+
+    @property
+    def Allocatable(self):
+        r"""<p>节点可分配容量= Capacity - 系统预留</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.dbdc.v20201029.models.MetaResource`
+        """
+        return self._Allocatable
+
+    @Allocatable.setter
+    def Allocatable(self, Allocatable):
+        self._Allocatable = Allocatable
+
+    @property
+    def Requests(self):
+        r"""<p>节点上所有非终态 Pod 的 requests 申请量之和（含系统 Pod）</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.dbdc.v20201029.models.MetaResource`
+        """
+        return self._Requests
+
+    @Requests.setter
+    def Requests(self, Requests):
+        self._Requests = Requests
+
+    @property
+    def Limits(self):
+        r"""<p>节点上所有非终态 Pod 的 limits 上限之和（含系统 Pod）</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.dbdc.v20201029.models.MetaResource`
+        """
+        return self._Limits
+
+    @Limits.setter
+    def Limits(self, Limits):
+        self._Limits = Limits
+
+    @property
+    def Available(self):
+        r"""<p>节点可再调度余量 = max(0, Allocatable - Requests)</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.dbdc.v20201029.models.MetaResource`
+        """
+        return self._Available
+
+    @Available.setter
+    def Available(self, Available):
+        self._Available = Available
+
+
+    def _deserialize(self, params):
+        self._NodeId = params.get("NodeId")
+        if params.get("Capacity") is not None:
+            self._Capacity = MetaResource()
+            self._Capacity._deserialize(params.get("Capacity"))
+        if params.get("Allocatable") is not None:
+            self._Allocatable = MetaResource()
+            self._Allocatable._deserialize(params.get("Allocatable"))
+        if params.get("Requests") is not None:
+            self._Requests = MetaResource()
+            self._Requests._deserialize(params.get("Requests"))
+        if params.get("Limits") is not None:
+            self._Limits = MetaResource()
+            self._Limits._deserialize(params.get("Limits"))
+        if params.get("Available") is not None:
+            self._Available = MetaResource()
+            self._Available._deserialize(params.get("Available"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DBCustomImage(AbstractModel):
     r"""DB Custom 可选的镜像信息。
 
@@ -1894,6 +2105,147 @@ class DBCustomNode(AbstractModel):
         self._HostIp = params.get("HostIp")
         self._NetworkMode = params.get("NetworkMode")
         self._EniIP = params.get("EniIP")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DBCustomNodeTypeInfo(AbstractModel):
+    r"""DB Custom 节点机型信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Zone: <p>可用区标识，如 ap-guangzhou-6</p>
+        :type Zone: str
+        :param _NodeType: <p>机型标识</p><p>枚举值：</p><ul><li>DB.SA5.2XLARGE32： DB.SA5机型</li><li>DB.AT5.8XLARGE128： DB.AT5机型</li></ul>
+        :type NodeType: str
+        :param _NodeFamily: <p>机型系列，如 DB.AT5、DB.SA5</p>
+        :type NodeFamily: str
+        :param _CPU: <p>CPU 核数</p><p>单位：核</p>
+        :type CPU: int
+        :param _Memory: <p>内存大小</p><p>单位：GiB</p>
+        :type Memory: int
+        :param _Status: <p>机型售卖状态</p><p>枚举值：</p><ul><li>SELL： 正常售卖</li><li>SOLD_OUT： 售罄</li></ul>
+        :type Status: str
+        :param _SystemDiskTypes: <p>该机型允许的系统盘类型列表（如 CLOUD_BSSD、CLOUD_HSSD）；</p>
+        :type SystemDiskTypes: list of str
+        :param _DataDiskTypes: <p>该机型允许的数据盘类型列表（如 CLOUD_BSSD、CLOUD_HSSD）；</p>
+        :type DataDiskTypes: list of str
+        """
+        self._Zone = None
+        self._NodeType = None
+        self._NodeFamily = None
+        self._CPU = None
+        self._Memory = None
+        self._Status = None
+        self._SystemDiskTypes = None
+        self._DataDiskTypes = None
+
+    @property
+    def Zone(self):
+        r"""<p>可用区标识，如 ap-guangzhou-6</p>
+        :rtype: str
+        """
+        return self._Zone
+
+    @Zone.setter
+    def Zone(self, Zone):
+        self._Zone = Zone
+
+    @property
+    def NodeType(self):
+        r"""<p>机型标识</p><p>枚举值：</p><ul><li>DB.SA5.2XLARGE32： DB.SA5机型</li><li>DB.AT5.8XLARGE128： DB.AT5机型</li></ul>
+        :rtype: str
+        """
+        return self._NodeType
+
+    @NodeType.setter
+    def NodeType(self, NodeType):
+        self._NodeType = NodeType
+
+    @property
+    def NodeFamily(self):
+        r"""<p>机型系列，如 DB.AT5、DB.SA5</p>
+        :rtype: str
+        """
+        return self._NodeFamily
+
+    @NodeFamily.setter
+    def NodeFamily(self, NodeFamily):
+        self._NodeFamily = NodeFamily
+
+    @property
+    def CPU(self):
+        r"""<p>CPU 核数</p><p>单位：核</p>
+        :rtype: int
+        """
+        return self._CPU
+
+    @CPU.setter
+    def CPU(self, CPU):
+        self._CPU = CPU
+
+    @property
+    def Memory(self):
+        r"""<p>内存大小</p><p>单位：GiB</p>
+        :rtype: int
+        """
+        return self._Memory
+
+    @Memory.setter
+    def Memory(self, Memory):
+        self._Memory = Memory
+
+    @property
+    def Status(self):
+        r"""<p>机型售卖状态</p><p>枚举值：</p><ul><li>SELL： 正常售卖</li><li>SOLD_OUT： 售罄</li></ul>
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def SystemDiskTypes(self):
+        r"""<p>该机型允许的系统盘类型列表（如 CLOUD_BSSD、CLOUD_HSSD）；</p>
+        :rtype: list of str
+        """
+        return self._SystemDiskTypes
+
+    @SystemDiskTypes.setter
+    def SystemDiskTypes(self, SystemDiskTypes):
+        self._SystemDiskTypes = SystemDiskTypes
+
+    @property
+    def DataDiskTypes(self):
+        r"""<p>该机型允许的数据盘类型列表（如 CLOUD_BSSD、CLOUD_HSSD）；</p>
+        :rtype: list of str
+        """
+        return self._DataDiskTypes
+
+    @DataDiskTypes.setter
+    def DataDiskTypes(self, DataDiskTypes):
+        self._DataDiskTypes = DataDiskTypes
+
+
+    def _deserialize(self, params):
+        self._Zone = params.get("Zone")
+        self._NodeType = params.get("NodeType")
+        self._NodeFamily = params.get("NodeFamily")
+        self._CPU = params.get("CPU")
+        self._Memory = params.get("Memory")
+        self._Status = params.get("Status")
+        self._SystemDiskTypes = params.get("SystemDiskTypes")
+        self._DataDiskTypes = params.get("DataDiskTypes")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2659,6 +3011,206 @@ class DescribeDBCustomClusterKubeconfigResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeDBCustomClusterNodeConfigRequest(AbstractModel):
+    r"""DescribeDBCustomClusterNodeConfig请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: <p>集群ID</p>
+        :type ClusterId: str
+        :param _NodeIds: <p>按照一个或者多个 NodeId 查询。</p><p>入参限制：每次请求的数量上限为100</p>
+        :type NodeIds: list of str
+        """
+        self._ClusterId = None
+        self._NodeIds = None
+
+    @property
+    def ClusterId(self):
+        r"""<p>集群ID</p>
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def NodeIds(self):
+        r"""<p>按照一个或者多个 NodeId 查询。</p><p>入参限制：每次请求的数量上限为100</p>
+        :rtype: list of str
+        """
+        return self._NodeIds
+
+    @NodeIds.setter
+    def NodeIds(self, NodeIds):
+        self._NodeIds = NodeIds
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        self._NodeIds = params.get("NodeIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDBCustomClusterNodeConfigResponse(AbstractModel):
+    r"""DescribeDBCustomClusterNodeConfig返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _NodeSet: <p>当前账号下拥有的DB Custom 节点列表信息</p>
+        :type NodeSet: list of DBCustomClusterNodeConfig
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._NodeSet = None
+        self._RequestId = None
+
+    @property
+    def NodeSet(self):
+        r"""<p>当前账号下拥有的DB Custom 节点列表信息</p>
+        :rtype: list of DBCustomClusterNodeConfig
+        """
+        return self._NodeSet
+
+    @NodeSet.setter
+    def NodeSet(self, NodeSet):
+        self._NodeSet = NodeSet
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("NodeSet") is not None:
+            self._NodeSet = []
+            for item in params.get("NodeSet"):
+                obj = DBCustomClusterNodeConfig()
+                obj._deserialize(item)
+                self._NodeSet.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeDBCustomClusterNodeResourcesRequest(AbstractModel):
+    r"""DescribeDBCustomClusterNodeResources请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: <p>集群ID</p>
+        :type ClusterId: str
+        :param _NodeIds: <p>按照一个或者多个 NodeId 查询。</p><p>入参限制：每次请求的数量上限为50</p>
+        :type NodeIds: list of str
+        """
+        self._ClusterId = None
+        self._NodeIds = None
+
+    @property
+    def ClusterId(self):
+        r"""<p>集群ID</p>
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def NodeIds(self):
+        r"""<p>按照一个或者多个 NodeId 查询。</p><p>入参限制：每次请求的数量上限为50</p>
+        :rtype: list of str
+        """
+        return self._NodeIds
+
+    @NodeIds.setter
+    def NodeIds(self, NodeIds):
+        self._NodeIds = NodeIds
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        self._NodeIds = params.get("NodeIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDBCustomClusterNodeResourcesResponse(AbstractModel):
+    r"""DescribeDBCustomClusterNodeResources返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _NodeSet: <p>当前账号下拥有的DB Custom 节点列表信息</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NodeSet: list of DBCustomClusterNodeResource
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._NodeSet = None
+        self._RequestId = None
+
+    @property
+    def NodeSet(self):
+        r"""<p>当前账号下拥有的DB Custom 节点列表信息</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of DBCustomClusterNodeResource
+        """
+        return self._NodeSet
+
+    @NodeSet.setter
+    def NodeSet(self, NodeSet):
+        self._NodeSet = NodeSet
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("NodeSet") is not None:
+            self._NodeSet = []
+            for item in params.get("NodeSet"):
+                obj = DBCustomClusterNodeResource()
+                obj._deserialize(item)
+                self._NodeSet.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeDBCustomClusterNodesRequest(AbstractModel):
     r"""DescribeDBCustomClusterNodes请求参数结构体
 
@@ -2805,6 +3357,170 @@ class DescribeDBCustomClusterNodesResponse(AbstractModel):
                 obj = DBCustomClusterNode()
                 obj._deserialize(item)
                 self._NodeSet.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeDBCustomClusterResourcesRequest(AbstractModel):
+    r"""DescribeDBCustomClusterResources请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: <p>集群ID</p>
+        :type ClusterId: str
+        """
+        self._ClusterId = None
+
+    @property
+    def ClusterId(self):
+        r"""<p>集群ID</p>
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDBCustomClusterResourcesResponse(AbstractModel):
+    r"""DescribeDBCustomClusterResources返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _NodeCount: <p>参与汇总的工作节点总数（不含控制面节点）</p><p>单位：台</p>
+        :type NodeCount: int
+        :param _Capacity: <p>集群所有节点的资源物理总容量之和</p>
+        :type Capacity: :class:`tencentcloud.dbdc.v20201029.models.MetaResource`
+        :param _Allocatable: <p>集群所有节点的可分配容量之和（= Capacity - 系统预留）</p>
+        :type Allocatable: :class:`tencentcloud.dbdc.v20201029.models.MetaResource`
+        :param _Requests: <p>集群所有非终态 Pod 的 requests 申请量之和（含系统 Pod）</p>
+        :type Requests: :class:`tencentcloud.dbdc.v20201029.models.MetaResource`
+        :param _Limits: <p>集群所有非终态 Pod 的 limits 上限之和（含系统 Pod，Pods 字段无语义，固定为 0）</p>
+        :type Limits: :class:`tencentcloud.dbdc.v20201029.models.MetaResource`
+        :param _Available: <p>集群可再调度余量（所有节点 max(0, Allocatable - Requests) 累加求和）</p>
+        :type Available: :class:`tencentcloud.dbdc.v20201029.models.MetaResource`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._NodeCount = None
+        self._Capacity = None
+        self._Allocatable = None
+        self._Requests = None
+        self._Limits = None
+        self._Available = None
+        self._RequestId = None
+
+    @property
+    def NodeCount(self):
+        r"""<p>参与汇总的工作节点总数（不含控制面节点）</p><p>单位：台</p>
+        :rtype: int
+        """
+        return self._NodeCount
+
+    @NodeCount.setter
+    def NodeCount(self, NodeCount):
+        self._NodeCount = NodeCount
+
+    @property
+    def Capacity(self):
+        r"""<p>集群所有节点的资源物理总容量之和</p>
+        :rtype: :class:`tencentcloud.dbdc.v20201029.models.MetaResource`
+        """
+        return self._Capacity
+
+    @Capacity.setter
+    def Capacity(self, Capacity):
+        self._Capacity = Capacity
+
+    @property
+    def Allocatable(self):
+        r"""<p>集群所有节点的可分配容量之和（= Capacity - 系统预留）</p>
+        :rtype: :class:`tencentcloud.dbdc.v20201029.models.MetaResource`
+        """
+        return self._Allocatable
+
+    @Allocatable.setter
+    def Allocatable(self, Allocatable):
+        self._Allocatable = Allocatable
+
+    @property
+    def Requests(self):
+        r"""<p>集群所有非终态 Pod 的 requests 申请量之和（含系统 Pod）</p>
+        :rtype: :class:`tencentcloud.dbdc.v20201029.models.MetaResource`
+        """
+        return self._Requests
+
+    @Requests.setter
+    def Requests(self, Requests):
+        self._Requests = Requests
+
+    @property
+    def Limits(self):
+        r"""<p>集群所有非终态 Pod 的 limits 上限之和（含系统 Pod，Pods 字段无语义，固定为 0）</p>
+        :rtype: :class:`tencentcloud.dbdc.v20201029.models.MetaResource`
+        """
+        return self._Limits
+
+    @Limits.setter
+    def Limits(self, Limits):
+        self._Limits = Limits
+
+    @property
+    def Available(self):
+        r"""<p>集群可再调度余量（所有节点 max(0, Allocatable - Requests) 累加求和）</p>
+        :rtype: :class:`tencentcloud.dbdc.v20201029.models.MetaResource`
+        """
+        return self._Available
+
+    @Available.setter
+    def Available(self, Available):
+        self._Available = Available
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._NodeCount = params.get("NodeCount")
+        if params.get("Capacity") is not None:
+            self._Capacity = MetaResource()
+            self._Capacity._deserialize(params.get("Capacity"))
+        if params.get("Allocatable") is not None:
+            self._Allocatable = MetaResource()
+            self._Allocatable._deserialize(params.get("Allocatable"))
+        if params.get("Requests") is not None:
+            self._Requests = MetaResource()
+            self._Requests._deserialize(params.get("Requests"))
+        if params.get("Limits") is not None:
+            self._Limits = MetaResource()
+            self._Limits._deserialize(params.get("Limits"))
+        if params.get("Available") is not None:
+            self._Available = MetaResource()
+            self._Available._deserialize(params.get("Available"))
         self._RequestId = params.get("RequestId")
 
 
@@ -3111,6 +3827,183 @@ class DescribeDBCustomImagesResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeDBCustomNodeSecurityGroupsRequest(AbstractModel):
+    r"""DescribeDBCustomNodeSecurityGroups请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _NodeId: <p>节点id</p>
+        :type NodeId: str
+        """
+        self._NodeId = None
+
+    @property
+    def NodeId(self):
+        r"""<p>节点id</p>
+        :rtype: str
+        """
+        return self._NodeId
+
+    @NodeId.setter
+    def NodeId(self, NodeId):
+        self._NodeId = NodeId
+
+
+    def _deserialize(self, params):
+        self._NodeId = params.get("NodeId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDBCustomNodeSecurityGroupsResponse(AbstractModel):
+    r"""DescribeDBCustomNodeSecurityGroups返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Groups: <p>与节点绑定的安全组id，数组格式，根据内部安全组ID的顺序来确认优先级。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Groups: list of SecurityGroup
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Groups = None
+        self._RequestId = None
+
+    @property
+    def Groups(self):
+        r"""<p>与节点绑定的安全组id，数组格式，根据内部安全组ID的顺序来确认优先级。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of SecurityGroup
+        """
+        return self._Groups
+
+    @Groups.setter
+    def Groups(self, Groups):
+        self._Groups = Groups
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Groups") is not None:
+            self._Groups = []
+            for item in params.get("Groups"):
+                obj = SecurityGroup()
+                obj._deserialize(item)
+                self._Groups.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeDBCustomNodeTypesRequest(AbstractModel):
+    r"""DescribeDBCustomNodeTypes请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Filters: <p>支持通过地域，可用区，机型系列，机型标识进行过滤</p><p>入参限制：region、zone、node-family、node-type</p>
+        :type Filters: list of Filter
+        """
+        self._Filters = None
+
+    @property
+    def Filters(self):
+        r"""<p>支持通过地域，可用区，机型系列，机型标识进行过滤</p><p>入参限制：region、zone、node-family、node-type</p>
+        :rtype: list of Filter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+
+    def _deserialize(self, params):
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDBCustomNodeTypesResponse(AbstractModel):
+    r"""DescribeDBCustomNodeTypes返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _NodeTypeSet: <p>节点机型详细信息</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NodeTypeSet: list of DBCustomNodeTypeInfo
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._NodeTypeSet = None
+        self._RequestId = None
+
+    @property
+    def NodeTypeSet(self):
+        r"""<p>节点机型详细信息</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of DBCustomNodeTypeInfo
+        """
+        return self._NodeTypeSet
+
+    @NodeTypeSet.setter
+    def NodeTypeSet(self, NodeTypeSet):
+        self._NodeTypeSet = NodeTypeSet
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("NodeTypeSet") is not None:
+            self._NodeTypeSet = []
+            for item in params.get("NodeTypeSet"):
+                obj = DBCustomNodeTypeInfo()
+                obj._deserialize(item)
+                self._NodeTypeSet.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeDBCustomNodesRequest(AbstractModel):
     r"""DescribeDBCustomNodes请求参数结构体
 
@@ -3280,6 +4173,62 @@ class DescribeDBCustomNodesResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeDBCustomRegionsRequest(AbstractModel):
+    r"""DescribeDBCustomRegions请求参数结构体
+
+    """
+
+
+class DescribeDBCustomRegionsResponse(AbstractModel):
+    r"""DescribeDBCustomRegions返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RegionSet: <p>支持售卖的地域列表信息</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RegionSet: list of RegionInfo
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RegionSet = None
+        self._RequestId = None
+
+    @property
+    def RegionSet(self):
+        r"""<p>支持售卖的地域列表信息</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of RegionInfo
+        """
+        return self._RegionSet
+
+    @RegionSet.setter
+    def RegionSet(self, RegionSet):
+        self._RegionSet = RegionSet
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("RegionSet") is not None:
+            self._RegionSet = []
+            for item in params.get("RegionSet"):
+                obj = RegionInfo()
+                obj._deserialize(item)
+                self._RegionSet.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeDBCustomTaskStatusRequest(AbstractModel):
     r"""DescribeDBCustomTaskStatus请求参数结构体
 
@@ -3356,6 +4305,62 @@ class DescribeDBCustomTaskStatusResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._Status = params.get("Status")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeDBCustomZonesRequest(AbstractModel):
+    r"""DescribeDBCustomZones请求参数结构体
+
+    """
+
+
+class DescribeDBCustomZonesResponse(AbstractModel):
+    r"""DescribeDBCustomZones返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneSet: <p>查询支持售卖的地域对应的可用区，State字段值如为SELL则代表正常售卖。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ZoneSet: list of ZoneInfo
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ZoneSet = None
+        self._RequestId = None
+
+    @property
+    def ZoneSet(self):
+        r"""<p>查询支持售卖的地域对应的可用区，State字段值如为SELL则代表正常售卖。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of ZoneInfo
+        """
+        return self._ZoneSet
+
+    @ZoneSet.setter
+    def ZoneSet(self, ZoneSet):
+        self._ZoneSet = ZoneSet
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("ZoneSet") is not None:
+            self._ZoneSet = []
+            for item in params.get("ZoneSet"):
+                obj = ZoneInfo()
+                obj._deserialize(item)
+                self._ZoneSet.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -6527,6 +7532,241 @@ class LoginSettings(AbstractModel):
         
 
 
+class MetaResource(AbstractModel):
+    r"""资源信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Cpu: <p>CPU核心</p><p>单位：核</p>
+        :type Cpu: float
+        :param _Memory: <p>内存</p><p>单位：GiB</p>
+        :type Memory: float
+        :param _Pods: <p>POD数量</p><p>单位：个</p>
+        :type Pods: int
+        """
+        self._Cpu = None
+        self._Memory = None
+        self._Pods = None
+
+    @property
+    def Cpu(self):
+        r"""<p>CPU核心</p><p>单位：核</p>
+        :rtype: float
+        """
+        return self._Cpu
+
+    @Cpu.setter
+    def Cpu(self, Cpu):
+        self._Cpu = Cpu
+
+    @property
+    def Memory(self):
+        r"""<p>内存</p><p>单位：GiB</p>
+        :rtype: float
+        """
+        return self._Memory
+
+    @Memory.setter
+    def Memory(self, Memory):
+        self._Memory = Memory
+
+    @property
+    def Pods(self):
+        r"""<p>POD数量</p><p>单位：个</p>
+        :rtype: int
+        """
+        return self._Pods
+
+    @Pods.setter
+    def Pods(self, Pods):
+        self._Pods = Pods
+
+
+    def _deserialize(self, params):
+        self._Cpu = params.get("Cpu")
+        self._Memory = params.get("Memory")
+        self._Pods = params.get("Pods")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyDBCustomClusterNodeConfigRequest(AbstractModel):
+    r"""ModifyDBCustomClusterNodeConfig请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: <p>目标集群 ID</p>
+        :type ClusterId: str
+        :param _NodeIds: <p>要修改的节点 ID 列表</p><p>入参限制：数量范围 1~50 个</p>
+        :type NodeIds: list of str
+        :param _UpsertLabels: <p>新增或覆盖的集群 Label</p><p>入参限制：- 单次 ≤ 20 对；合并后节点总量不超过 20</p><ul><li>Key 格式对齐 K8s 原生（两段式，prefix DNS 子域 ≤ 253 字符，name ≤ 63 字符）</li><li>Value ≤ 63 字符，可为空</li><li>不可操作系统保留前缀</li></ul>
+        :type UpsertLabels: list of Label
+        :param _DeleteLabelKeys: <p>要删除的 Label key 列表，按 key 精确匹配，key 不存在时幂等放行。</p><p>入参限制：- Key 格式对齐 K8s 原生（两段式，prefix DNS 子域 ≤ 253 字符，name ≤ 63 字符）</p><ul><li>Value ≤ 63 字符，可为空</li><li>不可操作系统保留前缀</li></ul>
+        :type DeleteLabelKeys: list of str
+        :param _UpsertTaints: <p>新增或覆盖的 Taint。</p><p>入参限制：- 单次 ≤ 5 对；合并后节点总量不超过 5。</p><ul><li>唯一性键为 (Key, Effect)，匹配到已有 (Key, Effect) 时覆盖 Value，否则新增</li><li>Effect 合法值：NoSchedule / PreferNoSchedule / NoExecute</li><li>同一 Key 允许多个不同 Effect 的 Taint 并存</li></ul>
+        :type UpsertTaints: list of Taint
+        :param _DeleteTaints: <p>要删除的 Taint 过滤器列表</p><p>入参限制：- 唯一性键为 (Key, Effect)，匹配到已有 (Key, Effect) 时覆盖 Value，否则新增</p><ul><li>Effect 合法值：NoSchedule / PreferNoSchedule / NoExecute</li><li>同一 Key 允许多个不同 Effect 的 Taint 并存</li></ul>
+        :type DeleteTaints: list of Taint
+        """
+        self._ClusterId = None
+        self._NodeIds = None
+        self._UpsertLabels = None
+        self._DeleteLabelKeys = None
+        self._UpsertTaints = None
+        self._DeleteTaints = None
+
+    @property
+    def ClusterId(self):
+        r"""<p>目标集群 ID</p>
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def NodeIds(self):
+        r"""<p>要修改的节点 ID 列表</p><p>入参限制：数量范围 1~50 个</p>
+        :rtype: list of str
+        """
+        return self._NodeIds
+
+    @NodeIds.setter
+    def NodeIds(self, NodeIds):
+        self._NodeIds = NodeIds
+
+    @property
+    def UpsertLabels(self):
+        r"""<p>新增或覆盖的集群 Label</p><p>入参限制：- 单次 ≤ 20 对；合并后节点总量不超过 20</p><ul><li>Key 格式对齐 K8s 原生（两段式，prefix DNS 子域 ≤ 253 字符，name ≤ 63 字符）</li><li>Value ≤ 63 字符，可为空</li><li>不可操作系统保留前缀</li></ul>
+        :rtype: list of Label
+        """
+        return self._UpsertLabels
+
+    @UpsertLabels.setter
+    def UpsertLabels(self, UpsertLabels):
+        self._UpsertLabels = UpsertLabels
+
+    @property
+    def DeleteLabelKeys(self):
+        r"""<p>要删除的 Label key 列表，按 key 精确匹配，key 不存在时幂等放行。</p><p>入参限制：- Key 格式对齐 K8s 原生（两段式，prefix DNS 子域 ≤ 253 字符，name ≤ 63 字符）</p><ul><li>Value ≤ 63 字符，可为空</li><li>不可操作系统保留前缀</li></ul>
+        :rtype: list of str
+        """
+        return self._DeleteLabelKeys
+
+    @DeleteLabelKeys.setter
+    def DeleteLabelKeys(self, DeleteLabelKeys):
+        self._DeleteLabelKeys = DeleteLabelKeys
+
+    @property
+    def UpsertTaints(self):
+        r"""<p>新增或覆盖的 Taint。</p><p>入参限制：- 单次 ≤ 5 对；合并后节点总量不超过 5。</p><ul><li>唯一性键为 (Key, Effect)，匹配到已有 (Key, Effect) 时覆盖 Value，否则新增</li><li>Effect 合法值：NoSchedule / PreferNoSchedule / NoExecute</li><li>同一 Key 允许多个不同 Effect 的 Taint 并存</li></ul>
+        :rtype: list of Taint
+        """
+        return self._UpsertTaints
+
+    @UpsertTaints.setter
+    def UpsertTaints(self, UpsertTaints):
+        self._UpsertTaints = UpsertTaints
+
+    @property
+    def DeleteTaints(self):
+        r"""<p>要删除的 Taint 过滤器列表</p><p>入参限制：- 唯一性键为 (Key, Effect)，匹配到已有 (Key, Effect) 时覆盖 Value，否则新增</p><ul><li>Effect 合法值：NoSchedule / PreferNoSchedule / NoExecute</li><li>同一 Key 允许多个不同 Effect 的 Taint 并存</li></ul>
+        :rtype: list of Taint
+        """
+        return self._DeleteTaints
+
+    @DeleteTaints.setter
+    def DeleteTaints(self, DeleteTaints):
+        self._DeleteTaints = DeleteTaints
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        self._NodeIds = params.get("NodeIds")
+        if params.get("UpsertLabels") is not None:
+            self._UpsertLabels = []
+            for item in params.get("UpsertLabels"):
+                obj = Label()
+                obj._deserialize(item)
+                self._UpsertLabels.append(obj)
+        self._DeleteLabelKeys = params.get("DeleteLabelKeys")
+        if params.get("UpsertTaints") is not None:
+            self._UpsertTaints = []
+            for item in params.get("UpsertTaints"):
+                obj = Taint()
+                obj._deserialize(item)
+                self._UpsertTaints.append(obj)
+        if params.get("DeleteTaints") is not None:
+            self._DeleteTaints = []
+            for item in params.get("DeleteTaints"):
+                obj = Taint()
+                obj._deserialize(item)
+                self._DeleteTaints.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyDBCustomClusterNodeConfigResponse(AbstractModel):
+    r"""ModifyDBCustomClusterNodeConfig返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: <p>任务ID</p>
+        :type TaskId: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        r"""<p>任务ID</p>
+        :rtype: int
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyDBCustomClusterTagsRequest(AbstractModel):
     r"""ModifyDBCustomClusterTags请求参数结构体
 
@@ -6600,6 +7840,85 @@ class ModifyDBCustomClusterTagsRequest(AbstractModel):
 
 class ModifyDBCustomClusterTagsResponse(AbstractModel):
     r"""ModifyDBCustomClusterTags返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyDBCustomNodeSecurityGroupsRequest(AbstractModel):
+    r"""ModifyDBCustomNodeSecurityGroups请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _NodeId: <p>节点id</p>
+        :type NodeId: str
+        :param _SecurityGroupIds: <p>安全组id，数组格式，根据内部安全组ID的顺序来确认优先级。</p>
+        :type SecurityGroupIds: list of str
+        """
+        self._NodeId = None
+        self._SecurityGroupIds = None
+
+    @property
+    def NodeId(self):
+        r"""<p>节点id</p>
+        :rtype: str
+        """
+        return self._NodeId
+
+    @NodeId.setter
+    def NodeId(self, NodeId):
+        self._NodeId = NodeId
+
+    @property
+    def SecurityGroupIds(self):
+        r"""<p>安全组id，数组格式，根据内部安全组ID的顺序来确认优先级。</p>
+        :rtype: list of str
+        """
+        return self._SecurityGroupIds
+
+    @SecurityGroupIds.setter
+    def SecurityGroupIds(self, SecurityGroupIds):
+        self._SecurityGroupIds = SecurityGroupIds
+
+
+    def _deserialize(self, params):
+        self._NodeId = params.get("NodeId")
+        self._SecurityGroupIds = params.get("SecurityGroupIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyDBCustomNodeSecurityGroupsResponse(AbstractModel):
+    r"""ModifyDBCustomNodeSecurityGroups返回参数结构体
 
     """
 
@@ -6802,6 +8121,198 @@ class ModifyInstanceNameResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
+
+
+class PolicyRule(AbstractModel):
+    r"""安全组规则
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Action: <p>规则动作，</p><p>枚举值：</p><ul><li>ACCEPT： 允许</li><li>DROP： 拒绝</li></ul>
+        :type Action: str
+        :param _CidrIp: <p>来源/目标 IP 或 CIDR，如 0.0.0.0/0</p>
+        :type CidrIp: str
+        :param _PortRange: <p>端口范围，如 80、8080-8090、ALL</p>
+        :type PortRange: str
+        :param _IpProtocol: <p>协议类型，如 tcp、udp、icmp、ALL</p>
+        :type IpProtocol: str
+        :param _ServiceModule: <p>协议端口模板 ID</p>
+        :type ServiceModule: str
+        :param _AddressModule: <p>IP 地址模板 ID</p>
+        :type AddressModule: str
+        :param _Id: <p>规则 ID</p>
+        :type Id: str
+        :param _Desc: <p>规则备注描述</p>
+        :type Desc: str
+        """
+        self._Action = None
+        self._CidrIp = None
+        self._PortRange = None
+        self._IpProtocol = None
+        self._ServiceModule = None
+        self._AddressModule = None
+        self._Id = None
+        self._Desc = None
+
+    @property
+    def Action(self):
+        r"""<p>规则动作，</p><p>枚举值：</p><ul><li>ACCEPT： 允许</li><li>DROP： 拒绝</li></ul>
+        :rtype: str
+        """
+        return self._Action
+
+    @Action.setter
+    def Action(self, Action):
+        self._Action = Action
+
+    @property
+    def CidrIp(self):
+        r"""<p>来源/目标 IP 或 CIDR，如 0.0.0.0/0</p>
+        :rtype: str
+        """
+        return self._CidrIp
+
+    @CidrIp.setter
+    def CidrIp(self, CidrIp):
+        self._CidrIp = CidrIp
+
+    @property
+    def PortRange(self):
+        r"""<p>端口范围，如 80、8080-8090、ALL</p>
+        :rtype: str
+        """
+        return self._PortRange
+
+    @PortRange.setter
+    def PortRange(self, PortRange):
+        self._PortRange = PortRange
+
+    @property
+    def IpProtocol(self):
+        r"""<p>协议类型，如 tcp、udp、icmp、ALL</p>
+        :rtype: str
+        """
+        return self._IpProtocol
+
+    @IpProtocol.setter
+    def IpProtocol(self, IpProtocol):
+        self._IpProtocol = IpProtocol
+
+    @property
+    def ServiceModule(self):
+        r"""<p>协议端口模板 ID</p>
+        :rtype: str
+        """
+        return self._ServiceModule
+
+    @ServiceModule.setter
+    def ServiceModule(self, ServiceModule):
+        self._ServiceModule = ServiceModule
+
+    @property
+    def AddressModule(self):
+        r"""<p>IP 地址模板 ID</p>
+        :rtype: str
+        """
+        return self._AddressModule
+
+    @AddressModule.setter
+    def AddressModule(self, AddressModule):
+        self._AddressModule = AddressModule
+
+    @property
+    def Id(self):
+        r"""<p>规则 ID</p>
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Desc(self):
+        r"""<p>规则备注描述</p>
+        :rtype: str
+        """
+        return self._Desc
+
+    @Desc.setter
+    def Desc(self, Desc):
+        self._Desc = Desc
+
+
+    def _deserialize(self, params):
+        self._Action = params.get("Action")
+        self._CidrIp = params.get("CidrIp")
+        self._PortRange = params.get("PortRange")
+        self._IpProtocol = params.get("IpProtocol")
+        self._ServiceModule = params.get("ServiceModule")
+        self._AddressModule = params.get("AddressModule")
+        self._Id = params.get("Id")
+        self._Desc = params.get("Desc")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RegionInfo(AbstractModel):
+    r"""地域信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Region: <p>地域</p>
+        :type Region: str
+        :param _RegionState: <p>售卖状态</p><p>枚举值：</p><ul><li>SELL： 正常售卖</li><li>SOLD_OUT： 售罄</li></ul>
+        :type RegionState: str
+        """
+        self._Region = None
+        self._RegionState = None
+
+    @property
+    def Region(self):
+        r"""<p>地域</p>
+        :rtype: str
+        """
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def RegionState(self):
+        r"""<p>售卖状态</p><p>枚举值：</p><ul><li>SELL： 正常售卖</li><li>SOLD_OUT： 售罄</li></ul>
+        :rtype: str
+        """
+        return self._RegionState
+
+    @RegionState.setter
+    def RegionState(self, RegionState):
+        self._RegionState = RegionState
+
+
+    def _deserialize(self, params):
+        self._Region = params.get("Region")
+        self._RegionState = params.get("RegionState")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class RemoveNodesFromDBCustomClusterRequest(AbstractModel):
@@ -7090,6 +8601,142 @@ class ResourceTag(AbstractModel):
         
 
 
+class SecurityGroup(AbstractModel):
+    r"""安全组详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SecurityGroupId: <p>安全组ID</p>
+        :type SecurityGroupId: str
+        :param _ProjectId: <p>所属项目 ID</p>
+        :type ProjectId: int
+        :param _CreateTime: <p>安全组创建时间</p>
+        :type CreateTime: str
+        :param _Inbound: <p>安全组入方向规则列表</p>
+        :type Inbound: list of PolicyRule
+        :param _Outbound: <p>安全组出方向规则列表</p>
+        :type Outbound: list of PolicyRule
+        :param _SecurityGroupName: <p>安全组名称</p>
+        :type SecurityGroupName: str
+        :param _SecurityGroupRemark: <p>安全组备注说明</p>
+        :type SecurityGroupRemark: str
+        """
+        self._SecurityGroupId = None
+        self._ProjectId = None
+        self._CreateTime = None
+        self._Inbound = None
+        self._Outbound = None
+        self._SecurityGroupName = None
+        self._SecurityGroupRemark = None
+
+    @property
+    def SecurityGroupId(self):
+        r"""<p>安全组ID</p>
+        :rtype: str
+        """
+        return self._SecurityGroupId
+
+    @SecurityGroupId.setter
+    def SecurityGroupId(self, SecurityGroupId):
+        self._SecurityGroupId = SecurityGroupId
+
+    @property
+    def ProjectId(self):
+        r"""<p>所属项目 ID</p>
+        :rtype: int
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def CreateTime(self):
+        r"""<p>安全组创建时间</p>
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def Inbound(self):
+        r"""<p>安全组入方向规则列表</p>
+        :rtype: list of PolicyRule
+        """
+        return self._Inbound
+
+    @Inbound.setter
+    def Inbound(self, Inbound):
+        self._Inbound = Inbound
+
+    @property
+    def Outbound(self):
+        r"""<p>安全组出方向规则列表</p>
+        :rtype: list of PolicyRule
+        """
+        return self._Outbound
+
+    @Outbound.setter
+    def Outbound(self, Outbound):
+        self._Outbound = Outbound
+
+    @property
+    def SecurityGroupName(self):
+        r"""<p>安全组名称</p>
+        :rtype: str
+        """
+        return self._SecurityGroupName
+
+    @SecurityGroupName.setter
+    def SecurityGroupName(self, SecurityGroupName):
+        self._SecurityGroupName = SecurityGroupName
+
+    @property
+    def SecurityGroupRemark(self):
+        r"""<p>安全组备注说明</p>
+        :rtype: str
+        """
+        return self._SecurityGroupRemark
+
+    @SecurityGroupRemark.setter
+    def SecurityGroupRemark(self, SecurityGroupRemark):
+        self._SecurityGroupRemark = SecurityGroupRemark
+
+
+    def _deserialize(self, params):
+        self._SecurityGroupId = params.get("SecurityGroupId")
+        self._ProjectId = params.get("ProjectId")
+        self._CreateTime = params.get("CreateTime")
+        if params.get("Inbound") is not None:
+            self._Inbound = []
+            for item in params.get("Inbound"):
+                obj = PolicyRule()
+                obj._deserialize(item)
+                self._Inbound.append(obj)
+        if params.get("Outbound") is not None:
+            self._Outbound = []
+            for item in params.get("Outbound"):
+                obj = PolicyRule()
+                obj._deserialize(item)
+                self._Outbound.append(obj)
+        self._SecurityGroupName = params.get("SecurityGroupName")
+        self._SecurityGroupRemark = params.get("SecurityGroupRemark")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class SystemDisk(AbstractModel):
     r"""DB Custom 节点系统盘信息。
 
@@ -7248,6 +8895,57 @@ class Taint(AbstractModel):
         self._Key = params.get("Key")
         self._Effect = params.get("Effect")
         self._Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ZoneInfo(AbstractModel):
+    r"""可用区信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Zone: <p>支持的可用区</p>
+        :type Zone: str
+        :param _ZoneState: <p>可用区状态</p><p>枚举值：</p><ul><li>SELL： 正常售卖</li><li>SOLD_OUT： 售罄</li></ul>
+        :type ZoneState: str
+        """
+        self._Zone = None
+        self._ZoneState = None
+
+    @property
+    def Zone(self):
+        r"""<p>支持的可用区</p>
+        :rtype: str
+        """
+        return self._Zone
+
+    @Zone.setter
+    def Zone(self, Zone):
+        self._Zone = Zone
+
+    @property
+    def ZoneState(self):
+        r"""<p>可用区状态</p><p>枚举值：</p><ul><li>SELL： 正常售卖</li><li>SOLD_OUT： 售罄</li></ul>
+        :rtype: str
+        """
+        return self._ZoneState
+
+    @ZoneState.setter
+    def ZoneState(self, ZoneState):
+        self._ZoneState = ZoneState
+
+
+    def _deserialize(self, params):
+        self._Zone = params.get("Zone")
+        self._ZoneState = params.get("ZoneState")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

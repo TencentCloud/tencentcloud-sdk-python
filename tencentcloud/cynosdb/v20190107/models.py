@@ -22993,14 +22993,14 @@ class DescribeClusterLevelsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Zone: 可用区
+        :param _Zone: <p>可用区</p>
         :type Zone: str
         """
         self._Zone = None
 
     @property
     def Zone(self):
-        r"""可用区
+        r"""<p>可用区</p>
         :rtype: str
         """
         return self._Zone
@@ -23029,17 +23029,20 @@ class DescribeClusterLevelsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _LevelList: 集群类型列表
+        :param _LevelList: <p>集群类型列表</p>
         :type LevelList: list of str
+        :param _Zones: <p>专区列表</p>
+        :type Zones: list of str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._LevelList = None
+        self._Zones = None
         self._RequestId = None
 
     @property
     def LevelList(self):
-        r"""集群类型列表
+        r"""<p>集群类型列表</p>
         :rtype: list of str
         """
         return self._LevelList
@@ -23047,6 +23050,17 @@ class DescribeClusterLevelsResponse(AbstractModel):
     @LevelList.setter
     def LevelList(self, LevelList):
         self._LevelList = LevelList
+
+    @property
+    def Zones(self):
+        r"""<p>专区列表</p>
+        :rtype: list of str
+        """
+        return self._Zones
+
+    @Zones.setter
+    def Zones(self, Zones):
+        self._Zones = Zones
 
     @property
     def RequestId(self):
@@ -23062,6 +23076,7 @@ class DescribeClusterLevelsResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._LevelList = params.get("LevelList")
+        self._Zones = params.get("Zones")
         self._RequestId = params.get("RequestId")
 
 

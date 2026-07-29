@@ -37059,37 +37059,37 @@ class HealthCheckSetting(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ActionType: 健康检查方法。HTTP：通过 HTTP 接口检查；CMD：通过执行命令检查；TCP：通过建立 TCP 连接检查。
+        :param _ActionType: <p>健康检查方法。HTTP：通过 HTTP 接口检查；CMD：通过执行命令检查；TCP：通过建立 TCP 连接检查。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ActionType: str
-        :param _InitialDelaySeconds: 容器延时启动健康检查的时间，单位秒。
+        :param _InitialDelaySeconds: <p>容器延时启动健康检查的时间，单位秒。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type InitialDelaySeconds: int
-        :param _TimeoutSeconds: 每次健康检查响应的最大超时时间，单位秒。
+        :param _TimeoutSeconds: <p>每次健康检查响应的最大超时时间，单位秒。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TimeoutSeconds: int
-        :param _PeriodSeconds: 进行健康检查的时间间隔，单位秒。
+        :param _PeriodSeconds: <p>进行健康检查的时间间隔，单位秒。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type PeriodSeconds: int
-        :param _SuccessThreshold: 表示后端容器从失败到成功的连续健康检查成功次数。
+        :param _SuccessThreshold: <p>表示后端容器从失败到成功的连续健康检查成功次数。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type SuccessThreshold: int
-        :param _FailureThreshold: 表示后端容器从成功到失败的连续健康检查成功次数。
+        :param _FailureThreshold: <p>表示后端容器从成功到失败的连续健康检查成功次数。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type FailureThreshold: int
-        :param _Scheme: HTTP 健康检查方法使用的检查协议。支持HTTP、HTTPS。
+        :param _Scheme: <p>HTTP 健康检查方法使用的检查协议。支持HTTP、HTTPS。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Scheme: str
-        :param _Port: 健康检查端口，范围 1~65535 。
+        :param _Port: <p>健康检查端口，范围 1~65535 。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Port: int
-        :param _Path: HTTP 健康检查接口的请求路径。
+        :param _Path: <p>HTTP 健康检查接口的请求路径。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Path: str
-        :param _Command: 执行命令检查方式，执行的命令。
+        :param _Command: <p>执行命令检查方式，执行的命令。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Command: list of str
-        :param _Type: TSF_DEFAULT：tsf 默认就绪探针。K8S_NATIVE：k8s 原生探针。不填默认为 k8s 原生探针。
+        :param _Type: <p>TSF_DEFAULT：tsf 默认就绪探针。K8S_NATIVE：k8s 原生探针。不填默认为 k8s 原生探针。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Type: str
         """
@@ -37107,7 +37107,7 @@ class HealthCheckSetting(AbstractModel):
 
     @property
     def ActionType(self):
-        r"""健康检查方法。HTTP：通过 HTTP 接口检查；CMD：通过执行命令检查；TCP：通过建立 TCP 连接检查。
+        r"""<p>健康检查方法。HTTP：通过 HTTP 接口检查；CMD：通过执行命令检查；TCP：通过建立 TCP 连接检查。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -37119,7 +37119,7 @@ class HealthCheckSetting(AbstractModel):
 
     @property
     def InitialDelaySeconds(self):
-        r"""容器延时启动健康检查的时间，单位秒。
+        r"""<p>容器延时启动健康检查的时间，单位秒。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -37131,7 +37131,7 @@ class HealthCheckSetting(AbstractModel):
 
     @property
     def TimeoutSeconds(self):
-        r"""每次健康检查响应的最大超时时间，单位秒。
+        r"""<p>每次健康检查响应的最大超时时间，单位秒。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -37143,7 +37143,7 @@ class HealthCheckSetting(AbstractModel):
 
     @property
     def PeriodSeconds(self):
-        r"""进行健康检查的时间间隔，单位秒。
+        r"""<p>进行健康检查的时间间隔，单位秒。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -37155,7 +37155,7 @@ class HealthCheckSetting(AbstractModel):
 
     @property
     def SuccessThreshold(self):
-        r"""表示后端容器从失败到成功的连续健康检查成功次数。
+        r"""<p>表示后端容器从失败到成功的连续健康检查成功次数。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -37167,7 +37167,7 @@ class HealthCheckSetting(AbstractModel):
 
     @property
     def FailureThreshold(self):
-        r"""表示后端容器从成功到失败的连续健康检查成功次数。
+        r"""<p>表示后端容器从成功到失败的连续健康检查成功次数。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -37179,7 +37179,7 @@ class HealthCheckSetting(AbstractModel):
 
     @property
     def Scheme(self):
-        r"""HTTP 健康检查方法使用的检查协议。支持HTTP、HTTPS。
+        r"""<p>HTTP 健康检查方法使用的检查协议。支持HTTP、HTTPS。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -37191,7 +37191,7 @@ class HealthCheckSetting(AbstractModel):
 
     @property
     def Port(self):
-        r"""健康检查端口，范围 1~65535 。
+        r"""<p>健康检查端口，范围 1~65535 。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -37203,7 +37203,7 @@ class HealthCheckSetting(AbstractModel):
 
     @property
     def Path(self):
-        r"""HTTP 健康检查接口的请求路径。
+        r"""<p>HTTP 健康检查接口的请求路径。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -37215,7 +37215,7 @@ class HealthCheckSetting(AbstractModel):
 
     @property
     def Command(self):
-        r"""执行命令检查方式，执行的命令。
+        r"""<p>执行命令检查方式，执行的命令。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -37227,7 +37227,7 @@ class HealthCheckSetting(AbstractModel):
 
     @property
     def Type(self):
-        r"""TSF_DEFAULT：tsf 默认就绪探针。K8S_NATIVE：k8s 原生探针。不填默认为 k8s 原生探针。
+        r"""<p>TSF_DEFAULT：tsf 默认就绪探针。K8S_NATIVE：k8s 原生探针。不填默认为 k8s 原生探针。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """

@@ -259,6 +259,29 @@ class TcbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateCloudApp(self, request):
+        r"""创建云应用
+
+        :param request: Request instance for CreateCloudApp.
+        :type request: :class:`tencentcloud.tcb.v20180608.models.CreateCloudAppRequest`
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.CreateCloudAppResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateCloudApp", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateCloudAppResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateCustomLoginKey(self, request):
         r"""创建自定义登录密钥。在指定云开发环境下生成一对 RSA 1024 位非对称密钥对，系统仅存储公钥，私钥仅在创建时返回一次且不可恢复，请妥善保存。创建新密钥后，该环境下原有未设置过期时间的旧密钥将被自动标记为 2 小时后过期，请确保客户端及时更新密钥配置。
         返回的 KeyID 和 PrivateKey 需与环境 ID 一起组装为 JSON 配置文件，供客户端 Admin SDK 初始化时使用，文件格式如下：
@@ -592,6 +615,52 @@ class TcbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DeleteCloudApp(self, request):
+        r"""删除云应用服务
+
+        :param request: Request instance for DeleteCloudApp.
+        :type request: :class:`tencentcloud.tcb.v20180608.models.DeleteCloudAppRequest`
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.DeleteCloudAppResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteCloudApp", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteCloudAppResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteCloudAppVersion(self, request):
+        r"""删除云应用服务版本
+
+        :param request: Request instance for DeleteCloudAppVersion.
+        :type request: :class:`tencentcloud.tcb.v20180608.models.DeleteCloudAppVersionRequest`
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.DeleteCloudAppVersionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteCloudAppVersion", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteCloudAppVersionResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DeleteHTTPServiceRoute(self, request):
         r"""本接口DeleteHTTPServiceRoute用于删除HTTP访问服务域名或者路由。可批量删除多条path路由、删除域名及所有path路由，如果Paths字段为空则删除域名及所有path路由，如果Paths不为空则仅删除path路由。
 
@@ -858,6 +927,52 @@ class TcbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeCloudAppCosInfo(self, request):
+        r"""获取云应用cos信息
+
+        :param request: Request instance for DescribeCloudAppCosInfo.
+        :type request: :class:`tencentcloud.tcb.v20180608.models.DescribeCloudAppCosInfoRequest`
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.DescribeCloudAppCosInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeCloudAppCosInfo", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeCloudAppCosInfoResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeCloudAppInfo(self, request):
+        r"""查询应用服务信息
+
+        :param request: Request instance for DescribeCloudAppInfo.
+        :type request: :class:`tencentcloud.tcb.v20180608.models.DescribeCloudAppInfoRequest`
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.DescribeCloudAppInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeCloudAppInfo", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeCloudAppInfoResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeCloudAppList(self, request):
         r"""查询云应用服务列表信息
 
@@ -872,6 +987,52 @@ class TcbClient(AbstractClient):
             body = self.call("DescribeCloudAppList", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeCloudAppListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeCloudAppVersion(self, request):
+        r"""查询云应用服务版本信息
+
+        :param request: Request instance for DescribeCloudAppVersion.
+        :type request: :class:`tencentcloud.tcb.v20180608.models.DescribeCloudAppVersionRequest`
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.DescribeCloudAppVersionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeCloudAppVersion", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeCloudAppVersionResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeCloudAppVersionList(self, request):
+        r"""查询云应用服务版本列表信息
+
+        :param request: Request instance for DescribeCloudAppVersionList.
+        :type request: :class:`tencentcloud.tcb.v20180608.models.DescribeCloudAppVersionListRequest`
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.DescribeCloudAppVersionListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeCloudAppVersionList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeCloudAppVersionListResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

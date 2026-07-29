@@ -164,6 +164,52 @@ class DbdcClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeDBCustomClusterNodeConfig(self, request):
+        r"""该接口（DescribeDBCustomClusterNodeConfig）用于查询 DB Custom 集群内节点的配置信息。
+
+        :param request: Request instance for DescribeDBCustomClusterNodeConfig.
+        :type request: :class:`tencentcloud.dbdc.v20201029.models.DescribeDBCustomClusterNodeConfigRequest`
+        :rtype: :class:`tencentcloud.dbdc.v20201029.models.DescribeDBCustomClusterNodeConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDBCustomClusterNodeConfig", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDBCustomClusterNodeConfigResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeDBCustomClusterNodeResources(self, request):
+        r"""该接口（DescribeDBCustomClusterNodeResources）用于查询 DB Custom 集群内节点的资源信息。
+
+        :param request: Request instance for DescribeDBCustomClusterNodeResources.
+        :type request: :class:`tencentcloud.dbdc.v20201029.models.DescribeDBCustomClusterNodeResourcesRequest`
+        :rtype: :class:`tencentcloud.dbdc.v20201029.models.DescribeDBCustomClusterNodeResourcesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDBCustomClusterNodeResources", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDBCustomClusterNodeResourcesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeDBCustomClusterNodes(self, request):
         r"""该接口（DescribeDBCustomClusterNodes）用于查询 DB Custom 集群中的节点列表。
 
@@ -178,6 +224,29 @@ class DbdcClient(AbstractClient):
             body = self.call("DescribeDBCustomClusterNodes", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeDBCustomClusterNodesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeDBCustomClusterResources(self, request):
+        r"""该接口（DescribeDBCustomClusterResources）用于查询 DB Custom 集群的资源信息。
+
+        :param request: Request instance for DescribeDBCustomClusterResources.
+        :type request: :class:`tencentcloud.dbdc.v20201029.models.DescribeDBCustomClusterResourcesRequest`
+        :rtype: :class:`tencentcloud.dbdc.v20201029.models.DescribeDBCustomClusterResourcesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDBCustomClusterResources", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDBCustomClusterResourcesResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -233,6 +302,52 @@ class DbdcClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeDBCustomNodeSecurityGroups(self, request):
+        r"""该接口（DescribeDBCustomNodeSecurityGroups）用于查询 DB Custom 节点安全组信息。
+
+        :param request: Request instance for DescribeDBCustomNodeSecurityGroups.
+        :type request: :class:`tencentcloud.dbdc.v20201029.models.DescribeDBCustomNodeSecurityGroupsRequest`
+        :rtype: :class:`tencentcloud.dbdc.v20201029.models.DescribeDBCustomNodeSecurityGroupsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDBCustomNodeSecurityGroups", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDBCustomNodeSecurityGroupsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeDBCustomNodeTypes(self, request):
+        r"""该接口(DescribeDBCustomNodeTypes) 用于查询 DB Custom 节点支持的机型信息。
+
+        :param request: Request instance for DescribeDBCustomNodeTypes.
+        :type request: :class:`tencentcloud.dbdc.v20201029.models.DescribeDBCustomNodeTypesRequest`
+        :rtype: :class:`tencentcloud.dbdc.v20201029.models.DescribeDBCustomNodeTypesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDBCustomNodeTypes", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDBCustomNodeTypesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeDBCustomNodes(self, request):
         r"""该接口（DescribeDBCustomNodes）用于查询 DB Custom 节点列表。
 
@@ -256,6 +371,29 @@ class DbdcClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeDBCustomRegions(self, request):
+        r"""该接口(DescribeDBCustomRegions) 用于查询 DB Custom 支持的地域列表。
+
+        :param request: Request instance for DescribeDBCustomRegions.
+        :type request: :class:`tencentcloud.dbdc.v20201029.models.DescribeDBCustomRegionsRequest`
+        :rtype: :class:`tencentcloud.dbdc.v20201029.models.DescribeDBCustomRegionsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDBCustomRegions", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDBCustomRegionsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeDBCustomTaskStatus(self, request):
         r"""该接口（DescribeDBCustomTaskStatus）用于查询 DB Custom 任务的状态。
 
@@ -270,6 +408,29 @@ class DbdcClient(AbstractClient):
             body = self.call("DescribeDBCustomTaskStatus", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeDBCustomTaskStatusResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeDBCustomZones(self, request):
+        r"""该接口(DescribeDBCustomZones) 用于查询指定地域的 DB Custom 可用区列表。
+
+        :param request: Request instance for DescribeDBCustomZones.
+        :type request: :class:`tencentcloud.dbdc.v20201029.models.DescribeDBCustomZonesRequest`
+        :rtype: :class:`tencentcloud.dbdc.v20201029.models.DescribeDBCustomZonesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDBCustomZones", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDBCustomZonesResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -463,6 +624,29 @@ class DbdcClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyDBCustomClusterNodeConfig(self, request):
+        r"""该接口（ModifyDBCustomClusterNodeConfig）用于修改 DB Custom 集群中节点的配置。
+
+        :param request: Request instance for ModifyDBCustomClusterNodeConfig.
+        :type request: :class:`tencentcloud.dbdc.v20201029.models.ModifyDBCustomClusterNodeConfigRequest`
+        :rtype: :class:`tencentcloud.dbdc.v20201029.models.ModifyDBCustomClusterNodeConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyDBCustomClusterNodeConfig", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyDBCustomClusterNodeConfigResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyDBCustomClusterTags(self, request):
         r"""该接口（ModifyDBCustomClusterTags）用于修改 DB Custom 集群绑定的标签。
 
@@ -477,6 +661,29 @@ class DbdcClient(AbstractClient):
             body = self.call("ModifyDBCustomClusterTags", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyDBCustomClusterTagsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyDBCustomNodeSecurityGroups(self, request):
+        r"""该接口（ModifyDBCustomNodeSecurityGroups）用于修改 DB Custom 节点安全组。
+
+        :param request: Request instance for ModifyDBCustomNodeSecurityGroups.
+        :type request: :class:`tencentcloud.dbdc.v20201029.models.ModifyDBCustomNodeSecurityGroupsRequest`
+        :rtype: :class:`tencentcloud.dbdc.v20201029.models.ModifyDBCustomNodeSecurityGroupsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyDBCustomNodeSecurityGroups", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyDBCustomNodeSecurityGroupsResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

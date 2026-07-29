@@ -19076,7 +19076,7 @@ class DescribeRumGroupLogV2Request(AbstractModel):
         :type StartTime: int
         :param _Limit: <p>单次查询返回的原始日志条数，最大值为100（必填）</p>
         :type Limit: int
-        :param _Filter: <p>过滤条件，其中key与运算符(Operator)对应可选字段枚举值与示例查看文档：https://cloud.tencent.com/document/product/248/87223</p>
+        :param _Filter: <p>过滤条件，其中key与运算符(Operator)对应可选字段枚举值与示例查看文档：<a href="https://cloud.tencent.com/document/product/248/87223">日志查询相关</a></p>
         :type Filter: str
         :param _EndTime: <p>查询日志结束时间（必填）</p>
         :type EndTime: int
@@ -19131,7 +19131,7 @@ class DescribeRumGroupLogV2Request(AbstractModel):
 
     @property
     def Filter(self):
-        r"""<p>过滤条件，其中key与运算符(Operator)对应可选字段枚举值与示例查看文档：https://cloud.tencent.com/document/product/248/87223</p>
+        r"""<p>过滤条件，其中key与运算符(Operator)对应可选字段枚举值与示例查看文档：<a href="https://cloud.tencent.com/document/product/248/87223">日志查询相关</a></p>
         :rtype: str
         """
         return self._Filter
@@ -19260,7 +19260,7 @@ class DescribeRumLogDetailsV2Request(AbstractModel):
         :type StartTime: int
         :param _Limit: <p>单次查询返回的原始日志条数，最大值为100（必填）</p>
         :type Limit: int
-        :param _Filter: <p>过滤条件，其中key与运算符(Operator)对应可选字段枚举值与示例查看文档：https://cloud.tencent.com/document/product/248/87223</p>
+        :param _Filter: <p>过滤条件，其中key与运算符(Operator)对应可选字段枚举值与示例查看文档：<a href="https://cloud.tencent.com/document/product/248/87223">日志查询相关</a></p>
         :type Filter: str
         :param _EndTime: <p>查询日志结束时间（必填）格式为时间戳 毫秒</p>
         :type EndTime: int
@@ -19315,7 +19315,7 @@ class DescribeRumLogDetailsV2Request(AbstractModel):
 
     @property
     def Filter(self):
-        r"""<p>过滤条件，其中key与运算符(Operator)对应可选字段枚举值与示例查看文档：https://cloud.tencent.com/document/product/248/87223</p>
+        r"""<p>过滤条件，其中key与运算符(Operator)对应可选字段枚举值与示例查看文档：<a href="https://cloud.tencent.com/document/product/248/87223">日志查询相关</a></p>
         :rtype: str
         """
         return self._Filter
@@ -19596,13 +19596,13 @@ class DescribeRumLogExportV2Request(AbstractModel):
         :type Name: str
         :param _StartTime: <p>查询日志开始时间(必填)</p>
         :type StartTime: int
-        :param _Filter: <p>过滤条件，其中key与运算符(Operator)对应可选字段枚举值与示例查看文档：https://cloud.tencent.com/document/product/248/87223</p>
+        :param _Filter: <p>过滤条件，其中key与运算符(Operator)对应可选字段枚举值与示例查看文档：<a href="https://cloud.tencent.com/document/product/248/87223">日志查询相关</a></p>
         :type Filter: str
         :param _EndTime: <p>查询日志结束时间(必填)</p>
         :type EndTime: int
         :param _ID: <p>项目ID</p>
         :type ID: int
-        :param _Fields: <p>注意：这个字段必选，不能为空！选择要导出哪些字段的参数，对应日志的列，可查看文档：https://cloud.tencent.com/document/product/248/87223</p><p>枚举值：</p><ul><li>level： 日志类型</li><li>url： URL</li><li>ip： 用户终端IP</li><li>version： 版本</li></ul>
+        :param _Fields: <p>注意：这个字段必选，不能为空！选择要导出哪些字段的参数，对应日志的列，可查看文档：<a href="https://cloud.tencent.com/document/product/248/87223">日志查询相关</a></p><p>枚举值：</p><ul><li>level： 日志类型</li><li>url： URL</li><li>ip： 用户终端IP</li><li>version： 版本</li></ul>
         :type Fields: list of str
         """
         self._Name = None
@@ -19636,7 +19636,7 @@ class DescribeRumLogExportV2Request(AbstractModel):
 
     @property
     def Filter(self):
-        r"""<p>过滤条件，其中key与运算符(Operator)对应可选字段枚举值与示例查看文档：https://cloud.tencent.com/document/product/248/87223</p>
+        r"""<p>过滤条件，其中key与运算符(Operator)对应可选字段枚举值与示例查看文档：<a href="https://cloud.tencent.com/document/product/248/87223">日志查询相关</a></p>
         :rtype: str
         """
         return self._Filter
@@ -19669,7 +19669,7 @@ class DescribeRumLogExportV2Request(AbstractModel):
 
     @property
     def Fields(self):
-        r"""<p>注意：这个字段必选，不能为空！选择要导出哪些字段的参数，对应日志的列，可查看文档：https://cloud.tencent.com/document/product/248/87223</p><p>枚举值：</p><ul><li>level： 日志类型</li><li>url： URL</li><li>ip： 用户终端IP</li><li>version： 版本</li></ul>
+        r"""<p>注意：这个字段必选，不能为空！选择要导出哪些字段的参数，对应日志的列，可查看文档：<a href="https://cloud.tencent.com/document/product/248/87223">日志查询相关</a></p><p>枚举值：</p><ul><li>level： 日志类型</li><li>url： URL</li><li>ip： 用户终端IP</li><li>version： 版本</li></ul>
         :rtype: list of str
         """
         return self._Fields
@@ -20139,7 +20139,7 @@ class DescribeRumLogTotalV2Request(AbstractModel):
         :type StartTime: int
         :param _Limit: <p>单次查询返回的原始日志条数，最大值为100（必填）</p>
         :type Limit: int
-        :param _Filter: <p>过滤条件，其中key与运算符(Operator)对应可选字段枚举值与示例查看文档：https://cloud.tencent.com/document/product/248/87223</p>
+        :param _Filter: <p>过滤条件，其中key与运算符(Operator)对应可选字段枚举值与示例查看文档：<a href="https://cloud.tencent.com/document/product/248/87223">日志查询相关</a></p>
         :type Filter: str
         :param _EndTime: <p>查询日志结束时间（必填）格式为时间戳 毫秒</p>
         :type EndTime: int
@@ -20194,7 +20194,7 @@ class DescribeRumLogTotalV2Request(AbstractModel):
 
     @property
     def Filter(self):
-        r"""<p>过滤条件，其中key与运算符(Operator)对应可选字段枚举值与示例查看文档：https://cloud.tencent.com/document/product/248/87223</p>
+        r"""<p>过滤条件，其中key与运算符(Operator)对应可选字段枚举值与示例查看文档：<a href="https://cloud.tencent.com/document/product/248/87223">日志查询相关</a></p>
         :rtype: str
         """
         return self._Filter
@@ -20460,7 +20460,7 @@ class DescribeRumStatsLogListV2Request(AbstractModel):
         :type StartTime: int
         :param _Limit: <p>单次查询返回的原始日志条数，最大值为100（必填）</p>
         :type Limit: int
-        :param _Filter: <p>过滤条件，其中key与运算符(Operator)对应可选字段枚举值与示例查看文档：https://cloud.tencent.com/document/product/248/87223</p>
+        :param _Filter: <p>过滤条件，其中key与运算符(Operator)对应可选字段枚举值与示例查看文档：<a href="https://cloud.tencent.com/document/product/248/87223">日志查询相关</a></p>
         :type Filter: str
         :param _EndTime: <p>查询日志结束时间（必填）</p>
         :type EndTime: int
@@ -20497,7 +20497,7 @@ class DescribeRumStatsLogListV2Request(AbstractModel):
 
     @property
     def Filter(self):
-        r"""<p>过滤条件，其中key与运算符(Operator)对应可选字段枚举值与示例查看文档：https://cloud.tencent.com/document/product/248/87223</p>
+        r"""<p>过滤条件，其中key与运算符(Operator)对应可选字段枚举值与示例查看文档：<a href="https://cloud.tencent.com/document/product/248/87223">日志查询相关</a></p>
         :rtype: str
         """
         return self._Filter

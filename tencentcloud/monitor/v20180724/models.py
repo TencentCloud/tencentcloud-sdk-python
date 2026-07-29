@@ -11922,6 +11922,90 @@ class DescribeAlarmNoticeCallbacksResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeAlarmNoticeOnCallUsersFromPrometheusAlertIDRequest(AbstractModel):
+    r"""DescribeAlarmNoticeOnCallUsersFromPrometheusAlertID请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AlertId: <p>prometheus告警分组ID</p><p>参数格式：alert-xxxxxxxx</p>
+        :type AlertId: str
+        """
+        self._AlertId = None
+
+    @property
+    def AlertId(self):
+        r"""<p>prometheus告警分组ID</p><p>参数格式：alert-xxxxxxxx</p>
+        :rtype: str
+        """
+        return self._AlertId
+
+    @AlertId.setter
+    def AlertId(self, AlertId):
+        self._AlertId = AlertId
+
+
+    def _deserialize(self, params):
+        self._AlertId = params.get("AlertId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAlarmNoticeOnCallUsersFromPrometheusAlertIDResponse(AbstractModel):
+    r"""DescribeAlarmNoticeOnCallUsersFromPrometheusAlertID返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Notices: <p>告警通知模板列表</p>
+        :type Notices: list of NoticeOnCallUsersInfo
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Notices = None
+        self._RequestId = None
+
+    @property
+    def Notices(self):
+        r"""<p>告警通知模板列表</p>
+        :rtype: list of NoticeOnCallUsersInfo
+        """
+        return self._Notices
+
+    @Notices.setter
+    def Notices(self, Notices):
+        self._Notices = Notices
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Notices") is not None:
+            self._Notices = []
+            for item in params.get("Notices"):
+                obj = NoticeOnCallUsersInfo()
+                obj._deserialize(item)
+                self._Notices.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeAlarmNoticeRequest(AbstractModel):
     r"""DescribeAlarmNotice请求参数结构体
 
@@ -32762,6 +32846,169 @@ class NoticeContentTmplBindInfo(AbstractModel):
     def _deserialize(self, params):
         self._ContentTmplID = params.get("ContentTmplID")
         self._NoticeID = params.get("NoticeID")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class NoticeOnCallUsersInfo(AbstractModel):
+    r"""通知模板配置的发送用户的信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _NoticeId: <p>通知模板id</p><p>参数格式：notice-xxxxxxxx</p>
+        :type NoticeId: str
+        :param _SendGroups: <p>发送组信息，对应通知模板中的每项配置</p>
+        :type SendGroups: list of NoticeSendGroup
+        """
+        self._NoticeId = None
+        self._SendGroups = None
+
+    @property
+    def NoticeId(self):
+        r"""<p>通知模板id</p><p>参数格式：notice-xxxxxxxx</p>
+        :rtype: str
+        """
+        return self._NoticeId
+
+    @NoticeId.setter
+    def NoticeId(self, NoticeId):
+        self._NoticeId = NoticeId
+
+    @property
+    def SendGroups(self):
+        r"""<p>发送组信息，对应通知模板中的每项配置</p>
+        :rtype: list of NoticeSendGroup
+        """
+        return self._SendGroups
+
+    @SendGroups.setter
+    def SendGroups(self, SendGroups):
+        self._SendGroups = SendGroups
+
+
+    def _deserialize(self, params):
+        self._NoticeId = params.get("NoticeId")
+        if params.get("SendGroups") is not None:
+            self._SendGroups = []
+            for item in params.get("SendGroups"):
+                obj = NoticeSendGroup()
+                obj._deserialize(item)
+                self._SendGroups.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class NoticeSendGroup(AbstractModel):
+    r"""通知模板发送组信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ReceiverType: <p>发送组类型</p><p>枚举值：</p><ul><li>USER： 用户</li><li>GROUP： 用户组</li><li>OnCallForm： 值班表</li></ul>
+        :type ReceiverType: str
+        :param _Users: <p>通知人信息</p>
+        :type Users: list of NoticeUserInfo
+        """
+        self._ReceiverType = None
+        self._Users = None
+
+    @property
+    def ReceiverType(self):
+        r"""<p>发送组类型</p><p>枚举值：</p><ul><li>USER： 用户</li><li>GROUP： 用户组</li><li>OnCallForm： 值班表</li></ul>
+        :rtype: str
+        """
+        return self._ReceiverType
+
+    @ReceiverType.setter
+    def ReceiverType(self, ReceiverType):
+        self._ReceiverType = ReceiverType
+
+    @property
+    def Users(self):
+        r"""<p>通知人信息</p>
+        :rtype: list of NoticeUserInfo
+        """
+        return self._Users
+
+    @Users.setter
+    def Users(self, Users):
+        self._Users = Users
+
+
+    def _deserialize(self, params):
+        self._ReceiverType = params.get("ReceiverType")
+        if params.get("Users") is not None:
+            self._Users = []
+            for item in params.get("Users"):
+                obj = NoticeUserInfo()
+                obj._deserialize(item)
+                self._Users.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class NoticeUserInfo(AbstractModel):
+    r"""通知模板中配置的发送用户信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _UserId: <p>腾讯云用户id，<strong>不是账号uin</strong></p>
+        :type UserId: str
+        :param _UserName: <p>用户名</p>
+        :type UserName: str
+        """
+        self._UserId = None
+        self._UserName = None
+
+    @property
+    def UserId(self):
+        r"""<p>腾讯云用户id，<strong>不是账号uin</strong></p>
+        :rtype: str
+        """
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
+
+    @property
+    def UserName(self):
+        r"""<p>用户名</p>
+        :rtype: str
+        """
+        return self._UserName
+
+    @UserName.setter
+    def UserName(self, UserName):
+        self._UserName = UserName
+
+
+    def _deserialize(self, params):
+        self._UserId = params.get("UserId")
+        self._UserName = params.get("UserName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

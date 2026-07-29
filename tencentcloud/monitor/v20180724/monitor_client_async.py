@@ -1046,6 +1046,24 @@ class MonitorClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeAlarmNoticeOnCallUsersFromPrometheusAlertID(
+            self,
+            request: models.DescribeAlarmNoticeOnCallUsersFromPrometheusAlertIDRequest,
+            opts: Dict = None,
+    ) -> models.DescribeAlarmNoticeOnCallUsersFromPrometheusAlertIDResponse:
+        """
+        查询通知模板中配置的发送用户信息
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeAlarmNoticeOnCallUsersFromPrometheusAlertID"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeAlarmNoticeOnCallUsersFromPrometheusAlertIDResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeAlarmNotices(
             self,
             request: models.DescribeAlarmNoticesRequest,

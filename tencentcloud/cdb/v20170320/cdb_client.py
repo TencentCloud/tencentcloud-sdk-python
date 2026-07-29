@@ -4112,6 +4112,29 @@ class CdbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def UpgradeRoGroup(self, request):
+        r"""该接口（UpgradeRoGroup）用于只读组升级为纯网络转发模式。
+
+        :param request: Request instance for UpgradeRoGroup.
+        :type request: :class:`tencentcloud.cdb.v20170320.models.UpgradeRoGroupRequest`
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.UpgradeRoGroupResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UpgradeRoGroup", params, headers=headers)
+            response = json.loads(body)
+            model = models.UpgradeRoGroupResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def VerifyRootAccount(self, request):
         r"""本接口(VerifyRootAccount)用于校验云数据库实例的 ROOT 账号是否有足够的权限进行授权操作。
 

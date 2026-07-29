@@ -3236,6 +3236,24 @@ class CdbClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def UpgradeRoGroup(
+            self,
+            request: models.UpgradeRoGroupRequest,
+            opts: Dict = None,
+    ) -> models.UpgradeRoGroupResponse:
+        """
+        该接口（UpgradeRoGroup）用于只读组升级为纯网络转发模式。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "UpgradeRoGroup"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.UpgradeRoGroupResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def VerifyRootAccount(
             self,
             request: models.VerifyRootAccountRequest,

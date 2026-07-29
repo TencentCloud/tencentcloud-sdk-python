@@ -233,6 +233,29 @@ class DbbrainClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateDBDiagReportUrls(self, request):
+        r"""批量创建健康报告的PDF下载链接，支持一次获取多个报告的下载地址。
+
+        :param request: Request instance for CreateDBDiagReportUrls.
+        :type request: :class:`tencentcloud.dbbrain.v20210527.models.CreateDBDiagReportUrlsRequest`
+        :rtype: :class:`tencentcloud.dbbrain.v20210527.models.CreateDBDiagReportUrlsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateDBDiagReportUrls", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateDBDiagReportUrlsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateIgnoreDiagRecord(self, request):
         r"""对实例的某个诊断项设置忽略或取消忽略状态。
 
@@ -891,6 +914,29 @@ class DbbrainClient(AbstractClient):
             body = self.call("DescribeDBDiagReportTasks", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeDBDiagReportTasksResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeDBInstances(self, request):
+        r"""根据实例ID列表查询数据库实例基本信息，支持跨产品查询（MySQL、CynosDB、MariaDB、DCDB、MongoDB、PostgreSQL、Redis、TDStore等）。不支持分页，通过InstanceIds限制查询数量（最多100条）。
+
+        :param request: Request instance for DescribeDBInstances.
+        :type request: :class:`tencentcloud.dbbrain.v20210527.models.DescribeDBInstancesRequest`
+        :rtype: :class:`tencentcloud.dbbrain.v20210527.models.DescribeDBInstancesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDBInstances", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDBInstancesResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

@@ -6600,40 +6600,42 @@ class DescribeDeviceHardwareInfoItem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Id: 设备ID
+        :param _Id: <p>设备ID</p>
         :type Id: int
-        :param _Mid: 设备唯一标识符
+        :param _Mid: <p>设备唯一标识符</p>
         :type Mid: str
-        :param _OsType: OS平台 0 Windows 1 Linux 2 macOS 4 Android 5 iOS
+        :param _OsType: <p>OS平台 0 Windows 1 Linux 2 macOS 4 Android 5 iOS</p>
         :type OsType: int
-        :param _Name: 终端名
+        :param _Name: <p>终端名</p>
         :type Name: str
-        :param _UserName: 终端用户名
+        :param _UserName: <p>终端用户名</p>
         :type UserName: str
-        :param _Status: 授权状态（ 4未授权 5已授权）
+        :param _Status: <p>授权状态（ 4未授权 5已授权）</p>
         :type Status: int
-        :param _GroupId: 设备所属分组ID
+        :param _GroupId: <p>设备所属分组ID</p>
         :type GroupId: int
-        :param _GroupName: 设备所属分组名
+        :param _GroupName: <p>设备所属分组名</p>
         :type GroupName: str
-        :param _GroupNamePath: 设备所属分组路径
+        :param _GroupNamePath: <p>设备所属分组路径</p>
         :type GroupNamePath: str
-        :param _AccountName: 最近登录账户的姓名
+        :param _AccountName: <p>最近登录账户的姓名</p>
         :type AccountName: str
-        :param _Ip: 出口IP
+        :param _Ip: <p>出口IP</p>
         :type Ip: str
-        :param _MacAddr: MAC地址
+        :param _MacAddr: <p>MAC地址</p>
         :type MacAddr: str
-        :param _Cpu: CPU品牌型号
+        :param _Cpu: <p>CPU品牌型号</p>
         :type Cpu: str
-        :param _Memory: 内存信息
+        :param _Memory: <p>内存信息</p>
         :type Memory: str
-        :param _HardDiskSize: 硬盘信息
+        :param _HardDiskSize: <p>硬盘信息</p>
         :type HardDiskSize: str
-        :param _Monitor: 显示器品牌型号
+        :param _Monitor: <p>显示器品牌型号</p>
         :type Monitor: str
-        :param _RemarkName: 终端备注名
+        :param _RemarkName: <p>终端备注名</p>
         :type RemarkName: str
+        :param _BiosUuid: <p>BiosUUID（启动盘标识符）</p>
+        :type BiosUuid: str
         """
         self._Id = None
         self._Mid = None
@@ -6652,10 +6654,11 @@ class DescribeDeviceHardwareInfoItem(AbstractModel):
         self._HardDiskSize = None
         self._Monitor = None
         self._RemarkName = None
+        self._BiosUuid = None
 
     @property
     def Id(self):
-        r"""设备ID
+        r"""<p>设备ID</p>
         :rtype: int
         """
         return self._Id
@@ -6666,7 +6669,7 @@ class DescribeDeviceHardwareInfoItem(AbstractModel):
 
     @property
     def Mid(self):
-        r"""设备唯一标识符
+        r"""<p>设备唯一标识符</p>
         :rtype: str
         """
         return self._Mid
@@ -6677,7 +6680,7 @@ class DescribeDeviceHardwareInfoItem(AbstractModel):
 
     @property
     def OsType(self):
-        r"""OS平台 0 Windows 1 Linux 2 macOS 4 Android 5 iOS
+        r"""<p>OS平台 0 Windows 1 Linux 2 macOS 4 Android 5 iOS</p>
         :rtype: int
         """
         return self._OsType
@@ -6688,7 +6691,7 @@ class DescribeDeviceHardwareInfoItem(AbstractModel):
 
     @property
     def Name(self):
-        r"""终端名
+        r"""<p>终端名</p>
         :rtype: str
         """
         return self._Name
@@ -6699,7 +6702,7 @@ class DescribeDeviceHardwareInfoItem(AbstractModel):
 
     @property
     def UserName(self):
-        r"""终端用户名
+        r"""<p>终端用户名</p>
         :rtype: str
         """
         return self._UserName
@@ -6710,7 +6713,7 @@ class DescribeDeviceHardwareInfoItem(AbstractModel):
 
     @property
     def Status(self):
-        r"""授权状态（ 4未授权 5已授权）
+        r"""<p>授权状态（ 4未授权 5已授权）</p>
         :rtype: int
         """
         return self._Status
@@ -6721,7 +6724,7 @@ class DescribeDeviceHardwareInfoItem(AbstractModel):
 
     @property
     def GroupId(self):
-        r"""设备所属分组ID
+        r"""<p>设备所属分组ID</p>
         :rtype: int
         """
         return self._GroupId
@@ -6732,7 +6735,7 @@ class DescribeDeviceHardwareInfoItem(AbstractModel):
 
     @property
     def GroupName(self):
-        r"""设备所属分组名
+        r"""<p>设备所属分组名</p>
         :rtype: str
         """
         return self._GroupName
@@ -6743,7 +6746,7 @@ class DescribeDeviceHardwareInfoItem(AbstractModel):
 
     @property
     def GroupNamePath(self):
-        r"""设备所属分组路径
+        r"""<p>设备所属分组路径</p>
         :rtype: str
         """
         return self._GroupNamePath
@@ -6754,7 +6757,7 @@ class DescribeDeviceHardwareInfoItem(AbstractModel):
 
     @property
     def AccountName(self):
-        r"""最近登录账户的姓名
+        r"""<p>最近登录账户的姓名</p>
         :rtype: str
         """
         return self._AccountName
@@ -6765,7 +6768,7 @@ class DescribeDeviceHardwareInfoItem(AbstractModel):
 
     @property
     def Ip(self):
-        r"""出口IP
+        r"""<p>出口IP</p>
         :rtype: str
         """
         return self._Ip
@@ -6776,7 +6779,7 @@ class DescribeDeviceHardwareInfoItem(AbstractModel):
 
     @property
     def MacAddr(self):
-        r"""MAC地址
+        r"""<p>MAC地址</p>
         :rtype: str
         """
         return self._MacAddr
@@ -6787,7 +6790,7 @@ class DescribeDeviceHardwareInfoItem(AbstractModel):
 
     @property
     def Cpu(self):
-        r"""CPU品牌型号
+        r"""<p>CPU品牌型号</p>
         :rtype: str
         """
         return self._Cpu
@@ -6798,7 +6801,7 @@ class DescribeDeviceHardwareInfoItem(AbstractModel):
 
     @property
     def Memory(self):
-        r"""内存信息
+        r"""<p>内存信息</p>
         :rtype: str
         """
         return self._Memory
@@ -6809,7 +6812,7 @@ class DescribeDeviceHardwareInfoItem(AbstractModel):
 
     @property
     def HardDiskSize(self):
-        r"""硬盘信息
+        r"""<p>硬盘信息</p>
         :rtype: str
         """
         return self._HardDiskSize
@@ -6820,7 +6823,7 @@ class DescribeDeviceHardwareInfoItem(AbstractModel):
 
     @property
     def Monitor(self):
-        r"""显示器品牌型号
+        r"""<p>显示器品牌型号</p>
         :rtype: str
         """
         return self._Monitor
@@ -6831,7 +6834,7 @@ class DescribeDeviceHardwareInfoItem(AbstractModel):
 
     @property
     def RemarkName(self):
-        r"""终端备注名
+        r"""<p>终端备注名</p>
         :rtype: str
         """
         return self._RemarkName
@@ -6839,6 +6842,17 @@ class DescribeDeviceHardwareInfoItem(AbstractModel):
     @RemarkName.setter
     def RemarkName(self, RemarkName):
         self._RemarkName = RemarkName
+
+    @property
+    def BiosUuid(self):
+        r"""<p>BiosUUID（启动盘标识符）</p>
+        :rtype: str
+        """
+        return self._BiosUuid
+
+    @BiosUuid.setter
+    def BiosUuid(self, BiosUuid):
+        self._BiosUuid = BiosUuid
 
 
     def _deserialize(self, params):
@@ -6859,6 +6873,7 @@ class DescribeDeviceHardwareInfoItem(AbstractModel):
         self._HardDiskSize = params.get("HardDiskSize")
         self._Monitor = params.get("Monitor")
         self._RemarkName = params.get("RemarkName")
+        self._BiosUuid = params.get("BiosUuid")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -9777,6 +9792,8 @@ class DeviceDetail(AbstractModel):
         :type DiskAccessPermission: int
         :param _RemarkName: <p>终端备注名</p>
         :type RemarkName: str
+        :param _BiosUuid: <p>BiosUUID（启动盘标识符）</p>
+        :type BiosUuid: str
         """
         self._Id = None
         self._Mid = None
@@ -9829,6 +9846,7 @@ class DeviceDetail(AbstractModel):
         self._ScreenRecordingPermission = None
         self._DiskAccessPermission = None
         self._RemarkName = None
+        self._BiosUuid = None
 
     @property
     def Id(self):
@@ -10391,6 +10409,17 @@ class DeviceDetail(AbstractModel):
     def RemarkName(self, RemarkName):
         self._RemarkName = RemarkName
 
+    @property
+    def BiosUuid(self):
+        r"""<p>BiosUUID（启动盘标识符）</p>
+        :rtype: str
+        """
+        return self._BiosUuid
+
+    @BiosUuid.setter
+    def BiosUuid(self, BiosUuid):
+        self._BiosUuid = BiosUuid
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
@@ -10444,6 +10473,7 @@ class DeviceDetail(AbstractModel):
         self._ScreenRecordingPermission = params.get("ScreenRecordingPermission")
         self._DiskAccessPermission = params.get("DiskAccessPermission")
         self._RemarkName = params.get("RemarkName")
+        self._BiosUuid = params.get("BiosUuid")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

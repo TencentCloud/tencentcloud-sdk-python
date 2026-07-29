@@ -72,30 +72,6 @@ class TrtcClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def CreateBasicModeration(self, request):
-        r"""接口说明：
-        启动终端审核功能，完成房间内的音频审核。
-
-        :param request: Request instance for CreateBasicModeration.
-        :type request: :class:`tencentcloud.trtc.v20190722.models.CreateBasicModerationRequest`
-        :rtype: :class:`tencentcloud.trtc.v20190722.models.CreateBasicModerationResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("CreateBasicModeration", params, headers=headers)
-            response = json.loads(body)
-            model = models.CreateBasicModerationResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def CreateCloudModeration(self, request):
         r"""启动AI 内容理解功能，完成房间内的音视频切片，视频截帧，或者录制音频流，投递到AI内容理解，完成内容识别。您可以通过此接口实现如下目标：
         ●指定内容参数（ModerationParams）来指定内容理解需要的详细参数。
@@ -247,29 +223,6 @@ class TrtcClient(AbstractClient):
             body = self.call("CreatePicture", params, headers=headers)
             response = json.loads(body)
             model = models.CreatePictureResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def DeleteBasicModeration(self, request):
-        r"""成功开启审核任务后，可以使用此接口来停止任务。
-
-        :param request: Request instance for DeleteBasicModeration.
-        :type request: :class:`tencentcloud.trtc.v20190722.models.DeleteBasicModerationRequest`
-        :rtype: :class:`tencentcloud.trtc.v20190722.models.DeleteBasicModerationResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DeleteBasicModeration", params, headers=headers)
-            response = json.loads(body)
-            model = models.DeleteBasicModerationResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

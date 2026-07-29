@@ -17423,7 +17423,7 @@ class CloneViralAIGC(AbstractModel):
         :type AspectRatio: str
         :param _Resolution: <p>分辨率。支持720p（默认）/1080p/2k/4k</p>
         :type Resolution: str
-        :param _ModelTier: <p>模型等级。flagship（VS2.0，默认）、standard（Kling3.0-Omni）</p>
+        :param _ModelTier: <p>模型等级。flagship（默认）、standard</p>
         :type ModelTier: str
         """
         self._Duration = None
@@ -17466,7 +17466,7 @@ class CloneViralAIGC(AbstractModel):
 
     @property
     def ModelTier(self):
-        r"""<p>模型等级。flagship（VS2.0，默认）、standard（Kling3.0-Omni）</p>
+        r"""<p>模型等级。flagship（默认）、standard</p>
         :rtype: str
         """
         return self._ModelTier

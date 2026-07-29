@@ -1452,6 +1452,381 @@ class BindStorageSourceResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class BuildCommands(AbstractModel):
+    r"""构建命令
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstallCmd: <p>平台生成默认 install step 时执行</p>
+        :type InstallCmd: str
+        :param _BuildCmd: <p>平台生成默认build step 时执行</p>
+        :type BuildCmd: str
+        :param _DeployCmd: <p>平台生成默认deploy step 时执行</p>
+        :type DeployCmd: str
+        """
+        self._InstallCmd = None
+        self._BuildCmd = None
+        self._DeployCmd = None
+
+    @property
+    def InstallCmd(self):
+        r"""<p>平台生成默认 install step 时执行</p>
+        :rtype: str
+        """
+        return self._InstallCmd
+
+    @InstallCmd.setter
+    def InstallCmd(self, InstallCmd):
+        self._InstallCmd = InstallCmd
+
+    @property
+    def BuildCmd(self):
+        r"""<p>平台生成默认build step 时执行</p>
+        :rtype: str
+        """
+        return self._BuildCmd
+
+    @BuildCmd.setter
+    def BuildCmd(self, BuildCmd):
+        self._BuildCmd = BuildCmd
+
+    @property
+    def DeployCmd(self):
+        r"""<p>平台生成默认deploy step 时执行</p>
+        :rtype: str
+        """
+        return self._DeployCmd
+
+    @DeployCmd.setter
+    def DeployCmd(self, DeployCmd):
+        self._DeployCmd = DeployCmd
+
+
+    def _deserialize(self, params):
+        self._InstallCmd = params.get("InstallCmd")
+        self._BuildCmd = params.get("BuildCmd")
+        self._DeployCmd = params.get("DeployCmd")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BuildSecret(AbstractModel):
+    r"""构建密钥
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: <p>标准化为 DNS Label 风格；构建时注入为 $SECRET_&lt;NAME&gt;（同时也提供原大写形式 $SECRET_&lt;NAME_UPPERCASE&gt;）</p>
+        :type Name: str
+        :param _Value: <p>平台 AES 加密落库；DescribeVersion 永不回显明文</p>
+        :type Value: str
+        """
+        self._Name = None
+        self._Value = None
+
+    @property
+    def Name(self):
+        r"""<p>标准化为 DNS Label 风格；构建时注入为 $SECRET_&lt;NAME&gt;（同时也提供原大写形式 $SECRET_&lt;NAME_UPPERCASE&gt;）</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Value(self):
+        r"""<p>平台 AES 加密落库；DescribeVersion 永不回显明文</p>
+        :rtype: str
+        """
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BuildSource(AbstractModel):
+    r"""构建触发的源码来源: git,cos,inline
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Type: <p>源码来源类型，取值：&quot;git&quot; &quot;zip&quot;</p>
+        :type Type: str
+        :param _Repo: <p>Git 仓库 HTTPS URL；或 COS 下载完整 URL；与 CodeUrlWithAuth / CosTimestamp 之一非空（zip 二阶段上传时可留空）</p>
+        :type Repo: str
+        :param _Ref: <p>分支 tag commit；Git 默认 main，zip 模式下忽略</p>
+        :type Ref: str
+        :param _Channel: <p>&quot;git&quot; &quot;github&quot; &quot;gitlab&quot; &quot;gitee&quot; &quot;coding&quot;；私有仓必填，平台据此走 OAuth 鉴权</p>
+        :type Channel: str
+        :param _IsPrivate: <p>是否私有仓；true 时平台自动注入 CodeUrlWithAuth</p>
+        :type IsPrivate: bool
+        :param _CodeUrlWithAuth: <p>调用方显式传入的带鉴权 clone URL 或带签名的 zip 下载直链（优先级最高，会覆盖平台 OAuth / 自动签名）</p>
+        :type CodeUrlWithAuth: str
+        :param _CosTimestamp: <p>仅 Type=zip/cos 时使用。配合 zip 二阶段上传：填 DescribeCloudAppCosInfo 返回的 UnixTimestamp，平台据此自动签名出 ZIP_FILE_URL</p>
+        :type CosTimestamp: str
+        :param _CosSuffix: <p>仅 Type=zip/cos 时使用。zip 文件后缀，默认 .zip；与 CosTimestamp 配合定位 COS 对象</p>
+        :type CosSuffix: str
+        """
+        self._Type = None
+        self._Repo = None
+        self._Ref = None
+        self._Channel = None
+        self._IsPrivate = None
+        self._CodeUrlWithAuth = None
+        self._CosTimestamp = None
+        self._CosSuffix = None
+
+    @property
+    def Type(self):
+        r"""<p>源码来源类型，取值：&quot;git&quot; &quot;zip&quot;</p>
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Repo(self):
+        r"""<p>Git 仓库 HTTPS URL；或 COS 下载完整 URL；与 CodeUrlWithAuth / CosTimestamp 之一非空（zip 二阶段上传时可留空）</p>
+        :rtype: str
+        """
+        return self._Repo
+
+    @Repo.setter
+    def Repo(self, Repo):
+        self._Repo = Repo
+
+    @property
+    def Ref(self):
+        r"""<p>分支 tag commit；Git 默认 main，zip 模式下忽略</p>
+        :rtype: str
+        """
+        return self._Ref
+
+    @Ref.setter
+    def Ref(self, Ref):
+        self._Ref = Ref
+
+    @property
+    def Channel(self):
+        r"""<p>&quot;git&quot; &quot;github&quot; &quot;gitlab&quot; &quot;gitee&quot; &quot;coding&quot;；私有仓必填，平台据此走 OAuth 鉴权</p>
+        :rtype: str
+        """
+        return self._Channel
+
+    @Channel.setter
+    def Channel(self, Channel):
+        self._Channel = Channel
+
+    @property
+    def IsPrivate(self):
+        r"""<p>是否私有仓；true 时平台自动注入 CodeUrlWithAuth</p>
+        :rtype: bool
+        """
+        return self._IsPrivate
+
+    @IsPrivate.setter
+    def IsPrivate(self, IsPrivate):
+        self._IsPrivate = IsPrivate
+
+    @property
+    def CodeUrlWithAuth(self):
+        r"""<p>调用方显式传入的带鉴权 clone URL 或带签名的 zip 下载直链（优先级最高，会覆盖平台 OAuth / 自动签名）</p>
+        :rtype: str
+        """
+        return self._CodeUrlWithAuth
+
+    @CodeUrlWithAuth.setter
+    def CodeUrlWithAuth(self, CodeUrlWithAuth):
+        self._CodeUrlWithAuth = CodeUrlWithAuth
+
+    @property
+    def CosTimestamp(self):
+        r"""<p>仅 Type=zip/cos 时使用。配合 zip 二阶段上传：填 DescribeCloudAppCosInfo 返回的 UnixTimestamp，平台据此自动签名出 ZIP_FILE_URL</p>
+        :rtype: str
+        """
+        return self._CosTimestamp
+
+    @CosTimestamp.setter
+    def CosTimestamp(self, CosTimestamp):
+        self._CosTimestamp = CosTimestamp
+
+    @property
+    def CosSuffix(self):
+        r"""<p>仅 Type=zip/cos 时使用。zip 文件后缀，默认 .zip；与 CosTimestamp 配合定位 COS 对象</p>
+        :rtype: str
+        """
+        return self._CosSuffix
+
+    @CosSuffix.setter
+    def CosSuffix(self, CosSuffix):
+        self._CosSuffix = CosSuffix
+
+
+    def _deserialize(self, params):
+        self._Type = params.get("Type")
+        self._Repo = params.get("Repo")
+        self._Ref = params.get("Ref")
+        self._Channel = params.get("Channel")
+        self._IsPrivate = params.get("IsPrivate")
+        self._CodeUrlWithAuth = params.get("CodeUrlWithAuth")
+        self._CosTimestamp = params.get("CosTimestamp")
+        self._CosSuffix = params.get("CosSuffix")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BuildStep(AbstractModel):
+    r"""构建步骤
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: <p>步骤名（建议 kebab-case，如 build-image），出现在 DescribeCloudAppVersion.Steps[].Name</p>
+        :type Name: str
+        :param _Command: <p>shell 脚本，支持单行或多行</p>
+        :type Command: str
+        """
+        self._Name = None
+        self._Command = None
+
+    @property
+    def Name(self):
+        r"""<p>步骤名（建议 kebab-case，如 build-image），出现在 DescribeCloudAppVersion.Steps[].Name</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Command(self):
+        r"""<p>shell 脚本，支持单行或多行</p>
+        :rtype: str
+        """
+        return self._Command
+
+    @Command.setter
+    def Command(self, Command):
+        self._Command = Command
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Command = params.get("Command")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BuildStepStatus(AbstractModel):
+    r"""步骤构建执行状态
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: <p>构建步骤名称</p>
+        :type Name: str
+        :param _Status: <p>构建状态</p>
+        :type Status: str
+        :param _Duration: <p>构建耗时</p>
+        :type Duration: str
+        """
+        self._Name = None
+        self._Status = None
+        self._Duration = None
+
+    @property
+    def Name(self):
+        r"""<p>构建步骤名称</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Status(self):
+        r"""<p>构建状态</p>
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Duration(self):
+        r"""<p>构建耗时</p>
+        :rtype: str
+        """
+        return self._Duration
+
+    @Duration.setter
+    def Duration(self, Duration):
+        self._Duration = Duration
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Status = params.get("Status")
+        self._Duration = params.get("Duration")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CheckTcbServiceRequest(AbstractModel):
     r"""CheckTcbService请求参数结构体
 
@@ -1647,6 +2022,156 @@ class CloudAppServiceItem(AbstractModel):
         self._LatestStatus = params.get("LatestStatus")
         self._LatestBuildTime = params.get("LatestBuildTime")
         self._DeployType = params.get("DeployType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CloudAppVersionItem(AbstractModel):
+    r"""服务版本信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VersionName: <p>版本名</p>
+        :type VersionName: str
+        :param _BuildType: <p>构建方式</p>
+        :type BuildType: str
+        :param _BuildId: <p>构建Id</p>
+        :type BuildId: str
+        :param _Status: <p>构建状态</p>
+        :type Status: str
+        :param _Framework: <p>框架名</p>
+        :type Framework: str
+        :param _StaticConfig: <p>构建配置</p>
+        :type StaticConfig: :class:`tencentcloud.tcb.v20180608.models.StaticConfig`
+        :param _BuildTime: <p>构建时间</p>
+        :type BuildTime: str
+        :param _Steps: <p>构建步骤</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Steps: list of BuildStepStatus
+        """
+        self._VersionName = None
+        self._BuildType = None
+        self._BuildId = None
+        self._Status = None
+        self._Framework = None
+        self._StaticConfig = None
+        self._BuildTime = None
+        self._Steps = None
+
+    @property
+    def VersionName(self):
+        r"""<p>版本名</p>
+        :rtype: str
+        """
+        return self._VersionName
+
+    @VersionName.setter
+    def VersionName(self, VersionName):
+        self._VersionName = VersionName
+
+    @property
+    def BuildType(self):
+        r"""<p>构建方式</p>
+        :rtype: str
+        """
+        return self._BuildType
+
+    @BuildType.setter
+    def BuildType(self, BuildType):
+        self._BuildType = BuildType
+
+    @property
+    def BuildId(self):
+        r"""<p>构建Id</p>
+        :rtype: str
+        """
+        return self._BuildId
+
+    @BuildId.setter
+    def BuildId(self, BuildId):
+        self._BuildId = BuildId
+
+    @property
+    def Status(self):
+        r"""<p>构建状态</p>
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Framework(self):
+        r"""<p>框架名</p>
+        :rtype: str
+        """
+        return self._Framework
+
+    @Framework.setter
+    def Framework(self, Framework):
+        self._Framework = Framework
+
+    @property
+    def StaticConfig(self):
+        r"""<p>构建配置</p>
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.StaticConfig`
+        """
+        return self._StaticConfig
+
+    @StaticConfig.setter
+    def StaticConfig(self, StaticConfig):
+        self._StaticConfig = StaticConfig
+
+    @property
+    def BuildTime(self):
+        r"""<p>构建时间</p>
+        :rtype: str
+        """
+        return self._BuildTime
+
+    @BuildTime.setter
+    def BuildTime(self, BuildTime):
+        self._BuildTime = BuildTime
+
+    @property
+    def Steps(self):
+        r"""<p>构建步骤</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of BuildStepStatus
+        """
+        return self._Steps
+
+    @Steps.setter
+    def Steps(self, Steps):
+        self._Steps = Steps
+
+
+    def _deserialize(self, params):
+        self._VersionName = params.get("VersionName")
+        self._BuildType = params.get("BuildType")
+        self._BuildId = params.get("BuildId")
+        self._Status = params.get("Status")
+        self._Framework = params.get("Framework")
+        if params.get("StaticConfig") is not None:
+            self._StaticConfig = StaticConfig()
+            self._StaticConfig._deserialize(params.get("StaticConfig"))
+        self._BuildTime = params.get("BuildTime")
+        if params.get("Steps") is not None:
+            self._Steps = []
+            for item in params.get("Steps"):
+                obj = BuildStepStatus()
+                obj._deserialize(item)
+                self._Steps.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2714,6 +3239,271 @@ class CreateBillDealResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class CreateCloudAppRequest(AbstractModel):
+    r"""CreateCloudApp请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EnvId: <p>环境ID</p>
+        :type EnvId: str
+        :param _ServiceName: <p>服务名</p>
+        :type ServiceName: str
+        :param _DeployType: <p>部署类型</p>
+        :type DeployType: str
+        :param _BuildType: <p>构建类型</p>
+        :type BuildType: str
+        :param _StaticConfig: <p>静态应用创建配置信息</p>
+        :type StaticConfig: :class:`tencentcloud.tcb.v20180608.models.StaticConfig`
+        :param _Source: <p>源码定义</p>
+        :type Source: :class:`tencentcloud.tcb.v20180608.models.BuildSource`
+        :param _Commands: <p>Commands 与 CustomSteps 至少填一个</p>
+        :type Commands: :class:`tencentcloud.tcb.v20180608.models.BuildCommands`
+        :param _Env: <p>Commands 与 CustomSteps 至少填一个，docker 镜像构建场景强烈建议用 CustomSteps</p>
+        :type Env: list of Variable
+        :param _CustomSteps: <p>非敏感环境变量，构建容器中以 $KEY 引用</p>
+        :type CustomSteps: list of BuildStep
+        :param _Secrets: <p>敏感凭证（AES 加密落库），构建容器中以 $SECRET_NAME 引用</p>
+        :type Secrets: list of BuildSecret
+        """
+        self._EnvId = None
+        self._ServiceName = None
+        self._DeployType = None
+        self._BuildType = None
+        self._StaticConfig = None
+        self._Source = None
+        self._Commands = None
+        self._Env = None
+        self._CustomSteps = None
+        self._Secrets = None
+
+    @property
+    def EnvId(self):
+        r"""<p>环境ID</p>
+        :rtype: str
+        """
+        return self._EnvId
+
+    @EnvId.setter
+    def EnvId(self, EnvId):
+        self._EnvId = EnvId
+
+    @property
+    def ServiceName(self):
+        r"""<p>服务名</p>
+        :rtype: str
+        """
+        return self._ServiceName
+
+    @ServiceName.setter
+    def ServiceName(self, ServiceName):
+        self._ServiceName = ServiceName
+
+    @property
+    def DeployType(self):
+        r"""<p>部署类型</p>
+        :rtype: str
+        """
+        return self._DeployType
+
+    @DeployType.setter
+    def DeployType(self, DeployType):
+        self._DeployType = DeployType
+
+    @property
+    def BuildType(self):
+        r"""<p>构建类型</p>
+        :rtype: str
+        """
+        return self._BuildType
+
+    @BuildType.setter
+    def BuildType(self, BuildType):
+        self._BuildType = BuildType
+
+    @property
+    def StaticConfig(self):
+        r"""<p>静态应用创建配置信息</p>
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.StaticConfig`
+        """
+        return self._StaticConfig
+
+    @StaticConfig.setter
+    def StaticConfig(self, StaticConfig):
+        self._StaticConfig = StaticConfig
+
+    @property
+    def Source(self):
+        r"""<p>源码定义</p>
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.BuildSource`
+        """
+        return self._Source
+
+    @Source.setter
+    def Source(self, Source):
+        self._Source = Source
+
+    @property
+    def Commands(self):
+        r"""<p>Commands 与 CustomSteps 至少填一个</p>
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.BuildCommands`
+        """
+        return self._Commands
+
+    @Commands.setter
+    def Commands(self, Commands):
+        self._Commands = Commands
+
+    @property
+    def Env(self):
+        r"""<p>Commands 与 CustomSteps 至少填一个，docker 镜像构建场景强烈建议用 CustomSteps</p>
+        :rtype: list of Variable
+        """
+        return self._Env
+
+    @Env.setter
+    def Env(self, Env):
+        self._Env = Env
+
+    @property
+    def CustomSteps(self):
+        r"""<p>非敏感环境变量，构建容器中以 $KEY 引用</p>
+        :rtype: list of BuildStep
+        """
+        return self._CustomSteps
+
+    @CustomSteps.setter
+    def CustomSteps(self, CustomSteps):
+        self._CustomSteps = CustomSteps
+
+    @property
+    def Secrets(self):
+        r"""<p>敏感凭证（AES 加密落库），构建容器中以 $SECRET_NAME 引用</p>
+        :rtype: list of BuildSecret
+        """
+        return self._Secrets
+
+    @Secrets.setter
+    def Secrets(self, Secrets):
+        self._Secrets = Secrets
+
+
+    def _deserialize(self, params):
+        self._EnvId = params.get("EnvId")
+        self._ServiceName = params.get("ServiceName")
+        self._DeployType = params.get("DeployType")
+        self._BuildType = params.get("BuildType")
+        if params.get("StaticConfig") is not None:
+            self._StaticConfig = StaticConfig()
+            self._StaticConfig._deserialize(params.get("StaticConfig"))
+        if params.get("Source") is not None:
+            self._Source = BuildSource()
+            self._Source._deserialize(params.get("Source"))
+        if params.get("Commands") is not None:
+            self._Commands = BuildCommands()
+            self._Commands._deserialize(params.get("Commands"))
+        if params.get("Env") is not None:
+            self._Env = []
+            for item in params.get("Env"):
+                obj = Variable()
+                obj._deserialize(item)
+                self._Env.append(obj)
+        if params.get("CustomSteps") is not None:
+            self._CustomSteps = []
+            for item in params.get("CustomSteps"):
+                obj = BuildStep()
+                obj._deserialize(item)
+                self._CustomSteps.append(obj)
+        if params.get("Secrets") is not None:
+            self._Secrets = []
+            for item in params.get("Secrets"):
+                obj = BuildSecret()
+                obj._deserialize(item)
+                self._Secrets.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateCloudAppResponse(AbstractModel):
+    r"""CreateCloudApp返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BuildId: <p>构建Id</p>
+        :type BuildId: str
+        :param _VersionName: <p>版本名称</p>
+        :type VersionName: str
+        :param _ServiceName: <p>服务名称</p>
+        :type ServiceName: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._BuildId = None
+        self._VersionName = None
+        self._ServiceName = None
+        self._RequestId = None
+
+    @property
+    def BuildId(self):
+        r"""<p>构建Id</p>
+        :rtype: str
+        """
+        return self._BuildId
+
+    @BuildId.setter
+    def BuildId(self, BuildId):
+        self._BuildId = BuildId
+
+    @property
+    def VersionName(self):
+        r"""<p>版本名称</p>
+        :rtype: str
+        """
+        return self._VersionName
+
+    @VersionName.setter
+    def VersionName(self, VersionName):
+        self._VersionName = VersionName
+
+    @property
+    def ServiceName(self):
+        r"""<p>服务名称</p>
+        :rtype: str
+        """
+        return self._ServiceName
+
+    @ServiceName.setter
+    def ServiceName(self, ServiceName):
+        self._ServiceName = ServiceName
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._BuildId = params.get("BuildId")
+        self._VersionName = params.get("VersionName")
+        self._ServiceName = params.get("ServiceName")
         self._RequestId = params.get("RequestId")
 
 
@@ -4719,6 +5509,239 @@ class DeleteAuthDomainResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DeleteCloudAppRequest(AbstractModel):
+    r"""DeleteCloudApp请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EnvId: 环境ID
+        :type EnvId: str
+        :param _DeployType: 部署类型
+        :type DeployType: str
+        :param _ServiceName: 服务名
+        :type ServiceName: str
+        """
+        self._EnvId = None
+        self._DeployType = None
+        self._ServiceName = None
+
+    @property
+    def EnvId(self):
+        r"""环境ID
+        :rtype: str
+        """
+        return self._EnvId
+
+    @EnvId.setter
+    def EnvId(self, EnvId):
+        self._EnvId = EnvId
+
+    @property
+    def DeployType(self):
+        r"""部署类型
+        :rtype: str
+        """
+        return self._DeployType
+
+    @DeployType.setter
+    def DeployType(self, DeployType):
+        self._DeployType = DeployType
+
+    @property
+    def ServiceName(self):
+        r"""服务名
+        :rtype: str
+        """
+        return self._ServiceName
+
+    @ServiceName.setter
+    def ServiceName(self, ServiceName):
+        self._ServiceName = ServiceName
+
+
+    def _deserialize(self, params):
+        self._EnvId = params.get("EnvId")
+        self._DeployType = params.get("DeployType")
+        self._ServiceName = params.get("ServiceName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteCloudAppResponse(AbstractModel):
+    r"""DeleteCloudApp返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: 是否删除成功
+        :type Result: bool
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        r"""是否删除成功
+        :rtype: bool
+        """
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Result = params.get("Result")
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteCloudAppVersionRequest(AbstractModel):
+    r"""DeleteCloudAppVersion请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EnvId: 环境ID
+        :type EnvId: str
+        :param _DeployType: 部署类型
+        :type DeployType: str
+        :param _ServiceName: 服务名
+        :type ServiceName: str
+        :param _VersionName: 版本名
+        :type VersionName: str
+        """
+        self._EnvId = None
+        self._DeployType = None
+        self._ServiceName = None
+        self._VersionName = None
+
+    @property
+    def EnvId(self):
+        r"""环境ID
+        :rtype: str
+        """
+        return self._EnvId
+
+    @EnvId.setter
+    def EnvId(self, EnvId):
+        self._EnvId = EnvId
+
+    @property
+    def DeployType(self):
+        r"""部署类型
+        :rtype: str
+        """
+        return self._DeployType
+
+    @DeployType.setter
+    def DeployType(self, DeployType):
+        self._DeployType = DeployType
+
+    @property
+    def ServiceName(self):
+        r"""服务名
+        :rtype: str
+        """
+        return self._ServiceName
+
+    @ServiceName.setter
+    def ServiceName(self, ServiceName):
+        self._ServiceName = ServiceName
+
+    @property
+    def VersionName(self):
+        r"""版本名
+        :rtype: str
+        """
+        return self._VersionName
+
+    @VersionName.setter
+    def VersionName(self, VersionName):
+        self._VersionName = VersionName
+
+
+    def _deserialize(self, params):
+        self._EnvId = params.get("EnvId")
+        self._DeployType = params.get("DeployType")
+        self._ServiceName = params.get("ServiceName")
+        self._VersionName = params.get("VersionName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteCloudAppVersionResponse(AbstractModel):
+    r"""DeleteCloudAppVersion返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: 是否删除成功
+        :type Result: bool
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        r"""是否删除成功
+        :rtype: bool
+        """
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Result = params.get("Result")
+        self._RequestId = params.get("RequestId")
+
+
 class DeleteHTTPServiceRouteRequest(AbstractModel):
     r"""DeleteHTTPServiceRoute请求参数结构体
 
@@ -6067,6 +7090,399 @@ class DescribeClientResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeCloudAppCosInfoRequest(AbstractModel):
+    r"""DescribeCloudAppCosInfo请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EnvId: 环境id
+        :type EnvId: str
+        :param _ServiceName: 服务名
+        :type ServiceName: str
+        :param _DeployType: 部署类型
+        :type DeployType: str
+        :param _UnixTimestamp: 时间戳
+        :type UnixTimestamp: str
+        :param _Suffix: 文件后缀
+        :type Suffix: str
+        :param _NeedDownload: 是否需要下载
+        :type NeedDownload: bool
+        """
+        self._EnvId = None
+        self._ServiceName = None
+        self._DeployType = None
+        self._UnixTimestamp = None
+        self._Suffix = None
+        self._NeedDownload = None
+
+    @property
+    def EnvId(self):
+        r"""环境id
+        :rtype: str
+        """
+        return self._EnvId
+
+    @EnvId.setter
+    def EnvId(self, EnvId):
+        self._EnvId = EnvId
+
+    @property
+    def ServiceName(self):
+        r"""服务名
+        :rtype: str
+        """
+        return self._ServiceName
+
+    @ServiceName.setter
+    def ServiceName(self, ServiceName):
+        self._ServiceName = ServiceName
+
+    @property
+    def DeployType(self):
+        r"""部署类型
+        :rtype: str
+        """
+        return self._DeployType
+
+    @DeployType.setter
+    def DeployType(self, DeployType):
+        self._DeployType = DeployType
+
+    @property
+    def UnixTimestamp(self):
+        r"""时间戳
+        :rtype: str
+        """
+        return self._UnixTimestamp
+
+    @UnixTimestamp.setter
+    def UnixTimestamp(self, UnixTimestamp):
+        self._UnixTimestamp = UnixTimestamp
+
+    @property
+    def Suffix(self):
+        r"""文件后缀
+        :rtype: str
+        """
+        return self._Suffix
+
+    @Suffix.setter
+    def Suffix(self, Suffix):
+        self._Suffix = Suffix
+
+    @property
+    def NeedDownload(self):
+        r"""是否需要下载
+        :rtype: bool
+        """
+        return self._NeedDownload
+
+    @NeedDownload.setter
+    def NeedDownload(self, NeedDownload):
+        self._NeedDownload = NeedDownload
+
+
+    def _deserialize(self, params):
+        self._EnvId = params.get("EnvId")
+        self._ServiceName = params.get("ServiceName")
+        self._DeployType = params.get("DeployType")
+        self._UnixTimestamp = params.get("UnixTimestamp")
+        self._Suffix = params.get("Suffix")
+        self._NeedDownload = params.get("NeedDownload")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCloudAppCosInfoResponse(AbstractModel):
+    r"""DescribeCloudAppCosInfo返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _UploadUrl: 上传url
+        :type UploadUrl: str
+        :param _UploadHeaders: 上传header
+        :type UploadHeaders: list of KVPair
+        :param _DownloadUrl: 下载链接
+        :type DownloadUrl: str
+        :param _DownloadHeaders: 下载Httpheader
+        :type DownloadHeaders: list of KVPair
+        :param _UnixTimestamp: 时间戳
+        :type UnixTimestamp: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._UploadUrl = None
+        self._UploadHeaders = None
+        self._DownloadUrl = None
+        self._DownloadHeaders = None
+        self._UnixTimestamp = None
+        self._RequestId = None
+
+    @property
+    def UploadUrl(self):
+        r"""上传url
+        :rtype: str
+        """
+        return self._UploadUrl
+
+    @UploadUrl.setter
+    def UploadUrl(self, UploadUrl):
+        self._UploadUrl = UploadUrl
+
+    @property
+    def UploadHeaders(self):
+        r"""上传header
+        :rtype: list of KVPair
+        """
+        return self._UploadHeaders
+
+    @UploadHeaders.setter
+    def UploadHeaders(self, UploadHeaders):
+        self._UploadHeaders = UploadHeaders
+
+    @property
+    def DownloadUrl(self):
+        r"""下载链接
+        :rtype: str
+        """
+        return self._DownloadUrl
+
+    @DownloadUrl.setter
+    def DownloadUrl(self, DownloadUrl):
+        self._DownloadUrl = DownloadUrl
+
+    @property
+    def DownloadHeaders(self):
+        r"""下载Httpheader
+        :rtype: list of KVPair
+        """
+        return self._DownloadHeaders
+
+    @DownloadHeaders.setter
+    def DownloadHeaders(self, DownloadHeaders):
+        self._DownloadHeaders = DownloadHeaders
+
+    @property
+    def UnixTimestamp(self):
+        r"""时间戳
+        :rtype: str
+        """
+        return self._UnixTimestamp
+
+    @UnixTimestamp.setter
+    def UnixTimestamp(self, UnixTimestamp):
+        self._UnixTimestamp = UnixTimestamp
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._UploadUrl = params.get("UploadUrl")
+        if params.get("UploadHeaders") is not None:
+            self._UploadHeaders = []
+            for item in params.get("UploadHeaders"):
+                obj = KVPair()
+                obj._deserialize(item)
+                self._UploadHeaders.append(obj)
+        self._DownloadUrl = params.get("DownloadUrl")
+        if params.get("DownloadHeaders") is not None:
+            self._DownloadHeaders = []
+            for item in params.get("DownloadHeaders"):
+                obj = KVPair()
+                obj._deserialize(item)
+                self._DownloadHeaders.append(obj)
+        self._UnixTimestamp = params.get("UnixTimestamp")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeCloudAppInfoRequest(AbstractModel):
+    r"""DescribeCloudAppInfo请求参数结构体
+
+    """
+
+
+class DescribeCloudAppInfoResponse(AbstractModel):
+    r"""DescribeCloudAppInfo返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ServiceName: <p>服务名称</p>
+        :type ServiceName: str
+        :param _Framework: <p>框架名称</p>
+        :type Framework: str
+        :param _Domain: <p>域名</p>
+        :type Domain: str
+        :param _AppPath: <p>构建路径</p>
+        :type AppPath: str
+        :param _CreateTime: <p>服务创建时间</p>
+        :type CreateTime: str
+        :param _LatestVersionName: <p>最新版本名</p>
+        :type LatestVersionName: str
+        :param _LatestStatus: <p>最新版本状态</p>
+        :type LatestStatus: str
+        :param _LatestBuildTime: <p>最新版本构建时间</p>
+        :type LatestBuildTime: str
+        :param _DeployType: <p>部署类型</p>
+        :type DeployType: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ServiceName = None
+        self._Framework = None
+        self._Domain = None
+        self._AppPath = None
+        self._CreateTime = None
+        self._LatestVersionName = None
+        self._LatestStatus = None
+        self._LatestBuildTime = None
+        self._DeployType = None
+        self._RequestId = None
+
+    @property
+    def ServiceName(self):
+        r"""<p>服务名称</p>
+        :rtype: str
+        """
+        return self._ServiceName
+
+    @ServiceName.setter
+    def ServiceName(self, ServiceName):
+        self._ServiceName = ServiceName
+
+    @property
+    def Framework(self):
+        r"""<p>框架名称</p>
+        :rtype: str
+        """
+        return self._Framework
+
+    @Framework.setter
+    def Framework(self, Framework):
+        self._Framework = Framework
+
+    @property
+    def Domain(self):
+        r"""<p>域名</p>
+        :rtype: str
+        """
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def AppPath(self):
+        r"""<p>构建路径</p>
+        :rtype: str
+        """
+        return self._AppPath
+
+    @AppPath.setter
+    def AppPath(self, AppPath):
+        self._AppPath = AppPath
+
+    @property
+    def CreateTime(self):
+        r"""<p>服务创建时间</p>
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def LatestVersionName(self):
+        r"""<p>最新版本名</p>
+        :rtype: str
+        """
+        return self._LatestVersionName
+
+    @LatestVersionName.setter
+    def LatestVersionName(self, LatestVersionName):
+        self._LatestVersionName = LatestVersionName
+
+    @property
+    def LatestStatus(self):
+        r"""<p>最新版本状态</p>
+        :rtype: str
+        """
+        return self._LatestStatus
+
+    @LatestStatus.setter
+    def LatestStatus(self, LatestStatus):
+        self._LatestStatus = LatestStatus
+
+    @property
+    def LatestBuildTime(self):
+        r"""<p>最新版本构建时间</p>
+        :rtype: str
+        """
+        return self._LatestBuildTime
+
+    @LatestBuildTime.setter
+    def LatestBuildTime(self, LatestBuildTime):
+        self._LatestBuildTime = LatestBuildTime
+
+    @property
+    def DeployType(self):
+        r"""<p>部署类型</p>
+        :rtype: str
+        """
+        return self._DeployType
+
+    @DeployType.setter
+    def DeployType(self, DeployType):
+        self._DeployType = DeployType
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._ServiceName = params.get("ServiceName")
+        self._Framework = params.get("Framework")
+        self._Domain = params.get("Domain")
+        self._AppPath = params.get("AppPath")
+        self._CreateTime = params.get("CreateTime")
+        self._LatestVersionName = params.get("LatestVersionName")
+        self._LatestStatus = params.get("LatestStatus")
+        self._LatestBuildTime = params.get("LatestBuildTime")
+        self._DeployType = params.get("DeployType")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeCloudAppListRequest(AbstractModel):
     r"""DescribeCloudAppList请求参数结构体
 
@@ -6223,6 +7639,401 @@ class DescribeCloudAppListResponse(AbstractModel):
                 obj._deserialize(item)
                 self._ServiceList.append(obj)
         self._Total = params.get("Total")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeCloudAppVersionListRequest(AbstractModel):
+    r"""DescribeCloudAppVersionList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EnvId: <p>环境ID</p>
+        :type EnvId: str
+        :param _DeployType: <p>部署类型</p>
+        :type DeployType: str
+        :param _ServiceName: <p>服务名</p>
+        :type ServiceName: str
+        :param _PageSize: <p>页大小</p>
+        :type PageSize: int
+        :param _PageNo: <p>页号</p>
+        :type PageNo: int
+        """
+        self._EnvId = None
+        self._DeployType = None
+        self._ServiceName = None
+        self._PageSize = None
+        self._PageNo = None
+
+    @property
+    def EnvId(self):
+        r"""<p>环境ID</p>
+        :rtype: str
+        """
+        return self._EnvId
+
+    @EnvId.setter
+    def EnvId(self, EnvId):
+        self._EnvId = EnvId
+
+    @property
+    def DeployType(self):
+        r"""<p>部署类型</p>
+        :rtype: str
+        """
+        return self._DeployType
+
+    @DeployType.setter
+    def DeployType(self, DeployType):
+        self._DeployType = DeployType
+
+    @property
+    def ServiceName(self):
+        r"""<p>服务名</p>
+        :rtype: str
+        """
+        return self._ServiceName
+
+    @ServiceName.setter
+    def ServiceName(self, ServiceName):
+        self._ServiceName = ServiceName
+
+    @property
+    def PageSize(self):
+        r"""<p>页大小</p>
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def PageNo(self):
+        r"""<p>页号</p>
+        :rtype: int
+        """
+        return self._PageNo
+
+    @PageNo.setter
+    def PageNo(self, PageNo):
+        self._PageNo = PageNo
+
+
+    def _deserialize(self, params):
+        self._EnvId = params.get("EnvId")
+        self._DeployType = params.get("DeployType")
+        self._ServiceName = params.get("ServiceName")
+        self._PageSize = params.get("PageSize")
+        self._PageNo = params.get("PageNo")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCloudAppVersionListResponse(AbstractModel):
+    r"""DescribeCloudAppVersionList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VersionList: <p>版本列表</p>
+        :type VersionList: list of CloudAppVersionItem
+        :param _Total: <p>总数</p>
+        :type Total: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._VersionList = None
+        self._Total = None
+        self._RequestId = None
+
+    @property
+    def VersionList(self):
+        r"""<p>版本列表</p>
+        :rtype: list of CloudAppVersionItem
+        """
+        return self._VersionList
+
+    @VersionList.setter
+    def VersionList(self, VersionList):
+        self._VersionList = VersionList
+
+    @property
+    def Total(self):
+        r"""<p>总数</p>
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("VersionList") is not None:
+            self._VersionList = []
+            for item in params.get("VersionList"):
+                obj = CloudAppVersionItem()
+                obj._deserialize(item)
+                self._VersionList.append(obj)
+        self._Total = params.get("Total")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeCloudAppVersionRequest(AbstractModel):
+    r"""DescribeCloudAppVersion请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EnvId: <p>环境ID</p>
+        :type EnvId: str
+        :param _ServiceName: <p>服务名</p>
+        :type ServiceName: str
+        :param _DeployType: <p>部署类型</p>
+        :type DeployType: str
+        :param _VersionName: <p>版本名</p>
+        :type VersionName: str
+        :param _BuildId: <p>构建id</p>
+        :type BuildId: str
+        """
+        self._EnvId = None
+        self._ServiceName = None
+        self._DeployType = None
+        self._VersionName = None
+        self._BuildId = None
+
+    @property
+    def EnvId(self):
+        r"""<p>环境ID</p>
+        :rtype: str
+        """
+        return self._EnvId
+
+    @EnvId.setter
+    def EnvId(self, EnvId):
+        self._EnvId = EnvId
+
+    @property
+    def ServiceName(self):
+        r"""<p>服务名</p>
+        :rtype: str
+        """
+        return self._ServiceName
+
+    @ServiceName.setter
+    def ServiceName(self, ServiceName):
+        self._ServiceName = ServiceName
+
+    @property
+    def DeployType(self):
+        r"""<p>部署类型</p>
+        :rtype: str
+        """
+        return self._DeployType
+
+    @DeployType.setter
+    def DeployType(self, DeployType):
+        self._DeployType = DeployType
+
+    @property
+    def VersionName(self):
+        r"""<p>版本名</p>
+        :rtype: str
+        """
+        return self._VersionName
+
+    @VersionName.setter
+    def VersionName(self, VersionName):
+        self._VersionName = VersionName
+
+    @property
+    def BuildId(self):
+        r"""<p>构建id</p>
+        :rtype: str
+        """
+        return self._BuildId
+
+    @BuildId.setter
+    def BuildId(self, BuildId):
+        self._BuildId = BuildId
+
+
+    def _deserialize(self, params):
+        self._EnvId = params.get("EnvId")
+        self._ServiceName = params.get("ServiceName")
+        self._DeployType = params.get("DeployType")
+        self._VersionName = params.get("VersionName")
+        self._BuildId = params.get("BuildId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCloudAppVersionResponse(AbstractModel):
+    r"""DescribeCloudAppVersion返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BuildType: <p>构建类型</p>
+        :type BuildType: str
+        :param _BuildId: <p>构建Id</p>
+        :type BuildId: str
+        :param _Status: <p>构建状态</p>
+        :type Status: str
+        :param _Framework: <p>框架</p>
+        :type Framework: str
+        :param _StaticConfig: <p>静态托管配置信息</p>
+        :type StaticConfig: :class:`tencentcloud.tcb.v20180608.models.StaticConfig`
+        :param _BuildTime: <p>构建时间</p>
+        :type BuildTime: str
+        :param _Steps: <p>[]BuildStepStatus 的 JSON 序列化</p>
+        :type Steps: list of BuildStepStatus
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._BuildType = None
+        self._BuildId = None
+        self._Status = None
+        self._Framework = None
+        self._StaticConfig = None
+        self._BuildTime = None
+        self._Steps = None
+        self._RequestId = None
+
+    @property
+    def BuildType(self):
+        r"""<p>构建类型</p>
+        :rtype: str
+        """
+        return self._BuildType
+
+    @BuildType.setter
+    def BuildType(self, BuildType):
+        self._BuildType = BuildType
+
+    @property
+    def BuildId(self):
+        r"""<p>构建Id</p>
+        :rtype: str
+        """
+        return self._BuildId
+
+    @BuildId.setter
+    def BuildId(self, BuildId):
+        self._BuildId = BuildId
+
+    @property
+    def Status(self):
+        r"""<p>构建状态</p>
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Framework(self):
+        r"""<p>框架</p>
+        :rtype: str
+        """
+        return self._Framework
+
+    @Framework.setter
+    def Framework(self, Framework):
+        self._Framework = Framework
+
+    @property
+    def StaticConfig(self):
+        r"""<p>静态托管配置信息</p>
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.StaticConfig`
+        """
+        return self._StaticConfig
+
+    @StaticConfig.setter
+    def StaticConfig(self, StaticConfig):
+        self._StaticConfig = StaticConfig
+
+    @property
+    def BuildTime(self):
+        r"""<p>构建时间</p>
+        :rtype: str
+        """
+        return self._BuildTime
+
+    @BuildTime.setter
+    def BuildTime(self, BuildTime):
+        self._BuildTime = BuildTime
+
+    @property
+    def Steps(self):
+        r"""<p>[]BuildStepStatus 的 JSON 序列化</p>
+        :rtype: list of BuildStepStatus
+        """
+        return self._Steps
+
+    @Steps.setter
+    def Steps(self, Steps):
+        self._Steps = Steps
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._BuildType = params.get("BuildType")
+        self._BuildId = params.get("BuildId")
+        self._Status = params.get("Status")
+        self._Framework = params.get("Framework")
+        if params.get("StaticConfig") is not None:
+            self._StaticConfig = StaticConfig()
+            self._StaticConfig._deserialize(params.get("StaticConfig"))
+        self._BuildTime = params.get("BuildTime")
+        if params.get("Steps") is not None:
+            self._Steps = []
+            for item in params.get("Steps"):
+                obj = BuildStepStatus()
+                obj._deserialize(item)
+                self._Steps.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -22011,6 +23822,344 @@ class SearchClsLogResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class StaticCmd(AbstractModel):
+    r"""静态托管的执行命令
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BuildCmd: 构建命令
+        :type BuildCmd: str
+        :param _InstallCmd: 安装命令
+        :type InstallCmd: str
+        :param _DeployCmd: 部署命令
+        :type DeployCmd: str
+        """
+        self._BuildCmd = None
+        self._InstallCmd = None
+        self._DeployCmd = None
+
+    @property
+    def BuildCmd(self):
+        r"""构建命令
+        :rtype: str
+        """
+        return self._BuildCmd
+
+    @BuildCmd.setter
+    def BuildCmd(self, BuildCmd):
+        self._BuildCmd = BuildCmd
+
+    @property
+    def InstallCmd(self):
+        r"""安装命令
+        :rtype: str
+        """
+        return self._InstallCmd
+
+    @InstallCmd.setter
+    def InstallCmd(self, InstallCmd):
+        self._InstallCmd = InstallCmd
+
+    @property
+    def DeployCmd(self):
+        r"""部署命令
+        :rtype: str
+        """
+        return self._DeployCmd
+
+    @DeployCmd.setter
+    def DeployCmd(self, DeployCmd):
+        self._DeployCmd = DeployCmd
+
+
+    def _deserialize(self, params):
+        self._BuildCmd = params.get("BuildCmd")
+        self._InstallCmd = params.get("InstallCmd")
+        self._DeployCmd = params.get("DeployCmd")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class StaticConfig(AbstractModel):
+    r"""云应用静态托管配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Framework: 框架类型：vue、react、nextjs 等
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Framework: str
+        :param _NodeJsVersion: Node.js 版本，默认 20
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NodeJsVersion: str
+        :param _AppPath: 访问路径
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AppPath: str
+        :param _BuildPath: 构建目录
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BuildPath: str
+        :param _ZipFileUrl: ZIP 文件地址（BuildType=ZIP/TEMPLATE 时使用）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ZipFileUrl: str
+        :param _CosTimestamp: COS 时间戳
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CosTimestamp: str
+        :param _CosSuffix: COS 文件后缀
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CosSuffix: str
+        :param _CodeSource: 代码源平台：github、gitlab、gitee
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CodeSource: str
+        :param _CodeRepo: 代码仓库
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CodeRepo: str
+        :param _CodeBranch: 代码分支
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CodeBranch: str
+        :param _StaticCmd: 构建参数 JSON 字符串
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StaticCmd: :class:`tencentcloud.tcb.v20180608.models.StaticCmd`
+        :param _StaticEnv: 构建环境变量 JSON 字符串
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StaticEnv: :class:`tencentcloud.tcb.v20180608.models.StaticEnvironment`
+        """
+        self._Framework = None
+        self._NodeJsVersion = None
+        self._AppPath = None
+        self._BuildPath = None
+        self._ZipFileUrl = None
+        self._CosTimestamp = None
+        self._CosSuffix = None
+        self._CodeSource = None
+        self._CodeRepo = None
+        self._CodeBranch = None
+        self._StaticCmd = None
+        self._StaticEnv = None
+
+    @property
+    def Framework(self):
+        r"""框架类型：vue、react、nextjs 等
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Framework
+
+    @Framework.setter
+    def Framework(self, Framework):
+        self._Framework = Framework
+
+    @property
+    def NodeJsVersion(self):
+        r"""Node.js 版本，默认 20
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._NodeJsVersion
+
+    @NodeJsVersion.setter
+    def NodeJsVersion(self, NodeJsVersion):
+        self._NodeJsVersion = NodeJsVersion
+
+    @property
+    def AppPath(self):
+        r"""访问路径
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._AppPath
+
+    @AppPath.setter
+    def AppPath(self, AppPath):
+        self._AppPath = AppPath
+
+    @property
+    def BuildPath(self):
+        r"""构建目录
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._BuildPath
+
+    @BuildPath.setter
+    def BuildPath(self, BuildPath):
+        self._BuildPath = BuildPath
+
+    @property
+    def ZipFileUrl(self):
+        r"""ZIP 文件地址（BuildType=ZIP/TEMPLATE 时使用）
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ZipFileUrl
+
+    @ZipFileUrl.setter
+    def ZipFileUrl(self, ZipFileUrl):
+        self._ZipFileUrl = ZipFileUrl
+
+    @property
+    def CosTimestamp(self):
+        r"""COS 时间戳
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CosTimestamp
+
+    @CosTimestamp.setter
+    def CosTimestamp(self, CosTimestamp):
+        self._CosTimestamp = CosTimestamp
+
+    @property
+    def CosSuffix(self):
+        r"""COS 文件后缀
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CosSuffix
+
+    @CosSuffix.setter
+    def CosSuffix(self, CosSuffix):
+        self._CosSuffix = CosSuffix
+
+    @property
+    def CodeSource(self):
+        r"""代码源平台：github、gitlab、gitee
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CodeSource
+
+    @CodeSource.setter
+    def CodeSource(self, CodeSource):
+        self._CodeSource = CodeSource
+
+    @property
+    def CodeRepo(self):
+        r"""代码仓库
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CodeRepo
+
+    @CodeRepo.setter
+    def CodeRepo(self, CodeRepo):
+        self._CodeRepo = CodeRepo
+
+    @property
+    def CodeBranch(self):
+        r"""代码分支
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CodeBranch
+
+    @CodeBranch.setter
+    def CodeBranch(self, CodeBranch):
+        self._CodeBranch = CodeBranch
+
+    @property
+    def StaticCmd(self):
+        r"""构建参数 JSON 字符串
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.StaticCmd`
+        """
+        return self._StaticCmd
+
+    @StaticCmd.setter
+    def StaticCmd(self, StaticCmd):
+        self._StaticCmd = StaticCmd
+
+    @property
+    def StaticEnv(self):
+        r"""构建环境变量 JSON 字符串
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.StaticEnvironment`
+        """
+        return self._StaticEnv
+
+    @StaticEnv.setter
+    def StaticEnv(self, StaticEnv):
+        self._StaticEnv = StaticEnv
+
+
+    def _deserialize(self, params):
+        self._Framework = params.get("Framework")
+        self._NodeJsVersion = params.get("NodeJsVersion")
+        self._AppPath = params.get("AppPath")
+        self._BuildPath = params.get("BuildPath")
+        self._ZipFileUrl = params.get("ZipFileUrl")
+        self._CosTimestamp = params.get("CosTimestamp")
+        self._CosSuffix = params.get("CosSuffix")
+        self._CodeSource = params.get("CodeSource")
+        self._CodeRepo = params.get("CodeRepo")
+        self._CodeBranch = params.get("CodeBranch")
+        if params.get("StaticCmd") is not None:
+            self._StaticCmd = StaticCmd()
+            self._StaticCmd._deserialize(params.get("StaticCmd"))
+        if params.get("StaticEnv") is not None:
+            self._StaticEnv = StaticEnvironment()
+            self._StaticEnv._deserialize(params.get("StaticEnv"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class StaticEnvironment(AbstractModel):
+    r"""静态托管的环境变量参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Variables: 环境变量数组
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Variables: list of Variable
+        """
+        self._Variables = None
+
+    @property
+    def Variables(self):
+        r"""环境变量数组
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of Variable
+        """
+        return self._Variables
+
+    @Variables.setter
+    def Variables(self, Variables):
+        self._Variables = Variables
+
+
+    def _deserialize(self, params):
+        if params.get("Variables") is not None:
+            self._Variables = []
+            for item in params.get("Variables"):
+                obj = Variable()
+                obj._deserialize(item)
+                self._Variables.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class StaticStorageInfo(AbstractModel):
     r"""静态CDN资源信息
 
@@ -23552,6 +25701,57 @@ class ValueDetail(AbstractModel):
         self._DeductValue = params.get("DeductValue")
         self._PackageDeductValue = params.get("PackageDeductValue")
         self._ReportValue = params.get("ReportValue")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class Variable(AbstractModel):
+    r"""对象变量
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Key: 变量的名称
+        :type Key: str
+        :param _Value: 变量的值
+        :type Value: str
+        """
+        self._Key = None
+        self._Value = None
+
+    @property
+    def Key(self):
+        r"""变量的名称
+        :rtype: str
+        """
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Value(self):
+        r"""变量的值
+        :rtype: str
+        """
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+
+    def _deserialize(self, params):
+        self._Key = params.get("Key")
+        self._Value = params.get("Value")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

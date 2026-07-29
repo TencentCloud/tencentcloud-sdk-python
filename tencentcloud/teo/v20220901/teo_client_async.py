@@ -1918,6 +1918,24 @@ class TeoClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeIPGroupReferences(
+            self,
+            request: models.DescribeIPGroupReferencesRequest,
+            opts: Dict = None,
+    ) -> models.DescribeIPGroupReferencesResponse:
+        """
+        获取使用 IP 分组的策略配置。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeIPGroupReferences"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeIPGroupReferencesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeIPRegion(
             self,
             request: models.DescribeIPRegionRequest,

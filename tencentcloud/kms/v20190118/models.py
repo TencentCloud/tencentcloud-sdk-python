@@ -1261,54 +1261,56 @@ class DataKeyMetadata(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DataKeyId: DataKey的全局唯一标识
+        :param _DataKeyId: <p>DataKey的全局唯一标识</p>
         :type DataKeyId: str
-        :param _KeyId: CMK的全局唯一标识
+        :param _KeyId: <p>CMK的全局唯一标识</p>
         :type KeyId: str
-        :param _KeyName: CMK的名称
+        :param _KeyName: <p>CMK的名称</p>
         :type KeyName: str
-        :param _DataKeyName: 作为密钥更容易辨识，更容易被人看懂的数据密钥名称
+        :param _DataKeyName: <p>作为密钥更容易辨识，更容易被人看懂的数据密钥名称</p>
         :type DataKeyName: str
-        :param _NumberOfBytes: 数据密钥的长度,单位字节
+        :param _NumberOfBytes: <p>数据密钥的长度,单位字节</p>
         :type NumberOfBytes: int
-        :param _CreateTime: 密钥创建时间
+        :param _CreateTime: <p>密钥创建时间</p>
         :type CreateTime: int
-        :param _Description: DataKey的描述
+        :param _Description: <p>DataKey的描述</p>
         :type Description: str
-        :param _KeyState: DataKey的状态， 取值为：Enabled | Disabled | PendingDelete
+        :param _KeyState: <p>DataKey的状态， 取值为：Enabled | Disabled | PendingDelete</p>
         :type KeyState: str
-        :param _CreatorUin: 创建者
+        :param _CreatorUin: <p>创建者</p>
         :type CreatorUin: int
-        :param _Owner: 数据密钥的创建者，用户创建的为 user，授权各云产品自动创建的为对应的产品名
+        :param _Owner: <p>数据密钥的创建者，用户创建的为 user，授权各云产品自动创建的为对应的产品名</p>
         :type Owner: str
-        :param _DeletionDate: 计划删除的时间
+        :param _DeletionDate: <p>计划删除的时间</p>
         :type DeletionDate: int
-        :param _Origin: DataKey 密钥材料类型，由KMS创建的为： TENCENT_KMS， 由用户导入的类型为：EXTERNAL
+        :param _Origin: <p>DataKey 密钥材料类型，由KMS创建的为： TENCENT_KMS， 由用户导入的类型为：EXTERNAL</p>
         :type Origin: str
-        :param _HsmClusterId: HSM 集群 ID（仅对 KMS 独占版/托管版服务实例有效）
+        :param _HsmClusterId: <p>HSM 集群 ID（仅对 KMS 独占版/托管版服务实例有效）</p>
         :type HsmClusterId: str
-        :param _ResourceId: 资源ID，格式：creatorUin/$creatorUin/$dataKeyId
+        :param _ResourceId: <p>资源ID，格式：creatorUin/$creatorUin/$dataKeyId</p>
         :type ResourceId: str
-        :param _IsSyncReplica: 密钥是否是主副本。0:主本，1:同步副本。
+        :param _IsSyncReplica: <p>密钥是否是主副本。0:主本，1:同步副本。</p>
         :type IsSyncReplica: int
-        :param _SourceRegion: 同步的原始地域
+        :param _SourceRegion: <p>同步的原始地域</p>
         :type SourceRegion: str
-        :param _SyncStatus: 密钥同步的状态，0:未同步，1:同步成功，2:同步失败，3:同步中。
+        :param _SyncStatus: <p>密钥同步的状态，0:未同步，1:同步成功，2:同步失败，3:同步中。</p>
         :type SyncStatus: int
-        :param _SyncMessages: 同步的结果描述
+        :param _SyncMessages: <p>同步的结果描述</p>
         :type SyncMessages: str
-        :param _SyncStartTime: 同步的开始时间
+        :param _SyncStartTime: <p>同步的开始时间</p>
         :type SyncStartTime: int
-        :param _SyncEndTime: 同步的结束时间
+        :param _SyncEndTime: <p>同步的结束时间</p>
         :type SyncEndTime: int
-        :param _SourceHsmClusterId: 同步的原始集群，如果为空，是公有云公共集群
+        :param _SourceHsmClusterId: <p>同步的原始集群，如果为空，是公有云公共集群</p>
         :type SourceHsmClusterId: str
-        :param _AccountAppId: 成员账号appId
+        :param _AccountAppId: <p>成员账号appId</p>
         :type AccountAppId: int
-        :param _AccountUin: 成员账号uin
+        :param _AccountUin: <p>成员账号uin</p>
         :type AccountUin: int
-        :param _AccountName: 成员账号名称
+        :param _AccountName: <p>成员账号名称</p>
         :type AccountName: str
+        :param _CreatorUinString: <p>创建者UIN</p>
+        :type CreatorUinString: str
         """
         self._DataKeyId = None
         self._KeyId = None
@@ -1334,10 +1336,11 @@ class DataKeyMetadata(AbstractModel):
         self._AccountAppId = None
         self._AccountUin = None
         self._AccountName = None
+        self._CreatorUinString = None
 
     @property
     def DataKeyId(self):
-        r"""DataKey的全局唯一标识
+        r"""<p>DataKey的全局唯一标识</p>
         :rtype: str
         """
         return self._DataKeyId
@@ -1348,7 +1351,7 @@ class DataKeyMetadata(AbstractModel):
 
     @property
     def KeyId(self):
-        r"""CMK的全局唯一标识
+        r"""<p>CMK的全局唯一标识</p>
         :rtype: str
         """
         return self._KeyId
@@ -1359,7 +1362,7 @@ class DataKeyMetadata(AbstractModel):
 
     @property
     def KeyName(self):
-        r"""CMK的名称
+        r"""<p>CMK的名称</p>
         :rtype: str
         """
         return self._KeyName
@@ -1370,7 +1373,7 @@ class DataKeyMetadata(AbstractModel):
 
     @property
     def DataKeyName(self):
-        r"""作为密钥更容易辨识，更容易被人看懂的数据密钥名称
+        r"""<p>作为密钥更容易辨识，更容易被人看懂的数据密钥名称</p>
         :rtype: str
         """
         return self._DataKeyName
@@ -1381,7 +1384,7 @@ class DataKeyMetadata(AbstractModel):
 
     @property
     def NumberOfBytes(self):
-        r"""数据密钥的长度,单位字节
+        r"""<p>数据密钥的长度,单位字节</p>
         :rtype: int
         """
         return self._NumberOfBytes
@@ -1392,7 +1395,7 @@ class DataKeyMetadata(AbstractModel):
 
     @property
     def CreateTime(self):
-        r"""密钥创建时间
+        r"""<p>密钥创建时间</p>
         :rtype: int
         """
         return self._CreateTime
@@ -1403,7 +1406,7 @@ class DataKeyMetadata(AbstractModel):
 
     @property
     def Description(self):
-        r"""DataKey的描述
+        r"""<p>DataKey的描述</p>
         :rtype: str
         """
         return self._Description
@@ -1414,7 +1417,7 @@ class DataKeyMetadata(AbstractModel):
 
     @property
     def KeyState(self):
-        r"""DataKey的状态， 取值为：Enabled | Disabled | PendingDelete
+        r"""<p>DataKey的状态， 取值为：Enabled | Disabled | PendingDelete</p>
         :rtype: str
         """
         return self._KeyState
@@ -1425,7 +1428,7 @@ class DataKeyMetadata(AbstractModel):
 
     @property
     def CreatorUin(self):
-        r"""创建者
+        r"""<p>创建者</p>
         :rtype: int
         """
         return self._CreatorUin
@@ -1436,7 +1439,7 @@ class DataKeyMetadata(AbstractModel):
 
     @property
     def Owner(self):
-        r"""数据密钥的创建者，用户创建的为 user，授权各云产品自动创建的为对应的产品名
+        r"""<p>数据密钥的创建者，用户创建的为 user，授权各云产品自动创建的为对应的产品名</p>
         :rtype: str
         """
         return self._Owner
@@ -1447,7 +1450,7 @@ class DataKeyMetadata(AbstractModel):
 
     @property
     def DeletionDate(self):
-        r"""计划删除的时间
+        r"""<p>计划删除的时间</p>
         :rtype: int
         """
         return self._DeletionDate
@@ -1458,7 +1461,7 @@ class DataKeyMetadata(AbstractModel):
 
     @property
     def Origin(self):
-        r"""DataKey 密钥材料类型，由KMS创建的为： TENCENT_KMS， 由用户导入的类型为：EXTERNAL
+        r"""<p>DataKey 密钥材料类型，由KMS创建的为： TENCENT_KMS， 由用户导入的类型为：EXTERNAL</p>
         :rtype: str
         """
         return self._Origin
@@ -1469,7 +1472,7 @@ class DataKeyMetadata(AbstractModel):
 
     @property
     def HsmClusterId(self):
-        r"""HSM 集群 ID（仅对 KMS 独占版/托管版服务实例有效）
+        r"""<p>HSM 集群 ID（仅对 KMS 独占版/托管版服务实例有效）</p>
         :rtype: str
         """
         return self._HsmClusterId
@@ -1480,7 +1483,7 @@ class DataKeyMetadata(AbstractModel):
 
     @property
     def ResourceId(self):
-        r"""资源ID，格式：creatorUin/$creatorUin/$dataKeyId
+        r"""<p>资源ID，格式：creatorUin/$creatorUin/$dataKeyId</p>
         :rtype: str
         """
         return self._ResourceId
@@ -1491,7 +1494,7 @@ class DataKeyMetadata(AbstractModel):
 
     @property
     def IsSyncReplica(self):
-        r"""密钥是否是主副本。0:主本，1:同步副本。
+        r"""<p>密钥是否是主副本。0:主本，1:同步副本。</p>
         :rtype: int
         """
         return self._IsSyncReplica
@@ -1502,7 +1505,7 @@ class DataKeyMetadata(AbstractModel):
 
     @property
     def SourceRegion(self):
-        r"""同步的原始地域
+        r"""<p>同步的原始地域</p>
         :rtype: str
         """
         return self._SourceRegion
@@ -1513,7 +1516,7 @@ class DataKeyMetadata(AbstractModel):
 
     @property
     def SyncStatus(self):
-        r"""密钥同步的状态，0:未同步，1:同步成功，2:同步失败，3:同步中。
+        r"""<p>密钥同步的状态，0:未同步，1:同步成功，2:同步失败，3:同步中。</p>
         :rtype: int
         """
         return self._SyncStatus
@@ -1524,7 +1527,7 @@ class DataKeyMetadata(AbstractModel):
 
     @property
     def SyncMessages(self):
-        r"""同步的结果描述
+        r"""<p>同步的结果描述</p>
         :rtype: str
         """
         return self._SyncMessages
@@ -1535,7 +1538,7 @@ class DataKeyMetadata(AbstractModel):
 
     @property
     def SyncStartTime(self):
-        r"""同步的开始时间
+        r"""<p>同步的开始时间</p>
         :rtype: int
         """
         return self._SyncStartTime
@@ -1546,7 +1549,7 @@ class DataKeyMetadata(AbstractModel):
 
     @property
     def SyncEndTime(self):
-        r"""同步的结束时间
+        r"""<p>同步的结束时间</p>
         :rtype: int
         """
         return self._SyncEndTime
@@ -1557,7 +1560,7 @@ class DataKeyMetadata(AbstractModel):
 
     @property
     def SourceHsmClusterId(self):
-        r"""同步的原始集群，如果为空，是公有云公共集群
+        r"""<p>同步的原始集群，如果为空，是公有云公共集群</p>
         :rtype: str
         """
         return self._SourceHsmClusterId
@@ -1568,7 +1571,7 @@ class DataKeyMetadata(AbstractModel):
 
     @property
     def AccountAppId(self):
-        r"""成员账号appId
+        r"""<p>成员账号appId</p>
         :rtype: int
         """
         return self._AccountAppId
@@ -1579,7 +1582,7 @@ class DataKeyMetadata(AbstractModel):
 
     @property
     def AccountUin(self):
-        r"""成员账号uin
+        r"""<p>成员账号uin</p>
         :rtype: int
         """
         return self._AccountUin
@@ -1590,7 +1593,7 @@ class DataKeyMetadata(AbstractModel):
 
     @property
     def AccountName(self):
-        r"""成员账号名称
+        r"""<p>成员账号名称</p>
         :rtype: str
         """
         return self._AccountName
@@ -1598,6 +1601,17 @@ class DataKeyMetadata(AbstractModel):
     @AccountName.setter
     def AccountName(self, AccountName):
         self._AccountName = AccountName
+
+    @property
+    def CreatorUinString(self):
+        r"""<p>创建者UIN</p>
+        :rtype: str
+        """
+        return self._CreatorUinString
+
+    @CreatorUinString.setter
+    def CreatorUinString(self, CreatorUinString):
+        self._CreatorUinString = CreatorUinString
 
 
     def _deserialize(self, params):
@@ -1625,6 +1639,7 @@ class DataKeyMetadata(AbstractModel):
         self._AccountAppId = params.get("AccountAppId")
         self._AccountUin = params.get("AccountUin")
         self._AccountName = params.get("AccountName")
+        self._CreatorUinString = params.get("CreatorUinString")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5284,6 +5299,10 @@ class GetServiceStatusResponse(AbstractModel):
         :type QpsTotalLimit: int
         :param _RegionsQps: <p>地域下的QPS</p>
         :type RegionsQps: list of RegionQps
+        :param _ResourceZone: <p>资源的地域信息</p>
+        :type ResourceZone: int
+        :param _ResourceRegion: <p>资源的地域可用区信息</p>
+        :type ResourceRegion: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -5308,6 +5327,8 @@ class GetServiceStatusResponse(AbstractModel):
         self._QpsLimit = None
         self._QpsTotalLimit = None
         self._RegionsQps = None
+        self._ResourceZone = None
+        self._ResourceRegion = None
         self._RequestId = None
 
     @property
@@ -5542,6 +5563,28 @@ class GetServiceStatusResponse(AbstractModel):
         self._RegionsQps = RegionsQps
 
     @property
+    def ResourceZone(self):
+        r"""<p>资源的地域信息</p>
+        :rtype: int
+        """
+        return self._ResourceZone
+
+    @ResourceZone.setter
+    def ResourceZone(self, ResourceZone):
+        self._ResourceZone = ResourceZone
+
+    @property
+    def ResourceRegion(self):
+        r"""<p>资源的地域可用区信息</p>
+        :rtype: int
+        """
+        return self._ResourceRegion
+
+    @ResourceRegion.setter
+    def ResourceRegion(self, ResourceRegion):
+        self._ResourceRegion = ResourceRegion
+
+    @property
     def RequestId(self):
         r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -5590,6 +5633,8 @@ class GetServiceStatusResponse(AbstractModel):
                 obj = RegionQps()
                 obj._deserialize(item)
                 self._RegionsQps.append(obj)
+        self._ResourceZone = params.get("ResourceZone")
+        self._ResourceRegion = params.get("ResourceRegion")
         self._RequestId = params.get("RequestId")
 
 
@@ -6022,6 +6067,8 @@ class KeyMetadata(AbstractModel):
         :type AccountUin: int
         :param _AccountName: <p>成员账号名称</p>
         :type AccountName: str
+        :param _CreatorUinString: <p>创建者UIN</p>
+        :type CreatorUinString: str
         """
         self._KeyId = None
         self._Alias = None
@@ -6051,6 +6098,7 @@ class KeyMetadata(AbstractModel):
         self._AccountAppId = None
         self._AccountUin = None
         self._AccountName = None
+        self._CreatorUinString = None
 
     @property
     def KeyId(self):
@@ -6360,6 +6408,17 @@ class KeyMetadata(AbstractModel):
     def AccountName(self, AccountName):
         self._AccountName = AccountName
 
+    @property
+    def CreatorUinString(self):
+        r"""<p>创建者UIN</p>
+        :rtype: str
+        """
+        return self._CreatorUinString
+
+    @CreatorUinString.setter
+    def CreatorUinString(self, CreatorUinString):
+        self._CreatorUinString = CreatorUinString
+
 
     def _deserialize(self, params):
         self._KeyId = params.get("KeyId")
@@ -6390,6 +6449,7 @@ class KeyMetadata(AbstractModel):
         self._AccountAppId = params.get("AccountAppId")
         self._AccountUin = params.get("AccountUin")
         self._AccountName = params.get("AccountName")
+        self._CreatorUinString = params.get("CreatorUinString")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

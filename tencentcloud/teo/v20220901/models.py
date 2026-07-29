@@ -23522,6 +23522,150 @@ class DescribeHostsSettingResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeIPGroupReferencesRequest(AbstractModel):
+    r"""DescribeIPGroupReferences请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: <p>站点 ID。</p>
+        :type ZoneId: str
+        :param _GroupId: <p>IP 组 ID。</p>
+        :type GroupId: int
+        :param _Offset: <p>分页偏移量。</p><p>默认值：0</p>
+        :type Offset: int
+        :param _Limit: <p>分页查询引用 IP 组的配置条数。</p><p>取值范围：[1, 200]</p><p>默认值：20</p>
+        :type Limit: int
+        """
+        self._ZoneId = None
+        self._GroupId = None
+        self._Offset = None
+        self._Limit = None
+
+    @property
+    def ZoneId(self):
+        r"""<p>站点 ID。</p>
+        :rtype: str
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def GroupId(self):
+        r"""<p>IP 组 ID。</p>
+        :rtype: int
+        """
+        return self._GroupId
+
+    @GroupId.setter
+    def GroupId(self, GroupId):
+        self._GroupId = GroupId
+
+    @property
+    def Offset(self):
+        r"""<p>分页偏移量。</p><p>默认值：0</p>
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        r"""<p>分页查询引用 IP 组的配置条数。</p><p>取值范围：[1, 200]</p><p>默认值：20</p>
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        self._GroupId = params.get("GroupId")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeIPGroupReferencesResponse(AbstractModel):
+    r"""DescribeIPGroupReferences返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _References: <p>引用对应 IP 组的配置信息。</p>
+        :type References: list of IPGroupReference
+        :param _TotalCount: <p>查询结果总数。</p>
+        :type TotalCount: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._References = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def References(self):
+        r"""<p>引用对应 IP 组的配置信息。</p>
+        :rtype: list of IPGroupReference
+        """
+        return self._References
+
+    @References.setter
+    def References(self, References):
+        self._References = References
+
+    @property
+    def TotalCount(self):
+        r"""<p>查询结果总数。</p>
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("References") is not None:
+            self._References = []
+            for item in params.get("References"):
+                obj = IPGroupReference()
+                obj._deserialize(item)
+                self._References.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeIPRegionRequest(AbstractModel):
     r"""DescribeIPRegion请求参数结构体
 
@@ -38198,30 +38342,29 @@ class IPGroup(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _GroupId: 组 Id，创建时填 0 即可。
+        :param _GroupId: <p>IP 组 Id，创建时填 0 即可。</p>
         :type GroupId: int
-        :param _Name: 组名称。
+        :param _Name: <p>IP 组名称。</p>
         :type Name: str
-        :param _Content: IP 组内容，仅支持 IP 及 IP 网段。
+        :param _Content: <p>IP 组内容，仅支持 IP 及 IP 网段。</p>
         :type Content: list of str
-        :param _IPTotalCount: IP 组中正在生效的 IP 或网段个数。作为出参时有效，作为入参时无需填写该字段。
+        :param _IPTotalCount: <p>IP 组中正在生效的 IP 或网段个数。作为出参时有效，作为入参时无需填写该字段。</p>
         :type IPTotalCount: int
-        :param _IPExpireInfo: IP 定时过期信息。
-作为入参，用于为指定的 IP 地址或网段配置定时过期时间。
-作为出参，包含以下两类信息：
-<li>当前未到期的定时过期信息：尚未触发的过期配置。</li>
-<li>一周内已到期的定时过期信息：已触发的过期配置。</li>
+        :param _IPExpireInfo: <p>IP 定时过期信息。<br>作为入参，用于为指定的 IP 地址或网段配置定时过期时间。<br>作为出参，包含以下两类信息：</p><li>当前未到期的定时过期信息：尚未触发的过期配置。</li><li>一周内已到期的定时过期信息：已触发的过期配置。</li>
         :type IPExpireInfo: list of IPExpireInfo
+        :param _RefCount: <p>IP 组被引用的数量。</p>
+        :type RefCount: int
         """
         self._GroupId = None
         self._Name = None
         self._Content = None
         self._IPTotalCount = None
         self._IPExpireInfo = None
+        self._RefCount = None
 
     @property
     def GroupId(self):
-        r"""组 Id，创建时填 0 即可。
+        r"""<p>IP 组 Id，创建时填 0 即可。</p>
         :rtype: int
         """
         return self._GroupId
@@ -38232,7 +38375,7 @@ class IPGroup(AbstractModel):
 
     @property
     def Name(self):
-        r"""组名称。
+        r"""<p>IP 组名称。</p>
         :rtype: str
         """
         return self._Name
@@ -38243,7 +38386,7 @@ class IPGroup(AbstractModel):
 
     @property
     def Content(self):
-        r"""IP 组内容，仅支持 IP 及 IP 网段。
+        r"""<p>IP 组内容，仅支持 IP 及 IP 网段。</p>
         :rtype: list of str
         """
         return self._Content
@@ -38254,7 +38397,7 @@ class IPGroup(AbstractModel):
 
     @property
     def IPTotalCount(self):
-        r"""IP 组中正在生效的 IP 或网段个数。作为出参时有效，作为入参时无需填写该字段。
+        r"""<p>IP 组中正在生效的 IP 或网段个数。作为出参时有效，作为入参时无需填写该字段。</p>
         :rtype: int
         """
         return self._IPTotalCount
@@ -38265,11 +38408,7 @@ class IPGroup(AbstractModel):
 
     @property
     def IPExpireInfo(self):
-        r"""IP 定时过期信息。
-作为入参，用于为指定的 IP 地址或网段配置定时过期时间。
-作为出参，包含以下两类信息：
-<li>当前未到期的定时过期信息：尚未触发的过期配置。</li>
-<li>一周内已到期的定时过期信息：已触发的过期配置。</li>
+        r"""<p>IP 定时过期信息。<br>作为入参，用于为指定的 IP 地址或网段配置定时过期时间。<br>作为出参，包含以下两类信息：</p><li>当前未到期的定时过期信息：尚未触发的过期配置。</li><li>一周内已到期的定时过期信息：已触发的过期配置。</li>
         :rtype: list of IPExpireInfo
         """
         return self._IPExpireInfo
@@ -38277,6 +38416,17 @@ class IPGroup(AbstractModel):
     @IPExpireInfo.setter
     def IPExpireInfo(self, IPExpireInfo):
         self._IPExpireInfo = IPExpireInfo
+
+    @property
+    def RefCount(self):
+        r"""<p>IP 组被引用的数量。</p>
+        :rtype: int
+        """
+        return self._RefCount
+
+    @RefCount.setter
+    def RefCount(self, RefCount):
+        self._RefCount = RefCount
 
 
     def _deserialize(self, params):
@@ -38290,6 +38440,133 @@ class IPGroup(AbstractModel):
                 obj = IPExpireInfo()
                 obj._deserialize(item)
                 self._IPExpireInfo.append(obj)
+        self._RefCount = params.get("RefCount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class IPGroupReference(AbstractModel):
+    r"""引用 IP 组的安全模块
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: <p>站点 ID。</p>
+        :type ZoneId: str
+        :param _EntityType: <p>实体类型。</p><p>枚举值：</p><ul><li>WebSec.ZonePolicy： 站点级防护策略</li><li>WebSec.HostPolicy： 域名级防护策略</li><li>WebSec.Template： 策略模板</li><li>DDoS.L4Proxy： 四层代理 DDoS 防护</li><li>DDoS.L3Transit： 三层代播 DDoS 防护</li></ul>
+        :type EntityType: str
+        :param _EntityId: <p>实体标识，根据 EntityType 不同代表不同的含义：</p><ul><li>WebSec.ZonePolicy：站点 ID；</li><li>WebSec.HostPolicy：域名；</li><li>WebSec.Template：模板 ID；</li><li>DDoS.L4Proxy：实例 ID；</li><li>DDoS.L3Transit：实例 ID。</li></ul>
+        :type EntityId: str
+        :param _EntityName: <p>实体标识，根据 EntityType 不同代表不同的含义：</p><ul><li>WebSec.ZonePolicy：空；</li><li>WebSec.HostPolicy：空；</li><li>WebSec.Template：模板名称；</li><li>DDoS.L4Proxy：空；</li><li>DDoS.L3Transit：空。</li></ul>
+        :type EntityName: str
+        :param _SubEntityType: <p>子实体类型。</p><p>枚举值：</p><ul><li>WebSec.ExceptionRule： 防护例外规则</li><li>WebSec.BasicAccessRule： 基础访问管控</li><li>WebSec.PreciseMatchRule： 精确匹配规则</li><li>WebSec.RateLimitRule： 精准速率限制</li><li>WebSec.BotCustomRule： 高级 Bot 管理 - 自定义规则</li><li>DDoS.L4Proxy.IpAccessControl： 四层代理 DDoS 防护 - IP 黑白名单</li><li>DDoS.L3Transit.IpAccessControl： 三层代播 DDoS 防护 - IP 黑白名单</li></ul>
+        :type SubEntityType: str
+        :param _SubEntityId: <p>子实体标识，根据 SubEntityType 不同代表不同的含义：</p><ul><li>WebSec.ExceptionRule：规则 ID；</li><li>WebSec.BasicAccessRule：规则 ID；</li><li>WebSec.PreciseMatchRule：规则 ID；</li><li>WebSec.RateLimitRule：规则 ID；</li><li>WebSec.BotCustomRule：规则 ID；</li><li>DDoS.L4Proxy.IpAccessControl：空；</li><li>DDoS.L3Transit.IpAccessControl：空。</li></ul><p>EntityType 与 SubEntityType 为对应关系，不同的 EntityType 支持不同的 SubEntityType。<br>WebSec.ZonePolicy，WebSec.HostPolicy 和 WebSec.Template 支持如下 SubEntityType：</p><ul><li>WebSec.ExceptionRule；</li><li>WebSec.BasicAccessRule；</li><li>WebSec.PreciseMatchRule；</li><li>WebSec.RateLimitRule；</li><li>WebSec.BotCustomRule。</li></ul>DDoS.L4Proxy 支持如下 SubEntityType：<ul><li>DDoS.L4Proxy.IpAccessControl；</li></ul>DDoS.L3Transit 支持如下 SubEntityType：<ul><li>DDoS.L3Transit.IpAccessControl。</li></ul>
+        :type SubEntityId: str
+        :param _SubEntityName: <p>子实体名称，根据 SubEntityType 不同代表不同的含义：</p><ul><li>WebSec.ExceptionRule：规则名称；</li><li>WebSec.BasicAccessRule：规则名称；</li><li>WebSec.PreciseMatchRule：规则名称；</li><li>WebSec.RateLimitRule：规则名称；</li><li>WebSec.BotCustomRule：规则名称；</li><li>DDoS.L4Proxy.IpAccessControl：规则名称，block 表示黑名单，allow 表示白名单；</li><li>DDoS.L3Transit.IpAccessControl：规则名称，block 表示黑名单，allow 表示白名单。</li></ul>
+        :type SubEntityName: str
+        """
+        self._ZoneId = None
+        self._EntityType = None
+        self._EntityId = None
+        self._EntityName = None
+        self._SubEntityType = None
+        self._SubEntityId = None
+        self._SubEntityName = None
+
+    @property
+    def ZoneId(self):
+        r"""<p>站点 ID。</p>
+        :rtype: str
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def EntityType(self):
+        r"""<p>实体类型。</p><p>枚举值：</p><ul><li>WebSec.ZonePolicy： 站点级防护策略</li><li>WebSec.HostPolicy： 域名级防护策略</li><li>WebSec.Template： 策略模板</li><li>DDoS.L4Proxy： 四层代理 DDoS 防护</li><li>DDoS.L3Transit： 三层代播 DDoS 防护</li></ul>
+        :rtype: str
+        """
+        return self._EntityType
+
+    @EntityType.setter
+    def EntityType(self, EntityType):
+        self._EntityType = EntityType
+
+    @property
+    def EntityId(self):
+        r"""<p>实体标识，根据 EntityType 不同代表不同的含义：</p><ul><li>WebSec.ZonePolicy：站点 ID；</li><li>WebSec.HostPolicy：域名；</li><li>WebSec.Template：模板 ID；</li><li>DDoS.L4Proxy：实例 ID；</li><li>DDoS.L3Transit：实例 ID。</li></ul>
+        :rtype: str
+        """
+        return self._EntityId
+
+    @EntityId.setter
+    def EntityId(self, EntityId):
+        self._EntityId = EntityId
+
+    @property
+    def EntityName(self):
+        r"""<p>实体标识，根据 EntityType 不同代表不同的含义：</p><ul><li>WebSec.ZonePolicy：空；</li><li>WebSec.HostPolicy：空；</li><li>WebSec.Template：模板名称；</li><li>DDoS.L4Proxy：空；</li><li>DDoS.L3Transit：空。</li></ul>
+        :rtype: str
+        """
+        return self._EntityName
+
+    @EntityName.setter
+    def EntityName(self, EntityName):
+        self._EntityName = EntityName
+
+    @property
+    def SubEntityType(self):
+        r"""<p>子实体类型。</p><p>枚举值：</p><ul><li>WebSec.ExceptionRule： 防护例外规则</li><li>WebSec.BasicAccessRule： 基础访问管控</li><li>WebSec.PreciseMatchRule： 精确匹配规则</li><li>WebSec.RateLimitRule： 精准速率限制</li><li>WebSec.BotCustomRule： 高级 Bot 管理 - 自定义规则</li><li>DDoS.L4Proxy.IpAccessControl： 四层代理 DDoS 防护 - IP 黑白名单</li><li>DDoS.L3Transit.IpAccessControl： 三层代播 DDoS 防护 - IP 黑白名单</li></ul>
+        :rtype: str
+        """
+        return self._SubEntityType
+
+    @SubEntityType.setter
+    def SubEntityType(self, SubEntityType):
+        self._SubEntityType = SubEntityType
+
+    @property
+    def SubEntityId(self):
+        r"""<p>子实体标识，根据 SubEntityType 不同代表不同的含义：</p><ul><li>WebSec.ExceptionRule：规则 ID；</li><li>WebSec.BasicAccessRule：规则 ID；</li><li>WebSec.PreciseMatchRule：规则 ID；</li><li>WebSec.RateLimitRule：规则 ID；</li><li>WebSec.BotCustomRule：规则 ID；</li><li>DDoS.L4Proxy.IpAccessControl：空；</li><li>DDoS.L3Transit.IpAccessControl：空。</li></ul><p>EntityType 与 SubEntityType 为对应关系，不同的 EntityType 支持不同的 SubEntityType。<br>WebSec.ZonePolicy，WebSec.HostPolicy 和 WebSec.Template 支持如下 SubEntityType：</p><ul><li>WebSec.ExceptionRule；</li><li>WebSec.BasicAccessRule；</li><li>WebSec.PreciseMatchRule；</li><li>WebSec.RateLimitRule；</li><li>WebSec.BotCustomRule。</li></ul>DDoS.L4Proxy 支持如下 SubEntityType：<ul><li>DDoS.L4Proxy.IpAccessControl；</li></ul>DDoS.L3Transit 支持如下 SubEntityType：<ul><li>DDoS.L3Transit.IpAccessControl。</li></ul>
+        :rtype: str
+        """
+        return self._SubEntityId
+
+    @SubEntityId.setter
+    def SubEntityId(self, SubEntityId):
+        self._SubEntityId = SubEntityId
+
+    @property
+    def SubEntityName(self):
+        r"""<p>子实体名称，根据 SubEntityType 不同代表不同的含义：</p><ul><li>WebSec.ExceptionRule：规则名称；</li><li>WebSec.BasicAccessRule：规则名称；</li><li>WebSec.PreciseMatchRule：规则名称；</li><li>WebSec.RateLimitRule：规则名称；</li><li>WebSec.BotCustomRule：规则名称；</li><li>DDoS.L4Proxy.IpAccessControl：规则名称，block 表示黑名单，allow 表示白名单；</li><li>DDoS.L3Transit.IpAccessControl：规则名称，block 表示黑名单，allow 表示白名单。</li></ul>
+        :rtype: str
+        """
+        return self._SubEntityName
+
+    @SubEntityName.setter
+    def SubEntityName(self, SubEntityName):
+        self._SubEntityName = SubEntityName
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        self._EntityType = params.get("EntityType")
+        self._EntityId = params.get("EntityId")
+        self._EntityName = params.get("EntityName")
+        self._SubEntityType = params.get("SubEntityType")
+        self._SubEntityId = params.get("SubEntityId")
+        self._SubEntityName = params.get("SubEntityName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

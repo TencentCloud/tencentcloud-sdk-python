@@ -1041,8 +1041,10 @@ class AdaptiveDynamicStreamingTemplate(AbstractModel):
         :type CreateTime: str
         :param _UpdateTime: <p>模板最后修改时间，使用 <a href="https://cloud.tencent.com/document/product/266/11732#I">ISO 日期格式</a>。</p>
         :type UpdateTime: str
-        :param _SegmentType: <p>切片类型，仅当 Format 为 HLS 时有效。</p>
+        :param _SegmentType: <p>切片类型。</p><p>ts: HLS，内部映射为ts-segment</p><p>fmp4: HLS/DASH，HLS情况下内部映射为mp4-mp4-segment，DASH情况下内部映射为mp4-mp4-byterange</p><p>ts-segment：HLS+TS 切片</p><p>ts-byterange：HLS+TS byte range</p><p>mp4-segment：HLS+MP4 切片</p><p>mp4-byterange：HLS+MP4 byte range</p><p>ts-packed-audio：HLS+TS+Packed Audio 切片</p><p>mp4-packed-audio：HLS+MP4+Packed Audio 切片</p><p>ts-ts-segment：HLS+TS+TS 切片</p><p>ts-ts-byterange：HLS+TS+TS byte range</p><p>mp4-mp4-segment：HLS+MP4+MP4 切片</p><p>mp4-mp4-byterange：HLS/DASH+MP4+MP4 byte range</p><p>ts-packed-audio-byterange：HLS+TS+Packed Audio byte range</p><p>mp4-packed-audio-byterange：HLS+MP4+Packed Audio byte range<br> 默认值：ts-segment 注：自适应码流的分片格式以此字段为准。DASH格式下SegmentType只能为mp4-mp4-byterange。</p>
         :type SegmentType: str
+        :param _SegmentDuration: <p>切片平均时长</p><p>单位：秒</p><p>默认值：6</p><p>转自适应码流使用SegmentDuration设置分片时长，而非HlsTime字段.</p>
+        :type SegmentDuration: int
         """
         self._Definition = None
         self._Type = None
@@ -1058,6 +1060,7 @@ class AdaptiveDynamicStreamingTemplate(AbstractModel):
         self._CreateTime = None
         self._UpdateTime = None
         self._SegmentType = None
+        self._SegmentDuration = None
 
     @property
     def Definition(self):
@@ -1204,7 +1207,7 @@ class AdaptiveDynamicStreamingTemplate(AbstractModel):
 
     @property
     def SegmentType(self):
-        r"""<p>切片类型，仅当 Format 为 HLS 时有效。</p>
+        r"""<p>切片类型。</p><p>ts: HLS，内部映射为ts-segment</p><p>fmp4: HLS/DASH，HLS情况下内部映射为mp4-mp4-segment，DASH情况下内部映射为mp4-mp4-byterange</p><p>ts-segment：HLS+TS 切片</p><p>ts-byterange：HLS+TS byte range</p><p>mp4-segment：HLS+MP4 切片</p><p>mp4-byterange：HLS+MP4 byte range</p><p>ts-packed-audio：HLS+TS+Packed Audio 切片</p><p>mp4-packed-audio：HLS+MP4+Packed Audio 切片</p><p>ts-ts-segment：HLS+TS+TS 切片</p><p>ts-ts-byterange：HLS+TS+TS byte range</p><p>mp4-mp4-segment：HLS+MP4+MP4 切片</p><p>mp4-mp4-byterange：HLS/DASH+MP4+MP4 byte range</p><p>ts-packed-audio-byterange：HLS+TS+Packed Audio byte range</p><p>mp4-packed-audio-byterange：HLS+MP4+Packed Audio byte range<br> 默认值：ts-segment 注：自适应码流的分片格式以此字段为准。DASH格式下SegmentType只能为mp4-mp4-byterange。</p>
         :rtype: str
         """
         return self._SegmentType
@@ -1212,6 +1215,17 @@ class AdaptiveDynamicStreamingTemplate(AbstractModel):
     @SegmentType.setter
     def SegmentType(self, SegmentType):
         self._SegmentType = SegmentType
+
+    @property
+    def SegmentDuration(self):
+        r"""<p>切片平均时长</p><p>单位：秒</p><p>默认值：6</p><p>转自适应码流使用SegmentDuration设置分片时长，而非HlsTime字段.</p>
+        :rtype: int
+        """
+        return self._SegmentDuration
+
+    @SegmentDuration.setter
+    def SegmentDuration(self, SegmentDuration):
+        self._SegmentDuration = SegmentDuration
 
 
     def _deserialize(self, params):
@@ -1234,6 +1248,7 @@ class AdaptiveDynamicStreamingTemplate(AbstractModel):
         self._CreateTime = params.get("CreateTime")
         self._UpdateTime = params.get("UpdateTime")
         self._SegmentType = params.get("SegmentType")
+        self._SegmentDuration = params.get("SegmentDuration")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -95076,7 +95091,7 @@ class ThirdPartyDrmInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DrmTypes: <p>加密类型：</p><ul><li>FairPlay：只能用于HLS，切片格式只能是mp4</li><li>Widevine：可以用于HLS和DASH，切片格式只能是mp4</li><li>PlayReady：可以用于HLS和DASH，切片格式只能是mp4</li><li>Widevine+FairPlay，PlayReady+FairPlay，Widevine PlayReady FairPlay组合: 只能用于HLS，切片格式只能是mp4</li><li>Widevine PlayReady组合: 可用于HLS、MPEG-DASH，切片格式只能是mp4</li></ul>
+        :param _DrmTypes: <p>加密类型：</p><ul><li>FairPlay：只能用于HLS，切片格式只能是mp4或mp4-mp4-segment</li><li>Widevine：可以用于HLS和DASH，HLS下切片格式只能是mp4或mp4-mp4-segment，DASH下切片格式只能是mp4或mp4-mp4-byterange</li><li>PlayReady：可以用于HLS和DASH，HLS下切片格式只能是mp4或mp4-mp4-segment，DASH下切片格式只能是mp4或mp4-mp4-byterange</li><li>Widevine+FairPlay，PlayReady+FairPlay，Widevine PlayReady FairPlay组合: 只能用于HLS，切片格式只能是mp4或mp4-mp4-segment</li><li>Widevine PlayReady组合: 可用于HLS和DASH，HLS下切片格式只能是mp4或mp4-mp4-segment，DASH下切片格式只能是mp4或mp4-mp4-byterange</li></ul>
         :type DrmTypes: list of str
         :param _SPEKEDrm: <p>第三方DRM厂商信息。</p>
         :type SPEKEDrm: :class:`tencentcloud.vod.v20180717.models.SPEKEDrm`
@@ -95086,7 +95101,7 @@ class ThirdPartyDrmInfo(AbstractModel):
 
     @property
     def DrmTypes(self):
-        r"""<p>加密类型：</p><ul><li>FairPlay：只能用于HLS，切片格式只能是mp4</li><li>Widevine：可以用于HLS和DASH，切片格式只能是mp4</li><li>PlayReady：可以用于HLS和DASH，切片格式只能是mp4</li><li>Widevine+FairPlay，PlayReady+FairPlay，Widevine PlayReady FairPlay组合: 只能用于HLS，切片格式只能是mp4</li><li>Widevine PlayReady组合: 可用于HLS、MPEG-DASH，切片格式只能是mp4</li></ul>
+        r"""<p>加密类型：</p><ul><li>FairPlay：只能用于HLS，切片格式只能是mp4或mp4-mp4-segment</li><li>Widevine：可以用于HLS和DASH，HLS下切片格式只能是mp4或mp4-mp4-segment，DASH下切片格式只能是mp4或mp4-mp4-byterange</li><li>PlayReady：可以用于HLS和DASH，HLS下切片格式只能是mp4或mp4-mp4-segment，DASH下切片格式只能是mp4或mp4-mp4-byterange</li><li>Widevine+FairPlay，PlayReady+FairPlay，Widevine PlayReady FairPlay组合: 只能用于HLS，切片格式只能是mp4或mp4-mp4-segment</li><li>Widevine PlayReady组合: 可用于HLS和DASH，HLS下切片格式只能是mp4或mp4-mp4-segment，DASH下切片格式只能是mp4或mp4-mp4-byterange</li></ul>
         :rtype: list of str
         """
         return self._DrmTypes

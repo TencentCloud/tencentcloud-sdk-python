@@ -187,6 +187,24 @@ class DbbrainClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateDBDiagReportUrls(
+            self,
+            request: models.CreateDBDiagReportUrlsRequest,
+            opts: Dict = None,
+    ) -> models.CreateDBDiagReportUrlsResponse:
+        """
+        批量创建健康报告的PDF下载链接，支持一次获取多个报告的下载地址。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateDBDiagReportUrls"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateDBDiagReportUrlsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateIgnoreDiagRecord(
             self,
             request: models.CreateIgnoreDiagRecordRequest,
@@ -704,6 +722,24 @@ class DbbrainClient(AbstractClient):
         kwargs["action"] = "DescribeDBDiagReportTasks"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeDBDiagReportTasksResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeDBInstances(
+            self,
+            request: models.DescribeDBInstancesRequest,
+            opts: Dict = None,
+    ) -> models.DescribeDBInstancesResponse:
+        """
+        根据实例ID列表查询数据库实例基本信息，支持跨产品查询（MySQL、CynosDB、MariaDB、DCDB、MongoDB、PostgreSQL、Redis、TDStore等）。不支持分页，通过InstanceIds限制查询数量（最多100条）。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeDBInstances"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeDBInstancesResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

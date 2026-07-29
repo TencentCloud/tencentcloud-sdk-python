@@ -133,6 +133,42 @@ class DbdcClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeDBCustomClusterNodeConfig(
+            self,
+            request: models.DescribeDBCustomClusterNodeConfigRequest,
+            opts: Dict = None,
+    ) -> models.DescribeDBCustomClusterNodeConfigResponse:
+        """
+        该接口（DescribeDBCustomClusterNodeConfig）用于查询 DB Custom 集群内节点的配置信息。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeDBCustomClusterNodeConfig"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeDBCustomClusterNodeConfigResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeDBCustomClusterNodeResources(
+            self,
+            request: models.DescribeDBCustomClusterNodeResourcesRequest,
+            opts: Dict = None,
+    ) -> models.DescribeDBCustomClusterNodeResourcesResponse:
+        """
+        该接口（DescribeDBCustomClusterNodeResources）用于查询 DB Custom 集群内节点的资源信息。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeDBCustomClusterNodeResources"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeDBCustomClusterNodeResourcesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeDBCustomClusterNodes(
             self,
             request: models.DescribeDBCustomClusterNodesRequest,
@@ -146,6 +182,24 @@ class DbdcClient(AbstractClient):
         kwargs["action"] = "DescribeDBCustomClusterNodes"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeDBCustomClusterNodesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeDBCustomClusterResources(
+            self,
+            request: models.DescribeDBCustomClusterResourcesRequest,
+            opts: Dict = None,
+    ) -> models.DescribeDBCustomClusterResourcesResponse:
+        """
+        该接口（DescribeDBCustomClusterResources）用于查询 DB Custom 集群的资源信息。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeDBCustomClusterResources"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeDBCustomClusterResourcesResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -187,6 +241,42 @@ class DbdcClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeDBCustomNodeSecurityGroups(
+            self,
+            request: models.DescribeDBCustomNodeSecurityGroupsRequest,
+            opts: Dict = None,
+    ) -> models.DescribeDBCustomNodeSecurityGroupsResponse:
+        """
+        该接口（DescribeDBCustomNodeSecurityGroups）用于查询 DB Custom 节点安全组信息。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeDBCustomNodeSecurityGroups"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeDBCustomNodeSecurityGroupsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeDBCustomNodeTypes(
+            self,
+            request: models.DescribeDBCustomNodeTypesRequest,
+            opts: Dict = None,
+    ) -> models.DescribeDBCustomNodeTypesResponse:
+        """
+        该接口(DescribeDBCustomNodeTypes) 用于查询 DB Custom 节点支持的机型信息。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeDBCustomNodeTypes"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeDBCustomNodeTypesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeDBCustomNodes(
             self,
             request: models.DescribeDBCustomNodesRequest,
@@ -205,6 +295,24 @@ class DbdcClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeDBCustomRegions(
+            self,
+            request: models.DescribeDBCustomRegionsRequest,
+            opts: Dict = None,
+    ) -> models.DescribeDBCustomRegionsResponse:
+        """
+        该接口(DescribeDBCustomRegions) 用于查询 DB Custom 支持的地域列表。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeDBCustomRegions"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeDBCustomRegionsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeDBCustomTaskStatus(
             self,
             request: models.DescribeDBCustomTaskStatusRequest,
@@ -218,6 +326,24 @@ class DbdcClient(AbstractClient):
         kwargs["action"] = "DescribeDBCustomTaskStatus"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeDBCustomTaskStatusResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeDBCustomZones(
+            self,
+            request: models.DescribeDBCustomZonesRequest,
+            opts: Dict = None,
+    ) -> models.DescribeDBCustomZonesResponse:
+        """
+        该接口(DescribeDBCustomZones) 用于查询指定地域的 DB Custom 可用区列表。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeDBCustomZones"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeDBCustomZonesResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -367,6 +493,24 @@ class DbdcClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def ModifyDBCustomClusterNodeConfig(
+            self,
+            request: models.ModifyDBCustomClusterNodeConfigRequest,
+            opts: Dict = None,
+    ) -> models.ModifyDBCustomClusterNodeConfigResponse:
+        """
+        该接口（ModifyDBCustomClusterNodeConfig）用于修改 DB Custom 集群中节点的配置。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyDBCustomClusterNodeConfig"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyDBCustomClusterNodeConfigResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ModifyDBCustomClusterTags(
             self,
             request: models.ModifyDBCustomClusterTagsRequest,
@@ -380,6 +524,24 @@ class DbdcClient(AbstractClient):
         kwargs["action"] = "ModifyDBCustomClusterTags"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ModifyDBCustomClusterTagsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyDBCustomNodeSecurityGroups(
+            self,
+            request: models.ModifyDBCustomNodeSecurityGroupsRequest,
+            opts: Dict = None,
+    ) -> models.ModifyDBCustomNodeSecurityGroupsResponse:
+        """
+        该接口（ModifyDBCustomNodeSecurityGroups）用于修改 DB Custom 节点安全组。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyDBCustomNodeSecurityGroups"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyDBCustomNodeSecurityGroupsResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

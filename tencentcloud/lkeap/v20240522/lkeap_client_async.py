@@ -308,6 +308,8 @@ class LkeapClient(AbstractClient):
             opts: Dict = None,
     ) -> models.ReconstructDocumentSSEResponse:
         """
+        **此接口处于预下线状态 。请尽快升级到新对应接口：**https://cloud.tencent.com/document/product/866/133224
+
         准实时文档解析接口，使用HTTP SSE 协议通信。
         支持将图片或PDF文件转换成Markdown格式文件，可解析包括表格、公式、图片、标题、段落、页眉、页脚等内容元素，并将内容智能转换成阅读顺序。
         输入：pdf、ppt、docx、doc、jpg等

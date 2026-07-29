@@ -6973,6 +6973,476 @@ class CreateSparkAppForTDLCRequest(AbstractModel):
 
     """
 
+    def __init__(self):
+        r"""
+        :param _AppName: <p>spark作业名</p>
+        :type AppName: str
+        :param _AppType: <p>spark作业类型，1代表spark jar作业，2代表spark streaming作业</p>
+        :type AppType: int
+        :param _DataEngine: <p>执行spark作业的数据引擎名称</p>
+        :type DataEngine: str
+        :param _AppFile: <p>spark作业程序包文件路径</p>
+        :type AppFile: str
+        :param _RoleArn: <p>数据访问策略，CAM Role arn，控制台通过数据作业—&gt;作业配置获取，SDK通过DescribeUserRoles接口获取对应的值；</p>
+        :type RoleArn: int
+        :param _AppDriverSize: <p>指定的Driver规格，当前支持：small（默认，1cu）、medium（2cu）、large（4cu）、xlarge（8cu）</p>
+        :type AppDriverSize: str
+        :param _AppExecutorSize: <p>指定的Executor规格，当前支持：small（默认，1cu）、medium（2cu）、large（4cu）、xlarge（8cu）</p>
+        :type AppExecutorSize: str
+        :param _AppExecutorNums: <p>spark作业executor个数</p>
+        :type AppExecutorNums: int
+        :param _Eni: <p>该字段已下线，请使用字段Datasource</p>
+        :type Eni: str
+        :param _IsLocal: <p>spark作业程序包是否本地上传，cos：存放与cos，lakefs：本地上传（控制台使用，该方式不支持直接接口调用）</p>
+        :type IsLocal: str
+        :param _MainClass: <p>spark作业主类</p>
+        :type MainClass: str
+        :param _AppConf: <p>spark配置，以换行符分隔</p>
+        :type AppConf: str
+        :param _IsLocalJars: <p>spark 作业依赖jar包是否本地上传，cos：存放与cos，lakefs：本地上传（控制台使用，该方式不支持直接接口调用）</p>
+        :type IsLocalJars: str
+        :param _AppJars: <p>spark 作业依赖jar包（--jars），以逗号分隔</p>
+        :type AppJars: str
+        :param _IsLocalFiles: <p>spark作业依赖文件资源是否本地上传，cos：存放与cos，lakefs：本地上传（控制台使用，该方式不支持直接接口调用）</p>
+        :type IsLocalFiles: str
+        :param _AppFiles: <p>spark作业依赖文件资源（--files）（非jar、zip），以逗号分隔</p>
+        :type AppFiles: str
+        :param _CmdArgs: <p>spark作业程序入参，空格分割</p>
+        :type CmdArgs: str
+        :param _MaxRetries: <p>最大重试次数，只对spark流任务生效</p>
+        :type MaxRetries: int
+        :param _DataSource: <p>数据源名称</p>
+        :type DataSource: str
+        :param _IsLocalPythonFiles: <p>pyspark：依赖上传方式，cos：存放与cos，lakefs：本地上传（控制台使用，该方式不支持直接接口调用）</p>
+        :type IsLocalPythonFiles: str
+        :param _AppPythonFiles: <p>pyspark作业依赖python资源（--py-files），支持py/zip/egg等归档格式，多文件以逗号分隔</p>
+        :type AppPythonFiles: str
+        :param _IsLocalArchives: <p>spark作业依赖archives资源是否本地上传，cos：存放与cos，lakefs：本地上传（控制台使用，该方式不支持直接接口调用）</p>
+        :type IsLocalArchives: str
+        :param _AppArchives: <p>spark作业依赖archives资源（--archives），支持tar.gz/tgz/tar等归档格式，以逗号分隔</p>
+        :type AppArchives: str
+        :param _SparkImage: <p>Spark Image 版本号</p>
+        :type SparkImage: str
+        :param _SparkImageVersion: <p>Spark Image 版本名称</p>
+        :type SparkImageVersion: str
+        :param _AppExecutorMaxNumbers: <p>指定的Executor数量（最大值），默认为1，当开启动态分配有效，若未开启，则该值等于AppExecutorNums</p>
+        :type AppExecutorMaxNumbers: int
+        :param _SessionId: <p>关联dlc查询脚本id</p>
+        :type SessionId: str
+        :param _IsInherit: <p>任务资源配置是否继承集群模板，0（默认）不继承，1：继承</p>
+        :type IsInherit: int
+        :param _IsSessionStarted: <p>是否使用session脚本的sql运行任务：false：否，true：是</p>
+        :type IsSessionStarted: bool
+        :param _DependencyPackages: <p>依赖包信息</p>
+        :type DependencyPackages: list of DependencyPackage
+        """
+        self._AppName = None
+        self._AppType = None
+        self._DataEngine = None
+        self._AppFile = None
+        self._RoleArn = None
+        self._AppDriverSize = None
+        self._AppExecutorSize = None
+        self._AppExecutorNums = None
+        self._Eni = None
+        self._IsLocal = None
+        self._MainClass = None
+        self._AppConf = None
+        self._IsLocalJars = None
+        self._AppJars = None
+        self._IsLocalFiles = None
+        self._AppFiles = None
+        self._CmdArgs = None
+        self._MaxRetries = None
+        self._DataSource = None
+        self._IsLocalPythonFiles = None
+        self._AppPythonFiles = None
+        self._IsLocalArchives = None
+        self._AppArchives = None
+        self._SparkImage = None
+        self._SparkImageVersion = None
+        self._AppExecutorMaxNumbers = None
+        self._SessionId = None
+        self._IsInherit = None
+        self._IsSessionStarted = None
+        self._DependencyPackages = None
+
+    @property
+    def AppName(self):
+        r"""<p>spark作业名</p>
+        :rtype: str
+        """
+        return self._AppName
+
+    @AppName.setter
+    def AppName(self, AppName):
+        self._AppName = AppName
+
+    @property
+    def AppType(self):
+        r"""<p>spark作业类型，1代表spark jar作业，2代表spark streaming作业</p>
+        :rtype: int
+        """
+        return self._AppType
+
+    @AppType.setter
+    def AppType(self, AppType):
+        self._AppType = AppType
+
+    @property
+    def DataEngine(self):
+        r"""<p>执行spark作业的数据引擎名称</p>
+        :rtype: str
+        """
+        return self._DataEngine
+
+    @DataEngine.setter
+    def DataEngine(self, DataEngine):
+        self._DataEngine = DataEngine
+
+    @property
+    def AppFile(self):
+        r"""<p>spark作业程序包文件路径</p>
+        :rtype: str
+        """
+        return self._AppFile
+
+    @AppFile.setter
+    def AppFile(self, AppFile):
+        self._AppFile = AppFile
+
+    @property
+    def RoleArn(self):
+        r"""<p>数据访问策略，CAM Role arn，控制台通过数据作业—&gt;作业配置获取，SDK通过DescribeUserRoles接口获取对应的值；</p>
+        :rtype: int
+        """
+        return self._RoleArn
+
+    @RoleArn.setter
+    def RoleArn(self, RoleArn):
+        self._RoleArn = RoleArn
+
+    @property
+    def AppDriverSize(self):
+        r"""<p>指定的Driver规格，当前支持：small（默认，1cu）、medium（2cu）、large（4cu）、xlarge（8cu）</p>
+        :rtype: str
+        """
+        return self._AppDriverSize
+
+    @AppDriverSize.setter
+    def AppDriverSize(self, AppDriverSize):
+        self._AppDriverSize = AppDriverSize
+
+    @property
+    def AppExecutorSize(self):
+        r"""<p>指定的Executor规格，当前支持：small（默认，1cu）、medium（2cu）、large（4cu）、xlarge（8cu）</p>
+        :rtype: str
+        """
+        return self._AppExecutorSize
+
+    @AppExecutorSize.setter
+    def AppExecutorSize(self, AppExecutorSize):
+        self._AppExecutorSize = AppExecutorSize
+
+    @property
+    def AppExecutorNums(self):
+        r"""<p>spark作业executor个数</p>
+        :rtype: int
+        """
+        return self._AppExecutorNums
+
+    @AppExecutorNums.setter
+    def AppExecutorNums(self, AppExecutorNums):
+        self._AppExecutorNums = AppExecutorNums
+
+    @property
+    def Eni(self):
+        r"""<p>该字段已下线，请使用字段Datasource</p>
+        :rtype: str
+        """
+        return self._Eni
+
+    @Eni.setter
+    def Eni(self, Eni):
+        self._Eni = Eni
+
+    @property
+    def IsLocal(self):
+        r"""<p>spark作业程序包是否本地上传，cos：存放与cos，lakefs：本地上传（控制台使用，该方式不支持直接接口调用）</p>
+        :rtype: str
+        """
+        return self._IsLocal
+
+    @IsLocal.setter
+    def IsLocal(self, IsLocal):
+        self._IsLocal = IsLocal
+
+    @property
+    def MainClass(self):
+        r"""<p>spark作业主类</p>
+        :rtype: str
+        """
+        return self._MainClass
+
+    @MainClass.setter
+    def MainClass(self, MainClass):
+        self._MainClass = MainClass
+
+    @property
+    def AppConf(self):
+        r"""<p>spark配置，以换行符分隔</p>
+        :rtype: str
+        """
+        return self._AppConf
+
+    @AppConf.setter
+    def AppConf(self, AppConf):
+        self._AppConf = AppConf
+
+    @property
+    def IsLocalJars(self):
+        r"""<p>spark 作业依赖jar包是否本地上传，cos：存放与cos，lakefs：本地上传（控制台使用，该方式不支持直接接口调用）</p>
+        :rtype: str
+        """
+        return self._IsLocalJars
+
+    @IsLocalJars.setter
+    def IsLocalJars(self, IsLocalJars):
+        self._IsLocalJars = IsLocalJars
+
+    @property
+    def AppJars(self):
+        r"""<p>spark 作业依赖jar包（--jars），以逗号分隔</p>
+        :rtype: str
+        """
+        return self._AppJars
+
+    @AppJars.setter
+    def AppJars(self, AppJars):
+        self._AppJars = AppJars
+
+    @property
+    def IsLocalFiles(self):
+        r"""<p>spark作业依赖文件资源是否本地上传，cos：存放与cos，lakefs：本地上传（控制台使用，该方式不支持直接接口调用）</p>
+        :rtype: str
+        """
+        return self._IsLocalFiles
+
+    @IsLocalFiles.setter
+    def IsLocalFiles(self, IsLocalFiles):
+        self._IsLocalFiles = IsLocalFiles
+
+    @property
+    def AppFiles(self):
+        r"""<p>spark作业依赖文件资源（--files）（非jar、zip），以逗号分隔</p>
+        :rtype: str
+        """
+        return self._AppFiles
+
+    @AppFiles.setter
+    def AppFiles(self, AppFiles):
+        self._AppFiles = AppFiles
+
+    @property
+    def CmdArgs(self):
+        r"""<p>spark作业程序入参，空格分割</p>
+        :rtype: str
+        """
+        return self._CmdArgs
+
+    @CmdArgs.setter
+    def CmdArgs(self, CmdArgs):
+        self._CmdArgs = CmdArgs
+
+    @property
+    def MaxRetries(self):
+        r"""<p>最大重试次数，只对spark流任务生效</p>
+        :rtype: int
+        """
+        return self._MaxRetries
+
+    @MaxRetries.setter
+    def MaxRetries(self, MaxRetries):
+        self._MaxRetries = MaxRetries
+
+    @property
+    def DataSource(self):
+        r"""<p>数据源名称</p>
+        :rtype: str
+        """
+        return self._DataSource
+
+    @DataSource.setter
+    def DataSource(self, DataSource):
+        self._DataSource = DataSource
+
+    @property
+    def IsLocalPythonFiles(self):
+        r"""<p>pyspark：依赖上传方式，cos：存放与cos，lakefs：本地上传（控制台使用，该方式不支持直接接口调用）</p>
+        :rtype: str
+        """
+        return self._IsLocalPythonFiles
+
+    @IsLocalPythonFiles.setter
+    def IsLocalPythonFiles(self, IsLocalPythonFiles):
+        self._IsLocalPythonFiles = IsLocalPythonFiles
+
+    @property
+    def AppPythonFiles(self):
+        r"""<p>pyspark作业依赖python资源（--py-files），支持py/zip/egg等归档格式，多文件以逗号分隔</p>
+        :rtype: str
+        """
+        return self._AppPythonFiles
+
+    @AppPythonFiles.setter
+    def AppPythonFiles(self, AppPythonFiles):
+        self._AppPythonFiles = AppPythonFiles
+
+    @property
+    def IsLocalArchives(self):
+        r"""<p>spark作业依赖archives资源是否本地上传，cos：存放与cos，lakefs：本地上传（控制台使用，该方式不支持直接接口调用）</p>
+        :rtype: str
+        """
+        return self._IsLocalArchives
+
+    @IsLocalArchives.setter
+    def IsLocalArchives(self, IsLocalArchives):
+        self._IsLocalArchives = IsLocalArchives
+
+    @property
+    def AppArchives(self):
+        r"""<p>spark作业依赖archives资源（--archives），支持tar.gz/tgz/tar等归档格式，以逗号分隔</p>
+        :rtype: str
+        """
+        return self._AppArchives
+
+    @AppArchives.setter
+    def AppArchives(self, AppArchives):
+        self._AppArchives = AppArchives
+
+    @property
+    def SparkImage(self):
+        r"""<p>Spark Image 版本号</p>
+        :rtype: str
+        """
+        return self._SparkImage
+
+    @SparkImage.setter
+    def SparkImage(self, SparkImage):
+        self._SparkImage = SparkImage
+
+    @property
+    def SparkImageVersion(self):
+        r"""<p>Spark Image 版本名称</p>
+        :rtype: str
+        """
+        return self._SparkImageVersion
+
+    @SparkImageVersion.setter
+    def SparkImageVersion(self, SparkImageVersion):
+        self._SparkImageVersion = SparkImageVersion
+
+    @property
+    def AppExecutorMaxNumbers(self):
+        r"""<p>指定的Executor数量（最大值），默认为1，当开启动态分配有效，若未开启，则该值等于AppExecutorNums</p>
+        :rtype: int
+        """
+        return self._AppExecutorMaxNumbers
+
+    @AppExecutorMaxNumbers.setter
+    def AppExecutorMaxNumbers(self, AppExecutorMaxNumbers):
+        self._AppExecutorMaxNumbers = AppExecutorMaxNumbers
+
+    @property
+    def SessionId(self):
+        r"""<p>关联dlc查询脚本id</p>
+        :rtype: str
+        """
+        return self._SessionId
+
+    @SessionId.setter
+    def SessionId(self, SessionId):
+        self._SessionId = SessionId
+
+    @property
+    def IsInherit(self):
+        r"""<p>任务资源配置是否继承集群模板，0（默认）不继承，1：继承</p>
+        :rtype: int
+        """
+        return self._IsInherit
+
+    @IsInherit.setter
+    def IsInherit(self, IsInherit):
+        self._IsInherit = IsInherit
+
+    @property
+    def IsSessionStarted(self):
+        r"""<p>是否使用session脚本的sql运行任务：false：否，true：是</p>
+        :rtype: bool
+        """
+        return self._IsSessionStarted
+
+    @IsSessionStarted.setter
+    def IsSessionStarted(self, IsSessionStarted):
+        self._IsSessionStarted = IsSessionStarted
+
+    @property
+    def DependencyPackages(self):
+        r"""<p>依赖包信息</p>
+        :rtype: list of DependencyPackage
+        """
+        return self._DependencyPackages
+
+    @DependencyPackages.setter
+    def DependencyPackages(self, DependencyPackages):
+        self._DependencyPackages = DependencyPackages
+
+
+    def _deserialize(self, params):
+        self._AppName = params.get("AppName")
+        self._AppType = params.get("AppType")
+        self._DataEngine = params.get("DataEngine")
+        self._AppFile = params.get("AppFile")
+        self._RoleArn = params.get("RoleArn")
+        self._AppDriverSize = params.get("AppDriverSize")
+        self._AppExecutorSize = params.get("AppExecutorSize")
+        self._AppExecutorNums = params.get("AppExecutorNums")
+        self._Eni = params.get("Eni")
+        self._IsLocal = params.get("IsLocal")
+        self._MainClass = params.get("MainClass")
+        self._AppConf = params.get("AppConf")
+        self._IsLocalJars = params.get("IsLocalJars")
+        self._AppJars = params.get("AppJars")
+        self._IsLocalFiles = params.get("IsLocalFiles")
+        self._AppFiles = params.get("AppFiles")
+        self._CmdArgs = params.get("CmdArgs")
+        self._MaxRetries = params.get("MaxRetries")
+        self._DataSource = params.get("DataSource")
+        self._IsLocalPythonFiles = params.get("IsLocalPythonFiles")
+        self._AppPythonFiles = params.get("AppPythonFiles")
+        self._IsLocalArchives = params.get("IsLocalArchives")
+        self._AppArchives = params.get("AppArchives")
+        self._SparkImage = params.get("SparkImage")
+        self._SparkImageVersion = params.get("SparkImageVersion")
+        self._AppExecutorMaxNumbers = params.get("AppExecutorMaxNumbers")
+        self._SessionId = params.get("SessionId")
+        self._IsInherit = params.get("IsInherit")
+        self._IsSessionStarted = params.get("IsSessionStarted")
+        if params.get("DependencyPackages") is not None:
+            self._DependencyPackages = []
+            for item in params.get("DependencyPackages"):
+                obj = DependencyPackage()
+                obj._deserialize(item)
+                self._DependencyPackages.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
 
 class CreateSparkAppForTDLCResponse(AbstractModel):
     r"""CreateSparkAppForTDLC返回参数结构体

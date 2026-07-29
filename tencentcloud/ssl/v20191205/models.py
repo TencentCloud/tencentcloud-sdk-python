@@ -1299,24 +1299,28 @@ class CertificateExtra(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DomainNumber: 证书可配置域名数量。
+        :param _DomainNumber: <p>证书可配置域名数量。</p>
         :type DomainNumber: str
-        :param _OriginCertificateId: 续费原证书 ID。
+        :param _OriginCertificateId: <p>续费原证书 ID。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type OriginCertificateId: str
-        :param _ReplacedBy: 重颁发证书原始 ID。
+        :param _ReplacedBy: <p>重颁发证书原始 ID。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ReplacedBy: str
-        :param _ReplacedFor: 重颁发证书ID。
+        :param _ReplacedFor: <p>重颁发证书ID。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ReplacedFor: str
-        :param _RenewOrder: 续费证书 ID。
+        :param _RenewOrder: <p>续费证书 ID。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type RenewOrder: str
-        :param _SMCert: 是否是国密证书
+        :param _SMCert: <p>是否是国密证书</p>
         :type SMCert: int
-        :param _CompanyType: 公司类型，取值：1（个人）；2（公司）
+        :param _CompanyType: <p>公司类型，取值：1（个人）；2（公司）</p>
         :type CompanyType: int
+        :param _ServiceRenewCertificateId: <p>下一张订阅服务续期证书ID</p>
+        :type ServiceRenewCertificateId: str
+        :param _ServiceOriginCertificateId: <p>上一张订阅服务来源证书ID</p>
+        :type ServiceOriginCertificateId: str
         """
         self._DomainNumber = None
         self._OriginCertificateId = None
@@ -1325,10 +1329,12 @@ class CertificateExtra(AbstractModel):
         self._RenewOrder = None
         self._SMCert = None
         self._CompanyType = None
+        self._ServiceRenewCertificateId = None
+        self._ServiceOriginCertificateId = None
 
     @property
     def DomainNumber(self):
-        r"""证书可配置域名数量。
+        r"""<p>证书可配置域名数量。</p>
         :rtype: str
         """
         return self._DomainNumber
@@ -1339,7 +1345,7 @@ class CertificateExtra(AbstractModel):
 
     @property
     def OriginCertificateId(self):
-        r"""续费原证书 ID。
+        r"""<p>续费原证书 ID。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -1351,7 +1357,7 @@ class CertificateExtra(AbstractModel):
 
     @property
     def ReplacedBy(self):
-        r"""重颁发证书原始 ID。
+        r"""<p>重颁发证书原始 ID。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -1363,7 +1369,7 @@ class CertificateExtra(AbstractModel):
 
     @property
     def ReplacedFor(self):
-        r"""重颁发证书ID。
+        r"""<p>重颁发证书ID。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -1375,7 +1381,7 @@ class CertificateExtra(AbstractModel):
 
     @property
     def RenewOrder(self):
-        r"""续费证书 ID。
+        r"""<p>续费证书 ID。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -1387,7 +1393,7 @@ class CertificateExtra(AbstractModel):
 
     @property
     def SMCert(self):
-        r"""是否是国密证书
+        r"""<p>是否是国密证书</p>
         :rtype: int
         """
         return self._SMCert
@@ -1398,7 +1404,7 @@ class CertificateExtra(AbstractModel):
 
     @property
     def CompanyType(self):
-        r"""公司类型，取值：1（个人）；2（公司）
+        r"""<p>公司类型，取值：1（个人）；2（公司）</p>
         :rtype: int
         """
         return self._CompanyType
@@ -1406,6 +1412,28 @@ class CertificateExtra(AbstractModel):
     @CompanyType.setter
     def CompanyType(self, CompanyType):
         self._CompanyType = CompanyType
+
+    @property
+    def ServiceRenewCertificateId(self):
+        r"""<p>下一张订阅服务续期证书ID</p>
+        :rtype: str
+        """
+        return self._ServiceRenewCertificateId
+
+    @ServiceRenewCertificateId.setter
+    def ServiceRenewCertificateId(self, ServiceRenewCertificateId):
+        self._ServiceRenewCertificateId = ServiceRenewCertificateId
+
+    @property
+    def ServiceOriginCertificateId(self):
+        r"""<p>上一张订阅服务来源证书ID</p>
+        :rtype: str
+        """
+        return self._ServiceOriginCertificateId
+
+    @ServiceOriginCertificateId.setter
+    def ServiceOriginCertificateId(self, ServiceOriginCertificateId):
+        self._ServiceOriginCertificateId = ServiceOriginCertificateId
 
 
     def _deserialize(self, params):
@@ -1416,6 +1444,8 @@ class CertificateExtra(AbstractModel):
         self._RenewOrder = params.get("RenewOrder")
         self._SMCert = params.get("SMCert")
         self._CompanyType = params.get("CompanyType")
+        self._ServiceRenewCertificateId = params.get("ServiceRenewCertificateId")
+        self._ServiceOriginCertificateId = params.get("ServiceOriginCertificateId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2311,9 +2341,9 @@ class Certificates(AbstractModel):
         :type OwnerUin: str
         :param _ProjectId: <p>项目 ID。</p>
         :type ProjectId: str
-        :param _From: <p>证书来源：trustasia：亚洲诚信，upload：用户上传。wosign：沃通sheca：上海CA</p>
+        :param _From: <p>证书来源：<br>trustasia：亚洲诚信，<br>upload：用户上传。<br>wosign：沃通<br>sheca：上海CA</p>
         :type From: str
-        :param _PackageType: <p>证书套餐类型：null：用户上传证书（没有套餐类型），2：TrustAsia TLS RSA CA， 3：SecureSite 增强型企业版（EV Pro）， 4：SecureSite 增强型（EV）， 5：SecureSite 企业型专业版（OV Pro），6：SecureSite 企业型（OV）， 7：SecureSite 企业型（OV）通配符， 8：Geotrust 增强型（EV）， 9：Geotrust 企业型（OV）， 10：Geotrust 企业型（OV）通配符， 11：TrustAsia 域名型多域名 SSL 证书， 12：TrustAsia 域名型（DV）通配符， 13：TrustAsia 企业型通配符（OV）SSL 证书（D3）， 14：TrustAsia 企业型（OV）SSL 证书（D3）， 15：TrustAsia 企业型多域名 （OV）SSL 证书（D3）， 16：TrustAsia 增强型 （EV）SSL 证书（D3）， 17：TrustAsia 增强型多域名（EV）SSL 证书（D3）， 18：GlobalSign 企业型（OV）SSL 证书， 19：GlobalSign 企业型通配符 （OV）SSL 证书， 20：GlobalSign 增强型 （EV）SSL 证书， 21：TrustAsia 企业型通配符多域名（OV）SSL 证书（D3）， 22：GlobalSign 企业型多域名（OV）SSL 证书， 23：GlobalSign 企业型通配符多域名（OV）SSL 证书，24：GlobalSign 增强型多域名（EV）SSL 证书，25：Wotrus 域名型证书，26：Wotrus 域名型多域名证书，27：Wotrus 域名型通配符证书，28：Wotrus 企业型证书，29：Wotrus 企业型多域名证书，30：Wotrus 企业型通配符证书，31：Wotrus 增强型证书，32：Wotrus 增强型多域名证书，33：WoTrus-国密域名型证书，34：WoTrus-国密域名型证书（多域名），35：WoTrus-国密域名型证书（通配符），37：WoTrus-国密企业型证书，38：WoTrus-国密企业型证书（多域名），39：WoTrus-国密企业型证书（通配符），40：WoTrus-国密增强型证书，41：WoTrus-国密增强型证书（多域名），42：TrustAsia-域名型证书（通配符多域名），43：DNSPod-企业型(OV)SSL证书44：DNSPod-企业型(OV)通配符SSL证书45：DNSPod-企业型(OV)多域名SSL证书46：DNSPod-增强型(EV)SSL证书47：DNSPod-增强型(EV)多域名SSL证书48：DNSPod-域名型(DV)SSL证书49：DNSPod-域名型(DV)通配符SSL证书50：DNSPod-域名型(DV)多域名SSL证书51：DNSPod（国密）-企业型(OV)SSL证书52：DNSPod（国密）-企业型(OV)通配符SSL证书53：DNSPod（国密）-企业型(OV)多域名SSL证书54：DNSPod（国密）-域名型(DV)SSL证书55：DNSPod（国密）-域名型(DV)通配符SSL证书56：DNSPod（国密）-域名型(DV)多域名SSL证书57：SecureSite 企业型专业版多域名(OV Pro)58：SecureSite 企业型多域名(OV)59：SecureSite 增强型专业版多域名(EV Pro)60：SecureSite 增强型多域名(EV)61：Geotrust 增强型多域名(EV)75：SecureSite 企业型(OV)76：SecureSite 企业型(OV)通配符77：SecureSite 增强型(EV)78：Geotrust 企业型(OV)79：Geotrust 企业型(OV)通配符80：Geotrust 增强型(EV)81：GlobalSign 企业型（OV）SSL证书82：GlobalSign 企业型通配符 （OV）SSL证书83：TrustAsia C1 DV Free85：GlobalSign 增强型 （EV）SSL证书88：GlobalSign 企业型通配符多域名 （OV）SSL证书89：GlobalSign 企业型多域名 （OV）SSL证书90：GlobalSign 增强型多域名（EV） SSL证书91：Geotrust 增强型多域名(EV)92：SecureSite 企业型专业版多域名(OV Pro)93：SecureSite 企业型多域名(OV)94：SecureSite 增强型专业版多域名(EV Pro)95：SecureSite 增强型多域名(EV)96：SecureSite 增强型专业版(EV Pro)97：SecureSite 企业型专业版(OV Pro)98：CFCA 企业型(OV)SSL证书99：CFCA 企业型多域名(OV)SSL证书100：CFCA 企业型通配符(OV)SSL证书101：CFCA 增强型(EV)SSL证书</p>
+        :param _PackageType: <p>证书套餐类型：<br>null：用户上传证书（没有套餐类型），<br>2：TrustAsia TLS RSA CA，<br>3：SecureSite 增强型企业版（EV Pro），<br>4：SecureSite 增强型（EV），<br>5：SecureSite 企业型专业版（OV Pro），<br>6：SecureSite 企业型（OV），<br>7：SecureSite 企业型（OV）通配符，<br>8：Geotrust 增强型（EV），<br>9：Geotrust 企业型（OV），<br>10：Geotrust 企业型（OV）通配符，<br>11：TrustAsia 域名型多域名 SSL 证书，<br>12：TrustAsia 域名型（DV）通配符，<br>13：TrustAsia 企业型通配符（OV）SSL 证书（D3），<br>14：TrustAsia 企业型（OV）SSL 证书（D3），<br>15：TrustAsia 企业型多域名 （OV）SSL 证书（D3），<br>16：TrustAsia 增强型 （EV）SSL 证书（D3），<br>17：TrustAsia 增强型多域名（EV）SSL 证书（D3），<br>18：GlobalSign 企业型（OV）SSL 证书，<br>19：GlobalSign 企业型通配符 （OV）SSL 证书，<br>20：GlobalSign 增强型 （EV）SSL 证书，<br>21：TrustAsia 企业型通配符多域名（OV）SSL 证书（D3），<br>22：GlobalSign 企业型多域名（OV）SSL 证书，<br>23：GlobalSign 企业型通配符多域名（OV）SSL 证书，<br>24：GlobalSign 增强型多域名（EV）SSL 证书，<br>25：Wotrus 域名型证书，<br>26：Wotrus 域名型多域名证书，<br>27：Wotrus 域名型通配符证书，<br>28：Wotrus 企业型证书，<br>29：Wotrus 企业型多域名证书，<br>30：Wotrus 企业型通配符证书，<br>31：Wotrus 增强型证书，<br>32：Wotrus 增强型多域名证书，<br>33：WoTrus-国密域名型证书，<br>34：WoTrus-国密域名型证书（多域名），<br>35：WoTrus-国密域名型证书（通配符），<br>37：WoTrus-国密企业型证书，<br>38：WoTrus-国密企业型证书（多域名），<br>39：WoTrus-国密企业型证书（通配符），<br>40：WoTrus-国密增强型证书，<br>41：WoTrus-国密增强型证书（多域名），<br>42：TrustAsia-域名型证书（通配符多域名），<br>43：DNSPod-企业型(OV)SSL证书<br>44：DNSPod-企业型(OV)通配符SSL证书<br>45：DNSPod-企业型(OV)多域名SSL证书<br>46：DNSPod-增强型(EV)SSL证书<br>47：DNSPod-增强型(EV)多域名SSL证书<br>48：DNSPod-域名型(DV)SSL证书<br>49：DNSPod-域名型(DV)通配符SSL证书<br>50：DNSPod-域名型(DV)多域名SSL证书<br>51：DNSPod（国密）-企业型(OV)SSL证书<br>52：DNSPod（国密）-企业型(OV)通配符SSL证书<br>53：DNSPod（国密）-企业型(OV)多域名SSL证书<br>54：DNSPod（国密）-域名型(DV)SSL证书<br>55：DNSPod（国密）-域名型(DV)通配符SSL证书<br>56：DNSPod（国密）-域名型(DV)多域名SSL证书<br>57：SecureSite 企业型专业版多域名(OV Pro)<br>58：SecureSite 企业型多域名(OV)<br>59：SecureSite 增强型专业版多域名(EV Pro)<br>60：SecureSite 增强型多域名(EV)<br>61：Geotrust 增强型多域名(EV)<br>75：SecureSite 企业型(OV)<br>76：SecureSite 企业型(OV)通配符<br>77：SecureSite 增强型(EV)<br>78：Geotrust 企业型(OV)<br>79：Geotrust 企业型(OV)通配符<br>80：Geotrust 增强型(EV)<br>81：GlobalSign 企业型（OV）SSL证书<br>82：GlobalSign 企业型通配符 （OV）SSL证书<br>83：TrustAsia C1 DV Free<br>85：GlobalSign 增强型 （EV）SSL证书<br>88：GlobalSign 企业型通配符多域名 （OV）SSL证书<br>89：GlobalSign 企业型多域名 （OV）SSL证书<br>90：GlobalSign 增强型多域名（EV） SSL证书<br>91：Geotrust 增强型多域名(EV)<br>92：SecureSite 企业型专业版多域名(OV Pro)<br>93：SecureSite 企业型多域名(OV)<br>94：SecureSite 增强型专业版多域名(EV Pro)<br>95：SecureSite 增强型多域名(EV)<br>96：SecureSite 增强型专业版(EV Pro)<br>97：SecureSite 企业型专业版(OV Pro)<br>98：CFCA 企业型(OV)SSL证书<br>99：CFCA 企业型多域名(OV)SSL证书<br>100：CFCA 企业型通配符(OV)SSL证书<br>101：CFCA 增强型(EV)SSL证书</p>
         :type PackageType: str
         :param _CertificateType: <p>证书类型：CA = 客户端证书，SVR = 服务器证书。</p>
         :type CertificateType: str
@@ -2383,7 +2413,7 @@ class Certificates(AbstractModel):
         :type PreAuditInfo: :class:`tencentcloud.ssl.v20191205.models.PreAuditInfo`
         :param _AutoRenewFlag: <p>是否自动续费</p>
         :type AutoRenewFlag: int
-        :param _HostingStatus: <p>托管状态，0，托管中，5，资源替换中， 10， 托管完成， -1未托管 </p>
+        :param _HostingStatus: <p>托管状态，0，托管中，5，资源替换中， 10， 托管完成， -1未托管</p>
         :type HostingStatus: int
         :param _HostingCompleteTime: <p>托管完成时间</p>
         :type HostingCompleteTime: str
@@ -2424,12 +2454,16 @@ class Certificates(AbstractModel):
         :type IsHostingUploadRenewCert: bool
         :param _ServiceId: <p>订阅服务ID</p>
         :type ServiceId: str
-        :param _ServiceStatus: <p>订阅服务状态</p>枚举值：<ul><li> initing： 未激活</li><li> running： 生效中</li><li> expired： 已过期</li><li> refunded： 已退款</li><li> nearExpire： 即将到期</li></ul>
+        :param _ServiceStatus: <p>订阅服务状态</p><p>枚举值：</p><ul><li>initing： 未激活</li><li>running： 生效中</li><li>expired： 已过期</li><li>refunded： 已退款</li><li>nearExpire： 即将到期</li></ul>
         :type ServiceStatus: str
         :param _CertServiceBeginTime: <p>订阅服务开始时间</p>
         :type CertServiceBeginTime: str
         :param _CertServiceEndTime: <p>订阅服务结束时间</p>
         :type CertServiceEndTime: str
+        :param _CertServiceShareEnabled: <p>是否开启订阅服务共享</p>
+        :type CertServiceShareEnabled: bool
+        :param _CertServiceValidCertificateCount: <p>当前订阅服务下已经签发未过期的证书数量</p>
+        :type CertServiceValidCertificateCount: int
         """
         self._OwnerUin = None
         self._ProjectId = None
@@ -2492,6 +2526,8 @@ class Certificates(AbstractModel):
         self._ServiceStatus = None
         self._CertServiceBeginTime = None
         self._CertServiceEndTime = None
+        self._CertServiceShareEnabled = None
+        self._CertServiceValidCertificateCount = None
 
     @property
     def OwnerUin(self):
@@ -2517,7 +2553,7 @@ class Certificates(AbstractModel):
 
     @property
     def From(self):
-        r"""<p>证书来源：trustasia：亚洲诚信，upload：用户上传。wosign：沃通sheca：上海CA</p>
+        r"""<p>证书来源：<br>trustasia：亚洲诚信，<br>upload：用户上传。<br>wosign：沃通<br>sheca：上海CA</p>
         :rtype: str
         """
         return self._From
@@ -2528,7 +2564,7 @@ class Certificates(AbstractModel):
 
     @property
     def PackageType(self):
-        r"""<p>证书套餐类型：null：用户上传证书（没有套餐类型），2：TrustAsia TLS RSA CA， 3：SecureSite 增强型企业版（EV Pro）， 4：SecureSite 增强型（EV）， 5：SecureSite 企业型专业版（OV Pro），6：SecureSite 企业型（OV）， 7：SecureSite 企业型（OV）通配符， 8：Geotrust 增强型（EV）， 9：Geotrust 企业型（OV）， 10：Geotrust 企业型（OV）通配符， 11：TrustAsia 域名型多域名 SSL 证书， 12：TrustAsia 域名型（DV）通配符， 13：TrustAsia 企业型通配符（OV）SSL 证书（D3）， 14：TrustAsia 企业型（OV）SSL 证书（D3）， 15：TrustAsia 企业型多域名 （OV）SSL 证书（D3）， 16：TrustAsia 增强型 （EV）SSL 证书（D3）， 17：TrustAsia 增强型多域名（EV）SSL 证书（D3）， 18：GlobalSign 企业型（OV）SSL 证书， 19：GlobalSign 企业型通配符 （OV）SSL 证书， 20：GlobalSign 增强型 （EV）SSL 证书， 21：TrustAsia 企业型通配符多域名（OV）SSL 证书（D3）， 22：GlobalSign 企业型多域名（OV）SSL 证书， 23：GlobalSign 企业型通配符多域名（OV）SSL 证书，24：GlobalSign 增强型多域名（EV）SSL 证书，25：Wotrus 域名型证书，26：Wotrus 域名型多域名证书，27：Wotrus 域名型通配符证书，28：Wotrus 企业型证书，29：Wotrus 企业型多域名证书，30：Wotrus 企业型通配符证书，31：Wotrus 增强型证书，32：Wotrus 增强型多域名证书，33：WoTrus-国密域名型证书，34：WoTrus-国密域名型证书（多域名），35：WoTrus-国密域名型证书（通配符），37：WoTrus-国密企业型证书，38：WoTrus-国密企业型证书（多域名），39：WoTrus-国密企业型证书（通配符），40：WoTrus-国密增强型证书，41：WoTrus-国密增强型证书（多域名），42：TrustAsia-域名型证书（通配符多域名），43：DNSPod-企业型(OV)SSL证书44：DNSPod-企业型(OV)通配符SSL证书45：DNSPod-企业型(OV)多域名SSL证书46：DNSPod-增强型(EV)SSL证书47：DNSPod-增强型(EV)多域名SSL证书48：DNSPod-域名型(DV)SSL证书49：DNSPod-域名型(DV)通配符SSL证书50：DNSPod-域名型(DV)多域名SSL证书51：DNSPod（国密）-企业型(OV)SSL证书52：DNSPod（国密）-企业型(OV)通配符SSL证书53：DNSPod（国密）-企业型(OV)多域名SSL证书54：DNSPod（国密）-域名型(DV)SSL证书55：DNSPod（国密）-域名型(DV)通配符SSL证书56：DNSPod（国密）-域名型(DV)多域名SSL证书57：SecureSite 企业型专业版多域名(OV Pro)58：SecureSite 企业型多域名(OV)59：SecureSite 增强型专业版多域名(EV Pro)60：SecureSite 增强型多域名(EV)61：Geotrust 增强型多域名(EV)75：SecureSite 企业型(OV)76：SecureSite 企业型(OV)通配符77：SecureSite 增强型(EV)78：Geotrust 企业型(OV)79：Geotrust 企业型(OV)通配符80：Geotrust 增强型(EV)81：GlobalSign 企业型（OV）SSL证书82：GlobalSign 企业型通配符 （OV）SSL证书83：TrustAsia C1 DV Free85：GlobalSign 增强型 （EV）SSL证书88：GlobalSign 企业型通配符多域名 （OV）SSL证书89：GlobalSign 企业型多域名 （OV）SSL证书90：GlobalSign 增强型多域名（EV） SSL证书91：Geotrust 增强型多域名(EV)92：SecureSite 企业型专业版多域名(OV Pro)93：SecureSite 企业型多域名(OV)94：SecureSite 增强型专业版多域名(EV Pro)95：SecureSite 增强型多域名(EV)96：SecureSite 增强型专业版(EV Pro)97：SecureSite 企业型专业版(OV Pro)98：CFCA 企业型(OV)SSL证书99：CFCA 企业型多域名(OV)SSL证书100：CFCA 企业型通配符(OV)SSL证书101：CFCA 增强型(EV)SSL证书</p>
+        r"""<p>证书套餐类型：<br>null：用户上传证书（没有套餐类型），<br>2：TrustAsia TLS RSA CA，<br>3：SecureSite 增强型企业版（EV Pro），<br>4：SecureSite 增强型（EV），<br>5：SecureSite 企业型专业版（OV Pro），<br>6：SecureSite 企业型（OV），<br>7：SecureSite 企业型（OV）通配符，<br>8：Geotrust 增强型（EV），<br>9：Geotrust 企业型（OV），<br>10：Geotrust 企业型（OV）通配符，<br>11：TrustAsia 域名型多域名 SSL 证书，<br>12：TrustAsia 域名型（DV）通配符，<br>13：TrustAsia 企业型通配符（OV）SSL 证书（D3），<br>14：TrustAsia 企业型（OV）SSL 证书（D3），<br>15：TrustAsia 企业型多域名 （OV）SSL 证书（D3），<br>16：TrustAsia 增强型 （EV）SSL 证书（D3），<br>17：TrustAsia 增强型多域名（EV）SSL 证书（D3），<br>18：GlobalSign 企业型（OV）SSL 证书，<br>19：GlobalSign 企业型通配符 （OV）SSL 证书，<br>20：GlobalSign 增强型 （EV）SSL 证书，<br>21：TrustAsia 企业型通配符多域名（OV）SSL 证书（D3），<br>22：GlobalSign 企业型多域名（OV）SSL 证书，<br>23：GlobalSign 企业型通配符多域名（OV）SSL 证书，<br>24：GlobalSign 增强型多域名（EV）SSL 证书，<br>25：Wotrus 域名型证书，<br>26：Wotrus 域名型多域名证书，<br>27：Wotrus 域名型通配符证书，<br>28：Wotrus 企业型证书，<br>29：Wotrus 企业型多域名证书，<br>30：Wotrus 企业型通配符证书，<br>31：Wotrus 增强型证书，<br>32：Wotrus 增强型多域名证书，<br>33：WoTrus-国密域名型证书，<br>34：WoTrus-国密域名型证书（多域名），<br>35：WoTrus-国密域名型证书（通配符），<br>37：WoTrus-国密企业型证书，<br>38：WoTrus-国密企业型证书（多域名），<br>39：WoTrus-国密企业型证书（通配符），<br>40：WoTrus-国密增强型证书，<br>41：WoTrus-国密增强型证书（多域名），<br>42：TrustAsia-域名型证书（通配符多域名），<br>43：DNSPod-企业型(OV)SSL证书<br>44：DNSPod-企业型(OV)通配符SSL证书<br>45：DNSPod-企业型(OV)多域名SSL证书<br>46：DNSPod-增强型(EV)SSL证书<br>47：DNSPod-增强型(EV)多域名SSL证书<br>48：DNSPod-域名型(DV)SSL证书<br>49：DNSPod-域名型(DV)通配符SSL证书<br>50：DNSPod-域名型(DV)多域名SSL证书<br>51：DNSPod（国密）-企业型(OV)SSL证书<br>52：DNSPod（国密）-企业型(OV)通配符SSL证书<br>53：DNSPod（国密）-企业型(OV)多域名SSL证书<br>54：DNSPod（国密）-域名型(DV)SSL证书<br>55：DNSPod（国密）-域名型(DV)通配符SSL证书<br>56：DNSPod（国密）-域名型(DV)多域名SSL证书<br>57：SecureSite 企业型专业版多域名(OV Pro)<br>58：SecureSite 企业型多域名(OV)<br>59：SecureSite 增强型专业版多域名(EV Pro)<br>60：SecureSite 增强型多域名(EV)<br>61：Geotrust 增强型多域名(EV)<br>75：SecureSite 企业型(OV)<br>76：SecureSite 企业型(OV)通配符<br>77：SecureSite 增强型(EV)<br>78：Geotrust 企业型(OV)<br>79：Geotrust 企业型(OV)通配符<br>80：Geotrust 增强型(EV)<br>81：GlobalSign 企业型（OV）SSL证书<br>82：GlobalSign 企业型通配符 （OV）SSL证书<br>83：TrustAsia C1 DV Free<br>85：GlobalSign 增强型 （EV）SSL证书<br>88：GlobalSign 企业型通配符多域名 （OV）SSL证书<br>89：GlobalSign 企业型多域名 （OV）SSL证书<br>90：GlobalSign 增强型多域名（EV） SSL证书<br>91：Geotrust 增强型多域名(EV)<br>92：SecureSite 企业型专业版多域名(OV Pro)<br>93：SecureSite 企业型多域名(OV)<br>94：SecureSite 增强型专业版多域名(EV Pro)<br>95：SecureSite 增强型多域名(EV)<br>96：SecureSite 增强型专业版(EV Pro)<br>97：SecureSite 企业型专业版(OV Pro)<br>98：CFCA 企业型(OV)SSL证书<br>99：CFCA 企业型多域名(OV)SSL证书<br>100：CFCA 企业型通配符(OV)SSL证书<br>101：CFCA 增强型(EV)SSL证书</p>
         :rtype: str
         """
         return self._PackageType
@@ -2913,7 +2949,7 @@ class Certificates(AbstractModel):
 
     @property
     def HostingStatus(self):
-        r"""<p>托管状态，0，托管中，5，资源替换中， 10， 托管完成， -1未托管 </p>
+        r"""<p>托管状态，0，托管中，5，资源替换中， 10， 托管完成， -1未托管</p>
         :rtype: int
         """
         return self._HostingStatus
@@ -3134,7 +3170,7 @@ class Certificates(AbstractModel):
 
     @property
     def ServiceStatus(self):
-        r"""<p>订阅服务状态</p>枚举值：<ul><li> initing： 未激活</li><li> running： 生效中</li><li> expired： 已过期</li><li> refunded： 已退款</li><li> nearExpire： 即将到期</li></ul>
+        r"""<p>订阅服务状态</p><p>枚举值：</p><ul><li>initing： 未激活</li><li>running： 生效中</li><li>expired： 已过期</li><li>refunded： 已退款</li><li>nearExpire： 即将到期</li></ul>
         :rtype: str
         """
         return self._ServiceStatus
@@ -3164,6 +3200,28 @@ class Certificates(AbstractModel):
     @CertServiceEndTime.setter
     def CertServiceEndTime(self, CertServiceEndTime):
         self._CertServiceEndTime = CertServiceEndTime
+
+    @property
+    def CertServiceShareEnabled(self):
+        r"""<p>是否开启订阅服务共享</p>
+        :rtype: bool
+        """
+        return self._CertServiceShareEnabled
+
+    @CertServiceShareEnabled.setter
+    def CertServiceShareEnabled(self, CertServiceShareEnabled):
+        self._CertServiceShareEnabled = CertServiceShareEnabled
+
+    @property
+    def CertServiceValidCertificateCount(self):
+        r"""<p>当前订阅服务下已经签发未过期的证书数量</p>
+        :rtype: int
+        """
+        return self._CertServiceValidCertificateCount
+
+    @CertServiceValidCertificateCount.setter
+    def CertServiceValidCertificateCount(self, CertServiceValidCertificateCount):
+        self._CertServiceValidCertificateCount = CertServiceValidCertificateCount
 
 
     def _deserialize(self, params):
@@ -3243,6 +3301,8 @@ class Certificates(AbstractModel):
         self._ServiceStatus = params.get("ServiceStatus")
         self._CertServiceBeginTime = params.get("CertServiceBeginTime")
         self._CertServiceEndTime = params.get("CertServiceEndTime")
+        self._CertServiceShareEnabled = params.get("CertServiceShareEnabled")
+        self._CertServiceValidCertificateCount = params.get("CertServiceValidCertificateCount")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -22893,26 +22953,29 @@ class UploadUpdateCertificateInstanceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _OldCertificateId: 一键更新的旧证书ID。 通过查询该证书ID绑定的云资源，然后使用新证书对这些云资源进行更新
+        :param _OldCertificateId: <p>一键更新的旧证书ID。 通过查询该证书ID绑定的云资源，然后使用新证书对这些云资源进行更新</p>
         :type OldCertificateId: str
-        :param _ResourceTypes: 需要部署的资源类型，参数值可选（小写）：clb
+        :param _ResourceTypes: <p>需要部署的资源类型，参数值可选（小写）：clb</p>
         :type ResourceTypes: list of str
-        :param _CertificatePublicKey: 公钥证书
+        :param _CertificatePublicKey: <p>公钥证书</p>
         :type CertificatePublicKey: str
-        :param _CertificatePrivateKey: 私钥证书
+        :param _CertificatePrivateKey: <p>私钥证书</p>
         :type CertificatePrivateKey: str
-        :param _ResourceTypesRegions: 云资源需要部署的地域列表，支持地域的云资源类型必传，取值：clb
+        :param _ResourceTypesRegions: <p>云资源需要部署的地域列表，支持地域的云资源类型必传，取值：clb</p>
         :type ResourceTypesRegions: list of ResourceTypeRegions
+        :param _CertificateId: <p>证书ID</p>
+        :type CertificateId: str
         """
         self._OldCertificateId = None
         self._ResourceTypes = None
         self._CertificatePublicKey = None
         self._CertificatePrivateKey = None
         self._ResourceTypesRegions = None
+        self._CertificateId = None
 
     @property
     def OldCertificateId(self):
-        r"""一键更新的旧证书ID。 通过查询该证书ID绑定的云资源，然后使用新证书对这些云资源进行更新
+        r"""<p>一键更新的旧证书ID。 通过查询该证书ID绑定的云资源，然后使用新证书对这些云资源进行更新</p>
         :rtype: str
         """
         return self._OldCertificateId
@@ -22923,7 +22986,7 @@ class UploadUpdateCertificateInstanceRequest(AbstractModel):
 
     @property
     def ResourceTypes(self):
-        r"""需要部署的资源类型，参数值可选（小写）：clb
+        r"""<p>需要部署的资源类型，参数值可选（小写）：clb</p>
         :rtype: list of str
         """
         return self._ResourceTypes
@@ -22934,7 +22997,7 @@ class UploadUpdateCertificateInstanceRequest(AbstractModel):
 
     @property
     def CertificatePublicKey(self):
-        r"""公钥证书
+        r"""<p>公钥证书</p>
         :rtype: str
         """
         return self._CertificatePublicKey
@@ -22945,7 +23008,7 @@ class UploadUpdateCertificateInstanceRequest(AbstractModel):
 
     @property
     def CertificatePrivateKey(self):
-        r"""私钥证书
+        r"""<p>私钥证书</p>
         :rtype: str
         """
         return self._CertificatePrivateKey
@@ -22956,7 +23019,7 @@ class UploadUpdateCertificateInstanceRequest(AbstractModel):
 
     @property
     def ResourceTypesRegions(self):
-        r"""云资源需要部署的地域列表，支持地域的云资源类型必传，取值：clb
+        r"""<p>云资源需要部署的地域列表，支持地域的云资源类型必传，取值：clb</p>
         :rtype: list of ResourceTypeRegions
         """
         return self._ResourceTypesRegions
@@ -22964,6 +23027,17 @@ class UploadUpdateCertificateInstanceRequest(AbstractModel):
     @ResourceTypesRegions.setter
     def ResourceTypesRegions(self, ResourceTypesRegions):
         self._ResourceTypesRegions = ResourceTypesRegions
+
+    @property
+    def CertificateId(self):
+        r"""<p>证书ID</p>
+        :rtype: str
+        """
+        return self._CertificateId
+
+    @CertificateId.setter
+    def CertificateId(self, CertificateId):
+        self._CertificateId = CertificateId
 
 
     def _deserialize(self, params):
@@ -22977,6 +23051,7 @@ class UploadUpdateCertificateInstanceRequest(AbstractModel):
                 obj = ResourceTypeRegions()
                 obj._deserialize(item)
                 self._ResourceTypesRegions.append(obj)
+        self._CertificateId = params.get("CertificateId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -22994,11 +23069,11 @@ class UploadUpdateCertificateInstanceResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DeployRecordId: 云资源更新任务ID， DeployRecordId为0表示任务进行中， 重复请求这个接口， 当返回DeployRecordId大于0则表示任务创建成功。 未创建成功则会抛出异常
+        :param _DeployRecordId: <p>云资源更新任务ID， DeployRecordId为0表示任务进行中， 重复请求这个接口， 当返回DeployRecordId大于0则表示任务创建成功。 未创建成功则会抛出异常</p>
         :type DeployRecordId: int
-        :param _DeployStatus: 更新任务创建状态；1表示创建成功； 0表示当前存在更新中的任务，未创建新的更新任务；返回值DeployRecordId为更新中的任务ID
+        :param _DeployStatus: <p>更新任务创建状态；1表示创建成功； 0表示当前存在更新中的任务，未创建新的更新任务；返回值DeployRecordId为更新中的任务ID</p>
         :type DeployStatus: int
-        :param _UpdateSyncProgress: 更新异步创建任务进度详情
+        :param _UpdateSyncProgress: <p>更新异步创建任务进度详情</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type UpdateSyncProgress: list of UpdateSyncProgress
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -23011,7 +23086,7 @@ class UploadUpdateCertificateInstanceResponse(AbstractModel):
 
     @property
     def DeployRecordId(self):
-        r"""云资源更新任务ID， DeployRecordId为0表示任务进行中， 重复请求这个接口， 当返回DeployRecordId大于0则表示任务创建成功。 未创建成功则会抛出异常
+        r"""<p>云资源更新任务ID， DeployRecordId为0表示任务进行中， 重复请求这个接口， 当返回DeployRecordId大于0则表示任务创建成功。 未创建成功则会抛出异常</p>
         :rtype: int
         """
         return self._DeployRecordId
@@ -23022,7 +23097,7 @@ class UploadUpdateCertificateInstanceResponse(AbstractModel):
 
     @property
     def DeployStatus(self):
-        r"""更新任务创建状态；1表示创建成功； 0表示当前存在更新中的任务，未创建新的更新任务；返回值DeployRecordId为更新中的任务ID
+        r"""<p>更新任务创建状态；1表示创建成功； 0表示当前存在更新中的任务，未创建新的更新任务；返回值DeployRecordId为更新中的任务ID</p>
         :rtype: int
         """
         return self._DeployStatus
@@ -23033,7 +23108,7 @@ class UploadUpdateCertificateInstanceResponse(AbstractModel):
 
     @property
     def UpdateSyncProgress(self):
-        r"""更新异步创建任务进度详情
+        r"""<p>更新异步创建任务进度详情</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of UpdateSyncProgress
         """

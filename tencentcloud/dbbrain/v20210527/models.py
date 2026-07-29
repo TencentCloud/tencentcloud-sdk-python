@@ -2812,6 +2812,124 @@ class CreateDBDiagReportUrlResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateDBDiagReportUrlsRequest(AbstractModel):
+    r"""CreateDBDiagReportUrls请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Product: <p>服务产品类型，支持值包括：&quot;mysql&quot; - 云数据库 MySQL，&quot;redis&quot; - 云数据库 Redis，&quot;cynosdb&quot; - 云数据库 TDSQL-C for MySQL，&quot;mongodb&quot; - 云数据库 MongoDB，&quot;postgres&quot; - 云数据库 PostgreSQL。</p>
+        :type Product: str
+        :param _AsyncRequestIds: <p>异步任务ID列表。</p>
+        :type AsyncRequestIds: list of int
+        """
+        self._Product = None
+        self._AsyncRequestIds = None
+
+    @property
+    def Product(self):
+        r"""<p>服务产品类型，支持值包括：&quot;mysql&quot; - 云数据库 MySQL，&quot;redis&quot; - 云数据库 Redis，&quot;cynosdb&quot; - 云数据库 TDSQL-C for MySQL，&quot;mongodb&quot; - 云数据库 MongoDB，&quot;postgres&quot; - 云数据库 PostgreSQL。</p>
+        :rtype: str
+        """
+        return self._Product
+
+    @Product.setter
+    def Product(self, Product):
+        self._Product = Product
+
+    @property
+    def AsyncRequestIds(self):
+        r"""<p>异步任务ID列表。</p>
+        :rtype: list of int
+        """
+        return self._AsyncRequestIds
+
+    @AsyncRequestIds.setter
+    def AsyncRequestIds(self, AsyncRequestIds):
+        self._AsyncRequestIds = AsyncRequestIds
+
+
+    def _deserialize(self, params):
+        self._Product = params.get("Product")
+        self._AsyncRequestIds = params.get("AsyncRequestIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateDBDiagReportUrlsResponse(AbstractModel):
+    r"""CreateDBDiagReportUrls返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: <p>URL条目总数。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
+        :param _Items: <p>报告URL信息列表。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Items: list of DiagReportUrlItem
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._Items = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        r"""<p>URL条目总数。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def Items(self):
+        r"""<p>报告URL信息列表。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of DiagReportUrlItem
+        """
+        return self._Items
+
+    @Items.setter
+    def Items(self, Items):
+        self._Items = Items
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("Items") is not None:
+            self._Items = []
+            for item in params.get("Items"):
+                obj = DiagReportUrlItem()
+                obj._deserialize(item)
+                self._Items.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class CreateIgnoreDiagRecordRequest(AbstractModel):
     r"""CreateIgnoreDiagRecord请求参数结构体
 
@@ -7061,24 +7179,26 @@ class DescribeDBDiagReportTasksRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _StartTime: 第一个任务的开始时间，用于范围查询，时间格式如：2019-09-10 12:13:14。
+        :param _StartTime: <p>第一个任务的开始时间，用于范围查询，时间格式如：2019-09-10 12:13:14。</p>
         :type StartTime: str
-        :param _EndTime: 最后一个任务的开始时间，用于范围查询，时间格式如：2019-09-10 12:13:14。
+        :param _EndTime: <p>最后一个任务的开始时间，用于范围查询，时间格式如：2019-09-10 12:13:14。</p>
         :type EndTime: str
-        :param _InstanceIds: 实例ID数组，用于筛选指定实例的任务列表。
+        :param _InstanceIds: <p>实例ID数组，用于筛选指定实例的任务列表。。可通过 <a href="https://cloud.tencent.com/document/api/1130/57798">DescribeDiagDBInstances</a> 接口获取。</p>
         :type InstanceIds: list of str
-        :param _Sources: 任务的触发来源，支持的取值包括："DAILY_INSPECTION" - 实例巡检；"SCHEDULED" - 计划任务；"MANUAL" - 手动触发。
+        :param _Sources: <p>任务的触发来源，支持的取值包括：&quot;DAILY_INSPECTION&quot; - 实例巡检；&quot;SCHEDULED&quot; - 计划任务；&quot;MANUAL&quot; - 手动触发。</p>
         :type Sources: list of str
-        :param _HealthLevels: 报告的健康等级，支持的取值包括："HEALTH" - 健康；"SUB_HEALTH" - 亚健康；"RISK" - 危险；"HIGH_RISK" - 高危。
+        :param _HealthLevels: <p>报告的健康等级，支持的取值包括：&quot;HEALTH&quot; - 健康；&quot;SUB_HEALTH&quot; - 亚健康；&quot;RISK&quot; - 危险；&quot;HIGH_RISK&quot; - 高危。</p>
         :type HealthLevels: str
-        :param _TaskStatuses: 任务的状态，支持的取值包括："created" - 新建；"chosen" - 待执行； "running" - 执行中；"failed" - 失败；"finished" - 已完成。
+        :param _TaskStatuses: <p>任务的状态，支持的取值包括：&quot;created&quot; - 新建；&quot;chosen&quot; - 待执行； &quot;running&quot; - 执行中；&quot;failed&quot; - 失败；&quot;finished&quot; - 已完成。</p>
         :type TaskStatuses: str
-        :param _Offset: 偏移量，默认0。
+        :param _Offset: <p>偏移量，默认0。</p>
         :type Offset: int
-        :param _Limit: 返回数量，默认20，最大值为100。
+        :param _Limit: <p>返回数量，默认20，最大值为100。</p>
         :type Limit: int
-        :param _Product: 服务产品类型，支持值："mysql" - 云数据库 MySQL；"cynosdb" - 云数据库 TDSQL-C for MySQL，"redis" - 云数据库 Redis，默认为"mysql"。
+        :param _Product: <p>服务产品类型，支持值：&quot;mysql&quot; - 云数据库 MySQL；&quot;cynosdb&quot; - 云数据库 TDSQL-C for MySQL，&quot;redis&quot; - 云数据库 Redis，默认为&quot;mysql&quot;。</p>
         :type Product: str
+        :param _TagFilters: <p>根据任务所属实例的标签信息进行过滤</p>
+        :type TagFilters: list of TagFilterGroup
         """
         self._StartTime = None
         self._EndTime = None
@@ -7089,10 +7209,11 @@ class DescribeDBDiagReportTasksRequest(AbstractModel):
         self._Offset = None
         self._Limit = None
         self._Product = None
+        self._TagFilters = None
 
     @property
     def StartTime(self):
-        r"""第一个任务的开始时间，用于范围查询，时间格式如：2019-09-10 12:13:14。
+        r"""<p>第一个任务的开始时间，用于范围查询，时间格式如：2019-09-10 12:13:14。</p>
         :rtype: str
         """
         return self._StartTime
@@ -7103,7 +7224,7 @@ class DescribeDBDiagReportTasksRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        r"""最后一个任务的开始时间，用于范围查询，时间格式如：2019-09-10 12:13:14。
+        r"""<p>最后一个任务的开始时间，用于范围查询，时间格式如：2019-09-10 12:13:14。</p>
         :rtype: str
         """
         return self._EndTime
@@ -7114,7 +7235,7 @@ class DescribeDBDiagReportTasksRequest(AbstractModel):
 
     @property
     def InstanceIds(self):
-        r"""实例ID数组，用于筛选指定实例的任务列表。
+        r"""<p>实例ID数组，用于筛选指定实例的任务列表。。可通过 <a href="https://cloud.tencent.com/document/api/1130/57798">DescribeDiagDBInstances</a> 接口获取。</p>
         :rtype: list of str
         """
         return self._InstanceIds
@@ -7125,7 +7246,7 @@ class DescribeDBDiagReportTasksRequest(AbstractModel):
 
     @property
     def Sources(self):
-        r"""任务的触发来源，支持的取值包括："DAILY_INSPECTION" - 实例巡检；"SCHEDULED" - 计划任务；"MANUAL" - 手动触发。
+        r"""<p>任务的触发来源，支持的取值包括：&quot;DAILY_INSPECTION&quot; - 实例巡检；&quot;SCHEDULED&quot; - 计划任务；&quot;MANUAL&quot; - 手动触发。</p>
         :rtype: list of str
         """
         return self._Sources
@@ -7136,7 +7257,7 @@ class DescribeDBDiagReportTasksRequest(AbstractModel):
 
     @property
     def HealthLevels(self):
-        r"""报告的健康等级，支持的取值包括："HEALTH" - 健康；"SUB_HEALTH" - 亚健康；"RISK" - 危险；"HIGH_RISK" - 高危。
+        r"""<p>报告的健康等级，支持的取值包括：&quot;HEALTH&quot; - 健康；&quot;SUB_HEALTH&quot; - 亚健康；&quot;RISK&quot; - 危险；&quot;HIGH_RISK&quot; - 高危。</p>
         :rtype: str
         """
         return self._HealthLevels
@@ -7147,7 +7268,7 @@ class DescribeDBDiagReportTasksRequest(AbstractModel):
 
     @property
     def TaskStatuses(self):
-        r"""任务的状态，支持的取值包括："created" - 新建；"chosen" - 待执行； "running" - 执行中；"failed" - 失败；"finished" - 已完成。
+        r"""<p>任务的状态，支持的取值包括：&quot;created&quot; - 新建；&quot;chosen&quot; - 待执行； &quot;running&quot; - 执行中；&quot;failed&quot; - 失败；&quot;finished&quot; - 已完成。</p>
         :rtype: str
         """
         return self._TaskStatuses
@@ -7158,7 +7279,7 @@ class DescribeDBDiagReportTasksRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""偏移量，默认0。
+        r"""<p>偏移量，默认0。</p>
         :rtype: int
         """
         return self._Offset
@@ -7169,7 +7290,7 @@ class DescribeDBDiagReportTasksRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""返回数量，默认20，最大值为100。
+        r"""<p>返回数量，默认20，最大值为100。</p>
         :rtype: int
         """
         return self._Limit
@@ -7180,7 +7301,7 @@ class DescribeDBDiagReportTasksRequest(AbstractModel):
 
     @property
     def Product(self):
-        r"""服务产品类型，支持值："mysql" - 云数据库 MySQL；"cynosdb" - 云数据库 TDSQL-C for MySQL，"redis" - 云数据库 Redis，默认为"mysql"。
+        r"""<p>服务产品类型，支持值：&quot;mysql&quot; - 云数据库 MySQL；&quot;cynosdb&quot; - 云数据库 TDSQL-C for MySQL，&quot;redis&quot; - 云数据库 Redis，默认为&quot;mysql&quot;。</p>
         :rtype: str
         """
         return self._Product
@@ -7188,6 +7309,17 @@ class DescribeDBDiagReportTasksRequest(AbstractModel):
     @Product.setter
     def Product(self, Product):
         self._Product = Product
+
+    @property
+    def TagFilters(self):
+        r"""<p>根据任务所属实例的标签信息进行过滤</p>
+        :rtype: list of TagFilterGroup
+        """
+        return self._TagFilters
+
+    @TagFilters.setter
+    def TagFilters(self, TagFilters):
+        self._TagFilters = TagFilters
 
 
     def _deserialize(self, params):
@@ -7200,6 +7332,12 @@ class DescribeDBDiagReportTasksRequest(AbstractModel):
         self._Offset = params.get("Offset")
         self._Limit = params.get("Limit")
         self._Product = params.get("Product")
+        if params.get("TagFilters") is not None:
+            self._TagFilters = []
+            for item in params.get("TagFilters"):
+                obj = TagFilterGroup()
+                obj._deserialize(item)
+                self._TagFilters.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7217,9 +7355,9 @@ class DescribeDBDiagReportTasksResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TotalCount: 任务总数目。
+        :param _TotalCount: <p>任务总数目。</p>
         :type TotalCount: int
-        :param _Tasks: 任务列表。
+        :param _Tasks: <p>任务列表。</p>
         :type Tasks: list of HealthReportTask
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -7230,7 +7368,7 @@ class DescribeDBDiagReportTasksResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        r"""任务总数目。
+        r"""<p>任务总数目。</p>
         :rtype: int
         """
         return self._TotalCount
@@ -7241,7 +7379,7 @@ class DescribeDBDiagReportTasksResponse(AbstractModel):
 
     @property
     def Tasks(self):
-        r"""任务列表。
+        r"""<p>任务列表。</p>
         :rtype: list of HealthReportTask
         """
         return self._Tasks
@@ -7270,6 +7408,90 @@ class DescribeDBDiagReportTasksResponse(AbstractModel):
                 obj = HealthReportTask()
                 obj._deserialize(item)
                 self._Tasks.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeDBInstancesRequest(AbstractModel):
+    r"""DescribeDBInstances请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceIds: <p>实例ID列表，最多支持100个。支持多种数据库产品的实例ID，系统会根据实例ID前缀自动识别产品类型。</p>
+        :type InstanceIds: list of str
+        """
+        self._InstanceIds = None
+
+    @property
+    def InstanceIds(self):
+        r"""<p>实例ID列表，最多支持100个。支持多种数据库产品的实例ID，系统会根据实例ID前缀自动识别产品类型。</p>
+        :rtype: list of str
+        """
+        return self._InstanceIds
+
+    @InstanceIds.setter
+    def InstanceIds(self, InstanceIds):
+        self._InstanceIds = InstanceIds
+
+
+    def _deserialize(self, params):
+        self._InstanceIds = params.get("InstanceIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDBInstancesResponse(AbstractModel):
+    r"""DescribeDBInstances返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Items: <p>实例列表。</p>
+        :type Items: list of InstanceItem
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Items = None
+        self._RequestId = None
+
+    @property
+    def Items(self):
+        r"""<p>实例列表。</p>
+        :rtype: list of InstanceItem
+        """
+        return self._Items
+
+    @Items.setter
+    def Items(self, Items):
+        self._Items = Items
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Items") is not None:
+            self._Items = []
+            for item in params.get("Items"):
+                obj = InstanceItem()
+                obj._deserialize(item)
+                self._Items.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -14548,6 +14770,78 @@ class DiagHistoryEventItem(AbstractModel):
         
 
 
+class DiagReportUrlItem(AbstractModel):
+    r"""健康报告URL信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AsyncRequestId: 异步任务ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AsyncRequestId: int
+        :param _ReportUrl: 报告下载地址。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ReportUrl: str
+        :param _ExpireTime: 链接过期时间，Unix时间戳（秒），-1表示永不过期。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExpireTime: int
+        """
+        self._AsyncRequestId = None
+        self._ReportUrl = None
+        self._ExpireTime = None
+
+    @property
+    def AsyncRequestId(self):
+        r"""异步任务ID。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._AsyncRequestId
+
+    @AsyncRequestId.setter
+    def AsyncRequestId(self, AsyncRequestId):
+        self._AsyncRequestId = AsyncRequestId
+
+    @property
+    def ReportUrl(self):
+        r"""报告下载地址。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ReportUrl
+
+    @ReportUrl.setter
+    def ReportUrl(self, ReportUrl):
+        self._ReportUrl = ReportUrl
+
+    @property
+    def ExpireTime(self):
+        r"""链接过期时间，Unix时间戳（秒），-1表示永不过期。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._ExpireTime
+
+    @ExpireTime.setter
+    def ExpireTime(self, ExpireTime):
+        self._ExpireTime = ExpireTime
+
+
+    def _deserialize(self, params):
+        self._AsyncRequestId = params.get("AsyncRequestId")
+        self._ReportUrl = params.get("ReportUrl")
+        self._ExpireTime = params.get("ExpireTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class EventInfo(AbstractModel):
     r"""异常事件信息。
 
@@ -14777,22 +15071,24 @@ class HealthReportTask(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AsyncRequestId: 异步任务请求 ID。
+        :param _AsyncRequestId: <p>异步任务请求 ID。</p>
         :type AsyncRequestId: int
-        :param _Source: 任务的触发来源，支持的取值包括："DAILY_INSPECTION" - 实例巡检；"SCHEDULED" - 定时生成；"MANUAL" - 手动触发。
+        :param _Source: <p>任务的触发来源，支持的取值包括：&quot;DAILY_INSPECTION&quot; - 实例巡检；&quot;SCHEDULED&quot; - 定时生成；&quot;MANUAL&quot; - 手动触发。</p>
         :type Source: str
-        :param _Progress: 任务完成进度，单位%。
+        :param _Progress: <p>任务完成进度，单位%。</p>
         :type Progress: int
-        :param _CreateTime: 任务创建时间。
+        :param _CreateTime: <p>任务创建时间，如“2025-09-30 12:13:14”。</p>
         :type CreateTime: str
-        :param _StartTime: 任务开始执行时间。
+        :param _StartTime: <p>任务开始执行时间，如“2025-09-30 13:13:14”。</p>
         :type StartTime: str
-        :param _EndTime: 任务完成执行时间。
+        :param _EndTime: <p>任务完成执行时间，如“2025-09-30 14:13:14”。</p>
         :type EndTime: str
-        :param _InstanceInfo: 任务所属实例的基础信息。
+        :param _InstanceInfo: <p>任务所属实例的基础信息。</p>
         :type InstanceInfo: :class:`tencentcloud.dbbrain.v20210527.models.InstanceBasicInfo`
-        :param _HealthStatus: 健康报告中的健康信息。
+        :param _HealthStatus: <p>健康报告中的健康信息。</p>
         :type HealthStatus: :class:`tencentcloud.dbbrain.v20210527.models.HealthStatus`
+        :param _Tags: <p>任务所属实例的标签信息</p>
+        :type Tags: list of TagInfo
         """
         self._AsyncRequestId = None
         self._Source = None
@@ -14802,10 +15098,11 @@ class HealthReportTask(AbstractModel):
         self._EndTime = None
         self._InstanceInfo = None
         self._HealthStatus = None
+        self._Tags = None
 
     @property
     def AsyncRequestId(self):
-        r"""异步任务请求 ID。
+        r"""<p>异步任务请求 ID。</p>
         :rtype: int
         """
         return self._AsyncRequestId
@@ -14816,7 +15113,7 @@ class HealthReportTask(AbstractModel):
 
     @property
     def Source(self):
-        r"""任务的触发来源，支持的取值包括："DAILY_INSPECTION" - 实例巡检；"SCHEDULED" - 定时生成；"MANUAL" - 手动触发。
+        r"""<p>任务的触发来源，支持的取值包括：&quot;DAILY_INSPECTION&quot; - 实例巡检；&quot;SCHEDULED&quot; - 定时生成；&quot;MANUAL&quot; - 手动触发。</p>
         :rtype: str
         """
         return self._Source
@@ -14827,7 +15124,7 @@ class HealthReportTask(AbstractModel):
 
     @property
     def Progress(self):
-        r"""任务完成进度，单位%。
+        r"""<p>任务完成进度，单位%。</p>
         :rtype: int
         """
         return self._Progress
@@ -14838,7 +15135,7 @@ class HealthReportTask(AbstractModel):
 
     @property
     def CreateTime(self):
-        r"""任务创建时间。
+        r"""<p>任务创建时间，如“2025-09-30 12:13:14”。</p>
         :rtype: str
         """
         return self._CreateTime
@@ -14849,7 +15146,7 @@ class HealthReportTask(AbstractModel):
 
     @property
     def StartTime(self):
-        r"""任务开始执行时间。
+        r"""<p>任务开始执行时间，如“2025-09-30 13:13:14”。</p>
         :rtype: str
         """
         return self._StartTime
@@ -14860,7 +15157,7 @@ class HealthReportTask(AbstractModel):
 
     @property
     def EndTime(self):
-        r"""任务完成执行时间。
+        r"""<p>任务完成执行时间，如“2025-09-30 14:13:14”。</p>
         :rtype: str
         """
         return self._EndTime
@@ -14871,7 +15168,7 @@ class HealthReportTask(AbstractModel):
 
     @property
     def InstanceInfo(self):
-        r"""任务所属实例的基础信息。
+        r"""<p>任务所属实例的基础信息。</p>
         :rtype: :class:`tencentcloud.dbbrain.v20210527.models.InstanceBasicInfo`
         """
         return self._InstanceInfo
@@ -14882,7 +15179,7 @@ class HealthReportTask(AbstractModel):
 
     @property
     def HealthStatus(self):
-        r"""健康报告中的健康信息。
+        r"""<p>健康报告中的健康信息。</p>
         :rtype: :class:`tencentcloud.dbbrain.v20210527.models.HealthStatus`
         """
         return self._HealthStatus
@@ -14890,6 +15187,17 @@ class HealthReportTask(AbstractModel):
     @HealthStatus.setter
     def HealthStatus(self, HealthStatus):
         self._HealthStatus = HealthStatus
+
+    @property
+    def Tags(self):
+        r"""<p>任务所属实例的标签信息</p>
+        :rtype: list of TagInfo
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
 
 
     def _deserialize(self, params):
@@ -14905,6 +15213,12 @@ class HealthReportTask(AbstractModel):
         if params.get("HealthStatus") is not None:
             self._HealthStatus = HealthStatus()
             self._HealthStatus._deserialize(params.get("HealthStatus"))
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = TagInfo()
+                obj._deserialize(item)
+                self._Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -15472,7 +15786,8 @@ class InstanceBasicInfo(AbstractModel):
         :type EngineVersion: str
         :param _Cpu: CPU数量，对于Redis为0。
         :type Cpu: int
-        :param _DeployMode: 实例部署模式。
+        :param _DeployMode: 实例部署模式。MySQL 实例类型取值包括"STANDARD"-标准类型,"CUSTOM"-普通类型, "EXCLUSIVE"-独占类型, "CUSTOMER_AGENT"-用户代理类型, "CUSTOMER_DIRECT"-用户直连类型,
+"CLOUD_NATIVE_CLUSTER_EXCLUSIVE"-云原生独占集群, "CLOUD_NATIVE_CLUSTER"-云原生集群。
         :type DeployMode: str
         :param _InstanceConf: 实例内存配置。
         :type InstanceConf: :class:`tencentcloud.dbbrain.v20210527.models.RedisInstanceConf`
@@ -15584,7 +15899,8 @@ class InstanceBasicInfo(AbstractModel):
 
     @property
     def DeployMode(self):
-        r"""实例部署模式。
+        r"""实例部署模式。MySQL 实例类型取值包括"STANDARD"-标准类型,"CUSTOM"-普通类型, "EXCLUSIVE"-独占类型, "CUSTOMER_AGENT"-用户代理类型, "CUSTOMER_DIRECT"-用户直连类型,
+"CLOUD_NATIVE_CLUSTER_EXCLUSIVE"-云原生独占集群, "CLOUD_NATIVE_CLUSTER"-云原生集群。
         :rtype: str
         """
         return self._DeployMode
@@ -16369,6 +16685,157 @@ class InstanceInfo(AbstractModel):
         self._ClusterName = params.get("ClusterName")
         self._AgentStatus = params.get("AgentStatus")
         self._InstanceStatus = params.get("InstanceStatus")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class InstanceItem(AbstractModel):
+    r"""数据库实例基本信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例ID。
+        :type InstanceId: str
+        :param _Product: 数据库类型，如 mysql、cynosdb、mariadb、dcdb、mongodb、postgres、redis、dbbrain-mysql、tdstore。
+        :type Product: str
+        :param _Region: 地域英文ID。
+        :type Region: str
+        :param _ClusterId: 集群ID，仅集群类产品返回。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClusterId: str
+        :param _EngineVersion: 引擎版本。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EngineVersion: str
+        :param _Status: 实例状态，1表示运行中。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: int
+        :param _CreateTime: 实例创建时间。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: str
+        :param _DeadlineTime: 实例到期时间。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DeadlineTime: str
+        """
+        self._InstanceId = None
+        self._Product = None
+        self._Region = None
+        self._ClusterId = None
+        self._EngineVersion = None
+        self._Status = None
+        self._CreateTime = None
+        self._DeadlineTime = None
+
+    @property
+    def InstanceId(self):
+        r"""实例ID。
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Product(self):
+        r"""数据库类型，如 mysql、cynosdb、mariadb、dcdb、mongodb、postgres、redis、dbbrain-mysql、tdstore。
+        :rtype: str
+        """
+        return self._Product
+
+    @Product.setter
+    def Product(self, Product):
+        self._Product = Product
+
+    @property
+    def Region(self):
+        r"""地域英文ID。
+        :rtype: str
+        """
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def ClusterId(self):
+        r"""集群ID，仅集群类产品返回。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def EngineVersion(self):
+        r"""引擎版本。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._EngineVersion
+
+    @EngineVersion.setter
+    def EngineVersion(self, EngineVersion):
+        self._EngineVersion = EngineVersion
+
+    @property
+    def Status(self):
+        r"""实例状态，1表示运行中。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def CreateTime(self):
+        r"""实例创建时间。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def DeadlineTime(self):
+        r"""实例到期时间。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._DeadlineTime
+
+    @DeadlineTime.setter
+    def DeadlineTime(self, DeadlineTime):
+        self._DeadlineTime = DeadlineTime
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._Product = params.get("Product")
+        self._Region = params.get("Region")
+        self._ClusterId = params.get("ClusterId")
+        self._EngineVersion = params.get("EngineVersion")
+        self._Status = params.get("Status")
+        self._CreateTime = params.get("CreateTime")
+        self._DeadlineTime = params.get("DeadlineTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -21969,6 +22436,149 @@ class TableSpaceTimeSeries(AbstractModel):
         if params.get("SeriesData") is not None:
             self._SeriesData = MonitorFloatMetricSeriesData()
             self._SeriesData._deserialize(params.get("SeriesData"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TagFilterGroup(AbstractModel):
+    r"""标签过滤组。组内 TagPairs 之间为 OR 关系；不同 TagFilterGroup 之间为 AND 关系。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TagPairs: <p>过滤条件-标签组</p>
+        :type TagPairs: list of TagPair
+        """
+        self._TagPairs = None
+
+    @property
+    def TagPairs(self):
+        r"""<p>过滤条件-标签组</p>
+        :rtype: list of TagPair
+        """
+        return self._TagPairs
+
+    @TagPairs.setter
+    def TagPairs(self, TagPairs):
+        self._TagPairs = TagPairs
+
+
+    def _deserialize(self, params):
+        if params.get("TagPairs") is not None:
+            self._TagPairs = []
+            for item in params.get("TagPairs"):
+                obj = TagPair()
+                obj._deserialize(item)
+                self._TagPairs.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TagInfo(AbstractModel):
+    r"""实例标签信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TagKey: <p>实例标签key</p>
+        :type TagKey: str
+        :param _TagValue: <p>实例标签value</p>
+        :type TagValue: str
+        """
+        self._TagKey = None
+        self._TagValue = None
+
+    @property
+    def TagKey(self):
+        r"""<p>实例标签key</p>
+        :rtype: str
+        """
+        return self._TagKey
+
+    @TagKey.setter
+    def TagKey(self, TagKey):
+        self._TagKey = TagKey
+
+    @property
+    def TagValue(self):
+        r"""<p>实例标签value</p>
+        :rtype: str
+        """
+        return self._TagValue
+
+    @TagValue.setter
+    def TagValue(self, TagValue):
+        self._TagValue = TagValue
+
+
+    def _deserialize(self, params):
+        self._TagKey = params.get("TagKey")
+        self._TagValue = params.get("TagValue")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TagPair(AbstractModel):
+    r"""标签键值对过滤条件。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TagKey: <p>过滤条件-标签key</p>
+        :type TagKey: str
+        :param _TagValue: <p>过滤条件标签-value</p>
+        :type TagValue: list of str
+        """
+        self._TagKey = None
+        self._TagValue = None
+
+    @property
+    def TagKey(self):
+        r"""<p>过滤条件-标签key</p>
+        :rtype: str
+        """
+        return self._TagKey
+
+    @TagKey.setter
+    def TagKey(self, TagKey):
+        self._TagKey = TagKey
+
+    @property
+    def TagValue(self):
+        r"""<p>过滤条件标签-value</p>
+        :rtype: list of str
+        """
+        return self._TagValue
+
+    @TagValue.setter
+    def TagValue(self, TagValue):
+        self._TagValue = TagValue
+
+
+    def _deserialize(self, params):
+        self._TagKey = params.get("TagKey")
+        self._TagValue = params.get("TagValue")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

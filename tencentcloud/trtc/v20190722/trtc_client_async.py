@@ -61,25 +61,6 @@ class TrtcClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
-    async def CreateBasicModeration(
-            self,
-            request: models.CreateBasicModerationRequest,
-            opts: Dict = None,
-    ) -> models.CreateBasicModerationResponse:
-        """
-        接口说明：
-        启动终端审核功能，完成房间内的音频审核。
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "CreateBasicModeration"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.CreateBasicModerationResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
     async def CreateCloudModeration(
             self,
             request: models.CreateCloudModerationRequest,
@@ -205,24 +186,6 @@ class TrtcClient(AbstractClient):
         kwargs["action"] = "CreatePicture"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.CreatePictureResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
-    async def DeleteBasicModeration(
-            self,
-            request: models.DeleteBasicModerationRequest,
-            opts: Dict = None,
-    ) -> models.DeleteBasicModerationResponse:
-        """
-        成功开启审核任务后，可以使用此接口来停止任务。
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "DeleteBasicModeration"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.DeleteBasicModerationResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
