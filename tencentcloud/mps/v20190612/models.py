@@ -3826,6 +3826,10 @@ class AiAnalysisTaskDelLogoOutput(AbstractModel):
         :param _VoiceClonedMarkFile: <p>音色克隆的标注文件地址</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type VoiceClonedMarkFile: str
+        :param _ErasedVideoPath: <p>仅做擦除的视频结果路径</p>
+        :type ErasedVideoPath: str
+        :param _DubbingEditInfoUrl: <p>音色克隆编辑信息</p><p>用于音色克隆二次修改的编辑信息</p>
+        :type DubbingEditInfoUrl: str
         :param _FileId: <p>擦除后文件的FileId。</p>
         :type FileId: str
         :param _OriginSubtitleFileId: <p>基于画面提取的字幕文件FileId。</p>
@@ -3840,6 +3844,8 @@ class AiAnalysisTaskDelLogoOutput(AbstractModel):
         self._SubtitlePos = None
         self._VoiceClonedVideo = None
         self._VoiceClonedMarkFile = None
+        self._ErasedVideoPath = None
+        self._DubbingEditInfoUrl = None
         self._FileId = None
         self._OriginSubtitleFileId = None
         self._TranslateSubtitleFileId = None
@@ -3925,6 +3931,28 @@ class AiAnalysisTaskDelLogoOutput(AbstractModel):
         self._VoiceClonedMarkFile = VoiceClonedMarkFile
 
     @property
+    def ErasedVideoPath(self):
+        r"""<p>仅做擦除的视频结果路径</p>
+        :rtype: str
+        """
+        return self._ErasedVideoPath
+
+    @ErasedVideoPath.setter
+    def ErasedVideoPath(self, ErasedVideoPath):
+        self._ErasedVideoPath = ErasedVideoPath
+
+    @property
+    def DubbingEditInfoUrl(self):
+        r"""<p>音色克隆编辑信息</p><p>用于音色克隆二次修改的编辑信息</p>
+        :rtype: str
+        """
+        return self._DubbingEditInfoUrl
+
+    @DubbingEditInfoUrl.setter
+    def DubbingEditInfoUrl(self, DubbingEditInfoUrl):
+        self._DubbingEditInfoUrl = DubbingEditInfoUrl
+
+    @property
     def FileId(self):
         r"""<p>擦除后文件的FileId。</p>
         :rtype: str
@@ -3970,6 +3998,8 @@ class AiAnalysisTaskDelLogoOutput(AbstractModel):
             self._SubtitlePos._deserialize(params.get("SubtitlePos"))
         self._VoiceClonedVideo = params.get("VoiceClonedVideo")
         self._VoiceClonedMarkFile = params.get("VoiceClonedMarkFile")
+        self._ErasedVideoPath = params.get("ErasedVideoPath")
+        self._DubbingEditInfoUrl = params.get("DubbingEditInfoUrl")
         self._FileId = params.get("FileId")
         self._OriginSubtitleFileId = params.get("OriginSubtitleFileId")
         self._TranslateSubtitleFileId = params.get("TranslateSubtitleFileId")
