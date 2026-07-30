@@ -9725,6 +9725,10 @@ class CreateClustersRequest(AbstractModel):
         :type ClusterLevel: str
         :param _CynosVersion: <p>内核小版本号</p>
         :type CynosVersion: str
+        :param _SyncWay: <p>同步方式。可选值：async、semisync、sync。</p>
+        :type SyncWay: str
+        :param _SemiSyncTimeout: <p>半同步超时时间，单位ms。为保证业务稳定性，半同步复制存在退化逻辑，当主可用区集群在等待备可用区集群确认事务时若超过该超时时间，复制方式将降为异步复制。</p><p>取值范围：[1000, 4294967295]</p><p>单位：毫秒</p><p>默认值：10000</p>
+        :type SemiSyncTimeout: int
         """
         self._Zone = None
         self._VpcId = None
@@ -9773,6 +9777,8 @@ class CreateClustersRequest(AbstractModel):
         self._AutoArchiveDelayHours = None
         self._ClusterLevel = None
         self._CynosVersion = None
+        self._SyncWay = None
+        self._SemiSyncTimeout = None
 
     @property
     def Zone(self):
@@ -10291,6 +10297,28 @@ class CreateClustersRequest(AbstractModel):
     def CynosVersion(self, CynosVersion):
         self._CynosVersion = CynosVersion
 
+    @property
+    def SyncWay(self):
+        r"""<p>同步方式。可选值：async、semisync、sync。</p>
+        :rtype: str
+        """
+        return self._SyncWay
+
+    @SyncWay.setter
+    def SyncWay(self, SyncWay):
+        self._SyncWay = SyncWay
+
+    @property
+    def SemiSyncTimeout(self):
+        r"""<p>半同步超时时间，单位ms。为保证业务稳定性，半同步复制存在退化逻辑，当主可用区集群在等待备可用区集群确认事务时若超过该超时时间，复制方式将降为异步复制。</p><p>取值范围：[1000, 4294967295]</p><p>单位：毫秒</p><p>默认值：10000</p>
+        :rtype: int
+        """
+        return self._SemiSyncTimeout
+
+    @SemiSyncTimeout.setter
+    def SemiSyncTimeout(self, SemiSyncTimeout):
+        self._SemiSyncTimeout = SemiSyncTimeout
+
 
     def _deserialize(self, params):
         self._Zone = params.get("Zone")
@@ -10357,6 +10385,8 @@ class CreateClustersRequest(AbstractModel):
         self._AutoArchiveDelayHours = params.get("AutoArchiveDelayHours")
         self._ClusterLevel = params.get("ClusterLevel")
         self._CynosVersion = params.get("CynosVersion")
+        self._SyncWay = params.get("SyncWay")
+        self._SemiSyncTimeout = params.get("SemiSyncTimeout")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -55717,6 +55747,12 @@ class RollbackToNewClusterRequest(AbstractModel):
         :type AutoArchive: str
         :param _FromSaveBackup: <p>是否从保存备份中恢复</p>
         :type FromSaveBackup: bool
+        :param _SyncWay: <p>同步方式。可选值：async、semisync、sync，默认异步。</p>
+        :type SyncWay: str
+        :param _SemiSyncTimeout: <p>半同步超时时间，单位ms。为保证业务稳定性，半同步复制存在退化逻辑，当主可用区集群在等待备可用区集群确认事务时若超过该超时时间，复制方式将降为异步复制。</p><p>取值范围：[1000, 4294967295]</p><p>单位：毫秒</p><p>默认值：10000</p>
+        :type SemiSyncTimeout: int
+        :param _SlaveZone: <p>备可用区</p>
+        :type SlaveZone: str
         """
         self._Zone = None
         self._OriginalClusterId = None
@@ -55747,6 +55783,9 @@ class RollbackToNewClusterRequest(AbstractModel):
         self._ProjectId = None
         self._AutoArchive = None
         self._FromSaveBackup = None
+        self._SyncWay = None
+        self._SemiSyncTimeout = None
+        self._SlaveZone = None
 
     @property
     def Zone(self):
@@ -56067,6 +56106,39 @@ class RollbackToNewClusterRequest(AbstractModel):
     def FromSaveBackup(self, FromSaveBackup):
         self._FromSaveBackup = FromSaveBackup
 
+    @property
+    def SyncWay(self):
+        r"""<p>同步方式。可选值：async、semisync、sync，默认异步。</p>
+        :rtype: str
+        """
+        return self._SyncWay
+
+    @SyncWay.setter
+    def SyncWay(self, SyncWay):
+        self._SyncWay = SyncWay
+
+    @property
+    def SemiSyncTimeout(self):
+        r"""<p>半同步超时时间，单位ms。为保证业务稳定性，半同步复制存在退化逻辑，当主可用区集群在等待备可用区集群确认事务时若超过该超时时间，复制方式将降为异步复制。</p><p>取值范围：[1000, 4294967295]</p><p>单位：毫秒</p><p>默认值：10000</p>
+        :rtype: int
+        """
+        return self._SemiSyncTimeout
+
+    @SemiSyncTimeout.setter
+    def SemiSyncTimeout(self, SemiSyncTimeout):
+        self._SemiSyncTimeout = SemiSyncTimeout
+
+    @property
+    def SlaveZone(self):
+        r"""<p>备可用区</p>
+        :rtype: str
+        """
+        return self._SlaveZone
+
+    @SlaveZone.setter
+    def SlaveZone(self, SlaveZone):
+        self._SlaveZone = SlaveZone
+
 
     def _deserialize(self, params):
         self._Zone = params.get("Zone")
@@ -56123,6 +56195,9 @@ class RollbackToNewClusterRequest(AbstractModel):
         self._ProjectId = params.get("ProjectId")
         self._AutoArchive = params.get("AutoArchive")
         self._FromSaveBackup = params.get("FromSaveBackup")
+        self._SyncWay = params.get("SyncWay")
+        self._SemiSyncTimeout = params.get("SemiSyncTimeout")
+        self._SlaveZone = params.get("SlaveZone")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

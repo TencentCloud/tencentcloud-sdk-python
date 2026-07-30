@@ -518,6 +518,24 @@ class LighthouseClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeBlueprintBundles(
+            self,
+            request: models.DescribeBlueprintBundlesRequest,
+            opts: Dict = None,
+    ) -> models.DescribeBlueprintBundlesResponse:
+        """
+        本接口(DescribeBlueprintBundles)用于查询镜像所对应的套餐。当前仅支持查询镜像类型为游戏专区的镜像ID。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeBlueprintBundles"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeBlueprintBundlesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeBlueprintInstances(
             self,
             request: models.DescribeBlueprintInstancesRequest,

@@ -22015,8 +22015,10 @@ class CreateAdaptiveDynamicStreamingTemplateRequest(AbstractModel):
         :type DisableHigherVideoResolution: int
         :param _Comment: <p>模板描述信息，长度限制：256 个字符。</p>
         :type Comment: str
-        :param _SegmentType: <p>切片类型，当 Format 为 HLS 时有效，可选值：</p><li>ts：ts 切片；</li><li>fmp4：fmp4 切片。</li>默认值：ts。
+        :param _SegmentType: <p>分片类型，可选值：<br>ts: HLS，内部映射为ts-segment</p><p>mp4: HLS/DASH，HLS情况下内部映射为mp4-mp4-segment，DASH情况下内部映射为mp4-mp4-byterange</p><p>ts-segment：HLS+TS 切片</p><p>ts-byterange：HLS+TS byte range</p><p>mp4-segment：HLS+MP4 切片</p><p>mp4-byterange：HLS+MP4 byte range</p><p>ts-packed-audio：HLS+TS+Packed Audio 切片</p><p>mp4-packed-audio：HLS+MP4+Packed Audio 切片</p><p>ts-ts-segment：HLS+TS+TS 切片</p><p>ts-ts-byterange：HLS+TS+TS byte range</p><p>mp4-mp4-segment：HLS+MP4+MP4 切片</p><p>mp4-mp4-byterange：HLS/DASH+MP4+MP4 byte range</p><p>ts-packed-audio-byterange：HLS+TS+Packed Audio byte range</p><p>mp4-packed-audio-byterange：HLS+MP4+Packed Audio byte range<br> 默认值：ts-segment 注：自适应码流的分片格式以此字段为准。DASH格式下SegmentType只能为mp4-mp4-byterange。</p><p>FairPlay：只能用于HLS，切片格式只能是mp4或mp4-mp4-segment Widevine：可以用于HLS和DASH，HLS下切片格式只能是mp4或mp4-mp4-segment，DASH下切片格式只能是mp4或mp4-mp4-byterange<br>Widevine+FairPlay: 只能用于HLS，切片格式只能是mp4或mp4-mp4-segment</p>
         :type SegmentType: str
+        :param _SegmentDuration: <p>切片时长。</p><p>取值范围：[1, 10]</p><p>单位：秒</p><p>默认值：6</p>
+        :type SegmentDuration: int
         """
         self._Format = None
         self._StreamInfos = None
@@ -22029,6 +22031,7 @@ class CreateAdaptiveDynamicStreamingTemplateRequest(AbstractModel):
         self._DisableHigherVideoResolution = None
         self._Comment = None
         self._SegmentType = None
+        self._SegmentDuration = None
 
     @property
     def Format(self):
@@ -22142,7 +22145,7 @@ class CreateAdaptiveDynamicStreamingTemplateRequest(AbstractModel):
 
     @property
     def SegmentType(self):
-        r"""<p>切片类型，当 Format 为 HLS 时有效，可选值：</p><li>ts：ts 切片；</li><li>fmp4：fmp4 切片。</li>默认值：ts。
+        r"""<p>分片类型，可选值：<br>ts: HLS，内部映射为ts-segment</p><p>mp4: HLS/DASH，HLS情况下内部映射为mp4-mp4-segment，DASH情况下内部映射为mp4-mp4-byterange</p><p>ts-segment：HLS+TS 切片</p><p>ts-byterange：HLS+TS byte range</p><p>mp4-segment：HLS+MP4 切片</p><p>mp4-byterange：HLS+MP4 byte range</p><p>ts-packed-audio：HLS+TS+Packed Audio 切片</p><p>mp4-packed-audio：HLS+MP4+Packed Audio 切片</p><p>ts-ts-segment：HLS+TS+TS 切片</p><p>ts-ts-byterange：HLS+TS+TS byte range</p><p>mp4-mp4-segment：HLS+MP4+MP4 切片</p><p>mp4-mp4-byterange：HLS/DASH+MP4+MP4 byte range</p><p>ts-packed-audio-byterange：HLS+TS+Packed Audio byte range</p><p>mp4-packed-audio-byterange：HLS+MP4+Packed Audio byte range<br> 默认值：ts-segment 注：自适应码流的分片格式以此字段为准。DASH格式下SegmentType只能为mp4-mp4-byterange。</p><p>FairPlay：只能用于HLS，切片格式只能是mp4或mp4-mp4-segment Widevine：可以用于HLS和DASH，HLS下切片格式只能是mp4或mp4-mp4-segment，DASH下切片格式只能是mp4或mp4-mp4-byterange<br>Widevine+FairPlay: 只能用于HLS，切片格式只能是mp4或mp4-mp4-segment</p>
         :rtype: str
         """
         return self._SegmentType
@@ -22150,6 +22153,17 @@ class CreateAdaptiveDynamicStreamingTemplateRequest(AbstractModel):
     @SegmentType.setter
     def SegmentType(self, SegmentType):
         self._SegmentType = SegmentType
+
+    @property
+    def SegmentDuration(self):
+        r"""<p>切片时长。</p><p>取值范围：[1, 10]</p><p>单位：秒</p><p>默认值：6</p>
+        :rtype: int
+        """
+        return self._SegmentDuration
+
+    @SegmentDuration.setter
+    def SegmentDuration(self, SegmentDuration):
+        self._SegmentDuration = SegmentDuration
 
 
     def _deserialize(self, params):
@@ -22169,6 +22183,7 @@ class CreateAdaptiveDynamicStreamingTemplateRequest(AbstractModel):
         self._DisableHigherVideoResolution = params.get("DisableHigherVideoResolution")
         self._Comment = params.get("Comment")
         self._SegmentType = params.get("SegmentType")
+        self._SegmentDuration = params.get("SegmentDuration")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -66363,33 +66378,26 @@ class ModifyAdaptiveDynamicStreamingTemplateRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Definition: 自适应转码模板唯一标识。
+        :param _Definition: <p>自适应转码模板唯一标识。</p>
         :type Definition: int
-        :param _SubAppId: <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
+        :param _SubAppId: <p><b>点播<a href="/document/product/266/14574">应用</a> ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b></p>
         :type SubAppId: int
-        :param _Name: 模板名称，长度限制：64 个字符。
+        :param _Name: <p>模板名称，长度限制：64 个字符。</p>
         :type Name: str
-        :param _Format: 自适应转码格式，取值范围：
-<li>HLS；</li>
-<li>MPEG-DASH。</li>
+        :param _Format: <p>自适应转码格式，取值范围：</p><li>HLS；</li><li>MPEG-DASH。</li>
         :type Format: str
-        :param _DisableHigherVideoBitrate: 是否禁止视频低码率转高码率，取值范围：
-<li>0：否，</li>
-<li>1：是。</li>
+        :param _DisableHigherVideoBitrate: <p>是否禁止视频低码率转高码率，取值范围：</p><li>0：否，</li><li>1：是。</li>
         :type DisableHigherVideoBitrate: int
-        :param _DisableHigherVideoResolution: 是否禁止视频分辨率转高分辨率，取值范围：
-<li>0：否，</li>
-<li>1：是。</li>
+        :param _DisableHigherVideoResolution: <p>是否禁止视频分辨率转高分辨率，取值范围：</p><li>0：否，</li><li>1：是。</li>
         :type DisableHigherVideoResolution: int
-        :param _StreamInfos: 自适应转码输入流参数信息，最多输入10路流。
-注意：各个流的帧率必须保持一致；如果不一致，采用第一个流的帧率作为输出帧率。
+        :param _StreamInfos: <p>自适应转码输入流参数信息，最多输入10路流。<br>注意：各个流的帧率必须保持一致；如果不一致，采用第一个流的帧率作为输出帧率。</p>
         :type StreamInfos: list of AdaptiveStreamTemplate
-        :param _Comment: 模板描述信息，长度限制：256 个字符。
+        :param _Comment: <p>模板描述信息，长度限制：256 个字符。</p>
         :type Comment: str
-        :param _SegmentType: 切片类型，当 Format 为 HLS 时有效，可选值：
-<li>ts：ts 切片；</li>
-<li>fmp4：fmp4 切片。</li>
+        :param _SegmentType: <p>分片类型，可选值：<br>ts: HLS，内部映射为ts-segment</p><p>mp4: HLS/DASH，HLS情况下内部映射为mp4-mp4-segment，DASH情况下内部映射为mp4-mp4-byterange</p><p>ts-segment：HLS+TS 切片</p><p>ts-byterange：HLS+TS byte range</p><p>mp4-segment：HLS+MP4 切片</p><p>mp4-byterange：HLS+MP4 byte range</p><p>ts-packed-audio：HLS+TS+Packed Audio 切片</p><p>mp4-packed-audio：HLS+MP4+Packed Audio 切片</p><p>ts-ts-segment：HLS+TS+TS 切片</p><p>ts-ts-byterange：HLS+TS+TS byte range</p><p>mp4-mp4-segment：HLS+MP4+MP4 切片</p><p>mp4-mp4-byterange：HLS/DASH+MP4+MP4 byte range</p><p>ts-packed-audio-byterange：HLS+TS+Packed Audio byte range</p><p>mp4-packed-audio-byterange：HLS+MP4+Packed Audio byte range<br> 默认值：ts-segment 注：自适应码流的分片格式以此字段为准。DASH格式下SegmentType只能为mp4-mp4-byterange。</p><p>FairPlay：只能用于HLS，切片格式只能是mp4或mp4-mp4-segment Widevine：可以用于HLS和DASH，HLS下切片格式只能是mp4或mp4-mp4-segment，DASH下切片格式只能是mp4或mp4-mp4-byterange Widevine+FairPlay: 只能用于HLS，切片格式只能是mp4或mp4-mp4-segment</p>
         :type SegmentType: str
+        :param _SegmentDuration: <p>切片平均时长。</p><p>取值范围：[1, 10]</p><p>单位：秒</p>
+        :type SegmentDuration: int
         """
         self._Definition = None
         self._SubAppId = None
@@ -66400,10 +66408,11 @@ class ModifyAdaptiveDynamicStreamingTemplateRequest(AbstractModel):
         self._StreamInfos = None
         self._Comment = None
         self._SegmentType = None
+        self._SegmentDuration = None
 
     @property
     def Definition(self):
-        r"""自适应转码模板唯一标识。
+        r"""<p>自适应转码模板唯一标识。</p>
         :rtype: int
         """
         return self._Definition
@@ -66414,7 +66423,7 @@ class ModifyAdaptiveDynamicStreamingTemplateRequest(AbstractModel):
 
     @property
     def SubAppId(self):
-        r"""<b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
+        r"""<p><b>点播<a href="/document/product/266/14574">应用</a> ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b></p>
         :rtype: int
         """
         return self._SubAppId
@@ -66425,7 +66434,7 @@ class ModifyAdaptiveDynamicStreamingTemplateRequest(AbstractModel):
 
     @property
     def Name(self):
-        r"""模板名称，长度限制：64 个字符。
+        r"""<p>模板名称，长度限制：64 个字符。</p>
         :rtype: str
         """
         return self._Name
@@ -66436,9 +66445,7 @@ class ModifyAdaptiveDynamicStreamingTemplateRequest(AbstractModel):
 
     @property
     def Format(self):
-        r"""自适应转码格式，取值范围：
-<li>HLS；</li>
-<li>MPEG-DASH。</li>
+        r"""<p>自适应转码格式，取值范围：</p><li>HLS；</li><li>MPEG-DASH。</li>
         :rtype: str
         """
         return self._Format
@@ -66449,9 +66456,7 @@ class ModifyAdaptiveDynamicStreamingTemplateRequest(AbstractModel):
 
     @property
     def DisableHigherVideoBitrate(self):
-        r"""是否禁止视频低码率转高码率，取值范围：
-<li>0：否，</li>
-<li>1：是。</li>
+        r"""<p>是否禁止视频低码率转高码率，取值范围：</p><li>0：否，</li><li>1：是。</li>
         :rtype: int
         """
         return self._DisableHigherVideoBitrate
@@ -66462,9 +66467,7 @@ class ModifyAdaptiveDynamicStreamingTemplateRequest(AbstractModel):
 
     @property
     def DisableHigherVideoResolution(self):
-        r"""是否禁止视频分辨率转高分辨率，取值范围：
-<li>0：否，</li>
-<li>1：是。</li>
+        r"""<p>是否禁止视频分辨率转高分辨率，取值范围：</p><li>0：否，</li><li>1：是。</li>
         :rtype: int
         """
         return self._DisableHigherVideoResolution
@@ -66475,8 +66478,7 @@ class ModifyAdaptiveDynamicStreamingTemplateRequest(AbstractModel):
 
     @property
     def StreamInfos(self):
-        r"""自适应转码输入流参数信息，最多输入10路流。
-注意：各个流的帧率必须保持一致；如果不一致，采用第一个流的帧率作为输出帧率。
+        r"""<p>自适应转码输入流参数信息，最多输入10路流。<br>注意：各个流的帧率必须保持一致；如果不一致，采用第一个流的帧率作为输出帧率。</p>
         :rtype: list of AdaptiveStreamTemplate
         """
         return self._StreamInfos
@@ -66487,7 +66489,7 @@ class ModifyAdaptiveDynamicStreamingTemplateRequest(AbstractModel):
 
     @property
     def Comment(self):
-        r"""模板描述信息，长度限制：256 个字符。
+        r"""<p>模板描述信息，长度限制：256 个字符。</p>
         :rtype: str
         """
         return self._Comment
@@ -66498,9 +66500,7 @@ class ModifyAdaptiveDynamicStreamingTemplateRequest(AbstractModel):
 
     @property
     def SegmentType(self):
-        r"""切片类型，当 Format 为 HLS 时有效，可选值：
-<li>ts：ts 切片；</li>
-<li>fmp4：fmp4 切片。</li>
+        r"""<p>分片类型，可选值：<br>ts: HLS，内部映射为ts-segment</p><p>mp4: HLS/DASH，HLS情况下内部映射为mp4-mp4-segment，DASH情况下内部映射为mp4-mp4-byterange</p><p>ts-segment：HLS+TS 切片</p><p>ts-byterange：HLS+TS byte range</p><p>mp4-segment：HLS+MP4 切片</p><p>mp4-byterange：HLS+MP4 byte range</p><p>ts-packed-audio：HLS+TS+Packed Audio 切片</p><p>mp4-packed-audio：HLS+MP4+Packed Audio 切片</p><p>ts-ts-segment：HLS+TS+TS 切片</p><p>ts-ts-byterange：HLS+TS+TS byte range</p><p>mp4-mp4-segment：HLS+MP4+MP4 切片</p><p>mp4-mp4-byterange：HLS/DASH+MP4+MP4 byte range</p><p>ts-packed-audio-byterange：HLS+TS+Packed Audio byte range</p><p>mp4-packed-audio-byterange：HLS+MP4+Packed Audio byte range<br> 默认值：ts-segment 注：自适应码流的分片格式以此字段为准。DASH格式下SegmentType只能为mp4-mp4-byterange。</p><p>FairPlay：只能用于HLS，切片格式只能是mp4或mp4-mp4-segment Widevine：可以用于HLS和DASH，HLS下切片格式只能是mp4或mp4-mp4-segment，DASH下切片格式只能是mp4或mp4-mp4-byterange Widevine+FairPlay: 只能用于HLS，切片格式只能是mp4或mp4-mp4-segment</p>
         :rtype: str
         """
         return self._SegmentType
@@ -66508,6 +66508,17 @@ class ModifyAdaptiveDynamicStreamingTemplateRequest(AbstractModel):
     @SegmentType.setter
     def SegmentType(self, SegmentType):
         self._SegmentType = SegmentType
+
+    @property
+    def SegmentDuration(self):
+        r"""<p>切片平均时长。</p><p>取值范围：[1, 10]</p><p>单位：秒</p>
+        :rtype: int
+        """
+        return self._SegmentDuration
+
+    @SegmentDuration.setter
+    def SegmentDuration(self, SegmentDuration):
+        self._SegmentDuration = SegmentDuration
 
 
     def _deserialize(self, params):
@@ -66525,6 +66536,7 @@ class ModifyAdaptiveDynamicStreamingTemplateRequest(AbstractModel):
                 self._StreamInfos.append(obj)
         self._Comment = params.get("Comment")
         self._SegmentType = params.get("SegmentType")
+        self._SegmentDuration = params.get("SegmentDuration")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -77,7 +77,7 @@ class TokenhubClient(AbstractClient):
 
 
     def CreateGlossary(self, request):
-        r"""创建术语库。(单个用户默认最多可以创建50个术语库，支持加白)
+        r"""创建术语库。(单个用户默认最多可以创建50个术语库)
 
         在当前应用下创建一个新的翻译术语库，用于自定义源语言到目标语言的术语映射。创建成功后返回术语库 ID，可通过该 ID 进一步管理术语条目。
 

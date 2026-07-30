@@ -1419,6 +1419,24 @@ class EsClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def UpdateInstancePublicAccess(
+            self,
+            request: models.UpdateInstancePublicAccessRequest,
+            opts: Dict = None,
+    ) -> models.UpdateInstancePublicAccessResponse:
+        """
+        更新ES集群实例的Kibana、cerebro公网开关
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "UpdateInstancePublicAccess"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.UpdateInstancePublicAccessResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def UpdateIpTraceStatus(
             self,
             request: models.UpdateIpTraceStatusRequest,

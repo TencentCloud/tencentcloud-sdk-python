@@ -8142,7 +8142,7 @@ class PolicyRule(AbstractModel):
         :type ServiceModule: str
         :param _AddressModule: <p>IP 地址模板 ID</p>
         :type AddressModule: str
-        :param _Id: <p>规则 ID</p>
+        :param _Id: <p>安全组 ID</p>
         :type Id: str
         :param _Desc: <p>规则备注描述</p>
         :type Desc: str
@@ -8224,7 +8224,7 @@ class PolicyRule(AbstractModel):
 
     @property
     def Id(self):
-        r"""<p>规则 ID</p>
+        r"""<p>安全组 ID</p>
         :rtype: str
         """
         return self._Id

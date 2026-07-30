@@ -2533,6 +2533,8 @@ class ApmInstanceDetail(AbstractModel):
         :type UrlNumberSegmentThreshold: int
         :param _LogSpanIdKey: <p>spanId的索引key: 当CLS索引类型为键值索引时生效</p>
         :type LogSpanIdKey: str
+        :param _DisableAiAbility: <p>是否禁用 AI 能力</p><p>单位：无</p>
+        :type DisableAiAbility: int
         """
         self._InstanceId = None
         self._Name = None
@@ -2591,6 +2593,7 @@ class ApmInstanceDetail(AbstractModel):
         self._UrlLongSegmentThreshold = None
         self._UrlNumberSegmentThreshold = None
         self._LogSpanIdKey = None
+        self._DisableAiAbility = None
 
     @property
     def InstanceId(self):
@@ -3219,6 +3222,17 @@ class ApmInstanceDetail(AbstractModel):
     def LogSpanIdKey(self, LogSpanIdKey):
         self._LogSpanIdKey = LogSpanIdKey
 
+    @property
+    def DisableAiAbility(self):
+        r"""<p>是否禁用 AI 能力</p><p>单位：无</p>
+        :rtype: int
+        """
+        return self._DisableAiAbility
+
+    @DisableAiAbility.setter
+    def DisableAiAbility(self, DisableAiAbility):
+        self._DisableAiAbility = DisableAiAbility
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -3283,6 +3297,7 @@ class ApmInstanceDetail(AbstractModel):
         self._UrlLongSegmentThreshold = params.get("UrlLongSegmentThreshold")
         self._UrlNumberSegmentThreshold = params.get("UrlNumberSegmentThreshold")
         self._LogSpanIdKey = params.get("LogSpanIdKey")
+        self._DisableAiAbility = params.get("DisableAiAbility")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -10352,12 +10367,14 @@ class ModifyApmInstanceRequest(AbstractModel):
         :type UrlNumberSegmentThreshold: int
         :param _LogSpanIdKey: <p>spanId的索引key: 当CLS索引类型为键值索引时生效</p>
         :type LogSpanIdKey: str
-        :param _EnableHeadSampler: <p>是否开启探针头采样</p>
+        :param _EnableHeadSampler: <p>是否开启探针头采样</p><p>（受限）</p>
         :type EnableHeadSampler: bool
-        :param _HeadSamplerType: <p>头采类型</p><p>枚举值：</p><ul><li>parentbased_traceidratio： 默认</li></ul>
+        :param _HeadSamplerType: <p>头采类型</p><p>枚举值：</p><ul><li>parentbased_traceidratio： 默认</li></ul><p>（受限）</p>
         :type HeadSamplerType: str
-        :param _HeadSamplerArg: <p>头采采样率</p><p>取值范围：[0, 100]</p>
+        :param _HeadSamplerArg: <p>头采采样率</p><p>取值范围：[0, 100]</p><p>（受限）</p>
         :type HeadSamplerArg: int
+        :param _DisableAiAbility: <p>是否禁用 AI 能力</p><p>单位：无</p>
+        :type DisableAiAbility: int
         """
         self._InstanceId = None
         self._Name = None
@@ -10405,6 +10422,7 @@ class ModifyApmInstanceRequest(AbstractModel):
         self._EnableHeadSampler = None
         self._HeadSamplerType = None
         self._HeadSamplerArg = None
+        self._DisableAiAbility = None
 
     @property
     def InstanceId(self):
@@ -10881,7 +10899,7 @@ class ModifyApmInstanceRequest(AbstractModel):
 
     @property
     def EnableHeadSampler(self):
-        r"""<p>是否开启探针头采样</p>
+        r"""<p>是否开启探针头采样</p><p>（受限）</p>
         :rtype: bool
         """
         return self._EnableHeadSampler
@@ -10892,7 +10910,7 @@ class ModifyApmInstanceRequest(AbstractModel):
 
     @property
     def HeadSamplerType(self):
-        r"""<p>头采类型</p><p>枚举值：</p><ul><li>parentbased_traceidratio： 默认</li></ul>
+        r"""<p>头采类型</p><p>枚举值：</p><ul><li>parentbased_traceidratio： 默认</li></ul><p>（受限）</p>
         :rtype: str
         """
         return self._HeadSamplerType
@@ -10903,7 +10921,7 @@ class ModifyApmInstanceRequest(AbstractModel):
 
     @property
     def HeadSamplerArg(self):
-        r"""<p>头采采样率</p><p>取值范围：[0, 100]</p>
+        r"""<p>头采采样率</p><p>取值范围：[0, 100]</p><p>（受限）</p>
         :rtype: int
         """
         return self._HeadSamplerArg
@@ -10911,6 +10929,17 @@ class ModifyApmInstanceRequest(AbstractModel):
     @HeadSamplerArg.setter
     def HeadSamplerArg(self, HeadSamplerArg):
         self._HeadSamplerArg = HeadSamplerArg
+
+    @property
+    def DisableAiAbility(self):
+        r"""<p>是否禁用 AI 能力</p><p>单位：无</p>
+        :rtype: int
+        """
+        return self._DisableAiAbility
+
+    @DisableAiAbility.setter
+    def DisableAiAbility(self, DisableAiAbility):
+        self._DisableAiAbility = DisableAiAbility
 
 
     def _deserialize(self, params):
@@ -10965,6 +10994,7 @@ class ModifyApmInstanceRequest(AbstractModel):
         self._EnableHeadSampler = params.get("EnableHeadSampler")
         self._HeadSamplerType = params.get("HeadSamplerType")
         self._HeadSamplerArg = params.get("HeadSamplerArg")
+        self._DisableAiAbility = params.get("DisableAiAbility")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

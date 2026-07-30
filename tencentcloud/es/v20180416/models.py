@@ -26796,6 +26796,586 @@ class UpdateIndexResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class UpdateInstancePublicAccessRequest(AbstractModel):
+    r"""UpdateInstancePublicAccess请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例ID
+        :type InstanceId: str
+        :param _InstanceName: 实例名称（1-50 个英文、汉字、数字、连接线-或下划线_）
+        :type InstanceName: str
+        :param _NodeNum: 已废弃请使用NodeInfoList
+节点个数（2-50个）
+        :type NodeNum: int
+        :param _EsConfig: ES配置项（JSON格式字符串）
+        :type EsConfig: str
+        :param _Password: 默认用户elastic的密码（8到16位，至少包括两项（[a-z,A-Z],[0-9]和[-!@#$%&^*+=_:;,.?]的特殊符号）
+        :type Password: str
+        :param _EsAcl: 访问控制列表
+        :type EsAcl: :class:`tencentcloud.es.v20180416.models.EsAcl`
+        :param _DiskSize: 已废弃请使用NodeInfoList
+磁盘大小（单位GB）
+        :type DiskSize: int
+        :param _NodeType: 已废弃请使用NodeInfoList
+节点规格<li>ES.S1.SMALL2：1核2G</li><li>ES.S1.MEDIUM4：2核4G</li><li>ES.S1.MEDIUM8：2核8G</li><li>ES.S1.LARGE16：4核16G</li><li>ES.S1.2XLARGE32：8核32G</li><li>ES.S1.4XLARGE32：16核32G</li><li>ES.S1.4XLARGE64：16核64G</li>
+        :type NodeType: str
+        :param _MasterNodeNum: 已废弃请使用NodeInfoList
+专用主节点个数（只支持3个或5个）
+        :type MasterNodeNum: int
+        :param _MasterNodeType: 已废弃请使用NodeInfoList
+专用主节点规格<li>ES.S1.SMALL2：1核2G</li><li>ES.S1.MEDIUM4：2核4G</li><li>ES.S1.MEDIUM8：2核8G</li><li>ES.S1.LARGE16：4核16G</li><li>ES.S1.2XLARGE32：8核32G</li><li>ES.S1.4XLARGE32：16核32G</li><li>ES.S1.4XLARGE64：16核64G</li>
+        :type MasterNodeType: str
+        :param _MasterNodeDiskSize: 已废弃请使用NodeInfoList
+专用主节点磁盘大小（单位GB系统默认配置为50GB,暂不支持自定义）
+        :type MasterNodeDiskSize: int
+        :param _ForceRestart: 更新配置时是否强制重启<li>true强制重启</li><li>false不强制重启</li>当前仅更新EsConfig时需要设置，默认值为false
+        :type ForceRestart: bool
+        :param _CosBackup: COS自动备份信息
+        :type CosBackup: :class:`tencentcloud.es.v20180416.models.CosBackup`
+        :param _NodeInfoList: 节点信息列表，可以只传递要更新的节点及其对应的规格信息。支持的操作包括<li>修改一种节点的个数</li><li>修改一种节点的节点规格及磁盘大小</li><li>增加一种节点类型（需要同时指定该节点的类型，个数，规格，磁盘等信息）</li>上述操作一次只能进行一种，且磁盘类型不支持修改
+        :type NodeInfoList: list of NodeInfo
+        :param _PublicAccess: 公网访问状态
+        :type PublicAccess: str
+        :param _EsPublicAcl: 公网访问控制列表
+        :type EsPublicAcl: :class:`tencentcloud.es.v20180416.models.EsPublicAcl`
+        :param _KibanaPublicAccess: Kibana公网访问状态
+        :type KibanaPublicAccess: str
+        :param _KibanaPrivateAccess: Kibana内网访问状态
+        :type KibanaPrivateAccess: str
+        :param _BasicSecurityType: ES 6.8及以上版本基础版开启或关闭用户认证
+        :type BasicSecurityType: int
+        :param _KibanaPrivatePort: Kibana内网端口
+        :type KibanaPrivatePort: int
+        :param _ScaleType: 0: 蓝绿变更方式扩容，集群不重启 （默认） 1: 磁盘解挂载扩容，集群滚动重启
+        :type ScaleType: int
+        :param _MultiZoneInfo: 多可用区部署
+        :type MultiZoneInfo: list of ZoneDetail
+        :param _SceneType: 场景化模板类型 -1：不启用 1：通用 2：日志 3：搜索
+        :type SceneType: int
+        :param _KibanaConfig: Kibana配置项（JSON格式字符串）
+        :type KibanaConfig: str
+        :param _WebNodeTypeInfo: 可视化节点配置
+        :type WebNodeTypeInfo: :class:`tencentcloud.es.v20180416.models.WebNodeTypeInfo`
+        :param _SwitchPrivateLink: 切换到新网络架构
+        :type SwitchPrivateLink: str
+        :param _EnableCerebro: 启用Cerebro
+        :type EnableCerebro: bool
+        :param _CerebroPublicAccess: Cerebro公网访问状态
+        :type CerebroPublicAccess: str
+        :param _CerebroPrivateAccess: Cerebro内网访问状态
+        :type CerebroPrivateAccess: str
+        :param _EsConfigSet: 新增或修改的配置组信息
+        :type EsConfigSet: :class:`tencentcloud.es.v20180416.models.EsConfigSetInfo`
+        :param _OperationDuration: 可维护时间段
+        :type OperationDuration: :class:`tencentcloud.es.v20180416.models.OperationDurationUpdated`
+        :param _KibanaAlteringPublicAccess: 是否开启Altering 外网告警输出
+        :type KibanaAlteringPublicAccess: list of str
+        """
+        self._InstanceId = None
+        self._InstanceName = None
+        self._NodeNum = None
+        self._EsConfig = None
+        self._Password = None
+        self._EsAcl = None
+        self._DiskSize = None
+        self._NodeType = None
+        self._MasterNodeNum = None
+        self._MasterNodeType = None
+        self._MasterNodeDiskSize = None
+        self._ForceRestart = None
+        self._CosBackup = None
+        self._NodeInfoList = None
+        self._PublicAccess = None
+        self._EsPublicAcl = None
+        self._KibanaPublicAccess = None
+        self._KibanaPrivateAccess = None
+        self._BasicSecurityType = None
+        self._KibanaPrivatePort = None
+        self._ScaleType = None
+        self._MultiZoneInfo = None
+        self._SceneType = None
+        self._KibanaConfig = None
+        self._WebNodeTypeInfo = None
+        self._SwitchPrivateLink = None
+        self._EnableCerebro = None
+        self._CerebroPublicAccess = None
+        self._CerebroPrivateAccess = None
+        self._EsConfigSet = None
+        self._OperationDuration = None
+        self._KibanaAlteringPublicAccess = None
+
+    @property
+    def InstanceId(self):
+        r"""实例ID
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def InstanceName(self):
+        r"""实例名称（1-50 个英文、汉字、数字、连接线-或下划线_）
+        :rtype: str
+        """
+        return self._InstanceName
+
+    @InstanceName.setter
+    def InstanceName(self, InstanceName):
+        self._InstanceName = InstanceName
+
+    @property
+    def NodeNum(self):
+        r"""已废弃请使用NodeInfoList
+节点个数（2-50个）
+        :rtype: int
+        """
+        return self._NodeNum
+
+    @NodeNum.setter
+    def NodeNum(self, NodeNum):
+        self._NodeNum = NodeNum
+
+    @property
+    def EsConfig(self):
+        r"""ES配置项（JSON格式字符串）
+        :rtype: str
+        """
+        return self._EsConfig
+
+    @EsConfig.setter
+    def EsConfig(self, EsConfig):
+        self._EsConfig = EsConfig
+
+    @property
+    def Password(self):
+        r"""默认用户elastic的密码（8到16位，至少包括两项（[a-z,A-Z],[0-9]和[-!@#$%&^*+=_:;,.?]的特殊符号）
+        :rtype: str
+        """
+        return self._Password
+
+    @Password.setter
+    def Password(self, Password):
+        self._Password = Password
+
+    @property
+    def EsAcl(self):
+        r"""访问控制列表
+        :rtype: :class:`tencentcloud.es.v20180416.models.EsAcl`
+        """
+        return self._EsAcl
+
+    @EsAcl.setter
+    def EsAcl(self, EsAcl):
+        self._EsAcl = EsAcl
+
+    @property
+    def DiskSize(self):
+        r"""已废弃请使用NodeInfoList
+磁盘大小（单位GB）
+        :rtype: int
+        """
+        return self._DiskSize
+
+    @DiskSize.setter
+    def DiskSize(self, DiskSize):
+        self._DiskSize = DiskSize
+
+    @property
+    def NodeType(self):
+        r"""已废弃请使用NodeInfoList
+节点规格<li>ES.S1.SMALL2：1核2G</li><li>ES.S1.MEDIUM4：2核4G</li><li>ES.S1.MEDIUM8：2核8G</li><li>ES.S1.LARGE16：4核16G</li><li>ES.S1.2XLARGE32：8核32G</li><li>ES.S1.4XLARGE32：16核32G</li><li>ES.S1.4XLARGE64：16核64G</li>
+        :rtype: str
+        """
+        return self._NodeType
+
+    @NodeType.setter
+    def NodeType(self, NodeType):
+        self._NodeType = NodeType
+
+    @property
+    def MasterNodeNum(self):
+        r"""已废弃请使用NodeInfoList
+专用主节点个数（只支持3个或5个）
+        :rtype: int
+        """
+        return self._MasterNodeNum
+
+    @MasterNodeNum.setter
+    def MasterNodeNum(self, MasterNodeNum):
+        self._MasterNodeNum = MasterNodeNum
+
+    @property
+    def MasterNodeType(self):
+        r"""已废弃请使用NodeInfoList
+专用主节点规格<li>ES.S1.SMALL2：1核2G</li><li>ES.S1.MEDIUM4：2核4G</li><li>ES.S1.MEDIUM8：2核8G</li><li>ES.S1.LARGE16：4核16G</li><li>ES.S1.2XLARGE32：8核32G</li><li>ES.S1.4XLARGE32：16核32G</li><li>ES.S1.4XLARGE64：16核64G</li>
+        :rtype: str
+        """
+        return self._MasterNodeType
+
+    @MasterNodeType.setter
+    def MasterNodeType(self, MasterNodeType):
+        self._MasterNodeType = MasterNodeType
+
+    @property
+    def MasterNodeDiskSize(self):
+        r"""已废弃请使用NodeInfoList
+专用主节点磁盘大小（单位GB系统默认配置为50GB,暂不支持自定义）
+        :rtype: int
+        """
+        return self._MasterNodeDiskSize
+
+    @MasterNodeDiskSize.setter
+    def MasterNodeDiskSize(self, MasterNodeDiskSize):
+        self._MasterNodeDiskSize = MasterNodeDiskSize
+
+    @property
+    def ForceRestart(self):
+        r"""更新配置时是否强制重启<li>true强制重启</li><li>false不强制重启</li>当前仅更新EsConfig时需要设置，默认值为false
+        :rtype: bool
+        """
+        return self._ForceRestart
+
+    @ForceRestart.setter
+    def ForceRestart(self, ForceRestart):
+        self._ForceRestart = ForceRestart
+
+    @property
+    def CosBackup(self):
+        r"""COS自动备份信息
+        :rtype: :class:`tencentcloud.es.v20180416.models.CosBackup`
+        """
+        return self._CosBackup
+
+    @CosBackup.setter
+    def CosBackup(self, CosBackup):
+        self._CosBackup = CosBackup
+
+    @property
+    def NodeInfoList(self):
+        r"""节点信息列表，可以只传递要更新的节点及其对应的规格信息。支持的操作包括<li>修改一种节点的个数</li><li>修改一种节点的节点规格及磁盘大小</li><li>增加一种节点类型（需要同时指定该节点的类型，个数，规格，磁盘等信息）</li>上述操作一次只能进行一种，且磁盘类型不支持修改
+        :rtype: list of NodeInfo
+        """
+        return self._NodeInfoList
+
+    @NodeInfoList.setter
+    def NodeInfoList(self, NodeInfoList):
+        self._NodeInfoList = NodeInfoList
+
+    @property
+    def PublicAccess(self):
+        r"""公网访问状态
+        :rtype: str
+        """
+        return self._PublicAccess
+
+    @PublicAccess.setter
+    def PublicAccess(self, PublicAccess):
+        self._PublicAccess = PublicAccess
+
+    @property
+    def EsPublicAcl(self):
+        r"""公网访问控制列表
+        :rtype: :class:`tencentcloud.es.v20180416.models.EsPublicAcl`
+        """
+        return self._EsPublicAcl
+
+    @EsPublicAcl.setter
+    def EsPublicAcl(self, EsPublicAcl):
+        self._EsPublicAcl = EsPublicAcl
+
+    @property
+    def KibanaPublicAccess(self):
+        r"""Kibana公网访问状态
+        :rtype: str
+        """
+        return self._KibanaPublicAccess
+
+    @KibanaPublicAccess.setter
+    def KibanaPublicAccess(self, KibanaPublicAccess):
+        self._KibanaPublicAccess = KibanaPublicAccess
+
+    @property
+    def KibanaPrivateAccess(self):
+        r"""Kibana内网访问状态
+        :rtype: str
+        """
+        return self._KibanaPrivateAccess
+
+    @KibanaPrivateAccess.setter
+    def KibanaPrivateAccess(self, KibanaPrivateAccess):
+        self._KibanaPrivateAccess = KibanaPrivateAccess
+
+    @property
+    def BasicSecurityType(self):
+        r"""ES 6.8及以上版本基础版开启或关闭用户认证
+        :rtype: int
+        """
+        return self._BasicSecurityType
+
+    @BasicSecurityType.setter
+    def BasicSecurityType(self, BasicSecurityType):
+        self._BasicSecurityType = BasicSecurityType
+
+    @property
+    def KibanaPrivatePort(self):
+        r"""Kibana内网端口
+        :rtype: int
+        """
+        return self._KibanaPrivatePort
+
+    @KibanaPrivatePort.setter
+    def KibanaPrivatePort(self, KibanaPrivatePort):
+        self._KibanaPrivatePort = KibanaPrivatePort
+
+    @property
+    def ScaleType(self):
+        r"""0: 蓝绿变更方式扩容，集群不重启 （默认） 1: 磁盘解挂载扩容，集群滚动重启
+        :rtype: int
+        """
+        return self._ScaleType
+
+    @ScaleType.setter
+    def ScaleType(self, ScaleType):
+        self._ScaleType = ScaleType
+
+    @property
+    def MultiZoneInfo(self):
+        r"""多可用区部署
+        :rtype: list of ZoneDetail
+        """
+        return self._MultiZoneInfo
+
+    @MultiZoneInfo.setter
+    def MultiZoneInfo(self, MultiZoneInfo):
+        self._MultiZoneInfo = MultiZoneInfo
+
+    @property
+    def SceneType(self):
+        r"""场景化模板类型 -1：不启用 1：通用 2：日志 3：搜索
+        :rtype: int
+        """
+        return self._SceneType
+
+    @SceneType.setter
+    def SceneType(self, SceneType):
+        self._SceneType = SceneType
+
+    @property
+    def KibanaConfig(self):
+        r"""Kibana配置项（JSON格式字符串）
+        :rtype: str
+        """
+        return self._KibanaConfig
+
+    @KibanaConfig.setter
+    def KibanaConfig(self, KibanaConfig):
+        self._KibanaConfig = KibanaConfig
+
+    @property
+    def WebNodeTypeInfo(self):
+        r"""可视化节点配置
+        :rtype: :class:`tencentcloud.es.v20180416.models.WebNodeTypeInfo`
+        """
+        return self._WebNodeTypeInfo
+
+    @WebNodeTypeInfo.setter
+    def WebNodeTypeInfo(self, WebNodeTypeInfo):
+        self._WebNodeTypeInfo = WebNodeTypeInfo
+
+    @property
+    def SwitchPrivateLink(self):
+        r"""切换到新网络架构
+        :rtype: str
+        """
+        return self._SwitchPrivateLink
+
+    @SwitchPrivateLink.setter
+    def SwitchPrivateLink(self, SwitchPrivateLink):
+        self._SwitchPrivateLink = SwitchPrivateLink
+
+    @property
+    def EnableCerebro(self):
+        r"""启用Cerebro
+        :rtype: bool
+        """
+        return self._EnableCerebro
+
+    @EnableCerebro.setter
+    def EnableCerebro(self, EnableCerebro):
+        self._EnableCerebro = EnableCerebro
+
+    @property
+    def CerebroPublicAccess(self):
+        r"""Cerebro公网访问状态
+        :rtype: str
+        """
+        return self._CerebroPublicAccess
+
+    @CerebroPublicAccess.setter
+    def CerebroPublicAccess(self, CerebroPublicAccess):
+        self._CerebroPublicAccess = CerebroPublicAccess
+
+    @property
+    def CerebroPrivateAccess(self):
+        r"""Cerebro内网访问状态
+        :rtype: str
+        """
+        return self._CerebroPrivateAccess
+
+    @CerebroPrivateAccess.setter
+    def CerebroPrivateAccess(self, CerebroPrivateAccess):
+        self._CerebroPrivateAccess = CerebroPrivateAccess
+
+    @property
+    def EsConfigSet(self):
+        r"""新增或修改的配置组信息
+        :rtype: :class:`tencentcloud.es.v20180416.models.EsConfigSetInfo`
+        """
+        return self._EsConfigSet
+
+    @EsConfigSet.setter
+    def EsConfigSet(self, EsConfigSet):
+        self._EsConfigSet = EsConfigSet
+
+    @property
+    def OperationDuration(self):
+        r"""可维护时间段
+        :rtype: :class:`tencentcloud.es.v20180416.models.OperationDurationUpdated`
+        """
+        return self._OperationDuration
+
+    @OperationDuration.setter
+    def OperationDuration(self, OperationDuration):
+        self._OperationDuration = OperationDuration
+
+    @property
+    def KibanaAlteringPublicAccess(self):
+        r"""是否开启Altering 外网告警输出
+        :rtype: list of str
+        """
+        return self._KibanaAlteringPublicAccess
+
+    @KibanaAlteringPublicAccess.setter
+    def KibanaAlteringPublicAccess(self, KibanaAlteringPublicAccess):
+        self._KibanaAlteringPublicAccess = KibanaAlteringPublicAccess
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._InstanceName = params.get("InstanceName")
+        self._NodeNum = params.get("NodeNum")
+        self._EsConfig = params.get("EsConfig")
+        self._Password = params.get("Password")
+        if params.get("EsAcl") is not None:
+            self._EsAcl = EsAcl()
+            self._EsAcl._deserialize(params.get("EsAcl"))
+        self._DiskSize = params.get("DiskSize")
+        self._NodeType = params.get("NodeType")
+        self._MasterNodeNum = params.get("MasterNodeNum")
+        self._MasterNodeType = params.get("MasterNodeType")
+        self._MasterNodeDiskSize = params.get("MasterNodeDiskSize")
+        self._ForceRestart = params.get("ForceRestart")
+        if params.get("CosBackup") is not None:
+            self._CosBackup = CosBackup()
+            self._CosBackup._deserialize(params.get("CosBackup"))
+        if params.get("NodeInfoList") is not None:
+            self._NodeInfoList = []
+            for item in params.get("NodeInfoList"):
+                obj = NodeInfo()
+                obj._deserialize(item)
+                self._NodeInfoList.append(obj)
+        self._PublicAccess = params.get("PublicAccess")
+        if params.get("EsPublicAcl") is not None:
+            self._EsPublicAcl = EsPublicAcl()
+            self._EsPublicAcl._deserialize(params.get("EsPublicAcl"))
+        self._KibanaPublicAccess = params.get("KibanaPublicAccess")
+        self._KibanaPrivateAccess = params.get("KibanaPrivateAccess")
+        self._BasicSecurityType = params.get("BasicSecurityType")
+        self._KibanaPrivatePort = params.get("KibanaPrivatePort")
+        self._ScaleType = params.get("ScaleType")
+        if params.get("MultiZoneInfo") is not None:
+            self._MultiZoneInfo = []
+            for item in params.get("MultiZoneInfo"):
+                obj = ZoneDetail()
+                obj._deserialize(item)
+                self._MultiZoneInfo.append(obj)
+        self._SceneType = params.get("SceneType")
+        self._KibanaConfig = params.get("KibanaConfig")
+        if params.get("WebNodeTypeInfo") is not None:
+            self._WebNodeTypeInfo = WebNodeTypeInfo()
+            self._WebNodeTypeInfo._deserialize(params.get("WebNodeTypeInfo"))
+        self._SwitchPrivateLink = params.get("SwitchPrivateLink")
+        self._EnableCerebro = params.get("EnableCerebro")
+        self._CerebroPublicAccess = params.get("CerebroPublicAccess")
+        self._CerebroPrivateAccess = params.get("CerebroPrivateAccess")
+        if params.get("EsConfigSet") is not None:
+            self._EsConfigSet = EsConfigSetInfo()
+            self._EsConfigSet._deserialize(params.get("EsConfigSet"))
+        if params.get("OperationDuration") is not None:
+            self._OperationDuration = OperationDurationUpdated()
+            self._OperationDuration._deserialize(params.get("OperationDuration"))
+        self._KibanaAlteringPublicAccess = params.get("KibanaAlteringPublicAccess")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateInstancePublicAccessResponse(AbstractModel):
+    r"""UpdateInstancePublicAccess返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DealName: 订单号
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DealName: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._DealName = None
+        self._RequestId = None
+
+    @property
+    def DealName(self):
+        r"""订单号
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._DealName
+
+    @DealName.setter
+    def DealName(self, DealName):
+        self._DealName = DealName
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._DealName = params.get("DealName")
+        self._RequestId = params.get("RequestId")
+
+
 class UpdateInstanceRequest(AbstractModel):
     r"""UpdateInstance请求参数结构体
 

@@ -4623,12 +4623,18 @@ class MemoryPlusInfo(AbstractModel):
         :type Status: int
         :param _Region: <p>地域</p>
         :type Region: str
+        :param _PayMode: <p>计费模式</p><p>枚举值：</p><ul><li>-1： 免费版</li><li>0： 按量付费</li><li>1： 包年包月</li></ul>
+        :type PayMode: int
+        :param _AutoRenew: <p>是否自动续费</p><p>枚举值：</p><ul><li>0： 不自动续费</li><li>1： 自动续费</li></ul>
+        :type AutoRenew: int
         :param _MemoryUsage: <p>记忆条数</p>
         :type MemoryUsage: int
         :param _CreditUsage: <p>当月积分数</p>
         :type CreditUsage: float
         :param _ResourceTags: <p>资源标签</p>
         :type ResourceTags: list of ResourceTag
+        :param _Version: <p>版本号</p>
+        :type Version: str
         :param _CreatedAt: <p>创建时间</p>
         :type CreatedAt: str
         :param _IsolatedAt: <p>隔离时间</p>
@@ -4643,9 +4649,12 @@ class MemoryPlusInfo(AbstractModel):
         self._Description = None
         self._Status = None
         self._Region = None
+        self._PayMode = None
+        self._AutoRenew = None
         self._MemoryUsage = None
         self._CreditUsage = None
         self._ResourceTags = None
+        self._Version = None
         self._CreatedAt = None
         self._IsolatedAt = None
         self._ExpiredAt = None
@@ -4707,6 +4716,28 @@ class MemoryPlusInfo(AbstractModel):
         self._Region = Region
 
     @property
+    def PayMode(self):
+        r"""<p>计费模式</p><p>枚举值：</p><ul><li>-1： 免费版</li><li>0： 按量付费</li><li>1： 包年包月</li></ul>
+        :rtype: int
+        """
+        return self._PayMode
+
+    @PayMode.setter
+    def PayMode(self, PayMode):
+        self._PayMode = PayMode
+
+    @property
+    def AutoRenew(self):
+        r"""<p>是否自动续费</p><p>枚举值：</p><ul><li>0： 不自动续费</li><li>1： 自动续费</li></ul>
+        :rtype: int
+        """
+        return self._AutoRenew
+
+    @AutoRenew.setter
+    def AutoRenew(self, AutoRenew):
+        self._AutoRenew = AutoRenew
+
+    @property
     def MemoryUsage(self):
         r"""<p>记忆条数</p>
         :rtype: int
@@ -4738,6 +4769,17 @@ class MemoryPlusInfo(AbstractModel):
     @ResourceTags.setter
     def ResourceTags(self, ResourceTags):
         self._ResourceTags = ResourceTags
+
+    @property
+    def Version(self):
+        r"""<p>版本号</p>
+        :rtype: str
+        """
+        return self._Version
+
+    @Version.setter
+    def Version(self, Version):
+        self._Version = Version
 
     @property
     def CreatedAt(self):
@@ -4790,6 +4832,8 @@ class MemoryPlusInfo(AbstractModel):
         self._Description = params.get("Description")
         self._Status = params.get("Status")
         self._Region = params.get("Region")
+        self._PayMode = params.get("PayMode")
+        self._AutoRenew = params.get("AutoRenew")
         self._MemoryUsage = params.get("MemoryUsage")
         self._CreditUsage = params.get("CreditUsage")
         if params.get("ResourceTags") is not None:
@@ -4798,6 +4842,7 @@ class MemoryPlusInfo(AbstractModel):
                 obj = ResourceTag()
                 obj._deserialize(item)
                 self._ResourceTags.append(obj)
+        self._Version = params.get("Version")
         self._CreatedAt = params.get("CreatedAt")
         self._IsolatedAt = params.get("IsolatedAt")
         self._ExpiredAt = params.get("ExpiredAt")

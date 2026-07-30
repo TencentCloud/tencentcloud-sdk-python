@@ -17771,17 +17771,20 @@ class CreateVpnConnRoute(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DestinationCidrBlock: 目的端IDC网段
+        :param _DestinationCidrBlock: <p>目的端IDC网段</p>
         :type DestinationCidrBlock: str
-        :param _Priority: 优先级；可选值0，100。
+        :param _Priority: <p>优先级；可选值0，100。</p>
         :type Priority: int
+        :param _Description: <p>路由备注；可选值</p>
+        :type Description: str
         """
         self._DestinationCidrBlock = None
         self._Priority = None
+        self._Description = None
 
     @property
     def DestinationCidrBlock(self):
-        r"""目的端IDC网段
+        r"""<p>目的端IDC网段</p>
         :rtype: str
         """
         return self._DestinationCidrBlock
@@ -17792,7 +17795,7 @@ class CreateVpnConnRoute(AbstractModel):
 
     @property
     def Priority(self):
-        r"""优先级；可选值0，100。
+        r"""<p>优先级；可选值0，100。</p>
         :rtype: int
         """
         return self._Priority
@@ -17801,10 +17804,22 @@ class CreateVpnConnRoute(AbstractModel):
     def Priority(self, Priority):
         self._Priority = Priority
 
+    @property
+    def Description(self):
+        r"""<p>路由备注；可选值</p>
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
 
     def _deserialize(self, params):
         self._DestinationCidrBlock = params.get("DestinationCidrBlock")
         self._Priority = params.get("Priority")
+        self._Description = params.get("Description")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -18210,27 +18225,27 @@ class CreateVpnGatewayRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _VpcId: VPC实例ID。可通过[DescribeVpcs](https://cloud.tencent.com/document/product/215/15778)接口返回值中的VpcId获取。
+        :param _VpcId: <p>VPC实例ID。可通过<a href="https://cloud.tencent.com/document/product/215/15778">DescribeVpcs</a>。接口返回值中的VpcId获取</p><p>入参限制：当Type为CCN/SSL_CCN 类型时传 &quot;&quot;，IPSEC/SSL 类型必须传对应VPC实例ID。</p>
         :type VpcId: str
-        :param _VpnGatewayName: VPN网关名称，最大长度不能超过60个字节。
+        :param _VpnGatewayName: <p>VPN网关名称，最大长度不能超过60个字节。</p>
         :type VpnGatewayName: str
-        :param _InternetMaxBandwidthOut: 公网带宽设置。可选带宽规格：5, 10, 20, 50, 100, 200, 500, 1000, 3000；单位：Mbps。
+        :param _InternetMaxBandwidthOut: <p>公网带宽设置。可选带宽规格：5, 10, 20, 50, 100, 200, 500, 1000, 3000；单位：Mbps。</p>
         :type InternetMaxBandwidthOut: int
-        :param _InstanceChargeType: VPN网关计费模式，PREPAID：表示预付费，即包年包月，POSTPAID_BY_HOUR：表示后付费，即按量计费。默认：POSTPAID_BY_HOUR，如果指定预付费模式，参数InstanceChargePrepaid必填。
+        :param _InstanceChargeType: <p>VPN网关计费模式，PREPAID：表示预付费，即包年包月，POSTPAID_BY_HOUR：表示后付费，即按量计费。默认：POSTPAID_BY_HOUR，如果指定预付费模式，参数InstanceChargePrepaid必填。</p>
         :type InstanceChargeType: str
-        :param _InstanceChargePrepaid: 预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月实例的购买时长、是否设置自动续费等属性。若指定实例的付费模式为预付费则该参数必传。
+        :param _InstanceChargePrepaid: <p>预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月实例的购买时长、是否设置自动续费等属性。若指定实例的付费模式为预付费则该参数必传。</p>
         :type InstanceChargePrepaid: :class:`tencentcloud.vpc.v20170312.models.InstanceChargePrepaid`
-        :param _Zone: 可用区，如：ap-guangzhou-2。
+        :param _Zone: <p>可用区，如：ap-guangzhou-2。</p>
         :type Zone: str
-        :param _Type: VPN网关类型，默认为IPSEC。值“IPSEC”为VPC型IPSEC VPN网关，值“SSL”为VPC型SSL VPN网关，值“CCN”为云联网型IPSEC VPN网关，值“SSL_CCN”为云联网型SSL VPN网关。
+        :param _Type: <p>VPN网关类型，默认为IPSEC。值“IPSEC”为VPC型IPSEC VPN网关，值“SSL”为VPC型SSL VPN网关，值“CCN”为云联网型IPSEC VPN网关，值“SSL_CCN”为云联网型SSL VPN网关。</p>
         :type Type: str
-        :param _Tags: 指定绑定的标签列表，例如：[{"Key": "city", "Value": "shanghai"}]。
+        :param _Tags: <p>指定绑定的标签列表，例如：[{&quot;Key&quot;: &quot;city&quot;, &quot;Value&quot;: &quot;shanghai&quot;}]。</p>
         :type Tags: list of Tag
-        :param _CdcId: CDC实例ID。
+        :param _CdcId: <p>CDC实例ID。</p>
         :type CdcId: str
-        :param _MaxConnection: SSL VPN连接数设置，可选规格：5, 10, 20, 50, 100, 200, 500, 1000；单位：个。仅 SSL / SSL_CCN 类型需要选这个参数。
+        :param _MaxConnection: <p>SSL VPN连接数设置，可选规格：5, 10, 20, 50, 100, 200, 500, 1000；</p><p>单位：个</p><p>默认值：5</p><p>仅 SSL / SSL_CCN 类型需要填这个参数。</p>
         :type MaxConnection: int
-        :param _BgpAsn: BGP ASN。
+        :param _BgpAsn: <p>BGP ASN。</p>
         :type BgpAsn: int
         """
         self._VpcId = None
@@ -18247,7 +18262,7 @@ class CreateVpnGatewayRequest(AbstractModel):
 
     @property
     def VpcId(self):
-        r"""VPC实例ID。可通过[DescribeVpcs](https://cloud.tencent.com/document/product/215/15778)接口返回值中的VpcId获取。
+        r"""<p>VPC实例ID。可通过<a href="https://cloud.tencent.com/document/product/215/15778">DescribeVpcs</a>。接口返回值中的VpcId获取</p><p>入参限制：当Type为CCN/SSL_CCN 类型时传 &quot;&quot;，IPSEC/SSL 类型必须传对应VPC实例ID。</p>
         :rtype: str
         """
         return self._VpcId
@@ -18258,7 +18273,7 @@ class CreateVpnGatewayRequest(AbstractModel):
 
     @property
     def VpnGatewayName(self):
-        r"""VPN网关名称，最大长度不能超过60个字节。
+        r"""<p>VPN网关名称，最大长度不能超过60个字节。</p>
         :rtype: str
         """
         return self._VpnGatewayName
@@ -18269,7 +18284,7 @@ class CreateVpnGatewayRequest(AbstractModel):
 
     @property
     def InternetMaxBandwidthOut(self):
-        r"""公网带宽设置。可选带宽规格：5, 10, 20, 50, 100, 200, 500, 1000, 3000；单位：Mbps。
+        r"""<p>公网带宽设置。可选带宽规格：5, 10, 20, 50, 100, 200, 500, 1000, 3000；单位：Mbps。</p>
         :rtype: int
         """
         return self._InternetMaxBandwidthOut
@@ -18280,7 +18295,7 @@ class CreateVpnGatewayRequest(AbstractModel):
 
     @property
     def InstanceChargeType(self):
-        r"""VPN网关计费模式，PREPAID：表示预付费，即包年包月，POSTPAID_BY_HOUR：表示后付费，即按量计费。默认：POSTPAID_BY_HOUR，如果指定预付费模式，参数InstanceChargePrepaid必填。
+        r"""<p>VPN网关计费模式，PREPAID：表示预付费，即包年包月，POSTPAID_BY_HOUR：表示后付费，即按量计费。默认：POSTPAID_BY_HOUR，如果指定预付费模式，参数InstanceChargePrepaid必填。</p>
         :rtype: str
         """
         return self._InstanceChargeType
@@ -18291,7 +18306,7 @@ class CreateVpnGatewayRequest(AbstractModel):
 
     @property
     def InstanceChargePrepaid(self):
-        r"""预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月实例的购买时长、是否设置自动续费等属性。若指定实例的付费模式为预付费则该参数必传。
+        r"""<p>预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月实例的购买时长、是否设置自动续费等属性。若指定实例的付费模式为预付费则该参数必传。</p>
         :rtype: :class:`tencentcloud.vpc.v20170312.models.InstanceChargePrepaid`
         """
         return self._InstanceChargePrepaid
@@ -18302,7 +18317,7 @@ class CreateVpnGatewayRequest(AbstractModel):
 
     @property
     def Zone(self):
-        r"""可用区，如：ap-guangzhou-2。
+        r"""<p>可用区，如：ap-guangzhou-2。</p>
         :rtype: str
         """
         return self._Zone
@@ -18313,7 +18328,7 @@ class CreateVpnGatewayRequest(AbstractModel):
 
     @property
     def Type(self):
-        r"""VPN网关类型，默认为IPSEC。值“IPSEC”为VPC型IPSEC VPN网关，值“SSL”为VPC型SSL VPN网关，值“CCN”为云联网型IPSEC VPN网关，值“SSL_CCN”为云联网型SSL VPN网关。
+        r"""<p>VPN网关类型，默认为IPSEC。值“IPSEC”为VPC型IPSEC VPN网关，值“SSL”为VPC型SSL VPN网关，值“CCN”为云联网型IPSEC VPN网关，值“SSL_CCN”为云联网型SSL VPN网关。</p>
         :rtype: str
         """
         return self._Type
@@ -18324,7 +18339,7 @@ class CreateVpnGatewayRequest(AbstractModel):
 
     @property
     def Tags(self):
-        r"""指定绑定的标签列表，例如：[{"Key": "city", "Value": "shanghai"}]。
+        r"""<p>指定绑定的标签列表，例如：[{&quot;Key&quot;: &quot;city&quot;, &quot;Value&quot;: &quot;shanghai&quot;}]。</p>
         :rtype: list of Tag
         """
         return self._Tags
@@ -18335,7 +18350,7 @@ class CreateVpnGatewayRequest(AbstractModel):
 
     @property
     def CdcId(self):
-        r"""CDC实例ID。
+        r"""<p>CDC实例ID。</p>
         :rtype: str
         """
         return self._CdcId
@@ -18346,7 +18361,7 @@ class CreateVpnGatewayRequest(AbstractModel):
 
     @property
     def MaxConnection(self):
-        r"""SSL VPN连接数设置，可选规格：5, 10, 20, 50, 100, 200, 500, 1000；单位：个。仅 SSL / SSL_CCN 类型需要选这个参数。
+        r"""<p>SSL VPN连接数设置，可选规格：5, 10, 20, 50, 100, 200, 500, 1000；</p><p>单位：个</p><p>默认值：5</p><p>仅 SSL / SSL_CCN 类型需要填这个参数。</p>
         :rtype: int
         """
         return self._MaxConnection
@@ -18357,7 +18372,7 @@ class CreateVpnGatewayRequest(AbstractModel):
 
     @property
     def BgpAsn(self):
-        r"""BGP ASN。
+        r"""<p>BGP ASN。</p>
         :rtype: int
         """
         return self._BgpAsn
@@ -18403,7 +18418,7 @@ class CreateVpnGatewayResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _VpnGateway: VPN网关对象
+        :param _VpnGateway: <p>VPN网关对象</p>
         :type VpnGateway: :class:`tencentcloud.vpc.v20170312.models.VpnGateway`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -18413,7 +18428,7 @@ class CreateVpnGatewayResponse(AbstractModel):
 
     @property
     def VpnGateway(self):
-        r"""VPN网关对象
+        r"""<p>VPN网关对象</p>
         :rtype: :class:`tencentcloud.vpc.v20170312.models.VpnGateway`
         """
         return self._VpnGateway
@@ -47880,9 +47895,9 @@ class IKEOptionsSpecification(AbstractModel):
         :type RemoteFqdnName: str
         :param _DhGroupName: <p>DH group，指定IKE交换密钥时使用的DH组，可选值：&#39;GROUP1&#39;, &#39;GROUP2&#39;, &#39;GROUP5&#39;, &#39;GROUP14&#39;, &#39;GROUP15&#39;, &#39;GROUP16&#39;, &#39;GROUP19&#39;, &#39;GROUP20&#39;, &#39;GROUP21&#39;, &#39;GROUP24&#39;，默认是GROUP1。</p>
         :type DhGroupName: str
-        :param _IKESaLifetimeSeconds: <p>IKE SA Lifetime，单位：秒，设置IKE SA的生存周期，取值范围：60-604800</p>
+        :param _IKESaLifetimeSeconds: <p>IKE SA Lifetime，单位：秒，设置IKE SA的生存周期</p><p>取值范围：[60, 604800]</p><p>默认值：86400</p>
         :type IKESaLifetimeSeconds: int
-        :param _IKEVersion: <p>IKE版本</p>
+        :param _IKEVersion: <p>IKE版本</p><p>枚举值：</p><ul><li>IKEV1： IKEV1版本</li><li>IKEV2： IKEV2版本</li></ul><p>默认值：IKEV1</p>
         :type IKEVersion: str
         """
         self._PropoEncryAlgorithm = None
@@ -48010,7 +48025,7 @@ class IKEOptionsSpecification(AbstractModel):
 
     @property
     def IKESaLifetimeSeconds(self):
-        r"""<p>IKE SA Lifetime，单位：秒，设置IKE SA的生存周期，取值范围：60-604800</p>
+        r"""<p>IKE SA Lifetime，单位：秒，设置IKE SA的生存周期</p><p>取值范围：[60, 604800]</p><p>默认值：86400</p>
         :rtype: int
         """
         return self._IKESaLifetimeSeconds
@@ -48021,7 +48036,7 @@ class IKEOptionsSpecification(AbstractModel):
 
     @property
     def IKEVersion(self):
-        r"""<p>IKE版本</p>
+        r"""<p>IKE版本</p><p>枚举值：</p><ul><li>IKEV1： IKEV1版本</li><li>IKEV2： IKEV2版本</li></ul><p>默认值：IKEV1</p>
         :rtype: str
         """
         return self._IKEVersion
@@ -48061,9 +48076,9 @@ class IPSECOptionsSpecification(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _EncryptAlgorithm: <p>加密算法，可选值：&#39;3DES-CBC&#39;, &#39;AES-CBC-128&#39;, &#39;AES-CBC-192&#39;, &#39;AES-CBC-256&#39;, &#39;DES-CBC&#39;, &#39;SM4&#39;, &#39;NULL&#39;， 默认为AES-CBC-128</p>
+        :param _EncryptAlgorithm: <p>加密算法，可选值：&#39;3DES-CBC&#39;, &#39;AES-CBC-128&#39;, &#39;AES-CBC-192&#39;, &#39;AES-CBC-256&#39;, &#39;DES-CBC&#39;, &#39;SM4&#39;, &#39;NULL&#39;</p><p>默认值：AES-CBC-128</p>
         :type EncryptAlgorithm: str
-        :param _IntegrityAlgorith: <p>认证算法：可选值：&#39;MD5&#39;, &#39;SHA1&#39;，&#39;SHA-256&#39; 默认为</p>
+        :param _IntegrityAlgorith: <p>认证算法：可选值：&#39;MD5&#39;, &#39;SHA1&#39;, &#39;SHA-256&#39;, &#39;SHA-512&#39;, &#39;SHA-384&#39;, &#39;SM3&#39;</p><p>默认值：SHA1</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type IntegrityAlgorith: str
         :param _IPSECSaLifetimeSeconds: <p>IPsec SA lifetime(s)</p><p>取值范围：[180, 604800]</p><p>单位：秒</p><p>默认值：14400</p>
@@ -48084,7 +48099,7 @@ class IPSECOptionsSpecification(AbstractModel):
 
     @property
     def EncryptAlgorithm(self):
-        r"""<p>加密算法，可选值：&#39;3DES-CBC&#39;, &#39;AES-CBC-128&#39;, &#39;AES-CBC-192&#39;, &#39;AES-CBC-256&#39;, &#39;DES-CBC&#39;, &#39;SM4&#39;, &#39;NULL&#39;， 默认为AES-CBC-128</p>
+        r"""<p>加密算法，可选值：&#39;3DES-CBC&#39;, &#39;AES-CBC-128&#39;, &#39;AES-CBC-192&#39;, &#39;AES-CBC-256&#39;, &#39;DES-CBC&#39;, &#39;SM4&#39;, &#39;NULL&#39;</p><p>默认值：AES-CBC-128</p>
         :rtype: str
         """
         return self._EncryptAlgorithm
@@ -48097,7 +48112,7 @@ class IPSECOptionsSpecification(AbstractModel):
     def IntegrityAlgorith(self):
         warnings.warn("parameter `IntegrityAlgorith` is deprecated", DeprecationWarning) 
 
-        r"""<p>认证算法：可选值：&#39;MD5&#39;, &#39;SHA1&#39;，&#39;SHA-256&#39; 默认为</p>
+        r"""<p>认证算法：可选值：&#39;MD5&#39;, &#39;SHA1&#39;, &#39;SHA-256&#39;, &#39;SHA-512&#39;, &#39;SHA-384&#39;, &#39;SM3&#39;</p><p>默认值：SHA1</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -58196,37 +58211,37 @@ class ModifyVpnConnectionAttributeRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _VpnConnectionId: VPN通道实例ID。形如：vpnx-f49l6u0z。
+        :param _VpnConnectionId: <p>VPN通道实例ID。形如：vpnx-f49l6u0z。</p>
         :type VpnConnectionId: str
-        :param _VpnConnectionName: VPN通道名称，可任意命名，但不得超过60个字符。
+        :param _VpnConnectionName: <p>VPN通道名称，可任意命名，但不得超过60个字符。</p>
         :type VpnConnectionName: str
-        :param _PreShareKey: 预共享密钥。
+        :param _PreShareKey: <p>预共享密钥。</p>
         :type PreShareKey: str
-        :param _SecurityPolicyDatabases: SPD策略组，例如：{"10.0.0.5/24":["172.123.10.5/16"]}，10.0.0.5/24是vpc内网段，172.123.10.5/16是IDC网段。用户指定VPC内哪些网段可以和您IDC中哪些网段通信。
+        :param _SecurityPolicyDatabases: <p>SPD策略组，例如：{&quot;10.0.0.5/24&quot;:[&quot;172.123.10.5/16&quot;]}，10.0.0.5/24是vpc内网段，172.123.10.5/16是IDC网段。用户指定VPC内哪些网段可以和您IDC中哪些网段通信。</p>
         :type SecurityPolicyDatabases: list of SecurityPolicyDatabase
-        :param _IKEOptionsSpecification: IKE配置（Internet Key Exchange，因特网密钥交换），IKE具有一套自我保护机制，用户配置网络安全协议。
+        :param _IKEOptionsSpecification: <p>IKE配置（Internet Key Exchange，因特网密钥交换），IKE具有一套自我保护机制，用户配置网络安全协议。</p>
         :type IKEOptionsSpecification: :class:`tencentcloud.vpc.v20170312.models.IKEOptionsSpecification`
-        :param _IPSECOptionsSpecification: IPSec配置，腾讯云提供IPSec安全会话设置。
+        :param _IPSECOptionsSpecification: <p>IPSec配置，腾讯云提供IPSec安全会话设置。</p>
         :type IPSECOptionsSpecification: :class:`tencentcloud.vpc.v20170312.models.IPSECOptionsSpecification`
-        :param _EnableHealthCheck: 是否启用通道健康检查，默认为False。
+        :param _EnableHealthCheck: <p>是否启用通道健康检查，默认为False。</p>
         :type EnableHealthCheck: bool
-        :param _HealthCheckLocalIp: 本端通道探测IP。
+        :param _HealthCheckLocalIp: <p>本端通道探测IP。</p>
         :type HealthCheckLocalIp: str
-        :param _HealthCheckRemoteIp: 对端通道探测IP。
+        :param _HealthCheckRemoteIp: <p>对端通道探测IP。</p>
         :type HealthCheckRemoteIp: str
-        :param _NegotiationType: 协商类型，默认为active（主动协商）。可选值：active（主动协商），passive（被动协商），flowTrigger（流量协商）
+        :param _NegotiationType: <p>协商类型，默认为active（主动协商）。可选值：active（主动协商），passive（被动协商），flowTrigger（流量协商）</p>
         :type NegotiationType: str
-        :param _DpdEnable: DPD探测开关。默认为0，表示关闭DPD探测。可选值：0（关闭），1（开启）
+        :param _DpdEnable: <p>DPD探测开关。默认为0，表示关闭DPD探测。可选值：0（关闭），1（开启）</p>
         :type DpdEnable: int
-        :param _DpdTimeout: DPD超时时间。即探测确认对端不存在需要的时间。dpdEnable为1（开启）时有效。默认30，单位为秒
+        :param _DpdTimeout: <p>DPD超时时间。即探测确认对端不存在需要的时间。dpdEnable为1（开启）时有效。默认30，单位为秒</p>
         :type DpdTimeout: str
-        :param _DpdAction: DPD超时后的动作。默认为clear。dpdEnable为1（开启）时有效。可取值为clear（断开）和restart（重试）
+        :param _DpdAction: <p>DPD超时后的动作。默认为clear。dpdEnable为1（开启）时有效。可取值为clear（断开）和restart（重试）</p><p>默认值：restart</p>
         :type DpdAction: str
-        :param _CustomerGatewayId: 对端网关ID，4.0及以上网关下的通道支持更新。
+        :param _CustomerGatewayId: <p>对端网关ID，4.0及以上网关下的通道支持更新。</p>
         :type CustomerGatewayId: str
-        :param _HealthCheckConfig: 健康检查配置
+        :param _HealthCheckConfig: <p>健康检查配置</p>
         :type HealthCheckConfig: :class:`tencentcloud.vpc.v20170312.models.HealthCheckConfig`
-        :param _BgpConfig: BGP隧道配置
+        :param _BgpConfig: <p>BGP隧道配置</p>
         :type BgpConfig: :class:`tencentcloud.vpc.v20170312.models.BgpConfig`
         """
         self._VpnConnectionId = None
@@ -58248,7 +58263,7 @@ class ModifyVpnConnectionAttributeRequest(AbstractModel):
 
     @property
     def VpnConnectionId(self):
-        r"""VPN通道实例ID。形如：vpnx-f49l6u0z。
+        r"""<p>VPN通道实例ID。形如：vpnx-f49l6u0z。</p>
         :rtype: str
         """
         return self._VpnConnectionId
@@ -58259,7 +58274,7 @@ class ModifyVpnConnectionAttributeRequest(AbstractModel):
 
     @property
     def VpnConnectionName(self):
-        r"""VPN通道名称，可任意命名，但不得超过60个字符。
+        r"""<p>VPN通道名称，可任意命名，但不得超过60个字符。</p>
         :rtype: str
         """
         return self._VpnConnectionName
@@ -58270,7 +58285,7 @@ class ModifyVpnConnectionAttributeRequest(AbstractModel):
 
     @property
     def PreShareKey(self):
-        r"""预共享密钥。
+        r"""<p>预共享密钥。</p>
         :rtype: str
         """
         return self._PreShareKey
@@ -58281,7 +58296,7 @@ class ModifyVpnConnectionAttributeRequest(AbstractModel):
 
     @property
     def SecurityPolicyDatabases(self):
-        r"""SPD策略组，例如：{"10.0.0.5/24":["172.123.10.5/16"]}，10.0.0.5/24是vpc内网段，172.123.10.5/16是IDC网段。用户指定VPC内哪些网段可以和您IDC中哪些网段通信。
+        r"""<p>SPD策略组，例如：{&quot;10.0.0.5/24&quot;:[&quot;172.123.10.5/16&quot;]}，10.0.0.5/24是vpc内网段，172.123.10.5/16是IDC网段。用户指定VPC内哪些网段可以和您IDC中哪些网段通信。</p>
         :rtype: list of SecurityPolicyDatabase
         """
         return self._SecurityPolicyDatabases
@@ -58292,7 +58307,7 @@ class ModifyVpnConnectionAttributeRequest(AbstractModel):
 
     @property
     def IKEOptionsSpecification(self):
-        r"""IKE配置（Internet Key Exchange，因特网密钥交换），IKE具有一套自我保护机制，用户配置网络安全协议。
+        r"""<p>IKE配置（Internet Key Exchange，因特网密钥交换），IKE具有一套自我保护机制，用户配置网络安全协议。</p>
         :rtype: :class:`tencentcloud.vpc.v20170312.models.IKEOptionsSpecification`
         """
         return self._IKEOptionsSpecification
@@ -58303,7 +58318,7 @@ class ModifyVpnConnectionAttributeRequest(AbstractModel):
 
     @property
     def IPSECOptionsSpecification(self):
-        r"""IPSec配置，腾讯云提供IPSec安全会话设置。
+        r"""<p>IPSec配置，腾讯云提供IPSec安全会话设置。</p>
         :rtype: :class:`tencentcloud.vpc.v20170312.models.IPSECOptionsSpecification`
         """
         return self._IPSECOptionsSpecification
@@ -58314,7 +58329,7 @@ class ModifyVpnConnectionAttributeRequest(AbstractModel):
 
     @property
     def EnableHealthCheck(self):
-        r"""是否启用通道健康检查，默认为False。
+        r"""<p>是否启用通道健康检查，默认为False。</p>
         :rtype: bool
         """
         return self._EnableHealthCheck
@@ -58325,7 +58340,7 @@ class ModifyVpnConnectionAttributeRequest(AbstractModel):
 
     @property
     def HealthCheckLocalIp(self):
-        r"""本端通道探测IP。
+        r"""<p>本端通道探测IP。</p>
         :rtype: str
         """
         return self._HealthCheckLocalIp
@@ -58336,7 +58351,7 @@ class ModifyVpnConnectionAttributeRequest(AbstractModel):
 
     @property
     def HealthCheckRemoteIp(self):
-        r"""对端通道探测IP。
+        r"""<p>对端通道探测IP。</p>
         :rtype: str
         """
         return self._HealthCheckRemoteIp
@@ -58347,7 +58362,7 @@ class ModifyVpnConnectionAttributeRequest(AbstractModel):
 
     @property
     def NegotiationType(self):
-        r"""协商类型，默认为active（主动协商）。可选值：active（主动协商），passive（被动协商），flowTrigger（流量协商）
+        r"""<p>协商类型，默认为active（主动协商）。可选值：active（主动协商），passive（被动协商），flowTrigger（流量协商）</p>
         :rtype: str
         """
         return self._NegotiationType
@@ -58358,7 +58373,7 @@ class ModifyVpnConnectionAttributeRequest(AbstractModel):
 
     @property
     def DpdEnable(self):
-        r"""DPD探测开关。默认为0，表示关闭DPD探测。可选值：0（关闭），1（开启）
+        r"""<p>DPD探测开关。默认为0，表示关闭DPD探测。可选值：0（关闭），1（开启）</p>
         :rtype: int
         """
         return self._DpdEnable
@@ -58369,7 +58384,7 @@ class ModifyVpnConnectionAttributeRequest(AbstractModel):
 
     @property
     def DpdTimeout(self):
-        r"""DPD超时时间。即探测确认对端不存在需要的时间。dpdEnable为1（开启）时有效。默认30，单位为秒
+        r"""<p>DPD超时时间。即探测确认对端不存在需要的时间。dpdEnable为1（开启）时有效。默认30，单位为秒</p>
         :rtype: str
         """
         return self._DpdTimeout
@@ -58380,7 +58395,7 @@ class ModifyVpnConnectionAttributeRequest(AbstractModel):
 
     @property
     def DpdAction(self):
-        r"""DPD超时后的动作。默认为clear。dpdEnable为1（开启）时有效。可取值为clear（断开）和restart（重试）
+        r"""<p>DPD超时后的动作。默认为clear。dpdEnable为1（开启）时有效。可取值为clear（断开）和restart（重试）</p><p>默认值：restart</p>
         :rtype: str
         """
         return self._DpdAction
@@ -58391,7 +58406,7 @@ class ModifyVpnConnectionAttributeRequest(AbstractModel):
 
     @property
     def CustomerGatewayId(self):
-        r"""对端网关ID，4.0及以上网关下的通道支持更新。
+        r"""<p>对端网关ID，4.0及以上网关下的通道支持更新。</p>
         :rtype: str
         """
         return self._CustomerGatewayId
@@ -58402,7 +58417,7 @@ class ModifyVpnConnectionAttributeRequest(AbstractModel):
 
     @property
     def HealthCheckConfig(self):
-        r"""健康检查配置
+        r"""<p>健康检查配置</p>
         :rtype: :class:`tencentcloud.vpc.v20170312.models.HealthCheckConfig`
         """
         return self._HealthCheckConfig
@@ -58413,7 +58428,7 @@ class ModifyVpnConnectionAttributeRequest(AbstractModel):
 
     @property
     def BgpConfig(self):
-        r"""BGP隧道配置
+        r"""<p>BGP隧道配置</p>
         :rtype: :class:`tencentcloud.vpc.v20170312.models.BgpConfig`
         """
         return self._BgpConfig

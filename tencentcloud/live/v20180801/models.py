@@ -763,24 +763,21 @@ class AddLiveWatermarkRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _PictureUrl: 水印图片 URL。
-URL中禁止包含的字符：
- ;(){}$>`#"\'|
+        :param _PictureUrl: <p>水印图片 URL。<br>URL中禁止包含的字符：<br> ;(){}$&gt;`#&quot;'|</p>
         :type PictureUrl: str
-        :param _WatermarkName: 水印名称。
-最长30字节。
+        :param _WatermarkName: <p>水印名称。<br>最长30字节。</p>
         :type WatermarkName: str
-        :param _XPosition: 显示位置，X轴偏移，单位是百分比，默认 0。
+        :param _XPosition: <p>显示位置，X轴偏移，单位是百分比，默认 0。</p>
         :type XPosition: int
-        :param _YPosition: 显示位置，Y轴偏移，单位是百分比，默认 0。
+        :param _YPosition: <p>显示位置，Y轴偏移，单位是百分比，默认 0。</p>
         :type YPosition: int
-        :param _Width: 水印宽度，占直播原始画面宽度百分比，建议高宽只设置一项，另外一项会自适应缩放，避免变形。默认原始宽度。
+        :param _Width: <p>水印宽度，占直播原始画面宽度百分比，建议高宽只设置一项，另外一项会自适应缩放，避免变形。默认原始宽度。</p>
         :type Width: int
-        :param _Height: 水印高度，占直播原始画面高度百分比，建议高宽只设置一项，另外一项会自适应缩放，避免变形。默认原始高度。
+        :param _Height: <p>水印高度，占直播原始画面高度百分比，建议高宽只设置一项，另外一项会自适应缩放，避免变形。默认原始高度。</p>
         :type Height: int
-        :param _BackgroundWidth: 背景水印宽度。默认宽度1920。
+        :param _BackgroundWidth: <p>背景水印宽度。默认宽度1920。</p><p>取值范围：[360, 4096]</p><p>单位：px</p>
         :type BackgroundWidth: int
-        :param _BackgroundHeight: 背景水印高度。默认高度1080。
+        :param _BackgroundHeight: <p>背景水印高度。默认高度1080。</p><p>取值范围：[360, 4096]</p><p>单位：px</p>
         :type BackgroundHeight: int
         """
         self._PictureUrl = None
@@ -794,9 +791,7 @@ URL中禁止包含的字符：
 
     @property
     def PictureUrl(self):
-        r"""水印图片 URL。
-URL中禁止包含的字符：
- ;(){}$>`#"\'|
+        r"""<p>水印图片 URL。<br>URL中禁止包含的字符：<br> ;(){}$&gt;`#&quot;'|</p>
         :rtype: str
         """
         return self._PictureUrl
@@ -807,8 +802,7 @@ URL中禁止包含的字符：
 
     @property
     def WatermarkName(self):
-        r"""水印名称。
-最长30字节。
+        r"""<p>水印名称。<br>最长30字节。</p>
         :rtype: str
         """
         return self._WatermarkName
@@ -819,7 +813,7 @@ URL中禁止包含的字符：
 
     @property
     def XPosition(self):
-        r"""显示位置，X轴偏移，单位是百分比，默认 0。
+        r"""<p>显示位置，X轴偏移，单位是百分比，默认 0。</p>
         :rtype: int
         """
         return self._XPosition
@@ -830,7 +824,7 @@ URL中禁止包含的字符：
 
     @property
     def YPosition(self):
-        r"""显示位置，Y轴偏移，单位是百分比，默认 0。
+        r"""<p>显示位置，Y轴偏移，单位是百分比，默认 0。</p>
         :rtype: int
         """
         return self._YPosition
@@ -841,7 +835,7 @@ URL中禁止包含的字符：
 
     @property
     def Width(self):
-        r"""水印宽度，占直播原始画面宽度百分比，建议高宽只设置一项，另外一项会自适应缩放，避免变形。默认原始宽度。
+        r"""<p>水印宽度，占直播原始画面宽度百分比，建议高宽只设置一项，另外一项会自适应缩放，避免变形。默认原始宽度。</p>
         :rtype: int
         """
         return self._Width
@@ -852,7 +846,7 @@ URL中禁止包含的字符：
 
     @property
     def Height(self):
-        r"""水印高度，占直播原始画面高度百分比，建议高宽只设置一项，另外一项会自适应缩放，避免变形。默认原始高度。
+        r"""<p>水印高度，占直播原始画面高度百分比，建议高宽只设置一项，另外一项会自适应缩放，避免变形。默认原始高度。</p>
         :rtype: int
         """
         return self._Height
@@ -863,7 +857,7 @@ URL中禁止包含的字符：
 
     @property
     def BackgroundWidth(self):
-        r"""背景水印宽度。默认宽度1920。
+        r"""<p>背景水印宽度。默认宽度1920。</p><p>取值范围：[360, 4096]</p><p>单位：px</p>
         :rtype: int
         """
         return self._BackgroundWidth
@@ -874,7 +868,7 @@ URL中禁止包含的字符：
 
     @property
     def BackgroundHeight(self):
-        r"""背景水印高度。默认高度1080。
+        r"""<p>背景水印高度。默认高度1080。</p><p>取值范围：[360, 4096]</p><p>单位：px</p>
         :rtype: int
         """
         return self._BackgroundHeight
@@ -910,7 +904,7 @@ class AddLiveWatermarkResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _WatermarkId: 水印ID。
+        :param _WatermarkId: <p>水印ID。</p>
         :type WatermarkId: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -920,7 +914,7 @@ class AddLiveWatermarkResponse(AbstractModel):
 
     @property
     def WatermarkId(self):
-        r"""水印ID。
+        r"""<p>水印ID。</p>
         :rtype: int
         """
         return self._WatermarkId

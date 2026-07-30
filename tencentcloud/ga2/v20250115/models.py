@@ -6368,9 +6368,9 @@ class HideResponseHeaders(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Key: <p>key</p><p>入参限制：长度不能超过128</p><p>如果字符串包含$，那仅能配置&#39;$remote_addr&#39;, &#39;$remote_port&#39;，否则不支持。</p>
+        :param _Key: <p>key</p><p>参数格式：1、字符串只包含可打印的ASCII字符 2、不能包含这些字符()&lt;&gt;@,;:\&quot;/[ ]?={ }</p><p>入参限制：长度在1-40。</p>
         :type Key: str
-        :param _Value: <p>value</p><p>当前传&#39;&#39;值即可。</p>
+        :param _Value: <p>value</p><p>当前仅支持传空字符串&quot;&quot;</p>
         :type Value: str
         """
         self._Key = None
@@ -6378,7 +6378,7 @@ class HideResponseHeaders(AbstractModel):
 
     @property
     def Key(self):
-        r"""<p>key</p><p>入参限制：长度不能超过128</p><p>如果字符串包含$，那仅能配置&#39;$remote_addr&#39;, &#39;$remote_port&#39;，否则不支持。</p>
+        r"""<p>key</p><p>参数格式：1、字符串只包含可打印的ASCII字符 2、不能包含这些字符()&lt;&gt;@,;:\&quot;/[ ]?={ }</p><p>入参限制：长度在1-40。</p>
         :rtype: str
         """
         return self._Key
@@ -6389,7 +6389,7 @@ class HideResponseHeaders(AbstractModel):
 
     @property
     def Value(self):
-        r"""<p>value</p><p>当前传&#39;&#39;值即可。</p>
+        r"""<p>value</p><p>当前仅支持传空字符串&quot;&quot;</p>
         :rtype: str
         """
         return self._Value

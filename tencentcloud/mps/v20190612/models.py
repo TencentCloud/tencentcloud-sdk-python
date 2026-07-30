@@ -7056,6 +7056,74 @@ class AiContentReviewTaskInput(AbstractModel):
         
 
 
+class AiCutoutConfig(AbstractModel):
+    r"""智能抠图配置。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Switch: <p>能力配置开关，可选值：  ON：开启； OFF：关闭。 默认值：ON。</p>
+        :type Switch: str
+        :param _Type: <p>抠图目标类型指定：&quot;foreground&quot;（默认）/ &quot;pattern&quot;</p>
+        :type Type: str
+        :param _PatternConfig: <p>图案抠图配置。仅在Type为pattern时生效。</p>
+        :type PatternConfig: :class:`tencentcloud.mps.v20190612.models.PatternConfig`
+        """
+        self._Switch = None
+        self._Type = None
+        self._PatternConfig = None
+
+    @property
+    def Switch(self):
+        r"""<p>能力配置开关，可选值：  ON：开启； OFF：关闭。 默认值：ON。</p>
+        :rtype: str
+        """
+        return self._Switch
+
+    @Switch.setter
+    def Switch(self, Switch):
+        self._Switch = Switch
+
+    @property
+    def Type(self):
+        r"""<p>抠图目标类型指定：&quot;foreground&quot;（默认）/ &quot;pattern&quot;</p>
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def PatternConfig(self):
+        r"""<p>图案抠图配置。仅在Type为pattern时生效。</p>
+        :rtype: :class:`tencentcloud.mps.v20190612.models.PatternConfig`
+        """
+        return self._PatternConfig
+
+    @PatternConfig.setter
+    def PatternConfig(self, PatternConfig):
+        self._PatternConfig = PatternConfig
+
+
+    def _deserialize(self, params):
+        self._Switch = params.get("Switch")
+        self._Type = params.get("Type")
+        if params.get("PatternConfig") is not None:
+            self._PatternConfig = PatternConfig()
+            self._PatternConfig._deserialize(params.get("PatternConfig"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AiDramaInput(AbstractModel):
     r"""Ai自动生成漫剧的输入
 
@@ -7127,6 +7195,87 @@ class AiDramaInput(AbstractModel):
         self._Style = params.get("Style")
         self._Ratio = params.get("Ratio")
         self._Resolution = params.get("Resolution")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AiExpansionConfig(AbstractModel):
+    r"""智能扩图配置。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Switch: <p>能力配置开关，可选值：  ON：开启； OFF：关闭。 默认值：ON。</p>
+        :type Switch: str
+        :param _AspectRatio: <p>目标比例，如 &quot;16:9&quot;</p>
+        :type AspectRatio: str
+        :param _Width: <p>目标宽度（像素）</p><p>取值范围：[0, 2048]</p>
+        :type Width: int
+        :param _Height: <p>目标高度（像素）</p><p>取值范围：[0, 2048]</p>
+        :type Height: int
+        """
+        self._Switch = None
+        self._AspectRatio = None
+        self._Width = None
+        self._Height = None
+
+    @property
+    def Switch(self):
+        r"""<p>能力配置开关，可选值：  ON：开启； OFF：关闭。 默认值：ON。</p>
+        :rtype: str
+        """
+        return self._Switch
+
+    @Switch.setter
+    def Switch(self, Switch):
+        self._Switch = Switch
+
+    @property
+    def AspectRatio(self):
+        r"""<p>目标比例，如 &quot;16:9&quot;</p>
+        :rtype: str
+        """
+        return self._AspectRatio
+
+    @AspectRatio.setter
+    def AspectRatio(self, AspectRatio):
+        self._AspectRatio = AspectRatio
+
+    @property
+    def Width(self):
+        r"""<p>目标宽度（像素）</p><p>取值范围：[0, 2048]</p>
+        :rtype: int
+        """
+        return self._Width
+
+    @Width.setter
+    def Width(self, Width):
+        self._Width = Width
+
+    @property
+    def Height(self):
+        r"""<p>目标高度（像素）</p><p>取值范围：[0, 2048]</p>
+        :rtype: int
+        """
+        return self._Height
+
+    @Height.setter
+    def Height(self, Height):
+        self._Height = Height
+
+
+    def _deserialize(self, params):
+        self._Switch = params.get("Switch")
+        self._AspectRatio = params.get("AspectRatio")
+        self._Width = params.get("Width")
+        self._Height = params.get("Height")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -13166,6 +13315,57 @@ class AiSampleWordInfo(AbstractModel):
     def _deserialize(self, params):
         self._Keyword = params.get("Keyword")
         self._Tags = params.get("Tags")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AiStoryboardConfig(AbstractModel):
+    r"""智能分镜拆解配置。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Switch: <p>能力配置开关，可选值：  ON：开启； OFF：关闭。 默认值：ON。</p>
+        :type Switch: str
+        :param _ProcessIndex: <p>指定提取的分镜图的序号，从0开始计数，不填写则返回所有分镜图。</p>
+        :type ProcessIndex: int
+        """
+        self._Switch = None
+        self._ProcessIndex = None
+
+    @property
+    def Switch(self):
+        r"""<p>能力配置开关，可选值：  ON：开启； OFF：关闭。 默认值：ON。</p>
+        :rtype: str
+        """
+        return self._Switch
+
+    @Switch.setter
+    def Switch(self, Switch):
+        self._Switch = Switch
+
+    @property
+    def ProcessIndex(self):
+        r"""<p>指定提取的分镜图的序号，从0开始计数，不填写则返回所有分镜图。</p>
+        :rtype: int
+        """
+        return self._ProcessIndex
+
+    @ProcessIndex.setter
+    def ProcessIndex(self, ProcessIndex):
+        self._ProcessIndex = ProcessIndex
+
+
+    def _deserialize(self, params):
+        self._Switch = params.get("Switch")
+        self._ProcessIndex = params.get("ProcessIndex")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -53260,6 +53460,12 @@ class ImageTaskInput(AbstractModel):
         :type AiPosterSuiteConfig: :class:`tencentcloud.mps.v20190612.models.AiPosterSuiteConfig`
         :param _CreateImageConfig: <p>生图任务配置</p>
         :type CreateImageConfig: :class:`tencentcloud.mps.v20190612.models.CreateImageConfig`
+        :param _AiCutoutConfig: <p>Ai抠图配置</p>
+        :type AiCutoutConfig: :class:`tencentcloud.mps.v20190612.models.AiCutoutConfig`
+        :param _AiExpansionConfig: <p>Ai扩图配置</p>
+        :type AiExpansionConfig: :class:`tencentcloud.mps.v20190612.models.AiExpansionConfig`
+        :param _AiStoryboardConfig: <p>Ai分镜拆解配置</p>
+        :type AiStoryboardConfig: :class:`tencentcloud.mps.v20190612.models.AiStoryboardConfig`
         """
         self._EncodeConfig = None
         self._EnhanceConfig = None
@@ -53270,6 +53476,9 @@ class ImageTaskInput(AbstractModel):
         self._AiTryOnConfig = None
         self._AiPosterSuiteConfig = None
         self._CreateImageConfig = None
+        self._AiCutoutConfig = None
+        self._AiExpansionConfig = None
+        self._AiStoryboardConfig = None
 
     @property
     def EncodeConfig(self):
@@ -53374,6 +53583,39 @@ class ImageTaskInput(AbstractModel):
     def CreateImageConfig(self, CreateImageConfig):
         self._CreateImageConfig = CreateImageConfig
 
+    @property
+    def AiCutoutConfig(self):
+        r"""<p>Ai抠图配置</p>
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiCutoutConfig`
+        """
+        return self._AiCutoutConfig
+
+    @AiCutoutConfig.setter
+    def AiCutoutConfig(self, AiCutoutConfig):
+        self._AiCutoutConfig = AiCutoutConfig
+
+    @property
+    def AiExpansionConfig(self):
+        r"""<p>Ai扩图配置</p>
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiExpansionConfig`
+        """
+        return self._AiExpansionConfig
+
+    @AiExpansionConfig.setter
+    def AiExpansionConfig(self, AiExpansionConfig):
+        self._AiExpansionConfig = AiExpansionConfig
+
+    @property
+    def AiStoryboardConfig(self):
+        r"""<p>Ai分镜拆解配置</p>
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiStoryboardConfig`
+        """
+        return self._AiStoryboardConfig
+
+    @AiStoryboardConfig.setter
+    def AiStoryboardConfig(self, AiStoryboardConfig):
+        self._AiStoryboardConfig = AiStoryboardConfig
+
 
     def _deserialize(self, params):
         if params.get("EncodeConfig") is not None:
@@ -53403,6 +53645,15 @@ class ImageTaskInput(AbstractModel):
         if params.get("CreateImageConfig") is not None:
             self._CreateImageConfig = CreateImageConfig()
             self._CreateImageConfig._deserialize(params.get("CreateImageConfig"))
+        if params.get("AiCutoutConfig") is not None:
+            self._AiCutoutConfig = AiCutoutConfig()
+            self._AiCutoutConfig._deserialize(params.get("AiCutoutConfig"))
+        if params.get("AiExpansionConfig") is not None:
+            self._AiExpansionConfig = AiExpansionConfig()
+            self._AiExpansionConfig._deserialize(params.get("AiExpansionConfig"))
+        if params.get("AiStoryboardConfig") is not None:
+            self._AiStoryboardConfig = AiStoryboardConfig()
+            self._AiStoryboardConfig._deserialize(params.get("AiStoryboardConfig"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -69694,6 +69945,102 @@ class ParseNotificationResponse(AbstractModel):
             self._ExtractBlindWatermarkTask = ExtractBlindWatermarkTask()
             self._ExtractBlindWatermarkTask._deserialize(params.get("ExtractBlindWatermarkTask"))
         self._RequestId = params.get("RequestId")
+
+
+class PatternConfig(AbstractModel):
+    r"""印花提取配置。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TransparencyThreshold: <p>透明度阈值</p><p>取值范围：[0, 255]</p><p>默认值：30</p>
+        :type TransparencyThreshold: int
+        :param _OpaqueThreshold: <p>不透明阈值，必须大于TransparencyThreshold</p><p>取值范围：[0, 255]</p><p>默认值：127</p>
+        :type OpaqueThreshold: int
+        :param _EdgeSamplingStep: <p>边缘采样步数，默认5</p><p>取值范围：[1, 10]</p>
+        :type EdgeSamplingStep: int
+        :param _EdgeExpansionStep: <p>边缘扩展步数，默认5</p>
+        :type EdgeExpansionStep: int
+        :param _EdgeBlendingIntensity: <p>边缘融合强度，默认0.5</p><p>取值范围：[0, 1.0]</p>
+        :type EdgeBlendingIntensity: float
+        """
+        self._TransparencyThreshold = None
+        self._OpaqueThreshold = None
+        self._EdgeSamplingStep = None
+        self._EdgeExpansionStep = None
+        self._EdgeBlendingIntensity = None
+
+    @property
+    def TransparencyThreshold(self):
+        r"""<p>透明度阈值</p><p>取值范围：[0, 255]</p><p>默认值：30</p>
+        :rtype: int
+        """
+        return self._TransparencyThreshold
+
+    @TransparencyThreshold.setter
+    def TransparencyThreshold(self, TransparencyThreshold):
+        self._TransparencyThreshold = TransparencyThreshold
+
+    @property
+    def OpaqueThreshold(self):
+        r"""<p>不透明阈值，必须大于TransparencyThreshold</p><p>取值范围：[0, 255]</p><p>默认值：127</p>
+        :rtype: int
+        """
+        return self._OpaqueThreshold
+
+    @OpaqueThreshold.setter
+    def OpaqueThreshold(self, OpaqueThreshold):
+        self._OpaqueThreshold = OpaqueThreshold
+
+    @property
+    def EdgeSamplingStep(self):
+        r"""<p>边缘采样步数，默认5</p><p>取值范围：[1, 10]</p>
+        :rtype: int
+        """
+        return self._EdgeSamplingStep
+
+    @EdgeSamplingStep.setter
+    def EdgeSamplingStep(self, EdgeSamplingStep):
+        self._EdgeSamplingStep = EdgeSamplingStep
+
+    @property
+    def EdgeExpansionStep(self):
+        r"""<p>边缘扩展步数，默认5</p>
+        :rtype: int
+        """
+        return self._EdgeExpansionStep
+
+    @EdgeExpansionStep.setter
+    def EdgeExpansionStep(self, EdgeExpansionStep):
+        self._EdgeExpansionStep = EdgeExpansionStep
+
+    @property
+    def EdgeBlendingIntensity(self):
+        r"""<p>边缘融合强度，默认0.5</p><p>取值范围：[0, 1.0]</p>
+        :rtype: float
+        """
+        return self._EdgeBlendingIntensity
+
+    @EdgeBlendingIntensity.setter
+    def EdgeBlendingIntensity(self, EdgeBlendingIntensity):
+        self._EdgeBlendingIntensity = EdgeBlendingIntensity
+
+
+    def _deserialize(self, params):
+        self._TransparencyThreshold = params.get("TransparencyThreshold")
+        self._OpaqueThreshold = params.get("OpaqueThreshold")
+        self._EdgeSamplingStep = params.get("EdgeSamplingStep")
+        self._EdgeExpansionStep = params.get("EdgeExpansionStep")
+        self._EdgeBlendingIntensity = params.get("EdgeBlendingIntensity")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class PidSelector(AbstractModel):

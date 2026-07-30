@@ -644,6 +644,29 @@ class LighthouseClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeBlueprintBundles(self, request):
+        r"""本接口(DescribeBlueprintBundles)用于查询镜像所对应的套餐。当前仅支持查询镜像类型为游戏专区的镜像ID。
+
+        :param request: Request instance for DescribeBlueprintBundles.
+        :type request: :class:`tencentcloud.lighthouse.v20200324.models.DescribeBlueprintBundlesRequest`
+        :rtype: :class:`tencentcloud.lighthouse.v20200324.models.DescribeBlueprintBundlesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeBlueprintBundles", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeBlueprintBundlesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeBlueprintInstances(self, request):
         r"""本接口（DescribeBlueprintInstances）用于查询镜像实例信息。
 

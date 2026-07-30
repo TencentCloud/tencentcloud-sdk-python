@@ -773,6 +773,7 @@ class LiveClient(AbstractClient):
     ) -> models.CreateLiveWatermarkRuleResponse:
         """
         创建水印规则，需要先调用[AddLiveWatermark](/document/product/267/30154)接口添加水印，将返回的水印id绑定到流使用。
+        创建规则后生效时间为10分钟，规则仅对推流时间晚于配置生效时间的流有效，对正在直播的流不生效。
         """
         
         kwargs = {}
@@ -3334,6 +3335,7 @@ class LiveClient(AbstractClient):
     ) -> models.DescribeUploadStreamNumsResponse:
         """
         直播上行路数查询。
+        数据延迟3小时左右。
         """
         
         kwargs = {}

@@ -1105,6 +1105,303 @@ NORMAL（正常）、SYNCING（同步中）、OFFLINE（下线）、CREATEFAILED
         
 
 
+class BlueprintBundle(AbstractModel):
+    r"""镜像套餐详细信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BundleId: 套餐ID。可以通过[DescribeBundles](https://cloud.tencent.com/document/product/1207/47575)接口返回的BundleId获取。
+        :type BundleId: str
+        :param _SupportLinuxUnixPlatform: 是否支持 Linux/Unix 平台。
+        :type SupportLinuxUnixPlatform: bool
+        :param _SupportWindowsPlatform: 是否支持 Windows 平台。
+        :type SupportWindowsPlatform: bool
+        :param _Price: 套餐当前单位价格信息。
+        :type Price: :class:`tencentcloud.lighthouse.v20200324.models.Price`
+        :param _BundleSalesState: 套餐售卖状态,取值:‘AVAILABLE’(可用) , ‘SOLD_OUT’(售罄)。
+        :type BundleSalesState: str
+        :param _BundleType: 套餐类型。
+        :type BundleType: str
+        :param _BundleTypeDescription: 套餐类型描述信息。
+        :type BundleTypeDescription: str
+        :param _BundleTypePriority: 套餐类型权重。取值越小排序越靠前。
+        :type BundleTypePriority: int
+        :param _BundleDisplayLabel: 套餐展示标签。
+        :type BundleDisplayLabel: str
+        :param _SupportSlot: 支持人数。
+        :type SupportSlot: int
+        :param _Memory: 内存大小，单位 GB。
+        :type Memory: int
+        :param _SystemDiskType: 系统盘类型。
+取值范围： 
+<li> CLOUD_SSD：SSD 云硬盘</li><li> CLOUD_PREMIUM：高性能云硬盘</li>
+        :type SystemDiskType: str
+        :param _SystemDiskSize: 系统盘大小。单位GB。
+        :type SystemDiskSize: int
+        :param _MonthlyTraffic: 每月网络流量，单位 GB。
+        :type MonthlyTraffic: int
+        :param _CPU: CPU 核数。
+        :type CPU: int
+        :param _InternetMaxBandwidthOut: 峰值带宽，单位 Mbps。
+        :type InternetMaxBandwidthOut: int
+        :param _InternetChargeType: 网络计费类型。
+        :type InternetChargeType: str
+        :param _TrafficUnlimited: 流量是否无上限。
+        :type TrafficUnlimited: bool
+        """
+        self._BundleId = None
+        self._SupportLinuxUnixPlatform = None
+        self._SupportWindowsPlatform = None
+        self._Price = None
+        self._BundleSalesState = None
+        self._BundleType = None
+        self._BundleTypeDescription = None
+        self._BundleTypePriority = None
+        self._BundleDisplayLabel = None
+        self._SupportSlot = None
+        self._Memory = None
+        self._SystemDiskType = None
+        self._SystemDiskSize = None
+        self._MonthlyTraffic = None
+        self._CPU = None
+        self._InternetMaxBandwidthOut = None
+        self._InternetChargeType = None
+        self._TrafficUnlimited = None
+
+    @property
+    def BundleId(self):
+        r"""套餐ID。可以通过[DescribeBundles](https://cloud.tencent.com/document/product/1207/47575)接口返回的BundleId获取。
+        :rtype: str
+        """
+        return self._BundleId
+
+    @BundleId.setter
+    def BundleId(self, BundleId):
+        self._BundleId = BundleId
+
+    @property
+    def SupportLinuxUnixPlatform(self):
+        r"""是否支持 Linux/Unix 平台。
+        :rtype: bool
+        """
+        return self._SupportLinuxUnixPlatform
+
+    @SupportLinuxUnixPlatform.setter
+    def SupportLinuxUnixPlatform(self, SupportLinuxUnixPlatform):
+        self._SupportLinuxUnixPlatform = SupportLinuxUnixPlatform
+
+    @property
+    def SupportWindowsPlatform(self):
+        r"""是否支持 Windows 平台。
+        :rtype: bool
+        """
+        return self._SupportWindowsPlatform
+
+    @SupportWindowsPlatform.setter
+    def SupportWindowsPlatform(self, SupportWindowsPlatform):
+        self._SupportWindowsPlatform = SupportWindowsPlatform
+
+    @property
+    def Price(self):
+        r"""套餐当前单位价格信息。
+        :rtype: :class:`tencentcloud.lighthouse.v20200324.models.Price`
+        """
+        return self._Price
+
+    @Price.setter
+    def Price(self, Price):
+        self._Price = Price
+
+    @property
+    def BundleSalesState(self):
+        r"""套餐售卖状态,取值:‘AVAILABLE’(可用) , ‘SOLD_OUT’(售罄)。
+        :rtype: str
+        """
+        return self._BundleSalesState
+
+    @BundleSalesState.setter
+    def BundleSalesState(self, BundleSalesState):
+        self._BundleSalesState = BundleSalesState
+
+    @property
+    def BundleType(self):
+        r"""套餐类型。
+        :rtype: str
+        """
+        return self._BundleType
+
+    @BundleType.setter
+    def BundleType(self, BundleType):
+        self._BundleType = BundleType
+
+    @property
+    def BundleTypeDescription(self):
+        r"""套餐类型描述信息。
+        :rtype: str
+        """
+        return self._BundleTypeDescription
+
+    @BundleTypeDescription.setter
+    def BundleTypeDescription(self, BundleTypeDescription):
+        self._BundleTypeDescription = BundleTypeDescription
+
+    @property
+    def BundleTypePriority(self):
+        r"""套餐类型权重。取值越小排序越靠前。
+        :rtype: int
+        """
+        return self._BundleTypePriority
+
+    @BundleTypePriority.setter
+    def BundleTypePriority(self, BundleTypePriority):
+        self._BundleTypePriority = BundleTypePriority
+
+    @property
+    def BundleDisplayLabel(self):
+        r"""套餐展示标签。
+        :rtype: str
+        """
+        return self._BundleDisplayLabel
+
+    @BundleDisplayLabel.setter
+    def BundleDisplayLabel(self, BundleDisplayLabel):
+        self._BundleDisplayLabel = BundleDisplayLabel
+
+    @property
+    def SupportSlot(self):
+        r"""支持人数。
+        :rtype: int
+        """
+        return self._SupportSlot
+
+    @SupportSlot.setter
+    def SupportSlot(self, SupportSlot):
+        self._SupportSlot = SupportSlot
+
+    @property
+    def Memory(self):
+        r"""内存大小，单位 GB。
+        :rtype: int
+        """
+        return self._Memory
+
+    @Memory.setter
+    def Memory(self, Memory):
+        self._Memory = Memory
+
+    @property
+    def SystemDiskType(self):
+        r"""系统盘类型。
+取值范围： 
+<li> CLOUD_SSD：SSD 云硬盘</li><li> CLOUD_PREMIUM：高性能云硬盘</li>
+        :rtype: str
+        """
+        return self._SystemDiskType
+
+    @SystemDiskType.setter
+    def SystemDiskType(self, SystemDiskType):
+        self._SystemDiskType = SystemDiskType
+
+    @property
+    def SystemDiskSize(self):
+        r"""系统盘大小。单位GB。
+        :rtype: int
+        """
+        return self._SystemDiskSize
+
+    @SystemDiskSize.setter
+    def SystemDiskSize(self, SystemDiskSize):
+        self._SystemDiskSize = SystemDiskSize
+
+    @property
+    def MonthlyTraffic(self):
+        r"""每月网络流量，单位 GB。
+        :rtype: int
+        """
+        return self._MonthlyTraffic
+
+    @MonthlyTraffic.setter
+    def MonthlyTraffic(self, MonthlyTraffic):
+        self._MonthlyTraffic = MonthlyTraffic
+
+    @property
+    def CPU(self):
+        r"""CPU 核数。
+        :rtype: int
+        """
+        return self._CPU
+
+    @CPU.setter
+    def CPU(self, CPU):
+        self._CPU = CPU
+
+    @property
+    def InternetMaxBandwidthOut(self):
+        r"""峰值带宽，单位 Mbps。
+        :rtype: int
+        """
+        return self._InternetMaxBandwidthOut
+
+    @InternetMaxBandwidthOut.setter
+    def InternetMaxBandwidthOut(self, InternetMaxBandwidthOut):
+        self._InternetMaxBandwidthOut = InternetMaxBandwidthOut
+
+    @property
+    def InternetChargeType(self):
+        r"""网络计费类型。
+        :rtype: str
+        """
+        return self._InternetChargeType
+
+    @InternetChargeType.setter
+    def InternetChargeType(self, InternetChargeType):
+        self._InternetChargeType = InternetChargeType
+
+    @property
+    def TrafficUnlimited(self):
+        r"""流量是否无上限。
+        :rtype: bool
+        """
+        return self._TrafficUnlimited
+
+    @TrafficUnlimited.setter
+    def TrafficUnlimited(self, TrafficUnlimited):
+        self._TrafficUnlimited = TrafficUnlimited
+
+
+    def _deserialize(self, params):
+        self._BundleId = params.get("BundleId")
+        self._SupportLinuxUnixPlatform = params.get("SupportLinuxUnixPlatform")
+        self._SupportWindowsPlatform = params.get("SupportWindowsPlatform")
+        if params.get("Price") is not None:
+            self._Price = Price()
+            self._Price._deserialize(params.get("Price"))
+        self._BundleSalesState = params.get("BundleSalesState")
+        self._BundleType = params.get("BundleType")
+        self._BundleTypeDescription = params.get("BundleTypeDescription")
+        self._BundleTypePriority = params.get("BundleTypePriority")
+        self._BundleDisplayLabel = params.get("BundleDisplayLabel")
+        self._SupportSlot = params.get("SupportSlot")
+        self._Memory = params.get("Memory")
+        self._SystemDiskType = params.get("SystemDiskType")
+        self._SystemDiskSize = params.get("SystemDiskSize")
+        self._MonthlyTraffic = params.get("MonthlyTraffic")
+        self._CPU = params.get("CPU")
+        self._InternetMaxBandwidthOut = params.get("InternetMaxBandwidthOut")
+        self._InternetChargeType = params.get("InternetChargeType")
+        self._TrafficUnlimited = params.get("TrafficUnlimited")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class BlueprintInstance(AbstractModel):
     r"""描述镜像实例信息。
 
@@ -4275,6 +4572,150 @@ class DescribeAllScenesResponse(AbstractModel):
                 obj = SceneInfo()
                 obj._deserialize(item)
                 self._SceneInfoSet.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeBlueprintBundlesRequest(AbstractModel):
+    r"""DescribeBlueprintBundles请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BlueprintId: 镜像ID。可以通过[DescribeBlueprints](https://cloud.tencent.com/document/product/1207/47689)接口返回的BlueprintId获取。当前仅支持传入镜像类型为游戏专区(“GAME_PORTAL”)的镜像Id。
+        :type BlueprintId: str
+        :param _BundleIds: 套餐ID列表。可以通过DescribeBlueprintBundles接口返回的BundleId获取。
+        :type BundleIds: list of str
+        :param _Limit: 返回数量，默认为 20，最大值为 100。关于Limit的更进一步介绍请参考 API 简介中的相关小节。
+        :type Limit: int
+        :param _Offset: 偏移量，默认为 0。关于Offset的更进一步介绍请参考 API 简介中的相关小节。
+        :type Offset: int
+        """
+        self._BlueprintId = None
+        self._BundleIds = None
+        self._Limit = None
+        self._Offset = None
+
+    @property
+    def BlueprintId(self):
+        r"""镜像ID。可以通过[DescribeBlueprints](https://cloud.tencent.com/document/product/1207/47689)接口返回的BlueprintId获取。当前仅支持传入镜像类型为游戏专区(“GAME_PORTAL”)的镜像Id。
+        :rtype: str
+        """
+        return self._BlueprintId
+
+    @BlueprintId.setter
+    def BlueprintId(self, BlueprintId):
+        self._BlueprintId = BlueprintId
+
+    @property
+    def BundleIds(self):
+        r"""套餐ID列表。可以通过DescribeBlueprintBundles接口返回的BundleId获取。
+        :rtype: list of str
+        """
+        return self._BundleIds
+
+    @BundleIds.setter
+    def BundleIds(self, BundleIds):
+        self._BundleIds = BundleIds
+
+    @property
+    def Limit(self):
+        r"""返回数量，默认为 20，最大值为 100。关于Limit的更进一步介绍请参考 API 简介中的相关小节。
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        r"""偏移量，默认为 0。关于Offset的更进一步介绍请参考 API 简介中的相关小节。
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+
+    def _deserialize(self, params):
+        self._BlueprintId = params.get("BlueprintId")
+        self._BundleIds = params.get("BundleIds")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeBlueprintBundlesResponse(AbstractModel):
+    r"""DescribeBlueprintBundles返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BlueprintBundleSet: 镜像套餐详细信息列表。 
+        :type BlueprintBundleSet: list of BlueprintBundle
+        :param _TotalCount: 符合要求的套餐总数，用于分页展示。
+        :type TotalCount: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._BlueprintBundleSet = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def BlueprintBundleSet(self):
+        r"""镜像套餐详细信息列表。 
+        :rtype: list of BlueprintBundle
+        """
+        return self._BlueprintBundleSet
+
+    @BlueprintBundleSet.setter
+    def BlueprintBundleSet(self, BlueprintBundleSet):
+        self._BlueprintBundleSet = BlueprintBundleSet
+
+    @property
+    def TotalCount(self):
+        r"""符合要求的套餐总数，用于分页展示。
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("BlueprintBundleSet") is not None:
+            self._BlueprintBundleSet = []
+            for item in params.get("BlueprintBundleSet"):
+                obj = BlueprintBundle()
+                obj._deserialize(item)
+                self._BlueprintBundleSet.append(obj)
         self._TotalCount = params.get("TotalCount")
         self._RequestId = params.get("RequestId")
 

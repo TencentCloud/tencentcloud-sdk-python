@@ -8081,33 +8081,35 @@ class TokenPlanListItem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TeamId: 套餐 ID。
+        :param _TeamId: <p>套餐 ID。</p>
         :type TeamId: str
-        :param _ProductType: 套餐类型。取值：enterprise（企业版专业套餐）、enterprise-auto（企业版轻享套餐）
+        :param _ProductType: <p>套餐类型。取值：enterprise（企业版专业套餐）、enterprise-auto（企业版轻享套餐）</p>
         :type ProductType: str
-        :param _Name: 套餐名称。最大 128 字符。
+        :param _Name: <p>套餐名称。最大 128 字符。</p>
         :type Name: str
-        :param _AppId: 账号 APP ID。
+        :param _AppId: <p>账号 APP ID。</p>
         :type AppId: str
-        :param _Uin: 主账号 UIN。
+        :param _Uin: <p>主账号 UIN。</p>
         :type Uin: str
-        :param _Status: 套餐状态。取值：enable（启用）、disable（停用）。
+        :param _Status: <p>套餐状态。取值：enable（启用）、disable（停用）。</p>
         :type Status: str
-        :param _StopReason: 套餐关停原因。取值：NORMAL（正常）、ISOLATED（隔离/欠费）、FROZEN（冻结）、EXHAUSTED（额度耗尽）、DESTROYED（已销毁）
+        :param _StopReason: <p>套餐关停原因。取值：NORMAL（正常）、ISOLATED（隔离/欠费）、FROZEN（冻结）、EXHAUSTED（额度耗尽）、DESTROYED（已销毁）</p>
         :type StopReason: str
-        :param _ApiKeyMax: 可创建 API Key 上限。
+        :param _ApiKeyMax: <p>可创建 API Key 上限。</p>
         :type ApiKeyMax: int
-        :param _PrepayResourceID: 云计费预付费资源包 ID。
+        :param _ApiKeyCount: <p>当前已创建的 APIKey 数量</p>
+        :type ApiKeyCount: int
+        :param _PrepayResourceID: <p>云计费预付费资源包 ID。</p>
         :type PrepayResourceID: str
-        :param _Creator: 创建人。若为子账号创建的套餐，则该值为子账号UIN。
+        :param _Creator: <p>创建人。若为子账号创建的套餐，则该值为子账号UIN。</p>
         :type Creator: str
-        :param _CreatedAt: 创建时间。
+        :param _CreatedAt: <p>创建时间。</p>
         :type CreatedAt: str
-        :param _UpdatedAt: 更新时间。
+        :param _UpdatedAt: <p>更新时间。</p>
         :type UpdatedAt: str
-        :param _PackageInfo: 套餐包基本信息。
+        :param _PackageInfo: <p>套餐包基本信息。</p>
         :type PackageInfo: :class:`tencentcloud.tokenhub.v20260322.models.TokenPlanPackageInfo`
-        :param _AutoRenewFlag: 是否开启自动续费。取值：0（未开启），1（开启）
+        :param _AutoRenewFlag: <p>是否开启自动续费。取值：0（未开启），1（开启）</p>
         :type AutoRenewFlag: int
         """
         self._TeamId = None
@@ -8118,6 +8120,7 @@ class TokenPlanListItem(AbstractModel):
         self._Status = None
         self._StopReason = None
         self._ApiKeyMax = None
+        self._ApiKeyCount = None
         self._PrepayResourceID = None
         self._Creator = None
         self._CreatedAt = None
@@ -8127,7 +8130,7 @@ class TokenPlanListItem(AbstractModel):
 
     @property
     def TeamId(self):
-        r"""套餐 ID。
+        r"""<p>套餐 ID。</p>
         :rtype: str
         """
         return self._TeamId
@@ -8138,7 +8141,7 @@ class TokenPlanListItem(AbstractModel):
 
     @property
     def ProductType(self):
-        r"""套餐类型。取值：enterprise（企业版专业套餐）、enterprise-auto（企业版轻享套餐）
+        r"""<p>套餐类型。取值：enterprise（企业版专业套餐）、enterprise-auto（企业版轻享套餐）</p>
         :rtype: str
         """
         return self._ProductType
@@ -8149,7 +8152,7 @@ class TokenPlanListItem(AbstractModel):
 
     @property
     def Name(self):
-        r"""套餐名称。最大 128 字符。
+        r"""<p>套餐名称。最大 128 字符。</p>
         :rtype: str
         """
         return self._Name
@@ -8160,7 +8163,7 @@ class TokenPlanListItem(AbstractModel):
 
     @property
     def AppId(self):
-        r"""账号 APP ID。
+        r"""<p>账号 APP ID。</p>
         :rtype: str
         """
         return self._AppId
@@ -8171,7 +8174,7 @@ class TokenPlanListItem(AbstractModel):
 
     @property
     def Uin(self):
-        r"""主账号 UIN。
+        r"""<p>主账号 UIN。</p>
         :rtype: str
         """
         return self._Uin
@@ -8182,7 +8185,7 @@ class TokenPlanListItem(AbstractModel):
 
     @property
     def Status(self):
-        r"""套餐状态。取值：enable（启用）、disable（停用）。
+        r"""<p>套餐状态。取值：enable（启用）、disable（停用）。</p>
         :rtype: str
         """
         return self._Status
@@ -8193,7 +8196,7 @@ class TokenPlanListItem(AbstractModel):
 
     @property
     def StopReason(self):
-        r"""套餐关停原因。取值：NORMAL（正常）、ISOLATED（隔离/欠费）、FROZEN（冻结）、EXHAUSTED（额度耗尽）、DESTROYED（已销毁）
+        r"""<p>套餐关停原因。取值：NORMAL（正常）、ISOLATED（隔离/欠费）、FROZEN（冻结）、EXHAUSTED（额度耗尽）、DESTROYED（已销毁）</p>
         :rtype: str
         """
         return self._StopReason
@@ -8204,7 +8207,7 @@ class TokenPlanListItem(AbstractModel):
 
     @property
     def ApiKeyMax(self):
-        r"""可创建 API Key 上限。
+        r"""<p>可创建 API Key 上限。</p>
         :rtype: int
         """
         return self._ApiKeyMax
@@ -8214,8 +8217,19 @@ class TokenPlanListItem(AbstractModel):
         self._ApiKeyMax = ApiKeyMax
 
     @property
+    def ApiKeyCount(self):
+        r"""<p>当前已创建的 APIKey 数量</p>
+        :rtype: int
+        """
+        return self._ApiKeyCount
+
+    @ApiKeyCount.setter
+    def ApiKeyCount(self, ApiKeyCount):
+        self._ApiKeyCount = ApiKeyCount
+
+    @property
     def PrepayResourceID(self):
-        r"""云计费预付费资源包 ID。
+        r"""<p>云计费预付费资源包 ID。</p>
         :rtype: str
         """
         return self._PrepayResourceID
@@ -8226,7 +8240,7 @@ class TokenPlanListItem(AbstractModel):
 
     @property
     def Creator(self):
-        r"""创建人。若为子账号创建的套餐，则该值为子账号UIN。
+        r"""<p>创建人。若为子账号创建的套餐，则该值为子账号UIN。</p>
         :rtype: str
         """
         return self._Creator
@@ -8237,7 +8251,7 @@ class TokenPlanListItem(AbstractModel):
 
     @property
     def CreatedAt(self):
-        r"""创建时间。
+        r"""<p>创建时间。</p>
         :rtype: str
         """
         return self._CreatedAt
@@ -8248,7 +8262,7 @@ class TokenPlanListItem(AbstractModel):
 
     @property
     def UpdatedAt(self):
-        r"""更新时间。
+        r"""<p>更新时间。</p>
         :rtype: str
         """
         return self._UpdatedAt
@@ -8259,7 +8273,7 @@ class TokenPlanListItem(AbstractModel):
 
     @property
     def PackageInfo(self):
-        r"""套餐包基本信息。
+        r"""<p>套餐包基本信息。</p>
         :rtype: :class:`tencentcloud.tokenhub.v20260322.models.TokenPlanPackageInfo`
         """
         return self._PackageInfo
@@ -8270,7 +8284,7 @@ class TokenPlanListItem(AbstractModel):
 
     @property
     def AutoRenewFlag(self):
-        r"""是否开启自动续费。取值：0（未开启），1（开启）
+        r"""<p>是否开启自动续费。取值：0（未开启），1（开启）</p>
         :rtype: int
         """
         return self._AutoRenewFlag
@@ -8289,6 +8303,7 @@ class TokenPlanListItem(AbstractModel):
         self._Status = params.get("Status")
         self._StopReason = params.get("StopReason")
         self._ApiKeyMax = params.get("ApiKeyMax")
+        self._ApiKeyCount = params.get("ApiKeyCount")
         self._PrepayResourceID = params.get("PrepayResourceID")
         self._Creator = params.get("Creator")
         self._CreatedAt = params.get("CreatedAt")
