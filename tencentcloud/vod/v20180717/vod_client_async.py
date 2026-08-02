@@ -637,6 +637,24 @@ class VodClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateKnowledgeBase(
+            self,
+            request: models.CreateKnowledgeBaseRequest,
+            opts: Dict = None,
+    ) -> models.CreateKnowledgeBaseResponse:
+        """
+        创建知识库。用于为智能媒资功能创建一个新的知识库，每个用户最多可创建的20个知识库。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateKnowledgeBase"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateKnowledgeBaseResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateLLMComprehendTemplate(
             self,
             request: models.CreateLLMComprehendTemplateRequest,
@@ -1303,6 +1321,25 @@ class VodClient(AbstractClient):
         kwargs["action"] = "DeleteJustInTimeTranscodeTemplate"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DeleteJustInTimeTranscodeTemplateResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteKnowledgeBase(
+            self,
+            request: models.DeleteKnowledgeBaseRequest,
+            opts: Dict = None,
+    ) -> models.DeleteKnowledgeBaseResponse:
+        """
+        删除知识库。
+        调用接口后，知识库会处于“删除中”状态，并在后台执行删除操作。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteKnowledgeBase"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteKnowledgeBaseResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -2319,6 +2356,24 @@ class VodClient(AbstractClient):
         kwargs["action"] = "DescribeJustInTimeTranscodeTemplates"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeJustInTimeTranscodeTemplatesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeKnowledgeBases(
+            self,
+            request: models.DescribeKnowledgeBasesRequest,
+            opts: Dict = None,
+    ) -> models.DescribeKnowledgeBasesResponse:
+        """
+        查询知识库列表。返回指定用户下的所有知识库信息。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeKnowledgeBases"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeKnowledgeBasesResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -3464,6 +3519,24 @@ class VodClient(AbstractClient):
         kwargs["action"] = "ModifyJustInTimeTranscodeTemplate"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ModifyJustInTimeTranscodeTemplateResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyKnowledgeBase(
+            self,
+            request: models.ModifyKnowledgeBaseRequest,
+            opts: Dict = None,
+    ) -> models.ModifyKnowledgeBaseResponse:
+        """
+        修改知识库。可以修改知识库的名称和/或描述。至少需要提供 Name 或 Description 中的一个字段。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyKnowledgeBase"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyKnowledgeBaseResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

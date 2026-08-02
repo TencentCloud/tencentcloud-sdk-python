@@ -5081,39 +5081,41 @@ class Database(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DbName: 需要迁移或同步的库名，当ObjectMode为Partial时，此项必填
+        :param _DbName: <p>需要迁移或同步的库名，当ObjectMode为Partial时，此项必填</p>
         :type DbName: str
-        :param _NewDbName: 迁移或同步后的库名，默认与源库相同
+        :param _NewDbName: <p>迁移或同步后的库名，默认与源库相同</p>
         :type NewDbName: str
-        :param _DbMode: DB选择模式: All(为当前对象下的所有对象)，Partial(部分对象)，当Mode为Partial时，此项必填。注意，高级对象的同步不依赖此值，如果整库同步此处应该为All。
+        :param _DbMode: <p>DB选择模式: All(为当前对象下的所有对象)，Partial(部分对象)，当Mode为Partial时，此项必填。注意，高级对象的同步不依赖此值，如果整库同步此处应该为All。</p>
         :type DbMode: str
-        :param _SchemaName: 迁移或同步的 schema
+        :param _SchemaName: <p>迁移或同步的 schema</p>
         :type SchemaName: str
-        :param _NewSchemaName: 迁移或同步后的 schema name
+        :param _NewSchemaName: <p>迁移或同步后的 schema name</p>
         :type NewSchemaName: str
-        :param _TableMode: 表选择模式: All(为当前对象下的所有对象)，Partial(部分对象)，当DBMode为Partial时此项必填，如果整库同步此处应该为All。
+        :param _SchemaMode: <p>schema选择模式，pg和sqlserver需要使用</p><p>枚举值：</p><ul><li>All： 当前对象下的所有对象</li><li>Partial： 部分对象</li></ul>
+        :type SchemaMode: str
+        :param _TableMode: <p>表选择模式: All(为当前对象下的所有对象)，Partial(部分对象)，当DBMode为Partial时此项必填，如果整库同步此处应该为All。</p>
         :type TableMode: str
-        :param _Tables: 表图对象集合，当 TableMode 为 Partial 时，此项需要填写
+        :param _Tables: <p>表图对象集合，当 TableMode 为 Partial 时，此项需要填写</p>
         :type Tables: list of Table
-        :param _ViewMode: 视图选择模式: All 为当前对象下的所有视图对象,Partial 为部分视图对象，如果整库同步此处应该为All。
+        :param _ViewMode: <p>视图选择模式: All 为当前对象下的所有视图对象,Partial 为部分视图对象，如果整库同步此处应该为All。</p>
         :type ViewMode: str
-        :param _Views: 视图对象集合，当 ViewMode 为 Partial 时， 此项需要填写
+        :param _Views: <p>视图对象集合，当 ViewMode 为 Partial 时， 此项需要填写</p>
         :type Views: list of View
-        :param _FunctionMode: 选择要同步的模式，Partial为部分，All为整选，如果整库同步此处应该为All。
+        :param _FunctionMode: <p>选择要同步的模式，Partial为部分，All为整选，如果整库同步此处应该为All。</p>
         :type FunctionMode: str
-        :param _Functions: FunctionMode取值为Partial时需要填写
+        :param _Functions: <p>FunctionMode取值为Partial时需要填写</p>
         :type Functions: list of str
-        :param _ProcedureMode: 选择要同步的模式，Partial为部分，All为整选，如果整库同步此处应该为All。
+        :param _ProcedureMode: <p>选择要同步的模式，Partial为部分，All为整选，如果整库同步此处应该为All。</p>
         :type ProcedureMode: str
-        :param _Procedures: ProcedureMode取值为Partial时需要填写
+        :param _Procedures: <p>ProcedureMode取值为Partial时需要填写</p>
         :type Procedures: list of str
-        :param _TriggerMode: 触发器迁移模式，All(为当前对象下的所有对象)，Partial(部分对象)，如果整库同步此处应该为All。数据同步暂不支持此高级对象。
+        :param _TriggerMode: <p>触发器迁移模式，All(为当前对象下的所有对象)，Partial(部分对象)，如果整库同步此处应该为All。数据同步暂不支持此高级对象。</p>
         :type TriggerMode: str
-        :param _Triggers: 当TriggerMode为partial，指定要迁移的触发器名称
+        :param _Triggers: <p>当TriggerMode为partial，指定要迁移的触发器名称</p>
         :type Triggers: list of str
-        :param _EventMode: 事件迁移模式，All(为当前对象下的所有对象)，Partial(部分对象)，如果整库同步此处应该为All。数据同步暂不支持此高级对象。
+        :param _EventMode: <p>事件迁移模式，All(为当前对象下的所有对象)，Partial(部分对象)，如果整库同步此处应该为All。数据同步暂不支持此高级对象。</p>
         :type EventMode: str
-        :param _Events: 当EventMode为partial，指定要迁移的事件名称
+        :param _Events: <p>当EventMode为partial，指定要迁移的事件名称</p>
         :type Events: list of str
         """
         self._DbName = None
@@ -5121,6 +5123,7 @@ class Database(AbstractModel):
         self._DbMode = None
         self._SchemaName = None
         self._NewSchemaName = None
+        self._SchemaMode = None
         self._TableMode = None
         self._Tables = None
         self._ViewMode = None
@@ -5136,7 +5139,7 @@ class Database(AbstractModel):
 
     @property
     def DbName(self):
-        r"""需要迁移或同步的库名，当ObjectMode为Partial时，此项必填
+        r"""<p>需要迁移或同步的库名，当ObjectMode为Partial时，此项必填</p>
         :rtype: str
         """
         return self._DbName
@@ -5147,7 +5150,7 @@ class Database(AbstractModel):
 
     @property
     def NewDbName(self):
-        r"""迁移或同步后的库名，默认与源库相同
+        r"""<p>迁移或同步后的库名，默认与源库相同</p>
         :rtype: str
         """
         return self._NewDbName
@@ -5158,7 +5161,7 @@ class Database(AbstractModel):
 
     @property
     def DbMode(self):
-        r"""DB选择模式: All(为当前对象下的所有对象)，Partial(部分对象)，当Mode为Partial时，此项必填。注意，高级对象的同步不依赖此值，如果整库同步此处应该为All。
+        r"""<p>DB选择模式: All(为当前对象下的所有对象)，Partial(部分对象)，当Mode为Partial时，此项必填。注意，高级对象的同步不依赖此值，如果整库同步此处应该为All。</p>
         :rtype: str
         """
         return self._DbMode
@@ -5169,7 +5172,7 @@ class Database(AbstractModel):
 
     @property
     def SchemaName(self):
-        r"""迁移或同步的 schema
+        r"""<p>迁移或同步的 schema</p>
         :rtype: str
         """
         return self._SchemaName
@@ -5180,7 +5183,7 @@ class Database(AbstractModel):
 
     @property
     def NewSchemaName(self):
-        r"""迁移或同步后的 schema name
+        r"""<p>迁移或同步后的 schema name</p>
         :rtype: str
         """
         return self._NewSchemaName
@@ -5190,8 +5193,19 @@ class Database(AbstractModel):
         self._NewSchemaName = NewSchemaName
 
     @property
+    def SchemaMode(self):
+        r"""<p>schema选择模式，pg和sqlserver需要使用</p><p>枚举值：</p><ul><li>All： 当前对象下的所有对象</li><li>Partial： 部分对象</li></ul>
+        :rtype: str
+        """
+        return self._SchemaMode
+
+    @SchemaMode.setter
+    def SchemaMode(self, SchemaMode):
+        self._SchemaMode = SchemaMode
+
+    @property
     def TableMode(self):
-        r"""表选择模式: All(为当前对象下的所有对象)，Partial(部分对象)，当DBMode为Partial时此项必填，如果整库同步此处应该为All。
+        r"""<p>表选择模式: All(为当前对象下的所有对象)，Partial(部分对象)，当DBMode为Partial时此项必填，如果整库同步此处应该为All。</p>
         :rtype: str
         """
         return self._TableMode
@@ -5202,7 +5216,7 @@ class Database(AbstractModel):
 
     @property
     def Tables(self):
-        r"""表图对象集合，当 TableMode 为 Partial 时，此项需要填写
+        r"""<p>表图对象集合，当 TableMode 为 Partial 时，此项需要填写</p>
         :rtype: list of Table
         """
         return self._Tables
@@ -5213,7 +5227,7 @@ class Database(AbstractModel):
 
     @property
     def ViewMode(self):
-        r"""视图选择模式: All 为当前对象下的所有视图对象,Partial 为部分视图对象，如果整库同步此处应该为All。
+        r"""<p>视图选择模式: All 为当前对象下的所有视图对象,Partial 为部分视图对象，如果整库同步此处应该为All。</p>
         :rtype: str
         """
         return self._ViewMode
@@ -5224,7 +5238,7 @@ class Database(AbstractModel):
 
     @property
     def Views(self):
-        r"""视图对象集合，当 ViewMode 为 Partial 时， 此项需要填写
+        r"""<p>视图对象集合，当 ViewMode 为 Partial 时， 此项需要填写</p>
         :rtype: list of View
         """
         return self._Views
@@ -5235,7 +5249,7 @@ class Database(AbstractModel):
 
     @property
     def FunctionMode(self):
-        r"""选择要同步的模式，Partial为部分，All为整选，如果整库同步此处应该为All。
+        r"""<p>选择要同步的模式，Partial为部分，All为整选，如果整库同步此处应该为All。</p>
         :rtype: str
         """
         return self._FunctionMode
@@ -5246,7 +5260,7 @@ class Database(AbstractModel):
 
     @property
     def Functions(self):
-        r"""FunctionMode取值为Partial时需要填写
+        r"""<p>FunctionMode取值为Partial时需要填写</p>
         :rtype: list of str
         """
         return self._Functions
@@ -5257,7 +5271,7 @@ class Database(AbstractModel):
 
     @property
     def ProcedureMode(self):
-        r"""选择要同步的模式，Partial为部分，All为整选，如果整库同步此处应该为All。
+        r"""<p>选择要同步的模式，Partial为部分，All为整选，如果整库同步此处应该为All。</p>
         :rtype: str
         """
         return self._ProcedureMode
@@ -5268,7 +5282,7 @@ class Database(AbstractModel):
 
     @property
     def Procedures(self):
-        r"""ProcedureMode取值为Partial时需要填写
+        r"""<p>ProcedureMode取值为Partial时需要填写</p>
         :rtype: list of str
         """
         return self._Procedures
@@ -5279,7 +5293,7 @@ class Database(AbstractModel):
 
     @property
     def TriggerMode(self):
-        r"""触发器迁移模式，All(为当前对象下的所有对象)，Partial(部分对象)，如果整库同步此处应该为All。数据同步暂不支持此高级对象。
+        r"""<p>触发器迁移模式，All(为当前对象下的所有对象)，Partial(部分对象)，如果整库同步此处应该为All。数据同步暂不支持此高级对象。</p>
         :rtype: str
         """
         return self._TriggerMode
@@ -5290,7 +5304,7 @@ class Database(AbstractModel):
 
     @property
     def Triggers(self):
-        r"""当TriggerMode为partial，指定要迁移的触发器名称
+        r"""<p>当TriggerMode为partial，指定要迁移的触发器名称</p>
         :rtype: list of str
         """
         return self._Triggers
@@ -5301,7 +5315,7 @@ class Database(AbstractModel):
 
     @property
     def EventMode(self):
-        r"""事件迁移模式，All(为当前对象下的所有对象)，Partial(部分对象)，如果整库同步此处应该为All。数据同步暂不支持此高级对象。
+        r"""<p>事件迁移模式，All(为当前对象下的所有对象)，Partial(部分对象)，如果整库同步此处应该为All。数据同步暂不支持此高级对象。</p>
         :rtype: str
         """
         return self._EventMode
@@ -5312,7 +5326,7 @@ class Database(AbstractModel):
 
     @property
     def Events(self):
-        r"""当EventMode为partial，指定要迁移的事件名称
+        r"""<p>当EventMode为partial，指定要迁移的事件名称</p>
         :rtype: list of str
         """
         return self._Events
@@ -5328,6 +5342,7 @@ class Database(AbstractModel):
         self._DbMode = params.get("DbMode")
         self._SchemaName = params.get("SchemaName")
         self._NewSchemaName = params.get("NewSchemaName")
+        self._SchemaMode = params.get("SchemaMode")
         self._TableMode = params.get("TableMode")
         if params.get("Tables") is not None:
             self._Tables = []

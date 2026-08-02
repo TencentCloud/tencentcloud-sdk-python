@@ -152,6 +152,24 @@ class MpsClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CloneVoice(
+            self,
+            request: models.CloneVoiceRequest,
+            opts: Dict = None,
+    ) -> models.CloneVoiceResponse:
+        """
+        同步接口，使用该接口从参考音频克隆一个音色
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CloneVoice"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CloneVoiceResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateAIAnalysisTemplate(
             self,
             request: models.CreateAIAnalysisTemplateRequest,
@@ -219,6 +237,24 @@ class MpsClient(AbstractClient):
         kwargs["action"] = "CreateAiDramaTask"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.CreateAiDramaTaskResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def CreateAiFissionTask(
+            self,
+            request: models.CreateAiFissionTaskRequest,
+            opts: Dict = None,
+    ) -> models.CreateAiFissionTaskResponse:
+        """
+        创建ai视频裂变任务
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateAiFissionTask"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateAiFissionTaskResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -3967,6 +4003,24 @@ class MpsClient(AbstractClient):
         kwargs["action"] = "SyncDubbing"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.SyncDubbingResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def TextToSpeech(
+            self,
+            request: models.TextToSpeechRequest,
+            opts: Dict = None,
+    ) -> models.TextToSpeechResponse:
+        """
+        同步语音合成，根据输入文本和指定音色生成语音
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "TextToSpeech"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.TextToSpeechResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

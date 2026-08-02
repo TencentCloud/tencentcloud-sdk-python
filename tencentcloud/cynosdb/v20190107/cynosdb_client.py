@@ -5362,6 +5362,29 @@ class CynosdbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def TransferClusterPrepayToPostpay(self, request):
+        r"""本接口（TransferClusterPrepayToPostpay）用于将预付费集群转为后付费集群
+
+        :param request: Request instance for TransferClusterPrepayToPostpay.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.TransferClusterPrepayToPostpayRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.TransferClusterPrepayToPostpayResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("TransferClusterPrepayToPostpay", params, headers=headers)
+            response = json.loads(body)
+            model = models.TransferClusterPrepayToPostpayResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def TransferClusterZone(self, request):
         r"""本接口（TransferClusterZone）用于发起跨可用区迁移。
 
@@ -5376,6 +5399,29 @@ class CynosdbClient(AbstractClient):
             body = self.call("TransferClusterZone", params, headers=headers)
             response = json.loads(body)
             model = models.TransferClusterZoneResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def TransferStoragePrepayToPostpay(self, request):
+        r"""本接口（TransferStoragePrepayToPostpay）用于将预付费存储转为后付费存储
+
+        :param request: Request instance for TransferStoragePrepayToPostpay.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.TransferStoragePrepayToPostpayRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.TransferStoragePrepayToPostpayResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("TransferStoragePrepayToPostpay", params, headers=headers)
+            response = json.loads(body)
+            model = models.TransferStoragePrepayToPostpayResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

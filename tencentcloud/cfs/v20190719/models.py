@@ -10114,32 +10114,34 @@ class MountInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _FileSystemId: 文件系统 ID
+        :param _FileSystemId: <p>文件系统 ID</p>
         :type FileSystemId: str
-        :param _MountTargetId: 挂载点 ID
+        :param _MountTargetId: <p>挂载点 ID</p>
         :type MountTargetId: str
-        :param _IpAddress: 挂载点 IP
+        :param _IpAddress: <p>挂载点 IP</p>
         :type IpAddress: str
-        :param _FSID: 挂载根目录
+        :param _FSID: <p>挂载根目录</p>
         :type FSID: str
-        :param _LifeCycleState: 挂载点状态，包括creating：创建中；available：运行中；
-deleting：删除中；
-create_failed： 创建失败
+        :param _LifeCycleState: <p>挂载点状态，包括creating：创建中；available：运行中；<br>deleting：删除中；<br>create_failed： 创建失败</p>
         :type LifeCycleState: str
-        :param _NetworkInterface: 网络类型，包括VPC,CCN
+        :param _NetworkInterface: <p>网络类型，包括VPC,CCN</p>
         :type NetworkInterface: str
-        :param _VpcId: 私有网络 ID
+        :param _VpcId: <p>私有网络 ID</p>
         :type VpcId: str
-        :param _VpcName: 私有网络名称
+        :param _VpcName: <p>私有网络名称</p>
         :type VpcName: str
-        :param _SubnetId: 子网 Id
+        :param _SubnetId: <p>子网 Id</p>
         :type SubnetId: str
-        :param _SubnetName: 子网名称
+        :param _SubnetName: <p>子网名称</p>
         :type SubnetName: str
-        :param _CcnID: CFS Turbo使用的云联网ID
+        :param _CcnID: <p>CFS Turbo使用的云联网ID</p>
         :type CcnID: str
-        :param _CidrBlock: 云联网中CFS Turbo使用的网段
+        :param _CidrBlock: <p>云联网中CFS Turbo使用的网段</p>
         :type CidrBlock: str
+        :param _ServerList: <p>占用用户ip列表</p>
+        :type ServerList: list of str
+        :param _ServerListTruncated: <p>是否占用超过200个ip</p>
+        :type ServerListTruncated: bool
         """
         self._FileSystemId = None
         self._MountTargetId = None
@@ -10153,10 +10155,12 @@ create_failed： 创建失败
         self._SubnetName = None
         self._CcnID = None
         self._CidrBlock = None
+        self._ServerList = None
+        self._ServerListTruncated = None
 
     @property
     def FileSystemId(self):
-        r"""文件系统 ID
+        r"""<p>文件系统 ID</p>
         :rtype: str
         """
         return self._FileSystemId
@@ -10167,7 +10171,7 @@ create_failed： 创建失败
 
     @property
     def MountTargetId(self):
-        r"""挂载点 ID
+        r"""<p>挂载点 ID</p>
         :rtype: str
         """
         return self._MountTargetId
@@ -10178,7 +10182,7 @@ create_failed： 创建失败
 
     @property
     def IpAddress(self):
-        r"""挂载点 IP
+        r"""<p>挂载点 IP</p>
         :rtype: str
         """
         return self._IpAddress
@@ -10189,7 +10193,7 @@ create_failed： 创建失败
 
     @property
     def FSID(self):
-        r"""挂载根目录
+        r"""<p>挂载根目录</p>
         :rtype: str
         """
         return self._FSID
@@ -10200,9 +10204,7 @@ create_failed： 创建失败
 
     @property
     def LifeCycleState(self):
-        r"""挂载点状态，包括creating：创建中；available：运行中；
-deleting：删除中；
-create_failed： 创建失败
+        r"""<p>挂载点状态，包括creating：创建中；available：运行中；<br>deleting：删除中；<br>create_failed： 创建失败</p>
         :rtype: str
         """
         return self._LifeCycleState
@@ -10213,7 +10215,7 @@ create_failed： 创建失败
 
     @property
     def NetworkInterface(self):
-        r"""网络类型，包括VPC,CCN
+        r"""<p>网络类型，包括VPC,CCN</p>
         :rtype: str
         """
         return self._NetworkInterface
@@ -10224,7 +10226,7 @@ create_failed： 创建失败
 
     @property
     def VpcId(self):
-        r"""私有网络 ID
+        r"""<p>私有网络 ID</p>
         :rtype: str
         """
         return self._VpcId
@@ -10235,7 +10237,7 @@ create_failed： 创建失败
 
     @property
     def VpcName(self):
-        r"""私有网络名称
+        r"""<p>私有网络名称</p>
         :rtype: str
         """
         return self._VpcName
@@ -10246,7 +10248,7 @@ create_failed： 创建失败
 
     @property
     def SubnetId(self):
-        r"""子网 Id
+        r"""<p>子网 Id</p>
         :rtype: str
         """
         return self._SubnetId
@@ -10257,7 +10259,7 @@ create_failed： 创建失败
 
     @property
     def SubnetName(self):
-        r"""子网名称
+        r"""<p>子网名称</p>
         :rtype: str
         """
         return self._SubnetName
@@ -10268,7 +10270,7 @@ create_failed： 创建失败
 
     @property
     def CcnID(self):
-        r"""CFS Turbo使用的云联网ID
+        r"""<p>CFS Turbo使用的云联网ID</p>
         :rtype: str
         """
         return self._CcnID
@@ -10279,7 +10281,7 @@ create_failed： 创建失败
 
     @property
     def CidrBlock(self):
-        r"""云联网中CFS Turbo使用的网段
+        r"""<p>云联网中CFS Turbo使用的网段</p>
         :rtype: str
         """
         return self._CidrBlock
@@ -10287,6 +10289,28 @@ create_failed： 创建失败
     @CidrBlock.setter
     def CidrBlock(self, CidrBlock):
         self._CidrBlock = CidrBlock
+
+    @property
+    def ServerList(self):
+        r"""<p>占用用户ip列表</p>
+        :rtype: list of str
+        """
+        return self._ServerList
+
+    @ServerList.setter
+    def ServerList(self, ServerList):
+        self._ServerList = ServerList
+
+    @property
+    def ServerListTruncated(self):
+        r"""<p>是否占用超过200个ip</p>
+        :rtype: bool
+        """
+        return self._ServerListTruncated
+
+    @ServerListTruncated.setter
+    def ServerListTruncated(self, ServerListTruncated):
+        self._ServerListTruncated = ServerListTruncated
 
 
     def _deserialize(self, params):
@@ -10302,6 +10326,8 @@ create_failed： 创建失败
         self._SubnetName = params.get("SubnetName")
         self._CcnID = params.get("CcnID")
         self._CidrBlock = params.get("CidrBlock")
+        self._ServerList = params.get("ServerList")
+        self._ServerListTruncated = params.get("ServerListTruncated")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -7286,6 +7286,57 @@ class AiExpansionConfig(AbstractModel):
         
 
 
+class AiFissionInput(AbstractModel):
+    r"""视频裂变输入
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ImageUrls: <p>视频裂变参考图url</p>
+        :type ImageUrls: list of str
+        :param _Text: <p>视频裂变商品信息参考文案</p>
+        :type Text: str
+        """
+        self._ImageUrls = None
+        self._Text = None
+
+    @property
+    def ImageUrls(self):
+        r"""<p>视频裂变参考图url</p>
+        :rtype: list of str
+        """
+        return self._ImageUrls
+
+    @ImageUrls.setter
+    def ImageUrls(self, ImageUrls):
+        self._ImageUrls = ImageUrls
+
+    @property
+    def Text(self):
+        r"""<p>视频裂变商品信息参考文案</p>
+        :rtype: str
+        """
+        return self._Text
+
+    @Text.setter
+    def Text(self, Text):
+        self._Text = Text
+
+
+    def _deserialize(self, params):
+        self._ImageUrls = params.get("ImageUrls")
+        self._Text = params.get("Text")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AiParagraphInfo(AbstractModel):
     r"""分段信息。
 
@@ -18096,6 +18147,254 @@ class CloneViralResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CloneVoiceRequest(AbstractModel):
+    r"""CloneVoice请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AudioData: <p>克隆音频base64编码</p>
+        :type AudioData: str
+        :param _AudioUrl: <p>克隆音频Url，AudioData为空时有效</p>
+        :type AudioUrl: str
+        :param _AudioLang: <p>克隆音频语言，默认中文。 当前支持语言同语音合成TextLang</p>
+        :type AudioLang: str
+        :param _VoiceProfile: <p>音色属性。音色查询和匹配使用</p>
+        :type VoiceProfile: :class:`tencentcloud.mps.v20190612.models.VoiceProfile`
+        :param _Text: <p>试听文本</p>
+        :type Text: str
+        :param _TextLang: <p>试听文本语言，不填默认自动检测。当前支持语言同语音合成</p>
+        :type TextLang: str
+        :param _Output: <p>输出相关参数，可以指定输出音频形式等。默认输出音频base64。</p>
+        :type Output: :class:`tencentcloud.mps.v20190612.models.SyncDubbingOutputOption`
+        :param _ExtParam: <p>扩展参数，json字符串</p>
+        :type ExtParam: str
+        """
+        self._AudioData = None
+        self._AudioUrl = None
+        self._AudioLang = None
+        self._VoiceProfile = None
+        self._Text = None
+        self._TextLang = None
+        self._Output = None
+        self._ExtParam = None
+
+    @property
+    def AudioData(self):
+        r"""<p>克隆音频base64编码</p>
+        :rtype: str
+        """
+        return self._AudioData
+
+    @AudioData.setter
+    def AudioData(self, AudioData):
+        self._AudioData = AudioData
+
+    @property
+    def AudioUrl(self):
+        r"""<p>克隆音频Url，AudioData为空时有效</p>
+        :rtype: str
+        """
+        return self._AudioUrl
+
+    @AudioUrl.setter
+    def AudioUrl(self, AudioUrl):
+        self._AudioUrl = AudioUrl
+
+    @property
+    def AudioLang(self):
+        r"""<p>克隆音频语言，默认中文。 当前支持语言同语音合成TextLang</p>
+        :rtype: str
+        """
+        return self._AudioLang
+
+    @AudioLang.setter
+    def AudioLang(self, AudioLang):
+        self._AudioLang = AudioLang
+
+    @property
+    def VoiceProfile(self):
+        r"""<p>音色属性。音色查询和匹配使用</p>
+        :rtype: :class:`tencentcloud.mps.v20190612.models.VoiceProfile`
+        """
+        return self._VoiceProfile
+
+    @VoiceProfile.setter
+    def VoiceProfile(self, VoiceProfile):
+        self._VoiceProfile = VoiceProfile
+
+    @property
+    def Text(self):
+        r"""<p>试听文本</p>
+        :rtype: str
+        """
+        return self._Text
+
+    @Text.setter
+    def Text(self, Text):
+        self._Text = Text
+
+    @property
+    def TextLang(self):
+        r"""<p>试听文本语言，不填默认自动检测。当前支持语言同语音合成</p>
+        :rtype: str
+        """
+        return self._TextLang
+
+    @TextLang.setter
+    def TextLang(self, TextLang):
+        self._TextLang = TextLang
+
+    @property
+    def Output(self):
+        r"""<p>输出相关参数，可以指定输出音频形式等。默认输出音频base64。</p>
+        :rtype: :class:`tencentcloud.mps.v20190612.models.SyncDubbingOutputOption`
+        """
+        return self._Output
+
+    @Output.setter
+    def Output(self, Output):
+        self._Output = Output
+
+    @property
+    def ExtParam(self):
+        r"""<p>扩展参数，json字符串</p>
+        :rtype: str
+        """
+        return self._ExtParam
+
+    @ExtParam.setter
+    def ExtParam(self, ExtParam):
+        self._ExtParam = ExtParam
+
+
+    def _deserialize(self, params):
+        self._AudioData = params.get("AudioData")
+        self._AudioUrl = params.get("AudioUrl")
+        self._AudioLang = params.get("AudioLang")
+        if params.get("VoiceProfile") is not None:
+            self._VoiceProfile = VoiceProfile()
+            self._VoiceProfile._deserialize(params.get("VoiceProfile"))
+        self._Text = params.get("Text")
+        self._TextLang = params.get("TextLang")
+        if params.get("Output") is not None:
+            self._Output = SyncDubbingOutputOption()
+            self._Output._deserialize(params.get("Output"))
+        self._ExtParam = params.get("ExtParam")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CloneVoiceResponse(AbstractModel):
+    r"""CloneVoice返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ErrorCode: <p>错误码，成功时返回0</p>
+        :type ErrorCode: int
+        :param _Msg: <p>错误信息，成功时返回success</p>
+        :type Msg: str
+        :param _VoiceId: <p>克隆生成的音色ID</p>
+        :type VoiceId: str
+        :param _AudioData: <p>合成音频的base64编码</p>
+        :type AudioData: str
+        :param _AudioUrl: <p>合成音频Url，有效期24小时</p>
+        :type AudioUrl: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ErrorCode = None
+        self._Msg = None
+        self._VoiceId = None
+        self._AudioData = None
+        self._AudioUrl = None
+        self._RequestId = None
+
+    @property
+    def ErrorCode(self):
+        r"""<p>错误码，成功时返回0</p>
+        :rtype: int
+        """
+        return self._ErrorCode
+
+    @ErrorCode.setter
+    def ErrorCode(self, ErrorCode):
+        self._ErrorCode = ErrorCode
+
+    @property
+    def Msg(self):
+        r"""<p>错误信息，成功时返回success</p>
+        :rtype: str
+        """
+        return self._Msg
+
+    @Msg.setter
+    def Msg(self, Msg):
+        self._Msg = Msg
+
+    @property
+    def VoiceId(self):
+        r"""<p>克隆生成的音色ID</p>
+        :rtype: str
+        """
+        return self._VoiceId
+
+    @VoiceId.setter
+    def VoiceId(self, VoiceId):
+        self._VoiceId = VoiceId
+
+    @property
+    def AudioData(self):
+        r"""<p>合成音频的base64编码</p>
+        :rtype: str
+        """
+        return self._AudioData
+
+    @AudioData.setter
+    def AudioData(self, AudioData):
+        self._AudioData = AudioData
+
+    @property
+    def AudioUrl(self):
+        r"""<p>合成音频Url，有效期24小时</p>
+        :rtype: str
+        """
+        return self._AudioUrl
+
+    @AudioUrl.setter
+    def AudioUrl(self, AudioUrl):
+        self._AudioUrl = AudioUrl
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._ErrorCode = params.get("ErrorCode")
+        self._Msg = params.get("Msg")
+        self._VoiceId = params.get("VoiceId")
+        self._AudioData = params.get("AudioData")
+        self._AudioUrl = params.get("AudioUrl")
+        self._RequestId = params.get("RequestId")
+
+
 class ColorEnhanceConfig(AbstractModel):
     r"""色彩增强配置
 
@@ -21619,6 +21918,121 @@ class CreateAiDramaTaskRequest(AbstractModel):
 
 class CreateAiDramaTaskResponse(AbstractModel):
     r"""CreateAiDramaTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: <p>任务id</p>
+        :type TaskId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        r"""<p>任务id</p>
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
+
+
+class CreateAiFissionTaskRequest(AbstractModel):
+    r"""CreateAiFissionTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Input: <p>ai视频裂变输入信息</p>
+        :type Input: :class:`tencentcloud.mps.v20190612.models.AiFissionInput`
+        :param _CosInfo: <p>用户cos信息</p>
+        :type CosInfo: :class:`tencentcloud.mps.v20190612.models.VideoDramaCosInfo`
+        :param _TaskInfo: <p>ai视频裂变任务信息</p>
+        :type TaskInfo: :class:`tencentcloud.mps.v20190612.models.FissionTaskInfo`
+        """
+        self._Input = None
+        self._CosInfo = None
+        self._TaskInfo = None
+
+    @property
+    def Input(self):
+        r"""<p>ai视频裂变输入信息</p>
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiFissionInput`
+        """
+        return self._Input
+
+    @Input.setter
+    def Input(self, Input):
+        self._Input = Input
+
+    @property
+    def CosInfo(self):
+        r"""<p>用户cos信息</p>
+        :rtype: :class:`tencentcloud.mps.v20190612.models.VideoDramaCosInfo`
+        """
+        return self._CosInfo
+
+    @CosInfo.setter
+    def CosInfo(self, CosInfo):
+        self._CosInfo = CosInfo
+
+    @property
+    def TaskInfo(self):
+        r"""<p>ai视频裂变任务信息</p>
+        :rtype: :class:`tencentcloud.mps.v20190612.models.FissionTaskInfo`
+        """
+        return self._TaskInfo
+
+    @TaskInfo.setter
+    def TaskInfo(self, TaskInfo):
+        self._TaskInfo = TaskInfo
+
+
+    def _deserialize(self, params):
+        if params.get("Input") is not None:
+            self._Input = AiFissionInput()
+            self._Input._deserialize(params.get("Input"))
+        if params.get("CosInfo") is not None:
+            self._CosInfo = VideoDramaCosInfo()
+            self._CosInfo._deserialize(params.get("CosInfo"))
+        if params.get("TaskInfo") is not None:
+            self._TaskInfo = FissionTaskInfo()
+            self._TaskInfo._deserialize(params.get("TaskInfo"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateAiFissionTaskResponse(AbstractModel):
+    r"""CreateAiFissionTask返回参数结构体
 
     """
 
@@ -29636,6 +30050,87 @@ class CreateWorkflowResponse(AbstractModel):
     def _deserialize(self, params):
         self._WorkflowId = params.get("WorkflowId")
         self._RequestId = params.get("RequestId")
+
+
+class CustomModel(AbstractModel):
+    r"""商品裂变模特信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Gender: <p>性别</p><p>枚举值：</p><ul><li>male： 男性</li><li>female： 女性</li><li>any： 不限</li></ul>
+        :type Gender: str
+        :param _Age: <p>年龄范围</p><p>枚举值：</p><ul><li>teen： 青年</li><li>young_adult： 成年</li><li>middle_aged： 中年</li><li>mature： 成熟</li></ul>
+        :type Age: str
+        :param _Appearance: <p>外貌</p><p>枚举值：</p><ul><li>caucasian： 白人</li><li>asian： 亚裔</li><li>latino： 拉丁裔</li><li>african： 非裔</li><li>middle_eastern： 中东</li></ul>
+        :type Appearance: str
+        :param _BodyType: <p>身材</p><p>枚举值：</p><ul><li>slim： 苗条</li><li>standard： 标准</li><li>athletic： 健壮</li><li>chubby： 丰满</li></ul>
+        :type BodyType: str
+        """
+        self._Gender = None
+        self._Age = None
+        self._Appearance = None
+        self._BodyType = None
+
+    @property
+    def Gender(self):
+        r"""<p>性别</p><p>枚举值：</p><ul><li>male： 男性</li><li>female： 女性</li><li>any： 不限</li></ul>
+        :rtype: str
+        """
+        return self._Gender
+
+    @Gender.setter
+    def Gender(self, Gender):
+        self._Gender = Gender
+
+    @property
+    def Age(self):
+        r"""<p>年龄范围</p><p>枚举值：</p><ul><li>teen： 青年</li><li>young_adult： 成年</li><li>middle_aged： 中年</li><li>mature： 成熟</li></ul>
+        :rtype: str
+        """
+        return self._Age
+
+    @Age.setter
+    def Age(self, Age):
+        self._Age = Age
+
+    @property
+    def Appearance(self):
+        r"""<p>外貌</p><p>枚举值：</p><ul><li>caucasian： 白人</li><li>asian： 亚裔</li><li>latino： 拉丁裔</li><li>african： 非裔</li><li>middle_eastern： 中东</li></ul>
+        :rtype: str
+        """
+        return self._Appearance
+
+    @Appearance.setter
+    def Appearance(self, Appearance):
+        self._Appearance = Appearance
+
+    @property
+    def BodyType(self):
+        r"""<p>身材</p><p>枚举值：</p><ul><li>slim： 苗条</li><li>standard： 标准</li><li>athletic： 健壮</li><li>chubby： 丰满</li></ul>
+        :rtype: str
+        """
+        return self._BodyType
+
+    @BodyType.setter
+    def BodyType(self, BodyType):
+        self._BodyType = BodyType
+
+
+    def _deserialize(self, params):
+        self._Gender = params.get("Gender")
+        self._Age = params.get("Age")
+        self._Appearance = params.get("Appearance")
+        self._BodyType = params.get("BodyType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class CustomVariable(AbstractModel):
@@ -49545,6 +50040,164 @@ class FailOverOption(AbstractModel):
 
     def _deserialize(self, params):
         self._FailOverType = params.get("FailOverType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class FissionTaskInfo(AbstractModel):
+    r"""商品裂变任务信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Duration: <p>视频输出时长</p><p>取值范围：[1, 15]</p><p>单位：秒</p><p>默认值：15</p>
+        :type Duration: int
+        :param _ModelTier: <p>模型档位</p><p>枚举值：</p><ul><li>standard： 标准版</li><li>flagship： 旗舰版</li></ul>
+        :type ModelTier: str
+        :param _Ratio: <p>视频画面比例</p><p>枚举值：</p><ul><li>9:16： 9:16</li><li>16:9： 16:9</li><li>1:1： 1:1</li><li>3:4： 3:4</li><li>4:3： 4:3</li></ul>
+        :type Ratio: str
+        :param _Resolution: <p>输出分辨率</p><p>枚举值：</p><ul><li>720p： 720p</li><li>1080p： 1080p</li><li>2k： 2k</li><li>4k： 4k</li></ul>
+        :type Resolution: str
+        :param _Market: <p>目标市场</p><p>枚举值：</p><ul><li>north_america： 北美</li><li>europe： 欧洲</li><li>china： 中国</li><li>japan： 日本</li><li>korea： 韩国</li><li>southeast_asia： 东南亚</li><li>brazil： 巴西</li><li>global： 全球</li><li>other： 其他</li></ul><p>影响默认出镜模特族裔与本地化风格；未指定 CustomModel 时按市场自动决定人种</p>
+        :type Market: str
+        :param _Language: <p>口播/字幕语言</p><p>枚举值：</p><ul><li>english： 英文</li><li>chinese： 中文</li><li>japanese： 日语</li><li>korean： 汉语</li><li>spanish： 西班牙语</li><li>portuguese： 葡萄牙语</li><li>music_only： 纯音乐无口播</li></ul>
+        :type Language: str
+        :param _VideoType: <p>视频类型</p><p>枚举值：</p><ul><li>ugc： UGC种草</li><li>talk： 产品口播</li><li>display： 产品展示（纯商品、无人声）</li><li>unboxing： 开箱分享</li><li>reaction： 反应展示</li></ul>
+        :type VideoType: str
+        :param _SplitCount: <p>裂变数量</p><p>取值范围：[0, 1]</p><p>单位：个</p>
+        :type SplitCount: int
+        :param _CustomModel: <p>定制出镜模特</p>
+        :type CustomModel: :class:`tencentcloud.mps.v20190612.models.CustomModel`
+        """
+        self._Duration = None
+        self._ModelTier = None
+        self._Ratio = None
+        self._Resolution = None
+        self._Market = None
+        self._Language = None
+        self._VideoType = None
+        self._SplitCount = None
+        self._CustomModel = None
+
+    @property
+    def Duration(self):
+        r"""<p>视频输出时长</p><p>取值范围：[1, 15]</p><p>单位：秒</p><p>默认值：15</p>
+        :rtype: int
+        """
+        return self._Duration
+
+    @Duration.setter
+    def Duration(self, Duration):
+        self._Duration = Duration
+
+    @property
+    def ModelTier(self):
+        r"""<p>模型档位</p><p>枚举值：</p><ul><li>standard： 标准版</li><li>flagship： 旗舰版</li></ul>
+        :rtype: str
+        """
+        return self._ModelTier
+
+    @ModelTier.setter
+    def ModelTier(self, ModelTier):
+        self._ModelTier = ModelTier
+
+    @property
+    def Ratio(self):
+        r"""<p>视频画面比例</p><p>枚举值：</p><ul><li>9:16： 9:16</li><li>16:9： 16:9</li><li>1:1： 1:1</li><li>3:4： 3:4</li><li>4:3： 4:3</li></ul>
+        :rtype: str
+        """
+        return self._Ratio
+
+    @Ratio.setter
+    def Ratio(self, Ratio):
+        self._Ratio = Ratio
+
+    @property
+    def Resolution(self):
+        r"""<p>输出分辨率</p><p>枚举值：</p><ul><li>720p： 720p</li><li>1080p： 1080p</li><li>2k： 2k</li><li>4k： 4k</li></ul>
+        :rtype: str
+        """
+        return self._Resolution
+
+    @Resolution.setter
+    def Resolution(self, Resolution):
+        self._Resolution = Resolution
+
+    @property
+    def Market(self):
+        r"""<p>目标市场</p><p>枚举值：</p><ul><li>north_america： 北美</li><li>europe： 欧洲</li><li>china： 中国</li><li>japan： 日本</li><li>korea： 韩国</li><li>southeast_asia： 东南亚</li><li>brazil： 巴西</li><li>global： 全球</li><li>other： 其他</li></ul><p>影响默认出镜模特族裔与本地化风格；未指定 CustomModel 时按市场自动决定人种</p>
+        :rtype: str
+        """
+        return self._Market
+
+    @Market.setter
+    def Market(self, Market):
+        self._Market = Market
+
+    @property
+    def Language(self):
+        r"""<p>口播/字幕语言</p><p>枚举值：</p><ul><li>english： 英文</li><li>chinese： 中文</li><li>japanese： 日语</li><li>korean： 汉语</li><li>spanish： 西班牙语</li><li>portuguese： 葡萄牙语</li><li>music_only： 纯音乐无口播</li></ul>
+        :rtype: str
+        """
+        return self._Language
+
+    @Language.setter
+    def Language(self, Language):
+        self._Language = Language
+
+    @property
+    def VideoType(self):
+        r"""<p>视频类型</p><p>枚举值：</p><ul><li>ugc： UGC种草</li><li>talk： 产品口播</li><li>display： 产品展示（纯商品、无人声）</li><li>unboxing： 开箱分享</li><li>reaction： 反应展示</li></ul>
+        :rtype: str
+        """
+        return self._VideoType
+
+    @VideoType.setter
+    def VideoType(self, VideoType):
+        self._VideoType = VideoType
+
+    @property
+    def SplitCount(self):
+        r"""<p>裂变数量</p><p>取值范围：[0, 1]</p><p>单位：个</p>
+        :rtype: int
+        """
+        return self._SplitCount
+
+    @SplitCount.setter
+    def SplitCount(self, SplitCount):
+        self._SplitCount = SplitCount
+
+    @property
+    def CustomModel(self):
+        r"""<p>定制出镜模特</p>
+        :rtype: :class:`tencentcloud.mps.v20190612.models.CustomModel`
+        """
+        return self._CustomModel
+
+    @CustomModel.setter
+    def CustomModel(self, CustomModel):
+        self._CustomModel = CustomModel
+
+
+    def _deserialize(self, params):
+        self._Duration = params.get("Duration")
+        self._ModelTier = params.get("ModelTier")
+        self._Ratio = params.get("Ratio")
+        self._Resolution = params.get("Resolution")
+        self._Market = params.get("Market")
+        self._Language = params.get("Language")
+        self._VideoType = params.get("VideoType")
+        self._SplitCount = params.get("SplitCount")
+        if params.get("CustomModel") is not None:
+            self._CustomModel = CustomModel()
+            self._CustomModel._deserialize(params.get("CustomModel"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -89000,6 +89653,207 @@ class TextToSpeechAsyncResponse(AbstractModel):
         self._ErrorCode = params.get("ErrorCode")
         self._Msg = params.get("Msg")
         self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
+
+
+class TextToSpeechRequest(AbstractModel):
+    r"""TextToSpeech请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Text: <p>语音合成文本</p>
+        :type Text: str
+        :param _VoiceId: <p>音色ID</p>
+        :type VoiceId: str
+        :param _TextLang: <p>文本语言。不填默认自动识别<br>当前支持语言：<br>zh 中文 (Chinese)<br>en 英语 (English)<br>ja 日语 (Japanese)<br>de 德语 (German)<br>fr 法语 (French)<br>ko 韩语 (Korean)<br>ru 俄语 (Russian)<br>uk 乌克兰语 (Ukrainian)<br>pt 葡萄牙语 (Portuguese)<br>it 意大利语 (Italian)<br>es 西班牙语 (Spanish)<br>id 印度尼西亚语 (Indonesian)<br>nl 荷兰语 (Dutch)<br>tr 土耳其语 (Turkish)<br>fil 菲律宾语 (Filipino)<br>ms 马来语 (Malay)<br>el 希腊语 (Greek)<br>fi 芬兰语 (Finnish)<br>hr 克罗地亚语 (Croatian)<br>sk 斯洛伐克语 (Slovak)<br>pl 波兰语 (Polish)<br>sv 瑞典语 (Swedish)<br>hi 印地语 (Hindi)<br>bg 保加利亚语 (Bulgarian)<br>ro 罗马尼亚语 (Romanian)<br>ar 阿拉伯语 (Arabic)<br>cs 捷克语 (Czech)<br>da 丹麦语 (Danish)<br>ta 泰米尔语 (Tamil)<br>hun 匈牙利语（Hungarian）<br>vi 越南语（Vietnamese）<br>no 挪威语（Norwegian）<br>yue 粤语（Cantonese）<br>th 泰语（Thai）<br>he 希伯来语（Hebrew）<br>ca 加泰罗尼亚语（Catalan）<br>nn 尼诺斯克语（Nynorsk）<br>af 阿非利卡语（Afrikaans）<br>fa 波斯语（Persian）<br>sl 斯洛文尼亚语（Slovenian）</p>
+        :type TextLang: str
+        :param _Output: <p>输出相关参数</p>
+        :type Output: :class:`tencentcloud.mps.v20190612.models.SyncDubbingOutputOption`
+        :param _ExtParam: <p>扩展参数，json字符串</p><p><strong>synExt</strong> Object 语音合成扩展参数<br>   <strong>duration</strong> Float 合成音频时长（单位秒），默认不控制时长。示例：5.2<br>   <strong>format</strong> String 输出音频格式，默认wav，支持wav、mp3<br>   <strong>sampleRate</strong> Integer 合成音频采样率，默认16000，支持[8000,16000,22050,24000,32000,44100]</p>
+        :type ExtParam: str
+        """
+        self._Text = None
+        self._VoiceId = None
+        self._TextLang = None
+        self._Output = None
+        self._ExtParam = None
+
+    @property
+    def Text(self):
+        r"""<p>语音合成文本</p>
+        :rtype: str
+        """
+        return self._Text
+
+    @Text.setter
+    def Text(self, Text):
+        self._Text = Text
+
+    @property
+    def VoiceId(self):
+        r"""<p>音色ID</p>
+        :rtype: str
+        """
+        return self._VoiceId
+
+    @VoiceId.setter
+    def VoiceId(self, VoiceId):
+        self._VoiceId = VoiceId
+
+    @property
+    def TextLang(self):
+        r"""<p>文本语言。不填默认自动识别<br>当前支持语言：<br>zh 中文 (Chinese)<br>en 英语 (English)<br>ja 日语 (Japanese)<br>de 德语 (German)<br>fr 法语 (French)<br>ko 韩语 (Korean)<br>ru 俄语 (Russian)<br>uk 乌克兰语 (Ukrainian)<br>pt 葡萄牙语 (Portuguese)<br>it 意大利语 (Italian)<br>es 西班牙语 (Spanish)<br>id 印度尼西亚语 (Indonesian)<br>nl 荷兰语 (Dutch)<br>tr 土耳其语 (Turkish)<br>fil 菲律宾语 (Filipino)<br>ms 马来语 (Malay)<br>el 希腊语 (Greek)<br>fi 芬兰语 (Finnish)<br>hr 克罗地亚语 (Croatian)<br>sk 斯洛伐克语 (Slovak)<br>pl 波兰语 (Polish)<br>sv 瑞典语 (Swedish)<br>hi 印地语 (Hindi)<br>bg 保加利亚语 (Bulgarian)<br>ro 罗马尼亚语 (Romanian)<br>ar 阿拉伯语 (Arabic)<br>cs 捷克语 (Czech)<br>da 丹麦语 (Danish)<br>ta 泰米尔语 (Tamil)<br>hun 匈牙利语（Hungarian）<br>vi 越南语（Vietnamese）<br>no 挪威语（Norwegian）<br>yue 粤语（Cantonese）<br>th 泰语（Thai）<br>he 希伯来语（Hebrew）<br>ca 加泰罗尼亚语（Catalan）<br>nn 尼诺斯克语（Nynorsk）<br>af 阿非利卡语（Afrikaans）<br>fa 波斯语（Persian）<br>sl 斯洛文尼亚语（Slovenian）</p>
+        :rtype: str
+        """
+        return self._TextLang
+
+    @TextLang.setter
+    def TextLang(self, TextLang):
+        self._TextLang = TextLang
+
+    @property
+    def Output(self):
+        r"""<p>输出相关参数</p>
+        :rtype: :class:`tencentcloud.mps.v20190612.models.SyncDubbingOutputOption`
+        """
+        return self._Output
+
+    @Output.setter
+    def Output(self, Output):
+        self._Output = Output
+
+    @property
+    def ExtParam(self):
+        r"""<p>扩展参数，json字符串</p><p><strong>synExt</strong> Object 语音合成扩展参数<br>   <strong>duration</strong> Float 合成音频时长（单位秒），默认不控制时长。示例：5.2<br>   <strong>format</strong> String 输出音频格式，默认wav，支持wav、mp3<br>   <strong>sampleRate</strong> Integer 合成音频采样率，默认16000，支持[8000,16000,22050,24000,32000,44100]</p>
+        :rtype: str
+        """
+        return self._ExtParam
+
+    @ExtParam.setter
+    def ExtParam(self, ExtParam):
+        self._ExtParam = ExtParam
+
+
+    def _deserialize(self, params):
+        self._Text = params.get("Text")
+        self._VoiceId = params.get("VoiceId")
+        self._TextLang = params.get("TextLang")
+        if params.get("Output") is not None:
+            self._Output = SyncDubbingOutputOption()
+            self._Output._deserialize(params.get("Output"))
+        self._ExtParam = params.get("ExtParam")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TextToSpeechResponse(AbstractModel):
+    r"""TextToSpeech返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ErrorCode: <p>错误码，成功时返回0</p>
+        :type ErrorCode: int
+        :param _Msg: <p>错误信息，成功时返回success</p>
+        :type Msg: str
+        :param _AudioData: <p>合成音频的base64编码，默认wav格式</p>
+        :type AudioData: str
+        :param _AudioUrl: <p>合成音频url，有效期24小时</p>
+        :type AudioUrl: str
+        :param _ExtInfo: <p>扩展信息，json字符串  duration: 结果音频时长，单位秒</p>
+        :type ExtInfo: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ErrorCode = None
+        self._Msg = None
+        self._AudioData = None
+        self._AudioUrl = None
+        self._ExtInfo = None
+        self._RequestId = None
+
+    @property
+    def ErrorCode(self):
+        r"""<p>错误码，成功时返回0</p>
+        :rtype: int
+        """
+        return self._ErrorCode
+
+    @ErrorCode.setter
+    def ErrorCode(self, ErrorCode):
+        self._ErrorCode = ErrorCode
+
+    @property
+    def Msg(self):
+        r"""<p>错误信息，成功时返回success</p>
+        :rtype: str
+        """
+        return self._Msg
+
+    @Msg.setter
+    def Msg(self, Msg):
+        self._Msg = Msg
+
+    @property
+    def AudioData(self):
+        r"""<p>合成音频的base64编码，默认wav格式</p>
+        :rtype: str
+        """
+        return self._AudioData
+
+    @AudioData.setter
+    def AudioData(self, AudioData):
+        self._AudioData = AudioData
+
+    @property
+    def AudioUrl(self):
+        r"""<p>合成音频url，有效期24小时</p>
+        :rtype: str
+        """
+        return self._AudioUrl
+
+    @AudioUrl.setter
+    def AudioUrl(self, AudioUrl):
+        self._AudioUrl = AudioUrl
+
+    @property
+    def ExtInfo(self):
+        r"""<p>扩展信息，json字符串  duration: 结果音频时长，单位秒</p>
+        :rtype: str
+        """
+        return self._ExtInfo
+
+    @ExtInfo.setter
+    def ExtInfo(self, ExtInfo):
+        self._ExtInfo = ExtInfo
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._ErrorCode = params.get("ErrorCode")
+        self._Msg = params.get("Msg")
+        self._AudioData = params.get("AudioData")
+        self._AudioUrl = params.get("AudioUrl")
+        self._ExtInfo = params.get("ExtInfo")
         self._RequestId = params.get("RequestId")
 
 

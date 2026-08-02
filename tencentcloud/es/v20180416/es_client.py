@@ -49,6 +49,29 @@ class EsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CheckUpdateInstance(self, request):
+        r"""检查实例变配操作是否可以发起
+
+        :param request: Request instance for CheckUpdateInstance.
+        :type request: :class:`tencentcloud.es.v20180416.models.CheckUpdateInstanceRequest`
+        :rtype: :class:`tencentcloud.es.v20180416.models.CheckUpdateInstanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CheckUpdateInstance", params, headers=headers)
+            response = json.loads(body)
+            model = models.CheckUpdateInstanceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateAutoBackUpStrategy(self, request):
         r"""新建自动备份快照策略
 
@@ -1375,6 +1398,29 @@ class EsClient(AbstractClient):
             body = self.call("ModifyAutoBackUpStrategy", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyAutoBackUpStrategyResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyAutoScaleDiskInfo(self, request):
+        r"""修改自动扩盘参数
+
+        :param request: Request instance for ModifyAutoScaleDiskInfo.
+        :type request: :class:`tencentcloud.es.v20180416.models.ModifyAutoScaleDiskInfoRequest`
+        :rtype: :class:`tencentcloud.es.v20180416.models.ModifyAutoScaleDiskInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyAutoScaleDiskInfo", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyAutoScaleDiskInfoResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

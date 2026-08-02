@@ -14683,7 +14683,7 @@ class AigcVideoTaskInputFileInfo(AbstractModel):
         r"""
         :param _Type: <p>输入的视频文件类型。取值有： <li>File：点播媒体文件；</li> <li>Url：可访问的 Url；</li> <li>Base64：图片或视频转换的Base64字符串；</li></p>
         :type Type: str
-        :param _Category: <p>文件分类。取值为：</p><ul><li>Image: 图片；<strong>注意，要使用Usage字段定义图片类型</strong>。</li><li>Video: 视频。</li></ul>
+        :param _Category: <p>文件分类。取值为：</p><ul><li>Image: 图片；</li><li>Video: 视频；</li><li>Audio: 音频；</li></ul>
         :type Category: str
         :param _FileId: <p>媒体文件 ID，即该文件在云点播上的全局唯一标识符，在上传成功后由云点播后台分配。可以在 <a href="/document/product/266/7830">视频上传完成事件通知</a> 或 <a href="https://console.cloud.tencent.com/vod/media">云点播控制台</a> 获取该字段。当 Type 取值为 File 时，本参数有效。说明：</p><ol><li>推荐使用小于10M的图片；</li><li>图片格式的取值为：jpeg，jpg, png。</li></ol>
         :type FileId: str
@@ -14729,7 +14729,7 @@ class AigcVideoTaskInputFileInfo(AbstractModel):
 
     @property
     def Category(self):
-        r"""<p>文件分类。取值为：</p><ul><li>Image: 图片；<strong>注意，要使用Usage字段定义图片类型</strong>。</li><li>Video: 视频。</li></ul>
+        r"""<p>文件分类。取值为：</p><ul><li>Image: 图片；</li><li>Video: 视频；</li><li>Audio: 音频；</li></ul>
         :rtype: str
         """
         return self._Category
@@ -25434,9 +25434,9 @@ class CreateAigcVideoTaskRequest(AbstractModel):
         :type SubAppId: int
         :param _ModelName: <p>模型名称。取值：<br>Kling：可灵；<br>Vidu；<br>Hailuo：海螺；<br>Hunyuan：混元；<br>Mingmou：明眸；<br>GV；<br>OS；<br>PixVerse;</p>
         :type ModelName: str
-        :param _ModelVersion: <p>模型版本。取值：<br>当 ModelName 是 Hailuo，可选值为 02、2.3、2.3-fast；<br>当 ModelName 是 Kling，可选值为 1.6、2.0、2.1、2.5、2.6、O1、3.0、3.0-Omni；<br>当 ModelName 是 Vidu，可选值为 q2、q2-pro、q2-turbo、q3、q3-pro、q3-turbo；<br>当 ModelName 是 GV，可选值为 3.1、3.1-fast；<br>当 ModelName 是 OS，可选值为 2.0；<br>当 ModelName 是 Hunyuan，可选值为 1.5；<br>当 ModelName 是 Mingmou，可选值为 1.0；<br>当 ModelName 是 PixVerse，可选值为 v5.6、v6、c1；</p>
+        :param _ModelVersion: <p>模型版本。取值：<br>当 ModelName 是 Hailuo，可选值为 02、2.3、2.3-fast、H3；<br>当 ModelName 是 Kling，可选值为 1.6、2.0、2.1、2.5、2.6、O1、3.0、3.0-Omni；<br>当 ModelName 是 Vidu，可选值为 q2、q2-pro、q2-turbo、q3、q3-pro、q3-turbo；<br>当 ModelName 是 GV，可选值为 3.1、3.1-fast；<br>当 ModelName 是 OS，可选值为 2.0；<br>当 ModelName 是 Hunyuan，可选值为 1.5；<br>当 ModelName 是 Mingmou，可选值为 1.0；<br>当 ModelName 是 PixVerse，可选值为 v5.6、v6、c1；</p>
         :type ModelVersion: str
-        :param _FileInfos: <p>用于描述模型在生成视频时要使用的资源文件，分为<strong>首尾帧模式、参考图、视频参考、视频编辑等模式</strong>。</p><p><strong>首尾帧视频生成</strong>：首帧图片只支持<strong>一张</strong>图片，<strong>图片的Usage字段为FirstFrame</strong>，LastFrameFileId 或者 LastFrameUrl 表示尾帧。可以单独传首帧，不能单独传尾帧。<strong>首尾帧生成会参考图片比例</strong>。<br><strong>参考图片生成</strong>：可传入单张图片或者多张，<strong>图片的Usage字段为Reference</strong>；参考图片，可以调整生成视频的宽高比例。<br><strong>视频编辑、视频参考</strong>：Vidu、Kling可输入视频作为参考或者进行编辑。传入视频的同时也可以传入图片，<strong>图片的Usage字段为Reference</strong>。</p><p>注意：</p><ol><li>图片大小不超过10M。</li><li>支持的图片格式：jpeg、jpg、png。x0b</li><li>关于模型某个版本是否支持参考图、首尾帧、视频编辑等功能，可向我们索取文档或者参考原厂文档信息。</li></ol>
+        :param _FileInfos: <p>用于描述模型在生成视频时要使用的资源文件，分为<strong>首尾帧模式、参考图片/视频/声音生成、视频编辑等模式</strong>。</p><p><strong>首尾帧视频生成</strong>：<strong>首帧图片的Usage字段为FirstFrame，尾帧图片的Usage字段为LastFrame</strong>，支持各一张，可以单独传首帧，不能单独传尾帧。<strong>首尾帧生成会参考图片比例</strong>。<br><strong>参考图片/视频/声音生成</strong>：可传入单个或者多个图片/视频/声音作为参考，<strong>Usage字段为Reference</strong>；<strong>参考模式，可以调整生成视频的宽高比例</strong>。<br><strong>视频编辑</strong>：Vidu、Kling可输入视频进行编辑。传入视频的同时也可以传入图片，<strong>图片的Usage字段为Reference</strong>。</p><p>注意：</p><ol><li>图片大小不超过10M。</li><li>支持的图片格式：jpeg、jpg、png。x0b</li><li>关于模型某个版本是否支持参考图片/视频/声音、首尾帧、视频编辑等功能，可向我们索取文档或者参考原厂文档信息。</li></ol>
         :type FileInfos: list of AigcVideoTaskInputFileInfo
         :param _SubjectInfos: <p>主体输入信息。</p>
         :type SubjectInfos: list of AigcVideoTaskInputSubjectInfo
@@ -25513,7 +25513,7 @@ class CreateAigcVideoTaskRequest(AbstractModel):
 
     @property
     def ModelVersion(self):
-        r"""<p>模型版本。取值：<br>当 ModelName 是 Hailuo，可选值为 02、2.3、2.3-fast；<br>当 ModelName 是 Kling，可选值为 1.6、2.0、2.1、2.5、2.6、O1、3.0、3.0-Omni；<br>当 ModelName 是 Vidu，可选值为 q2、q2-pro、q2-turbo、q3、q3-pro、q3-turbo；<br>当 ModelName 是 GV，可选值为 3.1、3.1-fast；<br>当 ModelName 是 OS，可选值为 2.0；<br>当 ModelName 是 Hunyuan，可选值为 1.5；<br>当 ModelName 是 Mingmou，可选值为 1.0；<br>当 ModelName 是 PixVerse，可选值为 v5.6、v6、c1；</p>
+        r"""<p>模型版本。取值：<br>当 ModelName 是 Hailuo，可选值为 02、2.3、2.3-fast、H3；<br>当 ModelName 是 Kling，可选值为 1.6、2.0、2.1、2.5、2.6、O1、3.0、3.0-Omni；<br>当 ModelName 是 Vidu，可选值为 q2、q2-pro、q2-turbo、q3、q3-pro、q3-turbo；<br>当 ModelName 是 GV，可选值为 3.1、3.1-fast；<br>当 ModelName 是 OS，可选值为 2.0；<br>当 ModelName 是 Hunyuan，可选值为 1.5；<br>当 ModelName 是 Mingmou，可选值为 1.0；<br>当 ModelName 是 PixVerse，可选值为 v5.6、v6、c1；</p>
         :rtype: str
         """
         return self._ModelVersion
@@ -25524,7 +25524,7 @@ class CreateAigcVideoTaskRequest(AbstractModel):
 
     @property
     def FileInfos(self):
-        r"""<p>用于描述模型在生成视频时要使用的资源文件，分为<strong>首尾帧模式、参考图、视频参考、视频编辑等模式</strong>。</p><p><strong>首尾帧视频生成</strong>：首帧图片只支持<strong>一张</strong>图片，<strong>图片的Usage字段为FirstFrame</strong>，LastFrameFileId 或者 LastFrameUrl 表示尾帧。可以单独传首帧，不能单独传尾帧。<strong>首尾帧生成会参考图片比例</strong>。<br><strong>参考图片生成</strong>：可传入单张图片或者多张，<strong>图片的Usage字段为Reference</strong>；参考图片，可以调整生成视频的宽高比例。<br><strong>视频编辑、视频参考</strong>：Vidu、Kling可输入视频作为参考或者进行编辑。传入视频的同时也可以传入图片，<strong>图片的Usage字段为Reference</strong>。</p><p>注意：</p><ol><li>图片大小不超过10M。</li><li>支持的图片格式：jpeg、jpg、png。x0b</li><li>关于模型某个版本是否支持参考图、首尾帧、视频编辑等功能，可向我们索取文档或者参考原厂文档信息。</li></ol>
+        r"""<p>用于描述模型在生成视频时要使用的资源文件，分为<strong>首尾帧模式、参考图片/视频/声音生成、视频编辑等模式</strong>。</p><p><strong>首尾帧视频生成</strong>：<strong>首帧图片的Usage字段为FirstFrame，尾帧图片的Usage字段为LastFrame</strong>，支持各一张，可以单独传首帧，不能单独传尾帧。<strong>首尾帧生成会参考图片比例</strong>。<br><strong>参考图片/视频/声音生成</strong>：可传入单个或者多个图片/视频/声音作为参考，<strong>Usage字段为Reference</strong>；<strong>参考模式，可以调整生成视频的宽高比例</strong>。<br><strong>视频编辑</strong>：Vidu、Kling可输入视频进行编辑。传入视频的同时也可以传入图片，<strong>图片的Usage字段为Reference</strong>。</p><p>注意：</p><ol><li>图片大小不超过10M。</li><li>支持的图片格式：jpeg、jpg、png。x0b</li><li>关于模型某个版本是否支持参考图片/视频/声音、首尾帧、视频编辑等功能，可向我们索取文档或者参考原厂文档信息。</li></ol>
         :rtype: list of AigcVideoTaskInputFileInfo
         """
         return self._FileInfos
@@ -28036,6 +28036,100 @@ class CreateJustInTimeTranscodeTemplateResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateKnowledgeBaseRequest(AbstractModel):
+    r"""CreateKnowledgeBase请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SubAppId: <p>点播<a href="/document/product/266/14574">应用</a> ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</p>
+        :type SubAppId: int
+        :param _Name: <p>知识库名称。长度限制：1-64个字符。</p>
+        :type Name: str
+        :param _Description: <p>知识库描述。长度限制：最多256个字符。</p>
+        :type Description: str
+        """
+        self._SubAppId = None
+        self._Name = None
+        self._Description = None
+
+    @property
+    def SubAppId(self):
+        r"""<p>点播<a href="/document/product/266/14574">应用</a> ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</p>
+        :rtype: int
+        """
+        return self._SubAppId
+
+    @SubAppId.setter
+    def SubAppId(self, SubAppId):
+        self._SubAppId = SubAppId
+
+    @property
+    def Name(self):
+        r"""<p>知识库名称。长度限制：1-64个字符。</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Description(self):
+        r"""<p>知识库描述。长度限制：最多256个字符。</p>
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+
+    def _deserialize(self, params):
+        self._SubAppId = params.get("SubAppId")
+        self._Name = params.get("Name")
+        self._Description = params.get("Description")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateKnowledgeBaseResponse(AbstractModel):
+    r"""CreateKnowledgeBase返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class CreateLLMComprehendTemplateRequest(AbstractModel):
     r"""CreateLLMComprehendTemplate请求参数结构体
 
@@ -28051,7 +28145,7 @@ class CreateLLMComprehendTemplateRequest(AbstractModel):
         :type Name: str
         :param _Comment: <p>大模型解析模板描述信息，长度限制：256 个字符。</p>
         :type Comment: str
-        :param _Summary: <p>分段摘要解析配置</p>
+        :param _Summary: <p>分段摘要解析配置<br>注意：当前版本必须要打开分段摘要，才可以正常进行解析</p>
         :type Summary: :class:`tencentcloud.vod.v20180717.models.LLMComprehendSummary`
         :param _Asr: <p>文本转录解析配置</p>
         :type Asr: :class:`tencentcloud.vod.v20180717.models.LLMComprehendAsr`
@@ -28112,7 +28206,7 @@ class CreateLLMComprehendTemplateRequest(AbstractModel):
 
     @property
     def Summary(self):
-        r"""<p>分段摘要解析配置</p>
+        r"""<p>分段摘要解析配置<br>注意：当前版本必须要打开分段摘要，才可以正常进行解析</p>
         :rtype: :class:`tencentcloud.vod.v20180717.models.LLMComprehendSummary`
         """
         return self._Summary
@@ -28220,7 +28314,7 @@ class CreateMPSTemplateRequest(AbstractModel):
         r"""
         :param _SubAppId: <p><b>点播<a href="/document/product/266/14574">应用</a> ID。</b></p>
         :type SubAppId: int
-        :param _TemplateType: <p>需要创建的 MPS 模板的类型。取值：</p><li>AIAnalysis: 创建智能分析模板。</li><li>SmartSubtitle: 创建智能字幕模板。</li><li>SmartErase: 创建智能擦除模板。</li>
+        :param _TemplateType: <p>需要创建的 MPS 模板的类型。取值：</p><li>AIAnalysis: 创建智能分析模板。</li><li>SmartSubtitle: 创建智能字幕模板。</li><li>SmartErase: 创建智能擦除模板。</li><li>EmbedSubtitle: 创建字幕压制模板。</li>
         :type TemplateType: str
         :param _MPSCreateTemplateParams: <p>MPS 创建模板参数。该参数用于透传至媒体处理服务（MPS），从云点播侧创建用户自定义的 MPS 任务模板。<br>目前仅支持通过此方式创建以下任务类型的模板：</p><ol><li>智能分析：仅支持填写“<a href="https://cloud.tencent.com/document/api/862/40249">创建内容分析模板</a>”接口中的Name、Comment、ClassificationConfigure、TagConfigure、CoverConfigure、FrameTagConfigure几个参数的内容。目前仅支持在模板中配置以上参数，其他参数无需填写，若包含其它参数，系统将自动忽略。</li><li>智能字幕：仅支持填写“<a href="https://cloud.tencent.com/document/api/862/117004">创建智能字幕模板</a>”接口中的Name、Comment、TranslateSwitch、VideoSrcLanguage、SubtitleFormat、SubtitleType、AsrHotWordsConfigure、TranslateDstLanguage、ProcessType几个参数的内容。目前仅支持在模板中配置以上参数，其他参数无需填写，若包含其它参数，系统将自动忽略。</li><li>智能擦除：仅支持填写“<a href="https://cloud.tencent.com/document/api/862/123735">创建智能擦除模板</a>”接口中的Name、Comment、EraseType、EraseSubtitleConfig、EraseWatermarkConfig、ErasePrivacyConfig几个参数的内容。目前仅支持在模板中配置以上参数，其他参数无需填写，若包含其它参数，系统将自动忽略。</li></ol><p>目前模板中仅支持配置以上参数，其他参数无需填写。若包含其它参数，系统将自动忽略。以上透传参数以JSON形式表示。</p>
         :type MPSCreateTemplateParams: str
@@ -28230,6 +28324,8 @@ class CreateMPSTemplateRequest(AbstractModel):
         :type SmartSubtitleTemplate: :class:`tencentcloud.vod.v20180717.models.MPSSmartSubtitleTemplate`
         :param _SmartEraseTemplate: <p>智能擦除模板参数，MPSCreateTemplateParams为空时有效。</p>
         :type SmartEraseTemplate: :class:`tencentcloud.vod.v20180717.models.MPSSmartEraseTemplate`
+        :param _EmbedSubtitleTemplate: <p>字幕压制模板参数，MPSCreateTemplateParams为空时有效。</p>
+        :type EmbedSubtitleTemplate: :class:`tencentcloud.vod.v20180717.models.MPSEmbedSubtitleTemplate`
         """
         self._SubAppId = None
         self._TemplateType = None
@@ -28237,6 +28333,7 @@ class CreateMPSTemplateRequest(AbstractModel):
         self._AIAnalysisTemplate = None
         self._SmartSubtitleTemplate = None
         self._SmartEraseTemplate = None
+        self._EmbedSubtitleTemplate = None
 
     @property
     def SubAppId(self):
@@ -28251,7 +28348,7 @@ class CreateMPSTemplateRequest(AbstractModel):
 
     @property
     def TemplateType(self):
-        r"""<p>需要创建的 MPS 模板的类型。取值：</p><li>AIAnalysis: 创建智能分析模板。</li><li>SmartSubtitle: 创建智能字幕模板。</li><li>SmartErase: 创建智能擦除模板。</li>
+        r"""<p>需要创建的 MPS 模板的类型。取值：</p><li>AIAnalysis: 创建智能分析模板。</li><li>SmartSubtitle: 创建智能字幕模板。</li><li>SmartErase: 创建智能擦除模板。</li><li>EmbedSubtitle: 创建字幕压制模板。</li>
         :rtype: str
         """
         return self._TemplateType
@@ -28304,6 +28401,17 @@ class CreateMPSTemplateRequest(AbstractModel):
     def SmartEraseTemplate(self, SmartEraseTemplate):
         self._SmartEraseTemplate = SmartEraseTemplate
 
+    @property
+    def EmbedSubtitleTemplate(self):
+        r"""<p>字幕压制模板参数，MPSCreateTemplateParams为空时有效。</p>
+        :rtype: :class:`tencentcloud.vod.v20180717.models.MPSEmbedSubtitleTemplate`
+        """
+        return self._EmbedSubtitleTemplate
+
+    @EmbedSubtitleTemplate.setter
+    def EmbedSubtitleTemplate(self, EmbedSubtitleTemplate):
+        self._EmbedSubtitleTemplate = EmbedSubtitleTemplate
+
 
     def _deserialize(self, params):
         self._SubAppId = params.get("SubAppId")
@@ -28318,6 +28426,9 @@ class CreateMPSTemplateRequest(AbstractModel):
         if params.get("SmartEraseTemplate") is not None:
             self._SmartEraseTemplate = MPSSmartEraseTemplate()
             self._SmartEraseTemplate._deserialize(params.get("SmartEraseTemplate"))
+        if params.get("EmbedSubtitleTemplate") is not None:
+            self._EmbedSubtitleTemplate = MPSEmbedSubtitleTemplate()
+            self._EmbedSubtitleTemplate._deserialize(params.get("EmbedSubtitleTemplate"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -28566,25 +28677,26 @@ class CreateProcedureTemplateRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Name: 任务流名字（支持中文，不超过20个字）。
+        :param _Name: <p>任务流名字（支持中文，不超过20个字）。</p>
         :type Name: str
-        :param _SubAppId: <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
+        :param _SubAppId: <p><b>点播<a href="/document/product/266/14574">应用</a> ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b></p>
         :type SubAppId: int
-        :param _Comment: 模板描述信息，长度限制：256 个字符。
+        :param _Comment: <p>模板描述信息，长度限制：256 个字符。</p>
         :type Comment: str
-        :param _MediaProcessTask: 视频处理类型任务参数。
+        :param _MediaProcessTask: <p>视频处理类型任务参数。</p>
         :type MediaProcessTask: :class:`tencentcloud.vod.v20180717.models.MediaProcessTaskInput`
-        :param _AiContentReviewTask: AI 内容审核类型任务参数 \*。
-<font color=red>\*：该参数用于发起旧版审核，不建议使用。推荐使用 ReviewAudioVideoTask 参数发起审核。</font> 
+        :param _AiContentReviewTask: <p>AI 内容审核类型任务参数 *。<br><font color="red">*：该参数用于发起旧版审核，不建议使用。推荐使用 ReviewAudioVideoTask 参数发起审核。</font></p>
         :type AiContentReviewTask: :class:`tencentcloud.vod.v20180717.models.AiContentReviewTaskInput`
-        :param _AiAnalysisTask: AI 内容分析类型任务参数。
+        :param _AiAnalysisTask: <p>AI 内容分析类型任务参数。</p>
         :type AiAnalysisTask: :class:`tencentcloud.vod.v20180717.models.AiAnalysisTaskInput`
-        :param _AiRecognitionTaskSet: AI 内容识别类型任务参数。
+        :param _AiRecognitionTaskSet: <p>AI 内容识别类型任务参数。</p>
         :type AiRecognitionTaskSet: list of AiRecognitionTaskInput
-        :param _AiRecognitionTask: 该参数已不推荐使用，建议使用 AiRecognitionTaskSet。
+        :param _AiRecognitionTask: <p>该参数已不推荐使用，建议使用 AiRecognitionTaskSet。</p>
         :type AiRecognitionTask: :class:`tencentcloud.vod.v20180717.models.AiRecognitionTaskInput`
-        :param _ReviewAudioVideoTask: 音视频审核类型任务参数。
+        :param _ReviewAudioVideoTask: <p>音视频审核类型任务参数。</p>
         :type ReviewAudioVideoTask: :class:`tencentcloud.vod.v20180717.models.ProcedureReviewAudioVideoTaskInput`
+        :param _ImportMediaKnowledgeTaskSet: <p>导入智能媒资知识库任务参数。</p>
+        :type ImportMediaKnowledgeTaskSet: list of ImportMediaKnowledgeTaskInput
         """
         self._Name = None
         self._SubAppId = None
@@ -28595,10 +28707,11 @@ class CreateProcedureTemplateRequest(AbstractModel):
         self._AiRecognitionTaskSet = None
         self._AiRecognitionTask = None
         self._ReviewAudioVideoTask = None
+        self._ImportMediaKnowledgeTaskSet = None
 
     @property
     def Name(self):
-        r"""任务流名字（支持中文，不超过20个字）。
+        r"""<p>任务流名字（支持中文，不超过20个字）。</p>
         :rtype: str
         """
         return self._Name
@@ -28609,7 +28722,7 @@ class CreateProcedureTemplateRequest(AbstractModel):
 
     @property
     def SubAppId(self):
-        r"""<b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
+        r"""<p><b>点播<a href="/document/product/266/14574">应用</a> ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b></p>
         :rtype: int
         """
         return self._SubAppId
@@ -28620,7 +28733,7 @@ class CreateProcedureTemplateRequest(AbstractModel):
 
     @property
     def Comment(self):
-        r"""模板描述信息，长度限制：256 个字符。
+        r"""<p>模板描述信息，长度限制：256 个字符。</p>
         :rtype: str
         """
         return self._Comment
@@ -28631,7 +28744,7 @@ class CreateProcedureTemplateRequest(AbstractModel):
 
     @property
     def MediaProcessTask(self):
-        r"""视频处理类型任务参数。
+        r"""<p>视频处理类型任务参数。</p>
         :rtype: :class:`tencentcloud.vod.v20180717.models.MediaProcessTaskInput`
         """
         return self._MediaProcessTask
@@ -28642,8 +28755,7 @@ class CreateProcedureTemplateRequest(AbstractModel):
 
     @property
     def AiContentReviewTask(self):
-        r"""AI 内容审核类型任务参数 \*。
-<font color=red>\*：该参数用于发起旧版审核，不建议使用。推荐使用 ReviewAudioVideoTask 参数发起审核。</font> 
+        r"""<p>AI 内容审核类型任务参数 *。<br><font color="red">*：该参数用于发起旧版审核，不建议使用。推荐使用 ReviewAudioVideoTask 参数发起审核。</font></p>
         :rtype: :class:`tencentcloud.vod.v20180717.models.AiContentReviewTaskInput`
         """
         return self._AiContentReviewTask
@@ -28654,7 +28766,7 @@ class CreateProcedureTemplateRequest(AbstractModel):
 
     @property
     def AiAnalysisTask(self):
-        r"""AI 内容分析类型任务参数。
+        r"""<p>AI 内容分析类型任务参数。</p>
         :rtype: :class:`tencentcloud.vod.v20180717.models.AiAnalysisTaskInput`
         """
         return self._AiAnalysisTask
@@ -28665,7 +28777,7 @@ class CreateProcedureTemplateRequest(AbstractModel):
 
     @property
     def AiRecognitionTaskSet(self):
-        r"""AI 内容识别类型任务参数。
+        r"""<p>AI 内容识别类型任务参数。</p>
         :rtype: list of AiRecognitionTaskInput
         """
         return self._AiRecognitionTaskSet
@@ -28678,7 +28790,7 @@ class CreateProcedureTemplateRequest(AbstractModel):
     def AiRecognitionTask(self):
         warnings.warn("parameter `AiRecognitionTask` is deprecated", DeprecationWarning) 
 
-        r"""该参数已不推荐使用，建议使用 AiRecognitionTaskSet。
+        r"""<p>该参数已不推荐使用，建议使用 AiRecognitionTaskSet。</p>
         :rtype: :class:`tencentcloud.vod.v20180717.models.AiRecognitionTaskInput`
         """
         return self._AiRecognitionTask
@@ -28691,7 +28803,7 @@ class CreateProcedureTemplateRequest(AbstractModel):
 
     @property
     def ReviewAudioVideoTask(self):
-        r"""音视频审核类型任务参数。
+        r"""<p>音视频审核类型任务参数。</p>
         :rtype: :class:`tencentcloud.vod.v20180717.models.ProcedureReviewAudioVideoTaskInput`
         """
         return self._ReviewAudioVideoTask
@@ -28699,6 +28811,17 @@ class CreateProcedureTemplateRequest(AbstractModel):
     @ReviewAudioVideoTask.setter
     def ReviewAudioVideoTask(self, ReviewAudioVideoTask):
         self._ReviewAudioVideoTask = ReviewAudioVideoTask
+
+    @property
+    def ImportMediaKnowledgeTaskSet(self):
+        r"""<p>导入智能媒资知识库任务参数。</p>
+        :rtype: list of ImportMediaKnowledgeTaskInput
+        """
+        return self._ImportMediaKnowledgeTaskSet
+
+    @ImportMediaKnowledgeTaskSet.setter
+    def ImportMediaKnowledgeTaskSet(self, ImportMediaKnowledgeTaskSet):
+        self._ImportMediaKnowledgeTaskSet = ImportMediaKnowledgeTaskSet
 
 
     def _deserialize(self, params):
@@ -28726,6 +28849,12 @@ class CreateProcedureTemplateRequest(AbstractModel):
         if params.get("ReviewAudioVideoTask") is not None:
             self._ReviewAudioVideoTask = ProcedureReviewAudioVideoTaskInput()
             self._ReviewAudioVideoTask._deserialize(params.get("ReviewAudioVideoTask"))
+        if params.get("ImportMediaKnowledgeTaskSet") is not None:
+            self._ImportMediaKnowledgeTaskSet = []
+            for item in params.get("ImportMediaKnowledgeTaskSet"):
+                obj = ImportMediaKnowledgeTaskInput()
+                obj._deserialize(item)
+                self._ImportMediaKnowledgeTaskSet.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -33438,6 +33567,85 @@ class DeleteJustInTimeTranscodeTemplateResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DeleteKnowledgeBaseRequest(AbstractModel):
+    r"""DeleteKnowledgeBase请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SubAppId: <p>点播<a href="/document/product/266/14574">应用</a> ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</p>
+        :type SubAppId: int
+        :param _KnowledgeBaseId: <p>要删除的知识库ID。</p>
+        :type KnowledgeBaseId: str
+        """
+        self._SubAppId = None
+        self._KnowledgeBaseId = None
+
+    @property
+    def SubAppId(self):
+        r"""<p>点播<a href="/document/product/266/14574">应用</a> ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</p>
+        :rtype: int
+        """
+        return self._SubAppId
+
+    @SubAppId.setter
+    def SubAppId(self, SubAppId):
+        self._SubAppId = SubAppId
+
+    @property
+    def KnowledgeBaseId(self):
+        r"""<p>要删除的知识库ID。</p>
+        :rtype: str
+        """
+        return self._KnowledgeBaseId
+
+    @KnowledgeBaseId.setter
+    def KnowledgeBaseId(self, KnowledgeBaseId):
+        self._KnowledgeBaseId = KnowledgeBaseId
+
+
+    def _deserialize(self, params):
+        self._SubAppId = params.get("SubAppId")
+        self._KnowledgeBaseId = params.get("KnowledgeBaseId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteKnowledgeBaseResponse(AbstractModel):
+    r"""DeleteKnowledgeBase返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class DeleteLLMComprehendTemplateRequest(AbstractModel):
     r"""DeleteLLMComprehendTemplate请求参数结构体
 
@@ -33524,15 +33732,11 @@ class DeleteMPSTemplateRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SubAppId: <b>点播[应用](/document/product/266/14574) ID。</b>
+        :param _SubAppId: <p><b>点播<a href="/document/product/266/14574">应用</a> ID。</b></p>
         :type SubAppId: int
-        :param _TemplateType: 需要删除的 MPS 模板的类型。取值：
-<li>Transcode: 删除转码模板。</li>
-<li>AIAnalysis: 创建智能分析模板。</li>
-<li>SmartSubtitle: 创建智能字幕模板。</li>
-<li>SmartErase: 创建智能擦除模板。</li>
+        :param _TemplateType: <p>需要删除的 MPS 模板的类型。取值：</p><li>AIAnalysis: 创建智能分析模板。</li><li>SmartSubtitle: 创建智能字幕模板。</li><li>SmartErase: 创建智能擦除模板。</li><li>EmbedSubtitle: 字幕压制模板。</li>
         :type TemplateType: str
-        :param _Definition: MPS 任务模板唯一标识。
+        :param _Definition: <p>MPS 任务模板唯一标识。</p>
         :type Definition: int
         """
         self._SubAppId = None
@@ -33541,7 +33745,7 @@ class DeleteMPSTemplateRequest(AbstractModel):
 
     @property
     def SubAppId(self):
-        r"""<b>点播[应用](/document/product/266/14574) ID。</b>
+        r"""<p><b>点播<a href="/document/product/266/14574">应用</a> ID。</b></p>
         :rtype: int
         """
         return self._SubAppId
@@ -33552,11 +33756,7 @@ class DeleteMPSTemplateRequest(AbstractModel):
 
     @property
     def TemplateType(self):
-        r"""需要删除的 MPS 模板的类型。取值：
-<li>Transcode: 删除转码模板。</li>
-<li>AIAnalysis: 创建智能分析模板。</li>
-<li>SmartSubtitle: 创建智能字幕模板。</li>
-<li>SmartErase: 创建智能擦除模板。</li>
+        r"""<p>需要删除的 MPS 模板的类型。取值：</p><li>AIAnalysis: 创建智能分析模板。</li><li>SmartSubtitle: 创建智能字幕模板。</li><li>SmartErase: 创建智能擦除模板。</li><li>EmbedSubtitle: 字幕压制模板。</li>
         :rtype: str
         """
         return self._TemplateType
@@ -33567,7 +33767,7 @@ class DeleteMPSTemplateRequest(AbstractModel):
 
     @property
     def Definition(self):
-        r"""MPS 任务模板唯一标识。
+        r"""<p>MPS 任务模板唯一标识。</p>
         :rtype: int
         """
         return self._Definition
@@ -40479,6 +40679,115 @@ class DescribeJustInTimeTranscodeTemplatesResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeKnowledgeBasesRequest(AbstractModel):
+    r"""DescribeKnowledgeBases请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SubAppId: <p>点播<a href="/document/product/266/14574">应用</a> ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</p>
+        :type SubAppId: int
+        :param _Offset: <p>分页偏移量，默认值：0。</p>
+        :type Offset: int
+        :param _Limit: <p>返回记录条数，默认值：100，最大值：100。</p>
+        :type Limit: int
+        :param _Name: <p>按知识库名称精确匹配筛选，不填则返回所有知识库。</p>
+        :type Name: str
+        """
+        self._SubAppId = None
+        self._Offset = None
+        self._Limit = None
+        self._Name = None
+
+    @property
+    def SubAppId(self):
+        r"""<p>点播<a href="/document/product/266/14574">应用</a> ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</p>
+        :rtype: int
+        """
+        return self._SubAppId
+
+    @SubAppId.setter
+    def SubAppId(self, SubAppId):
+        self._SubAppId = SubAppId
+
+    @property
+    def Offset(self):
+        r"""<p>分页偏移量，默认值：0。</p>
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        r"""<p>返回记录条数，默认值：100，最大值：100。</p>
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Name(self):
+        r"""<p>按知识库名称精确匹配筛选，不填则返回所有知识库。</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+
+    def _deserialize(self, params):
+        self._SubAppId = params.get("SubAppId")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._Name = params.get("Name")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeKnowledgeBasesResponse(AbstractModel):
+    r"""DescribeKnowledgeBases返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeLLMComprehendTemplatesRequest(AbstractModel):
     r"""DescribeLLMComprehendTemplates请求参数结构体
 
@@ -40490,6 +40799,8 @@ class DescribeLLMComprehendTemplatesRequest(AbstractModel):
         :type SubAppId: int
         :param _Definitions: <p>大模型解析模板唯一标识过滤条件，数组长度最大值：100。</p>
         :type Definitions: list of int
+        :param _Sort: <p>排序方式。<br>Sort.Field 可选 Definition、CreateTime、UpdateTime。</p>
+        :type Sort: :class:`tencentcloud.vod.v20180717.models.SortBy`
         :param _Offset: <p>分页偏移量，默认值：0。</p>
         :type Offset: int
         :param _Limit: <p>返回记录条数，默认值：10，最大值：100。</p>
@@ -40497,6 +40808,7 @@ class DescribeLLMComprehendTemplatesRequest(AbstractModel):
         """
         self._SubAppId = None
         self._Definitions = None
+        self._Sort = None
         self._Offset = None
         self._Limit = None
 
@@ -40521,6 +40833,17 @@ class DescribeLLMComprehendTemplatesRequest(AbstractModel):
     @Definitions.setter
     def Definitions(self, Definitions):
         self._Definitions = Definitions
+
+    @property
+    def Sort(self):
+        r"""<p>排序方式。<br>Sort.Field 可选 Definition、CreateTime、UpdateTime。</p>
+        :rtype: :class:`tencentcloud.vod.v20180717.models.SortBy`
+        """
+        return self._Sort
+
+    @Sort.setter
+    def Sort(self, Sort):
+        self._Sort = Sort
 
     @property
     def Offset(self):
@@ -40548,6 +40871,9 @@ class DescribeLLMComprehendTemplatesRequest(AbstractModel):
     def _deserialize(self, params):
         self._SubAppId = params.get("SubAppId")
         self._Definitions = params.get("Definitions")
+        if params.get("Sort") is not None:
+            self._Sort = SortBy()
+            self._Sort._deserialize(params.get("Sort"))
         self._Offset = params.get("Offset")
         self._Limit = params.get("Limit")
         memeber_set = set(params.keys())
@@ -40761,19 +41087,11 @@ class DescribeMPSTemplatesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SubAppId: <b>点播[应用](/document/product/266/14574) ID。</b>
+        :param _SubAppId: <p><b>点播<a href="/document/product/266/14574">应用</a> ID。</b></p>
         :type SubAppId: int
-        :param _TemplateType: MPS 模板类型。根据需要查询的 MPS 模板的类型对结果进行过滤。取值：
-<li>Transcode: 查询转码模板列表。</li>
-<li>AIAnalysis: 创建智能分析模板。</li>
-<li>SmartSubtitle: 创建智能字幕模板。</li>
-<li>SmartErase: 创建智能擦除模板。</li>
+        :param _TemplateType: <p>MPS 模板类型。根据需要查询的 MPS 模板的类型对结果进行过滤。取值：</p><li>AIAnalysis: 智能分析模板。</li><li>SmartSubtitle: 智能字幕模板。</li><li>SmartErase: 智能擦除模板。</li><li>EmbedSubtitle: 字幕压制模板。</li>
         :type TemplateType: str
-        :param _MPSDescribeTemplateParams: MPS 查询模板参数。该参数用于透传至媒体处理服务（MPS），从云点播侧查询 MPS 任务模板列表。目前仅支持通过此方式查询以下任务类型的模板：
-1. 音视频增强：仅支持填写“[获取转码模板列表](https://cloud.tencent.com/document/product/862/37593)”接口中的 Definitions、Type、Name、Offset 和 Limit 几个参数的内容。目前仅支持在模板中配置以上参数，其他参数无需填写，若包含其它参数，系统将自动忽略。
-2. 智能分析：仅支持填写“[获取智能分析模板列表](https://cloud.tencent.com/document/product/862/40247)”接口中的 Definitions、Type、Name、Offset 和 Limit 几个参数的内容。目前仅支持在模板中配置以上参数，其他参数无需填写，若包含其它参数，系统将自动忽略。
-3. 智能字幕：仅支持填写“[获取智能字幕模板列表](https://cloud.tencent.com/document/product/862/117002)”接口中的 Definitions、Type、Name、Offset 和 Limit 几个参数的内容。目前仅支持在模板中配置以上参数，其他参数无需填写，若包含其它参数，系统将自动忽略。
-4. 智能擦除：仅支持填写“[获取智能擦除模板列表](https://cloud.tencent.com/document/product/862/123733)”接口中的 Definitions、Type、Name、Offset 和 Limit 几个参数的内容。目前仅支持在模板中配置以上参数，其他参数无需填写，若包含其它参数，系统将自动忽略。
+        :param _MPSDescribeTemplateParams: <p>MPS 查询模板参数。该参数用于透传至媒体处理服务（MPS），从云点播侧查询 MPS 任务模板列表。目前仅支持通过此方式查询以下任务类型的模板：</p><ol><li>音视频增强：仅支持填写“<a href="https://cloud.tencent.com/document/product/862/37593">获取转码模板列表</a>”接口中的 Definitions、Type、Name、Offset 和 Limit 几个参数的内容。目前仅支持在模板中配置以上参数，其他参数无需填写，若包含其它参数，系统将自动忽略。</li><li>智能分析：仅支持填写“<a href="https://cloud.tencent.com/document/product/862/40247">获取智能分析模板列表</a>”接口中的 Definitions、Type、Name、Offset 和 Limit 几个参数的内容。目前仅支持在模板中配置以上参数，其他参数无需填写，若包含其它参数，系统将自动忽略。</li><li>智能字幕：仅支持填写“<a href="https://cloud.tencent.com/document/product/862/117002">获取智能字幕模板列表</a>”接口中的 Definitions、Type、Name、Offset 和 Limit 几个参数的内容。目前仅支持在模板中配置以上参数，其他参数无需填写，若包含其它参数，系统将自动忽略。</li><li>智能擦除：仅支持填写“<a href="https://cloud.tencent.com/document/product/862/123733">获取智能擦除模板列表</a>”接口中的 Definitions、Type、Name、Offset 和 Limit 几个参数的内容。目前仅支持在模板中配置以上参数，其他参数无需填写，若包含其它参数，系统将自动忽略。</li></ol>
         :type MPSDescribeTemplateParams: str
         """
         self._SubAppId = None
@@ -40782,7 +41100,7 @@ class DescribeMPSTemplatesRequest(AbstractModel):
 
     @property
     def SubAppId(self):
-        r"""<b>点播[应用](/document/product/266/14574) ID。</b>
+        r"""<p><b>点播<a href="/document/product/266/14574">应用</a> ID。</b></p>
         :rtype: int
         """
         return self._SubAppId
@@ -40793,11 +41111,7 @@ class DescribeMPSTemplatesRequest(AbstractModel):
 
     @property
     def TemplateType(self):
-        r"""MPS 模板类型。根据需要查询的 MPS 模板的类型对结果进行过滤。取值：
-<li>Transcode: 查询转码模板列表。</li>
-<li>AIAnalysis: 创建智能分析模板。</li>
-<li>SmartSubtitle: 创建智能字幕模板。</li>
-<li>SmartErase: 创建智能擦除模板。</li>
+        r"""<p>MPS 模板类型。根据需要查询的 MPS 模板的类型对结果进行过滤。取值：</p><li>AIAnalysis: 智能分析模板。</li><li>SmartSubtitle: 智能字幕模板。</li><li>SmartErase: 智能擦除模板。</li><li>EmbedSubtitle: 字幕压制模板。</li>
         :rtype: str
         """
         return self._TemplateType
@@ -40808,11 +41122,7 @@ class DescribeMPSTemplatesRequest(AbstractModel):
 
     @property
     def MPSDescribeTemplateParams(self):
-        r"""MPS 查询模板参数。该参数用于透传至媒体处理服务（MPS），从云点播侧查询 MPS 任务模板列表。目前仅支持通过此方式查询以下任务类型的模板：
-1. 音视频增强：仅支持填写“[获取转码模板列表](https://cloud.tencent.com/document/product/862/37593)”接口中的 Definitions、Type、Name、Offset 和 Limit 几个参数的内容。目前仅支持在模板中配置以上参数，其他参数无需填写，若包含其它参数，系统将自动忽略。
-2. 智能分析：仅支持填写“[获取智能分析模板列表](https://cloud.tencent.com/document/product/862/40247)”接口中的 Definitions、Type、Name、Offset 和 Limit 几个参数的内容。目前仅支持在模板中配置以上参数，其他参数无需填写，若包含其它参数，系统将自动忽略。
-3. 智能字幕：仅支持填写“[获取智能字幕模板列表](https://cloud.tencent.com/document/product/862/117002)”接口中的 Definitions、Type、Name、Offset 和 Limit 几个参数的内容。目前仅支持在模板中配置以上参数，其他参数无需填写，若包含其它参数，系统将自动忽略。
-4. 智能擦除：仅支持填写“[获取智能擦除模板列表](https://cloud.tencent.com/document/product/862/123733)”接口中的 Definitions、Type、Name、Offset 和 Limit 几个参数的内容。目前仅支持在模板中配置以上参数，其他参数无需填写，若包含其它参数，系统将自动忽略。
+        r"""<p>MPS 查询模板参数。该参数用于透传至媒体处理服务（MPS），从云点播侧查询 MPS 任务模板列表。目前仅支持通过此方式查询以下任务类型的模板：</p><ol><li>音视频增强：仅支持填写“<a href="https://cloud.tencent.com/document/product/862/37593">获取转码模板列表</a>”接口中的 Definitions、Type、Name、Offset 和 Limit 几个参数的内容。目前仅支持在模板中配置以上参数，其他参数无需填写，若包含其它参数，系统将自动忽略。</li><li>智能分析：仅支持填写“<a href="https://cloud.tencent.com/document/product/862/40247">获取智能分析模板列表</a>”接口中的 Definitions、Type、Name、Offset 和 Limit 几个参数的内容。目前仅支持在模板中配置以上参数，其他参数无需填写，若包含其它参数，系统将自动忽略。</li><li>智能字幕：仅支持填写“<a href="https://cloud.tencent.com/document/product/862/117002">获取智能字幕模板列表</a>”接口中的 Definitions、Type、Name、Offset 和 Limit 几个参数的内容。目前仅支持在模板中配置以上参数，其他参数无需填写，若包含其它参数，系统将自动忽略。</li><li>智能擦除：仅支持填写“<a href="https://cloud.tencent.com/document/product/862/123733">获取智能擦除模板列表</a>”接口中的 Definitions、Type、Name、Offset 和 Limit 几个参数的内容。目前仅支持在模板中配置以上参数，其他参数无需填写，若包含其它参数，系统将自动忽略。</li></ol>
         :rtype: str
         """
         return self._MPSDescribeTemplateParams
@@ -40843,9 +41153,9 @@ class DescribeMPSTemplatesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TotalCount: 符合过滤条件的记录总数。
+        :param _TotalCount: <p>符合过滤条件的记录总数。</p>
         :type TotalCount: int
-        :param _MPSTemplateSet: MPS 任务模板详情列表。
+        :param _MPSTemplateSet: <p>MPS 任务模板详情列表。</p>
         :type MPSTemplateSet: list of MPSTemplate
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -40856,7 +41166,7 @@ class DescribeMPSTemplatesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        r"""符合过滤条件的记录总数。
+        r"""<p>符合过滤条件的记录总数。</p>
         :rtype: int
         """
         return self._TotalCount
@@ -40867,7 +41177,7 @@ class DescribeMPSTemplatesResponse(AbstractModel):
 
     @property
     def MPSTemplateSet(self):
-        r"""MPS 任务模板详情列表。
+        r"""<p>MPS 任务模板详情列表。</p>
         :rtype: list of MPSTemplate
         """
         return self._MPSTemplateSet
@@ -40910,7 +41220,7 @@ class DescribeMediaInfosRequest(AbstractModel):
         :type FileIds: list of str
         :param _SubAppId: <p><b>点播<a href="/document/product/266/14574">应用</a> ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b></p>
         :type SubAppId: int
-        :param _Filters: <p>指定所有媒体文件需要返回的信息，可同时指定多个信息，N 从 0 开始递增。如果未填写该字段，默认返回所有信息。选项有：</p><li>basicInfo（视频基础信息）。</li><li>metaData（视频元信息）。</li><li>transcodeInfo（视频转码结果信息）。</li><li>animatedGraphicsInfo（视频转动图结果信息）。</li><li>imageSpriteInfo（视频雪碧图信息）。</li><li>snapshotByTimeOffsetInfo（视频指定时间点截图信息）。</li><li>sampleSnapshotInfo（采样截图信息）。</li><li>keyFrameDescInfo（打点信息）。</li><li>adaptiveDynamicStreamingInfo（转自适应码流信息）。</li><li>miniProgramReviewInfo（小程序审核信息）。</li><li>subtitleInfo（字幕信息）。</li><li>reviewInfo（审核信息）。</li><li>mpsAiMediaInfo（mps智能媒资信息）。</li>
+        :param _Filters: <p>指定所有媒体文件需要返回的信息，可同时指定多个信息，N 从 0 开始递增。如果未填写该字段，默认返回所有信息。选项有：</p><li>basicInfo（视频基础信息）。</li><li>metaData（视频元信息）。</li><li>transcodeInfo（视频转码结果信息）。</li><li>animatedGraphicsInfo（视频转动图结果信息）。</li><li>imageSpriteInfo（视频雪碧图信息）。</li><li>snapshotByTimeOffsetInfo（视频指定时间点截图信息）。</li><li>sampleSnapshotInfo（采样截图信息）。</li><li>keyFrameDescInfo（打点信息）。</li><li>adaptiveDynamicStreamingInfo（转自适应码流信息）。</li><li>miniProgramReviewInfo（小程序审核信息）。</li><li>subtitleInfo（字幕信息）。</li><li>reviewInfo（审核信息）。</li><li>mpsAiMediaInfo（mps智能媒资信息）。</li><li>knowledgeBasesInfo（智能媒资知识库信息）。</li>
         :type Filters: list of str
         """
         self._FileIds = None
@@ -40941,7 +41251,7 @@ class DescribeMediaInfosRequest(AbstractModel):
 
     @property
     def Filters(self):
-        r"""<p>指定所有媒体文件需要返回的信息，可同时指定多个信息，N 从 0 开始递增。如果未填写该字段，默认返回所有信息。选项有：</p><li>basicInfo（视频基础信息）。</li><li>metaData（视频元信息）。</li><li>transcodeInfo（视频转码结果信息）。</li><li>animatedGraphicsInfo（视频转动图结果信息）。</li><li>imageSpriteInfo（视频雪碧图信息）。</li><li>snapshotByTimeOffsetInfo（视频指定时间点截图信息）。</li><li>sampleSnapshotInfo（采样截图信息）。</li><li>keyFrameDescInfo（打点信息）。</li><li>adaptiveDynamicStreamingInfo（转自适应码流信息）。</li><li>miniProgramReviewInfo（小程序审核信息）。</li><li>subtitleInfo（字幕信息）。</li><li>reviewInfo（审核信息）。</li><li>mpsAiMediaInfo（mps智能媒资信息）。</li>
+        r"""<p>指定所有媒体文件需要返回的信息，可同时指定多个信息，N 从 0 开始递增。如果未填写该字段，默认返回所有信息。选项有：</p><li>basicInfo（视频基础信息）。</li><li>metaData（视频元信息）。</li><li>transcodeInfo（视频转码结果信息）。</li><li>animatedGraphicsInfo（视频转动图结果信息）。</li><li>imageSpriteInfo（视频雪碧图信息）。</li><li>snapshotByTimeOffsetInfo（视频指定时间点截图信息）。</li><li>sampleSnapshotInfo（采样截图信息）。</li><li>keyFrameDescInfo（打点信息）。</li><li>adaptiveDynamicStreamingInfo（转自适应码流信息）。</li><li>miniProgramReviewInfo（小程序审核信息）。</li><li>subtitleInfo（字幕信息）。</li><li>reviewInfo（审核信息）。</li><li>mpsAiMediaInfo（mps智能媒资信息）。</li><li>knowledgeBasesInfo（智能媒资知识库信息）。</li>
         :rtype: list of str
         """
         return self._Filters
@@ -54377,25 +54687,26 @@ class ImportMediaKnowledgeRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SubAppId: <b>点播[应用](/document/product/266/14574) ID。</b>
+        :param _SubAppId: <p><b>点播<a href="/document/product/266/14574">应用</a> ID。</b></p>
         :type SubAppId: int
-        :param _FileId: 媒体文件 ID，即该文件在云点播上的全局唯一标识符，在上传成功后由云点播后台分配。可以在 [视频上传完成事件通知](/document/product/266/7830) 或 [云点播控制台](https://console.cloud.tencent.com/vod/media) 获取该字段。
+        :param _FileId: <p>媒体文件 ID，即该文件在云点播上的全局唯一标识符，在上传成功后由云点播后台分配。可以在 <a href="/document/product/266/7830">视频上传完成事件通知</a> 或 <a href="https://console.cloud.tencent.com/vod/media">云点播控制台</a> 获取该字段。</p>
         :type FileId: str
-        :param _Definition: 大模型理解模板的唯一标识
+        :param _Definition: <p>大模型理解模板的唯一标识</p>
         :type Definition: int
-        :param _ImportTasks: 需要导入知识库任务类型，可选值有：
-- AiAnalysis.DescriptionTask
-- SmartSubtitle.AsrFullTextTask
+        :param _KnowledgeBaseIds: <p>知识库ID列表，留空时将使用默认知识库</p>
+        :type KnowledgeBaseIds: list of str
+        :param _ImportTasks: <p>需要导入知识库任务类型，可选值有：</p><ul><li>AiAnalysis.DescriptionTask</li><li>SmartSubtitle.AsrFullTextTask</li></ul>
         :type ImportTasks: list of str
         """
         self._SubAppId = None
         self._FileId = None
         self._Definition = None
+        self._KnowledgeBaseIds = None
         self._ImportTasks = None
 
     @property
     def SubAppId(self):
-        r"""<b>点播[应用](/document/product/266/14574) ID。</b>
+        r"""<p><b>点播<a href="/document/product/266/14574">应用</a> ID。</b></p>
         :rtype: int
         """
         return self._SubAppId
@@ -54406,7 +54717,7 @@ class ImportMediaKnowledgeRequest(AbstractModel):
 
     @property
     def FileId(self):
-        r"""媒体文件 ID，即该文件在云点播上的全局唯一标识符，在上传成功后由云点播后台分配。可以在 [视频上传完成事件通知](/document/product/266/7830) 或 [云点播控制台](https://console.cloud.tencent.com/vod/media) 获取该字段。
+        r"""<p>媒体文件 ID，即该文件在云点播上的全局唯一标识符，在上传成功后由云点播后台分配。可以在 <a href="/document/product/266/7830">视频上传完成事件通知</a> 或 <a href="https://console.cloud.tencent.com/vod/media">云点播控制台</a> 获取该字段。</p>
         :rtype: str
         """
         return self._FileId
@@ -54417,7 +54728,7 @@ class ImportMediaKnowledgeRequest(AbstractModel):
 
     @property
     def Definition(self):
-        r"""大模型理解模板的唯一标识
+        r"""<p>大模型理解模板的唯一标识</p>
         :rtype: int
         """
         return self._Definition
@@ -54427,12 +54738,21 @@ class ImportMediaKnowledgeRequest(AbstractModel):
         self._Definition = Definition
 
     @property
+    def KnowledgeBaseIds(self):
+        r"""<p>知识库ID列表，留空时将使用默认知识库</p>
+        :rtype: list of str
+        """
+        return self._KnowledgeBaseIds
+
+    @KnowledgeBaseIds.setter
+    def KnowledgeBaseIds(self, KnowledgeBaseIds):
+        self._KnowledgeBaseIds = KnowledgeBaseIds
+
+    @property
     def ImportTasks(self):
         warnings.warn("parameter `ImportTasks` is deprecated", DeprecationWarning) 
 
-        r"""需要导入知识库任务类型，可选值有：
-- AiAnalysis.DescriptionTask
-- SmartSubtitle.AsrFullTextTask
+        r"""<p>需要导入知识库任务类型，可选值有：</p><ul><li>AiAnalysis.DescriptionTask</li><li>SmartSubtitle.AsrFullTextTask</li></ul>
         :rtype: list of str
         """
         return self._ImportTasks
@@ -54448,6 +54768,7 @@ class ImportMediaKnowledgeRequest(AbstractModel):
         self._SubAppId = params.get("SubAppId")
         self._FileId = params.get("FileId")
         self._Definition = params.get("Definition")
+        self._KnowledgeBaseIds = params.get("KnowledgeBaseIds")
         self._ImportTasks = params.get("ImportTasks")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -54466,7 +54787,7 @@ class ImportMediaKnowledgeResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskId: 任务 ID。
+        :param _TaskId: <p>任务 ID。</p>
         :type TaskId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -54476,7 +54797,7 @@ class ImportMediaKnowledgeResponse(AbstractModel):
 
     @property
     def TaskId(self):
-        r"""任务 ID。
+        r"""<p>任务 ID。</p>
         :rtype: str
         """
         return self._TaskId
@@ -54509,23 +54830,29 @@ class ImportMediaKnowledgeTask(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskId: 任务 ID。
+        :param _TaskId: <p>任务 ID。</p>
         :type TaskId: str
-        :param _Status: 任务状态，取值：<li>PROCESSING：处理中；</li><li>FINISH：已完成。</li>
+        :param _FileId: <p>媒体文件 ID</p>
+        :type FileId: str
+        :param _Input: <p>导入知识库任务的输入。</p>
+        :type Input: :class:`tencentcloud.vod.v20180717.models.ImportMediaKnowledgeTaskInput`
+        :param _Status: <p>任务状态，取值：<li>PROCESSING：处理中；</li><li>FINISH：已完成。</li></p>
         :type Status: str
-        :param _ErrCode: 错误码，0 表示成功，其他值表示失败
+        :param _ErrCode: <p>错误码，0 表示成功，其他值表示失败</p>
         :type ErrCode: int
-        :param _Message: 错误信息。
+        :param _Message: <p>错误信息。</p>
         :type Message: str
         """
         self._TaskId = None
+        self._FileId = None
+        self._Input = None
         self._Status = None
         self._ErrCode = None
         self._Message = None
 
     @property
     def TaskId(self):
-        r"""任务 ID。
+        r"""<p>任务 ID。</p>
         :rtype: str
         """
         return self._TaskId
@@ -54535,8 +54862,30 @@ class ImportMediaKnowledgeTask(AbstractModel):
         self._TaskId = TaskId
 
     @property
+    def FileId(self):
+        r"""<p>媒体文件 ID</p>
+        :rtype: str
+        """
+        return self._FileId
+
+    @FileId.setter
+    def FileId(self, FileId):
+        self._FileId = FileId
+
+    @property
+    def Input(self):
+        r"""<p>导入知识库任务的输入。</p>
+        :rtype: :class:`tencentcloud.vod.v20180717.models.ImportMediaKnowledgeTaskInput`
+        """
+        return self._Input
+
+    @Input.setter
+    def Input(self, Input):
+        self._Input = Input
+
+    @property
     def Status(self):
-        r"""任务状态，取值：<li>PROCESSING：处理中；</li><li>FINISH：已完成。</li>
+        r"""<p>任务状态，取值：<li>PROCESSING：处理中；</li><li>FINISH：已完成。</li></p>
         :rtype: str
         """
         return self._Status
@@ -54547,7 +54896,7 @@ class ImportMediaKnowledgeTask(AbstractModel):
 
     @property
     def ErrCode(self):
-        r"""错误码，0 表示成功，其他值表示失败
+        r"""<p>错误码，0 表示成功，其他值表示失败</p>
         :rtype: int
         """
         return self._ErrCode
@@ -54558,7 +54907,7 @@ class ImportMediaKnowledgeTask(AbstractModel):
 
     @property
     def Message(self):
-        r"""错误信息。
+        r"""<p>错误信息。</p>
         :rtype: str
         """
         return self._Message
@@ -54570,9 +54919,64 @@ class ImportMediaKnowledgeTask(AbstractModel):
 
     def _deserialize(self, params):
         self._TaskId = params.get("TaskId")
+        self._FileId = params.get("FileId")
+        if params.get("Input") is not None:
+            self._Input = ImportMediaKnowledgeTaskInput()
+            self._Input._deserialize(params.get("Input"))
         self._Status = params.get("Status")
         self._ErrCode = params.get("ErrCode")
         self._Message = params.get("Message")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ImportMediaKnowledgeTaskInput(AbstractModel):
+    r"""任务流模板导入智能媒资知识库输入参数类型。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Definition: <p>大模型理解模板</p>
+        :type Definition: int
+        :param _KnowledgeBaseIds: <p>知识库ID列表，留空时将使用默认知识库</p>
+        :type KnowledgeBaseIds: list of str
+        """
+        self._Definition = None
+        self._KnowledgeBaseIds = None
+
+    @property
+    def Definition(self):
+        r"""<p>大模型理解模板</p>
+        :rtype: int
+        """
+        return self._Definition
+
+    @Definition.setter
+    def Definition(self, Definition):
+        self._Definition = Definition
+
+    @property
+    def KnowledgeBaseIds(self):
+        r"""<p>知识库ID列表，留空时将使用默认知识库</p>
+        :rtype: list of str
+        """
+        return self._KnowledgeBaseIds
+
+    @KnowledgeBaseIds.setter
+    def KnowledgeBaseIds(self, KnowledgeBaseIds):
+        self._KnowledgeBaseIds = KnowledgeBaseIds
+
+
+    def _deserialize(self, params):
+        self._Definition = params.get("Definition")
+        self._KnowledgeBaseIds = params.get("KnowledgeBaseIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -55041,6 +55445,72 @@ class KnowledgeAnalysisResult(AbstractModel):
         
 
 
+class KnowledgeBaseDetail(AbstractModel):
+    r"""媒资当导入的知识库列表，以及使用的解析模板等详细信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _KnowledgeBaseId: <p>知识库ID</p>
+        :type KnowledgeBaseId: str
+        :param _Definition: <p>关联的大模型解析模板</p>
+        :type Definition: int
+        :param _ImportTime: <p>入库时间</p>
+        :type ImportTime: str
+        """
+        self._KnowledgeBaseId = None
+        self._Definition = None
+        self._ImportTime = None
+
+    @property
+    def KnowledgeBaseId(self):
+        r"""<p>知识库ID</p>
+        :rtype: str
+        """
+        return self._KnowledgeBaseId
+
+    @KnowledgeBaseId.setter
+    def KnowledgeBaseId(self, KnowledgeBaseId):
+        self._KnowledgeBaseId = KnowledgeBaseId
+
+    @property
+    def Definition(self):
+        r"""<p>关联的大模型解析模板</p>
+        :rtype: int
+        """
+        return self._Definition
+
+    @Definition.setter
+    def Definition(self, Definition):
+        self._Definition = Definition
+
+    @property
+    def ImportTime(self):
+        r"""<p>入库时间</p>
+        :rtype: str
+        """
+        return self._ImportTime
+
+    @ImportTime.setter
+    def ImportTime(self, ImportTime):
+        self._ImportTime = ImportTime
+
+
+    def _deserialize(self, params):
+        self._KnowledgeBaseId = params.get("KnowledgeBaseId")
+        self._Definition = params.get("Definition")
+        self._ImportTime = params.get("ImportTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class KnowledgeBasesInfo(AbstractModel):
     r"""媒资智能知识库信息
 
@@ -55052,9 +55522,12 @@ class KnowledgeBasesInfo(AbstractModel):
         :type Bases: list of str
         :param _KnowledgeAnalysisInfos: <p>知识库中媒体分析信息</p>
         :type KnowledgeAnalysisInfos: list of KnowledgeAnalysisInfo
+        :param _KnowledgeBaseDetails: <p>当前媒资当导入的知识库列表，以及使用的解析模板等详细信息</p>
+        :type KnowledgeBaseDetails: list of KnowledgeBaseDetail
         """
         self._Bases = None
         self._KnowledgeAnalysisInfos = None
+        self._KnowledgeBaseDetails = None
 
     @property
     def Bases(self):
@@ -55078,6 +55551,17 @@ class KnowledgeBasesInfo(AbstractModel):
     def KnowledgeAnalysisInfos(self, KnowledgeAnalysisInfos):
         self._KnowledgeAnalysisInfos = KnowledgeAnalysisInfos
 
+    @property
+    def KnowledgeBaseDetails(self):
+        r"""<p>当前媒资当导入的知识库列表，以及使用的解析模板等详细信息</p>
+        :rtype: list of KnowledgeBaseDetail
+        """
+        return self._KnowledgeBaseDetails
+
+    @KnowledgeBaseDetails.setter
+    def KnowledgeBaseDetails(self, KnowledgeBaseDetails):
+        self._KnowledgeBaseDetails = KnowledgeBaseDetails
+
 
     def _deserialize(self, params):
         self._Bases = params.get("Bases")
@@ -55087,6 +55571,12 @@ class KnowledgeBasesInfo(AbstractModel):
                 obj = KnowledgeAnalysisInfo()
                 obj._deserialize(item)
                 self._KnowledgeAnalysisInfos.append(obj)
+        if params.get("KnowledgeBaseDetails") is not None:
+            self._KnowledgeBaseDetails = []
+            for item in params.get("KnowledgeBaseDetails"):
+                obj = KnowledgeBaseDetail()
+                obj._deserialize(item)
+                self._KnowledgeBaseDetails.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -55492,6 +55982,8 @@ class LLMComprehendTemplateItem(AbstractModel):
         :type Name: str
         :param _Comment: <p>图片异步处理模板描述信息。</p>
         :type Comment: str
+        :param _Type: <p>模板类型</p><p>枚举值：</p><ul><li>Preset： 系统预置模板</li><li>Custom： 用户自定义模板</li></ul>
+        :type Type: str
         :param _Level: <p>解析级别，可选值为：</p><ul><li>Audio: 音频级解析</li><li>Video: 视频级解析</li></ul>
         :type Level: str
         :param _Summary: <p>分段摘要解析配置</p>
@@ -55508,6 +56000,7 @@ class LLMComprehendTemplateItem(AbstractModel):
         self._Definition = None
         self._Name = None
         self._Comment = None
+        self._Type = None
         self._Level = None
         self._Summary = None
         self._Asr = None
@@ -55547,6 +56040,17 @@ class LLMComprehendTemplateItem(AbstractModel):
     @Comment.setter
     def Comment(self, Comment):
         self._Comment = Comment
+
+    @property
+    def Type(self):
+        r"""<p>模板类型</p><p>枚举值：</p><ul><li>Preset： 系统预置模板</li><li>Custom： 用户自定义模板</li></ul>
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
 
     @property
     def Level(self):
@@ -55619,6 +56123,7 @@ class LLMComprehendTemplateItem(AbstractModel):
         self._Definition = params.get("Definition")
         self._Name = params.get("Name")
         self._Comment = params.get("Comment")
+        self._Type = params.get("Type")
         self._Level = params.get("Level")
         if params.get("Summary") is not None:
             self._Summary = LLMComprehendSummary()
@@ -57182,6 +57687,157 @@ class MPSAiMediaTask(AbstractModel):
         
 
 
+class MPSEmbedSubtitleTemplate(AbstractModel):
+    r"""MPS压制字幕模板
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: <p>字幕压制模板名称<br>长度限制：64 个字符。</p>
+        :type Name: str
+        :param _Comment: <p>字幕压制模板描述信息<br>长度限制：256 个字符。</p>
+        :type Comment: str
+        :param _SubtitleEmbedConfig: <p>字幕压制相关配置</p>
+        :type SubtitleEmbedConfig: :class:`tencentcloud.vod.v20180717.models.MPSSubtitleEmbedConfig`
+        """
+        self._Name = None
+        self._Comment = None
+        self._SubtitleEmbedConfig = None
+
+    @property
+    def Name(self):
+        r"""<p>字幕压制模板名称<br>长度限制：64 个字符。</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Comment(self):
+        r"""<p>字幕压制模板描述信息<br>长度限制：256 个字符。</p>
+        :rtype: str
+        """
+        return self._Comment
+
+    @Comment.setter
+    def Comment(self, Comment):
+        self._Comment = Comment
+
+    @property
+    def SubtitleEmbedConfig(self):
+        r"""<p>字幕压制相关配置</p>
+        :rtype: :class:`tencentcloud.vod.v20180717.models.MPSSubtitleEmbedConfig`
+        """
+        return self._SubtitleEmbedConfig
+
+    @SubtitleEmbedConfig.setter
+    def SubtitleEmbedConfig(self, SubtitleEmbedConfig):
+        self._SubtitleEmbedConfig = SubtitleEmbedConfig
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Comment = params.get("Comment")
+        if params.get("SubtitleEmbedConfig") is not None:
+            self._SubtitleEmbedConfig = MPSSubtitleEmbedConfig()
+            self._SubtitleEmbedConfig._deserialize(params.get("SubtitleEmbedConfig"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class MPSEmbedSubtitleTemplateForUpdate(AbstractModel):
+    r"""MPS压制字幕模板
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Definition: <p>字幕压制模板唯一标识</p>
+        :type Definition: int
+        :param _Name: <p>字幕压制名称<br>长度限制：64 个字符。</p>
+        :type Name: str
+        :param _Comment: <p>字幕压制模板描述信息<br>长度限制：256 个字符。</p>
+        :type Comment: str
+        :param _SubtitleEmbedConfig: <p>字幕压制相关配置</p>
+        :type SubtitleEmbedConfig: :class:`tencentcloud.vod.v20180717.models.MPSSubtitleEmbedConfig`
+        """
+        self._Definition = None
+        self._Name = None
+        self._Comment = None
+        self._SubtitleEmbedConfig = None
+
+    @property
+    def Definition(self):
+        r"""<p>字幕压制模板唯一标识</p>
+        :rtype: int
+        """
+        return self._Definition
+
+    @Definition.setter
+    def Definition(self, Definition):
+        self._Definition = Definition
+
+    @property
+    def Name(self):
+        r"""<p>字幕压制名称<br>长度限制：64 个字符。</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Comment(self):
+        r"""<p>字幕压制模板描述信息<br>长度限制：256 个字符。</p>
+        :rtype: str
+        """
+        return self._Comment
+
+    @Comment.setter
+    def Comment(self, Comment):
+        self._Comment = Comment
+
+    @property
+    def SubtitleEmbedConfig(self):
+        r"""<p>字幕压制相关配置</p>
+        :rtype: :class:`tencentcloud.vod.v20180717.models.MPSSubtitleEmbedConfig`
+        """
+        return self._SubtitleEmbedConfig
+
+    @SubtitleEmbedConfig.setter
+    def SubtitleEmbedConfig(self, SubtitleEmbedConfig):
+        self._SubtitleEmbedConfig = SubtitleEmbedConfig
+
+
+    def _deserialize(self, params):
+        self._Definition = params.get("Definition")
+        self._Name = params.get("Name")
+        self._Comment = params.get("Comment")
+        if params.get("SubtitleEmbedConfig") is not None:
+            self._SubtitleEmbedConfig = MPSSubtitleEmbedConfig()
+            self._SubtitleEmbedConfig._deserialize(params.get("SubtitleEmbedConfig"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class MPSEraseArea(AbstractModel):
     r"""智能擦除，擦除区域坐标配置。
     区域由左上角与右下角点的坐标确定。
@@ -57830,6 +58486,14 @@ class MPSRawSmartSubtitleParameter(AbstractModel):
         :type ExtInfo: str
         :param _ProcessType: <p>字幕处理类型：</p><ul><li>0：ASR识别字幕</li><li>1：纯字幕翻译</li><li>2：OCR识别字幕</li></ul><p><strong>注意</strong>：不传的情况下默认类型为 ASR识别字幕</p>
         :type ProcessType: int
+        :param _SelectingSubtitleAreasConfig: <p>字幕OCR提取框选区域配置</p>
+        :type SelectingSubtitleAreasConfig: :class:`tencentcloud.vod.v20180717.models.MPSSelectingSubtitleAreasConfig`
+        :param _SubtitleEmbedId: <p>压制模板id，只有ProcessType为0或2（任务类型为ASR或OCR）时才允许填写</p>
+        :type SubtitleEmbedId: int
+        :param _SpeakerMode: <p>说话人识别模式，可选值：<br>0：表示不开启说话人识别；<br>1：表示开启说话人识别；<br>默认值：0</p>
+        :type SpeakerMode: int
+        :param _SpeakerLabel: <p>说话人识别输出到字幕文件，可选值：<br>0：表示不输出到字幕文件；<br>1：表示输出到vtt字幕文件<br>注意：使用此参数SpeakerMode的值不能为0；<br>默认值：0</p>
+        :type SpeakerLabel: int
         """
         self._SubtitleType = None
         self._VideoSrcLanguage = None
@@ -57838,6 +58502,10 @@ class MPSRawSmartSubtitleParameter(AbstractModel):
         self._TranslateDstLanguage = None
         self._ExtInfo = None
         self._ProcessType = None
+        self._SelectingSubtitleAreasConfig = None
+        self._SubtitleEmbedId = None
+        self._SpeakerMode = None
+        self._SpeakerLabel = None
 
     @property
     def SubtitleType(self):
@@ -57916,6 +58584,50 @@ class MPSRawSmartSubtitleParameter(AbstractModel):
     def ProcessType(self, ProcessType):
         self._ProcessType = ProcessType
 
+    @property
+    def SelectingSubtitleAreasConfig(self):
+        r"""<p>字幕OCR提取框选区域配置</p>
+        :rtype: :class:`tencentcloud.vod.v20180717.models.MPSSelectingSubtitleAreasConfig`
+        """
+        return self._SelectingSubtitleAreasConfig
+
+    @SelectingSubtitleAreasConfig.setter
+    def SelectingSubtitleAreasConfig(self, SelectingSubtitleAreasConfig):
+        self._SelectingSubtitleAreasConfig = SelectingSubtitleAreasConfig
+
+    @property
+    def SubtitleEmbedId(self):
+        r"""<p>压制模板id，只有ProcessType为0或2（任务类型为ASR或OCR）时才允许填写</p>
+        :rtype: int
+        """
+        return self._SubtitleEmbedId
+
+    @SubtitleEmbedId.setter
+    def SubtitleEmbedId(self, SubtitleEmbedId):
+        self._SubtitleEmbedId = SubtitleEmbedId
+
+    @property
+    def SpeakerMode(self):
+        r"""<p>说话人识别模式，可选值：<br>0：表示不开启说话人识别；<br>1：表示开启说话人识别；<br>默认值：0</p>
+        :rtype: int
+        """
+        return self._SpeakerMode
+
+    @SpeakerMode.setter
+    def SpeakerMode(self, SpeakerMode):
+        self._SpeakerMode = SpeakerMode
+
+    @property
+    def SpeakerLabel(self):
+        r"""<p>说话人识别输出到字幕文件，可选值：<br>0：表示不输出到字幕文件；<br>1：表示输出到vtt字幕文件<br>注意：使用此参数SpeakerMode的值不能为0；<br>默认值：0</p>
+        :rtype: int
+        """
+        return self._SpeakerLabel
+
+    @SpeakerLabel.setter
+    def SpeakerLabel(self, SpeakerLabel):
+        self._SpeakerLabel = SpeakerLabel
+
 
     def _deserialize(self, params):
         self._SubtitleType = params.get("SubtitleType")
@@ -57925,6 +58637,12 @@ class MPSRawSmartSubtitleParameter(AbstractModel):
         self._TranslateDstLanguage = params.get("TranslateDstLanguage")
         self._ExtInfo = params.get("ExtInfo")
         self._ProcessType = params.get("ProcessType")
+        if params.get("SelectingSubtitleAreasConfig") is not None:
+            self._SelectingSubtitleAreasConfig = MPSSelectingSubtitleAreasConfig()
+            self._SelectingSubtitleAreasConfig._deserialize(params.get("SelectingSubtitleAreasConfig"))
+        self._SubtitleEmbedId = params.get("SubtitleEmbedId")
+        self._SpeakerMode = params.get("SpeakerMode")
+        self._SpeakerLabel = params.get("SpeakerLabel")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -58082,6 +58800,8 @@ class MPSSmartEraseSubtitleConfig(AbstractModel):
         :type AutoAreas: list of MPSEraseArea
         :param _CustomAreas: <p>指定擦除自定义区域。<br>对选定区域，在选定时间段内不进行检测识别直接进行擦除。<br>注意：修改模板时，清除区域请传入[]，不传时将保持模板区域信息不变。</p>
         :type CustomAreas: list of MPSEraseTimeArea
+        :param _SubtitleEmbedId: <p>字幕压制模板id，只有开启OCR翻译时可以填写</p>
+        :type SubtitleEmbedId: int
         :param _UseOriginalPos: <p>压制配置，默认开启1, 把字幕压制回原字幕位置。只有开启OCR翻译时可以填写，取0时表示不开启压回原位</p>
         :type UseOriginalPos: int
         :param _UseOriginalSize: <p>压制配置，默认开启1, 开启后使用原字幕字号。只有开启OCR翻译时可以填写，取0时表示不使用原字号</p>
@@ -58096,6 +58816,7 @@ class MPSSmartEraseSubtitleConfig(AbstractModel):
         self._TransDstLang = None
         self._AutoAreas = None
         self._CustomAreas = None
+        self._SubtitleEmbedId = None
         self._UseOriginalPos = None
         self._UseOriginalSize = None
 
@@ -58199,6 +58920,17 @@ class MPSSmartEraseSubtitleConfig(AbstractModel):
         self._CustomAreas = CustomAreas
 
     @property
+    def SubtitleEmbedId(self):
+        r"""<p>字幕压制模板id，只有开启OCR翻译时可以填写</p>
+        :rtype: int
+        """
+        return self._SubtitleEmbedId
+
+    @SubtitleEmbedId.setter
+    def SubtitleEmbedId(self, SubtitleEmbedId):
+        self._SubtitleEmbedId = SubtitleEmbedId
+
+    @property
     def UseOriginalPos(self):
         r"""<p>压制配置，默认开启1, 把字幕压制回原字幕位置。只有开启OCR翻译时可以填写，取0时表示不开启压回原位</p>
         :rtype: int
@@ -58241,6 +58973,7 @@ class MPSSmartEraseSubtitleConfig(AbstractModel):
                 obj = MPSEraseTimeArea()
                 obj._deserialize(item)
                 self._CustomAreas.append(obj)
+        self._SubtitleEmbedId = params.get("SubtitleEmbedId")
         self._UseOriginalPos = params.get("UseOriginalPos")
         self._UseOriginalSize = params.get("UseOriginalSize")
         memeber_set = set(params.keys())
@@ -58748,6 +59481,8 @@ class MPSSmartSubtitleTemplate(AbstractModel):
         :type ProcessType: int
         :param _SelectingSubtitleAreasConfig: <p>字幕OCR提取框选区域配置</p>
         :type SelectingSubtitleAreasConfig: :class:`tencentcloud.vod.v20180717.models.MPSSelectingSubtitleAreasConfig`
+        :param _SubtitleEmbedId: <p>压制模板id，只有ProcessType为0或2（任务类型为ASR或OCR）时才允许填写。开启多个翻译语言时，不允许填写。</p>
+        :type SubtitleEmbedId: int
         :param _SpeakerMode: <p>说话人识别开关，可选值：<br>0：表示不开启说话人识别；<br>1：表示开启说话人识别；<br>默认不开启说话人识别。</p>
         :type SpeakerMode: int
         :param _SpeakerLabel: <p>说话人识别输出到字幕文件，可选值：<br>0：表示不输出到字幕文件；<br>1：表示输出到vtt字幕文件<br>注意：使用此参数SpeakerMode的值不能为0；<br>默认不输出到字幕文件。</p>
@@ -58762,6 +59497,7 @@ class MPSSmartSubtitleTemplate(AbstractModel):
         self._TranslateDstLanguage = None
         self._ProcessType = None
         self._SelectingSubtitleAreasConfig = None
+        self._SubtitleEmbedId = None
         self._SpeakerMode = None
         self._SpeakerLabel = None
 
@@ -58865,6 +59601,17 @@ class MPSSmartSubtitleTemplate(AbstractModel):
         self._SelectingSubtitleAreasConfig = SelectingSubtitleAreasConfig
 
     @property
+    def SubtitleEmbedId(self):
+        r"""<p>压制模板id，只有ProcessType为0或2（任务类型为ASR或OCR）时才允许填写。开启多个翻译语言时，不允许填写。</p>
+        :rtype: int
+        """
+        return self._SubtitleEmbedId
+
+    @SubtitleEmbedId.setter
+    def SubtitleEmbedId(self, SubtitleEmbedId):
+        self._SubtitleEmbedId = SubtitleEmbedId
+
+    @property
     def SpeakerMode(self):
         r"""<p>说话人识别开关，可选值：<br>0：表示不开启说话人识别；<br>1：表示开启说话人识别；<br>默认不开启说话人识别。</p>
         :rtype: int
@@ -58899,6 +59646,7 @@ class MPSSmartSubtitleTemplate(AbstractModel):
         if params.get("SelectingSubtitleAreasConfig") is not None:
             self._SelectingSubtitleAreasConfig = MPSSelectingSubtitleAreasConfig()
             self._SelectingSubtitleAreasConfig._deserialize(params.get("SelectingSubtitleAreasConfig"))
+        self._SubtitleEmbedId = params.get("SubtitleEmbedId")
         self._SpeakerMode = params.get("SpeakerMode")
         self._SpeakerLabel = params.get("SpeakerLabel")
         memeber_set = set(params.keys())
@@ -58938,6 +59686,8 @@ class MPSSmartSubtitleTemplateForUpdate(AbstractModel):
         :type ProcessType: int
         :param _SelectingSubtitleAreasConfig: <p>字幕OCR提取框选区域配置</p>
         :type SelectingSubtitleAreasConfig: :class:`tencentcloud.vod.v20180717.models.MPSSelectingSubtitleAreasConfig`
+        :param _SubtitleEmbedId: <p>压制模板id，只有ProcessType为0或2（任务类型为ASR或OCR）时才允许填写。开启多个翻译语言时，不允许填写。</p>
+        :type SubtitleEmbedId: int
         :param _SpeakerMode: <p>说话人识别开关，可选值：<br>0：表示不开启说话人识别；<br>1：表示开启说话人识别。</p>
         :type SpeakerMode: int
         :param _SpeakerLabel: <p>说话人识别输出到字幕文件，可选值：<br>0：表示不输出到字幕文件；<br>1：表示输出到vtt字幕文件<br>注意：使用此参数SpeakerMode的值不能为0。</p>
@@ -58953,6 +59703,7 @@ class MPSSmartSubtitleTemplateForUpdate(AbstractModel):
         self._TranslateDstLanguage = None
         self._ProcessType = None
         self._SelectingSubtitleAreasConfig = None
+        self._SubtitleEmbedId = None
         self._SpeakerMode = None
         self._SpeakerLabel = None
 
@@ -59067,6 +59818,17 @@ class MPSSmartSubtitleTemplateForUpdate(AbstractModel):
         self._SelectingSubtitleAreasConfig = SelectingSubtitleAreasConfig
 
     @property
+    def SubtitleEmbedId(self):
+        r"""<p>压制模板id，只有ProcessType为0或2（任务类型为ASR或OCR）时才允许填写。开启多个翻译语言时，不允许填写。</p>
+        :rtype: int
+        """
+        return self._SubtitleEmbedId
+
+    @SubtitleEmbedId.setter
+    def SubtitleEmbedId(self, SubtitleEmbedId):
+        self._SubtitleEmbedId = SubtitleEmbedId
+
+    @property
     def SpeakerMode(self):
         r"""<p>说话人识别开关，可选值：<br>0：表示不开启说话人识别；<br>1：表示开启说话人识别。</p>
         :rtype: int
@@ -59102,6 +59864,7 @@ class MPSSmartSubtitleTemplateForUpdate(AbstractModel):
         if params.get("SelectingSubtitleAreasConfig") is not None:
             self._SelectingSubtitleAreasConfig = MPSSelectingSubtitleAreasConfig()
             self._SelectingSubtitleAreasConfig._deserialize(params.get("SelectingSubtitleAreasConfig"))
+        self._SubtitleEmbedId = params.get("SubtitleEmbedId")
         self._SpeakerMode = params.get("SpeakerMode")
         self._SpeakerLabel = params.get("SpeakerLabel")
         memeber_set = set(params.keys())
@@ -59310,6 +60073,734 @@ class MPSSubTaskResult(AbstractModel):
         if params.get("Output") is not None:
             self._Output = MPSTaskOutput()
             self._Output._deserialize(params.get("Output"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class MPSSubtitleBoardConfig(AbstractModel):
+    r"""MPS字幕压制模块背景配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SubtitleBoardConfigSwitch: <p>字幕压制模块背景配置开关，0关闭，1开启，默认0</p>
+        :type SubtitleBoardConfigSwitch: int
+        :param _BoardX: <p>字幕背景底板的x轴坐标位置；支持像素和百分比格式： - 像素：Npx，N范围：[-4096,4096]。 - 百分百：N%，N范围：[-100,100]；例如10%表示字幕背景底板x坐标=10%*源视频宽度。 默认值：0px。 注意：坐标轴原点位于源视频的中轴线底部，字幕底板的基准点在其中轴线底部，参考下图： <img src="https://ie-mps-1258344699.cos.ap-nanjing.tencentcos.cn/common/cloud/mps-demo/102_ai_subtitle/subtitle_style.png" alt="image"></p>
+        :type BoardX: int
+        :param _BoardXUnit: <p>BoardX单位, 0 像素，1百分比，默认为0，像素</p>
+        :type BoardXUnit: int
+        :param _BoardY: <p>字幕背景底板的y轴坐标位置；支持像素和百分比格式： - 像素：Npx，N范围：[0,4096]。 - 百分百：N%，N范围：[0,100]；例如10%表示字幕背景底板y坐标=10%*源视频高度。 不传表示不开启字幕背景底板。 注意：坐标轴原点位于源视频的中轴线底部，字幕背景底板的基准点在其中轴线底部，参考下图： <img src="https://ie-mps-1258344699.cos.ap-nanjing.tencentcos.cn/common/cloud/mps-demo/102_ai_subtitle/subtitle_style.png" alt="image"></p>
+        :type BoardY: int
+        :param _BoardYUnit: <p>BoardY单位, 0 像素，1百分比，默认为0，像素</p>
+        :type BoardYUnit: int
+        :param _BoardWidth: <p>底板的宽度，正整数。 - 代表像素时，取值范围：[0,4096]。 - 代表百分数时，[0, 100]。 开启底板且不填此值时，默认源视频宽像素的90%。</p>
+        :type BoardWidth: int
+        :param _BoardWidthUnit: <p>底板的宽度单位，0 像素，1百分比，默认为0，像素</p>
+        :type BoardWidthUnit: int
+        :param _BoardHeight: <p>底板的高度，正整数。 - 代表像素时，取值范围：[0,4096]。 - 代表百分数时，[0, 100]。 开启底板且不填此值时，默认为源视频高像素的15%。</p>
+        :type BoardHeight: int
+        :param _BoardHeightUnit: <p>底板的高度单位，0 像素，1百分比，默认为0，像素</p>
+        :type BoardHeightUnit: int
+        :param _BoardColor: <p>底板颜色。格式：0xRRGGBB， 默认值：0x000000（黑色）。</p>
+        :type BoardColor: str
+        :param _BoardAlpha: <p>字幕背景板透明度，取值范围：[0, 1] <li>0：完全透明</li> <li>1：完全不透明</li> 默认值：0.8。</p>
+        :type BoardAlpha: float
+        """
+        self._SubtitleBoardConfigSwitch = None
+        self._BoardX = None
+        self._BoardXUnit = None
+        self._BoardY = None
+        self._BoardYUnit = None
+        self._BoardWidth = None
+        self._BoardWidthUnit = None
+        self._BoardHeight = None
+        self._BoardHeightUnit = None
+        self._BoardColor = None
+        self._BoardAlpha = None
+
+    @property
+    def SubtitleBoardConfigSwitch(self):
+        r"""<p>字幕压制模块背景配置开关，0关闭，1开启，默认0</p>
+        :rtype: int
+        """
+        return self._SubtitleBoardConfigSwitch
+
+    @SubtitleBoardConfigSwitch.setter
+    def SubtitleBoardConfigSwitch(self, SubtitleBoardConfigSwitch):
+        self._SubtitleBoardConfigSwitch = SubtitleBoardConfigSwitch
+
+    @property
+    def BoardX(self):
+        r"""<p>字幕背景底板的x轴坐标位置；支持像素和百分比格式： - 像素：Npx，N范围：[-4096,4096]。 - 百分百：N%，N范围：[-100,100]；例如10%表示字幕背景底板x坐标=10%*源视频宽度。 默认值：0px。 注意：坐标轴原点位于源视频的中轴线底部，字幕底板的基准点在其中轴线底部，参考下图： <img src="https://ie-mps-1258344699.cos.ap-nanjing.tencentcos.cn/common/cloud/mps-demo/102_ai_subtitle/subtitle_style.png" alt="image"></p>
+        :rtype: int
+        """
+        return self._BoardX
+
+    @BoardX.setter
+    def BoardX(self, BoardX):
+        self._BoardX = BoardX
+
+    @property
+    def BoardXUnit(self):
+        r"""<p>BoardX单位, 0 像素，1百分比，默认为0，像素</p>
+        :rtype: int
+        """
+        return self._BoardXUnit
+
+    @BoardXUnit.setter
+    def BoardXUnit(self, BoardXUnit):
+        self._BoardXUnit = BoardXUnit
+
+    @property
+    def BoardY(self):
+        r"""<p>字幕背景底板的y轴坐标位置；支持像素和百分比格式： - 像素：Npx，N范围：[0,4096]。 - 百分百：N%，N范围：[0,100]；例如10%表示字幕背景底板y坐标=10%*源视频高度。 不传表示不开启字幕背景底板。 注意：坐标轴原点位于源视频的中轴线底部，字幕背景底板的基准点在其中轴线底部，参考下图： <img src="https://ie-mps-1258344699.cos.ap-nanjing.tencentcos.cn/common/cloud/mps-demo/102_ai_subtitle/subtitle_style.png" alt="image"></p>
+        :rtype: int
+        """
+        return self._BoardY
+
+    @BoardY.setter
+    def BoardY(self, BoardY):
+        self._BoardY = BoardY
+
+    @property
+    def BoardYUnit(self):
+        r"""<p>BoardY单位, 0 像素，1百分比，默认为0，像素</p>
+        :rtype: int
+        """
+        return self._BoardYUnit
+
+    @BoardYUnit.setter
+    def BoardYUnit(self, BoardYUnit):
+        self._BoardYUnit = BoardYUnit
+
+    @property
+    def BoardWidth(self):
+        r"""<p>底板的宽度，正整数。 - 代表像素时，取值范围：[0,4096]。 - 代表百分数时，[0, 100]。 开启底板且不填此值时，默认源视频宽像素的90%。</p>
+        :rtype: int
+        """
+        return self._BoardWidth
+
+    @BoardWidth.setter
+    def BoardWidth(self, BoardWidth):
+        self._BoardWidth = BoardWidth
+
+    @property
+    def BoardWidthUnit(self):
+        r"""<p>底板的宽度单位，0 像素，1百分比，默认为0，像素</p>
+        :rtype: int
+        """
+        return self._BoardWidthUnit
+
+    @BoardWidthUnit.setter
+    def BoardWidthUnit(self, BoardWidthUnit):
+        self._BoardWidthUnit = BoardWidthUnit
+
+    @property
+    def BoardHeight(self):
+        r"""<p>底板的高度，正整数。 - 代表像素时，取值范围：[0,4096]。 - 代表百分数时，[0, 100]。 开启底板且不填此值时，默认为源视频高像素的15%。</p>
+        :rtype: int
+        """
+        return self._BoardHeight
+
+    @BoardHeight.setter
+    def BoardHeight(self, BoardHeight):
+        self._BoardHeight = BoardHeight
+
+    @property
+    def BoardHeightUnit(self):
+        r"""<p>底板的高度单位，0 像素，1百分比，默认为0，像素</p>
+        :rtype: int
+        """
+        return self._BoardHeightUnit
+
+    @BoardHeightUnit.setter
+    def BoardHeightUnit(self, BoardHeightUnit):
+        self._BoardHeightUnit = BoardHeightUnit
+
+    @property
+    def BoardColor(self):
+        r"""<p>底板颜色。格式：0xRRGGBB， 默认值：0x000000（黑色）。</p>
+        :rtype: str
+        """
+        return self._BoardColor
+
+    @BoardColor.setter
+    def BoardColor(self, BoardColor):
+        self._BoardColor = BoardColor
+
+    @property
+    def BoardAlpha(self):
+        r"""<p>字幕背景板透明度，取值范围：[0, 1] <li>0：完全透明</li> <li>1：完全不透明</li> 默认值：0.8。</p>
+        :rtype: float
+        """
+        return self._BoardAlpha
+
+    @BoardAlpha.setter
+    def BoardAlpha(self, BoardAlpha):
+        self._BoardAlpha = BoardAlpha
+
+
+    def _deserialize(self, params):
+        self._SubtitleBoardConfigSwitch = params.get("SubtitleBoardConfigSwitch")
+        self._BoardX = params.get("BoardX")
+        self._BoardXUnit = params.get("BoardXUnit")
+        self._BoardY = params.get("BoardY")
+        self._BoardYUnit = params.get("BoardYUnit")
+        self._BoardWidth = params.get("BoardWidth")
+        self._BoardWidthUnit = params.get("BoardWidthUnit")
+        self._BoardHeight = params.get("BoardHeight")
+        self._BoardHeightUnit = params.get("BoardHeightUnit")
+        self._BoardColor = params.get("BoardColor")
+        self._BoardAlpha = params.get("BoardAlpha")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class MPSSubtitleEmbedConfig(AbstractModel):
+    r"""MPS字幕压制模块配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FontType: <p>字体类型，支持：</p><li>hei.ttf：黑体</li><li>song.ttf：宋体</li><li>kai.ttf（推荐）或 simkai.ttf：楷体</li><li>msyh.ttf：微软雅黑</li><li>msyhbd.ttf：微软雅黑加粗</li><li>hkjgt.ttf：华康金刚体</li><li>dhttx.ttf：典黑体特细</li><li>xqgdzt.ttf：喜鹊古字典体</li><li>qpcyt.ttf：巧拼超圆体</li><li>arial.ttf：仅支持英文</li><li>dinalternate.ttf：DIN Alternate Bold</li><li>helveticalt.ttf：Helvetica</li><li>helveticains.ttf：Helvetica Inserat</li><li>trajanpro.ttf：TrajanPro-Bold</li><li>korean.ttf：韩语</li><li>japanese.ttf：日语</li><li>thai.ttf：泰语</li><li>roboto.ttf：Roboto</li><li>notosans.ttf：NotoSans</li><li>notosansthai.ttf：泰语NotoSansThai</li><li>sarabun.ttf：泰语Sarabun</li><li>kanit.ttf：泰语Kanit</li><li>charmonman.ttf：泰语Charmonman</li><li>notonaskharabic.ttf：阿拉伯语NotoNaskhArabic</li><li>notosansdevanagari.ttf：印度语NotoSansDevanagari</li><li>notosanstc.ttf：粤语思源黑体NotoSansTC</li><li>notosanskr.ttf：韩语NotoSansKR</li><li>gothica1.ttf：韩语GothicA1</li><li>nanummyeongjo.ttf：韩语NanumMyeongjo</li><li>notosansjp.ttf：日语NotoSansJP</li><li>notoserifjp.ttf：日语NotoSerifJP</li><li>shipporimincho.ttf：日语ShipporiMincho</li>默认：hei.ttf 黑体。<br>注意：<li>楷体推荐使用kai.ttf</li><li>填了FontPath时FontPath优先</li>
+        :type FontType: str
+        :param _FontPath: <p>自定义字体文件url地址</p>
+        :type FontPath: str
+        :param _FontSize: <p>字体大小，不指定则以字幕文件中为准。支持像素和百分比格式：</p><ul><li>像素：Npx，N范围：(0,4096]。</li><li>百分百：N%，N范围：(0,100]；例如10%表示字幕字体大小=10%*源视频高度。</li></ul><p>不填且字幕文件无设置时，默认源视频高度的5%。</p>
+        :type FontSize: int
+        :param _FontSizeUnit: <p>FontSize单位, 0 像素，1百分比，默认为0，像素</p>
+        :type FontSizeUnit: int
+        :param _FontColor: <p>字体颜色，格式：0xRRGGBB，默认值：0xFFFFFF（白色）。</p>
+        :type FontColor: str
+        :param _FontAlpha: <p>文字透明度，取值范围：(0, 1]</p><li>0：完全透明</li><li>1：完全不透明</li>默认值：1。
+        :type FontAlpha: float
+        :param _PosX: <p>字幕x轴坐标位置，指定此参数会忽略字幕文件自带坐标；支持像素和百分比格式：</p><ul><li>像素：Npx，N范围：[-4096,4096]。</li><li>百分百：N%，N范围：[-100,100]；例如10%表示字幕x坐标=10%*源视频宽度。</li></ul><p>默认值：0px。<br>注意：坐标轴原点在源视频中轴线底部，字幕基准点在字幕中轴线底部，参考下图：<br><img src="https://ie-mps-1258344699.cos.ap-nanjing.tencentcos.cn/common/cloud/mps-demo/102_ai_subtitle/subtitle_style.png" alt="image"></p>
+        :type PosX: int
+        :param _PosXUnit: <p>PosX单位, 0 像素，1百分比，默认为0，像素</p>
+        :type PosXUnit: int
+        :param _PosY: <p>字幕y轴坐标位置，指定此参数会忽略字幕文件自带坐标；支持像素和百分比格式：</p><ul><li>像素：Npx，N范围：[0,4096]。</li><li>百分百：N%，N范围：[0,100]；例如10%表示字幕y坐标=10%*源视频高度。</li></ul><p>默认值：源视频高度*4%。<br>注意：坐标轴原点在源视频中轴线底部，字幕基准点在字幕中轴线底部，参考下图：<br><img src="https://ie-mps-1258344699.cos.ap-nanjing.tencentcos.cn/common/cloud/mps-demo/102_ai_subtitle/subtitle_style.png" alt="image"></p>
+        :type PosY: int
+        :param _PosYUnit: <p>PosY单位, 0 像素，1百分比，默认为0，像素</p>
+        :type PosYUnit: int
+        :param _SubtitleBoardConfig: <p>背景配置</p>
+        :type SubtitleBoardConfig: :class:`tencentcloud.vod.v20180717.models.MPSSubtitleBoardConfig`
+        :param _SubtitleLayoutConfig: <p>排列配置</p>
+        :type SubtitleLayoutConfig: :class:`tencentcloud.vod.v20180717.models.MPSSubtitleLayoutConfig`
+        :param _SubtitleOutlineConfig: <p>文字描边配置</p>
+        :type SubtitleOutlineConfig: :class:`tencentcloud.vod.v20180717.models.MPSSubtitleOutlineConfig`
+        :param _SubtitleShadowConfig: <p>文字阴影配置</p>
+        :type SubtitleShadowConfig: :class:`tencentcloud.vod.v20180717.models.MPSSubtitleShadowConfig`
+        :param _SampleWidth: <p>源视频尺寸的宽，单位像素值</p>
+        :type SampleWidth: int
+        :param _SampleHeight: <p>源视频尺寸的高，单位像素值</p>
+        :type SampleHeight: int
+        """
+        self._FontType = None
+        self._FontPath = None
+        self._FontSize = None
+        self._FontSizeUnit = None
+        self._FontColor = None
+        self._FontAlpha = None
+        self._PosX = None
+        self._PosXUnit = None
+        self._PosY = None
+        self._PosYUnit = None
+        self._SubtitleBoardConfig = None
+        self._SubtitleLayoutConfig = None
+        self._SubtitleOutlineConfig = None
+        self._SubtitleShadowConfig = None
+        self._SampleWidth = None
+        self._SampleHeight = None
+
+    @property
+    def FontType(self):
+        r"""<p>字体类型，支持：</p><li>hei.ttf：黑体</li><li>song.ttf：宋体</li><li>kai.ttf（推荐）或 simkai.ttf：楷体</li><li>msyh.ttf：微软雅黑</li><li>msyhbd.ttf：微软雅黑加粗</li><li>hkjgt.ttf：华康金刚体</li><li>dhttx.ttf：典黑体特细</li><li>xqgdzt.ttf：喜鹊古字典体</li><li>qpcyt.ttf：巧拼超圆体</li><li>arial.ttf：仅支持英文</li><li>dinalternate.ttf：DIN Alternate Bold</li><li>helveticalt.ttf：Helvetica</li><li>helveticains.ttf：Helvetica Inserat</li><li>trajanpro.ttf：TrajanPro-Bold</li><li>korean.ttf：韩语</li><li>japanese.ttf：日语</li><li>thai.ttf：泰语</li><li>roboto.ttf：Roboto</li><li>notosans.ttf：NotoSans</li><li>notosansthai.ttf：泰语NotoSansThai</li><li>sarabun.ttf：泰语Sarabun</li><li>kanit.ttf：泰语Kanit</li><li>charmonman.ttf：泰语Charmonman</li><li>notonaskharabic.ttf：阿拉伯语NotoNaskhArabic</li><li>notosansdevanagari.ttf：印度语NotoSansDevanagari</li><li>notosanstc.ttf：粤语思源黑体NotoSansTC</li><li>notosanskr.ttf：韩语NotoSansKR</li><li>gothica1.ttf：韩语GothicA1</li><li>nanummyeongjo.ttf：韩语NanumMyeongjo</li><li>notosansjp.ttf：日语NotoSansJP</li><li>notoserifjp.ttf：日语NotoSerifJP</li><li>shipporimincho.ttf：日语ShipporiMincho</li>默认：hei.ttf 黑体。<br>注意：<li>楷体推荐使用kai.ttf</li><li>填了FontPath时FontPath优先</li>
+        :rtype: str
+        """
+        return self._FontType
+
+    @FontType.setter
+    def FontType(self, FontType):
+        self._FontType = FontType
+
+    @property
+    def FontPath(self):
+        r"""<p>自定义字体文件url地址</p>
+        :rtype: str
+        """
+        return self._FontPath
+
+    @FontPath.setter
+    def FontPath(self, FontPath):
+        self._FontPath = FontPath
+
+    @property
+    def FontSize(self):
+        r"""<p>字体大小，不指定则以字幕文件中为准。支持像素和百分比格式：</p><ul><li>像素：Npx，N范围：(0,4096]。</li><li>百分百：N%，N范围：(0,100]；例如10%表示字幕字体大小=10%*源视频高度。</li></ul><p>不填且字幕文件无设置时，默认源视频高度的5%。</p>
+        :rtype: int
+        """
+        return self._FontSize
+
+    @FontSize.setter
+    def FontSize(self, FontSize):
+        self._FontSize = FontSize
+
+    @property
+    def FontSizeUnit(self):
+        r"""<p>FontSize单位, 0 像素，1百分比，默认为0，像素</p>
+        :rtype: int
+        """
+        return self._FontSizeUnit
+
+    @FontSizeUnit.setter
+    def FontSizeUnit(self, FontSizeUnit):
+        self._FontSizeUnit = FontSizeUnit
+
+    @property
+    def FontColor(self):
+        r"""<p>字体颜色，格式：0xRRGGBB，默认值：0xFFFFFF（白色）。</p>
+        :rtype: str
+        """
+        return self._FontColor
+
+    @FontColor.setter
+    def FontColor(self, FontColor):
+        self._FontColor = FontColor
+
+    @property
+    def FontAlpha(self):
+        r"""<p>文字透明度，取值范围：(0, 1]</p><li>0：完全透明</li><li>1：完全不透明</li>默认值：1。
+        :rtype: float
+        """
+        return self._FontAlpha
+
+    @FontAlpha.setter
+    def FontAlpha(self, FontAlpha):
+        self._FontAlpha = FontAlpha
+
+    @property
+    def PosX(self):
+        r"""<p>字幕x轴坐标位置，指定此参数会忽略字幕文件自带坐标；支持像素和百分比格式：</p><ul><li>像素：Npx，N范围：[-4096,4096]。</li><li>百分百：N%，N范围：[-100,100]；例如10%表示字幕x坐标=10%*源视频宽度。</li></ul><p>默认值：0px。<br>注意：坐标轴原点在源视频中轴线底部，字幕基准点在字幕中轴线底部，参考下图：<br><img src="https://ie-mps-1258344699.cos.ap-nanjing.tencentcos.cn/common/cloud/mps-demo/102_ai_subtitle/subtitle_style.png" alt="image"></p>
+        :rtype: int
+        """
+        return self._PosX
+
+    @PosX.setter
+    def PosX(self, PosX):
+        self._PosX = PosX
+
+    @property
+    def PosXUnit(self):
+        r"""<p>PosX单位, 0 像素，1百分比，默认为0，像素</p>
+        :rtype: int
+        """
+        return self._PosXUnit
+
+    @PosXUnit.setter
+    def PosXUnit(self, PosXUnit):
+        self._PosXUnit = PosXUnit
+
+    @property
+    def PosY(self):
+        r"""<p>字幕y轴坐标位置，指定此参数会忽略字幕文件自带坐标；支持像素和百分比格式：</p><ul><li>像素：Npx，N范围：[0,4096]。</li><li>百分百：N%，N范围：[0,100]；例如10%表示字幕y坐标=10%*源视频高度。</li></ul><p>默认值：源视频高度*4%。<br>注意：坐标轴原点在源视频中轴线底部，字幕基准点在字幕中轴线底部，参考下图：<br><img src="https://ie-mps-1258344699.cos.ap-nanjing.tencentcos.cn/common/cloud/mps-demo/102_ai_subtitle/subtitle_style.png" alt="image"></p>
+        :rtype: int
+        """
+        return self._PosY
+
+    @PosY.setter
+    def PosY(self, PosY):
+        self._PosY = PosY
+
+    @property
+    def PosYUnit(self):
+        r"""<p>PosY单位, 0 像素，1百分比，默认为0，像素</p>
+        :rtype: int
+        """
+        return self._PosYUnit
+
+    @PosYUnit.setter
+    def PosYUnit(self, PosYUnit):
+        self._PosYUnit = PosYUnit
+
+    @property
+    def SubtitleBoardConfig(self):
+        r"""<p>背景配置</p>
+        :rtype: :class:`tencentcloud.vod.v20180717.models.MPSSubtitleBoardConfig`
+        """
+        return self._SubtitleBoardConfig
+
+    @SubtitleBoardConfig.setter
+    def SubtitleBoardConfig(self, SubtitleBoardConfig):
+        self._SubtitleBoardConfig = SubtitleBoardConfig
+
+    @property
+    def SubtitleLayoutConfig(self):
+        r"""<p>排列配置</p>
+        :rtype: :class:`tencentcloud.vod.v20180717.models.MPSSubtitleLayoutConfig`
+        """
+        return self._SubtitleLayoutConfig
+
+    @SubtitleLayoutConfig.setter
+    def SubtitleLayoutConfig(self, SubtitleLayoutConfig):
+        self._SubtitleLayoutConfig = SubtitleLayoutConfig
+
+    @property
+    def SubtitleOutlineConfig(self):
+        r"""<p>文字描边配置</p>
+        :rtype: :class:`tencentcloud.vod.v20180717.models.MPSSubtitleOutlineConfig`
+        """
+        return self._SubtitleOutlineConfig
+
+    @SubtitleOutlineConfig.setter
+    def SubtitleOutlineConfig(self, SubtitleOutlineConfig):
+        self._SubtitleOutlineConfig = SubtitleOutlineConfig
+
+    @property
+    def SubtitleShadowConfig(self):
+        r"""<p>文字阴影配置</p>
+        :rtype: :class:`tencentcloud.vod.v20180717.models.MPSSubtitleShadowConfig`
+        """
+        return self._SubtitleShadowConfig
+
+    @SubtitleShadowConfig.setter
+    def SubtitleShadowConfig(self, SubtitleShadowConfig):
+        self._SubtitleShadowConfig = SubtitleShadowConfig
+
+    @property
+    def SampleWidth(self):
+        r"""<p>源视频尺寸的宽，单位像素值</p>
+        :rtype: int
+        """
+        return self._SampleWidth
+
+    @SampleWidth.setter
+    def SampleWidth(self, SampleWidth):
+        self._SampleWidth = SampleWidth
+
+    @property
+    def SampleHeight(self):
+        r"""<p>源视频尺寸的高，单位像素值</p>
+        :rtype: int
+        """
+        return self._SampleHeight
+
+    @SampleHeight.setter
+    def SampleHeight(self, SampleHeight):
+        self._SampleHeight = SampleHeight
+
+
+    def _deserialize(self, params):
+        self._FontType = params.get("FontType")
+        self._FontPath = params.get("FontPath")
+        self._FontSize = params.get("FontSize")
+        self._FontSizeUnit = params.get("FontSizeUnit")
+        self._FontColor = params.get("FontColor")
+        self._FontAlpha = params.get("FontAlpha")
+        self._PosX = params.get("PosX")
+        self._PosXUnit = params.get("PosXUnit")
+        self._PosY = params.get("PosY")
+        self._PosYUnit = params.get("PosYUnit")
+        if params.get("SubtitleBoardConfig") is not None:
+            self._SubtitleBoardConfig = MPSSubtitleBoardConfig()
+            self._SubtitleBoardConfig._deserialize(params.get("SubtitleBoardConfig"))
+        if params.get("SubtitleLayoutConfig") is not None:
+            self._SubtitleLayoutConfig = MPSSubtitleLayoutConfig()
+            self._SubtitleLayoutConfig._deserialize(params.get("SubtitleLayoutConfig"))
+        if params.get("SubtitleOutlineConfig") is not None:
+            self._SubtitleOutlineConfig = MPSSubtitleOutlineConfig()
+            self._SubtitleOutlineConfig._deserialize(params.get("SubtitleOutlineConfig"))
+        if params.get("SubtitleShadowConfig") is not None:
+            self._SubtitleShadowConfig = MPSSubtitleShadowConfig()
+            self._SubtitleShadowConfig._deserialize(params.get("SubtitleShadowConfig"))
+        self._SampleWidth = params.get("SampleWidth")
+        self._SampleHeight = params.get("SampleHeight")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class MPSSubtitleLayoutConfig(AbstractModel):
+    r"""MPS字幕压制模块字幕排列配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SubtitleLayoutConfigSwitch: <p>字幕排列配置开关，0关闭，1开启，默认0</p>
+        :type SubtitleLayoutConfigSwitch: int
+        :param _LineSpacing: <p>行间距。正整数。 - 代表像素值时， [0, 1000]。 - 代表百分数时，[0, 100]。不填默认0。</p>
+        :type LineSpacing: int
+        :param _LineSpacingUnit: <p>LineSpacing单位，0 像素，1百分比，默认为0，像素</p>
+        :type LineSpacingUnit: int
+        :param _Alignment: <p>对齐方式，取值：top: 顶部对齐，字幕顶部按位置固定，底部随行数变化。bottom: 底部对齐，字幕底部按位置固定，顶部随行数变化。不填默认底部对齐。</p>
+        :type Alignment: str
+        """
+        self._SubtitleLayoutConfigSwitch = None
+        self._LineSpacing = None
+        self._LineSpacingUnit = None
+        self._Alignment = None
+
+    @property
+    def SubtitleLayoutConfigSwitch(self):
+        r"""<p>字幕排列配置开关，0关闭，1开启，默认0</p>
+        :rtype: int
+        """
+        return self._SubtitleLayoutConfigSwitch
+
+    @SubtitleLayoutConfigSwitch.setter
+    def SubtitleLayoutConfigSwitch(self, SubtitleLayoutConfigSwitch):
+        self._SubtitleLayoutConfigSwitch = SubtitleLayoutConfigSwitch
+
+    @property
+    def LineSpacing(self):
+        r"""<p>行间距。正整数。 - 代表像素值时， [0, 1000]。 - 代表百分数时，[0, 100]。不填默认0。</p>
+        :rtype: int
+        """
+        return self._LineSpacing
+
+    @LineSpacing.setter
+    def LineSpacing(self, LineSpacing):
+        self._LineSpacing = LineSpacing
+
+    @property
+    def LineSpacingUnit(self):
+        r"""<p>LineSpacing单位，0 像素，1百分比，默认为0，像素</p>
+        :rtype: int
+        """
+        return self._LineSpacingUnit
+
+    @LineSpacingUnit.setter
+    def LineSpacingUnit(self, LineSpacingUnit):
+        self._LineSpacingUnit = LineSpacingUnit
+
+    @property
+    def Alignment(self):
+        r"""<p>对齐方式，取值：top: 顶部对齐，字幕顶部按位置固定，底部随行数变化。bottom: 底部对齐，字幕底部按位置固定，顶部随行数变化。不填默认底部对齐。</p>
+        :rtype: str
+        """
+        return self._Alignment
+
+    @Alignment.setter
+    def Alignment(self, Alignment):
+        self._Alignment = Alignment
+
+
+    def _deserialize(self, params):
+        self._SubtitleLayoutConfigSwitch = params.get("SubtitleLayoutConfigSwitch")
+        self._LineSpacing = params.get("LineSpacing")
+        self._LineSpacingUnit = params.get("LineSpacingUnit")
+        self._Alignment = params.get("Alignment")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class MPSSubtitleOutlineConfig(AbstractModel):
+    r"""MPS字幕压制模块文字描边配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SubtitleOutlineConfigSwitch: <p>文字描边配置开关，0关闭，1开启，默认0</p>
+        :type SubtitleOutlineConfigSwitch: int
+        :param _OutlineWidth: <p>描边宽度，默认单位像素，底层默认值为源视频高度的0.3%</p>
+        :type OutlineWidth: float
+        :param _OutlineWidthUnit: <p>描边宽度单位，0 像素，1百分比，默认为0，像素</p>
+        :type OutlineWidthUnit: int
+        :param _OutlineColor: <p>描边颜色。6位16进制RGB。不填默认黑色。</p>
+        :type OutlineColor: str
+        :param _OutlineAlpha: <p>描边透明度。(0，1] 正浮点数。不填默认1，完全不透明</p>
+        :type OutlineAlpha: float
+        """
+        self._SubtitleOutlineConfigSwitch = None
+        self._OutlineWidth = None
+        self._OutlineWidthUnit = None
+        self._OutlineColor = None
+        self._OutlineAlpha = None
+
+    @property
+    def SubtitleOutlineConfigSwitch(self):
+        r"""<p>文字描边配置开关，0关闭，1开启，默认0</p>
+        :rtype: int
+        """
+        return self._SubtitleOutlineConfigSwitch
+
+    @SubtitleOutlineConfigSwitch.setter
+    def SubtitleOutlineConfigSwitch(self, SubtitleOutlineConfigSwitch):
+        self._SubtitleOutlineConfigSwitch = SubtitleOutlineConfigSwitch
+
+    @property
+    def OutlineWidth(self):
+        r"""<p>描边宽度，默认单位像素，底层默认值为源视频高度的0.3%</p>
+        :rtype: float
+        """
+        return self._OutlineWidth
+
+    @OutlineWidth.setter
+    def OutlineWidth(self, OutlineWidth):
+        self._OutlineWidth = OutlineWidth
+
+    @property
+    def OutlineWidthUnit(self):
+        r"""<p>描边宽度单位，0 像素，1百分比，默认为0，像素</p>
+        :rtype: int
+        """
+        return self._OutlineWidthUnit
+
+    @OutlineWidthUnit.setter
+    def OutlineWidthUnit(self, OutlineWidthUnit):
+        self._OutlineWidthUnit = OutlineWidthUnit
+
+    @property
+    def OutlineColor(self):
+        r"""<p>描边颜色。6位16进制RGB。不填默认黑色。</p>
+        :rtype: str
+        """
+        return self._OutlineColor
+
+    @OutlineColor.setter
+    def OutlineColor(self, OutlineColor):
+        self._OutlineColor = OutlineColor
+
+    @property
+    def OutlineAlpha(self):
+        r"""<p>描边透明度。(0，1] 正浮点数。不填默认1，完全不透明</p>
+        :rtype: float
+        """
+        return self._OutlineAlpha
+
+    @OutlineAlpha.setter
+    def OutlineAlpha(self, OutlineAlpha):
+        self._OutlineAlpha = OutlineAlpha
+
+
+    def _deserialize(self, params):
+        self._SubtitleOutlineConfigSwitch = params.get("SubtitleOutlineConfigSwitch")
+        self._OutlineWidth = params.get("OutlineWidth")
+        self._OutlineWidthUnit = params.get("OutlineWidthUnit")
+        self._OutlineColor = params.get("OutlineColor")
+        self._OutlineAlpha = params.get("OutlineAlpha")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class MPSSubtitleShadowConfig(AbstractModel):
+    r"""MPS字幕压制模块文字阴影配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SubtitleShadowConfigSwitch: <p>文字阴影配置开关，0关闭，1开启，默认0</p>
+        :type SubtitleShadowConfigSwitch: int
+        :param _ShadowWidth: <p>阴影宽度，默认单位像素，底层默认值为0，无阴影</p>
+        :type ShadowWidth: float
+        :param _ShadowWidthUnit: <p>阴影宽度单位， 0 像素，1百分比，默认为0，像素</p>
+        :type ShadowWidthUnit: int
+        :param _ShadowColor: <p>阴影颜色。6位16进制RGB。不填默认黑色（有设置阴影的情况下）</p>
+        :type ShadowColor: str
+        :param _ShadowAlpha: <p>阴影透明度。(0，1] 正浮点数。不填默认1，完全不透明（有设置阴影的情况下）</p>
+        :type ShadowAlpha: float
+        """
+        self._SubtitleShadowConfigSwitch = None
+        self._ShadowWidth = None
+        self._ShadowWidthUnit = None
+        self._ShadowColor = None
+        self._ShadowAlpha = None
+
+    @property
+    def SubtitleShadowConfigSwitch(self):
+        r"""<p>文字阴影配置开关，0关闭，1开启，默认0</p>
+        :rtype: int
+        """
+        return self._SubtitleShadowConfigSwitch
+
+    @SubtitleShadowConfigSwitch.setter
+    def SubtitleShadowConfigSwitch(self, SubtitleShadowConfigSwitch):
+        self._SubtitleShadowConfigSwitch = SubtitleShadowConfigSwitch
+
+    @property
+    def ShadowWidth(self):
+        r"""<p>阴影宽度，默认单位像素，底层默认值为0，无阴影</p>
+        :rtype: float
+        """
+        return self._ShadowWidth
+
+    @ShadowWidth.setter
+    def ShadowWidth(self, ShadowWidth):
+        self._ShadowWidth = ShadowWidth
+
+    @property
+    def ShadowWidthUnit(self):
+        r"""<p>阴影宽度单位， 0 像素，1百分比，默认为0，像素</p>
+        :rtype: int
+        """
+        return self._ShadowWidthUnit
+
+    @ShadowWidthUnit.setter
+    def ShadowWidthUnit(self, ShadowWidthUnit):
+        self._ShadowWidthUnit = ShadowWidthUnit
+
+    @property
+    def ShadowColor(self):
+        r"""<p>阴影颜色。6位16进制RGB。不填默认黑色（有设置阴影的情况下）</p>
+        :rtype: str
+        """
+        return self._ShadowColor
+
+    @ShadowColor.setter
+    def ShadowColor(self, ShadowColor):
+        self._ShadowColor = ShadowColor
+
+    @property
+    def ShadowAlpha(self):
+        r"""<p>阴影透明度。(0，1] 正浮点数。不填默认1，完全不透明（有设置阴影的情况下）</p>
+        :rtype: float
+        """
+        return self._ShadowAlpha
+
+    @ShadowAlpha.setter
+    def ShadowAlpha(self, ShadowAlpha):
+        self._ShadowAlpha = ShadowAlpha
+
+
+    def _deserialize(self, params):
+        self._SubtitleShadowConfigSwitch = params.get("SubtitleShadowConfigSwitch")
+        self._ShadowWidth = params.get("ShadowWidth")
+        self._ShadowWidthUnit = params.get("ShadowWidthUnit")
+        self._ShadowColor = params.get("ShadowColor")
+        self._ShadowAlpha = params.get("ShadowAlpha")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -68471,6 +69962,115 @@ class ModifyJustInTimeTranscodeTemplateResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyKnowledgeBaseRequest(AbstractModel):
+    r"""ModifyKnowledgeBase请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SubAppId: <p>点播<a href="/document/product/266/14574">应用</a> ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</p>
+        :type SubAppId: int
+        :param _KnowledgeBaseId: <p>要修改的知识库ID。</p>
+        :type KnowledgeBaseId: str
+        :param _Name: <p>新的知识库名称。长度限制：1-64个字符。</p>
+        :type Name: str
+        :param _Description: <p>新的知识库描述。长度限制：最多256个字符。</p>
+        :type Description: str
+        """
+        self._SubAppId = None
+        self._KnowledgeBaseId = None
+        self._Name = None
+        self._Description = None
+
+    @property
+    def SubAppId(self):
+        r"""<p>点播<a href="/document/product/266/14574">应用</a> ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</p>
+        :rtype: int
+        """
+        return self._SubAppId
+
+    @SubAppId.setter
+    def SubAppId(self, SubAppId):
+        self._SubAppId = SubAppId
+
+    @property
+    def KnowledgeBaseId(self):
+        r"""<p>要修改的知识库ID。</p>
+        :rtype: str
+        """
+        return self._KnowledgeBaseId
+
+    @KnowledgeBaseId.setter
+    def KnowledgeBaseId(self, KnowledgeBaseId):
+        self._KnowledgeBaseId = KnowledgeBaseId
+
+    @property
+    def Name(self):
+        r"""<p>新的知识库名称。长度限制：1-64个字符。</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Description(self):
+        r"""<p>新的知识库描述。长度限制：最多256个字符。</p>
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+
+    def _deserialize(self, params):
+        self._SubAppId = params.get("SubAppId")
+        self._KnowledgeBaseId = params.get("KnowledgeBaseId")
+        self._Name = params.get("Name")
+        self._Description = params.get("Description")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyKnowledgeBaseResponse(AbstractModel):
+    r"""ModifyKnowledgeBase返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyLLMComprehendTemplateRequest(AbstractModel):
     r"""ModifyLLMComprehendTemplate请求参数结构体
 
@@ -68655,7 +70255,7 @@ class ModifyMPSTemplateRequest(AbstractModel):
         r"""
         :param _SubAppId: <p><b>点播<a href="/document/product/266/14574">应用</a> ID。</b></p>
         :type SubAppId: int
-        :param _TemplateType: <p>需要修改的 MPS 模板的类型。</p><p>枚举值：</p><ul><li>AIAnalysis： 智能分析模板</li><li>SmartSubtitle： 智能字幕模板</li><li>SmartErase： 智能擦除模板</li></ul>
+        :param _TemplateType: <p>需要修改的 MPS 模板的类型。</p><p>枚举值：</p><ul><li>AIAnalysis： 智能分析模板</li><li>SmartSubtitle： 智能字幕模板</li><li>SmartErase： 智能擦除模板</li><li>EmbedSubtitle： 字幕压制模板</li></ul>
         :type TemplateType: str
         :param _MPSModifyTemplateParams: <p>MPS 修改模板参数。该参数用于透传至媒体处理服务（MPS），从云点播侧修改用户自定义的 MPS 任务模板。<br> 目前仅支持通过此方式修改以下任务类型的模板：</p><ol><li>音视频增强：仅支持填写“<a href="https://cloud.tencent.com/document/api/862/37578">修改转码模板</a>”接口中的 Name、Comment、RemoveVideo、RemoveAudio、VideoTemplate、AudioTemplate 和 EnhanceConfig 几个参数的内容。目前仅支持在模板中配置以上参数，其他参数无需填写，若包含其它参数，系统将自动忽略。</li><li>智能分析：仅支持填写“<a href="https://cloud.tencent.com/document/api/862/40246">修改内容分析模板</a>”接口中的Name、Comment、ClassificationConfigure、TagConfigure、CoverConfigure、FrameTagConfigure几个参数的内容。目前仅支持在模板中配置以上参数，其他参数无需填写，若包含其它参数，系统将自动忽略。</li><li>智能字幕：仅支持填写“<a href="https://cloud.tencent.com/document/api/862/117001">修改智能字幕模板</a>”接口中的Name、Comment、TranslateSwitch、VideoSrcLanguage、SubtitleFormat、SubtitleType、AsrHotWordsConfigure、TranslateDstLanguage、ProcessType几个参数的内容。目前仅支持在模板中配置以上参数，其他参数无需填写，若包含其它参数，系统将自动忽略。</li><li>智能擦除：仅支持填写“<a href="https://cloud.tencent.com/document/api/862/123732">修改智能擦除模板</a>”接口中的Name、Comment、EraseType、EraseSubtitleConfig、EraseWatermarkConfig、ErasePrivacyConfig几个参数的内容。目前仅支持在模板中配置以上参数，其他参数无需填写，若包含其它参数，系统将自动忽略。</li></ol>
         :type MPSModifyTemplateParams: str
@@ -68665,6 +70265,8 @@ class ModifyMPSTemplateRequest(AbstractModel):
         :type SmartSubtitleTemplate: :class:`tencentcloud.vod.v20180717.models.MPSSmartSubtitleTemplateForUpdate`
         :param _SmartEraseTemplate: <p>智能擦除模板参数，MPSModifyTemplateParams为空时有效。</p>
         :type SmartEraseTemplate: :class:`tencentcloud.vod.v20180717.models.MPSSmartEraseTemplateForUpdate`
+        :param _EmbedSubtitleTemplate: <p>字幕压制模板参数，MPSModifyTemplateParams为空时有效。</p>
+        :type EmbedSubtitleTemplate: :class:`tencentcloud.vod.v20180717.models.MPSEmbedSubtitleTemplateForUpdate`
         """
         self._SubAppId = None
         self._TemplateType = None
@@ -68672,6 +70274,7 @@ class ModifyMPSTemplateRequest(AbstractModel):
         self._AIAnalysisTemplate = None
         self._SmartSubtitleTemplate = None
         self._SmartEraseTemplate = None
+        self._EmbedSubtitleTemplate = None
 
     @property
     def SubAppId(self):
@@ -68686,7 +70289,7 @@ class ModifyMPSTemplateRequest(AbstractModel):
 
     @property
     def TemplateType(self):
-        r"""<p>需要修改的 MPS 模板的类型。</p><p>枚举值：</p><ul><li>AIAnalysis： 智能分析模板</li><li>SmartSubtitle： 智能字幕模板</li><li>SmartErase： 智能擦除模板</li></ul>
+        r"""<p>需要修改的 MPS 模板的类型。</p><p>枚举值：</p><ul><li>AIAnalysis： 智能分析模板</li><li>SmartSubtitle： 智能字幕模板</li><li>SmartErase： 智能擦除模板</li><li>EmbedSubtitle： 字幕压制模板</li></ul>
         :rtype: str
         """
         return self._TemplateType
@@ -68739,6 +70342,17 @@ class ModifyMPSTemplateRequest(AbstractModel):
     def SmartEraseTemplate(self, SmartEraseTemplate):
         self._SmartEraseTemplate = SmartEraseTemplate
 
+    @property
+    def EmbedSubtitleTemplate(self):
+        r"""<p>字幕压制模板参数，MPSModifyTemplateParams为空时有效。</p>
+        :rtype: :class:`tencentcloud.vod.v20180717.models.MPSEmbedSubtitleTemplateForUpdate`
+        """
+        return self._EmbedSubtitleTemplate
+
+    @EmbedSubtitleTemplate.setter
+    def EmbedSubtitleTemplate(self, EmbedSubtitleTemplate):
+        self._EmbedSubtitleTemplate = EmbedSubtitleTemplate
+
 
     def _deserialize(self, params):
         self._SubAppId = params.get("SubAppId")
@@ -68753,6 +70367,9 @@ class ModifyMPSTemplateRequest(AbstractModel):
         if params.get("SmartEraseTemplate") is not None:
             self._SmartEraseTemplate = MPSSmartEraseTemplateForUpdate()
             self._SmartEraseTemplate._deserialize(params.get("SmartEraseTemplate"))
+        if params.get("EmbedSubtitleTemplate") is not None:
+            self._EmbedSubtitleTemplate = MPSEmbedSubtitleTemplateForUpdate()
+            self._EmbedSubtitleTemplate._deserialize(params.get("EmbedSubtitleTemplate"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -68798,41 +70415,42 @@ class ModifyMediaInfoRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _FileId: 媒体文件唯一标识。
+        :param _FileId: <p>媒体文件唯一标识。</p>
         :type FileId: str
-        :param _SubAppId: <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
+        :param _SubAppId: <p><b>点播<a href="/document/product/266/14574">应用</a> ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b></p>
         :type SubAppId: int
-        :param _Name: 媒体文件名称，最长 64 个字符。
+        :param _Name: <p>媒体文件名称，最长 64 个字符。</p>
         :type Name: str
-        :param _Description: 媒体文件描述，最长 128 个字符。
+        :param _Description: <p>媒体文件描述，最长 128 个字符。</p>
         :type Description: str
-        :param _ClassId: 媒体文件分类 ID。
+        :param _ClassId: <p>媒体文件分类 ID。</p>
         :type ClassId: int
-        :param _ExpireTime: 媒体文件过期时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。填“9999-12-31T23:59:59Z”表示永不过期。过期后该媒体文件及其相关资源（转码结果、雪碧图等）将被永久删除。
+        :param _ExpireTime: <p>媒体文件过期时间，采用 <a href="https://cloud.tencent.com/document/product/266/11732#I">ISO 日期格式</a>。填“9999-12-31T23:59:59Z”表示永不过期。过期后该媒体文件及其相关资源（转码结果、雪碧图等）将被永久删除。</p>
         :type ExpireTime: str
-        :param _CoverData: 视频封面图片文件（如 jpeg, png 等）进行 [Base64](https://tools.ietf.org/html/rfc4648) 编码后的字符串，仅支持 gif、jpeg、png 三种图片格式。
+        :param _CoverData: <p>视频封面图片文件（如 jpeg, png 等）进行 <a href="https://tools.ietf.org/html/rfc4648">Base64</a> 编码后的字符串，仅支持 gif、jpeg、png 三种图片格式。</p>
         :type CoverData: str
-        :param _AddKeyFrameDescs: 新增的一组视频打点信息，如果某个偏移时间已存在打点，则会进行覆盖操作，单个媒体文件最多 100 个打点信息。同一个请求里，AddKeyFrameDescs 的时间偏移参数必须与 DeleteKeyFrameDescs 都不同。
+        :param _AddKeyFrameDescs: <p>新增的一组视频打点信息，如果某个偏移时间已存在打点，则会进行覆盖操作，单个媒体文件最多 100 个打点信息。同一个请求里，AddKeyFrameDescs 的时间偏移参数必须与 DeleteKeyFrameDescs 都不同。</p>
         :type AddKeyFrameDescs: list of MediaKeyFrameDescItem
-        :param _DeleteKeyFrameDescs: 要删除的一组视频打点信息的时间偏移，单位：秒。同一个请求里，AddKeyFrameDescs 的时间偏移参数必须与 DeleteKeyFrameDescs 都不同。
+        :param _DeleteKeyFrameDescs: <p>要删除的一组视频打点信息的时间偏移，单位：秒。同一个请求里，AddKeyFrameDescs 的时间偏移参数必须与 DeleteKeyFrameDescs 都不同。</p>
         :type DeleteKeyFrameDescs: list of float
-        :param _ClearKeyFrameDescs: 取值 1 表示清空视频打点信息，其他值无意义。
-同一个请求里，ClearKeyFrameDescs 与 AddKeyFrameDescs 不能同时出现。
+        :param _ClearKeyFrameDescs: <p>取值 1 表示清空视频打点信息，其他值无意义。<br>同一个请求里，ClearKeyFrameDescs 与 AddKeyFrameDescs 不能同时出现。</p>
         :type ClearKeyFrameDescs: int
-        :param _AddTags: 新增的一组标签，单个媒体文件最多 16 个标签，单个标签最多 32 个字符。同一个请求里，AddTags 参数必须与 DeleteTags 都不同。
+        :param _AddTags: <p>新增的一组标签，单个媒体文件最多 16 个标签，单个标签最多 32 个字符。同一个请求里，AddTags 参数必须与 DeleteTags 都不同。</p>
         :type AddTags: list of str
-        :param _DeleteTags: 要删除的一组标签。同一个请求里，AddTags 参数必须与 DeleteTags 都不同。
+        :param _DeleteTags: <p>要删除的一组标签。同一个请求里，AddTags 参数必须与 DeleteTags 都不同。</p>
         :type DeleteTags: list of str
-        :param _ClearTags: 取值 1 表示清空媒体文件所有标签，其他值无意义。
-同一个请求里，ClearTags 与 AddTags 不能同时出现。
+        :param _ClearTags: <p>取值 1 表示清空媒体文件所有标签，其他值无意义。<br>同一个请求里，ClearTags 与 AddTags 不能同时出现。</p>
         :type ClearTags: int
-        :param _AddSubtitles: 新增一组字幕。单个媒体文件最多 16 个字幕。同一个请求中，AddSubtitles 中指定的字幕 Id 必须与 DeleteSubtitleIds 都不相同。
+        :param _AddSubtitles: <p>新增一组字幕。单个媒体文件最多 16 个字幕。同一个请求中，AddSubtitles 中指定的字幕 Id 必须与 DeleteSubtitleIds 都不相同。</p>
         :type AddSubtitles: list of MediaSubtitleInput
-        :param _DeleteSubtitleIds: 待删除字幕的唯一标识。同一个请求中，AddSubtitles 中指定的字幕 Id 必须与 DeleteSubtitleIds 都不相同。
+        :param _DeleteSubtitleIds: <p>待删除字幕的唯一标识。同一个请求中，AddSubtitles 中指定的字幕 Id 必须与 DeleteSubtitleIds 都不相同。</p>
         :type DeleteSubtitleIds: list of str
-        :param _ClearSubtitles: 取值 1 表示清空媒体文件所有的字幕信息，其他值无意义。
-同一个请求里，ClearSubtitles 与 AddSubtitles不能同时出现。
+        :param _ClearSubtitles: <p>取值 1 表示清空媒体文件所有的字幕信息，其他值无意义。<br>同一个请求里，ClearSubtitles 与 AddSubtitles不能同时出现。</p>
         :type ClearSubtitles: int
+        :param _DeleteKnowledgeBases: <p>待出库的知识库ID。</p>
+        :type DeleteKnowledgeBases: list of str
+        :param _ClearKnowledgeBases: <p>取值 1 表示从所有知识库中移除此媒体文件，其他值无意义。</p><p><br>同一个请求里，ClearKnowledgeBases 与 DeleteKnowledgeBases 不能同时出现。<p></p></p>
+        :type ClearKnowledgeBases: int
         """
         self._FileId = None
         self._SubAppId = None
@@ -68850,10 +70468,12 @@ class ModifyMediaInfoRequest(AbstractModel):
         self._AddSubtitles = None
         self._DeleteSubtitleIds = None
         self._ClearSubtitles = None
+        self._DeleteKnowledgeBases = None
+        self._ClearKnowledgeBases = None
 
     @property
     def FileId(self):
-        r"""媒体文件唯一标识。
+        r"""<p>媒体文件唯一标识。</p>
         :rtype: str
         """
         return self._FileId
@@ -68864,7 +70484,7 @@ class ModifyMediaInfoRequest(AbstractModel):
 
     @property
     def SubAppId(self):
-        r"""<b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
+        r"""<p><b>点播<a href="/document/product/266/14574">应用</a> ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b></p>
         :rtype: int
         """
         return self._SubAppId
@@ -68875,7 +70495,7 @@ class ModifyMediaInfoRequest(AbstractModel):
 
     @property
     def Name(self):
-        r"""媒体文件名称，最长 64 个字符。
+        r"""<p>媒体文件名称，最长 64 个字符。</p>
         :rtype: str
         """
         return self._Name
@@ -68886,7 +70506,7 @@ class ModifyMediaInfoRequest(AbstractModel):
 
     @property
     def Description(self):
-        r"""媒体文件描述，最长 128 个字符。
+        r"""<p>媒体文件描述，最长 128 个字符。</p>
         :rtype: str
         """
         return self._Description
@@ -68897,7 +70517,7 @@ class ModifyMediaInfoRequest(AbstractModel):
 
     @property
     def ClassId(self):
-        r"""媒体文件分类 ID。
+        r"""<p>媒体文件分类 ID。</p>
         :rtype: int
         """
         return self._ClassId
@@ -68908,7 +70528,7 @@ class ModifyMediaInfoRequest(AbstractModel):
 
     @property
     def ExpireTime(self):
-        r"""媒体文件过期时间，采用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。填“9999-12-31T23:59:59Z”表示永不过期。过期后该媒体文件及其相关资源（转码结果、雪碧图等）将被永久删除。
+        r"""<p>媒体文件过期时间，采用 <a href="https://cloud.tencent.com/document/product/266/11732#I">ISO 日期格式</a>。填“9999-12-31T23:59:59Z”表示永不过期。过期后该媒体文件及其相关资源（转码结果、雪碧图等）将被永久删除。</p>
         :rtype: str
         """
         return self._ExpireTime
@@ -68919,7 +70539,7 @@ class ModifyMediaInfoRequest(AbstractModel):
 
     @property
     def CoverData(self):
-        r"""视频封面图片文件（如 jpeg, png 等）进行 [Base64](https://tools.ietf.org/html/rfc4648) 编码后的字符串，仅支持 gif、jpeg、png 三种图片格式。
+        r"""<p>视频封面图片文件（如 jpeg, png 等）进行 <a href="https://tools.ietf.org/html/rfc4648">Base64</a> 编码后的字符串，仅支持 gif、jpeg、png 三种图片格式。</p>
         :rtype: str
         """
         return self._CoverData
@@ -68930,7 +70550,7 @@ class ModifyMediaInfoRequest(AbstractModel):
 
     @property
     def AddKeyFrameDescs(self):
-        r"""新增的一组视频打点信息，如果某个偏移时间已存在打点，则会进行覆盖操作，单个媒体文件最多 100 个打点信息。同一个请求里，AddKeyFrameDescs 的时间偏移参数必须与 DeleteKeyFrameDescs 都不同。
+        r"""<p>新增的一组视频打点信息，如果某个偏移时间已存在打点，则会进行覆盖操作，单个媒体文件最多 100 个打点信息。同一个请求里，AddKeyFrameDescs 的时间偏移参数必须与 DeleteKeyFrameDescs 都不同。</p>
         :rtype: list of MediaKeyFrameDescItem
         """
         return self._AddKeyFrameDescs
@@ -68941,7 +70561,7 @@ class ModifyMediaInfoRequest(AbstractModel):
 
     @property
     def DeleteKeyFrameDescs(self):
-        r"""要删除的一组视频打点信息的时间偏移，单位：秒。同一个请求里，AddKeyFrameDescs 的时间偏移参数必须与 DeleteKeyFrameDescs 都不同。
+        r"""<p>要删除的一组视频打点信息的时间偏移，单位：秒。同一个请求里，AddKeyFrameDescs 的时间偏移参数必须与 DeleteKeyFrameDescs 都不同。</p>
         :rtype: list of float
         """
         return self._DeleteKeyFrameDescs
@@ -68952,8 +70572,7 @@ class ModifyMediaInfoRequest(AbstractModel):
 
     @property
     def ClearKeyFrameDescs(self):
-        r"""取值 1 表示清空视频打点信息，其他值无意义。
-同一个请求里，ClearKeyFrameDescs 与 AddKeyFrameDescs 不能同时出现。
+        r"""<p>取值 1 表示清空视频打点信息，其他值无意义。<br>同一个请求里，ClearKeyFrameDescs 与 AddKeyFrameDescs 不能同时出现。</p>
         :rtype: int
         """
         return self._ClearKeyFrameDescs
@@ -68964,7 +70583,7 @@ class ModifyMediaInfoRequest(AbstractModel):
 
     @property
     def AddTags(self):
-        r"""新增的一组标签，单个媒体文件最多 16 个标签，单个标签最多 32 个字符。同一个请求里，AddTags 参数必须与 DeleteTags 都不同。
+        r"""<p>新增的一组标签，单个媒体文件最多 16 个标签，单个标签最多 32 个字符。同一个请求里，AddTags 参数必须与 DeleteTags 都不同。</p>
         :rtype: list of str
         """
         return self._AddTags
@@ -68975,7 +70594,7 @@ class ModifyMediaInfoRequest(AbstractModel):
 
     @property
     def DeleteTags(self):
-        r"""要删除的一组标签。同一个请求里，AddTags 参数必须与 DeleteTags 都不同。
+        r"""<p>要删除的一组标签。同一个请求里，AddTags 参数必须与 DeleteTags 都不同。</p>
         :rtype: list of str
         """
         return self._DeleteTags
@@ -68986,8 +70605,7 @@ class ModifyMediaInfoRequest(AbstractModel):
 
     @property
     def ClearTags(self):
-        r"""取值 1 表示清空媒体文件所有标签，其他值无意义。
-同一个请求里，ClearTags 与 AddTags 不能同时出现。
+        r"""<p>取值 1 表示清空媒体文件所有标签，其他值无意义。<br>同一个请求里，ClearTags 与 AddTags 不能同时出现。</p>
         :rtype: int
         """
         return self._ClearTags
@@ -68998,7 +70616,7 @@ class ModifyMediaInfoRequest(AbstractModel):
 
     @property
     def AddSubtitles(self):
-        r"""新增一组字幕。单个媒体文件最多 16 个字幕。同一个请求中，AddSubtitles 中指定的字幕 Id 必须与 DeleteSubtitleIds 都不相同。
+        r"""<p>新增一组字幕。单个媒体文件最多 16 个字幕。同一个请求中，AddSubtitles 中指定的字幕 Id 必须与 DeleteSubtitleIds 都不相同。</p>
         :rtype: list of MediaSubtitleInput
         """
         return self._AddSubtitles
@@ -69009,7 +70627,7 @@ class ModifyMediaInfoRequest(AbstractModel):
 
     @property
     def DeleteSubtitleIds(self):
-        r"""待删除字幕的唯一标识。同一个请求中，AddSubtitles 中指定的字幕 Id 必须与 DeleteSubtitleIds 都不相同。
+        r"""<p>待删除字幕的唯一标识。同一个请求中，AddSubtitles 中指定的字幕 Id 必须与 DeleteSubtitleIds 都不相同。</p>
         :rtype: list of str
         """
         return self._DeleteSubtitleIds
@@ -69020,8 +70638,7 @@ class ModifyMediaInfoRequest(AbstractModel):
 
     @property
     def ClearSubtitles(self):
-        r"""取值 1 表示清空媒体文件所有的字幕信息，其他值无意义。
-同一个请求里，ClearSubtitles 与 AddSubtitles不能同时出现。
+        r"""<p>取值 1 表示清空媒体文件所有的字幕信息，其他值无意义。<br>同一个请求里，ClearSubtitles 与 AddSubtitles不能同时出现。</p>
         :rtype: int
         """
         return self._ClearSubtitles
@@ -69029,6 +70646,28 @@ class ModifyMediaInfoRequest(AbstractModel):
     @ClearSubtitles.setter
     def ClearSubtitles(self, ClearSubtitles):
         self._ClearSubtitles = ClearSubtitles
+
+    @property
+    def DeleteKnowledgeBases(self):
+        r"""<p>待出库的知识库ID。</p>
+        :rtype: list of str
+        """
+        return self._DeleteKnowledgeBases
+
+    @DeleteKnowledgeBases.setter
+    def DeleteKnowledgeBases(self, DeleteKnowledgeBases):
+        self._DeleteKnowledgeBases = DeleteKnowledgeBases
+
+    @property
+    def ClearKnowledgeBases(self):
+        r"""<p>取值 1 表示从所有知识库中移除此媒体文件，其他值无意义。</p><p><br>同一个请求里，ClearKnowledgeBases 与 DeleteKnowledgeBases 不能同时出现。<p></p></p>
+        :rtype: int
+        """
+        return self._ClearKnowledgeBases
+
+    @ClearKnowledgeBases.setter
+    def ClearKnowledgeBases(self, ClearKnowledgeBases):
+        self._ClearKnowledgeBases = ClearKnowledgeBases
 
 
     def _deserialize(self, params):
@@ -69058,6 +70697,8 @@ class ModifyMediaInfoRequest(AbstractModel):
                 self._AddSubtitles.append(obj)
         self._DeleteSubtitleIds = params.get("DeleteSubtitleIds")
         self._ClearSubtitles = params.get("ClearSubtitles")
+        self._DeleteKnowledgeBases = params.get("DeleteKnowledgeBases")
+        self._ClearKnowledgeBases = params.get("ClearKnowledgeBases")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -69075,10 +70716,9 @@ class ModifyMediaInfoResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _CoverUrl: 新的视频封面 URL。
-* 注意：仅当请求携带 CoverData 时此返回值有效。 *
+        :param _CoverUrl: <p>新的视频封面 URL。</p><ul><li>注意：仅当请求携带 CoverData 时此返回值有效。 *</li></ul>
         :type CoverUrl: str
-        :param _AddedSubtitleSet: 新增的字幕信息。
+        :param _AddedSubtitleSet: <p>新增的字幕信息。</p>
         :type AddedSubtitleSet: list of MediaSubtitleItem
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -69089,8 +70729,7 @@ class ModifyMediaInfoResponse(AbstractModel):
 
     @property
     def CoverUrl(self):
-        r"""新的视频封面 URL。
-* 注意：仅当请求携带 CoverData 时此返回值有效。 *
+        r"""<p>新的视频封面 URL。</p><ul><li>注意：仅当请求携带 CoverData 时此返回值有效。 *</li></ul>
         :rtype: str
         """
         return self._CoverUrl
@@ -69101,7 +70740,7 @@ class ModifyMediaInfoResponse(AbstractModel):
 
     @property
     def AddedSubtitleSet(self):
-        r"""新增的字幕信息。
+        r"""<p>新增的字幕信息。</p>
         :rtype: list of MediaSubtitleItem
         """
         return self._AddedSubtitleSet
@@ -75549,38 +77188,37 @@ class ProcedureTemplate(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Name: 任务流名字。
+        :param _Name: <p>任务流名字。</p>
         :type Name: str
-        :param _Type: 任务流模板类型，取值范围：
-<li>Preset：系统预置任务流模板；</li>
-<li>Custom：用户自定义任务流模板。</li>
+        :param _Type: <p>任务流模板类型，取值范围：</p><li>Preset：系统预置任务流模板；</li><li>Custom：用户自定义任务流模板。</li>
         :type Type: str
-        :param _Comment: 模板描述信息，长度限制：256 个字符。
+        :param _Comment: <p>模板描述信息，长度限制：256 个字符。</p>
         :type Comment: str
-        :param _MediaProcessTask: 视频处理类型任务参数。
+        :param _MediaProcessTask: <p>视频处理类型任务参数。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type MediaProcessTask: :class:`tencentcloud.vod.v20180717.models.MediaProcessTaskInput`
-        :param _AiContentReviewTask: AI 智能审核类型任务参数 \*。
-<font color=red>\*：该参数用于发起旧版审核，不建议使用。推荐使用 ReviewAudioVideoTask 参数发起审核。</font> 
+        :param _AiContentReviewTask: <p>AI 智能审核类型任务参数 *。<br><font color="red">*：该参数用于发起旧版审核，不建议使用。推荐使用 ReviewAudioVideoTask 参数发起审核。</font></p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type AiContentReviewTask: :class:`tencentcloud.vod.v20180717.models.AiContentReviewTaskInput`
-        :param _AiAnalysisTask: AI 智能内容分析类型任务参数。
+        :param _AiAnalysisTask: <p>AI 智能内容分析类型任务参数。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type AiAnalysisTask: :class:`tencentcloud.vod.v20180717.models.AiAnalysisTaskInput`
-        :param _AiRecognitionTaskSet: AI 内容识别类型任务参数。
+        :param _AiRecognitionTaskSet: <p>AI 内容识别类型任务参数。</p>
         :type AiRecognitionTaskSet: list of AiRecognitionTaskInput
-        :param _AiRecognitionTask: 该参数已不推荐使用，建议使用 AiRecognitionTaskSet。
+        :param _AiRecognitionTask: <p>该参数已不推荐使用，建议使用 AiRecognitionTaskSet。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type AiRecognitionTask: :class:`tencentcloud.vod.v20180717.models.AiRecognitionTaskInput`
-        :param _MiniProgramPublishTask: 微信小程序发布任务参数。
+        :param _MiniProgramPublishTask: <p>微信小程序发布任务参数。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type MiniProgramPublishTask: :class:`tencentcloud.vod.v20180717.models.WechatMiniProgramPublishTaskInput`
-        :param _ReviewAudioVideoTask: 音视频审核类型任务参数。
+        :param _ReviewAudioVideoTask: <p>音视频审核类型任务参数。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ReviewAudioVideoTask: :class:`tencentcloud.vod.v20180717.models.ProcedureReviewAudioVideoTaskInput`
-        :param _CreateTime: 模板创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+        :param _ImportMediaKnowledgeTaskSet: <p>导入智能媒资知识库任务参数。</p>
+        :type ImportMediaKnowledgeTaskSet: list of ImportMediaKnowledgeTaskInput
+        :param _CreateTime: <p>模板创建时间，使用 <a href="https://cloud.tencent.com/document/product/266/11732#I">ISO 日期格式</a>。</p>
         :type CreateTime: str
-        :param _UpdateTime: 模板最后修改时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+        :param _UpdateTime: <p>模板最后修改时间，使用 <a href="https://cloud.tencent.com/document/product/266/11732#I">ISO 日期格式</a>。</p>
         :type UpdateTime: str
         """
         self._Name = None
@@ -75593,12 +77231,13 @@ class ProcedureTemplate(AbstractModel):
         self._AiRecognitionTask = None
         self._MiniProgramPublishTask = None
         self._ReviewAudioVideoTask = None
+        self._ImportMediaKnowledgeTaskSet = None
         self._CreateTime = None
         self._UpdateTime = None
 
     @property
     def Name(self):
-        r"""任务流名字。
+        r"""<p>任务流名字。</p>
         :rtype: str
         """
         return self._Name
@@ -75609,9 +77248,7 @@ class ProcedureTemplate(AbstractModel):
 
     @property
     def Type(self):
-        r"""任务流模板类型，取值范围：
-<li>Preset：系统预置任务流模板；</li>
-<li>Custom：用户自定义任务流模板。</li>
+        r"""<p>任务流模板类型，取值范围：</p><li>Preset：系统预置任务流模板；</li><li>Custom：用户自定义任务流模板。</li>
         :rtype: str
         """
         return self._Type
@@ -75622,7 +77259,7 @@ class ProcedureTemplate(AbstractModel):
 
     @property
     def Comment(self):
-        r"""模板描述信息，长度限制：256 个字符。
+        r"""<p>模板描述信息，长度限制：256 个字符。</p>
         :rtype: str
         """
         return self._Comment
@@ -75633,7 +77270,7 @@ class ProcedureTemplate(AbstractModel):
 
     @property
     def MediaProcessTask(self):
-        r"""视频处理类型任务参数。
+        r"""<p>视频处理类型任务参数。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.vod.v20180717.models.MediaProcessTaskInput`
         """
@@ -75645,8 +77282,7 @@ class ProcedureTemplate(AbstractModel):
 
     @property
     def AiContentReviewTask(self):
-        r"""AI 智能审核类型任务参数 \*。
-<font color=red>\*：该参数用于发起旧版审核，不建议使用。推荐使用 ReviewAudioVideoTask 参数发起审核。</font> 
+        r"""<p>AI 智能审核类型任务参数 *。<br><font color="red">*：该参数用于发起旧版审核，不建议使用。推荐使用 ReviewAudioVideoTask 参数发起审核。</font></p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.vod.v20180717.models.AiContentReviewTaskInput`
         """
@@ -75658,7 +77294,7 @@ class ProcedureTemplate(AbstractModel):
 
     @property
     def AiAnalysisTask(self):
-        r"""AI 智能内容分析类型任务参数。
+        r"""<p>AI 智能内容分析类型任务参数。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.vod.v20180717.models.AiAnalysisTaskInput`
         """
@@ -75670,7 +77306,7 @@ class ProcedureTemplate(AbstractModel):
 
     @property
     def AiRecognitionTaskSet(self):
-        r"""AI 内容识别类型任务参数。
+        r"""<p>AI 内容识别类型任务参数。</p>
         :rtype: list of AiRecognitionTaskInput
         """
         return self._AiRecognitionTaskSet
@@ -75683,7 +77319,7 @@ class ProcedureTemplate(AbstractModel):
     def AiRecognitionTask(self):
         warnings.warn("parameter `AiRecognitionTask` is deprecated", DeprecationWarning) 
 
-        r"""该参数已不推荐使用，建议使用 AiRecognitionTaskSet。
+        r"""<p>该参数已不推荐使用，建议使用 AiRecognitionTaskSet。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.vod.v20180717.models.AiRecognitionTaskInput`
         """
@@ -75697,7 +77333,7 @@ class ProcedureTemplate(AbstractModel):
 
     @property
     def MiniProgramPublishTask(self):
-        r"""微信小程序发布任务参数。
+        r"""<p>微信小程序发布任务参数。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.vod.v20180717.models.WechatMiniProgramPublishTaskInput`
         """
@@ -75709,7 +77345,7 @@ class ProcedureTemplate(AbstractModel):
 
     @property
     def ReviewAudioVideoTask(self):
-        r"""音视频审核类型任务参数。
+        r"""<p>音视频审核类型任务参数。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.vod.v20180717.models.ProcedureReviewAudioVideoTaskInput`
         """
@@ -75720,8 +77356,19 @@ class ProcedureTemplate(AbstractModel):
         self._ReviewAudioVideoTask = ReviewAudioVideoTask
 
     @property
+    def ImportMediaKnowledgeTaskSet(self):
+        r"""<p>导入智能媒资知识库任务参数。</p>
+        :rtype: list of ImportMediaKnowledgeTaskInput
+        """
+        return self._ImportMediaKnowledgeTaskSet
+
+    @ImportMediaKnowledgeTaskSet.setter
+    def ImportMediaKnowledgeTaskSet(self, ImportMediaKnowledgeTaskSet):
+        self._ImportMediaKnowledgeTaskSet = ImportMediaKnowledgeTaskSet
+
+    @property
     def CreateTime(self):
-        r"""模板创建时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+        r"""<p>模板创建时间，使用 <a href="https://cloud.tencent.com/document/product/266/11732#I">ISO 日期格式</a>。</p>
         :rtype: str
         """
         return self._CreateTime
@@ -75732,7 +77379,7 @@ class ProcedureTemplate(AbstractModel):
 
     @property
     def UpdateTime(self):
-        r"""模板最后修改时间，使用 [ISO 日期格式](https://cloud.tencent.com/document/product/266/11732#I)。
+        r"""<p>模板最后修改时间，使用 <a href="https://cloud.tencent.com/document/product/266/11732#I">ISO 日期格式</a>。</p>
         :rtype: str
         """
         return self._UpdateTime
@@ -75770,6 +77417,12 @@ class ProcedureTemplate(AbstractModel):
         if params.get("ReviewAudioVideoTask") is not None:
             self._ReviewAudioVideoTask = ProcedureReviewAudioVideoTaskInput()
             self._ReviewAudioVideoTask._deserialize(params.get("ReviewAudioVideoTask"))
+        if params.get("ImportMediaKnowledgeTaskSet") is not None:
+            self._ImportMediaKnowledgeTaskSet = []
+            for item in params.get("ImportMediaKnowledgeTaskSet"):
+                obj = ImportMediaKnowledgeTaskInput()
+                obj._deserialize(item)
+                self._ImportMediaKnowledgeTaskSet.append(obj)
         self._CreateTime = params.get("CreateTime")
         self._UpdateTime = params.get("UpdateTime")
         memeber_set = set(params.keys())
@@ -77205,26 +78858,23 @@ class ProcessMediaByProcedureRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ProcedureName: [任务流](https://cloud.tencent.com/document/product/266/33475#.E4.BB.BB.E5.8A.A1.E6.B5.81)名称。
+        :param _ProcedureName: <p><a href="https://cloud.tencent.com/document/product/266/33475#.E4.BB.BB.E5.8A.A1.E6.B5.81">任务流</a>名称。</p>
         :type ProcedureName: str
-        :param _FileId: 媒体文件 ID。
-FileId和MediaStoragePath必须提供其中一个。
+        :param _FileId: <p>媒体文件 ID。<br>FileId和MediaStoragePath必须提供其中一个。</p>
         :type FileId: str
-        :param _MediaStoragePath: 媒体的存储路径。
-只有[FileID + Path 模式](https://cloud.tencent.com/document/product/266/126825)的子应用可以通过MediaStoragePath发起任务。
-FileId和MediaStoragePath必须提供其中一个。
+        :param _MediaStoragePath: <p>媒体的存储路径。<br>只有<a href="https://cloud.tencent.com/document/product/266/126825">FileID + Path 模式</a>的子应用可以通过MediaStoragePath发起任务。<br>FileId和MediaStoragePath必须提供其中一个。</p>
         :type MediaStoragePath: str
-        :param _SubAppId: <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
+        :param _SubAppId: <p><b>点播<a href="/document/product/266/14574">应用</a> ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b></p>
         :type SubAppId: int
-        :param _TasksPriority: 任务流的优先级，数值越大优先级越高，取值范围是-10到10，不填代表0。
+        :param _TasksPriority: <p>任务流的优先级，数值越大优先级越高，取值范围是-10到10，不填代表0。</p>
         :type TasksPriority: int
-        :param _TasksNotifyMode: 任务流状态变更通知模式，可取值有 Finish，Change 和 None，不填代表 Finish。
+        :param _TasksNotifyMode: <p>任务流状态变更通知模式，可取值有 Finish，Change 和 None，不填代表 Finish。</p>
         :type TasksNotifyMode: str
-        :param _SessionContext: 来源上下文，用于透传用户请求信息，任务流状态变更回调将返回该字段值，最长 1000 个字符。
+        :param _SessionContext: <p>来源上下文，用于透传用户请求信息，任务流状态变更回调将返回该字段值，最长 1000 个字符。</p>
         :type SessionContext: str
-        :param _SessionId: 用于去重的识别码，如果 7 天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。
+        :param _SessionId: <p>用于去重的识别码，如果 7 天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。</p>
         :type SessionId: str
-        :param _ExtInfo: 保留字段，特殊用途时使用。
+        :param _ExtInfo: <p>保留字段，特殊用途时使用。</p>
         :type ExtInfo: str
         """
         self._ProcedureName = None
@@ -77239,7 +78889,7 @@ FileId和MediaStoragePath必须提供其中一个。
 
     @property
     def ProcedureName(self):
-        r"""[任务流](https://cloud.tencent.com/document/product/266/33475#.E4.BB.BB.E5.8A.A1.E6.B5.81)名称。
+        r"""<p><a href="https://cloud.tencent.com/document/product/266/33475#.E4.BB.BB.E5.8A.A1.E6.B5.81">任务流</a>名称。</p>
         :rtype: str
         """
         return self._ProcedureName
@@ -77250,8 +78900,7 @@ FileId和MediaStoragePath必须提供其中一个。
 
     @property
     def FileId(self):
-        r"""媒体文件 ID。
-FileId和MediaStoragePath必须提供其中一个。
+        r"""<p>媒体文件 ID。<br>FileId和MediaStoragePath必须提供其中一个。</p>
         :rtype: str
         """
         return self._FileId
@@ -77262,9 +78911,7 @@ FileId和MediaStoragePath必须提供其中一个。
 
     @property
     def MediaStoragePath(self):
-        r"""媒体的存储路径。
-只有[FileID + Path 模式](https://cloud.tencent.com/document/product/266/126825)的子应用可以通过MediaStoragePath发起任务。
-FileId和MediaStoragePath必须提供其中一个。
+        r"""<p>媒体的存储路径。<br>只有<a href="https://cloud.tencent.com/document/product/266/126825">FileID + Path 模式</a>的子应用可以通过MediaStoragePath发起任务。<br>FileId和MediaStoragePath必须提供其中一个。</p>
         :rtype: str
         """
         return self._MediaStoragePath
@@ -77275,7 +78922,7 @@ FileId和MediaStoragePath必须提供其中一个。
 
     @property
     def SubAppId(self):
-        r"""<b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
+        r"""<p><b>点播<a href="/document/product/266/14574">应用</a> ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b></p>
         :rtype: int
         """
         return self._SubAppId
@@ -77286,7 +78933,7 @@ FileId和MediaStoragePath必须提供其中一个。
 
     @property
     def TasksPriority(self):
-        r"""任务流的优先级，数值越大优先级越高，取值范围是-10到10，不填代表0。
+        r"""<p>任务流的优先级，数值越大优先级越高，取值范围是-10到10，不填代表0。</p>
         :rtype: int
         """
         return self._TasksPriority
@@ -77297,7 +78944,7 @@ FileId和MediaStoragePath必须提供其中一个。
 
     @property
     def TasksNotifyMode(self):
-        r"""任务流状态变更通知模式，可取值有 Finish，Change 和 None，不填代表 Finish。
+        r"""<p>任务流状态变更通知模式，可取值有 Finish，Change 和 None，不填代表 Finish。</p>
         :rtype: str
         """
         return self._TasksNotifyMode
@@ -77308,7 +78955,7 @@ FileId和MediaStoragePath必须提供其中一个。
 
     @property
     def SessionContext(self):
-        r"""来源上下文，用于透传用户请求信息，任务流状态变更回调将返回该字段值，最长 1000 个字符。
+        r"""<p>来源上下文，用于透传用户请求信息，任务流状态变更回调将返回该字段值，最长 1000 个字符。</p>
         :rtype: str
         """
         return self._SessionContext
@@ -77319,7 +78966,7 @@ FileId和MediaStoragePath必须提供其中一个。
 
     @property
     def SessionId(self):
-        r"""用于去重的识别码，如果 7 天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。
+        r"""<p>用于去重的识别码，如果 7 天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。</p>
         :rtype: str
         """
         return self._SessionId
@@ -77330,7 +78977,7 @@ FileId和MediaStoragePath必须提供其中一个。
 
     @property
     def ExtInfo(self):
-        r"""保留字段，特殊用途时使用。
+        r"""<p>保留字段，特殊用途时使用。</p>
         :rtype: str
         """
         return self._ExtInfo
@@ -77367,20 +79014,23 @@ class ProcessMediaByProcedureResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskId: 任务类型为 Procedure 的任务 ID，当入参 ProcedureName 对应的任务流模板指定了 MediaProcessTask、AiAnalysisTask、AiRecognitionTask 中的一个或多个时发起该任务。
+        :param _TaskId: <p>任务类型为 Procedure 的任务 ID，当入参 ProcedureName 对应的任务流模板指定了 MediaProcessTask、AiAnalysisTask、AiRecognitionTask 中的一个或多个时发起该任务。</p>
         :type TaskId: str
-        :param _ReviewAudioVideoTaskId: 任务类型为 ReviewAudioVideo 的任务 ID，当入参 ProcedureName 对应的任务流模板指定了 ReviewAudioVideoTask 时，发起该任务。
+        :param _ReviewAudioVideoTaskId: <p>任务类型为 ReviewAudioVideo 的任务 ID，当入参 ProcedureName 对应的任务流模板指定了 ReviewAudioVideoTask 时，发起该任务。</p>
         :type ReviewAudioVideoTaskId: str
+        :param _ImportMediaKnowledgeTaskIdSet: <p>任务类型为 ImportMediaKnowledge 的任务 ID，当入参 ProcedureName 对应的任务流模板指定了 ImportMediaKnowledgeTaskSet 时，发起该任务。</p>
+        :type ImportMediaKnowledgeTaskIdSet: list of str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TaskId = None
         self._ReviewAudioVideoTaskId = None
+        self._ImportMediaKnowledgeTaskIdSet = None
         self._RequestId = None
 
     @property
     def TaskId(self):
-        r"""任务类型为 Procedure 的任务 ID，当入参 ProcedureName 对应的任务流模板指定了 MediaProcessTask、AiAnalysisTask、AiRecognitionTask 中的一个或多个时发起该任务。
+        r"""<p>任务类型为 Procedure 的任务 ID，当入参 ProcedureName 对应的任务流模板指定了 MediaProcessTask、AiAnalysisTask、AiRecognitionTask 中的一个或多个时发起该任务。</p>
         :rtype: str
         """
         return self._TaskId
@@ -77391,7 +79041,7 @@ class ProcessMediaByProcedureResponse(AbstractModel):
 
     @property
     def ReviewAudioVideoTaskId(self):
-        r"""任务类型为 ReviewAudioVideo 的任务 ID，当入参 ProcedureName 对应的任务流模板指定了 ReviewAudioVideoTask 时，发起该任务。
+        r"""<p>任务类型为 ReviewAudioVideo 的任务 ID，当入参 ProcedureName 对应的任务流模板指定了 ReviewAudioVideoTask 时，发起该任务。</p>
         :rtype: str
         """
         return self._ReviewAudioVideoTaskId
@@ -77399,6 +79049,17 @@ class ProcessMediaByProcedureResponse(AbstractModel):
     @ReviewAudioVideoTaskId.setter
     def ReviewAudioVideoTaskId(self, ReviewAudioVideoTaskId):
         self._ReviewAudioVideoTaskId = ReviewAudioVideoTaskId
+
+    @property
+    def ImportMediaKnowledgeTaskIdSet(self):
+        r"""<p>任务类型为 ImportMediaKnowledge 的任务 ID，当入参 ProcedureName 对应的任务流模板指定了 ImportMediaKnowledgeTaskSet 时，发起该任务。</p>
+        :rtype: list of str
+        """
+        return self._ImportMediaKnowledgeTaskIdSet
+
+    @ImportMediaKnowledgeTaskIdSet.setter
+    def ImportMediaKnowledgeTaskIdSet(self, ImportMediaKnowledgeTaskIdSet):
+        self._ImportMediaKnowledgeTaskIdSet = ImportMediaKnowledgeTaskIdSet
 
     @property
     def RequestId(self):
@@ -77415,6 +79076,7 @@ class ProcessMediaByProcedureResponse(AbstractModel):
     def _deserialize(self, params):
         self._TaskId = params.get("TaskId")
         self._ReviewAudioVideoTaskId = params.get("ReviewAudioVideoTaskId")
+        self._ImportMediaKnowledgeTaskIdSet = params.get("ImportMediaKnowledgeTaskIdSet")
         self._RequestId = params.get("RequestId")
 
 
@@ -85175,25 +86837,26 @@ class ResetProcedureTemplateRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Name: 任务流名字
+        :param _Name: <p>任务流名字</p>
         :type Name: str
-        :param _SubAppId: <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
+        :param _SubAppId: <p><b>点播<a href="/document/product/266/14574">应用</a> ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b></p>
         :type SubAppId: int
-        :param _Comment: 模板描述信息，长度限制：256 个字符。
+        :param _Comment: <p>模板描述信息，长度限制：256 个字符。</p>
         :type Comment: str
-        :param _MediaProcessTask: 视频处理类型任务参数。
+        :param _MediaProcessTask: <p>视频处理类型任务参数。</p>
         :type MediaProcessTask: :class:`tencentcloud.vod.v20180717.models.MediaProcessTaskInput`
-        :param _AiContentReviewTask: AI 智能内容审核类型任务参数 \*。
-<font color=red>\*：该参数用于发起旧版审核，不建议使用。推荐使用 ReviewAudioVideoTask 参数发起审核。</font> 
+        :param _AiContentReviewTask: <p>AI 智能内容审核类型任务参数 *。<br><font color="red">*：该参数用于发起旧版审核，不建议使用。推荐使用 ReviewAudioVideoTask 参数发起审核。</font></p>
         :type AiContentReviewTask: :class:`tencentcloud.vod.v20180717.models.AiContentReviewTaskInput`
-        :param _AiAnalysisTask: AI 智能内容分析类型任务参数。
+        :param _AiAnalysisTask: <p>AI 智能内容分析类型任务参数。</p>
         :type AiAnalysisTask: :class:`tencentcloud.vod.v20180717.models.AiAnalysisTaskInput`
-        :param _AiRecognitionTaskSet: AI 内容识别类型任务参数。
+        :param _AiRecognitionTaskSet: <p>AI 内容识别类型任务参数。</p>
         :type AiRecognitionTaskSet: list of AiRecognitionTaskInput
-        :param _AiRecognitionTask: 该参数已不推荐使用，建议使用 AiRecognitionTaskSet。
+        :param _AiRecognitionTask: <p>该参数已不推荐使用，建议使用 AiRecognitionTaskSet。</p>
         :type AiRecognitionTask: :class:`tencentcloud.vod.v20180717.models.AiRecognitionTaskInput`
-        :param _ReviewAudioVideoTask: 音视频审核类型任务参数。
+        :param _ReviewAudioVideoTask: <p>音视频审核类型任务参数。</p>
         :type ReviewAudioVideoTask: :class:`tencentcloud.vod.v20180717.models.ProcedureReviewAudioVideoTaskInput`
+        :param _ImportMediaKnowledgeTaskSet: <p>导入智能媒资知识库任务参数。</p>
+        :type ImportMediaKnowledgeTaskSet: list of ImportMediaKnowledgeTaskInput
         """
         self._Name = None
         self._SubAppId = None
@@ -85204,10 +86867,11 @@ class ResetProcedureTemplateRequest(AbstractModel):
         self._AiRecognitionTaskSet = None
         self._AiRecognitionTask = None
         self._ReviewAudioVideoTask = None
+        self._ImportMediaKnowledgeTaskSet = None
 
     @property
     def Name(self):
-        r"""任务流名字
+        r"""<p>任务流名字</p>
         :rtype: str
         """
         return self._Name
@@ -85218,7 +86882,7 @@ class ResetProcedureTemplateRequest(AbstractModel):
 
     @property
     def SubAppId(self):
-        r"""<b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
+        r"""<p><b>点播<a href="/document/product/266/14574">应用</a> ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b></p>
         :rtype: int
         """
         return self._SubAppId
@@ -85229,7 +86893,7 @@ class ResetProcedureTemplateRequest(AbstractModel):
 
     @property
     def Comment(self):
-        r"""模板描述信息，长度限制：256 个字符。
+        r"""<p>模板描述信息，长度限制：256 个字符。</p>
         :rtype: str
         """
         return self._Comment
@@ -85240,7 +86904,7 @@ class ResetProcedureTemplateRequest(AbstractModel):
 
     @property
     def MediaProcessTask(self):
-        r"""视频处理类型任务参数。
+        r"""<p>视频处理类型任务参数。</p>
         :rtype: :class:`tencentcloud.vod.v20180717.models.MediaProcessTaskInput`
         """
         return self._MediaProcessTask
@@ -85251,8 +86915,7 @@ class ResetProcedureTemplateRequest(AbstractModel):
 
     @property
     def AiContentReviewTask(self):
-        r"""AI 智能内容审核类型任务参数 \*。
-<font color=red>\*：该参数用于发起旧版审核，不建议使用。推荐使用 ReviewAudioVideoTask 参数发起审核。</font> 
+        r"""<p>AI 智能内容审核类型任务参数 *。<br><font color="red">*：该参数用于发起旧版审核，不建议使用。推荐使用 ReviewAudioVideoTask 参数发起审核。</font></p>
         :rtype: :class:`tencentcloud.vod.v20180717.models.AiContentReviewTaskInput`
         """
         return self._AiContentReviewTask
@@ -85263,7 +86926,7 @@ class ResetProcedureTemplateRequest(AbstractModel):
 
     @property
     def AiAnalysisTask(self):
-        r"""AI 智能内容分析类型任务参数。
+        r"""<p>AI 智能内容分析类型任务参数。</p>
         :rtype: :class:`tencentcloud.vod.v20180717.models.AiAnalysisTaskInput`
         """
         return self._AiAnalysisTask
@@ -85274,7 +86937,7 @@ class ResetProcedureTemplateRequest(AbstractModel):
 
     @property
     def AiRecognitionTaskSet(self):
-        r"""AI 内容识别类型任务参数。
+        r"""<p>AI 内容识别类型任务参数。</p>
         :rtype: list of AiRecognitionTaskInput
         """
         return self._AiRecognitionTaskSet
@@ -85287,7 +86950,7 @@ class ResetProcedureTemplateRequest(AbstractModel):
     def AiRecognitionTask(self):
         warnings.warn("parameter `AiRecognitionTask` is deprecated", DeprecationWarning) 
 
-        r"""该参数已不推荐使用，建议使用 AiRecognitionTaskSet。
+        r"""<p>该参数已不推荐使用，建议使用 AiRecognitionTaskSet。</p>
         :rtype: :class:`tencentcloud.vod.v20180717.models.AiRecognitionTaskInput`
         """
         return self._AiRecognitionTask
@@ -85300,7 +86963,7 @@ class ResetProcedureTemplateRequest(AbstractModel):
 
     @property
     def ReviewAudioVideoTask(self):
-        r"""音视频审核类型任务参数。
+        r"""<p>音视频审核类型任务参数。</p>
         :rtype: :class:`tencentcloud.vod.v20180717.models.ProcedureReviewAudioVideoTaskInput`
         """
         return self._ReviewAudioVideoTask
@@ -85308,6 +86971,17 @@ class ResetProcedureTemplateRequest(AbstractModel):
     @ReviewAudioVideoTask.setter
     def ReviewAudioVideoTask(self, ReviewAudioVideoTask):
         self._ReviewAudioVideoTask = ReviewAudioVideoTask
+
+    @property
+    def ImportMediaKnowledgeTaskSet(self):
+        r"""<p>导入智能媒资知识库任务参数。</p>
+        :rtype: list of ImportMediaKnowledgeTaskInput
+        """
+        return self._ImportMediaKnowledgeTaskSet
+
+    @ImportMediaKnowledgeTaskSet.setter
+    def ImportMediaKnowledgeTaskSet(self, ImportMediaKnowledgeTaskSet):
+        self._ImportMediaKnowledgeTaskSet = ImportMediaKnowledgeTaskSet
 
 
     def _deserialize(self, params):
@@ -85335,6 +87009,12 @@ class ResetProcedureTemplateRequest(AbstractModel):
         if params.get("ReviewAudioVideoTask") is not None:
             self._ReviewAudioVideoTask = ProcedureReviewAudioVideoTaskInput()
             self._ReviewAudioVideoTask._deserialize(params.get("ReviewAudioVideoTask"))
+        if params.get("ImportMediaKnowledgeTaskSet") is not None:
+            self._ImportMediaKnowledgeTaskSet = []
+            for item in params.get("ImportMediaKnowledgeTaskSet"):
+                obj = ImportMediaKnowledgeTaskInput()
+                obj._deserialize(item)
+                self._ImportMediaKnowledgeTaskSet.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -89371,6 +91051,8 @@ class SearchMediaBySemanticsRequest(AbstractModel):
         :type SubAppId: int
         :param _Text: <p>需要进行搜索的内容</p>
         :type Text: str
+        :param _KnowledgeBaseId: <p>知识库ID，留空时将使用默认知识库</p>
+        :type KnowledgeBaseId: str
         :param _Limit: <p>返回的记录条数，默认值：20。</p><p>取值范围：[1, 100]</p>
         :type Limit: int
         :param _Categories: <p>文件类型。匹配集合中的任意元素： <li>Video: 视频文件</li> <li>Audio: 音频文件</li> <li>Image: 图片文件</li></p>
@@ -89384,6 +91066,7 @@ class SearchMediaBySemanticsRequest(AbstractModel):
         """
         self._SubAppId = None
         self._Text = None
+        self._KnowledgeBaseId = None
         self._Limit = None
         self._Categories = None
         self._Tags = None
@@ -89411,6 +91094,17 @@ class SearchMediaBySemanticsRequest(AbstractModel):
     @Text.setter
     def Text(self, Text):
         self._Text = Text
+
+    @property
+    def KnowledgeBaseId(self):
+        r"""<p>知识库ID，留空时将使用默认知识库</p>
+        :rtype: str
+        """
+        return self._KnowledgeBaseId
+
+    @KnowledgeBaseId.setter
+    def KnowledgeBaseId(self, KnowledgeBaseId):
+        self._KnowledgeBaseId = KnowledgeBaseId
 
     @property
     def Limit(self):
@@ -89471,6 +91165,7 @@ class SearchMediaBySemanticsRequest(AbstractModel):
     def _deserialize(self, params):
         self._SubAppId = params.get("SubAppId")
         self._Text = params.get("Text")
+        self._KnowledgeBaseId = params.get("KnowledgeBaseId")
         self._Limit = params.get("Limit")
         self._Categories = params.get("Categories")
         self._Tags = params.get("Tags")
@@ -90191,23 +91886,26 @@ class SemanticsSearchResult(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _FileId: 媒体文件唯一标识 ID。
+        :param _FileId: <p>媒体文件唯一标识 ID。</p>
         :type FileId: str
-        :param _Score: 视频在本次检索中的得分，得分越高和检索值越相似，取值范围[0,1]
+        :param _Title: <p>智能媒资为当前片段生成的标题</p>
+        :type Title: str
+        :param _Score: <p>视频在本次检索中的得分，得分越高和检索值越相似，取值范围[0,1]</p>
         :type Score: float
-        :param _StartTimeOffset: 视频片段的开始时间，单位：秒
+        :param _StartTimeOffset: <p>视频片段的开始时间，单位：秒</p>
         :type StartTimeOffset: float
-        :param _EndTimeOffset: 视频片段的结束时间，单位：秒
+        :param _EndTimeOffset: <p>视频片段的结束时间，单位：秒</p>
         :type EndTimeOffset: float
         """
         self._FileId = None
+        self._Title = None
         self._Score = None
         self._StartTimeOffset = None
         self._EndTimeOffset = None
 
     @property
     def FileId(self):
-        r"""媒体文件唯一标识 ID。
+        r"""<p>媒体文件唯一标识 ID。</p>
         :rtype: str
         """
         return self._FileId
@@ -90217,8 +91915,19 @@ class SemanticsSearchResult(AbstractModel):
         self._FileId = FileId
 
     @property
+    def Title(self):
+        r"""<p>智能媒资为当前片段生成的标题</p>
+        :rtype: str
+        """
+        return self._Title
+
+    @Title.setter
+    def Title(self, Title):
+        self._Title = Title
+
+    @property
     def Score(self):
-        r"""视频在本次检索中的得分，得分越高和检索值越相似，取值范围[0,1]
+        r"""<p>视频在本次检索中的得分，得分越高和检索值越相似，取值范围[0,1]</p>
         :rtype: float
         """
         return self._Score
@@ -90229,7 +91938,7 @@ class SemanticsSearchResult(AbstractModel):
 
     @property
     def StartTimeOffset(self):
-        r"""视频片段的开始时间，单位：秒
+        r"""<p>视频片段的开始时间，单位：秒</p>
         :rtype: float
         """
         return self._StartTimeOffset
@@ -90240,7 +91949,7 @@ class SemanticsSearchResult(AbstractModel):
 
     @property
     def EndTimeOffset(self):
-        r"""视频片段的结束时间，单位：秒
+        r"""<p>视频片段的结束时间，单位：秒</p>
         :rtype: float
         """
         return self._EndTimeOffset
@@ -90252,6 +91961,7 @@ class SemanticsSearchResult(AbstractModel):
 
     def _deserialize(self, params):
         self._FileId = params.get("FileId")
+        self._Title = params.get("Title")
         self._Score = params.get("Score")
         self._StartTimeOffset = params.get("StartTimeOffset")
         self._EndTimeOffset = params.get("EndTimeOffset")

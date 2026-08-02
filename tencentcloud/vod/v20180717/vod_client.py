@@ -798,6 +798,29 @@ class VodClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateKnowledgeBase(self, request):
+        r"""创建知识库。用于为智能媒资功能创建一个新的知识库，每个用户最多可创建的20个知识库。
+
+        :param request: Request instance for CreateKnowledgeBase.
+        :type request: :class:`tencentcloud.vod.v20180717.models.CreateKnowledgeBaseRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.CreateKnowledgeBaseResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateKnowledgeBase", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateKnowledgeBaseResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateLLMComprehendTemplate(self, request):
         r"""创建大模型解析模板
 
@@ -1640,6 +1663,30 @@ class VodClient(AbstractClient):
             body = self.call("DeleteJustInTimeTranscodeTemplate", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteJustInTimeTranscodeTemplateResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteKnowledgeBase(self, request):
+        r"""删除知识库。
+        调用接口后，知识库会处于“删除中”状态，并在后台执行删除操作。
+
+        :param request: Request instance for DeleteKnowledgeBase.
+        :type request: :class:`tencentcloud.vod.v20180717.models.DeleteKnowledgeBaseRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.DeleteKnowledgeBaseResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteKnowledgeBase", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteKnowledgeBaseResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -2921,6 +2968,29 @@ class VodClient(AbstractClient):
             body = self.call("DescribeJustInTimeTranscodeTemplates", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeJustInTimeTranscodeTemplatesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeKnowledgeBases(self, request):
+        r"""查询知识库列表。返回指定用户下的所有知识库信息。
+
+        :param request: Request instance for DescribeKnowledgeBases.
+        :type request: :class:`tencentcloud.vod.v20180717.models.DescribeKnowledgeBasesRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.DescribeKnowledgeBasesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeKnowledgeBases", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeKnowledgeBasesResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -4356,6 +4426,29 @@ class VodClient(AbstractClient):
             body = self.call("ModifyJustInTimeTranscodeTemplate", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyJustInTimeTranscodeTemplateResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyKnowledgeBase(self, request):
+        r"""修改知识库。可以修改知识库的名称和/或描述。至少需要提供 Name 或 Description 中的一个字段。
+
+        :param request: Request instance for ModifyKnowledgeBase.
+        :type request: :class:`tencentcloud.vod.v20180717.models.ModifyKnowledgeBaseRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.ModifyKnowledgeBaseResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyKnowledgeBase", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyKnowledgeBaseResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

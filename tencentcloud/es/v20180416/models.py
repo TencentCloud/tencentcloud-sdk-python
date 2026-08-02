@@ -478,6 +478,336 @@ class CheckMigrateIndexMetaDataResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CheckUpdateInstanceRequest(AbstractModel):
+    r"""CheckUpdateInstance请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例ID
+        :type InstanceId: str
+        :param _NodeNum: 已废弃，请使用NodeInfoList
+变配后的节点个数（2-50个）
+        :type NodeNum: int
+        :param _NodeType: 已废弃，请使用NodeInfoList
+变配后的节点规格<li>ES.S1.SMALL2：1核2G</li><li>ES.S1.MEDIUM4：2核4G</li><li>ES.S1.MEDIUM8：2核8G</li><li>ES.S1.LARGE16：4核16G</li><li>ES.S1.2XLARGE32：8核32G</li><li>ES.S1.4XLARGE64：16核64G</li>
+        :type NodeType: str
+        :param _DiskSize: 已废弃，请使用NodeInfoList
+变配后的磁盘大小（单位GB）
+        :type DiskSize: int
+        :param _MasterNodeNum: 已废弃，请使用NodeInfoList
+变配后的专用主节点个数（仅支持3个和5个）
+        :type MasterNodeNum: int
+        :param _MasterNodeType: 已废弃，请使用NodeInfoList
+变配后的专用主节点规格<li>ES.S1.SMALL2：1核2G</li><li>ES.S1.MEDIUM4：2核4G</li><li>ES.S1.MEDIUM8：2核8G</li><li>ES.S1.LARGE16：4核16G</li><li>ES.S1.2XLARGE32：8核32G</li><li>ES.S1.4XLARGE64：16核64G</li>
+        :type MasterNodeType: str
+        :param _NodeInfoList: 节点信息列表，可以只传递要更新的节点及其对应的规格信息。支持的操作包括<li>修改一种节点的个数</li><li>修改一种节点的节点规格及磁盘大小</li><li>增加一种节点类型（需要同时指定该节点的类型，个数，规格，磁盘等信息）</li>上述操作一次只能进行一种，且磁盘类型不支持修改
+        :type NodeInfoList: list of NodeInfo
+        :param _ForceRestart: 更新配置时是否强制重启<li>true强制重启</li><li>false不强制重启</li>默认值为false
+        :type ForceRestart: bool
+        :param _ScaleType: 0: 蓝绿变更方式扩容，集群不重启 （默认） 1: 磁盘解挂载扩容，集群滚动重启
+        :type ScaleType: int
+        :param _MultiZoneInfo: 多可用区部署
+        :type MultiZoneInfo: list of ZoneDetail
+        :param _WebNodeTypeInfo: 可视化节点配置
+        :type WebNodeTypeInfo: :class:`tencentcloud.es.v20180416.models.WebNodeTypeInfo`
+        :param _CosBackup: COS自动备份信息
+        :type CosBackup: :class:`tencentcloud.es.v20180416.models.CosBackup`
+        :param _ReadWriteMode: 读写分离模式：-1-不开启，1-本地读写分离，2-远端读写分离
+        :type ReadWriteMode: int
+        """
+        self._InstanceId = None
+        self._NodeNum = None
+        self._NodeType = None
+        self._DiskSize = None
+        self._MasterNodeNum = None
+        self._MasterNodeType = None
+        self._NodeInfoList = None
+        self._ForceRestart = None
+        self._ScaleType = None
+        self._MultiZoneInfo = None
+        self._WebNodeTypeInfo = None
+        self._CosBackup = None
+        self._ReadWriteMode = None
+
+    @property
+    def InstanceId(self):
+        r"""实例ID
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def NodeNum(self):
+        r"""已废弃，请使用NodeInfoList
+变配后的节点个数（2-50个）
+        :rtype: int
+        """
+        return self._NodeNum
+
+    @NodeNum.setter
+    def NodeNum(self, NodeNum):
+        self._NodeNum = NodeNum
+
+    @property
+    def NodeType(self):
+        r"""已废弃，请使用NodeInfoList
+变配后的节点规格<li>ES.S1.SMALL2：1核2G</li><li>ES.S1.MEDIUM4：2核4G</li><li>ES.S1.MEDIUM8：2核8G</li><li>ES.S1.LARGE16：4核16G</li><li>ES.S1.2XLARGE32：8核32G</li><li>ES.S1.4XLARGE64：16核64G</li>
+        :rtype: str
+        """
+        return self._NodeType
+
+    @NodeType.setter
+    def NodeType(self, NodeType):
+        self._NodeType = NodeType
+
+    @property
+    def DiskSize(self):
+        r"""已废弃，请使用NodeInfoList
+变配后的磁盘大小（单位GB）
+        :rtype: int
+        """
+        return self._DiskSize
+
+    @DiskSize.setter
+    def DiskSize(self, DiskSize):
+        self._DiskSize = DiskSize
+
+    @property
+    def MasterNodeNum(self):
+        r"""已废弃，请使用NodeInfoList
+变配后的专用主节点个数（仅支持3个和5个）
+        :rtype: int
+        """
+        return self._MasterNodeNum
+
+    @MasterNodeNum.setter
+    def MasterNodeNum(self, MasterNodeNum):
+        self._MasterNodeNum = MasterNodeNum
+
+    @property
+    def MasterNodeType(self):
+        r"""已废弃，请使用NodeInfoList
+变配后的专用主节点规格<li>ES.S1.SMALL2：1核2G</li><li>ES.S1.MEDIUM4：2核4G</li><li>ES.S1.MEDIUM8：2核8G</li><li>ES.S1.LARGE16：4核16G</li><li>ES.S1.2XLARGE32：8核32G</li><li>ES.S1.4XLARGE64：16核64G</li>
+        :rtype: str
+        """
+        return self._MasterNodeType
+
+    @MasterNodeType.setter
+    def MasterNodeType(self, MasterNodeType):
+        self._MasterNodeType = MasterNodeType
+
+    @property
+    def NodeInfoList(self):
+        r"""节点信息列表，可以只传递要更新的节点及其对应的规格信息。支持的操作包括<li>修改一种节点的个数</li><li>修改一种节点的节点规格及磁盘大小</li><li>增加一种节点类型（需要同时指定该节点的类型，个数，规格，磁盘等信息）</li>上述操作一次只能进行一种，且磁盘类型不支持修改
+        :rtype: list of NodeInfo
+        """
+        return self._NodeInfoList
+
+    @NodeInfoList.setter
+    def NodeInfoList(self, NodeInfoList):
+        self._NodeInfoList = NodeInfoList
+
+    @property
+    def ForceRestart(self):
+        r"""更新配置时是否强制重启<li>true强制重启</li><li>false不强制重启</li>默认值为false
+        :rtype: bool
+        """
+        return self._ForceRestart
+
+    @ForceRestart.setter
+    def ForceRestart(self, ForceRestart):
+        self._ForceRestart = ForceRestart
+
+    @property
+    def ScaleType(self):
+        r"""0: 蓝绿变更方式扩容，集群不重启 （默认） 1: 磁盘解挂载扩容，集群滚动重启
+        :rtype: int
+        """
+        return self._ScaleType
+
+    @ScaleType.setter
+    def ScaleType(self, ScaleType):
+        self._ScaleType = ScaleType
+
+    @property
+    def MultiZoneInfo(self):
+        r"""多可用区部署
+        :rtype: list of ZoneDetail
+        """
+        return self._MultiZoneInfo
+
+    @MultiZoneInfo.setter
+    def MultiZoneInfo(self, MultiZoneInfo):
+        self._MultiZoneInfo = MultiZoneInfo
+
+    @property
+    def WebNodeTypeInfo(self):
+        r"""可视化节点配置
+        :rtype: :class:`tencentcloud.es.v20180416.models.WebNodeTypeInfo`
+        """
+        return self._WebNodeTypeInfo
+
+    @WebNodeTypeInfo.setter
+    def WebNodeTypeInfo(self, WebNodeTypeInfo):
+        self._WebNodeTypeInfo = WebNodeTypeInfo
+
+    @property
+    def CosBackup(self):
+        r"""COS自动备份信息
+        :rtype: :class:`tencentcloud.es.v20180416.models.CosBackup`
+        """
+        return self._CosBackup
+
+    @CosBackup.setter
+    def CosBackup(self, CosBackup):
+        self._CosBackup = CosBackup
+
+    @property
+    def ReadWriteMode(self):
+        r"""读写分离模式：-1-不开启，1-本地读写分离，2-远端读写分离
+        :rtype: int
+        """
+        return self._ReadWriteMode
+
+    @ReadWriteMode.setter
+    def ReadWriteMode(self, ReadWriteMode):
+        self._ReadWriteMode = ReadWriteMode
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._NodeNum = params.get("NodeNum")
+        self._NodeType = params.get("NodeType")
+        self._DiskSize = params.get("DiskSize")
+        self._MasterNodeNum = params.get("MasterNodeNum")
+        self._MasterNodeType = params.get("MasterNodeType")
+        if params.get("NodeInfoList") is not None:
+            self._NodeInfoList = []
+            for item in params.get("NodeInfoList"):
+                obj = NodeInfo()
+                obj._deserialize(item)
+                self._NodeInfoList.append(obj)
+        self._ForceRestart = params.get("ForceRestart")
+        self._ScaleType = params.get("ScaleType")
+        if params.get("MultiZoneInfo") is not None:
+            self._MultiZoneInfo = []
+            for item in params.get("MultiZoneInfo"):
+                obj = ZoneDetail()
+                obj._deserialize(item)
+                self._MultiZoneInfo.append(obj)
+        if params.get("WebNodeTypeInfo") is not None:
+            self._WebNodeTypeInfo = WebNodeTypeInfo()
+            self._WebNodeTypeInfo._deserialize(params.get("WebNodeTypeInfo"))
+        if params.get("CosBackup") is not None:
+            self._CosBackup = CosBackup()
+            self._CosBackup._deserialize(params.get("CosBackup"))
+        self._ReadWriteMode = params.get("ReadWriteMode")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CheckUpdateInstanceResponse(AbstractModel):
+    r"""CheckUpdateInstance返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AllowUpdate: 是否允许变配操作
+        :type AllowUpdate: bool
+        :param _ErrMsg: 不允许变配的原因
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ErrMsg: str
+        :param _NeedSetShards: 是否需要设置分片迁移并发相关参数
+        :type NeedSetShards: bool
+        :param _EnableScheduleRecoverGroupTask: 是否需要开启置放群组异步任务
+        :type EnableScheduleRecoverGroupTask: bool
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._AllowUpdate = None
+        self._ErrMsg = None
+        self._NeedSetShards = None
+        self._EnableScheduleRecoverGroupTask = None
+        self._RequestId = None
+
+    @property
+    def AllowUpdate(self):
+        r"""是否允许变配操作
+        :rtype: bool
+        """
+        return self._AllowUpdate
+
+    @AllowUpdate.setter
+    def AllowUpdate(self, AllowUpdate):
+        self._AllowUpdate = AllowUpdate
+
+    @property
+    def ErrMsg(self):
+        r"""不允许变配的原因
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ErrMsg
+
+    @ErrMsg.setter
+    def ErrMsg(self, ErrMsg):
+        self._ErrMsg = ErrMsg
+
+    @property
+    def NeedSetShards(self):
+        r"""是否需要设置分片迁移并发相关参数
+        :rtype: bool
+        """
+        return self._NeedSetShards
+
+    @NeedSetShards.setter
+    def NeedSetShards(self, NeedSetShards):
+        self._NeedSetShards = NeedSetShards
+
+    @property
+    def EnableScheduleRecoverGroupTask(self):
+        r"""是否需要开启置放群组异步任务
+        :rtype: bool
+        """
+        return self._EnableScheduleRecoverGroupTask
+
+    @EnableScheduleRecoverGroupTask.setter
+    def EnableScheduleRecoverGroupTask(self, EnableScheduleRecoverGroupTask):
+        self._EnableScheduleRecoverGroupTask = EnableScheduleRecoverGroupTask
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._AllowUpdate = params.get("AllowUpdate")
+        self._ErrMsg = params.get("ErrMsg")
+        self._NeedSetShards = params.get("NeedSetShards")
+        self._EnableScheduleRecoverGroupTask = params.get("EnableScheduleRecoverGroupTask")
+        self._RequestId = params.get("RequestId")
+
+
 class ClusterView(AbstractModel):
     r"""集群维度视图数据
 
@@ -20150,6 +20480,120 @@ class ModifyAutoBackUpStrategyRequest(AbstractModel):
 
 class ModifyAutoBackUpStrategyResponse(AbstractModel):
     r"""ModifyAutoBackUpStrategy返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Status: true 成功; false 失败
+        :type Status: bool
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Status = None
+        self._RequestId = None
+
+    @property
+    def Status(self):
+        r"""true 成功; false 失败
+        :rtype: bool
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Status = params.get("Status")
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyAutoScaleDiskInfoRequest(AbstractModel):
+    r"""ModifyAutoScaleDiskInfo请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例名称
+        :type InstanceId: str
+        :param _AutoScaleDiskInfoList: 自动扩盘参数列表
+        :type AutoScaleDiskInfoList: list of AutoScaleDiskInfo
+        :param _DeleteNodeTypeList: 需要删除的自动扩盘节点类型
+        :type DeleteNodeTypeList: list of str
+        """
+        self._InstanceId = None
+        self._AutoScaleDiskInfoList = None
+        self._DeleteNodeTypeList = None
+
+    @property
+    def InstanceId(self):
+        r"""实例名称
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def AutoScaleDiskInfoList(self):
+        r"""自动扩盘参数列表
+        :rtype: list of AutoScaleDiskInfo
+        """
+        return self._AutoScaleDiskInfoList
+
+    @AutoScaleDiskInfoList.setter
+    def AutoScaleDiskInfoList(self, AutoScaleDiskInfoList):
+        self._AutoScaleDiskInfoList = AutoScaleDiskInfoList
+
+    @property
+    def DeleteNodeTypeList(self):
+        r"""需要删除的自动扩盘节点类型
+        :rtype: list of str
+        """
+        return self._DeleteNodeTypeList
+
+    @DeleteNodeTypeList.setter
+    def DeleteNodeTypeList(self, DeleteNodeTypeList):
+        self._DeleteNodeTypeList = DeleteNodeTypeList
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        if params.get("AutoScaleDiskInfoList") is not None:
+            self._AutoScaleDiskInfoList = []
+            for item in params.get("AutoScaleDiskInfoList"):
+                obj = AutoScaleDiskInfo()
+                obj._deserialize(item)
+                self._AutoScaleDiskInfoList.append(obj)
+        self._DeleteNodeTypeList = params.get("DeleteNodeTypeList")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyAutoScaleDiskInfoResponse(AbstractModel):
+    r"""ModifyAutoScaleDiskInfo返回参数结构体
 
     """
 

@@ -4201,6 +4201,24 @@ class CynosdbClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def TransferClusterPrepayToPostpay(
+            self,
+            request: models.TransferClusterPrepayToPostpayRequest,
+            opts: Dict = None,
+    ) -> models.TransferClusterPrepayToPostpayResponse:
+        """
+        本接口（TransferClusterPrepayToPostpay）用于将预付费集群转为后付费集群
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "TransferClusterPrepayToPostpay"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.TransferClusterPrepayToPostpayResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def TransferClusterZone(
             self,
             request: models.TransferClusterZoneRequest,
@@ -4214,6 +4232,24 @@ class CynosdbClient(AbstractClient):
         kwargs["action"] = "TransferClusterZone"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.TransferClusterZoneResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def TransferStoragePrepayToPostpay(
+            self,
+            request: models.TransferStoragePrepayToPostpayRequest,
+            opts: Dict = None,
+    ) -> models.TransferStoragePrepayToPostpayResponse:
+        """
+        本接口（TransferStoragePrepayToPostpay）用于将预付费存储转为后付费存储
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "TransferStoragePrepayToPostpay"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.TransferStoragePrepayToPostpayResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

@@ -529,6 +529,24 @@ class DbdcClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def ModifyDBCustomNodeAttributes(
+            self,
+            request: models.ModifyDBCustomNodeAttributesRequest,
+            opts: Dict = None,
+    ) -> models.ModifyDBCustomNodeAttributesResponse:
+        """
+        该接口（ModifyDBCustomNodeAttributes）用于修改 DB Custom 节点的属性。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyDBCustomNodeAttributes"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyDBCustomNodeAttributesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ModifyDBCustomNodeSecurityGroups(
             self,
             request: models.ModifyDBCustomNodeSecurityGroupsRequest,

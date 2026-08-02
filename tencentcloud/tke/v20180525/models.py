@@ -6813,6 +6813,8 @@ class CreateClusterNodePoolRequest(AbstractModel):
         :type Tags: list of Tag
         :param _DeletionProtection: <p>删除保护开关</p>
         :type DeletionProtection: bool
+        :param _SkipValidateOptions: <p>跳过校验选项，目前支持 &quot;VpcDnsCheck&quot;</p>
+        :type SkipValidateOptions: list of str
         """
         self._ClusterId = None
         self._AutoScalingGroupPara = None
@@ -6829,6 +6831,7 @@ class CreateClusterNodePoolRequest(AbstractModel):
         self._OsCustomizeType = None
         self._Tags = None
         self._DeletionProtection = None
+        self._SkipValidateOptions = None
 
     @property
     def ClusterId(self):
@@ -6995,6 +6998,17 @@ class CreateClusterNodePoolRequest(AbstractModel):
     def DeletionProtection(self, DeletionProtection):
         self._DeletionProtection = DeletionProtection
 
+    @property
+    def SkipValidateOptions(self):
+        r"""<p>跳过校验选项，目前支持 &quot;VpcDnsCheck&quot;</p>
+        :rtype: list of str
+        """
+        return self._SkipValidateOptions
+
+    @SkipValidateOptions.setter
+    def SkipValidateOptions(self, SkipValidateOptions):
+        self._SkipValidateOptions = SkipValidateOptions
+
 
     def _deserialize(self, params):
         self._ClusterId = params.get("ClusterId")
@@ -7034,6 +7048,7 @@ class CreateClusterNodePoolRequest(AbstractModel):
                 obj._deserialize(item)
                 self._Tags.append(obj)
         self._DeletionProtection = params.get("DeletionProtection")
+        self._SkipValidateOptions = params.get("SkipValidateOptions")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

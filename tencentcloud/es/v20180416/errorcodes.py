@@ -53,6 +53,9 @@ FAILEDOPERATION_DISKCOUNTPARAMERROR = 'FailedOperation.DiskCountParamError'
 # 集群状态错误。
 FAILEDOPERATION_ERRORCLUSTERSTATE = 'FailedOperation.ErrorClusterState'
 
+# 集群索引没有副本存在。
+FAILEDOPERATION_ERRORCLUSTERSTATENOREPLICATION = 'FailedOperation.ErrorClusterStateNoReplication'
+
 # 集群状态不健康。
 FAILEDOPERATION_ERRORCLUSTERSTATEUNHEALTH = 'FailedOperation.ErrorClusterStateUnhealth'
 
@@ -275,6 +278,9 @@ INVALIDPARAMETER_INVALIDRESTARTTYPE = 'InvalidParameter.InvalidRestartType'
 # 数据样例JSON SampleJson的取值和预期不符。
 INVALIDPARAMETER_INVALIDSAMPLEJSON = 'InvalidParameter.InvalidSampleJson'
 
+# 磁盘缩容安全检查系数scale_disk_safe_factor配置有误
+INVALIDPARAMETER_INVALIDSCALEDISKSAFEFACTOR = 'InvalidParameter.InvalidScaleDiskSafeFactor'
+
 # 场景化模版类型SceneType的取值和预期不符。
 INVALIDPARAMETER_INVALIDSCENETYPE = 'InvalidParameter.InvalidSceneType'
 
@@ -485,6 +491,9 @@ RESOURCEINSUFFICIENT_CVMQUOTA = 'ResourceInsufficient.CVMQuota'
 # clb资源不足
 RESOURCEINSUFFICIENT_CLB = 'ResourceInsufficient.Clb'
 
+# 磁盘资源不足。
+RESOURCEINSUFFICIENT_DISK = 'ResourceInsufficient.Disk'
+
 # es资源不足
 RESOURCEINSUFFICIENT_ES = 'ResourceInsufficient.Es'
 
@@ -514,6 +523,9 @@ RESOURCENOTFOUND_CAMINFONOTFOUND = 'ResourceNotFound.CAMInfoNotFound'
 
 # 负载均衡信息未找到。
 RESOURCENOTFOUND_CLBNOTFOUND = 'ResourceNotFound.CLBNotFound'
+
+# 获取CVM信息失败。
+RESOURCENOTFOUND_CVMINFONOTFOUND = 'ResourceNotFound.CVMInfoNotFound'
 
 # 集群资源获取失败。
 RESOURCENOTFOUND_CLUSTERINFONOTFOUND = 'ResourceNotFound.ClusterInfoNotFound'
@@ -611,6 +623,9 @@ UNSUPPORTEDOPERATION_CVMSTATENOTSUPPORTED = 'UnsupportedOperation.CvmStateNotSup
 # 有关机的cvm
 UNSUPPORTEDOPERATION_CVMSTATUSSTOPPED = 'UnsupportedOperation.CvmStatusStopped'
 
+# 调整后集群数据节点堆内存过小
+UNSUPPORTEDOPERATION_DATANODEJVMHEAPTOOSMALL = 'UnsupportedOperation.DataNodeJvmHeapTooSmall'
+
 # 不支持该智能诊断任务。
 UNSUPPORTEDOPERATION_DIAGNOSEJOB = 'UnsupportedOperation.DiagnoseJob'
 
@@ -686,6 +701,9 @@ UNSUPPORTEDOPERATION_RESTARTMODE = 'UnsupportedOperation.RestartMode'
 # 纵向缩容太多资源。
 UNSUPPORTEDOPERATION_SCALEDOWNTOOMUCH = 'UnsupportedOperation.ScaleDownTooMuch'
 
+# 横向缩容过多节点。
+UNSUPPORTEDOPERATION_SCALEINTOOMUCH = 'UnsupportedOperation.ScaleInTooMuch'
+
 # 单节点不支持该操作
 UNSUPPORTEDOPERATION_SINGLENODECLUSTERNOTSUPPORT = 'UnsupportedOperation.SingleNodeClusterNotSupport'
 
@@ -697,6 +715,9 @@ UNSUPPORTEDOPERATION_STATUSNOTSUPPORT = 'UnsupportedOperation.StatusNotSupport'
 
 # 不支持切换PrivateLink架构。
 UNSUPPORTEDOPERATION_SWITCHPRIVATELINK = 'UnsupportedOperation.SwitchPrivateLink'
+
+# 集群总的磁盘容量较小。
+UNSUPPORTEDOPERATION_TOTALSTORAGE = 'UnsupportedOperation.TotalStorage'
 
 # 节点或磁盘数变更时不支持更新磁盘加密信息。
 UNSUPPORTEDOPERATION_UPDATEDISKENCRYPT = 'UnsupportedOperation.UpdateDiskEncrypt'

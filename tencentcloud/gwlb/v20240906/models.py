@@ -3102,23 +3102,19 @@ class TargetGroupHealthCheck(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _HealthSwitch: 是否开启健康检查。
+        :param _HealthSwitch: <p>是否开启健康检查。</p>
         :type HealthSwitch: bool
-        :param _Protocol: 健康检查使用的协议。支持PING和TCP两种方式，默认为PING。
-
-- icmp: 使用PING的方式进行健康检查
-- tcp: 使用TCP连接的方式进行健康检查
+        :param _Protocol: <p>健康检查使用的协议。支持PING和TCP两种方式，默认为PING。</p><ul><li>icmp: 使用PING的方式进行健康检查</li><li>tcp: 使用TCP连接的方式进行健康检查</li></ul>
         :type Protocol: str
-        :param _Port: 健康检查端口，探测协议为tcp时，该参数必填。
-
+        :param _Port: <p>健康检查端口，探测协议为tcp时，该参数必填。</p>
         :type Port: int
-        :param _Timeout: 健康检查超时时间。 默认为2秒。 可配置范围：2 - 30秒。
+        :param _Timeout: <p>健康检查超时时间。 默认为2秒。 可配置范围：2 - 30秒。</p>
         :type Timeout: int
-        :param _IntervalTime: 检测间隔时间。 默认为5秒。 可配置范围：2 - 300秒。
+        :param _IntervalTime: <p>检测间隔时间。 默认为5秒。 可配置范围：2 - 300秒。</p>
         :type IntervalTime: int
-        :param _HealthNum: 检测健康阈值。 默认为3次。 可配置范围：2 - 10次。
+        :param _HealthNum: <p>检测健康阈值。 默认为3次。 可配置范围：2 - 10次。</p>
         :type HealthNum: int
-        :param _UnHealthNum: 检测不健康阈值。 默认为3次。 可配置范围：2 - 10次。
+        :param _UnHealthNum: <p>检测不健康阈值。 默认为3次。 可配置范围：2 - 10次。</p>
         :type UnHealthNum: int
         """
         self._HealthSwitch = None
@@ -3131,7 +3127,7 @@ class TargetGroupHealthCheck(AbstractModel):
 
     @property
     def HealthSwitch(self):
-        r"""是否开启健康检查。
+        r"""<p>是否开启健康检查。</p>
         :rtype: bool
         """
         return self._HealthSwitch
@@ -3142,10 +3138,7 @@ class TargetGroupHealthCheck(AbstractModel):
 
     @property
     def Protocol(self):
-        r"""健康检查使用的协议。支持PING和TCP两种方式，默认为PING。
-
-- icmp: 使用PING的方式进行健康检查
-- tcp: 使用TCP连接的方式进行健康检查
+        r"""<p>健康检查使用的协议。支持PING和TCP两种方式，默认为PING。</p><ul><li>icmp: 使用PING的方式进行健康检查</li><li>tcp: 使用TCP连接的方式进行健康检查</li></ul>
         :rtype: str
         """
         return self._Protocol
@@ -3156,8 +3149,7 @@ class TargetGroupHealthCheck(AbstractModel):
 
     @property
     def Port(self):
-        r"""健康检查端口，探测协议为tcp时，该参数必填。
-
+        r"""<p>健康检查端口，探测协议为tcp时，该参数必填。</p>
         :rtype: int
         """
         return self._Port
@@ -3168,7 +3160,7 @@ class TargetGroupHealthCheck(AbstractModel):
 
     @property
     def Timeout(self):
-        r"""健康检查超时时间。 默认为2秒。 可配置范围：2 - 30秒。
+        r"""<p>健康检查超时时间。 默认为2秒。 可配置范围：2 - 30秒。</p>
         :rtype: int
         """
         return self._Timeout
@@ -3179,7 +3171,7 @@ class TargetGroupHealthCheck(AbstractModel):
 
     @property
     def IntervalTime(self):
-        r"""检测间隔时间。 默认为5秒。 可配置范围：2 - 300秒。
+        r"""<p>检测间隔时间。 默认为5秒。 可配置范围：2 - 300秒。</p>
         :rtype: int
         """
         return self._IntervalTime
@@ -3190,7 +3182,7 @@ class TargetGroupHealthCheck(AbstractModel):
 
     @property
     def HealthNum(self):
-        r"""检测健康阈值。 默认为3次。 可配置范围：2 - 10次。
+        r"""<p>检测健康阈值。 默认为3次。 可配置范围：2 - 10次。</p>
         :rtype: int
         """
         return self._HealthNum
@@ -3201,7 +3193,7 @@ class TargetGroupHealthCheck(AbstractModel):
 
     @property
     def UnHealthNum(self):
-        r"""检测不健康阈值。 默认为3次。 可配置范围：2 - 10次。
+        r"""<p>检测不健康阈值。 默认为3次。 可配置范围：2 - 10次。</p>
         :rtype: int
         """
         return self._UnHealthNum

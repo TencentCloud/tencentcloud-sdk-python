@@ -4787,6 +4787,57 @@ class ClusterInfo(AbstractModel):
         
 
 
+class ClusterInfoInput(AbstractModel):
+    r"""创建模型路由时的集群信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: <p>集群ID</p>
+        :type ClusterId: str
+        :param _Type: <p>集群类型</p><p>枚举值：</p><ul><li>Exclusive： 独占集群</li><li>Public： 公有云共享集群</li></ul>
+        :type Type: str
+        """
+        self._ClusterId = None
+        self._Type = None
+
+    @property
+    def ClusterId(self):
+        r"""<p>集群ID</p>
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def Type(self):
+        r"""<p>集群类型</p><p>枚举值：</p><ul><li>Exclusive： 独占集群</li><li>Public： 公有云共享集群</li></ul>
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        self._Type = params.get("Type")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ClusterItem(AbstractModel):
     r"""独占集群信息
 
@@ -5047,12 +5098,15 @@ class Coefficient(AbstractModel):
         r"""
         :param _InputCachedCoefficient: <p>缓存命中输入积分系数。</p><p>用于 provider prompt cache 命中的输入 token。</p><p>取值范围：[0, 5000]</p><p>默认值：3</p>
         :type InputCachedCoefficient: float
+        :param _InputCacheCreationCoefficient: <p>缓存创建积分系数</p>
+        :type InputCacheCreationCoefficient: float
         :param _InputCoefficient: <p>输入积分系数。</p><p>取值范围：[1, 5000]</p><p>默认值：25</p>
         :type InputCoefficient: float
         :param _OutputCoefficient: <p>输出积分系数。</p><p>取值范围：[1, 5000]</p><p>默认值：100</p>
         :type OutputCoefficient: float
         """
         self._InputCachedCoefficient = None
+        self._InputCacheCreationCoefficient = None
         self._InputCoefficient = None
         self._OutputCoefficient = None
 
@@ -5066,6 +5120,17 @@ class Coefficient(AbstractModel):
     @InputCachedCoefficient.setter
     def InputCachedCoefficient(self, InputCachedCoefficient):
         self._InputCachedCoefficient = InputCachedCoefficient
+
+    @property
+    def InputCacheCreationCoefficient(self):
+        r"""<p>缓存创建积分系数</p>
+        :rtype: float
+        """
+        return self._InputCacheCreationCoefficient
+
+    @InputCacheCreationCoefficient.setter
+    def InputCacheCreationCoefficient(self, InputCacheCreationCoefficient):
+        self._InputCacheCreationCoefficient = InputCacheCreationCoefficient
 
     @property
     def InputCoefficient(self):
@@ -5092,6 +5157,7 @@ class Coefficient(AbstractModel):
 
     def _deserialize(self, params):
         self._InputCachedCoefficient = params.get("InputCachedCoefficient")
+        self._InputCacheCreationCoefficient = params.get("InputCacheCreationCoefficient")
         self._InputCoefficient = params.get("InputCoefficient")
         self._OutputCoefficient = params.get("OutputCoefficient")
         memeber_set = set(params.keys())
@@ -7558,10 +7624,10 @@ class CreateModelRouterRequest(AbstractModel):
         :type ModelRouterType: str
         :param _BudgetId: <p>关联的积分预算ID</p>
         :type BudgetId: str
-        :param _CertId: <p>证书ID</p><p>入参限制：当Schema为HTTPS时，该参数必传</p>
+        :param _CertId: <p>证书ID</p><p>入参限制：当Scheme为HTTPS时，该参数必传</p>
         :type CertId: str
         :param _ClusterInfo: <p>集群信息</p>
-        :type ClusterInfo: :class:`tencentcloud.clb.v20180317.models.ClusterInfo`
+        :type ClusterInfo: :class:`tencentcloud.clb.v20180317.models.ClusterInfoInput`
         :param _ModelRouterName: <p>模型路由实例名称</p><p>默认值：-</p>
         :type ModelRouterName: str
         :param _NetworkType: <p>网络类型</p><p>枚举值：</p><ul><li>Internet： 公网</li><li>Intranet： 内网</li></ul>
@@ -7580,6 +7646,10 @@ class CreateModelRouterRequest(AbstractModel):
         :type Tags: list of TagInfo
         :param _VpcId: <p>模型路由实例所属VPC的ID</p>
         :type VpcId: str
+        :param _ModelRouterBillingConfig: <p>模型路由实例计费信息</p>
+        :type ModelRouterBillingConfig: :class:`tencentcloud.clb.v20180317.models.ModelRouterBillingConfigInput`
+        :param _ClientToken: <p>客户端Token，用于保证请求的幂等性。  从您的客户端生成一个参数值，确保不同请求间该参数值唯一。ClientToken只支持ASCII字符。</p>
+        :type ClientToken: str
         """
         self._ModelRouterType = None
         self._BudgetId = None
@@ -7594,6 +7664,8 @@ class CreateModelRouterRequest(AbstractModel):
         self._SubnetId = None
         self._Tags = None
         self._VpcId = None
+        self._ModelRouterBillingConfig = None
+        self._ClientToken = None
 
     @property
     def ModelRouterType(self):
@@ -7619,7 +7691,7 @@ class CreateModelRouterRequest(AbstractModel):
 
     @property
     def CertId(self):
-        r"""<p>证书ID</p><p>入参限制：当Schema为HTTPS时，该参数必传</p>
+        r"""<p>证书ID</p><p>入参限制：当Scheme为HTTPS时，该参数必传</p>
         :rtype: str
         """
         return self._CertId
@@ -7631,7 +7703,7 @@ class CreateModelRouterRequest(AbstractModel):
     @property
     def ClusterInfo(self):
         r"""<p>集群信息</p>
-        :rtype: :class:`tencentcloud.clb.v20180317.models.ClusterInfo`
+        :rtype: :class:`tencentcloud.clb.v20180317.models.ClusterInfoInput`
         """
         return self._ClusterInfo
 
@@ -7738,13 +7810,35 @@ class CreateModelRouterRequest(AbstractModel):
     def VpcId(self, VpcId):
         self._VpcId = VpcId
 
+    @property
+    def ModelRouterBillingConfig(self):
+        r"""<p>模型路由实例计费信息</p>
+        :rtype: :class:`tencentcloud.clb.v20180317.models.ModelRouterBillingConfigInput`
+        """
+        return self._ModelRouterBillingConfig
+
+    @ModelRouterBillingConfig.setter
+    def ModelRouterBillingConfig(self, ModelRouterBillingConfig):
+        self._ModelRouterBillingConfig = ModelRouterBillingConfig
+
+    @property
+    def ClientToken(self):
+        r"""<p>客户端Token，用于保证请求的幂等性。  从您的客户端生成一个参数值，确保不同请求间该参数值唯一。ClientToken只支持ASCII字符。</p>
+        :rtype: str
+        """
+        return self._ClientToken
+
+    @ClientToken.setter
+    def ClientToken(self, ClientToken):
+        self._ClientToken = ClientToken
+
 
     def _deserialize(self, params):
         self._ModelRouterType = params.get("ModelRouterType")
         self._BudgetId = params.get("BudgetId")
         self._CertId = params.get("CertId")
         if params.get("ClusterInfo") is not None:
-            self._ClusterInfo = ClusterInfo()
+            self._ClusterInfo = ClusterInfoInput()
             self._ClusterInfo._deserialize(params.get("ClusterInfo"))
         self._ModelRouterName = params.get("ModelRouterName")
         self._NetworkType = params.get("NetworkType")
@@ -7764,6 +7858,10 @@ class CreateModelRouterRequest(AbstractModel):
                 obj._deserialize(item)
                 self._Tags.append(obj)
         self._VpcId = params.get("VpcId")
+        if params.get("ModelRouterBillingConfig") is not None:
+            self._ModelRouterBillingConfig = ModelRouterBillingConfigInput()
+            self._ModelRouterBillingConfig._deserialize(params.get("ModelRouterBillingConfig"))
+        self._ClientToken = params.get("ClientToken")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -18256,7 +18354,7 @@ class DisassociateModelsFromModelRouterRequest(AbstractModel):
         :param _ModelRouterId: <p>模型路由实例ID</p>
         :type ModelRouterId: str
         :param _Models: <p>需要解除关联的模型信息</p>
-        :type Models: list of ModelRouterModel
+        :type Models: list of ModelRouterModelToDisassociate
         """
         self._ModelRouterId = None
         self._Models = None
@@ -18275,7 +18373,7 @@ class DisassociateModelsFromModelRouterRequest(AbstractModel):
     @property
     def Models(self):
         r"""<p>需要解除关联的模型信息</p>
-        :rtype: list of ModelRouterModel
+        :rtype: list of ModelRouterModelToDisassociate
         """
         return self._Models
 
@@ -18289,7 +18387,7 @@ class DisassociateModelsFromModelRouterRequest(AbstractModel):
         if params.get("Models") is not None:
             self._Models = []
             for item in params.get("Models"):
-                obj = ModelRouterModel()
+                obj = ModelRouterModelToDisassociate()
                 obj._deserialize(item)
                 self._Models.append(obj)
         memeber_set = set(params.keys())
@@ -25128,6 +25226,72 @@ class ModelNameAggregatedItem(AbstractModel):
         
 
 
+class ModelRouterBillingConfigInput(AbstractModel):
+    r"""模型路由计费信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ChargeType: <p>模型路由计费模式</p><p>枚举值：</p><ul><li>POSTPAID_BY_HOUR： 按量计费</li><li>RESOURCE_PACKAGE： 按资源包抵扣</li></ul>
+        :type ChargeType: str
+        :param _SlaType: <p>实例规格</p><p>枚举值：</p><ul><li>t1.nano-01： 入门版</li><li>t1.nano-02： 轻量版</li><li>t1.nano-03： 轻量增强版</li><li>t1.micro-01： 微型版</li><li>t1.micro-02： 基础版</li><li>t1.small-01： 标准版</li><li>t1.small-02： 标准增强版</li><li>t1.medium-01： 进阶版</li><li>t1.medium-02： 进阶增强版</li><li>t1.large-01： 专业版</li><li>t1.large-02： 专业增强版</li><li>t1.xlarge-01： 旗舰版</li><li>t1.xlarge-02： 至尊版</li></ul>
+        :type SlaType: str
+        :param _AssociateResourcePackage: <p>是否关联资源包抵扣</p><p>枚举值：</p><ul><li>true： 关联</li><li>false： 不关联</li></ul>
+        :type AssociateResourcePackage: bool
+        """
+        self._ChargeType = None
+        self._SlaType = None
+        self._AssociateResourcePackage = None
+
+    @property
+    def ChargeType(self):
+        r"""<p>模型路由计费模式</p><p>枚举值：</p><ul><li>POSTPAID_BY_HOUR： 按量计费</li><li>RESOURCE_PACKAGE： 按资源包抵扣</li></ul>
+        :rtype: str
+        """
+        return self._ChargeType
+
+    @ChargeType.setter
+    def ChargeType(self, ChargeType):
+        self._ChargeType = ChargeType
+
+    @property
+    def SlaType(self):
+        r"""<p>实例规格</p><p>枚举值：</p><ul><li>t1.nano-01： 入门版</li><li>t1.nano-02： 轻量版</li><li>t1.nano-03： 轻量增强版</li><li>t1.micro-01： 微型版</li><li>t1.micro-02： 基础版</li><li>t1.small-01： 标准版</li><li>t1.small-02： 标准增强版</li><li>t1.medium-01： 进阶版</li><li>t1.medium-02： 进阶增强版</li><li>t1.large-01： 专业版</li><li>t1.large-02： 专业增强版</li><li>t1.xlarge-01： 旗舰版</li><li>t1.xlarge-02： 至尊版</li></ul>
+        :rtype: str
+        """
+        return self._SlaType
+
+    @SlaType.setter
+    def SlaType(self, SlaType):
+        self._SlaType = SlaType
+
+    @property
+    def AssociateResourcePackage(self):
+        r"""<p>是否关联资源包抵扣</p><p>枚举值：</p><ul><li>true： 关联</li><li>false： 不关联</li></ul>
+        :rtype: bool
+        """
+        return self._AssociateResourcePackage
+
+    @AssociateResourcePackage.setter
+    def AssociateResourcePackage(self, AssociateResourcePackage):
+        self._AssociateResourcePackage = AssociateResourcePackage
+
+
+    def _deserialize(self, params):
+        self._ChargeType = params.get("ChargeType")
+        self._SlaType = params.get("SlaType")
+        self._AssociateResourcePackage = params.get("AssociateResourcePackage")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ModelRouterDetail(AbstractModel):
     r"""查询单个实例详细信息
 
@@ -25182,6 +25346,10 @@ class ModelRouterDetail(AbstractModel):
         :type Vip: str
         :param _VpcId: <p>模型路由实例所属VPC的ID</p>
         :type VpcId: str
+        :param _Bandwidth: <p>带宽</p><p>单位：Mbps</p>
+        :type Bandwidth: int
+        :param _EipAddressId: <p>弹性公网IP的ID</p>
+        :type EipAddressId: str
         """
         self._BudgetId = None
         self._BudgetName = None
@@ -25205,6 +25373,8 @@ class ModelRouterDetail(AbstractModel):
         self._TradeStatus = None
         self._Vip = None
         self._VpcId = None
+        self._Bandwidth = None
+        self._EipAddressId = None
 
     @property
     def BudgetId(self):
@@ -25451,6 +25621,28 @@ class ModelRouterDetail(AbstractModel):
     def VpcId(self, VpcId):
         self._VpcId = VpcId
 
+    @property
+    def Bandwidth(self):
+        r"""<p>带宽</p><p>单位：Mbps</p>
+        :rtype: int
+        """
+        return self._Bandwidth
+
+    @Bandwidth.setter
+    def Bandwidth(self, Bandwidth):
+        self._Bandwidth = Bandwidth
+
+    @property
+    def EipAddressId(self):
+        r"""<p>弹性公网IP的ID</p>
+        :rtype: str
+        """
+        return self._EipAddressId
+
+    @EipAddressId.setter
+    def EipAddressId(self, EipAddressId):
+        self._EipAddressId = EipAddressId
+
 
     def _deserialize(self, params):
         self._BudgetId = params.get("BudgetId")
@@ -25496,6 +25688,8 @@ class ModelRouterDetail(AbstractModel):
         self._TradeStatus = params.get("TradeStatus")
         self._Vip = params.get("Vip")
         self._VpcId = params.get("VpcId")
+        self._Bandwidth = params.get("Bandwidth")
+        self._EipAddressId = params.get("EipAddressId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -25720,7 +25914,118 @@ class ModelRouterModel(AbstractModel):
         :type Provider: str
         :param _Type: <p>模型类型。</p><p>枚举值：</p><ul><li>BYOK： BYOK类型</li><li>Platform： 平台类型</li></ul>
         :type Type: str
-        :param _ServiceProviderId: <p>服务商/模型 ID（byok_model.model_id，形如 model-xxxxxxxx；Platform 类型不传）</p>
+        :param _ServiceProviderId: <p>BYOK实例ID</p>
+        :type ServiceProviderId: str
+        :param _Order: <p>当前 CMR、当前绑定模型下该 BYOK实例的调度优先级。</p><p>取值范围：[0, 2]</p><p>默认值：0</p>
+        :type Order: int
+        :param _Weight: <p>当前CMR、当前绑定模型的同一有效Order层内，BYOK实例之间的相对选择权重。</p><p>取值范围：[0, 100]</p><p>默认值：10</p>
+        :type Weight: int
+        """
+        self._ModelName = None
+        self._Provider = None
+        self._Type = None
+        self._ServiceProviderId = None
+        self._Order = None
+        self._Weight = None
+
+    @property
+    def ModelName(self):
+        r"""<p>模型名称</p>
+        :rtype: str
+        """
+        return self._ModelName
+
+    @ModelName.setter
+    def ModelName(self, ModelName):
+        self._ModelName = ModelName
+
+    @property
+    def Provider(self):
+        r"""<p>所属厂商</p>
+        :rtype: str
+        """
+        return self._Provider
+
+    @Provider.setter
+    def Provider(self, Provider):
+        self._Provider = Provider
+
+    @property
+    def Type(self):
+        r"""<p>模型类型。</p><p>枚举值：</p><ul><li>BYOK： BYOK类型</li><li>Platform： 平台类型</li></ul>
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def ServiceProviderId(self):
+        r"""<p>BYOK实例ID</p>
+        :rtype: str
+        """
+        return self._ServiceProviderId
+
+    @ServiceProviderId.setter
+    def ServiceProviderId(self, ServiceProviderId):
+        self._ServiceProviderId = ServiceProviderId
+
+    @property
+    def Order(self):
+        r"""<p>当前 CMR、当前绑定模型下该 BYOK实例的调度优先级。</p><p>取值范围：[0, 2]</p><p>默认值：0</p>
+        :rtype: int
+        """
+        return self._Order
+
+    @Order.setter
+    def Order(self, Order):
+        self._Order = Order
+
+    @property
+    def Weight(self):
+        r"""<p>当前CMR、当前绑定模型的同一有效Order层内，BYOK实例之间的相对选择权重。</p><p>取值范围：[0, 100]</p><p>默认值：10</p>
+        :rtype: int
+        """
+        return self._Weight
+
+    @Weight.setter
+    def Weight(self, Weight):
+        self._Weight = Weight
+
+
+    def _deserialize(self, params):
+        self._ModelName = params.get("ModelName")
+        self._Provider = params.get("Provider")
+        self._Type = params.get("Type")
+        self._ServiceProviderId = params.get("ServiceProviderId")
+        self._Order = params.get("Order")
+        self._Weight = params.get("Weight")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModelRouterModelToDisassociate(AbstractModel):
+    r"""CMR实例待解绑的模型信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ModelName: <p>模型名称</p>
+        :type ModelName: str
+        :param _Provider: <p>所属厂商</p>
+        :type Provider: str
+        :param _Type: <p>模型类型。</p><p>枚举值：</p><ul><li>BYOK： BYOK类型</li><li>Platform： 平台类型</li></ul>
+        :type Type: str
+        :param _ServiceProviderId: <p>BYOK实例ID</p>
         :type ServiceProviderId: str
         """
         self._ModelName = None
@@ -25763,7 +26068,7 @@ class ModelRouterModel(AbstractModel):
 
     @property
     def ServiceProviderId(self):
-        r"""<p>服务商/模型 ID（byok_model.model_id，形如 model-xxxxxxxx；Platform 类型不传）</p>
+        r"""<p>BYOK实例ID</p>
         :rtype: str
         """
         return self._ServiceProviderId
@@ -26330,6 +26635,10 @@ class ModelRouterSet(AbstractModel):
         :type Vip: str
         :param _VpcId: <p>模型路由实例所属VPC的ID</p>
         :type VpcId: str
+        :param _Bandwidth: <p>带宽</p><p>单位：Mbps</p>
+        :type Bandwidth: int
+        :param _EipAddressId: <p>弹性公网IP的ID</p>
+        :type EipAddressId: str
         """
         self._BudgetId = None
         self._BudgetName = None
@@ -26348,6 +26657,8 @@ class ModelRouterSet(AbstractModel):
         self._TradeStatus = None
         self._Vip = None
         self._VpcId = None
+        self._Bandwidth = None
+        self._EipAddressId = None
 
     @property
     def BudgetId(self):
@@ -26538,6 +26849,28 @@ class ModelRouterSet(AbstractModel):
     def VpcId(self, VpcId):
         self._VpcId = VpcId
 
+    @property
+    def Bandwidth(self):
+        r"""<p>带宽</p><p>单位：Mbps</p>
+        :rtype: int
+        """
+        return self._Bandwidth
+
+    @Bandwidth.setter
+    def Bandwidth(self, Bandwidth):
+        self._Bandwidth = Bandwidth
+
+    @property
+    def EipAddressId(self):
+        r"""<p>弹性公网IP的ID</p>
+        :rtype: str
+        """
+        return self._EipAddressId
+
+    @EipAddressId.setter
+    def EipAddressId(self, EipAddressId):
+        self._EipAddressId = EipAddressId
+
 
     def _deserialize(self, params):
         self._BudgetId = params.get("BudgetId")
@@ -26569,6 +26902,8 @@ class ModelRouterSet(AbstractModel):
         self._TradeStatus = params.get("TradeStatus")
         self._Vip = params.get("Vip")
         self._VpcId = params.get("VpcId")
+        self._Bandwidth = params.get("Bandwidth")
+        self._EipAddressId = params.get("EipAddressId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -28939,12 +29274,15 @@ class ModifyModelRouterAttributesRequest(AbstractModel):
         :type RateLimitConfig: :class:`tencentcloud.clb.v20180317.models.RateLimitConfigForModelRouter`
         :param _RouterSetting: <p>路由配置</p>
         :type RouterSetting: :class:`tencentcloud.clb.v20180317.models.RouterSettingWithFallBack`
+        :param _Bandwidth: <p>带宽</p><p>取值范围：[1, 2048]</p><p>单位：Mbps</p>
+        :type Bandwidth: int
         """
         self._ModelRouterId = None
         self._CertId = None
         self._ModelRouterName = None
         self._RateLimitConfig = None
         self._RouterSetting = None
+        self._Bandwidth = None
 
     @property
     def ModelRouterId(self):
@@ -29001,6 +29339,17 @@ class ModifyModelRouterAttributesRequest(AbstractModel):
     def RouterSetting(self, RouterSetting):
         self._RouterSetting = RouterSetting
 
+    @property
+    def Bandwidth(self):
+        r"""<p>带宽</p><p>取值范围：[1, 2048]</p><p>单位：Mbps</p>
+        :rtype: int
+        """
+        return self._Bandwidth
+
+    @Bandwidth.setter
+    def Bandwidth(self, Bandwidth):
+        self._Bandwidth = Bandwidth
+
 
     def _deserialize(self, params):
         self._ModelRouterId = params.get("ModelRouterId")
@@ -29012,6 +29361,7 @@ class ModifyModelRouterAttributesRequest(AbstractModel):
         if params.get("RouterSetting") is not None:
             self._RouterSetting = RouterSettingWithFallBack()
             self._RouterSetting._deserialize(params.get("RouterSetting"))
+        self._Bandwidth = params.get("Bandwidth")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -32530,7 +32880,7 @@ class RouterSettingWithFallBack(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _CrossModelGroupRoutingStrategy: <p>模型间路由策略。</p><p>枚举值：</p><ul><li>SimpleShuffle： 简单随机路由</li><li>LowestCost： 最低积分路由</li></ul>
+        :param _CrossModelGroupRoutingStrategy: <p>模型间路由策略。</p><p>枚举值：</p><ul><li>SimpleShuffle： 简单随机路由</li><li>CostBasedRouting： 最低积分路由</li></ul>
 注意：此字段可能返回 null，表示取不到有效值。
         :type CrossModelGroupRoutingStrategy: str
         :param _FallBack: <p>回退策略</p>
@@ -32539,14 +32889,22 @@ class RouterSettingWithFallBack(AbstractModel):
         :param _RoutingStrategy: <p>模型内路由策略</p><p>枚举值：</p><ul><li>SimpleShuffle： 简单随机路由</li><li>LeastBusy： 最低繁忙路由</li><li>LatencyBasedRouting： 最低延迟路由</li><li>UsageBasedRouting： 用量均衡路由</li><li>CostBasedRouting： 最低积分路由</li></ul>
 注意：此字段可能返回 null，表示取不到有效值。
         :type RoutingStrategy: str
+        :param _NumRetries: <p>CMR实例级别请求组内重试次数</p><p>取值范围：[0, 5]</p><p>默认值：2</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NumRetries: int
+        :param _RoutingStrategyArgs: <p>L2模型组内路由调度算法参数</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RoutingStrategyArgs: :class:`tencentcloud.clb.v20180317.models.RoutingStrategyArgs`
         """
         self._CrossModelGroupRoutingStrategy = None
         self._FallBack = None
         self._RoutingStrategy = None
+        self._NumRetries = None
+        self._RoutingStrategyArgs = None
 
     @property
     def CrossModelGroupRoutingStrategy(self):
-        r"""<p>模型间路由策略。</p><p>枚举值：</p><ul><li>SimpleShuffle： 简单随机路由</li><li>LowestCost： 最低积分路由</li></ul>
+        r"""<p>模型间路由策略。</p><p>枚举值：</p><ul><li>SimpleShuffle： 简单随机路由</li><li>CostBasedRouting： 最低积分路由</li></ul>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -32580,6 +32938,30 @@ class RouterSettingWithFallBack(AbstractModel):
     def RoutingStrategy(self, RoutingStrategy):
         self._RoutingStrategy = RoutingStrategy
 
+    @property
+    def NumRetries(self):
+        r"""<p>CMR实例级别请求组内重试次数</p><p>取值范围：[0, 5]</p><p>默认值：2</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._NumRetries
+
+    @NumRetries.setter
+    def NumRetries(self, NumRetries):
+        self._NumRetries = NumRetries
+
+    @property
+    def RoutingStrategyArgs(self):
+        r"""<p>L2模型组内路由调度算法参数</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.clb.v20180317.models.RoutingStrategyArgs`
+        """
+        return self._RoutingStrategyArgs
+
+    @RoutingStrategyArgs.setter
+    def RoutingStrategyArgs(self, RoutingStrategyArgs):
+        self._RoutingStrategyArgs = RoutingStrategyArgs
+
 
     def _deserialize(self, params):
         self._CrossModelGroupRoutingStrategy = params.get("CrossModelGroupRoutingStrategy")
@@ -32587,6 +32969,10 @@ class RouterSettingWithFallBack(AbstractModel):
             self._FallBack = FallBackItem()
             self._FallBack._deserialize(params.get("FallBack"))
         self._RoutingStrategy = params.get("RoutingStrategy")
+        self._NumRetries = params.get("NumRetries")
+        if params.get("RoutingStrategyArgs") is not None:
+            self._RoutingStrategyArgs = RoutingStrategyArgs()
+            self._RoutingStrategyArgs._deserialize(params.get("RoutingStrategyArgs"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -32606,8 +32992,17 @@ class RouterSettingWithoutFallBack(AbstractModel):
         r"""
         :param _RoutingStrategy: <p>路由策略</p><p>枚举值：</p><ul><li>SimpleShuffle： 简单随机路由</li><li>LeastBusy： 最低繁忙路由</li><li>LatencyBasedRouting： 最低延迟路由</li><li>UsageBasedRouting： 用量均衡路由</li><li>CostBasedRouting： 最低积分路由</li></ul>
         :type RoutingStrategy: str
+        :param _CrossModelGroupRoutingStrategy: <p>模型间路由策略。</p><p>枚举值：</p><ul><li>SimpleShuffle： 简单随机路由</li><li>CostBasedRouting： 最低积分路由</li></ul>
+        :type CrossModelGroupRoutingStrategy: str
+        :param _RoutingStrategyArgs: <p>L2模型组内路由调度算法参数</p>
+        :type RoutingStrategyArgs: :class:`tencentcloud.clb.v20180317.models.RoutingStrategyArgs`
+        :param _NumRetries: <p>CMR实例级别请求组内重试次数</p><p>取值范围：[0, 5]</p><p>默认值：2</p>
+        :type NumRetries: int
         """
         self._RoutingStrategy = None
+        self._CrossModelGroupRoutingStrategy = None
+        self._RoutingStrategyArgs = None
+        self._NumRetries = None
 
     @property
     def RoutingStrategy(self):
@@ -32620,9 +33015,128 @@ class RouterSettingWithoutFallBack(AbstractModel):
     def RoutingStrategy(self, RoutingStrategy):
         self._RoutingStrategy = RoutingStrategy
 
+    @property
+    def CrossModelGroupRoutingStrategy(self):
+        r"""<p>模型间路由策略。</p><p>枚举值：</p><ul><li>SimpleShuffle： 简单随机路由</li><li>CostBasedRouting： 最低积分路由</li></ul>
+        :rtype: str
+        """
+        return self._CrossModelGroupRoutingStrategy
+
+    @CrossModelGroupRoutingStrategy.setter
+    def CrossModelGroupRoutingStrategy(self, CrossModelGroupRoutingStrategy):
+        self._CrossModelGroupRoutingStrategy = CrossModelGroupRoutingStrategy
+
+    @property
+    def RoutingStrategyArgs(self):
+        r"""<p>L2模型组内路由调度算法参数</p>
+        :rtype: :class:`tencentcloud.clb.v20180317.models.RoutingStrategyArgs`
+        """
+        return self._RoutingStrategyArgs
+
+    @RoutingStrategyArgs.setter
+    def RoutingStrategyArgs(self, RoutingStrategyArgs):
+        self._RoutingStrategyArgs = RoutingStrategyArgs
+
+    @property
+    def NumRetries(self):
+        r"""<p>CMR实例级别请求组内重试次数</p><p>取值范围：[0, 5]</p><p>默认值：2</p>
+        :rtype: int
+        """
+        return self._NumRetries
+
+    @NumRetries.setter
+    def NumRetries(self, NumRetries):
+        self._NumRetries = NumRetries
+
 
     def _deserialize(self, params):
         self._RoutingStrategy = params.get("RoutingStrategy")
+        self._CrossModelGroupRoutingStrategy = params.get("CrossModelGroupRoutingStrategy")
+        if params.get("RoutingStrategyArgs") is not None:
+            self._RoutingStrategyArgs = RoutingStrategyArgs()
+            self._RoutingStrategyArgs._deserialize(params.get("RoutingStrategyArgs"))
+        self._NumRetries = params.get("NumRetries")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RoutingStrategyArgs(AbstractModel):
+    r"""L2模型内路由算法策略参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _LeastBusyBuffer: <p>最低繁忙路由算法相对近优容差。</p><p>取值范围：[0, 100]</p><p>默认值：0</p><p>仅最低繁忙路由算法生效。0 表示请求仅会路由到在途数最小的上游大模型部署，0.10 表示请求路由到的上游大模型部署在途请求数最多比最小在途数高10%，依次类推。</p>
+        :type LeastBusyBuffer: float
+        :param _UsageBasedBuffer: <p>用量均衡路由算法相对近优容差</p><p>取值范围：[0, 100]</p><p>默认值：0</p><p>仅用量均衡路由算法生效。0 表示请求仅会路由到TPM最低的上游大模型部署；0.10 表示请求最多会路由到比TPM最小值高10%的上游大模型部署，依次类推。</p>
+        :type UsageBasedBuffer: float
+        :param _LowestLatencyBuffer: <p>最低延迟路由算法相对近优容差</p><p>取值范围：[0, 100]</p><p>默认值：0</p><p>仅最低延迟路由算法生效。0 表示请求仅会路由到延迟最低的上游大模型部署；0.10 表示请求最多会路由到比延迟最小值高10%的上游大模型部署，依次类推。</p>
+        :type LowestLatencyBuffer: float
+        :param _LowestCostBuffer: <p>最低积分系数路由算法相对近优容差</p><p>取值范围：[0, 100]</p><p>默认值：0</p><p>仅最低积分系数路由算法生效。0 表示请求仅会路由到积分系数最低的上游大模型部署；0.10 表示请求最多会路由到比积分系数最小值高10%的上游大模型部署，依次类推。</p>
+        :type LowestCostBuffer: float
+        """
+        self._LeastBusyBuffer = None
+        self._UsageBasedBuffer = None
+        self._LowestLatencyBuffer = None
+        self._LowestCostBuffer = None
+
+    @property
+    def LeastBusyBuffer(self):
+        r"""<p>最低繁忙路由算法相对近优容差。</p><p>取值范围：[0, 100]</p><p>默认值：0</p><p>仅最低繁忙路由算法生效。0 表示请求仅会路由到在途数最小的上游大模型部署，0.10 表示请求路由到的上游大模型部署在途请求数最多比最小在途数高10%，依次类推。</p>
+        :rtype: float
+        """
+        return self._LeastBusyBuffer
+
+    @LeastBusyBuffer.setter
+    def LeastBusyBuffer(self, LeastBusyBuffer):
+        self._LeastBusyBuffer = LeastBusyBuffer
+
+    @property
+    def UsageBasedBuffer(self):
+        r"""<p>用量均衡路由算法相对近优容差</p><p>取值范围：[0, 100]</p><p>默认值：0</p><p>仅用量均衡路由算法生效。0 表示请求仅会路由到TPM最低的上游大模型部署；0.10 表示请求最多会路由到比TPM最小值高10%的上游大模型部署，依次类推。</p>
+        :rtype: float
+        """
+        return self._UsageBasedBuffer
+
+    @UsageBasedBuffer.setter
+    def UsageBasedBuffer(self, UsageBasedBuffer):
+        self._UsageBasedBuffer = UsageBasedBuffer
+
+    @property
+    def LowestLatencyBuffer(self):
+        r"""<p>最低延迟路由算法相对近优容差</p><p>取值范围：[0, 100]</p><p>默认值：0</p><p>仅最低延迟路由算法生效。0 表示请求仅会路由到延迟最低的上游大模型部署；0.10 表示请求最多会路由到比延迟最小值高10%的上游大模型部署，依次类推。</p>
+        :rtype: float
+        """
+        return self._LowestLatencyBuffer
+
+    @LowestLatencyBuffer.setter
+    def LowestLatencyBuffer(self, LowestLatencyBuffer):
+        self._LowestLatencyBuffer = LowestLatencyBuffer
+
+    @property
+    def LowestCostBuffer(self):
+        r"""<p>最低积分系数路由算法相对近优容差</p><p>取值范围：[0, 100]</p><p>默认值：0</p><p>仅最低积分系数路由算法生效。0 表示请求仅会路由到积分系数最低的上游大模型部署；0.10 表示请求最多会路由到比积分系数最小值高10%的上游大模型部署，依次类推。</p>
+        :rtype: float
+        """
+        return self._LowestCostBuffer
+
+    @LowestCostBuffer.setter
+    def LowestCostBuffer(self, LowestCostBuffer):
+        self._LowestCostBuffer = LowestCostBuffer
+
+
+    def _deserialize(self, params):
+        self._LeastBusyBuffer = params.get("LeastBusyBuffer")
+        self._UsageBasedBuffer = params.get("UsageBasedBuffer")
+        self._LowestLatencyBuffer = params.get("LowestLatencyBuffer")
+        self._LowestCostBuffer = params.get("LowestCostBuffer")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -33913,6 +34427,12 @@ class ServiceProvider(AbstractModel):
         :type ServiceProviderId: str
         :param _ServiceProviderName: <p>BYOK名称</p>
         :type ServiceProviderName: str
+        :param _Order: <p>绑定的指定模型组内BYOK实例的调度优先级</p><p>取值范围[0,2]，优先级随数值增大而降低。</p>
+        :type Order: int
+        :param _Weight: <p>绑定的指定模型组Order相同层级内BYOK实例的调度权重</p>
+        :type Weight: int
+        :param _AssociationStatus: <p>CMR实例-BYOK实例的模型调度绑定关系状态</p><p>枚举值：</p><ul><li>Configuring： 变配中</li><li>ConfigureFailed： 变配失败</li><li>Deleting： 删除中</li><li>Provisioning： 创建中</li><li>Active： 正常可用</li><li>ProvisionFailed： 创建失败</li><li>DeletionFailed： 删除失败</li></ul>
+        :type AssociationStatus: str
         """
         self._AccessType = None
         self._InputModalities = None
@@ -33920,6 +34440,9 @@ class ServiceProvider(AbstractModel):
         self._Provider = None
         self._ServiceProviderId = None
         self._ServiceProviderName = None
+        self._Order = None
+        self._Weight = None
+        self._AssociationStatus = None
 
     @property
     def AccessType(self):
@@ -33987,6 +34510,39 @@ class ServiceProvider(AbstractModel):
     def ServiceProviderName(self, ServiceProviderName):
         self._ServiceProviderName = ServiceProviderName
 
+    @property
+    def Order(self):
+        r"""<p>绑定的指定模型组内BYOK实例的调度优先级</p><p>取值范围[0,2]，优先级随数值增大而降低。</p>
+        :rtype: int
+        """
+        return self._Order
+
+    @Order.setter
+    def Order(self, Order):
+        self._Order = Order
+
+    @property
+    def Weight(self):
+        r"""<p>绑定的指定模型组Order相同层级内BYOK实例的调度权重</p>
+        :rtype: int
+        """
+        return self._Weight
+
+    @Weight.setter
+    def Weight(self, Weight):
+        self._Weight = Weight
+
+    @property
+    def AssociationStatus(self):
+        r"""<p>CMR实例-BYOK实例的模型调度绑定关系状态</p><p>枚举值：</p><ul><li>Configuring： 变配中</li><li>ConfigureFailed： 变配失败</li><li>Deleting： 删除中</li><li>Provisioning： 创建中</li><li>Active： 正常可用</li><li>ProvisionFailed： 创建失败</li><li>DeletionFailed： 删除失败</li></ul>
+        :rtype: str
+        """
+        return self._AssociationStatus
+
+    @AssociationStatus.setter
+    def AssociationStatus(self, AssociationStatus):
+        self._AssociationStatus = AssociationStatus
+
 
     def _deserialize(self, params):
         self._AccessType = params.get("AccessType")
@@ -33995,6 +34551,9 @@ class ServiceProvider(AbstractModel):
         self._Provider = params.get("Provider")
         self._ServiceProviderId = params.get("ServiceProviderId")
         self._ServiceProviderName = params.get("ServiceProviderName")
+        self._Order = params.get("Order")
+        self._Weight = params.get("Weight")
+        self._AssociationStatus = params.get("AssociationStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

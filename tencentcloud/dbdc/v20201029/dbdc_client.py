@@ -670,6 +670,29 @@ class DbdcClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyDBCustomNodeAttributes(self, request):
+        r"""该接口（ModifyDBCustomNodeAttributes）用于修改 DB Custom 节点的属性。
+
+        :param request: Request instance for ModifyDBCustomNodeAttributes.
+        :type request: :class:`tencentcloud.dbdc.v20201029.models.ModifyDBCustomNodeAttributesRequest`
+        :rtype: :class:`tencentcloud.dbdc.v20201029.models.ModifyDBCustomNodeAttributesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyDBCustomNodeAttributes", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyDBCustomNodeAttributesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyDBCustomNodeSecurityGroups(self, request):
         r"""该接口（ModifyDBCustomNodeSecurityGroups）用于修改 DB Custom 节点安全组。
 

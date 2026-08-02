@@ -188,6 +188,29 @@ class MpsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CloneVoice(self, request):
+        r"""同步接口，使用该接口从参考音频克隆一个音色
+
+        :param request: Request instance for CloneVoice.
+        :type request: :class:`tencentcloud.mps.v20190612.models.CloneVoiceRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.CloneVoiceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CloneVoice", params, headers=headers)
+            response = json.loads(body)
+            model = models.CloneVoiceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateAIAnalysisTemplate(self, request):
         r"""创建用户自定义内容分析模板，数量上限：50。
 
@@ -271,6 +294,29 @@ class MpsClient(AbstractClient):
             body = self.call("CreateAiDramaTask", params, headers=headers)
             response = json.loads(body)
             model = models.CreateAiDramaTaskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CreateAiFissionTask(self, request):
+        r"""创建ai视频裂变任务
+
+        :param request: Request instance for CreateAiFissionTask.
+        :type request: :class:`tencentcloud.mps.v20190612.models.CreateAiFissionTaskRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.CreateAiFissionTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateAiFissionTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateAiFissionTaskResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -5039,6 +5085,29 @@ class MpsClient(AbstractClient):
             body = self.call("SyncDubbing", params, headers=headers)
             response = json.loads(body)
             model = models.SyncDubbingResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def TextToSpeech(self, request):
+        r"""同步语音合成，根据输入文本和指定音色生成语音
+
+        :param request: Request instance for TextToSpeech.
+        :type request: :class:`tencentcloud.mps.v20190612.models.TextToSpeechRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.TextToSpeechResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("TextToSpeech", params, headers=headers)
+            response = json.loads(body)
+            model = models.TextToSpeechResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

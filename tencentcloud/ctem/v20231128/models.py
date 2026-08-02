@@ -14788,6 +14788,8 @@ class DisplayHttp(AbstractModel):
         :type AnalysisState: int
         :param _AggregationCount: <p>聚合视角下该组真实子项总数；非聚合视角为 0</p>
         :type AggregationCount: int
+        :param _AvailabilityTag: <p>可用性标签：解析已失效/端口连接超时/网站请求超时/服务错误（5xx）/高延迟（非宕机）</p>
+        :type AvailabilityTag: str
         """
         self._Id = None
         self._DisplayToolCommon = None
@@ -14810,6 +14812,7 @@ class DisplayHttp(AbstractModel):
         self._ResponseTime = None
         self._AnalysisState = None
         self._AggregationCount = None
+        self._AvailabilityTag = None
 
     @property
     def Id(self):
@@ -15043,6 +15046,17 @@ class DisplayHttp(AbstractModel):
     def AggregationCount(self, AggregationCount):
         self._AggregationCount = AggregationCount
 
+    @property
+    def AvailabilityTag(self):
+        r"""<p>可用性标签：解析已失效/端口连接超时/网站请求超时/服务错误（5xx）/高延迟（非宕机）</p>
+        :rtype: str
+        """
+        return self._AvailabilityTag
+
+    @AvailabilityTag.setter
+    def AvailabilityTag(self, AvailabilityTag):
+        self._AvailabilityTag = AvailabilityTag
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
@@ -15068,6 +15082,7 @@ class DisplayHttp(AbstractModel):
         self._ResponseTime = params.get("ResponseTime")
         self._AnalysisState = params.get("AnalysisState")
         self._AggregationCount = params.get("AggregationCount")
+        self._AvailabilityTag = params.get("AvailabilityTag")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -16962,6 +16977,8 @@ class DisplaySubDomain(AbstractModel):
         :type DnsValue: str
         :param _AggregationCount: <p>聚合视角下该组真实子项总数；非聚合视角为 0</p>
         :type AggregationCount: int
+        :param _AvailabilityTag: <p>可用性标签：解析已失效/端口连接超时/网站请求超时/服务错误（5xx）/高延迟（非宕机）</p>
+        :type AvailabilityTag: str
         """
         self._Id = None
         self._SubDomain = None
@@ -16981,6 +16998,7 @@ class DisplaySubDomain(AbstractModel):
         self._DnsType = None
         self._DnsValue = None
         self._AggregationCount = None
+        self._AvailabilityTag = None
 
     @property
     def Id(self):
@@ -17180,6 +17198,17 @@ class DisplaySubDomain(AbstractModel):
     def AggregationCount(self, AggregationCount):
         self._AggregationCount = AggregationCount
 
+    @property
+    def AvailabilityTag(self):
+        r"""<p>可用性标签：解析已失效/端口连接超时/网站请求超时/服务错误（5xx）/高延迟（非宕机）</p>
+        :rtype: str
+        """
+        return self._AvailabilityTag
+
+    @AvailabilityTag.setter
+    def AvailabilityTag(self, AvailabilityTag):
+        self._AvailabilityTag = AvailabilityTag
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
@@ -17202,6 +17231,7 @@ class DisplaySubDomain(AbstractModel):
         self._DnsType = params.get("DnsType")
         self._DnsValue = params.get("DnsValue")
         self._AggregationCount = params.get("AggregationCount")
+        self._AvailabilityTag = params.get("AvailabilityTag")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

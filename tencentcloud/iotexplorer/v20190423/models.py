@@ -513,6 +513,87 @@ class ActivateTWeTalkResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ActivationLicense(AbstractModel):
+    r"""激活码统计信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ServiceType: <p>激活码类型</p>
+        :type ServiceType: str
+        :param _TotalLicenseNum: <p>支付模式</p>
+        :type TotalLicenseNum: int
+        :param _UsedLicenseNum: <p>计费标签项</p>
+        :type UsedLicenseNum: int
+        :param _Period: <p>计费标识</p>
+        :type Period: str
+        """
+        self._ServiceType = None
+        self._TotalLicenseNum = None
+        self._UsedLicenseNum = None
+        self._Period = None
+
+    @property
+    def ServiceType(self):
+        r"""<p>激活码类型</p>
+        :rtype: str
+        """
+        return self._ServiceType
+
+    @ServiceType.setter
+    def ServiceType(self, ServiceType):
+        self._ServiceType = ServiceType
+
+    @property
+    def TotalLicenseNum(self):
+        r"""<p>支付模式</p>
+        :rtype: int
+        """
+        return self._TotalLicenseNum
+
+    @TotalLicenseNum.setter
+    def TotalLicenseNum(self, TotalLicenseNum):
+        self._TotalLicenseNum = TotalLicenseNum
+
+    @property
+    def UsedLicenseNum(self):
+        r"""<p>计费标签项</p>
+        :rtype: int
+        """
+        return self._UsedLicenseNum
+
+    @UsedLicenseNum.setter
+    def UsedLicenseNum(self, UsedLicenseNum):
+        self._UsedLicenseNum = UsedLicenseNum
+
+    @property
+    def Period(self):
+        r"""<p>计费标识</p>
+        :rtype: str
+        """
+        return self._Period
+
+    @Period.setter
+    def Period(self, Period):
+        self._Period = Period
+
+
+    def _deserialize(self, params):
+        self._ServiceType = params.get("ServiceType")
+        self._TotalLicenseNum = params.get("TotalLicenseNum")
+        self._UsedLicenseNum = params.get("UsedLicenseNum")
+        self._Period = params.get("Period")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AppDeviceInfo(AbstractModel):
     r"""云api直接绑定设备出参
 
@@ -9165,6 +9246,8 @@ class CreateTWeTalkAgentRequest(AbstractModel):
         :type WebhookTools: list of TalkWebhookTool
         :param _Metadata: <p>元信息扩展JSON对象字符串</p>
         :type Metadata: str
+        :param _EventCallbackConfig: <p>回调配置</p>
+        :type EventCallbackConfig: :class:`tencentcloud.iotexplorer.v20190423.models.TalkEventCallbackConfig`
         """
         self._STTConfig = None
         self._LLMConfig = None
@@ -9177,6 +9260,7 @@ class CreateTWeTalkAgentRequest(AbstractModel):
         self._IOTTools = None
         self._WebhookTools = None
         self._Metadata = None
+        self._EventCallbackConfig = None
 
     @property
     def STTConfig(self):
@@ -9299,6 +9383,17 @@ class CreateTWeTalkAgentRequest(AbstractModel):
     def Metadata(self, Metadata):
         self._Metadata = Metadata
 
+    @property
+    def EventCallbackConfig(self):
+        r"""<p>回调配置</p>
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.TalkEventCallbackConfig`
+        """
+        return self._EventCallbackConfig
+
+    @EventCallbackConfig.setter
+    def EventCallbackConfig(self, EventCallbackConfig):
+        self._EventCallbackConfig = EventCallbackConfig
+
 
     def _deserialize(self, params):
         if params.get("STTConfig") is not None:
@@ -9332,6 +9427,9 @@ class CreateTWeTalkAgentRequest(AbstractModel):
                 obj._deserialize(item)
                 self._WebhookTools.append(obj)
         self._Metadata = params.get("Metadata")
+        if params.get("EventCallbackConfig") is not None:
+            self._EventCallbackConfig = TalkEventCallbackConfig()
+            self._EventCallbackConfig._deserialize(params.get("EventCallbackConfig"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -18438,14 +18536,14 @@ class DescribeLicenseOverviewRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例ID
+        :param _InstanceId: <p>实例ID</p>
         :type InstanceId: str
         """
         self._InstanceId = None
 
     @property
     def InstanceId(self):
-        r"""实例ID
+        r"""<p>实例ID</p>
         :rtype: str
         """
         return self._InstanceId
@@ -18474,10 +18572,26 @@ class DescribeLicenseOverviewResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _Data: <p>实例概览</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Data: list of LicenseOverview
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._Data = None
         self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""<p>实例概览</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of LicenseOverview
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
 
     @property
     def RequestId(self):
@@ -18492,6 +18606,12 @@ class DescribeLicenseOverviewResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = []
+            for item in params.get("Data"):
+                obj = LicenseOverview()
+                obj._deserialize(item)
+                self._Data.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -31190,6 +31310,62 @@ class IotApplication(AbstractModel):
         
 
 
+class LicenseOverview(AbstractModel):
+    r"""激活码统计信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ActivationLicense: <p>激活码统计信息</p>
+        :type ActivationLicense: list of ActivationLicense
+        :param _LicenseType: <p>激活码类型</p>
+        :type LicenseType: str
+        """
+        self._ActivationLicense = None
+        self._LicenseType = None
+
+    @property
+    def ActivationLicense(self):
+        r"""<p>激活码统计信息</p>
+        :rtype: list of ActivationLicense
+        """
+        return self._ActivationLicense
+
+    @ActivationLicense.setter
+    def ActivationLicense(self, ActivationLicense):
+        self._ActivationLicense = ActivationLicense
+
+    @property
+    def LicenseType(self):
+        r"""<p>激活码类型</p>
+        :rtype: str
+        """
+        return self._LicenseType
+
+    @LicenseType.setter
+    def LicenseType(self, LicenseType):
+        self._LicenseType = LicenseType
+
+
+    def _deserialize(self, params):
+        if params.get("ActivationLicense") is not None:
+            self._ActivationLicense = []
+            for item in params.get("ActivationLicense"):
+                obj = ActivationLicense()
+                obj._deserialize(item)
+                self._ActivationLicense.append(obj)
+        self._LicenseType = params.get("LicenseType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class LicenseServiceNumInfo(AbstractModel):
     r"""增值服务数量统计
 
@@ -35536,6 +35712,8 @@ class ModifyTWeTalkAgentRequest(AbstractModel):
         :type WebhookTools: list of TalkWebhookTool
         :param _Metadata: <p>元信息扩展JSON对象字符串</p>
         :type Metadata: str
+        :param _EventCallbackConfig: <p>回调配置</p>
+        :type EventCallbackConfig: :class:`tencentcloud.iotexplorer.v20190423.models.TalkEventCallbackConfig`
         """
         self._AgentId = None
         self._Name = None
@@ -35548,6 +35726,7 @@ class ModifyTWeTalkAgentRequest(AbstractModel):
         self._IOTTools = None
         self._WebhookTools = None
         self._Metadata = None
+        self._EventCallbackConfig = None
 
     @property
     def AgentId(self):
@@ -35670,6 +35849,17 @@ class ModifyTWeTalkAgentRequest(AbstractModel):
     def Metadata(self, Metadata):
         self._Metadata = Metadata
 
+    @property
+    def EventCallbackConfig(self):
+        r"""<p>回调配置</p>
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.TalkEventCallbackConfig`
+        """
+        return self._EventCallbackConfig
+
+    @EventCallbackConfig.setter
+    def EventCallbackConfig(self, EventCallbackConfig):
+        self._EventCallbackConfig = EventCallbackConfig
+
 
     def _deserialize(self, params):
         self._AgentId = params.get("AgentId")
@@ -35703,6 +35893,9 @@ class ModifyTWeTalkAgentRequest(AbstractModel):
                 obj._deserialize(item)
                 self._WebhookTools.append(obj)
         self._Metadata = params.get("Metadata")
+        if params.get("EventCallbackConfig") is not None:
+            self._EventCallbackConfig = TalkEventCallbackConfig()
+            self._EventCallbackConfig._deserialize(params.get("EventCallbackConfig"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -43000,40 +43193,42 @@ class TalkAgentInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Uin: 主账号UIN
+        :param _Uin: <p>主账号UIN</p>
         :type Uin: int
-        :param _AppId: 账号AppId
+        :param _AppId: <p>账号AppId</p>
         :type AppId: int
-        :param _InstanceId: 实例 ID
+        :param _InstanceId: <p>实例 ID</p>
         :type InstanceId: str
-        :param _AgentId: 智能体ID
+        :param _AgentId: <p>智能体ID</p>
         :type AgentId: str
-        :param _Name: 智能体名称
+        :param _Name: <p>智能体名称</p>
         :type Name: str
-        :param _Description: 智能体描述
+        :param _Description: <p>智能体描述</p>
         :type Description: str
-        :param _STTConfig: 语音识别配置
+        :param _STTConfig: <p>语音识别配置</p>
         :type STTConfig: :class:`tencentcloud.iotexplorer.v20190423.models.TalkSTTConfig`
-        :param _LLMConfig: 大模型配置
+        :param _LLMConfig: <p>大模型配置</p>
         :type LLMConfig: :class:`tencentcloud.iotexplorer.v20190423.models.TalkLLMConfig`
-        :param _TTSConfig: 语音合成配置
+        :param _TTSConfig: <p>语音合成配置</p>
         :type TTSConfig: :class:`tencentcloud.iotexplorer.v20190423.models.TalkTTSConfig`
-        :param _ConversationConfig: 对话行为配置
+        :param _ConversationConfig: <p>对话行为配置</p>
         :type ConversationConfig: :class:`tencentcloud.iotexplorer.v20190423.models.TalkConversationConfig`
-        :param _MemoryConfig: 长期记忆配置
+        :param _MemoryConfig: <p>长期记忆配置</p>
         :type MemoryConfig: :class:`tencentcloud.iotexplorer.v20190423.models.TalkMemoryConfig`
-        :param _IOTTools: IoT 工具列表
+        :param _IOTTools: <p>IoT 工具列表</p>
         :type IOTTools: list of TalkIOTTool
-        :param _WebhookTools: Webhook 工具列表
+        :param _WebhookTools: <p>Webhook 工具列表</p>
         :type WebhookTools: list of TalkWebhookTool
-        :param _Metadata: 元信息JSON object 字符串
+        :param _Metadata: <p>元信息JSON object 字符串</p>
         :type Metadata: str
-        :param _Bindings: 绑定关系列表
+        :param _Bindings: <p>绑定关系列表</p>
         :type Bindings: list of TalkAgentBinding
-        :param _CreateTime: 创建时间，Unix 秒
+        :param _CreateTime: <p>创建时间，Unix 秒</p>
         :type CreateTime: int
-        :param _UpdateTime: 更新时间，Unix 秒
+        :param _UpdateTime: <p>更新时间，Unix 秒</p>
         :type UpdateTime: int
+        :param _EventCallbackConfig: <p>事件回调配置</p>
+        :type EventCallbackConfig: :class:`tencentcloud.iotexplorer.v20190423.models.TalkEventCallbackConfig`
         """
         self._Uin = None
         self._AppId = None
@@ -43052,10 +43247,11 @@ class TalkAgentInfo(AbstractModel):
         self._Bindings = None
         self._CreateTime = None
         self._UpdateTime = None
+        self._EventCallbackConfig = None
 
     @property
     def Uin(self):
-        r"""主账号UIN
+        r"""<p>主账号UIN</p>
         :rtype: int
         """
         return self._Uin
@@ -43066,7 +43262,7 @@ class TalkAgentInfo(AbstractModel):
 
     @property
     def AppId(self):
-        r"""账号AppId
+        r"""<p>账号AppId</p>
         :rtype: int
         """
         return self._AppId
@@ -43077,7 +43273,7 @@ class TalkAgentInfo(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""实例 ID
+        r"""<p>实例 ID</p>
         :rtype: str
         """
         return self._InstanceId
@@ -43088,7 +43284,7 @@ class TalkAgentInfo(AbstractModel):
 
     @property
     def AgentId(self):
-        r"""智能体ID
+        r"""<p>智能体ID</p>
         :rtype: str
         """
         return self._AgentId
@@ -43099,7 +43295,7 @@ class TalkAgentInfo(AbstractModel):
 
     @property
     def Name(self):
-        r"""智能体名称
+        r"""<p>智能体名称</p>
         :rtype: str
         """
         return self._Name
@@ -43110,7 +43306,7 @@ class TalkAgentInfo(AbstractModel):
 
     @property
     def Description(self):
-        r"""智能体描述
+        r"""<p>智能体描述</p>
         :rtype: str
         """
         return self._Description
@@ -43121,7 +43317,7 @@ class TalkAgentInfo(AbstractModel):
 
     @property
     def STTConfig(self):
-        r"""语音识别配置
+        r"""<p>语音识别配置</p>
         :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.TalkSTTConfig`
         """
         return self._STTConfig
@@ -43132,7 +43328,7 @@ class TalkAgentInfo(AbstractModel):
 
     @property
     def LLMConfig(self):
-        r"""大模型配置
+        r"""<p>大模型配置</p>
         :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.TalkLLMConfig`
         """
         return self._LLMConfig
@@ -43143,7 +43339,7 @@ class TalkAgentInfo(AbstractModel):
 
     @property
     def TTSConfig(self):
-        r"""语音合成配置
+        r"""<p>语音合成配置</p>
         :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.TalkTTSConfig`
         """
         return self._TTSConfig
@@ -43154,7 +43350,7 @@ class TalkAgentInfo(AbstractModel):
 
     @property
     def ConversationConfig(self):
-        r"""对话行为配置
+        r"""<p>对话行为配置</p>
         :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.TalkConversationConfig`
         """
         return self._ConversationConfig
@@ -43165,7 +43361,7 @@ class TalkAgentInfo(AbstractModel):
 
     @property
     def MemoryConfig(self):
-        r"""长期记忆配置
+        r"""<p>长期记忆配置</p>
         :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.TalkMemoryConfig`
         """
         return self._MemoryConfig
@@ -43176,7 +43372,7 @@ class TalkAgentInfo(AbstractModel):
 
     @property
     def IOTTools(self):
-        r"""IoT 工具列表
+        r"""<p>IoT 工具列表</p>
         :rtype: list of TalkIOTTool
         """
         return self._IOTTools
@@ -43187,7 +43383,7 @@ class TalkAgentInfo(AbstractModel):
 
     @property
     def WebhookTools(self):
-        r"""Webhook 工具列表
+        r"""<p>Webhook 工具列表</p>
         :rtype: list of TalkWebhookTool
         """
         return self._WebhookTools
@@ -43198,7 +43394,7 @@ class TalkAgentInfo(AbstractModel):
 
     @property
     def Metadata(self):
-        r"""元信息JSON object 字符串
+        r"""<p>元信息JSON object 字符串</p>
         :rtype: str
         """
         return self._Metadata
@@ -43209,7 +43405,7 @@ class TalkAgentInfo(AbstractModel):
 
     @property
     def Bindings(self):
-        r"""绑定关系列表
+        r"""<p>绑定关系列表</p>
         :rtype: list of TalkAgentBinding
         """
         return self._Bindings
@@ -43220,7 +43416,7 @@ class TalkAgentInfo(AbstractModel):
 
     @property
     def CreateTime(self):
-        r"""创建时间，Unix 秒
+        r"""<p>创建时间，Unix 秒</p>
         :rtype: int
         """
         return self._CreateTime
@@ -43231,7 +43427,7 @@ class TalkAgentInfo(AbstractModel):
 
     @property
     def UpdateTime(self):
-        r"""更新时间，Unix 秒
+        r"""<p>更新时间，Unix 秒</p>
         :rtype: int
         """
         return self._UpdateTime
@@ -43239,6 +43435,17 @@ class TalkAgentInfo(AbstractModel):
     @UpdateTime.setter
     def UpdateTime(self, UpdateTime):
         self._UpdateTime = UpdateTime
+
+    @property
+    def EventCallbackConfig(self):
+        r"""<p>事件回调配置</p>
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.TalkEventCallbackConfig`
+        """
+        return self._EventCallbackConfig
+
+    @EventCallbackConfig.setter
+    def EventCallbackConfig(self, EventCallbackConfig):
+        self._EventCallbackConfig = EventCallbackConfig
 
 
     def _deserialize(self, params):
@@ -43284,6 +43491,9 @@ class TalkAgentInfo(AbstractModel):
                 self._Bindings.append(obj)
         self._CreateTime = params.get("CreateTime")
         self._UpdateTime = params.get("UpdateTime")
+        if params.get("EventCallbackConfig") is not None:
+            self._EventCallbackConfig = TalkEventCallbackConfig()
+            self._EventCallbackConfig._deserialize(params.get("EventCallbackConfig"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -43574,6 +43784,57 @@ class TalkConversationConfigInfo(AbstractModel):
         self._EmotionEnabled = params.get("EmotionEnabled")
         self._SemanticVADEnabled = params.get("SemanticVADEnabled")
         self._NoiseFilterEnabled = params.get("NoiseFilterEnabled")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TalkEventCallbackConfig(AbstractModel):
+    r"""事件回调配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Enabled: <p>是否开启</p>
+        :type Enabled: bool
+        :param _Topic: <p>Topic 名称</p>
+        :type Topic: str
+        """
+        self._Enabled = None
+        self._Topic = None
+
+    @property
+    def Enabled(self):
+        r"""<p>是否开启</p>
+        :rtype: bool
+        """
+        return self._Enabled
+
+    @Enabled.setter
+    def Enabled(self, Enabled):
+        self._Enabled = Enabled
+
+    @property
+    def Topic(self):
+        r"""<p>Topic 名称</p>
+        :rtype: str
+        """
+        return self._Topic
+
+    @Topic.setter
+    def Topic(self, Topic):
+        self._Topic = Topic
+
+
+    def _deserialize(self, params):
+        self._Enabled = params.get("Enabled")
+        self._Topic = params.get("Topic")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -45236,7 +45497,7 @@ class TalkWebhookEndpoint(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Url: <p>Webhook地址，仅支持 80 和 443 端口</p>
+        :param _Url: <p>Webhook地址</p>
         :type Url: str
         :param _Timeout: <p>超时时间，0~30 秒</p><p>取值范围：[0, 30]</p>
         :type Timeout: int
@@ -45246,7 +45507,7 @@ class TalkWebhookEndpoint(AbstractModel):
 
     @property
     def Url(self):
-        r"""<p>Webhook地址，仅支持 80 和 443 端口</p>
+        r"""<p>Webhook地址</p>
         :rtype: str
         """
         return self._Url

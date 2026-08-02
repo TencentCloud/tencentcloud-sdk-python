@@ -951,6 +951,8 @@ class CreateNodePoolRequest(AbstractModel):
         :type Native: :class:`tencentcloud.tke.v20220501.models.CreateNativeNodePoolParam`
         :param _Annotations: <p>节点 Annotation 列表</p>
         :type Annotations: list of Annotation
+        :param _SkipValidateOptions: <p>跳过校验选项，支持 &quot;VpcDnsCheck&quot;</p>
+        :type SkipValidateOptions: list of str
         """
         self._ClusterId = None
         self._Name = None
@@ -962,6 +964,7 @@ class CreateNodePoolRequest(AbstractModel):
         self._Unschedulable = None
         self._Native = None
         self._Annotations = None
+        self._SkipValidateOptions = None
 
     @property
     def ClusterId(self):
@@ -1073,6 +1076,17 @@ class CreateNodePoolRequest(AbstractModel):
     def Annotations(self, Annotations):
         self._Annotations = Annotations
 
+    @property
+    def SkipValidateOptions(self):
+        r"""<p>跳过校验选项，支持 &quot;VpcDnsCheck&quot;</p>
+        :rtype: list of str
+        """
+        return self._SkipValidateOptions
+
+    @SkipValidateOptions.setter
+    def SkipValidateOptions(self, SkipValidateOptions):
+        self._SkipValidateOptions = SkipValidateOptions
+
 
     def _deserialize(self, params):
         self._ClusterId = params.get("ClusterId")
@@ -1107,6 +1121,7 @@ class CreateNodePoolRequest(AbstractModel):
                 obj = Annotation()
                 obj._deserialize(item)
                 self._Annotations.append(obj)
+        self._SkipValidateOptions = params.get("SkipValidateOptions")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

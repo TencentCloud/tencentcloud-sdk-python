@@ -43,6 +43,24 @@ class EsClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CheckUpdateInstance(
+            self,
+            request: models.CheckUpdateInstanceRequest,
+            opts: Dict = None,
+    ) -> models.CheckUpdateInstanceResponse:
+        """
+        检查实例变配操作是否可以发起
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CheckUpdateInstance"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CheckUpdateInstanceResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateAutoBackUpStrategy(
             self,
             request: models.CreateAutoBackUpStrategyRequest,
@@ -1083,6 +1101,24 @@ class EsClient(AbstractClient):
         kwargs["action"] = "ModifyAutoBackUpStrategy"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ModifyAutoBackUpStrategyResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyAutoScaleDiskInfo(
+            self,
+            request: models.ModifyAutoScaleDiskInfoRequest,
+            opts: Dict = None,
+    ) -> models.ModifyAutoScaleDiskInfoResponse:
+        """
+        修改自动扩盘参数
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyAutoScaleDiskInfo"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyAutoScaleDiskInfoResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
