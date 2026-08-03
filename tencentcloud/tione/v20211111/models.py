@@ -7089,17 +7089,20 @@ class DeleteDatasetRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DatasetId: 数据集id
+        :param _DatasetId: <p>数据集id</p>
         :type DatasetId: str
-        :param _DeleteLabelEnable: 是否删除cos标签文件
+        :param _DeleteLabelEnable: <p>是否删除cos标签文件</p>
         :type DeleteLabelEnable: bool
+        :param _TiProjectId: <p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+        :type TiProjectId: str
         """
         self._DatasetId = None
         self._DeleteLabelEnable = None
+        self._TiProjectId = None
 
     @property
     def DatasetId(self):
-        r"""数据集id
+        r"""<p>数据集id</p>
         :rtype: str
         """
         return self._DatasetId
@@ -7110,7 +7113,7 @@ class DeleteDatasetRequest(AbstractModel):
 
     @property
     def DeleteLabelEnable(self):
-        r"""是否删除cos标签文件
+        r"""<p>是否删除cos标签文件</p>
         :rtype: bool
         """
         return self._DeleteLabelEnable
@@ -7119,10 +7122,22 @@ class DeleteDatasetRequest(AbstractModel):
     def DeleteLabelEnable(self, DeleteLabelEnable):
         self._DeleteLabelEnable = DeleteLabelEnable
 
+    @property
+    def TiProjectId(self):
+        r"""<p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+        :rtype: str
+        """
+        return self._TiProjectId
+
+    @TiProjectId.setter
+    def TiProjectId(self, TiProjectId):
+        self._TiProjectId = TiProjectId
+
 
     def _deserialize(self, params):
         self._DatasetId = params.get("DatasetId")
         self._DeleteLabelEnable = params.get("DeleteLabelEnable")
+        self._TiProjectId = params.get("TiProjectId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7140,7 +7155,7 @@ class DeleteDatasetResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DatasetId: 删除的datasetId
+        :param _DatasetId: <p>删除的datasetId</p>
         :type DatasetId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -7150,7 +7165,7 @@ class DeleteDatasetResponse(AbstractModel):
 
     @property
     def DatasetId(self):
-        r"""删除的datasetId
+        r"""<p>删除的datasetId</p>
         :rtype: str
         """
         return self._DatasetId
@@ -7917,6 +7932,8 @@ class DescribeAnnotatedTaskListRequest(AbstractModel):
         :type Offset: int
         :param _Limit: 页面大小，默认为10
         :type Limit: int
+        :param _TiProjectId: <p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+        :type TiProjectId: str
         :param _Filters: 过滤条件数组，支持数据集ID，标注场景、任务状态、数据集名称、人物名称的过滤，后面两个支持模糊查询
         :type Filters: list of Filter
         :param _TagFilters: 标签过滤条件
@@ -7928,6 +7945,7 @@ class DescribeAnnotatedTaskListRequest(AbstractModel):
         """
         self._Offset = None
         self._Limit = None
+        self._TiProjectId = None
         self._Filters = None
         self._TagFilters = None
         self._Order = None
@@ -7954,6 +7972,17 @@ class DescribeAnnotatedTaskListRequest(AbstractModel):
     @Limit.setter
     def Limit(self, Limit):
         self._Limit = Limit
+
+    @property
+    def TiProjectId(self):
+        r"""<p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+        :rtype: str
+        """
+        return self._TiProjectId
+
+    @TiProjectId.setter
+    def TiProjectId(self, TiProjectId):
+        self._TiProjectId = TiProjectId
 
     @property
     def Filters(self):
@@ -8003,6 +8032,7 @@ class DescribeAnnotatedTaskListRequest(AbstractModel):
     def _deserialize(self, params):
         self._Offset = params.get("Offset")
         self._Limit = params.get("Limit")
+        self._TiProjectId = params.get("TiProjectId")
         if params.get("Filters") is not None:
             self._Filters = []
             for item in params.get("Filters"):

@@ -295,6 +295,24 @@ class DlcClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CancelRayJob(
+            self,
+            request: models.CancelRayJobRequest,
+            opts: Dict = None,
+    ) -> models.CancelRayJobResponse:
+        """
+        根据任务ID取消正在运行的Ray任务
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CancelRayJob"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CancelRayJobResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CancelSparkSessionBatchSQL(
             self,
             request: models.CancelSparkSessionBatchSQLRequest,
@@ -421,6 +439,24 @@ class DlcClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CopyJobSpec(
+            self,
+            request: models.CopyJobSpecRequest,
+            opts: Dict = None,
+    ) -> models.CopyJobSpecResponse:
+        """
+        复制一份已有的作业配置
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CopyJobSpec"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CopyJobSpecResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateCHDFSBindingProduct(
             self,
             request: models.CreateCHDFSBindingProductRequest,
@@ -434,6 +470,24 @@ class DlcClient(AbstractClient):
         kwargs["action"] = "CreateCHDFSBindingProduct"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.CreateCHDFSBindingProductResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def CreateClusterGroup(
+            self,
+            request: models.CreateClusterGroupRequest,
+            opts: Dict = None,
+    ) -> models.CreateClusterGroupResponse:
+        """
+        创建集群组
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateClusterGroup"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateClusterGroupResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -601,6 +655,42 @@ class DlcClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateJobSpec(
+            self,
+            request: models.CreateJobSpecRequest,
+            opts: Dict = None,
+    ) -> models.CreateJobSpecResponse:
+        """
+        创建作业配置
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateJobSpec"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateJobSpecResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def CreateLab(
+            self,
+            request: models.CreateLabRequest,
+            opts: Dict = None,
+    ) -> models.CreateLabResponse:
+        """
+        创建实验室
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateLab"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateLabResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateMetaDatabase(
             self,
             request: models.CreateMetaDatabaseRequest,
@@ -668,6 +758,42 @@ class DlcClient(AbstractClient):
         kwargs["action"] = "CreateNotebookSessionStatementSupportBatchSQL"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.CreateNotebookSessionStatementSupportBatchSQLResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def CreateRayCluster(
+            self,
+            request: models.CreateRayClusterRequest,
+            opts: Dict = None,
+    ) -> models.CreateRayClusterResponse:
+        """
+        创建集群
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateRayCluster"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateRayClusterResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def CreateResourceConfig(
+            self,
+            request: models.CreateResourceConfigRequest,
+            opts: Dict = None,
+    ) -> models.CreateResourceConfigResponse:
+        """
+        创建资源配置模板
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateResourceConfig"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateResourceConfigResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -1017,6 +1143,24 @@ class DlcClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DeleteClusterGroup(
+            self,
+            request: models.DeleteClusterGroupRequest,
+            opts: Dict = None,
+    ) -> models.DeleteClusterGroupResponse:
+        """
+        删除集群组
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteClusterGroup"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteClusterGroupResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DeleteDataEngine(
             self,
             request: models.DeleteDataEngineRequest,
@@ -1048,6 +1192,42 @@ class DlcClient(AbstractClient):
         kwargs["action"] = "DeleteDataMaskStrategy"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DeleteDataMaskStrategyResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteJobSpec(
+            self,
+            request: models.DeleteJobSpecRequest,
+            opts: Dict = None,
+    ) -> models.DeleteJobSpecResponse:
+        """
+        根据配置ID删除作业配置
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteJobSpec"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteJobSpecResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteLab(
+            self,
+            request: models.DeleteLabRequest,
+            opts: Dict = None,
+    ) -> models.DeleteLabResponse:
+        """
+        删除数据实验室
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteLab"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteLabResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -1102,6 +1282,60 @@ class DlcClient(AbstractClient):
         kwargs["action"] = "DeleteNotebookSession"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DeleteNotebookSessionResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteRayCluster(
+            self,
+            request: models.DeleteRayClusterRequest,
+            opts: Dict = None,
+    ) -> models.DeleteRayClusterResponse:
+        """
+        删除集群
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteRayCluster"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteRayClusterResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteRayJob(
+            self,
+            request: models.DeleteRayJobRequest,
+            opts: Dict = None,
+    ) -> models.DeleteRayJobResponse:
+        """
+        根据任务ID删除Ray任务
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteRayJob"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteRayJobResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteResourceConfig(
+            self,
+            request: models.DeleteResourceConfigRequest,
+            opts: Dict = None,
+    ) -> models.DeleteResourceConfigResponse:
+        """
+        删除资源配置模板
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteResourceConfig"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteResourceConfigResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -1282,6 +1516,42 @@ class DlcClient(AbstractClient):
         kwargs["action"] = "DescribeAdvancedStoreLocation"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeAdvancedStoreLocationResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeClusterGroup(
+            self,
+            request: models.DescribeClusterGroupRequest,
+            opts: Dict = None,
+    ) -> models.DescribeClusterGroupResponse:
+        """
+        根据集群组 ID 获取集群组详情。支持通过 IncludeDeleted 参数控制是否返回已软删除的记录（用于悬挂 cluster 回显场景）。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeClusterGroup"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeClusterGroupResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeClusterGroupClusters(
+            self,
+            request: models.DescribeClusterGroupClustersRequest,
+            opts: Dict = None,
+    ) -> models.DescribeClusterGroupClustersResponse:
+        """
+        计算组关联 cluster 使用情况响应
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeClusterGroupClusters"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeClusterGroupClustersResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -2817,6 +3087,168 @@ class DlcClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def GetExampleDetail(
+            self,
+            request: models.GetExampleDetailRequest,
+            opts: Dict = None,
+    ) -> models.GetExampleDetailResponse:
+        """
+        根据 exampleId 获取单个案例详情
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "GetExampleDetail"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.GetExampleDetailResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def GetJobSpec(
+            self,
+            request: models.GetJobSpecRequest,
+            opts: Dict = None,
+    ) -> models.GetJobSpecResponse:
+        """
+        根据配置ID获取作业配置详情
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "GetJobSpec"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.GetJobSpecResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def GetLabDetail(
+            self,
+            request: models.GetLabDetailRequest,
+            opts: Dict = None,
+    ) -> models.GetLabDetailResponse:
+        """
+        获取实验室详情
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "GetLabDetail"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.GetLabDetailResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def GetLabEvent(
+            self,
+            request: models.GetLabEventRequest,
+            opts: Dict = None,
+    ) -> models.GetLabEventResponse:
+        """
+        获取实验室的事件流（基于 K8s Event + CLS 日志）
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "GetLabEvent"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.GetLabEventResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def GetLabHistory(
+            self,
+            request: models.GetLabHistoryRequest,
+            opts: Dict = None,
+    ) -> models.GetLabHistoryResponse:
+        """
+        获取实验室的状态变更历史记录
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "GetLabHistory"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.GetLabHistoryResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def GetLabPodYaml(
+            self,
+            request: models.GetLabPodYamlRequest,
+            opts: Dict = None,
+    ) -> models.GetLabPodYamlResponse:
+        """
+        获取数据实验室Pod的YAML内容
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "GetLabPodYaml"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.GetLabPodYamlResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def GetLabPods(
+            self,
+            request: models.GetLabPodsRequest,
+            opts: Dict = None,
+    ) -> models.GetLabPodsResponse:
+        """
+        获取数据实验室的Pod列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "GetLabPods"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.GetLabPodsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def GetLabServiceUrls(
+            self,
+            request: models.GetLabServiceUrlsRequest,
+            opts: Dict = None,
+    ) -> models.GetLabServiceUrlsResponse:
+        """
+        获取实验室ide访问地址
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "GetLabServiceUrls"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.GetLabServiceUrlsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def GetLabYaml(
+            self,
+            request: models.GetLabYamlRequest,
+            opts: Dict = None,
+    ) -> models.GetLabYamlResponse:
+        """
+        获取数据实验室对应的RayCluster YAML内容
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "GetLabYaml"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.GetLabYamlResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def GetOptimizerPolicy(
             self,
             request: models.GetOptimizerPolicyRequest,
@@ -2830,6 +3262,258 @@ class DlcClient(AbstractClient):
         kwargs["action"] = "GetOptimizerPolicy"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.GetOptimizerPolicyResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def GetRayCluster(
+            self,
+            request: models.GetRayClusterRequest,
+            opts: Dict = None,
+    ) -> models.GetRayClusterResponse:
+        """
+        获取Ray集群详情请求
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "GetRayCluster"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.GetRayClusterResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def GetRayClusterEvent(
+            self,
+            request: models.GetRayClusterEventRequest,
+            opts: Dict = None,
+    ) -> models.GetRayClusterEventResponse:
+        """
+        获取Ray集群的事件流（基于 K8s Event + CLS 日志）
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "GetRayClusterEvent"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.GetRayClusterEventResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def GetRayClusterHistory(
+            self,
+            request: models.GetRayClusterHistoryRequest,
+            opts: Dict = None,
+    ) -> models.GetRayClusterHistoryResponse:
+        """
+        获取集群状态历史
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "GetRayClusterHistory"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.GetRayClusterHistoryResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def GetRayClusterPodYaml(
+            self,
+            request: models.GetRayClusterPodYamlRequest,
+            opts: Dict = None,
+    ) -> models.GetRayClusterPodYamlResponse:
+        """
+        获取集群Pod的YAML内容
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "GetRayClusterPodYaml"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.GetRayClusterPodYamlResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def GetRayClusterPods(
+            self,
+            request: models.GetRayClusterPodsRequest,
+            opts: Dict = None,
+    ) -> models.GetRayClusterPodsResponse:
+        """
+        获取集群的Pod列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "GetRayClusterPods"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.GetRayClusterPodsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def GetRayClusterYaml(
+            self,
+            request: models.GetRayClusterYamlRequest,
+            opts: Dict = None,
+    ) -> models.GetRayClusterYamlResponse:
+        """
+        获取RayCluster的YAML内容
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "GetRayClusterYaml"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.GetRayClusterYamlResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def GetRayJob(
+            self,
+            request: models.GetRayJobRequest,
+            opts: Dict = None,
+    ) -> models.GetRayJobResponse:
+        """
+        根据任务ID获取Ray任务详情
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "GetRayJob"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.GetRayJobResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def GetRayJobEvent(
+            self,
+            request: models.GetRayJobEventRequest,
+            opts: Dict = None,
+    ) -> models.GetRayJobEventResponse:
+        """
+        通过 ResourceManager 调用 CLS SearchLog API 查询作业相关日志。不返回总数，使用 Context 进行翻页，ListOver 标识是否还有更多数据。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "GetRayJobEvent"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.GetRayJobEventResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def GetRayJobEventLog(
+            self,
+            request: models.GetRayJobEventLogRequest,
+            opts: Dict = None,
+    ) -> models.GetRayJobEventLogResponse:
+        """
+        获取作业事件日志
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "GetRayJobEventLog"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.GetRayJobEventLogResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def GetRayJobHistory(
+            self,
+            request: models.GetRayJobHistoryRequest,
+            opts: Dict = None,
+    ) -> models.GetRayJobHistoryResponse:
+        """
+        根据任务ID获取Ray任务的历史执行记录
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "GetRayJobHistory"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.GetRayJobHistoryResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def GetRayJobPodYaml(
+            self,
+            request: models.GetRayJobPodYamlRequest,
+            opts: Dict = None,
+    ) -> models.GetRayJobPodYamlResponse:
+        """
+        获取Pod的YAML内容
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "GetRayJobPodYaml"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.GetRayJobPodYamlResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def GetRayJobPods(
+            self,
+            request: models.GetRayJobPodsRequest,
+            opts: Dict = None,
+    ) -> models.GetRayJobPodsResponse:
+        """
+        获取作业的Pod列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "GetRayJobPods"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.GetRayJobPodsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def GetRayJobYaml(
+            self,
+            request: models.GetRayJobYamlRequest,
+            opts: Dict = None,
+    ) -> models.GetRayJobYamlResponse:
+        """
+        获取RayJob的YAML内容
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "GetRayJobYaml"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.GetRayJobYamlResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def GetResourceConfig(
+            self,
+            request: models.GetResourceConfigRequest,
+            opts: Dict = None,
+    ) -> models.GetResourceConfigResponse:
+        """
+        获取资源配置模板详情
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "GetResourceConfig"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.GetResourceConfigResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -2884,6 +3568,222 @@ class DlcClient(AbstractClient):
         kwargs["action"] = "LaunchStandardEngineResourceGroups"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.LaunchStandardEngineResourceGroupsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ListClusterGroups(
+            self,
+            request: models.ListClusterGroupsRequest,
+            opts: Dict = None,
+    ) -> models.ListClusterGroupsResponse:
+        """
+        列出所有集群组
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ListClusterGroups"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ListClusterGroupsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ListExampleCategories(
+            self,
+            request: models.ListExampleCategoriesRequest,
+            opts: Dict = None,
+    ) -> models.ListExampleCategoriesResponse:
+        """
+        获取所有案例分类
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ListExampleCategories"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ListExampleCategoriesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ListExampleDifficulties(
+            self,
+            request: models.ListExampleDifficultiesRequest,
+            opts: Dict = None,
+    ) -> models.ListExampleDifficultiesResponse:
+        """
+        获取所有案例分类
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ListExampleDifficulties"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ListExampleDifficultiesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ListExampleTags(
+            self,
+            request: models.ListExampleTagsRequest,
+            opts: Dict = None,
+    ) -> models.ListExampleTagsResponse:
+        """
+        返回标签去重列表，按出现频次从高到低排序。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ListExampleTags"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ListExampleTagsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ListExamples(
+            self,
+            request: models.ListExamplesRequest,
+            opts: Dict = None,
+    ) -> models.ListExamplesResponse:
+        """
+        案例列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ListExamples"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ListExamplesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ListJobSpecs(
+            self,
+            request: models.ListJobSpecsRequest,
+            opts: Dict = None,
+    ) -> models.ListJobSpecsResponse:
+        """
+        分页查询作业配置列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ListJobSpecs"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ListJobSpecsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ListJobsBySpec(
+            self,
+            request: models.ListJobsBySpecRequest,
+            opts: Dict = None,
+    ) -> models.ListJobsBySpecResponse:
+        """
+        分页查询某作业配置下产生的所有作业实例
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ListJobsBySpec"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ListJobsBySpecResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ListLabs(
+            self,
+            request: models.ListLabsRequest,
+            opts: Dict = None,
+    ) -> models.ListLabsResponse:
+        """
+        列出实验室列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ListLabs"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ListLabsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ListRayClusterJobs(
+            self,
+            request: models.ListRayClusterJobsRequest,
+            opts: Dict = None,
+    ) -> models.ListRayClusterJobsResponse:
+        """
+        查询指定 Ray 集群下提交的所有作业，分页返回。底层委托给 ListRayJobs，强制注入 ClusterId 作为过滤条件。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ListRayClusterJobs"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ListRayClusterJobsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ListRayClusters(
+            self,
+            request: models.ListRayClustersRequest,
+            opts: Dict = None,
+    ) -> models.ListRayClustersResponse:
+        """
+        列出所有集群
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ListRayClusters"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ListRayClustersResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ListRayJobs(
+            self,
+            request: models.ListRayJobsRequest,
+            opts: Dict = None,
+    ) -> models.ListRayJobsResponse:
+        """
+        根据集群ID列出所有Ray任务
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ListRayJobs"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ListRayJobsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ListResourceConfigs(
+            self,
+            request: models.ListResourceConfigsRequest,
+            opts: Dict = None,
+    ) -> models.ListResourceConfigsResponse:
+        """
+        列出所有资源配置模板
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ListResourceConfigs"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ListResourceConfigsResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -2961,6 +3861,24 @@ class DlcClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def ModifyClusterPriority(
+            self,
+            request: models.ModifyClusterPriorityRequest,
+            opts: Dict = None,
+    ) -> models.ModifyClusterPriorityResponse:
+        """
+        修改集群的调度优先级（1-9，数字越大优先级越高）
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyClusterPriority"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyClusterPriorityResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ModifyDataEngineDescription(
             self,
             request: models.ModifyDataEngineDescriptionRequest,
@@ -2992,6 +3910,24 @@ class DlcClient(AbstractClient):
         kwargs["action"] = "ModifyGovernEventRule"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ModifyGovernEventRuleResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyLabPriority(
+            self,
+            request: models.ModifyLabPriorityRequest,
+            opts: Dict = None,
+    ) -> models.ModifyLabPriorityResponse:
+        """
+        修改实验室的调度优先级（1-9，数字越大优先级越高）
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyLabPriority"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyLabPriorityResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -3285,6 +4221,24 @@ class DlcClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def RunJobSpec(
+            self,
+            request: models.RunJobSpecRequest,
+            opts: Dict = None,
+    ) -> models.RunJobSpecResponse:
+        """
+        基于指定作业配置提交一次作业实例
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "RunJobSpec"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.RunJobSpecResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def SetOptimizerPolicy(
             self,
             request: models.SetOptimizerPolicyRequest,
@@ -3298,6 +4252,78 @@ class DlcClient(AbstractClient):
         kwargs["action"] = "SetOptimizerPolicy"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.SetOptimizerPolicyResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def StartLab(
+            self,
+            request: models.StartLabRequest,
+            opts: Dict = None,
+    ) -> models.StartLabResponse:
+        """
+        启动实验室
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "StartLab"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.StartLabResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def StartRayCluster(
+            self,
+            request: models.StartRayClusterRequest,
+            opts: Dict = None,
+    ) -> models.StartRayClusterResponse:
+        """
+        启动集群
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "StartRayCluster"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.StartRayClusterResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def StopLab(
+            self,
+            request: models.StopLabRequest,
+            opts: Dict = None,
+    ) -> models.StopLabResponse:
+        """
+        停止实验室
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "StopLab"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.StopLabResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def StopRayCluster(
+            self,
+            request: models.StopRayClusterRequest,
+            opts: Dict = None,
+    ) -> models.StopRayClusterResponse:
+        """
+        停止集群
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "StopRayCluster"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.StopRayClusterResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -3411,6 +4437,24 @@ class DlcClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def UpdateClusterGroup(
+            self,
+            request: models.UpdateClusterGroupRequest,
+            opts: Dict = None,
+    ) -> models.UpdateClusterGroupResponse:
+        """
+        更新集群组
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "UpdateClusterGroup"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.UpdateClusterGroupResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def UpdateDataEngine(
             self,
             request: models.UpdateDataEngineRequest,
@@ -3483,6 +4527,60 @@ class DlcClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def UpdateJobSpec(
+            self,
+            request: models.UpdateJobSpecRequest,
+            opts: Dict = None,
+    ) -> models.UpdateJobSpecResponse:
+        """
+        更新已有作业配置的字段
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "UpdateJobSpec"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.UpdateJobSpecResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def UpdateJobSpecPriority(
+            self,
+            request: models.UpdateJobSpecPriorityRequest,
+            opts: Dict = None,
+    ) -> models.UpdateJobSpecPriorityResponse:
+        """
+        修改作业配置的调度优先级（1-9，数字越大优先级越高）
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "UpdateJobSpecPriority"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.UpdateJobSpecPriorityResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def UpdateLab(
+            self,
+            request: models.UpdateLabRequest,
+            opts: Dict = None,
+    ) -> models.UpdateLabResponse:
+        """
+        更新实验室配置：仅在 CREATED / STOPPED / FAILED 终态可用；变更落 MySQL，下次 Start 按新 spec 创建 K8s 资源
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "UpdateLab"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.UpdateLabResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def UpdateNetworkConnection(
             self,
             request: models.UpdateNetworkConnectionRequest,
@@ -3496,6 +4594,60 @@ class DlcClient(AbstractClient):
         kwargs["action"] = "UpdateNetworkConnection"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.UpdateNetworkConnectionResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def UpdateRayCluster(
+            self,
+            request: models.UpdateRayClusterRequest,
+            opts: Dict = None,
+    ) -> models.UpdateRayClusterResponse:
+        """
+        更新集群配置：仅在 CREATED / STOPPED / FAILED 终态可用；变更落 MySQL，下次 Start 按新 spec 创建 K8s 资源
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "UpdateRayCluster"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.UpdateRayClusterResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def UpdateRayJobPriority(
+            self,
+            request: models.UpdateRayJobPriorityRequest,
+            opts: Dict = None,
+    ) -> models.UpdateRayJobPriorityResponse:
+        """
+        更新处于 SUBMITTED/PENDING 状态的作业的优先级。仅 SUBMITTED/PENDING 状态的作业允许调整优先级。内部通过调用 Neutrino 的 UpdateJobConfig 接口更新 ENVIRONMENT 配置中的 priority 字段。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "UpdateRayJobPriority"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.UpdateRayJobPriorityResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def UpdateResourceConfig(
+            self,
+            request: models.UpdateResourceConfigRequest,
+            opts: Dict = None,
+    ) -> models.UpdateResourceConfigResponse:
+        """
+        更新资源配置模板
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "UpdateResourceConfig"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.UpdateResourceConfigResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

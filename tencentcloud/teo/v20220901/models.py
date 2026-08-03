@@ -389,54 +389,41 @@ class AccelerationDomain(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ZoneId: 站点 ID。
+        :param _ZoneId: <p>站点 ID。</p>
         :type ZoneId: str
-        :param _DomainName: 加速域名名称。
+        :param _DomainName: <p>加速域名名称。</p>
         :type DomainName: str
-        :param _DomainStatus: 加速域名状态，取值有：
-<li>online：已生效；</li>
-<li>process：部署中；</li>
-<li>offline：已停用；</li>
-<li>forbidden：已封禁；</li>
-<li>init：未生效，待激活站点。</li>
+        :param _DomainStatus: <p>加速域名状态</p><p>枚举值：</p><ul><li>online： 已生效</li><li>process： 部署中</li><li>offline： 已停用</li><li>init： 未生效，待激活站点</li></ul>
         :type DomainStatus: str
-        :param _Cname: CNAME 地址。
+        :param _Cname: <p>CNAME 地址。</p>
         :type Cname: str
-        :param _IPv6Status: IPv6 状态，取值有：
-<li>follow：遵循站点IPv6配置；</li>
-<li>on：开启状态；</li>
-<li>off：关闭状态。</li>
+        :param _IPv6Status: <p>IPv6 状态，取值有：</p><li>follow：遵循站点IPv6配置；</li><li>on：开启状态；</li><li>off：关闭状态。</li>
 注意：此字段可能返回 null，表示取不到有效值。
         :type IPv6Status: str
-        :param _IdentificationStatus: 加速域名归属权验证状态，取值有： 
-<li>pending：待验证；</li>
-<li>finished：已完成验证。</li>	
+        :param _IdentificationStatus: <p>加速域名归属权验证状态，取值有： </p><li>pending：待验证；</li><li>finished：已完成验证。</li>
 注意：此字段可能返回 null，表示取不到有效值。
         :type IdentificationStatus: str
-        :param _OwnershipVerification: 加速域名需进行归属权验证才能继续提供服务时，该对象会携带对应验证方式所需要的信息。
+        :param _OwnershipVerification: <p>加速域名需进行归属权验证才能继续提供服务时，该对象会携带对应验证方式所需要的信息。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type OwnershipVerification: :class:`tencentcloud.teo.v20220901.models.OwnershipVerification`
-        :param _OriginDetail: 源站信息。
+        :param _OriginDetail: <p>源站信息。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type OriginDetail: :class:`tencentcloud.teo.v20220901.models.OriginDetail`
-        :param _OriginProtocol: 回源协议，取值有：
-<li>FOLLOW：协议跟随；</li>
-<li>HTTP：HTTP协议回源；</li>
-<li>HTTPS：HTTPS协议回源。</li>
+        :param _OriginProtocol: <p>回源协议，取值有：</p><li>FOLLOW：协议跟随；</li><li>HTTP：HTTP协议回源；</li><li>HTTPS：HTTPS协议回源。</li>
 注意：此字段可能返回 null，表示取不到有效值。
         :type OriginProtocol: str
-        :param _HttpOriginPort: HTTP 回源端口。
+        :param _HttpOriginPort: <p>HTTP 回源端口。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type HttpOriginPort: int
-        :param _HttpsOriginPort: HTTPS 回源端口。
+        :param _HttpsOriginPort: <p>HTTPS 回源端口。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type HttpsOriginPort: int
-        :param _Certificate: 加速域名证书信息。
+        :param _Certificate: <p>加速域名证书信息。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Certificate: :class:`tencentcloud.teo.v20220901.models.AccelerationDomainCertificate`
-        :param _CreatedOn: 创建时间。
+        :param _CreatedOn: <p>创建时间。</p>
         :type CreatedOn: str
-        :param _ModifiedOn: 修改时间。
+        :param _ModifiedOn: <p>修改时间。</p>
         :type ModifiedOn: str
         """
         self._ZoneId = None
@@ -456,7 +443,7 @@ class AccelerationDomain(AbstractModel):
 
     @property
     def ZoneId(self):
-        r"""站点 ID。
+        r"""<p>站点 ID。</p>
         :rtype: str
         """
         return self._ZoneId
@@ -467,7 +454,7 @@ class AccelerationDomain(AbstractModel):
 
     @property
     def DomainName(self):
-        r"""加速域名名称。
+        r"""<p>加速域名名称。</p>
         :rtype: str
         """
         return self._DomainName
@@ -478,12 +465,7 @@ class AccelerationDomain(AbstractModel):
 
     @property
     def DomainStatus(self):
-        r"""加速域名状态，取值有：
-<li>online：已生效；</li>
-<li>process：部署中；</li>
-<li>offline：已停用；</li>
-<li>forbidden：已封禁；</li>
-<li>init：未生效，待激活站点。</li>
+        r"""<p>加速域名状态</p><p>枚举值：</p><ul><li>online： 已生效</li><li>process： 部署中</li><li>offline： 已停用</li><li>init： 未生效，待激活站点</li></ul>
         :rtype: str
         """
         return self._DomainStatus
@@ -494,7 +476,7 @@ class AccelerationDomain(AbstractModel):
 
     @property
     def Cname(self):
-        r"""CNAME 地址。
+        r"""<p>CNAME 地址。</p>
         :rtype: str
         """
         return self._Cname
@@ -505,10 +487,7 @@ class AccelerationDomain(AbstractModel):
 
     @property
     def IPv6Status(self):
-        r"""IPv6 状态，取值有：
-<li>follow：遵循站点IPv6配置；</li>
-<li>on：开启状态；</li>
-<li>off：关闭状态。</li>
+        r"""<p>IPv6 状态，取值有：</p><li>follow：遵循站点IPv6配置；</li><li>on：开启状态；</li><li>off：关闭状态。</li>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -520,9 +499,7 @@ class AccelerationDomain(AbstractModel):
 
     @property
     def IdentificationStatus(self):
-        r"""加速域名归属权验证状态，取值有： 
-<li>pending：待验证；</li>
-<li>finished：已完成验证。</li>	
+        r"""<p>加速域名归属权验证状态，取值有： </p><li>pending：待验证；</li><li>finished：已完成验证。</li>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -534,7 +511,7 @@ class AccelerationDomain(AbstractModel):
 
     @property
     def OwnershipVerification(self):
-        r"""加速域名需进行归属权验证才能继续提供服务时，该对象会携带对应验证方式所需要的信息。
+        r"""<p>加速域名需进行归属权验证才能继续提供服务时，该对象会携带对应验证方式所需要的信息。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.teo.v20220901.models.OwnershipVerification`
         """
@@ -546,7 +523,7 @@ class AccelerationDomain(AbstractModel):
 
     @property
     def OriginDetail(self):
-        r"""源站信息。
+        r"""<p>源站信息。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.teo.v20220901.models.OriginDetail`
         """
@@ -558,10 +535,7 @@ class AccelerationDomain(AbstractModel):
 
     @property
     def OriginProtocol(self):
-        r"""回源协议，取值有：
-<li>FOLLOW：协议跟随；</li>
-<li>HTTP：HTTP协议回源；</li>
-<li>HTTPS：HTTPS协议回源。</li>
+        r"""<p>回源协议，取值有：</p><li>FOLLOW：协议跟随；</li><li>HTTP：HTTP协议回源；</li><li>HTTPS：HTTPS协议回源。</li>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -573,7 +547,7 @@ class AccelerationDomain(AbstractModel):
 
     @property
     def HttpOriginPort(self):
-        r"""HTTP 回源端口。
+        r"""<p>HTTP 回源端口。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -585,7 +559,7 @@ class AccelerationDomain(AbstractModel):
 
     @property
     def HttpsOriginPort(self):
-        r"""HTTPS 回源端口。
+        r"""<p>HTTPS 回源端口。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -597,7 +571,7 @@ class AccelerationDomain(AbstractModel):
 
     @property
     def Certificate(self):
-        r"""加速域名证书信息。
+        r"""<p>加速域名证书信息。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.teo.v20220901.models.AccelerationDomainCertificate`
         """
@@ -609,7 +583,7 @@ class AccelerationDomain(AbstractModel):
 
     @property
     def CreatedOn(self):
-        r"""创建时间。
+        r"""<p>创建时间。</p>
         :rtype: str
         """
         return self._CreatedOn
@@ -620,7 +594,7 @@ class AccelerationDomain(AbstractModel):
 
     @property
     def ModifiedOn(self):
-        r"""修改时间。
+        r"""<p>修改时间。</p>
         :rtype: str
         """
         return self._ModifiedOn
@@ -35167,17 +35141,19 @@ class ExceptionRule(AbstractModel):
         :type Name: str
         :param _Condition: 例外规则的具体内容，需符合表达式语法，详细规范参见产品文档。
         :type Condition: str
-        :param _SkipScope: 例外规则执行选项，取值有：<li>WebSecurityModules: 指定例外规则的安全防护模块。</li><li>ManagedRules：指定托管规则。</li>
+        :param _SkipScope: 例外规则执行选项，取值有：<li>WebSecurityModules: 指定例外规则的安全防护模块，需配合  ⁠WebSecurityModulesForException⁠  使用；</li><li>WebSecuritySubmodules: 指定例外规则的安全防护子模块，需配合  ⁠WebSecuritySubmodulesForException⁠  使用；</li><li>ManagedRules：指定例外规则的具体托管规则，需配合  ⁠ManagedRulesForException⁠  使用；</li><li>ManagedRuleGroups：指定例外规则的托管规则组，需配合  ⁠ManagedRuleGroupsForException⁠  使用。</li>
         :type SkipScope: str
-        :param _SkipOption: 跳过请求的具体类型，取值有：<li>SkipOnAllRequestFields: 跳过所有请求；</li><li>SkipOnSpecifiedRequestFields: 跳过指定请求字段。</li>仅当 SkipScope 为 ManagedRules 时有效。
+        :param _SkipOption: 跳过请求的具体类型，取值有：<li>SkipOnAllRequestFields: 跳过所有请求；</li><li>SkipOnSpecifiedRequestFields: 跳过指定请求字段。</li>仅当 SkipScope 为 ManagedRules 或 ManagedRuleGroups 时有效。
         :type SkipOption: str
-        :param _WebSecurityModulesForException: 指定例外规则的安全防护模块，仅当 SkipScope 为 WebSecurityModules 时有效。取值有：<li>websec-mod-managed-rules：托管规则；</li><li>websec-mod-rate-limiting：速率限制；</li><li>websec-mod-custom-rules：自定义规则；</li><li>websec-mod-adaptive-control：自适应频控、智能客户端过滤、慢速攻击防护、流量盗刷防护；</li><li>websec-mod-bot：Bot管理。</li>
+        :param _WebSecurityModulesForException: 指定例外规则的安全防护模块，仅当 SkipScope 为 WebSecurityModules 时有效，取值有：<li>websec-mod-managed-rules：托管规则；</li><li>websec-mod-rate-limiting：速率限制；</li><li>websec-mod-custom-rules：自定义规则；</li><li>websec-mod-adaptive-control：自适应频控、智能客户端过滤、慢速攻击防护、流量盗刷防护；</li><li>websec-mod-bot：Bot管理。</li>
         :type WebSecurityModulesForException: list of str
-        :param _ManagedRulesForException: 指定例外规则的具体托管规则，仅当 SkipScope 为 ManagedRules 时有效，且此时不能指定 ManagedRuleGroupsForException 。
+        :param _WebSecuritySubmodulesForException: 指定例外规则的安全防护子模块，仅当 SkipScope 为 WebSecuritySubmodules 时有效，取值有：<ul><li>托管规则（ManagedRules）模块功能：<ul><li>websec-mod-managed-rules/managed-rule-groups：规则集；</li><li>websec-mod-managed-rules/frequent-scanning-protection：高频扫描防护；</li></ul></li><li>速率限制（RateLimitingRules）模块功能：<ul><li>websec-mod-rate-limiting-rules：速率限制规则；</li></ul></li><li>自定义规则（CustomRules）模块功能：<ul><li>websec-mod-custom-rules：自定义规则；</li></ul></li><li>HTTP DDoS 防护（HttpDDoSProtection）模块功能：<ul><li>websec-mod-http-ddos-protection/adaptive-frequency-control：自适应频控；</li><li>websec-mod-http-ddos-protection/client-filtering：智能客户端过滤；</li><li>websec-mod-http-ddos-protection/bandwidth-abuse-defense：流量盗刷防护；</li></ul></li><li>高级 Bot 管理（BotManagement）模块功能：<ul><li>websec-mod-bot-management/basic-feature：基础特征管理；</li><li>websec-mod-bot-management/ip-reputation：客户端画像分析；</li><li>websec-mod-bot-management/bot-intelligence：智能 Bot 分析；</li><li>websec-mod-bot-management/custom-rules：自定义规则；</li><li>websec-mod-bot-management/browser-impersonation-detection：主动特征识别；</li><li>websec-mod-bot-management/client-attestation-rules：客户端认证；</li></ul></li><li>基础 Bot 管理（BotManagementLite）模块功能：<ul><li>websec-mod-bot-management-lite/ai-crawler-detection：AI 爬虫处置；</li><li>websec-mod-bot-management-lite/captcha-page-challenge：人机校验页。</li></ul></li></ul>
+        :type WebSecuritySubmodulesForException: list of str
+        :param _ManagedRulesForException: 指定例外规则的具体托管规则，仅当 SkipScope 为 ManagedRules 时有效。
         :type ManagedRulesForException: list of str
-        :param _ManagedRuleGroupsForException: 指定例外规则的托管规则组，仅当 SkipScope 为 ManagedRules 时有效，且此时不能指定 ManagedRulesForException 。
+        :param _ManagedRuleGroupsForException: 指定例外规则的托管规则组，仅当 SkipScope 为 ManagedRuleGroups 时有效。
         :type ManagedRuleGroupsForException: list of str
-        :param _RequestFieldsForException: 指定例外规则跳过指定请求字段的具体配置，仅当 SkipScope 为 ManagedRules 并且 SkipOption 为 SkipOnSpecifiedRequestFields 时有效。
+        :param _RequestFieldsForException: 指定例外规则跳过指定请求字段的具体配置，仅当 SkipScope 为 ManagedRules 或 ManagedRuleGroups 并且 SkipOption 为 SkipOnSpecifiedRequestFields 时有效。
         :type RequestFieldsForException: list of RequestFieldsForException
         :param _Enabled: 例外规则是否开启。取值有：<li>on：开启</li><li>off：关闭</li>
         :type Enabled: str
@@ -35188,6 +35164,7 @@ class ExceptionRule(AbstractModel):
         self._SkipScope = None
         self._SkipOption = None
         self._WebSecurityModulesForException = None
+        self._WebSecuritySubmodulesForException = None
         self._ManagedRulesForException = None
         self._ManagedRuleGroupsForException = None
         self._RequestFieldsForException = None
@@ -35228,7 +35205,7 @@ class ExceptionRule(AbstractModel):
 
     @property
     def SkipScope(self):
-        r"""例外规则执行选项，取值有：<li>WebSecurityModules: 指定例外规则的安全防护模块。</li><li>ManagedRules：指定托管规则。</li>
+        r"""例外规则执行选项，取值有：<li>WebSecurityModules: 指定例外规则的安全防护模块，需配合  ⁠WebSecurityModulesForException⁠  使用；</li><li>WebSecuritySubmodules: 指定例外规则的安全防护子模块，需配合  ⁠WebSecuritySubmodulesForException⁠  使用；</li><li>ManagedRules：指定例外规则的具体托管规则，需配合  ⁠ManagedRulesForException⁠  使用；</li><li>ManagedRuleGroups：指定例外规则的托管规则组，需配合  ⁠ManagedRuleGroupsForException⁠  使用。</li>
         :rtype: str
         """
         return self._SkipScope
@@ -35239,7 +35216,7 @@ class ExceptionRule(AbstractModel):
 
     @property
     def SkipOption(self):
-        r"""跳过请求的具体类型，取值有：<li>SkipOnAllRequestFields: 跳过所有请求；</li><li>SkipOnSpecifiedRequestFields: 跳过指定请求字段。</li>仅当 SkipScope 为 ManagedRules 时有效。
+        r"""跳过请求的具体类型，取值有：<li>SkipOnAllRequestFields: 跳过所有请求；</li><li>SkipOnSpecifiedRequestFields: 跳过指定请求字段。</li>仅当 SkipScope 为 ManagedRules 或 ManagedRuleGroups 时有效。
         :rtype: str
         """
         return self._SkipOption
@@ -35250,7 +35227,7 @@ class ExceptionRule(AbstractModel):
 
     @property
     def WebSecurityModulesForException(self):
-        r"""指定例外规则的安全防护模块，仅当 SkipScope 为 WebSecurityModules 时有效。取值有：<li>websec-mod-managed-rules：托管规则；</li><li>websec-mod-rate-limiting：速率限制；</li><li>websec-mod-custom-rules：自定义规则；</li><li>websec-mod-adaptive-control：自适应频控、智能客户端过滤、慢速攻击防护、流量盗刷防护；</li><li>websec-mod-bot：Bot管理。</li>
+        r"""指定例外规则的安全防护模块，仅当 SkipScope 为 WebSecurityModules 时有效，取值有：<li>websec-mod-managed-rules：托管规则；</li><li>websec-mod-rate-limiting：速率限制；</li><li>websec-mod-custom-rules：自定义规则；</li><li>websec-mod-adaptive-control：自适应频控、智能客户端过滤、慢速攻击防护、流量盗刷防护；</li><li>websec-mod-bot：Bot管理。</li>
         :rtype: list of str
         """
         return self._WebSecurityModulesForException
@@ -35260,8 +35237,19 @@ class ExceptionRule(AbstractModel):
         self._WebSecurityModulesForException = WebSecurityModulesForException
 
     @property
+    def WebSecuritySubmodulesForException(self):
+        r"""指定例外规则的安全防护子模块，仅当 SkipScope 为 WebSecuritySubmodules 时有效，取值有：<ul><li>托管规则（ManagedRules）模块功能：<ul><li>websec-mod-managed-rules/managed-rule-groups：规则集；</li><li>websec-mod-managed-rules/frequent-scanning-protection：高频扫描防护；</li></ul></li><li>速率限制（RateLimitingRules）模块功能：<ul><li>websec-mod-rate-limiting-rules：速率限制规则；</li></ul></li><li>自定义规则（CustomRules）模块功能：<ul><li>websec-mod-custom-rules：自定义规则；</li></ul></li><li>HTTP DDoS 防护（HttpDDoSProtection）模块功能：<ul><li>websec-mod-http-ddos-protection/adaptive-frequency-control：自适应频控；</li><li>websec-mod-http-ddos-protection/client-filtering：智能客户端过滤；</li><li>websec-mod-http-ddos-protection/bandwidth-abuse-defense：流量盗刷防护；</li></ul></li><li>高级 Bot 管理（BotManagement）模块功能：<ul><li>websec-mod-bot-management/basic-feature：基础特征管理；</li><li>websec-mod-bot-management/ip-reputation：客户端画像分析；</li><li>websec-mod-bot-management/bot-intelligence：智能 Bot 分析；</li><li>websec-mod-bot-management/custom-rules：自定义规则；</li><li>websec-mod-bot-management/browser-impersonation-detection：主动特征识别；</li><li>websec-mod-bot-management/client-attestation-rules：客户端认证；</li></ul></li><li>基础 Bot 管理（BotManagementLite）模块功能：<ul><li>websec-mod-bot-management-lite/ai-crawler-detection：AI 爬虫处置；</li><li>websec-mod-bot-management-lite/captcha-page-challenge：人机校验页。</li></ul></li></ul>
+        :rtype: list of str
+        """
+        return self._WebSecuritySubmodulesForException
+
+    @WebSecuritySubmodulesForException.setter
+    def WebSecuritySubmodulesForException(self, WebSecuritySubmodulesForException):
+        self._WebSecuritySubmodulesForException = WebSecuritySubmodulesForException
+
+    @property
     def ManagedRulesForException(self):
-        r"""指定例外规则的具体托管规则，仅当 SkipScope 为 ManagedRules 时有效，且此时不能指定 ManagedRuleGroupsForException 。
+        r"""指定例外规则的具体托管规则，仅当 SkipScope 为 ManagedRules 时有效。
         :rtype: list of str
         """
         return self._ManagedRulesForException
@@ -35272,7 +35260,7 @@ class ExceptionRule(AbstractModel):
 
     @property
     def ManagedRuleGroupsForException(self):
-        r"""指定例外规则的托管规则组，仅当 SkipScope 为 ManagedRules 时有效，且此时不能指定 ManagedRulesForException 。
+        r"""指定例外规则的托管规则组，仅当 SkipScope 为 ManagedRuleGroups 时有效。
         :rtype: list of str
         """
         return self._ManagedRuleGroupsForException
@@ -35283,7 +35271,7 @@ class ExceptionRule(AbstractModel):
 
     @property
     def RequestFieldsForException(self):
-        r"""指定例外规则跳过指定请求字段的具体配置，仅当 SkipScope 为 ManagedRules 并且 SkipOption 为 SkipOnSpecifiedRequestFields 时有效。
+        r"""指定例外规则跳过指定请求字段的具体配置，仅当 SkipScope 为 ManagedRules 或 ManagedRuleGroups 并且 SkipOption 为 SkipOnSpecifiedRequestFields 时有效。
         :rtype: list of RequestFieldsForException
         """
         return self._RequestFieldsForException
@@ -35311,6 +35299,7 @@ class ExceptionRule(AbstractModel):
         self._SkipScope = params.get("SkipScope")
         self._SkipOption = params.get("SkipOption")
         self._WebSecurityModulesForException = params.get("WebSecurityModulesForException")
+        self._WebSecuritySubmodulesForException = params.get("WebSecuritySubmodulesForException")
         self._ManagedRulesForException = params.get("ManagedRulesForException")
         self._ManagedRuleGroupsForException = params.get("ManagedRuleGroupsForException")
         if params.get("RequestFieldsForException") is not None:
@@ -38750,22 +38739,34 @@ class IPSSLConfig(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AssociatedDomain: IP SSL关联的域名。如果Status值为 unbound 时，该字段为空值。
+        :param _ZoneId: <p>IP SSL 关联域名所属站点ID。如果Status值为 unbound 时，该字段为空值。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ZoneId: str
+        :param _AssociatedDomain: <p>IP SSL关联的域名。如果Status值为 unbound 时，该字段为空值。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type AssociatedDomain: str
-        :param _Status: 关联状态， 取值如下：
-<li>bound：IP SSL配置已绑定</li>
-<li>binding：IP SSL配置绑定中</li>
-<li>unbinding：IP SSL配置解绑中</li>
-<li>unbound：IP SSL配置未绑定</li>
+        :param _Status: <p>关联状态， 取值如下：</p><li>bound：IP SSL配置已绑定</li><li>binding：IP SSL配置绑定中</li><li>unbinding：IP SSL配置解绑中</li><li>unbound：IP SSL配置未绑定</li>
         :type Status: str
         """
+        self._ZoneId = None
         self._AssociatedDomain = None
         self._Status = None
 
     @property
+    def ZoneId(self):
+        r"""<p>IP SSL 关联域名所属站点ID。如果Status值为 unbound 时，该字段为空值。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
     def AssociatedDomain(self):
-        r"""IP SSL关联的域名。如果Status值为 unbound 时，该字段为空值。
+        r"""<p>IP SSL关联的域名。如果Status值为 unbound 时，该字段为空值。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -38777,11 +38778,7 @@ class IPSSLConfig(AbstractModel):
 
     @property
     def Status(self):
-        r"""关联状态， 取值如下：
-<li>bound：IP SSL配置已绑定</li>
-<li>binding：IP SSL配置绑定中</li>
-<li>unbinding：IP SSL配置解绑中</li>
-<li>unbound：IP SSL配置未绑定</li>
+        r"""<p>关联状态， 取值如下：</p><li>bound：IP SSL配置已绑定</li><li>binding：IP SSL配置绑定中</li><li>unbinding：IP SSL配置解绑中</li><li>unbound：IP SSL配置未绑定</li>
         :rtype: str
         """
         return self._Status
@@ -38792,6 +38789,7 @@ class IPSSLConfig(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
         self._AssociatedDomain = params.get("AssociatedDomain")
         self._Status = params.get("Status")
         memeber_set = set(params.keys())
@@ -52903,8 +52901,10 @@ class OriginDetail(AbstractModel):
 <li>当 OriginType = IP_DOMAIN 时，该参数为 IPv4、IPv6 地址或域名；</li>
 <li>当 OriginType = COS 时，该参数为 COS 桶的访问域名；</li>
 <li>当 OriginType = AWS_S3，该参数为 S3 桶的访问域名；</li>
-<li>当 OriginType = ORIGIN_GROUP 时，该参数为源站组 ID；</li>
+<li>当 OriginType = ORIGIN_GROUP 时，该参数为源站组 ID；如果引用了其它站点的源站组，格式为{源站组 ID}@{ZoneID}。例如：og-testorigin@zone-38moq1z10wwwy</li>
 <li>当 OriginType = VOD 时，该参数请填写云点播应用 ID ；</li>
+<li>当 OriginType = LB 时，该参数请填写负载均衡实例 ID，该功能当前仅白名单开放；如果引用了其它站点的负载均衡，格式为{负载均衡 ID}@{ZoneID}。例如：lb-2rxpamcyqfzg@zone-38moq1z10wwwy</li>
+<li>当 OriginType = SPACE 时，该参数请填写源站卸载空间 ID，该功能当前仅白名单开放。</li>
         :type Origin: str
         :param _BackupOrigin: 备用源站组 ID，该参数仅在 OriginType = ORIGIN_GROUP 且配置了备源站组时会生效。
         :type BackupOrigin: str
@@ -52972,8 +52972,10 @@ class OriginDetail(AbstractModel):
 <li>当 OriginType = IP_DOMAIN 时，该参数为 IPv4、IPv6 地址或域名；</li>
 <li>当 OriginType = COS 时，该参数为 COS 桶的访问域名；</li>
 <li>当 OriginType = AWS_S3，该参数为 S3 桶的访问域名；</li>
-<li>当 OriginType = ORIGIN_GROUP 时，该参数为源站组 ID；</li>
+<li>当 OriginType = ORIGIN_GROUP 时，该参数为源站组 ID；如果引用了其它站点的源站组，格式为{源站组 ID}@{ZoneID}。例如：og-testorigin@zone-38moq1z10wwwy</li>
 <li>当 OriginType = VOD 时，该参数请填写云点播应用 ID ；</li>
+<li>当 OriginType = LB 时，该参数请填写负载均衡实例 ID，该功能当前仅白名单开放；如果引用了其它站点的负载均衡，格式为{负载均衡 ID}@{ZoneID}。例如：lb-2rxpamcyqfzg@zone-38moq1z10wwwy</li>
+<li>当 OriginType = SPACE 时，该参数请填写源站卸载空间 ID，该功能当前仅白名单开放。</li>
         :rtype: str
         """
         return self._Origin

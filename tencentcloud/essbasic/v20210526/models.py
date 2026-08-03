@@ -15615,13 +15615,11 @@ class CreateFlowForwardsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TargetOpenId: 合同对应参与方需要修改的目标经办人对应的OpenId。
-
-注意：`需要保证目标经办人已经加入企业且已实名`
+        :param _TargetOpenId: <p>合同对应参与方需要修改的目标经办人对应的OpenId。</p><p>注意：<code>需要保证目标经办人已经加入企业且已实名</code></p>
         :type TargetOpenId: str
-        :param _FlowForwardInfos: 企业签署方的合同及对应签署方
+        :param _FlowForwardInfos: <p>企业签署方的合同及对应签署方</p>
         :type FlowForwardInfos: list of FlowForwardInfo
-        :param _Agent: 关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。此接口下面信息必填。<ul><li>渠道应用标识:  Agent.AppId</li><li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId</li><li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li></ul>第三方平台子客企业和员工必须已经经过实名认证
+        :param _Agent: <p>关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。此接口下面信息必填。<ul><li>渠道应用标识:  Agent.AppId</li><li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId</li><li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li></ul>第三方平台子客企业和员工必须已经经过实名认证</p>
         :type Agent: :class:`tencentcloud.essbasic.v20210526.models.Agent`
         """
         self._TargetOpenId = None
@@ -15630,9 +15628,7 @@ class CreateFlowForwardsRequest(AbstractModel):
 
     @property
     def TargetOpenId(self):
-        r"""合同对应参与方需要修改的目标经办人对应的OpenId。
-
-注意：`需要保证目标经办人已经加入企业且已实名`
+        r"""<p>合同对应参与方需要修改的目标经办人对应的OpenId。</p><p>注意：<code>需要保证目标经办人已经加入企业且已实名</code></p>
         :rtype: str
         """
         return self._TargetOpenId
@@ -15643,7 +15639,7 @@ class CreateFlowForwardsRequest(AbstractModel):
 
     @property
     def FlowForwardInfos(self):
-        r"""企业签署方的合同及对应签署方
+        r"""<p>企业签署方的合同及对应签署方</p>
         :rtype: list of FlowForwardInfo
         """
         return self._FlowForwardInfos
@@ -15654,7 +15650,7 @@ class CreateFlowForwardsRequest(AbstractModel):
 
     @property
     def Agent(self):
-        r"""关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。此接口下面信息必填。<ul><li>渠道应用标识:  Agent.AppId</li><li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId</li><li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li></ul>第三方平台子客企业和员工必须已经经过实名认证
+        r"""<p>关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。此接口下面信息必填。<ul><li>渠道应用标识:  Agent.AppId</li><li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId</li><li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li></ul>第三方平台子客企业和员工必须已经经过实名认证</p>
         :rtype: :class:`tencentcloud.essbasic.v20210526.models.Agent`
         """
         return self._Agent
@@ -15692,9 +15688,9 @@ class CreateFlowForwardsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _FailedFlows: 失败的合同id以及错误详情
+        :param _FailedFlows: <p>失败的合同id以及错误详情</p>
         :type FailedFlows: list of FlowForwardResult
-        :param _SuccessFlows: 成功的合同id
+        :param _SuccessFlows: <p>成功的合同id</p>
         :type SuccessFlows: list of str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -15705,7 +15701,7 @@ class CreateFlowForwardsResponse(AbstractModel):
 
     @property
     def FailedFlows(self):
-        r"""失败的合同id以及错误详情
+        r"""<p>失败的合同id以及错误详情</p>
         :rtype: list of FlowForwardResult
         """
         return self._FailedFlows
@@ -15716,7 +15712,7 @@ class CreateFlowForwardsResponse(AbstractModel):
 
     @property
     def SuccessFlows(self):
-        r"""成功的合同id
+        r"""<p>成功的合同id</p>
         :rtype: list of str
         """
         return self._SuccessFlows

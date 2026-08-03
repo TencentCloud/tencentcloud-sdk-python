@@ -6419,14 +6419,14 @@ class ModifyEndpointRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AutoAdjustQuota: 自动调整配额
+        :param _AutoAdjustQuota: <p>自动调整配额</p>
         :type AutoAdjustQuota: int
         """
         self._AutoAdjustQuota = None
 
     @property
     def AutoAdjustQuota(self):
-        r"""自动调整配额
+        r"""<p>自动调整配额</p>
         :rtype: int
         """
         return self._AutoAdjustQuota

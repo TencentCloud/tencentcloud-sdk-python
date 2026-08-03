@@ -929,30 +929,19 @@ class AIGWJWTCredentialConfig(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Key: <p>JWT 消费者标识，iss claim</p>
-        :type Key: str
         :param _Algorithm: <p>签名算法，取值：HS256 HS384 HS512 RS256 RS384 RS512 ES256 ES384 ES512</p>
         :type Algorithm: str
-        :param _Secret: <p>HS 对称密钥，仅 Algorithm 为 HS256/HS384/HS512 时必填；RS/ES* 时留空</p>
-        :type Secret: str
+        :param _Key: <p>JWT 消费者标识，iss claim</p>
+        :type Key: str
         :param _RSAPublicKey: <p>RS/ES PEM 格式公钥，仅 Algorithm 为 RS256/RS384/RS512/ES256/ES384/ES512 时必填；HS* 时留空</p>
         :type RSAPublicKey: str
+        :param _Secret: <p>HS 对称密钥，仅 Algorithm 为 HS256/HS384/HS512 时必填；RS/ES* 时留空</p>
+        :type Secret: str
         """
-        self._Key = None
         self._Algorithm = None
-        self._Secret = None
+        self._Key = None
         self._RSAPublicKey = None
-
-    @property
-    def Key(self):
-        r"""<p>JWT 消费者标识，iss claim</p>
-        :rtype: str
-        """
-        return self._Key
-
-    @Key.setter
-    def Key(self, Key):
-        self._Key = Key
+        self._Secret = None
 
     @property
     def Algorithm(self):
@@ -966,15 +955,15 @@ class AIGWJWTCredentialConfig(AbstractModel):
         self._Algorithm = Algorithm
 
     @property
-    def Secret(self):
-        r"""<p>HS 对称密钥，仅 Algorithm 为 HS256/HS384/HS512 时必填；RS/ES* 时留空</p>
+    def Key(self):
+        r"""<p>JWT 消费者标识，iss claim</p>
         :rtype: str
         """
-        return self._Secret
+        return self._Key
 
-    @Secret.setter
-    def Secret(self, Secret):
-        self._Secret = Secret
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
 
     @property
     def RSAPublicKey(self):
@@ -987,12 +976,23 @@ class AIGWJWTCredentialConfig(AbstractModel):
     def RSAPublicKey(self, RSAPublicKey):
         self._RSAPublicKey = RSAPublicKey
 
+    @property
+    def Secret(self):
+        r"""<p>HS 对称密钥，仅 Algorithm 为 HS256/HS384/HS512 时必填；RS/ES* 时留空</p>
+        :rtype: str
+        """
+        return self._Secret
+
+    @Secret.setter
+    def Secret(self, Secret):
+        self._Secret = Secret
+
 
     def _deserialize(self, params):
-        self._Key = params.get("Key")
         self._Algorithm = params.get("Algorithm")
-        self._Secret = params.get("Secret")
+        self._Key = params.get("Key")
         self._RSAPublicKey = params.get("RSAPublicKey")
+        self._Secret = params.get("Secret")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1221,9 +1221,12 @@ class AIGWLLMQuotaLimit(AbstractModel):
         :type RPMLimit: int
         :param _TPMLimit: <p>该模型服务每分钟 Token 数上限，0 表示该维度不限</p>
         :type TPMLimit: int
+        :param _ConcurrentCountLimit: <p>并发数限流</p>
+        :type ConcurrentCountLimit: int
         """
         self._RPMLimit = None
         self._TPMLimit = None
+        self._ConcurrentCountLimit = None
 
     @property
     def RPMLimit(self):
@@ -1247,10 +1250,22 @@ class AIGWLLMQuotaLimit(AbstractModel):
     def TPMLimit(self, TPMLimit):
         self._TPMLimit = TPMLimit
 
+    @property
+    def ConcurrentCountLimit(self):
+        r"""<p>并发数限流</p>
+        :rtype: int
+        """
+        return self._ConcurrentCountLimit
+
+    @ConcurrentCountLimit.setter
+    def ConcurrentCountLimit(self, ConcurrentCountLimit):
+        self._ConcurrentCountLimit = ConcurrentCountLimit
+
 
     def _deserialize(self, params):
         self._RPMLimit = params.get("RPMLimit")
         self._TPMLimit = params.get("TPMLimit")
+        self._ConcurrentCountLimit = params.get("ConcurrentCountLimit")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3268,17 +3283,20 @@ class AIGWOAuthCredentialConfig(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ClientId: <p>客户端ID</p>
+        :param _ClientId: <p>OAuth2 client_id</p>
         :type ClientId: str
-        :param _ClientSecret: <p>客户端密钥</p>
+        :param _ClientSecret: <p>OAuth2 client_secret</p>
         :type ClientSecret: str
+        :param _RedirectURIs: <p>OAuth2 授权回调地址</p>
+        :type RedirectURIs: str
         """
         self._ClientId = None
         self._ClientSecret = None
+        self._RedirectURIs = None
 
     @property
     def ClientId(self):
-        r"""<p>客户端ID</p>
+        r"""<p>OAuth2 client_id</p>
         :rtype: str
         """
         return self._ClientId
@@ -3289,7 +3307,7 @@ class AIGWOAuthCredentialConfig(AbstractModel):
 
     @property
     def ClientSecret(self):
-        r"""<p>客户端密钥</p>
+        r"""<p>OAuth2 client_secret</p>
         :rtype: str
         """
         return self._ClientSecret
@@ -3298,10 +3316,22 @@ class AIGWOAuthCredentialConfig(AbstractModel):
     def ClientSecret(self, ClientSecret):
         self._ClientSecret = ClientSecret
 
+    @property
+    def RedirectURIs(self):
+        r"""<p>OAuth2 授权回调地址</p>
+        :rtype: str
+        """
+        return self._RedirectURIs
+
+    @RedirectURIs.setter
+    def RedirectURIs(self, RedirectURIs):
+        self._RedirectURIs = RedirectURIs
+
 
     def _deserialize(self, params):
         self._ClientId = params.get("ClientId")
         self._ClientSecret = params.get("ClientSecret")
+        self._RedirectURIs = params.get("RedirectURIs")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3522,7 +3552,7 @@ class AIGWOIDCCredentialConfig(AbstractModel):
         r"""
         :param _ClientId: <p>IdP 注册的 client_id</p>
         :type ClientId: str
-        :param _ClientSecret: <p>客户端密钥</p><p>参数格式：IdP 注册的 client_secret</p>
+        :param _ClientSecret: <p>IdP 注册的 client_secret</p>
         :type ClientSecret: str
         :param _IssuerURL: <p>IdP Issuer URL</p>
         :type IssuerURL: str
@@ -3547,7 +3577,7 @@ class AIGWOIDCCredentialConfig(AbstractModel):
 
     @property
     def ClientSecret(self):
-        r"""<p>客户端密钥</p><p>参数格式：IdP 注册的 client_secret</p>
+        r"""<p>IdP 注册的 client_secret</p>
         :rtype: str
         """
         return self._ClientSecret
@@ -3609,11 +3639,17 @@ class AIGWRedisConfig(AbstractModel):
         :type Username: str
         :param _Password: <p>密码</p>
         :type Password: str
+        :param _RedisConfigId: <p>Redis配置ID</p>
+        :type RedisConfigId: str
+        :param _Type: <p>Redis部署类型，如standalone（单机）、cluster（集群）</p>
+        :type Type: str
         """
         self._Host = None
         self._Port = None
         self._Username = None
         self._Password = None
+        self._RedisConfigId = None
+        self._Type = None
 
     @property
     def Host(self):
@@ -3659,12 +3695,36 @@ class AIGWRedisConfig(AbstractModel):
     def Password(self, Password):
         self._Password = Password
 
+    @property
+    def RedisConfigId(self):
+        r"""<p>Redis配置ID</p>
+        :rtype: str
+        """
+        return self._RedisConfigId
+
+    @RedisConfigId.setter
+    def RedisConfigId(self, RedisConfigId):
+        self._RedisConfigId = RedisConfigId
+
+    @property
+    def Type(self):
+        r"""<p>Redis部署类型，如standalone（单机）、cluster（集群）</p>
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
 
     def _deserialize(self, params):
         self._Host = params.get("Host")
         self._Port = params.get("Port")
         self._Username = params.get("Username")
         self._Password = params.get("Password")
+        self._RedisConfigId = params.get("RedisConfigId")
+        self._Type = params.get("Type")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4566,24 +4626,13 @@ class CNAPIGwCreateCommonResult(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Success: 是否成功
-        :type Success: bool
         :param _ID: 对应的id 值
         :type ID: str
+        :param _Success: 是否成功
+        :type Success: bool
         """
-        self._Success = None
         self._ID = None
-
-    @property
-    def Success(self):
-        r"""是否成功
-        :rtype: bool
-        """
-        return self._Success
-
-    @Success.setter
-    def Success(self, Success):
-        self._Success = Success
+        self._Success = None
 
     @property
     def ID(self):
@@ -4596,10 +4645,21 @@ class CNAPIGwCreateCommonResult(AbstractModel):
     def ID(self, ID):
         self._ID = ID
 
+    @property
+    def Success(self):
+        r"""是否成功
+        :rtype: bool
+        """
+        return self._Success
+
+    @Success.setter
+    def Success(self, Success):
+        self._Success = Success
+
 
     def _deserialize(self, params):
-        self._Success = params.get("Success")
         self._ID = params.get("ID")
+        self._Success = params.get("Success")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5052,87 +5112,93 @@ class CNAPIGwMCPToolParam(AbstractModel):
         
 
 
-class CNAPIGwSecretKey(AbstractModel):
-    r"""密钥信息
+class CNAPIGwMCPToolPreview(AbstractModel):
+    r"""通过OpenAPI文件导入MCP tools的预览内容
 
     """
 
     def __init__(self):
         r"""
-        :param _SecretKeyId: <p>密钥id</p>
-        :type SecretKeyId: str
-        :param _Name: <p>密钥名字</p>
-        :type Name: str
-        :param _SecretType: <p>密钥协议类型。</p>
-        :type SecretType: str
-        :param _Status: <p>状态。</p><p>枚举值：</p><ul><li>Enable： 启用</li><li>Disable： 禁用</li></ul>
-        :type Status: str
-        :param _GenerateType: <p>密钥生成方式。</p><p>枚举值：</p><ul><li>System： 系统自动生成</li><li>Custom： 用户自定义</li><li>KMS： 使用 KMS 密钥</li></ul>
-        :type GenerateType: str
-        :param _SecretValue: <p>密钥明文</p>
-        :type SecretValue: str
-        :param _KmsKeyName: <p>KMS凭证名字</p>
-注意：此字段可能返回 null，表示取不到有效值。
-        :type KmsKeyName: str
-        :param _KmsKeyVersion: <p>KMS凭证版本</p>
-注意：此字段可能返回 null，表示取不到有效值。
-        :type KmsKeyVersion: str
-        :param _Description: <p>描述</p>
+        :param _ContentType: <p>MCP Tool入参的ContentType</p><p>枚举值：</p><ul><li>application/json： json格式</li><li>application/x-www-form-urlencoded： 表单格式</li></ul>
+        :type ContentType: str
+        :param _Description: <p>MCP Tool的描述</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Description: str
-        :param _CanBind: <p>是否可以绑定</p>
+        :param _InputParams: <p>MCP Tool的参数</p>
+        :type InputParams: list of CNAPIGwMCPToolParam
+        :param _Method: <p>MCP Tool的请求方法</p>
+        :type Method: str
+        :param _Name: <p>MCP Tool名字</p>
+        :type Name: str
+        :param _Path: <p>MCP Tool的请求路径</p>
+        :type Path: str
+        :param _Status: <p>MCP Tool的状态</p><p>枚举值：</p><ul><li>Valid： 可导入</li><li>Invalid： 不可导入</li></ul>
+        :type Status: str
+        :param _StatusMessage: <p>不可导入的原因</p>
 注意：此字段可能返回 null，表示取不到有效值。
-        :type CanBind: bool
-        :param _CreateTime: <p>创建时间</p>
-        :type CreateTime: str
-        :param _ModifyTime: <p>修改时间</p>
-        :type ModifyTime: str
-        :param _BindCount: <p>绑定数</p>
-        :type BindCount: int
-        :param _ResourceType: <p>密钥归属资源类型。</p><p>枚举值：</p><ul><li>Consumer： 消费者</li><li>ModelService： 模型服务</li></ul>
-        :type ResourceType: str
-        :param _JWTCredentialConfig: <p>JWT凭证配置</p>
-        :type JWTCredentialConfig: :class:`tencentcloud.cngw.v20230418.models.AIGWJWTCredentialConfig`
-        :param _OAuthCredentialConfig: <p>OAuth2凭证配置</p>
-        :type OAuthCredentialConfig: :class:`tencentcloud.cngw.v20230418.models.AIGWOAuthCredentialConfig`
-        :param _OIDCCredentialConfig: <p>OIDC凭证配置</p>
-        :type OIDCCredentialConfig: :class:`tencentcloud.cngw.v20230418.models.AIGWOIDCCredentialConfig`
-        :param _Provider: <p>Agent 密钥类型</p>
-        :type Provider: str
+        :type StatusMessage: str
+        :param _UpstreamUrl: <p>虚拟MCP Server的tools的完整url路径</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpstreamUrl: str
         """
-        self._SecretKeyId = None
-        self._Name = None
-        self._SecretType = None
-        self._Status = None
-        self._GenerateType = None
-        self._SecretValue = None
-        self._KmsKeyName = None
-        self._KmsKeyVersion = None
+        self._ContentType = None
         self._Description = None
-        self._CanBind = None
-        self._CreateTime = None
-        self._ModifyTime = None
-        self._BindCount = None
-        self._ResourceType = None
-        self._JWTCredentialConfig = None
-        self._OAuthCredentialConfig = None
-        self._OIDCCredentialConfig = None
-        self._Provider = None
+        self._InputParams = None
+        self._Method = None
+        self._Name = None
+        self._Path = None
+        self._Status = None
+        self._StatusMessage = None
+        self._UpstreamUrl = None
 
     @property
-    def SecretKeyId(self):
-        r"""<p>密钥id</p>
+    def ContentType(self):
+        r"""<p>MCP Tool入参的ContentType</p><p>枚举值：</p><ul><li>application/json： json格式</li><li>application/x-www-form-urlencoded： 表单格式</li></ul>
         :rtype: str
         """
-        return self._SecretKeyId
+        return self._ContentType
 
-    @SecretKeyId.setter
-    def SecretKeyId(self, SecretKeyId):
-        self._SecretKeyId = SecretKeyId
+    @ContentType.setter
+    def ContentType(self, ContentType):
+        self._ContentType = ContentType
+
+    @property
+    def Description(self):
+        r"""<p>MCP Tool的描述</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def InputParams(self):
+        r"""<p>MCP Tool的参数</p>
+        :rtype: list of CNAPIGwMCPToolParam
+        """
+        return self._InputParams
+
+    @InputParams.setter
+    def InputParams(self, InputParams):
+        self._InputParams = InputParams
+
+    @property
+    def Method(self):
+        r"""<p>MCP Tool的请求方法</p>
+        :rtype: str
+        """
+        return self._Method
+
+    @Method.setter
+    def Method(self, Method):
+        self._Method = Method
 
     @property
     def Name(self):
-        r"""<p>密钥名字</p>
+        r"""<p>MCP Tool名字</p>
         :rtype: str
         """
         return self._Name
@@ -5142,19 +5208,19 @@ class CNAPIGwSecretKey(AbstractModel):
         self._Name = Name
 
     @property
-    def SecretType(self):
-        r"""<p>密钥协议类型。</p>
+    def Path(self):
+        r"""<p>MCP Tool的请求路径</p>
         :rtype: str
         """
-        return self._SecretType
+        return self._Path
 
-    @SecretType.setter
-    def SecretType(self, SecretType):
-        self._SecretType = SecretType
+    @Path.setter
+    def Path(self, Path):
+        self._Path = Path
 
     @property
     def Status(self):
-        r"""<p>状态。</p><p>枚举值：</p><ul><li>Enable： 启用</li><li>Disable： 禁用</li></ul>
+        r"""<p>MCP Tool的状态</p><p>枚举值：</p><ul><li>Valid： 可导入</li><li>Invalid： 不可导入</li></ul>
         :rtype: str
         """
         return self._Status
@@ -5162,6 +5228,225 @@ class CNAPIGwSecretKey(AbstractModel):
     @Status.setter
     def Status(self, Status):
         self._Status = Status
+
+    @property
+    def StatusMessage(self):
+        r"""<p>不可导入的原因</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._StatusMessage
+
+    @StatusMessage.setter
+    def StatusMessage(self, StatusMessage):
+        self._StatusMessage = StatusMessage
+
+    @property
+    def UpstreamUrl(self):
+        r"""<p>虚拟MCP Server的tools的完整url路径</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._UpstreamUrl
+
+    @UpstreamUrl.setter
+    def UpstreamUrl(self, UpstreamUrl):
+        self._UpstreamUrl = UpstreamUrl
+
+
+    def _deserialize(self, params):
+        self._ContentType = params.get("ContentType")
+        self._Description = params.get("Description")
+        if params.get("InputParams") is not None:
+            self._InputParams = []
+            for item in params.get("InputParams"):
+                obj = CNAPIGwMCPToolParam()
+                obj._deserialize(item)
+                self._InputParams.append(obj)
+        self._Method = params.get("Method")
+        self._Name = params.get("Name")
+        self._Path = params.get("Path")
+        self._Status = params.get("Status")
+        self._StatusMessage = params.get("StatusMessage")
+        self._UpstreamUrl = params.get("UpstreamUrl")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CNAPIGwParseMCPToolsResult(AbstractModel):
+    r"""DescribeCloudNativeAPIGatewayMCPToolsFromFile接口的出参
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DataList: <p>MCP Tools列表</p>
+        :type DataList: list of CNAPIGwMCPToolPreview
+        :param _TotalCount: <p>MCP tools的数量</p>
+        :type TotalCount: int
+        """
+        self._DataList = None
+        self._TotalCount = None
+
+    @property
+    def DataList(self):
+        r"""<p>MCP Tools列表</p>
+        :rtype: list of CNAPIGwMCPToolPreview
+        """
+        return self._DataList
+
+    @DataList.setter
+    def DataList(self, DataList):
+        self._DataList = DataList
+
+    @property
+    def TotalCount(self):
+        r"""<p>MCP tools的数量</p>
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+
+    def _deserialize(self, params):
+        if params.get("DataList") is not None:
+            self._DataList = []
+            for item in params.get("DataList"):
+                obj = CNAPIGwMCPToolPreview()
+                obj._deserialize(item)
+                self._DataList.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CNAPIGwSecretKey(AbstractModel):
+    r"""密钥信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BindCount: <p>绑定数</p>
+        :type BindCount: int
+        :param _CanBind: <p>是否可以绑定</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CanBind: bool
+        :param _CreateTime: <p>创建时间</p>
+        :type CreateTime: str
+        :param _Description: <p>描述</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Description: str
+        :param _GenerateType: <p>密钥生成方式。</p><p>枚举值：</p><ul><li>System： 系统自动生成</li><li>Custom： 用户自定义</li><li>KMS： 使用 KMS 密钥</li></ul>
+        :type GenerateType: str
+        :param _JWTCredentialConfig: <p>JWT凭证配置</p>
+        :type JWTCredentialConfig: :class:`tencentcloud.cngw.v20230418.models.AIGWJWTCredentialConfig`
+        :param _KmsKeyName: <p>KMS凭证名字</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type KmsKeyName: str
+        :param _KmsKeyVersion: <p>KMS凭证版本</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type KmsKeyVersion: str
+        :param _ModifyTime: <p>修改时间</p>
+        :type ModifyTime: str
+        :param _Name: <p>密钥名字</p>
+        :type Name: str
+        :param _OAuthCredentialConfig: <p>OAuth凭证配置</p>
+        :type OAuthCredentialConfig: :class:`tencentcloud.cngw.v20230418.models.AIGWOAuthCredentialConfig`
+        :param _OIDCCredentialConfig: <p>OIDC凭证配置</p>
+        :type OIDCCredentialConfig: :class:`tencentcloud.cngw.v20230418.models.AIGWOIDCCredentialConfig`
+        :param _Provider: <p>secret key provider方</p><p>枚举值：</p><ul><li>Dify： Dify</li></ul>
+        :type Provider: str
+        :param _ResourceType: <p>密钥归属资源类型。</p><p>枚举值：</p><ul><li>Consumer： 消费者</li><li>ModelService： 模型服务</li></ul>
+        :type ResourceType: str
+        :param _SecretKeyId: <p>密钥id</p>
+        :type SecretKeyId: str
+        :param _SecretType: <p>密钥协议类型。</p>
+        :type SecretType: str
+        :param _SecretValue: <p>密钥明文</p>
+        :type SecretValue: str
+        :param _Status: <p>状态。</p><p>枚举值：</p><ul><li>Enable： 启用</li><li>Disable： 禁用</li></ul>
+        :type Status: str
+        """
+        self._BindCount = None
+        self._CanBind = None
+        self._CreateTime = None
+        self._Description = None
+        self._GenerateType = None
+        self._JWTCredentialConfig = None
+        self._KmsKeyName = None
+        self._KmsKeyVersion = None
+        self._ModifyTime = None
+        self._Name = None
+        self._OAuthCredentialConfig = None
+        self._OIDCCredentialConfig = None
+        self._Provider = None
+        self._ResourceType = None
+        self._SecretKeyId = None
+        self._SecretType = None
+        self._SecretValue = None
+        self._Status = None
+
+    @property
+    def BindCount(self):
+        r"""<p>绑定数</p>
+        :rtype: int
+        """
+        return self._BindCount
+
+    @BindCount.setter
+    def BindCount(self, BindCount):
+        self._BindCount = BindCount
+
+    @property
+    def CanBind(self):
+        r"""<p>是否可以绑定</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._CanBind
+
+    @CanBind.setter
+    def CanBind(self, CanBind):
+        self._CanBind = CanBind
+
+    @property
+    def CreateTime(self):
+        r"""<p>创建时间</p>
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def Description(self):
+        r"""<p>描述</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
 
     @property
     def GenerateType(self):
@@ -5175,15 +5460,15 @@ class CNAPIGwSecretKey(AbstractModel):
         self._GenerateType = GenerateType
 
     @property
-    def SecretValue(self):
-        r"""<p>密钥明文</p>
-        :rtype: str
+    def JWTCredentialConfig(self):
+        r"""<p>JWT凭证配置</p>
+        :rtype: :class:`tencentcloud.cngw.v20230418.models.AIGWJWTCredentialConfig`
         """
-        return self._SecretValue
+        return self._JWTCredentialConfig
 
-    @SecretValue.setter
-    def SecretValue(self, SecretValue):
-        self._SecretValue = SecretValue
+    @JWTCredentialConfig.setter
+    def JWTCredentialConfig(self, JWTCredentialConfig):
+        self._JWTCredentialConfig = JWTCredentialConfig
 
     @property
     def KmsKeyName(self):
@@ -5210,41 +5495,6 @@ class CNAPIGwSecretKey(AbstractModel):
         self._KmsKeyVersion = KmsKeyVersion
 
     @property
-    def Description(self):
-        r"""<p>描述</p>
-注意：此字段可能返回 null，表示取不到有效值。
-        :rtype: str
-        """
-        return self._Description
-
-    @Description.setter
-    def Description(self, Description):
-        self._Description = Description
-
-    @property
-    def CanBind(self):
-        r"""<p>是否可以绑定</p>
-注意：此字段可能返回 null，表示取不到有效值。
-        :rtype: bool
-        """
-        return self._CanBind
-
-    @CanBind.setter
-    def CanBind(self, CanBind):
-        self._CanBind = CanBind
-
-    @property
-    def CreateTime(self):
-        r"""<p>创建时间</p>
-        :rtype: str
-        """
-        return self._CreateTime
-
-    @CreateTime.setter
-    def CreateTime(self, CreateTime):
-        self._CreateTime = CreateTime
-
-    @property
     def ModifyTime(self):
         r"""<p>修改时间</p>
         :rtype: str
@@ -5256,41 +5506,19 @@ class CNAPIGwSecretKey(AbstractModel):
         self._ModifyTime = ModifyTime
 
     @property
-    def BindCount(self):
-        r"""<p>绑定数</p>
-        :rtype: int
-        """
-        return self._BindCount
-
-    @BindCount.setter
-    def BindCount(self, BindCount):
-        self._BindCount = BindCount
-
-    @property
-    def ResourceType(self):
-        r"""<p>密钥归属资源类型。</p><p>枚举值：</p><ul><li>Consumer： 消费者</li><li>ModelService： 模型服务</li></ul>
+    def Name(self):
+        r"""<p>密钥名字</p>
         :rtype: str
         """
-        return self._ResourceType
+        return self._Name
 
-    @ResourceType.setter
-    def ResourceType(self, ResourceType):
-        self._ResourceType = ResourceType
-
-    @property
-    def JWTCredentialConfig(self):
-        r"""<p>JWT凭证配置</p>
-        :rtype: :class:`tencentcloud.cngw.v20230418.models.AIGWJWTCredentialConfig`
-        """
-        return self._JWTCredentialConfig
-
-    @JWTCredentialConfig.setter
-    def JWTCredentialConfig(self, JWTCredentialConfig):
-        self._JWTCredentialConfig = JWTCredentialConfig
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
 
     @property
     def OAuthCredentialConfig(self):
-        r"""<p>OAuth2凭证配置</p>
+        r"""<p>OAuth凭证配置</p>
         :rtype: :class:`tencentcloud.cngw.v20230418.models.AIGWOAuthCredentialConfig`
         """
         return self._OAuthCredentialConfig
@@ -5312,7 +5540,7 @@ class CNAPIGwSecretKey(AbstractModel):
 
     @property
     def Provider(self):
-        r"""<p>Agent 密钥类型</p>
+        r"""<p>secret key provider方</p><p>枚举值：</p><ul><li>Dify： Dify</li></ul>
         :rtype: str
         """
         return self._Provider
@@ -5321,25 +5549,75 @@ class CNAPIGwSecretKey(AbstractModel):
     def Provider(self, Provider):
         self._Provider = Provider
 
+    @property
+    def ResourceType(self):
+        r"""<p>密钥归属资源类型。</p><p>枚举值：</p><ul><li>Consumer： 消费者</li><li>ModelService： 模型服务</li></ul>
+        :rtype: str
+        """
+        return self._ResourceType
+
+    @ResourceType.setter
+    def ResourceType(self, ResourceType):
+        self._ResourceType = ResourceType
+
+    @property
+    def SecretKeyId(self):
+        r"""<p>密钥id</p>
+        :rtype: str
+        """
+        return self._SecretKeyId
+
+    @SecretKeyId.setter
+    def SecretKeyId(self, SecretKeyId):
+        self._SecretKeyId = SecretKeyId
+
+    @property
+    def SecretType(self):
+        r"""<p>密钥协议类型。</p>
+        :rtype: str
+        """
+        return self._SecretType
+
+    @SecretType.setter
+    def SecretType(self, SecretType):
+        self._SecretType = SecretType
+
+    @property
+    def SecretValue(self):
+        r"""<p>密钥明文</p>
+        :rtype: str
+        """
+        return self._SecretValue
+
+    @SecretValue.setter
+    def SecretValue(self, SecretValue):
+        self._SecretValue = SecretValue
+
+    @property
+    def Status(self):
+        r"""<p>状态。</p><p>枚举值：</p><ul><li>Enable： 启用</li><li>Disable： 禁用</li></ul>
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
 
     def _deserialize(self, params):
-        self._SecretKeyId = params.get("SecretKeyId")
-        self._Name = params.get("Name")
-        self._SecretType = params.get("SecretType")
-        self._Status = params.get("Status")
-        self._GenerateType = params.get("GenerateType")
-        self._SecretValue = params.get("SecretValue")
-        self._KmsKeyName = params.get("KmsKeyName")
-        self._KmsKeyVersion = params.get("KmsKeyVersion")
-        self._Description = params.get("Description")
+        self._BindCount = params.get("BindCount")
         self._CanBind = params.get("CanBind")
         self._CreateTime = params.get("CreateTime")
-        self._ModifyTime = params.get("ModifyTime")
-        self._BindCount = params.get("BindCount")
-        self._ResourceType = params.get("ResourceType")
+        self._Description = params.get("Description")
+        self._GenerateType = params.get("GenerateType")
         if params.get("JWTCredentialConfig") is not None:
             self._JWTCredentialConfig = AIGWJWTCredentialConfig()
             self._JWTCredentialConfig._deserialize(params.get("JWTCredentialConfig"))
+        self._KmsKeyName = params.get("KmsKeyName")
+        self._KmsKeyVersion = params.get("KmsKeyVersion")
+        self._ModifyTime = params.get("ModifyTime")
+        self._Name = params.get("Name")
         if params.get("OAuthCredentialConfig") is not None:
             self._OAuthCredentialConfig = AIGWOAuthCredentialConfig()
             self._OAuthCredentialConfig._deserialize(params.get("OAuthCredentialConfig"))
@@ -5347,6 +5625,11 @@ class CNAPIGwSecretKey(AbstractModel):
             self._OIDCCredentialConfig = AIGWOIDCCredentialConfig()
             self._OIDCCredentialConfig._deserialize(params.get("OIDCCredentialConfig"))
         self._Provider = params.get("Provider")
+        self._ResourceType = params.get("ResourceType")
+        self._SecretKeyId = params.get("SecretKeyId")
+        self._SecretType = params.get("SecretType")
+        self._SecretValue = params.get("SecretValue")
+        self._Status = params.get("Status")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5390,7 +5673,7 @@ class CloudNativeAPIGatewayLLMModelAPI(AbstractModel):
         :type ModelServiceName: str
         :param _ModelServiceRoute: <p>模型服务路由策略（是指如何路由到模型服务）</p>
         :type ModelServiceRoute: :class:`tencentcloud.cngw.v20230418.models.CloudNativeAPIGatewayLLMModelServiceRoute`
-        :param _MatchHeaders: <p>无</p>
+        :param _MatchHeaders: <p>HTTP 请求头匹配规则，用于按请求头路由到不同模型服务。</p>
         :type MatchHeaders: list of AIGWKVMatch
         :param _EnableCrossServiceFallback: <p>是否开启跨服务fallback</p>
         :type EnableCrossServiceFallback: bool
@@ -5574,7 +5857,7 @@ class CloudNativeAPIGatewayLLMModelAPI(AbstractModel):
 
     @property
     def MatchHeaders(self):
-        r"""<p>无</p>
+        r"""<p>HTTP 请求头匹配规则，用于按请求头路由到不同模型服务。</p>
         :rtype: list of AIGWKVMatch
         """
         return self._MatchHeaders
@@ -7217,6 +7500,14 @@ class CreateCloudNativeAPIGatewayLLMModelServiceRequest(AbstractModel):
         :type KeyRotationEnabled: bool
         :param _KeyRotationPeriodDays: <p>密钥轮转周期</p><p>单位：天数</p>
         :type KeyRotationPeriodDays: int
+        :param _SourceId: <p>来源服务 ID。</p>
+        :type SourceId: str
+        :param _Namespace: <p>命名空间。</p>
+        :type Namespace: str
+        :param _ServiceName: <p>服务名称。</p>
+        :type ServiceName: str
+        :param _Protocol: <p>协议类型，如 OpenAI、Custom。</p>
+        :type Protocol: str
         """
         self._GatewayId = None
         self._Name = None
@@ -7246,6 +7537,10 @@ class CreateCloudNativeAPIGatewayLLMModelServiceRequest(AbstractModel):
         self._ExtParams = None
         self._KeyRotationEnabled = None
         self._KeyRotationPeriodDays = None
+        self._SourceId = None
+        self._Namespace = None
+        self._ServiceName = None
+        self._Protocol = None
 
     @property
     def GatewayId(self):
@@ -7555,6 +7850,50 @@ class CreateCloudNativeAPIGatewayLLMModelServiceRequest(AbstractModel):
     def KeyRotationPeriodDays(self, KeyRotationPeriodDays):
         self._KeyRotationPeriodDays = KeyRotationPeriodDays
 
+    @property
+    def SourceId(self):
+        r"""<p>来源服务 ID。</p>
+        :rtype: str
+        """
+        return self._SourceId
+
+    @SourceId.setter
+    def SourceId(self, SourceId):
+        self._SourceId = SourceId
+
+    @property
+    def Namespace(self):
+        r"""<p>命名空间。</p>
+        :rtype: str
+        """
+        return self._Namespace
+
+    @Namespace.setter
+    def Namespace(self, Namespace):
+        self._Namespace = Namespace
+
+    @property
+    def ServiceName(self):
+        r"""<p>服务名称。</p>
+        :rtype: str
+        """
+        return self._ServiceName
+
+    @ServiceName.setter
+    def ServiceName(self, ServiceName):
+        self._ServiceName = ServiceName
+
+    @property
+    def Protocol(self):
+        r"""<p>协议类型，如 OpenAI、Custom。</p>
+        :rtype: str
+        """
+        return self._Protocol
+
+    @Protocol.setter
+    def Protocol(self, Protocol):
+        self._Protocol = Protocol
+
 
     def _deserialize(self, params):
         self._GatewayId = params.get("GatewayId")
@@ -7601,6 +7940,10 @@ class CreateCloudNativeAPIGatewayLLMModelServiceRequest(AbstractModel):
                 self._ExtParams.append(obj)
         self._KeyRotationEnabled = params.get("KeyRotationEnabled")
         self._KeyRotationPeriodDays = params.get("KeyRotationPeriodDays")
+        self._SourceId = params.get("SourceId")
+        self._Namespace = params.get("Namespace")
+        self._ServiceName = params.get("ServiceName")
+        self._Protocol = params.get("Protocol")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -8056,41 +8399,44 @@ class CreateCloudNativeAPIGatewaySecretKeyRequest(AbstractModel):
         r"""
         :param _GatewayId: <p>实例 ID</p>
         :type GatewayId: str
-        :param _SecretType: <p>密钥协议类型。</p><p>枚举值：</p><ul><li>ApiKey</li><li>Basic</li><li>Hmac</li><li>OAuth2</li><li>JWT</li></ul>
-        :type SecretType: str
-        :param _Name: <p>密钥名称，2-60 字符。</p>
-        :type Name: str
         :param _GenerateType: <p>密钥生成方式。</p><p>枚举值：</p><ul><li>System：系统自动生成</li><li>Custom：用户自定义（需传 SecretValue）</li><li>KMS：使用 KMS 密钥（需传 KmsKeyName 与 KmsKeyVersion）</li></ul>
         :type GenerateType: str
+        :param _Name: <p>密钥名称，2-60 字符。</p>
+        :type Name: str
         :param _ResourceType: <p>密钥归属资源类型。</p><p>枚举值：</p><ul><li>Consumer：消费者</li><li>ModelService：模型服务</li></ul>
         :type ResourceType: str
-        :param _KmsKeyName: <p>KMS 密钥名称。GenerateType=KMS 时必填。</p>
-        :type KmsKeyName: str
-        :param _KmsKeyVersion: <p>KMS 密钥版本。GenerateType=KMS 时必填。</p>
-        :type KmsKeyVersion: str
-        :param _SecretValue: <p>密钥值，长度 8-256。GenerateType=Custom 时必填。</p>
-        :type SecretValue: str
+        :param _SecretType: <p>密钥协议类型。</p><p>枚举值：</p><ul><li>ApiKey</li><li>Basic</li><li>Hmac</li><li>OAuth2</li><li>JWT</li></ul>
+        :type SecretType: str
         :param _Description: <p>密钥描述。最长 200 字符。</p>
         :type Description: str
         :param _JWTCredentialConfig: <p>JWT凭证配置</p>
         :type JWTCredentialConfig: :class:`tencentcloud.cngw.v20230418.models.AIGWJWTCredentialConfig`
-        :param _OAuthCredentialConfig: <p>Oauth2凭证配置</p>
+        :param _KmsKeyName: <p>KMS 密钥名称。GenerateType=KMS 时必填。</p>
+        :type KmsKeyName: str
+        :param _KmsKeyVersion: <p>KMS 密钥版本。GenerateType=KMS 时必填。</p>
+        :type KmsKeyVersion: str
+        :param _OAuthCredentialConfig: <p>OAuth2.0凭证配置</p>
         :type OAuthCredentialConfig: :class:`tencentcloud.cngw.v20230418.models.AIGWOAuthCredentialConfig`
         :param _OIDCCredentialConfig: <p>OIDC凭证配置</p>
         :type OIDCCredentialConfig: :class:`tencentcloud.cngw.v20230418.models.AIGWOIDCCredentialConfig`
+        :param _Provider: <p>第三方平台类型</p><p>枚举值：</p><ul><li>Dify： Dify平台</li></ul>
+        :type Provider: str
+        :param _SecretValue: <p>密钥值，长度 8-256。GenerateType=Custom 时必填。</p>
+        :type SecretValue: str
         """
         self._GatewayId = None
-        self._SecretType = None
-        self._Name = None
         self._GenerateType = None
+        self._Name = None
         self._ResourceType = None
-        self._KmsKeyName = None
-        self._KmsKeyVersion = None
-        self._SecretValue = None
+        self._SecretType = None
         self._Description = None
         self._JWTCredentialConfig = None
+        self._KmsKeyName = None
+        self._KmsKeyVersion = None
         self._OAuthCredentialConfig = None
         self._OIDCCredentialConfig = None
+        self._Provider = None
+        self._SecretValue = None
 
     @property
     def GatewayId(self):
@@ -8104,15 +8450,15 @@ class CreateCloudNativeAPIGatewaySecretKeyRequest(AbstractModel):
         self._GatewayId = GatewayId
 
     @property
-    def SecretType(self):
-        r"""<p>密钥协议类型。</p><p>枚举值：</p><ul><li>ApiKey</li><li>Basic</li><li>Hmac</li><li>OAuth2</li><li>JWT</li></ul>
+    def GenerateType(self):
+        r"""<p>密钥生成方式。</p><p>枚举值：</p><ul><li>System：系统自动生成</li><li>Custom：用户自定义（需传 SecretValue）</li><li>KMS：使用 KMS 密钥（需传 KmsKeyName 与 KmsKeyVersion）</li></ul>
         :rtype: str
         """
-        return self._SecretType
+        return self._GenerateType
 
-    @SecretType.setter
-    def SecretType(self, SecretType):
-        self._SecretType = SecretType
+    @GenerateType.setter
+    def GenerateType(self, GenerateType):
+        self._GenerateType = GenerateType
 
     @property
     def Name(self):
@@ -8126,17 +8472,6 @@ class CreateCloudNativeAPIGatewaySecretKeyRequest(AbstractModel):
         self._Name = Name
 
     @property
-    def GenerateType(self):
-        r"""<p>密钥生成方式。</p><p>枚举值：</p><ul><li>System：系统自动生成</li><li>Custom：用户自定义（需传 SecretValue）</li><li>KMS：使用 KMS 密钥（需传 KmsKeyName 与 KmsKeyVersion）</li></ul>
-        :rtype: str
-        """
-        return self._GenerateType
-
-    @GenerateType.setter
-    def GenerateType(self, GenerateType):
-        self._GenerateType = GenerateType
-
-    @property
     def ResourceType(self):
         r"""<p>密钥归属资源类型。</p><p>枚举值：</p><ul><li>Consumer：消费者</li><li>ModelService：模型服务</li></ul>
         :rtype: str
@@ -8148,37 +8483,15 @@ class CreateCloudNativeAPIGatewaySecretKeyRequest(AbstractModel):
         self._ResourceType = ResourceType
 
     @property
-    def KmsKeyName(self):
-        r"""<p>KMS 密钥名称。GenerateType=KMS 时必填。</p>
+    def SecretType(self):
+        r"""<p>密钥协议类型。</p><p>枚举值：</p><ul><li>ApiKey</li><li>Basic</li><li>Hmac</li><li>OAuth2</li><li>JWT</li></ul>
         :rtype: str
         """
-        return self._KmsKeyName
+        return self._SecretType
 
-    @KmsKeyName.setter
-    def KmsKeyName(self, KmsKeyName):
-        self._KmsKeyName = KmsKeyName
-
-    @property
-    def KmsKeyVersion(self):
-        r"""<p>KMS 密钥版本。GenerateType=KMS 时必填。</p>
-        :rtype: str
-        """
-        return self._KmsKeyVersion
-
-    @KmsKeyVersion.setter
-    def KmsKeyVersion(self, KmsKeyVersion):
-        self._KmsKeyVersion = KmsKeyVersion
-
-    @property
-    def SecretValue(self):
-        r"""<p>密钥值，长度 8-256。GenerateType=Custom 时必填。</p>
-        :rtype: str
-        """
-        return self._SecretValue
-
-    @SecretValue.setter
-    def SecretValue(self, SecretValue):
-        self._SecretValue = SecretValue
+    @SecretType.setter
+    def SecretType(self, SecretType):
+        self._SecretType = SecretType
 
     @property
     def Description(self):
@@ -8203,8 +8516,30 @@ class CreateCloudNativeAPIGatewaySecretKeyRequest(AbstractModel):
         self._JWTCredentialConfig = JWTCredentialConfig
 
     @property
+    def KmsKeyName(self):
+        r"""<p>KMS 密钥名称。GenerateType=KMS 时必填。</p>
+        :rtype: str
+        """
+        return self._KmsKeyName
+
+    @KmsKeyName.setter
+    def KmsKeyName(self, KmsKeyName):
+        self._KmsKeyName = KmsKeyName
+
+    @property
+    def KmsKeyVersion(self):
+        r"""<p>KMS 密钥版本。GenerateType=KMS 时必填。</p>
+        :rtype: str
+        """
+        return self._KmsKeyVersion
+
+    @KmsKeyVersion.setter
+    def KmsKeyVersion(self, KmsKeyVersion):
+        self._KmsKeyVersion = KmsKeyVersion
+
+    @property
     def OAuthCredentialConfig(self):
-        r"""<p>Oauth2凭证配置</p>
+        r"""<p>OAuth2.0凭证配置</p>
         :rtype: :class:`tencentcloud.cngw.v20230418.models.AIGWOAuthCredentialConfig`
         """
         return self._OAuthCredentialConfig
@@ -8224,26 +8559,49 @@ class CreateCloudNativeAPIGatewaySecretKeyRequest(AbstractModel):
     def OIDCCredentialConfig(self, OIDCCredentialConfig):
         self._OIDCCredentialConfig = OIDCCredentialConfig
 
+    @property
+    def Provider(self):
+        r"""<p>第三方平台类型</p><p>枚举值：</p><ul><li>Dify： Dify平台</li></ul>
+        :rtype: str
+        """
+        return self._Provider
+
+    @Provider.setter
+    def Provider(self, Provider):
+        self._Provider = Provider
+
+    @property
+    def SecretValue(self):
+        r"""<p>密钥值，长度 8-256。GenerateType=Custom 时必填。</p>
+        :rtype: str
+        """
+        return self._SecretValue
+
+    @SecretValue.setter
+    def SecretValue(self, SecretValue):
+        self._SecretValue = SecretValue
+
 
     def _deserialize(self, params):
         self._GatewayId = params.get("GatewayId")
-        self._SecretType = params.get("SecretType")
-        self._Name = params.get("Name")
         self._GenerateType = params.get("GenerateType")
+        self._Name = params.get("Name")
         self._ResourceType = params.get("ResourceType")
-        self._KmsKeyName = params.get("KmsKeyName")
-        self._KmsKeyVersion = params.get("KmsKeyVersion")
-        self._SecretValue = params.get("SecretValue")
+        self._SecretType = params.get("SecretType")
         self._Description = params.get("Description")
         if params.get("JWTCredentialConfig") is not None:
             self._JWTCredentialConfig = AIGWJWTCredentialConfig()
             self._JWTCredentialConfig._deserialize(params.get("JWTCredentialConfig"))
+        self._KmsKeyName = params.get("KmsKeyName")
+        self._KmsKeyVersion = params.get("KmsKeyVersion")
         if params.get("OAuthCredentialConfig") is not None:
             self._OAuthCredentialConfig = AIGWOAuthCredentialConfig()
             self._OAuthCredentialConfig._deserialize(params.get("OAuthCredentialConfig"))
         if params.get("OIDCCredentialConfig") is not None:
             self._OIDCCredentialConfig = AIGWOIDCCredentialConfig()
             self._OIDCCredentialConfig._deserialize(params.get("OIDCCredentialConfig"))
+        self._Provider = params.get("Provider")
+        self._SecretValue = params.get("SecretValue")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -9287,6 +9645,8 @@ class DescribeCloudNativeAPIGatewayLLMModelAPIsRequest(AbstractModel):
         :type ConsumerGroupId: str
         :param _UseToBind: <p>是否用于绑定场景。true 时仅返回可被绑定到指定消费者组的模型 API。</p>
         :type UseToBind: bool
+        :param _ConsumerId: <p>消费者 ID（以 consumer- 开头）。</p>
+        :type ConsumerId: str
         """
         self._GatewayId = None
         self._Limit = None
@@ -9295,6 +9655,7 @@ class DescribeCloudNativeAPIGatewayLLMModelAPIsRequest(AbstractModel):
         self._Keyword = None
         self._ConsumerGroupId = None
         self._UseToBind = None
+        self._ConsumerId = None
 
     @property
     def GatewayId(self):
@@ -9373,6 +9734,17 @@ class DescribeCloudNativeAPIGatewayLLMModelAPIsRequest(AbstractModel):
     def UseToBind(self, UseToBind):
         self._UseToBind = UseToBind
 
+    @property
+    def ConsumerId(self):
+        r"""<p>消费者 ID（以 consumer- 开头）。</p>
+        :rtype: str
+        """
+        return self._ConsumerId
+
+    @ConsumerId.setter
+    def ConsumerId(self, ConsumerId):
+        self._ConsumerId = ConsumerId
+
 
     def _deserialize(self, params):
         self._GatewayId = params.get("GatewayId")
@@ -9387,6 +9759,7 @@ class DescribeCloudNativeAPIGatewayLLMModelAPIsRequest(AbstractModel):
         self._Keyword = params.get("Keyword")
         self._ConsumerGroupId = params.get("ConsumerGroupId")
         self._UseToBind = params.get("UseToBind")
+        self._ConsumerId = params.get("ConsumerId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -10766,6 +11139,132 @@ class DescribeCloudNativeAPIGatewayMCPToolResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeCloudNativeAPIGatewayMCPToolsFromFileRequest(AbstractModel):
+    r"""DescribeCloudNativeAPIGatewayMCPToolsFromFile请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Content: <p>OpenAPI文件内容</p>
+        :type Content: str
+        :param _Format: <p>文件内容格式</p>
+        :type Format: str
+        :param _GatewayId: <p>网关实例ID</p>
+        :type GatewayId: str
+        :param _MCPServerId: <p>MCP Server ID</p>
+        :type MCPServerId: str
+        """
+        self._Content = None
+        self._Format = None
+        self._GatewayId = None
+        self._MCPServerId = None
+
+    @property
+    def Content(self):
+        r"""<p>OpenAPI文件内容</p>
+        :rtype: str
+        """
+        return self._Content
+
+    @Content.setter
+    def Content(self, Content):
+        self._Content = Content
+
+    @property
+    def Format(self):
+        r"""<p>文件内容格式</p>
+        :rtype: str
+        """
+        return self._Format
+
+    @Format.setter
+    def Format(self, Format):
+        self._Format = Format
+
+    @property
+    def GatewayId(self):
+        r"""<p>网关实例ID</p>
+        :rtype: str
+        """
+        return self._GatewayId
+
+    @GatewayId.setter
+    def GatewayId(self, GatewayId):
+        self._GatewayId = GatewayId
+
+    @property
+    def MCPServerId(self):
+        r"""<p>MCP Server ID</p>
+        :rtype: str
+        """
+        return self._MCPServerId
+
+    @MCPServerId.setter
+    def MCPServerId(self, MCPServerId):
+        self._MCPServerId = MCPServerId
+
+
+    def _deserialize(self, params):
+        self._Content = params.get("Content")
+        self._Format = params.get("Format")
+        self._GatewayId = params.get("GatewayId")
+        self._MCPServerId = params.get("MCPServerId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCloudNativeAPIGatewayMCPToolsFromFileResponse(AbstractModel):
+    r"""DescribeCloudNativeAPIGatewayMCPToolsFromFile返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: <p>解析结果</p>
+        :type Result: :class:`tencentcloud.cngw.v20230418.models.CNAPIGwParseMCPToolsResult`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        r"""<p>解析结果</p>
+        :rtype: :class:`tencentcloud.cngw.v20230418.models.CNAPIGwParseMCPToolsResult`
+        """
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self._Result = CNAPIGwParseMCPToolsResult()
+            self._Result._deserialize(params.get("Result"))
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeCloudNativeAPIGatewaySecretKeyRequest(AbstractModel):
     r"""DescribeCloudNativeAPIGatewaySecretKey请求参数结构体
 
@@ -10963,9 +11462,9 @@ class Filter(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Name: 过滤参数名
+        :param _Name: <p>过滤参数名</p>
         :type Name: str
-        :param _Values: 过滤参数值
+        :param _Values: <p>过滤参数值</p>
         :type Values: list of str
         """
         self._Name = None
@@ -10973,7 +11472,7 @@ class Filter(AbstractModel):
 
     @property
     def Name(self):
-        r"""过滤参数名
+        r"""<p>过滤参数名</p>
         :rtype: str
         """
         return self._Name
@@ -10984,7 +11483,7 @@ class Filter(AbstractModel):
 
     @property
     def Values(self):
-        r"""过滤参数值
+        r"""<p>过滤参数值</p>
         :rtype: list of str
         """
         return self._Values
@@ -11715,6 +12214,14 @@ class ModifyCloudNativeAPIGatewayLLMModelServiceRequest(AbstractModel):
         :type KeyRotationEnabled: bool
         :param _KeyRotationPeriodDays: <p>密钥轮转周期</p><p>单位：天数</p>
         :type KeyRotationPeriodDays: int
+        :param _SourceId: <p>来源服务 ID。</p>
+        :type SourceId: str
+        :param _Namespace: <p>命名空间。</p>
+        :type Namespace: str
+        :param _ServiceName: <p>服务名称。</p>
+        :type ServiceName: str
+        :param _Protocol: <p>协议类型，如 OpenAI、Custom。</p>
+        :type Protocol: str
         """
         self._GatewayId = None
         self._ModelServiceId = None
@@ -11740,6 +12247,10 @@ class ModifyCloudNativeAPIGatewayLLMModelServiceRequest(AbstractModel):
         self._ExtParams = None
         self._KeyRotationEnabled = None
         self._KeyRotationPeriodDays = None
+        self._SourceId = None
+        self._Namespace = None
+        self._ServiceName = None
+        self._Protocol = None
 
     @property
     def GatewayId(self):
@@ -12005,6 +12516,50 @@ class ModifyCloudNativeAPIGatewayLLMModelServiceRequest(AbstractModel):
     def KeyRotationPeriodDays(self, KeyRotationPeriodDays):
         self._KeyRotationPeriodDays = KeyRotationPeriodDays
 
+    @property
+    def SourceId(self):
+        r"""<p>来源服务 ID。</p>
+        :rtype: str
+        """
+        return self._SourceId
+
+    @SourceId.setter
+    def SourceId(self, SourceId):
+        self._SourceId = SourceId
+
+    @property
+    def Namespace(self):
+        r"""<p>命名空间。</p>
+        :rtype: str
+        """
+        return self._Namespace
+
+    @Namespace.setter
+    def Namespace(self, Namespace):
+        self._Namespace = Namespace
+
+    @property
+    def ServiceName(self):
+        r"""<p>服务名称。</p>
+        :rtype: str
+        """
+        return self._ServiceName
+
+    @ServiceName.setter
+    def ServiceName(self, ServiceName):
+        self._ServiceName = ServiceName
+
+    @property
+    def Protocol(self):
+        r"""<p>协议类型，如 OpenAI、Custom。</p>
+        :rtype: str
+        """
+        return self._Protocol
+
+    @Protocol.setter
+    def Protocol(self, Protocol):
+        self._Protocol = Protocol
+
 
     def _deserialize(self, params):
         self._GatewayId = params.get("GatewayId")
@@ -12047,6 +12602,10 @@ class ModifyCloudNativeAPIGatewayLLMModelServiceRequest(AbstractModel):
                 self._ExtParams.append(obj)
         self._KeyRotationEnabled = params.get("KeyRotationEnabled")
         self._KeyRotationPeriodDays = params.get("KeyRotationPeriodDays")
+        self._SourceId = params.get("SourceId")
+        self._Namespace = params.get("Namespace")
+        self._ServiceName = params.get("ServiceName")
+        self._Protocol = params.get("Protocol")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -13598,4 +14157,118 @@ class UnbindCloudNativeAPIGatewaySecretKeyResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class UpdateCloudNativeAPIGatewayMCPToolsRequest(AbstractModel):
+    r"""UpdateCloudNativeAPIGatewayMCPTools请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GatewayId: <p>网关实例ID</p>
+        :type GatewayId: str
+        :param _MCPServerId: <p>MCP Server ID</p>
+        :type MCPServerId: str
+        :param _Tools: <p>待导入的MCP Tools列表</p>
+        :type Tools: list of CNAPIGwMCPTool
+        """
+        self._GatewayId = None
+        self._MCPServerId = None
+        self._Tools = None
+
+    @property
+    def GatewayId(self):
+        r"""<p>网关实例ID</p>
+        :rtype: str
+        """
+        return self._GatewayId
+
+    @GatewayId.setter
+    def GatewayId(self, GatewayId):
+        self._GatewayId = GatewayId
+
+    @property
+    def MCPServerId(self):
+        r"""<p>MCP Server ID</p>
+        :rtype: str
+        """
+        return self._MCPServerId
+
+    @MCPServerId.setter
+    def MCPServerId(self, MCPServerId):
+        self._MCPServerId = MCPServerId
+
+    @property
+    def Tools(self):
+        r"""<p>待导入的MCP Tools列表</p>
+        :rtype: list of CNAPIGwMCPTool
+        """
+        return self._Tools
+
+    @Tools.setter
+    def Tools(self, Tools):
+        self._Tools = Tools
+
+
+    def _deserialize(self, params):
+        self._GatewayId = params.get("GatewayId")
+        self._MCPServerId = params.get("MCPServerId")
+        if params.get("Tools") is not None:
+            self._Tools = []
+            for item in params.get("Tools"):
+                obj = CNAPIGwMCPTool()
+                obj._deserialize(item)
+                self._Tools.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateCloudNativeAPIGatewayMCPToolsResponse(AbstractModel):
+    r"""UpdateCloudNativeAPIGatewayMCPTools返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: <p>导入任务的ID</p>
+        :type Result: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        r"""<p>导入任务的ID</p>
+        :rtype: str
+        """
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Result = params.get("Result")
         self._RequestId = params.get("RequestId")

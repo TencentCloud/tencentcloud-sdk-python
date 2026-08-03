@@ -53848,11 +53848,14 @@ class ToolCall(AbstractModel):
         :type Function: :class:`tencentcloud.cls.v20201016.models.ToolCallFunction`
         :param _Index: <p>索引值</p>
         :type Index: int
+        :param _ThoughtSignature: <p>模型返回的思考签名，执行工具后需在后续请求中原样回传</p>
+        :type ThoughtSignature: str
         """
         self._Id = None
         self._Type = None
         self._Function = None
         self._Index = None
+        self._ThoughtSignature = None
 
     @property
     def Id(self):
@@ -53898,6 +53901,17 @@ class ToolCall(AbstractModel):
     def Index(self, Index):
         self._Index = Index
 
+    @property
+    def ThoughtSignature(self):
+        r"""<p>模型返回的思考签名，执行工具后需在后续请求中原样回传</p>
+        :rtype: str
+        """
+        return self._ThoughtSignature
+
+    @ThoughtSignature.setter
+    def ThoughtSignature(self, ThoughtSignature):
+        self._ThoughtSignature = ThoughtSignature
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
@@ -53906,6 +53920,7 @@ class ToolCall(AbstractModel):
             self._Function = ToolCallFunction()
             self._Function._deserialize(params.get("Function"))
         self._Index = params.get("Index")
+        self._ThoughtSignature = params.get("ThoughtSignature")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

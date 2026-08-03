@@ -116,8 +116,14 @@ MISSINGPARAMETER_MISSINGPARAMETER = 'MissingParameter.MissingParameter'
 # 操作被拒绝。
 OPERATIONDENIED = 'OperationDenied'
 
+# 账号余额不足
+OPERATIONDENIED_INSUFFICIENTBALANCE = 'OperationDenied.InsufficientBalance'
+
 # OperationDenied.OperationDenied
 OPERATIONDENIED_OPERATIONDENIED = 'OperationDenied.OperationDenied'
+
+# 配额超限
+OPERATIONDENIED_QUOTALIMITEXCEEDED = 'OperationDenied.QuotaLimitExceeded'
 
 # 资源不存在。
 RESOURCENOTFOUND = 'ResourceNotFound'

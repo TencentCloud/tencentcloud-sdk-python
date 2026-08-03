@@ -371,6 +371,29 @@ class DlcClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CancelRayJob(self, request):
+        r"""根据任务ID取消正在运行的Ray任务
+
+        :param request: Request instance for CancelRayJob.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.CancelRayJobRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.CancelRayJobResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CancelRayJob", params, headers=headers)
+            response = json.loads(body)
+            model = models.CancelRayJobResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CancelSparkSessionBatchSQL(self, request):
         r"""本接口（CancelSparkSessionBatchSQL）用于取消Spark SQL批任务。
 
@@ -532,6 +555,29 @@ class DlcClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CopyJobSpec(self, request):
+        r"""复制一份已有的作业配置
+
+        :param request: Request instance for CopyJobSpec.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.CopyJobSpecRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.CopyJobSpecResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CopyJobSpec", params, headers=headers)
+            response = json.loads(body)
+            model = models.CopyJobSpecResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateCHDFSBindingProduct(self, request):
         r"""此接口（CreateCHDFSBindingProduct）用于创建元数据加速桶和产品绑定关系
 
@@ -546,6 +592,29 @@ class DlcClient(AbstractClient):
             body = self.call("CreateCHDFSBindingProduct", params, headers=headers)
             response = json.loads(body)
             model = models.CreateCHDFSBindingProductResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CreateClusterGroup(self, request):
+        r"""创建集群组
+
+        :param request: Request instance for CreateClusterGroup.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.CreateClusterGroupRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.CreateClusterGroupResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateClusterGroup", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateClusterGroupResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -762,6 +831,52 @@ class DlcClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateJobSpec(self, request):
+        r"""创建作业配置
+
+        :param request: Request instance for CreateJobSpec.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.CreateJobSpecRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.CreateJobSpecResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateJobSpec", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateJobSpecResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CreateLab(self, request):
+        r"""创建实验室
+
+        :param request: Request instance for CreateLab.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.CreateLabRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.CreateLabResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateLab", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateLabResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateMetaDatabase(self, request):
         r"""本接口（CreateMetaDatabase）用于创建元数据库
 
@@ -845,6 +960,52 @@ class DlcClient(AbstractClient):
             body = self.call("CreateNotebookSessionStatementSupportBatchSQL", params, headers=headers)
             response = json.loads(body)
             model = models.CreateNotebookSessionStatementSupportBatchSQLResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CreateRayCluster(self, request):
+        r"""创建集群
+
+        :param request: Request instance for CreateRayCluster.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.CreateRayClusterRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.CreateRayClusterResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateRayCluster", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateRayClusterResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CreateResourceConfig(self, request):
+        r"""创建资源配置模板
+
+        :param request: Request instance for CreateResourceConfig.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.CreateResourceConfigRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.CreateResourceConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateResourceConfig", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateResourceConfigResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1293,6 +1454,29 @@ class DlcClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DeleteClusterGroup(self, request):
+        r"""删除集群组
+
+        :param request: Request instance for DeleteClusterGroup.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.DeleteClusterGroupRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.DeleteClusterGroupResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteClusterGroup", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteClusterGroupResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DeleteDataEngine(self, request):
         r"""删除数据引擎
 
@@ -1330,6 +1514,52 @@ class DlcClient(AbstractClient):
             body = self.call("DeleteDataMaskStrategy", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteDataMaskStrategyResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteJobSpec(self, request):
+        r"""根据配置ID删除作业配置
+
+        :param request: Request instance for DeleteJobSpec.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.DeleteJobSpecRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.DeleteJobSpecResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteJobSpec", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteJobSpecResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteLab(self, request):
+        r"""删除数据实验室
+
+        :param request: Request instance for DeleteLab.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.DeleteLabRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.DeleteLabResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteLab", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteLabResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1399,6 +1629,75 @@ class DlcClient(AbstractClient):
             body = self.call("DeleteNotebookSession", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteNotebookSessionResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteRayCluster(self, request):
+        r"""删除集群
+
+        :param request: Request instance for DeleteRayCluster.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.DeleteRayClusterRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.DeleteRayClusterResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteRayCluster", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteRayClusterResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteRayJob(self, request):
+        r"""根据任务ID删除Ray任务
+
+        :param request: Request instance for DeleteRayJob.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.DeleteRayJobRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.DeleteRayJobResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteRayJob", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteRayJobResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteResourceConfig(self, request):
+        r"""删除资源配置模板
+
+        :param request: Request instance for DeleteResourceConfig.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.DeleteResourceConfigRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.DeleteResourceConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteResourceConfig", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteResourceConfigResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1629,6 +1928,52 @@ class DlcClient(AbstractClient):
             body = self.call("DescribeAdvancedStoreLocation", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeAdvancedStoreLocationResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeClusterGroup(self, request):
+        r"""根据集群组 ID 获取集群组详情。支持通过 IncludeDeleted 参数控制是否返回已软删除的记录（用于悬挂 cluster 回显场景）。
+
+        :param request: Request instance for DescribeClusterGroup.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.DescribeClusterGroupRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.DescribeClusterGroupResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeClusterGroup", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeClusterGroupResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeClusterGroupClusters(self, request):
+        r"""计算组关联 cluster 使用情况响应
+
+        :param request: Request instance for DescribeClusterGroupClusters.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.DescribeClusterGroupClustersRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.DescribeClusterGroupClustersResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeClusterGroupClusters", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeClusterGroupClustersResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -3593,6 +3938,213 @@ class DlcClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def GetExampleDetail(self, request):
+        r"""根据 exampleId 获取单个案例详情
+
+        :param request: Request instance for GetExampleDetail.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.GetExampleDetailRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.GetExampleDetailResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("GetExampleDetail", params, headers=headers)
+            response = json.loads(body)
+            model = models.GetExampleDetailResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def GetJobSpec(self, request):
+        r"""根据配置ID获取作业配置详情
+
+        :param request: Request instance for GetJobSpec.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.GetJobSpecRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.GetJobSpecResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("GetJobSpec", params, headers=headers)
+            response = json.loads(body)
+            model = models.GetJobSpecResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def GetLabDetail(self, request):
+        r"""获取实验室详情
+
+        :param request: Request instance for GetLabDetail.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.GetLabDetailRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.GetLabDetailResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("GetLabDetail", params, headers=headers)
+            response = json.loads(body)
+            model = models.GetLabDetailResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def GetLabEvent(self, request):
+        r"""获取实验室的事件流（基于 K8s Event + CLS 日志）
+
+        :param request: Request instance for GetLabEvent.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.GetLabEventRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.GetLabEventResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("GetLabEvent", params, headers=headers)
+            response = json.loads(body)
+            model = models.GetLabEventResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def GetLabHistory(self, request):
+        r"""获取实验室的状态变更历史记录
+
+        :param request: Request instance for GetLabHistory.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.GetLabHistoryRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.GetLabHistoryResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("GetLabHistory", params, headers=headers)
+            response = json.loads(body)
+            model = models.GetLabHistoryResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def GetLabPodYaml(self, request):
+        r"""获取数据实验室Pod的YAML内容
+
+        :param request: Request instance for GetLabPodYaml.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.GetLabPodYamlRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.GetLabPodYamlResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("GetLabPodYaml", params, headers=headers)
+            response = json.loads(body)
+            model = models.GetLabPodYamlResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def GetLabPods(self, request):
+        r"""获取数据实验室的Pod列表
+
+        :param request: Request instance for GetLabPods.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.GetLabPodsRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.GetLabPodsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("GetLabPods", params, headers=headers)
+            response = json.loads(body)
+            model = models.GetLabPodsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def GetLabServiceUrls(self, request):
+        r"""获取实验室ide访问地址
+
+        :param request: Request instance for GetLabServiceUrls.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.GetLabServiceUrlsRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.GetLabServiceUrlsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("GetLabServiceUrls", params, headers=headers)
+            response = json.loads(body)
+            model = models.GetLabServiceUrlsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def GetLabYaml(self, request):
+        r"""获取数据实验室对应的RayCluster YAML内容
+
+        :param request: Request instance for GetLabYaml.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.GetLabYamlRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.GetLabYamlResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("GetLabYaml", params, headers=headers)
+            response = json.loads(body)
+            model = models.GetLabYamlResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def GetOptimizerPolicy(self, request):
         r"""GetOptimizerPolicy
 
@@ -3607,6 +4159,328 @@ class DlcClient(AbstractClient):
             body = self.call("GetOptimizerPolicy", params, headers=headers)
             response = json.loads(body)
             model = models.GetOptimizerPolicyResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def GetRayCluster(self, request):
+        r"""获取Ray集群详情请求
+
+        :param request: Request instance for GetRayCluster.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.GetRayClusterRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.GetRayClusterResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("GetRayCluster", params, headers=headers)
+            response = json.loads(body)
+            model = models.GetRayClusterResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def GetRayClusterEvent(self, request):
+        r"""获取Ray集群的事件流（基于 K8s Event + CLS 日志）
+
+        :param request: Request instance for GetRayClusterEvent.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.GetRayClusterEventRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.GetRayClusterEventResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("GetRayClusterEvent", params, headers=headers)
+            response = json.loads(body)
+            model = models.GetRayClusterEventResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def GetRayClusterHistory(self, request):
+        r"""获取集群状态历史
+
+        :param request: Request instance for GetRayClusterHistory.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.GetRayClusterHistoryRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.GetRayClusterHistoryResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("GetRayClusterHistory", params, headers=headers)
+            response = json.loads(body)
+            model = models.GetRayClusterHistoryResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def GetRayClusterPodYaml(self, request):
+        r"""获取集群Pod的YAML内容
+
+        :param request: Request instance for GetRayClusterPodYaml.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.GetRayClusterPodYamlRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.GetRayClusterPodYamlResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("GetRayClusterPodYaml", params, headers=headers)
+            response = json.loads(body)
+            model = models.GetRayClusterPodYamlResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def GetRayClusterPods(self, request):
+        r"""获取集群的Pod列表
+
+        :param request: Request instance for GetRayClusterPods.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.GetRayClusterPodsRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.GetRayClusterPodsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("GetRayClusterPods", params, headers=headers)
+            response = json.loads(body)
+            model = models.GetRayClusterPodsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def GetRayClusterYaml(self, request):
+        r"""获取RayCluster的YAML内容
+
+        :param request: Request instance for GetRayClusterYaml.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.GetRayClusterYamlRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.GetRayClusterYamlResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("GetRayClusterYaml", params, headers=headers)
+            response = json.loads(body)
+            model = models.GetRayClusterYamlResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def GetRayJob(self, request):
+        r"""根据任务ID获取Ray任务详情
+
+        :param request: Request instance for GetRayJob.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.GetRayJobRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.GetRayJobResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("GetRayJob", params, headers=headers)
+            response = json.loads(body)
+            model = models.GetRayJobResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def GetRayJobEvent(self, request):
+        r"""通过 ResourceManager 调用 CLS SearchLog API 查询作业相关日志。不返回总数，使用 Context 进行翻页，ListOver 标识是否还有更多数据。
+
+        :param request: Request instance for GetRayJobEvent.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.GetRayJobEventRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.GetRayJobEventResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("GetRayJobEvent", params, headers=headers)
+            response = json.loads(body)
+            model = models.GetRayJobEventResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def GetRayJobEventLog(self, request):
+        r"""获取作业事件日志
+
+        :param request: Request instance for GetRayJobEventLog.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.GetRayJobEventLogRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.GetRayJobEventLogResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("GetRayJobEventLog", params, headers=headers)
+            response = json.loads(body)
+            model = models.GetRayJobEventLogResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def GetRayJobHistory(self, request):
+        r"""根据任务ID获取Ray任务的历史执行记录
+
+        :param request: Request instance for GetRayJobHistory.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.GetRayJobHistoryRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.GetRayJobHistoryResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("GetRayJobHistory", params, headers=headers)
+            response = json.loads(body)
+            model = models.GetRayJobHistoryResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def GetRayJobPodYaml(self, request):
+        r"""获取Pod的YAML内容
+
+        :param request: Request instance for GetRayJobPodYaml.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.GetRayJobPodYamlRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.GetRayJobPodYamlResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("GetRayJobPodYaml", params, headers=headers)
+            response = json.loads(body)
+            model = models.GetRayJobPodYamlResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def GetRayJobPods(self, request):
+        r"""获取作业的Pod列表
+
+        :param request: Request instance for GetRayJobPods.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.GetRayJobPodsRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.GetRayJobPodsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("GetRayJobPods", params, headers=headers)
+            response = json.loads(body)
+            model = models.GetRayJobPodsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def GetRayJobYaml(self, request):
+        r"""获取RayJob的YAML内容
+
+        :param request: Request instance for GetRayJobYaml.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.GetRayJobYamlRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.GetRayJobYamlResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("GetRayJobYaml", params, headers=headers)
+            response = json.loads(body)
+            model = models.GetRayJobYamlResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def GetResourceConfig(self, request):
+        r"""获取资源配置模板详情
+
+        :param request: Request instance for GetResourceConfig.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.GetResourceConfigRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.GetResourceConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("GetResourceConfig", params, headers=headers)
+            response = json.loads(body)
+            model = models.GetResourceConfigResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -3676,6 +4550,282 @@ class DlcClient(AbstractClient):
             body = self.call("LaunchStandardEngineResourceGroups", params, headers=headers)
             response = json.loads(body)
             model = models.LaunchStandardEngineResourceGroupsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ListClusterGroups(self, request):
+        r"""列出所有集群组
+
+        :param request: Request instance for ListClusterGroups.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.ListClusterGroupsRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.ListClusterGroupsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ListClusterGroups", params, headers=headers)
+            response = json.loads(body)
+            model = models.ListClusterGroupsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ListExampleCategories(self, request):
+        r"""获取所有案例分类
+
+        :param request: Request instance for ListExampleCategories.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.ListExampleCategoriesRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.ListExampleCategoriesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ListExampleCategories", params, headers=headers)
+            response = json.loads(body)
+            model = models.ListExampleCategoriesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ListExampleDifficulties(self, request):
+        r"""获取所有案例分类
+
+        :param request: Request instance for ListExampleDifficulties.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.ListExampleDifficultiesRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.ListExampleDifficultiesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ListExampleDifficulties", params, headers=headers)
+            response = json.loads(body)
+            model = models.ListExampleDifficultiesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ListExampleTags(self, request):
+        r"""返回标签去重列表，按出现频次从高到低排序。
+
+        :param request: Request instance for ListExampleTags.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.ListExampleTagsRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.ListExampleTagsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ListExampleTags", params, headers=headers)
+            response = json.loads(body)
+            model = models.ListExampleTagsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ListExamples(self, request):
+        r"""案例列表
+
+        :param request: Request instance for ListExamples.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.ListExamplesRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.ListExamplesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ListExamples", params, headers=headers)
+            response = json.loads(body)
+            model = models.ListExamplesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ListJobSpecs(self, request):
+        r"""分页查询作业配置列表
+
+        :param request: Request instance for ListJobSpecs.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.ListJobSpecsRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.ListJobSpecsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ListJobSpecs", params, headers=headers)
+            response = json.loads(body)
+            model = models.ListJobSpecsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ListJobsBySpec(self, request):
+        r"""分页查询某作业配置下产生的所有作业实例
+
+        :param request: Request instance for ListJobsBySpec.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.ListJobsBySpecRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.ListJobsBySpecResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ListJobsBySpec", params, headers=headers)
+            response = json.loads(body)
+            model = models.ListJobsBySpecResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ListLabs(self, request):
+        r"""列出实验室列表
+
+        :param request: Request instance for ListLabs.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.ListLabsRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.ListLabsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ListLabs", params, headers=headers)
+            response = json.loads(body)
+            model = models.ListLabsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ListRayClusterJobs(self, request):
+        r"""查询指定 Ray 集群下提交的所有作业，分页返回。底层委托给 ListRayJobs，强制注入 ClusterId 作为过滤条件。
+
+        :param request: Request instance for ListRayClusterJobs.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.ListRayClusterJobsRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.ListRayClusterJobsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ListRayClusterJobs", params, headers=headers)
+            response = json.loads(body)
+            model = models.ListRayClusterJobsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ListRayClusters(self, request):
+        r"""列出所有集群
+
+        :param request: Request instance for ListRayClusters.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.ListRayClustersRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.ListRayClustersResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ListRayClusters", params, headers=headers)
+            response = json.loads(body)
+            model = models.ListRayClustersResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ListRayJobs(self, request):
+        r"""根据集群ID列出所有Ray任务
+
+        :param request: Request instance for ListRayJobs.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.ListRayJobsRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.ListRayJobsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ListRayJobs", params, headers=headers)
+            response = json.loads(body)
+            model = models.ListRayJobsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ListResourceConfigs(self, request):
+        r"""列出所有资源配置模板
+
+        :param request: Request instance for ListResourceConfigs.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.ListResourceConfigsRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.ListResourceConfigsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ListResourceConfigs", params, headers=headers)
+            response = json.loads(body)
+            model = models.ListResourceConfigsResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -3777,6 +4927,29 @@ class DlcClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyClusterPriority(self, request):
+        r"""修改集群的调度优先级（1-9，数字越大优先级越高）
+
+        :param request: Request instance for ModifyClusterPriority.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.ModifyClusterPriorityRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.ModifyClusterPriorityResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyClusterPriority", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyClusterPriorityResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyDataEngineDescription(self, request):
         r"""修改引擎描述信息
 
@@ -3814,6 +4987,29 @@ class DlcClient(AbstractClient):
             body = self.call("ModifyGovernEventRule", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyGovernEventRuleResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyLabPriority(self, request):
+        r"""修改实验室的调度优先级（1-9，数字越大优先级越高）
+
+        :param request: Request instance for ModifyLabPriority.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.ModifyLabPriorityRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.ModifyLabPriorityResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyLabPriority", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyLabPriorityResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -4191,6 +5387,29 @@ class DlcClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def RunJobSpec(self, request):
+        r"""基于指定作业配置提交一次作业实例
+
+        :param request: Request instance for RunJobSpec.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.RunJobSpecRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.RunJobSpecResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("RunJobSpec", params, headers=headers)
+            response = json.loads(body)
+            model = models.RunJobSpecResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def SetOptimizerPolicy(self, request):
         r"""设置优化策略的接口
 
@@ -4205,6 +5424,98 @@ class DlcClient(AbstractClient):
             body = self.call("SetOptimizerPolicy", params, headers=headers)
             response = json.loads(body)
             model = models.SetOptimizerPolicyResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def StartLab(self, request):
+        r"""启动实验室
+
+        :param request: Request instance for StartLab.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.StartLabRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.StartLabResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("StartLab", params, headers=headers)
+            response = json.loads(body)
+            model = models.StartLabResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def StartRayCluster(self, request):
+        r"""启动集群
+
+        :param request: Request instance for StartRayCluster.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.StartRayClusterRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.StartRayClusterResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("StartRayCluster", params, headers=headers)
+            response = json.loads(body)
+            model = models.StartRayClusterResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def StopLab(self, request):
+        r"""停止实验室
+
+        :param request: Request instance for StopLab.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.StopLabRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.StopLabResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("StopLab", params, headers=headers)
+            response = json.loads(body)
+            model = models.StopLabResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def StopRayCluster(self, request):
+        r"""停止集群
+
+        :param request: Request instance for StopRayCluster.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.StopRayClusterRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.StopRayClusterResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("StopRayCluster", params, headers=headers)
+            response = json.loads(body)
+            model = models.StopRayClusterResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -4352,6 +5663,29 @@ class DlcClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def UpdateClusterGroup(self, request):
+        r"""更新集群组
+
+        :param request: Request instance for UpdateClusterGroup.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.UpdateClusterGroupRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.UpdateClusterGroupResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UpdateClusterGroup", params, headers=headers)
+            response = json.loads(body)
+            model = models.UpdateClusterGroupResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def UpdateDataEngine(self, request):
         r"""本接口用于更新数据引擎配置
 
@@ -4444,6 +5778,75 @@ class DlcClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def UpdateJobSpec(self, request):
+        r"""更新已有作业配置的字段
+
+        :param request: Request instance for UpdateJobSpec.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.UpdateJobSpecRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.UpdateJobSpecResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UpdateJobSpec", params, headers=headers)
+            response = json.loads(body)
+            model = models.UpdateJobSpecResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def UpdateJobSpecPriority(self, request):
+        r"""修改作业配置的调度优先级（1-9，数字越大优先级越高）
+
+        :param request: Request instance for UpdateJobSpecPriority.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.UpdateJobSpecPriorityRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.UpdateJobSpecPriorityResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UpdateJobSpecPriority", params, headers=headers)
+            response = json.loads(body)
+            model = models.UpdateJobSpecPriorityResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def UpdateLab(self, request):
+        r"""更新实验室配置：仅在 CREATED / STOPPED / FAILED 终态可用；变更落 MySQL，下次 Start 按新 spec 创建 K8s 资源
+
+        :param request: Request instance for UpdateLab.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.UpdateLabRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.UpdateLabResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UpdateLab", params, headers=headers)
+            response = json.loads(body)
+            model = models.UpdateLabResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def UpdateNetworkConnection(self, request):
         r"""更新网络配置
 
@@ -4458,6 +5861,75 @@ class DlcClient(AbstractClient):
             body = self.call("UpdateNetworkConnection", params, headers=headers)
             response = json.loads(body)
             model = models.UpdateNetworkConnectionResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def UpdateRayCluster(self, request):
+        r"""更新集群配置：仅在 CREATED / STOPPED / FAILED 终态可用；变更落 MySQL，下次 Start 按新 spec 创建 K8s 资源
+
+        :param request: Request instance for UpdateRayCluster.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.UpdateRayClusterRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.UpdateRayClusterResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UpdateRayCluster", params, headers=headers)
+            response = json.loads(body)
+            model = models.UpdateRayClusterResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def UpdateRayJobPriority(self, request):
+        r"""更新处于 SUBMITTED/PENDING 状态的作业的优先级。仅 SUBMITTED/PENDING 状态的作业允许调整优先级。内部通过调用 Neutrino 的 UpdateJobConfig 接口更新 ENVIRONMENT 配置中的 priority 字段。
+
+        :param request: Request instance for UpdateRayJobPriority.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.UpdateRayJobPriorityRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.UpdateRayJobPriorityResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UpdateRayJobPriority", params, headers=headers)
+            response = json.loads(body)
+            model = models.UpdateRayJobPriorityResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def UpdateResourceConfig(self, request):
+        r"""更新资源配置模板
+
+        :param request: Request instance for UpdateResourceConfig.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.UpdateResourceConfigRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.UpdateResourceConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UpdateResourceConfig", params, headers=headers)
+            response = json.loads(body)
+            model = models.UpdateResourceConfigResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

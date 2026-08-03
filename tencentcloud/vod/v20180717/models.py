@@ -29941,47 +29941,25 @@ class CreateSampleSnapshotTemplateRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SampleType: 采样截图类型，取值：
-<li>Percent：按百分比。</li>
-<li>Time：按时间间隔。</li>
+        :param _SampleType: <p>采样截图类型，取值：</p><li>Percent：按百分比。</li><li>Time：按时间间隔。</li>
         :type SampleType: str
-        :param _SampleInterval: 采样间隔。
-<li>当 SampleType 为 Percent 时，指定采样间隔的百分比。</li>
-<li>当 SampleType 为 Time 时，指定采样间隔的时间，单位为秒。</li>
+        :param _SampleInterval: <p>采样间隔。</p><li>当 SampleType 为 Percent 时，指定采样间隔的百分比。</li><li>当 SampleType 为 Time 时，指定采样间隔的时间，单位为秒。</li>
         :type SampleInterval: int
-        :param _SubAppId: <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
+        :param _SubAppId: <p><b>点播<a href="/document/product/266/14574">应用</a> ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b></p>
         :type SubAppId: int
-        :param _Name: 采样截图模板名称，长度限制：64 个字符。
+        :param _Name: <p>采样截图模板名称，长度限制：64 个字符。</p>
         :type Name: str
-        :param _Width: 截图宽度（或长边）的最大值，取值范围：0 和 [128, 4096]，单位：px。
-<li>当 Width、Height 均为 0，则分辨率同源；</li>
-<li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li>
-<li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li>
-<li>当 Width、Height 均非 0，则分辨率按用户指定。</li>
-默认值：0。
+        :param _Width: <p>截图宽度（或长边）的最大值，取值范围：0 和 [32, 4096]，单位：px。<li>当 Width、Height 均为 0，则分辨率同源；</li><li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li><li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li><li>当 Width、Height 均非 0，则分辨率按用户指定。</li>默认值：0。</p>
         :type Width: int
-        :param _Height: 截图高度（或短边）的最大值，取值范围：0 和 [128, 4096]，单位：px。
-<li>当 Width、Height 均为 0，则分辨率同源；</li>
-<li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li>
-<li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li>
-<li>当 Width、Height 均非 0，则分辨率按用户指定。</li>
-默认值：0。
+        :param _Height: <p>截图高度（或短边）的最大值，取值范围：0 和 [32, 4096]，单位：px。<li>当 Width、Height 均为 0，则分辨率同源；</li><li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li><li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li><li>当 Width、Height 均非 0，则分辨率按用户指定。</li>默认值：0。</p>
         :type Height: int
-        :param _ResolutionAdaptive: 分辨率自适应，可选值：
-<li>open：开启，此时，Width 代表视频的长边，Height 表示视频的短边；</li>
-<li>close：关闭，此时，Width 代表视频的宽度，Height 表示视频的高度。</li>
-默认值：open。
+        :param _ResolutionAdaptive: <p>分辨率自适应，可选值：</p><li>open：开启，此时，Width 代表视频的长边，Height 表示视频的短边；</li><li>close：关闭，此时，Width 代表视频的宽度，Height 表示视频的高度。</li>默认值：open。
         :type ResolutionAdaptive: str
-        :param _Format: 图片格式，取值为 jpg 和 png。默认为 jpg。
+        :param _Format: <p>图片格式，取值为 jpg、png 和 webp。默认为 jpg。</p>
         :type Format: str
-        :param _Comment: 模板描述信息，长度限制：256 个字符。
+        :param _Comment: <p>模板描述信息，长度限制：256 个字符。</p>
         :type Comment: str
-        :param _FillType: 填充方式，当视频流配置宽高参数与原始视频的宽高比不一致时，对转码的处理方式，即为“填充”。可选填充方式：
-<li> stretch：拉伸，对每一帧进行拉伸，填满整个画面，可能导致转码后的视频被“压扁“或者“拉长“；</li>
-<li>black：留黑，保持视频宽高比不变，边缘剩余部分使用黑色填充。</li>
-<li>white：留白，保持视频宽高比不变，边缘剩余部分使用白色填充。</li>
-<li>gauss：高斯模糊，保持视频宽高比不变，边缘剩余部分使用高斯模糊。</li>
-默认值：black 。
+        :param _FillType: <p>填充方式，当视频流配置宽高参数与原始视频的宽高比不一致时，对转码的处理方式，即为“填充”。可选填充方式：</p><li> stretch：拉伸，对每一帧进行拉伸，填满整个画面，可能导致转码后的视频被“压扁“或者“拉长“；</li><li>black：留黑，保持视频宽高比不变，边缘剩余部分使用黑色填充。</li><li>white：留白，保持视频宽高比不变，边缘剩余部分使用白色填充。</li><li>gauss：高斯模糊，保持视频宽高比不变，边缘剩余部分使用高斯模糊。</li>默认值：black 。
         :type FillType: str
         """
         self._SampleType = None
@@ -29997,9 +29975,7 @@ class CreateSampleSnapshotTemplateRequest(AbstractModel):
 
     @property
     def SampleType(self):
-        r"""采样截图类型，取值：
-<li>Percent：按百分比。</li>
-<li>Time：按时间间隔。</li>
+        r"""<p>采样截图类型，取值：</p><li>Percent：按百分比。</li><li>Time：按时间间隔。</li>
         :rtype: str
         """
         return self._SampleType
@@ -30010,9 +29986,7 @@ class CreateSampleSnapshotTemplateRequest(AbstractModel):
 
     @property
     def SampleInterval(self):
-        r"""采样间隔。
-<li>当 SampleType 为 Percent 时，指定采样间隔的百分比。</li>
-<li>当 SampleType 为 Time 时，指定采样间隔的时间，单位为秒。</li>
+        r"""<p>采样间隔。</p><li>当 SampleType 为 Percent 时，指定采样间隔的百分比。</li><li>当 SampleType 为 Time 时，指定采样间隔的时间，单位为秒。</li>
         :rtype: int
         """
         return self._SampleInterval
@@ -30023,7 +29997,7 @@ class CreateSampleSnapshotTemplateRequest(AbstractModel):
 
     @property
     def SubAppId(self):
-        r"""<b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
+        r"""<p><b>点播<a href="/document/product/266/14574">应用</a> ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b></p>
         :rtype: int
         """
         return self._SubAppId
@@ -30034,7 +30008,7 @@ class CreateSampleSnapshotTemplateRequest(AbstractModel):
 
     @property
     def Name(self):
-        r"""采样截图模板名称，长度限制：64 个字符。
+        r"""<p>采样截图模板名称，长度限制：64 个字符。</p>
         :rtype: str
         """
         return self._Name
@@ -30045,12 +30019,7 @@ class CreateSampleSnapshotTemplateRequest(AbstractModel):
 
     @property
     def Width(self):
-        r"""截图宽度（或长边）的最大值，取值范围：0 和 [128, 4096]，单位：px。
-<li>当 Width、Height 均为 0，则分辨率同源；</li>
-<li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li>
-<li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li>
-<li>当 Width、Height 均非 0，则分辨率按用户指定。</li>
-默认值：0。
+        r"""<p>截图宽度（或长边）的最大值，取值范围：0 和 [32, 4096]，单位：px。<li>当 Width、Height 均为 0，则分辨率同源；</li><li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li><li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li><li>当 Width、Height 均非 0，则分辨率按用户指定。</li>默认值：0。</p>
         :rtype: int
         """
         return self._Width
@@ -30061,12 +30030,7 @@ class CreateSampleSnapshotTemplateRequest(AbstractModel):
 
     @property
     def Height(self):
-        r"""截图高度（或短边）的最大值，取值范围：0 和 [128, 4096]，单位：px。
-<li>当 Width、Height 均为 0，则分辨率同源；</li>
-<li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li>
-<li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li>
-<li>当 Width、Height 均非 0，则分辨率按用户指定。</li>
-默认值：0。
+        r"""<p>截图高度（或短边）的最大值，取值范围：0 和 [32, 4096]，单位：px。<li>当 Width、Height 均为 0，则分辨率同源；</li><li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li><li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li><li>当 Width、Height 均非 0，则分辨率按用户指定。</li>默认值：0。</p>
         :rtype: int
         """
         return self._Height
@@ -30077,10 +30041,7 @@ class CreateSampleSnapshotTemplateRequest(AbstractModel):
 
     @property
     def ResolutionAdaptive(self):
-        r"""分辨率自适应，可选值：
-<li>open：开启，此时，Width 代表视频的长边，Height 表示视频的短边；</li>
-<li>close：关闭，此时，Width 代表视频的宽度，Height 表示视频的高度。</li>
-默认值：open。
+        r"""<p>分辨率自适应，可选值：</p><li>open：开启，此时，Width 代表视频的长边，Height 表示视频的短边；</li><li>close：关闭，此时，Width 代表视频的宽度，Height 表示视频的高度。</li>默认值：open。
         :rtype: str
         """
         return self._ResolutionAdaptive
@@ -30091,7 +30052,7 @@ class CreateSampleSnapshotTemplateRequest(AbstractModel):
 
     @property
     def Format(self):
-        r"""图片格式，取值为 jpg 和 png。默认为 jpg。
+        r"""<p>图片格式，取值为 jpg、png 和 webp。默认为 jpg。</p>
         :rtype: str
         """
         return self._Format
@@ -30102,7 +30063,7 @@ class CreateSampleSnapshotTemplateRequest(AbstractModel):
 
     @property
     def Comment(self):
-        r"""模板描述信息，长度限制：256 个字符。
+        r"""<p>模板描述信息，长度限制：256 个字符。</p>
         :rtype: str
         """
         return self._Comment
@@ -30113,12 +30074,7 @@ class CreateSampleSnapshotTemplateRequest(AbstractModel):
 
     @property
     def FillType(self):
-        r"""填充方式，当视频流配置宽高参数与原始视频的宽高比不一致时，对转码的处理方式，即为“填充”。可选填充方式：
-<li> stretch：拉伸，对每一帧进行拉伸，填满整个画面，可能导致转码后的视频被“压扁“或者“拉长“；</li>
-<li>black：留黑，保持视频宽高比不变，边缘剩余部分使用黑色填充。</li>
-<li>white：留白，保持视频宽高比不变，边缘剩余部分使用白色填充。</li>
-<li>gauss：高斯模糊，保持视频宽高比不变，边缘剩余部分使用高斯模糊。</li>
-默认值：black 。
+        r"""<p>填充方式，当视频流配置宽高参数与原始视频的宽高比不一致时，对转码的处理方式，即为“填充”。可选填充方式：</p><li> stretch：拉伸，对每一帧进行拉伸，填满整个画面，可能导致转码后的视频被“压扁“或者“拉长“；</li><li>black：留黑，保持视频宽高比不变，边缘剩余部分使用黑色填充。</li><li>white：留白，保持视频宽高比不变，边缘剩余部分使用白色填充。</li><li>gauss：高斯模糊，保持视频宽高比不变，边缘剩余部分使用高斯模糊。</li>默认值：black 。
         :rtype: str
         """
         return self._FillType
@@ -30156,7 +30112,7 @@ class CreateSampleSnapshotTemplateResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Definition: 采样截图模板唯一标识。
+        :param _Definition: <p>采样截图模板唯一标识。</p>
         :type Definition: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -30166,7 +30122,7 @@ class CreateSampleSnapshotTemplateResponse(AbstractModel):
 
     @property
     def Definition(self):
-        r"""采样截图模板唯一标识。
+        r"""<p>采样截图模板唯一标识。</p>
         :rtype: int
         """
         return self._Definition
@@ -30610,39 +30566,21 @@ class CreateSnapshotByTimeOffsetTemplateRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SubAppId: <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
+        :param _SubAppId: <p><b>点播<a href="/document/product/266/14574">应用</a> ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b></p>
         :type SubAppId: int
-        :param _Name: 指定时间点截图模板名称，长度限制：64 个字符。
+        :param _Name: <p>指定时间点截图模板名称，长度限制：64 个字符。</p>
         :type Name: str
-        :param _Width: 截图宽度（或长边）的最大值，取值范围：0 和 [128, 4096]，单位：px。
-<li>当 Width、Height 均为 0，则分辨率同源；</li>
-<li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li>
-<li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li>
-<li>当 Width、Height 均非 0，则分辨率按用户指定。</li>
-默认值：0。
+        :param _Width: <p>截图宽度（或长边）的最大值，取值范围：0 和 [32, 4096]，单位：px。<li>当 Width、Height 均为 0，则分辨率同源；</li><li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li><li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li><li>当 Width、Height 均非 0，则分辨率按用户指定。</li>默认值：0。</p>
         :type Width: int
-        :param _Height: 截图高度（或短边）的最大值，取值范围：0 和 [128, 4096]，单位：px。
-<li>当 Width、Height 均为 0，则分辨率同源；</li>
-<li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li>
-<li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li>
-<li>当 Width、Height 均非 0，则分辨率按用户指定。</li>
-默认值：0。
+        :param _Height: <p>截图高度（或短边）的最大值，取值范围：0 和 [32, 4096]，单位：px。<li>当 Width、Height 均为 0，则分辨率同源；</li><li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li><li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li><li>当 Width、Height 均非 0，则分辨率按用户指定。</li>默认值：0。</p>
         :type Height: int
-        :param _ResolutionAdaptive: 分辨率自适应，可选值：
-<li>open：开启，此时，Width 代表视频的长边，Height 表示视频的短边；</li>
-<li>close：关闭，此时，Width 代表视频的宽度，Height 表示视频的高度。</li>
-默认值：open。
+        :param _ResolutionAdaptive: <p>分辨率自适应，可选值：</p><li>open：开启，此时，Width 代表视频的长边，Height 表示视频的短边；</li><li>close：关闭，此时，Width 代表视频的宽度，Height 表示视频的高度。</li>默认值：open。
         :type ResolutionAdaptive: str
-        :param _Format: 图片格式，取值可以为 jpg 和 png。默认为 jpg。
+        :param _Format: <p>图片格式，取值为 jpg、png 和 webp。默认为 jpg。</p>
         :type Format: str
-        :param _Comment: 模板描述信息，长度限制：256 个字符。
+        :param _Comment: <p>模板描述信息，长度限制：256 个字符。</p>
         :type Comment: str
-        :param _FillType: 填充方式，当视频流配置宽高参数与原始视频的宽高比不一致时，对转码的处理方式，即为“填充”。可选填充方式：
-<li> stretch：拉伸，对每一帧进行拉伸，填满整个画面，可能导致转码后的视频被“压扁“或者“拉长“；</li>
-<li>black：留黑，保持视频宽高比不变，边缘剩余部分使用黑色填充。</li>
-<li>white：留白，保持视频宽高比不变，边缘剩余部分使用白色填充。</li>
-<li>gauss：高斯模糊，保持视频宽高比不变，边缘剩余部分使用高斯模糊。</li>
-默认值：black 。
+        :param _FillType: <p>填充方式，当视频流配置宽高参数与原始视频的宽高比不一致时，对转码的处理方式，即为“填充”。可选填充方式：</p><li> stretch：拉伸，对每一帧进行拉伸，填满整个画面，可能导致转码后的视频被“压扁“或者“拉长“；</li><li>black：留黑，保持视频宽高比不变，边缘剩余部分使用黑色填充。</li><li>white：留白，保持视频宽高比不变，边缘剩余部分使用白色填充。</li><li>gauss：高斯模糊，保持视频宽高比不变，边缘剩余部分使用高斯模糊。</li>默认值：black 。
         :type FillType: str
         """
         self._SubAppId = None
@@ -30656,7 +30594,7 @@ class CreateSnapshotByTimeOffsetTemplateRequest(AbstractModel):
 
     @property
     def SubAppId(self):
-        r"""<b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
+        r"""<p><b>点播<a href="/document/product/266/14574">应用</a> ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b></p>
         :rtype: int
         """
         return self._SubAppId
@@ -30667,7 +30605,7 @@ class CreateSnapshotByTimeOffsetTemplateRequest(AbstractModel):
 
     @property
     def Name(self):
-        r"""指定时间点截图模板名称，长度限制：64 个字符。
+        r"""<p>指定时间点截图模板名称，长度限制：64 个字符。</p>
         :rtype: str
         """
         return self._Name
@@ -30678,12 +30616,7 @@ class CreateSnapshotByTimeOffsetTemplateRequest(AbstractModel):
 
     @property
     def Width(self):
-        r"""截图宽度（或长边）的最大值，取值范围：0 和 [128, 4096]，单位：px。
-<li>当 Width、Height 均为 0，则分辨率同源；</li>
-<li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li>
-<li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li>
-<li>当 Width、Height 均非 0，则分辨率按用户指定。</li>
-默认值：0。
+        r"""<p>截图宽度（或长边）的最大值，取值范围：0 和 [32, 4096]，单位：px。<li>当 Width、Height 均为 0，则分辨率同源；</li><li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li><li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li><li>当 Width、Height 均非 0，则分辨率按用户指定。</li>默认值：0。</p>
         :rtype: int
         """
         return self._Width
@@ -30694,12 +30627,7 @@ class CreateSnapshotByTimeOffsetTemplateRequest(AbstractModel):
 
     @property
     def Height(self):
-        r"""截图高度（或短边）的最大值，取值范围：0 和 [128, 4096]，单位：px。
-<li>当 Width、Height 均为 0，则分辨率同源；</li>
-<li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li>
-<li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li>
-<li>当 Width、Height 均非 0，则分辨率按用户指定。</li>
-默认值：0。
+        r"""<p>截图高度（或短边）的最大值，取值范围：0 和 [32, 4096]，单位：px。<li>当 Width、Height 均为 0，则分辨率同源；</li><li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li><li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li><li>当 Width、Height 均非 0，则分辨率按用户指定。</li>默认值：0。</p>
         :rtype: int
         """
         return self._Height
@@ -30710,10 +30638,7 @@ class CreateSnapshotByTimeOffsetTemplateRequest(AbstractModel):
 
     @property
     def ResolutionAdaptive(self):
-        r"""分辨率自适应，可选值：
-<li>open：开启，此时，Width 代表视频的长边，Height 表示视频的短边；</li>
-<li>close：关闭，此时，Width 代表视频的宽度，Height 表示视频的高度。</li>
-默认值：open。
+        r"""<p>分辨率自适应，可选值：</p><li>open：开启，此时，Width 代表视频的长边，Height 表示视频的短边；</li><li>close：关闭，此时，Width 代表视频的宽度，Height 表示视频的高度。</li>默认值：open。
         :rtype: str
         """
         return self._ResolutionAdaptive
@@ -30724,7 +30649,7 @@ class CreateSnapshotByTimeOffsetTemplateRequest(AbstractModel):
 
     @property
     def Format(self):
-        r"""图片格式，取值可以为 jpg 和 png。默认为 jpg。
+        r"""<p>图片格式，取值为 jpg、png 和 webp。默认为 jpg。</p>
         :rtype: str
         """
         return self._Format
@@ -30735,7 +30660,7 @@ class CreateSnapshotByTimeOffsetTemplateRequest(AbstractModel):
 
     @property
     def Comment(self):
-        r"""模板描述信息，长度限制：256 个字符。
+        r"""<p>模板描述信息，长度限制：256 个字符。</p>
         :rtype: str
         """
         return self._Comment
@@ -30746,12 +30671,7 @@ class CreateSnapshotByTimeOffsetTemplateRequest(AbstractModel):
 
     @property
     def FillType(self):
-        r"""填充方式，当视频流配置宽高参数与原始视频的宽高比不一致时，对转码的处理方式，即为“填充”。可选填充方式：
-<li> stretch：拉伸，对每一帧进行拉伸，填满整个画面，可能导致转码后的视频被“压扁“或者“拉长“；</li>
-<li>black：留黑，保持视频宽高比不变，边缘剩余部分使用黑色填充。</li>
-<li>white：留白，保持视频宽高比不变，边缘剩余部分使用白色填充。</li>
-<li>gauss：高斯模糊，保持视频宽高比不变，边缘剩余部分使用高斯模糊。</li>
-默认值：black 。
+        r"""<p>填充方式，当视频流配置宽高参数与原始视频的宽高比不一致时，对转码的处理方式，即为“填充”。可选填充方式：</p><li> stretch：拉伸，对每一帧进行拉伸，填满整个画面，可能导致转码后的视频被“压扁“或者“拉长“；</li><li>black：留黑，保持视频宽高比不变，边缘剩余部分使用黑色填充。</li><li>white：留白，保持视频宽高比不变，边缘剩余部分使用白色填充。</li><li>gauss：高斯模糊，保持视频宽高比不变，边缘剩余部分使用高斯模糊。</li>默认值：black 。
         :rtype: str
         """
         return self._FillType
@@ -30787,7 +30707,7 @@ class CreateSnapshotByTimeOffsetTemplateResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Definition: 时间点截图模板唯一标识。
+        :param _Definition: <p>时间点截图模板唯一标识。</p>
         :type Definition: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -30797,7 +30717,7 @@ class CreateSnapshotByTimeOffsetTemplateResponse(AbstractModel):
 
     @property
     def Definition(self):
-        r"""时间点截图模板唯一标识。
+        r"""<p>时间点截图模板唯一标识。</p>
         :rtype: int
         """
         return self._Definition
@@ -72137,39 +72057,27 @@ class ModifySampleSnapshotTemplateRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Definition: 采样截图模板唯一标识。
+        :param _Definition: <p>采样截图模板唯一标识。</p>
         :type Definition: int
-        :param _SubAppId: <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
+        :param _SubAppId: <p><b>点播<a href="/document/product/266/14574">应用</a> ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b></p>
         :type SubAppId: int
-        :param _Name: 采样截图模板名称，长度限制：64 个字符。
+        :param _Name: <p>采样截图模板名称，长度限制：64 个字符。</p>
         :type Name: str
-        :param _Width: 截图宽度（或长边）的最大值，取值范围：0 和 [32, 4096]，单位：px。<li>当 Width、Height 均为 0，则分辨率同源；</li><li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li><li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li><li>当 Width、Height 均非 0，则分辨率按用户指定。</li>默认值：0。
+        :param _Width: <p>截图宽度（或长边）的最大值，取值范围：0 和 [32, 4096]，单位：px。<li>当 Width、Height 均为 0，则分辨率同源；</li><li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li><li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li><li>当 Width、Height 均非 0，则分辨率按用户指定。</li>默认值：0。</p>
         :type Width: int
-        :param _Height: 截图高度（或短边）的最大值，取值范围：0 和 [32, 4096]，单位：px。<li>当 Width、Height 均为 0，则分辨率同源；</li><li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li><li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li><li>当 Width、Height 均非 0，则分辨率按用户指定。</li>默认值：0。
+        :param _Height: <p>截图高度（或短边）的最大值，取值范围：0 和 [32, 4096]，单位：px。<li>当 Width、Height 均为 0，则分辨率同源；</li><li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li><li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li><li>当 Width、Height 均非 0，则分辨率按用户指定。</li>默认值：0。</p>
         :type Height: int
-        :param _ResolutionAdaptive: 分辨率自适应，可选值：
-<li>open：开启，此时，Width 代表视频的长边，Height 表示视频的短边；</li>
-<li>close：关闭，此时，Width 代表视频的宽度，Height 表示视频的高度。</li>
-默认值：open。
+        :param _ResolutionAdaptive: <p>分辨率自适应，可选值：</p><li>open：开启，此时，Width 代表视频的长边，Height 表示视频的短边；</li><li>close：关闭，此时，Width 代表视频的宽度，Height 表示视频的高度。</li>默认值：open。
         :type ResolutionAdaptive: str
-        :param _SampleType: 采样截图类型，取值：
-<li>Percent：按百分比。</li>
-<li>Time：按时间间隔。</li>
+        :param _SampleType: <p>采样截图类型，取值：</p><li>Percent：按百分比。</li><li>Time：按时间间隔。</li>
         :type SampleType: str
-        :param _SampleInterval: 采样间隔。
-<li>当 SampleType 为 Percent 时，指定采样间隔的百分比。</li>
-<li>当 SampleType 为 Time 时，指定采样间隔的时间，单位为秒。</li>
+        :param _SampleInterval: <p>采样间隔。</p><li>当 SampleType 为 Percent 时，指定采样间隔的百分比。</li><li>当 SampleType 为 Time 时，指定采样间隔的时间，单位为秒。</li>
         :type SampleInterval: int
-        :param _Format: 图片格式，取值为 jpg 和 png。
+        :param _Format: <p>图片格式，取值为 jpg、png 和 webp。默认为 jpg。</p>
         :type Format: str
-        :param _Comment: 模板描述信息，长度限制：256 个字符。
+        :param _Comment: <p>模板描述信息，长度限制：256 个字符。</p>
         :type Comment: str
-        :param _FillType: 填充方式，当视频流配置宽高参数与原始视频的宽高比不一致时，对转码的处理方式，即为“填充”。可选填充方式：
-<li> stretch：拉伸，对每一帧进行拉伸，填满整个画面，可能导致转码后的视频被“压扁“或者“拉长“；</li>
-<li>black：留黑，保持视频宽高比不变，边缘剩余部分使用黑色填充。</li>
-<li>white：留白，保持视频宽高比不变，边缘剩余部分使用白色填充。</li>
-<li>gauss：高斯模糊，保持视频宽高比不变，边缘剩余部分使用高斯模糊。</li>
-默认值：black 。
+        :param _FillType: <p>填充方式，当视频流配置宽高参数与原始视频的宽高比不一致时，对转码的处理方式，即为“填充”。可选填充方式：</p><li> stretch：拉伸，对每一帧进行拉伸，填满整个画面，可能导致转码后的视频被“压扁“或者“拉长“；</li><li>black：留黑，保持视频宽高比不变，边缘剩余部分使用黑色填充。</li><li>white：留白，保持视频宽高比不变，边缘剩余部分使用白色填充。</li><li>gauss：高斯模糊，保持视频宽高比不变，边缘剩余部分使用高斯模糊。</li>默认值：black 。
         :type FillType: str
         """
         self._Definition = None
@@ -72186,7 +72094,7 @@ class ModifySampleSnapshotTemplateRequest(AbstractModel):
 
     @property
     def Definition(self):
-        r"""采样截图模板唯一标识。
+        r"""<p>采样截图模板唯一标识。</p>
         :rtype: int
         """
         return self._Definition
@@ -72197,7 +72105,7 @@ class ModifySampleSnapshotTemplateRequest(AbstractModel):
 
     @property
     def SubAppId(self):
-        r"""<b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
+        r"""<p><b>点播<a href="/document/product/266/14574">应用</a> ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b></p>
         :rtype: int
         """
         return self._SubAppId
@@ -72208,7 +72116,7 @@ class ModifySampleSnapshotTemplateRequest(AbstractModel):
 
     @property
     def Name(self):
-        r"""采样截图模板名称，长度限制：64 个字符。
+        r"""<p>采样截图模板名称，长度限制：64 个字符。</p>
         :rtype: str
         """
         return self._Name
@@ -72219,7 +72127,7 @@ class ModifySampleSnapshotTemplateRequest(AbstractModel):
 
     @property
     def Width(self):
-        r"""截图宽度（或长边）的最大值，取值范围：0 和 [32, 4096]，单位：px。<li>当 Width、Height 均为 0，则分辨率同源；</li><li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li><li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li><li>当 Width、Height 均非 0，则分辨率按用户指定。</li>默认值：0。
+        r"""<p>截图宽度（或长边）的最大值，取值范围：0 和 [32, 4096]，单位：px。<li>当 Width、Height 均为 0，则分辨率同源；</li><li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li><li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li><li>当 Width、Height 均非 0，则分辨率按用户指定。</li>默认值：0。</p>
         :rtype: int
         """
         return self._Width
@@ -72230,7 +72138,7 @@ class ModifySampleSnapshotTemplateRequest(AbstractModel):
 
     @property
     def Height(self):
-        r"""截图高度（或短边）的最大值，取值范围：0 和 [32, 4096]，单位：px。<li>当 Width、Height 均为 0，则分辨率同源；</li><li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li><li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li><li>当 Width、Height 均非 0，则分辨率按用户指定。</li>默认值：0。
+        r"""<p>截图高度（或短边）的最大值，取值范围：0 和 [32, 4096]，单位：px。<li>当 Width、Height 均为 0，则分辨率同源；</li><li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li><li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li><li>当 Width、Height 均非 0，则分辨率按用户指定。</li>默认值：0。</p>
         :rtype: int
         """
         return self._Height
@@ -72241,10 +72149,7 @@ class ModifySampleSnapshotTemplateRequest(AbstractModel):
 
     @property
     def ResolutionAdaptive(self):
-        r"""分辨率自适应，可选值：
-<li>open：开启，此时，Width 代表视频的长边，Height 表示视频的短边；</li>
-<li>close：关闭，此时，Width 代表视频的宽度，Height 表示视频的高度。</li>
-默认值：open。
+        r"""<p>分辨率自适应，可选值：</p><li>open：开启，此时，Width 代表视频的长边，Height 表示视频的短边；</li><li>close：关闭，此时，Width 代表视频的宽度，Height 表示视频的高度。</li>默认值：open。
         :rtype: str
         """
         return self._ResolutionAdaptive
@@ -72255,9 +72160,7 @@ class ModifySampleSnapshotTemplateRequest(AbstractModel):
 
     @property
     def SampleType(self):
-        r"""采样截图类型，取值：
-<li>Percent：按百分比。</li>
-<li>Time：按时间间隔。</li>
+        r"""<p>采样截图类型，取值：</p><li>Percent：按百分比。</li><li>Time：按时间间隔。</li>
         :rtype: str
         """
         return self._SampleType
@@ -72268,9 +72171,7 @@ class ModifySampleSnapshotTemplateRequest(AbstractModel):
 
     @property
     def SampleInterval(self):
-        r"""采样间隔。
-<li>当 SampleType 为 Percent 时，指定采样间隔的百分比。</li>
-<li>当 SampleType 为 Time 时，指定采样间隔的时间，单位为秒。</li>
+        r"""<p>采样间隔。</p><li>当 SampleType 为 Percent 时，指定采样间隔的百分比。</li><li>当 SampleType 为 Time 时，指定采样间隔的时间，单位为秒。</li>
         :rtype: int
         """
         return self._SampleInterval
@@ -72281,7 +72182,7 @@ class ModifySampleSnapshotTemplateRequest(AbstractModel):
 
     @property
     def Format(self):
-        r"""图片格式，取值为 jpg 和 png。
+        r"""<p>图片格式，取值为 jpg、png 和 webp。默认为 jpg。</p>
         :rtype: str
         """
         return self._Format
@@ -72292,7 +72193,7 @@ class ModifySampleSnapshotTemplateRequest(AbstractModel):
 
     @property
     def Comment(self):
-        r"""模板描述信息，长度限制：256 个字符。
+        r"""<p>模板描述信息，长度限制：256 个字符。</p>
         :rtype: str
         """
         return self._Comment
@@ -72303,12 +72204,7 @@ class ModifySampleSnapshotTemplateRequest(AbstractModel):
 
     @property
     def FillType(self):
-        r"""填充方式，当视频流配置宽高参数与原始视频的宽高比不一致时，对转码的处理方式，即为“填充”。可选填充方式：
-<li> stretch：拉伸，对每一帧进行拉伸，填满整个画面，可能导致转码后的视频被“压扁“或者“拉长“；</li>
-<li>black：留黑，保持视频宽高比不变，边缘剩余部分使用黑色填充。</li>
-<li>white：留白，保持视频宽高比不变，边缘剩余部分使用白色填充。</li>
-<li>gauss：高斯模糊，保持视频宽高比不变，边缘剩余部分使用高斯模糊。</li>
-默认值：black 。
+        r"""<p>填充方式，当视频流配置宽高参数与原始视频的宽高比不一致时，对转码的处理方式，即为“填充”。可选填充方式：</p><li> stretch：拉伸，对每一帧进行拉伸，填满整个画面，可能导致转码后的视频被“压扁“或者“拉长“；</li><li>black：留黑，保持视频宽高比不变，边缘剩余部分使用黑色填充。</li><li>white：留白，保持视频宽高比不变，边缘剩余部分使用白色填充。</li><li>gauss：高斯模糊，保持视频宽高比不变，边缘剩余部分使用高斯模糊。</li>默认值：black 。
         :rtype: str
         """
         return self._FillType
@@ -72375,31 +72271,23 @@ class ModifySnapshotByTimeOffsetTemplateRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Definition: 指定时间点截图模板唯一标识。
+        :param _Definition: <p>指定时间点截图模板唯一标识。</p>
         :type Definition: int
-        :param _SubAppId: <b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
+        :param _SubAppId: <p><b>点播<a href="/document/product/266/14574">应用</a> ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b></p>
         :type SubAppId: int
-        :param _Name: 指定时间点截图模板名称，长度限制：64 个字符。
+        :param _Name: <p>指定时间点截图模板名称，长度限制：64 个字符。</p>
         :type Name: str
-        :param _Width: 截图宽度（或长边）的最大值，取值范围：0 和 [32, 4096]，单位：px。<li>当 Width、Height 均为 0，则分辨率同源；</li><li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li><li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li><li>当 Width、Height 均非 0，则分辨率按用户指定。</li>默认值：0。
+        :param _Width: <p>截图宽度（或长边）的最大值，取值范围：0 和 [32, 4096]，单位：px。<li>当 Width、Height 均为 0，则分辨率同源；</li><li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li><li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li><li>当 Width、Height 均非 0，则分辨率按用户指定。</li>默认值：0。</p>
         :type Width: int
-        :param _Height: 截图高度（或短边）的最大值，取值范围：0 和 [32, 4096]，单位：px。<li>当 Width、Height 均为 0，则分辨率同源；</li><li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li><li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li><li>当 Width、Height 均非 0，则分辨率按用户指定。</li>默认值：0。
+        :param _Height: <p>截图高度（或短边）的最大值，取值范围：0 和 [32, 4096]，单位：px。<li>当 Width、Height 均为 0，则分辨率同源；</li><li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li><li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li><li>当 Width、Height 均非 0，则分辨率按用户指定。</li>默认值：0。</p>
         :type Height: int
-        :param _ResolutionAdaptive: 分辨率自适应，可选值：
-<li>open：开启，此时，Width 代表视频的长边，Height 表示视频的短边；</li>
-<li>close：关闭，此时，Width 代表视频的宽度，Height 表示视频的高度。</li>
-默认值：open。
+        :param _ResolutionAdaptive: <p>分辨率自适应，可选值：</p><li>open：开启，此时，Width 代表视频的长边，Height 表示视频的短边；</li><li>close：关闭，此时，Width 代表视频的宽度，Height 表示视频的高度。</li>默认值：open。
         :type ResolutionAdaptive: str
-        :param _Format: 图片格式，取值可以为 jpg 和 png。
+        :param _Format: <p>图片格式，取值为 jpg、png 和 webp。默认为 jpg。</p>
         :type Format: str
-        :param _Comment: 模板描述信息，长度限制：256 个字符。
+        :param _Comment: <p>模板描述信息，长度限制：256 个字符。</p>
         :type Comment: str
-        :param _FillType: 填充方式，当视频流配置宽高参数与原始视频的宽高比不一致时，对转码的处理方式，即为“填充”。可选填充方式：
-<li> stretch：拉伸，对每一帧进行拉伸，填满整个画面，可能导致转码后的视频被“压扁“或者“拉长“；</li>
-<li>black：留黑，保持视频宽高比不变，边缘剩余部分使用黑色填充。</li>
-<li>white：留白，保持视频宽高比不变，边缘剩余部分使用白色填充。</li>
-<li>gauss：高斯模糊，保持视频宽高比不变，边缘剩余部分使用高斯模糊。</li>
-默认值：black 。
+        :param _FillType: <p>填充方式，当视频流配置宽高参数与原始视频的宽高比不一致时，对转码的处理方式，即为“填充”。可选填充方式：</p><li> stretch：拉伸，对每一帧进行拉伸，填满整个画面，可能导致转码后的视频被“压扁“或者“拉长“；</li><li>black：留黑，保持视频宽高比不变，边缘剩余部分使用黑色填充。</li><li>white：留白，保持视频宽高比不变，边缘剩余部分使用白色填充。</li><li>gauss：高斯模糊，保持视频宽高比不变，边缘剩余部分使用高斯模糊。</li>默认值：black 。
         :type FillType: str
         """
         self._Definition = None
@@ -72414,7 +72302,7 @@ class ModifySnapshotByTimeOffsetTemplateRequest(AbstractModel):
 
     @property
     def Definition(self):
-        r"""指定时间点截图模板唯一标识。
+        r"""<p>指定时间点截图模板唯一标识。</p>
         :rtype: int
         """
         return self._Definition
@@ -72425,7 +72313,7 @@ class ModifySnapshotByTimeOffsetTemplateRequest(AbstractModel):
 
     @property
     def SubAppId(self):
-        r"""<b>点播[应用](/document/product/266/14574) ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b>
+        r"""<p><b>点播<a href="/document/product/266/14574">应用</a> ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b></p>
         :rtype: int
         """
         return self._SubAppId
@@ -72436,7 +72324,7 @@ class ModifySnapshotByTimeOffsetTemplateRequest(AbstractModel):
 
     @property
     def Name(self):
-        r"""指定时间点截图模板名称，长度限制：64 个字符。
+        r"""<p>指定时间点截图模板名称，长度限制：64 个字符。</p>
         :rtype: str
         """
         return self._Name
@@ -72447,7 +72335,7 @@ class ModifySnapshotByTimeOffsetTemplateRequest(AbstractModel):
 
     @property
     def Width(self):
-        r"""截图宽度（或长边）的最大值，取值范围：0 和 [32, 4096]，单位：px。<li>当 Width、Height 均为 0，则分辨率同源；</li><li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li><li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li><li>当 Width、Height 均非 0，则分辨率按用户指定。</li>默认值：0。
+        r"""<p>截图宽度（或长边）的最大值，取值范围：0 和 [32, 4096]，单位：px。<li>当 Width、Height 均为 0，则分辨率同源；</li><li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li><li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li><li>当 Width、Height 均非 0，则分辨率按用户指定。</li>默认值：0。</p>
         :rtype: int
         """
         return self._Width
@@ -72458,7 +72346,7 @@ class ModifySnapshotByTimeOffsetTemplateRequest(AbstractModel):
 
     @property
     def Height(self):
-        r"""截图高度（或短边）的最大值，取值范围：0 和 [32, 4096]，单位：px。<li>当 Width、Height 均为 0，则分辨率同源；</li><li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li><li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li><li>当 Width、Height 均非 0，则分辨率按用户指定。</li>默认值：0。
+        r"""<p>截图高度（或短边）的最大值，取值范围：0 和 [32, 4096]，单位：px。<li>当 Width、Height 均为 0，则分辨率同源；</li><li>当 Width 为 0，Height 非 0，则 Width 按比例缩放；</li><li>当 Width 非 0，Height 为 0，则 Height 按比例缩放；</li><li>当 Width、Height 均非 0，则分辨率按用户指定。</li>默认值：0。</p>
         :rtype: int
         """
         return self._Height
@@ -72469,10 +72357,7 @@ class ModifySnapshotByTimeOffsetTemplateRequest(AbstractModel):
 
     @property
     def ResolutionAdaptive(self):
-        r"""分辨率自适应，可选值：
-<li>open：开启，此时，Width 代表视频的长边，Height 表示视频的短边；</li>
-<li>close：关闭，此时，Width 代表视频的宽度，Height 表示视频的高度。</li>
-默认值：open。
+        r"""<p>分辨率自适应，可选值：</p><li>open：开启，此时，Width 代表视频的长边，Height 表示视频的短边；</li><li>close：关闭，此时，Width 代表视频的宽度，Height 表示视频的高度。</li>默认值：open。
         :rtype: str
         """
         return self._ResolutionAdaptive
@@ -72483,7 +72368,7 @@ class ModifySnapshotByTimeOffsetTemplateRequest(AbstractModel):
 
     @property
     def Format(self):
-        r"""图片格式，取值可以为 jpg 和 png。
+        r"""<p>图片格式，取值为 jpg、png 和 webp。默认为 jpg。</p>
         :rtype: str
         """
         return self._Format
@@ -72494,7 +72379,7 @@ class ModifySnapshotByTimeOffsetTemplateRequest(AbstractModel):
 
     @property
     def Comment(self):
-        r"""模板描述信息，长度限制：256 个字符。
+        r"""<p>模板描述信息，长度限制：256 个字符。</p>
         :rtype: str
         """
         return self._Comment
@@ -72505,12 +72390,7 @@ class ModifySnapshotByTimeOffsetTemplateRequest(AbstractModel):
 
     @property
     def FillType(self):
-        r"""填充方式，当视频流配置宽高参数与原始视频的宽高比不一致时，对转码的处理方式，即为“填充”。可选填充方式：
-<li> stretch：拉伸，对每一帧进行拉伸，填满整个画面，可能导致转码后的视频被“压扁“或者“拉长“；</li>
-<li>black：留黑，保持视频宽高比不变，边缘剩余部分使用黑色填充。</li>
-<li>white：留白，保持视频宽高比不变，边缘剩余部分使用白色填充。</li>
-<li>gauss：高斯模糊，保持视频宽高比不变，边缘剩余部分使用高斯模糊。</li>
-默认值：black 。
+        r"""<p>填充方式，当视频流配置宽高参数与原始视频的宽高比不一致时，对转码的处理方式，即为“填充”。可选填充方式：</p><li> stretch：拉伸，对每一帧进行拉伸，填满整个画面，可能导致转码后的视频被“压扁“或者“拉长“；</li><li>black：留黑，保持视频宽高比不变，边缘剩余部分使用黑色填充。</li><li>white：留白，保持视频宽高比不变，边缘剩余部分使用白色填充。</li><li>gauss：高斯模糊，保持视频宽高比不变，边缘剩余部分使用高斯模糊。</li>默认值：black 。
         :rtype: str
         """
         return self._FillType
@@ -91300,6 +91180,8 @@ class SearchMediaRequest(AbstractModel):
         :type StreamDomains: list of str
         :param _StreamPaths: <p>直播推流Path，当媒资来源是直播录制时有效。</p>
         :type StreamPaths: list of str
+        :param _KnowledgeBases: <p>知识库ID，匹配集合中任意元素。</p>
+        :type KnowledgeBases: list of str
         """
         self._SubAppId = None
         self._FileIds = None
@@ -91333,6 +91215,7 @@ class SearchMediaRequest(AbstractModel):
         self._Vid = None
         self._StreamDomains = None
         self._StreamPaths = None
+        self._KnowledgeBases = None
 
     @property
     def SubAppId(self):
@@ -91686,6 +91569,17 @@ class SearchMediaRequest(AbstractModel):
     def StreamPaths(self, StreamPaths):
         self._StreamPaths = StreamPaths
 
+    @property
+    def KnowledgeBases(self):
+        r"""<p>知识库ID，匹配集合中任意元素。</p>
+        :rtype: list of str
+        """
+        return self._KnowledgeBases
+
+    @KnowledgeBases.setter
+    def KnowledgeBases(self, KnowledgeBases):
+        self._KnowledgeBases = KnowledgeBases
+
 
     def _deserialize(self, params):
         self._SubAppId = params.get("SubAppId")
@@ -91726,6 +91620,7 @@ class SearchMediaRequest(AbstractModel):
         self._Vid = params.get("Vid")
         self._StreamDomains = params.get("StreamDomains")
         self._StreamPaths = params.get("StreamPaths")
+        self._KnowledgeBases = params.get("KnowledgeBases")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

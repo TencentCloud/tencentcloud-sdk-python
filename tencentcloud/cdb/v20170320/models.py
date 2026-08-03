@@ -24032,24 +24032,19 @@ class DrInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Status: 灾备实例状态
+        :param _Status: <p>灾备实例状态</p><p>枚举值：</p><ul><li>0： 创建中</li><li>1： 运行中</li><li>4： 正在进行隔离操作</li><li>5： 已隔离</li></ul>
         :type Status: int
-        :param _Zone: 可用区信息
+        :param _Zone: <p>可用区信息</p>
         :type Zone: str
-        :param _InstanceId: 实例ID
+        :param _InstanceId: <p>实例ID</p>
         :type InstanceId: str
-        :param _Region: 地域信息
+        :param _Region: <p>地域信息</p>
         :type Region: str
-        :param _SyncStatus: 实例同步状态。可能的返回值为：
-0 - 灾备未同步；
-1 - 灾备同步中；
-2 - 灾备同步成功；
-3 - 灾备同步失败；
-4 - 灾备同步修复中。
+        :param _SyncStatus: <p>实例同步状态。可能的返回值为：<br>0 - 灾备未同步；<br>1 - 灾备同步中；<br>2 - 灾备同步成功；<br>3 - 灾备同步失败；<br>4 - 灾备同步修复中。</p>
         :type SyncStatus: int
-        :param _InstanceName: 实例名称
+        :param _InstanceName: <p>实例名称</p>
         :type InstanceName: str
-        :param _InstanceType: 实例类型
+        :param _InstanceType: <p>实例类型</p>
         :type InstanceType: int
         """
         self._Status = None
@@ -24062,7 +24057,7 @@ class DrInfo(AbstractModel):
 
     @property
     def Status(self):
-        r"""灾备实例状态
+        r"""<p>灾备实例状态</p><p>枚举值：</p><ul><li>0： 创建中</li><li>1： 运行中</li><li>4： 正在进行隔离操作</li><li>5： 已隔离</li></ul>
         :rtype: int
         """
         return self._Status
@@ -24073,7 +24068,7 @@ class DrInfo(AbstractModel):
 
     @property
     def Zone(self):
-        r"""可用区信息
+        r"""<p>可用区信息</p>
         :rtype: str
         """
         return self._Zone
@@ -24084,7 +24079,7 @@ class DrInfo(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""实例ID
+        r"""<p>实例ID</p>
         :rtype: str
         """
         return self._InstanceId
@@ -24095,7 +24090,7 @@ class DrInfo(AbstractModel):
 
     @property
     def Region(self):
-        r"""地域信息
+        r"""<p>地域信息</p>
         :rtype: str
         """
         return self._Region
@@ -24106,12 +24101,7 @@ class DrInfo(AbstractModel):
 
     @property
     def SyncStatus(self):
-        r"""实例同步状态。可能的返回值为：
-0 - 灾备未同步；
-1 - 灾备同步中；
-2 - 灾备同步成功；
-3 - 灾备同步失败；
-4 - 灾备同步修复中。
+        r"""<p>实例同步状态。可能的返回值为：<br>0 - 灾备未同步；<br>1 - 灾备同步中；<br>2 - 灾备同步成功；<br>3 - 灾备同步失败；<br>4 - 灾备同步修复中。</p>
         :rtype: int
         """
         return self._SyncStatus
@@ -24122,7 +24112,7 @@ class DrInfo(AbstractModel):
 
     @property
     def InstanceName(self):
-        r"""实例名称
+        r"""<p>实例名称</p>
         :rtype: str
         """
         return self._InstanceName
@@ -24133,7 +24123,7 @@ class DrInfo(AbstractModel):
 
     @property
     def InstanceType(self):
-        r"""实例类型
+        r"""<p>实例类型</p>
         :rtype: int
         """
         return self._InstanceType

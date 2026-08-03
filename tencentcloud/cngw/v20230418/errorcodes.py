@@ -275,6 +275,9 @@ RESOURCENOTFOUND_RESOURCENOTFOUND = 'ResourceNotFound.ResourceNotFound'
 # 资源不可用。
 RESOURCEUNAVAILABLE = 'ResourceUnavailable'
 
+# ResourceUnavailable.NotPurchased
+RESOURCEUNAVAILABLE_NOTPURCHASED = 'ResourceUnavailable.NotPurchased'
+
 # 资源售罄。
 RESOURCESSOLDOUT = 'ResourcesSoldOut'
 

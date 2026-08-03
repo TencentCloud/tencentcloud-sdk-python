@@ -2820,6 +2820,70 @@ class CancelNotebookSessionStatementResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CancelRayJobRequest(AbstractModel):
+    r"""CancelRayJob请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: 任务ID
+        :type Id: str
+        """
+        self._Id = None
+
+    @property
+    def Id(self):
+        r"""任务ID
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CancelRayJobResponse(AbstractModel):
+    r"""CancelRayJob返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class CancelSparkSessionBatchSQLRequest(AbstractModel):
     r"""CancelSparkSessionBatchSQL请求参数结构体
 
@@ -3518,6 +3582,475 @@ class CheckLockMetaDataResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ClusterGroup(AbstractModel):
+    r"""集群组响应
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: 集群组 ID（系统生成）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Id: str
+        :param _Name: 集群组名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param _Description: 集群组描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Description: str
+        :param _Config: 配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Config: str
+        :param _AppId: 应用 ID（多租户）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AppId: int
+        :param _Uin: 创建者主账号 UIN
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Uin: str
+        :param _SubAccountUin: 创建者子账号 UIN
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SubAccountUin: str
+        :param _CreateTime: 创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: int
+        :param _UpdateTime: 更新时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpdateTime: int
+        :param _Deleted: 是否已软删除
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Deleted: bool
+        :param _DeleteTime: 删除时间（软删时写入，活跃记录为 null）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DeleteTime: int
+        """
+        self._Id = None
+        self._Name = None
+        self._Description = None
+        self._Config = None
+        self._AppId = None
+        self._Uin = None
+        self._SubAccountUin = None
+        self._CreateTime = None
+        self._UpdateTime = None
+        self._Deleted = None
+        self._DeleteTime = None
+
+    @property
+    def Id(self):
+        r"""集群组 ID（系统生成）
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Name(self):
+        r"""集群组名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Description(self):
+        r"""集群组描述
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def Config(self):
+        r"""配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Config
+
+    @Config.setter
+    def Config(self, Config):
+        self._Config = Config
+
+    @property
+    def AppId(self):
+        r"""应用 ID（多租户）
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def Uin(self):
+        r"""创建者主账号 UIN
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Uin
+
+    @Uin.setter
+    def Uin(self, Uin):
+        self._Uin = Uin
+
+    @property
+    def SubAccountUin(self):
+        r"""创建者子账号 UIN
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._SubAccountUin
+
+    @SubAccountUin.setter
+    def SubAccountUin(self, SubAccountUin):
+        self._SubAccountUin = SubAccountUin
+
+    @property
+    def CreateTime(self):
+        r"""创建时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        r"""更新时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def Deleted(self):
+        r"""是否已软删除
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._Deleted
+
+    @Deleted.setter
+    def Deleted(self, Deleted):
+        self._Deleted = Deleted
+
+    @property
+    def DeleteTime(self):
+        r"""删除时间（软删时写入，活跃记录为 null）
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._DeleteTime
+
+    @DeleteTime.setter
+    def DeleteTime(self, DeleteTime):
+        self._DeleteTime = DeleteTime
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._Name = params.get("Name")
+        self._Description = params.get("Description")
+        self._Config = params.get("Config")
+        self._AppId = params.get("AppId")
+        self._Uin = params.get("Uin")
+        self._SubAccountUin = params.get("SubAccountUin")
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
+        self._Deleted = params.get("Deleted")
+        self._DeleteTime = params.get("DeleteTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ClusterPod(AbstractModel):
+    r"""集群pod详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PodName: <p>Pod名称</p>
+        :type PodName: str
+        :param _PodIp: <p>Pod IP</p>
+        :type PodIp: str
+        :param _Status: <p>Pod状态</p>
+        :type Status: str
+        :param _Phase: <p>Pod阶段</p>
+        :type Phase: str
+        :param _NodeName: <p>所属节点</p>
+        :type NodeName: str
+        :param _NodeIp: <p>节点IP</p>
+        :type NodeIp: str
+        :param _Namespace: <p>命名空间</p>
+        :type Namespace: str
+        :param _CpuRequest: <p>CPU请求</p>
+        :type CpuRequest: str
+        :param _CpuLimit: <p>CPU限制</p>
+        :type CpuLimit: str
+        :param _MemoryRequest: <p>内存请求</p>
+        :type MemoryRequest: str
+        :param _MemoryLimit: <p>内存限制</p>
+        :type MemoryLimit: str
+        :param _GpuCount: <p>GPU数量</p>
+        :type GpuCount: str
+        :param _Image: <p>容器镜像</p>
+        :type Image: str
+        :param _Role: <p>Pod角色(head/worker)</p>
+        :type Role: str
+        :param _CreateTime: <p>创建时间（毫秒时间戳）</p>
+        :type CreateTime: int
+        :param _StartTime: <p>启动时间（毫秒时间戳）</p>
+        :type StartTime: int
+        """
+        self._PodName = None
+        self._PodIp = None
+        self._Status = None
+        self._Phase = None
+        self._NodeName = None
+        self._NodeIp = None
+        self._Namespace = None
+        self._CpuRequest = None
+        self._CpuLimit = None
+        self._MemoryRequest = None
+        self._MemoryLimit = None
+        self._GpuCount = None
+        self._Image = None
+        self._Role = None
+        self._CreateTime = None
+        self._StartTime = None
+
+    @property
+    def PodName(self):
+        r"""<p>Pod名称</p>
+        :rtype: str
+        """
+        return self._PodName
+
+    @PodName.setter
+    def PodName(self, PodName):
+        self._PodName = PodName
+
+    @property
+    def PodIp(self):
+        r"""<p>Pod IP</p>
+        :rtype: str
+        """
+        return self._PodIp
+
+    @PodIp.setter
+    def PodIp(self, PodIp):
+        self._PodIp = PodIp
+
+    @property
+    def Status(self):
+        r"""<p>Pod状态</p>
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Phase(self):
+        r"""<p>Pod阶段</p>
+        :rtype: str
+        """
+        return self._Phase
+
+    @Phase.setter
+    def Phase(self, Phase):
+        self._Phase = Phase
+
+    @property
+    def NodeName(self):
+        r"""<p>所属节点</p>
+        :rtype: str
+        """
+        return self._NodeName
+
+    @NodeName.setter
+    def NodeName(self, NodeName):
+        self._NodeName = NodeName
+
+    @property
+    def NodeIp(self):
+        r"""<p>节点IP</p>
+        :rtype: str
+        """
+        return self._NodeIp
+
+    @NodeIp.setter
+    def NodeIp(self, NodeIp):
+        self._NodeIp = NodeIp
+
+    @property
+    def Namespace(self):
+        r"""<p>命名空间</p>
+        :rtype: str
+        """
+        return self._Namespace
+
+    @Namespace.setter
+    def Namespace(self, Namespace):
+        self._Namespace = Namespace
+
+    @property
+    def CpuRequest(self):
+        r"""<p>CPU请求</p>
+        :rtype: str
+        """
+        return self._CpuRequest
+
+    @CpuRequest.setter
+    def CpuRequest(self, CpuRequest):
+        self._CpuRequest = CpuRequest
+
+    @property
+    def CpuLimit(self):
+        r"""<p>CPU限制</p>
+        :rtype: str
+        """
+        return self._CpuLimit
+
+    @CpuLimit.setter
+    def CpuLimit(self, CpuLimit):
+        self._CpuLimit = CpuLimit
+
+    @property
+    def MemoryRequest(self):
+        r"""<p>内存请求</p>
+        :rtype: str
+        """
+        return self._MemoryRequest
+
+    @MemoryRequest.setter
+    def MemoryRequest(self, MemoryRequest):
+        self._MemoryRequest = MemoryRequest
+
+    @property
+    def MemoryLimit(self):
+        r"""<p>内存限制</p>
+        :rtype: str
+        """
+        return self._MemoryLimit
+
+    @MemoryLimit.setter
+    def MemoryLimit(self, MemoryLimit):
+        self._MemoryLimit = MemoryLimit
+
+    @property
+    def GpuCount(self):
+        r"""<p>GPU数量</p>
+        :rtype: str
+        """
+        return self._GpuCount
+
+    @GpuCount.setter
+    def GpuCount(self, GpuCount):
+        self._GpuCount = GpuCount
+
+    @property
+    def Image(self):
+        r"""<p>容器镜像</p>
+        :rtype: str
+        """
+        return self._Image
+
+    @Image.setter
+    def Image(self, Image):
+        self._Image = Image
+
+    @property
+    def Role(self):
+        r"""<p>Pod角色(head/worker)</p>
+        :rtype: str
+        """
+        return self._Role
+
+    @Role.setter
+    def Role(self, Role):
+        self._Role = Role
+
+    @property
+    def CreateTime(self):
+        r"""<p>创建时间（毫秒时间戳）</p>
+        :rtype: int
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def StartTime(self):
+        r"""<p>启动时间（毫秒时间戳）</p>
+        :rtype: int
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+
+    def _deserialize(self, params):
+        self._PodName = params.get("PodName")
+        self._PodIp = params.get("PodIp")
+        self._Status = params.get("Status")
+        self._Phase = params.get("Phase")
+        self._NodeName = params.get("NodeName")
+        self._NodeIp = params.get("NodeIp")
+        self._Namespace = params.get("Namespace")
+        self._CpuRequest = params.get("CpuRequest")
+        self._CpuLimit = params.get("CpuLimit")
+        self._MemoryRequest = params.get("MemoryRequest")
+        self._MemoryLimit = params.get("MemoryLimit")
+        self._GpuCount = params.get("GpuCount")
+        self._Image = params.get("Image")
+        self._Role = params.get("Role")
+        self._CreateTime = params.get("CreateTime")
+        self._StartTime = params.get("StartTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Column(AbstractModel):
     r"""数据表列信息。
 
@@ -3933,6 +4466,591 @@ class CommonMetrics(AbstractModel):
         
 
 
+class CopyJobSpecRequest(AbstractModel):
+    r"""CopyJobSpec请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SpecId: <p>原配置ID</p>
+        :type SpecId: str
+        :param _NewName: <p>新配置名称（可选，留空则自动命名为 &#39;原名-copy&#39;）</p>
+        :type NewName: str
+        """
+        self._SpecId = None
+        self._NewName = None
+
+    @property
+    def SpecId(self):
+        r"""<p>原配置ID</p>
+        :rtype: str
+        """
+        return self._SpecId
+
+    @SpecId.setter
+    def SpecId(self, SpecId):
+        self._SpecId = SpecId
+
+    @property
+    def NewName(self):
+        r"""<p>新配置名称（可选，留空则自动命名为 &#39;原名-copy&#39;）</p>
+        :rtype: str
+        """
+        return self._NewName
+
+    @NewName.setter
+    def NewName(self, NewName):
+        self._NewName = NewName
+
+
+    def _deserialize(self, params):
+        self._SpecId = params.get("SpecId")
+        self._NewName = params.get("NewName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CopyJobSpecResponse(AbstractModel):
+    r"""CopyJobSpec返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: <p>配置ID</p>
+        :type Id: str
+        :param _Name: <p>配置名称</p>
+        :type Name: str
+        :param _Description: <p>配置描述</p>
+        :type Description: str
+        :param _Entrypoint: <p>入口命令</p>
+        :type Entrypoint: str
+        :param _Image: <p>镜像地址</p>
+        :type Image: str
+        :param _ImagePullType: <p>镜像拉取类型（Builtin: 内置, Custom: 自定义）</p>
+        :type ImagePullType: str
+        :param _ImagePullPolicy: <p>镜像拉取策略</p>
+        :type ImagePullPolicy: str
+        :param _ResourceConfig: <p>资源配置(JSON)</p>
+        :type ResourceConfig: str
+        :param _RuntimeEnv: <p>运行时环境配置(JSON)</p>
+        :type RuntimeEnv: str
+        :param _Catalog: <p>存储卷和挂载卷配置(JSON)</p>
+        :type Catalog: str
+        :param _AutoscalerOptions: <p>弹性伸缩配置(JSON)</p>
+        :type AutoscalerOptions: str
+        :param _ResourceConfigId: <p>资源配置ID</p>
+        :type ResourceConfigId: str
+        :param _ResourceConfigChanged: <p>资源配置模板是否变更</p>
+        :type ResourceConfigChanged: bool
+        :param _ResourcePartitionId: <p>默认资源分区ID</p>
+        :type ResourcePartitionId: str
+        :param _ResourcePartitionName: <p>默认资源分区名称</p>
+        :type ResourcePartitionName: str
+        :param _Queue: <p>默认队列名称</p>
+        :type Queue: str
+        :param _JobPackage: <p>作业包URL</p>
+        :type JobPackage: str
+        :param _JobPackageName: <p>作业包名称</p>
+        :type JobPackageName: str
+        :param _AppId: <p>应用ID</p>
+        :type AppId: int
+        :param _Uin: <p>创建者UIN</p>
+        :type Uin: str
+        :param _CreateTime: <p>创建时间</p>
+        :type CreateTime: int
+        :param _UpdateTime: <p>更新时间</p>
+        :type UpdateTime: int
+        :param _JobInstanceCount: <p>该配置产生的作业实例数量</p>
+        :type JobInstanceCount: int
+        :param _HasRunningJobs: <p>是否有运行中的作业实例</p>
+        :type HasRunningJobs: bool
+        :param _AdvancedOptions: <p>高级参数配置，json类型</p>
+        :type AdvancedOptions: str
+        :param _GroupId: <p>默认计算组名称（与 ClusterGroup 等价，新调用方使用 GroupId）</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GroupId: str
+        :param _ClusterId: <p>默认集群 ID（与 GroupId 互斥）</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClusterId: str
+        :param _Priority: <p>作业优先级（1-9，数字越大优先级越高）</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Priority: int
+        :param _Tags: <p>标签列表（TagKey-TagValue），用于将资源与腾讯云标签系统中的标签绑定</p>
+        :type Tags: list of Tag
+        :param _DispatchStrategy: <p>集群分派策略</p><p>枚举值：</p><ul><li>RANDOM： 随机分配</li><li>NULL： 无</li></ul>
+        :type DispatchStrategy: str
+        :param _SubmissionTarget: <p>作业提交目标：GROUP（按计算组分派）/ CLUSTER（指定集群）/ SERVERLESS（按 Serverless 拉起）</p><p>枚举值：</p><ul><li>GROUP： 按计算组分派</li><li>CLUSTER： 指定集群</li><li>SERVERLESS： 按 Serverless 拉起</li></ul>
+        :type SubmissionTarget: str
+        :param _GroupName: <p>集群组名称</p>
+        :type GroupName: str
+        :param _ClusterName: <p>集群名称</p>
+        :type ClusterName: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Id = None
+        self._Name = None
+        self._Description = None
+        self._Entrypoint = None
+        self._Image = None
+        self._ImagePullType = None
+        self._ImagePullPolicy = None
+        self._ResourceConfig = None
+        self._RuntimeEnv = None
+        self._Catalog = None
+        self._AutoscalerOptions = None
+        self._ResourceConfigId = None
+        self._ResourceConfigChanged = None
+        self._ResourcePartitionId = None
+        self._ResourcePartitionName = None
+        self._Queue = None
+        self._JobPackage = None
+        self._JobPackageName = None
+        self._AppId = None
+        self._Uin = None
+        self._CreateTime = None
+        self._UpdateTime = None
+        self._JobInstanceCount = None
+        self._HasRunningJobs = None
+        self._AdvancedOptions = None
+        self._GroupId = None
+        self._ClusterId = None
+        self._Priority = None
+        self._Tags = None
+        self._DispatchStrategy = None
+        self._SubmissionTarget = None
+        self._GroupName = None
+        self._ClusterName = None
+        self._RequestId = None
+
+    @property
+    def Id(self):
+        r"""<p>配置ID</p>
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Name(self):
+        r"""<p>配置名称</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Description(self):
+        r"""<p>配置描述</p>
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def Entrypoint(self):
+        r"""<p>入口命令</p>
+        :rtype: str
+        """
+        return self._Entrypoint
+
+    @Entrypoint.setter
+    def Entrypoint(self, Entrypoint):
+        self._Entrypoint = Entrypoint
+
+    @property
+    def Image(self):
+        r"""<p>镜像地址</p>
+        :rtype: str
+        """
+        return self._Image
+
+    @Image.setter
+    def Image(self, Image):
+        self._Image = Image
+
+    @property
+    def ImagePullType(self):
+        r"""<p>镜像拉取类型（Builtin: 内置, Custom: 自定义）</p>
+        :rtype: str
+        """
+        return self._ImagePullType
+
+    @ImagePullType.setter
+    def ImagePullType(self, ImagePullType):
+        self._ImagePullType = ImagePullType
+
+    @property
+    def ImagePullPolicy(self):
+        r"""<p>镜像拉取策略</p>
+        :rtype: str
+        """
+        return self._ImagePullPolicy
+
+    @ImagePullPolicy.setter
+    def ImagePullPolicy(self, ImagePullPolicy):
+        self._ImagePullPolicy = ImagePullPolicy
+
+    @property
+    def ResourceConfig(self):
+        r"""<p>资源配置(JSON)</p>
+        :rtype: str
+        """
+        return self._ResourceConfig
+
+    @ResourceConfig.setter
+    def ResourceConfig(self, ResourceConfig):
+        self._ResourceConfig = ResourceConfig
+
+    @property
+    def RuntimeEnv(self):
+        r"""<p>运行时环境配置(JSON)</p>
+        :rtype: str
+        """
+        return self._RuntimeEnv
+
+    @RuntimeEnv.setter
+    def RuntimeEnv(self, RuntimeEnv):
+        self._RuntimeEnv = RuntimeEnv
+
+    @property
+    def Catalog(self):
+        r"""<p>存储卷和挂载卷配置(JSON)</p>
+        :rtype: str
+        """
+        return self._Catalog
+
+    @Catalog.setter
+    def Catalog(self, Catalog):
+        self._Catalog = Catalog
+
+    @property
+    def AutoscalerOptions(self):
+        r"""<p>弹性伸缩配置(JSON)</p>
+        :rtype: str
+        """
+        return self._AutoscalerOptions
+
+    @AutoscalerOptions.setter
+    def AutoscalerOptions(self, AutoscalerOptions):
+        self._AutoscalerOptions = AutoscalerOptions
+
+    @property
+    def ResourceConfigId(self):
+        r"""<p>资源配置ID</p>
+        :rtype: str
+        """
+        return self._ResourceConfigId
+
+    @ResourceConfigId.setter
+    def ResourceConfigId(self, ResourceConfigId):
+        self._ResourceConfigId = ResourceConfigId
+
+    @property
+    def ResourceConfigChanged(self):
+        r"""<p>资源配置模板是否变更</p>
+        :rtype: bool
+        """
+        return self._ResourceConfigChanged
+
+    @ResourceConfigChanged.setter
+    def ResourceConfigChanged(self, ResourceConfigChanged):
+        self._ResourceConfigChanged = ResourceConfigChanged
+
+    @property
+    def ResourcePartitionId(self):
+        r"""<p>默认资源分区ID</p>
+        :rtype: str
+        """
+        return self._ResourcePartitionId
+
+    @ResourcePartitionId.setter
+    def ResourcePartitionId(self, ResourcePartitionId):
+        self._ResourcePartitionId = ResourcePartitionId
+
+    @property
+    def ResourcePartitionName(self):
+        r"""<p>默认资源分区名称</p>
+        :rtype: str
+        """
+        return self._ResourcePartitionName
+
+    @ResourcePartitionName.setter
+    def ResourcePartitionName(self, ResourcePartitionName):
+        self._ResourcePartitionName = ResourcePartitionName
+
+    @property
+    def Queue(self):
+        r"""<p>默认队列名称</p>
+        :rtype: str
+        """
+        return self._Queue
+
+    @Queue.setter
+    def Queue(self, Queue):
+        self._Queue = Queue
+
+    @property
+    def JobPackage(self):
+        r"""<p>作业包URL</p>
+        :rtype: str
+        """
+        return self._JobPackage
+
+    @JobPackage.setter
+    def JobPackage(self, JobPackage):
+        self._JobPackage = JobPackage
+
+    @property
+    def JobPackageName(self):
+        r"""<p>作业包名称</p>
+        :rtype: str
+        """
+        return self._JobPackageName
+
+    @JobPackageName.setter
+    def JobPackageName(self, JobPackageName):
+        self._JobPackageName = JobPackageName
+
+    @property
+    def AppId(self):
+        r"""<p>应用ID</p>
+        :rtype: int
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def Uin(self):
+        r"""<p>创建者UIN</p>
+        :rtype: str
+        """
+        return self._Uin
+
+    @Uin.setter
+    def Uin(self, Uin):
+        self._Uin = Uin
+
+    @property
+    def CreateTime(self):
+        r"""<p>创建时间</p>
+        :rtype: int
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        r"""<p>更新时间</p>
+        :rtype: int
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def JobInstanceCount(self):
+        r"""<p>该配置产生的作业实例数量</p>
+        :rtype: int
+        """
+        return self._JobInstanceCount
+
+    @JobInstanceCount.setter
+    def JobInstanceCount(self, JobInstanceCount):
+        self._JobInstanceCount = JobInstanceCount
+
+    @property
+    def HasRunningJobs(self):
+        r"""<p>是否有运行中的作业实例</p>
+        :rtype: bool
+        """
+        return self._HasRunningJobs
+
+    @HasRunningJobs.setter
+    def HasRunningJobs(self, HasRunningJobs):
+        self._HasRunningJobs = HasRunningJobs
+
+    @property
+    def AdvancedOptions(self):
+        r"""<p>高级参数配置，json类型</p>
+        :rtype: str
+        """
+        return self._AdvancedOptions
+
+    @AdvancedOptions.setter
+    def AdvancedOptions(self, AdvancedOptions):
+        self._AdvancedOptions = AdvancedOptions
+
+    @property
+    def GroupId(self):
+        r"""<p>默认计算组名称（与 ClusterGroup 等价，新调用方使用 GroupId）</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._GroupId
+
+    @GroupId.setter
+    def GroupId(self, GroupId):
+        self._GroupId = GroupId
+
+    @property
+    def ClusterId(self):
+        r"""<p>默认集群 ID（与 GroupId 互斥）</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def Priority(self):
+        r"""<p>作业优先级（1-9，数字越大优先级越高）</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Priority
+
+    @Priority.setter
+    def Priority(self, Priority):
+        self._Priority = Priority
+
+    @property
+    def Tags(self):
+        r"""<p>标签列表（TagKey-TagValue），用于将资源与腾讯云标签系统中的标签绑定</p>
+        :rtype: list of Tag
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def DispatchStrategy(self):
+        r"""<p>集群分派策略</p><p>枚举值：</p><ul><li>RANDOM： 随机分配</li><li>NULL： 无</li></ul>
+        :rtype: str
+        """
+        return self._DispatchStrategy
+
+    @DispatchStrategy.setter
+    def DispatchStrategy(self, DispatchStrategy):
+        self._DispatchStrategy = DispatchStrategy
+
+    @property
+    def SubmissionTarget(self):
+        r"""<p>作业提交目标：GROUP（按计算组分派）/ CLUSTER（指定集群）/ SERVERLESS（按 Serverless 拉起）</p><p>枚举值：</p><ul><li>GROUP： 按计算组分派</li><li>CLUSTER： 指定集群</li><li>SERVERLESS： 按 Serverless 拉起</li></ul>
+        :rtype: str
+        """
+        return self._SubmissionTarget
+
+    @SubmissionTarget.setter
+    def SubmissionTarget(self, SubmissionTarget):
+        self._SubmissionTarget = SubmissionTarget
+
+    @property
+    def GroupName(self):
+        r"""<p>集群组名称</p>
+        :rtype: str
+        """
+        return self._GroupName
+
+    @GroupName.setter
+    def GroupName(self, GroupName):
+        self._GroupName = GroupName
+
+    @property
+    def ClusterName(self):
+        r"""<p>集群名称</p>
+        :rtype: str
+        """
+        return self._ClusterName
+
+    @ClusterName.setter
+    def ClusterName(self, ClusterName):
+        self._ClusterName = ClusterName
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._Name = params.get("Name")
+        self._Description = params.get("Description")
+        self._Entrypoint = params.get("Entrypoint")
+        self._Image = params.get("Image")
+        self._ImagePullType = params.get("ImagePullType")
+        self._ImagePullPolicy = params.get("ImagePullPolicy")
+        self._ResourceConfig = params.get("ResourceConfig")
+        self._RuntimeEnv = params.get("RuntimeEnv")
+        self._Catalog = params.get("Catalog")
+        self._AutoscalerOptions = params.get("AutoscalerOptions")
+        self._ResourceConfigId = params.get("ResourceConfigId")
+        self._ResourceConfigChanged = params.get("ResourceConfigChanged")
+        self._ResourcePartitionId = params.get("ResourcePartitionId")
+        self._ResourcePartitionName = params.get("ResourcePartitionName")
+        self._Queue = params.get("Queue")
+        self._JobPackage = params.get("JobPackage")
+        self._JobPackageName = params.get("JobPackageName")
+        self._AppId = params.get("AppId")
+        self._Uin = params.get("Uin")
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
+        self._JobInstanceCount = params.get("JobInstanceCount")
+        self._HasRunningJobs = params.get("HasRunningJobs")
+        self._AdvancedOptions = params.get("AdvancedOptions")
+        self._GroupId = params.get("GroupId")
+        self._ClusterId = params.get("ClusterId")
+        self._Priority = params.get("Priority")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
+        self._DispatchStrategy = params.get("DispatchStrategy")
+        self._SubmissionTarget = params.get("SubmissionTarget")
+        self._GroupName = params.get("GroupName")
+        self._ClusterName = params.get("ClusterName")
+        self._RequestId = params.get("RequestId")
+
+
 class CoreInfo(AbstractModel):
     r"""任务 core 用量信息
 
@@ -4185,6 +5303,271 @@ class CreateCHDFSBindingProductResponse(AbstractModel):
                 obj = MountPointAssociates()
                 obj._deserialize(item)
                 self._MountPointAssociates.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class CreateClusterGroupRequest(AbstractModel):
+    r"""CreateClusterGroup请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: <p>集群组名称</p>
+        :type Name: str
+        :param _Description: <p>集群组描述</p>
+        :type Description: str
+        :param _Config: <p>集群组配置</p>
+        :type Config: str
+        """
+        self._Name = None
+        self._Description = None
+        self._Config = None
+
+    @property
+    def Name(self):
+        r"""<p>集群组名称</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Description(self):
+        r"""<p>集群组描述</p>
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def Config(self):
+        r"""<p>集群组配置</p>
+        :rtype: str
+        """
+        return self._Config
+
+    @Config.setter
+    def Config(self, Config):
+        self._Config = Config
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Description = params.get("Description")
+        self._Config = params.get("Config")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateClusterGroupResponse(AbstractModel):
+    r"""CreateClusterGroup返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: <p>集群组 ID</p>
+        :type Id: str
+        :param _Name: <p>集群组名称</p>
+        :type Name: str
+        :param _Description: <p>集群组描述</p>
+        :type Description: str
+        :param _AppId: <p>应用 ID（多租户）</p>
+        :type AppId: int
+        :param _Uin: <p>创建者主账号 UIN</p>
+        :type Uin: str
+        :param _SubAccountUin: <p>创建者子账号 UIN</p>
+        :type SubAccountUin: str
+        :param _CreateTime: <p>创建时间</p>
+        :type CreateTime: int
+        :param _UpdateTime: <p>修改时间</p>
+        :type UpdateTime: int
+        :param _Config: <p>集群组配置</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Config: str
+        :param _Deleted: <p>是否已软删除</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Deleted: bool
+        :param _DeleteTime: <p>删除时间（软删时写入，活跃记录为 null）</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DeleteTime: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Id = None
+        self._Name = None
+        self._Description = None
+        self._AppId = None
+        self._Uin = None
+        self._SubAccountUin = None
+        self._CreateTime = None
+        self._UpdateTime = None
+        self._Config = None
+        self._Deleted = None
+        self._DeleteTime = None
+        self._RequestId = None
+
+    @property
+    def Id(self):
+        r"""<p>集群组 ID</p>
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Name(self):
+        r"""<p>集群组名称</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Description(self):
+        r"""<p>集群组描述</p>
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def AppId(self):
+        r"""<p>应用 ID（多租户）</p>
+        :rtype: int
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def Uin(self):
+        r"""<p>创建者主账号 UIN</p>
+        :rtype: str
+        """
+        return self._Uin
+
+    @Uin.setter
+    def Uin(self, Uin):
+        self._Uin = Uin
+
+    @property
+    def SubAccountUin(self):
+        r"""<p>创建者子账号 UIN</p>
+        :rtype: str
+        """
+        return self._SubAccountUin
+
+    @SubAccountUin.setter
+    def SubAccountUin(self, SubAccountUin):
+        self._SubAccountUin = SubAccountUin
+
+    @property
+    def CreateTime(self):
+        r"""<p>创建时间</p>
+        :rtype: int
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        r"""<p>修改时间</p>
+        :rtype: int
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def Config(self):
+        r"""<p>集群组配置</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Config
+
+    @Config.setter
+    def Config(self, Config):
+        self._Config = Config
+
+    @property
+    def Deleted(self):
+        r"""<p>是否已软删除</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._Deleted
+
+    @Deleted.setter
+    def Deleted(self, Deleted):
+        self._Deleted = Deleted
+
+    @property
+    def DeleteTime(self):
+        r"""<p>删除时间（软删时写入，活跃记录为 null）</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._DeleteTime
+
+    @DeleteTime.setter
+    def DeleteTime(self, DeleteTime):
+        self._DeleteTime = DeleteTime
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._Name = params.get("Name")
+        self._Description = params.get("Description")
+        self._AppId = params.get("AppId")
+        self._Uin = params.get("Uin")
+        self._SubAccountUin = params.get("SubAccountUin")
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
+        self._Config = params.get("Config")
+        self._Deleted = params.get("Deleted")
+        self._DeleteTime = params.get("DeleteTime")
         self._RequestId = params.get("RequestId")
 
 
@@ -6023,6 +7406,1774 @@ class CreateInternalTableResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateJobSpecRequest(AbstractModel):
+    r"""CreateJobSpec请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Entrypoint: <p>入口命令不能为空</p>
+        :type Entrypoint: str
+        :param _Name: <p>配置名称（可选，不填则自动生成）</p>
+        :type Name: str
+        :param _Description: <p>配置描述</p>
+        :type Description: str
+        :param _Image: <p>镜像地址</p>
+        :type Image: str
+        :param _ImagePullType: <p>镜像拉取类型（Builtin: 内置, Custom: 自定义）</p>
+        :type ImagePullType: str
+        :param _ImagePullPolicy: <p>镜像拉取策略（Always, IfNotPresent, Never）</p>
+        :type ImagePullPolicy: str
+        :param _ResourceConfig: <p>资源配置(JSON)</p>
+        :type ResourceConfig: str
+        :param _RuntimeEnv: <p>运行时环境配置(JSON)</p>
+        :type RuntimeEnv: str
+        :param _Catalog: <p>存储卷和挂载卷配置(JSON)</p>
+        :type Catalog: str
+        :param _AutoscalerOptions: <p>弹性伸缩配置(JSON)</p>
+        :type AutoscalerOptions: str
+        :param _ResourcePartitionId: <p>默认资源分区ID</p>
+        :type ResourcePartitionId: str
+        :param _ResourceConfigId: <p>资源配置模板ID</p>
+        :type ResourceConfigId: str
+        :param _Queue: <p>默认队列名称</p>
+        :type Queue: str
+        :param _JobPackage: <p>作业包URL</p>
+        :type JobPackage: str
+        :param _JobPackageName: <p>作业包名称</p>
+        :type JobPackageName: str
+        :param _JobPackageSource: <p>作业包来源类型（Local: 本地上传, Cos: 用户自有 COS 桶地址）；缺省时按 Local 处理</p>
+        :type JobPackageSource: str
+        :param _AdvancedOptions: <p>高级参数json</p>
+        :type AdvancedOptions: str
+        :param _GroupId: <p>默认计算组名称（与 ClusterId 互斥；与老字段 ClusterGroup 等价，新调用方优先使用 GroupId）</p>
+        :type GroupId: str
+        :param _ClusterId: <p>默认集群 ID（与 GroupId 互斥，同时非空将返回 InvalidParameter.ClusterAndGroupConflict）</p>
+        :type ClusterId: str
+        :param _Priority: <p>作业优先级（1-9，数字越大优先级越高）</p>
+        :type Priority: int
+        :param _Tags: <p>标签列表（TagKey-TagValue），用于将资源与腾讯云标签系统中的标签绑定</p>
+        :type Tags: list of Tag
+        :param _DispatchStrategy: <p>集群分派策略</p><p>枚举值：</p><ul><li>RANDOM： 随机分配</li></ul>
+        :type DispatchStrategy: str
+        """
+        self._Entrypoint = None
+        self._Name = None
+        self._Description = None
+        self._Image = None
+        self._ImagePullType = None
+        self._ImagePullPolicy = None
+        self._ResourceConfig = None
+        self._RuntimeEnv = None
+        self._Catalog = None
+        self._AutoscalerOptions = None
+        self._ResourcePartitionId = None
+        self._ResourceConfigId = None
+        self._Queue = None
+        self._JobPackage = None
+        self._JobPackageName = None
+        self._JobPackageSource = None
+        self._AdvancedOptions = None
+        self._GroupId = None
+        self._ClusterId = None
+        self._Priority = None
+        self._Tags = None
+        self._DispatchStrategy = None
+
+    @property
+    def Entrypoint(self):
+        r"""<p>入口命令不能为空</p>
+        :rtype: str
+        """
+        return self._Entrypoint
+
+    @Entrypoint.setter
+    def Entrypoint(self, Entrypoint):
+        self._Entrypoint = Entrypoint
+
+    @property
+    def Name(self):
+        r"""<p>配置名称（可选，不填则自动生成）</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Description(self):
+        r"""<p>配置描述</p>
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def Image(self):
+        r"""<p>镜像地址</p>
+        :rtype: str
+        """
+        return self._Image
+
+    @Image.setter
+    def Image(self, Image):
+        self._Image = Image
+
+    @property
+    def ImagePullType(self):
+        r"""<p>镜像拉取类型（Builtin: 内置, Custom: 自定义）</p>
+        :rtype: str
+        """
+        return self._ImagePullType
+
+    @ImagePullType.setter
+    def ImagePullType(self, ImagePullType):
+        self._ImagePullType = ImagePullType
+
+    @property
+    def ImagePullPolicy(self):
+        r"""<p>镜像拉取策略（Always, IfNotPresent, Never）</p>
+        :rtype: str
+        """
+        return self._ImagePullPolicy
+
+    @ImagePullPolicy.setter
+    def ImagePullPolicy(self, ImagePullPolicy):
+        self._ImagePullPolicy = ImagePullPolicy
+
+    @property
+    def ResourceConfig(self):
+        r"""<p>资源配置(JSON)</p>
+        :rtype: str
+        """
+        return self._ResourceConfig
+
+    @ResourceConfig.setter
+    def ResourceConfig(self, ResourceConfig):
+        self._ResourceConfig = ResourceConfig
+
+    @property
+    def RuntimeEnv(self):
+        r"""<p>运行时环境配置(JSON)</p>
+        :rtype: str
+        """
+        return self._RuntimeEnv
+
+    @RuntimeEnv.setter
+    def RuntimeEnv(self, RuntimeEnv):
+        self._RuntimeEnv = RuntimeEnv
+
+    @property
+    def Catalog(self):
+        r"""<p>存储卷和挂载卷配置(JSON)</p>
+        :rtype: str
+        """
+        return self._Catalog
+
+    @Catalog.setter
+    def Catalog(self, Catalog):
+        self._Catalog = Catalog
+
+    @property
+    def AutoscalerOptions(self):
+        r"""<p>弹性伸缩配置(JSON)</p>
+        :rtype: str
+        """
+        return self._AutoscalerOptions
+
+    @AutoscalerOptions.setter
+    def AutoscalerOptions(self, AutoscalerOptions):
+        self._AutoscalerOptions = AutoscalerOptions
+
+    @property
+    def ResourcePartitionId(self):
+        r"""<p>默认资源分区ID</p>
+        :rtype: str
+        """
+        return self._ResourcePartitionId
+
+    @ResourcePartitionId.setter
+    def ResourcePartitionId(self, ResourcePartitionId):
+        self._ResourcePartitionId = ResourcePartitionId
+
+    @property
+    def ResourceConfigId(self):
+        r"""<p>资源配置模板ID</p>
+        :rtype: str
+        """
+        return self._ResourceConfigId
+
+    @ResourceConfigId.setter
+    def ResourceConfigId(self, ResourceConfigId):
+        self._ResourceConfigId = ResourceConfigId
+
+    @property
+    def Queue(self):
+        r"""<p>默认队列名称</p>
+        :rtype: str
+        """
+        return self._Queue
+
+    @Queue.setter
+    def Queue(self, Queue):
+        self._Queue = Queue
+
+    @property
+    def JobPackage(self):
+        r"""<p>作业包URL</p>
+        :rtype: str
+        """
+        return self._JobPackage
+
+    @JobPackage.setter
+    def JobPackage(self, JobPackage):
+        self._JobPackage = JobPackage
+
+    @property
+    def JobPackageName(self):
+        r"""<p>作业包名称</p>
+        :rtype: str
+        """
+        return self._JobPackageName
+
+    @JobPackageName.setter
+    def JobPackageName(self, JobPackageName):
+        self._JobPackageName = JobPackageName
+
+    @property
+    def JobPackageSource(self):
+        r"""<p>作业包来源类型（Local: 本地上传, Cos: 用户自有 COS 桶地址）；缺省时按 Local 处理</p>
+        :rtype: str
+        """
+        return self._JobPackageSource
+
+    @JobPackageSource.setter
+    def JobPackageSource(self, JobPackageSource):
+        self._JobPackageSource = JobPackageSource
+
+    @property
+    def AdvancedOptions(self):
+        r"""<p>高级参数json</p>
+        :rtype: str
+        """
+        return self._AdvancedOptions
+
+    @AdvancedOptions.setter
+    def AdvancedOptions(self, AdvancedOptions):
+        self._AdvancedOptions = AdvancedOptions
+
+    @property
+    def GroupId(self):
+        r"""<p>默认计算组名称（与 ClusterId 互斥；与老字段 ClusterGroup 等价，新调用方优先使用 GroupId）</p>
+        :rtype: str
+        """
+        return self._GroupId
+
+    @GroupId.setter
+    def GroupId(self, GroupId):
+        self._GroupId = GroupId
+
+    @property
+    def ClusterId(self):
+        r"""<p>默认集群 ID（与 GroupId 互斥，同时非空将返回 InvalidParameter.ClusterAndGroupConflict）</p>
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def Priority(self):
+        r"""<p>作业优先级（1-9，数字越大优先级越高）</p>
+        :rtype: int
+        """
+        return self._Priority
+
+    @Priority.setter
+    def Priority(self, Priority):
+        self._Priority = Priority
+
+    @property
+    def Tags(self):
+        r"""<p>标签列表（TagKey-TagValue），用于将资源与腾讯云标签系统中的标签绑定</p>
+        :rtype: list of Tag
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def DispatchStrategy(self):
+        r"""<p>集群分派策略</p><p>枚举值：</p><ul><li>RANDOM： 随机分配</li></ul>
+        :rtype: str
+        """
+        return self._DispatchStrategy
+
+    @DispatchStrategy.setter
+    def DispatchStrategy(self, DispatchStrategy):
+        self._DispatchStrategy = DispatchStrategy
+
+
+    def _deserialize(self, params):
+        self._Entrypoint = params.get("Entrypoint")
+        self._Name = params.get("Name")
+        self._Description = params.get("Description")
+        self._Image = params.get("Image")
+        self._ImagePullType = params.get("ImagePullType")
+        self._ImagePullPolicy = params.get("ImagePullPolicy")
+        self._ResourceConfig = params.get("ResourceConfig")
+        self._RuntimeEnv = params.get("RuntimeEnv")
+        self._Catalog = params.get("Catalog")
+        self._AutoscalerOptions = params.get("AutoscalerOptions")
+        self._ResourcePartitionId = params.get("ResourcePartitionId")
+        self._ResourceConfigId = params.get("ResourceConfigId")
+        self._Queue = params.get("Queue")
+        self._JobPackage = params.get("JobPackage")
+        self._JobPackageName = params.get("JobPackageName")
+        self._JobPackageSource = params.get("JobPackageSource")
+        self._AdvancedOptions = params.get("AdvancedOptions")
+        self._GroupId = params.get("GroupId")
+        self._ClusterId = params.get("ClusterId")
+        self._Priority = params.get("Priority")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
+        self._DispatchStrategy = params.get("DispatchStrategy")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateJobSpecResponse(AbstractModel):
+    r"""CreateJobSpec返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: <p>配置ID</p>
+        :type Id: str
+        :param _Name: <p>配置名称</p>
+        :type Name: str
+        :param _Description: <p>配置描述</p>
+        :type Description: str
+        :param _Entrypoint: <p>入口命令</p>
+        :type Entrypoint: str
+        :param _Image: <p>镜像地址</p>
+        :type Image: str
+        :param _ImagePullType: <p>镜像拉取类型（Builtin: 内置, Custom: 自定义）</p>
+        :type ImagePullType: str
+        :param _ImagePullPolicy: <p>镜像拉取策略</p>
+        :type ImagePullPolicy: str
+        :param _ResourceConfig: <p>资源配置(JSON)</p>
+        :type ResourceConfig: str
+        :param _RuntimeEnv: <p>运行时环境配置(JSON)</p>
+        :type RuntimeEnv: str
+        :param _Catalog: <p>存储卷和挂载卷配置(JSON)</p>
+        :type Catalog: str
+        :param _AutoscalerOptions: <p>弹性伸缩配置(JSON)</p>
+        :type AutoscalerOptions: str
+        :param _ResourceConfigId: <p>资源配置模板ID</p>
+        :type ResourceConfigId: str
+        :param _ResourceConfigChanged: <p>资源配置模板是否变更</p>
+        :type ResourceConfigChanged: bool
+        :param _ResourcePartitionId: <p>默认资源分区ID</p>
+        :type ResourcePartitionId: str
+        :param _ResourcePartitionName: <p>默认资源分区名称</p>
+        :type ResourcePartitionName: str
+        :param _Queue: <p>默认队列名称</p>
+        :type Queue: str
+        :param _JobPackage: <p>作业包URL</p>
+        :type JobPackage: str
+        :param _JobPackageName: <p>作业包名称</p>
+        :type JobPackageName: str
+        :param _JobPackageSource: <p>作业包来源类型（Local: 本地上传, Cos: 用户自有 COS 桶地址）；缺省时按 Local 处理</p>
+        :type JobPackageSource: str
+        :param _AppId: <p>应用ID</p>
+        :type AppId: int
+        :param _Uin: <p>创建者UIN</p>
+        :type Uin: str
+        :param _SubAccountUin: <p>子用户UIN</p>
+        :type SubAccountUin: str
+        :param _SubAccountName: <p>子用户名称（由聚合层通过 CAM 接口回填）</p>
+        :type SubAccountName: str
+        :param _CreateTime: <p>创建时间</p>
+        :type CreateTime: int
+        :param _UpdateTime: <p>更新时间</p>
+        :type UpdateTime: int
+        :param _JobInstanceCount: <p>该配置下未进入终态的作业实例数量</p>
+        :type JobInstanceCount: int
+        :param _HasRunningJobs: <p>是否有运行中的作业实例</p>
+        :type HasRunningJobs: bool
+        :param _AdvancedOptions: <p>高级参数json</p>
+        :type AdvancedOptions: str
+        :param _GroupId: <p>默认计算组名称（与 ClusterGroup 等价，新调用方使用 GroupId）</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GroupId: str
+        :param _ClusterId: <p>默认集群 ID（与 GroupId 互斥）</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClusterId: str
+        :param _Priority: <p>作业优先级（1-9，数字越大优先级越高）</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Priority: int
+        :param _Tags: <p>标签列表（TagKey-TagValue），用于将资源与腾讯云标签系统中的标签绑定</p>
+        :type Tags: list of Tag
+        :param _DispatchStrategy: <p>集群分派策略</p><p>枚举值：</p><ul><li>RANDOM： 随机分配</li></ul>
+        :type DispatchStrategy: str
+        :param _SubmissionTarget: <p>作业提交目标</p><p>枚举值：</p><ul><li>GROUP： 按计算组分派</li></ul>
+        :type SubmissionTarget: str
+        :param _GroupName: <p>计算组名称</p>
+        :type GroupName: str
+        :param _ClusterName: <p>集群名称</p>
+        :type ClusterName: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Id = None
+        self._Name = None
+        self._Description = None
+        self._Entrypoint = None
+        self._Image = None
+        self._ImagePullType = None
+        self._ImagePullPolicy = None
+        self._ResourceConfig = None
+        self._RuntimeEnv = None
+        self._Catalog = None
+        self._AutoscalerOptions = None
+        self._ResourceConfigId = None
+        self._ResourceConfigChanged = None
+        self._ResourcePartitionId = None
+        self._ResourcePartitionName = None
+        self._Queue = None
+        self._JobPackage = None
+        self._JobPackageName = None
+        self._JobPackageSource = None
+        self._AppId = None
+        self._Uin = None
+        self._SubAccountUin = None
+        self._SubAccountName = None
+        self._CreateTime = None
+        self._UpdateTime = None
+        self._JobInstanceCount = None
+        self._HasRunningJobs = None
+        self._AdvancedOptions = None
+        self._GroupId = None
+        self._ClusterId = None
+        self._Priority = None
+        self._Tags = None
+        self._DispatchStrategy = None
+        self._SubmissionTarget = None
+        self._GroupName = None
+        self._ClusterName = None
+        self._RequestId = None
+
+    @property
+    def Id(self):
+        r"""<p>配置ID</p>
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Name(self):
+        r"""<p>配置名称</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Description(self):
+        r"""<p>配置描述</p>
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def Entrypoint(self):
+        r"""<p>入口命令</p>
+        :rtype: str
+        """
+        return self._Entrypoint
+
+    @Entrypoint.setter
+    def Entrypoint(self, Entrypoint):
+        self._Entrypoint = Entrypoint
+
+    @property
+    def Image(self):
+        r"""<p>镜像地址</p>
+        :rtype: str
+        """
+        return self._Image
+
+    @Image.setter
+    def Image(self, Image):
+        self._Image = Image
+
+    @property
+    def ImagePullType(self):
+        r"""<p>镜像拉取类型（Builtin: 内置, Custom: 自定义）</p>
+        :rtype: str
+        """
+        return self._ImagePullType
+
+    @ImagePullType.setter
+    def ImagePullType(self, ImagePullType):
+        self._ImagePullType = ImagePullType
+
+    @property
+    def ImagePullPolicy(self):
+        r"""<p>镜像拉取策略</p>
+        :rtype: str
+        """
+        return self._ImagePullPolicy
+
+    @ImagePullPolicy.setter
+    def ImagePullPolicy(self, ImagePullPolicy):
+        self._ImagePullPolicy = ImagePullPolicy
+
+    @property
+    def ResourceConfig(self):
+        r"""<p>资源配置(JSON)</p>
+        :rtype: str
+        """
+        return self._ResourceConfig
+
+    @ResourceConfig.setter
+    def ResourceConfig(self, ResourceConfig):
+        self._ResourceConfig = ResourceConfig
+
+    @property
+    def RuntimeEnv(self):
+        r"""<p>运行时环境配置(JSON)</p>
+        :rtype: str
+        """
+        return self._RuntimeEnv
+
+    @RuntimeEnv.setter
+    def RuntimeEnv(self, RuntimeEnv):
+        self._RuntimeEnv = RuntimeEnv
+
+    @property
+    def Catalog(self):
+        r"""<p>存储卷和挂载卷配置(JSON)</p>
+        :rtype: str
+        """
+        return self._Catalog
+
+    @Catalog.setter
+    def Catalog(self, Catalog):
+        self._Catalog = Catalog
+
+    @property
+    def AutoscalerOptions(self):
+        r"""<p>弹性伸缩配置(JSON)</p>
+        :rtype: str
+        """
+        return self._AutoscalerOptions
+
+    @AutoscalerOptions.setter
+    def AutoscalerOptions(self, AutoscalerOptions):
+        self._AutoscalerOptions = AutoscalerOptions
+
+    @property
+    def ResourceConfigId(self):
+        r"""<p>资源配置模板ID</p>
+        :rtype: str
+        """
+        return self._ResourceConfigId
+
+    @ResourceConfigId.setter
+    def ResourceConfigId(self, ResourceConfigId):
+        self._ResourceConfigId = ResourceConfigId
+
+    @property
+    def ResourceConfigChanged(self):
+        r"""<p>资源配置模板是否变更</p>
+        :rtype: bool
+        """
+        return self._ResourceConfigChanged
+
+    @ResourceConfigChanged.setter
+    def ResourceConfigChanged(self, ResourceConfigChanged):
+        self._ResourceConfigChanged = ResourceConfigChanged
+
+    @property
+    def ResourcePartitionId(self):
+        r"""<p>默认资源分区ID</p>
+        :rtype: str
+        """
+        return self._ResourcePartitionId
+
+    @ResourcePartitionId.setter
+    def ResourcePartitionId(self, ResourcePartitionId):
+        self._ResourcePartitionId = ResourcePartitionId
+
+    @property
+    def ResourcePartitionName(self):
+        r"""<p>默认资源分区名称</p>
+        :rtype: str
+        """
+        return self._ResourcePartitionName
+
+    @ResourcePartitionName.setter
+    def ResourcePartitionName(self, ResourcePartitionName):
+        self._ResourcePartitionName = ResourcePartitionName
+
+    @property
+    def Queue(self):
+        r"""<p>默认队列名称</p>
+        :rtype: str
+        """
+        return self._Queue
+
+    @Queue.setter
+    def Queue(self, Queue):
+        self._Queue = Queue
+
+    @property
+    def JobPackage(self):
+        r"""<p>作业包URL</p>
+        :rtype: str
+        """
+        return self._JobPackage
+
+    @JobPackage.setter
+    def JobPackage(self, JobPackage):
+        self._JobPackage = JobPackage
+
+    @property
+    def JobPackageName(self):
+        r"""<p>作业包名称</p>
+        :rtype: str
+        """
+        return self._JobPackageName
+
+    @JobPackageName.setter
+    def JobPackageName(self, JobPackageName):
+        self._JobPackageName = JobPackageName
+
+    @property
+    def JobPackageSource(self):
+        r"""<p>作业包来源类型（Local: 本地上传, Cos: 用户自有 COS 桶地址）；缺省时按 Local 处理</p>
+        :rtype: str
+        """
+        return self._JobPackageSource
+
+    @JobPackageSource.setter
+    def JobPackageSource(self, JobPackageSource):
+        self._JobPackageSource = JobPackageSource
+
+    @property
+    def AppId(self):
+        r"""<p>应用ID</p>
+        :rtype: int
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def Uin(self):
+        r"""<p>创建者UIN</p>
+        :rtype: str
+        """
+        return self._Uin
+
+    @Uin.setter
+    def Uin(self, Uin):
+        self._Uin = Uin
+
+    @property
+    def SubAccountUin(self):
+        r"""<p>子用户UIN</p>
+        :rtype: str
+        """
+        return self._SubAccountUin
+
+    @SubAccountUin.setter
+    def SubAccountUin(self, SubAccountUin):
+        self._SubAccountUin = SubAccountUin
+
+    @property
+    def SubAccountName(self):
+        r"""<p>子用户名称（由聚合层通过 CAM 接口回填）</p>
+        :rtype: str
+        """
+        return self._SubAccountName
+
+    @SubAccountName.setter
+    def SubAccountName(self, SubAccountName):
+        self._SubAccountName = SubAccountName
+
+    @property
+    def CreateTime(self):
+        r"""<p>创建时间</p>
+        :rtype: int
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        r"""<p>更新时间</p>
+        :rtype: int
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def JobInstanceCount(self):
+        r"""<p>该配置下未进入终态的作业实例数量</p>
+        :rtype: int
+        """
+        return self._JobInstanceCount
+
+    @JobInstanceCount.setter
+    def JobInstanceCount(self, JobInstanceCount):
+        self._JobInstanceCount = JobInstanceCount
+
+    @property
+    def HasRunningJobs(self):
+        r"""<p>是否有运行中的作业实例</p>
+        :rtype: bool
+        """
+        return self._HasRunningJobs
+
+    @HasRunningJobs.setter
+    def HasRunningJobs(self, HasRunningJobs):
+        self._HasRunningJobs = HasRunningJobs
+
+    @property
+    def AdvancedOptions(self):
+        r"""<p>高级参数json</p>
+        :rtype: str
+        """
+        return self._AdvancedOptions
+
+    @AdvancedOptions.setter
+    def AdvancedOptions(self, AdvancedOptions):
+        self._AdvancedOptions = AdvancedOptions
+
+    @property
+    def GroupId(self):
+        r"""<p>默认计算组名称（与 ClusterGroup 等价，新调用方使用 GroupId）</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._GroupId
+
+    @GroupId.setter
+    def GroupId(self, GroupId):
+        self._GroupId = GroupId
+
+    @property
+    def ClusterId(self):
+        r"""<p>默认集群 ID（与 GroupId 互斥）</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def Priority(self):
+        r"""<p>作业优先级（1-9，数字越大优先级越高）</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Priority
+
+    @Priority.setter
+    def Priority(self, Priority):
+        self._Priority = Priority
+
+    @property
+    def Tags(self):
+        r"""<p>标签列表（TagKey-TagValue），用于将资源与腾讯云标签系统中的标签绑定</p>
+        :rtype: list of Tag
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def DispatchStrategy(self):
+        r"""<p>集群分派策略</p><p>枚举值：</p><ul><li>RANDOM： 随机分配</li></ul>
+        :rtype: str
+        """
+        return self._DispatchStrategy
+
+    @DispatchStrategy.setter
+    def DispatchStrategy(self, DispatchStrategy):
+        self._DispatchStrategy = DispatchStrategy
+
+    @property
+    def SubmissionTarget(self):
+        r"""<p>作业提交目标</p><p>枚举值：</p><ul><li>GROUP： 按计算组分派</li></ul>
+        :rtype: str
+        """
+        return self._SubmissionTarget
+
+    @SubmissionTarget.setter
+    def SubmissionTarget(self, SubmissionTarget):
+        self._SubmissionTarget = SubmissionTarget
+
+    @property
+    def GroupName(self):
+        r"""<p>计算组名称</p>
+        :rtype: str
+        """
+        return self._GroupName
+
+    @GroupName.setter
+    def GroupName(self, GroupName):
+        self._GroupName = GroupName
+
+    @property
+    def ClusterName(self):
+        r"""<p>集群名称</p>
+        :rtype: str
+        """
+        return self._ClusterName
+
+    @ClusterName.setter
+    def ClusterName(self, ClusterName):
+        self._ClusterName = ClusterName
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._Name = params.get("Name")
+        self._Description = params.get("Description")
+        self._Entrypoint = params.get("Entrypoint")
+        self._Image = params.get("Image")
+        self._ImagePullType = params.get("ImagePullType")
+        self._ImagePullPolicy = params.get("ImagePullPolicy")
+        self._ResourceConfig = params.get("ResourceConfig")
+        self._RuntimeEnv = params.get("RuntimeEnv")
+        self._Catalog = params.get("Catalog")
+        self._AutoscalerOptions = params.get("AutoscalerOptions")
+        self._ResourceConfigId = params.get("ResourceConfigId")
+        self._ResourceConfigChanged = params.get("ResourceConfigChanged")
+        self._ResourcePartitionId = params.get("ResourcePartitionId")
+        self._ResourcePartitionName = params.get("ResourcePartitionName")
+        self._Queue = params.get("Queue")
+        self._JobPackage = params.get("JobPackage")
+        self._JobPackageName = params.get("JobPackageName")
+        self._JobPackageSource = params.get("JobPackageSource")
+        self._AppId = params.get("AppId")
+        self._Uin = params.get("Uin")
+        self._SubAccountUin = params.get("SubAccountUin")
+        self._SubAccountName = params.get("SubAccountName")
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
+        self._JobInstanceCount = params.get("JobInstanceCount")
+        self._HasRunningJobs = params.get("HasRunningJobs")
+        self._AdvancedOptions = params.get("AdvancedOptions")
+        self._GroupId = params.get("GroupId")
+        self._ClusterId = params.get("ClusterId")
+        self._Priority = params.get("Priority")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
+        self._DispatchStrategy = params.get("DispatchStrategy")
+        self._SubmissionTarget = params.get("SubmissionTarget")
+        self._GroupName = params.get("GroupName")
+        self._ClusterName = params.get("ClusterName")
+        self._RequestId = params.get("RequestId")
+
+
+class CreateLabRequest(AbstractModel):
+    r"""CreateLab请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: <p>数据实验室名称</p>
+        :type Name: str
+        :param _LabImage: <p>Lab 镜像地址（必填，用于开发工具如 Jupyter/VSCode/WebShell）。前端在&quot;内置 / 自定义&quot;两态中选择此值；当 Image 字段未显式传入时，后端会基于该字段按 R1（镜像表命中）/R2（同值 fallback）派生 Ray 集群镜像。</p>
+        :type LabImage: str
+        :param _ResourcePartitionId: <p>资源分区ID</p>
+        :type ResourcePartitionId: str
+        :param _Queue: <p>队列名称</p>
+        :type Queue: str
+        :param _Description: <p>数据实验室描述</p>
+        :type Description: str
+        :param _Image: <p>Ray 集群镜像地址（可选，OpenAPI/SDK 高级控制入口）。前端不再传递此字段；为空时后端按 R1（镜像表查询命中）→ R2（同值 fallback）顺序自动派生。非空时直接作为 Ray 集群镜像，跳过派生（EXPLICIT），且后端不校验其与 LabImage 的兼容性。</p>
+        :type Image: str
+        :param _ImagePullPolicy: <p>镜像拉取策略（Always, IfNotPresent, Never）</p>
+        :type ImagePullPolicy: str
+        :param _ResourceConfig: <p>资源配置</p>
+        :type ResourceConfig: str
+        :param _ResourceConfigId: <p>资源配置ID</p>
+        :type ResourceConfigId: str
+        :param _Catalog: <p>存储卷和挂载卷配置</p>
+        :type Catalog: str
+        :param _GroupId: <p>计算组 ID</p>
+        :type GroupId: str
+        :param _ServiceTypes: <p>服务类型列表(VSCODE, JUPYTER, WEBSHELL)，不填则使用默认配置</p>
+        :type ServiceTypes: list of str
+        :param _ExampleId: <p>案例ID，当 startMode=EXAMPLE 时必填</p>
+        :type ExampleId: str
+        :param _CodeArchiveUrl: <p>案例代码包地址，当 startMode=EXAMPLE 时填写</p>
+        :type CodeArchiveUrl: str
+        :param _LabImagePullPolicy: <p>Lab sidecar 镜像拉取策略（Always, IfNotPresent, Never）</p>
+        :type LabImagePullPolicy: str
+        :param _AdvancedOptions: <p>高级参数（扁平 Key-Value 的 JSON 字符串），Key 以 spec. 开头，按 RayCluster CRD 下钻；详见 ADVANCED_CLUSTER_OPTIONS_DESIGN.md</p>
+        :type AdvancedOptions: str
+        :param _Priority: <p>优先级（1-9，数字越大优先级越高）</p>
+        :type Priority: int
+        :param _Tags: <p>标签列表（TagKey-TagValue），用于将资源与腾讯云标签系统中的标签绑定</p>
+        :type Tags: list of Tag
+        :param _PersistentWorkDir: <p>持久化工作目录配置（可选）。启用后将 COS/CFS 指定路径挂载到容器内 /workspace 工作目录，与现有 Catalog 的卷配置互斥（不允许同时在 Catalog 中显式声明 MountPath=/workspace）。</p>
+        :type PersistentWorkDir: :class:`tencentcloud.dlc.v20210125.models.PersistentWorkDir`
+        :param _EnableToken: <p>是否开启token认证</p>
+        :type EnableToken: bool
+        :param _ImagePullType: <p>镜像拉取类型（BuiltIn: 内置, Custom: 自定义-TCR, CustomCcr: 自定义-CCR）</p>
+        :type ImagePullType: str
+        :param _LabImagePullType: <p>Lab sidecar 镜像拉取类型（BuiltIn: 内置, Custom: 自定义-TCR, CustomCcr: 自定义-CCR）</p>
+        :type LabImagePullType: str
+        """
+        self._Name = None
+        self._LabImage = None
+        self._ResourcePartitionId = None
+        self._Queue = None
+        self._Description = None
+        self._Image = None
+        self._ImagePullPolicy = None
+        self._ResourceConfig = None
+        self._ResourceConfigId = None
+        self._Catalog = None
+        self._GroupId = None
+        self._ServiceTypes = None
+        self._ExampleId = None
+        self._CodeArchiveUrl = None
+        self._LabImagePullPolicy = None
+        self._AdvancedOptions = None
+        self._Priority = None
+        self._Tags = None
+        self._PersistentWorkDir = None
+        self._EnableToken = None
+        self._ImagePullType = None
+        self._LabImagePullType = None
+
+    @property
+    def Name(self):
+        r"""<p>数据实验室名称</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def LabImage(self):
+        r"""<p>Lab 镜像地址（必填，用于开发工具如 Jupyter/VSCode/WebShell）。前端在&quot;内置 / 自定义&quot;两态中选择此值；当 Image 字段未显式传入时，后端会基于该字段按 R1（镜像表命中）/R2（同值 fallback）派生 Ray 集群镜像。</p>
+        :rtype: str
+        """
+        return self._LabImage
+
+    @LabImage.setter
+    def LabImage(self, LabImage):
+        self._LabImage = LabImage
+
+    @property
+    def ResourcePartitionId(self):
+        r"""<p>资源分区ID</p>
+        :rtype: str
+        """
+        return self._ResourcePartitionId
+
+    @ResourcePartitionId.setter
+    def ResourcePartitionId(self, ResourcePartitionId):
+        self._ResourcePartitionId = ResourcePartitionId
+
+    @property
+    def Queue(self):
+        r"""<p>队列名称</p>
+        :rtype: str
+        """
+        return self._Queue
+
+    @Queue.setter
+    def Queue(self, Queue):
+        self._Queue = Queue
+
+    @property
+    def Description(self):
+        r"""<p>数据实验室描述</p>
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def Image(self):
+        r"""<p>Ray 集群镜像地址（可选，OpenAPI/SDK 高级控制入口）。前端不再传递此字段；为空时后端按 R1（镜像表查询命中）→ R2（同值 fallback）顺序自动派生。非空时直接作为 Ray 集群镜像，跳过派生（EXPLICIT），且后端不校验其与 LabImage 的兼容性。</p>
+        :rtype: str
+        """
+        return self._Image
+
+    @Image.setter
+    def Image(self, Image):
+        self._Image = Image
+
+    @property
+    def ImagePullPolicy(self):
+        r"""<p>镜像拉取策略（Always, IfNotPresent, Never）</p>
+        :rtype: str
+        """
+        return self._ImagePullPolicy
+
+    @ImagePullPolicy.setter
+    def ImagePullPolicy(self, ImagePullPolicy):
+        self._ImagePullPolicy = ImagePullPolicy
+
+    @property
+    def ResourceConfig(self):
+        r"""<p>资源配置</p>
+        :rtype: str
+        """
+        return self._ResourceConfig
+
+    @ResourceConfig.setter
+    def ResourceConfig(self, ResourceConfig):
+        self._ResourceConfig = ResourceConfig
+
+    @property
+    def ResourceConfigId(self):
+        r"""<p>资源配置ID</p>
+        :rtype: str
+        """
+        return self._ResourceConfigId
+
+    @ResourceConfigId.setter
+    def ResourceConfigId(self, ResourceConfigId):
+        self._ResourceConfigId = ResourceConfigId
+
+    @property
+    def Catalog(self):
+        r"""<p>存储卷和挂载卷配置</p>
+        :rtype: str
+        """
+        return self._Catalog
+
+    @Catalog.setter
+    def Catalog(self, Catalog):
+        self._Catalog = Catalog
+
+    @property
+    def GroupId(self):
+        r"""<p>计算组 ID</p>
+        :rtype: str
+        """
+        return self._GroupId
+
+    @GroupId.setter
+    def GroupId(self, GroupId):
+        self._GroupId = GroupId
+
+    @property
+    def ServiceTypes(self):
+        r"""<p>服务类型列表(VSCODE, JUPYTER, WEBSHELL)，不填则使用默认配置</p>
+        :rtype: list of str
+        """
+        return self._ServiceTypes
+
+    @ServiceTypes.setter
+    def ServiceTypes(self, ServiceTypes):
+        self._ServiceTypes = ServiceTypes
+
+    @property
+    def ExampleId(self):
+        r"""<p>案例ID，当 startMode=EXAMPLE 时必填</p>
+        :rtype: str
+        """
+        return self._ExampleId
+
+    @ExampleId.setter
+    def ExampleId(self, ExampleId):
+        self._ExampleId = ExampleId
+
+    @property
+    def CodeArchiveUrl(self):
+        r"""<p>案例代码包地址，当 startMode=EXAMPLE 时填写</p>
+        :rtype: str
+        """
+        return self._CodeArchiveUrl
+
+    @CodeArchiveUrl.setter
+    def CodeArchiveUrl(self, CodeArchiveUrl):
+        self._CodeArchiveUrl = CodeArchiveUrl
+
+    @property
+    def LabImagePullPolicy(self):
+        r"""<p>Lab sidecar 镜像拉取策略（Always, IfNotPresent, Never）</p>
+        :rtype: str
+        """
+        return self._LabImagePullPolicy
+
+    @LabImagePullPolicy.setter
+    def LabImagePullPolicy(self, LabImagePullPolicy):
+        self._LabImagePullPolicy = LabImagePullPolicy
+
+    @property
+    def AdvancedOptions(self):
+        r"""<p>高级参数（扁平 Key-Value 的 JSON 字符串），Key 以 spec. 开头，按 RayCluster CRD 下钻；详见 ADVANCED_CLUSTER_OPTIONS_DESIGN.md</p>
+        :rtype: str
+        """
+        return self._AdvancedOptions
+
+    @AdvancedOptions.setter
+    def AdvancedOptions(self, AdvancedOptions):
+        self._AdvancedOptions = AdvancedOptions
+
+    @property
+    def Priority(self):
+        r"""<p>优先级（1-9，数字越大优先级越高）</p>
+        :rtype: int
+        """
+        return self._Priority
+
+    @Priority.setter
+    def Priority(self, Priority):
+        self._Priority = Priority
+
+    @property
+    def Tags(self):
+        r"""<p>标签列表（TagKey-TagValue），用于将资源与腾讯云标签系统中的标签绑定</p>
+        :rtype: list of Tag
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def PersistentWorkDir(self):
+        r"""<p>持久化工作目录配置（可选）。启用后将 COS/CFS 指定路径挂载到容器内 /workspace 工作目录，与现有 Catalog 的卷配置互斥（不允许同时在 Catalog 中显式声明 MountPath=/workspace）。</p>
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.PersistentWorkDir`
+        """
+        return self._PersistentWorkDir
+
+    @PersistentWorkDir.setter
+    def PersistentWorkDir(self, PersistentWorkDir):
+        self._PersistentWorkDir = PersistentWorkDir
+
+    @property
+    def EnableToken(self):
+        r"""<p>是否开启token认证</p>
+        :rtype: bool
+        """
+        return self._EnableToken
+
+    @EnableToken.setter
+    def EnableToken(self, EnableToken):
+        self._EnableToken = EnableToken
+
+    @property
+    def ImagePullType(self):
+        r"""<p>镜像拉取类型（BuiltIn: 内置, Custom: 自定义-TCR, CustomCcr: 自定义-CCR）</p>
+        :rtype: str
+        """
+        return self._ImagePullType
+
+    @ImagePullType.setter
+    def ImagePullType(self, ImagePullType):
+        self._ImagePullType = ImagePullType
+
+    @property
+    def LabImagePullType(self):
+        r"""<p>Lab sidecar 镜像拉取类型（BuiltIn: 内置, Custom: 自定义-TCR, CustomCcr: 自定义-CCR）</p>
+        :rtype: str
+        """
+        return self._LabImagePullType
+
+    @LabImagePullType.setter
+    def LabImagePullType(self, LabImagePullType):
+        self._LabImagePullType = LabImagePullType
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._LabImage = params.get("LabImage")
+        self._ResourcePartitionId = params.get("ResourcePartitionId")
+        self._Queue = params.get("Queue")
+        self._Description = params.get("Description")
+        self._Image = params.get("Image")
+        self._ImagePullPolicy = params.get("ImagePullPolicy")
+        self._ResourceConfig = params.get("ResourceConfig")
+        self._ResourceConfigId = params.get("ResourceConfigId")
+        self._Catalog = params.get("Catalog")
+        self._GroupId = params.get("GroupId")
+        self._ServiceTypes = params.get("ServiceTypes")
+        self._ExampleId = params.get("ExampleId")
+        self._CodeArchiveUrl = params.get("CodeArchiveUrl")
+        self._LabImagePullPolicy = params.get("LabImagePullPolicy")
+        self._AdvancedOptions = params.get("AdvancedOptions")
+        self._Priority = params.get("Priority")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
+        if params.get("PersistentWorkDir") is not None:
+            self._PersistentWorkDir = PersistentWorkDir()
+            self._PersistentWorkDir._deserialize(params.get("PersistentWorkDir"))
+        self._EnableToken = params.get("EnableToken")
+        self._ImagePullType = params.get("ImagePullType")
+        self._LabImagePullType = params.get("LabImagePullType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateLabResponse(AbstractModel):
+    r"""CreateLab返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ExampleId: <p>案例模板ID（从案例创建时返回）</p>
+        :type ExampleId: str
+        :param _CodeArchiveUrl: <p>代码包/工程归档地址</p>
+        :type CodeArchiveUrl: str
+        :param _Services: <p>数据实验室服务入口（服务类型 -&gt; 访问地址）</p>
+        :type Services: list of TypeKVPair
+        :param _Id: <p>集群ID</p>
+        :type Id: str
+        :param _Type: <p>资源类型：CLUSTER-普通集群；WORKSPACE-数据实验室（开发入口）</p>
+        :type Type: str
+        :param _Name: <p>集群名称</p>
+        :type Name: str
+        :param _Description: <p>集群描述</p>
+        :type Description: str
+        :param _ResourcePartitionId: <p>所属资源分区ID</p>
+        :type ResourcePartitionId: str
+        :param _ResourcePartitionName: <p>默认资源分区名称</p>
+        :type ResourcePartitionName: str
+        :param _Queue: <p>所属队列名称</p>
+        :type Queue: str
+        :param _AppId: <p>应用ID</p>
+        :type AppId: int
+        :param _Uin: <p>用户UIN</p>
+        :type Uin: str
+        :param _SubAccountUin: <p>子用户UIN</p>
+        :type SubAccountUin: str
+        :param _Status: <p>集群状态</p>
+        :type Status: str
+        :param _CreateTime: <p>创建时间</p>
+        :type CreateTime: int
+        :param _GroupId: <p>计算组 ID</p>
+        :type GroupId: str
+        :param _ResourceConfig: <p>资源配置(JSON)</p>
+        :type ResourceConfig: str
+        :param _ResourceConfigId: <p>资源配置ID</p>
+        :type ResourceConfigId: str
+        :param _Image: <p>Ray 集群镜像地址（可选，OpenAPI/SDK 高级控制入口）。前端不再传递此字段；为空时后端按 R1（镜像表查询命中）→ R2（同值 fallback）顺序自动派生。非空时直接作为 Ray 集群镜像，跳过派生（EXPLICIT），且后端不校验其与 LabImage 的兼容性。</p>
+        :type Image: str
+        :param _Catalog: <p>存储卷和挂载卷配置(JSON)</p>
+        :type Catalog: str
+        :param _ImagePullPolicy: <p>镜像拉取策略</p>
+        :type ImagePullPolicy: str
+        :param _AdvancedOptions: <p>高级参数（扁平 Key-Value 的 JSON 字符串），Key 以 spec. 开头，按 RayCluster CRD 下钻；详见 ADVANCED_CLUSTER_OPTIONS_DESIGN.md</p>
+        :type AdvancedOptions: str
+        :param _Priority: <p>优先级（1-9，数字越大优先级越高）</p>
+        :type Priority: int
+        :param _Tags: <p>标签列表（TagKey-TagValue）</p>
+        :type Tags: list of Tag
+        :param _PersistentWorkDir: <p>持久化工作目录配置（可选）。启用后将 COS/CFS 指定路径挂载到容器内 /workspace 工作目录，与现有 Catalog 的卷配置互斥（不允许同时在 Catalog 中显式声明 MountPath=/workspace）。</p>
+        :type PersistentWorkDir: :class:`tencentcloud.dlc.v20210125.models.PersistentWorkDir`
+        :param _EnableToken: <p>是否开启token认证</p>
+        :type EnableToken: bool
+        :param _LabImagePullType: <p>Lab sidecar 镜像拉取类型（BuiltIn: 内置, Custom: 自定义-TCR, CustomCcr: 自定义-CCR）</p>
+        :type LabImagePullType: str
+        :param _SubAccountName: <p>子用户名称（由聚合层通过 CAM 接口回填）</p>
+        :type SubAccountName: str
+        :param _ImagePullType: <p>镜像拉取类型（BuiltIn: 内置, Custom: 自定义-TCR, CustomCcr: 自定义-CCR）</p>
+        :type ImagePullType: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ExampleId = None
+        self._CodeArchiveUrl = None
+        self._Services = None
+        self._Id = None
+        self._Type = None
+        self._Name = None
+        self._Description = None
+        self._ResourcePartitionId = None
+        self._ResourcePartitionName = None
+        self._Queue = None
+        self._AppId = None
+        self._Uin = None
+        self._SubAccountUin = None
+        self._Status = None
+        self._CreateTime = None
+        self._GroupId = None
+        self._ResourceConfig = None
+        self._ResourceConfigId = None
+        self._Image = None
+        self._Catalog = None
+        self._ImagePullPolicy = None
+        self._AdvancedOptions = None
+        self._Priority = None
+        self._Tags = None
+        self._PersistentWorkDir = None
+        self._EnableToken = None
+        self._LabImagePullType = None
+        self._SubAccountName = None
+        self._ImagePullType = None
+        self._RequestId = None
+
+    @property
+    def ExampleId(self):
+        r"""<p>案例模板ID（从案例创建时返回）</p>
+        :rtype: str
+        """
+        return self._ExampleId
+
+    @ExampleId.setter
+    def ExampleId(self, ExampleId):
+        self._ExampleId = ExampleId
+
+    @property
+    def CodeArchiveUrl(self):
+        r"""<p>代码包/工程归档地址</p>
+        :rtype: str
+        """
+        return self._CodeArchiveUrl
+
+    @CodeArchiveUrl.setter
+    def CodeArchiveUrl(self, CodeArchiveUrl):
+        self._CodeArchiveUrl = CodeArchiveUrl
+
+    @property
+    def Services(self):
+        r"""<p>数据实验室服务入口（服务类型 -&gt; 访问地址）</p>
+        :rtype: list of TypeKVPair
+        """
+        return self._Services
+
+    @Services.setter
+    def Services(self, Services):
+        self._Services = Services
+
+    @property
+    def Id(self):
+        r"""<p>集群ID</p>
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Type(self):
+        r"""<p>资源类型：CLUSTER-普通集群；WORKSPACE-数据实验室（开发入口）</p>
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Name(self):
+        r"""<p>集群名称</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Description(self):
+        r"""<p>集群描述</p>
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def ResourcePartitionId(self):
+        r"""<p>所属资源分区ID</p>
+        :rtype: str
+        """
+        return self._ResourcePartitionId
+
+    @ResourcePartitionId.setter
+    def ResourcePartitionId(self, ResourcePartitionId):
+        self._ResourcePartitionId = ResourcePartitionId
+
+    @property
+    def ResourcePartitionName(self):
+        r"""<p>默认资源分区名称</p>
+        :rtype: str
+        """
+        return self._ResourcePartitionName
+
+    @ResourcePartitionName.setter
+    def ResourcePartitionName(self, ResourcePartitionName):
+        self._ResourcePartitionName = ResourcePartitionName
+
+    @property
+    def Queue(self):
+        r"""<p>所属队列名称</p>
+        :rtype: str
+        """
+        return self._Queue
+
+    @Queue.setter
+    def Queue(self, Queue):
+        self._Queue = Queue
+
+    @property
+    def AppId(self):
+        r"""<p>应用ID</p>
+        :rtype: int
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def Uin(self):
+        r"""<p>用户UIN</p>
+        :rtype: str
+        """
+        return self._Uin
+
+    @Uin.setter
+    def Uin(self, Uin):
+        self._Uin = Uin
+
+    @property
+    def SubAccountUin(self):
+        r"""<p>子用户UIN</p>
+        :rtype: str
+        """
+        return self._SubAccountUin
+
+    @SubAccountUin.setter
+    def SubAccountUin(self, SubAccountUin):
+        self._SubAccountUin = SubAccountUin
+
+    @property
+    def Status(self):
+        r"""<p>集群状态</p>
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def CreateTime(self):
+        r"""<p>创建时间</p>
+        :rtype: int
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def GroupId(self):
+        r"""<p>计算组 ID</p>
+        :rtype: str
+        """
+        return self._GroupId
+
+    @GroupId.setter
+    def GroupId(self, GroupId):
+        self._GroupId = GroupId
+
+    @property
+    def ResourceConfig(self):
+        r"""<p>资源配置(JSON)</p>
+        :rtype: str
+        """
+        return self._ResourceConfig
+
+    @ResourceConfig.setter
+    def ResourceConfig(self, ResourceConfig):
+        self._ResourceConfig = ResourceConfig
+
+    @property
+    def ResourceConfigId(self):
+        r"""<p>资源配置ID</p>
+        :rtype: str
+        """
+        return self._ResourceConfigId
+
+    @ResourceConfigId.setter
+    def ResourceConfigId(self, ResourceConfigId):
+        self._ResourceConfigId = ResourceConfigId
+
+    @property
+    def Image(self):
+        r"""<p>Ray 集群镜像地址（可选，OpenAPI/SDK 高级控制入口）。前端不再传递此字段；为空时后端按 R1（镜像表查询命中）→ R2（同值 fallback）顺序自动派生。非空时直接作为 Ray 集群镜像，跳过派生（EXPLICIT），且后端不校验其与 LabImage 的兼容性。</p>
+        :rtype: str
+        """
+        return self._Image
+
+    @Image.setter
+    def Image(self, Image):
+        self._Image = Image
+
+    @property
+    def Catalog(self):
+        r"""<p>存储卷和挂载卷配置(JSON)</p>
+        :rtype: str
+        """
+        return self._Catalog
+
+    @Catalog.setter
+    def Catalog(self, Catalog):
+        self._Catalog = Catalog
+
+    @property
+    def ImagePullPolicy(self):
+        r"""<p>镜像拉取策略</p>
+        :rtype: str
+        """
+        return self._ImagePullPolicy
+
+    @ImagePullPolicy.setter
+    def ImagePullPolicy(self, ImagePullPolicy):
+        self._ImagePullPolicy = ImagePullPolicy
+
+    @property
+    def AdvancedOptions(self):
+        r"""<p>高级参数（扁平 Key-Value 的 JSON 字符串），Key 以 spec. 开头，按 RayCluster CRD 下钻；详见 ADVANCED_CLUSTER_OPTIONS_DESIGN.md</p>
+        :rtype: str
+        """
+        return self._AdvancedOptions
+
+    @AdvancedOptions.setter
+    def AdvancedOptions(self, AdvancedOptions):
+        self._AdvancedOptions = AdvancedOptions
+
+    @property
+    def Priority(self):
+        r"""<p>优先级（1-9，数字越大优先级越高）</p>
+        :rtype: int
+        """
+        return self._Priority
+
+    @Priority.setter
+    def Priority(self, Priority):
+        self._Priority = Priority
+
+    @property
+    def Tags(self):
+        r"""<p>标签列表（TagKey-TagValue）</p>
+        :rtype: list of Tag
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def PersistentWorkDir(self):
+        r"""<p>持久化工作目录配置（可选）。启用后将 COS/CFS 指定路径挂载到容器内 /workspace 工作目录，与现有 Catalog 的卷配置互斥（不允许同时在 Catalog 中显式声明 MountPath=/workspace）。</p>
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.PersistentWorkDir`
+        """
+        return self._PersistentWorkDir
+
+    @PersistentWorkDir.setter
+    def PersistentWorkDir(self, PersistentWorkDir):
+        self._PersistentWorkDir = PersistentWorkDir
+
+    @property
+    def EnableToken(self):
+        r"""<p>是否开启token认证</p>
+        :rtype: bool
+        """
+        return self._EnableToken
+
+    @EnableToken.setter
+    def EnableToken(self, EnableToken):
+        self._EnableToken = EnableToken
+
+    @property
+    def LabImagePullType(self):
+        r"""<p>Lab sidecar 镜像拉取类型（BuiltIn: 内置, Custom: 自定义-TCR, CustomCcr: 自定义-CCR）</p>
+        :rtype: str
+        """
+        return self._LabImagePullType
+
+    @LabImagePullType.setter
+    def LabImagePullType(self, LabImagePullType):
+        self._LabImagePullType = LabImagePullType
+
+    @property
+    def SubAccountName(self):
+        r"""<p>子用户名称（由聚合层通过 CAM 接口回填）</p>
+        :rtype: str
+        """
+        return self._SubAccountName
+
+    @SubAccountName.setter
+    def SubAccountName(self, SubAccountName):
+        self._SubAccountName = SubAccountName
+
+    @property
+    def ImagePullType(self):
+        r"""<p>镜像拉取类型（BuiltIn: 内置, Custom: 自定义-TCR, CustomCcr: 自定义-CCR）</p>
+        :rtype: str
+        """
+        return self._ImagePullType
+
+    @ImagePullType.setter
+    def ImagePullType(self, ImagePullType):
+        self._ImagePullType = ImagePullType
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._ExampleId = params.get("ExampleId")
+        self._CodeArchiveUrl = params.get("CodeArchiveUrl")
+        if params.get("Services") is not None:
+            self._Services = []
+            for item in params.get("Services"):
+                obj = TypeKVPair()
+                obj._deserialize(item)
+                self._Services.append(obj)
+        self._Id = params.get("Id")
+        self._Type = params.get("Type")
+        self._Name = params.get("Name")
+        self._Description = params.get("Description")
+        self._ResourcePartitionId = params.get("ResourcePartitionId")
+        self._ResourcePartitionName = params.get("ResourcePartitionName")
+        self._Queue = params.get("Queue")
+        self._AppId = params.get("AppId")
+        self._Uin = params.get("Uin")
+        self._SubAccountUin = params.get("SubAccountUin")
+        self._Status = params.get("Status")
+        self._CreateTime = params.get("CreateTime")
+        self._GroupId = params.get("GroupId")
+        self._ResourceConfig = params.get("ResourceConfig")
+        self._ResourceConfigId = params.get("ResourceConfigId")
+        self._Image = params.get("Image")
+        self._Catalog = params.get("Catalog")
+        self._ImagePullPolicy = params.get("ImagePullPolicy")
+        self._AdvancedOptions = params.get("AdvancedOptions")
+        self._Priority = params.get("Priority")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
+        if params.get("PersistentWorkDir") is not None:
+            self._PersistentWorkDir = PersistentWorkDir()
+            self._PersistentWorkDir._deserialize(params.get("PersistentWorkDir"))
+        self._EnableToken = params.get("EnableToken")
+        self._LabImagePullType = params.get("LabImagePullType")
+        self._SubAccountName = params.get("SubAccountName")
+        self._ImagePullType = params.get("ImagePullType")
+        self._RequestId = params.get("RequestId")
+
+
 class CreateMetaDatabaseRequest(AbstractModel):
     r"""CreateMetaDatabase请求参数结构体
 
@@ -6747,6 +9898,923 @@ class CreateNotebookSessionStatementSupportBatchSQLResponse(AbstractModel):
         if params.get("NotebookSessionStatementBatches") is not None:
             self._NotebookSessionStatementBatches = NotebookSessionStatementBatchInformation()
             self._NotebookSessionStatementBatches._deserialize(params.get("NotebookSessionStatementBatches"))
+        self._RequestId = params.get("RequestId")
+
+
+class CreateRayClusterRequest(AbstractModel):
+    r"""CreateRayCluster请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: <p>集群名称（可选，不填写则默认使用集群ID）</p>
+        :type Name: str
+        :param _Description: <p>集群描述</p>
+        :type Description: str
+        :param _GroupId: <p>所属计算组 ID</p>
+        :type GroupId: str
+        :param _ResourcePartitionId: <p>所属资源分区ID</p>
+        :type ResourcePartitionId: str
+        :param _Queue: <p>所属队列名称</p>
+        :type Queue: str
+        :param _Image: <p>镜像地址</p>
+        :type Image: str
+        :param _ImagePullPolicy: <p>镜像拉取策略（Always, IfNotPresent, Never）</p>
+        :type ImagePullPolicy: str
+        :param _ImagePullType: <p>镜像拉取类型（BuiltIn: 内置, Custom: 自定义-TCR, CustomCcr: 自定义-CCR）</p>
+        :type ImagePullType: str
+        :param _ResourceConfig: <p>资源配置</p>
+        :type ResourceConfig: str
+        :param _ResourceConfigId: <p>资源配置ID</p>
+        :type ResourceConfigId: str
+        :param _Catalog: <p>存储卷和挂载卷配置</p>
+        :type Catalog: str
+        :param _AdvancedOptions: <p>高级参数（规范化后的扁平 KV JSON）</p>
+        :type AdvancedOptions: str
+        :param _Priority: <p>优先级（1-9，数字越大优先级越高）</p>
+        :type Priority: int
+        :param _Tags: <p>标签列表（TagKey-TagValue），用于将资源与腾讯云标签系统中的标签绑定</p>
+        :type Tags: list of Tag
+        """
+        self._Name = None
+        self._Description = None
+        self._GroupId = None
+        self._ResourcePartitionId = None
+        self._Queue = None
+        self._Image = None
+        self._ImagePullPolicy = None
+        self._ImagePullType = None
+        self._ResourceConfig = None
+        self._ResourceConfigId = None
+        self._Catalog = None
+        self._AdvancedOptions = None
+        self._Priority = None
+        self._Tags = None
+
+    @property
+    def Name(self):
+        r"""<p>集群名称（可选，不填写则默认使用集群ID）</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Description(self):
+        r"""<p>集群描述</p>
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def GroupId(self):
+        r"""<p>所属计算组 ID</p>
+        :rtype: str
+        """
+        return self._GroupId
+
+    @GroupId.setter
+    def GroupId(self, GroupId):
+        self._GroupId = GroupId
+
+    @property
+    def ResourcePartitionId(self):
+        r"""<p>所属资源分区ID</p>
+        :rtype: str
+        """
+        return self._ResourcePartitionId
+
+    @ResourcePartitionId.setter
+    def ResourcePartitionId(self, ResourcePartitionId):
+        self._ResourcePartitionId = ResourcePartitionId
+
+    @property
+    def Queue(self):
+        r"""<p>所属队列名称</p>
+        :rtype: str
+        """
+        return self._Queue
+
+    @Queue.setter
+    def Queue(self, Queue):
+        self._Queue = Queue
+
+    @property
+    def Image(self):
+        r"""<p>镜像地址</p>
+        :rtype: str
+        """
+        return self._Image
+
+    @Image.setter
+    def Image(self, Image):
+        self._Image = Image
+
+    @property
+    def ImagePullPolicy(self):
+        r"""<p>镜像拉取策略（Always, IfNotPresent, Never）</p>
+        :rtype: str
+        """
+        return self._ImagePullPolicy
+
+    @ImagePullPolicy.setter
+    def ImagePullPolicy(self, ImagePullPolicy):
+        self._ImagePullPolicy = ImagePullPolicy
+
+    @property
+    def ImagePullType(self):
+        r"""<p>镜像拉取类型（BuiltIn: 内置, Custom: 自定义-TCR, CustomCcr: 自定义-CCR）</p>
+        :rtype: str
+        """
+        return self._ImagePullType
+
+    @ImagePullType.setter
+    def ImagePullType(self, ImagePullType):
+        self._ImagePullType = ImagePullType
+
+    @property
+    def ResourceConfig(self):
+        r"""<p>资源配置</p>
+        :rtype: str
+        """
+        return self._ResourceConfig
+
+    @ResourceConfig.setter
+    def ResourceConfig(self, ResourceConfig):
+        self._ResourceConfig = ResourceConfig
+
+    @property
+    def ResourceConfigId(self):
+        r"""<p>资源配置ID</p>
+        :rtype: str
+        """
+        return self._ResourceConfigId
+
+    @ResourceConfigId.setter
+    def ResourceConfigId(self, ResourceConfigId):
+        self._ResourceConfigId = ResourceConfigId
+
+    @property
+    def Catalog(self):
+        r"""<p>存储卷和挂载卷配置</p>
+        :rtype: str
+        """
+        return self._Catalog
+
+    @Catalog.setter
+    def Catalog(self, Catalog):
+        self._Catalog = Catalog
+
+    @property
+    def AdvancedOptions(self):
+        r"""<p>高级参数（规范化后的扁平 KV JSON）</p>
+        :rtype: str
+        """
+        return self._AdvancedOptions
+
+    @AdvancedOptions.setter
+    def AdvancedOptions(self, AdvancedOptions):
+        self._AdvancedOptions = AdvancedOptions
+
+    @property
+    def Priority(self):
+        r"""<p>优先级（1-9，数字越大优先级越高）</p>
+        :rtype: int
+        """
+        return self._Priority
+
+    @Priority.setter
+    def Priority(self, Priority):
+        self._Priority = Priority
+
+    @property
+    def Tags(self):
+        r"""<p>标签列表（TagKey-TagValue），用于将资源与腾讯云标签系统中的标签绑定</p>
+        :rtype: list of Tag
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Description = params.get("Description")
+        self._GroupId = params.get("GroupId")
+        self._ResourcePartitionId = params.get("ResourcePartitionId")
+        self._Queue = params.get("Queue")
+        self._Image = params.get("Image")
+        self._ImagePullPolicy = params.get("ImagePullPolicy")
+        self._ImagePullType = params.get("ImagePullType")
+        self._ResourceConfig = params.get("ResourceConfig")
+        self._ResourceConfigId = params.get("ResourceConfigId")
+        self._Catalog = params.get("Catalog")
+        self._AdvancedOptions = params.get("AdvancedOptions")
+        self._Priority = params.get("Priority")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateRayClusterResponse(AbstractModel):
+    r"""CreateRayCluster返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: <p>集群ID</p>
+        :type Id: str
+        :param _Type: <p>资源类型：CLUSTER-普通集群；WORKSPACE-数据实验室（开发入口）</p>
+        :type Type: str
+        :param _Name: <p>集群名称</p>
+        :type Name: str
+        :param _Description: <p>集群描述</p>
+        :type Description: str
+        :param _ResourcePartitionId: <p>所属资源分区ID</p>
+        :type ResourcePartitionId: str
+        :param _ResourcePartitionName: <p>默认资源分区名称</p>
+        :type ResourcePartitionName: str
+        :param _Queue: <p>所属队列名称</p>
+        :type Queue: str
+        :param _AppId: <p>应用ID</p>
+        :type AppId: int
+        :param _Uin: <p>用户UIN</p>
+        :type Uin: str
+        :param _SubAccountUin: <p>子用户UIN</p>
+        :type SubAccountUin: str
+        :param _SubAccountName: <p>子用户名称（由聚合层通过 CAM 接口回填）</p>
+        :type SubAccountName: str
+        :param _Status: <p>集群状态</p>
+        :type Status: str
+        :param _CreateTime: <p>创建时间</p>
+        :type CreateTime: int
+        :param _GroupId: <p>计算组 ID</p>
+        :type GroupId: str
+        :param _ResourceConfig: <p>资源配置(JSON)</p>
+        :type ResourceConfig: str
+        :param _ResourceConfigId: <p>资源配置ID</p>
+        :type ResourceConfigId: str
+        :param _Image: <p>镜像地址</p>
+        :type Image: str
+        :param _Catalog: <p>存储卷和挂载卷配置(JSON)</p>
+        :type Catalog: str
+        :param _ImagePullPolicy: <p>镜像拉取策略</p>
+        :type ImagePullPolicy: str
+        :param _ImagePullType: <p>镜像拉取类型（BuiltIn: 内置, Custom: 自定义-TCR, CustomCcr: 自定义-CCR）</p>
+        :type ImagePullType: str
+        :param _AdvancedOptions: <p>高级参数（规范化后的扁平 KV JSON）</p>
+        :type AdvancedOptions: str
+        :param _Priority: <p>优先级（1-9，数字越大优先级越高）</p>
+        :type Priority: int
+        :param _Tags: <p>标签列表（TagKey-TagValue）</p>
+        :type Tags: list of Tag
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Id = None
+        self._Type = None
+        self._Name = None
+        self._Description = None
+        self._ResourcePartitionId = None
+        self._ResourcePartitionName = None
+        self._Queue = None
+        self._AppId = None
+        self._Uin = None
+        self._SubAccountUin = None
+        self._SubAccountName = None
+        self._Status = None
+        self._CreateTime = None
+        self._GroupId = None
+        self._ResourceConfig = None
+        self._ResourceConfigId = None
+        self._Image = None
+        self._Catalog = None
+        self._ImagePullPolicy = None
+        self._ImagePullType = None
+        self._AdvancedOptions = None
+        self._Priority = None
+        self._Tags = None
+        self._RequestId = None
+
+    @property
+    def Id(self):
+        r"""<p>集群ID</p>
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Type(self):
+        r"""<p>资源类型：CLUSTER-普通集群；WORKSPACE-数据实验室（开发入口）</p>
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Name(self):
+        r"""<p>集群名称</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Description(self):
+        r"""<p>集群描述</p>
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def ResourcePartitionId(self):
+        r"""<p>所属资源分区ID</p>
+        :rtype: str
+        """
+        return self._ResourcePartitionId
+
+    @ResourcePartitionId.setter
+    def ResourcePartitionId(self, ResourcePartitionId):
+        self._ResourcePartitionId = ResourcePartitionId
+
+    @property
+    def ResourcePartitionName(self):
+        r"""<p>默认资源分区名称</p>
+        :rtype: str
+        """
+        return self._ResourcePartitionName
+
+    @ResourcePartitionName.setter
+    def ResourcePartitionName(self, ResourcePartitionName):
+        self._ResourcePartitionName = ResourcePartitionName
+
+    @property
+    def Queue(self):
+        r"""<p>所属队列名称</p>
+        :rtype: str
+        """
+        return self._Queue
+
+    @Queue.setter
+    def Queue(self, Queue):
+        self._Queue = Queue
+
+    @property
+    def AppId(self):
+        r"""<p>应用ID</p>
+        :rtype: int
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def Uin(self):
+        r"""<p>用户UIN</p>
+        :rtype: str
+        """
+        return self._Uin
+
+    @Uin.setter
+    def Uin(self, Uin):
+        self._Uin = Uin
+
+    @property
+    def SubAccountUin(self):
+        r"""<p>子用户UIN</p>
+        :rtype: str
+        """
+        return self._SubAccountUin
+
+    @SubAccountUin.setter
+    def SubAccountUin(self, SubAccountUin):
+        self._SubAccountUin = SubAccountUin
+
+    @property
+    def SubAccountName(self):
+        r"""<p>子用户名称（由聚合层通过 CAM 接口回填）</p>
+        :rtype: str
+        """
+        return self._SubAccountName
+
+    @SubAccountName.setter
+    def SubAccountName(self, SubAccountName):
+        self._SubAccountName = SubAccountName
+
+    @property
+    def Status(self):
+        r"""<p>集群状态</p>
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def CreateTime(self):
+        r"""<p>创建时间</p>
+        :rtype: int
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def GroupId(self):
+        r"""<p>计算组 ID</p>
+        :rtype: str
+        """
+        return self._GroupId
+
+    @GroupId.setter
+    def GroupId(self, GroupId):
+        self._GroupId = GroupId
+
+    @property
+    def ResourceConfig(self):
+        r"""<p>资源配置(JSON)</p>
+        :rtype: str
+        """
+        return self._ResourceConfig
+
+    @ResourceConfig.setter
+    def ResourceConfig(self, ResourceConfig):
+        self._ResourceConfig = ResourceConfig
+
+    @property
+    def ResourceConfigId(self):
+        r"""<p>资源配置ID</p>
+        :rtype: str
+        """
+        return self._ResourceConfigId
+
+    @ResourceConfigId.setter
+    def ResourceConfigId(self, ResourceConfigId):
+        self._ResourceConfigId = ResourceConfigId
+
+    @property
+    def Image(self):
+        r"""<p>镜像地址</p>
+        :rtype: str
+        """
+        return self._Image
+
+    @Image.setter
+    def Image(self, Image):
+        self._Image = Image
+
+    @property
+    def Catalog(self):
+        r"""<p>存储卷和挂载卷配置(JSON)</p>
+        :rtype: str
+        """
+        return self._Catalog
+
+    @Catalog.setter
+    def Catalog(self, Catalog):
+        self._Catalog = Catalog
+
+    @property
+    def ImagePullPolicy(self):
+        r"""<p>镜像拉取策略</p>
+        :rtype: str
+        """
+        return self._ImagePullPolicy
+
+    @ImagePullPolicy.setter
+    def ImagePullPolicy(self, ImagePullPolicy):
+        self._ImagePullPolicy = ImagePullPolicy
+
+    @property
+    def ImagePullType(self):
+        r"""<p>镜像拉取类型（BuiltIn: 内置, Custom: 自定义-TCR, CustomCcr: 自定义-CCR）</p>
+        :rtype: str
+        """
+        return self._ImagePullType
+
+    @ImagePullType.setter
+    def ImagePullType(self, ImagePullType):
+        self._ImagePullType = ImagePullType
+
+    @property
+    def AdvancedOptions(self):
+        r"""<p>高级参数（规范化后的扁平 KV JSON）</p>
+        :rtype: str
+        """
+        return self._AdvancedOptions
+
+    @AdvancedOptions.setter
+    def AdvancedOptions(self, AdvancedOptions):
+        self._AdvancedOptions = AdvancedOptions
+
+    @property
+    def Priority(self):
+        r"""<p>优先级（1-9，数字越大优先级越高）</p>
+        :rtype: int
+        """
+        return self._Priority
+
+    @Priority.setter
+    def Priority(self, Priority):
+        self._Priority = Priority
+
+    @property
+    def Tags(self):
+        r"""<p>标签列表（TagKey-TagValue）</p>
+        :rtype: list of Tag
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._Type = params.get("Type")
+        self._Name = params.get("Name")
+        self._Description = params.get("Description")
+        self._ResourcePartitionId = params.get("ResourcePartitionId")
+        self._ResourcePartitionName = params.get("ResourcePartitionName")
+        self._Queue = params.get("Queue")
+        self._AppId = params.get("AppId")
+        self._Uin = params.get("Uin")
+        self._SubAccountUin = params.get("SubAccountUin")
+        self._SubAccountName = params.get("SubAccountName")
+        self._Status = params.get("Status")
+        self._CreateTime = params.get("CreateTime")
+        self._GroupId = params.get("GroupId")
+        self._ResourceConfig = params.get("ResourceConfig")
+        self._ResourceConfigId = params.get("ResourceConfigId")
+        self._Image = params.get("Image")
+        self._Catalog = params.get("Catalog")
+        self._ImagePullPolicy = params.get("ImagePullPolicy")
+        self._ImagePullType = params.get("ImagePullType")
+        self._AdvancedOptions = params.get("AdvancedOptions")
+        self._Priority = params.get("Priority")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class CreateResourceConfigRequest(AbstractModel):
+    r"""CreateResourceConfig请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: 模板名称
+        :type Name: str
+        :param _Description: 描述
+        :type Description: str
+        :param _Head: Head节点配置
+        :type Head: :class:`tencentcloud.dlc.v20210125.models.HeadSpecDTO`
+        :param _Worker: Worker节点配置
+        :type Worker: list of WorkerSpecDTO
+        :param _Type: 模板类型，不填默认是Ray
+        :type Type: str
+        """
+        self._Name = None
+        self._Description = None
+        self._Head = None
+        self._Worker = None
+        self._Type = None
+
+    @property
+    def Name(self):
+        r"""模板名称
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Description(self):
+        r"""描述
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def Head(self):
+        r"""Head节点配置
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.HeadSpecDTO`
+        """
+        return self._Head
+
+    @Head.setter
+    def Head(self, Head):
+        self._Head = Head
+
+    @property
+    def Worker(self):
+        r"""Worker节点配置
+        :rtype: list of WorkerSpecDTO
+        """
+        return self._Worker
+
+    @Worker.setter
+    def Worker(self, Worker):
+        self._Worker = Worker
+
+    @property
+    def Type(self):
+        r"""模板类型，不填默认是Ray
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Description = params.get("Description")
+        if params.get("Head") is not None:
+            self._Head = HeadSpecDTO()
+            self._Head._deserialize(params.get("Head"))
+        if params.get("Worker") is not None:
+            self._Worker = []
+            for item in params.get("Worker"):
+                obj = WorkerSpecDTO()
+                obj._deserialize(item)
+                self._Worker.append(obj)
+        self._Type = params.get("Type")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateResourceConfigResponse(AbstractModel):
+    r"""CreateResourceConfig返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: 模板ID
+        :type Id: str
+        :param _Name: 模板名称
+        :type Name: str
+        :param _Description: 描述
+        :type Description: str
+        :param _Type: 模板类型
+        :type Type: str
+        :param _Head: Head节点配置
+        :type Head: :class:`tencentcloud.dlc.v20210125.models.HeadSpecDTO`
+        :param _Worker: Worker节点配置
+        :type Worker: list of WorkerSpecDTO
+        :param _CreateTime: 创建时间
+        :type CreateTime: int
+        :param _UpdateTime: 更新时间
+        :type UpdateTime: int
+        :param _AppId: 应用ID
+        :type AppId: int
+        :param _Uin: 创建者UIN
+        :type Uin: str
+        :param _SubAccountUin: 子用户UIN
+        :type SubAccountUin: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Id = None
+        self._Name = None
+        self._Description = None
+        self._Type = None
+        self._Head = None
+        self._Worker = None
+        self._CreateTime = None
+        self._UpdateTime = None
+        self._AppId = None
+        self._Uin = None
+        self._SubAccountUin = None
+        self._RequestId = None
+
+    @property
+    def Id(self):
+        r"""模板ID
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Name(self):
+        r"""模板名称
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Description(self):
+        r"""描述
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def Type(self):
+        r"""模板类型
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Head(self):
+        r"""Head节点配置
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.HeadSpecDTO`
+        """
+        return self._Head
+
+    @Head.setter
+    def Head(self, Head):
+        self._Head = Head
+
+    @property
+    def Worker(self):
+        r"""Worker节点配置
+        :rtype: list of WorkerSpecDTO
+        """
+        return self._Worker
+
+    @Worker.setter
+    def Worker(self, Worker):
+        self._Worker = Worker
+
+    @property
+    def CreateTime(self):
+        r"""创建时间
+        :rtype: int
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        r"""更新时间
+        :rtype: int
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def AppId(self):
+        r"""应用ID
+        :rtype: int
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def Uin(self):
+        r"""创建者UIN
+        :rtype: str
+        """
+        return self._Uin
+
+    @Uin.setter
+    def Uin(self, Uin):
+        self._Uin = Uin
+
+    @property
+    def SubAccountUin(self):
+        r"""子用户UIN
+        :rtype: str
+        """
+        return self._SubAccountUin
+
+    @SubAccountUin.setter
+    def SubAccountUin(self, SubAccountUin):
+        self._SubAccountUin = SubAccountUin
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._Name = params.get("Name")
+        self._Description = params.get("Description")
+        self._Type = params.get("Type")
+        if params.get("Head") is not None:
+            self._Head = HeadSpecDTO()
+            self._Head._deserialize(params.get("Head"))
+        if params.get("Worker") is not None:
+            self._Worker = []
+            for item in params.get("Worker"):
+                obj = WorkerSpecDTO()
+                obj._deserialize(item)
+                self._Worker.append(obj)
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
+        self._AppId = params.get("AppId")
+        self._Uin = params.get("Uin")
+        self._SubAccountUin = params.get("SubAccountUin")
         self._RequestId = params.get("RequestId")
 
 
@@ -15778,6 +19846,256 @@ class DeleteCHDFSBindingProductResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DeleteClusterGroupRequest(AbstractModel):
+    r"""DeleteClusterGroup请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: <p>集群组 ID</p>
+        :type Id: str
+        :param _Force: <p>是否强制删除（Detach 模式）；false=Block（默认），true=Detach</p>
+        :type Force: bool
+        """
+        self._Id = None
+        self._Force = None
+
+    @property
+    def Id(self):
+        r"""<p>集群组 ID</p>
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Force(self):
+        r"""<p>是否强制删除（Detach 模式）；false=Block（默认），true=Detach</p>
+        :rtype: bool
+        """
+        return self._Force
+
+    @Force.setter
+    def Force(self, Force):
+        self._Force = Force
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._Force = params.get("Force")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteClusterGroupResponse(AbstractModel):
+    r"""DeleteClusterGroup返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: <p>集群组 ID（系统生成）</p>
+        :type Id: str
+        :param _Name: <p>集群组名称（同一 AppId 下唯一）</p>
+        :type Name: str
+        :param _Description: <p>集群组描述</p>
+        :type Description: str
+        :param _Config: <p>集群组配置</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Config: str
+        :param _AppId: <p>应用 ID（多租户）</p>
+        :type AppId: int
+        :param _Uin: <p>创建者主账号 UIN</p>
+        :type Uin: str
+        :param _SubAccountUin: <p>创建者子账号 UIN</p>
+        :type SubAccountUin: str
+        :param _CreateTime: <p>创建时间</p>
+        :type CreateTime: int
+        :param _UpdateTime: <p>更新时间</p>
+        :type UpdateTime: int
+        :param _Deleted: <p>是否已软删除（false=活跃, true=已删除）</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Deleted: bool
+        :param _DeleteTime: <p>删除时间（软删时写入，活跃记录为 null）</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DeleteTime: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Id = None
+        self._Name = None
+        self._Description = None
+        self._Config = None
+        self._AppId = None
+        self._Uin = None
+        self._SubAccountUin = None
+        self._CreateTime = None
+        self._UpdateTime = None
+        self._Deleted = None
+        self._DeleteTime = None
+        self._RequestId = None
+
+    @property
+    def Id(self):
+        r"""<p>集群组 ID（系统生成）</p>
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Name(self):
+        r"""<p>集群组名称（同一 AppId 下唯一）</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Description(self):
+        r"""<p>集群组描述</p>
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def Config(self):
+        r"""<p>集群组配置</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Config
+
+    @Config.setter
+    def Config(self, Config):
+        self._Config = Config
+
+    @property
+    def AppId(self):
+        r"""<p>应用 ID（多租户）</p>
+        :rtype: int
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def Uin(self):
+        r"""<p>创建者主账号 UIN</p>
+        :rtype: str
+        """
+        return self._Uin
+
+    @Uin.setter
+    def Uin(self, Uin):
+        self._Uin = Uin
+
+    @property
+    def SubAccountUin(self):
+        r"""<p>创建者子账号 UIN</p>
+        :rtype: str
+        """
+        return self._SubAccountUin
+
+    @SubAccountUin.setter
+    def SubAccountUin(self, SubAccountUin):
+        self._SubAccountUin = SubAccountUin
+
+    @property
+    def CreateTime(self):
+        r"""<p>创建时间</p>
+        :rtype: int
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        r"""<p>更新时间</p>
+        :rtype: int
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def Deleted(self):
+        r"""<p>是否已软删除（false=活跃, true=已删除）</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._Deleted
+
+    @Deleted.setter
+    def Deleted(self, Deleted):
+        self._Deleted = Deleted
+
+    @property
+    def DeleteTime(self):
+        r"""<p>删除时间（软删时写入，活跃记录为 null）</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._DeleteTime
+
+    @DeleteTime.setter
+    def DeleteTime(self, DeleteTime):
+        self._DeleteTime = DeleteTime
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._Name = params.get("Name")
+        self._Description = params.get("Description")
+        self._Config = params.get("Config")
+        self._AppId = params.get("AppId")
+        self._Uin = params.get("Uin")
+        self._SubAccountUin = params.get("SubAccountUin")
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
+        self._Deleted = params.get("Deleted")
+        self._DeleteTime = params.get("DeleteTime")
+        self._RequestId = params.get("RequestId")
+
+
 class DeleteDataEngineRequest(AbstractModel):
     r"""DeleteDataEngine请求参数结构体
 
@@ -15880,6 +20198,134 @@ class DeleteDataMaskStrategyRequest(AbstractModel):
 
 class DeleteDataMaskStrategyResponse(AbstractModel):
     r"""DeleteDataMaskStrategy返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteJobSpecRequest(AbstractModel):
+    r"""DeleteJobSpec请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SpecId: 配置ID
+        :type SpecId: str
+        """
+        self._SpecId = None
+
+    @property
+    def SpecId(self):
+        r"""配置ID
+        :rtype: str
+        """
+        return self._SpecId
+
+    @SpecId.setter
+    def SpecId(self, SpecId):
+        self._SpecId = SpecId
+
+
+    def _deserialize(self, params):
+        self._SpecId = params.get("SpecId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteJobSpecResponse(AbstractModel):
+    r"""DeleteJobSpec返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteLabRequest(AbstractModel):
+    r"""DeleteLab请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: <p>工作区ID</p>
+        :type Id: str
+        """
+        self._Id = None
+
+    @property
+    def Id(self):
+        r"""<p>工作区ID</p>
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteLabResponse(AbstractModel):
+    r"""DeleteLab返回参数结构体
 
     """
 
@@ -16147,6 +20593,198 @@ class DeleteNotebookSessionRequest(AbstractModel):
 
 class DeleteNotebookSessionResponse(AbstractModel):
     r"""DeleteNotebookSession返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteRayClusterRequest(AbstractModel):
+    r"""DeleteRayCluster请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: <p>集群ID</p>
+        :type Id: str
+        """
+        self._Id = None
+
+    @property
+    def Id(self):
+        r"""<p>集群ID</p>
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteRayClusterResponse(AbstractModel):
+    r"""DeleteRayCluster返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteRayJobRequest(AbstractModel):
+    r"""DeleteRayJob请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: 任务ID
+        :type Id: str
+        """
+        self._Id = None
+
+    @property
+    def Id(self):
+        r"""任务ID
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteRayJobResponse(AbstractModel):
+    r"""DeleteRayJob返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteResourceConfigRequest(AbstractModel):
+    r"""DeleteResourceConfig请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: 模板ID
+        :type Id: str
+        """
+        self._Id = None
+
+    @property
+    def Id(self):
+        r"""模板ID
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteResourceConfigResponse(AbstractModel):
+    r"""DeleteResourceConfig返回参数结构体
 
     """
 
@@ -17031,6 +21669,379 @@ class DescribeAdvancedStoreLocationResponse(AbstractModel):
         self._HasLakeFs = params.get("HasLakeFs")
         self._LakeFsStatus = params.get("LakeFsStatus")
         self._BucketType = params.get("BucketType")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeClusterGroupClustersRequest(AbstractModel):
+    r"""DescribeClusterGroupClusters请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: <p>计算组 ID</p>
+        :type Id: str
+        :param _SampleLimit: <p>返回样例 ClusterId 的最大数量（默认 5）</p>
+        :type SampleLimit: int
+        :param _Status: <p>Cluster 状态列表</p><p>枚举值：</p><ul><li>running： 运行中</li></ul>
+        :type Status: list of str
+        """
+        self._Id = None
+        self._SampleLimit = None
+        self._Status = None
+
+    @property
+    def Id(self):
+        r"""<p>计算组 ID</p>
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def SampleLimit(self):
+        r"""<p>返回样例 ClusterId 的最大数量（默认 5）</p>
+        :rtype: int
+        """
+        return self._SampleLimit
+
+    @SampleLimit.setter
+    def SampleLimit(self, SampleLimit):
+        self._SampleLimit = SampleLimit
+
+    @property
+    def Status(self):
+        r"""<p>Cluster 状态列表</p><p>枚举值：</p><ul><li>running： 运行中</li></ul>
+        :rtype: list of str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._SampleLimit = params.get("SampleLimit")
+        self._Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeClusterGroupClustersResponse(AbstractModel):
+    r"""DescribeClusterGroupClusters返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Count: <p>活跃 cluster 总数</p>
+        :type Count: int
+        :param _SampleClusters: <p>前 N 个样例</p>
+        :type SampleClusters: list of RayClusterEntity
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Count = None
+        self._SampleClusters = None
+        self._RequestId = None
+
+    @property
+    def Count(self):
+        r"""<p>活跃 cluster 总数</p>
+        :rtype: int
+        """
+        return self._Count
+
+    @Count.setter
+    def Count(self, Count):
+        self._Count = Count
+
+    @property
+    def SampleClusters(self):
+        r"""<p>前 N 个样例</p>
+        :rtype: list of RayClusterEntity
+        """
+        return self._SampleClusters
+
+    @SampleClusters.setter
+    def SampleClusters(self, SampleClusters):
+        self._SampleClusters = SampleClusters
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Count = params.get("Count")
+        if params.get("SampleClusters") is not None:
+            self._SampleClusters = []
+            for item in params.get("SampleClusters"):
+                obj = RayClusterEntity()
+                obj._deserialize(item)
+                self._SampleClusters.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeClusterGroupRequest(AbstractModel):
+    r"""DescribeClusterGroup请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: <p>集群组 ID</p>
+        :type Id: str
+        :param _IncludeDeleted: <p>是否包含已软删除的记录（默认 false，仅返回活跃记录；true 时允许返回 deleted=1 的记录，用于悬挂 cluster 回显场景）</p>
+        :type IncludeDeleted: bool
+        """
+        self._Id = None
+        self._IncludeDeleted = None
+
+    @property
+    def Id(self):
+        r"""<p>集群组 ID</p>
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def IncludeDeleted(self):
+        r"""<p>是否包含已软删除的记录（默认 false，仅返回活跃记录；true 时允许返回 deleted=1 的记录，用于悬挂 cluster 回显场景）</p>
+        :rtype: bool
+        """
+        return self._IncludeDeleted
+
+    @IncludeDeleted.setter
+    def IncludeDeleted(self, IncludeDeleted):
+        self._IncludeDeleted = IncludeDeleted
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._IncludeDeleted = params.get("IncludeDeleted")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeClusterGroupResponse(AbstractModel):
+    r"""DescribeClusterGroup返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: <p>集群组 ID（系统生成）</p>
+        :type Id: str
+        :param _Name: <p>集群组名称（同一 AppId 下唯一）</p>
+        :type Name: str
+        :param _Description: <p>集群组描述</p>
+        :type Description: str
+        :param _Config: <p>集群组配置</p>
+        :type Config: str
+        :param _AppId: <p>应用 ID（多租户）</p>
+        :type AppId: int
+        :param _Uin: <p>创建者主账号 UIN</p>
+        :type Uin: str
+        :param _SubAccountUin: <p>创建者子账号 UIN</p>
+        :type SubAccountUin: str
+        :param _CreateTime: <p>创建时间（毫秒时间戳）</p>
+        :type CreateTime: int
+        :param _UpdateTime: <p>更新时间（毫秒时间戳）</p>
+        :type UpdateTime: int
+        :param _Deleted: <p>是否已软删除（false=活跃，true=已删除）</p>
+        :type Deleted: bool
+        :param _DeleteTime: <p>删除时间（软删时写入，活跃记录为 null）</p>
+        :type DeleteTime: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Id = None
+        self._Name = None
+        self._Description = None
+        self._Config = None
+        self._AppId = None
+        self._Uin = None
+        self._SubAccountUin = None
+        self._CreateTime = None
+        self._UpdateTime = None
+        self._Deleted = None
+        self._DeleteTime = None
+        self._RequestId = None
+
+    @property
+    def Id(self):
+        r"""<p>集群组 ID（系统生成）</p>
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Name(self):
+        r"""<p>集群组名称（同一 AppId 下唯一）</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Description(self):
+        r"""<p>集群组描述</p>
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def Config(self):
+        r"""<p>集群组配置</p>
+        :rtype: str
+        """
+        return self._Config
+
+    @Config.setter
+    def Config(self, Config):
+        self._Config = Config
+
+    @property
+    def AppId(self):
+        r"""<p>应用 ID（多租户）</p>
+        :rtype: int
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def Uin(self):
+        r"""<p>创建者主账号 UIN</p>
+        :rtype: str
+        """
+        return self._Uin
+
+    @Uin.setter
+    def Uin(self, Uin):
+        self._Uin = Uin
+
+    @property
+    def SubAccountUin(self):
+        r"""<p>创建者子账号 UIN</p>
+        :rtype: str
+        """
+        return self._SubAccountUin
+
+    @SubAccountUin.setter
+    def SubAccountUin(self, SubAccountUin):
+        self._SubAccountUin = SubAccountUin
+
+    @property
+    def CreateTime(self):
+        r"""<p>创建时间（毫秒时间戳）</p>
+        :rtype: int
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        r"""<p>更新时间（毫秒时间戳）</p>
+        :rtype: int
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def Deleted(self):
+        r"""<p>是否已软删除（false=活跃，true=已删除）</p>
+        :rtype: bool
+        """
+        return self._Deleted
+
+    @Deleted.setter
+    def Deleted(self, Deleted):
+        self._Deleted = Deleted
+
+    @property
+    def DeleteTime(self):
+        r"""<p>删除时间（软删时写入，活跃记录为 null）</p>
+        :rtype: int
+        """
+        return self._DeleteTime
+
+    @DeleteTime.setter
+    def DeleteTime(self, DeleteTime):
+        self._DeleteTime = DeleteTime
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._Name = params.get("Name")
+        self._Description = params.get("Description")
+        self._Config = params.get("Config")
+        self._AppId = params.get("AppId")
+        self._Uin = params.get("Uin")
+        self._SubAccountUin = params.get("SubAccountUin")
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
+        self._Deleted = params.get("Deleted")
+        self._DeleteTime = params.get("DeleteTime")
         self._RequestId = params.get("RequestId")
 
 
@@ -29941,6 +34952,693 @@ class EngineSessionImage(AbstractModel):
         
 
 
+class Env(AbstractModel):
+    r"""环境变量标签
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: <p>名称</p>
+        :type Name: str
+        :param _Value: <p>值</p>
+        :type Value: str
+        """
+        self._Name = None
+        self._Value = None
+
+    @property
+    def Name(self):
+        r"""<p>名称</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Value(self):
+        r"""<p>值</p>
+        :rtype: str
+        """
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class EventItem(AbstractModel):
+    r"""数据实验室事件项
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EventTime: <p>事件时间（Unix 时间戳，毫秒）</p>
+        :type EventTime: int
+        :param _Component: <p>组件名称，来源于 event.involvedObject.kind</p>
+        :type Component: str
+        :param _Level: <p>事件级别，来源于 event.type 的原始值（如 Normal、Warning）</p>
+        :type Level: str
+        :param _Message: <p>事件内容，来源于 event.message</p>
+        :type Message: str
+        :param _InvolvedObjectName: <p>关联的 K8s 对象名称，来源于 event.involvedObject.name</p>
+        :type InvolvedObjectName: str
+        :param _SourceComponent: <p>事件来源组件，来源于 event.source.component</p>
+        :type SourceComponent: str
+        :param _Reason: <p>事件原因，来源于 event.reason</p>
+        :type Reason: str
+        """
+        self._EventTime = None
+        self._Component = None
+        self._Level = None
+        self._Message = None
+        self._InvolvedObjectName = None
+        self._SourceComponent = None
+        self._Reason = None
+
+    @property
+    def EventTime(self):
+        r"""<p>事件时间（Unix 时间戳，毫秒）</p>
+        :rtype: int
+        """
+        return self._EventTime
+
+    @EventTime.setter
+    def EventTime(self, EventTime):
+        self._EventTime = EventTime
+
+    @property
+    def Component(self):
+        r"""<p>组件名称，来源于 event.involvedObject.kind</p>
+        :rtype: str
+        """
+        return self._Component
+
+    @Component.setter
+    def Component(self, Component):
+        self._Component = Component
+
+    @property
+    def Level(self):
+        r"""<p>事件级别，来源于 event.type 的原始值（如 Normal、Warning）</p>
+        :rtype: str
+        """
+        return self._Level
+
+    @Level.setter
+    def Level(self, Level):
+        self._Level = Level
+
+    @property
+    def Message(self):
+        r"""<p>事件内容，来源于 event.message</p>
+        :rtype: str
+        """
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+    @property
+    def InvolvedObjectName(self):
+        r"""<p>关联的 K8s 对象名称，来源于 event.involvedObject.name</p>
+        :rtype: str
+        """
+        return self._InvolvedObjectName
+
+    @InvolvedObjectName.setter
+    def InvolvedObjectName(self, InvolvedObjectName):
+        self._InvolvedObjectName = InvolvedObjectName
+
+    @property
+    def SourceComponent(self):
+        r"""<p>事件来源组件，来源于 event.source.component</p>
+        :rtype: str
+        """
+        return self._SourceComponent
+
+    @SourceComponent.setter
+    def SourceComponent(self, SourceComponent):
+        self._SourceComponent = SourceComponent
+
+    @property
+    def Reason(self):
+        r"""<p>事件原因，来源于 event.reason</p>
+        :rtype: str
+        """
+        return self._Reason
+
+    @Reason.setter
+    def Reason(self, Reason):
+        self._Reason = Reason
+
+
+    def _deserialize(self, params):
+        self._EventTime = params.get("EventTime")
+        self._Component = params.get("Component")
+        self._Level = params.get("Level")
+        self._Message = params.get("Message")
+        self._InvolvedObjectName = params.get("InvolvedObjectName")
+        self._SourceComponent = params.get("SourceComponent")
+        self._Reason = params.get("Reason")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class EventLogItem(AbstractModel):
+    r"""事件日志项
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EventTime: 事件时间（Unix 时间戳，秒级）
+        :type EventTime: int
+        :param _Component: 组件名称
+        :type Component: str
+        :param _Level: 日志级别（INFO/WARN/ERROR）
+        :type Level: str
+        :param _Message: 事件内容
+        :type Message: str
+        """
+        self._EventTime = None
+        self._Component = None
+        self._Level = None
+        self._Message = None
+
+    @property
+    def EventTime(self):
+        r"""事件时间（Unix 时间戳，秒级）
+        :rtype: int
+        """
+        return self._EventTime
+
+    @EventTime.setter
+    def EventTime(self, EventTime):
+        self._EventTime = EventTime
+
+    @property
+    def Component(self):
+        r"""组件名称
+        :rtype: str
+        """
+        return self._Component
+
+    @Component.setter
+    def Component(self, Component):
+        self._Component = Component
+
+    @property
+    def Level(self):
+        r"""日志级别（INFO/WARN/ERROR）
+        :rtype: str
+        """
+        return self._Level
+
+    @Level.setter
+    def Level(self, Level):
+        self._Level = Level
+
+    @property
+    def Message(self):
+        r"""事件内容
+        :rtype: str
+        """
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+
+    def _deserialize(self, params):
+        self._EventTime = params.get("EventTime")
+        self._Component = params.get("Component")
+        self._Level = params.get("Level")
+        self._Message = params.get("Message")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ExampleCategories(AbstractModel):
+    r"""案例分类详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Categories: <p>分类名称</p>
+        :type Categories: str
+        """
+        self._Categories = None
+
+    @property
+    def Categories(self):
+        r"""<p>分类名称</p>
+        :rtype: str
+        """
+        return self._Categories
+
+    @Categories.setter
+    def Categories(self, Categories):
+        self._Categories = Categories
+
+
+    def _deserialize(self, params):
+        self._Categories = params.get("Categories")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ExampleDifficulties(AbstractModel):
+    r"""案例难度详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Difficulty: <p>案例难度</p>
+        :type Difficulty: str
+        """
+        self._Difficulty = None
+
+    @property
+    def Difficulty(self):
+        r"""<p>案例难度</p>
+        :rtype: str
+        """
+        return self._Difficulty
+
+    @Difficulty.setter
+    def Difficulty(self, Difficulty):
+        self._Difficulty = Difficulty
+
+
+    def _deserialize(self, params):
+        self._Difficulty = params.get("Difficulty")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ExampleEntity(AbstractModel):
+    r"""案例实体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: <p>ID</p>
+        :type Id: int
+        :param _ExampleId: <p>案例ID</p>
+        :type ExampleId: str
+        :param _Title: <p>标题</p>
+        :type Title: str
+        :param _Description: <p>描述</p>
+        :type Description: str
+        :param _Readme: <p>README</p>
+        :type Readme: str
+        :param _CodeArchiveUrl: <p>案例归档URL</p>
+        :type CodeArchiveUrl: str
+        :param _Image: <p>图片URL</p>
+        :type Image: str
+        :param _LabImage: <p>实验室镜像地址</p>
+        :type LabImage: str
+        :param _ResourceConfig: <p>资源配置</p>
+        :type ResourceConfig: str
+        :param _Category: <p>分类</p>
+        :type Category: str
+        :param _Tags: <p>标签</p>
+        :type Tags: list of str
+        :param _Popularity: <p>案例热度</p>
+        :type Popularity: int
+        :param _Difficulty: <p>难度</p>
+        :type Difficulty: str
+        :param _EstimatedTime: <p>预估时间（分钟）</p>
+        :type EstimatedTime: int
+        :param _SortOrder: <p>排序</p>
+        :type SortOrder: int
+        :param _IsEnabled: <p>是否启用</p>
+        :type IsEnabled: bool
+        :param _CreateTime: <p>创建时间</p>
+        :type CreateTime: int
+        :param _UpdateTime: <p>更新时间</p>
+        :type UpdateTime: int
+        :param _Deleted: <p>是否删除</p>
+        :type Deleted: int
+        """
+        self._Id = None
+        self._ExampleId = None
+        self._Title = None
+        self._Description = None
+        self._Readme = None
+        self._CodeArchiveUrl = None
+        self._Image = None
+        self._LabImage = None
+        self._ResourceConfig = None
+        self._Category = None
+        self._Tags = None
+        self._Popularity = None
+        self._Difficulty = None
+        self._EstimatedTime = None
+        self._SortOrder = None
+        self._IsEnabled = None
+        self._CreateTime = None
+        self._UpdateTime = None
+        self._Deleted = None
+
+    @property
+    def Id(self):
+        r"""<p>ID</p>
+        :rtype: int
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def ExampleId(self):
+        r"""<p>案例ID</p>
+        :rtype: str
+        """
+        return self._ExampleId
+
+    @ExampleId.setter
+    def ExampleId(self, ExampleId):
+        self._ExampleId = ExampleId
+
+    @property
+    def Title(self):
+        r"""<p>标题</p>
+        :rtype: str
+        """
+        return self._Title
+
+    @Title.setter
+    def Title(self, Title):
+        self._Title = Title
+
+    @property
+    def Description(self):
+        r"""<p>描述</p>
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def Readme(self):
+        r"""<p>README</p>
+        :rtype: str
+        """
+        return self._Readme
+
+    @Readme.setter
+    def Readme(self, Readme):
+        self._Readme = Readme
+
+    @property
+    def CodeArchiveUrl(self):
+        r"""<p>案例归档URL</p>
+        :rtype: str
+        """
+        return self._CodeArchiveUrl
+
+    @CodeArchiveUrl.setter
+    def CodeArchiveUrl(self, CodeArchiveUrl):
+        self._CodeArchiveUrl = CodeArchiveUrl
+
+    @property
+    def Image(self):
+        r"""<p>图片URL</p>
+        :rtype: str
+        """
+        return self._Image
+
+    @Image.setter
+    def Image(self, Image):
+        self._Image = Image
+
+    @property
+    def LabImage(self):
+        r"""<p>实验室镜像地址</p>
+        :rtype: str
+        """
+        return self._LabImage
+
+    @LabImage.setter
+    def LabImage(self, LabImage):
+        self._LabImage = LabImage
+
+    @property
+    def ResourceConfig(self):
+        r"""<p>资源配置</p>
+        :rtype: str
+        """
+        return self._ResourceConfig
+
+    @ResourceConfig.setter
+    def ResourceConfig(self, ResourceConfig):
+        self._ResourceConfig = ResourceConfig
+
+    @property
+    def Category(self):
+        r"""<p>分类</p>
+        :rtype: str
+        """
+        return self._Category
+
+    @Category.setter
+    def Category(self, Category):
+        self._Category = Category
+
+    @property
+    def Tags(self):
+        r"""<p>标签</p>
+        :rtype: list of str
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def Popularity(self):
+        r"""<p>案例热度</p>
+        :rtype: int
+        """
+        return self._Popularity
+
+    @Popularity.setter
+    def Popularity(self, Popularity):
+        self._Popularity = Popularity
+
+    @property
+    def Difficulty(self):
+        r"""<p>难度</p>
+        :rtype: str
+        """
+        return self._Difficulty
+
+    @Difficulty.setter
+    def Difficulty(self, Difficulty):
+        self._Difficulty = Difficulty
+
+    @property
+    def EstimatedTime(self):
+        r"""<p>预估时间（分钟）</p>
+        :rtype: int
+        """
+        return self._EstimatedTime
+
+    @EstimatedTime.setter
+    def EstimatedTime(self, EstimatedTime):
+        self._EstimatedTime = EstimatedTime
+
+    @property
+    def SortOrder(self):
+        r"""<p>排序</p>
+        :rtype: int
+        """
+        return self._SortOrder
+
+    @SortOrder.setter
+    def SortOrder(self, SortOrder):
+        self._SortOrder = SortOrder
+
+    @property
+    def IsEnabled(self):
+        r"""<p>是否启用</p>
+        :rtype: bool
+        """
+        return self._IsEnabled
+
+    @IsEnabled.setter
+    def IsEnabled(self, IsEnabled):
+        self._IsEnabled = IsEnabled
+
+    @property
+    def CreateTime(self):
+        r"""<p>创建时间</p>
+        :rtype: int
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        r"""<p>更新时间</p>
+        :rtype: int
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def Deleted(self):
+        r"""<p>是否删除</p>
+        :rtype: int
+        """
+        return self._Deleted
+
+    @Deleted.setter
+    def Deleted(self, Deleted):
+        self._Deleted = Deleted
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._ExampleId = params.get("ExampleId")
+        self._Title = params.get("Title")
+        self._Description = params.get("Description")
+        self._Readme = params.get("Readme")
+        self._CodeArchiveUrl = params.get("CodeArchiveUrl")
+        self._Image = params.get("Image")
+        self._LabImage = params.get("LabImage")
+        self._ResourceConfig = params.get("ResourceConfig")
+        self._Category = params.get("Category")
+        self._Tags = params.get("Tags")
+        self._Popularity = params.get("Popularity")
+        self._Difficulty = params.get("Difficulty")
+        self._EstimatedTime = params.get("EstimatedTime")
+        self._SortOrder = params.get("SortOrder")
+        self._IsEnabled = params.get("IsEnabled")
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
+        self._Deleted = params.get("Deleted")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ExampleTag(AbstractModel):
+    r"""案例标签返回值
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Tag: <p>案例标签名称</p>
+        :type Tag: str
+        :param _Count: <p>标签数量</p>
+        :type Count: int
+        """
+        self._Tag = None
+        self._Count = None
+
+    @property
+    def Tag(self):
+        r"""<p>案例标签名称</p>
+        :rtype: str
+        """
+        return self._Tag
+
+    @Tag.setter
+    def Tag(self, Tag):
+        self._Tag = Tag
+
+    @property
+    def Count(self):
+        r"""<p>标签数量</p>
+        :rtype: int
+        """
+        return self._Count
+
+    @Count.setter
+    def Count(self, Count):
+        self._Count = Count
+
+
+    def _deserialize(self, params):
+        self._Tag = params.get("Tag")
+        self._Count = params.get("Count")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Execution(AbstractModel):
     r"""SQL语句对象
 
@@ -30719,6 +36417,2399 @@ class GenerateInternalTableResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class GetExampleDetailRequest(AbstractModel):
+    r"""GetExampleDetail请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ExampleId: <p>案例ID</p>
+        :type ExampleId: str
+        """
+        self._ExampleId = None
+
+    @property
+    def ExampleId(self):
+        r"""<p>案例ID</p>
+        :rtype: str
+        """
+        return self._ExampleId
+
+    @ExampleId.setter
+    def ExampleId(self, ExampleId):
+        self._ExampleId = ExampleId
+
+
+    def _deserialize(self, params):
+        self._ExampleId = params.get("ExampleId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetExampleDetailResponse(AbstractModel):
+    r"""GetExampleDetail返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: <p>ID</p>
+        :type Id: int
+        :param _ExampleId: <p>案例ID</p>
+        :type ExampleId: str
+        :param _Title: <p>标题</p>
+        :type Title: str
+        :param _Description: <p>描述</p>
+        :type Description: str
+        :param _Readme: <p>README</p>
+        :type Readme: str
+        :param _CodeArchiveUrl: <p>案例归档URL</p>
+        :type CodeArchiveUrl: str
+        :param _Image: <p>图片URL</p>
+        :type Image: str
+        :param _LabImage: <p>实验室镜像</p>
+        :type LabImage: str
+        :param _ResourceConfig: <p>资源配置</p>
+        :type ResourceConfig: str
+        :param _Category: <p>分类</p>
+        :type Category: str
+        :param _Tags: <p>案例标签</p>
+        :type Tags: list of str
+        :param _Difficulty: <p>难度</p>
+        :type Difficulty: str
+        :param _EstimatedTime: <p>预估时间（分钟）</p>
+        :type EstimatedTime: int
+        :param _SortOrder: <p>排序</p>
+        :type SortOrder: int
+        :param _IsEnabled: <p>是否启用</p>
+        :type IsEnabled: bool
+        :param _CreateTime: <p>创建时间</p>
+        :type CreateTime: int
+        :param _UpdateTime: <p>更新时间</p>
+        :type UpdateTime: int
+        :param _Deleted: <p>是否删除</p>
+        :type Deleted: int
+        :param _Popularity: <p>案例热度</p>
+        :type Popularity: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Id = None
+        self._ExampleId = None
+        self._Title = None
+        self._Description = None
+        self._Readme = None
+        self._CodeArchiveUrl = None
+        self._Image = None
+        self._LabImage = None
+        self._ResourceConfig = None
+        self._Category = None
+        self._Tags = None
+        self._Difficulty = None
+        self._EstimatedTime = None
+        self._SortOrder = None
+        self._IsEnabled = None
+        self._CreateTime = None
+        self._UpdateTime = None
+        self._Deleted = None
+        self._Popularity = None
+        self._RequestId = None
+
+    @property
+    def Id(self):
+        r"""<p>ID</p>
+        :rtype: int
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def ExampleId(self):
+        r"""<p>案例ID</p>
+        :rtype: str
+        """
+        return self._ExampleId
+
+    @ExampleId.setter
+    def ExampleId(self, ExampleId):
+        self._ExampleId = ExampleId
+
+    @property
+    def Title(self):
+        r"""<p>标题</p>
+        :rtype: str
+        """
+        return self._Title
+
+    @Title.setter
+    def Title(self, Title):
+        self._Title = Title
+
+    @property
+    def Description(self):
+        r"""<p>描述</p>
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def Readme(self):
+        r"""<p>README</p>
+        :rtype: str
+        """
+        return self._Readme
+
+    @Readme.setter
+    def Readme(self, Readme):
+        self._Readme = Readme
+
+    @property
+    def CodeArchiveUrl(self):
+        r"""<p>案例归档URL</p>
+        :rtype: str
+        """
+        return self._CodeArchiveUrl
+
+    @CodeArchiveUrl.setter
+    def CodeArchiveUrl(self, CodeArchiveUrl):
+        self._CodeArchiveUrl = CodeArchiveUrl
+
+    @property
+    def Image(self):
+        r"""<p>图片URL</p>
+        :rtype: str
+        """
+        return self._Image
+
+    @Image.setter
+    def Image(self, Image):
+        self._Image = Image
+
+    @property
+    def LabImage(self):
+        r"""<p>实验室镜像</p>
+        :rtype: str
+        """
+        return self._LabImage
+
+    @LabImage.setter
+    def LabImage(self, LabImage):
+        self._LabImage = LabImage
+
+    @property
+    def ResourceConfig(self):
+        r"""<p>资源配置</p>
+        :rtype: str
+        """
+        return self._ResourceConfig
+
+    @ResourceConfig.setter
+    def ResourceConfig(self, ResourceConfig):
+        self._ResourceConfig = ResourceConfig
+
+    @property
+    def Category(self):
+        r"""<p>分类</p>
+        :rtype: str
+        """
+        return self._Category
+
+    @Category.setter
+    def Category(self, Category):
+        self._Category = Category
+
+    @property
+    def Tags(self):
+        r"""<p>案例标签</p>
+        :rtype: list of str
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def Difficulty(self):
+        r"""<p>难度</p>
+        :rtype: str
+        """
+        return self._Difficulty
+
+    @Difficulty.setter
+    def Difficulty(self, Difficulty):
+        self._Difficulty = Difficulty
+
+    @property
+    def EstimatedTime(self):
+        r"""<p>预估时间（分钟）</p>
+        :rtype: int
+        """
+        return self._EstimatedTime
+
+    @EstimatedTime.setter
+    def EstimatedTime(self, EstimatedTime):
+        self._EstimatedTime = EstimatedTime
+
+    @property
+    def SortOrder(self):
+        r"""<p>排序</p>
+        :rtype: int
+        """
+        return self._SortOrder
+
+    @SortOrder.setter
+    def SortOrder(self, SortOrder):
+        self._SortOrder = SortOrder
+
+    @property
+    def IsEnabled(self):
+        r"""<p>是否启用</p>
+        :rtype: bool
+        """
+        return self._IsEnabled
+
+    @IsEnabled.setter
+    def IsEnabled(self, IsEnabled):
+        self._IsEnabled = IsEnabled
+
+    @property
+    def CreateTime(self):
+        r"""<p>创建时间</p>
+        :rtype: int
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        r"""<p>更新时间</p>
+        :rtype: int
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def Deleted(self):
+        r"""<p>是否删除</p>
+        :rtype: int
+        """
+        return self._Deleted
+
+    @Deleted.setter
+    def Deleted(self, Deleted):
+        self._Deleted = Deleted
+
+    @property
+    def Popularity(self):
+        r"""<p>案例热度</p>
+        :rtype: int
+        """
+        return self._Popularity
+
+    @Popularity.setter
+    def Popularity(self, Popularity):
+        self._Popularity = Popularity
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._ExampleId = params.get("ExampleId")
+        self._Title = params.get("Title")
+        self._Description = params.get("Description")
+        self._Readme = params.get("Readme")
+        self._CodeArchiveUrl = params.get("CodeArchiveUrl")
+        self._Image = params.get("Image")
+        self._LabImage = params.get("LabImage")
+        self._ResourceConfig = params.get("ResourceConfig")
+        self._Category = params.get("Category")
+        self._Tags = params.get("Tags")
+        self._Difficulty = params.get("Difficulty")
+        self._EstimatedTime = params.get("EstimatedTime")
+        self._SortOrder = params.get("SortOrder")
+        self._IsEnabled = params.get("IsEnabled")
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
+        self._Deleted = params.get("Deleted")
+        self._Popularity = params.get("Popularity")
+        self._RequestId = params.get("RequestId")
+
+
+class GetJobSpecRequest(AbstractModel):
+    r"""GetJobSpec请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SpecId: <p>配置ID</p>
+        :type SpecId: str
+        """
+        self._SpecId = None
+
+    @property
+    def SpecId(self):
+        r"""<p>配置ID</p>
+        :rtype: str
+        """
+        return self._SpecId
+
+    @SpecId.setter
+    def SpecId(self, SpecId):
+        self._SpecId = SpecId
+
+
+    def _deserialize(self, params):
+        self._SpecId = params.get("SpecId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetJobSpecResponse(AbstractModel):
+    r"""GetJobSpec返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: <p>配置ID</p>
+        :type Id: str
+        :param _Name: <p>配置名称</p>
+        :type Name: str
+        :param _Description: <p>配置描述</p>
+        :type Description: str
+        :param _Entrypoint: <p>入口命令</p>
+        :type Entrypoint: str
+        :param _Image: <p>镜像地址</p>
+        :type Image: str
+        :param _ImagePullType: <p>镜像拉取类型（Builtin: 内置, Custom: 自定义）</p>
+        :type ImagePullType: str
+        :param _ImagePullPolicy: <p>镜像拉取策略</p>
+        :type ImagePullPolicy: str
+        :param _ResourceConfig: <p>资源配置(JSON)</p>
+        :type ResourceConfig: str
+        :param _RuntimeEnv: <p>运行时环境配置(JSON)</p>
+        :type RuntimeEnv: str
+        :param _Catalog: <p>存储卷和挂载卷配置(JSON)</p>
+        :type Catalog: str
+        :param _AutoscalerOptions: <p>弹性伸缩配置(JSON)</p>
+        :type AutoscalerOptions: str
+        :param _ResourceConfigId: <p>资源配置ID</p>
+        :type ResourceConfigId: str
+        :param _ResourceConfigChanged: <p>资源配置模板是否变更</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResourceConfigChanged: bool
+        :param _ResourcePartitionId: <p>默认资源分区ID</p>
+        :type ResourcePartitionId: str
+        :param _ResourcePartitionName: <p>默认资源分区名称</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResourcePartitionName: str
+        :param _Queue: <p>默认队列名称</p>
+        :type Queue: str
+        :param _JobPackage: <p>作业包URL</p>
+        :type JobPackage: str
+        :param _JobPackageName: <p>作业包名称</p>
+        :type JobPackageName: str
+        :param _JobPackageSource: <p>作业包来源类型（Local: 本地上传, Cos: 用户自有 COS 桶地址）；缺省时按 Local 处理</p>
+        :type JobPackageSource: str
+        :param _AppId: <p>应用ID</p>
+        :type AppId: int
+        :param _Uin: <p>创建者UIN</p>
+        :type Uin: str
+        :param _SubAccountUin: <p>子用户UIN</p>
+        :type SubAccountUin: str
+        :param _SubAccountName: <p>子用户名称（由聚合层通过 CAM 接口回填）</p>
+        :type SubAccountName: str
+        :param _CreateTime: <p>创建时间</p>
+        :type CreateTime: int
+        :param _UpdateTime: <p>更新时间</p>
+        :type UpdateTime: int
+        :param _JobInstanceCount: <p>该配置产生的作业实例数量</p>
+        :type JobInstanceCount: int
+        :param _HasRunningJobs: <p>是否有运行中的作业实例</p>
+        :type HasRunningJobs: bool
+        :param _AdvancedOptions: <p>高级参数json</p>
+        :type AdvancedOptions: str
+        :param _GroupId: <p>默认计算组名称（与 ClusterGroup 等价，新调用方使用 GroupId）</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GroupId: str
+        :param _ClusterId: <p>默认集群 ID（与 GroupId 互斥）</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClusterId: str
+        :param _Priority: <p>作业优先级（1-9，数字越大优先级越高）</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Priority: int
+        :param _Tags: <p>标签列表（TagKey-TagValue），用于将资源与腾讯云标签系统中的标签绑定</p>
+        :type Tags: list of Tag
+        :param _DispatchStrategy: <p>集群分派策略</p><p>枚举值：</p><ul><li>RANDOM： 随机分配</li></ul>
+        :type DispatchStrategy: str
+        :param _SubmissionTarget: <p>作业提交目标</p><p>枚举值：</p><ul><li>GROUP： 按计算组分派</li></ul>
+        :type SubmissionTarget: str
+        :param _GroupName: <p>计算组名称</p>
+        :type GroupName: str
+        :param _ClusterName: <p>集群名称</p>
+        :type ClusterName: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Id = None
+        self._Name = None
+        self._Description = None
+        self._Entrypoint = None
+        self._Image = None
+        self._ImagePullType = None
+        self._ImagePullPolicy = None
+        self._ResourceConfig = None
+        self._RuntimeEnv = None
+        self._Catalog = None
+        self._AutoscalerOptions = None
+        self._ResourceConfigId = None
+        self._ResourceConfigChanged = None
+        self._ResourcePartitionId = None
+        self._ResourcePartitionName = None
+        self._Queue = None
+        self._JobPackage = None
+        self._JobPackageName = None
+        self._JobPackageSource = None
+        self._AppId = None
+        self._Uin = None
+        self._SubAccountUin = None
+        self._SubAccountName = None
+        self._CreateTime = None
+        self._UpdateTime = None
+        self._JobInstanceCount = None
+        self._HasRunningJobs = None
+        self._AdvancedOptions = None
+        self._GroupId = None
+        self._ClusterId = None
+        self._Priority = None
+        self._Tags = None
+        self._DispatchStrategy = None
+        self._SubmissionTarget = None
+        self._GroupName = None
+        self._ClusterName = None
+        self._RequestId = None
+
+    @property
+    def Id(self):
+        r"""<p>配置ID</p>
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Name(self):
+        r"""<p>配置名称</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Description(self):
+        r"""<p>配置描述</p>
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def Entrypoint(self):
+        r"""<p>入口命令</p>
+        :rtype: str
+        """
+        return self._Entrypoint
+
+    @Entrypoint.setter
+    def Entrypoint(self, Entrypoint):
+        self._Entrypoint = Entrypoint
+
+    @property
+    def Image(self):
+        r"""<p>镜像地址</p>
+        :rtype: str
+        """
+        return self._Image
+
+    @Image.setter
+    def Image(self, Image):
+        self._Image = Image
+
+    @property
+    def ImagePullType(self):
+        r"""<p>镜像拉取类型（Builtin: 内置, Custom: 自定义）</p>
+        :rtype: str
+        """
+        return self._ImagePullType
+
+    @ImagePullType.setter
+    def ImagePullType(self, ImagePullType):
+        self._ImagePullType = ImagePullType
+
+    @property
+    def ImagePullPolicy(self):
+        r"""<p>镜像拉取策略</p>
+        :rtype: str
+        """
+        return self._ImagePullPolicy
+
+    @ImagePullPolicy.setter
+    def ImagePullPolicy(self, ImagePullPolicy):
+        self._ImagePullPolicy = ImagePullPolicy
+
+    @property
+    def ResourceConfig(self):
+        r"""<p>资源配置(JSON)</p>
+        :rtype: str
+        """
+        return self._ResourceConfig
+
+    @ResourceConfig.setter
+    def ResourceConfig(self, ResourceConfig):
+        self._ResourceConfig = ResourceConfig
+
+    @property
+    def RuntimeEnv(self):
+        r"""<p>运行时环境配置(JSON)</p>
+        :rtype: str
+        """
+        return self._RuntimeEnv
+
+    @RuntimeEnv.setter
+    def RuntimeEnv(self, RuntimeEnv):
+        self._RuntimeEnv = RuntimeEnv
+
+    @property
+    def Catalog(self):
+        r"""<p>存储卷和挂载卷配置(JSON)</p>
+        :rtype: str
+        """
+        return self._Catalog
+
+    @Catalog.setter
+    def Catalog(self, Catalog):
+        self._Catalog = Catalog
+
+    @property
+    def AutoscalerOptions(self):
+        r"""<p>弹性伸缩配置(JSON)</p>
+        :rtype: str
+        """
+        return self._AutoscalerOptions
+
+    @AutoscalerOptions.setter
+    def AutoscalerOptions(self, AutoscalerOptions):
+        self._AutoscalerOptions = AutoscalerOptions
+
+    @property
+    def ResourceConfigId(self):
+        r"""<p>资源配置ID</p>
+        :rtype: str
+        """
+        return self._ResourceConfigId
+
+    @ResourceConfigId.setter
+    def ResourceConfigId(self, ResourceConfigId):
+        self._ResourceConfigId = ResourceConfigId
+
+    @property
+    def ResourceConfigChanged(self):
+        r"""<p>资源配置模板是否变更</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._ResourceConfigChanged
+
+    @ResourceConfigChanged.setter
+    def ResourceConfigChanged(self, ResourceConfigChanged):
+        self._ResourceConfigChanged = ResourceConfigChanged
+
+    @property
+    def ResourcePartitionId(self):
+        r"""<p>默认资源分区ID</p>
+        :rtype: str
+        """
+        return self._ResourcePartitionId
+
+    @ResourcePartitionId.setter
+    def ResourcePartitionId(self, ResourcePartitionId):
+        self._ResourcePartitionId = ResourcePartitionId
+
+    @property
+    def ResourcePartitionName(self):
+        r"""<p>默认资源分区名称</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ResourcePartitionName
+
+    @ResourcePartitionName.setter
+    def ResourcePartitionName(self, ResourcePartitionName):
+        self._ResourcePartitionName = ResourcePartitionName
+
+    @property
+    def Queue(self):
+        r"""<p>默认队列名称</p>
+        :rtype: str
+        """
+        return self._Queue
+
+    @Queue.setter
+    def Queue(self, Queue):
+        self._Queue = Queue
+
+    @property
+    def JobPackage(self):
+        r"""<p>作业包URL</p>
+        :rtype: str
+        """
+        return self._JobPackage
+
+    @JobPackage.setter
+    def JobPackage(self, JobPackage):
+        self._JobPackage = JobPackage
+
+    @property
+    def JobPackageName(self):
+        r"""<p>作业包名称</p>
+        :rtype: str
+        """
+        return self._JobPackageName
+
+    @JobPackageName.setter
+    def JobPackageName(self, JobPackageName):
+        self._JobPackageName = JobPackageName
+
+    @property
+    def JobPackageSource(self):
+        r"""<p>作业包来源类型（Local: 本地上传, Cos: 用户自有 COS 桶地址）；缺省时按 Local 处理</p>
+        :rtype: str
+        """
+        return self._JobPackageSource
+
+    @JobPackageSource.setter
+    def JobPackageSource(self, JobPackageSource):
+        self._JobPackageSource = JobPackageSource
+
+    @property
+    def AppId(self):
+        r"""<p>应用ID</p>
+        :rtype: int
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def Uin(self):
+        r"""<p>创建者UIN</p>
+        :rtype: str
+        """
+        return self._Uin
+
+    @Uin.setter
+    def Uin(self, Uin):
+        self._Uin = Uin
+
+    @property
+    def SubAccountUin(self):
+        r"""<p>子用户UIN</p>
+        :rtype: str
+        """
+        return self._SubAccountUin
+
+    @SubAccountUin.setter
+    def SubAccountUin(self, SubAccountUin):
+        self._SubAccountUin = SubAccountUin
+
+    @property
+    def SubAccountName(self):
+        r"""<p>子用户名称（由聚合层通过 CAM 接口回填）</p>
+        :rtype: str
+        """
+        return self._SubAccountName
+
+    @SubAccountName.setter
+    def SubAccountName(self, SubAccountName):
+        self._SubAccountName = SubAccountName
+
+    @property
+    def CreateTime(self):
+        r"""<p>创建时间</p>
+        :rtype: int
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        r"""<p>更新时间</p>
+        :rtype: int
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def JobInstanceCount(self):
+        r"""<p>该配置产生的作业实例数量</p>
+        :rtype: int
+        """
+        return self._JobInstanceCount
+
+    @JobInstanceCount.setter
+    def JobInstanceCount(self, JobInstanceCount):
+        self._JobInstanceCount = JobInstanceCount
+
+    @property
+    def HasRunningJobs(self):
+        r"""<p>是否有运行中的作业实例</p>
+        :rtype: bool
+        """
+        return self._HasRunningJobs
+
+    @HasRunningJobs.setter
+    def HasRunningJobs(self, HasRunningJobs):
+        self._HasRunningJobs = HasRunningJobs
+
+    @property
+    def AdvancedOptions(self):
+        r"""<p>高级参数json</p>
+        :rtype: str
+        """
+        return self._AdvancedOptions
+
+    @AdvancedOptions.setter
+    def AdvancedOptions(self, AdvancedOptions):
+        self._AdvancedOptions = AdvancedOptions
+
+    @property
+    def GroupId(self):
+        r"""<p>默认计算组名称（与 ClusterGroup 等价，新调用方使用 GroupId）</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._GroupId
+
+    @GroupId.setter
+    def GroupId(self, GroupId):
+        self._GroupId = GroupId
+
+    @property
+    def ClusterId(self):
+        r"""<p>默认集群 ID（与 GroupId 互斥）</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def Priority(self):
+        r"""<p>作业优先级（1-9，数字越大优先级越高）</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Priority
+
+    @Priority.setter
+    def Priority(self, Priority):
+        self._Priority = Priority
+
+    @property
+    def Tags(self):
+        r"""<p>标签列表（TagKey-TagValue），用于将资源与腾讯云标签系统中的标签绑定</p>
+        :rtype: list of Tag
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def DispatchStrategy(self):
+        r"""<p>集群分派策略</p><p>枚举值：</p><ul><li>RANDOM： 随机分配</li></ul>
+        :rtype: str
+        """
+        return self._DispatchStrategy
+
+    @DispatchStrategy.setter
+    def DispatchStrategy(self, DispatchStrategy):
+        self._DispatchStrategy = DispatchStrategy
+
+    @property
+    def SubmissionTarget(self):
+        r"""<p>作业提交目标</p><p>枚举值：</p><ul><li>GROUP： 按计算组分派</li></ul>
+        :rtype: str
+        """
+        return self._SubmissionTarget
+
+    @SubmissionTarget.setter
+    def SubmissionTarget(self, SubmissionTarget):
+        self._SubmissionTarget = SubmissionTarget
+
+    @property
+    def GroupName(self):
+        r"""<p>计算组名称</p>
+        :rtype: str
+        """
+        return self._GroupName
+
+    @GroupName.setter
+    def GroupName(self, GroupName):
+        self._GroupName = GroupName
+
+    @property
+    def ClusterName(self):
+        r"""<p>集群名称</p>
+        :rtype: str
+        """
+        return self._ClusterName
+
+    @ClusterName.setter
+    def ClusterName(self, ClusterName):
+        self._ClusterName = ClusterName
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._Name = params.get("Name")
+        self._Description = params.get("Description")
+        self._Entrypoint = params.get("Entrypoint")
+        self._Image = params.get("Image")
+        self._ImagePullType = params.get("ImagePullType")
+        self._ImagePullPolicy = params.get("ImagePullPolicy")
+        self._ResourceConfig = params.get("ResourceConfig")
+        self._RuntimeEnv = params.get("RuntimeEnv")
+        self._Catalog = params.get("Catalog")
+        self._AutoscalerOptions = params.get("AutoscalerOptions")
+        self._ResourceConfigId = params.get("ResourceConfigId")
+        self._ResourceConfigChanged = params.get("ResourceConfigChanged")
+        self._ResourcePartitionId = params.get("ResourcePartitionId")
+        self._ResourcePartitionName = params.get("ResourcePartitionName")
+        self._Queue = params.get("Queue")
+        self._JobPackage = params.get("JobPackage")
+        self._JobPackageName = params.get("JobPackageName")
+        self._JobPackageSource = params.get("JobPackageSource")
+        self._AppId = params.get("AppId")
+        self._Uin = params.get("Uin")
+        self._SubAccountUin = params.get("SubAccountUin")
+        self._SubAccountName = params.get("SubAccountName")
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
+        self._JobInstanceCount = params.get("JobInstanceCount")
+        self._HasRunningJobs = params.get("HasRunningJobs")
+        self._AdvancedOptions = params.get("AdvancedOptions")
+        self._GroupId = params.get("GroupId")
+        self._ClusterId = params.get("ClusterId")
+        self._Priority = params.get("Priority")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
+        self._DispatchStrategy = params.get("DispatchStrategy")
+        self._SubmissionTarget = params.get("SubmissionTarget")
+        self._GroupName = params.get("GroupName")
+        self._ClusterName = params.get("ClusterName")
+        self._RequestId = params.get("RequestId")
+
+
+class GetLabDetailRequest(AbstractModel):
+    r"""GetLabDetail请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: <p>工作区ID</p>
+        :type Id: str
+        """
+        self._Id = None
+
+    @property
+    def Id(self):
+        r"""<p>工作区ID</p>
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetLabDetailResponse(AbstractModel):
+    r"""GetLabDetail返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ExampleId: <p>案例模板ID（startMode=EXAMPLE 时使用）</p>
+        :type ExampleId: str
+        :param _CodeArchiveUrl: <p>代码包/工程归档地址</p>
+        :type CodeArchiveUrl: str
+        :param _Services: <p>数据实验室服务入口（服务类型 -&gt; 访问地址）</p>
+        :type Services: list of TypeKVPair
+        :param _Id: <p>集群ID</p>
+        :type Id: str
+        :param _Type: <p>资源类型：CLUSTER-普通集群；WORKSPACE-数据实验室（开发入口）</p>
+        :type Type: str
+        :param _Name: <p>集群名称</p>
+        :type Name: str
+        :param _Description: <p>集群描述</p>
+        :type Description: str
+        :param _ResourcePartitionId: <p>所属资源分区ID</p>
+        :type ResourcePartitionId: str
+        :param _ResourcePartitionName: <p>默认资源分区名称</p>
+        :type ResourcePartitionName: str
+        :param _Queue: <p>所属队列名称</p>
+        :type Queue: str
+        :param _AppId: <p>应用ID</p>
+        :type AppId: int
+        :param _Uin: <p>用户UIN</p>
+        :type Uin: str
+        :param _SubAccountUin: <p>子用户UIN</p>
+        :type SubAccountUin: str
+        :param _Status: <p>集群状态</p>
+        :type Status: str
+        :param _StatusMessage: <p>状态详情/错误信息</p>
+        :type StatusMessage: str
+        :param _ResourceConfig: <p>资源配置(JSON)</p>
+        :type ResourceConfig: str
+        :param _ResourceConfigId: <p>资源配置ID</p>
+        :type ResourceConfigId: str
+        :param _Image: <p>Ray 集群镜像地址（可选，OpenAPI/SDK 高级控制入口）。前端不再传递此字段；为空时后端按 R1（镜像表查询命中）→ R2（同值 fallback）顺序自动派生。非空时直接作为 Ray 集群镜像，跳过派生（EXPLICIT），且后端不校验其与 LabImage 的兼容性。</p>
+        :type Image: str
+        :param _Catalog: <p>存储卷和挂载卷配置(JSON)</p>
+        :type Catalog: str
+        :param _HistoryUrl: <p>Dashboard URL / 历史记录链接</p>
+        :type HistoryUrl: str
+        :param _ImagePullPolicy: <p>镜像拉取策略</p>
+        :type ImagePullPolicy: str
+        :param _AdvancedOptions: <p>高级参数（扁平 Key-Value 的 JSON 字符串），Key 以 spec. 开头，按 RayCluster CRD 下钻；详见 ADVANCED_CLUSTER_OPTIONS_DESIGN.md</p>
+        :type AdvancedOptions: str
+        :param _Priority: <p>优先级（1-9，数字越大优先级越高）</p>
+        :type Priority: int
+        :param _StartTime: <p>启动时间（最近一次启动）</p>
+        :type StartTime: int
+        :param _StopTime: <p>停止时间（最近一次停止/休眠）</p>
+        :type StopTime: int
+        :param _DeleteTime: <p>删除时间</p>
+        :type DeleteTime: int
+        :param _Tags: <p>标签列表（TagKey-TagValue）</p>
+        :type Tags: list of Tag
+        :param _PersistentWorkDir: <p>持久化工作目录配置（可选）。启用后将 COS/CFS 指定路径挂载到容器内 /workspace 工作目录，与现有 Catalog 的卷配置互斥（不允许同时在 Catalog 中显式声明 MountPath=/workspace）。</p>
+        :type PersistentWorkDir: :class:`tencentcloud.dlc.v20210125.models.PersistentWorkDir`
+        :param _EnableToken: <p>是否开启token认证</p>
+        :type EnableToken: bool
+        :param _LabImagePullType: <p>Lab sidecar 镜像拉取类型（BuiltIn: 内置, Custom: 自定义-TCR, CustomCcr: 自定义-CCR）</p>
+        :type LabImagePullType: str
+        :param _SubAccountName: <p>子用户名称（由聚合层通过 CAM 接口回填）</p>
+        :type SubAccountName: str
+        :param _ImagePullType: <p>镜像拉取类型（BuiltIn: 内置, Custom: 自定义-TCR, CustomCcr: 自定义-CCR）</p>
+        :type ImagePullType: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ExampleId = None
+        self._CodeArchiveUrl = None
+        self._Services = None
+        self._Id = None
+        self._Type = None
+        self._Name = None
+        self._Description = None
+        self._ResourcePartitionId = None
+        self._ResourcePartitionName = None
+        self._Queue = None
+        self._AppId = None
+        self._Uin = None
+        self._SubAccountUin = None
+        self._Status = None
+        self._StatusMessage = None
+        self._ResourceConfig = None
+        self._ResourceConfigId = None
+        self._Image = None
+        self._Catalog = None
+        self._HistoryUrl = None
+        self._ImagePullPolicy = None
+        self._AdvancedOptions = None
+        self._Priority = None
+        self._StartTime = None
+        self._StopTime = None
+        self._DeleteTime = None
+        self._Tags = None
+        self._PersistentWorkDir = None
+        self._EnableToken = None
+        self._LabImagePullType = None
+        self._SubAccountName = None
+        self._ImagePullType = None
+        self._RequestId = None
+
+    @property
+    def ExampleId(self):
+        r"""<p>案例模板ID（startMode=EXAMPLE 时使用）</p>
+        :rtype: str
+        """
+        return self._ExampleId
+
+    @ExampleId.setter
+    def ExampleId(self, ExampleId):
+        self._ExampleId = ExampleId
+
+    @property
+    def CodeArchiveUrl(self):
+        r"""<p>代码包/工程归档地址</p>
+        :rtype: str
+        """
+        return self._CodeArchiveUrl
+
+    @CodeArchiveUrl.setter
+    def CodeArchiveUrl(self, CodeArchiveUrl):
+        self._CodeArchiveUrl = CodeArchiveUrl
+
+    @property
+    def Services(self):
+        r"""<p>数据实验室服务入口（服务类型 -&gt; 访问地址）</p>
+        :rtype: list of TypeKVPair
+        """
+        return self._Services
+
+    @Services.setter
+    def Services(self, Services):
+        self._Services = Services
+
+    @property
+    def Id(self):
+        r"""<p>集群ID</p>
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Type(self):
+        r"""<p>资源类型：CLUSTER-普通集群；WORKSPACE-数据实验室（开发入口）</p>
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Name(self):
+        r"""<p>集群名称</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Description(self):
+        r"""<p>集群描述</p>
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def ResourcePartitionId(self):
+        r"""<p>所属资源分区ID</p>
+        :rtype: str
+        """
+        return self._ResourcePartitionId
+
+    @ResourcePartitionId.setter
+    def ResourcePartitionId(self, ResourcePartitionId):
+        self._ResourcePartitionId = ResourcePartitionId
+
+    @property
+    def ResourcePartitionName(self):
+        r"""<p>默认资源分区名称</p>
+        :rtype: str
+        """
+        return self._ResourcePartitionName
+
+    @ResourcePartitionName.setter
+    def ResourcePartitionName(self, ResourcePartitionName):
+        self._ResourcePartitionName = ResourcePartitionName
+
+    @property
+    def Queue(self):
+        r"""<p>所属队列名称</p>
+        :rtype: str
+        """
+        return self._Queue
+
+    @Queue.setter
+    def Queue(self, Queue):
+        self._Queue = Queue
+
+    @property
+    def AppId(self):
+        r"""<p>应用ID</p>
+        :rtype: int
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def Uin(self):
+        r"""<p>用户UIN</p>
+        :rtype: str
+        """
+        return self._Uin
+
+    @Uin.setter
+    def Uin(self, Uin):
+        self._Uin = Uin
+
+    @property
+    def SubAccountUin(self):
+        r"""<p>子用户UIN</p>
+        :rtype: str
+        """
+        return self._SubAccountUin
+
+    @SubAccountUin.setter
+    def SubAccountUin(self, SubAccountUin):
+        self._SubAccountUin = SubAccountUin
+
+    @property
+    def Status(self):
+        r"""<p>集群状态</p>
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def StatusMessage(self):
+        r"""<p>状态详情/错误信息</p>
+        :rtype: str
+        """
+        return self._StatusMessage
+
+    @StatusMessage.setter
+    def StatusMessage(self, StatusMessage):
+        self._StatusMessage = StatusMessage
+
+    @property
+    def ResourceConfig(self):
+        r"""<p>资源配置(JSON)</p>
+        :rtype: str
+        """
+        return self._ResourceConfig
+
+    @ResourceConfig.setter
+    def ResourceConfig(self, ResourceConfig):
+        self._ResourceConfig = ResourceConfig
+
+    @property
+    def ResourceConfigId(self):
+        r"""<p>资源配置ID</p>
+        :rtype: str
+        """
+        return self._ResourceConfigId
+
+    @ResourceConfigId.setter
+    def ResourceConfigId(self, ResourceConfigId):
+        self._ResourceConfigId = ResourceConfigId
+
+    @property
+    def Image(self):
+        r"""<p>Ray 集群镜像地址（可选，OpenAPI/SDK 高级控制入口）。前端不再传递此字段；为空时后端按 R1（镜像表查询命中）→ R2（同值 fallback）顺序自动派生。非空时直接作为 Ray 集群镜像，跳过派生（EXPLICIT），且后端不校验其与 LabImage 的兼容性。</p>
+        :rtype: str
+        """
+        return self._Image
+
+    @Image.setter
+    def Image(self, Image):
+        self._Image = Image
+
+    @property
+    def Catalog(self):
+        r"""<p>存储卷和挂载卷配置(JSON)</p>
+        :rtype: str
+        """
+        return self._Catalog
+
+    @Catalog.setter
+    def Catalog(self, Catalog):
+        self._Catalog = Catalog
+
+    @property
+    def HistoryUrl(self):
+        r"""<p>Dashboard URL / 历史记录链接</p>
+        :rtype: str
+        """
+        return self._HistoryUrl
+
+    @HistoryUrl.setter
+    def HistoryUrl(self, HistoryUrl):
+        self._HistoryUrl = HistoryUrl
+
+    @property
+    def ImagePullPolicy(self):
+        r"""<p>镜像拉取策略</p>
+        :rtype: str
+        """
+        return self._ImagePullPolicy
+
+    @ImagePullPolicy.setter
+    def ImagePullPolicy(self, ImagePullPolicy):
+        self._ImagePullPolicy = ImagePullPolicy
+
+    @property
+    def AdvancedOptions(self):
+        r"""<p>高级参数（扁平 Key-Value 的 JSON 字符串），Key 以 spec. 开头，按 RayCluster CRD 下钻；详见 ADVANCED_CLUSTER_OPTIONS_DESIGN.md</p>
+        :rtype: str
+        """
+        return self._AdvancedOptions
+
+    @AdvancedOptions.setter
+    def AdvancedOptions(self, AdvancedOptions):
+        self._AdvancedOptions = AdvancedOptions
+
+    @property
+    def Priority(self):
+        r"""<p>优先级（1-9，数字越大优先级越高）</p>
+        :rtype: int
+        """
+        return self._Priority
+
+    @Priority.setter
+    def Priority(self, Priority):
+        self._Priority = Priority
+
+    @property
+    def StartTime(self):
+        r"""<p>启动时间（最近一次启动）</p>
+        :rtype: int
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def StopTime(self):
+        r"""<p>停止时间（最近一次停止/休眠）</p>
+        :rtype: int
+        """
+        return self._StopTime
+
+    @StopTime.setter
+    def StopTime(self, StopTime):
+        self._StopTime = StopTime
+
+    @property
+    def DeleteTime(self):
+        r"""<p>删除时间</p>
+        :rtype: int
+        """
+        return self._DeleteTime
+
+    @DeleteTime.setter
+    def DeleteTime(self, DeleteTime):
+        self._DeleteTime = DeleteTime
+
+    @property
+    def Tags(self):
+        r"""<p>标签列表（TagKey-TagValue）</p>
+        :rtype: list of Tag
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def PersistentWorkDir(self):
+        r"""<p>持久化工作目录配置（可选）。启用后将 COS/CFS 指定路径挂载到容器内 /workspace 工作目录，与现有 Catalog 的卷配置互斥（不允许同时在 Catalog 中显式声明 MountPath=/workspace）。</p>
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.PersistentWorkDir`
+        """
+        return self._PersistentWorkDir
+
+    @PersistentWorkDir.setter
+    def PersistentWorkDir(self, PersistentWorkDir):
+        self._PersistentWorkDir = PersistentWorkDir
+
+    @property
+    def EnableToken(self):
+        r"""<p>是否开启token认证</p>
+        :rtype: bool
+        """
+        return self._EnableToken
+
+    @EnableToken.setter
+    def EnableToken(self, EnableToken):
+        self._EnableToken = EnableToken
+
+    @property
+    def LabImagePullType(self):
+        r"""<p>Lab sidecar 镜像拉取类型（BuiltIn: 内置, Custom: 自定义-TCR, CustomCcr: 自定义-CCR）</p>
+        :rtype: str
+        """
+        return self._LabImagePullType
+
+    @LabImagePullType.setter
+    def LabImagePullType(self, LabImagePullType):
+        self._LabImagePullType = LabImagePullType
+
+    @property
+    def SubAccountName(self):
+        r"""<p>子用户名称（由聚合层通过 CAM 接口回填）</p>
+        :rtype: str
+        """
+        return self._SubAccountName
+
+    @SubAccountName.setter
+    def SubAccountName(self, SubAccountName):
+        self._SubAccountName = SubAccountName
+
+    @property
+    def ImagePullType(self):
+        r"""<p>镜像拉取类型（BuiltIn: 内置, Custom: 自定义-TCR, CustomCcr: 自定义-CCR）</p>
+        :rtype: str
+        """
+        return self._ImagePullType
+
+    @ImagePullType.setter
+    def ImagePullType(self, ImagePullType):
+        self._ImagePullType = ImagePullType
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._ExampleId = params.get("ExampleId")
+        self._CodeArchiveUrl = params.get("CodeArchiveUrl")
+        if params.get("Services") is not None:
+            self._Services = []
+            for item in params.get("Services"):
+                obj = TypeKVPair()
+                obj._deserialize(item)
+                self._Services.append(obj)
+        self._Id = params.get("Id")
+        self._Type = params.get("Type")
+        self._Name = params.get("Name")
+        self._Description = params.get("Description")
+        self._ResourcePartitionId = params.get("ResourcePartitionId")
+        self._ResourcePartitionName = params.get("ResourcePartitionName")
+        self._Queue = params.get("Queue")
+        self._AppId = params.get("AppId")
+        self._Uin = params.get("Uin")
+        self._SubAccountUin = params.get("SubAccountUin")
+        self._Status = params.get("Status")
+        self._StatusMessage = params.get("StatusMessage")
+        self._ResourceConfig = params.get("ResourceConfig")
+        self._ResourceConfigId = params.get("ResourceConfigId")
+        self._Image = params.get("Image")
+        self._Catalog = params.get("Catalog")
+        self._HistoryUrl = params.get("HistoryUrl")
+        self._ImagePullPolicy = params.get("ImagePullPolicy")
+        self._AdvancedOptions = params.get("AdvancedOptions")
+        self._Priority = params.get("Priority")
+        self._StartTime = params.get("StartTime")
+        self._StopTime = params.get("StopTime")
+        self._DeleteTime = params.get("DeleteTime")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
+        if params.get("PersistentWorkDir") is not None:
+            self._PersistentWorkDir = PersistentWorkDir()
+            self._PersistentWorkDir._deserialize(params.get("PersistentWorkDir"))
+        self._EnableToken = params.get("EnableToken")
+        self._LabImagePullType = params.get("LabImagePullType")
+        self._SubAccountName = params.get("SubAccountName")
+        self._ImagePullType = params.get("ImagePullType")
+        self._RequestId = params.get("RequestId")
+
+
+class GetLabEventRequest(AbstractModel):
+    r"""GetLabEvent请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: <p>数据实验室ID</p>
+        :type Id: str
+        :param _PageSize: <p>每页数量</p>
+        :type PageSize: int
+        :param _StartTime: <p>开始时间（毫秒时间戳）</p>
+        :type StartTime: int
+        :param _EndTime: <p>结束时间（毫秒时间戳）</p>
+        :type EndTime: int
+        :param _SortFields: <p>排序字段列表</p>
+        :type SortFields: list of SortField
+        """
+        self._Id = None
+        self._PageSize = None
+        self._StartTime = None
+        self._EndTime = None
+        self._SortFields = None
+
+    @property
+    def Id(self):
+        r"""<p>数据实验室ID</p>
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def PageSize(self):
+        r"""<p>每页数量</p>
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def StartTime(self):
+        r"""<p>开始时间（毫秒时间戳）</p>
+        :rtype: int
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""<p>结束时间（毫秒时间戳）</p>
+        :rtype: int
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def SortFields(self):
+        r"""<p>排序字段列表</p>
+        :rtype: list of SortField
+        """
+        return self._SortFields
+
+    @SortFields.setter
+    def SortFields(self, SortFields):
+        self._SortFields = SortFields
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._PageSize = params.get("PageSize")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        if params.get("SortFields") is not None:
+            self._SortFields = []
+            for item in params.get("SortFields"):
+                obj = SortField()
+                obj._deserialize(item)
+                self._SortFields.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetLabEventResponse(AbstractModel):
+    r"""GetLabEvent返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ListOver: <p>是否已经返回所有符合条件的日志，true 表示已全部返回</p>
+        :type ListOver: bool
+        :param _Events: <p>事件列表</p>
+        :type Events: list of EventItem
+        :param _StartTime: <p>事件开始时间</p><p>单位：毫秒</p>
+        :type StartTime: int
+        :param _EndTime: <p>事件结束时间</p><p>单位：毫秒</p>
+        :type EndTime: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ListOver = None
+        self._Events = None
+        self._StartTime = None
+        self._EndTime = None
+        self._RequestId = None
+
+    @property
+    def ListOver(self):
+        r"""<p>是否已经返回所有符合条件的日志，true 表示已全部返回</p>
+        :rtype: bool
+        """
+        return self._ListOver
+
+    @ListOver.setter
+    def ListOver(self, ListOver):
+        self._ListOver = ListOver
+
+    @property
+    def Events(self):
+        r"""<p>事件列表</p>
+        :rtype: list of EventItem
+        """
+        return self._Events
+
+    @Events.setter
+    def Events(self, Events):
+        self._Events = Events
+
+    @property
+    def StartTime(self):
+        r"""<p>事件开始时间</p><p>单位：毫秒</p>
+        :rtype: int
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""<p>事件结束时间</p><p>单位：毫秒</p>
+        :rtype: int
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._ListOver = params.get("ListOver")
+        if params.get("Events") is not None:
+            self._Events = []
+            for item in params.get("Events"):
+                obj = EventItem()
+                obj._deserialize(item)
+                self._Events.append(obj)
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._RequestId = params.get("RequestId")
+
+
+class GetLabHistoryRequest(AbstractModel):
+    r"""GetLabHistory请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: <p>数据实验室ID</p>
+        :type Id: str
+        :param _Page: <p>当前页码（从1开始）</p>
+        :type Page: int
+        :param _PageSize: <p>每页数量</p>
+        :type PageSize: int
+        """
+        self._Id = None
+        self._Page = None
+        self._PageSize = None
+
+    @property
+    def Id(self):
+        r"""<p>数据实验室ID</p>
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Page(self):
+        r"""<p>当前页码（从1开始）</p>
+        :rtype: int
+        """
+        return self._Page
+
+    @Page.setter
+    def Page(self, Page):
+        self._Page = Page
+
+    @property
+    def PageSize(self):
+        r"""<p>每页数量</p>
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._Page = params.get("Page")
+        self._PageSize = params.get("PageSize")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetLabHistoryResponse(AbstractModel):
+    r"""GetLabHistory返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Total: <p>总记录数</p>
+        :type Total: int
+        :param _Page: <p>当前页码（从1开始）</p>
+        :type Page: int
+        :param _PageSize: <p>每页数量</p>
+        :type PageSize: int
+        :param _TotalPages: <p>总页数</p>
+        :type TotalPages: int
+        :param _Items: <p>集群状态历史详情列表</p>
+        :type Items: list of RayClusterHistory
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Total = None
+        self._Page = None
+        self._PageSize = None
+        self._TotalPages = None
+        self._Items = None
+        self._RequestId = None
+
+    @property
+    def Total(self):
+        r"""<p>总记录数</p>
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def Page(self):
+        r"""<p>当前页码（从1开始）</p>
+        :rtype: int
+        """
+        return self._Page
+
+    @Page.setter
+    def Page(self, Page):
+        self._Page = Page
+
+    @property
+    def PageSize(self):
+        r"""<p>每页数量</p>
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def TotalPages(self):
+        r"""<p>总页数</p>
+        :rtype: int
+        """
+        return self._TotalPages
+
+    @TotalPages.setter
+    def TotalPages(self, TotalPages):
+        self._TotalPages = TotalPages
+
+    @property
+    def Items(self):
+        r"""<p>集群状态历史详情列表</p>
+        :rtype: list of RayClusterHistory
+        """
+        return self._Items
+
+    @Items.setter
+    def Items(self, Items):
+        self._Items = Items
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Total = params.get("Total")
+        self._Page = params.get("Page")
+        self._PageSize = params.get("PageSize")
+        self._TotalPages = params.get("TotalPages")
+        if params.get("Items") is not None:
+            self._Items = []
+            for item in params.get("Items"):
+                obj = RayClusterHistory()
+                obj._deserialize(item)
+                self._Items.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class GetLabPodYamlRequest(AbstractModel):
+    r"""GetLabPodYaml请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: <p>数据实验室ID</p>
+        :type Id: str
+        :param _PodName: <p>Pod名称</p>
+        :type PodName: str
+        """
+        self._Id = None
+        self._PodName = None
+
+    @property
+    def Id(self):
+        r"""<p>数据实验室ID</p>
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def PodName(self):
+        r"""<p>Pod名称</p>
+        :rtype: str
+        """
+        return self._PodName
+
+    @PodName.setter
+    def PodName(self, PodName):
+        self._PodName = PodName
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._PodName = params.get("PodName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetLabPodYamlResponse(AbstractModel):
+    r"""GetLabPodYaml返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Yaml: <p>Pod YAML</p>
+        :type Yaml: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Yaml = None
+        self._RequestId = None
+
+    @property
+    def Yaml(self):
+        r"""<p>Pod YAML</p>
+        :rtype: str
+        """
+        return self._Yaml
+
+    @Yaml.setter
+    def Yaml(self, Yaml):
+        self._Yaml = Yaml
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Yaml = params.get("Yaml")
+        self._RequestId = params.get("RequestId")
+
+
+class GetLabPodsRequest(AbstractModel):
+    r"""GetLabPods请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: <p>数据实验室ID</p>
+        :type Id: str
+        :param _Page: <p>当前页码（从1开始）</p>
+        :type Page: int
+        :param _PageSize: <p>每页数量</p>
+        :type PageSize: int
+        :param _StartTime: <p>开始时间（毫秒时间戳）</p>
+        :type StartTime: int
+        :param _EndTime: <p>结束时间（毫秒时间戳）</p>
+        :type EndTime: int
+        :param _Filters: <p>过滤条件</p>
+        :type Filters: list of Filter
+        :param _SortFields: <p>排序字段列表</p>
+        :type SortFields: list of SortField
+        """
+        self._Id = None
+        self._Page = None
+        self._PageSize = None
+        self._StartTime = None
+        self._EndTime = None
+        self._Filters = None
+        self._SortFields = None
+
+    @property
+    def Id(self):
+        r"""<p>数据实验室ID</p>
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Page(self):
+        r"""<p>当前页码（从1开始）</p>
+        :rtype: int
+        """
+        return self._Page
+
+    @Page.setter
+    def Page(self, Page):
+        self._Page = Page
+
+    @property
+    def PageSize(self):
+        r"""<p>每页数量</p>
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def StartTime(self):
+        r"""<p>开始时间（毫秒时间戳）</p>
+        :rtype: int
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""<p>结束时间（毫秒时间戳）</p>
+        :rtype: int
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def Filters(self):
+        r"""<p>过滤条件</p>
+        :rtype: list of Filter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def SortFields(self):
+        r"""<p>排序字段列表</p>
+        :rtype: list of SortField
+        """
+        return self._SortFields
+
+    @SortFields.setter
+    def SortFields(self, SortFields):
+        self._SortFields = SortFields
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._Page = params.get("Page")
+        self._PageSize = params.get("PageSize")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        if params.get("SortFields") is not None:
+            self._SortFields = []
+            for item in params.get("SortFields"):
+                obj = SortField()
+                obj._deserialize(item)
+                self._SortFields.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetLabPodsResponse(AbstractModel):
+    r"""GetLabPods返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Total: <p>总记录数</p>
+        :type Total: int
+        :param _Page: <p>当前页码（从1开始）</p>
+        :type Page: int
+        :param _PageSize: <p>每页数量</p>
+        :type PageSize: int
+        :param _TotalPages: <p>总页数</p>
+        :type TotalPages: int
+        :param _Items: <p>集群的Pod列表</p>
+        :type Items: list of ClusterPod
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Total = None
+        self._Page = None
+        self._PageSize = None
+        self._TotalPages = None
+        self._Items = None
+        self._RequestId = None
+
+    @property
+    def Total(self):
+        r"""<p>总记录数</p>
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def Page(self):
+        r"""<p>当前页码（从1开始）</p>
+        :rtype: int
+        """
+        return self._Page
+
+    @Page.setter
+    def Page(self, Page):
+        self._Page = Page
+
+    @property
+    def PageSize(self):
+        r"""<p>每页数量</p>
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def TotalPages(self):
+        r"""<p>总页数</p>
+        :rtype: int
+        """
+        return self._TotalPages
+
+    @TotalPages.setter
+    def TotalPages(self, TotalPages):
+        self._TotalPages = TotalPages
+
+    @property
+    def Items(self):
+        r"""<p>集群的Pod列表</p>
+        :rtype: list of ClusterPod
+        """
+        return self._Items
+
+    @Items.setter
+    def Items(self, Items):
+        self._Items = Items
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Total = params.get("Total")
+        self._Page = params.get("Page")
+        self._PageSize = params.get("PageSize")
+        self._TotalPages = params.get("TotalPages")
+        if params.get("Items") is not None:
+            self._Items = []
+            for item in params.get("Items"):
+                obj = ClusterPod()
+                obj._deserialize(item)
+                self._Items.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class GetLabServiceUrlsRequest(AbstractModel):
+    r"""GetLabServiceUrls请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: <p>数据实验室ID</p>
+        :type Id: str
+        """
+        self._Id = None
+
+    @property
+    def Id(self):
+        r"""<p>数据实验室ID</p>
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetLabServiceUrlsResponse(AbstractModel):
+    r"""GetLabServiceUrls返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ServiceUrls: <p>数据实验室服务入口（服务类型 -&gt; 访问地址）</p>
+        :type ServiceUrls: list of KVPair
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ServiceUrls = None
+        self._RequestId = None
+
+    @property
+    def ServiceUrls(self):
+        r"""<p>数据实验室服务入口（服务类型 -&gt; 访问地址）</p>
+        :rtype: list of KVPair
+        """
+        return self._ServiceUrls
+
+    @ServiceUrls.setter
+    def ServiceUrls(self, ServiceUrls):
+        self._ServiceUrls = ServiceUrls
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("ServiceUrls") is not None:
+            self._ServiceUrls = []
+            for item in params.get("ServiceUrls"):
+                obj = KVPair()
+                obj._deserialize(item)
+                self._ServiceUrls.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class GetLabYamlRequest(AbstractModel):
+    r"""GetLabYaml请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: <p>数据实验室Id</p>
+        :type Id: str
+        """
+        self._Id = None
+
+    @property
+    def Id(self):
+        r"""<p>数据实验室Id</p>
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetLabYamlResponse(AbstractModel):
+    r"""GetLabYaml返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Yaml: <p>RayCluster YAML</p>
+        :type Yaml: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Yaml = None
+        self._RequestId = None
+
+    @property
+    def Yaml(self):
+        r"""<p>RayCluster YAML</p>
+        :rtype: str
+        """
+        return self._Yaml
+
+    @Yaml.setter
+    def Yaml(self, Yaml):
+        self._Yaml = Yaml
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Yaml = params.get("Yaml")
+        self._RequestId = params.get("RequestId")
+
+
 class GetOptimizerPolicyRequest(AbstractModel):
     r"""GetOptimizerPolicy请求参数结构体
 
@@ -30799,6 +38890,3104 @@ class GetOptimizerPolicyResponse(AbstractModel):
         if params.get("SmartOptimizerPolicy") is not None:
             self._SmartOptimizerPolicy = SmartOptimizerPolicy()
             self._SmartOptimizerPolicy._deserialize(params.get("SmartOptimizerPolicy"))
+        self._RequestId = params.get("RequestId")
+
+
+class GetRayClusterEventRequest(AbstractModel):
+    r"""GetRayClusterEvent请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: <p>Ray集群ID</p>
+        :type Id: str
+        :param _Page: <p>当前页码（从1开始）</p>
+        :type Page: int
+        :param _PageSize: <p>每页数量</p>
+        :type PageSize: int
+        :param _StartTime: <p>开始时间（毫秒时间戳）</p>
+        :type StartTime: int
+        :param _EndTime: <p>结束时间（毫秒时间戳）</p>
+        :type EndTime: int
+        :param _SortFields: <p>排序字段列表</p>
+        :type SortFields: list of SortField
+        :param _Context: <p>翻页上下文，首次查询不传，后续翻页传入上一次返回的 Context 值</p>
+        :type Context: str
+        """
+        self._Id = None
+        self._Page = None
+        self._PageSize = None
+        self._StartTime = None
+        self._EndTime = None
+        self._SortFields = None
+        self._Context = None
+
+    @property
+    def Id(self):
+        r"""<p>Ray集群ID</p>
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Page(self):
+        r"""<p>当前页码（从1开始）</p>
+        :rtype: int
+        """
+        return self._Page
+
+    @Page.setter
+    def Page(self, Page):
+        self._Page = Page
+
+    @property
+    def PageSize(self):
+        r"""<p>每页数量</p>
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def StartTime(self):
+        r"""<p>开始时间（毫秒时间戳）</p>
+        :rtype: int
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""<p>结束时间（毫秒时间戳）</p>
+        :rtype: int
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def SortFields(self):
+        r"""<p>排序字段列表</p>
+        :rtype: list of SortField
+        """
+        return self._SortFields
+
+    @SortFields.setter
+    def SortFields(self, SortFields):
+        self._SortFields = SortFields
+
+    @property
+    def Context(self):
+        r"""<p>翻页上下文，首次查询不传，后续翻页传入上一次返回的 Context 值</p>
+        :rtype: str
+        """
+        return self._Context
+
+    @Context.setter
+    def Context(self, Context):
+        self._Context = Context
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._Page = params.get("Page")
+        self._PageSize = params.get("PageSize")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        if params.get("SortFields") is not None:
+            self._SortFields = []
+            for item in params.get("SortFields"):
+                obj = SortField()
+                obj._deserialize(item)
+                self._SortFields.append(obj)
+        self._Context = params.get("Context")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetRayClusterEventResponse(AbstractModel):
+    r"""GetRayClusterEvent返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Context: <p>翻页上下文，下一次分页请求时传入此值</p>
+        :type Context: str
+        :param _ListOver: <p>是否已经返回所有符合条件的日志，true 表示已全部返回</p>
+        :type ListOver: bool
+        :param _Events: <p>事件列表</p>
+        :type Events: list of EventItem
+        :param _StartTime: <p>事件开始时间</p><p>单位：毫秒</p>
+        :type StartTime: int
+        :param _EndTime: <p>事件结束时间</p><p>单位：毫秒</p>
+        :type EndTime: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Context = None
+        self._ListOver = None
+        self._Events = None
+        self._StartTime = None
+        self._EndTime = None
+        self._RequestId = None
+
+    @property
+    def Context(self):
+        r"""<p>翻页上下文，下一次分页请求时传入此值</p>
+        :rtype: str
+        """
+        return self._Context
+
+    @Context.setter
+    def Context(self, Context):
+        self._Context = Context
+
+    @property
+    def ListOver(self):
+        r"""<p>是否已经返回所有符合条件的日志，true 表示已全部返回</p>
+        :rtype: bool
+        """
+        return self._ListOver
+
+    @ListOver.setter
+    def ListOver(self, ListOver):
+        self._ListOver = ListOver
+
+    @property
+    def Events(self):
+        r"""<p>事件列表</p>
+        :rtype: list of EventItem
+        """
+        return self._Events
+
+    @Events.setter
+    def Events(self, Events):
+        self._Events = Events
+
+    @property
+    def StartTime(self):
+        r"""<p>事件开始时间</p><p>单位：毫秒</p>
+        :rtype: int
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""<p>事件结束时间</p><p>单位：毫秒</p>
+        :rtype: int
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Context = params.get("Context")
+        self._ListOver = params.get("ListOver")
+        if params.get("Events") is not None:
+            self._Events = []
+            for item in params.get("Events"):
+                obj = EventItem()
+                obj._deserialize(item)
+                self._Events.append(obj)
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._RequestId = params.get("RequestId")
+
+
+class GetRayClusterHistoryRequest(AbstractModel):
+    r"""GetRayClusterHistory请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: <p>集群/数据实验室ID</p>
+        :type Id: str
+        :param _Page: <p>当前页码（从1开始）</p>
+        :type Page: int
+        :param _PageSize: <p>每页数量</p>
+        :type PageSize: int
+        """
+        self._Id = None
+        self._Page = None
+        self._PageSize = None
+
+    @property
+    def Id(self):
+        r"""<p>集群/数据实验室ID</p>
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Page(self):
+        r"""<p>当前页码（从1开始）</p>
+        :rtype: int
+        """
+        return self._Page
+
+    @Page.setter
+    def Page(self, Page):
+        self._Page = Page
+
+    @property
+    def PageSize(self):
+        r"""<p>每页数量</p>
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._Page = params.get("Page")
+        self._PageSize = params.get("PageSize")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetRayClusterHistoryResponse(AbstractModel):
+    r"""GetRayClusterHistory返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Total: <p>总记录数</p>
+        :type Total: int
+        :param _Page: <p>当前页码（从1开始）</p>
+        :type Page: int
+        :param _PageSize: <p>每页数量</p>
+        :type PageSize: int
+        :param _TotalPages: <p>总页数</p>
+        :type TotalPages: int
+        :param _Items: <p>集群状态历史详情列表</p>
+        :type Items: list of RayClusterHistory
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Total = None
+        self._Page = None
+        self._PageSize = None
+        self._TotalPages = None
+        self._Items = None
+        self._RequestId = None
+
+    @property
+    def Total(self):
+        r"""<p>总记录数</p>
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def Page(self):
+        r"""<p>当前页码（从1开始）</p>
+        :rtype: int
+        """
+        return self._Page
+
+    @Page.setter
+    def Page(self, Page):
+        self._Page = Page
+
+    @property
+    def PageSize(self):
+        r"""<p>每页数量</p>
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def TotalPages(self):
+        r"""<p>总页数</p>
+        :rtype: int
+        """
+        return self._TotalPages
+
+    @TotalPages.setter
+    def TotalPages(self, TotalPages):
+        self._TotalPages = TotalPages
+
+    @property
+    def Items(self):
+        r"""<p>集群状态历史详情列表</p>
+        :rtype: list of RayClusterHistory
+        """
+        return self._Items
+
+    @Items.setter
+    def Items(self, Items):
+        self._Items = Items
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Total = params.get("Total")
+        self._Page = params.get("Page")
+        self._PageSize = params.get("PageSize")
+        self._TotalPages = params.get("TotalPages")
+        if params.get("Items") is not None:
+            self._Items = []
+            for item in params.get("Items"):
+                obj = RayClusterHistory()
+                obj._deserialize(item)
+                self._Items.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class GetRayClusterPodYamlRequest(AbstractModel):
+    r"""GetRayClusterPodYaml请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: <p>集群ID</p>
+        :type Id: str
+        :param _PodName: <p>Pod名称</p>
+        :type PodName: str
+        """
+        self._Id = None
+        self._PodName = None
+
+    @property
+    def Id(self):
+        r"""<p>集群ID</p>
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def PodName(self):
+        r"""<p>Pod名称</p>
+        :rtype: str
+        """
+        return self._PodName
+
+    @PodName.setter
+    def PodName(self, PodName):
+        self._PodName = PodName
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._PodName = params.get("PodName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetRayClusterPodYamlResponse(AbstractModel):
+    r"""GetRayClusterPodYaml返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Yaml: <p>Pod YAML</p>
+        :type Yaml: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Yaml = None
+        self._RequestId = None
+
+    @property
+    def Yaml(self):
+        r"""<p>Pod YAML</p>
+        :rtype: str
+        """
+        return self._Yaml
+
+    @Yaml.setter
+    def Yaml(self, Yaml):
+        self._Yaml = Yaml
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Yaml = params.get("Yaml")
+        self._RequestId = params.get("RequestId")
+
+
+class GetRayClusterPodsRequest(AbstractModel):
+    r"""GetRayClusterPods请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: <p>集群ID</p>
+        :type Id: str
+        :param _StartTime: <p>起始时间（毫秒时间戳）</p>
+        :type StartTime: int
+        :param _EndTime: <p>截止时间（毫秒时间戳）</p>
+        :type EndTime: int
+        :param _Page: <p>当前页码（从1开始）</p>
+        :type Page: int
+        :param _PageSize: <p>每页数量</p>
+        :type PageSize: int
+        :param _Filters: <p>过滤条件列表</p>
+        :type Filters: list of Filter
+        :param _SortFields: <p>排序字段列表</p>
+        :type SortFields: list of SortField
+        """
+        self._Id = None
+        self._StartTime = None
+        self._EndTime = None
+        self._Page = None
+        self._PageSize = None
+        self._Filters = None
+        self._SortFields = None
+
+    @property
+    def Id(self):
+        r"""<p>集群ID</p>
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def StartTime(self):
+        r"""<p>起始时间（毫秒时间戳）</p>
+        :rtype: int
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""<p>截止时间（毫秒时间戳）</p>
+        :rtype: int
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def Page(self):
+        r"""<p>当前页码（从1开始）</p>
+        :rtype: int
+        """
+        return self._Page
+
+    @Page.setter
+    def Page(self, Page):
+        self._Page = Page
+
+    @property
+    def PageSize(self):
+        r"""<p>每页数量</p>
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def Filters(self):
+        r"""<p>过滤条件列表</p>
+        :rtype: list of Filter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def SortFields(self):
+        r"""<p>排序字段列表</p>
+        :rtype: list of SortField
+        """
+        return self._SortFields
+
+    @SortFields.setter
+    def SortFields(self, SortFields):
+        self._SortFields = SortFields
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._Page = params.get("Page")
+        self._PageSize = params.get("PageSize")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        if params.get("SortFields") is not None:
+            self._SortFields = []
+            for item in params.get("SortFields"):
+                obj = SortField()
+                obj._deserialize(item)
+                self._SortFields.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetRayClusterPodsResponse(AbstractModel):
+    r"""GetRayClusterPods返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Total: <p>总记录数</p>
+        :type Total: int
+        :param _Page: <p>当前页码（从1开始）</p>
+        :type Page: int
+        :param _PageSize: <p>每页数量</p>
+        :type PageSize: int
+        :param _TotalPages: <p>总页数</p>
+        :type TotalPages: int
+        :param _Items: <p>集群的Pod列表</p>
+        :type Items: list of ClusterPod
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Total = None
+        self._Page = None
+        self._PageSize = None
+        self._TotalPages = None
+        self._Items = None
+        self._RequestId = None
+
+    @property
+    def Total(self):
+        r"""<p>总记录数</p>
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def Page(self):
+        r"""<p>当前页码（从1开始）</p>
+        :rtype: int
+        """
+        return self._Page
+
+    @Page.setter
+    def Page(self, Page):
+        self._Page = Page
+
+    @property
+    def PageSize(self):
+        r"""<p>每页数量</p>
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def TotalPages(self):
+        r"""<p>总页数</p>
+        :rtype: int
+        """
+        return self._TotalPages
+
+    @TotalPages.setter
+    def TotalPages(self, TotalPages):
+        self._TotalPages = TotalPages
+
+    @property
+    def Items(self):
+        r"""<p>集群的Pod列表</p>
+        :rtype: list of ClusterPod
+        """
+        return self._Items
+
+    @Items.setter
+    def Items(self, Items):
+        self._Items = Items
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Total = params.get("Total")
+        self._Page = params.get("Page")
+        self._PageSize = params.get("PageSize")
+        self._TotalPages = params.get("TotalPages")
+        if params.get("Items") is not None:
+            self._Items = []
+            for item in params.get("Items"):
+                obj = ClusterPod()
+                obj._deserialize(item)
+                self._Items.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class GetRayClusterRequest(AbstractModel):
+    r"""GetRayCluster请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: <p>集群ID</p>
+        :type Id: str
+        """
+        self._Id = None
+
+    @property
+    def Id(self):
+        r"""<p>集群ID</p>
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetRayClusterResponse(AbstractModel):
+    r"""GetRayCluster返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: <p>获取Ray集群详情请求</p>
+        :type Id: str
+        :param _Type: <p>资源类型：CLUSTER-普通集群；WORKSPACE-数据实验室（开发入口）</p>
+        :type Type: str
+        :param _Name: <p>集群名称</p>
+        :type Name: str
+        :param _Description: <p>集群描述</p>
+        :type Description: str
+        :param _ResourcePartitionId: <p>所属资源分区ID</p>
+        :type ResourcePartitionId: str
+        :param _ResourcePartitionName: <p>默认资源分区名称</p>
+        :type ResourcePartitionName: str
+        :param _Queue: <p>所属队列名称</p>
+        :type Queue: str
+        :param _AppId: <p>应用ID</p>
+        :type AppId: int
+        :param _Uin: <p>用户UIN</p>
+        :type Uin: str
+        :param _SubAccountUin: <p>子用户UIN</p>
+        :type SubAccountUin: str
+        :param _SubAccountName: <p>子用户名称（由聚合层通过 CAM 接口回填）</p>
+        :type SubAccountName: str
+        :param _Status: <p>集群状态</p>
+        :type Status: str
+        :param _StatusMessage: <p>状态详情/错误信息</p>
+        :type StatusMessage: str
+        :param _CreateTime: <p>创建时间</p>
+        :type CreateTime: int
+        :param _GroupId: <p>计算组 ID</p>
+        :type GroupId: str
+        :param _GroupName: <p>所属集群组名称</p>
+        :type GroupName: str
+        :param _ResourceConfig: <p>资源配置(JSON)</p>
+        :type ResourceConfig: str
+        :param _Image: <p>镜像地址</p>
+        :type Image: str
+        :param _Catalog: <p>存储卷和挂载卷配置(JSON)</p>
+        :type Catalog: str
+        :param _HistoryUrl: <p>Dashboard URL / 历史记录链接</p>
+        :type HistoryUrl: str
+        :param _ImagePullPolicy: <p>镜像拉取策略</p>
+        :type ImagePullPolicy: str
+        :param _ImagePullType: <p>镜像拉取类型（BuiltIn: 内置, Custom: 自定义-TCR, CustomCcr: 自定义-CCR）</p>
+        :type ImagePullType: str
+        :param _AdvancedOptions: <p>高级参数（规范化后的扁平 KV JSON）</p>
+        :type AdvancedOptions: str
+        :param _Priority: <p>优先级（1-9，数字越大优先级越高）</p>
+        :type Priority: int
+        :param _StartTime: <p>启动时间（最近一次启动）</p>
+        :type StartTime: int
+        :param _StopTime: <p>停止时间（最近一次停止/休眠）</p>
+        :type StopTime: int
+        :param _Tags: <p>标签列表（TagKey-TagValue）</p>
+        :type Tags: list of Tag
+        :param _ResourceConfigId: <p>资源配置ID</p>
+        :type ResourceConfigId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Id = None
+        self._Type = None
+        self._Name = None
+        self._Description = None
+        self._ResourcePartitionId = None
+        self._ResourcePartitionName = None
+        self._Queue = None
+        self._AppId = None
+        self._Uin = None
+        self._SubAccountUin = None
+        self._SubAccountName = None
+        self._Status = None
+        self._StatusMessage = None
+        self._CreateTime = None
+        self._GroupId = None
+        self._GroupName = None
+        self._ResourceConfig = None
+        self._Image = None
+        self._Catalog = None
+        self._HistoryUrl = None
+        self._ImagePullPolicy = None
+        self._ImagePullType = None
+        self._AdvancedOptions = None
+        self._Priority = None
+        self._StartTime = None
+        self._StopTime = None
+        self._Tags = None
+        self._ResourceConfigId = None
+        self._RequestId = None
+
+    @property
+    def Id(self):
+        r"""<p>获取Ray集群详情请求</p>
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Type(self):
+        r"""<p>资源类型：CLUSTER-普通集群；WORKSPACE-数据实验室（开发入口）</p>
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Name(self):
+        r"""<p>集群名称</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Description(self):
+        r"""<p>集群描述</p>
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def ResourcePartitionId(self):
+        r"""<p>所属资源分区ID</p>
+        :rtype: str
+        """
+        return self._ResourcePartitionId
+
+    @ResourcePartitionId.setter
+    def ResourcePartitionId(self, ResourcePartitionId):
+        self._ResourcePartitionId = ResourcePartitionId
+
+    @property
+    def ResourcePartitionName(self):
+        r"""<p>默认资源分区名称</p>
+        :rtype: str
+        """
+        return self._ResourcePartitionName
+
+    @ResourcePartitionName.setter
+    def ResourcePartitionName(self, ResourcePartitionName):
+        self._ResourcePartitionName = ResourcePartitionName
+
+    @property
+    def Queue(self):
+        r"""<p>所属队列名称</p>
+        :rtype: str
+        """
+        return self._Queue
+
+    @Queue.setter
+    def Queue(self, Queue):
+        self._Queue = Queue
+
+    @property
+    def AppId(self):
+        r"""<p>应用ID</p>
+        :rtype: int
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def Uin(self):
+        r"""<p>用户UIN</p>
+        :rtype: str
+        """
+        return self._Uin
+
+    @Uin.setter
+    def Uin(self, Uin):
+        self._Uin = Uin
+
+    @property
+    def SubAccountUin(self):
+        r"""<p>子用户UIN</p>
+        :rtype: str
+        """
+        return self._SubAccountUin
+
+    @SubAccountUin.setter
+    def SubAccountUin(self, SubAccountUin):
+        self._SubAccountUin = SubAccountUin
+
+    @property
+    def SubAccountName(self):
+        r"""<p>子用户名称（由聚合层通过 CAM 接口回填）</p>
+        :rtype: str
+        """
+        return self._SubAccountName
+
+    @SubAccountName.setter
+    def SubAccountName(self, SubAccountName):
+        self._SubAccountName = SubAccountName
+
+    @property
+    def Status(self):
+        r"""<p>集群状态</p>
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def StatusMessage(self):
+        r"""<p>状态详情/错误信息</p>
+        :rtype: str
+        """
+        return self._StatusMessage
+
+    @StatusMessage.setter
+    def StatusMessage(self, StatusMessage):
+        self._StatusMessage = StatusMessage
+
+    @property
+    def CreateTime(self):
+        r"""<p>创建时间</p>
+        :rtype: int
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def GroupId(self):
+        r"""<p>计算组 ID</p>
+        :rtype: str
+        """
+        return self._GroupId
+
+    @GroupId.setter
+    def GroupId(self, GroupId):
+        self._GroupId = GroupId
+
+    @property
+    def GroupName(self):
+        r"""<p>所属集群组名称</p>
+        :rtype: str
+        """
+        return self._GroupName
+
+    @GroupName.setter
+    def GroupName(self, GroupName):
+        self._GroupName = GroupName
+
+    @property
+    def ResourceConfig(self):
+        r"""<p>资源配置(JSON)</p>
+        :rtype: str
+        """
+        return self._ResourceConfig
+
+    @ResourceConfig.setter
+    def ResourceConfig(self, ResourceConfig):
+        self._ResourceConfig = ResourceConfig
+
+    @property
+    def Image(self):
+        r"""<p>镜像地址</p>
+        :rtype: str
+        """
+        return self._Image
+
+    @Image.setter
+    def Image(self, Image):
+        self._Image = Image
+
+    @property
+    def Catalog(self):
+        r"""<p>存储卷和挂载卷配置(JSON)</p>
+        :rtype: str
+        """
+        return self._Catalog
+
+    @Catalog.setter
+    def Catalog(self, Catalog):
+        self._Catalog = Catalog
+
+    @property
+    def HistoryUrl(self):
+        r"""<p>Dashboard URL / 历史记录链接</p>
+        :rtype: str
+        """
+        return self._HistoryUrl
+
+    @HistoryUrl.setter
+    def HistoryUrl(self, HistoryUrl):
+        self._HistoryUrl = HistoryUrl
+
+    @property
+    def ImagePullPolicy(self):
+        r"""<p>镜像拉取策略</p>
+        :rtype: str
+        """
+        return self._ImagePullPolicy
+
+    @ImagePullPolicy.setter
+    def ImagePullPolicy(self, ImagePullPolicy):
+        self._ImagePullPolicy = ImagePullPolicy
+
+    @property
+    def ImagePullType(self):
+        r"""<p>镜像拉取类型（BuiltIn: 内置, Custom: 自定义-TCR, CustomCcr: 自定义-CCR）</p>
+        :rtype: str
+        """
+        return self._ImagePullType
+
+    @ImagePullType.setter
+    def ImagePullType(self, ImagePullType):
+        self._ImagePullType = ImagePullType
+
+    @property
+    def AdvancedOptions(self):
+        r"""<p>高级参数（规范化后的扁平 KV JSON）</p>
+        :rtype: str
+        """
+        return self._AdvancedOptions
+
+    @AdvancedOptions.setter
+    def AdvancedOptions(self, AdvancedOptions):
+        self._AdvancedOptions = AdvancedOptions
+
+    @property
+    def Priority(self):
+        r"""<p>优先级（1-9，数字越大优先级越高）</p>
+        :rtype: int
+        """
+        return self._Priority
+
+    @Priority.setter
+    def Priority(self, Priority):
+        self._Priority = Priority
+
+    @property
+    def StartTime(self):
+        r"""<p>启动时间（最近一次启动）</p>
+        :rtype: int
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def StopTime(self):
+        r"""<p>停止时间（最近一次停止/休眠）</p>
+        :rtype: int
+        """
+        return self._StopTime
+
+    @StopTime.setter
+    def StopTime(self, StopTime):
+        self._StopTime = StopTime
+
+    @property
+    def Tags(self):
+        r"""<p>标签列表（TagKey-TagValue）</p>
+        :rtype: list of Tag
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def ResourceConfigId(self):
+        r"""<p>资源配置ID</p>
+        :rtype: str
+        """
+        return self._ResourceConfigId
+
+    @ResourceConfigId.setter
+    def ResourceConfigId(self, ResourceConfigId):
+        self._ResourceConfigId = ResourceConfigId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._Type = params.get("Type")
+        self._Name = params.get("Name")
+        self._Description = params.get("Description")
+        self._ResourcePartitionId = params.get("ResourcePartitionId")
+        self._ResourcePartitionName = params.get("ResourcePartitionName")
+        self._Queue = params.get("Queue")
+        self._AppId = params.get("AppId")
+        self._Uin = params.get("Uin")
+        self._SubAccountUin = params.get("SubAccountUin")
+        self._SubAccountName = params.get("SubAccountName")
+        self._Status = params.get("Status")
+        self._StatusMessage = params.get("StatusMessage")
+        self._CreateTime = params.get("CreateTime")
+        self._GroupId = params.get("GroupId")
+        self._GroupName = params.get("GroupName")
+        self._ResourceConfig = params.get("ResourceConfig")
+        self._Image = params.get("Image")
+        self._Catalog = params.get("Catalog")
+        self._HistoryUrl = params.get("HistoryUrl")
+        self._ImagePullPolicy = params.get("ImagePullPolicy")
+        self._ImagePullType = params.get("ImagePullType")
+        self._AdvancedOptions = params.get("AdvancedOptions")
+        self._Priority = params.get("Priority")
+        self._StartTime = params.get("StartTime")
+        self._StopTime = params.get("StopTime")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
+        self._ResourceConfigId = params.get("ResourceConfigId")
+        self._RequestId = params.get("RequestId")
+
+
+class GetRayClusterYamlRequest(AbstractModel):
+    r"""GetRayClusterYaml请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: <p>集群ID</p>
+        :type Id: str
+        """
+        self._Id = None
+
+    @property
+    def Id(self):
+        r"""<p>集群ID</p>
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetRayClusterYamlResponse(AbstractModel):
+    r"""GetRayClusterYaml返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Yaml: <p>RayCluster YAML</p>
+        :type Yaml: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Yaml = None
+        self._RequestId = None
+
+    @property
+    def Yaml(self):
+        r"""<p>RayCluster YAML</p>
+        :rtype: str
+        """
+        return self._Yaml
+
+    @Yaml.setter
+    def Yaml(self, Yaml):
+        self._Yaml = Yaml
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Yaml = params.get("Yaml")
+        self._RequestId = params.get("RequestId")
+
+
+class GetRayJobEventLogRequest(AbstractModel):
+    r"""GetRayJobEventLog请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: ray-jobID
+        :type Id: str
+        :param _StartTime: 开始时间
+        :type StartTime: int
+        :param _EndTime: 结束时间
+        :type EndTime: int
+        :param _Page: 当前页码（从1开始）
+        :type Page: int
+        :param _PageSize: 页数
+        :type PageSize: int
+        :param _SortFields: 排序字段列表（列表字段）
+        :type SortFields: list of SortField
+        """
+        self._Id = None
+        self._StartTime = None
+        self._EndTime = None
+        self._Page = None
+        self._PageSize = None
+        self._SortFields = None
+
+    @property
+    def Id(self):
+        r"""ray-jobID
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def StartTime(self):
+        r"""开始时间
+        :rtype: int
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""结束时间
+        :rtype: int
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def Page(self):
+        r"""当前页码（从1开始）
+        :rtype: int
+        """
+        return self._Page
+
+    @Page.setter
+    def Page(self, Page):
+        self._Page = Page
+
+    @property
+    def PageSize(self):
+        r"""页数
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def SortFields(self):
+        r"""排序字段列表（列表字段）
+        :rtype: list of SortField
+        """
+        return self._SortFields
+
+    @SortFields.setter
+    def SortFields(self, SortFields):
+        self._SortFields = SortFields
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._Page = params.get("Page")
+        self._PageSize = params.get("PageSize")
+        if params.get("SortFields") is not None:
+            self._SortFields = []
+            for item in params.get("SortFields"):
+                obj = SortField()
+                obj._deserialize(item)
+                self._SortFields.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetRayJobEventLogResponse(AbstractModel):
+    r"""GetRayJobEventLog返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 事件总数
+        :type TotalCount: int
+        :param _Events: 事件列表
+        :type Events: list of EventLogItem
+        :param _Page: 当前页码（从1开始）
+        :type Page: int
+        :param _PageSize: 页数
+        :type PageSize: int
+        :param _TotalPages: 总页数
+        :type TotalPages: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._Events = None
+        self._Page = None
+        self._PageSize = None
+        self._TotalPages = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        r"""事件总数
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def Events(self):
+        r"""事件列表
+        :rtype: list of EventLogItem
+        """
+        return self._Events
+
+    @Events.setter
+    def Events(self, Events):
+        self._Events = Events
+
+    @property
+    def Page(self):
+        r"""当前页码（从1开始）
+        :rtype: int
+        """
+        return self._Page
+
+    @Page.setter
+    def Page(self, Page):
+        self._Page = Page
+
+    @property
+    def PageSize(self):
+        r"""页数
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def TotalPages(self):
+        r"""总页数
+        :rtype: int
+        """
+        return self._TotalPages
+
+    @TotalPages.setter
+    def TotalPages(self, TotalPages):
+        self._TotalPages = TotalPages
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("Events") is not None:
+            self._Events = []
+            for item in params.get("Events"):
+                obj = EventLogItem()
+                obj._deserialize(item)
+                self._Events.append(obj)
+        self._Page = params.get("Page")
+        self._PageSize = params.get("PageSize")
+        self._TotalPages = params.get("TotalPages")
+        self._RequestId = params.get("RequestId")
+
+
+class GetRayJobEventRequest(AbstractModel):
+    r"""GetRayJobEvent请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: <p>ray-job ID</p>
+        :type Id: str
+        :param _StartTime: <p>开始时间（毫秒时间戳）</p>
+        :type StartTime: int
+        :param _EndTime: <p>结束时间（毫秒时间戳）</p>
+        :type EndTime: int
+        :param _SortFields: <p>排序字段列表</p>
+        :type SortFields: list of SortField
+        :param _Context: <p>翻页上下文，首次查询不传，后续翻页传入上一次返回的 Context 值</p>
+        :type Context: str
+        :param _PageSize: <p>分页大小</p>
+        :type PageSize: int
+        :param _EventType: <p>事件类型过滤，仅允许 ASCII 字母（如 Normal、Warning）</p>
+        :type EventType: str
+        """
+        self._Id = None
+        self._StartTime = None
+        self._EndTime = None
+        self._SortFields = None
+        self._Context = None
+        self._PageSize = None
+        self._EventType = None
+
+    @property
+    def Id(self):
+        r"""<p>ray-job ID</p>
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def StartTime(self):
+        r"""<p>开始时间（毫秒时间戳）</p>
+        :rtype: int
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""<p>结束时间（毫秒时间戳）</p>
+        :rtype: int
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def SortFields(self):
+        r"""<p>排序字段列表</p>
+        :rtype: list of SortField
+        """
+        return self._SortFields
+
+    @SortFields.setter
+    def SortFields(self, SortFields):
+        self._SortFields = SortFields
+
+    @property
+    def Context(self):
+        r"""<p>翻页上下文，首次查询不传，后续翻页传入上一次返回的 Context 值</p>
+        :rtype: str
+        """
+        return self._Context
+
+    @Context.setter
+    def Context(self, Context):
+        self._Context = Context
+
+    @property
+    def PageSize(self):
+        r"""<p>分页大小</p>
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def EventType(self):
+        r"""<p>事件类型过滤，仅允许 ASCII 字母（如 Normal、Warning）</p>
+        :rtype: str
+        """
+        return self._EventType
+
+    @EventType.setter
+    def EventType(self, EventType):
+        self._EventType = EventType
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        if params.get("SortFields") is not None:
+            self._SortFields = []
+            for item in params.get("SortFields"):
+                obj = SortField()
+                obj._deserialize(item)
+                self._SortFields.append(obj)
+        self._Context = params.get("Context")
+        self._PageSize = params.get("PageSize")
+        self._EventType = params.get("EventType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetRayJobEventResponse(AbstractModel):
+    r"""GetRayJobEvent返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Context: <p>翻页上下文，下一次分页请求时传入此值</p>
+        :type Context: str
+        :param _ListOver: <p>是否已经返回所有符合条件的日志，true 表示已全部返回</p>
+        :type ListOver: bool
+        :param _Events: <p>事件列表</p>
+        :type Events: list of RayJobEventItem
+        :param _StartTime: <p>事件开始时间</p><p>单位：毫秒</p>
+        :type StartTime: int
+        :param _EndTime: <p>事件结束时间</p><p>单位：毫秒</p>
+        :type EndTime: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Context = None
+        self._ListOver = None
+        self._Events = None
+        self._StartTime = None
+        self._EndTime = None
+        self._RequestId = None
+
+    @property
+    def Context(self):
+        r"""<p>翻页上下文，下一次分页请求时传入此值</p>
+        :rtype: str
+        """
+        return self._Context
+
+    @Context.setter
+    def Context(self, Context):
+        self._Context = Context
+
+    @property
+    def ListOver(self):
+        r"""<p>是否已经返回所有符合条件的日志，true 表示已全部返回</p>
+        :rtype: bool
+        """
+        return self._ListOver
+
+    @ListOver.setter
+    def ListOver(self, ListOver):
+        self._ListOver = ListOver
+
+    @property
+    def Events(self):
+        r"""<p>事件列表</p>
+        :rtype: list of RayJobEventItem
+        """
+        return self._Events
+
+    @Events.setter
+    def Events(self, Events):
+        self._Events = Events
+
+    @property
+    def StartTime(self):
+        r"""<p>事件开始时间</p><p>单位：毫秒</p>
+        :rtype: int
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""<p>事件结束时间</p><p>单位：毫秒</p>
+        :rtype: int
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Context = params.get("Context")
+        self._ListOver = params.get("ListOver")
+        if params.get("Events") is not None:
+            self._Events = []
+            for item in params.get("Events"):
+                obj = RayJobEventItem()
+                obj._deserialize(item)
+                self._Events.append(obj)
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._RequestId = params.get("RequestId")
+
+
+class GetRayJobHistoryRequest(AbstractModel):
+    r"""GetRayJobHistory请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: ray-jobID
+        :type Id: str
+        :param _Page: 当前页码（从1开始）
+        :type Page: int
+        :param _PageSize: 页数
+        :type PageSize: int
+        """
+        self._Id = None
+        self._Page = None
+        self._PageSize = None
+
+    @property
+    def Id(self):
+        r"""ray-jobID
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Page(self):
+        r"""当前页码（从1开始）
+        :rtype: int
+        """
+        return self._Page
+
+    @Page.setter
+    def Page(self, Page):
+        self._Page = Page
+
+    @property
+    def PageSize(self):
+        r"""页数
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._Page = params.get("Page")
+        self._PageSize = params.get("PageSize")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetRayJobHistoryResponse(AbstractModel):
+    r"""GetRayJobHistory返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Total: 总记录数
+        :type Total: int
+        :param _Page: 当前页码（从1开始）
+        :type Page: int
+        :param _PageSize: 页数
+        :type PageSize: int
+        :param _TotalPages: 总页数
+        :type TotalPages: int
+        :param _Items: 作业状态历史列表
+        :type Items: list of JobStatusHistory
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Total = None
+        self._Page = None
+        self._PageSize = None
+        self._TotalPages = None
+        self._Items = None
+        self._RequestId = None
+
+    @property
+    def Total(self):
+        r"""总记录数
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def Page(self):
+        r"""当前页码（从1开始）
+        :rtype: int
+        """
+        return self._Page
+
+    @Page.setter
+    def Page(self, Page):
+        self._Page = Page
+
+    @property
+    def PageSize(self):
+        r"""页数
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def TotalPages(self):
+        r"""总页数
+        :rtype: int
+        """
+        return self._TotalPages
+
+    @TotalPages.setter
+    def TotalPages(self, TotalPages):
+        self._TotalPages = TotalPages
+
+    @property
+    def Items(self):
+        r"""作业状态历史列表
+        :rtype: list of JobStatusHistory
+        """
+        return self._Items
+
+    @Items.setter
+    def Items(self, Items):
+        self._Items = Items
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Total = params.get("Total")
+        self._Page = params.get("Page")
+        self._PageSize = params.get("PageSize")
+        self._TotalPages = params.get("TotalPages")
+        if params.get("Items") is not None:
+            self._Items = []
+            for item in params.get("Items"):
+                obj = JobStatusHistory()
+                obj._deserialize(item)
+                self._Items.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class GetRayJobPodYamlRequest(AbstractModel):
+    r"""GetRayJobPodYaml请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: 任务ID
+        :type Id: str
+        :param _PodName: Pod名称
+        :type PodName: str
+        """
+        self._Id = None
+        self._PodName = None
+
+    @property
+    def Id(self):
+        r"""任务ID
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def PodName(self):
+        r"""Pod名称
+        :rtype: str
+        """
+        return self._PodName
+
+    @PodName.setter
+    def PodName(self, PodName):
+        self._PodName = PodName
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._PodName = params.get("PodName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetRayJobPodYamlResponse(AbstractModel):
+    r"""GetRayJobPodYaml返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Yaml: Pod Yaml
+        :type Yaml: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Yaml = None
+        self._RequestId = None
+
+    @property
+    def Yaml(self):
+        r"""Pod Yaml
+        :rtype: str
+        """
+        return self._Yaml
+
+    @Yaml.setter
+    def Yaml(self, Yaml):
+        self._Yaml = Yaml
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Yaml = params.get("Yaml")
+        self._RequestId = params.get("RequestId")
+
+
+class GetRayJobPodsRequest(AbstractModel):
+    r"""GetRayJobPods请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: 任务ID
+        :type Id: str
+        :param _Page: 当前页码（从1开始）
+        :type Page: int
+        :param _PageSize: 页数
+        :type PageSize: int
+        :param _StartTime: 提交时间起始过滤-时间戳（毫秒，可选
+        :type StartTime: int
+        :param _EndTime: 提交时间截止过滤-时间戳（毫秒，可选）
+        :type EndTime: int
+        :param _Filters: 过滤条件（列表名称）
+        :type Filters: list of Filter
+        :param _SortFields: 排序字段列表
+        :type SortFields: list of SortField
+        """
+        self._Id = None
+        self._Page = None
+        self._PageSize = None
+        self._StartTime = None
+        self._EndTime = None
+        self._Filters = None
+        self._SortFields = None
+
+    @property
+    def Id(self):
+        r"""任务ID
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Page(self):
+        r"""当前页码（从1开始）
+        :rtype: int
+        """
+        return self._Page
+
+    @Page.setter
+    def Page(self, Page):
+        self._Page = Page
+
+    @property
+    def PageSize(self):
+        r"""页数
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def StartTime(self):
+        r"""提交时间起始过滤-时间戳（毫秒，可选
+        :rtype: int
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""提交时间截止过滤-时间戳（毫秒，可选）
+        :rtype: int
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def Filters(self):
+        r"""过滤条件（列表名称）
+        :rtype: list of Filter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def SortFields(self):
+        r"""排序字段列表
+        :rtype: list of SortField
+        """
+        return self._SortFields
+
+    @SortFields.setter
+    def SortFields(self, SortFields):
+        self._SortFields = SortFields
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._Page = params.get("Page")
+        self._PageSize = params.get("PageSize")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        if params.get("SortFields") is not None:
+            self._SortFields = []
+            for item in params.get("SortFields"):
+                obj = SortField()
+                obj._deserialize(item)
+                self._SortFields.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetRayJobPodsResponse(AbstractModel):
+    r"""GetRayJobPods返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Total: 总记录数
+        :type Total: int
+        :param _Page: 当前页码（从1开始）
+        :type Page: int
+        :param _PageSize: 页数
+        :type PageSize: int
+        :param _TotalPages: 总页数
+        :type TotalPages: int
+        :param _Items: 作业pod列表
+        :type Items: list of JobPodEntity
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Total = None
+        self._Page = None
+        self._PageSize = None
+        self._TotalPages = None
+        self._Items = None
+        self._RequestId = None
+
+    @property
+    def Total(self):
+        r"""总记录数
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def Page(self):
+        r"""当前页码（从1开始）
+        :rtype: int
+        """
+        return self._Page
+
+    @Page.setter
+    def Page(self, Page):
+        self._Page = Page
+
+    @property
+    def PageSize(self):
+        r"""页数
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def TotalPages(self):
+        r"""总页数
+        :rtype: int
+        """
+        return self._TotalPages
+
+    @TotalPages.setter
+    def TotalPages(self, TotalPages):
+        self._TotalPages = TotalPages
+
+    @property
+    def Items(self):
+        r"""作业pod列表
+        :rtype: list of JobPodEntity
+        """
+        return self._Items
+
+    @Items.setter
+    def Items(self, Items):
+        self._Items = Items
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Total = params.get("Total")
+        self._Page = params.get("Page")
+        self._PageSize = params.get("PageSize")
+        self._TotalPages = params.get("TotalPages")
+        if params.get("Items") is not None:
+            self._Items = []
+            for item in params.get("Items"):
+                obj = JobPodEntity()
+                obj._deserialize(item)
+                self._Items.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class GetRayJobRequest(AbstractModel):
+    r"""GetRayJob请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: <p>任务ID</p>
+        :type Id: str
+        """
+        self._Id = None
+
+    @property
+    def Id(self):
+        r"""<p>任务ID</p>
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetRayJobResponse(AbstractModel):
+    r"""GetRayJob返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: <p>任务ID</p>
+        :type Id: str
+        :param _ResourcePartitionId: <p>所属资源分区ID</p>
+        :type ResourcePartitionId: str
+        :param _ResourcePartitionName: <p>默认资源分区名称</p>
+        :type ResourcePartitionName: str
+        :param _Queue: <p>所属队列名称</p>
+        :type Queue: str
+        :param _Status: <p>任务状态</p>
+        :type Status: str
+        :param _Entrypoint: <p>入口命令</p>
+        :type Entrypoint: str
+        :param _JobName: <p>任务名称</p>
+        :type JobName: str
+        :param _AppId: <p>应用ID</p>
+        :type AppId: int
+        :param _Uin: <p>用户主账号UIN</p>
+        :type Uin: str
+        :param _SubAccountUin: <p>创建账号</p>
+        :type SubAccountUin: str
+        :param _HistoryUrl: <p>历史记录链接</p>
+        :type HistoryUrl: str
+        :param _RunningTime: <p>运行时间(ms)</p>
+        :type RunningTime: int
+        :param _FinishTime: <p>完成时间</p>
+        :type FinishTime: int
+        :param _CreateTime: <p>创建时间</p>
+        :type CreateTime: int
+        :param _ErrorMessage: <p>失败原因/错误信息</p>
+        :type ErrorMessage: str
+        :param _RuntimeEnv: <p>运行时环境配置(JSON)</p>
+        :type RuntimeEnv: str
+        :param _Image: <p>镜像地址</p>
+        :type Image: str
+        :param _ResourceConfig: <p>资源配置(JSON)</p>
+        :type ResourceConfig: str
+        :param _Catalog: <p>存储卷和挂载卷配置(JSON)</p>
+        :type Catalog: str
+        :param _ImagePullPolicy: <p>镜像拉取策略</p>
+        :type ImagePullPolicy: str
+        :param _AutoscalerOptions: <p>弹性伸缩配置(JSON)</p>
+        :type AutoscalerOptions: str
+        :param _SpecId: <p>来源配置ID</p>
+        :type SpecId: str
+        :param _SpecName: <p>来源配置名称</p>
+        :type SpecName: str
+        :param _AdvancedOptions: <p>高级参数，JSON 字符串（透传到 Neutrino）</p>
+        :type AdvancedOptions: str
+        :param _Priority: <p>作业优先级（1-9，数字越大优先级越高）</p>
+        :type Priority: int
+        :param _Tags: <p>标签列表（TagKey-TagValue），用于将资源与腾讯云标签系统中的标签绑定</p>
+        :type Tags: list of Tag
+        :param _JobSource: <p>业务来源标识（调用上下文，长度上限 64，禁止控制字符）</p>
+        :type JobSource: str
+        :param _ClusterName: <p>集群名称</p>
+        :type ClusterName: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Id = None
+        self._ResourcePartitionId = None
+        self._ResourcePartitionName = None
+        self._Queue = None
+        self._Status = None
+        self._Entrypoint = None
+        self._JobName = None
+        self._AppId = None
+        self._Uin = None
+        self._SubAccountUin = None
+        self._HistoryUrl = None
+        self._RunningTime = None
+        self._FinishTime = None
+        self._CreateTime = None
+        self._ErrorMessage = None
+        self._RuntimeEnv = None
+        self._Image = None
+        self._ResourceConfig = None
+        self._Catalog = None
+        self._ImagePullPolicy = None
+        self._AutoscalerOptions = None
+        self._SpecId = None
+        self._SpecName = None
+        self._AdvancedOptions = None
+        self._Priority = None
+        self._Tags = None
+        self._JobSource = None
+        self._ClusterName = None
+        self._RequestId = None
+
+    @property
+    def Id(self):
+        r"""<p>任务ID</p>
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def ResourcePartitionId(self):
+        r"""<p>所属资源分区ID</p>
+        :rtype: str
+        """
+        return self._ResourcePartitionId
+
+    @ResourcePartitionId.setter
+    def ResourcePartitionId(self, ResourcePartitionId):
+        self._ResourcePartitionId = ResourcePartitionId
+
+    @property
+    def ResourcePartitionName(self):
+        r"""<p>默认资源分区名称</p>
+        :rtype: str
+        """
+        return self._ResourcePartitionName
+
+    @ResourcePartitionName.setter
+    def ResourcePartitionName(self, ResourcePartitionName):
+        self._ResourcePartitionName = ResourcePartitionName
+
+    @property
+    def Queue(self):
+        r"""<p>所属队列名称</p>
+        :rtype: str
+        """
+        return self._Queue
+
+    @Queue.setter
+    def Queue(self, Queue):
+        self._Queue = Queue
+
+    @property
+    def Status(self):
+        r"""<p>任务状态</p>
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Entrypoint(self):
+        r"""<p>入口命令</p>
+        :rtype: str
+        """
+        return self._Entrypoint
+
+    @Entrypoint.setter
+    def Entrypoint(self, Entrypoint):
+        self._Entrypoint = Entrypoint
+
+    @property
+    def JobName(self):
+        r"""<p>任务名称</p>
+        :rtype: str
+        """
+        return self._JobName
+
+    @JobName.setter
+    def JobName(self, JobName):
+        self._JobName = JobName
+
+    @property
+    def AppId(self):
+        r"""<p>应用ID</p>
+        :rtype: int
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def Uin(self):
+        r"""<p>用户主账号UIN</p>
+        :rtype: str
+        """
+        return self._Uin
+
+    @Uin.setter
+    def Uin(self, Uin):
+        self._Uin = Uin
+
+    @property
+    def SubAccountUin(self):
+        r"""<p>创建账号</p>
+        :rtype: str
+        """
+        return self._SubAccountUin
+
+    @SubAccountUin.setter
+    def SubAccountUin(self, SubAccountUin):
+        self._SubAccountUin = SubAccountUin
+
+    @property
+    def HistoryUrl(self):
+        r"""<p>历史记录链接</p>
+        :rtype: str
+        """
+        return self._HistoryUrl
+
+    @HistoryUrl.setter
+    def HistoryUrl(self, HistoryUrl):
+        self._HistoryUrl = HistoryUrl
+
+    @property
+    def RunningTime(self):
+        r"""<p>运行时间(ms)</p>
+        :rtype: int
+        """
+        return self._RunningTime
+
+    @RunningTime.setter
+    def RunningTime(self, RunningTime):
+        self._RunningTime = RunningTime
+
+    @property
+    def FinishTime(self):
+        r"""<p>完成时间</p>
+        :rtype: int
+        """
+        return self._FinishTime
+
+    @FinishTime.setter
+    def FinishTime(self, FinishTime):
+        self._FinishTime = FinishTime
+
+    @property
+    def CreateTime(self):
+        r"""<p>创建时间</p>
+        :rtype: int
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def ErrorMessage(self):
+        r"""<p>失败原因/错误信息</p>
+        :rtype: str
+        """
+        return self._ErrorMessage
+
+    @ErrorMessage.setter
+    def ErrorMessage(self, ErrorMessage):
+        self._ErrorMessage = ErrorMessage
+
+    @property
+    def RuntimeEnv(self):
+        r"""<p>运行时环境配置(JSON)</p>
+        :rtype: str
+        """
+        return self._RuntimeEnv
+
+    @RuntimeEnv.setter
+    def RuntimeEnv(self, RuntimeEnv):
+        self._RuntimeEnv = RuntimeEnv
+
+    @property
+    def Image(self):
+        r"""<p>镜像地址</p>
+        :rtype: str
+        """
+        return self._Image
+
+    @Image.setter
+    def Image(self, Image):
+        self._Image = Image
+
+    @property
+    def ResourceConfig(self):
+        r"""<p>资源配置(JSON)</p>
+        :rtype: str
+        """
+        return self._ResourceConfig
+
+    @ResourceConfig.setter
+    def ResourceConfig(self, ResourceConfig):
+        self._ResourceConfig = ResourceConfig
+
+    @property
+    def Catalog(self):
+        r"""<p>存储卷和挂载卷配置(JSON)</p>
+        :rtype: str
+        """
+        return self._Catalog
+
+    @Catalog.setter
+    def Catalog(self, Catalog):
+        self._Catalog = Catalog
+
+    @property
+    def ImagePullPolicy(self):
+        r"""<p>镜像拉取策略</p>
+        :rtype: str
+        """
+        return self._ImagePullPolicy
+
+    @ImagePullPolicy.setter
+    def ImagePullPolicy(self, ImagePullPolicy):
+        self._ImagePullPolicy = ImagePullPolicy
+
+    @property
+    def AutoscalerOptions(self):
+        r"""<p>弹性伸缩配置(JSON)</p>
+        :rtype: str
+        """
+        return self._AutoscalerOptions
+
+    @AutoscalerOptions.setter
+    def AutoscalerOptions(self, AutoscalerOptions):
+        self._AutoscalerOptions = AutoscalerOptions
+
+    @property
+    def SpecId(self):
+        r"""<p>来源配置ID</p>
+        :rtype: str
+        """
+        return self._SpecId
+
+    @SpecId.setter
+    def SpecId(self, SpecId):
+        self._SpecId = SpecId
+
+    @property
+    def SpecName(self):
+        r"""<p>来源配置名称</p>
+        :rtype: str
+        """
+        return self._SpecName
+
+    @SpecName.setter
+    def SpecName(self, SpecName):
+        self._SpecName = SpecName
+
+    @property
+    def AdvancedOptions(self):
+        r"""<p>高级参数，JSON 字符串（透传到 Neutrino）</p>
+        :rtype: str
+        """
+        return self._AdvancedOptions
+
+    @AdvancedOptions.setter
+    def AdvancedOptions(self, AdvancedOptions):
+        self._AdvancedOptions = AdvancedOptions
+
+    @property
+    def Priority(self):
+        r"""<p>作业优先级（1-9，数字越大优先级越高）</p>
+        :rtype: int
+        """
+        return self._Priority
+
+    @Priority.setter
+    def Priority(self, Priority):
+        self._Priority = Priority
+
+    @property
+    def Tags(self):
+        r"""<p>标签列表（TagKey-TagValue），用于将资源与腾讯云标签系统中的标签绑定</p>
+        :rtype: list of Tag
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def JobSource(self):
+        r"""<p>业务来源标识（调用上下文，长度上限 64，禁止控制字符）</p>
+        :rtype: str
+        """
+        return self._JobSource
+
+    @JobSource.setter
+    def JobSource(self, JobSource):
+        self._JobSource = JobSource
+
+    @property
+    def ClusterName(self):
+        r"""<p>集群名称</p>
+        :rtype: str
+        """
+        return self._ClusterName
+
+    @ClusterName.setter
+    def ClusterName(self, ClusterName):
+        self._ClusterName = ClusterName
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._ResourcePartitionId = params.get("ResourcePartitionId")
+        self._ResourcePartitionName = params.get("ResourcePartitionName")
+        self._Queue = params.get("Queue")
+        self._Status = params.get("Status")
+        self._Entrypoint = params.get("Entrypoint")
+        self._JobName = params.get("JobName")
+        self._AppId = params.get("AppId")
+        self._Uin = params.get("Uin")
+        self._SubAccountUin = params.get("SubAccountUin")
+        self._HistoryUrl = params.get("HistoryUrl")
+        self._RunningTime = params.get("RunningTime")
+        self._FinishTime = params.get("FinishTime")
+        self._CreateTime = params.get("CreateTime")
+        self._ErrorMessage = params.get("ErrorMessage")
+        self._RuntimeEnv = params.get("RuntimeEnv")
+        self._Image = params.get("Image")
+        self._ResourceConfig = params.get("ResourceConfig")
+        self._Catalog = params.get("Catalog")
+        self._ImagePullPolicy = params.get("ImagePullPolicy")
+        self._AutoscalerOptions = params.get("AutoscalerOptions")
+        self._SpecId = params.get("SpecId")
+        self._SpecName = params.get("SpecName")
+        self._AdvancedOptions = params.get("AdvancedOptions")
+        self._Priority = params.get("Priority")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
+        self._JobSource = params.get("JobSource")
+        self._ClusterName = params.get("ClusterName")
+        self._RequestId = params.get("RequestId")
+
+
+class GetRayJobYamlRequest(AbstractModel):
+    r"""GetRayJobYaml请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: 任务ID
+        :type Id: str
+        """
+        self._Id = None
+
+    @property
+    def Id(self):
+        r"""任务ID
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetRayJobYamlResponse(AbstractModel):
+    r"""GetRayJobYaml返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Yaml: RayJob YAML
+        :type Yaml: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Yaml = None
+        self._RequestId = None
+
+    @property
+    def Yaml(self):
+        r"""RayJob YAML
+        :rtype: str
+        """
+        return self._Yaml
+
+    @Yaml.setter
+    def Yaml(self, Yaml):
+        self._Yaml = Yaml
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Yaml = params.get("Yaml")
+        self._RequestId = params.get("RequestId")
+
+
+class GetResourceConfigRequest(AbstractModel):
+    r"""GetResourceConfig请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: 模板ID
+        :type Id: str
+        """
+        self._Id = None
+
+    @property
+    def Id(self):
+        r"""模板ID
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetResourceConfigResponse(AbstractModel):
+    r"""GetResourceConfig返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: 模板ID
+        :type Id: str
+        :param _Name: 模板名称
+        :type Name: str
+        :param _Description: 描述
+        :type Description: str
+        :param _Type: 模板类型
+        :type Type: str
+        :param _Head: Head节点配置
+        :type Head: :class:`tencentcloud.dlc.v20210125.models.HeadSpecDTO`
+        :param _Worker: Worker节点配置
+        :type Worker: list of WorkerSpecDTO
+        :param _CreateTime: 创建时间
+        :type CreateTime: int
+        :param _UpdateTime: 更新时间
+        :type UpdateTime: int
+        :param _AppId: 应用ID
+        :type AppId: int
+        :param _Uin: 创建者UIN
+        :type Uin: str
+        :param _SubAccountUin: 子用户UIN
+        :type SubAccountUin: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Id = None
+        self._Name = None
+        self._Description = None
+        self._Type = None
+        self._Head = None
+        self._Worker = None
+        self._CreateTime = None
+        self._UpdateTime = None
+        self._AppId = None
+        self._Uin = None
+        self._SubAccountUin = None
+        self._RequestId = None
+
+    @property
+    def Id(self):
+        r"""模板ID
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Name(self):
+        r"""模板名称
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Description(self):
+        r"""描述
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def Type(self):
+        r"""模板类型
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Head(self):
+        r"""Head节点配置
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.HeadSpecDTO`
+        """
+        return self._Head
+
+    @Head.setter
+    def Head(self, Head):
+        self._Head = Head
+
+    @property
+    def Worker(self):
+        r"""Worker节点配置
+        :rtype: list of WorkerSpecDTO
+        """
+        return self._Worker
+
+    @Worker.setter
+    def Worker(self, Worker):
+        self._Worker = Worker
+
+    @property
+    def CreateTime(self):
+        r"""创建时间
+        :rtype: int
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        r"""更新时间
+        :rtype: int
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def AppId(self):
+        r"""应用ID
+        :rtype: int
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def Uin(self):
+        r"""创建者UIN
+        :rtype: str
+        """
+        return self._Uin
+
+    @Uin.setter
+    def Uin(self, Uin):
+        self._Uin = Uin
+
+    @property
+    def SubAccountUin(self):
+        r"""子用户UIN
+        :rtype: str
+        """
+        return self._SubAccountUin
+
+    @SubAccountUin.setter
+    def SubAccountUin(self, SubAccountUin):
+        self._SubAccountUin = SubAccountUin
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._Name = params.get("Name")
+        self._Description = params.get("Description")
+        self._Type = params.get("Type")
+        if params.get("Head") is not None:
+            self._Head = HeadSpecDTO()
+            self._Head._deserialize(params.get("Head"))
+        if params.get("Worker") is not None:
+            self._Worker = []
+            for item in params.get("Worker"):
+                obj = WorkerSpecDTO()
+                obj._deserialize(item)
+                self._Worker.append(obj)
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
+        self._AppId = params.get("AppId")
+        self._Uin = params.get("Uin")
+        self._SubAccountUin = params.get("SubAccountUin")
         self._RequestId = params.get("RequestId")
 
 
@@ -30967,6 +42156,252 @@ class GroupInfo(AbstractModel):
     def _deserialize(self, params):
         self._WorkGroupId = params.get("WorkGroupId")
         self._StrategyType = params.get("StrategyType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class HeadSpecDTO(AbstractModel):
+    r"""head组规格
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: <p>head/worker名称</p>
+        :type Name: str
+        :param _PodCpu: <p>Pod CPU核数</p>
+        :type PodCpu: int
+        :param _PodMem: <p>Pod 内存大小</p>
+        :type PodMem: int
+        :param _GpuType: <p>GPU类型</p>
+        :type GpuType: str
+        :param _GpuNum: <p>GPU数量</p>
+        :type GpuNum: int
+        :param _Envs: <p>环境变量列表</p>
+        :type Envs: list of Env
+        :param _Labels: <p>标签列表</p>
+        :type Labels: list of Label
+        :param _ResourcesLabels: <p>资源标签列表（用于追加到 headGroupSpec/workerGroupSpec 的 resources map 中，对应 Ray/K8s 的自定义资源声明），Value 必须为字符串形式的整数</p>
+        :type ResourcesLabels: list of Label
+        :param _PodNum: <p>Pod数量</p>
+        :type PodNum: int
+        :param _HighAvailability: <p>是否支持高级可用</p>
+        :type HighAvailability: bool
+        :param _ResourceType: <p>资源类型,CPU,GPU</p>
+        :type ResourceType: str
+        :param _InstanceType: <p>机型</p>
+        :type InstanceType: str
+        :param _Spec: <p>规格数量</p>
+        :type Spec: int
+        :param _BillingItem: <p>资源ID(唯一)</p>
+        :type BillingItem: str
+        """
+        self._Name = None
+        self._PodCpu = None
+        self._PodMem = None
+        self._GpuType = None
+        self._GpuNum = None
+        self._Envs = None
+        self._Labels = None
+        self._ResourcesLabels = None
+        self._PodNum = None
+        self._HighAvailability = None
+        self._ResourceType = None
+        self._InstanceType = None
+        self._Spec = None
+        self._BillingItem = None
+
+    @property
+    def Name(self):
+        r"""<p>head/worker名称</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def PodCpu(self):
+        r"""<p>Pod CPU核数</p>
+        :rtype: int
+        """
+        return self._PodCpu
+
+    @PodCpu.setter
+    def PodCpu(self, PodCpu):
+        self._PodCpu = PodCpu
+
+    @property
+    def PodMem(self):
+        r"""<p>Pod 内存大小</p>
+        :rtype: int
+        """
+        return self._PodMem
+
+    @PodMem.setter
+    def PodMem(self, PodMem):
+        self._PodMem = PodMem
+
+    @property
+    def GpuType(self):
+        r"""<p>GPU类型</p>
+        :rtype: str
+        """
+        return self._GpuType
+
+    @GpuType.setter
+    def GpuType(self, GpuType):
+        self._GpuType = GpuType
+
+    @property
+    def GpuNum(self):
+        r"""<p>GPU数量</p>
+        :rtype: int
+        """
+        return self._GpuNum
+
+    @GpuNum.setter
+    def GpuNum(self, GpuNum):
+        self._GpuNum = GpuNum
+
+    @property
+    def Envs(self):
+        r"""<p>环境变量列表</p>
+        :rtype: list of Env
+        """
+        return self._Envs
+
+    @Envs.setter
+    def Envs(self, Envs):
+        self._Envs = Envs
+
+    @property
+    def Labels(self):
+        r"""<p>标签列表</p>
+        :rtype: list of Label
+        """
+        return self._Labels
+
+    @Labels.setter
+    def Labels(self, Labels):
+        self._Labels = Labels
+
+    @property
+    def ResourcesLabels(self):
+        r"""<p>资源标签列表（用于追加到 headGroupSpec/workerGroupSpec 的 resources map 中，对应 Ray/K8s 的自定义资源声明），Value 必须为字符串形式的整数</p>
+        :rtype: list of Label
+        """
+        return self._ResourcesLabels
+
+    @ResourcesLabels.setter
+    def ResourcesLabels(self, ResourcesLabels):
+        self._ResourcesLabels = ResourcesLabels
+
+    @property
+    def PodNum(self):
+        r"""<p>Pod数量</p>
+        :rtype: int
+        """
+        return self._PodNum
+
+    @PodNum.setter
+    def PodNum(self, PodNum):
+        self._PodNum = PodNum
+
+    @property
+    def HighAvailability(self):
+        r"""<p>是否支持高级可用</p>
+        :rtype: bool
+        """
+        return self._HighAvailability
+
+    @HighAvailability.setter
+    def HighAvailability(self, HighAvailability):
+        self._HighAvailability = HighAvailability
+
+    @property
+    def ResourceType(self):
+        r"""<p>资源类型,CPU,GPU</p>
+        :rtype: str
+        """
+        return self._ResourceType
+
+    @ResourceType.setter
+    def ResourceType(self, ResourceType):
+        self._ResourceType = ResourceType
+
+    @property
+    def InstanceType(self):
+        r"""<p>机型</p>
+        :rtype: str
+        """
+        return self._InstanceType
+
+    @InstanceType.setter
+    def InstanceType(self, InstanceType):
+        self._InstanceType = InstanceType
+
+    @property
+    def Spec(self):
+        r"""<p>规格数量</p>
+        :rtype: int
+        """
+        return self._Spec
+
+    @Spec.setter
+    def Spec(self, Spec):
+        self._Spec = Spec
+
+    @property
+    def BillingItem(self):
+        r"""<p>资源ID(唯一)</p>
+        :rtype: str
+        """
+        return self._BillingItem
+
+    @BillingItem.setter
+    def BillingItem(self, BillingItem):
+        self._BillingItem = BillingItem
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._PodCpu = params.get("PodCpu")
+        self._PodMem = params.get("PodMem")
+        self._GpuType = params.get("GpuType")
+        self._GpuNum = params.get("GpuNum")
+        if params.get("Envs") is not None:
+            self._Envs = []
+            for item in params.get("Envs"):
+                obj = Env()
+                obj._deserialize(item)
+                self._Envs.append(obj)
+        if params.get("Labels") is not None:
+            self._Labels = []
+            for item in params.get("Labels"):
+                obj = Label()
+                obj._deserialize(item)
+                self._Labels.append(obj)
+        if params.get("ResourcesLabels") is not None:
+            self._ResourcesLabels = []
+            for item in params.get("ResourcesLabels"):
+                obj = Label()
+                obj._deserialize(item)
+                self._ResourcesLabels.append(obj)
+        self._PodNum = params.get("PodNum")
+        self._HighAvailability = params.get("HighAvailability")
+        self._ResourceType = params.get("ResourceType")
+        self._InstanceType = params.get("InstanceType")
+        self._Spec = params.get("Spec")
+        self._BillingItem = params.get("BillingItem")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -31760,6 +43195,959 @@ class JobLogResult(AbstractModel):
         
 
 
+class JobPodEntity(AbstractModel):
+    r"""任务Pod信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PodName: Pod名称
+        :type PodName: str
+        :param _PodIp: Pod IP
+        :type PodIp: str
+        :param _Status: Pod状态
+        :type Status: str
+        :param _Phase: Pod阶段
+        :type Phase: str
+        :param _NodeName: 所属节点
+        :type NodeName: str
+        :param _NodeIp: 节点IP
+        :type NodeIp: str
+        :param _Namespace: 命名空间
+        :type Namespace: str
+        :param _CpuRequest: CPU请求
+        :type CpuRequest: str
+        :param _CpuLimit: CPU限制
+        :type CpuLimit: str
+        :param _MemoryRequest: 内存请求
+        :type MemoryRequest: str
+        :param _MemoryLimit: 内存限制
+        :type MemoryLimit: str
+        :param _GpuCount: GPU数量
+        :type GpuCount: str
+        :param _Image: 容器镜像
+        :type Image: str
+        :param _Role: Pod角色(head/worker)
+        :type Role: str
+        :param _CreateTime: 创建时间
+        :type CreateTime: int
+        :param _StartTime: 启动时间
+        :type StartTime: int
+        """
+        self._PodName = None
+        self._PodIp = None
+        self._Status = None
+        self._Phase = None
+        self._NodeName = None
+        self._NodeIp = None
+        self._Namespace = None
+        self._CpuRequest = None
+        self._CpuLimit = None
+        self._MemoryRequest = None
+        self._MemoryLimit = None
+        self._GpuCount = None
+        self._Image = None
+        self._Role = None
+        self._CreateTime = None
+        self._StartTime = None
+
+    @property
+    def PodName(self):
+        r"""Pod名称
+        :rtype: str
+        """
+        return self._PodName
+
+    @PodName.setter
+    def PodName(self, PodName):
+        self._PodName = PodName
+
+    @property
+    def PodIp(self):
+        r"""Pod IP
+        :rtype: str
+        """
+        return self._PodIp
+
+    @PodIp.setter
+    def PodIp(self, PodIp):
+        self._PodIp = PodIp
+
+    @property
+    def Status(self):
+        r"""Pod状态
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Phase(self):
+        r"""Pod阶段
+        :rtype: str
+        """
+        return self._Phase
+
+    @Phase.setter
+    def Phase(self, Phase):
+        self._Phase = Phase
+
+    @property
+    def NodeName(self):
+        r"""所属节点
+        :rtype: str
+        """
+        return self._NodeName
+
+    @NodeName.setter
+    def NodeName(self, NodeName):
+        self._NodeName = NodeName
+
+    @property
+    def NodeIp(self):
+        r"""节点IP
+        :rtype: str
+        """
+        return self._NodeIp
+
+    @NodeIp.setter
+    def NodeIp(self, NodeIp):
+        self._NodeIp = NodeIp
+
+    @property
+    def Namespace(self):
+        r"""命名空间
+        :rtype: str
+        """
+        return self._Namespace
+
+    @Namespace.setter
+    def Namespace(self, Namespace):
+        self._Namespace = Namespace
+
+    @property
+    def CpuRequest(self):
+        r"""CPU请求
+        :rtype: str
+        """
+        return self._CpuRequest
+
+    @CpuRequest.setter
+    def CpuRequest(self, CpuRequest):
+        self._CpuRequest = CpuRequest
+
+    @property
+    def CpuLimit(self):
+        r"""CPU限制
+        :rtype: str
+        """
+        return self._CpuLimit
+
+    @CpuLimit.setter
+    def CpuLimit(self, CpuLimit):
+        self._CpuLimit = CpuLimit
+
+    @property
+    def MemoryRequest(self):
+        r"""内存请求
+        :rtype: str
+        """
+        return self._MemoryRequest
+
+    @MemoryRequest.setter
+    def MemoryRequest(self, MemoryRequest):
+        self._MemoryRequest = MemoryRequest
+
+    @property
+    def MemoryLimit(self):
+        r"""内存限制
+        :rtype: str
+        """
+        return self._MemoryLimit
+
+    @MemoryLimit.setter
+    def MemoryLimit(self, MemoryLimit):
+        self._MemoryLimit = MemoryLimit
+
+    @property
+    def GpuCount(self):
+        r"""GPU数量
+        :rtype: str
+        """
+        return self._GpuCount
+
+    @GpuCount.setter
+    def GpuCount(self, GpuCount):
+        self._GpuCount = GpuCount
+
+    @property
+    def Image(self):
+        r"""容器镜像
+        :rtype: str
+        """
+        return self._Image
+
+    @Image.setter
+    def Image(self, Image):
+        self._Image = Image
+
+    @property
+    def Role(self):
+        r"""Pod角色(head/worker)
+        :rtype: str
+        """
+        return self._Role
+
+    @Role.setter
+    def Role(self, Role):
+        self._Role = Role
+
+    @property
+    def CreateTime(self):
+        r"""创建时间
+        :rtype: int
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def StartTime(self):
+        r"""启动时间
+        :rtype: int
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+
+    def _deserialize(self, params):
+        self._PodName = params.get("PodName")
+        self._PodIp = params.get("PodIp")
+        self._Status = params.get("Status")
+        self._Phase = params.get("Phase")
+        self._NodeName = params.get("NodeName")
+        self._NodeIp = params.get("NodeIp")
+        self._Namespace = params.get("Namespace")
+        self._CpuRequest = params.get("CpuRequest")
+        self._CpuLimit = params.get("CpuLimit")
+        self._MemoryRequest = params.get("MemoryRequest")
+        self._MemoryLimit = params.get("MemoryLimit")
+        self._GpuCount = params.get("GpuCount")
+        self._Image = params.get("Image")
+        self._Role = params.get("Role")
+        self._CreateTime = params.get("CreateTime")
+        self._StartTime = params.get("StartTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class JobSpec(AbstractModel):
+    r"""作业配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: <p>配置ID</p>
+        :type Id: str
+        :param _Name: <p>配置名称</p>
+        :type Name: str
+        :param _Description: <p>配置描述</p>
+        :type Description: str
+        :param _Entrypoint: <p>入口命令</p>
+        :type Entrypoint: str
+        :param _Image: <p>镜像地址</p>
+        :type Image: str
+        :param _ImagePullType: <p>镜像拉取类型（Builtin: 内置, Custom: 自定义）</p>
+        :type ImagePullType: str
+        :param _ImagePullPolicy: <p>镜像拉取策略</p>
+        :type ImagePullPolicy: str
+        :param _ResourceConfig: <p>资源配置(JSON)</p>
+        :type ResourceConfig: str
+        :param _RuntimeEnv: <p>运行时环境配置(JSON)</p>
+        :type RuntimeEnv: str
+        :param _Catalog: <p>存储卷和挂载卷配置(JSON)</p>
+        :type Catalog: str
+        :param _AutoscalerOptions: <p>弹性伸缩配置(JSON)</p>
+        :type AutoscalerOptions: str
+        :param _ResourceConfigId: <p>ResourceConfigId</p>
+        :type ResourceConfigId: str
+        :param _ResourceConfigChanged: <p>资源配置模板是否变更</p>
+        :type ResourceConfigChanged: bool
+        :param _ResourcePartitionId: <p>默认资源分区ID</p>
+        :type ResourcePartitionId: str
+        :param _ResourcePartitionName: <p>默认资源分区名称</p>
+        :type ResourcePartitionName: str
+        :param _Queue: <p>默认队列名称</p>
+        :type Queue: str
+        :param _GroupId: <p>集群组Id</p>
+        :type GroupId: str
+        :param _ClusterId: <p>集群id</p>
+        :type ClusterId: str
+        :param _ClusterGroup: <p>默认计算组名称</p>
+        :type ClusterGroup: str
+        :param _JobPackage: <p>作业包URL</p>
+        :type JobPackage: str
+        :param _JobPackageName: <p>作业包名称</p>
+        :type JobPackageName: str
+        :param _Priority: <p>优先级</p>
+        :type Priority: int
+        :param _AppId: <p>应用ID</p>
+        :type AppId: int
+        :param _Uin: <p>创建者UIN</p>
+        :type Uin: str
+        :param _SubAccountUin: <p>子用户UIN</p>
+        :type SubAccountUin: str
+        :param _CreateTime: <p>创建时间</p>
+        :type CreateTime: int
+        :param _UpdateTime: <p>更新时间</p>
+        :type UpdateTime: int
+        :param _JobInstanceCount: <p>该配置产生的作业实例数量</p>
+        :type JobInstanceCount: int
+        :param _HasRunningJobs: <p>是否有运行中的作业实例</p>
+        :type HasRunningJobs: bool
+        :param _AdvancedOptions: <p>高级参数，JSON 字符串</p>
+        :type AdvancedOptions: str
+        :param _Tags: <p>标签列表（TagKey-TagValue），用于将资源与腾讯云标签系统中的标签绑定</p>
+        :type Tags: list of Tag
+        :param _DispatchStrategy: <p>集群分派策略</p>
+        :type DispatchStrategy: str
+        :param _SubmissionTarget: <p>作业提交目标：GROUP（按计算组分派）/ CLUSTER（指定集群）/ SERVERLESS（按 Serverless 拉起）</p>
+        :type SubmissionTarget: str
+        :param _GroupName: <p>集群组名称</p>
+        :type GroupName: str
+        :param _ClusterName: <p>集群名称</p>
+        :type ClusterName: str
+        """
+        self._Id = None
+        self._Name = None
+        self._Description = None
+        self._Entrypoint = None
+        self._Image = None
+        self._ImagePullType = None
+        self._ImagePullPolicy = None
+        self._ResourceConfig = None
+        self._RuntimeEnv = None
+        self._Catalog = None
+        self._AutoscalerOptions = None
+        self._ResourceConfigId = None
+        self._ResourceConfigChanged = None
+        self._ResourcePartitionId = None
+        self._ResourcePartitionName = None
+        self._Queue = None
+        self._GroupId = None
+        self._ClusterId = None
+        self._ClusterGroup = None
+        self._JobPackage = None
+        self._JobPackageName = None
+        self._Priority = None
+        self._AppId = None
+        self._Uin = None
+        self._SubAccountUin = None
+        self._CreateTime = None
+        self._UpdateTime = None
+        self._JobInstanceCount = None
+        self._HasRunningJobs = None
+        self._AdvancedOptions = None
+        self._Tags = None
+        self._DispatchStrategy = None
+        self._SubmissionTarget = None
+        self._GroupName = None
+        self._ClusterName = None
+
+    @property
+    def Id(self):
+        r"""<p>配置ID</p>
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Name(self):
+        r"""<p>配置名称</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Description(self):
+        r"""<p>配置描述</p>
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def Entrypoint(self):
+        r"""<p>入口命令</p>
+        :rtype: str
+        """
+        return self._Entrypoint
+
+    @Entrypoint.setter
+    def Entrypoint(self, Entrypoint):
+        self._Entrypoint = Entrypoint
+
+    @property
+    def Image(self):
+        r"""<p>镜像地址</p>
+        :rtype: str
+        """
+        return self._Image
+
+    @Image.setter
+    def Image(self, Image):
+        self._Image = Image
+
+    @property
+    def ImagePullType(self):
+        r"""<p>镜像拉取类型（Builtin: 内置, Custom: 自定义）</p>
+        :rtype: str
+        """
+        return self._ImagePullType
+
+    @ImagePullType.setter
+    def ImagePullType(self, ImagePullType):
+        self._ImagePullType = ImagePullType
+
+    @property
+    def ImagePullPolicy(self):
+        r"""<p>镜像拉取策略</p>
+        :rtype: str
+        """
+        return self._ImagePullPolicy
+
+    @ImagePullPolicy.setter
+    def ImagePullPolicy(self, ImagePullPolicy):
+        self._ImagePullPolicy = ImagePullPolicy
+
+    @property
+    def ResourceConfig(self):
+        r"""<p>资源配置(JSON)</p>
+        :rtype: str
+        """
+        return self._ResourceConfig
+
+    @ResourceConfig.setter
+    def ResourceConfig(self, ResourceConfig):
+        self._ResourceConfig = ResourceConfig
+
+    @property
+    def RuntimeEnv(self):
+        r"""<p>运行时环境配置(JSON)</p>
+        :rtype: str
+        """
+        return self._RuntimeEnv
+
+    @RuntimeEnv.setter
+    def RuntimeEnv(self, RuntimeEnv):
+        self._RuntimeEnv = RuntimeEnv
+
+    @property
+    def Catalog(self):
+        r"""<p>存储卷和挂载卷配置(JSON)</p>
+        :rtype: str
+        """
+        return self._Catalog
+
+    @Catalog.setter
+    def Catalog(self, Catalog):
+        self._Catalog = Catalog
+
+    @property
+    def AutoscalerOptions(self):
+        r"""<p>弹性伸缩配置(JSON)</p>
+        :rtype: str
+        """
+        return self._AutoscalerOptions
+
+    @AutoscalerOptions.setter
+    def AutoscalerOptions(self, AutoscalerOptions):
+        self._AutoscalerOptions = AutoscalerOptions
+
+    @property
+    def ResourceConfigId(self):
+        r"""<p>ResourceConfigId</p>
+        :rtype: str
+        """
+        return self._ResourceConfigId
+
+    @ResourceConfigId.setter
+    def ResourceConfigId(self, ResourceConfigId):
+        self._ResourceConfigId = ResourceConfigId
+
+    @property
+    def ResourceConfigChanged(self):
+        r"""<p>资源配置模板是否变更</p>
+        :rtype: bool
+        """
+        return self._ResourceConfigChanged
+
+    @ResourceConfigChanged.setter
+    def ResourceConfigChanged(self, ResourceConfigChanged):
+        self._ResourceConfigChanged = ResourceConfigChanged
+
+    @property
+    def ResourcePartitionId(self):
+        r"""<p>默认资源分区ID</p>
+        :rtype: str
+        """
+        return self._ResourcePartitionId
+
+    @ResourcePartitionId.setter
+    def ResourcePartitionId(self, ResourcePartitionId):
+        self._ResourcePartitionId = ResourcePartitionId
+
+    @property
+    def ResourcePartitionName(self):
+        r"""<p>默认资源分区名称</p>
+        :rtype: str
+        """
+        return self._ResourcePartitionName
+
+    @ResourcePartitionName.setter
+    def ResourcePartitionName(self, ResourcePartitionName):
+        self._ResourcePartitionName = ResourcePartitionName
+
+    @property
+    def Queue(self):
+        r"""<p>默认队列名称</p>
+        :rtype: str
+        """
+        return self._Queue
+
+    @Queue.setter
+    def Queue(self, Queue):
+        self._Queue = Queue
+
+    @property
+    def GroupId(self):
+        r"""<p>集群组Id</p>
+        :rtype: str
+        """
+        return self._GroupId
+
+    @GroupId.setter
+    def GroupId(self, GroupId):
+        self._GroupId = GroupId
+
+    @property
+    def ClusterId(self):
+        r"""<p>集群id</p>
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def ClusterGroup(self):
+        r"""<p>默认计算组名称</p>
+        :rtype: str
+        """
+        return self._ClusterGroup
+
+    @ClusterGroup.setter
+    def ClusterGroup(self, ClusterGroup):
+        self._ClusterGroup = ClusterGroup
+
+    @property
+    def JobPackage(self):
+        r"""<p>作业包URL</p>
+        :rtype: str
+        """
+        return self._JobPackage
+
+    @JobPackage.setter
+    def JobPackage(self, JobPackage):
+        self._JobPackage = JobPackage
+
+    @property
+    def JobPackageName(self):
+        r"""<p>作业包名称</p>
+        :rtype: str
+        """
+        return self._JobPackageName
+
+    @JobPackageName.setter
+    def JobPackageName(self, JobPackageName):
+        self._JobPackageName = JobPackageName
+
+    @property
+    def Priority(self):
+        r"""<p>优先级</p>
+        :rtype: int
+        """
+        return self._Priority
+
+    @Priority.setter
+    def Priority(self, Priority):
+        self._Priority = Priority
+
+    @property
+    def AppId(self):
+        r"""<p>应用ID</p>
+        :rtype: int
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def Uin(self):
+        r"""<p>创建者UIN</p>
+        :rtype: str
+        """
+        return self._Uin
+
+    @Uin.setter
+    def Uin(self, Uin):
+        self._Uin = Uin
+
+    @property
+    def SubAccountUin(self):
+        r"""<p>子用户UIN</p>
+        :rtype: str
+        """
+        return self._SubAccountUin
+
+    @SubAccountUin.setter
+    def SubAccountUin(self, SubAccountUin):
+        self._SubAccountUin = SubAccountUin
+
+    @property
+    def CreateTime(self):
+        r"""<p>创建时间</p>
+        :rtype: int
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        r"""<p>更新时间</p>
+        :rtype: int
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def JobInstanceCount(self):
+        r"""<p>该配置产生的作业实例数量</p>
+        :rtype: int
+        """
+        return self._JobInstanceCount
+
+    @JobInstanceCount.setter
+    def JobInstanceCount(self, JobInstanceCount):
+        self._JobInstanceCount = JobInstanceCount
+
+    @property
+    def HasRunningJobs(self):
+        r"""<p>是否有运行中的作业实例</p>
+        :rtype: bool
+        """
+        return self._HasRunningJobs
+
+    @HasRunningJobs.setter
+    def HasRunningJobs(self, HasRunningJobs):
+        self._HasRunningJobs = HasRunningJobs
+
+    @property
+    def AdvancedOptions(self):
+        r"""<p>高级参数，JSON 字符串</p>
+        :rtype: str
+        """
+        return self._AdvancedOptions
+
+    @AdvancedOptions.setter
+    def AdvancedOptions(self, AdvancedOptions):
+        self._AdvancedOptions = AdvancedOptions
+
+    @property
+    def Tags(self):
+        r"""<p>标签列表（TagKey-TagValue），用于将资源与腾讯云标签系统中的标签绑定</p>
+        :rtype: list of Tag
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def DispatchStrategy(self):
+        r"""<p>集群分派策略</p>
+        :rtype: str
+        """
+        return self._DispatchStrategy
+
+    @DispatchStrategy.setter
+    def DispatchStrategy(self, DispatchStrategy):
+        self._DispatchStrategy = DispatchStrategy
+
+    @property
+    def SubmissionTarget(self):
+        r"""<p>作业提交目标：GROUP（按计算组分派）/ CLUSTER（指定集群）/ SERVERLESS（按 Serverless 拉起）</p>
+        :rtype: str
+        """
+        return self._SubmissionTarget
+
+    @SubmissionTarget.setter
+    def SubmissionTarget(self, SubmissionTarget):
+        self._SubmissionTarget = SubmissionTarget
+
+    @property
+    def GroupName(self):
+        r"""<p>集群组名称</p>
+        :rtype: str
+        """
+        return self._GroupName
+
+    @GroupName.setter
+    def GroupName(self, GroupName):
+        self._GroupName = GroupName
+
+    @property
+    def ClusterName(self):
+        r"""<p>集群名称</p>
+        :rtype: str
+        """
+        return self._ClusterName
+
+    @ClusterName.setter
+    def ClusterName(self, ClusterName):
+        self._ClusterName = ClusterName
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._Name = params.get("Name")
+        self._Description = params.get("Description")
+        self._Entrypoint = params.get("Entrypoint")
+        self._Image = params.get("Image")
+        self._ImagePullType = params.get("ImagePullType")
+        self._ImagePullPolicy = params.get("ImagePullPolicy")
+        self._ResourceConfig = params.get("ResourceConfig")
+        self._RuntimeEnv = params.get("RuntimeEnv")
+        self._Catalog = params.get("Catalog")
+        self._AutoscalerOptions = params.get("AutoscalerOptions")
+        self._ResourceConfigId = params.get("ResourceConfigId")
+        self._ResourceConfigChanged = params.get("ResourceConfigChanged")
+        self._ResourcePartitionId = params.get("ResourcePartitionId")
+        self._ResourcePartitionName = params.get("ResourcePartitionName")
+        self._Queue = params.get("Queue")
+        self._GroupId = params.get("GroupId")
+        self._ClusterId = params.get("ClusterId")
+        self._ClusterGroup = params.get("ClusterGroup")
+        self._JobPackage = params.get("JobPackage")
+        self._JobPackageName = params.get("JobPackageName")
+        self._Priority = params.get("Priority")
+        self._AppId = params.get("AppId")
+        self._Uin = params.get("Uin")
+        self._SubAccountUin = params.get("SubAccountUin")
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
+        self._JobInstanceCount = params.get("JobInstanceCount")
+        self._HasRunningJobs = params.get("HasRunningJobs")
+        self._AdvancedOptions = params.get("AdvancedOptions")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
+        self._DispatchStrategy = params.get("DispatchStrategy")
+        self._SubmissionTarget = params.get("SubmissionTarget")
+        self._GroupName = params.get("GroupName")
+        self._ClusterName = params.get("ClusterName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class JobStatusHistory(AbstractModel):
+    r"""任务状态历史记录
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: 历史记录ID
+        :type Id: int
+        :param _JobId: 作业ID
+        :type JobId: str
+        :param _JobName: 作业名称
+        :type JobName: str
+        :param _FromState: 源状态
+        :type FromState: str
+        :param _ToState: 目标状态
+        :type ToState: str
+        :param _Event: 触发事件
+        :type Event: str
+        :param _Message: 消息
+        :type Message: str
+        :param _TransitionTime: 转换时间（毫秒时间戳）
+        :type TransitionTime: int
+        """
+        self._Id = None
+        self._JobId = None
+        self._JobName = None
+        self._FromState = None
+        self._ToState = None
+        self._Event = None
+        self._Message = None
+        self._TransitionTime = None
+
+    @property
+    def Id(self):
+        r"""历史记录ID
+        :rtype: int
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def JobId(self):
+        r"""作业ID
+        :rtype: str
+        """
+        return self._JobId
+
+    @JobId.setter
+    def JobId(self, JobId):
+        self._JobId = JobId
+
+    @property
+    def JobName(self):
+        r"""作业名称
+        :rtype: str
+        """
+        return self._JobName
+
+    @JobName.setter
+    def JobName(self, JobName):
+        self._JobName = JobName
+
+    @property
+    def FromState(self):
+        r"""源状态
+        :rtype: str
+        """
+        return self._FromState
+
+    @FromState.setter
+    def FromState(self, FromState):
+        self._FromState = FromState
+
+    @property
+    def ToState(self):
+        r"""目标状态
+        :rtype: str
+        """
+        return self._ToState
+
+    @ToState.setter
+    def ToState(self, ToState):
+        self._ToState = ToState
+
+    @property
+    def Event(self):
+        r"""触发事件
+        :rtype: str
+        """
+        return self._Event
+
+    @Event.setter
+    def Event(self, Event):
+        self._Event = Event
+
+    @property
+    def Message(self):
+        r"""消息
+        :rtype: str
+        """
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+    @property
+    def TransitionTime(self):
+        r"""转换时间（毫秒时间戳）
+        :rtype: int
+        """
+        return self._TransitionTime
+
+    @TransitionTime.setter
+    def TransitionTime(self, TransitionTime):
+        self._TransitionTime = TransitionTime
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._JobId = params.get("JobId")
+        self._JobName = params.get("JobName")
+        self._FromState = params.get("FromState")
+        self._ToState = params.get("ToState")
+        self._Event = params.get("Event")
+        self._Message = params.get("Message")
+        self._TransitionTime = params.get("TransitionTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class KVPair(AbstractModel):
     r"""配置格式
 
@@ -31920,6 +44308,677 @@ class KerberosInfo(AbstractModel):
         self._Krb5Conf = params.get("Krb5Conf")
         self._KeyTab = params.get("KeyTab")
         self._ServicePrincipal = params.get("ServicePrincipal")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class LabResponse(AbstractModel):
+    r"""数据实验室
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ExampleId: <p>案例模板ID（startMode=EXAMPLE 时使用）</p>
+        :type ExampleId: str
+        :param _CodeArchiveUrl: <p>代码包/工程归档地址</p>
+        :type CodeArchiveUrl: str
+        :param _Services: <p>数据实验室服务入口（服务类型 -&gt; 访问地址）</p>
+        :type Services: list of TypeKVPair
+        :param _LabImage: <p>Lab 镜像地址（必填，用于开发工具如 Jupyter/VSCode/WebShell）。前端在&quot;内置 / 自定义&quot;两态中选择此值；当 Image 字段未显式传入时，后端会基于该字段按 R1（镜像表命中）/R2（同值 fallback）派生 Ray 集群镜像。</p>
+        :type LabImage: str
+        :param _LabImagePullPolicy: <p>Lab sidecar 镜像拉取策略（Always, IfNotPresent, Never）</p>
+        :type LabImagePullPolicy: str
+        :param _LabImagePullType: <p>Lab sidecar 镜像拉取类型（BuiltIn: 内置, Custom: 自定义-TCR, CustomCcr: 自定义-CCR）</p>
+        :type LabImagePullType: str
+        :param _Id: <p>集群ID</p>
+        :type Id: str
+        :param _Type: <p>资源类型：CLUSTER-普通集群；WORKSPACE-数据实验室（开发入口）</p>
+        :type Type: str
+        :param _Name: <p>集群名称</p>
+        :type Name: str
+        :param _Description: <p>集群描述</p>
+        :type Description: str
+        :param _ResourcePartitionId: <p>所属资源分区ID</p>
+        :type ResourcePartitionId: str
+        :param _ResourcePartitionName: <p>默认资源分区名称</p>
+        :type ResourcePartitionName: str
+        :param _Queue: <p>所属队列名称</p>
+        :type Queue: str
+        :param _AppId: <p>应用ID</p>
+        :type AppId: int
+        :param _Uin: <p>用户UIN</p>
+        :type Uin: str
+        :param _SubAccountUin: <p>子用户UIN</p>
+        :type SubAccountUin: str
+        :param _SubAccountName: <p>子用户名称（由聚合层通过 CAM 接口回填）</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SubAccountName: str
+        :param _Status: <p>集群状态</p>
+        :type Status: str
+        :param _StatusMessage: <p>状态详情/错误信息</p>
+        :type StatusMessage: str
+        :param _CreateTime: <p>创建时间</p>
+        :type CreateTime: int
+        :param _GroupName: <p>所属集群组名称</p>
+        :type GroupName: str
+        :param _GroupId: <p>计算组 ID</p>
+        :type GroupId: str
+        :param _ResourceConfig: <p>资源配置(JSON)</p>
+        :type ResourceConfig: str
+        :param _ResourceConfigId: <p>资源配置ID</p>
+        :type ResourceConfigId: str
+        :param _RuntimeEnv: <p>运行时环境配置(JSON)</p>
+        :type RuntimeEnv: str
+        :param _Image: <p>Ray 集群镜像地址（可选，OpenAPI/SDK 高级控制入口）。前端不再传递此字段；为空时后端按 R1（镜像表查询命中）→ R2（同值 fallback）顺序自动派生。非空时直接作为 Ray 集群镜像，跳过派生（EXPLICIT），且后端不校验其与 LabImage 的兼容性。</p>
+        :type Image: str
+        :param _Catalog: <p>存储卷和挂载卷配置(JSON)</p>
+        :type Catalog: str
+        :param _HistoryUrl: <p>Dashboard URL / 历史记录链接</p>
+        :type HistoryUrl: str
+        :param _ImagePullPolicy: <p>镜像拉取策略</p>
+        :type ImagePullPolicy: str
+        :param _ImagePullType: <p>镜像拉取类型（BuiltIn: 内置, Custom: 自定义-TCR, CustomCcr: 自定义-CCR）</p>
+        :type ImagePullType: str
+        :param _AdvancedOptions: <p>高级参数（扁平 Key-Value 的 JSON 字符串），Key 以 spec. 开头，按 RayCluster CRD 下钻；详见 ADVANCED_CLUSTER_OPTIONS_DESIGN.md</p>
+        :type AdvancedOptions: str
+        :param _Priority: <p>优先级（1-9，数字越大优先级越高）</p>
+        :type Priority: int
+        :param _StartTime: <p>启动时间（最近一次启动）</p>
+        :type StartTime: int
+        :param _StopTime: <p>停止时间（最近一次停止/休眠）</p>
+        :type StopTime: int
+        :param _DeleteTime: <p>删除时间</p>
+        :type DeleteTime: int
+        :param _Tags: <p>标签列表（TagKey-TagValue）</p>
+        :type Tags: list of Tag
+        :param _PersistentWorkDir: <p>持久化工作目录配置（可选）。启用后将 COS/CFS 指定路径挂载到容器内 /workspace 工作目录，与现有 Catalog 的卷配置互斥（不允许同时在 Catalog 中显式声明 MountPath=/workspace）。</p>
+        :type PersistentWorkDir: :class:`tencentcloud.dlc.v20210125.models.PersistentWorkDir`
+        :param _EnableToken: <p>是否开启token认证</p>
+        :type EnableToken: bool
+        :param _Token: <p>Token 认证密钥（开启 token 认证时由系统生成）</p>
+        :type Token: str
+        """
+        self._ExampleId = None
+        self._CodeArchiveUrl = None
+        self._Services = None
+        self._LabImage = None
+        self._LabImagePullPolicy = None
+        self._LabImagePullType = None
+        self._Id = None
+        self._Type = None
+        self._Name = None
+        self._Description = None
+        self._ResourcePartitionId = None
+        self._ResourcePartitionName = None
+        self._Queue = None
+        self._AppId = None
+        self._Uin = None
+        self._SubAccountUin = None
+        self._SubAccountName = None
+        self._Status = None
+        self._StatusMessage = None
+        self._CreateTime = None
+        self._GroupName = None
+        self._GroupId = None
+        self._ResourceConfig = None
+        self._ResourceConfigId = None
+        self._RuntimeEnv = None
+        self._Image = None
+        self._Catalog = None
+        self._HistoryUrl = None
+        self._ImagePullPolicy = None
+        self._ImagePullType = None
+        self._AdvancedOptions = None
+        self._Priority = None
+        self._StartTime = None
+        self._StopTime = None
+        self._DeleteTime = None
+        self._Tags = None
+        self._PersistentWorkDir = None
+        self._EnableToken = None
+        self._Token = None
+
+    @property
+    def ExampleId(self):
+        r"""<p>案例模板ID（startMode=EXAMPLE 时使用）</p>
+        :rtype: str
+        """
+        return self._ExampleId
+
+    @ExampleId.setter
+    def ExampleId(self, ExampleId):
+        self._ExampleId = ExampleId
+
+    @property
+    def CodeArchiveUrl(self):
+        r"""<p>代码包/工程归档地址</p>
+        :rtype: str
+        """
+        return self._CodeArchiveUrl
+
+    @CodeArchiveUrl.setter
+    def CodeArchiveUrl(self, CodeArchiveUrl):
+        self._CodeArchiveUrl = CodeArchiveUrl
+
+    @property
+    def Services(self):
+        r"""<p>数据实验室服务入口（服务类型 -&gt; 访问地址）</p>
+        :rtype: list of TypeKVPair
+        """
+        return self._Services
+
+    @Services.setter
+    def Services(self, Services):
+        self._Services = Services
+
+    @property
+    def LabImage(self):
+        r"""<p>Lab 镜像地址（必填，用于开发工具如 Jupyter/VSCode/WebShell）。前端在&quot;内置 / 自定义&quot;两态中选择此值；当 Image 字段未显式传入时，后端会基于该字段按 R1（镜像表命中）/R2（同值 fallback）派生 Ray 集群镜像。</p>
+        :rtype: str
+        """
+        return self._LabImage
+
+    @LabImage.setter
+    def LabImage(self, LabImage):
+        self._LabImage = LabImage
+
+    @property
+    def LabImagePullPolicy(self):
+        r"""<p>Lab sidecar 镜像拉取策略（Always, IfNotPresent, Never）</p>
+        :rtype: str
+        """
+        return self._LabImagePullPolicy
+
+    @LabImagePullPolicy.setter
+    def LabImagePullPolicy(self, LabImagePullPolicy):
+        self._LabImagePullPolicy = LabImagePullPolicy
+
+    @property
+    def LabImagePullType(self):
+        r"""<p>Lab sidecar 镜像拉取类型（BuiltIn: 内置, Custom: 自定义-TCR, CustomCcr: 自定义-CCR）</p>
+        :rtype: str
+        """
+        return self._LabImagePullType
+
+    @LabImagePullType.setter
+    def LabImagePullType(self, LabImagePullType):
+        self._LabImagePullType = LabImagePullType
+
+    @property
+    def Id(self):
+        r"""<p>集群ID</p>
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Type(self):
+        r"""<p>资源类型：CLUSTER-普通集群；WORKSPACE-数据实验室（开发入口）</p>
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Name(self):
+        r"""<p>集群名称</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Description(self):
+        r"""<p>集群描述</p>
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def ResourcePartitionId(self):
+        r"""<p>所属资源分区ID</p>
+        :rtype: str
+        """
+        return self._ResourcePartitionId
+
+    @ResourcePartitionId.setter
+    def ResourcePartitionId(self, ResourcePartitionId):
+        self._ResourcePartitionId = ResourcePartitionId
+
+    @property
+    def ResourcePartitionName(self):
+        r"""<p>默认资源分区名称</p>
+        :rtype: str
+        """
+        return self._ResourcePartitionName
+
+    @ResourcePartitionName.setter
+    def ResourcePartitionName(self, ResourcePartitionName):
+        self._ResourcePartitionName = ResourcePartitionName
+
+    @property
+    def Queue(self):
+        r"""<p>所属队列名称</p>
+        :rtype: str
+        """
+        return self._Queue
+
+    @Queue.setter
+    def Queue(self, Queue):
+        self._Queue = Queue
+
+    @property
+    def AppId(self):
+        r"""<p>应用ID</p>
+        :rtype: int
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def Uin(self):
+        r"""<p>用户UIN</p>
+        :rtype: str
+        """
+        return self._Uin
+
+    @Uin.setter
+    def Uin(self, Uin):
+        self._Uin = Uin
+
+    @property
+    def SubAccountUin(self):
+        r"""<p>子用户UIN</p>
+        :rtype: str
+        """
+        return self._SubAccountUin
+
+    @SubAccountUin.setter
+    def SubAccountUin(self, SubAccountUin):
+        self._SubAccountUin = SubAccountUin
+
+    @property
+    def SubAccountName(self):
+        r"""<p>子用户名称（由聚合层通过 CAM 接口回填）</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._SubAccountName
+
+    @SubAccountName.setter
+    def SubAccountName(self, SubAccountName):
+        self._SubAccountName = SubAccountName
+
+    @property
+    def Status(self):
+        r"""<p>集群状态</p>
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def StatusMessage(self):
+        r"""<p>状态详情/错误信息</p>
+        :rtype: str
+        """
+        return self._StatusMessage
+
+    @StatusMessage.setter
+    def StatusMessage(self, StatusMessage):
+        self._StatusMessage = StatusMessage
+
+    @property
+    def CreateTime(self):
+        r"""<p>创建时间</p>
+        :rtype: int
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def GroupName(self):
+        r"""<p>所属集群组名称</p>
+        :rtype: str
+        """
+        return self._GroupName
+
+    @GroupName.setter
+    def GroupName(self, GroupName):
+        self._GroupName = GroupName
+
+    @property
+    def GroupId(self):
+        r"""<p>计算组 ID</p>
+        :rtype: str
+        """
+        return self._GroupId
+
+    @GroupId.setter
+    def GroupId(self, GroupId):
+        self._GroupId = GroupId
+
+    @property
+    def ResourceConfig(self):
+        r"""<p>资源配置(JSON)</p>
+        :rtype: str
+        """
+        return self._ResourceConfig
+
+    @ResourceConfig.setter
+    def ResourceConfig(self, ResourceConfig):
+        self._ResourceConfig = ResourceConfig
+
+    @property
+    def ResourceConfigId(self):
+        r"""<p>资源配置ID</p>
+        :rtype: str
+        """
+        return self._ResourceConfigId
+
+    @ResourceConfigId.setter
+    def ResourceConfigId(self, ResourceConfigId):
+        self._ResourceConfigId = ResourceConfigId
+
+    @property
+    def RuntimeEnv(self):
+        r"""<p>运行时环境配置(JSON)</p>
+        :rtype: str
+        """
+        return self._RuntimeEnv
+
+    @RuntimeEnv.setter
+    def RuntimeEnv(self, RuntimeEnv):
+        self._RuntimeEnv = RuntimeEnv
+
+    @property
+    def Image(self):
+        r"""<p>Ray 集群镜像地址（可选，OpenAPI/SDK 高级控制入口）。前端不再传递此字段；为空时后端按 R1（镜像表查询命中）→ R2（同值 fallback）顺序自动派生。非空时直接作为 Ray 集群镜像，跳过派生（EXPLICIT），且后端不校验其与 LabImage 的兼容性。</p>
+        :rtype: str
+        """
+        return self._Image
+
+    @Image.setter
+    def Image(self, Image):
+        self._Image = Image
+
+    @property
+    def Catalog(self):
+        r"""<p>存储卷和挂载卷配置(JSON)</p>
+        :rtype: str
+        """
+        return self._Catalog
+
+    @Catalog.setter
+    def Catalog(self, Catalog):
+        self._Catalog = Catalog
+
+    @property
+    def HistoryUrl(self):
+        r"""<p>Dashboard URL / 历史记录链接</p>
+        :rtype: str
+        """
+        return self._HistoryUrl
+
+    @HistoryUrl.setter
+    def HistoryUrl(self, HistoryUrl):
+        self._HistoryUrl = HistoryUrl
+
+    @property
+    def ImagePullPolicy(self):
+        r"""<p>镜像拉取策略</p>
+        :rtype: str
+        """
+        return self._ImagePullPolicy
+
+    @ImagePullPolicy.setter
+    def ImagePullPolicy(self, ImagePullPolicy):
+        self._ImagePullPolicy = ImagePullPolicy
+
+    @property
+    def ImagePullType(self):
+        r"""<p>镜像拉取类型（BuiltIn: 内置, Custom: 自定义-TCR, CustomCcr: 自定义-CCR）</p>
+        :rtype: str
+        """
+        return self._ImagePullType
+
+    @ImagePullType.setter
+    def ImagePullType(self, ImagePullType):
+        self._ImagePullType = ImagePullType
+
+    @property
+    def AdvancedOptions(self):
+        r"""<p>高级参数（扁平 Key-Value 的 JSON 字符串），Key 以 spec. 开头，按 RayCluster CRD 下钻；详见 ADVANCED_CLUSTER_OPTIONS_DESIGN.md</p>
+        :rtype: str
+        """
+        return self._AdvancedOptions
+
+    @AdvancedOptions.setter
+    def AdvancedOptions(self, AdvancedOptions):
+        self._AdvancedOptions = AdvancedOptions
+
+    @property
+    def Priority(self):
+        r"""<p>优先级（1-9，数字越大优先级越高）</p>
+        :rtype: int
+        """
+        return self._Priority
+
+    @Priority.setter
+    def Priority(self, Priority):
+        self._Priority = Priority
+
+    @property
+    def StartTime(self):
+        r"""<p>启动时间（最近一次启动）</p>
+        :rtype: int
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def StopTime(self):
+        r"""<p>停止时间（最近一次停止/休眠）</p>
+        :rtype: int
+        """
+        return self._StopTime
+
+    @StopTime.setter
+    def StopTime(self, StopTime):
+        self._StopTime = StopTime
+
+    @property
+    def DeleteTime(self):
+        r"""<p>删除时间</p>
+        :rtype: int
+        """
+        return self._DeleteTime
+
+    @DeleteTime.setter
+    def DeleteTime(self, DeleteTime):
+        self._DeleteTime = DeleteTime
+
+    @property
+    def Tags(self):
+        r"""<p>标签列表（TagKey-TagValue）</p>
+        :rtype: list of Tag
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def PersistentWorkDir(self):
+        r"""<p>持久化工作目录配置（可选）。启用后将 COS/CFS 指定路径挂载到容器内 /workspace 工作目录，与现有 Catalog 的卷配置互斥（不允许同时在 Catalog 中显式声明 MountPath=/workspace）。</p>
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.PersistentWorkDir`
+        """
+        return self._PersistentWorkDir
+
+    @PersistentWorkDir.setter
+    def PersistentWorkDir(self, PersistentWorkDir):
+        self._PersistentWorkDir = PersistentWorkDir
+
+    @property
+    def EnableToken(self):
+        r"""<p>是否开启token认证</p>
+        :rtype: bool
+        """
+        return self._EnableToken
+
+    @EnableToken.setter
+    def EnableToken(self, EnableToken):
+        self._EnableToken = EnableToken
+
+    @property
+    def Token(self):
+        r"""<p>Token 认证密钥（开启 token 认证时由系统生成）</p>
+        :rtype: str
+        """
+        return self._Token
+
+    @Token.setter
+    def Token(self, Token):
+        self._Token = Token
+
+
+    def _deserialize(self, params):
+        self._ExampleId = params.get("ExampleId")
+        self._CodeArchiveUrl = params.get("CodeArchiveUrl")
+        if params.get("Services") is not None:
+            self._Services = []
+            for item in params.get("Services"):
+                obj = TypeKVPair()
+                obj._deserialize(item)
+                self._Services.append(obj)
+        self._LabImage = params.get("LabImage")
+        self._LabImagePullPolicy = params.get("LabImagePullPolicy")
+        self._LabImagePullType = params.get("LabImagePullType")
+        self._Id = params.get("Id")
+        self._Type = params.get("Type")
+        self._Name = params.get("Name")
+        self._Description = params.get("Description")
+        self._ResourcePartitionId = params.get("ResourcePartitionId")
+        self._ResourcePartitionName = params.get("ResourcePartitionName")
+        self._Queue = params.get("Queue")
+        self._AppId = params.get("AppId")
+        self._Uin = params.get("Uin")
+        self._SubAccountUin = params.get("SubAccountUin")
+        self._SubAccountName = params.get("SubAccountName")
+        self._Status = params.get("Status")
+        self._StatusMessage = params.get("StatusMessage")
+        self._CreateTime = params.get("CreateTime")
+        self._GroupName = params.get("GroupName")
+        self._GroupId = params.get("GroupId")
+        self._ResourceConfig = params.get("ResourceConfig")
+        self._ResourceConfigId = params.get("ResourceConfigId")
+        self._RuntimeEnv = params.get("RuntimeEnv")
+        self._Image = params.get("Image")
+        self._Catalog = params.get("Catalog")
+        self._HistoryUrl = params.get("HistoryUrl")
+        self._ImagePullPolicy = params.get("ImagePullPolicy")
+        self._ImagePullType = params.get("ImagePullType")
+        self._AdvancedOptions = params.get("AdvancedOptions")
+        self._Priority = params.get("Priority")
+        self._StartTime = params.get("StartTime")
+        self._StopTime = params.get("StopTime")
+        self._DeleteTime = params.get("DeleteTime")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
+        if params.get("PersistentWorkDir") is not None:
+            self._PersistentWorkDir = PersistentWorkDir()
+            self._PersistentWorkDir._deserialize(params.get("PersistentWorkDir"))
+        self._EnableToken = params.get("EnableToken")
+        self._Token = params.get("Token")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class Label(AbstractModel):
+    r"""节点标签模型
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: <p>名称</p>
+        :type Name: str
+        :param _Value: <p>值</p>
+        :type Value: str
+        """
+        self._Name = None
+        self._Value = None
+
+    @property
+    def Name(self):
+        r"""<p>名称</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Value(self):
+        r"""<p>值</p>
+        :rtype: str
+        """
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Value = params.get("Value")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -32270,6 +45329,2519 @@ class LaunchStandardEngineResourceGroupsResponse(AbstractModel):
                 obj = OperateEngineResourceGroupFailMessage()
                 obj._deserialize(item)
                 self._OperateEngineResourceGroupFailMessages.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class ListClusterGroupsRequest(AbstractModel):
+    r"""ListClusterGroups请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Page: <p>当前页码（从1开始）</p>
+        :type Page: int
+        :param _PageSize: <p>页数</p>
+        :type PageSize: int
+        :param _StartTime: <p>提交时间起始过滤-时间戳（毫秒，可选）</p>
+        :type StartTime: int
+        :param _EndTime: <p>提交时间截止过滤-时间戳（毫秒，可选）</p>
+        :type EndTime: int
+        :param _Filters: <p>过滤条件</p>
+        :type Filters: list of Filter
+        :param _SortFields: <p>排序字段列表</p>
+        :type SortFields: list of SortField
+        """
+        self._Page = None
+        self._PageSize = None
+        self._StartTime = None
+        self._EndTime = None
+        self._Filters = None
+        self._SortFields = None
+
+    @property
+    def Page(self):
+        r"""<p>当前页码（从1开始）</p>
+        :rtype: int
+        """
+        return self._Page
+
+    @Page.setter
+    def Page(self, Page):
+        self._Page = Page
+
+    @property
+    def PageSize(self):
+        r"""<p>页数</p>
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def StartTime(self):
+        r"""<p>提交时间起始过滤-时间戳（毫秒，可选）</p>
+        :rtype: int
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""<p>提交时间截止过滤-时间戳（毫秒，可选）</p>
+        :rtype: int
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def Filters(self):
+        r"""<p>过滤条件</p>
+        :rtype: list of Filter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def SortFields(self):
+        r"""<p>排序字段列表</p>
+        :rtype: list of SortField
+        """
+        return self._SortFields
+
+    @SortFields.setter
+    def SortFields(self, SortFields):
+        self._SortFields = SortFields
+
+
+    def _deserialize(self, params):
+        self._Page = params.get("Page")
+        self._PageSize = params.get("PageSize")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        if params.get("SortFields") is not None:
+            self._SortFields = []
+            for item in params.get("SortFields"):
+                obj = SortField()
+                obj._deserialize(item)
+                self._SortFields.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ListClusterGroupsResponse(AbstractModel):
+    r"""ListClusterGroups返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Total: <p>总记录数</p>
+        :type Total: int
+        :param _Page: <p>当前页码（从1开始）</p>
+        :type Page: int
+        :param _PageSize: <p>页数</p>
+        :type PageSize: int
+        :param _TotalPages: <p>总页数</p>
+        :type TotalPages: int
+        :param _Items: <p>集群组列表</p>
+        :type Items: list of ClusterGroup
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Total = None
+        self._Page = None
+        self._PageSize = None
+        self._TotalPages = None
+        self._Items = None
+        self._RequestId = None
+
+    @property
+    def Total(self):
+        r"""<p>总记录数</p>
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def Page(self):
+        r"""<p>当前页码（从1开始）</p>
+        :rtype: int
+        """
+        return self._Page
+
+    @Page.setter
+    def Page(self, Page):
+        self._Page = Page
+
+    @property
+    def PageSize(self):
+        r"""<p>页数</p>
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def TotalPages(self):
+        r"""<p>总页数</p>
+        :rtype: int
+        """
+        return self._TotalPages
+
+    @TotalPages.setter
+    def TotalPages(self, TotalPages):
+        self._TotalPages = TotalPages
+
+    @property
+    def Items(self):
+        r"""<p>集群组列表</p>
+        :rtype: list of ClusterGroup
+        """
+        return self._Items
+
+    @Items.setter
+    def Items(self, Items):
+        self._Items = Items
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Total = params.get("Total")
+        self._Page = params.get("Page")
+        self._PageSize = params.get("PageSize")
+        self._TotalPages = params.get("TotalPages")
+        if params.get("Items") is not None:
+            self._Items = []
+            for item in params.get("Items"):
+                obj = ClusterGroup()
+                obj._deserialize(item)
+                self._Items.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class ListExampleCategoriesRequest(AbstractModel):
+    r"""ListExampleCategories请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Page: <p>当前页码（从1开始）</p>
+        :type Page: int
+        :param _PageSize: <p>页数</p>
+        :type PageSize: int
+        """
+        self._Page = None
+        self._PageSize = None
+
+    @property
+    def Page(self):
+        r"""<p>当前页码（从1开始）</p>
+        :rtype: int
+        """
+        return self._Page
+
+    @Page.setter
+    def Page(self, Page):
+        self._Page = Page
+
+    @property
+    def PageSize(self):
+        r"""<p>页数</p>
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+
+    def _deserialize(self, params):
+        self._Page = params.get("Page")
+        self._PageSize = params.get("PageSize")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ListExampleCategoriesResponse(AbstractModel):
+    r"""ListExampleCategories返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Total: <p>总记录数</p>
+        :type Total: int
+        :param _Page: <p>当前页码（从1开始）</p>
+        :type Page: int
+        :param _PageSize: <p>页数</p>
+        :type PageSize: int
+        :param _TotalPages: <p>总页数</p>
+        :type TotalPages: int
+        :param _Items: <p>分类列表</p>
+        :type Items: list of ExampleCategories
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Total = None
+        self._Page = None
+        self._PageSize = None
+        self._TotalPages = None
+        self._Items = None
+        self._RequestId = None
+
+    @property
+    def Total(self):
+        r"""<p>总记录数</p>
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def Page(self):
+        r"""<p>当前页码（从1开始）</p>
+        :rtype: int
+        """
+        return self._Page
+
+    @Page.setter
+    def Page(self, Page):
+        self._Page = Page
+
+    @property
+    def PageSize(self):
+        r"""<p>页数</p>
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def TotalPages(self):
+        r"""<p>总页数</p>
+        :rtype: int
+        """
+        return self._TotalPages
+
+    @TotalPages.setter
+    def TotalPages(self, TotalPages):
+        self._TotalPages = TotalPages
+
+    @property
+    def Items(self):
+        r"""<p>分类列表</p>
+        :rtype: list of ExampleCategories
+        """
+        return self._Items
+
+    @Items.setter
+    def Items(self, Items):
+        self._Items = Items
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Total = params.get("Total")
+        self._Page = params.get("Page")
+        self._PageSize = params.get("PageSize")
+        self._TotalPages = params.get("TotalPages")
+        if params.get("Items") is not None:
+            self._Items = []
+            for item in params.get("Items"):
+                obj = ExampleCategories()
+                obj._deserialize(item)
+                self._Items.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class ListExampleDifficultiesRequest(AbstractModel):
+    r"""ListExampleDifficulties请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Page: <p>当前页码（从1开始）</p>
+        :type Page: int
+        :param _PageSize: <p>页数</p>
+        :type PageSize: int
+        """
+        self._Page = None
+        self._PageSize = None
+
+    @property
+    def Page(self):
+        r"""<p>当前页码（从1开始）</p>
+        :rtype: int
+        """
+        return self._Page
+
+    @Page.setter
+    def Page(self, Page):
+        self._Page = Page
+
+    @property
+    def PageSize(self):
+        r"""<p>页数</p>
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+
+    def _deserialize(self, params):
+        self._Page = params.get("Page")
+        self._PageSize = params.get("PageSize")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ListExampleDifficultiesResponse(AbstractModel):
+    r"""ListExampleDifficulties返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Total: <p>总记录数</p>
+        :type Total: int
+        :param _Page: <p>当前页码（从1开始）</p>
+        :type Page: int
+        :param _PageSize: <p>页数</p>
+        :type PageSize: int
+        :param _TotalPages: <p>总页数</p>
+        :type TotalPages: int
+        :param _Items: <p>分类列表</p>
+        :type Items: list of ExampleDifficulties
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Total = None
+        self._Page = None
+        self._PageSize = None
+        self._TotalPages = None
+        self._Items = None
+        self._RequestId = None
+
+    @property
+    def Total(self):
+        r"""<p>总记录数</p>
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def Page(self):
+        r"""<p>当前页码（从1开始）</p>
+        :rtype: int
+        """
+        return self._Page
+
+    @Page.setter
+    def Page(self, Page):
+        self._Page = Page
+
+    @property
+    def PageSize(self):
+        r"""<p>页数</p>
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def TotalPages(self):
+        r"""<p>总页数</p>
+        :rtype: int
+        """
+        return self._TotalPages
+
+    @TotalPages.setter
+    def TotalPages(self, TotalPages):
+        self._TotalPages = TotalPages
+
+    @property
+    def Items(self):
+        r"""<p>分类列表</p>
+        :rtype: list of ExampleDifficulties
+        """
+        return self._Items
+
+    @Items.setter
+    def Items(self, Items):
+        self._Items = Items
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Total = params.get("Total")
+        self._Page = params.get("Page")
+        self._PageSize = params.get("PageSize")
+        self._TotalPages = params.get("TotalPages")
+        if params.get("Items") is not None:
+            self._Items = []
+            for item in params.get("Items"):
+                obj = ExampleDifficulties()
+                obj._deserialize(item)
+                self._Items.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class ListExampleTagsRequest(AbstractModel):
+    r"""ListExampleTags请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Category: <p>案例标签</p>
+        :type Category: str
+        """
+        self._Category = None
+
+    @property
+    def Category(self):
+        r"""<p>案例标签</p>
+        :rtype: str
+        """
+        return self._Category
+
+    @Category.setter
+    def Category(self, Category):
+        self._Category = Category
+
+
+    def _deserialize(self, params):
+        self._Category = params.get("Category")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ListExampleTagsResponse(AbstractModel):
+    r"""ListExampleTags返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Total: <p>标签总数</p>
+        :type Total: int
+        :param _Page: <p>当前页码</p>
+        :type Page: int
+        :param _PageSize: <p>每页显示标签数量</p>
+        :type PageSize: int
+        :param _TotalPages: <p>总页数</p>
+        :type TotalPages: int
+        :param _Items: <p>标签实体</p>
+        :type Items: list of ExampleTag
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Total = None
+        self._Page = None
+        self._PageSize = None
+        self._TotalPages = None
+        self._Items = None
+        self._RequestId = None
+
+    @property
+    def Total(self):
+        r"""<p>标签总数</p>
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def Page(self):
+        r"""<p>当前页码</p>
+        :rtype: int
+        """
+        return self._Page
+
+    @Page.setter
+    def Page(self, Page):
+        self._Page = Page
+
+    @property
+    def PageSize(self):
+        r"""<p>每页显示标签数量</p>
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def TotalPages(self):
+        r"""<p>总页数</p>
+        :rtype: int
+        """
+        return self._TotalPages
+
+    @TotalPages.setter
+    def TotalPages(self, TotalPages):
+        self._TotalPages = TotalPages
+
+    @property
+    def Items(self):
+        r"""<p>标签实体</p>
+        :rtype: list of ExampleTag
+        """
+        return self._Items
+
+    @Items.setter
+    def Items(self, Items):
+        self._Items = Items
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Total = params.get("Total")
+        self._Page = params.get("Page")
+        self._PageSize = params.get("PageSize")
+        self._TotalPages = params.get("TotalPages")
+        if params.get("Items") is not None:
+            self._Items = []
+            for item in params.get("Items"):
+                obj = ExampleTag()
+                obj._deserialize(item)
+                self._Items.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class ListExamplesRequest(AbstractModel):
+    r"""ListExamples请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Category: <p>分类</p>
+        :type Category: str
+        :param _Keyword: <p>关键词</p>
+        :type Keyword: str
+        :param _Tags: <p>标签数组，多个标签 AND 关系；与 Category/Keyword 之间也是 AND</p>
+        :type Tags: list of str
+        :param _OrderBy: <p>DEFAULT（sort_order ASC, create_time DESC）/ POPULARITY（按热度降序），非法值降级为 DEFAULT</p>
+        :type OrderBy: str
+        :param _Page: <p>当前页码（从1开始）</p>
+        :type Page: int
+        :param _PageSize: <p>页数</p>
+        :type PageSize: int
+        """
+        self._Category = None
+        self._Keyword = None
+        self._Tags = None
+        self._OrderBy = None
+        self._Page = None
+        self._PageSize = None
+
+    @property
+    def Category(self):
+        r"""<p>分类</p>
+        :rtype: str
+        """
+        return self._Category
+
+    @Category.setter
+    def Category(self, Category):
+        self._Category = Category
+
+    @property
+    def Keyword(self):
+        r"""<p>关键词</p>
+        :rtype: str
+        """
+        return self._Keyword
+
+    @Keyword.setter
+    def Keyword(self, Keyword):
+        self._Keyword = Keyword
+
+    @property
+    def Tags(self):
+        r"""<p>标签数组，多个标签 AND 关系；与 Category/Keyword 之间也是 AND</p>
+        :rtype: list of str
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def OrderBy(self):
+        r"""<p>DEFAULT（sort_order ASC, create_time DESC）/ POPULARITY（按热度降序），非法值降级为 DEFAULT</p>
+        :rtype: str
+        """
+        return self._OrderBy
+
+    @OrderBy.setter
+    def OrderBy(self, OrderBy):
+        self._OrderBy = OrderBy
+
+    @property
+    def Page(self):
+        r"""<p>当前页码（从1开始）</p>
+        :rtype: int
+        """
+        return self._Page
+
+    @Page.setter
+    def Page(self, Page):
+        self._Page = Page
+
+    @property
+    def PageSize(self):
+        r"""<p>页数</p>
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+
+    def _deserialize(self, params):
+        self._Category = params.get("Category")
+        self._Keyword = params.get("Keyword")
+        self._Tags = params.get("Tags")
+        self._OrderBy = params.get("OrderBy")
+        self._Page = params.get("Page")
+        self._PageSize = params.get("PageSize")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ListExamplesResponse(AbstractModel):
+    r"""ListExamples返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Total: <p>总记录数</p>
+        :type Total: int
+        :param _Page: <p>当前页码（从1开始）</p>
+        :type Page: int
+        :param _PageSize: <p>页数</p>
+        :type PageSize: int
+        :param _TotalPages: <p>总页数</p>
+        :type TotalPages: int
+        :param _Items: <p>案例管理列表</p>
+        :type Items: list of ExampleEntity
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Total = None
+        self._Page = None
+        self._PageSize = None
+        self._TotalPages = None
+        self._Items = None
+        self._RequestId = None
+
+    @property
+    def Total(self):
+        r"""<p>总记录数</p>
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def Page(self):
+        r"""<p>当前页码（从1开始）</p>
+        :rtype: int
+        """
+        return self._Page
+
+    @Page.setter
+    def Page(self, Page):
+        self._Page = Page
+
+    @property
+    def PageSize(self):
+        r"""<p>页数</p>
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def TotalPages(self):
+        r"""<p>总页数</p>
+        :rtype: int
+        """
+        return self._TotalPages
+
+    @TotalPages.setter
+    def TotalPages(self, TotalPages):
+        self._TotalPages = TotalPages
+
+    @property
+    def Items(self):
+        r"""<p>案例管理列表</p>
+        :rtype: list of ExampleEntity
+        """
+        return self._Items
+
+    @Items.setter
+    def Items(self, Items):
+        self._Items = Items
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Total = params.get("Total")
+        self._Page = params.get("Page")
+        self._PageSize = params.get("PageSize")
+        self._TotalPages = params.get("TotalPages")
+        if params.get("Items") is not None:
+            self._Items = []
+            for item in params.get("Items"):
+                obj = ExampleEntity()
+                obj._deserialize(item)
+                self._Items.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class ListJobSpecsRequest(AbstractModel):
+    r"""ListJobSpecs请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Page: <p>页数</p>
+        :type Page: int
+        :param _PageSize: <p>页数</p>
+        :type PageSize: int
+        :param _Filters: <p>过滤条件</p>
+        :type Filters: list of Filter
+        :param _StartTime: <p>创建时间范围 - 开始时间（时间戳（毫秒））</p><p>单位：ms</p>
+        :type StartTime: int
+        :param _EndTime: <p>创建时间范围 - 结束时间（时间戳（毫秒））</p><p>单位：ms</p>
+        :type EndTime: int
+        :param _SortFields: <p>排序字段列表</p>
+        :type SortFields: list of SortField
+        """
+        self._Page = None
+        self._PageSize = None
+        self._Filters = None
+        self._StartTime = None
+        self._EndTime = None
+        self._SortFields = None
+
+    @property
+    def Page(self):
+        r"""<p>页数</p>
+        :rtype: int
+        """
+        return self._Page
+
+    @Page.setter
+    def Page(self, Page):
+        self._Page = Page
+
+    @property
+    def PageSize(self):
+        r"""<p>页数</p>
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def Filters(self):
+        r"""<p>过滤条件</p>
+        :rtype: list of Filter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def StartTime(self):
+        r"""<p>创建时间范围 - 开始时间（时间戳（毫秒））</p><p>单位：ms</p>
+        :rtype: int
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""<p>创建时间范围 - 结束时间（时间戳（毫秒））</p><p>单位：ms</p>
+        :rtype: int
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def SortFields(self):
+        r"""<p>排序字段列表</p>
+        :rtype: list of SortField
+        """
+        return self._SortFields
+
+    @SortFields.setter
+    def SortFields(self, SortFields):
+        self._SortFields = SortFields
+
+
+    def _deserialize(self, params):
+        self._Page = params.get("Page")
+        self._PageSize = params.get("PageSize")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        if params.get("SortFields") is not None:
+            self._SortFields = []
+            for item in params.get("SortFields"):
+                obj = SortField()
+                obj._deserialize(item)
+                self._SortFields.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ListJobSpecsResponse(AbstractModel):
+    r"""ListJobSpecs返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Total: <p>总数量</p>
+        :type Total: int
+        :param _Page: <p>当前页码（从1开始）</p>
+        :type Page: int
+        :param _PageSize: <p>页数</p>
+        :type PageSize: int
+        :param _TotalPages: <p>总页数</p>
+        :type TotalPages: int
+        :param _Items: <p>作业配置列表</p>
+        :type Items: list of JobSpec
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Total = None
+        self._Page = None
+        self._PageSize = None
+        self._TotalPages = None
+        self._Items = None
+        self._RequestId = None
+
+    @property
+    def Total(self):
+        r"""<p>总数量</p>
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def Page(self):
+        r"""<p>当前页码（从1开始）</p>
+        :rtype: int
+        """
+        return self._Page
+
+    @Page.setter
+    def Page(self, Page):
+        self._Page = Page
+
+    @property
+    def PageSize(self):
+        r"""<p>页数</p>
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def TotalPages(self):
+        r"""<p>总页数</p>
+        :rtype: int
+        """
+        return self._TotalPages
+
+    @TotalPages.setter
+    def TotalPages(self, TotalPages):
+        self._TotalPages = TotalPages
+
+    @property
+    def Items(self):
+        r"""<p>作业配置列表</p>
+        :rtype: list of JobSpec
+        """
+        return self._Items
+
+    @Items.setter
+    def Items(self, Items):
+        self._Items = Items
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Total = params.get("Total")
+        self._Page = params.get("Page")
+        self._PageSize = params.get("PageSize")
+        self._TotalPages = params.get("TotalPages")
+        if params.get("Items") is not None:
+            self._Items = []
+            for item in params.get("Items"):
+                obj = JobSpec()
+                obj._deserialize(item)
+                self._Items.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class ListJobsBySpecRequest(AbstractModel):
+    r"""ListJobsBySpec请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SpecId: 配置ID
+        :type SpecId: str
+        :param _Page: 当前页码（从1开始）
+        :type Page: int
+        :param _PageSize: 页数
+        :type PageSize: int
+        :param _StartTime: 提交时间起始过滤-时间戳（毫秒，可选）
+        :type StartTime: int
+        :param _EndTime: 提交时间截止过滤-时间戳（毫秒，可选）
+        :type EndTime: int
+        :param _Filters: 过滤条件
+        :type Filters: list of Filter
+        :param _SortFields: 排序字段列表
+        :type SortFields: list of SortField
+        """
+        self._SpecId = None
+        self._Page = None
+        self._PageSize = None
+        self._StartTime = None
+        self._EndTime = None
+        self._Filters = None
+        self._SortFields = None
+
+    @property
+    def SpecId(self):
+        r"""配置ID
+        :rtype: str
+        """
+        return self._SpecId
+
+    @SpecId.setter
+    def SpecId(self, SpecId):
+        self._SpecId = SpecId
+
+    @property
+    def Page(self):
+        r"""当前页码（从1开始）
+        :rtype: int
+        """
+        return self._Page
+
+    @Page.setter
+    def Page(self, Page):
+        self._Page = Page
+
+    @property
+    def PageSize(self):
+        r"""页数
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def StartTime(self):
+        r"""提交时间起始过滤-时间戳（毫秒，可选）
+        :rtype: int
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""提交时间截止过滤-时间戳（毫秒，可选）
+        :rtype: int
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def Filters(self):
+        r"""过滤条件
+        :rtype: list of Filter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def SortFields(self):
+        r"""排序字段列表
+        :rtype: list of SortField
+        """
+        return self._SortFields
+
+    @SortFields.setter
+    def SortFields(self, SortFields):
+        self._SortFields = SortFields
+
+
+    def _deserialize(self, params):
+        self._SpecId = params.get("SpecId")
+        self._Page = params.get("Page")
+        self._PageSize = params.get("PageSize")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        if params.get("SortFields") is not None:
+            self._SortFields = []
+            for item in params.get("SortFields"):
+                obj = SortField()
+                obj._deserialize(item)
+                self._SortFields.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ListJobsBySpecResponse(AbstractModel):
+    r"""ListJobsBySpec返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Total: 总记录数
+        :type Total: int
+        :param _Page: 当前页码（从1开始）
+        :type Page: int
+        :param _PageSize: 页数
+        :type PageSize: int
+        :param _TotalPages: 总页数
+        :type TotalPages: int
+        :param _Items: 数据列表
+        :type Items: list of RayJobSubmitEntity
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Total = None
+        self._Page = None
+        self._PageSize = None
+        self._TotalPages = None
+        self._Items = None
+        self._RequestId = None
+
+    @property
+    def Total(self):
+        r"""总记录数
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def Page(self):
+        r"""当前页码（从1开始）
+        :rtype: int
+        """
+        return self._Page
+
+    @Page.setter
+    def Page(self, Page):
+        self._Page = Page
+
+    @property
+    def PageSize(self):
+        r"""页数
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def TotalPages(self):
+        r"""总页数
+        :rtype: int
+        """
+        return self._TotalPages
+
+    @TotalPages.setter
+    def TotalPages(self, TotalPages):
+        self._TotalPages = TotalPages
+
+    @property
+    def Items(self):
+        r"""数据列表
+        :rtype: list of RayJobSubmitEntity
+        """
+        return self._Items
+
+    @Items.setter
+    def Items(self, Items):
+        self._Items = Items
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Total = params.get("Total")
+        self._Page = params.get("Page")
+        self._PageSize = params.get("PageSize")
+        self._TotalPages = params.get("TotalPages")
+        if params.get("Items") is not None:
+            self._Items = []
+            for item in params.get("Items"):
+                obj = RayJobSubmitEntity()
+                obj._deserialize(item)
+                self._Items.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class ListLabsRequest(AbstractModel):
+    r"""ListLabs请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Page: <p>当前页码（从1开始）</p>
+        :type Page: int
+        :param _PageSize: <p>每页数量</p>
+        :type PageSize: int
+        :param _StartTime: <p>开始时间（毫秒时间戳）</p>
+        :type StartTime: int
+        :param _EndTime: <p>结束时间（毫秒时间戳）</p>
+        :type EndTime: int
+        :param _Filters: <p>过滤条件</p>
+        :type Filters: list of Filter
+        :param _SortFields: <p>排序字段列表</p>
+        :type SortFields: list of SortField
+        """
+        self._Page = None
+        self._PageSize = None
+        self._StartTime = None
+        self._EndTime = None
+        self._Filters = None
+        self._SortFields = None
+
+    @property
+    def Page(self):
+        r"""<p>当前页码（从1开始）</p>
+        :rtype: int
+        """
+        return self._Page
+
+    @Page.setter
+    def Page(self, Page):
+        self._Page = Page
+
+    @property
+    def PageSize(self):
+        r"""<p>每页数量</p>
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def StartTime(self):
+        r"""<p>开始时间（毫秒时间戳）</p>
+        :rtype: int
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""<p>结束时间（毫秒时间戳）</p>
+        :rtype: int
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def Filters(self):
+        r"""<p>过滤条件</p>
+        :rtype: list of Filter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def SortFields(self):
+        r"""<p>排序字段列表</p>
+        :rtype: list of SortField
+        """
+        return self._SortFields
+
+    @SortFields.setter
+    def SortFields(self, SortFields):
+        self._SortFields = SortFields
+
+
+    def _deserialize(self, params):
+        self._Page = params.get("Page")
+        self._PageSize = params.get("PageSize")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        if params.get("SortFields") is not None:
+            self._SortFields = []
+            for item in params.get("SortFields"):
+                obj = SortField()
+                obj._deserialize(item)
+                self._SortFields.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ListLabsResponse(AbstractModel):
+    r"""ListLabs返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Total: <p>总记录数</p>
+        :type Total: int
+        :param _Page: <p>当前页码（从1开始）</p>
+        :type Page: int
+        :param _PageSize: <p>每页数量</p>
+        :type PageSize: int
+        :param _TotalPages: <p>总页数</p>
+        :type TotalPages: int
+        :param _Items: <p>数据实验室列表</p>
+        :type Items: list of LabResponse
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Total = None
+        self._Page = None
+        self._PageSize = None
+        self._TotalPages = None
+        self._Items = None
+        self._RequestId = None
+
+    @property
+    def Total(self):
+        r"""<p>总记录数</p>
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def Page(self):
+        r"""<p>当前页码（从1开始）</p>
+        :rtype: int
+        """
+        return self._Page
+
+    @Page.setter
+    def Page(self, Page):
+        self._Page = Page
+
+    @property
+    def PageSize(self):
+        r"""<p>每页数量</p>
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def TotalPages(self):
+        r"""<p>总页数</p>
+        :rtype: int
+        """
+        return self._TotalPages
+
+    @TotalPages.setter
+    def TotalPages(self, TotalPages):
+        self._TotalPages = TotalPages
+
+    @property
+    def Items(self):
+        r"""<p>数据实验室列表</p>
+        :rtype: list of LabResponse
+        """
+        return self._Items
+
+    @Items.setter
+    def Items(self, Items):
+        self._Items = Items
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Total = params.get("Total")
+        self._Page = params.get("Page")
+        self._PageSize = params.get("PageSize")
+        self._TotalPages = params.get("TotalPages")
+        if params.get("Items") is not None:
+            self._Items = []
+            for item in params.get("Items"):
+                obj = LabResponse()
+                obj._deserialize(item)
+                self._Items.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class ListRayClusterJobsRequest(AbstractModel):
+    r"""ListRayClusterJobs请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: 集群ID（必填）
+        :type ClusterId: str
+        :param _Page: 当前页码（从1开始）
+        :type Page: int
+        :param _PageSize: 每页数量
+        :type PageSize: int
+        :param _Filters: 额外过滤条件（ClusterId 已由外层单独传入，无需再在此处指定）
+        :type Filters: list of Filter
+        :param _StartTime: 提交时间起始过滤-时间戳（毫秒，可选）
+        :type StartTime: int
+        :param _EndTime: 提交时间截止过滤-时间戳（毫秒，可选）
+        :type EndTime: int
+        :param _SortFields: 排序字段列表
+        :type SortFields: list of SortField
+        """
+        self._ClusterId = None
+        self._Page = None
+        self._PageSize = None
+        self._Filters = None
+        self._StartTime = None
+        self._EndTime = None
+        self._SortFields = None
+
+    @property
+    def ClusterId(self):
+        r"""集群ID（必填）
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def Page(self):
+        r"""当前页码（从1开始）
+        :rtype: int
+        """
+        return self._Page
+
+    @Page.setter
+    def Page(self, Page):
+        self._Page = Page
+
+    @property
+    def PageSize(self):
+        r"""每页数量
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def Filters(self):
+        r"""额外过滤条件（ClusterId 已由外层单独传入，无需再在此处指定）
+        :rtype: list of Filter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def StartTime(self):
+        r"""提交时间起始过滤-时间戳（毫秒，可选）
+        :rtype: int
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""提交时间截止过滤-时间戳（毫秒，可选）
+        :rtype: int
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def SortFields(self):
+        r"""排序字段列表
+        :rtype: list of SortField
+        """
+        return self._SortFields
+
+    @SortFields.setter
+    def SortFields(self, SortFields):
+        self._SortFields = SortFields
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        self._Page = params.get("Page")
+        self._PageSize = params.get("PageSize")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        if params.get("SortFields") is not None:
+            self._SortFields = []
+            for item in params.get("SortFields"):
+                obj = SortField()
+                obj._deserialize(item)
+                self._SortFields.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ListRayClusterJobsResponse(AbstractModel):
+    r"""ListRayClusterJobs返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Page: 当前页码（从1开始）
+        :type Page: int
+        :param _PageSize: 每页数量
+        :type PageSize: int
+        :param _TotalPages: 总页数
+        :type TotalPages: int
+        :param _Items: 该集群下的Ray作业列表
+        :type Items: list of RayJobSubmitEntity
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Page = None
+        self._PageSize = None
+        self._TotalPages = None
+        self._Items = None
+        self._RequestId = None
+
+    @property
+    def Page(self):
+        r"""当前页码（从1开始）
+        :rtype: int
+        """
+        return self._Page
+
+    @Page.setter
+    def Page(self, Page):
+        self._Page = Page
+
+    @property
+    def PageSize(self):
+        r"""每页数量
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def TotalPages(self):
+        r"""总页数
+        :rtype: int
+        """
+        return self._TotalPages
+
+    @TotalPages.setter
+    def TotalPages(self, TotalPages):
+        self._TotalPages = TotalPages
+
+    @property
+    def Items(self):
+        r"""该集群下的Ray作业列表
+        :rtype: list of RayJobSubmitEntity
+        """
+        return self._Items
+
+    @Items.setter
+    def Items(self, Items):
+        self._Items = Items
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Page = params.get("Page")
+        self._PageSize = params.get("PageSize")
+        self._TotalPages = params.get("TotalPages")
+        if params.get("Items") is not None:
+            self._Items = []
+            for item in params.get("Items"):
+                obj = RayJobSubmitEntity()
+                obj._deserialize(item)
+                self._Items.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class ListRayClustersRequest(AbstractModel):
+    r"""ListRayClusters请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _StartTime: <p>起始时间（毫秒时间戳）</p>
+        :type StartTime: int
+        :param _EndTime: <p>截止时间（毫秒时间戳）</p>
+        :type EndTime: int
+        :param _Page: <p>当前页码（从1开始）</p>
+        :type Page: int
+        :param _PageSize: <p>每页数量</p>
+        :type PageSize: int
+        :param _Filters: <p>过滤条件列表</p>
+        :type Filters: list of Filter
+        :param _SortFields: <p>排序字段列表</p>
+        :type SortFields: list of SortField
+        """
+        self._StartTime = None
+        self._EndTime = None
+        self._Page = None
+        self._PageSize = None
+        self._Filters = None
+        self._SortFields = None
+
+    @property
+    def StartTime(self):
+        r"""<p>起始时间（毫秒时间戳）</p>
+        :rtype: int
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""<p>截止时间（毫秒时间戳）</p>
+        :rtype: int
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def Page(self):
+        r"""<p>当前页码（从1开始）</p>
+        :rtype: int
+        """
+        return self._Page
+
+    @Page.setter
+    def Page(self, Page):
+        self._Page = Page
+
+    @property
+    def PageSize(self):
+        r"""<p>每页数量</p>
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def Filters(self):
+        r"""<p>过滤条件列表</p>
+        :rtype: list of Filter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def SortFields(self):
+        r"""<p>排序字段列表</p>
+        :rtype: list of SortField
+        """
+        return self._SortFields
+
+    @SortFields.setter
+    def SortFields(self, SortFields):
+        self._SortFields = SortFields
+
+
+    def _deserialize(self, params):
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._Page = params.get("Page")
+        self._PageSize = params.get("PageSize")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        if params.get("SortFields") is not None:
+            self._SortFields = []
+            for item in params.get("SortFields"):
+                obj = SortField()
+                obj._deserialize(item)
+                self._SortFields.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ListRayClustersResponse(AbstractModel):
+    r"""ListRayClusters返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Total: <p>总记录数</p>
+        :type Total: int
+        :param _Page: <p>当前页码（从1开始）</p>
+        :type Page: int
+        :param _PageSize: <p>每页数量</p>
+        :type PageSize: int
+        :param _TotalPages: <p>总页数</p>
+        :type TotalPages: int
+        :param _Items: <p>Ray cluster列表</p>
+        :type Items: list of RayClusterEntity
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Total = None
+        self._Page = None
+        self._PageSize = None
+        self._TotalPages = None
+        self._Items = None
+        self._RequestId = None
+
+    @property
+    def Total(self):
+        r"""<p>总记录数</p>
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def Page(self):
+        r"""<p>当前页码（从1开始）</p>
+        :rtype: int
+        """
+        return self._Page
+
+    @Page.setter
+    def Page(self, Page):
+        self._Page = Page
+
+    @property
+    def PageSize(self):
+        r"""<p>每页数量</p>
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def TotalPages(self):
+        r"""<p>总页数</p>
+        :rtype: int
+        """
+        return self._TotalPages
+
+    @TotalPages.setter
+    def TotalPages(self, TotalPages):
+        self._TotalPages = TotalPages
+
+    @property
+    def Items(self):
+        r"""<p>Ray cluster列表</p>
+        :rtype: list of RayClusterEntity
+        """
+        return self._Items
+
+    @Items.setter
+    def Items(self, Items):
+        self._Items = Items
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Total = params.get("Total")
+        self._Page = params.get("Page")
+        self._PageSize = params.get("PageSize")
+        self._TotalPages = params.get("TotalPages")
+        if params.get("Items") is not None:
+            self._Items = []
+            for item in params.get("Items"):
+                obj = RayClusterEntity()
+                obj._deserialize(item)
+                self._Items.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class ListRayJobsRequest(AbstractModel):
+    r"""ListRayJobs请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Page: 当前页码（从1开始）
+        :type Page: int
+        :param _PageSize: 页数
+        :type PageSize: int
+        :param _Filters: 过滤条件列表（列表的字段名称）
+        :type Filters: list of Filter
+        :param _StartTime: 提交时间起始过滤-时间戳（毫秒，可选）
+        :type StartTime: int
+        :param _EndTime: 提交时间截止过滤-时间戳（毫秒，可选）
+        :type EndTime: int
+        :param _SortFields: 排序字段列表（列表字段）
+        :type SortFields: list of SortField
+        """
+        self._Page = None
+        self._PageSize = None
+        self._Filters = None
+        self._StartTime = None
+        self._EndTime = None
+        self._SortFields = None
+
+    @property
+    def Page(self):
+        r"""当前页码（从1开始）
+        :rtype: int
+        """
+        return self._Page
+
+    @Page.setter
+    def Page(self, Page):
+        self._Page = Page
+
+    @property
+    def PageSize(self):
+        r"""页数
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def Filters(self):
+        r"""过滤条件列表（列表的字段名称）
+        :rtype: list of Filter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def StartTime(self):
+        r"""提交时间起始过滤-时间戳（毫秒，可选）
+        :rtype: int
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""提交时间截止过滤-时间戳（毫秒，可选）
+        :rtype: int
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def SortFields(self):
+        r"""排序字段列表（列表字段）
+        :rtype: list of SortField
+        """
+        return self._SortFields
+
+    @SortFields.setter
+    def SortFields(self, SortFields):
+        self._SortFields = SortFields
+
+
+    def _deserialize(self, params):
+        self._Page = params.get("Page")
+        self._PageSize = params.get("PageSize")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        if params.get("SortFields") is not None:
+            self._SortFields = []
+            for item in params.get("SortFields"):
+                obj = SortField()
+                obj._deserialize(item)
+                self._SortFields.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ListRayJobsResponse(AbstractModel):
+    r"""ListRayJobs返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Page: 当前页码（从1开始）
+        :type Page: int
+        :param _PageSize: 页数
+        :type PageSize: int
+        :param _TotalPages: 总页数
+        :type TotalPages: int
+        :param _Items: ray作业列表
+        :type Items: list of RayJobSubmitEntity
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Page = None
+        self._PageSize = None
+        self._TotalPages = None
+        self._Items = None
+        self._RequestId = None
+
+    @property
+    def Page(self):
+        r"""当前页码（从1开始）
+        :rtype: int
+        """
+        return self._Page
+
+    @Page.setter
+    def Page(self, Page):
+        self._Page = Page
+
+    @property
+    def PageSize(self):
+        r"""页数
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def TotalPages(self):
+        r"""总页数
+        :rtype: int
+        """
+        return self._TotalPages
+
+    @TotalPages.setter
+    def TotalPages(self, TotalPages):
+        self._TotalPages = TotalPages
+
+    @property
+    def Items(self):
+        r"""ray作业列表
+        :rtype: list of RayJobSubmitEntity
+        """
+        return self._Items
+
+    @Items.setter
+    def Items(self, Items):
+        self._Items = Items
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Page = params.get("Page")
+        self._PageSize = params.get("PageSize")
+        self._TotalPages = params.get("TotalPages")
+        if params.get("Items") is not None:
+            self._Items = []
+            for item in params.get("Items"):
+                obj = RayJobSubmitEntity()
+                obj._deserialize(item)
+                self._Items.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class ListResourceConfigsRequest(AbstractModel):
+    r"""ListResourceConfigs请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Page: 当前页码（从1开始）
+        :type Page: int
+        :param _PageSize: 页数
+        :type PageSize: int
+        :param _Filters: 过滤条件列表（列表字段名称）
+        :type Filters: list of Filter
+        :param _StartTime: 提交时间起始过滤-时间戳（毫秒）
+        :type StartTime: int
+        :param _EndTime: 提交时间截止过滤-时间戳（毫秒）
+        :type EndTime: int
+        :param _SortFields: 排序字段列表（列表字段名称）
+        :type SortFields: list of SortField
+        """
+        self._Page = None
+        self._PageSize = None
+        self._Filters = None
+        self._StartTime = None
+        self._EndTime = None
+        self._SortFields = None
+
+    @property
+    def Page(self):
+        r"""当前页码（从1开始）
+        :rtype: int
+        """
+        return self._Page
+
+    @Page.setter
+    def Page(self, Page):
+        self._Page = Page
+
+    @property
+    def PageSize(self):
+        r"""页数
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def Filters(self):
+        r"""过滤条件列表（列表字段名称）
+        :rtype: list of Filter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def StartTime(self):
+        r"""提交时间起始过滤-时间戳（毫秒）
+        :rtype: int
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""提交时间截止过滤-时间戳（毫秒）
+        :rtype: int
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def SortFields(self):
+        r"""排序字段列表（列表字段名称）
+        :rtype: list of SortField
+        """
+        return self._SortFields
+
+    @SortFields.setter
+    def SortFields(self, SortFields):
+        self._SortFields = SortFields
+
+
+    def _deserialize(self, params):
+        self._Page = params.get("Page")
+        self._PageSize = params.get("PageSize")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        if params.get("SortFields") is not None:
+            self._SortFields = []
+            for item in params.get("SortFields"):
+                obj = SortField()
+                obj._deserialize(item)
+                self._SortFields.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ListResourceConfigsResponse(AbstractModel):
+    r"""ListResourceConfigs返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Total: 总记录数
+        :type Total: int
+        :param _Page: 当前页码（从1开始）
+        :type Page: int
+        :param _PageSize: 页数
+        :type PageSize: int
+        :param _TotalPages: 总页数
+        :type TotalPages: int
+        :param _Items: 资源配置模板列表
+        :type Items: list of ResourceConfig
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Total = None
+        self._Page = None
+        self._PageSize = None
+        self._TotalPages = None
+        self._Items = None
+        self._RequestId = None
+
+    @property
+    def Total(self):
+        r"""总记录数
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def Page(self):
+        r"""当前页码（从1开始）
+        :rtype: int
+        """
+        return self._Page
+
+    @Page.setter
+    def Page(self, Page):
+        self._Page = Page
+
+    @property
+    def PageSize(self):
+        r"""页数
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def TotalPages(self):
+        r"""总页数
+        :rtype: int
+        """
+        return self._TotalPages
+
+    @TotalPages.setter
+    def TotalPages(self, TotalPages):
+        self._TotalPages = TotalPages
+
+    @property
+    def Items(self):
+        r"""资源配置模板列表
+        :rtype: list of ResourceConfig
+        """
+        return self._Items
+
+    @Items.setter
+    def Items(self, Items):
+        self._Items = Items
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Total = params.get("Total")
+        self._Page = params.get("Page")
+        self._PageSize = params.get("PageSize")
+        self._TotalPages = params.get("TotalPages")
+        if params.get("Items") is not None:
+            self._Items = []
+            for item in params.get("Items"):
+                obj = ResourceConfig()
+                obj._deserialize(item)
+                self._Items.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -33797,6 +49369,435 @@ class ModifyAdvancedStoreLocationResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyClusterPriorityRequest(AbstractModel):
+    r"""ModifyClusterPriority请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: <p>集群ID</p>
+        :type Id: str
+        :param _Priority: <p>优先级（1-9，数字越大优先级越高）</p>
+        :type Priority: int
+        """
+        self._Id = None
+        self._Priority = None
+
+    @property
+    def Id(self):
+        r"""<p>集群ID</p>
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Priority(self):
+        r"""<p>优先级（1-9，数字越大优先级越高）</p>
+        :rtype: int
+        """
+        return self._Priority
+
+    @Priority.setter
+    def Priority(self, Priority):
+        self._Priority = Priority
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._Priority = params.get("Priority")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyClusterPriorityResponse(AbstractModel):
+    r"""ModifyClusterPriority返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: <p>集群ID</p>
+        :type Id: str
+        :param _Type: <p>资源类型：CLUSTER-普通集群；WORKSPACE-数据实验室（开发入口）</p>
+        :type Type: str
+        :param _Name: <p>集群名称</p>
+        :type Name: str
+        :param _ResourcePartitionId: <p>所属资源分区ID</p>
+        :type ResourcePartitionId: str
+        :param _Queue: <p>所属队列名称</p>
+        :type Queue: str
+        :param _AppId: <p>应用ID</p>
+        :type AppId: int
+        :param _Uin: <p>用户UIN</p>
+        :type Uin: str
+        :param _SubAccountUin: <p>子账号UIN</p>
+        :type SubAccountUin: str
+        :param _Status: <p>集群状态</p>
+        :type Status: str
+        :param _CreateTime: <p>创建时间</p>
+        :type CreateTime: int
+        :param _GroupId: <p>计算组 ID</p>
+        :type GroupId: str
+        :param _GroupName: <p>所属集群组名称</p>
+        :type GroupName: str
+        :param _ResourceConfig: <p>资源配置(JSON)</p>
+        :type ResourceConfig: str
+        :param _ResourceConfigId: <p>资源配置ID</p>
+        :type ResourceConfigId: str
+        :param _Image: <p>镜像地址</p>
+        :type Image: str
+        :param _Catalog: <p>存储卷和挂载卷配置(JSON)</p>
+        :type Catalog: str
+        :param _HistoryUrl: <p>Dashboard URL / 历史记录链接</p>
+        :type HistoryUrl: str
+        :param _ImagePullPolicy: <p>镜像拉取策略</p>
+        :type ImagePullPolicy: str
+        :param _ImagePullType: <p>镜像拉取类型（BuiltIn: 内置, Custom: 自定义-TCR, CustomCcr: 自定义-CCR）</p>
+        :type ImagePullType: str
+        :param _AdvancedOptions: <p>高级参数（规范化后的扁平 KV JSON）</p>
+        :type AdvancedOptions: str
+        :param _Priority: <p>优先级（1-9，数字越大优先级越高）</p>
+        :type Priority: int
+        :param _StartTime: <p>启动时间（最近一次启动）</p>
+        :type StartTime: int
+        :param _Tags: <p>标签列表（TagKey-TagValue）</p>
+        :type Tags: list of Tag
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Id = None
+        self._Type = None
+        self._Name = None
+        self._ResourcePartitionId = None
+        self._Queue = None
+        self._AppId = None
+        self._Uin = None
+        self._SubAccountUin = None
+        self._Status = None
+        self._CreateTime = None
+        self._GroupId = None
+        self._GroupName = None
+        self._ResourceConfig = None
+        self._ResourceConfigId = None
+        self._Image = None
+        self._Catalog = None
+        self._HistoryUrl = None
+        self._ImagePullPolicy = None
+        self._ImagePullType = None
+        self._AdvancedOptions = None
+        self._Priority = None
+        self._StartTime = None
+        self._Tags = None
+        self._RequestId = None
+
+    @property
+    def Id(self):
+        r"""<p>集群ID</p>
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Type(self):
+        r"""<p>资源类型：CLUSTER-普通集群；WORKSPACE-数据实验室（开发入口）</p>
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Name(self):
+        r"""<p>集群名称</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def ResourcePartitionId(self):
+        r"""<p>所属资源分区ID</p>
+        :rtype: str
+        """
+        return self._ResourcePartitionId
+
+    @ResourcePartitionId.setter
+    def ResourcePartitionId(self, ResourcePartitionId):
+        self._ResourcePartitionId = ResourcePartitionId
+
+    @property
+    def Queue(self):
+        r"""<p>所属队列名称</p>
+        :rtype: str
+        """
+        return self._Queue
+
+    @Queue.setter
+    def Queue(self, Queue):
+        self._Queue = Queue
+
+    @property
+    def AppId(self):
+        r"""<p>应用ID</p>
+        :rtype: int
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def Uin(self):
+        r"""<p>用户UIN</p>
+        :rtype: str
+        """
+        return self._Uin
+
+    @Uin.setter
+    def Uin(self, Uin):
+        self._Uin = Uin
+
+    @property
+    def SubAccountUin(self):
+        r"""<p>子账号UIN</p>
+        :rtype: str
+        """
+        return self._SubAccountUin
+
+    @SubAccountUin.setter
+    def SubAccountUin(self, SubAccountUin):
+        self._SubAccountUin = SubAccountUin
+
+    @property
+    def Status(self):
+        r"""<p>集群状态</p>
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def CreateTime(self):
+        r"""<p>创建时间</p>
+        :rtype: int
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def GroupId(self):
+        r"""<p>计算组 ID</p>
+        :rtype: str
+        """
+        return self._GroupId
+
+    @GroupId.setter
+    def GroupId(self, GroupId):
+        self._GroupId = GroupId
+
+    @property
+    def GroupName(self):
+        r"""<p>所属集群组名称</p>
+        :rtype: str
+        """
+        return self._GroupName
+
+    @GroupName.setter
+    def GroupName(self, GroupName):
+        self._GroupName = GroupName
+
+    @property
+    def ResourceConfig(self):
+        r"""<p>资源配置(JSON)</p>
+        :rtype: str
+        """
+        return self._ResourceConfig
+
+    @ResourceConfig.setter
+    def ResourceConfig(self, ResourceConfig):
+        self._ResourceConfig = ResourceConfig
+
+    @property
+    def ResourceConfigId(self):
+        r"""<p>资源配置ID</p>
+        :rtype: str
+        """
+        return self._ResourceConfigId
+
+    @ResourceConfigId.setter
+    def ResourceConfigId(self, ResourceConfigId):
+        self._ResourceConfigId = ResourceConfigId
+
+    @property
+    def Image(self):
+        r"""<p>镜像地址</p>
+        :rtype: str
+        """
+        return self._Image
+
+    @Image.setter
+    def Image(self, Image):
+        self._Image = Image
+
+    @property
+    def Catalog(self):
+        r"""<p>存储卷和挂载卷配置(JSON)</p>
+        :rtype: str
+        """
+        return self._Catalog
+
+    @Catalog.setter
+    def Catalog(self, Catalog):
+        self._Catalog = Catalog
+
+    @property
+    def HistoryUrl(self):
+        r"""<p>Dashboard URL / 历史记录链接</p>
+        :rtype: str
+        """
+        return self._HistoryUrl
+
+    @HistoryUrl.setter
+    def HistoryUrl(self, HistoryUrl):
+        self._HistoryUrl = HistoryUrl
+
+    @property
+    def ImagePullPolicy(self):
+        r"""<p>镜像拉取策略</p>
+        :rtype: str
+        """
+        return self._ImagePullPolicy
+
+    @ImagePullPolicy.setter
+    def ImagePullPolicy(self, ImagePullPolicy):
+        self._ImagePullPolicy = ImagePullPolicy
+
+    @property
+    def ImagePullType(self):
+        r"""<p>镜像拉取类型（BuiltIn: 内置, Custom: 自定义-TCR, CustomCcr: 自定义-CCR）</p>
+        :rtype: str
+        """
+        return self._ImagePullType
+
+    @ImagePullType.setter
+    def ImagePullType(self, ImagePullType):
+        self._ImagePullType = ImagePullType
+
+    @property
+    def AdvancedOptions(self):
+        r"""<p>高级参数（规范化后的扁平 KV JSON）</p>
+        :rtype: str
+        """
+        return self._AdvancedOptions
+
+    @AdvancedOptions.setter
+    def AdvancedOptions(self, AdvancedOptions):
+        self._AdvancedOptions = AdvancedOptions
+
+    @property
+    def Priority(self):
+        r"""<p>优先级（1-9，数字越大优先级越高）</p>
+        :rtype: int
+        """
+        return self._Priority
+
+    @Priority.setter
+    def Priority(self, Priority):
+        self._Priority = Priority
+
+    @property
+    def StartTime(self):
+        r"""<p>启动时间（最近一次启动）</p>
+        :rtype: int
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def Tags(self):
+        r"""<p>标签列表（TagKey-TagValue）</p>
+        :rtype: list of Tag
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._Type = params.get("Type")
+        self._Name = params.get("Name")
+        self._ResourcePartitionId = params.get("ResourcePartitionId")
+        self._Queue = params.get("Queue")
+        self._AppId = params.get("AppId")
+        self._Uin = params.get("Uin")
+        self._SubAccountUin = params.get("SubAccountUin")
+        self._Status = params.get("Status")
+        self._CreateTime = params.get("CreateTime")
+        self._GroupId = params.get("GroupId")
+        self._GroupName = params.get("GroupName")
+        self._ResourceConfig = params.get("ResourceConfig")
+        self._ResourceConfigId = params.get("ResourceConfigId")
+        self._Image = params.get("Image")
+        self._Catalog = params.get("Catalog")
+        self._HistoryUrl = params.get("HistoryUrl")
+        self._ImagePullPolicy = params.get("ImagePullPolicy")
+        self._ImagePullType = params.get("ImagePullType")
+        self._AdvancedOptions = params.get("AdvancedOptions")
+        self._Priority = params.get("Priority")
+        self._StartTime = params.get("StartTime")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyDataEngineDescriptionRequest(AbstractModel):
     r"""ModifyDataEngineDescription请求参数结构体
 
@@ -33907,6 +49908,622 @@ class ModifyGovernEventRuleResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyLabPriorityRequest(AbstractModel):
+    r"""ModifyLabPriority请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: <p>数据实验室ID</p>
+        :type Id: str
+        :param _Priority: <p>优先级（1-9，数字越大优先级越高）</p>
+        :type Priority: int
+        """
+        self._Id = None
+        self._Priority = None
+
+    @property
+    def Id(self):
+        r"""<p>数据实验室ID</p>
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Priority(self):
+        r"""<p>优先级（1-9，数字越大优先级越高）</p>
+        :rtype: int
+        """
+        return self._Priority
+
+    @Priority.setter
+    def Priority(self, Priority):
+        self._Priority = Priority
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._Priority = params.get("Priority")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyLabPriorityResponse(AbstractModel):
+    r"""ModifyLabPriority返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ExampleId: <p>案例模板ID（startMode=EXAMPLE 时使用）</p>
+        :type ExampleId: str
+        :param _CodeArchiveUrl: <p>代码包/工程归档地址</p>
+        :type CodeArchiveUrl: str
+        :param _Services: <p>数据实验室服务入口（服务类型 -&gt; 访问地址）</p>
+        :type Services: list of TypeKVPair
+        :param _LabImage: <p>Lab 镜像地址（必填，用于开发工具如 Jupyter/VSCode/WebShell）。前端在&quot;内置 / 自定义&quot;两态中选择此值；当 Image 字段未显式传入时，后端会基于该字段按 R1（镜像表命中）/R2（同值 fallback）派生 Ray 集群镜像。</p>
+        :type LabImage: str
+        :param _Id: <p>集群ID</p>
+        :type Id: str
+        :param _Type: <p>资源类型：CLUSTER-普通集群；WORKSPACE-数据实验室（开发入口）</p>
+        :type Type: str
+        :param _Name: <p>集群名称</p>
+        :type Name: str
+        :param _Description: <p>集群描述</p>
+        :type Description: str
+        :param _ResourcePartitionId: <p>所属资源分区ID</p>
+        :type ResourcePartitionId: str
+        :param _ResourcePartitionName: <p>默认资源分区名称</p>
+        :type ResourcePartitionName: str
+        :param _Queue: <p>所属队列名称</p>
+        :type Queue: str
+        :param _AppId: <p>应用ID</p>
+        :type AppId: int
+        :param _Uin: <p>用户UIN</p>
+        :type Uin: str
+        :param _SubAccountUin: <p>子用户UIN</p>
+        :type SubAccountUin: str
+        :param _Status: <p>集群状态</p>
+        :type Status: str
+        :param _StatusMessage: <p>状态详情/错误信息</p>
+        :type StatusMessage: str
+        :param _CreateTime: <p>创建时间</p>
+        :type CreateTime: int
+        :param _GroupName: <p>所属集群组名称</p>
+        :type GroupName: str
+        :param _GroupId: <p>计算组 ID</p>
+        :type GroupId: str
+        :param _ResourceConfig: <p>资源配置(JSON)</p>
+        :type ResourceConfig: str
+        :param _ResourceConfigId: <p>资源配置ID</p>
+        :type ResourceConfigId: str
+        :param _Image: <p>Ray 集群镜像地址（可选，OpenAPI/SDK 高级控制入口）。前端不再传递此字段；为空时后端按 R1（镜像表查询命中）→ R2（同值 fallback）顺序自动派生。非空时直接作为 Ray 集群镜像，跳过派生（EXPLICIT），且后端不校验其与 LabImage 的兼容性。</p>
+        :type Image: str
+        :param _Catalog: <p>存储卷和挂载卷配置(JSON)</p>
+        :type Catalog: str
+        :param _HistoryUrl: <p>Dashboard URL / 历史记录链接</p>
+        :type HistoryUrl: str
+        :param _ImagePullPolicy: <p>镜像拉取策略</p>
+        :type ImagePullPolicy: str
+        :param _AdvancedOptions: <p>高级参数（扁平 Key-Value 的 JSON 字符串），Key 以 spec. 开头，按 RayCluster CRD 下钻；详见 ADVANCED_CLUSTER_OPTIONS_DESIGN.md</p>
+        :type AdvancedOptions: str
+        :param _Priority: <p>优先级（1-9，数字越大优先级越高）</p>
+        :type Priority: int
+        :param _StartTime: <p>启动时间（最近一次启动）</p>
+        :type StartTime: int
+        :param _StopTime: <p>停止时间（最近一次停止/休眠）</p>
+        :type StopTime: int
+        :param _Tags: <p>标签列表（TagKey-TagValue）</p>
+        :type Tags: list of Tag
+        :param _PersistentWorkDir: <p>持久化工作目录配置（可选）。启用后将 COS/CFS 指定路径挂载到容器内 /workspace 工作目录，与现有 Catalog 的卷配置互斥（不允许同时在 Catalog 中显式声明 MountPath=/workspace）。</p>
+        :type PersistentWorkDir: :class:`tencentcloud.dlc.v20210125.models.PersistentWorkDir`
+        :param _EnableToken: <p>是否开启token认证</p>
+        :type EnableToken: bool
+        :param _LabImagePullType: <p>Lab sidecar 镜像拉取类型（BuiltIn: 内置, Custom: 自定义-TCR, CustomCcr: 自定义-CCR）</p>
+        :type LabImagePullType: str
+        :param _SubAccountName: <p>子用户名称（由聚合层通过 CAM 接口回填）</p>
+        :type SubAccountName: str
+        :param _ImagePullType: <p>镜像拉取类型（BuiltIn: 内置, Custom: 自定义-TCR, CustomCcr: 自定义-CCR）</p>
+        :type ImagePullType: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ExampleId = None
+        self._CodeArchiveUrl = None
+        self._Services = None
+        self._LabImage = None
+        self._Id = None
+        self._Type = None
+        self._Name = None
+        self._Description = None
+        self._ResourcePartitionId = None
+        self._ResourcePartitionName = None
+        self._Queue = None
+        self._AppId = None
+        self._Uin = None
+        self._SubAccountUin = None
+        self._Status = None
+        self._StatusMessage = None
+        self._CreateTime = None
+        self._GroupName = None
+        self._GroupId = None
+        self._ResourceConfig = None
+        self._ResourceConfigId = None
+        self._Image = None
+        self._Catalog = None
+        self._HistoryUrl = None
+        self._ImagePullPolicy = None
+        self._AdvancedOptions = None
+        self._Priority = None
+        self._StartTime = None
+        self._StopTime = None
+        self._Tags = None
+        self._PersistentWorkDir = None
+        self._EnableToken = None
+        self._LabImagePullType = None
+        self._SubAccountName = None
+        self._ImagePullType = None
+        self._RequestId = None
+
+    @property
+    def ExampleId(self):
+        r"""<p>案例模板ID（startMode=EXAMPLE 时使用）</p>
+        :rtype: str
+        """
+        return self._ExampleId
+
+    @ExampleId.setter
+    def ExampleId(self, ExampleId):
+        self._ExampleId = ExampleId
+
+    @property
+    def CodeArchiveUrl(self):
+        r"""<p>代码包/工程归档地址</p>
+        :rtype: str
+        """
+        return self._CodeArchiveUrl
+
+    @CodeArchiveUrl.setter
+    def CodeArchiveUrl(self, CodeArchiveUrl):
+        self._CodeArchiveUrl = CodeArchiveUrl
+
+    @property
+    def Services(self):
+        r"""<p>数据实验室服务入口（服务类型 -&gt; 访问地址）</p>
+        :rtype: list of TypeKVPair
+        """
+        return self._Services
+
+    @Services.setter
+    def Services(self, Services):
+        self._Services = Services
+
+    @property
+    def LabImage(self):
+        r"""<p>Lab 镜像地址（必填，用于开发工具如 Jupyter/VSCode/WebShell）。前端在&quot;内置 / 自定义&quot;两态中选择此值；当 Image 字段未显式传入时，后端会基于该字段按 R1（镜像表命中）/R2（同值 fallback）派生 Ray 集群镜像。</p>
+        :rtype: str
+        """
+        return self._LabImage
+
+    @LabImage.setter
+    def LabImage(self, LabImage):
+        self._LabImage = LabImage
+
+    @property
+    def Id(self):
+        r"""<p>集群ID</p>
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Type(self):
+        r"""<p>资源类型：CLUSTER-普通集群；WORKSPACE-数据实验室（开发入口）</p>
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Name(self):
+        r"""<p>集群名称</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Description(self):
+        r"""<p>集群描述</p>
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def ResourcePartitionId(self):
+        r"""<p>所属资源分区ID</p>
+        :rtype: str
+        """
+        return self._ResourcePartitionId
+
+    @ResourcePartitionId.setter
+    def ResourcePartitionId(self, ResourcePartitionId):
+        self._ResourcePartitionId = ResourcePartitionId
+
+    @property
+    def ResourcePartitionName(self):
+        r"""<p>默认资源分区名称</p>
+        :rtype: str
+        """
+        return self._ResourcePartitionName
+
+    @ResourcePartitionName.setter
+    def ResourcePartitionName(self, ResourcePartitionName):
+        self._ResourcePartitionName = ResourcePartitionName
+
+    @property
+    def Queue(self):
+        r"""<p>所属队列名称</p>
+        :rtype: str
+        """
+        return self._Queue
+
+    @Queue.setter
+    def Queue(self, Queue):
+        self._Queue = Queue
+
+    @property
+    def AppId(self):
+        r"""<p>应用ID</p>
+        :rtype: int
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def Uin(self):
+        r"""<p>用户UIN</p>
+        :rtype: str
+        """
+        return self._Uin
+
+    @Uin.setter
+    def Uin(self, Uin):
+        self._Uin = Uin
+
+    @property
+    def SubAccountUin(self):
+        r"""<p>子用户UIN</p>
+        :rtype: str
+        """
+        return self._SubAccountUin
+
+    @SubAccountUin.setter
+    def SubAccountUin(self, SubAccountUin):
+        self._SubAccountUin = SubAccountUin
+
+    @property
+    def Status(self):
+        r"""<p>集群状态</p>
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def StatusMessage(self):
+        r"""<p>状态详情/错误信息</p>
+        :rtype: str
+        """
+        return self._StatusMessage
+
+    @StatusMessage.setter
+    def StatusMessage(self, StatusMessage):
+        self._StatusMessage = StatusMessage
+
+    @property
+    def CreateTime(self):
+        r"""<p>创建时间</p>
+        :rtype: int
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def GroupName(self):
+        r"""<p>所属集群组名称</p>
+        :rtype: str
+        """
+        return self._GroupName
+
+    @GroupName.setter
+    def GroupName(self, GroupName):
+        self._GroupName = GroupName
+
+    @property
+    def GroupId(self):
+        r"""<p>计算组 ID</p>
+        :rtype: str
+        """
+        return self._GroupId
+
+    @GroupId.setter
+    def GroupId(self, GroupId):
+        self._GroupId = GroupId
+
+    @property
+    def ResourceConfig(self):
+        r"""<p>资源配置(JSON)</p>
+        :rtype: str
+        """
+        return self._ResourceConfig
+
+    @ResourceConfig.setter
+    def ResourceConfig(self, ResourceConfig):
+        self._ResourceConfig = ResourceConfig
+
+    @property
+    def ResourceConfigId(self):
+        r"""<p>资源配置ID</p>
+        :rtype: str
+        """
+        return self._ResourceConfigId
+
+    @ResourceConfigId.setter
+    def ResourceConfigId(self, ResourceConfigId):
+        self._ResourceConfigId = ResourceConfigId
+
+    @property
+    def Image(self):
+        r"""<p>Ray 集群镜像地址（可选，OpenAPI/SDK 高级控制入口）。前端不再传递此字段；为空时后端按 R1（镜像表查询命中）→ R2（同值 fallback）顺序自动派生。非空时直接作为 Ray 集群镜像，跳过派生（EXPLICIT），且后端不校验其与 LabImage 的兼容性。</p>
+        :rtype: str
+        """
+        return self._Image
+
+    @Image.setter
+    def Image(self, Image):
+        self._Image = Image
+
+    @property
+    def Catalog(self):
+        r"""<p>存储卷和挂载卷配置(JSON)</p>
+        :rtype: str
+        """
+        return self._Catalog
+
+    @Catalog.setter
+    def Catalog(self, Catalog):
+        self._Catalog = Catalog
+
+    @property
+    def HistoryUrl(self):
+        r"""<p>Dashboard URL / 历史记录链接</p>
+        :rtype: str
+        """
+        return self._HistoryUrl
+
+    @HistoryUrl.setter
+    def HistoryUrl(self, HistoryUrl):
+        self._HistoryUrl = HistoryUrl
+
+    @property
+    def ImagePullPolicy(self):
+        r"""<p>镜像拉取策略</p>
+        :rtype: str
+        """
+        return self._ImagePullPolicy
+
+    @ImagePullPolicy.setter
+    def ImagePullPolicy(self, ImagePullPolicy):
+        self._ImagePullPolicy = ImagePullPolicy
+
+    @property
+    def AdvancedOptions(self):
+        r"""<p>高级参数（扁平 Key-Value 的 JSON 字符串），Key 以 spec. 开头，按 RayCluster CRD 下钻；详见 ADVANCED_CLUSTER_OPTIONS_DESIGN.md</p>
+        :rtype: str
+        """
+        return self._AdvancedOptions
+
+    @AdvancedOptions.setter
+    def AdvancedOptions(self, AdvancedOptions):
+        self._AdvancedOptions = AdvancedOptions
+
+    @property
+    def Priority(self):
+        r"""<p>优先级（1-9，数字越大优先级越高）</p>
+        :rtype: int
+        """
+        return self._Priority
+
+    @Priority.setter
+    def Priority(self, Priority):
+        self._Priority = Priority
+
+    @property
+    def StartTime(self):
+        r"""<p>启动时间（最近一次启动）</p>
+        :rtype: int
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def StopTime(self):
+        r"""<p>停止时间（最近一次停止/休眠）</p>
+        :rtype: int
+        """
+        return self._StopTime
+
+    @StopTime.setter
+    def StopTime(self, StopTime):
+        self._StopTime = StopTime
+
+    @property
+    def Tags(self):
+        r"""<p>标签列表（TagKey-TagValue）</p>
+        :rtype: list of Tag
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def PersistentWorkDir(self):
+        r"""<p>持久化工作目录配置（可选）。启用后将 COS/CFS 指定路径挂载到容器内 /workspace 工作目录，与现有 Catalog 的卷配置互斥（不允许同时在 Catalog 中显式声明 MountPath=/workspace）。</p>
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.PersistentWorkDir`
+        """
+        return self._PersistentWorkDir
+
+    @PersistentWorkDir.setter
+    def PersistentWorkDir(self, PersistentWorkDir):
+        self._PersistentWorkDir = PersistentWorkDir
+
+    @property
+    def EnableToken(self):
+        r"""<p>是否开启token认证</p>
+        :rtype: bool
+        """
+        return self._EnableToken
+
+    @EnableToken.setter
+    def EnableToken(self, EnableToken):
+        self._EnableToken = EnableToken
+
+    @property
+    def LabImagePullType(self):
+        r"""<p>Lab sidecar 镜像拉取类型（BuiltIn: 内置, Custom: 自定义-TCR, CustomCcr: 自定义-CCR）</p>
+        :rtype: str
+        """
+        return self._LabImagePullType
+
+    @LabImagePullType.setter
+    def LabImagePullType(self, LabImagePullType):
+        self._LabImagePullType = LabImagePullType
+
+    @property
+    def SubAccountName(self):
+        r"""<p>子用户名称（由聚合层通过 CAM 接口回填）</p>
+        :rtype: str
+        """
+        return self._SubAccountName
+
+    @SubAccountName.setter
+    def SubAccountName(self, SubAccountName):
+        self._SubAccountName = SubAccountName
+
+    @property
+    def ImagePullType(self):
+        r"""<p>镜像拉取类型（BuiltIn: 内置, Custom: 自定义-TCR, CustomCcr: 自定义-CCR）</p>
+        :rtype: str
+        """
+        return self._ImagePullType
+
+    @ImagePullType.setter
+    def ImagePullType(self, ImagePullType):
+        self._ImagePullType = ImagePullType
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._ExampleId = params.get("ExampleId")
+        self._CodeArchiveUrl = params.get("CodeArchiveUrl")
+        if params.get("Services") is not None:
+            self._Services = []
+            for item in params.get("Services"):
+                obj = TypeKVPair()
+                obj._deserialize(item)
+                self._Services.append(obj)
+        self._LabImage = params.get("LabImage")
+        self._Id = params.get("Id")
+        self._Type = params.get("Type")
+        self._Name = params.get("Name")
+        self._Description = params.get("Description")
+        self._ResourcePartitionId = params.get("ResourcePartitionId")
+        self._ResourcePartitionName = params.get("ResourcePartitionName")
+        self._Queue = params.get("Queue")
+        self._AppId = params.get("AppId")
+        self._Uin = params.get("Uin")
+        self._SubAccountUin = params.get("SubAccountUin")
+        self._Status = params.get("Status")
+        self._StatusMessage = params.get("StatusMessage")
+        self._CreateTime = params.get("CreateTime")
+        self._GroupName = params.get("GroupName")
+        self._GroupId = params.get("GroupId")
+        self._ResourceConfig = params.get("ResourceConfig")
+        self._ResourceConfigId = params.get("ResourceConfigId")
+        self._Image = params.get("Image")
+        self._Catalog = params.get("Catalog")
+        self._HistoryUrl = params.get("HistoryUrl")
+        self._ImagePullPolicy = params.get("ImagePullPolicy")
+        self._AdvancedOptions = params.get("AdvancedOptions")
+        self._Priority = params.get("Priority")
+        self._StartTime = params.get("StartTime")
+        self._StopTime = params.get("StopTime")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
+        if params.get("PersistentWorkDir") is not None:
+            self._PersistentWorkDir = PersistentWorkDir()
+            self._PersistentWorkDir._deserialize(params.get("PersistentWorkDir"))
+        self._EnableToken = params.get("EnableToken")
+        self._LabImagePullType = params.get("LabImagePullType")
+        self._SubAccountName = params.get("SubAccountName")
+        self._ImagePullType = params.get("ImagePullType")
         self._RequestId = params.get("RequestId")
 
 
@@ -37635,6 +54252,102 @@ class PauseStandardEngineResourceGroupsResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class PersistentWorkDir(AbstractModel):
+    r"""Workspace 持久化工作目录配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Enabled: <p>是否启用持久化工作目录；为空或 false 时沿用 emptyDir 行为</p>
+        :type Enabled: bool
+        :param _Type: <p>持久化存储类型：COS / CFS</p>
+        :type Type: str
+        :param _Bucket: <p>COS Bucket 名称（Type=COS 时必填）</p>
+        :type Bucket: str
+        :param _FileSystemId: <p>CFS 文件系统 ID（Type=CFS 时必填）</p>
+        :type FileSystemId: str
+        :param _VolumeSubPath: <p>Bucket / 文件系统下的子路径，必须以 &#39;/&#39; 开头且不含 &#39;..&#39;</p>
+        :type VolumeSubPath: str
+        """
+        self._Enabled = None
+        self._Type = None
+        self._Bucket = None
+        self._FileSystemId = None
+        self._VolumeSubPath = None
+
+    @property
+    def Enabled(self):
+        r"""<p>是否启用持久化工作目录；为空或 false 时沿用 emptyDir 行为</p>
+        :rtype: bool
+        """
+        return self._Enabled
+
+    @Enabled.setter
+    def Enabled(self, Enabled):
+        self._Enabled = Enabled
+
+    @property
+    def Type(self):
+        r"""<p>持久化存储类型：COS / CFS</p>
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Bucket(self):
+        r"""<p>COS Bucket 名称（Type=COS 时必填）</p>
+        :rtype: str
+        """
+        return self._Bucket
+
+    @Bucket.setter
+    def Bucket(self, Bucket):
+        self._Bucket = Bucket
+
+    @property
+    def FileSystemId(self):
+        r"""<p>CFS 文件系统 ID（Type=CFS 时必填）</p>
+        :rtype: str
+        """
+        return self._FileSystemId
+
+    @FileSystemId.setter
+    def FileSystemId(self, FileSystemId):
+        self._FileSystemId = FileSystemId
+
+    @property
+    def VolumeSubPath(self):
+        r"""<p>Bucket / 文件系统下的子路径，必须以 &#39;/&#39; 开头且不含 &#39;..&#39;</p>
+        :rtype: str
+        """
+        return self._VolumeSubPath
+
+    @VolumeSubPath.setter
+    def VolumeSubPath(self, VolumeSubPath):
+        self._VolumeSubPath = VolumeSubPath
+
+
+    def _deserialize(self, params):
+        self._Enabled = params.get("Enabled")
+        self._Type = params.get("Type")
+        self._Bucket = params.get("Bucket")
+        self._FileSystemId = params.get("FileSystemId")
+        self._VolumeSubPath = params.get("VolumeSubPath")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Policy(AbstractModel):
     r"""权限对象
 
@@ -38705,6 +55418,1150 @@ class QueryTaskCostDetailResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class RayClusterEntity(AbstractModel):
+    r"""Ray集群实体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: <p>集群ID</p>
+        :type Id: str
+        :param _Type: <p>资源类型：CLUSTER-普通集群；WORKSPACE-数据实验室（开发入口）</p>
+        :type Type: str
+        :param _Name: <p>集群名称</p>
+        :type Name: str
+        :param _ResourcePartitionId: <p>所属资源分区ID</p>
+        :type ResourcePartitionId: str
+        :param _ResourcePartitionName: <p>默认资源分区名称</p>
+        :type ResourcePartitionName: str
+        :param _Queue: <p>所属队列名称</p>
+        :type Queue: str
+        :param _AppId: <p>应用ID</p>
+        :type AppId: int
+        :param _Uin: <p>用户UIN</p>
+        :type Uin: str
+        :param _SubAccountUin: <p>子用户UIN</p>
+        :type SubAccountUin: str
+        :param _SubAccountName: <p>子用户名称（由聚合层通过 CAM 接口回填）</p>
+        :type SubAccountName: str
+        :param _Status: <p>集群状态</p>
+        :type Status: str
+        :param _StatusMessage: <p>状态详情/错误信息</p>
+        :type StatusMessage: str
+        :param _CreateTime: <p>创建时间</p>
+        :type CreateTime: int
+        :param _GroupId: <p>计算组 ID</p>
+        :type GroupId: str
+        :param _GroupName: <p>所属集群组名称</p>
+        :type GroupName: str
+        :param _ResourceConfig: <p>资源配置(JSON)</p>
+        :type ResourceConfig: str
+        :param _ResourceConfigId: <p>资源配置ID</p>
+        :type ResourceConfigId: str
+        :param _Image: <p>镜像地址</p>
+        :type Image: str
+        :param _Catalog: <p>存储卷和挂载卷配置(JSON)</p>
+        :type Catalog: str
+        :param _HistoryUrl: <p>Dashboard URL / 历史记录链接</p>
+        :type HistoryUrl: str
+        :param _ImagePullPolicy: <p>镜像拉取策略</p>
+        :type ImagePullPolicy: str
+        :param _ImagePullType: <p>镜像拉取类型（BuiltIn: 内置, Custom: 自定义-TCR, CustomCcr: 自定义-CCR）</p>
+        :type ImagePullType: str
+        :param _AdvancedOptions: <p>高级参数（规范化后的扁平 KV JSON）</p>
+        :type AdvancedOptions: str
+        :param _Priority: <p>优先级（1-9，数字越大优先级越高）</p>
+        :type Priority: int
+        :param _StartTime: <p>启动时间（最近一次启动）</p>
+        :type StartTime: int
+        :param _StopTime: <p>停止时间（最近一次停止/休眠）</p>
+        :type StopTime: int
+        :param _Tags: <p>标签列表（TagKey-TagValue）</p>
+        :type Tags: list of Tag
+        """
+        self._Id = None
+        self._Type = None
+        self._Name = None
+        self._ResourcePartitionId = None
+        self._ResourcePartitionName = None
+        self._Queue = None
+        self._AppId = None
+        self._Uin = None
+        self._SubAccountUin = None
+        self._SubAccountName = None
+        self._Status = None
+        self._StatusMessage = None
+        self._CreateTime = None
+        self._GroupId = None
+        self._GroupName = None
+        self._ResourceConfig = None
+        self._ResourceConfigId = None
+        self._Image = None
+        self._Catalog = None
+        self._HistoryUrl = None
+        self._ImagePullPolicy = None
+        self._ImagePullType = None
+        self._AdvancedOptions = None
+        self._Priority = None
+        self._StartTime = None
+        self._StopTime = None
+        self._Tags = None
+
+    @property
+    def Id(self):
+        r"""<p>集群ID</p>
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Type(self):
+        r"""<p>资源类型：CLUSTER-普通集群；WORKSPACE-数据实验室（开发入口）</p>
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Name(self):
+        r"""<p>集群名称</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def ResourcePartitionId(self):
+        r"""<p>所属资源分区ID</p>
+        :rtype: str
+        """
+        return self._ResourcePartitionId
+
+    @ResourcePartitionId.setter
+    def ResourcePartitionId(self, ResourcePartitionId):
+        self._ResourcePartitionId = ResourcePartitionId
+
+    @property
+    def ResourcePartitionName(self):
+        r"""<p>默认资源分区名称</p>
+        :rtype: str
+        """
+        return self._ResourcePartitionName
+
+    @ResourcePartitionName.setter
+    def ResourcePartitionName(self, ResourcePartitionName):
+        self._ResourcePartitionName = ResourcePartitionName
+
+    @property
+    def Queue(self):
+        r"""<p>所属队列名称</p>
+        :rtype: str
+        """
+        return self._Queue
+
+    @Queue.setter
+    def Queue(self, Queue):
+        self._Queue = Queue
+
+    @property
+    def AppId(self):
+        r"""<p>应用ID</p>
+        :rtype: int
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def Uin(self):
+        r"""<p>用户UIN</p>
+        :rtype: str
+        """
+        return self._Uin
+
+    @Uin.setter
+    def Uin(self, Uin):
+        self._Uin = Uin
+
+    @property
+    def SubAccountUin(self):
+        r"""<p>子用户UIN</p>
+        :rtype: str
+        """
+        return self._SubAccountUin
+
+    @SubAccountUin.setter
+    def SubAccountUin(self, SubAccountUin):
+        self._SubAccountUin = SubAccountUin
+
+    @property
+    def SubAccountName(self):
+        r"""<p>子用户名称（由聚合层通过 CAM 接口回填）</p>
+        :rtype: str
+        """
+        return self._SubAccountName
+
+    @SubAccountName.setter
+    def SubAccountName(self, SubAccountName):
+        self._SubAccountName = SubAccountName
+
+    @property
+    def Status(self):
+        r"""<p>集群状态</p>
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def StatusMessage(self):
+        r"""<p>状态详情/错误信息</p>
+        :rtype: str
+        """
+        return self._StatusMessage
+
+    @StatusMessage.setter
+    def StatusMessage(self, StatusMessage):
+        self._StatusMessage = StatusMessage
+
+    @property
+    def CreateTime(self):
+        r"""<p>创建时间</p>
+        :rtype: int
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def GroupId(self):
+        r"""<p>计算组 ID</p>
+        :rtype: str
+        """
+        return self._GroupId
+
+    @GroupId.setter
+    def GroupId(self, GroupId):
+        self._GroupId = GroupId
+
+    @property
+    def GroupName(self):
+        r"""<p>所属集群组名称</p>
+        :rtype: str
+        """
+        return self._GroupName
+
+    @GroupName.setter
+    def GroupName(self, GroupName):
+        self._GroupName = GroupName
+
+    @property
+    def ResourceConfig(self):
+        r"""<p>资源配置(JSON)</p>
+        :rtype: str
+        """
+        return self._ResourceConfig
+
+    @ResourceConfig.setter
+    def ResourceConfig(self, ResourceConfig):
+        self._ResourceConfig = ResourceConfig
+
+    @property
+    def ResourceConfigId(self):
+        r"""<p>资源配置ID</p>
+        :rtype: str
+        """
+        return self._ResourceConfigId
+
+    @ResourceConfigId.setter
+    def ResourceConfigId(self, ResourceConfigId):
+        self._ResourceConfigId = ResourceConfigId
+
+    @property
+    def Image(self):
+        r"""<p>镜像地址</p>
+        :rtype: str
+        """
+        return self._Image
+
+    @Image.setter
+    def Image(self, Image):
+        self._Image = Image
+
+    @property
+    def Catalog(self):
+        r"""<p>存储卷和挂载卷配置(JSON)</p>
+        :rtype: str
+        """
+        return self._Catalog
+
+    @Catalog.setter
+    def Catalog(self, Catalog):
+        self._Catalog = Catalog
+
+    @property
+    def HistoryUrl(self):
+        r"""<p>Dashboard URL / 历史记录链接</p>
+        :rtype: str
+        """
+        return self._HistoryUrl
+
+    @HistoryUrl.setter
+    def HistoryUrl(self, HistoryUrl):
+        self._HistoryUrl = HistoryUrl
+
+    @property
+    def ImagePullPolicy(self):
+        r"""<p>镜像拉取策略</p>
+        :rtype: str
+        """
+        return self._ImagePullPolicy
+
+    @ImagePullPolicy.setter
+    def ImagePullPolicy(self, ImagePullPolicy):
+        self._ImagePullPolicy = ImagePullPolicy
+
+    @property
+    def ImagePullType(self):
+        r"""<p>镜像拉取类型（BuiltIn: 内置, Custom: 自定义-TCR, CustomCcr: 自定义-CCR）</p>
+        :rtype: str
+        """
+        return self._ImagePullType
+
+    @ImagePullType.setter
+    def ImagePullType(self, ImagePullType):
+        self._ImagePullType = ImagePullType
+
+    @property
+    def AdvancedOptions(self):
+        r"""<p>高级参数（规范化后的扁平 KV JSON）</p>
+        :rtype: str
+        """
+        return self._AdvancedOptions
+
+    @AdvancedOptions.setter
+    def AdvancedOptions(self, AdvancedOptions):
+        self._AdvancedOptions = AdvancedOptions
+
+    @property
+    def Priority(self):
+        r"""<p>优先级（1-9，数字越大优先级越高）</p>
+        :rtype: int
+        """
+        return self._Priority
+
+    @Priority.setter
+    def Priority(self, Priority):
+        self._Priority = Priority
+
+    @property
+    def StartTime(self):
+        r"""<p>启动时间（最近一次启动）</p>
+        :rtype: int
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def StopTime(self):
+        r"""<p>停止时间（最近一次停止/休眠）</p>
+        :rtype: int
+        """
+        return self._StopTime
+
+    @StopTime.setter
+    def StopTime(self, StopTime):
+        self._StopTime = StopTime
+
+    @property
+    def Tags(self):
+        r"""<p>标签列表（TagKey-TagValue）</p>
+        :rtype: list of Tag
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._Type = params.get("Type")
+        self._Name = params.get("Name")
+        self._ResourcePartitionId = params.get("ResourcePartitionId")
+        self._ResourcePartitionName = params.get("ResourcePartitionName")
+        self._Queue = params.get("Queue")
+        self._AppId = params.get("AppId")
+        self._Uin = params.get("Uin")
+        self._SubAccountUin = params.get("SubAccountUin")
+        self._SubAccountName = params.get("SubAccountName")
+        self._Status = params.get("Status")
+        self._StatusMessage = params.get("StatusMessage")
+        self._CreateTime = params.get("CreateTime")
+        self._GroupId = params.get("GroupId")
+        self._GroupName = params.get("GroupName")
+        self._ResourceConfig = params.get("ResourceConfig")
+        self._ResourceConfigId = params.get("ResourceConfigId")
+        self._Image = params.get("Image")
+        self._Catalog = params.get("Catalog")
+        self._HistoryUrl = params.get("HistoryUrl")
+        self._ImagePullPolicy = params.get("ImagePullPolicy")
+        self._ImagePullType = params.get("ImagePullType")
+        self._AdvancedOptions = params.get("AdvancedOptions")
+        self._Priority = params.get("Priority")
+        self._StartTime = params.get("StartTime")
+        self._StopTime = params.get("StopTime")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RayClusterHistory(AbstractModel):
+    r"""集群状态历史详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: <p>历史记录ID</p>
+        :type Id: int
+        :param _ClusterId: <p>集群/数据实验室ID</p>
+        :type ClusterId: str
+        :param _ClusterName: <p>集群/数据实验室名称</p>
+        :type ClusterName: str
+        :param _FromState: <p>源状态</p>
+        :type FromState: str
+        :param _ToState: <p>目标状态</p>
+        :type ToState: str
+        :param _Event: <p>触发事件</p>
+        :type Event: str
+        :param _Message: <p>消息</p>
+        :type Message: str
+        :param _TransitionTime: <p>转换时间（毫秒时间戳）</p>
+        :type TransitionTime: int
+        """
+        self._Id = None
+        self._ClusterId = None
+        self._ClusterName = None
+        self._FromState = None
+        self._ToState = None
+        self._Event = None
+        self._Message = None
+        self._TransitionTime = None
+
+    @property
+    def Id(self):
+        r"""<p>历史记录ID</p>
+        :rtype: int
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def ClusterId(self):
+        r"""<p>集群/数据实验室ID</p>
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def ClusterName(self):
+        r"""<p>集群/数据实验室名称</p>
+        :rtype: str
+        """
+        return self._ClusterName
+
+    @ClusterName.setter
+    def ClusterName(self, ClusterName):
+        self._ClusterName = ClusterName
+
+    @property
+    def FromState(self):
+        r"""<p>源状态</p>
+        :rtype: str
+        """
+        return self._FromState
+
+    @FromState.setter
+    def FromState(self, FromState):
+        self._FromState = FromState
+
+    @property
+    def ToState(self):
+        r"""<p>目标状态</p>
+        :rtype: str
+        """
+        return self._ToState
+
+    @ToState.setter
+    def ToState(self, ToState):
+        self._ToState = ToState
+
+    @property
+    def Event(self):
+        r"""<p>触发事件</p>
+        :rtype: str
+        """
+        return self._Event
+
+    @Event.setter
+    def Event(self, Event):
+        self._Event = Event
+
+    @property
+    def Message(self):
+        r"""<p>消息</p>
+        :rtype: str
+        """
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+    @property
+    def TransitionTime(self):
+        r"""<p>转换时间（毫秒时间戳）</p>
+        :rtype: int
+        """
+        return self._TransitionTime
+
+    @TransitionTime.setter
+    def TransitionTime(self, TransitionTime):
+        self._TransitionTime = TransitionTime
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._ClusterId = params.get("ClusterId")
+        self._ClusterName = params.get("ClusterName")
+        self._FromState = params.get("FromState")
+        self._ToState = params.get("ToState")
+        self._Event = params.get("Event")
+        self._Message = params.get("Message")
+        self._TransitionTime = params.get("TransitionTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RayJobEventItem(AbstractModel):
+    r"""Ray 任务事件项
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EventTime: <p>事件时间（Unix 时间戳，毫秒）</p>
+        :type EventTime: int
+        :param _Component: <p>组件名称，来源于 event.involvedObject.kind</p>
+        :type Component: str
+        :param _Level: <p>事件级别，来源于 event.type 的原始值（如 Normal、Warning）</p>
+        :type Level: str
+        :param _Message: <p>事件内容，来源于 event.message</p>
+        :type Message: str
+        :param _InvolvedObjectName: <p>关联的 K8s 对象名称，来源于 event.involvedObject.name</p>
+        :type InvolvedObjectName: str
+        :param _SourceComponent: <p>事件来源组件，来源于 event.source.component</p>
+        :type SourceComponent: str
+        :param _Reason: <p>事件原因，来源于 event.reason</p>
+        :type Reason: str
+        """
+        self._EventTime = None
+        self._Component = None
+        self._Level = None
+        self._Message = None
+        self._InvolvedObjectName = None
+        self._SourceComponent = None
+        self._Reason = None
+
+    @property
+    def EventTime(self):
+        r"""<p>事件时间（Unix 时间戳，毫秒）</p>
+        :rtype: int
+        """
+        return self._EventTime
+
+    @EventTime.setter
+    def EventTime(self, EventTime):
+        self._EventTime = EventTime
+
+    @property
+    def Component(self):
+        r"""<p>组件名称，来源于 event.involvedObject.kind</p>
+        :rtype: str
+        """
+        return self._Component
+
+    @Component.setter
+    def Component(self, Component):
+        self._Component = Component
+
+    @property
+    def Level(self):
+        r"""<p>事件级别，来源于 event.type 的原始值（如 Normal、Warning）</p>
+        :rtype: str
+        """
+        return self._Level
+
+    @Level.setter
+    def Level(self, Level):
+        self._Level = Level
+
+    @property
+    def Message(self):
+        r"""<p>事件内容，来源于 event.message</p>
+        :rtype: str
+        """
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+    @property
+    def InvolvedObjectName(self):
+        r"""<p>关联的 K8s 对象名称，来源于 event.involvedObject.name</p>
+        :rtype: str
+        """
+        return self._InvolvedObjectName
+
+    @InvolvedObjectName.setter
+    def InvolvedObjectName(self, InvolvedObjectName):
+        self._InvolvedObjectName = InvolvedObjectName
+
+    @property
+    def SourceComponent(self):
+        r"""<p>事件来源组件，来源于 event.source.component</p>
+        :rtype: str
+        """
+        return self._SourceComponent
+
+    @SourceComponent.setter
+    def SourceComponent(self, SourceComponent):
+        self._SourceComponent = SourceComponent
+
+    @property
+    def Reason(self):
+        r"""<p>事件原因，来源于 event.reason</p>
+        :rtype: str
+        """
+        return self._Reason
+
+    @Reason.setter
+    def Reason(self, Reason):
+        self._Reason = Reason
+
+
+    def _deserialize(self, params):
+        self._EventTime = params.get("EventTime")
+        self._Component = params.get("Component")
+        self._Level = params.get("Level")
+        self._Message = params.get("Message")
+        self._InvolvedObjectName = params.get("InvolvedObjectName")
+        self._SourceComponent = params.get("SourceComponent")
+        self._Reason = params.get("Reason")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RayJobSubmitEntity(AbstractModel):
+    r"""Ray任务提交实体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: <p>任务ID</p>
+        :type Id: str
+        :param _ResourcePartitionId: <p>所属资源分区ID</p>
+        :type ResourcePartitionId: str
+        :param _ResourcePartitionName: <p>默认资源分区名称</p>
+        :type ResourcePartitionName: str
+        :param _Queue: <p>所属队列名称</p>
+        :type Queue: str
+        :param _Status: <p>任务状态</p>
+        :type Status: str
+        :param _Entrypoint: <p>入口命令</p>
+        :type Entrypoint: str
+        :param _JobName: <p>任务名称</p>
+        :type JobName: str
+        :param _AppId: <p>应用ID</p>
+        :type AppId: int
+        :param _Uin: <p>用户主账号UIN</p>
+        :type Uin: str
+        :param _SubAccountUin: <p>子用户UIN</p>
+        :type SubAccountUin: str
+        :param _SubAccountName: <p>子用户名称（由聚合层通过 CAM 接口回填）</p>
+        :type SubAccountName: str
+        :param _HistoryUrl: <p>历史记录链接</p>
+        :type HistoryUrl: str
+        :param _RunningTime: <p>运行时间(ms)</p>
+        :type RunningTime: int
+        :param _FinishTime: <p>完成时间</p>
+        :type FinishTime: int
+        :param _CreateTime: <p>创建时间</p>
+        :type CreateTime: int
+        :param _ErrorMessage: <p>失败原因/错误信息</p>
+        :type ErrorMessage: str
+        :param _RuntimeEnv: <p>运行时环境配置(JSON)</p>
+        :type RuntimeEnv: str
+        :param _Image: <p>镜像地址</p>
+        :type Image: str
+        :param _ResourceConfig: <p>资源配置(JSON)</p>
+        :type ResourceConfig: str
+        :param _Catalog: <p>存储卷和挂载卷配置(JSON)</p>
+        :type Catalog: str
+        :param _ImagePullPolicy: <p>镜像拉取策略</p>
+        :type ImagePullPolicy: str
+        :param _AutoscalerOptions: <p>弹性伸缩配置(JSON)</p>
+        :type AutoscalerOptions: str
+        :param _SpecId: <p>来源配置ID</p>
+        :type SpecId: str
+        :param _SpecName: <p>来源配置名称</p>
+        :type SpecName: str
+        :param _AdvancedOptions: <p>高级参数，JSON 字符串（透传到 Neutrino）</p>
+        :type AdvancedOptions: str
+        :param _Priority: <p>作业优先级（1-9，数字越大优先级越高）</p>
+        :type Priority: int
+        :param _Tags: <p>标签列表（TagKey-TagValue），用于将资源与腾讯云标签系统中的标签绑定</p>
+        :type Tags: list of Tag
+        :param _JobSource: <p>作业来源（如 RAY_JOB / RAY_SERVE / 平台直提交等）</p>
+        :type JobSource: str
+        """
+        self._Id = None
+        self._ResourcePartitionId = None
+        self._ResourcePartitionName = None
+        self._Queue = None
+        self._Status = None
+        self._Entrypoint = None
+        self._JobName = None
+        self._AppId = None
+        self._Uin = None
+        self._SubAccountUin = None
+        self._SubAccountName = None
+        self._HistoryUrl = None
+        self._RunningTime = None
+        self._FinishTime = None
+        self._CreateTime = None
+        self._ErrorMessage = None
+        self._RuntimeEnv = None
+        self._Image = None
+        self._ResourceConfig = None
+        self._Catalog = None
+        self._ImagePullPolicy = None
+        self._AutoscalerOptions = None
+        self._SpecId = None
+        self._SpecName = None
+        self._AdvancedOptions = None
+        self._Priority = None
+        self._Tags = None
+        self._JobSource = None
+
+    @property
+    def Id(self):
+        r"""<p>任务ID</p>
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def ResourcePartitionId(self):
+        r"""<p>所属资源分区ID</p>
+        :rtype: str
+        """
+        return self._ResourcePartitionId
+
+    @ResourcePartitionId.setter
+    def ResourcePartitionId(self, ResourcePartitionId):
+        self._ResourcePartitionId = ResourcePartitionId
+
+    @property
+    def ResourcePartitionName(self):
+        r"""<p>默认资源分区名称</p>
+        :rtype: str
+        """
+        return self._ResourcePartitionName
+
+    @ResourcePartitionName.setter
+    def ResourcePartitionName(self, ResourcePartitionName):
+        self._ResourcePartitionName = ResourcePartitionName
+
+    @property
+    def Queue(self):
+        r"""<p>所属队列名称</p>
+        :rtype: str
+        """
+        return self._Queue
+
+    @Queue.setter
+    def Queue(self, Queue):
+        self._Queue = Queue
+
+    @property
+    def Status(self):
+        r"""<p>任务状态</p>
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Entrypoint(self):
+        r"""<p>入口命令</p>
+        :rtype: str
+        """
+        return self._Entrypoint
+
+    @Entrypoint.setter
+    def Entrypoint(self, Entrypoint):
+        self._Entrypoint = Entrypoint
+
+    @property
+    def JobName(self):
+        r"""<p>任务名称</p>
+        :rtype: str
+        """
+        return self._JobName
+
+    @JobName.setter
+    def JobName(self, JobName):
+        self._JobName = JobName
+
+    @property
+    def AppId(self):
+        r"""<p>应用ID</p>
+        :rtype: int
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def Uin(self):
+        r"""<p>用户主账号UIN</p>
+        :rtype: str
+        """
+        return self._Uin
+
+    @Uin.setter
+    def Uin(self, Uin):
+        self._Uin = Uin
+
+    @property
+    def SubAccountUin(self):
+        r"""<p>子用户UIN</p>
+        :rtype: str
+        """
+        return self._SubAccountUin
+
+    @SubAccountUin.setter
+    def SubAccountUin(self, SubAccountUin):
+        self._SubAccountUin = SubAccountUin
+
+    @property
+    def SubAccountName(self):
+        r"""<p>子用户名称（由聚合层通过 CAM 接口回填）</p>
+        :rtype: str
+        """
+        return self._SubAccountName
+
+    @SubAccountName.setter
+    def SubAccountName(self, SubAccountName):
+        self._SubAccountName = SubAccountName
+
+    @property
+    def HistoryUrl(self):
+        r"""<p>历史记录链接</p>
+        :rtype: str
+        """
+        return self._HistoryUrl
+
+    @HistoryUrl.setter
+    def HistoryUrl(self, HistoryUrl):
+        self._HistoryUrl = HistoryUrl
+
+    @property
+    def RunningTime(self):
+        r"""<p>运行时间(ms)</p>
+        :rtype: int
+        """
+        return self._RunningTime
+
+    @RunningTime.setter
+    def RunningTime(self, RunningTime):
+        self._RunningTime = RunningTime
+
+    @property
+    def FinishTime(self):
+        r"""<p>完成时间</p>
+        :rtype: int
+        """
+        return self._FinishTime
+
+    @FinishTime.setter
+    def FinishTime(self, FinishTime):
+        self._FinishTime = FinishTime
+
+    @property
+    def CreateTime(self):
+        r"""<p>创建时间</p>
+        :rtype: int
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def ErrorMessage(self):
+        r"""<p>失败原因/错误信息</p>
+        :rtype: str
+        """
+        return self._ErrorMessage
+
+    @ErrorMessage.setter
+    def ErrorMessage(self, ErrorMessage):
+        self._ErrorMessage = ErrorMessage
+
+    @property
+    def RuntimeEnv(self):
+        r"""<p>运行时环境配置(JSON)</p>
+        :rtype: str
+        """
+        return self._RuntimeEnv
+
+    @RuntimeEnv.setter
+    def RuntimeEnv(self, RuntimeEnv):
+        self._RuntimeEnv = RuntimeEnv
+
+    @property
+    def Image(self):
+        r"""<p>镜像地址</p>
+        :rtype: str
+        """
+        return self._Image
+
+    @Image.setter
+    def Image(self, Image):
+        self._Image = Image
+
+    @property
+    def ResourceConfig(self):
+        r"""<p>资源配置(JSON)</p>
+        :rtype: str
+        """
+        return self._ResourceConfig
+
+    @ResourceConfig.setter
+    def ResourceConfig(self, ResourceConfig):
+        self._ResourceConfig = ResourceConfig
+
+    @property
+    def Catalog(self):
+        r"""<p>存储卷和挂载卷配置(JSON)</p>
+        :rtype: str
+        """
+        return self._Catalog
+
+    @Catalog.setter
+    def Catalog(self, Catalog):
+        self._Catalog = Catalog
+
+    @property
+    def ImagePullPolicy(self):
+        r"""<p>镜像拉取策略</p>
+        :rtype: str
+        """
+        return self._ImagePullPolicy
+
+    @ImagePullPolicy.setter
+    def ImagePullPolicy(self, ImagePullPolicy):
+        self._ImagePullPolicy = ImagePullPolicy
+
+    @property
+    def AutoscalerOptions(self):
+        r"""<p>弹性伸缩配置(JSON)</p>
+        :rtype: str
+        """
+        return self._AutoscalerOptions
+
+    @AutoscalerOptions.setter
+    def AutoscalerOptions(self, AutoscalerOptions):
+        self._AutoscalerOptions = AutoscalerOptions
+
+    @property
+    def SpecId(self):
+        r"""<p>来源配置ID</p>
+        :rtype: str
+        """
+        return self._SpecId
+
+    @SpecId.setter
+    def SpecId(self, SpecId):
+        self._SpecId = SpecId
+
+    @property
+    def SpecName(self):
+        r"""<p>来源配置名称</p>
+        :rtype: str
+        """
+        return self._SpecName
+
+    @SpecName.setter
+    def SpecName(self, SpecName):
+        self._SpecName = SpecName
+
+    @property
+    def AdvancedOptions(self):
+        r"""<p>高级参数，JSON 字符串（透传到 Neutrino）</p>
+        :rtype: str
+        """
+        return self._AdvancedOptions
+
+    @AdvancedOptions.setter
+    def AdvancedOptions(self, AdvancedOptions):
+        self._AdvancedOptions = AdvancedOptions
+
+    @property
+    def Priority(self):
+        r"""<p>作业优先级（1-9，数字越大优先级越高）</p>
+        :rtype: int
+        """
+        return self._Priority
+
+    @Priority.setter
+    def Priority(self, Priority):
+        self._Priority = Priority
+
+    @property
+    def Tags(self):
+        r"""<p>标签列表（TagKey-TagValue），用于将资源与腾讯云标签系统中的标签绑定</p>
+        :rtype: list of Tag
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def JobSource(self):
+        r"""<p>作业来源（如 RAY_JOB / RAY_SERVE / 平台直提交等）</p>
+        :rtype: str
+        """
+        return self._JobSource
+
+    @JobSource.setter
+    def JobSource(self, JobSource):
+        self._JobSource = JobSource
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._ResourcePartitionId = params.get("ResourcePartitionId")
+        self._ResourcePartitionName = params.get("ResourcePartitionName")
+        self._Queue = params.get("Queue")
+        self._Status = params.get("Status")
+        self._Entrypoint = params.get("Entrypoint")
+        self._JobName = params.get("JobName")
+        self._AppId = params.get("AppId")
+        self._Uin = params.get("Uin")
+        self._SubAccountUin = params.get("SubAccountUin")
+        self._SubAccountName = params.get("SubAccountName")
+        self._HistoryUrl = params.get("HistoryUrl")
+        self._RunningTime = params.get("RunningTime")
+        self._FinishTime = params.get("FinishTime")
+        self._CreateTime = params.get("CreateTime")
+        self._ErrorMessage = params.get("ErrorMessage")
+        self._RuntimeEnv = params.get("RuntimeEnv")
+        self._Image = params.get("Image")
+        self._ResourceConfig = params.get("ResourceConfig")
+        self._Catalog = params.get("Catalog")
+        self._ImagePullPolicy = params.get("ImagePullPolicy")
+        self._AutoscalerOptions = params.get("AutoscalerOptions")
+        self._SpecId = params.get("SpecId")
+        self._SpecName = params.get("SpecName")
+        self._AdvancedOptions = params.get("AdvancedOptions")
+        self._Priority = params.get("Priority")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
+        self._JobSource = params.get("JobSource")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class RegisterThirdPartyAccessUserRequest(AbstractModel):
     r"""RegisterThirdPartyAccessUser请求参数结构体
 
@@ -38983,6 +56840,199 @@ class ResourceConf(AbstractModel):
 
     def _deserialize(self, params):
         self._Parallelism = params.get("Parallelism")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ResourceConfig(AbstractModel):
+    r"""资源配置响应
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: <p>模板ID</p>
+        :type Id: str
+        :param _Name: <p>模板名称</p>
+        :type Name: str
+        :param _Description: <p>描述</p>
+        :type Description: str
+        :param _Type: <p>模板类型(ray,spark)</p>
+        :type Type: str
+        :param _Head: <p>Head节点配置</p>
+        :type Head: :class:`tencentcloud.dlc.v20210125.models.HeadSpecDTO`
+        :param _Worker: <p>Worker节点配置</p>
+        :type Worker: list of WorkerSpecDTO
+        :param _AppId: <p>应用ID</p>
+        :type AppId: int
+        :param _Uin: <p>创建者UIN</p>
+        :type Uin: str
+        :param _SubAccountUin: <p>子用户UIN</p>
+        :type SubAccountUin: str
+        :param _CreateTime: <p>创建时间</p>
+        :type CreateTime: int
+        :param _UpdateTime: <p>更新时间</p>
+        :type UpdateTime: int
+        """
+        self._Id = None
+        self._Name = None
+        self._Description = None
+        self._Type = None
+        self._Head = None
+        self._Worker = None
+        self._AppId = None
+        self._Uin = None
+        self._SubAccountUin = None
+        self._CreateTime = None
+        self._UpdateTime = None
+
+    @property
+    def Id(self):
+        r"""<p>模板ID</p>
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Name(self):
+        r"""<p>模板名称</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Description(self):
+        r"""<p>描述</p>
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def Type(self):
+        r"""<p>模板类型(ray,spark)</p>
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Head(self):
+        r"""<p>Head节点配置</p>
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.HeadSpecDTO`
+        """
+        return self._Head
+
+    @Head.setter
+    def Head(self, Head):
+        self._Head = Head
+
+    @property
+    def Worker(self):
+        r"""<p>Worker节点配置</p>
+        :rtype: list of WorkerSpecDTO
+        """
+        return self._Worker
+
+    @Worker.setter
+    def Worker(self, Worker):
+        self._Worker = Worker
+
+    @property
+    def AppId(self):
+        r"""<p>应用ID</p>
+        :rtype: int
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def Uin(self):
+        r"""<p>创建者UIN</p>
+        :rtype: str
+        """
+        return self._Uin
+
+    @Uin.setter
+    def Uin(self, Uin):
+        self._Uin = Uin
+
+    @property
+    def SubAccountUin(self):
+        r"""<p>子用户UIN</p>
+        :rtype: str
+        """
+        return self._SubAccountUin
+
+    @SubAccountUin.setter
+    def SubAccountUin(self, SubAccountUin):
+        self._SubAccountUin = SubAccountUin
+
+    @property
+    def CreateTime(self):
+        r"""<p>创建时间</p>
+        :rtype: int
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        r"""<p>更新时间</p>
+        :rtype: int
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._Name = params.get("Name")
+        self._Description = params.get("Description")
+        self._Type = params.get("Type")
+        if params.get("Head") is not None:
+            self._Head = HeadSpecDTO()
+            self._Head._deserialize(params.get("Head"))
+        if params.get("Worker") is not None:
+            self._Worker = []
+            for item in params.get("Worker"):
+                obj = WorkerSpecDTO()
+                obj._deserialize(item)
+                self._Worker.append(obj)
+        self._AppId = params.get("AppId")
+        self._Uin = params.get("Uin")
+        self._SubAccountUin = params.get("SubAccountUin")
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -39377,6 +57427,465 @@ class RollbackDataEngineImageResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class RunJobSpecRequest(AbstractModel):
+    r"""RunJobSpec请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SpecId: <p>配置ID</p>
+        :type SpecId: str
+        :param _FlowId: <p>外部工作流引擎业务键 flowId</p>
+        :type FlowId: str
+        :param _ExecutionId: <p>外部工作流引擎业务键 executionId</p>
+        :type ExecutionId: str
+        :param _JobSource: <p>业务来源标识（调用上下文，长度上限 64，禁止控制字符）</p>
+        :type JobSource: str
+        """
+        self._SpecId = None
+        self._FlowId = None
+        self._ExecutionId = None
+        self._JobSource = None
+
+    @property
+    def SpecId(self):
+        r"""<p>配置ID</p>
+        :rtype: str
+        """
+        return self._SpecId
+
+    @SpecId.setter
+    def SpecId(self, SpecId):
+        self._SpecId = SpecId
+
+    @property
+    def FlowId(self):
+        r"""<p>外部工作流引擎业务键 flowId</p>
+        :rtype: str
+        """
+        return self._FlowId
+
+    @FlowId.setter
+    def FlowId(self, FlowId):
+        self._FlowId = FlowId
+
+    @property
+    def ExecutionId(self):
+        r"""<p>外部工作流引擎业务键 executionId</p>
+        :rtype: str
+        """
+        return self._ExecutionId
+
+    @ExecutionId.setter
+    def ExecutionId(self, ExecutionId):
+        self._ExecutionId = ExecutionId
+
+    @property
+    def JobSource(self):
+        r"""<p>业务来源标识（调用上下文，长度上限 64，禁止控制字符）</p>
+        :rtype: str
+        """
+        return self._JobSource
+
+    @JobSource.setter
+    def JobSource(self, JobSource):
+        self._JobSource = JobSource
+
+
+    def _deserialize(self, params):
+        self._SpecId = params.get("SpecId")
+        self._FlowId = params.get("FlowId")
+        self._ExecutionId = params.get("ExecutionId")
+        self._JobSource = params.get("JobSource")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RunJobSpecResponse(AbstractModel):
+    r"""RunJobSpec返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: <p>任务ID</p>
+        :type Id: str
+        :param _ResourcePartitionId: <p>所属资源分区ID</p>
+        :type ResourcePartitionId: str
+        :param _Queue: <p>所属队列名称</p>
+        :type Queue: str
+        :param _Status: <p>任务状态</p>
+        :type Status: str
+        :param _Entrypoint: <p>入口命令</p>
+        :type Entrypoint: str
+        :param _JobName: <p>任务名称</p>
+        :type JobName: str
+        :param _AppId: <p>应用ID</p>
+        :type AppId: int
+        :param _Uin: <p>用户UIN</p>
+        :type Uin: str
+        :param _SubAccountUin: <p>子用户UIN</p>
+        :type SubAccountUin: str
+        :param _RunningTime: <p>运行时间(ms)</p>
+        :type RunningTime: int
+        :param _CreateTime: <p>创建时间</p>
+        :type CreateTime: int
+        :param _RuntimeEnv: <p>运行时环境配置(JSON)</p>
+        :type RuntimeEnv: str
+        :param _Image: <p>镜像地址</p>
+        :type Image: str
+        :param _ResourceConfig: <p>资源配置(JSON)</p>
+        :type ResourceConfig: str
+        :param _Catalog: <p>存储卷和挂载卷配置(JSON)</p>
+        :type Catalog: str
+        :param _ImagePullPolicy: <p>镜像拉取策略</p>
+        :type ImagePullPolicy: str
+        :param _AutoscalerOptions: <p>弹性伸缩配置(JSON)</p>
+        :type AutoscalerOptions: str
+        :param _SpecId: <p>来源配置ID</p>
+        :type SpecId: str
+        :param _SpecName: <p>来源配置名称</p>
+        :type SpecName: str
+        :param _AdvancedOptions: <p>高级参数</p>
+        :type AdvancedOptions: str
+        :param _Priority: <p>优先级</p>
+        :type Priority: int
+        :param _Tags: <p>标签列表（TagKey-TagValue），用于将资源与腾讯云标签系统中的标签绑定</p>
+        :type Tags: list of Tag
+        :param _JobSource: <p>业务来源标识（调用上下文，长度上限 64，禁止控制字符）</p>
+        :type JobSource: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Id = None
+        self._ResourcePartitionId = None
+        self._Queue = None
+        self._Status = None
+        self._Entrypoint = None
+        self._JobName = None
+        self._AppId = None
+        self._Uin = None
+        self._SubAccountUin = None
+        self._RunningTime = None
+        self._CreateTime = None
+        self._RuntimeEnv = None
+        self._Image = None
+        self._ResourceConfig = None
+        self._Catalog = None
+        self._ImagePullPolicy = None
+        self._AutoscalerOptions = None
+        self._SpecId = None
+        self._SpecName = None
+        self._AdvancedOptions = None
+        self._Priority = None
+        self._Tags = None
+        self._JobSource = None
+        self._RequestId = None
+
+    @property
+    def Id(self):
+        r"""<p>任务ID</p>
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def ResourcePartitionId(self):
+        r"""<p>所属资源分区ID</p>
+        :rtype: str
+        """
+        return self._ResourcePartitionId
+
+    @ResourcePartitionId.setter
+    def ResourcePartitionId(self, ResourcePartitionId):
+        self._ResourcePartitionId = ResourcePartitionId
+
+    @property
+    def Queue(self):
+        r"""<p>所属队列名称</p>
+        :rtype: str
+        """
+        return self._Queue
+
+    @Queue.setter
+    def Queue(self, Queue):
+        self._Queue = Queue
+
+    @property
+    def Status(self):
+        r"""<p>任务状态</p>
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Entrypoint(self):
+        r"""<p>入口命令</p>
+        :rtype: str
+        """
+        return self._Entrypoint
+
+    @Entrypoint.setter
+    def Entrypoint(self, Entrypoint):
+        self._Entrypoint = Entrypoint
+
+    @property
+    def JobName(self):
+        r"""<p>任务名称</p>
+        :rtype: str
+        """
+        return self._JobName
+
+    @JobName.setter
+    def JobName(self, JobName):
+        self._JobName = JobName
+
+    @property
+    def AppId(self):
+        r"""<p>应用ID</p>
+        :rtype: int
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def Uin(self):
+        r"""<p>用户UIN</p>
+        :rtype: str
+        """
+        return self._Uin
+
+    @Uin.setter
+    def Uin(self, Uin):
+        self._Uin = Uin
+
+    @property
+    def SubAccountUin(self):
+        r"""<p>子用户UIN</p>
+        :rtype: str
+        """
+        return self._SubAccountUin
+
+    @SubAccountUin.setter
+    def SubAccountUin(self, SubAccountUin):
+        self._SubAccountUin = SubAccountUin
+
+    @property
+    def RunningTime(self):
+        r"""<p>运行时间(ms)</p>
+        :rtype: int
+        """
+        return self._RunningTime
+
+    @RunningTime.setter
+    def RunningTime(self, RunningTime):
+        self._RunningTime = RunningTime
+
+    @property
+    def CreateTime(self):
+        r"""<p>创建时间</p>
+        :rtype: int
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def RuntimeEnv(self):
+        r"""<p>运行时环境配置(JSON)</p>
+        :rtype: str
+        """
+        return self._RuntimeEnv
+
+    @RuntimeEnv.setter
+    def RuntimeEnv(self, RuntimeEnv):
+        self._RuntimeEnv = RuntimeEnv
+
+    @property
+    def Image(self):
+        r"""<p>镜像地址</p>
+        :rtype: str
+        """
+        return self._Image
+
+    @Image.setter
+    def Image(self, Image):
+        self._Image = Image
+
+    @property
+    def ResourceConfig(self):
+        r"""<p>资源配置(JSON)</p>
+        :rtype: str
+        """
+        return self._ResourceConfig
+
+    @ResourceConfig.setter
+    def ResourceConfig(self, ResourceConfig):
+        self._ResourceConfig = ResourceConfig
+
+    @property
+    def Catalog(self):
+        r"""<p>存储卷和挂载卷配置(JSON)</p>
+        :rtype: str
+        """
+        return self._Catalog
+
+    @Catalog.setter
+    def Catalog(self, Catalog):
+        self._Catalog = Catalog
+
+    @property
+    def ImagePullPolicy(self):
+        r"""<p>镜像拉取策略</p>
+        :rtype: str
+        """
+        return self._ImagePullPolicy
+
+    @ImagePullPolicy.setter
+    def ImagePullPolicy(self, ImagePullPolicy):
+        self._ImagePullPolicy = ImagePullPolicy
+
+    @property
+    def AutoscalerOptions(self):
+        r"""<p>弹性伸缩配置(JSON)</p>
+        :rtype: str
+        """
+        return self._AutoscalerOptions
+
+    @AutoscalerOptions.setter
+    def AutoscalerOptions(self, AutoscalerOptions):
+        self._AutoscalerOptions = AutoscalerOptions
+
+    @property
+    def SpecId(self):
+        r"""<p>来源配置ID</p>
+        :rtype: str
+        """
+        return self._SpecId
+
+    @SpecId.setter
+    def SpecId(self, SpecId):
+        self._SpecId = SpecId
+
+    @property
+    def SpecName(self):
+        r"""<p>来源配置名称</p>
+        :rtype: str
+        """
+        return self._SpecName
+
+    @SpecName.setter
+    def SpecName(self, SpecName):
+        self._SpecName = SpecName
+
+    @property
+    def AdvancedOptions(self):
+        r"""<p>高级参数</p>
+        :rtype: str
+        """
+        return self._AdvancedOptions
+
+    @AdvancedOptions.setter
+    def AdvancedOptions(self, AdvancedOptions):
+        self._AdvancedOptions = AdvancedOptions
+
+    @property
+    def Priority(self):
+        r"""<p>优先级</p>
+        :rtype: int
+        """
+        return self._Priority
+
+    @Priority.setter
+    def Priority(self, Priority):
+        self._Priority = Priority
+
+    @property
+    def Tags(self):
+        r"""<p>标签列表（TagKey-TagValue），用于将资源与腾讯云标签系统中的标签绑定</p>
+        :rtype: list of Tag
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def JobSource(self):
+        r"""<p>业务来源标识（调用上下文，长度上限 64，禁止控制字符）</p>
+        :rtype: str
+        """
+        return self._JobSource
+
+    @JobSource.setter
+    def JobSource(self, JobSource):
+        self._JobSource = JobSource
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._ResourcePartitionId = params.get("ResourcePartitionId")
+        self._Queue = params.get("Queue")
+        self._Status = params.get("Status")
+        self._Entrypoint = params.get("Entrypoint")
+        self._JobName = params.get("JobName")
+        self._AppId = params.get("AppId")
+        self._Uin = params.get("Uin")
+        self._SubAccountUin = params.get("SubAccountUin")
+        self._RunningTime = params.get("RunningTime")
+        self._CreateTime = params.get("CreateTime")
+        self._RuntimeEnv = params.get("RuntimeEnv")
+        self._Image = params.get("Image")
+        self._ResourceConfig = params.get("ResourceConfig")
+        self._Catalog = params.get("Catalog")
+        self._ImagePullPolicy = params.get("ImagePullPolicy")
+        self._AutoscalerOptions = params.get("AutoscalerOptions")
+        self._SpecId = params.get("SpecId")
+        self._SpecName = params.get("SpecName")
+        self._AdvancedOptions = params.get("AdvancedOptions")
+        self._Priority = params.get("Priority")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
+        self._JobSource = params.get("JobSource")
         self._RequestId = params.get("RequestId")
 
 
@@ -40408,6 +58917,57 @@ class Sort(AbstractModel):
     def _deserialize(self, params):
         self._Field = params.get("Field")
         self._Asc = params.get("Asc")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SortField(AbstractModel):
+    r"""排序字段定义
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Field: 排序字段名，对应实体属性名（驼峰命名）
+        :type Field: str
+        :param _Order: 排序方向：ASC（升序）或DESC（降序），默认ASC
+        :type Order: str
+        """
+        self._Field = None
+        self._Order = None
+
+    @property
+    def Field(self):
+        r"""排序字段名，对应实体属性名（驼峰命名）
+        :rtype: str
+        """
+        return self._Field
+
+    @Field.setter
+    def Field(self, Field):
+        self._Field = Field
+
+    @property
+    def Order(self):
+        r"""排序方向：ASC（升序）或DESC（降序），默认ASC
+        :rtype: str
+        """
+        return self._Order
+
+    @Order.setter
+    def Order(self, Order):
+        self._Order = Order
+
+
+    def _deserialize(self, params):
+        self._Field = params.get("Field")
+        self._Order = params.get("Order")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -42463,6 +61023,1036 @@ class StandardEngineResourceGroupInfo(AbstractModel):
         
 
 
+class StartLabRequest(AbstractModel):
+    r"""StartLab请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: <p>工作区ID</p>
+        :type Id: str
+        """
+        self._Id = None
+
+    @property
+    def Id(self):
+        r"""<p>工作区ID</p>
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class StartLabResponse(AbstractModel):
+    r"""StartLab返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ExampleId: <p>案例模板ID（startMode=EXAMPLE 时使用）</p>
+        :type ExampleId: str
+        :param _CodeArchiveUrl: <p>代码包/工程归档地址</p>
+        :type CodeArchiveUrl: str
+        :param _Services: <p>数据实验室服务入口（服务类型 -&gt; 访问地址）</p>
+        :type Services: list of TypeKVPair
+        :param _LabImage: <p>Lab 镜像地址（必填，用于开发工具如 Jupyter/VSCode/WebShell）。前端在&quot;内置 / 自定义&quot;两态中选择此值；当 Image 字段未显式传入时，后端会基于该字段按 R1（镜像表命中）/R2（同值 fallback）派生 Ray 集群镜像。</p>
+        :type LabImage: str
+        :param _Id: <p>集群ID</p>
+        :type Id: str
+        :param _Type: <p>资源类型：CLUSTER-普通集群；WORKSPACE-数据实验室（开发入口）</p>
+        :type Type: str
+        :param _Name: <p>集群名称</p>
+        :type Name: str
+        :param _Description: <p>集群描述</p>
+        :type Description: str
+        :param _ResourcePartitionId: <p>所属资源分区ID</p>
+        :type ResourcePartitionId: str
+        :param _ResourcePartitionName: <p>默认资源分区名称</p>
+        :type ResourcePartitionName: str
+        :param _Queue: <p>所属队列名称</p>
+        :type Queue: str
+        :param _AppId: <p>应用ID</p>
+        :type AppId: int
+        :param _Uin: <p>用户UIN</p>
+        :type Uin: str
+        :param _SubAccountUin: <p>子用户UIN</p>
+        :type SubAccountUin: str
+        :param _Status: <p>集群状态</p>
+        :type Status: str
+        :param _CreateTime: <p>创建时间</p>
+        :type CreateTime: int
+        :param _GroupName: <p>所属集群组名称</p>
+        :type GroupName: str
+        :param _GroupId: <p>计算组 ID</p>
+        :type GroupId: str
+        :param _ResourceConfig: <p>资源配置(JSON)</p>
+        :type ResourceConfig: str
+        :param _ResourceConfigId: <p>资源配置ID</p>
+        :type ResourceConfigId: str
+        :param _Image: <p>Ray 集群镜像地址（可选，OpenAPI/SDK 高级控制入口）。前端不再传递此字段；为空时后端按 R1（镜像表查询命中）→ R2（同值 fallback）顺序自动派生。非空时直接作为 Ray 集群镜像，跳过派生（EXPLICIT），且后端不校验其与 LabImage 的兼容性。</p>
+        :type Image: str
+        :param _Catalog: <p>存储卷和挂载卷配置(JSON)</p>
+        :type Catalog: str
+        :param _HistoryUrl: <p>Dashboard URL / 历史记录链接</p>
+        :type HistoryUrl: str
+        :param _ImagePullPolicy: <p>镜像拉取策略</p>
+        :type ImagePullPolicy: str
+        :param _AdvancedOptions: <p>高级参数（扁平 Key-Value 的 JSON 字符串），Key 以 spec. 开头，按 RayCluster CRD 下钻；详见 ADVANCED_CLUSTER_OPTIONS_DESIGN.md</p>
+        :type AdvancedOptions: str
+        :param _Priority: <p>优先级（1-9，数字越大优先级越高）</p>
+        :type Priority: int
+        :param _StartTime: <p>启动时间（最近一次启动）</p>
+        :type StartTime: int
+        :param _Tags: <p>标签列表（TagKey-TagValue）</p>
+        :type Tags: list of Tag
+        :param _PersistentWorkDir: <p>持久化工作目录配置（可选）。启用后将 COS/CFS 指定路径挂载到容器内 /workspace 工作目录，与现有 Catalog 的卷配置互斥（不允许同时在 Catalog 中显式声明 MountPath=/workspace）。</p>
+        :type PersistentWorkDir: :class:`tencentcloud.dlc.v20210125.models.PersistentWorkDir`
+        :param _EnableToken: <p>是否开启token认证</p>
+        :type EnableToken: bool
+        :param _LabImagePullType: <p>Lab sidecar 镜像拉取类型（BuiltIn: 内置, Custom: 自定义-TCR, CustomCcr: 自定义-CCR）</p>
+        :type LabImagePullType: str
+        :param _SubAccountName: <p>子用户名称（由聚合层通过 CAM 接口回填）</p>
+        :type SubAccountName: str
+        :param _ImagePullType: <p>镜像拉取类型（BuiltIn: 内置, Custom: 自定义-TCR, CustomCcr: 自定义-CCR）</p>
+        :type ImagePullType: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ExampleId = None
+        self._CodeArchiveUrl = None
+        self._Services = None
+        self._LabImage = None
+        self._Id = None
+        self._Type = None
+        self._Name = None
+        self._Description = None
+        self._ResourcePartitionId = None
+        self._ResourcePartitionName = None
+        self._Queue = None
+        self._AppId = None
+        self._Uin = None
+        self._SubAccountUin = None
+        self._Status = None
+        self._CreateTime = None
+        self._GroupName = None
+        self._GroupId = None
+        self._ResourceConfig = None
+        self._ResourceConfigId = None
+        self._Image = None
+        self._Catalog = None
+        self._HistoryUrl = None
+        self._ImagePullPolicy = None
+        self._AdvancedOptions = None
+        self._Priority = None
+        self._StartTime = None
+        self._Tags = None
+        self._PersistentWorkDir = None
+        self._EnableToken = None
+        self._LabImagePullType = None
+        self._SubAccountName = None
+        self._ImagePullType = None
+        self._RequestId = None
+
+    @property
+    def ExampleId(self):
+        r"""<p>案例模板ID（startMode=EXAMPLE 时使用）</p>
+        :rtype: str
+        """
+        return self._ExampleId
+
+    @ExampleId.setter
+    def ExampleId(self, ExampleId):
+        self._ExampleId = ExampleId
+
+    @property
+    def CodeArchiveUrl(self):
+        r"""<p>代码包/工程归档地址</p>
+        :rtype: str
+        """
+        return self._CodeArchiveUrl
+
+    @CodeArchiveUrl.setter
+    def CodeArchiveUrl(self, CodeArchiveUrl):
+        self._CodeArchiveUrl = CodeArchiveUrl
+
+    @property
+    def Services(self):
+        r"""<p>数据实验室服务入口（服务类型 -&gt; 访问地址）</p>
+        :rtype: list of TypeKVPair
+        """
+        return self._Services
+
+    @Services.setter
+    def Services(self, Services):
+        self._Services = Services
+
+    @property
+    def LabImage(self):
+        r"""<p>Lab 镜像地址（必填，用于开发工具如 Jupyter/VSCode/WebShell）。前端在&quot;内置 / 自定义&quot;两态中选择此值；当 Image 字段未显式传入时，后端会基于该字段按 R1（镜像表命中）/R2（同值 fallback）派生 Ray 集群镜像。</p>
+        :rtype: str
+        """
+        return self._LabImage
+
+    @LabImage.setter
+    def LabImage(self, LabImage):
+        self._LabImage = LabImage
+
+    @property
+    def Id(self):
+        r"""<p>集群ID</p>
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Type(self):
+        r"""<p>资源类型：CLUSTER-普通集群；WORKSPACE-数据实验室（开发入口）</p>
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Name(self):
+        r"""<p>集群名称</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Description(self):
+        r"""<p>集群描述</p>
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def ResourcePartitionId(self):
+        r"""<p>所属资源分区ID</p>
+        :rtype: str
+        """
+        return self._ResourcePartitionId
+
+    @ResourcePartitionId.setter
+    def ResourcePartitionId(self, ResourcePartitionId):
+        self._ResourcePartitionId = ResourcePartitionId
+
+    @property
+    def ResourcePartitionName(self):
+        r"""<p>默认资源分区名称</p>
+        :rtype: str
+        """
+        return self._ResourcePartitionName
+
+    @ResourcePartitionName.setter
+    def ResourcePartitionName(self, ResourcePartitionName):
+        self._ResourcePartitionName = ResourcePartitionName
+
+    @property
+    def Queue(self):
+        r"""<p>所属队列名称</p>
+        :rtype: str
+        """
+        return self._Queue
+
+    @Queue.setter
+    def Queue(self, Queue):
+        self._Queue = Queue
+
+    @property
+    def AppId(self):
+        r"""<p>应用ID</p>
+        :rtype: int
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def Uin(self):
+        r"""<p>用户UIN</p>
+        :rtype: str
+        """
+        return self._Uin
+
+    @Uin.setter
+    def Uin(self, Uin):
+        self._Uin = Uin
+
+    @property
+    def SubAccountUin(self):
+        r"""<p>子用户UIN</p>
+        :rtype: str
+        """
+        return self._SubAccountUin
+
+    @SubAccountUin.setter
+    def SubAccountUin(self, SubAccountUin):
+        self._SubAccountUin = SubAccountUin
+
+    @property
+    def Status(self):
+        r"""<p>集群状态</p>
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def CreateTime(self):
+        r"""<p>创建时间</p>
+        :rtype: int
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def GroupName(self):
+        r"""<p>所属集群组名称</p>
+        :rtype: str
+        """
+        return self._GroupName
+
+    @GroupName.setter
+    def GroupName(self, GroupName):
+        self._GroupName = GroupName
+
+    @property
+    def GroupId(self):
+        r"""<p>计算组 ID</p>
+        :rtype: str
+        """
+        return self._GroupId
+
+    @GroupId.setter
+    def GroupId(self, GroupId):
+        self._GroupId = GroupId
+
+    @property
+    def ResourceConfig(self):
+        r"""<p>资源配置(JSON)</p>
+        :rtype: str
+        """
+        return self._ResourceConfig
+
+    @ResourceConfig.setter
+    def ResourceConfig(self, ResourceConfig):
+        self._ResourceConfig = ResourceConfig
+
+    @property
+    def ResourceConfigId(self):
+        r"""<p>资源配置ID</p>
+        :rtype: str
+        """
+        return self._ResourceConfigId
+
+    @ResourceConfigId.setter
+    def ResourceConfigId(self, ResourceConfigId):
+        self._ResourceConfigId = ResourceConfigId
+
+    @property
+    def Image(self):
+        r"""<p>Ray 集群镜像地址（可选，OpenAPI/SDK 高级控制入口）。前端不再传递此字段；为空时后端按 R1（镜像表查询命中）→ R2（同值 fallback）顺序自动派生。非空时直接作为 Ray 集群镜像，跳过派生（EXPLICIT），且后端不校验其与 LabImage 的兼容性。</p>
+        :rtype: str
+        """
+        return self._Image
+
+    @Image.setter
+    def Image(self, Image):
+        self._Image = Image
+
+    @property
+    def Catalog(self):
+        r"""<p>存储卷和挂载卷配置(JSON)</p>
+        :rtype: str
+        """
+        return self._Catalog
+
+    @Catalog.setter
+    def Catalog(self, Catalog):
+        self._Catalog = Catalog
+
+    @property
+    def HistoryUrl(self):
+        r"""<p>Dashboard URL / 历史记录链接</p>
+        :rtype: str
+        """
+        return self._HistoryUrl
+
+    @HistoryUrl.setter
+    def HistoryUrl(self, HistoryUrl):
+        self._HistoryUrl = HistoryUrl
+
+    @property
+    def ImagePullPolicy(self):
+        r"""<p>镜像拉取策略</p>
+        :rtype: str
+        """
+        return self._ImagePullPolicy
+
+    @ImagePullPolicy.setter
+    def ImagePullPolicy(self, ImagePullPolicy):
+        self._ImagePullPolicy = ImagePullPolicy
+
+    @property
+    def AdvancedOptions(self):
+        r"""<p>高级参数（扁平 Key-Value 的 JSON 字符串），Key 以 spec. 开头，按 RayCluster CRD 下钻；详见 ADVANCED_CLUSTER_OPTIONS_DESIGN.md</p>
+        :rtype: str
+        """
+        return self._AdvancedOptions
+
+    @AdvancedOptions.setter
+    def AdvancedOptions(self, AdvancedOptions):
+        self._AdvancedOptions = AdvancedOptions
+
+    @property
+    def Priority(self):
+        r"""<p>优先级（1-9，数字越大优先级越高）</p>
+        :rtype: int
+        """
+        return self._Priority
+
+    @Priority.setter
+    def Priority(self, Priority):
+        self._Priority = Priority
+
+    @property
+    def StartTime(self):
+        r"""<p>启动时间（最近一次启动）</p>
+        :rtype: int
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def Tags(self):
+        r"""<p>标签列表（TagKey-TagValue）</p>
+        :rtype: list of Tag
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def PersistentWorkDir(self):
+        r"""<p>持久化工作目录配置（可选）。启用后将 COS/CFS 指定路径挂载到容器内 /workspace 工作目录，与现有 Catalog 的卷配置互斥（不允许同时在 Catalog 中显式声明 MountPath=/workspace）。</p>
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.PersistentWorkDir`
+        """
+        return self._PersistentWorkDir
+
+    @PersistentWorkDir.setter
+    def PersistentWorkDir(self, PersistentWorkDir):
+        self._PersistentWorkDir = PersistentWorkDir
+
+    @property
+    def EnableToken(self):
+        r"""<p>是否开启token认证</p>
+        :rtype: bool
+        """
+        return self._EnableToken
+
+    @EnableToken.setter
+    def EnableToken(self, EnableToken):
+        self._EnableToken = EnableToken
+
+    @property
+    def LabImagePullType(self):
+        r"""<p>Lab sidecar 镜像拉取类型（BuiltIn: 内置, Custom: 自定义-TCR, CustomCcr: 自定义-CCR）</p>
+        :rtype: str
+        """
+        return self._LabImagePullType
+
+    @LabImagePullType.setter
+    def LabImagePullType(self, LabImagePullType):
+        self._LabImagePullType = LabImagePullType
+
+    @property
+    def SubAccountName(self):
+        r"""<p>子用户名称（由聚合层通过 CAM 接口回填）</p>
+        :rtype: str
+        """
+        return self._SubAccountName
+
+    @SubAccountName.setter
+    def SubAccountName(self, SubAccountName):
+        self._SubAccountName = SubAccountName
+
+    @property
+    def ImagePullType(self):
+        r"""<p>镜像拉取类型（BuiltIn: 内置, Custom: 自定义-TCR, CustomCcr: 自定义-CCR）</p>
+        :rtype: str
+        """
+        return self._ImagePullType
+
+    @ImagePullType.setter
+    def ImagePullType(self, ImagePullType):
+        self._ImagePullType = ImagePullType
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._ExampleId = params.get("ExampleId")
+        self._CodeArchiveUrl = params.get("CodeArchiveUrl")
+        if params.get("Services") is not None:
+            self._Services = []
+            for item in params.get("Services"):
+                obj = TypeKVPair()
+                obj._deserialize(item)
+                self._Services.append(obj)
+        self._LabImage = params.get("LabImage")
+        self._Id = params.get("Id")
+        self._Type = params.get("Type")
+        self._Name = params.get("Name")
+        self._Description = params.get("Description")
+        self._ResourcePartitionId = params.get("ResourcePartitionId")
+        self._ResourcePartitionName = params.get("ResourcePartitionName")
+        self._Queue = params.get("Queue")
+        self._AppId = params.get("AppId")
+        self._Uin = params.get("Uin")
+        self._SubAccountUin = params.get("SubAccountUin")
+        self._Status = params.get("Status")
+        self._CreateTime = params.get("CreateTime")
+        self._GroupName = params.get("GroupName")
+        self._GroupId = params.get("GroupId")
+        self._ResourceConfig = params.get("ResourceConfig")
+        self._ResourceConfigId = params.get("ResourceConfigId")
+        self._Image = params.get("Image")
+        self._Catalog = params.get("Catalog")
+        self._HistoryUrl = params.get("HistoryUrl")
+        self._ImagePullPolicy = params.get("ImagePullPolicy")
+        self._AdvancedOptions = params.get("AdvancedOptions")
+        self._Priority = params.get("Priority")
+        self._StartTime = params.get("StartTime")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
+        if params.get("PersistentWorkDir") is not None:
+            self._PersistentWorkDir = PersistentWorkDir()
+            self._PersistentWorkDir._deserialize(params.get("PersistentWorkDir"))
+        self._EnableToken = params.get("EnableToken")
+        self._LabImagePullType = params.get("LabImagePullType")
+        self._SubAccountName = params.get("SubAccountName")
+        self._ImagePullType = params.get("ImagePullType")
+        self._RequestId = params.get("RequestId")
+
+
+class StartRayClusterRequest(AbstractModel):
+    r"""StartRayCluster请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: <p>集群ID</p>
+        :type Id: str
+        """
+        self._Id = None
+
+    @property
+    def Id(self):
+        r"""<p>集群ID</p>
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class StartRayClusterResponse(AbstractModel):
+    r"""StartRayCluster返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: <p>集群ID</p>
+        :type Id: str
+        :param _Type: <p>资源类型：CLUSTER-普通集群；WORKSPACE-数据实验室（开发入口）</p>
+        :type Type: str
+        :param _Name: <p>集群名称</p>
+        :type Name: str
+        :param _Description: <p>集群描述</p>
+        :type Description: str
+        :param _ResourcePartitionId: <p>所属资源分区ID</p>
+        :type ResourcePartitionId: str
+        :param _ResourcePartitionName: <p>资源分区名称</p>
+        :type ResourcePartitionName: str
+        :param _Queue: <p>所属队列名称</p>
+        :type Queue: str
+        :param _AppId: <p>应用ID</p>
+        :type AppId: int
+        :param _Uin: <p>用户UIN</p>
+        :type Uin: str
+        :param _SubAccountUin: <p>子账号UIN</p>
+        :type SubAccountUin: str
+        :param _Status: <p>集群状态</p>
+        :type Status: str
+        :param _CreateTime: <p>创建时间</p>
+        :type CreateTime: int
+        :param _GroupId: <p>计算组 ID</p>
+        :type GroupId: str
+        :param _GroupName: <p>所属集群组名称</p>
+        :type GroupName: str
+        :param _ResourceConfig: <p>资源配置(JSON)</p>
+        :type ResourceConfig: str
+        :param _ResourceConfigId: <p>资源配置ID</p>
+        :type ResourceConfigId: str
+        :param _Image: <p>镜像地址</p>
+        :type Image: str
+        :param _Catalog: <p>存储卷和挂载卷配置(JSON)</p>
+        :type Catalog: str
+        :param _HistoryUrl: <p>Dashboard URL / 历史记录链接</p>
+        :type HistoryUrl: str
+        :param _ImagePullPolicy: <p>镜像拉取策略</p>
+        :type ImagePullPolicy: str
+        :param _ImagePullType: <p>镜像拉取类型（BuiltIn: 内置, Custom: 自定义-TCR, CustomCcr: 自定义-CCR）</p>
+        :type ImagePullType: str
+        :param _AdvancedOptions: <p>高级参数（规范化后的扁平 KV JSON）</p>
+        :type AdvancedOptions: str
+        :param _Priority: <p>优先级（1-9，数字越大优先级越高）</p>
+        :type Priority: int
+        :param _StartTime: <p>启动时间（最近一次启动）</p>
+        :type StartTime: int
+        :param _StopTime: <p>停止时间（最近一次停止/休眠）</p>
+        :type StopTime: int
+        :param _Tags: <p>标签列表（TagKey-TagValue）</p>
+        :type Tags: list of Tag
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Id = None
+        self._Type = None
+        self._Name = None
+        self._Description = None
+        self._ResourcePartitionId = None
+        self._ResourcePartitionName = None
+        self._Queue = None
+        self._AppId = None
+        self._Uin = None
+        self._SubAccountUin = None
+        self._Status = None
+        self._CreateTime = None
+        self._GroupId = None
+        self._GroupName = None
+        self._ResourceConfig = None
+        self._ResourceConfigId = None
+        self._Image = None
+        self._Catalog = None
+        self._HistoryUrl = None
+        self._ImagePullPolicy = None
+        self._ImagePullType = None
+        self._AdvancedOptions = None
+        self._Priority = None
+        self._StartTime = None
+        self._StopTime = None
+        self._Tags = None
+        self._RequestId = None
+
+    @property
+    def Id(self):
+        r"""<p>集群ID</p>
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Type(self):
+        r"""<p>资源类型：CLUSTER-普通集群；WORKSPACE-数据实验室（开发入口）</p>
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Name(self):
+        r"""<p>集群名称</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Description(self):
+        r"""<p>集群描述</p>
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def ResourcePartitionId(self):
+        r"""<p>所属资源分区ID</p>
+        :rtype: str
+        """
+        return self._ResourcePartitionId
+
+    @ResourcePartitionId.setter
+    def ResourcePartitionId(self, ResourcePartitionId):
+        self._ResourcePartitionId = ResourcePartitionId
+
+    @property
+    def ResourcePartitionName(self):
+        r"""<p>资源分区名称</p>
+        :rtype: str
+        """
+        return self._ResourcePartitionName
+
+    @ResourcePartitionName.setter
+    def ResourcePartitionName(self, ResourcePartitionName):
+        self._ResourcePartitionName = ResourcePartitionName
+
+    @property
+    def Queue(self):
+        r"""<p>所属队列名称</p>
+        :rtype: str
+        """
+        return self._Queue
+
+    @Queue.setter
+    def Queue(self, Queue):
+        self._Queue = Queue
+
+    @property
+    def AppId(self):
+        r"""<p>应用ID</p>
+        :rtype: int
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def Uin(self):
+        r"""<p>用户UIN</p>
+        :rtype: str
+        """
+        return self._Uin
+
+    @Uin.setter
+    def Uin(self, Uin):
+        self._Uin = Uin
+
+    @property
+    def SubAccountUin(self):
+        r"""<p>子账号UIN</p>
+        :rtype: str
+        """
+        return self._SubAccountUin
+
+    @SubAccountUin.setter
+    def SubAccountUin(self, SubAccountUin):
+        self._SubAccountUin = SubAccountUin
+
+    @property
+    def Status(self):
+        r"""<p>集群状态</p>
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def CreateTime(self):
+        r"""<p>创建时间</p>
+        :rtype: int
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def GroupId(self):
+        r"""<p>计算组 ID</p>
+        :rtype: str
+        """
+        return self._GroupId
+
+    @GroupId.setter
+    def GroupId(self, GroupId):
+        self._GroupId = GroupId
+
+    @property
+    def GroupName(self):
+        r"""<p>所属集群组名称</p>
+        :rtype: str
+        """
+        return self._GroupName
+
+    @GroupName.setter
+    def GroupName(self, GroupName):
+        self._GroupName = GroupName
+
+    @property
+    def ResourceConfig(self):
+        r"""<p>资源配置(JSON)</p>
+        :rtype: str
+        """
+        return self._ResourceConfig
+
+    @ResourceConfig.setter
+    def ResourceConfig(self, ResourceConfig):
+        self._ResourceConfig = ResourceConfig
+
+    @property
+    def ResourceConfigId(self):
+        r"""<p>资源配置ID</p>
+        :rtype: str
+        """
+        return self._ResourceConfigId
+
+    @ResourceConfigId.setter
+    def ResourceConfigId(self, ResourceConfigId):
+        self._ResourceConfigId = ResourceConfigId
+
+    @property
+    def Image(self):
+        r"""<p>镜像地址</p>
+        :rtype: str
+        """
+        return self._Image
+
+    @Image.setter
+    def Image(self, Image):
+        self._Image = Image
+
+    @property
+    def Catalog(self):
+        r"""<p>存储卷和挂载卷配置(JSON)</p>
+        :rtype: str
+        """
+        return self._Catalog
+
+    @Catalog.setter
+    def Catalog(self, Catalog):
+        self._Catalog = Catalog
+
+    @property
+    def HistoryUrl(self):
+        r"""<p>Dashboard URL / 历史记录链接</p>
+        :rtype: str
+        """
+        return self._HistoryUrl
+
+    @HistoryUrl.setter
+    def HistoryUrl(self, HistoryUrl):
+        self._HistoryUrl = HistoryUrl
+
+    @property
+    def ImagePullPolicy(self):
+        r"""<p>镜像拉取策略</p>
+        :rtype: str
+        """
+        return self._ImagePullPolicy
+
+    @ImagePullPolicy.setter
+    def ImagePullPolicy(self, ImagePullPolicy):
+        self._ImagePullPolicy = ImagePullPolicy
+
+    @property
+    def ImagePullType(self):
+        r"""<p>镜像拉取类型（BuiltIn: 内置, Custom: 自定义-TCR, CustomCcr: 自定义-CCR）</p>
+        :rtype: str
+        """
+        return self._ImagePullType
+
+    @ImagePullType.setter
+    def ImagePullType(self, ImagePullType):
+        self._ImagePullType = ImagePullType
+
+    @property
+    def AdvancedOptions(self):
+        r"""<p>高级参数（规范化后的扁平 KV JSON）</p>
+        :rtype: str
+        """
+        return self._AdvancedOptions
+
+    @AdvancedOptions.setter
+    def AdvancedOptions(self, AdvancedOptions):
+        self._AdvancedOptions = AdvancedOptions
+
+    @property
+    def Priority(self):
+        r"""<p>优先级（1-9，数字越大优先级越高）</p>
+        :rtype: int
+        """
+        return self._Priority
+
+    @Priority.setter
+    def Priority(self, Priority):
+        self._Priority = Priority
+
+    @property
+    def StartTime(self):
+        r"""<p>启动时间（最近一次启动）</p>
+        :rtype: int
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def StopTime(self):
+        r"""<p>停止时间（最近一次停止/休眠）</p>
+        :rtype: int
+        """
+        return self._StopTime
+
+    @StopTime.setter
+    def StopTime(self, StopTime):
+        self._StopTime = StopTime
+
+    @property
+    def Tags(self):
+        r"""<p>标签列表（TagKey-TagValue）</p>
+        :rtype: list of Tag
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._Type = params.get("Type")
+        self._Name = params.get("Name")
+        self._Description = params.get("Description")
+        self._ResourcePartitionId = params.get("ResourcePartitionId")
+        self._ResourcePartitionName = params.get("ResourcePartitionName")
+        self._Queue = params.get("Queue")
+        self._AppId = params.get("AppId")
+        self._Uin = params.get("Uin")
+        self._SubAccountUin = params.get("SubAccountUin")
+        self._Status = params.get("Status")
+        self._CreateTime = params.get("CreateTime")
+        self._GroupId = params.get("GroupId")
+        self._GroupName = params.get("GroupName")
+        self._ResourceConfig = params.get("ResourceConfig")
+        self._ResourceConfigId = params.get("ResourceConfigId")
+        self._Image = params.get("Image")
+        self._Catalog = params.get("Catalog")
+        self._HistoryUrl = params.get("HistoryUrl")
+        self._ImagePullPolicy = params.get("ImagePullPolicy")
+        self._ImagePullType = params.get("ImagePullType")
+        self._AdvancedOptions = params.get("AdvancedOptions")
+        self._Priority = params.get("Priority")
+        self._StartTime = params.get("StartTime")
+        self._StopTime = params.get("StopTime")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class StatementInformation(AbstractModel):
     r"""statement信息
 
@@ -42649,6 +62239,916 @@ class StatementOutput(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class StopLabRequest(AbstractModel):
+    r"""StopLab请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: <p>工作区ID</p>
+        :type Id: str
+        """
+        self._Id = None
+
+    @property
+    def Id(self):
+        r"""<p>工作区ID</p>
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class StopLabResponse(AbstractModel):
+    r"""StopLab返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ExampleId: <p>案例模板ID（startMode=EXAMPLE 时使用）</p>
+        :type ExampleId: str
+        :param _Services: <p>数据实验室服务入口（服务类型 -&gt; 访问地址）</p>
+        :type Services: list of TypeKVPair
+        :param _LabImage: <p>Lab 镜像地址（必填，用于开发工具如 Jupyter/VSCode/WebShell）。前端在&quot;内置 / 自定义&quot;两态中选择此值；当 Image 字段未显式传入时，后端会基于该字段按 R1（镜像表命中）/R2（同值 fallback）派生 Ray 集群镜像。</p>
+        :type LabImage: str
+        :param _Id: <p>集群ID</p>
+        :type Id: str
+        :param _Type: <p>资源类型：CLUSTER-普通集群；WORKSPACE-数据实验室（开发入口）</p>
+        :type Type: str
+        :param _Name: <p>集群名称</p>
+        :type Name: str
+        :param _ResourcePartitionId: <p>所属资源分区ID</p>
+        :type ResourcePartitionId: str
+        :param _ResourcePartitionName: <p>默认资源分区名称</p>
+        :type ResourcePartitionName: str
+        :param _Queue: <p>所属队列名称</p>
+        :type Queue: str
+        :param _AppId: <p>应用ID</p>
+        :type AppId: int
+        :param _Uin: <p>用户UIN</p>
+        :type Uin: str
+        :param _SubAccountUin: <p>子用户UIN</p>
+        :type SubAccountUin: str
+        :param _Status: <p>集群状态</p>
+        :type Status: str
+        :param _CreateTime: <p>创建时间</p>
+        :type CreateTime: int
+        :param _ResourceConfig: <p>资源配置(JSON)</p>
+        :type ResourceConfig: str
+        :param _Image: <p>Ray 集群镜像地址（可选，OpenAPI/SDK 高级控制入口）。前端不再传递此字段；为空时后端按 R1（镜像表查询命中）→ R2（同值 fallback）顺序自动派生。非空时直接作为 Ray 集群镜像，跳过派生（EXPLICIT），且后端不校验其与 LabImage 的兼容性。</p>
+        :type Image: str
+        :param _Catalog: <p>存储卷和挂载卷配置(JSON)</p>
+        :type Catalog: str
+        :param _HistoryUrl: <p>Dashboard URL / 历史记录链接</p>
+        :type HistoryUrl: str
+        :param _AdvancedOptions: <p>高级参数（扁平 Key-Value 的 JSON 字符串），Key 以 spec. 开头，按 RayCluster CRD 下钻；详见 ADVANCED_CLUSTER_OPTIONS_DESIGN.md</p>
+        :type AdvancedOptions: str
+        :param _Priority: <p>优先级（1-9，数字越大优先级越高）</p>
+        :type Priority: int
+        :param _StartTime: <p>启动时间（最近一次启动）</p>
+        :type StartTime: int
+        :param _Tags: <p>标签列表（TagKey-TagValue）</p>
+        :type Tags: list of Tag
+        :param _PersistentWorkDir: <p>持久化工作目录配置（可选）。启用后将 COS/CFS 指定路径挂载到容器内 /workspace 工作目录，与现有 Catalog 的卷配置互斥（不允许同时在 Catalog 中显式声明 MountPath=/workspace）。</p>
+        :type PersistentWorkDir: :class:`tencentcloud.dlc.v20210125.models.PersistentWorkDir`
+        :param _EnableToken: <p>是否开启token认证</p>
+        :type EnableToken: bool
+        :param _Token: <p>Token 认证密钥（开启 token 认证时由系统生成）</p>
+        :type Token: str
+        :param _LabImagePullType: <p>Lab sidecar 镜像拉取类型（BuiltIn: 内置, Custom: 自定义-TCR, CustomCcr: 自定义-CCR）</p>
+        :type LabImagePullType: str
+        :param _SubAccountName: <p>子用户名称（由聚合层通过 CAM 接口回填）</p>
+        :type SubAccountName: str
+        :param _ImagePullType: <p>镜像拉取类型（BuiltIn: 内置, Custom: 自定义-TCR, CustomCcr: 自定义-CCR）</p>
+        :type ImagePullType: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ExampleId = None
+        self._Services = None
+        self._LabImage = None
+        self._Id = None
+        self._Type = None
+        self._Name = None
+        self._ResourcePartitionId = None
+        self._ResourcePartitionName = None
+        self._Queue = None
+        self._AppId = None
+        self._Uin = None
+        self._SubAccountUin = None
+        self._Status = None
+        self._CreateTime = None
+        self._ResourceConfig = None
+        self._Image = None
+        self._Catalog = None
+        self._HistoryUrl = None
+        self._AdvancedOptions = None
+        self._Priority = None
+        self._StartTime = None
+        self._Tags = None
+        self._PersistentWorkDir = None
+        self._EnableToken = None
+        self._Token = None
+        self._LabImagePullType = None
+        self._SubAccountName = None
+        self._ImagePullType = None
+        self._RequestId = None
+
+    @property
+    def ExampleId(self):
+        r"""<p>案例模板ID（startMode=EXAMPLE 时使用）</p>
+        :rtype: str
+        """
+        return self._ExampleId
+
+    @ExampleId.setter
+    def ExampleId(self, ExampleId):
+        self._ExampleId = ExampleId
+
+    @property
+    def Services(self):
+        r"""<p>数据实验室服务入口（服务类型 -&gt; 访问地址）</p>
+        :rtype: list of TypeKVPair
+        """
+        return self._Services
+
+    @Services.setter
+    def Services(self, Services):
+        self._Services = Services
+
+    @property
+    def LabImage(self):
+        r"""<p>Lab 镜像地址（必填，用于开发工具如 Jupyter/VSCode/WebShell）。前端在&quot;内置 / 自定义&quot;两态中选择此值；当 Image 字段未显式传入时，后端会基于该字段按 R1（镜像表命中）/R2（同值 fallback）派生 Ray 集群镜像。</p>
+        :rtype: str
+        """
+        return self._LabImage
+
+    @LabImage.setter
+    def LabImage(self, LabImage):
+        self._LabImage = LabImage
+
+    @property
+    def Id(self):
+        r"""<p>集群ID</p>
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Type(self):
+        r"""<p>资源类型：CLUSTER-普通集群；WORKSPACE-数据实验室（开发入口）</p>
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Name(self):
+        r"""<p>集群名称</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def ResourcePartitionId(self):
+        r"""<p>所属资源分区ID</p>
+        :rtype: str
+        """
+        return self._ResourcePartitionId
+
+    @ResourcePartitionId.setter
+    def ResourcePartitionId(self, ResourcePartitionId):
+        self._ResourcePartitionId = ResourcePartitionId
+
+    @property
+    def ResourcePartitionName(self):
+        r"""<p>默认资源分区名称</p>
+        :rtype: str
+        """
+        return self._ResourcePartitionName
+
+    @ResourcePartitionName.setter
+    def ResourcePartitionName(self, ResourcePartitionName):
+        self._ResourcePartitionName = ResourcePartitionName
+
+    @property
+    def Queue(self):
+        r"""<p>所属队列名称</p>
+        :rtype: str
+        """
+        return self._Queue
+
+    @Queue.setter
+    def Queue(self, Queue):
+        self._Queue = Queue
+
+    @property
+    def AppId(self):
+        r"""<p>应用ID</p>
+        :rtype: int
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def Uin(self):
+        r"""<p>用户UIN</p>
+        :rtype: str
+        """
+        return self._Uin
+
+    @Uin.setter
+    def Uin(self, Uin):
+        self._Uin = Uin
+
+    @property
+    def SubAccountUin(self):
+        r"""<p>子用户UIN</p>
+        :rtype: str
+        """
+        return self._SubAccountUin
+
+    @SubAccountUin.setter
+    def SubAccountUin(self, SubAccountUin):
+        self._SubAccountUin = SubAccountUin
+
+    @property
+    def Status(self):
+        r"""<p>集群状态</p>
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def CreateTime(self):
+        r"""<p>创建时间</p>
+        :rtype: int
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def ResourceConfig(self):
+        r"""<p>资源配置(JSON)</p>
+        :rtype: str
+        """
+        return self._ResourceConfig
+
+    @ResourceConfig.setter
+    def ResourceConfig(self, ResourceConfig):
+        self._ResourceConfig = ResourceConfig
+
+    @property
+    def Image(self):
+        r"""<p>Ray 集群镜像地址（可选，OpenAPI/SDK 高级控制入口）。前端不再传递此字段；为空时后端按 R1（镜像表查询命中）→ R2（同值 fallback）顺序自动派生。非空时直接作为 Ray 集群镜像，跳过派生（EXPLICIT），且后端不校验其与 LabImage 的兼容性。</p>
+        :rtype: str
+        """
+        return self._Image
+
+    @Image.setter
+    def Image(self, Image):
+        self._Image = Image
+
+    @property
+    def Catalog(self):
+        r"""<p>存储卷和挂载卷配置(JSON)</p>
+        :rtype: str
+        """
+        return self._Catalog
+
+    @Catalog.setter
+    def Catalog(self, Catalog):
+        self._Catalog = Catalog
+
+    @property
+    def HistoryUrl(self):
+        r"""<p>Dashboard URL / 历史记录链接</p>
+        :rtype: str
+        """
+        return self._HistoryUrl
+
+    @HistoryUrl.setter
+    def HistoryUrl(self, HistoryUrl):
+        self._HistoryUrl = HistoryUrl
+
+    @property
+    def AdvancedOptions(self):
+        r"""<p>高级参数（扁平 Key-Value 的 JSON 字符串），Key 以 spec. 开头，按 RayCluster CRD 下钻；详见 ADVANCED_CLUSTER_OPTIONS_DESIGN.md</p>
+        :rtype: str
+        """
+        return self._AdvancedOptions
+
+    @AdvancedOptions.setter
+    def AdvancedOptions(self, AdvancedOptions):
+        self._AdvancedOptions = AdvancedOptions
+
+    @property
+    def Priority(self):
+        r"""<p>优先级（1-9，数字越大优先级越高）</p>
+        :rtype: int
+        """
+        return self._Priority
+
+    @Priority.setter
+    def Priority(self, Priority):
+        self._Priority = Priority
+
+    @property
+    def StartTime(self):
+        r"""<p>启动时间（最近一次启动）</p>
+        :rtype: int
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def Tags(self):
+        r"""<p>标签列表（TagKey-TagValue）</p>
+        :rtype: list of Tag
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def PersistentWorkDir(self):
+        r"""<p>持久化工作目录配置（可选）。启用后将 COS/CFS 指定路径挂载到容器内 /workspace 工作目录，与现有 Catalog 的卷配置互斥（不允许同时在 Catalog 中显式声明 MountPath=/workspace）。</p>
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.PersistentWorkDir`
+        """
+        return self._PersistentWorkDir
+
+    @PersistentWorkDir.setter
+    def PersistentWorkDir(self, PersistentWorkDir):
+        self._PersistentWorkDir = PersistentWorkDir
+
+    @property
+    def EnableToken(self):
+        r"""<p>是否开启token认证</p>
+        :rtype: bool
+        """
+        return self._EnableToken
+
+    @EnableToken.setter
+    def EnableToken(self, EnableToken):
+        self._EnableToken = EnableToken
+
+    @property
+    def Token(self):
+        r"""<p>Token 认证密钥（开启 token 认证时由系统生成）</p>
+        :rtype: str
+        """
+        return self._Token
+
+    @Token.setter
+    def Token(self, Token):
+        self._Token = Token
+
+    @property
+    def LabImagePullType(self):
+        r"""<p>Lab sidecar 镜像拉取类型（BuiltIn: 内置, Custom: 自定义-TCR, CustomCcr: 自定义-CCR）</p>
+        :rtype: str
+        """
+        return self._LabImagePullType
+
+    @LabImagePullType.setter
+    def LabImagePullType(self, LabImagePullType):
+        self._LabImagePullType = LabImagePullType
+
+    @property
+    def SubAccountName(self):
+        r"""<p>子用户名称（由聚合层通过 CAM 接口回填）</p>
+        :rtype: str
+        """
+        return self._SubAccountName
+
+    @SubAccountName.setter
+    def SubAccountName(self, SubAccountName):
+        self._SubAccountName = SubAccountName
+
+    @property
+    def ImagePullType(self):
+        r"""<p>镜像拉取类型（BuiltIn: 内置, Custom: 自定义-TCR, CustomCcr: 自定义-CCR）</p>
+        :rtype: str
+        """
+        return self._ImagePullType
+
+    @ImagePullType.setter
+    def ImagePullType(self, ImagePullType):
+        self._ImagePullType = ImagePullType
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._ExampleId = params.get("ExampleId")
+        if params.get("Services") is not None:
+            self._Services = []
+            for item in params.get("Services"):
+                obj = TypeKVPair()
+                obj._deserialize(item)
+                self._Services.append(obj)
+        self._LabImage = params.get("LabImage")
+        self._Id = params.get("Id")
+        self._Type = params.get("Type")
+        self._Name = params.get("Name")
+        self._ResourcePartitionId = params.get("ResourcePartitionId")
+        self._ResourcePartitionName = params.get("ResourcePartitionName")
+        self._Queue = params.get("Queue")
+        self._AppId = params.get("AppId")
+        self._Uin = params.get("Uin")
+        self._SubAccountUin = params.get("SubAccountUin")
+        self._Status = params.get("Status")
+        self._CreateTime = params.get("CreateTime")
+        self._ResourceConfig = params.get("ResourceConfig")
+        self._Image = params.get("Image")
+        self._Catalog = params.get("Catalog")
+        self._HistoryUrl = params.get("HistoryUrl")
+        self._AdvancedOptions = params.get("AdvancedOptions")
+        self._Priority = params.get("Priority")
+        self._StartTime = params.get("StartTime")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
+        if params.get("PersistentWorkDir") is not None:
+            self._PersistentWorkDir = PersistentWorkDir()
+            self._PersistentWorkDir._deserialize(params.get("PersistentWorkDir"))
+        self._EnableToken = params.get("EnableToken")
+        self._Token = params.get("Token")
+        self._LabImagePullType = params.get("LabImagePullType")
+        self._SubAccountName = params.get("SubAccountName")
+        self._ImagePullType = params.get("ImagePullType")
+        self._RequestId = params.get("RequestId")
+
+
+class StopRayClusterRequest(AbstractModel):
+    r"""StopRayCluster请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: <p>集群ID</p>
+        :type Id: str
+        """
+        self._Id = None
+
+    @property
+    def Id(self):
+        r"""<p>集群ID</p>
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class StopRayClusterResponse(AbstractModel):
+    r"""StopRayCluster返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: <p>集群ID</p>
+        :type Id: str
+        :param _Type: <p>资源类型：CLUSTER-普通集群；WORKSPACE-数据实验室（开发入口）</p>
+        :type Type: str
+        :param _Name: <p>集群名称</p>
+        :type Name: str
+        :param _ResourcePartitionId: <p>所属资源分区ID</p>
+        :type ResourcePartitionId: str
+        :param _ResourcePartitionName: <p>资源分区名称</p>
+        :type ResourcePartitionName: str
+        :param _Queue: <p>所属队列名称</p>
+        :type Queue: str
+        :param _AppId: <p>应用ID</p>
+        :type AppId: int
+        :param _Uin: <p>用户UIN</p>
+        :type Uin: str
+        :param _SubAccountUin: <p>子账号UIN</p>
+        :type SubAccountUin: str
+        :param _Status: <p>集群状态</p>
+        :type Status: str
+        :param _CreateTime: <p>创建时间</p>
+        :type CreateTime: int
+        :param _GroupId: <p>计算组 ID</p>
+        :type GroupId: str
+        :param _GroupName: <p>所属集群组名称</p>
+        :type GroupName: str
+        :param _ResourceConfig: <p>资源配置(JSON)</p>
+        :type ResourceConfig: str
+        :param _Image: <p>镜像地址</p>
+        :type Image: str
+        :param _Catalog: <p>存储卷和挂载卷配置(JSON)</p>
+        :type Catalog: str
+        :param _HistoryUrl: <p>Dashboard URL / 历史记录链接</p>
+        :type HistoryUrl: str
+        :param _ImagePullPolicy: <p>镜像拉取策略</p>
+        :type ImagePullPolicy: str
+        :param _ImagePullType: <p>镜像拉取类型（BuiltIn: 内置, Custom: 自定义-TCR, CustomCcr: 自定义-CCR）</p>
+        :type ImagePullType: str
+        :param _Priority: <p>优先级（1-9，数字越大优先级越高）</p>
+        :type Priority: int
+        :param _StartTime: <p>启动时间（最近一次启动）</p>
+        :type StartTime: int
+        :param _StopTime: <p>停止时间（最近一次停止/休眠）</p>
+        :type StopTime: int
+        :param _Tags: <p>标签列表（TagKey-TagValue）</p>
+        :type Tags: list of Tag
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Id = None
+        self._Type = None
+        self._Name = None
+        self._ResourcePartitionId = None
+        self._ResourcePartitionName = None
+        self._Queue = None
+        self._AppId = None
+        self._Uin = None
+        self._SubAccountUin = None
+        self._Status = None
+        self._CreateTime = None
+        self._GroupId = None
+        self._GroupName = None
+        self._ResourceConfig = None
+        self._Image = None
+        self._Catalog = None
+        self._HistoryUrl = None
+        self._ImagePullPolicy = None
+        self._ImagePullType = None
+        self._Priority = None
+        self._StartTime = None
+        self._StopTime = None
+        self._Tags = None
+        self._RequestId = None
+
+    @property
+    def Id(self):
+        r"""<p>集群ID</p>
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Type(self):
+        r"""<p>资源类型：CLUSTER-普通集群；WORKSPACE-数据实验室（开发入口）</p>
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Name(self):
+        r"""<p>集群名称</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def ResourcePartitionId(self):
+        r"""<p>所属资源分区ID</p>
+        :rtype: str
+        """
+        return self._ResourcePartitionId
+
+    @ResourcePartitionId.setter
+    def ResourcePartitionId(self, ResourcePartitionId):
+        self._ResourcePartitionId = ResourcePartitionId
+
+    @property
+    def ResourcePartitionName(self):
+        r"""<p>资源分区名称</p>
+        :rtype: str
+        """
+        return self._ResourcePartitionName
+
+    @ResourcePartitionName.setter
+    def ResourcePartitionName(self, ResourcePartitionName):
+        self._ResourcePartitionName = ResourcePartitionName
+
+    @property
+    def Queue(self):
+        r"""<p>所属队列名称</p>
+        :rtype: str
+        """
+        return self._Queue
+
+    @Queue.setter
+    def Queue(self, Queue):
+        self._Queue = Queue
+
+    @property
+    def AppId(self):
+        r"""<p>应用ID</p>
+        :rtype: int
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def Uin(self):
+        r"""<p>用户UIN</p>
+        :rtype: str
+        """
+        return self._Uin
+
+    @Uin.setter
+    def Uin(self, Uin):
+        self._Uin = Uin
+
+    @property
+    def SubAccountUin(self):
+        r"""<p>子账号UIN</p>
+        :rtype: str
+        """
+        return self._SubAccountUin
+
+    @SubAccountUin.setter
+    def SubAccountUin(self, SubAccountUin):
+        self._SubAccountUin = SubAccountUin
+
+    @property
+    def Status(self):
+        r"""<p>集群状态</p>
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def CreateTime(self):
+        r"""<p>创建时间</p>
+        :rtype: int
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def GroupId(self):
+        r"""<p>计算组 ID</p>
+        :rtype: str
+        """
+        return self._GroupId
+
+    @GroupId.setter
+    def GroupId(self, GroupId):
+        self._GroupId = GroupId
+
+    @property
+    def GroupName(self):
+        r"""<p>所属集群组名称</p>
+        :rtype: str
+        """
+        return self._GroupName
+
+    @GroupName.setter
+    def GroupName(self, GroupName):
+        self._GroupName = GroupName
+
+    @property
+    def ResourceConfig(self):
+        r"""<p>资源配置(JSON)</p>
+        :rtype: str
+        """
+        return self._ResourceConfig
+
+    @ResourceConfig.setter
+    def ResourceConfig(self, ResourceConfig):
+        self._ResourceConfig = ResourceConfig
+
+    @property
+    def Image(self):
+        r"""<p>镜像地址</p>
+        :rtype: str
+        """
+        return self._Image
+
+    @Image.setter
+    def Image(self, Image):
+        self._Image = Image
+
+    @property
+    def Catalog(self):
+        r"""<p>存储卷和挂载卷配置(JSON)</p>
+        :rtype: str
+        """
+        return self._Catalog
+
+    @Catalog.setter
+    def Catalog(self, Catalog):
+        self._Catalog = Catalog
+
+    @property
+    def HistoryUrl(self):
+        r"""<p>Dashboard URL / 历史记录链接</p>
+        :rtype: str
+        """
+        return self._HistoryUrl
+
+    @HistoryUrl.setter
+    def HistoryUrl(self, HistoryUrl):
+        self._HistoryUrl = HistoryUrl
+
+    @property
+    def ImagePullPolicy(self):
+        r"""<p>镜像拉取策略</p>
+        :rtype: str
+        """
+        return self._ImagePullPolicy
+
+    @ImagePullPolicy.setter
+    def ImagePullPolicy(self, ImagePullPolicy):
+        self._ImagePullPolicy = ImagePullPolicy
+
+    @property
+    def ImagePullType(self):
+        r"""<p>镜像拉取类型（BuiltIn: 内置, Custom: 自定义-TCR, CustomCcr: 自定义-CCR）</p>
+        :rtype: str
+        """
+        return self._ImagePullType
+
+    @ImagePullType.setter
+    def ImagePullType(self, ImagePullType):
+        self._ImagePullType = ImagePullType
+
+    @property
+    def Priority(self):
+        r"""<p>优先级（1-9，数字越大优先级越高）</p>
+        :rtype: int
+        """
+        return self._Priority
+
+    @Priority.setter
+    def Priority(self, Priority):
+        self._Priority = Priority
+
+    @property
+    def StartTime(self):
+        r"""<p>启动时间（最近一次启动）</p>
+        :rtype: int
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def StopTime(self):
+        r"""<p>停止时间（最近一次停止/休眠）</p>
+        :rtype: int
+        """
+        return self._StopTime
+
+    @StopTime.setter
+    def StopTime(self, StopTime):
+        self._StopTime = StopTime
+
+    @property
+    def Tags(self):
+        r"""<p>标签列表（TagKey-TagValue）</p>
+        :rtype: list of Tag
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._Type = params.get("Type")
+        self._Name = params.get("Name")
+        self._ResourcePartitionId = params.get("ResourcePartitionId")
+        self._ResourcePartitionName = params.get("ResourcePartitionName")
+        self._Queue = params.get("Queue")
+        self._AppId = params.get("AppId")
+        self._Uin = params.get("Uin")
+        self._SubAccountUin = params.get("SubAccountUin")
+        self._Status = params.get("Status")
+        self._CreateTime = params.get("CreateTime")
+        self._GroupId = params.get("GroupId")
+        self._GroupName = params.get("GroupName")
+        self._ResourceConfig = params.get("ResourceConfig")
+        self._Image = params.get("Image")
+        self._Catalog = params.get("Catalog")
+        self._HistoryUrl = params.get("HistoryUrl")
+        self._ImagePullPolicy = params.get("ImagePullPolicy")
+        self._ImagePullType = params.get("ImagePullType")
+        self._Priority = params.get("Priority")
+        self._StartTime = params.get("StartTime")
+        self._StopTime = params.get("StopTime")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class StreamingStatistics(AbstractModel):
@@ -44146,6 +64646,57 @@ class TableResponseInfo(AbstractModel):
         self._MapMaterializedViewName = params.get("MapMaterializedViewName")
         self._HeatValue = params.get("HeatValue")
         self._InputFormatShort = params.get("InputFormatShort")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class Tag(AbstractModel):
+    r"""标签
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TagKey: 标签键
+        :type TagKey: str
+        :param _TagValue: 标签值
+        :type TagValue: str
+        """
+        self._TagKey = None
+        self._TagValue = None
+
+    @property
+    def TagKey(self):
+        r"""标签键
+        :rtype: str
+        """
+        return self._TagKey
+
+    @TagKey.setter
+    def TagKey(self, TagKey):
+        self._TagKey = TagKey
+
+    @property
+    def TagValue(self):
+        r"""标签值
+        :rtype: str
+        """
+        return self._TagValue
+
+    @TagValue.setter
+    def TagValue(self, TagValue):
+        self._TagValue = TagValue
+
+
+    def _deserialize(self, params):
+        self._TagKey = params.get("TagKey")
+        self._TagValue = params.get("TagValue")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -46938,6 +67489,61 @@ class TextFile(AbstractModel):
         
 
 
+class TypeKVPair(AbstractModel):
+    r"""通用的键值对数据结构
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Key: <p>key值</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Key: str
+        :param _Value: <p>value值</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Value: str
+        """
+        self._Key = None
+        self._Value = None
+
+    @property
+    def Key(self):
+        r"""<p>key值</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Value(self):
+        r"""<p>value值</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+
+    def _deserialize(self, params):
+        self._Key = params.get("Key")
+        self._Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class UDFPolicyInfo(AbstractModel):
     r"""UDF权限信息
 
@@ -47212,6 +67818,284 @@ class UnlockMetaDataResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class UpdateClusterGroupRequest(AbstractModel):
+    r"""UpdateClusterGroup请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: <p>集群组 ID（定位要更新的集群组）</p>
+        :type Id: str
+        :param _Name: <p>集群组名称（可选，为空则保持原名）</p>
+        :type Name: str
+        :param _Description: <p>集群组描述</p>
+        :type Description: str
+        :param _Config: <p>集群组配置</p>
+        :type Config: str
+        """
+        self._Id = None
+        self._Name = None
+        self._Description = None
+        self._Config = None
+
+    @property
+    def Id(self):
+        r"""<p>集群组 ID（定位要更新的集群组）</p>
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Name(self):
+        r"""<p>集群组名称（可选，为空则保持原名）</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Description(self):
+        r"""<p>集群组描述</p>
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def Config(self):
+        r"""<p>集群组配置</p>
+        :rtype: str
+        """
+        return self._Config
+
+    @Config.setter
+    def Config(self, Config):
+        self._Config = Config
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._Name = params.get("Name")
+        self._Description = params.get("Description")
+        self._Config = params.get("Config")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateClusterGroupResponse(AbstractModel):
+    r"""UpdateClusterGroup返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: <p>集群组 ID</p>
+        :type Id: str
+        :param _Name: <p>集群组名称</p>
+        :type Name: str
+        :param _Description: <p>集群组描述</p>
+        :type Description: str
+        :param _Config: <p>集群组配置</p>
+        :type Config: str
+        :param _AppId: <p>应用 ID（多租户）</p>
+        :type AppId: int
+        :param _Uin: <p>创建者主账号 UIN</p>
+        :type Uin: str
+        :param _SubAccountUin: <p>创建者子账号 UIN</p>
+        :type SubAccountUin: str
+        :param _CreateTime: <p>创建时间</p>
+        :type CreateTime: int
+        :param _UpdateTime: <p>更新时间</p>
+        :type UpdateTime: int
+        :param _Deleted: <p>是否已软删除</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Deleted: bool
+        :param _DeleteTime: <p>删除时间（软删时写入，活跃记录为 null）</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DeleteTime: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Id = None
+        self._Name = None
+        self._Description = None
+        self._Config = None
+        self._AppId = None
+        self._Uin = None
+        self._SubAccountUin = None
+        self._CreateTime = None
+        self._UpdateTime = None
+        self._Deleted = None
+        self._DeleteTime = None
+        self._RequestId = None
+
+    @property
+    def Id(self):
+        r"""<p>集群组 ID</p>
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Name(self):
+        r"""<p>集群组名称</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Description(self):
+        r"""<p>集群组描述</p>
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def Config(self):
+        r"""<p>集群组配置</p>
+        :rtype: str
+        """
+        return self._Config
+
+    @Config.setter
+    def Config(self, Config):
+        self._Config = Config
+
+    @property
+    def AppId(self):
+        r"""<p>应用 ID（多租户）</p>
+        :rtype: int
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def Uin(self):
+        r"""<p>创建者主账号 UIN</p>
+        :rtype: str
+        """
+        return self._Uin
+
+    @Uin.setter
+    def Uin(self, Uin):
+        self._Uin = Uin
+
+    @property
+    def SubAccountUin(self):
+        r"""<p>创建者子账号 UIN</p>
+        :rtype: str
+        """
+        return self._SubAccountUin
+
+    @SubAccountUin.setter
+    def SubAccountUin(self, SubAccountUin):
+        self._SubAccountUin = SubAccountUin
+
+    @property
+    def CreateTime(self):
+        r"""<p>创建时间</p>
+        :rtype: int
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        r"""<p>更新时间</p>
+        :rtype: int
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def Deleted(self):
+        r"""<p>是否已软删除</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._Deleted
+
+    @Deleted.setter
+    def Deleted(self, Deleted):
+        self._Deleted = Deleted
+
+    @property
+    def DeleteTime(self):
+        r"""<p>删除时间（软删时写入，活跃记录为 null）</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._DeleteTime
+
+    @DeleteTime.setter
+    def DeleteTime(self, DeleteTime):
+        self._DeleteTime = DeleteTime
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._Name = params.get("Name")
+        self._Description = params.get("Description")
+        self._Config = params.get("Config")
+        self._AppId = params.get("AppId")
+        self._Uin = params.get("Uin")
+        self._SubAccountUin = params.get("SubAccountUin")
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
+        self._Deleted = params.get("Deleted")
+        self._DeleteTime = params.get("DeleteTime")
         self._RequestId = params.get("RequestId")
 
 
@@ -47835,6 +68719,2249 @@ class UpdateEngineResourceGroupNetworkConfigInfoResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class UpdateJobSpecPriorityRequest(AbstractModel):
+    r"""UpdateJobSpecPriority请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SpecId: <p>配置ID</p>
+        :type SpecId: str
+        :param _Priority: <p>作业优先级（1-9，数字越大优先级越高）</p>
+        :type Priority: int
+        """
+        self._SpecId = None
+        self._Priority = None
+
+    @property
+    def SpecId(self):
+        r"""<p>配置ID</p>
+        :rtype: str
+        """
+        return self._SpecId
+
+    @SpecId.setter
+    def SpecId(self, SpecId):
+        self._SpecId = SpecId
+
+    @property
+    def Priority(self):
+        r"""<p>作业优先级（1-9，数字越大优先级越高）</p>
+        :rtype: int
+        """
+        return self._Priority
+
+    @Priority.setter
+    def Priority(self, Priority):
+        self._Priority = Priority
+
+
+    def _deserialize(self, params):
+        self._SpecId = params.get("SpecId")
+        self._Priority = params.get("Priority")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateJobSpecPriorityResponse(AbstractModel):
+    r"""UpdateJobSpecPriority返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: <p>配置ID</p>
+        :type Id: str
+        :param _Name: <p>配置名称</p>
+        :type Name: str
+        :param _Description: <p>配置描述</p>
+        :type Description: str
+        :param _Entrypoint: <p>入口命令</p>
+        :type Entrypoint: str
+        :param _Image: <p>镜像地址</p>
+        :type Image: str
+        :param _ImagePullType: <p>镜像拉取类型（Builtin: 内置, Custom: 自定义）</p>
+        :type ImagePullType: str
+        :param _ImagePullPolicy: <p>镜像拉取策略</p>
+        :type ImagePullPolicy: str
+        :param _ResourceConfig: <p>资源配置(JSON)</p>
+        :type ResourceConfig: str
+        :param _RuntimeEnv: <p>运行时环境配置(JSON)</p>
+        :type RuntimeEnv: str
+        :param _Catalog: <p>存储卷和挂载卷配置(JSON)</p>
+        :type Catalog: str
+        :param _AutoscalerOptions: <p>弹性伸缩配置(JSON)</p>
+        :type AutoscalerOptions: str
+        :param _ResourceConfigId: <p>资源配置ID</p>
+        :type ResourceConfigId: str
+        :param _ResourceConfigChanged: <p>资源配置模板是否变更</p>
+        :type ResourceConfigChanged: bool
+        :param _ResourcePartitionId: <p>默认资源分区ID</p>
+        :type ResourcePartitionId: str
+        :param _ResourcePartitionName: <p>默认资源分区名称</p>
+        :type ResourcePartitionName: str
+        :param _Queue: <p>默认队列名称</p>
+        :type Queue: str
+        :param _GroupId: <p>默认计算组 ID</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GroupId: str
+        :param _ClusterId: <p>默认集群 ID（与 GroupId 互斥）</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClusterId: str
+        :param _DispatchStrategy: <p>集群分派策略（本期仅支持 RANDOM；NULL 时退化为依赖 ClusterGroup 配置兜底）</p>
+        :type DispatchStrategy: str
+        :param _JobPackage: <p>作业包URL</p>
+        :type JobPackage: str
+        :param _JobPackageName: <p>作业包名称</p>
+        :type JobPackageName: str
+        :param _Priority: <p>作业优先级（1-9，数字越大优先级越高）</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Priority: int
+        :param _AppId: <p>应用ID</p>
+        :type AppId: int
+        :param _Uin: <p>创建者UIN</p>
+        :type Uin: str
+        :param _SubAccountUin: <p>子用户UIN</p>
+        :type SubAccountUin: str
+        :param _CreateTime: <p>创建时间</p>
+        :type CreateTime: int
+        :param _UpdateTime: <p>更新时间</p>
+        :type UpdateTime: int
+        :param _JobInstanceCount: <p>该配置下未进入终态的作业实例数量</p>
+        :type JobInstanceCount: int
+        :param _HasRunningJobs: <p>是否有运行中的作业实例</p>
+        :type HasRunningJobs: bool
+        :param _AdvancedOptions: <p>高级参数，JSON 字符串（内容为 Key-Value 对象）</p>
+        :type AdvancedOptions: str
+        :param _Tags: <p>标签列表（TagKey-TagValue），用于将资源与腾讯云标签系统中的标签绑定</p>
+        :type Tags: list of Tag
+        :param _JobPackageSource: <p>作业包来源类型（Local: 本地上传, Cos: 用户自有 COS 桶地址）；缺时按 Local 处理</p>
+        :type JobPackageSource: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Id = None
+        self._Name = None
+        self._Description = None
+        self._Entrypoint = None
+        self._Image = None
+        self._ImagePullType = None
+        self._ImagePullPolicy = None
+        self._ResourceConfig = None
+        self._RuntimeEnv = None
+        self._Catalog = None
+        self._AutoscalerOptions = None
+        self._ResourceConfigId = None
+        self._ResourceConfigChanged = None
+        self._ResourcePartitionId = None
+        self._ResourcePartitionName = None
+        self._Queue = None
+        self._GroupId = None
+        self._ClusterId = None
+        self._DispatchStrategy = None
+        self._JobPackage = None
+        self._JobPackageName = None
+        self._Priority = None
+        self._AppId = None
+        self._Uin = None
+        self._SubAccountUin = None
+        self._CreateTime = None
+        self._UpdateTime = None
+        self._JobInstanceCount = None
+        self._HasRunningJobs = None
+        self._AdvancedOptions = None
+        self._Tags = None
+        self._JobPackageSource = None
+        self._RequestId = None
+
+    @property
+    def Id(self):
+        r"""<p>配置ID</p>
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Name(self):
+        r"""<p>配置名称</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Description(self):
+        r"""<p>配置描述</p>
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def Entrypoint(self):
+        r"""<p>入口命令</p>
+        :rtype: str
+        """
+        return self._Entrypoint
+
+    @Entrypoint.setter
+    def Entrypoint(self, Entrypoint):
+        self._Entrypoint = Entrypoint
+
+    @property
+    def Image(self):
+        r"""<p>镜像地址</p>
+        :rtype: str
+        """
+        return self._Image
+
+    @Image.setter
+    def Image(self, Image):
+        self._Image = Image
+
+    @property
+    def ImagePullType(self):
+        r"""<p>镜像拉取类型（Builtin: 内置, Custom: 自定义）</p>
+        :rtype: str
+        """
+        return self._ImagePullType
+
+    @ImagePullType.setter
+    def ImagePullType(self, ImagePullType):
+        self._ImagePullType = ImagePullType
+
+    @property
+    def ImagePullPolicy(self):
+        r"""<p>镜像拉取策略</p>
+        :rtype: str
+        """
+        return self._ImagePullPolicy
+
+    @ImagePullPolicy.setter
+    def ImagePullPolicy(self, ImagePullPolicy):
+        self._ImagePullPolicy = ImagePullPolicy
+
+    @property
+    def ResourceConfig(self):
+        r"""<p>资源配置(JSON)</p>
+        :rtype: str
+        """
+        return self._ResourceConfig
+
+    @ResourceConfig.setter
+    def ResourceConfig(self, ResourceConfig):
+        self._ResourceConfig = ResourceConfig
+
+    @property
+    def RuntimeEnv(self):
+        r"""<p>运行时环境配置(JSON)</p>
+        :rtype: str
+        """
+        return self._RuntimeEnv
+
+    @RuntimeEnv.setter
+    def RuntimeEnv(self, RuntimeEnv):
+        self._RuntimeEnv = RuntimeEnv
+
+    @property
+    def Catalog(self):
+        r"""<p>存储卷和挂载卷配置(JSON)</p>
+        :rtype: str
+        """
+        return self._Catalog
+
+    @Catalog.setter
+    def Catalog(self, Catalog):
+        self._Catalog = Catalog
+
+    @property
+    def AutoscalerOptions(self):
+        r"""<p>弹性伸缩配置(JSON)</p>
+        :rtype: str
+        """
+        return self._AutoscalerOptions
+
+    @AutoscalerOptions.setter
+    def AutoscalerOptions(self, AutoscalerOptions):
+        self._AutoscalerOptions = AutoscalerOptions
+
+    @property
+    def ResourceConfigId(self):
+        r"""<p>资源配置ID</p>
+        :rtype: str
+        """
+        return self._ResourceConfigId
+
+    @ResourceConfigId.setter
+    def ResourceConfigId(self, ResourceConfigId):
+        self._ResourceConfigId = ResourceConfigId
+
+    @property
+    def ResourceConfigChanged(self):
+        r"""<p>资源配置模板是否变更</p>
+        :rtype: bool
+        """
+        return self._ResourceConfigChanged
+
+    @ResourceConfigChanged.setter
+    def ResourceConfigChanged(self, ResourceConfigChanged):
+        self._ResourceConfigChanged = ResourceConfigChanged
+
+    @property
+    def ResourcePartitionId(self):
+        r"""<p>默认资源分区ID</p>
+        :rtype: str
+        """
+        return self._ResourcePartitionId
+
+    @ResourcePartitionId.setter
+    def ResourcePartitionId(self, ResourcePartitionId):
+        self._ResourcePartitionId = ResourcePartitionId
+
+    @property
+    def ResourcePartitionName(self):
+        r"""<p>默认资源分区名称</p>
+        :rtype: str
+        """
+        return self._ResourcePartitionName
+
+    @ResourcePartitionName.setter
+    def ResourcePartitionName(self, ResourcePartitionName):
+        self._ResourcePartitionName = ResourcePartitionName
+
+    @property
+    def Queue(self):
+        r"""<p>默认队列名称</p>
+        :rtype: str
+        """
+        return self._Queue
+
+    @Queue.setter
+    def Queue(self, Queue):
+        self._Queue = Queue
+
+    @property
+    def GroupId(self):
+        r"""<p>默认计算组 ID</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._GroupId
+
+    @GroupId.setter
+    def GroupId(self, GroupId):
+        self._GroupId = GroupId
+
+    @property
+    def ClusterId(self):
+        r"""<p>默认集群 ID（与 GroupId 互斥）</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def DispatchStrategy(self):
+        r"""<p>集群分派策略（本期仅支持 RANDOM；NULL 时退化为依赖 ClusterGroup 配置兜底）</p>
+        :rtype: str
+        """
+        return self._DispatchStrategy
+
+    @DispatchStrategy.setter
+    def DispatchStrategy(self, DispatchStrategy):
+        self._DispatchStrategy = DispatchStrategy
+
+    @property
+    def JobPackage(self):
+        r"""<p>作业包URL</p>
+        :rtype: str
+        """
+        return self._JobPackage
+
+    @JobPackage.setter
+    def JobPackage(self, JobPackage):
+        self._JobPackage = JobPackage
+
+    @property
+    def JobPackageName(self):
+        r"""<p>作业包名称</p>
+        :rtype: str
+        """
+        return self._JobPackageName
+
+    @JobPackageName.setter
+    def JobPackageName(self, JobPackageName):
+        self._JobPackageName = JobPackageName
+
+    @property
+    def Priority(self):
+        r"""<p>作业优先级（1-9，数字越大优先级越高）</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Priority
+
+    @Priority.setter
+    def Priority(self, Priority):
+        self._Priority = Priority
+
+    @property
+    def AppId(self):
+        r"""<p>应用ID</p>
+        :rtype: int
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def Uin(self):
+        r"""<p>创建者UIN</p>
+        :rtype: str
+        """
+        return self._Uin
+
+    @Uin.setter
+    def Uin(self, Uin):
+        self._Uin = Uin
+
+    @property
+    def SubAccountUin(self):
+        r"""<p>子用户UIN</p>
+        :rtype: str
+        """
+        return self._SubAccountUin
+
+    @SubAccountUin.setter
+    def SubAccountUin(self, SubAccountUin):
+        self._SubAccountUin = SubAccountUin
+
+    @property
+    def CreateTime(self):
+        r"""<p>创建时间</p>
+        :rtype: int
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        r"""<p>更新时间</p>
+        :rtype: int
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def JobInstanceCount(self):
+        r"""<p>该配置下未进入终态的作业实例数量</p>
+        :rtype: int
+        """
+        return self._JobInstanceCount
+
+    @JobInstanceCount.setter
+    def JobInstanceCount(self, JobInstanceCount):
+        self._JobInstanceCount = JobInstanceCount
+
+    @property
+    def HasRunningJobs(self):
+        r"""<p>是否有运行中的作业实例</p>
+        :rtype: bool
+        """
+        return self._HasRunningJobs
+
+    @HasRunningJobs.setter
+    def HasRunningJobs(self, HasRunningJobs):
+        self._HasRunningJobs = HasRunningJobs
+
+    @property
+    def AdvancedOptions(self):
+        r"""<p>高级参数，JSON 字符串（内容为 Key-Value 对象）</p>
+        :rtype: str
+        """
+        return self._AdvancedOptions
+
+    @AdvancedOptions.setter
+    def AdvancedOptions(self, AdvancedOptions):
+        self._AdvancedOptions = AdvancedOptions
+
+    @property
+    def Tags(self):
+        r"""<p>标签列表（TagKey-TagValue），用于将资源与腾讯云标签系统中的标签绑定</p>
+        :rtype: list of Tag
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def JobPackageSource(self):
+        r"""<p>作业包来源类型（Local: 本地上传, Cos: 用户自有 COS 桶地址）；缺时按 Local 处理</p>
+        :rtype: str
+        """
+        return self._JobPackageSource
+
+    @JobPackageSource.setter
+    def JobPackageSource(self, JobPackageSource):
+        self._JobPackageSource = JobPackageSource
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._Name = params.get("Name")
+        self._Description = params.get("Description")
+        self._Entrypoint = params.get("Entrypoint")
+        self._Image = params.get("Image")
+        self._ImagePullType = params.get("ImagePullType")
+        self._ImagePullPolicy = params.get("ImagePullPolicy")
+        self._ResourceConfig = params.get("ResourceConfig")
+        self._RuntimeEnv = params.get("RuntimeEnv")
+        self._Catalog = params.get("Catalog")
+        self._AutoscalerOptions = params.get("AutoscalerOptions")
+        self._ResourceConfigId = params.get("ResourceConfigId")
+        self._ResourceConfigChanged = params.get("ResourceConfigChanged")
+        self._ResourcePartitionId = params.get("ResourcePartitionId")
+        self._ResourcePartitionName = params.get("ResourcePartitionName")
+        self._Queue = params.get("Queue")
+        self._GroupId = params.get("GroupId")
+        self._ClusterId = params.get("ClusterId")
+        self._DispatchStrategy = params.get("DispatchStrategy")
+        self._JobPackage = params.get("JobPackage")
+        self._JobPackageName = params.get("JobPackageName")
+        self._Priority = params.get("Priority")
+        self._AppId = params.get("AppId")
+        self._Uin = params.get("Uin")
+        self._SubAccountUin = params.get("SubAccountUin")
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
+        self._JobInstanceCount = params.get("JobInstanceCount")
+        self._HasRunningJobs = params.get("HasRunningJobs")
+        self._AdvancedOptions = params.get("AdvancedOptions")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
+        self._JobPackageSource = params.get("JobPackageSource")
+        self._RequestId = params.get("RequestId")
+
+
+class UpdateJobSpecRequest(AbstractModel):
+    r"""UpdateJobSpec请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SpecId: <p>配置ID</p>
+        :type SpecId: str
+        :param _Entrypoint: <p>入口命令</p>
+        :type Entrypoint: str
+        :param _Name: <p>配置名称</p>
+        :type Name: str
+        :param _Description: <p>配置描述</p>
+        :type Description: str
+        :param _Image: <p>镜像地址</p>
+        :type Image: str
+        :param _ImagePullType: <p>镜像拉取类型（Builtin: 内置, Custom: 自定义）</p>
+        :type ImagePullType: str
+        :param _ImagePullPolicy: <p>镜像拉取策略（Always, IfNotPresent, Never）</p>
+        :type ImagePullPolicy: str
+        :param _ResourceConfig: <p>资源配置(JSON)</p>
+        :type ResourceConfig: str
+        :param _RuntimeEnv: <p>运行时环境配置(JSON)</p>
+        :type RuntimeEnv: str
+        :param _Catalog: <p>存储卷和挂载卷配置(JSON)</p>
+        :type Catalog: str
+        :param _AutoscalerOptions: <p>弹性伸缩配置(JSON)</p>
+        :type AutoscalerOptions: str
+        :param _ResourcePartitionId: <p>默认资源分区ID</p>
+        :type ResourcePartitionId: str
+        :param _ResourceConfigId: <p>资源配置模板ID</p>
+        :type ResourceConfigId: str
+        :param _Queue: <p>默认队列名称</p>
+        :type Queue: str
+        :param _JobPackage: <p>作业包URL</p>
+        :type JobPackage: str
+        :param _JobPackageName: <p>作业包名称</p>
+        :type JobPackageName: str
+        :param _JobPackageSource: <p>作业包来源类型（Local: 本地上传, Cos: 用户自有 COS 桶地址）；缺省时按 Local 处理</p>
+        :type JobPackageSource: str
+        :param _AdvancedOptions: <p>高级参数json</p>
+        :type AdvancedOptions: str
+        :param _GroupId: <p>默认计算组名称（与 ClusterId 互斥；与老字段 ClusterGroup 等价，新调用方优先使用 GroupId）</p>
+        :type GroupId: str
+        :param _ClusterId: <p>默认集群 ID（与 GroupId 互斥，同时非空将返回 InvalidParameter.ClusterAndGroupConflict）</p>
+        :type ClusterId: str
+        :param _Priority: <p>作业优先级（1-9，数字越大优先级越高）</p>
+        :type Priority: int
+        :param _Tags: <p>标签列表（TagKey-TagValue），用于将资源与腾讯云标签系统中的标签绑定</p>
+        :type Tags: list of Tag
+        :param _DispatchStrategy: <p>集群分派策略</p><p>枚举值：</p><ul><li>RANDOM： 随机分配</li></ul>
+        :type DispatchStrategy: str
+        """
+        self._SpecId = None
+        self._Entrypoint = None
+        self._Name = None
+        self._Description = None
+        self._Image = None
+        self._ImagePullType = None
+        self._ImagePullPolicy = None
+        self._ResourceConfig = None
+        self._RuntimeEnv = None
+        self._Catalog = None
+        self._AutoscalerOptions = None
+        self._ResourcePartitionId = None
+        self._ResourceConfigId = None
+        self._Queue = None
+        self._JobPackage = None
+        self._JobPackageName = None
+        self._JobPackageSource = None
+        self._AdvancedOptions = None
+        self._GroupId = None
+        self._ClusterId = None
+        self._Priority = None
+        self._Tags = None
+        self._DispatchStrategy = None
+
+    @property
+    def SpecId(self):
+        r"""<p>配置ID</p>
+        :rtype: str
+        """
+        return self._SpecId
+
+    @SpecId.setter
+    def SpecId(self, SpecId):
+        self._SpecId = SpecId
+
+    @property
+    def Entrypoint(self):
+        r"""<p>入口命令</p>
+        :rtype: str
+        """
+        return self._Entrypoint
+
+    @Entrypoint.setter
+    def Entrypoint(self, Entrypoint):
+        self._Entrypoint = Entrypoint
+
+    @property
+    def Name(self):
+        r"""<p>配置名称</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Description(self):
+        r"""<p>配置描述</p>
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def Image(self):
+        r"""<p>镜像地址</p>
+        :rtype: str
+        """
+        return self._Image
+
+    @Image.setter
+    def Image(self, Image):
+        self._Image = Image
+
+    @property
+    def ImagePullType(self):
+        r"""<p>镜像拉取类型（Builtin: 内置, Custom: 自定义）</p>
+        :rtype: str
+        """
+        return self._ImagePullType
+
+    @ImagePullType.setter
+    def ImagePullType(self, ImagePullType):
+        self._ImagePullType = ImagePullType
+
+    @property
+    def ImagePullPolicy(self):
+        r"""<p>镜像拉取策略（Always, IfNotPresent, Never）</p>
+        :rtype: str
+        """
+        return self._ImagePullPolicy
+
+    @ImagePullPolicy.setter
+    def ImagePullPolicy(self, ImagePullPolicy):
+        self._ImagePullPolicy = ImagePullPolicy
+
+    @property
+    def ResourceConfig(self):
+        r"""<p>资源配置(JSON)</p>
+        :rtype: str
+        """
+        return self._ResourceConfig
+
+    @ResourceConfig.setter
+    def ResourceConfig(self, ResourceConfig):
+        self._ResourceConfig = ResourceConfig
+
+    @property
+    def RuntimeEnv(self):
+        r"""<p>运行时环境配置(JSON)</p>
+        :rtype: str
+        """
+        return self._RuntimeEnv
+
+    @RuntimeEnv.setter
+    def RuntimeEnv(self, RuntimeEnv):
+        self._RuntimeEnv = RuntimeEnv
+
+    @property
+    def Catalog(self):
+        r"""<p>存储卷和挂载卷配置(JSON)</p>
+        :rtype: str
+        """
+        return self._Catalog
+
+    @Catalog.setter
+    def Catalog(self, Catalog):
+        self._Catalog = Catalog
+
+    @property
+    def AutoscalerOptions(self):
+        r"""<p>弹性伸缩配置(JSON)</p>
+        :rtype: str
+        """
+        return self._AutoscalerOptions
+
+    @AutoscalerOptions.setter
+    def AutoscalerOptions(self, AutoscalerOptions):
+        self._AutoscalerOptions = AutoscalerOptions
+
+    @property
+    def ResourcePartitionId(self):
+        r"""<p>默认资源分区ID</p>
+        :rtype: str
+        """
+        return self._ResourcePartitionId
+
+    @ResourcePartitionId.setter
+    def ResourcePartitionId(self, ResourcePartitionId):
+        self._ResourcePartitionId = ResourcePartitionId
+
+    @property
+    def ResourceConfigId(self):
+        r"""<p>资源配置模板ID</p>
+        :rtype: str
+        """
+        return self._ResourceConfigId
+
+    @ResourceConfigId.setter
+    def ResourceConfigId(self, ResourceConfigId):
+        self._ResourceConfigId = ResourceConfigId
+
+    @property
+    def Queue(self):
+        r"""<p>默认队列名称</p>
+        :rtype: str
+        """
+        return self._Queue
+
+    @Queue.setter
+    def Queue(self, Queue):
+        self._Queue = Queue
+
+    @property
+    def JobPackage(self):
+        r"""<p>作业包URL</p>
+        :rtype: str
+        """
+        return self._JobPackage
+
+    @JobPackage.setter
+    def JobPackage(self, JobPackage):
+        self._JobPackage = JobPackage
+
+    @property
+    def JobPackageName(self):
+        r"""<p>作业包名称</p>
+        :rtype: str
+        """
+        return self._JobPackageName
+
+    @JobPackageName.setter
+    def JobPackageName(self, JobPackageName):
+        self._JobPackageName = JobPackageName
+
+    @property
+    def JobPackageSource(self):
+        r"""<p>作业包来源类型（Local: 本地上传, Cos: 用户自有 COS 桶地址）；缺省时按 Local 处理</p>
+        :rtype: str
+        """
+        return self._JobPackageSource
+
+    @JobPackageSource.setter
+    def JobPackageSource(self, JobPackageSource):
+        self._JobPackageSource = JobPackageSource
+
+    @property
+    def AdvancedOptions(self):
+        r"""<p>高级参数json</p>
+        :rtype: str
+        """
+        return self._AdvancedOptions
+
+    @AdvancedOptions.setter
+    def AdvancedOptions(self, AdvancedOptions):
+        self._AdvancedOptions = AdvancedOptions
+
+    @property
+    def GroupId(self):
+        r"""<p>默认计算组名称（与 ClusterId 互斥；与老字段 ClusterGroup 等价，新调用方优先使用 GroupId）</p>
+        :rtype: str
+        """
+        return self._GroupId
+
+    @GroupId.setter
+    def GroupId(self, GroupId):
+        self._GroupId = GroupId
+
+    @property
+    def ClusterId(self):
+        r"""<p>默认集群 ID（与 GroupId 互斥，同时非空将返回 InvalidParameter.ClusterAndGroupConflict）</p>
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def Priority(self):
+        r"""<p>作业优先级（1-9，数字越大优先级越高）</p>
+        :rtype: int
+        """
+        return self._Priority
+
+    @Priority.setter
+    def Priority(self, Priority):
+        self._Priority = Priority
+
+    @property
+    def Tags(self):
+        r"""<p>标签列表（TagKey-TagValue），用于将资源与腾讯云标签系统中的标签绑定</p>
+        :rtype: list of Tag
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def DispatchStrategy(self):
+        r"""<p>集群分派策略</p><p>枚举值：</p><ul><li>RANDOM： 随机分配</li></ul>
+        :rtype: str
+        """
+        return self._DispatchStrategy
+
+    @DispatchStrategy.setter
+    def DispatchStrategy(self, DispatchStrategy):
+        self._DispatchStrategy = DispatchStrategy
+
+
+    def _deserialize(self, params):
+        self._SpecId = params.get("SpecId")
+        self._Entrypoint = params.get("Entrypoint")
+        self._Name = params.get("Name")
+        self._Description = params.get("Description")
+        self._Image = params.get("Image")
+        self._ImagePullType = params.get("ImagePullType")
+        self._ImagePullPolicy = params.get("ImagePullPolicy")
+        self._ResourceConfig = params.get("ResourceConfig")
+        self._RuntimeEnv = params.get("RuntimeEnv")
+        self._Catalog = params.get("Catalog")
+        self._AutoscalerOptions = params.get("AutoscalerOptions")
+        self._ResourcePartitionId = params.get("ResourcePartitionId")
+        self._ResourceConfigId = params.get("ResourceConfigId")
+        self._Queue = params.get("Queue")
+        self._JobPackage = params.get("JobPackage")
+        self._JobPackageName = params.get("JobPackageName")
+        self._JobPackageSource = params.get("JobPackageSource")
+        self._AdvancedOptions = params.get("AdvancedOptions")
+        self._GroupId = params.get("GroupId")
+        self._ClusterId = params.get("ClusterId")
+        self._Priority = params.get("Priority")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
+        self._DispatchStrategy = params.get("DispatchStrategy")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateJobSpecResponse(AbstractModel):
+    r"""UpdateJobSpec返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: <p>配置ID</p>
+        :type Id: str
+        :param _Name: <p>配置名称</p>
+        :type Name: str
+        :param _Description: <p>配置描述</p>
+        :type Description: str
+        :param _Entrypoint: <p>入口命令</p>
+        :type Entrypoint: str
+        :param _Image: <p>镜像地址</p>
+        :type Image: str
+        :param _ImagePullType: <p>镜像拉取类型（Builtin: 内置, Custom: 自定义）</p>
+        :type ImagePullType: str
+        :param _ImagePullPolicy: <p>镜像拉取策略</p>
+        :type ImagePullPolicy: str
+        :param _ResourceConfig: <p>资源配置(JSON)</p>
+        :type ResourceConfig: str
+        :param _RuntimeEnv: <p>运行时环境配置(JSON)</p>
+        :type RuntimeEnv: str
+        :param _Catalog: <p>存储卷和挂载卷配置(JSON)</p>
+        :type Catalog: str
+        :param _AutoscalerOptions: <p>弹性伸缩配置(JSON)</p>
+        :type AutoscalerOptions: str
+        :param _ResourceConfigId: <p>资源配置ID</p>
+        :type ResourceConfigId: str
+        :param _ResourceConfigChanged: <p>资源配置模板是否变更</p>
+        :type ResourceConfigChanged: bool
+        :param _ResourcePartitionId: <p>默认资源分区ID</p>
+        :type ResourcePartitionId: str
+        :param _ResourcePartitionName: <p>默认资源分区名称</p>
+        :type ResourcePartitionName: str
+        :param _Queue: <p>默认队列名称</p>
+        :type Queue: str
+        :param _JobPackage: <p>作业包URL</p>
+        :type JobPackage: str
+        :param _JobPackageName: <p>作业包名称</p>
+        :type JobPackageName: str
+        :param _JobPackageSource: <p>作业包来源类型（Local: 本地上传, Cos: 用户自有 COS 桶地址）；缺省时按 Local 处理</p>
+        :type JobPackageSource: str
+        :param _AppId: <p>应用ID</p>
+        :type AppId: int
+        :param _Uin: <p>创建者UIN</p>
+        :type Uin: str
+        :param _SubAccountUin: <p>子用户UIN</p>
+        :type SubAccountUin: str
+        :param _SubAccountName: <p>子用户名称（由聚合层通过 CAM 接口回填）</p>
+        :type SubAccountName: str
+        :param _CreateTime: <p>创建时间</p>
+        :type CreateTime: int
+        :param _UpdateTime: <p>更新时间</p>
+        :type UpdateTime: int
+        :param _JobInstanceCount: <p>该配置产生的作业实例数量</p>
+        :type JobInstanceCount: int
+        :param _HasRunningJobs: <p>是否有运行中的作业实例</p>
+        :type HasRunningJobs: bool
+        :param _AdvancedOptions: <p>高级参数json</p>
+        :type AdvancedOptions: str
+        :param _GroupId: <p>默认计算组名称（与 ClusterGroup 等价，新调用方使用 GroupId）</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GroupId: str
+        :param _ClusterId: <p>默认集群 ID（与 GroupId 互斥）</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClusterId: str
+        :param _Priority: <p>作业优先级（1-9，数字越大优先级越高）</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Priority: int
+        :param _Tags: <p>标签列表（TagKey-TagValue），用于将资源与腾讯云标签系统中的标签绑定</p>
+        :type Tags: list of Tag
+        :param _DispatchStrategy: <p>集群分派策略</p><p>枚举值：</p><ul><li>RANDOM： 随机分配</li></ul>
+        :type DispatchStrategy: str
+        :param _SubmissionTarget: <p>作业提交目标</p><p>枚举值：</p><ul><li>GROUP： 按计算组分派</li></ul>
+        :type SubmissionTarget: str
+        :param _GroupName: <p>计算组名称</p>
+        :type GroupName: str
+        :param _ClusterName: <p>集群名称</p>
+        :type ClusterName: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Id = None
+        self._Name = None
+        self._Description = None
+        self._Entrypoint = None
+        self._Image = None
+        self._ImagePullType = None
+        self._ImagePullPolicy = None
+        self._ResourceConfig = None
+        self._RuntimeEnv = None
+        self._Catalog = None
+        self._AutoscalerOptions = None
+        self._ResourceConfigId = None
+        self._ResourceConfigChanged = None
+        self._ResourcePartitionId = None
+        self._ResourcePartitionName = None
+        self._Queue = None
+        self._JobPackage = None
+        self._JobPackageName = None
+        self._JobPackageSource = None
+        self._AppId = None
+        self._Uin = None
+        self._SubAccountUin = None
+        self._SubAccountName = None
+        self._CreateTime = None
+        self._UpdateTime = None
+        self._JobInstanceCount = None
+        self._HasRunningJobs = None
+        self._AdvancedOptions = None
+        self._GroupId = None
+        self._ClusterId = None
+        self._Priority = None
+        self._Tags = None
+        self._DispatchStrategy = None
+        self._SubmissionTarget = None
+        self._GroupName = None
+        self._ClusterName = None
+        self._RequestId = None
+
+    @property
+    def Id(self):
+        r"""<p>配置ID</p>
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Name(self):
+        r"""<p>配置名称</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Description(self):
+        r"""<p>配置描述</p>
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def Entrypoint(self):
+        r"""<p>入口命令</p>
+        :rtype: str
+        """
+        return self._Entrypoint
+
+    @Entrypoint.setter
+    def Entrypoint(self, Entrypoint):
+        self._Entrypoint = Entrypoint
+
+    @property
+    def Image(self):
+        r"""<p>镜像地址</p>
+        :rtype: str
+        """
+        return self._Image
+
+    @Image.setter
+    def Image(self, Image):
+        self._Image = Image
+
+    @property
+    def ImagePullType(self):
+        r"""<p>镜像拉取类型（Builtin: 内置, Custom: 自定义）</p>
+        :rtype: str
+        """
+        return self._ImagePullType
+
+    @ImagePullType.setter
+    def ImagePullType(self, ImagePullType):
+        self._ImagePullType = ImagePullType
+
+    @property
+    def ImagePullPolicy(self):
+        r"""<p>镜像拉取策略</p>
+        :rtype: str
+        """
+        return self._ImagePullPolicy
+
+    @ImagePullPolicy.setter
+    def ImagePullPolicy(self, ImagePullPolicy):
+        self._ImagePullPolicy = ImagePullPolicy
+
+    @property
+    def ResourceConfig(self):
+        r"""<p>资源配置(JSON)</p>
+        :rtype: str
+        """
+        return self._ResourceConfig
+
+    @ResourceConfig.setter
+    def ResourceConfig(self, ResourceConfig):
+        self._ResourceConfig = ResourceConfig
+
+    @property
+    def RuntimeEnv(self):
+        r"""<p>运行时环境配置(JSON)</p>
+        :rtype: str
+        """
+        return self._RuntimeEnv
+
+    @RuntimeEnv.setter
+    def RuntimeEnv(self, RuntimeEnv):
+        self._RuntimeEnv = RuntimeEnv
+
+    @property
+    def Catalog(self):
+        r"""<p>存储卷和挂载卷配置(JSON)</p>
+        :rtype: str
+        """
+        return self._Catalog
+
+    @Catalog.setter
+    def Catalog(self, Catalog):
+        self._Catalog = Catalog
+
+    @property
+    def AutoscalerOptions(self):
+        r"""<p>弹性伸缩配置(JSON)</p>
+        :rtype: str
+        """
+        return self._AutoscalerOptions
+
+    @AutoscalerOptions.setter
+    def AutoscalerOptions(self, AutoscalerOptions):
+        self._AutoscalerOptions = AutoscalerOptions
+
+    @property
+    def ResourceConfigId(self):
+        r"""<p>资源配置ID</p>
+        :rtype: str
+        """
+        return self._ResourceConfigId
+
+    @ResourceConfigId.setter
+    def ResourceConfigId(self, ResourceConfigId):
+        self._ResourceConfigId = ResourceConfigId
+
+    @property
+    def ResourceConfigChanged(self):
+        r"""<p>资源配置模板是否变更</p>
+        :rtype: bool
+        """
+        return self._ResourceConfigChanged
+
+    @ResourceConfigChanged.setter
+    def ResourceConfigChanged(self, ResourceConfigChanged):
+        self._ResourceConfigChanged = ResourceConfigChanged
+
+    @property
+    def ResourcePartitionId(self):
+        r"""<p>默认资源分区ID</p>
+        :rtype: str
+        """
+        return self._ResourcePartitionId
+
+    @ResourcePartitionId.setter
+    def ResourcePartitionId(self, ResourcePartitionId):
+        self._ResourcePartitionId = ResourcePartitionId
+
+    @property
+    def ResourcePartitionName(self):
+        r"""<p>默认资源分区名称</p>
+        :rtype: str
+        """
+        return self._ResourcePartitionName
+
+    @ResourcePartitionName.setter
+    def ResourcePartitionName(self, ResourcePartitionName):
+        self._ResourcePartitionName = ResourcePartitionName
+
+    @property
+    def Queue(self):
+        r"""<p>默认队列名称</p>
+        :rtype: str
+        """
+        return self._Queue
+
+    @Queue.setter
+    def Queue(self, Queue):
+        self._Queue = Queue
+
+    @property
+    def JobPackage(self):
+        r"""<p>作业包URL</p>
+        :rtype: str
+        """
+        return self._JobPackage
+
+    @JobPackage.setter
+    def JobPackage(self, JobPackage):
+        self._JobPackage = JobPackage
+
+    @property
+    def JobPackageName(self):
+        r"""<p>作业包名称</p>
+        :rtype: str
+        """
+        return self._JobPackageName
+
+    @JobPackageName.setter
+    def JobPackageName(self, JobPackageName):
+        self._JobPackageName = JobPackageName
+
+    @property
+    def JobPackageSource(self):
+        r"""<p>作业包来源类型（Local: 本地上传, Cos: 用户自有 COS 桶地址）；缺省时按 Local 处理</p>
+        :rtype: str
+        """
+        return self._JobPackageSource
+
+    @JobPackageSource.setter
+    def JobPackageSource(self, JobPackageSource):
+        self._JobPackageSource = JobPackageSource
+
+    @property
+    def AppId(self):
+        r"""<p>应用ID</p>
+        :rtype: int
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def Uin(self):
+        r"""<p>创建者UIN</p>
+        :rtype: str
+        """
+        return self._Uin
+
+    @Uin.setter
+    def Uin(self, Uin):
+        self._Uin = Uin
+
+    @property
+    def SubAccountUin(self):
+        r"""<p>子用户UIN</p>
+        :rtype: str
+        """
+        return self._SubAccountUin
+
+    @SubAccountUin.setter
+    def SubAccountUin(self, SubAccountUin):
+        self._SubAccountUin = SubAccountUin
+
+    @property
+    def SubAccountName(self):
+        r"""<p>子用户名称（由聚合层通过 CAM 接口回填）</p>
+        :rtype: str
+        """
+        return self._SubAccountName
+
+    @SubAccountName.setter
+    def SubAccountName(self, SubAccountName):
+        self._SubAccountName = SubAccountName
+
+    @property
+    def CreateTime(self):
+        r"""<p>创建时间</p>
+        :rtype: int
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        r"""<p>更新时间</p>
+        :rtype: int
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def JobInstanceCount(self):
+        r"""<p>该配置产生的作业实例数量</p>
+        :rtype: int
+        """
+        return self._JobInstanceCount
+
+    @JobInstanceCount.setter
+    def JobInstanceCount(self, JobInstanceCount):
+        self._JobInstanceCount = JobInstanceCount
+
+    @property
+    def HasRunningJobs(self):
+        r"""<p>是否有运行中的作业实例</p>
+        :rtype: bool
+        """
+        return self._HasRunningJobs
+
+    @HasRunningJobs.setter
+    def HasRunningJobs(self, HasRunningJobs):
+        self._HasRunningJobs = HasRunningJobs
+
+    @property
+    def AdvancedOptions(self):
+        r"""<p>高级参数json</p>
+        :rtype: str
+        """
+        return self._AdvancedOptions
+
+    @AdvancedOptions.setter
+    def AdvancedOptions(self, AdvancedOptions):
+        self._AdvancedOptions = AdvancedOptions
+
+    @property
+    def GroupId(self):
+        r"""<p>默认计算组名称（与 ClusterGroup 等价，新调用方使用 GroupId）</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._GroupId
+
+    @GroupId.setter
+    def GroupId(self, GroupId):
+        self._GroupId = GroupId
+
+    @property
+    def ClusterId(self):
+        r"""<p>默认集群 ID（与 GroupId 互斥）</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def Priority(self):
+        r"""<p>作业优先级（1-9，数字越大优先级越高）</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Priority
+
+    @Priority.setter
+    def Priority(self, Priority):
+        self._Priority = Priority
+
+    @property
+    def Tags(self):
+        r"""<p>标签列表（TagKey-TagValue），用于将资源与腾讯云标签系统中的标签绑定</p>
+        :rtype: list of Tag
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def DispatchStrategy(self):
+        r"""<p>集群分派策略</p><p>枚举值：</p><ul><li>RANDOM： 随机分配</li></ul>
+        :rtype: str
+        """
+        return self._DispatchStrategy
+
+    @DispatchStrategy.setter
+    def DispatchStrategy(self, DispatchStrategy):
+        self._DispatchStrategy = DispatchStrategy
+
+    @property
+    def SubmissionTarget(self):
+        r"""<p>作业提交目标</p><p>枚举值：</p><ul><li>GROUP： 按计算组分派</li></ul>
+        :rtype: str
+        """
+        return self._SubmissionTarget
+
+    @SubmissionTarget.setter
+    def SubmissionTarget(self, SubmissionTarget):
+        self._SubmissionTarget = SubmissionTarget
+
+    @property
+    def GroupName(self):
+        r"""<p>计算组名称</p>
+        :rtype: str
+        """
+        return self._GroupName
+
+    @GroupName.setter
+    def GroupName(self, GroupName):
+        self._GroupName = GroupName
+
+    @property
+    def ClusterName(self):
+        r"""<p>集群名称</p>
+        :rtype: str
+        """
+        return self._ClusterName
+
+    @ClusterName.setter
+    def ClusterName(self, ClusterName):
+        self._ClusterName = ClusterName
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._Name = params.get("Name")
+        self._Description = params.get("Description")
+        self._Entrypoint = params.get("Entrypoint")
+        self._Image = params.get("Image")
+        self._ImagePullType = params.get("ImagePullType")
+        self._ImagePullPolicy = params.get("ImagePullPolicy")
+        self._ResourceConfig = params.get("ResourceConfig")
+        self._RuntimeEnv = params.get("RuntimeEnv")
+        self._Catalog = params.get("Catalog")
+        self._AutoscalerOptions = params.get("AutoscalerOptions")
+        self._ResourceConfigId = params.get("ResourceConfigId")
+        self._ResourceConfigChanged = params.get("ResourceConfigChanged")
+        self._ResourcePartitionId = params.get("ResourcePartitionId")
+        self._ResourcePartitionName = params.get("ResourcePartitionName")
+        self._Queue = params.get("Queue")
+        self._JobPackage = params.get("JobPackage")
+        self._JobPackageName = params.get("JobPackageName")
+        self._JobPackageSource = params.get("JobPackageSource")
+        self._AppId = params.get("AppId")
+        self._Uin = params.get("Uin")
+        self._SubAccountUin = params.get("SubAccountUin")
+        self._SubAccountName = params.get("SubAccountName")
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
+        self._JobInstanceCount = params.get("JobInstanceCount")
+        self._HasRunningJobs = params.get("HasRunningJobs")
+        self._AdvancedOptions = params.get("AdvancedOptions")
+        self._GroupId = params.get("GroupId")
+        self._ClusterId = params.get("ClusterId")
+        self._Priority = params.get("Priority")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
+        self._DispatchStrategy = params.get("DispatchStrategy")
+        self._SubmissionTarget = params.get("SubmissionTarget")
+        self._GroupName = params.get("GroupName")
+        self._ClusterName = params.get("ClusterName")
+        self._RequestId = params.get("RequestId")
+
+
+class UpdateLabRequest(AbstractModel):
+    r"""UpdateLab请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: <p>数据实验室名称</p>
+        :type Name: str
+        :param _LabImage: <p>Lab 镜像地址（必填，用于开发工具如 Jupyter/VSCode/WebShell）。前端在&quot;内置 / 自定义&quot;两态中选择此值；当 Image 字段未显式传入时，后端会基于该字段按 R1（镜像表命中）/R2（同值 fallback）派生 Ray 集群镜像。</p>
+        :type LabImage: str
+        :param _Description: <p>数据实验室描述</p>
+        :type Description: str
+        :param _Image: <p>Ray 集群镜像地址（可选，OpenAPI/SDK 高级控制入口）。前端不再传递此字段；为空时后端按 R1（镜像表查询命中）→ R2（同值 fallback）顺序自动派生。非空时直接作为 Ray 集群镜像，跳过派生（EXPLICIT），且后端不校验其与 LabImage 的兼容性。</p>
+        :type Image: str
+        :param _ImagePullPolicy: <p>镜像拉取策略（Always, IfNotPresent, Never）</p>
+        :type ImagePullPolicy: str
+        :param _ResourceConfigId: <p>资源配置ID</p>
+        :type ResourceConfigId: str
+        :param _GroupId: <p>计算组 ID</p>
+        :type GroupId: str
+        :param _ResourcePartitionId: <p>资源分区ID</p>
+        :type ResourcePartitionId: str
+        :param _Queue: <p>队列名称</p>
+        :type Queue: str
+        :param _ExampleId: <p>案例ID，当 startMode=EXAMPLE 时必填</p>
+        :type ExampleId: str
+        :param _CodeArchiveUrl: <p>案例代码包地址，当 startMode=EXAMPLE 时填写</p>
+        :type CodeArchiveUrl: str
+        :param _LabImagePullPolicy: <p>Lab sidecar 镜像拉取策略（Always, IfNotPresent, Never）</p>
+        :type LabImagePullPolicy: str
+        :param _Priority: <p>优先级（1-9，数字越大优先级越高）</p>
+        :type Priority: int
+        :param _EnableToken: <p>是否开启token认证</p>
+        :type EnableToken: bool
+        :param _Tags: <p>标签列表（TagKey-TagValue），用于将资源与腾讯云标签系统中的标签绑定</p>
+        :type Tags: list of Tag
+        :param _PersistentWorkDir: <p>持久化工作目录配置（可选）。启用后将 COS/CFS 指定路径挂载到容器内 /workspace 工作目录，与现有 Catalog 的卷配置互斥（不允许同时在 Catalog 中显式声明 MountPath=/workspace）。</p>
+        :type PersistentWorkDir: :class:`tencentcloud.dlc.v20210125.models.PersistentWorkDir`
+        :param _ImagePullType: <p>镜像拉取类型（BuiltIn: 内置, Custom: 自定义-TCR, CustomCcr: 自定义-CCR）</p>
+        :type ImagePullType: str
+        :param _LabImagePullType: <p>Lab sidecar 镜像拉取类型（BuiltIn: 内置, Custom: 自定义-TCR, CustomCcr: 自定义-CCR）</p>
+        :type LabImagePullType: str
+        """
+        self._Name = None
+        self._LabImage = None
+        self._Description = None
+        self._Image = None
+        self._ImagePullPolicy = None
+        self._ResourceConfigId = None
+        self._GroupId = None
+        self._ResourcePartitionId = None
+        self._Queue = None
+        self._ExampleId = None
+        self._CodeArchiveUrl = None
+        self._LabImagePullPolicy = None
+        self._Priority = None
+        self._EnableToken = None
+        self._Tags = None
+        self._PersistentWorkDir = None
+        self._ImagePullType = None
+        self._LabImagePullType = None
+
+    @property
+    def Name(self):
+        r"""<p>数据实验室名称</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def LabImage(self):
+        r"""<p>Lab 镜像地址（必填，用于开发工具如 Jupyter/VSCode/WebShell）。前端在&quot;内置 / 自定义&quot;两态中选择此值；当 Image 字段未显式传入时，后端会基于该字段按 R1（镜像表命中）/R2（同值 fallback）派生 Ray 集群镜像。</p>
+        :rtype: str
+        """
+        return self._LabImage
+
+    @LabImage.setter
+    def LabImage(self, LabImage):
+        self._LabImage = LabImage
+
+    @property
+    def Description(self):
+        r"""<p>数据实验室描述</p>
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def Image(self):
+        r"""<p>Ray 集群镜像地址（可选，OpenAPI/SDK 高级控制入口）。前端不再传递此字段；为空时后端按 R1（镜像表查询命中）→ R2（同值 fallback）顺序自动派生。非空时直接作为 Ray 集群镜像，跳过派生（EXPLICIT），且后端不校验其与 LabImage 的兼容性。</p>
+        :rtype: str
+        """
+        return self._Image
+
+    @Image.setter
+    def Image(self, Image):
+        self._Image = Image
+
+    @property
+    def ImagePullPolicy(self):
+        r"""<p>镜像拉取策略（Always, IfNotPresent, Never）</p>
+        :rtype: str
+        """
+        return self._ImagePullPolicy
+
+    @ImagePullPolicy.setter
+    def ImagePullPolicy(self, ImagePullPolicy):
+        self._ImagePullPolicy = ImagePullPolicy
+
+    @property
+    def ResourceConfigId(self):
+        r"""<p>资源配置ID</p>
+        :rtype: str
+        """
+        return self._ResourceConfigId
+
+    @ResourceConfigId.setter
+    def ResourceConfigId(self, ResourceConfigId):
+        self._ResourceConfigId = ResourceConfigId
+
+    @property
+    def GroupId(self):
+        r"""<p>计算组 ID</p>
+        :rtype: str
+        """
+        return self._GroupId
+
+    @GroupId.setter
+    def GroupId(self, GroupId):
+        self._GroupId = GroupId
+
+    @property
+    def ResourcePartitionId(self):
+        r"""<p>资源分区ID</p>
+        :rtype: str
+        """
+        return self._ResourcePartitionId
+
+    @ResourcePartitionId.setter
+    def ResourcePartitionId(self, ResourcePartitionId):
+        self._ResourcePartitionId = ResourcePartitionId
+
+    @property
+    def Queue(self):
+        r"""<p>队列名称</p>
+        :rtype: str
+        """
+        return self._Queue
+
+    @Queue.setter
+    def Queue(self, Queue):
+        self._Queue = Queue
+
+    @property
+    def ExampleId(self):
+        r"""<p>案例ID，当 startMode=EXAMPLE 时必填</p>
+        :rtype: str
+        """
+        return self._ExampleId
+
+    @ExampleId.setter
+    def ExampleId(self, ExampleId):
+        self._ExampleId = ExampleId
+
+    @property
+    def CodeArchiveUrl(self):
+        r"""<p>案例代码包地址，当 startMode=EXAMPLE 时填写</p>
+        :rtype: str
+        """
+        return self._CodeArchiveUrl
+
+    @CodeArchiveUrl.setter
+    def CodeArchiveUrl(self, CodeArchiveUrl):
+        self._CodeArchiveUrl = CodeArchiveUrl
+
+    @property
+    def LabImagePullPolicy(self):
+        r"""<p>Lab sidecar 镜像拉取策略（Always, IfNotPresent, Never）</p>
+        :rtype: str
+        """
+        return self._LabImagePullPolicy
+
+    @LabImagePullPolicy.setter
+    def LabImagePullPolicy(self, LabImagePullPolicy):
+        self._LabImagePullPolicy = LabImagePullPolicy
+
+    @property
+    def Priority(self):
+        r"""<p>优先级（1-9，数字越大优先级越高）</p>
+        :rtype: int
+        """
+        return self._Priority
+
+    @Priority.setter
+    def Priority(self, Priority):
+        self._Priority = Priority
+
+    @property
+    def EnableToken(self):
+        r"""<p>是否开启token认证</p>
+        :rtype: bool
+        """
+        return self._EnableToken
+
+    @EnableToken.setter
+    def EnableToken(self, EnableToken):
+        self._EnableToken = EnableToken
+
+    @property
+    def Tags(self):
+        r"""<p>标签列表（TagKey-TagValue），用于将资源与腾讯云标签系统中的标签绑定</p>
+        :rtype: list of Tag
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def PersistentWorkDir(self):
+        r"""<p>持久化工作目录配置（可选）。启用后将 COS/CFS 指定路径挂载到容器内 /workspace 工作目录，与现有 Catalog 的卷配置互斥（不允许同时在 Catalog 中显式声明 MountPath=/workspace）。</p>
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.PersistentWorkDir`
+        """
+        return self._PersistentWorkDir
+
+    @PersistentWorkDir.setter
+    def PersistentWorkDir(self, PersistentWorkDir):
+        self._PersistentWorkDir = PersistentWorkDir
+
+    @property
+    def ImagePullType(self):
+        r"""<p>镜像拉取类型（BuiltIn: 内置, Custom: 自定义-TCR, CustomCcr: 自定义-CCR）</p>
+        :rtype: str
+        """
+        return self._ImagePullType
+
+    @ImagePullType.setter
+    def ImagePullType(self, ImagePullType):
+        self._ImagePullType = ImagePullType
+
+    @property
+    def LabImagePullType(self):
+        r"""<p>Lab sidecar 镜像拉取类型（BuiltIn: 内置, Custom: 自定义-TCR, CustomCcr: 自定义-CCR）</p>
+        :rtype: str
+        """
+        return self._LabImagePullType
+
+    @LabImagePullType.setter
+    def LabImagePullType(self, LabImagePullType):
+        self._LabImagePullType = LabImagePullType
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._LabImage = params.get("LabImage")
+        self._Description = params.get("Description")
+        self._Image = params.get("Image")
+        self._ImagePullPolicy = params.get("ImagePullPolicy")
+        self._ResourceConfigId = params.get("ResourceConfigId")
+        self._GroupId = params.get("GroupId")
+        self._ResourcePartitionId = params.get("ResourcePartitionId")
+        self._Queue = params.get("Queue")
+        self._ExampleId = params.get("ExampleId")
+        self._CodeArchiveUrl = params.get("CodeArchiveUrl")
+        self._LabImagePullPolicy = params.get("LabImagePullPolicy")
+        self._Priority = params.get("Priority")
+        self._EnableToken = params.get("EnableToken")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
+        if params.get("PersistentWorkDir") is not None:
+            self._PersistentWorkDir = PersistentWorkDir()
+            self._PersistentWorkDir._deserialize(params.get("PersistentWorkDir"))
+        self._ImagePullType = params.get("ImagePullType")
+        self._LabImagePullType = params.get("LabImagePullType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateLabResponse(AbstractModel):
+    r"""UpdateLab返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ExampleId: <p>案例模板ID（startMode=EXAMPLE 时使用）</p>
+        :type ExampleId: str
+        :param _CodeArchiveUrl: <p>代码包/工程归档地址</p>
+        :type CodeArchiveUrl: str
+        :param _Services: <p>数据实验室服务入口（服务类型 -&gt; 访问地址）</p>
+        :type Services: list of TypeKVPair
+        :param _LabImage: <p>Lab 镜像地址（必填，用于开发工具如 Jupyter/VSCode/WebShell）。前端在&quot;内置 / 自定义&quot;两态中选择此值；当 Image 字段未显式传入时，后端会基于该字段按 R1（镜像表命中）/R2（同值 fallback）派生 Ray 集群镜像。</p>
+        :type LabImage: str
+        :param _LabImagePullPolicy: <p>Lab sidecar 镜像拉取策略（Always, IfNotPresent, Never）</p>
+        :type LabImagePullPolicy: str
+        :param _Id: <p>集群ID</p>
+        :type Id: str
+        :param _Type: <p>资源类型：CLUSTER-普通集群；WORKSPACE-数据实验室（开发入口）</p>
+        :type Type: str
+        :param _Name: <p>集群名称</p>
+        :type Name: str
+        :param _Description: <p>集群描述</p>
+        :type Description: str
+        :param _ResourcePartitionId: <p>所属资源分区ID</p>
+        :type ResourcePartitionId: str
+        :param _ResourcePartitionName: <p>默认资源分区名称</p>
+        :type ResourcePartitionName: str
+        :param _Queue: <p>所属队列名称</p>
+        :type Queue: str
+        :param _AppId: <p>应用ID</p>
+        :type AppId: int
+        :param _Uin: <p>用户UIN</p>
+        :type Uin: str
+        :param _Status: <p>集群状态</p>
+        :type Status: str
+        :param _GroupId: <p>计算组 ID</p>
+        :type GroupId: str
+        :param _ResourceConfig: <p>资源配置(JSON)</p>
+        :type ResourceConfig: str
+        :param _ResourceConfigId: <p>资源配置ID</p>
+        :type ResourceConfigId: str
+        :param _Image: <p>Ray 集群镜像地址（可选，OpenAPI/SDK 高级控制入口）。前端不再传递此字段；为空时后端按 R1（镜像表查询命中）→ R2（同值 fallback）顺序自动派生。非空时直接作为 Ray 集群镜像，跳过派生（EXPLICIT），且后端不校验其与 LabImage 的兼容性。</p>
+        :type Image: str
+        :param _ImagePullPolicy: <p>镜像拉取策略</p>
+        :type ImagePullPolicy: str
+        :param _Priority: <p>优先级（1-9，数字越大优先级越高）</p>
+        :type Priority: int
+        :param _PersistentWorkDir: <p>持久化工作目录配置（可选）。启用后将 COS/CFS 指定路径挂载到容器内 /workspace 工作目录，与现有 Catalog 的卷配置互斥（不允许同时在 Catalog 中显式声明 MountPath=/workspace）。</p>
+        :type PersistentWorkDir: :class:`tencentcloud.dlc.v20210125.models.PersistentWorkDir`
+        :param _EnableToken: <p>是否开启token认证</p>
+        :type EnableToken: bool
+        :param _LabImagePullType: <p>Lab sidecar 镜像拉取类型（BuiltIn: 内置, Custom: 自定义-TCR, CustomCcr: 自定义-CCR）</p>
+        :type LabImagePullType: str
+        :param _SubAccountName: <p>子用户名称（由聚合层通过 CAM 接口回填）</p>
+        :type SubAccountName: str
+        :param _ImagePullType: <p>镜像拉取类型（BuiltIn: 内置, Custom: 自定义-TCR, CustomCcr: 自定义-CCR）</p>
+        :type ImagePullType: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ExampleId = None
+        self._CodeArchiveUrl = None
+        self._Services = None
+        self._LabImage = None
+        self._LabImagePullPolicy = None
+        self._Id = None
+        self._Type = None
+        self._Name = None
+        self._Description = None
+        self._ResourcePartitionId = None
+        self._ResourcePartitionName = None
+        self._Queue = None
+        self._AppId = None
+        self._Uin = None
+        self._Status = None
+        self._GroupId = None
+        self._ResourceConfig = None
+        self._ResourceConfigId = None
+        self._Image = None
+        self._ImagePullPolicy = None
+        self._Priority = None
+        self._PersistentWorkDir = None
+        self._EnableToken = None
+        self._LabImagePullType = None
+        self._SubAccountName = None
+        self._ImagePullType = None
+        self._RequestId = None
+
+    @property
+    def ExampleId(self):
+        r"""<p>案例模板ID（startMode=EXAMPLE 时使用）</p>
+        :rtype: str
+        """
+        return self._ExampleId
+
+    @ExampleId.setter
+    def ExampleId(self, ExampleId):
+        self._ExampleId = ExampleId
+
+    @property
+    def CodeArchiveUrl(self):
+        r"""<p>代码包/工程归档地址</p>
+        :rtype: str
+        """
+        return self._CodeArchiveUrl
+
+    @CodeArchiveUrl.setter
+    def CodeArchiveUrl(self, CodeArchiveUrl):
+        self._CodeArchiveUrl = CodeArchiveUrl
+
+    @property
+    def Services(self):
+        r"""<p>数据实验室服务入口（服务类型 -&gt; 访问地址）</p>
+        :rtype: list of TypeKVPair
+        """
+        return self._Services
+
+    @Services.setter
+    def Services(self, Services):
+        self._Services = Services
+
+    @property
+    def LabImage(self):
+        r"""<p>Lab 镜像地址（必填，用于开发工具如 Jupyter/VSCode/WebShell）。前端在&quot;内置 / 自定义&quot;两态中选择此值；当 Image 字段未显式传入时，后端会基于该字段按 R1（镜像表命中）/R2（同值 fallback）派生 Ray 集群镜像。</p>
+        :rtype: str
+        """
+        return self._LabImage
+
+    @LabImage.setter
+    def LabImage(self, LabImage):
+        self._LabImage = LabImage
+
+    @property
+    def LabImagePullPolicy(self):
+        r"""<p>Lab sidecar 镜像拉取策略（Always, IfNotPresent, Never）</p>
+        :rtype: str
+        """
+        return self._LabImagePullPolicy
+
+    @LabImagePullPolicy.setter
+    def LabImagePullPolicy(self, LabImagePullPolicy):
+        self._LabImagePullPolicy = LabImagePullPolicy
+
+    @property
+    def Id(self):
+        r"""<p>集群ID</p>
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Type(self):
+        r"""<p>资源类型：CLUSTER-普通集群；WORKSPACE-数据实验室（开发入口）</p>
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Name(self):
+        r"""<p>集群名称</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Description(self):
+        r"""<p>集群描述</p>
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def ResourcePartitionId(self):
+        r"""<p>所属资源分区ID</p>
+        :rtype: str
+        """
+        return self._ResourcePartitionId
+
+    @ResourcePartitionId.setter
+    def ResourcePartitionId(self, ResourcePartitionId):
+        self._ResourcePartitionId = ResourcePartitionId
+
+    @property
+    def ResourcePartitionName(self):
+        r"""<p>默认资源分区名称</p>
+        :rtype: str
+        """
+        return self._ResourcePartitionName
+
+    @ResourcePartitionName.setter
+    def ResourcePartitionName(self, ResourcePartitionName):
+        self._ResourcePartitionName = ResourcePartitionName
+
+    @property
+    def Queue(self):
+        r"""<p>所属队列名称</p>
+        :rtype: str
+        """
+        return self._Queue
+
+    @Queue.setter
+    def Queue(self, Queue):
+        self._Queue = Queue
+
+    @property
+    def AppId(self):
+        r"""<p>应用ID</p>
+        :rtype: int
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def Uin(self):
+        r"""<p>用户UIN</p>
+        :rtype: str
+        """
+        return self._Uin
+
+    @Uin.setter
+    def Uin(self, Uin):
+        self._Uin = Uin
+
+    @property
+    def Status(self):
+        r"""<p>集群状态</p>
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def GroupId(self):
+        r"""<p>计算组 ID</p>
+        :rtype: str
+        """
+        return self._GroupId
+
+    @GroupId.setter
+    def GroupId(self, GroupId):
+        self._GroupId = GroupId
+
+    @property
+    def ResourceConfig(self):
+        r"""<p>资源配置(JSON)</p>
+        :rtype: str
+        """
+        return self._ResourceConfig
+
+    @ResourceConfig.setter
+    def ResourceConfig(self, ResourceConfig):
+        self._ResourceConfig = ResourceConfig
+
+    @property
+    def ResourceConfigId(self):
+        r"""<p>资源配置ID</p>
+        :rtype: str
+        """
+        return self._ResourceConfigId
+
+    @ResourceConfigId.setter
+    def ResourceConfigId(self, ResourceConfigId):
+        self._ResourceConfigId = ResourceConfigId
+
+    @property
+    def Image(self):
+        r"""<p>Ray 集群镜像地址（可选，OpenAPI/SDK 高级控制入口）。前端不再传递此字段；为空时后端按 R1（镜像表查询命中）→ R2（同值 fallback）顺序自动派生。非空时直接作为 Ray 集群镜像，跳过派生（EXPLICIT），且后端不校验其与 LabImage 的兼容性。</p>
+        :rtype: str
+        """
+        return self._Image
+
+    @Image.setter
+    def Image(self, Image):
+        self._Image = Image
+
+    @property
+    def ImagePullPolicy(self):
+        r"""<p>镜像拉取策略</p>
+        :rtype: str
+        """
+        return self._ImagePullPolicy
+
+    @ImagePullPolicy.setter
+    def ImagePullPolicy(self, ImagePullPolicy):
+        self._ImagePullPolicy = ImagePullPolicy
+
+    @property
+    def Priority(self):
+        r"""<p>优先级（1-9，数字越大优先级越高）</p>
+        :rtype: int
+        """
+        return self._Priority
+
+    @Priority.setter
+    def Priority(self, Priority):
+        self._Priority = Priority
+
+    @property
+    def PersistentWorkDir(self):
+        r"""<p>持久化工作目录配置（可选）。启用后将 COS/CFS 指定路径挂载到容器内 /workspace 工作目录，与现有 Catalog 的卷配置互斥（不允许同时在 Catalog 中显式声明 MountPath=/workspace）。</p>
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.PersistentWorkDir`
+        """
+        return self._PersistentWorkDir
+
+    @PersistentWorkDir.setter
+    def PersistentWorkDir(self, PersistentWorkDir):
+        self._PersistentWorkDir = PersistentWorkDir
+
+    @property
+    def EnableToken(self):
+        r"""<p>是否开启token认证</p>
+        :rtype: bool
+        """
+        return self._EnableToken
+
+    @EnableToken.setter
+    def EnableToken(self, EnableToken):
+        self._EnableToken = EnableToken
+
+    @property
+    def LabImagePullType(self):
+        r"""<p>Lab sidecar 镜像拉取类型（BuiltIn: 内置, Custom: 自定义-TCR, CustomCcr: 自定义-CCR）</p>
+        :rtype: str
+        """
+        return self._LabImagePullType
+
+    @LabImagePullType.setter
+    def LabImagePullType(self, LabImagePullType):
+        self._LabImagePullType = LabImagePullType
+
+    @property
+    def SubAccountName(self):
+        r"""<p>子用户名称（由聚合层通过 CAM 接口回填）</p>
+        :rtype: str
+        """
+        return self._SubAccountName
+
+    @SubAccountName.setter
+    def SubAccountName(self, SubAccountName):
+        self._SubAccountName = SubAccountName
+
+    @property
+    def ImagePullType(self):
+        r"""<p>镜像拉取类型（BuiltIn: 内置, Custom: 自定义-TCR, CustomCcr: 自定义-CCR）</p>
+        :rtype: str
+        """
+        return self._ImagePullType
+
+    @ImagePullType.setter
+    def ImagePullType(self, ImagePullType):
+        self._ImagePullType = ImagePullType
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._ExampleId = params.get("ExampleId")
+        self._CodeArchiveUrl = params.get("CodeArchiveUrl")
+        if params.get("Services") is not None:
+            self._Services = []
+            for item in params.get("Services"):
+                obj = TypeKVPair()
+                obj._deserialize(item)
+                self._Services.append(obj)
+        self._LabImage = params.get("LabImage")
+        self._LabImagePullPolicy = params.get("LabImagePullPolicy")
+        self._Id = params.get("Id")
+        self._Type = params.get("Type")
+        self._Name = params.get("Name")
+        self._Description = params.get("Description")
+        self._ResourcePartitionId = params.get("ResourcePartitionId")
+        self._ResourcePartitionName = params.get("ResourcePartitionName")
+        self._Queue = params.get("Queue")
+        self._AppId = params.get("AppId")
+        self._Uin = params.get("Uin")
+        self._Status = params.get("Status")
+        self._GroupId = params.get("GroupId")
+        self._ResourceConfig = params.get("ResourceConfig")
+        self._ResourceConfigId = params.get("ResourceConfigId")
+        self._Image = params.get("Image")
+        self._ImagePullPolicy = params.get("ImagePullPolicy")
+        self._Priority = params.get("Priority")
+        if params.get("PersistentWorkDir") is not None:
+            self._PersistentWorkDir = PersistentWorkDir()
+            self._PersistentWorkDir._deserialize(params.get("PersistentWorkDir"))
+        self._EnableToken = params.get("EnableToken")
+        self._LabImagePullType = params.get("LabImagePullType")
+        self._SubAccountName = params.get("SubAccountName")
+        self._ImagePullType = params.get("ImagePullType")
+        self._RequestId = params.get("RequestId")
+
+
 class UpdateNetworkConnectionRequest(AbstractModel):
     r"""UpdateNetworkConnection请求参数结构体
 
@@ -47911,6 +71038,1367 @@ class UpdateNetworkConnectionResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class UpdateRayClusterRequest(AbstractModel):
+    r"""UpdateRayCluster请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: <p>集群ID</p>
+        :type Id: str
+        :param _Name: <p>集群名称（可选，不填写则默认使用集群ID）</p>
+        :type Name: str
+        :param _Description: <p>集群描述</p>
+        :type Description: str
+        :param _GroupId: <p>所属计算组 ID</p>
+        :type GroupId: str
+        :param _ResourcePartitionId: <p>所属资源分区ID</p>
+        :type ResourcePartitionId: str
+        :param _Queue: <p>所属队列名称</p>
+        :type Queue: str
+        :param _Image: <p>镜像地址</p>
+        :type Image: str
+        :param _ImagePullPolicy: <p>镜像拉取策略（Always, IfNotPresent, Never）</p>
+        :type ImagePullPolicy: str
+        :param _ImagePullType: <p>镜像拉取类型（BuiltIn: 内置, Custom: 自定义-TCR, CustomCcr: 自定义-CCR）</p>
+        :type ImagePullType: str
+        :param _ResourceConfig: <p>资源配置</p>
+        :type ResourceConfig: str
+        :param _ResourceConfigId: <p>资源配置ID</p>
+        :type ResourceConfigId: str
+        :param _Catalog: <p>存储卷和挂载卷配置</p>
+        :type Catalog: str
+        :param _AdvancedOptions: <p>高级参数（规范化后的扁平 KV JSON）</p>
+        :type AdvancedOptions: str
+        :param _Priority: <p>优先级（1-9，数字越大优先级越高）</p>
+        :type Priority: int
+        :param _Tags: <p>标签列表（TagKey-TagValue），用于将资源与腾讯云标签系统中的标签绑定</p>
+        :type Tags: list of Tag
+        """
+        self._Id = None
+        self._Name = None
+        self._Description = None
+        self._GroupId = None
+        self._ResourcePartitionId = None
+        self._Queue = None
+        self._Image = None
+        self._ImagePullPolicy = None
+        self._ImagePullType = None
+        self._ResourceConfig = None
+        self._ResourceConfigId = None
+        self._Catalog = None
+        self._AdvancedOptions = None
+        self._Priority = None
+        self._Tags = None
+
+    @property
+    def Id(self):
+        r"""<p>集群ID</p>
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Name(self):
+        r"""<p>集群名称（可选，不填写则默认使用集群ID）</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Description(self):
+        r"""<p>集群描述</p>
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def GroupId(self):
+        r"""<p>所属计算组 ID</p>
+        :rtype: str
+        """
+        return self._GroupId
+
+    @GroupId.setter
+    def GroupId(self, GroupId):
+        self._GroupId = GroupId
+
+    @property
+    def ResourcePartitionId(self):
+        r"""<p>所属资源分区ID</p>
+        :rtype: str
+        """
+        return self._ResourcePartitionId
+
+    @ResourcePartitionId.setter
+    def ResourcePartitionId(self, ResourcePartitionId):
+        self._ResourcePartitionId = ResourcePartitionId
+
+    @property
+    def Queue(self):
+        r"""<p>所属队列名称</p>
+        :rtype: str
+        """
+        return self._Queue
+
+    @Queue.setter
+    def Queue(self, Queue):
+        self._Queue = Queue
+
+    @property
+    def Image(self):
+        r"""<p>镜像地址</p>
+        :rtype: str
+        """
+        return self._Image
+
+    @Image.setter
+    def Image(self, Image):
+        self._Image = Image
+
+    @property
+    def ImagePullPolicy(self):
+        r"""<p>镜像拉取策略（Always, IfNotPresent, Never）</p>
+        :rtype: str
+        """
+        return self._ImagePullPolicy
+
+    @ImagePullPolicy.setter
+    def ImagePullPolicy(self, ImagePullPolicy):
+        self._ImagePullPolicy = ImagePullPolicy
+
+    @property
+    def ImagePullType(self):
+        r"""<p>镜像拉取类型（BuiltIn: 内置, Custom: 自定义-TCR, CustomCcr: 自定义-CCR）</p>
+        :rtype: str
+        """
+        return self._ImagePullType
+
+    @ImagePullType.setter
+    def ImagePullType(self, ImagePullType):
+        self._ImagePullType = ImagePullType
+
+    @property
+    def ResourceConfig(self):
+        r"""<p>资源配置</p>
+        :rtype: str
+        """
+        return self._ResourceConfig
+
+    @ResourceConfig.setter
+    def ResourceConfig(self, ResourceConfig):
+        self._ResourceConfig = ResourceConfig
+
+    @property
+    def ResourceConfigId(self):
+        r"""<p>资源配置ID</p>
+        :rtype: str
+        """
+        return self._ResourceConfigId
+
+    @ResourceConfigId.setter
+    def ResourceConfigId(self, ResourceConfigId):
+        self._ResourceConfigId = ResourceConfigId
+
+    @property
+    def Catalog(self):
+        r"""<p>存储卷和挂载卷配置</p>
+        :rtype: str
+        """
+        return self._Catalog
+
+    @Catalog.setter
+    def Catalog(self, Catalog):
+        self._Catalog = Catalog
+
+    @property
+    def AdvancedOptions(self):
+        r"""<p>高级参数（规范化后的扁平 KV JSON）</p>
+        :rtype: str
+        """
+        return self._AdvancedOptions
+
+    @AdvancedOptions.setter
+    def AdvancedOptions(self, AdvancedOptions):
+        self._AdvancedOptions = AdvancedOptions
+
+    @property
+    def Priority(self):
+        r"""<p>优先级（1-9，数字越大优先级越高）</p>
+        :rtype: int
+        """
+        return self._Priority
+
+    @Priority.setter
+    def Priority(self, Priority):
+        self._Priority = Priority
+
+    @property
+    def Tags(self):
+        r"""<p>标签列表（TagKey-TagValue），用于将资源与腾讯云标签系统中的标签绑定</p>
+        :rtype: list of Tag
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._Name = params.get("Name")
+        self._Description = params.get("Description")
+        self._GroupId = params.get("GroupId")
+        self._ResourcePartitionId = params.get("ResourcePartitionId")
+        self._Queue = params.get("Queue")
+        self._Image = params.get("Image")
+        self._ImagePullPolicy = params.get("ImagePullPolicy")
+        self._ImagePullType = params.get("ImagePullType")
+        self._ResourceConfig = params.get("ResourceConfig")
+        self._ResourceConfigId = params.get("ResourceConfigId")
+        self._Catalog = params.get("Catalog")
+        self._AdvancedOptions = params.get("AdvancedOptions")
+        self._Priority = params.get("Priority")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateRayClusterResponse(AbstractModel):
+    r"""UpdateRayCluster返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: <p>集群ID</p>
+        :type Id: str
+        :param _Type: <p>资源类型：CLUSTER-普通集群；WORKSPACE-数据实验室（开发入口）</p>
+        :type Type: str
+        :param _Name: <p>集群名称</p>
+        :type Name: str
+        :param _Description: <p>集群描述</p>
+        :type Description: str
+        :param _ResourcePartitionId: <p>所属资源分区ID</p>
+        :type ResourcePartitionId: str
+        :param _ResourcePartitionName: <p>默认资源分区名称</p>
+        :type ResourcePartitionName: str
+        :param _Queue: <p>所属队列名称</p>
+        :type Queue: str
+        :param _AppId: <p>应用ID</p>
+        :type AppId: int
+        :param _Uin: <p>用户UIN</p>
+        :type Uin: str
+        :param _SubAccountUin: <p>子用户UIN</p>
+        :type SubAccountUin: str
+        :param _SubAccountName: <p>子用户名称（由聚合层通过 CAM 接口回填）</p>
+        :type SubAccountName: str
+        :param _Status: <p>集群状态</p>
+        :type Status: str
+        :param _CreateTime: <p>创建时间</p>
+        :type CreateTime: int
+        :param _GroupId: <p>计算组 ID</p>
+        :type GroupId: str
+        :param _ResourceConfig: <p>资源配置(JSON)</p>
+        :type ResourceConfig: str
+        :param _ResourceConfigId: <p>资源配置ID</p>
+        :type ResourceConfigId: str
+        :param _Image: <p>镜像地址</p>
+        :type Image: str
+        :param _Catalog: <p>存储卷和挂载卷配置(JSON)</p>
+        :type Catalog: str
+        :param _ImagePullPolicy: <p>镜像拉取策略</p>
+        :type ImagePullPolicy: str
+        :param _ImagePullType: <p>镜像拉取类型（BuiltIn: 内置, Custom: 自定义-TCR, CustomCcr: 自定义-CCR）</p>
+        :type ImagePullType: str
+        :param _AdvancedOptions: <p>高级参数（规范化后的扁平 KV JSON）</p>
+        :type AdvancedOptions: str
+        :param _Priority: <p>优先级（1-9，数字越大优先级越高）</p>
+        :type Priority: int
+        :param _Tags: <p>标签列表（TagKey-TagValue）</p>
+        :type Tags: list of Tag
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Id = None
+        self._Type = None
+        self._Name = None
+        self._Description = None
+        self._ResourcePartitionId = None
+        self._ResourcePartitionName = None
+        self._Queue = None
+        self._AppId = None
+        self._Uin = None
+        self._SubAccountUin = None
+        self._SubAccountName = None
+        self._Status = None
+        self._CreateTime = None
+        self._GroupId = None
+        self._ResourceConfig = None
+        self._ResourceConfigId = None
+        self._Image = None
+        self._Catalog = None
+        self._ImagePullPolicy = None
+        self._ImagePullType = None
+        self._AdvancedOptions = None
+        self._Priority = None
+        self._Tags = None
+        self._RequestId = None
+
+    @property
+    def Id(self):
+        r"""<p>集群ID</p>
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Type(self):
+        r"""<p>资源类型：CLUSTER-普通集群；WORKSPACE-数据实验室（开发入口）</p>
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Name(self):
+        r"""<p>集群名称</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Description(self):
+        r"""<p>集群描述</p>
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def ResourcePartitionId(self):
+        r"""<p>所属资源分区ID</p>
+        :rtype: str
+        """
+        return self._ResourcePartitionId
+
+    @ResourcePartitionId.setter
+    def ResourcePartitionId(self, ResourcePartitionId):
+        self._ResourcePartitionId = ResourcePartitionId
+
+    @property
+    def ResourcePartitionName(self):
+        r"""<p>默认资源分区名称</p>
+        :rtype: str
+        """
+        return self._ResourcePartitionName
+
+    @ResourcePartitionName.setter
+    def ResourcePartitionName(self, ResourcePartitionName):
+        self._ResourcePartitionName = ResourcePartitionName
+
+    @property
+    def Queue(self):
+        r"""<p>所属队列名称</p>
+        :rtype: str
+        """
+        return self._Queue
+
+    @Queue.setter
+    def Queue(self, Queue):
+        self._Queue = Queue
+
+    @property
+    def AppId(self):
+        r"""<p>应用ID</p>
+        :rtype: int
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def Uin(self):
+        r"""<p>用户UIN</p>
+        :rtype: str
+        """
+        return self._Uin
+
+    @Uin.setter
+    def Uin(self, Uin):
+        self._Uin = Uin
+
+    @property
+    def SubAccountUin(self):
+        r"""<p>子用户UIN</p>
+        :rtype: str
+        """
+        return self._SubAccountUin
+
+    @SubAccountUin.setter
+    def SubAccountUin(self, SubAccountUin):
+        self._SubAccountUin = SubAccountUin
+
+    @property
+    def SubAccountName(self):
+        r"""<p>子用户名称（由聚合层通过 CAM 接口回填）</p>
+        :rtype: str
+        """
+        return self._SubAccountName
+
+    @SubAccountName.setter
+    def SubAccountName(self, SubAccountName):
+        self._SubAccountName = SubAccountName
+
+    @property
+    def Status(self):
+        r"""<p>集群状态</p>
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def CreateTime(self):
+        r"""<p>创建时间</p>
+        :rtype: int
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def GroupId(self):
+        r"""<p>计算组 ID</p>
+        :rtype: str
+        """
+        return self._GroupId
+
+    @GroupId.setter
+    def GroupId(self, GroupId):
+        self._GroupId = GroupId
+
+    @property
+    def ResourceConfig(self):
+        r"""<p>资源配置(JSON)</p>
+        :rtype: str
+        """
+        return self._ResourceConfig
+
+    @ResourceConfig.setter
+    def ResourceConfig(self, ResourceConfig):
+        self._ResourceConfig = ResourceConfig
+
+    @property
+    def ResourceConfigId(self):
+        r"""<p>资源配置ID</p>
+        :rtype: str
+        """
+        return self._ResourceConfigId
+
+    @ResourceConfigId.setter
+    def ResourceConfigId(self, ResourceConfigId):
+        self._ResourceConfigId = ResourceConfigId
+
+    @property
+    def Image(self):
+        r"""<p>镜像地址</p>
+        :rtype: str
+        """
+        return self._Image
+
+    @Image.setter
+    def Image(self, Image):
+        self._Image = Image
+
+    @property
+    def Catalog(self):
+        r"""<p>存储卷和挂载卷配置(JSON)</p>
+        :rtype: str
+        """
+        return self._Catalog
+
+    @Catalog.setter
+    def Catalog(self, Catalog):
+        self._Catalog = Catalog
+
+    @property
+    def ImagePullPolicy(self):
+        r"""<p>镜像拉取策略</p>
+        :rtype: str
+        """
+        return self._ImagePullPolicy
+
+    @ImagePullPolicy.setter
+    def ImagePullPolicy(self, ImagePullPolicy):
+        self._ImagePullPolicy = ImagePullPolicy
+
+    @property
+    def ImagePullType(self):
+        r"""<p>镜像拉取类型（BuiltIn: 内置, Custom: 自定义-TCR, CustomCcr: 自定义-CCR）</p>
+        :rtype: str
+        """
+        return self._ImagePullType
+
+    @ImagePullType.setter
+    def ImagePullType(self, ImagePullType):
+        self._ImagePullType = ImagePullType
+
+    @property
+    def AdvancedOptions(self):
+        r"""<p>高级参数（规范化后的扁平 KV JSON）</p>
+        :rtype: str
+        """
+        return self._AdvancedOptions
+
+    @AdvancedOptions.setter
+    def AdvancedOptions(self, AdvancedOptions):
+        self._AdvancedOptions = AdvancedOptions
+
+    @property
+    def Priority(self):
+        r"""<p>优先级（1-9，数字越大优先级越高）</p>
+        :rtype: int
+        """
+        return self._Priority
+
+    @Priority.setter
+    def Priority(self, Priority):
+        self._Priority = Priority
+
+    @property
+    def Tags(self):
+        r"""<p>标签列表（TagKey-TagValue）</p>
+        :rtype: list of Tag
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._Type = params.get("Type")
+        self._Name = params.get("Name")
+        self._Description = params.get("Description")
+        self._ResourcePartitionId = params.get("ResourcePartitionId")
+        self._ResourcePartitionName = params.get("ResourcePartitionName")
+        self._Queue = params.get("Queue")
+        self._AppId = params.get("AppId")
+        self._Uin = params.get("Uin")
+        self._SubAccountUin = params.get("SubAccountUin")
+        self._SubAccountName = params.get("SubAccountName")
+        self._Status = params.get("Status")
+        self._CreateTime = params.get("CreateTime")
+        self._GroupId = params.get("GroupId")
+        self._ResourceConfig = params.get("ResourceConfig")
+        self._ResourceConfigId = params.get("ResourceConfigId")
+        self._Image = params.get("Image")
+        self._Catalog = params.get("Catalog")
+        self._ImagePullPolicy = params.get("ImagePullPolicy")
+        self._ImagePullType = params.get("ImagePullType")
+        self._AdvancedOptions = params.get("AdvancedOptions")
+        self._Priority = params.get("Priority")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class UpdateRayJobPriorityRequest(AbstractModel):
+    r"""UpdateRayJobPriority请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: <p>任务ID</p>
+        :type Id: str
+        :param _Priority: <p>作业优先级（1-9，数字越大优先级越高）</p>
+        :type Priority: int
+        """
+        self._Id = None
+        self._Priority = None
+
+    @property
+    def Id(self):
+        r"""<p>任务ID</p>
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Priority(self):
+        r"""<p>作业优先级（1-9，数字越大优先级越高）</p>
+        :rtype: int
+        """
+        return self._Priority
+
+    @Priority.setter
+    def Priority(self, Priority):
+        self._Priority = Priority
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._Priority = params.get("Priority")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateRayJobPriorityResponse(AbstractModel):
+    r"""UpdateRayJobPriority返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: <p>任务ID</p>
+        :type Id: str
+        :param _ResourcePartitionId: <p>所属资源分区ID</p>
+        :type ResourcePartitionId: str
+        :param _ResourcePartitionName: <p>默认资源分区名称</p>
+        :type ResourcePartitionName: str
+        :param _Queue: <p>所属队列名称</p>
+        :type Queue: str
+        :param _Status: <p>任务状态</p>
+        :type Status: str
+        :param _Entrypoint: <p>入口命令</p>
+        :type Entrypoint: str
+        :param _JobName: <p>任务名称</p>
+        :type JobName: str
+        :param _AppId: <p>应用ID</p>
+        :type AppId: int
+        :param _Uin: <p>用户主账号UIN</p>
+        :type Uin: str
+        :param _SubAccountUin: <p>创建账号</p>
+        :type SubAccountUin: str
+        :param _HistoryUrl: <p>历史记录链接</p>
+        :type HistoryUrl: str
+        :param _RunningTime: <p>运行时间(ms)</p>
+        :type RunningTime: int
+        :param _FinishTime: <p>完成时间</p>
+        :type FinishTime: int
+        :param _CreateTime: <p>创建时间</p>
+        :type CreateTime: int
+        :param _Image: <p>镜像地址</p>
+        :type Image: str
+        :param _ResourceConfig: <p>资源配置(JSON)</p>
+        :type ResourceConfig: str
+        :param _Catalog: <p>存储卷和挂载卷配置(JSON)</p>
+        :type Catalog: str
+        :param _ImagePullPolicy: <p>镜像拉取策略</p>
+        :type ImagePullPolicy: str
+        :param _SpecId: <p>来源配置ID</p>
+        :type SpecId: str
+        :param _Priority: <p>作业优先级（1-9，数字越大优先级越高）</p>
+        :type Priority: int
+        :param _Tags: <p>标签列表（TagKey-TagValue），用于将资源与腾讯云标签系统中的标签绑定</p>
+        :type Tags: list of Tag
+        :param _JobSource: <p>业务来源标识（调用上下文，长度上限 64，禁止控制字符）</p>
+        :type JobSource: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Id = None
+        self._ResourcePartitionId = None
+        self._ResourcePartitionName = None
+        self._Queue = None
+        self._Status = None
+        self._Entrypoint = None
+        self._JobName = None
+        self._AppId = None
+        self._Uin = None
+        self._SubAccountUin = None
+        self._HistoryUrl = None
+        self._RunningTime = None
+        self._FinishTime = None
+        self._CreateTime = None
+        self._Image = None
+        self._ResourceConfig = None
+        self._Catalog = None
+        self._ImagePullPolicy = None
+        self._SpecId = None
+        self._Priority = None
+        self._Tags = None
+        self._JobSource = None
+        self._RequestId = None
+
+    @property
+    def Id(self):
+        r"""<p>任务ID</p>
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def ResourcePartitionId(self):
+        r"""<p>所属资源分区ID</p>
+        :rtype: str
+        """
+        return self._ResourcePartitionId
+
+    @ResourcePartitionId.setter
+    def ResourcePartitionId(self, ResourcePartitionId):
+        self._ResourcePartitionId = ResourcePartitionId
+
+    @property
+    def ResourcePartitionName(self):
+        r"""<p>默认资源分区名称</p>
+        :rtype: str
+        """
+        return self._ResourcePartitionName
+
+    @ResourcePartitionName.setter
+    def ResourcePartitionName(self, ResourcePartitionName):
+        self._ResourcePartitionName = ResourcePartitionName
+
+    @property
+    def Queue(self):
+        r"""<p>所属队列名称</p>
+        :rtype: str
+        """
+        return self._Queue
+
+    @Queue.setter
+    def Queue(self, Queue):
+        self._Queue = Queue
+
+    @property
+    def Status(self):
+        r"""<p>任务状态</p>
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Entrypoint(self):
+        r"""<p>入口命令</p>
+        :rtype: str
+        """
+        return self._Entrypoint
+
+    @Entrypoint.setter
+    def Entrypoint(self, Entrypoint):
+        self._Entrypoint = Entrypoint
+
+    @property
+    def JobName(self):
+        r"""<p>任务名称</p>
+        :rtype: str
+        """
+        return self._JobName
+
+    @JobName.setter
+    def JobName(self, JobName):
+        self._JobName = JobName
+
+    @property
+    def AppId(self):
+        r"""<p>应用ID</p>
+        :rtype: int
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def Uin(self):
+        r"""<p>用户主账号UIN</p>
+        :rtype: str
+        """
+        return self._Uin
+
+    @Uin.setter
+    def Uin(self, Uin):
+        self._Uin = Uin
+
+    @property
+    def SubAccountUin(self):
+        r"""<p>创建账号</p>
+        :rtype: str
+        """
+        return self._SubAccountUin
+
+    @SubAccountUin.setter
+    def SubAccountUin(self, SubAccountUin):
+        self._SubAccountUin = SubAccountUin
+
+    @property
+    def HistoryUrl(self):
+        r"""<p>历史记录链接</p>
+        :rtype: str
+        """
+        return self._HistoryUrl
+
+    @HistoryUrl.setter
+    def HistoryUrl(self, HistoryUrl):
+        self._HistoryUrl = HistoryUrl
+
+    @property
+    def RunningTime(self):
+        r"""<p>运行时间(ms)</p>
+        :rtype: int
+        """
+        return self._RunningTime
+
+    @RunningTime.setter
+    def RunningTime(self, RunningTime):
+        self._RunningTime = RunningTime
+
+    @property
+    def FinishTime(self):
+        r"""<p>完成时间</p>
+        :rtype: int
+        """
+        return self._FinishTime
+
+    @FinishTime.setter
+    def FinishTime(self, FinishTime):
+        self._FinishTime = FinishTime
+
+    @property
+    def CreateTime(self):
+        r"""<p>创建时间</p>
+        :rtype: int
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def Image(self):
+        r"""<p>镜像地址</p>
+        :rtype: str
+        """
+        return self._Image
+
+    @Image.setter
+    def Image(self, Image):
+        self._Image = Image
+
+    @property
+    def ResourceConfig(self):
+        r"""<p>资源配置(JSON)</p>
+        :rtype: str
+        """
+        return self._ResourceConfig
+
+    @ResourceConfig.setter
+    def ResourceConfig(self, ResourceConfig):
+        self._ResourceConfig = ResourceConfig
+
+    @property
+    def Catalog(self):
+        r"""<p>存储卷和挂载卷配置(JSON)</p>
+        :rtype: str
+        """
+        return self._Catalog
+
+    @Catalog.setter
+    def Catalog(self, Catalog):
+        self._Catalog = Catalog
+
+    @property
+    def ImagePullPolicy(self):
+        r"""<p>镜像拉取策略</p>
+        :rtype: str
+        """
+        return self._ImagePullPolicy
+
+    @ImagePullPolicy.setter
+    def ImagePullPolicy(self, ImagePullPolicy):
+        self._ImagePullPolicy = ImagePullPolicy
+
+    @property
+    def SpecId(self):
+        r"""<p>来源配置ID</p>
+        :rtype: str
+        """
+        return self._SpecId
+
+    @SpecId.setter
+    def SpecId(self, SpecId):
+        self._SpecId = SpecId
+
+    @property
+    def Priority(self):
+        r"""<p>作业优先级（1-9，数字越大优先级越高）</p>
+        :rtype: int
+        """
+        return self._Priority
+
+    @Priority.setter
+    def Priority(self, Priority):
+        self._Priority = Priority
+
+    @property
+    def Tags(self):
+        r"""<p>标签列表（TagKey-TagValue），用于将资源与腾讯云标签系统中的标签绑定</p>
+        :rtype: list of Tag
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def JobSource(self):
+        r"""<p>业务来源标识（调用上下文，长度上限 64，禁止控制字符）</p>
+        :rtype: str
+        """
+        return self._JobSource
+
+    @JobSource.setter
+    def JobSource(self, JobSource):
+        self._JobSource = JobSource
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._ResourcePartitionId = params.get("ResourcePartitionId")
+        self._ResourcePartitionName = params.get("ResourcePartitionName")
+        self._Queue = params.get("Queue")
+        self._Status = params.get("Status")
+        self._Entrypoint = params.get("Entrypoint")
+        self._JobName = params.get("JobName")
+        self._AppId = params.get("AppId")
+        self._Uin = params.get("Uin")
+        self._SubAccountUin = params.get("SubAccountUin")
+        self._HistoryUrl = params.get("HistoryUrl")
+        self._RunningTime = params.get("RunningTime")
+        self._FinishTime = params.get("FinishTime")
+        self._CreateTime = params.get("CreateTime")
+        self._Image = params.get("Image")
+        self._ResourceConfig = params.get("ResourceConfig")
+        self._Catalog = params.get("Catalog")
+        self._ImagePullPolicy = params.get("ImagePullPolicy")
+        self._SpecId = params.get("SpecId")
+        self._Priority = params.get("Priority")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
+        self._JobSource = params.get("JobSource")
+        self._RequestId = params.get("RequestId")
+
+
+class UpdateResourceConfigRequest(AbstractModel):
+    r"""UpdateResourceConfig请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: 资源配置模板Id
+        :type Id: str
+        :param _Name: 模板名称
+        :type Name: str
+        :param _Description: 描述
+        :type Description: str
+        :param _Head: Head节点配置
+        :type Head: :class:`tencentcloud.dlc.v20210125.models.HeadSpecDTO`
+        :param _Worker: Worker节点配置
+        :type Worker: list of WorkerSpecDTO
+        :param _Type: 模板类型(不传默认Ray)
+        :type Type: str
+        """
+        self._Id = None
+        self._Name = None
+        self._Description = None
+        self._Head = None
+        self._Worker = None
+        self._Type = None
+
+    @property
+    def Id(self):
+        r"""资源配置模板Id
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Name(self):
+        r"""模板名称
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Description(self):
+        r"""描述
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def Head(self):
+        r"""Head节点配置
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.HeadSpecDTO`
+        """
+        return self._Head
+
+    @Head.setter
+    def Head(self, Head):
+        self._Head = Head
+
+    @property
+    def Worker(self):
+        r"""Worker节点配置
+        :rtype: list of WorkerSpecDTO
+        """
+        return self._Worker
+
+    @Worker.setter
+    def Worker(self, Worker):
+        self._Worker = Worker
+
+    @property
+    def Type(self):
+        r"""模板类型(不传默认Ray)
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._Name = params.get("Name")
+        self._Description = params.get("Description")
+        if params.get("Head") is not None:
+            self._Head = HeadSpecDTO()
+            self._Head._deserialize(params.get("Head"))
+        if params.get("Worker") is not None:
+            self._Worker = []
+            for item in params.get("Worker"):
+                obj = WorkerSpecDTO()
+                obj._deserialize(item)
+                self._Worker.append(obj)
+        self._Type = params.get("Type")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateResourceConfigResponse(AbstractModel):
+    r"""UpdateResourceConfig返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: 模板ID
+        :type Id: str
+        :param _Name: 模板名称
+        :type Name: str
+        :param _Description: 描述
+        :type Description: str
+        :param _Head: Head节点配置
+        :type Head: :class:`tencentcloud.dlc.v20210125.models.HeadSpecDTO`
+        :param _Worker: Worker节点配置
+        :type Worker: list of WorkerSpecDTO
+        :param _CreateTime: 创建时间
+        :type CreateTime: int
+        :param _UpdateTime: 更新时间
+        :type UpdateTime: int
+        :param _Type: 模板类型
+        :type Type: str
+        :param _AppId: 应用ID
+        :type AppId: int
+        :param _Uin: 创建者UIN
+        :type Uin: str
+        :param _SubAccountUin: 子用户UIN
+        :type SubAccountUin: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Id = None
+        self._Name = None
+        self._Description = None
+        self._Head = None
+        self._Worker = None
+        self._CreateTime = None
+        self._UpdateTime = None
+        self._Type = None
+        self._AppId = None
+        self._Uin = None
+        self._SubAccountUin = None
+        self._RequestId = None
+
+    @property
+    def Id(self):
+        r"""模板ID
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Name(self):
+        r"""模板名称
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Description(self):
+        r"""描述
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def Head(self):
+        r"""Head节点配置
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.HeadSpecDTO`
+        """
+        return self._Head
+
+    @Head.setter
+    def Head(self, Head):
+        self._Head = Head
+
+    @property
+    def Worker(self):
+        r"""Worker节点配置
+        :rtype: list of WorkerSpecDTO
+        """
+        return self._Worker
+
+    @Worker.setter
+    def Worker(self, Worker):
+        self._Worker = Worker
+
+    @property
+    def CreateTime(self):
+        r"""创建时间
+        :rtype: int
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        r"""更新时间
+        :rtype: int
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def Type(self):
+        r"""模板类型
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def AppId(self):
+        r"""应用ID
+        :rtype: int
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def Uin(self):
+        r"""创建者UIN
+        :rtype: str
+        """
+        return self._Uin
+
+    @Uin.setter
+    def Uin(self, Uin):
+        self._Uin = Uin
+
+    @property
+    def SubAccountUin(self):
+        r"""子用户UIN
+        :rtype: str
+        """
+        return self._SubAccountUin
+
+    @SubAccountUin.setter
+    def SubAccountUin(self, SubAccountUin):
+        self._SubAccountUin = SubAccountUin
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._Name = params.get("Name")
+        self._Description = params.get("Description")
+        if params.get("Head") is not None:
+            self._Head = HeadSpecDTO()
+            self._Head._deserialize(params.get("Head"))
+        if params.get("Worker") is not None:
+            self._Worker = []
+            for item in params.get("Worker"):
+                obj = WorkerSpecDTO()
+                obj._deserialize(item)
+                self._Worker.append(obj)
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
+        self._Type = params.get("Type")
+        self._AppId = params.get("AppId")
+        self._Uin = params.get("Uin")
+        self._SubAccountUin = params.get("SubAccountUin")
         self._RequestId = params.get("RequestId")
 
 
@@ -50704,6 +75192,267 @@ class WorkGroups(AbstractModel):
                 obj._deserialize(item)
                 self._WorkGroupSet.append(obj)
         self._TotalCount = params.get("TotalCount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class WorkerSpecDTO(AbstractModel):
+    r"""worker组规格
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: <p>worker名称</p>
+        :type Name: str
+        :param _PodCpu: <p>Pod CPU核数</p>
+        :type PodCpu: int
+        :param _PodMem: <p>Pod 内存大小</p>
+        :type PodMem: int
+        :param _GpuType: <p>GPU类型</p>
+        :type GpuType: str
+        :param _GpuNum: <p>GPU数量</p>
+        :type GpuNum: int
+        :param _Envs: <p>环境变量列表</p>
+        :type Envs: list of Env
+        :param _Labels: <p>标签列表</p>
+        :type Labels: list of Label
+        :param _ResourcesLabels: <p>资源标签列表（用于追加到 headGroupSpec/workerGroupSpec 的 resources map 中，对应 Ray/K8s 的自定义资源声明），Value 必须为字符串形式的整数</p>
+        :type ResourcesLabels: list of Label
+        :param _MinPodNum: <p>最小Pod数量</p>
+        :type MinPodNum: int
+        :param _MaxPodNum: <p>最大Pod数量</p>
+        :type MaxPodNum: int
+        :param _EnableAutoScaling: <p>是否开启弹性伸缩（true=开启，false/null=关闭）。开启后按 MinPodNum/MaxPodNum 弹性伸缩，关闭则按固定副本数运行</p>
+        :type EnableAutoScaling: bool
+        :param _ResourceType: <p>资源类型,CPU,GPU</p>
+        :type ResourceType: str
+        :param _InstanceType: <p>机型，例如X40/T20</p>
+        :type InstanceType: str
+        :param _Spec: <p>规格数量</p>
+        :type Spec: int
+        :param _BillingItem: <p>资源ID(唯一)</p>
+        :type BillingItem: str
+        """
+        self._Name = None
+        self._PodCpu = None
+        self._PodMem = None
+        self._GpuType = None
+        self._GpuNum = None
+        self._Envs = None
+        self._Labels = None
+        self._ResourcesLabels = None
+        self._MinPodNum = None
+        self._MaxPodNum = None
+        self._EnableAutoScaling = None
+        self._ResourceType = None
+        self._InstanceType = None
+        self._Spec = None
+        self._BillingItem = None
+
+    @property
+    def Name(self):
+        r"""<p>worker名称</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def PodCpu(self):
+        r"""<p>Pod CPU核数</p>
+        :rtype: int
+        """
+        return self._PodCpu
+
+    @PodCpu.setter
+    def PodCpu(self, PodCpu):
+        self._PodCpu = PodCpu
+
+    @property
+    def PodMem(self):
+        r"""<p>Pod 内存大小</p>
+        :rtype: int
+        """
+        return self._PodMem
+
+    @PodMem.setter
+    def PodMem(self, PodMem):
+        self._PodMem = PodMem
+
+    @property
+    def GpuType(self):
+        r"""<p>GPU类型</p>
+        :rtype: str
+        """
+        return self._GpuType
+
+    @GpuType.setter
+    def GpuType(self, GpuType):
+        self._GpuType = GpuType
+
+    @property
+    def GpuNum(self):
+        r"""<p>GPU数量</p>
+        :rtype: int
+        """
+        return self._GpuNum
+
+    @GpuNum.setter
+    def GpuNum(self, GpuNum):
+        self._GpuNum = GpuNum
+
+    @property
+    def Envs(self):
+        r"""<p>环境变量列表</p>
+        :rtype: list of Env
+        """
+        return self._Envs
+
+    @Envs.setter
+    def Envs(self, Envs):
+        self._Envs = Envs
+
+    @property
+    def Labels(self):
+        r"""<p>标签列表</p>
+        :rtype: list of Label
+        """
+        return self._Labels
+
+    @Labels.setter
+    def Labels(self, Labels):
+        self._Labels = Labels
+
+    @property
+    def ResourcesLabels(self):
+        r"""<p>资源标签列表（用于追加到 headGroupSpec/workerGroupSpec 的 resources map 中，对应 Ray/K8s 的自定义资源声明），Value 必须为字符串形式的整数</p>
+        :rtype: list of Label
+        """
+        return self._ResourcesLabels
+
+    @ResourcesLabels.setter
+    def ResourcesLabels(self, ResourcesLabels):
+        self._ResourcesLabels = ResourcesLabels
+
+    @property
+    def MinPodNum(self):
+        r"""<p>最小Pod数量</p>
+        :rtype: int
+        """
+        return self._MinPodNum
+
+    @MinPodNum.setter
+    def MinPodNum(self, MinPodNum):
+        self._MinPodNum = MinPodNum
+
+    @property
+    def MaxPodNum(self):
+        r"""<p>最大Pod数量</p>
+        :rtype: int
+        """
+        return self._MaxPodNum
+
+    @MaxPodNum.setter
+    def MaxPodNum(self, MaxPodNum):
+        self._MaxPodNum = MaxPodNum
+
+    @property
+    def EnableAutoScaling(self):
+        r"""<p>是否开启弹性伸缩（true=开启，false/null=关闭）。开启后按 MinPodNum/MaxPodNum 弹性伸缩，关闭则按固定副本数运行</p>
+        :rtype: bool
+        """
+        return self._EnableAutoScaling
+
+    @EnableAutoScaling.setter
+    def EnableAutoScaling(self, EnableAutoScaling):
+        self._EnableAutoScaling = EnableAutoScaling
+
+    @property
+    def ResourceType(self):
+        r"""<p>资源类型,CPU,GPU</p>
+        :rtype: str
+        """
+        return self._ResourceType
+
+    @ResourceType.setter
+    def ResourceType(self, ResourceType):
+        self._ResourceType = ResourceType
+
+    @property
+    def InstanceType(self):
+        r"""<p>机型，例如X40/T20</p>
+        :rtype: str
+        """
+        return self._InstanceType
+
+    @InstanceType.setter
+    def InstanceType(self, InstanceType):
+        self._InstanceType = InstanceType
+
+    @property
+    def Spec(self):
+        r"""<p>规格数量</p>
+        :rtype: int
+        """
+        return self._Spec
+
+    @Spec.setter
+    def Spec(self, Spec):
+        self._Spec = Spec
+
+    @property
+    def BillingItem(self):
+        r"""<p>资源ID(唯一)</p>
+        :rtype: str
+        """
+        return self._BillingItem
+
+    @BillingItem.setter
+    def BillingItem(self, BillingItem):
+        self._BillingItem = BillingItem
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._PodCpu = params.get("PodCpu")
+        self._PodMem = params.get("PodMem")
+        self._GpuType = params.get("GpuType")
+        self._GpuNum = params.get("GpuNum")
+        if params.get("Envs") is not None:
+            self._Envs = []
+            for item in params.get("Envs"):
+                obj = Env()
+                obj._deserialize(item)
+                self._Envs.append(obj)
+        if params.get("Labels") is not None:
+            self._Labels = []
+            for item in params.get("Labels"):
+                obj = Label()
+                obj._deserialize(item)
+                self._Labels.append(obj)
+        if params.get("ResourcesLabels") is not None:
+            self._ResourcesLabels = []
+            for item in params.get("ResourcesLabels"):
+                obj = Label()
+                obj._deserialize(item)
+                self._ResourcesLabels.append(obj)
+        self._MinPodNum = params.get("MinPodNum")
+        self._MaxPodNum = params.get("MaxPodNum")
+        self._EnableAutoScaling = params.get("EnableAutoScaling")
+        self._ResourceType = params.get("ResourceType")
+        self._InstanceType = params.get("InstanceType")
+        self._Spec = params.get("Spec")
+        self._BillingItem = params.get("BillingItem")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

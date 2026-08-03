@@ -1435,11 +1435,11 @@ class CreateGlobalAcceleratorRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Name: <p>名称，最大长度不能超过128个字节，不能为空。</p><p>参数格式：满足正则 ^[a-zA-Z\u4e00-\u9fa5]（首字符是英文字母或汉字），并且不满足正则 ^[\d._-]*$（整串不能只由数字/./_/-组成）。</p>
+        :param _Name: <p>名称。</p><p>参数格式：以字母或中文开头，长度 2–128 个字符，支持字母、数字、中文、. - _</p>
         :type Name: str
         :param _InstanceChargeType: <p>计费模式，PREPAID：表示预付费，即包年包月，POSTPAID：表示后付费，即按量计费。默认：POSTPAID。当前仅支持后付费。</p>
         :type InstanceChargeType: str
-        :param _Description: <p>描述信息，最大长度不能超过100个字节。</p>
+        :param _Description: <p>描述信息。</p><p>参数格式：最大长度不超过100 个字符。</p>
         :type Description: str
         :param _CrossBorderType: <p>跨境类型；HighQuality：精品BGP-IP跨境；Unicom：联通专线跨境。</p>
         :type CrossBorderType: str
@@ -1457,7 +1457,7 @@ class CreateGlobalAcceleratorRequest(AbstractModel):
 
     @property
     def Name(self):
-        r"""<p>名称，最大长度不能超过128个字节，不能为空。</p><p>参数格式：满足正则 ^[a-zA-Z\u4e00-\u9fa5]（首字符是英文字母或汉字），并且不满足正则 ^[\d._-]*$（整串不能只由数字/./_/-组成）。</p>
+        r"""<p>名称。</p><p>参数格式：以字母或中文开头，长度 2–128 个字符，支持字母、数字、中文、. - _</p>
         :rtype: str
         """
         return self._Name
@@ -1479,7 +1479,7 @@ class CreateGlobalAcceleratorRequest(AbstractModel):
 
     @property
     def Description(self):
-        r"""<p>描述信息，最大长度不能超过100个字节。</p>
+        r"""<p>描述信息。</p><p>参数格式：最大长度不超过100 个字符。</p>
         :rtype: str
         """
         return self._Description
@@ -1720,7 +1720,7 @@ class CreateListenerRequest(AbstractModel):
         r"""
         :param _GlobalAcceleratorId: <p>全球加速实例ID。</p>
         :type GlobalAcceleratorId: str
-        :param _Name: <p>名称，最大长度不能超过128个字符。</p>
+        :param _Name: <p>名称。</p><p>参数格式：以字母或中文开头，长度 2–128 个字符，支持字母、数字、中文、. - _</p>
         :type Name: str
         :param _PortRanges: <p>端口范围。</p>
         :type PortRanges: :class:`tencentcloud.ga2.v20250115.models.PortRanges`
@@ -1734,7 +1734,7 @@ class CreateListenerRequest(AbstractModel):
         :type IdleTimeout: int
         :param _GetRealIpType: <p>四层获取源IP方式，支持&#39;TOA&#39;, &#39;ProxyProtocol&#39;, &#39;ProxyProtocolV2&#39;。</p><p>需要开启四层获取源IP方式，才填写此参数。</p>
         :type GetRealIpType: str
-        :param _ClientAffinity: <p>是否开启会话保持。支持配置&#39;Open&#39;, &#39;Close&#39;。</p><p>枚举值：</p><ul><li>Open： 开启。</li><li>Close： 关闭。</li></ul>
+        :param _ClientAffinity: <p>是否开启会话保持。支持配置&#39;Open&#39;, &#39;Close&#39;。</p><p>枚举值：</p><ul><li>Open： 开启。</li><li>Close： 关闭。</li></ul><p>仅支持4层监听器 ，7层不支持修改</p>
         :type ClientAffinity: str
         :param _RequestTimeout: <p>请求超时时间。</p><p>取值范围：[1, 180]</p><p>默认值：60</p><p>当HTTPS监听器时才可配置此参数。</p>
         :type RequestTimeout: int
@@ -1744,9 +1744,9 @@ class CreateListenerRequest(AbstractModel):
         :type CertificationType: str
         :param _CipherPolicyId: <p>加密算法套件。支持配置&#39;tls_policy_1.0-2&#39;, &#39;tls_policy_1.1-2&#39;, &#39;tls_policy_1.2&#39;, &#39;tls_policy_1.2_strict&#39;, &#39;tls_policy_1.2_strict-1.3&#39;。</p>
         :type CipherPolicyId: str
-        :param _ServerCertificates: <p>服务器证书。</p><p>当是HTTPS监听器时，此字段必传。</p>
+        :param _ServerCertificates: <p>服务器证书。</p><p>入参限制：当前仅支持传入一本证书；如果要使用多本证书，使用证书接口CreateListenerAdditionalCert来加其他证书。</p><p>当是HTTPS监听器时，此字段必传。</p>
         :type ServerCertificates: list of str
-        :param _ClientCaCertificates: <p>客户端证书。</p><p>当时HTTPS监听器且开启双向认证时，此字段必传。</p>
+        :param _ClientCaCertificates: <p>客户端证书。</p><p>入参限制：1、当前仅支持传入一本证书；如果要使用多本证书，使用证书接口CreateListenerAdditionalCert来加其他证书。2、证书必须为CA证书。</p><p>当时HTTPS监听器且开启双向认证时，此字段必传。</p>
         :type ClientCaCertificates: list of str
         :param _HttpVersion: <p>HTTPS监听器支持选择版本</p><p>枚举值：</p><ul><li>HTTP/1.1： HTTP/1.1</li><li>HTTP/2： HTTP/2</li></ul>
         :type HttpVersion: str
@@ -1781,7 +1781,7 @@ class CreateListenerRequest(AbstractModel):
 
     @property
     def Name(self):
-        r"""<p>名称，最大长度不能超过128个字符。</p>
+        r"""<p>名称。</p><p>参数格式：以字母或中文开头，长度 2–128 个字符，支持字母、数字、中文、. - _</p>
         :rtype: str
         """
         return self._Name
@@ -1858,7 +1858,7 @@ class CreateListenerRequest(AbstractModel):
 
     @property
     def ClientAffinity(self):
-        r"""<p>是否开启会话保持。支持配置&#39;Open&#39;, &#39;Close&#39;。</p><p>枚举值：</p><ul><li>Open： 开启。</li><li>Close： 关闭。</li></ul>
+        r"""<p>是否开启会话保持。支持配置&#39;Open&#39;, &#39;Close&#39;。</p><p>枚举值：</p><ul><li>Open： 开启。</li><li>Close： 关闭。</li></ul><p>仅支持4层监听器 ，7层不支持修改</p>
         :rtype: str
         """
         return self._ClientAffinity
@@ -1913,7 +1913,7 @@ class CreateListenerRequest(AbstractModel):
 
     @property
     def ServerCertificates(self):
-        r"""<p>服务器证书。</p><p>当是HTTPS监听器时，此字段必传。</p>
+        r"""<p>服务器证书。</p><p>入参限制：当前仅支持传入一本证书；如果要使用多本证书，使用证书接口CreateListenerAdditionalCert来加其他证书。</p><p>当是HTTPS监听器时，此字段必传。</p>
         :rtype: list of str
         """
         return self._ServerCertificates
@@ -1924,7 +1924,7 @@ class CreateListenerRequest(AbstractModel):
 
     @property
     def ClientCaCertificates(self):
-        r"""<p>客户端证书。</p><p>当时HTTPS监听器且开启双向认证时，此字段必传。</p>
+        r"""<p>客户端证书。</p><p>入参限制：1、当前仅支持传入一本证书；如果要使用多本证书，使用证书接口CreateListenerAdditionalCert来加其他证书。2、证书必须为CA证书。</p><p>当时HTTPS监听器且开启双向认证时，此字段必传。</p>
         :rtype: list of str
         """
         return self._ClientCaCertificates
@@ -4732,7 +4732,7 @@ class EndpointGroupConfiguration(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Name: <p>终端节点组名称。</p><p>最大长度不能超过128个字节。必须以字母（a-z, A-Z）或中文字符开头。</p>
+        :param _Name: <p>终端节点组名称。</p><p>参数格式：以字母或中文开头，长度 2–128 个字符，支持字母、数字、中文、. - _</p>
         :type Name: str
         :param _EndpointGroupRegion: <p>终端节点组所在地域。</p>
         :type EndpointGroupRegion: str
@@ -4805,7 +4805,7 @@ class EndpointGroupConfiguration(AbstractModel):
 
     @property
     def Name(self):
-        r"""<p>终端节点组名称。</p><p>最大长度不能超过128个字节。必须以字母（a-z, A-Z）或中文字符开头。</p>
+        r"""<p>终端节点组名称。</p><p>参数格式：以字母或中文开头，长度 2–128 个字符，支持字母、数字、中文、. - _</p>
         :rtype: str
         """
         return self._Name
@@ -7024,7 +7024,7 @@ class ModifyEndpointGroupRequest(AbstractModel):
         :type EndpointGroupId: str
         :param _EndpointConfigurations: <p>终端节点配置。</p>
         :type EndpointConfigurations: list of EndpointConfigurations
-        :param _Name: <p>名称。</p><p>入参限制：最大长度不能超过128个字节。</p><p>以大小写字母或中文开头。</p>
+        :param _Name: <p>名称。</p><p>参数格式：以字母或中文开头，长度 2–128 个字符，支持字母、数字、中文、. - _</p>
         :type Name: str
         :param _Description: <p>描述信息。</p><p>入参限制：最大长度不能超过100个字节。</p>
         :type Description: str
@@ -7136,7 +7136,7 @@ class ModifyEndpointGroupRequest(AbstractModel):
 
     @property
     def Name(self):
-        r"""<p>名称。</p><p>入参限制：最大长度不能超过128个字节。</p><p>以大小写字母或中文开头。</p>
+        r"""<p>名称。</p><p>参数格式：以字母或中文开头，长度 2–128 个字符，支持字母、数字、中文、. - _</p>
         :rtype: str
         """
         return self._Name
@@ -8097,7 +8097,7 @@ class ModifyGlobalAcceleratorAclRuleRequest(AbstractModel):
         :type GlobalAcceleratorAclPolicyId: str
         :param _GlobalAcceleratorAclRuleId: <p>Acl规则ID。</p>
         :type GlobalAcceleratorAclRuleId: str
-        :param _Protocol: <p>协议。</p><p>入参限制：支持选择&#39;TCP&#39;, &#39;UDP&#39;, &#39;ALL&#39;。</p>
+        :param _Protocol: <p>协议。</p><p>入参限制：支持选择&#39;TCP&#39;, &#39;UDP&#39;。</p>
         :type Protocol: str
         :param _Port: <p>端口。</p>
         :type Port: str
@@ -8152,7 +8152,7 @@ class ModifyGlobalAcceleratorAclRuleRequest(AbstractModel):
 
     @property
     def Protocol(self):
-        r"""<p>协议。</p><p>入参限制：支持选择&#39;TCP&#39;, &#39;UDP&#39;, &#39;ALL&#39;。</p>
+        r"""<p>协议。</p><p>入参限制：支持选择&#39;TCP&#39;, &#39;UDP&#39;。</p>
         :rtype: str
         """
         return self._Protocol
@@ -8277,9 +8277,9 @@ class ModifyGlobalAcceleratorRequest(AbstractModel):
         r"""
         :param _GlobalAcceleratorId: <p>全球加速实例ID。</p>
         :type GlobalAcceleratorId: str
-        :param _Name: <p>名称，最大长度不能超过60个字节。</p>
+        :param _Name: <p>名称。</p><p>参数格式：以字母或中文开头，长度 2–128 个字符，支持字母、数字、中文、. - _</p>
         :type Name: str
-        :param _Description: <p>描述信息，最大长度不能超过100个字节。</p>
+        :param _Description: <p>描述信息。</p><p>参数格式：最大长度不超过100 个字符。</p>
         :type Description: str
         :param _CrossBorderType: <p>跨境类型。</p><p>枚举值：</p><ul><li>HighQuality： 精品跨境。</li><li>Unicom： 联通跨境。</li></ul>
         :type CrossBorderType: str
@@ -8305,7 +8305,7 @@ class ModifyGlobalAcceleratorRequest(AbstractModel):
 
     @property
     def Name(self):
-        r"""<p>名称，最大长度不能超过60个字节。</p>
+        r"""<p>名称。</p><p>参数格式：以字母或中文开头，长度 2–128 个字符，支持字母、数字、中文、. - _</p>
         :rtype: str
         """
         return self._Name
@@ -8316,7 +8316,7 @@ class ModifyGlobalAcceleratorRequest(AbstractModel):
 
     @property
     def Description(self):
-        r"""<p>描述信息，最大长度不能超过100个字节。</p>
+        r"""<p>描述信息。</p><p>参数格式：最大长度不超过100 个字符。</p>
         :rtype: str
         """
         return self._Description
@@ -8418,7 +8418,7 @@ class ModifyListenerRequest(AbstractModel):
         :type GlobalAcceleratorId: str
         :param _ListenerId: <p>监听器ID。</p>
         :type ListenerId: str
-        :param _Name: <p>名称，最大长度不能超过60个字节。</p>
+        :param _Name: <p>名称。</p><p>参数格式：以字母或中文开头，长度 2–128 个字符，支持字母、数字、中文、. - _</p>
         :type Name: str
         :param _Description: <p>描述信息，最大长度不能超过100个字节。</p>
         :type Description: str
@@ -8436,9 +8436,9 @@ class ModifyListenerRequest(AbstractModel):
         :type CertificationType: str
         :param _CipherPolicyId: <p>加密算法套件。</p><p>入参限制：支持选择tls_policy_1.0-2&#39;, &#39;tls_policy_1.1-2&#39;, &#39;tls_policy_1.2&#39;, &#39;tls_policy_1.2_strict&#39;, &#39;tls_policy_1.2_strict-1.3&#39;。</p><p>HTTPS监听器才支持此参数修改。</p>
         :type CipherPolicyId: str
-        :param _ServerCertificates: <p>服务器证书。</p><p>HTTPS监听器才支持此参数修改。</p>
+        :param _ServerCertificates: <p>服务器证书。</p><p>入参限制：当前仅支持传入一本证书；如果要使用多本证书，使用证书接口CreateListenerAdditionalCert来加其他证书。</p><p>HTTPS监听器才支持此参数修改。</p>
         :type ServerCertificates: list of str
-        :param _ClientCaCertificates: <p>客户端证书。</p><p>HTTPS监听器才支持此参数修改，并且开启双向认证。</p>
+        :param _ClientCaCertificates: <p>客户端证书。</p><p>入参限制：1、当前仅支持传入一本证书；如果要使用多本证书，使用证书接口CreateListenerAdditionalCert来加其他证书。2、证书必须为CA证书。</p><p>HTTPS监听器才支持此参数修改，并且开启双向认证。</p>
         :type ClientCaCertificates: list of str
         :param _GetRealIpType: <p>获取源IP方式。</p><p>入参限制：支持选择&#39;ProxyProtocol&#39;, &#39;Close&#39;, &#39;ProxyProtocolV2&#39;, &#39;TOA&#39;。</p><p>TCP监听器才支持此参数修改。</p>
         :type GetRealIpType: str
@@ -8482,7 +8482,7 @@ class ModifyListenerRequest(AbstractModel):
 
     @property
     def Name(self):
-        r"""<p>名称，最大长度不能超过60个字节。</p>
+        r"""<p>名称。</p><p>参数格式：以字母或中文开头，长度 2–128 个字符，支持字母、数字、中文、. - _</p>
         :rtype: str
         """
         return self._Name
@@ -8581,7 +8581,7 @@ class ModifyListenerRequest(AbstractModel):
 
     @property
     def ServerCertificates(self):
-        r"""<p>服务器证书。</p><p>HTTPS监听器才支持此参数修改。</p>
+        r"""<p>服务器证书。</p><p>入参限制：当前仅支持传入一本证书；如果要使用多本证书，使用证书接口CreateListenerAdditionalCert来加其他证书。</p><p>HTTPS监听器才支持此参数修改。</p>
         :rtype: list of str
         """
         return self._ServerCertificates
@@ -8592,7 +8592,7 @@ class ModifyListenerRequest(AbstractModel):
 
     @property
     def ClientCaCertificates(self):
-        r"""<p>客户端证书。</p><p>HTTPS监听器才支持此参数修改，并且开启双向认证。</p>
+        r"""<p>客户端证书。</p><p>入参限制：1、当前仅支持传入一本证书；如果要使用多本证书，使用证书接口CreateListenerAdditionalCert来加其他证书。2、证书必须为CA证书。</p><p>HTTPS监听器才支持此参数修改，并且开启双向认证。</p>
         :rtype: list of str
         """
         return self._ClientCaCertificates

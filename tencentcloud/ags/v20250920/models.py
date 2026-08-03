@@ -223,6 +223,72 @@ class AcquireSandboxInstanceTokenResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class AgentBucketStorageSource(AbstractModel):
+    r"""用于记录 Agent Bucket 的 Storage Source
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _LibraryId: <p>用于传入 AgentBucket 的 LibraryID</p>
+        :type LibraryId: str
+        :param _SpaceId: <p>用于传入 AgentBucket 的 spaceId</p>
+        :type SpaceId: str
+        :param _AccessDomain: <p>用于传入 AgentBucket 的 AccessDomain</p>
+        :type AccessDomain: str
+        """
+        self._LibraryId = None
+        self._SpaceId = None
+        self._AccessDomain = None
+
+    @property
+    def LibraryId(self):
+        r"""<p>用于传入 AgentBucket 的 LibraryID</p>
+        :rtype: str
+        """
+        return self._LibraryId
+
+    @LibraryId.setter
+    def LibraryId(self, LibraryId):
+        self._LibraryId = LibraryId
+
+    @property
+    def SpaceId(self):
+        r"""<p>用于传入 AgentBucket 的 spaceId</p>
+        :rtype: str
+        """
+        return self._SpaceId
+
+    @SpaceId.setter
+    def SpaceId(self, SpaceId):
+        self._SpaceId = SpaceId
+
+    @property
+    def AccessDomain(self):
+        r"""<p>用于传入 AgentBucket 的 AccessDomain</p>
+        :rtype: str
+        """
+        return self._AccessDomain
+
+    @AccessDomain.setter
+    def AccessDomain(self, AccessDomain):
+        self._AccessDomain = AccessDomain
+
+
+    def _deserialize(self, params):
+        self._LibraryId = params.get("LibraryId")
+        self._SpaceId = params.get("SpaceId")
+        self._AccessDomain = params.get("AccessDomain")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CLSConfig(AbstractModel):
     r"""沙箱工具日志推送CLS相关配置
 
@@ -496,12 +562,9 @@ class CreatePreCacheImageTaskRequest(AbstractModel):
         :type Image: str
         :param _ImageRegistryType: <p>镜像仓库类型：<code>enterprise</code>、<code>personal</code>、<code>custom</code></p><p>枚举值：</p><ul><li>enterprise： tcr 企业容器镜像服务</li><li>personal： ccr 个人容器镜像服务</li></ul>
         :type ImageRegistryType: str
-        :param _TimeoutMinutes: <p>预热超时时长</p>
-        :type TimeoutMinutes: int
         """
         self._Image = None
         self._ImageRegistryType = None
-        self._TimeoutMinutes = None
 
     @property
     def Image(self):
@@ -525,22 +588,10 @@ class CreatePreCacheImageTaskRequest(AbstractModel):
     def ImageRegistryType(self, ImageRegistryType):
         self._ImageRegistryType = ImageRegistryType
 
-    @property
-    def TimeoutMinutes(self):
-        r"""<p>预热超时时长</p>
-        :rtype: int
-        """
-        return self._TimeoutMinutes
-
-    @TimeoutMinutes.setter
-    def TimeoutMinutes(self, TimeoutMinutes):
-        self._TimeoutMinutes = TimeoutMinutes
-
 
     def _deserialize(self, params):
         self._Image = params.get("Image")
         self._ImageRegistryType = params.get("ImageRegistryType")
-        self._TimeoutMinutes = params.get("TimeoutMinutes")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -893,7 +944,7 @@ class CustomConfiguration(AbstractModel):
         r"""
         :param _Image: <p>镜像地址</p>
         :type Image: str
-        :param _ImageRegistryType: <p>镜像仓库类型：<code>enterprise</code>、<code>personal</code>。</p>
+        :param _ImageRegistryType: <p>镜像仓库类型：<code>enterprise</code>、<code>personal</code>、<code>custom</code></p><p>枚举值：</p><ul><li>enterprise： tcr 企业容器镜像服务</li><li>personal： ccr 个人容器镜像服务</li></ul>
         :type ImageRegistryType: str
         :param _Command: <p>启动命令</p>
         :type Command: list of str
@@ -933,7 +984,7 @@ class CustomConfiguration(AbstractModel):
 
     @property
     def ImageRegistryType(self):
-        r"""<p>镜像仓库类型：<code>enterprise</code>、<code>personal</code>。</p>
+        r"""<p>镜像仓库类型：<code>enterprise</code>、<code>personal</code>、<code>custom</code></p><p>枚举值：</p><ul><li>enterprise： tcr 企业容器镜像服务</li><li>personal： ccr 个人容器镜像服务</li></ul>
         :rtype: str
         """
         return self._ImageRegistryType
@@ -1065,7 +1116,7 @@ class CustomConfigurationDetail(AbstractModel):
         r"""
         :param _Image: <p>镜像地址</p>
         :type Image: str
-        :param _ImageRegistryType: <p>镜像仓库类型：<code>TCR</code>、<code>CCR</code>。</p>
+        :param _ImageRegistryType: <p>镜像仓库类型：<code>enterprise</code>、<code>personal</code>、<code>custom</code>。</p><p>枚举值：</p><ul><li>enterprise： TCR 企业容器镜像服务</li><li>personal： CCR 个人容器镜像服务</li></ul>
         :type ImageRegistryType: str
         :param _ImageDigest: <p>镜像 Digest</p>
         :type ImageDigest: str
@@ -1108,7 +1159,7 @@ class CustomConfigurationDetail(AbstractModel):
 
     @property
     def ImageRegistryType(self):
-        r"""<p>镜像仓库类型：<code>TCR</code>、<code>CCR</code>。</p>
+        r"""<p>镜像仓库类型：<code>enterprise</code>、<code>personal</code>、<code>custom</code>。</p><p>枚举值：</p><ul><li>enterprise： TCR 企业容器镜像服务</li><li>personal： CCR 个人容器镜像服务</li></ul>
         :rtype: str
         """
         return self._ImageRegistryType
@@ -1513,11 +1564,11 @@ class DescribePreCacheImageTaskRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Image: 镜像地址
+        :param _Image: <p>镜像地址</p>
         :type Image: str
-        :param _ImageDigest: 镜像 Digest
+        :param _ImageDigest: <p>镜像 Digest</p>
         :type ImageDigest: str
-        :param _ImageRegistryType: 镜像仓库类型：`enterprise`、`personal`。
+        :param _ImageRegistryType: <p>镜像仓库类型：<code>enterprise</code>、<code>personal</code>、<code>custom</code> 。</p><p>枚举值：</p><ul><li>enterprise： tcr 企业容器镜像服务</li><li>personal： ccr 个人容器镜像服务</li></ul>
         :type ImageRegistryType: str
         """
         self._Image = None
@@ -1526,7 +1577,7 @@ class DescribePreCacheImageTaskRequest(AbstractModel):
 
     @property
     def Image(self):
-        r"""镜像地址
+        r"""<p>镜像地址</p>
         :rtype: str
         """
         return self._Image
@@ -1537,7 +1588,7 @@ class DescribePreCacheImageTaskRequest(AbstractModel):
 
     @property
     def ImageDigest(self):
-        r"""镜像 Digest
+        r"""<p>镜像 Digest</p>
         :rtype: str
         """
         return self._ImageDigest
@@ -1548,7 +1599,7 @@ class DescribePreCacheImageTaskRequest(AbstractModel):
 
     @property
     def ImageRegistryType(self):
-        r"""镜像仓库类型：`enterprise`、`personal`。
+        r"""<p>镜像仓库类型：<code>enterprise</code>、<code>personal</code>、<code>custom</code> 。</p><p>枚举值：</p><ul><li>enterprise： tcr 企业容器镜像服务</li><li>personal： ccr 个人容器镜像服务</li></ul>
         :rtype: str
         """
         return self._ImageRegistryType
@@ -1579,15 +1630,15 @@ class DescribePreCacheImageTaskResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Image: 镜像地址
+        :param _Image: <p>镜像地址</p>
         :type Image: str
-        :param _ImageDigest: 镜像 Digest
+        :param _ImageDigest: <p>镜像 Digest</p>
         :type ImageDigest: str
-        :param _ImageRegistryType: 镜像仓库类型：`enterprise`、`personal`。
+        :param _ImageRegistryType: <p>镜像仓库类型：<code>enterprise</code>、<code>personal</code>。</p>
         :type ImageRegistryType: str
-        :param _Status: 镜像预热状态
+        :param _Status: <p>镜像预热状态</p>
         :type Status: str
-        :param _Message: 镜像预热状态描述
+        :param _Message: <p>镜像预热状态描述</p>
         :type Message: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1601,7 +1652,7 @@ class DescribePreCacheImageTaskResponse(AbstractModel):
 
     @property
     def Image(self):
-        r"""镜像地址
+        r"""<p>镜像地址</p>
         :rtype: str
         """
         return self._Image
@@ -1612,7 +1663,7 @@ class DescribePreCacheImageTaskResponse(AbstractModel):
 
     @property
     def ImageDigest(self):
-        r"""镜像 Digest
+        r"""<p>镜像 Digest</p>
         :rtype: str
         """
         return self._ImageDigest
@@ -1623,7 +1674,7 @@ class DescribePreCacheImageTaskResponse(AbstractModel):
 
     @property
     def ImageRegistryType(self):
-        r"""镜像仓库类型：`enterprise`、`personal`。
+        r"""<p>镜像仓库类型：<code>enterprise</code>、<code>personal</code>。</p>
         :rtype: str
         """
         return self._ImageRegistryType
@@ -1634,7 +1685,7 @@ class DescribePreCacheImageTaskResponse(AbstractModel):
 
     @property
     def Status(self):
-        r"""镜像预热状态
+        r"""<p>镜像预热状态</p>
         :rtype: str
         """
         return self._Status
@@ -1645,7 +1696,7 @@ class DescribePreCacheImageTaskResponse(AbstractModel):
 
     @property
     def Message(self):
-        r"""镜像预热状态描述
+        r"""<p>镜像预热状态描述</p>
         :rtype: str
         """
         return self._Message
@@ -2163,13 +2214,13 @@ class ImageStorageSource(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Reference: 镜像地址
+        :param _Reference: <p>镜像地址</p>
         :type Reference: str
-        :param _ImageRegistryType: 镜像仓库类型：`enterprise`、`personal`。
+        :param _ImageRegistryType: <p>镜像仓库类型：<code>enterprise</code>、<code>personal</code>。</p>
         :type ImageRegistryType: str
-        :param _SubPath: 镜像内部的路径
+        :param _SubPath: <p>镜像内部的路径</p>
         :type SubPath: str
-        :param _Digest: 镜像 Digest，请求时无需传入
+        :param _Digest: <p>镜像 Digest，请求时无需传入</p>
         :type Digest: str
         """
         self._Reference = None
@@ -2179,7 +2230,7 @@ class ImageStorageSource(AbstractModel):
 
     @property
     def Reference(self):
-        r"""镜像地址
+        r"""<p>镜像地址</p>
         :rtype: str
         """
         return self._Reference
@@ -2190,7 +2241,7 @@ class ImageStorageSource(AbstractModel):
 
     @property
     def ImageRegistryType(self):
-        r"""镜像仓库类型：`enterprise`、`personal`。
+        r"""<p>镜像仓库类型：<code>enterprise</code>、<code>personal</code>。</p>
         :rtype: str
         """
         return self._ImageRegistryType
@@ -2201,7 +2252,7 @@ class ImageStorageSource(AbstractModel):
 
     @property
     def SubPath(self):
-        r"""镜像内部的路径
+        r"""<p>镜像内部的路径</p>
         :rtype: str
         """
         return self._SubPath
@@ -2212,7 +2263,7 @@ class ImageStorageSource(AbstractModel):
 
     @property
     def Digest(self):
-        r"""镜像 Digest，请求时无需传入
+        r"""<p>镜像 Digest，请求时无需传入</p>
         :rtype: str
         """
         return self._Digest
@@ -2524,8 +2575,11 @@ class PauseSandboxInstanceRequest(AbstractModel):
         r"""
         :param _InstanceId: <p>沙箱实例ID</p>
         :type InstanceId: str
+        :param _Memory: <p>可选。带内存暂停，恢复后保留进程和内存状态。true=带内存；false=仅磁盘；不传=系统默认（当前默认 true，带内存）。</p>
+        :type Memory: bool
         """
         self._InstanceId = None
+        self._Memory = None
 
     @property
     def InstanceId(self):
@@ -2538,9 +2592,21 @@ class PauseSandboxInstanceRequest(AbstractModel):
     def InstanceId(self, InstanceId):
         self._InstanceId = InstanceId
 
+    @property
+    def Memory(self):
+        r"""<p>可选。带内存暂停，恢复后保留进程和内存状态。true=带内存；false=仅磁盘；不传=系统默认（当前默认 true，带内存）。</p>
+        :rtype: bool
+        """
+        return self._Memory
+
+    @Memory.setter
+    def Memory(self, Memory):
+        self._Memory = Memory
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
+        self._Memory = params.get("Memory")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2848,14 +2914,17 @@ class ResumeSandboxInstanceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 沙箱实例ID
+        :param _InstanceId: <p>沙箱实例ID</p>
         :type InstanceId: str
+        :param _Timeout: <p>超时时间，超过这个时间就自动回收实例。支持格式：5m、300s、1h 等，默认 5m。最小 30s，最大 24h</p>
+        :type Timeout: str
         """
         self._InstanceId = None
+        self._Timeout = None
 
     @property
     def InstanceId(self):
-        r"""沙箱实例ID
+        r"""<p>沙箱实例ID</p>
         :rtype: str
         """
         return self._InstanceId
@@ -2864,9 +2933,21 @@ class ResumeSandboxInstanceRequest(AbstractModel):
     def InstanceId(self, InstanceId):
         self._InstanceId = InstanceId
 
+    @property
+    def Timeout(self):
+        r"""<p>超时时间，超过这个时间就自动回收实例。支持格式：5m、300s、1h 等，默认 5m。最小 30s，最大 24h</p>
+        :rtype: str
+        """
+        return self._Timeout
+
+    @Timeout.setter
+    def Timeout(self, Timeout):
+        self._Timeout = Timeout
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
+        self._Timeout = params.get("Timeout")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3459,7 +3540,7 @@ class StartSandboxInstanceRequest(AbstractModel):
         :type MountOptions: list of MountOption
         :param _CustomConfiguration: <p>沙箱实例自定义配置</p>
         :type CustomConfiguration: :class:`tencentcloud.ags.v20250920.models.CustomConfiguration`
-        :param _AuthMode: <p>沙箱访问认证模式</p><p>枚举值：</p><ul><li>DEFAULT： 默认，即 TOKEN 认证</li><li>TOKEN： Token认证，即所有端口访问都需携带TOKEN</li><li>NONE： 免认证，即所有端口访问无需携带TOKEN</li><li>PUBLIC： 公开模式，即ENVD管理端口（49983）访问需携带TOKEN，其他端口无需携带TOKEN</li></ul><p>默认值：DEFAULT</p>
+        :param _AuthMode: <p>沙箱访问认证模式</p><p>枚举值：</p><ul><li>DEFAULT： 默认，即TOKEN认证</li><li>TOKEN： Token认证，即所有端口访问都需携带Token</li><li>NONE： 免认证，即所有端口访问无需携带Token</li><li>PUBLIC： 公开模式，即ENVD管理端口（49983）访问需携带Token，其他端口无需携带Token</li></ul><p>默认值：DEFAULT</p>
         :type AuthMode: str
         :param _Metadata: <p>沙箱元数据</p>
         :type Metadata: list of MetadataVar
@@ -3541,7 +3622,7 @@ class StartSandboxInstanceRequest(AbstractModel):
 
     @property
     def AuthMode(self):
-        r"""<p>沙箱访问认证模式</p><p>枚举值：</p><ul><li>DEFAULT： 默认，即 TOKEN 认证</li><li>TOKEN： Token认证，即所有端口访问都需携带TOKEN</li><li>NONE： 免认证，即所有端口访问无需携带TOKEN</li><li>PUBLIC： 公开模式，即ENVD管理端口（49983）访问需携带TOKEN，其他端口无需携带TOKEN</li></ul><p>默认值：DEFAULT</p>
+        r"""<p>沙箱访问认证模式</p><p>枚举值：</p><ul><li>DEFAULT： 默认，即TOKEN认证</li><li>TOKEN： Token认证，即所有端口访问都需携带Token</li><li>NONE： 免认证，即所有端口访问无需携带Token</li><li>PUBLIC： 公开模式，即ENVD管理端口（49983）访问需携带Token，其他端口无需携带Token</li></ul><p>默认值：DEFAULT</p>
         :rtype: str
         """
         return self._AuthMode
@@ -3709,13 +3790,14 @@ class StorageMount(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Name: 存储挂载配置名称
+        :param _Name: <p>存储挂载配置名称</p>
         :type Name: str
-        :param _StorageSource: 存储配置
+        :param _StorageSource: <p>存储配置</p>
+注意：此字段可能返回 null，表示取不到有效值。
         :type StorageSource: :class:`tencentcloud.ags.v20250920.models.StorageSource`
-        :param _MountPath: 沙箱实例本地挂载路径
+        :param _MountPath: <p>沙箱实例本地挂载路径</p>
         :type MountPath: str
-        :param _ReadOnly: 存储挂载读写权限配置，默认为false
+        :param _ReadOnly: <p>存储挂载读写权限配置，默认为false</p>
         :type ReadOnly: bool
         """
         self._Name = None
@@ -3725,7 +3807,7 @@ class StorageMount(AbstractModel):
 
     @property
     def Name(self):
-        r"""存储挂载配置名称
+        r"""<p>存储挂载配置名称</p>
         :rtype: str
         """
         return self._Name
@@ -3736,7 +3818,8 @@ class StorageMount(AbstractModel):
 
     @property
     def StorageSource(self):
-        r"""存储配置
+        r"""<p>存储配置</p>
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.ags.v20250920.models.StorageSource`
         """
         return self._StorageSource
@@ -3747,7 +3830,7 @@ class StorageMount(AbstractModel):
 
     @property
     def MountPath(self):
-        r"""沙箱实例本地挂载路径
+        r"""<p>沙箱实例本地挂载路径</p>
         :rtype: str
         """
         return self._MountPath
@@ -3758,7 +3841,7 @@ class StorageMount(AbstractModel):
 
     @property
     def ReadOnly(self):
-        r"""存储挂载读写权限配置，默认为false
+        r"""<p>存储挂载读写权限配置，默认为false</p>
         :rtype: bool
         """
         return self._ReadOnly
@@ -3798,10 +3881,13 @@ class StorageSource(AbstractModel):
         :type Image: :class:`tencentcloud.ags.v20250920.models.ImageStorageSource`
         :param _Cfs: <p>文件存储配置</p>
         :type Cfs: :class:`tencentcloud.ags.v20250920.models.CfsStorageSource`
+        :param _AgentBucket: <p>AgentBucket 存储配置</p>
+        :type AgentBucket: :class:`tencentcloud.ags.v20250920.models.AgentBucketStorageSource`
         """
         self._Cos = None
         self._Image = None
         self._Cfs = None
+        self._AgentBucket = None
 
     @property
     def Cos(self):
@@ -3836,6 +3922,17 @@ class StorageSource(AbstractModel):
     def Cfs(self, Cfs):
         self._Cfs = Cfs
 
+    @property
+    def AgentBucket(self):
+        r"""<p>AgentBucket 存储配置</p>
+        :rtype: :class:`tencentcloud.ags.v20250920.models.AgentBucketStorageSource`
+        """
+        return self._AgentBucket
+
+    @AgentBucket.setter
+    def AgentBucket(self, AgentBucket):
+        self._AgentBucket = AgentBucket
+
 
     def _deserialize(self, params):
         if params.get("Cos") is not None:
@@ -3847,6 +3944,9 @@ class StorageSource(AbstractModel):
         if params.get("Cfs") is not None:
             self._Cfs = CfsStorageSource()
             self._Cfs._deserialize(params.get("Cfs"))
+        if params.get("AgentBucket") is not None:
+            self._AgentBucket = AgentBucketStorageSource()
+            self._AgentBucket._deserialize(params.get("AgentBucket"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

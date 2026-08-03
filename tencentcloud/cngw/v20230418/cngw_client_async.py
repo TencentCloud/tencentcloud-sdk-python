@@ -391,7 +391,7 @@ class CngwClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeCloudNativeAPIGatewayLLMModelAPIsResponse:
         """
-        查询 LLM 模型 API 列表。
+        查询指定网关实例下的所有 LLM 模型 API 列表。支持按名称关键词模糊搜索、按过滤器筛选，以及分页查询。用于绑定场景时，可通过 ConsumerGroupId 和 UseToBind 参数筛选可绑定的模型 API。
         """
         
         kwargs = {}
@@ -596,6 +596,24 @@ class CngwClient(AbstractClient):
         kwargs["action"] = "DescribeCloudNativeAPIGatewayMCPToolList"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeCloudNativeAPIGatewayMCPToolListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeCloudNativeAPIGatewayMCPToolsFromFile(
+            self,
+            request: models.DescribeCloudNativeAPIGatewayMCPToolsFromFileRequest,
+            opts: Dict = None,
+    ) -> models.DescribeCloudNativeAPIGatewayMCPToolsFromFileResponse:
+        """
+        从OpenAPI文件中解析出可导入的MCP tools
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeCloudNativeAPIGatewayMCPToolsFromFile"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeCloudNativeAPIGatewayMCPToolsFromFileResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -902,6 +920,24 @@ class CngwClient(AbstractClient):
         kwargs["action"] = "UnbindCloudNativeAPIGatewaySecretKey"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.UnbindCloudNativeAPIGatewaySecretKeyResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def UpdateCloudNativeAPIGatewayMCPTools(
+            self,
+            request: models.UpdateCloudNativeAPIGatewayMCPToolsRequest,
+            opts: Dict = None,
+    ) -> models.UpdateCloudNativeAPIGatewayMCPToolsResponse:
+        """
+        批量导入从OpenAPI文件中解析的MCP Tools
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "UpdateCloudNativeAPIGatewayMCPTools"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.UpdateCloudNativeAPIGatewayMCPToolsResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

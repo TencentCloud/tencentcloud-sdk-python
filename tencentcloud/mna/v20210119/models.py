@@ -7791,9 +7791,9 @@ class ModifyPackageRenewFlagRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ResourceId: 流量包的唯一资源ID
+        :param _ResourceId: <p>流量包的唯一资源ID</p>
         :type ResourceId: str
-        :param _RenewFlag: 自动续费标识。true代表自动续费，false代表不自动续费
+        :param _RenewFlag: <p>自动续费标识。true代表自动续费，false代表不自动续费</p>
         :type RenewFlag: bool
         """
         self._ResourceId = None
@@ -7801,7 +7801,7 @@ class ModifyPackageRenewFlagRequest(AbstractModel):
 
     @property
     def ResourceId(self):
-        r"""流量包的唯一资源ID
+        r"""<p>流量包的唯一资源ID</p>
         :rtype: str
         """
         return self._ResourceId
@@ -7812,7 +7812,7 @@ class ModifyPackageRenewFlagRequest(AbstractModel):
 
     @property
     def RenewFlag(self):
-        r"""自动续费标识。true代表自动续费，false代表不自动续费
+        r"""<p>自动续费标识。true代表自动续费，false代表不自动续费</p>
         :rtype: bool
         """
         return self._RenewFlag
@@ -9285,15 +9285,15 @@ class UpdateL3CidrRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _L3ConnId: 互通规则ID
+        :param _L3ConnId: <p>互通规则ID</p>
         :type L3ConnId: str
-        :param _Cidr1: 互通规则CIDR
+        :param _Cidr1: <p>互通规则CIDR</p>
         :type Cidr1: str
-        :param _DeviceId1: 互通设备ID
+        :param _DeviceId1: <p>互通设备ID</p>
         :type DeviceId1: str
-        :param _DeviceId2: 互通设备ID
+        :param _DeviceId2: <p>互通设备ID</p>
         :type DeviceId2: str
-        :param _Cidr2: 互通规则CIDR
+        :param _Cidr2: <p>互通规则CIDR</p>
         :type Cidr2: str
         """
         self._L3ConnId = None
@@ -9304,7 +9304,7 @@ class UpdateL3CidrRequest(AbstractModel):
 
     @property
     def L3ConnId(self):
-        r"""互通规则ID
+        r"""<p>互通规则ID</p>
         :rtype: str
         """
         return self._L3ConnId
@@ -9315,7 +9315,7 @@ class UpdateL3CidrRequest(AbstractModel):
 
     @property
     def Cidr1(self):
-        r"""互通规则CIDR
+        r"""<p>互通规则CIDR</p>
         :rtype: str
         """
         return self._Cidr1
@@ -9326,7 +9326,7 @@ class UpdateL3CidrRequest(AbstractModel):
 
     @property
     def DeviceId1(self):
-        r"""互通设备ID
+        r"""<p>互通设备ID</p>
         :rtype: str
         """
         return self._DeviceId1
@@ -9337,7 +9337,7 @@ class UpdateL3CidrRequest(AbstractModel):
 
     @property
     def DeviceId2(self):
-        r"""互通设备ID
+        r"""<p>互通设备ID</p>
         :rtype: str
         """
         return self._DeviceId2
@@ -9348,7 +9348,7 @@ class UpdateL3CidrRequest(AbstractModel):
 
     @property
     def Cidr2(self):
-        r"""互通规则CIDR
+        r"""<p>互通规则CIDR</p>
         :rtype: str
         """
         return self._Cidr2
@@ -9488,9 +9488,9 @@ class UpdateL3SwitchRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _L3ConnId: 互通规则ID
+        :param _L3ConnId: <p>互通规则ID</p>
         :type L3ConnId: str
-        :param _Enable: 互通规则开关
+        :param _Enable: <p>互通规则开关</p>
         :type Enable: bool
         """
         self._L3ConnId = None
@@ -9498,7 +9498,7 @@ class UpdateL3SwitchRequest(AbstractModel):
 
     @property
     def L3ConnId(self):
-        r"""互通规则ID
+        r"""<p>互通规则ID</p>
         :rtype: str
         """
         return self._L3ConnId
@@ -9509,7 +9509,7 @@ class UpdateL3SwitchRequest(AbstractModel):
 
     @property
     def Enable(self):
-        r"""互通规则开关
+        r"""<p>互通规则开关</p>
         :rtype: bool
         """
         return self._Enable

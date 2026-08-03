@@ -487,7 +487,7 @@ class CngwClient(AbstractClient):
 
 
     def DescribeCloudNativeAPIGatewayLLMModelAPIs(self, request):
-        r"""查询 LLM 模型 API 列表。
+        r"""查询指定网关实例下的所有 LLM 模型 API 列表。支持按名称关键词模糊搜索、按过滤器筛选，以及分页查询。用于绑定场景时，可通过 ConsumerGroupId 和 UseToBind 参数筛选可绑定的模型 API。
 
         :param request: Request instance for DescribeCloudNativeAPIGatewayLLMModelAPIs.
         :type request: :class:`tencentcloud.cngw.v20230418.models.DescribeCloudNativeAPIGatewayLLMModelAPIsRequest`
@@ -753,6 +753,29 @@ class CngwClient(AbstractClient):
             body = self.call("DescribeCloudNativeAPIGatewayMCPToolList", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeCloudNativeAPIGatewayMCPToolListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeCloudNativeAPIGatewayMCPToolsFromFile(self, request):
+        r"""从OpenAPI文件中解析出可导入的MCP tools
+
+        :param request: Request instance for DescribeCloudNativeAPIGatewayMCPToolsFromFile.
+        :type request: :class:`tencentcloud.cngw.v20230418.models.DescribeCloudNativeAPIGatewayMCPToolsFromFileRequest`
+        :rtype: :class:`tencentcloud.cngw.v20230418.models.DescribeCloudNativeAPIGatewayMCPToolsFromFileResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeCloudNativeAPIGatewayMCPToolsFromFile", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeCloudNativeAPIGatewayMCPToolsFromFileResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1144,6 +1167,29 @@ class CngwClient(AbstractClient):
             body = self.call("UnbindCloudNativeAPIGatewaySecretKey", params, headers=headers)
             response = json.loads(body)
             model = models.UnbindCloudNativeAPIGatewaySecretKeyResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def UpdateCloudNativeAPIGatewayMCPTools(self, request):
+        r"""批量导入从OpenAPI文件中解析的MCP Tools
+
+        :param request: Request instance for UpdateCloudNativeAPIGatewayMCPTools.
+        :type request: :class:`tencentcloud.cngw.v20230418.models.UpdateCloudNativeAPIGatewayMCPToolsRequest`
+        :rtype: :class:`tencentcloud.cngw.v20230418.models.UpdateCloudNativeAPIGatewayMCPToolsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UpdateCloudNativeAPIGatewayMCPTools", params, headers=headers)
+            response = json.loads(body)
+            model = models.UpdateCloudNativeAPIGatewayMCPToolsResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

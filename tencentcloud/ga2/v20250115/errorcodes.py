@@ -209,6 +209,9 @@ UNSUPPORTEDOPERATION_DEFAULTENDPOINTGROUPMODIFY = 'UnsupportedOperation.DefaultE
 # 默认七层转发策略规则不允许操作。
 UNSUPPORTEDOPERATION_DEFAULTFORWARDINGPOLICYOPERATE = 'UnsupportedOperation.DefaultForwardingPolicyOperate'
 
+# 默认七层转发规则不允许修改`%(value)s`
+UNSUPPORTEDOPERATION_DEFAULTFORWARDINGRULEOPERATE = 'UnsupportedOperation.DefaultForwardingRuleOperate'
+
 # 替换证书域名和旧证书域名不匹配。
 UNSUPPORTEDOPERATION_DOMAINMISMATCHED = 'UnsupportedOperation.DomainMismatched'
 
