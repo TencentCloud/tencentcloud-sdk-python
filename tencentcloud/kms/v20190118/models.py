@@ -8170,6 +8170,102 @@ class RegionQps(AbstractModel):
         
 
 
+class RotateKeyRequest(AbstractModel):
+    r"""RotateKey请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _KeyId: <p>CMK的全局唯一标识符</p>
+        :type KeyId: str
+        :param _MemberAccount: <p>成员账号信息，用于多账号场景</p>
+        :type MemberAccount: :class:`tencentcloud.kms.v20190118.models.MemberAccount`
+        """
+        self._KeyId = None
+        self._MemberAccount = None
+
+    @property
+    def KeyId(self):
+        r"""<p>CMK的全局唯一标识符</p>
+        :rtype: str
+        """
+        return self._KeyId
+
+    @KeyId.setter
+    def KeyId(self, KeyId):
+        self._KeyId = KeyId
+
+    @property
+    def MemberAccount(self):
+        r"""<p>成员账号信息，用于多账号场景</p>
+        :rtype: :class:`tencentcloud.kms.v20190118.models.MemberAccount`
+        """
+        return self._MemberAccount
+
+    @MemberAccount.setter
+    def MemberAccount(self, MemberAccount):
+        self._MemberAccount = MemberAccount
+
+
+    def _deserialize(self, params):
+        self._KeyId = params.get("KeyId")
+        if params.get("MemberAccount") is not None:
+            self._MemberAccount = MemberAccount()
+            self._MemberAccount._deserialize(params.get("MemberAccount"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RotateKeyResponse(AbstractModel):
+    r"""RotateKey返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: <p>轮转任务ID，用于标识本次轮转任务。可以通过调用DescribeKey，返回上次轮转时间和下次轮转时间，判断是否轮转成功。</p>
+        :type TaskId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        r"""<p>轮转任务ID，用于标识本次轮转任务。可以通过调用DescribeKey，返回上次轮转时间和下次轮转时间，判断是否轮转成功。</p>
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
+
+
 class ScheduleDataKeyDeletionRequest(AbstractModel):
     r"""ScheduleDataKeyDeletion请求参数结构体
 

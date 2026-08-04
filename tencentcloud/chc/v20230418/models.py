@@ -3443,14 +3443,14 @@ class DescribeDeviceWorkOrderDetailRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _OrderId: 工单ID
+        :param _OrderId: <p>工单ID</p>
         :type OrderId: str
         """
         self._OrderId = None
 
     @property
     def OrderId(self):
-        r"""工单ID
+        r"""<p>工单ID</p>
         :rtype: str
         """
         return self._OrderId
@@ -3479,22 +3479,26 @@ class DescribeDeviceWorkOrderDetailResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _OrderId: 工单ID
+        :param _OrderId: <p>工单ID</p>
         :type OrderId: str
-        :param _ServiceType: 服务类型
+        :param _ServiceType: <p>服务类型</p>
         :type ServiceType: str
-        :param _OrderType: 工单类型
+        :param _OrderType: <p>工单类型</p>
         :type OrderType: str
-        :param _OrderStatus: 工单状态
+        :param _OrderStatus: <p>工单状态</p>
         :type OrderStatus: str
-        :param _StepSet: 工单流程状态
+        :param _StepSet: <p>工单流程状态</p>
         :type StepSet: list of OrderStep
-        :param _DeviceSet: 工单设备信息
+        :param _DeviceSet: <p>工单设备信息</p>
         :type DeviceSet: list of DeviceHistory
-        :param _BaseInfo: 工单的入参信息
+        :param _BaseInfo: <p>工单的入参信息</p>
         :type BaseInfo: :class:`tencentcloud.chc.v20230418.models.DeviceOrderBaseInfo`
-        :param _RejectReason: 工单的拒绝原因，工单状态为reject的时候返回
+        :param _RejectReason: <p>工单的拒绝原因，工单状态为reject的时候返回</p>
         :type RejectReason: str
+        :param _SLAInfo: <p>工单 SLA 信息</p>
+        :type SLAInfo: :class:`tencentcloud.chc.v20230418.models.SLAInfo`
+        :param _PreOrderSet: <p>前序未完成的工单号</p>
+        :type PreOrderSet: list of str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -3506,11 +3510,13 @@ class DescribeDeviceWorkOrderDetailResponse(AbstractModel):
         self._DeviceSet = None
         self._BaseInfo = None
         self._RejectReason = None
+        self._SLAInfo = None
+        self._PreOrderSet = None
         self._RequestId = None
 
     @property
     def OrderId(self):
-        r"""工单ID
+        r"""<p>工单ID</p>
         :rtype: str
         """
         return self._OrderId
@@ -3521,7 +3527,7 @@ class DescribeDeviceWorkOrderDetailResponse(AbstractModel):
 
     @property
     def ServiceType(self):
-        r"""服务类型
+        r"""<p>服务类型</p>
         :rtype: str
         """
         return self._ServiceType
@@ -3532,7 +3538,7 @@ class DescribeDeviceWorkOrderDetailResponse(AbstractModel):
 
     @property
     def OrderType(self):
-        r"""工单类型
+        r"""<p>工单类型</p>
         :rtype: str
         """
         return self._OrderType
@@ -3543,7 +3549,7 @@ class DescribeDeviceWorkOrderDetailResponse(AbstractModel):
 
     @property
     def OrderStatus(self):
-        r"""工单状态
+        r"""<p>工单状态</p>
         :rtype: str
         """
         return self._OrderStatus
@@ -3554,7 +3560,7 @@ class DescribeDeviceWorkOrderDetailResponse(AbstractModel):
 
     @property
     def StepSet(self):
-        r"""工单流程状态
+        r"""<p>工单流程状态</p>
         :rtype: list of OrderStep
         """
         return self._StepSet
@@ -3565,7 +3571,7 @@ class DescribeDeviceWorkOrderDetailResponse(AbstractModel):
 
     @property
     def DeviceSet(self):
-        r"""工单设备信息
+        r"""<p>工单设备信息</p>
         :rtype: list of DeviceHistory
         """
         return self._DeviceSet
@@ -3576,7 +3582,7 @@ class DescribeDeviceWorkOrderDetailResponse(AbstractModel):
 
     @property
     def BaseInfo(self):
-        r"""工单的入参信息
+        r"""<p>工单的入参信息</p>
         :rtype: :class:`tencentcloud.chc.v20230418.models.DeviceOrderBaseInfo`
         """
         return self._BaseInfo
@@ -3587,7 +3593,7 @@ class DescribeDeviceWorkOrderDetailResponse(AbstractModel):
 
     @property
     def RejectReason(self):
-        r"""工单的拒绝原因，工单状态为reject的时候返回
+        r"""<p>工单的拒绝原因，工单状态为reject的时候返回</p>
         :rtype: str
         """
         return self._RejectReason
@@ -3595,6 +3601,28 @@ class DescribeDeviceWorkOrderDetailResponse(AbstractModel):
     @RejectReason.setter
     def RejectReason(self, RejectReason):
         self._RejectReason = RejectReason
+
+    @property
+    def SLAInfo(self):
+        r"""<p>工单 SLA 信息</p>
+        :rtype: :class:`tencentcloud.chc.v20230418.models.SLAInfo`
+        """
+        return self._SLAInfo
+
+    @SLAInfo.setter
+    def SLAInfo(self, SLAInfo):
+        self._SLAInfo = SLAInfo
+
+    @property
+    def PreOrderSet(self):
+        r"""<p>前序未完成的工单号</p>
+        :rtype: list of str
+        """
+        return self._PreOrderSet
+
+    @PreOrderSet.setter
+    def PreOrderSet(self, PreOrderSet):
+        self._PreOrderSet = PreOrderSet
 
     @property
     def RequestId(self):
@@ -3629,6 +3657,10 @@ class DescribeDeviceWorkOrderDetailResponse(AbstractModel):
             self._BaseInfo = DeviceOrderBaseInfo()
             self._BaseInfo._deserialize(params.get("BaseInfo"))
         self._RejectReason = params.get("RejectReason")
+        if params.get("SLAInfo") is not None:
+            self._SLAInfo = SLAInfo()
+            self._SLAInfo._deserialize(params.get("SLAInfo"))
+        self._PreOrderSet = params.get("PreOrderSet")
         self._RequestId = params.get("RequestId")
 
 
@@ -9897,6 +9929,102 @@ class RackUsage(AbstractModel):
         
 
 
+class SLAInfo(AbstractModel):
+    r"""SLA 信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SLAStatus: <p>SLA 状态</p><p>枚举值：</p><ul><li>InSLA： SLA 内</li><li>Overdue： 已超时</li><li>Completed： 已完成</li></ul>
+        :type SLAStatus: str
+        :param _DueTime: <p>到期时间</p>
+        :type DueTime: str
+        :param _RemainingHours: <p>剩余时长</p><p>单位：小时</p>
+        :type RemainingHours: float
+        :param _OverdueHours: <p>超时时长</p><p>单位：小时</p>
+        :type OverdueHours: float
+        :param _SLADays: <p>SLA 工作日天数</p><p>单位：天</p>
+        :type SLADays: int
+        """
+        self._SLAStatus = None
+        self._DueTime = None
+        self._RemainingHours = None
+        self._OverdueHours = None
+        self._SLADays = None
+
+    @property
+    def SLAStatus(self):
+        r"""<p>SLA 状态</p><p>枚举值：</p><ul><li>InSLA： SLA 内</li><li>Overdue： 已超时</li><li>Completed： 已完成</li></ul>
+        :rtype: str
+        """
+        return self._SLAStatus
+
+    @SLAStatus.setter
+    def SLAStatus(self, SLAStatus):
+        self._SLAStatus = SLAStatus
+
+    @property
+    def DueTime(self):
+        r"""<p>到期时间</p>
+        :rtype: str
+        """
+        return self._DueTime
+
+    @DueTime.setter
+    def DueTime(self, DueTime):
+        self._DueTime = DueTime
+
+    @property
+    def RemainingHours(self):
+        r"""<p>剩余时长</p><p>单位：小时</p>
+        :rtype: float
+        """
+        return self._RemainingHours
+
+    @RemainingHours.setter
+    def RemainingHours(self, RemainingHours):
+        self._RemainingHours = RemainingHours
+
+    @property
+    def OverdueHours(self):
+        r"""<p>超时时长</p><p>单位：小时</p>
+        :rtype: float
+        """
+        return self._OverdueHours
+
+    @OverdueHours.setter
+    def OverdueHours(self, OverdueHours):
+        self._OverdueHours = OverdueHours
+
+    @property
+    def SLADays(self):
+        r"""<p>SLA 工作日天数</p><p>单位：天</p>
+        :rtype: int
+        """
+        return self._SLADays
+
+    @SLADays.setter
+    def SLADays(self, SLADays):
+        self._SLADays = SLADays
+
+
+    def _deserialize(self, params):
+        self._SLAStatus = params.get("SLAStatus")
+        self._DueTime = params.get("DueTime")
+        self._RemainingHours = params.get("RemainingHours")
+        self._OverdueHours = params.get("OverdueHours")
+        self._SLADays = params.get("SLADays")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class SelfOperation(AbstractModel):
     r"""客户自行上门信息
 
@@ -10729,22 +10857,24 @@ class WorkOrderData(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _WorkOrderId: 工单号
+        :param _WorkOrderId: <p>工单号</p>
         :type WorkOrderId: str
-        :param _ServiceType: 服务类型，一个服务可能会产生多个工单
+        :param _ServiceType: <p>服务类型，一个服务可能会产生多个工单</p>
         :type ServiceType: str
-        :param _OrderType: 工单类型
+        :param _OrderType: <p>工单类型</p>
         :type OrderType: str
-        :param _OrderStatus: 工单状态
+        :param _OrderStatus: <p>工单状态</p>
         :type OrderStatus: str
-        :param _Creator: 工单创建人
+        :param _Creator: <p>工单创建人</p>
         :type Creator: str
-        :param _CreateTime: 工单创建时间
+        :param _CreateTime: <p>工单创建时间</p>
         :type CreateTime: str
-        :param _FinishTime: 工单完成时间
+        :param _FinishTime: <p>工单完成时间</p>
         :type FinishTime: str
-        :param _TicketId: 工单关联的dcops单号
+        :param _TicketId: <p>工单关联的dcops单号</p>
         :type TicketId: str
+        :param _SLAInfo: <p>SLA</p>
+        :type SLAInfo: :class:`tencentcloud.chc.v20230418.models.SLAInfo`
         """
         self._WorkOrderId = None
         self._ServiceType = None
@@ -10754,10 +10884,11 @@ class WorkOrderData(AbstractModel):
         self._CreateTime = None
         self._FinishTime = None
         self._TicketId = None
+        self._SLAInfo = None
 
     @property
     def WorkOrderId(self):
-        r"""工单号
+        r"""<p>工单号</p>
         :rtype: str
         """
         return self._WorkOrderId
@@ -10768,7 +10899,7 @@ class WorkOrderData(AbstractModel):
 
     @property
     def ServiceType(self):
-        r"""服务类型，一个服务可能会产生多个工单
+        r"""<p>服务类型，一个服务可能会产生多个工单</p>
         :rtype: str
         """
         return self._ServiceType
@@ -10779,7 +10910,7 @@ class WorkOrderData(AbstractModel):
 
     @property
     def OrderType(self):
-        r"""工单类型
+        r"""<p>工单类型</p>
         :rtype: str
         """
         return self._OrderType
@@ -10790,7 +10921,7 @@ class WorkOrderData(AbstractModel):
 
     @property
     def OrderStatus(self):
-        r"""工单状态
+        r"""<p>工单状态</p>
         :rtype: str
         """
         return self._OrderStatus
@@ -10801,7 +10932,7 @@ class WorkOrderData(AbstractModel):
 
     @property
     def Creator(self):
-        r"""工单创建人
+        r"""<p>工单创建人</p>
         :rtype: str
         """
         return self._Creator
@@ -10812,7 +10943,7 @@ class WorkOrderData(AbstractModel):
 
     @property
     def CreateTime(self):
-        r"""工单创建时间
+        r"""<p>工单创建时间</p>
         :rtype: str
         """
         return self._CreateTime
@@ -10823,7 +10954,7 @@ class WorkOrderData(AbstractModel):
 
     @property
     def FinishTime(self):
-        r"""工单完成时间
+        r"""<p>工单完成时间</p>
         :rtype: str
         """
         return self._FinishTime
@@ -10834,7 +10965,7 @@ class WorkOrderData(AbstractModel):
 
     @property
     def TicketId(self):
-        r"""工单关联的dcops单号
+        r"""<p>工单关联的dcops单号</p>
         :rtype: str
         """
         return self._TicketId
@@ -10842,6 +10973,17 @@ class WorkOrderData(AbstractModel):
     @TicketId.setter
     def TicketId(self, TicketId):
         self._TicketId = TicketId
+
+    @property
+    def SLAInfo(self):
+        r"""<p>SLA</p>
+        :rtype: :class:`tencentcloud.chc.v20230418.models.SLAInfo`
+        """
+        return self._SLAInfo
+
+    @SLAInfo.setter
+    def SLAInfo(self, SLAInfo):
+        self._SLAInfo = SLAInfo
 
 
     def _deserialize(self, params):
@@ -10853,6 +10995,9 @@ class WorkOrderData(AbstractModel):
         self._CreateTime = params.get("CreateTime")
         self._FinishTime = params.get("FinishTime")
         self._TicketId = params.get("TicketId")
+        if params.get("SLAInfo") is not None:
+            self._SLAInfo = SLAInfo()
+            self._SLAInfo._deserialize(params.get("SLAInfo"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

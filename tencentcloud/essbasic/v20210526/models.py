@@ -6625,32 +6625,32 @@ class ChannelCreatePrepareFlowGroupRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _BaseFlowInfos: 合同组中每个合同签署流程的信息，合同组中最少包含2个合同，不能超过50个合同。
+        :param _BaseFlowInfos: <p>合同组中每个合同签署流程的信息，合同组中最少包含2个合同，不能超过50个合同。</p>
         :type BaseFlowInfos: list of BaseFlowInfo
-        :param _FlowGroupName: 合同组的名称（可自定义此名称），长度不能超过200，只能由中文、字母、数字和下划线组成。
+        :param _FlowGroupName: <p>合同组的名称（可自定义此名称），长度不能超过200，只能由中文、字母、数字和下划线组成。</p>
         :type FlowGroupName: str
-        :param _ResourceType: 资源类型，取值有： <ul><li> **1**：模板</li> <li> **2**：文件</li></ul>
+        :param _ResourceType: <p>资源类型，取值有： <ul><li> <strong>1</strong>：模板</li> <li> <strong>2</strong>：文件</li></ul></p>
         :type ResourceType: int
-        :param _Agent: 合同的发起企业和发起人信息，<a href="https://qcloudimg.tencent-cloud.cn/raw/b69f8aad306c40b7b78d096e39b2edbb.png" target="_blank">点击查看合同发起企业和人展示的位置</a>
-
-此接口下面信息必填。
-<ul>
-<li>渠道应用标识: <a href="https://qcloudimg.tencent-cloud.cn/raw/a71872de3d540d55451e3e73a2ad1a6e.png" target="_blank">Agent.AppId</a></li>
-<li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId（合同的发起企业）</li>
-<li>第三方平台子客企业中的员工标识: Agent.ProxyOperator.OpenId （合同的发起人）</li>
-</ul>
-
-合同的发起企业和发起人必需已经完成实名，并加入企业
+        :param _Agent: <p>合同的发起企业和发起人信息，<a href="https://qcloudimg.tencent-cloud.cn/raw/b69f8aad306c40b7b78d096e39b2edbb.png" target="_blank">点击查看合同发起企业和人展示的位置</a></p><p>此接口下面信息必填。</p><ul><li>渠道应用标识: <a href="https://qcloudimg.tencent-cloud.cn/raw/a71872de3d540d55451e3e73a2ad1a6e.png" target="_blank">Agent.AppId</a></li><li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId（合同的发起企业）</li><li>第三方平台子客企业中的员工标识: Agent.ProxyOperator.OpenId （合同的发起人）</li></ul><p>合同的发起企业和发起人必需已经完成实名，并加入企业</p>
         :type Agent: :class:`tencentcloud.essbasic.v20210526.models.Agent`
+        :param _FlowGroupOptions: <p>合同组发起参数控制，包括对合同组名称、过期时间、发起后签署以及查看等操作</p>
+        :type FlowGroupOptions: :class:`tencentcloud.essbasic.v20210526.models.FlowGroupOptions`
+        :param _FlowGroupType: <p>合同组类型，会应用到所有子合同</p>
+        :type FlowGroupType: str
+        :param _FlowGroupDeadline: <p>合同组过期时间，会应用到所有子合同</p>
+        :type FlowGroupDeadline: int
         """
         self._BaseFlowInfos = None
         self._FlowGroupName = None
         self._ResourceType = None
         self._Agent = None
+        self._FlowGroupOptions = None
+        self._FlowGroupType = None
+        self._FlowGroupDeadline = None
 
     @property
     def BaseFlowInfos(self):
-        r"""合同组中每个合同签署流程的信息，合同组中最少包含2个合同，不能超过50个合同。
+        r"""<p>合同组中每个合同签署流程的信息，合同组中最少包含2个合同，不能超过50个合同。</p>
         :rtype: list of BaseFlowInfo
         """
         return self._BaseFlowInfos
@@ -6661,7 +6661,7 @@ class ChannelCreatePrepareFlowGroupRequest(AbstractModel):
 
     @property
     def FlowGroupName(self):
-        r"""合同组的名称（可自定义此名称），长度不能超过200，只能由中文、字母、数字和下划线组成。
+        r"""<p>合同组的名称（可自定义此名称），长度不能超过200，只能由中文、字母、数字和下划线组成。</p>
         :rtype: str
         """
         return self._FlowGroupName
@@ -6672,7 +6672,7 @@ class ChannelCreatePrepareFlowGroupRequest(AbstractModel):
 
     @property
     def ResourceType(self):
-        r"""资源类型，取值有： <ul><li> **1**：模板</li> <li> **2**：文件</li></ul>
+        r"""<p>资源类型，取值有： <ul><li> <strong>1</strong>：模板</li> <li> <strong>2</strong>：文件</li></ul></p>
         :rtype: int
         """
         return self._ResourceType
@@ -6683,16 +6683,7 @@ class ChannelCreatePrepareFlowGroupRequest(AbstractModel):
 
     @property
     def Agent(self):
-        r"""合同的发起企业和发起人信息，<a href="https://qcloudimg.tencent-cloud.cn/raw/b69f8aad306c40b7b78d096e39b2edbb.png" target="_blank">点击查看合同发起企业和人展示的位置</a>
-
-此接口下面信息必填。
-<ul>
-<li>渠道应用标识: <a href="https://qcloudimg.tencent-cloud.cn/raw/a71872de3d540d55451e3e73a2ad1a6e.png" target="_blank">Agent.AppId</a></li>
-<li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId（合同的发起企业）</li>
-<li>第三方平台子客企业中的员工标识: Agent.ProxyOperator.OpenId （合同的发起人）</li>
-</ul>
-
-合同的发起企业和发起人必需已经完成实名，并加入企业
+        r"""<p>合同的发起企业和发起人信息，<a href="https://qcloudimg.tencent-cloud.cn/raw/b69f8aad306c40b7b78d096e39b2edbb.png" target="_blank">点击查看合同发起企业和人展示的位置</a></p><p>此接口下面信息必填。</p><ul><li>渠道应用标识: <a href="https://qcloudimg.tencent-cloud.cn/raw/a71872de3d540d55451e3e73a2ad1a6e.png" target="_blank">Agent.AppId</a></li><li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId（合同的发起企业）</li><li>第三方平台子客企业中的员工标识: Agent.ProxyOperator.OpenId （合同的发起人）</li></ul><p>合同的发起企业和发起人必需已经完成实名，并加入企业</p>
         :rtype: :class:`tencentcloud.essbasic.v20210526.models.Agent`
         """
         return self._Agent
@@ -6700,6 +6691,39 @@ class ChannelCreatePrepareFlowGroupRequest(AbstractModel):
     @Agent.setter
     def Agent(self, Agent):
         self._Agent = Agent
+
+    @property
+    def FlowGroupOptions(self):
+        r"""<p>合同组发起参数控制，包括对合同组名称、过期时间、发起后签署以及查看等操作</p>
+        :rtype: :class:`tencentcloud.essbasic.v20210526.models.FlowGroupOptions`
+        """
+        return self._FlowGroupOptions
+
+    @FlowGroupOptions.setter
+    def FlowGroupOptions(self, FlowGroupOptions):
+        self._FlowGroupOptions = FlowGroupOptions
+
+    @property
+    def FlowGroupType(self):
+        r"""<p>合同组类型，会应用到所有子合同</p>
+        :rtype: str
+        """
+        return self._FlowGroupType
+
+    @FlowGroupType.setter
+    def FlowGroupType(self, FlowGroupType):
+        self._FlowGroupType = FlowGroupType
+
+    @property
+    def FlowGroupDeadline(self):
+        r"""<p>合同组过期时间，会应用到所有子合同</p>
+        :rtype: int
+        """
+        return self._FlowGroupDeadline
+
+    @FlowGroupDeadline.setter
+    def FlowGroupDeadline(self, FlowGroupDeadline):
+        self._FlowGroupDeadline = FlowGroupDeadline
 
 
     def _deserialize(self, params):
@@ -6714,6 +6738,11 @@ class ChannelCreatePrepareFlowGroupRequest(AbstractModel):
         if params.get("Agent") is not None:
             self._Agent = Agent()
             self._Agent._deserialize(params.get("Agent"))
+        if params.get("FlowGroupOptions") is not None:
+            self._FlowGroupOptions = FlowGroupOptions()
+            self._FlowGroupOptions._deserialize(params.get("FlowGroupOptions"))
+        self._FlowGroupType = params.get("FlowGroupType")
+        self._FlowGroupDeadline = params.get("FlowGroupDeadline")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -6731,10 +6760,9 @@ class ChannelCreatePrepareFlowGroupResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _FlowGroupId: 合同组ID，为32位字符串。
-建议开发者妥善保存此合同组ID，以便于顺利进行后续操作。
+        :param _FlowGroupId: <p>合同组ID，为32位字符串。<br>建议开发者妥善保存此合同组ID，以便于顺利进行后续操作。</p>
         :type FlowGroupId: str
-        :param _PrepareUrl: 嵌入式发起链接
+        :param _PrepareUrl: <p>嵌入式发起链接</p>
         :type PrepareUrl: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -6745,8 +6773,7 @@ class ChannelCreatePrepareFlowGroupResponse(AbstractModel):
 
     @property
     def FlowGroupId(self):
-        r"""合同组ID，为32位字符串。
-建议开发者妥善保存此合同组ID，以便于顺利进行后续操作。
+        r"""<p>合同组ID，为32位字符串。<br>建议开发者妥善保存此合同组ID，以便于顺利进行后续操作。</p>
         :rtype: str
         """
         return self._FlowGroupId
@@ -6757,7 +6784,7 @@ class ChannelCreatePrepareFlowGroupResponse(AbstractModel):
 
     @property
     def PrepareUrl(self):
-        r"""嵌入式发起链接
+        r"""<p>嵌入式发起链接</p>
         :rtype: str
         """
         return self._PrepareUrl
@@ -23767,23 +23794,41 @@ class FlowGroupOptions(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SelfOrganizationApproverSignEach: 发起方企业经办人（即签署人为发起方企业员工）是否需要对子合同进行独立的意愿确认
-<ul><li>**false**（默认）：发起方企业经办人签署时对所有子合同进行统一的意愿确认。</li>
-<li>**true**：发起方企业经办人签署时需要对子合同进行独立的意愿确认。</li></ul>
+        :param _SelfOrganizationApproverSignEach: <p>发起方企业经办人（即签署人为发起方企业员工）是否需要对子合同进行独立的意愿确认</p><ul><li>**false**（默认）：发起方企业经办人签署时对所有子合同进行统一的意愿确认。</li><li>**true**：发起方企业经办人签署时需要对子合同进行独立的意愿确认。</li></ul>
         :type SelfOrganizationApproverSignEach: bool
-        :param _OtherApproverSignEach: 非发起方企业经办人（即：签署人为个人或者不为发起方企业的员工）是否需要对子合同进行独立的意愿确认
-<ul><li>**false**（默认）：非发起方企业经办人签署时对所有子合同进行统一的意愿确认。</li>
-<li>**true**：非发起方企业经办人签署时需要对子合同进行独立的意愿确认。</li></ul>
+        :param _OtherApproverSignEach: <p>非发起方企业经办人（即：签署人为个人或者不为发起方企业的员工）是否需要对子合同进行独立的意愿确认</p><ul><li>**false**（默认）：非发起方企业经办人签署时对所有子合同进行统一的意愿确认。</li><li>**true**：非发起方企业经办人签署时需要对子合同进行独立的意愿确认。</li></ul>
         :type OtherApproverSignEach: bool
+        :param _NoEditFlowName: <p>是否不可编辑合同名称 true-不可编辑 false-可编辑(默认)</p>
+        :type NoEditFlowName: bool
+        :param _NoEditFlowType: <p>是否不可编辑合同类型 true-不可编辑 false-可编辑(默认)</p>
+        :type NoEditFlowType: bool
+        :param _NoEditDeadline: <p>是否不可编辑合同截止日期 true-不可编辑 false-可编辑(默认)</p>
+        :type NoEditDeadline: bool
+        :param _SignComponentConfig: <p>签署控件配置(如是否默认展示日期)，用于嵌入式发起页面配置</p>
+        :type SignComponentConfig: :class:`tencentcloud.essbasic.v20210526.models.SignComponentConfig`
+        :param _ForbidEditWatermark: <p>是否禁止编辑水印控件属性 true-禁止 false-否(默认)</p>
+        :type ForbidEditWatermark: bool
+        :param _HideSignCodeAfterStart: <p>发起成功后是否隐藏签署码 true-隐藏 false-否(默认)</p>
+        :type HideSignCodeAfterStart: bool
+        :param _SignAfterStart: <p>发起成功后是否签署合同,仅当前经办人为签署人时生效 true-展示签署 false-否(默认)</p>
+        :type SignAfterStart: bool
+        :param _PreviewAfterStart: <p>发起成功后是否预览合同 true-展示预览按钮 false-否(默认)</p>
+        :type PreviewAfterStart: bool
         """
         self._SelfOrganizationApproverSignEach = None
         self._OtherApproverSignEach = None
+        self._NoEditFlowName = None
+        self._NoEditFlowType = None
+        self._NoEditDeadline = None
+        self._SignComponentConfig = None
+        self._ForbidEditWatermark = None
+        self._HideSignCodeAfterStart = None
+        self._SignAfterStart = None
+        self._PreviewAfterStart = None
 
     @property
     def SelfOrganizationApproverSignEach(self):
-        r"""发起方企业经办人（即签署人为发起方企业员工）是否需要对子合同进行独立的意愿确认
-<ul><li>**false**（默认）：发起方企业经办人签署时对所有子合同进行统一的意愿确认。</li>
-<li>**true**：发起方企业经办人签署时需要对子合同进行独立的意愿确认。</li></ul>
+        r"""<p>发起方企业经办人（即签署人为发起方企业员工）是否需要对子合同进行独立的意愿确认</p><ul><li>**false**（默认）：发起方企业经办人签署时对所有子合同进行统一的意愿确认。</li><li>**true**：发起方企业经办人签署时需要对子合同进行独立的意愿确认。</li></ul>
         :rtype: bool
         """
         return self._SelfOrganizationApproverSignEach
@@ -23794,9 +23839,7 @@ class FlowGroupOptions(AbstractModel):
 
     @property
     def OtherApproverSignEach(self):
-        r"""非发起方企业经办人（即：签署人为个人或者不为发起方企业的员工）是否需要对子合同进行独立的意愿确认
-<ul><li>**false**（默认）：非发起方企业经办人签署时对所有子合同进行统一的意愿确认。</li>
-<li>**true**：非发起方企业经办人签署时需要对子合同进行独立的意愿确认。</li></ul>
+        r"""<p>非发起方企业经办人（即：签署人为个人或者不为发起方企业的员工）是否需要对子合同进行独立的意愿确认</p><ul><li>**false**（默认）：非发起方企业经办人签署时对所有子合同进行统一的意愿确认。</li><li>**true**：非发起方企业经办人签署时需要对子合同进行独立的意愿确认。</li></ul>
         :rtype: bool
         """
         return self._OtherApproverSignEach
@@ -23805,10 +23848,108 @@ class FlowGroupOptions(AbstractModel):
     def OtherApproverSignEach(self, OtherApproverSignEach):
         self._OtherApproverSignEach = OtherApproverSignEach
 
+    @property
+    def NoEditFlowName(self):
+        r"""<p>是否不可编辑合同名称 true-不可编辑 false-可编辑(默认)</p>
+        :rtype: bool
+        """
+        return self._NoEditFlowName
+
+    @NoEditFlowName.setter
+    def NoEditFlowName(self, NoEditFlowName):
+        self._NoEditFlowName = NoEditFlowName
+
+    @property
+    def NoEditFlowType(self):
+        r"""<p>是否不可编辑合同类型 true-不可编辑 false-可编辑(默认)</p>
+        :rtype: bool
+        """
+        return self._NoEditFlowType
+
+    @NoEditFlowType.setter
+    def NoEditFlowType(self, NoEditFlowType):
+        self._NoEditFlowType = NoEditFlowType
+
+    @property
+    def NoEditDeadline(self):
+        r"""<p>是否不可编辑合同截止日期 true-不可编辑 false-可编辑(默认)</p>
+        :rtype: bool
+        """
+        return self._NoEditDeadline
+
+    @NoEditDeadline.setter
+    def NoEditDeadline(self, NoEditDeadline):
+        self._NoEditDeadline = NoEditDeadline
+
+    @property
+    def SignComponentConfig(self):
+        r"""<p>签署控件配置(如是否默认展示日期)，用于嵌入式发起页面配置</p>
+        :rtype: :class:`tencentcloud.essbasic.v20210526.models.SignComponentConfig`
+        """
+        return self._SignComponentConfig
+
+    @SignComponentConfig.setter
+    def SignComponentConfig(self, SignComponentConfig):
+        self._SignComponentConfig = SignComponentConfig
+
+    @property
+    def ForbidEditWatermark(self):
+        r"""<p>是否禁止编辑水印控件属性 true-禁止 false-否(默认)</p>
+        :rtype: bool
+        """
+        return self._ForbidEditWatermark
+
+    @ForbidEditWatermark.setter
+    def ForbidEditWatermark(self, ForbidEditWatermark):
+        self._ForbidEditWatermark = ForbidEditWatermark
+
+    @property
+    def HideSignCodeAfterStart(self):
+        r"""<p>发起成功后是否隐藏签署码 true-隐藏 false-否(默认)</p>
+        :rtype: bool
+        """
+        return self._HideSignCodeAfterStart
+
+    @HideSignCodeAfterStart.setter
+    def HideSignCodeAfterStart(self, HideSignCodeAfterStart):
+        self._HideSignCodeAfterStart = HideSignCodeAfterStart
+
+    @property
+    def SignAfterStart(self):
+        r"""<p>发起成功后是否签署合同,仅当前经办人为签署人时生效 true-展示签署 false-否(默认)</p>
+        :rtype: bool
+        """
+        return self._SignAfterStart
+
+    @SignAfterStart.setter
+    def SignAfterStart(self, SignAfterStart):
+        self._SignAfterStart = SignAfterStart
+
+    @property
+    def PreviewAfterStart(self):
+        r"""<p>发起成功后是否预览合同 true-展示预览按钮 false-否(默认)</p>
+        :rtype: bool
+        """
+        return self._PreviewAfterStart
+
+    @PreviewAfterStart.setter
+    def PreviewAfterStart(self, PreviewAfterStart):
+        self._PreviewAfterStart = PreviewAfterStart
+
 
     def _deserialize(self, params):
         self._SelfOrganizationApproverSignEach = params.get("SelfOrganizationApproverSignEach")
         self._OtherApproverSignEach = params.get("OtherApproverSignEach")
+        self._NoEditFlowName = params.get("NoEditFlowName")
+        self._NoEditFlowType = params.get("NoEditFlowType")
+        self._NoEditDeadline = params.get("NoEditDeadline")
+        if params.get("SignComponentConfig") is not None:
+            self._SignComponentConfig = SignComponentConfig()
+            self._SignComponentConfig._deserialize(params.get("SignComponentConfig"))
+        self._ForbidEditWatermark = params.get("ForbidEditWatermark")
+        self._HideSignCodeAfterStart = params.get("HideSignCodeAfterStart")
+        self._SignAfterStart = params.get("SignAfterStart")
+        self._PreviewAfterStart = params.get("PreviewAfterStart")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

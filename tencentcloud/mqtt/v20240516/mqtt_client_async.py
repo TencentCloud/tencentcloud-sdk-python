@@ -115,6 +115,24 @@ class MqttClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateBlockRule(
+            self,
+            request: models.CreateBlockRuleRequest,
+            opts: Dict = None,
+    ) -> models.CreateBlockRuleResponse:
+        """
+        创建封禁规则
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateBlockRule"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateBlockRuleResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateDeviceIdentity(
             self,
             request: models.CreateDeviceIdentityRequest,
@@ -349,6 +367,24 @@ class MqttClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DeleteBlockRule(
+            self,
+            request: models.DeleteBlockRuleRequest,
+            opts: Dict = None,
+    ) -> models.DeleteBlockRuleResponse:
+        """
+        删除封禁规则
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteBlockRule"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteBlockRuleResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DeleteCaCertificate(
             self,
             request: models.DeleteCaCertificateRequest,
@@ -542,6 +578,24 @@ class MqttClient(AbstractClient):
         kwargs["action"] = "DescribeAuthorizationPolicies"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeAuthorizationPoliciesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeBlockRuleList(
+            self,
+            request: models.DescribeBlockRuleListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeBlockRuleListResponse:
+        """
+        封禁规则列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeBlockRuleList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeBlockRuleListResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -1074,6 +1128,24 @@ class MqttClient(AbstractClient):
         kwargs["action"] = "ModifyAuthorizationPolicy"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ModifyAuthorizationPolicyResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyBlockRule(
+            self,
+            request: models.ModifyBlockRuleRequest,
+            opts: Dict = None,
+    ) -> models.ModifyBlockRuleResponse:
+        """
+        修改封禁规则
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyBlockRule"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyBlockRuleResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

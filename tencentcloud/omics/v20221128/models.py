@@ -1236,6 +1236,115 @@ class DatabaseOption(AbstractModel):
         
 
 
+class DeleteEnvironmentCacheRequest(AbstractModel):
+    r"""DeleteEnvironmentCache请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EnvironmentId: <p>环境ID。</p>
+        :type EnvironmentId: str
+        :param _CacheType: <p>缓存类型</p><p>枚举值：</p><ul><li>RUNTIME： 清理默认缓存卷的运行缓存目录</li><li>INPUT： 清理默认缓存卷的输入缓存目录</li><li>ALL： 清空环境下全部有效缓存卷</li><li>PATH： 指定缓存卷下指定路径，需要在Path中填入实际绝对路径</li></ul>
+        :type CacheType: str
+        :param _Path: <p>指定路径删除</p><p>入参限制：以盘符开头的绝对路径地址</p>
+        :type Path: str
+        """
+        self._EnvironmentId = None
+        self._CacheType = None
+        self._Path = None
+
+    @property
+    def EnvironmentId(self):
+        r"""<p>环境ID。</p>
+        :rtype: str
+        """
+        return self._EnvironmentId
+
+    @EnvironmentId.setter
+    def EnvironmentId(self, EnvironmentId):
+        self._EnvironmentId = EnvironmentId
+
+    @property
+    def CacheType(self):
+        r"""<p>缓存类型</p><p>枚举值：</p><ul><li>RUNTIME： 清理默认缓存卷的运行缓存目录</li><li>INPUT： 清理默认缓存卷的输入缓存目录</li><li>ALL： 清空环境下全部有效缓存卷</li><li>PATH： 指定缓存卷下指定路径，需要在Path中填入实际绝对路径</li></ul>
+        :rtype: str
+        """
+        return self._CacheType
+
+    @CacheType.setter
+    def CacheType(self, CacheType):
+        self._CacheType = CacheType
+
+    @property
+    def Path(self):
+        r"""<p>指定路径删除</p><p>入参限制：以盘符开头的绝对路径地址</p>
+        :rtype: str
+        """
+        return self._Path
+
+    @Path.setter
+    def Path(self, Path):
+        self._Path = Path
+
+
+    def _deserialize(self, params):
+        self._EnvironmentId = params.get("EnvironmentId")
+        self._CacheType = params.get("CacheType")
+        self._Path = params.get("Path")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteEnvironmentCacheResponse(AbstractModel):
+    r"""DeleteEnvironmentCache返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _WorkflowUuid: <p>工作流UUID。</p>
+        :type WorkflowUuid: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._WorkflowUuid = None
+        self._RequestId = None
+
+    @property
+    def WorkflowUuid(self):
+        r"""<p>工作流UUID。</p>
+        :rtype: str
+        """
+        return self._WorkflowUuid
+
+    @WorkflowUuid.setter
+    def WorkflowUuid(self, WorkflowUuid):
+        self._WorkflowUuid = WorkflowUuid
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._WorkflowUuid = params.get("WorkflowUuid")
+        self._RequestId = params.get("RequestId")
+
+
 class DeleteEnvironmentRequest(AbstractModel):
     r"""DeleteEnvironment请求参数结构体
 

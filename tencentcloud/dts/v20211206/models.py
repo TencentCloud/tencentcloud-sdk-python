@@ -16303,24 +16303,27 @@ class Objects(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Mode: 同步对象类型 Partial(部分对象)
+        :param _Mode: <p>同步对象类型 Partial(部分对象)</p>
         :type Mode: str
-        :param _Databases: 同步对象，当 Mode 为 Partial 时，不为空
+        :param _Databases: <p>同步对象，当 Mode 为 Partial 时，不为空</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Databases: list of Database
-        :param _AdvancedObjects: 高级对象类型，如function、procedure。注意：如果要迁移同步高级对象，此配置中应该包含对应的高级对象类型。当需要同步高级对象时，初始化类型必须包含结构初始化类型，即任务的Options.InitType字段值为Structure或Full
+        :param _AdvancedObjects: <p>高级对象类型，如function、procedure。注意：如果要迁移同步高级对象，此配置中应该包含对应的高级对象类型。当需要同步高级对象时，初始化类型必须包含结构初始化类型，即任务的Options.InitType字段值为Structure或Full</p>
         :type AdvancedObjects: list of str
-        :param _DatabasesOpFilter: 库/表/视图级 DML/DDL 白名单
+        :param _OnlineDDL: <p>此字段已废弃。对于临时表的同步应该使用Objects.Databases[n].Tables[n].TmpTables传入。</p>
+        :type OnlineDDL: :class:`tencentcloud.dts.v20211206.models.OnlineDDL`
+        :param _DatabasesOpFilter: <p>库/表/视图级 DML/DDL 白名单</p>
         :type DatabasesOpFilter: list of DBOpFilter
         """
         self._Mode = None
         self._Databases = None
         self._AdvancedObjects = None
+        self._OnlineDDL = None
         self._DatabasesOpFilter = None
 
     @property
     def Mode(self):
-        r"""同步对象类型 Partial(部分对象)
+        r"""<p>同步对象类型 Partial(部分对象)</p>
         :rtype: str
         """
         return self._Mode
@@ -16331,7 +16334,7 @@ class Objects(AbstractModel):
 
     @property
     def Databases(self):
-        r"""同步对象，当 Mode 为 Partial 时，不为空
+        r"""<p>同步对象，当 Mode 为 Partial 时，不为空</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Database
         """
@@ -16343,7 +16346,7 @@ class Objects(AbstractModel):
 
     @property
     def AdvancedObjects(self):
-        r"""高级对象类型，如function、procedure。注意：如果要迁移同步高级对象，此配置中应该包含对应的高级对象类型。当需要同步高级对象时，初始化类型必须包含结构初始化类型，即任务的Options.InitType字段值为Structure或Full
+        r"""<p>高级对象类型，如function、procedure。注意：如果要迁移同步高级对象，此配置中应该包含对应的高级对象类型。当需要同步高级对象时，初始化类型必须包含结构初始化类型，即任务的Options.InitType字段值为Structure或Full</p>
         :rtype: list of str
         """
         return self._AdvancedObjects
@@ -16353,8 +16356,19 @@ class Objects(AbstractModel):
         self._AdvancedObjects = AdvancedObjects
 
     @property
+    def OnlineDDL(self):
+        r"""<p>此字段已废弃。对于临时表的同步应该使用Objects.Databases[n].Tables[n].TmpTables传入。</p>
+        :rtype: :class:`tencentcloud.dts.v20211206.models.OnlineDDL`
+        """
+        return self._OnlineDDL
+
+    @OnlineDDL.setter
+    def OnlineDDL(self, OnlineDDL):
+        self._OnlineDDL = OnlineDDL
+
+    @property
     def DatabasesOpFilter(self):
-        r"""库/表/视图级 DML/DDL 白名单
+        r"""<p>库/表/视图级 DML/DDL 白名单</p>
         :rtype: list of DBOpFilter
         """
         return self._DatabasesOpFilter
@@ -16373,6 +16387,9 @@ class Objects(AbstractModel):
                 obj._deserialize(item)
                 self._Databases.append(obj)
         self._AdvancedObjects = params.get("AdvancedObjects")
+        if params.get("OnlineDDL") is not None:
+            self._OnlineDDL = OnlineDDL()
+            self._OnlineDDL._deserialize(params.get("OnlineDDL"))
         if params.get("DatabasesOpFilter") is not None:
             self._DatabasesOpFilter = []
             for item in params.get("DatabasesOpFilter"):
@@ -16430,6 +16447,42 @@ class OffsetTimeMap(AbstractModel):
     def _deserialize(self, params):
         self._PartitionNo = params.get("PartitionNo")
         self._Offset = params.get("Offset")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class OnlineDDL(AbstractModel):
+    r"""OnlineDDL类型
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Status: 状态，ON-启用，OFF-不启用。
+        :type Status: str
+        """
+        self._Status = None
+
+    @property
+    def Status(self):
+        r"""状态，ON-启用，OFF-不启用。
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+
+    def _deserialize(self, params):
+        self._Status = params.get("Status")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

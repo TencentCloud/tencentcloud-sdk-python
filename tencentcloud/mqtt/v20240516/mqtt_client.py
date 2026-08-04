@@ -141,6 +141,29 @@ class MqttClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateBlockRule(self, request):
+        r"""创建封禁规则
+
+        :param request: Request instance for CreateBlockRule.
+        :type request: :class:`tencentcloud.mqtt.v20240516.models.CreateBlockRuleRequest`
+        :rtype: :class:`tencentcloud.mqtt.v20240516.models.CreateBlockRuleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateBlockRule", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateBlockRuleResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateDeviceIdentity(self, request):
         r"""创建一机一密设备签名
 
@@ -440,6 +463,29 @@ class MqttClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DeleteBlockRule(self, request):
+        r"""删除封禁规则
+
+        :param request: Request instance for DeleteBlockRule.
+        :type request: :class:`tencentcloud.mqtt.v20240516.models.DeleteBlockRuleRequest`
+        :rtype: :class:`tencentcloud.mqtt.v20240516.models.DeleteBlockRuleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteBlockRule", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteBlockRuleResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DeleteCaCertificate(self, request):
         r"""删除Ca证书
 
@@ -684,6 +730,29 @@ class MqttClient(AbstractClient):
             body = self.call("DescribeAuthorizationPolicies", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeAuthorizationPoliciesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeBlockRuleList(self, request):
+        r"""封禁规则列表
+
+        :param request: Request instance for DescribeBlockRuleList.
+        :type request: :class:`tencentcloud.mqtt.v20240516.models.DescribeBlockRuleListRequest`
+        :rtype: :class:`tencentcloud.mqtt.v20240516.models.DescribeBlockRuleListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeBlockRuleList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeBlockRuleListResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1361,6 +1430,29 @@ class MqttClient(AbstractClient):
             body = self.call("ModifyAuthorizationPolicy", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyAuthorizationPolicyResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyBlockRule(self, request):
+        r"""修改封禁规则
+
+        :param request: Request instance for ModifyBlockRule.
+        :type request: :class:`tencentcloud.mqtt.v20240516.models.ModifyBlockRuleRequest`
+        :rtype: :class:`tencentcloud.mqtt.v20240516.models.ModifyBlockRuleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyBlockRule", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyBlockRuleResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

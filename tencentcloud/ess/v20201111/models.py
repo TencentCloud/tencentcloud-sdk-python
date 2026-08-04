@@ -17442,20 +17442,22 @@ class CreatePrepareFlowGroupRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Operator: 执行本接口操作的员工信息。
-注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+        :param _Operator: <p>执行本接口操作的员工信息。<br>注: <code>在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。</code></p>
         :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
-        :param _FlowGroupName: 合同（流程）组名称（可自定义此名称），长度不能超过200，只能由中文、字母、数字和下划线组成。
+        :param _FlowGroupName: <p>合同（流程）组名称（可自定义此名称），长度不能超过200，只能由中文、字母、数字和下划线组成。</p>
         :type FlowGroupName: str
-        :param _FlowGroupInfos: 合同（流程）组的子合同信息，支持2-50个子合同
+        :param _FlowGroupInfos: <p>合同（流程）组的子合同信息，支持2-50个子合同</p>
         :type FlowGroupInfos: list of FlowGroupInfo
-        :param _ResourceType: 资源类型，取值有： <ul><li> **1**：模板</li> <li> **2**：文件</li></ul>
+        :param _ResourceType: <p>资源类型，取值有： <ul><li> <strong>1</strong>：模板</li> <li> <strong>2</strong>：文件</li></ul></p>
         :type ResourceType: int
-        :param _Agent: 代理企业和员工的信息。
-在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
+        :param _Agent: <p>代理企业和员工的信息。<br>在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。</p>
         :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
-        :param _FlowGroupOptions: 合同组发起控制参数，当前仅支持FlowGroupNeedWorkflow，表示开启嵌入式合同组发起审批
+        :param _FlowGroupOptions: <p>合同组发起控制参数，例如FlowGroupNeedWorkflow，表示开启嵌入式合同组发起审批</p>
         :type FlowGroupOptions: :class:`tencentcloud.ess.v20201111.models.FlowGroupOptions`
+        :param _FlowGroupType: <p>合同组类型，发起合同组后会应用到所有子合同</p>
+        :type FlowGroupType: str
+        :param _FlowGroupDeadline: <p>合同组过期时间，发起合同组后会应用到所有子合同</p>
+        :type FlowGroupDeadline: int
         """
         self._Operator = None
         self._FlowGroupName = None
@@ -17463,11 +17465,12 @@ class CreatePrepareFlowGroupRequest(AbstractModel):
         self._ResourceType = None
         self._Agent = None
         self._FlowGroupOptions = None
+        self._FlowGroupType = None
+        self._FlowGroupDeadline = None
 
     @property
     def Operator(self):
-        r"""执行本接口操作的员工信息。
-注: `在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。`
+        r"""<p>执行本接口操作的员工信息。<br>注: <code>在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。</code></p>
         :rtype: :class:`tencentcloud.ess.v20201111.models.UserInfo`
         """
         return self._Operator
@@ -17478,7 +17481,7 @@ class CreatePrepareFlowGroupRequest(AbstractModel):
 
     @property
     def FlowGroupName(self):
-        r"""合同（流程）组名称（可自定义此名称），长度不能超过200，只能由中文、字母、数字和下划线组成。
+        r"""<p>合同（流程）组名称（可自定义此名称），长度不能超过200，只能由中文、字母、数字和下划线组成。</p>
         :rtype: str
         """
         return self._FlowGroupName
@@ -17489,7 +17492,7 @@ class CreatePrepareFlowGroupRequest(AbstractModel):
 
     @property
     def FlowGroupInfos(self):
-        r"""合同（流程）组的子合同信息，支持2-50个子合同
+        r"""<p>合同（流程）组的子合同信息，支持2-50个子合同</p>
         :rtype: list of FlowGroupInfo
         """
         return self._FlowGroupInfos
@@ -17500,7 +17503,7 @@ class CreatePrepareFlowGroupRequest(AbstractModel):
 
     @property
     def ResourceType(self):
-        r"""资源类型，取值有： <ul><li> **1**：模板</li> <li> **2**：文件</li></ul>
+        r"""<p>资源类型，取值有： <ul><li> <strong>1</strong>：模板</li> <li> <strong>2</strong>：文件</li></ul></p>
         :rtype: int
         """
         return self._ResourceType
@@ -17511,8 +17514,7 @@ class CreatePrepareFlowGroupRequest(AbstractModel):
 
     @property
     def Agent(self):
-        r"""代理企业和员工的信息。
-在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
+        r"""<p>代理企业和员工的信息。<br>在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。</p>
         :rtype: :class:`tencentcloud.ess.v20201111.models.Agent`
         """
         return self._Agent
@@ -17523,7 +17525,7 @@ class CreatePrepareFlowGroupRequest(AbstractModel):
 
     @property
     def FlowGroupOptions(self):
-        r"""合同组发起控制参数，当前仅支持FlowGroupNeedWorkflow，表示开启嵌入式合同组发起审批
+        r"""<p>合同组发起控制参数，例如FlowGroupNeedWorkflow，表示开启嵌入式合同组发起审批</p>
         :rtype: :class:`tencentcloud.ess.v20201111.models.FlowGroupOptions`
         """
         return self._FlowGroupOptions
@@ -17531,6 +17533,28 @@ class CreatePrepareFlowGroupRequest(AbstractModel):
     @FlowGroupOptions.setter
     def FlowGroupOptions(self, FlowGroupOptions):
         self._FlowGroupOptions = FlowGroupOptions
+
+    @property
+    def FlowGroupType(self):
+        r"""<p>合同组类型，发起合同组后会应用到所有子合同</p>
+        :rtype: str
+        """
+        return self._FlowGroupType
+
+    @FlowGroupType.setter
+    def FlowGroupType(self, FlowGroupType):
+        self._FlowGroupType = FlowGroupType
+
+    @property
+    def FlowGroupDeadline(self):
+        r"""<p>合同组过期时间，发起合同组后会应用到所有子合同</p>
+        :rtype: int
+        """
+        return self._FlowGroupDeadline
+
+    @FlowGroupDeadline.setter
+    def FlowGroupDeadline(self, FlowGroupDeadline):
+        self._FlowGroupDeadline = FlowGroupDeadline
 
 
     def _deserialize(self, params):
@@ -17551,6 +17575,8 @@ class CreatePrepareFlowGroupRequest(AbstractModel):
         if params.get("FlowGroupOptions") is not None:
             self._FlowGroupOptions = FlowGroupOptions()
             self._FlowGroupOptions._deserialize(params.get("FlowGroupOptions"))
+        self._FlowGroupType = params.get("FlowGroupType")
+        self._FlowGroupDeadline = params.get("FlowGroupDeadline")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -17568,9 +17594,9 @@ class CreatePrepareFlowGroupResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _FlowGroupId: 合同(流程)组的合同组Id
+        :param _FlowGroupId: <p>合同(流程)组的合同组Id</p>
         :type FlowGroupId: str
-        :param _PrepareUrl: 嵌入式合同组发起链接
+        :param _PrepareUrl: <p>嵌入式合同组发起链接</p>
         :type PrepareUrl: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -17581,7 +17607,7 @@ class CreatePrepareFlowGroupResponse(AbstractModel):
 
     @property
     def FlowGroupId(self):
-        r"""合同(流程)组的合同组Id
+        r"""<p>合同(流程)组的合同组Id</p>
         :rtype: str
         """
         return self._FlowGroupId
@@ -17592,7 +17618,7 @@ class CreatePrepareFlowGroupResponse(AbstractModel):
 
     @property
     def PrepareUrl(self):
-        r"""嵌入式合同组发起链接
+        r"""<p>嵌入式合同组发起链接</p>
         :rtype: str
         """
         return self._PrepareUrl
@@ -34798,33 +34824,47 @@ class FlowGroupOptions(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ApproverVerifyType: 签署人校验方式,支持以下类型
-<ul><li>VerifyCheck : 人脸识别 (默认值)</li>
-<li>MobileCheck : 手机号验证</li></ul>
-参数说明：此参数仅在合同组文件发起有效，可选人脸识别或手机号验证两种方式，若选择后者，未实名个人签署方在签署合同时，无需经过实名认证和意愿确认两次人脸识别，该能力仅适用于个人签署方。
+        :param _ApproverVerifyType: <p>签署人校验方式,支持以下类型</p><ul><li>VerifyCheck : 人脸识别 (默认值)</li><li>MobileCheck : 手机号验证</li></ul>参数说明：此参数仅在合同组文件发起有效，可选人脸识别或手机号验证两种方式，若选择后者，未实名个人签署方在签署合同时，无需经过实名认证和意愿确认两次人脸识别，该能力仅适用于个人签署方。
         :type ApproverVerifyType: str
-        :param _SelfOrganizationApproverNotifyType: 发起合同（流程）组本方企业经办人通知方式
-签署通知类型，支持以下类型
-<ul><li>sms : 短信 (默认值)</li><li>none : 不通知</li></ul>
+        :param _SelfOrganizationApproverNotifyType: <p>发起合同（流程）组本方企业经办人通知方式<br>签署通知类型，支持以下类型</p><ul><li>sms : 短信 (默认值)</li><li>none : 不通知</li></ul>
         :type SelfOrganizationApproverNotifyType: str
-        :param _OtherApproverNotifyType: 发起合同（流程）组他方经办人通知方式
-签署通知类型，支持以下类型
-<ul><li>sms : 短信 (默认值)</li><li>none : 不通知</li></ul>
+        :param _OtherApproverNotifyType: <p>发起合同（流程）组他方经办人通知方式<br>签署通知类型，支持以下类型</p><ul><li>sms : 短信 (默认值)</li><li>none : 不通知</li></ul>
         :type OtherApproverNotifyType: str
-        :param _FlowGroupNeedWorkflow: 是否开启发起合同组的发起审批，默认：false(不开启)，开启后，发起合同组会提交电子签内置审批流
+        :param _FlowGroupNeedWorkflow: <p>是否开启发起合同组的发起审批，默认：false(不开启)，开启后，发起合同组会提交电子签内置审批流</p>
         :type FlowGroupNeedWorkflow: bool
+        :param _NoEditFlowName: <p>是否不可编辑合同名称 true-不可编辑 false-可编辑(默认)</p>
+        :type NoEditFlowName: bool
+        :param _NoEditFlowType: <p>是否不可编辑合同类型 true-不可编辑 false-可编辑(默认)</p>
+        :type NoEditFlowType: bool
+        :param _NoEditDeadline: <p>是否不可编辑合同截止日期 true-不可编辑 false-可编辑(默认)</p>
+        :type NoEditDeadline: bool
+        :param _SignComponentConfig: <p>签署控件配置(如是否默认展示日期)，用于嵌入式发起页面配置</p>
+        :type SignComponentConfig: :class:`tencentcloud.ess.v20201111.models.SignComponentConfig`
+        :param _ForbidEditWatermark: <p>是否禁止编辑水印控件属性 true-禁止 false-否(默认)</p>
+        :type ForbidEditWatermark: bool
+        :param _HideSignCodeAfterStart: <p>发起成功后是否隐藏签署码 true-隐藏 false-否(默认)</p>
+        :type HideSignCodeAfterStart: bool
+        :param _SignAfterStart: <p>发起成功后是否签署合同,仅当前经办人为签署人时生效 true-展示签署 false-否(默认)</p>
+        :type SignAfterStart: bool
+        :param _PreviewAfterStart: <p>发起成功后是否预览合同 true-展示预览按钮 false-否(默认)</p>
+        :type PreviewAfterStart: bool
         """
         self._ApproverVerifyType = None
         self._SelfOrganizationApproverNotifyType = None
         self._OtherApproverNotifyType = None
         self._FlowGroupNeedWorkflow = None
+        self._NoEditFlowName = None
+        self._NoEditFlowType = None
+        self._NoEditDeadline = None
+        self._SignComponentConfig = None
+        self._ForbidEditWatermark = None
+        self._HideSignCodeAfterStart = None
+        self._SignAfterStart = None
+        self._PreviewAfterStart = None
 
     @property
     def ApproverVerifyType(self):
-        r"""签署人校验方式,支持以下类型
-<ul><li>VerifyCheck : 人脸识别 (默认值)</li>
-<li>MobileCheck : 手机号验证</li></ul>
-参数说明：此参数仅在合同组文件发起有效，可选人脸识别或手机号验证两种方式，若选择后者，未实名个人签署方在签署合同时，无需经过实名认证和意愿确认两次人脸识别，该能力仅适用于个人签署方。
+        r"""<p>签署人校验方式,支持以下类型</p><ul><li>VerifyCheck : 人脸识别 (默认值)</li><li>MobileCheck : 手机号验证</li></ul>参数说明：此参数仅在合同组文件发起有效，可选人脸识别或手机号验证两种方式，若选择后者，未实名个人签署方在签署合同时，无需经过实名认证和意愿确认两次人脸识别，该能力仅适用于个人签署方。
         :rtype: str
         """
         return self._ApproverVerifyType
@@ -34835,9 +34875,7 @@ class FlowGroupOptions(AbstractModel):
 
     @property
     def SelfOrganizationApproverNotifyType(self):
-        r"""发起合同（流程）组本方企业经办人通知方式
-签署通知类型，支持以下类型
-<ul><li>sms : 短信 (默认值)</li><li>none : 不通知</li></ul>
+        r"""<p>发起合同（流程）组本方企业经办人通知方式<br>签署通知类型，支持以下类型</p><ul><li>sms : 短信 (默认值)</li><li>none : 不通知</li></ul>
         :rtype: str
         """
         return self._SelfOrganizationApproverNotifyType
@@ -34848,9 +34886,7 @@ class FlowGroupOptions(AbstractModel):
 
     @property
     def OtherApproverNotifyType(self):
-        r"""发起合同（流程）组他方经办人通知方式
-签署通知类型，支持以下类型
-<ul><li>sms : 短信 (默认值)</li><li>none : 不通知</li></ul>
+        r"""<p>发起合同（流程）组他方经办人通知方式<br>签署通知类型，支持以下类型</p><ul><li>sms : 短信 (默认值)</li><li>none : 不通知</li></ul>
         :rtype: str
         """
         return self._OtherApproverNotifyType
@@ -34861,7 +34897,7 @@ class FlowGroupOptions(AbstractModel):
 
     @property
     def FlowGroupNeedWorkflow(self):
-        r"""是否开启发起合同组的发起审批，默认：false(不开启)，开启后，发起合同组会提交电子签内置审批流
+        r"""<p>是否开启发起合同组的发起审批，默认：false(不开启)，开启后，发起合同组会提交电子签内置审批流</p>
         :rtype: bool
         """
         return self._FlowGroupNeedWorkflow
@@ -34870,12 +34906,110 @@ class FlowGroupOptions(AbstractModel):
     def FlowGroupNeedWorkflow(self, FlowGroupNeedWorkflow):
         self._FlowGroupNeedWorkflow = FlowGroupNeedWorkflow
 
+    @property
+    def NoEditFlowName(self):
+        r"""<p>是否不可编辑合同名称 true-不可编辑 false-可编辑(默认)</p>
+        :rtype: bool
+        """
+        return self._NoEditFlowName
+
+    @NoEditFlowName.setter
+    def NoEditFlowName(self, NoEditFlowName):
+        self._NoEditFlowName = NoEditFlowName
+
+    @property
+    def NoEditFlowType(self):
+        r"""<p>是否不可编辑合同类型 true-不可编辑 false-可编辑(默认)</p>
+        :rtype: bool
+        """
+        return self._NoEditFlowType
+
+    @NoEditFlowType.setter
+    def NoEditFlowType(self, NoEditFlowType):
+        self._NoEditFlowType = NoEditFlowType
+
+    @property
+    def NoEditDeadline(self):
+        r"""<p>是否不可编辑合同截止日期 true-不可编辑 false-可编辑(默认)</p>
+        :rtype: bool
+        """
+        return self._NoEditDeadline
+
+    @NoEditDeadline.setter
+    def NoEditDeadline(self, NoEditDeadline):
+        self._NoEditDeadline = NoEditDeadline
+
+    @property
+    def SignComponentConfig(self):
+        r"""<p>签署控件配置(如是否默认展示日期)，用于嵌入式发起页面配置</p>
+        :rtype: :class:`tencentcloud.ess.v20201111.models.SignComponentConfig`
+        """
+        return self._SignComponentConfig
+
+    @SignComponentConfig.setter
+    def SignComponentConfig(self, SignComponentConfig):
+        self._SignComponentConfig = SignComponentConfig
+
+    @property
+    def ForbidEditWatermark(self):
+        r"""<p>是否禁止编辑水印控件属性 true-禁止 false-否(默认)</p>
+        :rtype: bool
+        """
+        return self._ForbidEditWatermark
+
+    @ForbidEditWatermark.setter
+    def ForbidEditWatermark(self, ForbidEditWatermark):
+        self._ForbidEditWatermark = ForbidEditWatermark
+
+    @property
+    def HideSignCodeAfterStart(self):
+        r"""<p>发起成功后是否隐藏签署码 true-隐藏 false-否(默认)</p>
+        :rtype: bool
+        """
+        return self._HideSignCodeAfterStart
+
+    @HideSignCodeAfterStart.setter
+    def HideSignCodeAfterStart(self, HideSignCodeAfterStart):
+        self._HideSignCodeAfterStart = HideSignCodeAfterStart
+
+    @property
+    def SignAfterStart(self):
+        r"""<p>发起成功后是否签署合同,仅当前经办人为签署人时生效 true-展示签署 false-否(默认)</p>
+        :rtype: bool
+        """
+        return self._SignAfterStart
+
+    @SignAfterStart.setter
+    def SignAfterStart(self, SignAfterStart):
+        self._SignAfterStart = SignAfterStart
+
+    @property
+    def PreviewAfterStart(self):
+        r"""<p>发起成功后是否预览合同 true-展示预览按钮 false-否(默认)</p>
+        :rtype: bool
+        """
+        return self._PreviewAfterStart
+
+    @PreviewAfterStart.setter
+    def PreviewAfterStart(self, PreviewAfterStart):
+        self._PreviewAfterStart = PreviewAfterStart
+
 
     def _deserialize(self, params):
         self._ApproverVerifyType = params.get("ApproverVerifyType")
         self._SelfOrganizationApproverNotifyType = params.get("SelfOrganizationApproverNotifyType")
         self._OtherApproverNotifyType = params.get("OtherApproverNotifyType")
         self._FlowGroupNeedWorkflow = params.get("FlowGroupNeedWorkflow")
+        self._NoEditFlowName = params.get("NoEditFlowName")
+        self._NoEditFlowType = params.get("NoEditFlowType")
+        self._NoEditDeadline = params.get("NoEditDeadline")
+        if params.get("SignComponentConfig") is not None:
+            self._SignComponentConfig = SignComponentConfig()
+            self._SignComponentConfig._deserialize(params.get("SignComponentConfig"))
+        self._ForbidEditWatermark = params.get("ForbidEditWatermark")
+        self._HideSignCodeAfterStart = params.get("HideSignCodeAfterStart")
+        self._SignAfterStart = params.get("SignAfterStart")
+        self._PreviewAfterStart = params.get("PreviewAfterStart")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

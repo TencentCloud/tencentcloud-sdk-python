@@ -711,6 +711,147 @@ class AuthorizationPolicyPriority(AbstractModel):
         
 
 
+class BlockRuleItem(AbstractModel):
+    r"""MQTT集群用户信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: <p>封禁策略名</p>
+        :type Name: str
+        :param _Type: <p>封禁策略类型</p>
+        :type Type: int
+        :param _Remark: <p>备注信息</p>
+        :type Remark: str
+        :param _Include: <p>包含规则</p>
+        :type Include: str
+        :param _Excludes: <p>排除规则</p>
+        :type Excludes: list of str
+        :param _ExpireTime: <p>过期时间，毫秒级时间戳 。</p>
+        :type ExpireTime: int
+        :param _UpdateTime: <p>修改时间，毫秒级时间戳 。</p>
+        :type UpdateTime: int
+        :param _CreateTime: <p>创建时间，毫秒级时间戳 。</p>
+        :type CreateTime: int
+        """
+        self._Name = None
+        self._Type = None
+        self._Remark = None
+        self._Include = None
+        self._Excludes = None
+        self._ExpireTime = None
+        self._UpdateTime = None
+        self._CreateTime = None
+
+    @property
+    def Name(self):
+        r"""<p>封禁策略名</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Type(self):
+        r"""<p>封禁策略类型</p>
+        :rtype: int
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Remark(self):
+        r"""<p>备注信息</p>
+        :rtype: str
+        """
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+    @property
+    def Include(self):
+        r"""<p>包含规则</p>
+        :rtype: str
+        """
+        return self._Include
+
+    @Include.setter
+    def Include(self, Include):
+        self._Include = Include
+
+    @property
+    def Excludes(self):
+        r"""<p>排除规则</p>
+        :rtype: list of str
+        """
+        return self._Excludes
+
+    @Excludes.setter
+    def Excludes(self, Excludes):
+        self._Excludes = Excludes
+
+    @property
+    def ExpireTime(self):
+        r"""<p>过期时间，毫秒级时间戳 。</p>
+        :rtype: int
+        """
+        return self._ExpireTime
+
+    @ExpireTime.setter
+    def ExpireTime(self, ExpireTime):
+        self._ExpireTime = ExpireTime
+
+    @property
+    def UpdateTime(self):
+        r"""<p>修改时间，毫秒级时间戳 。</p>
+        :rtype: int
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def CreateTime(self):
+        r"""<p>创建时间，毫秒级时间戳 。</p>
+        :rtype: int
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Type = params.get("Type")
+        self._Remark = params.get("Remark")
+        self._Include = params.get("Include")
+        self._Excludes = params.get("Excludes")
+        self._ExpireTime = params.get("ExpireTime")
+        self._UpdateTime = params.get("UpdateTime")
+        self._CreateTime = params.get("CreateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class BodyItem(AbstractModel):
     r"""HTTP 认证器body
 
@@ -1285,6 +1426,196 @@ class CreateAuthorizationPolicyResponse(AbstractModel):
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
         self._Id = params.get("Id")
+        self._RequestId = params.get("RequestId")
+
+
+class CreateBlockRuleRequest(AbstractModel):
+    r"""CreateBlockRule请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
+        :type InstanceId: str
+        :param _Name: 封禁规则名，不可重复，只支持数字字母中划线
+        :type Name: str
+        :param _Type: 封禁规则类型
+    CLIENT_ID(1), 默认值
+    USERNAME(2),
+    IP_ADDRESS(3);
+        :type Type: int
+        :param _Include: 包含表达式支持*（多个字符）和？（一个字符）
+        :type Include: str
+        :param _Excludes: 排除表达式支持*（多个字符）和？（一个字符），最多三条。
+        :type Excludes: list of str
+        :param _ExpireTime: 过期时间，毫秒级时间戳
+        :type ExpireTime: int
+        :param _Remark: 备注，最长 128 字符
+        :type Remark: str
+        """
+        self._InstanceId = None
+        self._Name = None
+        self._Type = None
+        self._Include = None
+        self._Excludes = None
+        self._ExpireTime = None
+        self._Remark = None
+
+    @property
+    def InstanceId(self):
+        r"""腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Name(self):
+        r"""封禁规则名，不可重复，只支持数字字母中划线
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Type(self):
+        r"""封禁规则类型
+    CLIENT_ID(1), 默认值
+    USERNAME(2),
+    IP_ADDRESS(3);
+        :rtype: int
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Include(self):
+        r"""包含表达式支持*（多个字符）和？（一个字符）
+        :rtype: str
+        """
+        return self._Include
+
+    @Include.setter
+    def Include(self, Include):
+        self._Include = Include
+
+    @property
+    def Excludes(self):
+        r"""排除表达式支持*（多个字符）和？（一个字符），最多三条。
+        :rtype: list of str
+        """
+        return self._Excludes
+
+    @Excludes.setter
+    def Excludes(self, Excludes):
+        self._Excludes = Excludes
+
+    @property
+    def ExpireTime(self):
+        r"""过期时间，毫秒级时间戳
+        :rtype: int
+        """
+        return self._ExpireTime
+
+    @ExpireTime.setter
+    def ExpireTime(self, ExpireTime):
+        self._ExpireTime = ExpireTime
+
+    @property
+    def Remark(self):
+        r"""备注，最长 128 字符
+        :rtype: str
+        """
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._Name = params.get("Name")
+        self._Type = params.get("Type")
+        self._Include = params.get("Include")
+        self._Excludes = params.get("Excludes")
+        self._ExpireTime = params.get("ExpireTime")
+        self._Remark = params.get("Remark")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateBlockRuleResponse(AbstractModel):
+    r"""CreateBlockRule返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例ID
+        :type InstanceId: str
+        :param _Name: 封禁规则名
+        :type Name: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._InstanceId = None
+        self._Name = None
+        self._RequestId = None
+
+    @property
+    def InstanceId(self):
+        r"""实例ID
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Name(self):
+        r"""封禁规则名
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._Name = params.get("Name")
         self._RequestId = params.get("RequestId")
 
 
@@ -3141,6 +3472,85 @@ class DeleteAuthorizationPolicyResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DeleteBlockRuleRequest(AbstractModel):
+    r"""DeleteBlockRule请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例ID
+        :type InstanceId: str
+        :param _BlockRuleName: 封禁规则名
+        :type BlockRuleName: str
+        """
+        self._InstanceId = None
+        self._BlockRuleName = None
+
+    @property
+    def InstanceId(self):
+        r"""实例ID
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def BlockRuleName(self):
+        r"""封禁规则名
+        :rtype: str
+        """
+        return self._BlockRuleName
+
+    @BlockRuleName.setter
+    def BlockRuleName(self, BlockRuleName):
+        self._BlockRuleName = BlockRuleName
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._BlockRuleName = params.get("BlockRuleName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteBlockRuleResponse(AbstractModel):
+    r"""DeleteBlockRule返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class DeleteCaCertificateRequest(AbstractModel):
     r"""DeleteCaCertificate请求参数结构体
 
@@ -4021,6 +4431,105 @@ class DescribeAuthorizationPoliciesResponse(AbstractModel):
             self._Data = []
             for item in params.get("Data"):
                 obj = AuthorizationPolicyItem()
+                obj._deserialize(item)
+                self._Data.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeBlockRuleListRequest(AbstractModel):
+    r"""DescribeBlockRuleList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
+        :type InstanceId: str
+        """
+        self._InstanceId = None
+
+    @property
+    def InstanceId(self):
+        r"""实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeBlockRuleListResponse(AbstractModel):
+    r"""DescribeBlockRuleList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 总数
+        :type TotalCount: int
+        :param _Data: 封禁规则列表
+        :type Data: list of BlockRuleItem
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        r"""总数
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def Data(self):
+        r"""封禁规则列表
+        :rtype: list of BlockRuleItem
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("Data") is not None:
+            self._Data = []
+            for item in params.get("Data"):
+                obj = BlockRuleItem()
                 obj._deserialize(item)
                 self._Data.append(obj)
         self._RequestId = params.get("RequestId")
@@ -11802,6 +12311,145 @@ sub：订阅
 
 class ModifyAuthorizationPolicyResponse(AbstractModel):
     r"""ModifyAuthorizationPolicy返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyBlockRuleRequest(AbstractModel):
+    r"""ModifyBlockRule请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
+        :type InstanceId: str
+        :param _Name: 待修改的封禁规则名
+        :type Name: str
+        :param _Include: 包含表达式支持*（多个字符）和？（一个字符）
+        :type Include: str
+        :param _Excludes: 排除表达式支持*（多个字符）和？（一个字符），最多三条。
+        :type Excludes: list of str
+        :param _ExpireTime: 过期时间，毫秒级时间戳
+        :type ExpireTime: int
+        :param _Remark: 备注，最长 128 字符
+        :type Remark: str
+        """
+        self._InstanceId = None
+        self._Name = None
+        self._Include = None
+        self._Excludes = None
+        self._ExpireTime = None
+        self._Remark = None
+
+    @property
+    def InstanceId(self):
+        r"""腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Name(self):
+        r"""待修改的封禁规则名
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Include(self):
+        r"""包含表达式支持*（多个字符）和？（一个字符）
+        :rtype: str
+        """
+        return self._Include
+
+    @Include.setter
+    def Include(self, Include):
+        self._Include = Include
+
+    @property
+    def Excludes(self):
+        r"""排除表达式支持*（多个字符）和？（一个字符），最多三条。
+        :rtype: list of str
+        """
+        return self._Excludes
+
+    @Excludes.setter
+    def Excludes(self, Excludes):
+        self._Excludes = Excludes
+
+    @property
+    def ExpireTime(self):
+        r"""过期时间，毫秒级时间戳
+        :rtype: int
+        """
+        return self._ExpireTime
+
+    @ExpireTime.setter
+    def ExpireTime(self, ExpireTime):
+        self._ExpireTime = ExpireTime
+
+    @property
+    def Remark(self):
+        r"""备注，最长 128 字符
+        :rtype: str
+        """
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._Name = params.get("Name")
+        self._Include = params.get("Include")
+        self._Excludes = params.get("Excludes")
+        self._ExpireTime = params.get("ExpireTime")
+        self._Remark = params.get("Remark")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyBlockRuleResponse(AbstractModel):
+    r"""ModifyBlockRule返回参数结构体
 
     """
 

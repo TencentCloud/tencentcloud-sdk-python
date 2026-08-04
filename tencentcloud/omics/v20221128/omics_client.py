@@ -95,6 +95,29 @@ class OmicsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DeleteEnvironmentCache(self, request):
+        r"""删除环境缓存。
+
+        :param request: Request instance for DeleteEnvironmentCache.
+        :type request: :class:`tencentcloud.omics.v20221128.models.DeleteEnvironmentCacheRequest`
+        :rtype: :class:`tencentcloud.omics.v20221128.models.DeleteEnvironmentCacheResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteEnvironmentCache", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteEnvironmentCacheResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DeleteVolume(self, request):
         r"""删除缓存卷。
 

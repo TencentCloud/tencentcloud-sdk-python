@@ -1105,8 +1105,10 @@ class QueryHunyuan3DPartJobResponse(AbstractModel):
         :type ErrorMessage: str
         :param _ResultFile3Ds: <p>生成文件的URL地址，有效期1天。</p>
         :type ResultFile3Ds: list of File3D
-        :param _PartSegmentationInfo: <p>是否分步骤进行组件生成；<br>开启后，输入原始模型后，可生成带分割信息的模型以及分割数据，可对此信息编辑后再传入带有分割信息的模型和分割数据进行编辑后的组件生成；<br>此参数默认关闭。</p>
+        :param _PartSegmentationInfo: <p>是否分步骤进行组件生成；<br>开启后，输入原始模型后，可生成带分割信息的模型以及分割数据，可对此信息编辑后再传入带有分割信息的模型和分割数据进行编辑后的组件生成；<br>此参数默认关闭。</p><p>该参数废弃， 超过 9MB 不返回， 请使用 PartSegmentationInfoUrl 下载</p>
         :type PartSegmentationInfo: str
+        :param _PartSegmentationInfoUrl: <p>PartSegmentationInfo 下载地址</p>
+        :type PartSegmentationInfoUrl: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1115,6 +1117,7 @@ class QueryHunyuan3DPartJobResponse(AbstractModel):
         self._ErrorMessage = None
         self._ResultFile3Ds = None
         self._PartSegmentationInfo = None
+        self._PartSegmentationInfoUrl = None
         self._RequestId = None
 
     @property
@@ -1163,7 +1166,7 @@ class QueryHunyuan3DPartJobResponse(AbstractModel):
 
     @property
     def PartSegmentationInfo(self):
-        r"""<p>是否分步骤进行组件生成；<br>开启后，输入原始模型后，可生成带分割信息的模型以及分割数据，可对此信息编辑后再传入带有分割信息的模型和分割数据进行编辑后的组件生成；<br>此参数默认关闭。</p>
+        r"""<p>是否分步骤进行组件生成；<br>开启后，输入原始模型后，可生成带分割信息的模型以及分割数据，可对此信息编辑后再传入带有分割信息的模型和分割数据进行编辑后的组件生成；<br>此参数默认关闭。</p><p>该参数废弃， 超过 9MB 不返回， 请使用 PartSegmentationInfoUrl 下载</p>
         :rtype: str
         """
         return self._PartSegmentationInfo
@@ -1171,6 +1174,17 @@ class QueryHunyuan3DPartJobResponse(AbstractModel):
     @PartSegmentationInfo.setter
     def PartSegmentationInfo(self, PartSegmentationInfo):
         self._PartSegmentationInfo = PartSegmentationInfo
+
+    @property
+    def PartSegmentationInfoUrl(self):
+        r"""<p>PartSegmentationInfo 下载地址</p>
+        :rtype: str
+        """
+        return self._PartSegmentationInfoUrl
+
+    @PartSegmentationInfoUrl.setter
+    def PartSegmentationInfoUrl(self, PartSegmentationInfoUrl):
+        self._PartSegmentationInfoUrl = PartSegmentationInfoUrl
 
     @property
     def RequestId(self):
@@ -1195,6 +1209,7 @@ class QueryHunyuan3DPartJobResponse(AbstractModel):
                 obj._deserialize(item)
                 self._ResultFile3Ds.append(obj)
         self._PartSegmentationInfo = params.get("PartSegmentationInfo")
+        self._PartSegmentationInfoUrl = params.get("PartSegmentationInfoUrl")
         self._RequestId = params.get("RequestId")
 
 
@@ -1595,13 +1610,16 @@ class SubmitHunyuan3DPartJobRequest(AbstractModel):
         :type Model: str
         :param _PartSegmentationInfo: <p>是否分步骤进行组件生成；<br>开启后，输入原始模型后，可生成带分割信息的模型以及分割数据，可对此信息编辑后再传入带有分割信息的模型和分割数据进行编辑后的组件生成；<br>此参数默认关闭。</p>
         :type PartSegmentationInfo: str
-        :param _EnableStagedGeneration: <p>是否开启后处理，开启后将只输出一个模型链接，默认关闭。 （开启此接口后，需额外增加20积分）</p>
+        :param _EnableStagedGeneration: <p>是否分步骤进行组件生成；<br>开启后，输入原始模型后，可生成带分割信息的模型以及分割数据，可对此信息编辑后再传入带有分割信息的模型和分割数据进行编辑后的组件生成；<br>此参数默认关闭。</p>
         :type EnableStagedGeneration: bool
+        :param _EnablePostProcess: <p>是否开启后处理，开启后将只输出一个模型链接，默认关闭。 （开启此接口后，需额外增加20积分）</p>
+        :type EnablePostProcess: bool
         """
         self._File = None
         self._Model = None
         self._PartSegmentationInfo = None
         self._EnableStagedGeneration = None
+        self._EnablePostProcess = None
 
     @property
     def File(self):
@@ -1638,7 +1656,7 @@ class SubmitHunyuan3DPartJobRequest(AbstractModel):
 
     @property
     def EnableStagedGeneration(self):
-        r"""<p>是否开启后处理，开启后将只输出一个模型链接，默认关闭。 （开启此接口后，需额外增加20积分）</p>
+        r"""<p>是否分步骤进行组件生成；<br>开启后，输入原始模型后，可生成带分割信息的模型以及分割数据，可对此信息编辑后再传入带有分割信息的模型和分割数据进行编辑后的组件生成；<br>此参数默认关闭。</p>
         :rtype: bool
         """
         return self._EnableStagedGeneration
@@ -1646,6 +1664,17 @@ class SubmitHunyuan3DPartJobRequest(AbstractModel):
     @EnableStagedGeneration.setter
     def EnableStagedGeneration(self, EnableStagedGeneration):
         self._EnableStagedGeneration = EnableStagedGeneration
+
+    @property
+    def EnablePostProcess(self):
+        r"""<p>是否开启后处理，开启后将只输出一个模型链接，默认关闭。 （开启此接口后，需额外增加20积分）</p>
+        :rtype: bool
+        """
+        return self._EnablePostProcess
+
+    @EnablePostProcess.setter
+    def EnablePostProcess(self, EnablePostProcess):
+        self._EnablePostProcess = EnablePostProcess
 
 
     def _deserialize(self, params):
@@ -1655,6 +1684,7 @@ class SubmitHunyuan3DPartJobRequest(AbstractModel):
         self._Model = params.get("Model")
         self._PartSegmentationInfo = params.get("PartSegmentationInfo")
         self._EnableStagedGeneration = params.get("EnableStagedGeneration")
+        self._EnablePostProcess = params.get("EnablePostProcess")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

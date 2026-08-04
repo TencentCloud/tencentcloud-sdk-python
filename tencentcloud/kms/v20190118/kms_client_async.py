@@ -1088,6 +1088,24 @@ class KmsClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def RotateKey(
+            self,
+            request: models.RotateKeyRequest,
+            opts: Dict = None,
+    ) -> models.RotateKeyResponse:
+        """
+        对指定的CMK（用户主密钥）执行立即轮转操作。可以通过调用DescribeKey，返回上次轮转时间和下次轮转时间，判断是否轮转成功。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "RotateKey"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.RotateKeyResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ScheduleDataKeyDeletion(
             self,
             request: models.ScheduleDataKeyDeletionRequest,

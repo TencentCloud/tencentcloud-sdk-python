@@ -17837,46 +17837,45 @@ class CreateVpnConnectionRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _VpnGatewayId: VPN网关实例ID。
+        :param _VpnGatewayId: <p>VPN网关实例ID。</p>
         :type VpnGatewayId: str
-        :param _CustomerGatewayId: 对端网关ID。例如：cgw-2wqq41m9，可通过[DescribeCustomerGateways](https://cloud.tencent.com/document/product/215/17516)接口查询对端网关。
+        :param _CustomerGatewayId: <p>对端网关ID。例如：cgw-2wqq41m9，可通过<a href="https://cloud.tencent.com/document/product/215/17516">DescribeCustomerGateways</a>接口查询对端网关。</p>
         :type CustomerGatewayId: str
-        :param _VpnConnectionName: 通道名称，可任意命名，但不得超过60个字符。
+        :param _VpnConnectionName: <p>通道名称，可任意命名，但不得超过60个字符。</p>
         :type VpnConnectionName: str
-        :param _PreShareKey: 预共享密钥。
+        :param _PreShareKey: <p>预共享密钥。</p>
         :type PreShareKey: str
-        :param _VpcId: VPC实例ID。可通过[DescribeVpcs](https://cloud.tencent.com/document/product/215/15778)接口返回值中的VpcId获取。
-CCN VPN 形的通道 可以不传VPCID
+        :param _VpcId: <p>VPC实例ID。VPC类型网关可通过<a href="https://cloud.tencent.com/document/product/215/15778">DescribeVpcs</a>接口返回值中的VpcId获取，CCN类型网关传空值即可。</p>
         :type VpcId: str
-        :param _SecurityPolicyDatabases: SPD策略组，例如：{"10.0.0.5/24":["172.123.10.5/16"]}，10.0.0.5/24是vpc内网段172.123.10.5/16是IDC网段。用户指定VPC内哪些网段可以和您IDC中哪些网段通信。
+        :param _SecurityPolicyDatabases: <p>SPD策略组，例如：{&quot;10.0.0.5/24&quot;:[&quot;172.123.10.5/16&quot;]}，10.0.0.5/24是vpc内网段172.123.10.5/16是IDC网段。用户指定VPC内哪些网段可以和您IDC中哪些网段通信。</p>
         :type SecurityPolicyDatabases: list of SecurityPolicyDatabase
-        :param _IKEOptionsSpecification: IKE配置（Internet Key Exchange，因特网密钥交换），IKE具有一套自我保护机制，用户配置网络安全协议
+        :param _IKEOptionsSpecification: <p>IKE配置（Internet Key Exchange，因特网密钥交换），IKE具有一套自我保护机制，用户配置网络安全协议</p>
         :type IKEOptionsSpecification: :class:`tencentcloud.vpc.v20170312.models.IKEOptionsSpecification`
-        :param _IPSECOptionsSpecification: IPSec配置，腾讯云提供IPSec安全会话设置
+        :param _IPSECOptionsSpecification: <p>IPSec配置，腾讯云提供IPSec安全会话设置</p>
         :type IPSECOptionsSpecification: :class:`tencentcloud.vpc.v20170312.models.IPSECOptionsSpecification`
-        :param _Tags: 指定绑定的标签列表，例如：[{"Key": "city", "Value": "shanghai"}]
+        :param _Tags: <p>指定绑定的标签列表，例如：[{&quot;Key&quot;: &quot;city&quot;, &quot;Value&quot;: &quot;shanghai&quot;}]</p>
         :type Tags: list of Tag
-        :param _EnableHealthCheck: 是否支持隧道内健康检查，默认为False。
+        :param _EnableHealthCheck: <p>是否支持隧道内健康检查，默认为False。</p>
         :type EnableHealthCheck: bool
-        :param _HealthCheckLocalIp: 健康检查本端地址，默认值为随机在169.254.128.0/17分配一个IP。
+        :param _HealthCheckLocalIp: <p>健康检查本端地址，默认值为随机在169.254.128.0/17分配一个IP。</p>
         :type HealthCheckLocalIp: str
-        :param _HealthCheckRemoteIp: 健康检查对端地址，默认值为随机在169.254.128.0/17分配一个IP。
+        :param _HealthCheckRemoteIp: <p>健康检查对端地址，默认值为随机在169.254.128.0/17分配一个IP。</p>
         :type HealthCheckRemoteIp: str
-        :param _RouteType: 通道类型, 例如:["STATIC", "StaticRoute", "Policy"]
+        :param _RouteType: <p>通道类型, 例如:[&quot;STATIC&quot;, &quot;StaticRoute&quot;, &quot;Policy&quot;, &quot;Bgp&quot;]</p><p>枚举值：</p><ul><li>StaticRoute： 目的路由类型</li><li>Policy： SPD策略类型</li><li>Bgp： BGP类型</li></ul><p>默认值：STATIC</p>
         :type RouteType: str
-        :param _NegotiationType: 协商类型，默认为active（主动协商）。可选值：active（主动协商），passive（被动协商），flowTrigger（流量协商）
+        :param _NegotiationType: <p>协商类型，默认为active（主动协商）。可选值：active（主动协商），passive（被动协商），flowTrigger（流量协商）</p>
         :type NegotiationType: str
-        :param _DpdEnable: DPD探测开关。默认为0，表示关闭DPD探测。可选值：0（关闭），1（开启）
+        :param _DpdEnable: <p>DPD探测开关。默认为0，表示关闭DPD探测。可选值：0（关闭），1（开启）</p>
         :type DpdEnable: int
-        :param _DpdTimeout: DPD超时时间。即探测确认对端不存在需要的时间。dpdEnable为1（开启）时有效。默认30，单位为秒
+        :param _DpdTimeout: <p>DPD超时时间。即探测确认对端不存在需要的时间。dpdEnable为1（开启）时有效。默认30，单位为秒</p>
         :type DpdTimeout: str
-        :param _DpdAction: DPD超时后的动作。默认为clear。dpdEnable为1（开启）时有效。可取值为clear（断开）和restart（重试）
+        :param _DpdAction: <p>DPD超时后的动作。</p><p>入参限制：dpdEnable为1（开启）时有效。</p><p>枚举值：</p><ul><li>clear： 断开</li><li>restart： 重试</li></ul><p>默认值：restart</p>
         :type DpdAction: str
-        :param _Route: 创建通道路由信息。
+        :param _Route: <p>创建通道路由信息。</p>
         :type Route: :class:`tencentcloud.vpc.v20170312.models.CreateVpnConnRoute`
-        :param _BgpConfig: BGP配置。
+        :param _BgpConfig: <p>BGP配置。</p>
         :type BgpConfig: :class:`tencentcloud.vpc.v20170312.models.BgpConfig`
-        :param _HealthCheckConfig: 健康检查NQA配置。
+        :param _HealthCheckConfig: <p>健康检查NQA配置。</p>
         :type HealthCheckConfig: :class:`tencentcloud.vpc.v20170312.models.HealthCheckConfig`
         """
         self._VpnGatewayId = None
@@ -17902,7 +17901,7 @@ CCN VPN 形的通道 可以不传VPCID
 
     @property
     def VpnGatewayId(self):
-        r"""VPN网关实例ID。
+        r"""<p>VPN网关实例ID。</p>
         :rtype: str
         """
         return self._VpnGatewayId
@@ -17913,7 +17912,7 @@ CCN VPN 形的通道 可以不传VPCID
 
     @property
     def CustomerGatewayId(self):
-        r"""对端网关ID。例如：cgw-2wqq41m9，可通过[DescribeCustomerGateways](https://cloud.tencent.com/document/product/215/17516)接口查询对端网关。
+        r"""<p>对端网关ID。例如：cgw-2wqq41m9，可通过<a href="https://cloud.tencent.com/document/product/215/17516">DescribeCustomerGateways</a>接口查询对端网关。</p>
         :rtype: str
         """
         return self._CustomerGatewayId
@@ -17924,7 +17923,7 @@ CCN VPN 形的通道 可以不传VPCID
 
     @property
     def VpnConnectionName(self):
-        r"""通道名称，可任意命名，但不得超过60个字符。
+        r"""<p>通道名称，可任意命名，但不得超过60个字符。</p>
         :rtype: str
         """
         return self._VpnConnectionName
@@ -17935,7 +17934,7 @@ CCN VPN 形的通道 可以不传VPCID
 
     @property
     def PreShareKey(self):
-        r"""预共享密钥。
+        r"""<p>预共享密钥。</p>
         :rtype: str
         """
         return self._PreShareKey
@@ -17946,8 +17945,7 @@ CCN VPN 形的通道 可以不传VPCID
 
     @property
     def VpcId(self):
-        r"""VPC实例ID。可通过[DescribeVpcs](https://cloud.tencent.com/document/product/215/15778)接口返回值中的VpcId获取。
-CCN VPN 形的通道 可以不传VPCID
+        r"""<p>VPC实例ID。VPC类型网关可通过<a href="https://cloud.tencent.com/document/product/215/15778">DescribeVpcs</a>接口返回值中的VpcId获取，CCN类型网关传空值即可。</p>
         :rtype: str
         """
         return self._VpcId
@@ -17958,7 +17956,7 @@ CCN VPN 形的通道 可以不传VPCID
 
     @property
     def SecurityPolicyDatabases(self):
-        r"""SPD策略组，例如：{"10.0.0.5/24":["172.123.10.5/16"]}，10.0.0.5/24是vpc内网段172.123.10.5/16是IDC网段。用户指定VPC内哪些网段可以和您IDC中哪些网段通信。
+        r"""<p>SPD策略组，例如：{&quot;10.0.0.5/24&quot;:[&quot;172.123.10.5/16&quot;]}，10.0.0.5/24是vpc内网段172.123.10.5/16是IDC网段。用户指定VPC内哪些网段可以和您IDC中哪些网段通信。</p>
         :rtype: list of SecurityPolicyDatabase
         """
         return self._SecurityPolicyDatabases
@@ -17969,7 +17967,7 @@ CCN VPN 形的通道 可以不传VPCID
 
     @property
     def IKEOptionsSpecification(self):
-        r"""IKE配置（Internet Key Exchange，因特网密钥交换），IKE具有一套自我保护机制，用户配置网络安全协议
+        r"""<p>IKE配置（Internet Key Exchange，因特网密钥交换），IKE具有一套自我保护机制，用户配置网络安全协议</p>
         :rtype: :class:`tencentcloud.vpc.v20170312.models.IKEOptionsSpecification`
         """
         return self._IKEOptionsSpecification
@@ -17980,7 +17978,7 @@ CCN VPN 形的通道 可以不传VPCID
 
     @property
     def IPSECOptionsSpecification(self):
-        r"""IPSec配置，腾讯云提供IPSec安全会话设置
+        r"""<p>IPSec配置，腾讯云提供IPSec安全会话设置</p>
         :rtype: :class:`tencentcloud.vpc.v20170312.models.IPSECOptionsSpecification`
         """
         return self._IPSECOptionsSpecification
@@ -17991,7 +17989,7 @@ CCN VPN 形的通道 可以不传VPCID
 
     @property
     def Tags(self):
-        r"""指定绑定的标签列表，例如：[{"Key": "city", "Value": "shanghai"}]
+        r"""<p>指定绑定的标签列表，例如：[{&quot;Key&quot;: &quot;city&quot;, &quot;Value&quot;: &quot;shanghai&quot;}]</p>
         :rtype: list of Tag
         """
         return self._Tags
@@ -18002,7 +18000,7 @@ CCN VPN 形的通道 可以不传VPCID
 
     @property
     def EnableHealthCheck(self):
-        r"""是否支持隧道内健康检查，默认为False。
+        r"""<p>是否支持隧道内健康检查，默认为False。</p>
         :rtype: bool
         """
         return self._EnableHealthCheck
@@ -18013,7 +18011,7 @@ CCN VPN 形的通道 可以不传VPCID
 
     @property
     def HealthCheckLocalIp(self):
-        r"""健康检查本端地址，默认值为随机在169.254.128.0/17分配一个IP。
+        r"""<p>健康检查本端地址，默认值为随机在169.254.128.0/17分配一个IP。</p>
         :rtype: str
         """
         return self._HealthCheckLocalIp
@@ -18024,7 +18022,7 @@ CCN VPN 形的通道 可以不传VPCID
 
     @property
     def HealthCheckRemoteIp(self):
-        r"""健康检查对端地址，默认值为随机在169.254.128.0/17分配一个IP。
+        r"""<p>健康检查对端地址，默认值为随机在169.254.128.0/17分配一个IP。</p>
         :rtype: str
         """
         return self._HealthCheckRemoteIp
@@ -18035,7 +18033,7 @@ CCN VPN 形的通道 可以不传VPCID
 
     @property
     def RouteType(self):
-        r"""通道类型, 例如:["STATIC", "StaticRoute", "Policy"]
+        r"""<p>通道类型, 例如:[&quot;STATIC&quot;, &quot;StaticRoute&quot;, &quot;Policy&quot;, &quot;Bgp&quot;]</p><p>枚举值：</p><ul><li>StaticRoute： 目的路由类型</li><li>Policy： SPD策略类型</li><li>Bgp： BGP类型</li></ul><p>默认值：STATIC</p>
         :rtype: str
         """
         return self._RouteType
@@ -18046,7 +18044,7 @@ CCN VPN 形的通道 可以不传VPCID
 
     @property
     def NegotiationType(self):
-        r"""协商类型，默认为active（主动协商）。可选值：active（主动协商），passive（被动协商），flowTrigger（流量协商）
+        r"""<p>协商类型，默认为active（主动协商）。可选值：active（主动协商），passive（被动协商），flowTrigger（流量协商）</p>
         :rtype: str
         """
         return self._NegotiationType
@@ -18057,7 +18055,7 @@ CCN VPN 形的通道 可以不传VPCID
 
     @property
     def DpdEnable(self):
-        r"""DPD探测开关。默认为0，表示关闭DPD探测。可选值：0（关闭），1（开启）
+        r"""<p>DPD探测开关。默认为0，表示关闭DPD探测。可选值：0（关闭），1（开启）</p>
         :rtype: int
         """
         return self._DpdEnable
@@ -18068,7 +18066,7 @@ CCN VPN 形的通道 可以不传VPCID
 
     @property
     def DpdTimeout(self):
-        r"""DPD超时时间。即探测确认对端不存在需要的时间。dpdEnable为1（开启）时有效。默认30，单位为秒
+        r"""<p>DPD超时时间。即探测确认对端不存在需要的时间。dpdEnable为1（开启）时有效。默认30，单位为秒</p>
         :rtype: str
         """
         return self._DpdTimeout
@@ -18079,7 +18077,7 @@ CCN VPN 形的通道 可以不传VPCID
 
     @property
     def DpdAction(self):
-        r"""DPD超时后的动作。默认为clear。dpdEnable为1（开启）时有效。可取值为clear（断开）和restart（重试）
+        r"""<p>DPD超时后的动作。</p><p>入参限制：dpdEnable为1（开启）时有效。</p><p>枚举值：</p><ul><li>clear： 断开</li><li>restart： 重试</li></ul><p>默认值：restart</p>
         :rtype: str
         """
         return self._DpdAction
@@ -18090,18 +18088,22 @@ CCN VPN 形的通道 可以不传VPCID
 
     @property
     def Route(self):
-        r"""创建通道路由信息。
+        warnings.warn("parameter `Route` is deprecated", DeprecationWarning) 
+
+        r"""<p>创建通道路由信息。</p>
         :rtype: :class:`tencentcloud.vpc.v20170312.models.CreateVpnConnRoute`
         """
         return self._Route
 
     @Route.setter
     def Route(self, Route):
+        warnings.warn("parameter `Route` is deprecated", DeprecationWarning) 
+
         self._Route = Route
 
     @property
     def BgpConfig(self):
-        r"""BGP配置。
+        r"""<p>BGP配置。</p>
         :rtype: :class:`tencentcloud.vpc.v20170312.models.BgpConfig`
         """
         return self._BgpConfig
@@ -18112,7 +18114,7 @@ CCN VPN 形的通道 可以不传VPCID
 
     @property
     def HealthCheckConfig(self):
-        r"""健康检查NQA配置。
+        r"""<p>健康检查NQA配置。</p>
         :rtype: :class:`tencentcloud.vpc.v20170312.models.HealthCheckConfig`
         """
         return self._HealthCheckConfig
@@ -18180,7 +18182,7 @@ class CreateVpnConnectionResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _VpnConnection: 通道实例对象。
+        :param _VpnConnection: <p>通道实例对象。</p>
         :type VpnConnection: :class:`tencentcloud.vpc.v20170312.models.VpnConnection`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -18190,7 +18192,7 @@ class CreateVpnConnectionResponse(AbstractModel):
 
     @property
     def VpnConnection(self):
-        r"""通道实例对象。
+        r"""<p>通道实例对象。</p>
         :rtype: :class:`tencentcloud.vpc.v20170312.models.VpnConnection`
         """
         return self._VpnConnection

@@ -3582,6 +3582,317 @@ class CheckLockMetaDataResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CheckModifyPartitionRequest(AbstractModel):
+    r"""CheckModifyPartition请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PartitionCode: <p>分区编码</p>
+        :type PartitionCode: str
+        :param _TargetResourceQuotaList: <p>目标资源配额列表（计费项+目标数量）</p>
+        :type TargetResourceQuotaList: list of ResourceQuota
+        """
+        self._PartitionCode = None
+        self._TargetResourceQuotaList = None
+
+    @property
+    def PartitionCode(self):
+        r"""<p>分区编码</p>
+        :rtype: str
+        """
+        return self._PartitionCode
+
+    @PartitionCode.setter
+    def PartitionCode(self, PartitionCode):
+        self._PartitionCode = PartitionCode
+
+    @property
+    def TargetResourceQuotaList(self):
+        r"""<p>目标资源配额列表（计费项+目标数量）</p>
+        :rtype: list of ResourceQuota
+        """
+        return self._TargetResourceQuotaList
+
+    @TargetResourceQuotaList.setter
+    def TargetResourceQuotaList(self, TargetResourceQuotaList):
+        self._TargetResourceQuotaList = TargetResourceQuotaList
+
+
+    def _deserialize(self, params):
+        self._PartitionCode = params.get("PartitionCode")
+        if params.get("TargetResourceQuotaList") is not None:
+            self._TargetResourceQuotaList = []
+            for item in params.get("TargetResourceQuotaList"):
+                obj = ResourceQuota()
+                obj._deserialize(item)
+                self._TargetResourceQuotaList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CheckModifyPartitionResponse(AbstractModel):
+    r"""CheckModifyPartition返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CanModify: <p>是否允许变配：true-允许，false-不允许</p>
+        :type CanModify: bool
+        :param _MessageList: <p>校验失败时的不足资源描述信息列表，校验通过时为null</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MessageList: list of MessageItem
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._CanModify = None
+        self._MessageList = None
+        self._RequestId = None
+
+    @property
+    def CanModify(self):
+        r"""<p>是否允许变配：true-允许，false-不允许</p>
+        :rtype: bool
+        """
+        return self._CanModify
+
+    @CanModify.setter
+    def CanModify(self, CanModify):
+        self._CanModify = CanModify
+
+    @property
+    def MessageList(self):
+        r"""<p>校验失败时的不足资源描述信息列表，校验通过时为null</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of MessageItem
+        """
+        return self._MessageList
+
+    @MessageList.setter
+    def MessageList(self, MessageList):
+        self._MessageList = MessageList
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._CanModify = params.get("CanModify")
+        if params.get("MessageList") is not None:
+            self._MessageList = []
+            for item in params.get("MessageList"):
+                obj = MessageItem()
+                obj._deserialize(item)
+                self._MessageList.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class CheckQueueNameRequest(AbstractModel):
+    r"""CheckQueueName请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _QueueName: 队列名称
+        :type QueueName: str
+        :param _PartitionCode: 分区编码，用于校验同分区下队列名称是否重复
+        :type PartitionCode: str
+        """
+        self._QueueName = None
+        self._PartitionCode = None
+
+    @property
+    def QueueName(self):
+        r"""队列名称
+        :rtype: str
+        """
+        return self._QueueName
+
+    @QueueName.setter
+    def QueueName(self, QueueName):
+        self._QueueName = QueueName
+
+    @property
+    def PartitionCode(self):
+        r"""分区编码，用于校验同分区下队列名称是否重复
+        :rtype: str
+        """
+        return self._PartitionCode
+
+    @PartitionCode.setter
+    def PartitionCode(self, PartitionCode):
+        self._PartitionCode = PartitionCode
+
+
+    def _deserialize(self, params):
+        self._QueueName = params.get("QueueName")
+        self._PartitionCode = params.get("PartitionCode")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CheckQueueNameResponse(AbstractModel):
+    r"""CheckQueueName返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _IsValid: 校验是否通过：true-通过，false-不通过
+        :type IsValid: str
+        :param _Message: 校验失败原因，校验通过时为空
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Message: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._IsValid = None
+        self._Message = None
+        self._RequestId = None
+
+    @property
+    def IsValid(self):
+        r"""校验是否通过：true-通过，false-不通过
+        :rtype: str
+        """
+        return self._IsValid
+
+    @IsValid.setter
+    def IsValid(self, IsValid):
+        self._IsValid = IsValid
+
+    @property
+    def Message(self):
+        r"""校验失败原因，校验通过时为空
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._IsValid = params.get("IsValid")
+        self._Message = params.get("Message")
+        self._RequestId = params.get("RequestId")
+
+
+class CheckResourceNameRequest(AbstractModel):
+    r"""CheckResourceName请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ResourceName: 资源名称
+        :type ResourceName: str
+        """
+        self._ResourceName = None
+
+    @property
+    def ResourceName(self):
+        r"""资源名称
+        :rtype: str
+        """
+        return self._ResourceName
+
+    @ResourceName.setter
+    def ResourceName(self, ResourceName):
+        self._ResourceName = ResourceName
+
+
+    def _deserialize(self, params):
+        self._ResourceName = params.get("ResourceName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CheckResourceNameResponse(AbstractModel):
+    r"""CheckResourceName返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _IsValid: 校验是否通过
+        :type IsValid: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._IsValid = None
+        self._RequestId = None
+
+    @property
+    def IsValid(self):
+        r"""校验是否通过
+        :rtype: str
+        """
+        return self._IsValid
+
+    @IsValid.setter
+    def IsValid(self, IsValid):
+        self._IsValid = IsValid
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._IsValid = params.get("IsValid")
+        self._RequestId = params.get("RequestId")
+
+
 class ClusterGroup(AbstractModel):
     r"""集群组响应
 
@@ -7265,6 +7576,522 @@ class CreateImportTaskResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateInferenceModelRequest(AbstractModel):
+    r"""CreateInferenceModel请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: <p>模型名称（最长 256）</p>
+        :type Name: str
+        :param _ModelType: <p>模型类型（如 LLM、Embedding、Reranker、ASR、TTS 等）</p>
+        :type ModelType: str
+        :param _InitialVersion: <p>初始版本号（必填，如 v1、v1.5）</p>
+        :type InitialVersion: str
+        :param _Provider: <p>模型提供方</p>
+        :type Provider: str
+        :param _Description: <p>模型描述</p>
+        :type Description: str
+        :param _ParameterSize: <p>模型参数量（如 7B、1.5B）</p>
+        :type ParameterSize: str
+        :param _Tags: <p>模型标签列表</p>
+        :type Tags: list of str
+        :param _StorageUri: <p>模型存储 URI（可选，如 cos://bucket-name/models/name/）</p>
+        :type StorageUri: str
+        :param _UseCustomStorage: <p>是否使用用户自带存储桶（默认 false 表示平台托管）</p>
+        :type UseCustomStorage: bool
+        :param _Tasks: <p>任务类型列表（如 [&quot;Text Generation&quot;, &quot;Embedding&quot;]）</p>
+        :type Tasks: list of str
+        :param _ModelUid: <p>模型 UID（可选，前端预先生成的 UID，不传则后端自动生成）</p>
+        :type ModelUid: str
+        """
+        self._Name = None
+        self._ModelType = None
+        self._InitialVersion = None
+        self._Provider = None
+        self._Description = None
+        self._ParameterSize = None
+        self._Tags = None
+        self._StorageUri = None
+        self._UseCustomStorage = None
+        self._Tasks = None
+        self._ModelUid = None
+
+    @property
+    def Name(self):
+        r"""<p>模型名称（最长 256）</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def ModelType(self):
+        r"""<p>模型类型（如 LLM、Embedding、Reranker、ASR、TTS 等）</p>
+        :rtype: str
+        """
+        return self._ModelType
+
+    @ModelType.setter
+    def ModelType(self, ModelType):
+        self._ModelType = ModelType
+
+    @property
+    def InitialVersion(self):
+        r"""<p>初始版本号（必填，如 v1、v1.5）</p>
+        :rtype: str
+        """
+        return self._InitialVersion
+
+    @InitialVersion.setter
+    def InitialVersion(self, InitialVersion):
+        self._InitialVersion = InitialVersion
+
+    @property
+    def Provider(self):
+        r"""<p>模型提供方</p>
+        :rtype: str
+        """
+        return self._Provider
+
+    @Provider.setter
+    def Provider(self, Provider):
+        self._Provider = Provider
+
+    @property
+    def Description(self):
+        r"""<p>模型描述</p>
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def ParameterSize(self):
+        r"""<p>模型参数量（如 7B、1.5B）</p>
+        :rtype: str
+        """
+        return self._ParameterSize
+
+    @ParameterSize.setter
+    def ParameterSize(self, ParameterSize):
+        self._ParameterSize = ParameterSize
+
+    @property
+    def Tags(self):
+        r"""<p>模型标签列表</p>
+        :rtype: list of str
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def StorageUri(self):
+        r"""<p>模型存储 URI（可选，如 cos://bucket-name/models/name/）</p>
+        :rtype: str
+        """
+        return self._StorageUri
+
+    @StorageUri.setter
+    def StorageUri(self, StorageUri):
+        self._StorageUri = StorageUri
+
+    @property
+    def UseCustomStorage(self):
+        r"""<p>是否使用用户自带存储桶（默认 false 表示平台托管）</p>
+        :rtype: bool
+        """
+        return self._UseCustomStorage
+
+    @UseCustomStorage.setter
+    def UseCustomStorage(self, UseCustomStorage):
+        self._UseCustomStorage = UseCustomStorage
+
+    @property
+    def Tasks(self):
+        r"""<p>任务类型列表（如 [&quot;Text Generation&quot;, &quot;Embedding&quot;]）</p>
+        :rtype: list of str
+        """
+        return self._Tasks
+
+    @Tasks.setter
+    def Tasks(self, Tasks):
+        self._Tasks = Tasks
+
+    @property
+    def ModelUid(self):
+        r"""<p>模型 UID（可选，前端预先生成的 UID，不传则后端自动生成）</p>
+        :rtype: str
+        """
+        return self._ModelUid
+
+    @ModelUid.setter
+    def ModelUid(self, ModelUid):
+        self._ModelUid = ModelUid
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._ModelType = params.get("ModelType")
+        self._InitialVersion = params.get("InitialVersion")
+        self._Provider = params.get("Provider")
+        self._Description = params.get("Description")
+        self._ParameterSize = params.get("ParameterSize")
+        self._Tags = params.get("Tags")
+        self._StorageUri = params.get("StorageUri")
+        self._UseCustomStorage = params.get("UseCustomStorage")
+        self._Tasks = params.get("Tasks")
+        self._ModelUid = params.get("ModelUid")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateInferenceModelResponse(AbstractModel):
+    r"""CreateInferenceModel返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ModelId: <p>模型ID</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ModelId: str
+        :param _ModelUid: <p>模型UID</p>
+        :type ModelUid: str
+        :param _Name: <p>模型名称</p>
+        :type Name: str
+        :param _Provider: <p>模型提供方</p>
+        :type Provider: str
+        :param _Description: <p>模型描述</p>
+        :type Description: str
+        :param _ModelType: <p>模型类型</p>
+        :type ModelType: str
+        :param _ParameterSize: <p>参数大小</p>
+        :type ParameterSize: str
+        :param _Tags: <p>模型标签</p>
+        :type Tags: list of str
+        :param _LatestVersion: <p>最新版本</p>
+        :type LatestVersion: str
+        :param _VersionCount: <p>版本总数</p>
+        :type VersionCount: int
+        :param _ServiceCount: <p>关联的推理服务数量</p>
+        :type ServiceCount: int
+        :param _HasStorage: <p>是否有存储</p>
+        :type HasStorage: bool
+        :param _HasCustomStorage: <p>是否使用用户自带存储桶</p>
+        :type HasCustomStorage: bool
+        :param _StorageType: <p>存储后端类型</p>
+        :type StorageType: str
+        :param _BuiltIn: <p>是否内置模型</p>
+        :type BuiltIn: bool
+        :param _Tasks: <p>任务类型列表</p>
+        :type Tasks: list of str
+        :param _AppId: <p>APPID</p>
+        :type AppId: int
+        :param _CreateTime: <p>创建时间</p>
+        :type CreateTime: int
+        :param _UpdateTime: <p>更新时间</p>
+        :type UpdateTime: int
+        :param _SubAccountUin: <p>Sub UIN</p>
+        :type SubAccountUin: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ModelId = None
+        self._ModelUid = None
+        self._Name = None
+        self._Provider = None
+        self._Description = None
+        self._ModelType = None
+        self._ParameterSize = None
+        self._Tags = None
+        self._LatestVersion = None
+        self._VersionCount = None
+        self._ServiceCount = None
+        self._HasStorage = None
+        self._HasCustomStorage = None
+        self._StorageType = None
+        self._BuiltIn = None
+        self._Tasks = None
+        self._AppId = None
+        self._CreateTime = None
+        self._UpdateTime = None
+        self._SubAccountUin = None
+        self._RequestId = None
+
+    @property
+    def ModelId(self):
+        r"""<p>模型ID</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ModelId
+
+    @ModelId.setter
+    def ModelId(self, ModelId):
+        self._ModelId = ModelId
+
+    @property
+    def ModelUid(self):
+        r"""<p>模型UID</p>
+        :rtype: str
+        """
+        return self._ModelUid
+
+    @ModelUid.setter
+    def ModelUid(self, ModelUid):
+        self._ModelUid = ModelUid
+
+    @property
+    def Name(self):
+        r"""<p>模型名称</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Provider(self):
+        r"""<p>模型提供方</p>
+        :rtype: str
+        """
+        return self._Provider
+
+    @Provider.setter
+    def Provider(self, Provider):
+        self._Provider = Provider
+
+    @property
+    def Description(self):
+        r"""<p>模型描述</p>
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def ModelType(self):
+        r"""<p>模型类型</p>
+        :rtype: str
+        """
+        return self._ModelType
+
+    @ModelType.setter
+    def ModelType(self, ModelType):
+        self._ModelType = ModelType
+
+    @property
+    def ParameterSize(self):
+        r"""<p>参数大小</p>
+        :rtype: str
+        """
+        return self._ParameterSize
+
+    @ParameterSize.setter
+    def ParameterSize(self, ParameterSize):
+        self._ParameterSize = ParameterSize
+
+    @property
+    def Tags(self):
+        r"""<p>模型标签</p>
+        :rtype: list of str
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def LatestVersion(self):
+        r"""<p>最新版本</p>
+        :rtype: str
+        """
+        return self._LatestVersion
+
+    @LatestVersion.setter
+    def LatestVersion(self, LatestVersion):
+        self._LatestVersion = LatestVersion
+
+    @property
+    def VersionCount(self):
+        r"""<p>版本总数</p>
+        :rtype: int
+        """
+        return self._VersionCount
+
+    @VersionCount.setter
+    def VersionCount(self, VersionCount):
+        self._VersionCount = VersionCount
+
+    @property
+    def ServiceCount(self):
+        r"""<p>关联的推理服务数量</p>
+        :rtype: int
+        """
+        return self._ServiceCount
+
+    @ServiceCount.setter
+    def ServiceCount(self, ServiceCount):
+        self._ServiceCount = ServiceCount
+
+    @property
+    def HasStorage(self):
+        r"""<p>是否有存储</p>
+        :rtype: bool
+        """
+        return self._HasStorage
+
+    @HasStorage.setter
+    def HasStorage(self, HasStorage):
+        self._HasStorage = HasStorage
+
+    @property
+    def HasCustomStorage(self):
+        r"""<p>是否使用用户自带存储桶</p>
+        :rtype: bool
+        """
+        return self._HasCustomStorage
+
+    @HasCustomStorage.setter
+    def HasCustomStorage(self, HasCustomStorage):
+        self._HasCustomStorage = HasCustomStorage
+
+    @property
+    def StorageType(self):
+        r"""<p>存储后端类型</p>
+        :rtype: str
+        """
+        return self._StorageType
+
+    @StorageType.setter
+    def StorageType(self, StorageType):
+        self._StorageType = StorageType
+
+    @property
+    def BuiltIn(self):
+        r"""<p>是否内置模型</p>
+        :rtype: bool
+        """
+        return self._BuiltIn
+
+    @BuiltIn.setter
+    def BuiltIn(self, BuiltIn):
+        self._BuiltIn = BuiltIn
+
+    @property
+    def Tasks(self):
+        r"""<p>任务类型列表</p>
+        :rtype: list of str
+        """
+        return self._Tasks
+
+    @Tasks.setter
+    def Tasks(self, Tasks):
+        self._Tasks = Tasks
+
+    @property
+    def AppId(self):
+        r"""<p>APPID</p>
+        :rtype: int
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def CreateTime(self):
+        r"""<p>创建时间</p>
+        :rtype: int
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        r"""<p>更新时间</p>
+        :rtype: int
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def SubAccountUin(self):
+        r"""<p>Sub UIN</p>
+        :rtype: str
+        """
+        return self._SubAccountUin
+
+    @SubAccountUin.setter
+    def SubAccountUin(self, SubAccountUin):
+        self._SubAccountUin = SubAccountUin
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._ModelId = params.get("ModelId")
+        self._ModelUid = params.get("ModelUid")
+        self._Name = params.get("Name")
+        self._Provider = params.get("Provider")
+        self._Description = params.get("Description")
+        self._ModelType = params.get("ModelType")
+        self._ParameterSize = params.get("ParameterSize")
+        self._Tags = params.get("Tags")
+        self._LatestVersion = params.get("LatestVersion")
+        self._VersionCount = params.get("VersionCount")
+        self._ServiceCount = params.get("ServiceCount")
+        self._HasStorage = params.get("HasStorage")
+        self._HasCustomStorage = params.get("HasCustomStorage")
+        self._StorageType = params.get("StorageType")
+        self._BuiltIn = params.get("BuiltIn")
+        self._Tasks = params.get("Tasks")
+        self._AppId = params.get("AppId")
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
+        self._SubAccountUin = params.get("SubAccountUin")
+        self._RequestId = params.get("RequestId")
+
+
 class CreateInternalTableRequest(AbstractModel):
     r"""CreateInternalTable请求参数结构体
 
@@ -9898,6 +10725,354 @@ class CreateNotebookSessionStatementSupportBatchSQLResponse(AbstractModel):
         if params.get("NotebookSessionStatementBatches") is not None:
             self._NotebookSessionStatementBatches = NotebookSessionStatementBatchInformation()
             self._NotebookSessionStatementBatches._deserialize(params.get("NotebookSessionStatementBatches"))
+        self._RequestId = params.get("RequestId")
+
+
+class CreatePartitionQueueRequest(AbstractModel):
+    r"""CreatePartitionQueue请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PartitionCode: <p>分区编码</p>
+        :type PartitionCode: str
+        :param _QueueName: <p>队列名称</p>
+        :type QueueName: str
+        :param _ResourceUsages: <p>资源规格列表，定义队列的资源类型及大小范围</p>
+        :type ResourceUsages: list of ResourceUsage
+        :param _QueueType: <p>队列类型：1-独占型，2-共享型</p>
+        :type QueueType: int
+        :param _Description: <p>队列描述</p>
+        :type Description: str
+        """
+        self._PartitionCode = None
+        self._QueueName = None
+        self._ResourceUsages = None
+        self._QueueType = None
+        self._Description = None
+
+    @property
+    def PartitionCode(self):
+        r"""<p>分区编码</p>
+        :rtype: str
+        """
+        return self._PartitionCode
+
+    @PartitionCode.setter
+    def PartitionCode(self, PartitionCode):
+        self._PartitionCode = PartitionCode
+
+    @property
+    def QueueName(self):
+        r"""<p>队列名称</p>
+        :rtype: str
+        """
+        return self._QueueName
+
+    @QueueName.setter
+    def QueueName(self, QueueName):
+        self._QueueName = QueueName
+
+    @property
+    def ResourceUsages(self):
+        r"""<p>资源规格列表，定义队列的资源类型及大小范围</p>
+        :rtype: list of ResourceUsage
+        """
+        return self._ResourceUsages
+
+    @ResourceUsages.setter
+    def ResourceUsages(self, ResourceUsages):
+        self._ResourceUsages = ResourceUsages
+
+    @property
+    def QueueType(self):
+        r"""<p>队列类型：1-独占型，2-共享型</p>
+        :rtype: int
+        """
+        return self._QueueType
+
+    @QueueType.setter
+    def QueueType(self, QueueType):
+        self._QueueType = QueueType
+
+    @property
+    def Description(self):
+        r"""<p>队列描述</p>
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+
+    def _deserialize(self, params):
+        self._PartitionCode = params.get("PartitionCode")
+        self._QueueName = params.get("QueueName")
+        if params.get("ResourceUsages") is not None:
+            self._ResourceUsages = []
+            for item in params.get("ResourceUsages"):
+                obj = ResourceUsage()
+                obj._deserialize(item)
+                self._ResourceUsages.append(obj)
+        self._QueueType = params.get("QueueType")
+        self._Description = params.get("Description")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreatePartitionQueueResponse(AbstractModel):
+    r"""CreatePartitionQueue返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: <p>新创建的资源队列ID</p>
+        :type Id: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Id = None
+        self._RequestId = None
+
+    @property
+    def Id(self):
+        r"""<p>新创建的资源队列ID</p>
+        :rtype: int
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._RequestId = params.get("RequestId")
+
+
+class CreatePartitionRequest(AbstractModel):
+    r"""CreatePartition请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ActionType: <p>交易类型：purchase-新购，renew-续费，modify-变配</p>
+        :type ActionType: str
+        :param _PayMode: <p>付费模式：0-后付费，1-预付费</p>
+        :type PayMode: int
+        :param _ResourceQuotaList: <p>资源配额列表（计费项+数量）</p>
+        :type ResourceQuotaList: list of ResourceQuota
+        :param _TimeSpan: <p>时间大小，预付费时为购买月数，后付费时为3600</p>
+        :type TimeSpan: int
+        :param _TimeUnit: <p>时间单位，预付费为m（月），后付费为s（秒）</p>
+        :type TimeUnit: str
+        :param _AutoRenewFlag: <p>自动续费标志：0-默认，1-自动续费，2-不自动续费（仅预付费有效）</p>
+        :type AutoRenewFlag: int
+        :param _Name: <p>弹性资源池名称，用于订单页展示</p>
+        :type Name: str
+        :param _Description: <p>队列描述</p>
+        :type Description: str
+        """
+        self._ActionType = None
+        self._PayMode = None
+        self._ResourceQuotaList = None
+        self._TimeSpan = None
+        self._TimeUnit = None
+        self._AutoRenewFlag = None
+        self._Name = None
+        self._Description = None
+
+    @property
+    def ActionType(self):
+        r"""<p>交易类型：purchase-新购，renew-续费，modify-变配</p>
+        :rtype: str
+        """
+        return self._ActionType
+
+    @ActionType.setter
+    def ActionType(self, ActionType):
+        self._ActionType = ActionType
+
+    @property
+    def PayMode(self):
+        r"""<p>付费模式：0-后付费，1-预付费</p>
+        :rtype: int
+        """
+        return self._PayMode
+
+    @PayMode.setter
+    def PayMode(self, PayMode):
+        self._PayMode = PayMode
+
+    @property
+    def ResourceQuotaList(self):
+        r"""<p>资源配额列表（计费项+数量）</p>
+        :rtype: list of ResourceQuota
+        """
+        return self._ResourceQuotaList
+
+    @ResourceQuotaList.setter
+    def ResourceQuotaList(self, ResourceQuotaList):
+        self._ResourceQuotaList = ResourceQuotaList
+
+    @property
+    def TimeSpan(self):
+        r"""<p>时间大小，预付费时为购买月数，后付费时为3600</p>
+        :rtype: int
+        """
+        return self._TimeSpan
+
+    @TimeSpan.setter
+    def TimeSpan(self, TimeSpan):
+        self._TimeSpan = TimeSpan
+
+    @property
+    def TimeUnit(self):
+        r"""<p>时间单位，预付费为m（月），后付费为s（秒）</p>
+        :rtype: str
+        """
+        return self._TimeUnit
+
+    @TimeUnit.setter
+    def TimeUnit(self, TimeUnit):
+        self._TimeUnit = TimeUnit
+
+    @property
+    def AutoRenewFlag(self):
+        r"""<p>自动续费标志：0-默认，1-自动续费，2-不自动续费（仅预付费有效）</p>
+        :rtype: int
+        """
+        return self._AutoRenewFlag
+
+    @AutoRenewFlag.setter
+    def AutoRenewFlag(self, AutoRenewFlag):
+        self._AutoRenewFlag = AutoRenewFlag
+
+    @property
+    def Name(self):
+        r"""<p>弹性资源池名称，用于订单页展示</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Description(self):
+        r"""<p>队列描述</p>
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+
+    def _deserialize(self, params):
+        self._ActionType = params.get("ActionType")
+        self._PayMode = params.get("PayMode")
+        if params.get("ResourceQuotaList") is not None:
+            self._ResourceQuotaList = []
+            for item in params.get("ResourceQuotaList"):
+                obj = ResourceQuota()
+                obj._deserialize(item)
+                self._ResourceQuotaList.append(obj)
+        self._TimeSpan = params.get("TimeSpan")
+        self._TimeUnit = params.get("TimeUnit")
+        self._AutoRenewFlag = params.get("AutoRenewFlag")
+        self._Name = params.get("Name")
+        self._Description = params.get("Description")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreatePartitionResponse(AbstractModel):
+    r"""CreatePartition返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DealName: <p>子订单号</p>
+        :type DealName: str
+        :param _BigDealId: <p>大订单号</p>
+        :type BigDealId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._DealName = None
+        self._BigDealId = None
+        self._RequestId = None
+
+    @property
+    def DealName(self):
+        r"""<p>子订单号</p>
+        :rtype: str
+        """
+        return self._DealName
+
+    @DealName.setter
+    def DealName(self, DealName):
+        self._DealName = DealName
+
+    @property
+    def BigDealId(self):
+        r"""<p>大订单号</p>
+        :rtype: str
+        """
+        return self._BigDealId
+
+    @BigDealId.setter
+    def BigDealId(self, BigDealId):
+        self._BigDealId = BigDealId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._DealName = params.get("DealName")
+        self._BigDealId = params.get("BigDealId")
         self._RequestId = params.get("RequestId")
 
 
@@ -20619,6 +21794,100 @@ class DeleteNotebookSessionResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DeletePartitionQueueRequest(AbstractModel):
+    r"""DeletePartitionQueue请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PartitionCode: 分区编码
+        :type PartitionCode: str
+        :param _QueueName: 队列名称
+        :type QueueName: str
+        :param _Id: 队列ID
+        :type Id: int
+        """
+        self._PartitionCode = None
+        self._QueueName = None
+        self._Id = None
+
+    @property
+    def PartitionCode(self):
+        r"""分区编码
+        :rtype: str
+        """
+        return self._PartitionCode
+
+    @PartitionCode.setter
+    def PartitionCode(self, PartitionCode):
+        self._PartitionCode = PartitionCode
+
+    @property
+    def QueueName(self):
+        r"""队列名称
+        :rtype: str
+        """
+        return self._QueueName
+
+    @QueueName.setter
+    def QueueName(self, QueueName):
+        self._QueueName = QueueName
+
+    @property
+    def Id(self):
+        r"""队列ID
+        :rtype: int
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+
+    def _deserialize(self, params):
+        self._PartitionCode = params.get("PartitionCode")
+        self._QueueName = params.get("QueueName")
+        self._Id = params.get("Id")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeletePartitionQueueResponse(AbstractModel):
+    r"""DeletePartitionQueue返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class DeleteRayClusterRequest(AbstractModel):
     r"""DeleteRayCluster请求参数结构体
 
@@ -25614,6 +26883,264 @@ class DescribeEngineUsageInfoResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeFlowDetailListRequest(AbstractModel):
+    r"""DescribeFlowDetailList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PartitionCode: 分区编码
+        :type PartitionCode: str
+        :param _Page: 页码，从1开始，默认为1
+        :type Page: int
+        :param _PageSize: 每页返回数量，默认为10
+        :type PageSize: int
+        """
+        self._PartitionCode = None
+        self._Page = None
+        self._PageSize = None
+
+    @property
+    def PartitionCode(self):
+        r"""分区编码
+        :rtype: str
+        """
+        return self._PartitionCode
+
+    @PartitionCode.setter
+    def PartitionCode(self, PartitionCode):
+        self._PartitionCode = PartitionCode
+
+    @property
+    def Page(self):
+        r"""页码，从1开始，默认为1
+        :rtype: int
+        """
+        return self._Page
+
+    @Page.setter
+    def Page(self, Page):
+        self._Page = Page
+
+    @property
+    def PageSize(self):
+        r"""每页返回数量，默认为10
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+
+    def _deserialize(self, params):
+        self._PartitionCode = params.get("PartitionCode")
+        self._Page = params.get("Page")
+        self._PageSize = params.get("PageSize")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeFlowDetailListResponse(AbstractModel):
+    r"""DescribeFlowDetailList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FlowDetailList: 流程详情列表
+        :type FlowDetailList: list of FlowDetail
+        :param _Total: 总记录数
+        :type Total: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._FlowDetailList = None
+        self._Total = None
+        self._RequestId = None
+
+    @property
+    def FlowDetailList(self):
+        r"""流程详情列表
+        :rtype: list of FlowDetail
+        """
+        return self._FlowDetailList
+
+    @FlowDetailList.setter
+    def FlowDetailList(self, FlowDetailList):
+        self._FlowDetailList = FlowDetailList
+
+    @property
+    def Total(self):
+        r"""总记录数
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("FlowDetailList") is not None:
+            self._FlowDetailList = []
+            for item in params.get("FlowDetailList"):
+                obj = FlowDetail()
+                obj._deserialize(item)
+                self._FlowDetailList.append(obj)
+        self._Total = params.get("Total")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeFlowListRequest(AbstractModel):
+    r"""DescribeFlowList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PartitionCode: 分区编码
+        :type PartitionCode: str
+        :param _Page: 页码，从1开始，默认为1
+        :type Page: int
+        :param _PageSize: 每页返回数量，默认为10
+        :type PageSize: int
+        """
+        self._PartitionCode = None
+        self._Page = None
+        self._PageSize = None
+
+    @property
+    def PartitionCode(self):
+        r"""分区编码
+        :rtype: str
+        """
+        return self._PartitionCode
+
+    @PartitionCode.setter
+    def PartitionCode(self, PartitionCode):
+        self._PartitionCode = PartitionCode
+
+    @property
+    def Page(self):
+        r"""页码，从1开始，默认为1
+        :rtype: int
+        """
+        return self._Page
+
+    @Page.setter
+    def Page(self, Page):
+        self._Page = Page
+
+    @property
+    def PageSize(self):
+        r"""每页返回数量，默认为10
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+
+    def _deserialize(self, params):
+        self._PartitionCode = params.get("PartitionCode")
+        self._Page = params.get("Page")
+        self._PageSize = params.get("PageSize")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeFlowListResponse(AbstractModel):
+    r"""DescribeFlowList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FlowInfoList: 流程列表
+        :type FlowInfoList: list of FlowInfo
+        :param _Total: 总记录数
+        :type Total: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._FlowInfoList = None
+        self._Total = None
+        self._RequestId = None
+
+    @property
+    def FlowInfoList(self):
+        r"""流程列表
+        :rtype: list of FlowInfo
+        """
+        return self._FlowInfoList
+
+    @FlowInfoList.setter
+    def FlowInfoList(self, FlowInfoList):
+        self._FlowInfoList = FlowInfoList
+
+    @property
+    def Total(self):
+        r"""总记录数
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("FlowInfoList") is not None:
+            self._FlowInfoList = []
+            for item in params.get("FlowInfoList"):
+                obj = FlowInfo()
+                obj._deserialize(item)
+                self._FlowInfoList.append(obj)
+        self._Total = params.get("Total")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeForbiddenTableProRequest(AbstractModel):
     r"""DescribeForbiddenTablePro请求参数结构体
 
@@ -27392,6 +28919,427 @@ class DescribeOtherCHDFSBindingListResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribePartitionDetailRequest(AbstractModel):
+    r"""DescribePartitionDetail请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PartitionCode: 分区编码
+        :type PartitionCode: str
+        """
+        self._PartitionCode = None
+
+    @property
+    def PartitionCode(self):
+        r"""分区编码
+        :rtype: str
+        """
+        return self._PartitionCode
+
+    @PartitionCode.setter
+    def PartitionCode(self, PartitionCode):
+        self._PartitionCode = PartitionCode
+
+
+    def _deserialize(self, params):
+        self._PartitionCode = params.get("PartitionCode")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribePartitionDetailResponse(AbstractModel):
+    r"""DescribePartitionDetail返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PartitionDetail: 分区详情
+        :type PartitionDetail: :class:`tencentcloud.dlc.v20210125.models.PartitionDetail`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._PartitionDetail = None
+        self._RequestId = None
+
+    @property
+    def PartitionDetail(self):
+        r"""分区详情
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.PartitionDetail`
+        """
+        return self._PartitionDetail
+
+    @PartitionDetail.setter
+    def PartitionDetail(self, PartitionDetail):
+        self._PartitionDetail = PartitionDetail
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("PartitionDetail") is not None:
+            self._PartitionDetail = PartitionDetail()
+            self._PartitionDetail._deserialize(params.get("PartitionDetail"))
+        self._RequestId = params.get("RequestId")
+
+
+class DescribePartitionQueuesRequest(AbstractModel):
+    r"""DescribePartitionQueues请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PartitionCode: 分区编码
+        :type PartitionCode: str
+        :param _SortFields: 排序字段列表
+        :type SortFields: list of SortField
+        :param _Filters: 筛选条件列表
+        :type Filters: list of Filter
+        :param _Page: 页码
+        :type Page: int
+        :param _PageSize: 每页返回数量
+        :type PageSize: int
+        """
+        self._PartitionCode = None
+        self._SortFields = None
+        self._Filters = None
+        self._Page = None
+        self._PageSize = None
+
+    @property
+    def PartitionCode(self):
+        r"""分区编码
+        :rtype: str
+        """
+        return self._PartitionCode
+
+    @PartitionCode.setter
+    def PartitionCode(self, PartitionCode):
+        self._PartitionCode = PartitionCode
+
+    @property
+    def SortFields(self):
+        r"""排序字段列表
+        :rtype: list of SortField
+        """
+        return self._SortFields
+
+    @SortFields.setter
+    def SortFields(self, SortFields):
+        self._SortFields = SortFields
+
+    @property
+    def Filters(self):
+        r"""筛选条件列表
+        :rtype: list of Filter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Page(self):
+        r"""页码
+        :rtype: int
+        """
+        return self._Page
+
+    @Page.setter
+    def Page(self, Page):
+        self._Page = Page
+
+    @property
+    def PageSize(self):
+        r"""每页返回数量
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+
+    def _deserialize(self, params):
+        self._PartitionCode = params.get("PartitionCode")
+        if params.get("SortFields") is not None:
+            self._SortFields = []
+            for item in params.get("SortFields"):
+                obj = SortField()
+                obj._deserialize(item)
+                self._SortFields.append(obj)
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._Page = params.get("Page")
+        self._PageSize = params.get("PageSize")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribePartitionQueuesResponse(AbstractModel):
+    r"""DescribePartitionQueues返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _QueueList: 队列列表
+        :type QueueList: list of QueueInfo
+        :param _DefaultQueue: 默认队列信息
+        :type DefaultQueue: :class:`tencentcloud.dlc.v20210125.models.QueueInfo`
+        :param _Total: 总记录数
+        :type Total: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._QueueList = None
+        self._DefaultQueue = None
+        self._Total = None
+        self._RequestId = None
+
+    @property
+    def QueueList(self):
+        r"""队列列表
+        :rtype: list of QueueInfo
+        """
+        return self._QueueList
+
+    @QueueList.setter
+    def QueueList(self, QueueList):
+        self._QueueList = QueueList
+
+    @property
+    def DefaultQueue(self):
+        r"""默认队列信息
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.QueueInfo`
+        """
+        return self._DefaultQueue
+
+    @DefaultQueue.setter
+    def DefaultQueue(self, DefaultQueue):
+        self._DefaultQueue = DefaultQueue
+
+    @property
+    def Total(self):
+        r"""总记录数
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("QueueList") is not None:
+            self._QueueList = []
+            for item in params.get("QueueList"):
+                obj = QueueInfo()
+                obj._deserialize(item)
+                self._QueueList.append(obj)
+        if params.get("DefaultQueue") is not None:
+            self._DefaultQueue = QueueInfo()
+            self._DefaultQueue._deserialize(params.get("DefaultQueue"))
+        self._Total = params.get("Total")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribePartitionsRequest(AbstractModel):
+    r"""DescribePartitions请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Page: 页码，从1开始，默认为1
+        :type Page: int
+        :param _PageSize: 每页返回数量，默认为10
+        :type PageSize: int
+        :param _SortFields: 排序字段列表，按数组顺序依次应用，可选
+        :type SortFields: list of SortField
+        :param _Filters: 筛选条件列表，多个条件之间为AND关系，可选
+        :type Filters: list of Filter
+        """
+        self._Page = None
+        self._PageSize = None
+        self._SortFields = None
+        self._Filters = None
+
+    @property
+    def Page(self):
+        r"""页码，从1开始，默认为1
+        :rtype: int
+        """
+        return self._Page
+
+    @Page.setter
+    def Page(self, Page):
+        self._Page = Page
+
+    @property
+    def PageSize(self):
+        r"""每页返回数量，默认为10
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def SortFields(self):
+        r"""排序字段列表，按数组顺序依次应用，可选
+        :rtype: list of SortField
+        """
+        return self._SortFields
+
+    @SortFields.setter
+    def SortFields(self, SortFields):
+        self._SortFields = SortFields
+
+    @property
+    def Filters(self):
+        r"""筛选条件列表，多个条件之间为AND关系，可选
+        :rtype: list of Filter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+
+    def _deserialize(self, params):
+        self._Page = params.get("Page")
+        self._PageSize = params.get("PageSize")
+        if params.get("SortFields") is not None:
+            self._SortFields = []
+            for item in params.get("SortFields"):
+                obj = SortField()
+                obj._deserialize(item)
+                self._SortFields.append(obj)
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribePartitionsResponse(AbstractModel):
+    r"""DescribePartitions返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Partitions: 资源包列表
+        :type Partitions: list of PartitionInfo
+        :param _Total: 总记录数
+        :type Total: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Partitions = None
+        self._Total = None
+        self._RequestId = None
+
+    @property
+    def Partitions(self):
+        r"""资源包列表
+        :rtype: list of PartitionInfo
+        """
+        return self._Partitions
+
+    @Partitions.setter
+    def Partitions(self, Partitions):
+        self._Partitions = Partitions
+
+    @property
+    def Total(self):
+        r"""总记录数
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Partitions") is not None:
+            self._Partitions = []
+            for item in params.get("Partitions"):
+                obj = PartitionInfo()
+                obj._deserialize(item)
+                self._Partitions.append(obj)
+        self._Total = params.get("Total")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeResourceGroupUsageInfoRequest(AbstractModel):
     r"""DescribeResourceGroupUsageInfo请求参数结构体
 
@@ -27652,6 +29600,114 @@ class DescribeResultDownloadResponse(AbstractModel):
         self._SecretId = params.get("SecretId")
         self._SecretKey = params.get("SecretKey")
         self._Token = params.get("Token")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeSaleRegionsRequest(AbstractModel):
+    r"""DescribeSaleRegions请求参数结构体
+
+    """
+
+
+class DescribeSaleRegionsResponse(AbstractModel):
+    r"""DescribeSaleRegions返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RegionList: 可售卖地域列表
+        :type RegionList: list of RegionInfo
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RegionList = None
+        self._RequestId = None
+
+    @property
+    def RegionList(self):
+        r"""可售卖地域列表
+        :rtype: list of RegionInfo
+        """
+        return self._RegionList
+
+    @RegionList.setter
+    def RegionList(self, RegionList):
+        self._RegionList = RegionList
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("RegionList") is not None:
+            self._RegionList = []
+            for item in params.get("RegionList"):
+                obj = RegionInfo()
+                obj._deserialize(item)
+                self._RegionList.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeSaleResourceInfoRequest(AbstractModel):
+    r"""DescribeSaleResourceInfo请求参数结构体
+
+    """
+
+
+class DescribeSaleResourceInfoResponse(AbstractModel):
+    r"""DescribeSaleResourceInfo返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SaleResourceInfoList: 可售卖资源规格列表
+        :type SaleResourceInfoList: list of ResourceSaleInfo
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._SaleResourceInfoList = None
+        self._RequestId = None
+
+    @property
+    def SaleResourceInfoList(self):
+        r"""可售卖资源规格列表
+        :rtype: list of ResourceSaleInfo
+        """
+        return self._SaleResourceInfoList
+
+    @SaleResourceInfoList.setter
+    def SaleResourceInfoList(self, SaleResourceInfoList):
+        self._SaleResourceInfoList = SaleResourceInfoList
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("SaleResourceInfoList") is not None:
+            self._SaleResourceInfoList = []
+            for item in params.get("SaleResourceInfoList"):
+                obj = ResourceSaleInfo()
+                obj._deserialize(item)
+                self._SaleResourceInfoList.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -35822,6 +37878,294 @@ class Filter(AbstractModel):
         
 
 
+class FlowActivityDetail(AbstractModel):
+    r"""流程活动详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ActivityCode: <p>活动编码</p>
+        :type ActivityCode: str
+        :param _Status: <p>活动状态</p>
+        :type Status: int
+        :param _CreateTime: <p>创建时间</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: str
+        :param _Duration: <p>耗时（秒）</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Duration: int
+        """
+        self._ActivityCode = None
+        self._Status = None
+        self._CreateTime = None
+        self._Duration = None
+
+    @property
+    def ActivityCode(self):
+        r"""<p>活动编码</p>
+        :rtype: str
+        """
+        return self._ActivityCode
+
+    @ActivityCode.setter
+    def ActivityCode(self, ActivityCode):
+        self._ActivityCode = ActivityCode
+
+    @property
+    def Status(self):
+        r"""<p>活动状态</p>
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def CreateTime(self):
+        r"""<p>创建时间</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def Duration(self):
+        r"""<p>耗时（秒）</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Duration
+
+    @Duration.setter
+    def Duration(self, Duration):
+        self._Duration = Duration
+
+
+    def _deserialize(self, params):
+        self._ActivityCode = params.get("ActivityCode")
+        self._Status = params.get("Status")
+        self._CreateTime = params.get("CreateTime")
+        self._Duration = params.get("Duration")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class FlowDetail(AbstractModel):
+    r"""流程详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FlowId: <p>流程ID（数据库主键）</p>
+        :type FlowId: int
+        :param _WorkFlowId: <p>Temporal Workflow ID</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WorkFlowId: str
+        :param _WorkFlowCode: <p>流程编码</p>
+        :type WorkFlowCode: str
+        :param _Progress: <p>流程进度，0~100</p>
+        :type Progress: int
+        :param _Status: <p>流程状态</p>
+        :type Status: int
+        :param _CreateTime: <p>创建时间</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: str
+        :param _Activities: <p>流程活动列表</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Activities: list of FlowActivityDetail
+        """
+        self._FlowId = None
+        self._WorkFlowId = None
+        self._WorkFlowCode = None
+        self._Progress = None
+        self._Status = None
+        self._CreateTime = None
+        self._Activities = None
+
+    @property
+    def FlowId(self):
+        r"""<p>流程ID（数据库主键）</p>
+        :rtype: int
+        """
+        return self._FlowId
+
+    @FlowId.setter
+    def FlowId(self, FlowId):
+        self._FlowId = FlowId
+
+    @property
+    def WorkFlowId(self):
+        r"""<p>Temporal Workflow ID</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._WorkFlowId
+
+    @WorkFlowId.setter
+    def WorkFlowId(self, WorkFlowId):
+        self._WorkFlowId = WorkFlowId
+
+    @property
+    def WorkFlowCode(self):
+        r"""<p>流程编码</p>
+        :rtype: str
+        """
+        return self._WorkFlowCode
+
+    @WorkFlowCode.setter
+    def WorkFlowCode(self, WorkFlowCode):
+        self._WorkFlowCode = WorkFlowCode
+
+    @property
+    def Progress(self):
+        r"""<p>流程进度，0~100</p>
+        :rtype: int
+        """
+        return self._Progress
+
+    @Progress.setter
+    def Progress(self, Progress):
+        self._Progress = Progress
+
+    @property
+    def Status(self):
+        r"""<p>流程状态</p>
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def CreateTime(self):
+        r"""<p>创建时间</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def Activities(self):
+        r"""<p>流程活动列表</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of FlowActivityDetail
+        """
+        return self._Activities
+
+    @Activities.setter
+    def Activities(self, Activities):
+        self._Activities = Activities
+
+
+    def _deserialize(self, params):
+        self._FlowId = params.get("FlowId")
+        self._WorkFlowId = params.get("WorkFlowId")
+        self._WorkFlowCode = params.get("WorkFlowCode")
+        self._Progress = params.get("Progress")
+        self._Status = params.get("Status")
+        self._CreateTime = params.get("CreateTime")
+        if params.get("Activities") is not None:
+            self._Activities = []
+            for item in params.get("Activities"):
+                obj = FlowActivityDetail()
+                obj._deserialize(item)
+                self._Activities.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class FlowInfo(AbstractModel):
+    r"""流程简要信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FlowId: <p>流程ID</p>
+        :type FlowId: int
+        :param _WorkFlowCode: <p>流程编码</p>
+        :type WorkFlowCode: str
+        :param _Status: <p>流程状态</p>
+        :type Status: int
+        """
+        self._FlowId = None
+        self._WorkFlowCode = None
+        self._Status = None
+
+    @property
+    def FlowId(self):
+        r"""<p>流程ID</p>
+        :rtype: int
+        """
+        return self._FlowId
+
+    @FlowId.setter
+    def FlowId(self, FlowId):
+        self._FlowId = FlowId
+
+    @property
+    def WorkFlowCode(self):
+        r"""<p>流程编码</p>
+        :rtype: str
+        """
+        return self._WorkFlowCode
+
+    @WorkFlowCode.setter
+    def WorkFlowCode(self, WorkFlowCode):
+        self._WorkFlowCode = WorkFlowCode
+
+    @property
+    def Status(self):
+        r"""<p>流程状态</p>
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+
+    def _deserialize(self, params):
+        self._FlowId = params.get("FlowId")
+        self._WorkFlowCode = params.get("WorkFlowCode")
+        self._Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class GPUInfo(AbstractModel):
     r"""GPU 机型
 
@@ -36763,6 +39107,415 @@ class GetExampleDetailResponse(AbstractModel):
         self._UpdateTime = params.get("UpdateTime")
         self._Deleted = params.get("Deleted")
         self._Popularity = params.get("Popularity")
+        self._RequestId = params.get("RequestId")
+
+
+class GetInferenceModelRequest(AbstractModel):
+    r"""GetInferenceModel请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ModelUid: <p>模型UID</p>
+        :type ModelUid: str
+        """
+        self._ModelUid = None
+
+    @property
+    def ModelUid(self):
+        r"""<p>模型UID</p>
+        :rtype: str
+        """
+        return self._ModelUid
+
+    @ModelUid.setter
+    def ModelUid(self, ModelUid):
+        self._ModelUid = ModelUid
+
+
+    def _deserialize(self, params):
+        self._ModelUid = params.get("ModelUid")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetInferenceModelResponse(AbstractModel):
+    r"""GetInferenceModel返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ModelId: <p>模型ID</p>
+        :type ModelId: str
+        :param _ModelUid: <p>模型UID</p>
+        :type ModelUid: str
+        :param _Name: <p>模型名称</p>
+        :type Name: str
+        :param _Provider: <p>模型提供方</p>
+        :type Provider: str
+        :param _Description: <p>模型描述</p>
+        :type Description: str
+        :param _ModelType: <p>模型类型</p>
+        :type ModelType: str
+        :param _ParameterSize: <p>模型参数量</p>
+        :type ParameterSize: str
+        :param _Tags: <p>模型标签列表</p>
+        :type Tags: list of str
+        :param _LatestVersion: <p>最新版本号</p>
+        :type LatestVersion: str
+        :param _VersionCount: <p>版本总数</p>
+        :type VersionCount: int
+        :param _ServiceCount: <p>关联的推理服务数量</p>
+        :type ServiceCount: int
+        :param _HasStorage: <p>是否有存储</p>
+        :type HasStorage: bool
+        :param _StorageRegion: <p>存储地域</p>
+        :type StorageRegion: str
+        :param _HasCustomStorage: <p>是否使用用户自带存储桶</p>
+        :type HasCustomStorage: bool
+        :param _StorageType: <p>存储后端类型</p>
+        :type StorageType: str
+        :param _BuiltIn: <p>是否内置模型</p>
+        :type BuiltIn: bool
+        :param _Tasks: <p>任务类型列表</p>
+        :type Tasks: list of str
+        :param _SupportedEngines: <p>模型支持的推理引擎列表</p>
+        :type SupportedEngines: list of str
+        :param _Uin: <p>UIN</p>
+        :type Uin: str
+        :param _AppId: <p>APPID</p>
+        :type AppId: int
+        :param _CreateTime: <p>创建时间</p>
+        :type CreateTime: int
+        :param _UpdateTime: <p>更新时间</p>
+        :type UpdateTime: int
+        :param _SubAccountUin: <p>Sub UIN</p>
+        :type SubAccountUin: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ModelId = None
+        self._ModelUid = None
+        self._Name = None
+        self._Provider = None
+        self._Description = None
+        self._ModelType = None
+        self._ParameterSize = None
+        self._Tags = None
+        self._LatestVersion = None
+        self._VersionCount = None
+        self._ServiceCount = None
+        self._HasStorage = None
+        self._StorageRegion = None
+        self._HasCustomStorage = None
+        self._StorageType = None
+        self._BuiltIn = None
+        self._Tasks = None
+        self._SupportedEngines = None
+        self._Uin = None
+        self._AppId = None
+        self._CreateTime = None
+        self._UpdateTime = None
+        self._SubAccountUin = None
+        self._RequestId = None
+
+    @property
+    def ModelId(self):
+        r"""<p>模型ID</p>
+        :rtype: str
+        """
+        return self._ModelId
+
+    @ModelId.setter
+    def ModelId(self, ModelId):
+        self._ModelId = ModelId
+
+    @property
+    def ModelUid(self):
+        r"""<p>模型UID</p>
+        :rtype: str
+        """
+        return self._ModelUid
+
+    @ModelUid.setter
+    def ModelUid(self, ModelUid):
+        self._ModelUid = ModelUid
+
+    @property
+    def Name(self):
+        r"""<p>模型名称</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Provider(self):
+        r"""<p>模型提供方</p>
+        :rtype: str
+        """
+        return self._Provider
+
+    @Provider.setter
+    def Provider(self, Provider):
+        self._Provider = Provider
+
+    @property
+    def Description(self):
+        r"""<p>模型描述</p>
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def ModelType(self):
+        r"""<p>模型类型</p>
+        :rtype: str
+        """
+        return self._ModelType
+
+    @ModelType.setter
+    def ModelType(self, ModelType):
+        self._ModelType = ModelType
+
+    @property
+    def ParameterSize(self):
+        r"""<p>模型参数量</p>
+        :rtype: str
+        """
+        return self._ParameterSize
+
+    @ParameterSize.setter
+    def ParameterSize(self, ParameterSize):
+        self._ParameterSize = ParameterSize
+
+    @property
+    def Tags(self):
+        r"""<p>模型标签列表</p>
+        :rtype: list of str
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def LatestVersion(self):
+        r"""<p>最新版本号</p>
+        :rtype: str
+        """
+        return self._LatestVersion
+
+    @LatestVersion.setter
+    def LatestVersion(self, LatestVersion):
+        self._LatestVersion = LatestVersion
+
+    @property
+    def VersionCount(self):
+        r"""<p>版本总数</p>
+        :rtype: int
+        """
+        return self._VersionCount
+
+    @VersionCount.setter
+    def VersionCount(self, VersionCount):
+        self._VersionCount = VersionCount
+
+    @property
+    def ServiceCount(self):
+        r"""<p>关联的推理服务数量</p>
+        :rtype: int
+        """
+        return self._ServiceCount
+
+    @ServiceCount.setter
+    def ServiceCount(self, ServiceCount):
+        self._ServiceCount = ServiceCount
+
+    @property
+    def HasStorage(self):
+        r"""<p>是否有存储</p>
+        :rtype: bool
+        """
+        return self._HasStorage
+
+    @HasStorage.setter
+    def HasStorage(self, HasStorage):
+        self._HasStorage = HasStorage
+
+    @property
+    def StorageRegion(self):
+        r"""<p>存储地域</p>
+        :rtype: str
+        """
+        return self._StorageRegion
+
+    @StorageRegion.setter
+    def StorageRegion(self, StorageRegion):
+        self._StorageRegion = StorageRegion
+
+    @property
+    def HasCustomStorage(self):
+        r"""<p>是否使用用户自带存储桶</p>
+        :rtype: bool
+        """
+        return self._HasCustomStorage
+
+    @HasCustomStorage.setter
+    def HasCustomStorage(self, HasCustomStorage):
+        self._HasCustomStorage = HasCustomStorage
+
+    @property
+    def StorageType(self):
+        r"""<p>存储后端类型</p>
+        :rtype: str
+        """
+        return self._StorageType
+
+    @StorageType.setter
+    def StorageType(self, StorageType):
+        self._StorageType = StorageType
+
+    @property
+    def BuiltIn(self):
+        r"""<p>是否内置模型</p>
+        :rtype: bool
+        """
+        return self._BuiltIn
+
+    @BuiltIn.setter
+    def BuiltIn(self, BuiltIn):
+        self._BuiltIn = BuiltIn
+
+    @property
+    def Tasks(self):
+        r"""<p>任务类型列表</p>
+        :rtype: list of str
+        """
+        return self._Tasks
+
+    @Tasks.setter
+    def Tasks(self, Tasks):
+        self._Tasks = Tasks
+
+    @property
+    def SupportedEngines(self):
+        r"""<p>模型支持的推理引擎列表</p>
+        :rtype: list of str
+        """
+        return self._SupportedEngines
+
+    @SupportedEngines.setter
+    def SupportedEngines(self, SupportedEngines):
+        self._SupportedEngines = SupportedEngines
+
+    @property
+    def Uin(self):
+        r"""<p>UIN</p>
+        :rtype: str
+        """
+        return self._Uin
+
+    @Uin.setter
+    def Uin(self, Uin):
+        self._Uin = Uin
+
+    @property
+    def AppId(self):
+        r"""<p>APPID</p>
+        :rtype: int
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def CreateTime(self):
+        r"""<p>创建时间</p>
+        :rtype: int
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        r"""<p>更新时间</p>
+        :rtype: int
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def SubAccountUin(self):
+        r"""<p>Sub UIN</p>
+        :rtype: str
+        """
+        return self._SubAccountUin
+
+    @SubAccountUin.setter
+    def SubAccountUin(self, SubAccountUin):
+        self._SubAccountUin = SubAccountUin
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._ModelId = params.get("ModelId")
+        self._ModelUid = params.get("ModelUid")
+        self._Name = params.get("Name")
+        self._Provider = params.get("Provider")
+        self._Description = params.get("Description")
+        self._ModelType = params.get("ModelType")
+        self._ParameterSize = params.get("ParameterSize")
+        self._Tags = params.get("Tags")
+        self._LatestVersion = params.get("LatestVersion")
+        self._VersionCount = params.get("VersionCount")
+        self._ServiceCount = params.get("ServiceCount")
+        self._HasStorage = params.get("HasStorage")
+        self._StorageRegion = params.get("StorageRegion")
+        self._HasCustomStorage = params.get("HasCustomStorage")
+        self._StorageType = params.get("StorageType")
+        self._BuiltIn = params.get("BuiltIn")
+        self._Tasks = params.get("Tasks")
+        self._SupportedEngines = params.get("SupportedEngines")
+        self._Uin = params.get("Uin")
+        self._AppId = params.get("AppId")
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
+        self._SubAccountUin = params.get("SubAccountUin")
         self._RequestId = params.get("RequestId")
 
 
@@ -42970,6 +45723,414 @@ class IcebergTablePartition(AbstractModel):
         
 
 
+class InferenceModelInfo(AbstractModel):
+    r"""推理模型信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ModelId: <p>Model ID</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ModelId: str
+        :param _ModelUid: <p>模型业务唯一标识</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ModelUid: str
+        :param _Name: <p>模型名称</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param _Provider: <p>模型提供方</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Provider: str
+        :param _Description: <p>模型描述</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Description: str
+        :param _ModelType: <p>模型类型</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ModelType: str
+        :param _SupportedEngines: <p>支持的引擎</p>
+        :type SupportedEngines: list of str
+        :param _ParameterSize: <p>参数量</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ParameterSize: str
+        :param _Tags: <p>模型标签</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tags: list of str
+        :param _LatestVersion: <p>最新版本号</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LatestVersion: str
+        :param _VersionCount: <p>版本总数</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VersionCount: int
+        :param _ServiceCount: <p>关联的推理服务数量</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ServiceCount: int
+        :param _HasStorage: <p>是否有存储（内置模型和用户上传模型均为 true）</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HasStorage: bool
+        :param _StorageRegion: <p>存储地域</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StorageRegion: str
+        :param _HasCustomStorage: <p>是否使用用户自带存储桶</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HasCustomStorage: bool
+        :param _StorageType: <p>存储后端类型（如 COS、GOOSEFS、CFSTURBO）</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StorageType: str
+        :param _BuiltIn: <p>是否是内置模型</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BuiltIn: bool
+        :param _Tasks: <p>任务类型列表</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tasks: list of str
+        :param _AppId: <p>云账户的 APP ID</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AppId: int
+        :param _Uin: <p>云账户的 UIN</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Uin: str
+        :param _CreateTime: <p>创建时间（毫秒时间戳）</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: int
+        :param _UpdateTime: <p>更新时间（毫秒时间戳）</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpdateTime: int
+        :param _SubAccountUin: <p>云账户的 Sub UIN</p>
+        :type SubAccountUin: str
+        """
+        self._ModelId = None
+        self._ModelUid = None
+        self._Name = None
+        self._Provider = None
+        self._Description = None
+        self._ModelType = None
+        self._SupportedEngines = None
+        self._ParameterSize = None
+        self._Tags = None
+        self._LatestVersion = None
+        self._VersionCount = None
+        self._ServiceCount = None
+        self._HasStorage = None
+        self._StorageRegion = None
+        self._HasCustomStorage = None
+        self._StorageType = None
+        self._BuiltIn = None
+        self._Tasks = None
+        self._AppId = None
+        self._Uin = None
+        self._CreateTime = None
+        self._UpdateTime = None
+        self._SubAccountUin = None
+
+    @property
+    def ModelId(self):
+        r"""<p>Model ID</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ModelId
+
+    @ModelId.setter
+    def ModelId(self, ModelId):
+        self._ModelId = ModelId
+
+    @property
+    def ModelUid(self):
+        r"""<p>模型业务唯一标识</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ModelUid
+
+    @ModelUid.setter
+    def ModelUid(self, ModelUid):
+        self._ModelUid = ModelUid
+
+    @property
+    def Name(self):
+        r"""<p>模型名称</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Provider(self):
+        r"""<p>模型提供方</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Provider
+
+    @Provider.setter
+    def Provider(self, Provider):
+        self._Provider = Provider
+
+    @property
+    def Description(self):
+        r"""<p>模型描述</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def ModelType(self):
+        r"""<p>模型类型</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ModelType
+
+    @ModelType.setter
+    def ModelType(self, ModelType):
+        self._ModelType = ModelType
+
+    @property
+    def SupportedEngines(self):
+        r"""<p>支持的引擎</p>
+        :rtype: list of str
+        """
+        return self._SupportedEngines
+
+    @SupportedEngines.setter
+    def SupportedEngines(self, SupportedEngines):
+        self._SupportedEngines = SupportedEngines
+
+    @property
+    def ParameterSize(self):
+        r"""<p>参数量</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ParameterSize
+
+    @ParameterSize.setter
+    def ParameterSize(self, ParameterSize):
+        self._ParameterSize = ParameterSize
+
+    @property
+    def Tags(self):
+        r"""<p>模型标签</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def LatestVersion(self):
+        r"""<p>最新版本号</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._LatestVersion
+
+    @LatestVersion.setter
+    def LatestVersion(self, LatestVersion):
+        self._LatestVersion = LatestVersion
+
+    @property
+    def VersionCount(self):
+        r"""<p>版本总数</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._VersionCount
+
+    @VersionCount.setter
+    def VersionCount(self, VersionCount):
+        self._VersionCount = VersionCount
+
+    @property
+    def ServiceCount(self):
+        r"""<p>关联的推理服务数量</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._ServiceCount
+
+    @ServiceCount.setter
+    def ServiceCount(self, ServiceCount):
+        self._ServiceCount = ServiceCount
+
+    @property
+    def HasStorage(self):
+        r"""<p>是否有存储（内置模型和用户上传模型均为 true）</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._HasStorage
+
+    @HasStorage.setter
+    def HasStorage(self, HasStorage):
+        self._HasStorage = HasStorage
+
+    @property
+    def StorageRegion(self):
+        r"""<p>存储地域</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._StorageRegion
+
+    @StorageRegion.setter
+    def StorageRegion(self, StorageRegion):
+        self._StorageRegion = StorageRegion
+
+    @property
+    def HasCustomStorage(self):
+        r"""<p>是否使用用户自带存储桶</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._HasCustomStorage
+
+    @HasCustomStorage.setter
+    def HasCustomStorage(self, HasCustomStorage):
+        self._HasCustomStorage = HasCustomStorage
+
+    @property
+    def StorageType(self):
+        r"""<p>存储后端类型（如 COS、GOOSEFS、CFSTURBO）</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._StorageType
+
+    @StorageType.setter
+    def StorageType(self, StorageType):
+        self._StorageType = StorageType
+
+    @property
+    def BuiltIn(self):
+        r"""<p>是否是内置模型</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._BuiltIn
+
+    @BuiltIn.setter
+    def BuiltIn(self, BuiltIn):
+        self._BuiltIn = BuiltIn
+
+    @property
+    def Tasks(self):
+        r"""<p>任务类型列表</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._Tasks
+
+    @Tasks.setter
+    def Tasks(self, Tasks):
+        self._Tasks = Tasks
+
+    @property
+    def AppId(self):
+        r"""<p>云账户的 APP ID</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def Uin(self):
+        r"""<p>云账户的 UIN</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Uin
+
+    @Uin.setter
+    def Uin(self, Uin):
+        self._Uin = Uin
+
+    @property
+    def CreateTime(self):
+        r"""<p>创建时间（毫秒时间戳）</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        r"""<p>更新时间（毫秒时间戳）</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def SubAccountUin(self):
+        r"""<p>云账户的 Sub UIN</p>
+        :rtype: str
+        """
+        return self._SubAccountUin
+
+    @SubAccountUin.setter
+    def SubAccountUin(self, SubAccountUin):
+        self._SubAccountUin = SubAccountUin
+
+
+    def _deserialize(self, params):
+        self._ModelId = params.get("ModelId")
+        self._ModelUid = params.get("ModelUid")
+        self._Name = params.get("Name")
+        self._Provider = params.get("Provider")
+        self._Description = params.get("Description")
+        self._ModelType = params.get("ModelType")
+        self._SupportedEngines = params.get("SupportedEngines")
+        self._ParameterSize = params.get("ParameterSize")
+        self._Tags = params.get("Tags")
+        self._LatestVersion = params.get("LatestVersion")
+        self._VersionCount = params.get("VersionCount")
+        self._ServiceCount = params.get("ServiceCount")
+        self._HasStorage = params.get("HasStorage")
+        self._StorageRegion = params.get("StorageRegion")
+        self._HasCustomStorage = params.get("HasCustomStorage")
+        self._StorageType = params.get("StorageType")
+        self._BuiltIn = params.get("BuiltIn")
+        self._Tasks = params.get("Tasks")
+        self._AppId = params.get("AppId")
+        self._Uin = params.get("Uin")
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
+        self._SubAccountUin = params.get("SubAccountUin")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class InitializeTCLakeRequest(AbstractModel):
     r"""InitializeTCLake请求参数结构体
 
@@ -46242,6 +49403,275 @@ class ListExamplesResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ListInferenceModelsRequest(AbstractModel):
+    r"""ListInferenceModels请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Page: <p>页码（从1开始）</p>
+        :type Page: int
+        :param _PageSize: <p>每页数量（最大 200）</p>
+        :type PageSize: int
+        :param _StartTime: <p>开始时间</p>
+        :type StartTime: int
+        :param _EndTime: <p>结束时间</p>
+        :type EndTime: int
+        :param _Filters: <p>过滤器</p>
+        :type Filters: list of Filter
+        :param _SortFields: <p>排序字段</p>
+        :type SortFields: list of SortField
+        :param _ParameterSizeMin: <p>模型参数最小值</p>
+        :type ParameterSizeMin: float
+        :param _ParameterSizeMax: <p>模型参数最大值</p>
+        :type ParameterSizeMax: float
+        """
+        self._Page = None
+        self._PageSize = None
+        self._StartTime = None
+        self._EndTime = None
+        self._Filters = None
+        self._SortFields = None
+        self._ParameterSizeMin = None
+        self._ParameterSizeMax = None
+
+    @property
+    def Page(self):
+        r"""<p>页码（从1开始）</p>
+        :rtype: int
+        """
+        return self._Page
+
+    @Page.setter
+    def Page(self, Page):
+        self._Page = Page
+
+    @property
+    def PageSize(self):
+        r"""<p>每页数量（最大 200）</p>
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def StartTime(self):
+        r"""<p>开始时间</p>
+        :rtype: int
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""<p>结束时间</p>
+        :rtype: int
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def Filters(self):
+        r"""<p>过滤器</p>
+        :rtype: list of Filter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def SortFields(self):
+        r"""<p>排序字段</p>
+        :rtype: list of SortField
+        """
+        return self._SortFields
+
+    @SortFields.setter
+    def SortFields(self, SortFields):
+        self._SortFields = SortFields
+
+    @property
+    def ParameterSizeMin(self):
+        r"""<p>模型参数最小值</p>
+        :rtype: float
+        """
+        return self._ParameterSizeMin
+
+    @ParameterSizeMin.setter
+    def ParameterSizeMin(self, ParameterSizeMin):
+        self._ParameterSizeMin = ParameterSizeMin
+
+    @property
+    def ParameterSizeMax(self):
+        r"""<p>模型参数最大值</p>
+        :rtype: float
+        """
+        return self._ParameterSizeMax
+
+    @ParameterSizeMax.setter
+    def ParameterSizeMax(self, ParameterSizeMax):
+        self._ParameterSizeMax = ParameterSizeMax
+
+
+    def _deserialize(self, params):
+        self._Page = params.get("Page")
+        self._PageSize = params.get("PageSize")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        if params.get("SortFields") is not None:
+            self._SortFields = []
+            for item in params.get("SortFields"):
+                obj = SortField()
+                obj._deserialize(item)
+                self._SortFields.append(obj)
+        self._ParameterSizeMin = params.get("ParameterSizeMin")
+        self._ParameterSizeMax = params.get("ParameterSizeMax")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ListInferenceModelsResponse(AbstractModel):
+    r"""ListInferenceModels返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Items: <p>推理模型列表</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Items: list of InferenceModelInfo
+        :param _Total: <p>总记录数</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Total: int
+        :param _Page: <p>当前页码</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Page: int
+        :param _PageSize: <p>每页数量</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PageSize: int
+        :param _TotalPages: <p>总页数</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalPages: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Items = None
+        self._Total = None
+        self._Page = None
+        self._PageSize = None
+        self._TotalPages = None
+        self._RequestId = None
+
+    @property
+    def Items(self):
+        r"""<p>推理模型列表</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of InferenceModelInfo
+        """
+        return self._Items
+
+    @Items.setter
+    def Items(self, Items):
+        self._Items = Items
+
+    @property
+    def Total(self):
+        r"""<p>总记录数</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def Page(self):
+        r"""<p>当前页码</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Page
+
+    @Page.setter
+    def Page(self, Page):
+        self._Page = Page
+
+    @property
+    def PageSize(self):
+        r"""<p>每页数量</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def TotalPages(self):
+        r"""<p>总页数</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._TotalPages
+
+    @TotalPages.setter
+    def TotalPages(self, TotalPages):
+        self._TotalPages = TotalPages
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Items") is not None:
+            self._Items = []
+            for item in params.get("Items"):
+                obj = InferenceModelInfo()
+                obj._deserialize(item)
+                self._Items.append(obj)
+        self._Total = params.get("Total")
+        self._Page = params.get("Page")
+        self._PageSize = params.get("PageSize")
+        self._TotalPages = params.get("TotalPages")
+        self._RequestId = params.get("RequestId")
+
+
 class ListJobSpecsRequest(AbstractModel):
     r"""ListJobSpecs请求参数结构体
 
@@ -49131,6 +52561,57 @@ class MCPTaskResultInfo(AbstractModel):
         
 
 
+class MessageItem(AbstractModel):
+    r"""校验消息项
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BillingItem: <p>计费项标识</p>
+        :type BillingItem: str
+        :param _Message: <p>校验失败描述信息</p>
+        :type Message: str
+        """
+        self._BillingItem = None
+        self._Message = None
+
+    @property
+    def BillingItem(self):
+        r"""<p>计费项标识</p>
+        :rtype: str
+        """
+        return self._BillingItem
+
+    @BillingItem.setter
+    def BillingItem(self, BillingItem):
+        self._BillingItem = BillingItem
+
+    @property
+    def Message(self):
+        r"""<p>校验失败描述信息</p>
+        :rtype: str
+        """
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+
+    def _deserialize(self, params):
+        self._BillingItem = params.get("BillingItem")
+        self._Message = params.get("Message")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class MetaDatabaseInfo(AbstractModel):
     r"""元数据库基本信息
 
@@ -50524,6 +54005,229 @@ class ModifyLabPriorityResponse(AbstractModel):
         self._LabImagePullType = params.get("LabImagePullType")
         self._SubAccountName = params.get("SubAccountName")
         self._ImagePullType = params.get("ImagePullType")
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyPartitionDescriptionRequest(AbstractModel):
+    r"""ModifyPartitionDescription请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PartitionCode: 分区编码
+        :type PartitionCode: str
+        :param _Description: 分区描述
+        :type Description: str
+        """
+        self._PartitionCode = None
+        self._Description = None
+
+    @property
+    def PartitionCode(self):
+        r"""分区编码
+        :rtype: str
+        """
+        return self._PartitionCode
+
+    @PartitionCode.setter
+    def PartitionCode(self, PartitionCode):
+        self._PartitionCode = PartitionCode
+
+    @property
+    def Description(self):
+        r"""分区描述
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+
+    def _deserialize(self, params):
+        self._PartitionCode = params.get("PartitionCode")
+        self._Description = params.get("Description")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyPartitionDescriptionResponse(AbstractModel):
+    r"""ModifyPartitionDescription返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyPartitionQueueRequest(AbstractModel):
+    r"""ModifyPartitionQueue请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: 资源队列ID
+        :type Id: int
+        :param _PartitionCode: 分区编码
+        :type PartitionCode: str
+        :param _QueueName: 队列名称
+        :type QueueName: str
+        :param _Description: 队列描述
+        :type Description: str
+        :param _ResourceUsages: 资源规格列表，定义队列的资源类型及大小范围
+        :type ResourceUsages: list of ResourceUsage
+        :param _QueueType: 队列类型：1-独占型，2-共享型
+        :type QueueType: int
+        """
+        self._Id = None
+        self._PartitionCode = None
+        self._QueueName = None
+        self._Description = None
+        self._ResourceUsages = None
+        self._QueueType = None
+
+    @property
+    def Id(self):
+        r"""资源队列ID
+        :rtype: int
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def PartitionCode(self):
+        r"""分区编码
+        :rtype: str
+        """
+        return self._PartitionCode
+
+    @PartitionCode.setter
+    def PartitionCode(self, PartitionCode):
+        self._PartitionCode = PartitionCode
+
+    @property
+    def QueueName(self):
+        r"""队列名称
+        :rtype: str
+        """
+        return self._QueueName
+
+    @QueueName.setter
+    def QueueName(self, QueueName):
+        self._QueueName = QueueName
+
+    @property
+    def Description(self):
+        r"""队列描述
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def ResourceUsages(self):
+        r"""资源规格列表，定义队列的资源类型及大小范围
+        :rtype: list of ResourceUsage
+        """
+        return self._ResourceUsages
+
+    @ResourceUsages.setter
+    def ResourceUsages(self, ResourceUsages):
+        self._ResourceUsages = ResourceUsages
+
+    @property
+    def QueueType(self):
+        r"""队列类型：1-独占型，2-共享型
+        :rtype: int
+        """
+        return self._QueueType
+
+    @QueueType.setter
+    def QueueType(self, QueueType):
+        self._QueueType = QueueType
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._PartitionCode = params.get("PartitionCode")
+        self._QueueName = params.get("QueueName")
+        self._Description = params.get("Description")
+        if params.get("ResourceUsages") is not None:
+            self._ResourceUsages = []
+            for item in params.get("ResourceUsages"):
+                obj = ResourceUsage()
+                obj._deserialize(item)
+                self._ResourceUsages.append(obj)
+        self._QueueType = params.get("QueueType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyPartitionQueueResponse(AbstractModel):
+    r"""ModifyPartitionQueue返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
 
 
@@ -54166,6 +57870,393 @@ class Partition(AbstractModel):
         
 
 
+class PartitionDetail(AbstractModel):
+    r"""资源分区详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PartitionCode: <p>分区编码</p>
+        :type PartitionCode: str
+        :param _PartitionName: <p>分区名称</p>
+        :type PartitionName: str
+        :param _Description: <p>分区描述</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Description: str
+        :param _Region: <p>地域</p>
+        :type Region: int
+        :param _ProductInfo: <p>产品信息</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProductInfo: str
+        :param _ResourcePoolCode: <p>资源池编码</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResourcePoolCode: str
+        :param _ResourceQuota: <p>资源配额列表</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResourceQuota: list of ResourceQuota
+        :param _PayMode: <p>付费模式</p>
+        :type PayMode: int
+        :param _RenewFlag: <p>续费标志</p>
+        :type RenewFlag: int
+        :param _Scheduler: <p>调度器类型</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Scheduler: str
+        :param _Status: <p>状态</p>
+        :type Status: int
+        """
+        self._PartitionCode = None
+        self._PartitionName = None
+        self._Description = None
+        self._Region = None
+        self._ProductInfo = None
+        self._ResourcePoolCode = None
+        self._ResourceQuota = None
+        self._PayMode = None
+        self._RenewFlag = None
+        self._Scheduler = None
+        self._Status = None
+
+    @property
+    def PartitionCode(self):
+        r"""<p>分区编码</p>
+        :rtype: str
+        """
+        return self._PartitionCode
+
+    @PartitionCode.setter
+    def PartitionCode(self, PartitionCode):
+        self._PartitionCode = PartitionCode
+
+    @property
+    def PartitionName(self):
+        r"""<p>分区名称</p>
+        :rtype: str
+        """
+        return self._PartitionName
+
+    @PartitionName.setter
+    def PartitionName(self, PartitionName):
+        self._PartitionName = PartitionName
+
+    @property
+    def Description(self):
+        r"""<p>分区描述</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def Region(self):
+        r"""<p>地域</p>
+        :rtype: int
+        """
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def ProductInfo(self):
+        r"""<p>产品信息</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ProductInfo
+
+    @ProductInfo.setter
+    def ProductInfo(self, ProductInfo):
+        self._ProductInfo = ProductInfo
+
+    @property
+    def ResourcePoolCode(self):
+        r"""<p>资源池编码</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ResourcePoolCode
+
+    @ResourcePoolCode.setter
+    def ResourcePoolCode(self, ResourcePoolCode):
+        self._ResourcePoolCode = ResourcePoolCode
+
+    @property
+    def ResourceQuota(self):
+        r"""<p>资源配额列表</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of ResourceQuota
+        """
+        return self._ResourceQuota
+
+    @ResourceQuota.setter
+    def ResourceQuota(self, ResourceQuota):
+        self._ResourceQuota = ResourceQuota
+
+    @property
+    def PayMode(self):
+        r"""<p>付费模式</p>
+        :rtype: int
+        """
+        return self._PayMode
+
+    @PayMode.setter
+    def PayMode(self, PayMode):
+        self._PayMode = PayMode
+
+    @property
+    def RenewFlag(self):
+        r"""<p>续费标志</p>
+        :rtype: int
+        """
+        return self._RenewFlag
+
+    @RenewFlag.setter
+    def RenewFlag(self, RenewFlag):
+        self._RenewFlag = RenewFlag
+
+    @property
+    def Scheduler(self):
+        r"""<p>调度器类型</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Scheduler
+
+    @Scheduler.setter
+    def Scheduler(self, Scheduler):
+        self._Scheduler = Scheduler
+
+    @property
+    def Status(self):
+        r"""<p>状态</p>
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+
+    def _deserialize(self, params):
+        self._PartitionCode = params.get("PartitionCode")
+        self._PartitionName = params.get("PartitionName")
+        self._Description = params.get("Description")
+        self._Region = params.get("Region")
+        self._ProductInfo = params.get("ProductInfo")
+        self._ResourcePoolCode = params.get("ResourcePoolCode")
+        if params.get("ResourceQuota") is not None:
+            self._ResourceQuota = []
+            for item in params.get("ResourceQuota"):
+                obj = ResourceQuota()
+                obj._deserialize(item)
+                self._ResourceQuota.append(obj)
+        self._PayMode = params.get("PayMode")
+        self._RenewFlag = params.get("RenewFlag")
+        self._Scheduler = params.get("Scheduler")
+        self._Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PartitionInfo(AbstractModel):
+    r"""资源分区信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: <p>分区名称</p>
+        :type Name: str
+        :param _PartitionCode: <p>分区编码</p>
+        :type PartitionCode: str
+        :param _Description: <p>描述</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Description: str
+        :param _Status: <p>状态：11-发货中，1-运行中，2-隔离中，3-已销毁</p>
+        :type Status: int
+        :param _QueueCount: <p>队列数量</p>
+        :type QueueCount: int
+        :param _ResourceQuota: <p>资源配置（配额）</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResourceQuota: list of ResourceQuota
+        :param _PayMode: <p>计费类型：1-包年包月，0-按量计费</p>
+        :type PayMode: int
+        :param _CreateTime: <p>创建时间</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: str
+        :param _UpdateTime: <p>更新时间</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpdateTime: str
+        :param _ExpireTime: <p>过期时间</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExpireTime: str
+        """
+        self._Name = None
+        self._PartitionCode = None
+        self._Description = None
+        self._Status = None
+        self._QueueCount = None
+        self._ResourceQuota = None
+        self._PayMode = None
+        self._CreateTime = None
+        self._UpdateTime = None
+        self._ExpireTime = None
+
+    @property
+    def Name(self):
+        r"""<p>分区名称</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def PartitionCode(self):
+        r"""<p>分区编码</p>
+        :rtype: str
+        """
+        return self._PartitionCode
+
+    @PartitionCode.setter
+    def PartitionCode(self, PartitionCode):
+        self._PartitionCode = PartitionCode
+
+    @property
+    def Description(self):
+        r"""<p>描述</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def Status(self):
+        r"""<p>状态：11-发货中，1-运行中，2-隔离中，3-已销毁</p>
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def QueueCount(self):
+        r"""<p>队列数量</p>
+        :rtype: int
+        """
+        return self._QueueCount
+
+    @QueueCount.setter
+    def QueueCount(self, QueueCount):
+        self._QueueCount = QueueCount
+
+    @property
+    def ResourceQuota(self):
+        r"""<p>资源配置（配额）</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of ResourceQuota
+        """
+        return self._ResourceQuota
+
+    @ResourceQuota.setter
+    def ResourceQuota(self, ResourceQuota):
+        self._ResourceQuota = ResourceQuota
+
+    @property
+    def PayMode(self):
+        r"""<p>计费类型：1-包年包月，0-按量计费</p>
+        :rtype: int
+        """
+        return self._PayMode
+
+    @PayMode.setter
+    def PayMode(self, PayMode):
+        self._PayMode = PayMode
+
+    @property
+    def CreateTime(self):
+        r"""<p>创建时间</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        r"""<p>更新时间</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def ExpireTime(self):
+        r"""<p>过期时间</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ExpireTime
+
+    @ExpireTime.setter
+    def ExpireTime(self, ExpireTime):
+        self._ExpireTime = ExpireTime
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._PartitionCode = params.get("PartitionCode")
+        self._Description = params.get("Description")
+        self._Status = params.get("Status")
+        self._QueueCount = params.get("QueueCount")
+        if params.get("ResourceQuota") is not None:
+            self._ResourceQuota = []
+            for item in params.get("ResourceQuota"):
+                obj = ResourceQuota()
+                obj._deserialize(item)
+                self._ResourceQuota.append(obj)
+        self._PayMode = params.get("PayMode")
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
+        self._ExpireTime = params.get("ExpireTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class PauseStandardEngineResourceGroupsRequest(AbstractModel):
     r"""PauseStandardEngineResourceGroups请求参数结构体
 
@@ -55418,6 +59509,126 @@ class QueryTaskCostDetailResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class QueueInfo(AbstractModel):
+    r"""队列信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: <p>队列ID</p>
+        :type Id: int
+        :param _QueueName: <p>队列名称</p>
+        :type QueueName: str
+        :param _ResourceUsage: <p>资源用量列表</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResourceUsage: list of ResourceUsage
+        :param _Description: <p>队列描述</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Description: str
+        :param _IsDefault: <p>是否为默认队列</p>
+        :type IsDefault: int
+        :param _QueueType: <p>队列类型：1-独占型，2-共享型</p>
+        :type QueueType: int
+        """
+        self._Id = None
+        self._QueueName = None
+        self._ResourceUsage = None
+        self._Description = None
+        self._IsDefault = None
+        self._QueueType = None
+
+    @property
+    def Id(self):
+        r"""<p>队列ID</p>
+        :rtype: int
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def QueueName(self):
+        r"""<p>队列名称</p>
+        :rtype: str
+        """
+        return self._QueueName
+
+    @QueueName.setter
+    def QueueName(self, QueueName):
+        self._QueueName = QueueName
+
+    @property
+    def ResourceUsage(self):
+        r"""<p>资源用量列表</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of ResourceUsage
+        """
+        return self._ResourceUsage
+
+    @ResourceUsage.setter
+    def ResourceUsage(self, ResourceUsage):
+        self._ResourceUsage = ResourceUsage
+
+    @property
+    def Description(self):
+        r"""<p>队列描述</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def IsDefault(self):
+        r"""<p>是否为默认队列</p>
+        :rtype: int
+        """
+        return self._IsDefault
+
+    @IsDefault.setter
+    def IsDefault(self, IsDefault):
+        self._IsDefault = IsDefault
+
+    @property
+    def QueueType(self):
+        r"""<p>队列类型：1-独占型，2-共享型</p>
+        :rtype: int
+        """
+        return self._QueueType
+
+    @QueueType.setter
+    def QueueType(self, QueueType):
+        self._QueueType = QueueType
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._QueueName = params.get("QueueName")
+        if params.get("ResourceUsage") is not None:
+            self._ResourceUsage = []
+            for item in params.get("ResourceUsage"):
+                obj = ResourceUsage()
+                obj._deserialize(item)
+                self._ResourceUsage.append(obj)
+        self._Description = params.get("Description")
+        self._IsDefault = params.get("IsDefault")
+        self._QueueType = params.get("QueueType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class RayClusterEntity(AbstractModel):
     r"""Ray集群实体
 
@@ -56562,6 +60773,72 @@ class RayJobSubmitEntity(AbstractModel):
         
 
 
+class RegionInfo(AbstractModel):
+    r"""可售卖地域信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RegionCode: <p>地域编码，如 ap-chongqing</p>
+        :type RegionCode: str
+        :param _RegionName: <p>地域名称，如 重庆</p>
+        :type RegionName: str
+        :param _Status: <p>地域状态：AVAILABLE-可用，UNAVAILABLE-不可用</p>
+        :type Status: str
+        """
+        self._RegionCode = None
+        self._RegionName = None
+        self._Status = None
+
+    @property
+    def RegionCode(self):
+        r"""<p>地域编码，如 ap-chongqing</p>
+        :rtype: str
+        """
+        return self._RegionCode
+
+    @RegionCode.setter
+    def RegionCode(self, RegionCode):
+        self._RegionCode = RegionCode
+
+    @property
+    def RegionName(self):
+        r"""<p>地域名称，如 重庆</p>
+        :rtype: str
+        """
+        return self._RegionName
+
+    @RegionName.setter
+    def RegionName(self, RegionName):
+        self._RegionName = RegionName
+
+    @property
+    def Status(self):
+        r"""<p>地域状态：AVAILABLE-可用，UNAVAILABLE-不可用</p>
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+
+    def _deserialize(self, params):
+        self._RegionCode = params.get("RegionCode")
+        self._RegionName = params.get("RegionName")
+        self._Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class RegisterThirdPartyAccessUserRequest(AbstractModel):
     r"""RegisterThirdPartyAccessUser请求参数结构体
 
@@ -57183,6 +61460,329 @@ class ResourceInfo(AbstractModel):
         if params.get("ResourceConf") is not None:
             self._ResourceConf = ResourceConf()
             self._ResourceConf._deserialize(params.get("ResourceConf"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ResourceQuota(AbstractModel):
+    r"""资源配额
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ResourceSpec: <p>可售卖资源规格</p>
+        :type ResourceSpec: :class:`tencentcloud.dlc.v20210125.models.ResourceSpec`
+        :param _Quota: <p>配额数量</p>
+        :type Quota: int
+        """
+        self._ResourceSpec = None
+        self._Quota = None
+
+    @property
+    def ResourceSpec(self):
+        r"""<p>可售卖资源规格</p>
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.ResourceSpec`
+        """
+        return self._ResourceSpec
+
+    @ResourceSpec.setter
+    def ResourceSpec(self, ResourceSpec):
+        self._ResourceSpec = ResourceSpec
+
+    @property
+    def Quota(self):
+        r"""<p>配额数量</p>
+        :rtype: int
+        """
+        return self._Quota
+
+    @Quota.setter
+    def Quota(self, Quota):
+        self._Quota = Quota
+
+
+    def _deserialize(self, params):
+        if params.get("ResourceSpec") is not None:
+            self._ResourceSpec = ResourceSpec()
+            self._ResourceSpec._deserialize(params.get("ResourceSpec"))
+        self._Quota = params.get("Quota")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ResourceSaleInfo(AbstractModel):
+    r"""可售卖资源规格信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ResourceSpec: <p>可售卖资源规格</p>
+        :type ResourceSpec: :class:`tencentcloud.dlc.v20210125.models.ResourceSpec`
+        :param _Step: <p>规格步长</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Step: int
+        :param _MaxSpec: <p>最大资源数量，仅GU有值</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MaxSpec: int
+        """
+        self._ResourceSpec = None
+        self._Step = None
+        self._MaxSpec = None
+
+    @property
+    def ResourceSpec(self):
+        r"""<p>可售卖资源规格</p>
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.ResourceSpec`
+        """
+        return self._ResourceSpec
+
+    @ResourceSpec.setter
+    def ResourceSpec(self, ResourceSpec):
+        self._ResourceSpec = ResourceSpec
+
+    @property
+    def Step(self):
+        r"""<p>规格步长</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Step
+
+    @Step.setter
+    def Step(self, Step):
+        self._Step = Step
+
+    @property
+    def MaxSpec(self):
+        r"""<p>最大资源数量，仅GU有值</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._MaxSpec
+
+    @MaxSpec.setter
+    def MaxSpec(self, MaxSpec):
+        self._MaxSpec = MaxSpec
+
+
+    def _deserialize(self, params):
+        if params.get("ResourceSpec") is not None:
+            self._ResourceSpec = ResourceSpec()
+            self._ResourceSpec._deserialize(params.get("ResourceSpec"))
+        self._Step = params.get("Step")
+        self._MaxSpec = params.get("MaxSpec")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ResourceSpec(AbstractModel):
+    r"""资源规格
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ResourceType: <p>资源包类型</p>
+        :type ResourceType: str
+        :param _InstanceType: <p>机型，例如X40/T20，仅GU有值</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceType: str
+        :param _BillingItem: <p>四层计费项</p>
+        :type BillingItem: str
+        :param _SpecDesc: <p>规格描述</p>
+        :type SpecDesc: str
+        :param _Spec: <p>规格，格式为 {gpu}:{cpu}:{mem}:{vram}</p>
+        :type Spec: str
+        :param _GpuType: <p>GPU类型，仅GU有值</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GpuType: str
+        :param _MaxCardPerNode: <p>单个物理节点上该计费项对应的最大 GPU 卡数，CPU / HM_CPU 恒为 0</p>
+        :type MaxCardPerNode: int
+        """
+        self._ResourceType = None
+        self._InstanceType = None
+        self._BillingItem = None
+        self._SpecDesc = None
+        self._Spec = None
+        self._GpuType = None
+        self._MaxCardPerNode = None
+
+    @property
+    def ResourceType(self):
+        r"""<p>资源包类型</p>
+        :rtype: str
+        """
+        return self._ResourceType
+
+    @ResourceType.setter
+    def ResourceType(self, ResourceType):
+        self._ResourceType = ResourceType
+
+    @property
+    def InstanceType(self):
+        r"""<p>机型，例如X40/T20，仅GU有值</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._InstanceType
+
+    @InstanceType.setter
+    def InstanceType(self, InstanceType):
+        self._InstanceType = InstanceType
+
+    @property
+    def BillingItem(self):
+        r"""<p>四层计费项</p>
+        :rtype: str
+        """
+        return self._BillingItem
+
+    @BillingItem.setter
+    def BillingItem(self, BillingItem):
+        self._BillingItem = BillingItem
+
+    @property
+    def SpecDesc(self):
+        r"""<p>规格描述</p>
+        :rtype: str
+        """
+        return self._SpecDesc
+
+    @SpecDesc.setter
+    def SpecDesc(self, SpecDesc):
+        self._SpecDesc = SpecDesc
+
+    @property
+    def Spec(self):
+        r"""<p>规格，格式为 {gpu}:{cpu}:{mem}:{vram}</p>
+        :rtype: str
+        """
+        return self._Spec
+
+    @Spec.setter
+    def Spec(self, Spec):
+        self._Spec = Spec
+
+    @property
+    def GpuType(self):
+        r"""<p>GPU类型，仅GU有值</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._GpuType
+
+    @GpuType.setter
+    def GpuType(self, GpuType):
+        self._GpuType = GpuType
+
+    @property
+    def MaxCardPerNode(self):
+        r"""<p>单个物理节点上该计费项对应的最大 GPU 卡数，CPU / HM_CPU 恒为 0</p>
+        :rtype: int
+        """
+        return self._MaxCardPerNode
+
+    @MaxCardPerNode.setter
+    def MaxCardPerNode(self, MaxCardPerNode):
+        self._MaxCardPerNode = MaxCardPerNode
+
+
+    def _deserialize(self, params):
+        self._ResourceType = params.get("ResourceType")
+        self._InstanceType = params.get("InstanceType")
+        self._BillingItem = params.get("BillingItem")
+        self._SpecDesc = params.get("SpecDesc")
+        self._Spec = params.get("Spec")
+        self._GpuType = params.get("GpuType")
+        self._MaxCardPerNode = params.get("MaxCardPerNode")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ResourceUsage(AbstractModel):
+    r"""资源用量信息，描述某种资源类型的用量范围
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ResourceSpec: <p>资源规格</p>
+        :type ResourceSpec: :class:`tencentcloud.dlc.v20210125.models.ResourceSpec`
+        :param _Min: <p>最小用量</p>
+        :type Min: int
+        :param _Max: <p>最大用量</p>
+        :type Max: int
+        """
+        self._ResourceSpec = None
+        self._Min = None
+        self._Max = None
+
+    @property
+    def ResourceSpec(self):
+        r"""<p>资源规格</p>
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.ResourceSpec`
+        """
+        return self._ResourceSpec
+
+    @ResourceSpec.setter
+    def ResourceSpec(self, ResourceSpec):
+        self._ResourceSpec = ResourceSpec
+
+    @property
+    def Min(self):
+        r"""<p>最小用量</p>
+        :rtype: int
+        """
+        return self._Min
+
+    @Min.setter
+    def Min(self, Min):
+        self._Min = Min
+
+    @property
+    def Max(self):
+        r"""<p>最大用量</p>
+        :rtype: int
+        """
+        return self._Max
+
+    @Max.setter
+    def Max(self, Max):
+        self._Max = Max
+
+
+    def _deserialize(self, params):
+        if params.get("ResourceSpec") is not None:
+            self._ResourceSpec = ResourceSpec()
+            self._ResourceSpec._deserialize(params.get("ResourceSpec"))
+        self._Min = params.get("Min")
+        self._Max = params.get("Max")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -68716,6 +73316,430 @@ class UpdateEngineResourceGroupNetworkConfigInfoResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class UpdateInferenceModelRequest(AbstractModel):
+    r"""UpdateInferenceModel请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ModelUid: <p>推理模型UID</p>
+        :type ModelUid: str
+        :param _Name: <p>模型名称（可选，不传则不修改）</p>
+        :type Name: str
+        :param _Description: <p>模型描述（可选）</p>
+        :type Description: str
+        :param _ParameterSize: <p>模型参数量（可选，如 7B、1.5B）</p>
+        :type ParameterSize: str
+        :param _Tags: <p>模型标签列表（可选）</p>
+        :type Tags: list of str
+        """
+        self._ModelUid = None
+        self._Name = None
+        self._Description = None
+        self._ParameterSize = None
+        self._Tags = None
+
+    @property
+    def ModelUid(self):
+        r"""<p>推理模型UID</p>
+        :rtype: str
+        """
+        return self._ModelUid
+
+    @ModelUid.setter
+    def ModelUid(self, ModelUid):
+        self._ModelUid = ModelUid
+
+    @property
+    def Name(self):
+        r"""<p>模型名称（可选，不传则不修改）</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Description(self):
+        r"""<p>模型描述（可选）</p>
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def ParameterSize(self):
+        r"""<p>模型参数量（可选，如 7B、1.5B）</p>
+        :rtype: str
+        """
+        return self._ParameterSize
+
+    @ParameterSize.setter
+    def ParameterSize(self, ParameterSize):
+        self._ParameterSize = ParameterSize
+
+    @property
+    def Tags(self):
+        r"""<p>模型标签列表（可选）</p>
+        :rtype: list of str
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+
+    def _deserialize(self, params):
+        self._ModelUid = params.get("ModelUid")
+        self._Name = params.get("Name")
+        self._Description = params.get("Description")
+        self._ParameterSize = params.get("ParameterSize")
+        self._Tags = params.get("Tags")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateInferenceModelResponse(AbstractModel):
+    r"""UpdateInferenceModel返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ModelId: <p>推理模型ID</p>
+        :type ModelId: str
+        :param _ModelUid: <p>推理模型UID</p>
+        :type ModelUid: str
+        :param _Name: <p>模型名称</p>
+        :type Name: str
+        :param _Provider: <p>模型提供方</p>
+        :type Provider: str
+        :param _Description: <p>模型描述</p>
+        :type Description: str
+        :param _ModelType: <p>模型类型</p>
+        :type ModelType: str
+        :param _ParameterSize: <p>模型参数量</p>
+        :type ParameterSize: str
+        :param _Tags: <p>标签</p>
+        :type Tags: list of str
+        :param _LatestVersion: <p>最新版本号</p>
+        :type LatestVersion: str
+        :param _VersionCount: <p>版本总数</p>
+        :type VersionCount: int
+        :param _ServiceCount: <p>关联的推理服务数量</p>
+        :type ServiceCount: int
+        :param _HasStorage: <p>是否有存储</p>
+        :type HasStorage: bool
+        :param _HasCustomStorage: <p>是否使用用户自带存储桶</p>
+        :type HasCustomStorage: bool
+        :param _StorageType: <p>存储后端类型</p>
+        :type StorageType: str
+        :param _BuiltIn: <p>是否内置模型</p>
+        :type BuiltIn: bool
+        :param _Tasks: <p>任务类型列表</p>
+        :type Tasks: list of str
+        :param _AppId: <p>APPID</p>
+        :type AppId: int
+        :param _CreateTime: <p>创建时间</p>
+        :type CreateTime: int
+        :param _UpdateTime: <p>更新时间</p>
+        :type UpdateTime: int
+        :param _SubAccountUin: <p>SUB UIN</p>
+        :type SubAccountUin: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ModelId = None
+        self._ModelUid = None
+        self._Name = None
+        self._Provider = None
+        self._Description = None
+        self._ModelType = None
+        self._ParameterSize = None
+        self._Tags = None
+        self._LatestVersion = None
+        self._VersionCount = None
+        self._ServiceCount = None
+        self._HasStorage = None
+        self._HasCustomStorage = None
+        self._StorageType = None
+        self._BuiltIn = None
+        self._Tasks = None
+        self._AppId = None
+        self._CreateTime = None
+        self._UpdateTime = None
+        self._SubAccountUin = None
+        self._RequestId = None
+
+    @property
+    def ModelId(self):
+        r"""<p>推理模型ID</p>
+        :rtype: str
+        """
+        return self._ModelId
+
+    @ModelId.setter
+    def ModelId(self, ModelId):
+        self._ModelId = ModelId
+
+    @property
+    def ModelUid(self):
+        r"""<p>推理模型UID</p>
+        :rtype: str
+        """
+        return self._ModelUid
+
+    @ModelUid.setter
+    def ModelUid(self, ModelUid):
+        self._ModelUid = ModelUid
+
+    @property
+    def Name(self):
+        r"""<p>模型名称</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Provider(self):
+        r"""<p>模型提供方</p>
+        :rtype: str
+        """
+        return self._Provider
+
+    @Provider.setter
+    def Provider(self, Provider):
+        self._Provider = Provider
+
+    @property
+    def Description(self):
+        r"""<p>模型描述</p>
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def ModelType(self):
+        r"""<p>模型类型</p>
+        :rtype: str
+        """
+        return self._ModelType
+
+    @ModelType.setter
+    def ModelType(self, ModelType):
+        self._ModelType = ModelType
+
+    @property
+    def ParameterSize(self):
+        r"""<p>模型参数量</p>
+        :rtype: str
+        """
+        return self._ParameterSize
+
+    @ParameterSize.setter
+    def ParameterSize(self, ParameterSize):
+        self._ParameterSize = ParameterSize
+
+    @property
+    def Tags(self):
+        r"""<p>标签</p>
+        :rtype: list of str
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def LatestVersion(self):
+        r"""<p>最新版本号</p>
+        :rtype: str
+        """
+        return self._LatestVersion
+
+    @LatestVersion.setter
+    def LatestVersion(self, LatestVersion):
+        self._LatestVersion = LatestVersion
+
+    @property
+    def VersionCount(self):
+        r"""<p>版本总数</p>
+        :rtype: int
+        """
+        return self._VersionCount
+
+    @VersionCount.setter
+    def VersionCount(self, VersionCount):
+        self._VersionCount = VersionCount
+
+    @property
+    def ServiceCount(self):
+        r"""<p>关联的推理服务数量</p>
+        :rtype: int
+        """
+        return self._ServiceCount
+
+    @ServiceCount.setter
+    def ServiceCount(self, ServiceCount):
+        self._ServiceCount = ServiceCount
+
+    @property
+    def HasStorage(self):
+        r"""<p>是否有存储</p>
+        :rtype: bool
+        """
+        return self._HasStorage
+
+    @HasStorage.setter
+    def HasStorage(self, HasStorage):
+        self._HasStorage = HasStorage
+
+    @property
+    def HasCustomStorage(self):
+        r"""<p>是否使用用户自带存储桶</p>
+        :rtype: bool
+        """
+        return self._HasCustomStorage
+
+    @HasCustomStorage.setter
+    def HasCustomStorage(self, HasCustomStorage):
+        self._HasCustomStorage = HasCustomStorage
+
+    @property
+    def StorageType(self):
+        r"""<p>存储后端类型</p>
+        :rtype: str
+        """
+        return self._StorageType
+
+    @StorageType.setter
+    def StorageType(self, StorageType):
+        self._StorageType = StorageType
+
+    @property
+    def BuiltIn(self):
+        r"""<p>是否内置模型</p>
+        :rtype: bool
+        """
+        return self._BuiltIn
+
+    @BuiltIn.setter
+    def BuiltIn(self, BuiltIn):
+        self._BuiltIn = BuiltIn
+
+    @property
+    def Tasks(self):
+        r"""<p>任务类型列表</p>
+        :rtype: list of str
+        """
+        return self._Tasks
+
+    @Tasks.setter
+    def Tasks(self, Tasks):
+        self._Tasks = Tasks
+
+    @property
+    def AppId(self):
+        r"""<p>APPID</p>
+        :rtype: int
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def CreateTime(self):
+        r"""<p>创建时间</p>
+        :rtype: int
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        r"""<p>更新时间</p>
+        :rtype: int
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def SubAccountUin(self):
+        r"""<p>SUB UIN</p>
+        :rtype: str
+        """
+        return self._SubAccountUin
+
+    @SubAccountUin.setter
+    def SubAccountUin(self, SubAccountUin):
+        self._SubAccountUin = SubAccountUin
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._ModelId = params.get("ModelId")
+        self._ModelUid = params.get("ModelUid")
+        self._Name = params.get("Name")
+        self._Provider = params.get("Provider")
+        self._Description = params.get("Description")
+        self._ModelType = params.get("ModelType")
+        self._ParameterSize = params.get("ParameterSize")
+        self._Tags = params.get("Tags")
+        self._LatestVersion = params.get("LatestVersion")
+        self._VersionCount = params.get("VersionCount")
+        self._ServiceCount = params.get("ServiceCount")
+        self._HasStorage = params.get("HasStorage")
+        self._HasCustomStorage = params.get("HasCustomStorage")
+        self._StorageType = params.get("StorageType")
+        self._BuiltIn = params.get("BuiltIn")
+        self._Tasks = params.get("Tasks")
+        self._AppId = params.get("AppId")
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
+        self._SubAccountUin = params.get("SubAccountUin")
         self._RequestId = params.get("RequestId")
 
 

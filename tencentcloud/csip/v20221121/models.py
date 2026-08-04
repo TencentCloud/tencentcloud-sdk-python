@@ -8474,7 +8474,7 @@ class AuditLogInfo(AbstractModel):
         :type DbUser: str
         :param _EffectRow: 影响行数
         :type EffectRow: int
-        :param _ExecTime: 执行时间
+        :param _ExecTime: 执行时间,单位：毫秒
         :type ExecTime: int
         :param _HitRule: 命中规则
         :type HitRule: str
@@ -8727,7 +8727,7 @@ class AuditLogInfo(AbstractModel):
 
     @property
     def ExecTime(self):
-        r"""执行时间
+        r"""执行时间,单位：毫秒
         :rtype: int
         """
         return self._ExecTime
@@ -19986,24 +19986,26 @@ class CreateDspmWhitelistStrategyRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _StrategyType: 策略类型
+        :param _StrategyType: <p>策略类型</p>
         :type StrategyType: str
-        :param _MemberId: 集团账号的成员id
+        :param _MemberId: <p>集团账号的成员id</p>
         :type MemberId: list of str
-        :param _Name: 白名单
+        :param _Name: <p>白名单</p>
         :type Name: str
-        :param _Rule: 规则
+        :param _Rule: <p>规则</p>
         :type Rule: str
-        :param _AssetId: 资产id
+        :param _AssetId: <p>资产id</p>
         :type AssetId: str
-        :param _Account: 账号
+        :param _Account: <p>账号</p>
         :type Account: str
-        :param _Host: 主机
+        :param _Host: <p>主机</p>
         :type Host: str
-        :param _RiskId: 风险id
+        :param _RiskId: <p>风险id</p>
         :type RiskId: str
-        :param _Remark: 备注
+        :param _Remark: <p>备注</p>
         :type Remark: str
+        :param _WhitelistType: <p>白名单的类型</p><p>枚举值：</p><ul><li>static_risk： 静态配置扫描的白名单规则</li><li>audit： 审计白名单规则</li><li>ueba： ueba相关的白名单规则</li></ul>
+        :type WhitelistType: str
         """
         self._StrategyType = None
         self._MemberId = None
@@ -20014,10 +20016,11 @@ class CreateDspmWhitelistStrategyRequest(AbstractModel):
         self._Host = None
         self._RiskId = None
         self._Remark = None
+        self._WhitelistType = None
 
     @property
     def StrategyType(self):
-        r"""策略类型
+        r"""<p>策略类型</p>
         :rtype: str
         """
         return self._StrategyType
@@ -20028,7 +20031,7 @@ class CreateDspmWhitelistStrategyRequest(AbstractModel):
 
     @property
     def MemberId(self):
-        r"""集团账号的成员id
+        r"""<p>集团账号的成员id</p>
         :rtype: list of str
         """
         return self._MemberId
@@ -20039,7 +20042,7 @@ class CreateDspmWhitelistStrategyRequest(AbstractModel):
 
     @property
     def Name(self):
-        r"""白名单
+        r"""<p>白名单</p>
         :rtype: str
         """
         return self._Name
@@ -20050,7 +20053,7 @@ class CreateDspmWhitelistStrategyRequest(AbstractModel):
 
     @property
     def Rule(self):
-        r"""规则
+        r"""<p>规则</p>
         :rtype: str
         """
         return self._Rule
@@ -20061,7 +20064,7 @@ class CreateDspmWhitelistStrategyRequest(AbstractModel):
 
     @property
     def AssetId(self):
-        r"""资产id
+        r"""<p>资产id</p>
         :rtype: str
         """
         return self._AssetId
@@ -20072,7 +20075,7 @@ class CreateDspmWhitelistStrategyRequest(AbstractModel):
 
     @property
     def Account(self):
-        r"""账号
+        r"""<p>账号</p>
         :rtype: str
         """
         return self._Account
@@ -20083,7 +20086,7 @@ class CreateDspmWhitelistStrategyRequest(AbstractModel):
 
     @property
     def Host(self):
-        r"""主机
+        r"""<p>主机</p>
         :rtype: str
         """
         return self._Host
@@ -20094,7 +20097,7 @@ class CreateDspmWhitelistStrategyRequest(AbstractModel):
 
     @property
     def RiskId(self):
-        r"""风险id
+        r"""<p>风险id</p>
         :rtype: str
         """
         return self._RiskId
@@ -20105,7 +20108,7 @@ class CreateDspmWhitelistStrategyRequest(AbstractModel):
 
     @property
     def Remark(self):
-        r"""备注
+        r"""<p>备注</p>
         :rtype: str
         """
         return self._Remark
@@ -20113,6 +20116,17 @@ class CreateDspmWhitelistStrategyRequest(AbstractModel):
     @Remark.setter
     def Remark(self, Remark):
         self._Remark = Remark
+
+    @property
+    def WhitelistType(self):
+        r"""<p>白名单的类型</p><p>枚举值：</p><ul><li>static_risk： 静态配置扫描的白名单规则</li><li>audit： 审计白名单规则</li><li>ueba： ueba相关的白名单规则</li></ul>
+        :rtype: str
+        """
+        return self._WhitelistType
+
+    @WhitelistType.setter
+    def WhitelistType(self, WhitelistType):
+        self._WhitelistType = WhitelistType
 
 
     def _deserialize(self, params):
@@ -20125,6 +20139,7 @@ class CreateDspmWhitelistStrategyRequest(AbstractModel):
         self._Host = params.get("Host")
         self._RiskId = params.get("RiskId")
         self._Remark = params.get("Remark")
+        self._WhitelistType = params.get("WhitelistType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -20142,7 +20157,7 @@ class CreateDspmWhitelistStrategyResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _WhitelistStrategyId: 白名单id
+        :param _WhitelistStrategyId: <p>白名单id</p>
         :type WhitelistStrategyId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -20152,7 +20167,7 @@ class CreateDspmWhitelistStrategyResponse(AbstractModel):
 
     @property
     def WhitelistStrategyId(self):
-        r"""白名单id
+        r"""<p>白名单id</p>
         :rtype: str
         """
         return self._WhitelistStrategyId
@@ -23289,7 +23304,7 @@ class DeleteDspmWhitelistStrategyRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _MemberId: 集团账号的成员id
+        :param _MemberId: <p>集团账号的成员id</p>
         :type MemberId: list of str
         :param _WhitelistStrategyId: 白名单id
         :type WhitelistStrategyId: list of str
@@ -23299,7 +23314,7 @@ class DeleteDspmWhitelistStrategyRequest(AbstractModel):
 
     @property
     def MemberId(self):
-        r"""集团账号的成员id
+        r"""<p>集团账号的成员id</p>
         :rtype: list of str
         """
         return self._MemberId
@@ -37969,7 +37984,7 @@ class DescribeDspmLogListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _MemberId: 集团账号的成员id
+        :param _MemberId: <p>集团账号的成员id</p>
         :type MemberId: list of str
         :param _Limit: 限制数目
         :type Limit: int
@@ -38021,7 +38036,7 @@ class DescribeDspmLogListRequest(AbstractModel):
         :type RowNumMin: int
         :param _RowNumMax: 影响行数最大值
         :type RowNumMax: int
-        :param _DbTypes: 数据库类型
+        :param _DbTypes: 数据库类型, 支持的值：cdb，mariadb
         :type DbTypes: list of str
         :param _RetNo: 返回码
         :type RetNo: int
@@ -38078,7 +38093,7 @@ class DescribeDspmLogListRequest(AbstractModel):
 
     @property
     def MemberId(self):
-        r"""集团账号的成员id
+        r"""<p>集团账号的成员id</p>
         :rtype: list of str
         """
         return self._MemberId
@@ -38364,7 +38379,7 @@ class DescribeDspmLogListRequest(AbstractModel):
 
     @property
     def DbTypes(self):
-        r"""数据库类型
+        r"""数据库类型, 支持的值：cdb，mariadb
         :rtype: list of str
         """
         return self._DbTypes
@@ -39830,7 +39845,7 @@ class DescribeDspmRiskStrategyGroupRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _MemberId: 集团账号的成员id
+        :param _MemberId: <p>集团账号的成员id</p>
         :type MemberId: list of str
         :param _Filter: 过滤器
         :type Filter: :class:`tencentcloud.csip.v20221121.models.Filter`
@@ -39840,7 +39855,7 @@ class DescribeDspmRiskStrategyGroupRequest(AbstractModel):
 
     @property
     def MemberId(self):
-        r"""集团账号的成员id
+        r"""<p>集团账号的成员id</p>
         :rtype: list of str
         """
         return self._MemberId
@@ -39946,7 +39961,7 @@ class DescribeDspmRiskStrategyRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _MemberId: 集团账号的成员id
+        :param _MemberId: <p>集团账号的成员id</p>
         :type MemberId: list of str
         :param _Filter: 过滤器
         :type Filter: :class:`tencentcloud.csip.v20221121.models.Filter`
@@ -39956,7 +39971,7 @@ class DescribeDspmRiskStrategyRequest(AbstractModel):
 
     @property
     def MemberId(self):
-        r"""集团账号的成员id
+        r"""<p>集团账号的成员id</p>
         :rtype: list of str
         """
         return self._MemberId
@@ -40522,7 +40537,7 @@ class DescribeDspmWhitelistStrategyRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _MemberId: 集团账号的成员id
+        :param _MemberId: <p>集团账号的成员id</p>
         :type MemberId: list of str
         :param _Filter: 过滤器
         :type Filter: :class:`tencentcloud.csip.v20221121.models.Filter`
@@ -40532,7 +40547,7 @@ class DescribeDspmWhitelistStrategyRequest(AbstractModel):
 
     @property
     def MemberId(self):
-        r"""集团账号的成员id
+        r"""<p>集团账号的成员id</p>
         :rtype: list of str
         """
         return self._MemberId
@@ -59683,34 +59698,41 @@ class DspmRiskStrategy(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _StrategyType: 策略类型
+        :param _StrategyType: <p>策略类型</p>
         :type StrategyType: str
-        :param _Name: 策略名
+        :param _Name: <p>策略名</p>
         :type Name: str
-        :param _StrategyCategory: 策略类型
+        :param _StrategyCategory: <p>策略类型</p>
         :type StrategyCategory: str
-        :param _IsEnabled: 是否启用。0-禁用 1-启用
+        :param _IsEnabled: <p>是否启用。0-禁用 1-启用</p>
         :type IsEnabled: int
-        :param _RiskLevel: 风险等级。
+        :param _RiskLevel: <p>风险等级。</p>
         :type RiskLevel: str
-        :param _Rule: 策略规则
+        :param _Rule: <p>策略规则</p>
         :type Rule: str
-        :param _Remark: 备注
+        :param _Remark: <p>备注</p>
         :type Remark: str
-        :param _Description: 策略内容
+        :param _Description: <p>策略内容</p>
         :type Description: str
-        :param _HitCount: 命中次数
+        :param _HitCount: <p>命中次数</p>
         :type HitCount: int
-        :param _RiskType: 风险类型。risk-风险；alarm-告警。
+        :param _RiskType: <p>风险类型。risk-风险；alarm-告警。</p>
         :type RiskType: str
-        :param _AppId: 资产所属账号app id
+        :param _AppId: <p>资产所属账号app id</p>
         :type AppId: int
-        :param _NickName: 账号昵称
+        :param _NickName: <p>账号昵称</p>
         :type NickName: str
-        :param _Uin: 资产所属账号uin
+        :param _Uin: <p>资产所属账号uin</p>
         :type Uin: str
-        :param _StrategyId: 策略id
+        :param _StrategyId: <p>策略id</p>
         :type StrategyId: int
+        :param _RuleSource: <p>规则来源</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RuleSource: str
+        :param _AssetTypes: <p>支持的资产类型</p>
+        :type AssetTypes: list of str
+        :param _RiskDescription: <p>风险描述</p>
+        :type RiskDescription: str
         """
         self._StrategyType = None
         self._Name = None
@@ -59726,10 +59748,13 @@ class DspmRiskStrategy(AbstractModel):
         self._NickName = None
         self._Uin = None
         self._StrategyId = None
+        self._RuleSource = None
+        self._AssetTypes = None
+        self._RiskDescription = None
 
     @property
     def StrategyType(self):
-        r"""策略类型
+        r"""<p>策略类型</p>
         :rtype: str
         """
         return self._StrategyType
@@ -59740,7 +59765,7 @@ class DspmRiskStrategy(AbstractModel):
 
     @property
     def Name(self):
-        r"""策略名
+        r"""<p>策略名</p>
         :rtype: str
         """
         return self._Name
@@ -59751,7 +59776,7 @@ class DspmRiskStrategy(AbstractModel):
 
     @property
     def StrategyCategory(self):
-        r"""策略类型
+        r"""<p>策略类型</p>
         :rtype: str
         """
         return self._StrategyCategory
@@ -59762,7 +59787,7 @@ class DspmRiskStrategy(AbstractModel):
 
     @property
     def IsEnabled(self):
-        r"""是否启用。0-禁用 1-启用
+        r"""<p>是否启用。0-禁用 1-启用</p>
         :rtype: int
         """
         return self._IsEnabled
@@ -59773,7 +59798,7 @@ class DspmRiskStrategy(AbstractModel):
 
     @property
     def RiskLevel(self):
-        r"""风险等级。
+        r"""<p>风险等级。</p>
         :rtype: str
         """
         return self._RiskLevel
@@ -59784,7 +59809,7 @@ class DspmRiskStrategy(AbstractModel):
 
     @property
     def Rule(self):
-        r"""策略规则
+        r"""<p>策略规则</p>
         :rtype: str
         """
         return self._Rule
@@ -59795,7 +59820,7 @@ class DspmRiskStrategy(AbstractModel):
 
     @property
     def Remark(self):
-        r"""备注
+        r"""<p>备注</p>
         :rtype: str
         """
         return self._Remark
@@ -59806,7 +59831,7 @@ class DspmRiskStrategy(AbstractModel):
 
     @property
     def Description(self):
-        r"""策略内容
+        r"""<p>策略内容</p>
         :rtype: str
         """
         return self._Description
@@ -59817,7 +59842,7 @@ class DspmRiskStrategy(AbstractModel):
 
     @property
     def HitCount(self):
-        r"""命中次数
+        r"""<p>命中次数</p>
         :rtype: int
         """
         return self._HitCount
@@ -59828,7 +59853,7 @@ class DspmRiskStrategy(AbstractModel):
 
     @property
     def RiskType(self):
-        r"""风险类型。risk-风险；alarm-告警。
+        r"""<p>风险类型。risk-风险；alarm-告警。</p>
         :rtype: str
         """
         return self._RiskType
@@ -59839,7 +59864,7 @@ class DspmRiskStrategy(AbstractModel):
 
     @property
     def AppId(self):
-        r"""资产所属账号app id
+        r"""<p>资产所属账号app id</p>
         :rtype: int
         """
         return self._AppId
@@ -59850,7 +59875,7 @@ class DspmRiskStrategy(AbstractModel):
 
     @property
     def NickName(self):
-        r"""账号昵称
+        r"""<p>账号昵称</p>
         :rtype: str
         """
         return self._NickName
@@ -59861,7 +59886,7 @@ class DspmRiskStrategy(AbstractModel):
 
     @property
     def Uin(self):
-        r"""资产所属账号uin
+        r"""<p>资产所属账号uin</p>
         :rtype: str
         """
         return self._Uin
@@ -59872,7 +59897,7 @@ class DspmRiskStrategy(AbstractModel):
 
     @property
     def StrategyId(self):
-        r"""策略id
+        r"""<p>策略id</p>
         :rtype: int
         """
         return self._StrategyId
@@ -59880,6 +59905,40 @@ class DspmRiskStrategy(AbstractModel):
     @StrategyId.setter
     def StrategyId(self, StrategyId):
         self._StrategyId = StrategyId
+
+    @property
+    def RuleSource(self):
+        r"""<p>规则来源</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._RuleSource
+
+    @RuleSource.setter
+    def RuleSource(self, RuleSource):
+        self._RuleSource = RuleSource
+
+    @property
+    def AssetTypes(self):
+        r"""<p>支持的资产类型</p>
+        :rtype: list of str
+        """
+        return self._AssetTypes
+
+    @AssetTypes.setter
+    def AssetTypes(self, AssetTypes):
+        self._AssetTypes = AssetTypes
+
+    @property
+    def RiskDescription(self):
+        r"""<p>风险描述</p>
+        :rtype: str
+        """
+        return self._RiskDescription
+
+    @RiskDescription.setter
+    def RiskDescription(self, RiskDescription):
+        self._RiskDescription = RiskDescription
 
 
     def _deserialize(self, params):
@@ -59897,6 +59956,9 @@ class DspmRiskStrategy(AbstractModel):
         self._NickName = params.get("NickName")
         self._Uin = params.get("Uin")
         self._StrategyId = params.get("StrategyId")
+        self._RuleSource = params.get("RuleSource")
+        self._AssetTypes = params.get("AssetTypes")
+        self._RiskDescription = params.get("RiskDescription")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -59914,20 +59976,23 @@ class DspmRiskStrategyGroup(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _StrategyType: 策略类型
+        :param _StrategyType: <p>策略类型</p>
         :type StrategyType: str
-        :param _Name: 策略名
+        :param _Name: <p>策略名</p>
         :type Name: str
-        :param _StrategyCategory: 策略类型
+        :param _StrategyCategory: <p>策略类型</p>
         :type StrategyCategory: str
-        :param _IsEnabled: 是否启用。0-禁用 1-启用
+        :param _IsEnabled: <p>是否启用。0-禁用 1-启用</p>
         :type IsEnabled: int
-        :param _HitCount: 命中次数
+        :param _HitCount: <p>命中次数</p>
         :type HitCount: int
-        :param _RiskType: 风险类型。risk-风险；alarm-告警。
+        :param _RiskType: <p>风险类型。risk-风险；alarm-告警。</p>
         :type RiskType: str
-        :param _StrategyList: 策略列表
+        :param _StrategyList: <p>策略列表</p>
         :type StrategyList: list of DspmRiskStrategy
+        :param _RuleSource: <p>规则来源</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RuleSource: str
         """
         self._StrategyType = None
         self._Name = None
@@ -59936,10 +60001,11 @@ class DspmRiskStrategyGroup(AbstractModel):
         self._HitCount = None
         self._RiskType = None
         self._StrategyList = None
+        self._RuleSource = None
 
     @property
     def StrategyType(self):
-        r"""策略类型
+        r"""<p>策略类型</p>
         :rtype: str
         """
         return self._StrategyType
@@ -59950,7 +60016,7 @@ class DspmRiskStrategyGroup(AbstractModel):
 
     @property
     def Name(self):
-        r"""策略名
+        r"""<p>策略名</p>
         :rtype: str
         """
         return self._Name
@@ -59961,7 +60027,7 @@ class DspmRiskStrategyGroup(AbstractModel):
 
     @property
     def StrategyCategory(self):
-        r"""策略类型
+        r"""<p>策略类型</p>
         :rtype: str
         """
         return self._StrategyCategory
@@ -59972,7 +60038,7 @@ class DspmRiskStrategyGroup(AbstractModel):
 
     @property
     def IsEnabled(self):
-        r"""是否启用。0-禁用 1-启用
+        r"""<p>是否启用。0-禁用 1-启用</p>
         :rtype: int
         """
         return self._IsEnabled
@@ -59983,7 +60049,7 @@ class DspmRiskStrategyGroup(AbstractModel):
 
     @property
     def HitCount(self):
-        r"""命中次数
+        r"""<p>命中次数</p>
         :rtype: int
         """
         return self._HitCount
@@ -59994,7 +60060,7 @@ class DspmRiskStrategyGroup(AbstractModel):
 
     @property
     def RiskType(self):
-        r"""风险类型。risk-风险；alarm-告警。
+        r"""<p>风险类型。risk-风险；alarm-告警。</p>
         :rtype: str
         """
         return self._RiskType
@@ -60005,7 +60071,7 @@ class DspmRiskStrategyGroup(AbstractModel):
 
     @property
     def StrategyList(self):
-        r"""策略列表
+        r"""<p>策略列表</p>
         :rtype: list of DspmRiskStrategy
         """
         return self._StrategyList
@@ -60013,6 +60079,18 @@ class DspmRiskStrategyGroup(AbstractModel):
     @StrategyList.setter
     def StrategyList(self, StrategyList):
         self._StrategyList = StrategyList
+
+    @property
+    def RuleSource(self):
+        r"""<p>规则来源</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._RuleSource
+
+    @RuleSource.setter
+    def RuleSource(self, RuleSource):
+        self._RuleSource = RuleSource
 
 
     def _deserialize(self, params):
@@ -60028,6 +60106,7 @@ class DspmRiskStrategyGroup(AbstractModel):
                 obj = DspmRiskStrategy()
                 obj._deserialize(item)
                 self._StrategyList.append(obj)
+        self._RuleSource = params.get("RuleSource")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -60781,36 +60860,38 @@ class DspmWhitelistStrategy(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _WhitelistStrategyId: 白名单策略id
+        :param _WhitelistStrategyId: <p>白名单策略id</p>
         :type WhitelistStrategyId: str
-        :param _StrategyType: 策略类型
+        :param _StrategyType: <p>策略类型</p>
         :type StrategyType: str
-        :param _Name: 白名单策略名
+        :param _Name: <p>白名单策略名</p>
         :type Name: str
-        :param _StrategyCategory: 策略类型
+        :param _StrategyCategory: <p>策略类型</p>
         :type StrategyCategory: str
-        :param _Rule: 策略规则
+        :param _Rule: <p>策略规则</p>
         :type Rule: str
-        :param _Remark: 备注
+        :param _Remark: <p>备注</p>
         :type Remark: str
-        :param _ModifyTime: 修改时间
+        :param _ModifyTime: <p>修改时间</p>
         :type ModifyTime: str
-        :param _AssetId: 资产id
+        :param _AssetId: <p>资产id</p>
         :type AssetId: str
-        :param _Account: 账号
+        :param _Account: <p>账号</p>
         :type Account: str
-        :param _Host: 主机
+        :param _Host: <p>主机</p>
         :type Host: str
-        :param _Description: 策略规则内容描述
+        :param _Description: <p>策略规则内容描述</p>
         :type Description: str
-        :param _RiskType: 白名单类型。risk-风险白名单；alarm-告警白名单。
+        :param _RiskType: <p>白名单类型。risk-风险白名单；alarm-告警白名单。</p>
         :type RiskType: str
-        :param _AppId: 资产所属账号app id
+        :param _AppId: <p>资产所属账号app id</p>
         :type AppId: int
-        :param _NickName: 账号昵称
+        :param _NickName: <p>账号昵称</p>
         :type NickName: str
-        :param _Uin: 资产所属账号uin
+        :param _Uin: <p>资产所属账号uin</p>
         :type Uin: str
+        :param _WhitelistType: <p>白名单类型</p>
+        :type WhitelistType: str
         """
         self._WhitelistStrategyId = None
         self._StrategyType = None
@@ -60827,10 +60908,11 @@ class DspmWhitelistStrategy(AbstractModel):
         self._AppId = None
         self._NickName = None
         self._Uin = None
+        self._WhitelistType = None
 
     @property
     def WhitelistStrategyId(self):
-        r"""白名单策略id
+        r"""<p>白名单策略id</p>
         :rtype: str
         """
         return self._WhitelistStrategyId
@@ -60841,7 +60923,7 @@ class DspmWhitelistStrategy(AbstractModel):
 
     @property
     def StrategyType(self):
-        r"""策略类型
+        r"""<p>策略类型</p>
         :rtype: str
         """
         return self._StrategyType
@@ -60852,7 +60934,7 @@ class DspmWhitelistStrategy(AbstractModel):
 
     @property
     def Name(self):
-        r"""白名单策略名
+        r"""<p>白名单策略名</p>
         :rtype: str
         """
         return self._Name
@@ -60863,7 +60945,7 @@ class DspmWhitelistStrategy(AbstractModel):
 
     @property
     def StrategyCategory(self):
-        r"""策略类型
+        r"""<p>策略类型</p>
         :rtype: str
         """
         return self._StrategyCategory
@@ -60874,7 +60956,7 @@ class DspmWhitelistStrategy(AbstractModel):
 
     @property
     def Rule(self):
-        r"""策略规则
+        r"""<p>策略规则</p>
         :rtype: str
         """
         return self._Rule
@@ -60885,7 +60967,7 @@ class DspmWhitelistStrategy(AbstractModel):
 
     @property
     def Remark(self):
-        r"""备注
+        r"""<p>备注</p>
         :rtype: str
         """
         return self._Remark
@@ -60896,7 +60978,7 @@ class DspmWhitelistStrategy(AbstractModel):
 
     @property
     def ModifyTime(self):
-        r"""修改时间
+        r"""<p>修改时间</p>
         :rtype: str
         """
         return self._ModifyTime
@@ -60907,7 +60989,7 @@ class DspmWhitelistStrategy(AbstractModel):
 
     @property
     def AssetId(self):
-        r"""资产id
+        r"""<p>资产id</p>
         :rtype: str
         """
         return self._AssetId
@@ -60918,7 +61000,7 @@ class DspmWhitelistStrategy(AbstractModel):
 
     @property
     def Account(self):
-        r"""账号
+        r"""<p>账号</p>
         :rtype: str
         """
         return self._Account
@@ -60929,7 +61011,7 @@ class DspmWhitelistStrategy(AbstractModel):
 
     @property
     def Host(self):
-        r"""主机
+        r"""<p>主机</p>
         :rtype: str
         """
         return self._Host
@@ -60940,7 +61022,7 @@ class DspmWhitelistStrategy(AbstractModel):
 
     @property
     def Description(self):
-        r"""策略规则内容描述
+        r"""<p>策略规则内容描述</p>
         :rtype: str
         """
         return self._Description
@@ -60951,7 +61033,7 @@ class DspmWhitelistStrategy(AbstractModel):
 
     @property
     def RiskType(self):
-        r"""白名单类型。risk-风险白名单；alarm-告警白名单。
+        r"""<p>白名单类型。risk-风险白名单；alarm-告警白名单。</p>
         :rtype: str
         """
         return self._RiskType
@@ -60962,7 +61044,7 @@ class DspmWhitelistStrategy(AbstractModel):
 
     @property
     def AppId(self):
-        r"""资产所属账号app id
+        r"""<p>资产所属账号app id</p>
         :rtype: int
         """
         return self._AppId
@@ -60973,7 +61055,7 @@ class DspmWhitelistStrategy(AbstractModel):
 
     @property
     def NickName(self):
-        r"""账号昵称
+        r"""<p>账号昵称</p>
         :rtype: str
         """
         return self._NickName
@@ -60984,7 +61066,7 @@ class DspmWhitelistStrategy(AbstractModel):
 
     @property
     def Uin(self):
-        r"""资产所属账号uin
+        r"""<p>资产所属账号uin</p>
         :rtype: str
         """
         return self._Uin
@@ -60992,6 +61074,17 @@ class DspmWhitelistStrategy(AbstractModel):
     @Uin.setter
     def Uin(self, Uin):
         self._Uin = Uin
+
+    @property
+    def WhitelistType(self):
+        r"""<p>白名单类型</p>
+        :rtype: str
+        """
+        return self._WhitelistType
+
+    @WhitelistType.setter
+    def WhitelistType(self, WhitelistType):
+        self._WhitelistType = WhitelistType
 
 
     def _deserialize(self, params):
@@ -61010,6 +61103,7 @@ class DspmWhitelistStrategy(AbstractModel):
         self._AppId = params.get("AppId")
         self._NickName = params.get("NickName")
         self._Uin = params.get("Uin")
+        self._WhitelistType = params.get("WhitelistType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -72264,18 +72358,24 @@ class ModifyDspmRiskStrategyRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _MemberId: 集团账号的成员id
+        :param _MemberId: <p>集团账号的成员id</p>
         :type MemberId: list of str
-        :param _StrategyType: 风险策略类型
+        :param _StrategyType: <p>风险策略类型</p>
         :type StrategyType: str
-        :param _IsEnabled: 是否启用
+        :param _IsEnabled: <p>是否启用</p>
         :type IsEnabled: int
-        :param _Rule: 策略内容，如：{     ThresholdValue: "100" }
+        :param _Rule: <p>策略内容，如：{     ThresholdValue: &quot;100&quot; }</p>
         :type Rule: str
-        :param _RiskLevel: 可选值：Info/Low/Medium/High
+        :param _RiskLevel: <p>可选值：Info/Low/Medium/High</p>
         :type RiskLevel: str
-        :param _StrategyId: 策略id
+        :param _StrategyId: <p>策略id</p>
         :type StrategyId: list of int non-negative
+        :param _Name: <p>策略名</p>
+        :type Name: str
+        :param _Description: <p>策略描述</p>
+        :type Description: str
+        :param _DbTypes: <p>支持的数据库类型</p>
+        :type DbTypes: str
         """
         self._MemberId = None
         self._StrategyType = None
@@ -72283,10 +72383,13 @@ class ModifyDspmRiskStrategyRequest(AbstractModel):
         self._Rule = None
         self._RiskLevel = None
         self._StrategyId = None
+        self._Name = None
+        self._Description = None
+        self._DbTypes = None
 
     @property
     def MemberId(self):
-        r"""集团账号的成员id
+        r"""<p>集团账号的成员id</p>
         :rtype: list of str
         """
         return self._MemberId
@@ -72297,7 +72400,7 @@ class ModifyDspmRiskStrategyRequest(AbstractModel):
 
     @property
     def StrategyType(self):
-        r"""风险策略类型
+        r"""<p>风险策略类型</p>
         :rtype: str
         """
         return self._StrategyType
@@ -72308,7 +72411,7 @@ class ModifyDspmRiskStrategyRequest(AbstractModel):
 
     @property
     def IsEnabled(self):
-        r"""是否启用
+        r"""<p>是否启用</p>
         :rtype: int
         """
         return self._IsEnabled
@@ -72319,7 +72422,7 @@ class ModifyDspmRiskStrategyRequest(AbstractModel):
 
     @property
     def Rule(self):
-        r"""策略内容，如：{     ThresholdValue: "100" }
+        r"""<p>策略内容，如：{     ThresholdValue: &quot;100&quot; }</p>
         :rtype: str
         """
         return self._Rule
@@ -72330,7 +72433,7 @@ class ModifyDspmRiskStrategyRequest(AbstractModel):
 
     @property
     def RiskLevel(self):
-        r"""可选值：Info/Low/Medium/High
+        r"""<p>可选值：Info/Low/Medium/High</p>
         :rtype: str
         """
         return self._RiskLevel
@@ -72341,7 +72444,7 @@ class ModifyDspmRiskStrategyRequest(AbstractModel):
 
     @property
     def StrategyId(self):
-        r"""策略id
+        r"""<p>策略id</p>
         :rtype: list of int non-negative
         """
         return self._StrategyId
@@ -72349,6 +72452,39 @@ class ModifyDspmRiskStrategyRequest(AbstractModel):
     @StrategyId.setter
     def StrategyId(self, StrategyId):
         self._StrategyId = StrategyId
+
+    @property
+    def Name(self):
+        r"""<p>策略名</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Description(self):
+        r"""<p>策略描述</p>
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def DbTypes(self):
+        r"""<p>支持的数据库类型</p>
+        :rtype: str
+        """
+        return self._DbTypes
+
+    @DbTypes.setter
+    def DbTypes(self, DbTypes):
+        self._DbTypes = DbTypes
 
 
     def _deserialize(self, params):
@@ -72358,6 +72494,9 @@ class ModifyDspmRiskStrategyRequest(AbstractModel):
         self._Rule = params.get("Rule")
         self._RiskLevel = params.get("RiskLevel")
         self._StrategyId = params.get("StrategyId")
+        self._Name = params.get("Name")
+        self._Description = params.get("Description")
+        self._DbTypes = params.get("DbTypes")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -72403,7 +72542,7 @@ class ModifyDspmWhitelistStrategyRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _MemberId: 集团账号的成员id
+        :param _MemberId: <p>集团账号的成员id</p>
         :type MemberId: list of str
         :param _WhitelistStrategyId: 白名单id
         :type WhitelistStrategyId: str
@@ -72422,7 +72561,7 @@ class ModifyDspmWhitelistStrategyRequest(AbstractModel):
 
     @property
     def MemberId(self):
-        r"""集团账号的成员id
+        r"""<p>集团账号的成员id</p>
         :rtype: list of str
         """
         return self._MemberId

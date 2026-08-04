@@ -439,6 +439,60 @@ class DlcClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CheckModifyPartition(
+            self,
+            request: models.CheckModifyPartitionRequest,
+            opts: Dict = None,
+    ) -> models.CheckModifyPartitionResponse:
+        """
+        变配校验：判断用户的目标配置是否可以执行变配。校验逻辑：对于缩容场景（目标值 < 当前值），检查 default 队列的 min 值是否足够承受缩容差值。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CheckModifyPartition"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CheckModifyPartitionResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def CheckQueueName(
+            self,
+            request: models.CheckQueueNameRequest,
+            opts: Dict = None,
+    ) -> models.CheckQueueNameResponse:
+        """
+        资源队列名称合法性检测：校验队列名称是否合法，包括非空校验、格式校验（以小写字母开头，只允许小写字母、数字和连字符，长度1~11）和同分区下重名校验。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CheckQueueName"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CheckQueueNameResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def CheckResourceName(
+            self,
+            request: models.CheckResourceNameRequest,
+            opts: Dict = None,
+    ) -> models.CheckResourceNameResponse:
+        """
+        校验资源名称合法性
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CheckResourceName"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CheckResourceNameResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CopyJobSpec(
             self,
             request: models.CopyJobSpecRequest,
@@ -637,6 +691,24 @@ class DlcClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateInferenceModel(
+            self,
+            request: models.CreateInferenceModelRequest,
+            opts: Dict = None,
+    ) -> models.CreateInferenceModelResponse:
+        """
+        创建推理模型（模型上传）
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateInferenceModel"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateInferenceModelResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateInternalTable(
             self,
             request: models.CreateInternalTableRequest,
@@ -758,6 +830,42 @@ class DlcClient(AbstractClient):
         kwargs["action"] = "CreateNotebookSessionStatementSupportBatchSQL"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.CreateNotebookSessionStatementSupportBatchSQLResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def CreatePartition(
+            self,
+            request: models.CreatePartitionRequest,
+            opts: Dict = None,
+    ) -> models.CreatePartitionResponse:
+        """
+        新增资源包
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreatePartition"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreatePartitionResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def CreatePartitionQueue(
+            self,
+            request: models.CreatePartitionQueueRequest,
+            opts: Dict = None,
+    ) -> models.CreatePartitionQueueResponse:
+        """
+        新增资源队列：在指定分区下创建一个新的资源队列，支持设置队列名称、描述、资源规格列表和队列类型。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreatePartitionQueue"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreatePartitionQueueResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -1282,6 +1390,24 @@ class DlcClient(AbstractClient):
         kwargs["action"] = "DeleteNotebookSession"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DeleteNotebookSessionResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeletePartitionQueue(
+            self,
+            request: models.DeletePartitionQueueRequest,
+            opts: Dict = None,
+    ) -> models.DeletePartitionQueueResponse:
+        """
+        删除资源队列
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeletePartitionQueue"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeletePartitionQueueResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -1917,6 +2043,42 @@ class DlcClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeFlowDetailList(
+            self,
+            request: models.DescribeFlowDetailListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeFlowDetailListResponse:
+        """
+        分页查询指定分区的流程详情列表，包含每个流程的基本信息和活动列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeFlowDetailList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeFlowDetailListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeFlowList(
+            self,
+            request: models.DescribeFlowListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeFlowListResponse:
+        """
+        查询指定分区的流程列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeFlowList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeFlowListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeForbiddenTablePro(
             self,
             request: models.DescribeForbiddenTableProRequest,
@@ -2205,6 +2367,60 @@ class DlcClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribePartitionDetail(
+            self,
+            request: models.DescribePartitionDetailRequest,
+            opts: Dict = None,
+    ) -> models.DescribePartitionDetailResponse:
+        """
+        获取指定资源分区详情
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribePartitionDetail"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribePartitionDetailResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribePartitionQueues(
+            self,
+            request: models.DescribePartitionQueuesRequest,
+            opts: Dict = None,
+    ) -> models.DescribePartitionQueuesResponse:
+        """
+        查询指定分区的所有队列列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribePartitionQueues"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribePartitionQueuesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribePartitions(
+            self,
+            request: models.DescribePartitionsRequest,
+            opts: Dict = None,
+    ) -> models.DescribePartitionsResponse:
+        """
+        获取分区列表信息
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribePartitions"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribePartitionsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeResourceGroupUsageInfo(
             self,
             request: models.DescribeResourceGroupUsageInfoRequest,
@@ -2236,6 +2452,42 @@ class DlcClient(AbstractClient):
         kwargs["action"] = "DescribeResultDownload"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeResultDownloadResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeSaleRegions(
+            self,
+            request: models.DescribeSaleRegionsRequest,
+            opts: Dict = None,
+    ) -> models.DescribeSaleRegionsResponse:
+        """
+        查询可售卖的地域列表，仅返回状态为AVAILABLE的地域
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeSaleRegions"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeSaleRegionsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeSaleResourceInfo(
+            self,
+            request: models.DescribeSaleResourceInfoRequest,
+            opts: Dict = None,
+    ) -> models.DescribeSaleResourceInfoResponse:
+        """
+        查询当前地域可售卖的资源规格和最大配额
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeSaleResourceInfo"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeSaleResourceInfoResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -3105,6 +3357,24 @@ class DlcClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def GetInferenceModel(
+            self,
+            request: models.GetInferenceModelRequest,
+            opts: Dict = None,
+    ) -> models.GetInferenceModelResponse:
+        """
+        获取单个模型详情
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "GetInferenceModel"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.GetInferenceModelResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def GetJobSpec(
             self,
             request: models.GetJobSpecRequest,
@@ -3663,6 +3933,24 @@ class DlcClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def ListInferenceModels(
+            self,
+            request: models.ListInferenceModelsRequest,
+            opts: Dict = None,
+    ) -> models.ListInferenceModelsResponse:
+        """
+        列出推理模型（支持关键词过滤 + 分页）
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ListInferenceModels"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ListInferenceModelsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ListJobSpecs(
             self,
             request: models.ListJobSpecsRequest,
@@ -3928,6 +4216,42 @@ class DlcClient(AbstractClient):
         kwargs["action"] = "ModifyLabPriority"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ModifyLabPriorityResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyPartitionDescription(
+            self,
+            request: models.ModifyPartitionDescriptionRequest,
+            opts: Dict = None,
+    ) -> models.ModifyPartitionDescriptionResponse:
+        """
+        修改分区描述
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyPartitionDescription"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyPartitionDescriptionResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyPartitionQueue(
+            self,
+            request: models.ModifyPartitionQueueRequest,
+            opts: Dict = None,
+    ) -> models.ModifyPartitionQueueResponse:
+        """
+        编辑资源队列：根据队列ID修改指定资源队列的名称、描述、资源规格列表和队列类型等信息。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyPartitionQueue"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyPartitionQueueResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -4522,6 +4846,24 @@ class DlcClient(AbstractClient):
         kwargs["action"] = "UpdateEngineResourceGroupNetworkConfigInfo"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.UpdateEngineResourceGroupNetworkConfigInfoResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def UpdateInferenceModel(
+            self,
+            request: models.UpdateInferenceModelRequest,
+            opts: Dict = None,
+    ) -> models.UpdateInferenceModelResponse:
+        """
+        更新推理模型（编辑标签、描述、参数量）
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "UpdateInferenceModel"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.UpdateInferenceModelResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

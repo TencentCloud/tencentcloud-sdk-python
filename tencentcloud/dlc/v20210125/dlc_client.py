@@ -555,6 +555,75 @@ class DlcClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CheckModifyPartition(self, request):
+        r"""变配校验：判断用户的目标配置是否可以执行变配。校验逻辑：对于缩容场景（目标值 < 当前值），检查 default 队列的 min 值是否足够承受缩容差值。
+
+        :param request: Request instance for CheckModifyPartition.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.CheckModifyPartitionRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.CheckModifyPartitionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CheckModifyPartition", params, headers=headers)
+            response = json.loads(body)
+            model = models.CheckModifyPartitionResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CheckQueueName(self, request):
+        r"""资源队列名称合法性检测：校验队列名称是否合法，包括非空校验、格式校验（以小写字母开头，只允许小写字母、数字和连字符，长度1~11）和同分区下重名校验。
+
+        :param request: Request instance for CheckQueueName.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.CheckQueueNameRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.CheckQueueNameResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CheckQueueName", params, headers=headers)
+            response = json.loads(body)
+            model = models.CheckQueueNameResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CheckResourceName(self, request):
+        r"""校验资源名称合法性
+
+        :param request: Request instance for CheckResourceName.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.CheckResourceNameRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.CheckResourceNameResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CheckResourceName", params, headers=headers)
+            response = json.loads(body)
+            model = models.CheckResourceNameResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CopyJobSpec(self, request):
         r"""复制一份已有的作业配置
 
@@ -808,6 +877,29 @@ class DlcClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateInferenceModel(self, request):
+        r"""创建推理模型（模型上传）
+
+        :param request: Request instance for CreateInferenceModel.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.CreateInferenceModelRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.CreateInferenceModelResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateInferenceModel", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateInferenceModelResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateInternalTable(self, request):
         r"""创建托管存储内表（该接口已废弃）
 
@@ -960,6 +1052,52 @@ class DlcClient(AbstractClient):
             body = self.call("CreateNotebookSessionStatementSupportBatchSQL", params, headers=headers)
             response = json.loads(body)
             model = models.CreateNotebookSessionStatementSupportBatchSQLResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CreatePartition(self, request):
+        r"""新增资源包
+
+        :param request: Request instance for CreatePartition.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.CreatePartitionRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.CreatePartitionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreatePartition", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreatePartitionResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CreatePartitionQueue(self, request):
+        r"""新增资源队列：在指定分区下创建一个新的资源队列，支持设置队列名称、描述、资源规格列表和队列类型。
+
+        :param request: Request instance for CreatePartitionQueue.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.CreatePartitionQueueRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.CreatePartitionQueueResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreatePartitionQueue", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreatePartitionQueueResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1629,6 +1767,29 @@ class DlcClient(AbstractClient):
             body = self.call("DeleteNotebookSession", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteNotebookSessionResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeletePartitionQueue(self, request):
+        r"""删除资源队列
+
+        :param request: Request instance for DeletePartitionQueue.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.DeletePartitionQueueRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.DeletePartitionQueueResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeletePartitionQueue", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeletePartitionQueueResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -2443,6 +2604,52 @@ class DlcClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeFlowDetailList(self, request):
+        r"""分页查询指定分区的流程详情列表，包含每个流程的基本信息和活动列表
+
+        :param request: Request instance for DescribeFlowDetailList.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.DescribeFlowDetailListRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.DescribeFlowDetailListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeFlowDetailList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeFlowDetailListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeFlowList(self, request):
+        r"""查询指定分区的流程列表
+
+        :param request: Request instance for DescribeFlowList.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.DescribeFlowListRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.DescribeFlowListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeFlowList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeFlowListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeForbiddenTablePro(self, request):
         r"""本接口（DescribeForbiddenTablePro）用于查询被禁用的表属性列表（新）
 
@@ -2811,6 +3018,75 @@ class DlcClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribePartitionDetail(self, request):
+        r"""获取指定资源分区详情
+
+        :param request: Request instance for DescribePartitionDetail.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.DescribePartitionDetailRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.DescribePartitionDetailResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribePartitionDetail", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribePartitionDetailResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribePartitionQueues(self, request):
+        r"""查询指定分区的所有队列列表
+
+        :param request: Request instance for DescribePartitionQueues.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.DescribePartitionQueuesRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.DescribePartitionQueuesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribePartitionQueues", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribePartitionQueuesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribePartitions(self, request):
+        r"""获取分区列表信息
+
+        :param request: Request instance for DescribePartitions.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.DescribePartitionsRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.DescribePartitionsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribePartitions", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribePartitionsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeResourceGroupUsageInfo(self, request):
         r"""本接口根据资源组ID查询资源组CU使用情况
 
@@ -2848,6 +3124,52 @@ class DlcClient(AbstractClient):
             body = self.call("DescribeResultDownload", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeResultDownloadResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeSaleRegions(self, request):
+        r"""查询可售卖的地域列表，仅返回状态为AVAILABLE的地域
+
+        :param request: Request instance for DescribeSaleRegions.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.DescribeSaleRegionsRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.DescribeSaleRegionsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeSaleRegions", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeSaleRegionsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeSaleResourceInfo(self, request):
+        r"""查询当前地域可售卖的资源规格和最大配额
+
+        :param request: Request instance for DescribeSaleResourceInfo.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.DescribeSaleResourceInfoRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.DescribeSaleResourceInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeSaleResourceInfo", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeSaleResourceInfoResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -3961,6 +4283,29 @@ class DlcClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def GetInferenceModel(self, request):
+        r"""获取单个模型详情
+
+        :param request: Request instance for GetInferenceModel.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.GetInferenceModelRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.GetInferenceModelResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("GetInferenceModel", params, headers=headers)
+            response = json.loads(body)
+            model = models.GetInferenceModelResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def GetJobSpec(self, request):
         r"""根据配置ID获取作业配置详情
 
@@ -4674,6 +5019,29 @@ class DlcClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ListInferenceModels(self, request):
+        r"""列出推理模型（支持关键词过滤 + 分页）
+
+        :param request: Request instance for ListInferenceModels.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.ListInferenceModelsRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.ListInferenceModelsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ListInferenceModels", params, headers=headers)
+            response = json.loads(body)
+            model = models.ListInferenceModelsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ListJobSpecs(self, request):
         r"""分页查询作业配置列表
 
@@ -5010,6 +5378,52 @@ class DlcClient(AbstractClient):
             body = self.call("ModifyLabPriority", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyLabPriorityResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyPartitionDescription(self, request):
+        r"""修改分区描述
+
+        :param request: Request instance for ModifyPartitionDescription.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.ModifyPartitionDescriptionRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.ModifyPartitionDescriptionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyPartitionDescription", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyPartitionDescriptionResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyPartitionQueue(self, request):
+        r"""编辑资源队列：根据队列ID修改指定资源队列的名称、描述、资源规格列表和队列类型等信息。
+
+        :param request: Request instance for ModifyPartitionQueue.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.ModifyPartitionQueueRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.ModifyPartitionQueueResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyPartitionQueue", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyPartitionQueueResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -5769,6 +6183,29 @@ class DlcClient(AbstractClient):
             body = self.call("UpdateEngineResourceGroupNetworkConfigInfo", params, headers=headers)
             response = json.loads(body)
             model = models.UpdateEngineResourceGroupNetworkConfigInfoResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def UpdateInferenceModel(self, request):
+        r"""更新推理模型（编辑标签、描述、参数量）
+
+        :param request: Request instance for UpdateInferenceModel.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.UpdateInferenceModelRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.UpdateInferenceModelResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UpdateInferenceModel", params, headers=headers)
+            response = json.loads(body)
+            model = models.UpdateInferenceModelResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

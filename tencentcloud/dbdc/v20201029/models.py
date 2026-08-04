@@ -446,6 +446,8 @@ class CreateDBCustomClusterRequest(AbstractModel):
         :type ClientToken: str
         :param _DryRun: <p>试运行开关，true 时只执行参数校验，不发起创建流程，默认 false</p>
         :type DryRun: bool
+        :param _DeletionProtection: <p>是否启用集群删除保护</p><p>枚举值：</p><ul><li>true： 启用</li><li>false： 不启用</li></ul><p>默认值：true</p>
+        :type DeletionProtection: bool
         """
         self._ContainerNetwork = None
         self._ClusterName = None
@@ -454,6 +456,7 @@ class CreateDBCustomClusterRequest(AbstractModel):
         self._Tags = None
         self._ClientToken = None
         self._DryRun = None
+        self._DeletionProtection = None
 
     @property
     def ContainerNetwork(self):
@@ -532,6 +535,17 @@ class CreateDBCustomClusterRequest(AbstractModel):
     def DryRun(self, DryRun):
         self._DryRun = DryRun
 
+    @property
+    def DeletionProtection(self):
+        r"""<p>是否启用集群删除保护</p><p>枚举值：</p><ul><li>true： 启用</li><li>false： 不启用</li></ul><p>默认值：true</p>
+        :rtype: bool
+        """
+        return self._DeletionProtection
+
+    @DeletionProtection.setter
+    def DeletionProtection(self, DeletionProtection):
+        self._DeletionProtection = DeletionProtection
+
 
     def _deserialize(self, params):
         if params.get("ContainerNetwork") is not None:
@@ -550,6 +564,7 @@ class CreateDBCustomClusterRequest(AbstractModel):
                 self._Tags.append(obj)
         self._ClientToken = params.get("ClientToken")
         self._DryRun = params.get("DryRun")
+        self._DeletionProtection = params.get("DeletionProtection")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1054,6 +1069,8 @@ class DBCustomCluster(AbstractModel):
         :param _Tags: <p>集群的标签信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Tags: list of Tag
+        :param _DeletionProtection: <p>是否启用集群删除保护</p><p>枚举值：</p><ul><li>true： 启用</li><li>false： 不启用</li></ul>
+        :type DeletionProtection: bool
         """
         self._ClusterId = None
         self._ClusterName = None
@@ -1065,6 +1082,7 @@ class DBCustomCluster(AbstractModel):
         self._ClusterDescription = None
         self._CreatedTime = None
         self._Tags = None
+        self._DeletionProtection = None
 
     @property
     def ClusterId(self):
@@ -1177,6 +1195,17 @@ class DBCustomCluster(AbstractModel):
     def Tags(self, Tags):
         self._Tags = Tags
 
+    @property
+    def DeletionProtection(self):
+        r"""<p>是否启用集群删除保护</p><p>枚举值：</p><ul><li>true： 启用</li><li>false： 不启用</li></ul>
+        :rtype: bool
+        """
+        return self._DeletionProtection
+
+    @DeletionProtection.setter
+    def DeletionProtection(self, DeletionProtection):
+        self._DeletionProtection = DeletionProtection
+
 
     def _deserialize(self, params):
         self._ClusterId = params.get("ClusterId")
@@ -1194,6 +1223,7 @@ class DBCustomCluster(AbstractModel):
                 obj = Tag()
                 obj._deserialize(item)
                 self._Tags.append(obj)
+        self._DeletionProtection = params.get("DeletionProtection")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2743,6 +2773,8 @@ class DescribeDBCustomClusterDetailResponse(AbstractModel):
         :param _ContainerNetwork: <p>容器网络，在此集群中的所有Pod将与此网络连通</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ContainerNetwork: :class:`tencentcloud.dbdc.v20201029.models.ContainerNetwork`
+        :param _DeletionProtection: <p>是否启用集群删除保护</p><p>枚举值：</p><ul><li>true： 启用</li><li>false： 不启用</li></ul>
+        :type DeletionProtection: bool
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -2758,6 +2790,7 @@ class DescribeDBCustomClusterDetailResponse(AbstractModel):
         self._Tags = None
         self._ApiServerNetwork = None
         self._ContainerNetwork = None
+        self._DeletionProtection = None
         self._RequestId = None
 
     @property
@@ -2896,6 +2929,17 @@ class DescribeDBCustomClusterDetailResponse(AbstractModel):
         self._ContainerNetwork = ContainerNetwork
 
     @property
+    def DeletionProtection(self):
+        r"""<p>是否启用集群删除保护</p><p>枚举值：</p><ul><li>true： 启用</li><li>false： 不启用</li></ul>
+        :rtype: bool
+        """
+        return self._DeletionProtection
+
+    @DeletionProtection.setter
+    def DeletionProtection(self, DeletionProtection):
+        self._DeletionProtection = DeletionProtection
+
+    @property
     def RequestId(self):
         r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -2929,6 +2973,7 @@ class DescribeDBCustomClusterDetailResponse(AbstractModel):
         if params.get("ContainerNetwork") is not None:
             self._ContainerNetwork = ContainerNetwork()
             self._ContainerNetwork._deserialize(params.get("ContainerNetwork"))
+        self._DeletionProtection = params.get("DeletionProtection")
         self._RequestId = params.get("RequestId")
 
 
