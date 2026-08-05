@@ -18188,17 +18188,17 @@ class ModelParameter(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DefaultValue: 默认值
+        :param _DefaultValue: <p>默认值</p>
         :type DefaultValue: str
-        :param _EnumValueList: 可选值列表
+        :param _EnumValueList: <p>可选值列表</p>
         :type EnumValueList: list of str
-        :param _MaxValue: 最大值（仅数值类型有效）
+        :param _MaxValue: <p>最大值（仅数值类型有效）</p>
         :type MaxValue: float
-        :param _MinValue: 最小值（仅数值类型有效）
+        :param _MinValue: <p>最小值（仅数值类型有效）</p>
         :type MinValue: float
-        :param _Name: 超参名称
+        :param _Name: <p>超参名称</p>
         :type Name: str
-        :param _Type: 超参类型。1-浮点数, 2-整数, 3-字符串
+        :param _Type: <p>超参类型。1-浮点数, 2-整数, 3-字符串</p>
         :type Type: int
         """
         self._DefaultValue = None
@@ -18210,7 +18210,7 @@ class ModelParameter(AbstractModel):
 
     @property
     def DefaultValue(self):
-        r"""默认值
+        r"""<p>默认值</p>
         :rtype: str
         """
         return self._DefaultValue
@@ -18221,7 +18221,7 @@ class ModelParameter(AbstractModel):
 
     @property
     def EnumValueList(self):
-        r"""可选值列表
+        r"""<p>可选值列表</p>
         :rtype: list of str
         """
         return self._EnumValueList
@@ -18232,7 +18232,7 @@ class ModelParameter(AbstractModel):
 
     @property
     def MaxValue(self):
-        r"""最大值（仅数值类型有效）
+        r"""<p>最大值（仅数值类型有效）</p>
         :rtype: float
         """
         return self._MaxValue
@@ -18243,7 +18243,7 @@ class ModelParameter(AbstractModel):
 
     @property
     def MinValue(self):
-        r"""最小值（仅数值类型有效）
+        r"""<p>最小值（仅数值类型有效）</p>
         :rtype: float
         """
         return self._MinValue
@@ -18254,7 +18254,7 @@ class ModelParameter(AbstractModel):
 
     @property
     def Name(self):
-        r"""超参名称
+        r"""<p>超参名称</p>
         :rtype: str
         """
         return self._Name
@@ -18265,7 +18265,7 @@ class ModelParameter(AbstractModel):
 
     @property
     def Type(self):
-        r"""超参类型。1-浮点数, 2-整数, 3-字符串
+        r"""<p>超参类型。1-浮点数, 2-整数, 3-字符串</p>
         :rtype: int
         """
         return self._Type

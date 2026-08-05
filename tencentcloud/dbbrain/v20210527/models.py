@@ -16702,25 +16702,25 @@ class InstanceItem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例ID。
+        :param _InstanceId: <p>实例ID。</p>
         :type InstanceId: str
-        :param _Product: 数据库类型，如 mysql、cynosdb、mariadb、dcdb、mongodb、postgres、redis、dbbrain-mysql、tdstore。
+        :param _Product: <p>数据库类型，如 mysql、cynosdb、mariadb、dcdb、mongodb、postgres、redis、dbbrain-mysql、tdstore。</p>
         :type Product: str
-        :param _Region: 地域英文ID。
+        :param _Region: <p>地域英文ID。</p>
         :type Region: str
-        :param _ClusterId: 集群ID，仅集群类产品返回。
+        :param _ClusterId: <p>集群ID，仅集群类产品返回。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ClusterId: str
-        :param _EngineVersion: 引擎版本。
+        :param _EngineVersion: <p>引擎版本。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type EngineVersion: str
-        :param _Status: 实例状态，1表示运行中。
+        :param _Status: <p>实例状态，1表示运行中。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Status: int
-        :param _CreateTime: 实例创建时间。
+        :param _CreateTime: <p>实例创建时间。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type CreateTime: str
-        :param _DeadlineTime: 实例到期时间。
+        :param _DeadlineTime: <p>实例到期时间。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type DeadlineTime: str
         """
@@ -16735,7 +16735,7 @@ class InstanceItem(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""实例ID。
+        r"""<p>实例ID。</p>
         :rtype: str
         """
         return self._InstanceId
@@ -16746,7 +16746,7 @@ class InstanceItem(AbstractModel):
 
     @property
     def Product(self):
-        r"""数据库类型，如 mysql、cynosdb、mariadb、dcdb、mongodb、postgres、redis、dbbrain-mysql、tdstore。
+        r"""<p>数据库类型，如 mysql、cynosdb、mariadb、dcdb、mongodb、postgres、redis、dbbrain-mysql、tdstore。</p>
         :rtype: str
         """
         return self._Product
@@ -16757,7 +16757,7 @@ class InstanceItem(AbstractModel):
 
     @property
     def Region(self):
-        r"""地域英文ID。
+        r"""<p>地域英文ID。</p>
         :rtype: str
         """
         return self._Region
@@ -16768,7 +16768,7 @@ class InstanceItem(AbstractModel):
 
     @property
     def ClusterId(self):
-        r"""集群ID，仅集群类产品返回。
+        r"""<p>集群ID，仅集群类产品返回。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -16780,7 +16780,7 @@ class InstanceItem(AbstractModel):
 
     @property
     def EngineVersion(self):
-        r"""引擎版本。
+        r"""<p>引擎版本。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -16792,7 +16792,7 @@ class InstanceItem(AbstractModel):
 
     @property
     def Status(self):
-        r"""实例状态，1表示运行中。
+        r"""<p>实例状态，1表示运行中。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -16804,7 +16804,7 @@ class InstanceItem(AbstractModel):
 
     @property
     def CreateTime(self):
-        r"""实例创建时间。
+        r"""<p>实例创建时间。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -16816,7 +16816,7 @@ class InstanceItem(AbstractModel):
 
     @property
     def DeadlineTime(self):
-        r"""实例到期时间。
+        r"""<p>实例到期时间。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """

@@ -90,7 +90,14 @@ class EssClient(AbstractClient):
         - **可撤回合同状态**：未全部签署完成
         - **不撤回合同状态**：已全部签署完成、已拒签、已过期、已撤回、拒绝填写、已解除等合同状态。
 
-        注:
+
+        **合同额度返还规则**:
+
+        1.撤销服务按照合同份额 1:1赠送免费撤销次数。例如购买 100 份合同，赠送 100 次免费撤销额度。
+        2.仅当没有任何参与方签署过，或仅自动签署完成的合同，撤销后才会使用免费撤销额度。
+        3.当赠送的免费撤销额度使用完后，后续仍可撤销合同，但不会返还合同额度。
+
+        **注**:
         1. 如果合同流程中的参与方均已签署完毕，则无法通过该接口撤销合同，签署完毕的合同需要双方走解除流程将合同作废，可以参考<a href="https://qian.tencent.com/developers/companyApis/operateFlows/CreateReleaseFlow" target="_blank">发起解除合同流程</a>接口。
 
         2. 有对应合同撤销权限的人:
@@ -102,10 +109,6 @@ class EssClient(AbstractClient):
         - 其它员工<font color='red'>（并已经授予撤销我发起的合同后）</font>：
             - 撤销人与发起人<font color='red'>**不在**</font>同一个部门：<font color='red'>（确保已授予查询合同 - 企业全部合同权限）</font>
             - 撤销人与发起人<font color='red'>**在**</font>用一个部门：<font color='red'>（确保授予查询合同 - 本部门全部合同权限 或 企业全部合同权限）</font>
-
-
-        3. <font color='red'>**只有撤销没有参与方签署过或只有自动签署签署过的合同，才会返还合同额度。**</font>
-
         4.  撤销后可以看合同PDF内容的人员： 发起方的超管， 发起方自己，发起方撤销合同的操作人员，已经签署合同、已经填写合同、邀请填写已经补充信息的参与人员， 其他参与人员看不到合同的内容。
 
         :param request: Request instance for CancelFlow.
@@ -323,7 +326,13 @@ class EssClient(AbstractClient):
         批量撤销结果可以通过接口返回的TaskId关联[批量撤销任务结果回调](https://qian.tencent.com/developers/company/callback_types_contracts_sign#%E4%B9%9D-%E6%89%B9%E9%87%8F%E6%92%A4%E9%94%80%E7%BB%93%E6%9E%9C%E5%9B%9E%E8%B0%83)或通过接口[查询批量撤销签署流程任务结果](https://qian.tencent.com/developers/companyApis/operateFlows/CreateBatchCancelFlowUrl)
 
 
-        注：
+        **合同额度返还规则**:
+
+        1.撤销服务按照合同份额 1:1赠送免费撤销次数。例如购买 100 份合同，赠送 100 次免费撤销额度。
+        2.仅当没有任何参与方签署过，或仅自动签署完成的合同，撤销后才会使用免费撤销额度。
+        3.当赠送的免费撤销额度使用完后，后续仍可撤销合同，但不会返还合同额度。
+
+        **注**：
         1. 如果合同流程中的参与方均已签署完毕，则无法通过该接口撤销合同，签署完毕的合同需要双方走解除流程将合同作废，可以参考<a href="https://qian.tencent.com/developers/companyApis/operateFlows/CreateReleaseFlow" target="_blank">发起解除合同流程</a>接口。
 
         2. 有对应合同撤销权限的人:
@@ -335,9 +344,6 @@ class EssClient(AbstractClient):
         - 其它员工<font color='red'>（并已经授予撤销我发起的合同后）</font>：
             - 撤销人与发起人<font color='red'>**不在**</font>同一个部门：<font color='red'>（确保已授予查询合同 - 企业全部合同权限）</font>
             - 撤销人与发起人<font color='red'>**在**</font>用一个部门：<font color='red'>（确保授予查询合同 - 本部门全部合同权限 或 企业全部合同权限）</font>
-
-
-        3. <font color='red'>**只有撤销没有参与方签署过或只有自动签署签署过的合同，才会返还合同额度。**</font>
 
         4. 撤销后可以看合同PDF内容的人员： 发起方的超管， 发起方自己，发起方撤销合同的操作人员，已经签署合同、已经填写合同、邀请填写已经补充信息的参与人员， 其他参与人员看不到合同的内容。
 

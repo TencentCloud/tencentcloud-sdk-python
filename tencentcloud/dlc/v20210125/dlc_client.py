@@ -900,6 +900,29 @@ class DlcClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateInferenceService(self, request):
+        r"""创建推理服务（含默认部署）
+
+        :param request: Request instance for CreateInferenceService.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.CreateInferenceServiceRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.CreateInferenceServiceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateInferenceService", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateInferenceServiceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateInternalTable(self, request):
         r"""创建托管存储内表（该接口已废弃）
 
@@ -983,6 +1006,29 @@ class DlcClient(AbstractClient):
             body = self.call("CreateMetaDatabase", params, headers=headers)
             response = json.loads(body)
             model = models.CreateMetaDatabaseResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CreateModelVersion(self, request):
+        r"""创建模型新版本
+
+        :param request: Request instance for CreateModelVersion.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.CreateModelVersionRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.CreateModelVersionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateModelVersion", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateModelVersionResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -4306,6 +4352,29 @@ class DlcClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def GetInferenceService(self, request):
+        r"""获取单个推理服务详情
+
+        :param request: Request instance for GetInferenceService.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.GetInferenceServiceRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.GetInferenceServiceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("GetInferenceService", params, headers=headers)
+            response = json.loads(body)
+            model = models.GetInferenceServiceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def GetJobSpec(self, request):
         r"""根据配置ID获取作业配置详情
 
@@ -4481,6 +4550,75 @@ class DlcClient(AbstractClient):
             body = self.call("GetLabYaml", params, headers=headers)
             response = json.loads(body)
             model = models.GetLabYamlResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def GetModelConfig(self, request):
+        r"""获取模型 config.json 配置（默认最新版本）
+
+        :param request: Request instance for GetModelConfig.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.GetModelConfigRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.GetModelConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("GetModelConfig", params, headers=headers)
+            response = json.loads(body)
+            model = models.GetModelConfigResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def GetModelFiles(self, request):
+        r"""获取模型文件树（默认最新版本）
+
+        :param request: Request instance for GetModelFiles.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.GetModelFilesRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.GetModelFilesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("GetModelFiles", params, headers=headers)
+            response = json.loads(body)
+            model = models.GetModelFilesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def GetModelReadme(self, request):
+        r"""获取模型 README 信息（默认最新版本）
+
+        :param request: Request instance for GetModelReadme.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.GetModelReadmeRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.GetModelReadmeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("GetModelReadme", params, headers=headers)
+            response = json.loads(body)
+            model = models.GetModelReadmeResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -5019,6 +5157,29 @@ class DlcClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ListInferenceEngines(self, request):
+        r"""列出推理引擎
+
+        :param request: Request instance for ListInferenceEngines.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.ListInferenceEnginesRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.ListInferenceEnginesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ListInferenceEngines", params, headers=headers)
+            response = json.loads(body)
+            model = models.ListInferenceEnginesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ListInferenceModels(self, request):
         r"""列出推理模型（支持关键词过滤 + 分页）
 
@@ -5033,6 +5194,29 @@ class DlcClient(AbstractClient):
             body = self.call("ListInferenceModels", params, headers=headers)
             response = json.loads(body)
             model = models.ListInferenceModelsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ListInferenceServices(self, request):
+        r"""列出推理服务（支持关键词和状态过滤 + 分页）
+
+        :param request: Request instance for ListInferenceServices.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.ListInferenceServicesRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.ListInferenceServicesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ListInferenceServices", params, headers=headers)
+            response = json.loads(body)
+            model = models.ListInferenceServicesResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -5102,6 +5286,29 @@ class DlcClient(AbstractClient):
             body = self.call("ListLabs", params, headers=headers)
             response = json.loads(body)
             model = models.ListLabsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ListModelVersions(self, request):
+        r"""列出模型所有版本
+
+        :param request: Request instance for ListModelVersions.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.ListModelVersionsRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.ListModelVersionsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ListModelVersions", params, headers=headers)
+            response = json.loads(body)
+            model = models.ListModelVersionsResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -5594,6 +5801,52 @@ class DlcClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def QueryDashboardOverview(self, request):
+        r"""返回指定时间范围内所有推理服务的聚合 KPI 值。
+
+        :param request: Request instance for QueryDashboardOverview.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.QueryDashboardOverviewRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.QueryDashboardOverviewResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("QueryDashboardOverview", params, headers=headers)
+            response = json.loads(body)
+            model = models.QueryDashboardOverviewResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def QueryDashboardServiceList(self, request):
+        r"""查询监控大盘服务列表
+
+        :param request: Request instance for QueryDashboardServiceList.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.QueryDashboardServiceListRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.QueryDashboardServiceListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("QueryDashboardServiceList", params, headers=headers)
+            response = json.loads(body)
+            model = models.QueryDashboardServiceListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def QueryInternalTableWarehouse(self, request):
         r"""本接口（QueryInternalTableWarehouse）用于获取原生表warehouse路径
 
@@ -5608,6 +5861,29 @@ class DlcClient(AbstractClient):
             body = self.call("QueryInternalTableWarehouse", params, headers=headers)
             response = json.loads(body)
             model = models.QueryInternalTableWarehouseResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def QueryMonitorOverview(self, request):
+        r"""查询监控概览数据（瞬时值）
+
+        :param request: Request instance for QueryMonitorOverview.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.QueryMonitorOverviewRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.QueryMonitorOverviewResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("QueryMonitorOverview", params, headers=headers)
+            response = json.loads(body)
+            model = models.QueryMonitorOverviewResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -5755,6 +6031,29 @@ class DlcClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def RestartInferenceService(self, request):
+        r"""重启推理服务（操作所有部署）。
+
+        :param request: Request instance for RestartInferenceService.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.RestartInferenceServiceRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.RestartInferenceServiceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("RestartInferenceService", params, headers=headers)
+            response = json.loads(body)
+            model = models.RestartInferenceServiceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def RevokeDLCCatalogAccess(self, request):
         r"""撤销DLC Catalog访问权限
 
@@ -5884,6 +6183,29 @@ class DlcClient(AbstractClient):
             body = self.call("StartRayCluster", params, headers=headers)
             response = json.loads(body)
             model = models.StartRayClusterResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def StopInferenceService(self, request):
+        r"""停止推理服务（操作所有部署）。
+
+        :param request: Request instance for StopInferenceService.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.StopInferenceServiceRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.StopInferenceServiceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("StopInferenceService", params, headers=headers)
+            response = json.loads(body)
+            model = models.StopInferenceServiceResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

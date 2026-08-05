@@ -19304,6 +19304,130 @@ class DeleteKafkaRechargeResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DeleteLogRequest(AbstractModel):
+    r"""DeleteLog请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TopicId: <p>日志主题id</p>
+        :type TopicId: str
+        :param _From: <p>检索时间范围-开始时间</p><p>单位：ms</p>
+        :type From: int
+        :param _To: <p>检索时间范围-结束时间</p><p>单位：ms</p>
+        :type To: int
+        :param _QueryString: <p>日志检索条件，仅支持 CQL 语法，不支持 Lucene 语法</p><p>对符合检索条件的日志进行删除</p>
+        :type QueryString: str
+        """
+        self._TopicId = None
+        self._From = None
+        self._To = None
+        self._QueryString = None
+
+    @property
+    def TopicId(self):
+        r"""<p>日志主题id</p>
+        :rtype: str
+        """
+        return self._TopicId
+
+    @TopicId.setter
+    def TopicId(self, TopicId):
+        self._TopicId = TopicId
+
+    @property
+    def From(self):
+        r"""<p>检索时间范围-开始时间</p><p>单位：ms</p>
+        :rtype: int
+        """
+        return self._From
+
+    @From.setter
+    def From(self, From):
+        self._From = From
+
+    @property
+    def To(self):
+        r"""<p>检索时间范围-结束时间</p><p>单位：ms</p>
+        :rtype: int
+        """
+        return self._To
+
+    @To.setter
+    def To(self, To):
+        self._To = To
+
+    @property
+    def QueryString(self):
+        r"""<p>日志检索条件，仅支持 CQL 语法，不支持 Lucene 语法</p><p>对符合检索条件的日志进行删除</p>
+        :rtype: str
+        """
+        return self._QueryString
+
+    @QueryString.setter
+    def QueryString(self, QueryString):
+        self._QueryString = QueryString
+
+
+    def _deserialize(self, params):
+        self._TopicId = params.get("TopicId")
+        self._From = params.get("From")
+        self._To = params.get("To")
+        self._QueryString = params.get("QueryString")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteLogResponse(AbstractModel):
+    r"""DeleteLog返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AffectedRows: <p>影响日志条数</p>
+        :type AffectedRows: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._AffectedRows = None
+        self._RequestId = None
+
+    @property
+    def AffectedRows(self):
+        r"""<p>影响日志条数</p>
+        :rtype: int
+        """
+        return self._AffectedRows
+
+    @AffectedRows.setter
+    def AffectedRows(self, AffectedRows):
+        self._AffectedRows = AffectedRows
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._AffectedRows = params.get("AffectedRows")
+        self._RequestId = params.get("RequestId")
+
+
 class DeleteLogsetRequest(AbstractModel):
     r"""DeleteLogset请求参数结构体
 
@@ -42629,6 +42753,160 @@ class ModifyKafkaRechargeResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyLogRequest(AbstractModel):
+    r"""ModifyLog请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TopicId: <p>日志主题id</p>
+        :type TopicId: str
+        :param _From: <p>检索时间范围-开始时间</p><p>单位：ms</p>
+        :type From: int
+        :param _To: <p>检索时间范围-结束时间</p><p>单位：ms</p>
+        :type To: int
+        :param _QueryString: <p>日志检索条件，仅支持 CQL 语法，不支持 Lucene 语法</p><p>对符合检索条件的日志进行修改</p>
+        :type QueryString: str
+        :param _ModifyMode: <p>修改模式</p><p>枚举值：</p><ul><li>PARTIAL： 只修改指定的日志字段</li><li>REPLACE： 整体替换原有日志（不包含预置字段及元数据字段）</li></ul>
+        :type ModifyMode: str
+        :param _ModifyContent: <p>修改内容</p><p>不支持修改预置字段(__FILENAME__、__SOURCE__等，但不包括__CONTENT__)及元数据字段(__TAG__开头的字段)</p>
+        :type ModifyContent: str
+        """
+        self._TopicId = None
+        self._From = None
+        self._To = None
+        self._QueryString = None
+        self._ModifyMode = None
+        self._ModifyContent = None
+
+    @property
+    def TopicId(self):
+        r"""<p>日志主题id</p>
+        :rtype: str
+        """
+        return self._TopicId
+
+    @TopicId.setter
+    def TopicId(self, TopicId):
+        self._TopicId = TopicId
+
+    @property
+    def From(self):
+        r"""<p>检索时间范围-开始时间</p><p>单位：ms</p>
+        :rtype: int
+        """
+        return self._From
+
+    @From.setter
+    def From(self, From):
+        self._From = From
+
+    @property
+    def To(self):
+        r"""<p>检索时间范围-结束时间</p><p>单位：ms</p>
+        :rtype: int
+        """
+        return self._To
+
+    @To.setter
+    def To(self, To):
+        self._To = To
+
+    @property
+    def QueryString(self):
+        r"""<p>日志检索条件，仅支持 CQL 语法，不支持 Lucene 语法</p><p>对符合检索条件的日志进行修改</p>
+        :rtype: str
+        """
+        return self._QueryString
+
+    @QueryString.setter
+    def QueryString(self, QueryString):
+        self._QueryString = QueryString
+
+    @property
+    def ModifyMode(self):
+        r"""<p>修改模式</p><p>枚举值：</p><ul><li>PARTIAL： 只修改指定的日志字段</li><li>REPLACE： 整体替换原有日志（不包含预置字段及元数据字段）</li></ul>
+        :rtype: str
+        """
+        return self._ModifyMode
+
+    @ModifyMode.setter
+    def ModifyMode(self, ModifyMode):
+        self._ModifyMode = ModifyMode
+
+    @property
+    def ModifyContent(self):
+        r"""<p>修改内容</p><p>不支持修改预置字段(__FILENAME__、__SOURCE__等，但不包括__CONTENT__)及元数据字段(__TAG__开头的字段)</p>
+        :rtype: str
+        """
+        return self._ModifyContent
+
+    @ModifyContent.setter
+    def ModifyContent(self, ModifyContent):
+        self._ModifyContent = ModifyContent
+
+
+    def _deserialize(self, params):
+        self._TopicId = params.get("TopicId")
+        self._From = params.get("From")
+        self._To = params.get("To")
+        self._QueryString = params.get("QueryString")
+        self._ModifyMode = params.get("ModifyMode")
+        self._ModifyContent = params.get("ModifyContent")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyLogResponse(AbstractModel):
+    r"""ModifyLog返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AffectedRows: <p>影响日志条数</p>
+        :type AffectedRows: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._AffectedRows = None
+        self._RequestId = None
+
+    @property
+    def AffectedRows(self):
+        r"""<p>影响日志条数</p>
+        :rtype: int
+        """
+        return self._AffectedRows
+
+    @AffectedRows.setter
+    def AffectedRows(self, AffectedRows):
+        self._AffectedRows = AffectedRows
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._AffectedRows = params.get("AffectedRows")
         self._RequestId = params.get("RequestId")
 
 

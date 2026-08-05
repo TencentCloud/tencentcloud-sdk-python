@@ -509,6 +509,29 @@ class CkafkaClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateThrottleRule(self, request):
+        r"""实例限流规则相关接口
+
+        :param request: Request instance for CreateThrottleRule.
+        :type request: :class:`tencentcloud.ckafka.v20190819.models.CreateThrottleRuleRequest`
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.CreateThrottleRuleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateThrottleRule", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateThrottleRuleResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateToken(self, request):
         r"""创建最高权限的token
 
@@ -845,6 +868,29 @@ class CkafkaClient(AbstractClient):
             body = self.call("DeleteRouteTriggerTime", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteRouteTriggerTimeResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteThrottleRule(self, request):
+        r"""删除实例限流规则
+
+        :param request: Request instance for DeleteThrottleRule.
+        :type request: :class:`tencentcloud.ckafka.v20190819.models.DeleteThrottleRuleRequest`
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.DeleteThrottleRuleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteThrottleRule", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteThrottleRuleResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1498,6 +1544,29 @@ class CkafkaClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeThrottleRules(self, request):
+        r"""获取实例限流规则列表
+
+        :param request: Request instance for DescribeThrottleRules.
+        :type request: :class:`tencentcloud.ckafka.v20190819.models.DescribeThrottleRulesRequest`
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.DescribeThrottleRulesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeThrottleRules", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeThrottleRulesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeTopic(self, request):
         r"""接口请求域名：https://ckafka.tencentcloudapi.com
         本接口（DescribeTopic）用于在用户获取消息队列 CKafka 实例的主题列表
@@ -2111,6 +2180,29 @@ class CkafkaClient(AbstractClient):
             body = self.call("ModifyRoutineMaintenanceTask", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyRoutineMaintenanceTaskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyThrottleRule(self, request):
+        r"""修改限流规则接口
+
+        :param request: Request instance for ModifyThrottleRule.
+        :type request: :class:`tencentcloud.ckafka.v20190819.models.ModifyThrottleRuleRequest`
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.ModifyThrottleRuleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyThrottleRule", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyThrottleRuleResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

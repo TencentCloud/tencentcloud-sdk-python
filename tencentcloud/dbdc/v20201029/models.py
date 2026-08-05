@@ -1261,6 +1261,9 @@ class DBCustomClusterNode(AbstractModel):
         :param _EniIP: <p>当选择网络模式为三层网络联通模式时，此处的IP地址则为用户可访问的地址。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type EniIP: str
+        :param _SecurityGroupIds: <p>节点绑定的安全组</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SecurityGroupIds: list of str
         """
         self._NodeId = None
         self._NodeName = None
@@ -1271,6 +1274,7 @@ class DBCustomClusterNode(AbstractModel):
         self._NodeType = None
         self._NetworkMode = None
         self._EniIP = None
+        self._SecurityGroupIds = None
 
     @property
     def NodeId(self):
@@ -1373,6 +1377,18 @@ class DBCustomClusterNode(AbstractModel):
     def EniIP(self, EniIP):
         self._EniIP = EniIP
 
+    @property
+    def SecurityGroupIds(self):
+        r"""<p>节点绑定的安全组</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._SecurityGroupIds
+
+    @SecurityGroupIds.setter
+    def SecurityGroupIds(self, SecurityGroupIds):
+        self._SecurityGroupIds = SecurityGroupIds
+
 
     def _deserialize(self, params):
         self._NodeId = params.get("NodeId")
@@ -1384,6 +1400,7 @@ class DBCustomClusterNode(AbstractModel):
         self._NodeType = params.get("NodeType")
         self._NetworkMode = params.get("NetworkMode")
         self._EniIP = params.get("EniIP")
+        self._SecurityGroupIds = params.get("SecurityGroupIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1765,6 +1782,9 @@ class DBCustomNode(AbstractModel):
         :type NetworkMode: str
         :param _EniIP: <p>当选择NetworkModeCrossTenantENI模式时，节点的访问IP地址</p>
         :type EniIP: str
+        :param _SecurityGroupIds: <p>节点绑定的安全组</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SecurityGroupIds: list of str
         """
         self._NodeId = None
         self._NodeName = None
@@ -1793,6 +1813,7 @@ class DBCustomNode(AbstractModel):
         self._HostIp = None
         self._NetworkMode = None
         self._EniIP = None
+        self._SecurityGroupIds = None
 
     @property
     def NodeId(self):
@@ -2094,6 +2115,18 @@ class DBCustomNode(AbstractModel):
     def EniIP(self, EniIP):
         self._EniIP = EniIP
 
+    @property
+    def SecurityGroupIds(self):
+        r"""<p>节点绑定的安全组</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._SecurityGroupIds
+
+    @SecurityGroupIds.setter
+    def SecurityGroupIds(self, SecurityGroupIds):
+        self._SecurityGroupIds = SecurityGroupIds
+
 
     def _deserialize(self, params):
         self._NodeId = params.get("NodeId")
@@ -2135,6 +2168,7 @@ class DBCustomNode(AbstractModel):
         self._HostIp = params.get("HostIp")
         self._NetworkMode = params.get("NetworkMode")
         self._EniIP = params.get("EniIP")
+        self._SecurityGroupIds = params.get("SecurityGroupIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -1623,6 +1623,29 @@ class ClsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DeleteLog(self, request):
+        r"""修改日志信息
+
+        :param request: Request instance for DeleteLog.
+        :type request: :class:`tencentcloud.cls.v20201016.models.DeleteLogRequest`
+        :rtype: :class:`tencentcloud.cls.v20201016.models.DeleteLogResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteLog", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteLogResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DeleteLogset(self, request):
         r"""本接口用于删除日志集。
 
@@ -4077,6 +4100,29 @@ class ClsClient(AbstractClient):
             body = self.call("ModifyKafkaRecharge", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyKafkaRechargeResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyLog(self, request):
+        r"""修改日志信息
+
+        :param request: Request instance for ModifyLog.
+        :type request: :class:`tencentcloud.cls.v20201016.models.ModifyLogRequest`
+        :rtype: :class:`tencentcloud.cls.v20201016.models.ModifyLogResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyLog", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyLogResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

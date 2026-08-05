@@ -403,6 +403,24 @@ class CkafkaClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateThrottleRule(
+            self,
+            request: models.CreateThrottleRuleRequest,
+            opts: Dict = None,
+    ) -> models.CreateThrottleRuleResponse:
+        """
+        实例限流规则相关接口
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateThrottleRule"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateThrottleRuleResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateToken(
             self,
             request: models.CreateTokenRequest,
@@ -668,6 +686,24 @@ class CkafkaClient(AbstractClient):
         kwargs["action"] = "DeleteRouteTriggerTime"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DeleteRouteTriggerTimeResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteThrottleRule(
+            self,
+            request: models.DeleteThrottleRuleRequest,
+            opts: Dict = None,
+    ) -> models.DeleteThrottleRuleResponse:
+        """
+        删除实例限流规则
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteThrottleRule"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteThrottleRuleResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -1177,6 +1213,24 @@ class CkafkaClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeThrottleRules(
+            self,
+            request: models.DescribeThrottleRulesRequest,
+            opts: Dict = None,
+    ) -> models.DescribeThrottleRulesResponse:
+        """
+        获取实例限流规则列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeThrottleRules"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeThrottleRulesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeTopic(
             self,
             request: models.DescribeTopicRequest,
@@ -1659,6 +1713,24 @@ class CkafkaClient(AbstractClient):
         kwargs["action"] = "ModifyRoutineMaintenanceTask"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ModifyRoutineMaintenanceTaskResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyThrottleRule(
+            self,
+            request: models.ModifyThrottleRuleRequest,
+            opts: Dict = None,
+    ) -> models.ModifyThrottleRuleResponse:
+        """
+        修改限流规则接口
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyThrottleRule"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyThrottleRuleResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

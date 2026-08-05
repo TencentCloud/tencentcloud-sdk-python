@@ -5147,7 +5147,7 @@ class Model(AbstractModel):
         :type ModelImage: :class:`tencentcloud.tokenhub.v20260322.models.ModelImage`
         :param _Provider: <p>模型供应商。</p>
         :type Provider: str
-        :param _Status: <p>模型状态。取值：online（上线）、offline（下线）。</p><p>枚举值：</p><ul><li>online ： 上线</li><li>pre-offline： 预下线</li></ul>
+        :param _Status: <p>模型状态。取值：online（上线）、offline（下线）。</p><p>枚举值：</p><ul><li>online ： 上线</li><li>pre-offline： 预下线</li><li>discontinued： 停止新购</li><li>maintenance： 维护中</li></ul>
         :type Status: str
         :param _Tags: <p>标签列表。</p>
         :type Tags: list of str
@@ -5165,6 +5165,8 @@ class Model(AbstractModel):
         :type FreeTrialInfo: :class:`tencentcloud.tokenhub.v20260322.models.ModelFreeTrialInfo`
         :param _OfflineAt: <p>模型下线时间，Status=pre-offline 时，会配置模型下线时间</p>
         :type OfflineAt: str
+        :param _DiscontinuedAt: <p>停止新购时间</p>
+        :type DiscontinuedAt: str
         """
         self._ModelName = None
         self._ModelId = None
@@ -5184,6 +5186,7 @@ class Model(AbstractModel):
         self._ModelAccessInfo = None
         self._FreeTrialInfo = None
         self._OfflineAt = None
+        self._DiscontinuedAt = None
 
     @property
     def ModelName(self):
@@ -5286,7 +5289,7 @@ class Model(AbstractModel):
 
     @property
     def Status(self):
-        r"""<p>模型状态。取值：online（上线）、offline（下线）。</p><p>枚举值：</p><ul><li>online ： 上线</li><li>pre-offline： 预下线</li></ul>
+        r"""<p>模型状态。取值：online（上线）、offline（下线）。</p><p>枚举值：</p><ul><li>online ： 上线</li><li>pre-offline： 预下线</li><li>discontinued： 停止新购</li><li>maintenance： 维护中</li></ul>
         :rtype: str
         """
         return self._Status
@@ -5383,6 +5386,17 @@ class Model(AbstractModel):
     def OfflineAt(self, OfflineAt):
         self._OfflineAt = OfflineAt
 
+    @property
+    def DiscontinuedAt(self):
+        r"""<p>停止新购时间</p>
+        :rtype: str
+        """
+        return self._DiscontinuedAt
+
+    @DiscontinuedAt.setter
+    def DiscontinuedAt(self, DiscontinuedAt):
+        self._DiscontinuedAt = DiscontinuedAt
+
 
     def _deserialize(self, params):
         self._ModelName = params.get("ModelName")
@@ -5416,6 +5430,7 @@ class Model(AbstractModel):
             self._FreeTrialInfo = ModelFreeTrialInfo()
             self._FreeTrialInfo._deserialize(params.get("FreeTrialInfo"))
         self._OfflineAt = params.get("OfflineAt")
+        self._DiscontinuedAt = params.get("DiscontinuedAt")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

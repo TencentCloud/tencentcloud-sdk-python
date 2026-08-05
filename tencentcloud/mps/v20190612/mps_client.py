@@ -488,7 +488,8 @@ class MpsClient(AbstractClient):
 
 
     def CreateDocToVideoTask(self, request):
-        r"""创建 AiGC 文档生成视频任务
+        r"""创建 AIGC 文档生成视频任务
+        （使用 DescribeAigcTaskStatus 接口进行任务查询）
 
         :param request: Request instance for CreateDocToVideoTask.
         :type request: :class:`tencentcloud.mps.v20190612.models.CreateDocToVideoTaskRequest`

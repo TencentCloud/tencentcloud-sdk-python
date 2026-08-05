@@ -11861,6 +11861,12 @@ class JobV1(AbstractModel):
         :param _NewStateCOSBucketType: <p>新的桶类型</p><p>枚举值：</p><ul><li>0： 普通桶</li><li>1： 加速桶</li></ul>
 注意：此字段可能返回 null，表示取不到有效值。
         :type NewStateCOSBucketType: int
+        :param _HealthScore: <p>健康分数</p>
+        :type HealthScore: int
+        :param _LastDiagnoseTime: <p>最新诊断时间</p><p>参数格式：RFC3339</p>
+        :type LastDiagnoseTime: str
+        :param _ManagerUin: <p>负责人Uin</p>
+        :type ManagerUin: str
         """
         self._JobId = None
         self._Region = None
@@ -11910,6 +11916,9 @@ class JobV1(AbstractModel):
         self._NewStateCOSBucket = None
         self._StateCOSBucketType = None
         self._NewStateCOSBucketType = None
+        self._HealthScore = None
+        self._LastDiagnoseTime = None
+        self._ManagerUin = None
 
     @property
     def JobId(self):
@@ -12482,6 +12491,39 @@ class JobV1(AbstractModel):
     def NewStateCOSBucketType(self, NewStateCOSBucketType):
         self._NewStateCOSBucketType = NewStateCOSBucketType
 
+    @property
+    def HealthScore(self):
+        r"""<p>健康分数</p>
+        :rtype: int
+        """
+        return self._HealthScore
+
+    @HealthScore.setter
+    def HealthScore(self, HealthScore):
+        self._HealthScore = HealthScore
+
+    @property
+    def LastDiagnoseTime(self):
+        r"""<p>最新诊断时间</p><p>参数格式：RFC3339</p>
+        :rtype: str
+        """
+        return self._LastDiagnoseTime
+
+    @LastDiagnoseTime.setter
+    def LastDiagnoseTime(self, LastDiagnoseTime):
+        self._LastDiagnoseTime = LastDiagnoseTime
+
+    @property
+    def ManagerUin(self):
+        r"""<p>负责人Uin</p>
+        :rtype: str
+        """
+        return self._ManagerUin
+
+    @ManagerUin.setter
+    def ManagerUin(self, ManagerUin):
+        self._ManagerUin = ManagerUin
+
 
     def _deserialize(self, params):
         self._JobId = params.get("JobId")
@@ -12539,6 +12581,9 @@ class JobV1(AbstractModel):
         self._NewStateCOSBucket = params.get("NewStateCOSBucket")
         self._StateCOSBucketType = params.get("StateCOSBucketType")
         self._NewStateCOSBucketType = params.get("NewStateCOSBucketType")
+        self._HealthScore = params.get("HealthScore")
+        self._LastDiagnoseTime = params.get("LastDiagnoseTime")
+        self._ManagerUin = params.get("ManagerUin")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

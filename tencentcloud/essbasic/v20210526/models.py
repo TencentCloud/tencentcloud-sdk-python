@@ -4511,7 +4511,7 @@ class ChannelCreateFlowByFilesRequest(AbstractModel):
         :type Operator: :class:`tencentcloud.essbasic.v20210526.models.UserInfo`
         :param _FlowDisplayType: <p>在短信通知、填写、签署流程中，若标题、按钮、合同详情等地方存在“合同”字样时，可根据此配置指定文案，可选文案如下：  <ul><li> <b>0</b> :合同（默认值）</li> <li> <b>1</b> :文件</li> <li> <b>2</b> :协议</li><li> <b>3</b> :文书</li></ul>效果如下:<img src="https://qcloudimg.tencent-cloud.cn/raw/e4a2c4d638717cc901d3dbd5137c9bbc.png" alt="FlowDisplayType"></p>
         :type FlowDisplayType: int
-        :param _NeedPreview: <p>是否为预览模式，取值如下： <ul><li> <strong>false</strong>：非预览模式（默认），会产生合同流程并返回合同流程编号FlowId。</li> <li> <strong>true</strong>：预览模式，不产生合同流程，不返回合同流程编号FlowId，而是返回预览链接PreviewUrl，有效期为300秒，用于查看真实发起后合同的样子。</li></ul></p>
+        :param _NeedPreview: <p>是否为预览模式，取值如下： <ul><li> <strong>false</strong>：非预览模式（默认），会产生合同流程并返回合同流程编号FlowId。</li> <li> <strong>true</strong>：预览模式，不产生合同流程，不返回合同流程编号FlowId，而是返回预览链接PreviewUrl，有效期为300秒，用于查看真实发起后合同的样子。</li></ul></p><p><strong>注</strong>: 预览服务按照合同份额 1:2的比例赠送预览次数。例如：购买 100 份合同，将赠送 200 次合同预览额度。当赠送的预览额度使用完后，如需继续使用预览服务，则需要单独购买预览服务额度。</p>
         :type NeedPreview: bool
         :param _PreviewType: <p>预览模式下产生的预览链接类型 </p><ul><li> **0** :(默认) 文件流 ,点开后下载预览的合同PDF文件 </li><li> **1** :H5链接 ,点开后在浏览器中展示合同的样子</li></ul>注: <code>此参数在NeedPreview 为true时有效</code>
         :type PreviewType: int
@@ -4778,7 +4778,7 @@ class ChannelCreateFlowByFilesRequest(AbstractModel):
 
     @property
     def NeedPreview(self):
-        r"""<p>是否为预览模式，取值如下： <ul><li> <strong>false</strong>：非预览模式（默认），会产生合同流程并返回合同流程编号FlowId。</li> <li> <strong>true</strong>：预览模式，不产生合同流程，不返回合同流程编号FlowId，而是返回预览链接PreviewUrl，有效期为300秒，用于查看真实发起后合同的样子。</li></ul></p>
+        r"""<p>是否为预览模式，取值如下： <ul><li> <strong>false</strong>：非预览模式（默认），会产生合同流程并返回合同流程编号FlowId。</li> <li> <strong>true</strong>：预览模式，不产生合同流程，不返回合同流程编号FlowId，而是返回预览链接PreviewUrl，有效期为300秒，用于查看真实发起后合同的样子。</li></ul></p><p><strong>注</strong>: 预览服务按照合同份额 1:2的比例赠送预览次数。例如：购买 100 份合同，将赠送 200 次合同预览额度。当赠送的预览额度使用完后，如需继续使用预览服务，则需要单独购买预览服务额度。</p>
         :rtype: bool
         """
         return self._NeedPreview
@@ -9993,34 +9993,19 @@ class ChannelDescribeOrganizationSealsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Agent: 关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
-
-此接口下面信息必填。
-<ul>
-<li>渠道应用标识:  Agent.AppId</li>
-<li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId</li>
-<li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li>
-</ul>
-第三方平台子客企业和员工必须已经经过实名认证
+        :param _Agent: <p>关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。</p><p>此接口下面信息必填。</p><ul><li>渠道应用标识:  Agent.AppId</li><li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId</li><li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li></ul>第三方平台子客企业和员工必须已经经过实名认证
         :type Agent: :class:`tencentcloud.essbasic.v20210526.models.Agent`
-        :param _Limit: 指定分页每页返回的数据条数，单页最大支持 100。默认值为20
+        :param _Limit: <p>指定分页每页返回的数据条数，单页最大支持 100。默认值为20</p>
         :type Limit: int
-        :param _Offset: 分页查询偏移量，默认为0，最大为20000
+        :param _Offset: <p>分页查询偏移量，默认为0，最大为20000</p>
         :type Offset: int
-        :param _InfoType: 查询授权用户信息类型，取值如下：
-
-<ul> <li><b>0</b>：（默认）不返回授权用户信息</li> <li><b>1</b>：返回授权用户的信息</li> </ul>
+        :param _InfoType: <p>查询授权用户信息类型，取值如下：</p><ul> <li><b>0</b>：（默认）不返回授权用户信息</li> <li><b>1</b>：返回授权用户的信息</li> </ul>
         :type InfoType: int
-        :param _SealId: 印章id，是否查询特定的印章（没有输入返回所有）
-
-注:  `没有输入返回所有记录，最大返回100条。`
+        :param _SealId: <p>印章id，是否查询特定的印章（没有输入返回所有）</p><p>注:  <code>没有输入返回所有记录，最大返回100条。</code></p>
         :type SealId: str
-        :param _SealTypes: 电子印章类型 , 可选类型如下: <ul><li>**OFFICIAL**: 公章</li><li>**CONTRACT**: 合同专用章;</li><li>**FINANCE**: 财务专用章;</li><li>**PERSONNEL**: 人事专用章</li><li>**INVOICE**: 发票专用章</li><li>**LEGAL_PERSON_SEAL**: 法定代表人章;</li><li>**EMPLOYEE_QUALIFICATION_SEAL**: 员工执业章</li><li>**OTHER**: 其他类型印章</li></ul>注:  `1.为空时查询所有类型的印章。`
+        :param _SealTypes: <p>电子印章类型 , 可选类型如下: <ul><li><strong>OFFICIAL</strong>: 公章</li><li><strong>CONTRACT</strong>: 合同专用章;</li><li><strong>FINANCE</strong>: 财务专用章;</li><li><strong>PERSONNEL</strong>: 人事专用章</li><li><strong>INVOICE</strong>: 发票专用章</li><li><strong>LEGAL_PERSON_SEAL</strong>: 法定代表人章;</li><li><strong>EMPLOYEE_QUALIFICATION_SEAL</strong>: 员工执业章</li><li><strong>OTHER</strong>: 其他类型印章</li><li><strong>OTHER_XX</strong>: 其他印章子类型</li></ul>注:  <code>1.为空时查询所有类型的印章。</code><br>注:  <code>2.OTHER_XX该类型为其他印章子类型，如需使用，请联系对接客服申请开通。具体可传入的子类型值，需在申请开通后由客服提供。</code></p>
         :type SealTypes: list of str
-        :param _SealStatuses: 
-需查询的印章状态列表。
-
-<ul> <li>空，()仅查询启用状态的印章；</li> <li><strong>ALL</strong>，查询所有状态的印章；</li> <li><strong>CHECKING</strong>，查询待审核的印章；</li> <li><strong>SUCCESS</strong>，查询启用状态的印章；</li> <li><strong>FAIL</strong>，查询印章审核拒绝的印章；</li> <li><strong>DISABLE</strong>，查询已停用的印章；</li> <li><strong>STOPPED</strong>，查询已终止的印章；</li> <li><strong>VOID</strong>，查询已作废的印章；</li> <li><strong>INVALID</strong>，查询已失效的印章。</li> </ul>
+        :param _SealStatuses: <p>需查询的印章状态列表。</p><ul> <li>空，()仅查询启用状态的印章；</li> <li><strong>ALL</strong>，查询所有状态的印章；</li> <li><strong>CHECKING</strong>，查询待审核的印章；</li> <li><strong>SUCCESS</strong>，查询启用状态的印章；</li> <li><strong>FAIL</strong>，查询印章审核拒绝的印章；</li> <li><strong>DISABLE</strong>，查询已停用的印章；</li> <li><strong>STOPPED</strong>，查询已终止的印章；</li> <li><strong>VOID</strong>，查询已作废的印章；</li> <li><strong>INVALID</strong>，查询已失效的印章。</li> </ul>
         :type SealStatuses: list of str
         """
         self._Agent = None
@@ -10033,15 +10018,7 @@ class ChannelDescribeOrganizationSealsRequest(AbstractModel):
 
     @property
     def Agent(self):
-        r"""关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。
-
-此接口下面信息必填。
-<ul>
-<li>渠道应用标识:  Agent.AppId</li>
-<li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId</li>
-<li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li>
-</ul>
-第三方平台子客企业和员工必须已经经过实名认证
+        r"""<p>关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。</p><p>此接口下面信息必填。</p><ul><li>渠道应用标识:  Agent.AppId</li><li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId</li><li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li></ul>第三方平台子客企业和员工必须已经经过实名认证
         :rtype: :class:`tencentcloud.essbasic.v20210526.models.Agent`
         """
         return self._Agent
@@ -10052,7 +10029,7 @@ class ChannelDescribeOrganizationSealsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""指定分页每页返回的数据条数，单页最大支持 100。默认值为20
+        r"""<p>指定分页每页返回的数据条数，单页最大支持 100。默认值为20</p>
         :rtype: int
         """
         return self._Limit
@@ -10063,7 +10040,7 @@ class ChannelDescribeOrganizationSealsRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""分页查询偏移量，默认为0，最大为20000
+        r"""<p>分页查询偏移量，默认为0，最大为20000</p>
         :rtype: int
         """
         return self._Offset
@@ -10074,9 +10051,7 @@ class ChannelDescribeOrganizationSealsRequest(AbstractModel):
 
     @property
     def InfoType(self):
-        r"""查询授权用户信息类型，取值如下：
-
-<ul> <li><b>0</b>：（默认）不返回授权用户信息</li> <li><b>1</b>：返回授权用户的信息</li> </ul>
+        r"""<p>查询授权用户信息类型，取值如下：</p><ul> <li><b>0</b>：（默认）不返回授权用户信息</li> <li><b>1</b>：返回授权用户的信息</li> </ul>
         :rtype: int
         """
         return self._InfoType
@@ -10087,9 +10062,7 @@ class ChannelDescribeOrganizationSealsRequest(AbstractModel):
 
     @property
     def SealId(self):
-        r"""印章id，是否查询特定的印章（没有输入返回所有）
-
-注:  `没有输入返回所有记录，最大返回100条。`
+        r"""<p>印章id，是否查询特定的印章（没有输入返回所有）</p><p>注:  <code>没有输入返回所有记录，最大返回100条。</code></p>
         :rtype: str
         """
         return self._SealId
@@ -10100,7 +10073,7 @@ class ChannelDescribeOrganizationSealsRequest(AbstractModel):
 
     @property
     def SealTypes(self):
-        r"""电子印章类型 , 可选类型如下: <ul><li>**OFFICIAL**: 公章</li><li>**CONTRACT**: 合同专用章;</li><li>**FINANCE**: 财务专用章;</li><li>**PERSONNEL**: 人事专用章</li><li>**INVOICE**: 发票专用章</li><li>**LEGAL_PERSON_SEAL**: 法定代表人章;</li><li>**EMPLOYEE_QUALIFICATION_SEAL**: 员工执业章</li><li>**OTHER**: 其他类型印章</li></ul>注:  `1.为空时查询所有类型的印章。`
+        r"""<p>电子印章类型 , 可选类型如下: <ul><li><strong>OFFICIAL</strong>: 公章</li><li><strong>CONTRACT</strong>: 合同专用章;</li><li><strong>FINANCE</strong>: 财务专用章;</li><li><strong>PERSONNEL</strong>: 人事专用章</li><li><strong>INVOICE</strong>: 发票专用章</li><li><strong>LEGAL_PERSON_SEAL</strong>: 法定代表人章;</li><li><strong>EMPLOYEE_QUALIFICATION_SEAL</strong>: 员工执业章</li><li><strong>OTHER</strong>: 其他类型印章</li><li><strong>OTHER_XX</strong>: 其他印章子类型</li></ul>注:  <code>1.为空时查询所有类型的印章。</code><br>注:  <code>2.OTHER_XX该类型为其他印章子类型，如需使用，请联系对接客服申请开通。具体可传入的子类型值，需在申请开通后由客服提供。</code></p>
         :rtype: list of str
         """
         return self._SealTypes
@@ -10111,10 +10084,7 @@ class ChannelDescribeOrganizationSealsRequest(AbstractModel):
 
     @property
     def SealStatuses(self):
-        r"""
-需查询的印章状态列表。
-
-<ul> <li>空，()仅查询启用状态的印章；</li> <li><strong>ALL</strong>，查询所有状态的印章；</li> <li><strong>CHECKING</strong>，查询待审核的印章；</li> <li><strong>SUCCESS</strong>，查询启用状态的印章；</li> <li><strong>FAIL</strong>，查询印章审核拒绝的印章；</li> <li><strong>DISABLE</strong>，查询已停用的印章；</li> <li><strong>STOPPED</strong>，查询已终止的印章；</li> <li><strong>VOID</strong>，查询已作废的印章；</li> <li><strong>INVALID</strong>，查询已失效的印章。</li> </ul>
+        r"""<p>需查询的印章状态列表。</p><ul> <li>空，()仅查询启用状态的印章；</li> <li><strong>ALL</strong>，查询所有状态的印章；</li> <li><strong>CHECKING</strong>，查询待审核的印章；</li> <li><strong>SUCCESS</strong>，查询启用状态的印章；</li> <li><strong>FAIL</strong>，查询印章审核拒绝的印章；</li> <li><strong>DISABLE</strong>，查询已停用的印章；</li> <li><strong>STOPPED</strong>，查询已终止的印章；</li> <li><strong>VOID</strong>，查询已作废的印章；</li> <li><strong>INVALID</strong>，查询已失效的印章。</li> </ul>
         :rtype: list of str
         """
         return self._SealStatuses
@@ -10151,9 +10121,9 @@ class ChannelDescribeOrganizationSealsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TotalCount: 在设定了SealId时，返回值为0或1；若未设定SealId，则返回公司的总印章数量
+        :param _TotalCount: <p>在设定了SealId时，返回值为0或1；若未设定SealId，则返回公司的总印章数量</p>
         :type TotalCount: int
-        :param _Seals: 查询到的印章结果数组
+        :param _Seals: <p>查询到的印章结果数组</p>
         :type Seals: list of OccupiedSeal
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -10164,7 +10134,7 @@ class ChannelDescribeOrganizationSealsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        r"""在设定了SealId时，返回值为0或1；若未设定SealId，则返回公司的总印章数量
+        r"""<p>在设定了SealId时，返回值为0或1；若未设定SealId，则返回公司的总印章数量</p>
         :rtype: int
         """
         return self._TotalCount
@@ -10175,7 +10145,7 @@ class ChannelDescribeOrganizationSealsResponse(AbstractModel):
 
     @property
     def Seals(self):
-        r"""查询到的印章结果数组
+        r"""<p>查询到的印章结果数组</p>
         :rtype: list of OccupiedSeal
         """
         return self._Seals
@@ -16489,33 +16459,15 @@ class CreateFlowsByTemplatesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Agent: 合同的发起企业和发起人信息，<a href="https://qcloudimg.tencent-cloud.cn/raw/b69f8aad306c40b7b78d096e39b2edbb.png" target="_blank">点击查看合同发起企业和人展示的位置</a>
-
-此接口下面信息必填。
-<ul>
-<li>渠道应用标识:  <a href="https://qcloudimg.tencent-cloud.cn/raw/a71872de3d540d55451e3e73a2ad1a6e.png" target="_blank">Agent.AppId</a></li>
-<li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId（合同的发起企业）</li>
-<li>第三方平台子客企业中的员工标识: Agent.ProxyOperator.OpenId （合同的发起人）</li>
-</ul>
+        :param _Agent: <p>合同的发起企业和发起人信息，<a href="https://qcloudimg.tencent-cloud.cn/raw/b69f8aad306c40b7b78d096e39b2edbb.png" target="_blank">点击查看合同发起企业和人展示的位置</a></p><p>此接口下面信息必填。</p><ul><li>渠道应用标识:  <a href="https://qcloudimg.tencent-cloud.cn/raw/a71872de3d540d55451e3e73a2ad1a6e.png" target="_blank">Agent.AppId</a></li><li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId（合同的发起企业）</li><li>第三方平台子客企业中的员工标识: Agent.ProxyOperator.OpenId （合同的发起人）</li></ul>
         :type Agent: :class:`tencentcloud.essbasic.v20210526.models.Agent`
-        :param _FlowInfos: 要创建的合同信息列表，最多支持一次创建20个合同
+        :param _FlowInfos: <p>要创建的合同信息列表，最多支持一次创建20个合同</p>
         :type FlowInfos: list of FlowInfo
-        :param _NeedPreview: 是否为预览模式，取值如下：
-<ul><li> **false**：非预览模式（默认），会产生合同流程并返回合同流程编号FlowId。</li>
-<li> **true**：预览模式，不产生合同流程，不返回合同流程编号FlowId，而是返回预览链接PreviewUrl，有效期为300秒，用于查看真实发起后合同的样子。 <font color="red">注意： 以预览模式创建的合同仅供查看，因此参与方无法进行签署操作</font></li></ul>
-
-注:
-
-`如果预览的文件中指定了动态表格控件，此时此接口返回的是合成前的文档预览链接，合成完成后的文档预览链接需要通过回调通知的方式或使用返回的TaskInfo中的TaskId通过ChannelGetTaskResultApi接口查询得到`
-
+        :param _NeedPreview: <p>是否为预览模式，取值如下：</p><ul><li> **false**：非预览模式（默认），会产生合同流程并返回合同流程编号FlowId。</li><li> **true**：预览模式，不产生合同流程，不返回合同流程编号FlowId，而是返回预览链接PreviewUrl，有效期为300秒，用于查看真实发起后合同的样子。 <font color="red">注意： 以预览模式创建的合同仅供查看，因此参与方无法进行签署操作</font></li></ul><p><strong>注1</strong>: 如果预览的文件中指定了动态表格控件，此时此接口返回的是合成前的文档预览链接，合成完成后的文档预览链接需要通过回调通知的方式或使用返回的TaskInfo中的TaskId通过ChannelGetTaskResultApi接口查询得到</p><p><strong>注2</strong>: 预览服务按照合同份额 1:2的比例赠送预览次数。例如：购买 100 份合同，将赠送 200 次合同预览额度。当赠送的预览额度使用完后，如需继续使用预览服务，则需要单独购买预览服务额度。</p>
         :type NeedPreview: bool
-        :param _PreviewType: 预览模式下产生的预览链接类型 
-<ul><li> **0** :(默认) 文件流 ,点开后下载预览的合同PDF文件 </li>
-<li> **1** :H5链接 ,点开后在浏览器中展示合同的样子</li></ul>
-注: `此参数在NeedPreview 为true时有效`
-
+        :param _PreviewType: <p>预览模式下产生的预览链接类型 </p><ul><li> **0** :(默认) 文件流 ,点开后下载预览的合同PDF文件 </li><li> **1** :H5链接 ,点开后在浏览器中展示合同的样子</li></ul>注: <code>此参数在NeedPreview 为true时有效</code>
         :type PreviewType: int
-        :param _Operator: 操作者的信息，不用传
+        :param _Operator: <p>操作者的信息，不用传</p>
         :type Operator: :class:`tencentcloud.essbasic.v20210526.models.UserInfo`
         """
         self._Agent = None
@@ -16526,14 +16478,7 @@ class CreateFlowsByTemplatesRequest(AbstractModel):
 
     @property
     def Agent(self):
-        r"""合同的发起企业和发起人信息，<a href="https://qcloudimg.tencent-cloud.cn/raw/b69f8aad306c40b7b78d096e39b2edbb.png" target="_blank">点击查看合同发起企业和人展示的位置</a>
-
-此接口下面信息必填。
-<ul>
-<li>渠道应用标识:  <a href="https://qcloudimg.tencent-cloud.cn/raw/a71872de3d540d55451e3e73a2ad1a6e.png" target="_blank">Agent.AppId</a></li>
-<li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId（合同的发起企业）</li>
-<li>第三方平台子客企业中的员工标识: Agent.ProxyOperator.OpenId （合同的发起人）</li>
-</ul>
+        r"""<p>合同的发起企业和发起人信息，<a href="https://qcloudimg.tencent-cloud.cn/raw/b69f8aad306c40b7b78d096e39b2edbb.png" target="_blank">点击查看合同发起企业和人展示的位置</a></p><p>此接口下面信息必填。</p><ul><li>渠道应用标识:  <a href="https://qcloudimg.tencent-cloud.cn/raw/a71872de3d540d55451e3e73a2ad1a6e.png" target="_blank">Agent.AppId</a></li><li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId（合同的发起企业）</li><li>第三方平台子客企业中的员工标识: Agent.ProxyOperator.OpenId （合同的发起人）</li></ul>
         :rtype: :class:`tencentcloud.essbasic.v20210526.models.Agent`
         """
         return self._Agent
@@ -16544,7 +16489,7 @@ class CreateFlowsByTemplatesRequest(AbstractModel):
 
     @property
     def FlowInfos(self):
-        r"""要创建的合同信息列表，最多支持一次创建20个合同
+        r"""<p>要创建的合同信息列表，最多支持一次创建20个合同</p>
         :rtype: list of FlowInfo
         """
         return self._FlowInfos
@@ -16555,14 +16500,7 @@ class CreateFlowsByTemplatesRequest(AbstractModel):
 
     @property
     def NeedPreview(self):
-        r"""是否为预览模式，取值如下：
-<ul><li> **false**：非预览模式（默认），会产生合同流程并返回合同流程编号FlowId。</li>
-<li> **true**：预览模式，不产生合同流程，不返回合同流程编号FlowId，而是返回预览链接PreviewUrl，有效期为300秒，用于查看真实发起后合同的样子。 <font color="red">注意： 以预览模式创建的合同仅供查看，因此参与方无法进行签署操作</font></li></ul>
-
-注:
-
-`如果预览的文件中指定了动态表格控件，此时此接口返回的是合成前的文档预览链接，合成完成后的文档预览链接需要通过回调通知的方式或使用返回的TaskInfo中的TaskId通过ChannelGetTaskResultApi接口查询得到`
-
+        r"""<p>是否为预览模式，取值如下：</p><ul><li> **false**：非预览模式（默认），会产生合同流程并返回合同流程编号FlowId。</li><li> **true**：预览模式，不产生合同流程，不返回合同流程编号FlowId，而是返回预览链接PreviewUrl，有效期为300秒，用于查看真实发起后合同的样子。 <font color="red">注意： 以预览模式创建的合同仅供查看，因此参与方无法进行签署操作</font></li></ul><p><strong>注1</strong>: 如果预览的文件中指定了动态表格控件，此时此接口返回的是合成前的文档预览链接，合成完成后的文档预览链接需要通过回调通知的方式或使用返回的TaskInfo中的TaskId通过ChannelGetTaskResultApi接口查询得到</p><p><strong>注2</strong>: 预览服务按照合同份额 1:2的比例赠送预览次数。例如：购买 100 份合同，将赠送 200 次合同预览额度。当赠送的预览额度使用完后，如需继续使用预览服务，则需要单独购买预览服务额度。</p>
         :rtype: bool
         """
         return self._NeedPreview
@@ -16573,11 +16511,7 @@ class CreateFlowsByTemplatesRequest(AbstractModel):
 
     @property
     def PreviewType(self):
-        r"""预览模式下产生的预览链接类型 
-<ul><li> **0** :(默认) 文件流 ,点开后下载预览的合同PDF文件 </li>
-<li> **1** :H5链接 ,点开后在浏览器中展示合同的样子</li></ul>
-注: `此参数在NeedPreview 为true时有效`
-
+        r"""<p>预览模式下产生的预览链接类型 </p><ul><li> **0** :(默认) 文件流 ,点开后下载预览的合同PDF文件 </li><li> **1** :H5链接 ,点开后在浏览器中展示合同的样子</li></ul>注: <code>此参数在NeedPreview 为true时有效</code>
         :rtype: int
         """
         return self._PreviewType
@@ -16590,7 +16524,7 @@ class CreateFlowsByTemplatesRequest(AbstractModel):
     def Operator(self):
         warnings.warn("parameter `Operator` is deprecated", DeprecationWarning) 
 
-        r"""操作者的信息，不用传
+        r"""<p>操作者的信息，不用传</p>
         :rtype: :class:`tencentcloud.essbasic.v20210526.models.UserInfo`
         """
         return self._Operator
@@ -16634,26 +16568,17 @@ class CreateFlowsByTemplatesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _FlowIds: 生成的合同流程ID数组，合同流程ID为32位字符串。
-建议开发者妥善保存此流程ID数组，以便于顺利进行后续操作。
-
-[点击产看FlowId在控制台上的位置](https://qcloudimg.tencent-cloud.cn/raw/05af26573d5106763b4cfbb9f7c64b41.png)
+        :param _FlowIds: <p>生成的合同流程ID数组，合同流程ID为32位字符串。<br>建议开发者妥善保存此流程ID数组，以便于顺利进行后续操作。</p><p><a href="https://qcloudimg.tencent-cloud.cn/raw/05af26573d5106763b4cfbb9f7c64b41.png">点击产看FlowId在控制台上的位置</a></p>
         :type FlowIds: list of str
-        :param _CustomerData: 第三方应用平台的业务信息, 与创建合同的FlowInfos数组中的CustomerData一一对应
+        :param _CustomerData: <p>第三方应用平台的业务信息, 与创建合同的FlowInfos数组中的CustomerData一一对应</p>
         :type CustomerData: list of str
-        :param _ErrorMessages: 创建消息，对应多个合同ID，
-成功为“”,创建失败则对应失败消息
+        :param _ErrorMessages: <p>创建消息，对应多个合同ID，<br>成功为“”,创建失败则对应失败消息</p>
         :type ErrorMessages: list of str
-        :param _PreviewUrls: 合同预览链接URL数组。
-
-注：如果是预览模式(即NeedPreview设置为true)时, 才会有此预览链接URL
-如果预览的文件中指定了动态表格控件，此时此接口返回的是合成前的文档预览链接，合成完成后的文档预览链接需要通过[合同文档合成完成回调](https://qian.tencent.com/developers/partner/callback_types_contracts_sign#%E5%8D%81%E4%B8%80-%E5%90%88%E5%90%8C%E6%96%87%E6%A1%A3%E5%90%88%E6%88%90%E5%AE%8C%E6%88%90%E5%9B%9E%E8%B0%83)获取或使用返回的TaskInfo中的TaskId通过[查询转换任务状态
-](https://qian.tencent.com/developers/partnerApis/files/ChannelGetTaskResultApi)接口查询得到
+        :param _PreviewUrls: <p>合同预览链接URL数组。</p><p>注：如果是预览模式(即NeedPreview设置为true)时, 才会有此预览链接URL<br>如果预览的文件中指定了动态表格控件，此时此接口返回的是合成前的文档预览链接，合成完成后的文档预览链接需要通过<a href="https://qian.tencent.com/developers/partner/callback_types_contracts_sign#%E5%8D%81%E4%B8%80-%E5%90%88%E5%90%8C%E6%96%87%E6%A1%A3%E5%90%88%E6%88%90%E5%AE%8C%E6%88%90%E5%9B%9E%E8%B0%83">合同文档合成完成回调</a>获取或使用返回的TaskInfo中的TaskId通过<a href="https://qian.tencent.com/developers/partnerApis/files/ChannelGetTaskResultApi">查询转换任务状态</a>接口查询得到</p>
         :type PreviewUrls: list of str
-        :param _TaskInfos: 复杂文档合成任务（如，包含动态表格的预览任务）的任务信息数组；
-如果文档需要异步合成，此字段会返回该异步任务的任务信息，后续可以通过ChannelGetTaskResultApi接口查询任务详情；
+        :param _TaskInfos: <p>复杂文档合成任务（如，包含动态表格的预览任务）的任务信息数组；<br>如果文档需要异步合成，此字段会返回该异步任务的任务信息，后续可以通过ChannelGetTaskResultApi接口查询任务详情；</p>
         :type TaskInfos: list of TaskInfo
-        :param _FlowApprovers: 签署方信息，如角色ID、角色名称等
+        :param _FlowApprovers: <p>签署方信息，如角色ID、角色名称等</p>
         :type FlowApprovers: list of FlowApproverItem
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -16668,10 +16593,7 @@ class CreateFlowsByTemplatesResponse(AbstractModel):
 
     @property
     def FlowIds(self):
-        r"""生成的合同流程ID数组，合同流程ID为32位字符串。
-建议开发者妥善保存此流程ID数组，以便于顺利进行后续操作。
-
-[点击产看FlowId在控制台上的位置](https://qcloudimg.tencent-cloud.cn/raw/05af26573d5106763b4cfbb9f7c64b41.png)
+        r"""<p>生成的合同流程ID数组，合同流程ID为32位字符串。<br>建议开发者妥善保存此流程ID数组，以便于顺利进行后续操作。</p><p><a href="https://qcloudimg.tencent-cloud.cn/raw/05af26573d5106763b4cfbb9f7c64b41.png">点击产看FlowId在控制台上的位置</a></p>
         :rtype: list of str
         """
         return self._FlowIds
@@ -16682,7 +16604,7 @@ class CreateFlowsByTemplatesResponse(AbstractModel):
 
     @property
     def CustomerData(self):
-        r"""第三方应用平台的业务信息, 与创建合同的FlowInfos数组中的CustomerData一一对应
+        r"""<p>第三方应用平台的业务信息, 与创建合同的FlowInfos数组中的CustomerData一一对应</p>
         :rtype: list of str
         """
         return self._CustomerData
@@ -16693,8 +16615,7 @@ class CreateFlowsByTemplatesResponse(AbstractModel):
 
     @property
     def ErrorMessages(self):
-        r"""创建消息，对应多个合同ID，
-成功为“”,创建失败则对应失败消息
+        r"""<p>创建消息，对应多个合同ID，<br>成功为“”,创建失败则对应失败消息</p>
         :rtype: list of str
         """
         return self._ErrorMessages
@@ -16705,11 +16626,7 @@ class CreateFlowsByTemplatesResponse(AbstractModel):
 
     @property
     def PreviewUrls(self):
-        r"""合同预览链接URL数组。
-
-注：如果是预览模式(即NeedPreview设置为true)时, 才会有此预览链接URL
-如果预览的文件中指定了动态表格控件，此时此接口返回的是合成前的文档预览链接，合成完成后的文档预览链接需要通过[合同文档合成完成回调](https://qian.tencent.com/developers/partner/callback_types_contracts_sign#%E5%8D%81%E4%B8%80-%E5%90%88%E5%90%8C%E6%96%87%E6%A1%A3%E5%90%88%E6%88%90%E5%AE%8C%E6%88%90%E5%9B%9E%E8%B0%83)获取或使用返回的TaskInfo中的TaskId通过[查询转换任务状态
-](https://qian.tencent.com/developers/partnerApis/files/ChannelGetTaskResultApi)接口查询得到
+        r"""<p>合同预览链接URL数组。</p><p>注：如果是预览模式(即NeedPreview设置为true)时, 才会有此预览链接URL<br>如果预览的文件中指定了动态表格控件，此时此接口返回的是合成前的文档预览链接，合成完成后的文档预览链接需要通过<a href="https://qian.tencent.com/developers/partner/callback_types_contracts_sign#%E5%8D%81%E4%B8%80-%E5%90%88%E5%90%8C%E6%96%87%E6%A1%A3%E5%90%88%E6%88%90%E5%AE%8C%E6%88%90%E5%9B%9E%E8%B0%83">合同文档合成完成回调</a>获取或使用返回的TaskInfo中的TaskId通过<a href="https://qian.tencent.com/developers/partnerApis/files/ChannelGetTaskResultApi">查询转换任务状态</a>接口查询得到</p>
         :rtype: list of str
         """
         return self._PreviewUrls
@@ -16720,8 +16637,7 @@ class CreateFlowsByTemplatesResponse(AbstractModel):
 
     @property
     def TaskInfos(self):
-        r"""复杂文档合成任务（如，包含动态表格的预览任务）的任务信息数组；
-如果文档需要异步合成，此字段会返回该异步任务的任务信息，后续可以通过ChannelGetTaskResultApi接口查询任务详情；
+        r"""<p>复杂文档合成任务（如，包含动态表格的预览任务）的任务信息数组；<br>如果文档需要异步合成，此字段会返回该异步任务的任务信息，后续可以通过ChannelGetTaskResultApi接口查询任务详情；</p>
         :rtype: list of TaskInfo
         """
         return self._TaskInfos
@@ -16732,7 +16648,7 @@ class CreateFlowsByTemplatesResponse(AbstractModel):
 
     @property
     def FlowApprovers(self):
-        r"""签署方信息，如角色ID、角色名称等
+        r"""<p>签署方信息，如角色ID、角色名称等</p>
         :rtype: list of FlowApproverItem
         """
         return self._FlowApprovers
@@ -17694,6 +17610,8 @@ class CreateSealByImageRequest(AbstractModel):
         :type SealHorizontalText: str
         :param _SealStyle: <p>印章样式, 可以选择的样式如下: </p><ul><li>**circle**:(默认)圆形印章</li><li>**ellipse**:椭圆印章</li></ul>
         :type SealStyle: str
+        :param _SubSealType: <p>  印章其他子类型。仅当 <code>SealType=OTHER</code> 且 <code>GenerateSource=SealGenerateSourceSystem</code> 时生效（ <font color="red">不支持图片上传方式创建子类型印章</font>）。<br> <b>注1：</b>调用时请勿传入 <code>SealHorizontalText</code> 字段，系统将自动使用子印章类型名称填充该字段。<br>  <b>注2：</b>本字段为白名单受控功能。如需使用，请联系客服开通并获取支持的子类型枚举值。</p>
+        :type SubSealType: str
         :param _SealSize: <p>印章尺寸，格式为 宽_高（单位：mm，整数），用于签署时按物理尺寸将印章加盖到PDF。<br>取值范围：<br> • 图片上传印章（Image 或 FileToken 非空时生效）：支持自定义尺寸，宽、高均为 10-100 的整数（即 1cm-10cm），宽高比（宽/高）需在 0.1-10 之间。<br>• 系统生成印章（未传 Image 与 FileToken）：仅支持与SealStyle 匹配的固定枚举值：<br>  - 圆形印章（SealStyle=cycle）：38_38 / 40_40 / 42_42 / 45_45 / 50_50 / 58_58<br>  - 椭圆印章（SealStyle=ellipse）：40_30 / 45_30<br>字段依赖关系：<br> • 与 SealStyle关联：仅系统生成印章场景下 SealStyle 生效，此时 SealSize 需与 SealStyle对应的枚举匹配；图片上传印章场景 SealStyle 会被忽略，SealSize支持自定义。<br> • 与 SealType 关联：公章/合同章仅支持圆形枚举，财务/人事/其它章支持圆形或椭圆枚举。<br>• 与 Image / FileToken 关联：SealSize 是加盖到 PDF的物理尺寸，与上传图片的像素分辨率无绑定，图片会按 SealSize 缩放渲染；建议上传图片的宽高比与 SealSize 保持一致，避免拉伸形变。</p>
         :type SealSize: str
         :param _TaxIdentifyCode: <p>企业税号</p><p>注:</p><ul><li>1.印章类型SealType是INVOICE类型时，此参数才会生效</li><li>2.印章类型SealType是INVOICE类型，且该字段没有传入值或传入空时，会取该企业对应的统一社会信用代码作为默认的企业税号（<font color="red">如果是通过授权书授权方式认证的企业，此参数必传不能为空</font>）</li></ul>
@@ -17711,6 +17629,7 @@ class CreateSealByImageRequest(AbstractModel):
         self._SealType = None
         self._SealHorizontalText = None
         self._SealStyle = None
+        self._SubSealType = None
         self._SealSize = None
         self._TaxIdentifyCode = None
         self._SealDescription = None
@@ -17809,6 +17728,17 @@ class CreateSealByImageRequest(AbstractModel):
         self._SealStyle = SealStyle
 
     @property
+    def SubSealType(self):
+        r"""<p>  印章其他子类型。仅当 <code>SealType=OTHER</code> 且 <code>GenerateSource=SealGenerateSourceSystem</code> 时生效（ <font color="red">不支持图片上传方式创建子类型印章</font>）。<br> <b>注1：</b>调用时请勿传入 <code>SealHorizontalText</code> 字段，系统将自动使用子印章类型名称填充该字段。<br>  <b>注2：</b>本字段为白名单受控功能。如需使用，请联系客服开通并获取支持的子类型枚举值。</p>
+        :rtype: str
+        """
+        return self._SubSealType
+
+    @SubSealType.setter
+    def SubSealType(self, SubSealType):
+        self._SubSealType = SubSealType
+
+    @property
     def SealSize(self):
         r"""<p>印章尺寸，格式为 宽_高（单位：mm，整数），用于签署时按物理尺寸将印章加盖到PDF。<br>取值范围：<br> • 图片上传印章（Image 或 FileToken 非空时生效）：支持自定义尺寸，宽、高均为 10-100 的整数（即 1cm-10cm），宽高比（宽/高）需在 0.1-10 之间。<br>• 系统生成印章（未传 Image 与 FileToken）：仅支持与SealStyle 匹配的固定枚举值：<br>  - 圆形印章（SealStyle=cycle）：38_38 / 40_40 / 42_42 / 45_45 / 50_50 / 58_58<br>  - 椭圆印章（SealStyle=ellipse）：40_30 / 45_30<br>字段依赖关系：<br> • 与 SealStyle关联：仅系统生成印章场景下 SealStyle 生效，此时 SealSize 需与 SealStyle对应的枚举匹配；图片上传印章场景 SealStyle 会被忽略，SealSize支持自定义。<br> • 与 SealType 关联：公章/合同章仅支持圆形枚举，财务/人事/其它章支持圆形或椭圆枚举。<br>• 与 Image / FileToken 关联：SealSize 是加盖到 PDF的物理尺寸，与上传图片的像素分辨率无绑定，图片会按 SealSize 缩放渲染；建议上传图片的宽高比与 SealSize 保持一致，避免拉伸形变。</p>
         :rtype: str
@@ -17866,6 +17796,7 @@ class CreateSealByImageRequest(AbstractModel):
         self._SealType = params.get("SealType")
         self._SealHorizontalText = params.get("SealHorizontalText")
         self._SealStyle = params.get("SealStyle")
+        self._SubSealType = params.get("SubSealType")
         self._SealSize = params.get("SealSize")
         self._TaxIdentifyCode = params.get("TaxIdentifyCode")
         self._SealDescription = params.get("SealDescription")

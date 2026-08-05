@@ -525,6 +525,132 @@ class AgentParams(AbstractModel):
         
 
 
+class AgoraParam(AbstractModel):
+    r"""声网拉流参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AppId: <p>声网提供的应用标识</p>
+        :type AppId: str
+        :param _Channel: <p>声网提供的频道名</p>
+        :type Channel: str
+        :param _ChannelProfile: <p>声网录制的频道模式， 可选值如下：（默认值为0） 0: 通信（默认）,即常见的 1 对 1 单聊或群聊， 频道内任何用户可以自由说话； 1: 直播，有两种用户角色: 主播和观众。</p><p>枚举值：</p><ul><li>0:： 通信（默认）</li><li>1： 直播</li></ul>
+        :type ChannelProfile: int
+        :param _Token: <p>绑定频道生成的临时Token</p>
+        :type Token: str
+        :param _Uid: <p>用户ID</p>
+        :type Uid: int
+        :param _TrustedUserIdList: <p>信任用户的列表</p>
+        :type TrustedUserIdList: list of int non-negative
+        :param _UntrustedUserIdList: <p>非信任用户的列表</p>
+        :type UntrustedUserIdList: list of int non-negative
+        """
+        self._AppId = None
+        self._Channel = None
+        self._ChannelProfile = None
+        self._Token = None
+        self._Uid = None
+        self._TrustedUserIdList = None
+        self._UntrustedUserIdList = None
+
+    @property
+    def AppId(self):
+        r"""<p>声网提供的应用标识</p>
+        :rtype: str
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def Channel(self):
+        r"""<p>声网提供的频道名</p>
+        :rtype: str
+        """
+        return self._Channel
+
+    @Channel.setter
+    def Channel(self, Channel):
+        self._Channel = Channel
+
+    @property
+    def ChannelProfile(self):
+        r"""<p>声网录制的频道模式， 可选值如下：（默认值为0） 0: 通信（默认）,即常见的 1 对 1 单聊或群聊， 频道内任何用户可以自由说话； 1: 直播，有两种用户角色: 主播和观众。</p><p>枚举值：</p><ul><li>0:： 通信（默认）</li><li>1： 直播</li></ul>
+        :rtype: int
+        """
+        return self._ChannelProfile
+
+    @ChannelProfile.setter
+    def ChannelProfile(self, ChannelProfile):
+        self._ChannelProfile = ChannelProfile
+
+    @property
+    def Token(self):
+        r"""<p>绑定频道生成的临时Token</p>
+        :rtype: str
+        """
+        return self._Token
+
+    @Token.setter
+    def Token(self, Token):
+        self._Token = Token
+
+    @property
+    def Uid(self):
+        r"""<p>用户ID</p>
+        :rtype: int
+        """
+        return self._Uid
+
+    @Uid.setter
+    def Uid(self, Uid):
+        self._Uid = Uid
+
+    @property
+    def TrustedUserIdList(self):
+        r"""<p>信任用户的列表</p>
+        :rtype: list of int non-negative
+        """
+        return self._TrustedUserIdList
+
+    @TrustedUserIdList.setter
+    def TrustedUserIdList(self, TrustedUserIdList):
+        self._TrustedUserIdList = TrustedUserIdList
+
+    @property
+    def UntrustedUserIdList(self):
+        r"""<p>非信任用户的列表</p>
+        :rtype: list of int non-negative
+        """
+        return self._UntrustedUserIdList
+
+    @UntrustedUserIdList.setter
+    def UntrustedUserIdList(self, UntrustedUserIdList):
+        self._UntrustedUserIdList = UntrustedUserIdList
+
+
+    def _deserialize(self, params):
+        self._AppId = params.get("AppId")
+        self._Channel = params.get("Channel")
+        self._ChannelProfile = params.get("ChannelProfile")
+        self._Token = params.get("Token")
+        self._Uid = params.get("Uid")
+        self._TrustedUserIdList = params.get("TrustedUserIdList")
+        self._UntrustedUserIdList = params.get("UntrustedUserIdList")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AlignmentItem(AbstractModel):
     r"""字幕对齐
 
@@ -8975,9 +9101,12 @@ class Input(AbstractModel):
         :type Url: str
         :param _Format: <p>显式协议</p><p>枚举值：</p><ul><li>rtmp： rtmp协议</li></ul>
         :type Format: str
+        :param _AgoraParam: <p>声网拉流进房参数</p>
+        :type AgoraParam: :class:`tencentcloud.trtc.v20190722.models.AgoraParam`
         """
         self._Url = None
         self._Format = None
+        self._AgoraParam = None
 
     @property
     def Url(self):
@@ -9001,10 +9130,24 @@ class Input(AbstractModel):
     def Format(self, Format):
         self._Format = Format
 
+    @property
+    def AgoraParam(self):
+        r"""<p>声网拉流进房参数</p>
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.AgoraParam`
+        """
+        return self._AgoraParam
+
+    @AgoraParam.setter
+    def AgoraParam(self, AgoraParam):
+        self._AgoraParam = AgoraParam
+
 
     def _deserialize(self, params):
         self._Url = params.get("Url")
         self._Format = params.get("Format")
+        if params.get("AgoraParam") is not None:
+            self._AgoraParam = AgoraParam()
+            self._AgoraParam._deserialize(params.get("AgoraParam"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

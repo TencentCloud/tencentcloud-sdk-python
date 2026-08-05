@@ -7360,6 +7360,192 @@ class CreateRouteResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateThrottleRuleRequest(AbstractModel):
+    r"""CreateThrottleRule请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: <p>实例Id</p>
+        :type InstanceId: str
+        :param _ThrottleType: <p>限流类型:</p><p>枚举值：</p><ul><li>1： 用户/客户端限流</li><li>2： 消费组维度限流</li><li>3： Topic限流</li></ul>
+        :type ThrottleType: int
+        :param _GroupNameList: <p>消费组名</p>
+        :type GroupNameList: list of str
+        :param _ConsumeThrottle: <p>消费限流值,生产消费限流值,必填一个单位MB/s</p>
+        :type ConsumeThrottle: int
+        :param _ProduceThrottle: <p>生产限流值,生产消费限流值,单位MB/s</p>
+        :type ProduceThrottle: int
+        :param _ClientIdList: <p>用户客户端id</p>
+        :type ClientIdList: list of str
+        :param _UserNameList: <p>用户名</p>
+        :type UserNameList: list of str
+        :param _TopicNameList: <p>topic名称</p>
+        :type TopicNameList: list of str
+        """
+        self._InstanceId = None
+        self._ThrottleType = None
+        self._GroupNameList = None
+        self._ConsumeThrottle = None
+        self._ProduceThrottle = None
+        self._ClientIdList = None
+        self._UserNameList = None
+        self._TopicNameList = None
+
+    @property
+    def InstanceId(self):
+        r"""<p>实例Id</p>
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def ThrottleType(self):
+        r"""<p>限流类型:</p><p>枚举值：</p><ul><li>1： 用户/客户端限流</li><li>2： 消费组维度限流</li><li>3： Topic限流</li></ul>
+        :rtype: int
+        """
+        return self._ThrottleType
+
+    @ThrottleType.setter
+    def ThrottleType(self, ThrottleType):
+        self._ThrottleType = ThrottleType
+
+    @property
+    def GroupNameList(self):
+        r"""<p>消费组名</p>
+        :rtype: list of str
+        """
+        return self._GroupNameList
+
+    @GroupNameList.setter
+    def GroupNameList(self, GroupNameList):
+        self._GroupNameList = GroupNameList
+
+    @property
+    def ConsumeThrottle(self):
+        r"""<p>消费限流值,生产消费限流值,必填一个单位MB/s</p>
+        :rtype: int
+        """
+        return self._ConsumeThrottle
+
+    @ConsumeThrottle.setter
+    def ConsumeThrottle(self, ConsumeThrottle):
+        self._ConsumeThrottle = ConsumeThrottle
+
+    @property
+    def ProduceThrottle(self):
+        r"""<p>生产限流值,生产消费限流值,单位MB/s</p>
+        :rtype: int
+        """
+        return self._ProduceThrottle
+
+    @ProduceThrottle.setter
+    def ProduceThrottle(self, ProduceThrottle):
+        self._ProduceThrottle = ProduceThrottle
+
+    @property
+    def ClientIdList(self):
+        r"""<p>用户客户端id</p>
+        :rtype: list of str
+        """
+        return self._ClientIdList
+
+    @ClientIdList.setter
+    def ClientIdList(self, ClientIdList):
+        self._ClientIdList = ClientIdList
+
+    @property
+    def UserNameList(self):
+        r"""<p>用户名</p>
+        :rtype: list of str
+        """
+        return self._UserNameList
+
+    @UserNameList.setter
+    def UserNameList(self, UserNameList):
+        self._UserNameList = UserNameList
+
+    @property
+    def TopicNameList(self):
+        r"""<p>topic名称</p>
+        :rtype: list of str
+        """
+        return self._TopicNameList
+
+    @TopicNameList.setter
+    def TopicNameList(self, TopicNameList):
+        self._TopicNameList = TopicNameList
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._ThrottleType = params.get("ThrottleType")
+        self._GroupNameList = params.get("GroupNameList")
+        self._ConsumeThrottle = params.get("ConsumeThrottle")
+        self._ProduceThrottle = params.get("ProduceThrottle")
+        self._ClientIdList = params.get("ClientIdList")
+        self._UserNameList = params.get("UserNameList")
+        self._TopicNameList = params.get("TopicNameList")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateThrottleRuleResponse(AbstractModel):
+    r"""CreateThrottleRule返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: <p>返回信息</p>
+        :type Result: :class:`tencentcloud.ckafka.v20190819.models.JgwOperateResponse`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        r"""<p>返回信息</p>
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.JgwOperateResponse`
+        """
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self._Result = JgwOperateResponse()
+            self._Result._deserialize(params.get("Result"))
+        self._RequestId = params.get("RequestId")
+
+
 class CreateTokenRequest(AbstractModel):
     r"""CreateToken请求参数结构体
 
@@ -10483,6 +10669,102 @@ class DeleteRouteTriggerTimeResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteThrottleRuleRequest(AbstractModel):
+    r"""DeleteThrottleRule请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ThrottleRuleId: 限流规则Id
+        :type ThrottleRuleId: str
+        :param _InstanceId: 实例标识
+        :type InstanceId: str
+        """
+        self._ThrottleRuleId = None
+        self._InstanceId = None
+
+    @property
+    def ThrottleRuleId(self):
+        r"""限流规则Id
+        :rtype: str
+        """
+        return self._ThrottleRuleId
+
+    @ThrottleRuleId.setter
+    def ThrottleRuleId(self, ThrottleRuleId):
+        self._ThrottleRuleId = ThrottleRuleId
+
+    @property
+    def InstanceId(self):
+        r"""实例标识
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+
+    def _deserialize(self, params):
+        self._ThrottleRuleId = params.get("ThrottleRuleId")
+        self._InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteThrottleRuleResponse(AbstractModel):
+    r"""DeleteThrottleRule返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: 返回信息
+        :type Result: :class:`tencentcloud.ckafka.v20190819.models.JgwOperateResponse`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        r"""返回信息
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.JgwOperateResponse`
+        """
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self._Result = JgwOperateResponse()
+            self._Result._deserialize(params.get("Result"))
         self._RequestId = params.get("RequestId")
 
 
@@ -15627,6 +15909,147 @@ class DescribeTaskStatusResponse(AbstractModel):
     def _deserialize(self, params):
         if params.get("Result") is not None:
             self._Result = TaskStatusResponse()
+            self._Result._deserialize(params.get("Result"))
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeThrottleRulesRequest(AbstractModel):
+    r"""DescribeThrottleRules请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: <p>实例Id</p>
+        :type InstanceId: str
+        :param _SearchWord: <p>关键字</p>
+        :type SearchWord: str
+        :param _Limit: <p>返回数量，不填则默认为20，最大值200</p>
+        :type Limit: int
+        :param _Offset: <p>偏移数，默认为0</p>
+        :type Offset: int
+        :param _ThrottleDimension: <p>限流维度</p><p>枚举值：</p><ul><li>1： 实例维度限流</li><li>2： topic维度限流</li></ul><p>默认值：1</p>
+        :type ThrottleDimension: int
+        """
+        self._InstanceId = None
+        self._SearchWord = None
+        self._Limit = None
+        self._Offset = None
+        self._ThrottleDimension = None
+
+    @property
+    def InstanceId(self):
+        r"""<p>实例Id</p>
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def SearchWord(self):
+        r"""<p>关键字</p>
+        :rtype: str
+        """
+        return self._SearchWord
+
+    @SearchWord.setter
+    def SearchWord(self, SearchWord):
+        self._SearchWord = SearchWord
+
+    @property
+    def Limit(self):
+        r"""<p>返回数量，不填则默认为20，最大值200</p>
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        r"""<p>偏移数，默认为0</p>
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def ThrottleDimension(self):
+        r"""<p>限流维度</p><p>枚举值：</p><ul><li>1： 实例维度限流</li><li>2： topic维度限流</li></ul><p>默认值：1</p>
+        :rtype: int
+        """
+        return self._ThrottleDimension
+
+    @ThrottleDimension.setter
+    def ThrottleDimension(self, ThrottleDimension):
+        self._ThrottleDimension = ThrottleDimension
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._SearchWord = params.get("SearchWord")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        self._ThrottleDimension = params.get("ThrottleDimension")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeThrottleRulesResponse(AbstractModel):
+    r"""DescribeThrottleRules返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: <p>返回信息</p>
+        :type Result: :class:`tencentcloud.ckafka.v20190819.models.ThrottleRuleResult`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        r"""<p>返回信息</p>
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.ThrottleRuleResult`
+        """
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self._Result = ThrottleRuleResult()
             self._Result._deserialize(params.get("Result"))
         self._RequestId = params.get("RequestId")
 
@@ -26630,6 +27053,117 @@ class ModifyRoutineMaintenanceTaskResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyThrottleRuleRequest(AbstractModel):
+    r"""ModifyThrottleRule请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ThrottleRuleId: 规则标识
+        :type ThrottleRuleId: int
+        :param _InstanceId: 实例Id
+        :type InstanceId: str
+        :param _ConsumeThrottle: 消费限流值单位MB/s
+        :type ConsumeThrottle: int
+        """
+        self._ThrottleRuleId = None
+        self._InstanceId = None
+        self._ConsumeThrottle = None
+
+    @property
+    def ThrottleRuleId(self):
+        r"""规则标识
+        :rtype: int
+        """
+        return self._ThrottleRuleId
+
+    @ThrottleRuleId.setter
+    def ThrottleRuleId(self, ThrottleRuleId):
+        self._ThrottleRuleId = ThrottleRuleId
+
+    @property
+    def InstanceId(self):
+        r"""实例Id
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def ConsumeThrottle(self):
+        r"""消费限流值单位MB/s
+        :rtype: int
+        """
+        return self._ConsumeThrottle
+
+    @ConsumeThrottle.setter
+    def ConsumeThrottle(self, ConsumeThrottle):
+        self._ConsumeThrottle = ConsumeThrottle
+
+
+    def _deserialize(self, params):
+        self._ThrottleRuleId = params.get("ThrottleRuleId")
+        self._InstanceId = params.get("InstanceId")
+        self._ConsumeThrottle = params.get("ConsumeThrottle")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyThrottleRuleResponse(AbstractModel):
+    r"""ModifyThrottleRule返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: 返回信息
+        :type Result: :class:`tencentcloud.ckafka.v20190819.models.JgwOperateResponse`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        r"""返回信息
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.JgwOperateResponse`
+        """
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self._Result = JgwOperateResponse()
+            self._Result._deserialize(params.get("Result"))
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyTopicAttributesRequest(AbstractModel):
     r"""ModifyTopicAttributes请求参数结构体
 
@@ -32286,6 +32820,203 @@ class TdwParam(AbstractModel):
         self._IsDomestic = params.get("IsDomestic")
         self._TdwHost = params.get("TdwHost")
         self._TdwPort = params.get("TdwPort")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ThrottleRuleDetail(AbstractModel):
+    r"""限流规则详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ThrottleRuleId: <p>限流规则标识</p>
+        :type ThrottleRuleId: int
+        :param _ThrottleType: <p>限流类型</p><p>枚举值：</p><ul><li>1： 用户/客户端限流</li><li>2： 消费组限流</li><li>3： topic限流</li></ul>
+        :type ThrottleType: int
+        :param _ClientId: <p>客户端id</p>
+        :type ClientId: str
+        :param _UserName: <p>用户名</p>
+        :type UserName: str
+        :param _ConsumeThrottle: <p>消费限流值,单位MB/s</p>
+        :type ConsumeThrottle: int
+        :param _UpdateTime: <p>更新时间</p>
+        :type UpdateTime: str
+        :param _TopicName: <p>topic名称</p>
+        :type TopicName: str
+        :param _TopicId: <p>topicId</p>
+        :type TopicId: str
+        """
+        self._ThrottleRuleId = None
+        self._ThrottleType = None
+        self._ClientId = None
+        self._UserName = None
+        self._ConsumeThrottle = None
+        self._UpdateTime = None
+        self._TopicName = None
+        self._TopicId = None
+
+    @property
+    def ThrottleRuleId(self):
+        r"""<p>限流规则标识</p>
+        :rtype: int
+        """
+        return self._ThrottleRuleId
+
+    @ThrottleRuleId.setter
+    def ThrottleRuleId(self, ThrottleRuleId):
+        self._ThrottleRuleId = ThrottleRuleId
+
+    @property
+    def ThrottleType(self):
+        r"""<p>限流类型</p><p>枚举值：</p><ul><li>1： 用户/客户端限流</li><li>2： 消费组限流</li><li>3： topic限流</li></ul>
+        :rtype: int
+        """
+        return self._ThrottleType
+
+    @ThrottleType.setter
+    def ThrottleType(self, ThrottleType):
+        self._ThrottleType = ThrottleType
+
+    @property
+    def ClientId(self):
+        r"""<p>客户端id</p>
+        :rtype: str
+        """
+        return self._ClientId
+
+    @ClientId.setter
+    def ClientId(self, ClientId):
+        self._ClientId = ClientId
+
+    @property
+    def UserName(self):
+        r"""<p>用户名</p>
+        :rtype: str
+        """
+        return self._UserName
+
+    @UserName.setter
+    def UserName(self, UserName):
+        self._UserName = UserName
+
+    @property
+    def ConsumeThrottle(self):
+        r"""<p>消费限流值,单位MB/s</p>
+        :rtype: int
+        """
+        return self._ConsumeThrottle
+
+    @ConsumeThrottle.setter
+    def ConsumeThrottle(self, ConsumeThrottle):
+        self._ConsumeThrottle = ConsumeThrottle
+
+    @property
+    def UpdateTime(self):
+        r"""<p>更新时间</p>
+        :rtype: str
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def TopicName(self):
+        r"""<p>topic名称</p>
+        :rtype: str
+        """
+        return self._TopicName
+
+    @TopicName.setter
+    def TopicName(self, TopicName):
+        self._TopicName = TopicName
+
+    @property
+    def TopicId(self):
+        r"""<p>topicId</p>
+        :rtype: str
+        """
+        return self._TopicId
+
+    @TopicId.setter
+    def TopicId(self, TopicId):
+        self._TopicId = TopicId
+
+
+    def _deserialize(self, params):
+        self._ThrottleRuleId = params.get("ThrottleRuleId")
+        self._ThrottleType = params.get("ThrottleType")
+        self._ClientId = params.get("ClientId")
+        self._UserName = params.get("UserName")
+        self._ConsumeThrottle = params.get("ConsumeThrottle")
+        self._UpdateTime = params.get("UpdateTime")
+        self._TopicName = params.get("TopicName")
+        self._TopicId = params.get("TopicId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ThrottleRuleResult(AbstractModel):
+    r"""限流规则列表返回
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: 总数量
+        :type TotalCount: int
+        :param _ThrottleRuleList: 规则列表
+        :type ThrottleRuleList: list of ThrottleRuleDetail
+        """
+        self._TotalCount = None
+        self._ThrottleRuleList = None
+
+    @property
+    def TotalCount(self):
+        r"""总数量
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def ThrottleRuleList(self):
+        r"""规则列表
+        :rtype: list of ThrottleRuleDetail
+        """
+        return self._ThrottleRuleList
+
+    @ThrottleRuleList.setter
+    def ThrottleRuleList(self, ThrottleRuleList):
+        self._ThrottleRuleList = ThrottleRuleList
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("ThrottleRuleList") is not None:
+            self._ThrottleRuleList = []
+            for item in params.get("ThrottleRuleList"):
+                obj = ThrottleRuleDetail()
+                obj._deserialize(item)
+                self._ThrottleRuleList.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

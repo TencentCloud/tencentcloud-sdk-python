@@ -709,6 +709,24 @@ class DlcClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateInferenceService(
+            self,
+            request: models.CreateInferenceServiceRequest,
+            opts: Dict = None,
+    ) -> models.CreateInferenceServiceResponse:
+        """
+        创建推理服务（含默认部署）
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateInferenceService"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateInferenceServiceResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateInternalTable(
             self,
             request: models.CreateInternalTableRequest,
@@ -776,6 +794,24 @@ class DlcClient(AbstractClient):
         kwargs["action"] = "CreateMetaDatabase"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.CreateMetaDatabaseResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def CreateModelVersion(
+            self,
+            request: models.CreateModelVersionRequest,
+            opts: Dict = None,
+    ) -> models.CreateModelVersionResponse:
+        """
+        创建模型新版本
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateModelVersion"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateModelVersionResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -3375,6 +3411,24 @@ class DlcClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def GetInferenceService(
+            self,
+            request: models.GetInferenceServiceRequest,
+            opts: Dict = None,
+    ) -> models.GetInferenceServiceResponse:
+        """
+        获取单个推理服务详情
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "GetInferenceService"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.GetInferenceServiceResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def GetJobSpec(
             self,
             request: models.GetJobSpecRequest,
@@ -3514,6 +3568,60 @@ class DlcClient(AbstractClient):
         kwargs["action"] = "GetLabYaml"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.GetLabYamlResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def GetModelConfig(
+            self,
+            request: models.GetModelConfigRequest,
+            opts: Dict = None,
+    ) -> models.GetModelConfigResponse:
+        """
+        获取模型 config.json 配置（默认最新版本）
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "GetModelConfig"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.GetModelConfigResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def GetModelFiles(
+            self,
+            request: models.GetModelFilesRequest,
+            opts: Dict = None,
+    ) -> models.GetModelFilesResponse:
+        """
+        获取模型文件树（默认最新版本）
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "GetModelFiles"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.GetModelFilesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def GetModelReadme(
+            self,
+            request: models.GetModelReadmeRequest,
+            opts: Dict = None,
+    ) -> models.GetModelReadmeResponse:
+        """
+        获取模型 README 信息（默认最新版本）
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "GetModelReadme"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.GetModelReadmeResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -3933,6 +4041,24 @@ class DlcClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def ListInferenceEngines(
+            self,
+            request: models.ListInferenceEnginesRequest,
+            opts: Dict = None,
+    ) -> models.ListInferenceEnginesResponse:
+        """
+        列出推理引擎
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ListInferenceEngines"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ListInferenceEnginesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ListInferenceModels(
             self,
             request: models.ListInferenceModelsRequest,
@@ -3946,6 +4072,24 @@ class DlcClient(AbstractClient):
         kwargs["action"] = "ListInferenceModels"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ListInferenceModelsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ListInferenceServices(
+            self,
+            request: models.ListInferenceServicesRequest,
+            opts: Dict = None,
+    ) -> models.ListInferenceServicesResponse:
+        """
+        列出推理服务（支持关键词和状态过滤 + 分页）
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ListInferenceServices"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ListInferenceServicesResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -4000,6 +4144,24 @@ class DlcClient(AbstractClient):
         kwargs["action"] = "ListLabs"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ListLabsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ListModelVersions(
+            self,
+            request: models.ListModelVersionsRequest,
+            opts: Dict = None,
+    ) -> models.ListModelVersionsResponse:
+        """
+        列出模型所有版本
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ListModelVersions"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ListModelVersionsResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -4383,6 +4545,42 @@ class DlcClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def QueryDashboardOverview(
+            self,
+            request: models.QueryDashboardOverviewRequest,
+            opts: Dict = None,
+    ) -> models.QueryDashboardOverviewResponse:
+        """
+        返回指定时间范围内所有推理服务的聚合 KPI 值。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "QueryDashboardOverview"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.QueryDashboardOverviewResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def QueryDashboardServiceList(
+            self,
+            request: models.QueryDashboardServiceListRequest,
+            opts: Dict = None,
+    ) -> models.QueryDashboardServiceListResponse:
+        """
+        查询监控大盘服务列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "QueryDashboardServiceList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.QueryDashboardServiceListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def QueryInternalTableWarehouse(
             self,
             request: models.QueryInternalTableWarehouseRequest,
@@ -4396,6 +4594,24 @@ class DlcClient(AbstractClient):
         kwargs["action"] = "QueryInternalTableWarehouse"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.QueryInternalTableWarehouseResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def QueryMonitorOverview(
+            self,
+            request: models.QueryMonitorOverviewRequest,
+            opts: Dict = None,
+    ) -> models.QueryMonitorOverviewResponse:
+        """
+        查询监控概览数据（瞬时值）
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "QueryMonitorOverview"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.QueryMonitorOverviewResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -4509,6 +4725,24 @@ class DlcClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def RestartInferenceService(
+            self,
+            request: models.RestartInferenceServiceRequest,
+            opts: Dict = None,
+    ) -> models.RestartInferenceServiceResponse:
+        """
+        重启推理服务（操作所有部署）。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "RestartInferenceService"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.RestartInferenceServiceResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def RevokeDLCCatalogAccess(
             self,
             request: models.RevokeDLCCatalogAccessRequest,
@@ -4612,6 +4846,24 @@ class DlcClient(AbstractClient):
         kwargs["action"] = "StartRayCluster"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.StartRayClusterResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def StopInferenceService(
+            self,
+            request: models.StopInferenceServiceRequest,
+            opts: Dict = None,
+    ) -> models.StopInferenceServiceResponse:
+        """
+        停止推理服务（操作所有部署）。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "StopInferenceService"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.StopInferenceServiceResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

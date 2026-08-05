@@ -1282,6 +1282,24 @@ class ClsClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DeleteLog(
+            self,
+            request: models.DeleteLogRequest,
+            opts: Dict = None,
+    ) -> models.DeleteLogResponse:
+        """
+        修改日志信息
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteLog"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteLogResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DeleteLogset(
             self,
             request: models.DeleteLogsetRequest,
@@ -3205,6 +3223,24 @@ class ClsClient(AbstractClient):
         kwargs["action"] = "ModifyKafkaRecharge"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ModifyKafkaRechargeResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyLog(
+            self,
+            request: models.ModifyLogRequest,
+            opts: Dict = None,
+    ) -> models.ModifyLogResponse:
+        """
+        修改日志信息
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyLog"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyLogResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

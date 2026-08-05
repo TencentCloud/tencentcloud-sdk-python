@@ -7069,10 +7069,13 @@ class AiCutoutConfig(AbstractModel):
         :type Type: str
         :param _PatternConfig: <p>图案抠图配置。仅在Type为pattern时生效。</p>
         :type PatternConfig: :class:`tencentcloud.mps.v20190612.models.PatternConfig`
+        :param _Model: <p>抠图模型选择，可不填。</p><p>枚举值：</p><ul><li>auto： 自动选择合适的模型</li><li>WAND-cutout-1.0-lite： 标准版，速度最快</li><li>WAND-cutout-2.0-lite： 增强版，速度最快</li><li>WAND-cutout-2.0-flash： 增强版，质量-速度平衡</li></ul>
+        :type Model: str
         """
         self._Switch = None
         self._Type = None
         self._PatternConfig = None
+        self._Model = None
 
     @property
     def Switch(self):
@@ -7107,6 +7110,17 @@ class AiCutoutConfig(AbstractModel):
     def PatternConfig(self, PatternConfig):
         self._PatternConfig = PatternConfig
 
+    @property
+    def Model(self):
+        r"""<p>抠图模型选择，可不填。</p><p>枚举值：</p><ul><li>auto： 自动选择合适的模型</li><li>WAND-cutout-1.0-lite： 标准版，速度最快</li><li>WAND-cutout-2.0-lite： 增强版，速度最快</li><li>WAND-cutout-2.0-flash： 增强版，质量-速度平衡</li></ul>
+        :rtype: str
+        """
+        return self._Model
+
+    @Model.setter
+    def Model(self, Model):
+        self._Model = Model
+
 
     def _deserialize(self, params):
         self._Switch = params.get("Switch")
@@ -7114,6 +7128,7 @@ class AiCutoutConfig(AbstractModel):
         if params.get("PatternConfig") is not None:
             self._PatternConfig = PatternConfig()
             self._PatternConfig._deserialize(params.get("PatternConfig"))
+        self._Model = params.get("Model")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -23587,9 +23602,12 @@ class CreateDocToVideoTaskRequest(AbstractModel):
         :type Input: :class:`tencentcloud.mps.v20190612.models.DocToVideoInput`
         :param _CosInfo: <p>用户cos信息，用于保存生成结果</p>
         :type CosInfo: :class:`tencentcloud.mps.v20190612.models.DocToVideoCosInfo`
+        :param _ResourceId: <p>资源ID，需要保证对应资源是开启状态。默认为账号主资源ID。</p>
+        :type ResourceId: str
         """
         self._Input = None
         self._CosInfo = None
+        self._ResourceId = None
 
     @property
     def Input(self):
@@ -23613,6 +23631,17 @@ class CreateDocToVideoTaskRequest(AbstractModel):
     def CosInfo(self, CosInfo):
         self._CosInfo = CosInfo
 
+    @property
+    def ResourceId(self):
+        r"""<p>资源ID，需要保证对应资源是开启状态。默认为账号主资源ID。</p>
+        :rtype: str
+        """
+        return self._ResourceId
+
+    @ResourceId.setter
+    def ResourceId(self, ResourceId):
+        self._ResourceId = ResourceId
+
 
     def _deserialize(self, params):
         if params.get("Input") is not None:
@@ -23621,6 +23650,7 @@ class CreateDocToVideoTaskRequest(AbstractModel):
         if params.get("CosInfo") is not None:
             self._CosInfo = DocToVideoCosInfo()
             self._CosInfo._deserialize(params.get("CosInfo"))
+        self._ResourceId = params.get("ResourceId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

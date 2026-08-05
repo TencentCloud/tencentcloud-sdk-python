@@ -1974,3 +1974,36 @@ class TcbClient(AbstractClient):
         kwargs["opts"] = opts or {}
         
         return await self.call_and_deserialize(**kwargs)
+        
+    async def VerifyHTTPServiceRoute(
+            self,
+            request: models.VerifyHTTPServiceRouteRequest,
+            opts: Dict = None,
+    ) -> models.VerifyHTTPServiceRouteResponse:
+        """
+        覆盖的校验项包括：
+        1. Ownership：域名所有权（TXT/CNAME 记录）；
+        2. Cert：证书与域名匹配（CertId 为空时跳过）；
+        3. Quota：环境下域名/路径数量配额；
+        4. RouteConflict：同域名下路由路径冲突；
+        5. DomainConflict：域名被其他环境占用；
+        6. InternalAccount：内部域名且非内部账号；
+        7. Blacklist：域名黑名单；
+        8. CDNResource：AccessType=CDN 时 CDN 资源存在性 / 状态（含 ICP 未备案提示）；
+        9. EO：AccessType=EO 时 EdgeOne 侧域名冲突 / 备案 / 归属权预检。
+
+        使用方式：
+        - 调用本接口前置校验，若 Passed=true 表示所有启用检查项均通过，可继续调用 CreateHTTPServiceRoute 正式创建；
+        - 若 Passed=false，前端应根据各 CheckItem 的 Code 精确渲染对应的错误提示与用户操作指引（如 DNS 归属权配置、ICP 备案指引等），用户修正参数后可重复调用本接口，直到通过后再进行创建。
+
+        注意：本接口为只读 dry-run 操作，不落库、不创建任何资源，仅返回各项检查的详细结果。本接口通过不代表 CreateHTTPServiceRoute 必然成功（例如证书运行时状态、并发抢占等仍需创建时最终判定），但本接口不通过则 CreateHTTPServiceRoute 必然不通过。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "VerifyHTTPServiceRoute"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.VerifyHTTPServiceRouteResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)

@@ -5600,10 +5600,13 @@ class DeleteConsumerGroupRequest(AbstractModel):
         :param _AccountName: 账号名称。实际的账户全称形如：account-#{SubscribeId}-#{AccountName}。
 请务必保证账户名称正确。可通过[DescribeConsumerGroups](https://cloud.tencent.com/document/product/571/102947)接口获取。
         :type AccountName: str
+        :param _BackendJobId: 
+        :type BackendJobId: str
         """
         self._SubscribeId = None
         self._ConsumerGroupName = None
         self._AccountName = None
+        self._BackendJobId = None
 
     @property
     def SubscribeId(self):
@@ -5641,11 +5644,23 @@ class DeleteConsumerGroupRequest(AbstractModel):
     def AccountName(self, AccountName):
         self._AccountName = AccountName
 
+    @property
+    def BackendJobId(self):
+        r"""
+        :rtype: str
+        """
+        return self._BackendJobId
+
+    @BackendJobId.setter
+    def BackendJobId(self, BackendJobId):
+        self._BackendJobId = BackendJobId
+
 
     def _deserialize(self, params):
         self._SubscribeId = params.get("SubscribeId")
         self._ConsumerGroupName = params.get("ConsumerGroupName")
         self._AccountName = params.get("AccountName")
+        self._BackendJobId = params.get("BackendJobId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -6518,11 +6533,11 @@ class DescribeConsumerGroupsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SubscribeId: 订阅实例id，可通过[DescribeSubscribeJobs](https://cloud.tencent.com/document/product/571/102943)接口获取。
+        :param _SubscribeId: <p>订阅实例id，可通过<a href="https://cloud.tencent.com/document/product/571/102943">DescribeSubscribeJobs</a>接口获取。</p>
         :type SubscribeId: str
-        :param _Offset: 返回记录的起始偏移量。默认0
+        :param _Offset: <p>返回记录的起始偏移量。默认0</p>
         :type Offset: int
-        :param _Limit: 单次返回的记录数量。默认10
+        :param _Limit: <p>单次返回的记录数量。默认10</p>
         :type Limit: int
         """
         self._SubscribeId = None
@@ -6531,7 +6546,7 @@ class DescribeConsumerGroupsRequest(AbstractModel):
 
     @property
     def SubscribeId(self):
-        r"""订阅实例id，可通过[DescribeSubscribeJobs](https://cloud.tencent.com/document/product/571/102943)接口获取。
+        r"""<p>订阅实例id，可通过<a href="https://cloud.tencent.com/document/product/571/102943">DescribeSubscribeJobs</a>接口获取。</p>
         :rtype: str
         """
         return self._SubscribeId
@@ -6542,7 +6557,7 @@ class DescribeConsumerGroupsRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""返回记录的起始偏移量。默认0
+        r"""<p>返回记录的起始偏移量。默认0</p>
         :rtype: int
         """
         return self._Offset
@@ -6553,7 +6568,7 @@ class DescribeConsumerGroupsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""单次返回的记录数量。默认10
+        r"""<p>单次返回的记录数量。默认10</p>
         :rtype: int
         """
         return self._Limit
@@ -6584,9 +6599,9 @@ class DescribeConsumerGroupsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TotalCount: 指定实例下的消费者组总数
+        :param _TotalCount: <p>指定实例下的消费者组总数</p>
         :type TotalCount: int
-        :param _Items: 消费者组列表
+        :param _Items: <p>消费者组列表</p>
         :type Items: list of GroupInfo
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -6597,7 +6612,7 @@ class DescribeConsumerGroupsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        r"""指定实例下的消费者组总数
+        r"""<p>指定实例下的消费者组总数</p>
         :rtype: int
         """
         return self._TotalCount
@@ -6608,7 +6623,7 @@ class DescribeConsumerGroupsResponse(AbstractModel):
 
     @property
     def Items(self):
-        r"""消费者组列表
+        r"""<p>消费者组列表</p>
         :rtype: list of GroupInfo
         """
         return self._Items
@@ -8349,14 +8364,14 @@ class DescribeSubscribeDetailRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SubscribeId: 订阅实例ID，可通过[DescribeSubscribeJobs](https://cloud.tencent.com/document/product/571/102943)接口获取。
+        :param _SubscribeId: <p>订阅实例ID，可通过<a href="https://cloud.tencent.com/document/product/571/102943">DescribeSubscribeJobs</a>接口获取。</p>
         :type SubscribeId: str
         """
         self._SubscribeId = None
 
     @property
     def SubscribeId(self):
-        r"""订阅实例ID，可通过[DescribeSubscribeJobs](https://cloud.tencent.com/document/product/571/102943)接口获取。
+        r"""<p>订阅实例ID，可通过<a href="https://cloud.tencent.com/document/product/571/102943">DescribeSubscribeJobs</a>接口获取。</p>
         :rtype: str
         """
         return self._SubscribeId
@@ -8385,72 +8400,70 @@ class DescribeSubscribeDetailResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SubscribeId: 数据订阅的ID，形如subs-b6x64o31tm
+        :param _SubscribeId: <p>数据订阅的ID，形如subs-b6x64o31tm</p>
         :type SubscribeId: str
-        :param _SubscribeName: 数据订阅实例的名称
+        :param _SubscribeName: <p>数据订阅实例的名称</p>
         :type SubscribeName: str
-        :param _Product: 订阅的数据库类型，目前支持 cynosdbmysql(tdsql-c mysql版),mariadb,mongodb,mysql,percona,tdpg(tdsql postgresql版),tdsqlpercona(tdsql mysql版)
+        :param _Product: <p>订阅的数据库类型，目前支持 cynosdbmysql(tdsql-c mysql版),mariadb,mongodb,mysql,percona,tdpg(tdsql postgresql版),tdsqlpercona(tdsql mysql版)</p>
         :type Product: str
-        :param _InstanceId: 订阅的云数据库实例ID，只有订阅云数据库该值才有意义
+        :param _InstanceId: <p>订阅的云数据库实例ID，只有订阅云数据库该值才有意义</p>
         :type InstanceId: str
-        :param _InstanceStatus: 订阅的云数据库实例状态，只有订阅云数据库该值才有意义。可能值为：running, isolated, offline
+        :param _InstanceStatus: <p>订阅的云数据库实例状态，只有订阅云数据库该值才有意义。可能值为：running, isolated, offline</p>
         :type InstanceStatus: str
-        :param _Status: 订阅任务计费状态，可能值为：正常normal, 隔离中isolating, 已隔离isolated, 下线中offlining, 按量转包年包月中 post2PrePayIng
+        :param _Status: <p>订阅任务计费状态，可能值为：正常normal, 隔离中isolating, 已隔离isolated, 下线中offlining, 按量转包年包月中 post2PrePayIng</p>
         :type Status: str
-        :param _SubsStatus: 订阅任务状态，可能值为：未启动notStarted, 校验中checking, 校验不通过checkNotPass, 校验通过checkPass, 启动中starting, 运行中running, 异常出错error
+        :param _SubsStatus: <p>订阅任务状态，可能值为：未启动notStarted, 校验中checking, 校验不通过checkNotPass, 校验通过checkPass, 启动中starting, 运行中running, 异常出错error</p>
         :type SubsStatus: str
-        :param _ModifyTime: 修改时间，时间格式如：Y-m-d h:m:s
+        :param _ModifyTime: <p>修改时间。</p>
         :type ModifyTime: str
-        :param _CreateTime: 创建时间，时间格式如：Y-m-d h:m:s
+        :param _CreateTime: <p>创建时间。</p>
         :type CreateTime: str
-        :param _IsolateTime: 隔离时间，时间格式如：Y-m-d h:m:s。默认：0000-00-00 00:00:00
+        :param _IsolateTime: <p>隔离时间。</p>
         :type IsolateTime: str
-        :param _ExpireTime: 包年包月任务的到期时间，时间格式如：Y-m-d h:m:s。默认：0000-00-00 00:00:00
+        :param _ExpireTime: <p>包年包月任务的到期时间。</p>
         :type ExpireTime: str
-        :param _OfflineTime: 下线时间，时间格式如：Y-m-d h:m:s。默认：0000-00-00 00:00:00
+        :param _OfflineTime: <p>下线时间。</p>
         :type OfflineTime: str
-        :param _PayType: 付费方式，可能值为：0-包年包月，1-按量计费
+        :param _PayType: <p>付费方式，可能值为：0-包年包月，1-按量计费</p>
         :type PayType: int
-        :param _AutoRenewFlag: 自动续费标识。只有当 PayType=0，该值才有意义。枚举值：0-不自动续费，1-自动续费
+        :param _AutoRenewFlag: <p>自动续费标识。只有当 PayType=0，该值才有意义。枚举值：0-不自动续费，1-自动续费</p>
         :type AutoRenewFlag: int
-        :param _Region: 任务所在地域
+        :param _Region: <p>任务所在地域</p>
         :type Region: str
-        :param _Topic: Kafka topic
+        :param _Topic: <p>Kafka topic</p>
         :type Topic: str
-        :param _Broker: Kafka服务Broker地址
+        :param _Broker: <p>Kafka服务Broker地址</p>
         :type Broker: str
-        :param _SubscribeMode: 数据订阅的类型，当 Product 不为 mongodb 时，可能值为：all-全实例更新；dml-数据更新；ddl-结构更新；dmlAndDdl-数据更新+结构更新。当 Product 为 mongodb 时，可能值为 all-全实例更新；database-订阅单库；collection-订阅单集合
+        :param _SubscribeMode: <p>数据订阅的类型，当 Product 不为 mongodb 时，可能值为：all-全实例更新；dml-数据更新；ddl-结构更新；dmlAndDdl-数据更新+结构更新。当 Product 为 mongodb 时，可能值为 all-全实例更新；database-订阅单库；collection-订阅单集合</p>
         :type SubscribeMode: str
-        :param _Protocol: 订阅数据格式。如果为空则用的默认格式: mysql\cynosdbmysql\mariadb\percona\tdsqlpercona\tdpg是protobuf，mongo是json。当 DatabaseType 为 mysql和cynosdbmysql 时有三种可选协议：protobuf\avro\json。数据格式详情参考官网的消费demo文档
+        :param _Protocol: <p>订阅数据格式。如果为空则用的默认格式: mysql\cynosdbmysql\mariadb\percona\tdsqlpercona\tdpg是protobuf，mongo是json。当 DatabaseType 为 mysql和cynosdbmysql 时有三种可选协议：protobuf\avro\json。数据格式详情参考官网的消费demo文档</p>
         :type Protocol: str
-        :param _SubscribeObjects: 订阅的数据库表信息
+        :param _SubscribeObjects: <p>订阅的数据库表信息</p>
         :type SubscribeObjects: list of SubscribeObject
-        :param _KafkaConfig: kafka配置信息
+        :param _KafkaConfig: <p>kafka配置信息</p>
         :type KafkaConfig: :class:`tencentcloud.dts.v20211206.models.SubscribeKafkaConfig`
-        :param _KafkaVersion: 订阅内置kafka的版本信息
+        :param _KafkaVersion: <p>订阅内置kafka的版本信息</p>
         :type KafkaVersion: str
-        :param _AccessType: 源数据库接入类型，如：extranet(公网)、vpncloud(vpn接入)、dcg(专线接入)、ccn(云联网)、cdb(云数据库)、cvm(云服务器自建)、intranet(自研上云)、vpc(私有网络vpc)。注意具体可选值依赖当前链路支持能力
+        :param _AccessType: <p>源数据库接入类型，如：extranet(公网)、vpncloud(vpn接入)、dcg(专线接入)、ccn(云联网)、cdb(云数据库)、cvm(云服务器自建)、intranet(自研上云)、vpc(私有网络vpc)。注意具体可选值依赖当前链路支持能力</p>
         :type AccessType: str
-        :param _Endpoints: 接入类型信息
+        :param _Endpoints: <p>接入类型信息</p>
         :type Endpoints: list of EndpointItem
-        :param _PipelineInfo: mongo输出聚合设置
+        :param _PipelineInfo: <p>mongo输出聚合设置</p>
         :type PipelineInfo: list of PipelineInfo
-        :param _Tags: 标签
+        :param _Tags: <p>标签</p>
         :type Tags: list of TagItem
-        :param _Errors: 订阅任务报错信息
+        :param _Errors: <p>订阅任务报错信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Errors: list of SubsErr
-        :param _ExtraAttr: 为业务添加的额外信息。参数名作key，参数值作value。
-mysql选填参数：ProcessXA-是否处理XA事务，为true处理，其他不处理。
-mongo选填参数：SubscribeType-订阅类型，目前只支持changeStream。
+        :param _ExtraAttr: <p>为业务添加的额外信息。参数名作key，参数值作value。<br>mysql选填参数：ProcessXA-是否处理XA事务，为true处理，其他不处理。<br>mongo选填参数：SubscribeType-订阅类型，目前只支持changeStream。</p>
         :type ExtraAttr: list of KeyValuePairOption
-        :param _SubscribeVersion: 数据订阅版本, 当前支持kafka和kafkaPro（专业版）
+        :param _SubscribeVersion: <p>数据订阅版本, 当前支持kafka和kafkaPro（专业版）</p>
         :type SubscribeVersion: str
-        :param _ConsumerVpcId: 消费端地址所在vpc
+        :param _ConsumerVpcId: <p>消费端地址所在vpc</p>
         :type ConsumerVpcId: str
-        :param _ConsumerSubnetId: 消费端地址所在子网
+        :param _ConsumerSubnetId: <p>消费端地址所在子网</p>
         :type ConsumerSubnetId: str
-        :param _InstanceClass: 订阅实例规格
+        :param _InstanceClass: <p>订阅实例规格</p>
         :type InstanceClass: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -8491,7 +8504,7 @@ mongo选填参数：SubscribeType-订阅类型，目前只支持changeStream。
 
     @property
     def SubscribeId(self):
-        r"""数据订阅的ID，形如subs-b6x64o31tm
+        r"""<p>数据订阅的ID，形如subs-b6x64o31tm</p>
         :rtype: str
         """
         return self._SubscribeId
@@ -8502,7 +8515,7 @@ mongo选填参数：SubscribeType-订阅类型，目前只支持changeStream。
 
     @property
     def SubscribeName(self):
-        r"""数据订阅实例的名称
+        r"""<p>数据订阅实例的名称</p>
         :rtype: str
         """
         return self._SubscribeName
@@ -8513,7 +8526,7 @@ mongo选填参数：SubscribeType-订阅类型，目前只支持changeStream。
 
     @property
     def Product(self):
-        r"""订阅的数据库类型，目前支持 cynosdbmysql(tdsql-c mysql版),mariadb,mongodb,mysql,percona,tdpg(tdsql postgresql版),tdsqlpercona(tdsql mysql版)
+        r"""<p>订阅的数据库类型，目前支持 cynosdbmysql(tdsql-c mysql版),mariadb,mongodb,mysql,percona,tdpg(tdsql postgresql版),tdsqlpercona(tdsql mysql版)</p>
         :rtype: str
         """
         return self._Product
@@ -8524,7 +8537,7 @@ mongo选填参数：SubscribeType-订阅类型，目前只支持changeStream。
 
     @property
     def InstanceId(self):
-        r"""订阅的云数据库实例ID，只有订阅云数据库该值才有意义
+        r"""<p>订阅的云数据库实例ID，只有订阅云数据库该值才有意义</p>
         :rtype: str
         """
         return self._InstanceId
@@ -8535,7 +8548,7 @@ mongo选填参数：SubscribeType-订阅类型，目前只支持changeStream。
 
     @property
     def InstanceStatus(self):
-        r"""订阅的云数据库实例状态，只有订阅云数据库该值才有意义。可能值为：running, isolated, offline
+        r"""<p>订阅的云数据库实例状态，只有订阅云数据库该值才有意义。可能值为：running, isolated, offline</p>
         :rtype: str
         """
         return self._InstanceStatus
@@ -8546,7 +8559,7 @@ mongo选填参数：SubscribeType-订阅类型，目前只支持changeStream。
 
     @property
     def Status(self):
-        r"""订阅任务计费状态，可能值为：正常normal, 隔离中isolating, 已隔离isolated, 下线中offlining, 按量转包年包月中 post2PrePayIng
+        r"""<p>订阅任务计费状态，可能值为：正常normal, 隔离中isolating, 已隔离isolated, 下线中offlining, 按量转包年包月中 post2PrePayIng</p>
         :rtype: str
         """
         return self._Status
@@ -8557,7 +8570,7 @@ mongo选填参数：SubscribeType-订阅类型，目前只支持changeStream。
 
     @property
     def SubsStatus(self):
-        r"""订阅任务状态，可能值为：未启动notStarted, 校验中checking, 校验不通过checkNotPass, 校验通过checkPass, 启动中starting, 运行中running, 异常出错error
+        r"""<p>订阅任务状态，可能值为：未启动notStarted, 校验中checking, 校验不通过checkNotPass, 校验通过checkPass, 启动中starting, 运行中running, 异常出错error</p>
         :rtype: str
         """
         return self._SubsStatus
@@ -8568,7 +8581,7 @@ mongo选填参数：SubscribeType-订阅类型，目前只支持changeStream。
 
     @property
     def ModifyTime(self):
-        r"""修改时间，时间格式如：Y-m-d h:m:s
+        r"""<p>修改时间。</p>
         :rtype: str
         """
         return self._ModifyTime
@@ -8579,7 +8592,7 @@ mongo选填参数：SubscribeType-订阅类型，目前只支持changeStream。
 
     @property
     def CreateTime(self):
-        r"""创建时间，时间格式如：Y-m-d h:m:s
+        r"""<p>创建时间。</p>
         :rtype: str
         """
         return self._CreateTime
@@ -8590,7 +8603,7 @@ mongo选填参数：SubscribeType-订阅类型，目前只支持changeStream。
 
     @property
     def IsolateTime(self):
-        r"""隔离时间，时间格式如：Y-m-d h:m:s。默认：0000-00-00 00:00:00
+        r"""<p>隔离时间。</p>
         :rtype: str
         """
         return self._IsolateTime
@@ -8601,7 +8614,7 @@ mongo选填参数：SubscribeType-订阅类型，目前只支持changeStream。
 
     @property
     def ExpireTime(self):
-        r"""包年包月任务的到期时间，时间格式如：Y-m-d h:m:s。默认：0000-00-00 00:00:00
+        r"""<p>包年包月任务的到期时间。</p>
         :rtype: str
         """
         return self._ExpireTime
@@ -8612,7 +8625,7 @@ mongo选填参数：SubscribeType-订阅类型，目前只支持changeStream。
 
     @property
     def OfflineTime(self):
-        r"""下线时间，时间格式如：Y-m-d h:m:s。默认：0000-00-00 00:00:00
+        r"""<p>下线时间。</p>
         :rtype: str
         """
         return self._OfflineTime
@@ -8623,7 +8636,7 @@ mongo选填参数：SubscribeType-订阅类型，目前只支持changeStream。
 
     @property
     def PayType(self):
-        r"""付费方式，可能值为：0-包年包月，1-按量计费
+        r"""<p>付费方式，可能值为：0-包年包月，1-按量计费</p>
         :rtype: int
         """
         return self._PayType
@@ -8634,7 +8647,7 @@ mongo选填参数：SubscribeType-订阅类型，目前只支持changeStream。
 
     @property
     def AutoRenewFlag(self):
-        r"""自动续费标识。只有当 PayType=0，该值才有意义。枚举值：0-不自动续费，1-自动续费
+        r"""<p>自动续费标识。只有当 PayType=0，该值才有意义。枚举值：0-不自动续费，1-自动续费</p>
         :rtype: int
         """
         return self._AutoRenewFlag
@@ -8645,7 +8658,7 @@ mongo选填参数：SubscribeType-订阅类型，目前只支持changeStream。
 
     @property
     def Region(self):
-        r"""任务所在地域
+        r"""<p>任务所在地域</p>
         :rtype: str
         """
         return self._Region
@@ -8656,7 +8669,7 @@ mongo选填参数：SubscribeType-订阅类型，目前只支持changeStream。
 
     @property
     def Topic(self):
-        r"""Kafka topic
+        r"""<p>Kafka topic</p>
         :rtype: str
         """
         return self._Topic
@@ -8667,7 +8680,7 @@ mongo选填参数：SubscribeType-订阅类型，目前只支持changeStream。
 
     @property
     def Broker(self):
-        r"""Kafka服务Broker地址
+        r"""<p>Kafka服务Broker地址</p>
         :rtype: str
         """
         return self._Broker
@@ -8678,7 +8691,7 @@ mongo选填参数：SubscribeType-订阅类型，目前只支持changeStream。
 
     @property
     def SubscribeMode(self):
-        r"""数据订阅的类型，当 Product 不为 mongodb 时，可能值为：all-全实例更新；dml-数据更新；ddl-结构更新；dmlAndDdl-数据更新+结构更新。当 Product 为 mongodb 时，可能值为 all-全实例更新；database-订阅单库；collection-订阅单集合
+        r"""<p>数据订阅的类型，当 Product 不为 mongodb 时，可能值为：all-全实例更新；dml-数据更新；ddl-结构更新；dmlAndDdl-数据更新+结构更新。当 Product 为 mongodb 时，可能值为 all-全实例更新；database-订阅单库；collection-订阅单集合</p>
         :rtype: str
         """
         return self._SubscribeMode
@@ -8689,7 +8702,7 @@ mongo选填参数：SubscribeType-订阅类型，目前只支持changeStream。
 
     @property
     def Protocol(self):
-        r"""订阅数据格式。如果为空则用的默认格式: mysql\cynosdbmysql\mariadb\percona\tdsqlpercona\tdpg是protobuf，mongo是json。当 DatabaseType 为 mysql和cynosdbmysql 时有三种可选协议：protobuf\avro\json。数据格式详情参考官网的消费demo文档
+        r"""<p>订阅数据格式。如果为空则用的默认格式: mysql\cynosdbmysql\mariadb\percona\tdsqlpercona\tdpg是protobuf，mongo是json。当 DatabaseType 为 mysql和cynosdbmysql 时有三种可选协议：protobuf\avro\json。数据格式详情参考官网的消费demo文档</p>
         :rtype: str
         """
         return self._Protocol
@@ -8700,7 +8713,7 @@ mongo选填参数：SubscribeType-订阅类型，目前只支持changeStream。
 
     @property
     def SubscribeObjects(self):
-        r"""订阅的数据库表信息
+        r"""<p>订阅的数据库表信息</p>
         :rtype: list of SubscribeObject
         """
         return self._SubscribeObjects
@@ -8711,7 +8724,7 @@ mongo选填参数：SubscribeType-订阅类型，目前只支持changeStream。
 
     @property
     def KafkaConfig(self):
-        r"""kafka配置信息
+        r"""<p>kafka配置信息</p>
         :rtype: :class:`tencentcloud.dts.v20211206.models.SubscribeKafkaConfig`
         """
         return self._KafkaConfig
@@ -8722,7 +8735,7 @@ mongo选填参数：SubscribeType-订阅类型，目前只支持changeStream。
 
     @property
     def KafkaVersion(self):
-        r"""订阅内置kafka的版本信息
+        r"""<p>订阅内置kafka的版本信息</p>
         :rtype: str
         """
         return self._KafkaVersion
@@ -8733,7 +8746,7 @@ mongo选填参数：SubscribeType-订阅类型，目前只支持changeStream。
 
     @property
     def AccessType(self):
-        r"""源数据库接入类型，如：extranet(公网)、vpncloud(vpn接入)、dcg(专线接入)、ccn(云联网)、cdb(云数据库)、cvm(云服务器自建)、intranet(自研上云)、vpc(私有网络vpc)。注意具体可选值依赖当前链路支持能力
+        r"""<p>源数据库接入类型，如：extranet(公网)、vpncloud(vpn接入)、dcg(专线接入)、ccn(云联网)、cdb(云数据库)、cvm(云服务器自建)、intranet(自研上云)、vpc(私有网络vpc)。注意具体可选值依赖当前链路支持能力</p>
         :rtype: str
         """
         return self._AccessType
@@ -8744,7 +8757,7 @@ mongo选填参数：SubscribeType-订阅类型，目前只支持changeStream。
 
     @property
     def Endpoints(self):
-        r"""接入类型信息
+        r"""<p>接入类型信息</p>
         :rtype: list of EndpointItem
         """
         return self._Endpoints
@@ -8755,7 +8768,7 @@ mongo选填参数：SubscribeType-订阅类型，目前只支持changeStream。
 
     @property
     def PipelineInfo(self):
-        r"""mongo输出聚合设置
+        r"""<p>mongo输出聚合设置</p>
         :rtype: list of PipelineInfo
         """
         return self._PipelineInfo
@@ -8766,7 +8779,7 @@ mongo选填参数：SubscribeType-订阅类型，目前只支持changeStream。
 
     @property
     def Tags(self):
-        r"""标签
+        r"""<p>标签</p>
         :rtype: list of TagItem
         """
         return self._Tags
@@ -8777,7 +8790,7 @@ mongo选填参数：SubscribeType-订阅类型，目前只支持changeStream。
 
     @property
     def Errors(self):
-        r"""订阅任务报错信息
+        r"""<p>订阅任务报错信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of SubsErr
         """
@@ -8789,9 +8802,7 @@ mongo选填参数：SubscribeType-订阅类型，目前只支持changeStream。
 
     @property
     def ExtraAttr(self):
-        r"""为业务添加的额外信息。参数名作key，参数值作value。
-mysql选填参数：ProcessXA-是否处理XA事务，为true处理，其他不处理。
-mongo选填参数：SubscribeType-订阅类型，目前只支持changeStream。
+        r"""<p>为业务添加的额外信息。参数名作key，参数值作value。<br>mysql选填参数：ProcessXA-是否处理XA事务，为true处理，其他不处理。<br>mongo选填参数：SubscribeType-订阅类型，目前只支持changeStream。</p>
         :rtype: list of KeyValuePairOption
         """
         return self._ExtraAttr
@@ -8802,7 +8813,7 @@ mongo选填参数：SubscribeType-订阅类型，目前只支持changeStream。
 
     @property
     def SubscribeVersion(self):
-        r"""数据订阅版本, 当前支持kafka和kafkaPro（专业版）
+        r"""<p>数据订阅版本, 当前支持kafka和kafkaPro（专业版）</p>
         :rtype: str
         """
         return self._SubscribeVersion
@@ -8813,7 +8824,7 @@ mongo选填参数：SubscribeType-订阅类型，目前只支持changeStream。
 
     @property
     def ConsumerVpcId(self):
-        r"""消费端地址所在vpc
+        r"""<p>消费端地址所在vpc</p>
         :rtype: str
         """
         return self._ConsumerVpcId
@@ -8824,7 +8835,7 @@ mongo选填参数：SubscribeType-订阅类型，目前只支持changeStream。
 
     @property
     def ConsumerSubnetId(self):
-        r"""消费端地址所在子网
+        r"""<p>消费端地址所在子网</p>
         :rtype: str
         """
         return self._ConsumerSubnetId
@@ -8835,7 +8846,7 @@ mongo选填参数：SubscribeType-订阅类型，目前只支持changeStream。
 
     @property
     def InstanceClass(self):
-        r"""订阅实例规格
+        r"""<p>订阅实例规格</p>
         :rtype: str
         """
         return self._InstanceClass
@@ -12915,27 +12926,27 @@ class GroupInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Account: 消费者组账号
+        :param _Account: <p>消费者组账号</p>
         :type Account: str
-        :param _ConsumerGroupName: 消费者组名称
+        :param _ConsumerGroupName: <p>消费者组名称</p>
         :type ConsumerGroupName: str
-        :param _Description: 消费者组备注
+        :param _Description: <p>消费者组备注</p>
         :type Description: str
-        :param _ConsumerGroupOffset: 消费组偏移量。该字段是为了兼容以前单Partition的情况，取值为最后一个分区的偏移量。各分区的偏移量详见StateOfPartition字段
+        :param _ConsumerGroupOffset: <p>消费组偏移量。该字段是为了兼容以前单Partition的情况，取值为最后一个分区的偏移量。各分区的偏移量详见StateOfPartition字段</p>
         :type ConsumerGroupOffset: int
-        :param _ConsumerGroupLag: 消费组未消费的数据量。该字段是为了兼容以前单Partition的情况，取值为最后一个分区未消费的数据量。各分区未消费数据量详见StateOfPartition字段
+        :param _ConsumerGroupLag: <p>消费组未消费的数据量。该字段是为了兼容以前单Partition的情况，取值为最后一个分区未消费的数据量。各分区未消费数据量详见StateOfPartition字段</p>
         :type ConsumerGroupLag: int
-        :param _Latency: 消费延迟(单位为秒)
+        :param _Latency: <p>消费延迟(单位为秒)</p>
         :type Latency: int
-        :param _StateOfPartition: 各分区的消费状态
+        :param _StateOfPartition: <p>各分区的消费状态</p>
         :type StateOfPartition: list of MonitorInfo
-        :param _CreatedAt: 消费者组创建时间，格式为YYYY-MM-DD hh:mm:ss
+        :param _CreatedAt: <p>消费者组创建时间。</p>
         :type CreatedAt: str
-        :param _UpdatedAt: 消费者组修改时间，格式为YYYY-MM-DD hh:mm:ss
+        :param _UpdatedAt: <p>消费者组修改时间。</p>
         :type UpdatedAt: str
-        :param _ConsumerGroupState: 消费者组状态，包括Dead、Empty、Stable等，只有Dead和Empty两种状态可以执行reset操作
+        :param _ConsumerGroupState: <p>消费者组状态，包括Dead、Empty、Stable等，只有Dead和Empty两种状态可以执行reset操作</p>
         :type ConsumerGroupState: str
-        :param _PartitionAssignment: 每个消费者正在消费的分区
+        :param _PartitionAssignment: <p>每个消费者正在消费的分区</p>
         :type PartitionAssignment: list of PartitionAssignment
         """
         self._Account = None
@@ -12952,7 +12963,7 @@ class GroupInfo(AbstractModel):
 
     @property
     def Account(self):
-        r"""消费者组账号
+        r"""<p>消费者组账号</p>
         :rtype: str
         """
         return self._Account
@@ -12963,7 +12974,7 @@ class GroupInfo(AbstractModel):
 
     @property
     def ConsumerGroupName(self):
-        r"""消费者组名称
+        r"""<p>消费者组名称</p>
         :rtype: str
         """
         return self._ConsumerGroupName
@@ -12974,7 +12985,7 @@ class GroupInfo(AbstractModel):
 
     @property
     def Description(self):
-        r"""消费者组备注
+        r"""<p>消费者组备注</p>
         :rtype: str
         """
         return self._Description
@@ -12985,7 +12996,7 @@ class GroupInfo(AbstractModel):
 
     @property
     def ConsumerGroupOffset(self):
-        r"""消费组偏移量。该字段是为了兼容以前单Partition的情况，取值为最后一个分区的偏移量。各分区的偏移量详见StateOfPartition字段
+        r"""<p>消费组偏移量。该字段是为了兼容以前单Partition的情况，取值为最后一个分区的偏移量。各分区的偏移量详见StateOfPartition字段</p>
         :rtype: int
         """
         return self._ConsumerGroupOffset
@@ -12996,7 +13007,7 @@ class GroupInfo(AbstractModel):
 
     @property
     def ConsumerGroupLag(self):
-        r"""消费组未消费的数据量。该字段是为了兼容以前单Partition的情况，取值为最后一个分区未消费的数据量。各分区未消费数据量详见StateOfPartition字段
+        r"""<p>消费组未消费的数据量。该字段是为了兼容以前单Partition的情况，取值为最后一个分区未消费的数据量。各分区未消费数据量详见StateOfPartition字段</p>
         :rtype: int
         """
         return self._ConsumerGroupLag
@@ -13007,7 +13018,7 @@ class GroupInfo(AbstractModel):
 
     @property
     def Latency(self):
-        r"""消费延迟(单位为秒)
+        r"""<p>消费延迟(单位为秒)</p>
         :rtype: int
         """
         return self._Latency
@@ -13018,7 +13029,7 @@ class GroupInfo(AbstractModel):
 
     @property
     def StateOfPartition(self):
-        r"""各分区的消费状态
+        r"""<p>各分区的消费状态</p>
         :rtype: list of MonitorInfo
         """
         return self._StateOfPartition
@@ -13029,7 +13040,7 @@ class GroupInfo(AbstractModel):
 
     @property
     def CreatedAt(self):
-        r"""消费者组创建时间，格式为YYYY-MM-DD hh:mm:ss
+        r"""<p>消费者组创建时间。</p>
         :rtype: str
         """
         return self._CreatedAt
@@ -13040,7 +13051,7 @@ class GroupInfo(AbstractModel):
 
     @property
     def UpdatedAt(self):
-        r"""消费者组修改时间，格式为YYYY-MM-DD hh:mm:ss
+        r"""<p>消费者组修改时间。</p>
         :rtype: str
         """
         return self._UpdatedAt
@@ -13051,7 +13062,7 @@ class GroupInfo(AbstractModel):
 
     @property
     def ConsumerGroupState(self):
-        r"""消费者组状态，包括Dead、Empty、Stable等，只有Dead和Empty两种状态可以执行reset操作
+        r"""<p>消费者组状态，包括Dead、Empty、Stable等，只有Dead和Empty两种状态可以执行reset操作</p>
         :rtype: str
         """
         return self._ConsumerGroupState
@@ -13062,7 +13073,7 @@ class GroupInfo(AbstractModel):
 
     @property
     def PartitionAssignment(self):
-        r"""每个消费者正在消费的分区
+        r"""<p>每个消费者正在消费的分区</p>
         :rtype: list of PartitionAssignment
         """
         return self._PartitionAssignment
@@ -20294,52 +20305,54 @@ class SubscribeInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SubscribeId: 数据订阅的实例ID
+        :param _SubscribeId: <p>数据订阅的实例ID</p>
         :type SubscribeId: str
-        :param _SubscribeName: 数据订阅实例的名称
+        :param _SubscribeName: <p>数据订阅实例的名称</p>
         :type SubscribeName: str
-        :param _Topic: 订阅实例发送数据的kafka topic
+        :param _Topic: <p>订阅实例发送数据的kafka topic</p>
         :type Topic: str
-        :param _Product: 订阅实例的类型，目前支持 cynosdbmysql,mariadb,mongodb,mysql,percona,tdpg,tdsqlpercona(tdsqlmysql)
+        :param _Product: <p>订阅实例的类型，目前支持 cynosdbmysql,mariadb,mongodb,mysql,percona,tdpg,tdsqlpercona(tdsqlmysql)</p>
         :type Product: str
-        :param _InstanceId: 订阅的数据库实例ID（如果订阅的是云数据库）如果实例不是腾讯云上的，此值为空。
+        :param _InstanceId: <p>订阅的数据库实例ID（如果订阅的是云数据库）如果实例不是腾讯云上的，此值为空。</p>
         :type InstanceId: str
-        :param _InstanceStatus: 云数据库状态：running 运行中，isolated 已隔离，offline 已下线。如果不是云上，此值为空
+        :param _InstanceStatus: <p>云数据库状态：running 运行中，isolated 已隔离，offline 已下线。如果不是云上，此值为空</p>
         :type InstanceStatus: str
-        :param _Status: 数据订阅生命周期状态，可能的值为：正常 normal, 隔离中 isolating, 已隔离 isolated, 下线中 offlining, 按量转包年包月中 post2PrePayIng
+        :param _Status: <p>数据订阅生命周期状态，可能的值为：正常 normal, 隔离中 isolating, 已隔离 isolated, 下线中 offlining, 按量转包年包月中 post2PrePayIng</p>
         :type Status: str
-        :param _SubsStatus: 数据订阅状态，可能的值为：未启动 notStarted, 校验中 checking, 校验不通过 checkNotPass, 校验通过 checkPass, 启动中 starting, 运行中 running, 异常出错 error
+        :param _SubsStatus: <p>数据订阅状态，可能的值为：未启动 notStarted, 校验中 checking, 校验不通过 checkNotPass, 校验通过 checkPass, 启动中 starting, 运行中 running, 异常出错 error</p>
         :type SubsStatus: str
-        :param _ModifyTime: 上次修改时间，时间格式如：Y-m-d h:m:s
+        :param _ModifyTime: <p>上次修改时间，时间格式如：Y-m-d h:m:s</p>
         :type ModifyTime: str
-        :param _CreateTime: 创建时间，时间格式如：Y-m-d h:m:s
+        :param _CreateTime: <p>创建时间，时间格式如：Y-m-d h:m:s</p>
         :type CreateTime: str
-        :param _IsolateTime: 隔离时间，时间格式如：Y-m-d h:m:s。默认：0000-00-00 00:00:00
+        :param _IsolateTime: <p>隔离时间，时间格式如：Y-m-d h:m:s。默认：0000-00-00 00:00:00</p>
         :type IsolateTime: str
-        :param _ExpireTime: 包年包月任务的到期时间，时间格式如：Y-m-d h:m:s。默认：0000-00-00 00:00:00
+        :param _ExpireTime: <p>包年包月任务的到期时间，时间格式如：Y-m-d h:m:s。默认：0000-00-00 00:00:00</p>
         :type ExpireTime: str
-        :param _OfflineTime: 下线时间，时间格式如：Y-m-d h:m:s。默认：0000-00-00 00:00:00
+        :param _OfflineTime: <p>下线时间，时间格式如：Y-m-d h:m:s。默认：0000-00-00 00:00:00</p>
         :type OfflineTime: str
-        :param _PayType: 计费方式，0 - 包年包月，1 - 按量计费
+        :param _PayType: <p>计费方式，0 - 包年包月，1 - 按量计费</p>
         :type PayType: int
-        :param _AutoRenewFlag: 自动续费标识。只有当 PayType=0，该值才有意义。枚举值：0-不自动续费，1-自动续费
+        :param _AutoRenewFlag: <p>自动续费标识。只有当 PayType=0，该值才有意义。枚举值：0-不自动续费，1-自动续费</p>
         :type AutoRenewFlag: int
-        :param _Region: 数据订阅实例所属地域
+        :param _Region: <p>数据订阅实例所属地域</p>
         :type Region: str
-        :param _AccessType: 接入方式。枚举值：extranet(公网) vpncloud(vpn接入) dcg(专线接入) ccn(云联网) cdb(云数据库) cvm(云主机自建) intranet(自研上云) vpc(私有网络vpc)
+        :param _AccessType: <p>接入方式。枚举值：extranet(公网) vpncloud(vpn接入) dcg(专线接入) ccn(云联网) cdb(云数据库) cvm(云主机自建) intranet(自研上云) vpc(私有网络vpc)</p>
         :type AccessType: str
-        :param _Endpoints: 数据库节点信息
+        :param _Endpoints: <p>数据库节点信息</p>
         :type Endpoints: list of EndpointItem
-        :param _SubscribeVersion: 数据订阅版本, 当前支持kafka和kafkaPro（专业版）
+        :param _SubscribeVersion: <p>数据订阅版本, 当前支持kafka和kafkaPro（专业版）</p>
         :type SubscribeVersion: str
-        :param _Tags: 标签
+        :param _Tags: <p>标签</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Tags: list of TagItem
-        :param _Errors: 任务报错信息，如果有的话。
+        :param _Errors: <p>任务报错信息，如果有的话。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Errors: list of SubsErr
-        :param _InstanceClass: 订阅实例规格
+        :param _InstanceClass: <p>订阅实例规格</p>
         :type InstanceClass: str
+        :param _ConsumerRoutePhase: <p>新版订阅消费端路由阶段</p>
+        :type ConsumerRoutePhase: str
         """
         self._SubscribeId = None
         self._SubscribeName = None
@@ -20363,10 +20376,11 @@ class SubscribeInfo(AbstractModel):
         self._Tags = None
         self._Errors = None
         self._InstanceClass = None
+        self._ConsumerRoutePhase = None
 
     @property
     def SubscribeId(self):
-        r"""数据订阅的实例ID
+        r"""<p>数据订阅的实例ID</p>
         :rtype: str
         """
         return self._SubscribeId
@@ -20377,7 +20391,7 @@ class SubscribeInfo(AbstractModel):
 
     @property
     def SubscribeName(self):
-        r"""数据订阅实例的名称
+        r"""<p>数据订阅实例的名称</p>
         :rtype: str
         """
         return self._SubscribeName
@@ -20388,7 +20402,7 @@ class SubscribeInfo(AbstractModel):
 
     @property
     def Topic(self):
-        r"""订阅实例发送数据的kafka topic
+        r"""<p>订阅实例发送数据的kafka topic</p>
         :rtype: str
         """
         return self._Topic
@@ -20399,7 +20413,7 @@ class SubscribeInfo(AbstractModel):
 
     @property
     def Product(self):
-        r"""订阅实例的类型，目前支持 cynosdbmysql,mariadb,mongodb,mysql,percona,tdpg,tdsqlpercona(tdsqlmysql)
+        r"""<p>订阅实例的类型，目前支持 cynosdbmysql,mariadb,mongodb,mysql,percona,tdpg,tdsqlpercona(tdsqlmysql)</p>
         :rtype: str
         """
         return self._Product
@@ -20410,7 +20424,7 @@ class SubscribeInfo(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""订阅的数据库实例ID（如果订阅的是云数据库）如果实例不是腾讯云上的，此值为空。
+        r"""<p>订阅的数据库实例ID（如果订阅的是云数据库）如果实例不是腾讯云上的，此值为空。</p>
         :rtype: str
         """
         return self._InstanceId
@@ -20421,7 +20435,7 @@ class SubscribeInfo(AbstractModel):
 
     @property
     def InstanceStatus(self):
-        r"""云数据库状态：running 运行中，isolated 已隔离，offline 已下线。如果不是云上，此值为空
+        r"""<p>云数据库状态：running 运行中，isolated 已隔离，offline 已下线。如果不是云上，此值为空</p>
         :rtype: str
         """
         return self._InstanceStatus
@@ -20432,7 +20446,7 @@ class SubscribeInfo(AbstractModel):
 
     @property
     def Status(self):
-        r"""数据订阅生命周期状态，可能的值为：正常 normal, 隔离中 isolating, 已隔离 isolated, 下线中 offlining, 按量转包年包月中 post2PrePayIng
+        r"""<p>数据订阅生命周期状态，可能的值为：正常 normal, 隔离中 isolating, 已隔离 isolated, 下线中 offlining, 按量转包年包月中 post2PrePayIng</p>
         :rtype: str
         """
         return self._Status
@@ -20443,7 +20457,7 @@ class SubscribeInfo(AbstractModel):
 
     @property
     def SubsStatus(self):
-        r"""数据订阅状态，可能的值为：未启动 notStarted, 校验中 checking, 校验不通过 checkNotPass, 校验通过 checkPass, 启动中 starting, 运行中 running, 异常出错 error
+        r"""<p>数据订阅状态，可能的值为：未启动 notStarted, 校验中 checking, 校验不通过 checkNotPass, 校验通过 checkPass, 启动中 starting, 运行中 running, 异常出错 error</p>
         :rtype: str
         """
         return self._SubsStatus
@@ -20454,7 +20468,7 @@ class SubscribeInfo(AbstractModel):
 
     @property
     def ModifyTime(self):
-        r"""上次修改时间，时间格式如：Y-m-d h:m:s
+        r"""<p>上次修改时间，时间格式如：Y-m-d h:m:s</p>
         :rtype: str
         """
         return self._ModifyTime
@@ -20465,7 +20479,7 @@ class SubscribeInfo(AbstractModel):
 
     @property
     def CreateTime(self):
-        r"""创建时间，时间格式如：Y-m-d h:m:s
+        r"""<p>创建时间，时间格式如：Y-m-d h:m:s</p>
         :rtype: str
         """
         return self._CreateTime
@@ -20476,7 +20490,7 @@ class SubscribeInfo(AbstractModel):
 
     @property
     def IsolateTime(self):
-        r"""隔离时间，时间格式如：Y-m-d h:m:s。默认：0000-00-00 00:00:00
+        r"""<p>隔离时间，时间格式如：Y-m-d h:m:s。默认：0000-00-00 00:00:00</p>
         :rtype: str
         """
         return self._IsolateTime
@@ -20487,7 +20501,7 @@ class SubscribeInfo(AbstractModel):
 
     @property
     def ExpireTime(self):
-        r"""包年包月任务的到期时间，时间格式如：Y-m-d h:m:s。默认：0000-00-00 00:00:00
+        r"""<p>包年包月任务的到期时间，时间格式如：Y-m-d h:m:s。默认：0000-00-00 00:00:00</p>
         :rtype: str
         """
         return self._ExpireTime
@@ -20498,7 +20512,7 @@ class SubscribeInfo(AbstractModel):
 
     @property
     def OfflineTime(self):
-        r"""下线时间，时间格式如：Y-m-d h:m:s。默认：0000-00-00 00:00:00
+        r"""<p>下线时间，时间格式如：Y-m-d h:m:s。默认：0000-00-00 00:00:00</p>
         :rtype: str
         """
         return self._OfflineTime
@@ -20509,7 +20523,7 @@ class SubscribeInfo(AbstractModel):
 
     @property
     def PayType(self):
-        r"""计费方式，0 - 包年包月，1 - 按量计费
+        r"""<p>计费方式，0 - 包年包月，1 - 按量计费</p>
         :rtype: int
         """
         return self._PayType
@@ -20520,7 +20534,7 @@ class SubscribeInfo(AbstractModel):
 
     @property
     def AutoRenewFlag(self):
-        r"""自动续费标识。只有当 PayType=0，该值才有意义。枚举值：0-不自动续费，1-自动续费
+        r"""<p>自动续费标识。只有当 PayType=0，该值才有意义。枚举值：0-不自动续费，1-自动续费</p>
         :rtype: int
         """
         return self._AutoRenewFlag
@@ -20531,7 +20545,7 @@ class SubscribeInfo(AbstractModel):
 
     @property
     def Region(self):
-        r"""数据订阅实例所属地域
+        r"""<p>数据订阅实例所属地域</p>
         :rtype: str
         """
         return self._Region
@@ -20542,7 +20556,7 @@ class SubscribeInfo(AbstractModel):
 
     @property
     def AccessType(self):
-        r"""接入方式。枚举值：extranet(公网) vpncloud(vpn接入) dcg(专线接入) ccn(云联网) cdb(云数据库) cvm(云主机自建) intranet(自研上云) vpc(私有网络vpc)
+        r"""<p>接入方式。枚举值：extranet(公网) vpncloud(vpn接入) dcg(专线接入) ccn(云联网) cdb(云数据库) cvm(云主机自建) intranet(自研上云) vpc(私有网络vpc)</p>
         :rtype: str
         """
         return self._AccessType
@@ -20553,7 +20567,7 @@ class SubscribeInfo(AbstractModel):
 
     @property
     def Endpoints(self):
-        r"""数据库节点信息
+        r"""<p>数据库节点信息</p>
         :rtype: list of EndpointItem
         """
         return self._Endpoints
@@ -20564,7 +20578,7 @@ class SubscribeInfo(AbstractModel):
 
     @property
     def SubscribeVersion(self):
-        r"""数据订阅版本, 当前支持kafka和kafkaPro（专业版）
+        r"""<p>数据订阅版本, 当前支持kafka和kafkaPro（专业版）</p>
         :rtype: str
         """
         return self._SubscribeVersion
@@ -20575,7 +20589,7 @@ class SubscribeInfo(AbstractModel):
 
     @property
     def Tags(self):
-        r"""标签
+        r"""<p>标签</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of TagItem
         """
@@ -20587,7 +20601,7 @@ class SubscribeInfo(AbstractModel):
 
     @property
     def Errors(self):
-        r"""任务报错信息，如果有的话。
+        r"""<p>任务报错信息，如果有的话。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of SubsErr
         """
@@ -20599,7 +20613,7 @@ class SubscribeInfo(AbstractModel):
 
     @property
     def InstanceClass(self):
-        r"""订阅实例规格
+        r"""<p>订阅实例规格</p>
         :rtype: str
         """
         return self._InstanceClass
@@ -20607,6 +20621,17 @@ class SubscribeInfo(AbstractModel):
     @InstanceClass.setter
     def InstanceClass(self, InstanceClass):
         self._InstanceClass = InstanceClass
+
+    @property
+    def ConsumerRoutePhase(self):
+        r"""<p>新版订阅消费端路由阶段</p>
+        :rtype: str
+        """
+        return self._ConsumerRoutePhase
+
+    @ConsumerRoutePhase.setter
+    def ConsumerRoutePhase(self, ConsumerRoutePhase):
+        self._ConsumerRoutePhase = ConsumerRoutePhase
 
 
     def _deserialize(self, params):
@@ -20647,6 +20672,7 @@ class SubscribeInfo(AbstractModel):
                 obj._deserialize(item)
                 self._Errors.append(obj)
         self._InstanceClass = params.get("InstanceClass")
+        self._ConsumerRoutePhase = params.get("ConsumerRoutePhase")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -1749,6 +1749,8 @@ class CloneInstancesRequest(AbstractModel):
         :type EnableSSL: bool
         :param _SSLBindPrivateIPv4: <p>开启 SSL 时，是否将实例的内网 IPv4 地址写入证书的域名别名（SAN）中。仅在 EnableSSL 为 true 时生效。</p><p>枚举值：</p><ul><li>true： 允许使用内网 IP 进行 SSL 证书校验。</li><li>false： 不添加证书的 SAN 扩展信息。</li></ul><p>默认值：false</p>
         :type SSLBindPrivateIPv4: bool
+        :param _ProductVersion: <p>指实例类型</p><p>枚举值：</p><ul><li>local： 通用 I 型</li><li>localv2： 通用 II 型</li></ul><p>不传则默认和原实例类型保持一致</p>
+        :type ProductVersion: str
         """
         self._InstanceId = None
         self._GoodsNum = None
@@ -1774,6 +1776,7 @@ class CloneInstancesRequest(AbstractModel):
         self._PasswordPolicy = None
         self._EnableSSL = None
         self._SSLBindPrivateIPv4 = None
+        self._ProductVersion = None
 
     @property
     def InstanceId(self):
@@ -2039,6 +2042,17 @@ class CloneInstancesRequest(AbstractModel):
     def SSLBindPrivateIPv4(self, SSLBindPrivateIPv4):
         self._SSLBindPrivateIPv4 = SSLBindPrivateIPv4
 
+    @property
+    def ProductVersion(self):
+        r"""<p>指实例类型</p><p>枚举值：</p><ul><li>local： 通用 I 型</li><li>localv2： 通用 II 型</li></ul><p>不传则默认和原实例类型保持一致</p>
+        :rtype: str
+        """
+        return self._ProductVersion
+
+    @ProductVersion.setter
+    def ProductVersion(self, ProductVersion):
+        self._ProductVersion = ProductVersion
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -2077,6 +2091,7 @@ class CloneInstancesRequest(AbstractModel):
             self._PasswordPolicy._deserialize(params.get("PasswordPolicy"))
         self._EnableSSL = params.get("EnableSSL")
         self._SSLBindPrivateIPv4 = params.get("SSLBindPrivateIPv4")
+        self._ProductVersion = params.get("ProductVersion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
