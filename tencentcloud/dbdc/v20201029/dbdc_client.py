@@ -624,6 +624,29 @@ class DbdcClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyDBCustomClusterAttributes(self, request):
+        r"""该接口（ModifyDBCustomClusterAttributes）用于修改 DB Custom 集群的属性。
+
+        :param request: Request instance for ModifyDBCustomClusterAttributes.
+        :type request: :class:`tencentcloud.dbdc.v20201029.models.ModifyDBCustomClusterAttributesRequest`
+        :rtype: :class:`tencentcloud.dbdc.v20201029.models.ModifyDBCustomClusterAttributesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyDBCustomClusterAttributes", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyDBCustomClusterAttributesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyDBCustomClusterNodeConfig(self, request):
         r"""该接口（ModifyDBCustomClusterNodeConfig）用于修改 DB Custom 集群中节点的配置。
 

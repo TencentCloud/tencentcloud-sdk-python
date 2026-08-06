@@ -10434,229 +10434,201 @@ class DetailDomain(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ResourceId: 域名 ID
+        :param _ResourceId: <p>域名 ID</p>
         :type ResourceId: str
-        :param _AppId: 腾讯云账号ID
+        :param _AppId: <p>腾讯云账号ID</p>
         :type AppId: int
-        :param _Domain: 加速域名
+        :param _Domain: <p>加速域名</p>
         :type Domain: str
-        :param _Cname: 域名对应的 CNAME 地址
+        :param _Cname: <p>域名对应的 CNAME 地址</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Cname: str
-        :param _Status: 加速服务状态
-rejected：域名审核未通过，域名备案过期/被注销导致
-processing：部署中
-closing：关闭中
-online：已启动
-offline：已关闭
+        :param _Status: <p>加速服务状态<br>rejected：域名审核未通过，域名备案过期/被注销导致<br>processing：部署中<br>closing：关闭中<br>online：已启动<br>offline：已关闭</p>
         :type Status: str
-        :param _ProjectId: 项目 ID，可前往腾讯云项目管理页面查看
+        :param _ProjectId: <p>项目 ID，可前往腾讯云项目管理页面查看</p>
         :type ProjectId: int
-        :param _ServiceType: 加速域名业务类型
-web：网页小文件
-download：下载大文件
-media：音视频点播
-hybrid:  动静加速
-dynamic:  动态加速
+        :param _ServiceType: <p>加速域名业务类型<br>web：网页小文件<br>download：下载大文件<br>media：音视频点播<br>hybrid:  动静加速<br>dynamic:  动态加速</p>
         :type ServiceType: str
-        :param _CreateTime: 域名创建时间
+        :param _CreateTime: <p>域名创建时间</p>
         :type CreateTime: str
-        :param _UpdateTime: 域名更新时间
+        :param _UpdateTime: <p>域名更新时间</p>
         :type UpdateTime: str
-        :param _Origin: 源站配置
+        :param _Origin: <p>源站配置</p>
         :type Origin: :class:`tencentcloud.cdn.v20180606.models.Origin`
-        :param _IpFilter: IP 黑白名单配置
+        :param _IpFilter: <p>IP 黑白名单配置</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type IpFilter: :class:`tencentcloud.cdn.v20180606.models.IpFilter`
-        :param _IpFreqLimit: IP 访问限频配置
+        :param _IpFreqLimit: <p>IP 访问限频配置</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type IpFreqLimit: :class:`tencentcloud.cdn.v20180606.models.IpFreqLimit`
-        :param _StatusCodeCache: 状态码缓存配置
+        :param _StatusCodeCache: <p>状态码缓存配置</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type StatusCodeCache: :class:`tencentcloud.cdn.v20180606.models.StatusCodeCache`
-        :param _Compression: 智能压缩配置
+        :param _Compression: <p>智能压缩配置</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Compression: :class:`tencentcloud.cdn.v20180606.models.Compression`
-        :param _BandwidthAlert: 带宽封顶配置
+        :param _BandwidthAlert: <p>带宽封顶配置</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type BandwidthAlert: :class:`tencentcloud.cdn.v20180606.models.BandwidthAlert`
-        :param _RangeOriginPull: Range 回源配置
+        :param _RangeOriginPull: <p>Range 回源配置</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type RangeOriginPull: :class:`tencentcloud.cdn.v20180606.models.RangeOriginPull`
-        :param _FollowRedirect: 301/302 回源自动跟随配置
+        :param _FollowRedirect: <p>301/302 回源自动跟随配置</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type FollowRedirect: :class:`tencentcloud.cdn.v20180606.models.FollowRedirect`
-        :param _ErrorPage: 自定义错误页面配置
+        :param _ErrorPage: <p>自定义错误页面配置</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ErrorPage: :class:`tencentcloud.cdn.v20180606.models.ErrorPage`
-        :param _RequestHeader: 自定义请求头部配置
+        :param _RequestHeader: <p>自定义请求头部配置</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type RequestHeader: :class:`tencentcloud.cdn.v20180606.models.RequestHeader`
-        :param _ResponseHeader: 自定义响应头部配置
+        :param _ResponseHeader: <p>自定义响应头部配置</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ResponseHeader: :class:`tencentcloud.cdn.v20180606.models.ResponseHeader`
-        :param _DownstreamCapping: 单链接下行限速配置
+        :param _DownstreamCapping: <p>单链接下行限速配置</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type DownstreamCapping: :class:`tencentcloud.cdn.v20180606.models.DownstreamCapping`
-        :param _CacheKey: 带参/不带参缓存配置
+        :param _CacheKey: <p>带参/不带参缓存配置</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type CacheKey: :class:`tencentcloud.cdn.v20180606.models.CacheKey`
-        :param _ResponseHeaderCache: 源站头部缓存配置
+        :param _ResponseHeaderCache: <p>源站头部缓存配置</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ResponseHeaderCache: :class:`tencentcloud.cdn.v20180606.models.ResponseHeaderCache`
-        :param _VideoSeek: 视频拖拽配置
+        :param _VideoSeek: <p>视频拖拽配置</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type VideoSeek: :class:`tencentcloud.cdn.v20180606.models.VideoSeek`
-        :param _Cache: 节点缓存过期规则配置
+        :param _Cache: <p>节点缓存过期规则配置</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Cache: :class:`tencentcloud.cdn.v20180606.models.Cache`
-        :param _OriginPullOptimization: 跨国链路优化配置（功能灰度中，敬请期待）
+        :param _OriginPullOptimization: <p>跨国链路优化配置（功能灰度中，敬请期待）</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type OriginPullOptimization: :class:`tencentcloud.cdn.v20180606.models.OriginPullOptimization`
-        :param _Https: Https 加速相关配置
+        :param _Https: <p>Https 加速相关配置</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Https: :class:`tencentcloud.cdn.v20180606.models.Https`
-        :param _Authentication: 时间戳防盗链配置
+        :param _Authentication: <p>时间戳防盗链配置</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Authentication: :class:`tencentcloud.cdn.v20180606.models.Authentication`
-        :param _Seo: SEO 优化配置
+        :param _Seo: <p>SEO 优化配置</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Seo: :class:`tencentcloud.cdn.v20180606.models.Seo`
-        :param _Disable: 域名封禁状态
-normal：正常状态
-overdue：账号欠费导致域名关闭，充值完成后可自行启动加速服务
-malicious：域名出现恶意行为，强制关闭加速服务
-ddos：域名被大规模 DDoS 攻击，关闭加速服务
-ddos_risk: 域名存在ddos攻击风险
-idle：域名超过 90 天内无任何操作、数据产生，判定为不活跃域名自动关闭加速服务，可自行启动加速服务
-unlicensed：域名未备案/备案注销，自动关闭加速服务，备案完成后可自行启动加速服务
-capping：触发配置的带宽阈值上限
-readonly：域名存在特殊配置，被锁定
+        :param _Disable: <p>域名封禁状态<br>normal：正常状态<br>overdue：账号欠费导致域名关闭，充值完成后可自行启动加速服务<br>malicious：域名出现恶意行为，强制关闭加速服务<br>ddos：域名被大规模 DDoS 攻击，关闭加速服务<br>ddos_risk: 域名存在ddos攻击风险<br>idle：域名超过 90 天内无任何操作、数据产生，判定为不活跃域名自动关闭加速服务，可自行启动加速服务<br>unlicensed：域名未备案/备案注销，自动关闭加速服务，备案完成后可自行启动加速服务<br>capping：触发配置的带宽阈值上限<br>readonly：域名存在特殊配置，被锁定</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Disable: str
-        :param _ForceRedirect: 访问协议强制跳转配置
+        :param _ForceRedirect: <p>访问协议强制跳转配置</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ForceRedirect: :class:`tencentcloud.cdn.v20180606.models.ForceRedirect`
-        :param _Referer: Referer 防盗链配置
+        :param _Referer: <p>Referer 防盗链配置</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Referer: :class:`tencentcloud.cdn.v20180606.models.Referer`
-        :param _MaxAge: 浏览器缓存过期规则配置（功能灰度中，敬请期待）
+        :param _MaxAge: <p>浏览器缓存过期规则配置（功能灰度中，敬请期待）</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type MaxAge: :class:`tencentcloud.cdn.v20180606.models.MaxAge`
-        :param _Ipv6: Ipv6 回源配置（功能灰度中，敬请期待）
+        :param _Ipv6: <p>Ipv6 回源配置（功能灰度中，敬请期待）</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Ipv6: :class:`tencentcloud.cdn.v20180606.models.Ipv6`
-        :param _Compatibility: 是否兼容旧版本配置（内部兼容性字段）
+        :param _Compatibility: <p>是否兼容旧版本配置（内部兼容性字段）</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Compatibility: :class:`tencentcloud.cdn.v20180606.models.Compatibility`
-        :param _SpecificConfig: 区域特殊配置
+        :param _SpecificConfig: <p>区域特殊配置</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type SpecificConfig: :class:`tencentcloud.cdn.v20180606.models.SpecificConfig`
-        :param _Area: 加速区域
-mainland：中国境内加速
-overseas：中国境外加速
-global：全球加速
+        :param _Area: <p>加速区域<br>mainland：中国境内加速<br>overseas：中国境外加速<br>global：全球加速</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Area: str
-        :param _Readonly: 域名锁定状态
-normal：未锁定
-mainland：中国境内锁定
-overseas：中国境外锁定
-global：全球锁定
+        :param _Readonly: <p>域名锁定状态<br>normal：未锁定<br>mainland：中国境内锁定<br>overseas：中国境外锁定<br>global：全球锁定</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Readonly: str
-        :param _OriginPullTimeout: 回源超时配置
+        :param _OriginPullTimeout: <p>回源超时配置</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type OriginPullTimeout: :class:`tencentcloud.cdn.v20180606.models.OriginPullTimeout`
-        :param _AwsPrivateAccess: 回源S3鉴权配置
+        :param _AwsPrivateAccess: <p>回源S3鉴权配置</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type AwsPrivateAccess: :class:`tencentcloud.cdn.v20180606.models.AwsPrivateAccess`
-        :param _SecurityConfig: Scdn配置
+        :param _SecurityConfig: <p>Scdn配置</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type SecurityConfig: :class:`tencentcloud.cdn.v20180606.models.SecurityConfig`
-        :param _ImageOptimization: ImageOptimization配置
+        :param _ImageOptimization: <p>ImageOptimization配置</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ImageOptimization: :class:`tencentcloud.cdn.v20180606.models.ImageOptimization`
-        :param _UserAgentFilter: UA黑白名单配置
+        :param _UserAgentFilter: <p>UA黑白名单配置</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type UserAgentFilter: :class:`tencentcloud.cdn.v20180606.models.UserAgentFilter`
-        :param _AccessControl: 访问控制
+        :param _AccessControl: <p>访问控制</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type AccessControl: :class:`tencentcloud.cdn.v20180606.models.AccessControl`
-        :param _Advance: 是否支持高级配置项
-on：支持
-off：不支持
+        :param _Advance: <p>是否支持高级配置项<br>on：支持<br>off：不支持</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Advance: str
-        :param _UrlRedirect: URL重定向配置
+        :param _UrlRedirect: <p>URL重定向配置</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type UrlRedirect: :class:`tencentcloud.cdn.v20180606.models.UrlRedirect`
-        :param _AccessPort: 访问端口配置
+        :param _AccessPort: <p>访问端口配置</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type AccessPort: list of int
-        :param _Tag: 标签配置
+        :param _Tag: <p>标签配置</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Tag: list of Tag
-        :param _AdvancedAuthentication: 时间戳防盗链高级配置，白名单功能
+        :param _AdvancedAuthentication: <p>时间戳防盗链高级配置，白名单功能</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type AdvancedAuthentication: :class:`tencentcloud.cdn.v20180606.models.AdvancedAuthentication`
-        :param _OriginAuthentication: 回源鉴权高级配置，白名单功能
+        :param _OriginAuthentication: <p>回源鉴权高级配置，白名单功能</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type OriginAuthentication: :class:`tencentcloud.cdn.v20180606.models.OriginAuthentication`
-        :param _Ipv6Access: Ipv6访问配置
+        :param _Ipv6Access: <p>Ipv6访问配置</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Ipv6Access: :class:`tencentcloud.cdn.v20180606.models.Ipv6Access`
-        :param _AdvanceSet: 高级配置集合
+        :param _AdvanceSet: <p>高级配置集合</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type AdvanceSet: list of AdvanceConfig
-        :param _OfflineCache: 离线缓存（功能灰度中，尚未全量，请等待后续全量发布）
+        :param _OfflineCache: <p>离线缓存（功能灰度中，尚未全量，请等待后续全量发布）</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type OfflineCache: :class:`tencentcloud.cdn.v20180606.models.OfflineCache`
-        :param _OriginCombine: 合并回源（白名单功能）
+        :param _OriginCombine: <p>合并回源（白名单功能）</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type OriginCombine: :class:`tencentcloud.cdn.v20180606.models.OriginCombine`
-        :param _PostMaxSize: POST上传配置项
+        :param _PostMaxSize: <p>POST上传配置项</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type PostMaxSize: :class:`tencentcloud.cdn.v20180606.models.PostSize`
-        :param _Quic: Quic配置
+        :param _Quic: <p>Quic配置</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Quic: :class:`tencentcloud.cdn.v20180606.models.Quic`
-        :param _OssPrivateAccess: 回源OSS私有鉴权
+        :param _OssPrivateAccess: <p>回源OSS私有鉴权</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type OssPrivateAccess: :class:`tencentcloud.cdn.v20180606.models.OssPrivateAccess`
-        :param _WebSocket: WebSocket配置
+        :param _WebSocket: <p>WebSocket配置</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type WebSocket: :class:`tencentcloud.cdn.v20180606.models.WebSocket`
-        :param _RemoteAuthentication: 远程鉴权配置
+        :param _RemoteAuthentication: <p>远程鉴权配置</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type RemoteAuthentication: :class:`tencentcloud.cdn.v20180606.models.RemoteAuthentication`
-        :param _ShareCname: 共享CNAME配置（白名单功能）
+        :param _ShareCname: <p>共享CNAME配置（白名单功能）</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ShareCname: :class:`tencentcloud.cdn.v20180606.models.ShareCname`
-        :param _RuleEngine: 规则引擎
+        :param _RuleEngine: <p>规则引擎</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type RuleEngine: :class:`tencentcloud.cdn.v20180606.models.RuleEngine`
-        :param _ParentHost: 主域名
+        :param _ParentHost: <p>主域名</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ParentHost: str
-        :param _HwPrivateAccess: 华为云对象存储回源鉴权
+        :param _HwPrivateAccess: <p>华为云对象存储回源鉴权</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type HwPrivateAccess: :class:`tencentcloud.cdn.v20180606.models.HwPrivateAccess`
-        :param _QnPrivateAccess: 七牛云对象存储回源鉴权
+        :param _QnPrivateAccess: <p>七牛云对象存储回源鉴权</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type QnPrivateAccess: :class:`tencentcloud.cdn.v20180606.models.QnPrivateAccess`
-        :param _HttpsBilling: HTTPS服务，缺省时默认开启
+        :param _HttpsBilling: <p>HTTPS服务，缺省时默认开启</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type HttpsBilling: :class:`tencentcloud.cdn.v20180606.models.HttpsBilling`
-        :param _OthersPrivateAccess: 其他厂商对象存储回源鉴权
+        :param _OthersPrivateAccess: <p>其他厂商对象存储回源鉴权</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type OthersPrivateAccess: :class:`tencentcloud.cdn.v20180606.models.OthersPrivateAccess`
-        :param _ParamFilter: 参数黑名单
+        :param _ParamFilter: <p>参数黑名单</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ParamFilter: :class:`tencentcloud.cdn.v20180606.models.ParamFilter`
-        :param _AutoGuard: 流量一键防盗刷配置
+        :param _AutoGuard: <p>流量一键防盗刷配置</p>
         :type AutoGuard: :class:`tencentcloud.cdn.v20180606.models.AutoGuard`
-        :param _GeoBlocker: 区域访问控制配置
+        :param _GeoBlocker: <p>区域访问控制配置</p>
         :type GeoBlocker: :class:`tencentcloud.cdn.v20180606.models.GeoBlocker`
         """
         self._ResourceId = None
@@ -10731,7 +10703,7 @@ off：不支持
 
     @property
     def ResourceId(self):
-        r"""域名 ID
+        r"""<p>域名 ID</p>
         :rtype: str
         """
         return self._ResourceId
@@ -10742,7 +10714,7 @@ off：不支持
 
     @property
     def AppId(self):
-        r"""腾讯云账号ID
+        r"""<p>腾讯云账号ID</p>
         :rtype: int
         """
         return self._AppId
@@ -10753,7 +10725,7 @@ off：不支持
 
     @property
     def Domain(self):
-        r"""加速域名
+        r"""<p>加速域名</p>
         :rtype: str
         """
         return self._Domain
@@ -10764,7 +10736,7 @@ off：不支持
 
     @property
     def Cname(self):
-        r"""域名对应的 CNAME 地址
+        r"""<p>域名对应的 CNAME 地址</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -10776,12 +10748,7 @@ off：不支持
 
     @property
     def Status(self):
-        r"""加速服务状态
-rejected：域名审核未通过，域名备案过期/被注销导致
-processing：部署中
-closing：关闭中
-online：已启动
-offline：已关闭
+        r"""<p>加速服务状态<br>rejected：域名审核未通过，域名备案过期/被注销导致<br>processing：部署中<br>closing：关闭中<br>online：已启动<br>offline：已关闭</p>
         :rtype: str
         """
         return self._Status
@@ -10792,7 +10759,7 @@ offline：已关闭
 
     @property
     def ProjectId(self):
-        r"""项目 ID，可前往腾讯云项目管理页面查看
+        r"""<p>项目 ID，可前往腾讯云项目管理页面查看</p>
         :rtype: int
         """
         return self._ProjectId
@@ -10803,12 +10770,7 @@ offline：已关闭
 
     @property
     def ServiceType(self):
-        r"""加速域名业务类型
-web：网页小文件
-download：下载大文件
-media：音视频点播
-hybrid:  动静加速
-dynamic:  动态加速
+        r"""<p>加速域名业务类型<br>web：网页小文件<br>download：下载大文件<br>media：音视频点播<br>hybrid:  动静加速<br>dynamic:  动态加速</p>
         :rtype: str
         """
         return self._ServiceType
@@ -10819,7 +10781,7 @@ dynamic:  动态加速
 
     @property
     def CreateTime(self):
-        r"""域名创建时间
+        r"""<p>域名创建时间</p>
         :rtype: str
         """
         return self._CreateTime
@@ -10830,7 +10792,7 @@ dynamic:  动态加速
 
     @property
     def UpdateTime(self):
-        r"""域名更新时间
+        r"""<p>域名更新时间</p>
         :rtype: str
         """
         return self._UpdateTime
@@ -10841,7 +10803,7 @@ dynamic:  动态加速
 
     @property
     def Origin(self):
-        r"""源站配置
+        r"""<p>源站配置</p>
         :rtype: :class:`tencentcloud.cdn.v20180606.models.Origin`
         """
         return self._Origin
@@ -10852,7 +10814,7 @@ dynamic:  动态加速
 
     @property
     def IpFilter(self):
-        r"""IP 黑白名单配置
+        r"""<p>IP 黑白名单配置</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cdn.v20180606.models.IpFilter`
         """
@@ -10864,7 +10826,7 @@ dynamic:  动态加速
 
     @property
     def IpFreqLimit(self):
-        r"""IP 访问限频配置
+        r"""<p>IP 访问限频配置</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cdn.v20180606.models.IpFreqLimit`
         """
@@ -10876,7 +10838,7 @@ dynamic:  动态加速
 
     @property
     def StatusCodeCache(self):
-        r"""状态码缓存配置
+        r"""<p>状态码缓存配置</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cdn.v20180606.models.StatusCodeCache`
         """
@@ -10888,7 +10850,7 @@ dynamic:  动态加速
 
     @property
     def Compression(self):
-        r"""智能压缩配置
+        r"""<p>智能压缩配置</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cdn.v20180606.models.Compression`
         """
@@ -10900,7 +10862,7 @@ dynamic:  动态加速
 
     @property
     def BandwidthAlert(self):
-        r"""带宽封顶配置
+        r"""<p>带宽封顶配置</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cdn.v20180606.models.BandwidthAlert`
         """
@@ -10912,7 +10874,7 @@ dynamic:  动态加速
 
     @property
     def RangeOriginPull(self):
-        r"""Range 回源配置
+        r"""<p>Range 回源配置</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cdn.v20180606.models.RangeOriginPull`
         """
@@ -10924,7 +10886,7 @@ dynamic:  动态加速
 
     @property
     def FollowRedirect(self):
-        r"""301/302 回源自动跟随配置
+        r"""<p>301/302 回源自动跟随配置</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cdn.v20180606.models.FollowRedirect`
         """
@@ -10936,7 +10898,7 @@ dynamic:  动态加速
 
     @property
     def ErrorPage(self):
-        r"""自定义错误页面配置
+        r"""<p>自定义错误页面配置</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cdn.v20180606.models.ErrorPage`
         """
@@ -10948,7 +10910,7 @@ dynamic:  动态加速
 
     @property
     def RequestHeader(self):
-        r"""自定义请求头部配置
+        r"""<p>自定义请求头部配置</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cdn.v20180606.models.RequestHeader`
         """
@@ -10960,7 +10922,7 @@ dynamic:  动态加速
 
     @property
     def ResponseHeader(self):
-        r"""自定义响应头部配置
+        r"""<p>自定义响应头部配置</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cdn.v20180606.models.ResponseHeader`
         """
@@ -10972,7 +10934,7 @@ dynamic:  动态加速
 
     @property
     def DownstreamCapping(self):
-        r"""单链接下行限速配置
+        r"""<p>单链接下行限速配置</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cdn.v20180606.models.DownstreamCapping`
         """
@@ -10984,7 +10946,7 @@ dynamic:  动态加速
 
     @property
     def CacheKey(self):
-        r"""带参/不带参缓存配置
+        r"""<p>带参/不带参缓存配置</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cdn.v20180606.models.CacheKey`
         """
@@ -10996,7 +10958,7 @@ dynamic:  动态加速
 
     @property
     def ResponseHeaderCache(self):
-        r"""源站头部缓存配置
+        r"""<p>源站头部缓存配置</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cdn.v20180606.models.ResponseHeaderCache`
         """
@@ -11008,7 +10970,7 @@ dynamic:  动态加速
 
     @property
     def VideoSeek(self):
-        r"""视频拖拽配置
+        r"""<p>视频拖拽配置</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cdn.v20180606.models.VideoSeek`
         """
@@ -11020,7 +10982,7 @@ dynamic:  动态加速
 
     @property
     def Cache(self):
-        r"""节点缓存过期规则配置
+        r"""<p>节点缓存过期规则配置</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cdn.v20180606.models.Cache`
         """
@@ -11032,7 +10994,7 @@ dynamic:  动态加速
 
     @property
     def OriginPullOptimization(self):
-        r"""跨国链路优化配置（功能灰度中，敬请期待）
+        r"""<p>跨国链路优化配置（功能灰度中，敬请期待）</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cdn.v20180606.models.OriginPullOptimization`
         """
@@ -11044,7 +11006,7 @@ dynamic:  动态加速
 
     @property
     def Https(self):
-        r"""Https 加速相关配置
+        r"""<p>Https 加速相关配置</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cdn.v20180606.models.Https`
         """
@@ -11056,7 +11018,7 @@ dynamic:  动态加速
 
     @property
     def Authentication(self):
-        r"""时间戳防盗链配置
+        r"""<p>时间戳防盗链配置</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cdn.v20180606.models.Authentication`
         """
@@ -11068,7 +11030,7 @@ dynamic:  动态加速
 
     @property
     def Seo(self):
-        r"""SEO 优化配置
+        r"""<p>SEO 优化配置</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cdn.v20180606.models.Seo`
         """
@@ -11080,16 +11042,7 @@ dynamic:  动态加速
 
     @property
     def Disable(self):
-        r"""域名封禁状态
-normal：正常状态
-overdue：账号欠费导致域名关闭，充值完成后可自行启动加速服务
-malicious：域名出现恶意行为，强制关闭加速服务
-ddos：域名被大规模 DDoS 攻击，关闭加速服务
-ddos_risk: 域名存在ddos攻击风险
-idle：域名超过 90 天内无任何操作、数据产生，判定为不活跃域名自动关闭加速服务，可自行启动加速服务
-unlicensed：域名未备案/备案注销，自动关闭加速服务，备案完成后可自行启动加速服务
-capping：触发配置的带宽阈值上限
-readonly：域名存在特殊配置，被锁定
+        r"""<p>域名封禁状态<br>normal：正常状态<br>overdue：账号欠费导致域名关闭，充值完成后可自行启动加速服务<br>malicious：域名出现恶意行为，强制关闭加速服务<br>ddos：域名被大规模 DDoS 攻击，关闭加速服务<br>ddos_risk: 域名存在ddos攻击风险<br>idle：域名超过 90 天内无任何操作、数据产生，判定为不活跃域名自动关闭加速服务，可自行启动加速服务<br>unlicensed：域名未备案/备案注销，自动关闭加速服务，备案完成后可自行启动加速服务<br>capping：触发配置的带宽阈值上限<br>readonly：域名存在特殊配置，被锁定</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -11101,7 +11054,7 @@ readonly：域名存在特殊配置，被锁定
 
     @property
     def ForceRedirect(self):
-        r"""访问协议强制跳转配置
+        r"""<p>访问协议强制跳转配置</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cdn.v20180606.models.ForceRedirect`
         """
@@ -11113,7 +11066,7 @@ readonly：域名存在特殊配置，被锁定
 
     @property
     def Referer(self):
-        r"""Referer 防盗链配置
+        r"""<p>Referer 防盗链配置</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cdn.v20180606.models.Referer`
         """
@@ -11125,7 +11078,7 @@ readonly：域名存在特殊配置，被锁定
 
     @property
     def MaxAge(self):
-        r"""浏览器缓存过期规则配置（功能灰度中，敬请期待）
+        r"""<p>浏览器缓存过期规则配置（功能灰度中，敬请期待）</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cdn.v20180606.models.MaxAge`
         """
@@ -11137,7 +11090,7 @@ readonly：域名存在特殊配置，被锁定
 
     @property
     def Ipv6(self):
-        r"""Ipv6 回源配置（功能灰度中，敬请期待）
+        r"""<p>Ipv6 回源配置（功能灰度中，敬请期待）</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cdn.v20180606.models.Ipv6`
         """
@@ -11149,7 +11102,7 @@ readonly：域名存在特殊配置，被锁定
 
     @property
     def Compatibility(self):
-        r"""是否兼容旧版本配置（内部兼容性字段）
+        r"""<p>是否兼容旧版本配置（内部兼容性字段）</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cdn.v20180606.models.Compatibility`
         """
@@ -11161,7 +11114,7 @@ readonly：域名存在特殊配置，被锁定
 
     @property
     def SpecificConfig(self):
-        r"""区域特殊配置
+        r"""<p>区域特殊配置</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cdn.v20180606.models.SpecificConfig`
         """
@@ -11173,10 +11126,7 @@ readonly：域名存在特殊配置，被锁定
 
     @property
     def Area(self):
-        r"""加速区域
-mainland：中国境内加速
-overseas：中国境外加速
-global：全球加速
+        r"""<p>加速区域<br>mainland：中国境内加速<br>overseas：中国境外加速<br>global：全球加速</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -11188,11 +11138,7 @@ global：全球加速
 
     @property
     def Readonly(self):
-        r"""域名锁定状态
-normal：未锁定
-mainland：中国境内锁定
-overseas：中国境外锁定
-global：全球锁定
+        r"""<p>域名锁定状态<br>normal：未锁定<br>mainland：中国境内锁定<br>overseas：中国境外锁定<br>global：全球锁定</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -11204,7 +11150,7 @@ global：全球锁定
 
     @property
     def OriginPullTimeout(self):
-        r"""回源超时配置
+        r"""<p>回源超时配置</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cdn.v20180606.models.OriginPullTimeout`
         """
@@ -11216,7 +11162,7 @@ global：全球锁定
 
     @property
     def AwsPrivateAccess(self):
-        r"""回源S3鉴权配置
+        r"""<p>回源S3鉴权配置</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cdn.v20180606.models.AwsPrivateAccess`
         """
@@ -11228,7 +11174,7 @@ global：全球锁定
 
     @property
     def SecurityConfig(self):
-        r"""Scdn配置
+        r"""<p>Scdn配置</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cdn.v20180606.models.SecurityConfig`
         """
@@ -11240,7 +11186,7 @@ global：全球锁定
 
     @property
     def ImageOptimization(self):
-        r"""ImageOptimization配置
+        r"""<p>ImageOptimization配置</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cdn.v20180606.models.ImageOptimization`
         """
@@ -11252,7 +11198,7 @@ global：全球锁定
 
     @property
     def UserAgentFilter(self):
-        r"""UA黑白名单配置
+        r"""<p>UA黑白名单配置</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cdn.v20180606.models.UserAgentFilter`
         """
@@ -11264,7 +11210,7 @@ global：全球锁定
 
     @property
     def AccessControl(self):
-        r"""访问控制
+        r"""<p>访问控制</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cdn.v20180606.models.AccessControl`
         """
@@ -11276,9 +11222,7 @@ global：全球锁定
 
     @property
     def Advance(self):
-        r"""是否支持高级配置项
-on：支持
-off：不支持
+        r"""<p>是否支持高级配置项<br>on：支持<br>off：不支持</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -11290,7 +11234,7 @@ off：不支持
 
     @property
     def UrlRedirect(self):
-        r"""URL重定向配置
+        r"""<p>URL重定向配置</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cdn.v20180606.models.UrlRedirect`
         """
@@ -11302,7 +11246,7 @@ off：不支持
 
     @property
     def AccessPort(self):
-        r"""访问端口配置
+        r"""<p>访问端口配置</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of int
         """
@@ -11314,7 +11258,7 @@ off：不支持
 
     @property
     def Tag(self):
-        r"""标签配置
+        r"""<p>标签配置</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Tag
         """
@@ -11326,7 +11270,7 @@ off：不支持
 
     @property
     def AdvancedAuthentication(self):
-        r"""时间戳防盗链高级配置，白名单功能
+        r"""<p>时间戳防盗链高级配置，白名单功能</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cdn.v20180606.models.AdvancedAuthentication`
         """
@@ -11338,7 +11282,7 @@ off：不支持
 
     @property
     def OriginAuthentication(self):
-        r"""回源鉴权高级配置，白名单功能
+        r"""<p>回源鉴权高级配置，白名单功能</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cdn.v20180606.models.OriginAuthentication`
         """
@@ -11350,7 +11294,7 @@ off：不支持
 
     @property
     def Ipv6Access(self):
-        r"""Ipv6访问配置
+        r"""<p>Ipv6访问配置</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cdn.v20180606.models.Ipv6Access`
         """
@@ -11362,7 +11306,7 @@ off：不支持
 
     @property
     def AdvanceSet(self):
-        r"""高级配置集合
+        r"""<p>高级配置集合</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of AdvanceConfig
         """
@@ -11374,7 +11318,7 @@ off：不支持
 
     @property
     def OfflineCache(self):
-        r"""离线缓存（功能灰度中，尚未全量，请等待后续全量发布）
+        r"""<p>离线缓存（功能灰度中，尚未全量，请等待后续全量发布）</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cdn.v20180606.models.OfflineCache`
         """
@@ -11386,7 +11330,7 @@ off：不支持
 
     @property
     def OriginCombine(self):
-        r"""合并回源（白名单功能）
+        r"""<p>合并回源（白名单功能）</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cdn.v20180606.models.OriginCombine`
         """
@@ -11398,7 +11342,7 @@ off：不支持
 
     @property
     def PostMaxSize(self):
-        r"""POST上传配置项
+        r"""<p>POST上传配置项</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cdn.v20180606.models.PostSize`
         """
@@ -11410,7 +11354,7 @@ off：不支持
 
     @property
     def Quic(self):
-        r"""Quic配置
+        r"""<p>Quic配置</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cdn.v20180606.models.Quic`
         """
@@ -11422,7 +11366,7 @@ off：不支持
 
     @property
     def OssPrivateAccess(self):
-        r"""回源OSS私有鉴权
+        r"""<p>回源OSS私有鉴权</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cdn.v20180606.models.OssPrivateAccess`
         """
@@ -11434,7 +11378,7 @@ off：不支持
 
     @property
     def WebSocket(self):
-        r"""WebSocket配置
+        r"""<p>WebSocket配置</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cdn.v20180606.models.WebSocket`
         """
@@ -11446,7 +11390,7 @@ off：不支持
 
     @property
     def RemoteAuthentication(self):
-        r"""远程鉴权配置
+        r"""<p>远程鉴权配置</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cdn.v20180606.models.RemoteAuthentication`
         """
@@ -11458,7 +11402,7 @@ off：不支持
 
     @property
     def ShareCname(self):
-        r"""共享CNAME配置（白名单功能）
+        r"""<p>共享CNAME配置（白名单功能）</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cdn.v20180606.models.ShareCname`
         """
@@ -11470,7 +11414,7 @@ off：不支持
 
     @property
     def RuleEngine(self):
-        r"""规则引擎
+        r"""<p>规则引擎</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cdn.v20180606.models.RuleEngine`
         """
@@ -11482,7 +11426,7 @@ off：不支持
 
     @property
     def ParentHost(self):
-        r"""主域名
+        r"""<p>主域名</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -11494,7 +11438,7 @@ off：不支持
 
     @property
     def HwPrivateAccess(self):
-        r"""华为云对象存储回源鉴权
+        r"""<p>华为云对象存储回源鉴权</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cdn.v20180606.models.HwPrivateAccess`
         """
@@ -11506,7 +11450,7 @@ off：不支持
 
     @property
     def QnPrivateAccess(self):
-        r"""七牛云对象存储回源鉴权
+        r"""<p>七牛云对象存储回源鉴权</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cdn.v20180606.models.QnPrivateAccess`
         """
@@ -11518,7 +11462,7 @@ off：不支持
 
     @property
     def HttpsBilling(self):
-        r"""HTTPS服务，缺省时默认开启
+        r"""<p>HTTPS服务，缺省时默认开启</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cdn.v20180606.models.HttpsBilling`
         """
@@ -11530,7 +11474,7 @@ off：不支持
 
     @property
     def OthersPrivateAccess(self):
-        r"""其他厂商对象存储回源鉴权
+        r"""<p>其他厂商对象存储回源鉴权</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cdn.v20180606.models.OthersPrivateAccess`
         """
@@ -11542,7 +11486,7 @@ off：不支持
 
     @property
     def ParamFilter(self):
-        r"""参数黑名单
+        r"""<p>参数黑名单</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cdn.v20180606.models.ParamFilter`
         """
@@ -11554,7 +11498,7 @@ off：不支持
 
     @property
     def AutoGuard(self):
-        r"""流量一键防盗刷配置
+        r"""<p>流量一键防盗刷配置</p>
         :rtype: :class:`tencentcloud.cdn.v20180606.models.AutoGuard`
         """
         return self._AutoGuard
@@ -11565,7 +11509,7 @@ off：不支持
 
     @property
     def GeoBlocker(self):
-        r"""区域访问控制配置
+        r"""<p>区域访问控制配置</p>
         :rtype: :class:`tencentcloud.cdn.v20180606.models.GeoBlocker`
         """
         return self._GeoBlocker

@@ -22339,9 +22339,9 @@ class CreateAigcImageTaskRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ModelName: <p>模型名称。<br>当前支持的模型列表：<br>Hunyuan，<br>Qwen，<br>Vidu，<br>Kling，<br>MJ。</p>
+        :param _ModelName: <p>模型名称。当前支持的模型列表：Hunyuan，Qwen，Vidu，Kling。</p>
         :type ModelName: str
-        :param _ModelVersion: <p>指定模型特定版本号。默认使用系统当前所支持的模型稳定版本。</p><ol><li>Hunyuan，可选 [3.0]。</li><li>Vidu，可选 [q2]。</li><li>Kling，可选 [2.1、O1、3.0、3.0-Omni]。</li><li>Qwen，可选 [0925]。</li><li>MJ，可选 [v7]</li></ol>
+        :param _ModelVersion: <p>指定模型特定版本号。默认使用系统当前所支持的模型稳定版本。</p><ol><li>Hunyuan，可选 [3.0]。</li><li>Vidu，可选 [q2]。</li><li>Kling，可选 [2.1、O1、3.0、3.0-Omni]。</li><li>Qwen，可选 [0925]。</li></ol>
         :type ModelVersion: str
         :param _SceneType: <p>场景化生图使用，仅部分模型支持。</p><p>枚举值：</p><ul><li>3d_panorama： 全景图。仅Hunyuan支持。</li></ul>
         :type SceneType: str
@@ -22351,7 +22351,7 @@ class CreateAigcImageTaskRequest(AbstractModel):
         :type NegativePrompt: str
         :param _EnhancePrompt: <p>默认取值为False，模型会严格地遵循指令。<br>如果需要更精细的prompt获得最佳效果，可将此参数设置为True，将自动优化传入的prompt，以提升生成质量。</p>
         :type EnhancePrompt: bool
-        :param _ImageInfos: <p>用于传入参考的资源图片信息，默认支持传入一张图片。</p><p>支持多图输入的模型：</p><ol><li>Kling 2.1，可支持最多 4 张图片输入作为资源图。</li><li>Kling 3.0-Omni，可支持最多 10 张图片输入作为资源图。</li><li>Kling O1，可支持最多 10 张图片输入作为资源图。</li><li>Vidu q2，可支持最多 7 张图片输入作为资源图。</li><li>Hunyuan 3.0，可支持最多 3 张图片输入作为资源图。</li><li>MJ v7，可支持最多 3 张图片输入作为资源图。</li></ol><p>注意：</p><ol><li>推荐图片小于7M，各模型限制不同。</li><li>图片格式支持：jpeg, png, webp。</li></ol>
+        :param _ImageInfos: <p>用于传入参考的资源图片信息，默认支持传入一张图片。</p><p>支持多图输入的模型：</p><ol><li>Kling 2.1，可支持最多 4 张图片输入作为资源图。</li><li>Kling 3.0-Omni，可支持最多 10 张图片输入作为资源图。</li><li>Kling O1，可支持最多 10 张图片输入作为资源图。</li><li>Vidu q2，可支持最多 7 张图片输入作为资源图。</li><li>Hunyuan 3.0，可支持最多 3 张图片输入作为资源图。</li></ol><p>注意：</p><ol><li>推荐图片小于7M，各模型限制不同。</li><li>图片格式支持：jpeg, png, webp。</li></ol>
         :type ImageInfos: list of AigcImageInfo
         :param _OutputImageCount: <p>指定图片输出张数。目前默认支持输出 1 张。</p>
         :type OutputImageCount: int
@@ -22379,7 +22379,7 @@ class CreateAigcImageTaskRequest(AbstractModel):
 
     @property
     def ModelName(self):
-        r"""<p>模型名称。<br>当前支持的模型列表：<br>Hunyuan，<br>Qwen，<br>Vidu，<br>Kling，<br>MJ。</p>
+        r"""<p>模型名称。当前支持的模型列表：Hunyuan，Qwen，Vidu，Kling。</p>
         :rtype: str
         """
         return self._ModelName
@@ -22390,7 +22390,7 @@ class CreateAigcImageTaskRequest(AbstractModel):
 
     @property
     def ModelVersion(self):
-        r"""<p>指定模型特定版本号。默认使用系统当前所支持的模型稳定版本。</p><ol><li>Hunyuan，可选 [3.0]。</li><li>Vidu，可选 [q2]。</li><li>Kling，可选 [2.1、O1、3.0、3.0-Omni]。</li><li>Qwen，可选 [0925]。</li><li>MJ，可选 [v7]</li></ol>
+        r"""<p>指定模型特定版本号。默认使用系统当前所支持的模型稳定版本。</p><ol><li>Hunyuan，可选 [3.0]。</li><li>Vidu，可选 [q2]。</li><li>Kling，可选 [2.1、O1、3.0、3.0-Omni]。</li><li>Qwen，可选 [0925]。</li></ol>
         :rtype: str
         """
         return self._ModelVersion
@@ -22445,7 +22445,7 @@ class CreateAigcImageTaskRequest(AbstractModel):
 
     @property
     def ImageInfos(self):
-        r"""<p>用于传入参考的资源图片信息，默认支持传入一张图片。</p><p>支持多图输入的模型：</p><ol><li>Kling 2.1，可支持最多 4 张图片输入作为资源图。</li><li>Kling 3.0-Omni，可支持最多 10 张图片输入作为资源图。</li><li>Kling O1，可支持最多 10 张图片输入作为资源图。</li><li>Vidu q2，可支持最多 7 张图片输入作为资源图。</li><li>Hunyuan 3.0，可支持最多 3 张图片输入作为资源图。</li><li>MJ v7，可支持最多 3 张图片输入作为资源图。</li></ol><p>注意：</p><ol><li>推荐图片小于7M，各模型限制不同。</li><li>图片格式支持：jpeg, png, webp。</li></ol>
+        r"""<p>用于传入参考的资源图片信息，默认支持传入一张图片。</p><p>支持多图输入的模型：</p><ol><li>Kling 2.1，可支持最多 4 张图片输入作为资源图。</li><li>Kling 3.0-Omni，可支持最多 10 张图片输入作为资源图。</li><li>Kling O1，可支持最多 10 张图片输入作为资源图。</li><li>Vidu q2，可支持最多 7 张图片输入作为资源图。</li><li>Hunyuan 3.0，可支持最多 3 张图片输入作为资源图。</li></ol><p>注意：</p><ol><li>推荐图片小于7M，各模型限制不同。</li><li>图片格式支持：jpeg, png, webp。</li></ol>
         :rtype: list of AigcImageInfo
         """
         return self._ImageInfos

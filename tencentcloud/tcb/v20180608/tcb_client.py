@@ -1065,6 +1065,29 @@ class TcbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeCloudBaseRunBuildLog(self, request):
+        r"""查询构建日志
+
+        :param request: Request instance for DescribeCloudBaseRunBuildLog.
+        :type request: :class:`tencentcloud.tcb.v20180608.models.DescribeCloudBaseRunBuildLogRequest`
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.DescribeCloudBaseRunBuildLogResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeCloudBaseRunBuildLog", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeCloudBaseRunBuildLogResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeCloudBaseRunServerVersion(self, request):
         r"""查询服务版本的详情，CPU和MEM  请使用CPUSize和MemSize
 

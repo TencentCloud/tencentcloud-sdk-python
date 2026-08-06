@@ -4510,7 +4510,7 @@ class CreateReadOnlyDBInstanceRequest(AbstractModel):
         :type ActivityId: int
         :param _ReadOnlyGroupId: <p>只读组ID。</p>
         :type ReadOnlyGroupId: str
-        :param _TagList: <p>实例需要绑定的Tag信息，默认为空；可以通过调用 <a href="https://cloud.tencent.com/document/api/651/35316">DescribeTags</a> 返回值中的 Tags 字段来获取。</p>
+        :param _TagList: <p>实例需要绑定的Tag信息，默认为空；可以通过调用 <a href="https://cloud.tencent.com/document/api/651/35316">DescribeTags</a> 返回值中的 Tags 字段来获取。</p><p>当前字段未完整支持多个tag形式，不推荐使用，建议使用新字段Tags</p>
         :type TagList: :class:`tencentcloud.postgres.v20170312.models.Tag`
         :param _SecurityGroupIds: <p>实例所属安全组，该参数可以通过调用 <a href="https://cloud.tencent.com/document/api/215/15808">DescribeSecurityGroups</a> 的返回值中的sgId字段来获取。若不指定该参数，则绑定默认安全组。</p>
         :type SecurityGroupIds: list of str
@@ -4524,6 +4524,8 @@ class CreateReadOnlyDBInstanceRequest(AbstractModel):
         :type DedicatedClusterId: str
         :param _DeletionProtection: <p>实例是否开启删除保护: true-开启删除保护；false-关闭删除保护。</p>
         :type DeletionProtection: bool
+        :param _Tags: <p>实例需要绑定的Tag信息，默认为空；可以通过调用 <a href="https://cloud.tencent.com/document/api/651/35316">DescribeTags</a> 返回值中的 Tags 字段来获取。</p>
+        :type Tags: list of Tag
         """
         self._Zone = None
         self._MasterDBInstanceId = None
@@ -4547,6 +4549,7 @@ class CreateReadOnlyDBInstanceRequest(AbstractModel):
         self._DBVersion = None
         self._DedicatedClusterId = None
         self._DeletionProtection = None
+        self._Tags = None
 
     @property
     def Zone(self):
@@ -4715,7 +4718,7 @@ class CreateReadOnlyDBInstanceRequest(AbstractModel):
 
     @property
     def TagList(self):
-        r"""<p>实例需要绑定的Tag信息，默认为空；可以通过调用 <a href="https://cloud.tencent.com/document/api/651/35316">DescribeTags</a> 返回值中的 Tags 字段来获取。</p>
+        r"""<p>实例需要绑定的Tag信息，默认为空；可以通过调用 <a href="https://cloud.tencent.com/document/api/651/35316">DescribeTags</a> 返回值中的 Tags 字段来获取。</p><p>当前字段未完整支持多个tag形式，不推荐使用，建议使用新字段Tags</p>
         :rtype: :class:`tencentcloud.postgres.v20170312.models.Tag`
         """
         return self._TagList
@@ -4794,6 +4797,17 @@ class CreateReadOnlyDBInstanceRequest(AbstractModel):
     def DeletionProtection(self, DeletionProtection):
         self._DeletionProtection = DeletionProtection
 
+    @property
+    def Tags(self):
+        r"""<p>实例需要绑定的Tag信息，默认为空；可以通过调用 <a href="https://cloud.tencent.com/document/api/651/35316">DescribeTags</a> 返回值中的 Tags 字段来获取。</p>
+        :rtype: list of Tag
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
 
     def _deserialize(self, params):
         self._Zone = params.get("Zone")
@@ -4820,6 +4834,12 @@ class CreateReadOnlyDBInstanceRequest(AbstractModel):
         self._DBVersion = params.get("DBVersion")
         self._DedicatedClusterId = params.get("DedicatedClusterId")
         self._DeletionProtection = params.get("DeletionProtection")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -13762,21 +13782,21 @@ class DescribeTasksRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskId: 按照任务ID进行查询。其余云API中返回的FlowId和TaskId等价。
+        :param _TaskId: <p>按照任务ID进行查询。其余云API中返回的FlowId和TaskId等价。</p>
         :type TaskId: int
-        :param _DBInstanceId: 按照数据库实例ID进行查询。
+        :param _DBInstanceId: <p>按照数据库实例ID进行查询。</p>
         :type DBInstanceId: str
-        :param _MinStartTime: 任务的最早开始时间，形如2024-08-23 00:00:00,默认只展示180天内的数据。
+        :param _MinStartTime: <p>任务的最早开始时间，形如2024-08-23 00:00:00,默认只展示180天内的数据。</p>
         :type MinStartTime: str
-        :param _MaxStartTime: 任务的最晚开始时间，形如2024-08-23 00:00:00，默认为当前时间。
+        :param _MaxStartTime: <p>任务的最晚开始时间，形如2024-08-23 00:00:00，默认为当前时间。</p>
         :type MaxStartTime: str
-        :param _Limit: 每页显示数量，取值范围为1-100，默认为返回20条。
+        :param _Limit: <p>每页显示数量，取值范围为1-100，默认为返回20条。</p>
         :type Limit: int
-        :param _Offset: 数据偏移量，从0开始。
+        :param _Offset: <p>数据偏移量，从0开始。</p>
         :type Offset: int
-        :param _OrderBy: 排序字段，支持StartTime,EndTime，默认为StartTime。
+        :param _OrderBy: <p>排序字段，支持StartTime,EndTime，默认为StartTime。</p>
         :type OrderBy: str
-        :param _OrderByType: 排序方式，包括升序：asc，降序：desc，默认为desc。
+        :param _OrderByType: <p>排序方式，包括升序：asc，降序：desc，默认为desc。</p>
         :type OrderByType: str
         """
         self._TaskId = None
@@ -13790,7 +13810,7 @@ class DescribeTasksRequest(AbstractModel):
 
     @property
     def TaskId(self):
-        r"""按照任务ID进行查询。其余云API中返回的FlowId和TaskId等价。
+        r"""<p>按照任务ID进行查询。其余云API中返回的FlowId和TaskId等价。</p>
         :rtype: int
         """
         return self._TaskId
@@ -13801,7 +13821,7 @@ class DescribeTasksRequest(AbstractModel):
 
     @property
     def DBInstanceId(self):
-        r"""按照数据库实例ID进行查询。
+        r"""<p>按照数据库实例ID进行查询。</p>
         :rtype: str
         """
         return self._DBInstanceId
@@ -13812,7 +13832,7 @@ class DescribeTasksRequest(AbstractModel):
 
     @property
     def MinStartTime(self):
-        r"""任务的最早开始时间，形如2024-08-23 00:00:00,默认只展示180天内的数据。
+        r"""<p>任务的最早开始时间，形如2024-08-23 00:00:00,默认只展示180天内的数据。</p>
         :rtype: str
         """
         return self._MinStartTime
@@ -13823,7 +13843,7 @@ class DescribeTasksRequest(AbstractModel):
 
     @property
     def MaxStartTime(self):
-        r"""任务的最晚开始时间，形如2024-08-23 00:00:00，默认为当前时间。
+        r"""<p>任务的最晚开始时间，形如2024-08-23 00:00:00，默认为当前时间。</p>
         :rtype: str
         """
         return self._MaxStartTime
@@ -13834,7 +13854,7 @@ class DescribeTasksRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""每页显示数量，取值范围为1-100，默认为返回20条。
+        r"""<p>每页显示数量，取值范围为1-100，默认为返回20条。</p>
         :rtype: int
         """
         return self._Limit
@@ -13845,7 +13865,7 @@ class DescribeTasksRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""数据偏移量，从0开始。
+        r"""<p>数据偏移量，从0开始。</p>
         :rtype: int
         """
         return self._Offset
@@ -13856,7 +13876,7 @@ class DescribeTasksRequest(AbstractModel):
 
     @property
     def OrderBy(self):
-        r"""排序字段，支持StartTime,EndTime，默认为StartTime。
+        r"""<p>排序字段，支持StartTime,EndTime，默认为StartTime。</p>
         :rtype: str
         """
         return self._OrderBy
@@ -13867,7 +13887,7 @@ class DescribeTasksRequest(AbstractModel):
 
     @property
     def OrderByType(self):
-        r"""排序方式，包括升序：asc，降序：desc，默认为desc。
+        r"""<p>排序方式，包括升序：asc，降序：desc，默认为desc。</p>
         :rtype: str
         """
         return self._OrderByType
@@ -13903,9 +13923,9 @@ class DescribeTasksResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TotalCount: 查询到的任务数量
+        :param _TotalCount: <p>查询到的任务数量</p>
         :type TotalCount: int
-        :param _TaskSet: 任务信息列表
+        :param _TaskSet: <p>任务信息列表</p>
         :type TaskSet: list of TaskSet
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -13916,7 +13936,7 @@ class DescribeTasksResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        r"""查询到的任务数量
+        r"""<p>查询到的任务数量</p>
         :rtype: int
         """
         return self._TotalCount
@@ -13927,7 +13947,7 @@ class DescribeTasksResponse(AbstractModel):
 
     @property
     def TaskSet(self):
-        r"""任务信息列表
+        r"""<p>任务信息列表</p>
         :rtype: list of TaskSet
         """
         return self._TaskSet
@@ -17919,33 +17939,28 @@ class ModifyDBInstanceSpecRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DBInstanceId: 实例ID，形如：postgres-6bwgamo3。可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取
+        :param _DBInstanceId: <p>实例ID，形如：postgres-6bwgamo3。可通过<a href="https://cloud.tencent.com/document/api/409/16773">DescribeDBInstances</a>接口获取</p>
         :type DBInstanceId: str
-        :param _Memory: 修改后的实例内存大小，单位GiB。
+        :param _Memory: <p>修改后的实例内存大小，单位GB。</p>
         :type Memory: int
-        :param _Storage: 修改后的实例磁盘大小，单位GiB。该参数的设置步长为10。
+        :param _Storage: <p>修改后的实例磁盘大小，单位GB。该参数的设置步长为10。</p>
         :type Storage: int
-        :param _AutoVoucher: 是否自动使用代金券：
-<li>0：否</li>
-<li>1：是</li>
-默认值：0
+        :param _AutoVoucher: <p>是否自动使用代金券：</p><li>0：否</li><li>1：是</li>默认值：0
         :type AutoVoucher: int
-        :param _VoucherIds: 代金券ID列表，目前仅支持指定一张代金券。
+        :param _VoucherIds: <p>代金券ID列表，目前仅支持指定一张代金券。</p>
         :type VoucherIds: list of str
-        :param _ActivityId: 活动ID。
+        :param _ActivityId: <p>活动ID。</p>
         :type ActivityId: int
-        :param _SwitchTag: 指定实例配置完成变更后的切换时间。
-<li>0：立即切换 </li>
-<li>1：指定时间切换</li>
-<li>2：维护时间窗口内</li>切换
-默认值：0 
+        :param _SwitchTag: <p>指定实例配置完成变更后的切换时间。</p><li>0：立即切换 </li><li>1：指定时间切换</li><li>2：维护时间窗口内</li>切换默认值：0
         :type SwitchTag: int
-        :param _SwitchStartTime: 切换开始时间，时间格式：HH:MM:SS，例如：01:00:00。当SwitchTag为0或2时，该参数失效。
+        :param _SwitchStartTime: <p>切换开始时间，时间格式：HH:MM:SS，例如：01:00:00。当SwitchTag为0或2时，该参数失效。</p>
         :type SwitchStartTime: str
-        :param _SwitchEndTime: 切换截止时间，时间格式：HH:MM:SS，例如：01:30:00。当SwitchTag为0或2时，该参数失效。
+        :param _SwitchEndTime: <p>切换截止时间，时间格式：HH:MM:SS，例如：01:30:00。当SwitchTag为0或2时，该参数失效。</p>
         :type SwitchEndTime: str
-        :param _Cpu: 修改后的实例CPU大小，单位Core。不填写该参数时，默认根据Memory确定Cpu大小。如Memory为2，支持的规格有1核2GiB，则不传入Cpu时，Cpu默认为1。
+        :param _Cpu: <p>修改后的实例CPU大小，单位Core。不填写该参数时，默认根据Memory确定Cpu大小。如Memory为2，支持的规格有1核2GB，则不传入Cpu时，Cpu默认为1。</p>
         :type Cpu: int
+        :param _SyncModifyParams: <p>变配时同步修改的参数列表</p>
+        :type SyncModifyParams: list of ParamEntry
         """
         self._DBInstanceId = None
         self._Memory = None
@@ -17957,10 +17972,11 @@ class ModifyDBInstanceSpecRequest(AbstractModel):
         self._SwitchStartTime = None
         self._SwitchEndTime = None
         self._Cpu = None
+        self._SyncModifyParams = None
 
     @property
     def DBInstanceId(self):
-        r"""实例ID，形如：postgres-6bwgamo3。可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取
+        r"""<p>实例ID，形如：postgres-6bwgamo3。可通过<a href="https://cloud.tencent.com/document/api/409/16773">DescribeDBInstances</a>接口获取</p>
         :rtype: str
         """
         return self._DBInstanceId
@@ -17971,7 +17987,7 @@ class ModifyDBInstanceSpecRequest(AbstractModel):
 
     @property
     def Memory(self):
-        r"""修改后的实例内存大小，单位GiB。
+        r"""<p>修改后的实例内存大小，单位GB。</p>
         :rtype: int
         """
         return self._Memory
@@ -17982,7 +17998,7 @@ class ModifyDBInstanceSpecRequest(AbstractModel):
 
     @property
     def Storage(self):
-        r"""修改后的实例磁盘大小，单位GiB。该参数的设置步长为10。
+        r"""<p>修改后的实例磁盘大小，单位GB。该参数的设置步长为10。</p>
         :rtype: int
         """
         return self._Storage
@@ -17993,10 +18009,7 @@ class ModifyDBInstanceSpecRequest(AbstractModel):
 
     @property
     def AutoVoucher(self):
-        r"""是否自动使用代金券：
-<li>0：否</li>
-<li>1：是</li>
-默认值：0
+        r"""<p>是否自动使用代金券：</p><li>0：否</li><li>1：是</li>默认值：0
         :rtype: int
         """
         return self._AutoVoucher
@@ -18007,7 +18020,7 @@ class ModifyDBInstanceSpecRequest(AbstractModel):
 
     @property
     def VoucherIds(self):
-        r"""代金券ID列表，目前仅支持指定一张代金券。
+        r"""<p>代金券ID列表，目前仅支持指定一张代金券。</p>
         :rtype: list of str
         """
         return self._VoucherIds
@@ -18018,7 +18031,7 @@ class ModifyDBInstanceSpecRequest(AbstractModel):
 
     @property
     def ActivityId(self):
-        r"""活动ID。
+        r"""<p>活动ID。</p>
         :rtype: int
         """
         return self._ActivityId
@@ -18029,11 +18042,7 @@ class ModifyDBInstanceSpecRequest(AbstractModel):
 
     @property
     def SwitchTag(self):
-        r"""指定实例配置完成变更后的切换时间。
-<li>0：立即切换 </li>
-<li>1：指定时间切换</li>
-<li>2：维护时间窗口内</li>切换
-默认值：0 
+        r"""<p>指定实例配置完成变更后的切换时间。</p><li>0：立即切换 </li><li>1：指定时间切换</li><li>2：维护时间窗口内</li>切换默认值：0
         :rtype: int
         """
         return self._SwitchTag
@@ -18044,7 +18053,7 @@ class ModifyDBInstanceSpecRequest(AbstractModel):
 
     @property
     def SwitchStartTime(self):
-        r"""切换开始时间，时间格式：HH:MM:SS，例如：01:00:00。当SwitchTag为0或2时，该参数失效。
+        r"""<p>切换开始时间，时间格式：HH:MM:SS，例如：01:00:00。当SwitchTag为0或2时，该参数失效。</p>
         :rtype: str
         """
         return self._SwitchStartTime
@@ -18055,7 +18064,7 @@ class ModifyDBInstanceSpecRequest(AbstractModel):
 
     @property
     def SwitchEndTime(self):
-        r"""切换截止时间，时间格式：HH:MM:SS，例如：01:30:00。当SwitchTag为0或2时，该参数失效。
+        r"""<p>切换截止时间，时间格式：HH:MM:SS，例如：01:30:00。当SwitchTag为0或2时，该参数失效。</p>
         :rtype: str
         """
         return self._SwitchEndTime
@@ -18066,7 +18075,7 @@ class ModifyDBInstanceSpecRequest(AbstractModel):
 
     @property
     def Cpu(self):
-        r"""修改后的实例CPU大小，单位Core。不填写该参数时，默认根据Memory确定Cpu大小。如Memory为2，支持的规格有1核2GiB，则不传入Cpu时，Cpu默认为1。
+        r"""<p>修改后的实例CPU大小，单位Core。不填写该参数时，默认根据Memory确定Cpu大小。如Memory为2，支持的规格有1核2GB，则不传入Cpu时，Cpu默认为1。</p>
         :rtype: int
         """
         return self._Cpu
@@ -18074,6 +18083,17 @@ class ModifyDBInstanceSpecRequest(AbstractModel):
     @Cpu.setter
     def Cpu(self, Cpu):
         self._Cpu = Cpu
+
+    @property
+    def SyncModifyParams(self):
+        r"""<p>变配时同步修改的参数列表</p>
+        :rtype: list of ParamEntry
+        """
+        return self._SyncModifyParams
+
+    @SyncModifyParams.setter
+    def SyncModifyParams(self, SyncModifyParams):
+        self._SyncModifyParams = SyncModifyParams
 
 
     def _deserialize(self, params):
@@ -18087,6 +18107,12 @@ class ModifyDBInstanceSpecRequest(AbstractModel):
         self._SwitchStartTime = params.get("SwitchStartTime")
         self._SwitchEndTime = params.get("SwitchEndTime")
         self._Cpu = params.get("Cpu")
+        if params.get("SyncModifyParams") is not None:
+            self._SyncModifyParams = []
+            for item in params.get("SyncModifyParams"):
+                obj = ParamEntry()
+                obj._deserialize(item)
+                self._SyncModifyParams.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -18104,9 +18130,9 @@ class ModifyDBInstanceSpecResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DealName: 订单号。
+        :param _DealName: <p>订单号。</p>
         :type DealName: str
-        :param _BillId: 冻结流水号。
+        :param _BillId: <p>冻结流水号。</p>
         :type BillId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -18117,7 +18143,7 @@ class ModifyDBInstanceSpecResponse(AbstractModel):
 
     @property
     def DealName(self):
-        r"""订单号。
+        r"""<p>订单号。</p>
         :rtype: str
         """
         return self._DealName
@@ -18128,7 +18154,7 @@ class ModifyDBInstanceSpecResponse(AbstractModel):
 
     @property
     def BillId(self):
-        r"""冻结流水号。
+        r"""<p>冻结流水号。</p>
         :rtype: str
         """
         return self._BillId

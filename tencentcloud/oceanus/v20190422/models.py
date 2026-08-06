@@ -5978,23 +5978,17 @@ class DescribeClustersRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ClusterIds: 按照一个或者多个集群 ID 查询，每次请求的集群上限为 100
+        :param _ClusterIds: <p>按照一个或者多个集群 ID 查询，每次请求的集群上限为 100</p>
         :type ClusterIds: list of str
-        :param _Offset: 偏移量，默认 0
+        :param _Offset: <p>偏移量，默认 0</p>
         :type Offset: int
-        :param _Limit: 请求的集群数量，默认 20，最大值 100
+        :param _Limit: <p>请求的集群数量，默认 20，最大值 100</p>
         :type Limit: int
-        :param _OrderType: 集群信息结果排序规则，1 按时间降序，2 按照时间升序，3  按照状态排序
+        :param _OrderType: <p>集群信息结果排序规则，1 按时间降序，2 按照时间升序，3  按照状态排序</p>
         :type OrderType: int
-        :param _Filters: 过滤规则
-    
-- Name
-    按照集群的名字进行模糊查询。例如：测试
-    类型： String
-    必选： 否
-    
+        :param _Filters: <p>过滤规则</p><ul><li>Name<br>  按照集群的名字进行模糊查询。例如：测试<br>  类型： String<br>  必选： 否</li></ul>
         :type Filters: list of Filter
-        :param _WorkSpaceId: 工作空间 SerialId
+        :param _WorkSpaceId: <p>工作空间 SerialId</p>
         :type WorkSpaceId: str
         """
         self._ClusterIds = None
@@ -6006,7 +6000,7 @@ class DescribeClustersRequest(AbstractModel):
 
     @property
     def ClusterIds(self):
-        r"""按照一个或者多个集群 ID 查询，每次请求的集群上限为 100
+        r"""<p>按照一个或者多个集群 ID 查询，每次请求的集群上限为 100</p>
         :rtype: list of str
         """
         return self._ClusterIds
@@ -6017,7 +6011,7 @@ class DescribeClustersRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""偏移量，默认 0
+        r"""<p>偏移量，默认 0</p>
         :rtype: int
         """
         return self._Offset
@@ -6028,7 +6022,7 @@ class DescribeClustersRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""请求的集群数量，默认 20，最大值 100
+        r"""<p>请求的集群数量，默认 20，最大值 100</p>
         :rtype: int
         """
         return self._Limit
@@ -6039,7 +6033,7 @@ class DescribeClustersRequest(AbstractModel):
 
     @property
     def OrderType(self):
-        r"""集群信息结果排序规则，1 按时间降序，2 按照时间升序，3  按照状态排序
+        r"""<p>集群信息结果排序规则，1 按时间降序，2 按照时间升序，3  按照状态排序</p>
         :rtype: int
         """
         return self._OrderType
@@ -6050,13 +6044,7 @@ class DescribeClustersRequest(AbstractModel):
 
     @property
     def Filters(self):
-        r"""过滤规则
-    
-- Name
-    按照集群的名字进行模糊查询。例如：测试
-    类型： String
-    必选： 否
-    
+        r"""<p>过滤规则</p><ul><li>Name<br>  按照集群的名字进行模糊查询。例如：测试<br>  类型： String<br>  必选： 否</li></ul>
         :rtype: list of Filter
         """
         return self._Filters
@@ -6067,7 +6055,7 @@ class DescribeClustersRequest(AbstractModel):
 
     @property
     def WorkSpaceId(self):
-        r"""工作空间 SerialId
+        r"""<p>工作空间 SerialId</p>
         :rtype: str
         """
         return self._WorkSpaceId
@@ -6106,9 +6094,9 @@ class DescribeClustersResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TotalCount: 集群总数
+        :param _TotalCount: <p>集群总数</p>
         :type TotalCount: int
-        :param _ClusterSet: 集群列表
+        :param _ClusterSet: <p>集群列表</p>
         :type ClusterSet: list of Cluster
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -6119,7 +6107,7 @@ class DescribeClustersResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        r"""集群总数
+        r"""<p>集群总数</p>
         :rtype: int
         """
         return self._TotalCount
@@ -6130,7 +6118,7 @@ class DescribeClustersResponse(AbstractModel):
 
     @property
     def ClusterSet(self):
-        r"""集群列表
+        r"""<p>集群列表</p>
         :rtype: list of Cluster
         """
         return self._ClusterSet
@@ -7395,19 +7383,19 @@ class DescribeJobsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _JobIds: 按照一个或者多个作业ID查询。作业ID形如：cql-11112222，每次请求的作业上限为100。参数不支持同时指定JobIds和Filters。
+        :param _JobIds: <p>按照一个或者多个作业ID查询。作业ID形如：cql-11112222，每次请求的作业上限为100。参数不支持同时指定JobIds和Filters。</p>
         :type JobIds: list of str
-        :param _Filters: 过滤条件，支持的 Filter.Name 为：作业名 Name、作业状态 Status、所属集群 ClusterId、作业id JobId、集群名称 ClusterName。 每次请求的 Filters 个数的上限为 5，Filter.Values 的个数上限为 5。参数不支持同时指定 JobIds 和 Filters。
+        :param _Filters: <p>过滤条件，支持的 Filter.Name 为：作业名 Name、作业状态 Status、所属集群 ClusterId、作业id JobId、集群名称 ClusterName。 每次请求的 Filters 个数的上限为 5，Filter.Values 的个数上限为 5。参数不支持同时指定 JobIds 和 Filters。</p>
         :type Filters: list of Filter
-        :param _Offset: 偏移量，默认为0
+        :param _Offset: <p>偏移量，默认为0</p>
         :type Offset: int
-        :param _Limit: 分页大小，默认为20，最大值为100
+        :param _Limit: <p>分页大小，默认为20，最大值为100</p>
         :type Limit: int
-        :param _WorkSpaceId: 工作空间 SerialId
+        :param _WorkSpaceId: <p>工作空间 SerialId</p>
         :type WorkSpaceId: str
-        :param _ExtraResult: 查询额外的作业信息,例如 JobEventInfo	
+        :param _ExtraResult: <p>查询额外的作业信息,例如 JobEventInfo</p>
         :type ExtraResult: list of str
-        :param _ConnectorOptions: 查询引用connector
+        :param _ConnectorOptions: <p>查询引用connector</p>
         :type ConnectorOptions: str
         """
         self._JobIds = None
@@ -7420,7 +7408,7 @@ class DescribeJobsRequest(AbstractModel):
 
     @property
     def JobIds(self):
-        r"""按照一个或者多个作业ID查询。作业ID形如：cql-11112222，每次请求的作业上限为100。参数不支持同时指定JobIds和Filters。
+        r"""<p>按照一个或者多个作业ID查询。作业ID形如：cql-11112222，每次请求的作业上限为100。参数不支持同时指定JobIds和Filters。</p>
         :rtype: list of str
         """
         return self._JobIds
@@ -7431,7 +7419,7 @@ class DescribeJobsRequest(AbstractModel):
 
     @property
     def Filters(self):
-        r"""过滤条件，支持的 Filter.Name 为：作业名 Name、作业状态 Status、所属集群 ClusterId、作业id JobId、集群名称 ClusterName。 每次请求的 Filters 个数的上限为 5，Filter.Values 的个数上限为 5。参数不支持同时指定 JobIds 和 Filters。
+        r"""<p>过滤条件，支持的 Filter.Name 为：作业名 Name、作业状态 Status、所属集群 ClusterId、作业id JobId、集群名称 ClusterName。 每次请求的 Filters 个数的上限为 5，Filter.Values 的个数上限为 5。参数不支持同时指定 JobIds 和 Filters。</p>
         :rtype: list of Filter
         """
         return self._Filters
@@ -7442,7 +7430,7 @@ class DescribeJobsRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""偏移量，默认为0
+        r"""<p>偏移量，默认为0</p>
         :rtype: int
         """
         return self._Offset
@@ -7453,7 +7441,7 @@ class DescribeJobsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""分页大小，默认为20，最大值为100
+        r"""<p>分页大小，默认为20，最大值为100</p>
         :rtype: int
         """
         return self._Limit
@@ -7464,7 +7452,7 @@ class DescribeJobsRequest(AbstractModel):
 
     @property
     def WorkSpaceId(self):
-        r"""工作空间 SerialId
+        r"""<p>工作空间 SerialId</p>
         :rtype: str
         """
         return self._WorkSpaceId
@@ -7475,7 +7463,7 @@ class DescribeJobsRequest(AbstractModel):
 
     @property
     def ExtraResult(self):
-        r"""查询额外的作业信息,例如 JobEventInfo	
+        r"""<p>查询额外的作业信息,例如 JobEventInfo</p>
         :rtype: list of str
         """
         return self._ExtraResult
@@ -7486,7 +7474,7 @@ class DescribeJobsRequest(AbstractModel):
 
     @property
     def ConnectorOptions(self):
-        r"""查询引用connector
+        r"""<p>查询引用connector</p>
         :rtype: str
         """
         return self._ConnectorOptions
@@ -7526,9 +7514,9 @@ class DescribeJobsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TotalCount: 作业总数
+        :param _TotalCount: <p>作业总数</p>
         :type TotalCount: int
-        :param _JobSet: 作业列表
+        :param _JobSet: <p>作业列表</p>
         :type JobSet: list of JobV1
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -7539,7 +7527,7 @@ class DescribeJobsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        r"""作业总数
+        r"""<p>作业总数</p>
         :rtype: int
         """
         return self._TotalCount
@@ -7550,7 +7538,7 @@ class DescribeJobsResponse(AbstractModel):
 
     @property
     def JobSet(self):
-        r"""作业列表
+        r"""<p>作业列表</p>
         :rtype: list of JobV1
         """
         return self._JobSet

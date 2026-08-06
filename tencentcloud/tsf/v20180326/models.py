@@ -17821,6 +17821,8 @@ class DeployContainerApplicationRequest(AbstractModel):
         :type DoNotStart: bool
         :param _ImagePullSecretList: <p>镜像Secret列表</p>
         :type ImagePullSecretList: list of str
+        :param _MeshSidecarVersion: <p>用于区分使用sidecar的版本是稳定版还是发行版</p><p>枚举值：</p><ul><li>stable： sidecar稳定版</li><li>release： sidecar发行版</li></ul>
+        :type MeshSidecarVersion: str
         """
         self._ApplicationId = None
         self._ObservabilityConfig = None
@@ -17886,6 +17888,7 @@ class DeployContainerApplicationRequest(AbstractModel):
         self._IncrementalDeployment = None
         self._DoNotStart = None
         self._ImagePullSecretList = None
+        self._MeshSidecarVersion = None
 
     @property
     def ApplicationId(self):
@@ -18591,6 +18594,17 @@ class DeployContainerApplicationRequest(AbstractModel):
     def ImagePullSecretList(self, ImagePullSecretList):
         self._ImagePullSecretList = ImagePullSecretList
 
+    @property
+    def MeshSidecarVersion(self):
+        r"""<p>用于区分使用sidecar的版本是稳定版还是发行版</p><p>枚举值：</p><ul><li>stable： sidecar稳定版</li><li>release： sidecar发行版</li></ul>
+        :rtype: str
+        """
+        return self._MeshSidecarVersion
+
+    @MeshSidecarVersion.setter
+    def MeshSidecarVersion(self, MeshSidecarVersion):
+        self._MeshSidecarVersion = MeshSidecarVersion
+
 
     def _deserialize(self, params):
         self._ApplicationId = params.get("ApplicationId")
@@ -18709,6 +18723,7 @@ class DeployContainerApplicationRequest(AbstractModel):
         self._IncrementalDeployment = params.get("IncrementalDeployment")
         self._DoNotStart = params.get("DoNotStart")
         self._ImagePullSecretList = params.get("ImagePullSecretList")
+        self._MeshSidecarVersion = params.get("MeshSidecarVersion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

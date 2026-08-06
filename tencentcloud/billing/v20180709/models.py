@@ -26860,7 +26860,7 @@ class DescribeGatherResourceRequest(AbstractModel):
         :type Month: str
         :param _TreeNodeUniqKey: <p>分账单元唯一标识，用作筛选</p>
         :type TreeNodeUniqKey: str
-        :param _GatherType: <p>资源目录类别，枚举值如下：<br>all - 全部<br>none - 未归集</p>
+        :param _GatherType: <p>资源目录类别，枚举值如下：<br>all - 全部<br>none - 未归集</p><p>枚举值：</p><ul><li>all： 全部</li><li>none： 未归集</li><li>allocation： 已公摊资源</li><li>gather： 已归集资源</li></ul>
         :type GatherType: str
         :param _Sort: <p>排序字段，枚举值如下：<br>realCost  - 折后总价<br>cashPayAmount - 现金金额<br>voucherPayAmount - 代金券金额<br>incentivePayAmount  - 赠送金金额<br>transferPayAmount -分成金金额</p>
         :type Sort: str
@@ -26957,7 +26957,7 @@ class DescribeGatherResourceRequest(AbstractModel):
 
     @property
     def GatherType(self):
-        r"""<p>资源目录类别，枚举值如下：<br>all - 全部<br>none - 未归集</p>
+        r"""<p>资源目录类别，枚举值如下：<br>all - 全部<br>none - 未归集</p><p>枚举值：</p><ul><li>all： 全部</li><li>none： 未归集</li><li>allocation： 已公摊资源</li><li>gather： 已归集资源</li></ul>
         :rtype: str
         """
         return self._GatherType
@@ -29454,87 +29454,86 @@ class GatherResourceSummary(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _PayerUin: 支付者 UIN：支付者的账号 ID，账号 ID 是用户在腾讯云的唯一账号标识
+        :param _PayerUin: <p>支付者 UIN：支付者的账号 ID，账号 ID 是用户在腾讯云的唯一账号标识</p>
         :type PayerUin: str
-        :param _OwnerUin: 使用者 UIN：实际使用资源的账号 ID
+        :param _OwnerUin: <p>使用者 UIN：实际使用资源的账号 ID</p>
         :type OwnerUin: str
-        :param _OperateUin: 操作者 UIN：操作者账号 ID（预付费资源下单或后付费操作开通资源账号的ID或者角色 ID）
+        :param _OperateUin: <p>操作者 UIN：操作者账号 ID（预付费资源下单或后付费操作开通资源账号的ID或者角色 ID）</p>
         :type OperateUin: str
-        :param _InstanceType: 实例类型编码
+        :param _InstanceType: <p>实例类型编码</p>
         :type InstanceType: str
-        :param _InstanceTypeName: 实例类型：购买的产品服务对应的实例类型，包括资源包、RI、SP、竞价实例。常规实例默认展示“-”
+        :param _InstanceTypeName: <p>实例类型：购买的产品服务对应的实例类型，包括资源包、RI、SP、竞价实例。常规实例默认展示“-”</p>
         :type InstanceTypeName: str
-        :param _ResourceId: 资源ID：不同产品因资源形态不同，资源内容不完全相同，如云服务器 CVM 为对应的实例 ID； 若该产品被分拆，则展示产品分拆后的分拆项 ID，如 COS 桶 ID，CDN 域名
+        :param _ResourceId: <p>资源ID：不同产品因资源形态不同，资源内容不完全相同，如云服务器 CVM 为对应的实例 ID； 若该产品被分拆，则展示产品分拆后的分拆项 ID，如 COS 桶 ID，CDN 域名</p>
         :type ResourceId: str
-        :param _ResourceName: 实例名称：用户在控制台为资源设置的名称，如未设置默认为空；若该产品被分拆，则展示分拆产品分拆后的分拆项资源别名
+        :param _ResourceName: <p>实例名称：用户在控制台为资源设置的名称，如未设置默认为空；若该产品被分拆，则展示分拆产品分拆后的分拆项资源别名</p>
         :type ResourceName: str
-        :param _TreeNodeUniqKey: 分账单元唯一标识
+        :param _TreeNodeUniqKey: <p>分账单元唯一标识</p>
         :type TreeNodeUniqKey: str
-        :param _TreeNodeUniqKeyName: 分账单元名称
+        :param _TreeNodeUniqKeyName: <p>分账单元名称</p>
         :type TreeNodeUniqKeyName: str
-        :param _RuleId: 资源命中公摊规则ID
+        :param _RuleId: <p>资源命中公摊规则ID</p>
         :type RuleId: int
-        :param _RuleName: 资源命中公摊规则名称
+        :param _RuleName: <p>资源命中公摊规则名称</p>
         :type RuleName: str
-        :param _BusinessCode: 产品编码
+        :param _BusinessCode: <p>产品编码</p>
         :type BusinessCode: str
-        :param _BusinessCodeName: 产品名称：用户所采购的各类云产品
+        :param _BusinessCodeName: <p>产品名称：用户所采购的各类云产品</p>
         :type BusinessCodeName: str
-        :param _ItemCode: 组件名称编码
+        :param _ItemCode: <p>组件名称编码</p>
         :type ItemCode: str
-        :param _ItemCodeName: 组件名称：用户购买的产品或服务，所包含的具体组件
+        :param _ItemCodeName: <p>组件名称：用户购买的产品或服务，所包含的具体组件</p>
         :type ItemCodeName: str
-        :param _RegionId: 地域ID
+        :param _RegionId: <p>地域ID</p>
         :type RegionId: int
-        :param _RegionName: 地域名称：资源所属地域
+        :param _RegionName: <p>地域名称：资源所属地域</p>
         :type RegionName: str
-        :param _Tag: 分账标签：资源绑定的标签
+        :param _Tag: <p>分账标签：资源绑定的标签</p>
         :type Tag: list of BillTag
-        :param _RealTotalCost: 优惠后总价：优惠后总价 =（原价 - 预留实例抵扣原价 - 节省计划抵扣原价）* 折扣率
+        :param _RealTotalCost: <p>优惠后总价：优惠后总价 =（原价 - 预留实例抵扣原价 - 节省计划抵扣原价）* 折扣率</p>
         :type RealTotalCost: str
-        :param _CashPayAmount: 现金账户支出(元)：通过现金账户支付的金额
+        :param _CashPayAmount: <p>现金账户支出(元)：通过现金账户支付的金额</p>
         :type CashPayAmount: str
-        :param _VoucherPayAmount: 代金券支出(元)：使用各类优惠券（如代金券、现金券等）支付的金额
+        :param _VoucherPayAmount: <p>代金券支出(元)：使用各类优惠券（如代金券、现金券等）支付的金额</p>
         :type VoucherPayAmount: str
-        :param _IncentivePayAmount: 赠送账户支出(元)：使用赠送金支付的金额
+        :param _IncentivePayAmount: <p>赠送账户支出(元)：使用赠送金支付的金额</p>
         :type IncentivePayAmount: str
-        :param _TransferPayAmount: 分成账户支出(元)：通过分成金账户支付的金额
+        :param _TransferPayAmount: <p>分成账户支出(元)：通过分成金账户支付的金额</p>
         :type TransferPayAmount: str
-        :param _AllocationType: 费用归集类型：费用来源类型，分摊、归集、未分配
-0 - 分摊
-1 - 归集
--1 - 未分配
+        :param _AllocationType: <p>费用归集类型：费用来源类型，分摊、归集、未分配<br>0 - 分摊<br>1 - 归集<br>-1 - 未分配</p>
         :type AllocationType: int
-        :param _BelongTreeNodeUniqKey: 当前归属单元信息
+        :param _BelongTreeNodeUniqKey: <p>当前归属单元信息</p>
         :type BelongTreeNodeUniqKey: :class:`tencentcloud.billing.v20180709.models.AllocationTreeNode`
-        :param _BelongRule: 当前资源命中公摊规则信息
+        :param _BelongRule: <p>当前资源命中公摊规则信息</p>
         :type BelongRule: :class:`tencentcloud.billing.v20180709.models.AllocationRule`
-        :param _OtherTreeNodeUniqKeys: 其它归属单元信息
+        :param _OtherTreeNodeUniqKeys: <p>其它归属单元信息</p>
         :type OtherTreeNodeUniqKeys: list of AllocationTreeNode
-        :param _OtherRules: 其他命中规则信息
+        :param _OtherRules: <p>其他命中规则信息</p>
         :type OtherRules: list of AllocationRule
-        :param _ProjectId: 项目ID
+        :param _ProjectId: <p>项目ID</p>
         :type ProjectId: int
-        :param _ProjectName: 项目名称：资源归属的项目，用户在控制台给资源自主分配项目，未分配则是默认项目
+        :param _ProjectName: <p>项目名称：资源归属的项目，用户在控制台给资源自主分配项目，未分配则是默认项目</p>
         :type ProjectName: str
-        :param _ProductCode: 子产品编码
+        :param _ProductCode: <p>子产品编码</p>
         :type ProductCode: str
-        :param _ProductCodeName: 子产品名称：用户采购的具体产品细分类型
+        :param _ProductCodeName: <p>子产品名称：用户采购的具体产品细分类型</p>
         :type ProductCodeName: str
-        :param _PayMode: 计费模式编码
+        :param _PayMode: <p>计费模式编码</p>
         :type PayMode: str
-        :param _PayModeName: 计费模式：资源的计费模式，区分为包年包月和按量计费
+        :param _PayModeName: <p>计费模式：资源的计费模式，区分为包年包月和按量计费</p>
         :type PayModeName: str
-        :param _ActionType: 交易类型编码
+        :param _ActionType: <p>交易类型编码</p>
         :type ActionType: str
-        :param _ActionTypeName: 交易类型：明细交易类型
+        :param _ActionTypeName: <p>交易类型：明细交易类型</p>
         :type ActionTypeName: str
-        :param _SplitItemId: 分拆项 ID：涉及分拆产品的分拆后的分拆项 ID，如 COS 桶 ID，CDN 域名
+        :param _SplitItemId: <p>分拆项 ID：涉及分拆产品的分拆后的分拆项 ID，如 COS 桶 ID，CDN 域名</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type SplitItemId: str
-        :param _SplitItemName: 分拆项名称：涉及分拆产品的分拆后的分拆项
+        :param _SplitItemName: <p>分拆项名称：涉及分拆产品的分拆后的分拆项</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type SplitItemName: str
+        :param _EffectiveMode: <p>归集方式</p><p>枚举值：</p><ul><li>0： 未归集</li><li>1： 自动命中</li><li>2： 手动分配待生效</li><li>3： 手动分配已生效</li></ul>
+        :type EffectiveMode: str
         """
         self._PayerUin = None
         self._OwnerUin = None
@@ -29574,10 +29573,11 @@ class GatherResourceSummary(AbstractModel):
         self._ActionTypeName = None
         self._SplitItemId = None
         self._SplitItemName = None
+        self._EffectiveMode = None
 
     @property
     def PayerUin(self):
-        r"""支付者 UIN：支付者的账号 ID，账号 ID 是用户在腾讯云的唯一账号标识
+        r"""<p>支付者 UIN：支付者的账号 ID，账号 ID 是用户在腾讯云的唯一账号标识</p>
         :rtype: str
         """
         return self._PayerUin
@@ -29588,7 +29588,7 @@ class GatherResourceSummary(AbstractModel):
 
     @property
     def OwnerUin(self):
-        r"""使用者 UIN：实际使用资源的账号 ID
+        r"""<p>使用者 UIN：实际使用资源的账号 ID</p>
         :rtype: str
         """
         return self._OwnerUin
@@ -29599,7 +29599,7 @@ class GatherResourceSummary(AbstractModel):
 
     @property
     def OperateUin(self):
-        r"""操作者 UIN：操作者账号 ID（预付费资源下单或后付费操作开通资源账号的ID或者角色 ID）
+        r"""<p>操作者 UIN：操作者账号 ID（预付费资源下单或后付费操作开通资源账号的ID或者角色 ID）</p>
         :rtype: str
         """
         return self._OperateUin
@@ -29610,7 +29610,7 @@ class GatherResourceSummary(AbstractModel):
 
     @property
     def InstanceType(self):
-        r"""实例类型编码
+        r"""<p>实例类型编码</p>
         :rtype: str
         """
         return self._InstanceType
@@ -29621,7 +29621,7 @@ class GatherResourceSummary(AbstractModel):
 
     @property
     def InstanceTypeName(self):
-        r"""实例类型：购买的产品服务对应的实例类型，包括资源包、RI、SP、竞价实例。常规实例默认展示“-”
+        r"""<p>实例类型：购买的产品服务对应的实例类型，包括资源包、RI、SP、竞价实例。常规实例默认展示“-”</p>
         :rtype: str
         """
         return self._InstanceTypeName
@@ -29632,7 +29632,7 @@ class GatherResourceSummary(AbstractModel):
 
     @property
     def ResourceId(self):
-        r"""资源ID：不同产品因资源形态不同，资源内容不完全相同，如云服务器 CVM 为对应的实例 ID； 若该产品被分拆，则展示产品分拆后的分拆项 ID，如 COS 桶 ID，CDN 域名
+        r"""<p>资源ID：不同产品因资源形态不同，资源内容不完全相同，如云服务器 CVM 为对应的实例 ID； 若该产品被分拆，则展示产品分拆后的分拆项 ID，如 COS 桶 ID，CDN 域名</p>
         :rtype: str
         """
         return self._ResourceId
@@ -29643,7 +29643,7 @@ class GatherResourceSummary(AbstractModel):
 
     @property
     def ResourceName(self):
-        r"""实例名称：用户在控制台为资源设置的名称，如未设置默认为空；若该产品被分拆，则展示分拆产品分拆后的分拆项资源别名
+        r"""<p>实例名称：用户在控制台为资源设置的名称，如未设置默认为空；若该产品被分拆，则展示分拆产品分拆后的分拆项资源别名</p>
         :rtype: str
         """
         return self._ResourceName
@@ -29654,7 +29654,7 @@ class GatherResourceSummary(AbstractModel):
 
     @property
     def TreeNodeUniqKey(self):
-        r"""分账单元唯一标识
+        r"""<p>分账单元唯一标识</p>
         :rtype: str
         """
         return self._TreeNodeUniqKey
@@ -29665,7 +29665,7 @@ class GatherResourceSummary(AbstractModel):
 
     @property
     def TreeNodeUniqKeyName(self):
-        r"""分账单元名称
+        r"""<p>分账单元名称</p>
         :rtype: str
         """
         return self._TreeNodeUniqKeyName
@@ -29676,7 +29676,7 @@ class GatherResourceSummary(AbstractModel):
 
     @property
     def RuleId(self):
-        r"""资源命中公摊规则ID
+        r"""<p>资源命中公摊规则ID</p>
         :rtype: int
         """
         return self._RuleId
@@ -29687,7 +29687,7 @@ class GatherResourceSummary(AbstractModel):
 
     @property
     def RuleName(self):
-        r"""资源命中公摊规则名称
+        r"""<p>资源命中公摊规则名称</p>
         :rtype: str
         """
         return self._RuleName
@@ -29698,7 +29698,7 @@ class GatherResourceSummary(AbstractModel):
 
     @property
     def BusinessCode(self):
-        r"""产品编码
+        r"""<p>产品编码</p>
         :rtype: str
         """
         return self._BusinessCode
@@ -29709,7 +29709,7 @@ class GatherResourceSummary(AbstractModel):
 
     @property
     def BusinessCodeName(self):
-        r"""产品名称：用户所采购的各类云产品
+        r"""<p>产品名称：用户所采购的各类云产品</p>
         :rtype: str
         """
         return self._BusinessCodeName
@@ -29720,7 +29720,7 @@ class GatherResourceSummary(AbstractModel):
 
     @property
     def ItemCode(self):
-        r"""组件名称编码
+        r"""<p>组件名称编码</p>
         :rtype: str
         """
         return self._ItemCode
@@ -29731,7 +29731,7 @@ class GatherResourceSummary(AbstractModel):
 
     @property
     def ItemCodeName(self):
-        r"""组件名称：用户购买的产品或服务，所包含的具体组件
+        r"""<p>组件名称：用户购买的产品或服务，所包含的具体组件</p>
         :rtype: str
         """
         return self._ItemCodeName
@@ -29742,7 +29742,7 @@ class GatherResourceSummary(AbstractModel):
 
     @property
     def RegionId(self):
-        r"""地域ID
+        r"""<p>地域ID</p>
         :rtype: int
         """
         return self._RegionId
@@ -29753,7 +29753,7 @@ class GatherResourceSummary(AbstractModel):
 
     @property
     def RegionName(self):
-        r"""地域名称：资源所属地域
+        r"""<p>地域名称：资源所属地域</p>
         :rtype: str
         """
         return self._RegionName
@@ -29764,7 +29764,7 @@ class GatherResourceSummary(AbstractModel):
 
     @property
     def Tag(self):
-        r"""分账标签：资源绑定的标签
+        r"""<p>分账标签：资源绑定的标签</p>
         :rtype: list of BillTag
         """
         return self._Tag
@@ -29775,7 +29775,7 @@ class GatherResourceSummary(AbstractModel):
 
     @property
     def RealTotalCost(self):
-        r"""优惠后总价：优惠后总价 =（原价 - 预留实例抵扣原价 - 节省计划抵扣原价）* 折扣率
+        r"""<p>优惠后总价：优惠后总价 =（原价 - 预留实例抵扣原价 - 节省计划抵扣原价）* 折扣率</p>
         :rtype: str
         """
         return self._RealTotalCost
@@ -29786,7 +29786,7 @@ class GatherResourceSummary(AbstractModel):
 
     @property
     def CashPayAmount(self):
-        r"""现金账户支出(元)：通过现金账户支付的金额
+        r"""<p>现金账户支出(元)：通过现金账户支付的金额</p>
         :rtype: str
         """
         return self._CashPayAmount
@@ -29797,7 +29797,7 @@ class GatherResourceSummary(AbstractModel):
 
     @property
     def VoucherPayAmount(self):
-        r"""代金券支出(元)：使用各类优惠券（如代金券、现金券等）支付的金额
+        r"""<p>代金券支出(元)：使用各类优惠券（如代金券、现金券等）支付的金额</p>
         :rtype: str
         """
         return self._VoucherPayAmount
@@ -29808,7 +29808,7 @@ class GatherResourceSummary(AbstractModel):
 
     @property
     def IncentivePayAmount(self):
-        r"""赠送账户支出(元)：使用赠送金支付的金额
+        r"""<p>赠送账户支出(元)：使用赠送金支付的金额</p>
         :rtype: str
         """
         return self._IncentivePayAmount
@@ -29819,7 +29819,7 @@ class GatherResourceSummary(AbstractModel):
 
     @property
     def TransferPayAmount(self):
-        r"""分成账户支出(元)：通过分成金账户支付的金额
+        r"""<p>分成账户支出(元)：通过分成金账户支付的金额</p>
         :rtype: str
         """
         return self._TransferPayAmount
@@ -29830,10 +29830,7 @@ class GatherResourceSummary(AbstractModel):
 
     @property
     def AllocationType(self):
-        r"""费用归集类型：费用来源类型，分摊、归集、未分配
-0 - 分摊
-1 - 归集
--1 - 未分配
+        r"""<p>费用归集类型：费用来源类型，分摊、归集、未分配<br>0 - 分摊<br>1 - 归集<br>-1 - 未分配</p>
         :rtype: int
         """
         return self._AllocationType
@@ -29844,7 +29841,7 @@ class GatherResourceSummary(AbstractModel):
 
     @property
     def BelongTreeNodeUniqKey(self):
-        r"""当前归属单元信息
+        r"""<p>当前归属单元信息</p>
         :rtype: :class:`tencentcloud.billing.v20180709.models.AllocationTreeNode`
         """
         return self._BelongTreeNodeUniqKey
@@ -29855,7 +29852,7 @@ class GatherResourceSummary(AbstractModel):
 
     @property
     def BelongRule(self):
-        r"""当前资源命中公摊规则信息
+        r"""<p>当前资源命中公摊规则信息</p>
         :rtype: :class:`tencentcloud.billing.v20180709.models.AllocationRule`
         """
         return self._BelongRule
@@ -29866,7 +29863,7 @@ class GatherResourceSummary(AbstractModel):
 
     @property
     def OtherTreeNodeUniqKeys(self):
-        r"""其它归属单元信息
+        r"""<p>其它归属单元信息</p>
         :rtype: list of AllocationTreeNode
         """
         return self._OtherTreeNodeUniqKeys
@@ -29877,7 +29874,7 @@ class GatherResourceSummary(AbstractModel):
 
     @property
     def OtherRules(self):
-        r"""其他命中规则信息
+        r"""<p>其他命中规则信息</p>
         :rtype: list of AllocationRule
         """
         return self._OtherRules
@@ -29888,7 +29885,7 @@ class GatherResourceSummary(AbstractModel):
 
     @property
     def ProjectId(self):
-        r"""项目ID
+        r"""<p>项目ID</p>
         :rtype: int
         """
         return self._ProjectId
@@ -29899,7 +29896,7 @@ class GatherResourceSummary(AbstractModel):
 
     @property
     def ProjectName(self):
-        r"""项目名称：资源归属的项目，用户在控制台给资源自主分配项目，未分配则是默认项目
+        r"""<p>项目名称：资源归属的项目，用户在控制台给资源自主分配项目，未分配则是默认项目</p>
         :rtype: str
         """
         return self._ProjectName
@@ -29910,7 +29907,7 @@ class GatherResourceSummary(AbstractModel):
 
     @property
     def ProductCode(self):
-        r"""子产品编码
+        r"""<p>子产品编码</p>
         :rtype: str
         """
         return self._ProductCode
@@ -29921,7 +29918,7 @@ class GatherResourceSummary(AbstractModel):
 
     @property
     def ProductCodeName(self):
-        r"""子产品名称：用户采购的具体产品细分类型
+        r"""<p>子产品名称：用户采购的具体产品细分类型</p>
         :rtype: str
         """
         return self._ProductCodeName
@@ -29932,7 +29929,7 @@ class GatherResourceSummary(AbstractModel):
 
     @property
     def PayMode(self):
-        r"""计费模式编码
+        r"""<p>计费模式编码</p>
         :rtype: str
         """
         return self._PayMode
@@ -29943,7 +29940,7 @@ class GatherResourceSummary(AbstractModel):
 
     @property
     def PayModeName(self):
-        r"""计费模式：资源的计费模式，区分为包年包月和按量计费
+        r"""<p>计费模式：资源的计费模式，区分为包年包月和按量计费</p>
         :rtype: str
         """
         return self._PayModeName
@@ -29954,7 +29951,7 @@ class GatherResourceSummary(AbstractModel):
 
     @property
     def ActionType(self):
-        r"""交易类型编码
+        r"""<p>交易类型编码</p>
         :rtype: str
         """
         return self._ActionType
@@ -29965,7 +29962,7 @@ class GatherResourceSummary(AbstractModel):
 
     @property
     def ActionTypeName(self):
-        r"""交易类型：明细交易类型
+        r"""<p>交易类型：明细交易类型</p>
         :rtype: str
         """
         return self._ActionTypeName
@@ -29978,7 +29975,7 @@ class GatherResourceSummary(AbstractModel):
     def SplitItemId(self):
         warnings.warn("parameter `SplitItemId` is deprecated", DeprecationWarning) 
 
-        r"""分拆项 ID：涉及分拆产品的分拆后的分拆项 ID，如 COS 桶 ID，CDN 域名
+        r"""<p>分拆项 ID：涉及分拆产品的分拆后的分拆项 ID，如 COS 桶 ID，CDN 域名</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -29994,7 +29991,7 @@ class GatherResourceSummary(AbstractModel):
     def SplitItemName(self):
         warnings.warn("parameter `SplitItemName` is deprecated", DeprecationWarning) 
 
-        r"""分拆项名称：涉及分拆产品的分拆后的分拆项
+        r"""<p>分拆项名称：涉及分拆产品的分拆后的分拆项</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -30005,6 +30002,17 @@ class GatherResourceSummary(AbstractModel):
         warnings.warn("parameter `SplitItemName` is deprecated", DeprecationWarning) 
 
         self._SplitItemName = SplitItemName
+
+    @property
+    def EffectiveMode(self):
+        r"""<p>归集方式</p><p>枚举值：</p><ul><li>0： 未归集</li><li>1： 自动命中</li><li>2： 手动分配待生效</li><li>3： 手动分配已生效</li></ul>
+        :rtype: str
+        """
+        return self._EffectiveMode
+
+    @EffectiveMode.setter
+    def EffectiveMode(self, EffectiveMode):
+        self._EffectiveMode = EffectiveMode
 
 
     def _deserialize(self, params):
@@ -30065,6 +30073,7 @@ class GatherResourceSummary(AbstractModel):
         self._ActionTypeName = params.get("ActionTypeName")
         self._SplitItemId = params.get("SplitItemId")
         self._SplitItemName = params.get("SplitItemName")
+        self._EffectiveMode = params.get("EffectiveMode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

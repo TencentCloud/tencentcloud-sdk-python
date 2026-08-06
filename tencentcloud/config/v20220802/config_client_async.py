@@ -601,6 +601,24 @@ class ConfigClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def ListAggregateConfigRuleResourceEvaluationResults(
+            self,
+            request: models.ListAggregateConfigRuleResourceEvaluationResultsRequest,
+            opts: Dict = None,
+    ) -> models.ListAggregateConfigRuleResourceEvaluationResultsResponse:
+        """
+        账号组查询配置规则资源评估结果列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ListAggregateConfigRuleResourceEvaluationResults"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ListAggregateConfigRuleResourceEvaluationResultsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ListAggregateConfigRules(
             self,
             request: models.ListAggregateConfigRulesRequest,
@@ -704,6 +722,24 @@ class ConfigClient(AbstractClient):
         kwargs["action"] = "ListConfigRuleEvaluationResults"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ListConfigRuleEvaluationResultsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ListConfigRuleResourceEvaluationResults(
+            self,
+            request: models.ListConfigRuleResourceEvaluationResultsRequest,
+            opts: Dict = None,
+    ) -> models.ListConfigRuleResourceEvaluationResultsResponse:
+        """
+        查询配置规则资源评估结果列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ListConfigRuleResourceEvaluationResults"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ListConfigRuleResourceEvaluationResultsResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

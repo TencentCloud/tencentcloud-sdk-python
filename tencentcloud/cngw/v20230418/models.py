@@ -9336,6 +9336,137 @@ class DeleteCloudNativeAPIGatewaySecretKeyResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeCNGWServicesWithRoutesRequest(AbstractModel):
+    r"""DescribeCNGWServicesWithRoutes请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GatewayId: <p>网关ID</p>
+        :type GatewayId: str
+        :param _Limit: <p>列表数量</p>
+        :type Limit: int
+        :param _Offset: <p>列表 offset</p>
+        :type Offset: int
+        :param _Filters: <p>过滤条件，多个过滤条件之间是与的关系，支持 name,upstreamType</p>
+        :type Filters: list of ListFilter
+        """
+        self._GatewayId = None
+        self._Limit = None
+        self._Offset = None
+        self._Filters = None
+
+    @property
+    def GatewayId(self):
+        r"""<p>网关ID</p>
+        :rtype: str
+        """
+        return self._GatewayId
+
+    @GatewayId.setter
+    def GatewayId(self, GatewayId):
+        self._GatewayId = GatewayId
+
+    @property
+    def Limit(self):
+        r"""<p>列表数量</p>
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        r"""<p>列表 offset</p>
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Filters(self):
+        r"""<p>过滤条件，多个过滤条件之间是与的关系，支持 name,upstreamType</p>
+        :rtype: list of ListFilter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+
+    def _deserialize(self, params):
+        self._GatewayId = params.get("GatewayId")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = ListFilter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCNGWServicesWithRoutesResponse(AbstractModel):
+    r"""DescribeCNGWServicesWithRoutes返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: <p>服务及路由查询结果</p>
+        :type Result: :class:`tencentcloud.cngw.v20230418.models.KongServiceWithRoutes`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        r"""<p>服务及路由查询结果</p>
+        :rtype: :class:`tencentcloud.cngw.v20230418.models.KongServiceWithRoutes`
+        """
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self._Result = KongServiceWithRoutes()
+            self._Result._deserialize(params.get("Result"))
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeCloudNativeAPIGatewayConsumerGroupRequest(AbstractModel):
     r"""DescribeCloudNativeAPIGatewayConsumerGroup请求参数结构体
 
@@ -11506,6 +11637,57 @@ class Filter(AbstractModel):
         
 
 
+class KVMapping(AbstractModel):
+    r"""键值对
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Key: 键值映射的键
+        :type Key: str
+        :param _Value: 键值映射的值
+        :type Value: str
+        """
+        self._Key = None
+        self._Value = None
+
+    @property
+    def Key(self):
+        r"""键值映射的键
+        :rtype: str
+        """
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Value(self):
+        r"""键值映射的值
+        :rtype: str
+        """
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+
+    def _deserialize(self, params):
+        self._Key = params.get("Key")
+        self._Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class KeyValue(AbstractModel):
     r"""Key/Value结构
 
@@ -11547,6 +11729,1167 @@ class KeyValue(AbstractModel):
     def _deserialize(self, params):
         self._Key = params.get("Key")
         self._Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class KongRoutePreview(AbstractModel):
+    r"""云原生网关路由信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ID: <p>服务ID</p>
+        :type ID: str
+        :param _Name: <p>服务名字</p>
+        :type Name: str
+        :param _Methods: <p>请求方法列表</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Methods: list of str
+        :param _Paths: <p>路由Paths列表</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Paths: list of str
+        :param _Hosts: <p>路由Hosts列表</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Hosts: list of str
+        :param _Protocols: <p>协议列表</p>
+        :type Protocols: list of str
+        :param _PreserveHost: <p>是否保留Host头</p>
+        :type PreserveHost: bool
+        :param _HttpsRedirectStatusCode: <p>HTTPS重定向状态码</p>
+        :type HttpsRedirectStatusCode: int
+        :param _StripPath: <p>是否去除路径前缀</p>
+        :type StripPath: bool
+        :param _CreatedTime: <p>创建时间</p>
+        :type CreatedTime: str
+        :param _ForceHttps: <p>强制转换 https</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ForceHttps: bool
+        :param _ServiceName: <p>服务名</p>
+        :type ServiceName: str
+        :param _ServiceID: <p>服务ID</p>
+        :type ServiceID: str
+        :param _DestinationPorts: <p>目的端口</p>
+        :type DestinationPorts: list of int non-negative
+        :param _Headers: <p>headers</p>
+        :type Headers: list of KVMapping
+        :param _RequestBuffering: <p>是否缓存请求body，默认true</p>
+        :type RequestBuffering: bool
+        :param _ResponseBuffering: <p>是否缓存响应body，默认true</p>
+        :type ResponseBuffering: bool
+        :param _RegexPriority: <p>正则优先级</p>
+        :type RegexPriority: int
+        :param _QueryStringParameters: <p>querystring参数</p>
+        :type QueryStringParameters: list of KVMapping
+        :param _RouteSource: <p>路由来源</p>
+        :type RouteSource: str
+        """
+        self._ID = None
+        self._Name = None
+        self._Methods = None
+        self._Paths = None
+        self._Hosts = None
+        self._Protocols = None
+        self._PreserveHost = None
+        self._HttpsRedirectStatusCode = None
+        self._StripPath = None
+        self._CreatedTime = None
+        self._ForceHttps = None
+        self._ServiceName = None
+        self._ServiceID = None
+        self._DestinationPorts = None
+        self._Headers = None
+        self._RequestBuffering = None
+        self._ResponseBuffering = None
+        self._RegexPriority = None
+        self._QueryStringParameters = None
+        self._RouteSource = None
+
+    @property
+    def ID(self):
+        r"""<p>服务ID</p>
+        :rtype: str
+        """
+        return self._ID
+
+    @ID.setter
+    def ID(self, ID):
+        self._ID = ID
+
+    @property
+    def Name(self):
+        r"""<p>服务名字</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Methods(self):
+        r"""<p>请求方法列表</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._Methods
+
+    @Methods.setter
+    def Methods(self, Methods):
+        self._Methods = Methods
+
+    @property
+    def Paths(self):
+        r"""<p>路由Paths列表</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._Paths
+
+    @Paths.setter
+    def Paths(self, Paths):
+        self._Paths = Paths
+
+    @property
+    def Hosts(self):
+        r"""<p>路由Hosts列表</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._Hosts
+
+    @Hosts.setter
+    def Hosts(self, Hosts):
+        self._Hosts = Hosts
+
+    @property
+    def Protocols(self):
+        r"""<p>协议列表</p>
+        :rtype: list of str
+        """
+        return self._Protocols
+
+    @Protocols.setter
+    def Protocols(self, Protocols):
+        self._Protocols = Protocols
+
+    @property
+    def PreserveHost(self):
+        r"""<p>是否保留Host头</p>
+        :rtype: bool
+        """
+        return self._PreserveHost
+
+    @PreserveHost.setter
+    def PreserveHost(self, PreserveHost):
+        self._PreserveHost = PreserveHost
+
+    @property
+    def HttpsRedirectStatusCode(self):
+        r"""<p>HTTPS重定向状态码</p>
+        :rtype: int
+        """
+        return self._HttpsRedirectStatusCode
+
+    @HttpsRedirectStatusCode.setter
+    def HttpsRedirectStatusCode(self, HttpsRedirectStatusCode):
+        self._HttpsRedirectStatusCode = HttpsRedirectStatusCode
+
+    @property
+    def StripPath(self):
+        r"""<p>是否去除路径前缀</p>
+        :rtype: bool
+        """
+        return self._StripPath
+
+    @StripPath.setter
+    def StripPath(self, StripPath):
+        self._StripPath = StripPath
+
+    @property
+    def CreatedTime(self):
+        r"""<p>创建时间</p>
+        :rtype: str
+        """
+        return self._CreatedTime
+
+    @CreatedTime.setter
+    def CreatedTime(self, CreatedTime):
+        self._CreatedTime = CreatedTime
+
+    @property
+    def ForceHttps(self):
+        warnings.warn("parameter `ForceHttps` is deprecated", DeprecationWarning) 
+
+        r"""<p>强制转换 https</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._ForceHttps
+
+    @ForceHttps.setter
+    def ForceHttps(self, ForceHttps):
+        warnings.warn("parameter `ForceHttps` is deprecated", DeprecationWarning) 
+
+        self._ForceHttps = ForceHttps
+
+    @property
+    def ServiceName(self):
+        r"""<p>服务名</p>
+        :rtype: str
+        """
+        return self._ServiceName
+
+    @ServiceName.setter
+    def ServiceName(self, ServiceName):
+        self._ServiceName = ServiceName
+
+    @property
+    def ServiceID(self):
+        r"""<p>服务ID</p>
+        :rtype: str
+        """
+        return self._ServiceID
+
+    @ServiceID.setter
+    def ServiceID(self, ServiceID):
+        self._ServiceID = ServiceID
+
+    @property
+    def DestinationPorts(self):
+        r"""<p>目的端口</p>
+        :rtype: list of int non-negative
+        """
+        return self._DestinationPorts
+
+    @DestinationPorts.setter
+    def DestinationPorts(self, DestinationPorts):
+        self._DestinationPorts = DestinationPorts
+
+    @property
+    def Headers(self):
+        r"""<p>headers</p>
+        :rtype: list of KVMapping
+        """
+        return self._Headers
+
+    @Headers.setter
+    def Headers(self, Headers):
+        self._Headers = Headers
+
+    @property
+    def RequestBuffering(self):
+        r"""<p>是否缓存请求body，默认true</p>
+        :rtype: bool
+        """
+        return self._RequestBuffering
+
+    @RequestBuffering.setter
+    def RequestBuffering(self, RequestBuffering):
+        self._RequestBuffering = RequestBuffering
+
+    @property
+    def ResponseBuffering(self):
+        r"""<p>是否缓存响应body，默认true</p>
+        :rtype: bool
+        """
+        return self._ResponseBuffering
+
+    @ResponseBuffering.setter
+    def ResponseBuffering(self, ResponseBuffering):
+        self._ResponseBuffering = ResponseBuffering
+
+    @property
+    def RegexPriority(self):
+        r"""<p>正则优先级</p>
+        :rtype: int
+        """
+        return self._RegexPriority
+
+    @RegexPriority.setter
+    def RegexPriority(self, RegexPriority):
+        self._RegexPriority = RegexPriority
+
+    @property
+    def QueryStringParameters(self):
+        r"""<p>querystring参数</p>
+        :rtype: list of KVMapping
+        """
+        return self._QueryStringParameters
+
+    @QueryStringParameters.setter
+    def QueryStringParameters(self, QueryStringParameters):
+        self._QueryStringParameters = QueryStringParameters
+
+    @property
+    def RouteSource(self):
+        r"""<p>路由来源</p>
+        :rtype: str
+        """
+        return self._RouteSource
+
+    @RouteSource.setter
+    def RouteSource(self, RouteSource):
+        self._RouteSource = RouteSource
+
+
+    def _deserialize(self, params):
+        self._ID = params.get("ID")
+        self._Name = params.get("Name")
+        self._Methods = params.get("Methods")
+        self._Paths = params.get("Paths")
+        self._Hosts = params.get("Hosts")
+        self._Protocols = params.get("Protocols")
+        self._PreserveHost = params.get("PreserveHost")
+        self._HttpsRedirectStatusCode = params.get("HttpsRedirectStatusCode")
+        self._StripPath = params.get("StripPath")
+        self._CreatedTime = params.get("CreatedTime")
+        self._ForceHttps = params.get("ForceHttps")
+        self._ServiceName = params.get("ServiceName")
+        self._ServiceID = params.get("ServiceID")
+        self._DestinationPorts = params.get("DestinationPorts")
+        if params.get("Headers") is not None:
+            self._Headers = []
+            for item in params.get("Headers"):
+                obj = KVMapping()
+                obj._deserialize(item)
+                self._Headers.append(obj)
+        self._RequestBuffering = params.get("RequestBuffering")
+        self._ResponseBuffering = params.get("ResponseBuffering")
+        self._RegexPriority = params.get("RegexPriority")
+        if params.get("QueryStringParameters") is not None:
+            self._QueryStringParameters = []
+            for item in params.get("QueryStringParameters"):
+                obj = KVMapping()
+                obj._deserialize(item)
+                self._QueryStringParameters.append(obj)
+        self._RouteSource = params.get("RouteSource")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class KongServicePreview(AbstractModel):
+    r"""云原生网关服务预览信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ID: 服务ID
+        :type ID: str
+        :param _CreatedTime: 创建时间
+        :type CreatedTime: str
+        :param _Editable: 是否可编辑
+        :type Editable: bool
+        :param _Name: 服务名字
+        :type Name: str
+        :param _Path: 请求路径
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Path: str
+        :param _Tags: 标签
+        :type Tags: list of str
+        :param _UpstreamInfo: 后端配置
+        :type UpstreamInfo: :class:`tencentcloud.cngw.v20230418.models.KongUpstreamInfo`
+        :param _UpstreamType: 后端类型
+        :type UpstreamType: str
+        """
+        self._ID = None
+        self._CreatedTime = None
+        self._Editable = None
+        self._Name = None
+        self._Path = None
+        self._Tags = None
+        self._UpstreamInfo = None
+        self._UpstreamType = None
+
+    @property
+    def ID(self):
+        r"""服务ID
+        :rtype: str
+        """
+        return self._ID
+
+    @ID.setter
+    def ID(self, ID):
+        self._ID = ID
+
+    @property
+    def CreatedTime(self):
+        r"""创建时间
+        :rtype: str
+        """
+        return self._CreatedTime
+
+    @CreatedTime.setter
+    def CreatedTime(self, CreatedTime):
+        self._CreatedTime = CreatedTime
+
+    @property
+    def Editable(self):
+        r"""是否可编辑
+        :rtype: bool
+        """
+        return self._Editable
+
+    @Editable.setter
+    def Editable(self, Editable):
+        self._Editable = Editable
+
+    @property
+    def Name(self):
+        r"""服务名字
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Path(self):
+        r"""请求路径
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Path
+
+    @Path.setter
+    def Path(self, Path):
+        self._Path = Path
+
+    @property
+    def Tags(self):
+        r"""标签
+        :rtype: list of str
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def UpstreamInfo(self):
+        r"""后端配置
+        :rtype: :class:`tencentcloud.cngw.v20230418.models.KongUpstreamInfo`
+        """
+        return self._UpstreamInfo
+
+    @UpstreamInfo.setter
+    def UpstreamInfo(self, UpstreamInfo):
+        self._UpstreamInfo = UpstreamInfo
+
+    @property
+    def UpstreamType(self):
+        r"""后端类型
+        :rtype: str
+        """
+        return self._UpstreamType
+
+    @UpstreamType.setter
+    def UpstreamType(self, UpstreamType):
+        self._UpstreamType = UpstreamType
+
+
+    def _deserialize(self, params):
+        self._ID = params.get("ID")
+        self._CreatedTime = params.get("CreatedTime")
+        self._Editable = params.get("Editable")
+        self._Name = params.get("Name")
+        self._Path = params.get("Path")
+        self._Tags = params.get("Tags")
+        if params.get("UpstreamInfo") is not None:
+            self._UpstreamInfo = KongUpstreamInfo()
+            self._UpstreamInfo._deserialize(params.get("UpstreamInfo"))
+        self._UpstreamType = params.get("UpstreamType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class KongServiceRoute(AbstractModel):
+    r"""kong实例的服务和路由列表
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Service: <p>服务信息</p>
+        :type Service: :class:`tencentcloud.cngw.v20230418.models.KongServicePreview`
+        :param _RouteTotalCount: <p>路由总数</p>
+        :type RouteTotalCount: int
+        :param _RouteHasMore: <p>是否还有更多路由</p>
+        :type RouteHasMore: bool
+        :param _Routes: <p>路由列表</p>
+        :type Routes: list of KongRoutePreview
+        """
+        self._Service = None
+        self._RouteTotalCount = None
+        self._RouteHasMore = None
+        self._Routes = None
+
+    @property
+    def Service(self):
+        r"""<p>服务信息</p>
+        :rtype: :class:`tencentcloud.cngw.v20230418.models.KongServicePreview`
+        """
+        return self._Service
+
+    @Service.setter
+    def Service(self, Service):
+        self._Service = Service
+
+    @property
+    def RouteTotalCount(self):
+        r"""<p>路由总数</p>
+        :rtype: int
+        """
+        return self._RouteTotalCount
+
+    @RouteTotalCount.setter
+    def RouteTotalCount(self, RouteTotalCount):
+        self._RouteTotalCount = RouteTotalCount
+
+    @property
+    def RouteHasMore(self):
+        r"""<p>是否还有更多路由</p>
+        :rtype: bool
+        """
+        return self._RouteHasMore
+
+    @RouteHasMore.setter
+    def RouteHasMore(self, RouteHasMore):
+        self._RouteHasMore = RouteHasMore
+
+    @property
+    def Routes(self):
+        r"""<p>路由列表</p>
+        :rtype: list of KongRoutePreview
+        """
+        return self._Routes
+
+    @Routes.setter
+    def Routes(self, Routes):
+        self._Routes = Routes
+
+
+    def _deserialize(self, params):
+        if params.get("Service") is not None:
+            self._Service = KongServicePreview()
+            self._Service._deserialize(params.get("Service"))
+        self._RouteTotalCount = params.get("RouteTotalCount")
+        self._RouteHasMore = params.get("RouteHasMore")
+        if params.get("Routes") is not None:
+            self._Routes = []
+            for item in params.get("Routes"):
+                obj = KongRoutePreview()
+                obj._deserialize(item)
+                self._Routes.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class KongServiceWithRoutes(AbstractModel):
+    r"""返回kong的服务和路由列表
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ServiceList: 服务及路由列表
+        :type ServiceList: list of KongServiceRoute
+        :param _TotalCount: 总数
+        :type TotalCount: int
+        """
+        self._ServiceList = None
+        self._TotalCount = None
+
+    @property
+    def ServiceList(self):
+        r"""服务及路由列表
+        :rtype: list of KongServiceRoute
+        """
+        return self._ServiceList
+
+    @ServiceList.setter
+    def ServiceList(self, ServiceList):
+        self._ServiceList = ServiceList
+
+    @property
+    def TotalCount(self):
+        r"""总数
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+
+    def _deserialize(self, params):
+        if params.get("ServiceList") is not None:
+            self._ServiceList = []
+            for item in params.get("ServiceList"):
+                obj = KongServiceRoute()
+                obj._deserialize(item)
+                self._ServiceList.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class KongTarget(AbstractModel):
+    r"""Kong Upstream中的Target
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Host: 目标主机地址
+        :type Host: str
+        :param _Port: 端口
+        :type Port: int
+        :param _Weight: 权重
+        :type Weight: int
+        :param _CreatedTime: 创建时间
+        :type CreatedTime: str
+        :param _CvmInstanceId: CVM实例ID
+        :type CvmInstanceId: str
+        :param _CvmInstanceName: CVM实例名称
+        :type CvmInstanceName: str
+        :param _Health: 健康状态
+        :type Health: str
+        :param _Source: Target的来源
+        :type Source: str
+        :param _Tags: target标签
+        :type Tags: list of str
+        """
+        self._Host = None
+        self._Port = None
+        self._Weight = None
+        self._CreatedTime = None
+        self._CvmInstanceId = None
+        self._CvmInstanceName = None
+        self._Health = None
+        self._Source = None
+        self._Tags = None
+
+    @property
+    def Host(self):
+        r"""目标主机地址
+        :rtype: str
+        """
+        return self._Host
+
+    @Host.setter
+    def Host(self, Host):
+        self._Host = Host
+
+    @property
+    def Port(self):
+        r"""端口
+        :rtype: int
+        """
+        return self._Port
+
+    @Port.setter
+    def Port(self, Port):
+        self._Port = Port
+
+    @property
+    def Weight(self):
+        r"""权重
+        :rtype: int
+        """
+        return self._Weight
+
+    @Weight.setter
+    def Weight(self, Weight):
+        self._Weight = Weight
+
+    @property
+    def CreatedTime(self):
+        r"""创建时间
+        :rtype: str
+        """
+        return self._CreatedTime
+
+    @CreatedTime.setter
+    def CreatedTime(self, CreatedTime):
+        self._CreatedTime = CreatedTime
+
+    @property
+    def CvmInstanceId(self):
+        r"""CVM实例ID
+        :rtype: str
+        """
+        return self._CvmInstanceId
+
+    @CvmInstanceId.setter
+    def CvmInstanceId(self, CvmInstanceId):
+        self._CvmInstanceId = CvmInstanceId
+
+    @property
+    def CvmInstanceName(self):
+        r"""CVM实例名称
+        :rtype: str
+        """
+        return self._CvmInstanceName
+
+    @CvmInstanceName.setter
+    def CvmInstanceName(self, CvmInstanceName):
+        self._CvmInstanceName = CvmInstanceName
+
+    @property
+    def Health(self):
+        r"""健康状态
+        :rtype: str
+        """
+        return self._Health
+
+    @Health.setter
+    def Health(self, Health):
+        self._Health = Health
+
+    @property
+    def Source(self):
+        r"""Target的来源
+        :rtype: str
+        """
+        return self._Source
+
+    @Source.setter
+    def Source(self, Source):
+        self._Source = Source
+
+    @property
+    def Tags(self):
+        r"""target标签
+        :rtype: list of str
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+
+    def _deserialize(self, params):
+        self._Host = params.get("Host")
+        self._Port = params.get("Port")
+        self._Weight = params.get("Weight")
+        self._CreatedTime = params.get("CreatedTime")
+        self._CvmInstanceId = params.get("CvmInstanceId")
+        self._CvmInstanceName = params.get("CvmInstanceName")
+        self._Health = params.get("Health")
+        self._Source = params.get("Source")
+        self._Tags = params.get("Tags")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class KongUpstreamInfo(AbstractModel):
+    r"""服务的后端配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Algorithm: 负载均衡算法，默认为 round-robin，还支持 least-connections，consisten_hashing
+        :type Algorithm: str
+        :param _AutoScalingCvmPort: CVM弹性伸缩组端口
+        :type AutoScalingCvmPort: int
+        :param _AutoScalingGroupID: CVM弹性伸缩组ID
+        :type AutoScalingGroupID: str
+        :param _AutoScalingHookStatus: CVM弹性伸缩组生命周期挂钩状态
+        :type AutoScalingHookStatus: str
+        :param _AutoScalingTatCmdStatus: CVM弹性伸缩组使用的CVM TAT命令状态
+        :type AutoScalingTatCmdStatus: str
+        :param _HealthStatus: upstream健康状态HEALTHY（健康）, UNHEALTHY（异常）, HEALTHCHECKS_OFF（未开启）和NONE（不支持健康检查）
+        :type HealthStatus: str
+        :param _Host: IP或域名
+        :type Host: str
+        :param _Namespace: 命名空间
+        :type Namespace: str
+        :param _Port: 端口
+        :type Port: int
+        :param _RealSourceType: 精确的服务来源类型，新建服务来源时候传入的类型
+        :type RealSourceType: str
+        :param _ScfCamAuthEnable: 云函数是否开启CAM鉴权，不填时默认为开启(true)
+        :type ScfCamAuthEnable: bool
+        :param _ScfIsBase64Encoded: 云函数是否开启Base64编码，默认为false
+        :type ScfIsBase64Encoded: bool
+        :param _ScfIsIntegratedResponse: 云函数是否开启响应集成，默认为false
+        :type ScfIsIntegratedResponse: bool
+        :param _ScfLambdaName: SCF函数名
+        :type ScfLambdaName: str
+        :param _ScfLambdaQualifier: SCF函数版本
+        :type ScfLambdaQualifier: str
+        :param _ScfNamespace: SCF函数命名空间
+        :type ScfNamespace: str
+        :param _ScfType: SCF函数类型
+        :type ScfType: str
+        :param _ServiceName: 服务（注册中心或Kubernetes中的服务）名字
+        :type ServiceName: str
+        :param _SlowStart: 冷启动时间，单位秒
+        :type SlowStart: int
+        :param _SourceID: 服务来源ID
+        :type SourceID: str
+        :param _SourceName: 服务来源的名字
+        :type SourceName: str
+        :param _SourceType: 服务来源类型
+        :type SourceType: str
+        :param _Targets: 服务后端类型是IPList时提供
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Targets: list of KongTarget
+        """
+        self._Algorithm = None
+        self._AutoScalingCvmPort = None
+        self._AutoScalingGroupID = None
+        self._AutoScalingHookStatus = None
+        self._AutoScalingTatCmdStatus = None
+        self._HealthStatus = None
+        self._Host = None
+        self._Namespace = None
+        self._Port = None
+        self._RealSourceType = None
+        self._ScfCamAuthEnable = None
+        self._ScfIsBase64Encoded = None
+        self._ScfIsIntegratedResponse = None
+        self._ScfLambdaName = None
+        self._ScfLambdaQualifier = None
+        self._ScfNamespace = None
+        self._ScfType = None
+        self._ServiceName = None
+        self._SlowStart = None
+        self._SourceID = None
+        self._SourceName = None
+        self._SourceType = None
+        self._Targets = None
+
+    @property
+    def Algorithm(self):
+        r"""负载均衡算法，默认为 round-robin，还支持 least-connections，consisten_hashing
+        :rtype: str
+        """
+        return self._Algorithm
+
+    @Algorithm.setter
+    def Algorithm(self, Algorithm):
+        self._Algorithm = Algorithm
+
+    @property
+    def AutoScalingCvmPort(self):
+        r"""CVM弹性伸缩组端口
+        :rtype: int
+        """
+        return self._AutoScalingCvmPort
+
+    @AutoScalingCvmPort.setter
+    def AutoScalingCvmPort(self, AutoScalingCvmPort):
+        self._AutoScalingCvmPort = AutoScalingCvmPort
+
+    @property
+    def AutoScalingGroupID(self):
+        r"""CVM弹性伸缩组ID
+        :rtype: str
+        """
+        return self._AutoScalingGroupID
+
+    @AutoScalingGroupID.setter
+    def AutoScalingGroupID(self, AutoScalingGroupID):
+        self._AutoScalingGroupID = AutoScalingGroupID
+
+    @property
+    def AutoScalingHookStatus(self):
+        r"""CVM弹性伸缩组生命周期挂钩状态
+        :rtype: str
+        """
+        return self._AutoScalingHookStatus
+
+    @AutoScalingHookStatus.setter
+    def AutoScalingHookStatus(self, AutoScalingHookStatus):
+        self._AutoScalingHookStatus = AutoScalingHookStatus
+
+    @property
+    def AutoScalingTatCmdStatus(self):
+        r"""CVM弹性伸缩组使用的CVM TAT命令状态
+        :rtype: str
+        """
+        return self._AutoScalingTatCmdStatus
+
+    @AutoScalingTatCmdStatus.setter
+    def AutoScalingTatCmdStatus(self, AutoScalingTatCmdStatus):
+        self._AutoScalingTatCmdStatus = AutoScalingTatCmdStatus
+
+    @property
+    def HealthStatus(self):
+        r"""upstream健康状态HEALTHY（健康）, UNHEALTHY（异常）, HEALTHCHECKS_OFF（未开启）和NONE（不支持健康检查）
+        :rtype: str
+        """
+        return self._HealthStatus
+
+    @HealthStatus.setter
+    def HealthStatus(self, HealthStatus):
+        self._HealthStatus = HealthStatus
+
+    @property
+    def Host(self):
+        r"""IP或域名
+        :rtype: str
+        """
+        return self._Host
+
+    @Host.setter
+    def Host(self, Host):
+        self._Host = Host
+
+    @property
+    def Namespace(self):
+        r"""命名空间
+        :rtype: str
+        """
+        return self._Namespace
+
+    @Namespace.setter
+    def Namespace(self, Namespace):
+        self._Namespace = Namespace
+
+    @property
+    def Port(self):
+        r"""端口
+        :rtype: int
+        """
+        return self._Port
+
+    @Port.setter
+    def Port(self, Port):
+        self._Port = Port
+
+    @property
+    def RealSourceType(self):
+        r"""精确的服务来源类型，新建服务来源时候传入的类型
+        :rtype: str
+        """
+        return self._RealSourceType
+
+    @RealSourceType.setter
+    def RealSourceType(self, RealSourceType):
+        self._RealSourceType = RealSourceType
+
+    @property
+    def ScfCamAuthEnable(self):
+        r"""云函数是否开启CAM鉴权，不填时默认为开启(true)
+        :rtype: bool
+        """
+        return self._ScfCamAuthEnable
+
+    @ScfCamAuthEnable.setter
+    def ScfCamAuthEnable(self, ScfCamAuthEnable):
+        self._ScfCamAuthEnable = ScfCamAuthEnable
+
+    @property
+    def ScfIsBase64Encoded(self):
+        r"""云函数是否开启Base64编码，默认为false
+        :rtype: bool
+        """
+        return self._ScfIsBase64Encoded
+
+    @ScfIsBase64Encoded.setter
+    def ScfIsBase64Encoded(self, ScfIsBase64Encoded):
+        self._ScfIsBase64Encoded = ScfIsBase64Encoded
+
+    @property
+    def ScfIsIntegratedResponse(self):
+        r"""云函数是否开启响应集成，默认为false
+        :rtype: bool
+        """
+        return self._ScfIsIntegratedResponse
+
+    @ScfIsIntegratedResponse.setter
+    def ScfIsIntegratedResponse(self, ScfIsIntegratedResponse):
+        self._ScfIsIntegratedResponse = ScfIsIntegratedResponse
+
+    @property
+    def ScfLambdaName(self):
+        r"""SCF函数名
+        :rtype: str
+        """
+        return self._ScfLambdaName
+
+    @ScfLambdaName.setter
+    def ScfLambdaName(self, ScfLambdaName):
+        self._ScfLambdaName = ScfLambdaName
+
+    @property
+    def ScfLambdaQualifier(self):
+        r"""SCF函数版本
+        :rtype: str
+        """
+        return self._ScfLambdaQualifier
+
+    @ScfLambdaQualifier.setter
+    def ScfLambdaQualifier(self, ScfLambdaQualifier):
+        self._ScfLambdaQualifier = ScfLambdaQualifier
+
+    @property
+    def ScfNamespace(self):
+        r"""SCF函数命名空间
+        :rtype: str
+        """
+        return self._ScfNamespace
+
+    @ScfNamespace.setter
+    def ScfNamespace(self, ScfNamespace):
+        self._ScfNamespace = ScfNamespace
+
+    @property
+    def ScfType(self):
+        r"""SCF函数类型
+        :rtype: str
+        """
+        return self._ScfType
+
+    @ScfType.setter
+    def ScfType(self, ScfType):
+        self._ScfType = ScfType
+
+    @property
+    def ServiceName(self):
+        r"""服务（注册中心或Kubernetes中的服务）名字
+        :rtype: str
+        """
+        return self._ServiceName
+
+    @ServiceName.setter
+    def ServiceName(self, ServiceName):
+        self._ServiceName = ServiceName
+
+    @property
+    def SlowStart(self):
+        r"""冷启动时间，单位秒
+        :rtype: int
+        """
+        return self._SlowStart
+
+    @SlowStart.setter
+    def SlowStart(self, SlowStart):
+        self._SlowStart = SlowStart
+
+    @property
+    def SourceID(self):
+        r"""服务来源ID
+        :rtype: str
+        """
+        return self._SourceID
+
+    @SourceID.setter
+    def SourceID(self, SourceID):
+        self._SourceID = SourceID
+
+    @property
+    def SourceName(self):
+        r"""服务来源的名字
+        :rtype: str
+        """
+        return self._SourceName
+
+    @SourceName.setter
+    def SourceName(self, SourceName):
+        self._SourceName = SourceName
+
+    @property
+    def SourceType(self):
+        r"""服务来源类型
+        :rtype: str
+        """
+        return self._SourceType
+
+    @SourceType.setter
+    def SourceType(self, SourceType):
+        self._SourceType = SourceType
+
+    @property
+    def Targets(self):
+        r"""服务后端类型是IPList时提供
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of KongTarget
+        """
+        return self._Targets
+
+    @Targets.setter
+    def Targets(self, Targets):
+        self._Targets = Targets
+
+
+    def _deserialize(self, params):
+        self._Algorithm = params.get("Algorithm")
+        self._AutoScalingCvmPort = params.get("AutoScalingCvmPort")
+        self._AutoScalingGroupID = params.get("AutoScalingGroupID")
+        self._AutoScalingHookStatus = params.get("AutoScalingHookStatus")
+        self._AutoScalingTatCmdStatus = params.get("AutoScalingTatCmdStatus")
+        self._HealthStatus = params.get("HealthStatus")
+        self._Host = params.get("Host")
+        self._Namespace = params.get("Namespace")
+        self._Port = params.get("Port")
+        self._RealSourceType = params.get("RealSourceType")
+        self._ScfCamAuthEnable = params.get("ScfCamAuthEnable")
+        self._ScfIsBase64Encoded = params.get("ScfIsBase64Encoded")
+        self._ScfIsIntegratedResponse = params.get("ScfIsIntegratedResponse")
+        self._ScfLambdaName = params.get("ScfLambdaName")
+        self._ScfLambdaQualifier = params.get("ScfLambdaQualifier")
+        self._ScfNamespace = params.get("ScfNamespace")
+        self._ScfType = params.get("ScfType")
+        self._ServiceName = params.get("ServiceName")
+        self._SlowStart = params.get("SlowStart")
+        self._SourceID = params.get("SourceID")
+        self._SourceName = params.get("SourceName")
+        self._SourceType = params.get("SourceType")
+        if params.get("Targets") is not None:
+            self._Targets = []
+            for item in params.get("Targets"):
+                obj = KongTarget()
+                obj._deserialize(item)
+                self._Targets.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -11659,6 +13002,57 @@ class ListCloudNativeAPIGatewayLLMModelService(AbstractModel):
                 obj = CloudNativeAPIGatewayLLMModelService()
                 obj._deserialize(item)
                 self._DataList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ListFilter(AbstractModel):
+    r"""列表过滤条件，模糊匹配
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Key: 过滤字段
+        :type Key: str
+        :param _Value: 过滤值
+        :type Value: str
+        """
+        self._Key = None
+        self._Value = None
+
+    @property
+    def Key(self):
+        r"""过滤字段
+        :rtype: str
+        """
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Value(self):
+        r"""过滤值
+        :rtype: str
+        """
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+
+    def _deserialize(self, params):
+        self._Key = params.get("Key")
+        self._Value = params.get("Value")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -331,6 +331,24 @@ class CngwClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeCNGWServicesWithRoutes(
+            self,
+            request: models.DescribeCNGWServicesWithRoutesRequest,
+            opts: Dict = None,
+    ) -> models.DescribeCNGWServicesWithRoutesResponse:
+        """
+        查询云原生网关服务和路由列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeCNGWServicesWithRoutes"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeCNGWServicesWithRoutesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeCloudNativeAPIGatewayConsumer(
             self,
             request: models.DescribeCloudNativeAPIGatewayConsumerRequest,

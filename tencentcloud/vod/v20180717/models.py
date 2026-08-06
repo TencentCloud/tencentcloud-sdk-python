@@ -15213,9 +15213,21 @@ class AigcVideoTaskUsage(AbstractModel):
         :type InputTokens: int
         :param _ThoughtTokens: <p>思考产生的 Token 数目。</p>
         :type ThoughtTokens: int
+        :param _InputImageCount: <p>输入图片数目。</p>
+        :type InputImageCount: int
+        :param _InputSeconds: <p>输入视频的时长。</p><p>单位：秒。</p>
+        :type InputSeconds: int
+        :param _OutputSeconds: <p>输出视频时长。</p><p>单位：秒。</p>
+        :type OutputSeconds: int
+        :param _TotalSeconds: <p>输入输出总时长。</p><p>默认值：秒。</p>
+        :type TotalSeconds: int
         """
         self._InputTokens = None
         self._ThoughtTokens = None
+        self._InputImageCount = None
+        self._InputSeconds = None
+        self._OutputSeconds = None
+        self._TotalSeconds = None
 
     @property
     def InputTokens(self):
@@ -15239,10 +15251,58 @@ class AigcVideoTaskUsage(AbstractModel):
     def ThoughtTokens(self, ThoughtTokens):
         self._ThoughtTokens = ThoughtTokens
 
+    @property
+    def InputImageCount(self):
+        r"""<p>输入图片数目。</p>
+        :rtype: int
+        """
+        return self._InputImageCount
+
+    @InputImageCount.setter
+    def InputImageCount(self, InputImageCount):
+        self._InputImageCount = InputImageCount
+
+    @property
+    def InputSeconds(self):
+        r"""<p>输入视频的时长。</p><p>单位：秒。</p>
+        :rtype: int
+        """
+        return self._InputSeconds
+
+    @InputSeconds.setter
+    def InputSeconds(self, InputSeconds):
+        self._InputSeconds = InputSeconds
+
+    @property
+    def OutputSeconds(self):
+        r"""<p>输出视频时长。</p><p>单位：秒。</p>
+        :rtype: int
+        """
+        return self._OutputSeconds
+
+    @OutputSeconds.setter
+    def OutputSeconds(self, OutputSeconds):
+        self._OutputSeconds = OutputSeconds
+
+    @property
+    def TotalSeconds(self):
+        r"""<p>输入输出总时长。</p><p>默认值：秒。</p>
+        :rtype: int
+        """
+        return self._TotalSeconds
+
+    @TotalSeconds.setter
+    def TotalSeconds(self, TotalSeconds):
+        self._TotalSeconds = TotalSeconds
+
 
     def _deserialize(self, params):
         self._InputTokens = params.get("InputTokens")
         self._ThoughtTokens = params.get("ThoughtTokens")
+        self._InputImageCount = params.get("InputImageCount")
+        self._InputSeconds = params.get("InputSeconds")
+        self._OutputSeconds = params.get("OutputSeconds")
+        self._TotalSeconds = params.get("TotalSeconds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -24361,11 +24421,11 @@ class CreateAigcImageTaskRequest(AbstractModel):
         r"""
         :param _SubAppId: <p><b>点播<a href="https://cloud.tencent.com/document/product/266/14574">应用</a> ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</b></p>
         :type SubAppId: int
-        :param _ModelName: <p>模型名称。取值：</p><li>OG</li><li>GG</li><li>SI</li><li>Qwen</li><li>Hunyuan</li><li>Vidu</li><li>Kling</li>
+        :param _ModelName: <p>模型名称。取值：</p><li>OG</li><li>GG</li><li>Hunyuan</li><li>Vidu</li><li>Kling</li>
         :type ModelName: str
-        :param _ModelVersion: <p>模型版本。取值：</p><li>当 ModelName 是 OG，可选值为 image2_low、image2_medium、image2_high；</li><li>当 ModelName 是 GG，可选值为 2.5、3.0、3.1；</li><li>当 ModelName 是 Jimeng，可选值为 4.0；</li><li>当 ModelName 是 SI，可选值为 4.0、4.5、5.0-lite；</li><li>当 ModelName 是 Qwen，可选值为 0925；</li><li>当 ModelName 是 Hunyuan，可选值为 3.0；</li><li>当 ModelName 是 Vidu，可选值为 q2；</li><li>当 ModelName 是 Kling，可选值为 2.1、3.0、3.0-Omni、O1、scene；</li>
+        :param _ModelVersion: <p>模型版本。取值：</p><li>当 ModelName 是 OG，可选值为 image2_low、image2_medium、image2_high；</li><li>当 ModelName 是 GG，可选值为 2.5、3.0、3.1；</li><li>当 ModelName 是 Hunyuan，可选值为 3.0；</li><li>当 ModelName 是 Vidu，可选值为 q2；</li><li>当 ModelName 是 Kling，可选值为 2.1、3.0、3.0-Omni、O1、scene；</li>
         :type ModelVersion: str
-        :param _FileInfos: <p>AIGC 生图任务的输入图片的文件信息。各模型支持最大参考图数量：</p><ul><li>GG 2.5： 3张；</li><li>GG 3.0：14张；</li><li>GG 3.1：14张；</li><li>Kling 2.1：4张；</li><li>Kling 3.0：1张；</li><li>Kling 3.0-Omni：10张；</li><li>Kling O1：10张；</li><li>SI 4.0：14张；</li><li>SI 4.5：14张；</li><li>SI 5.0-lite：14张；</li><li>Vidu q2：7张；</li><li>Hunyuan 3.0：3张；</li><li>Qwen 0925：1张；</li><li>MJ v7：3张。</li></ul>
+        :param _FileInfos: <p>AIGC 生图任务的输入图片的文件信息。各模型支持最大参考图数量：</p><ul><li>GG 2.5： 3张；</li><li>GG 3.0：14张；</li><li>GG 3.1：14张；</li><li>Kling 2.1：4张；</li><li>Kling 3.0：1张；</li><li>Kling 3.0-Omni：10张；</li><li>Kling O1：10张；</li><li>Vidu q2：7张；</li><li>Hunyuan 3.0：3张；</li></ul>
         :type FileInfos: list of AigcImageTaskInputFileInfo
         :param _Prompt: <p>生成图片的提示词。当 FileInfos 为空时，此参数必填。</p>
         :type Prompt: str
@@ -24387,7 +24447,7 @@ class CreateAigcImageTaskRequest(AbstractModel):
         :type SessionContext: str
         :param _TasksPriority: <p>任务的优先级，数值越大优先级越高，取值范围是 -10 到 10，不填代表 0。</p>
         :type TasksPriority: int
-        :param _ExtInfo: <p>保留字段，特殊用途时使用。</p><ul><li><p>Hunyuan 3.0</p><ul><li>支持自由设置分辨率宽高，宽、高均在 [512, 2048] 像素范围内，宽高乘积 ≤ 1024x1024 像素。示例：<code>{&quot;AdditionalParameters&quot;: &quot;{\&quot;size\&quot;:\&quot;728x1024\&quot;}&quot;}</code></li></ul></li><li><p>SI 系列</p><ul><li>支持自由设置分辨率宽高：<ul><li>SI 4.0：合法总像素范围 [1280x720=921600, 4096x4096=16777216]，示例：<code>{&quot;AdditionalParameters&quot;: &quot;{\&quot;size\&quot;:\&quot;728x1356\&quot;}&quot;}</code></li><li>SI 4.5：合法总像素范围 [2560x1440=3686400, 4096x4096=16777216]，示例：<code>{&quot;AdditionalParameters&quot;: &quot;{\&quot;size\&quot;:\&quot;2560x1440\&quot;}&quot;}</code></li><li>SI 5.0-lite：合法总像素范围 [2560x1440=3686400, 3072x3072x1.1025=10404496]，示例：<code>{&quot;AdditionalParameters&quot;: &quot;{\&quot;size\&quot;:\&quot;2560x1440\&quot;}&quot;}</code></li></ul></li><li>可用于开启输出多张图像，示例：<code>{&quot;AdditionalParameters&quot;: &quot;{\&quot;sequential_image_generation\&quot;:\&quot;auto\&quot;}&quot;}</code>。除此之外，还需要在<code>Prompt</code>中说明需要输出图片张数，如：输出3张图片。</li></ul></li><li><p>Qwen 0925</p><ul><li>支持自由设置分辨率宽高，合法总像素范围 [512x512=261632, 2048x2048=4194304]。示例：<code>{&quot;AdditionalParameters&quot;: &quot;{\&quot;size\&quot;:\&quot;728*1024\&quot;}&quot;}</code></li></ul></li><li><p>OG</p><ul><li>支持自由设置分辨率宽高：<ul><li>计算像素大小，需要被16整除</li><li>总像素数必须至少为655,360，且不得超过 8,294,400</li><li>示例：<code>{&quot;AdditionalParameters&quot;: &quot;{\&quot;size\&quot;:\&quot;728*1024\&quot;}&quot;}</code></li></ul></li><li>支持设置透明图层：<ul><li>示例：<code>{&quot;AdditionalParameters&quot;: &quot;{\&quot;background\&quot;:\&quot;transparent\&quot;}&quot;}</code></li></ul></li></ul></li><li><p>Kling</p><ul><li>支持设置扩图参数，示例：<code>{AdditionalParameters&quot;:&quot;{\&quot;down_expansion_ratio\&quot;:0.2,\&quot;left_expansion_ratio\&quot;:0.3,\&quot;right_expansion_ratio\&quot;:0.4,\&quot;up_expansion_ratio\&quot;:0.1}}</code><ul><li>通用约束：<ul><li>取值范围：[0, 2]；</li><li>新图片整体面积不得超过原图片的 3 倍；</li><li>可以通过 <code>Prompt</code> 字段传入正向提示词。</li><li>示例说明：<ul><li>up_expansion_ratio：向上扩充范围，基于原图高度的倍数计算。若原图高 20，参数值为 0.1，则原图顶边距离新图顶边为 20 × 0.1 = 2，该区域为扩图范围。</li><li>down_expansion_ratio：向下扩充范围，基于原图高度的倍数计算。若原图高 20，参数值为 0.2，则原图底边距离新图底边为 20 × 0.2 = 4，该区域为扩图范围。</li><li>left_expansion_ratio：向左扩充范围，基于原图宽度的倍数计算。若原图宽 30，参数值为 0.3，则原图左边距离新图左边为 30 × 0.3 = 9，该区域为扩图范围。</li><li>right_expansion_ratio：向右扩充范围，基于原图宽度的倍数计算。若原图宽 30，参数值为 0.4，则原图右边距离新图右边为 30 × 0.4 = 12，该区域为扩图范围。</li></ul></li></ul></li></ul></li></ul></li></ul>
+        :param _ExtInfo: <p>保留字段，特殊用途时使用。</p><ul><li><p>Hunyuan 3.0</p><ul><li>支持自由设置分辨率宽高，宽、高均在 [512, 2048] 像素范围内，宽高乘积 ≤ 1024x1024 像素。示例：<code>{&quot;AdditionalParameters&quot;: &quot;{\&quot;size\&quot;:\&quot;728x1024\&quot;}&quot;}</code></li></ul></li><li><p>OG</p><ul><li>支持自由设置分辨率宽高：<ul><li>计算像素大小，需要被16整除</li><li>总像素数必须至少为655,360，且不得超过 8,294,400</li><li>示例：<code>{&quot;AdditionalParameters&quot;: &quot;{\&quot;size\&quot;:\&quot;728*1024\&quot;}&quot;}</code></li></ul></li><li>支持设置透明图层：<ul><li>示例：<code>{&quot;AdditionalParameters&quot;: &quot;{\&quot;background\&quot;:\&quot;transparent\&quot;}&quot;}</code></li></ul></li></ul></li><li><p>Kling</p><ul><li>支持设置扩图参数，示例：<code>{AdditionalParameters&quot;:&quot;{\&quot;down_expansion_ratio\&quot;:0.2,\&quot;left_expansion_ratio\&quot;:0.3,\&quot;right_expansion_ratio\&quot;:0.4,\&quot;up_expansion_ratio\&quot;:0.1}}</code><ul><li>通用约束：<ul><li>取值范围：[0, 2]；</li><li>新图片整体面积不得超过原图片的 3 倍；</li><li>可以通过 <code>Prompt</code> 字段传入正向提示词。</li><li>示例说明：<ul><li>up_expansion_ratio：向上扩充范围，基于原图高度的倍数计算。若原图高 20，参数值为 0.1，则原图顶边距离新图顶边为 20 × 0.1 = 2，该区域为扩图范围。</li><li>down_expansion_ratio：向下扩充范围，基于原图高度的倍数计算。若原图高 20，参数值为 0.2，则原图底边距离新图底边为 20 × 0.2 = 4，该区域为扩图范围。</li><li>left_expansion_ratio：向左扩充范围，基于原图宽度的倍数计算。若原图宽 30，参数值为 0.3，则原图左边距离新图左边为 30 × 0.3 = 9，该区域为扩图范围。</li><li>right_expansion_ratio：向右扩充范围，基于原图宽度的倍数计算。若原图宽 30，参数值为 0.4，则原图右边距离新图右边为 30 × 0.4 = 12，该区域为扩图范围。</li></ul></li></ul></li></ul></li></ul></li></ul>
         :type ExtInfo: str
         """
         self._SubAppId = None
@@ -24419,7 +24479,7 @@ class CreateAigcImageTaskRequest(AbstractModel):
 
     @property
     def ModelName(self):
-        r"""<p>模型名称。取值：</p><li>OG</li><li>GG</li><li>SI</li><li>Qwen</li><li>Hunyuan</li><li>Vidu</li><li>Kling</li>
+        r"""<p>模型名称。取值：</p><li>OG</li><li>GG</li><li>Hunyuan</li><li>Vidu</li><li>Kling</li>
         :rtype: str
         """
         return self._ModelName
@@ -24430,7 +24490,7 @@ class CreateAigcImageTaskRequest(AbstractModel):
 
     @property
     def ModelVersion(self):
-        r"""<p>模型版本。取值：</p><li>当 ModelName 是 OG，可选值为 image2_low、image2_medium、image2_high；</li><li>当 ModelName 是 GG，可选值为 2.5、3.0、3.1；</li><li>当 ModelName 是 Jimeng，可选值为 4.0；</li><li>当 ModelName 是 SI，可选值为 4.0、4.5、5.0-lite；</li><li>当 ModelName 是 Qwen，可选值为 0925；</li><li>当 ModelName 是 Hunyuan，可选值为 3.0；</li><li>当 ModelName 是 Vidu，可选值为 q2；</li><li>当 ModelName 是 Kling，可选值为 2.1、3.0、3.0-Omni、O1、scene；</li>
+        r"""<p>模型版本。取值：</p><li>当 ModelName 是 OG，可选值为 image2_low、image2_medium、image2_high；</li><li>当 ModelName 是 GG，可选值为 2.5、3.0、3.1；</li><li>当 ModelName 是 Hunyuan，可选值为 3.0；</li><li>当 ModelName 是 Vidu，可选值为 q2；</li><li>当 ModelName 是 Kling，可选值为 2.1、3.0、3.0-Omni、O1、scene；</li>
         :rtype: str
         """
         return self._ModelVersion
@@ -24441,7 +24501,7 @@ class CreateAigcImageTaskRequest(AbstractModel):
 
     @property
     def FileInfos(self):
-        r"""<p>AIGC 生图任务的输入图片的文件信息。各模型支持最大参考图数量：</p><ul><li>GG 2.5： 3张；</li><li>GG 3.0：14张；</li><li>GG 3.1：14张；</li><li>Kling 2.1：4张；</li><li>Kling 3.0：1张；</li><li>Kling 3.0-Omni：10张；</li><li>Kling O1：10张；</li><li>SI 4.0：14张；</li><li>SI 4.5：14张；</li><li>SI 5.0-lite：14张；</li><li>Vidu q2：7张；</li><li>Hunyuan 3.0：3张；</li><li>Qwen 0925：1张；</li><li>MJ v7：3张。</li></ul>
+        r"""<p>AIGC 生图任务的输入图片的文件信息。各模型支持最大参考图数量：</p><ul><li>GG 2.5： 3张；</li><li>GG 3.0：14张；</li><li>GG 3.1：14张；</li><li>Kling 2.1：4张；</li><li>Kling 3.0：1张；</li><li>Kling 3.0-Omni：10张；</li><li>Kling O1：10张；</li><li>Vidu q2：7张；</li><li>Hunyuan 3.0：3张；</li></ul>
         :rtype: list of AigcImageTaskInputFileInfo
         """
         return self._FileInfos
@@ -24562,7 +24622,7 @@ class CreateAigcImageTaskRequest(AbstractModel):
 
     @property
     def ExtInfo(self):
-        r"""<p>保留字段，特殊用途时使用。</p><ul><li><p>Hunyuan 3.0</p><ul><li>支持自由设置分辨率宽高，宽、高均在 [512, 2048] 像素范围内，宽高乘积 ≤ 1024x1024 像素。示例：<code>{&quot;AdditionalParameters&quot;: &quot;{\&quot;size\&quot;:\&quot;728x1024\&quot;}&quot;}</code></li></ul></li><li><p>SI 系列</p><ul><li>支持自由设置分辨率宽高：<ul><li>SI 4.0：合法总像素范围 [1280x720=921600, 4096x4096=16777216]，示例：<code>{&quot;AdditionalParameters&quot;: &quot;{\&quot;size\&quot;:\&quot;728x1356\&quot;}&quot;}</code></li><li>SI 4.5：合法总像素范围 [2560x1440=3686400, 4096x4096=16777216]，示例：<code>{&quot;AdditionalParameters&quot;: &quot;{\&quot;size\&quot;:\&quot;2560x1440\&quot;}&quot;}</code></li><li>SI 5.0-lite：合法总像素范围 [2560x1440=3686400, 3072x3072x1.1025=10404496]，示例：<code>{&quot;AdditionalParameters&quot;: &quot;{\&quot;size\&quot;:\&quot;2560x1440\&quot;}&quot;}</code></li></ul></li><li>可用于开启输出多张图像，示例：<code>{&quot;AdditionalParameters&quot;: &quot;{\&quot;sequential_image_generation\&quot;:\&quot;auto\&quot;}&quot;}</code>。除此之外，还需要在<code>Prompt</code>中说明需要输出图片张数，如：输出3张图片。</li></ul></li><li><p>Qwen 0925</p><ul><li>支持自由设置分辨率宽高，合法总像素范围 [512x512=261632, 2048x2048=4194304]。示例：<code>{&quot;AdditionalParameters&quot;: &quot;{\&quot;size\&quot;:\&quot;728*1024\&quot;}&quot;}</code></li></ul></li><li><p>OG</p><ul><li>支持自由设置分辨率宽高：<ul><li>计算像素大小，需要被16整除</li><li>总像素数必须至少为655,360，且不得超过 8,294,400</li><li>示例：<code>{&quot;AdditionalParameters&quot;: &quot;{\&quot;size\&quot;:\&quot;728*1024\&quot;}&quot;}</code></li></ul></li><li>支持设置透明图层：<ul><li>示例：<code>{&quot;AdditionalParameters&quot;: &quot;{\&quot;background\&quot;:\&quot;transparent\&quot;}&quot;}</code></li></ul></li></ul></li><li><p>Kling</p><ul><li>支持设置扩图参数，示例：<code>{AdditionalParameters&quot;:&quot;{\&quot;down_expansion_ratio\&quot;:0.2,\&quot;left_expansion_ratio\&quot;:0.3,\&quot;right_expansion_ratio\&quot;:0.4,\&quot;up_expansion_ratio\&quot;:0.1}}</code><ul><li>通用约束：<ul><li>取值范围：[0, 2]；</li><li>新图片整体面积不得超过原图片的 3 倍；</li><li>可以通过 <code>Prompt</code> 字段传入正向提示词。</li><li>示例说明：<ul><li>up_expansion_ratio：向上扩充范围，基于原图高度的倍数计算。若原图高 20，参数值为 0.1，则原图顶边距离新图顶边为 20 × 0.1 = 2，该区域为扩图范围。</li><li>down_expansion_ratio：向下扩充范围，基于原图高度的倍数计算。若原图高 20，参数值为 0.2，则原图底边距离新图底边为 20 × 0.2 = 4，该区域为扩图范围。</li><li>left_expansion_ratio：向左扩充范围，基于原图宽度的倍数计算。若原图宽 30，参数值为 0.3，则原图左边距离新图左边为 30 × 0.3 = 9，该区域为扩图范围。</li><li>right_expansion_ratio：向右扩充范围，基于原图宽度的倍数计算。若原图宽 30，参数值为 0.4，则原图右边距离新图右边为 30 × 0.4 = 12，该区域为扩图范围。</li></ul></li></ul></li></ul></li></ul></li></ul>
+        r"""<p>保留字段，特殊用途时使用。</p><ul><li><p>Hunyuan 3.0</p><ul><li>支持自由设置分辨率宽高，宽、高均在 [512, 2048] 像素范围内，宽高乘积 ≤ 1024x1024 像素。示例：<code>{&quot;AdditionalParameters&quot;: &quot;{\&quot;size\&quot;:\&quot;728x1024\&quot;}&quot;}</code></li></ul></li><li><p>OG</p><ul><li>支持自由设置分辨率宽高：<ul><li>计算像素大小，需要被16整除</li><li>总像素数必须至少为655,360，且不得超过 8,294,400</li><li>示例：<code>{&quot;AdditionalParameters&quot;: &quot;{\&quot;size\&quot;:\&quot;728*1024\&quot;}&quot;}</code></li></ul></li><li>支持设置透明图层：<ul><li>示例：<code>{&quot;AdditionalParameters&quot;: &quot;{\&quot;background\&quot;:\&quot;transparent\&quot;}&quot;}</code></li></ul></li></ul></li><li><p>Kling</p><ul><li>支持设置扩图参数，示例：<code>{AdditionalParameters&quot;:&quot;{\&quot;down_expansion_ratio\&quot;:0.2,\&quot;left_expansion_ratio\&quot;:0.3,\&quot;right_expansion_ratio\&quot;:0.4,\&quot;up_expansion_ratio\&quot;:0.1}}</code><ul><li>通用约束：<ul><li>取值范围：[0, 2]；</li><li>新图片整体面积不得超过原图片的 3 倍；</li><li>可以通过 <code>Prompt</code> 字段传入正向提示词。</li><li>示例说明：<ul><li>up_expansion_ratio：向上扩充范围，基于原图高度的倍数计算。若原图高 20，参数值为 0.1，则原图顶边距离新图顶边为 20 × 0.1 = 2，该区域为扩图范围。</li><li>down_expansion_ratio：向下扩充范围，基于原图高度的倍数计算。若原图高 20，参数值为 0.2，则原图底边距离新图底边为 20 × 0.2 = 4，该区域为扩图范围。</li><li>left_expansion_ratio：向左扩充范围，基于原图宽度的倍数计算。若原图宽 30，参数值为 0.3，则原图左边距离新图左边为 30 × 0.3 = 9，该区域为扩图范围。</li><li>right_expansion_ratio：向右扩充范围，基于原图宽度的倍数计算。若原图宽 30，参数值为 0.4，则原图右边距离新图右边为 30 × 0.4 = 12，该区域为扩图范围。</li></ul></li></ul></li></ul></li></ul></li></ul>
         :rtype: str
         """
         return self._ExtInfo
@@ -79871,29 +79931,11 @@ class ProductInstanceResource(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ResourceType: 资源类型。
-<li>Storage：存储资源包。</li>
-<li>Traffic：流量资源包。</li>
-<li>Transcode：普通转码资源包。</li>
-<li>TESHD：极速高清转码资源包。</li>
-<li>Review：音视频审核转码资源包。</li>
-<li>MediaProcess：媒体处理时长资源包。</li>
+        :param _ResourceType: <p>资源类型。</p><p>枚举值：</p><ul><li>Storage： 存储资源</li><li>Traffic： 流量资源</li><li>Transcode： 转码资源</li><li>TESHD： 极速高清转码资源</li><li>Review： 音视频审核资源</li><li>MediaProcess： 媒体处理资源</li><li>MLLMMediaProcess： 大模型媒体处理资源</li></ul>
         :type ResourceType: str
-        :param _Amount: 资源包额度。
-<li>音视频存储资源包，单位为字节。</li>
-<li>音视频转码资源包，单位为秒。</li>
-<li>音视频审核资源包，单位为秒。</li>
-<li>音视频极速高清资源包，单位为秒。</li>
-<li>音视频加速资源包，单位为字节。</li>
-<li>媒体处理时长资源包，单位为秒。</li>
+        :param _Amount: <p>资源包额度。</p><li>音视频存储资源包，单位为字节。</li><li>音视频转码资源包，单位为秒。</li><li>音视频审核资源包，单位为秒。</li><li>音视频极速高清资源包，单位为秒。</li><li>音视频加速资源包，单位为字节。</li><li>媒体处理时长资源包，单位为秒。</li>
         :type Amount: int
-        :param _Left: 资源包余量。
-<li>音视频存储资源包，单位为字节。</li>
-<li>音视频转码资源包，单位为秒。</li>
-<li>音视频审核资源包，单位为秒。</li>
-<li>音视频极速高清资源包，单位为秒。</li>
-<li>音视频加速资源包，单位为字节。</li>
-<li>媒体处理时长资源包，单位为秒。</li>
+        :param _Left: <p>资源包余量。</p><li>音视频存储资源包，单位为字节。</li><li>音视频转码资源包，单位为秒。</li><li>音视频审核资源包，单位为秒。</li><li>音视频极速高清资源包，单位为秒。</li><li>音视频加速资源包，单位为字节。</li><li>媒体处理时长资源包，单位为秒。</li>
         :type Left: int
         """
         self._ResourceType = None
@@ -79902,13 +79944,7 @@ class ProductInstanceResource(AbstractModel):
 
     @property
     def ResourceType(self):
-        r"""资源类型。
-<li>Storage：存储资源包。</li>
-<li>Traffic：流量资源包。</li>
-<li>Transcode：普通转码资源包。</li>
-<li>TESHD：极速高清转码资源包。</li>
-<li>Review：音视频审核转码资源包。</li>
-<li>MediaProcess：媒体处理时长资源包。</li>
+        r"""<p>资源类型。</p><p>枚举值：</p><ul><li>Storage： 存储资源</li><li>Traffic： 流量资源</li><li>Transcode： 转码资源</li><li>TESHD： 极速高清转码资源</li><li>Review： 音视频审核资源</li><li>MediaProcess： 媒体处理资源</li><li>MLLMMediaProcess： 大模型媒体处理资源</li></ul>
         :rtype: str
         """
         return self._ResourceType
@@ -79919,13 +79955,7 @@ class ProductInstanceResource(AbstractModel):
 
     @property
     def Amount(self):
-        r"""资源包额度。
-<li>音视频存储资源包，单位为字节。</li>
-<li>音视频转码资源包，单位为秒。</li>
-<li>音视频审核资源包，单位为秒。</li>
-<li>音视频极速高清资源包，单位为秒。</li>
-<li>音视频加速资源包，单位为字节。</li>
-<li>媒体处理时长资源包，单位为秒。</li>
+        r"""<p>资源包额度。</p><li>音视频存储资源包，单位为字节。</li><li>音视频转码资源包，单位为秒。</li><li>音视频审核资源包，单位为秒。</li><li>音视频极速高清资源包，单位为秒。</li><li>音视频加速资源包，单位为字节。</li><li>媒体处理时长资源包，单位为秒。</li>
         :rtype: int
         """
         return self._Amount
@@ -79936,13 +79966,7 @@ class ProductInstanceResource(AbstractModel):
 
     @property
     def Left(self):
-        r"""资源包余量。
-<li>音视频存储资源包，单位为字节。</li>
-<li>音视频转码资源包，单位为秒。</li>
-<li>音视频审核资源包，单位为秒。</li>
-<li>音视频极速高清资源包，单位为秒。</li>
-<li>音视频加速资源包，单位为字节。</li>
-<li>媒体处理时长资源包，单位为秒。</li>
+        r"""<p>资源包余量。</p><li>音视频存储资源包，单位为字节。</li><li>音视频转码资源包，单位为秒。</li><li>音视频审核资源包，单位为秒。</li><li>音视频极速高清资源包，单位为秒。</li><li>音视频加速资源包，单位为字节。</li><li>媒体处理时长资源包，单位为秒。</li>
         :rtype: int
         """
         return self._Left

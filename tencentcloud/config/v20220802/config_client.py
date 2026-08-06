@@ -762,6 +762,29 @@ class ConfigClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ListAggregateConfigRuleResourceEvaluationResults(self, request):
+        r"""账号组查询配置规则资源评估结果列表
+
+        :param request: Request instance for ListAggregateConfigRuleResourceEvaluationResults.
+        :type request: :class:`tencentcloud.config.v20220802.models.ListAggregateConfigRuleResourceEvaluationResultsRequest`
+        :rtype: :class:`tencentcloud.config.v20220802.models.ListAggregateConfigRuleResourceEvaluationResultsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ListAggregateConfigRuleResourceEvaluationResults", params, headers=headers)
+            response = json.loads(body)
+            model = models.ListAggregateConfigRuleResourceEvaluationResultsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ListAggregateConfigRules(self, request):
         r"""账号组获取规则列表
 
@@ -891,6 +914,29 @@ class ConfigClient(AbstractClient):
             body = self.call("ListConfigRuleEvaluationResults", params, headers=headers)
             response = json.loads(body)
             model = models.ListConfigRuleEvaluationResultsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ListConfigRuleResourceEvaluationResults(self, request):
+        r"""查询配置规则资源评估结果列表
+
+        :param request: Request instance for ListConfigRuleResourceEvaluationResults.
+        :type request: :class:`tencentcloud.config.v20220802.models.ListConfigRuleResourceEvaluationResultsRequest`
+        :rtype: :class:`tencentcloud.config.v20220802.models.ListConfigRuleResourceEvaluationResultsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ListConfigRuleResourceEvaluationResults", params, headers=headers)
+            response = json.loads(body)
+            model = models.ListConfigRuleResourceEvaluationResultsResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

@@ -493,6 +493,24 @@ class DbdcClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def ModifyDBCustomClusterAttributes(
+            self,
+            request: models.ModifyDBCustomClusterAttributesRequest,
+            opts: Dict = None,
+    ) -> models.ModifyDBCustomClusterAttributesResponse:
+        """
+        该接口（ModifyDBCustomClusterAttributes）用于修改 DB Custom 集群的属性。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyDBCustomClusterAttributes"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyDBCustomClusterAttributesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ModifyDBCustomClusterNodeConfig(
             self,
             request: models.ModifyDBCustomClusterNodeConfigRequest,

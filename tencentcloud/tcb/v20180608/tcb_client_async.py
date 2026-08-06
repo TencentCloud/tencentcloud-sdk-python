@@ -854,6 +854,24 @@ class TcbClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeCloudBaseRunBuildLog(
+            self,
+            request: models.DescribeCloudBaseRunBuildLogRequest,
+            opts: Dict = None,
+    ) -> models.DescribeCloudBaseRunBuildLogResponse:
+        """
+        查询构建日志
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeCloudBaseRunBuildLog"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeCloudBaseRunBuildLogResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeCloudBaseRunServerVersion(
             self,
             request: models.DescribeCloudBaseRunServerVersionRequest,

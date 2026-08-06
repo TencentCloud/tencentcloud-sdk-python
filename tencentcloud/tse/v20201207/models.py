@@ -18037,6 +18037,137 @@ class DescribeAutoScalerResourceStrategyBindingGroupsResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeCNGWServicesWithRoutesRequest(AbstractModel):
+    r"""DescribeCNGWServicesWithRoutes请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GatewayId: <p>网关ID</p>
+        :type GatewayId: str
+        :param _Limit: <p>列表数量</p>
+        :type Limit: int
+        :param _Offset: <p>列表 offset</p>
+        :type Offset: int
+        :param _Filters: <p>过滤条件，多个过滤条件之间是与的关系，支持 name,upstreamType</p>
+        :type Filters: list of ListFilter
+        """
+        self._GatewayId = None
+        self._Limit = None
+        self._Offset = None
+        self._Filters = None
+
+    @property
+    def GatewayId(self):
+        r"""<p>网关ID</p>
+        :rtype: str
+        """
+        return self._GatewayId
+
+    @GatewayId.setter
+    def GatewayId(self, GatewayId):
+        self._GatewayId = GatewayId
+
+    @property
+    def Limit(self):
+        r"""<p>列表数量</p>
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        r"""<p>列表 offset</p>
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Filters(self):
+        r"""<p>过滤条件，多个过滤条件之间是与的关系，支持 name,upstreamType</p>
+        :rtype: list of ListFilter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+
+    def _deserialize(self, params):
+        self._GatewayId = params.get("GatewayId")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = ListFilter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCNGWServicesWithRoutesResponse(AbstractModel):
+    r"""DescribeCNGWServicesWithRoutes返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: <p>无</p>
+        :type Result: :class:`tencentcloud.tse.v20201207.models.KongServiceWithRoutes`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        r"""<p>无</p>
+        :rtype: :class:`tencentcloud.tse.v20201207.models.KongServiceWithRoutes`
+        """
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self._Result = KongServiceWithRoutes()
+            self._Result._deserialize(params.get("Result"))
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeCloudNativeAPIGatewayCORSRequest(AbstractModel):
     r"""DescribeCloudNativeAPIGatewayCORS请求参数结构体
 
@@ -20860,18 +20991,26 @@ class DescribeCloudNativeAPIGatewayRoutesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _GatewayId: 网关ID
+        :param _GatewayId: <p>网关ID</p>
         :type GatewayId: str
-        :param _Limit: 翻页单页查询限制数量[0,1000], 默认值0
+        :param _Limit: <p>翻页单页查询限制数量[0,1000], 默认值0</p>
         :type Limit: int
-        :param _Offset: 翻页单页偏移量，默认值0
+        :param _Offset: <p>翻页单页偏移量，默认值0</p>
         :type Offset: int
-        :param _ServiceName: 服务的名字，精确匹配
+        :param _ServiceName: <p>服务的名字，精确匹配</p>
         :type ServiceName: str
-        :param _RouteName: 路由的名字，精确匹配
+        :param _RouteName: <p>路由的名字，精确匹配</p>
         :type RouteName: str
-        :param _Filters: 过滤条件，多个过滤条件之间是与的关系，支持 name, path, host, method, service, protocol
+        :param _Filters: <p>过滤条件，多个过滤条件之间是与的关系，支持 name, path, host, method, service, protocol</p>
         :type Filters: list of ListFilter
+        :param _RouteTypes: <p>路由类型</p>
+        :type RouteTypes: list of str
+        :param _GrayRoutesFirst: <p>是否将灰度规则可能带来的路由排在原始路由前</p>
+        :type GrayRoutesFirst: bool
+        :param _OrderField: <p>排序字段</p>
+        :type OrderField: str
+        :param _OrderType: <p>排序方式</p><p>枚举值：</p><ul><li>DESC： 降序</li><li>ASC： 升序</li></ul>
+        :type OrderType: str
         """
         self._GatewayId = None
         self._Limit = None
@@ -20879,10 +21018,14 @@ class DescribeCloudNativeAPIGatewayRoutesRequest(AbstractModel):
         self._ServiceName = None
         self._RouteName = None
         self._Filters = None
+        self._RouteTypes = None
+        self._GrayRoutesFirst = None
+        self._OrderField = None
+        self._OrderType = None
 
     @property
     def GatewayId(self):
-        r"""网关ID
+        r"""<p>网关ID</p>
         :rtype: str
         """
         return self._GatewayId
@@ -20893,7 +21036,7 @@ class DescribeCloudNativeAPIGatewayRoutesRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""翻页单页查询限制数量[0,1000], 默认值0
+        r"""<p>翻页单页查询限制数量[0,1000], 默认值0</p>
         :rtype: int
         """
         return self._Limit
@@ -20904,7 +21047,7 @@ class DescribeCloudNativeAPIGatewayRoutesRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""翻页单页偏移量，默认值0
+        r"""<p>翻页单页偏移量，默认值0</p>
         :rtype: int
         """
         return self._Offset
@@ -20915,7 +21058,7 @@ class DescribeCloudNativeAPIGatewayRoutesRequest(AbstractModel):
 
     @property
     def ServiceName(self):
-        r"""服务的名字，精确匹配
+        r"""<p>服务的名字，精确匹配</p>
         :rtype: str
         """
         return self._ServiceName
@@ -20926,7 +21069,7 @@ class DescribeCloudNativeAPIGatewayRoutesRequest(AbstractModel):
 
     @property
     def RouteName(self):
-        r"""路由的名字，精确匹配
+        r"""<p>路由的名字，精确匹配</p>
         :rtype: str
         """
         return self._RouteName
@@ -20937,7 +21080,7 @@ class DescribeCloudNativeAPIGatewayRoutesRequest(AbstractModel):
 
     @property
     def Filters(self):
-        r"""过滤条件，多个过滤条件之间是与的关系，支持 name, path, host, method, service, protocol
+        r"""<p>过滤条件，多个过滤条件之间是与的关系，支持 name, path, host, method, service, protocol</p>
         :rtype: list of ListFilter
         """
         return self._Filters
@@ -20945,6 +21088,50 @@ class DescribeCloudNativeAPIGatewayRoutesRequest(AbstractModel):
     @Filters.setter
     def Filters(self, Filters):
         self._Filters = Filters
+
+    @property
+    def RouteTypes(self):
+        r"""<p>路由类型</p>
+        :rtype: list of str
+        """
+        return self._RouteTypes
+
+    @RouteTypes.setter
+    def RouteTypes(self, RouteTypes):
+        self._RouteTypes = RouteTypes
+
+    @property
+    def GrayRoutesFirst(self):
+        r"""<p>是否将灰度规则可能带来的路由排在原始路由前</p>
+        :rtype: bool
+        """
+        return self._GrayRoutesFirst
+
+    @GrayRoutesFirst.setter
+    def GrayRoutesFirst(self, GrayRoutesFirst):
+        self._GrayRoutesFirst = GrayRoutesFirst
+
+    @property
+    def OrderField(self):
+        r"""<p>排序字段</p>
+        :rtype: str
+        """
+        return self._OrderField
+
+    @OrderField.setter
+    def OrderField(self, OrderField):
+        self._OrderField = OrderField
+
+    @property
+    def OrderType(self):
+        r"""<p>排序方式</p><p>枚举值：</p><ul><li>DESC： 降序</li><li>ASC： 升序</li></ul>
+        :rtype: str
+        """
+        return self._OrderType
+
+    @OrderType.setter
+    def OrderType(self, OrderType):
+        self._OrderType = OrderType
 
 
     def _deserialize(self, params):
@@ -20959,6 +21146,10 @@ class DescribeCloudNativeAPIGatewayRoutesRequest(AbstractModel):
                 obj = ListFilter()
                 obj._deserialize(item)
                 self._Filters.append(obj)
+        self._RouteTypes = params.get("RouteTypes")
+        self._GrayRoutesFirst = params.get("GrayRoutesFirst")
+        self._OrderField = params.get("OrderField")
+        self._OrderType = params.get("OrderType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -20976,7 +21167,7 @@ class DescribeCloudNativeAPIGatewayRoutesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Result: 无
+        :param _Result: <p>无</p>
         :type Result: :class:`tencentcloud.tse.v20201207.models.KongServiceRouteList`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -20986,7 +21177,7 @@ class DescribeCloudNativeAPIGatewayRoutesResponse(AbstractModel):
 
     @property
     def Result(self):
-        r"""无
+        r"""<p>无</p>
         :rtype: :class:`tencentcloud.tse.v20201207.models.KongServiceRouteList`
         """
         return self._Result
@@ -21564,23 +21755,29 @@ class DescribeCloudNativeAPIGatewayServicesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _GatewayId: 网关ID
+        :param _GatewayId: <p>网关ID</p>
         :type GatewayId: str
-        :param _Limit: 列表数量
+        :param _Limit: <p>列表数量</p>
         :type Limit: int
-        :param _Offset: 列表 offset
+        :param _Offset: <p>列表 offset</p>
         :type Offset: int
-        :param _Filters: 过滤条件，多个过滤条件之间是与的关系，支持 name,upstreamType
+        :param _Filters: <p>过滤条件，多个过滤条件之间是与的关系，支持 name,upstreamType</p>
         :type Filters: list of ListFilter
+        :param _OrderField: <p>排序字段</p>
+        :type OrderField: str
+        :param _OrderType: <p>排序方式</p><p>枚举值：</p><ul><li>DESC： 降序</li><li>ASC： 升序</li></ul>
+        :type OrderType: str
         """
         self._GatewayId = None
         self._Limit = None
         self._Offset = None
         self._Filters = None
+        self._OrderField = None
+        self._OrderType = None
 
     @property
     def GatewayId(self):
-        r"""网关ID
+        r"""<p>网关ID</p>
         :rtype: str
         """
         return self._GatewayId
@@ -21591,7 +21788,7 @@ class DescribeCloudNativeAPIGatewayServicesRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""列表数量
+        r"""<p>列表数量</p>
         :rtype: int
         """
         return self._Limit
@@ -21602,7 +21799,7 @@ class DescribeCloudNativeAPIGatewayServicesRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""列表 offset
+        r"""<p>列表 offset</p>
         :rtype: int
         """
         return self._Offset
@@ -21613,7 +21810,7 @@ class DescribeCloudNativeAPIGatewayServicesRequest(AbstractModel):
 
     @property
     def Filters(self):
-        r"""过滤条件，多个过滤条件之间是与的关系，支持 name,upstreamType
+        r"""<p>过滤条件，多个过滤条件之间是与的关系，支持 name,upstreamType</p>
         :rtype: list of ListFilter
         """
         return self._Filters
@@ -21621,6 +21818,28 @@ class DescribeCloudNativeAPIGatewayServicesRequest(AbstractModel):
     @Filters.setter
     def Filters(self, Filters):
         self._Filters = Filters
+
+    @property
+    def OrderField(self):
+        r"""<p>排序字段</p>
+        :rtype: str
+        """
+        return self._OrderField
+
+    @OrderField.setter
+    def OrderField(self, OrderField):
+        self._OrderField = OrderField
+
+    @property
+    def OrderType(self):
+        r"""<p>排序方式</p><p>枚举值：</p><ul><li>DESC： 降序</li><li>ASC： 升序</li></ul>
+        :rtype: str
+        """
+        return self._OrderType
+
+    @OrderType.setter
+    def OrderType(self, OrderType):
+        self._OrderType = OrderType
 
 
     def _deserialize(self, params):
@@ -21633,6 +21852,8 @@ class DescribeCloudNativeAPIGatewayServicesRequest(AbstractModel):
                 obj = ListFilter()
                 obj._deserialize(item)
                 self._Filters.append(obj)
+        self._OrderField = params.get("OrderField")
+        self._OrderType = params.get("OrderType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -21650,7 +21871,7 @@ class DescribeCloudNativeAPIGatewayServicesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Result: 无
+        :param _Result: <p>无</p>
         :type Result: :class:`tencentcloud.tse.v20201207.models.KongServices`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -21660,7 +21881,7 @@ class DescribeCloudNativeAPIGatewayServicesResponse(AbstractModel):
 
     @property
     def Result(self):
-        r"""无
+        r"""<p>无</p>
         :rtype: :class:`tencentcloud.tse.v20201207.models.KongServices`
         """
         return self._Result
@@ -31707,23 +31928,26 @@ class KongActiveHealthCheck(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _HealthyInterval: 主动健康检查健康探测间隔，单位：秒，0表示不开启
+        :param _HealthyInterval: <p>主动健康检查健康探测间隔，单位：秒，0表示不开启</p>
         :type HealthyInterval: int
-        :param _UnHealthyInterval: 主动健康检查异常探测间隔，单位：秒，0表示不开启
+        :param _UnHealthyInterval: <p>主动健康检查异常探测间隔，单位：秒，0表示不开启</p>
         :type UnHealthyInterval: int
-        :param _HttpPath: 在 GET HTTP 请求中使用的路径，以作为主动运行状况检查的探测器运行。默认： ”/”。
+        :param _HttpPath: <p>在 GET HTTP 请求中使用的路径，以作为主动运行状况检查的探测器运行。默认： ”/”。</p>
         :type HttpPath: str
-        :param _Timeout: GET HTTP 请求的超时时间，单位：秒。默认 60。
+        :param _Timeout: <p>GET HTTP 请求的超时时间，单位：秒。默认 60。</p>
         :type Timeout: float
+        :param _HostHeader: <p>Host头</p>
+        :type HostHeader: str
         """
         self._HealthyInterval = None
         self._UnHealthyInterval = None
         self._HttpPath = None
         self._Timeout = None
+        self._HostHeader = None
 
     @property
     def HealthyInterval(self):
-        r"""主动健康检查健康探测间隔，单位：秒，0表示不开启
+        r"""<p>主动健康检查健康探测间隔，单位：秒，0表示不开启</p>
         :rtype: int
         """
         return self._HealthyInterval
@@ -31734,7 +31958,7 @@ class KongActiveHealthCheck(AbstractModel):
 
     @property
     def UnHealthyInterval(self):
-        r"""主动健康检查异常探测间隔，单位：秒，0表示不开启
+        r"""<p>主动健康检查异常探测间隔，单位：秒，0表示不开启</p>
         :rtype: int
         """
         return self._UnHealthyInterval
@@ -31745,7 +31969,7 @@ class KongActiveHealthCheck(AbstractModel):
 
     @property
     def HttpPath(self):
-        r"""在 GET HTTP 请求中使用的路径，以作为主动运行状况检查的探测器运行。默认： ”/”。
+        r"""<p>在 GET HTTP 请求中使用的路径，以作为主动运行状况检查的探测器运行。默认： ”/”。</p>
         :rtype: str
         """
         return self._HttpPath
@@ -31756,7 +31980,7 @@ class KongActiveHealthCheck(AbstractModel):
 
     @property
     def Timeout(self):
-        r"""GET HTTP 请求的超时时间，单位：秒。默认 60。
+        r"""<p>GET HTTP 请求的超时时间，单位：秒。默认 60。</p>
         :rtype: float
         """
         return self._Timeout
@@ -31765,12 +31989,24 @@ class KongActiveHealthCheck(AbstractModel):
     def Timeout(self, Timeout):
         self._Timeout = Timeout
 
+    @property
+    def HostHeader(self):
+        r"""<p>Host头</p>
+        :rtype: str
+        """
+        return self._HostHeader
+
+    @HostHeader.setter
+    def HostHeader(self, HostHeader):
+        self._HostHeader = HostHeader
+
 
     def _deserialize(self, params):
         self._HealthyInterval = params.get("HealthyInterval")
         self._UnHealthyInterval = params.get("UnHealthyInterval")
         self._HttpPath = params.get("HttpPath")
         self._Timeout = params.get("Timeout")
+        self._HostHeader = params.get("HostHeader")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -32131,48 +32367,50 @@ class KongRoutePreview(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ID: 服务ID
+        :param _ID: <p>服务ID</p>
         :type ID: str
-        :param _Name: 服务名字
+        :param _Name: <p>服务名字</p>
         :type Name: str
-        :param _Methods: 无
+        :param _Methods: <p>无</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Methods: list of str
-        :param _Paths: 无
+        :param _Paths: <p>无</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Paths: list of str
-        :param _Hosts: 无
+        :param _Hosts: <p>无</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Hosts: list of str
-        :param _Protocols: 无
+        :param _Protocols: <p>无</p>
         :type Protocols: list of str
-        :param _PreserveHost: 无
+        :param _PreserveHost: <p>无</p>
         :type PreserveHost: bool
-        :param _HttpsRedirectStatusCode: 无
+        :param _HttpsRedirectStatusCode: <p>无</p>
         :type HttpsRedirectStatusCode: int
-        :param _StripPath: 无
+        :param _StripPath: <p>无</p>
         :type StripPath: bool
-        :param _CreatedTime: 无
+        :param _CreatedTime: <p>无</p>
         :type CreatedTime: str
-        :param _ForceHttps: 是否开启了强制HTTPS
+        :param _ForceHttps: <p>是否开启了强制HTTPS</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ForceHttps: bool
-        :param _ServiceName: 服务名
+        :param _ServiceName: <p>服务名</p>
         :type ServiceName: str
-        :param _ServiceID: 服务ID
+        :param _ServiceID: <p>服务ID</p>
         :type ServiceID: str
-        :param _DestinationPorts: 目的端口
+        :param _DestinationPorts: <p>目的端口</p>
         :type DestinationPorts: list of int non-negative
-        :param _Headers: 路由的Headers
+        :param _Headers: <p>路由的Headers</p>
         :type Headers: list of KVMapping
-        :param _RequestBuffering: 是否缓存请求body，默认true
+        :param _RequestBuffering: <p>是否缓存请求body，默认true</p>
         :type RequestBuffering: bool
-        :param _ResponseBuffering: 是否缓存响应body，默认true
+        :param _ResponseBuffering: <p>是否缓存响应body，默认true</p>
         :type ResponseBuffering: bool
-        :param _RegexPriority: 正则优先级
+        :param _RegexPriority: <p>正则优先级</p>
         :type RegexPriority: int
-        :param _QueryStringParameters: querystring参数
+        :param _QueryStringParameters: <p>querystring参数</p>
         :type QueryStringParameters: list of KVMapping
+        :param _RouteSource: <p>路由来源</p>
+        :type RouteSource: str
         """
         self._ID = None
         self._Name = None
@@ -32193,10 +32431,11 @@ class KongRoutePreview(AbstractModel):
         self._ResponseBuffering = None
         self._RegexPriority = None
         self._QueryStringParameters = None
+        self._RouteSource = None
 
     @property
     def ID(self):
-        r"""服务ID
+        r"""<p>服务ID</p>
         :rtype: str
         """
         return self._ID
@@ -32207,7 +32446,7 @@ class KongRoutePreview(AbstractModel):
 
     @property
     def Name(self):
-        r"""服务名字
+        r"""<p>服务名字</p>
         :rtype: str
         """
         return self._Name
@@ -32218,7 +32457,7 @@ class KongRoutePreview(AbstractModel):
 
     @property
     def Methods(self):
-        r"""无
+        r"""<p>无</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -32230,7 +32469,7 @@ class KongRoutePreview(AbstractModel):
 
     @property
     def Paths(self):
-        r"""无
+        r"""<p>无</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -32242,7 +32481,7 @@ class KongRoutePreview(AbstractModel):
 
     @property
     def Hosts(self):
-        r"""无
+        r"""<p>无</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -32254,7 +32493,7 @@ class KongRoutePreview(AbstractModel):
 
     @property
     def Protocols(self):
-        r"""无
+        r"""<p>无</p>
         :rtype: list of str
         """
         return self._Protocols
@@ -32265,7 +32504,7 @@ class KongRoutePreview(AbstractModel):
 
     @property
     def PreserveHost(self):
-        r"""无
+        r"""<p>无</p>
         :rtype: bool
         """
         return self._PreserveHost
@@ -32276,7 +32515,7 @@ class KongRoutePreview(AbstractModel):
 
     @property
     def HttpsRedirectStatusCode(self):
-        r"""无
+        r"""<p>无</p>
         :rtype: int
         """
         return self._HttpsRedirectStatusCode
@@ -32287,7 +32526,7 @@ class KongRoutePreview(AbstractModel):
 
     @property
     def StripPath(self):
-        r"""无
+        r"""<p>无</p>
         :rtype: bool
         """
         return self._StripPath
@@ -32298,7 +32537,7 @@ class KongRoutePreview(AbstractModel):
 
     @property
     def CreatedTime(self):
-        r"""无
+        r"""<p>无</p>
         :rtype: str
         """
         return self._CreatedTime
@@ -32311,7 +32550,7 @@ class KongRoutePreview(AbstractModel):
     def ForceHttps(self):
         warnings.warn("parameter `ForceHttps` is deprecated", DeprecationWarning) 
 
-        r"""是否开启了强制HTTPS
+        r"""<p>是否开启了强制HTTPS</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
@@ -32325,7 +32564,7 @@ class KongRoutePreview(AbstractModel):
 
     @property
     def ServiceName(self):
-        r"""服务名
+        r"""<p>服务名</p>
         :rtype: str
         """
         return self._ServiceName
@@ -32336,7 +32575,7 @@ class KongRoutePreview(AbstractModel):
 
     @property
     def ServiceID(self):
-        r"""服务ID
+        r"""<p>服务ID</p>
         :rtype: str
         """
         return self._ServiceID
@@ -32347,7 +32586,7 @@ class KongRoutePreview(AbstractModel):
 
     @property
     def DestinationPorts(self):
-        r"""目的端口
+        r"""<p>目的端口</p>
         :rtype: list of int non-negative
         """
         return self._DestinationPorts
@@ -32358,7 +32597,7 @@ class KongRoutePreview(AbstractModel):
 
     @property
     def Headers(self):
-        r"""路由的Headers
+        r"""<p>路由的Headers</p>
         :rtype: list of KVMapping
         """
         return self._Headers
@@ -32369,7 +32608,7 @@ class KongRoutePreview(AbstractModel):
 
     @property
     def RequestBuffering(self):
-        r"""是否缓存请求body，默认true
+        r"""<p>是否缓存请求body，默认true</p>
         :rtype: bool
         """
         return self._RequestBuffering
@@ -32380,7 +32619,7 @@ class KongRoutePreview(AbstractModel):
 
     @property
     def ResponseBuffering(self):
-        r"""是否缓存响应body，默认true
+        r"""<p>是否缓存响应body，默认true</p>
         :rtype: bool
         """
         return self._ResponseBuffering
@@ -32391,7 +32630,7 @@ class KongRoutePreview(AbstractModel):
 
     @property
     def RegexPriority(self):
-        r"""正则优先级
+        r"""<p>正则优先级</p>
         :rtype: int
         """
         return self._RegexPriority
@@ -32402,7 +32641,7 @@ class KongRoutePreview(AbstractModel):
 
     @property
     def QueryStringParameters(self):
-        r"""querystring参数
+        r"""<p>querystring参数</p>
         :rtype: list of KVMapping
         """
         return self._QueryStringParameters
@@ -32410,6 +32649,17 @@ class KongRoutePreview(AbstractModel):
     @QueryStringParameters.setter
     def QueryStringParameters(self, QueryStringParameters):
         self._QueryStringParameters = QueryStringParameters
+
+    @property
+    def RouteSource(self):
+        r"""<p>路由来源</p>
+        :rtype: str
+        """
+        return self._RouteSource
+
+    @RouteSource.setter
+    def RouteSource(self, RouteSource):
+        self._RouteSource = RouteSource
 
 
     def _deserialize(self, params):
@@ -32442,6 +32692,7 @@ class KongRoutePreview(AbstractModel):
                 obj = KVMapping()
                 obj._deserialize(item)
                 self._QueryStringParameters.append(obj)
+        self._RouteSource = params.get("RouteSource")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -32811,21 +33062,21 @@ class KongServicePreview(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ID: 服务ID
+        :param _ID: <p>服务ID</p>
         :type ID: str
-        :param _Name: 服务名字
+        :param _Name: <p>服务名字</p>
         :type Name: str
-        :param _Tags: 标签
+        :param _Tags: <p>标签</p>
         :type Tags: list of str
-        :param _UpstreamInfo: 后端配置
+        :param _UpstreamInfo: <p>后端配置</p>
         :type UpstreamInfo: :class:`tencentcloud.tse.v20201207.models.KongUpstreamInfo`
-        :param _UpstreamType: 后端类型
+        :param _UpstreamType: <p>后端类型</p>
         :type UpstreamType: str
-        :param _CreatedTime: 创建时间
+        :param _CreatedTime: <p>创建时间</p>
         :type CreatedTime: str
-        :param _Editable: 是否可编辑
+        :param _Editable: <p>是否可编辑</p>
         :type Editable: bool
-        :param _Path: 请求路径
+        :param _Path: <p>请求路径</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Path: str
         """
@@ -32840,7 +33091,7 @@ class KongServicePreview(AbstractModel):
 
     @property
     def ID(self):
-        r"""服务ID
+        r"""<p>服务ID</p>
         :rtype: str
         """
         return self._ID
@@ -32851,7 +33102,7 @@ class KongServicePreview(AbstractModel):
 
     @property
     def Name(self):
-        r"""服务名字
+        r"""<p>服务名字</p>
         :rtype: str
         """
         return self._Name
@@ -32862,7 +33113,7 @@ class KongServicePreview(AbstractModel):
 
     @property
     def Tags(self):
-        r"""标签
+        r"""<p>标签</p>
         :rtype: list of str
         """
         return self._Tags
@@ -32873,7 +33124,7 @@ class KongServicePreview(AbstractModel):
 
     @property
     def UpstreamInfo(self):
-        r"""后端配置
+        r"""<p>后端配置</p>
         :rtype: :class:`tencentcloud.tse.v20201207.models.KongUpstreamInfo`
         """
         return self._UpstreamInfo
@@ -32884,7 +33135,7 @@ class KongServicePreview(AbstractModel):
 
     @property
     def UpstreamType(self):
-        r"""后端类型
+        r"""<p>后端类型</p>
         :rtype: str
         """
         return self._UpstreamType
@@ -32895,7 +33146,7 @@ class KongServicePreview(AbstractModel):
 
     @property
     def CreatedTime(self):
-        r"""创建时间
+        r"""<p>创建时间</p>
         :rtype: str
         """
         return self._CreatedTime
@@ -32906,7 +33157,7 @@ class KongServicePreview(AbstractModel):
 
     @property
     def Editable(self):
-        r"""是否可编辑
+        r"""<p>是否可编辑</p>
         :rtype: bool
         """
         return self._Editable
@@ -32917,7 +33168,7 @@ class KongServicePreview(AbstractModel):
 
     @property
     def Path(self):
-        r"""请求路径
+        r"""<p>请求路径</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -32939,6 +33190,94 @@ class KongServicePreview(AbstractModel):
         self._CreatedTime = params.get("CreatedTime")
         self._Editable = params.get("Editable")
         self._Path = params.get("Path")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class KongServiceRoute(AbstractModel):
+    r"""kong实例的服务和路由列表
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Service: <p>服务信息</p>
+        :type Service: :class:`tencentcloud.tse.v20201207.models.KongServicePreview`
+        :param _RouteTotalCount: <p>路由总条数</p>
+        :type RouteTotalCount: int
+        :param _RouteHasMore: <p>是否有未返回的路由</p>
+        :type RouteHasMore: bool
+        :param _Routes: <p>路由信息</p>
+        :type Routes: list of KongRoutePreview
+        """
+        self._Service = None
+        self._RouteTotalCount = None
+        self._RouteHasMore = None
+        self._Routes = None
+
+    @property
+    def Service(self):
+        r"""<p>服务信息</p>
+        :rtype: :class:`tencentcloud.tse.v20201207.models.KongServicePreview`
+        """
+        return self._Service
+
+    @Service.setter
+    def Service(self, Service):
+        self._Service = Service
+
+    @property
+    def RouteTotalCount(self):
+        r"""<p>路由总条数</p>
+        :rtype: int
+        """
+        return self._RouteTotalCount
+
+    @RouteTotalCount.setter
+    def RouteTotalCount(self, RouteTotalCount):
+        self._RouteTotalCount = RouteTotalCount
+
+    @property
+    def RouteHasMore(self):
+        r"""<p>是否有未返回的路由</p>
+        :rtype: bool
+        """
+        return self._RouteHasMore
+
+    @RouteHasMore.setter
+    def RouteHasMore(self, RouteHasMore):
+        self._RouteHasMore = RouteHasMore
+
+    @property
+    def Routes(self):
+        r"""<p>路由信息</p>
+        :rtype: list of KongRoutePreview
+        """
+        return self._Routes
+
+    @Routes.setter
+    def Routes(self, Routes):
+        self._Routes = Routes
+
+
+    def _deserialize(self, params):
+        if params.get("Service") is not None:
+            self._Service = KongServicePreview()
+            self._Service._deserialize(params.get("Service"))
+        self._RouteTotalCount = params.get("RouteTotalCount")
+        self._RouteHasMore = params.get("RouteHasMore")
+        if params.get("Routes") is not None:
+            self._Routes = []
+            for item in params.get("Routes"):
+                obj = KongRoutePreview()
+                obj._deserialize(item)
+                self._Routes.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -32994,6 +33333,62 @@ class KongServiceRouteList(AbstractModel):
                 obj = KongRoutePreview()
                 obj._deserialize(item)
                 self._RouteList.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class KongServiceWithRoutes(AbstractModel):
+    r"""返回kong的服务和路由列表
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ServiceList: 
+        :type ServiceList: list of KongServiceRoute
+        :param _TotalCount: 总数
+        :type TotalCount: int
+        """
+        self._ServiceList = None
+        self._TotalCount = None
+
+    @property
+    def ServiceList(self):
+        r"""
+        :rtype: list of KongServiceRoute
+        """
+        return self._ServiceList
+
+    @ServiceList.setter
+    def ServiceList(self, ServiceList):
+        self._ServiceList = ServiceList
+
+    @property
+    def TotalCount(self):
+        r"""总数
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+
+    def _deserialize(self, params):
+        if params.get("ServiceList") is not None:
+            self._ServiceList = []
+            for item in params.get("ServiceList"):
+                obj = KongServiceRoute()
+                obj._deserialize(item)
+                self._ServiceList.append(obj)
         self._TotalCount = params.get("TotalCount")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():

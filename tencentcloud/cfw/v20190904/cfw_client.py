@@ -532,6 +532,29 @@ class CfwClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateWhiteRule(self, request):
+        r"""创建入侵防御白名单。先选择 RuleType，再按该类型填写 Rules[].Info；每条策略使用唯一 RuleName。创建成功后调用 DescribeWhiteRule，使用 RuleName+OperatorType 9 查询并精确核对 RuleName，取得 WhiteId。
+
+        :param request: Request instance for CreateWhiteRule.
+        :type request: :class:`tencentcloud.cfw.v20190904.models.CreateWhiteRuleRequest`
+        :rtype: :class:`tencentcloud.cfw.v20190904.models.CreateWhiteRuleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateWhiteRule", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateWhiteRuleResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DeleteAcRule(self, request):
         r"""删除规则
 
@@ -753,6 +776,29 @@ class CfwClient(AbstractClient):
             body = self.call("DeleteVpcFwGroup", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteVpcFwGroupResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteWhiteRule(self, request):
+        r"""按 WhiteId 删除入侵防御白名单。先从 DescribeWhiteRule.Data[].WhiteId 读取目标 ID；提交删除后调用 DescribeWhiteRule，Filters 使用 Name=WD、OperatorType=1 和目标 WhiteId，Data 为空表示删除完成。
+
+        :param request: Request instance for DeleteWhiteRule.
+        :type request: :class:`tencentcloud.cfw.v20190904.models.DeleteWhiteRuleRequest`
+        :rtype: :class:`tencentcloud.cfw.v20190904.models.DeleteWhiteRuleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteWhiteRule", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteWhiteRuleResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -3404,6 +3450,29 @@ class CfwClient(AbstractClient):
             body = self.call("ModifyVpcFwSequenceRules", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyVpcFwSequenceRulesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyWhiteRule(self, request):
+        r"""修改入侵防御白名单采用整条替换。先调用 DescribeWhiteRule，选择 BanEdit=0 的策略并沿用其 WhiteId 和 RuleType；Rule 提交修改后的全部可写字段。Info 多值字段按笛卡尔积展开，第一项更新原 WhiteId，其余组合创建新 WhiteId，展开后最多 100 条且新增组合消耗配额。成功后调用 DescribeWhiteRule：原策略使用 Name=WD、OperatorType=1 精确查询，新组合使用 Name=RuleName、OperatorType=9 查询并逐项核对。
+
+        :param request: Request instance for ModifyWhiteRule.
+        :type request: :class:`tencentcloud.cfw.v20190904.models.ModifyWhiteRuleRequest`
+        :rtype: :class:`tencentcloud.cfw.v20190904.models.ModifyWhiteRuleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyWhiteRule", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyWhiteRuleResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

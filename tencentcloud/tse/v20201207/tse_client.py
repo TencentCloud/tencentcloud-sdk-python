@@ -1498,6 +1498,29 @@ class TseClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeCNGWServicesWithRoutes(self, request):
+        r"""查询云原生网关服务和路由列表
+
+        :param request: Request instance for DescribeCNGWServicesWithRoutes.
+        :type request: :class:`tencentcloud.tse.v20201207.models.DescribeCNGWServicesWithRoutesRequest`
+        :rtype: :class:`tencentcloud.tse.v20201207.models.DescribeCNGWServicesWithRoutesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeCNGWServicesWithRoutes", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeCNGWServicesWithRoutesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeCloudNativeAPIGateway(self, request):
         r"""获取云原生API网关实例信息
 

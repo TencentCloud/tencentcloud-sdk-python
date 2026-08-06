@@ -503,9 +503,13 @@ class DataScore(AbstractModel):
         :type RiskLevel: int
         :param _RiskLabels: <p>风险标签</p>
         :type RiskLabels: list of RiskLabel
+        :param _RiskScore: <p>综合风险分数。</p><p>取值范围：[1, 1000]</p><p>数值越大，风险越大。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RiskScore: int
         """
         self._RiskLevel = None
         self._RiskLabels = None
+        self._RiskScore = None
 
     @property
     def RiskLevel(self):
@@ -529,6 +533,18 @@ class DataScore(AbstractModel):
     def RiskLabels(self, RiskLabels):
         self._RiskLabels = RiskLabels
 
+    @property
+    def RiskScore(self):
+        r"""<p>综合风险分数。</p><p>取值范围：[1, 1000]</p><p>数值越大，风险越大。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._RiskScore
+
+    @RiskScore.setter
+    def RiskScore(self, RiskScore):
+        self._RiskScore = RiskScore
+
 
     def _deserialize(self, params):
         self._RiskLevel = params.get("RiskLevel")
@@ -538,6 +554,7 @@ class DataScore(AbstractModel):
                 obj = RiskLabel()
                 obj._deserialize(item)
                 self._RiskLabels.append(obj)
+        self._RiskScore = params.get("RiskScore")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -611,6 +628,10 @@ class Device(AbstractModel):
         :type SystemVersion: str
         :param _SdkBuildVersion: <p>SDK版本</p>
         :type SdkBuildVersion: str
+        :param _SignToken: <p>验签token，验签功能启用请联系我们。</p>
+        :type SignToken: str
+        :param _TokenTime: <p>token生成时间戳，毫秒级。</p>
+        :type TokenTime: str
         """
         self._DeviceId = None
         self._AppVersion = None
@@ -622,6 +643,8 @@ class Device(AbstractModel):
         self._Platform = None
         self._SystemVersion = None
         self._SdkBuildVersion = None
+        self._SignToken = None
+        self._TokenTime = None
 
     @property
     def DeviceId(self):
@@ -733,6 +756,28 @@ class Device(AbstractModel):
     def SdkBuildVersion(self, SdkBuildVersion):
         self._SdkBuildVersion = SdkBuildVersion
 
+    @property
+    def SignToken(self):
+        r"""<p>验签token，验签功能启用请联系我们。</p>
+        :rtype: str
+        """
+        return self._SignToken
+
+    @SignToken.setter
+    def SignToken(self, SignToken):
+        self._SignToken = SignToken
+
+    @property
+    def TokenTime(self):
+        r"""<p>token生成时间戳，毫秒级。</p>
+        :rtype: str
+        """
+        return self._TokenTime
+
+    @TokenTime.setter
+    def TokenTime(self, TokenTime):
+        self._TokenTime = TokenTime
+
 
     def _deserialize(self, params):
         self._DeviceId = params.get("DeviceId")
@@ -745,6 +790,8 @@ class Device(AbstractModel):
         self._Platform = params.get("Platform")
         self._SystemVersion = params.get("SystemVersion")
         self._SdkBuildVersion = params.get("SdkBuildVersion")
+        self._SignToken = params.get("SignToken")
+        self._TokenTime = params.get("TokenTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

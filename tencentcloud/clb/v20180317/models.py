@@ -33469,38 +33469,37 @@ class RuleInput(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Url: 转发规则的路径。长度限制为：1~200。
+        :param _Url: <p>转发规则的路径。长度限制为：1~200。</p>
         :type Url: str
-        :param _Domain: 转发规则的域名。长度限制为：1~80。Domain和Domains只需要传一个，单域名规则传Domain，多域名规则传Domains。
+        :param _Domain: <p>转发规则的域名。长度限制为：1~80。Domain和Domains只需要传一个，单域名规则传Domain，多域名规则传Domains。</p>
         :type Domain: str
-        :param _SessionExpireTime: 会话保持时间。设置为0表示关闭会话保持，开启会话保持可取值30~86400，单位：秒。
+        :param _SessionExpireTime: <p>会话保持时间。设置为0表示关闭会话保持，开启会话保持可取值30~86400，单位：秒。</p>
         :type SessionExpireTime: int
-        :param _HealthCheck: 健康检查信息。详情请参见：[健康检查](https://cloud.tencent.com/document/product/214/6097)
+        :param _HealthCheck: <p>健康检查信息。详情请参见：<a href="https://cloud.tencent.com/document/product/214/6097">健康检查</a></p>
         :type HealthCheck: :class:`tencentcloud.clb.v20180317.models.HealthCheck`
-        :param _Certificate: 证书信息；此参数和MultiCertInfo不能同时传入。
+        :param _Certificate: <p>证书信息；此参数和MultiCertInfo不能同时传入。</p>
         :type Certificate: :class:`tencentcloud.clb.v20180317.models.CertificateInput`
-        :param _Scheduler: 规则的请求转发方式，可选值：WRR、LEAST_CONN、IP_HASH
-分别表示按权重轮询、最小连接数、按IP哈希， 默认为 WRR。
+        :param _Scheduler: <p>规则的请求转发方式，可选值：WRR、LEAST_CONN、IP_HASH<br>分别表示按权重轮询、最小连接数、按IP哈希， 默认为 WRR。</p>
         :type Scheduler: str
-        :param _ForwardType: 负载均衡与后端服务之间的转发协议，目前支持 HTTP/HTTPS/GRPC/GRPCS/TRPC，TRPC暂未对外开放，默认HTTP。
+        :param _ForwardType: <p>负载均衡与后端服务之间的转发协议，目前支持 HTTP/HTTPS/GRPC/GRPCS/TRPC，TRPC暂未对外开放，默认HTTP。</p>
         :type ForwardType: str
-        :param _DefaultServer: 是否将该域名设为默认域名，注意，一个监听器下只能设置一个默认域名。
+        :param _DefaultServer: <p>是否将该域名设为默认域名，注意，一个监听器下只能设置一个默认域名。</p>
         :type DefaultServer: bool
-        :param _Http2: 是否开启Http2，注意，只有HTTPS域名才能开启Http2。
+        :param _Http2: <p>是否开启Http2，注意，只有HTTPS域名才能开启Http2。</p>
         :type Http2: bool
-        :param _TargetType: 后端目标类型，NODE表示绑定普通节点，TARGETGROUP表示绑定目标组
+        :param _TargetType: <p>后端目标类型，NODE表示绑定普通节点，TARGETGROUP表示绑定目标组</p><p>枚举值：</p><ul><li>NODE： 绑定普通节点</li><li>TARGETGROUP： 绑定目标组 v1</li><li>TARGETGROUP-V2： 绑定目标组 v2</li></ul>
         :type TargetType: str
-        :param _TrpcCallee: TRPC被调服务器路由，ForwardType为TRPC时必填。目前暂未对外开放。
+        :param _TrpcCallee: <p>TRPC被调服务器路由，ForwardType为TRPC时必填。目前暂未对外开放。</p>
         :type TrpcCallee: str
-        :param _TrpcFunc: TRPC调用服务接口，ForwardType为TRPC时必填。目前暂未对外开放
+        :param _TrpcFunc: <p>TRPC调用服务接口，ForwardType为TRPC时必填。目前暂未对外开放</p>
         :type TrpcFunc: str
-        :param _Quic: 是否开启QUIC，注意，只有HTTPS域名才能开启QUIC
+        :param _Quic: <p>是否开启QUIC，注意，只有HTTPS域名才能开启QUIC</p>
         :type Quic: bool
-        :param _Domains: 转发规则的域名列表。每个域名的长度限制为：1~80。Domain和Domains只需要传一个，单域名规则传Domain，多域名规则传Domains。
+        :param _Domains: <p>转发规则的域名列表。每个域名的长度限制为：1~80。Domain和Domains只需要传一个，单域名规则传Domain，多域名规则传Domains。</p>
         :type Domains: list of str
-        :param _MultiCertInfo: 证书信息，支持同时传入不同算法类型的多本服务端证书；此参数和Certificate不能同时传入。
+        :param _MultiCertInfo: <p>证书信息，支持同时传入不同算法类型的多本服务端证书；此参数和Certificate不能同时传入。</p>
         :type MultiCertInfo: :class:`tencentcloud.clb.v20180317.models.MultiCertInfo`
-        :param _CookieName: 自定义cookie名
+        :param _CookieName: <p>自定义cookie名</p>
         :type CookieName: str
         """
         self._Url = None
@@ -33522,7 +33521,7 @@ class RuleInput(AbstractModel):
 
     @property
     def Url(self):
-        r"""转发规则的路径。长度限制为：1~200。
+        r"""<p>转发规则的路径。长度限制为：1~200。</p>
         :rtype: str
         """
         return self._Url
@@ -33533,7 +33532,7 @@ class RuleInput(AbstractModel):
 
     @property
     def Domain(self):
-        r"""转发规则的域名。长度限制为：1~80。Domain和Domains只需要传一个，单域名规则传Domain，多域名规则传Domains。
+        r"""<p>转发规则的域名。长度限制为：1~80。Domain和Domains只需要传一个，单域名规则传Domain，多域名规则传Domains。</p>
         :rtype: str
         """
         return self._Domain
@@ -33544,7 +33543,7 @@ class RuleInput(AbstractModel):
 
     @property
     def SessionExpireTime(self):
-        r"""会话保持时间。设置为0表示关闭会话保持，开启会话保持可取值30~86400，单位：秒。
+        r"""<p>会话保持时间。设置为0表示关闭会话保持，开启会话保持可取值30~86400，单位：秒。</p>
         :rtype: int
         """
         return self._SessionExpireTime
@@ -33555,7 +33554,7 @@ class RuleInput(AbstractModel):
 
     @property
     def HealthCheck(self):
-        r"""健康检查信息。详情请参见：[健康检查](https://cloud.tencent.com/document/product/214/6097)
+        r"""<p>健康检查信息。详情请参见：<a href="https://cloud.tencent.com/document/product/214/6097">健康检查</a></p>
         :rtype: :class:`tencentcloud.clb.v20180317.models.HealthCheck`
         """
         return self._HealthCheck
@@ -33566,7 +33565,7 @@ class RuleInput(AbstractModel):
 
     @property
     def Certificate(self):
-        r"""证书信息；此参数和MultiCertInfo不能同时传入。
+        r"""<p>证书信息；此参数和MultiCertInfo不能同时传入。</p>
         :rtype: :class:`tencentcloud.clb.v20180317.models.CertificateInput`
         """
         return self._Certificate
@@ -33577,8 +33576,7 @@ class RuleInput(AbstractModel):
 
     @property
     def Scheduler(self):
-        r"""规则的请求转发方式，可选值：WRR、LEAST_CONN、IP_HASH
-分别表示按权重轮询、最小连接数、按IP哈希， 默认为 WRR。
+        r"""<p>规则的请求转发方式，可选值：WRR、LEAST_CONN、IP_HASH<br>分别表示按权重轮询、最小连接数、按IP哈希， 默认为 WRR。</p>
         :rtype: str
         """
         return self._Scheduler
@@ -33589,7 +33587,7 @@ class RuleInput(AbstractModel):
 
     @property
     def ForwardType(self):
-        r"""负载均衡与后端服务之间的转发协议，目前支持 HTTP/HTTPS/GRPC/GRPCS/TRPC，TRPC暂未对外开放，默认HTTP。
+        r"""<p>负载均衡与后端服务之间的转发协议，目前支持 HTTP/HTTPS/GRPC/GRPCS/TRPC，TRPC暂未对外开放，默认HTTP。</p>
         :rtype: str
         """
         return self._ForwardType
@@ -33600,7 +33598,7 @@ class RuleInput(AbstractModel):
 
     @property
     def DefaultServer(self):
-        r"""是否将该域名设为默认域名，注意，一个监听器下只能设置一个默认域名。
+        r"""<p>是否将该域名设为默认域名，注意，一个监听器下只能设置一个默认域名。</p>
         :rtype: bool
         """
         return self._DefaultServer
@@ -33611,7 +33609,7 @@ class RuleInput(AbstractModel):
 
     @property
     def Http2(self):
-        r"""是否开启Http2，注意，只有HTTPS域名才能开启Http2。
+        r"""<p>是否开启Http2，注意，只有HTTPS域名才能开启Http2。</p>
         :rtype: bool
         """
         return self._Http2
@@ -33622,7 +33620,7 @@ class RuleInput(AbstractModel):
 
     @property
     def TargetType(self):
-        r"""后端目标类型，NODE表示绑定普通节点，TARGETGROUP表示绑定目标组
+        r"""<p>后端目标类型，NODE表示绑定普通节点，TARGETGROUP表示绑定目标组</p><p>枚举值：</p><ul><li>NODE： 绑定普通节点</li><li>TARGETGROUP： 绑定目标组 v1</li><li>TARGETGROUP-V2： 绑定目标组 v2</li></ul>
         :rtype: str
         """
         return self._TargetType
@@ -33633,7 +33631,7 @@ class RuleInput(AbstractModel):
 
     @property
     def TrpcCallee(self):
-        r"""TRPC被调服务器路由，ForwardType为TRPC时必填。目前暂未对外开放。
+        r"""<p>TRPC被调服务器路由，ForwardType为TRPC时必填。目前暂未对外开放。</p>
         :rtype: str
         """
         return self._TrpcCallee
@@ -33644,7 +33642,7 @@ class RuleInput(AbstractModel):
 
     @property
     def TrpcFunc(self):
-        r"""TRPC调用服务接口，ForwardType为TRPC时必填。目前暂未对外开放
+        r"""<p>TRPC调用服务接口，ForwardType为TRPC时必填。目前暂未对外开放</p>
         :rtype: str
         """
         return self._TrpcFunc
@@ -33655,7 +33653,7 @@ class RuleInput(AbstractModel):
 
     @property
     def Quic(self):
-        r"""是否开启QUIC，注意，只有HTTPS域名才能开启QUIC
+        r"""<p>是否开启QUIC，注意，只有HTTPS域名才能开启QUIC</p>
         :rtype: bool
         """
         return self._Quic
@@ -33666,7 +33664,7 @@ class RuleInput(AbstractModel):
 
     @property
     def Domains(self):
-        r"""转发规则的域名列表。每个域名的长度限制为：1~80。Domain和Domains只需要传一个，单域名规则传Domain，多域名规则传Domains。
+        r"""<p>转发规则的域名列表。每个域名的长度限制为：1~80。Domain和Domains只需要传一个，单域名规则传Domain，多域名规则传Domains。</p>
         :rtype: list of str
         """
         return self._Domains
@@ -33677,7 +33675,7 @@ class RuleInput(AbstractModel):
 
     @property
     def MultiCertInfo(self):
-        r"""证书信息，支持同时传入不同算法类型的多本服务端证书；此参数和Certificate不能同时传入。
+        r"""<p>证书信息，支持同时传入不同算法类型的多本服务端证书；此参数和Certificate不能同时传入。</p>
         :rtype: :class:`tencentcloud.clb.v20180317.models.MultiCertInfo`
         """
         return self._MultiCertInfo
@@ -33688,7 +33686,7 @@ class RuleInput(AbstractModel):
 
     @property
     def CookieName(self):
-        r"""自定义cookie名
+        r"""<p>自定义cookie名</p>
         :rtype: str
         """
         return self._CookieName

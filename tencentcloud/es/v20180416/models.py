@@ -17804,24 +17804,26 @@ class KibanaView(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Ip: Kibana节点IP
+        :param _Ip: <p>Kibana节点IP</p>
         :type Ip: str
-        :param _DiskSize: 节点总磁盘大小
+        :param _DiskSize: <p>节点总磁盘大小</p>
         :type DiskSize: int
-        :param _DiskUsage: 磁盘使用率
+        :param _DiskUsage: <p>磁盘使用率</p>
         :type DiskUsage: float
-        :param _MemSize: 节点内存大小
+        :param _MemSize: <p>节点内存大小</p>
         :type MemSize: int
-        :param _MemUsage: 内存使用率
+        :param _MemUsage: <p>内存使用率</p>
         :type MemUsage: float
-        :param _CpuNum: 节点cpu个数
+        :param _CpuNum: <p>节点cpu个数</p>
         :type CpuNum: int
-        :param _CpuUsage: cpu使用率
+        :param _CpuUsage: <p>cpu使用率</p>
         :type CpuUsage: float
-        :param _Zone: 可用区
+        :param _Zone: <p>可用区</p>
         :type Zone: str
-        :param _NodeId: ts-0noqayxu-az6-hot-03222010-0
+        :param _NodeId: <p>ts-0noqayxu-az6-hot-03222010-0</p>
         :type NodeId: str
+        :param _UserIp: <p>客户侧Ip信息</p>
+        :type UserIp: str
         """
         self._Ip = None
         self._DiskSize = None
@@ -17832,10 +17834,11 @@ class KibanaView(AbstractModel):
         self._CpuUsage = None
         self._Zone = None
         self._NodeId = None
+        self._UserIp = None
 
     @property
     def Ip(self):
-        r"""Kibana节点IP
+        r"""<p>Kibana节点IP</p>
         :rtype: str
         """
         return self._Ip
@@ -17846,7 +17849,7 @@ class KibanaView(AbstractModel):
 
     @property
     def DiskSize(self):
-        r"""节点总磁盘大小
+        r"""<p>节点总磁盘大小</p>
         :rtype: int
         """
         return self._DiskSize
@@ -17857,7 +17860,7 @@ class KibanaView(AbstractModel):
 
     @property
     def DiskUsage(self):
-        r"""磁盘使用率
+        r"""<p>磁盘使用率</p>
         :rtype: float
         """
         return self._DiskUsage
@@ -17868,7 +17871,7 @@ class KibanaView(AbstractModel):
 
     @property
     def MemSize(self):
-        r"""节点内存大小
+        r"""<p>节点内存大小</p>
         :rtype: int
         """
         return self._MemSize
@@ -17879,7 +17882,7 @@ class KibanaView(AbstractModel):
 
     @property
     def MemUsage(self):
-        r"""内存使用率
+        r"""<p>内存使用率</p>
         :rtype: float
         """
         return self._MemUsage
@@ -17890,7 +17893,7 @@ class KibanaView(AbstractModel):
 
     @property
     def CpuNum(self):
-        r"""节点cpu个数
+        r"""<p>节点cpu个数</p>
         :rtype: int
         """
         return self._CpuNum
@@ -17901,7 +17904,7 @@ class KibanaView(AbstractModel):
 
     @property
     def CpuUsage(self):
-        r"""cpu使用率
+        r"""<p>cpu使用率</p>
         :rtype: float
         """
         return self._CpuUsage
@@ -17912,7 +17915,7 @@ class KibanaView(AbstractModel):
 
     @property
     def Zone(self):
-        r"""可用区
+        r"""<p>可用区</p>
         :rtype: str
         """
         return self._Zone
@@ -17923,7 +17926,7 @@ class KibanaView(AbstractModel):
 
     @property
     def NodeId(self):
-        r"""ts-0noqayxu-az6-hot-03222010-0
+        r"""<p>ts-0noqayxu-az6-hot-03222010-0</p>
         :rtype: str
         """
         return self._NodeId
@@ -17931,6 +17934,17 @@ class KibanaView(AbstractModel):
     @NodeId.setter
     def NodeId(self, NodeId):
         self._NodeId = NodeId
+
+    @property
+    def UserIp(self):
+        r"""<p>客户侧Ip信息</p>
+        :rtype: str
+        """
+        return self._UserIp
+
+    @UserIp.setter
+    def UserIp(self, UserIp):
+        self._UserIp = UserIp
 
 
     def _deserialize(self, params):
@@ -17943,6 +17957,7 @@ class KibanaView(AbstractModel):
         self._CpuUsage = params.get("CpuUsage")
         self._Zone = params.get("Zone")
         self._NodeId = params.get("NodeId")
+        self._UserIp = params.get("UserIp")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -6887,37 +6887,37 @@ class CreateRuleItem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Direction: 规则方向：1 表示入站，0 表示出站；其它整数或省略会校验失败。方向还决定 SourceType、TargetType、Scope 与 Protocol 的可用组合。
+        :param _Direction: <p>规则方向：1 表示入站，0 表示出站；其它整数或省略会校验失败。方向还决定 SourceType、TargetType、Scope 与 Protocol 的可用组合。</p>
         :type Direction: int
-        :param _OrderIndex: 规则顺序，必须填写。传 -1 时追加到当前方向末尾；正序号表示在对应位置插入并顺延后续规则；0 按 1 处理，其他负数及超范围值不应使用。新增请求包含多条规则时，Direction 必须相同；追加时全部传 -1，插入时按请求顺序传连续递增的正序号。修改请求只接受一条规则。
+        :param _OrderIndex: <p>规则顺序。不传默认为-1，传 -1 时追加到当前方向末尾；正序号表示在对应位置插入并顺延后续规则；0 按 1 处理，其他负数及超范围值不应使用。新增请求包含多条规则时，Direction 必须相同；追加时全部传 -1，插入时按请求顺序传连续递增的正序号。修改请求只接受一条规则。</p>
         :type OrderIndex: int
-        :param _Port: 目的端口。Protocol 为 ICMP 时忽略本字段并置为空字符串；其它协议必须提供可解析字符串，可按逗号分隔填写正整数单端口或“起始/结束”范围，起始值不得大于结束值，-1/-1 表示全部端口。FTP 只接受单个正整数。domain 或域名模板目的在 side 或 all 范围下仅接受 -1/-1 或 0/65535。
+        :param _Port: <p>目的端口。Protocol 为 ICMP 时忽略本字段并置为空字符串；其它协议必须提供可解析字符串，可按逗号分隔填写正整数单端口或“起始/结束”范围，起始值不得大于结束值，-1/-1 表示全部端口。FTP 只接受单个正整数。domain 或域名模板目的在 side 或 all 范围下仅接受 -1/-1 或 0/65535。</p>
         :type Port: str
-        :param _Protocol: 协议，解析不区分大小写。四层值 TCP、UDP、ICMP、ICMPV6、ANY 归一化为大写；应用层值 HTTP、HTTPS、HTTP/HTTPS、SMTP、SMTPS、SMTP/SMTPS、FTP、DNS、TLS/SSL 及别名 domain、TLS、SSL 归一化为对应标准值。ANY 表示不限定协议，不表示省略 Protocol；它同时属于可解析的四层协议和应用协议，domain、TLS、SSL 均归一化为 TLS/SSL。domain 或域名模板目的接受上述应用层协议及 ANY，但不接受 FTP 和其它四层协议；dnsparse、domainiptwoverify 仅接受 TCP 或 UDP 且仅支持 serial；其它目的在公有云环境不接受 FTP、ANY 之外的应用层协议。side 或 all 范围下，入站仅接受 TCP，出站仅接受 TCP、HTTP/HTTPS 或 TLS/SSL。DNS 用于非 domain 目的且目的不是 * 时，目的内容还必须是非 IP 的合法域名规则列表。使用协议端口模板时，模板中的每组协议和端口也执行这些联动校验。
+        :param _Protocol: <p>协议，解析不区分大小写。四层值 TCP、UDP、ICMP、ICMPV6、ANY 归一化为大写；应用层值 HTTP、HTTPS、HTTP/HTTPS、SMTP、SMTPS、SMTP/SMTPS、FTP、DNS、TLS/SSL 及别名 domain、TLS、SSL 归一化为对应标准值。ANY 表示不限定协议，不表示省略 Protocol；它同时属于可解析的四层协议和应用协议，domain、TLS、SSL 均归一化为 TLS/SSL。domain 或域名模板目的接受上述应用层协议及 ANY，但不接受 FTP 和其它四层协议；dnsparse、domainiptwoverify 仅接受 TCP 或 UDP 且仅支持 serial；其它目的在公有云环境不接受 FTP、ANY 之外的应用层协议。side 或 all 范围下，入站仅接受 TCP，出站仅接受 TCP、HTTP/HTTPS 或 TLS/SSL。DNS 用于非 domain 目的且目的不是 * 时，目的内容还必须是非 IP 的合法域名规则列表。使用协议端口模板时，模板中的每组协议和端口也执行这些联动校验。</p>
         :type Protocol: str
-        :param _RuleAction: 流量处理动作，解析不区分大小写。accept 表示放行，drop 表示拒绝，log 表示观察；isolateinaccept 表示放行访问隔离资产的白名单流量，isolateindrop 表示阻断访问隔离资产的其它流量，isolateoutaccept 表示放行隔离资产访问白名单目标，isolateoutdrop 表示阻断隔离资产访问其它目标。drop 及其拒绝别名还会校验当前账号是否具备互联网边界阻断能力。
+        :param _RuleAction: <p>流量处理动作，解析不区分大小写。accept 表示放行，drop 表示拒绝，log 表示观察；isolateinaccept 表示放行访问隔离资产的白名单流量，isolateindrop 表示阻断访问隔离资产的其它流量，isolateoutaccept 表示放行隔离资产访问白名单目标，isolateoutdrop 表示阻断隔离资产访问其它目标。drop 及其拒绝别名还会校验当前账号是否具备互联网边界阻断能力。</p>
         :type RuleAction: str
-        :param _SourceContent: 访问源内容。ip 或 net 使用合法 IP/CIDR 列表，普通列表最多 10 项；template 使用当前账号可解析的地址模板标识；Direction=0 时，instance、group、tag 使用相应资源标识，其中 instance 必须能解析到公网 IP，tag 必须存在且格式为 {"Key":"标签键","Value":"标签值"}；Direction=1 时，location 使用地域 code CSV 并须通过当前账号的新地域规则能力校验，vendor 使用 tencent、aliyun、aws、huawei、azure 或 all 的 CSV。location、vendor 保存时会转换为地域或厂商匹配信息。
+        :param _SourceContent: <p>访问源内容。ip 或 net 使用合法 IP/CIDR 列表，普通列表最多 10 项；template 使用当前账号可解析的地址模板标识；Direction=0 时，instance、group、tag 使用相应资源标识，其中 instance 必须能解析到公网 IP，tag 必须存在且格式为 {&quot;Key&quot;:&quot;标签键&quot;,&quot;Value&quot;:&quot;标签值&quot;}；Direction=1 时，location 使用地域 code CSV 并须通过当前账号的新地域规则能力校验，vendor 使用 tencent、aliyun、aws、huawei、azure 或 all 的 CSV。location、vendor 保存时会转换为地域或厂商匹配信息。</p>
         :type SourceContent: str
-        :param _SourceType: 访问源类型，解析不区分大小写。net、ip 均表示 IP/CIDR，template 表示地址模板，instance 表示资产实例，group 表示资产分组，tag 表示资源标签，location 表示地域，vendor 表示云厂商。Direction=1 接受 ip、net、template、location、vendor；Direction=0 接受 ip、net、template、instance、group、tag。ip 与 net 按同一类型处理。
+        :param _SourceType: <p>访问源类型，解析不区分大小写。net、ip 均表示 IP/CIDR，template 表示地址模板，instance 表示资产实例，group 表示资产分组，tag 表示资源标签，location 表示地域，vendor 表示云厂商。Direction=1 接受 ip、net、template、location、vendor；Direction=0 接受 ip、net、template、instance、group、tag。ip 与 net 按同一类型处理。</p>
         :type SourceType: str
-        :param _TargetContent: 访问目的内容。ip 或 net 使用合法 IP/CIDR 列表；domain 使用合法的 IP、普通域名或通配域名列表，也接受单独的 *；普通列表最多 10 项，通配域名最多 5 级。domain 配合 DNS 协议时不接受 IP。dnsparse 使用单个合法域名、泛域名或当前账号可解析的 mb_ 域名模板，domainiptwoverify 使用单个不含通配符的合法域名或此类模板；两者均不接受单独的 *、IP、逗号列表或段内通配域名。串行 domain 段内通配和 domainiptwoverify 模板要求当前环境支持对应能力。template 使用当前账号可解析的地址模板标识；Direction=1 时，instance、group、tag 使用相应资源标识，其中 instance 必须能解析到公网 IP，tag 必须存在且格式为 {"Key":"标签键","Value":"标签值"}；Direction=0 时，location 使用地域 code CSV，vendor 使用 tencent、aliyun、aws、huawei、azure 或 all 的 CSV。规范化后的内容最长 1023。
+        :param _TargetContent: <p>访问目的内容。ip 或 net 使用合法 IP/CIDR 列表；domain 使用合法的 IP、普通域名或通配域名列表，也接受单独的 *；普通列表最多 10 项，通配域名最多 5 级。domain 配合 DNS 协议时不接受 IP。dnsparse 使用单个合法域名、泛域名或当前账号可解析的 mb_ 域名模板，domainiptwoverify 使用单个不含通配符的合法域名或此类模板；两者均不接受单独的 *、IP、逗号列表或段内通配域名。串行 domain 段内通配和 domainiptwoverify 模板要求当前环境支持对应能力。template 使用当前账号可解析的地址模板标识；Direction=1 时，instance、group、tag 使用相应资源标识，其中 instance 必须能解析到公网 IP，tag 必须存在且格式为 {&quot;Key&quot;:&quot;标签键&quot;,&quot;Value&quot;:&quot;标签值&quot;}；Direction=0 时，location 使用地域 code CSV，vendor 使用 tencent、aliyun、aws、huawei、azure 或 all 的 CSV。规范化后的内容最长 1023。</p>
         :type TargetContent: str
-        :param _TargetType: 访问目的类型，解析不区分大小写。net、ip 均表示 IP/CIDR，template 表示地址模板，instance 表示资产实例，group 表示资产分组，tag 表示资源标签，location 表示地域，vendor 表示云厂商，domain 表示 FQDN 匹配（内容也可传 IP 或 *），dnsparse 表示宽松匹配：Host/SNI 与域名匹配，或目的 IP 属于该域名当前 DNS 解析结果，满足任一条件即命中；domainiptwoverify 表示严格匹配：上述两个条件必须同时满足。Direction=1 接受 ip、net、template、domain、instance、group、tag；Direction=0 接受 ip、net、template、domain、dnsparse、domainiptwoverify、location、vendor。
+        :param _TargetType: <p>访问目的类型，解析不区分大小写。net、ip 均表示 IP/CIDR，template 表示地址模板，instance 表示资产实例，group 表示资产分组，tag 表示资源标签，location 表示地域，vendor 表示云厂商，domain 表示 FQDN 匹配（内容也可传 IP 或 *），dnsparse 表示宽松匹配：Host/SNI 与域名匹配，或目的 IP 属于该域名当前 DNS 解析结果，满足任一条件即命中；domainiptwoverify 表示严格匹配：上述两个条件必须同时满足。Direction=1 接受 ip、net、template、domain、instance、group、tag；Direction=0 接受 ip、net、template、domain、dnsparse、domainiptwoverify、location、vendor。</p>
         :type TargetType: str
-        :param _Description: 规则描述，不超过 100 个字符。新增时按请求值保存；修改时完整替换，不继承旧值。
+        :param _Description: <p>规则描述，不超过 100 个字符。新增时按请求值保存；修改时完整替换，不继承旧值。</p>
         :type Description: str
-        :param _Enable: 启用状态。非空值不区分大小写接受字符串 true 或 false，并归一化为启用或停用；省略或传空字符串时读取当前账号的访问控制默认启用配置，该配置不可用时默认启用。替换现有规则时不继承旧值。
+        :param _Enable: <p>启用状态。非空值不区分大小写接受字符串 true 或 false，并归一化为启用或停用；省略或传空字符串时读取当前账号的访问控制默认启用配置，该配置不可用时默认启用。替换现有规则时不继承旧值。</p>
         :type Enable: str
-        :param _LogId: 关联告警或来源事件 ID。新增时省略或传空字符串表示不关联；修改时应将 DescribeCfwRules 返回的 rules[].log_id 原样传入，未返回时省略或传空字符串。替换时不会自动继承旧值；From=batch_import_cover 时，非空值还会作为覆盖导入后规则的字符串标识复用。
+        :param _LogId: <p>关联告警或来源事件 ID。新增时省略或传空字符串表示不关联；修改时应将 DescribeCfwRules 返回的 rules[].log_id 原样传入，未返回时省略或传空字符串。替换时不会自动继承旧值；From=batch_import_cover 时，非空值还会作为覆盖导入后规则的字符串标识复用。</p>
         :type LogId: str
-        :param _ParamTemplateId: 协议端口模板 ID。省略或传空字符串表示不使用模板；非空时必须指向当前账号已有且内容格式为“协议:端口”的模板，否则请求失败。模板中的协议和端口须满足 Direction、TargetType 与 Scope 的联动限制。Protocol 和 Port 仍须符合各自字段规则，但不要求固定填写 ANY、-1/-1 或 serial。
+        :param _ParamTemplateId: <p>协议端口模板 ID。省略或传空字符串表示不使用模板；非空时必须指向当前账号已有且内容格式为“协议:端口”的模板，否则请求失败。模板中的协议和端口须满足 Direction、TargetType 与 Scope 的联动限制。Protocol 和 Port 仍须符合各自字段规则，但不要求固定填写 ANY、-1/-1 或 serial。</p>
         :type ParamTemplateId: str
-        :param _RuleSource: 规则来源：0 表示普通规则，2 表示隔离资产出向访问规则。新增时可以省略，省略按 0 处理；显式传值及修改时仅接受 0 或 2，修改时应传入原规则值。
+        :param _RuleSource: <p>规则来源：0 表示普通规则，2 表示隔离资产出向访问规则。新增时可以省略，省略按 0 处理；显式传值及修改时仅接受 0 或 2，修改时应传入原规则值。</p>
         :type RuleSource: int
-        :param _Scope: 生效范围，解析不区分大小写：serial 表示仅互联网边界串行防火墙，side 表示仅互联网边界旁路防火墙，all 表示同时作用于串行和旁路防火墙；省略、空字符串或其它值会校验失败。国际站环境会将有效输入统一归一化为 serial。协议、端口、目的类型及协议端口模板的联动限制见 Protocol、Port 和 ParamTemplateId。
+        :param _Scope: <p>生效范围，必填，解析不区分大小写：serial 表示仅互联网边界串行防火墙，side 表示仅互联网边界旁路防火墙，all 表示同时作用于串行和旁路防火墙；省略、空字符串或其它值会校验失败。国际站环境会将有效输入统一归一化为 serial。协议、端口、目的类型及协议端口模板的联动限制见 Protocol、Port 和 ParamTemplateId。</p>
         :type Scope: str
-        :param _Uuid: 规则数值 ID。普通新增、指定位置新增和批量导入会忽略该字段；From=batch_import_cover 时可使用正整数 ID；修改时必须提供当前账号已有且可修改的正整数 ID，用于定位并完整替换原规则，省略、非正整数或不存在的 ID 会导致请求失败。
+        :param _Uuid: <p>规则数值 ID。普通新增、指定位置新增和批量导入会忽略该字段；From=batch_import_cover 时可使用正整数 ID；修改时必须提供当前账号已有且可修改的正整数 ID，用于定位并完整替换原规则，省略、非正整数或不存在的 ID 会导致请求失败。</p>
         :type Uuid: int
         """
         self._Direction = None
@@ -6939,7 +6939,7 @@ class CreateRuleItem(AbstractModel):
 
     @property
     def Direction(self):
-        r"""规则方向：1 表示入站，0 表示出站；其它整数或省略会校验失败。方向还决定 SourceType、TargetType、Scope 与 Protocol 的可用组合。
+        r"""<p>规则方向：1 表示入站，0 表示出站；其它整数或省略会校验失败。方向还决定 SourceType、TargetType、Scope 与 Protocol 的可用组合。</p>
         :rtype: int
         """
         return self._Direction
@@ -6950,7 +6950,7 @@ class CreateRuleItem(AbstractModel):
 
     @property
     def OrderIndex(self):
-        r"""规则顺序，必须填写。传 -1 时追加到当前方向末尾；正序号表示在对应位置插入并顺延后续规则；0 按 1 处理，其他负数及超范围值不应使用。新增请求包含多条规则时，Direction 必须相同；追加时全部传 -1，插入时按请求顺序传连续递增的正序号。修改请求只接受一条规则。
+        r"""<p>规则顺序。不传默认为-1，传 -1 时追加到当前方向末尾；正序号表示在对应位置插入并顺延后续规则；0 按 1 处理，其他负数及超范围值不应使用。新增请求包含多条规则时，Direction 必须相同；追加时全部传 -1，插入时按请求顺序传连续递增的正序号。修改请求只接受一条规则。</p>
         :rtype: int
         """
         return self._OrderIndex
@@ -6961,7 +6961,7 @@ class CreateRuleItem(AbstractModel):
 
     @property
     def Port(self):
-        r"""目的端口。Protocol 为 ICMP 时忽略本字段并置为空字符串；其它协议必须提供可解析字符串，可按逗号分隔填写正整数单端口或“起始/结束”范围，起始值不得大于结束值，-1/-1 表示全部端口。FTP 只接受单个正整数。domain 或域名模板目的在 side 或 all 范围下仅接受 -1/-1 或 0/65535。
+        r"""<p>目的端口。Protocol 为 ICMP 时忽略本字段并置为空字符串；其它协议必须提供可解析字符串，可按逗号分隔填写正整数单端口或“起始/结束”范围，起始值不得大于结束值，-1/-1 表示全部端口。FTP 只接受单个正整数。domain 或域名模板目的在 side 或 all 范围下仅接受 -1/-1 或 0/65535。</p>
         :rtype: str
         """
         return self._Port
@@ -6972,7 +6972,7 @@ class CreateRuleItem(AbstractModel):
 
     @property
     def Protocol(self):
-        r"""协议，解析不区分大小写。四层值 TCP、UDP、ICMP、ICMPV6、ANY 归一化为大写；应用层值 HTTP、HTTPS、HTTP/HTTPS、SMTP、SMTPS、SMTP/SMTPS、FTP、DNS、TLS/SSL 及别名 domain、TLS、SSL 归一化为对应标准值。ANY 表示不限定协议，不表示省略 Protocol；它同时属于可解析的四层协议和应用协议，domain、TLS、SSL 均归一化为 TLS/SSL。domain 或域名模板目的接受上述应用层协议及 ANY，但不接受 FTP 和其它四层协议；dnsparse、domainiptwoverify 仅接受 TCP 或 UDP 且仅支持 serial；其它目的在公有云环境不接受 FTP、ANY 之外的应用层协议。side 或 all 范围下，入站仅接受 TCP，出站仅接受 TCP、HTTP/HTTPS 或 TLS/SSL。DNS 用于非 domain 目的且目的不是 * 时，目的内容还必须是非 IP 的合法域名规则列表。使用协议端口模板时，模板中的每组协议和端口也执行这些联动校验。
+        r"""<p>协议，解析不区分大小写。四层值 TCP、UDP、ICMP、ICMPV6、ANY 归一化为大写；应用层值 HTTP、HTTPS、HTTP/HTTPS、SMTP、SMTPS、SMTP/SMTPS、FTP、DNS、TLS/SSL 及别名 domain、TLS、SSL 归一化为对应标准值。ANY 表示不限定协议，不表示省略 Protocol；它同时属于可解析的四层协议和应用协议，domain、TLS、SSL 均归一化为 TLS/SSL。domain 或域名模板目的接受上述应用层协议及 ANY，但不接受 FTP 和其它四层协议；dnsparse、domainiptwoverify 仅接受 TCP 或 UDP 且仅支持 serial；其它目的在公有云环境不接受 FTP、ANY 之外的应用层协议。side 或 all 范围下，入站仅接受 TCP，出站仅接受 TCP、HTTP/HTTPS 或 TLS/SSL。DNS 用于非 domain 目的且目的不是 * 时，目的内容还必须是非 IP 的合法域名规则列表。使用协议端口模板时，模板中的每组协议和端口也执行这些联动校验。</p>
         :rtype: str
         """
         return self._Protocol
@@ -6983,7 +6983,7 @@ class CreateRuleItem(AbstractModel):
 
     @property
     def RuleAction(self):
-        r"""流量处理动作，解析不区分大小写。accept 表示放行，drop 表示拒绝，log 表示观察；isolateinaccept 表示放行访问隔离资产的白名单流量，isolateindrop 表示阻断访问隔离资产的其它流量，isolateoutaccept 表示放行隔离资产访问白名单目标，isolateoutdrop 表示阻断隔离资产访问其它目标。drop 及其拒绝别名还会校验当前账号是否具备互联网边界阻断能力。
+        r"""<p>流量处理动作，解析不区分大小写。accept 表示放行，drop 表示拒绝，log 表示观察；isolateinaccept 表示放行访问隔离资产的白名单流量，isolateindrop 表示阻断访问隔离资产的其它流量，isolateoutaccept 表示放行隔离资产访问白名单目标，isolateoutdrop 表示阻断隔离资产访问其它目标。drop 及其拒绝别名还会校验当前账号是否具备互联网边界阻断能力。</p>
         :rtype: str
         """
         return self._RuleAction
@@ -6994,7 +6994,7 @@ class CreateRuleItem(AbstractModel):
 
     @property
     def SourceContent(self):
-        r"""访问源内容。ip 或 net 使用合法 IP/CIDR 列表，普通列表最多 10 项；template 使用当前账号可解析的地址模板标识；Direction=0 时，instance、group、tag 使用相应资源标识，其中 instance 必须能解析到公网 IP，tag 必须存在且格式为 {"Key":"标签键","Value":"标签值"}；Direction=1 时，location 使用地域 code CSV 并须通过当前账号的新地域规则能力校验，vendor 使用 tencent、aliyun、aws、huawei、azure 或 all 的 CSV。location、vendor 保存时会转换为地域或厂商匹配信息。
+        r"""<p>访问源内容。ip 或 net 使用合法 IP/CIDR 列表，普通列表最多 10 项；template 使用当前账号可解析的地址模板标识；Direction=0 时，instance、group、tag 使用相应资源标识，其中 instance 必须能解析到公网 IP，tag 必须存在且格式为 {&quot;Key&quot;:&quot;标签键&quot;,&quot;Value&quot;:&quot;标签值&quot;}；Direction=1 时，location 使用地域 code CSV 并须通过当前账号的新地域规则能力校验，vendor 使用 tencent、aliyun、aws、huawei、azure 或 all 的 CSV。location、vendor 保存时会转换为地域或厂商匹配信息。</p>
         :rtype: str
         """
         return self._SourceContent
@@ -7005,7 +7005,7 @@ class CreateRuleItem(AbstractModel):
 
     @property
     def SourceType(self):
-        r"""访问源类型，解析不区分大小写。net、ip 均表示 IP/CIDR，template 表示地址模板，instance 表示资产实例，group 表示资产分组，tag 表示资源标签，location 表示地域，vendor 表示云厂商。Direction=1 接受 ip、net、template、location、vendor；Direction=0 接受 ip、net、template、instance、group、tag。ip 与 net 按同一类型处理。
+        r"""<p>访问源类型，解析不区分大小写。net、ip 均表示 IP/CIDR，template 表示地址模板，instance 表示资产实例，group 表示资产分组，tag 表示资源标签，location 表示地域，vendor 表示云厂商。Direction=1 接受 ip、net、template、location、vendor；Direction=0 接受 ip、net、template、instance、group、tag。ip 与 net 按同一类型处理。</p>
         :rtype: str
         """
         return self._SourceType
@@ -7016,7 +7016,7 @@ class CreateRuleItem(AbstractModel):
 
     @property
     def TargetContent(self):
-        r"""访问目的内容。ip 或 net 使用合法 IP/CIDR 列表；domain 使用合法的 IP、普通域名或通配域名列表，也接受单独的 *；普通列表最多 10 项，通配域名最多 5 级。domain 配合 DNS 协议时不接受 IP。dnsparse 使用单个合法域名、泛域名或当前账号可解析的 mb_ 域名模板，domainiptwoverify 使用单个不含通配符的合法域名或此类模板；两者均不接受单独的 *、IP、逗号列表或段内通配域名。串行 domain 段内通配和 domainiptwoverify 模板要求当前环境支持对应能力。template 使用当前账号可解析的地址模板标识；Direction=1 时，instance、group、tag 使用相应资源标识，其中 instance 必须能解析到公网 IP，tag 必须存在且格式为 {"Key":"标签键","Value":"标签值"}；Direction=0 时，location 使用地域 code CSV，vendor 使用 tencent、aliyun、aws、huawei、azure 或 all 的 CSV。规范化后的内容最长 1023。
+        r"""<p>访问目的内容。ip 或 net 使用合法 IP/CIDR 列表；domain 使用合法的 IP、普通域名或通配域名列表，也接受单独的 *；普通列表最多 10 项，通配域名最多 5 级。domain 配合 DNS 协议时不接受 IP。dnsparse 使用单个合法域名、泛域名或当前账号可解析的 mb_ 域名模板，domainiptwoverify 使用单个不含通配符的合法域名或此类模板；两者均不接受单独的 *、IP、逗号列表或段内通配域名。串行 domain 段内通配和 domainiptwoverify 模板要求当前环境支持对应能力。template 使用当前账号可解析的地址模板标识；Direction=1 时，instance、group、tag 使用相应资源标识，其中 instance 必须能解析到公网 IP，tag 必须存在且格式为 {&quot;Key&quot;:&quot;标签键&quot;,&quot;Value&quot;:&quot;标签值&quot;}；Direction=0 时，location 使用地域 code CSV，vendor 使用 tencent、aliyun、aws、huawei、azure 或 all 的 CSV。规范化后的内容最长 1023。</p>
         :rtype: str
         """
         return self._TargetContent
@@ -7027,7 +7027,7 @@ class CreateRuleItem(AbstractModel):
 
     @property
     def TargetType(self):
-        r"""访问目的类型，解析不区分大小写。net、ip 均表示 IP/CIDR，template 表示地址模板，instance 表示资产实例，group 表示资产分组，tag 表示资源标签，location 表示地域，vendor 表示云厂商，domain 表示 FQDN 匹配（内容也可传 IP 或 *），dnsparse 表示宽松匹配：Host/SNI 与域名匹配，或目的 IP 属于该域名当前 DNS 解析结果，满足任一条件即命中；domainiptwoverify 表示严格匹配：上述两个条件必须同时满足。Direction=1 接受 ip、net、template、domain、instance、group、tag；Direction=0 接受 ip、net、template、domain、dnsparse、domainiptwoverify、location、vendor。
+        r"""<p>访问目的类型，解析不区分大小写。net、ip 均表示 IP/CIDR，template 表示地址模板，instance 表示资产实例，group 表示资产分组，tag 表示资源标签，location 表示地域，vendor 表示云厂商，domain 表示 FQDN 匹配（内容也可传 IP 或 *），dnsparse 表示宽松匹配：Host/SNI 与域名匹配，或目的 IP 属于该域名当前 DNS 解析结果，满足任一条件即命中；domainiptwoverify 表示严格匹配：上述两个条件必须同时满足。Direction=1 接受 ip、net、template、domain、instance、group、tag；Direction=0 接受 ip、net、template、domain、dnsparse、domainiptwoverify、location、vendor。</p>
         :rtype: str
         """
         return self._TargetType
@@ -7038,7 +7038,7 @@ class CreateRuleItem(AbstractModel):
 
     @property
     def Description(self):
-        r"""规则描述，不超过 100 个字符。新增时按请求值保存；修改时完整替换，不继承旧值。
+        r"""<p>规则描述，不超过 100 个字符。新增时按请求值保存；修改时完整替换，不继承旧值。</p>
         :rtype: str
         """
         return self._Description
@@ -7049,7 +7049,7 @@ class CreateRuleItem(AbstractModel):
 
     @property
     def Enable(self):
-        r"""启用状态。非空值不区分大小写接受字符串 true 或 false，并归一化为启用或停用；省略或传空字符串时读取当前账号的访问控制默认启用配置，该配置不可用时默认启用。替换现有规则时不继承旧值。
+        r"""<p>启用状态。非空值不区分大小写接受字符串 true 或 false，并归一化为启用或停用；省略或传空字符串时读取当前账号的访问控制默认启用配置，该配置不可用时默认启用。替换现有规则时不继承旧值。</p>
         :rtype: str
         """
         return self._Enable
@@ -7060,7 +7060,7 @@ class CreateRuleItem(AbstractModel):
 
     @property
     def LogId(self):
-        r"""关联告警或来源事件 ID。新增时省略或传空字符串表示不关联；修改时应将 DescribeCfwRules 返回的 rules[].log_id 原样传入，未返回时省略或传空字符串。替换时不会自动继承旧值；From=batch_import_cover 时，非空值还会作为覆盖导入后规则的字符串标识复用。
+        r"""<p>关联告警或来源事件 ID。新增时省略或传空字符串表示不关联；修改时应将 DescribeCfwRules 返回的 rules[].log_id 原样传入，未返回时省略或传空字符串。替换时不会自动继承旧值；From=batch_import_cover 时，非空值还会作为覆盖导入后规则的字符串标识复用。</p>
         :rtype: str
         """
         return self._LogId
@@ -7071,7 +7071,7 @@ class CreateRuleItem(AbstractModel):
 
     @property
     def ParamTemplateId(self):
-        r"""协议端口模板 ID。省略或传空字符串表示不使用模板；非空时必须指向当前账号已有且内容格式为“协议:端口”的模板，否则请求失败。模板中的协议和端口须满足 Direction、TargetType 与 Scope 的联动限制。Protocol 和 Port 仍须符合各自字段规则，但不要求固定填写 ANY、-1/-1 或 serial。
+        r"""<p>协议端口模板 ID。省略或传空字符串表示不使用模板；非空时必须指向当前账号已有且内容格式为“协议:端口”的模板，否则请求失败。模板中的协议和端口须满足 Direction、TargetType 与 Scope 的联动限制。Protocol 和 Port 仍须符合各自字段规则，但不要求固定填写 ANY、-1/-1 或 serial。</p>
         :rtype: str
         """
         return self._ParamTemplateId
@@ -7082,7 +7082,7 @@ class CreateRuleItem(AbstractModel):
 
     @property
     def RuleSource(self):
-        r"""规则来源：0 表示普通规则，2 表示隔离资产出向访问规则。新增时可以省略，省略按 0 处理；显式传值及修改时仅接受 0 或 2，修改时应传入原规则值。
+        r"""<p>规则来源：0 表示普通规则，2 表示隔离资产出向访问规则。新增时可以省略，省略按 0 处理；显式传值及修改时仅接受 0 或 2，修改时应传入原规则值。</p>
         :rtype: int
         """
         return self._RuleSource
@@ -7093,7 +7093,7 @@ class CreateRuleItem(AbstractModel):
 
     @property
     def Scope(self):
-        r"""生效范围，解析不区分大小写：serial 表示仅互联网边界串行防火墙，side 表示仅互联网边界旁路防火墙，all 表示同时作用于串行和旁路防火墙；省略、空字符串或其它值会校验失败。国际站环境会将有效输入统一归一化为 serial。协议、端口、目的类型及协议端口模板的联动限制见 Protocol、Port 和 ParamTemplateId。
+        r"""<p>生效范围，必填，解析不区分大小写：serial 表示仅互联网边界串行防火墙，side 表示仅互联网边界旁路防火墙，all 表示同时作用于串行和旁路防火墙；省略、空字符串或其它值会校验失败。国际站环境会将有效输入统一归一化为 serial。协议、端口、目的类型及协议端口模板的联动限制见 Protocol、Port 和 ParamTemplateId。</p>
         :rtype: str
         """
         return self._Scope
@@ -7104,7 +7104,7 @@ class CreateRuleItem(AbstractModel):
 
     @property
     def Uuid(self):
-        r"""规则数值 ID。普通新增、指定位置新增和批量导入会忽略该字段；From=batch_import_cover 时可使用正整数 ID；修改时必须提供当前账号已有且可修改的正整数 ID，用于定位并完整替换原规则，省略、非正整数或不存在的 ID 会导致请求失败。
+        r"""<p>规则数值 ID。普通新增、指定位置新增和批量导入会忽略该字段；From=batch_import_cover 时可使用正整数 ID；修改时必须提供当前账号已有且可修改的正整数 ID，用于定位并完整替换原规则，省略、非正整数或不存在的 ID 会导致请求失败。</p>
         :rtype: int
         """
         return self._Uuid
@@ -7458,6 +7458,119 @@ class CreateVpcFwGroupResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._FwGroupId = params.get("FwGroupId")
+        self._RequestId = params.get("RequestId")
+
+
+class CreateWhiteRuleRequest(AbstractModel):
+    r"""CreateWhiteRule请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RuleType: 使用 JSON integer 表示白名单类型，一次请求使用一种：
+- 2 精确外部 IP：Rules[].Info.SrcIP、Rules[].Info.DstIP 两个字段中恰好填写一个。
+- 3 域名：填写 Rules[].Info.Ioc。
+- 4 威胁情报：填写 Rules[].Info.Ioc，FwType=1。
+- 5 资产：Rules[].Info.SrcIP、Rules[].Info.DstIP 两个字段中恰好填写一个，值取 DescribeCfwAssets 的 instance_id。
+- 6 IPS 自定义：Rules[].Info.IdsRuleId 必填，Rules[].Info.SrcIP、Rules[].Info.DstIP 至少一项为具体 IP；FwType=16 时目的 IPv4 可带端口；FwType 包含 1 时具体 IP 至少一项属于当前账号资产。
+- 8 IP 扩展：在 Rules[].Info 中填写 CIDR、端口或源/目的组合。
+- 9 NDR 扩展：FwType=16，Rules[].Info 至少填写一个 UserAgent、Url、XForwardedFor、HostName、FileName、FileMd5；可组合 SrcIP、DstIP，搭配 IdsRuleId 时同时填写 SrcIP 或 DstIP。
+        :type RuleType: int
+        :param _Rules: JSON object 数组，至少一项；每项填写 1–50 个字符的 RuleName，且同一请求内名称唯一。列表内共用一个 RuleType，不同类型分次调用。Rules[].Info 多值字段按笛卡尔积展开，一次请求展开后最多 100 条。WhiteId 由服务端生成，Id 和 IdsRuleName 由服务端管理。
+        :type Rules: list of IdsWhiteRule
+        :param _CoverDuplicate: 使用 JSON integer。仅 RuleType=2 使用：0 或省略表示保留冲突封禁并跳过冲突项；1 表示删除同 IP、同方向冲突封禁后创建白名单，选择 1 前先确认该删除操作。其它 RuleType 省略本参数。
+        :type CoverDuplicate: int
+        """
+        self._RuleType = None
+        self._Rules = None
+        self._CoverDuplicate = None
+
+    @property
+    def RuleType(self):
+        r"""使用 JSON integer 表示白名单类型，一次请求使用一种：
+- 2 精确外部 IP：Rules[].Info.SrcIP、Rules[].Info.DstIP 两个字段中恰好填写一个。
+- 3 域名：填写 Rules[].Info.Ioc。
+- 4 威胁情报：填写 Rules[].Info.Ioc，FwType=1。
+- 5 资产：Rules[].Info.SrcIP、Rules[].Info.DstIP 两个字段中恰好填写一个，值取 DescribeCfwAssets 的 instance_id。
+- 6 IPS 自定义：Rules[].Info.IdsRuleId 必填，Rules[].Info.SrcIP、Rules[].Info.DstIP 至少一项为具体 IP；FwType=16 时目的 IPv4 可带端口；FwType 包含 1 时具体 IP 至少一项属于当前账号资产。
+- 8 IP 扩展：在 Rules[].Info 中填写 CIDR、端口或源/目的组合。
+- 9 NDR 扩展：FwType=16，Rules[].Info 至少填写一个 UserAgent、Url、XForwardedFor、HostName、FileName、FileMd5；可组合 SrcIP、DstIP，搭配 IdsRuleId 时同时填写 SrcIP 或 DstIP。
+        :rtype: int
+        """
+        return self._RuleType
+
+    @RuleType.setter
+    def RuleType(self, RuleType):
+        self._RuleType = RuleType
+
+    @property
+    def Rules(self):
+        r"""JSON object 数组，至少一项；每项填写 1–50 个字符的 RuleName，且同一请求内名称唯一。列表内共用一个 RuleType，不同类型分次调用。Rules[].Info 多值字段按笛卡尔积展开，一次请求展开后最多 100 条。WhiteId 由服务端生成，Id 和 IdsRuleName 由服务端管理。
+        :rtype: list of IdsWhiteRule
+        """
+        return self._Rules
+
+    @Rules.setter
+    def Rules(self, Rules):
+        self._Rules = Rules
+
+    @property
+    def CoverDuplicate(self):
+        r"""使用 JSON integer。仅 RuleType=2 使用：0 或省略表示保留冲突封禁并跳过冲突项；1 表示删除同 IP、同方向冲突封禁后创建白名单，选择 1 前先确认该删除操作。其它 RuleType 省略本参数。
+        :rtype: int
+        """
+        return self._CoverDuplicate
+
+    @CoverDuplicate.setter
+    def CoverDuplicate(self, CoverDuplicate):
+        self._CoverDuplicate = CoverDuplicate
+
+
+    def _deserialize(self, params):
+        self._RuleType = params.get("RuleType")
+        if params.get("Rules") is not None:
+            self._Rules = []
+            for item in params.get("Rules"):
+                obj = IdsWhiteRule()
+                obj._deserialize(item)
+                self._Rules.append(obj)
+        self._CoverDuplicate = params.get("CoverDuplicate")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateWhiteRuleResponse(AbstractModel):
+    r"""CreateWhiteRule返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
 
 
@@ -8725,6 +8838,100 @@ class DeleteVpcFwGroupResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteWhiteRuleRequest(AbstractModel):
+    r"""DeleteWhiteRule请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _WhiteIdList: JSON string 数组，至少一项；元素取自 DescribeWhiteRule.Data[].WhiteId，可批量。
+        :type WhiteIdList: list of str
+        """
+        self._WhiteIdList = None
+
+    @property
+    def WhiteIdList(self):
+        r"""JSON string 数组，至少一项；元素取自 DescribeWhiteRule.Data[].WhiteId，可批量。
+        :rtype: list of str
+        """
+        return self._WhiteIdList
+
+    @WhiteIdList.setter
+    def WhiteIdList(self, WhiteIdList):
+        self._WhiteIdList = WhiteIdList
+
+
+    def _deserialize(self, params):
+        self._WhiteIdList = params.get("WhiteIdList")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteWhiteRuleResponse(AbstractModel):
+    r"""DeleteWhiteRule返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ReturnCode: 状态码，0 表示请求被接受处理。
+        :type ReturnCode: int
+        :param _ReturnMsg: 状态信息；成功一般为 success。
+        :type ReturnMsg: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ReturnCode = None
+        self._ReturnMsg = None
+        self._RequestId = None
+
+    @property
+    def ReturnCode(self):
+        r"""状态码，0 表示请求被接受处理。
+        :rtype: int
+        """
+        return self._ReturnCode
+
+    @ReturnCode.setter
+    def ReturnCode(self, ReturnCode):
+        self._ReturnCode = ReturnCode
+
+    @property
+    def ReturnMsg(self):
+        r"""状态信息；成功一般为 success。
+        :rtype: str
+        """
+        return self._ReturnMsg
+
+    @ReturnMsg.setter
+    def ReturnMsg(self, ReturnMsg):
+        self._ReturnMsg = ReturnMsg
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._ReturnCode = params.get("ReturnCode")
+        self._ReturnMsg = params.get("ReturnMsg")
         self._RequestId = params.get("RequestId")
 
 
@@ -24940,6 +25147,116 @@ class IPDefendStatus(AbstractModel):
         
 
 
+class IdsWhiteRule(AbstractModel):
+    r"""入侵防御白名单策略。必填字段：RuleName、FwType、EndTime、Info；Comment 选填
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Comment: 策略备注，最多 200 个字符；可省略或传空字符串。
+        :type Comment: str
+        :param _EndTime: 策略截止时间，北京时间（UTC+8）YYYY-MM-DD HH:MM:SS，必须晚于当前时间；永久有效传 3000-01-01 00:00:00。
+        :type EndTime: str
+        :param _FwType: 使用 JSON integer 表示生效范围位图，取值 1–31；各项按位相加：1 互联网旁路、2 NAT、4 VPC、8 互联网串行、16 NDR。
+例如：12 表示 VPC+互联网串行，31 表示全部范围。
+匹配条件支持的范围：
+- 源/目的 IP、域名、IPS 规则：支持 1、2、4、8、16 及其组合。
+- 威胁情报：固定为 1。
+- 资产：使用 4、16 或 20。
+- UserAgent、Url、XForwardedFor、HostName、FileName、FileMd5：固定为 16；RuleType=9 同样固定为 16。
+        :type FwType: int
+        :param _Info: 匹配条件。按 RuleType 填写对应字段，无值字段省略。除 UserAgent 外，同字段多值用逗号分隔；UserAgent 多值用 <#cfw-splite#>。
+        :type Info: :class:`tencentcloud.cfw.v20190904.models.WhiteRuleInfo`
+        :param _RuleName: 策略名称，填写 1–50 个字符。
+        :type RuleName: str
+        """
+        self._Comment = None
+        self._EndTime = None
+        self._FwType = None
+        self._Info = None
+        self._RuleName = None
+
+    @property
+    def Comment(self):
+        r"""策略备注，最多 200 个字符；可省略或传空字符串。
+        :rtype: str
+        """
+        return self._Comment
+
+    @Comment.setter
+    def Comment(self, Comment):
+        self._Comment = Comment
+
+    @property
+    def EndTime(self):
+        r"""策略截止时间，北京时间（UTC+8）YYYY-MM-DD HH:MM:SS，必须晚于当前时间；永久有效传 3000-01-01 00:00:00。
+        :rtype: str
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def FwType(self):
+        r"""使用 JSON integer 表示生效范围位图，取值 1–31；各项按位相加：1 互联网旁路、2 NAT、4 VPC、8 互联网串行、16 NDR。
+例如：12 表示 VPC+互联网串行，31 表示全部范围。
+匹配条件支持的范围：
+- 源/目的 IP、域名、IPS 规则：支持 1、2、4、8、16 及其组合。
+- 威胁情报：固定为 1。
+- 资产：使用 4、16 或 20。
+- UserAgent、Url、XForwardedFor、HostName、FileName、FileMd5：固定为 16；RuleType=9 同样固定为 16。
+        :rtype: int
+        """
+        return self._FwType
+
+    @FwType.setter
+    def FwType(self, FwType):
+        self._FwType = FwType
+
+    @property
+    def Info(self):
+        r"""匹配条件。按 RuleType 填写对应字段，无值字段省略。除 UserAgent 外，同字段多值用逗号分隔；UserAgent 多值用 <#cfw-splite#>。
+        :rtype: :class:`tencentcloud.cfw.v20190904.models.WhiteRuleInfo`
+        """
+        return self._Info
+
+    @Info.setter
+    def Info(self, Info):
+        self._Info = Info
+
+    @property
+    def RuleName(self):
+        r"""策略名称，填写 1–50 个字符。
+        :rtype: str
+        """
+        return self._RuleName
+
+    @RuleName.setter
+    def RuleName(self, RuleName):
+        self._RuleName = RuleName
+
+
+    def _deserialize(self, params):
+        self._Comment = params.get("Comment")
+        self._EndTime = params.get("EndTime")
+        self._FwType = params.get("FwType")
+        if params.get("Info") is not None:
+            self._Info = WhiteRuleInfo()
+            self._Info._deserialize(params.get("Info"))
+        self._RuleName = params.get("RuleName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class InstanceInfo(AbstractModel):
     r"""实例详情结果
 
@@ -30097,6 +30414,116 @@ class ModifyVpcFwSequenceRulesRequest(AbstractModel):
 
 class ModifyVpcFwSequenceRulesResponse(AbstractModel):
     r"""ModifyVpcFwSequenceRules返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyWhiteRuleRequest(AbstractModel):
+    r"""ModifyWhiteRule请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Rule: JSON object，提交完整策略。将 DescribeWhiteRule.Data[].WhiteId 写入 Rule.Info.WhiteId；RuleName、FwType、EndTime、Comment、Info 按本次请求整体保存，Id 和 IdsRuleName 由服务端管理。
+        :type Rule: :class:`tencentcloud.cfw.v20190904.models.IdsWhiteRule`
+        :param _RuleType: 使用 JSON integer，沿用 DescribeWhiteRule.Data[].RuleType：
+- 2 精确外部 IP：Rule.Info.SrcIP、Rule.Info.DstIP 两个字段中恰好填写一个。
+- 3 域名。
+- 4 威胁情报。
+- 5 资产：Rule.Info.SrcIP、Rule.Info.DstIP 两个字段中恰好填写一个。
+- 6 IPS 自定义：Rule.Info.IdsRuleId 必填，Rule.Info.SrcIP、Rule.Info.DstIP 至少一项为具体 IP；Rule.FwType=16 时目的 IPv4 可带端口；Rule.FwType 包含 1 时具体 IP 至少一项属于当前账号资产。
+- 8 IP 扩展：在 Rule.Info 中填写 CIDR、端口或源/目的组合。
+- 9 NDR 扩展：Rule.FwType=16，Rule.Info 至少包含一个 NDR 专属条件；搭配 IdsRuleId 时同时填写 Rule.Info.SrcIP 或 Rule.Info.DstIP。
+        :type RuleType: int
+        :param _CoverDuplicate: 使用 JSON integer。仅 RuleType=2 使用：0 或省略表示保留冲突封禁；1 表示删除同 IP、同方向冲突封禁后保存，选择 1 前先确认该删除操作。其它 RuleType 省略本参数。
+        :type CoverDuplicate: int
+        """
+        self._Rule = None
+        self._RuleType = None
+        self._CoverDuplicate = None
+
+    @property
+    def Rule(self):
+        r"""JSON object，提交完整策略。将 DescribeWhiteRule.Data[].WhiteId 写入 Rule.Info.WhiteId；RuleName、FwType、EndTime、Comment、Info 按本次请求整体保存，Id 和 IdsRuleName 由服务端管理。
+        :rtype: :class:`tencentcloud.cfw.v20190904.models.IdsWhiteRule`
+        """
+        return self._Rule
+
+    @Rule.setter
+    def Rule(self, Rule):
+        self._Rule = Rule
+
+    @property
+    def RuleType(self):
+        r"""使用 JSON integer，沿用 DescribeWhiteRule.Data[].RuleType：
+- 2 精确外部 IP：Rule.Info.SrcIP、Rule.Info.DstIP 两个字段中恰好填写一个。
+- 3 域名。
+- 4 威胁情报。
+- 5 资产：Rule.Info.SrcIP、Rule.Info.DstIP 两个字段中恰好填写一个。
+- 6 IPS 自定义：Rule.Info.IdsRuleId 必填，Rule.Info.SrcIP、Rule.Info.DstIP 至少一项为具体 IP；Rule.FwType=16 时目的 IPv4 可带端口；Rule.FwType 包含 1 时具体 IP 至少一项属于当前账号资产。
+- 8 IP 扩展：在 Rule.Info 中填写 CIDR、端口或源/目的组合。
+- 9 NDR 扩展：Rule.FwType=16，Rule.Info 至少包含一个 NDR 专属条件；搭配 IdsRuleId 时同时填写 Rule.Info.SrcIP 或 Rule.Info.DstIP。
+        :rtype: int
+        """
+        return self._RuleType
+
+    @RuleType.setter
+    def RuleType(self, RuleType):
+        self._RuleType = RuleType
+
+    @property
+    def CoverDuplicate(self):
+        r"""使用 JSON integer。仅 RuleType=2 使用：0 或省略表示保留冲突封禁；1 表示删除同 IP、同方向冲突封禁后保存，选择 1 前先确认该删除操作。其它 RuleType 省略本参数。
+        :rtype: int
+        """
+        return self._CoverDuplicate
+
+    @CoverDuplicate.setter
+    def CoverDuplicate(self, CoverDuplicate):
+        self._CoverDuplicate = CoverDuplicate
+
+
+    def _deserialize(self, params):
+        if params.get("Rule") is not None:
+            self._Rule = IdsWhiteRule()
+            self._Rule._deserialize(params.get("Rule"))
+        self._RuleType = params.get("RuleType")
+        self._CoverDuplicate = params.get("CoverDuplicate")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyWhiteRuleResponse(AbstractModel):
+    r"""ModifyWhiteRule返回参数结构体
 
     """
 
@@ -40106,6 +40533,222 @@ class VpcZoneData(AbstractModel):
     def _deserialize(self, params):
         self._Zone = params.get("Zone")
         self._Region = params.get("Region")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class WhiteRuleInfo(AbstractModel):
+    r"""白名单匹配条件；各字段的适用 RuleType 和取值要求见字段说明。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DstIP: 访问目的。RuleType=2：本字段与 SrcIP 两个字段中恰好填写一个，值为精确 IP；RuleType=5：本字段与 SrcIP 两个字段中恰好填写一个，值为资产 instance_id；RuleType=6：与 SrcIP 至少一项为具体 IP，另一项可省略或使用同 IP 版本的 0.0.0.0/0、::/0，两项均为具体 IP 时使用相同 IP 版本；FwType=16 时具体目的 IPv4 可带端口。RuleType=8：IP、CIDR、IP:端口或 CIDR:端口，可与 SrcIP 组合；RuleType=9：IP、CIDR 或带端口地址，可与 NDR 专属条件组合；搭配 IdsRuleId 时使用 IPv4 或 IPv4:端口。IPv6 带端口时使用 [IPv6]:端口；已选字段的多值用逗号分隔。
+        :type DstIP: str
+        :param _FileMd5: 文件 MD5，仅 RuleType=9。32 位十六进制；多值逗号分隔，最多 10 个。
+        :type FileMd5: str
+        :param _FileName: 文件名，仅 RuleType=9；支持精确匹配及 ?、* 通配符，区分大小写；多值用逗号分隔，最多 10 个。
+        :type FileName: str
+        :param _HostName: HTTP Host，仅 RuleType=9；填写主机名或 IP，支持 ?、* 通配符并区分大小写；多值用逗号分隔。
+        :type HostName: str
+        :param _Id: 服务端内部字段。
+        :type Id: int
+        :param _IdsRuleId: IPS 规则 ID，取自 DescribeIpsRuleListNew.Data[].RuleID。RuleType=6 必填；RuleType=9 可选，填写时同时填写 SrcIP 或 DstIP。
+        :type IdsRuleId: str
+        :param _IdsRuleName: 服务端保留字段。
+        :type IdsRuleName: str
+        :param _Ioc: RuleType=3 填一个合法域名；RuleType=4 填情报 IP、CIDR 或域名。
+        :type Ioc: str
+        :param _SrcIP: 访问源。RuleType=2：本字段与 DstIP 两个字段中恰好填写一个，值为精确 IP；RuleType=5：本字段与 DstIP 两个字段中恰好填写一个，值为资产 instance_id；RuleType=6：与 DstIP 至少一项为具体 IP，另一项可省略或使用同 IP 版本的 0.0.0.0/0、::/0，两项均为具体 IP 时使用相同 IP 版本；RuleType=8：IP 或 CIDR；RuleType=9：IP 或 CIDR，可与 NDR 专属条件组合；搭配 IdsRuleId 时使用 IPv4。源地址使用无端口格式；已选字段的多值用逗号分隔。
+        :type SrcIP: str
+        :param _Url: HTTP URL，仅 RuleType=9；支持精确匹配及 ?、* 通配符，区分大小写；多值用逗号分隔，最多 10 个。
+        :type Url: str
+        :param _UserAgent: HTTP User-Agent，仅 RuleType=9；支持精确匹配及 ?、* 通配符，区分大小写；单值少于 255 个字符，最多 2 个，多值用 <#cfw-splite#> 分隔。
+        :type UserAgent: str
+        :param _WhiteId: 白名单策略唯一 ID。
+        :type WhiteId: str
+        :param _XForwardedFor: HTTP X-Forwarded-For，仅 RuleType=9；精确 IP，多值逗号分隔，最多 50 个。
+        :type XForwardedFor: str
+        """
+        self._DstIP = None
+        self._FileMd5 = None
+        self._FileName = None
+        self._HostName = None
+        self._Id = None
+        self._IdsRuleId = None
+        self._IdsRuleName = None
+        self._Ioc = None
+        self._SrcIP = None
+        self._Url = None
+        self._UserAgent = None
+        self._WhiteId = None
+        self._XForwardedFor = None
+
+    @property
+    def DstIP(self):
+        r"""访问目的。RuleType=2：本字段与 SrcIP 两个字段中恰好填写一个，值为精确 IP；RuleType=5：本字段与 SrcIP 两个字段中恰好填写一个，值为资产 instance_id；RuleType=6：与 SrcIP 至少一项为具体 IP，另一项可省略或使用同 IP 版本的 0.0.0.0/0、::/0，两项均为具体 IP 时使用相同 IP 版本；FwType=16 时具体目的 IPv4 可带端口。RuleType=8：IP、CIDR、IP:端口或 CIDR:端口，可与 SrcIP 组合；RuleType=9：IP、CIDR 或带端口地址，可与 NDR 专属条件组合；搭配 IdsRuleId 时使用 IPv4 或 IPv4:端口。IPv6 带端口时使用 [IPv6]:端口；已选字段的多值用逗号分隔。
+        :rtype: str
+        """
+        return self._DstIP
+
+    @DstIP.setter
+    def DstIP(self, DstIP):
+        self._DstIP = DstIP
+
+    @property
+    def FileMd5(self):
+        r"""文件 MD5，仅 RuleType=9。32 位十六进制；多值逗号分隔，最多 10 个。
+        :rtype: str
+        """
+        return self._FileMd5
+
+    @FileMd5.setter
+    def FileMd5(self, FileMd5):
+        self._FileMd5 = FileMd5
+
+    @property
+    def FileName(self):
+        r"""文件名，仅 RuleType=9；支持精确匹配及 ?、* 通配符，区分大小写；多值用逗号分隔，最多 10 个。
+        :rtype: str
+        """
+        return self._FileName
+
+    @FileName.setter
+    def FileName(self, FileName):
+        self._FileName = FileName
+
+    @property
+    def HostName(self):
+        r"""HTTP Host，仅 RuleType=9；填写主机名或 IP，支持 ?、* 通配符并区分大小写；多值用逗号分隔。
+        :rtype: str
+        """
+        return self._HostName
+
+    @HostName.setter
+    def HostName(self, HostName):
+        self._HostName = HostName
+
+    @property
+    def Id(self):
+        r"""服务端内部字段。
+        :rtype: int
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def IdsRuleId(self):
+        r"""IPS 规则 ID，取自 DescribeIpsRuleListNew.Data[].RuleID。RuleType=6 必填；RuleType=9 可选，填写时同时填写 SrcIP 或 DstIP。
+        :rtype: str
+        """
+        return self._IdsRuleId
+
+    @IdsRuleId.setter
+    def IdsRuleId(self, IdsRuleId):
+        self._IdsRuleId = IdsRuleId
+
+    @property
+    def IdsRuleName(self):
+        r"""服务端保留字段。
+        :rtype: str
+        """
+        return self._IdsRuleName
+
+    @IdsRuleName.setter
+    def IdsRuleName(self, IdsRuleName):
+        self._IdsRuleName = IdsRuleName
+
+    @property
+    def Ioc(self):
+        r"""RuleType=3 填一个合法域名；RuleType=4 填情报 IP、CIDR 或域名。
+        :rtype: str
+        """
+        return self._Ioc
+
+    @Ioc.setter
+    def Ioc(self, Ioc):
+        self._Ioc = Ioc
+
+    @property
+    def SrcIP(self):
+        r"""访问源。RuleType=2：本字段与 DstIP 两个字段中恰好填写一个，值为精确 IP；RuleType=5：本字段与 DstIP 两个字段中恰好填写一个，值为资产 instance_id；RuleType=6：与 DstIP 至少一项为具体 IP，另一项可省略或使用同 IP 版本的 0.0.0.0/0、::/0，两项均为具体 IP 时使用相同 IP 版本；RuleType=8：IP 或 CIDR；RuleType=9：IP 或 CIDR，可与 NDR 专属条件组合；搭配 IdsRuleId 时使用 IPv4。源地址使用无端口格式；已选字段的多值用逗号分隔。
+        :rtype: str
+        """
+        return self._SrcIP
+
+    @SrcIP.setter
+    def SrcIP(self, SrcIP):
+        self._SrcIP = SrcIP
+
+    @property
+    def Url(self):
+        r"""HTTP URL，仅 RuleType=9；支持精确匹配及 ?、* 通配符，区分大小写；多值用逗号分隔，最多 10 个。
+        :rtype: str
+        """
+        return self._Url
+
+    @Url.setter
+    def Url(self, Url):
+        self._Url = Url
+
+    @property
+    def UserAgent(self):
+        r"""HTTP User-Agent，仅 RuleType=9；支持精确匹配及 ?、* 通配符，区分大小写；单值少于 255 个字符，最多 2 个，多值用 <#cfw-splite#> 分隔。
+        :rtype: str
+        """
+        return self._UserAgent
+
+    @UserAgent.setter
+    def UserAgent(self, UserAgent):
+        self._UserAgent = UserAgent
+
+    @property
+    def WhiteId(self):
+        r"""白名单策略唯一 ID。
+        :rtype: str
+        """
+        return self._WhiteId
+
+    @WhiteId.setter
+    def WhiteId(self, WhiteId):
+        self._WhiteId = WhiteId
+
+    @property
+    def XForwardedFor(self):
+        r"""HTTP X-Forwarded-For，仅 RuleType=9；精确 IP，多值逗号分隔，最多 50 个。
+        :rtype: str
+        """
+        return self._XForwardedFor
+
+    @XForwardedFor.setter
+    def XForwardedFor(self, XForwardedFor):
+        self._XForwardedFor = XForwardedFor
+
+
+    def _deserialize(self, params):
+        self._DstIP = params.get("DstIP")
+        self._FileMd5 = params.get("FileMd5")
+        self._FileName = params.get("FileName")
+        self._HostName = params.get("HostName")
+        self._Id = params.get("Id")
+        self._IdsRuleId = params.get("IdsRuleId")
+        self._IdsRuleName = params.get("IdsRuleName")
+        self._Ioc = params.get("Ioc")
+        self._SrcIP = params.get("SrcIP")
+        self._Url = params.get("Url")
+        self._UserAgent = params.get("UserAgent")
+        self._WhiteId = params.get("WhiteId")
+        self._XForwardedFor = params.get("XForwardedFor")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

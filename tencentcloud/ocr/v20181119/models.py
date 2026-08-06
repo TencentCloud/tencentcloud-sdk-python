@@ -5947,181 +5947,6 @@ class DriverLicenseOCRResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
-class EduPaperOCRRequest(AbstractModel):
-    r"""EduPaperOCR请求参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _ImageBase64: 图片的 Base64 值。
-支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
-支持的图片大小：所下载图片经Base64编码后不超过 7M。图片下载时间不超过 3 秒。
-图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
-        :type ImageBase64: str
-        :param _ImageUrl: 图片的 Url 地址。
-支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
-支持的图片大小：所下载图片经 Base64 编码后不超过 7M。图片下载时间不超过 3 秒。
-图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
-非腾讯云存储的 Url 速度和稳定性可能受一定影响。
-        :type ImageUrl: str
-        :param _Config: 扩展配置信息。
-配置格式：{"option1":value1,"option2":value2}
-1. task_type：任务类型【0: 关闭版式分析与处理 1: 开启版式分析处理】可选参数，Int32类型，默认值为1
-2. is_structuralization：是否结构化输出【true：返回包体同时返回通用和结构化输出  false：返回包体返回通用输出】 可选参数，Bool类型，默认值为true
-3. if_readable_format：是否按照版式整合通用文本/公式输出结果 可选参数，Bool类型，默认值为false
-示例：
-{"task_type": 1,"is_structuralization": true,"if_readable_format": true}
-        :type Config: str
-        """
-        self._ImageBase64 = None
-        self._ImageUrl = None
-        self._Config = None
-
-    @property
-    def ImageBase64(self):
-        r"""图片的 Base64 值。
-支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
-支持的图片大小：所下载图片经Base64编码后不超过 7M。图片下载时间不超过 3 秒。
-图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
-        :rtype: str
-        """
-        return self._ImageBase64
-
-    @ImageBase64.setter
-    def ImageBase64(self, ImageBase64):
-        self._ImageBase64 = ImageBase64
-
-    @property
-    def ImageUrl(self):
-        r"""图片的 Url 地址。
-支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。
-支持的图片大小：所下载图片经 Base64 编码后不超过 7M。图片下载时间不超过 3 秒。
-图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。
-非腾讯云存储的 Url 速度和稳定性可能受一定影响。
-        :rtype: str
-        """
-        return self._ImageUrl
-
-    @ImageUrl.setter
-    def ImageUrl(self, ImageUrl):
-        self._ImageUrl = ImageUrl
-
-    @property
-    def Config(self):
-        r"""扩展配置信息。
-配置格式：{"option1":value1,"option2":value2}
-1. task_type：任务类型【0: 关闭版式分析与处理 1: 开启版式分析处理】可选参数，Int32类型，默认值为1
-2. is_structuralization：是否结构化输出【true：返回包体同时返回通用和结构化输出  false：返回包体返回通用输出】 可选参数，Bool类型，默认值为true
-3. if_readable_format：是否按照版式整合通用文本/公式输出结果 可选参数，Bool类型，默认值为false
-示例：
-{"task_type": 1,"is_structuralization": true,"if_readable_format": true}
-        :rtype: str
-        """
-        return self._Config
-
-    @Config.setter
-    def Config(self, Config):
-        self._Config = Config
-
-
-    def _deserialize(self, params):
-        self._ImageBase64 = params.get("ImageBase64")
-        self._ImageUrl = params.get("ImageUrl")
-        self._Config = params.get("Config")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class EduPaperOCRResponse(AbstractModel):
-    r"""EduPaperOCR返回参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _EduPaperInfos: 检测到的文本信息，具体内容请点击左侧链接。
-        :type EduPaperInfos: list of TextEduPaper
-        :param _Angle: 图片旋转角度（角度制），文本的水平方向为0°；顺时针为正，逆时针为负。
-        :type Angle: int
-        :param _QuestionBlockInfos: 结构化方式输出，具体内容请点击左侧链接。
-        :type QuestionBlockInfos: list of QuestionBlockObj
-        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self._EduPaperInfos = None
-        self._Angle = None
-        self._QuestionBlockInfos = None
-        self._RequestId = None
-
-    @property
-    def EduPaperInfos(self):
-        r"""检测到的文本信息，具体内容请点击左侧链接。
-        :rtype: list of TextEduPaper
-        """
-        return self._EduPaperInfos
-
-    @EduPaperInfos.setter
-    def EduPaperInfos(self, EduPaperInfos):
-        self._EduPaperInfos = EduPaperInfos
-
-    @property
-    def Angle(self):
-        r"""图片旋转角度（角度制），文本的水平方向为0°；顺时针为正，逆时针为负。
-        :rtype: int
-        """
-        return self._Angle
-
-    @Angle.setter
-    def Angle(self, Angle):
-        self._Angle = Angle
-
-    @property
-    def QuestionBlockInfos(self):
-        r"""结构化方式输出，具体内容请点击左侧链接。
-        :rtype: list of QuestionBlockObj
-        """
-        return self._QuestionBlockInfos
-
-    @QuestionBlockInfos.setter
-    def QuestionBlockInfos(self, QuestionBlockInfos):
-        self._QuestionBlockInfos = QuestionBlockInfos
-
-    @property
-    def RequestId(self):
-        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-        :rtype: str
-        """
-        return self._RequestId
-
-    @RequestId.setter
-    def RequestId(self, RequestId):
-        self._RequestId = RequestId
-
-
-    def _deserialize(self, params):
-        if params.get("EduPaperInfos") is not None:
-            self._EduPaperInfos = []
-            for item in params.get("EduPaperInfos"):
-                obj = TextEduPaper()
-                obj._deserialize(item)
-                self._EduPaperInfos.append(obj)
-        self._Angle = params.get("Angle")
-        if params.get("QuestionBlockInfos") is not None:
-            self._QuestionBlockInfos = []
-            for item in params.get("QuestionBlockInfos"):
-                obj = QuestionBlockObj()
-                obj._deserialize(item)
-                self._QuestionBlockInfos.append(obj)
-        self._RequestId = params.get("RequestId")
-
-
 class ElectronicAirTransport(AbstractModel):
     r"""全电发票（航空运输电子客票行程单）
 
@@ -9518,287 +9343,6 @@ class ExtractDocBasicResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
-class ExtractDocMultiProRequest(AbstractModel):
-    r"""ExtractDocMultiPro请求参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _ImageUrl: 图片/PDF的 Url 地址。要求图片经Base64编码后不超过10M，分辨率建议600*800以上，支持PNG、JPG、JPEG、BMP、PDF格式。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
-        :type ImageUrl: str
-        :param _ImageBase64: 图片/PDF的 Base64 值。要求Base64不超过10M，分辨率建议600*800以上，支持PNG、JPG、JPEG、BMP、PDF格式。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
-        :type ImageBase64: str
-        :param _PdfPageNumber: 需要识别的PDF页面的对应页码，仅支持PDF单页识别，当上传文件为PDF且IsPdf参数值为true时有效，默认值为前3页。
-        :type PdfPageNumber: int
-        :param _ItemNames: 自定义结构化功能需返回的字段名称，例：若客户想新增返回姓名、性别两个字段的识别结果，则输入ItemNames=["姓名","性别"]
-        :type ItemNames: list of str
-        :param _ItemNamesShowMode: true：仅输出自定义字段
-flase：输出默认字段+自定义字段
-默认true
-        :type ItemNamesShowMode: bool
-        :param _ReturnFullText: 是否开启全文字段识别
-        :type ReturnFullText: bool
-        :param _ConfigId: 配置id支持：
-DispatchWeightNote -- 磅单发货单识别模板
-ReceiptWeightNote -- 磅单收货单识别模板
-默认：DispatchWeightNote
-        :type ConfigId: str
-        :param _EnableCoord: 是否开启全文字段坐标值的识别
-        :type EnableCoord: bool
-        :param _OutputParentKey: 是否开启父子key识别，默认是
-        :type OutputParentKey: bool
-        :param _ConfigAdvanced: 模板的单个属性配置
-        :type ConfigAdvanced: :class:`tencentcloud.ocr.v20181119.models.ConfigAdvanced`
-        """
-        self._ImageUrl = None
-        self._ImageBase64 = None
-        self._PdfPageNumber = None
-        self._ItemNames = None
-        self._ItemNamesShowMode = None
-        self._ReturnFullText = None
-        self._ConfigId = None
-        self._EnableCoord = None
-        self._OutputParentKey = None
-        self._ConfigAdvanced = None
-
-    @property
-    def ImageUrl(self):
-        r"""图片/PDF的 Url 地址。要求图片经Base64编码后不超过10M，分辨率建议600*800以上，支持PNG、JPG、JPEG、BMP、PDF格式。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
-        :rtype: str
-        """
-        return self._ImageUrl
-
-    @ImageUrl.setter
-    def ImageUrl(self, ImageUrl):
-        self._ImageUrl = ImageUrl
-
-    @property
-    def ImageBase64(self):
-        r"""图片/PDF的 Base64 值。要求Base64不超过10M，分辨率建议600*800以上，支持PNG、JPG、JPEG、BMP、PDF格式。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
-        :rtype: str
-        """
-        return self._ImageBase64
-
-    @ImageBase64.setter
-    def ImageBase64(self, ImageBase64):
-        self._ImageBase64 = ImageBase64
-
-    @property
-    def PdfPageNumber(self):
-        r"""需要识别的PDF页面的对应页码，仅支持PDF单页识别，当上传文件为PDF且IsPdf参数值为true时有效，默认值为前3页。
-        :rtype: int
-        """
-        return self._PdfPageNumber
-
-    @PdfPageNumber.setter
-    def PdfPageNumber(self, PdfPageNumber):
-        self._PdfPageNumber = PdfPageNumber
-
-    @property
-    def ItemNames(self):
-        r"""自定义结构化功能需返回的字段名称，例：若客户想新增返回姓名、性别两个字段的识别结果，则输入ItemNames=["姓名","性别"]
-        :rtype: list of str
-        """
-        return self._ItemNames
-
-    @ItemNames.setter
-    def ItemNames(self, ItemNames):
-        self._ItemNames = ItemNames
-
-    @property
-    def ItemNamesShowMode(self):
-        r"""true：仅输出自定义字段
-flase：输出默认字段+自定义字段
-默认true
-        :rtype: bool
-        """
-        return self._ItemNamesShowMode
-
-    @ItemNamesShowMode.setter
-    def ItemNamesShowMode(self, ItemNamesShowMode):
-        self._ItemNamesShowMode = ItemNamesShowMode
-
-    @property
-    def ReturnFullText(self):
-        r"""是否开启全文字段识别
-        :rtype: bool
-        """
-        return self._ReturnFullText
-
-    @ReturnFullText.setter
-    def ReturnFullText(self, ReturnFullText):
-        self._ReturnFullText = ReturnFullText
-
-    @property
-    def ConfigId(self):
-        r"""配置id支持：
-DispatchWeightNote -- 磅单发货单识别模板
-ReceiptWeightNote -- 磅单收货单识别模板
-默认：DispatchWeightNote
-        :rtype: str
-        """
-        return self._ConfigId
-
-    @ConfigId.setter
-    def ConfigId(self, ConfigId):
-        self._ConfigId = ConfigId
-
-    @property
-    def EnableCoord(self):
-        r"""是否开启全文字段坐标值的识别
-        :rtype: bool
-        """
-        return self._EnableCoord
-
-    @EnableCoord.setter
-    def EnableCoord(self, EnableCoord):
-        self._EnableCoord = EnableCoord
-
-    @property
-    def OutputParentKey(self):
-        r"""是否开启父子key识别，默认是
-        :rtype: bool
-        """
-        return self._OutputParentKey
-
-    @OutputParentKey.setter
-    def OutputParentKey(self, OutputParentKey):
-        self._OutputParentKey = OutputParentKey
-
-    @property
-    def ConfigAdvanced(self):
-        r"""模板的单个属性配置
-        :rtype: :class:`tencentcloud.ocr.v20181119.models.ConfigAdvanced`
-        """
-        return self._ConfigAdvanced
-
-    @ConfigAdvanced.setter
-    def ConfigAdvanced(self, ConfigAdvanced):
-        self._ConfigAdvanced = ConfigAdvanced
-
-
-    def _deserialize(self, params):
-        self._ImageUrl = params.get("ImageUrl")
-        self._ImageBase64 = params.get("ImageBase64")
-        self._PdfPageNumber = params.get("PdfPageNumber")
-        self._ItemNames = params.get("ItemNames")
-        self._ItemNamesShowMode = params.get("ItemNamesShowMode")
-        self._ReturnFullText = params.get("ReturnFullText")
-        self._ConfigId = params.get("ConfigId")
-        self._EnableCoord = params.get("EnableCoord")
-        self._OutputParentKey = params.get("OutputParentKey")
-        if params.get("ConfigAdvanced") is not None:
-            self._ConfigAdvanced = ConfigAdvanced()
-            self._ConfigAdvanced._deserialize(params.get("ConfigAdvanced"))
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class ExtractDocMultiProResponse(AbstractModel):
-    r"""ExtractDocMultiPro返回参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _Angle: 图片旋转角度(角度制)，文本的水平方向为 0；顺时针为正，逆时针为负
-        :type Angle: float
-        :param _StructuralList: 配置结构化文本信息
-        :type StructuralList: list of GroupInfo
-        :param _WordList: 还原文本信息
-        :type WordList: list of WordItem
-        :param _TokenNum: 样本识别字段数
-        :type TokenNum: int
-        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self._Angle = None
-        self._StructuralList = None
-        self._WordList = None
-        self._TokenNum = None
-        self._RequestId = None
-
-    @property
-    def Angle(self):
-        r"""图片旋转角度(角度制)，文本的水平方向为 0；顺时针为正，逆时针为负
-        :rtype: float
-        """
-        return self._Angle
-
-    @Angle.setter
-    def Angle(self, Angle):
-        self._Angle = Angle
-
-    @property
-    def StructuralList(self):
-        r"""配置结构化文本信息
-        :rtype: list of GroupInfo
-        """
-        return self._StructuralList
-
-    @StructuralList.setter
-    def StructuralList(self, StructuralList):
-        self._StructuralList = StructuralList
-
-    @property
-    def WordList(self):
-        r"""还原文本信息
-        :rtype: list of WordItem
-        """
-        return self._WordList
-
-    @WordList.setter
-    def WordList(self, WordList):
-        self._WordList = WordList
-
-    @property
-    def TokenNum(self):
-        r"""样本识别字段数
-        :rtype: int
-        """
-        return self._TokenNum
-
-    @TokenNum.setter
-    def TokenNum(self, TokenNum):
-        self._TokenNum = TokenNum
-
-    @property
-    def RequestId(self):
-        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-        :rtype: str
-        """
-        return self._RequestId
-
-    @RequestId.setter
-    def RequestId(self, RequestId):
-        self._RequestId = RequestId
-
-
-    def _deserialize(self, params):
-        self._Angle = params.get("Angle")
-        if params.get("StructuralList") is not None:
-            self._StructuralList = []
-            for item in params.get("StructuralList"):
-                obj = GroupInfo()
-                obj._deserialize(item)
-                self._StructuralList.append(obj)
-        if params.get("WordList") is not None:
-            self._WordList = []
-            for item in params.get("WordList"):
-                obj = WordItem()
-                obj._deserialize(item)
-                self._WordList.append(obj)
-        self._TokenNum = params.get("TokenNum")
-        self._RequestId = params.get("RequestId")
-
-
 class ExtractDocMultiRequest(AbstractModel):
     r"""ExtractDocMulti请求参数结构体
 
@@ -9806,56 +9350,32 @@ class ExtractDocMultiRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ImageUrl: 图片/PDF的 Url 地址。要求图片经Base64编码后不超过10M，分辨率建议600*800以上，支持PNG、JPG、JPEG、BMP、PDF格式。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+        :param _ImageUrl: <p>图片/PDF的 Url 地址。要求图片经Base64编码后不超过10M，分辨率建议600*800以上，支持PNG、JPG、JPEG、BMP、PDF格式。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。</p>
         :type ImageUrl: str
-        :param _ImageBase64: 图片/PDF的 Base64 值。要求Base64不超过10M，分辨率建议600*800以上，支持PNG、JPG、JPEG、BMP、PDF格式。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+        :param _ImageBase64: <p>图片/PDF的 Base64 值。要求Base64不超过10M，分辨率建议600*800以上，支持PNG、JPG、JPEG、BMP、PDF格式。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。</p>
         :type ImageBase64: str
-        :param _PdfPageNumber: 需要识别的PDF页面的对应页码，仅支持PDF单页识别，默认值为前3页。
+        :param _PdfPageNumber: <p>需要识别的PDF页面的对应页码，仅支持PDF单页识别。</p>
         :type PdfPageNumber: int
-        :param _ItemNames: 自定义结构化功能需返回的字段名称，例：若客户想新增返回姓名、性别两个字段的识别结果，则输入ItemNames=["姓名","性别"]
+        :param _ItemNames: <p>自定义结构化功能需返回的字段名称，例：若客户想新增返回姓名、性别两个字段的识别结果，则输入ItemNames=[&quot;姓名&quot;,&quot;性别&quot;]</p>
         :type ItemNames: list of str
-        :param _ItemNamesShowMode: true：仅输出自定义字段
-false：输出默认字段+自定义字段
-默认true
+        :param _ItemNamesShowMode: <p>true：仅输出自定义字段<br>false：输出默认字段+自定义字段<br>默认true</p>
         :type ItemNamesShowMode: bool
-        :param _ReturnFullText: 是否开启全文字段识别
+        :param _ReturnFullText: <p>是否开启全文字段识别</p>
         :type ReturnFullText: bool
-        :param _ConfigId: 配置id支持：
-General -- 通用场景 
-InvoiceEng -- 国际invoice模板 
-WayBillEng --海运订单模板
-CustomsDeclaration -- 进出口报关单
-WeightNote -- 磅单
-MedicalMeter -- 血压仪表识别
-BillOfLading -- 海运提单
-EntrustmentBook -- 海运托书
-Statement -- 对账单识别模板
-BookingConfirmation -- 配舱通知书识别模板
-AirWayBill -- 航空运单识别模板
-Table -- 表格模板
-SteelLabel -- 实物标签识别模板
-CarInsurance -- 车辆保险单识别模板
-MultiRealEstateCertificate -- 房产材料识别模板
-MultiRealEstateMaterial -- 房产证明识别模板
-HongKongUtilityBill -- 中国香港水电煤单识别模板
-OverseasCheques -- 海外支票
-RegistrationCertificate -- 备案证
-​GridPhoto -- 电网系统照片
-​SignaturePage -- 签署页
-​SalesDeliveryNote -- 销售发货单
-
-
-
+        :param _ConfigId: <p>配置id支持：<br>General -- 通用场景<br>InvoiceEng -- 国际invoice模板<br>WayBillEng --海运订单模板<br>CustomsDeclaration -- 进出口报关单<br>WeightNote -- 磅单<br>MedicalMeter -- 血压仪表识别<br>BillOfLading -- 海运提单<br>EntrustmentBook -- 海运托书<br>Statement -- 对账单识别模板<br>BookingConfirmation -- 配舱通知书识别模板<br>AirWayBill -- 航空运单识别模板<br>Table -- 表格模板<br>SteelLabel -- 实物标签识别模板<br>CarInsurance -- 车辆保险单识别模板<br>MultiRealEstateCertificate -- 房产材料识别模板<br>MultiRealEstateMaterial -- 房产证明识别模板<br>HongKongUtilityBill -- 中国香港水电煤单识别模板<br>OverseasCheques -- 海外支票<br>RegistrationCertificate -- 备案证<br>u200bGridPhoto -- 电网系统照片<br>u200bSignaturePage -- 签署页<br>u200bSalesDeliveryNote -- 销售发货单</p>
         :type ConfigId: str
-        :param _EnableCoord: 是否开启全文字段坐标值的识别
+        :param _EnableCoord: <p>是否开启全文字段坐标值的识别</p>
         :type EnableCoord: bool
-        :param _OutputParentKey: 是否开启父子key识别，默认是
+        :param _OutputParentKey: <p>是否开启父子key识别，默认是</p>
         :type OutputParentKey: bool
-        :param _ConfigAdvanced: 模板的单个属性配置
+        :param _ConfigAdvanced: <p>模板的单个属性配置</p>
         :type ConfigAdvanced: :class:`tencentcloud.ocr.v20181119.models.ConfigAdvanced`
-        :param _OutputLanguage: cn时，添加的key为中文  
-en时，添加的key为英语
+        :param _OutputLanguage: <p>cn时，添加的key为中文<br>en时，添加的key为英语</p>
         :type OutputLanguage: str
+        :param _NewItemNames: <p>自定义抽取需要的字段名称、字段类型、字段提示词</p>
+        :type NewItemNames: list of ItemNames
+        :param _MultiModelVersion: <p>文档抽取（多模态）识别服务所用的算法模型版本<br>-目前入参支持“1.0”和“2.0“两个输入。</p><ul><li>2026年7月20日开始，默认为“2.0”，之前使用过本接口的账号若未填写本参数默认为“1.0”。</li><li>2026年7月20日后开通服务的账号仅支持输入“2.0”。</li><li>不同算法模型版本对应的文档抽取识别算法不同，新版本的整体效果会优于旧版本，建议使用“2.0”版本。<br>示例值：2.0</li></ul>
+        :type MultiModelVersion: str
         """
         self._ImageUrl = None
         self._ImageBase64 = None
@@ -9868,10 +9388,12 @@ en时，添加的key为英语
         self._OutputParentKey = None
         self._ConfigAdvanced = None
         self._OutputLanguage = None
+        self._NewItemNames = None
+        self._MultiModelVersion = None
 
     @property
     def ImageUrl(self):
-        r"""图片/PDF的 Url 地址。要求图片经Base64编码后不超过10M，分辨率建议600*800以上，支持PNG、JPG、JPEG、BMP、PDF格式。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+        r"""<p>图片/PDF的 Url 地址。要求图片经Base64编码后不超过10M，分辨率建议600*800以上，支持PNG、JPG、JPEG、BMP、PDF格式。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。</p>
         :rtype: str
         """
         return self._ImageUrl
@@ -9882,7 +9404,7 @@ en时，添加的key为英语
 
     @property
     def ImageBase64(self):
-        r"""图片/PDF的 Base64 值。要求Base64不超过10M，分辨率建议600*800以上，支持PNG、JPG、JPEG、BMP、PDF格式。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+        r"""<p>图片/PDF的 Base64 值。要求Base64不超过10M，分辨率建议600*800以上，支持PNG、JPG、JPEG、BMP、PDF格式。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。</p>
         :rtype: str
         """
         return self._ImageBase64
@@ -9893,7 +9415,7 @@ en时，添加的key为英语
 
     @property
     def PdfPageNumber(self):
-        r"""需要识别的PDF页面的对应页码，仅支持PDF单页识别，默认值为前3页。
+        r"""<p>需要识别的PDF页面的对应页码，仅支持PDF单页识别。</p>
         :rtype: int
         """
         return self._PdfPageNumber
@@ -9904,7 +9426,7 @@ en时，添加的key为英语
 
     @property
     def ItemNames(self):
-        r"""自定义结构化功能需返回的字段名称，例：若客户想新增返回姓名、性别两个字段的识别结果，则输入ItemNames=["姓名","性别"]
+        r"""<p>自定义结构化功能需返回的字段名称，例：若客户想新增返回姓名、性别两个字段的识别结果，则输入ItemNames=[&quot;姓名&quot;,&quot;性别&quot;]</p>
         :rtype: list of str
         """
         return self._ItemNames
@@ -9915,9 +9437,7 @@ en时，添加的key为英语
 
     @property
     def ItemNamesShowMode(self):
-        r"""true：仅输出自定义字段
-false：输出默认字段+自定义字段
-默认true
+        r"""<p>true：仅输出自定义字段<br>false：输出默认字段+自定义字段<br>默认true</p>
         :rtype: bool
         """
         return self._ItemNamesShowMode
@@ -9928,7 +9448,7 @@ false：输出默认字段+自定义字段
 
     @property
     def ReturnFullText(self):
-        r"""是否开启全文字段识别
+        r"""<p>是否开启全文字段识别</p>
         :rtype: bool
         """
         return self._ReturnFullText
@@ -9939,32 +9459,7 @@ false：输出默认字段+自定义字段
 
     @property
     def ConfigId(self):
-        r"""配置id支持：
-General -- 通用场景 
-InvoiceEng -- 国际invoice模板 
-WayBillEng --海运订单模板
-CustomsDeclaration -- 进出口报关单
-WeightNote -- 磅单
-MedicalMeter -- 血压仪表识别
-BillOfLading -- 海运提单
-EntrustmentBook -- 海运托书
-Statement -- 对账单识别模板
-BookingConfirmation -- 配舱通知书识别模板
-AirWayBill -- 航空运单识别模板
-Table -- 表格模板
-SteelLabel -- 实物标签识别模板
-CarInsurance -- 车辆保险单识别模板
-MultiRealEstateCertificate -- 房产材料识别模板
-MultiRealEstateMaterial -- 房产证明识别模板
-HongKongUtilityBill -- 中国香港水电煤单识别模板
-OverseasCheques -- 海外支票
-RegistrationCertificate -- 备案证
-​GridPhoto -- 电网系统照片
-​SignaturePage -- 签署页
-​SalesDeliveryNote -- 销售发货单
-
-
-
+        r"""<p>配置id支持：<br>General -- 通用场景<br>InvoiceEng -- 国际invoice模板<br>WayBillEng --海运订单模板<br>CustomsDeclaration -- 进出口报关单<br>WeightNote -- 磅单<br>MedicalMeter -- 血压仪表识别<br>BillOfLading -- 海运提单<br>EntrustmentBook -- 海运托书<br>Statement -- 对账单识别模板<br>BookingConfirmation -- 配舱通知书识别模板<br>AirWayBill -- 航空运单识别模板<br>Table -- 表格模板<br>SteelLabel -- 实物标签识别模板<br>CarInsurance -- 车辆保险单识别模板<br>MultiRealEstateCertificate -- 房产材料识别模板<br>MultiRealEstateMaterial -- 房产证明识别模板<br>HongKongUtilityBill -- 中国香港水电煤单识别模板<br>OverseasCheques -- 海外支票<br>RegistrationCertificate -- 备案证<br>u200bGridPhoto -- 电网系统照片<br>u200bSignaturePage -- 签署页<br>u200bSalesDeliveryNote -- 销售发货单</p>
         :rtype: str
         """
         return self._ConfigId
@@ -9975,7 +9470,7 @@ RegistrationCertificate -- 备案证
 
     @property
     def EnableCoord(self):
-        r"""是否开启全文字段坐标值的识别
+        r"""<p>是否开启全文字段坐标值的识别</p>
         :rtype: bool
         """
         return self._EnableCoord
@@ -9986,7 +9481,7 @@ RegistrationCertificate -- 备案证
 
     @property
     def OutputParentKey(self):
-        r"""是否开启父子key识别，默认是
+        r"""<p>是否开启父子key识别，默认是</p>
         :rtype: bool
         """
         return self._OutputParentKey
@@ -9997,7 +9492,7 @@ RegistrationCertificate -- 备案证
 
     @property
     def ConfigAdvanced(self):
-        r"""模板的单个属性配置
+        r"""<p>模板的单个属性配置</p>
         :rtype: :class:`tencentcloud.ocr.v20181119.models.ConfigAdvanced`
         """
         return self._ConfigAdvanced
@@ -10008,8 +9503,7 @@ RegistrationCertificate -- 备案证
 
     @property
     def OutputLanguage(self):
-        r"""cn时，添加的key为中文  
-en时，添加的key为英语
+        r"""<p>cn时，添加的key为中文<br>en时，添加的key为英语</p>
         :rtype: str
         """
         return self._OutputLanguage
@@ -10017,6 +9511,28 @@ en时，添加的key为英语
     @OutputLanguage.setter
     def OutputLanguage(self, OutputLanguage):
         self._OutputLanguage = OutputLanguage
+
+    @property
+    def NewItemNames(self):
+        r"""<p>自定义抽取需要的字段名称、字段类型、字段提示词</p>
+        :rtype: list of ItemNames
+        """
+        return self._NewItemNames
+
+    @NewItemNames.setter
+    def NewItemNames(self, NewItemNames):
+        self._NewItemNames = NewItemNames
+
+    @property
+    def MultiModelVersion(self):
+        r"""<p>文档抽取（多模态）识别服务所用的算法模型版本<br>-目前入参支持“1.0”和“2.0“两个输入。</p><ul><li>2026年7月20日开始，默认为“2.0”，之前使用过本接口的账号若未填写本参数默认为“1.0”。</li><li>2026年7月20日后开通服务的账号仅支持输入“2.0”。</li><li>不同算法模型版本对应的文档抽取识别算法不同，新版本的整体效果会优于旧版本，建议使用“2.0”版本。<br>示例值：2.0</li></ul>
+        :rtype: str
+        """
+        return self._MultiModelVersion
+
+    @MultiModelVersion.setter
+    def MultiModelVersion(self, MultiModelVersion):
+        self._MultiModelVersion = MultiModelVersion
 
 
     def _deserialize(self, params):
@@ -10033,6 +9549,13 @@ en时，添加的key为英语
             self._ConfigAdvanced = ConfigAdvanced()
             self._ConfigAdvanced._deserialize(params.get("ConfigAdvanced"))
         self._OutputLanguage = params.get("OutputLanguage")
+        if params.get("NewItemNames") is not None:
+            self._NewItemNames = []
+            for item in params.get("NewItemNames"):
+                obj = ItemNames()
+                obj._deserialize(item)
+                self._NewItemNames.append(obj)
+        self._MultiModelVersion = params.get("MultiModelVersion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -10050,13 +9573,13 @@ class ExtractDocMultiResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Angle: 图片旋转角度(角度制)，文本的水平方向为 0；顺时针为正，逆时针为负
+        :param _Angle: <p>图片旋转角度(角度制)，文本的水平方向为 0；顺时针为正，逆时针为负</p>
         :type Angle: float
-        :param _StructuralList: 配置结构化文本信息
+        :param _StructuralList: <p>配置结构化文本信息</p>
         :type StructuralList: list of GroupInfo
-        :param _WordList: 还原文本信息
+        :param _WordList: <p>还原文本信息</p>
         :type WordList: list of WordItem
-        :param _TokenNum: 样本识别字段数
+        :param _TokenNum: <p>样本识别字段数</p>
         :type TokenNum: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -10069,7 +9592,7 @@ class ExtractDocMultiResponse(AbstractModel):
 
     @property
     def Angle(self):
-        r"""图片旋转角度(角度制)，文本的水平方向为 0；顺时针为正，逆时针为负
+        r"""<p>图片旋转角度(角度制)，文本的水平方向为 0；顺时针为正，逆时针为负</p>
         :rtype: float
         """
         return self._Angle
@@ -10080,7 +9603,7 @@ class ExtractDocMultiResponse(AbstractModel):
 
     @property
     def StructuralList(self):
-        r"""配置结构化文本信息
+        r"""<p>配置结构化文本信息</p>
         :rtype: list of GroupInfo
         """
         return self._StructuralList
@@ -10091,7 +9614,7 @@ class ExtractDocMultiResponse(AbstractModel):
 
     @property
     def WordList(self):
-        r"""还原文本信息
+        r"""<p>还原文本信息</p>
         :rtype: list of WordItem
         """
         return self._WordList
@@ -10102,7 +9625,7 @@ class ExtractDocMultiResponse(AbstractModel):
 
     @property
     def TokenNum(self):
-        r"""样本识别字段数
+        r"""<p>样本识别字段数</p>
         :rtype: int
         """
         return self._TokenNum
@@ -10910,203 +10433,6 @@ class FinancialBillItemDetails(AbstractModel):
         
 
 
-class FlightInvoiceInfo(AbstractModel):
-    r"""机票行程单识别结果
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _Name: 识别出的字段名称(关键字)，支持以下字段：
-票价、合计金额、填开日期、有效身份证件号码、电子客票号码、验证码、旅客姓名、填开单位、其他税费、燃油附加费、民航发展基金、保险费、销售单位代号、始发地、目的地、航班号、时间、日期、座位等级、承运人、发票消费类型、国内国际标签、印刷序号、客票级别/类别、客票生效日期、有效期截止日期、免费行李。
-        :type Name: str
-        :param _Value: 识别出的字段名称对应的值，也就是字段 Name 对应的字符串结果。
-        :type Value: str
-        :param _Row: 多个行程的字段所在行号，下标从0开始，非行字段或未能识别行号的该值返回-1。
-        :type Row: int
-        """
-        self._Name = None
-        self._Value = None
-        self._Row = None
-
-    @property
-    def Name(self):
-        r"""识别出的字段名称(关键字)，支持以下字段：
-票价、合计金额、填开日期、有效身份证件号码、电子客票号码、验证码、旅客姓名、填开单位、其他税费、燃油附加费、民航发展基金、保险费、销售单位代号、始发地、目的地、航班号、时间、日期、座位等级、承运人、发票消费类型、国内国际标签、印刷序号、客票级别/类别、客票生效日期、有效期截止日期、免费行李。
-        :rtype: str
-        """
-        return self._Name
-
-    @Name.setter
-    def Name(self, Name):
-        self._Name = Name
-
-    @property
-    def Value(self):
-        r"""识别出的字段名称对应的值，也就是字段 Name 对应的字符串结果。
-        :rtype: str
-        """
-        return self._Value
-
-    @Value.setter
-    def Value(self, Value):
-        self._Value = Value
-
-    @property
-    def Row(self):
-        r"""多个行程的字段所在行号，下标从0开始，非行字段或未能识别行号的该值返回-1。
-        :rtype: int
-        """
-        return self._Row
-
-    @Row.setter
-    def Row(self, Row):
-        self._Row = Row
-
-
-    def _deserialize(self, params):
-        self._Name = params.get("Name")
-        self._Value = params.get("Value")
-        self._Row = params.get("Row")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class FlightInvoiceOCRRequest(AbstractModel):
-    r"""FlightInvoiceOCR请求参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _ImageBase64: 图片的 Base64 值。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经Base64编码后不超过 10M。图片下载时间不超过 3 秒。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
-        :type ImageBase64: str
-        :param _ImageUrl: 图片的 Url 地址。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经 Base64 编码后不超过 10M。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
-        :type ImageUrl: str
-        :param _IsPdf: 是否开启PDF识别，默认值为true，开启后可同时支持图片和PDF的识别。
-        :type IsPdf: bool
-        :param _PdfPageNumber: 需要识别的PDF页面的对应页码，仅支持PDF单页识别，当上传文件为PDF且IsPdf参数值为true时有效，默认值为1。
-        :type PdfPageNumber: int
-        """
-        self._ImageBase64 = None
-        self._ImageUrl = None
-        self._IsPdf = None
-        self._PdfPageNumber = None
-
-    @property
-    def ImageBase64(self):
-        r"""图片的 Base64 值。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经Base64编码后不超过 10M。图片下载时间不超过 3 秒。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
-        :rtype: str
-        """
-        return self._ImageBase64
-
-    @ImageBase64.setter
-    def ImageBase64(self, ImageBase64):
-        self._ImageBase64 = ImageBase64
-
-    @property
-    def ImageUrl(self):
-        r"""图片的 Url 地址。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经 Base64 编码后不超过 10M。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
-        :rtype: str
-        """
-        return self._ImageUrl
-
-    @ImageUrl.setter
-    def ImageUrl(self, ImageUrl):
-        self._ImageUrl = ImageUrl
-
-    @property
-    def IsPdf(self):
-        r"""是否开启PDF识别，默认值为true，开启后可同时支持图片和PDF的识别。
-        :rtype: bool
-        """
-        return self._IsPdf
-
-    @IsPdf.setter
-    def IsPdf(self, IsPdf):
-        self._IsPdf = IsPdf
-
-    @property
-    def PdfPageNumber(self):
-        r"""需要识别的PDF页面的对应页码，仅支持PDF单页识别，当上传文件为PDF且IsPdf参数值为true时有效，默认值为1。
-        :rtype: int
-        """
-        return self._PdfPageNumber
-
-    @PdfPageNumber.setter
-    def PdfPageNumber(self, PdfPageNumber):
-        self._PdfPageNumber = PdfPageNumber
-
-
-    def _deserialize(self, params):
-        self._ImageBase64 = params.get("ImageBase64")
-        self._ImageUrl = params.get("ImageUrl")
-        self._IsPdf = params.get("IsPdf")
-        self._PdfPageNumber = params.get("PdfPageNumber")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class FlightInvoiceOCRResponse(AbstractModel):
-    r"""FlightInvoiceOCR返回参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _FlightInvoiceInfos: 机票行程单识别结果，具体内容请点击左侧链接。
-        :type FlightInvoiceInfos: list of FlightInvoiceInfo
-        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self._FlightInvoiceInfos = None
-        self._RequestId = None
-
-    @property
-    def FlightInvoiceInfos(self):
-        r"""机票行程单识别结果，具体内容请点击左侧链接。
-        :rtype: list of FlightInvoiceInfo
-        """
-        return self._FlightInvoiceInfos
-
-    @FlightInvoiceInfos.setter
-    def FlightInvoiceInfos(self, FlightInvoiceInfos):
-        self._FlightInvoiceInfos = FlightInvoiceInfos
-
-    @property
-    def RequestId(self):
-        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-        :rtype: str
-        """
-        return self._RequestId
-
-    @RequestId.setter
-    def RequestId(self, RequestId):
-        self._RequestId = RequestId
-
-
-    def _deserialize(self, params):
-        if params.get("FlightInvoiceInfos") is not None:
-            self._FlightInvoiceInfos = []
-            for item in params.get("FlightInvoiceInfos"):
-                obj = FlightInvoiceInfo()
-                obj._deserialize(item)
-                self._FlightInvoiceInfos.append(obj)
-        self._RequestId = params.get("RequestId")
-
-
 class FlightItem(AbstractModel):
     r"""机票行程卡条目
 
@@ -11477,120 +10803,6 @@ class FlightItemInfo(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
-
-
-class FormulaOCRRequest(AbstractModel):
-    r"""FormulaOCR请求参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _ImageBase64: 图片的 Base64 值。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经Base64编码后不超过 10M。图片下载时间不超过 3 秒。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
-        :type ImageBase64: str
-        :param _ImageUrl: 图片的 Url 地址。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经 Base64 编码后不超过 10M。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
-        :type ImageUrl: str
-        """
-        self._ImageBase64 = None
-        self._ImageUrl = None
-
-    @property
-    def ImageBase64(self):
-        r"""图片的 Base64 值。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经Base64编码后不超过 10M。图片下载时间不超过 3 秒。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
-        :rtype: str
-        """
-        return self._ImageBase64
-
-    @ImageBase64.setter
-    def ImageBase64(self, ImageBase64):
-        self._ImageBase64 = ImageBase64
-
-    @property
-    def ImageUrl(self):
-        r"""图片的 Url 地址。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经 Base64 编码后不超过 10M。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
-        :rtype: str
-        """
-        return self._ImageUrl
-
-    @ImageUrl.setter
-    def ImageUrl(self, ImageUrl):
-        self._ImageUrl = ImageUrl
-
-
-    def _deserialize(self, params):
-        self._ImageBase64 = params.get("ImageBase64")
-        self._ImageUrl = params.get("ImageUrl")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class FormulaOCRResponse(AbstractModel):
-    r"""FormulaOCR返回参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _Angle: 图片旋转角度（角度制），文本的水平方向为0°；顺时针为正，逆时针为负
-        :type Angle: int
-        :param _FormulaInfos: 检测到的文本信息，具体内容请点击左侧链接。
-        :type FormulaInfos: list of TextFormula
-        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self._Angle = None
-        self._FormulaInfos = None
-        self._RequestId = None
-
-    @property
-    def Angle(self):
-        r"""图片旋转角度（角度制），文本的水平方向为0°；顺时针为正，逆时针为负
-        :rtype: int
-        """
-        return self._Angle
-
-    @Angle.setter
-    def Angle(self, Angle):
-        self._Angle = Angle
-
-    @property
-    def FormulaInfos(self):
-        r"""检测到的文本信息，具体内容请点击左侧链接。
-        :rtype: list of TextFormula
-        """
-        return self._FormulaInfos
-
-    @FormulaInfos.setter
-    def FormulaInfos(self, FormulaInfos):
-        self._FormulaInfos = FormulaInfos
-
-    @property
-    def RequestId(self):
-        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-        :rtype: str
-        """
-        return self._RequestId
-
-    @RequestId.setter
-    def RequestId(self, RequestId):
-        self._RequestId = RequestId
-
-
-    def _deserialize(self, params):
-        self._Angle = params.get("Angle")
-        if params.get("FormulaInfos") is not None:
-            self._FormulaInfos = []
-            for item in params.get("FormulaInfos"):
-                obj = TextFormula()
-                obj._deserialize(item)
-                self._FormulaInfos.append(obj)
-        self._RequestId = params.get("RequestId")
 
 
 class GeneralAccurateOCRRequest(AbstractModel):
@@ -14966,172 +14178,6 @@ class ImageSize(AbstractModel):
         
 
 
-class InsuranceBillInfo(AbstractModel):
-    r"""保险单据信息
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _Name: 识别出的字段名称(关键字)，支持以下字段：
-【病案首页】
-姓名、性别、出生日期、出院诊断、疾病编码、入院病情等。
-【费用清单】
-医疗参保人员类别、身份证号、入院方式、结账日期、项目、金额等。
-【结算单】
-名称、单价、数量、金额、医保内、医保外等。
-【医疗发票】
-姓名、性别、住院时间、收费项目、金额、合计等。
-        :type Name: str
-        :param _Value: 识别出的字段名称对应的值，也就是字段Name对应的字符串结果。
-        :type Value: str
-        """
-        self._Name = None
-        self._Value = None
-
-    @property
-    def Name(self):
-        r"""识别出的字段名称(关键字)，支持以下字段：
-【病案首页】
-姓名、性别、出生日期、出院诊断、疾病编码、入院病情等。
-【费用清单】
-医疗参保人员类别、身份证号、入院方式、结账日期、项目、金额等。
-【结算单】
-名称、单价、数量、金额、医保内、医保外等。
-【医疗发票】
-姓名、性别、住院时间、收费项目、金额、合计等。
-        :rtype: str
-        """
-        return self._Name
-
-    @Name.setter
-    def Name(self, Name):
-        self._Name = Name
-
-    @property
-    def Value(self):
-        r"""识别出的字段名称对应的值，也就是字段Name对应的字符串结果。
-        :rtype: str
-        """
-        return self._Value
-
-    @Value.setter
-    def Value(self, Value):
-        self._Value = Value
-
-
-    def _deserialize(self, params):
-        self._Name = params.get("Name")
-        self._Value = params.get("Value")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class InsuranceBillOCRRequest(AbstractModel):
-    r"""InsuranceBillOCR请求参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _ImageBase64: 图片的 Base64 值。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经Base64编码后不超过 10M。图片下载时间不超过 3 秒。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
-        :type ImageBase64: str
-        :param _ImageUrl: 图片的 Url 地址。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经 Base64 编码后不超过 10M。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
-        :type ImageUrl: str
-        """
-        self._ImageBase64 = None
-        self._ImageUrl = None
-
-    @property
-    def ImageBase64(self):
-        r"""图片的 Base64 值。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经Base64编码后不超过 10M。图片下载时间不超过 3 秒。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
-        :rtype: str
-        """
-        return self._ImageBase64
-
-    @ImageBase64.setter
-    def ImageBase64(self, ImageBase64):
-        self._ImageBase64 = ImageBase64
-
-    @property
-    def ImageUrl(self):
-        r"""图片的 Url 地址。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经 Base64 编码后不超过 10M。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
-        :rtype: str
-        """
-        return self._ImageUrl
-
-    @ImageUrl.setter
-    def ImageUrl(self, ImageUrl):
-        self._ImageUrl = ImageUrl
-
-
-    def _deserialize(self, params):
-        self._ImageBase64 = params.get("ImageBase64")
-        self._ImageUrl = params.get("ImageUrl")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class InsuranceBillOCRResponse(AbstractModel):
-    r"""InsuranceBillOCR返回参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _InsuranceBillInfos: 保险单据识别结果，具体内容请点击左侧链接。
-        :type InsuranceBillInfos: list of InsuranceBillInfo
-        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self._InsuranceBillInfos = None
-        self._RequestId = None
-
-    @property
-    def InsuranceBillInfos(self):
-        r"""保险单据识别结果，具体内容请点击左侧链接。
-        :rtype: list of InsuranceBillInfo
-        """
-        return self._InsuranceBillInfos
-
-    @InsuranceBillInfos.setter
-    def InsuranceBillInfos(self, InsuranceBillInfos):
-        self._InsuranceBillInfos = InsuranceBillInfos
-
-    @property
-    def RequestId(self):
-        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-        :rtype: str
-        """
-        return self._RequestId
-
-    @RequestId.setter
-    def RequestId(self, RequestId):
-        self._RequestId = RequestId
-
-
-    def _deserialize(self, params):
-        if params.get("InsuranceBillInfos") is not None:
-            self._InsuranceBillInfos = []
-            for item in params.get("InsuranceBillInfos"):
-                obj = InsuranceBillInfo()
-                obj._deserialize(item)
-                self._InsuranceBillInfos.append(obj)
-        self._RequestId = params.get("RequestId")
-
-
 class InvoiceDetectInfo(AbstractModel):
     r"""票据检测结果
 
@@ -15980,15 +15026,15 @@ class LicensePlateInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Number: 识别出的车牌号码。
+        :param _Number: <p>识别出的车牌号码。</p>
         :type Number: str
-        :param _Confidence: 置信度，0 - 100 之间。
+        :param _Confidence: <p>置信度，0 - 100 之间。</p>
         :type Confidence: int
-        :param _Rect: 文本行在原图片中的像素坐标框。
+        :param _Rect: <p>文本行在原图片中的像素坐标框。</p>
         :type Rect: :class:`tencentcloud.ocr.v20181119.models.Rect`
-        :param _Color: 识别出的车牌颜色，目前支持颜色包括 “白”、“黑”、“蓝”、“绿“、“黄”、“黄绿”、“临牌”、“喷漆”、“其它”。
+        :param _Color: <p>识别出的车牌颜色，目前支持颜色包括 “白”、“黑”、“蓝”、“绿“、“黄”、“黄绿”、“临牌”、“喷漆”、“其它”。</p>
         :type Color: str
-        :param _LicensePlateCategory: 车牌类别， 如： 实体车牌、非实体车牌
+        :param _LicensePlateCategory: <p>车牌类别， 如： 标准实体车牌、非标准实体车牌、临牌、喷漆车牌</p>
         :type LicensePlateCategory: str
         """
         self._Number = None
@@ -15999,7 +15045,7 @@ class LicensePlateInfo(AbstractModel):
 
     @property
     def Number(self):
-        r"""识别出的车牌号码。
+        r"""<p>识别出的车牌号码。</p>
         :rtype: str
         """
         return self._Number
@@ -16010,7 +15056,7 @@ class LicensePlateInfo(AbstractModel):
 
     @property
     def Confidence(self):
-        r"""置信度，0 - 100 之间。
+        r"""<p>置信度，0 - 100 之间。</p>
         :rtype: int
         """
         return self._Confidence
@@ -16021,7 +15067,7 @@ class LicensePlateInfo(AbstractModel):
 
     @property
     def Rect(self):
-        r"""文本行在原图片中的像素坐标框。
+        r"""<p>文本行在原图片中的像素坐标框。</p>
         :rtype: :class:`tencentcloud.ocr.v20181119.models.Rect`
         """
         return self._Rect
@@ -16032,7 +15078,7 @@ class LicensePlateInfo(AbstractModel):
 
     @property
     def Color(self):
-        r"""识别出的车牌颜色，目前支持颜色包括 “白”、“黑”、“蓝”、“绿“、“黄”、“黄绿”、“临牌”、“喷漆”、“其它”。
+        r"""<p>识别出的车牌颜色，目前支持颜色包括 “白”、“黑”、“蓝”、“绿“、“黄”、“黄绿”、“临牌”、“喷漆”、“其它”。</p>
         :rtype: str
         """
         return self._Color
@@ -16043,7 +15089,7 @@ class LicensePlateInfo(AbstractModel):
 
     @property
     def LicensePlateCategory(self):
-        r"""车牌类别， 如： 实体车牌、非实体车牌
+        r"""<p>车牌类别， 如： 标准实体车牌、非标准实体车牌、临牌、喷漆车牌</p>
         :rtype: str
         """
         return self._LicensePlateCategory
@@ -16078,9 +15124,9 @@ class LicensePlateOCRRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ImageBase64: 图片的 Base64 值。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经Base64编码后不超过 10M。图片下载时间不超过 3 秒。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+        :param _ImageBase64: <p>图片的 Base64 值。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经Base64编码后不超过 10M。图片下载时间不超过 3 秒。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。</p>
         :type ImageBase64: str
-        :param _ImageUrl: 图片的 Url 地址。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经 Base64 编码后不超过 10M。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+        :param _ImageUrl: <p>图片的 Url 地址。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经 Base64 编码后不超过 10M。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。</p>
         :type ImageUrl: str
         """
         self._ImageBase64 = None
@@ -16088,7 +15134,7 @@ class LicensePlateOCRRequest(AbstractModel):
 
     @property
     def ImageBase64(self):
-        r"""图片的 Base64 值。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经Base64编码后不超过 10M。图片下载时间不超过 3 秒。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+        r"""<p>图片的 Base64 值。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经Base64编码后不超过 10M。图片下载时间不超过 3 秒。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。</p>
         :rtype: str
         """
         return self._ImageBase64
@@ -16099,7 +15145,7 @@ class LicensePlateOCRRequest(AbstractModel):
 
     @property
     def ImageUrl(self):
-        r"""图片的 Url 地址。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经 Base64 编码后不超过 10M。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+        r"""<p>图片的 Url 地址。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经 Base64 编码后不超过 10M。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。</p>
         :rtype: str
         """
         return self._ImageUrl
@@ -16129,17 +15175,17 @@ class LicensePlateOCRResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Number: 识别出的车牌号码。
+        :param _Number: <p>识别出的车牌号码。</p>
         :type Number: str
-        :param _Confidence: 置信度，0 - 100 之间。
+        :param _Confidence: <p>置信度，0 - 100 之间。</p>
         :type Confidence: int
-        :param _Rect: 文本行在原图片中的像素坐标框。
+        :param _Rect: <p>文本行在原图片中的像素坐标框。</p>
         :type Rect: :class:`tencentcloud.ocr.v20181119.models.Rect`
-        :param _Color: 识别出的车牌颜色，目前支持颜色包括 “白”、“黑”、“蓝”、“绿”、“黄”、“黄绿”、“临牌”、“喷漆”、“其它”。
+        :param _Color: <p>识别出的车牌颜色，目前支持颜色包括 “白”、“黑”、“蓝”、“绿”、“黄”、“黄绿”、“临牌”、“喷漆”、“其它”。</p>
         :type Color: str
-        :param _LicensePlateInfos: 全部车牌信息。
+        :param _LicensePlateInfos: <p>全部车牌信息。</p>
         :type LicensePlateInfos: list of LicensePlateInfo
-        :param _LicensePlateCategory: 车牌类别， 如： 实体车牌、非实体车牌 示例值：实体车牌
+        :param _LicensePlateCategory: <p>车牌类别， 如： 标准实体车牌、非标准实体车牌、临牌，喷漆车牌  示例值：实体车牌</p>
         :type LicensePlateCategory: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -16154,7 +15200,7 @@ class LicensePlateOCRResponse(AbstractModel):
 
     @property
     def Number(self):
-        r"""识别出的车牌号码。
+        r"""<p>识别出的车牌号码。</p>
         :rtype: str
         """
         return self._Number
@@ -16165,7 +15211,7 @@ class LicensePlateOCRResponse(AbstractModel):
 
     @property
     def Confidence(self):
-        r"""置信度，0 - 100 之间。
+        r"""<p>置信度，0 - 100 之间。</p>
         :rtype: int
         """
         return self._Confidence
@@ -16176,7 +15222,7 @@ class LicensePlateOCRResponse(AbstractModel):
 
     @property
     def Rect(self):
-        r"""文本行在原图片中的像素坐标框。
+        r"""<p>文本行在原图片中的像素坐标框。</p>
         :rtype: :class:`tencentcloud.ocr.v20181119.models.Rect`
         """
         return self._Rect
@@ -16187,7 +15233,7 @@ class LicensePlateOCRResponse(AbstractModel):
 
     @property
     def Color(self):
-        r"""识别出的车牌颜色，目前支持颜色包括 “白”、“黑”、“蓝”、“绿”、“黄”、“黄绿”、“临牌”、“喷漆”、“其它”。
+        r"""<p>识别出的车牌颜色，目前支持颜色包括 “白”、“黑”、“蓝”、“绿”、“黄”、“黄绿”、“临牌”、“喷漆”、“其它”。</p>
         :rtype: str
         """
         return self._Color
@@ -16198,7 +15244,7 @@ class LicensePlateOCRResponse(AbstractModel):
 
     @property
     def LicensePlateInfos(self):
-        r"""全部车牌信息。
+        r"""<p>全部车牌信息。</p>
         :rtype: list of LicensePlateInfo
         """
         return self._LicensePlateInfos
@@ -16209,7 +15255,7 @@ class LicensePlateOCRResponse(AbstractModel):
 
     @property
     def LicensePlateCategory(self):
-        r"""车牌类别， 如： 实体车牌、非实体车牌 示例值：实体车牌
+        r"""<p>车牌类别， 如： 标准实体车牌、非标准实体车牌、临牌，喷漆车牌  示例值：实体车牌</p>
         :rtype: str
         """
         return self._LicensePlateCategory
@@ -19850,12 +18896,15 @@ class MultimodalDocParseRequest(AbstractModel):
         :type EnableSubImg: bool
         :param _PageRange: <p>需要识别的页码范围，单次调用最多支持300页。</p><p>参数格式：1-10</p>
         :type PageRange: str
+        :param _TaskType: <p>任务类型</p><p>枚举值：</p><ul><li>0： 文档解析</li><li>1： 图片OCR识别</li><li>2： 切片文字识别</li><li>3： 切片表格识别</li><li>4： 切片代码识别</li></ul><p>默认值：0</p>
+        :type TaskType: int
         """
         self._FileUrl = None
         self._FileType = None
         self._ResultType = None
         self._EnableSubImg = None
         self._PageRange = None
+        self._TaskType = None
 
     @property
     def FileUrl(self):
@@ -19912,6 +18961,17 @@ class MultimodalDocParseRequest(AbstractModel):
     def PageRange(self, PageRange):
         self._PageRange = PageRange
 
+    @property
+    def TaskType(self):
+        r"""<p>任务类型</p><p>枚举值：</p><ul><li>0： 文档解析</li><li>1： 图片OCR识别</li><li>2： 切片文字识别</li><li>3： 切片表格识别</li><li>4： 切片代码识别</li></ul><p>默认值：0</p>
+        :rtype: int
+        """
+        return self._TaskType
+
+    @TaskType.setter
+    def TaskType(self, TaskType):
+        self._TaskType = TaskType
+
 
     def _deserialize(self, params):
         self._FileUrl = params.get("FileUrl")
@@ -19919,6 +18979,7 @@ class MultimodalDocParseRequest(AbstractModel):
         self._ResultType = params.get("ResultType")
         self._EnableSubImg = params.get("EnableSubImg")
         self._PageRange = params.get("PageRange")
+        self._TaskType = params.get("TaskType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -22631,64 +21692,6 @@ DataMatrix：DATA_MATRIX
         
 
 
-class QuestionBlockObj(AbstractModel):
-    r"""数学试题识别结构化对象
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _QuestionArr: 数学试题识别结构化信息数组
-        :type QuestionArr: list of QuestionObj
-        :param _QuestionBboxCoord: 题目主体区域检测框在图片中的像素坐标
-        :type QuestionBboxCoord: :class:`tencentcloud.ocr.v20181119.models.Rect`
-        """
-        self._QuestionArr = None
-        self._QuestionBboxCoord = None
-
-    @property
-    def QuestionArr(self):
-        r"""数学试题识别结构化信息数组
-        :rtype: list of QuestionObj
-        """
-        return self._QuestionArr
-
-    @QuestionArr.setter
-    def QuestionArr(self, QuestionArr):
-        self._QuestionArr = QuestionArr
-
-    @property
-    def QuestionBboxCoord(self):
-        r"""题目主体区域检测框在图片中的像素坐标
-        :rtype: :class:`tencentcloud.ocr.v20181119.models.Rect`
-        """
-        return self._QuestionBboxCoord
-
-    @QuestionBboxCoord.setter
-    def QuestionBboxCoord(self, QuestionBboxCoord):
-        self._QuestionBboxCoord = QuestionBboxCoord
-
-
-    def _deserialize(self, params):
-        if params.get("QuestionArr") is not None:
-            self._QuestionArr = []
-            for item in params.get("QuestionArr"):
-                obj = QuestionObj()
-                obj._deserialize(item)
-                self._QuestionArr.append(obj)
-        if params.get("QuestionBboxCoord") is not None:
-            self._QuestionBboxCoord = Rect()
-            self._QuestionBboxCoord._deserialize(params.get("QuestionBboxCoord"))
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
 class QuestionInfo(AbstractModel):
     r"""试题识别结果
 
@@ -22696,20 +21699,20 @@ class QuestionInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Angle: 旋转角度
+        :param _Angle: <p>旋转角度</p>
         :type Angle: float
-        :param _Height: 预处理后图片高度
+        :param _Height: <p>预处理后图片高度</p><p>单位：px</p>
         :type Height: int
-        :param _Width: 预处理后图片宽度
+        :param _Width: <p>预处理后图片宽度</p><p>单位：px</p>
         :type Width: int
-        :param _ResultList: 文档元素
+        :param _ResultList: <p>文档元素</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ResultList: list of ResultList
-        :param _OrgHeight: 输入图片高度
+        :param _OrgHeight: <p>输入图片高度</p><p>单位：px</p>
         :type OrgHeight: int
-        :param _OrgWidth: 输入图片宽度
+        :param _OrgWidth: <p>输入图片宽度</p><p>单位：px</p>
         :type OrgWidth: int
-        :param _ImageBase64: 预处理后的图片base64编码
+        :param _ImageBase64: <p>预处理后的图片base64编码</p>
         :type ImageBase64: str
         """
         self._Angle = None
@@ -22722,7 +21725,7 @@ class QuestionInfo(AbstractModel):
 
     @property
     def Angle(self):
-        r"""旋转角度
+        r"""<p>旋转角度</p>
         :rtype: float
         """
         return self._Angle
@@ -22733,7 +21736,7 @@ class QuestionInfo(AbstractModel):
 
     @property
     def Height(self):
-        r"""预处理后图片高度
+        r"""<p>预处理后图片高度</p><p>单位：px</p>
         :rtype: int
         """
         return self._Height
@@ -22744,7 +21747,7 @@ class QuestionInfo(AbstractModel):
 
     @property
     def Width(self):
-        r"""预处理后图片宽度
+        r"""<p>预处理后图片宽度</p><p>单位：px</p>
         :rtype: int
         """
         return self._Width
@@ -22755,7 +21758,7 @@ class QuestionInfo(AbstractModel):
 
     @property
     def ResultList(self):
-        r"""文档元素
+        r"""<p>文档元素</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ResultList
         """
@@ -22767,7 +21770,7 @@ class QuestionInfo(AbstractModel):
 
     @property
     def OrgHeight(self):
-        r"""输入图片高度
+        r"""<p>输入图片高度</p><p>单位：px</p>
         :rtype: int
         """
         return self._OrgHeight
@@ -22778,7 +21781,7 @@ class QuestionInfo(AbstractModel):
 
     @property
     def OrgWidth(self):
-        r"""输入图片宽度
+        r"""<p>输入图片宽度</p><p>单位：px</p>
         :rtype: int
         """
         return self._OrgWidth
@@ -22789,7 +21792,7 @@ class QuestionInfo(AbstractModel):
 
     @property
     def ImageBase64(self):
-        r"""预处理后的图片base64编码
+        r"""<p>预处理后的图片base64编码</p>
         :rtype: str
         """
         return self._ImageBase64
@@ -22964,128 +21967,6 @@ class QuestionOCRResponse(AbstractModel):
                 obj._deserialize(item)
                 self._QuestionInfo.append(obj)
         self._RequestId = params.get("RequestId")
-
-
-class QuestionObj(AbstractModel):
-    r"""试题识别结构化信息
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _QuestionTextNo: 题号
-        :type QuestionTextNo: str
-        :param _QuestionTextType: 题型：
-1: "选择题"
-2: "填空题"
-3: "解答题"
-        :type QuestionTextType: int
-        :param _QuestionText: 题干
-        :type QuestionText: str
-        :param _QuestionOptions: 选择题选项，包含1个或多个option
-        :type QuestionOptions: str
-        :param _QuestionSubquestion: 所有子题的question属性
-        :type QuestionSubquestion: str
-        :param _QuestionImageCoords: 示意图检测框在的图片中的像素坐标
-        :type QuestionImageCoords: list of Rect
-        """
-        self._QuestionTextNo = None
-        self._QuestionTextType = None
-        self._QuestionText = None
-        self._QuestionOptions = None
-        self._QuestionSubquestion = None
-        self._QuestionImageCoords = None
-
-    @property
-    def QuestionTextNo(self):
-        r"""题号
-        :rtype: str
-        """
-        return self._QuestionTextNo
-
-    @QuestionTextNo.setter
-    def QuestionTextNo(self, QuestionTextNo):
-        self._QuestionTextNo = QuestionTextNo
-
-    @property
-    def QuestionTextType(self):
-        r"""题型：
-1: "选择题"
-2: "填空题"
-3: "解答题"
-        :rtype: int
-        """
-        return self._QuestionTextType
-
-    @QuestionTextType.setter
-    def QuestionTextType(self, QuestionTextType):
-        self._QuestionTextType = QuestionTextType
-
-    @property
-    def QuestionText(self):
-        r"""题干
-        :rtype: str
-        """
-        return self._QuestionText
-
-    @QuestionText.setter
-    def QuestionText(self, QuestionText):
-        self._QuestionText = QuestionText
-
-    @property
-    def QuestionOptions(self):
-        r"""选择题选项，包含1个或多个option
-        :rtype: str
-        """
-        return self._QuestionOptions
-
-    @QuestionOptions.setter
-    def QuestionOptions(self, QuestionOptions):
-        self._QuestionOptions = QuestionOptions
-
-    @property
-    def QuestionSubquestion(self):
-        r"""所有子题的question属性
-        :rtype: str
-        """
-        return self._QuestionSubquestion
-
-    @QuestionSubquestion.setter
-    def QuestionSubquestion(self, QuestionSubquestion):
-        self._QuestionSubquestion = QuestionSubquestion
-
-    @property
-    def QuestionImageCoords(self):
-        r"""示意图检测框在的图片中的像素坐标
-        :rtype: list of Rect
-        """
-        return self._QuestionImageCoords
-
-    @QuestionImageCoords.setter
-    def QuestionImageCoords(self, QuestionImageCoords):
-        self._QuestionImageCoords = QuestionImageCoords
-
-
-    def _deserialize(self, params):
-        self._QuestionTextNo = params.get("QuestionTextNo")
-        self._QuestionTextType = params.get("QuestionTextType")
-        self._QuestionText = params.get("QuestionText")
-        self._QuestionOptions = params.get("QuestionOptions")
-        self._QuestionSubquestion = params.get("QuestionSubquestion")
-        if params.get("QuestionImageCoords") is not None:
-            self._QuestionImageCoords = []
-            for item in params.get("QuestionImageCoords"):
-                obj = Rect()
-                obj._deserialize(item)
-                self._QuestionImageCoords.append(obj)
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
 
 
 class QuestionSplitLayoutOCRRequest(AbstractModel):
@@ -30634,14 +29515,18 @@ class SubmitQuestionMarkAgentJobRequest(AbstractModel):
         :type BoolSingleQuestion: bool
         :param _EnableDeepThink: <p>默认false 表示关闭深度思考  true 表示打开深度思考，更深层次推理分析，速度更慢</p>
         :type EnableDeepThink: bool
-        :param _QuestionConfigMap: <p>题目信息输出配置，当key对应为true表示开启配置开关。</p><p>当key为KnowledgePoints value为true 表示输出每道题结构信息中输出知识点内容；<br>当key为TrueAnswer  value为true 表示输出每道题的正确答案 ；<br>当key为StepCorrection  value为true表示启用步骤级批改；</p><p> 设置方式参考  {&quot;KnowledgePoints&quot;:true,&quot;TrueAnswer&quot;:true}</p><p>参数格式：{&quot;KnowledgePoints&quot;:true,&quot;TrueAnswer&quot;:true}</p>
+        :param _QuestionConfigMap: <p>题目信息输出配置，当key对应为true表示开启配置开关。</p><p>当key为KnowledgePoints value为true 表示输出每道题结构信息中输出知识点内容；<br>当key为TrueAnswer value为true 表示输出每道题的正确答案 ；<br>当key为StepCorrection value为true表示启用步骤级批改；</p><p>当key为DisableAnswerAnalysis value为true表示不输出答案解析；</p><p>当key为OutputSubQuestionsAndCoords value为true表示输出子题干和插图坐标；</p><p>当key为UseCoordAssist value为true表示使用精调坐标辅助模型，false表示默认模型坐标（性能更优）；</p><p>参数格式：{&quot;KnowledgePoints&quot;:true,&quot;TrueAnswer&quot;:true}</p>
         :type QuestionConfigMap: str
         :param _ReferenceAnswer: <p>仅有单题有效，如果切题有多题则不生效，单题批改的时候作为参考答案输入到批改模型中</p>
         :type ReferenceAnswer: str
-        :param _ImageBase64List: <p>图片/PDF的 Base64 列表值，最多三张。每张图片要求参考ImageBase64  1. 如果ImageBase64List或者ImageUrlList 都没值则取ImageBase64 或者ImageUrl  2.如果ImageBase64List或者ImageUrlList 有一个值，则不取ImageBase64 或者ImageUrl值，优先去list  3.如果ImageBase64List或者ImageUrlList 都有值，则取ImageUrlList</p>
+        :param _ImageBase64List: <p>批量base64图片入口，每个base64参考单独ImageBase64参数规则。</p><ol><li>当AssistMarkType为2时，用于提供题目相关的辅助批改图片信息.ImageBase64List.N/ImageUrlList.N来输入答题试卷和含正确解析试卷，最多两张</li><li>当AssistMarkType不为2时，ImageBase64List.N/ImageUrlList.N图片会执行拼接逻辑（解决单题跨页场景）</li></ol>
         :type ImageBase64List: list of str
-        :param _ImageUrlList: <p>图片/PDF的 Url 地址Base64 列表值，最多三张。每张图片要求参考ImageUrl。  图片生效规则同ImageBase64List</p>
+        :param _ImageUrlList: <p>批量ImageUrl图片入口，每个ImageUrl参考单独ImageUrl参数规则。</p><ol><li>当AssistMarkType为2时，用于提供题目相关的辅助批改图片信息.ImageBase64List.N/ImageUrlList.N 来输入答题试卷和含正确解析试卷，最多两张</li><li>当AssistMarkType不为2时，ImageBase64List.N/ImageUrlList.N图片会执行拼接逻辑（解决单题跨页场景）</li></ol>
         :type ImageUrlList: list of str
+        :param _AssistMarkType: <p>辅助批改类型</p><p>枚举值：</p><ul><li>0： 无辅助批改，直接模型批改</li><li>1： 单题文本辅助批改，配合AnswerAssistMap使用</li><li>2： 整页辅助批改，待批改试卷使用ImageUrl/ImageBase64，答案部分使用ImageBase64List.N/ImageUrlList.N</li></ul><p>默认值：0</p>
+        :type AssistMarkType: int
+        :param _AnswerAssistMap: <p>单题辅助批改文本内容列表，当AssistMarkType为1时生效，用于提供题目相关的辅助文本信息。</p><ol><li>当key为ReferenceAnswer，value可以输入单题的辅助答案文本。</li><li>当key为QuestionAuxStem，value可以输入单题的辅助题干。</li></ol>
+        :type AnswerAssistMap: str
         """
         self._ImageBase64 = None
         self._ImageUrl = None
@@ -30652,6 +29537,8 @@ class SubmitQuestionMarkAgentJobRequest(AbstractModel):
         self._ReferenceAnswer = None
         self._ImageBase64List = None
         self._ImageUrlList = None
+        self._AssistMarkType = None
+        self._AnswerAssistMap = None
 
     @property
     def ImageBase64(self):
@@ -30718,7 +29605,7 @@ class SubmitQuestionMarkAgentJobRequest(AbstractModel):
 
     @property
     def QuestionConfigMap(self):
-        r"""<p>题目信息输出配置，当key对应为true表示开启配置开关。</p><p>当key为KnowledgePoints value为true 表示输出每道题结构信息中输出知识点内容；<br>当key为TrueAnswer  value为true 表示输出每道题的正确答案 ；<br>当key为StepCorrection  value为true表示启用步骤级批改；</p><p> 设置方式参考  {&quot;KnowledgePoints&quot;:true,&quot;TrueAnswer&quot;:true}</p><p>参数格式：{&quot;KnowledgePoints&quot;:true,&quot;TrueAnswer&quot;:true}</p>
+        r"""<p>题目信息输出配置，当key对应为true表示开启配置开关。</p><p>当key为KnowledgePoints value为true 表示输出每道题结构信息中输出知识点内容；<br>当key为TrueAnswer value为true 表示输出每道题的正确答案 ；<br>当key为StepCorrection value为true表示启用步骤级批改；</p><p>当key为DisableAnswerAnalysis value为true表示不输出答案解析；</p><p>当key为OutputSubQuestionsAndCoords value为true表示输出子题干和插图坐标；</p><p>当key为UseCoordAssist value为true表示使用精调坐标辅助模型，false表示默认模型坐标（性能更优）；</p><p>参数格式：{&quot;KnowledgePoints&quot;:true,&quot;TrueAnswer&quot;:true}</p>
         :rtype: str
         """
         return self._QuestionConfigMap
@@ -30740,7 +29627,7 @@ class SubmitQuestionMarkAgentJobRequest(AbstractModel):
 
     @property
     def ImageBase64List(self):
-        r"""<p>图片/PDF的 Base64 列表值，最多三张。每张图片要求参考ImageBase64  1. 如果ImageBase64List或者ImageUrlList 都没值则取ImageBase64 或者ImageUrl  2.如果ImageBase64List或者ImageUrlList 有一个值，则不取ImageBase64 或者ImageUrl值，优先去list  3.如果ImageBase64List或者ImageUrlList 都有值，则取ImageUrlList</p>
+        r"""<p>批量base64图片入口，每个base64参考单独ImageBase64参数规则。</p><ol><li>当AssistMarkType为2时，用于提供题目相关的辅助批改图片信息.ImageBase64List.N/ImageUrlList.N来输入答题试卷和含正确解析试卷，最多两张</li><li>当AssistMarkType不为2时，ImageBase64List.N/ImageUrlList.N图片会执行拼接逻辑（解决单题跨页场景）</li></ol>
         :rtype: list of str
         """
         return self._ImageBase64List
@@ -30751,7 +29638,7 @@ class SubmitQuestionMarkAgentJobRequest(AbstractModel):
 
     @property
     def ImageUrlList(self):
-        r"""<p>图片/PDF的 Url 地址Base64 列表值，最多三张。每张图片要求参考ImageUrl。  图片生效规则同ImageBase64List</p>
+        r"""<p>批量ImageUrl图片入口，每个ImageUrl参考单独ImageUrl参数规则。</p><ol><li>当AssistMarkType为2时，用于提供题目相关的辅助批改图片信息.ImageBase64List.N/ImageUrlList.N 来输入答题试卷和含正确解析试卷，最多两张</li><li>当AssistMarkType不为2时，ImageBase64List.N/ImageUrlList.N图片会执行拼接逻辑（解决单题跨页场景）</li></ol>
         :rtype: list of str
         """
         return self._ImageUrlList
@@ -30759,6 +29646,28 @@ class SubmitQuestionMarkAgentJobRequest(AbstractModel):
     @ImageUrlList.setter
     def ImageUrlList(self, ImageUrlList):
         self._ImageUrlList = ImageUrlList
+
+    @property
+    def AssistMarkType(self):
+        r"""<p>辅助批改类型</p><p>枚举值：</p><ul><li>0： 无辅助批改，直接模型批改</li><li>1： 单题文本辅助批改，配合AnswerAssistMap使用</li><li>2： 整页辅助批改，待批改试卷使用ImageUrl/ImageBase64，答案部分使用ImageBase64List.N/ImageUrlList.N</li></ul><p>默认值：0</p>
+        :rtype: int
+        """
+        return self._AssistMarkType
+
+    @AssistMarkType.setter
+    def AssistMarkType(self, AssistMarkType):
+        self._AssistMarkType = AssistMarkType
+
+    @property
+    def AnswerAssistMap(self):
+        r"""<p>单题辅助批改文本内容列表，当AssistMarkType为1时生效，用于提供题目相关的辅助文本信息。</p><ol><li>当key为ReferenceAnswer，value可以输入单题的辅助答案文本。</li><li>当key为QuestionAuxStem，value可以输入单题的辅助题干。</li></ol>
+        :rtype: str
+        """
+        return self._AnswerAssistMap
+
+    @AnswerAssistMap.setter
+    def AnswerAssistMap(self, AnswerAssistMap):
+        self._AnswerAssistMap = AnswerAssistMap
 
 
     def _deserialize(self, params):
@@ -30771,6 +29680,8 @@ class SubmitQuestionMarkAgentJobRequest(AbstractModel):
         self._ReferenceAnswer = params.get("ReferenceAnswer")
         self._ImageBase64List = params.get("ImageBase64List")
         self._ImageUrlList = params.get("ImageUrlList")
+        self._AssistMarkType = params.get("AssistMarkType")
+        self._AnswerAssistMap = params.get("AnswerAssistMap")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -30794,12 +29705,15 @@ class SubmitQuestionMarkAgentJobResponse(AbstractModel):
         :type QuestionInfo: list of QuestionInfo
         :param _QuestionCount: <p>题目切题数量，作为计费题目数总量</p>
         :type QuestionCount: str
+        :param _OriginalImageUrl: <p>客户图片url</p>
+        :type OriginalImageUrl: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._JobId = None
         self._QuestionInfo = None
         self._QuestionCount = None
+        self._OriginalImageUrl = None
         self._RequestId = None
 
     @property
@@ -30836,6 +29750,17 @@ class SubmitQuestionMarkAgentJobResponse(AbstractModel):
         self._QuestionCount = QuestionCount
 
     @property
+    def OriginalImageUrl(self):
+        r"""<p>客户图片url</p>
+        :rtype: str
+        """
+        return self._OriginalImageUrl
+
+    @OriginalImageUrl.setter
+    def OriginalImageUrl(self, OriginalImageUrl):
+        self._OriginalImageUrl = OriginalImageUrl
+
+    @property
     def RequestId(self):
         r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -30856,6 +29781,7 @@ class SubmitQuestionMarkAgentJobResponse(AbstractModel):
                 obj._deserialize(item)
                 self._QuestionInfo.append(obj)
         self._QuestionCount = params.get("QuestionCount")
+        self._OriginalImageUrl = params.get("OriginalImageUrl")
         self._RequestId = params.get("RequestId")
 
 
@@ -32695,110 +31621,6 @@ class TextDetectionEn(AbstractModel):
                 obj = Words()
                 obj._deserialize(item)
                 self._Words.append(obj)
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class TextEduPaper(AbstractModel):
-    r"""数学试题识别结果
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _Item: 识别出的字段名称（关键字）
-        :type Item: str
-        :param _DetectedText: 识别出的字段名称对应的值，也就是字段Item对应的字符串结果
-        :type DetectedText: str
-        :param _Itemcoord: 文本行在旋转纠正之后的图像中的像素坐标，表示为（左上角x, 左上角y，宽width，高height）
-        :type Itemcoord: :class:`tencentcloud.ocr.v20181119.models.ItemCoord`
-        """
-        self._Item = None
-        self._DetectedText = None
-        self._Itemcoord = None
-
-    @property
-    def Item(self):
-        r"""识别出的字段名称（关键字）
-        :rtype: str
-        """
-        return self._Item
-
-    @Item.setter
-    def Item(self, Item):
-        self._Item = Item
-
-    @property
-    def DetectedText(self):
-        r"""识别出的字段名称对应的值，也就是字段Item对应的字符串结果
-        :rtype: str
-        """
-        return self._DetectedText
-
-    @DetectedText.setter
-    def DetectedText(self, DetectedText):
-        self._DetectedText = DetectedText
-
-    @property
-    def Itemcoord(self):
-        r"""文本行在旋转纠正之后的图像中的像素坐标，表示为（左上角x, 左上角y，宽width，高height）
-        :rtype: :class:`tencentcloud.ocr.v20181119.models.ItemCoord`
-        """
-        return self._Itemcoord
-
-    @Itemcoord.setter
-    def Itemcoord(self, Itemcoord):
-        self._Itemcoord = Itemcoord
-
-
-    def _deserialize(self, params):
-        self._Item = params.get("Item")
-        self._DetectedText = params.get("DetectedText")
-        if params.get("Itemcoord") is not None:
-            self._Itemcoord = ItemCoord()
-            self._Itemcoord._deserialize(params.get("Itemcoord"))
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class TextFormula(AbstractModel):
-    r"""数学公式识别结果
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _DetectedText: 识别出的文本行内容
-        :type DetectedText: str
-        """
-        self._DetectedText = None
-
-    @property
-    def DetectedText(self):
-        r"""识别出的文本行内容
-        :rtype: str
-        """
-        return self._DetectedText
-
-    @DetectedText.setter
-    def DetectedText(self, DetectedText):
-        self._DetectedText = DetectedText
-
-
-    def _deserialize(self, params):
-        self._DetectedText = params.get("DetectedText")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

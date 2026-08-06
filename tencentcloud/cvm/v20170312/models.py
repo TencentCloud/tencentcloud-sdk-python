@@ -14194,22 +14194,26 @@ class InstanceTypeConfig(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Zone: 可用区。
+        :param _Zone: <p>可用区。</p>
         :type Zone: str
-        :param _InstanceType: 实例机型。
+        :param _InstanceType: <p>实例机型。</p>
         :type InstanceType: str
-        :param _InstanceFamily: 实例机型系列。
+        :param _InstanceFamily: <p>实例机型系列。</p>
         :type InstanceFamily: str
-        :param _GPU: GPU核数，单位：核。
+        :param _GPU: <p>GPU核数，单位：核。</p>
         :type GPU: int
-        :param _CPU: CPU核数，单位：核。
+        :param _CPU: <p>CPU核数，单位：核。</p>
         :type CPU: int
-        :param _Memory: 内存容量，单位：`GiB`。
+        :param _Memory: <p>内存容量，单位：<code>GiB</code>。</p>
         :type Memory: int
-        :param _FPGA: FPGA核数，单位：核。
+        :param _FPGA: <p>FPGA核数，单位：核。</p>
         :type FPGA: int
-        :param _GpuCount: 实例机型映射的物理GPU卡数，单位：卡。vGPU卡型小于1，直通卡型大于等于1。vGPU是通过分片虚拟化技术，将物理GPU卡重新划分，同一块GPU卡经虚拟化分割后可分配至不同的实例使用。直通卡型会将GPU设备直接挂载给实例使用。
+        :param _GpuCount: <p>实例机型映射的物理GPU卡数，单位：卡。vGPU卡型小于1，直通卡型大于等于1。vGPU是通过分片虚拟化技术，将物理GPU卡重新划分，同一块GPU卡经虚拟化分割后可分配至不同的实例使用。直通卡型会将GPU设备直接挂载给实例使用。</p>
         :type GpuCount: float
+        :param _GpuType: <p>实例GPU类型</p>
+        :type GpuType: str
+        :param _GpuMemory: <p>实例GPU单块显存,单位：GiB。</p>
+        :type GpuMemory: float
         """
         self._Zone = None
         self._InstanceType = None
@@ -14219,10 +14223,12 @@ class InstanceTypeConfig(AbstractModel):
         self._Memory = None
         self._FPGA = None
         self._GpuCount = None
+        self._GpuType = None
+        self._GpuMemory = None
 
     @property
     def Zone(self):
-        r"""可用区。
+        r"""<p>可用区。</p>
         :rtype: str
         """
         return self._Zone
@@ -14233,7 +14239,7 @@ class InstanceTypeConfig(AbstractModel):
 
     @property
     def InstanceType(self):
-        r"""实例机型。
+        r"""<p>实例机型。</p>
         :rtype: str
         """
         return self._InstanceType
@@ -14244,7 +14250,7 @@ class InstanceTypeConfig(AbstractModel):
 
     @property
     def InstanceFamily(self):
-        r"""实例机型系列。
+        r"""<p>实例机型系列。</p>
         :rtype: str
         """
         return self._InstanceFamily
@@ -14255,7 +14261,7 @@ class InstanceTypeConfig(AbstractModel):
 
     @property
     def GPU(self):
-        r"""GPU核数，单位：核。
+        r"""<p>GPU核数，单位：核。</p>
         :rtype: int
         """
         return self._GPU
@@ -14266,7 +14272,7 @@ class InstanceTypeConfig(AbstractModel):
 
     @property
     def CPU(self):
-        r"""CPU核数，单位：核。
+        r"""<p>CPU核数，单位：核。</p>
         :rtype: int
         """
         return self._CPU
@@ -14277,7 +14283,7 @@ class InstanceTypeConfig(AbstractModel):
 
     @property
     def Memory(self):
-        r"""内存容量，单位：`GiB`。
+        r"""<p>内存容量，单位：<code>GiB</code>。</p>
         :rtype: int
         """
         return self._Memory
@@ -14288,7 +14294,7 @@ class InstanceTypeConfig(AbstractModel):
 
     @property
     def FPGA(self):
-        r"""FPGA核数，单位：核。
+        r"""<p>FPGA核数，单位：核。</p>
         :rtype: int
         """
         return self._FPGA
@@ -14299,7 +14305,7 @@ class InstanceTypeConfig(AbstractModel):
 
     @property
     def GpuCount(self):
-        r"""实例机型映射的物理GPU卡数，单位：卡。vGPU卡型小于1，直通卡型大于等于1。vGPU是通过分片虚拟化技术，将物理GPU卡重新划分，同一块GPU卡经虚拟化分割后可分配至不同的实例使用。直通卡型会将GPU设备直接挂载给实例使用。
+        r"""<p>实例机型映射的物理GPU卡数，单位：卡。vGPU卡型小于1，直通卡型大于等于1。vGPU是通过分片虚拟化技术，将物理GPU卡重新划分，同一块GPU卡经虚拟化分割后可分配至不同的实例使用。直通卡型会将GPU设备直接挂载给实例使用。</p>
         :rtype: float
         """
         return self._GpuCount
@@ -14307,6 +14313,28 @@ class InstanceTypeConfig(AbstractModel):
     @GpuCount.setter
     def GpuCount(self, GpuCount):
         self._GpuCount = GpuCount
+
+    @property
+    def GpuType(self):
+        r"""<p>实例GPU类型</p>
+        :rtype: str
+        """
+        return self._GpuType
+
+    @GpuType.setter
+    def GpuType(self, GpuType):
+        self._GpuType = GpuType
+
+    @property
+    def GpuMemory(self):
+        r"""<p>实例GPU单块显存,单位：GiB。</p>
+        :rtype: float
+        """
+        return self._GpuMemory
+
+    @GpuMemory.setter
+    def GpuMemory(self, GpuMemory):
+        self._GpuMemory = GpuMemory
 
 
     def _deserialize(self, params):
@@ -14318,6 +14346,8 @@ class InstanceTypeConfig(AbstractModel):
         self._Memory = params.get("Memory")
         self._FPGA = params.get("FPGA")
         self._GpuCount = params.get("GpuCount")
+        self._GpuType = params.get("GpuType")
+        self._GpuMemory = params.get("GpuMemory")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

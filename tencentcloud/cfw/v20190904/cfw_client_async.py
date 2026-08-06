@@ -421,6 +421,24 @@ class CfwClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateWhiteRule(
+            self,
+            request: models.CreateWhiteRuleRequest,
+            opts: Dict = None,
+    ) -> models.CreateWhiteRuleResponse:
+        """
+        创建入侵防御白名单。先选择 RuleType，再按该类型填写 Rules[].Info；每条策略使用唯一 RuleName。创建成功后调用 DescribeWhiteRule，使用 RuleName+OperatorType 9 查询并精确核对 RuleName，取得 WhiteId。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateWhiteRule"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateWhiteRuleResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DeleteAcRule(
             self,
             request: models.DeleteAcRuleRequest,
@@ -596,6 +614,24 @@ class CfwClient(AbstractClient):
         kwargs["action"] = "DeleteVpcFwGroup"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DeleteVpcFwGroupResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteWhiteRule(
+            self,
+            request: models.DeleteWhiteRuleRequest,
+            opts: Dict = None,
+    ) -> models.DeleteWhiteRuleResponse:
+        """
+        按 WhiteId 删除入侵防御白名单。先从 DescribeWhiteRule.Data[].WhiteId 读取目标 ID；提交删除后调用 DescribeWhiteRule，Filters 使用 Name=WD、OperatorType=1 和目标 WhiteId，Data 为空表示删除完成。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteWhiteRule"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteWhiteRuleResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -2672,6 +2708,24 @@ class CfwClient(AbstractClient):
         kwargs["action"] = "ModifyVpcFwSequenceRules"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ModifyVpcFwSequenceRulesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyWhiteRule(
+            self,
+            request: models.ModifyWhiteRuleRequest,
+            opts: Dict = None,
+    ) -> models.ModifyWhiteRuleResponse:
+        """
+        修改入侵防御白名单采用整条替换。先调用 DescribeWhiteRule，选择 BanEdit=0 的策略并沿用其 WhiteId 和 RuleType；Rule 提交修改后的全部可写字段。Info 多值字段按笛卡尔积展开，第一项更新原 WhiteId，其余组合创建新 WhiteId，展开后最多 100 条且新增组合消耗配额。成功后调用 DescribeWhiteRule：原策略使用 Name=WD、OperatorType=1 精确查询，新组合使用 Name=RuleName、OperatorType=9 查询并逐项核对。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyWhiteRule"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyWhiteRuleResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

@@ -2182,6 +2182,95 @@ class CloudAppVersionItem(AbstractModel):
         
 
 
+class CloudBaseRunBuildLog(AbstractModel):
+    r"""BuildLog
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Total: 总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Total: int
+        :param _Delivered: 触达ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Delivered: int
+        :param _Text: 文档
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Text: str
+        :param _More: 是否更多
+注意：此字段可能返回 null，表示取不到有效值。
+        :type More: bool
+        """
+        self._Total = None
+        self._Delivered = None
+        self._Text = None
+        self._More = None
+
+    @property
+    def Total(self):
+        r"""总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def Delivered(self):
+        r"""触达ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Delivered
+
+    @Delivered.setter
+    def Delivered(self, Delivered):
+        self._Delivered = Delivered
+
+    @property
+    def Text(self):
+        r"""文档
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Text
+
+    @Text.setter
+    def Text(self, Text):
+        self._Text = Text
+
+    @property
+    def More(self):
+        r"""是否更多
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._More
+
+    @More.setter
+    def More(self, More):
+        self._More = More
+
+
+    def _deserialize(self, params):
+        self._Total = params.get("Total")
+        self._Delivered = params.get("Delivered")
+        self._Text = params.get("Text")
+        self._More = params.get("More")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ClsInfo(AbstractModel):
     r"""cls日志信息
 
@@ -8273,6 +8362,149 @@ class DescribeCloudBaseBuildServiceResponse(AbstractModel):
                 obj._deserialize(item)
                 self._DownloadHeaders.append(obj)
         self._OutDate = params.get("OutDate")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeCloudBaseRunBuildLogRequest(AbstractModel):
+    r"""DescribeCloudBaseRunBuildLog请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EnvId: 环境ID
+        :type EnvId: str
+        :param _ServiceName: 服务名称
+        :type ServiceName: str
+        :param _ServiceVersion: 版本名称
+        :type ServiceVersion: str
+        :param _BuildId: 构建ID
+        :type BuildId: int
+        :param _Start: 偏移记录
+        :type Start: int
+        """
+        self._EnvId = None
+        self._ServiceName = None
+        self._ServiceVersion = None
+        self._BuildId = None
+        self._Start = None
+
+    @property
+    def EnvId(self):
+        r"""环境ID
+        :rtype: str
+        """
+        return self._EnvId
+
+    @EnvId.setter
+    def EnvId(self, EnvId):
+        self._EnvId = EnvId
+
+    @property
+    def ServiceName(self):
+        r"""服务名称
+        :rtype: str
+        """
+        return self._ServiceName
+
+    @ServiceName.setter
+    def ServiceName(self, ServiceName):
+        self._ServiceName = ServiceName
+
+    @property
+    def ServiceVersion(self):
+        r"""版本名称
+        :rtype: str
+        """
+        return self._ServiceVersion
+
+    @ServiceVersion.setter
+    def ServiceVersion(self, ServiceVersion):
+        self._ServiceVersion = ServiceVersion
+
+    @property
+    def BuildId(self):
+        r"""构建ID
+        :rtype: int
+        """
+        return self._BuildId
+
+    @BuildId.setter
+    def BuildId(self, BuildId):
+        self._BuildId = BuildId
+
+    @property
+    def Start(self):
+        r"""偏移记录
+        :rtype: int
+        """
+        return self._Start
+
+    @Start.setter
+    def Start(self, Start):
+        self._Start = Start
+
+
+    def _deserialize(self, params):
+        self._EnvId = params.get("EnvId")
+        self._ServiceName = params.get("ServiceName")
+        self._ServiceVersion = params.get("ServiceVersion")
+        self._BuildId = params.get("BuildId")
+        self._Start = params.get("Start")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCloudBaseRunBuildLogResponse(AbstractModel):
+    r"""DescribeCloudBaseRunBuildLog返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Log: 日志
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Log: :class:`tencentcloud.tcb.v20180608.models.CloudBaseRunBuildLog`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Log = None
+        self._RequestId = None
+
+    @property
+    def Log(self):
+        r"""日志
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.CloudBaseRunBuildLog`
+        """
+        return self._Log
+
+    @Log.setter
+    def Log(self, Log):
+        self._Log = Log
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Log") is not None:
+            self._Log = CloudBaseRunBuildLog()
+            self._Log._deserialize(params.get("Log"))
         self._RequestId = params.get("RequestId")
 
 

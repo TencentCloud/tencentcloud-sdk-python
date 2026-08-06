@@ -3471,6 +3471,214 @@ ConfigurationItemChangeNotification：变更触发
         
 
 
+class ConfigRuleResourceEvaluationResult(AbstractModel):
+    r"""配置规则资源评估结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RuleId: 规则ID
+        :type RuleId: str
+        :param _RuleName: 规则名称
+        :type RuleName: str
+        :param _RuleIdentifier: 规则身份标识
+        :type RuleIdentifier: str
+        :param _RuleDescription: 规则描述
+        :type RuleDescription: str
+        :param _RuleOwnerId: 规则归属账号
+        :type RuleOwnerId: int
+        :param _RuleRiskLevel: 规则风险等级
+        :type RuleRiskLevel: int
+        :param _ResourceId: 资源ID
+        :type ResourceId: str
+        :param _ResourceType: 资源类型
+        :type ResourceType: str
+        :param _ResourceName: 资源名称
+        :type ResourceName: str
+        :param _ResourceRegion: 资源地域
+        :type ResourceRegion: str
+        :param _ResourceTags: 资源标签
+        :type ResourceTags: list of Tag
+        :param _Annotation: 合规详情
+        :type Annotation: :class:`tencentcloud.config.v20220802.models.Annotation`
+        """
+        self._RuleId = None
+        self._RuleName = None
+        self._RuleIdentifier = None
+        self._RuleDescription = None
+        self._RuleOwnerId = None
+        self._RuleRiskLevel = None
+        self._ResourceId = None
+        self._ResourceType = None
+        self._ResourceName = None
+        self._ResourceRegion = None
+        self._ResourceTags = None
+        self._Annotation = None
+
+    @property
+    def RuleId(self):
+        r"""规则ID
+        :rtype: str
+        """
+        return self._RuleId
+
+    @RuleId.setter
+    def RuleId(self, RuleId):
+        self._RuleId = RuleId
+
+    @property
+    def RuleName(self):
+        r"""规则名称
+        :rtype: str
+        """
+        return self._RuleName
+
+    @RuleName.setter
+    def RuleName(self, RuleName):
+        self._RuleName = RuleName
+
+    @property
+    def RuleIdentifier(self):
+        r"""规则身份标识
+        :rtype: str
+        """
+        return self._RuleIdentifier
+
+    @RuleIdentifier.setter
+    def RuleIdentifier(self, RuleIdentifier):
+        self._RuleIdentifier = RuleIdentifier
+
+    @property
+    def RuleDescription(self):
+        r"""规则描述
+        :rtype: str
+        """
+        return self._RuleDescription
+
+    @RuleDescription.setter
+    def RuleDescription(self, RuleDescription):
+        self._RuleDescription = RuleDescription
+
+    @property
+    def RuleOwnerId(self):
+        r"""规则归属账号
+        :rtype: int
+        """
+        return self._RuleOwnerId
+
+    @RuleOwnerId.setter
+    def RuleOwnerId(self, RuleOwnerId):
+        self._RuleOwnerId = RuleOwnerId
+
+    @property
+    def RuleRiskLevel(self):
+        r"""规则风险等级
+        :rtype: int
+        """
+        return self._RuleRiskLevel
+
+    @RuleRiskLevel.setter
+    def RuleRiskLevel(self, RuleRiskLevel):
+        self._RuleRiskLevel = RuleRiskLevel
+
+    @property
+    def ResourceId(self):
+        r"""资源ID
+        :rtype: str
+        """
+        return self._ResourceId
+
+    @ResourceId.setter
+    def ResourceId(self, ResourceId):
+        self._ResourceId = ResourceId
+
+    @property
+    def ResourceType(self):
+        r"""资源类型
+        :rtype: str
+        """
+        return self._ResourceType
+
+    @ResourceType.setter
+    def ResourceType(self, ResourceType):
+        self._ResourceType = ResourceType
+
+    @property
+    def ResourceName(self):
+        r"""资源名称
+        :rtype: str
+        """
+        return self._ResourceName
+
+    @ResourceName.setter
+    def ResourceName(self, ResourceName):
+        self._ResourceName = ResourceName
+
+    @property
+    def ResourceRegion(self):
+        r"""资源地域
+        :rtype: str
+        """
+        return self._ResourceRegion
+
+    @ResourceRegion.setter
+    def ResourceRegion(self, ResourceRegion):
+        self._ResourceRegion = ResourceRegion
+
+    @property
+    def ResourceTags(self):
+        r"""资源标签
+        :rtype: list of Tag
+        """
+        return self._ResourceTags
+
+    @ResourceTags.setter
+    def ResourceTags(self, ResourceTags):
+        self._ResourceTags = ResourceTags
+
+    @property
+    def Annotation(self):
+        r"""合规详情
+        :rtype: :class:`tencentcloud.config.v20220802.models.Annotation`
+        """
+        return self._Annotation
+
+    @Annotation.setter
+    def Annotation(self, Annotation):
+        self._Annotation = Annotation
+
+
+    def _deserialize(self, params):
+        self._RuleId = params.get("RuleId")
+        self._RuleName = params.get("RuleName")
+        self._RuleIdentifier = params.get("RuleIdentifier")
+        self._RuleDescription = params.get("RuleDescription")
+        self._RuleOwnerId = params.get("RuleOwnerId")
+        self._RuleRiskLevel = params.get("RuleRiskLevel")
+        self._ResourceId = params.get("ResourceId")
+        self._ResourceType = params.get("ResourceType")
+        self._ResourceName = params.get("ResourceName")
+        self._ResourceRegion = params.get("ResourceRegion")
+        if params.get("ResourceTags") is not None:
+            self._ResourceTags = []
+            for item in params.get("ResourceTags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._ResourceTags.append(obj)
+        if params.get("Annotation") is not None:
+            self._Annotation = Annotation()
+            self._Annotation._deserialize(params.get("Annotation"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Control(AbstractModel):
     r"""规则编号信息
 
@@ -7281,6 +7489,135 @@ class ListAggregateConfigRuleEvaluationResultsResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ListAggregateConfigRuleResourceEvaluationResultsRequest(AbstractModel):
+    r"""ListAggregateConfigRuleResourceEvaluationResults请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AccountGroupId: <p>账号组Id</p>
+        :type AccountGroupId: str
+        :param _Limit: <p>返回数量，最大值1000，不填写返回全部</p>
+        :type Limit: int
+        :param _Offset: <p>偏移量，默认为0</p>
+        :type Offset: int
+        """
+        self._AccountGroupId = None
+        self._Limit = None
+        self._Offset = None
+
+    @property
+    def AccountGroupId(self):
+        r"""<p>账号组Id</p>
+        :rtype: str
+        """
+        return self._AccountGroupId
+
+    @AccountGroupId.setter
+    def AccountGroupId(self, AccountGroupId):
+        self._AccountGroupId = AccountGroupId
+
+    @property
+    def Limit(self):
+        r"""<p>返回数量，最大值1000，不填写返回全部</p>
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        r"""<p>偏移量，默认为0</p>
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+
+    def _deserialize(self, params):
+        self._AccountGroupId = params.get("AccountGroupId")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ListAggregateConfigRuleResourceEvaluationResultsResponse(AbstractModel):
+    r"""ListAggregateConfigRuleResourceEvaluationResults返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Items: <p>配置规则资源评估结果列表</p>
+        :type Items: list of ConfigRuleResourceEvaluationResult
+        :param _TotalCount: <p>总数</p>
+        :type TotalCount: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Items = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def Items(self):
+        r"""<p>配置规则资源评估结果列表</p>
+        :rtype: list of ConfigRuleResourceEvaluationResult
+        """
+        return self._Items
+
+    @Items.setter
+    def Items(self, Items):
+        self._Items = Items
+
+    @property
+    def TotalCount(self):
+        r"""<p>总数</p>
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Items") is not None:
+            self._Items = []
+            for item in params.get("Items"):
+                obj = ConfigRuleResourceEvaluationResult()
+                obj._deserialize(item)
+                self._Items.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
+
+
 class ListAggregateConfigRulesRequest(AbstractModel):
     r"""ListAggregateConfigRules请求参数结构体
 
@@ -8289,6 +8626,120 @@ class ListConfigRuleEvaluationResultsResponse(AbstractModel):
                 obj = EvaluationResult()
                 obj._deserialize(item)
                 self._Items.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class ListConfigRuleResourceEvaluationResultsRequest(AbstractModel):
+    r"""ListConfigRuleResourceEvaluationResults请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Limit: <p>返回数量，最大值1000，不填写返回全部</p>
+        :type Limit: int
+        :param _Offset: <p>偏移量，默认为0</p>
+        :type Offset: int
+        """
+        self._Limit = None
+        self._Offset = None
+
+    @property
+    def Limit(self):
+        r"""<p>返回数量，最大值1000，不填写返回全部</p>
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        r"""<p>偏移量，默认为0</p>
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+
+    def _deserialize(self, params):
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ListConfigRuleResourceEvaluationResultsResponse(AbstractModel):
+    r"""ListConfigRuleResourceEvaluationResults返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Items: <p>配置规则资源评估结果列表</p>
+        :type Items: list of ConfigRuleResourceEvaluationResult
+        :param _TotalCount: <p>总数</p>
+        :type TotalCount: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Items = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def Items(self):
+        r"""<p>配置规则资源评估结果列表</p>
+        :rtype: list of ConfigRuleResourceEvaluationResult
+        """
+        return self._Items
+
+    @Items.setter
+    def Items(self, Items):
+        self._Items = Items
+
+    @property
+    def TotalCount(self):
+        r"""<p>总数</p>
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Items") is not None:
+            self._Items = []
+            for item in params.get("Items"):
+                obj = ConfigRuleResourceEvaluationResult()
+                obj._deserialize(item)
+                self._Items.append(obj)
+        self._TotalCount = params.get("TotalCount")
         self._RequestId = params.get("RequestId")
 
 

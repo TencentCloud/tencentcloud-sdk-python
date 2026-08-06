@@ -861,30 +861,33 @@ class Database(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ClusterID: 实例ID
+        :param _ClusterID: <p>实例ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ClusterID: str
-        :param _Name: 数据库名
+        :param _Name: <p>数据库名</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
-        :param _CoolDownInDays: 降冷时间（天）
+        :param _CoolDownInDays: <p>降冷时间（天）</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type CoolDownInDays: int
-        :param _RetentionInDays: 数据保留时间（天）
+        :param _RetentionInDays: <p>数据保留时间（天）</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type RetentionInDays: int
-        :param _Remark: 备注
+        :param _Remark: <p>备注</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Remark: str
-        :param _Status: 状态：0: 资源初始化中， 1: 资源创建中， 2: 正常状态， 3: 资源删除中， 4: 资源已删除， 5: 资源禁用中， 6: 资源已禁用， 7: 资源异常，需要人工操作
+        :param _Status: <p>状态：0: 资源初始化中， 1: 资源创建中， 2: 正常状态， 3: 资源删除中， 4: 资源已删除， 5: 资源禁用中， 6: 资源已禁用， 7: 资源异常，需要人工操作</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Status: int
-        :param _CreatedAt: 创建时间
+        :param _CreatedAt: <p>创建时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type CreatedAt: str
-        :param _UpdatedAt: 最后修改时间
+        :param _UpdatedAt: <p>最后修改时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type UpdatedAt: str
+        :param _CoolDownTime: <p>降冷开启时间</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CoolDownTime: str
         """
         self._ClusterID = None
         self._Name = None
@@ -894,10 +897,11 @@ class Database(AbstractModel):
         self._Status = None
         self._CreatedAt = None
         self._UpdatedAt = None
+        self._CoolDownTime = None
 
     @property
     def ClusterID(self):
-        r"""实例ID
+        r"""<p>实例ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -909,7 +913,7 @@ class Database(AbstractModel):
 
     @property
     def Name(self):
-        r"""数据库名
+        r"""<p>数据库名</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -921,7 +925,7 @@ class Database(AbstractModel):
 
     @property
     def CoolDownInDays(self):
-        r"""降冷时间（天）
+        r"""<p>降冷时间（天）</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -933,7 +937,7 @@ class Database(AbstractModel):
 
     @property
     def RetentionInDays(self):
-        r"""数据保留时间（天）
+        r"""<p>数据保留时间（天）</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -945,7 +949,7 @@ class Database(AbstractModel):
 
     @property
     def Remark(self):
-        r"""备注
+        r"""<p>备注</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -957,7 +961,7 @@ class Database(AbstractModel):
 
     @property
     def Status(self):
-        r"""状态：0: 资源初始化中， 1: 资源创建中， 2: 正常状态， 3: 资源删除中， 4: 资源已删除， 5: 资源禁用中， 6: 资源已禁用， 7: 资源异常，需要人工操作
+        r"""<p>状态：0: 资源初始化中， 1: 资源创建中， 2: 正常状态， 3: 资源删除中， 4: 资源已删除， 5: 资源禁用中， 6: 资源已禁用， 7: 资源异常，需要人工操作</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -969,7 +973,7 @@ class Database(AbstractModel):
 
     @property
     def CreatedAt(self):
-        r"""创建时间
+        r"""<p>创建时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -981,7 +985,7 @@ class Database(AbstractModel):
 
     @property
     def UpdatedAt(self):
-        r"""最后修改时间
+        r"""<p>最后修改时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -990,6 +994,18 @@ class Database(AbstractModel):
     @UpdatedAt.setter
     def UpdatedAt(self, UpdatedAt):
         self._UpdatedAt = UpdatedAt
+
+    @property
+    def CoolDownTime(self):
+        r"""<p>降冷开启时间</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CoolDownTime
+
+    @CoolDownTime.setter
+    def CoolDownTime(self, CoolDownTime):
+        self._CoolDownTime = CoolDownTime
 
 
     def _deserialize(self, params):
@@ -1001,6 +1017,7 @@ class Database(AbstractModel):
         self._Status = params.get("Status")
         self._CreatedAt = params.get("CreatedAt")
         self._UpdatedAt = params.get("UpdatedAt")
+        self._CoolDownTime = params.get("CoolDownTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
