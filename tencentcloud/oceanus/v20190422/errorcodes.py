@@ -26,6 +26,15 @@ AUTHFAILURE_UNAUTHORIZEDOPERATION = 'AuthFailure.UnauthorizedOperation'
 # 操作失败。
 FAILEDOPERATION = 'FailedOperation'
 
+# ddl语法检查失败。
+FAILEDOPERATION_CHECKDDLGRAMMAR = 'FailedOperation.CheckDdlGrammar'
+
+# 找不到集群。
+FAILEDOPERATION_CLUSTERNOTFOUND = 'FailedOperation.ClusterNotFound'
+
+# DDL解析失败。
+FAILEDOPERATION_DDLPARSEFAILURE = 'FailedOperation.DDLParseFailure'
+
 # 数据库连接失败，请检查参数是否填写正确。
 FAILEDOPERATION_DATASOURCECONNECTIONFAILED = 'FailedOperation.DataSourceConnectionFailed'
 
@@ -61,6 +70,12 @@ FAILEDOPERATION_JOBBINDDEFAULTMONITORFAILED = 'FailedOperation.JobBindDefaultMon
 
 # 作业配置在使用中。
 FAILEDOPERATION_JOBCONFIGONPUBLISH = 'FailedOperation.JobConfigOnPublish'
+
+# 修改Connector type 失败
+FAILEDOPERATION_MODIFYCONNECTORFAILEDOPERATION = 'FailedOperation.ModifyConnectorFailedOperation'
+
+# 修改table name 失败
+FAILEDOPERATION_MODIFYTABLEFAILEDOPERATION = 'FailedOperation.ModifyTableFailedOperation'
 
 # SQL解析失败。
 FAILEDOPERATION_PARSESQL = 'FailedOperation.ParseSql'
@@ -164,6 +179,9 @@ INVALIDPARAMETER_UINRESOURCENOTMATCH = 'InvalidParameter.UinResourceNotMatch'
 # Flink参数非法。
 INVALIDPARAMETER_UNSUPPORTEDFLINKCONF = 'InvalidParameter.UnsupportedFlinkConf'
 
+# Unsupported options
+INVALIDPARAMETER_UNSUPPORTEDOPTIONS = 'InvalidParameter.UnsupportedOptions'
+
 # 参数取值错误。
 INVALIDPARAMETERVALUE = 'InvalidParameterValue'
 
@@ -199,6 +217,15 @@ INVALIDPARAMETERVALUE_JOBTYPECOMBINEWITHCLUSTERTYPE = 'InvalidParameterValue.Job
 
 # SQL作业不能指定EntrypointClass，JAR作业则必须指定。
 INVALIDPARAMETERVALUE_JOBTYPECOMBINEWITHENTRYPOINTCLASS = 'InvalidParameterValue.JobTypeCombineWithEntrypointClass'
+
+# 元数据库名已存在。
+INVALIDPARAMETERVALUE_METADATABASEEXISTED = 'InvalidParameterValue.MetaDatabaseExisted'
+
+# 元数据库名字非法。
+INVALIDPARAMETERVALUE_METADATABASENAME = 'InvalidParameterValue.MetaDatabaseName'
+
+# 元数据表名已存在。
+INVALIDPARAMETERVALUE_METATABLEEXISTED = 'InvalidParameterValue.MetaTableExisted'
 
 # OrderType值错误。
 INVALIDPARAMETERVALUE_ORDERTYPE = 'InvalidParameterValue.OrderType'
@@ -242,6 +269,12 @@ LIMITEXCEEDED_JOBCONFIG = 'LimitExceeded.JobConfig'
 # 用户作业默认告警配额达到上限
 LIMITEXCEEDED_JOBDEFAULTMONITORLIMITEXCEEDED = 'LimitExceeded.JobDefaultMonitorLimitExceeded'
 
+# 创建的数据库个数超过限额。
+LIMITEXCEEDED_METADATABASE = 'LimitExceeded.MetaDatabase'
+
+# 创建的数据表个数超过限额。
+LIMITEXCEEDED_METATABLE = 'LimitExceeded.MetaTable'
+
 # 变量数超过限制。
 LIMITEXCEEDED_VARIABLES = 'LimitExceeded.Variables'
 
@@ -272,6 +305,9 @@ RESOURCENOTFOUND_COSBUCKET = 'ResourceNotFound.COSBucket'
 # 集群不存在。
 RESOURCENOTFOUND_CLUSTERID = 'ResourceNotFound.ClusterId'
 
+# 未找到群集。
+RESOURCENOTFOUND_CLUSTERNOTFOUND = 'ResourceNotFound.ClusterNotFound'
+
 # 作业不存在。
 RESOURCENOTFOUND_JOB = 'ResourceNotFound.Job'
 
@@ -283,6 +319,9 @@ RESOURCENOTFOUND_JOBID = 'ResourceNotFound.JobId'
 
 # 找不到日志。
 RESOURCENOTFOUND_LOGTOPIC = 'ResourceNotFound.LogTopic'
+
+# 未找到元数据。
+RESOURCENOTFOUND_METADATANOTFOUND = 'ResourceNotFound.MetaDataNotFound'
 
 # 没有集群支持解析connector
 RESOURCENOTFOUND_PARSECONNECTORCLUSTERNOTFOUND = 'ResourceNotFound.ParseConnectorClusterNotFound'
@@ -340,6 +379,9 @@ RESOURCEUNAVAILABLE_RESOURCELOCNOTEXISTS = 'ResourceUnavailable.ResourceLocNotEx
 
 # 未授权操作。
 UNAUTHORIZEDOPERATION = 'UnauthorizedOperation'
+
+# 未知参数错误。
+UNKNOWNPARAMETER = 'UnknownParameter'
 
 # 操作不支持。
 UNSUPPORTEDOPERATION = 'UnsupportedOperation'

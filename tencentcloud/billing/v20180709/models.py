@@ -25738,35 +25738,23 @@ class DescribeDealsByCondRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _StartTime: 开始时间 2016-01-01 00:00:00
+        :param _StartTime: <p>开始时间 2016-01-01 00:00:00</p>
         :type StartTime: str
-        :param _EndTime: 结束时间 2016-02-01 00:00:00 建议跨度不超过3个月
+        :param _EndTime: <p>结束时间 2016-02-01 00:00:00 建议跨度不超过3个月</p>
         :type EndTime: str
-        :param _Limit: 一页多少条数据，默认是20条，最大不超过1000
+        :param _Limit: <p>一页多少条数据，默认是20条，最大不超过1000</p>
         :type Limit: int
-        :param _Offset: 第多少页，从0开始，默认是0
+        :param _Offset: <p>第多少页，从0开始，默认是0</p>
         :type Offset: int
-        :param _Status: 订单状态,默认为4（成功的订单）
-订单的状态
-1：未支付
-2：已支付3：发货中
-4：已发货
-5：发货失败
-6：已退款
-7：已关单
-8：订单过期
-9：订单已失效
-10：产品已失效
-11：代付拒绝
-12：支付中
+        :param _Status: <p>订单状态</p><p>枚举值：</p><ul><li>1：  待支付</li><li>2：  已支付</li><li>3：  发货中</li><li>4：  已发货</li><li>5：  发货失败</li><li>6：  已退款</li><li>7：  已取消</li><li>8：  订单过期</li><li>9 ：  订单已失效</li><li>10：  产品已失效</li><li>11：  代付拒绝</li><li>12：  支付中</li><li>13：  退款中</li><li>30：  服务市场订单待用户确认完成</li></ul><p>默认值：4（已发货，成功的订单）</p><p>其中，状态2、3、5、12、13、30 在<a href="https://console.cloud.tencent.com/expense/deal">控制台</a>统一显示“处理中”；<br>状态4 在<a href="https://console.cloud.tencent.com/expense/deal">控制台</a>中显示交易成功；<br>状态9、10 在<a href="https://console.cloud.tencent.com/expense/deal">控制台</a>中无对应状态</p>
         :type Status: int
-        :param _OrderId: 子订单号
+        :param _OrderId: <p>子订单号</p>
         :type OrderId: str
-        :param _BigDealId: 大订单号
+        :param _BigDealId: <p>大订单号</p>
         :type BigDealId: str
-        :param _ResourceId: 资源id
+        :param _ResourceId: <p>资源id</p>
         :type ResourceId: str
-        :param _StatusSet: 订单状态
+        :param _StatusSet: <p>订单状态</p>
         :type StatusSet: list of int
         """
         self._StartTime = None
@@ -25781,7 +25769,7 @@ class DescribeDealsByCondRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        r"""开始时间 2016-01-01 00:00:00
+        r"""<p>开始时间 2016-01-01 00:00:00</p>
         :rtype: str
         """
         return self._StartTime
@@ -25792,7 +25780,7 @@ class DescribeDealsByCondRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        r"""结束时间 2016-02-01 00:00:00 建议跨度不超过3个月
+        r"""<p>结束时间 2016-02-01 00:00:00 建议跨度不超过3个月</p>
         :rtype: str
         """
         return self._EndTime
@@ -25803,7 +25791,7 @@ class DescribeDealsByCondRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""一页多少条数据，默认是20条，最大不超过1000
+        r"""<p>一页多少条数据，默认是20条，最大不超过1000</p>
         :rtype: int
         """
         return self._Limit
@@ -25814,7 +25802,7 @@ class DescribeDealsByCondRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""第多少页，从0开始，默认是0
+        r"""<p>第多少页，从0开始，默认是0</p>
         :rtype: int
         """
         return self._Offset
@@ -25825,19 +25813,7 @@ class DescribeDealsByCondRequest(AbstractModel):
 
     @property
     def Status(self):
-        r"""订单状态,默认为4（成功的订单）
-订单的状态
-1：未支付
-2：已支付3：发货中
-4：已发货
-5：发货失败
-6：已退款
-7：已关单
-8：订单过期
-9：订单已失效
-10：产品已失效
-11：代付拒绝
-12：支付中
+        r"""<p>订单状态</p><p>枚举值：</p><ul><li>1：  待支付</li><li>2：  已支付</li><li>3：  发货中</li><li>4：  已发货</li><li>5：  发货失败</li><li>6：  已退款</li><li>7：  已取消</li><li>8：  订单过期</li><li>9 ：  订单已失效</li><li>10：  产品已失效</li><li>11：  代付拒绝</li><li>12：  支付中</li><li>13：  退款中</li><li>30：  服务市场订单待用户确认完成</li></ul><p>默认值：4（已发货，成功的订单）</p><p>其中，状态2、3、5、12、13、30 在<a href="https://console.cloud.tencent.com/expense/deal">控制台</a>统一显示“处理中”；<br>状态4 在<a href="https://console.cloud.tencent.com/expense/deal">控制台</a>中显示交易成功；<br>状态9、10 在<a href="https://console.cloud.tencent.com/expense/deal">控制台</a>中无对应状态</p>
         :rtype: int
         """
         return self._Status
@@ -25848,7 +25824,7 @@ class DescribeDealsByCondRequest(AbstractModel):
 
     @property
     def OrderId(self):
-        r"""子订单号
+        r"""<p>子订单号</p>
         :rtype: str
         """
         return self._OrderId
@@ -25859,7 +25835,7 @@ class DescribeDealsByCondRequest(AbstractModel):
 
     @property
     def BigDealId(self):
-        r"""大订单号
+        r"""<p>大订单号</p>
         :rtype: str
         """
         return self._BigDealId
@@ -25870,7 +25846,7 @@ class DescribeDealsByCondRequest(AbstractModel):
 
     @property
     def ResourceId(self):
-        r"""资源id
+        r"""<p>资源id</p>
         :rtype: str
         """
         return self._ResourceId
@@ -25881,7 +25857,7 @@ class DescribeDealsByCondRequest(AbstractModel):
 
     @property
     def StatusSet(self):
-        r"""订单状态
+        r"""<p>订单状态</p>
         :rtype: list of int
         """
         return self._StatusSet
@@ -25918,9 +25894,9 @@ class DescribeDealsByCondResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Deals: 订单列表
+        :param _Deals: <p>订单列表</p>
         :type Deals: list of Deal
-        :param _TotalCount: 订单总数
+        :param _TotalCount: <p>订单总数</p>
         :type TotalCount: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -25931,7 +25907,7 @@ class DescribeDealsByCondResponse(AbstractModel):
 
     @property
     def Deals(self):
-        r"""订单列表
+        r"""<p>订单列表</p>
         :rtype: list of Deal
         """
         return self._Deals
@@ -25942,7 +25918,7 @@ class DescribeDealsByCondResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        r"""订单总数
+        r"""<p>订单总数</p>
         :rtype: int
         """
         return self._TotalCount

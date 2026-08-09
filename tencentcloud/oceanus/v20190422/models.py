@@ -4300,6 +4300,334 @@ class CreateJobResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateMetaDatabaseRequest(AbstractModel):
+    r"""CreateMetaDatabase请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CatalogId: 无
+        :type CatalogId: int
+        :param _DatabaseName: 库名
+        :type DatabaseName: str
+        :param _Comment: 备注
+        :type Comment: str
+        :param _WorkSpaceId: 工作空间 SerialId
+        :type WorkSpaceId: str
+        """
+        self._CatalogId = None
+        self._DatabaseName = None
+        self._Comment = None
+        self._WorkSpaceId = None
+
+    @property
+    def CatalogId(self):
+        r"""无
+        :rtype: int
+        """
+        return self._CatalogId
+
+    @CatalogId.setter
+    def CatalogId(self, CatalogId):
+        self._CatalogId = CatalogId
+
+    @property
+    def DatabaseName(self):
+        r"""库名
+        :rtype: str
+        """
+        return self._DatabaseName
+
+    @DatabaseName.setter
+    def DatabaseName(self, DatabaseName):
+        self._DatabaseName = DatabaseName
+
+    @property
+    def Comment(self):
+        r"""备注
+        :rtype: str
+        """
+        return self._Comment
+
+    @Comment.setter
+    def Comment(self, Comment):
+        self._Comment = Comment
+
+    @property
+    def WorkSpaceId(self):
+        r"""工作空间 SerialId
+        :rtype: str
+        """
+        return self._WorkSpaceId
+
+    @WorkSpaceId.setter
+    def WorkSpaceId(self, WorkSpaceId):
+        self._WorkSpaceId = WorkSpaceId
+
+
+    def _deserialize(self, params):
+        self._CatalogId = params.get("CatalogId")
+        self._DatabaseName = params.get("DatabaseName")
+        self._Comment = params.get("Comment")
+        self._WorkSpaceId = params.get("WorkSpaceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateMetaDatabaseResponse(AbstractModel):
+    r"""CreateMetaDatabase返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DatabaseId: 无
+        :type DatabaseId: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._DatabaseId = None
+        self._RequestId = None
+
+    @property
+    def DatabaseId(self):
+        r"""无
+        :rtype: int
+        """
+        return self._DatabaseId
+
+    @DatabaseId.setter
+    def DatabaseId(self, DatabaseId):
+        self._DatabaseId = DatabaseId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._DatabaseId = params.get("DatabaseId")
+        self._RequestId = params.get("RequestId")
+
+
+class CreateMetaTableRequest(AbstractModel):
+    r"""CreateMetaTable请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CatalogId: <p>Catalog Id</p>
+        :type CatalogId: int
+        :param _DatabaseId: <p>库Id</p>
+        :type DatabaseId: int
+        :param _SqlCode: <p>建表语句</p><p>参数格式：需要base64加密</p>
+        :type SqlCode: str
+        :param _Comment: <p>备注</p>
+        :type Comment: str
+        :param _ClusterId: <p>集群id</p>
+        :type ClusterId: str
+        :param _ResourceRefs: <p>引用资源</p>
+        :type ResourceRefs: list of ResourceRef
+        :param _FlinkVersion: <p>Flink版本</p>
+        :type FlinkVersion: str
+        :param _WorkSpaceId: <p>工作空间 SerialId</p>
+        :type WorkSpaceId: str
+        :param _AsyncTaskId: <p>异步id</p>
+        :type AsyncTaskId: str
+        """
+        self._CatalogId = None
+        self._DatabaseId = None
+        self._SqlCode = None
+        self._Comment = None
+        self._ClusterId = None
+        self._ResourceRefs = None
+        self._FlinkVersion = None
+        self._WorkSpaceId = None
+        self._AsyncTaskId = None
+
+    @property
+    def CatalogId(self):
+        r"""<p>Catalog Id</p>
+        :rtype: int
+        """
+        return self._CatalogId
+
+    @CatalogId.setter
+    def CatalogId(self, CatalogId):
+        self._CatalogId = CatalogId
+
+    @property
+    def DatabaseId(self):
+        r"""<p>库Id</p>
+        :rtype: int
+        """
+        return self._DatabaseId
+
+    @DatabaseId.setter
+    def DatabaseId(self, DatabaseId):
+        self._DatabaseId = DatabaseId
+
+    @property
+    def SqlCode(self):
+        r"""<p>建表语句</p><p>参数格式：需要base64加密</p>
+        :rtype: str
+        """
+        return self._SqlCode
+
+    @SqlCode.setter
+    def SqlCode(self, SqlCode):
+        self._SqlCode = SqlCode
+
+    @property
+    def Comment(self):
+        r"""<p>备注</p>
+        :rtype: str
+        """
+        return self._Comment
+
+    @Comment.setter
+    def Comment(self, Comment):
+        self._Comment = Comment
+
+    @property
+    def ClusterId(self):
+        r"""<p>集群id</p>
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def ResourceRefs(self):
+        r"""<p>引用资源</p>
+        :rtype: list of ResourceRef
+        """
+        return self._ResourceRefs
+
+    @ResourceRefs.setter
+    def ResourceRefs(self, ResourceRefs):
+        self._ResourceRefs = ResourceRefs
+
+    @property
+    def FlinkVersion(self):
+        r"""<p>Flink版本</p>
+        :rtype: str
+        """
+        return self._FlinkVersion
+
+    @FlinkVersion.setter
+    def FlinkVersion(self, FlinkVersion):
+        self._FlinkVersion = FlinkVersion
+
+    @property
+    def WorkSpaceId(self):
+        r"""<p>工作空间 SerialId</p>
+        :rtype: str
+        """
+        return self._WorkSpaceId
+
+    @WorkSpaceId.setter
+    def WorkSpaceId(self, WorkSpaceId):
+        self._WorkSpaceId = WorkSpaceId
+
+    @property
+    def AsyncTaskId(self):
+        r"""<p>异步id</p>
+        :rtype: str
+        """
+        return self._AsyncTaskId
+
+    @AsyncTaskId.setter
+    def AsyncTaskId(self, AsyncTaskId):
+        self._AsyncTaskId = AsyncTaskId
+
+
+    def _deserialize(self, params):
+        self._CatalogId = params.get("CatalogId")
+        self._DatabaseId = params.get("DatabaseId")
+        self._SqlCode = params.get("SqlCode")
+        self._Comment = params.get("Comment")
+        self._ClusterId = params.get("ClusterId")
+        if params.get("ResourceRefs") is not None:
+            self._ResourceRefs = []
+            for item in params.get("ResourceRefs"):
+                obj = ResourceRef()
+                obj._deserialize(item)
+                self._ResourceRefs.append(obj)
+        self._FlinkVersion = params.get("FlinkVersion")
+        self._WorkSpaceId = params.get("WorkSpaceId")
+        self._AsyncTaskId = params.get("AsyncTaskId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateMetaTableResponse(AbstractModel):
+    r"""CreateMetaTable返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TableId: <p>表Id</p>
+        :type TableId: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TableId = None
+        self._RequestId = None
+
+    @property
+    def TableId(self):
+        r"""<p>表Id</p>
+        :rtype: int
+        """
+        return self._TableId
+
+    @TableId.setter
+    def TableId(self, TableId):
+        self._TableId = TableId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TableId = params.get("TableId")
+        self._RequestId = params.get("RequestId")
+
+
 class CreateOceanusClusterRequest(AbstractModel):
     r"""CreateOceanusCluster请求参数结构体
 
@@ -13190,6 +13518,145 @@ class ModifyJobResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyMetaTableRequest(AbstractModel):
+    r"""ModifyMetaTable请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: <p>集群唯一id</p>
+        :type ClusterId: str
+        :param _TableId: <p>元数据表唯一id</p>
+        :type TableId: str
+        :param _SqlCode: <p>SQL</p><p>参数格式：base64加密</p>
+        :type SqlCode: str
+        :param _FlinkVersion: <p>Flink版本</p>
+        :type FlinkVersion: str
+        :param _WorkSpaceId: <p>空间唯一id</p>
+        :type WorkSpaceId: str
+        :param _Remark: <p>备注</p>
+        :type Remark: str
+        """
+        self._ClusterId = None
+        self._TableId = None
+        self._SqlCode = None
+        self._FlinkVersion = None
+        self._WorkSpaceId = None
+        self._Remark = None
+
+    @property
+    def ClusterId(self):
+        r"""<p>集群唯一id</p>
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def TableId(self):
+        r"""<p>元数据表唯一id</p>
+        :rtype: str
+        """
+        return self._TableId
+
+    @TableId.setter
+    def TableId(self, TableId):
+        self._TableId = TableId
+
+    @property
+    def SqlCode(self):
+        r"""<p>SQL</p><p>参数格式：base64加密</p>
+        :rtype: str
+        """
+        return self._SqlCode
+
+    @SqlCode.setter
+    def SqlCode(self, SqlCode):
+        self._SqlCode = SqlCode
+
+    @property
+    def FlinkVersion(self):
+        r"""<p>Flink版本</p>
+        :rtype: str
+        """
+        return self._FlinkVersion
+
+    @FlinkVersion.setter
+    def FlinkVersion(self, FlinkVersion):
+        self._FlinkVersion = FlinkVersion
+
+    @property
+    def WorkSpaceId(self):
+        r"""<p>空间唯一id</p>
+        :rtype: str
+        """
+        return self._WorkSpaceId
+
+    @WorkSpaceId.setter
+    def WorkSpaceId(self, WorkSpaceId):
+        self._WorkSpaceId = WorkSpaceId
+
+    @property
+    def Remark(self):
+        r"""<p>备注</p>
+        :rtype: str
+        """
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        self._TableId = params.get("TableId")
+        self._SqlCode = params.get("SqlCode")
+        self._FlinkVersion = params.get("FlinkVersion")
+        self._WorkSpaceId = params.get("WorkSpaceId")
+        self._Remark = params.get("Remark")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyMetaTableResponse(AbstractModel):
+    r"""ModifyMetaTable返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyWorkSpaceRequest(AbstractModel):
     r"""ModifyWorkSpace请求参数结构体
 
@@ -15548,11 +16015,11 @@ class RunSqlGatewayStatementRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ClusterId: 集群ID
+        :param _ClusterId: <p>集群ID</p>
         :type ClusterId: str
-        :param _Sql: 需要执行的sql，该sql会被Sql Gateway执行，当前支持的是paimon修改需求，因此主要是DDL语句
+        :param _Sql: <p>需要执行的sql，需要对其进行base64编译后传入</p>
         :type Sql: str
-        :param _SessionId: Sql Gateway会话ID，可不填，如果不填则会自动创建一个会话ID，每个会话ID都有一个存活时间，测试环境为10分钟，线上默认是30分钟
+        :param _SessionId: <p>Sql Gateway会话ID，可不填，如果不填则会自动创建一个会话ID，每个会话ID都有一个存活时间，测试环境为10分钟，线上默认是30分钟</p>
         :type SessionId: str
         """
         self._ClusterId = None
@@ -15561,7 +16028,7 @@ class RunSqlGatewayStatementRequest(AbstractModel):
 
     @property
     def ClusterId(self):
-        r"""集群ID
+        r"""<p>集群ID</p>
         :rtype: str
         """
         return self._ClusterId
@@ -15572,7 +16039,7 @@ class RunSqlGatewayStatementRequest(AbstractModel):
 
     @property
     def Sql(self):
-        r"""需要执行的sql，该sql会被Sql Gateway执行，当前支持的是paimon修改需求，因此主要是DDL语句
+        r"""<p>需要执行的sql，需要对其进行base64编译后传入</p>
         :rtype: str
         """
         return self._Sql
@@ -15583,7 +16050,7 @@ class RunSqlGatewayStatementRequest(AbstractModel):
 
     @property
     def SessionId(self):
-        r"""Sql Gateway会话ID，可不填，如果不填则会自动创建一个会话ID，每个会话ID都有一个存活时间，测试环境为10分钟，线上默认是30分钟
+        r"""<p>Sql Gateway会话ID，可不填，如果不填则会自动创建一个会话ID，每个会话ID都有一个存活时间，测试环境为10分钟，线上默认是30分钟</p>
         :rtype: str
         """
         return self._SessionId
@@ -15614,12 +16081,12 @@ class RunSqlGatewayStatementResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ErrorMessage: 错误信息
+        :param _ErrorMessage: <p>错误信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ErrorMessage: list of str
-        :param _SessionId: 会话id，若入参未传，则返回自动创建的会话id，若入参已经传递，则返回值与原传入值一致
+        :param _SessionId: <p>会话id，若入参未传，则返回自动创建的会话id，若入参已经传递，则返回值与原传入值一致</p>
         :type SessionId: str
-        :param _OperationHandleId: 返回执行id，可以根据该执行id和会话id获取执行结果
+        :param _OperationHandleId: <p>返回执行id，可以根据该执行id和会话id获取执行结果</p>
         :type OperationHandleId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -15631,7 +16098,7 @@ class RunSqlGatewayStatementResponse(AbstractModel):
 
     @property
     def ErrorMessage(self):
-        r"""错误信息
+        r"""<p>错误信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -15643,7 +16110,7 @@ class RunSqlGatewayStatementResponse(AbstractModel):
 
     @property
     def SessionId(self):
-        r"""会话id，若入参未传，则返回自动创建的会话id，若入参已经传递，则返回值与原传入值一致
+        r"""<p>会话id，若入参未传，则返回自动创建的会话id，若入参已经传递，则返回值与原传入值一致</p>
         :rtype: str
         """
         return self._SessionId
@@ -15654,7 +16121,7 @@ class RunSqlGatewayStatementResponse(AbstractModel):
 
     @property
     def OperationHandleId(self):
-        r"""返回执行id，可以根据该执行id和会话id获取执行结果
+        r"""<p>返回执行id，可以根据该执行id和会话id获取执行结果</p>
         :rtype: str
         """
         return self._OperationHandleId

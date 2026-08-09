@@ -187,6 +187,52 @@ class OceanusClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateMetaDatabase(self, request):
+        r"""创建元数据库
+
+        :param request: Request instance for CreateMetaDatabase.
+        :type request: :class:`tencentcloud.oceanus.v20190422.models.CreateMetaDatabaseRequest`
+        :rtype: :class:`tencentcloud.oceanus.v20190422.models.CreateMetaDatabaseResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateMetaDatabase", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateMetaDatabaseResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CreateMetaTable(self, request):
+        r"""创建元数据表
+
+        :param request: Request instance for CreateMetaTable.
+        :type request: :class:`tencentcloud.oceanus.v20190422.models.CreateMetaTableRequest`
+        :rtype: :class:`tencentcloud.oceanus.v20190422.models.CreateMetaTableResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateMetaTable", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateMetaTableResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateOceanusCluster(self, request):
         r"""创建Oceanus集群
 
@@ -991,6 +1037,29 @@ class OceanusClient(AbstractClient):
             body = self.call("ModifyJob", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyJobResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyMetaTable(self, request):
+        r"""修改元数据表
+
+        :param request: Request instance for ModifyMetaTable.
+        :type request: :class:`tencentcloud.oceanus.v20190422.models.ModifyMetaTableRequest`
+        :rtype: :class:`tencentcloud.oceanus.v20190422.models.ModifyMetaTableResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyMetaTable", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyMetaTableResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

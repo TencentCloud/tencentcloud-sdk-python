@@ -151,6 +151,42 @@ class OceanusClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateMetaDatabase(
+            self,
+            request: models.CreateMetaDatabaseRequest,
+            opts: Dict = None,
+    ) -> models.CreateMetaDatabaseResponse:
+        """
+        创建元数据库
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateMetaDatabase"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateMetaDatabaseResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def CreateMetaTable(
+            self,
+            request: models.CreateMetaTableRequest,
+            opts: Dict = None,
+    ) -> models.CreateMetaTableResponse:
+        """
+        创建元数据表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateMetaTable"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateMetaTableResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateOceanusCluster(
             self,
             request: models.CreateOceanusClusterRequest,
@@ -784,6 +820,24 @@ class OceanusClient(AbstractClient):
         kwargs["action"] = "ModifyJob"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ModifyJobResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyMetaTable(
+            self,
+            request: models.ModifyMetaTableRequest,
+            opts: Dict = None,
+    ) -> models.ModifyMetaTableResponse:
+        """
+        修改元数据表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyMetaTable"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyMetaTableResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

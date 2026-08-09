@@ -312,9 +312,13 @@ class AssessDeviceRiskRsp(AbstractModel):
         :type Score: :class:`tencentcloud.rce.v20260130.models.DataScore`
         :param _Device: <p>设备基础信息</p>
         :type Device: :class:`tencentcloud.rce.v20260130.models.Device`
+        :param _Environment: <p>IP环境基础信息</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Environment: :class:`tencentcloud.rce.v20260130.models.Environment`
         """
         self._Score = None
         self._Device = None
+        self._Environment = None
 
     @property
     def Score(self):
@@ -338,6 +342,18 @@ class AssessDeviceRiskRsp(AbstractModel):
     def Device(self, Device):
         self._Device = Device
 
+    @property
+    def Environment(self):
+        r"""<p>IP环境基础信息</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.rce.v20260130.models.Environment`
+        """
+        return self._Environment
+
+    @Environment.setter
+    def Environment(self, Environment):
+        self._Environment = Environment
+
 
     def _deserialize(self, params):
         if params.get("Score") is not None:
@@ -346,6 +362,9 @@ class AssessDeviceRiskRsp(AbstractModel):
         if params.get("Device") is not None:
             self._Device = Device()
             self._Device._deserialize(params.get("Device"))
+        if params.get("Environment") is not None:
+            self._Environment = Environment()
+            self._Environment._deserialize(params.get("Environment"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -574,8 +593,12 @@ class Decision(AbstractModel):
         r"""
         :param _DecisionResult: <p>决策结果</p><ul><li>pass：通过</li><li>review：复审</li><li>reject：拒绝</li></ul>
         :type DecisionResult: str
+        :param _Disposition: <p>命中策略后的决策动作，可在控制台配置</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Disposition: str
         """
         self._DecisionResult = None
+        self._Disposition = None
 
     @property
     def DecisionResult(self):
@@ -588,9 +611,22 @@ class Decision(AbstractModel):
     def DecisionResult(self, DecisionResult):
         self._DecisionResult = DecisionResult
 
+    @property
+    def Disposition(self):
+        r"""<p>命中策略后的决策动作，可在控制台配置</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Disposition
+
+    @Disposition.setter
+    def Disposition(self, Disposition):
+        self._Disposition = Disposition
+
 
     def _deserialize(self, params):
         self._DecisionResult = params.get("DecisionResult")
+        self._Disposition = params.get("Disposition")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
