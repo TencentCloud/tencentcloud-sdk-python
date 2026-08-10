@@ -10529,20 +10529,23 @@ class DescribeUserCosSnapshotListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _CosBucket: cos桶名
+        :param _CosBucket: <p>cos桶名</p>
         :type CosBucket: str
-        :param _BasePath: bucket 桶下的备份路径
+        :param _BasePath: <p>bucket 桶下的备份路径</p>
         :type BasePath: str
-        :param _ClusterInstanceId: 云上集群迁移集群名
+        :param _ClusterInstanceId: <p>云上集群迁移集群名</p>
         :type ClusterInstanceId: str
+        :param _PaasEsRepository: <p>es 集群仓库</p>
+        :type PaasEsRepository: str
         """
         self._CosBucket = None
         self._BasePath = None
         self._ClusterInstanceId = None
+        self._PaasEsRepository = None
 
     @property
     def CosBucket(self):
-        r"""cos桶名
+        r"""<p>cos桶名</p>
         :rtype: str
         """
         return self._CosBucket
@@ -10553,7 +10556,7 @@ class DescribeUserCosSnapshotListRequest(AbstractModel):
 
     @property
     def BasePath(self):
-        r"""bucket 桶下的备份路径
+        r"""<p>bucket 桶下的备份路径</p>
         :rtype: str
         """
         return self._BasePath
@@ -10564,7 +10567,7 @@ class DescribeUserCosSnapshotListRequest(AbstractModel):
 
     @property
     def ClusterInstanceId(self):
-        r"""云上集群迁移集群名
+        r"""<p>云上集群迁移集群名</p>
         :rtype: str
         """
         return self._ClusterInstanceId
@@ -10573,11 +10576,23 @@ class DescribeUserCosSnapshotListRequest(AbstractModel):
     def ClusterInstanceId(self, ClusterInstanceId):
         self._ClusterInstanceId = ClusterInstanceId
 
+    @property
+    def PaasEsRepository(self):
+        r"""<p>es 集群仓库</p>
+        :rtype: str
+        """
+        return self._PaasEsRepository
+
+    @PaasEsRepository.setter
+    def PaasEsRepository(self, PaasEsRepository):
+        self._PaasEsRepository = PaasEsRepository
+
 
     def _deserialize(self, params):
         self._CosBucket = params.get("CosBucket")
         self._BasePath = params.get("BasePath")
         self._ClusterInstanceId = params.get("ClusterInstanceId")
+        self._PaasEsRepository = params.get("PaasEsRepository")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -10595,9 +10610,9 @@ class DescribeUserCosSnapshotListResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _CosSnapshotInfoList: cos 快照信息列表
+        :param _CosSnapshotInfoList: <p>cos 快照信息列表</p>
         :type CosSnapshotInfoList: list of CosSnapShotInfo
-        :param _TotalCount: cos 快照数量
+        :param _TotalCount: <p>cos 快照数量</p>
         :type TotalCount: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -10608,7 +10623,7 @@ class DescribeUserCosSnapshotListResponse(AbstractModel):
 
     @property
     def CosSnapshotInfoList(self):
-        r"""cos 快照信息列表
+        r"""<p>cos 快照信息列表</p>
         :rtype: list of CosSnapShotInfo
         """
         return self._CosSnapshotInfoList
@@ -10619,7 +10634,7 @@ class DescribeUserCosSnapshotListResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        r"""cos 快照数量
+        r"""<p>cos 快照数量</p>
         :rtype: int
         """
         return self._TotalCount

@@ -17115,6 +17115,8 @@ class CreatePartnerAutoSignAuthUrlRequest(AbstractModel):
         :type AuthorizedOrganizationIds: list of str
         :param _AuthorizedOrganizationNames: <p>被授企业名称/授权方企业的名字，如果是企业之间授权和AuthorizedOrganizationIds二选一传入即可。请确认该名称与企业营业执照中注册的名称一致。注: 1. 如果名称中包含英文括号()，请使用中文括号（）代替。2. 被授权企业必须和当前企业在同一应用号下 3. 数组最大长度50</p>
         :type AuthorizedOrganizationNames: list of str
+        :param _LimitAuthType: <p>限制授权方式</p><p>枚举值：</p><ul><li>0： 默认，授权页面展示全部授权方式</li><li>1： 仅按印章类型授权</li><li>2： 仅按印章id授权</li></ul><p>默认值：0</p>
+        :type LimitAuthType: int
         """
         self._Agent = None
         self._AuthorizedOrganizationId = None
@@ -17124,6 +17126,7 @@ class CreatePartnerAutoSignAuthUrlRequest(AbstractModel):
         self._AuthToMe = None
         self._AuthorizedOrganizationIds = None
         self._AuthorizedOrganizationNames = None
+        self._LimitAuthType = None
 
     @property
     def Agent(self):
@@ -17221,6 +17224,17 @@ class CreatePartnerAutoSignAuthUrlRequest(AbstractModel):
     def AuthorizedOrganizationNames(self, AuthorizedOrganizationNames):
         self._AuthorizedOrganizationNames = AuthorizedOrganizationNames
 
+    @property
+    def LimitAuthType(self):
+        r"""<p>限制授权方式</p><p>枚举值：</p><ul><li>0： 默认，授权页面展示全部授权方式</li><li>1： 仅按印章类型授权</li><li>2： 仅按印章id授权</li></ul><p>默认值：0</p>
+        :rtype: int
+        """
+        return self._LimitAuthType
+
+    @LimitAuthType.setter
+    def LimitAuthType(self, LimitAuthType):
+        self._LimitAuthType = LimitAuthType
+
 
     def _deserialize(self, params):
         if params.get("Agent") is not None:
@@ -17233,6 +17247,7 @@ class CreatePartnerAutoSignAuthUrlRequest(AbstractModel):
         self._AuthToMe = params.get("AuthToMe")
         self._AuthorizedOrganizationIds = params.get("AuthorizedOrganizationIds")
         self._AuthorizedOrganizationNames = params.get("AuthorizedOrganizationNames")
+        self._LimitAuthType = params.get("LimitAuthType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -26175,6 +26190,8 @@ class ModifyPartnerAutoSignAuthUrlRequest(AbstractModel):
         :type AuthToMe: bool
         :param _SealTypes: <p>在设置印章授权时，可以指定特定的印章类型，以确保在授权过程中只使用相应类型的印章。</p><p>枚举值：</p><ul><li>OFFICIAL： 企业公章，用于代表企业对外的正式文件和重要事务的认证</li><li>CONTRACT： 合同专用章，专门用于签署各类合同。</li><li>FINANCE： 财务专用章，用于企业的财务相关文件，如发票、收据等财务凭证的认证</li><li>PERSONNEL： 人事专用章，用于人事管理相关文件，如劳动合同、人事任命等。</li><li>OTHER： 其他类型印章，包含子类型</li></ul>
         :type SealTypes: list of str
+        :param _LimitAuthType: <p>限制授权方式</p><p>枚举值：</p><ul><li>0： 默认，授权页面展示全部授权方式 </li><li>1： 仅按印章类型授权 </li><li>3： 仅按印章id授权</li></ul><p>默认值：0</p>
+        :type LimitAuthType: str
         """
         self._Agent = None
         self._AuthorizedOrganizationId = None
@@ -26182,6 +26199,7 @@ class ModifyPartnerAutoSignAuthUrlRequest(AbstractModel):
         self._PlatformAppAuthorization = None
         self._AuthToMe = None
         self._SealTypes = None
+        self._LimitAuthType = None
 
     @property
     def Agent(self):
@@ -26249,6 +26267,17 @@ class ModifyPartnerAutoSignAuthUrlRequest(AbstractModel):
     def SealTypes(self, SealTypes):
         self._SealTypes = SealTypes
 
+    @property
+    def LimitAuthType(self):
+        r"""<p>限制授权方式</p><p>枚举值：</p><ul><li>0： 默认，授权页面展示全部授权方式 </li><li>1： 仅按印章类型授权 </li><li>3： 仅按印章id授权</li></ul><p>默认值：0</p>
+        :rtype: str
+        """
+        return self._LimitAuthType
+
+    @LimitAuthType.setter
+    def LimitAuthType(self, LimitAuthType):
+        self._LimitAuthType = LimitAuthType
+
 
     def _deserialize(self, params):
         if params.get("Agent") is not None:
@@ -26259,6 +26288,7 @@ class ModifyPartnerAutoSignAuthUrlRequest(AbstractModel):
         self._PlatformAppAuthorization = params.get("PlatformAppAuthorization")
         self._AuthToMe = params.get("AuthToMe")
         self._SealTypes = params.get("SealTypes")
+        self._LimitAuthType = params.get("LimitAuthType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

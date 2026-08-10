@@ -25,6 +25,60 @@ class CdsClient(AbstractClient):
     _endpoint = 'cds.tencentcloudapi.com'
     _service = 'cds'
 
+    async def CreateReportPdf(
+            self,
+            request: models.CreateReportPdfRequest,
+            opts: Dict = None,
+    ) -> models.CreateReportPdfResponse:
+        """
+        下载报表PDF
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateReportPdf"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateReportPdfResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def CreateTimerReport(
+            self,
+            request: models.CreateTimerReportRequest,
+            opts: Dict = None,
+    ) -> models.CreateTimerReportResponse:
+        """
+        新建报表任务
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateTimerReport"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateTimerReportResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeAssetsList(
+            self,
+            request: models.DescribeAssetsListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeAssetsListResponse:
+        """
+        查询资产列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeAssetsList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeAssetsListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeDbauditInstanceType(
             self,
             request: models.DescribeDbauditInstanceTypeRequest,
@@ -74,6 +128,42 @@ class CdsClient(AbstractClient):
         kwargs["action"] = "DescribeDbauditUsedRegions"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeDbauditUsedRegionsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeReportList(
+            self,
+            request: models.DescribeReportListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeReportListResponse:
+        """
+        查询报表列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeReportList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeReportListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeReportMissionList(
+            self,
+            request: models.DescribeReportMissionListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeReportMissionListResponse:
+        """
+        查询报表任务列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeReportMissionList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeReportMissionListResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

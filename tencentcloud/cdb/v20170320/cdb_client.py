@@ -3214,6 +3214,52 @@ class CdbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyInstanceChargeType(self, request):
+        r"""本接口(ModifyInstanceChargeType)用于将实例的计费模式从包年包月改为按量计费。
+
+        :param request: Request instance for ModifyInstanceChargeType.
+        :type request: :class:`tencentcloud.cdb.v20170320.models.ModifyInstanceChargeTypeRequest`
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.ModifyInstanceChargeTypeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyInstanceChargeType", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyInstanceChargeTypeResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyInstanceDestroyProtect(self, request):
+        r"""该接口（ModifyInstanceDestroyProtect）用于修改实例销毁保护状态。
+
+        :param request: Request instance for ModifyInstanceDestroyProtect.
+        :type request: :class:`tencentcloud.cdb.v20170320.models.ModifyInstanceDestroyProtectRequest`
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.ModifyInstanceDestroyProtectResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyInstanceDestroyProtect", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyInstanceDestroyProtectResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyInstanceParam(self, request):
         r"""本接口(ModifyInstanceParam)用于修改云数据库实例的参数。
 

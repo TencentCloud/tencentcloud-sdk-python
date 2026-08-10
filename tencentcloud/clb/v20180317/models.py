@@ -7357,6 +7357,8 @@ class CreateModelRequest(AbstractModel):
         :type Tags: list of TagInfo
         :param _VerifySSL: <p>是否校验服务提供商的SSL证书</p>
         :type VerifySSL: bool
+        :param _HealthCheckConfig: <p>健康检查配置</p>
+        :type HealthCheckConfig: :class:`tencentcloud.clb.v20180317.models.ServiceProviderHealthCheckConfigInput`
         """
         self._AccessType = None
         self._ModelProvider = None
@@ -7371,6 +7373,7 @@ class CreateModelRequest(AbstractModel):
         self._HostHeader = None
         self._Tags = None
         self._VerifySSL = None
+        self._HealthCheckConfig = None
 
     @property
     def AccessType(self):
@@ -7515,6 +7518,17 @@ class CreateModelRequest(AbstractModel):
     def VerifySSL(self, VerifySSL):
         self._VerifySSL = VerifySSL
 
+    @property
+    def HealthCheckConfig(self):
+        r"""<p>健康检查配置</p>
+        :rtype: :class:`tencentcloud.clb.v20180317.models.ServiceProviderHealthCheckConfigInput`
+        """
+        return self._HealthCheckConfig
+
+    @HealthCheckConfig.setter
+    def HealthCheckConfig(self, HealthCheckConfig):
+        self._HealthCheckConfig = HealthCheckConfig
+
 
     def _deserialize(self, params):
         self._AccessType = params.get("AccessType")
@@ -7545,6 +7559,9 @@ class CreateModelRequest(AbstractModel):
                 obj._deserialize(item)
                 self._Tags.append(obj)
         self._VerifySSL = params.get("VerifySSL")
+        if params.get("HealthCheckConfig") is not None:
+            self._HealthCheckConfig = ServiceProviderHealthCheckConfigInput()
+            self._HealthCheckConfig._deserialize(params.get("HealthCheckConfig"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -14990,10 +15007,13 @@ class DescribeModelNamesRequest(AbstractModel):
         :type Limit: int
         :param _VpcId: <p>过滤PrivateCustom类型自建模型。如果传递了此参数，则只返回具有相同VPC Id的模型。</p>
         :type VpcId: str
+        :param _Filters: <p>过滤器，Name取值：</p><ul><li>ModelName：按照模型名称过滤。</li><li>ServiceProviderId：按照BYOK ID过滤。</li><li>InputModalitiesUnion：按照模态过滤。</li></ul>
+        :type Filters: list of Filter
         """
         self._Offset = None
         self._Limit = None
         self._VpcId = None
+        self._Filters = None
 
     @property
     def Offset(self):
@@ -15028,11 +15048,28 @@ class DescribeModelNamesRequest(AbstractModel):
     def VpcId(self, VpcId):
         self._VpcId = VpcId
 
+    @property
+    def Filters(self):
+        r"""<p>过滤器，Name取值：</p><ul><li>ModelName：按照模型名称过滤。</li><li>ServiceProviderId：按照BYOK ID过滤。</li><li>InputModalitiesUnion：按照模态过滤。</li></ul>
+        :rtype: list of Filter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
 
     def _deserialize(self, params):
         self._Offset = params.get("Offset")
         self._Limit = params.get("Limit")
         self._VpcId = params.get("VpcId")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -24887,7 +24924,7 @@ class ModelKeyInfoItem(AbstractModel):
         :param _ServiceProviderName: <p>服务提供商自定义名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ServiceProviderName: str
-        :param _Status: <p>模型状态</p><p>枚举值：</p><ul><li>Active： 运行中</li><li>Provisioning： 创建中</li><li>Configuring： 变配中</li><li>Deleting： 删除中</li><li>ProvisionFailed： 创建失败</li><li>ConfigureFailed： 变配失败</li><li>DeletionFailed： 删除失败</li><li>Disabled： 已禁用</li></ul>
+        :param _Status: <p>模型状态</p><p>枚举值：</p><ul><li>Active： 运行中</li><li>Provisioning： 创建中</li><li>Configuring： 变配中</li></ul>
         :type Status: str
         :param _SubnetId: <p>子网 ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
@@ -24899,6 +24936,8 @@ class ModelKeyInfoItem(AbstractModel):
         :param _VpcId: <p>VPC 实例 ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type VpcId: str
+        :param _HealthCheckConfig: <p>健康检查配置</p>
+        :type HealthCheckConfig: :class:`tencentcloud.clb.v20180317.models.ServiceProviderHealthCheckConfigOutput`
         """
         self._AccessType = None
         self._ApiBase = None
@@ -24917,6 +24956,7 @@ class ModelKeyInfoItem(AbstractModel):
         self._Tags = None
         self._VerifySSL = None
         self._VpcId = None
+        self._HealthCheckConfig = None
 
     @property
     def AccessType(self):
@@ -25056,7 +25096,7 @@ class ModelKeyInfoItem(AbstractModel):
 
     @property
     def Status(self):
-        r"""<p>模型状态</p><p>枚举值：</p><ul><li>Active： 运行中</li><li>Provisioning： 创建中</li><li>Configuring： 变配中</li><li>Deleting： 删除中</li><li>ProvisionFailed： 创建失败</li><li>ConfigureFailed： 变配失败</li><li>DeletionFailed： 删除失败</li><li>Disabled： 已禁用</li></ul>
+        r"""<p>模型状态</p><p>枚举值：</p><ul><li>Active： 运行中</li><li>Provisioning： 创建中</li><li>Configuring： 变配中</li></ul>
         :rtype: str
         """
         return self._Status
@@ -25111,6 +25151,17 @@ class ModelKeyInfoItem(AbstractModel):
     def VpcId(self, VpcId):
         self._VpcId = VpcId
 
+    @property
+    def HealthCheckConfig(self):
+        r"""<p>健康检查配置</p>
+        :rtype: :class:`tencentcloud.clb.v20180317.models.ServiceProviderHealthCheckConfigOutput`
+        """
+        return self._HealthCheckConfig
+
+    @HealthCheckConfig.setter
+    def HealthCheckConfig(self, HealthCheckConfig):
+        self._HealthCheckConfig = HealthCheckConfig
+
 
     def _deserialize(self, params):
         self._AccessType = params.get("AccessType")
@@ -25145,6 +25196,9 @@ class ModelKeyInfoItem(AbstractModel):
                 self._Tags.append(obj)
         self._VerifySSL = params.get("VerifySSL")
         self._VpcId = params.get("VpcId")
+        if params.get("HealthCheckConfig") is not None:
+            self._HealthCheckConfig = ServiceProviderHealthCheckConfigOutput()
+            self._HealthCheckConfig._deserialize(params.get("HealthCheckConfig"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -34622,6 +34676,78 @@ class ServiceProviderCoefficient(AbstractModel):
             self._Coefficient._deserialize(params.get("Coefficient"))
         self._ServiceProviderId = params.get("ServiceProviderId")
         self._ServiceProviderName = params.get("ServiceProviderName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ServiceProviderHealthCheckConfigInput(AbstractModel):
+    r"""健康检查配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _HealthCheckEnabled: <p>是否开启健康检查</p><p>枚举值：</p><ul><li>true： 是</li><li>false： 否</li></ul>
+        :type HealthCheckEnabled: bool
+        """
+        self._HealthCheckEnabled = None
+
+    @property
+    def HealthCheckEnabled(self):
+        r"""<p>是否开启健康检查</p><p>枚举值：</p><ul><li>true： 是</li><li>false： 否</li></ul>
+        :rtype: bool
+        """
+        return self._HealthCheckEnabled
+
+    @HealthCheckEnabled.setter
+    def HealthCheckEnabled(self, HealthCheckEnabled):
+        self._HealthCheckEnabled = HealthCheckEnabled
+
+
+    def _deserialize(self, params):
+        self._HealthCheckEnabled = params.get("HealthCheckEnabled")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ServiceProviderHealthCheckConfigOutput(AbstractModel):
+    r"""健康检查配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _HealthCheckEnabled: <p>是否开启健康检查</p><p>枚举值：</p><ul><li>true： 是</li><li>false： 否</li></ul>
+        :type HealthCheckEnabled: bool
+        """
+        self._HealthCheckEnabled = None
+
+    @property
+    def HealthCheckEnabled(self):
+        r"""<p>是否开启健康检查</p><p>枚举值：</p><ul><li>true： 是</li><li>false： 否</li></ul>
+        :rtype: bool
+        """
+        return self._HealthCheckEnabled
+
+    @HealthCheckEnabled.setter
+    def HealthCheckEnabled(self, HealthCheckEnabled):
+        self._HealthCheckEnabled = HealthCheckEnabled
+
+
+    def _deserialize(self, params):
+        self._HealthCheckEnabled = params.get("HealthCheckEnabled")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

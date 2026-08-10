@@ -731,6 +731,42 @@ class AgentAppServiceVO(AbstractModel):
         
 
 
+class AgentCredentialApiKeyDTO(AbstractModel):
+    r"""API Key类型凭据
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Value: <p>API Key</p>
+        :type Value: str
+        """
+        self._Value = None
+
+    @property
+    def Value(self):
+        r"""<p>API Key</p>
+        :rtype: str
+        """
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+
+    def _deserialize(self, params):
+        self._Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AgentCredentialContentDTO(AbstractModel):
     r"""凭证内容
 
@@ -738,20 +774,28 @@ class AgentCredentialContentDTO(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _STSSystem: 如果认证类型为sts时，该项必填
+        :param _STSSystem: <p>如果认证类型为sts时，该项必填</p>
         :type STSSystem: str
-        :param _STSService: 如果认证类型为sts时，该项必填
+        :param _STSService: <p>如果认证类型为sts时，该项必填</p>
         :type STSService: str
-        :param _Headers: 如果认证类型为reqKey时，该项必填
+        :param _Headers: <p>如果认证类型为reqKey时，该项必填</p>
         :type Headers: list of AgentCredentialContentHeaderDTO
+        :param _ApiKeys: <p>如果认证类型为apiKey时，该项必填</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ApiKeys: list of AgentCredentialApiKeyDTO
+        :param _FaultTolerance: <p>容错策略，仅Type为apiKey时支持</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FaultTolerance: :class:`tencentcloud.apis.v20240801.models.FaultToleranceDTO`
         """
         self._STSSystem = None
         self._STSService = None
         self._Headers = None
+        self._ApiKeys = None
+        self._FaultTolerance = None
 
     @property
     def STSSystem(self):
-        r"""如果认证类型为sts时，该项必填
+        r"""<p>如果认证类型为sts时，该项必填</p>
         :rtype: str
         """
         return self._STSSystem
@@ -762,7 +806,7 @@ class AgentCredentialContentDTO(AbstractModel):
 
     @property
     def STSService(self):
-        r"""如果认证类型为sts时，该项必填
+        r"""<p>如果认证类型为sts时，该项必填</p>
         :rtype: str
         """
         return self._STSService
@@ -773,7 +817,7 @@ class AgentCredentialContentDTO(AbstractModel):
 
     @property
     def Headers(self):
-        r"""如果认证类型为reqKey时，该项必填
+        r"""<p>如果认证类型为reqKey时，该项必填</p>
         :rtype: list of AgentCredentialContentHeaderDTO
         """
         return self._Headers
@@ -781,6 +825,30 @@ class AgentCredentialContentDTO(AbstractModel):
     @Headers.setter
     def Headers(self, Headers):
         self._Headers = Headers
+
+    @property
+    def ApiKeys(self):
+        r"""<p>如果认证类型为apiKey时，该项必填</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of AgentCredentialApiKeyDTO
+        """
+        return self._ApiKeys
+
+    @ApiKeys.setter
+    def ApiKeys(self, ApiKeys):
+        self._ApiKeys = ApiKeys
+
+    @property
+    def FaultTolerance(self):
+        r"""<p>容错策略，仅Type为apiKey时支持</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.apis.v20240801.models.FaultToleranceDTO`
+        """
+        return self._FaultTolerance
+
+    @FaultTolerance.setter
+    def FaultTolerance(self, FaultTolerance):
+        self._FaultTolerance = FaultTolerance
 
 
     def _deserialize(self, params):
@@ -792,6 +860,15 @@ class AgentCredentialContentDTO(AbstractModel):
                 obj = AgentCredentialContentHeaderDTO()
                 obj._deserialize(item)
                 self._Headers.append(obj)
+        if params.get("ApiKeys") is not None:
+            self._ApiKeys = []
+            for item in params.get("ApiKeys"):
+                obj = AgentCredentialApiKeyDTO()
+                obj._deserialize(item)
+                self._ApiKeys.append(obj)
+        if params.get("FaultTolerance") is not None:
+            self._FaultTolerance = FaultToleranceDTO()
+            self._FaultTolerance._deserialize(params.get("FaultTolerance"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2505,6 +2582,12 @@ class CreateModelServiceRequest(AbstractModel):
         :type ModelProtocol: str
         :param _RawCustomModelProtocolConfig: <p>自定义模型协议配置</p>
         :type RawCustomModelProtocolConfig: str
+        :param _RouteStrategy: <p>路由策略</p><p>枚举值：</p><ul><li>weight： 权重</li><li>taskComplexity： 任务复杂度</li><li>tokenLength： token长度</li></ul>
+        :type RouteStrategy: str
+        :param _TokenLengthRoute: <p>token长度路由策略</p>
+        :type TokenLengthRoute: list of TokenLengthRouteDTO
+        :param _TaskComplexityRoute: <p>任务复杂度路由策略</p>
+        :type TaskComplexityRoute: :class:`tencentcloud.apis.v20240801.models.TaskComplexityRouteDTO`
         """
         self._InstanceID = None
         self._Name = None
@@ -2534,6 +2617,9 @@ class CreateModelServiceRequest(AbstractModel):
         self._FallbackModels = None
         self._ModelProtocol = None
         self._RawCustomModelProtocolConfig = None
+        self._RouteStrategy = None
+        self._TokenLengthRoute = None
+        self._TaskComplexityRoute = None
 
     @property
     def InstanceID(self):
@@ -2843,6 +2929,39 @@ class CreateModelServiceRequest(AbstractModel):
     def RawCustomModelProtocolConfig(self, RawCustomModelProtocolConfig):
         self._RawCustomModelProtocolConfig = RawCustomModelProtocolConfig
 
+    @property
+    def RouteStrategy(self):
+        r"""<p>路由策略</p><p>枚举值：</p><ul><li>weight： 权重</li><li>taskComplexity： 任务复杂度</li><li>tokenLength： token长度</li></ul>
+        :rtype: str
+        """
+        return self._RouteStrategy
+
+    @RouteStrategy.setter
+    def RouteStrategy(self, RouteStrategy):
+        self._RouteStrategy = RouteStrategy
+
+    @property
+    def TokenLengthRoute(self):
+        r"""<p>token长度路由策略</p>
+        :rtype: list of TokenLengthRouteDTO
+        """
+        return self._TokenLengthRoute
+
+    @TokenLengthRoute.setter
+    def TokenLengthRoute(self, TokenLengthRoute):
+        self._TokenLengthRoute = TokenLengthRoute
+
+    @property
+    def TaskComplexityRoute(self):
+        r"""<p>任务复杂度路由策略</p>
+        :rtype: :class:`tencentcloud.apis.v20240801.models.TaskComplexityRouteDTO`
+        """
+        return self._TaskComplexityRoute
+
+    @TaskComplexityRoute.setter
+    def TaskComplexityRoute(self, TaskComplexityRoute):
+        self._TaskComplexityRoute = TaskComplexityRoute
+
 
     def _deserialize(self, params):
         self._InstanceID = params.get("InstanceID")
@@ -2898,6 +3017,16 @@ class CreateModelServiceRequest(AbstractModel):
                 self._FallbackModels.append(obj)
         self._ModelProtocol = params.get("ModelProtocol")
         self._RawCustomModelProtocolConfig = params.get("RawCustomModelProtocolConfig")
+        self._RouteStrategy = params.get("RouteStrategy")
+        if params.get("TokenLengthRoute") is not None:
+            self._TokenLengthRoute = []
+            for item in params.get("TokenLengthRoute"):
+                obj = TokenLengthRouteDTO()
+                obj._deserialize(item)
+                self._TokenLengthRoute.append(obj)
+        if params.get("TaskComplexityRoute") is not None:
+            self._TaskComplexityRoute = TaskComplexityRouteDTO()
+            self._TaskComplexityRoute._deserialize(params.get("TaskComplexityRoute"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7142,6 +7271,15 @@ class DescribeModelServiceResponseVO(AbstractModel):
         :type ModelProtocol: str
         :param _RawCustomModelProtocolConfig: <p>自定义模型协议配置</p>
         :type RawCustomModelProtocolConfig: str
+        :param _RouteStrategy: <p>路由策略</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RouteStrategy: str
+        :param _TokenLengthRoute: <p>token长度路由配置</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TokenLengthRoute: list of TokenLengthRouteDTO
+        :param _TaskComplexityRoute: <p>任务复杂度路由配置</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskComplexityRoute: :class:`tencentcloud.apis.v20240801.models.TaskComplexityRouteDTO`
         """
         self._AppID = None
         self._Uin = None
@@ -7181,6 +7319,9 @@ class DescribeModelServiceResponseVO(AbstractModel):
         self._FallbackModels = None
         self._ModelProtocol = None
         self._RawCustomModelProtocolConfig = None
+        self._RouteStrategy = None
+        self._TokenLengthRoute = None
+        self._TaskComplexityRoute = None
 
     @property
     def AppID(self):
@@ -7615,6 +7756,42 @@ class DescribeModelServiceResponseVO(AbstractModel):
     def RawCustomModelProtocolConfig(self, RawCustomModelProtocolConfig):
         self._RawCustomModelProtocolConfig = RawCustomModelProtocolConfig
 
+    @property
+    def RouteStrategy(self):
+        r"""<p>路由策略</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._RouteStrategy
+
+    @RouteStrategy.setter
+    def RouteStrategy(self, RouteStrategy):
+        self._RouteStrategy = RouteStrategy
+
+    @property
+    def TokenLengthRoute(self):
+        r"""<p>token长度路由配置</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of TokenLengthRouteDTO
+        """
+        return self._TokenLengthRoute
+
+    @TokenLengthRoute.setter
+    def TokenLengthRoute(self, TokenLengthRoute):
+        self._TokenLengthRoute = TokenLengthRoute
+
+    @property
+    def TaskComplexityRoute(self):
+        r"""<p>任务复杂度路由配置</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.apis.v20240801.models.TaskComplexityRouteDTO`
+        """
+        return self._TaskComplexityRoute
+
+    @TaskComplexityRoute.setter
+    def TaskComplexityRoute(self, TaskComplexityRoute):
+        self._TaskComplexityRoute = TaskComplexityRoute
+
 
     def _deserialize(self, params):
         self._AppID = params.get("AppID")
@@ -7680,6 +7857,16 @@ class DescribeModelServiceResponseVO(AbstractModel):
                 self._FallbackModels.append(obj)
         self._ModelProtocol = params.get("ModelProtocol")
         self._RawCustomModelProtocolConfig = params.get("RawCustomModelProtocolConfig")
+        self._RouteStrategy = params.get("RouteStrategy")
+        if params.get("TokenLengthRoute") is not None:
+            self._TokenLengthRoute = []
+            for item in params.get("TokenLengthRoute"):
+                obj = TokenLengthRouteDTO()
+                obj._deserialize(item)
+                self._TokenLengthRoute.append(obj)
+        if params.get("TaskComplexityRoute") is not None:
+            self._TaskComplexityRoute = TaskComplexityRouteDTO()
+            self._TaskComplexityRoute._deserialize(params.get("TaskComplexityRoute"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -8466,6 +8653,117 @@ class DescribeServicesResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
+
+
+class FaultToleranceDTO(AbstractModel):
+    r"""API Key容错策略配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Enabled: <p>是否启用API Key容错配置</p>
+        :type Enabled: bool
+        :param _ErrorCodes: <p>异常判定状态码，固定3位数字或字母</p>
+        :type ErrorCodes: list of str
+        :param _ErrorCount: <p>连续异常次数</p><p>单位：次</p>
+        :type ErrorCount: int
+        :param _IsolationTime: <p>隔离时长</p><p>单位：秒</p>
+        :type IsolationTime: int
+        :param _MaxSwitchCount: <p>最多切换次数</p><p>置0为不开启自动切换</p>
+        :type MaxSwitchCount: int
+        :param _SwitchTimeout: <p>切换总时间预算</p><p>单位：秒</p>
+        :type SwitchTimeout: int
+        """
+        self._Enabled = None
+        self._ErrorCodes = None
+        self._ErrorCount = None
+        self._IsolationTime = None
+        self._MaxSwitchCount = None
+        self._SwitchTimeout = None
+
+    @property
+    def Enabled(self):
+        r"""<p>是否启用API Key容错配置</p>
+        :rtype: bool
+        """
+        return self._Enabled
+
+    @Enabled.setter
+    def Enabled(self, Enabled):
+        self._Enabled = Enabled
+
+    @property
+    def ErrorCodes(self):
+        r"""<p>异常判定状态码，固定3位数字或字母</p>
+        :rtype: list of str
+        """
+        return self._ErrorCodes
+
+    @ErrorCodes.setter
+    def ErrorCodes(self, ErrorCodes):
+        self._ErrorCodes = ErrorCodes
+
+    @property
+    def ErrorCount(self):
+        r"""<p>连续异常次数</p><p>单位：次</p>
+        :rtype: int
+        """
+        return self._ErrorCount
+
+    @ErrorCount.setter
+    def ErrorCount(self, ErrorCount):
+        self._ErrorCount = ErrorCount
+
+    @property
+    def IsolationTime(self):
+        r"""<p>隔离时长</p><p>单位：秒</p>
+        :rtype: int
+        """
+        return self._IsolationTime
+
+    @IsolationTime.setter
+    def IsolationTime(self, IsolationTime):
+        self._IsolationTime = IsolationTime
+
+    @property
+    def MaxSwitchCount(self):
+        r"""<p>最多切换次数</p><p>置0为不开启自动切换</p>
+        :rtype: int
+        """
+        return self._MaxSwitchCount
+
+    @MaxSwitchCount.setter
+    def MaxSwitchCount(self, MaxSwitchCount):
+        self._MaxSwitchCount = MaxSwitchCount
+
+    @property
+    def SwitchTimeout(self):
+        r"""<p>切换总时间预算</p><p>单位：秒</p>
+        :rtype: int
+        """
+        return self._SwitchTimeout
+
+    @SwitchTimeout.setter
+    def SwitchTimeout(self, SwitchTimeout):
+        self._SwitchTimeout = SwitchTimeout
+
+
+    def _deserialize(self, params):
+        self._Enabled = params.get("Enabled")
+        self._ErrorCodes = params.get("ErrorCodes")
+        self._ErrorCount = params.get("ErrorCount")
+        self._IsolationTime = params.get("IsolationTime")
+        self._MaxSwitchCount = params.get("MaxSwitchCount")
+        self._SwitchTimeout = params.get("SwitchTimeout")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class FieldValueDTO(AbstractModel):
@@ -10700,6 +10998,12 @@ class ModifyModelServiceRequest(AbstractModel):
         :type ModelProtocol: str
         :param _RawCustomModelProtocolConfig: <p>自定义模型协议配置</p>
         :type RawCustomModelProtocolConfig: str
+        :param _RouteStrategy: <p>路由策略</p><p>枚举值：</p><ul><li>weight： 权重</li><li>taskComplexity： 任务复杂度</li><li>tokenLength： token长度</li></ul>
+        :type RouteStrategy: str
+        :param _TokenLengthRoute: <p>token长度路由策略</p>
+        :type TokenLengthRoute: list of TokenLengthRouteDTO
+        :param _TaskComplexityRoute: <p>任务复杂度路由策略</p>
+        :type TaskComplexityRoute: :class:`tencentcloud.apis.v20240801.models.TaskComplexityRouteDTO`
         """
         self._InstanceID = None
         self._ID = None
@@ -10729,6 +11033,9 @@ class ModifyModelServiceRequest(AbstractModel):
         self._FallbackModels = None
         self._ModelProtocol = None
         self._RawCustomModelProtocolConfig = None
+        self._RouteStrategy = None
+        self._TokenLengthRoute = None
+        self._TaskComplexityRoute = None
 
     @property
     def InstanceID(self):
@@ -11038,6 +11345,39 @@ class ModifyModelServiceRequest(AbstractModel):
     def RawCustomModelProtocolConfig(self, RawCustomModelProtocolConfig):
         self._RawCustomModelProtocolConfig = RawCustomModelProtocolConfig
 
+    @property
+    def RouteStrategy(self):
+        r"""<p>路由策略</p><p>枚举值：</p><ul><li>weight： 权重</li><li>taskComplexity： 任务复杂度</li><li>tokenLength： token长度</li></ul>
+        :rtype: str
+        """
+        return self._RouteStrategy
+
+    @RouteStrategy.setter
+    def RouteStrategy(self, RouteStrategy):
+        self._RouteStrategy = RouteStrategy
+
+    @property
+    def TokenLengthRoute(self):
+        r"""<p>token长度路由策略</p>
+        :rtype: list of TokenLengthRouteDTO
+        """
+        return self._TokenLengthRoute
+
+    @TokenLengthRoute.setter
+    def TokenLengthRoute(self, TokenLengthRoute):
+        self._TokenLengthRoute = TokenLengthRoute
+
+    @property
+    def TaskComplexityRoute(self):
+        r"""<p>任务复杂度路由策略</p>
+        :rtype: :class:`tencentcloud.apis.v20240801.models.TaskComplexityRouteDTO`
+        """
+        return self._TaskComplexityRoute
+
+    @TaskComplexityRoute.setter
+    def TaskComplexityRoute(self, TaskComplexityRoute):
+        self._TaskComplexityRoute = TaskComplexityRoute
+
 
     def _deserialize(self, params):
         self._InstanceID = params.get("InstanceID")
@@ -11093,6 +11433,16 @@ class ModifyModelServiceRequest(AbstractModel):
                 self._FallbackModels.append(obj)
         self._ModelProtocol = params.get("ModelProtocol")
         self._RawCustomModelProtocolConfig = params.get("RawCustomModelProtocolConfig")
+        self._RouteStrategy = params.get("RouteStrategy")
+        if params.get("TokenLengthRoute") is not None:
+            self._TokenLengthRoute = []
+            for item in params.get("TokenLengthRoute"):
+                obj = TokenLengthRouteDTO()
+                obj._deserialize(item)
+                self._TokenLengthRoute.append(obj)
+        if params.get("TaskComplexityRoute") is not None:
+            self._TaskComplexityRoute = TaskComplexityRouteDTO()
+            self._TaskComplexityRoute._deserialize(params.get("TaskComplexityRoute"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -14173,6 +14523,88 @@ class TargetServerGroupDTO(AbstractModel):
         
 
 
+class TaskComplexityRouteDTO(AbstractModel):
+    r"""任务复杂度路由参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ComplexityBias: <p>倾向度</p><p>取值范围：[0, 1]</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ComplexityBias: float
+        :param _SimpleTargetModels: <p>简单模型</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SimpleTargetModels: list of TargetModelDTO
+        :param _ComplexTargetModels: <p>复杂模型</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ComplexTargetModels: list of TargetModelDTO
+        """
+        self._ComplexityBias = None
+        self._SimpleTargetModels = None
+        self._ComplexTargetModels = None
+
+    @property
+    def ComplexityBias(self):
+        r"""<p>倾向度</p><p>取值范围：[0, 1]</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
+        return self._ComplexityBias
+
+    @ComplexityBias.setter
+    def ComplexityBias(self, ComplexityBias):
+        self._ComplexityBias = ComplexityBias
+
+    @property
+    def SimpleTargetModels(self):
+        r"""<p>简单模型</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of TargetModelDTO
+        """
+        return self._SimpleTargetModels
+
+    @SimpleTargetModels.setter
+    def SimpleTargetModels(self, SimpleTargetModels):
+        self._SimpleTargetModels = SimpleTargetModels
+
+    @property
+    def ComplexTargetModels(self):
+        r"""<p>复杂模型</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of TargetModelDTO
+        """
+        return self._ComplexTargetModels
+
+    @ComplexTargetModels.setter
+    def ComplexTargetModels(self, ComplexTargetModels):
+        self._ComplexTargetModels = ComplexTargetModels
+
+
+    def _deserialize(self, params):
+        self._ComplexityBias = params.get("ComplexityBias")
+        if params.get("SimpleTargetModels") is not None:
+            self._SimpleTargetModels = []
+            for item in params.get("SimpleTargetModels"):
+                obj = TargetModelDTO()
+                obj._deserialize(item)
+                self._SimpleTargetModels.append(obj)
+        if params.get("ComplexTargetModels") is not None:
+            self._ComplexTargetModels = []
+            for item in params.get("ComplexTargetModels"):
+                obj = TargetModelDTO()
+                obj._deserialize(item)
+                self._ComplexTargetModels.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class TmsConfigDTO(AbstractModel):
     r"""内容安全配置
 
@@ -14303,6 +14735,83 @@ class TmsConfigDTO(AbstractModel):
         self._BizType = params.get("BizType")
         self._InterceptMessage = params.get("InterceptMessage")
         self._ContextScope = params.get("ContextScope")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TokenLengthRouteDTO(AbstractModel):
+    r"""token长度路由参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MinTokens: <p>Token 区间下限</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MinTokens: int
+        :param _MaxTokens: <p>Token 区间上限</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MaxTokens: int
+        :param _TargetModels: <p>模型</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TargetModels: list of TargetModelDTO
+        """
+        self._MinTokens = None
+        self._MaxTokens = None
+        self._TargetModels = None
+
+    @property
+    def MinTokens(self):
+        r"""<p>Token 区间下限</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._MinTokens
+
+    @MinTokens.setter
+    def MinTokens(self, MinTokens):
+        self._MinTokens = MinTokens
+
+    @property
+    def MaxTokens(self):
+        r"""<p>Token 区间上限</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._MaxTokens
+
+    @MaxTokens.setter
+    def MaxTokens(self, MaxTokens):
+        self._MaxTokens = MaxTokens
+
+    @property
+    def TargetModels(self):
+        r"""<p>模型</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of TargetModelDTO
+        """
+        return self._TargetModels
+
+    @TargetModels.setter
+    def TargetModels(self, TargetModels):
+        self._TargetModels = TargetModels
+
+
+    def _deserialize(self, params):
+        self._MinTokens = params.get("MinTokens")
+        self._MaxTokens = params.get("MaxTokens")
+        if params.get("TargetModels") is not None:
+            self._TargetModels = []
+            for item in params.get("TargetModels"):
+                obj = TargetModelDTO()
+                obj._deserialize(item)
+                self._TargetModels.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

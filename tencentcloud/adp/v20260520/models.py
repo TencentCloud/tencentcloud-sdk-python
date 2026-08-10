@@ -3381,9 +3381,9 @@ class AppGreetingConfig(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Greeting: 欢迎语内容
+        :param _Greeting: <p>欢迎语内容</p>
         :type Greeting: str
-        :param _OpeningQuestionList: 开场问题列表
+        :param _OpeningQuestionList: <p>开场问题列表</p>
         :type OpeningQuestionList: list of str
         """
         self._Greeting = None
@@ -3391,7 +3391,7 @@ class AppGreetingConfig(AbstractModel):
 
     @property
     def Greeting(self):
-        r"""欢迎语内容
+        r"""<p>欢迎语内容</p>
         :rtype: str
         """
         return self._Greeting
@@ -3402,7 +3402,7 @@ class AppGreetingConfig(AbstractModel):
 
     @property
     def OpeningQuestionList(self):
-        r"""开场问题列表
+        r"""<p>开场问题列表</p>
         :rtype: list of str
         """
         return self._OpeningQuestionList
@@ -4331,9 +4331,9 @@ class AppStatusInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Status: 应用状态 (OFFLINE:未上线, RUNNING:运行中, DISABLED:停用)。枚举值: 1:未上线, 2:运行中, 3:停用
+        :param _Status: <p>应用状态</p><p>枚举值：</p><ul><li>1： 未上线</li><li>2： 运行中</li><li>3： 停用</li><li>4： 导入中</li></ul>
         :type Status: int
-        :param _StatusDescription: 状态描述
+        :param _StatusDescription: <p>状态描述</p>
         :type StatusDescription: str
         """
         self._Status = None
@@ -4341,7 +4341,7 @@ class AppStatusInfo(AbstractModel):
 
     @property
     def Status(self):
-        r"""应用状态 (OFFLINE:未上线, RUNNING:运行中, DISABLED:停用)。枚举值: 1:未上线, 2:运行中, 3:停用
+        r"""<p>应用状态</p><p>枚举值：</p><ul><li>1： 未上线</li><li>2： 运行中</li><li>3： 停用</li><li>4： 导入中</li></ul>
         :rtype: int
         """
         return self._Status
@@ -4352,7 +4352,7 @@ class AppStatusInfo(AbstractModel):
 
     @property
     def StatusDescription(self):
-        r"""状态描述
+        r"""<p>状态描述</p>
         :rtype: str
         """
         return self._StatusDescription

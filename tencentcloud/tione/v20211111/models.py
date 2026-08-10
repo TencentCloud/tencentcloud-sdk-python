@@ -22972,23 +22972,29 @@ class PrivateLinkInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _VpcId: 私有连接所在的VPCID
+        :param _VpcId: <p>私有连接所在的VPCID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type VpcId: str
-        :param _SubnetId: 私有连接所在的子网ID
+        :param _SubnetId: <p>私有连接所在的子网ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type SubnetId: str
-        :param _InnerHttpAddr: HTTP内网调用地址
+        :param _InnerHttpAddr: <p>HTTP内网调用地址</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type InnerHttpAddr: list of str
-        :param _InnerHttpsAddr: HTTPS内网调用地址
+        :param _InnerHttpsAddr: <p>HTTPS内网调用地址</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type InnerHttpsAddr: list of str
-        :param _State: 私有连接状态
+        :param _State: <p>私有连接状态</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type State: str
-        :param _InnerGrpcAddr: grpc内网调用地址
+        :param _InnerGrpcAddr: <p>grpc内网调用地址</p>
         :type InnerGrpcAddr: list of str
+        :param _CreatedBy: <p>创建者 UIN</p>
+        :type CreatedBy: str
+        :param _CreateTime: <p>创建时间</p>
+        :type CreateTime: str
+        :param _SubUinName: <p>子用户名称</p>
+        :type SubUinName: str
         """
         self._VpcId = None
         self._SubnetId = None
@@ -22996,10 +23002,13 @@ class PrivateLinkInfo(AbstractModel):
         self._InnerHttpsAddr = None
         self._State = None
         self._InnerGrpcAddr = None
+        self._CreatedBy = None
+        self._CreateTime = None
+        self._SubUinName = None
 
     @property
     def VpcId(self):
-        r"""私有连接所在的VPCID
+        r"""<p>私有连接所在的VPCID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -23011,7 +23020,7 @@ class PrivateLinkInfo(AbstractModel):
 
     @property
     def SubnetId(self):
-        r"""私有连接所在的子网ID
+        r"""<p>私有连接所在的子网ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -23023,7 +23032,7 @@ class PrivateLinkInfo(AbstractModel):
 
     @property
     def InnerHttpAddr(self):
-        r"""HTTP内网调用地址
+        r"""<p>HTTP内网调用地址</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -23035,7 +23044,7 @@ class PrivateLinkInfo(AbstractModel):
 
     @property
     def InnerHttpsAddr(self):
-        r"""HTTPS内网调用地址
+        r"""<p>HTTPS内网调用地址</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -23047,7 +23056,7 @@ class PrivateLinkInfo(AbstractModel):
 
     @property
     def State(self):
-        r"""私有连接状态
+        r"""<p>私有连接状态</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -23059,7 +23068,7 @@ class PrivateLinkInfo(AbstractModel):
 
     @property
     def InnerGrpcAddr(self):
-        r"""grpc内网调用地址
+        r"""<p>grpc内网调用地址</p>
         :rtype: list of str
         """
         return self._InnerGrpcAddr
@@ -23067,6 +23076,39 @@ class PrivateLinkInfo(AbstractModel):
     @InnerGrpcAddr.setter
     def InnerGrpcAddr(self, InnerGrpcAddr):
         self._InnerGrpcAddr = InnerGrpcAddr
+
+    @property
+    def CreatedBy(self):
+        r"""<p>创建者 UIN</p>
+        :rtype: str
+        """
+        return self._CreatedBy
+
+    @CreatedBy.setter
+    def CreatedBy(self, CreatedBy):
+        self._CreatedBy = CreatedBy
+
+    @property
+    def CreateTime(self):
+        r"""<p>创建时间</p>
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def SubUinName(self):
+        r"""<p>子用户名称</p>
+        :rtype: str
+        """
+        return self._SubUinName
+
+    @SubUinName.setter
+    def SubUinName(self, SubUinName):
+        self._SubUinName = SubUinName
 
 
     def _deserialize(self, params):
@@ -23076,6 +23118,9 @@ class PrivateLinkInfo(AbstractModel):
         self._InnerHttpsAddr = params.get("InnerHttpsAddr")
         self._State = params.get("State")
         self._InnerGrpcAddr = params.get("InnerGrpcAddr")
+        self._CreatedBy = params.get("CreatedBy")
+        self._CreateTime = params.get("CreateTime")
+        self._SubUinName = params.get("SubUinName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

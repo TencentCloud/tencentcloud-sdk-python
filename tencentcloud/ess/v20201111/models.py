@@ -16980,6 +16980,8 @@ class CreatePartnerAutoSignAuthUrlRequest(AbstractModel):
         :type SealTypes: list of str
         :param _AuthToMe: <p>在处理授权关系时，授权的方向</p><ul><li><strong>false</strong>（默认值）：表示我方授权他方。在这种情况下，<code>AuthorizedOrganizationName</code> 代表的是【被授权方】的企业名称，即接收授权的企业。</li><li><strong>true</strong>：表示他方授权我方。在这种情况下，<code>AuthorizedOrganizationName</code> 代表的是【授权方】的企业名称，即提供授权的企业。</li></ul>
         :type AuthToMe: bool
+        :param _LimitAuthType: <p>限制授权方式</p><p>枚举值：</p><ul><li>0： 默认，授权页面展示全部授权方式</li><li>1： 仅按印章类型授权</li><li>2： 仅按印章id授权</li></ul>
+        :type LimitAuthType: int
         """
         self._Agent = None
         self._Operator = None
@@ -16987,6 +16989,7 @@ class CreatePartnerAutoSignAuthUrlRequest(AbstractModel):
         self._AuthorizedOrganizationName = None
         self._SealTypes = None
         self._AuthToMe = None
+        self._LimitAuthType = None
 
     @property
     def Agent(self):
@@ -17054,6 +17057,17 @@ class CreatePartnerAutoSignAuthUrlRequest(AbstractModel):
     def AuthToMe(self, AuthToMe):
         self._AuthToMe = AuthToMe
 
+    @property
+    def LimitAuthType(self):
+        r"""<p>限制授权方式</p><p>枚举值：</p><ul><li>0： 默认，授权页面展示全部授权方式</li><li>1： 仅按印章类型授权</li><li>2： 仅按印章id授权</li></ul>
+        :rtype: int
+        """
+        return self._LimitAuthType
+
+    @LimitAuthType.setter
+    def LimitAuthType(self, LimitAuthType):
+        self._LimitAuthType = LimitAuthType
+
 
     def _deserialize(self, params):
         if params.get("Agent") is not None:
@@ -17066,6 +17080,7 @@ class CreatePartnerAutoSignAuthUrlRequest(AbstractModel):
         self._AuthorizedOrganizationName = params.get("AuthorizedOrganizationName")
         self._SealTypes = params.get("SealTypes")
         self._AuthToMe = params.get("AuthToMe")
+        self._LimitAuthType = params.get("LimitAuthType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -38926,6 +38941,8 @@ class ModifyPartnerAutoSignAuthUrlRequest(AbstractModel):
         :type AuthToMe: bool
         :param _SealTypes: <p>在设置印章授权时，可以指定特定的印章类型，以确保在授权过程中只使用相应类型的印章。</p><p>枚举值：</p><ul><li>OFFICIAL： 企业公章，用于代表企业对外的正式文件和重要事务的认证</li><li>CONTRACT： 合同专用章，专门用于签署各类合同。</li><li>FINANCE： 财务专用章，用于企业的财务相关文件，如发票、收据等财务凭证的认证</li><li>PERSONNEL： 人事专用章，用于人事管理相关文件，如劳动合同、人事任命等。</li><li>OTHER： 其他类型印章，包含子类型</li></ul>
         :type SealTypes: list of str
+        :param _LimitAuthType: <p>限制授权方式</p><p>枚举值：</p><ul><li>0： 默认，授权页面展示全部授权方式 </li><li>1： 仅按印章类型授权</li><li>2： 仅按印章id授权</li></ul>
+        :type LimitAuthType: int
         """
         self._Agent = None
         self._Operator = None
@@ -38933,6 +38950,7 @@ class ModifyPartnerAutoSignAuthUrlRequest(AbstractModel):
         self._AuthorizedOrganizationName = None
         self._AuthToMe = None
         self._SealTypes = None
+        self._LimitAuthType = None
 
     @property
     def Agent(self):
@@ -39000,6 +39018,17 @@ class ModifyPartnerAutoSignAuthUrlRequest(AbstractModel):
     def SealTypes(self, SealTypes):
         self._SealTypes = SealTypes
 
+    @property
+    def LimitAuthType(self):
+        r"""<p>限制授权方式</p><p>枚举值：</p><ul><li>0： 默认，授权页面展示全部授权方式 </li><li>1： 仅按印章类型授权</li><li>2： 仅按印章id授权</li></ul>
+        :rtype: int
+        """
+        return self._LimitAuthType
+
+    @LimitAuthType.setter
+    def LimitAuthType(self, LimitAuthType):
+        self._LimitAuthType = LimitAuthType
+
 
     def _deserialize(self, params):
         if params.get("Agent") is not None:
@@ -39012,6 +39041,7 @@ class ModifyPartnerAutoSignAuthUrlRequest(AbstractModel):
         self._AuthorizedOrganizationName = params.get("AuthorizedOrganizationName")
         self._AuthToMe = params.get("AuthToMe")
         self._SealTypes = params.get("SealTypes")
+        self._LimitAuthType = params.get("LimitAuthType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

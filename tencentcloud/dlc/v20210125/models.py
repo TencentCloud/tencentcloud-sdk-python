@@ -75271,6 +75271,8 @@ class TaskFullRespInfo(AbstractModel):
         :type ActiveCore: int
         :param _QueueTime: <p>排队时间</p><p>单位：毫秒</p>
         :type QueueTime: int
+        :param _ResourceGroupType: <p>资源组类型</p>
+        :type ResourceGroupType: str
         """
         self._DatabaseName = None
         self._DataAmount = None
@@ -75343,6 +75345,7 @@ class TaskFullRespInfo(AbstractModel):
         self._ShuffleWriteBytesSum = None
         self._ActiveCore = None
         self._QueueTime = None
+        self._ResourceGroupType = None
 
     @property
     def DatabaseName(self):
@@ -76153,6 +76156,17 @@ class TaskFullRespInfo(AbstractModel):
     def QueueTime(self, QueueTime):
         self._QueueTime = QueueTime
 
+    @property
+    def ResourceGroupType(self):
+        r"""<p>资源组类型</p>
+        :rtype: str
+        """
+        return self._ResourceGroupType
+
+    @ResourceGroupType.setter
+    def ResourceGroupType(self, ResourceGroupType):
+        self._ResourceGroupType = ResourceGroupType
+
 
     def _deserialize(self, params):
         self._DatabaseName = params.get("DatabaseName")
@@ -76232,6 +76246,7 @@ class TaskFullRespInfo(AbstractModel):
         self._ShuffleWriteBytesSum = params.get("ShuffleWriteBytesSum")
         self._ActiveCore = params.get("ActiveCore")
         self._QueueTime = params.get("QueueTime")
+        self._ResourceGroupType = params.get("ResourceGroupType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

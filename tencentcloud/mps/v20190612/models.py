@@ -54149,6 +54149,8 @@ class ImageTaskInput(AbstractModel):
         :type AiExpansionConfig: :class:`tencentcloud.mps.v20190612.models.AiExpansionConfig`
         :param _AiStoryboardConfig: <p>Ai分镜拆解配置</p>
         :type AiStoryboardConfig: :class:`tencentcloud.mps.v20190612.models.AiStoryboardConfig`
+        :param _UnderstandImageConfig: <p>图片理解配置</p>
+        :type UnderstandImageConfig: :class:`tencentcloud.mps.v20190612.models.UnderstandImageConfig`
         """
         self._EncodeConfig = None
         self._EnhanceConfig = None
@@ -54162,6 +54164,7 @@ class ImageTaskInput(AbstractModel):
         self._AiCutoutConfig = None
         self._AiExpansionConfig = None
         self._AiStoryboardConfig = None
+        self._UnderstandImageConfig = None
 
     @property
     def EncodeConfig(self):
@@ -54299,6 +54302,17 @@ class ImageTaskInput(AbstractModel):
     def AiStoryboardConfig(self, AiStoryboardConfig):
         self._AiStoryboardConfig = AiStoryboardConfig
 
+    @property
+    def UnderstandImageConfig(self):
+        r"""<p>图片理解配置</p>
+        :rtype: :class:`tencentcloud.mps.v20190612.models.UnderstandImageConfig`
+        """
+        return self._UnderstandImageConfig
+
+    @UnderstandImageConfig.setter
+    def UnderstandImageConfig(self, UnderstandImageConfig):
+        self._UnderstandImageConfig = UnderstandImageConfig
+
 
     def _deserialize(self, params):
         if params.get("EncodeConfig") is not None:
@@ -54337,6 +54351,9 @@ class ImageTaskInput(AbstractModel):
         if params.get("AiStoryboardConfig") is not None:
             self._AiStoryboardConfig = AiStoryboardConfig()
             self._AiStoryboardConfig._deserialize(params.get("AiStoryboardConfig"))
+        if params.get("UnderstandImageConfig") is not None:
+            self._UnderstandImageConfig = UnderstandImageConfig()
+            self._UnderstandImageConfig._deserialize(params.get("UnderstandImageConfig"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -91546,6 +91563,57 @@ Output：输出。
         
 
 
+class UnderstandImageConfig(AbstractModel):
+    r"""图片理解任务。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Model: <p>图片理解模型</p><p>枚举值：</p><ul><li>WAND-understand-1.0-lite： 轻量理解模型</li><li>WAND-understand-1.0-flash： 质量-速度平衡理解模型</li><li>WAND-understand-1.0-pro： 高质量理解模型</li></ul>
+        :type Model: str
+        :param _Prompt: <p>图片理解指令</p>
+        :type Prompt: str
+        """
+        self._Model = None
+        self._Prompt = None
+
+    @property
+    def Model(self):
+        r"""<p>图片理解模型</p><p>枚举值：</p><ul><li>WAND-understand-1.0-lite： 轻量理解模型</li><li>WAND-understand-1.0-flash： 质量-速度平衡理解模型</li><li>WAND-understand-1.0-pro： 高质量理解模型</li></ul>
+        :rtype: str
+        """
+        return self._Model
+
+    @Model.setter
+    def Model(self, Model):
+        self._Model = Model
+
+    @property
+    def Prompt(self):
+        r"""<p>图片理解指令</p>
+        :rtype: str
+        """
+        return self._Prompt
+
+    @Prompt.setter
+    def Prompt(self, Prompt):
+        self._Prompt = Prompt
+
+
+    def _deserialize(self, params):
+        self._Model = params.get("Model")
+        self._Prompt = params.get("Prompt")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class UpdateProjectRequest(AbstractModel):
     r"""UpdateProject请求参数结构体
 
@@ -95676,6 +95744,8 @@ class VoiceInfo(AbstractModel):
         :type Labels: list of str
         :param _Scenes: <p>推荐场景</p><p>如：教育</p>
         :type Scenes: list of str
+        :param _Engine: <p>音色所属引擎</p>
+        :type Engine: str
         """
         self._VoiceId = None
         self._Name = None
@@ -95687,6 +95757,7 @@ class VoiceInfo(AbstractModel):
         self._AudioUrl = None
         self._Labels = None
         self._Scenes = None
+        self._Engine = None
 
     @property
     def VoiceId(self):
@@ -95798,6 +95869,17 @@ class VoiceInfo(AbstractModel):
     def Scenes(self, Scenes):
         self._Scenes = Scenes
 
+    @property
+    def Engine(self):
+        r"""<p>音色所属引擎</p>
+        :rtype: str
+        """
+        return self._Engine
+
+    @Engine.setter
+    def Engine(self, Engine):
+        self._Engine = Engine
+
 
     def _deserialize(self, params):
         self._VoiceId = params.get("VoiceId")
@@ -95810,6 +95892,7 @@ class VoiceInfo(AbstractModel):
         self._AudioUrl = params.get("AudioUrl")
         self._Labels = params.get("Labels")
         self._Scenes = params.get("Scenes")
+        self._Engine = params.get("Engine")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

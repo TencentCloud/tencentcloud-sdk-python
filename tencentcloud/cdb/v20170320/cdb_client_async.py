@@ -2528,6 +2528,42 @@ class CdbClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def ModifyInstanceChargeType(
+            self,
+            request: models.ModifyInstanceChargeTypeRequest,
+            opts: Dict = None,
+    ) -> models.ModifyInstanceChargeTypeResponse:
+        """
+        本接口(ModifyInstanceChargeType)用于将实例的计费模式从包年包月改为按量计费。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyInstanceChargeType"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyInstanceChargeTypeResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyInstanceDestroyProtect(
+            self,
+            request: models.ModifyInstanceDestroyProtectRequest,
+            opts: Dict = None,
+    ) -> models.ModifyInstanceDestroyProtectResponse:
+        """
+        该接口（ModifyInstanceDestroyProtect）用于修改实例销毁保护状态。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyInstanceDestroyProtect"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyInstanceDestroyProtectResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ModifyInstanceParam(
             self,
             request: models.ModifyInstanceParamRequest,

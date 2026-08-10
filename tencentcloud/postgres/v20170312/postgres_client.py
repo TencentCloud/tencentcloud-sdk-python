@@ -534,6 +534,42 @@ class PostgresClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DeleteDatabase(self, request):
+        r"""本接口（DeleteDatabase）用于删除指定 PostgreSQL 实例中的数据库。删除操作会直接调用底层存储引擎执行，为保障数据安全和系统稳定，接口在执行前会进行多项前置校验。
+        使用限制
+
+        - 实例状态限制：仅允许对运行中的实例执行删除数据库操作。
+
+        - 只读实例限制：只读实例不支持删除数据库操作。由于只读实例的数据来源于主实例同步，不允许在只读侧执行库级别的删除变更。若对只读实例发起此请求，将直接被拦截并返回错误。
+
+        - 数据库名合法性限制：待删除的数据库名称必须通过以下校验，否则报错：
+        长度符合 PostgreSQL 命名规范
+        字符集合法（仅允许字母、数字、下划线，且不能以数字开头）
+        不能为系统保留库名（如 postgres、template0、template1 等）
+        不能为 PostgreSQL 关键字/保留字
+
+        - 不可逆操作：数据库一经删除，数据将无法恢复。执行前请确认已做好必要的数据备份。
+
+        :param request: Request instance for DeleteDatabase.
+        :type request: :class:`tencentcloud.postgres.v20170312.models.DeleteDatabaseRequest`
+        :rtype: :class:`tencentcloud.postgres.v20170312.models.DeleteDatabaseResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteDatabase", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteDatabaseResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DeleteLogBackup(self, request):
         r"""本接口（DeleteLogBackup）用于删除实例指定日志备份。
 

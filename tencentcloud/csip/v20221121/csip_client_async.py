@@ -61,6 +61,24 @@ class CsipClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def AddVulWhitelist(
+            self,
+            request: models.AddVulWhitelistRequest,
+            opts: Dict = None,
+    ) -> models.AddVulWhitelistResponse:
+        """
+        添加漏洞白名单
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "AddVulWhitelist"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.AddVulWhitelistResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateAccessKeyCheckTask(
             self,
             request: models.CreateAccessKeyCheckTaskRequest,
@@ -511,6 +529,24 @@ class CsipClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateHostVulExportJob(
+            self,
+            request: models.CreateHostVulExportJobRequest,
+            opts: Dict = None,
+    ) -> models.CreateHostVulExportJobResponse:
+        """
+        创建主机列漏洞表导出任务
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateHostVulExportJob"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateHostVulExportJobResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateIaCAccessToken(
             self,
             request: models.CreateIaCAccessTokenRequest,
@@ -596,6 +632,96 @@ class CsipClient(AbstractClient):
         kwargs["action"] = "CreateSkillScan"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.CreateSkillScanResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def CreateVulFixRetryTask(
+            self,
+            request: models.CreateVulFixRetryTaskRequest,
+            opts: Dict = None,
+    ) -> models.CreateVulFixRetryTaskResponse:
+        """
+        对修复失败的漏洞修复任务进行重试，仅针对原任务中修复失败的主机重新下发修复指令。仅当任务状态为部分修复失败或全部修复失败时允许重试。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateVulFixRetryTask"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateVulFixRetryTaskResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def CreateVulFixTask(
+            self,
+            request: models.CreateVulFixTaskRequest,
+            opts: Dict = None,
+    ) -> models.CreateVulFixTaskResponse:
+        """
+        用户手动提交漏洞修复任务，指定需要修复的漏洞和目标主机，系统创建修复任务并下发执行。支持指定修复超时时间、是否创建快照等选项。通过FixItems数组精确控制每个漏洞/KB补丁修复哪些主机。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateVulFixTask"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateVulFixTaskResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def CreateVulFixedExportJob(
+            self,
+            request: models.CreateVulFixedExportJobRequest,
+            opts: Dict = None,
+    ) -> models.CreateVulFixedExportJobResponse:
+        """
+        创建已修复漏洞列表的导出任务。支持与 DescribeVulFixedList 相同的过滤条件，导出通过异步任务实现，返回 JobID 后前端轮询查询导出任务状态。导出字段包含漏洞ID、漏洞名称、漏洞等级、VPR评级、漏洞类型、CVE编号、主机名称、实例ID、关联组件&路径、修复时间。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateVulFixedExportJob"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateVulFixedExportJobResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def CreateVulReScan(
+            self,
+            request: models.CreateVulReScanRequest,
+            opts: Dict = None,
+    ) -> models.CreateVulReScanResponse:
+        """
+        创建漏洞重新扫描
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateVulReScan"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateVulReScanResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def CreateVulScanManual(
+            self,
+            request: models.CreateVulScanManualRequest,
+            opts: Dict = None,
+    ) -> models.CreateVulScanManualResponse:
+        """
+        创建漏洞扫描（一键扫描）
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateVulScanManual"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateVulScanManualResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -938,6 +1064,24 @@ class CsipClient(AbstractClient):
         kwargs["action"] = "DeleteRiskScanTask"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DeleteRiskScanTaskResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteVulWhitelist(
+            self,
+            request: models.DeleteVulWhitelistRequest,
+            opts: Dict = None,
+    ) -> models.DeleteVulWhitelistResponse:
+        """
+        删除漏洞白名单
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteVulWhitelist"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteVulWhitelistResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -3157,6 +3301,78 @@ class CsipClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeHostKBRiskList(
+            self,
+            request: models.DescribeHostKBRiskListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeHostKBRiskListResponse:
+        """
+        获取主机kb风险列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeHostKBRiskList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeHostKBRiskListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeHostVulItemVPRInfo(
+            self,
+            request: models.DescribeHostVulItemVPRInfoRequest,
+            opts: Dict = None,
+    ) -> models.DescribeHostVulItemVPRInfoResponse:
+        """
+        获取主机漏洞VPR信息
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeHostVulItemVPRInfo"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeHostVulItemVPRInfoResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeHostVulOverview(
+            self,
+            request: models.DescribeHostVulOverviewRequest,
+            opts: Dict = None,
+    ) -> models.DescribeHostVulOverviewResponse:
+        """
+        获取主机漏洞概览
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeHostVulOverview"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeHostVulOverviewResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeHostVulRiskList(
+            self,
+            request: models.DescribeHostVulRiskListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeHostVulRiskListResponse:
+        """
+        获取主机漏洞风险列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeHostVulRiskList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeHostVulRiskListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeIaCFileList(
             self,
             request: models.DescribeIaCFileListRequest,
@@ -3260,6 +3476,42 @@ class CsipClient(AbstractClient):
         kwargs["action"] = "DescribeIpInvokeRecordDetail"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeIpInvokeRecordDetailResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeKBDetail(
+            self,
+            request: models.DescribeKBDetailRequest,
+            opts: Dict = None,
+    ) -> models.DescribeKBDetailResponse:
+        """
+        根据用户输入的 KB 内部 ID 查询单个 Windows KB 补丁的详情信息，返回 KB 基本信息、发布时间、是否需要重启，以及该 KB 关联的漏洞列表。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeKBDetail"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeKBDetailResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeKBUpdatableMachineList(
+            self,
+            request: models.DescribeKBUpdatableMachineListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeKBUpdatableMachineListResponse:
+        """
+        查询指定KB补丁可以更新的主机列表。用于Windows系统补丁修复场景，在用户提交KB补丁更新任务前，查询哪些主机缺少该补丁且支持自动更新。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeKBUpdatableMachineList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeKBUpdatableMachineListResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -4129,6 +4381,186 @@ class CsipClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeVulComponentRelateHost(
+            self,
+            request: models.DescribeVulComponentRelateHostRequest,
+            opts: Dict = None,
+    ) -> models.DescribeVulComponentRelateHostResponse:
+        """
+        获取漏洞组件关联主机
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeVulComponentRelateHost"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeVulComponentRelateHostResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeVulFixTaskDetail(
+            self,
+            request: models.DescribeVulFixTaskDetailRequest,
+            opts: Dict = None,
+    ) -> models.DescribeVulFixTaskDetailResponse:
+        """
+        查询指定漏洞修复任务的详情信息，包含每台主机的修复状态、快照状态等明细数据，支持分页和筛选。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeVulFixTaskDetail"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeVulFixTaskDetailResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeVulFixTaskList(
+            self,
+            request: models.DescribeVulFixTaskListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeVulFixTaskListResponse:
+        """
+        分页查询漏洞修复任务记录列表，支持按修复状态、时间范围等条件筛选，展示每个修复任务的概要信息。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeVulFixTaskList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeVulFixTaskListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeVulFixableMachineList(
+            self,
+            request: models.DescribeVulFixableMachineListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeVulFixableMachineListResponse:
+        """
+        查询指定漏洞可以被修复的主机列表。在用户提交修复任务前，需要先查询哪些主机支持自动修复，为用户选择修复目标提供数据支持。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeVulFixableMachineList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeVulFixableMachineListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeVulFixedHostDetail(
+            self,
+            request: models.DescribeVulFixedHostDetailRequest,
+            opts: Dict = None,
+    ) -> models.DescribeVulFixedHostDetailResponse:
+        """
+        查询某个已修复漏洞在指定主机上的修复详情，包含漏洞基本信息、修复主机信息以及关联组件&路径的详细列表（组件名称、命中版本、关联路径、修复命令）。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeVulFixedHostDetail"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeVulFixedHostDetailResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeVulFixedList(
+            self,
+            request: models.DescribeVulFixedListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeVulFixedListResponse:
+        """
+        查询已被修复的漏洞列表，展示修复成功的漏洞信息及修复情况统计，帮助用户了解修复成效。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeVulFixedList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeVulFixedListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeVulHostRelateComponent(
+            self,
+            request: models.DescribeVulHostRelateComponentRequest,
+            opts: Dict = None,
+    ) -> models.DescribeVulHostRelateComponentResponse:
+        """
+        获取漏洞主机关联组件
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeVulHostRelateComponent"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeVulHostRelateComponentResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeVulIgnoreRuleList(
+            self,
+            request: models.DescribeVulIgnoreRuleListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeVulIgnoreRuleListResponse:
+        """
+        获取漏洞忽略列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeVulIgnoreRuleList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeVulIgnoreRuleListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeVulItemList(
+            self,
+            request: models.DescribeVulItemListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeVulItemListResponse:
+        """
+        获取漏洞列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeVulItemList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeVulItemListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeVulLabelList(
+            self,
+            request: models.DescribeVulLabelListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeVulLabelListResponse:
+        """
+        获取漏洞标签列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeVulLabelList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeVulLabelListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeVulRiskList(
             self,
             request: models.DescribeVulRiskListRequest,
@@ -4142,6 +4574,96 @@ class CsipClient(AbstractClient):
         kwargs["action"] = "DescribeVulRiskList"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeVulRiskListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeVulRiskRelateComponent(
+            self,
+            request: models.DescribeVulRiskRelateComponentRequest,
+            opts: Dict = None,
+    ) -> models.DescribeVulRiskRelateComponentResponse:
+        """
+        获取漏洞关联组件
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeVulRiskRelateComponent"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeVulRiskRelateComponentResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeVulRiskRelateHost(
+            self,
+            request: models.DescribeVulRiskRelateHostRequest,
+            opts: Dict = None,
+    ) -> models.DescribeVulRiskRelateHostResponse:
+        """
+        获取漏洞或KB关联的主机
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeVulRiskRelateHost"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeVulRiskRelateHostResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeVulScanPeriodic(
+            self,
+            request: models.DescribeVulScanPeriodicRequest,
+            opts: Dict = None,
+    ) -> models.DescribeVulScanPeriodicResponse:
+        """
+        获取漏洞扫描（周期扫描）
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeVulScanPeriodic"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeVulScanPeriodicResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeVulScanTaskDetail(
+            self,
+            request: models.DescribeVulScanTaskDetailRequest,
+            opts: Dict = None,
+    ) -> models.DescribeVulScanTaskDetailResponse:
+        """
+        获取扫描漏洞任务详情
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeVulScanTaskDetail"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeVulScanTaskDetailResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeVulScanTaskList(
+            self,
+            request: models.DescribeVulScanTaskListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeVulScanTaskListResponse:
+        """
+        获取漏洞扫描任务记录
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeVulScanTaskList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeVulScanTaskListResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -4975,6 +5497,60 @@ class CsipClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def ModifyVulScanPeriodic(
+            self,
+            request: models.ModifyVulScanPeriodicRequest,
+            opts: Dict = None,
+    ) -> models.ModifyVulScanPeriodicResponse:
+        """
+        修改漏洞扫描（周期扫描）
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyVulScanPeriodic"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyVulScanPeriodicResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyVulWhitelistConfig(
+            self,
+            request: models.ModifyVulWhitelistConfigRequest,
+            opts: Dict = None,
+    ) -> models.ModifyVulWhitelistConfigResponse:
+        """
+        修改漏洞白名单配置
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyVulWhitelistConfig"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyVulWhitelistConfigResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyVulWhitelistSwitch(
+            self,
+            request: models.ModifyVulWhitelistSwitchRequest,
+            opts: Dict = None,
+    ) -> models.ModifyVulWhitelistSwitchResponse:
+        """
+        修改漏洞白名单开关
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyVulWhitelistSwitch"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyVulWhitelistSwitchResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ResetDspmAssetAccountPassword(
             self,
             request: models.ResetDspmAssetAccountPasswordRequest,
@@ -5060,6 +5636,24 @@ class CsipClient(AbstractClient):
         kwargs["action"] = "StopRiskCenterTask"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.StopRiskCenterTaskResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def StopVulScanTask(
+            self,
+            request: models.StopVulScanTaskRequest,
+            opts: Dict = None,
+    ) -> models.StopVulScanTaskResponse:
+        """
+        停止漏洞扫描（任务扫描）
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "StopVulScanTask"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.StopVulScanTaskResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

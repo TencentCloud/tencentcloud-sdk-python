@@ -25110,6 +25110,57 @@ RA - 范围。
         
 
 
+class InstanceChargePrepaid(AbstractModel):
+    r"""修改计费模式时，如果需要从按量计费转为包年包月，则需指定时长和自动续费标志
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Period: <p>购买实例的时长，单位：月。取值范围：1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 24, 36, 48, 60。</p>
+        :type Period: int
+        :param _RenewFlag: <p>自动续费标识，0：不自动续费，1：自动续费</p>
+        :type RenewFlag: int
+        """
+        self._Period = None
+        self._RenewFlag = None
+
+    @property
+    def Period(self):
+        r"""<p>购买实例的时长，单位：月。取值范围：1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 24, 36, 48, 60。</p>
+        :rtype: int
+        """
+        return self._Period
+
+    @Period.setter
+    def Period(self, Period):
+        self._Period = Period
+
+    @property
+    def RenewFlag(self):
+        r"""<p>自动续费标识，0：不自动续费，1：自动续费</p>
+        :rtype: int
+        """
+        return self._RenewFlag
+
+    @RenewFlag.setter
+    def RenewFlag(self, RenewFlag):
+        self._RenewFlag = RenewFlag
+
+
+    def _deserialize(self, params):
+        self._Period = params.get("Period")
+        self._RenewFlag = params.get("RenewFlag")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class InstanceDbAuditStatus(AbstractModel):
     r"""实例审计详情信息
 
@@ -30397,6 +30448,196 @@ class ModifyDBInstanceVipVportResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._AsyncRequestId = params.get("AsyncRequestId")
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyInstanceChargeTypeRequest(AbstractModel):
+    r"""ModifyInstanceChargeType请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: <p>实例 ID，格式如：cdb-c1nl9rpv，与云数据库控制台页面中显示的实例 ID 相同。</p>
+        :type InstanceId: str
+        :param _InstanceChargeType: <p>修改后的计费类型</p><p>枚举值：</p><ul><li>PREPAID： 包年包月</li><li>POSTPAID_BY_HOUR： 按量计费</li></ul>
+        :type InstanceChargeType: str
+        :param _InstanceChargePrepaid: <p>修改后包年包月相关参数设置</p>
+        :type InstanceChargePrepaid: :class:`tencentcloud.cdb.v20170320.models.InstanceChargePrepaid`
+        """
+        self._InstanceId = None
+        self._InstanceChargeType = None
+        self._InstanceChargePrepaid = None
+
+    @property
+    def InstanceId(self):
+        r"""<p>实例 ID，格式如：cdb-c1nl9rpv，与云数据库控制台页面中显示的实例 ID 相同。</p>
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def InstanceChargeType(self):
+        r"""<p>修改后的计费类型</p><p>枚举值：</p><ul><li>PREPAID： 包年包月</li><li>POSTPAID_BY_HOUR： 按量计费</li></ul>
+        :rtype: str
+        """
+        return self._InstanceChargeType
+
+    @InstanceChargeType.setter
+    def InstanceChargeType(self, InstanceChargeType):
+        self._InstanceChargeType = InstanceChargeType
+
+    @property
+    def InstanceChargePrepaid(self):
+        r"""<p>修改后包年包月相关参数设置</p>
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.InstanceChargePrepaid`
+        """
+        return self._InstanceChargePrepaid
+
+    @InstanceChargePrepaid.setter
+    def InstanceChargePrepaid(self, InstanceChargePrepaid):
+        self._InstanceChargePrepaid = InstanceChargePrepaid
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._InstanceChargeType = params.get("InstanceChargeType")
+        if params.get("InstanceChargePrepaid") is not None:
+            self._InstanceChargePrepaid = InstanceChargePrepaid()
+            self._InstanceChargePrepaid._deserialize(params.get("InstanceChargePrepaid"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyInstanceChargeTypeResponse(AbstractModel):
+    r"""ModifyInstanceChargeType返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DealName: <p>订单ID</p>
+        :type DealName: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._DealName = None
+        self._RequestId = None
+
+    @property
+    def DealName(self):
+        r"""<p>订单ID</p>
+        :rtype: str
+        """
+        return self._DealName
+
+    @DealName.setter
+    def DealName(self, DealName):
+        self._DealName = DealName
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._DealName = params.get("DealName")
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyInstanceDestroyProtectRequest(AbstractModel):
+    r"""ModifyInstanceDestroyProtect请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceIds: 实例 ID 列表
+        :type InstanceIds: list of str
+        :param _DestroyProtect: 开启或关闭实例销毁保护
+        :type DestroyProtect: str
+        """
+        self._InstanceIds = None
+        self._DestroyProtect = None
+
+    @property
+    def InstanceIds(self):
+        r"""实例 ID 列表
+        :rtype: list of str
+        """
+        return self._InstanceIds
+
+    @InstanceIds.setter
+    def InstanceIds(self, InstanceIds):
+        self._InstanceIds = InstanceIds
+
+    @property
+    def DestroyProtect(self):
+        r"""开启或关闭实例销毁保护
+        :rtype: str
+        """
+        return self._DestroyProtect
+
+    @DestroyProtect.setter
+    def DestroyProtect(self, DestroyProtect):
+        self._DestroyProtect = DestroyProtect
+
+
+    def _deserialize(self, params):
+        self._InstanceIds = params.get("InstanceIds")
+        self._DestroyProtect = params.get("DestroyProtect")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyInstanceDestroyProtectResponse(AbstractModel):
+    r"""ModifyInstanceDestroyProtect返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
 
 
@@ -40007,11 +40248,14 @@ class UpgradeDBInstanceResponse(AbstractModel):
         :type DealIds: list of str
         :param _AsyncRequestId: <p>异步任务的请求 ID，可使用此 ID <a href="https://cloud.tencent.com/document/product/236/20410">查询异步任务的执行结果</a>。</p>
         :type AsyncRequestId: str
+        :param _JobId: <p>任务列表的任务ID</p>
+        :type JobId: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._DealIds = None
         self._AsyncRequestId = None
+        self._JobId = None
         self._RequestId = None
 
     @property
@@ -40037,6 +40281,17 @@ class UpgradeDBInstanceResponse(AbstractModel):
         self._AsyncRequestId = AsyncRequestId
 
     @property
+    def JobId(self):
+        r"""<p>任务列表的任务ID</p>
+        :rtype: int
+        """
+        return self._JobId
+
+    @JobId.setter
+    def JobId(self, JobId):
+        self._JobId = JobId
+
+    @property
     def RequestId(self):
         r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -40051,6 +40306,7 @@ class UpgradeDBInstanceResponse(AbstractModel):
     def _deserialize(self, params):
         self._DealIds = params.get("DealIds")
         self._AsyncRequestId = params.get("AsyncRequestId")
+        self._JobId = params.get("JobId")
         self._RequestId = params.get("RequestId")
 
 

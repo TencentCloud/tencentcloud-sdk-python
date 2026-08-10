@@ -26,6 +26,75 @@ class CdsClient(AbstractClient):
     _service = 'cds'
 
 
+    def CreateReportPdf(self, request):
+        r"""下载报表PDF
+
+        :param request: Request instance for CreateReportPdf.
+        :type request: :class:`tencentcloud.cds.v20180420.models.CreateReportPdfRequest`
+        :rtype: :class:`tencentcloud.cds.v20180420.models.CreateReportPdfResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateReportPdf", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateReportPdfResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CreateTimerReport(self, request):
+        r"""新建报表任务
+
+        :param request: Request instance for CreateTimerReport.
+        :type request: :class:`tencentcloud.cds.v20180420.models.CreateTimerReportRequest`
+        :rtype: :class:`tencentcloud.cds.v20180420.models.CreateTimerReportResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateTimerReport", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateTimerReportResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeAssetsList(self, request):
+        r"""查询资产列表
+
+        :param request: Request instance for DescribeAssetsList.
+        :type request: :class:`tencentcloud.cds.v20180420.models.DescribeAssetsListRequest`
+        :rtype: :class:`tencentcloud.cds.v20180420.models.DescribeAssetsListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAssetsList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeAssetsListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeDbauditInstanceType(self, request):
         r"""本接口 (DescribeDbauditInstanceType) 用于查询可售卖的产品规格列表。
 
@@ -86,6 +155,52 @@ class CdsClient(AbstractClient):
             body = self.call("DescribeDbauditUsedRegions", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeDbauditUsedRegionsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeReportList(self, request):
+        r"""查询报表列表
+
+        :param request: Request instance for DescribeReportList.
+        :type request: :class:`tencentcloud.cds.v20180420.models.DescribeReportListRequest`
+        :rtype: :class:`tencentcloud.cds.v20180420.models.DescribeReportListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeReportList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeReportListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeReportMissionList(self, request):
+        r"""查询报表任务列表
+
+        :param request: Request instance for DescribeReportMissionList.
+        :type request: :class:`tencentcloud.cds.v20180420.models.DescribeReportMissionListRequest`
+        :rtype: :class:`tencentcloud.cds.v20180420.models.DescribeReportMissionListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeReportMissionList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeReportMissionListResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

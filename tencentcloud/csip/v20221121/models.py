@@ -2060,6 +2060,72 @@ class AccessKeyUser(AbstractModel):
         
 
 
+class AccountBriefInfo(AbstractModel):
+    r"""账号简要信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AppID: <p>账号 AppID</p>
+        :type AppID: int
+        :param _Nick: <p>账号昵称</p>
+        :type Nick: str
+        :param _Uin: <p>账号 Uin</p>
+        :type Uin: str
+        """
+        self._AppID = None
+        self._Nick = None
+        self._Uin = None
+
+    @property
+    def AppID(self):
+        r"""<p>账号 AppID</p>
+        :rtype: int
+        """
+        return self._AppID
+
+    @AppID.setter
+    def AppID(self, AppID):
+        self._AppID = AppID
+
+    @property
+    def Nick(self):
+        r"""<p>账号昵称</p>
+        :rtype: str
+        """
+        return self._Nick
+
+    @Nick.setter
+    def Nick(self, Nick):
+        self._Nick = Nick
+
+    @property
+    def Uin(self):
+        r"""<p>账号 Uin</p>
+        :rtype: str
+        """
+        return self._Uin
+
+    @Uin.setter
+    def Uin(self, Uin):
+        self._Uin = Uin
+
+
+    def _deserialize(self, params):
+        self._AppID = params.get("AppID")
+        self._Nick = params.get("Nick")
+        self._Uin = params.get("Uin")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AddDspmAssetManagerRequest(AbstractModel):
     r"""AddDspmAssetManager请求参数结构体
 
@@ -2185,6 +2251,130 @@ class AddNewBindRoleUserResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._Status = params.get("Status")
+        self._RequestId = params.get("RequestId")
+
+
+class AddVulWhitelistRequest(AbstractModel):
+    r"""AddVulWhitelist请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VulId: <p>漏洞ID</p>
+        :type VulId: list of int non-negative
+        :param _KbId: <p>补丁ID</p>
+        :type KbId: list of int non-negative
+        :param _MemberId: <p>集团账号的成员id</p>
+        :type MemberId: list of str
+        :param _Remark: <p>备注</p>
+        :type Remark: str
+        :param _AssetList: <p>资产列表</p>
+        :type AssetList: list of str
+        """
+        self._VulId = None
+        self._KbId = None
+        self._MemberId = None
+        self._Remark = None
+        self._AssetList = None
+
+    @property
+    def VulId(self):
+        r"""<p>漏洞ID</p>
+        :rtype: list of int non-negative
+        """
+        return self._VulId
+
+    @VulId.setter
+    def VulId(self, VulId):
+        self._VulId = VulId
+
+    @property
+    def KbId(self):
+        r"""<p>补丁ID</p>
+        :rtype: list of int non-negative
+        """
+        return self._KbId
+
+    @KbId.setter
+    def KbId(self, KbId):
+        self._KbId = KbId
+
+    @property
+    def MemberId(self):
+        r"""<p>集团账号的成员id</p>
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+    @property
+    def Remark(self):
+        r"""<p>备注</p>
+        :rtype: str
+        """
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+    @property
+    def AssetList(self):
+        r"""<p>资产列表</p>
+        :rtype: list of str
+        """
+        return self._AssetList
+
+    @AssetList.setter
+    def AssetList(self, AssetList):
+        self._AssetList = AssetList
+
+
+    def _deserialize(self, params):
+        self._VulId = params.get("VulId")
+        self._KbId = params.get("KbId")
+        self._MemberId = params.get("MemberId")
+        self._Remark = params.get("Remark")
+        self._AssetList = params.get("AssetList")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AddVulWhitelistResponse(AbstractModel):
+    r"""AddVulWhitelist返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
 
 
@@ -12212,6 +12402,87 @@ class CommandPluginState(AbstractModel):
         
 
 
+class ComponentDetailItem(AbstractModel):
+    r"""关联组件&路径详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: 组件名称
+        :type Name: str
+        :param _Version: 命中版本
+        :type Version: str
+        :param _Path: 关联路径
+        :type Path: str
+        :param _FixCommand: 修复命令
+        :type FixCommand: str
+        """
+        self._Name = None
+        self._Version = None
+        self._Path = None
+        self._FixCommand = None
+
+    @property
+    def Name(self):
+        r"""组件名称
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Version(self):
+        r"""命中版本
+        :rtype: str
+        """
+        return self._Version
+
+    @Version.setter
+    def Version(self, Version):
+        self._Version = Version
+
+    @property
+    def Path(self):
+        r"""关联路径
+        :rtype: str
+        """
+        return self._Path
+
+    @Path.setter
+    def Path(self, Path):
+        self._Path = Path
+
+    @property
+    def FixCommand(self):
+        r"""修复命令
+        :rtype: str
+        """
+        return self._FixCommand
+
+    @FixCommand.setter
+    def FixCommand(self, FixCommand):
+        self._FixCommand = FixCommand
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Version = params.get("Version")
+        self._Path = params.get("Path")
+        self._FixCommand = params.get("FixCommand")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ContainerEnvInfo(AbstractModel):
     r"""容器环境信息
 
@@ -20193,6 +20464,120 @@ class CreateDspmWhitelistStrategyResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateHostVulExportJobRequest(AbstractModel):
+    r"""CreateHostVulExportJob请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BusinessAction: <p>导出的action</p><p>枚举值：</p><ul><li>LinuxHostVulRiskList： linux漏洞风险列表</li><li>WebCmsHostVulRiskList： WebCms漏洞风险列表</li><li>AppHostVulRiskList： App漏洞风险列表</li><li>EmergencyHostVulRiskList： 紧急漏洞风险列表</li><li>KBRiskList： Windows kb风险列表</li><li>RelateHostList： 关联主机列表</li><li>WhiteList： 漏洞白名单</li></ul>
+        :type BusinessAction: str
+        :param _MemberId: <p>集团账号的成员id</p>
+        :type MemberId: list of str
+        :param _Filters: <p>筛选条件数组，多条件之间为 AND 关系<br>支持的 Filter.Name：<br>KbID：KB风险关联主机情况下需要额外加入KB风险ID<br>VulID：漏洞风险关联主机情况下需要额外加入vul风险ID</p>
+        :type Filters: list of Filters
+        """
+        self._BusinessAction = None
+        self._MemberId = None
+        self._Filters = None
+
+    @property
+    def BusinessAction(self):
+        r"""<p>导出的action</p><p>枚举值：</p><ul><li>LinuxHostVulRiskList： linux漏洞风险列表</li><li>WebCmsHostVulRiskList： WebCms漏洞风险列表</li><li>AppHostVulRiskList： App漏洞风险列表</li><li>EmergencyHostVulRiskList： 紧急漏洞风险列表</li><li>KBRiskList： Windows kb风险列表</li><li>RelateHostList： 关联主机列表</li><li>WhiteList： 漏洞白名单</li></ul>
+        :rtype: str
+        """
+        return self._BusinessAction
+
+    @BusinessAction.setter
+    def BusinessAction(self, BusinessAction):
+        self._BusinessAction = BusinessAction
+
+    @property
+    def MemberId(self):
+        r"""<p>集团账号的成员id</p>
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+    @property
+    def Filters(self):
+        r"""<p>筛选条件数组，多条件之间为 AND 关系<br>支持的 Filter.Name：<br>KbID：KB风险关联主机情况下需要额外加入KB风险ID<br>VulID：漏洞风险关联主机情况下需要额外加入vul风险ID</p>
+        :rtype: list of Filters
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+
+    def _deserialize(self, params):
+        self._BusinessAction = params.get("BusinessAction")
+        self._MemberId = params.get("MemberId")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filters()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateHostVulExportJobResponse(AbstractModel):
+    r"""CreateHostVulExportJob返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _JobID: <p>任务ID</p>
+        :type JobID: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._JobID = None
+        self._RequestId = None
+
+    @property
+    def JobID(self):
+        r"""<p>任务ID</p>
+        :rtype: str
+        """
+        return self._JobID
+
+    @JobID.setter
+    def JobID(self, JobID):
+        self._JobID = JobID
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._JobID = params.get("JobID")
+        self._RequestId = params.get("RequestId")
+
+
 class CreateIaCAccessTokenRequest(AbstractModel):
     r"""CreateIaCAccessToken请求参数结构体
 
@@ -20902,6 +21287,741 @@ class CreateSkillScanResponse(AbstractModel):
         self._EngineVersion = params.get("EngineVersion")
         self._Status = params.get("Status")
         self._Message = params.get("Message")
+        self._RequestId = params.get("RequestId")
+
+
+class CreateVulFixRetryTaskRequest(AbstractModel):
+    r"""CreateVulFixRetryTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: <p>需要重试的修复任务ID</p>
+        :type TaskId: int
+        :param _InstanceIds: <p>指定需要重试的主机实例ID列表，不传则对所有失败主机进行重试</p>
+        :type InstanceIds: list of str
+        :param _MemberId: 集团账号的成员id
+        :type MemberId: list of str
+        """
+        self._TaskId = None
+        self._InstanceIds = None
+        self._MemberId = None
+
+    @property
+    def TaskId(self):
+        r"""<p>需要重试的修复任务ID</p>
+        :rtype: int
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def InstanceIds(self):
+        r"""<p>指定需要重试的主机实例ID列表，不传则对所有失败主机进行重试</p>
+        :rtype: list of str
+        """
+        return self._InstanceIds
+
+    @InstanceIds.setter
+    def InstanceIds(self, InstanceIds):
+        self._InstanceIds = InstanceIds
+
+    @property
+    def MemberId(self):
+        r"""集团账号的成员id
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._InstanceIds = params.get("InstanceIds")
+        self._MemberId = params.get("MemberId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateVulFixRetryTaskResponse(AbstractModel):
+    r"""CreateVulFixRetryTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: <p>重试生成的新任务ID，用于后续查询任务状态</p>
+        :type TaskId: int
+        :param _RetryCount: <p>本次重试的主机数量</p>
+        :type RetryCount: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RetryCount = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        r"""<p>重试生成的新任务ID，用于后续查询任务状态</p>
+        :rtype: int
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RetryCount(self):
+        r"""<p>本次重试的主机数量</p>
+        :rtype: int
+        """
+        return self._RetryCount
+
+    @RetryCount.setter
+    def RetryCount(self, RetryCount):
+        self._RetryCount = RetryCount
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._RetryCount = params.get("RetryCount")
+        self._RequestId = params.get("RequestId")
+
+
+class CreateVulFixTaskRequest(AbstractModel):
+    r"""CreateVulFixTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FixItems: <p>修复项列表，每项指定一个漏洞/KB补丁及其需要修复的主机<br>入参限制：最多100项，总实例数不超过5000</p>
+        :type FixItems: list of VulFixItem
+        :param _Timeout: <p>最大修复时间<br>单位：秒<br>默认值：3600</p>
+        :type Timeout: int
+        :param _CreateSnapshot: <p>是否在修复前创建磁盘快照<br>默认值：false</p>
+        :type CreateSnapshot: bool
+        :param _SnapshotName: <p>快照名称，CreateSnapshot为true时有效<br>入参限制：最长128个字符</p>
+        :type SnapshotName: str
+        :param _SaveDays: <p>快照保存天数，CreateSnapshot为true时有效</p>
+        :type SaveDays: int
+        :param _MemberId: 集团账号的成员id
+        :type MemberId: list of str
+        """
+        self._FixItems = None
+        self._Timeout = None
+        self._CreateSnapshot = None
+        self._SnapshotName = None
+        self._SaveDays = None
+        self._MemberId = None
+
+    @property
+    def FixItems(self):
+        r"""<p>修复项列表，每项指定一个漏洞/KB补丁及其需要修复的主机<br>入参限制：最多100项，总实例数不超过5000</p>
+        :rtype: list of VulFixItem
+        """
+        return self._FixItems
+
+    @FixItems.setter
+    def FixItems(self, FixItems):
+        self._FixItems = FixItems
+
+    @property
+    def Timeout(self):
+        r"""<p>最大修复时间<br>单位：秒<br>默认值：3600</p>
+        :rtype: int
+        """
+        return self._Timeout
+
+    @Timeout.setter
+    def Timeout(self, Timeout):
+        self._Timeout = Timeout
+
+    @property
+    def CreateSnapshot(self):
+        r"""<p>是否在修复前创建磁盘快照<br>默认值：false</p>
+        :rtype: bool
+        """
+        return self._CreateSnapshot
+
+    @CreateSnapshot.setter
+    def CreateSnapshot(self, CreateSnapshot):
+        self._CreateSnapshot = CreateSnapshot
+
+    @property
+    def SnapshotName(self):
+        r"""<p>快照名称，CreateSnapshot为true时有效<br>入参限制：最长128个字符</p>
+        :rtype: str
+        """
+        return self._SnapshotName
+
+    @SnapshotName.setter
+    def SnapshotName(self, SnapshotName):
+        self._SnapshotName = SnapshotName
+
+    @property
+    def SaveDays(self):
+        r"""<p>快照保存天数，CreateSnapshot为true时有效</p>
+        :rtype: int
+        """
+        return self._SaveDays
+
+    @SaveDays.setter
+    def SaveDays(self, SaveDays):
+        self._SaveDays = SaveDays
+
+    @property
+    def MemberId(self):
+        r"""集团账号的成员id
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+
+    def _deserialize(self, params):
+        if params.get("FixItems") is not None:
+            self._FixItems = []
+            for item in params.get("FixItems"):
+                obj = VulFixItem()
+                obj._deserialize(item)
+                self._FixItems.append(obj)
+        self._Timeout = params.get("Timeout")
+        self._CreateSnapshot = params.get("CreateSnapshot")
+        self._SnapshotName = params.get("SnapshotName")
+        self._SaveDays = params.get("SaveDays")
+        self._MemberId = params.get("MemberId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateVulFixTaskResponse(AbstractModel):
+    r"""CreateVulFixTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: <p>修复任务ID，用于后续查询任务状态</p>
+        :type TaskId: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        r"""<p>修复任务ID，用于后续查询任务状态</p>
+        :rtype: int
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
+
+
+class CreateVulFixedExportJobRequest(AbstractModel):
+    r"""CreateVulFixedExportJob请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Filters: <p>过滤条件（与 DescribeVulFixedList 一致）<br>支持的Filter.Name：<br>Keyword - 模糊匹配，按关键字搜索（漏洞名称/CVE编号/主机名称/实例ID）<br>VulName - 模糊匹配，按漏洞名称搜索<br>Level - 精确匹配，按漏洞等级筛选：LOW-低危 MEDIUM-中危 HIGH-高危 CRITICAL-严重<br>VprLevel - 精确匹配，按VPR评级筛选：1-Low 2-Medium 3-High 4-Critical<br>VulCategory - 精确匹配，按漏洞类型筛选：LINUX-Linux软件漏洞 WINDOWS-Windows系统补丁漏洞 WEB_CMS-Web-CMS漏洞 APPLICATION-应用漏洞 EMERGENCY-应急漏洞<br>MachineName - 模糊匹配，按主机名称搜索<br>InstanceId - 模糊匹配，按实例ID搜索<br>FixTime - 范围匹配，修复时间范围，传入两个值表示起止时间</p>
+        :type Filters: list of Filters
+        :param _Order: <p>排序字段<br>枚举值：<br>FixTime：按修复时间排序<br>VulName：按漏洞名称排序</p>
+        :type Order: str
+        :param _By: <p>排序方式<br>枚举值：<br>asc：升序<br>desc：降序<br>默认值：desc</p>
+        :type By: str
+        :param _MemberId: 集团账号的成员id
+        :type MemberId: list of str
+        """
+        self._Filters = None
+        self._Order = None
+        self._By = None
+        self._MemberId = None
+
+    @property
+    def Filters(self):
+        r"""<p>过滤条件（与 DescribeVulFixedList 一致）<br>支持的Filter.Name：<br>Keyword - 模糊匹配，按关键字搜索（漏洞名称/CVE编号/主机名称/实例ID）<br>VulName - 模糊匹配，按漏洞名称搜索<br>Level - 精确匹配，按漏洞等级筛选：LOW-低危 MEDIUM-中危 HIGH-高危 CRITICAL-严重<br>VprLevel - 精确匹配，按VPR评级筛选：1-Low 2-Medium 3-High 4-Critical<br>VulCategory - 精确匹配，按漏洞类型筛选：LINUX-Linux软件漏洞 WINDOWS-Windows系统补丁漏洞 WEB_CMS-Web-CMS漏洞 APPLICATION-应用漏洞 EMERGENCY-应急漏洞<br>MachineName - 模糊匹配，按主机名称搜索<br>InstanceId - 模糊匹配，按实例ID搜索<br>FixTime - 范围匹配，修复时间范围，传入两个值表示起止时间</p>
+        :rtype: list of Filters
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Order(self):
+        r"""<p>排序字段<br>枚举值：<br>FixTime：按修复时间排序<br>VulName：按漏洞名称排序</p>
+        :rtype: str
+        """
+        return self._Order
+
+    @Order.setter
+    def Order(self, Order):
+        self._Order = Order
+
+    @property
+    def By(self):
+        r"""<p>排序方式<br>枚举值：<br>asc：升序<br>desc：降序<br>默认值：desc</p>
+        :rtype: str
+        """
+        return self._By
+
+    @By.setter
+    def By(self, By):
+        self._By = By
+
+    @property
+    def MemberId(self):
+        r"""集团账号的成员id
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+
+    def _deserialize(self, params):
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filters()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._Order = params.get("Order")
+        self._By = params.get("By")
+        self._MemberId = params.get("MemberId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateVulFixedExportJobResponse(AbstractModel):
+    r"""CreateVulFixedExportJob返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _JobID: <p>导出任务ID<br>取值参考：前端轮询导出任务状态时使用</p>
+        :type JobID: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._JobID = None
+        self._RequestId = None
+
+    @property
+    def JobID(self):
+        r"""<p>导出任务ID<br>取值参考：前端轮询导出任务状态时使用</p>
+        :rtype: str
+        """
+        return self._JobID
+
+    @JobID.setter
+    def JobID(self, JobID):
+        self._JobID = JobID
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._JobID = params.get("JobID")
+        self._RequestId = params.get("RequestId")
+
+
+class CreateVulReScanRequest(AbstractModel):
+    r"""CreateVulReScan请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VulId: <p>漏洞ID</p>
+        :type VulId: list of int non-negative
+        :param _KbNo: <p>补丁编号</p>
+        :type KbNo: list of str
+        :param _MemberId: <p>集团账号的成员id</p>
+        :type MemberId: list of str
+        :param _AssetList: <p>资产列表</p>
+        :type AssetList: list of str
+        """
+        self._VulId = None
+        self._KbNo = None
+        self._MemberId = None
+        self._AssetList = None
+
+    @property
+    def VulId(self):
+        r"""<p>漏洞ID</p>
+        :rtype: list of int non-negative
+        """
+        return self._VulId
+
+    @VulId.setter
+    def VulId(self, VulId):
+        self._VulId = VulId
+
+    @property
+    def KbNo(self):
+        r"""<p>补丁编号</p>
+        :rtype: list of str
+        """
+        return self._KbNo
+
+    @KbNo.setter
+    def KbNo(self, KbNo):
+        self._KbNo = KbNo
+
+    @property
+    def MemberId(self):
+        r"""<p>集团账号的成员id</p>
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+    @property
+    def AssetList(self):
+        r"""<p>资产列表</p>
+        :rtype: list of str
+        """
+        return self._AssetList
+
+    @AssetList.setter
+    def AssetList(self, AssetList):
+        self._AssetList = AssetList
+
+
+    def _deserialize(self, params):
+        self._VulId = params.get("VulId")
+        self._KbNo = params.get("KbNo")
+        self._MemberId = params.get("MemberId")
+        self._AssetList = params.get("AssetList")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateVulReScanResponse(AbstractModel):
+    r"""CreateVulReScan返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class CreateVulScanManualRequest(AbstractModel):
+    r"""CreateVulScanManual请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Timeout: <p>超时时间（秒）</p>
+        :type Timeout: int
+        :param _AssetRange: <p>资产范围（0-全部资产，1-自选资产，2-剔除资产，3-自动资产匹配）</p>
+        :type AssetRange: int
+        :param _Method: <p>扫描方式（VersionCompare: 版本对比, POC: POC检测, VersionComparePOC: 版本对比+POC检测）</p>
+        :type Method: list of str
+        :param _MemberId: <p>集团账号的成员id</p>
+        :type MemberId: list of str
+        :param _VulId: <p>漏洞id</p>
+        :type VulId: list of int non-negative
+        :param _KbNo: <p>kb编号</p>
+        :type KbNo: list of str
+        :param _VulCategory: <p>漏扫类型</p><p>枚举值：</p><ul><li>LINUX： Linux软件漏洞</li><li>WINDOWS： Windows系统补丁</li><li>WEB_CMS： Web-CMS漏洞</li><li>APPLICATION： 应用漏洞</li><li>EMERGENCY： 应急漏洞</li></ul>
+        :type VulCategory: list of str
+        :param _Level: <p>漏洞等级（INVALID: 无效, INFO: 提示, LOW: 低危, MEDIUM: 中危, HIGH: 高危, CRITICAL: 严重）</p>
+        :type Level: list of str
+        :param _AssetList: <p>资产列表（Quuid列表）</p>
+        :type AssetList: list of str
+        :param _TagIds: <p>标签id</p>
+        :type TagIds: list of int non-negative
+        """
+        self._Timeout = None
+        self._AssetRange = None
+        self._Method = None
+        self._MemberId = None
+        self._VulId = None
+        self._KbNo = None
+        self._VulCategory = None
+        self._Level = None
+        self._AssetList = None
+        self._TagIds = None
+
+    @property
+    def Timeout(self):
+        r"""<p>超时时间（秒）</p>
+        :rtype: int
+        """
+        return self._Timeout
+
+    @Timeout.setter
+    def Timeout(self, Timeout):
+        self._Timeout = Timeout
+
+    @property
+    def AssetRange(self):
+        r"""<p>资产范围（0-全部资产，1-自选资产，2-剔除资产，3-自动资产匹配）</p>
+        :rtype: int
+        """
+        return self._AssetRange
+
+    @AssetRange.setter
+    def AssetRange(self, AssetRange):
+        self._AssetRange = AssetRange
+
+    @property
+    def Method(self):
+        r"""<p>扫描方式（VersionCompare: 版本对比, POC: POC检测, VersionComparePOC: 版本对比+POC检测）</p>
+        :rtype: list of str
+        """
+        return self._Method
+
+    @Method.setter
+    def Method(self, Method):
+        self._Method = Method
+
+    @property
+    def MemberId(self):
+        r"""<p>集团账号的成员id</p>
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+    @property
+    def VulId(self):
+        r"""<p>漏洞id</p>
+        :rtype: list of int non-negative
+        """
+        return self._VulId
+
+    @VulId.setter
+    def VulId(self, VulId):
+        self._VulId = VulId
+
+    @property
+    def KbNo(self):
+        r"""<p>kb编号</p>
+        :rtype: list of str
+        """
+        return self._KbNo
+
+    @KbNo.setter
+    def KbNo(self, KbNo):
+        self._KbNo = KbNo
+
+    @property
+    def VulCategory(self):
+        r"""<p>漏扫类型</p><p>枚举值：</p><ul><li>LINUX： Linux软件漏洞</li><li>WINDOWS： Windows系统补丁</li><li>WEB_CMS： Web-CMS漏洞</li><li>APPLICATION： 应用漏洞</li><li>EMERGENCY： 应急漏洞</li></ul>
+        :rtype: list of str
+        """
+        return self._VulCategory
+
+    @VulCategory.setter
+    def VulCategory(self, VulCategory):
+        self._VulCategory = VulCategory
+
+    @property
+    def Level(self):
+        r"""<p>漏洞等级（INVALID: 无效, INFO: 提示, LOW: 低危, MEDIUM: 中危, HIGH: 高危, CRITICAL: 严重）</p>
+        :rtype: list of str
+        """
+        return self._Level
+
+    @Level.setter
+    def Level(self, Level):
+        self._Level = Level
+
+    @property
+    def AssetList(self):
+        r"""<p>资产列表（Quuid列表）</p>
+        :rtype: list of str
+        """
+        return self._AssetList
+
+    @AssetList.setter
+    def AssetList(self, AssetList):
+        self._AssetList = AssetList
+
+    @property
+    def TagIds(self):
+        r"""<p>标签id</p>
+        :rtype: list of int non-negative
+        """
+        return self._TagIds
+
+    @TagIds.setter
+    def TagIds(self, TagIds):
+        self._TagIds = TagIds
+
+
+    def _deserialize(self, params):
+        self._Timeout = params.get("Timeout")
+        self._AssetRange = params.get("AssetRange")
+        self._Method = params.get("Method")
+        self._MemberId = params.get("MemberId")
+        self._VulId = params.get("VulId")
+        self._KbNo = params.get("KbNo")
+        self._VulCategory = params.get("VulCategory")
+        self._Level = params.get("Level")
+        self._AssetList = params.get("AssetList")
+        self._TagIds = params.get("TagIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateVulScanManualResponse(AbstractModel):
+    r"""CreateVulScanManual返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: <p>任务id</p>
+        :type TaskId: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        r"""<p>任务id</p>
+        :rtype: int
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
         self._RequestId = params.get("RequestId")
 
 
@@ -23562,6 +24682,85 @@ class DeleteRiskScanTaskRequest(AbstractModel):
 
 class DeleteRiskScanTaskResponse(AbstractModel):
     r"""DeleteRiskScanTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteVulWhitelistRequest(AbstractModel):
+    r"""DeleteVulWhitelist请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: <p>id列表</p>
+        :type Id: list of int non-negative
+        :param _MemberId: <p>集团账号的成员id</p>
+        :type MemberId: list of str
+        """
+        self._Id = None
+        self._MemberId = None
+
+    @property
+    def Id(self):
+        r"""<p>id列表</p>
+        :rtype: list of int non-negative
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def MemberId(self):
+        r"""<p>集团账号的成员id</p>
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._MemberId = params.get("MemberId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteVulWhitelistResponse(AbstractModel):
+    r"""DeleteVulWhitelist返回参数结构体
 
     """
 
@@ -41989,6 +43188,561 @@ class DescribeHighBaseLineRiskListResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeHostKBRiskListRequest(AbstractModel):
+    r"""DescribeHostKBRiskList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MemberId: <p>集团账号的成员id</p>
+        :type MemberId: list of str
+        :param _Filters: <p>筛选条件数组，多条件之间为 AND 关系<br>支持的 Filter.Name：<br>Keyword：关键字模糊搜索（对 KB 编号/名称模糊匹配）<br>RiskStatus：修复状态<br>InstanceID：实例ID<br>NewestKB: 最新补丁(0/1)</p>
+        :type Filters: list of Filters
+        :param _Limit: <p>每页返回数量<br>取值范围：[1, 100]<br>默认值：10</p>
+        :type Limit: int
+        :param _Offset: <p>分页偏移量<br>取值范围：[0, +∞)<br>默认值：0</p>
+        :type Offset: int
+        :param _Order: <p>排序方向<br>枚举值：<br>ASC：升序<br>DESC：降序<br>默认值：DESC</p>
+        :type Order: str
+        :param _By: <p>排序字段<br>枚举值：<br>LatestScanTime：最近扫描时间<br>默认值：LatestScanTime</p>
+        :type By: str
+        """
+        self._MemberId = None
+        self._Filters = None
+        self._Limit = None
+        self._Offset = None
+        self._Order = None
+        self._By = None
+
+    @property
+    def MemberId(self):
+        r"""<p>集团账号的成员id</p>
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+    @property
+    def Filters(self):
+        r"""<p>筛选条件数组，多条件之间为 AND 关系<br>支持的 Filter.Name：<br>Keyword：关键字模糊搜索（对 KB 编号/名称模糊匹配）<br>RiskStatus：修复状态<br>InstanceID：实例ID<br>NewestKB: 最新补丁(0/1)</p>
+        :rtype: list of Filters
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Limit(self):
+        r"""<p>每页返回数量<br>取值范围：[1, 100]<br>默认值：10</p>
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        r"""<p>分页偏移量<br>取值范围：[0, +∞)<br>默认值：0</p>
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Order(self):
+        r"""<p>排序方向<br>枚举值：<br>ASC：升序<br>DESC：降序<br>默认值：DESC</p>
+        :rtype: str
+        """
+        return self._Order
+
+    @Order.setter
+    def Order(self, Order):
+        self._Order = Order
+
+    @property
+    def By(self):
+        r"""<p>排序字段<br>枚举值：<br>LatestScanTime：最近扫描时间<br>默认值：LatestScanTime</p>
+        :rtype: str
+        """
+        return self._By
+
+    @By.setter
+    def By(self, By):
+        self._By = By
+
+
+    def _deserialize(self, params):
+        self._MemberId = params.get("MemberId")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filters()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        self._Order = params.get("Order")
+        self._By = params.get("By")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeHostKBRiskListResponse(AbstractModel):
+    r"""DescribeHostKBRiskList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _List: <p>主机 KB 补丁风险列表</p>
+        :type List: list of HostKBRisk
+        :param _TotalCount: <p>凭据总数</p>
+        :type TotalCount: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._List = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def List(self):
+        r"""<p>主机 KB 补丁风险列表</p>
+        :rtype: list of HostKBRisk
+        """
+        return self._List
+
+    @List.setter
+    def List(self, List):
+        self._List = List
+
+    @property
+    def TotalCount(self):
+        r"""<p>凭据总数</p>
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("List") is not None:
+            self._List = []
+            for item in params.get("List"):
+                obj = HostKBRisk()
+                obj._deserialize(item)
+                self._List.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeHostVulItemVPRInfoRequest(AbstractModel):
+    r"""DescribeHostVulItemVPRInfo请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MemberId: <p>集团账号的成员id</p>
+        :type MemberId: list of str
+        :param _VulID: <p>漏洞ID</p>
+        :type VulID: int
+        """
+        self._MemberId = None
+        self._VulID = None
+
+    @property
+    def MemberId(self):
+        r"""<p>集团账号的成员id</p>
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+    @property
+    def VulID(self):
+        r"""<p>漏洞ID</p>
+        :rtype: int
+        """
+        return self._VulID
+
+    @VulID.setter
+    def VulID(self, VulID):
+        self._VulID = VulID
+
+
+    def _deserialize(self, params):
+        self._MemberId = params.get("MemberId")
+        self._VulID = params.get("VulID")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeHostVulItemVPRInfoResponse(AbstractModel):
+    r"""DescribeHostVulItemVPRInfo返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Label: <p>VPR Label</p>
+        :type Label: list of VPRLabel
+        :param _VRPRatingInfo: <p>VPR评级过程和结果</p>
+        :type VRPRatingInfo: :class:`tencentcloud.csip.v20221121.models.VPRRatingInfo`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Label = None
+        self._VRPRatingInfo = None
+        self._RequestId = None
+
+    @property
+    def Label(self):
+        r"""<p>VPR Label</p>
+        :rtype: list of VPRLabel
+        """
+        return self._Label
+
+    @Label.setter
+    def Label(self, Label):
+        self._Label = Label
+
+    @property
+    def VRPRatingInfo(self):
+        r"""<p>VPR评级过程和结果</p>
+        :rtype: :class:`tencentcloud.csip.v20221121.models.VPRRatingInfo`
+        """
+        return self._VRPRatingInfo
+
+    @VRPRatingInfo.setter
+    def VRPRatingInfo(self, VRPRatingInfo):
+        self._VRPRatingInfo = VRPRatingInfo
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Label") is not None:
+            self._Label = []
+            for item in params.get("Label"):
+                obj = VPRLabel()
+                obj._deserialize(item)
+                self._Label.append(obj)
+        if params.get("VRPRatingInfo") is not None:
+            self._VRPRatingInfo = VPRRatingInfo()
+            self._VRPRatingInfo._deserialize(params.get("VRPRatingInfo"))
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeHostVulOverviewRequest(AbstractModel):
+    r"""DescribeHostVulOverview请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MemberId: <p>集团账号的成员id</p>
+        :type MemberId: list of str
+        """
+        self._MemberId = None
+
+    @property
+    def MemberId(self):
+        r"""<p>集团账号的成员id</p>
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+
+    def _deserialize(self, params):
+        self._MemberId = params.get("MemberId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeHostVulOverviewResponse(AbstractModel):
+    r"""DescribeHostVulOverview返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Overview: <p>主机漏洞概览数据</p>
+        :type Overview: :class:`tencentcloud.csip.v20221121.models.HostVulOverview`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Overview = None
+        self._RequestId = None
+
+    @property
+    def Overview(self):
+        r"""<p>主机漏洞概览数据</p>
+        :rtype: :class:`tencentcloud.csip.v20221121.models.HostVulOverview`
+        """
+        return self._Overview
+
+    @Overview.setter
+    def Overview(self, Overview):
+        self._Overview = Overview
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Overview") is not None:
+            self._Overview = HostVulOverview()
+            self._Overview._deserialize(params.get("Overview"))
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeHostVulRiskListRequest(AbstractModel):
+    r"""DescribeHostVulRiskList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MemberId: <p>集团账号的成员id</p>
+        :type MemberId: list of str
+        :param _Filters: <p>筛选条件数组，多条件之间为 AND 关系<br>支持的 Filter.Name：<br>CVSSLevel：CVSS level过滤<br>Keyword：关键字模糊搜索（多词使用｜分隔，对漏洞名/CVEID 模糊匹配）<br>Category：漏洞分类（LINUX/WEB_CMS/APPLICATION/EMERGENCY）<br>VPRLevel：VPR 评级<br>RiskStatus：修复状态<br>Label：VPR风险标签<br>InstanceID：实例ID<br>CheckMethod：检测方法</p>
+        :type Filters: list of Filters
+        :param _Limit: <p>每页返回数量<br>取值范围：[1, 100]<br>默认值：10</p>
+        :type Limit: int
+        :param _Offset: <p>分页偏移量<br>取值范围：[0, +∞)<br>默认值：0</p>
+        :type Offset: int
+        :param _Order: <p>排序方向<br>枚举值：<br>ASC：升序<br>DESC：降序<br>默认值：DESC</p>
+        :type Order: str
+        :param _By: <p>排序字段<br>枚举值：<br>LatestScanTime：最近扫描时间<br>默认值：LatestScanTime</p>
+        :type By: str
+        """
+        self._MemberId = None
+        self._Filters = None
+        self._Limit = None
+        self._Offset = None
+        self._Order = None
+        self._By = None
+
+    @property
+    def MemberId(self):
+        r"""<p>集团账号的成员id</p>
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+    @property
+    def Filters(self):
+        r"""<p>筛选条件数组，多条件之间为 AND 关系<br>支持的 Filter.Name：<br>CVSSLevel：CVSS level过滤<br>Keyword：关键字模糊搜索（多词使用｜分隔，对漏洞名/CVEID 模糊匹配）<br>Category：漏洞分类（LINUX/WEB_CMS/APPLICATION/EMERGENCY）<br>VPRLevel：VPR 评级<br>RiskStatus：修复状态<br>Label：VPR风险标签<br>InstanceID：实例ID<br>CheckMethod：检测方法</p>
+        :rtype: list of Filters
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Limit(self):
+        r"""<p>每页返回数量<br>取值范围：[1, 100]<br>默认值：10</p>
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        r"""<p>分页偏移量<br>取值范围：[0, +∞)<br>默认值：0</p>
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Order(self):
+        r"""<p>排序方向<br>枚举值：<br>ASC：升序<br>DESC：降序<br>默认值：DESC</p>
+        :rtype: str
+        """
+        return self._Order
+
+    @Order.setter
+    def Order(self, Order):
+        self._Order = Order
+
+    @property
+    def By(self):
+        r"""<p>排序字段<br>枚举值：<br>LatestScanTime：最近扫描时间<br>默认值：LatestScanTime</p>
+        :rtype: str
+        """
+        return self._By
+
+    @By.setter
+    def By(self, By):
+        self._By = By
+
+
+    def _deserialize(self, params):
+        self._MemberId = params.get("MemberId")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filters()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        self._Order = params.get("Order")
+        self._By = params.get("By")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeHostVulRiskListResponse(AbstractModel):
+    r"""DescribeHostVulRiskList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _List: <p>主机漏洞风险列表（按漏洞维度聚合）</p>
+        :type List: list of HostVulRisk
+        :param _TotalCount: <p>凭据总数</p>
+        :type TotalCount: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._List = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def List(self):
+        r"""<p>主机漏洞风险列表（按漏洞维度聚合）</p>
+        :rtype: list of HostVulRisk
+        """
+        return self._List
+
+    @List.setter
+    def List(self, List):
+        self._List = List
+
+    @property
+    def TotalCount(self):
+        r"""<p>凭据总数</p>
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("List") is not None:
+            self._List = []
+            for item in params.get("List"):
+                obj = HostVulRisk()
+                obj._deserialize(item)
+                self._List.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeIaCFileListRequest(AbstractModel):
     r"""DescribeIaCFileList请求参数结构体
 
@@ -42663,6 +44417,301 @@ class DescribeIpInvokeRecordResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeKBDetailRequest(AbstractModel):
+    r"""DescribeKBDetail请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _KBID: KB 补丁内部 ID（kb_info.id）
+        :type KBID: int
+        """
+        self._KBID = None
+
+    @property
+    def KBID(self):
+        r"""KB 补丁内部 ID（kb_info.id）
+        :rtype: int
+        """
+        return self._KBID
+
+    @KBID.setter
+    def KBID(self, KBID):
+        self._KBID = KBID
+
+
+    def _deserialize(self, params):
+        self._KBID = params.get("KBID")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeKBDetailResponse(AbstractModel):
+    r"""DescribeKBDetail返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _KBDetail: Windows KB 补丁详细信息
+        :type KBDetail: :class:`tencentcloud.csip.v20221121.models.KBDetail`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._KBDetail = None
+        self._RequestId = None
+
+    @property
+    def KBDetail(self):
+        r"""Windows KB 补丁详细信息
+        :rtype: :class:`tencentcloud.csip.v20221121.models.KBDetail`
+        """
+        return self._KBDetail
+
+    @KBDetail.setter
+    def KBDetail(self, KBDetail):
+        self._KBDetail = KBDetail
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("KBDetail") is not None:
+            self._KBDetail = KBDetail()
+            self._KBDetail._deserialize(params.get("KBDetail"))
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeKBUpdatableMachineListRequest(AbstractModel):
+    r"""DescribeKBUpdatableMachineList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _KBIds: <p>KB补丁ID列表，最多支持100个</p>
+        :type KBIds: list of int
+        :param _Offset: <p>分页偏移量<br>取值范围：[0, +∞)<br>默认值：0</p>
+        :type Offset: int
+        :param _Limit: <p>每页返回数量<br>取值范围：[1, 100]<br>默认值：10</p>
+        :type Limit: int
+        :param _Filters: <p>过滤条件<br>支持的Filter.Name：<br>InstanceId - 精确匹配，按主机实例ID筛选<br>MachineName - 模糊匹配，按主机名称搜索<br>MachineIp - 模糊匹配，按主机IP搜索<br>SupportAutoFix - 精确匹配，按是否支持自动修复筛选：0-不支持 1-支持</p>
+        :type Filters: list of Filters
+        :param _MemberId: 集团账号的成员id
+        :type MemberId: list of str
+        """
+        self._KBIds = None
+        self._Offset = None
+        self._Limit = None
+        self._Filters = None
+        self._MemberId = None
+
+    @property
+    def KBIds(self):
+        r"""<p>KB补丁ID列表，最多支持100个</p>
+        :rtype: list of int
+        """
+        return self._KBIds
+
+    @KBIds.setter
+    def KBIds(self, KBIds):
+        self._KBIds = KBIds
+
+    @property
+    def Offset(self):
+        r"""<p>分页偏移量<br>取值范围：[0, +∞)<br>默认值：0</p>
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        r"""<p>每页返回数量<br>取值范围：[1, 100]<br>默认值：10</p>
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Filters(self):
+        r"""<p>过滤条件<br>支持的Filter.Name：<br>InstanceId - 精确匹配，按主机实例ID筛选<br>MachineName - 模糊匹配，按主机名称搜索<br>MachineIp - 模糊匹配，按主机IP搜索<br>SupportAutoFix - 精确匹配，按是否支持自动修复筛选：0-不支持 1-支持</p>
+        :rtype: list of Filters
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def MemberId(self):
+        r"""集团账号的成员id
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+
+    def _deserialize(self, params):
+        self._KBIds = params.get("KBIds")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filters()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._MemberId = params.get("MemberId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeKBUpdatableMachineListResponse(AbstractModel):
+    r"""DescribeKBUpdatableMachineList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: <p>可更新补丁主机列表</p>
+        :type Data: list of KBUpdateMachineItem
+        :param _TotalCount: <p>总数量</p>
+        :type TotalCount: int
+        :param _FixableCount: <p>可一键修复的主机数量</p>
+        :type FixableCount: int
+        :param _NotFixableCount: <p>不可一键修复的主机数量</p>
+        :type NotFixableCount: int
+        :param _KBSummary: <p>KB补丁维度汇总信息，展示被修复的补丁列表概要</p>
+        :type KBSummary: list of KBFixSummaryItem
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._TotalCount = None
+        self._FixableCount = None
+        self._NotFixableCount = None
+        self._KBSummary = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""<p>可更新补丁主机列表</p>
+        :rtype: list of KBUpdateMachineItem
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def TotalCount(self):
+        r"""<p>总数量</p>
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def FixableCount(self):
+        r"""<p>可一键修复的主机数量</p>
+        :rtype: int
+        """
+        return self._FixableCount
+
+    @FixableCount.setter
+    def FixableCount(self, FixableCount):
+        self._FixableCount = FixableCount
+
+    @property
+    def NotFixableCount(self):
+        r"""<p>不可一键修复的主机数量</p>
+        :rtype: int
+        """
+        return self._NotFixableCount
+
+    @NotFixableCount.setter
+    def NotFixableCount(self, NotFixableCount):
+        self._NotFixableCount = NotFixableCount
+
+    @property
+    def KBSummary(self):
+        r"""<p>KB补丁维度汇总信息，展示被修复的补丁列表概要</p>
+        :rtype: list of KBFixSummaryItem
+        """
+        return self._KBSummary
+
+    @KBSummary.setter
+    def KBSummary(self, KBSummary):
+        self._KBSummary = KBSummary
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = []
+            for item in params.get("Data"):
+                obj = KBUpdateMachineItem()
+                obj._deserialize(item)
+                self._Data.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._FixableCount = params.get("FixableCount")
+        self._NotFixableCount = params.get("NotFixableCount")
+        if params.get("KBSummary") is not None:
+            self._KBSummary = []
+            for item in params.get("KBSummary"):
+                obj = KBFixSummaryItem()
+                obj._deserialize(item)
+                self._KBSummary.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -50667,6 +52716,1760 @@ class DescribeVpcAssetsResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeVulComponentRelateHostRequest(AbstractModel):
+    r"""DescribeVulComponentRelateHost请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VulID: <p>漏洞 ID（vul_vuls.id）</p>
+        :type VulID: int
+        :param _Name: <p>组件名称</p>
+        :type Name: str
+        :param _MemberId: <p>集团账号的成员id</p>
+        :type MemberId: list of str
+        :param _Filters: <p>筛选条件数组，多条件之间为 AND 关系<br>支持的 Filter.Name：<br>Keyword：关键字模糊搜索（对主机名/IP/InstanceID 模糊匹配）</p>
+        :type Filters: list of Filters
+        :param _Limit: <p>每页返回数量<br>取值范围：[1, 100]<br>默认值：10</p>
+        :type Limit: int
+        :param _Offset: <p>分页偏移量<br>取值范围：[0, +∞)<br>默认值：0</p>
+        :type Offset: int
+        """
+        self._VulID = None
+        self._Name = None
+        self._MemberId = None
+        self._Filters = None
+        self._Limit = None
+        self._Offset = None
+
+    @property
+    def VulID(self):
+        r"""<p>漏洞 ID（vul_vuls.id）</p>
+        :rtype: int
+        """
+        return self._VulID
+
+    @VulID.setter
+    def VulID(self, VulID):
+        self._VulID = VulID
+
+    @property
+    def Name(self):
+        r"""<p>组件名称</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def MemberId(self):
+        r"""<p>集团账号的成员id</p>
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+    @property
+    def Filters(self):
+        r"""<p>筛选条件数组，多条件之间为 AND 关系<br>支持的 Filter.Name：<br>Keyword：关键字模糊搜索（对主机名/IP/InstanceID 模糊匹配）</p>
+        :rtype: list of Filters
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Limit(self):
+        r"""<p>每页返回数量<br>取值范围：[1, 100]<br>默认值：10</p>
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        r"""<p>分页偏移量<br>取值范围：[0, +∞)<br>默认值：0</p>
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+
+    def _deserialize(self, params):
+        self._VulID = params.get("VulID")
+        self._Name = params.get("Name")
+        self._MemberId = params.get("MemberId")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filters()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeVulComponentRelateHostResponse(AbstractModel):
+    r"""DescribeVulComponentRelateHost返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _List: <p>受该组件影响的主机列表</p>
+        :type List: list of HostVulComponent
+        :param _TotalCount: <p>凭据总数</p>
+        :type TotalCount: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._List = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def List(self):
+        r"""<p>受该组件影响的主机列表</p>
+        :rtype: list of HostVulComponent
+        """
+        return self._List
+
+    @List.setter
+    def List(self, List):
+        self._List = List
+
+    @property
+    def TotalCount(self):
+        r"""<p>凭据总数</p>
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("List") is not None:
+            self._List = []
+            for item in params.get("List"):
+                obj = HostVulComponent()
+                obj._deserialize(item)
+                self._List.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeVulFixTaskDetailRequest(AbstractModel):
+    r"""DescribeVulFixTaskDetail请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: <p>修复任务ID</p>
+        :type TaskId: int
+        :param _Offset: <p>分页偏移量<br>取值范围：[0, +∞)<br>默认值：0</p>
+        :type Offset: int
+        :param _Limit: <p>每页返回数量<br>取值范围：[1, 100]<br>默认值：10</p>
+        :type Limit: int
+        :param _Filters: <p>过滤条件<br>支持的Filter.Name：<br>InstanceId - 精确匹配，按主机实例ID筛选<br>VulId - 精确匹配，按漏洞ID筛选，过滤出某个漏洞下的主机<br>KBId - 精确匹配，按KB补丁ID筛选，过滤出某个KB补丁下的主机<br>Status - 精确匹配，按执行状态筛选：0-初始状态 1-已下发 11-客户端已确认 2-修复完成 3-客户端离线 4-超时 5-失败 6-不支持 9-等待快照创建完成中 10-快照创建失败<br>FixStatus - 精确匹配，按修复结果筛选：0-初始状态 1-修复成功 2-修复失败<br>SnapshotStatus - 精确匹配，按快照状态筛选：-1-无需创建快照 0-未开始 1-进行中 2-已完成 3-创建失败</p>
+        :type Filters: list of Filters
+        :param _Order: <p>排序字段<br>枚举值：<br>StartTime：按修复启动时间排序<br>EndTime：按修复结束时间排序</p>
+        :type Order: str
+        :param _By: <p>排序方式<br>枚举值：<br>asc：升序<br>desc：降序<br>默认值：desc</p>
+        :type By: str
+        :param _MemberId: 集团账号的成员id
+        :type MemberId: list of str
+        """
+        self._TaskId = None
+        self._Offset = None
+        self._Limit = None
+        self._Filters = None
+        self._Order = None
+        self._By = None
+        self._MemberId = None
+
+    @property
+    def TaskId(self):
+        r"""<p>修复任务ID</p>
+        :rtype: int
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def Offset(self):
+        r"""<p>分页偏移量<br>取值范围：[0, +∞)<br>默认值：0</p>
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        r"""<p>每页返回数量<br>取值范围：[1, 100]<br>默认值：10</p>
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Filters(self):
+        r"""<p>过滤条件<br>支持的Filter.Name：<br>InstanceId - 精确匹配，按主机实例ID筛选<br>VulId - 精确匹配，按漏洞ID筛选，过滤出某个漏洞下的主机<br>KBId - 精确匹配，按KB补丁ID筛选，过滤出某个KB补丁下的主机<br>Status - 精确匹配，按执行状态筛选：0-初始状态 1-已下发 11-客户端已确认 2-修复完成 3-客户端离线 4-超时 5-失败 6-不支持 9-等待快照创建完成中 10-快照创建失败<br>FixStatus - 精确匹配，按修复结果筛选：0-初始状态 1-修复成功 2-修复失败<br>SnapshotStatus - 精确匹配，按快照状态筛选：-1-无需创建快照 0-未开始 1-进行中 2-已完成 3-创建失败</p>
+        :rtype: list of Filters
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Order(self):
+        r"""<p>排序字段<br>枚举值：<br>StartTime：按修复启动时间排序<br>EndTime：按修复结束时间排序</p>
+        :rtype: str
+        """
+        return self._Order
+
+    @Order.setter
+    def Order(self, Order):
+        self._Order = Order
+
+    @property
+    def By(self):
+        r"""<p>排序方式<br>枚举值：<br>asc：升序<br>desc：降序<br>默认值：desc</p>
+        :rtype: str
+        """
+        return self._By
+
+    @By.setter
+    def By(self, By):
+        self._By = By
+
+    @property
+    def MemberId(self):
+        r"""集团账号的成员id
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filters()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._Order = params.get("Order")
+        self._By = params.get("By")
+        self._MemberId = params.get("MemberId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeVulFixTaskDetailResponse(AbstractModel):
+    r"""DescribeVulFixTaskDetail返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: <p>任务明细列表</p>
+        :type Data: list of VulFixTaskDetailItem
+        :param _TotalCount: <p>总数量</p>
+        :type TotalCount: int
+        :param _TaskInfo: <p>任务概要信息</p>
+        :type TaskInfo: :class:`tencentcloud.csip.v20221121.models.VulFixTaskInfo`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._TotalCount = None
+        self._TaskInfo = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""<p>任务明细列表</p>
+        :rtype: list of VulFixTaskDetailItem
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def TotalCount(self):
+        r"""<p>总数量</p>
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def TaskInfo(self):
+        r"""<p>任务概要信息</p>
+        :rtype: :class:`tencentcloud.csip.v20221121.models.VulFixTaskInfo`
+        """
+        return self._TaskInfo
+
+    @TaskInfo.setter
+    def TaskInfo(self, TaskInfo):
+        self._TaskInfo = TaskInfo
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = []
+            for item in params.get("Data"):
+                obj = VulFixTaskDetailItem()
+                obj._deserialize(item)
+                self._Data.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        if params.get("TaskInfo") is not None:
+            self._TaskInfo = VulFixTaskInfo()
+            self._TaskInfo._deserialize(params.get("TaskInfo"))
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeVulFixTaskListRequest(AbstractModel):
+    r"""DescribeVulFixTaskList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Offset: <p>分页偏移量<br>取值范围：[0, +∞)<br>默认值：0</p>
+        :type Offset: int
+        :param _Limit: <p>每页返回数量<br>取值范围：[1, 100]<br>默认值：10</p>
+        :type Limit: int
+        :param _Filters: <p>过滤条件<br>支持的Filter.Name：<br>TaskId - 精确匹配，按任务ID筛选<br>JobId - 精确匹配，按任务JobId筛选，对应后台任务系统的任务ID<br>FixStatus - 精确匹配，按修复状态筛选：0-初始化 1-修复中 2-修复成功 3-部分修复失败 4-全部修复失败 5-停止修复<br>StartTime - 范围匹配，修复启动时间范围，传入两个值表示起止时间<br>AppId - 精确匹配，按创建者AppId筛选<br>VulCategory - 精确匹配，按漏洞类型筛选：LINUX-Linux软件漏洞 WINDOWS-Windows系统补丁漏洞 WEB_CMS-Web-CMS漏洞 APPLICATION-应用漏洞 EMERGENCY-应急漏洞<br>TaskName - 模糊匹配，按漏洞名称/CVE编号/KB补丁名称筛选，匹配任务关联的漏洞或KB补丁</p>
+        :type Filters: list of Filters
+        :param _Order: <p>排序字段<br>枚举值：<br>StartTime：按修复启动时间排序<br>EndTime：按修复结束时间排序<br>CreateTime：按创建时间排序</p>
+        :type Order: str
+        :param _By: <p>排序方式<br>枚举值：<br>asc：升序<br>desc：降序<br>默认值：desc</p>
+        :type By: str
+        :param _MemberId: 集团账号的成员id
+        :type MemberId: list of str
+        """
+        self._Offset = None
+        self._Limit = None
+        self._Filters = None
+        self._Order = None
+        self._By = None
+        self._MemberId = None
+
+    @property
+    def Offset(self):
+        r"""<p>分页偏移量<br>取值范围：[0, +∞)<br>默认值：0</p>
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        r"""<p>每页返回数量<br>取值范围：[1, 100]<br>默认值：10</p>
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Filters(self):
+        r"""<p>过滤条件<br>支持的Filter.Name：<br>TaskId - 精确匹配，按任务ID筛选<br>JobId - 精确匹配，按任务JobId筛选，对应后台任务系统的任务ID<br>FixStatus - 精确匹配，按修复状态筛选：0-初始化 1-修复中 2-修复成功 3-部分修复失败 4-全部修复失败 5-停止修复<br>StartTime - 范围匹配，修复启动时间范围，传入两个值表示起止时间<br>AppId - 精确匹配，按创建者AppId筛选<br>VulCategory - 精确匹配，按漏洞类型筛选：LINUX-Linux软件漏洞 WINDOWS-Windows系统补丁漏洞 WEB_CMS-Web-CMS漏洞 APPLICATION-应用漏洞 EMERGENCY-应急漏洞<br>TaskName - 模糊匹配，按漏洞名称/CVE编号/KB补丁名称筛选，匹配任务关联的漏洞或KB补丁</p>
+        :rtype: list of Filters
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Order(self):
+        r"""<p>排序字段<br>枚举值：<br>StartTime：按修复启动时间排序<br>EndTime：按修复结束时间排序<br>CreateTime：按创建时间排序</p>
+        :rtype: str
+        """
+        return self._Order
+
+    @Order.setter
+    def Order(self, Order):
+        self._Order = Order
+
+    @property
+    def By(self):
+        r"""<p>排序方式<br>枚举值：<br>asc：升序<br>desc：降序<br>默认值：desc</p>
+        :rtype: str
+        """
+        return self._By
+
+    @By.setter
+    def By(self, By):
+        self._By = By
+
+    @property
+    def MemberId(self):
+        r"""集团账号的成员id
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+
+    def _deserialize(self, params):
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filters()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._Order = params.get("Order")
+        self._By = params.get("By")
+        self._MemberId = params.get("MemberId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeVulFixTaskListResponse(AbstractModel):
+    r"""DescribeVulFixTaskList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: <p>修复任务列表</p>
+        :type Data: list of VulFixTaskItem
+        :param _TotalCount: <p>总数量</p>
+        :type TotalCount: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""<p>修复任务列表</p>
+        :rtype: list of VulFixTaskItem
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def TotalCount(self):
+        r"""<p>总数量</p>
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = []
+            for item in params.get("Data"):
+                obj = VulFixTaskItem()
+                obj._deserialize(item)
+                self._Data.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeVulFixableMachineListRequest(AbstractModel):
+    r"""DescribeVulFixableMachineList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VulIds: <p>漏洞ID列表，最多支持100个</p>
+        :type VulIds: list of int
+        :param _Offset: <p>分页偏移量<br>取值范围：[0, +∞)<br>默认值：0</p>
+        :type Offset: int
+        :param _Limit: <p>每页返回数量<br>取值范围：[1, 100]<br>默认值：10</p>
+        :type Limit: int
+        :param _Filters: <p>过滤条件<br>支持的Filter.Name：<br>Keyword - 模糊匹配，按资产ID、资产名称搜索<br>ComponentName - 模糊匹配，按关联组件名称搜索<br>InstanceId - 精确匹配，按主机实例ID筛选<br>MachineName - 模糊匹配，按主机名称搜索<br>MachineIp - 模糊匹配，按主机IP搜索<br>OsType - 精确匹配，按操作系统类型筛选：linux/windows<br>SupportAutoFix - 精确匹配，按是否支持自动修复筛选：0-不支持 1-支持<br>Tag - 精确匹配，按资产标签筛选<br>AppId - 精确匹配，按所属账号筛选</p>
+        :type Filters: list of Filters
+        :param _MemberId: 集团账号的成员id
+        :type MemberId: list of str
+        """
+        self._VulIds = None
+        self._Offset = None
+        self._Limit = None
+        self._Filters = None
+        self._MemberId = None
+
+    @property
+    def VulIds(self):
+        r"""<p>漏洞ID列表，最多支持100个</p>
+        :rtype: list of int
+        """
+        return self._VulIds
+
+    @VulIds.setter
+    def VulIds(self, VulIds):
+        self._VulIds = VulIds
+
+    @property
+    def Offset(self):
+        r"""<p>分页偏移量<br>取值范围：[0, +∞)<br>默认值：0</p>
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        r"""<p>每页返回数量<br>取值范围：[1, 100]<br>默认值：10</p>
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Filters(self):
+        r"""<p>过滤条件<br>支持的Filter.Name：<br>Keyword - 模糊匹配，按资产ID、资产名称搜索<br>ComponentName - 模糊匹配，按关联组件名称搜索<br>InstanceId - 精确匹配，按主机实例ID筛选<br>MachineName - 模糊匹配，按主机名称搜索<br>MachineIp - 模糊匹配，按主机IP搜索<br>OsType - 精确匹配，按操作系统类型筛选：linux/windows<br>SupportAutoFix - 精确匹配，按是否支持自动修复筛选：0-不支持 1-支持<br>Tag - 精确匹配，按资产标签筛选<br>AppId - 精确匹配，按所属账号筛选</p>
+        :rtype: list of Filters
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def MemberId(self):
+        r"""集团账号的成员id
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+
+    def _deserialize(self, params):
+        self._VulIds = params.get("VulIds")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filters()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._MemberId = params.get("MemberId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeVulFixableMachineListResponse(AbstractModel):
+    r"""DescribeVulFixableMachineList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: <p>可修复主机列表</p>
+        :type Data: list of VulFixableMachineItem
+        :param _TotalCount: <p>总数量</p>
+        :type TotalCount: int
+        :param _FixableCount: <p>可一键修复的主机数量</p>
+        :type FixableCount: int
+        :param _NotFixableCount: <p>不可一键修复的主机数量</p>
+        :type NotFixableCount: int
+        :param _VulSummary: <p>漏洞维度汇总信息，展示被修复的漏洞列表概要</p>
+        :type VulSummary: list of VulFixSummaryItem
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._TotalCount = None
+        self._FixableCount = None
+        self._NotFixableCount = None
+        self._VulSummary = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""<p>可修复主机列表</p>
+        :rtype: list of VulFixableMachineItem
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def TotalCount(self):
+        r"""<p>总数量</p>
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def FixableCount(self):
+        r"""<p>可一键修复的主机数量</p>
+        :rtype: int
+        """
+        return self._FixableCount
+
+    @FixableCount.setter
+    def FixableCount(self, FixableCount):
+        self._FixableCount = FixableCount
+
+    @property
+    def NotFixableCount(self):
+        r"""<p>不可一键修复的主机数量</p>
+        :rtype: int
+        """
+        return self._NotFixableCount
+
+    @NotFixableCount.setter
+    def NotFixableCount(self, NotFixableCount):
+        self._NotFixableCount = NotFixableCount
+
+    @property
+    def VulSummary(self):
+        r"""<p>漏洞维度汇总信息，展示被修复的漏洞列表概要</p>
+        :rtype: list of VulFixSummaryItem
+        """
+        return self._VulSummary
+
+    @VulSummary.setter
+    def VulSummary(self, VulSummary):
+        self._VulSummary = VulSummary
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = []
+            for item in params.get("Data"):
+                obj = VulFixableMachineItem()
+                obj._deserialize(item)
+                self._Data.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._FixableCount = params.get("FixableCount")
+        self._NotFixableCount = params.get("NotFixableCount")
+        if params.get("VulSummary") is not None:
+            self._VulSummary = []
+            for item in params.get("VulSummary"):
+                obj = VulFixSummaryItem()
+                obj._deserialize(item)
+                self._VulSummary.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeVulFixedHostDetailRequest(AbstractModel):
+    r"""DescribeVulFixedHostDetail请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VulId: <p>漏洞ID</p>
+        :type VulId: int
+        :param _InstanceId: <p>主机实例ID</p>
+        :type InstanceId: str
+        :param _Offset: <p>分页偏移量，用于关联组件&amp;路径列表分页<br>取值范围：[0, +∞)<br>默认值：0</p>
+        :type Offset: int
+        :param _Limit: <p>每页返回数量，用于关联组件&amp;路径列表分页<br>取值范围：[1, 100]<br>默认值：10</p>
+        :type Limit: int
+        :param _MemberId: 集团账号的成员id
+        :type MemberId: list of str
+        """
+        self._VulId = None
+        self._InstanceId = None
+        self._Offset = None
+        self._Limit = None
+        self._MemberId = None
+
+    @property
+    def VulId(self):
+        r"""<p>漏洞ID</p>
+        :rtype: int
+        """
+        return self._VulId
+
+    @VulId.setter
+    def VulId(self, VulId):
+        self._VulId = VulId
+
+    @property
+    def InstanceId(self):
+        r"""<p>主机实例ID</p>
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Offset(self):
+        r"""<p>分页偏移量，用于关联组件&amp;路径列表分页<br>取值范围：[0, +∞)<br>默认值：0</p>
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        r"""<p>每页返回数量，用于关联组件&amp;路径列表分页<br>取值范围：[1, 100]<br>默认值：10</p>
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def MemberId(self):
+        r"""集团账号的成员id
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+
+    def _deserialize(self, params):
+        self._VulId = params.get("VulId")
+        self._InstanceId = params.get("InstanceId")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._MemberId = params.get("MemberId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeVulFixedHostDetailResponse(AbstractModel):
+    r"""DescribeVulFixedHostDetail返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VulName: <p>漏洞名称</p>
+        :type VulName: str
+        :param _CveId: <p>CVE编号</p>
+        :type CveId: str
+        :param _VulCategory: <p>漏洞类型<br>枚举值：<br>LINUX：Linux软件漏洞<br>WINDOWS：Windows系统补丁漏洞<br>WEB_CMS：Web-CMS漏洞<br>APPLICATION：应用漏洞</p>
+        :type VulCategory: str
+        :param _FixTime: <p>修复完成时间<br>参数格式：YYYY-MM-DDTHH:mm:ssZ（ISO8601格式）</p>
+        :type FixTime: str
+        :param _InstanceId: <p>主机实例ID</p>
+        :type InstanceId: str
+        :param _MachineName: <p>主机名称</p>
+        :type MachineName: str
+        :param _PublicIp: <p>主机公网IP</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PublicIp: str
+        :param _PrivateIp: <p>主机内网IP</p>
+        :type PrivateIp: str
+        :param _ComponentDetails: <p>关联组件&amp;路径详情列表</p>
+        :type ComponentDetails: list of ComponentDetailItem
+        :param _TotalCount: <p>关联组件&amp;路径总数量</p>
+        :type TotalCount: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._VulName = None
+        self._CveId = None
+        self._VulCategory = None
+        self._FixTime = None
+        self._InstanceId = None
+        self._MachineName = None
+        self._PublicIp = None
+        self._PrivateIp = None
+        self._ComponentDetails = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def VulName(self):
+        r"""<p>漏洞名称</p>
+        :rtype: str
+        """
+        return self._VulName
+
+    @VulName.setter
+    def VulName(self, VulName):
+        self._VulName = VulName
+
+    @property
+    def CveId(self):
+        r"""<p>CVE编号</p>
+        :rtype: str
+        """
+        return self._CveId
+
+    @CveId.setter
+    def CveId(self, CveId):
+        self._CveId = CveId
+
+    @property
+    def VulCategory(self):
+        r"""<p>漏洞类型<br>枚举值：<br>LINUX：Linux软件漏洞<br>WINDOWS：Windows系统补丁漏洞<br>WEB_CMS：Web-CMS漏洞<br>APPLICATION：应用漏洞</p>
+        :rtype: str
+        """
+        return self._VulCategory
+
+    @VulCategory.setter
+    def VulCategory(self, VulCategory):
+        self._VulCategory = VulCategory
+
+    @property
+    def FixTime(self):
+        r"""<p>修复完成时间<br>参数格式：YYYY-MM-DDTHH:mm:ssZ（ISO8601格式）</p>
+        :rtype: str
+        """
+        return self._FixTime
+
+    @FixTime.setter
+    def FixTime(self, FixTime):
+        self._FixTime = FixTime
+
+    @property
+    def InstanceId(self):
+        r"""<p>主机实例ID</p>
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def MachineName(self):
+        r"""<p>主机名称</p>
+        :rtype: str
+        """
+        return self._MachineName
+
+    @MachineName.setter
+    def MachineName(self, MachineName):
+        self._MachineName = MachineName
+
+    @property
+    def PublicIp(self):
+        r"""<p>主机公网IP</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._PublicIp
+
+    @PublicIp.setter
+    def PublicIp(self, PublicIp):
+        self._PublicIp = PublicIp
+
+    @property
+    def PrivateIp(self):
+        r"""<p>主机内网IP</p>
+        :rtype: str
+        """
+        return self._PrivateIp
+
+    @PrivateIp.setter
+    def PrivateIp(self, PrivateIp):
+        self._PrivateIp = PrivateIp
+
+    @property
+    def ComponentDetails(self):
+        r"""<p>关联组件&amp;路径详情列表</p>
+        :rtype: list of ComponentDetailItem
+        """
+        return self._ComponentDetails
+
+    @ComponentDetails.setter
+    def ComponentDetails(self, ComponentDetails):
+        self._ComponentDetails = ComponentDetails
+
+    @property
+    def TotalCount(self):
+        r"""<p>关联组件&amp;路径总数量</p>
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._VulName = params.get("VulName")
+        self._CveId = params.get("CveId")
+        self._VulCategory = params.get("VulCategory")
+        self._FixTime = params.get("FixTime")
+        self._InstanceId = params.get("InstanceId")
+        self._MachineName = params.get("MachineName")
+        self._PublicIp = params.get("PublicIp")
+        self._PrivateIp = params.get("PrivateIp")
+        if params.get("ComponentDetails") is not None:
+            self._ComponentDetails = []
+            for item in params.get("ComponentDetails"):
+                obj = ComponentDetailItem()
+                obj._deserialize(item)
+                self._ComponentDetails.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeVulFixedListRequest(AbstractModel):
+    r"""DescribeVulFixedList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Offset: <p>分页偏移量<br>取值范围：[0, +∞)<br>默认值：0</p>
+        :type Offset: int
+        :param _Limit: <p>每页返回数量<br>取值范围：[1, 100]<br>默认值：10</p>
+        :type Limit: int
+        :param _Filters: <p>过滤条件<br>支持的Filter.Name：<br>Keyword - 模糊匹配，按关键字搜索（漏洞名称/CVE编号/主机名称/实例ID）<br>VulName - 模糊匹配，按漏洞名称搜索<br>Level - 精确匹配，按漏洞等级筛选：LOW-低危 MEDIUM-中危 HIGH-高危 CRITICAL-严重<br>VprLevel - 精确匹配，按VPR评级筛选：1-Low 2-Medium 3-High 4-Critical<br>VulCategory - 精确匹配，按漏洞类型筛选：LINUX-Linux软件漏洞 WINDOWS-Windows系统补丁漏洞 WEB_CMS-Web-CMS漏洞 APPLICATION-应用漏洞 EMERGENCY-应急漏洞<br>MachineName - 模糊匹配，按主机名称搜索<br>InstanceId - 模糊匹配，按实例ID搜索<br>FixTime - 范围匹配，修复时间范围，传入两个值表示起止时间</p>
+        :type Filters: list of Filters
+        :param _Order: <p>排序字段<br>枚举值：<br>FixTime：按修复时间排序<br>VulName：按漏洞名称排序</p>
+        :type Order: str
+        :param _By: <p>排序方式<br>枚举值：<br>asc：升序<br>desc：降序<br>默认值：desc</p>
+        :type By: str
+        :param _MemberId: 集团账号的成员id
+        :type MemberId: list of str
+        """
+        self._Offset = None
+        self._Limit = None
+        self._Filters = None
+        self._Order = None
+        self._By = None
+        self._MemberId = None
+
+    @property
+    def Offset(self):
+        r"""<p>分页偏移量<br>取值范围：[0, +∞)<br>默认值：0</p>
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        r"""<p>每页返回数量<br>取值范围：[1, 100]<br>默认值：10</p>
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Filters(self):
+        r"""<p>过滤条件<br>支持的Filter.Name：<br>Keyword - 模糊匹配，按关键字搜索（漏洞名称/CVE编号/主机名称/实例ID）<br>VulName - 模糊匹配，按漏洞名称搜索<br>Level - 精确匹配，按漏洞等级筛选：LOW-低危 MEDIUM-中危 HIGH-高危 CRITICAL-严重<br>VprLevel - 精确匹配，按VPR评级筛选：1-Low 2-Medium 3-High 4-Critical<br>VulCategory - 精确匹配，按漏洞类型筛选：LINUX-Linux软件漏洞 WINDOWS-Windows系统补丁漏洞 WEB_CMS-Web-CMS漏洞 APPLICATION-应用漏洞 EMERGENCY-应急漏洞<br>MachineName - 模糊匹配，按主机名称搜索<br>InstanceId - 模糊匹配，按实例ID搜索<br>FixTime - 范围匹配，修复时间范围，传入两个值表示起止时间</p>
+        :rtype: list of Filters
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Order(self):
+        r"""<p>排序字段<br>枚举值：<br>FixTime：按修复时间排序<br>VulName：按漏洞名称排序</p>
+        :rtype: str
+        """
+        return self._Order
+
+    @Order.setter
+    def Order(self, Order):
+        self._Order = Order
+
+    @property
+    def By(self):
+        r"""<p>排序方式<br>枚举值：<br>asc：升序<br>desc：降序<br>默认值：desc</p>
+        :rtype: str
+        """
+        return self._By
+
+    @By.setter
+    def By(self, By):
+        self._By = By
+
+    @property
+    def MemberId(self):
+        r"""集团账号的成员id
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+
+    def _deserialize(self, params):
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filters()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._Order = params.get("Order")
+        self._By = params.get("By")
+        self._MemberId = params.get("MemberId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeVulFixedListResponse(AbstractModel):
+    r"""DescribeVulFixedList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: <p>已修复漏洞列表</p>
+        :type Data: list of VulFixedItem
+        :param _TotalCount: <p>总数量</p>
+        :type TotalCount: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""<p>已修复漏洞列表</p>
+        :rtype: list of VulFixedItem
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def TotalCount(self):
+        r"""<p>总数量</p>
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Data") is not None:
+            self._Data = []
+            for item in params.get("Data"):
+                obj = VulFixedItem()
+                obj._deserialize(item)
+                self._Data.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeVulHostRelateComponentRequest(AbstractModel):
+    r"""DescribeVulHostRelateComponent请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VulID: <p>漏洞 ID（vul_vuls.id）</p>
+        :type VulID: int
+        :param _InstanceID: <p>实例ID</p>
+        :type InstanceID: str
+        :param _MemberId: <p>集团账号的成员id</p>
+        :type MemberId: list of str
+        """
+        self._VulID = None
+        self._InstanceID = None
+        self._MemberId = None
+
+    @property
+    def VulID(self):
+        r"""<p>漏洞 ID（vul_vuls.id）</p>
+        :rtype: int
+        """
+        return self._VulID
+
+    @VulID.setter
+    def VulID(self, VulID):
+        self._VulID = VulID
+
+    @property
+    def InstanceID(self):
+        r"""<p>实例ID</p>
+        :rtype: str
+        """
+        return self._InstanceID
+
+    @InstanceID.setter
+    def InstanceID(self, InstanceID):
+        self._InstanceID = InstanceID
+
+    @property
+    def MemberId(self):
+        r"""<p>集团账号的成员id</p>
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+
+    def _deserialize(self, params):
+        self._VulID = params.get("VulID")
+        self._InstanceID = params.get("InstanceID")
+        self._MemberId = params.get("MemberId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeVulHostRelateComponentResponse(AbstractModel):
+    r"""DescribeVulHostRelateComponent返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _List: <p>受该组件影响的主机列表</p>
+        :type List: list of HostVulComponent
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._List = None
+        self._RequestId = None
+
+    @property
+    def List(self):
+        r"""<p>受该组件影响的主机列表</p>
+        :rtype: list of HostVulComponent
+        """
+        return self._List
+
+    @List.setter
+    def List(self, List):
+        self._List = List
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("List") is not None:
+            self._List = []
+            for item in params.get("List"):
+                obj = HostVulComponent()
+                obj._deserialize(item)
+                self._List.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeVulIgnoreRuleListRequest(AbstractModel):
+    r"""DescribeVulIgnoreRuleList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MemberId: <p>集团账号的成员id</p>
+        :type MemberId: list of str
+        :param _Filters: <p>过滤条件，支持以下 Name：</p><li>Keyword - 漏洞名/备注，模糊匹配</li><li>Switch - 开关状态，过滤值：0（关闭）/ 1（开启）</li>
+        :type Filters: list of Filters
+        :param _Limit: <p>分页大小，默认 10，最大 100</p>
+        :type Limit: int
+        :param _Offset: <p>分页偏移，从 0 开始</p>
+        :type Offset: int
+        :param _Order: <p>排序方向：asc（升序）/ desc（降序），默认 desc</p>
+        :type Order: str
+        :param _By: <p>排序字段，默认按更新时间（UpdateTime）排序</p>
+        :type By: str
+        """
+        self._MemberId = None
+        self._Filters = None
+        self._Limit = None
+        self._Offset = None
+        self._Order = None
+        self._By = None
+
+    @property
+    def MemberId(self):
+        r"""<p>集团账号的成员id</p>
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+    @property
+    def Filters(self):
+        r"""<p>过滤条件，支持以下 Name：</p><li>Keyword - 漏洞名/备注，模糊匹配</li><li>Switch - 开关状态，过滤值：0（关闭）/ 1（开启）</li>
+        :rtype: list of Filters
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Limit(self):
+        r"""<p>分页大小，默认 10，最大 100</p>
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        r"""<p>分页偏移，从 0 开始</p>
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Order(self):
+        r"""<p>排序方向：asc（升序）/ desc（降序），默认 desc</p>
+        :rtype: str
+        """
+        return self._Order
+
+    @Order.setter
+    def Order(self, Order):
+        self._Order = Order
+
+    @property
+    def By(self):
+        r"""<p>排序字段，默认按更新时间（UpdateTime）排序</p>
+        :rtype: str
+        """
+        return self._By
+
+    @By.setter
+    def By(self, By):
+        self._By = By
+
+
+    def _deserialize(self, params):
+        self._MemberId = params.get("MemberId")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filters()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        self._Order = params.get("Order")
+        self._By = params.get("By")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeVulIgnoreRuleListResponse(AbstractModel):
+    r"""DescribeVulIgnoreRuleList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _List: <p>白名单列表</p>
+        :type List: list of VulWhitelist
+        :param _Total: <p>总数</p>
+        :type Total: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._List = None
+        self._Total = None
+        self._RequestId = None
+
+    @property
+    def List(self):
+        r"""<p>白名单列表</p>
+        :rtype: list of VulWhitelist
+        """
+        return self._List
+
+    @List.setter
+    def List(self, List):
+        self._List = List
+
+    @property
+    def Total(self):
+        r"""<p>总数</p>
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("List") is not None:
+            self._List = []
+            for item in params.get("List"):
+                obj = VulWhitelist()
+                obj._deserialize(item)
+                self._List.append(obj)
+        self._Total = params.get("Total")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeVulItemListRequest(AbstractModel):
+    r"""DescribeVulItemList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Filters: <p>筛选条件数组，多条件之间为 AND 关系<br>支持的 Filter.Name：<br>Keyword：关键字模糊搜索（对漏洞名/CVE/VulID 模糊匹配）<br>Category：漏洞分类（LINUX/WINDOWS/WEB_CMS/APPLICATION/EMERGENCY）<br>Level：威胁等级<br>VPRLevel：VPR 评级<br>Label：风险标签<br>CheckMethod：检测方式（VERSION_COMPARE/POC/VERSION_COMPARE_POC）<br>DefendStatus：漏洞防御状态（ENABLED/NOT_SUPPORTED/NOT_ENABLED）<br>SupportFix：是否支持一键修复（true/false）<br>Emergency:  紧急漏洞获取 (0/1)<br>Top5HotVul: 热点top 5 漏洞 (0/1)</p>
+        :type Filters: list of Filters
+        :param _Limit: <p>每页返回数量<br>取值范围：[1, 100]<br>默认值：10</p>
+        :type Limit: int
+        :param _Offset: <p>分页偏移量<br>取值范围：[0, +∞)<br>默认值：0</p>
+        :type Offset: int
+        :param _Order: <p>排序方向<br>枚举值：<br>ASC：升序<br>DESC：降序<br>默认值：DESC</p>
+        :type Order: str
+        :param _By: <p>排序字段<br>枚举值：<br>PublishTime：漏洞披露时间<br>默认值：PublishTime</p>
+        :type By: str
+        """
+        self._Filters = None
+        self._Limit = None
+        self._Offset = None
+        self._Order = None
+        self._By = None
+
+    @property
+    def Filters(self):
+        r"""<p>筛选条件数组，多条件之间为 AND 关系<br>支持的 Filter.Name：<br>Keyword：关键字模糊搜索（对漏洞名/CVE/VulID 模糊匹配）<br>Category：漏洞分类（LINUX/WINDOWS/WEB_CMS/APPLICATION/EMERGENCY）<br>Level：威胁等级<br>VPRLevel：VPR 评级<br>Label：风险标签<br>CheckMethod：检测方式（VERSION_COMPARE/POC/VERSION_COMPARE_POC）<br>DefendStatus：漏洞防御状态（ENABLED/NOT_SUPPORTED/NOT_ENABLED）<br>SupportFix：是否支持一键修复（true/false）<br>Emergency:  紧急漏洞获取 (0/1)<br>Top5HotVul: 热点top 5 漏洞 (0/1)</p>
+        :rtype: list of Filters
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Limit(self):
+        r"""<p>每页返回数量<br>取值范围：[1, 100]<br>默认值：10</p>
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        r"""<p>分页偏移量<br>取值范围：[0, +∞)<br>默认值：0</p>
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Order(self):
+        r"""<p>排序方向<br>枚举值：<br>ASC：升序<br>DESC：降序<br>默认值：DESC</p>
+        :rtype: str
+        """
+        return self._Order
+
+    @Order.setter
+    def Order(self, Order):
+        self._Order = Order
+
+    @property
+    def By(self):
+        r"""<p>排序字段<br>枚举值：<br>PublishTime：漏洞披露时间<br>默认值：PublishTime</p>
+        :rtype: str
+        """
+        return self._By
+
+    @By.setter
+    def By(self, By):
+        self._By = By
+
+
+    def _deserialize(self, params):
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filters()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        self._Order = params.get("Order")
+        self._By = params.get("By")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeVulItemListResponse(AbstractModel):
+    r"""DescribeVulItemList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _List: <p>漏洞条目列表</p>
+        :type List: list of VulDetailInfo
+        :param _TotalCount: <p>凭据总数</p>
+        :type TotalCount: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._List = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def List(self):
+        r"""<p>漏洞条目列表</p>
+        :rtype: list of VulDetailInfo
+        """
+        return self._List
+
+    @List.setter
+    def List(self, List):
+        self._List = List
+
+    @property
+    def TotalCount(self):
+        r"""<p>凭据总数</p>
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("List") is not None:
+            self._List = []
+            for item in params.get("List"):
+                obj = VulDetailInfo()
+                obj._deserialize(item)
+                self._List.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeVulLabelListRequest(AbstractModel):
+    r"""DescribeVulLabelList请求参数结构体
+
+    """
+
+
+class DescribeVulLabelListResponse(AbstractModel):
+    r"""DescribeVulLabelList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _List: <p>漏洞条目列表</p>
+        :type List: list of VPRLabel
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._List = None
+        self._RequestId = None
+
+    @property
+    def List(self):
+        r"""<p>漏洞条目列表</p>
+        :rtype: list of VPRLabel
+        """
+        return self._List
+
+    @List.setter
+    def List(self, List):
+        self._List = List
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("List") is not None:
+            self._List = []
+            for item in params.get("List"):
+                obj = VPRLabel()
+                obj._deserialize(item)
+                self._List.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeVulRiskListRequest(AbstractModel):
     r"""DescribeVulRiskList请求参数结构体
 
@@ -50873,6 +54676,1163 @@ class DescribeVulRiskListResponse(AbstractModel):
                 obj = VulRiskItem()
                 obj._deserialize(item)
                 self._VulRiskList.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeVulRiskRelateComponentRequest(AbstractModel):
+    r"""DescribeVulRiskRelateComponent请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VulID: <p>漏洞 ID（vul_vuls.id）</p>
+        :type VulID: int
+        :param _MemberId: <p>集团账号的成员id</p>
+        :type MemberId: list of str
+        :param _Filters: <p>筛选条件数组，多条件之间为 AND 关系<br>支持的 Filter.Name：<br>Keyword：关键字模糊搜索（对组件名称模糊匹配）</p>
+        :type Filters: list of Filters
+        """
+        self._VulID = None
+        self._MemberId = None
+        self._Filters = None
+
+    @property
+    def VulID(self):
+        r"""<p>漏洞 ID（vul_vuls.id）</p>
+        :rtype: int
+        """
+        return self._VulID
+
+    @VulID.setter
+    def VulID(self, VulID):
+        self._VulID = VulID
+
+    @property
+    def MemberId(self):
+        r"""<p>集团账号的成员id</p>
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+    @property
+    def Filters(self):
+        r"""<p>筛选条件数组，多条件之间为 AND 关系<br>支持的 Filter.Name：<br>Keyword：关键字模糊搜索（对组件名称模糊匹配）</p>
+        :rtype: list of Filters
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+
+    def _deserialize(self, params):
+        self._VulID = params.get("VulID")
+        self._MemberId = params.get("MemberId")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filters()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeVulRiskRelateComponentResponse(AbstractModel):
+    r"""DescribeVulRiskRelateComponent返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _List: <p>该漏洞影响的组件列表</p>
+        :type List: list of VulComponentSummary
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._List = None
+        self._RequestId = None
+
+    @property
+    def List(self):
+        r"""<p>该漏洞影响的组件列表</p>
+        :rtype: list of VulComponentSummary
+        """
+        return self._List
+
+    @List.setter
+    def List(self, List):
+        self._List = List
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("List") is not None:
+            self._List = []
+            for item in params.get("List"):
+                obj = VulComponentSummary()
+                obj._deserialize(item)
+                self._List.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeVulRiskRelateHostRequest(AbstractModel):
+    r"""DescribeVulRiskRelateHost请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _KBID: <p>KB 补丁内部 ID（kb_info.id）</p>
+        :type KBID: int
+        :param _VulID: <p>漏洞 ID（vul_vuls.id）</p>
+        :type VulID: int
+        :param _MemberId: <p>集团账号的成员id</p>
+        :type MemberId: list of str
+        :param _Filters: <p>筛选条件数组，多条件之间为 AND 关系<br>支持的 Filter.Name：<br>Keyword：关键字模糊搜索（对主机名/IP/InstanceID 模糊匹配）<br>CloudTag: 云标签<br>Tag: 安全中心标签</p>
+        :type Filters: list of Filters
+        :param _Limit: <p>每页返回数量<br>取值范围：[1, 100]<br>默认值：10</p>
+        :type Limit: int
+        :param _Offset: <p>分页偏移量<br>取值范围：[0, +∞)<br>默认值：0</p>
+        :type Offset: int
+        :param _Order: <p>排序方向<br>枚举值：<br>ASC：升序<br>DESC：降序<br>默认值：DESC</p>
+        :type Order: str
+        :param _By: <p>排序字段<br>枚举值：<br>LatestScanTime：最近扫描时间<br>VPRLevel：VPR 评级<br>RiskStatus：修复状态<br>默认值：LatestScanTime</p>
+        :type By: str
+        """
+        self._KBID = None
+        self._VulID = None
+        self._MemberId = None
+        self._Filters = None
+        self._Limit = None
+        self._Offset = None
+        self._Order = None
+        self._By = None
+
+    @property
+    def KBID(self):
+        r"""<p>KB 补丁内部 ID（kb_info.id）</p>
+        :rtype: int
+        """
+        return self._KBID
+
+    @KBID.setter
+    def KBID(self, KBID):
+        self._KBID = KBID
+
+    @property
+    def VulID(self):
+        r"""<p>漏洞 ID（vul_vuls.id）</p>
+        :rtype: int
+        """
+        return self._VulID
+
+    @VulID.setter
+    def VulID(self, VulID):
+        self._VulID = VulID
+
+    @property
+    def MemberId(self):
+        r"""<p>集团账号的成员id</p>
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+    @property
+    def Filters(self):
+        r"""<p>筛选条件数组，多条件之间为 AND 关系<br>支持的 Filter.Name：<br>Keyword：关键字模糊搜索（对主机名/IP/InstanceID 模糊匹配）<br>CloudTag: 云标签<br>Tag: 安全中心标签</p>
+        :rtype: list of Filters
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Limit(self):
+        r"""<p>每页返回数量<br>取值范围：[1, 100]<br>默认值：10</p>
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        r"""<p>分页偏移量<br>取值范围：[0, +∞)<br>默认值：0</p>
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Order(self):
+        r"""<p>排序方向<br>枚举值：<br>ASC：升序<br>DESC：降序<br>默认值：DESC</p>
+        :rtype: str
+        """
+        return self._Order
+
+    @Order.setter
+    def Order(self, Order):
+        self._Order = Order
+
+    @property
+    def By(self):
+        r"""<p>排序字段<br>枚举值：<br>LatestScanTime：最近扫描时间<br>VPRLevel：VPR 评级<br>RiskStatus：修复状态<br>默认值：LatestScanTime</p>
+        :rtype: str
+        """
+        return self._By
+
+    @By.setter
+    def By(self, By):
+        self._By = By
+
+
+    def _deserialize(self, params):
+        self._KBID = params.get("KBID")
+        self._VulID = params.get("VulID")
+        self._MemberId = params.get("MemberId")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filters()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        self._Order = params.get("Order")
+        self._By = params.get("By")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeVulRiskRelateHostResponse(AbstractModel):
+    r"""DescribeVulRiskRelateHost返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _List: <p>该漏洞影响的主机列表</p>
+        :type List: list of VulHostBriefInfo
+        :param _TotalCount: <p>符合条件的总数</p>
+        :type TotalCount: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._List = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def List(self):
+        r"""<p>该漏洞影响的主机列表</p>
+        :rtype: list of VulHostBriefInfo
+        """
+        return self._List
+
+    @List.setter
+    def List(self, List):
+        self._List = List
+
+    @property
+    def TotalCount(self):
+        r"""<p>符合条件的总数</p>
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("List") is not None:
+            self._List = []
+            for item in params.get("List"):
+                obj = VulHostBriefInfo()
+                obj._deserialize(item)
+                self._List.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeVulScanPeriodicRequest(AbstractModel):
+    r"""DescribeVulScanPeriodic请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MemberId: <p>集团账号的成员id</p>
+        :type MemberId: list of str
+        """
+        self._MemberId = None
+
+    @property
+    def MemberId(self):
+        r"""<p>集团账号的成员id</p>
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+
+    def _deserialize(self, params):
+        self._MemberId = params.get("MemberId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeVulScanPeriodicResponse(AbstractModel):
+    r"""DescribeVulScanPeriodic返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Status: <p>周期扫描开关（0-关闭, 1-开启）</p>
+        :type Status: int
+        :param _VulCategory: <p>漏洞类型</p><p>枚举值：</p><ul><li>LINUX： Linux软件漏洞</li><li>WINDOWS： Windows系统补丁</li><li>WEB_CMS： Web-CMS漏洞</li><li>APPLICATION： 应用漏洞</li><li>EMERGENCY： 应急漏洞</li></ul>
+        :type VulCategory: list of str
+        :param _Level: <p>漏洞等级（INVALID: 无效, INFO: 提示, LOW: 低危, MEDIUM: 中危, HIGH: 高危, CRITICAL: 严重）</p>
+        :type Level: list of str
+        :param _Method: <p>扫描方式（VersionCompare: 版本对比, POC: POC检测, VersionComparePOC: 版本对比+POC检测）</p>
+        :type Method: str
+        :param _CycleType: <p>周期扫描类型</p><p>枚举值：</p><ul><li>1： 每天</li><li>2： 每周</li><li>3： 每月</li></ul>
+        :type CycleType: int
+        :param _StartTime: <p>开始时间（09:00:00）</p>
+        :type StartTime: str
+        :param _EndTime: <p>结束时间（18:00:00）</p>
+        :type EndTime: str
+        :param _AssetRange: <p>资产范围（0-全部资产，1-自选资产，2-剔除资产）</p>
+        :type AssetRange: int
+        :param _AssetList: <p>资产列表（instance_id列表）</p>
+        :type AssetList: list of str
+        :param _CycleValue: <p>周期值</p><p>单位：周几或者每月几号</p>
+        :type CycleValue: list of int non-negative
+        :param _Timeout: <p>超时时长</p><p>单位：秒</p>
+        :type Timeout: int
+        :param _AllowSync: <p>是否运行被同步配置 0-不允许，1-允许</p>
+        :type AllowSync: int
+        :param _EnableSync: <p>管理员账号是否开启了自动同步配置开关 0-关闭，1-开启</p>
+        :type EnableSync: int
+        :param _AdminInfo: <p>配置信息来自哪个账号，为空表示自己设置</p>
+        :type AdminInfo: :class:`tencentcloud.csip.v20221121.models.AccountBriefInfo`
+        :param _TagIds: <p>标签id</p>
+        :type TagIds: list of int non-negative
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Status = None
+        self._VulCategory = None
+        self._Level = None
+        self._Method = None
+        self._CycleType = None
+        self._StartTime = None
+        self._EndTime = None
+        self._AssetRange = None
+        self._AssetList = None
+        self._CycleValue = None
+        self._Timeout = None
+        self._AllowSync = None
+        self._EnableSync = None
+        self._AdminInfo = None
+        self._TagIds = None
+        self._RequestId = None
+
+    @property
+    def Status(self):
+        r"""<p>周期扫描开关（0-关闭, 1-开启）</p>
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def VulCategory(self):
+        r"""<p>漏洞类型</p><p>枚举值：</p><ul><li>LINUX： Linux软件漏洞</li><li>WINDOWS： Windows系统补丁</li><li>WEB_CMS： Web-CMS漏洞</li><li>APPLICATION： 应用漏洞</li><li>EMERGENCY： 应急漏洞</li></ul>
+        :rtype: list of str
+        """
+        return self._VulCategory
+
+    @VulCategory.setter
+    def VulCategory(self, VulCategory):
+        self._VulCategory = VulCategory
+
+    @property
+    def Level(self):
+        r"""<p>漏洞等级（INVALID: 无效, INFO: 提示, LOW: 低危, MEDIUM: 中危, HIGH: 高危, CRITICAL: 严重）</p>
+        :rtype: list of str
+        """
+        return self._Level
+
+    @Level.setter
+    def Level(self, Level):
+        self._Level = Level
+
+    @property
+    def Method(self):
+        r"""<p>扫描方式（VersionCompare: 版本对比, POC: POC检测, VersionComparePOC: 版本对比+POC检测）</p>
+        :rtype: str
+        """
+        return self._Method
+
+    @Method.setter
+    def Method(self, Method):
+        self._Method = Method
+
+    @property
+    def CycleType(self):
+        r"""<p>周期扫描类型</p><p>枚举值：</p><ul><li>1： 每天</li><li>2： 每周</li><li>3： 每月</li></ul>
+        :rtype: int
+        """
+        return self._CycleType
+
+    @CycleType.setter
+    def CycleType(self, CycleType):
+        self._CycleType = CycleType
+
+    @property
+    def StartTime(self):
+        r"""<p>开始时间（09:00:00）</p>
+        :rtype: str
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""<p>结束时间（18:00:00）</p>
+        :rtype: str
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def AssetRange(self):
+        r"""<p>资产范围（0-全部资产，1-自选资产，2-剔除资产）</p>
+        :rtype: int
+        """
+        return self._AssetRange
+
+    @AssetRange.setter
+    def AssetRange(self, AssetRange):
+        self._AssetRange = AssetRange
+
+    @property
+    def AssetList(self):
+        r"""<p>资产列表（instance_id列表）</p>
+        :rtype: list of str
+        """
+        return self._AssetList
+
+    @AssetList.setter
+    def AssetList(self, AssetList):
+        self._AssetList = AssetList
+
+    @property
+    def CycleValue(self):
+        r"""<p>周期值</p><p>单位：周几或者每月几号</p>
+        :rtype: list of int non-negative
+        """
+        return self._CycleValue
+
+    @CycleValue.setter
+    def CycleValue(self, CycleValue):
+        self._CycleValue = CycleValue
+
+    @property
+    def Timeout(self):
+        r"""<p>超时时长</p><p>单位：秒</p>
+        :rtype: int
+        """
+        return self._Timeout
+
+    @Timeout.setter
+    def Timeout(self, Timeout):
+        self._Timeout = Timeout
+
+    @property
+    def AllowSync(self):
+        r"""<p>是否运行被同步配置 0-不允许，1-允许</p>
+        :rtype: int
+        """
+        return self._AllowSync
+
+    @AllowSync.setter
+    def AllowSync(self, AllowSync):
+        self._AllowSync = AllowSync
+
+    @property
+    def EnableSync(self):
+        r"""<p>管理员账号是否开启了自动同步配置开关 0-关闭，1-开启</p>
+        :rtype: int
+        """
+        return self._EnableSync
+
+    @EnableSync.setter
+    def EnableSync(self, EnableSync):
+        self._EnableSync = EnableSync
+
+    @property
+    def AdminInfo(self):
+        r"""<p>配置信息来自哪个账号，为空表示自己设置</p>
+        :rtype: :class:`tencentcloud.csip.v20221121.models.AccountBriefInfo`
+        """
+        return self._AdminInfo
+
+    @AdminInfo.setter
+    def AdminInfo(self, AdminInfo):
+        self._AdminInfo = AdminInfo
+
+    @property
+    def TagIds(self):
+        r"""<p>标签id</p>
+        :rtype: list of int non-negative
+        """
+        return self._TagIds
+
+    @TagIds.setter
+    def TagIds(self, TagIds):
+        self._TagIds = TagIds
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Status = params.get("Status")
+        self._VulCategory = params.get("VulCategory")
+        self._Level = params.get("Level")
+        self._Method = params.get("Method")
+        self._CycleType = params.get("CycleType")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._AssetRange = params.get("AssetRange")
+        self._AssetList = params.get("AssetList")
+        self._CycleValue = params.get("CycleValue")
+        self._Timeout = params.get("Timeout")
+        self._AllowSync = params.get("AllowSync")
+        self._EnableSync = params.get("EnableSync")
+        if params.get("AdminInfo") is not None:
+            self._AdminInfo = AccountBriefInfo()
+            self._AdminInfo._deserialize(params.get("AdminInfo"))
+        self._TagIds = params.get("TagIds")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeVulScanTaskDetailRequest(AbstractModel):
+    r"""DescribeVulScanTaskDetail请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: <p>任务id</p>
+        :type Id: int
+        :param _MemberId: <p>集团账号的成员id</p>
+        :type MemberId: list of str
+        :param _Filters: <p>过滤条件，支持以下 Name：</p><li>InstanceId - 资产实例 ID，精确匹配</li><li>InstanceName - 资产实例名称，模糊匹配（ExactMatch=1 时精确匹配）</li><li>Ip - 资产 IP 地址，精确匹配</li><li>Status - 扫描状态，精确匹配</li>
+        :type Filters: list of Filters
+        :param _Limit: <p>分页大小，默认 10，最大 100</p>
+        :type Limit: int
+        :param _Offset: <p>分页偏移，从 0 开始</p>
+        :type Offset: int
+        :param _Order: <p>排序方向：asc（升序）/ desc（降序），默认 desc</p>
+        :type Order: str
+        :param _By: <p>排序字段，默认按创建时间（CreateTime）排序</p>
+        :type By: str
+        """
+        self._Id = None
+        self._MemberId = None
+        self._Filters = None
+        self._Limit = None
+        self._Offset = None
+        self._Order = None
+        self._By = None
+
+    @property
+    def Id(self):
+        r"""<p>任务id</p>
+        :rtype: int
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def MemberId(self):
+        r"""<p>集团账号的成员id</p>
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+    @property
+    def Filters(self):
+        r"""<p>过滤条件，支持以下 Name：</p><li>InstanceId - 资产实例 ID，精确匹配</li><li>InstanceName - 资产实例名称，模糊匹配（ExactMatch=1 时精确匹配）</li><li>Ip - 资产 IP 地址，精确匹配</li><li>Status - 扫描状态，精确匹配</li>
+        :rtype: list of Filters
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Limit(self):
+        r"""<p>分页大小，默认 10，最大 100</p>
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        r"""<p>分页偏移，从 0 开始</p>
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Order(self):
+        r"""<p>排序方向：asc（升序）/ desc（降序），默认 desc</p>
+        :rtype: str
+        """
+        return self._Order
+
+    @Order.setter
+    def Order(self, Order):
+        self._Order = Order
+
+    @property
+    def By(self):
+        r"""<p>排序字段，默认按创建时间（CreateTime）排序</p>
+        :rtype: str
+        """
+        return self._By
+
+    @By.setter
+    def By(self, By):
+        self._By = By
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._MemberId = params.get("MemberId")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filters()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        self._Order = params.get("Order")
+        self._By = params.get("By")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeVulScanTaskDetailResponse(AbstractModel):
+    r"""DescribeVulScanTaskDetail返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _List: <p>任务详情列表</p>
+        :type List: list of VulScanTaskDetail
+        :param _Total: <p>总数</p>
+        :type Total: int
+        :param _Vuls: <p>漏洞数量</p>
+        :type Vuls: int
+        :param _Scanned: <p>扫描数量</p>
+        :type Scanned: int
+        :param _Risk: <p>风险数量</p>
+        :type Risk: int
+        :param _Failed: <p>失败数量</p>
+        :type Failed: int
+        :param _Progress: <p>扫描进度（0-100）</p>
+        :type Progress: int
+        :param _TaskPdf: <p>任务pdf报告地址</p>
+        :type TaskPdf: str
+        :param _TaskExcel: <p>任务excel报告地址</p>
+        :type TaskExcel: str
+        :param _StartTime: <p>任务开始时间，格式：2006-01-02T15:04:05+08:00</p>
+        :type StartTime: str
+        :param _EndTime: <p>任务结束时间，格式：2006-01-02T15:04:05+08:00</p>
+        :type EndTime: str
+        :param _VulId: <p>漏洞ID</p>
+        :type VulId: list of int non-negative
+        :param _KbNo: <p>KB编号</p>
+        :type KbNo: list of str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._List = None
+        self._Total = None
+        self._Vuls = None
+        self._Scanned = None
+        self._Risk = None
+        self._Failed = None
+        self._Progress = None
+        self._TaskPdf = None
+        self._TaskExcel = None
+        self._StartTime = None
+        self._EndTime = None
+        self._VulId = None
+        self._KbNo = None
+        self._RequestId = None
+
+    @property
+    def List(self):
+        r"""<p>任务详情列表</p>
+        :rtype: list of VulScanTaskDetail
+        """
+        return self._List
+
+    @List.setter
+    def List(self, List):
+        self._List = List
+
+    @property
+    def Total(self):
+        r"""<p>总数</p>
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def Vuls(self):
+        r"""<p>漏洞数量</p>
+        :rtype: int
+        """
+        return self._Vuls
+
+    @Vuls.setter
+    def Vuls(self, Vuls):
+        self._Vuls = Vuls
+
+    @property
+    def Scanned(self):
+        r"""<p>扫描数量</p>
+        :rtype: int
+        """
+        return self._Scanned
+
+    @Scanned.setter
+    def Scanned(self, Scanned):
+        self._Scanned = Scanned
+
+    @property
+    def Risk(self):
+        r"""<p>风险数量</p>
+        :rtype: int
+        """
+        return self._Risk
+
+    @Risk.setter
+    def Risk(self, Risk):
+        self._Risk = Risk
+
+    @property
+    def Failed(self):
+        r"""<p>失败数量</p>
+        :rtype: int
+        """
+        return self._Failed
+
+    @Failed.setter
+    def Failed(self, Failed):
+        self._Failed = Failed
+
+    @property
+    def Progress(self):
+        r"""<p>扫描进度（0-100）</p>
+        :rtype: int
+        """
+        return self._Progress
+
+    @Progress.setter
+    def Progress(self, Progress):
+        self._Progress = Progress
+
+    @property
+    def TaskPdf(self):
+        r"""<p>任务pdf报告地址</p>
+        :rtype: str
+        """
+        return self._TaskPdf
+
+    @TaskPdf.setter
+    def TaskPdf(self, TaskPdf):
+        self._TaskPdf = TaskPdf
+
+    @property
+    def TaskExcel(self):
+        r"""<p>任务excel报告地址</p>
+        :rtype: str
+        """
+        return self._TaskExcel
+
+    @TaskExcel.setter
+    def TaskExcel(self, TaskExcel):
+        self._TaskExcel = TaskExcel
+
+    @property
+    def StartTime(self):
+        r"""<p>任务开始时间，格式：2006-01-02T15:04:05+08:00</p>
+        :rtype: str
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""<p>任务结束时间，格式：2006-01-02T15:04:05+08:00</p>
+        :rtype: str
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def VulId(self):
+        r"""<p>漏洞ID</p>
+        :rtype: list of int non-negative
+        """
+        return self._VulId
+
+    @VulId.setter
+    def VulId(self, VulId):
+        self._VulId = VulId
+
+    @property
+    def KbNo(self):
+        r"""<p>KB编号</p>
+        :rtype: list of str
+        """
+        return self._KbNo
+
+    @KbNo.setter
+    def KbNo(self, KbNo):
+        self._KbNo = KbNo
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("List") is not None:
+            self._List = []
+            for item in params.get("List"):
+                obj = VulScanTaskDetail()
+                obj._deserialize(item)
+                self._List.append(obj)
+        self._Total = params.get("Total")
+        self._Vuls = params.get("Vuls")
+        self._Scanned = params.get("Scanned")
+        self._Risk = params.get("Risk")
+        self._Failed = params.get("Failed")
+        self._Progress = params.get("Progress")
+        self._TaskPdf = params.get("TaskPdf")
+        self._TaskExcel = params.get("TaskExcel")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._VulId = params.get("VulId")
+        self._KbNo = params.get("KbNo")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeVulScanTaskListRequest(AbstractModel):
+    r"""DescribeVulScanTaskList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MemberId: <p>集团账号的成员id</p>
+        :type MemberId: list of str
+        :param _Filters: <p>过滤条件，支持以下 Name：<li>JobId - 任务 ID 精确匹配</li><li>TaskType- 任务类型精确匹配</li></p>
+        :type Filters: list of Filters
+        :param _Limit: <p>分页大小</p><p>取值范围：[1, 100]</p><p>单位：条</p><p>默认值：10</p>
+        :type Limit: int
+        :param _Offset: <p>分页偏移</p><p>取值范围：[0, 99999]</p><p>单位：条</p>
+        :type Offset: int
+        :param _Order: <p>过滤方向</p><p>枚举值：</p><ul><li>DESC： 倒序</li><li>ASC： 正序</li></ul>
+        :type Order: str
+        :param _By: <p>排序字段</p><p>默认值：ScanTime</p>
+        :type By: str
+        """
+        self._MemberId = None
+        self._Filters = None
+        self._Limit = None
+        self._Offset = None
+        self._Order = None
+        self._By = None
+
+    @property
+    def MemberId(self):
+        r"""<p>集团账号的成员id</p>
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+    @property
+    def Filters(self):
+        r"""<p>过滤条件，支持以下 Name：<li>JobId - 任务 ID 精确匹配</li><li>TaskType- 任务类型精确匹配</li></p>
+        :rtype: list of Filters
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Limit(self):
+        r"""<p>分页大小</p><p>取值范围：[1, 100]</p><p>单位：条</p><p>默认值：10</p>
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        r"""<p>分页偏移</p><p>取值范围：[0, 99999]</p><p>单位：条</p>
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Order(self):
+        r"""<p>过滤方向</p><p>枚举值：</p><ul><li>DESC： 倒序</li><li>ASC： 正序</li></ul>
+        :rtype: str
+        """
+        return self._Order
+
+    @Order.setter
+    def Order(self, Order):
+        self._Order = Order
+
+    @property
+    def By(self):
+        r"""<p>排序字段</p><p>默认值：ScanTime</p>
+        :rtype: str
+        """
+        return self._By
+
+    @By.setter
+    def By(self, By):
+        self._By = By
+
+
+    def _deserialize(self, params):
+        self._MemberId = params.get("MemberId")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filters()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        self._Order = params.get("Order")
+        self._By = params.get("By")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeVulScanTaskListResponse(AbstractModel):
+    r"""DescribeVulScanTaskList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _List: <p>任务列表</p>
+        :type List: list of VulScanTask
+        :param _Total: <p>总数</p>
+        :type Total: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._List = None
+        self._Total = None
+        self._RequestId = None
+
+    @property
+    def List(self):
+        r"""<p>任务列表</p>
+        :rtype: list of VulScanTask
+        """
+        return self._List
+
+    @List.setter
+    def List(self, List):
+        self._List = List
+
+    @property
+    def Total(self):
+        r"""<p>总数</p>
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("List") is not None:
+            self._List = []
+            for item in params.get("List"):
+                obj = VulScanTask()
+                obj._deserialize(item)
+                self._List.append(obj)
+        self._Total = params.get("Total")
         self._RequestId = params.get("RequestId")
 
 
@@ -65053,6 +70013,862 @@ class HitRules(AbstractModel):
         
 
 
+class HostBriefInfo(AbstractModel):
+    r"""主机简要信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceID: 云主机实例 ID
+参数格式：形如 ins-instance
+        :type InstanceID: str
+        :param _QUUID: 主机 QUUID（CWP 内部唯一标识）
+        :type QUUID: str
+        :param _UUID: 主机 UUID
+        :type UUID: str
+        :param _PublicIP: 公网 IP 地址
+        :type PublicIP: str
+        :param _PrivateIP: 内网 IP 地址
+        :type PrivateIP: str
+        :param _AgentStatus: CWP Agent 状态
+枚举值：
+ONLINE：在线
+OFFLINE：离线
+UNINSTALLED：未安装
+        :type AgentStatus: str
+        :param _InstanceStatus: 云主机实例状态
+枚举值：
+RUNNING：运行中
+STOPPED：已停止
+UNKNOWN：未知
+        :type InstanceStatus: str
+        :param _Name: 主机名称
+        :type Name: str
+        :param _Account: 所属账号信息
+        :type Account: :class:`tencentcloud.csip.v20221121.models.AccountBriefInfo`
+        :param _TagItem: 资产标签列表（CSIP 内部资产标签）
+        :type TagItem: list of MiniTagItem
+        :param _CloudTag: 云上标签列表（云资产侧 Tag）
+        :type CloudTag: list of Tag
+        """
+        self._InstanceID = None
+        self._QUUID = None
+        self._UUID = None
+        self._PublicIP = None
+        self._PrivateIP = None
+        self._AgentStatus = None
+        self._InstanceStatus = None
+        self._Name = None
+        self._Account = None
+        self._TagItem = None
+        self._CloudTag = None
+
+    @property
+    def InstanceID(self):
+        r"""云主机实例 ID
+参数格式：形如 ins-instance
+        :rtype: str
+        """
+        return self._InstanceID
+
+    @InstanceID.setter
+    def InstanceID(self, InstanceID):
+        self._InstanceID = InstanceID
+
+    @property
+    def QUUID(self):
+        r"""主机 QUUID（CWP 内部唯一标识）
+        :rtype: str
+        """
+        return self._QUUID
+
+    @QUUID.setter
+    def QUUID(self, QUUID):
+        self._QUUID = QUUID
+
+    @property
+    def UUID(self):
+        r"""主机 UUID
+        :rtype: str
+        """
+        return self._UUID
+
+    @UUID.setter
+    def UUID(self, UUID):
+        self._UUID = UUID
+
+    @property
+    def PublicIP(self):
+        r"""公网 IP 地址
+        :rtype: str
+        """
+        return self._PublicIP
+
+    @PublicIP.setter
+    def PublicIP(self, PublicIP):
+        self._PublicIP = PublicIP
+
+    @property
+    def PrivateIP(self):
+        r"""内网 IP 地址
+        :rtype: str
+        """
+        return self._PrivateIP
+
+    @PrivateIP.setter
+    def PrivateIP(self, PrivateIP):
+        self._PrivateIP = PrivateIP
+
+    @property
+    def AgentStatus(self):
+        r"""CWP Agent 状态
+枚举值：
+ONLINE：在线
+OFFLINE：离线
+UNINSTALLED：未安装
+        :rtype: str
+        """
+        return self._AgentStatus
+
+    @AgentStatus.setter
+    def AgentStatus(self, AgentStatus):
+        self._AgentStatus = AgentStatus
+
+    @property
+    def InstanceStatus(self):
+        r"""云主机实例状态
+枚举值：
+RUNNING：运行中
+STOPPED：已停止
+UNKNOWN：未知
+        :rtype: str
+        """
+        return self._InstanceStatus
+
+    @InstanceStatus.setter
+    def InstanceStatus(self, InstanceStatus):
+        self._InstanceStatus = InstanceStatus
+
+    @property
+    def Name(self):
+        r"""主机名称
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Account(self):
+        r"""所属账号信息
+        :rtype: :class:`tencentcloud.csip.v20221121.models.AccountBriefInfo`
+        """
+        return self._Account
+
+    @Account.setter
+    def Account(self, Account):
+        self._Account = Account
+
+    @property
+    def TagItem(self):
+        r"""资产标签列表（CSIP 内部资产标签）
+        :rtype: list of MiniTagItem
+        """
+        return self._TagItem
+
+    @TagItem.setter
+    def TagItem(self, TagItem):
+        self._TagItem = TagItem
+
+    @property
+    def CloudTag(self):
+        r"""云上标签列表（云资产侧 Tag）
+        :rtype: list of Tag
+        """
+        return self._CloudTag
+
+    @CloudTag.setter
+    def CloudTag(self, CloudTag):
+        self._CloudTag = CloudTag
+
+
+    def _deserialize(self, params):
+        self._InstanceID = params.get("InstanceID")
+        self._QUUID = params.get("QUUID")
+        self._UUID = params.get("UUID")
+        self._PublicIP = params.get("PublicIP")
+        self._PrivateIP = params.get("PrivateIP")
+        self._AgentStatus = params.get("AgentStatus")
+        self._InstanceStatus = params.get("InstanceStatus")
+        self._Name = params.get("Name")
+        if params.get("Account") is not None:
+            self._Account = AccountBriefInfo()
+            self._Account._deserialize(params.get("Account"))
+        if params.get("TagItem") is not None:
+            self._TagItem = []
+            for item in params.get("TagItem"):
+                obj = MiniTagItem()
+                obj._deserialize(item)
+                self._TagItem.append(obj)
+        if params.get("CloudTag") is not None:
+            self._CloudTag = []
+            for item in params.get("CloudTag"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._CloudTag.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class HostKBRisk(AbstractModel):
+    r"""主机漏洞风险
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RiskID: <p>风险记录 ID（kb_risk.id）</p>
+        :type RiskID: int
+        :param _KBDetail: <p>Windows KB 补丁详细信息</p>
+        :type KBDetail: :class:`tencentcloud.csip.v20221121.models.KBDetail`
+        :param _EffectHostCount: <p>受影响主机数</p>
+        :type EffectHostCount: int
+        :param _LatestScanTime: <p>最近扫描时间<br>参数格式：YYYY-MM-DDTHH:mm:ssZ</p>
+        :type LatestScanTime: str
+        :param _Account: <p>所属账号列表</p>
+        :type Account: list of AccountBriefInfo
+        :param _RiskStatus: <p>修复状态<br>枚举值：<br>PENDING：待修复<br>SCANNING：扫描中<br>FIXED：已修复<br>IGNORED：已加白<br>FIXING：修复中<br>FIX_FAILED：修复失败</p>
+        :type RiskStatus: str
+        """
+        self._RiskID = None
+        self._KBDetail = None
+        self._EffectHostCount = None
+        self._LatestScanTime = None
+        self._Account = None
+        self._RiskStatus = None
+
+    @property
+    def RiskID(self):
+        r"""<p>风险记录 ID（kb_risk.id）</p>
+        :rtype: int
+        """
+        return self._RiskID
+
+    @RiskID.setter
+    def RiskID(self, RiskID):
+        self._RiskID = RiskID
+
+    @property
+    def KBDetail(self):
+        r"""<p>Windows KB 补丁详细信息</p>
+        :rtype: :class:`tencentcloud.csip.v20221121.models.KBDetail`
+        """
+        return self._KBDetail
+
+    @KBDetail.setter
+    def KBDetail(self, KBDetail):
+        self._KBDetail = KBDetail
+
+    @property
+    def EffectHostCount(self):
+        r"""<p>受影响主机数</p>
+        :rtype: int
+        """
+        return self._EffectHostCount
+
+    @EffectHostCount.setter
+    def EffectHostCount(self, EffectHostCount):
+        self._EffectHostCount = EffectHostCount
+
+    @property
+    def LatestScanTime(self):
+        r"""<p>最近扫描时间<br>参数格式：YYYY-MM-DDTHH:mm:ssZ</p>
+        :rtype: str
+        """
+        return self._LatestScanTime
+
+    @LatestScanTime.setter
+    def LatestScanTime(self, LatestScanTime):
+        self._LatestScanTime = LatestScanTime
+
+    @property
+    def Account(self):
+        r"""<p>所属账号列表</p>
+        :rtype: list of AccountBriefInfo
+        """
+        return self._Account
+
+    @Account.setter
+    def Account(self, Account):
+        self._Account = Account
+
+    @property
+    def RiskStatus(self):
+        r"""<p>修复状态<br>枚举值：<br>PENDING：待修复<br>SCANNING：扫描中<br>FIXED：已修复<br>IGNORED：已加白<br>FIXING：修复中<br>FIX_FAILED：修复失败</p>
+        :rtype: str
+        """
+        return self._RiskStatus
+
+    @RiskStatus.setter
+    def RiskStatus(self, RiskStatus):
+        self._RiskStatus = RiskStatus
+
+
+    def _deserialize(self, params):
+        self._RiskID = params.get("RiskID")
+        if params.get("KBDetail") is not None:
+            self._KBDetail = KBDetail()
+            self._KBDetail._deserialize(params.get("KBDetail"))
+        self._EffectHostCount = params.get("EffectHostCount")
+        self._LatestScanTime = params.get("LatestScanTime")
+        if params.get("Account") is not None:
+            self._Account = []
+            for item in params.get("Account"):
+                obj = AccountBriefInfo()
+                obj._deserialize(item)
+                self._Account.append(obj)
+        self._RiskStatus = params.get("RiskStatus")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class HostVulComponent(AbstractModel):
+    r"""主机漏洞组件
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _HostInfo: <p>主机简要信息</p>
+        :type HostInfo: :class:`tencentcloud.csip.v20221121.models.HostBriefInfo`
+        :param _EffectVersion: <p>受影响组件版本</p>
+        :type EffectVersion: str
+        :param _Path: <p>组件在主机上的安装路径</p>
+        :type Path: str
+        :param _ProcessID: <p>关联进程 ID</p>
+        :type ProcessID: str
+        :param _FixCommand: <p>修复命令（仅展示）</p>
+        :type FixCommand: str
+        :param _Name: <p>组件名字</p>
+        :type Name: str
+        """
+        self._HostInfo = None
+        self._EffectVersion = None
+        self._Path = None
+        self._ProcessID = None
+        self._FixCommand = None
+        self._Name = None
+
+    @property
+    def HostInfo(self):
+        r"""<p>主机简要信息</p>
+        :rtype: :class:`tencentcloud.csip.v20221121.models.HostBriefInfo`
+        """
+        return self._HostInfo
+
+    @HostInfo.setter
+    def HostInfo(self, HostInfo):
+        self._HostInfo = HostInfo
+
+    @property
+    def EffectVersion(self):
+        r"""<p>受影响组件版本</p>
+        :rtype: str
+        """
+        return self._EffectVersion
+
+    @EffectVersion.setter
+    def EffectVersion(self, EffectVersion):
+        self._EffectVersion = EffectVersion
+
+    @property
+    def Path(self):
+        r"""<p>组件在主机上的安装路径</p>
+        :rtype: str
+        """
+        return self._Path
+
+    @Path.setter
+    def Path(self, Path):
+        self._Path = Path
+
+    @property
+    def ProcessID(self):
+        r"""<p>关联进程 ID</p>
+        :rtype: str
+        """
+        return self._ProcessID
+
+    @ProcessID.setter
+    def ProcessID(self, ProcessID):
+        self._ProcessID = ProcessID
+
+    @property
+    def FixCommand(self):
+        r"""<p>修复命令（仅展示）</p>
+        :rtype: str
+        """
+        return self._FixCommand
+
+    @FixCommand.setter
+    def FixCommand(self, FixCommand):
+        self._FixCommand = FixCommand
+
+    @property
+    def Name(self):
+        r"""<p>组件名字</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+
+    def _deserialize(self, params):
+        if params.get("HostInfo") is not None:
+            self._HostInfo = HostBriefInfo()
+            self._HostInfo._deserialize(params.get("HostInfo"))
+        self._EffectVersion = params.get("EffectVersion")
+        self._Path = params.get("Path")
+        self._ProcessID = params.get("ProcessID")
+        self._FixCommand = params.get("FixCommand")
+        self._Name = params.get("Name")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class HostVulOverview(AbstractModel):
+    r"""主机漏洞概要
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _UrgentRepairCount: <p>需立即修复漏洞数（VPR 评级为 URGENT 的漏洞数量）</p>
+        :type UrgentRepairCount: int
+        :param _DefendHostCount: <p>已开启漏洞防御的主机数</p>
+        :type DefendHostCount: int
+        :param _TotalHostCount: <p>主机总数</p>
+        :type TotalHostCount: int
+        :param _FixedVulCount: <p>已修复漏洞总次数</p>
+        :type FixedVulCount: int
+        :param _LinuxVulCount: <p>Linux 软件漏洞数</p>
+        :type LinuxVulCount: int
+        :param _WindowVulCount: <p>Windows 系统补丁数</p>
+        :type WindowVulCount: int
+        :param _WebCMSVulCount: <p>Web-CMS 漏洞数</p>
+        :type WebCMSVulCount: int
+        :param _AppVulCount: <p>应用漏洞数</p>
+        :type AppVulCount: int
+        :param _EmergencyCount: <p>应急漏洞数</p>
+        :type EmergencyCount: int
+        :param _VulItemCount: <p>漏洞知识库总数</p>
+        :type VulItemCount: int
+        :param _LatestScanTime: <p>最近扫描时间</p><p>参数格式：YYYY-MM-DDTHH:mm:ssZ</p>
+        :type LatestScanTime: str
+        :param _EnableTimingScan: <p>是否开启周期扫描</p><p>枚举值：</p><ul><li>1： 开启</li><li>0： 未开启</li></ul>
+        :type EnableTimingScan: int
+        :param _CriticalRepairCount: <p>严重修复数</p>
+        :type CriticalRepairCount: int
+        :param _CriticalRepairLinuxVulCount: <p>严重修复Linux漏洞数</p>
+        :type CriticalRepairLinuxVulCount: int
+        :param _CriticalRepairAppVulCount: <p>严重修复应用漏洞数</p>
+        :type CriticalRepairAppVulCount: int
+        :param _CriticalRepairWebCMSVulCount: <p>严重修复Web-CMS漏洞数</p>
+        :type CriticalRepairWebCMSVulCount: int
+        :param _CriticalRepairEmergencyCount: <p>严重修复紧急漏洞数</p>
+        :type CriticalRepairEmergencyCount: int
+        """
+        self._UrgentRepairCount = None
+        self._DefendHostCount = None
+        self._TotalHostCount = None
+        self._FixedVulCount = None
+        self._LinuxVulCount = None
+        self._WindowVulCount = None
+        self._WebCMSVulCount = None
+        self._AppVulCount = None
+        self._EmergencyCount = None
+        self._VulItemCount = None
+        self._LatestScanTime = None
+        self._EnableTimingScan = None
+        self._CriticalRepairCount = None
+        self._CriticalRepairLinuxVulCount = None
+        self._CriticalRepairAppVulCount = None
+        self._CriticalRepairWebCMSVulCount = None
+        self._CriticalRepairEmergencyCount = None
+
+    @property
+    def UrgentRepairCount(self):
+        r"""<p>需立即修复漏洞数（VPR 评级为 URGENT 的漏洞数量）</p>
+        :rtype: int
+        """
+        return self._UrgentRepairCount
+
+    @UrgentRepairCount.setter
+    def UrgentRepairCount(self, UrgentRepairCount):
+        self._UrgentRepairCount = UrgentRepairCount
+
+    @property
+    def DefendHostCount(self):
+        r"""<p>已开启漏洞防御的主机数</p>
+        :rtype: int
+        """
+        return self._DefendHostCount
+
+    @DefendHostCount.setter
+    def DefendHostCount(self, DefendHostCount):
+        self._DefendHostCount = DefendHostCount
+
+    @property
+    def TotalHostCount(self):
+        r"""<p>主机总数</p>
+        :rtype: int
+        """
+        return self._TotalHostCount
+
+    @TotalHostCount.setter
+    def TotalHostCount(self, TotalHostCount):
+        self._TotalHostCount = TotalHostCount
+
+    @property
+    def FixedVulCount(self):
+        r"""<p>已修复漏洞总次数</p>
+        :rtype: int
+        """
+        return self._FixedVulCount
+
+    @FixedVulCount.setter
+    def FixedVulCount(self, FixedVulCount):
+        self._FixedVulCount = FixedVulCount
+
+    @property
+    def LinuxVulCount(self):
+        r"""<p>Linux 软件漏洞数</p>
+        :rtype: int
+        """
+        return self._LinuxVulCount
+
+    @LinuxVulCount.setter
+    def LinuxVulCount(self, LinuxVulCount):
+        self._LinuxVulCount = LinuxVulCount
+
+    @property
+    def WindowVulCount(self):
+        r"""<p>Windows 系统补丁数</p>
+        :rtype: int
+        """
+        return self._WindowVulCount
+
+    @WindowVulCount.setter
+    def WindowVulCount(self, WindowVulCount):
+        self._WindowVulCount = WindowVulCount
+
+    @property
+    def WebCMSVulCount(self):
+        r"""<p>Web-CMS 漏洞数</p>
+        :rtype: int
+        """
+        return self._WebCMSVulCount
+
+    @WebCMSVulCount.setter
+    def WebCMSVulCount(self, WebCMSVulCount):
+        self._WebCMSVulCount = WebCMSVulCount
+
+    @property
+    def AppVulCount(self):
+        r"""<p>应用漏洞数</p>
+        :rtype: int
+        """
+        return self._AppVulCount
+
+    @AppVulCount.setter
+    def AppVulCount(self, AppVulCount):
+        self._AppVulCount = AppVulCount
+
+    @property
+    def EmergencyCount(self):
+        r"""<p>应急漏洞数</p>
+        :rtype: int
+        """
+        return self._EmergencyCount
+
+    @EmergencyCount.setter
+    def EmergencyCount(self, EmergencyCount):
+        self._EmergencyCount = EmergencyCount
+
+    @property
+    def VulItemCount(self):
+        r"""<p>漏洞知识库总数</p>
+        :rtype: int
+        """
+        return self._VulItemCount
+
+    @VulItemCount.setter
+    def VulItemCount(self, VulItemCount):
+        self._VulItemCount = VulItemCount
+
+    @property
+    def LatestScanTime(self):
+        r"""<p>最近扫描时间</p><p>参数格式：YYYY-MM-DDTHH:mm:ssZ</p>
+        :rtype: str
+        """
+        return self._LatestScanTime
+
+    @LatestScanTime.setter
+    def LatestScanTime(self, LatestScanTime):
+        self._LatestScanTime = LatestScanTime
+
+    @property
+    def EnableTimingScan(self):
+        r"""<p>是否开启周期扫描</p><p>枚举值：</p><ul><li>1： 开启</li><li>0： 未开启</li></ul>
+        :rtype: int
+        """
+        return self._EnableTimingScan
+
+    @EnableTimingScan.setter
+    def EnableTimingScan(self, EnableTimingScan):
+        self._EnableTimingScan = EnableTimingScan
+
+    @property
+    def CriticalRepairCount(self):
+        r"""<p>严重修复数</p>
+        :rtype: int
+        """
+        return self._CriticalRepairCount
+
+    @CriticalRepairCount.setter
+    def CriticalRepairCount(self, CriticalRepairCount):
+        self._CriticalRepairCount = CriticalRepairCount
+
+    @property
+    def CriticalRepairLinuxVulCount(self):
+        r"""<p>严重修复Linux漏洞数</p>
+        :rtype: int
+        """
+        return self._CriticalRepairLinuxVulCount
+
+    @CriticalRepairLinuxVulCount.setter
+    def CriticalRepairLinuxVulCount(self, CriticalRepairLinuxVulCount):
+        self._CriticalRepairLinuxVulCount = CriticalRepairLinuxVulCount
+
+    @property
+    def CriticalRepairAppVulCount(self):
+        r"""<p>严重修复应用漏洞数</p>
+        :rtype: int
+        """
+        return self._CriticalRepairAppVulCount
+
+    @CriticalRepairAppVulCount.setter
+    def CriticalRepairAppVulCount(self, CriticalRepairAppVulCount):
+        self._CriticalRepairAppVulCount = CriticalRepairAppVulCount
+
+    @property
+    def CriticalRepairWebCMSVulCount(self):
+        r"""<p>严重修复Web-CMS漏洞数</p>
+        :rtype: int
+        """
+        return self._CriticalRepairWebCMSVulCount
+
+    @CriticalRepairWebCMSVulCount.setter
+    def CriticalRepairWebCMSVulCount(self, CriticalRepairWebCMSVulCount):
+        self._CriticalRepairWebCMSVulCount = CriticalRepairWebCMSVulCount
+
+    @property
+    def CriticalRepairEmergencyCount(self):
+        r"""<p>严重修复紧急漏洞数</p>
+        :rtype: int
+        """
+        return self._CriticalRepairEmergencyCount
+
+    @CriticalRepairEmergencyCount.setter
+    def CriticalRepairEmergencyCount(self, CriticalRepairEmergencyCount):
+        self._CriticalRepairEmergencyCount = CriticalRepairEmergencyCount
+
+
+    def _deserialize(self, params):
+        self._UrgentRepairCount = params.get("UrgentRepairCount")
+        self._DefendHostCount = params.get("DefendHostCount")
+        self._TotalHostCount = params.get("TotalHostCount")
+        self._FixedVulCount = params.get("FixedVulCount")
+        self._LinuxVulCount = params.get("LinuxVulCount")
+        self._WindowVulCount = params.get("WindowVulCount")
+        self._WebCMSVulCount = params.get("WebCMSVulCount")
+        self._AppVulCount = params.get("AppVulCount")
+        self._EmergencyCount = params.get("EmergencyCount")
+        self._VulItemCount = params.get("VulItemCount")
+        self._LatestScanTime = params.get("LatestScanTime")
+        self._EnableTimingScan = params.get("EnableTimingScan")
+        self._CriticalRepairCount = params.get("CriticalRepairCount")
+        self._CriticalRepairLinuxVulCount = params.get("CriticalRepairLinuxVulCount")
+        self._CriticalRepairAppVulCount = params.get("CriticalRepairAppVulCount")
+        self._CriticalRepairWebCMSVulCount = params.get("CriticalRepairWebCMSVulCount")
+        self._CriticalRepairEmergencyCount = params.get("CriticalRepairEmergencyCount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class HostVulRisk(AbstractModel):
+    r"""主机漏洞风险
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RiskID: <p>风险记录 ID（host_vul_risk.id）</p>
+        :type RiskID: int
+        :param _EffectHostCount: <p>受影响主机数</p>
+        :type EffectHostCount: int
+        :param _LatestScanTime: <p>最近扫描时间<br>参数格式：YYYY-MM-DD HH:mm:ss</p>
+        :type LatestScanTime: str
+        :param _Account: <p>所属账号列表</p>
+        :type Account: list of AccountBriefInfo
+        :param _DefendStatus: <p>漏洞防御状态<br>枚举值：<br>ENABLED：已开启<br>NOT_SUPPORTED：不支持<br>NOT_ENABLED：未开启</p>
+        :type DefendStatus: str
+        :param _RiskStatus: <p>修复状态<br>枚举值：<br>PENDING：待修复<br>SCANNING：扫描中<br>FIXED：已修复<br>IGNORED：已加白<br>FIXING：修复中<br>FIX_FAILED：修复失败<br>NOTSCAN：未扫描<br>WITHOUT_RISK：无风险<br>NEED_REBOOT：修复待重启</p>
+        :type RiskStatus: str
+        :param _VulDetail: <p>漏洞详细信息</p>
+        :type VulDetail: :class:`tencentcloud.csip.v20221121.models.VulDetailInfo`
+        """
+        self._RiskID = None
+        self._EffectHostCount = None
+        self._LatestScanTime = None
+        self._Account = None
+        self._DefendStatus = None
+        self._RiskStatus = None
+        self._VulDetail = None
+
+    @property
+    def RiskID(self):
+        r"""<p>风险记录 ID（host_vul_risk.id）</p>
+        :rtype: int
+        """
+        return self._RiskID
+
+    @RiskID.setter
+    def RiskID(self, RiskID):
+        self._RiskID = RiskID
+
+    @property
+    def EffectHostCount(self):
+        r"""<p>受影响主机数</p>
+        :rtype: int
+        """
+        return self._EffectHostCount
+
+    @EffectHostCount.setter
+    def EffectHostCount(self, EffectHostCount):
+        self._EffectHostCount = EffectHostCount
+
+    @property
+    def LatestScanTime(self):
+        r"""<p>最近扫描时间<br>参数格式：YYYY-MM-DD HH:mm:ss</p>
+        :rtype: str
+        """
+        return self._LatestScanTime
+
+    @LatestScanTime.setter
+    def LatestScanTime(self, LatestScanTime):
+        self._LatestScanTime = LatestScanTime
+
+    @property
+    def Account(self):
+        r"""<p>所属账号列表</p>
+        :rtype: list of AccountBriefInfo
+        """
+        return self._Account
+
+    @Account.setter
+    def Account(self, Account):
+        self._Account = Account
+
+    @property
+    def DefendStatus(self):
+        r"""<p>漏洞防御状态<br>枚举值：<br>ENABLED：已开启<br>NOT_SUPPORTED：不支持<br>NOT_ENABLED：未开启</p>
+        :rtype: str
+        """
+        return self._DefendStatus
+
+    @DefendStatus.setter
+    def DefendStatus(self, DefendStatus):
+        self._DefendStatus = DefendStatus
+
+    @property
+    def RiskStatus(self):
+        r"""<p>修复状态<br>枚举值：<br>PENDING：待修复<br>SCANNING：扫描中<br>FIXED：已修复<br>IGNORED：已加白<br>FIXING：修复中<br>FIX_FAILED：修复失败<br>NOTSCAN：未扫描<br>WITHOUT_RISK：无风险<br>NEED_REBOOT：修复待重启</p>
+        :rtype: str
+        """
+        return self._RiskStatus
+
+    @RiskStatus.setter
+    def RiskStatus(self, RiskStatus):
+        self._RiskStatus = RiskStatus
+
+    @property
+    def VulDetail(self):
+        r"""<p>漏洞详细信息</p>
+        :rtype: :class:`tencentcloud.csip.v20221121.models.VulDetailInfo`
+        """
+        return self._VulDetail
+
+    @VulDetail.setter
+    def VulDetail(self, VulDetail):
+        self._VulDetail = VulDetail
+
+
+    def _deserialize(self, params):
+        self._RiskID = params.get("RiskID")
+        self._EffectHostCount = params.get("EffectHostCount")
+        self._LatestScanTime = params.get("LatestScanTime")
+        if params.get("Account") is not None:
+            self._Account = []
+            for item in params.get("Account"):
+                obj = AccountBriefInfo()
+                obj._deserialize(item)
+                self._Account.append(obj)
+        self._DefendStatus = params.get("DefendStatus")
+        self._RiskStatus = params.get("RiskStatus")
+        if params.get("VulDetail") is not None:
+            self._VulDetail = VulDetailInfo()
+            self._VulDetail._deserialize(params.get("VulDetail"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class IPIntelInfo(AbstractModel):
     r"""IP威胁情报信息（通过TIX IPAnalysis接口获取）
 
@@ -66129,6 +71945,529 @@ class IpAssetListVO(AbstractModel):
         self._RiskExposure = params.get("RiskExposure")
         self._IsNewAsset = params.get("IsNewAsset")
         self._VerifyStatus = params.get("VerifyStatus")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class KBDetail(AbstractModel):
+    r"""Windows KB详细信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ID: <p>KB 补丁内部 ID（kb_info.id）</p>
+        :type ID: int
+        :param _Number: <p>KB 编号<br>参数格式：形如 KB5001234</p>
+        :type Number: str
+        :param _Name: <p>KB 补丁名称</p>
+        :type Name: str
+        :param _ReferUrl: <p>参考链接（微软官方文档地址）</p>
+        :type ReferUrl: str
+        :param _PublishTime: <p>发布时间<br>参数格式：YYYY-MM-DD HH:mm:ss</p>
+        :type PublishTime: str
+        :param _NeedRestart: <p>安装该 KB 后是否需要重启<br>枚举值：<br>true：需要<br>false：不需要</p>
+        :type NeedRestart: bool
+        :param _RelateVulList: <p>关联漏洞列表</p>
+        :type RelateVulList: list of VulBriefInfo
+        :param _RelateVulCount: <p>关联漏洞总数</p>
+        :type RelateVulCount: int
+        :param _RelateProduct: <p>关联os版本</p>
+        :type RelateProduct: str
+        """
+        self._ID = None
+        self._Number = None
+        self._Name = None
+        self._ReferUrl = None
+        self._PublishTime = None
+        self._NeedRestart = None
+        self._RelateVulList = None
+        self._RelateVulCount = None
+        self._RelateProduct = None
+
+    @property
+    def ID(self):
+        r"""<p>KB 补丁内部 ID（kb_info.id）</p>
+        :rtype: int
+        """
+        return self._ID
+
+    @ID.setter
+    def ID(self, ID):
+        self._ID = ID
+
+    @property
+    def Number(self):
+        r"""<p>KB 编号<br>参数格式：形如 KB5001234</p>
+        :rtype: str
+        """
+        return self._Number
+
+    @Number.setter
+    def Number(self, Number):
+        self._Number = Number
+
+    @property
+    def Name(self):
+        r"""<p>KB 补丁名称</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def ReferUrl(self):
+        r"""<p>参考链接（微软官方文档地址）</p>
+        :rtype: str
+        """
+        return self._ReferUrl
+
+    @ReferUrl.setter
+    def ReferUrl(self, ReferUrl):
+        self._ReferUrl = ReferUrl
+
+    @property
+    def PublishTime(self):
+        r"""<p>发布时间<br>参数格式：YYYY-MM-DD HH:mm:ss</p>
+        :rtype: str
+        """
+        return self._PublishTime
+
+    @PublishTime.setter
+    def PublishTime(self, PublishTime):
+        self._PublishTime = PublishTime
+
+    @property
+    def NeedRestart(self):
+        r"""<p>安装该 KB 后是否需要重启<br>枚举值：<br>true：需要<br>false：不需要</p>
+        :rtype: bool
+        """
+        return self._NeedRestart
+
+    @NeedRestart.setter
+    def NeedRestart(self, NeedRestart):
+        self._NeedRestart = NeedRestart
+
+    @property
+    def RelateVulList(self):
+        r"""<p>关联漏洞列表</p>
+        :rtype: list of VulBriefInfo
+        """
+        return self._RelateVulList
+
+    @RelateVulList.setter
+    def RelateVulList(self, RelateVulList):
+        self._RelateVulList = RelateVulList
+
+    @property
+    def RelateVulCount(self):
+        r"""<p>关联漏洞总数</p>
+        :rtype: int
+        """
+        return self._RelateVulCount
+
+    @RelateVulCount.setter
+    def RelateVulCount(self, RelateVulCount):
+        self._RelateVulCount = RelateVulCount
+
+    @property
+    def RelateProduct(self):
+        r"""<p>关联os版本</p>
+        :rtype: str
+        """
+        return self._RelateProduct
+
+    @RelateProduct.setter
+    def RelateProduct(self, RelateProduct):
+        self._RelateProduct = RelateProduct
+
+
+    def _deserialize(self, params):
+        self._ID = params.get("ID")
+        self._Number = params.get("Number")
+        self._Name = params.get("Name")
+        self._ReferUrl = params.get("ReferUrl")
+        self._PublishTime = params.get("PublishTime")
+        self._NeedRestart = params.get("NeedRestart")
+        if params.get("RelateVulList") is not None:
+            self._RelateVulList = []
+            for item in params.get("RelateVulList"):
+                obj = VulBriefInfo()
+                obj._deserialize(item)
+                self._RelateVulList.append(obj)
+        self._RelateVulCount = params.get("RelateVulCount")
+        self._RelateProduct = params.get("RelateProduct")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class KBFixSummaryItem(AbstractModel):
+    r"""KB补丁修复汇总信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _KBId: KB补丁ID
+        :type KBId: int
+        :param _KBName: KB补丁名称
+        :type KBName: str
+        :param _KBNo: KB编号（如 KB5001234）
+        :type KBNo: str
+        :param _RelatedVulCount: 关联漏洞数
+        :type RelatedVulCount: int
+        :param _AffectedCount: 受影响主机数
+        :type AffectedCount: int
+        :param _NeedReboot: 修复后是否需要重启系统
+        :type NeedReboot: bool
+        :param _KBPreCondition: 前置依赖补丁（逗号分隔的KB编号列表）
+        :type KBPreCondition: str
+        """
+        self._KBId = None
+        self._KBName = None
+        self._KBNo = None
+        self._RelatedVulCount = None
+        self._AffectedCount = None
+        self._NeedReboot = None
+        self._KBPreCondition = None
+
+    @property
+    def KBId(self):
+        r"""KB补丁ID
+        :rtype: int
+        """
+        return self._KBId
+
+    @KBId.setter
+    def KBId(self, KBId):
+        self._KBId = KBId
+
+    @property
+    def KBName(self):
+        r"""KB补丁名称
+        :rtype: str
+        """
+        return self._KBName
+
+    @KBName.setter
+    def KBName(self, KBName):
+        self._KBName = KBName
+
+    @property
+    def KBNo(self):
+        r"""KB编号（如 KB5001234）
+        :rtype: str
+        """
+        return self._KBNo
+
+    @KBNo.setter
+    def KBNo(self, KBNo):
+        self._KBNo = KBNo
+
+    @property
+    def RelatedVulCount(self):
+        r"""关联漏洞数
+        :rtype: int
+        """
+        return self._RelatedVulCount
+
+    @RelatedVulCount.setter
+    def RelatedVulCount(self, RelatedVulCount):
+        self._RelatedVulCount = RelatedVulCount
+
+    @property
+    def AffectedCount(self):
+        r"""受影响主机数
+        :rtype: int
+        """
+        return self._AffectedCount
+
+    @AffectedCount.setter
+    def AffectedCount(self, AffectedCount):
+        self._AffectedCount = AffectedCount
+
+    @property
+    def NeedReboot(self):
+        r"""修复后是否需要重启系统
+        :rtype: bool
+        """
+        return self._NeedReboot
+
+    @NeedReboot.setter
+    def NeedReboot(self, NeedReboot):
+        self._NeedReboot = NeedReboot
+
+    @property
+    def KBPreCondition(self):
+        r"""前置依赖补丁（逗号分隔的KB编号列表）
+        :rtype: str
+        """
+        return self._KBPreCondition
+
+    @KBPreCondition.setter
+    def KBPreCondition(self, KBPreCondition):
+        self._KBPreCondition = KBPreCondition
+
+
+    def _deserialize(self, params):
+        self._KBId = params.get("KBId")
+        self._KBName = params.get("KBName")
+        self._KBNo = params.get("KBNo")
+        self._RelatedVulCount = params.get("RelatedVulCount")
+        self._AffectedCount = params.get("AffectedCount")
+        self._NeedReboot = params.get("NeedReboot")
+        self._KBPreCondition = params.get("KBPreCondition")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class KBUpdateMachineItem(AbstractModel):
+    r"""可更新补丁主机信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _KBId: <p>KB补丁ID</p>
+        :type KBId: int
+        :param _InstanceId: <p>主机实例ID</p>
+        :type InstanceId: str
+        :param _MachineName: <p>主机名称</p>
+        :type MachineName: str
+        :param _MachineIp: <p>主机IP</p>
+        :type MachineIp: str
+        :param _PublicIp: <p>公网IP</p>
+        :type PublicIp: str
+        :param _OsName: <p>操作系统名称</p>
+        :type OsName: str
+        :param _MachineStatus: <p>主机在线状态<br>枚举值：<br>ONLINE：在线<br>OFFLINE：离线</p>
+        :type MachineStatus: str
+        :param _SupportAutoFix: <p>是否支持自动更新补丁<br>枚举值：<br>0：不支持<br>1：支持</p>
+        :type SupportAutoFix: int
+        :param _FixStatus: <p>当前修复状态<br>枚举值：<br>0：未修复<br>1：修复中<br>2：修复失败<br>3：修复成功<br>4：修复超时</p>
+        :type FixStatus: int
+        :param _LatestFixTime: <p>最近一次修复时间<br>参数格式：YYYY-MM-DDTHH:mm:ssZ（ISO8601格式）</p>
+        :type LatestFixTime: str
+        :param _NotFixableReason: <p>不可修复原因，SupportAutoFix为0时返回</p>
+        :type NotFixableReason: str
+        :param _TagItems: <p>资产标签列表</p>
+        :type TagItems: list of MiniTagItem
+        :param _AppId: <p>所属账号AppId</p>
+        :type AppId: int
+        :param _PayVersion: <p>付费版本信息<br>枚举值：<br>BASIC：基础版<br>PRO：专业版<br>ULTIMATE：旗舰版</p>
+        :type PayVersion: str
+        """
+        self._KBId = None
+        self._InstanceId = None
+        self._MachineName = None
+        self._MachineIp = None
+        self._PublicIp = None
+        self._OsName = None
+        self._MachineStatus = None
+        self._SupportAutoFix = None
+        self._FixStatus = None
+        self._LatestFixTime = None
+        self._NotFixableReason = None
+        self._TagItems = None
+        self._AppId = None
+        self._PayVersion = None
+
+    @property
+    def KBId(self):
+        r"""<p>KB补丁ID</p>
+        :rtype: int
+        """
+        return self._KBId
+
+    @KBId.setter
+    def KBId(self, KBId):
+        self._KBId = KBId
+
+    @property
+    def InstanceId(self):
+        r"""<p>主机实例ID</p>
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def MachineName(self):
+        r"""<p>主机名称</p>
+        :rtype: str
+        """
+        return self._MachineName
+
+    @MachineName.setter
+    def MachineName(self, MachineName):
+        self._MachineName = MachineName
+
+    @property
+    def MachineIp(self):
+        r"""<p>主机IP</p>
+        :rtype: str
+        """
+        return self._MachineIp
+
+    @MachineIp.setter
+    def MachineIp(self, MachineIp):
+        self._MachineIp = MachineIp
+
+    @property
+    def PublicIp(self):
+        r"""<p>公网IP</p>
+        :rtype: str
+        """
+        return self._PublicIp
+
+    @PublicIp.setter
+    def PublicIp(self, PublicIp):
+        self._PublicIp = PublicIp
+
+    @property
+    def OsName(self):
+        r"""<p>操作系统名称</p>
+        :rtype: str
+        """
+        return self._OsName
+
+    @OsName.setter
+    def OsName(self, OsName):
+        self._OsName = OsName
+
+    @property
+    def MachineStatus(self):
+        r"""<p>主机在线状态<br>枚举值：<br>ONLINE：在线<br>OFFLINE：离线</p>
+        :rtype: str
+        """
+        return self._MachineStatus
+
+    @MachineStatus.setter
+    def MachineStatus(self, MachineStatus):
+        self._MachineStatus = MachineStatus
+
+    @property
+    def SupportAutoFix(self):
+        r"""<p>是否支持自动更新补丁<br>枚举值：<br>0：不支持<br>1：支持</p>
+        :rtype: int
+        """
+        return self._SupportAutoFix
+
+    @SupportAutoFix.setter
+    def SupportAutoFix(self, SupportAutoFix):
+        self._SupportAutoFix = SupportAutoFix
+
+    @property
+    def FixStatus(self):
+        r"""<p>当前修复状态<br>枚举值：<br>0：未修复<br>1：修复中<br>2：修复失败<br>3：修复成功<br>4：修复超时</p>
+        :rtype: int
+        """
+        return self._FixStatus
+
+    @FixStatus.setter
+    def FixStatus(self, FixStatus):
+        self._FixStatus = FixStatus
+
+    @property
+    def LatestFixTime(self):
+        r"""<p>最近一次修复时间<br>参数格式：YYYY-MM-DDTHH:mm:ssZ（ISO8601格式）</p>
+        :rtype: str
+        """
+        return self._LatestFixTime
+
+    @LatestFixTime.setter
+    def LatestFixTime(self, LatestFixTime):
+        self._LatestFixTime = LatestFixTime
+
+    @property
+    def NotFixableReason(self):
+        r"""<p>不可修复原因，SupportAutoFix为0时返回</p>
+        :rtype: str
+        """
+        return self._NotFixableReason
+
+    @NotFixableReason.setter
+    def NotFixableReason(self, NotFixableReason):
+        self._NotFixableReason = NotFixableReason
+
+    @property
+    def TagItems(self):
+        r"""<p>资产标签列表</p>
+        :rtype: list of MiniTagItem
+        """
+        return self._TagItems
+
+    @TagItems.setter
+    def TagItems(self, TagItems):
+        self._TagItems = TagItems
+
+    @property
+    def AppId(self):
+        r"""<p>所属账号AppId</p>
+        :rtype: int
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def PayVersion(self):
+        r"""<p>付费版本信息<br>枚举值：<br>BASIC：基础版<br>PRO：专业版<br>ULTIMATE：旗舰版</p>
+        :rtype: str
+        """
+        return self._PayVersion
+
+    @PayVersion.setter
+    def PayVersion(self, PayVersion):
+        self._PayVersion = PayVersion
+
+
+    def _deserialize(self, params):
+        self._KBId = params.get("KBId")
+        self._InstanceId = params.get("InstanceId")
+        self._MachineName = params.get("MachineName")
+        self._MachineIp = params.get("MachineIp")
+        self._PublicIp = params.get("PublicIp")
+        self._OsName = params.get("OsName")
+        self._MachineStatus = params.get("MachineStatus")
+        self._SupportAutoFix = params.get("SupportAutoFix")
+        self._FixStatus = params.get("FixStatus")
+        self._LatestFixTime = params.get("LatestFixTime")
+        self._NotFixableReason = params.get("NotFixableReason")
+        if params.get("TagItems") is not None:
+            self._TagItems = []
+            for item in params.get("TagItems"):
+                obj = MiniTagItem()
+                obj._deserialize(item)
+                self._TagItems.append(obj)
+        self._AppId = params.get("AppId")
+        self._PayVersion = params.get("PayVersion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -74370,6 +80709,513 @@ class ModifyUebaRuleSwitchResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyVulScanPeriodicRequest(AbstractModel):
+    r"""ModifyVulScanPeriodic请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Status: <p>周期扫描开关（0-关闭, 1-开启）</p>
+        :type Status: int
+        :param _VulCategory: <p>漏洞类型</p><p>枚举值：</p><ul><li>LINUX： Linux软件漏洞</li><li>WINDOWS： Windows系统补丁</li><li>WEB_CMS： Web-CMS漏洞</li><li>APPLICATION： 应用漏洞</li><li>EMERGENCY： 应急漏洞</li></ul>
+        :type VulCategory: list of str
+        :param _Level: <p>漏洞等级</p><p>枚举值：</p><ul><li>LOW： 低危</li><li>MEDIUM： 中危</li><li>HIGH： 高危</li><li>CRITICAL： 严重</li></ul>
+        :type Level: list of str
+        :param _Method: <p>扫描方式（VersionCompare: 版本对比, POC: POC检测, VersionComparePOC: 版本对比+POC检测）</p>
+        :type Method: str
+        :param _StartTime: <p>开始时间（09:00:00）</p>
+        :type StartTime: str
+        :param _EndTime: <p>结束时间（18:00:00）</p>
+        :type EndTime: str
+        :param _AssetRange: <p>资产范围（0-全部资产，1-自选资产，2-剔除资产，3-自动资产匹配）</p>
+        :type AssetRange: int
+        :param _CycleType: <p>周期扫描类型</p><p>枚举值：</p><ul><li>1： 每天</li><li>2： 每周</li><li>3： 每月</li></ul>
+        :type CycleType: int
+        :param _Timeout: <p>扫描超时时长</p><p>单位：秒</p>
+        :type Timeout: int
+        :param _CycleValue: <p>周期值</p><p>取值范围：[1, 31]</p><p>单位：周几或者每月几号</p>
+        :type CycleValue: list of int non-negative
+        :param _MemberId: <p>集团账号的成员id</p>
+        :type MemberId: list of str
+        :param _AssetList: <p>资产列表（instance_id列表）</p>
+        :type AssetList: list of str
+        :param _AllowSync: <p>是否运行被同步配置 0-不允许，1-允许</p>
+        :type AllowSync: int
+        :param _EnableSync: <p>管理员账号是否开启了自动同步配置开关 0-关闭，1-开启</p>
+        :type EnableSync: int
+        :param _SyncTo: <p>配置同步给哪些账号appid</p>
+        :type SyncTo: list of int non-negative
+        :param _TagIds: <p>标签ID</p>
+        :type TagIds: list of int non-negative
+        """
+        self._Status = None
+        self._VulCategory = None
+        self._Level = None
+        self._Method = None
+        self._StartTime = None
+        self._EndTime = None
+        self._AssetRange = None
+        self._CycleType = None
+        self._Timeout = None
+        self._CycleValue = None
+        self._MemberId = None
+        self._AssetList = None
+        self._AllowSync = None
+        self._EnableSync = None
+        self._SyncTo = None
+        self._TagIds = None
+
+    @property
+    def Status(self):
+        r"""<p>周期扫描开关（0-关闭, 1-开启）</p>
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def VulCategory(self):
+        r"""<p>漏洞类型</p><p>枚举值：</p><ul><li>LINUX： Linux软件漏洞</li><li>WINDOWS： Windows系统补丁</li><li>WEB_CMS： Web-CMS漏洞</li><li>APPLICATION： 应用漏洞</li><li>EMERGENCY： 应急漏洞</li></ul>
+        :rtype: list of str
+        """
+        return self._VulCategory
+
+    @VulCategory.setter
+    def VulCategory(self, VulCategory):
+        self._VulCategory = VulCategory
+
+    @property
+    def Level(self):
+        r"""<p>漏洞等级</p><p>枚举值：</p><ul><li>LOW： 低危</li><li>MEDIUM： 中危</li><li>HIGH： 高危</li><li>CRITICAL： 严重</li></ul>
+        :rtype: list of str
+        """
+        return self._Level
+
+    @Level.setter
+    def Level(self, Level):
+        self._Level = Level
+
+    @property
+    def Method(self):
+        r"""<p>扫描方式（VersionCompare: 版本对比, POC: POC检测, VersionComparePOC: 版本对比+POC检测）</p>
+        :rtype: str
+        """
+        return self._Method
+
+    @Method.setter
+    def Method(self, Method):
+        self._Method = Method
+
+    @property
+    def StartTime(self):
+        r"""<p>开始时间（09:00:00）</p>
+        :rtype: str
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""<p>结束时间（18:00:00）</p>
+        :rtype: str
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def AssetRange(self):
+        r"""<p>资产范围（0-全部资产，1-自选资产，2-剔除资产，3-自动资产匹配）</p>
+        :rtype: int
+        """
+        return self._AssetRange
+
+    @AssetRange.setter
+    def AssetRange(self, AssetRange):
+        self._AssetRange = AssetRange
+
+    @property
+    def CycleType(self):
+        r"""<p>周期扫描类型</p><p>枚举值：</p><ul><li>1： 每天</li><li>2： 每周</li><li>3： 每月</li></ul>
+        :rtype: int
+        """
+        return self._CycleType
+
+    @CycleType.setter
+    def CycleType(self, CycleType):
+        self._CycleType = CycleType
+
+    @property
+    def Timeout(self):
+        r"""<p>扫描超时时长</p><p>单位：秒</p>
+        :rtype: int
+        """
+        return self._Timeout
+
+    @Timeout.setter
+    def Timeout(self, Timeout):
+        self._Timeout = Timeout
+
+    @property
+    def CycleValue(self):
+        r"""<p>周期值</p><p>取值范围：[1, 31]</p><p>单位：周几或者每月几号</p>
+        :rtype: list of int non-negative
+        """
+        return self._CycleValue
+
+    @CycleValue.setter
+    def CycleValue(self, CycleValue):
+        self._CycleValue = CycleValue
+
+    @property
+    def MemberId(self):
+        r"""<p>集团账号的成员id</p>
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+    @property
+    def AssetList(self):
+        r"""<p>资产列表（instance_id列表）</p>
+        :rtype: list of str
+        """
+        return self._AssetList
+
+    @AssetList.setter
+    def AssetList(self, AssetList):
+        self._AssetList = AssetList
+
+    @property
+    def AllowSync(self):
+        r"""<p>是否运行被同步配置 0-不允许，1-允许</p>
+        :rtype: int
+        """
+        return self._AllowSync
+
+    @AllowSync.setter
+    def AllowSync(self, AllowSync):
+        self._AllowSync = AllowSync
+
+    @property
+    def EnableSync(self):
+        r"""<p>管理员账号是否开启了自动同步配置开关 0-关闭，1-开启</p>
+        :rtype: int
+        """
+        return self._EnableSync
+
+    @EnableSync.setter
+    def EnableSync(self, EnableSync):
+        self._EnableSync = EnableSync
+
+    @property
+    def SyncTo(self):
+        r"""<p>配置同步给哪些账号appid</p>
+        :rtype: list of int non-negative
+        """
+        return self._SyncTo
+
+    @SyncTo.setter
+    def SyncTo(self, SyncTo):
+        self._SyncTo = SyncTo
+
+    @property
+    def TagIds(self):
+        r"""<p>标签ID</p>
+        :rtype: list of int non-negative
+        """
+        return self._TagIds
+
+    @TagIds.setter
+    def TagIds(self, TagIds):
+        self._TagIds = TagIds
+
+
+    def _deserialize(self, params):
+        self._Status = params.get("Status")
+        self._VulCategory = params.get("VulCategory")
+        self._Level = params.get("Level")
+        self._Method = params.get("Method")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._AssetRange = params.get("AssetRange")
+        self._CycleType = params.get("CycleType")
+        self._Timeout = params.get("Timeout")
+        self._CycleValue = params.get("CycleValue")
+        self._MemberId = params.get("MemberId")
+        self._AssetList = params.get("AssetList")
+        self._AllowSync = params.get("AllowSync")
+        self._EnableSync = params.get("EnableSync")
+        self._SyncTo = params.get("SyncTo")
+        self._TagIds = params.get("TagIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyVulScanPeriodicResponse(AbstractModel):
+    r"""ModifyVulScanPeriodic返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyVulWhitelistConfigRequest(AbstractModel):
+    r"""ModifyVulWhitelistConfig请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: <p>id列表</p>
+        :type Id: int
+        :param _MemberId: <p>集团账号的成员id</p>
+        :type MemberId: list of str
+        :param _Remark: <p>备注</p>
+        :type Remark: str
+        :param _AssetRange: <p>资产范围</p><p>枚举值：</p><ul><li>0： 全部资产</li><li>1： 自选资产</li><li>2： 全选剔除资产</li></ul>
+        :type AssetRange: int
+        :param _AssetList: <p>资产列表（Quuid列表）</p>
+        :type AssetList: list of str
+        """
+        self._Id = None
+        self._MemberId = None
+        self._Remark = None
+        self._AssetRange = None
+        self._AssetList = None
+
+    @property
+    def Id(self):
+        r"""<p>id列表</p>
+        :rtype: int
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def MemberId(self):
+        r"""<p>集团账号的成员id</p>
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+    @property
+    def Remark(self):
+        r"""<p>备注</p>
+        :rtype: str
+        """
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+    @property
+    def AssetRange(self):
+        r"""<p>资产范围</p><p>枚举值：</p><ul><li>0： 全部资产</li><li>1： 自选资产</li><li>2： 全选剔除资产</li></ul>
+        :rtype: int
+        """
+        return self._AssetRange
+
+    @AssetRange.setter
+    def AssetRange(self, AssetRange):
+        self._AssetRange = AssetRange
+
+    @property
+    def AssetList(self):
+        r"""<p>资产列表（Quuid列表）</p>
+        :rtype: list of str
+        """
+        return self._AssetList
+
+    @AssetList.setter
+    def AssetList(self, AssetList):
+        self._AssetList = AssetList
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._MemberId = params.get("MemberId")
+        self._Remark = params.get("Remark")
+        self._AssetRange = params.get("AssetRange")
+        self._AssetList = params.get("AssetList")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyVulWhitelistConfigResponse(AbstractModel):
+    r"""ModifyVulWhitelistConfig返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyVulWhitelistSwitchRequest(AbstractModel):
+    r"""ModifyVulWhitelistSwitch请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: <p>id列表</p>
+        :type Id: list of int non-negative
+        :param _MemberId: <p>集团账号的成员id</p>
+        :type MemberId: list of str
+        :param _Switch: <p>策略开关</p><p>枚举值：</p><ul><li>0： 关闭</li><li>1： 开启</li></ul>
+        :type Switch: int
+        """
+        self._Id = None
+        self._MemberId = None
+        self._Switch = None
+
+    @property
+    def Id(self):
+        r"""<p>id列表</p>
+        :rtype: list of int non-negative
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def MemberId(self):
+        r"""<p>集团账号的成员id</p>
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+    @property
+    def Switch(self):
+        r"""<p>策略开关</p><p>枚举值：</p><ul><li>0： 关闭</li><li>1： 开启</li></ul>
+        :rtype: int
+        """
+        return self._Switch
+
+    @Switch.setter
+    def Switch(self, Switch):
+        self._Switch = Switch
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._MemberId = params.get("MemberId")
+        self._Switch = params.get("Switch")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyVulWhitelistSwitchResponse(AbstractModel):
+    r"""ModifyVulWhitelistSwitch返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class NICAsset(AbstractModel):
     r"""网卡资产
 
@@ -81903,6 +88749,100 @@ class StopRiskCenterTaskResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class StopVulScanTaskRequest(AbstractModel):
+    r"""StopVulScanTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: <p>任务id</p>
+        :type Id: int
+        :param _MemberId: <p>集团账号的成员id</p>
+        :type MemberId: list of str
+        :param _AssetList: <p>停止扫描的资产instance_id</p>
+        :type AssetList: list of str
+        """
+        self._Id = None
+        self._MemberId = None
+        self._AssetList = None
+
+    @property
+    def Id(self):
+        r"""<p>任务id</p>
+        :rtype: int
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def MemberId(self):
+        r"""<p>集团账号的成员id</p>
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+    @property
+    def AssetList(self):
+        r"""<p>停止扫描的资产instance_id</p>
+        :rtype: list of str
+        """
+        return self._AssetList
+
+    @AssetList.setter
+    def AssetList(self, AssetList):
+        self._AssetList = AssetList
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._MemberId = params.get("MemberId")
+        self._AssetList = params.get("AssetList")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class StopVulScanTaskResponse(AbstractModel):
+    r"""StopVulScanTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class SubUserInfo(AbstractModel):
     r"""子账号详情
 
@@ -85167,6 +92107,202 @@ class UserDspmInfo(AbstractModel):
         
 
 
+class VPRLabel(AbstractModel):
+    r"""漏洞VPR标签
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: <p>标签名称<br>枚举值：<br>IN_THE_WILD：在野利用<br>EXP：有 EXP<br>POC：有 POC<br>INTERNET_EXPOSED：外网暴露<br>NO_RESTART：无需重启<br>HIGH_VALUE_ASSET：重要资产<br>MALWARE_WEAPONIZED：已武器化</p>
+        :type Name: str
+        :param _Level: <p>标签等级<br>枚举值：<br>HIGH：高<br>MEDIUM：中<br>LOW：低</p>
+        :type Level: str
+        :param _Remark: <p>标签说明</p>
+        :type Remark: str
+        """
+        self._Name = None
+        self._Level = None
+        self._Remark = None
+
+    @property
+    def Name(self):
+        r"""<p>标签名称<br>枚举值：<br>IN_THE_WILD：在野利用<br>EXP：有 EXP<br>POC：有 POC<br>INTERNET_EXPOSED：外网暴露<br>NO_RESTART：无需重启<br>HIGH_VALUE_ASSET：重要资产<br>MALWARE_WEAPONIZED：已武器化</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Level(self):
+        r"""<p>标签等级<br>枚举值：<br>HIGH：高<br>MEDIUM：中<br>LOW：低</p>
+        :rtype: str
+        """
+        return self._Level
+
+    @Level.setter
+    def Level(self, Level):
+        self._Level = Level
+
+    @property
+    def Remark(self):
+        r"""<p>标签说明</p>
+        :rtype: str
+        """
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Level = params.get("Level")
+        self._Remark = params.get("Remark")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VPRRatingInfo(AbstractModel):
+    r"""VRP评级信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: VPR 评级结果
+枚举值：
+URGENT：立即修复
+SUGGESTED：建议修复
+DEFERRABLE：可延迟修复
+        :type Result: str
+        :param _Remark: 评级说明
+        :type Remark: str
+        :param _Stage: 分阶段评级详情列表
+        :type Stage: list of VPRRatingStage
+        """
+        self._Result = None
+        self._Remark = None
+        self._Stage = None
+
+    @property
+    def Result(self):
+        r"""VPR 评级结果
+枚举值：
+URGENT：立即修复
+SUGGESTED：建议修复
+DEFERRABLE：可延迟修复
+        :rtype: str
+        """
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def Remark(self):
+        r"""评级说明
+        :rtype: str
+        """
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+    @property
+    def Stage(self):
+        r"""分阶段评级详情列表
+        :rtype: list of VPRRatingStage
+        """
+        return self._Stage
+
+    @Stage.setter
+    def Stage(self, Stage):
+        self._Stage = Stage
+
+
+    def _deserialize(self, params):
+        self._Result = params.get("Result")
+        self._Remark = params.get("Remark")
+        if params.get("Stage") is not None:
+            self._Stage = []
+            for item in params.get("Stage"):
+                obj = VPRRatingStage()
+                obj._deserialize(item)
+                self._Stage.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VPRRatingStage(AbstractModel):
+    r"""VRP评级阶段
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Stage: 阶段名称（例如：威胁活跃度、可利用性、漏洞严重性等）
+        :type Stage: str
+        :param _Result: 该阶段的评级结果
+        :type Result: str
+        """
+        self._Stage = None
+        self._Result = None
+
+    @property
+    def Stage(self):
+        r"""阶段名称（例如：威胁活跃度、可利用性、漏洞严重性等）
+        :rtype: str
+        """
+        return self._Stage
+
+    @Stage.setter
+    def Stage(self, Stage):
+        self._Stage = Stage
+
+    @property
+    def Result(self):
+        r"""该阶段的评级结果
+        :rtype: str
+        """
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+
+    def _deserialize(self, params):
+        self._Stage = params.get("Stage")
+        self._Result = params.get("Result")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class VULBaseInfo(AbstractModel):
     r"""应急漏洞基本数据
 
@@ -87384,6 +94520,2666 @@ class Vpc(AbstractModel):
         
 
 
+class VulBriefInfo(AbstractModel):
+    r"""漏洞简要信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VulID: 漏洞 ID（vul_vuls.id）
+        :type VulID: int
+        :param _VulName: 漏洞名称
+        :type VulName: str
+        :param _CVEID: CVE 编号
+参数格式：形如 CVE-2018-5377
+        :type CVEID: str
+        :param _Label: VPR 风险标签列表
+        :type Label: list of VPRLabel
+        :param _CvssScore: CVSS 评分
+取值范围：[0.0, 10.0]
+        :type CvssScore: float
+        :param _Level: 威胁等级
+枚举值：
+INVALID：无效
+INFO：提示
+LOW：低危
+MEDIUM：中危
+HIGH：高危
+CRITICAL：严重
+        :type Level: str
+        :param _PublishTime: 漏洞披露时间
+参数格式：YYYY-MM-DD HH:mm:ss
+        :type PublishTime: str
+        """
+        self._VulID = None
+        self._VulName = None
+        self._CVEID = None
+        self._Label = None
+        self._CvssScore = None
+        self._Level = None
+        self._PublishTime = None
+
+    @property
+    def VulID(self):
+        r"""漏洞 ID（vul_vuls.id）
+        :rtype: int
+        """
+        return self._VulID
+
+    @VulID.setter
+    def VulID(self, VulID):
+        self._VulID = VulID
+
+    @property
+    def VulName(self):
+        r"""漏洞名称
+        :rtype: str
+        """
+        return self._VulName
+
+    @VulName.setter
+    def VulName(self, VulName):
+        self._VulName = VulName
+
+    @property
+    def CVEID(self):
+        r"""CVE 编号
+参数格式：形如 CVE-2018-5377
+        :rtype: str
+        """
+        return self._CVEID
+
+    @CVEID.setter
+    def CVEID(self, CVEID):
+        self._CVEID = CVEID
+
+    @property
+    def Label(self):
+        r"""VPR 风险标签列表
+        :rtype: list of VPRLabel
+        """
+        return self._Label
+
+    @Label.setter
+    def Label(self, Label):
+        self._Label = Label
+
+    @property
+    def CvssScore(self):
+        r"""CVSS 评分
+取值范围：[0.0, 10.0]
+        :rtype: float
+        """
+        return self._CvssScore
+
+    @CvssScore.setter
+    def CvssScore(self, CvssScore):
+        self._CvssScore = CvssScore
+
+    @property
+    def Level(self):
+        r"""威胁等级
+枚举值：
+INVALID：无效
+INFO：提示
+LOW：低危
+MEDIUM：中危
+HIGH：高危
+CRITICAL：严重
+        :rtype: str
+        """
+        return self._Level
+
+    @Level.setter
+    def Level(self, Level):
+        self._Level = Level
+
+    @property
+    def PublishTime(self):
+        r"""漏洞披露时间
+参数格式：YYYY-MM-DD HH:mm:ss
+        :rtype: str
+        """
+        return self._PublishTime
+
+    @PublishTime.setter
+    def PublishTime(self, PublishTime):
+        self._PublishTime = PublishTime
+
+
+    def _deserialize(self, params):
+        self._VulID = params.get("VulID")
+        self._VulName = params.get("VulName")
+        self._CVEID = params.get("CVEID")
+        if params.get("Label") is not None:
+            self._Label = []
+            for item in params.get("Label"):
+                obj = VPRLabel()
+                obj._deserialize(item)
+                self._Label.append(obj)
+        self._CvssScore = params.get("CvssScore")
+        self._Level = params.get("Level")
+        self._PublishTime = params.get("PublishTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VulComponentSummary(AbstractModel):
+    r"""主机漏洞组件概要
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: <p>组件名称</p>
+        :type Name: str
+        :param _RelateHostCount: <p>关联主机数</p>
+        :type RelateHostCount: int
+        """
+        self._Name = None
+        self._RelateHostCount = None
+
+    @property
+    def Name(self):
+        r"""<p>组件名称</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def RelateHostCount(self):
+        r"""<p>关联主机数</p>
+        :rtype: int
+        """
+        return self._RelateHostCount
+
+    @RelateHostCount.setter
+    def RelateHostCount(self, RelateHostCount):
+        self._RelateHostCount = RelateHostCount
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._RelateHostCount = params.get("RelateHostCount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VulDetailInfo(AbstractModel):
+    r"""漏洞全部信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ID: <p>漏洞ID</p>
+        :type ID: int
+        :param _Name: <p>漏洞名字</p>
+        :type Name: str
+        :param _CVEID: <p>CveID</p>
+        :type CVEID: str
+        :param _Category: 漏洞分类
+枚举值：
+LINUX：Linux 软件漏洞
+WINDOWS：Windows 系统补丁
+WEB_CMS：Web-CMS 漏洞
+APPLICATION：应用漏洞
+EMERGENCY：应急漏洞
+        :type Category: str
+        :param _PublishTime: 漏洞披露时间
+参数格式：YYYY-MM-DD HH:mm:ss
+        :type PublishTime: str
+        :param _CheckMethod: <p>检测方式</p><p>枚举值：</p><ul><li>VersionCompare： 版本对比</li><li>POC： POC检测</li></ul>
+        :type CheckMethod: str
+        :param _DefendStatus: 漏洞防御状态
+枚举值：
+ENABLED：已开启
+NOT_SUPPORTED：不支持
+NOT_ENABLED：未开启
+        :type DefendStatus: str
+        :param _SupportFix: 是否支持一键修复
+枚举值：
+true：支持
+false：不支持
+        :type SupportFix: bool
+        :param _VRPRatingInfo: VPR 评级信息（包含评级结果、说明和分阶段评分）
+        :type VRPRatingInfo: :class:`tencentcloud.csip.v20221121.models.VPRRatingInfo`
+        :param _CvssScore: CVSS 评分
+取值范围：[0.0, 10.0]
+        :type CvssScore: float
+        :param _Label: VPR 风险标签列表（如在野利用、有 EXP、有 POC、外网暴露、无需重启等）
+        :type Label: list of VPRLabel
+        :param _Remark: 漏洞备注
+        :type Remark: str
+        :param _Summary: 漏洞概述说明
+        :type Summary: str
+        :param _DefendHostCount: 已开启漏洞防御的主机数
+        :type DefendHostCount: int
+        :param _NotDefendHostCount: 未开启漏洞防御的主机数
+        :type NotDefendHostCount: int
+        :param _LatestScanTime: 最近扫描时间
+参数格式：YYYY-MM-DD HH:mm:ss
+        :type LatestScanTime: str
+        :param _CVSSLevel: CVSS 危害等级
+枚举值：
+INVALID：无效
+INFO：提示
+LOW：低危
+MEDIUM：中危
+HIGH：高危
+CRITICAL：严重
+        :type CVSSLevel: str
+        :param _VulAffect: 受影响软件描述列表（每项形如 openssl < 1.1.1k）
+        :type VulAffect: list of str
+        :param _KVERecord: 是否被 KVE（已知被利用漏洞）库收录
+枚举值：
+true：已收录
+false：未收录
+        :type KVERecord: bool
+        :param _KVERecordTime: KVE 收录时间
+参数格式：YYYY-MM-DD HH:mm:ss
+        :type KVERecordTime: str
+        :param _EPSSScore: EPSS 评分（漏洞利用概率预测）
+取值范围：[0.0, 1.0]
+        :type EPSSScore: float
+        :param _AffectVendor: 受影响厂商列表
+        :type AffectVendor: list of str
+        :param _AffectProduct: 受影响产品列表
+        :type AffectProduct: list of str
+        :param _Mechanism: 漏洞利用机制说明
+        :type Mechanism: str
+        :param _Precondition: 漏洞利用前置条件说明
+        :type Precondition: str
+        :param _LatestTrend: 漏洞最新传播趋势数据列表（按日期）
+        :type LatestTrend: list of VulSpreadTrend
+        :param _FixSolution: <p>修复方案</p>
+        :type FixSolution: str
+        :param _RefLink: <p>参考链接</p>
+        :type RefLink: str
+        :param _HarmDescription: <p>漏洞危害描述</p>
+        :type HarmDescription: str
+        :param _AffectVendorProduct: <p>漏洞影响产品</p>
+        :type AffectVendorProduct: list of VulVendorProduct
+        """
+        self._ID = None
+        self._Name = None
+        self._CVEID = None
+        self._Category = None
+        self._PublishTime = None
+        self._CheckMethod = None
+        self._DefendStatus = None
+        self._SupportFix = None
+        self._VRPRatingInfo = None
+        self._CvssScore = None
+        self._Label = None
+        self._Remark = None
+        self._Summary = None
+        self._DefendHostCount = None
+        self._NotDefendHostCount = None
+        self._LatestScanTime = None
+        self._CVSSLevel = None
+        self._VulAffect = None
+        self._KVERecord = None
+        self._KVERecordTime = None
+        self._EPSSScore = None
+        self._AffectVendor = None
+        self._AffectProduct = None
+        self._Mechanism = None
+        self._Precondition = None
+        self._LatestTrend = None
+        self._FixSolution = None
+        self._RefLink = None
+        self._HarmDescription = None
+        self._AffectVendorProduct = None
+
+    @property
+    def ID(self):
+        r"""<p>漏洞ID</p>
+        :rtype: int
+        """
+        return self._ID
+
+    @ID.setter
+    def ID(self, ID):
+        self._ID = ID
+
+    @property
+    def Name(self):
+        r"""<p>漏洞名字</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def CVEID(self):
+        r"""<p>CveID</p>
+        :rtype: str
+        """
+        return self._CVEID
+
+    @CVEID.setter
+    def CVEID(self, CVEID):
+        self._CVEID = CVEID
+
+    @property
+    def Category(self):
+        r"""漏洞分类
+枚举值：
+LINUX：Linux 软件漏洞
+WINDOWS：Windows 系统补丁
+WEB_CMS：Web-CMS 漏洞
+APPLICATION：应用漏洞
+EMERGENCY：应急漏洞
+        :rtype: str
+        """
+        return self._Category
+
+    @Category.setter
+    def Category(self, Category):
+        self._Category = Category
+
+    @property
+    def PublishTime(self):
+        r"""漏洞披露时间
+参数格式：YYYY-MM-DD HH:mm:ss
+        :rtype: str
+        """
+        return self._PublishTime
+
+    @PublishTime.setter
+    def PublishTime(self, PublishTime):
+        self._PublishTime = PublishTime
+
+    @property
+    def CheckMethod(self):
+        r"""<p>检测方式</p><p>枚举值：</p><ul><li>VersionCompare： 版本对比</li><li>POC： POC检测</li></ul>
+        :rtype: str
+        """
+        return self._CheckMethod
+
+    @CheckMethod.setter
+    def CheckMethod(self, CheckMethod):
+        self._CheckMethod = CheckMethod
+
+    @property
+    def DefendStatus(self):
+        r"""漏洞防御状态
+枚举值：
+ENABLED：已开启
+NOT_SUPPORTED：不支持
+NOT_ENABLED：未开启
+        :rtype: str
+        """
+        return self._DefendStatus
+
+    @DefendStatus.setter
+    def DefendStatus(self, DefendStatus):
+        self._DefendStatus = DefendStatus
+
+    @property
+    def SupportFix(self):
+        r"""是否支持一键修复
+枚举值：
+true：支持
+false：不支持
+        :rtype: bool
+        """
+        return self._SupportFix
+
+    @SupportFix.setter
+    def SupportFix(self, SupportFix):
+        self._SupportFix = SupportFix
+
+    @property
+    def VRPRatingInfo(self):
+        r"""VPR 评级信息（包含评级结果、说明和分阶段评分）
+        :rtype: :class:`tencentcloud.csip.v20221121.models.VPRRatingInfo`
+        """
+        return self._VRPRatingInfo
+
+    @VRPRatingInfo.setter
+    def VRPRatingInfo(self, VRPRatingInfo):
+        self._VRPRatingInfo = VRPRatingInfo
+
+    @property
+    def CvssScore(self):
+        r"""CVSS 评分
+取值范围：[0.0, 10.0]
+        :rtype: float
+        """
+        return self._CvssScore
+
+    @CvssScore.setter
+    def CvssScore(self, CvssScore):
+        self._CvssScore = CvssScore
+
+    @property
+    def Label(self):
+        r"""VPR 风险标签列表（如在野利用、有 EXP、有 POC、外网暴露、无需重启等）
+        :rtype: list of VPRLabel
+        """
+        return self._Label
+
+    @Label.setter
+    def Label(self, Label):
+        self._Label = Label
+
+    @property
+    def Remark(self):
+        r"""漏洞备注
+        :rtype: str
+        """
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+    @property
+    def Summary(self):
+        r"""漏洞概述说明
+        :rtype: str
+        """
+        return self._Summary
+
+    @Summary.setter
+    def Summary(self, Summary):
+        self._Summary = Summary
+
+    @property
+    def DefendHostCount(self):
+        r"""已开启漏洞防御的主机数
+        :rtype: int
+        """
+        return self._DefendHostCount
+
+    @DefendHostCount.setter
+    def DefendHostCount(self, DefendHostCount):
+        self._DefendHostCount = DefendHostCount
+
+    @property
+    def NotDefendHostCount(self):
+        r"""未开启漏洞防御的主机数
+        :rtype: int
+        """
+        return self._NotDefendHostCount
+
+    @NotDefendHostCount.setter
+    def NotDefendHostCount(self, NotDefendHostCount):
+        self._NotDefendHostCount = NotDefendHostCount
+
+    @property
+    def LatestScanTime(self):
+        r"""最近扫描时间
+参数格式：YYYY-MM-DD HH:mm:ss
+        :rtype: str
+        """
+        return self._LatestScanTime
+
+    @LatestScanTime.setter
+    def LatestScanTime(self, LatestScanTime):
+        self._LatestScanTime = LatestScanTime
+
+    @property
+    def CVSSLevel(self):
+        r"""CVSS 危害等级
+枚举值：
+INVALID：无效
+INFO：提示
+LOW：低危
+MEDIUM：中危
+HIGH：高危
+CRITICAL：严重
+        :rtype: str
+        """
+        return self._CVSSLevel
+
+    @CVSSLevel.setter
+    def CVSSLevel(self, CVSSLevel):
+        self._CVSSLevel = CVSSLevel
+
+    @property
+    def VulAffect(self):
+        r"""受影响软件描述列表（每项形如 openssl < 1.1.1k）
+        :rtype: list of str
+        """
+        return self._VulAffect
+
+    @VulAffect.setter
+    def VulAffect(self, VulAffect):
+        self._VulAffect = VulAffect
+
+    @property
+    def KVERecord(self):
+        r"""是否被 KVE（已知被利用漏洞）库收录
+枚举值：
+true：已收录
+false：未收录
+        :rtype: bool
+        """
+        return self._KVERecord
+
+    @KVERecord.setter
+    def KVERecord(self, KVERecord):
+        self._KVERecord = KVERecord
+
+    @property
+    def KVERecordTime(self):
+        r"""KVE 收录时间
+参数格式：YYYY-MM-DD HH:mm:ss
+        :rtype: str
+        """
+        return self._KVERecordTime
+
+    @KVERecordTime.setter
+    def KVERecordTime(self, KVERecordTime):
+        self._KVERecordTime = KVERecordTime
+
+    @property
+    def EPSSScore(self):
+        r"""EPSS 评分（漏洞利用概率预测）
+取值范围：[0.0, 1.0]
+        :rtype: float
+        """
+        return self._EPSSScore
+
+    @EPSSScore.setter
+    def EPSSScore(self, EPSSScore):
+        self._EPSSScore = EPSSScore
+
+    @property
+    def AffectVendor(self):
+        r"""受影响厂商列表
+        :rtype: list of str
+        """
+        return self._AffectVendor
+
+    @AffectVendor.setter
+    def AffectVendor(self, AffectVendor):
+        self._AffectVendor = AffectVendor
+
+    @property
+    def AffectProduct(self):
+        r"""受影响产品列表
+        :rtype: list of str
+        """
+        return self._AffectProduct
+
+    @AffectProduct.setter
+    def AffectProduct(self, AffectProduct):
+        self._AffectProduct = AffectProduct
+
+    @property
+    def Mechanism(self):
+        r"""漏洞利用机制说明
+        :rtype: str
+        """
+        return self._Mechanism
+
+    @Mechanism.setter
+    def Mechanism(self, Mechanism):
+        self._Mechanism = Mechanism
+
+    @property
+    def Precondition(self):
+        r"""漏洞利用前置条件说明
+        :rtype: str
+        """
+        return self._Precondition
+
+    @Precondition.setter
+    def Precondition(self, Precondition):
+        self._Precondition = Precondition
+
+    @property
+    def LatestTrend(self):
+        r"""漏洞最新传播趋势数据列表（按日期）
+        :rtype: list of VulSpreadTrend
+        """
+        return self._LatestTrend
+
+    @LatestTrend.setter
+    def LatestTrend(self, LatestTrend):
+        self._LatestTrend = LatestTrend
+
+    @property
+    def FixSolution(self):
+        r"""<p>修复方案</p>
+        :rtype: str
+        """
+        return self._FixSolution
+
+    @FixSolution.setter
+    def FixSolution(self, FixSolution):
+        self._FixSolution = FixSolution
+
+    @property
+    def RefLink(self):
+        r"""<p>参考链接</p>
+        :rtype: str
+        """
+        return self._RefLink
+
+    @RefLink.setter
+    def RefLink(self, RefLink):
+        self._RefLink = RefLink
+
+    @property
+    def HarmDescription(self):
+        r"""<p>漏洞危害描述</p>
+        :rtype: str
+        """
+        return self._HarmDescription
+
+    @HarmDescription.setter
+    def HarmDescription(self, HarmDescription):
+        self._HarmDescription = HarmDescription
+
+    @property
+    def AffectVendorProduct(self):
+        r"""<p>漏洞影响产品</p>
+        :rtype: list of VulVendorProduct
+        """
+        return self._AffectVendorProduct
+
+    @AffectVendorProduct.setter
+    def AffectVendorProduct(self, AffectVendorProduct):
+        self._AffectVendorProduct = AffectVendorProduct
+
+
+    def _deserialize(self, params):
+        self._ID = params.get("ID")
+        self._Name = params.get("Name")
+        self._CVEID = params.get("CVEID")
+        self._Category = params.get("Category")
+        self._PublishTime = params.get("PublishTime")
+        self._CheckMethod = params.get("CheckMethod")
+        self._DefendStatus = params.get("DefendStatus")
+        self._SupportFix = params.get("SupportFix")
+        if params.get("VRPRatingInfo") is not None:
+            self._VRPRatingInfo = VPRRatingInfo()
+            self._VRPRatingInfo._deserialize(params.get("VRPRatingInfo"))
+        self._CvssScore = params.get("CvssScore")
+        if params.get("Label") is not None:
+            self._Label = []
+            for item in params.get("Label"):
+                obj = VPRLabel()
+                obj._deserialize(item)
+                self._Label.append(obj)
+        self._Remark = params.get("Remark")
+        self._Summary = params.get("Summary")
+        self._DefendHostCount = params.get("DefendHostCount")
+        self._NotDefendHostCount = params.get("NotDefendHostCount")
+        self._LatestScanTime = params.get("LatestScanTime")
+        self._CVSSLevel = params.get("CVSSLevel")
+        self._VulAffect = params.get("VulAffect")
+        self._KVERecord = params.get("KVERecord")
+        self._KVERecordTime = params.get("KVERecordTime")
+        self._EPSSScore = params.get("EPSSScore")
+        self._AffectVendor = params.get("AffectVendor")
+        self._AffectProduct = params.get("AffectProduct")
+        self._Mechanism = params.get("Mechanism")
+        self._Precondition = params.get("Precondition")
+        if params.get("LatestTrend") is not None:
+            self._LatestTrend = []
+            for item in params.get("LatestTrend"):
+                obj = VulSpreadTrend()
+                obj._deserialize(item)
+                self._LatestTrend.append(obj)
+        self._FixSolution = params.get("FixSolution")
+        self._RefLink = params.get("RefLink")
+        self._HarmDescription = params.get("HarmDescription")
+        if params.get("AffectVendorProduct") is not None:
+            self._AffectVendorProduct = []
+            for item in params.get("AffectVendorProduct"):
+                obj = VulVendorProduct()
+                obj._deserialize(item)
+                self._AffectVendorProduct.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VulFixItem(AbstractModel):
+    r"""漏洞修复项，指定一个漏洞/KB补丁及其需要修复的目标主机
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceIds: <p>需要修复的主机实例ID列表<br>入参限制：单项最多1000个实例ID</p>
+        :type InstanceIds: list of str
+        :param _VulId: <p>漏洞ID，VulId和KBId二选一</p>
+        :type VulId: int
+        :param _KBId: <p>KB补丁ID，VulId和KBId二选一</p>
+        :type KBId: int
+        """
+        self._InstanceIds = None
+        self._VulId = None
+        self._KBId = None
+
+    @property
+    def InstanceIds(self):
+        r"""<p>需要修复的主机实例ID列表<br>入参限制：单项最多1000个实例ID</p>
+        :rtype: list of str
+        """
+        return self._InstanceIds
+
+    @InstanceIds.setter
+    def InstanceIds(self, InstanceIds):
+        self._InstanceIds = InstanceIds
+
+    @property
+    def VulId(self):
+        r"""<p>漏洞ID，VulId和KBId二选一</p>
+        :rtype: int
+        """
+        return self._VulId
+
+    @VulId.setter
+    def VulId(self, VulId):
+        self._VulId = VulId
+
+    @property
+    def KBId(self):
+        r"""<p>KB补丁ID，VulId和KBId二选一</p>
+        :rtype: int
+        """
+        return self._KBId
+
+    @KBId.setter
+    def KBId(self, KBId):
+        self._KBId = KBId
+
+
+    def _deserialize(self, params):
+        self._InstanceIds = params.get("InstanceIds")
+        self._VulId = params.get("VulId")
+        self._KBId = params.get("KBId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VulFixStatusItem(AbstractModel):
+    r"""漏洞/KB补丁维度修复状态
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VulId: 漏洞ID（KB补丁修复任务时为空）
+        :type VulId: int
+        :param _KBId: KB补丁ID（漏洞修复任务时为空）
+        :type KBId: int
+        :param _VulName: 漏洞名称或KB补丁名称
+        :type VulName: str
+        :param _FixStatus: 该漏洞的修复状态
+枚举值：
+0：修复中
+1：全部成功
+2：部分失败
+3：全部失败
+        :type FixStatus: int
+        :param _HostCount: 该漏洞/KB补丁关联的主机总数
+        :type HostCount: int
+        :param _SuccessHostCount: 该漏洞/KB补丁修复成功的主机数
+        :type SuccessHostCount: int
+        :param _FailHostCount: 该漏洞/KB补丁修复失败的主机数
+        :type FailHostCount: int
+        """
+        self._VulId = None
+        self._KBId = None
+        self._VulName = None
+        self._FixStatus = None
+        self._HostCount = None
+        self._SuccessHostCount = None
+        self._FailHostCount = None
+
+    @property
+    def VulId(self):
+        r"""漏洞ID（KB补丁修复任务时为空）
+        :rtype: int
+        """
+        return self._VulId
+
+    @VulId.setter
+    def VulId(self, VulId):
+        self._VulId = VulId
+
+    @property
+    def KBId(self):
+        r"""KB补丁ID（漏洞修复任务时为空）
+        :rtype: int
+        """
+        return self._KBId
+
+    @KBId.setter
+    def KBId(self, KBId):
+        self._KBId = KBId
+
+    @property
+    def VulName(self):
+        r"""漏洞名称或KB补丁名称
+        :rtype: str
+        """
+        return self._VulName
+
+    @VulName.setter
+    def VulName(self, VulName):
+        self._VulName = VulName
+
+    @property
+    def FixStatus(self):
+        r"""该漏洞的修复状态
+枚举值：
+0：修复中
+1：全部成功
+2：部分失败
+3：全部失败
+        :rtype: int
+        """
+        return self._FixStatus
+
+    @FixStatus.setter
+    def FixStatus(self, FixStatus):
+        self._FixStatus = FixStatus
+
+    @property
+    def HostCount(self):
+        r"""该漏洞/KB补丁关联的主机总数
+        :rtype: int
+        """
+        return self._HostCount
+
+    @HostCount.setter
+    def HostCount(self, HostCount):
+        self._HostCount = HostCount
+
+    @property
+    def SuccessHostCount(self):
+        r"""该漏洞/KB补丁修复成功的主机数
+        :rtype: int
+        """
+        return self._SuccessHostCount
+
+    @SuccessHostCount.setter
+    def SuccessHostCount(self, SuccessHostCount):
+        self._SuccessHostCount = SuccessHostCount
+
+    @property
+    def FailHostCount(self):
+        r"""该漏洞/KB补丁修复失败的主机数
+        :rtype: int
+        """
+        return self._FailHostCount
+
+    @FailHostCount.setter
+    def FailHostCount(self, FailHostCount):
+        self._FailHostCount = FailHostCount
+
+
+    def _deserialize(self, params):
+        self._VulId = params.get("VulId")
+        self._KBId = params.get("KBId")
+        self._VulName = params.get("VulName")
+        self._FixStatus = params.get("FixStatus")
+        self._HostCount = params.get("HostCount")
+        self._SuccessHostCount = params.get("SuccessHostCount")
+        self._FailHostCount = params.get("FailHostCount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VulFixSummaryItem(AbstractModel):
+    r"""漏洞修复汇总信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VulId: <p>漏洞ID</p>
+        :type VulId: int
+        :param _VulName: <p>漏洞名称</p>
+        :type VulName: str
+        :param _CveId: <p>CVE编号</p>
+        :type CveId: str
+        :param _AffectedCount: <p>受影响主机数</p>
+        :type AffectedCount: int
+        :param _NeedReboot: <p>修复后是否需要重启系统</p>
+        :type NeedReboot: bool
+        :param _FixSwitch: <p>是否支持一键修复true-支持 false-不支持</p>
+        :type FixSwitch: bool
+        """
+        self._VulId = None
+        self._VulName = None
+        self._CveId = None
+        self._AffectedCount = None
+        self._NeedReboot = None
+        self._FixSwitch = None
+
+    @property
+    def VulId(self):
+        r"""<p>漏洞ID</p>
+        :rtype: int
+        """
+        return self._VulId
+
+    @VulId.setter
+    def VulId(self, VulId):
+        self._VulId = VulId
+
+    @property
+    def VulName(self):
+        r"""<p>漏洞名称</p>
+        :rtype: str
+        """
+        return self._VulName
+
+    @VulName.setter
+    def VulName(self, VulName):
+        self._VulName = VulName
+
+    @property
+    def CveId(self):
+        r"""<p>CVE编号</p>
+        :rtype: str
+        """
+        return self._CveId
+
+    @CveId.setter
+    def CveId(self, CveId):
+        self._CveId = CveId
+
+    @property
+    def AffectedCount(self):
+        r"""<p>受影响主机数</p>
+        :rtype: int
+        """
+        return self._AffectedCount
+
+    @AffectedCount.setter
+    def AffectedCount(self, AffectedCount):
+        self._AffectedCount = AffectedCount
+
+    @property
+    def NeedReboot(self):
+        r"""<p>修复后是否需要重启系统</p>
+        :rtype: bool
+        """
+        return self._NeedReboot
+
+    @NeedReboot.setter
+    def NeedReboot(self, NeedReboot):
+        self._NeedReboot = NeedReboot
+
+    @property
+    def FixSwitch(self):
+        r"""<p>是否支持一键修复true-支持 false-不支持</p>
+        :rtype: bool
+        """
+        return self._FixSwitch
+
+    @FixSwitch.setter
+    def FixSwitch(self, FixSwitch):
+        self._FixSwitch = FixSwitch
+
+
+    def _deserialize(self, params):
+        self._VulId = params.get("VulId")
+        self._VulName = params.get("VulName")
+        self._CveId = params.get("CveId")
+        self._AffectedCount = params.get("AffectedCount")
+        self._NeedReboot = params.get("NeedReboot")
+        self._FixSwitch = params.get("FixSwitch")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VulFixTaskDetailItem(AbstractModel):
+    r"""漏洞修复任务明细项
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: <p>明细记录ID</p>
+        :type Id: int
+        :param _TaskId: <p>关联的修复任务ID</p>
+        :type TaskId: int
+        :param _VulId: <p>修复的漏洞ID</p>
+        :type VulId: int
+        :param _KBId: <p>修复的KB补丁ID</p>
+        :type KBId: int
+        :param _InstanceId: <p>主机实例ID</p>
+        :type InstanceId: str
+        :param _MachineName: <p>主机名称</p>
+        :type MachineName: str
+        :param _MachineIp: <p>主机内网IP</p>
+        :type MachineIp: str
+        :param _VulName: <p>漏洞名称</p>
+        :type VulName: str
+        :param _Status: <p>执行状态<br>枚举值：<br>0：初始状态<br>1：已下发任务<br>11：客户端已确认<br>2：修复完成<br>3：客户端离线<br>4：超时<br>5：失败<br>6：不支持<br>9：等待快照创建完成中<br>10：快照创建失败</p>
+        :type Status: int
+        :param _FixStatus: <p>修复结果</p><p>枚举值：</p><ul><li>0： 初始状态</li><li>1： 修复成功</li><li>2： 修复失败</li><li>3： 修复中</li></ul>
+        :type FixStatus: int
+        :param _SnapshotStatus: <p>快照状态<br>枚举值：<br>-1：无需创建快照<br>0：未开始<br>1：进行中<br>2：已完成<br>3：创建失败</p>
+        :type SnapshotStatus: int
+        :param _ExceptionMessage: <p>异常提示信息</p>
+        :type ExceptionMessage: str
+        :param _StartTime: <p>修复启动时间<br>参数格式：YYYY-MM-DDTHH:mm:ssZ（ISO8601格式）</p>
+        :type StartTime: str
+        :param _EndTime: <p>修复结束时间<br>参数格式：YYYY-MM-DDTHH:mm:ssZ（ISO8601格式）</p>
+        :type EndTime: str
+        :param _SnapshotCreateTime: <p>快照创建时间<br>参数格式：YYYY-MM-DDTHH:mm:ssZ（ISO8601格式）</p>
+        :type SnapshotCreateTime: str
+        :param _SnapshotExpireTime: <p>快照到期时间<br>参数格式：YYYY-MM-DDTHH:mm:ssZ（ISO8601格式）</p>
+        :type SnapshotExpireTime: str
+        :param _SnapshotFailReason: <p>快照创建失败原因（当 SnapshotStatus=3 时有值）</p>
+        :type SnapshotFailReason: str
+        """
+        self._Id = None
+        self._TaskId = None
+        self._VulId = None
+        self._KBId = None
+        self._InstanceId = None
+        self._MachineName = None
+        self._MachineIp = None
+        self._VulName = None
+        self._Status = None
+        self._FixStatus = None
+        self._SnapshotStatus = None
+        self._ExceptionMessage = None
+        self._StartTime = None
+        self._EndTime = None
+        self._SnapshotCreateTime = None
+        self._SnapshotExpireTime = None
+        self._SnapshotFailReason = None
+
+    @property
+    def Id(self):
+        r"""<p>明细记录ID</p>
+        :rtype: int
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def TaskId(self):
+        r"""<p>关联的修复任务ID</p>
+        :rtype: int
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def VulId(self):
+        r"""<p>修复的漏洞ID</p>
+        :rtype: int
+        """
+        return self._VulId
+
+    @VulId.setter
+    def VulId(self, VulId):
+        self._VulId = VulId
+
+    @property
+    def KBId(self):
+        r"""<p>修复的KB补丁ID</p>
+        :rtype: int
+        """
+        return self._KBId
+
+    @KBId.setter
+    def KBId(self, KBId):
+        self._KBId = KBId
+
+    @property
+    def InstanceId(self):
+        r"""<p>主机实例ID</p>
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def MachineName(self):
+        r"""<p>主机名称</p>
+        :rtype: str
+        """
+        return self._MachineName
+
+    @MachineName.setter
+    def MachineName(self, MachineName):
+        self._MachineName = MachineName
+
+    @property
+    def MachineIp(self):
+        r"""<p>主机内网IP</p>
+        :rtype: str
+        """
+        return self._MachineIp
+
+    @MachineIp.setter
+    def MachineIp(self, MachineIp):
+        self._MachineIp = MachineIp
+
+    @property
+    def VulName(self):
+        r"""<p>漏洞名称</p>
+        :rtype: str
+        """
+        return self._VulName
+
+    @VulName.setter
+    def VulName(self, VulName):
+        self._VulName = VulName
+
+    @property
+    def Status(self):
+        r"""<p>执行状态<br>枚举值：<br>0：初始状态<br>1：已下发任务<br>11：客户端已确认<br>2：修复完成<br>3：客户端离线<br>4：超时<br>5：失败<br>6：不支持<br>9：等待快照创建完成中<br>10：快照创建失败</p>
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def FixStatus(self):
+        r"""<p>修复结果</p><p>枚举值：</p><ul><li>0： 初始状态</li><li>1： 修复成功</li><li>2： 修复失败</li><li>3： 修复中</li></ul>
+        :rtype: int
+        """
+        return self._FixStatus
+
+    @FixStatus.setter
+    def FixStatus(self, FixStatus):
+        self._FixStatus = FixStatus
+
+    @property
+    def SnapshotStatus(self):
+        r"""<p>快照状态<br>枚举值：<br>-1：无需创建快照<br>0：未开始<br>1：进行中<br>2：已完成<br>3：创建失败</p>
+        :rtype: int
+        """
+        return self._SnapshotStatus
+
+    @SnapshotStatus.setter
+    def SnapshotStatus(self, SnapshotStatus):
+        self._SnapshotStatus = SnapshotStatus
+
+    @property
+    def ExceptionMessage(self):
+        r"""<p>异常提示信息</p>
+        :rtype: str
+        """
+        return self._ExceptionMessage
+
+    @ExceptionMessage.setter
+    def ExceptionMessage(self, ExceptionMessage):
+        self._ExceptionMessage = ExceptionMessage
+
+    @property
+    def StartTime(self):
+        r"""<p>修复启动时间<br>参数格式：YYYY-MM-DDTHH:mm:ssZ（ISO8601格式）</p>
+        :rtype: str
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""<p>修复结束时间<br>参数格式：YYYY-MM-DDTHH:mm:ssZ（ISO8601格式）</p>
+        :rtype: str
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def SnapshotCreateTime(self):
+        r"""<p>快照创建时间<br>参数格式：YYYY-MM-DDTHH:mm:ssZ（ISO8601格式）</p>
+        :rtype: str
+        """
+        return self._SnapshotCreateTime
+
+    @SnapshotCreateTime.setter
+    def SnapshotCreateTime(self, SnapshotCreateTime):
+        self._SnapshotCreateTime = SnapshotCreateTime
+
+    @property
+    def SnapshotExpireTime(self):
+        r"""<p>快照到期时间<br>参数格式：YYYY-MM-DDTHH:mm:ssZ（ISO8601格式）</p>
+        :rtype: str
+        """
+        return self._SnapshotExpireTime
+
+    @SnapshotExpireTime.setter
+    def SnapshotExpireTime(self, SnapshotExpireTime):
+        self._SnapshotExpireTime = SnapshotExpireTime
+
+    @property
+    def SnapshotFailReason(self):
+        r"""<p>快照创建失败原因（当 SnapshotStatus=3 时有值）</p>
+        :rtype: str
+        """
+        return self._SnapshotFailReason
+
+    @SnapshotFailReason.setter
+    def SnapshotFailReason(self, SnapshotFailReason):
+        self._SnapshotFailReason = SnapshotFailReason
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._TaskId = params.get("TaskId")
+        self._VulId = params.get("VulId")
+        self._KBId = params.get("KBId")
+        self._InstanceId = params.get("InstanceId")
+        self._MachineName = params.get("MachineName")
+        self._MachineIp = params.get("MachineIp")
+        self._VulName = params.get("VulName")
+        self._Status = params.get("Status")
+        self._FixStatus = params.get("FixStatus")
+        self._SnapshotStatus = params.get("SnapshotStatus")
+        self._ExceptionMessage = params.get("ExceptionMessage")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._SnapshotCreateTime = params.get("SnapshotCreateTime")
+        self._SnapshotExpireTime = params.get("SnapshotExpireTime")
+        self._SnapshotFailReason = params.get("SnapshotFailReason")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VulFixTaskInfo(AbstractModel):
+    r"""漏洞修复任务概要信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: 修复任务主键ID
+        :type Id: int
+        :param _TaskId: 任务ID
+        :type TaskId: int
+        :param _FixStatus: 修复状态
+枚举值：
+0：初始化
+1：修复中
+2：修复成功
+3：部分修复失败
+4：全部修复失败
+5：停止修复
+        :type FixStatus: int
+        :param _AssetCount: 修复资产总数
+        :type AssetCount: int
+        :param _SuccessCount: 修复成功数
+        :type SuccessCount: int
+        :param _FailCount: 修复失败数
+        :type FailCount: int
+        :param _FixingCount: 修复中数量
+        :type FixingCount: int
+        :param _QueueCount: 排队中数量（等待下发或等待快照创建）
+        :type QueueCount: int
+        :param _Progress: 修复进度百分比
+取值范围：[0, 100]
+补充说明：计算方式为(SuccessCount+FailCount)/AssetCount×100
+        :type Progress: int
+        :param _SuccessVulCount: 修复成功的漏洞数
+        :type SuccessVulCount: int
+        :param _FailVulCount: 修复失败的漏洞数
+        :type FailVulCount: int
+        :param _VulNames: 修复的漏洞名称列表
+        :type VulNames: list of str
+        :param _StartTime: 修复启动时间
+参数格式：YYYY-MM-DDTHH:mm:ssZ（ISO8601格式）
+        :type StartTime: str
+        :param _EndTime: 修复结束时间
+参数格式：YYYY-MM-DDTHH:mm:ssZ（ISO8601格式）
+        :type EndTime: str
+        :param _VulFixStatusList: 漏洞维度修复状态列表，每个漏洞的修复状态详情
+        :type VulFixStatusList: list of VulFixStatusItem
+        """
+        self._Id = None
+        self._TaskId = None
+        self._FixStatus = None
+        self._AssetCount = None
+        self._SuccessCount = None
+        self._FailCount = None
+        self._FixingCount = None
+        self._QueueCount = None
+        self._Progress = None
+        self._SuccessVulCount = None
+        self._FailVulCount = None
+        self._VulNames = None
+        self._StartTime = None
+        self._EndTime = None
+        self._VulFixStatusList = None
+
+    @property
+    def Id(self):
+        r"""修复任务主键ID
+        :rtype: int
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def TaskId(self):
+        r"""任务ID
+        :rtype: int
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def FixStatus(self):
+        r"""修复状态
+枚举值：
+0：初始化
+1：修复中
+2：修复成功
+3：部分修复失败
+4：全部修复失败
+5：停止修复
+        :rtype: int
+        """
+        return self._FixStatus
+
+    @FixStatus.setter
+    def FixStatus(self, FixStatus):
+        self._FixStatus = FixStatus
+
+    @property
+    def AssetCount(self):
+        r"""修复资产总数
+        :rtype: int
+        """
+        return self._AssetCount
+
+    @AssetCount.setter
+    def AssetCount(self, AssetCount):
+        self._AssetCount = AssetCount
+
+    @property
+    def SuccessCount(self):
+        r"""修复成功数
+        :rtype: int
+        """
+        return self._SuccessCount
+
+    @SuccessCount.setter
+    def SuccessCount(self, SuccessCount):
+        self._SuccessCount = SuccessCount
+
+    @property
+    def FailCount(self):
+        r"""修复失败数
+        :rtype: int
+        """
+        return self._FailCount
+
+    @FailCount.setter
+    def FailCount(self, FailCount):
+        self._FailCount = FailCount
+
+    @property
+    def FixingCount(self):
+        r"""修复中数量
+        :rtype: int
+        """
+        return self._FixingCount
+
+    @FixingCount.setter
+    def FixingCount(self, FixingCount):
+        self._FixingCount = FixingCount
+
+    @property
+    def QueueCount(self):
+        r"""排队中数量（等待下发或等待快照创建）
+        :rtype: int
+        """
+        return self._QueueCount
+
+    @QueueCount.setter
+    def QueueCount(self, QueueCount):
+        self._QueueCount = QueueCount
+
+    @property
+    def Progress(self):
+        r"""修复进度百分比
+取值范围：[0, 100]
+补充说明：计算方式为(SuccessCount+FailCount)/AssetCount×100
+        :rtype: int
+        """
+        return self._Progress
+
+    @Progress.setter
+    def Progress(self, Progress):
+        self._Progress = Progress
+
+    @property
+    def SuccessVulCount(self):
+        r"""修复成功的漏洞数
+        :rtype: int
+        """
+        return self._SuccessVulCount
+
+    @SuccessVulCount.setter
+    def SuccessVulCount(self, SuccessVulCount):
+        self._SuccessVulCount = SuccessVulCount
+
+    @property
+    def FailVulCount(self):
+        r"""修复失败的漏洞数
+        :rtype: int
+        """
+        return self._FailVulCount
+
+    @FailVulCount.setter
+    def FailVulCount(self, FailVulCount):
+        self._FailVulCount = FailVulCount
+
+    @property
+    def VulNames(self):
+        r"""修复的漏洞名称列表
+        :rtype: list of str
+        """
+        return self._VulNames
+
+    @VulNames.setter
+    def VulNames(self, VulNames):
+        self._VulNames = VulNames
+
+    @property
+    def StartTime(self):
+        r"""修复启动时间
+参数格式：YYYY-MM-DDTHH:mm:ssZ（ISO8601格式）
+        :rtype: str
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""修复结束时间
+参数格式：YYYY-MM-DDTHH:mm:ssZ（ISO8601格式）
+        :rtype: str
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def VulFixStatusList(self):
+        r"""漏洞维度修复状态列表，每个漏洞的修复状态详情
+        :rtype: list of VulFixStatusItem
+        """
+        return self._VulFixStatusList
+
+    @VulFixStatusList.setter
+    def VulFixStatusList(self, VulFixStatusList):
+        self._VulFixStatusList = VulFixStatusList
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._TaskId = params.get("TaskId")
+        self._FixStatus = params.get("FixStatus")
+        self._AssetCount = params.get("AssetCount")
+        self._SuccessCount = params.get("SuccessCount")
+        self._FailCount = params.get("FailCount")
+        self._FixingCount = params.get("FixingCount")
+        self._QueueCount = params.get("QueueCount")
+        self._Progress = params.get("Progress")
+        self._SuccessVulCount = params.get("SuccessVulCount")
+        self._FailVulCount = params.get("FailVulCount")
+        self._VulNames = params.get("VulNames")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        if params.get("VulFixStatusList") is not None:
+            self._VulFixStatusList = []
+            for item in params.get("VulFixStatusList"):
+                obj = VulFixStatusItem()
+                obj._deserialize(item)
+                self._VulFixStatusList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VulFixTaskItem(AbstractModel):
+    r"""漏洞修复任务列表项
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: 修复任务主键ID
+        :type Id: int
+        :param _TaskId: 任务ID，用于交互的hash标识
+        :type TaskId: int
+        :param _JobId: 任务JobId，对应后台任务系统的任务ID
+        :type JobId: str
+        :param _VulIds: 修复的漏洞ID列表
+        :type VulIds: list of int
+        :param _KBIds: 修复的KB补丁ID列表
+        :type KBIds: list of int
+        :param _AssetCount: 修复资产总数
+        :type AssetCount: int
+        :param _SuccessCount: 修复成功的主机数
+        :type SuccessCount: int
+        :param _FailCount: 修复失败的主机数
+        :type FailCount: int
+        :param _Progress: 修复进度百分比
+取值范围：[0, 100]
+补充说明：计算方式为(SuccessCount+FailCount)/AssetCount×100
+        :type Progress: int
+        :param _TargetAppIdsCount: 修复任务用户数
+        :type TargetAppIdsCount: int
+        :param _FixStatus: 修复状态
+枚举值：
+0：初始化
+1：修复中
+2：修复成功
+3：部分修复失败
+4：全部修复失败
+5：停止修复
+        :type FixStatus: int
+        :param _Timeout: 最大修复时间
+单位：秒
+        :type Timeout: int
+        :param _StartTime: 修复启动时间
+参数格式：YYYY-MM-DDTHH:mm:ssZ（ISO8601格式）
+        :type StartTime: str
+        :param _EndTime: 修复结束时间
+参数格式：YYYY-MM-DDTHH:mm:ssZ（ISO8601格式）
+        :type EndTime: str
+        :param _CreateTime: 记录创建时间
+参数格式：YYYY-MM-DDTHH:mm:ssZ（ISO8601格式）
+        :type CreateTime: str
+        :param _VulNames: 修复的漏洞名称列表，便于列表页直接展示
+        :type VulNames: list of str
+        :param _VulCategory: 漏洞类型列表
+枚举值：
+LINUX：Linux软件漏洞
+WINDOWS：Windows系统补丁漏洞
+WEB_CMS：Web-CMS漏洞
+APPLICATION：应用漏洞
+EMERGENCY：应急漏洞
+        :type VulCategory: list of str
+        :param _AppId: 创建者AppId
+        :type AppId: int
+        """
+        self._Id = None
+        self._TaskId = None
+        self._JobId = None
+        self._VulIds = None
+        self._KBIds = None
+        self._AssetCount = None
+        self._SuccessCount = None
+        self._FailCount = None
+        self._Progress = None
+        self._TargetAppIdsCount = None
+        self._FixStatus = None
+        self._Timeout = None
+        self._StartTime = None
+        self._EndTime = None
+        self._CreateTime = None
+        self._VulNames = None
+        self._VulCategory = None
+        self._AppId = None
+
+    @property
+    def Id(self):
+        r"""修复任务主键ID
+        :rtype: int
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def TaskId(self):
+        r"""任务ID，用于交互的hash标识
+        :rtype: int
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def JobId(self):
+        r"""任务JobId，对应后台任务系统的任务ID
+        :rtype: str
+        """
+        return self._JobId
+
+    @JobId.setter
+    def JobId(self, JobId):
+        self._JobId = JobId
+
+    @property
+    def VulIds(self):
+        r"""修复的漏洞ID列表
+        :rtype: list of int
+        """
+        return self._VulIds
+
+    @VulIds.setter
+    def VulIds(self, VulIds):
+        self._VulIds = VulIds
+
+    @property
+    def KBIds(self):
+        r"""修复的KB补丁ID列表
+        :rtype: list of int
+        """
+        return self._KBIds
+
+    @KBIds.setter
+    def KBIds(self, KBIds):
+        self._KBIds = KBIds
+
+    @property
+    def AssetCount(self):
+        r"""修复资产总数
+        :rtype: int
+        """
+        return self._AssetCount
+
+    @AssetCount.setter
+    def AssetCount(self, AssetCount):
+        self._AssetCount = AssetCount
+
+    @property
+    def SuccessCount(self):
+        r"""修复成功的主机数
+        :rtype: int
+        """
+        return self._SuccessCount
+
+    @SuccessCount.setter
+    def SuccessCount(self, SuccessCount):
+        self._SuccessCount = SuccessCount
+
+    @property
+    def FailCount(self):
+        r"""修复失败的主机数
+        :rtype: int
+        """
+        return self._FailCount
+
+    @FailCount.setter
+    def FailCount(self, FailCount):
+        self._FailCount = FailCount
+
+    @property
+    def Progress(self):
+        r"""修复进度百分比
+取值范围：[0, 100]
+补充说明：计算方式为(SuccessCount+FailCount)/AssetCount×100
+        :rtype: int
+        """
+        return self._Progress
+
+    @Progress.setter
+    def Progress(self, Progress):
+        self._Progress = Progress
+
+    @property
+    def TargetAppIdsCount(self):
+        r"""修复任务用户数
+        :rtype: int
+        """
+        return self._TargetAppIdsCount
+
+    @TargetAppIdsCount.setter
+    def TargetAppIdsCount(self, TargetAppIdsCount):
+        self._TargetAppIdsCount = TargetAppIdsCount
+
+    @property
+    def FixStatus(self):
+        r"""修复状态
+枚举值：
+0：初始化
+1：修复中
+2：修复成功
+3：部分修复失败
+4：全部修复失败
+5：停止修复
+        :rtype: int
+        """
+        return self._FixStatus
+
+    @FixStatus.setter
+    def FixStatus(self, FixStatus):
+        self._FixStatus = FixStatus
+
+    @property
+    def Timeout(self):
+        r"""最大修复时间
+单位：秒
+        :rtype: int
+        """
+        return self._Timeout
+
+    @Timeout.setter
+    def Timeout(self, Timeout):
+        self._Timeout = Timeout
+
+    @property
+    def StartTime(self):
+        r"""修复启动时间
+参数格式：YYYY-MM-DDTHH:mm:ssZ（ISO8601格式）
+        :rtype: str
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""修复结束时间
+参数格式：YYYY-MM-DDTHH:mm:ssZ（ISO8601格式）
+        :rtype: str
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def CreateTime(self):
+        r"""记录创建时间
+参数格式：YYYY-MM-DDTHH:mm:ssZ（ISO8601格式）
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def VulNames(self):
+        r"""修复的漏洞名称列表，便于列表页直接展示
+        :rtype: list of str
+        """
+        return self._VulNames
+
+    @VulNames.setter
+    def VulNames(self, VulNames):
+        self._VulNames = VulNames
+
+    @property
+    def VulCategory(self):
+        r"""漏洞类型列表
+枚举值：
+LINUX：Linux软件漏洞
+WINDOWS：Windows系统补丁漏洞
+WEB_CMS：Web-CMS漏洞
+APPLICATION：应用漏洞
+EMERGENCY：应急漏洞
+        :rtype: list of str
+        """
+        return self._VulCategory
+
+    @VulCategory.setter
+    def VulCategory(self, VulCategory):
+        self._VulCategory = VulCategory
+
+    @property
+    def AppId(self):
+        r"""创建者AppId
+        :rtype: int
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._TaskId = params.get("TaskId")
+        self._JobId = params.get("JobId")
+        self._VulIds = params.get("VulIds")
+        self._KBIds = params.get("KBIds")
+        self._AssetCount = params.get("AssetCount")
+        self._SuccessCount = params.get("SuccessCount")
+        self._FailCount = params.get("FailCount")
+        self._Progress = params.get("Progress")
+        self._TargetAppIdsCount = params.get("TargetAppIdsCount")
+        self._FixStatus = params.get("FixStatus")
+        self._Timeout = params.get("Timeout")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._CreateTime = params.get("CreateTime")
+        self._VulNames = params.get("VulNames")
+        self._VulCategory = params.get("VulCategory")
+        self._AppId = params.get("AppId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VulFixableMachineItem(AbstractModel):
+    r"""可修复主机信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VulIds: <p>漏洞ID列表，按 SupportAutoFix 维度分组：SupportAutoFix=1 时为可修复的漏洞ID，SupportAutoFix=0 时为不可修复的漏洞ID</p>
+        :type VulIds: list of int
+        :param _InstanceId: <p>主机实例ID</p>
+        :type InstanceId: str
+        :param _MachineName: <p>主机名称</p>
+        :type MachineName: str
+        :param _MachineIp: <p>主机IP</p>
+        :type MachineIp: str
+        :param _PublicIp: <p>公网IP</p>
+        :type PublicIp: str
+        :param _OsType: <p>操作系统类型<br>枚举值：<br>linux：Linux操作系统<br>windows：Windows操作系统</p>
+        :type OsType: str
+        :param _OsName: <p>操作系统名称</p>
+        :type OsName: str
+        :param _MachineStatus: <p>主机在线状态<br>枚举值：<br>ONLINE：在线<br>OFFLINE：离线</p>
+        :type MachineStatus: str
+        :param _SupportAutoFix: <p>是否支持自动修复<br>枚举值：<br>0：不支持<br>1：支持</p>
+        :type SupportAutoFix: int
+        :param _FixStatus: <p>当前修复状态<br>枚举值：<br>0：未修复<br>1：修复中<br>2：修复失败<br>3：修复成功<br>4：修复超时</p>
+        :type FixStatus: int
+        :param _LatestFixTime: <p>最近一次修复时间<br>参数格式：YYYY-MM-DDTHH:mm:ssZ（ISO8601格式）</p>
+        :type LatestFixTime: str
+        :param _NotFixableReason: <p>不可修复原因，SupportAutoFix为0时返回</p>
+        :type NotFixableReason: str
+        :param _FixCommands: <p>修复命令列表，SupportAutoFix为1时返回</p>
+        :type FixCommands: list of str
+        :param _Components: <p>关联组件列表</p>
+        :type Components: list of str
+        :param _TagItems: <p>资产标签列表</p>
+        :type TagItems: list of MiniTagItem
+        :param _AppId: <p>所属账号AppId</p>
+        :type AppId: int
+        :param _PayVersion: <p>付费版本信息<br>枚举值：<br>BASIC：基础版<br>PRO：专业版<br>ULTIMATE：旗舰版</p>
+        :type PayVersion: str
+        """
+        self._VulIds = None
+        self._InstanceId = None
+        self._MachineName = None
+        self._MachineIp = None
+        self._PublicIp = None
+        self._OsType = None
+        self._OsName = None
+        self._MachineStatus = None
+        self._SupportAutoFix = None
+        self._FixStatus = None
+        self._LatestFixTime = None
+        self._NotFixableReason = None
+        self._FixCommands = None
+        self._Components = None
+        self._TagItems = None
+        self._AppId = None
+        self._PayVersion = None
+
+    @property
+    def VulIds(self):
+        r"""<p>漏洞ID列表，按 SupportAutoFix 维度分组：SupportAutoFix=1 时为可修复的漏洞ID，SupportAutoFix=0 时为不可修复的漏洞ID</p>
+        :rtype: list of int
+        """
+        return self._VulIds
+
+    @VulIds.setter
+    def VulIds(self, VulIds):
+        self._VulIds = VulIds
+
+    @property
+    def InstanceId(self):
+        r"""<p>主机实例ID</p>
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def MachineName(self):
+        r"""<p>主机名称</p>
+        :rtype: str
+        """
+        return self._MachineName
+
+    @MachineName.setter
+    def MachineName(self, MachineName):
+        self._MachineName = MachineName
+
+    @property
+    def MachineIp(self):
+        r"""<p>主机IP</p>
+        :rtype: str
+        """
+        return self._MachineIp
+
+    @MachineIp.setter
+    def MachineIp(self, MachineIp):
+        self._MachineIp = MachineIp
+
+    @property
+    def PublicIp(self):
+        r"""<p>公网IP</p>
+        :rtype: str
+        """
+        return self._PublicIp
+
+    @PublicIp.setter
+    def PublicIp(self, PublicIp):
+        self._PublicIp = PublicIp
+
+    @property
+    def OsType(self):
+        r"""<p>操作系统类型<br>枚举值：<br>linux：Linux操作系统<br>windows：Windows操作系统</p>
+        :rtype: str
+        """
+        return self._OsType
+
+    @OsType.setter
+    def OsType(self, OsType):
+        self._OsType = OsType
+
+    @property
+    def OsName(self):
+        r"""<p>操作系统名称</p>
+        :rtype: str
+        """
+        return self._OsName
+
+    @OsName.setter
+    def OsName(self, OsName):
+        self._OsName = OsName
+
+    @property
+    def MachineStatus(self):
+        r"""<p>主机在线状态<br>枚举值：<br>ONLINE：在线<br>OFFLINE：离线</p>
+        :rtype: str
+        """
+        return self._MachineStatus
+
+    @MachineStatus.setter
+    def MachineStatus(self, MachineStatus):
+        self._MachineStatus = MachineStatus
+
+    @property
+    def SupportAutoFix(self):
+        r"""<p>是否支持自动修复<br>枚举值：<br>0：不支持<br>1：支持</p>
+        :rtype: int
+        """
+        return self._SupportAutoFix
+
+    @SupportAutoFix.setter
+    def SupportAutoFix(self, SupportAutoFix):
+        self._SupportAutoFix = SupportAutoFix
+
+    @property
+    def FixStatus(self):
+        r"""<p>当前修复状态<br>枚举值：<br>0：未修复<br>1：修复中<br>2：修复失败<br>3：修复成功<br>4：修复超时</p>
+        :rtype: int
+        """
+        return self._FixStatus
+
+    @FixStatus.setter
+    def FixStatus(self, FixStatus):
+        self._FixStatus = FixStatus
+
+    @property
+    def LatestFixTime(self):
+        r"""<p>最近一次修复时间<br>参数格式：YYYY-MM-DDTHH:mm:ssZ（ISO8601格式）</p>
+        :rtype: str
+        """
+        return self._LatestFixTime
+
+    @LatestFixTime.setter
+    def LatestFixTime(self, LatestFixTime):
+        self._LatestFixTime = LatestFixTime
+
+    @property
+    def NotFixableReason(self):
+        r"""<p>不可修复原因，SupportAutoFix为0时返回</p>
+        :rtype: str
+        """
+        return self._NotFixableReason
+
+    @NotFixableReason.setter
+    def NotFixableReason(self, NotFixableReason):
+        self._NotFixableReason = NotFixableReason
+
+    @property
+    def FixCommands(self):
+        r"""<p>修复命令列表，SupportAutoFix为1时返回</p>
+        :rtype: list of str
+        """
+        return self._FixCommands
+
+    @FixCommands.setter
+    def FixCommands(self, FixCommands):
+        self._FixCommands = FixCommands
+
+    @property
+    def Components(self):
+        r"""<p>关联组件列表</p>
+        :rtype: list of str
+        """
+        return self._Components
+
+    @Components.setter
+    def Components(self, Components):
+        self._Components = Components
+
+    @property
+    def TagItems(self):
+        r"""<p>资产标签列表</p>
+        :rtype: list of MiniTagItem
+        """
+        return self._TagItems
+
+    @TagItems.setter
+    def TagItems(self, TagItems):
+        self._TagItems = TagItems
+
+    @property
+    def AppId(self):
+        r"""<p>所属账号AppId</p>
+        :rtype: int
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def PayVersion(self):
+        r"""<p>付费版本信息<br>枚举值：<br>BASIC：基础版<br>PRO：专业版<br>ULTIMATE：旗舰版</p>
+        :rtype: str
+        """
+        return self._PayVersion
+
+    @PayVersion.setter
+    def PayVersion(self, PayVersion):
+        self._PayVersion = PayVersion
+
+
+    def _deserialize(self, params):
+        self._VulIds = params.get("VulIds")
+        self._InstanceId = params.get("InstanceId")
+        self._MachineName = params.get("MachineName")
+        self._MachineIp = params.get("MachineIp")
+        self._PublicIp = params.get("PublicIp")
+        self._OsType = params.get("OsType")
+        self._OsName = params.get("OsName")
+        self._MachineStatus = params.get("MachineStatus")
+        self._SupportAutoFix = params.get("SupportAutoFix")
+        self._FixStatus = params.get("FixStatus")
+        self._LatestFixTime = params.get("LatestFixTime")
+        self._NotFixableReason = params.get("NotFixableReason")
+        self._FixCommands = params.get("FixCommands")
+        self._Components = params.get("Components")
+        if params.get("TagItems") is not None:
+            self._TagItems = []
+            for item in params.get("TagItems"):
+                obj = MiniTagItem()
+                obj._deserialize(item)
+                self._TagItems.append(obj)
+        self._AppId = params.get("AppId")
+        self._PayVersion = params.get("PayVersion")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VulFixedItem(AbstractModel):
+    r"""已修复漏洞信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VulId: 漏洞ID
+        :type VulId: int
+        :param _VulName: 漏洞名称
+        :type VulName: str
+        :param _Level: 漏洞等级
+枚举值：
+LOW：低危
+MEDIUM：中危
+HIGH：高危
+CRITICAL：严重
+        :type Level: str
+        :param _VRPRatingInfo: VPR 评级信息（包含评级结果、说明和分阶段评分），与 DescribeHostVulRiskList 一致
+        :type VRPRatingInfo: :class:`tencentcloud.csip.v20221121.models.VPRRatingInfo`
+        :param _VulCategory: 漏洞类型
+枚举值：
+LINUX：Linux软件漏洞
+WINDOWS：Windows系统补丁漏洞
+WEB_CMS：Web-CMS漏洞
+APPLICATION：应用漏洞
+EMERGENCY：应急漏洞
+        :type VulCategory: str
+        :param _CveId: CVE编号
+        :type CveId: str
+        :param _MachineName: 修复主机名称
+        :type MachineName: str
+        :param _InstanceId: 修复主机实例ID
+        :type InstanceId: str
+        :param _ComponentCount: 关联组件&路径数量
+        :type ComponentCount: int
+        :param _Components: 关联组件&路径列表
+        :type Components: list of str
+        :param _LatestFixTime: 最近一次修复时间
+参数格式：YYYY-MM-DDTHH:mm:ssZ（ISO8601格式）
+        :type LatestFixTime: str
+        """
+        self._VulId = None
+        self._VulName = None
+        self._Level = None
+        self._VRPRatingInfo = None
+        self._VulCategory = None
+        self._CveId = None
+        self._MachineName = None
+        self._InstanceId = None
+        self._ComponentCount = None
+        self._Components = None
+        self._LatestFixTime = None
+
+    @property
+    def VulId(self):
+        r"""漏洞ID
+        :rtype: int
+        """
+        return self._VulId
+
+    @VulId.setter
+    def VulId(self, VulId):
+        self._VulId = VulId
+
+    @property
+    def VulName(self):
+        r"""漏洞名称
+        :rtype: str
+        """
+        return self._VulName
+
+    @VulName.setter
+    def VulName(self, VulName):
+        self._VulName = VulName
+
+    @property
+    def Level(self):
+        r"""漏洞等级
+枚举值：
+LOW：低危
+MEDIUM：中危
+HIGH：高危
+CRITICAL：严重
+        :rtype: str
+        """
+        return self._Level
+
+    @Level.setter
+    def Level(self, Level):
+        self._Level = Level
+
+    @property
+    def VRPRatingInfo(self):
+        r"""VPR 评级信息（包含评级结果、说明和分阶段评分），与 DescribeHostVulRiskList 一致
+        :rtype: :class:`tencentcloud.csip.v20221121.models.VPRRatingInfo`
+        """
+        return self._VRPRatingInfo
+
+    @VRPRatingInfo.setter
+    def VRPRatingInfo(self, VRPRatingInfo):
+        self._VRPRatingInfo = VRPRatingInfo
+
+    @property
+    def VulCategory(self):
+        r"""漏洞类型
+枚举值：
+LINUX：Linux软件漏洞
+WINDOWS：Windows系统补丁漏洞
+WEB_CMS：Web-CMS漏洞
+APPLICATION：应用漏洞
+EMERGENCY：应急漏洞
+        :rtype: str
+        """
+        return self._VulCategory
+
+    @VulCategory.setter
+    def VulCategory(self, VulCategory):
+        self._VulCategory = VulCategory
+
+    @property
+    def CveId(self):
+        r"""CVE编号
+        :rtype: str
+        """
+        return self._CveId
+
+    @CveId.setter
+    def CveId(self, CveId):
+        self._CveId = CveId
+
+    @property
+    def MachineName(self):
+        r"""修复主机名称
+        :rtype: str
+        """
+        return self._MachineName
+
+    @MachineName.setter
+    def MachineName(self, MachineName):
+        self._MachineName = MachineName
+
+    @property
+    def InstanceId(self):
+        r"""修复主机实例ID
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def ComponentCount(self):
+        r"""关联组件&路径数量
+        :rtype: int
+        """
+        return self._ComponentCount
+
+    @ComponentCount.setter
+    def ComponentCount(self, ComponentCount):
+        self._ComponentCount = ComponentCount
+
+    @property
+    def Components(self):
+        r"""关联组件&路径列表
+        :rtype: list of str
+        """
+        return self._Components
+
+    @Components.setter
+    def Components(self, Components):
+        self._Components = Components
+
+    @property
+    def LatestFixTime(self):
+        r"""最近一次修复时间
+参数格式：YYYY-MM-DDTHH:mm:ssZ（ISO8601格式）
+        :rtype: str
+        """
+        return self._LatestFixTime
+
+    @LatestFixTime.setter
+    def LatestFixTime(self, LatestFixTime):
+        self._LatestFixTime = LatestFixTime
+
+
+    def _deserialize(self, params):
+        self._VulId = params.get("VulId")
+        self._VulName = params.get("VulName")
+        self._Level = params.get("Level")
+        if params.get("VRPRatingInfo") is not None:
+            self._VRPRatingInfo = VPRRatingInfo()
+            self._VRPRatingInfo._deserialize(params.get("VRPRatingInfo"))
+        self._VulCategory = params.get("VulCategory")
+        self._CveId = params.get("CveId")
+        self._MachineName = params.get("MachineName")
+        self._InstanceId = params.get("InstanceId")
+        self._ComponentCount = params.get("ComponentCount")
+        self._Components = params.get("Components")
+        self._LatestFixTime = params.get("LatestFixTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VulHostBriefInfo(AbstractModel):
+    r"""主机简要信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceID: <p>云主机实例 ID<br>参数格式：形如 ins-xxxxxxxx</p>
+        :type InstanceID: str
+        :param _Name: <p>主机名称</p>
+        :type Name: str
+        :param _PublicIP: <p>公网 IP 地址</p>
+        :type PublicIP: str
+        :param _PrivateIP: <p>内网 IP 地址</p>
+        :type PrivateIP: str
+        :param _DefendVersion: <p>防护版本<br>枚举值：<br>NONE：无防护<br>BASIC：基础版<br>PRO：专业版<br>ULTIMATE：旗舰版<br>PRO_LH：轻量版</p>
+        :type DefendVersion: str
+        :param _DefendStatus: <p>漏洞防御状态<br>枚举值：<br>ENABLED：已开启<br>NOT_SUPPORTED：不支持<br>NOT_ENABLED：未开启</p>
+        :type DefendStatus: str
+        :param _Account: <p>所属账号信息</p>
+        :type Account: :class:`tencentcloud.csip.v20221121.models.AccountBriefInfo`
+        :param _InstanceStatus: <p>云主机实例状态<br>枚举值：<br>RUNNING：运行中<br>STOPPED：已停止<br>UNKNOWN：未知</p>
+        :type InstanceStatus: str
+        :param _RiskStatus: <p>修复状态枚举值</p><p>枚举值：</p><ul><li>PENDING： 待修复</li><li>SCANNING： 扫描中</li><li>FIXED： 已修复</li><li>IGNORED： 已忽略</li><li>FIXING： 修复中</li><li>FIX_FAILED： 修复失败</li><li>NEED_REBOOT： 修复待重启</li></ul>
+        :type RiskStatus: str
+        :param _VPRRating: <p>VPR 评级信息（含评级结果与各维度详情）</p>
+        :type VPRRating: :class:`tencentcloud.csip.v20221121.models.VPRRatingInfo`
+        :param _AgentStatus: <p>CWP Agent 状态<br>枚举值：<br>ONLINE：在线<br>OFFLINE：离线<br>UNINSTALLED：未安装</p>
+        :type AgentStatus: str
+        :param _TagItem: <p>资产标签列表（CSIP 内部资产标签）</p>
+        :type TagItem: list of MiniTagItem
+        :param _CloudTag: <p>云上标签列表（云资产侧 Tag）</p>
+        :type CloudTag: list of Tag
+        """
+        self._InstanceID = None
+        self._Name = None
+        self._PublicIP = None
+        self._PrivateIP = None
+        self._DefendVersion = None
+        self._DefendStatus = None
+        self._Account = None
+        self._InstanceStatus = None
+        self._RiskStatus = None
+        self._VPRRating = None
+        self._AgentStatus = None
+        self._TagItem = None
+        self._CloudTag = None
+
+    @property
+    def InstanceID(self):
+        r"""<p>云主机实例 ID<br>参数格式：形如 ins-xxxxxxxx</p>
+        :rtype: str
+        """
+        return self._InstanceID
+
+    @InstanceID.setter
+    def InstanceID(self, InstanceID):
+        self._InstanceID = InstanceID
+
+    @property
+    def Name(self):
+        r"""<p>主机名称</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def PublicIP(self):
+        r"""<p>公网 IP 地址</p>
+        :rtype: str
+        """
+        return self._PublicIP
+
+    @PublicIP.setter
+    def PublicIP(self, PublicIP):
+        self._PublicIP = PublicIP
+
+    @property
+    def PrivateIP(self):
+        r"""<p>内网 IP 地址</p>
+        :rtype: str
+        """
+        return self._PrivateIP
+
+    @PrivateIP.setter
+    def PrivateIP(self, PrivateIP):
+        self._PrivateIP = PrivateIP
+
+    @property
+    def DefendVersion(self):
+        r"""<p>防护版本<br>枚举值：<br>NONE：无防护<br>BASIC：基础版<br>PRO：专业版<br>ULTIMATE：旗舰版<br>PRO_LH：轻量版</p>
+        :rtype: str
+        """
+        return self._DefendVersion
+
+    @DefendVersion.setter
+    def DefendVersion(self, DefendVersion):
+        self._DefendVersion = DefendVersion
+
+    @property
+    def DefendStatus(self):
+        r"""<p>漏洞防御状态<br>枚举值：<br>ENABLED：已开启<br>NOT_SUPPORTED：不支持<br>NOT_ENABLED：未开启</p>
+        :rtype: str
+        """
+        return self._DefendStatus
+
+    @DefendStatus.setter
+    def DefendStatus(self, DefendStatus):
+        self._DefendStatus = DefendStatus
+
+    @property
+    def Account(self):
+        r"""<p>所属账号信息</p>
+        :rtype: :class:`tencentcloud.csip.v20221121.models.AccountBriefInfo`
+        """
+        return self._Account
+
+    @Account.setter
+    def Account(self, Account):
+        self._Account = Account
+
+    @property
+    def InstanceStatus(self):
+        r"""<p>云主机实例状态<br>枚举值：<br>RUNNING：运行中<br>STOPPED：已停止<br>UNKNOWN：未知</p>
+        :rtype: str
+        """
+        return self._InstanceStatus
+
+    @InstanceStatus.setter
+    def InstanceStatus(self, InstanceStatus):
+        self._InstanceStatus = InstanceStatus
+
+    @property
+    def RiskStatus(self):
+        r"""<p>修复状态枚举值</p><p>枚举值：</p><ul><li>PENDING： 待修复</li><li>SCANNING： 扫描中</li><li>FIXED： 已修复</li><li>IGNORED： 已忽略</li><li>FIXING： 修复中</li><li>FIX_FAILED： 修复失败</li><li>NEED_REBOOT： 修复待重启</li></ul>
+        :rtype: str
+        """
+        return self._RiskStatus
+
+    @RiskStatus.setter
+    def RiskStatus(self, RiskStatus):
+        self._RiskStatus = RiskStatus
+
+    @property
+    def VPRRating(self):
+        r"""<p>VPR 评级信息（含评级结果与各维度详情）</p>
+        :rtype: :class:`tencentcloud.csip.v20221121.models.VPRRatingInfo`
+        """
+        return self._VPRRating
+
+    @VPRRating.setter
+    def VPRRating(self, VPRRating):
+        self._VPRRating = VPRRating
+
+    @property
+    def AgentStatus(self):
+        r"""<p>CWP Agent 状态<br>枚举值：<br>ONLINE：在线<br>OFFLINE：离线<br>UNINSTALLED：未安装</p>
+        :rtype: str
+        """
+        return self._AgentStatus
+
+    @AgentStatus.setter
+    def AgentStatus(self, AgentStatus):
+        self._AgentStatus = AgentStatus
+
+    @property
+    def TagItem(self):
+        r"""<p>资产标签列表（CSIP 内部资产标签）</p>
+        :rtype: list of MiniTagItem
+        """
+        return self._TagItem
+
+    @TagItem.setter
+    def TagItem(self, TagItem):
+        self._TagItem = TagItem
+
+    @property
+    def CloudTag(self):
+        r"""<p>云上标签列表（云资产侧 Tag）</p>
+        :rtype: list of Tag
+        """
+        return self._CloudTag
+
+    @CloudTag.setter
+    def CloudTag(self, CloudTag):
+        self._CloudTag = CloudTag
+
+
+    def _deserialize(self, params):
+        self._InstanceID = params.get("InstanceID")
+        self._Name = params.get("Name")
+        self._PublicIP = params.get("PublicIP")
+        self._PrivateIP = params.get("PrivateIP")
+        self._DefendVersion = params.get("DefendVersion")
+        self._DefendStatus = params.get("DefendStatus")
+        if params.get("Account") is not None:
+            self._Account = AccountBriefInfo()
+            self._Account._deserialize(params.get("Account"))
+        self._InstanceStatus = params.get("InstanceStatus")
+        self._RiskStatus = params.get("RiskStatus")
+        if params.get("VPRRating") is not None:
+            self._VPRRating = VPRRatingInfo()
+            self._VPRRating._deserialize(params.get("VPRRating"))
+        self._AgentStatus = params.get("AgentStatus")
+        if params.get("TagItem") is not None:
+            self._TagItem = []
+            for item in params.get("TagItem"):
+                obj = MiniTagItem()
+                obj._deserialize(item)
+                self._TagItem.append(obj)
+        if params.get("CloudTag") is not None:
+            self._CloudTag = []
+            for item in params.get("CloudTag"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._CloudTag.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class VulImpactComponentInfo(AbstractModel):
     r"""漏洞影响组件信息
 
@@ -87711,6 +97507,519 @@ class VulRiskItem(AbstractModel):
         
 
 
+class VulScanTask(AbstractModel):
+    r"""漏洞扫描任务记录
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: <p>任务id</p>
+        :type Id: int
+        :param _JobId: <p>任务id</p>
+        :type JobId: str
+        :param _AppId: <p>任务所属用户appid</p>
+        :type AppId: int
+        :param _TaskType: <p>任务类型</p><p>枚举值：</p><ul><li>0： 一键扫描</li><li>1： 周期扫描</li></ul>
+        :type TaskType: int
+        :param _VulCategory: <p>漏洞分类</p><p>枚举值：</p><ul><li>LINUX： Linux软件漏洞</li><li>WINDOWS： Windows系统补丁</li><li>WEB_CMS： Web-CMS漏洞</li><li>APPLICATION： 应用漏洞</li><li>EMERGENCY： 应急漏洞</li></ul>
+        :type VulCategory: list of str
+        :param _VulName: <p>漏洞名称</p>
+        :type VulName: list of str
+        :param _KbName: <p>kb名称</p>
+        :type KbName: list of str
+        :param _Emergency: <p>是否应急漏洞</p><p>枚举值：</p><ul><li>0： 否</li><li>1： 是</li></ul>
+        :type Emergency: int
+        :param _Account: <p>扫描账号数量（0: 全部账号, others: 账号数量）</p>
+        :type Account: int
+        :param _StartTime: <p>扫描开始时间</p>
+        :type StartTime: str
+        :param _EndTime: <p>扫描结束时间</p>
+        :type EndTime: str
+        :param _Status: <p>扫描状态（INITIALIZING: 初始化, SCANNING: 扫描中, SUCCESS: 扫描成功,  TOTAL_FAIL: 全部扫描失败）</p><p>枚举值：</p><ul><li>STOPPED： 已停止</li></ul>
+        :type Status: str
+        :param _Level: <p>漏洞威胁等级</p><p>枚举值：</p><ul><li>LOW： 低危</li><li>MEDIUM： 中危</li><li>HIGH： 高危</li><li>CRITICAL： 严重</li></ul>
+        :type Level: list of str
+        :param _Method: <p>扫描方式</p><p>枚举值：</p><ul><li>VersionCompare： 版本对比</li><li>POC： POC检测</li><li>VersionComparePOC： 版本对比+POC检测</li></ul>
+        :type Method: list of str
+        :param _AssetList: <p>资产列表</p>
+        :type AssetList: list of str
+        :param _AssetRange: <p>资产范围</p><p>枚举值：</p><ul><li>0： 所有资产</li><li>1： 自选资产</li><li>2： 自选排除资产</li></ul>
+        :type AssetRange: int
+        """
+        self._Id = None
+        self._JobId = None
+        self._AppId = None
+        self._TaskType = None
+        self._VulCategory = None
+        self._VulName = None
+        self._KbName = None
+        self._Emergency = None
+        self._Account = None
+        self._StartTime = None
+        self._EndTime = None
+        self._Status = None
+        self._Level = None
+        self._Method = None
+        self._AssetList = None
+        self._AssetRange = None
+
+    @property
+    def Id(self):
+        r"""<p>任务id</p>
+        :rtype: int
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def JobId(self):
+        r"""<p>任务id</p>
+        :rtype: str
+        """
+        return self._JobId
+
+    @JobId.setter
+    def JobId(self, JobId):
+        self._JobId = JobId
+
+    @property
+    def AppId(self):
+        r"""<p>任务所属用户appid</p>
+        :rtype: int
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def TaskType(self):
+        r"""<p>任务类型</p><p>枚举值：</p><ul><li>0： 一键扫描</li><li>1： 周期扫描</li></ul>
+        :rtype: int
+        """
+        return self._TaskType
+
+    @TaskType.setter
+    def TaskType(self, TaskType):
+        self._TaskType = TaskType
+
+    @property
+    def VulCategory(self):
+        r"""<p>漏洞分类</p><p>枚举值：</p><ul><li>LINUX： Linux软件漏洞</li><li>WINDOWS： Windows系统补丁</li><li>WEB_CMS： Web-CMS漏洞</li><li>APPLICATION： 应用漏洞</li><li>EMERGENCY： 应急漏洞</li></ul>
+        :rtype: list of str
+        """
+        return self._VulCategory
+
+    @VulCategory.setter
+    def VulCategory(self, VulCategory):
+        self._VulCategory = VulCategory
+
+    @property
+    def VulName(self):
+        r"""<p>漏洞名称</p>
+        :rtype: list of str
+        """
+        return self._VulName
+
+    @VulName.setter
+    def VulName(self, VulName):
+        self._VulName = VulName
+
+    @property
+    def KbName(self):
+        r"""<p>kb名称</p>
+        :rtype: list of str
+        """
+        return self._KbName
+
+    @KbName.setter
+    def KbName(self, KbName):
+        self._KbName = KbName
+
+    @property
+    def Emergency(self):
+        r"""<p>是否应急漏洞</p><p>枚举值：</p><ul><li>0： 否</li><li>1： 是</li></ul>
+        :rtype: int
+        """
+        return self._Emergency
+
+    @Emergency.setter
+    def Emergency(self, Emergency):
+        self._Emergency = Emergency
+
+    @property
+    def Account(self):
+        r"""<p>扫描账号数量（0: 全部账号, others: 账号数量）</p>
+        :rtype: int
+        """
+        return self._Account
+
+    @Account.setter
+    def Account(self, Account):
+        self._Account = Account
+
+    @property
+    def StartTime(self):
+        r"""<p>扫描开始时间</p>
+        :rtype: str
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""<p>扫描结束时间</p>
+        :rtype: str
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def Status(self):
+        r"""<p>扫描状态（INITIALIZING: 初始化, SCANNING: 扫描中, SUCCESS: 扫描成功,  TOTAL_FAIL: 全部扫描失败）</p><p>枚举值：</p><ul><li>STOPPED： 已停止</li></ul>
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Level(self):
+        r"""<p>漏洞威胁等级</p><p>枚举值：</p><ul><li>LOW： 低危</li><li>MEDIUM： 中危</li><li>HIGH： 高危</li><li>CRITICAL： 严重</li></ul>
+        :rtype: list of str
+        """
+        return self._Level
+
+    @Level.setter
+    def Level(self, Level):
+        self._Level = Level
+
+    @property
+    def Method(self):
+        r"""<p>扫描方式</p><p>枚举值：</p><ul><li>VersionCompare： 版本对比</li><li>POC： POC检测</li><li>VersionComparePOC： 版本对比+POC检测</li></ul>
+        :rtype: list of str
+        """
+        return self._Method
+
+    @Method.setter
+    def Method(self, Method):
+        self._Method = Method
+
+    @property
+    def AssetList(self):
+        r"""<p>资产列表</p>
+        :rtype: list of str
+        """
+        return self._AssetList
+
+    @AssetList.setter
+    def AssetList(self, AssetList):
+        self._AssetList = AssetList
+
+    @property
+    def AssetRange(self):
+        r"""<p>资产范围</p><p>枚举值：</p><ul><li>0： 所有资产</li><li>1： 自选资产</li><li>2： 自选排除资产</li></ul>
+        :rtype: int
+        """
+        return self._AssetRange
+
+    @AssetRange.setter
+    def AssetRange(self, AssetRange):
+        self._AssetRange = AssetRange
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._JobId = params.get("JobId")
+        self._AppId = params.get("AppId")
+        self._TaskType = params.get("TaskType")
+        self._VulCategory = params.get("VulCategory")
+        self._VulName = params.get("VulName")
+        self._KbName = params.get("KbName")
+        self._Emergency = params.get("Emergency")
+        self._Account = params.get("Account")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._Status = params.get("Status")
+        self._Level = params.get("Level")
+        self._Method = params.get("Method")
+        self._AssetList = params.get("AssetList")
+        self._AssetRange = params.get("AssetRange")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VulScanTaskDetail(AbstractModel):
+    r"""漏洞扫描任务详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: <p>任务id</p>
+        :type Id: str
+        :param _AppId: <p>创建者AppId</p>
+        :type AppId: int
+        :param _InstanceId: <p>实例id</p>
+        :type InstanceId: str
+        :param _InstanceName: <p>实例名称</p>
+        :type InstanceName: str
+        :param _PublicIp: <p>公网ip</p>
+        :type PublicIp: str
+        :param _PrivateIp: <p>内网ip</p>
+        :type PrivateIp: str
+        :param _OS: <p>操作系统</p>
+        :type OS: str
+        :param _Status: <p>扫描状态（SUCCESS: 扫描完成/成功, OFFLINE: 客户端离线, TIMEOUT: 扫描超时, FAILED: 扫描失败, UNSUPPORTED: 客户端版本过低/不支持扫描, TERMINATED: 已终止, TERMINATING: 终止中）</p><p>枚举值：</p><ul><li>SCANNING： 扫描中</li></ul>
+        :type Status: str
+        :param _StartTime: <p>扫描开始时间</p>
+        :type StartTime: str
+        :param _EndTime: <p>扫描结束时间</p>
+        :type EndTime: str
+        :param _Vuls: <p>漏洞数量</p>
+        :type Vuls: int
+        :param _Description: <p>失败原因</p>
+        :type Description: str
+        """
+        self._Id = None
+        self._AppId = None
+        self._InstanceId = None
+        self._InstanceName = None
+        self._PublicIp = None
+        self._PrivateIp = None
+        self._OS = None
+        self._Status = None
+        self._StartTime = None
+        self._EndTime = None
+        self._Vuls = None
+        self._Description = None
+
+    @property
+    def Id(self):
+        r"""<p>任务id</p>
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def AppId(self):
+        r"""<p>创建者AppId</p>
+        :rtype: int
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def InstanceId(self):
+        r"""<p>实例id</p>
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def InstanceName(self):
+        r"""<p>实例名称</p>
+        :rtype: str
+        """
+        return self._InstanceName
+
+    @InstanceName.setter
+    def InstanceName(self, InstanceName):
+        self._InstanceName = InstanceName
+
+    @property
+    def PublicIp(self):
+        r"""<p>公网ip</p>
+        :rtype: str
+        """
+        return self._PublicIp
+
+    @PublicIp.setter
+    def PublicIp(self, PublicIp):
+        self._PublicIp = PublicIp
+
+    @property
+    def PrivateIp(self):
+        r"""<p>内网ip</p>
+        :rtype: str
+        """
+        return self._PrivateIp
+
+    @PrivateIp.setter
+    def PrivateIp(self, PrivateIp):
+        self._PrivateIp = PrivateIp
+
+    @property
+    def OS(self):
+        r"""<p>操作系统</p>
+        :rtype: str
+        """
+        return self._OS
+
+    @OS.setter
+    def OS(self, OS):
+        self._OS = OS
+
+    @property
+    def Status(self):
+        r"""<p>扫描状态（SUCCESS: 扫描完成/成功, OFFLINE: 客户端离线, TIMEOUT: 扫描超时, FAILED: 扫描失败, UNSUPPORTED: 客户端版本过低/不支持扫描, TERMINATED: 已终止, TERMINATING: 终止中）</p><p>枚举值：</p><ul><li>SCANNING： 扫描中</li></ul>
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def StartTime(self):
+        r"""<p>扫描开始时间</p>
+        :rtype: str
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""<p>扫描结束时间</p>
+        :rtype: str
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def Vuls(self):
+        r"""<p>漏洞数量</p>
+        :rtype: int
+        """
+        return self._Vuls
+
+    @Vuls.setter
+    def Vuls(self, Vuls):
+        self._Vuls = Vuls
+
+    @property
+    def Description(self):
+        r"""<p>失败原因</p>
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._AppId = params.get("AppId")
+        self._InstanceId = params.get("InstanceId")
+        self._InstanceName = params.get("InstanceName")
+        self._PublicIp = params.get("PublicIp")
+        self._PrivateIp = params.get("PrivateIp")
+        self._OS = params.get("OS")
+        self._Status = params.get("Status")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._Vuls = params.get("Vuls")
+        self._Description = params.get("Description")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VulSpreadTrend(AbstractModel):
+    r"""漏洞传播趋势
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Date: <p>日期<br>参数格式：YYYY-MM-DD</p>
+        :type Date: str
+        :param _Trend: <p>该日期的传播趋势数值</p>
+        :type Trend: float
+        """
+        self._Date = None
+        self._Trend = None
+
+    @property
+    def Date(self):
+        r"""<p>日期<br>参数格式：YYYY-MM-DD</p>
+        :rtype: str
+        """
+        return self._Date
+
+    @Date.setter
+    def Date(self, Date):
+        self._Date = Date
+
+    @property
+    def Trend(self):
+        r"""<p>该日期的传播趋势数值</p>
+        :rtype: float
+        """
+        return self._Trend
+
+    @Trend.setter
+    def Trend(self, Trend):
+        self._Trend = Trend
+
+
+    def _deserialize(self, params):
+        self._Date = params.get("Date")
+        self._Trend = params.get("Trend")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class VulTrend(AbstractModel):
     r"""漏洞趋势-攻击趋势、影响用户、影响资产
 
@@ -87782,6 +98091,243 @@ class VulTrend(AbstractModel):
         self._AffectUserCount = params.get("AffectUserCount")
         self._AttackCount = params.get("AttackCount")
         self._Date = params.get("Date")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VulVendorProduct(AbstractModel):
+    r"""漏洞影响厂商和产品
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Vendor: <p>供应商</p>
+        :type Vendor: str
+        :param _Product: <p>产品名称</p>
+        :type Product: str
+        :param _VersionRange: <p>影响版本</p>
+        :type VersionRange: list of str
+        """
+        self._Vendor = None
+        self._Product = None
+        self._VersionRange = None
+
+    @property
+    def Vendor(self):
+        r"""<p>供应商</p>
+        :rtype: str
+        """
+        return self._Vendor
+
+    @Vendor.setter
+    def Vendor(self, Vendor):
+        self._Vendor = Vendor
+
+    @property
+    def Product(self):
+        r"""<p>产品名称</p>
+        :rtype: str
+        """
+        return self._Product
+
+    @Product.setter
+    def Product(self, Product):
+        self._Product = Product
+
+    @property
+    def VersionRange(self):
+        r"""<p>影响版本</p>
+        :rtype: list of str
+        """
+        return self._VersionRange
+
+    @VersionRange.setter
+    def VersionRange(self, VersionRange):
+        self._VersionRange = VersionRange
+
+
+    def _deserialize(self, params):
+        self._Vendor = params.get("Vendor")
+        self._Product = params.get("Product")
+        self._VersionRange = params.get("VersionRange")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VulWhitelist(AbstractModel):
+    r"""漏洞白名单
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: <p>id</p>
+        :type Id: int
+        :param _Name: <p>漏洞名称</p>
+        :type Name: str
+        :param _Remark: <p>备注</p>
+        :type Remark: str
+        :param _AppId: <p>所属账号</p>
+        :type AppId: int
+        :param _AssetList: <p>资产列表</p>
+        :type AssetList: list of str
+        :param _UpdateTime: <p>更新时间</p>
+        :type UpdateTime: str
+        :param _Switch: <p>策略开关（0-关闭, 1-开启）</p>
+        :type Switch: int
+        :param _AssetRange: <p>资产范围</p><p>枚举值：</p><ul><li>0： 全部资产</li><li>1： 自选资产</li><li>2： 全选排除资产</li></ul>
+        :type AssetRange: int
+        :param _KBId: <p>补丁KB id</p>
+        :type KBId: int
+        :param _VulId: <p>漏洞Id</p>
+        :type VulId: int
+        """
+        self._Id = None
+        self._Name = None
+        self._Remark = None
+        self._AppId = None
+        self._AssetList = None
+        self._UpdateTime = None
+        self._Switch = None
+        self._AssetRange = None
+        self._KBId = None
+        self._VulId = None
+
+    @property
+    def Id(self):
+        r"""<p>id</p>
+        :rtype: int
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Name(self):
+        r"""<p>漏洞名称</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Remark(self):
+        r"""<p>备注</p>
+        :rtype: str
+        """
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+    @property
+    def AppId(self):
+        r"""<p>所属账号</p>
+        :rtype: int
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def AssetList(self):
+        r"""<p>资产列表</p>
+        :rtype: list of str
+        """
+        return self._AssetList
+
+    @AssetList.setter
+    def AssetList(self, AssetList):
+        self._AssetList = AssetList
+
+    @property
+    def UpdateTime(self):
+        r"""<p>更新时间</p>
+        :rtype: str
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def Switch(self):
+        r"""<p>策略开关（0-关闭, 1-开启）</p>
+        :rtype: int
+        """
+        return self._Switch
+
+    @Switch.setter
+    def Switch(self, Switch):
+        self._Switch = Switch
+
+    @property
+    def AssetRange(self):
+        r"""<p>资产范围</p><p>枚举值：</p><ul><li>0： 全部资产</li><li>1： 自选资产</li><li>2： 全选排除资产</li></ul>
+        :rtype: int
+        """
+        return self._AssetRange
+
+    @AssetRange.setter
+    def AssetRange(self, AssetRange):
+        self._AssetRange = AssetRange
+
+    @property
+    def KBId(self):
+        r"""<p>补丁KB id</p>
+        :rtype: int
+        """
+        return self._KBId
+
+    @KBId.setter
+    def KBId(self, KBId):
+        self._KBId = KBId
+
+    @property
+    def VulId(self):
+        r"""<p>漏洞Id</p>
+        :rtype: int
+        """
+        return self._VulId
+
+    @VulId.setter
+    def VulId(self, VulId):
+        self._VulId = VulId
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._Name = params.get("Name")
+        self._Remark = params.get("Remark")
+        self._AppId = params.get("AppId")
+        self._AssetList = params.get("AssetList")
+        self._UpdateTime = params.get("UpdateTime")
+        self._Switch = params.get("Switch")
+        self._AssetRange = params.get("AssetRange")
+        self._KBId = params.get("KBId")
+        self._VulId = params.get("VulId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
