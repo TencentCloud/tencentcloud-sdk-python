@@ -11464,6 +11464,8 @@ class CreateInferenceServiceRequest(AbstractModel):
         :type Containers: list of InferenceContainerConfig
         :param _ResourceConfig: <p>推理服务的资源配置。</p>
         :type ResourceConfig: :class:`tencentcloud.teo.v20220901.models.InferenceResourceConfig`
+        :param _AffinityConfig: <p>推理服务亲和性配置。</p>
+        :type AffinityConfig: :class:`tencentcloud.teo.v20220901.models.InferenceAffinityConfig`
         :param _RequestPaths: <p>推理服务的请求路径列表。最多支持 20 个路径。</p>
         :type RequestPaths: list of str
         :param _Description: <p>描述信息。长度限制不超过 60 个字符。</p>
@@ -11474,6 +11476,7 @@ class CreateInferenceServiceRequest(AbstractModel):
         self._ListenPort = None
         self._Containers = None
         self._ResourceConfig = None
+        self._AffinityConfig = None
         self._RequestPaths = None
         self._Description = None
 
@@ -11533,6 +11536,17 @@ class CreateInferenceServiceRequest(AbstractModel):
         self._ResourceConfig = ResourceConfig
 
     @property
+    def AffinityConfig(self):
+        r"""<p>推理服务亲和性配置。</p>
+        :rtype: :class:`tencentcloud.teo.v20220901.models.InferenceAffinityConfig`
+        """
+        return self._AffinityConfig
+
+    @AffinityConfig.setter
+    def AffinityConfig(self, AffinityConfig):
+        self._AffinityConfig = AffinityConfig
+
+    @property
     def RequestPaths(self):
         r"""<p>推理服务的请求路径列表。最多支持 20 个路径。</p>
         :rtype: list of str
@@ -11568,6 +11582,9 @@ class CreateInferenceServiceRequest(AbstractModel):
         if params.get("ResourceConfig") is not None:
             self._ResourceConfig = InferenceResourceConfig()
             self._ResourceConfig._deserialize(params.get("ResourceConfig"))
+        if params.get("AffinityConfig") is not None:
+            self._AffinityConfig = InferenceAffinityConfig()
+            self._AffinityConfig._deserialize(params.get("AffinityConfig"))
         self._RequestPaths = params.get("RequestPaths")
         self._Description = params.get("Description")
         memeber_set = set(params.keys())
@@ -39502,6 +39519,74 @@ class InferenceAPIToken(AbstractModel):
         
 
 
+class InferenceAffinityConfig(AbstractModel):
+    r"""推理服务的亲和配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Switch: <p>推理服务亲和总开关。</p><p>枚举值：</p><ul><li>On： 开启推理服务亲和；</li><li>Off： 关闭推理服务亲和。</li></ul>
+        :type Switch: str
+        :param _AffinityMode: <p>推理服务亲和方式。</p><p>枚举值：</p><ul><li>SessionId： 根据会话 ID 实现亲和。</li></ul><p>默认值：SessionId。</p>
+        :type AffinityMode: str
+        :param _SessionIdAffinityConfig: <p>推理服务亲和性配置。当 AffinityMode 为 SessionId 时必填。</p>
+        :type SessionIdAffinityConfig: :class:`tencentcloud.teo.v20220901.models.SessionIdAffinityConfig`
+        """
+        self._Switch = None
+        self._AffinityMode = None
+        self._SessionIdAffinityConfig = None
+
+    @property
+    def Switch(self):
+        r"""<p>推理服务亲和总开关。</p><p>枚举值：</p><ul><li>On： 开启推理服务亲和；</li><li>Off： 关闭推理服务亲和。</li></ul>
+        :rtype: str
+        """
+        return self._Switch
+
+    @Switch.setter
+    def Switch(self, Switch):
+        self._Switch = Switch
+
+    @property
+    def AffinityMode(self):
+        r"""<p>推理服务亲和方式。</p><p>枚举值：</p><ul><li>SessionId： 根据会话 ID 实现亲和。</li></ul><p>默认值：SessionId。</p>
+        :rtype: str
+        """
+        return self._AffinityMode
+
+    @AffinityMode.setter
+    def AffinityMode(self, AffinityMode):
+        self._AffinityMode = AffinityMode
+
+    @property
+    def SessionIdAffinityConfig(self):
+        r"""<p>推理服务亲和性配置。当 AffinityMode 为 SessionId 时必填。</p>
+        :rtype: :class:`tencentcloud.teo.v20220901.models.SessionIdAffinityConfig`
+        """
+        return self._SessionIdAffinityConfig
+
+    @SessionIdAffinityConfig.setter
+    def SessionIdAffinityConfig(self, SessionIdAffinityConfig):
+        self._SessionIdAffinityConfig = SessionIdAffinityConfig
+
+
+    def _deserialize(self, params):
+        self._Switch = params.get("Switch")
+        self._AffinityMode = params.get("AffinityMode")
+        if params.get("SessionIdAffinityConfig") is not None:
+            self._SessionIdAffinityConfig = SessionIdAffinityConfig()
+            self._SessionIdAffinityConfig._deserialize(params.get("SessionIdAffinityConfig"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class InferenceAutoScalingConfig(AbstractModel):
     r"""推理服务自动伸缩配置。
 
@@ -39565,14 +39650,14 @@ class InferenceContainerConfig(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ImageType: 镜像类型。取值有：<li>TCR：腾讯云容器镜像服务的镜像。</li>
+        :param _ImageType: <p>镜像类型。取值有：<li>TCR：腾讯云容器镜像服务的镜像。</li></p>
         :type ImageType: str
-        :param _TcrRepositoryConfig: TCR 镜像仓库信息。当 ImageType 为 TCR 时必填。
+        :param _TcrRepositoryConfig: <p>TCR 镜像仓库信息。当 ImageType 为 TCR 时必填。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TcrRepositoryConfig: :class:`tencentcloud.teo.v20220901.models.InferenceTCRRepositoryConfig`
-        :param _StartupCommand: 容器启动时执行的命令，未填写时默认使用镜像的 Entrypoint/CMD。最长支持 1024 字符。
+        :param _StartupCommand: <p>容器启动时执行的命令，未填写时默认使用镜像的 Entrypoint/CMD。最长支持 1024 字符。</p>
         :type StartupCommand: str
-        :param _EnvironmentVariables: 容器运行时的环境变量。最多支持 10 个变量。
+        :param _EnvironmentVariables: <p>容器运行时的环境变量。最多支持 10 个变量。</p>
         :type EnvironmentVariables: list of InferenceEnvironmentVariable
         """
         self._ImageType = None
@@ -39582,7 +39667,7 @@ class InferenceContainerConfig(AbstractModel):
 
     @property
     def ImageType(self):
-        r"""镜像类型。取值有：<li>TCR：腾讯云容器镜像服务的镜像。</li>
+        r"""<p>镜像类型。取值有：<li>TCR：腾讯云容器镜像服务的镜像。</li></p>
         :rtype: str
         """
         return self._ImageType
@@ -39593,7 +39678,7 @@ class InferenceContainerConfig(AbstractModel):
 
     @property
     def TcrRepositoryConfig(self):
-        r"""TCR 镜像仓库信息。当 ImageType 为 TCR 时必填。
+        r"""<p>TCR 镜像仓库信息。当 ImageType 为 TCR 时必填。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.teo.v20220901.models.InferenceTCRRepositoryConfig`
         """
@@ -39605,7 +39690,7 @@ class InferenceContainerConfig(AbstractModel):
 
     @property
     def StartupCommand(self):
-        r"""容器启动时执行的命令，未填写时默认使用镜像的 Entrypoint/CMD。最长支持 1024 字符。
+        r"""<p>容器启动时执行的命令，未填写时默认使用镜像的 Entrypoint/CMD。最长支持 1024 字符。</p>
         :rtype: str
         """
         return self._StartupCommand
@@ -39616,7 +39701,7 @@ class InferenceContainerConfig(AbstractModel):
 
     @property
     def EnvironmentVariables(self):
-        r"""容器运行时的环境变量。最多支持 10 个变量。
+        r"""<p>容器运行时的环境变量。最多支持 10 个变量。</p>
         :rtype: list of InferenceEnvironmentVariable
         """
         return self._EnvironmentVariables
@@ -39655,13 +39740,13 @@ class InferenceContainerConfigForModify(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ImageType: 镜像类型。取值有：<li>TCR：腾讯云容器镜像服务的镜像。</li>
+        :param _ImageType: <p>镜像类型。取值有：<li>TCR：腾讯云容器镜像服务的镜像。</li></p>
         :type ImageType: str
-        :param _TcrRepositoryConfig: TCR 镜像仓库信息。当 ImageType 为 TCR 时必填。
+        :param _TcrRepositoryConfig: <p>TCR 镜像仓库信息。当 ImageType 为 TCR 时必填。</p>
         :type TcrRepositoryConfig: :class:`tencentcloud.teo.v20220901.models.InferenceTCRRepositoryConfig`
-        :param _StartupCommand: 容器启动时执行的命令，未填写时默认使用镜像的 Entrypoint/CMD。最长支持 1024 字符。
+        :param _StartupCommand: <p>容器启动时执行的命令，未填写时默认使用镜像的 Entrypoint/CMD。最长支持 1024 字符。</p>
         :type StartupCommand: str
-        :param _EnvironmentVariables: 容器运行时的环境变量。最多支持 10 个变量。
+        :param _EnvironmentVariables: <p>容器运行时的环境变量。最多支持 10 个变量。</p>
         :type EnvironmentVariables: list of InferenceEnvironmentVariable
         """
         self._ImageType = None
@@ -39671,7 +39756,7 @@ class InferenceContainerConfigForModify(AbstractModel):
 
     @property
     def ImageType(self):
-        r"""镜像类型。取值有：<li>TCR：腾讯云容器镜像服务的镜像。</li>
+        r"""<p>镜像类型。取值有：<li>TCR：腾讯云容器镜像服务的镜像。</li></p>
         :rtype: str
         """
         return self._ImageType
@@ -39682,7 +39767,7 @@ class InferenceContainerConfigForModify(AbstractModel):
 
     @property
     def TcrRepositoryConfig(self):
-        r"""TCR 镜像仓库信息。当 ImageType 为 TCR 时必填。
+        r"""<p>TCR 镜像仓库信息。当 ImageType 为 TCR 时必填。</p>
         :rtype: :class:`tencentcloud.teo.v20220901.models.InferenceTCRRepositoryConfig`
         """
         return self._TcrRepositoryConfig
@@ -39693,7 +39778,7 @@ class InferenceContainerConfigForModify(AbstractModel):
 
     @property
     def StartupCommand(self):
-        r"""容器启动时执行的命令，未填写时默认使用镜像的 Entrypoint/CMD。最长支持 1024 字符。
+        r"""<p>容器启动时执行的命令，未填写时默认使用镜像的 Entrypoint/CMD。最长支持 1024 字符。</p>
         :rtype: str
         """
         return self._StartupCommand
@@ -39704,7 +39789,7 @@ class InferenceContainerConfigForModify(AbstractModel):
 
     @property
     def EnvironmentVariables(self):
-        r"""容器运行时的环境变量。最多支持 10 个变量。
+        r"""<p>容器运行时的环境变量。最多支持 10 个变量。</p>
         :rtype: list of InferenceEnvironmentVariable
         """
         return self._EnvironmentVariables
@@ -40621,23 +40706,26 @@ class InferenceServiceConfig(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ListenPort: 模型服务需要监听的端口。
+        :param _ListenPort: <p>模型服务需要监听的端口。</p>
         :type ListenPort: int
-        :param _RequestPaths: 推理服务的请求路径列表。
+        :param _RequestPaths: <p>推理服务的请求路径列表。</p>
         :type RequestPaths: list of str
-        :param _Containers: 推理服务的容器配置。
+        :param _Containers: <p>推理服务的容器配置。</p>
         :type Containers: list of InferenceContainerConfig
-        :param _ResourceConfig: 推理服务的资源配置。
+        :param _ResourceConfig: <p>推理服务的资源配置。</p>
         :type ResourceConfig: :class:`tencentcloud.teo.v20220901.models.InferenceResourceConfig`
+        :param _AffinityConfig: <p>推理服务亲和性配置。</p>
+        :type AffinityConfig: :class:`tencentcloud.teo.v20220901.models.InferenceAffinityConfig`
         """
         self._ListenPort = None
         self._RequestPaths = None
         self._Containers = None
         self._ResourceConfig = None
+        self._AffinityConfig = None
 
     @property
     def ListenPort(self):
-        r"""模型服务需要监听的端口。
+        r"""<p>模型服务需要监听的端口。</p>
         :rtype: int
         """
         return self._ListenPort
@@ -40648,7 +40736,7 @@ class InferenceServiceConfig(AbstractModel):
 
     @property
     def RequestPaths(self):
-        r"""推理服务的请求路径列表。
+        r"""<p>推理服务的请求路径列表。</p>
         :rtype: list of str
         """
         return self._RequestPaths
@@ -40659,7 +40747,7 @@ class InferenceServiceConfig(AbstractModel):
 
     @property
     def Containers(self):
-        r"""推理服务的容器配置。
+        r"""<p>推理服务的容器配置。</p>
         :rtype: list of InferenceContainerConfig
         """
         return self._Containers
@@ -40670,7 +40758,7 @@ class InferenceServiceConfig(AbstractModel):
 
     @property
     def ResourceConfig(self):
-        r"""推理服务的资源配置。
+        r"""<p>推理服务的资源配置。</p>
         :rtype: :class:`tencentcloud.teo.v20220901.models.InferenceResourceConfig`
         """
         return self._ResourceConfig
@@ -40678,6 +40766,17 @@ class InferenceServiceConfig(AbstractModel):
     @ResourceConfig.setter
     def ResourceConfig(self, ResourceConfig):
         self._ResourceConfig = ResourceConfig
+
+    @property
+    def AffinityConfig(self):
+        r"""<p>推理服务亲和性配置。</p>
+        :rtype: :class:`tencentcloud.teo.v20220901.models.InferenceAffinityConfig`
+        """
+        return self._AffinityConfig
+
+    @AffinityConfig.setter
+    def AffinityConfig(self, AffinityConfig):
+        self._AffinityConfig = AffinityConfig
 
 
     def _deserialize(self, params):
@@ -40692,6 +40791,9 @@ class InferenceServiceConfig(AbstractModel):
         if params.get("ResourceConfig") is not None:
             self._ResourceConfig = InferenceResourceConfig()
             self._ResourceConfig._deserialize(params.get("ResourceConfig"))
+        if params.get("AffinityConfig") is not None:
+            self._AffinityConfig = InferenceAffinityConfig()
+            self._AffinityConfig._deserialize(params.get("AffinityConfig"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -46973,6 +47075,8 @@ class ModifyInferenceServiceRequest(AbstractModel):
         :type Containers: list of InferenceContainerConfigForModify
         :param _ResourceConfig: <p>推理服务的资源配置。</p>
         :type ResourceConfig: :class:`tencentcloud.teo.v20220901.models.InferenceResourceConfigForModify`
+        :param _AffinityConfig: <p>推理服务亲和性配置</p>
+        :type AffinityConfig: :class:`tencentcloud.teo.v20220901.models.InferenceAffinityConfig`
         :param _Description: <p>描述信息。长度限制不超过 60 个字符。</p>
         :type Description: str
         """
@@ -46982,6 +47086,7 @@ class ModifyInferenceServiceRequest(AbstractModel):
         self._RequestPaths = None
         self._Containers = None
         self._ResourceConfig = None
+        self._AffinityConfig = None
         self._Description = None
 
     @property
@@ -47051,6 +47156,17 @@ class ModifyInferenceServiceRequest(AbstractModel):
         self._ResourceConfig = ResourceConfig
 
     @property
+    def AffinityConfig(self):
+        r"""<p>推理服务亲和性配置</p>
+        :rtype: :class:`tencentcloud.teo.v20220901.models.InferenceAffinityConfig`
+        """
+        return self._AffinityConfig
+
+    @AffinityConfig.setter
+    def AffinityConfig(self, AffinityConfig):
+        self._AffinityConfig = AffinityConfig
+
+    @property
     def Description(self):
         r"""<p>描述信息。长度限制不超过 60 个字符。</p>
         :rtype: str
@@ -47076,6 +47192,9 @@ class ModifyInferenceServiceRequest(AbstractModel):
         if params.get("ResourceConfig") is not None:
             self._ResourceConfig = InferenceResourceConfigForModify()
             self._ResourceConfig._deserialize(params.get("ResourceConfig"))
+        if params.get("AffinityConfig") is not None:
+            self._AffinityConfig = InferenceAffinityConfig()
+            self._AffinityConfig._deserialize(params.get("AffinityConfig"))
         self._Description = params.get("Description")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -61329,6 +61448,57 @@ class ServerCertInfo(AbstractModel):
         self._DeployTime = params.get("DeployTime")
         self._SignAlgo = params.get("SignAlgo")
         self._CommonName = params.get("CommonName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SessionIdAffinityConfig(AbstractModel):
+    r"""基于会话ID的亲和配置。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Source: <p>会话 ID 参数的传递位置。不填写时默认为 Header。</p><p>枚举值：</p><ul><li>Header： 在请求头中传递参数。</li></ul><p>默认值：Header。</p>
+        :type Source: str
+        :param _HeaderName: <p>传递会话 ID 的请求头名称。当 Source 为 Header 时必填。<br>不填写时默认为 EO-Infer-Session-Id。</p><p>入参限制：长度为 1-64 个字符，仅支持字母、数字、中划线。</p><p>默认值：EO-Infer-Session-Id。</p>
+        :type HeaderName: str
+        """
+        self._Source = None
+        self._HeaderName = None
+
+    @property
+    def Source(self):
+        r"""<p>会话 ID 参数的传递位置。不填写时默认为 Header。</p><p>枚举值：</p><ul><li>Header： 在请求头中传递参数。</li></ul><p>默认值：Header。</p>
+        :rtype: str
+        """
+        return self._Source
+
+    @Source.setter
+    def Source(self, Source):
+        self._Source = Source
+
+    @property
+    def HeaderName(self):
+        r"""<p>传递会话 ID 的请求头名称。当 Source 为 Header 时必填。<br>不填写时默认为 EO-Infer-Session-Id。</p><p>入参限制：长度为 1-64 个字符，仅支持字母、数字、中划线。</p><p>默认值：EO-Infer-Session-Id。</p>
+        :rtype: str
+        """
+        return self._HeaderName
+
+    @HeaderName.setter
+    def HeaderName(self, HeaderName):
+        self._HeaderName = HeaderName
+
+
+    def _deserialize(self, params):
+        self._Source = params.get("Source")
+        self._HeaderName = params.get("HeaderName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

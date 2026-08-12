@@ -14791,6 +14791,218 @@ class ModifyNamespaceResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyReplicationRequest(AbstractModel):
+    r"""ModifyReplication请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SourceRegistryId: <p>复制源实例ID</p>
+        :type SourceRegistryId: str
+        :param _RuleName: <p>实例同步规则名称</p>
+        :type RuleName: str
+        :param _Rule: <p>同步规则</p>
+        :type Rule: :class:`tencentcloud.tcr.v20190924.models.ModifyReplicationRule`
+        :param _Description: <p>规则描述</p>
+        :type Description: str
+        """
+        self._SourceRegistryId = None
+        self._RuleName = None
+        self._Rule = None
+        self._Description = None
+
+    @property
+    def SourceRegistryId(self):
+        r"""<p>复制源实例ID</p>
+        :rtype: str
+        """
+        return self._SourceRegistryId
+
+    @SourceRegistryId.setter
+    def SourceRegistryId(self, SourceRegistryId):
+        self._SourceRegistryId = SourceRegistryId
+
+    @property
+    def RuleName(self):
+        r"""<p>实例同步规则名称</p>
+        :rtype: str
+        """
+        return self._RuleName
+
+    @RuleName.setter
+    def RuleName(self, RuleName):
+        self._RuleName = RuleName
+
+    @property
+    def Rule(self):
+        r"""<p>同步规则</p>
+        :rtype: :class:`tencentcloud.tcr.v20190924.models.ModifyReplicationRule`
+        """
+        return self._Rule
+
+    @Rule.setter
+    def Rule(self, Rule):
+        self._Rule = Rule
+
+    @property
+    def Description(self):
+        r"""<p>规则描述</p>
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+
+    def _deserialize(self, params):
+        self._SourceRegistryId = params.get("SourceRegistryId")
+        self._RuleName = params.get("RuleName")
+        if params.get("Rule") is not None:
+            self._Rule = ModifyReplicationRule()
+            self._Rule._deserialize(params.get("Rule"))
+        self._Description = params.get("Description")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyReplicationResponse(AbstractModel):
+    r"""ModifyReplication返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyReplicationRule(AbstractModel):
+    r"""修改同步规则参数，用于 ModifyReplication 接口更新已有的实例同步规则配置。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DestNamespace: <p>目标命名空间</p>
+        :type DestNamespace: str
+        :param _Override: <p>是否覆盖</p>
+        :type Override: bool
+        :param _Deletion: <p>是否同步删除事件</p>
+        :type Deletion: bool
+        :param _Filters: <p>过滤同步条件</p>
+        :type Filters: list of ReplicationFilter
+        :param _Enabled: <p>是否开启规则</p>
+        :type Enabled: bool
+        """
+        self._DestNamespace = None
+        self._Override = None
+        self._Deletion = None
+        self._Filters = None
+        self._Enabled = None
+
+    @property
+    def DestNamespace(self):
+        r"""<p>目标命名空间</p>
+        :rtype: str
+        """
+        return self._DestNamespace
+
+    @DestNamespace.setter
+    def DestNamespace(self, DestNamespace):
+        self._DestNamespace = DestNamespace
+
+    @property
+    def Override(self):
+        r"""<p>是否覆盖</p>
+        :rtype: bool
+        """
+        return self._Override
+
+    @Override.setter
+    def Override(self, Override):
+        self._Override = Override
+
+    @property
+    def Deletion(self):
+        r"""<p>是否同步删除事件</p>
+        :rtype: bool
+        """
+        return self._Deletion
+
+    @Deletion.setter
+    def Deletion(self, Deletion):
+        self._Deletion = Deletion
+
+    @property
+    def Filters(self):
+        r"""<p>过滤同步条件</p>
+        :rtype: list of ReplicationFilter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Enabled(self):
+        r"""<p>是否开启规则</p>
+        :rtype: bool
+        """
+        return self._Enabled
+
+    @Enabled.setter
+    def Enabled(self, Enabled):
+        self._Enabled = Enabled
+
+
+    def _deserialize(self, params):
+        self._DestNamespace = params.get("DestNamespace")
+        self._Override = params.get("Override")
+        self._Deletion = params.get("Deletion")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = ReplicationFilter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._Enabled = params.get("Enabled")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ModifyRepositoryAccessPersonalRequest(AbstractModel):
     r"""ModifyRepositoryAccessPersonal请求参数结构体
 

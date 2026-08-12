@@ -2581,6 +2581,29 @@ class TcrClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyReplication(self, request):
+        r"""修改实例同步规则
+
+        :param request: Request instance for ModifyReplication.
+        :type request: :class:`tencentcloud.tcr.v20190924.models.ModifyReplicationRequest`
+        :rtype: :class:`tencentcloud.tcr.v20190924.models.ModifyReplicationResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyReplication", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyReplicationResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyRepository(self, request):
         r"""更新镜像仓库信息，可修改仓库描述信息
 

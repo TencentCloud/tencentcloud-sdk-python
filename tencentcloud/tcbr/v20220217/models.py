@@ -5677,6 +5677,47 @@ class ServerBaseConfig(AbstractModel):
         
 
 
+class ServerBaseConfigDiff(AbstractModel):
+    r"""差异化更新配置信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _StrParams: 字符串参数 Key：EnvParam
+        :type StrParams: list of ObjectKV
+        """
+        self._StrParams = None
+
+    @property
+    def StrParams(self):
+        r"""字符串参数 Key：EnvParam
+        :rtype: list of ObjectKV
+        """
+        return self._StrParams
+
+    @StrParams.setter
+    def StrParams(self, StrParams):
+        self._StrParams = StrParams
+
+
+    def _deserialize(self, params):
+        if params.get("StrParams") is not None:
+            self._StrParams = []
+            for item in params.get("StrParams"):
+                obj = ObjectKV()
+                obj._deserialize(item)
+                self._StrParams.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ServerBaseInfo(AbstractModel):
     r"""服务基本信息
 
@@ -6560,6 +6601,137 @@ class StorageInfo(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class SubmitServerConfigChangeDiffRequest(AbstractModel):
+    r"""SubmitServerConfigChangeDiff请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EnvId: 环境Id
+        :type EnvId: str
+        :param _ServerName: 服务名
+        :type ServerName: str
+        :param _Conf: 配置信息 deprecated
+        :type Conf: :class:`tencentcloud.tcbr.v20220217.models.ServerBaseConfigDiff`
+        :param _Items: 配置信息
+        :type Items: list of DiffConfigItem
+        """
+        self._EnvId = None
+        self._ServerName = None
+        self._Conf = None
+        self._Items = None
+
+    @property
+    def EnvId(self):
+        r"""环境Id
+        :rtype: str
+        """
+        return self._EnvId
+
+    @EnvId.setter
+    def EnvId(self, EnvId):
+        self._EnvId = EnvId
+
+    @property
+    def ServerName(self):
+        r"""服务名
+        :rtype: str
+        """
+        return self._ServerName
+
+    @ServerName.setter
+    def ServerName(self, ServerName):
+        self._ServerName = ServerName
+
+    @property
+    def Conf(self):
+        r"""配置信息 deprecated
+        :rtype: :class:`tencentcloud.tcbr.v20220217.models.ServerBaseConfigDiff`
+        """
+        return self._Conf
+
+    @Conf.setter
+    def Conf(self, Conf):
+        self._Conf = Conf
+
+    @property
+    def Items(self):
+        r"""配置信息
+        :rtype: list of DiffConfigItem
+        """
+        return self._Items
+
+    @Items.setter
+    def Items(self, Items):
+        self._Items = Items
+
+
+    def _deserialize(self, params):
+        self._EnvId = params.get("EnvId")
+        self._ServerName = params.get("ServerName")
+        if params.get("Conf") is not None:
+            self._Conf = ServerBaseConfigDiff()
+            self._Conf._deserialize(params.get("Conf"))
+        if params.get("Items") is not None:
+            self._Items = []
+            for item in params.get("Items"):
+                obj = DiffConfigItem()
+                obj._deserialize(item)
+                self._Items.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SubmitServerConfigChangeDiffResponse(AbstractModel):
+    r"""SubmitServerConfigChangeDiff返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: 任务Id 大于 0 需要请求 DescribeServerManageTask 接口获取任务进度，等于 0 则表示同步
+        :type TaskId: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        r"""任务Id 大于 0 需要请求 DescribeServerManageTask 接口获取任务进度，等于 0 则表示同步
+        :rtype: int
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
 
 
 class SubmitServerRollbackRequest(AbstractModel):

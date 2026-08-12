@@ -463,6 +463,29 @@ class TcbrClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def SubmitServerConfigChangeDiff(self, request):
+        r"""更新配置并使用最新镜像发布
+
+        :param request: Request instance for SubmitServerConfigChangeDiff.
+        :type request: :class:`tencentcloud.tcbr.v20220217.models.SubmitServerConfigChangeDiffRequest`
+        :rtype: :class:`tencentcloud.tcbr.v20220217.models.SubmitServerConfigChangeDiffResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("SubmitServerConfigChangeDiff", params, headers=headers)
+            response = json.loads(body)
+            model = models.SubmitServerConfigChangeDiffResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def SubmitServerRollback(self, request):
         r"""回滚版本
 

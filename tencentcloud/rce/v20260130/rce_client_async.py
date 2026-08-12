@@ -78,3 +78,39 @@ class RceClient(AbstractClient):
         kwargs["opts"] = opts or {}
         
         return await self.call_and_deserialize(**kwargs)
+        
+    async def AssessRisk(
+            self,
+            request: models.AssessRiskRequest,
+            opts: Dict = None,
+    ) -> models.AssessRiskResponse:
+        """
+        事件风险评估
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "AssessRisk"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.AssessRiskResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ReportEvent(
+            self,
+            request: models.ReportEventRequest,
+            opts: Dict = None,
+    ) -> models.ReportEventResponse:
+        """
+        事件信息上报
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ReportEvent"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ReportEventResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)

@@ -21341,40 +21341,42 @@ class DatasourceConnectionConfig(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Mysql: Mysql数据源连接的属性
+        :param _Mysql: <p>Mysql数据源连接的属性</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Mysql: :class:`tencentcloud.dlc.v20210125.models.MysqlInfo`
-        :param _Hive: Hive数据源连接的属性
+        :param _Hive: <p>Hive数据源连接的属性</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Hive: :class:`tencentcloud.dlc.v20210125.models.HiveInfo`
-        :param _Kafka: Kafka数据源连接的属性
+        :param _Kafka: <p>Kafka数据源连接的属性</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Kafka: :class:`tencentcloud.dlc.v20210125.models.KafkaInfo`
-        :param _OtherDatasourceConnection: 其他数据源连接的属性
+        :param _OtherDatasourceConnection: <p>其他数据源连接的属性</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type OtherDatasourceConnection: :class:`tencentcloud.dlc.v20210125.models.OtherDatasourceConnection`
-        :param _PostgreSql: PostgreSQL数据源连接的属性
+        :param _PostgreSql: <p>PostgreSQL数据源连接的属性</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type PostgreSql: :class:`tencentcloud.dlc.v20210125.models.DataSourceInfo`
-        :param _SqlServer: SQLServer数据源连接的属性
+        :param _SqlServer: <p>SQLServer数据源连接的属性</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type SqlServer: :class:`tencentcloud.dlc.v20210125.models.DataSourceInfo`
-        :param _ClickHouse: ClickHouse数据源连接的属性
+        :param _ClickHouse: <p>ClickHouse数据源连接的属性</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ClickHouse: :class:`tencentcloud.dlc.v20210125.models.DataSourceInfo`
-        :param _Elasticsearch: Elasticsearch数据源连接的属性
+        :param _Elasticsearch: <p>Elasticsearch数据源连接的属性</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Elasticsearch: :class:`tencentcloud.dlc.v20210125.models.ElasticsearchInfo`
-        :param _TDSQLPostgreSql: TDSQL-PostgreSQL数据源连接的属性
+        :param _TDSQLPostgreSql: <p>TDSQL-PostgreSQL数据源连接的属性</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TDSQLPostgreSql: :class:`tencentcloud.dlc.v20210125.models.DataSourceInfo`
-        :param _TCHouseD: Doris数据源连接的属性
+        :param _TCHouseD: <p>Doris数据源连接的属性</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TCHouseD: :class:`tencentcloud.dlc.v20210125.models.TCHouseD`
-        :param _TccHive: TccHive数据目录连接信息
+        :param _TccHive: <p>TccHive数据目录连接信息</p>
         :type TccHive: :class:`tencentcloud.dlc.v20210125.models.TccHive`
-        :param _MongoDB: MongoDB 数据源
+        :param _MongoDB: <p>MongoDB 数据源</p>
         :type MongoDB: :class:`tencentcloud.dlc.v20210125.models.DataSourceInfo`
+        :param _TCHouseP: <p>TCHouseP数据源</p>
+        :type TCHouseP: :class:`tencentcloud.dlc.v20210125.models.TCHousePInfo`
         """
         self._Mysql = None
         self._Hive = None
@@ -21388,10 +21390,11 @@ class DatasourceConnectionConfig(AbstractModel):
         self._TCHouseD = None
         self._TccHive = None
         self._MongoDB = None
+        self._TCHouseP = None
 
     @property
     def Mysql(self):
-        r"""Mysql数据源连接的属性
+        r"""<p>Mysql数据源连接的属性</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.dlc.v20210125.models.MysqlInfo`
         """
@@ -21403,7 +21406,7 @@ class DatasourceConnectionConfig(AbstractModel):
 
     @property
     def Hive(self):
-        r"""Hive数据源连接的属性
+        r"""<p>Hive数据源连接的属性</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.dlc.v20210125.models.HiveInfo`
         """
@@ -21415,7 +21418,7 @@ class DatasourceConnectionConfig(AbstractModel):
 
     @property
     def Kafka(self):
-        r"""Kafka数据源连接的属性
+        r"""<p>Kafka数据源连接的属性</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.dlc.v20210125.models.KafkaInfo`
         """
@@ -21427,7 +21430,7 @@ class DatasourceConnectionConfig(AbstractModel):
 
     @property
     def OtherDatasourceConnection(self):
-        r"""其他数据源连接的属性
+        r"""<p>其他数据源连接的属性</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.dlc.v20210125.models.OtherDatasourceConnection`
         """
@@ -21439,7 +21442,7 @@ class DatasourceConnectionConfig(AbstractModel):
 
     @property
     def PostgreSql(self):
-        r"""PostgreSQL数据源连接的属性
+        r"""<p>PostgreSQL数据源连接的属性</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.dlc.v20210125.models.DataSourceInfo`
         """
@@ -21451,7 +21454,7 @@ class DatasourceConnectionConfig(AbstractModel):
 
     @property
     def SqlServer(self):
-        r"""SQLServer数据源连接的属性
+        r"""<p>SQLServer数据源连接的属性</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.dlc.v20210125.models.DataSourceInfo`
         """
@@ -21463,7 +21466,7 @@ class DatasourceConnectionConfig(AbstractModel):
 
     @property
     def ClickHouse(self):
-        r"""ClickHouse数据源连接的属性
+        r"""<p>ClickHouse数据源连接的属性</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.dlc.v20210125.models.DataSourceInfo`
         """
@@ -21475,7 +21478,7 @@ class DatasourceConnectionConfig(AbstractModel):
 
     @property
     def Elasticsearch(self):
-        r"""Elasticsearch数据源连接的属性
+        r"""<p>Elasticsearch数据源连接的属性</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.dlc.v20210125.models.ElasticsearchInfo`
         """
@@ -21487,7 +21490,7 @@ class DatasourceConnectionConfig(AbstractModel):
 
     @property
     def TDSQLPostgreSql(self):
-        r"""TDSQL-PostgreSQL数据源连接的属性
+        r"""<p>TDSQL-PostgreSQL数据源连接的属性</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.dlc.v20210125.models.DataSourceInfo`
         """
@@ -21499,7 +21502,7 @@ class DatasourceConnectionConfig(AbstractModel):
 
     @property
     def TCHouseD(self):
-        r"""Doris数据源连接的属性
+        r"""<p>Doris数据源连接的属性</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.dlc.v20210125.models.TCHouseD`
         """
@@ -21511,7 +21514,7 @@ class DatasourceConnectionConfig(AbstractModel):
 
     @property
     def TccHive(self):
-        r"""TccHive数据目录连接信息
+        r"""<p>TccHive数据目录连接信息</p>
         :rtype: :class:`tencentcloud.dlc.v20210125.models.TccHive`
         """
         return self._TccHive
@@ -21522,7 +21525,7 @@ class DatasourceConnectionConfig(AbstractModel):
 
     @property
     def MongoDB(self):
-        r"""MongoDB 数据源
+        r"""<p>MongoDB 数据源</p>
         :rtype: :class:`tencentcloud.dlc.v20210125.models.DataSourceInfo`
         """
         return self._MongoDB
@@ -21530,6 +21533,17 @@ class DatasourceConnectionConfig(AbstractModel):
     @MongoDB.setter
     def MongoDB(self, MongoDB):
         self._MongoDB = MongoDB
+
+    @property
+    def TCHouseP(self):
+        r"""<p>TCHouseP数据源</p>
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.TCHousePInfo`
+        """
+        return self._TCHouseP
+
+    @TCHouseP.setter
+    def TCHouseP(self, TCHouseP):
+        self._TCHouseP = TCHouseP
 
 
     def _deserialize(self, params):
@@ -21569,6 +21583,9 @@ class DatasourceConnectionConfig(AbstractModel):
         if params.get("MongoDB") is not None:
             self._MongoDB = DataSourceInfo()
             self._MongoDB._deserialize(params.get("MongoDB"))
+        if params.get("TCHouseP") is not None:
+            self._TCHouseP = TCHousePInfo()
+            self._TCHouseP._deserialize(params.get("TCHouseP"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -73985,6 +74002,165 @@ class TCHouseD(AbstractModel):
     @property
     def AccessInfo(self):
         r"""访问信息
+        :rtype: str
+        """
+        return self._AccessInfo
+
+    @AccessInfo.setter
+    def AccessInfo(self, AccessInfo):
+        self._AccessInfo = AccessInfo
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._InstanceName = params.get("InstanceName")
+        self._JdbcUrl = params.get("JdbcUrl")
+        self._User = params.get("User")
+        self._Password = params.get("Password")
+        if params.get("Location") is not None:
+            self._Location = DatasourceConnectionLocation()
+            self._Location._deserialize(params.get("Location"))
+        self._DbName = params.get("DbName")
+        self._AccessInfo = params.get("AccessInfo")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TCHousePInfo(AbstractModel):
+    r"""TCHouseP 结构
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: <p>实例id</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceId: str
+        :param _InstanceName: <p>实例名称</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceName: str
+        :param _JdbcUrl: <p>JdbcUrl</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type JdbcUrl: str
+        :param _User: <p>用户名</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type User: str
+        :param _Password: <p>密码</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Password: str
+        :param _Location: <p>地址</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Location: :class:`tencentcloud.dlc.v20210125.models.DatasourceConnectionLocation`
+        :param _DbName: <p>数据库名称</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DbName: str
+        :param _AccessInfo: <p>地址信息</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AccessInfo: str
+        """
+        self._InstanceId = None
+        self._InstanceName = None
+        self._JdbcUrl = None
+        self._User = None
+        self._Password = None
+        self._Location = None
+        self._DbName = None
+        self._AccessInfo = None
+
+    @property
+    def InstanceId(self):
+        r"""<p>实例id</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def InstanceName(self):
+        r"""<p>实例名称</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._InstanceName
+
+    @InstanceName.setter
+    def InstanceName(self, InstanceName):
+        self._InstanceName = InstanceName
+
+    @property
+    def JdbcUrl(self):
+        r"""<p>JdbcUrl</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._JdbcUrl
+
+    @JdbcUrl.setter
+    def JdbcUrl(self, JdbcUrl):
+        self._JdbcUrl = JdbcUrl
+
+    @property
+    def User(self):
+        r"""<p>用户名</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._User
+
+    @User.setter
+    def User(self, User):
+        self._User = User
+
+    @property
+    def Password(self):
+        r"""<p>密码</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Password
+
+    @Password.setter
+    def Password(self, Password):
+        self._Password = Password
+
+    @property
+    def Location(self):
+        r"""<p>地址</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.DatasourceConnectionLocation`
+        """
+        return self._Location
+
+    @Location.setter
+    def Location(self, Location):
+        self._Location = Location
+
+    @property
+    def DbName(self):
+        r"""<p>数据库名称</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._DbName
+
+    @DbName.setter
+    def DbName(self, DbName):
+        self._DbName = DbName
+
+    @property
+    def AccessInfo(self):
+        r"""<p>地址信息</p>
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._AccessInfo

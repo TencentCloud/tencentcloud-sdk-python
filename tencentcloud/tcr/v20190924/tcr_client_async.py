@@ -2025,6 +2025,24 @@ class TcrClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def ModifyReplication(
+            self,
+            request: models.ModifyReplicationRequest,
+            opts: Dict = None,
+    ) -> models.ModifyReplicationResponse:
+        """
+        修改实例同步规则
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyReplication"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyReplicationResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ModifyRepository(
             self,
             request: models.ModifyRepositoryRequest,

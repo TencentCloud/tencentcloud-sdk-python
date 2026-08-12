@@ -241,6 +241,24 @@ class ConfigClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DeleteAggregators(
+            self,
+            request: models.DeleteAggregatorsRequest,
+            opts: Dict = None,
+    ) -> models.DeleteAggregatorsResponse:
+        """
+        删除账号组
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteAggregators"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteAggregatorsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DeleteAlarmPolicy(
             self,
             request: models.DeleteAlarmPolicyRequest,
@@ -1064,6 +1082,24 @@ class ConfigClient(AbstractClient):
         kwargs["action"] = "UpdateAggregateConfigRule"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.UpdateAggregateConfigRuleResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def UpdateAggregator(
+            self,
+            request: models.UpdateAggregatorRequest,
+            opts: Dict = None,
+    ) -> models.UpdateAggregatorResponse:
+        """
+        编辑账号组
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "UpdateAggregator"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.UpdateAggregatorResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

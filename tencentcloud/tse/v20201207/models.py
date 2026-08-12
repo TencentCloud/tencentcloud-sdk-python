@@ -36542,59 +36542,41 @@ class ModifyCloudNativeAPIGatewayRouteRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _GatewayId: 网关ID
+        :param _GatewayId: <p>网关ID</p>
         :type GatewayId: str
-        :param _ServiceID: 所属服务的ID
+        :param _ServiceID: <p>所属服务的ID</p>
         :type ServiceID: str
-        :param _RouteID: 路由的ID，实例级别唯一
+        :param _RouteID: <p>路由的ID，实例级别唯一</p>
         :type RouteID: str
-        :param _RouteName: 路由的名字，实例级别唯一，可以不提供
+        :param _RouteName: <p>路由的名字，实例级别唯一，可以不提供</p>
         :type RouteName: str
-        :param _Methods: 路由的方法，其中方法可选值：
-- GET
-- POST
-- DELETE
-- PUT
-- OPTIONS
-- PATCH
-- HEAD
-- ANY
-- TRACE
-- COPY
-- MOVE
-- PROPFIND
-- PROPPATCH
-- MKCOL
-- LOCK
-- UNLOCK
+        :param _Methods: <p>路由的方法，其中方法可选值：</p><ul><li>GET</li><li>POST</li><li>DELETE</li><li>PUT</li><li>OPTIONS</li><li>PATCH</li><li>HEAD</li><li>ANY</li><li>TRACE</li><li>COPY</li><li>MOVE</li><li>PROPFIND</li><li>PROPPATCH</li><li>MKCOL</li><li>LOCK</li><li>UNLOCK</li></ul>
         :type Methods: list of str
-        :param _Hosts: 路由的域名
+        :param _Hosts: <p>路由的域名</p>
         :type Hosts: list of str
-        :param _Paths: 路由的路径
+        :param _Paths: <p>路由的路径</p>
         :type Paths: list of str
-        :param _Protocols: 路由的协议，可选
-- https
-- http
+        :param _Protocols: <p>路由的协议，可选</p><ul><li>https</li><li>http</li></ul>
         :type Protocols: list of str
-        :param _PreserveHost: 转发到后端时是否保留Host
+        :param _PreserveHost: <p>转发到后端时是否保留Host</p>
         :type PreserveHost: bool
-        :param _HttpsRedirectStatusCode: https重定向状态码
+        :param _HttpsRedirectStatusCode: <p>https重定向状态码</p>
         :type HttpsRedirectStatusCode: int
-        :param _StripPath: 转发到后端时是否StripPath
+        :param _StripPath: <p>转发到后端时是否StripPath</p>
         :type StripPath: bool
-        :param _ForceHttps: 是否开启强制HTTPS
+        :param _ForceHttps: <p>是否开启强制HTTPS</p>
         :type ForceHttps: bool
-        :param _DestinationPorts: 四层匹配的目的端口	
+        :param _DestinationPorts: <p>四层匹配的目的端口</p>
         :type DestinationPorts: list of int non-negative
-        :param _Headers: 路由的Headers
+        :param _Headers: <p>路由的Headers</p>
         :type Headers: list of KVMapping
-        :param _RequestBuffering: 是否缓存请求body，默认true
+        :param _RequestBuffering: <p>是否缓存请求body，默认true</p>
         :type RequestBuffering: bool
-        :param _ResponseBuffering: 是否缓存响应body，默认true
+        :param _ResponseBuffering: <p>是否缓存响应body，默认true</p>
         :type ResponseBuffering: bool
-        :param _RegexPriority: 增加优先级
+        :param _RegexPriority: <p>增加优先级</p>
         :type RegexPriority: int
-        :param _QueryStringParameters: querysring参数
+        :param _QueryStringParameters: <p>querysring参数</p>
         :type QueryStringParameters: list of KVMapping
         """
         self._GatewayId = None
@@ -36618,7 +36600,7 @@ class ModifyCloudNativeAPIGatewayRouteRequest(AbstractModel):
 
     @property
     def GatewayId(self):
-        r"""网关ID
+        r"""<p>网关ID</p>
         :rtype: str
         """
         return self._GatewayId
@@ -36629,7 +36611,7 @@ class ModifyCloudNativeAPIGatewayRouteRequest(AbstractModel):
 
     @property
     def ServiceID(self):
-        r"""所属服务的ID
+        r"""<p>所属服务的ID</p>
         :rtype: str
         """
         return self._ServiceID
@@ -36640,7 +36622,7 @@ class ModifyCloudNativeAPIGatewayRouteRequest(AbstractModel):
 
     @property
     def RouteID(self):
-        r"""路由的ID，实例级别唯一
+        r"""<p>路由的ID，实例级别唯一</p>
         :rtype: str
         """
         return self._RouteID
@@ -36651,7 +36633,7 @@ class ModifyCloudNativeAPIGatewayRouteRequest(AbstractModel):
 
     @property
     def RouteName(self):
-        r"""路由的名字，实例级别唯一，可以不提供
+        r"""<p>路由的名字，实例级别唯一，可以不提供</p>
         :rtype: str
         """
         return self._RouteName
@@ -36662,23 +36644,7 @@ class ModifyCloudNativeAPIGatewayRouteRequest(AbstractModel):
 
     @property
     def Methods(self):
-        r"""路由的方法，其中方法可选值：
-- GET
-- POST
-- DELETE
-- PUT
-- OPTIONS
-- PATCH
-- HEAD
-- ANY
-- TRACE
-- COPY
-- MOVE
-- PROPFIND
-- PROPPATCH
-- MKCOL
-- LOCK
-- UNLOCK
+        r"""<p>路由的方法，其中方法可选值：</p><ul><li>GET</li><li>POST</li><li>DELETE</li><li>PUT</li><li>OPTIONS</li><li>PATCH</li><li>HEAD</li><li>ANY</li><li>TRACE</li><li>COPY</li><li>MOVE</li><li>PROPFIND</li><li>PROPPATCH</li><li>MKCOL</li><li>LOCK</li><li>UNLOCK</li></ul>
         :rtype: list of str
         """
         return self._Methods
@@ -36689,7 +36655,7 @@ class ModifyCloudNativeAPIGatewayRouteRequest(AbstractModel):
 
     @property
     def Hosts(self):
-        r"""路由的域名
+        r"""<p>路由的域名</p>
         :rtype: list of str
         """
         return self._Hosts
@@ -36700,7 +36666,7 @@ class ModifyCloudNativeAPIGatewayRouteRequest(AbstractModel):
 
     @property
     def Paths(self):
-        r"""路由的路径
+        r"""<p>路由的路径</p>
         :rtype: list of str
         """
         return self._Paths
@@ -36711,9 +36677,7 @@ class ModifyCloudNativeAPIGatewayRouteRequest(AbstractModel):
 
     @property
     def Protocols(self):
-        r"""路由的协议，可选
-- https
-- http
+        r"""<p>路由的协议，可选</p><ul><li>https</li><li>http</li></ul>
         :rtype: list of str
         """
         return self._Protocols
@@ -36724,7 +36688,7 @@ class ModifyCloudNativeAPIGatewayRouteRequest(AbstractModel):
 
     @property
     def PreserveHost(self):
-        r"""转发到后端时是否保留Host
+        r"""<p>转发到后端时是否保留Host</p>
         :rtype: bool
         """
         return self._PreserveHost
@@ -36735,7 +36699,7 @@ class ModifyCloudNativeAPIGatewayRouteRequest(AbstractModel):
 
     @property
     def HttpsRedirectStatusCode(self):
-        r"""https重定向状态码
+        r"""<p>https重定向状态码</p>
         :rtype: int
         """
         return self._HttpsRedirectStatusCode
@@ -36746,7 +36710,7 @@ class ModifyCloudNativeAPIGatewayRouteRequest(AbstractModel):
 
     @property
     def StripPath(self):
-        r"""转发到后端时是否StripPath
+        r"""<p>转发到后端时是否StripPath</p>
         :rtype: bool
         """
         return self._StripPath
@@ -36759,7 +36723,7 @@ class ModifyCloudNativeAPIGatewayRouteRequest(AbstractModel):
     def ForceHttps(self):
         warnings.warn("parameter `ForceHttps` is deprecated", DeprecationWarning) 
 
-        r"""是否开启强制HTTPS
+        r"""<p>是否开启强制HTTPS</p>
         :rtype: bool
         """
         return self._ForceHttps
@@ -36772,7 +36736,7 @@ class ModifyCloudNativeAPIGatewayRouteRequest(AbstractModel):
 
     @property
     def DestinationPorts(self):
-        r"""四层匹配的目的端口	
+        r"""<p>四层匹配的目的端口</p>
         :rtype: list of int non-negative
         """
         return self._DestinationPorts
@@ -36783,7 +36747,7 @@ class ModifyCloudNativeAPIGatewayRouteRequest(AbstractModel):
 
     @property
     def Headers(self):
-        r"""路由的Headers
+        r"""<p>路由的Headers</p>
         :rtype: list of KVMapping
         """
         return self._Headers
@@ -36794,7 +36758,7 @@ class ModifyCloudNativeAPIGatewayRouteRequest(AbstractModel):
 
     @property
     def RequestBuffering(self):
-        r"""是否缓存请求body，默认true
+        r"""<p>是否缓存请求body，默认true</p>
         :rtype: bool
         """
         return self._RequestBuffering
@@ -36805,7 +36769,7 @@ class ModifyCloudNativeAPIGatewayRouteRequest(AbstractModel):
 
     @property
     def ResponseBuffering(self):
-        r"""是否缓存响应body，默认true
+        r"""<p>是否缓存响应body，默认true</p>
         :rtype: bool
         """
         return self._ResponseBuffering
@@ -36816,7 +36780,7 @@ class ModifyCloudNativeAPIGatewayRouteRequest(AbstractModel):
 
     @property
     def RegexPriority(self):
-        r"""增加优先级
+        r"""<p>增加优先级</p>
         :rtype: int
         """
         return self._RegexPriority
@@ -36827,7 +36791,7 @@ class ModifyCloudNativeAPIGatewayRouteRequest(AbstractModel):
 
     @property
     def QueryStringParameters(self):
-        r"""querysring参数
+        r"""<p>querysring参数</p>
         :rtype: list of KVMapping
         """
         return self._QueryStringParameters

@@ -2763,12 +2763,27 @@ class GatewayInfo(AbstractModel):
         :type Status: int
         :param _InstanceSize: <p>网关实例数</p>
         :type InstanceSize: int
+        :param _GatewayIp: <p>网关内网IP。</p>
+        :type GatewayIp: str
+        :param _Username: <p>用户名。</p>
+        :type Username: str
+        :param _Token: <p>网关接入token。</p>
+        :type Token: str
+        :param _RegisterCenterUrl: <p>网关注册URL。</p>
+        :type RegisterCenterUrl: str
+        :param _TelemetryUrl: <p>网关上报URL。</p>
+        :type TelemetryUrl: str
         """
         self._GatewayId = None
         self._GatewayName = None
         self._CreateTime = None
         self._Status = None
         self._InstanceSize = None
+        self._GatewayIp = None
+        self._Username = None
+        self._Token = None
+        self._RegisterCenterUrl = None
+        self._TelemetryUrl = None
 
     @property
     def GatewayId(self):
@@ -2825,6 +2840,61 @@ class GatewayInfo(AbstractModel):
     def InstanceSize(self, InstanceSize):
         self._InstanceSize = InstanceSize
 
+    @property
+    def GatewayIp(self):
+        r"""<p>网关内网IP。</p>
+        :rtype: str
+        """
+        return self._GatewayIp
+
+    @GatewayIp.setter
+    def GatewayIp(self, GatewayIp):
+        self._GatewayIp = GatewayIp
+
+    @property
+    def Username(self):
+        r"""<p>用户名。</p>
+        :rtype: str
+        """
+        return self._Username
+
+    @Username.setter
+    def Username(self, Username):
+        self._Username = Username
+
+    @property
+    def Token(self):
+        r"""<p>网关接入token。</p>
+        :rtype: str
+        """
+        return self._Token
+
+    @Token.setter
+    def Token(self, Token):
+        self._Token = Token
+
+    @property
+    def RegisterCenterUrl(self):
+        r"""<p>网关注册URL。</p>
+        :rtype: str
+        """
+        return self._RegisterCenterUrl
+
+    @RegisterCenterUrl.setter
+    def RegisterCenterUrl(self, RegisterCenterUrl):
+        self._RegisterCenterUrl = RegisterCenterUrl
+
+    @property
+    def TelemetryUrl(self):
+        r"""<p>网关上报URL。</p>
+        :rtype: str
+        """
+        return self._TelemetryUrl
+
+    @TelemetryUrl.setter
+    def TelemetryUrl(self, TelemetryUrl):
+        self._TelemetryUrl = TelemetryUrl
+
 
     def _deserialize(self, params):
         self._GatewayId = params.get("GatewayId")
@@ -2832,6 +2902,11 @@ class GatewayInfo(AbstractModel):
         self._CreateTime = params.get("CreateTime")
         self._Status = params.get("Status")
         self._InstanceSize = params.get("InstanceSize")
+        self._GatewayIp = params.get("GatewayIp")
+        self._Username = params.get("Username")
+        self._Token = params.get("Token")
+        self._RegisterCenterUrl = params.get("RegisterCenterUrl")
+        self._TelemetryUrl = params.get("TelemetryUrl")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

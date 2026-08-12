@@ -10441,20 +10441,22 @@ class LoginActionFlagIntl(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Phone: 手机
+        :param _Phone: <p>手机</p>
         :type Phone: int
-        :param _Token: 硬token
+        :param _Token: <p>硬token</p>
         :type Token: int
-        :param _Stoken: 软token
+        :param _Stoken: <p>软token</p>
         :type Stoken: int
-        :param _Wechat: 微信
+        :param _Wechat: <p>微信</p>
         :type Wechat: int
-        :param _Custom: 自定义
+        :param _Custom: <p>自定义</p>
         :type Custom: int
-        :param _Mail: 邮件
+        :param _Mail: <p>邮件</p>
         :type Mail: int
-        :param _U2FToken: u2f硬件token
+        :param _U2FToken: <p>u2f硬件token</p>
         :type U2FToken: int
+        :param _Passkey: <p>passkey通行密钥</p>
+        :type Passkey: int
         """
         self._Phone = None
         self._Token = None
@@ -10463,10 +10465,11 @@ class LoginActionFlagIntl(AbstractModel):
         self._Custom = None
         self._Mail = None
         self._U2FToken = None
+        self._Passkey = None
 
     @property
     def Phone(self):
-        r"""手机
+        r"""<p>手机</p>
         :rtype: int
         """
         return self._Phone
@@ -10477,7 +10480,7 @@ class LoginActionFlagIntl(AbstractModel):
 
     @property
     def Token(self):
-        r"""硬token
+        r"""<p>硬token</p>
         :rtype: int
         """
         return self._Token
@@ -10488,7 +10491,7 @@ class LoginActionFlagIntl(AbstractModel):
 
     @property
     def Stoken(self):
-        r"""软token
+        r"""<p>软token</p>
         :rtype: int
         """
         return self._Stoken
@@ -10499,7 +10502,7 @@ class LoginActionFlagIntl(AbstractModel):
 
     @property
     def Wechat(self):
-        r"""微信
+        r"""<p>微信</p>
         :rtype: int
         """
         return self._Wechat
@@ -10510,7 +10513,7 @@ class LoginActionFlagIntl(AbstractModel):
 
     @property
     def Custom(self):
-        r"""自定义
+        r"""<p>自定义</p>
         :rtype: int
         """
         return self._Custom
@@ -10521,7 +10524,7 @@ class LoginActionFlagIntl(AbstractModel):
 
     @property
     def Mail(self):
-        r"""邮件
+        r"""<p>邮件</p>
         :rtype: int
         """
         return self._Mail
@@ -10532,7 +10535,7 @@ class LoginActionFlagIntl(AbstractModel):
 
     @property
     def U2FToken(self):
-        r"""u2f硬件token
+        r"""<p>u2f硬件token</p>
         :rtype: int
         """
         return self._U2FToken
@@ -10540,6 +10543,17 @@ class LoginActionFlagIntl(AbstractModel):
     @U2FToken.setter
     def U2FToken(self, U2FToken):
         self._U2FToken = U2FToken
+
+    @property
+    def Passkey(self):
+        r"""<p>passkey通行密钥</p>
+        :rtype: int
+        """
+        return self._Passkey
+
+    @Passkey.setter
+    def Passkey(self, Passkey):
+        self._Passkey = Passkey
 
 
     def _deserialize(self, params):
@@ -10550,6 +10564,7 @@ class LoginActionFlagIntl(AbstractModel):
         self._Custom = params.get("Custom")
         self._Mail = params.get("Mail")
         self._U2FToken = params.get("U2FToken")
+        self._Passkey = params.get("Passkey")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

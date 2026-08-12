@@ -7077,36 +7077,46 @@ class DeployResourceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ResourceId: 需要开通服务的资源ID
+        :param _ResourceId: <p>需要开通服务的资源ID</p>
         :type ResourceId: str
-        :param _ApCode: 需要开通服务的地域
+        :param _ApCode: <p>需要开通服务的地域</p>
         :type ApCode: str
-        :param _Zone: 子网所在可用区
+        :param _Zone: <p>子网所在可用区</p>
         :type Zone: str
-        :param _VpcId: 需要开通服务的VPC
+        :param _VpcId: <p>需要开通服务的VPC</p>
         :type VpcId: str
-        :param _SubnetId: 需要开通服务的子网ID
+        :param _SubnetId: <p>需要开通服务的子网ID</p>
         :type SubnetId: str
-        :param _CidrBlock: 需要开通服务的子网网段
+        :param _CidrBlock: <p>需要开通服务的子网网段</p>
         :type CidrBlock: str
-        :param _VpcName: 需要开通服务的VPC名称
+        :param _VpcName: <p>需要开通服务的VPC名称</p>
         :type VpcName: str
-        :param _VpcCidrBlock: 需要开通服务的VPC对应的网段
+        :param _VpcCidrBlock: <p>需要开通服务的VPC对应的网段</p>
         :type VpcCidrBlock: str
-        :param _SubnetName: 需要开通服务的子网名称
+        :param _SubnetName: <p>需要开通服务的子网名称</p>
         :type SubnetName: str
-        :param _CdcClusterId: 需要开通实例所属的CDC集群ID
+        :param _CdcClusterId: <p>需要开通实例所属的CDC集群ID</p>
         :type CdcClusterId: str
-        :param _ShareClbId: 开通堡垒机指定共享的clbId
+        :param _ShareClbId: <p>开通堡垒机指定共享的clbId</p>
         :type ShareClbId: str
-        :param _WebAccess: 0-关闭web访问堡垒机，1-开启web访问堡垒机
+        :param _WebAccess: <p>0-关闭web访问堡垒机，1-开启web访问堡垒机</p>
         :type WebAccess: int
-        :param _ClientAccess: 0-关闭客户端访问堡垒机，1-开启客户端访问堡垒机
+        :param _ClientAccess: <p>0-关闭客户端访问堡垒机，1-开启客户端访问堡垒机</p>
         :type ClientAccess: int
-        :param _IntranetAccess: 0-关闭内网访问堡垒机，1-开启内网访问堡垒机
+        :param _IntranetAccess: <p>0-关闭内网访问堡垒机，1-开启内网访问堡垒机</p>
         :type IntranetAccess: int
-        :param _ExternalAccess: 0-关闭公网访问堡垒机，1-开启公网访问堡垒机
+        :param _ExternalAccess: <p>0-关闭公网访问堡垒机，1-开启公网访问堡垒机</p>
         :type ExternalAccess: int
+        :param _DeploySubnets: <p>开通堡垒机的子网信息</p>
+        :type DeploySubnets: list of ParamInitResourceSubnet
+        :param _IntranetVpcId: <p>开通内网访问的VPC ID</p>
+        :type IntranetVpcId: str
+        :param _IntranetVpcCidrBlock: <p>开通内网访问的VPC 网段</p>
+        :type IntranetVpcCidrBlock: str
+        :param _IntranetVpcName: <p>开通内网访问的VPC名称</p>
+        :type IntranetVpcName: str
+        :param _IntranetSubnets: <p>开通内网访问的子网信息</p>
+        :type IntranetSubnets: list of ParamInitResourceSubnet
         """
         self._ResourceId = None
         self._ApCode = None
@@ -7123,10 +7133,15 @@ class DeployResourceRequest(AbstractModel):
         self._ClientAccess = None
         self._IntranetAccess = None
         self._ExternalAccess = None
+        self._DeploySubnets = None
+        self._IntranetVpcId = None
+        self._IntranetVpcCidrBlock = None
+        self._IntranetVpcName = None
+        self._IntranetSubnets = None
 
     @property
     def ResourceId(self):
-        r"""需要开通服务的资源ID
+        r"""<p>需要开通服务的资源ID</p>
         :rtype: str
         """
         return self._ResourceId
@@ -7137,7 +7152,7 @@ class DeployResourceRequest(AbstractModel):
 
     @property
     def ApCode(self):
-        r"""需要开通服务的地域
+        r"""<p>需要开通服务的地域</p>
         :rtype: str
         """
         return self._ApCode
@@ -7148,7 +7163,7 @@ class DeployResourceRequest(AbstractModel):
 
     @property
     def Zone(self):
-        r"""子网所在可用区
+        r"""<p>子网所在可用区</p>
         :rtype: str
         """
         return self._Zone
@@ -7159,7 +7174,7 @@ class DeployResourceRequest(AbstractModel):
 
     @property
     def VpcId(self):
-        r"""需要开通服务的VPC
+        r"""<p>需要开通服务的VPC</p>
         :rtype: str
         """
         return self._VpcId
@@ -7170,7 +7185,7 @@ class DeployResourceRequest(AbstractModel):
 
     @property
     def SubnetId(self):
-        r"""需要开通服务的子网ID
+        r"""<p>需要开通服务的子网ID</p>
         :rtype: str
         """
         return self._SubnetId
@@ -7181,7 +7196,7 @@ class DeployResourceRequest(AbstractModel):
 
     @property
     def CidrBlock(self):
-        r"""需要开通服务的子网网段
+        r"""<p>需要开通服务的子网网段</p>
         :rtype: str
         """
         return self._CidrBlock
@@ -7192,7 +7207,7 @@ class DeployResourceRequest(AbstractModel):
 
     @property
     def VpcName(self):
-        r"""需要开通服务的VPC名称
+        r"""<p>需要开通服务的VPC名称</p>
         :rtype: str
         """
         return self._VpcName
@@ -7203,7 +7218,7 @@ class DeployResourceRequest(AbstractModel):
 
     @property
     def VpcCidrBlock(self):
-        r"""需要开通服务的VPC对应的网段
+        r"""<p>需要开通服务的VPC对应的网段</p>
         :rtype: str
         """
         return self._VpcCidrBlock
@@ -7214,7 +7229,7 @@ class DeployResourceRequest(AbstractModel):
 
     @property
     def SubnetName(self):
-        r"""需要开通服务的子网名称
+        r"""<p>需要开通服务的子网名称</p>
         :rtype: str
         """
         return self._SubnetName
@@ -7225,7 +7240,7 @@ class DeployResourceRequest(AbstractModel):
 
     @property
     def CdcClusterId(self):
-        r"""需要开通实例所属的CDC集群ID
+        r"""<p>需要开通实例所属的CDC集群ID</p>
         :rtype: str
         """
         return self._CdcClusterId
@@ -7236,7 +7251,7 @@ class DeployResourceRequest(AbstractModel):
 
     @property
     def ShareClbId(self):
-        r"""开通堡垒机指定共享的clbId
+        r"""<p>开通堡垒机指定共享的clbId</p>
         :rtype: str
         """
         return self._ShareClbId
@@ -7247,7 +7262,7 @@ class DeployResourceRequest(AbstractModel):
 
     @property
     def WebAccess(self):
-        r"""0-关闭web访问堡垒机，1-开启web访问堡垒机
+        r"""<p>0-关闭web访问堡垒机，1-开启web访问堡垒机</p>
         :rtype: int
         """
         return self._WebAccess
@@ -7258,7 +7273,7 @@ class DeployResourceRequest(AbstractModel):
 
     @property
     def ClientAccess(self):
-        r"""0-关闭客户端访问堡垒机，1-开启客户端访问堡垒机
+        r"""<p>0-关闭客户端访问堡垒机，1-开启客户端访问堡垒机</p>
         :rtype: int
         """
         return self._ClientAccess
@@ -7269,7 +7284,7 @@ class DeployResourceRequest(AbstractModel):
 
     @property
     def IntranetAccess(self):
-        r"""0-关闭内网访问堡垒机，1-开启内网访问堡垒机
+        r"""<p>0-关闭内网访问堡垒机，1-开启内网访问堡垒机</p>
         :rtype: int
         """
         return self._IntranetAccess
@@ -7280,7 +7295,7 @@ class DeployResourceRequest(AbstractModel):
 
     @property
     def ExternalAccess(self):
-        r"""0-关闭公网访问堡垒机，1-开启公网访问堡垒机
+        r"""<p>0-关闭公网访问堡垒机，1-开启公网访问堡垒机</p>
         :rtype: int
         """
         return self._ExternalAccess
@@ -7288,6 +7303,61 @@ class DeployResourceRequest(AbstractModel):
     @ExternalAccess.setter
     def ExternalAccess(self, ExternalAccess):
         self._ExternalAccess = ExternalAccess
+
+    @property
+    def DeploySubnets(self):
+        r"""<p>开通堡垒机的子网信息</p>
+        :rtype: list of ParamInitResourceSubnet
+        """
+        return self._DeploySubnets
+
+    @DeploySubnets.setter
+    def DeploySubnets(self, DeploySubnets):
+        self._DeploySubnets = DeploySubnets
+
+    @property
+    def IntranetVpcId(self):
+        r"""<p>开通内网访问的VPC ID</p>
+        :rtype: str
+        """
+        return self._IntranetVpcId
+
+    @IntranetVpcId.setter
+    def IntranetVpcId(self, IntranetVpcId):
+        self._IntranetVpcId = IntranetVpcId
+
+    @property
+    def IntranetVpcCidrBlock(self):
+        r"""<p>开通内网访问的VPC 网段</p>
+        :rtype: str
+        """
+        return self._IntranetVpcCidrBlock
+
+    @IntranetVpcCidrBlock.setter
+    def IntranetVpcCidrBlock(self, IntranetVpcCidrBlock):
+        self._IntranetVpcCidrBlock = IntranetVpcCidrBlock
+
+    @property
+    def IntranetVpcName(self):
+        r"""<p>开通内网访问的VPC名称</p>
+        :rtype: str
+        """
+        return self._IntranetVpcName
+
+    @IntranetVpcName.setter
+    def IntranetVpcName(self, IntranetVpcName):
+        self._IntranetVpcName = IntranetVpcName
+
+    @property
+    def IntranetSubnets(self):
+        r"""<p>开通内网访问的子网信息</p>
+        :rtype: list of ParamInitResourceSubnet
+        """
+        return self._IntranetSubnets
+
+    @IntranetSubnets.setter
+    def IntranetSubnets(self, IntranetSubnets):
+        self._IntranetSubnets = IntranetSubnets
 
 
     def _deserialize(self, params):
@@ -7306,6 +7376,21 @@ class DeployResourceRequest(AbstractModel):
         self._ClientAccess = params.get("ClientAccess")
         self._IntranetAccess = params.get("IntranetAccess")
         self._ExternalAccess = params.get("ExternalAccess")
+        if params.get("DeploySubnets") is not None:
+            self._DeploySubnets = []
+            for item in params.get("DeploySubnets"):
+                obj = ParamInitResourceSubnet()
+                obj._deserialize(item)
+                self._DeploySubnets.append(obj)
+        self._IntranetVpcId = params.get("IntranetVpcId")
+        self._IntranetVpcCidrBlock = params.get("IntranetVpcCidrBlock")
+        self._IntranetVpcName = params.get("IntranetVpcName")
+        if params.get("IntranetSubnets") is not None:
+            self._IntranetSubnets = []
+            for item in params.get("IntranetSubnets"):
+                obj = ParamInitResourceSubnet()
+                obj._deserialize(item)
+                self._IntranetSubnets.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -13151,26 +13236,35 @@ class EnableIntranetAccessRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ResourceId: 堡垒机实例id
+        :param _ResourceId: <p>堡垒机实例id</p>
         :type ResourceId: str
-        :param _VpcId: 开通内网访问的vpc id
+        :param _VpcId: <p>开通内网访问的vpc id</p>
         :type VpcId: str
-        :param _VpcCidrBlock: vpc的网段
+        :param _VpcName: <p>vpc名称</p>
+        :type VpcName: str
+        :param _VpcRegion: <p>vpc地域</p>
+        :type VpcRegion: str
+        :param _VpcCidrBlock: <p>vpc的网段</p>
         :type VpcCidrBlock: str
-        :param _SubnetId: 开通内网访问的subnet id
+        :param _SubnetId: <p>开通内网访问的subnet id</p>
         :type SubnetId: str
-        :param _DomainName: 内网ip的自定义域名，可为空
+        :param _DomainName: <p>内网ip的自定义域名，可为空</p>
         :type DomainName: str
+        :param _IntranetSubnets: <p>开通内网的子网信息</p>
+        :type IntranetSubnets: list of ParamInitResourceSubnet
         """
         self._ResourceId = None
         self._VpcId = None
+        self._VpcName = None
+        self._VpcRegion = None
         self._VpcCidrBlock = None
         self._SubnetId = None
         self._DomainName = None
+        self._IntranetSubnets = None
 
     @property
     def ResourceId(self):
-        r"""堡垒机实例id
+        r"""<p>堡垒机实例id</p>
         :rtype: str
         """
         return self._ResourceId
@@ -13181,7 +13275,7 @@ class EnableIntranetAccessRequest(AbstractModel):
 
     @property
     def VpcId(self):
-        r"""开通内网访问的vpc id
+        r"""<p>开通内网访问的vpc id</p>
         :rtype: str
         """
         return self._VpcId
@@ -13191,8 +13285,30 @@ class EnableIntranetAccessRequest(AbstractModel):
         self._VpcId = VpcId
 
     @property
+    def VpcName(self):
+        r"""<p>vpc名称</p>
+        :rtype: str
+        """
+        return self._VpcName
+
+    @VpcName.setter
+    def VpcName(self, VpcName):
+        self._VpcName = VpcName
+
+    @property
+    def VpcRegion(self):
+        r"""<p>vpc地域</p>
+        :rtype: str
+        """
+        return self._VpcRegion
+
+    @VpcRegion.setter
+    def VpcRegion(self, VpcRegion):
+        self._VpcRegion = VpcRegion
+
+    @property
     def VpcCidrBlock(self):
-        r"""vpc的网段
+        r"""<p>vpc的网段</p>
         :rtype: str
         """
         return self._VpcCidrBlock
@@ -13203,18 +13319,22 @@ class EnableIntranetAccessRequest(AbstractModel):
 
     @property
     def SubnetId(self):
-        r"""开通内网访问的subnet id
+        warnings.warn("parameter `SubnetId` is deprecated", DeprecationWarning) 
+
+        r"""<p>开通内网访问的subnet id</p>
         :rtype: str
         """
         return self._SubnetId
 
     @SubnetId.setter
     def SubnetId(self, SubnetId):
+        warnings.warn("parameter `SubnetId` is deprecated", DeprecationWarning) 
+
         self._SubnetId = SubnetId
 
     @property
     def DomainName(self):
-        r"""内网ip的自定义域名，可为空
+        r"""<p>内网ip的自定义域名，可为空</p>
         :rtype: str
         """
         return self._DomainName
@@ -13223,13 +13343,32 @@ class EnableIntranetAccessRequest(AbstractModel):
     def DomainName(self, DomainName):
         self._DomainName = DomainName
 
+    @property
+    def IntranetSubnets(self):
+        r"""<p>开通内网的子网信息</p>
+        :rtype: list of ParamInitResourceSubnet
+        """
+        return self._IntranetSubnets
+
+    @IntranetSubnets.setter
+    def IntranetSubnets(self, IntranetSubnets):
+        self._IntranetSubnets = IntranetSubnets
+
 
     def _deserialize(self, params):
         self._ResourceId = params.get("ResourceId")
         self._VpcId = params.get("VpcId")
+        self._VpcName = params.get("VpcName")
+        self._VpcRegion = params.get("VpcRegion")
         self._VpcCidrBlock = params.get("VpcCidrBlock")
         self._SubnetId = params.get("SubnetId")
         self._DomainName = params.get("DomainName")
+        if params.get("IntranetSubnets") is not None:
+            self._IntranetSubnets = []
+            for item in params.get("IntranetSubnets"):
+                obj = ParamInitResourceSubnet()
+                obj._deserialize(item)
+                self._IntranetSubnets.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -17924,6 +18063,87 @@ class OperationTask(AbstractModel):
         
 
 
+class ParamInitResourceSubnet(AbstractModel):
+    r"""开通堡垒机的子网
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SubnetId: <p>xa0子网id</p>
+        :type SubnetId: str
+        :param _SubnetName: <p>子网名称</p>
+        :type SubnetName: str
+        :param _Zone: <p>子网可用区</p>
+        :type Zone: str
+        :param _SubnetCidrBlock: <p>子网cidr</p>
+        :type SubnetCidrBlock: str
+        """
+        self._SubnetId = None
+        self._SubnetName = None
+        self._Zone = None
+        self._SubnetCidrBlock = None
+
+    @property
+    def SubnetId(self):
+        r"""<p>xa0子网id</p>
+        :rtype: str
+        """
+        return self._SubnetId
+
+    @SubnetId.setter
+    def SubnetId(self, SubnetId):
+        self._SubnetId = SubnetId
+
+    @property
+    def SubnetName(self):
+        r"""<p>子网名称</p>
+        :rtype: str
+        """
+        return self._SubnetName
+
+    @SubnetName.setter
+    def SubnetName(self, SubnetName):
+        self._SubnetName = SubnetName
+
+    @property
+    def Zone(self):
+        r"""<p>子网可用区</p>
+        :rtype: str
+        """
+        return self._Zone
+
+    @Zone.setter
+    def Zone(self, Zone):
+        self._Zone = Zone
+
+    @property
+    def SubnetCidrBlock(self):
+        r"""<p>子网cidr</p>
+        :rtype: str
+        """
+        return self._SubnetCidrBlock
+
+    @SubnetCidrBlock.setter
+    def SubnetCidrBlock(self, SubnetCidrBlock):
+        self._SubnetCidrBlock = SubnetCidrBlock
+
+
+    def _deserialize(self, params):
+        self._SubnetId = params.get("SubnetId")
+        self._SubnetName = params.get("SubnetName")
+        self._Zone = params.get("Zone")
+        self._SubnetCidrBlock = params.get("SubnetCidrBlock")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class PasswordSetting(AbstractModel):
     r"""密码要求设置。
 
@@ -18417,126 +18637,134 @@ class Resource(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ResourceId: 服务实例ID，如bh-saas-s3ed4r5e
+        :param _ResourceId: <p>服务实例ID，如bh-saas-s3ed4r5e</p>
         :type ResourceId: str
-        :param _ApCode: 地域编码
+        :param _ApCode: <p>地域编码</p>
         :type ApCode: str
-        :param _SvArgs: 服务实例规格信息
+        :param _SvArgs: <p>服务实例规格信息</p>
         :type SvArgs: str
-        :param _VpcId: VPC ID
+        :param _VpcId: <p>VPC ID</p>
         :type VpcId: str
-        :param _Nodes: 服务规格对应的资产数
+        :param _Nodes: <p>服务规格对应的资产数</p>
         :type Nodes: int
-        :param _RenewFlag: 自动续费标记，0 - 表示默认状态，1 - 表示自动续费，2 - 表示明确不自动续费
+        :param _RenewFlag: <p>自动续费标记，0 - 表示默认状态，1 - 表示自动续费，2 - 表示明确不自动续费</p>
         :type RenewFlag: int
-        :param _ExpireTime: 过期时间
+        :param _ExpireTime: <p>过期时间</p>
         :type ExpireTime: str
-        :param _Status: 资源状态，0 - 未初始化，1 - 正常，2 - 隔离，3 - 销毁，4 - 初始化失败，5 - 初始化中
+        :param _Status: <p>资源状态，0 - 未初始化，1 - 正常，2 - 隔离，3 - 销毁，4 - 初始化失败，5 - 初始化中</p>
         :type Status: int
-        :param _ResourceName: 服务实例名，如T-Sec-堡垒机（SaaS型）
+        :param _ResourceName: <p>服务实例名，如T-Sec-堡垒机（SaaS型）</p>
         :type ResourceName: str
-        :param _Pid: 定价模型ID
+        :param _Pid: <p>定价模型ID</p>
         :type Pid: int
-        :param _CreateTime: 资源创建时间
+        :param _CreateTime: <p>资源创建时间</p>
         :type CreateTime: str
-        :param _ProductCode: 商品码, p_cds_dasb
+        :param _ProductCode: <p>商品码, p_cds_dasb</p>
         :type ProductCode: str
-        :param _SubProductCode: 子商品码, sp_cds_dasb_bh_saas
+        :param _SubProductCode: <p>子商品码, sp_cds_dasb_bh_saas</p>
         :type SubProductCode: str
-        :param _Zone: 可用区
+        :param _Zone: <p>可用区</p>
         :type Zone: str
-        :param _Expired: 是否过期，true-过期，false-未过期
+        :param _Expired: <p>是否过期，true-过期，false-未过期</p>
         :type Expired: bool
-        :param _Deployed: 是否开通，true-开通，false-未开通
+        :param _Deployed: <p>是否开通，true-开通，false-未开通</p>
         :type Deployed: bool
-        :param _VpcName: 开通服务的 VPC 名称
+        :param _VpcName: <p>开通服务的 VPC 名称</p>
         :type VpcName: str
-        :param _VpcCidrBlock: 开通服务的 VPC 对应的网段
+        :param _VpcCidrBlock: <p>开通服务的 VPC 对应的网段</p>
         :type VpcCidrBlock: str
-        :param _SubnetId: 开通服务的子网ID
+        :param _SubnetId: <p>开通服务的子网ID</p>
         :type SubnetId: str
-        :param _SubnetName: 开通服务的子网名称
+        :param _SubnetName: <p>开通服务的子网名称</p>
         :type SubnetName: str
-        :param _CidrBlock: 开通服务的子网网段
+        :param _CidrBlock: <p>开通服务的子网网段</p>
         :type CidrBlock: str
-        :param _PublicIpSet: 外部IP
+        :param _PublicIpSet: <p>外部IP</p>
         :type PublicIpSet: list of str
-        :param _PrivateIpSet: 内部IP
+        :param _PrivateIpSet: <p>内部IP</p>
         :type PrivateIpSet: list of str
-        :param _ModuleSet: 服务开通的高级功能列表，如:[DB]
+        :param _ModuleSet: <p>服务开通的高级功能列表，如:[DB]</p>
         :type ModuleSet: list of str
-        :param _UsedNodes: 已使用的授权点数
+        :param _UsedNodes: <p>已使用的授权点数</p>
         :type UsedNodes: int
-        :param _ExtendPoints: 扩展点数
+        :param _ExtendPoints: <p>扩展点数</p>
         :type ExtendPoints: int
-        :param _PackageBandwidth: 带宽扩展包个数(4M)
+        :param _PackageBandwidth: <p>带宽扩展包个数(4M)</p>
         :type PackageBandwidth: int
-        :param _PackageNode: 授权点数扩展包个数(50点)
+        :param _PackageNode: <p>授权点数扩展包个数(50点)</p>
         :type PackageNode: int
-        :param _LogDeliveryArgs: 日志投递规格信息
+        :param _LogDeliveryArgs: <p>日志投递规格信息</p>
         :type LogDeliveryArgs: str
-        :param _ClbSet: 堡垒机资源LB	
+        :param _ClbSet: <p>堡垒机资源LB</p>
         :type ClbSet: list of Clb
-        :param _DomainCount: 网络域个数
+        :param _DomainCount: <p>网络域个数</p>
         :type DomainCount: int
-        :param _UsedDomainCount: 已经使用的网络域个数
+        :param _UsedDomainCount: <p>已经使用的网络域个数</p>
         :type UsedDomainCount: int
-        :param _Trial: 0 非试用版，1 试用版
+        :param _EnabledDomainCount: <p>开启的网络域个数（不包含默认网络域）</p>
+        :type EnabledDomainCount: int
+        :param _Trial: <p>0 非试用版，1 试用版</p>
         :type Trial: int
-        :param _LogDelivery: 日志投递规格信息
+        :param _LogDelivery: <p>日志投递规格信息</p>
         :type LogDelivery: str
-        :param _CdcClusterId: cdc集群id
+        :param _CdcClusterId: <p>cdc集群id</p>
         :type CdcClusterId: str
-        :param _DeployModel: 部署模式 默认0 0-cvm 1-tke
+        :param _DeployModel: <p>部署模式 默认0 0-cvm 1-tke</p>
         :type DeployModel: int
-        :param _IntranetAccess: 0 默认值，非内网访问，1 内网访问，2 内网访问开通中，3 内网访问关闭中
+        :param _IntranetAccess: <p>0 默认值，非内网访问，1 内网访问，2 内网访问开通中，3 内网访问关闭中</p>
         :type IntranetAccess: int
-        :param _IntranetPrivateIpSet: 内网访问的ip
+        :param _IntranetPrivateIpSet: <p>内网访问的ip</p>
         :type IntranetPrivateIpSet: list of str
-        :param _IntranetVpcId: 开通内网访问的vpc
+        :param _IntranetVpcId: <p>开通内网访问的vpc</p>
         :type IntranetVpcId: str
-        :param _IntranetSubnetId: 开通内网访问的subnetId
+        :param _IntranetSubnetId: <p>开通内网访问的subnetId</p>
         :type IntranetSubnetId: str
-        :param _IntranetVpcCidr: 开通内网访问vpc的网段
+        :param _IntranetSubnetIdSet: <p>开通内网访问的子网集合</p>
+        :type IntranetSubnetIdSet: list of str
+        :param _IntranetVpcCidr: <p>开通内网访问vpc的网段</p>
         :type IntranetVpcCidr: str
-        :param _DomainName: 堡垒机内网ip自定义域名
+        :param _DomainName: <p>堡垒机内网ip自定义域名</p>
         :type DomainName: str
-        :param _ShareClb: 是否共享clb，true-共享clb，false-独享clb
+        :param _ShareClb: <p>是否共享clb，true-共享clb，false-独享clb</p>
         :type ShareClb: bool
-        :param _OpenClbId: 共享clb id
+        :param _OpenClbId: <p>共享clb id</p>
         :type OpenClbId: str
-        :param _LbVipIsp: 运营商信息
+        :param _LbVipIsp: <p>运营商信息</p>
         :type LbVipIsp: str
-        :param _TUICmdPort: linux资产命令行运维端口
+        :param _TUICmdPort: <p>linux资产命令行运维端口</p>
         :type TUICmdPort: int
-        :param _TUIDirectPort: linux资产直连端口
+        :param _TUIDirectPort: <p>linux资产直连端口</p>
         :type TUIDirectPort: int
-        :param _WebAccess: 1 默认值，web访问开启，0 web访问关闭，2 web访问开通中，3 web访问关闭中
+        :param _WebAccess: <p>1 默认值，web访问开启，0 web访问关闭，2 web访问开通中，3 web访问关闭中</p>
         :type WebAccess: int
-        :param _ClientAccess: 1 默认值，客户单访问开启，0 客户端访问关闭，2 客户端访问开通中，3 客户端访问关闭中
+        :param _ClientAccess: <p>1 默认值，客户单访问开启，0 客户端访问关闭，2 客户端访问开通中，3 客户端访问关闭中</p>
         :type ClientAccess: int
-        :param _ExternalAccess: 1 默认值，外网访问开启，0 外网访问关闭，2 外网访问开通中，3 外网访问关闭中
+        :param _ExternalAccess: <p>1 默认值，外网访问开启，0 外网访问关闭，2 外网访问开通中，3 外网访问关闭中</p>
         :type ExternalAccess: int
-        :param _IOAResource: 0默认值。0-免费版（试用版）ioa，1-付费版ioa
+        :param _IOAResource: <p>0默认值。0-免费版（试用版）ioa，1-付费版ioa</p>
         :type IOAResource: int
-        :param _PackageIOAUserCount: 零信任堡垒机用户扩展包个数。1个扩展包对应20个用户数
+        :param _PackageIOAUserCount: <p>零信任堡垒机用户扩展包个数。1个扩展包对应20个用户数</p>
         :type PackageIOAUserCount: int
-        :param _PackageIOABandwidth:  零信任堡垒机带宽扩展包个数。一个扩展包表示4M带宽
+        :param _PackageIOABandwidth: <p>零信任堡垒机带宽扩展包个数。一个扩展包表示4M带宽</p>
         :type PackageIOABandwidth: int
-        :param _IOAResourceId: 堡垒机实例对应的零信任实例id
+        :param _IOAResourceId: <p>堡垒机实例对应的零信任实例id</p>
         :type IOAResourceId: str
-        :param _ResourceEdition: 资源类型 免费版/标准版/专业版 /国密版 free/standard/pro/gm
+        :param _ResourceEdition: <p>资源类型 免费版/标准版/专业版 /国密版 free/standard/pro/gm</p>
         :type ResourceEdition: str
-        :param _TimeUnit: 计费周期 年：y，月：m，日：d，时：h，分：M，秒：s，一次性购买：p
+        :param _TimeUnit: <p>计费周期 年：y，月：m，日：d，时：h，分：M，秒：s，一次性购买：p</p>
         :type TimeUnit: str
-        :param _TimeSpan: 计费时长
+        :param _TimeSpan: <p>计费时长</p>
         :type TimeSpan: int
-        :param _PayMode: 计费模式 0后付费，1预付费
+        :param _PayMode: <p>计费模式 0后付费，1预付费</p>
         :type PayMode: int
-        :param _BillingRegion: 计费侧地域
+        :param _BillingRegion: <p>计费侧地域</p>
         :type BillingRegion: str
-        :param _BillingZone: 计费侧可用区
+        :param _BillingZone: <p>计费侧可用区</p>
         :type BillingZone: str
+        :param _DeployCvmCount: <p>部署的cvm个数</p>
+        :type DeployCvmCount: int
+        :param _ResourceZoneSet: <p>堡垒机实例的可用区信息</p>
+        :type ResourceZoneSet: list of ResourceDeployZone
         """
         self._ResourceId = None
         self._ApCode = None
@@ -18570,6 +18798,7 @@ class Resource(AbstractModel):
         self._ClbSet = None
         self._DomainCount = None
         self._UsedDomainCount = None
+        self._EnabledDomainCount = None
         self._Trial = None
         self._LogDelivery = None
         self._CdcClusterId = None
@@ -18578,6 +18807,7 @@ class Resource(AbstractModel):
         self._IntranetPrivateIpSet = None
         self._IntranetVpcId = None
         self._IntranetSubnetId = None
+        self._IntranetSubnetIdSet = None
         self._IntranetVpcCidr = None
         self._DomainName = None
         self._ShareClb = None
@@ -18598,10 +18828,12 @@ class Resource(AbstractModel):
         self._PayMode = None
         self._BillingRegion = None
         self._BillingZone = None
+        self._DeployCvmCount = None
+        self._ResourceZoneSet = None
 
     @property
     def ResourceId(self):
-        r"""服务实例ID，如bh-saas-s3ed4r5e
+        r"""<p>服务实例ID，如bh-saas-s3ed4r5e</p>
         :rtype: str
         """
         return self._ResourceId
@@ -18612,7 +18844,7 @@ class Resource(AbstractModel):
 
     @property
     def ApCode(self):
-        r"""地域编码
+        r"""<p>地域编码</p>
         :rtype: str
         """
         return self._ApCode
@@ -18623,7 +18855,7 @@ class Resource(AbstractModel):
 
     @property
     def SvArgs(self):
-        r"""服务实例规格信息
+        r"""<p>服务实例规格信息</p>
         :rtype: str
         """
         return self._SvArgs
@@ -18634,7 +18866,7 @@ class Resource(AbstractModel):
 
     @property
     def VpcId(self):
-        r"""VPC ID
+        r"""<p>VPC ID</p>
         :rtype: str
         """
         return self._VpcId
@@ -18645,7 +18877,7 @@ class Resource(AbstractModel):
 
     @property
     def Nodes(self):
-        r"""服务规格对应的资产数
+        r"""<p>服务规格对应的资产数</p>
         :rtype: int
         """
         return self._Nodes
@@ -18656,7 +18888,7 @@ class Resource(AbstractModel):
 
     @property
     def RenewFlag(self):
-        r"""自动续费标记，0 - 表示默认状态，1 - 表示自动续费，2 - 表示明确不自动续费
+        r"""<p>自动续费标记，0 - 表示默认状态，1 - 表示自动续费，2 - 表示明确不自动续费</p>
         :rtype: int
         """
         return self._RenewFlag
@@ -18667,7 +18899,7 @@ class Resource(AbstractModel):
 
     @property
     def ExpireTime(self):
-        r"""过期时间
+        r"""<p>过期时间</p>
         :rtype: str
         """
         return self._ExpireTime
@@ -18678,7 +18910,7 @@ class Resource(AbstractModel):
 
     @property
     def Status(self):
-        r"""资源状态，0 - 未初始化，1 - 正常，2 - 隔离，3 - 销毁，4 - 初始化失败，5 - 初始化中
+        r"""<p>资源状态，0 - 未初始化，1 - 正常，2 - 隔离，3 - 销毁，4 - 初始化失败，5 - 初始化中</p>
         :rtype: int
         """
         return self._Status
@@ -18689,7 +18921,7 @@ class Resource(AbstractModel):
 
     @property
     def ResourceName(self):
-        r"""服务实例名，如T-Sec-堡垒机（SaaS型）
+        r"""<p>服务实例名，如T-Sec-堡垒机（SaaS型）</p>
         :rtype: str
         """
         return self._ResourceName
@@ -18700,7 +18932,7 @@ class Resource(AbstractModel):
 
     @property
     def Pid(self):
-        r"""定价模型ID
+        r"""<p>定价模型ID</p>
         :rtype: int
         """
         return self._Pid
@@ -18711,7 +18943,7 @@ class Resource(AbstractModel):
 
     @property
     def CreateTime(self):
-        r"""资源创建时间
+        r"""<p>资源创建时间</p>
         :rtype: str
         """
         return self._CreateTime
@@ -18722,7 +18954,7 @@ class Resource(AbstractModel):
 
     @property
     def ProductCode(self):
-        r"""商品码, p_cds_dasb
+        r"""<p>商品码, p_cds_dasb</p>
         :rtype: str
         """
         return self._ProductCode
@@ -18733,7 +18965,7 @@ class Resource(AbstractModel):
 
     @property
     def SubProductCode(self):
-        r"""子商品码, sp_cds_dasb_bh_saas
+        r"""<p>子商品码, sp_cds_dasb_bh_saas</p>
         :rtype: str
         """
         return self._SubProductCode
@@ -18744,7 +18976,7 @@ class Resource(AbstractModel):
 
     @property
     def Zone(self):
-        r"""可用区
+        r"""<p>可用区</p>
         :rtype: str
         """
         return self._Zone
@@ -18755,7 +18987,7 @@ class Resource(AbstractModel):
 
     @property
     def Expired(self):
-        r"""是否过期，true-过期，false-未过期
+        r"""<p>是否过期，true-过期，false-未过期</p>
         :rtype: bool
         """
         return self._Expired
@@ -18766,7 +18998,7 @@ class Resource(AbstractModel):
 
     @property
     def Deployed(self):
-        r"""是否开通，true-开通，false-未开通
+        r"""<p>是否开通，true-开通，false-未开通</p>
         :rtype: bool
         """
         return self._Deployed
@@ -18777,7 +19009,7 @@ class Resource(AbstractModel):
 
     @property
     def VpcName(self):
-        r"""开通服务的 VPC 名称
+        r"""<p>开通服务的 VPC 名称</p>
         :rtype: str
         """
         return self._VpcName
@@ -18788,7 +19020,7 @@ class Resource(AbstractModel):
 
     @property
     def VpcCidrBlock(self):
-        r"""开通服务的 VPC 对应的网段
+        r"""<p>开通服务的 VPC 对应的网段</p>
         :rtype: str
         """
         return self._VpcCidrBlock
@@ -18799,7 +19031,7 @@ class Resource(AbstractModel):
 
     @property
     def SubnetId(self):
-        r"""开通服务的子网ID
+        r"""<p>开通服务的子网ID</p>
         :rtype: str
         """
         return self._SubnetId
@@ -18810,7 +19042,7 @@ class Resource(AbstractModel):
 
     @property
     def SubnetName(self):
-        r"""开通服务的子网名称
+        r"""<p>开通服务的子网名称</p>
         :rtype: str
         """
         return self._SubnetName
@@ -18821,7 +19053,7 @@ class Resource(AbstractModel):
 
     @property
     def CidrBlock(self):
-        r"""开通服务的子网网段
+        r"""<p>开通服务的子网网段</p>
         :rtype: str
         """
         return self._CidrBlock
@@ -18832,7 +19064,7 @@ class Resource(AbstractModel):
 
     @property
     def PublicIpSet(self):
-        r"""外部IP
+        r"""<p>外部IP</p>
         :rtype: list of str
         """
         return self._PublicIpSet
@@ -18843,7 +19075,7 @@ class Resource(AbstractModel):
 
     @property
     def PrivateIpSet(self):
-        r"""内部IP
+        r"""<p>内部IP</p>
         :rtype: list of str
         """
         return self._PrivateIpSet
@@ -18854,7 +19086,7 @@ class Resource(AbstractModel):
 
     @property
     def ModuleSet(self):
-        r"""服务开通的高级功能列表，如:[DB]
+        r"""<p>服务开通的高级功能列表，如:[DB]</p>
         :rtype: list of str
         """
         return self._ModuleSet
@@ -18865,7 +19097,7 @@ class Resource(AbstractModel):
 
     @property
     def UsedNodes(self):
-        r"""已使用的授权点数
+        r"""<p>已使用的授权点数</p>
         :rtype: int
         """
         return self._UsedNodes
@@ -18876,7 +19108,7 @@ class Resource(AbstractModel):
 
     @property
     def ExtendPoints(self):
-        r"""扩展点数
+        r"""<p>扩展点数</p>
         :rtype: int
         """
         return self._ExtendPoints
@@ -18887,7 +19119,7 @@ class Resource(AbstractModel):
 
     @property
     def PackageBandwidth(self):
-        r"""带宽扩展包个数(4M)
+        r"""<p>带宽扩展包个数(4M)</p>
         :rtype: int
         """
         return self._PackageBandwidth
@@ -18898,7 +19130,7 @@ class Resource(AbstractModel):
 
     @property
     def PackageNode(self):
-        r"""授权点数扩展包个数(50点)
+        r"""<p>授权点数扩展包个数(50点)</p>
         :rtype: int
         """
         return self._PackageNode
@@ -18909,7 +19141,7 @@ class Resource(AbstractModel):
 
     @property
     def LogDeliveryArgs(self):
-        r"""日志投递规格信息
+        r"""<p>日志投递规格信息</p>
         :rtype: str
         """
         return self._LogDeliveryArgs
@@ -18920,7 +19152,7 @@ class Resource(AbstractModel):
 
     @property
     def ClbSet(self):
-        r"""堡垒机资源LB	
+        r"""<p>堡垒机资源LB</p>
         :rtype: list of Clb
         """
         return self._ClbSet
@@ -18931,7 +19163,7 @@ class Resource(AbstractModel):
 
     @property
     def DomainCount(self):
-        r"""网络域个数
+        r"""<p>网络域个数</p>
         :rtype: int
         """
         return self._DomainCount
@@ -18942,7 +19174,7 @@ class Resource(AbstractModel):
 
     @property
     def UsedDomainCount(self):
-        r"""已经使用的网络域个数
+        r"""<p>已经使用的网络域个数</p>
         :rtype: int
         """
         return self._UsedDomainCount
@@ -18952,8 +19184,19 @@ class Resource(AbstractModel):
         self._UsedDomainCount = UsedDomainCount
 
     @property
+    def EnabledDomainCount(self):
+        r"""<p>开启的网络域个数（不包含默认网络域）</p>
+        :rtype: int
+        """
+        return self._EnabledDomainCount
+
+    @EnabledDomainCount.setter
+    def EnabledDomainCount(self, EnabledDomainCount):
+        self._EnabledDomainCount = EnabledDomainCount
+
+    @property
     def Trial(self):
-        r"""0 非试用版，1 试用版
+        r"""<p>0 非试用版，1 试用版</p>
         :rtype: int
         """
         return self._Trial
@@ -18964,7 +19207,7 @@ class Resource(AbstractModel):
 
     @property
     def LogDelivery(self):
-        r"""日志投递规格信息
+        r"""<p>日志投递规格信息</p>
         :rtype: str
         """
         return self._LogDelivery
@@ -18975,7 +19218,7 @@ class Resource(AbstractModel):
 
     @property
     def CdcClusterId(self):
-        r"""cdc集群id
+        r"""<p>cdc集群id</p>
         :rtype: str
         """
         return self._CdcClusterId
@@ -18986,7 +19229,7 @@ class Resource(AbstractModel):
 
     @property
     def DeployModel(self):
-        r"""部署模式 默认0 0-cvm 1-tke
+        r"""<p>部署模式 默认0 0-cvm 1-tke</p>
         :rtype: int
         """
         return self._DeployModel
@@ -18997,7 +19240,7 @@ class Resource(AbstractModel):
 
     @property
     def IntranetAccess(self):
-        r"""0 默认值，非内网访问，1 内网访问，2 内网访问开通中，3 内网访问关闭中
+        r"""<p>0 默认值，非内网访问，1 内网访问，2 内网访问开通中，3 内网访问关闭中</p>
         :rtype: int
         """
         return self._IntranetAccess
@@ -19008,7 +19251,7 @@ class Resource(AbstractModel):
 
     @property
     def IntranetPrivateIpSet(self):
-        r"""内网访问的ip
+        r"""<p>内网访问的ip</p>
         :rtype: list of str
         """
         return self._IntranetPrivateIpSet
@@ -19019,7 +19262,7 @@ class Resource(AbstractModel):
 
     @property
     def IntranetVpcId(self):
-        r"""开通内网访问的vpc
+        r"""<p>开通内网访问的vpc</p>
         :rtype: str
         """
         return self._IntranetVpcId
@@ -19030,18 +19273,33 @@ class Resource(AbstractModel):
 
     @property
     def IntranetSubnetId(self):
-        r"""开通内网访问的subnetId
+        warnings.warn("parameter `IntranetSubnetId` is deprecated", DeprecationWarning) 
+
+        r"""<p>开通内网访问的subnetId</p>
         :rtype: str
         """
         return self._IntranetSubnetId
 
     @IntranetSubnetId.setter
     def IntranetSubnetId(self, IntranetSubnetId):
+        warnings.warn("parameter `IntranetSubnetId` is deprecated", DeprecationWarning) 
+
         self._IntranetSubnetId = IntranetSubnetId
 
     @property
+    def IntranetSubnetIdSet(self):
+        r"""<p>开通内网访问的子网集合</p>
+        :rtype: list of str
+        """
+        return self._IntranetSubnetIdSet
+
+    @IntranetSubnetIdSet.setter
+    def IntranetSubnetIdSet(self, IntranetSubnetIdSet):
+        self._IntranetSubnetIdSet = IntranetSubnetIdSet
+
+    @property
     def IntranetVpcCidr(self):
-        r"""开通内网访问vpc的网段
+        r"""<p>开通内网访问vpc的网段</p>
         :rtype: str
         """
         return self._IntranetVpcCidr
@@ -19052,7 +19310,7 @@ class Resource(AbstractModel):
 
     @property
     def DomainName(self):
-        r"""堡垒机内网ip自定义域名
+        r"""<p>堡垒机内网ip自定义域名</p>
         :rtype: str
         """
         return self._DomainName
@@ -19063,7 +19321,7 @@ class Resource(AbstractModel):
 
     @property
     def ShareClb(self):
-        r"""是否共享clb，true-共享clb，false-独享clb
+        r"""<p>是否共享clb，true-共享clb，false-独享clb</p>
         :rtype: bool
         """
         return self._ShareClb
@@ -19074,7 +19332,7 @@ class Resource(AbstractModel):
 
     @property
     def OpenClbId(self):
-        r"""共享clb id
+        r"""<p>共享clb id</p>
         :rtype: str
         """
         return self._OpenClbId
@@ -19085,7 +19343,7 @@ class Resource(AbstractModel):
 
     @property
     def LbVipIsp(self):
-        r"""运营商信息
+        r"""<p>运营商信息</p>
         :rtype: str
         """
         return self._LbVipIsp
@@ -19096,7 +19354,7 @@ class Resource(AbstractModel):
 
     @property
     def TUICmdPort(self):
-        r"""linux资产命令行运维端口
+        r"""<p>linux资产命令行运维端口</p>
         :rtype: int
         """
         return self._TUICmdPort
@@ -19107,7 +19365,7 @@ class Resource(AbstractModel):
 
     @property
     def TUIDirectPort(self):
-        r"""linux资产直连端口
+        r"""<p>linux资产直连端口</p>
         :rtype: int
         """
         return self._TUIDirectPort
@@ -19118,7 +19376,7 @@ class Resource(AbstractModel):
 
     @property
     def WebAccess(self):
-        r"""1 默认值，web访问开启，0 web访问关闭，2 web访问开通中，3 web访问关闭中
+        r"""<p>1 默认值，web访问开启，0 web访问关闭，2 web访问开通中，3 web访问关闭中</p>
         :rtype: int
         """
         return self._WebAccess
@@ -19129,7 +19387,7 @@ class Resource(AbstractModel):
 
     @property
     def ClientAccess(self):
-        r"""1 默认值，客户单访问开启，0 客户端访问关闭，2 客户端访问开通中，3 客户端访问关闭中
+        r"""<p>1 默认值，客户单访问开启，0 客户端访问关闭，2 客户端访问开通中，3 客户端访问关闭中</p>
         :rtype: int
         """
         return self._ClientAccess
@@ -19140,7 +19398,7 @@ class Resource(AbstractModel):
 
     @property
     def ExternalAccess(self):
-        r"""1 默认值，外网访问开启，0 外网访问关闭，2 外网访问开通中，3 外网访问关闭中
+        r"""<p>1 默认值，外网访问开启，0 外网访问关闭，2 外网访问开通中，3 外网访问关闭中</p>
         :rtype: int
         """
         return self._ExternalAccess
@@ -19151,7 +19409,7 @@ class Resource(AbstractModel):
 
     @property
     def IOAResource(self):
-        r"""0默认值。0-免费版（试用版）ioa，1-付费版ioa
+        r"""<p>0默认值。0-免费版（试用版）ioa，1-付费版ioa</p>
         :rtype: int
         """
         return self._IOAResource
@@ -19162,7 +19420,7 @@ class Resource(AbstractModel):
 
     @property
     def PackageIOAUserCount(self):
-        r"""零信任堡垒机用户扩展包个数。1个扩展包对应20个用户数
+        r"""<p>零信任堡垒机用户扩展包个数。1个扩展包对应20个用户数</p>
         :rtype: int
         """
         return self._PackageIOAUserCount
@@ -19173,7 +19431,7 @@ class Resource(AbstractModel):
 
     @property
     def PackageIOABandwidth(self):
-        r""" 零信任堡垒机带宽扩展包个数。一个扩展包表示4M带宽
+        r"""<p>零信任堡垒机带宽扩展包个数。一个扩展包表示4M带宽</p>
         :rtype: int
         """
         return self._PackageIOABandwidth
@@ -19184,7 +19442,7 @@ class Resource(AbstractModel):
 
     @property
     def IOAResourceId(self):
-        r"""堡垒机实例对应的零信任实例id
+        r"""<p>堡垒机实例对应的零信任实例id</p>
         :rtype: str
         """
         return self._IOAResourceId
@@ -19195,7 +19453,7 @@ class Resource(AbstractModel):
 
     @property
     def ResourceEdition(self):
-        r"""资源类型 免费版/标准版/专业版 /国密版 free/standard/pro/gm
+        r"""<p>资源类型 免费版/标准版/专业版 /国密版 free/standard/pro/gm</p>
         :rtype: str
         """
         return self._ResourceEdition
@@ -19206,7 +19464,7 @@ class Resource(AbstractModel):
 
     @property
     def TimeUnit(self):
-        r"""计费周期 年：y，月：m，日：d，时：h，分：M，秒：s，一次性购买：p
+        r"""<p>计费周期 年：y，月：m，日：d，时：h，分：M，秒：s，一次性购买：p</p>
         :rtype: str
         """
         return self._TimeUnit
@@ -19217,7 +19475,7 @@ class Resource(AbstractModel):
 
     @property
     def TimeSpan(self):
-        r"""计费时长
+        r"""<p>计费时长</p>
         :rtype: int
         """
         return self._TimeSpan
@@ -19228,7 +19486,7 @@ class Resource(AbstractModel):
 
     @property
     def PayMode(self):
-        r"""计费模式 0后付费，1预付费
+        r"""<p>计费模式 0后付费，1预付费</p>
         :rtype: int
         """
         return self._PayMode
@@ -19239,7 +19497,7 @@ class Resource(AbstractModel):
 
     @property
     def BillingRegion(self):
-        r"""计费侧地域
+        r"""<p>计费侧地域</p>
         :rtype: str
         """
         return self._BillingRegion
@@ -19250,7 +19508,7 @@ class Resource(AbstractModel):
 
     @property
     def BillingZone(self):
-        r"""计费侧可用区
+        r"""<p>计费侧可用区</p>
         :rtype: str
         """
         return self._BillingZone
@@ -19258,6 +19516,28 @@ class Resource(AbstractModel):
     @BillingZone.setter
     def BillingZone(self, BillingZone):
         self._BillingZone = BillingZone
+
+    @property
+    def DeployCvmCount(self):
+        r"""<p>部署的cvm个数</p>
+        :rtype: int
+        """
+        return self._DeployCvmCount
+
+    @DeployCvmCount.setter
+    def DeployCvmCount(self, DeployCvmCount):
+        self._DeployCvmCount = DeployCvmCount
+
+    @property
+    def ResourceZoneSet(self):
+        r"""<p>堡垒机实例的可用区信息</p>
+        :rtype: list of ResourceDeployZone
+        """
+        return self._ResourceZoneSet
+
+    @ResourceZoneSet.setter
+    def ResourceZoneSet(self, ResourceZoneSet):
+        self._ResourceZoneSet = ResourceZoneSet
 
 
     def _deserialize(self, params):
@@ -19298,6 +19578,7 @@ class Resource(AbstractModel):
                 self._ClbSet.append(obj)
         self._DomainCount = params.get("DomainCount")
         self._UsedDomainCount = params.get("UsedDomainCount")
+        self._EnabledDomainCount = params.get("EnabledDomainCount")
         self._Trial = params.get("Trial")
         self._LogDelivery = params.get("LogDelivery")
         self._CdcClusterId = params.get("CdcClusterId")
@@ -19306,6 +19587,7 @@ class Resource(AbstractModel):
         self._IntranetPrivateIpSet = params.get("IntranetPrivateIpSet")
         self._IntranetVpcId = params.get("IntranetVpcId")
         self._IntranetSubnetId = params.get("IntranetSubnetId")
+        self._IntranetSubnetIdSet = params.get("IntranetSubnetIdSet")
         self._IntranetVpcCidr = params.get("IntranetVpcCidr")
         self._DomainName = params.get("DomainName")
         self._ShareClb = params.get("ShareClb")
@@ -19326,6 +19608,169 @@ class Resource(AbstractModel):
         self._PayMode = params.get("PayMode")
         self._BillingRegion = params.get("BillingRegion")
         self._BillingZone = params.get("BillingZone")
+        self._DeployCvmCount = params.get("DeployCvmCount")
+        if params.get("ResourceZoneSet") is not None:
+            self._ResourceZoneSet = []
+            for item in params.get("ResourceZoneSet"):
+                obj = ResourceDeployZone()
+                obj._deserialize(item)
+                self._ResourceZoneSet.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ResourceDeployZone(AbstractModel):
+    r"""堡垒机实例部署的可用区
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VpcId: <p>部署堡垒机的VpcId</p>
+        :type VpcId: str
+        :param _VpcName: <p>部署堡垒机vpc的名称</p>
+        :type VpcName: str
+        :param _VpcCidrBlock: <p>部署堡垒机vpc的cidr</p>
+        :type VpcCidrBlock: str
+        :param _SubnetId: <p>部署堡垒机的子网Id</p>
+        :type SubnetId: str
+        :param _SubnetName: <p>部署堡垒机的子网名称</p>
+        :type SubnetName: str
+        :param _SubnetCidrBlock: <p>子网cidr</p>
+        :type SubnetCidrBlock: str
+        :param _Region: <p>部署堡垒机的地域</p>
+        :type Region: str
+        :param _Zone: <p>部署堡垒机的可用区</p>
+        :type Zone: str
+        :param _SubnetUsageType: <p>子网的作用场景</p><p>枚举值：</p><ul><li>DEPLOY： 部署堡垒机的子网</li><li>INTERNAL： 开通内网访问的子网</li></ul>
+        :type SubnetUsageType: str
+        """
+        self._VpcId = None
+        self._VpcName = None
+        self._VpcCidrBlock = None
+        self._SubnetId = None
+        self._SubnetName = None
+        self._SubnetCidrBlock = None
+        self._Region = None
+        self._Zone = None
+        self._SubnetUsageType = None
+
+    @property
+    def VpcId(self):
+        r"""<p>部署堡垒机的VpcId</p>
+        :rtype: str
+        """
+        return self._VpcId
+
+    @VpcId.setter
+    def VpcId(self, VpcId):
+        self._VpcId = VpcId
+
+    @property
+    def VpcName(self):
+        r"""<p>部署堡垒机vpc的名称</p>
+        :rtype: str
+        """
+        return self._VpcName
+
+    @VpcName.setter
+    def VpcName(self, VpcName):
+        self._VpcName = VpcName
+
+    @property
+    def VpcCidrBlock(self):
+        r"""<p>部署堡垒机vpc的cidr</p>
+        :rtype: str
+        """
+        return self._VpcCidrBlock
+
+    @VpcCidrBlock.setter
+    def VpcCidrBlock(self, VpcCidrBlock):
+        self._VpcCidrBlock = VpcCidrBlock
+
+    @property
+    def SubnetId(self):
+        r"""<p>部署堡垒机的子网Id</p>
+        :rtype: str
+        """
+        return self._SubnetId
+
+    @SubnetId.setter
+    def SubnetId(self, SubnetId):
+        self._SubnetId = SubnetId
+
+    @property
+    def SubnetName(self):
+        r"""<p>部署堡垒机的子网名称</p>
+        :rtype: str
+        """
+        return self._SubnetName
+
+    @SubnetName.setter
+    def SubnetName(self, SubnetName):
+        self._SubnetName = SubnetName
+
+    @property
+    def SubnetCidrBlock(self):
+        r"""<p>子网cidr</p>
+        :rtype: str
+        """
+        return self._SubnetCidrBlock
+
+    @SubnetCidrBlock.setter
+    def SubnetCidrBlock(self, SubnetCidrBlock):
+        self._SubnetCidrBlock = SubnetCidrBlock
+
+    @property
+    def Region(self):
+        r"""<p>部署堡垒机的地域</p>
+        :rtype: str
+        """
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def Zone(self):
+        r"""<p>部署堡垒机的可用区</p>
+        :rtype: str
+        """
+        return self._Zone
+
+    @Zone.setter
+    def Zone(self, Zone):
+        self._Zone = Zone
+
+    @property
+    def SubnetUsageType(self):
+        r"""<p>子网的作用场景</p><p>枚举值：</p><ul><li>DEPLOY： 部署堡垒机的子网</li><li>INTERNAL： 开通内网访问的子网</li></ul>
+        :rtype: str
+        """
+        return self._SubnetUsageType
+
+    @SubnetUsageType.setter
+    def SubnetUsageType(self, SubnetUsageType):
+        self._SubnetUsageType = SubnetUsageType
+
+
+    def _deserialize(self, params):
+        self._VpcId = params.get("VpcId")
+        self._VpcName = params.get("VpcName")
+        self._VpcCidrBlock = params.get("VpcCidrBlock")
+        self._SubnetId = params.get("SubnetId")
+        self._SubnetName = params.get("SubnetName")
+        self._SubnetCidrBlock = params.get("SubnetCidrBlock")
+        self._Region = params.get("Region")
+        self._Zone = params.get("Zone")
+        self._SubnetUsageType = params.get("SubnetUsageType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

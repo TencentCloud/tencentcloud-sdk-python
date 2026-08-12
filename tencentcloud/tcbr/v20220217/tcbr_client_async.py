@@ -367,6 +367,24 @@ class TcbrClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def SubmitServerConfigChangeDiff(
+            self,
+            request: models.SubmitServerConfigChangeDiffRequest,
+            opts: Dict = None,
+    ) -> models.SubmitServerConfigChangeDiffResponse:
+        """
+        更新配置并使用最新镜像发布
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "SubmitServerConfigChangeDiff"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.SubmitServerConfigChangeDiffResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def SubmitServerRollback(
             self,
             request: models.SubmitServerRollbackRequest,

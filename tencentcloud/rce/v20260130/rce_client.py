@@ -93,3 +93,49 @@ class RceClient(AbstractClient):
                 raise
             else:
                 raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def AssessRisk(self, request):
+        r"""事件风险评估
+
+        :param request: Request instance for AssessRisk.
+        :type request: :class:`tencentcloud.rce.v20260130.models.AssessRiskRequest`
+        :rtype: :class:`tencentcloud.rce.v20260130.models.AssessRiskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("AssessRisk", params, headers=headers)
+            response = json.loads(body)
+            model = models.AssessRiskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ReportEvent(self, request):
+        r"""事件信息上报
+
+        :param request: Request instance for ReportEvent.
+        :type request: :class:`tencentcloud.rce.v20260130.models.ReportEventRequest`
+        :rtype: :class:`tencentcloud.rce.v20260130.models.ReportEventResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ReportEvent", params, headers=headers)
+            response = json.loads(body)
+            model = models.ReportEventResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))

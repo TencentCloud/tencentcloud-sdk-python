@@ -12366,6 +12366,57 @@ class CloudCountDesc(AbstractModel):
         
 
 
+class ClusterIDWithAppIdItem(AbstractModel):
+    r"""集群定位信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterID: 集群ID
+        :type ClusterID: str
+        :param _AppId: 集群所属AppId
+        :type AppId: int
+        """
+        self._ClusterID = None
+        self._AppId = None
+
+    @property
+    def ClusterID(self):
+        r"""集群ID
+        :rtype: str
+        """
+        return self._ClusterID
+
+    @ClusterID.setter
+    def ClusterID(self, ClusterID):
+        self._ClusterID = ClusterID
+
+    @property
+    def AppId(self):
+        r"""集群所属AppId
+        :rtype: int
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+
+    def _deserialize(self, params):
+        self._ClusterID = params.get("ClusterID")
+        self._AppId = params.get("AppId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CommandPluginState(AbstractModel):
     r"""AI Agent 命令沙箱插件状态
 
@@ -12473,6 +12524,87 @@ class ComponentDetailItem(AbstractModel):
         self._Version = params.get("Version")
         self._Path = params.get("Path")
         self._FixCommand = params.get("FixCommand")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ConditionMatch(AbstractModel):
+    r"""高级镜像条件匹配（三个匹配串有且仅有一个非空）
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ImageIDMatchString: <p>镜像ID匹配串（三选一，有且仅有一个非空）</p>
+        :type ImageIDMatchString: str
+        :param _ImageNameMatchString: <p>镜像名匹配串（三选一，有且仅有一个非空）</p>
+        :type ImageNameMatchString: str
+        :param _ImageAddressMatchString: <p>镜像地址匹配串（三选一，有且仅有一个非空）</p>
+        :type ImageAddressMatchString: str
+        :param _MatchType: <p>匹配条件，取值：EQUALS-等于/NOT_EQUALS-不等于/STARTS_WITH-以…开头/NOT_STARTS_WITH-不以…开头/ENDS_WITH-以…结尾/NOT_ENDS_WITH-不以…结尾/CONTAINS-包含/NOT_CONTAINS-不包含</p>
+        :type MatchType: str
+        """
+        self._ImageIDMatchString = None
+        self._ImageNameMatchString = None
+        self._ImageAddressMatchString = None
+        self._MatchType = None
+
+    @property
+    def ImageIDMatchString(self):
+        r"""<p>镜像ID匹配串（三选一，有且仅有一个非空）</p>
+        :rtype: str
+        """
+        return self._ImageIDMatchString
+
+    @ImageIDMatchString.setter
+    def ImageIDMatchString(self, ImageIDMatchString):
+        self._ImageIDMatchString = ImageIDMatchString
+
+    @property
+    def ImageNameMatchString(self):
+        r"""<p>镜像名匹配串（三选一，有且仅有一个非空）</p>
+        :rtype: str
+        """
+        return self._ImageNameMatchString
+
+    @ImageNameMatchString.setter
+    def ImageNameMatchString(self, ImageNameMatchString):
+        self._ImageNameMatchString = ImageNameMatchString
+
+    @property
+    def ImageAddressMatchString(self):
+        r"""<p>镜像地址匹配串（三选一，有且仅有一个非空）</p>
+        :rtype: str
+        """
+        return self._ImageAddressMatchString
+
+    @ImageAddressMatchString.setter
+    def ImageAddressMatchString(self, ImageAddressMatchString):
+        self._ImageAddressMatchString = ImageAddressMatchString
+
+    @property
+    def MatchType(self):
+        r"""<p>匹配条件，取值：EQUALS-等于/NOT_EQUALS-不等于/STARTS_WITH-以…开头/NOT_STARTS_WITH-不以…开头/ENDS_WITH-以…结尾/NOT_ENDS_WITH-不以…结尾/CONTAINS-包含/NOT_CONTAINS-不包含</p>
+        :rtype: str
+        """
+        return self._MatchType
+
+    @MatchType.setter
+    def MatchType(self, MatchType):
+        self._MatchType = MatchType
+
+
+    def _deserialize(self, params):
+        self._ImageIDMatchString = params.get("ImageIDMatchString")
+        self._ImageNameMatchString = params.get("ImageNameMatchString")
+        self._ImageAddressMatchString = params.get("ImageAddressMatchString")
+        self._MatchType = params.get("MatchType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -24962,6 +25094,18 @@ class DescribeAILinkSettingResponse(AbstractModel):
         :type ExcludeQuuids: list of str
         :param _AutoInclude: <p>新增资产自动包含 0 不包含 1包含</p>
         :type AutoInclude: int
+        :param _TagIDs: <p>标签</p>
+        :type TagIDs: list of str
+        :param _TCSSScope: <p>0，1</p><p>枚举值：</p><ul><li>0： 部分</li><li>1： 全部</li></ul>
+        :type TCSSScope: int
+        :param _ClusterIDs: <p>集群ID</p>
+        :type ClusterIDs: list of str
+        :param _ExcludeClusterIDs: <p>排除集群ID</p>
+        :type ExcludeClusterIDs: list of str
+        :param _InstanceIds: <p>实例ID</p>
+        :type InstanceIds: list of str
+        :param _ExcludeInstanceIds: <p>排除实例ID</p>
+        :type ExcludeInstanceIds: list of str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -24973,6 +25117,12 @@ class DescribeAILinkSettingResponse(AbstractModel):
         self._Quuids = None
         self._ExcludeQuuids = None
         self._AutoInclude = None
+        self._TagIDs = None
+        self._TCSSScope = None
+        self._ClusterIDs = None
+        self._ExcludeClusterIDs = None
+        self._InstanceIds = None
+        self._ExcludeInstanceIds = None
         self._RequestId = None
 
     @property
@@ -25032,6 +25182,8 @@ class DescribeAILinkSettingResponse(AbstractModel):
 
     @property
     def Quuids(self):
+        warnings.warn("parameter `Quuids` is deprecated", DeprecationWarning) 
+
         r"""<p>自选主机Quuid列表</p>
         :rtype: list of str
         """
@@ -25039,10 +25191,14 @@ class DescribeAILinkSettingResponse(AbstractModel):
 
     @Quuids.setter
     def Quuids(self, Quuids):
+        warnings.warn("parameter `Quuids` is deprecated", DeprecationWarning) 
+
         self._Quuids = Quuids
 
     @property
     def ExcludeQuuids(self):
+        warnings.warn("parameter `ExcludeQuuids` is deprecated", DeprecationWarning) 
+
         r"""<p>排除主机Quuid列表</p>
         :rtype: list of str
         """
@@ -25050,6 +25206,8 @@ class DescribeAILinkSettingResponse(AbstractModel):
 
     @ExcludeQuuids.setter
     def ExcludeQuuids(self, ExcludeQuuids):
+        warnings.warn("parameter `ExcludeQuuids` is deprecated", DeprecationWarning) 
+
         self._ExcludeQuuids = ExcludeQuuids
 
     @property
@@ -25062,6 +25220,72 @@ class DescribeAILinkSettingResponse(AbstractModel):
     @AutoInclude.setter
     def AutoInclude(self, AutoInclude):
         self._AutoInclude = AutoInclude
+
+    @property
+    def TagIDs(self):
+        r"""<p>标签</p>
+        :rtype: list of str
+        """
+        return self._TagIDs
+
+    @TagIDs.setter
+    def TagIDs(self, TagIDs):
+        self._TagIDs = TagIDs
+
+    @property
+    def TCSSScope(self):
+        r"""<p>0，1</p><p>枚举值：</p><ul><li>0： 部分</li><li>1： 全部</li></ul>
+        :rtype: int
+        """
+        return self._TCSSScope
+
+    @TCSSScope.setter
+    def TCSSScope(self, TCSSScope):
+        self._TCSSScope = TCSSScope
+
+    @property
+    def ClusterIDs(self):
+        r"""<p>集群ID</p>
+        :rtype: list of str
+        """
+        return self._ClusterIDs
+
+    @ClusterIDs.setter
+    def ClusterIDs(self, ClusterIDs):
+        self._ClusterIDs = ClusterIDs
+
+    @property
+    def ExcludeClusterIDs(self):
+        r"""<p>排除集群ID</p>
+        :rtype: list of str
+        """
+        return self._ExcludeClusterIDs
+
+    @ExcludeClusterIDs.setter
+    def ExcludeClusterIDs(self, ExcludeClusterIDs):
+        self._ExcludeClusterIDs = ExcludeClusterIDs
+
+    @property
+    def InstanceIds(self):
+        r"""<p>实例ID</p>
+        :rtype: list of str
+        """
+        return self._InstanceIds
+
+    @InstanceIds.setter
+    def InstanceIds(self, InstanceIds):
+        self._InstanceIds = InstanceIds
+
+    @property
+    def ExcludeInstanceIds(self):
+        r"""<p>排除实例ID</p>
+        :rtype: list of str
+        """
+        return self._ExcludeInstanceIds
+
+    @ExcludeInstanceIds.setter
+    def ExcludeInstanceIds(self, ExcludeInstanceIds):
+        self._ExcludeInstanceIds = ExcludeInstanceIds
 
     @property
     def RequestId(self):
@@ -25084,6 +25308,12 @@ class DescribeAILinkSettingResponse(AbstractModel):
         self._Quuids = params.get("Quuids")
         self._ExcludeQuuids = params.get("ExcludeQuuids")
         self._AutoInclude = params.get("AutoInclude")
+        self._TagIDs = params.get("TagIDs")
+        self._TCSSScope = params.get("TCSSScope")
+        self._ClusterIDs = params.get("ClusterIDs")
+        self._ExcludeClusterIDs = params.get("ExcludeClusterIDs")
+        self._InstanceIds = params.get("InstanceIds")
+        self._ExcludeInstanceIds = params.get("ExcludeInstanceIds")
         self._RequestId = params.get("RequestId")
 
 
@@ -66219,6 +66449,14 @@ class EDRRule(AbstractModel):
         :type InstanceIDs: list of str
         :param _ExcludeInstanceIDs: <p>排除实例ID</p>
         :type ExcludeInstanceIDs: list of str
+        :param _ClusterIDs: <p>生效集群ID列表（TCSSScope=0 时有值；空返回 []）</p>
+        :type ClusterIDs: list of str
+        :param _ExcludeClusterIDs: <p>排除集群ID列表（空返回 []）</p>
+        :type ExcludeClusterIDs: list of str
+        :param _ConditionMatches: <p>容器条件匹配</p>
+        :type ConditionMatches: list of ConditionMatch
+        :param _TagItems: <p>安全中心标签</p>
+        :type TagItems: list of EDRRuleTagItem
         """
         self._RuleID = None
         self._RuleType = None
@@ -66253,6 +66491,10 @@ class EDRRule(AbstractModel):
         self._AppID = None
         self._InstanceIDs = None
         self._ExcludeInstanceIDs = None
+        self._ClusterIDs = None
+        self._ExcludeClusterIDs = None
+        self._ConditionMatches = None
+        self._TagItems = None
 
     @property
     def RuleID(self):
@@ -66617,6 +66859,50 @@ class EDRRule(AbstractModel):
     def ExcludeInstanceIDs(self, ExcludeInstanceIDs):
         self._ExcludeInstanceIDs = ExcludeInstanceIDs
 
+    @property
+    def ClusterIDs(self):
+        r"""<p>生效集群ID列表（TCSSScope=0 时有值；空返回 []）</p>
+        :rtype: list of str
+        """
+        return self._ClusterIDs
+
+    @ClusterIDs.setter
+    def ClusterIDs(self, ClusterIDs):
+        self._ClusterIDs = ClusterIDs
+
+    @property
+    def ExcludeClusterIDs(self):
+        r"""<p>排除集群ID列表（空返回 []）</p>
+        :rtype: list of str
+        """
+        return self._ExcludeClusterIDs
+
+    @ExcludeClusterIDs.setter
+    def ExcludeClusterIDs(self, ExcludeClusterIDs):
+        self._ExcludeClusterIDs = ExcludeClusterIDs
+
+    @property
+    def ConditionMatches(self):
+        r"""<p>容器条件匹配</p>
+        :rtype: list of ConditionMatch
+        """
+        return self._ConditionMatches
+
+    @ConditionMatches.setter
+    def ConditionMatches(self, ConditionMatches):
+        self._ConditionMatches = ConditionMatches
+
+    @property
+    def TagItems(self):
+        r"""<p>安全中心标签</p>
+        :rtype: list of EDRRuleTagItem
+        """
+        return self._TagItems
+
+    @TagItems.setter
+    def TagItems(self, TagItems):
+        self._TagItems = TagItems
+
 
     def _deserialize(self, params):
         self._RuleID = params.get("RuleID")
@@ -66656,6 +66942,146 @@ class EDRRule(AbstractModel):
         self._AppID = params.get("AppID")
         self._InstanceIDs = params.get("InstanceIDs")
         self._ExcludeInstanceIDs = params.get("ExcludeInstanceIDs")
+        self._ClusterIDs = params.get("ClusterIDs")
+        self._ExcludeClusterIDs = params.get("ExcludeClusterIDs")
+        if params.get("ConditionMatches") is not None:
+            self._ConditionMatches = []
+            for item in params.get("ConditionMatches"):
+                obj = ConditionMatch()
+                obj._deserialize(item)
+                self._ConditionMatches.append(obj)
+        if params.get("TagItems") is not None:
+            self._TagItems = []
+            for item in params.get("TagItems"):
+                obj = EDRRuleTagItem()
+                obj._deserialize(item)
+                self._TagItems.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class EDRRuleTagItem(AbstractModel):
+    r"""安全中心标签
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ID: <p>安全中心标签ID</p>
+        :type ID: int
+        :param _TagKey: <p>标签中文Key</p>
+        :type TagKey: str
+        :param _TagKeyEn: <p>标签英文key</p>
+        :type TagKeyEn: str
+        :param _TagValue: <p>标签中文值</p>
+        :type TagValue: str
+        :param _TagValueEn: <p>标签英文值</p>
+        :type TagValueEn: str
+        :param _Description: <p>标签描述</p>
+        :type Description: str
+        :param _Color: <p>标签颜色</p>
+        :type Color: str
+        """
+        self._ID = None
+        self._TagKey = None
+        self._TagKeyEn = None
+        self._TagValue = None
+        self._TagValueEn = None
+        self._Description = None
+        self._Color = None
+
+    @property
+    def ID(self):
+        r"""<p>安全中心标签ID</p>
+        :rtype: int
+        """
+        return self._ID
+
+    @ID.setter
+    def ID(self, ID):
+        self._ID = ID
+
+    @property
+    def TagKey(self):
+        r"""<p>标签中文Key</p>
+        :rtype: str
+        """
+        return self._TagKey
+
+    @TagKey.setter
+    def TagKey(self, TagKey):
+        self._TagKey = TagKey
+
+    @property
+    def TagKeyEn(self):
+        r"""<p>标签英文key</p>
+        :rtype: str
+        """
+        return self._TagKeyEn
+
+    @TagKeyEn.setter
+    def TagKeyEn(self, TagKeyEn):
+        self._TagKeyEn = TagKeyEn
+
+    @property
+    def TagValue(self):
+        r"""<p>标签中文值</p>
+        :rtype: str
+        """
+        return self._TagValue
+
+    @TagValue.setter
+    def TagValue(self, TagValue):
+        self._TagValue = TagValue
+
+    @property
+    def TagValueEn(self):
+        r"""<p>标签英文值</p>
+        :rtype: str
+        """
+        return self._TagValueEn
+
+    @TagValueEn.setter
+    def TagValueEn(self, TagValueEn):
+        self._TagValueEn = TagValueEn
+
+    @property
+    def Description(self):
+        r"""<p>标签描述</p>
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def Color(self):
+        r"""<p>标签颜色</p>
+        :rtype: str
+        """
+        return self._Color
+
+    @Color.setter
+    def Color(self, Color):
+        self._Color = Color
+
+
+    def _deserialize(self, params):
+        self._ID = params.get("ID")
+        self._TagKey = params.get("TagKey")
+        self._TagKeyEn = params.get("TagKeyEn")
+        self._TagValue = params.get("TagValue")
+        self._TagValueEn = params.get("TagValueEn")
+        self._Description = params.get("Description")
+        self._Color = params.get("Color")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -66820,6 +67246,26 @@ class EdrAlertDetail(AbstractModel):
         :type NetResponsePayload: str
         :param _NetSvcPs: <p>服务进程信息（base64 编码后的 JSON 字符串）</p>
         :type NetSvcPs: str
+        :param _ContainerName: <p>容器名称</p>
+        :type ContainerName: str
+        :param _ImageName: <p>容器镜像名称</p>
+        :type ImageName: str
+        :param _ClusterName: <p>集群名称</p>
+        :type ClusterName: str
+        :param _RunStatus: <p>容器运行状态（原始枚举 RUNNING/PAUSED/STOPPED…，前端自行映射）</p><p>枚举值：</p><ul><li>RUNNING： 运行</li><li>PAUSED： 暂停</li><li>STOPPED： 停止</li><li>CREATED： 已经创建</li><li>DESTROYED： 已销毁</li><li>RESTARTING： 重启中</li><li>REMOVING： 迁移中</li><li>DEAD： DEAD</li><li>UNKNOWN： 未知</li></ul>
+        :type RunStatus: str
+        :param _PodName: <p>POD 名称</p>
+        :type PodName: str
+        :param _PodIp: <p>POD IP</p>
+        :type PodIp: str
+        :param _Namespace: <p>命名空间</p>
+        :type Namespace: str
+        :param _PodWorkloadType: <p>POD 负载类型</p>
+        :type PodWorkloadType: str
+        :param _ClusterCaMD5: <p>集群 ca 证书 md5</p>
+        :type ClusterCaMD5: str
+        :param _PodUniqueId: <p>POD 唯一 id</p>
+        :type PodUniqueId: str
         """
         self._Id = None
         self._AppId = None
@@ -66869,6 +67315,16 @@ class EdrAlertDetail(AbstractModel):
         self._VirusFamily = None
         self._NetResponsePayload = None
         self._NetSvcPs = None
+        self._ContainerName = None
+        self._ImageName = None
+        self._ClusterName = None
+        self._RunStatus = None
+        self._PodName = None
+        self._PodIp = None
+        self._Namespace = None
+        self._PodWorkloadType = None
+        self._ClusterCaMD5 = None
+        self._PodUniqueId = None
 
     @property
     def Id(self):
@@ -67398,6 +67854,116 @@ class EdrAlertDetail(AbstractModel):
     def NetSvcPs(self, NetSvcPs):
         self._NetSvcPs = NetSvcPs
 
+    @property
+    def ContainerName(self):
+        r"""<p>容器名称</p>
+        :rtype: str
+        """
+        return self._ContainerName
+
+    @ContainerName.setter
+    def ContainerName(self, ContainerName):
+        self._ContainerName = ContainerName
+
+    @property
+    def ImageName(self):
+        r"""<p>容器镜像名称</p>
+        :rtype: str
+        """
+        return self._ImageName
+
+    @ImageName.setter
+    def ImageName(self, ImageName):
+        self._ImageName = ImageName
+
+    @property
+    def ClusterName(self):
+        r"""<p>集群名称</p>
+        :rtype: str
+        """
+        return self._ClusterName
+
+    @ClusterName.setter
+    def ClusterName(self, ClusterName):
+        self._ClusterName = ClusterName
+
+    @property
+    def RunStatus(self):
+        r"""<p>容器运行状态（原始枚举 RUNNING/PAUSED/STOPPED…，前端自行映射）</p><p>枚举值：</p><ul><li>RUNNING： 运行</li><li>PAUSED： 暂停</li><li>STOPPED： 停止</li><li>CREATED： 已经创建</li><li>DESTROYED： 已销毁</li><li>RESTARTING： 重启中</li><li>REMOVING： 迁移中</li><li>DEAD： DEAD</li><li>UNKNOWN： 未知</li></ul>
+        :rtype: str
+        """
+        return self._RunStatus
+
+    @RunStatus.setter
+    def RunStatus(self, RunStatus):
+        self._RunStatus = RunStatus
+
+    @property
+    def PodName(self):
+        r"""<p>POD 名称</p>
+        :rtype: str
+        """
+        return self._PodName
+
+    @PodName.setter
+    def PodName(self, PodName):
+        self._PodName = PodName
+
+    @property
+    def PodIp(self):
+        r"""<p>POD IP</p>
+        :rtype: str
+        """
+        return self._PodIp
+
+    @PodIp.setter
+    def PodIp(self, PodIp):
+        self._PodIp = PodIp
+
+    @property
+    def Namespace(self):
+        r"""<p>命名空间</p>
+        :rtype: str
+        """
+        return self._Namespace
+
+    @Namespace.setter
+    def Namespace(self, Namespace):
+        self._Namespace = Namespace
+
+    @property
+    def PodWorkloadType(self):
+        r"""<p>POD 负载类型</p>
+        :rtype: str
+        """
+        return self._PodWorkloadType
+
+    @PodWorkloadType.setter
+    def PodWorkloadType(self, PodWorkloadType):
+        self._PodWorkloadType = PodWorkloadType
+
+    @property
+    def ClusterCaMD5(self):
+        r"""<p>集群 ca 证书 md5</p>
+        :rtype: str
+        """
+        return self._ClusterCaMD5
+
+    @ClusterCaMD5.setter
+    def ClusterCaMD5(self, ClusterCaMD5):
+        self._ClusterCaMD5 = ClusterCaMD5
+
+    @property
+    def PodUniqueId(self):
+        r"""<p>POD 唯一 id</p>
+        :rtype: str
+        """
+        return self._PodUniqueId
+
+    @PodUniqueId.setter
+    def PodUniqueId(self, PodUniqueId):
+        self._PodUniqueId = PodUniqueId
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
@@ -67455,6 +68021,16 @@ class EdrAlertDetail(AbstractModel):
         self._VirusFamily = params.get("VirusFamily")
         self._NetResponsePayload = params.get("NetResponsePayload")
         self._NetSvcPs = params.get("NetSvcPs")
+        self._ContainerName = params.get("ContainerName")
+        self._ImageName = params.get("ImageName")
+        self._ClusterName = params.get("ClusterName")
+        self._RunStatus = params.get("RunStatus")
+        self._PodName = params.get("PodName")
+        self._PodIp = params.get("PodIp")
+        self._Namespace = params.get("Namespace")
+        self._PodWorkloadType = params.get("PodWorkloadType")
+        self._ClusterCaMD5 = params.get("ClusterCaMD5")
+        self._PodUniqueId = params.get("PodUniqueId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -67502,6 +68078,8 @@ class EdrAlertItem(AbstractModel):
         :type IsProVersion: int
         :param _AlertSource: <p>告警来源</p>
         :type AlertSource: str
+        :param _MachineType: <p>机器类型（列表接口专有；不限于容器告警，主机告警同样返回）。按 Quuid 富化自 machines.machine_type，原始枚举值原样透传、不做 i18n 翻译，前端自行映射展示。取值如 CVM / LH / Other / EKS-NATIVE 等；查不到对应机器信息时降级为空串 ""（与 InstanceName / PublicIp / PrivateIp 等资产富化字段降级行为一致）。告警详情接口（DescribeEdrAlertInfo）不返回此字段</p>
+        :type MachineType: str
         :param _ImageId: <p>镜像ID</p>
         :type ImageId: str
         :param _ContainerId: <p>容器id</p>
@@ -67526,6 +68104,12 @@ class EdrAlertItem(AbstractModel):
         :type PrivateIp: str
         :param _RaspOpen: <p>该机器是否开启应用防护</p>
         :type RaspOpen: bool
+        :param _ContainerName: <p>容器名称</p>
+        :type ContainerName: str
+        :param _ImageName: <p>容器镜像名称</p>
+        :type ImageName: str
+        :param _ClusterName: <p>集群名称</p>
+        :type ClusterName: str
         """
         self._Id = None
         self._AppId = None
@@ -67542,6 +68126,7 @@ class EdrAlertItem(AbstractModel):
         self._Quuid = None
         self._IsProVersion = None
         self._AlertSource = None
+        self._MachineType = None
         self._ImageId = None
         self._ContainerId = None
         self._ClusterId = None
@@ -67554,6 +68139,9 @@ class EdrAlertItem(AbstractModel):
         self._PublicIp = None
         self._PrivateIp = None
         self._RaspOpen = None
+        self._ContainerName = None
+        self._ImageName = None
+        self._ClusterName = None
 
     @property
     def Id(self):
@@ -67721,6 +68309,17 @@ class EdrAlertItem(AbstractModel):
         self._AlertSource = AlertSource
 
     @property
+    def MachineType(self):
+        r"""<p>机器类型（列表接口专有；不限于容器告警，主机告警同样返回）。按 Quuid 富化自 machines.machine_type，原始枚举值原样透传、不做 i18n 翻译，前端自行映射展示。取值如 CVM / LH / Other / EKS-NATIVE 等；查不到对应机器信息时降级为空串 ""（与 InstanceName / PublicIp / PrivateIp 等资产富化字段降级行为一致）。告警详情接口（DescribeEdrAlertInfo）不返回此字段</p>
+        :rtype: str
+        """
+        return self._MachineType
+
+    @MachineType.setter
+    def MachineType(self, MachineType):
+        self._MachineType = MachineType
+
+    @property
     def ImageId(self):
         r"""<p>镜像ID</p>
         :rtype: str
@@ -67852,6 +68451,39 @@ class EdrAlertItem(AbstractModel):
     def RaspOpen(self, RaspOpen):
         self._RaspOpen = RaspOpen
 
+    @property
+    def ContainerName(self):
+        r"""<p>容器名称</p>
+        :rtype: str
+        """
+        return self._ContainerName
+
+    @ContainerName.setter
+    def ContainerName(self, ContainerName):
+        self._ContainerName = ContainerName
+
+    @property
+    def ImageName(self):
+        r"""<p>容器镜像名称</p>
+        :rtype: str
+        """
+        return self._ImageName
+
+    @ImageName.setter
+    def ImageName(self, ImageName):
+        self._ImageName = ImageName
+
+    @property
+    def ClusterName(self):
+        r"""<p>集群名称</p>
+        :rtype: str
+        """
+        return self._ClusterName
+
+    @ClusterName.setter
+    def ClusterName(self, ClusterName):
+        self._ClusterName = ClusterName
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
@@ -67869,6 +68501,7 @@ class EdrAlertItem(AbstractModel):
         self._Quuid = params.get("Quuid")
         self._IsProVersion = params.get("IsProVersion")
         self._AlertSource = params.get("AlertSource")
+        self._MachineType = params.get("MachineType")
         self._ImageId = params.get("ImageId")
         self._ContainerId = params.get("ContainerId")
         self._ClusterId = params.get("ClusterId")
@@ -67881,6 +68514,9 @@ class EdrAlertItem(AbstractModel):
         self._PublicIp = params.get("PublicIp")
         self._PrivateIp = params.get("PrivateIp")
         self._RaspOpen = params.get("RaspOpen")
+        self._ContainerName = params.get("ContainerName")
+        self._ImageName = params.get("ImageName")
+        self._ClusterName = params.get("ClusterName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -68003,21 +68639,21 @@ class EdrAlertTarget(AbstractModel):
 
 
 class EdrAlertTargetForIgnore(AbstractModel):
-    r"""EDR告警定位信息，用于永久忽略
+    r"""EDR告警定位信息，用于永久忽略/取消忽略
 
     """
 
     def __init__(self):
         r"""
-        :param _Id: <p>告警主键ID</p>
+        :param _Id: 告警主键ID
         :type Id: int
-        :param _AppId: <p>告警所属账号ID（跨账号，前端必传）</p>
+        :param _AppId: 告警所属账号ID（跨账号，前端必传）
         :type AppId: int
-        :param _AlertId: <p>告警唯一标识</p>
+        :param _AlertId: 告警唯一标识
         :type AlertId: str
-        :param _Quuid: <p>主机UUID（可选）</p>
+        :param _Quuid: 主机UUID（可选）
         :type Quuid: str
-        :param _InstanceId: <p>实例ID（可选，用于白名单写入）</p>
+        :param _InstanceId: 实例ID（可选，用于白名单删除）
         :type InstanceId: str
         """
         self._Id = None
@@ -68028,7 +68664,7 @@ class EdrAlertTargetForIgnore(AbstractModel):
 
     @property
     def Id(self):
-        r"""<p>告警主键ID</p>
+        r"""告警主键ID
         :rtype: int
         """
         return self._Id
@@ -68039,7 +68675,7 @@ class EdrAlertTargetForIgnore(AbstractModel):
 
     @property
     def AppId(self):
-        r"""<p>告警所属账号ID（跨账号，前端必传）</p>
+        r"""告警所属账号ID（跨账号，前端必传）
         :rtype: int
         """
         return self._AppId
@@ -68050,7 +68686,7 @@ class EdrAlertTargetForIgnore(AbstractModel):
 
     @property
     def AlertId(self):
-        r"""<p>告警唯一标识</p>
+        r"""告警唯一标识
         :rtype: str
         """
         return self._AlertId
@@ -68061,7 +68697,7 @@ class EdrAlertTargetForIgnore(AbstractModel):
 
     @property
     def Quuid(self):
-        r"""<p>主机UUID（可选）</p>
+        r"""主机UUID（可选）
         :rtype: str
         """
         return self._Quuid
@@ -68072,7 +68708,7 @@ class EdrAlertTargetForIgnore(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""<p>实例ID（可选，用于白名单写入）</p>
+        r"""实例ID（可选，用于白名单删除）
         :rtype: str
         """
         return self._InstanceId
@@ -69160,13 +69796,13 @@ class FilterDataObject(AbstractModel):
 
 
 class Filters(AbstractModel):
-    r"""过滤条件。同一 Name 下多个 Values 为或关系；不同 Name 之间为且关系。支持的 Name：ResultStatus（通过状态）、AssetName（资产名称/ID模糊）、IP（IP地址模糊）、Tag（资产标签模糊）
+    r"""过滤条件。同一 Name 下多个 Values 为或关系；不同 Name 之间为且关系。支持的 Name：Status（执行结果，Values: SUCCESS/FAILED/USER_CANCELED/CHECKING）
 
     """
 
     def __init__(self):
         r"""
-        :param _Name: 过滤条件名称。取值：ResultStatus（通过状态，Values: PASS/NOT_PASS）、AssetName（资产名称/ID，模糊匹配）、IP（IP地址，模糊匹配）、Tag（资产标签，模糊匹配）
+        :param _Name: 过滤条件名称。取值：Status（执行结果，Values: SUCCESS/FAILED/USER_CANCELED/CHECKING）
         :type Name: str
         :param _Values: 过滤条件值列表
         :type Values: list of str
@@ -69179,7 +69815,7 @@ class Filters(AbstractModel):
 
     @property
     def Name(self):
-        r"""过滤条件名称。取值：ResultStatus（通过状态，Values: PASS/NOT_PASS）、AssetName（资产名称/ID，模糊匹配）、IP（IP地址，模糊匹配）、Tag（资产标签，模糊匹配）
+        r"""过滤条件名称。取值：Status（执行结果，Values: SUCCESS/FAILED/USER_CANCELED/CHECKING）
         :rtype: str
         """
         return self._Name
@@ -71302,6 +71938,57 @@ class IaCFileRisk(AbstractModel):
         
 
 
+class ImageIDWithAppIdItem(AbstractModel):
+    r"""镜像ID和对应的appid账号信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AppId: <p>账号ID</p>
+        :type AppId: int
+        :param _ImageID: <p>容器镜像ID</p>
+        :type ImageID: str
+        """
+        self._AppId = None
+        self._ImageID = None
+
+    @property
+    def AppId(self):
+        r"""<p>账号ID</p>
+        :rtype: int
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def ImageID(self):
+        r"""<p>容器镜像ID</p>
+        :rtype: str
+        """
+        return self._ImageID
+
+    @ImageID.setter
+    def ImageID(self, ImageID):
+        self._ImageID = ImageID
+
+
+    def _deserialize(self, params):
+        self._AppId = params.get("AppId")
+        self._ImageID = params.get("ImageID")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class InquireInfo(AbstractModel):
     r"""计费项信息
 
@@ -71354,15 +72041,15 @@ class InquireInfo(AbstractModel):
 
 
 class InstanceIDWithAppIdItem(AbstractModel):
-    r"""instance_id和对应的appid账号信息
+    r"""主机实例定位信息
 
     """
 
     def __init__(self):
         r"""
-        :param _AppId: <p>APPID</p>
+        :param _AppId: 机器所属AppId
         :type AppId: int
-        :param _InstanceID: <p>实例ID</p>
+        :param _InstanceID: 机器实例ID
         :type InstanceID: str
         """
         self._AppId = None
@@ -71370,7 +72057,7 @@ class InstanceIDWithAppIdItem(AbstractModel):
 
     @property
     def AppId(self):
-        r"""<p>APPID</p>
+        r"""机器所属AppId
         :rtype: int
         """
         return self._AppId
@@ -71381,7 +72068,7 @@ class InstanceIDWithAppIdItem(AbstractModel):
 
     @property
     def InstanceID(self):
-        r"""<p>实例ID</p>
+        r"""机器实例ID
         :rtype: str
         """
         return self._InstanceID
@@ -75496,6 +76183,18 @@ class ModifyAILinkSettingRequest(AbstractModel):
         :type ExcludeQuuids: list of str
         :param _AutoInclude: <p>新增资产自动包含 0 不包含 1包含</p>
         :type AutoInclude: int
+        :param _TagIDs: <p>标签ID</p>
+        :type TagIDs: list of str
+        :param _TCSSScope: <p>0,1</p><p>枚举值：</p><ul><li>0： 部分</li><li>1： 全部</li></ul>
+        :type TCSSScope: int
+        :param _ClusterIDs: <p>集群ID</p>
+        :type ClusterIDs: list of str
+        :param _ExcludeClusterIDs: <p>排除集群ID</p>
+        :type ExcludeClusterIDs: list of str
+        :param _InstanceIds: <p>实例ID</p>
+        :type InstanceIds: list of str
+        :param _ExcludeInstanceIds: <p>排除实例ID</p>
+        :type ExcludeInstanceIds: list of str
         """
         self._AILinkEnable = None
         self._MemberId = None
@@ -75506,6 +76205,12 @@ class ModifyAILinkSettingRequest(AbstractModel):
         self._Quuids = None
         self._ExcludeQuuids = None
         self._AutoInclude = None
+        self._TagIDs = None
+        self._TCSSScope = None
+        self._ClusterIDs = None
+        self._ExcludeClusterIDs = None
+        self._InstanceIds = None
+        self._ExcludeInstanceIds = None
 
     @property
     def AILinkEnable(self):
@@ -75575,6 +76280,8 @@ class ModifyAILinkSettingRequest(AbstractModel):
 
     @property
     def Quuids(self):
+        warnings.warn("parameter `Quuids` is deprecated", DeprecationWarning) 
+
         r"""<p>自选主机Quuid列表（Scope=0时必填）</p>
         :rtype: list of str
         """
@@ -75582,10 +76289,14 @@ class ModifyAILinkSettingRequest(AbstractModel):
 
     @Quuids.setter
     def Quuids(self, Quuids):
+        warnings.warn("parameter `Quuids` is deprecated", DeprecationWarning) 
+
         self._Quuids = Quuids
 
     @property
     def ExcludeQuuids(self):
+        warnings.warn("parameter `ExcludeQuuids` is deprecated", DeprecationWarning) 
+
         r"""<p>排除主机Quuid列表（Scope=1时生效）</p>
         :rtype: list of str
         """
@@ -75593,6 +76304,8 @@ class ModifyAILinkSettingRequest(AbstractModel):
 
     @ExcludeQuuids.setter
     def ExcludeQuuids(self, ExcludeQuuids):
+        warnings.warn("parameter `ExcludeQuuids` is deprecated", DeprecationWarning) 
+
         self._ExcludeQuuids = ExcludeQuuids
 
     @property
@@ -75606,6 +76319,72 @@ class ModifyAILinkSettingRequest(AbstractModel):
     def AutoInclude(self, AutoInclude):
         self._AutoInclude = AutoInclude
 
+    @property
+    def TagIDs(self):
+        r"""<p>标签ID</p>
+        :rtype: list of str
+        """
+        return self._TagIDs
+
+    @TagIDs.setter
+    def TagIDs(self, TagIDs):
+        self._TagIDs = TagIDs
+
+    @property
+    def TCSSScope(self):
+        r"""<p>0,1</p><p>枚举值：</p><ul><li>0： 部分</li><li>1： 全部</li></ul>
+        :rtype: int
+        """
+        return self._TCSSScope
+
+    @TCSSScope.setter
+    def TCSSScope(self, TCSSScope):
+        self._TCSSScope = TCSSScope
+
+    @property
+    def ClusterIDs(self):
+        r"""<p>集群ID</p>
+        :rtype: list of str
+        """
+        return self._ClusterIDs
+
+    @ClusterIDs.setter
+    def ClusterIDs(self, ClusterIDs):
+        self._ClusterIDs = ClusterIDs
+
+    @property
+    def ExcludeClusterIDs(self):
+        r"""<p>排除集群ID</p>
+        :rtype: list of str
+        """
+        return self._ExcludeClusterIDs
+
+    @ExcludeClusterIDs.setter
+    def ExcludeClusterIDs(self, ExcludeClusterIDs):
+        self._ExcludeClusterIDs = ExcludeClusterIDs
+
+    @property
+    def InstanceIds(self):
+        r"""<p>实例ID</p>
+        :rtype: list of str
+        """
+        return self._InstanceIds
+
+    @InstanceIds.setter
+    def InstanceIds(self, InstanceIds):
+        self._InstanceIds = InstanceIds
+
+    @property
+    def ExcludeInstanceIds(self):
+        r"""<p>排除实例ID</p>
+        :rtype: list of str
+        """
+        return self._ExcludeInstanceIds
+
+    @ExcludeInstanceIds.setter
+    def ExcludeInstanceIds(self, ExcludeInstanceIds):
+        self._ExcludeInstanceIds = ExcludeInstanceIds
+
 
     def _deserialize(self, params):
         self._AILinkEnable = params.get("AILinkEnable")
@@ -75617,6 +76396,12 @@ class ModifyAILinkSettingRequest(AbstractModel):
         self._Quuids = params.get("Quuids")
         self._ExcludeQuuids = params.get("ExcludeQuuids")
         self._AutoInclude = params.get("AutoInclude")
+        self._TagIDs = params.get("TagIDs")
+        self._TCSSScope = params.get("TCSSScope")
+        self._ClusterIDs = params.get("ClusterIDs")
+        self._ExcludeClusterIDs = params.get("ExcludeClusterIDs")
+        self._InstanceIds = params.get("InstanceIds")
+        self._ExcludeInstanceIds = params.get("ExcludeInstanceIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -79059,6 +79844,16 @@ class ModifyEDRRuleRequest(AbstractModel):
         :type InstanceIDsWithAppId: list of InstanceIDWithAppIdItem
         :param _ExcludeInstanceIDsWithAppId: <p>全选资产排除的实例ID和APPID</p>
         :type ExcludeInstanceIDsWithAppId: list of InstanceIDWithAppIdItem
+        :param _TagIDs: <p>安全中心标签ID列表（主机资产范围「按标签选择」，仅对主机生效）；上限 100（超限截断）。标签来源接口 DescribeAssetTagTree</p>
+        :type TagIDs: list of str
+        :param _ClusterIDsWithAppId: <p>指定生效集群列表（每项含 AppId + ClusterID，TCSSScope=0 时使用）。入参数组上限 3000（超限截断保留前 3000 项）</p>
+        :type ClusterIDsWithAppId: list of ClusterIDWithAppIdItem
+        :param _ExcludeClusterIDsWithAppId: <p>排除集群列表（每项含 AppId + ClusterID）；入参数组上限 3000（超限截断保留前 3000 项）</p>
+        :type ExcludeClusterIDsWithAppId: list of ClusterIDWithAppIdItem
+        :param _ImageIDsWithAppId: <p>直接选择镜像（每项含 AppId + ImageID，在集群基础上进一步过滤）。多账号场景下各账号只存属于自己的镜像；入参数组上限 3000（超限截断保留前 3000 项）</p>
+        :type ImageIDsWithAppId: list of ImageIDWithAppIdItem
+        :param _ConditionMatches: <p>容器条件匹配</p>
+        :type ConditionMatches: list of ConditionMatch
         """
         self._RuleType = None
         self._AlertAction = None
@@ -79087,6 +79882,11 @@ class ModifyEDRRuleRequest(AbstractModel):
         self._Target = None
         self._InstanceIDsWithAppId = None
         self._ExcludeInstanceIDsWithAppId = None
+        self._TagIDs = None
+        self._ClusterIDsWithAppId = None
+        self._ExcludeClusterIDsWithAppId = None
+        self._ImageIDsWithAppId = None
+        self._ConditionMatches = None
 
     @property
     def RuleType(self):
@@ -79385,6 +80185,61 @@ class ModifyEDRRuleRequest(AbstractModel):
     def ExcludeInstanceIDsWithAppId(self, ExcludeInstanceIDsWithAppId):
         self._ExcludeInstanceIDsWithAppId = ExcludeInstanceIDsWithAppId
 
+    @property
+    def TagIDs(self):
+        r"""<p>安全中心标签ID列表（主机资产范围「按标签选择」，仅对主机生效）；上限 100（超限截断）。标签来源接口 DescribeAssetTagTree</p>
+        :rtype: list of str
+        """
+        return self._TagIDs
+
+    @TagIDs.setter
+    def TagIDs(self, TagIDs):
+        self._TagIDs = TagIDs
+
+    @property
+    def ClusterIDsWithAppId(self):
+        r"""<p>指定生效集群列表（每项含 AppId + ClusterID，TCSSScope=0 时使用）。入参数组上限 3000（超限截断保留前 3000 项）</p>
+        :rtype: list of ClusterIDWithAppIdItem
+        """
+        return self._ClusterIDsWithAppId
+
+    @ClusterIDsWithAppId.setter
+    def ClusterIDsWithAppId(self, ClusterIDsWithAppId):
+        self._ClusterIDsWithAppId = ClusterIDsWithAppId
+
+    @property
+    def ExcludeClusterIDsWithAppId(self):
+        r"""<p>排除集群列表（每项含 AppId + ClusterID）；入参数组上限 3000（超限截断保留前 3000 项）</p>
+        :rtype: list of ClusterIDWithAppIdItem
+        """
+        return self._ExcludeClusterIDsWithAppId
+
+    @ExcludeClusterIDsWithAppId.setter
+    def ExcludeClusterIDsWithAppId(self, ExcludeClusterIDsWithAppId):
+        self._ExcludeClusterIDsWithAppId = ExcludeClusterIDsWithAppId
+
+    @property
+    def ImageIDsWithAppId(self):
+        r"""<p>直接选择镜像（每项含 AppId + ImageID，在集群基础上进一步过滤）。多账号场景下各账号只存属于自己的镜像；入参数组上限 3000（超限截断保留前 3000 项）</p>
+        :rtype: list of ImageIDWithAppIdItem
+        """
+        return self._ImageIDsWithAppId
+
+    @ImageIDsWithAppId.setter
+    def ImageIDsWithAppId(self, ImageIDsWithAppId):
+        self._ImageIDsWithAppId = ImageIDsWithAppId
+
+    @property
+    def ConditionMatches(self):
+        r"""<p>容器条件匹配</p>
+        :rtype: list of ConditionMatch
+        """
+        return self._ConditionMatches
+
+    @ConditionMatches.setter
+    def ConditionMatches(self, ConditionMatches):
+        self._ConditionMatches = ConditionMatches
+
 
     def _deserialize(self, params):
         self._RuleType = params.get("RuleType")
@@ -79430,6 +80285,31 @@ class ModifyEDRRuleRequest(AbstractModel):
                 obj = InstanceIDWithAppIdItem()
                 obj._deserialize(item)
                 self._ExcludeInstanceIDsWithAppId.append(obj)
+        self._TagIDs = params.get("TagIDs")
+        if params.get("ClusterIDsWithAppId") is not None:
+            self._ClusterIDsWithAppId = []
+            for item in params.get("ClusterIDsWithAppId"):
+                obj = ClusterIDWithAppIdItem()
+                obj._deserialize(item)
+                self._ClusterIDsWithAppId.append(obj)
+        if params.get("ExcludeClusterIDsWithAppId") is not None:
+            self._ExcludeClusterIDsWithAppId = []
+            for item in params.get("ExcludeClusterIDsWithAppId"):
+                obj = ClusterIDWithAppIdItem()
+                obj._deserialize(item)
+                self._ExcludeClusterIDsWithAppId.append(obj)
+        if params.get("ImageIDsWithAppId") is not None:
+            self._ImageIDsWithAppId = []
+            for item in params.get("ImageIDsWithAppId"):
+                obj = ImageIDWithAppIdItem()
+                obj._deserialize(item)
+                self._ImageIDsWithAppId.append(obj)
+        if params.get("ConditionMatches") is not None:
+            self._ConditionMatches = []
+            for item in params.get("ConditionMatches"):
+                obj = ConditionMatch()
+                obj._deserialize(item)
+                self._ConditionMatches.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -83627,32 +84507,32 @@ class RegionConfig(AbstractModel):
 
 
 class RegionInfo(AbstractModel):
-    r"""地域信息
+    r"""云资产所在地域信息。
 
     """
 
     def __init__(self):
         r"""
-        :param _Region: <p>地域</p>
+        :param _Region: 地域标志，如 ap-guangzhou、ap-shanghai、ap-beijing。
         :type Region: str
-        :param _RegionCode: <p>地域编码</p>
-        :type RegionCode: str
-        :param _RegionId: <p>地域ID</p>
-        :type RegionId: int
-        :param _RegionName: <p>地域名称</p>
+        :param _RegionName: 地域中文名，如华南地区（广州）、华东地区（上海）、华北地区（北京）。
         :type RegionName: str
-        :param _RegionNameEn: <p>地域英文名称</p>
+        :param _RegionId: 地域数字 ID。
+        :type RegionId: int
+        :param _RegionCode: 地域简码，如 gz、sh、bj。
+        :type RegionCode: str
+        :param _RegionNameEn: 地域英文名。
         :type RegionNameEn: str
         """
         self._Region = None
-        self._RegionCode = None
-        self._RegionId = None
         self._RegionName = None
+        self._RegionId = None
+        self._RegionCode = None
         self._RegionNameEn = None
 
     @property
     def Region(self):
-        r"""<p>地域</p>
+        r"""地域标志，如 ap-guangzhou、ap-shanghai、ap-beijing。
         :rtype: str
         """
         return self._Region
@@ -83662,30 +84542,8 @@ class RegionInfo(AbstractModel):
         self._Region = Region
 
     @property
-    def RegionCode(self):
-        r"""<p>地域编码</p>
-        :rtype: str
-        """
-        return self._RegionCode
-
-    @RegionCode.setter
-    def RegionCode(self, RegionCode):
-        self._RegionCode = RegionCode
-
-    @property
-    def RegionId(self):
-        r"""<p>地域ID</p>
-        :rtype: int
-        """
-        return self._RegionId
-
-    @RegionId.setter
-    def RegionId(self, RegionId):
-        self._RegionId = RegionId
-
-    @property
     def RegionName(self):
-        r"""<p>地域名称</p>
+        r"""地域中文名，如华南地区（广州）、华东地区（上海）、华北地区（北京）。
         :rtype: str
         """
         return self._RegionName
@@ -83695,8 +84553,30 @@ class RegionInfo(AbstractModel):
         self._RegionName = RegionName
 
     @property
+    def RegionId(self):
+        r"""地域数字 ID。
+        :rtype: int
+        """
+        return self._RegionId
+
+    @RegionId.setter
+    def RegionId(self, RegionId):
+        self._RegionId = RegionId
+
+    @property
+    def RegionCode(self):
+        r"""地域简码，如 gz、sh、bj。
+        :rtype: str
+        """
+        return self._RegionCode
+
+    @RegionCode.setter
+    def RegionCode(self, RegionCode):
+        self._RegionCode = RegionCode
+
+    @property
     def RegionNameEn(self):
-        r"""<p>地域英文名称</p>
+        r"""地域英文名。
         :rtype: str
         """
         return self._RegionNameEn
@@ -83708,9 +84588,9 @@ class RegionInfo(AbstractModel):
 
     def _deserialize(self, params):
         self._Region = params.get("Region")
-        self._RegionCode = params.get("RegionCode")
-        self._RegionId = params.get("RegionId")
         self._RegionName = params.get("RegionName")
+        self._RegionId = params.get("RegionId")
+        self._RegionCode = params.get("RegionCode")
         self._RegionNameEn = params.get("RegionNameEn")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():

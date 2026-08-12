@@ -7393,6 +7393,51 @@ class DeleteDatabaseRequest(AbstractModel):
 
     """
 
+    def __init__(self):
+        r"""
+        :param _DBInstanceId: <p>实例ID。可通过<a href="https://cloud.tencent.com/document/api/409/16773">DescribeDBInstances</a>接口获取</p>
+        :type DBInstanceId: str
+        :param _DatabaseName: <p>数据库名称</p>
+        :type DatabaseName: str
+        """
+        self._DBInstanceId = None
+        self._DatabaseName = None
+
+    @property
+    def DBInstanceId(self):
+        r"""<p>实例ID。可通过<a href="https://cloud.tencent.com/document/api/409/16773">DescribeDBInstances</a>接口获取</p>
+        :rtype: str
+        """
+        return self._DBInstanceId
+
+    @DBInstanceId.setter
+    def DBInstanceId(self, DBInstanceId):
+        self._DBInstanceId = DBInstanceId
+
+    @property
+    def DatabaseName(self):
+        r"""<p>数据库名称</p>
+        :rtype: str
+        """
+        return self._DatabaseName
+
+    @DatabaseName.setter
+    def DatabaseName(self, DatabaseName):
+        self._DatabaseName = DatabaseName
+
+
+    def _deserialize(self, params):
+        self._DBInstanceId = params.get("DBInstanceId")
+        self._DatabaseName = params.get("DatabaseName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
 
 class DeleteDatabaseResponse(AbstractModel):
     r"""DeleteDatabase返回参数结构体

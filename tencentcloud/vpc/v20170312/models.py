@@ -6585,21 +6585,17 @@ class CcnInstance(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 关联实例ID。
+        :param _InstanceId: <p>关联实例ID。</p>
         :type InstanceId: str
-        :param _InstanceRegion: 关联实例ID所属大区，例如：ap-guangzhou。
+        :param _InstanceRegion: <p>关联实例ID所属大区，例如：ap-guangzhou。</p>
         :type InstanceRegion: str
-        :param _InstanceType: 关联实例类型，可选值：
-<li>`VPC`：私有网络</li>
-<li>`DIRECTCONNECT`：专线网关</li>
-<li>`BMVPC`：黑石私有网络</li>
-<li>`VPNGW`：VPNGW类型</li>
+        :param _InstanceType: <p>关联实例类型，可选值：</p><li><code>VPC</code>：私有网络</li><li><code>DIRECTCONNECT</code>：专线网关</li><li><code>BMVPC</code>：黑石私有网络</li><li><code>VPNGW</code>：VPNGW类型</li>
         :type InstanceType: str
-        :param _Description: 备注
+        :param _Description: <p>备注</p>
         :type Description: str
-        :param _RouteTableId: 实例关联的路由表ID。
+        :param _RouteTableId: <p>实例关联的路由表ID。</p>
         :type RouteTableId: str
-        :param _OrderType: 实例付费方式
+        :param _OrderType: <p>实例付费方式</p><p>枚举值：</p><ul><li>PayByCcnOwner： CCN所在账号付费</li><li>PayByInstanceOwner： 关联实例所在账号付费</li></ul>
         :type OrderType: str
         """
         self._InstanceId = None
@@ -6611,7 +6607,7 @@ class CcnInstance(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""关联实例ID。
+        r"""<p>关联实例ID。</p>
         :rtype: str
         """
         return self._InstanceId
@@ -6622,7 +6618,7 @@ class CcnInstance(AbstractModel):
 
     @property
     def InstanceRegion(self):
-        r"""关联实例ID所属大区，例如：ap-guangzhou。
+        r"""<p>关联实例ID所属大区，例如：ap-guangzhou。</p>
         :rtype: str
         """
         return self._InstanceRegion
@@ -6633,11 +6629,7 @@ class CcnInstance(AbstractModel):
 
     @property
     def InstanceType(self):
-        r"""关联实例类型，可选值：
-<li>`VPC`：私有网络</li>
-<li>`DIRECTCONNECT`：专线网关</li>
-<li>`BMVPC`：黑石私有网络</li>
-<li>`VPNGW`：VPNGW类型</li>
+        r"""<p>关联实例类型，可选值：</p><li><code>VPC</code>：私有网络</li><li><code>DIRECTCONNECT</code>：专线网关</li><li><code>BMVPC</code>：黑石私有网络</li><li><code>VPNGW</code>：VPNGW类型</li>
         :rtype: str
         """
         return self._InstanceType
@@ -6648,7 +6640,7 @@ class CcnInstance(AbstractModel):
 
     @property
     def Description(self):
-        r"""备注
+        r"""<p>备注</p>
         :rtype: str
         """
         return self._Description
@@ -6659,7 +6651,7 @@ class CcnInstance(AbstractModel):
 
     @property
     def RouteTableId(self):
-        r"""实例关联的路由表ID。
+        r"""<p>实例关联的路由表ID。</p>
         :rtype: str
         """
         return self._RouteTableId
@@ -6670,7 +6662,7 @@ class CcnInstance(AbstractModel):
 
     @property
     def OrderType(self):
-        r"""实例付费方式
+        r"""<p>实例付费方式</p><p>枚举值：</p><ul><li>PayByCcnOwner： CCN所在账号付费</li><li>PayByInstanceOwner： 关联实例所在账号付费</li></ul>
         :rtype: str
         """
         return self._OrderType

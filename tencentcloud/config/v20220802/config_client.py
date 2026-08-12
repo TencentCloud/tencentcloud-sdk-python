@@ -302,6 +302,29 @@ class ConfigClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DeleteAggregators(self, request):
+        r"""删除账号组
+
+        :param request: Request instance for DeleteAggregators.
+        :type request: :class:`tencentcloud.config.v20220802.models.DeleteAggregatorsRequest`
+        :rtype: :class:`tencentcloud.config.v20220802.models.DeleteAggregatorsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteAggregators", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteAggregatorsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DeleteAlarmPolicy(self, request):
         r"""删除告警规则
 
@@ -1351,6 +1374,29 @@ class ConfigClient(AbstractClient):
             body = self.call("UpdateAggregateConfigRule", params, headers=headers)
             response = json.loads(body)
             model = models.UpdateAggregateConfigRuleResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def UpdateAggregator(self, request):
+        r"""编辑账号组
+
+        :param request: Request instance for UpdateAggregator.
+        :type request: :class:`tencentcloud.config.v20220802.models.UpdateAggregatorRequest`
+        :rtype: :class:`tencentcloud.config.v20220802.models.UpdateAggregatorResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UpdateAggregator", params, headers=headers)
+            response = json.loads(body)
+            model = models.UpdateAggregatorResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

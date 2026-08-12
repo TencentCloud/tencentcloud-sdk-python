@@ -31564,7 +31564,7 @@ class UploadFilesRequest(AbstractModel):
         :type FileInfos: list of UploadFile
         :param _Operator: <p>操作者的信息</p>
         :type Operator: :class:`tencentcloud.essbasic.v20210526.models.UserInfo`
-        :param _Deadline: <p>文件的截止有效期，最长有效期是当前时间后的一年。如果超过截止有效期则文件会失效。此功能是白名单功能，如需使用，请联系电子签开通</p><p>如果没有传入，则默认过期时间是上传时间加10分钟</p>
+        :param _Deadline: <p>文件的截止有效期，最长有效期是当前时间后的一年。如果超过截止有效期则文件会失效。此功能是白名单功能，如需使用，请联系电子签开通</p><p>如果没有传入，则默认过期时间是上传时间加1小时</p>
         :type Deadline: int
         """
         self._Agent = None
@@ -31623,7 +31623,7 @@ class UploadFilesRequest(AbstractModel):
 
     @property
     def Deadline(self):
-        r"""<p>文件的截止有效期，最长有效期是当前时间后的一年。如果超过截止有效期则文件会失效。此功能是白名单功能，如需使用，请联系电子签开通</p><p>如果没有传入，则默认过期时间是上传时间加10分钟</p>
+        r"""<p>文件的截止有效期，最长有效期是当前时间后的一年。如果超过截止有效期则文件会失效。此功能是白名单功能，如需使用，请联系电子签开通</p><p>如果没有传入，则默认过期时间是上传时间加1小时</p>
         :rtype: int
         """
         return self._Deadline

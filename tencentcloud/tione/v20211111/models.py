@@ -861,25 +861,28 @@ class CFSConfig(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Id: cfs的实例的ID
+        :param _Id: <p>cfs的实例的ID</p>
         :type Id: str
-        :param _Path: 存储的路径
+        :param _Path: <p>存储的路径</p>
         :type Path: str
-        :param _MountType: cfs的挂载类型，可选值为：STORAGE、SOURCE 分别表示存储拓展模式和数据源模式，默认为 STORAGE
+        :param _MountType: <p>cfs的挂载类型，可选值为：STORAGE、SOURCE 分别表示存储拓展模式和数据源模式，默认为 STORAGE</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type MountType: str
-        :param _Protocol: 协议 1: NFS, 2: TURBO
+        :param _Protocol: <p>协议 1: NFS, 2: TURBO</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Protocol: str
+        :param _IsPresetStorage: <p>是否平台预置存储</p>
+        :type IsPresetStorage: bool
         """
         self._Id = None
         self._Path = None
         self._MountType = None
         self._Protocol = None
+        self._IsPresetStorage = None
 
     @property
     def Id(self):
-        r"""cfs的实例的ID
+        r"""<p>cfs的实例的ID</p>
         :rtype: str
         """
         return self._Id
@@ -890,7 +893,7 @@ class CFSConfig(AbstractModel):
 
     @property
     def Path(self):
-        r"""存储的路径
+        r"""<p>存储的路径</p>
         :rtype: str
         """
         return self._Path
@@ -901,7 +904,7 @@ class CFSConfig(AbstractModel):
 
     @property
     def MountType(self):
-        r"""cfs的挂载类型，可选值为：STORAGE、SOURCE 分别表示存储拓展模式和数据源模式，默认为 STORAGE
+        r"""<p>cfs的挂载类型，可选值为：STORAGE、SOURCE 分别表示存储拓展模式和数据源模式，默认为 STORAGE</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -913,7 +916,7 @@ class CFSConfig(AbstractModel):
 
     @property
     def Protocol(self):
-        r"""协议 1: NFS, 2: TURBO
+        r"""<p>协议 1: NFS, 2: TURBO</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -923,12 +926,24 @@ class CFSConfig(AbstractModel):
     def Protocol(self, Protocol):
         self._Protocol = Protocol
 
+    @property
+    def IsPresetStorage(self):
+        r"""<p>是否平台预置存储</p>
+        :rtype: bool
+        """
+        return self._IsPresetStorage
+
+    @IsPresetStorage.setter
+    def IsPresetStorage(self, IsPresetStorage):
+        self._IsPresetStorage = IsPresetStorage
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
         self._Path = params.get("Path")
         self._MountType = params.get("MountType")
         self._Protocol = params.get("Protocol")
+        self._IsPresetStorage = params.get("IsPresetStorage")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4447,6 +4462,8 @@ class CreateTrainingTaskRequest(AbstractModel):
         :type TrainToolConfig: :class:`tencentcloud.tione.v20211111.models.TrainToolConfig`
         :param _ResourceSupplyAttribute: <p>资源供应属性</p>
         :type ResourceSupplyAttribute: :class:`tencentcloud.tione.v20211111.models.ResourceSupplyAttribute`
+        :param _Queues: <p>队列ID</p>
+        :type Queues: list of str
         """
         self._Name = None
         self._ChargeType = None
@@ -4477,6 +4494,7 @@ class CreateTrainingTaskRequest(AbstractModel):
         self._Envs = None
         self._TrainToolConfig = None
         self._ResourceSupplyAttribute = None
+        self._Queues = None
 
     @property
     def Name(self):
@@ -4797,6 +4815,17 @@ class CreateTrainingTaskRequest(AbstractModel):
     def ResourceSupplyAttribute(self, ResourceSupplyAttribute):
         self._ResourceSupplyAttribute = ResourceSupplyAttribute
 
+    @property
+    def Queues(self):
+        r"""<p>队列ID</p>
+        :rtype: list of str
+        """
+        return self._Queues
+
+    @Queues.setter
+    def Queues(self, Queues):
+        self._Queues = Queues
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -4871,6 +4900,7 @@ class CreateTrainingTaskRequest(AbstractModel):
         if params.get("ResourceSupplyAttribute") is not None:
             self._ResourceSupplyAttribute = ResourceSupplyAttribute()
             self._ResourceSupplyAttribute._deserialize(params.get("ResourceSupplyAttribute"))
+        self._Queues = params.get("Queues")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -25125,8 +25155,11 @@ class ResourceSupplyAttribute(AbstractModel):
         r"""
         :param _SupplyType: <p>资源供应类型。TIDE:潮汐;SPOT:竞价;空:常规按量后付费</p>
         :type SupplyType: str
+        :param _ClusterType: <p>集群类型</p><p>枚举值：</p><ul><li>DEFAULT： 默认集群</li><li>THIRD： 第三方集群</li></ul><p>默认值：DEFAULT</p>
+        :type ClusterType: str
         """
         self._SupplyType = None
+        self._ClusterType = None
 
     @property
     def SupplyType(self):
@@ -25139,9 +25172,21 @@ class ResourceSupplyAttribute(AbstractModel):
     def SupplyType(self, SupplyType):
         self._SupplyType = SupplyType
 
+    @property
+    def ClusterType(self):
+        r"""<p>集群类型</p><p>枚举值：</p><ul><li>DEFAULT： 默认集群</li><li>THIRD： 第三方集群</li></ul><p>默认值：DEFAULT</p>
+        :rtype: str
+        """
+        return self._ClusterType
+
+    @ClusterType.setter
+    def ClusterType(self, ClusterType):
+        self._ClusterType = ClusterType
+
 
     def _deserialize(self, params):
         self._SupplyType = params.get("SupplyType")
+        self._ClusterType = params.get("ClusterType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

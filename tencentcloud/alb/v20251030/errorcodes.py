@@ -158,6 +158,9 @@ UNSUPPORTEDOPERATION_DISASSOCIATEDEFAULTCERTIFICATE = 'UnsupportedOperation.Disa
 # 无效的状态转换。
 UNSUPPORTEDOPERATION_INVALIDSTATETRANSITION = 'UnsupportedOperation.InvalidStateTransition'
 
+# 资源不足。
+UNSUPPORTEDOPERATION_RESOURCESSOLDOUT = 'UnsupportedOperation.ResourcesSoldOut'
+
 # 监听器协议与目标组后端转发协议不匹配
 UNSUPPORTEDOPERATION_TARGETGROUPPROTOCOLMISMATCH = 'UnsupportedOperation.TargetGroupProtocolMismatch'
 
