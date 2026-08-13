@@ -2926,23 +2926,27 @@ class AppAdvancedConf(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _EnableContextRewrite: 是否开启上下文改写
+        :param _EnableContextRewrite: <p>是否开启上下文改写</p>
         :type EnableContextRewrite: bool
-        :param _EnableImageTextRetrieval: 是否开启图文检索
+        :param _EnableImageTextRetrieval: <p>是否开启图文检索</p>
         :type EnableImageTextRetrieval: bool
-        :param _ReplyFlexibility: 回复灵活度
+        :param _ReplyFlexibility: <p>回复灵活度</p>
         :type ReplyFlexibility: int
-        :param _IntentAchievement: 意图达成优先级
+        :param _DialogCustomConfig: <p>对话端自定义配置(所有模式共用,允许对话中动态修改配置)</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DialogCustomConfig: :class:`tencentcloud.adp.v20260520.models.DialogCustomConfig`
+        :param _IntentAchievement: <p>意图达成优先级</p>
         :type IntentAchievement: list of IntentAchievementInfo
         """
         self._EnableContextRewrite = None
         self._EnableImageTextRetrieval = None
         self._ReplyFlexibility = None
+        self._DialogCustomConfig = None
         self._IntentAchievement = None
 
     @property
     def EnableContextRewrite(self):
-        r"""是否开启上下文改写
+        r"""<p>是否开启上下文改写</p>
         :rtype: bool
         """
         return self._EnableContextRewrite
@@ -2953,7 +2957,7 @@ class AppAdvancedConf(AbstractModel):
 
     @property
     def EnableImageTextRetrieval(self):
-        r"""是否开启图文检索
+        r"""<p>是否开启图文检索</p>
         :rtype: bool
         """
         return self._EnableImageTextRetrieval
@@ -2964,7 +2968,7 @@ class AppAdvancedConf(AbstractModel):
 
     @property
     def ReplyFlexibility(self):
-        r"""回复灵活度
+        r"""<p>回复灵活度</p>
         :rtype: int
         """
         return self._ReplyFlexibility
@@ -2974,8 +2978,20 @@ class AppAdvancedConf(AbstractModel):
         self._ReplyFlexibility = ReplyFlexibility
 
     @property
+    def DialogCustomConfig(self):
+        r"""<p>对话端自定义配置(所有模式共用,允许对话中动态修改配置)</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.adp.v20260520.models.DialogCustomConfig`
+        """
+        return self._DialogCustomConfig
+
+    @DialogCustomConfig.setter
+    def DialogCustomConfig(self, DialogCustomConfig):
+        self._DialogCustomConfig = DialogCustomConfig
+
+    @property
     def IntentAchievement(self):
-        r"""意图达成优先级
+        r"""<p>意图达成优先级</p>
         :rtype: list of IntentAchievementInfo
         """
         return self._IntentAchievement
@@ -2989,6 +3005,9 @@ class AppAdvancedConf(AbstractModel):
         self._EnableContextRewrite = params.get("EnableContextRewrite")
         self._EnableImageTextRetrieval = params.get("EnableImageTextRetrieval")
         self._ReplyFlexibility = params.get("ReplyFlexibility")
+        if params.get("DialogCustomConfig") is not None:
+            self._DialogCustomConfig = DialogCustomConfig()
+            self._DialogCustomConfig._deserialize(params.get("DialogCustomConfig"))
         if params.get("IntentAchievement") is not None:
             self._IntentAchievement = []
             for item in params.get("IntentAchievement"):
@@ -16499,6 +16518,42 @@ class DescribeVariableResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DialogCustomConfig(AbstractModel):
+    r"""对话端自定义配置(所有模式共用,允许对话中动态修改配置)
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Enabled: <p>是否开启对话端动态修改配置</p>
+        :type Enabled: bool
+        """
+        self._Enabled = None
+
+    @property
+    def Enabled(self):
+        r"""<p>是否开启对话端动态修改配置</p>
+        :rtype: bool
+        """
+        return self._Enabled
+
+    @Enabled.setter
+    def Enabled(self, Enabled):
+        self._Enabled = Enabled
+
+
+    def _deserialize(self, params):
+        self._Enabled = params.get("Enabled")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DigitalHumanConfig(AbstractModel):
     r"""数智人配置
 
@@ -18809,7 +18864,7 @@ class ModifyAppRequest(AbstractModel):
         :type Name: str
         :param _SharedKbIdList: <p>引用的共享知识库ID列表(全量覆盖)</p>
         :type SharedKbIdList: list of str
-        :param _UpdateMask: <p>字段掩码，指定需要更新的字段(Paths为空则不更新任何字段)。Paths枚举值：<br>【顶层】Name, Avatar, Description, AppMode, SharedKbIdList<br>【Greeting】Config.Greeting, Config.Greeting.Greeting, Config.Greeting.OpeningQuestionList<br>【Model】Config.Model, Config.Model.ThinkModel, Config.Model.GenerateModel, Config.Model.AiOptimizeModel, Config.Model.FileParseModel, Config.Model.PromptRewriteModel, Config.Model.MultiModalQaModel, Config.Model.MultiModalUnderstandingModel<br>【WebSearch】Config.WebSearch<br>【Memory】Config.Memory, Config.Memory.Enabled, Config.Memory.LongMemoryDay, Config.Memory.Model, Config.Memory.PromptMode, Config.Memory.PromptContent<br>【Mode】Config.Mode, Config.Mode.MultiAgentConfig, Config.Mode.SingleWorkflowConfig<br>【Experience】Config.Experience, Config.Experience.Conversation, Config.Experience.Role, Config.Experience.Advanced<br>【Experience.Conversation】Config.Experience.Conversation.AiCall, Config.Experience.Conversation.BackgroundImage, Config.Experience.Conversation.Method, Config.Experience.Conversation.FallbackReply, Config.Experience.Conversation.Recommended, Config.Experience.Conversation.InputBoxConfig, Config.Experience.Conversation.WebSearch<br>【Experience.Conversation.AiCall】Config.Experience.Conversation.AiCall.VoiceInteract, Config.Experience.Conversation.AiCall.VoiceCall, Config.Experience.Conversation.AiCall.DigitalHuman<br>【Experience.Advanced】Config.Experience.Advanced.ContextRewrite, Config.Experience.Advanced.ImageTextRetrieval, Config.Experience.Advanced.IntentAchievement, Config.Experience.Advanced.ReplyFlexibility</p>
+        :param _UpdateMask: <p>字段掩码，指定需要更新的字段(Paths为空则不更新任何字段)。Paths枚举值：<br>【顶层】Name, Avatar, Description, AppMode, SharedKbIdList<br>【Greeting】Config.Greeting, Config.Greeting.Greeting, Config.Greeting.OpeningQuestionList<br>【Model】Config.Model, Config.Model.ThinkModel, Config.Model.GenerateModel, Config.Model.AiOptimizeModel, Config.Model.FileParseModel, Config.Model.PromptRewriteModel, Config.Model.MultiModalQaModel, Config.Model.MultiModalUnderstandingModel<br>【WebSearch】Config.WebSearch<br>【Memory】Config.Memory, Config.Memory.Enabled, Config.Memory.LongMemoryDay, Config.Memory.Model, Config.Memory.PromptMode, Config.Memory.PromptContent<br>【Mode】Config.Mode, Config.Mode.MultiAgentConfig, Config.Mode.SingleWorkflowConfig, Config.Mode.ClawAgentConfig<br>【Mode.ClawAgentConfig】Config.Mode.ClawAgentConfig.LongMemoryConfig, Config.Mode.ClawAgentConfig.AgentTeamConfig<br>【Experience】Config.Experience, Config.Experience.Conversation, Config.Experience.Role, Config.Experience.Advanced<br>【Experience.Conversation】Config.Experience.Conversation.AiCall, Config.Experience.Conversation.BackgroundImage, Config.Experience.Conversation.Method, Config.Experience.Conversation.FallbackReply, Config.Experience.Conversation.Recommended, Config.Experience.Conversation.InputBoxConfig, Config.Experience.Conversation.WebSearch<br>【Experience.Conversation.AiCall】Config.Experience.Conversation.AiCall.VoiceInteract, Config.Experience.Conversation.AiCall.VoiceCall, Config.Experience.Conversation.AiCall.DigitalHuman<br>【Experience.Advanced】Config.Experience.Advanced.ContextRewrite, Config.Experience.Advanced.ImageTextRetrieval, Config.Experience.Advanced.IntentAchievement, Config.Experience.Advanced.ReplyFlexibility, Config.Experience.Advanced.DialogCustomConfig</p>
         :type UpdateMask: :class:`tencentcloud.adp.v20260520.models.FieldMask`
         """
         self._AppId = None
@@ -18900,7 +18955,7 @@ class ModifyAppRequest(AbstractModel):
 
     @property
     def UpdateMask(self):
-        r"""<p>字段掩码，指定需要更新的字段(Paths为空则不更新任何字段)。Paths枚举值：<br>【顶层】Name, Avatar, Description, AppMode, SharedKbIdList<br>【Greeting】Config.Greeting, Config.Greeting.Greeting, Config.Greeting.OpeningQuestionList<br>【Model】Config.Model, Config.Model.ThinkModel, Config.Model.GenerateModel, Config.Model.AiOptimizeModel, Config.Model.FileParseModel, Config.Model.PromptRewriteModel, Config.Model.MultiModalQaModel, Config.Model.MultiModalUnderstandingModel<br>【WebSearch】Config.WebSearch<br>【Memory】Config.Memory, Config.Memory.Enabled, Config.Memory.LongMemoryDay, Config.Memory.Model, Config.Memory.PromptMode, Config.Memory.PromptContent<br>【Mode】Config.Mode, Config.Mode.MultiAgentConfig, Config.Mode.SingleWorkflowConfig<br>【Experience】Config.Experience, Config.Experience.Conversation, Config.Experience.Role, Config.Experience.Advanced<br>【Experience.Conversation】Config.Experience.Conversation.AiCall, Config.Experience.Conversation.BackgroundImage, Config.Experience.Conversation.Method, Config.Experience.Conversation.FallbackReply, Config.Experience.Conversation.Recommended, Config.Experience.Conversation.InputBoxConfig, Config.Experience.Conversation.WebSearch<br>【Experience.Conversation.AiCall】Config.Experience.Conversation.AiCall.VoiceInteract, Config.Experience.Conversation.AiCall.VoiceCall, Config.Experience.Conversation.AiCall.DigitalHuman<br>【Experience.Advanced】Config.Experience.Advanced.ContextRewrite, Config.Experience.Advanced.ImageTextRetrieval, Config.Experience.Advanced.IntentAchievement, Config.Experience.Advanced.ReplyFlexibility</p>
+        r"""<p>字段掩码，指定需要更新的字段(Paths为空则不更新任何字段)。Paths枚举值：<br>【顶层】Name, Avatar, Description, AppMode, SharedKbIdList<br>【Greeting】Config.Greeting, Config.Greeting.Greeting, Config.Greeting.OpeningQuestionList<br>【Model】Config.Model, Config.Model.ThinkModel, Config.Model.GenerateModel, Config.Model.AiOptimizeModel, Config.Model.FileParseModel, Config.Model.PromptRewriteModel, Config.Model.MultiModalQaModel, Config.Model.MultiModalUnderstandingModel<br>【WebSearch】Config.WebSearch<br>【Memory】Config.Memory, Config.Memory.Enabled, Config.Memory.LongMemoryDay, Config.Memory.Model, Config.Memory.PromptMode, Config.Memory.PromptContent<br>【Mode】Config.Mode, Config.Mode.MultiAgentConfig, Config.Mode.SingleWorkflowConfig, Config.Mode.ClawAgentConfig<br>【Mode.ClawAgentConfig】Config.Mode.ClawAgentConfig.LongMemoryConfig, Config.Mode.ClawAgentConfig.AgentTeamConfig<br>【Experience】Config.Experience, Config.Experience.Conversation, Config.Experience.Role, Config.Experience.Advanced<br>【Experience.Conversation】Config.Experience.Conversation.AiCall, Config.Experience.Conversation.BackgroundImage, Config.Experience.Conversation.Method, Config.Experience.Conversation.FallbackReply, Config.Experience.Conversation.Recommended, Config.Experience.Conversation.InputBoxConfig, Config.Experience.Conversation.WebSearch<br>【Experience.Conversation.AiCall】Config.Experience.Conversation.AiCall.VoiceInteract, Config.Experience.Conversation.AiCall.VoiceCall, Config.Experience.Conversation.AiCall.DigitalHuman<br>【Experience.Advanced】Config.Experience.Advanced.ContextRewrite, Config.Experience.Advanced.ImageTextRetrieval, Config.Experience.Advanced.IntentAchievement, Config.Experience.Advanced.ReplyFlexibility, Config.Experience.Advanced.DialogCustomConfig</p>
         :rtype: :class:`tencentcloud.adp.v20260520.models.FieldMask`
         """
         return self._UpdateMask

@@ -2505,6 +2505,8 @@ class NoticeContentTmplItem(AbstractModel):
         :type GoogleChatRobot: list of GoogleChatRobotNoticeTmplMatcher
         :param _SlackRobot: <p>Slack</p>
         :type SlackRobot: list of SlackRobotNoticeTmplMatcher
+        :param _TeamsWorkflowRobot: <p>Teams 工作流渠道</p>
+        :type TeamsWorkflowRobot: list of TeamsWorkflowRobotNoticeTmplMatcher
         """
         self._QCloudYehe = None
         self._WeWorkRobot = None
@@ -2515,6 +2517,7 @@ class NoticeContentTmplItem(AbstractModel):
         self._PagerDutyRobot = None
         self._GoogleChatRobot = None
         self._SlackRobot = None
+        self._TeamsWorkflowRobot = None
 
     @property
     def QCloudYehe(self):
@@ -2622,6 +2625,17 @@ class NoticeContentTmplItem(AbstractModel):
     def SlackRobot(self, SlackRobot):
         self._SlackRobot = SlackRobot
 
+    @property
+    def TeamsWorkflowRobot(self):
+        r"""<p>Teams 工作流渠道</p>
+        :rtype: list of TeamsWorkflowRobotNoticeTmplMatcher
+        """
+        return self._TeamsWorkflowRobot
+
+    @TeamsWorkflowRobot.setter
+    def TeamsWorkflowRobot(self, TeamsWorkflowRobot):
+        self._TeamsWorkflowRobot = TeamsWorkflowRobot
+
 
     def _deserialize(self, params):
         if params.get("QCloudYehe") is not None:
@@ -2678,6 +2692,12 @@ class NoticeContentTmplItem(AbstractModel):
                 obj = SlackRobotNoticeTmplMatcher()
                 obj._deserialize(item)
                 self._SlackRobot.append(obj)
+        if params.get("TeamsWorkflowRobot") is not None:
+            self._TeamsWorkflowRobot = []
+            for item in params.get("TeamsWorkflowRobot"):
+                obj = TeamsWorkflowRobotNoticeTmplMatcher()
+                obj._deserialize(item)
+                self._TeamsWorkflowRobot.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3575,6 +3595,125 @@ Trigger 告警触发; Recovery 告警恢复
         self._MatchingStatus = params.get("MatchingStatus")
         if params.get("Template") is not None:
             self._Template = TeamsRobotNoticeTmpl()
+            self._Template._deserialize(params.get("Template"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TeamsWorkflowRobotNoticeTmpl(AbstractModel):
+    r"""Microsoft Teams 工作流内容模板配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ContentTmpl: <p>内容模板</p>
+        :type ContentTmpl: str
+        :param _Version: <p>区分 TeamsWorkflow 是自定义内容还是自定义 POST BODY</p><p>枚举值：</p><ul><li>WorkflowText： 自定义内容</li><li>WorkflowJson： 自定义 POST BODY</li></ul>
+        :type Version: str
+        :param _TitleTmpl: <p>标题模版</p>
+        :type TitleTmpl: str
+        """
+        self._ContentTmpl = None
+        self._Version = None
+        self._TitleTmpl = None
+
+    @property
+    def ContentTmpl(self):
+        r"""<p>内容模板</p>
+        :rtype: str
+        """
+        return self._ContentTmpl
+
+    @ContentTmpl.setter
+    def ContentTmpl(self, ContentTmpl):
+        self._ContentTmpl = ContentTmpl
+
+    @property
+    def Version(self):
+        r"""<p>区分 TeamsWorkflow 是自定义内容还是自定义 POST BODY</p><p>枚举值：</p><ul><li>WorkflowText： 自定义内容</li><li>WorkflowJson： 自定义 POST BODY</li></ul>
+        :rtype: str
+        """
+        return self._Version
+
+    @Version.setter
+    def Version(self, Version):
+        self._Version = Version
+
+    @property
+    def TitleTmpl(self):
+        r"""<p>标题模版</p>
+        :rtype: str
+        """
+        return self._TitleTmpl
+
+    @TitleTmpl.setter
+    def TitleTmpl(self, TitleTmpl):
+        self._TitleTmpl = TitleTmpl
+
+
+    def _deserialize(self, params):
+        self._ContentTmpl = params.get("ContentTmpl")
+        self._Version = params.get("Version")
+        self._TitleTmpl = params.get("TitleTmpl")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TeamsWorkflowRobotNoticeTmplMatcher(AbstractModel):
+    r"""Microsoft Teams 工作流通知模板的匹配器
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MatchingStatus: <p>匹配状态 Invalid; Trigger 告警触发; Recovery 告警恢复</p><p>枚举值：</p><ul><li>Trigger： 告警触发</li><li>Recovery： 告警恢复</li></ul>
+        :type MatchingStatus: list of str
+        :param _Template: <p>模板配置</p>
+        :type Template: :class:`tencentcloud.monitor.v20230616.models.TeamsWorkflowRobotNoticeTmpl`
+        """
+        self._MatchingStatus = None
+        self._Template = None
+
+    @property
+    def MatchingStatus(self):
+        r"""<p>匹配状态 Invalid; Trigger 告警触发; Recovery 告警恢复</p><p>枚举值：</p><ul><li>Trigger： 告警触发</li><li>Recovery： 告警恢复</li></ul>
+        :rtype: list of str
+        """
+        return self._MatchingStatus
+
+    @MatchingStatus.setter
+    def MatchingStatus(self, MatchingStatus):
+        self._MatchingStatus = MatchingStatus
+
+    @property
+    def Template(self):
+        r"""<p>模板配置</p>
+        :rtype: :class:`tencentcloud.monitor.v20230616.models.TeamsWorkflowRobotNoticeTmpl`
+        """
+        return self._Template
+
+    @Template.setter
+    def Template(self, Template):
+        self._Template = Template
+
+
+    def _deserialize(self, params):
+        self._MatchingStatus = params.get("MatchingStatus")
+        if params.get("Template") is not None:
+            self._Template = TeamsWorkflowRobotNoticeTmpl()
             self._Template._deserialize(params.get("Template"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():

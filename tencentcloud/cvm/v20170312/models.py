@@ -2871,6 +2871,8 @@ class CreateLaunchTemplateRequest(AbstractModel):
         :type Metadata: :class:`tencentcloud.cvm.v20170312.models.Metadata`
         :param _TemplateDataModifyAction: <p>只允许传递 Update 和 Replace 参数，在模板使用自定义 Metadata 且在 RunInstances 也传递 Metadata 时生效。默认采用 Replace。</p><ul><li>Update：设模板 t含本参数值为Update、 metadata=[k1:v1, k2:v2] ，则RunInstances（给metadata=[k2:v3]）+ t 创建的 cvm 使用metadata=[k1:v1, k2:v3] </li><li>Replace：模板 t含本参数值为Replace、 metadata=[k1:v1, k2:v2] ，则RunInstances（给metadata=[k2:v3]）+ t 创建的 cvm 使用metadata=[k2:v3]<br><strong>注：内测中</strong>。</li></ul>
         :type TemplateDataModifyAction: str
+        :param _NetworkInterfaces: <p>多网卡参数信息。 此功能仅部分地区灰度开放，如需使用<a href="https://console.cloud.tencent.com/workorder/category">请提交工单咨询</a></p>
+        :type NetworkInterfaces: list of NetworkInterfaces
         """
         self._LaunchTemplateName = None
         self._Placement = None
@@ -2903,6 +2905,7 @@ class CreateLaunchTemplateRequest(AbstractModel):
         self._LaunchTemplateTagSpecification = None
         self._Metadata = None
         self._TemplateDataModifyAction = None
+        self._NetworkInterfaces = None
 
     @property
     def LaunchTemplateName(self):
@@ -3245,6 +3248,17 @@ class CreateLaunchTemplateRequest(AbstractModel):
     def TemplateDataModifyAction(self, TemplateDataModifyAction):
         self._TemplateDataModifyAction = TemplateDataModifyAction
 
+    @property
+    def NetworkInterfaces(self):
+        r"""<p>多网卡参数信息。 此功能仅部分地区灰度开放，如需使用<a href="https://console.cloud.tencent.com/workorder/category">请提交工单咨询</a></p>
+        :rtype: list of NetworkInterfaces
+        """
+        return self._NetworkInterfaces
+
+    @NetworkInterfaces.setter
+    def NetworkInterfaces(self, NetworkInterfaces):
+        self._NetworkInterfaces = NetworkInterfaces
+
 
     def _deserialize(self, params):
         self._LaunchTemplateName = params.get("LaunchTemplateName")
@@ -3313,6 +3327,12 @@ class CreateLaunchTemplateRequest(AbstractModel):
             self._Metadata = Metadata()
             self._Metadata._deserialize(params.get("Metadata"))
         self._TemplateDataModifyAction = params.get("TemplateDataModifyAction")
+        if params.get("NetworkInterfaces") is not None:
+            self._NetworkInterfaces = []
+            for item in params.get("NetworkInterfaces"):
+                obj = NetworkInterfaces()
+                obj._deserialize(item)
+                self._NetworkInterfaces.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3435,6 +3455,8 @@ class CreateLaunchTemplateVersionRequest(AbstractModel):
         :type Metadata: :class:`tencentcloud.cvm.v20170312.models.Metadata`
         :param _TemplateDataModifyAction: <p>只允许传递 Update 和 Replace 参数，在模板使用自定义 Metadata 且在 RunInstances 也传递 Metadata 时生效。默认采用 Replace。</p><ul><li>Update：设模板 t含本参数值为Update、 metadata=[k1:v1, k2:v2] ，则RunInstances（给metadata=[k2:v3]）+ t 创建的 cvm 使用metadata=[k1:v1, k2:v3] </li><li>Replace：模板 t含本参数值为Replace、 metadata=[k1:v1, k2:v2] ，则RunInstances（给metadata=[k2:v3]）+ t 创建的 cvm 使用metadata=[k2:v3]<br><strong>注：内测中</strong>。</li></ul>
         :type TemplateDataModifyAction: str
+        :param _NetworkInterfaces: <p>多网卡参数信息。 此功能仅部分地区灰度开放，如需使用<a href="https://console.cloud.tencent.com/workorder/category">请提交工单咨询</a></p>
+        :type NetworkInterfaces: list of NetworkInterfaces
         """
         self._Placement = None
         self._LaunchTemplateId = None
@@ -3467,6 +3489,7 @@ class CreateLaunchTemplateVersionRequest(AbstractModel):
         self._EnableJumboFrame = None
         self._Metadata = None
         self._TemplateDataModifyAction = None
+        self._NetworkInterfaces = None
 
     @property
     def Placement(self):
@@ -3809,6 +3832,17 @@ class CreateLaunchTemplateVersionRequest(AbstractModel):
     def TemplateDataModifyAction(self, TemplateDataModifyAction):
         self._TemplateDataModifyAction = TemplateDataModifyAction
 
+    @property
+    def NetworkInterfaces(self):
+        r"""<p>多网卡参数信息。 此功能仅部分地区灰度开放，如需使用<a href="https://console.cloud.tencent.com/workorder/category">请提交工单咨询</a></p>
+        :rtype: list of NetworkInterfaces
+        """
+        return self._NetworkInterfaces
+
+    @NetworkInterfaces.setter
+    def NetworkInterfaces(self, NetworkInterfaces):
+        self._NetworkInterfaces = NetworkInterfaces
+
 
     def _deserialize(self, params):
         if params.get("Placement") is not None:
@@ -3872,6 +3906,12 @@ class CreateLaunchTemplateVersionRequest(AbstractModel):
             self._Metadata = Metadata()
             self._Metadata._deserialize(params.get("Metadata"))
         self._TemplateDataModifyAction = params.get("TemplateDataModifyAction")
+        if params.get("NetworkInterfaces") is not None:
+            self._NetworkInterfaces = []
+            for item in params.get("NetworkInterfaces"):
+                obj = NetworkInterfaces()
+                obj._deserialize(item)
+                self._NetworkInterfaces.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -12643,6 +12683,8 @@ class InquiryPriceRunInstancesRequest(AbstractModel):
         :type CpuTopology: :class:`tencentcloud.cvm.v20170312.models.CpuTopology`
         :param _LaunchTemplate: <p>实例启动模板。</p>
         :type LaunchTemplate: :class:`tencentcloud.cvm.v20170312.models.LaunchTemplate`
+        :param _NetworkInterfaces: <p>多网卡参数信息。 此功能仅部分地区灰度开放，如需使用<a href="https://console.cloud.tencent.com/workorder/category">请提交工单咨询</a></p>
+        :type NetworkInterfaces: list of NetworkInterfaces
         """
         self._Placement = None
         self._ImageId = None
@@ -12666,6 +12708,7 @@ class InquiryPriceRunInstancesRequest(AbstractModel):
         self._HpcClusterId = None
         self._CpuTopology = None
         self._LaunchTemplate = None
+        self._NetworkInterfaces = None
 
     @property
     def Placement(self):
@@ -12909,6 +12952,17 @@ class InquiryPriceRunInstancesRequest(AbstractModel):
     def LaunchTemplate(self, LaunchTemplate):
         self._LaunchTemplate = LaunchTemplate
 
+    @property
+    def NetworkInterfaces(self):
+        r"""<p>多网卡参数信息。 此功能仅部分地区灰度开放，如需使用<a href="https://console.cloud.tencent.com/workorder/category">请提交工单咨询</a></p>
+        :rtype: list of NetworkInterfaces
+        """
+        return self._NetworkInterfaces
+
+    @NetworkInterfaces.setter
+    def NetworkInterfaces(self, NetworkInterfaces):
+        self._NetworkInterfaces = NetworkInterfaces
+
 
     def _deserialize(self, params):
         if params.get("Placement") is not None:
@@ -12965,6 +13019,12 @@ class InquiryPriceRunInstancesRequest(AbstractModel):
         if params.get("LaunchTemplate") is not None:
             self._LaunchTemplate = LaunchTemplate()
             self._LaunchTemplate._deserialize(params.get("LaunchTemplate"))
+        if params.get("NetworkInterfaces") is not None:
+            self._NetworkInterfaces = []
+            for item in params.get("NetworkInterfaces"):
+                obj = NetworkInterfaces()
+                obj._deserialize(item)
+                self._NetworkInterfaces.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -18289,6 +18349,134 @@ class ModifyLaunchTemplateDefaultVersionResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class NetworkInterfaces(AbstractModel):
+    r"""创建实例时的网卡配置信息，包含主网卡和辅助网卡的VPC、子网、IP分配等网络参数。
+
+    此功能仅部分地区灰度开放，如需使用[请提交工单咨询](https://console.cloud.tencent.com/workorder/category)
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InterfaceType: <p>表示是主网卡还是辅助网卡。注意：枚举值要全部大写；<strong>NetworkInterfaces数组中必须要有PRIMARY</strong>，且PRIMARY只能存在一个，SECONDARY可以存在多个。</p><p>枚举值：</p><ul><li>PRIMARY： 主网卡</li><li>SECONDARY： 辅助网卡</li></ul>
+        :type InterfaceType: str
+        :param _VpcId: <p>私有网络ID，形如<code>vpc-xxx</code>。有效的VpcId可通过登录<a href="https://console.cloud.tencent.com/vpc/vpc?rid=1">控制台</a>查询；也可以调用接口 <a href="https://cloud.tencent.com/document/product/215/15778">DescribeVpcs</a> ，从接口返回中的<code>VpcId</code>字段获取。若在创建子机时VpcId与SubnetId同时传入<code>DEFAULT</code>，则强制使用默认vpc网络。</p>
+        :type VpcId: str
+        :param _SubnetId: <p>私有网络子网ID，形如<code>subnet-xxx</code>。有效的私有网络子网ID可通过登录<a href="https://console.cloud.tencent.com/vpc/subnet?rid=1">控制台</a>查询；也可以调用接口  <a href="https://cloud.tencent.com/document/product/215/15784">DescribeSubnets</a> ，从接口返回中的<code>SubnetId</code>字段获取。若在创建子机时SubnetId与VpcId同时传入<code>DEFAULT</code>，则强制使用默认vpc网络。</p>
+        :type SubnetId: str
+        :param _PrivateIpv4AddressCount: <p>此字段是必填字段，表示每张网卡自动分配私有网卡IP个数。注意：不允许客户同时指定ip且动态分配ip。</p><p>取值范围：[1, 50]</p>
+        :type PrivateIpv4AddressCount: int
+        :param _NetworkInterfaceId: <p>指定存量的网卡ID用于绑定。只对辅助网卡生效，主网卡的生成采用既有流程。注：客户手动指定已有弹性网卡时，相关接口InstanceCount必须为1。主网卡不支持指定。</p>
+        :type NetworkInterfaceId: str
+        :param _SecurityGroupIds: <p>实例所属安全组。该参数可以通过调用 <a href="https://cloud.tencent.com/document/api/215/15808">DescribeSecurityGroups</a> 的返回值中的 <code>SecurityGroupId</code> 字段来获取。若不指定该参数，则绑定指定项目下的默认安全组，如默认安全组不存在则将自动创建。</p><p>每个用户在每个地域每个项目下最多可设置50个安全组。</p>
+        :type SecurityGroupIds: list of str
+        :param _DeleteWithInstance: <p>是否随CVM删除绑定的弹性网卡，参数只对辅助网卡生效。默认保留辅助网卡兼容当前线上行为。该参数放置在主网卡上不生效，主网卡会随着CVM一同销毁。</p><p>默认值：<code>false</code></p>
+        :type DeleteWithInstance: bool
+        """
+        self._InterfaceType = None
+        self._VpcId = None
+        self._SubnetId = None
+        self._PrivateIpv4AddressCount = None
+        self._NetworkInterfaceId = None
+        self._SecurityGroupIds = None
+        self._DeleteWithInstance = None
+
+    @property
+    def InterfaceType(self):
+        r"""<p>表示是主网卡还是辅助网卡。注意：枚举值要全部大写；<strong>NetworkInterfaces数组中必须要有PRIMARY</strong>，且PRIMARY只能存在一个，SECONDARY可以存在多个。</p><p>枚举值：</p><ul><li>PRIMARY： 主网卡</li><li>SECONDARY： 辅助网卡</li></ul>
+        :rtype: str
+        """
+        return self._InterfaceType
+
+    @InterfaceType.setter
+    def InterfaceType(self, InterfaceType):
+        self._InterfaceType = InterfaceType
+
+    @property
+    def VpcId(self):
+        r"""<p>私有网络ID，形如<code>vpc-xxx</code>。有效的VpcId可通过登录<a href="https://console.cloud.tencent.com/vpc/vpc?rid=1">控制台</a>查询；也可以调用接口 <a href="https://cloud.tencent.com/document/product/215/15778">DescribeVpcs</a> ，从接口返回中的<code>VpcId</code>字段获取。若在创建子机时VpcId与SubnetId同时传入<code>DEFAULT</code>，则强制使用默认vpc网络。</p>
+        :rtype: str
+        """
+        return self._VpcId
+
+    @VpcId.setter
+    def VpcId(self, VpcId):
+        self._VpcId = VpcId
+
+    @property
+    def SubnetId(self):
+        r"""<p>私有网络子网ID，形如<code>subnet-xxx</code>。有效的私有网络子网ID可通过登录<a href="https://console.cloud.tencent.com/vpc/subnet?rid=1">控制台</a>查询；也可以调用接口  <a href="https://cloud.tencent.com/document/product/215/15784">DescribeSubnets</a> ，从接口返回中的<code>SubnetId</code>字段获取。若在创建子机时SubnetId与VpcId同时传入<code>DEFAULT</code>，则强制使用默认vpc网络。</p>
+        :rtype: str
+        """
+        return self._SubnetId
+
+    @SubnetId.setter
+    def SubnetId(self, SubnetId):
+        self._SubnetId = SubnetId
+
+    @property
+    def PrivateIpv4AddressCount(self):
+        r"""<p>此字段是必填字段，表示每张网卡自动分配私有网卡IP个数。注意：不允许客户同时指定ip且动态分配ip。</p><p>取值范围：[1, 50]</p>
+        :rtype: int
+        """
+        return self._PrivateIpv4AddressCount
+
+    @PrivateIpv4AddressCount.setter
+    def PrivateIpv4AddressCount(self, PrivateIpv4AddressCount):
+        self._PrivateIpv4AddressCount = PrivateIpv4AddressCount
+
+    @property
+    def NetworkInterfaceId(self):
+        r"""<p>指定存量的网卡ID用于绑定。只对辅助网卡生效，主网卡的生成采用既有流程。注：客户手动指定已有弹性网卡时，相关接口InstanceCount必须为1。主网卡不支持指定。</p>
+        :rtype: str
+        """
+        return self._NetworkInterfaceId
+
+    @NetworkInterfaceId.setter
+    def NetworkInterfaceId(self, NetworkInterfaceId):
+        self._NetworkInterfaceId = NetworkInterfaceId
+
+    @property
+    def SecurityGroupIds(self):
+        r"""<p>实例所属安全组。该参数可以通过调用 <a href="https://cloud.tencent.com/document/api/215/15808">DescribeSecurityGroups</a> 的返回值中的 <code>SecurityGroupId</code> 字段来获取。若不指定该参数，则绑定指定项目下的默认安全组，如默认安全组不存在则将自动创建。</p><p>每个用户在每个地域每个项目下最多可设置50个安全组。</p>
+        :rtype: list of str
+        """
+        return self._SecurityGroupIds
+
+    @SecurityGroupIds.setter
+    def SecurityGroupIds(self, SecurityGroupIds):
+        self._SecurityGroupIds = SecurityGroupIds
+
+    @property
+    def DeleteWithInstance(self):
+        r"""<p>是否随CVM删除绑定的弹性网卡，参数只对辅助网卡生效。默认保留辅助网卡兼容当前线上行为。该参数放置在主网卡上不生效，主网卡会随着CVM一同销毁。</p><p>默认值：<code>false</code></p>
+        :rtype: bool
+        """
+        return self._DeleteWithInstance
+
+    @DeleteWithInstance.setter
+    def DeleteWithInstance(self, DeleteWithInstance):
+        self._DeleteWithInstance = DeleteWithInstance
+
+
+    def _deserialize(self, params):
+        self._InterfaceType = params.get("InterfaceType")
+        self._VpcId = params.get("VpcId")
+        self._SubnetId = params.get("SubnetId")
+        self._PrivateIpv4AddressCount = params.get("PrivateIpv4AddressCount")
+        self._NetworkInterfaceId = params.get("NetworkInterfaceId")
+        self._SecurityGroupIds = params.get("SecurityGroupIds")
+        self._DeleteWithInstance = params.get("DeleteWithInstance")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class OperationCountLimit(AbstractModel):
     r"""描述了单台实例操作次数限制
 
@@ -21454,6 +21642,8 @@ class RunInstancesRequest(AbstractModel):
         :type DisableApiTermination: bool
         :param _EnableJumboFrame: <p>实例是否开启巨型帧，取值范围：<br>&lt;li/&gt; true：表示实例开启巨型帧，只有支持巨型帧的机型可设置为true。<br>&lt;li/&gt;false：表示实例关闭巨型帧，只有支持巨型帧的机型可设置为false。<br> 支持巨型帧的实例规格： <a href="https://cloud.tencent.com/document/product/213/11518">实例规格</a></p>
         :type EnableJumboFrame: bool
+        :param _NetworkInterfaces: <p>多网卡参数信息。 此功能仅部分地区灰度开放，如需使用<a href="https://console.cloud.tencent.com/workorder/category">请提交工单咨询</a></p>
+        :type NetworkInterfaces: list of NetworkInterfaces
         """
         self._InstanceChargeType = None
         self._InstanceChargePrepaid = None
@@ -21488,6 +21678,7 @@ class RunInstancesRequest(AbstractModel):
         self._PartitionNumber = None
         self._DisableApiTermination = None
         self._EnableJumboFrame = None
+        self._NetworkInterfaces = None
 
     @property
     def InstanceChargeType(self):
@@ -21852,6 +22043,17 @@ class RunInstancesRequest(AbstractModel):
     def EnableJumboFrame(self, EnableJumboFrame):
         self._EnableJumboFrame = EnableJumboFrame
 
+    @property
+    def NetworkInterfaces(self):
+        r"""<p>多网卡参数信息。 此功能仅部分地区灰度开放，如需使用<a href="https://console.cloud.tencent.com/workorder/category">请提交工单咨询</a></p>
+        :rtype: list of NetworkInterfaces
+        """
+        return self._NetworkInterfaces
+
+    @NetworkInterfaces.setter
+    def NetworkInterfaces(self, NetworkInterfaces):
+        self._NetworkInterfaces = NetworkInterfaces
+
 
     def _deserialize(self, params):
         self._InstanceChargeType = params.get("InstanceChargeType")
@@ -21921,6 +22123,12 @@ class RunInstancesRequest(AbstractModel):
         self._PartitionNumber = params.get("PartitionNumber")
         self._DisableApiTermination = params.get("DisableApiTermination")
         self._EnableJumboFrame = params.get("EnableJumboFrame")
+        if params.get("NetworkInterfaces") is not None:
+            self._NetworkInterfaces = []
+            for item in params.get("NetworkInterfaces"):
+                obj = NetworkInterfaces()
+                obj._deserialize(item)
+                self._NetworkInterfaces.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

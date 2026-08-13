@@ -6118,13 +6118,13 @@ class DeleteTableConfigRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _JobId: 作业ID
+        :param _JobId: <p>作业ID</p>
         :type JobId: str
-        :param _DebugId: 调试作业ID
+        :param _DebugId: <p>调试作业ID</p>
         :type DebugId: int
-        :param _TableName: 表名
+        :param _TableName: <p>表名</p>
         :type TableName: str
-        :param _WorkSpaceId: 工作空间 SerialId
+        :param _WorkSpaceId: <p>工作空间 SerialId</p>
         :type WorkSpaceId: str
         """
         self._JobId = None
@@ -6134,7 +6134,7 @@ class DeleteTableConfigRequest(AbstractModel):
 
     @property
     def JobId(self):
-        r"""作业ID
+        r"""<p>作业ID</p>
         :rtype: str
         """
         return self._JobId
@@ -6145,7 +6145,7 @@ class DeleteTableConfigRequest(AbstractModel):
 
     @property
     def DebugId(self):
-        r"""调试作业ID
+        r"""<p>调试作业ID</p>
         :rtype: int
         """
         return self._DebugId
@@ -6156,7 +6156,7 @@ class DeleteTableConfigRequest(AbstractModel):
 
     @property
     def TableName(self):
-        r"""表名
+        r"""<p>表名</p>
         :rtype: str
         """
         return self._TableName
@@ -6167,7 +6167,7 @@ class DeleteTableConfigRequest(AbstractModel):
 
     @property
     def WorkSpaceId(self):
-        r"""工作空间 SerialId
+        r"""<p>工作空间 SerialId</p>
         :rtype: str
         """
         return self._WorkSpaceId

@@ -5372,41 +5372,41 @@ class ServiceDetail(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ServiceId: 服务id
+        :param _ServiceId: <p>服务id</p>
         :type ServiceId: str
-        :param _ServiceName: 服务名称
+        :param _ServiceName: <p>服务名称</p>
         :type ServiceName: str
-        :param _ServiceState: 服务状态
+        :param _ServiceState: <p>服务状态</p>
         :type ServiceState: str
-        :param _RunningReplicas: 运行中的副本数
+        :param _RunningReplicas: <p>运行中的副本数</p>
         :type RunningReplicas: int
-        :param _TotalReplicas: 期望的副本总数
+        :param _TotalReplicas: <p>期望的副本总数</p>
         :type TotalReplicas: int
-        :param _CreateTime: 创建时间
+        :param _CreateTime: <p>创建时间</p>
         :type CreateTime: str
-        :param _ComputeSet: 算力套餐详情
+        :param _ComputeSet: <p>算力套餐详情</p>
         :type ComputeSet: list of ComputeDetail
-        :param _ModelName: 模型名称
+        :param _ModelName: <p>模型名称</p>
         :type ModelName: str
-        :param _DeploymentConfigs: 服务部署信息
+        :param _DeploymentConfigs: <p>服务部署信息</p>
         :type DeploymentConfigs: list of DeploymentConfig
-        :param _HyperParam: 服务超参数配置
+        :param _HyperParam: <p>服务超参数配置</p>
         :type HyperParam: :class:`tencentcloud.hai.v20230812.models.HyperParam`
-        :param _SecurityType: 
+        :param _SecurityType: <p>安全类型</p>
         :type SecurityType: str
-        :param _RoleComputeSet: 
+        :param _RoleComputeSet: <p>角色算力配置列表</p>
         :type RoleComputeSet: list of ComputeDetail
-        :param _TargetReplicas: 
+        :param _TargetReplicas: <p>目标副本数</p>
         :type TargetReplicas: int
-        :param _ChargeType: 计费类型：POSTPAID_BY_HOUR(按量)/PREPAID_BY_MONTH(包月)
+        :param _ChargeType: <p>计费类型：POSTPAID_BY_HOUR(按量)/PREPAID_BY_MONTH(包月)</p>
         :type ChargeType: str
-        :param _ExpireTime: 到期时间(包月)，按量为空
+        :param _ExpireTime: <p>到期时间(包月)，按量为空</p>
         :type ExpireTime: str
-        :param _RenewFlag: 自动续费标识(包月)
+        :param _RenewFlag: <p>自动续费标识(包月)</p>
         :type RenewFlag: str
-        :param _RestrictState: 受限状态(如欠费隔离)
+        :param _RestrictState: <p>受限状态(如欠费隔离)</p>
         :type RestrictState: str
-        :param _IsCustomDeploy: 是否自定义部署：1是 0否
+        :param _IsCustomDeploy: <p>是否自定义部署：1是 0否</p>
         :type IsCustomDeploy: int
         """
         self._ServiceId = None
@@ -5430,7 +5430,7 @@ class ServiceDetail(AbstractModel):
 
     @property
     def ServiceId(self):
-        r"""服务id
+        r"""<p>服务id</p>
         :rtype: str
         """
         return self._ServiceId
@@ -5441,7 +5441,7 @@ class ServiceDetail(AbstractModel):
 
     @property
     def ServiceName(self):
-        r"""服务名称
+        r"""<p>服务名称</p>
         :rtype: str
         """
         return self._ServiceName
@@ -5452,7 +5452,7 @@ class ServiceDetail(AbstractModel):
 
     @property
     def ServiceState(self):
-        r"""服务状态
+        r"""<p>服务状态</p>
         :rtype: str
         """
         return self._ServiceState
@@ -5463,7 +5463,7 @@ class ServiceDetail(AbstractModel):
 
     @property
     def RunningReplicas(self):
-        r"""运行中的副本数
+        r"""<p>运行中的副本数</p>
         :rtype: int
         """
         return self._RunningReplicas
@@ -5474,7 +5474,7 @@ class ServiceDetail(AbstractModel):
 
     @property
     def TotalReplicas(self):
-        r"""期望的副本总数
+        r"""<p>期望的副本总数</p>
         :rtype: int
         """
         return self._TotalReplicas
@@ -5485,7 +5485,7 @@ class ServiceDetail(AbstractModel):
 
     @property
     def CreateTime(self):
-        r"""创建时间
+        r"""<p>创建时间</p>
         :rtype: str
         """
         return self._CreateTime
@@ -5496,7 +5496,7 @@ class ServiceDetail(AbstractModel):
 
     @property
     def ComputeSet(self):
-        r"""算力套餐详情
+        r"""<p>算力套餐详情</p>
         :rtype: list of ComputeDetail
         """
         return self._ComputeSet
@@ -5507,7 +5507,7 @@ class ServiceDetail(AbstractModel):
 
     @property
     def ModelName(self):
-        r"""模型名称
+        r"""<p>模型名称</p>
         :rtype: str
         """
         return self._ModelName
@@ -5518,7 +5518,7 @@ class ServiceDetail(AbstractModel):
 
     @property
     def DeploymentConfigs(self):
-        r"""服务部署信息
+        r"""<p>服务部署信息</p>
         :rtype: list of DeploymentConfig
         """
         return self._DeploymentConfigs
@@ -5529,7 +5529,7 @@ class ServiceDetail(AbstractModel):
 
     @property
     def HyperParam(self):
-        r"""服务超参数配置
+        r"""<p>服务超参数配置</p>
         :rtype: :class:`tencentcloud.hai.v20230812.models.HyperParam`
         """
         return self._HyperParam
@@ -5540,7 +5540,7 @@ class ServiceDetail(AbstractModel):
 
     @property
     def SecurityType(self):
-        r"""
+        r"""<p>安全类型</p>
         :rtype: str
         """
         return self._SecurityType
@@ -5551,7 +5551,7 @@ class ServiceDetail(AbstractModel):
 
     @property
     def RoleComputeSet(self):
-        r"""
+        r"""<p>角色算力配置列表</p>
         :rtype: list of ComputeDetail
         """
         return self._RoleComputeSet
@@ -5562,7 +5562,7 @@ class ServiceDetail(AbstractModel):
 
     @property
     def TargetReplicas(self):
-        r"""
+        r"""<p>目标副本数</p>
         :rtype: int
         """
         return self._TargetReplicas
@@ -5573,7 +5573,7 @@ class ServiceDetail(AbstractModel):
 
     @property
     def ChargeType(self):
-        r"""计费类型：POSTPAID_BY_HOUR(按量)/PREPAID_BY_MONTH(包月)
+        r"""<p>计费类型：POSTPAID_BY_HOUR(按量)/PREPAID_BY_MONTH(包月)</p>
         :rtype: str
         """
         return self._ChargeType
@@ -5584,7 +5584,7 @@ class ServiceDetail(AbstractModel):
 
     @property
     def ExpireTime(self):
-        r"""到期时间(包月)，按量为空
+        r"""<p>到期时间(包月)，按量为空</p>
         :rtype: str
         """
         return self._ExpireTime
@@ -5595,7 +5595,7 @@ class ServiceDetail(AbstractModel):
 
     @property
     def RenewFlag(self):
-        r"""自动续费标识(包月)
+        r"""<p>自动续费标识(包月)</p>
         :rtype: str
         """
         return self._RenewFlag
@@ -5606,7 +5606,7 @@ class ServiceDetail(AbstractModel):
 
     @property
     def RestrictState(self):
-        r"""受限状态(如欠费隔离)
+        r"""<p>受限状态(如欠费隔离)</p>
         :rtype: str
         """
         return self._RestrictState
@@ -5617,7 +5617,7 @@ class ServiceDetail(AbstractModel):
 
     @property
     def IsCustomDeploy(self):
-        r"""是否自定义部署：1是 0否
+        r"""<p>是否自定义部署：1是 0否</p>
         :rtype: int
         """
         return self._IsCustomDeploy

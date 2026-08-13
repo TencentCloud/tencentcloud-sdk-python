@@ -2175,6 +2175,29 @@ class MpsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeAigcTaskList(self, request):
+        r"""查询AIGC任务列表详细信息
+
+        :param request: Request instance for DescribeAigcTaskList.
+        :type request: :class:`tencentcloud.mps.v20190612.models.DescribeAigcTaskListRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.DescribeAigcTaskListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAigcTaskList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeAigcTaskListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeAigcTaskStatus(self, request):
         r"""查询AIGC场景任务接口
 

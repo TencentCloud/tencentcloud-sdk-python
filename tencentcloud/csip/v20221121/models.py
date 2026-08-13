@@ -23736,9 +23736,9 @@ class DeleteDspmBackupLogListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Id: 备份日志Id
+        :param _Id: <p>备份日志Id</p>
         :type Id: int
-        :param _MemberId: 集团账号的成员id
+        :param _MemberId: <p>集团账号的成员id</p>
         :type MemberId: list of str
         """
         self._Id = None
@@ -23746,7 +23746,7 @@ class DeleteDspmBackupLogListRequest(AbstractModel):
 
     @property
     def Id(self):
-        r"""备份日志Id
+        r"""<p>备份日志Id</p>
         :rtype: int
         """
         return self._Id
@@ -23757,7 +23757,7 @@ class DeleteDspmBackupLogListRequest(AbstractModel):
 
     @property
     def MemberId(self):
-        r"""集团账号的成员id
+        r"""<p>集团账号的成员id</p>
         :rtype: list of str
         """
         return self._MemberId
@@ -24477,9 +24477,9 @@ class DeleteDspmRestoreLogListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Id: 日志Id
+        :param _Id: <p>日志Id</p>
         :type Id: int
-        :param _MemberId: 集团账号的成员id
+        :param _MemberId: <p>集团账号的成员id</p>
         :type MemberId: list of str
         """
         self._Id = None
@@ -24487,7 +24487,7 @@ class DeleteDspmRestoreLogListRequest(AbstractModel):
 
     @property
     def Id(self):
-        r"""日志Id
+        r"""<p>日志Id</p>
         :rtype: int
         """
         return self._Id
@@ -24498,7 +24498,7 @@ class DeleteDspmRestoreLogListRequest(AbstractModel):
 
     @property
     def MemberId(self):
-        r"""集团账号的成员id
+        r"""<p>集团账号的成员id</p>
         :rtype: list of str
         """
         return self._MemberId
@@ -37300,14 +37300,14 @@ class DescribeDspmBackupSettingRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _MemberId: 集团账号的成员id
+        :param _MemberId: <p>集团账号的成员id</p>
         :type MemberId: list of str
         """
         self._MemberId = None
 
     @property
     def MemberId(self):
-        r"""集团账号的成员id
+        r"""<p>集团账号的成员id</p>
         :rtype: list of str
         """
         return self._MemberId
@@ -37336,15 +37336,15 @@ class DescribeDspmBackupSettingResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _BackupLogSaveTime: 备份日志保留时长
+        :param _BackupLogSaveTime: <p>备份日志保留时长</p>
         :type BackupLogSaveTime: int
-        :param _RestoreLogSaveTime: 恢复日志保留时长
+        :param _RestoreLogSaveTime: <p>恢复日志保留时长</p>
         :type RestoreLogSaveTime: int
-        :param _LogMaxSaveTime: 日志最大生命周期限制
+        :param _LogMaxSaveTime: <p>日志最大生命周期限制</p>
         :type LogMaxSaveTime: int
-        :param _OnlineLogMaxSaveTime: 在线日志最大天数限制
+        :param _OnlineLogMaxSaveTime: <p>在线日志最大天数限制</p>
         :type OnlineLogMaxSaveTime: int
-        :param _MaxOnlineLogCount: 最大在线日志条数，单位是：个
+        :param _MaxOnlineLogCount: <p>最大在线日志条数，单位是：个</p>
         :type MaxOnlineLogCount: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -37358,7 +37358,7 @@ class DescribeDspmBackupSettingResponse(AbstractModel):
 
     @property
     def BackupLogSaveTime(self):
-        r"""备份日志保留时长
+        r"""<p>备份日志保留时长</p>
         :rtype: int
         """
         return self._BackupLogSaveTime
@@ -37369,7 +37369,7 @@ class DescribeDspmBackupSettingResponse(AbstractModel):
 
     @property
     def RestoreLogSaveTime(self):
-        r"""恢复日志保留时长
+        r"""<p>恢复日志保留时长</p>
         :rtype: int
         """
         return self._RestoreLogSaveTime
@@ -37380,7 +37380,7 @@ class DescribeDspmBackupSettingResponse(AbstractModel):
 
     @property
     def LogMaxSaveTime(self):
-        r"""日志最大生命周期限制
+        r"""<p>日志最大生命周期限制</p>
         :rtype: int
         """
         return self._LogMaxSaveTime
@@ -37391,7 +37391,7 @@ class DescribeDspmBackupSettingResponse(AbstractModel):
 
     @property
     def OnlineLogMaxSaveTime(self):
-        r"""在线日志最大天数限制
+        r"""<p>在线日志最大天数限制</p>
         :rtype: int
         """
         return self._OnlineLogMaxSaveTime
@@ -37402,7 +37402,7 @@ class DescribeDspmBackupSettingResponse(AbstractModel):
 
     @property
     def MaxOnlineLogCount(self):
-        r"""最大在线日志条数，单位是：个
+        r"""<p>最大在线日志条数，单位是：个</p>
         :rtype: int
         """
         return self._MaxOnlineLogCount
@@ -39415,73 +39415,73 @@ class DescribeDspmLogListRequest(AbstractModel):
         r"""
         :param _MemberId: <p>集团账号的成员id</p>
         :type MemberId: list of str
-        :param _Limit: 限制数目
+        :param _Limit: <p>限制数目</p>
         :type Limit: int
-        :param _Offset: 偏移量
+        :param _Offset: <p>偏移量</p>
         :type Offset: int
-        :param _Sort: 排序方式(desc=倒叙,asc=升序)
+        :param _Sort: <p>排序方式(desc=倒叙,asc=升序)</p>
         :type Sort: str
-        :param _Field: 排序字段(opTime=时间,dangerLvl=风险等级)
+        :param _Field: <p>排序字段(opTime=时间,dangerLvl=风险等级)</p>
         :type Field: str
-        :param _DangerLevel: 风险等级(0-安全,1-低风险,2-中风险,3-高风险,不传全部)
+        :param _DangerLevel: <p>风险等级(0-安全,1-低风险,2-中风险,3-高风险,不传全部)</p>
         :type DangerLevel: str
-        :param _DbName: 数据库名称
+        :param _DbName: <p>数据库名称</p>
         :type DbName: str
-        :param _DbPort: 数据库端口
+        :param _DbPort: <p>数据库端口</p>
         :type DbPort: int
-        :param _DbIp: 数据库 IP
+        :param _DbIp: <p>数据库 IP</p>
         :type DbIp: str
-        :param _AssetsId: 资产 ID
+        :param _AssetsId: <p>资产 ID</p>
         :type AssetsId: int
-        :param _SessionId: 会话 ID
+        :param _SessionId: <p>会话 ID</p>
         :type SessionId: str
-        :param _ClientSideIp: 客户端 IP
+        :param _ClientSideIp: <p>客户端 IP</p>
         :type ClientSideIp: str
-        :param _EndTime: 结束时间
+        :param _EndTime: <p>结束时间</p>
         :type EndTime: int
-        :param _HitRule: 命中规则
+        :param _HitRule: <p>命中规则</p>
         :type HitRule: int
-        :param _StartTime: 开始时间
+        :param _StartTime: <p>开始时间</p>
         :type StartTime: int
-        :param _FuzzySearch: 模糊查询
+        :param _FuzzySearch: <p>模糊查询</p>
         :type FuzzySearch: str
-        :param _UserName: 用户名
+        :param _UserName: <p>用户名</p>
         :type UserName: str
-        :param _RestoreLogId: 恢复日志id
+        :param _RestoreLogId: <p>恢复日志id</p>
         :type RestoreLogId: int
-        :param _ClientName: 客户端
+        :param _ClientName: <p>客户端</p>
         :type ClientName: str
-        :param _SourceTypes: 流量来源，取值 Agent/Proxy/空；传Agent会返回Agent的日志，传Proxy会返回Proxy日志，两者都传或不传则返回所有
+        :param _SourceTypes: <p>流量来源，取值 Agent/Proxy/空；传Agent会返回Agent的日志，传Proxy会返回Proxy日志，两者都传或不传则返回所有</p>
         :type SourceTypes: list of str
-        :param _TableName: 表名，长度限制64，多个表名查询的话可以用空格连接
+        :param _TableName: <p>表名，长度限制64，多个表名查询的话可以用空格连接</p>
         :type TableName: str
-        :param _FieldName: 字段名，长度限制64，多个字段名查询的话可以用空格连接
+        :param _FieldName: <p>字段名，长度限制64，多个字段名查询的话可以用空格连接</p>
         :type FieldName: str
-        :param _SqlMainTypes: SQL 主要类型，DDL, DML, DCL, TCL
+        :param _SqlMainTypes: <p>SQL 主要类型，DDL, DML, DCL, TCL</p>
         :type SqlMainTypes: list of str
-        :param _SqlType: 操作类型
+        :param _SqlType: <p>操作类型</p>
         :type SqlType: str
-        :param _RowNumMin: 影响行数最小值 
+        :param _RowNumMin: <p>影响行数最小值</p>
         :type RowNumMin: int
-        :param _RowNumMax: 影响行数最大值
+        :param _RowNumMax: <p>影响行数最大值</p>
         :type RowNumMax: int
-        :param _DbTypes: 数据库类型, 支持的值：cdb，mariadb
+        :param _DbTypes: <p>数据库类型, 支持的值：cdb，mariadb</p>
         :type DbTypes: list of str
-        :param _RetNo: 返回码
+        :param _RetNo: <p>返回码</p>
         :type RetNo: int
-        :param _ClientDriverName: 客户端工具
+        :param _ClientDriverName: <p>客户端工具</p>
         :type ClientDriverName: str
-        :param _ClientPort: 客户端端口
+        :param _ClientPort: <p>客户端端口</p>
         :type ClientPort: int
-        :param _LogId: 审计日志 ID
+        :param _LogId: <p>审计日志 ID</p>
         :type LogId: str
-        :param _DangerLevels: 风险等级数组(0-安全,1-低风险,2-中风险,3-高风险)
+        :param _DangerLevels: <p>风险等级数组(0-安全,1-低风险,2-中风险,3-高风险)</p>
         :type DangerLevels: list of int
-        :param _SensitiveCategoryRule: 字段分类
+        :param _SensitiveCategoryRule: <p>字段分类</p>
         :type SensitiveCategoryRule: str
-        :param _SensitiveLevelRisk: 字段分级
+        :param _SensitiveLevelRisk: <p>字段分级</p>
         :type SensitiveLevelRisk: str
-        :param _ClientMac: 客户端MAC
+        :param _ClientMac: <p>客户端MAC</p>
         :type ClientMac: str
         """
         self._MemberId = None
@@ -39533,7 +39533,7 @@ class DescribeDspmLogListRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""限制数目
+        r"""<p>限制数目</p>
         :rtype: int
         """
         return self._Limit
@@ -39544,7 +39544,7 @@ class DescribeDspmLogListRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""偏移量
+        r"""<p>偏移量</p>
         :rtype: int
         """
         return self._Offset
@@ -39555,7 +39555,7 @@ class DescribeDspmLogListRequest(AbstractModel):
 
     @property
     def Sort(self):
-        r"""排序方式(desc=倒叙,asc=升序)
+        r"""<p>排序方式(desc=倒叙,asc=升序)</p>
         :rtype: str
         """
         return self._Sort
@@ -39566,7 +39566,7 @@ class DescribeDspmLogListRequest(AbstractModel):
 
     @property
     def Field(self):
-        r"""排序字段(opTime=时间,dangerLvl=风险等级)
+        r"""<p>排序字段(opTime=时间,dangerLvl=风险等级)</p>
         :rtype: str
         """
         return self._Field
@@ -39577,7 +39577,7 @@ class DescribeDspmLogListRequest(AbstractModel):
 
     @property
     def DangerLevel(self):
-        r"""风险等级(0-安全,1-低风险,2-中风险,3-高风险,不传全部)
+        r"""<p>风险等级(0-安全,1-低风险,2-中风险,3-高风险,不传全部)</p>
         :rtype: str
         """
         return self._DangerLevel
@@ -39588,7 +39588,7 @@ class DescribeDspmLogListRequest(AbstractModel):
 
     @property
     def DbName(self):
-        r"""数据库名称
+        r"""<p>数据库名称</p>
         :rtype: str
         """
         return self._DbName
@@ -39599,7 +39599,7 @@ class DescribeDspmLogListRequest(AbstractModel):
 
     @property
     def DbPort(self):
-        r"""数据库端口
+        r"""<p>数据库端口</p>
         :rtype: int
         """
         return self._DbPort
@@ -39610,7 +39610,7 @@ class DescribeDspmLogListRequest(AbstractModel):
 
     @property
     def DbIp(self):
-        r"""数据库 IP
+        r"""<p>数据库 IP</p>
         :rtype: str
         """
         return self._DbIp
@@ -39621,7 +39621,7 @@ class DescribeDspmLogListRequest(AbstractModel):
 
     @property
     def AssetsId(self):
-        r"""资产 ID
+        r"""<p>资产 ID</p>
         :rtype: int
         """
         return self._AssetsId
@@ -39632,7 +39632,7 @@ class DescribeDspmLogListRequest(AbstractModel):
 
     @property
     def SessionId(self):
-        r"""会话 ID
+        r"""<p>会话 ID</p>
         :rtype: str
         """
         return self._SessionId
@@ -39643,7 +39643,7 @@ class DescribeDspmLogListRequest(AbstractModel):
 
     @property
     def ClientSideIp(self):
-        r"""客户端 IP
+        r"""<p>客户端 IP</p>
         :rtype: str
         """
         return self._ClientSideIp
@@ -39654,7 +39654,7 @@ class DescribeDspmLogListRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        r"""结束时间
+        r"""<p>结束时间</p>
         :rtype: int
         """
         return self._EndTime
@@ -39665,7 +39665,7 @@ class DescribeDspmLogListRequest(AbstractModel):
 
     @property
     def HitRule(self):
-        r"""命中规则
+        r"""<p>命中规则</p>
         :rtype: int
         """
         return self._HitRule
@@ -39676,7 +39676,7 @@ class DescribeDspmLogListRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        r"""开始时间
+        r"""<p>开始时间</p>
         :rtype: int
         """
         return self._StartTime
@@ -39687,7 +39687,7 @@ class DescribeDspmLogListRequest(AbstractModel):
 
     @property
     def FuzzySearch(self):
-        r"""模糊查询
+        r"""<p>模糊查询</p>
         :rtype: str
         """
         return self._FuzzySearch
@@ -39698,7 +39698,7 @@ class DescribeDspmLogListRequest(AbstractModel):
 
     @property
     def UserName(self):
-        r"""用户名
+        r"""<p>用户名</p>
         :rtype: str
         """
         return self._UserName
@@ -39709,7 +39709,7 @@ class DescribeDspmLogListRequest(AbstractModel):
 
     @property
     def RestoreLogId(self):
-        r"""恢复日志id
+        r"""<p>恢复日志id</p>
         :rtype: int
         """
         return self._RestoreLogId
@@ -39720,7 +39720,7 @@ class DescribeDspmLogListRequest(AbstractModel):
 
     @property
     def ClientName(self):
-        r"""客户端
+        r"""<p>客户端</p>
         :rtype: str
         """
         return self._ClientName
@@ -39731,7 +39731,7 @@ class DescribeDspmLogListRequest(AbstractModel):
 
     @property
     def SourceTypes(self):
-        r"""流量来源，取值 Agent/Proxy/空；传Agent会返回Agent的日志，传Proxy会返回Proxy日志，两者都传或不传则返回所有
+        r"""<p>流量来源，取值 Agent/Proxy/空；传Agent会返回Agent的日志，传Proxy会返回Proxy日志，两者都传或不传则返回所有</p>
         :rtype: list of str
         """
         return self._SourceTypes
@@ -39742,7 +39742,7 @@ class DescribeDspmLogListRequest(AbstractModel):
 
     @property
     def TableName(self):
-        r"""表名，长度限制64，多个表名查询的话可以用空格连接
+        r"""<p>表名，长度限制64，多个表名查询的话可以用空格连接</p>
         :rtype: str
         """
         return self._TableName
@@ -39753,7 +39753,7 @@ class DescribeDspmLogListRequest(AbstractModel):
 
     @property
     def FieldName(self):
-        r"""字段名，长度限制64，多个字段名查询的话可以用空格连接
+        r"""<p>字段名，长度限制64，多个字段名查询的话可以用空格连接</p>
         :rtype: str
         """
         return self._FieldName
@@ -39764,7 +39764,7 @@ class DescribeDspmLogListRequest(AbstractModel):
 
     @property
     def SqlMainTypes(self):
-        r"""SQL 主要类型，DDL, DML, DCL, TCL
+        r"""<p>SQL 主要类型，DDL, DML, DCL, TCL</p>
         :rtype: list of str
         """
         return self._SqlMainTypes
@@ -39775,7 +39775,7 @@ class DescribeDspmLogListRequest(AbstractModel):
 
     @property
     def SqlType(self):
-        r"""操作类型
+        r"""<p>操作类型</p>
         :rtype: str
         """
         return self._SqlType
@@ -39786,7 +39786,7 @@ class DescribeDspmLogListRequest(AbstractModel):
 
     @property
     def RowNumMin(self):
-        r"""影响行数最小值 
+        r"""<p>影响行数最小值</p>
         :rtype: int
         """
         return self._RowNumMin
@@ -39797,7 +39797,7 @@ class DescribeDspmLogListRequest(AbstractModel):
 
     @property
     def RowNumMax(self):
-        r"""影响行数最大值
+        r"""<p>影响行数最大值</p>
         :rtype: int
         """
         return self._RowNumMax
@@ -39808,7 +39808,7 @@ class DescribeDspmLogListRequest(AbstractModel):
 
     @property
     def DbTypes(self):
-        r"""数据库类型, 支持的值：cdb，mariadb
+        r"""<p>数据库类型, 支持的值：cdb，mariadb</p>
         :rtype: list of str
         """
         return self._DbTypes
@@ -39819,7 +39819,7 @@ class DescribeDspmLogListRequest(AbstractModel):
 
     @property
     def RetNo(self):
-        r"""返回码
+        r"""<p>返回码</p>
         :rtype: int
         """
         return self._RetNo
@@ -39830,7 +39830,7 @@ class DescribeDspmLogListRequest(AbstractModel):
 
     @property
     def ClientDriverName(self):
-        r"""客户端工具
+        r"""<p>客户端工具</p>
         :rtype: str
         """
         return self._ClientDriverName
@@ -39841,7 +39841,7 @@ class DescribeDspmLogListRequest(AbstractModel):
 
     @property
     def ClientPort(self):
-        r"""客户端端口
+        r"""<p>客户端端口</p>
         :rtype: int
         """
         return self._ClientPort
@@ -39852,7 +39852,7 @@ class DescribeDspmLogListRequest(AbstractModel):
 
     @property
     def LogId(self):
-        r"""审计日志 ID
+        r"""<p>审计日志 ID</p>
         :rtype: str
         """
         return self._LogId
@@ -39863,7 +39863,7 @@ class DescribeDspmLogListRequest(AbstractModel):
 
     @property
     def DangerLevels(self):
-        r"""风险等级数组(0-安全,1-低风险,2-中风险,3-高风险)
+        r"""<p>风险等级数组(0-安全,1-低风险,2-中风险,3-高风险)</p>
         :rtype: list of int
         """
         return self._DangerLevels
@@ -39874,7 +39874,7 @@ class DescribeDspmLogListRequest(AbstractModel):
 
     @property
     def SensitiveCategoryRule(self):
-        r"""字段分类
+        r"""<p>字段分类</p>
         :rtype: str
         """
         return self._SensitiveCategoryRule
@@ -39885,7 +39885,7 @@ class DescribeDspmLogListRequest(AbstractModel):
 
     @property
     def SensitiveLevelRisk(self):
-        r"""字段分级
+        r"""<p>字段分级</p>
         :rtype: str
         """
         return self._SensitiveLevelRisk
@@ -39896,7 +39896,7 @@ class DescribeDspmLogListRequest(AbstractModel):
 
     @property
     def ClientMac(self):
-        r"""客户端MAC
+        r"""<p>客户端MAC</p>
         :rtype: str
         """
         return self._ClientMac
@@ -39959,9 +39959,9 @@ class DescribeDspmLogListResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TotalCount: 总数目
+        :param _TotalCount: <p>总数目</p>
         :type TotalCount: int
-        :param _List: 日志信息列表
+        :param _List: <p>日志信息列表</p>
         :type List: list of AuditLogInfo
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -39972,7 +39972,7 @@ class DescribeDspmLogListResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        r"""总数目
+        r"""<p>总数目</p>
         :rtype: int
         """
         return self._TotalCount
@@ -39983,7 +39983,7 @@ class DescribeDspmLogListResponse(AbstractModel):
 
     @property
     def List(self):
-        r"""日志信息列表
+        r"""<p>日志信息列表</p>
         :rtype: list of AuditLogInfo
         """
         return self._List
@@ -57128,9 +57128,9 @@ class DownloadDspmExportLogRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _MemberId: 集团账号的成员id
+        :param _MemberId: <p>集团账号的成员id</p>
         :type MemberId: list of str
-        :param _TaskId: 要下载的导出任务ID
+        :param _TaskId: <p>要下载的导出任务ID</p>
         :type TaskId: int
         """
         self._MemberId = None
@@ -57138,7 +57138,7 @@ class DownloadDspmExportLogRequest(AbstractModel):
 
     @property
     def MemberId(self):
-        r"""集团账号的成员id
+        r"""<p>集团账号的成员id</p>
         :rtype: list of str
         """
         return self._MemberId
@@ -57149,7 +57149,7 @@ class DownloadDspmExportLogRequest(AbstractModel):
 
     @property
     def TaskId(self):
-        r"""要下载的导出任务ID
+        r"""<p>要下载的导出任务ID</p>
         :rtype: int
         """
         return self._TaskId
@@ -57179,7 +57179,7 @@ class DownloadDspmExportLogResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Url: 下载URL
+        :param _Url: <p>下载URL</p>
         :type Url: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -57189,7 +57189,7 @@ class DownloadDspmExportLogResponse(AbstractModel):
 
     @property
     def Url(self):
-        r"""下载URL
+        r"""<p>下载URL</p>
         :rtype: str
         """
         return self._Url
@@ -61110,82 +61110,82 @@ class DspmDbAsset(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AssetId: 资产实例Id
+        :param _AssetId: <p>资产实例Id</p>
         :type AssetId: str
-        :param _AssetType: 资产类型
+        :param _AssetType: <p>资产类型</p>
         :type AssetType: str
-        :param _Name:  资产名
+        :param _Name: <p>资产名</p>
         :type Name: str
-        :param _AccountCount: 账号数
+        :param _AccountCount: <p>账号数</p>
         :type AccountCount: int
-        :param _PublicIp: 公网访问地址，如果有多个，使用';'分割
+        :param _PublicIp: <p>公网访问地址，如果有多个，使用&#39;;&#39;分割</p>
         :type PublicIp: str
-        :param _PrivateIp: 内网访问地址，如果有多个，使用';'分割
+        :param _PrivateIp: <p>内网访问地址，如果有多个，使用&#39;;&#39;分割</p>
         :type PrivateIp: str
-        :param _WanDomain: 广域网域名地址，如果有多个，使用';'分割
+        :param _WanDomain: <p>广域网域名地址，如果有多个，使用&#39;;&#39;分割</p>
         :type WanDomain: str
-        :param _Region: 地域
+        :param _Region: <p>地域</p>
         :type Region: str
-        :param _VpcId: 资产所在vpc的vpcid
+        :param _VpcId: <p>资产所在vpc的vpcid</p>
         :type VpcId: str
-        :param _VpcName: 资产所在vpc的vpc名
+        :param _VpcName: <p>资产所在vpc的vpc名</p>
         :type VpcName: str
-        :param _SubnetId: 资产所在vpc子网的subnetid
+        :param _SubnetId: <p>资产所在vpc子网的subnetid</p>
         :type SubnetId: str
-        :param _SubnetName: 资产所在vpc子网名
+        :param _SubnetName: <p>资产所在vpc子网名</p>
         :type SubnetName: str
-        :param _Status: 实例状态
+        :param _Status: <p>实例状态</p>
         :type Status: int
-        :param _CreateTime: 创建时间。
+        :param _CreateTime: <p>创建时间。</p>
         :type CreateTime: str
-        :param _Manager: 管理者信息。
+        :param _Manager: <p>管理者信息。</p>
         :type Manager: list of DspmUinUser
-        :param _BindIdentify: 是否绑定身份。0-未绑定 1-已绑定
+        :param _BindIdentify: <p>是否绑定身份。0-未绑定 1-已绑定</p>
         :type BindIdentify: int
-        :param _IsManager: 是否管理员
+        :param _IsManager: <p>是否管理员</p>
         :type IsManager: int
-        :param _RiskCount: 风险统计信息
+        :param _RiskCount: <p>风险统计信息</p>
         :type RiskCount: :class:`tencentcloud.csip.v20221121.models.DspmRiskCount`
-        :param _SafetyAdvice: 安全建议。
-Resolve 立即解决
-Reinforcement 加固
-None 暂无异常
-
+        :param _SafetyAdvice: <p>安全建议。<br>Resolve 立即解决<br>Reinforcement 加固<br>None 暂无异常</p>
         :type SafetyAdvice: str
-        :param _LogDeliveryStatus: 日志投递状态。
-0-投递关闭 1-投递打开 2-投递开通中 3-投递关闭中
+        :param _LogDeliveryStatus: <p>日志投递状态。<br>0-投递关闭 1-投递打开 2-投递开通中 3-投递关闭中</p>
         :type LogDeliveryStatus: int
-        :param _LogDeliverySupported: 是否支持日志投递。0-不支持 1-支持
+        :param _LogDeliverySupported: <p>是否支持日志投递。0-不支持 1-支持</p>
         :type LogDeliverySupported: int
-        :param _DataScanInfo: 数据扫描信息
+        :param _DataScanInfo: <p>数据扫描信息</p>
         :type DataScanInfo: :class:`tencentcloud.csip.v20221121.models.DspmAssetDataScanDetail`
-        :param _AppId: 资产所属账号app id
+        :param _AppId: <p>资产所属账号app id</p>
         :type AppId: int
-        :param _NickName: 账号昵称
+        :param _NickName: <p>账号昵称</p>
         :type NickName: str
-        :param _Uin: 资产所属账号uin
+        :param _Uin: <p>资产所属账号uin</p>
         :type Uin: str
-        :param _SecurityAnalyseStatus: 安全分析状态（0-关闭 1-打开 2-开通中 3-关闭中）
-
+        :param _SecurityAnalyseStatus: <p>安全分析状态（0-关闭 1-打开 2-开通中 3-关闭中）</p>
         :type SecurityAnalyseStatus: int
-        :param _TotalAuditLogs: 当前实例的总日志数
+        :param _TotalAuditLogs: <p>当前实例的总日志数</p>
         :type TotalAuditLogs: int
-        :param _LogDeliveryDisableReason: 日志审计禁止开通的原因，可选值：VersionNotSupportLogSubscription, InstanceIsUpgrading, CdbRuleAuditEnabled, AssetNotExists
+        :param _LogDeliveryDisableReason: <p>日志审计禁止开通的原因，可选值：VersionNotSupportLogSubscription, InstanceIsUpgrading, CdbRuleAuditEnabled, AssetNotExists</p>
         :type LogDeliveryDisableReason: str
-        :param _OldestOnlineLogTimestamp: 在线日志的起始时间戳，精确到秒
+        :param _OldestOnlineLogTimestamp: <p>在线日志的起始时间戳，精确到秒</p>
         :type OldestOnlineLogTimestamp: int
-        :param _NewestOnlineLogTimestamp: 在线日志的最新时间戳，精确到秒
+        :param _NewestOnlineLogTimestamp: <p>在线日志的最新时间戳，精确到秒</p>
         :type NewestOnlineLogTimestamp: int
-        :param _OperationErrorMsg: 操作错误信息
+        :param _OperationErrorMsg: <p>操作错误信息</p>
         :type OperationErrorMsg: str
-        :param _AccountOptSupported: 是否支持账号操作。0 不支持；1 支持
+        :param _AccountOptSupported: <p>是否支持账号操作。0 不支持；1 支持</p>
         :type AccountOptSupported: int
-        :param _InstanceType: 实例类型
+        :param _InstanceType: <p>实例类型</p>
         :type InstanceType: int
-        :param _ClusterType: 集群类型（MongoDB），与云接口 DescribeDBInstances 的 ClusterType 一致：0-副本集 1-分片；非 MongoDB 资产固定 0
+        :param _ClusterType: <p>集群类型（MongoDB），与云接口 DescribeDBInstances 的 ClusterType 一致：0-副本集 1-分片；非 MongoDB 资产固定 0</p>
         :type ClusterType: int
-        :param _IdentifyScanSupported: 是否支持敏感数据识别。0 不支持；1 支持
+        :param _IdentifyScanSupported: <p>是否支持敏感数据识别。0 不支持；1 支持</p>
         :type IdentifyScanSupported: int
+        :param _ClusterId: <p>集群ID</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClusterId: str
+        :param _ClusterName: <p>集群名</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClusterName: str
         """
         self._AssetId = None
         self._AssetType = None
@@ -61222,10 +61222,12 @@ None 暂无异常
         self._InstanceType = None
         self._ClusterType = None
         self._IdentifyScanSupported = None
+        self._ClusterId = None
+        self._ClusterName = None
 
     @property
     def AssetId(self):
-        r"""资产实例Id
+        r"""<p>资产实例Id</p>
         :rtype: str
         """
         return self._AssetId
@@ -61236,7 +61238,7 @@ None 暂无异常
 
     @property
     def AssetType(self):
-        r"""资产类型
+        r"""<p>资产类型</p>
         :rtype: str
         """
         return self._AssetType
@@ -61247,7 +61249,7 @@ None 暂无异常
 
     @property
     def Name(self):
-        r""" 资产名
+        r"""<p>资产名</p>
         :rtype: str
         """
         return self._Name
@@ -61258,7 +61260,7 @@ None 暂无异常
 
     @property
     def AccountCount(self):
-        r"""账号数
+        r"""<p>账号数</p>
         :rtype: int
         """
         return self._AccountCount
@@ -61269,7 +61271,7 @@ None 暂无异常
 
     @property
     def PublicIp(self):
-        r"""公网访问地址，如果有多个，使用';'分割
+        r"""<p>公网访问地址，如果有多个，使用&#39;;&#39;分割</p>
         :rtype: str
         """
         return self._PublicIp
@@ -61280,7 +61282,7 @@ None 暂无异常
 
     @property
     def PrivateIp(self):
-        r"""内网访问地址，如果有多个，使用';'分割
+        r"""<p>内网访问地址，如果有多个，使用&#39;;&#39;分割</p>
         :rtype: str
         """
         return self._PrivateIp
@@ -61291,7 +61293,7 @@ None 暂无异常
 
     @property
     def WanDomain(self):
-        r"""广域网域名地址，如果有多个，使用';'分割
+        r"""<p>广域网域名地址，如果有多个，使用&#39;;&#39;分割</p>
         :rtype: str
         """
         return self._WanDomain
@@ -61302,7 +61304,7 @@ None 暂无异常
 
     @property
     def Region(self):
-        r"""地域
+        r"""<p>地域</p>
         :rtype: str
         """
         return self._Region
@@ -61313,7 +61315,7 @@ None 暂无异常
 
     @property
     def VpcId(self):
-        r"""资产所在vpc的vpcid
+        r"""<p>资产所在vpc的vpcid</p>
         :rtype: str
         """
         return self._VpcId
@@ -61324,7 +61326,7 @@ None 暂无异常
 
     @property
     def VpcName(self):
-        r"""资产所在vpc的vpc名
+        r"""<p>资产所在vpc的vpc名</p>
         :rtype: str
         """
         return self._VpcName
@@ -61335,7 +61337,7 @@ None 暂无异常
 
     @property
     def SubnetId(self):
-        r"""资产所在vpc子网的subnetid
+        r"""<p>资产所在vpc子网的subnetid</p>
         :rtype: str
         """
         return self._SubnetId
@@ -61346,7 +61348,7 @@ None 暂无异常
 
     @property
     def SubnetName(self):
-        r"""资产所在vpc子网名
+        r"""<p>资产所在vpc子网名</p>
         :rtype: str
         """
         return self._SubnetName
@@ -61357,7 +61359,7 @@ None 暂无异常
 
     @property
     def Status(self):
-        r"""实例状态
+        r"""<p>实例状态</p>
         :rtype: int
         """
         return self._Status
@@ -61368,7 +61370,7 @@ None 暂无异常
 
     @property
     def CreateTime(self):
-        r"""创建时间。
+        r"""<p>创建时间。</p>
         :rtype: str
         """
         return self._CreateTime
@@ -61379,7 +61381,7 @@ None 暂无异常
 
     @property
     def Manager(self):
-        r"""管理者信息。
+        r"""<p>管理者信息。</p>
         :rtype: list of DspmUinUser
         """
         return self._Manager
@@ -61390,7 +61392,7 @@ None 暂无异常
 
     @property
     def BindIdentify(self):
-        r"""是否绑定身份。0-未绑定 1-已绑定
+        r"""<p>是否绑定身份。0-未绑定 1-已绑定</p>
         :rtype: int
         """
         return self._BindIdentify
@@ -61401,7 +61403,7 @@ None 暂无异常
 
     @property
     def IsManager(self):
-        r"""是否管理员
+        r"""<p>是否管理员</p>
         :rtype: int
         """
         return self._IsManager
@@ -61412,7 +61414,7 @@ None 暂无异常
 
     @property
     def RiskCount(self):
-        r"""风险统计信息
+        r"""<p>风险统计信息</p>
         :rtype: :class:`tencentcloud.csip.v20221121.models.DspmRiskCount`
         """
         return self._RiskCount
@@ -61423,11 +61425,7 @@ None 暂无异常
 
     @property
     def SafetyAdvice(self):
-        r"""安全建议。
-Resolve 立即解决
-Reinforcement 加固
-None 暂无异常
-
+        r"""<p>安全建议。<br>Resolve 立即解决<br>Reinforcement 加固<br>None 暂无异常</p>
         :rtype: str
         """
         return self._SafetyAdvice
@@ -61438,8 +61436,7 @@ None 暂无异常
 
     @property
     def LogDeliveryStatus(self):
-        r"""日志投递状态。
-0-投递关闭 1-投递打开 2-投递开通中 3-投递关闭中
+        r"""<p>日志投递状态。<br>0-投递关闭 1-投递打开 2-投递开通中 3-投递关闭中</p>
         :rtype: int
         """
         return self._LogDeliveryStatus
@@ -61450,7 +61447,7 @@ None 暂无异常
 
     @property
     def LogDeliverySupported(self):
-        r"""是否支持日志投递。0-不支持 1-支持
+        r"""<p>是否支持日志投递。0-不支持 1-支持</p>
         :rtype: int
         """
         return self._LogDeliverySupported
@@ -61461,7 +61458,7 @@ None 暂无异常
 
     @property
     def DataScanInfo(self):
-        r"""数据扫描信息
+        r"""<p>数据扫描信息</p>
         :rtype: :class:`tencentcloud.csip.v20221121.models.DspmAssetDataScanDetail`
         """
         return self._DataScanInfo
@@ -61472,7 +61469,7 @@ None 暂无异常
 
     @property
     def AppId(self):
-        r"""资产所属账号app id
+        r"""<p>资产所属账号app id</p>
         :rtype: int
         """
         return self._AppId
@@ -61483,7 +61480,7 @@ None 暂无异常
 
     @property
     def NickName(self):
-        r"""账号昵称
+        r"""<p>账号昵称</p>
         :rtype: str
         """
         return self._NickName
@@ -61494,7 +61491,7 @@ None 暂无异常
 
     @property
     def Uin(self):
-        r"""资产所属账号uin
+        r"""<p>资产所属账号uin</p>
         :rtype: str
         """
         return self._Uin
@@ -61505,8 +61502,7 @@ None 暂无异常
 
     @property
     def SecurityAnalyseStatus(self):
-        r"""安全分析状态（0-关闭 1-打开 2-开通中 3-关闭中）
-
+        r"""<p>安全分析状态（0-关闭 1-打开 2-开通中 3-关闭中）</p>
         :rtype: int
         """
         return self._SecurityAnalyseStatus
@@ -61517,7 +61513,7 @@ None 暂无异常
 
     @property
     def TotalAuditLogs(self):
-        r"""当前实例的总日志数
+        r"""<p>当前实例的总日志数</p>
         :rtype: int
         """
         return self._TotalAuditLogs
@@ -61528,7 +61524,7 @@ None 暂无异常
 
     @property
     def LogDeliveryDisableReason(self):
-        r"""日志审计禁止开通的原因，可选值：VersionNotSupportLogSubscription, InstanceIsUpgrading, CdbRuleAuditEnabled, AssetNotExists
+        r"""<p>日志审计禁止开通的原因，可选值：VersionNotSupportLogSubscription, InstanceIsUpgrading, CdbRuleAuditEnabled, AssetNotExists</p>
         :rtype: str
         """
         return self._LogDeliveryDisableReason
@@ -61539,7 +61535,7 @@ None 暂无异常
 
     @property
     def OldestOnlineLogTimestamp(self):
-        r"""在线日志的起始时间戳，精确到秒
+        r"""<p>在线日志的起始时间戳，精确到秒</p>
         :rtype: int
         """
         return self._OldestOnlineLogTimestamp
@@ -61550,7 +61546,7 @@ None 暂无异常
 
     @property
     def NewestOnlineLogTimestamp(self):
-        r"""在线日志的最新时间戳，精确到秒
+        r"""<p>在线日志的最新时间戳，精确到秒</p>
         :rtype: int
         """
         return self._NewestOnlineLogTimestamp
@@ -61561,7 +61557,7 @@ None 暂无异常
 
     @property
     def OperationErrorMsg(self):
-        r"""操作错误信息
+        r"""<p>操作错误信息</p>
         :rtype: str
         """
         return self._OperationErrorMsg
@@ -61572,7 +61568,7 @@ None 暂无异常
 
     @property
     def AccountOptSupported(self):
-        r"""是否支持账号操作。0 不支持；1 支持
+        r"""<p>是否支持账号操作。0 不支持；1 支持</p>
         :rtype: int
         """
         return self._AccountOptSupported
@@ -61583,7 +61579,7 @@ None 暂无异常
 
     @property
     def InstanceType(self):
-        r"""实例类型
+        r"""<p>实例类型</p>
         :rtype: int
         """
         return self._InstanceType
@@ -61594,7 +61590,7 @@ None 暂无异常
 
     @property
     def ClusterType(self):
-        r"""集群类型（MongoDB），与云接口 DescribeDBInstances 的 ClusterType 一致：0-副本集 1-分片；非 MongoDB 资产固定 0
+        r"""<p>集群类型（MongoDB），与云接口 DescribeDBInstances 的 ClusterType 一致：0-副本集 1-分片；非 MongoDB 资产固定 0</p>
         :rtype: int
         """
         return self._ClusterType
@@ -61605,7 +61601,7 @@ None 暂无异常
 
     @property
     def IdentifyScanSupported(self):
-        r"""是否支持敏感数据识别。0 不支持；1 支持
+        r"""<p>是否支持敏感数据识别。0 不支持；1 支持</p>
         :rtype: int
         """
         return self._IdentifyScanSupported
@@ -61613,6 +61609,30 @@ None 暂无异常
     @IdentifyScanSupported.setter
     def IdentifyScanSupported(self, IdentifyScanSupported):
         self._IdentifyScanSupported = IdentifyScanSupported
+
+    @property
+    def ClusterId(self):
+        r"""<p>集群ID</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def ClusterName(self):
+        r"""<p>集群名</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ClusterName
+
+    @ClusterName.setter
+    def ClusterName(self, ClusterName):
+        self._ClusterName = ClusterName
 
 
     def _deserialize(self, params):
@@ -61660,6 +61680,8 @@ None 暂无异常
         self._InstanceType = params.get("InstanceType")
         self._ClusterType = params.get("ClusterType")
         self._IdentifyScanSupported = params.get("IdentifyScanSupported")
+        self._ClusterId = params.get("ClusterId")
+        self._ClusterName = params.get("ClusterName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -64260,58 +64282,66 @@ class DspmRisk(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RiskId: 风险id
+        :param _RiskId: <p>风险id</p>
         :type RiskId: str
-        :param _RiskName: 风险名称
+        :param _RiskName: <p>风险名称</p>
         :type RiskName: str
-        :param _RiskNameEn: 风险英文名称
+        :param _RiskNameEn: <p>风险英文名称</p>
         :type RiskNameEn: str
-        :param _StrategyType: 策略类型
+        :param _StrategyType: <p>策略类型</p>
         :type StrategyType: str
-        :param _StrategyCategory: 策略类别
+        :param _StrategyCategory: <p>策略类别</p>
         :type StrategyCategory: str
-        :param _RiskLevel: 风险等级
+        :param _RiskLevel: <p>风险等级</p>
         :type RiskLevel: str
-        :param _AssetId: 资产实例Id
+        :param _AssetId: <p>资产实例Id</p>
         :type AssetId: str
-        :param _AssetType: 资产类型
+        :param _AssetType: <p>资产类型</p>
         :type AssetType: str
-        :param _AssetName: 资产名
+        :param _AssetName: <p>资产名</p>
         :type AssetName: str
-        :param _AssetRegion: 地域
+        :param _AssetRegion: <p>地域</p>
         :type AssetRegion: str
-        :param _Account: 资产账号
+        :param _Account: <p>资产账号</p>
         :type Account: str
-        :param _Host: 主机地址
+        :param _Host: <p>主机地址</p>
         :type Host: str
-        :param _AccountType: 账号类型
+        :param _AccountType: <p>账号类型</p>
         :type AccountType: int
-        :param _DetectTime: 风险检出时间
+        :param _DetectTime: <p>风险检出时间</p>
         :type DetectTime: str
-        :param _Status: 处理状态 0-未处理 1-已处置 2-已忽略
+        :param _Status: <p>处理状态 0-未处理 1-已处置 2-已忽略</p>
         :type Status: int
-        :param _IdentifyId: 身份id
+        :param _IdentifyId: <p>身份id</p>
         :type IdentifyId: str
-        :param _OwnerUin: 所属云账号uin用户
+        :param _OwnerUin: <p>所属云账号uin用户</p>
         :type OwnerUin: :class:`tencentcloud.csip.v20221121.models.DspmUinUser`
-        :param _Person: 所属个人用户信息
+        :param _Person: <p>所属个人用户信息</p>
         :type Person: :class:`tencentcloud.csip.v20221121.models.DspmPersonUser`
-        :param _RiskData: 风险数据。
+        :param _RiskData: <p>风险数据。</p>
         :type RiskData: str
-        :param _IsAssetManager: 是否资产管理员
+        :param _IsAssetManager: <p>是否资产管理员</p>
         :type IsAssetManager: int
-        :param _DataBeginTime: 数据起始时间
+        :param _DataBeginTime: <p>数据起始时间</p>
         :type DataBeginTime: str
-        :param _DataEndTime: 数据结束时间
+        :param _DataEndTime: <p>数据结束时间</p>
         :type DataEndTime: str
-        :param _RiskType: 风险类型。risk-风险；alarm-告警。
+        :param _RiskType: <p>风险类型。risk-风险；alarm-告警。</p>
         :type RiskType: str
-        :param _AppId: 资产所属账号app id
+        :param _AppId: <p>资产所属账号app id</p>
         :type AppId: int
-        :param _NickName: 账号昵称
+        :param _NickName: <p>账号昵称</p>
         :type NickName: str
-        :param _Uin: 资产所属账号uin
+        :param _Uin: <p>资产所属账号uin</p>
         :type Uin: str
+        :param _ClusterType: <p>MongoDb的集群类型，非 MongoDB 资产固定 0</p><p>枚举值：</p><ul><li>0： 副本集</li><li>1： 分片</li></ul><p>默认值：0</p>
+        :type ClusterType: int
+        :param _ClusterId: <p>集群ID</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClusterId: str
+        :param _ClusterName: <p>集群名</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClusterName: str
         """
         self._RiskId = None
         self._RiskName = None
@@ -64339,10 +64369,13 @@ class DspmRisk(AbstractModel):
         self._AppId = None
         self._NickName = None
         self._Uin = None
+        self._ClusterType = None
+        self._ClusterId = None
+        self._ClusterName = None
 
     @property
     def RiskId(self):
-        r"""风险id
+        r"""<p>风险id</p>
         :rtype: str
         """
         return self._RiskId
@@ -64353,7 +64386,7 @@ class DspmRisk(AbstractModel):
 
     @property
     def RiskName(self):
-        r"""风险名称
+        r"""<p>风险名称</p>
         :rtype: str
         """
         return self._RiskName
@@ -64364,7 +64397,7 @@ class DspmRisk(AbstractModel):
 
     @property
     def RiskNameEn(self):
-        r"""风险英文名称
+        r"""<p>风险英文名称</p>
         :rtype: str
         """
         return self._RiskNameEn
@@ -64375,7 +64408,7 @@ class DspmRisk(AbstractModel):
 
     @property
     def StrategyType(self):
-        r"""策略类型
+        r"""<p>策略类型</p>
         :rtype: str
         """
         return self._StrategyType
@@ -64386,7 +64419,7 @@ class DspmRisk(AbstractModel):
 
     @property
     def StrategyCategory(self):
-        r"""策略类别
+        r"""<p>策略类别</p>
         :rtype: str
         """
         return self._StrategyCategory
@@ -64397,7 +64430,7 @@ class DspmRisk(AbstractModel):
 
     @property
     def RiskLevel(self):
-        r"""风险等级
+        r"""<p>风险等级</p>
         :rtype: str
         """
         return self._RiskLevel
@@ -64408,7 +64441,7 @@ class DspmRisk(AbstractModel):
 
     @property
     def AssetId(self):
-        r"""资产实例Id
+        r"""<p>资产实例Id</p>
         :rtype: str
         """
         return self._AssetId
@@ -64419,7 +64452,7 @@ class DspmRisk(AbstractModel):
 
     @property
     def AssetType(self):
-        r"""资产类型
+        r"""<p>资产类型</p>
         :rtype: str
         """
         return self._AssetType
@@ -64430,7 +64463,7 @@ class DspmRisk(AbstractModel):
 
     @property
     def AssetName(self):
-        r"""资产名
+        r"""<p>资产名</p>
         :rtype: str
         """
         return self._AssetName
@@ -64441,7 +64474,7 @@ class DspmRisk(AbstractModel):
 
     @property
     def AssetRegion(self):
-        r"""地域
+        r"""<p>地域</p>
         :rtype: str
         """
         return self._AssetRegion
@@ -64452,7 +64485,7 @@ class DspmRisk(AbstractModel):
 
     @property
     def Account(self):
-        r"""资产账号
+        r"""<p>资产账号</p>
         :rtype: str
         """
         return self._Account
@@ -64463,7 +64496,7 @@ class DspmRisk(AbstractModel):
 
     @property
     def Host(self):
-        r"""主机地址
+        r"""<p>主机地址</p>
         :rtype: str
         """
         return self._Host
@@ -64474,7 +64507,7 @@ class DspmRisk(AbstractModel):
 
     @property
     def AccountType(self):
-        r"""账号类型
+        r"""<p>账号类型</p>
         :rtype: int
         """
         return self._AccountType
@@ -64485,7 +64518,7 @@ class DspmRisk(AbstractModel):
 
     @property
     def DetectTime(self):
-        r"""风险检出时间
+        r"""<p>风险检出时间</p>
         :rtype: str
         """
         return self._DetectTime
@@ -64496,7 +64529,7 @@ class DspmRisk(AbstractModel):
 
     @property
     def Status(self):
-        r"""处理状态 0-未处理 1-已处置 2-已忽略
+        r"""<p>处理状态 0-未处理 1-已处置 2-已忽略</p>
         :rtype: int
         """
         return self._Status
@@ -64507,7 +64540,7 @@ class DspmRisk(AbstractModel):
 
     @property
     def IdentifyId(self):
-        r"""身份id
+        r"""<p>身份id</p>
         :rtype: str
         """
         return self._IdentifyId
@@ -64518,7 +64551,7 @@ class DspmRisk(AbstractModel):
 
     @property
     def OwnerUin(self):
-        r"""所属云账号uin用户
+        r"""<p>所属云账号uin用户</p>
         :rtype: :class:`tencentcloud.csip.v20221121.models.DspmUinUser`
         """
         return self._OwnerUin
@@ -64529,7 +64562,7 @@ class DspmRisk(AbstractModel):
 
     @property
     def Person(self):
-        r"""所属个人用户信息
+        r"""<p>所属个人用户信息</p>
         :rtype: :class:`tencentcloud.csip.v20221121.models.DspmPersonUser`
         """
         return self._Person
@@ -64540,7 +64573,7 @@ class DspmRisk(AbstractModel):
 
     @property
     def RiskData(self):
-        r"""风险数据。
+        r"""<p>风险数据。</p>
         :rtype: str
         """
         return self._RiskData
@@ -64551,7 +64584,7 @@ class DspmRisk(AbstractModel):
 
     @property
     def IsAssetManager(self):
-        r"""是否资产管理员
+        r"""<p>是否资产管理员</p>
         :rtype: int
         """
         return self._IsAssetManager
@@ -64562,7 +64595,7 @@ class DspmRisk(AbstractModel):
 
     @property
     def DataBeginTime(self):
-        r"""数据起始时间
+        r"""<p>数据起始时间</p>
         :rtype: str
         """
         return self._DataBeginTime
@@ -64573,7 +64606,7 @@ class DspmRisk(AbstractModel):
 
     @property
     def DataEndTime(self):
-        r"""数据结束时间
+        r"""<p>数据结束时间</p>
         :rtype: str
         """
         return self._DataEndTime
@@ -64584,7 +64617,7 @@ class DspmRisk(AbstractModel):
 
     @property
     def RiskType(self):
-        r"""风险类型。risk-风险；alarm-告警。
+        r"""<p>风险类型。risk-风险；alarm-告警。</p>
         :rtype: str
         """
         return self._RiskType
@@ -64595,7 +64628,7 @@ class DspmRisk(AbstractModel):
 
     @property
     def AppId(self):
-        r"""资产所属账号app id
+        r"""<p>资产所属账号app id</p>
         :rtype: int
         """
         return self._AppId
@@ -64606,7 +64639,7 @@ class DspmRisk(AbstractModel):
 
     @property
     def NickName(self):
-        r"""账号昵称
+        r"""<p>账号昵称</p>
         :rtype: str
         """
         return self._NickName
@@ -64617,7 +64650,7 @@ class DspmRisk(AbstractModel):
 
     @property
     def Uin(self):
-        r"""资产所属账号uin
+        r"""<p>资产所属账号uin</p>
         :rtype: str
         """
         return self._Uin
@@ -64625,6 +64658,41 @@ class DspmRisk(AbstractModel):
     @Uin.setter
     def Uin(self, Uin):
         self._Uin = Uin
+
+    @property
+    def ClusterType(self):
+        r"""<p>MongoDb的集群类型，非 MongoDB 资产固定 0</p><p>枚举值：</p><ul><li>0： 副本集</li><li>1： 分片</li></ul><p>默认值：0</p>
+        :rtype: int
+        """
+        return self._ClusterType
+
+    @ClusterType.setter
+    def ClusterType(self, ClusterType):
+        self._ClusterType = ClusterType
+
+    @property
+    def ClusterId(self):
+        r"""<p>集群ID</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def ClusterName(self):
+        r"""<p>集群名</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ClusterName
+
+    @ClusterName.setter
+    def ClusterName(self, ClusterName):
+        self._ClusterName = ClusterName
 
 
     def _deserialize(self, params):
@@ -64658,6 +64726,9 @@ class DspmRisk(AbstractModel):
         self._AppId = params.get("AppId")
         self._NickName = params.get("NickName")
         self._Uin = params.get("Uin")
+        self._ClusterType = params.get("ClusterType")
+        self._ClusterId = params.get("ClusterId")
+        self._ClusterName = params.get("ClusterName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -78011,15 +78082,15 @@ class ModifyDspmBackupSettingRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _MemberId: 集团账号的成员id
+        :param _MemberId: <p>集团账号的成员id</p>
         :type MemberId: list of str
-        :param _BackupLogSaveTime: 备份日志保留时长
+        :param _BackupLogSaveTime: <p>备份日志保留时长</p>
         :type BackupLogSaveTime: int
-        :param _RestoreLogSaveTime: 恢复日志保留时长
+        :param _RestoreLogSaveTime: <p>恢复日志保留时长</p>
         :type RestoreLogSaveTime: int
-        :param _LogMaxSaveTime: 日志最大生命周期限制
+        :param _LogMaxSaveTime: <p>日志最大生命周期限制</p>
         :type LogMaxSaveTime: int
-        :param _OnlineLogMaxSaveTime: 在线日志最大天数限制
+        :param _OnlineLogMaxSaveTime: <p>在线日志最大天数限制</p>
         :type OnlineLogMaxSaveTime: int
         """
         self._MemberId = None
@@ -78030,7 +78101,7 @@ class ModifyDspmBackupSettingRequest(AbstractModel):
 
     @property
     def MemberId(self):
-        r"""集团账号的成员id
+        r"""<p>集团账号的成员id</p>
         :rtype: list of str
         """
         return self._MemberId
@@ -78041,7 +78112,7 @@ class ModifyDspmBackupSettingRequest(AbstractModel):
 
     @property
     def BackupLogSaveTime(self):
-        r"""备份日志保留时长
+        r"""<p>备份日志保留时长</p>
         :rtype: int
         """
         return self._BackupLogSaveTime
@@ -78052,7 +78123,7 @@ class ModifyDspmBackupSettingRequest(AbstractModel):
 
     @property
     def RestoreLogSaveTime(self):
-        r"""恢复日志保留时长
+        r"""<p>恢复日志保留时长</p>
         :rtype: int
         """
         return self._RestoreLogSaveTime
@@ -78063,7 +78134,7 @@ class ModifyDspmBackupSettingRequest(AbstractModel):
 
     @property
     def LogMaxSaveTime(self):
-        r"""日志最大生命周期限制
+        r"""<p>日志最大生命周期限制</p>
         :rtype: int
         """
         return self._LogMaxSaveTime
@@ -78074,7 +78145,7 @@ class ModifyDspmBackupSettingRequest(AbstractModel):
 
     @property
     def OnlineLogMaxSaveTime(self):
-        r"""在线日志最大天数限制
+        r"""<p>在线日志最大天数限制</p>
         :rtype: int
         """
         return self._OnlineLogMaxSaveTime
@@ -79309,9 +79380,9 @@ class ModifyDspmRestoreLogTaskRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Id: 备份日志Id
+        :param _Id: <p>备份日志Id</p>
         :type Id: int
-        :param _MemberId: 集团账号的成员id
+        :param _MemberId: <p>集团账号的成员id</p>
         :type MemberId: list of str
         """
         self._Id = None
@@ -79319,7 +79390,7 @@ class ModifyDspmRestoreLogTaskRequest(AbstractModel):
 
     @property
     def Id(self):
-        r"""备份日志Id
+        r"""<p>备份日志Id</p>
         :rtype: int
         """
         return self._Id
@@ -79330,7 +79401,7 @@ class ModifyDspmRestoreLogTaskRequest(AbstractModel):
 
     @property
     def MemberId(self):
-        r"""集团账号的成员id
+        r"""<p>集团账号的成员id</p>
         :rtype: list of str
         """
         return self._MemberId
@@ -85177,9 +85248,9 @@ class RetryDspmExportLogRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _MemberId: 集团账号的成员id
+        :param _MemberId: <p>集团账号的成员id</p>
         :type MemberId: list of str
-        :param _TaskId: 任务ID
+        :param _TaskId: <p>任务ID</p>
         :type TaskId: int
         """
         self._MemberId = None
@@ -85187,7 +85258,7 @@ class RetryDspmExportLogRequest(AbstractModel):
 
     @property
     def MemberId(self):
-        r"""集团账号的成员id
+        r"""<p>集团账号的成员id</p>
         :rtype: list of str
         """
         return self._MemberId
@@ -85198,7 +85269,7 @@ class RetryDspmExportLogRequest(AbstractModel):
 
     @property
     def TaskId(self):
-        r"""任务ID
+        r"""<p>任务ID</p>
         :rtype: int
         """
         return self._TaskId

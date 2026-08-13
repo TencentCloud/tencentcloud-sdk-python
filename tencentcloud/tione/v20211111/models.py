@@ -9390,27 +9390,28 @@ class DescribeDatasetsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DatasetIds: 数据集id列表
+        :param _TiProjectId: <p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+        :type TiProjectId: str
+        :param _DatasetIds: <p>数据集id列表</p>
         :type DatasetIds: list of str
-        :param _Filters: 数据集查询过滤条件，多个Filter之间的关系为逻辑与（AND）关系，过滤字段Filter.Name，类型为String
-DatasetName，数据集名称
-DatasetScope，数据集范围，SCOPE_DATASET_PRIVATE或SCOPE_DATASET_PUBLIC
+        :param _Filters: <p>数据集查询过滤条件，多个Filter之间的关系为逻辑与（AND）关系，过滤字段Filter.Name，类型为String<br>DatasetName，数据集名称<br>DatasetScope，数据集范围，SCOPE_DATASET_PRIVATE或SCOPE_DATASET_PUBLIC</p>
         :type Filters: list of Filter
-        :param _TagFilters: 标签过滤条件
+        :param _TagFilters: <p>标签过滤条件</p>
         :type TagFilters: list of TagFilter
-        :param _Order: 排序值，支持Asc或Desc，默认Desc
+        :param _Order: <p>排序值，支持Asc或Desc，默认Desc</p>
         :type Order: str
-        :param _OrderField: 排序字段，支持CreateTime或UpdateTime，默认CreateTime
+        :param _OrderField: <p>排序字段，支持CreateTime或UpdateTime，默认CreateTime</p>
         :type OrderField: str
-        :param _Offset: 偏移值
+        :param _Offset: <p>偏移值</p>
         :type Offset: int
-        :param _Limit: 返回数据个数，默认20，最大支持200
+        :param _Limit: <p>返回数据个数，默认20，最大支持200</p>
         :type Limit: int
-        :param _CFSChecking: 是否检查CFS。若开启，则在CFS挂载好之前，不会返回数据集列表。
+        :param _CFSChecking: <p>是否检查CFS。若开启，则在CFS挂载好之前，不会返回数据集列表。</p>
         :type CFSChecking: bool
-        :param _CFSDetail: 是否返回CFS详情。
+        :param _CFSDetail: <p>是否返回CFS详情。</p>
         :type CFSDetail: bool
         """
+        self._TiProjectId = None
         self._DatasetIds = None
         self._Filters = None
         self._TagFilters = None
@@ -9422,8 +9423,19 @@ DatasetScope，数据集范围，SCOPE_DATASET_PRIVATE或SCOPE_DATASET_PUBLIC
         self._CFSDetail = None
 
     @property
+    def TiProjectId(self):
+        r"""<p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+        :rtype: str
+        """
+        return self._TiProjectId
+
+    @TiProjectId.setter
+    def TiProjectId(self, TiProjectId):
+        self._TiProjectId = TiProjectId
+
+    @property
     def DatasetIds(self):
-        r"""数据集id列表
+        r"""<p>数据集id列表</p>
         :rtype: list of str
         """
         return self._DatasetIds
@@ -9434,9 +9446,7 @@ DatasetScope，数据集范围，SCOPE_DATASET_PRIVATE或SCOPE_DATASET_PUBLIC
 
     @property
     def Filters(self):
-        r"""数据集查询过滤条件，多个Filter之间的关系为逻辑与（AND）关系，过滤字段Filter.Name，类型为String
-DatasetName，数据集名称
-DatasetScope，数据集范围，SCOPE_DATASET_PRIVATE或SCOPE_DATASET_PUBLIC
+        r"""<p>数据集查询过滤条件，多个Filter之间的关系为逻辑与（AND）关系，过滤字段Filter.Name，类型为String<br>DatasetName，数据集名称<br>DatasetScope，数据集范围，SCOPE_DATASET_PRIVATE或SCOPE_DATASET_PUBLIC</p>
         :rtype: list of Filter
         """
         return self._Filters
@@ -9447,7 +9457,7 @@ DatasetScope，数据集范围，SCOPE_DATASET_PRIVATE或SCOPE_DATASET_PUBLIC
 
     @property
     def TagFilters(self):
-        r"""标签过滤条件
+        r"""<p>标签过滤条件</p>
         :rtype: list of TagFilter
         """
         return self._TagFilters
@@ -9458,7 +9468,7 @@ DatasetScope，数据集范围，SCOPE_DATASET_PRIVATE或SCOPE_DATASET_PUBLIC
 
     @property
     def Order(self):
-        r"""排序值，支持Asc或Desc，默认Desc
+        r"""<p>排序值，支持Asc或Desc，默认Desc</p>
         :rtype: str
         """
         return self._Order
@@ -9469,7 +9479,7 @@ DatasetScope，数据集范围，SCOPE_DATASET_PRIVATE或SCOPE_DATASET_PUBLIC
 
     @property
     def OrderField(self):
-        r"""排序字段，支持CreateTime或UpdateTime，默认CreateTime
+        r"""<p>排序字段，支持CreateTime或UpdateTime，默认CreateTime</p>
         :rtype: str
         """
         return self._OrderField
@@ -9480,7 +9490,7 @@ DatasetScope，数据集范围，SCOPE_DATASET_PRIVATE或SCOPE_DATASET_PUBLIC
 
     @property
     def Offset(self):
-        r"""偏移值
+        r"""<p>偏移值</p>
         :rtype: int
         """
         return self._Offset
@@ -9491,7 +9501,7 @@ DatasetScope，数据集范围，SCOPE_DATASET_PRIVATE或SCOPE_DATASET_PUBLIC
 
     @property
     def Limit(self):
-        r"""返回数据个数，默认20，最大支持200
+        r"""<p>返回数据个数，默认20，最大支持200</p>
         :rtype: int
         """
         return self._Limit
@@ -9502,7 +9512,7 @@ DatasetScope，数据集范围，SCOPE_DATASET_PRIVATE或SCOPE_DATASET_PUBLIC
 
     @property
     def CFSChecking(self):
-        r"""是否检查CFS。若开启，则在CFS挂载好之前，不会返回数据集列表。
+        r"""<p>是否检查CFS。若开启，则在CFS挂载好之前，不会返回数据集列表。</p>
         :rtype: bool
         """
         return self._CFSChecking
@@ -9513,7 +9523,7 @@ DatasetScope，数据集范围，SCOPE_DATASET_PRIVATE或SCOPE_DATASET_PUBLIC
 
     @property
     def CFSDetail(self):
-        r"""是否返回CFS详情。
+        r"""<p>是否返回CFS详情。</p>
         :rtype: bool
         """
         return self._CFSDetail
@@ -9524,6 +9534,7 @@ DatasetScope，数据集范围，SCOPE_DATASET_PRIVATE或SCOPE_DATASET_PUBLIC
 
 
     def _deserialize(self, params):
+        self._TiProjectId = params.get("TiProjectId")
         self._DatasetIds = params.get("DatasetIds")
         if params.get("Filters") is not None:
             self._Filters = []
@@ -9560,16 +9571,16 @@ class DescribeDatasetsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TotalCount: 数据集总量（名称维度）
+        :param _TotalCount: <p>数据集总量（名称维度）</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
-        :param _DatasetGroups: 数据集按照数据集名称聚合的分组
+        :param _DatasetGroups: <p>数据集按照数据集名称聚合的分组</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type DatasetGroups: list of DatasetGroup
-        :param _DatasetIdNums: 数据集ID总量
+        :param _DatasetIdNums: <p>数据集ID总量</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type DatasetIdNums: int
-        :param _CFSNotReady: 若开启了CFSChecking，则检查CFS是否准备完毕。若CFS未准备完毕，则返回true，并且TotalCount为0，DatasetGroups为空。
+        :param _CFSNotReady: <p>若开启了CFSChecking，则检查CFS是否准备完毕。若CFS未准备完毕，则返回true，并且TotalCount为0，DatasetGroups为空。</p>
         :type CFSNotReady: bool
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -9582,7 +9593,7 @@ class DescribeDatasetsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        r"""数据集总量（名称维度）
+        r"""<p>数据集总量（名称维度）</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -9594,7 +9605,7 @@ class DescribeDatasetsResponse(AbstractModel):
 
     @property
     def DatasetGroups(self):
-        r"""数据集按照数据集名称聚合的分组
+        r"""<p>数据集按照数据集名称聚合的分组</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of DatasetGroup
         """
@@ -9606,7 +9617,7 @@ class DescribeDatasetsResponse(AbstractModel):
 
     @property
     def DatasetIdNums(self):
-        r"""数据集ID总量
+        r"""<p>数据集ID总量</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -9618,7 +9629,7 @@ class DescribeDatasetsResponse(AbstractModel):
 
     @property
     def CFSNotReady(self):
-        r"""若开启了CFSChecking，则检查CFS是否准备完毕。若CFS未准备完毕，则返回true，并且TotalCount为0，DatasetGroups为空。
+        r"""<p>若开启了CFSChecking，则检查CFS是否准备完毕。若CFS未准备完毕，则返回true，并且TotalCount为0，DatasetGroups为空。</p>
         :rtype: bool
         """
         return self._CFSNotReady
@@ -30213,7 +30224,7 @@ class TrainingTaskDetail(AbstractModel):
         :param _Message: <p>任务信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Message: str
-        :param _Status: <p>任务状态，eg：STARTING启动中、RUNNING运行中、STOPPING停止中、STOPPED已停止、FAILED异常、SUCCEED已完成</p>
+        :param _Status: <p>任务状态</p><p>枚举值：</p><ul><li>SUBMITTING： 排队中</li><li>STARTING： 启动中</li><li>RUNNING： 运行中</li><li>STOPPING： 停止中</li><li>STOPPED： 已停止</li><li>FAILED： 异常</li><li>SUCCEED： 已完成</li><li>SUBMIT_FAILED： 提交失败</li></ul>
         :type Status: str
         :param _CallbackUrl: <p>回调地址</p>
 注意：此字段可能返回 null，表示取不到有效值。
@@ -30713,7 +30724,7 @@ class TrainingTaskDetail(AbstractModel):
 
     @property
     def Status(self):
-        r"""<p>任务状态，eg：STARTING启动中、RUNNING运行中、STOPPING停止中、STOPPED已停止、FAILED异常、SUCCEED已完成</p>
+        r"""<p>任务状态</p><p>枚举值：</p><ul><li>SUBMITTING： 排队中</li><li>STARTING： 启动中</li><li>RUNNING： 运行中</li><li>STOPPING： 停止中</li><li>STOPPED： 已停止</li><li>FAILED： 异常</li><li>SUCCEED： 已完成</li><li>SUBMIT_FAILED： 提交失败</li></ul>
         :rtype: str
         """
         return self._Status
@@ -30888,7 +30899,7 @@ class TrainingTaskSetItem(AbstractModel):
         :param _TrainingMode: <p>训练模式eg：PS_WORKER、DDP、MPI、HOROVOD</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TrainingMode: str
-        :param _Status: <p>任务状态，eg：SUBMITTING提交中、PENDING排队中、<br>STARTING启动中、RUNNING运行中、STOPPING停止中、STOPPED已停止、FAILED异常、SUCCEED已完成</p>
+        :param _Status: <p>任务状态</p><p>枚举值：</p><ul><li>SUBMITTING： 提交中</li><li>PENDING： 排队中</li><li>STARTING： 启动中</li><li>RUNNING： 运行中</li><li>STOPPING： 停止中</li><li>STOPPED： 已停止</li><li>FAILED： 异常</li><li>SUCCEED： 已完成</li><li>SUBMIT_FAILED： 提交失败</li></ul>
         :type Status: str
         :param _RuntimeInSeconds: <p>运行时长</p>
 注意：此字段可能返回 null，表示取不到有效值。
@@ -31084,7 +31095,7 @@ class TrainingTaskSetItem(AbstractModel):
 
     @property
     def Status(self):
-        r"""<p>任务状态，eg：SUBMITTING提交中、PENDING排队中、<br>STARTING启动中、RUNNING运行中、STOPPING停止中、STOPPED已停止、FAILED异常、SUCCEED已完成</p>
+        r"""<p>任务状态</p><p>枚举值：</p><ul><li>SUBMITTING： 提交中</li><li>PENDING： 排队中</li><li>STARTING： 启动中</li><li>RUNNING： 运行中</li><li>STOPPING： 停止中</li><li>STOPPED： 已停止</li><li>FAILED： 异常</li><li>SUCCEED： 已完成</li><li>SUBMIT_FAILED： 提交失败</li></ul>
         :rtype: str
         """
         return self._Status

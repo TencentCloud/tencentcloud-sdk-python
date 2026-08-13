@@ -13926,6 +13926,213 @@ class AigcStoreCosParam(AbstractModel):
         
 
 
+class AigcTaskListItem(AbstractModel):
+    r"""Aigc任务详细信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: <p>任务ID</p>
+        :type TaskId: str
+        :param _TaskType: <p>任务类型</p><p>枚举值：</p><ul><li>VideoRedraw： 转绘任务</li><li>AIDrama： AI漫剧任务</li></ul>
+        :type TaskType: str
+        :param _TaskStatus: <p>任务状态</p><p>枚举值：</p><ul><li>PENDING： 任务等待调度</li><li>RUNNING： 任务运行中</li><li>FINISHED： 任务执行成功</li><li>STOP： 任务被中止</li><li>FAILED： 任务失败</li><li>TIMEOUT： 任务超时</li></ul>
+        :type TaskStatus: str
+        :param _CreateTime: <p>任务创建时间</p>
+        :type CreateTime: str
+        :param _ScheduledTime: <p>任务开始调度时间</p>
+        :type ScheduledTime: str
+        :param _FinishedTime: <p>任务结束时间</p>
+        :type FinishedTime: str
+        :param _Urls: <p>任务结果Url</p>
+        :type Urls: list of str
+        :param _TaskResultCode: <p>任务执行错误码</p>
+        :type TaskResultCode: int
+        :param _TaskResultMsg: <p>任务执行错误信息</p>
+        :type TaskResultMsg: str
+        :param _Resolution: <p>输出视频的分辨率</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Resolution: str
+        :param _Ratio: <p>输出视频的宽高比</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Ratio: str
+        :param _RequestBody: <p>任务请求包</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RequestBody: str
+        """
+        self._TaskId = None
+        self._TaskType = None
+        self._TaskStatus = None
+        self._CreateTime = None
+        self._ScheduledTime = None
+        self._FinishedTime = None
+        self._Urls = None
+        self._TaskResultCode = None
+        self._TaskResultMsg = None
+        self._Resolution = None
+        self._Ratio = None
+        self._RequestBody = None
+
+    @property
+    def TaskId(self):
+        r"""<p>任务ID</p>
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def TaskType(self):
+        r"""<p>任务类型</p><p>枚举值：</p><ul><li>VideoRedraw： 转绘任务</li><li>AIDrama： AI漫剧任务</li></ul>
+        :rtype: str
+        """
+        return self._TaskType
+
+    @TaskType.setter
+    def TaskType(self, TaskType):
+        self._TaskType = TaskType
+
+    @property
+    def TaskStatus(self):
+        r"""<p>任务状态</p><p>枚举值：</p><ul><li>PENDING： 任务等待调度</li><li>RUNNING： 任务运行中</li><li>FINISHED： 任务执行成功</li><li>STOP： 任务被中止</li><li>FAILED： 任务失败</li><li>TIMEOUT： 任务超时</li></ul>
+        :rtype: str
+        """
+        return self._TaskStatus
+
+    @TaskStatus.setter
+    def TaskStatus(self, TaskStatus):
+        self._TaskStatus = TaskStatus
+
+    @property
+    def CreateTime(self):
+        r"""<p>任务创建时间</p>
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def ScheduledTime(self):
+        r"""<p>任务开始调度时间</p>
+        :rtype: str
+        """
+        return self._ScheduledTime
+
+    @ScheduledTime.setter
+    def ScheduledTime(self, ScheduledTime):
+        self._ScheduledTime = ScheduledTime
+
+    @property
+    def FinishedTime(self):
+        r"""<p>任务结束时间</p>
+        :rtype: str
+        """
+        return self._FinishedTime
+
+    @FinishedTime.setter
+    def FinishedTime(self, FinishedTime):
+        self._FinishedTime = FinishedTime
+
+    @property
+    def Urls(self):
+        r"""<p>任务结果Url</p>
+        :rtype: list of str
+        """
+        return self._Urls
+
+    @Urls.setter
+    def Urls(self, Urls):
+        self._Urls = Urls
+
+    @property
+    def TaskResultCode(self):
+        r"""<p>任务执行错误码</p>
+        :rtype: int
+        """
+        return self._TaskResultCode
+
+    @TaskResultCode.setter
+    def TaskResultCode(self, TaskResultCode):
+        self._TaskResultCode = TaskResultCode
+
+    @property
+    def TaskResultMsg(self):
+        r"""<p>任务执行错误信息</p>
+        :rtype: str
+        """
+        return self._TaskResultMsg
+
+    @TaskResultMsg.setter
+    def TaskResultMsg(self, TaskResultMsg):
+        self._TaskResultMsg = TaskResultMsg
+
+    @property
+    def Resolution(self):
+        r"""<p>输出视频的分辨率</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Resolution
+
+    @Resolution.setter
+    def Resolution(self, Resolution):
+        self._Resolution = Resolution
+
+    @property
+    def Ratio(self):
+        r"""<p>输出视频的宽高比</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Ratio
+
+    @Ratio.setter
+    def Ratio(self, Ratio):
+        self._Ratio = Ratio
+
+    @property
+    def RequestBody(self):
+        r"""<p>任务请求包</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._RequestBody
+
+    @RequestBody.setter
+    def RequestBody(self, RequestBody):
+        self._RequestBody = RequestBody
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._TaskType = params.get("TaskType")
+        self._TaskStatus = params.get("TaskStatus")
+        self._CreateTime = params.get("CreateTime")
+        self._ScheduledTime = params.get("ScheduledTime")
+        self._FinishedTime = params.get("FinishedTime")
+        self._Urls = params.get("Urls")
+        self._TaskResultCode = params.get("TaskResultCode")
+        self._TaskResultMsg = params.get("TaskResultMsg")
+        self._Resolution = params.get("Resolution")
+        self._Ratio = params.get("Ratio")
+        self._RequestBody = params.get("RequestBody")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AigcVideoExtraParam(AbstractModel):
     r"""用于AIGC创作视频时用到的扩展参数信息。
 
@@ -33423,6 +33630,167 @@ class DescribeAigcImageTaskResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeAigcTaskListRequest(AbstractModel):
+    r"""DescribeAigcTaskList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PageNum: <p>开始查询页</p>
+        :type PageNum: int
+        :param _PageSize: <p>当前页要获取多少数据</p>
+        :type PageSize: int
+        :param _QueryTaskFilter: <p>查询过滤条件</p>
+        :type QueryTaskFilter: :class:`tencentcloud.mps.v20190612.models.QueryTaskFilter`
+        """
+        self._PageNum = None
+        self._PageSize = None
+        self._QueryTaskFilter = None
+
+    @property
+    def PageNum(self):
+        r"""<p>开始查询页</p>
+        :rtype: int
+        """
+        return self._PageNum
+
+    @PageNum.setter
+    def PageNum(self, PageNum):
+        self._PageNum = PageNum
+
+    @property
+    def PageSize(self):
+        r"""<p>当前页要获取多少数据</p>
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def QueryTaskFilter(self):
+        r"""<p>查询过滤条件</p>
+        :rtype: :class:`tencentcloud.mps.v20190612.models.QueryTaskFilter`
+        """
+        return self._QueryTaskFilter
+
+    @QueryTaskFilter.setter
+    def QueryTaskFilter(self, QueryTaskFilter):
+        self._QueryTaskFilter = QueryTaskFilter
+
+
+    def _deserialize(self, params):
+        self._PageNum = params.get("PageNum")
+        self._PageSize = params.get("PageSize")
+        if params.get("QueryTaskFilter") is not None:
+            self._QueryTaskFilter = QueryTaskFilter()
+            self._QueryTaskFilter._deserialize(params.get("QueryTaskFilter"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAigcTaskListResponse(AbstractModel):
+    r"""DescribeAigcTaskList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Total: <p>当前任务待返回总数</p>
+        :type Total: int
+        :param _PageNum: <p>开始查询页</p>
+        :type PageNum: int
+        :param _PageSize: <p>当前页要获取数据条目数</p>
+        :type PageSize: int
+        :param _Tasks: <p>任务详情数据</p>
+        :type Tasks: list of AigcTaskListItem
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Total = None
+        self._PageNum = None
+        self._PageSize = None
+        self._Tasks = None
+        self._RequestId = None
+
+    @property
+    def Total(self):
+        r"""<p>当前任务待返回总数</p>
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def PageNum(self):
+        r"""<p>开始查询页</p>
+        :rtype: int
+        """
+        return self._PageNum
+
+    @PageNum.setter
+    def PageNum(self, PageNum):
+        self._PageNum = PageNum
+
+    @property
+    def PageSize(self):
+        r"""<p>当前页要获取数据条目数</p>
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def Tasks(self):
+        r"""<p>任务详情数据</p>
+        :rtype: list of AigcTaskListItem
+        """
+        return self._Tasks
+
+    @Tasks.setter
+    def Tasks(self, Tasks):
+        self._Tasks = Tasks
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Total = params.get("Total")
+        self._PageNum = params.get("PageNum")
+        self._PageSize = params.get("PageSize")
+        if params.get("Tasks") is not None:
+            self._Tasks = []
+            for item in params.get("Tasks"):
+                obj = AigcTaskListItem()
+                obj._deserialize(item)
+                self._Tasks.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeAigcTaskStatusRequest(AbstractModel):
     r"""DescribeAigcTaskStatus请求参数结构体
 
@@ -50087,7 +50455,7 @@ class FissionTaskInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Duration: <p>视频输出时长</p><p>取值范围：[1, 15]</p><p>单位：秒</p><p>默认值：15</p>
+        :param _Duration: <p>视频输出时长</p><p>取值范围：[4, 15]</p><p>单位：秒</p><p>默认值：15</p>
         :type Duration: int
         :param _ModelTier: <p>模型档位</p><p>枚举值：</p><ul><li>standard： 标准版</li><li>flagship： 旗舰版</li></ul>
         :type ModelTier: str
@@ -50097,7 +50465,7 @@ class FissionTaskInfo(AbstractModel):
         :type Resolution: str
         :param _Market: <p>目标市场</p><p>枚举值：</p><ul><li>north_america： 北美</li><li>europe： 欧洲</li><li>china： 中国</li><li>japan： 日本</li><li>korea： 韩国</li><li>southeast_asia： 东南亚</li><li>brazil： 巴西</li><li>global： 全球</li><li>other： 其他</li></ul><p>影响默认出镜模特族裔与本地化风格；未指定 CustomModel 时按市场自动决定人种</p>
         :type Market: str
-        :param _Language: <p>口播/字幕语言</p><p>枚举值：</p><ul><li>english： 英文</li><li>chinese： 中文</li><li>japanese： 日语</li><li>korean： 汉语</li><li>spanish： 西班牙语</li><li>portuguese： 葡萄牙语</li><li>music_only： 纯音乐无口播</li></ul>
+        :param _Language: <p>口播/字幕语言</p><p>枚举值：</p><ul><li>english： 英文</li><li>chinese： 中文</li><li>japanese： 日语</li><li>korean： 韩语</li><li>spanish： 西班牙语</li><li>portuguese： 葡萄牙语</li><li>music_only： 纯音乐无口播</li></ul>
         :type Language: str
         :param _VideoType: <p>视频类型</p><p>枚举值：</p><ul><li>ugc： UGC种草</li><li>talk： 产品口播</li><li>display： 产品展示（纯商品、无人声）</li><li>unboxing： 开箱分享</li><li>reaction： 反应展示</li></ul>
         :type VideoType: str
@@ -50118,7 +50486,7 @@ class FissionTaskInfo(AbstractModel):
 
     @property
     def Duration(self):
-        r"""<p>视频输出时长</p><p>取值范围：[1, 15]</p><p>单位：秒</p><p>默认值：15</p>
+        r"""<p>视频输出时长</p><p>取值范围：[4, 15]</p><p>单位：秒</p><p>默认值：15</p>
         :rtype: int
         """
         return self._Duration
@@ -50173,7 +50541,7 @@ class FissionTaskInfo(AbstractModel):
 
     @property
     def Language(self):
-        r"""<p>口播/字幕语言</p><p>枚举值：</p><ul><li>english： 英文</li><li>chinese： 中文</li><li>japanese： 日语</li><li>korean： 汉语</li><li>spanish： 西班牙语</li><li>portuguese： 葡萄牙语</li><li>music_only： 纯音乐无口播</li></ul>
+        r"""<p>口播/字幕语言</p><p>枚举值：</p><ul><li>english： 英文</li><li>chinese： 中文</li><li>japanese： 日语</li><li>korean： 韩语</li><li>spanish： 西班牙语</li><li>portuguese： 葡萄牙语</li><li>music_only： 纯音乐无口播</li></ul>
         :rtype: str
         """
         return self._Language
@@ -75343,6 +75711,102 @@ class QueryProjectResponse(AbstractModel):
                 obj._deserialize(item)
                 self._Data.append(obj)
         self._RequestId = params.get("RequestId")
+
+
+class QueryTaskFilter(AbstractModel):
+    r"""查询AIGC任务列表过滤条件
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: <p>任务ID</p>
+        :type TaskId: str
+        :param _TaskType: <p>任务类型</p>
+        :type TaskType: str
+        :param _TaskStatus: <p>任务状态</p>
+        :type TaskStatus: str
+        :param _Resolution: <p>分辨率</p>
+        :type Resolution: str
+        :param _Ratio: <p>宽高比</p>
+        :type Ratio: str
+        """
+        self._TaskId = None
+        self._TaskType = None
+        self._TaskStatus = None
+        self._Resolution = None
+        self._Ratio = None
+
+    @property
+    def TaskId(self):
+        r"""<p>任务ID</p>
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def TaskType(self):
+        r"""<p>任务类型</p>
+        :rtype: str
+        """
+        return self._TaskType
+
+    @TaskType.setter
+    def TaskType(self, TaskType):
+        self._TaskType = TaskType
+
+    @property
+    def TaskStatus(self):
+        r"""<p>任务状态</p>
+        :rtype: str
+        """
+        return self._TaskStatus
+
+    @TaskStatus.setter
+    def TaskStatus(self, TaskStatus):
+        self._TaskStatus = TaskStatus
+
+    @property
+    def Resolution(self):
+        r"""<p>分辨率</p>
+        :rtype: str
+        """
+        return self._Resolution
+
+    @Resolution.setter
+    def Resolution(self, Resolution):
+        self._Resolution = Resolution
+
+    @property
+    def Ratio(self):
+        r"""<p>宽高比</p>
+        :rtype: str
+        """
+        return self._Ratio
+
+    @Ratio.setter
+    def Ratio(self, Ratio):
+        self._Ratio = Ratio
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._TaskType = params.get("TaskType")
+        self._TaskStatus = params.get("TaskStatus")
+        self._Resolution = params.get("Resolution")
+        self._Ratio = params.get("Ratio")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class RTMPAddressDestination(AbstractModel):

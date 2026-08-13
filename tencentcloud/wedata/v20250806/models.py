@@ -49640,10 +49640,10 @@ class TaskCodeResult(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _CodeInfo: 代码内容
+        :param _CodeInfo: <p>base64编码的代码内容</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type CodeInfo: str
-        :param _CodeFileSize: 代码文件大小，单位KB
+        :param _CodeFileSize: <p>代码文件大小，单位KB</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type CodeFileSize: str
         """
@@ -49652,7 +49652,7 @@ class TaskCodeResult(AbstractModel):
 
     @property
     def CodeInfo(self):
-        r"""代码内容
+        r"""<p>base64编码的代码内容</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -49664,7 +49664,7 @@ class TaskCodeResult(AbstractModel):
 
     @property
     def CodeFileSize(self):
-        r"""代码文件大小，单位KB
+        r"""<p>代码文件大小，单位KB</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """

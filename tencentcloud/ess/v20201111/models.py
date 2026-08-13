@@ -11861,155 +11861,56 @@ class CreateFlowOption(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _CanEditFlow: 是否允许修改发起合同时确认弹窗的合同信息（合同名称、合同类型、签署截止时间），若不允许编辑，则表单字段将被禁止输入。
-<br/>true：允许编辑<br/>false：不允许编辑（默认值）<br/>
+        :param _CanEditFlow: <p>是否允许修改发起合同时确认弹窗的合同信息（合同名称、合同类型、签署截止时间），若不允许编辑，则表单字段将被禁止输入。<br><br>true：允许编辑<br>false：不允许编辑（默认值）<br></p>
         :type CanEditFlow: bool
-        :param _CanEditFormField: 是否允许编辑模板控件
-<br/>true:允许编辑模板控件信息
-<br/>false:不允许编辑模板控件信息（默认值）
-<br/>
+        :param _CanEditFormField: <p>是否允许编辑模板控件<br><br>true:允许编辑模板控件信息<br><br>false:不允许编辑模板控件信息（默认值）<br><br></p>
         :type CanEditFormField: bool
-        :param _HideShowFlowName: 发起页面隐藏合同名称展示
-<br/>true:发起页面隐藏合同名称展示
-<br/>false:发起页面不隐藏合同名称展示（默认值）
-<br/>
+        :param _HideShowFlowName: <p>发起页面隐藏合同名称展示<br><br>true:发起页面隐藏合同名称展示<br><br>false:发起页面不隐藏合同名称展示（默认值）<br><br></p>
         :type HideShowFlowName: bool
-        :param _HideShowFlowType: 发起页面隐藏合同类型展示
-<br/>true:发起页面隐藏合同类型展示
-<br/>false:发起页面不隐藏合同类型展示（默认值）
-<br/>
-
+        :param _HideShowFlowType: <p>发起页面隐藏合同类型展示<br><br>true:发起页面隐藏合同类型展示<br><br>false:发起页面不隐藏合同类型展示（默认值）<br><br></p>
         :type HideShowFlowType: bool
-        :param _HideShowDeadline: 发起页面隐藏合同截止日期展示
-<br/>true:发起页面隐藏合同截止日期展示
-<br/>false:发起页面不隐藏合同截止日期展示（默认值）
-<br/>
+        :param _HideShowDeadline: <p>发起页面隐藏合同截止日期展示<br><br>true:发起页面隐藏合同截止日期展示<br><br>false:发起页面不隐藏合同截止日期展示（默认值）<br><br></p>
         :type HideShowDeadline: bool
-        :param _CanSkipAddApprover: 发起页面允许跳过添加签署人环节
-<br/>true:发起页面允许跳过添加签署人环节
-<br/>false:发起页面不允许跳过添加签署人环节（默认值）
-<br/>
-
+        :param _CanSkipAddApprover: <p>发起页面允许跳过添加签署人环节<br><br>true:发起页面允许跳过添加签署人环节<br><br>false:发起页面不允许跳过添加签署人环节（默认值）<br><br></p>
         :type CanSkipAddApprover: bool
-        :param _SkipUploadFile: 文件发起页面跳过文件上传步骤
-<br/>true:文件发起页面跳过文件上传步骤
-<br/>false:文件发起页面不跳过文件上传步骤（默认值）
-<br/>
+        :param _SkipUploadFile: <p>文件发起页面跳过文件上传步骤<br><br>true:文件发起页面跳过文件上传步骤<br><br>false:文件发起页面不跳过文件上传步骤（默认值）<br><br></p>
         :type SkipUploadFile: bool
-        :param _ForbidEditFillComponent: 禁止编辑填写控件
-<br/>true:禁止编辑填写控件
-<br/>false:允许编辑填写控件（默认值）
-<br/>
+        :param _ForbidEditFillComponent: <p>禁止编辑填写控件<br><br>true:禁止编辑填写控件<br><br>false:允许编辑填写控件（默认值）<br><br></p>
         :type ForbidEditFillComponent: bool
-        :param _CustomCreateFlowDescription: 定制化发起合同弹窗的描述信息，描述信息最长500字符
-
+        :param _CustomCreateFlowDescription: <p>定制化发起合同弹窗的描述信息，描述信息最长500字符</p>
         :type CustomCreateFlowDescription: str
-        :param _ForbidAddApprover:  禁止添加签署方，若为true则在发起流程的可嵌入页面隐藏“添加签署人按钮”
-
+        :param _ForbidAddApprover: <p>禁止添加签署方，若为true则在发起流程的可嵌入页面隐藏“添加签署人按钮”</p>
         :type ForbidAddApprover: bool
-        :param _ForbidEditApprover: 是否可以编辑签署人包括新增，修改，删除 
-<ul><li>（默认） false -可以编辑签署人</li> <li> true - 禁止编辑签署人</li></ul>
-
-注意：如果设置参数为  true， 则 参数签署人 [FlowApproverList](https://qian.tencent.com/developers/partnerApis/embedPages/ChannelCreatePrepareFlow) 不能为空
+        :param _ForbidEditApprover: <p>是否可以编辑签署人包括新增，修改，删除 </p><ul><li>（默认） false -可以编辑签署人</li> <li> true - 禁止编辑签署人</li></ul><p>注意：如果设置参数为  true， 则 参数签署人 <a href="https://qian.tencent.com/developers/partnerApis/embedPages/ChannelCreatePrepareFlow">FlowApproverList</a> 不能为空</p>
         :type ForbidEditApprover: bool
-        :param _ForbidEditFlowProperties:   禁止设置签署流程属性 (顺序、合同签署认证方式等)，若为true则在发起流程的可嵌入页面隐藏签署流程设置面板
-
+        :param _ForbidEditFlowProperties: <p>禁止设置签署流程属性 (顺序、合同签署认证方式等)，若为true则在发起流程的可嵌入页面隐藏签署流程设置面板</p>
         :type ForbidEditFlowProperties: bool
-        :param _HideComponentTypes: 在发起流程的可嵌入页面要隐藏的控件列表，和 ShowComponentTypes 参数 只能二选一使用（注: 
-<font color='red'>空数组代表未指定</font>），具体的控件类型如下
-
-<ul><li>SIGN_SIGNATURE : 个人签名/印章</li>
-<li>SIGN_SEAL : 企业印章</li>
-<li>SIGN_PAGING_SEAL : 骑缝章</li>
-<li>SIGN_LEGAL_PERSON_SEAL : 法定代表人章</li>
-<li>SIGN_APPROVE : 签批</li>
-<li>SIGN_OPINION : 签署意见</li>
-<li>SIGN_PAGING_SIGNATURE : 手写签名骑缝控件</li>
-<li>BUSI-FULL-NAME  : 企业全称</li>
-<li>BUSI-CREDIT-CODE : 统一社会信用代码</li>
-<li>BUSI-LEGAL-NAME : 法人/经营者姓名</li>
-<li>PERSONAL-NAME : 签署人姓名</li>
-<li>PERSONAL-MOBILE : 签署人手机号</li>
-<li>PERSONAL-IDCARD-TYPE : 签署人证件类型</li>
-<li>PERSONAL-IDCARD : 签署人证件号</li>
-<li>TEXT : 单行文本</li>
-<li>MULTI_LINE_TEXT : 多行文本</li>
-<li>CHECK_BOX : 勾选框</li>
-<li>SELECTOR : 选择器</li>
-<li>DIGIT : 数字</li>
-<li>DATE : 日期</li>
-<li>FILL_IMAGE : 图片</li>
-<li>ATTACHMENT : 附件</li>
-<li>EMAIL : 邮箱</li>
-<li>LOCATION : 地址</li>
-<li>EDUCATION : 学历</li>
-<li>GENDER : 性别</li>
-<li>DISTRICT : 省市区</li></ul>
+        :param _HideComponentTypes: <p>在发起流程的可嵌入页面要隐藏的控件列表，和 ShowComponentTypes 参数 只能二选一使用（注:<br><font color="red">空数组代表未指定</font>），具体的控件类型如下</p><ul><li>SIGN_SIGNATURE : 个人签名/印章</li><li>SIGN_SEAL : 企业印章</li><li>SIGN_PAGING_SEAL : 骑缝章</li><li>SIGN_LEGAL_PERSON_SEAL : 法定代表人章</li><li>SIGN_APPROVE : 签批</li><li>SIGN_OPINION : 签署意见</li><li>SIGN_PAGING_SIGNATURE : 手写签名骑缝控件</li><li>BUSI-FULL-NAME  : 企业全称</li><li>BUSI-CREDIT-CODE : 统一社会信用代码</li><li>BUSI-LEGAL-NAME : 法人/经营者姓名</li><li>PERSONAL-NAME : 签署人姓名</li><li>PERSONAL-MOBILE : 签署人手机号</li><li>PERSONAL-IDCARD-TYPE : 签署人证件类型</li><li>PERSONAL-IDCARD : 签署人证件号</li><li>TEXT : 单行文本</li><li>MULTI_LINE_TEXT : 多行文本</li><li>CHECK_BOX : 勾选框</li><li>SELECTOR : 选择器</li><li>DIGIT : 数字</li><li>DATE : 日期</li><li>FILL_IMAGE : 图片</li><li>ATTACHMENT : 附件</li><li>EMAIL : 邮箱</li><li>LOCATION : 地址</li><li>EDUCATION : 学历</li><li>GENDER : 性别</li><li>DISTRICT : 省市区</li></ul>
         :type HideComponentTypes: list of str
-        :param _ShowComponentTypes: 在发起流程的可嵌入页面要显示的控件列表，和 HideComponentTypes 参数 只能二选一使用（注: 
-<font color='red'>空数组代表未指定</font>），具体的控件类型如下
-<ul><li>SIGN_SIGNATURE : 个人签名/印章</li>
-<li>SIGN_SEAL : 企业印章</li>
-<li>SIGN_PAGING_SEAL : 骑缝章</li>
-<li>SIGN_LEGAL_PERSON_SEAL : 法定代表人章</li>
-<li>SIGN_APPROVE : 签批</li>
-<li>SIGN_OPINION : 签署意见</li>
-<li>SIGN_PAGING_SIGNATURE : 手写签名骑缝控件</li>
-<li>BUSI-FULL-NAME  : 企业全称</li>
-<li>BUSI-CREDIT-CODE : 统一社会信用代码</li>
-<li>BUSI-LEGAL-NAME : 法人/经营者姓名</li>
-<li>PERSONAL-NAME : 签署人姓名</li>
-<li>PERSONAL-MOBILE : 签署人手机号</li>
-<li>PERSONAL-IDCARD-TYPE : 签署人证件类型</li>
-<li>PERSONAL-IDCARD : 签署人证件号</li>
-<li>TEXT : 单行文本</li>
-<li>MULTI_LINE_TEXT : 多行文本</li>
-<li>CHECK_BOX : 勾选框</li>
-<li>SELECTOR : 选择器</li>
-<li>DIGIT : 数字</li>
-<li>DATE : 日期</li>
-<li>FILL_IMAGE : 图片</li>
-<li>ATTACHMENT : 附件</li>
-<li>EMAIL : 邮箱</li>
-<li>LOCATION : 地址</li>
-<li>EDUCATION : 学历</li>
-<li>GENDER : 性别</li>
-<li>DISTRICT : 省市区</li></ul>
+        :param _ShowComponentTypes: <p>在发起流程的可嵌入页面要显示的控件列表，和 HideComponentTypes 参数 只能二选一使用（注:<br><font color="red">空数组代表未指定</font>），具体的控件类型如下</p><ul><li>SIGN_SIGNATURE : 个人签名/印章</li><li>SIGN_SEAL : 企业印章</li><li>SIGN_PAGING_SEAL : 骑缝章</li><li>SIGN_LEGAL_PERSON_SEAL : 法定代表人章</li><li>SIGN_APPROVE : 签批</li><li>SIGN_OPINION : 签署意见</li><li>SIGN_PAGING_SIGNATURE : 手写签名骑缝控件</li><li>BUSI-FULL-NAME  : 企业全称</li><li>BUSI-CREDIT-CODE : 统一社会信用代码</li><li>BUSI-LEGAL-NAME : 法人/经营者姓名</li><li>PERSONAL-NAME : 签署人姓名</li><li>PERSONAL-MOBILE : 签署人手机号</li><li>PERSONAL-IDCARD-TYPE : 签署人证件类型</li><li>PERSONAL-IDCARD : 签署人证件号</li><li>TEXT : 单行文本</li><li>MULTI_LINE_TEXT : 多行文本</li><li>CHECK_BOX : 勾选框</li><li>SELECTOR : 选择器</li><li>DIGIT : 数字</li><li>DATE : 日期</li><li>FILL_IMAGE : 图片</li><li>ATTACHMENT : 附件</li><li>EMAIL : 邮箱</li><li>LOCATION : 地址</li><li>EDUCATION : 学历</li><li>GENDER : 性别</li><li>DISTRICT : 省市区</li></ul>
         :type ShowComponentTypes: list of str
-        :param _ResultPageConfig: 发起流程的可嵌入页面结果页配置
+        :param _ResultPageConfig: <p>发起流程的可嵌入页面结果页配置</p>
         :type ResultPageConfig: list of CreateResultPageConfig
-        :param _SignComponentConfig: 签署控件的配置信息，用在嵌入式发起的页面配置，包括 
- - 签署控件 是否默认展示日期.
+        :param _SignComponentConfig: <p>签署控件的配置信息，用在嵌入式发起的页面配置，包括 </p><ul><li>签署控件 是否默认展示日期.</li></ul>
         :type SignComponentConfig: :class:`tencentcloud.ess.v20201111.models.SignComponentConfig`
-        :param _ForbidEditWatermark: 是否禁止编辑（展示）水印控件属性
-<ul><li>（默认） false -否</li> <li> true - 禁止编辑</li></ul>
+        :param _ForbidEditWatermark: <p>是否禁止编辑（展示）水印控件属性</p><ul><li>（默认） false -否</li> <li> true - 禁止编辑</li></ul>
         :type ForbidEditWatermark: bool
-        :param _HideOperationInstructions: 隐藏操作指引: 具体的控件类型如下
-
-<ul><li>1 : 操作指引入口</li>
-<li>2 : 操作文档</li>
-<li>3 : 操作视频</li>
-</ul>
-注：仅对新版页面生效
+        :param _HideOperationInstructions: <p>隐藏操作指引: 具体的控件类型如下</p><ul><li>1 : 操作指引入口</li><li>2 : 操作文档</li><li>3 : 操作视频</li></ul>注：仅对新版页面生效
         :type HideOperationInstructions: list of int non-negative
-        :param _HideOperationSteps: 隐藏操作步骤: 具体的控件类型如下
-
-<ul><li>1 : 选择文件及签署方</li>
-<li>2 : 补充文件内容</li>
-<li>4 : 发起前合同信息与设置确认</li>
-</ul>
-注：仅对新版页面生效
+        :param _HideOperationSteps: <p>隐藏操作步骤: 具体的控件类型如下</p><ul><li>1 : 选择文件及签署方</li><li>2 : 补充文件内容</li><li>4 : 发起前合同信息与设置确认</li></ul>注：仅对新版页面生效
         :type HideOperationSteps: list of int non-negative
-        :param _SelfName: 本企业简称，注：仅对新版页面生效
+        :param _SelfName: <p>本企业简称，注：仅对新版页面生效</p>
         :type SelfName: str
-        :param _HideSignCodeAfterStart: 发起后签署码隐藏，默认false，注：仅对新版页面生效
+        :param _HideSignCodeAfterStart: <p>发起后签署码隐藏，默认false，注：仅对新版页面生效</p>
         :type HideSignCodeAfterStart: bool
-        :param _PreviewAfterStart: 发起成功后是否预览合同 <ul><li>（默认） false -否</li> <li> true - 展示预览按钮</li></ul>	
+        :param _PreviewAfterStart: <p>发起成功后是否预览合同 <ul><li>（默认） false -否</li> <li> true - 展示预览按钮</li></ul></p>
         :type PreviewAfterStart: bool
-        :param _SignAfterStart: 发起成功之后是否签署合同，仅当前经办人作为签署人时生效 <ul><li>（默认） false -否</li> <li> true - 展示签署按钮</li></ul>	
+        :param _SignAfterStart: <p>发起成功之后是否签署合同，仅当前经办人作为签署人时生效 <ul><li>（默认） false -否</li> <li> true - 展示签署按钮</li></ul></p>
         :type SignAfterStart: bool
-        :param _NeedFlowDraft: 发起过程中是否保存草稿
+        :param _NeedFlowDraft: <p>发起过程中是否保存草稿</p>
         :type NeedFlowDraft: bool
+        :param _CcInfoVisibility: <p>若指定了合同抄送人，此参数用来控制操作人能否在嵌入式页面看见或编辑（修改、增加、删除）抄送人信息。</p><p>枚举值：</p><ul><li>0： 不可见不可编辑</li><li>1： 可见不可编辑</li><li>2： 可见可编辑</li></ul><p>默认值：0</p>
+        :type CcInfoVisibility: int
         """
         self._CanEditFlow = None
         self._CanEditFormField = None
@@ -12035,11 +11936,11 @@ class CreateFlowOption(AbstractModel):
         self._PreviewAfterStart = None
         self._SignAfterStart = None
         self._NeedFlowDraft = None
+        self._CcInfoVisibility = None
 
     @property
     def CanEditFlow(self):
-        r"""是否允许修改发起合同时确认弹窗的合同信息（合同名称、合同类型、签署截止时间），若不允许编辑，则表单字段将被禁止输入。
-<br/>true：允许编辑<br/>false：不允许编辑（默认值）<br/>
+        r"""<p>是否允许修改发起合同时确认弹窗的合同信息（合同名称、合同类型、签署截止时间），若不允许编辑，则表单字段将被禁止输入。<br><br>true：允许编辑<br>false：不允许编辑（默认值）<br></p>
         :rtype: bool
         """
         return self._CanEditFlow
@@ -12050,10 +11951,7 @@ class CreateFlowOption(AbstractModel):
 
     @property
     def CanEditFormField(self):
-        r"""是否允许编辑模板控件
-<br/>true:允许编辑模板控件信息
-<br/>false:不允许编辑模板控件信息（默认值）
-<br/>
+        r"""<p>是否允许编辑模板控件<br><br>true:允许编辑模板控件信息<br><br>false:不允许编辑模板控件信息（默认值）<br><br></p>
         :rtype: bool
         """
         return self._CanEditFormField
@@ -12064,10 +11962,7 @@ class CreateFlowOption(AbstractModel):
 
     @property
     def HideShowFlowName(self):
-        r"""发起页面隐藏合同名称展示
-<br/>true:发起页面隐藏合同名称展示
-<br/>false:发起页面不隐藏合同名称展示（默认值）
-<br/>
+        r"""<p>发起页面隐藏合同名称展示<br><br>true:发起页面隐藏合同名称展示<br><br>false:发起页面不隐藏合同名称展示（默认值）<br><br></p>
         :rtype: bool
         """
         return self._HideShowFlowName
@@ -12078,11 +11973,7 @@ class CreateFlowOption(AbstractModel):
 
     @property
     def HideShowFlowType(self):
-        r"""发起页面隐藏合同类型展示
-<br/>true:发起页面隐藏合同类型展示
-<br/>false:发起页面不隐藏合同类型展示（默认值）
-<br/>
-
+        r"""<p>发起页面隐藏合同类型展示<br><br>true:发起页面隐藏合同类型展示<br><br>false:发起页面不隐藏合同类型展示（默认值）<br><br></p>
         :rtype: bool
         """
         return self._HideShowFlowType
@@ -12093,10 +11984,7 @@ class CreateFlowOption(AbstractModel):
 
     @property
     def HideShowDeadline(self):
-        r"""发起页面隐藏合同截止日期展示
-<br/>true:发起页面隐藏合同截止日期展示
-<br/>false:发起页面不隐藏合同截止日期展示（默认值）
-<br/>
+        r"""<p>发起页面隐藏合同截止日期展示<br><br>true:发起页面隐藏合同截止日期展示<br><br>false:发起页面不隐藏合同截止日期展示（默认值）<br><br></p>
         :rtype: bool
         """
         return self._HideShowDeadline
@@ -12107,11 +11995,7 @@ class CreateFlowOption(AbstractModel):
 
     @property
     def CanSkipAddApprover(self):
-        r"""发起页面允许跳过添加签署人环节
-<br/>true:发起页面允许跳过添加签署人环节
-<br/>false:发起页面不允许跳过添加签署人环节（默认值）
-<br/>
-
+        r"""<p>发起页面允许跳过添加签署人环节<br><br>true:发起页面允许跳过添加签署人环节<br><br>false:发起页面不允许跳过添加签署人环节（默认值）<br><br></p>
         :rtype: bool
         """
         return self._CanSkipAddApprover
@@ -12122,10 +12006,7 @@ class CreateFlowOption(AbstractModel):
 
     @property
     def SkipUploadFile(self):
-        r"""文件发起页面跳过文件上传步骤
-<br/>true:文件发起页面跳过文件上传步骤
-<br/>false:文件发起页面不跳过文件上传步骤（默认值）
-<br/>
+        r"""<p>文件发起页面跳过文件上传步骤<br><br>true:文件发起页面跳过文件上传步骤<br><br>false:文件发起页面不跳过文件上传步骤（默认值）<br><br></p>
         :rtype: bool
         """
         return self._SkipUploadFile
@@ -12136,10 +12017,7 @@ class CreateFlowOption(AbstractModel):
 
     @property
     def ForbidEditFillComponent(self):
-        r"""禁止编辑填写控件
-<br/>true:禁止编辑填写控件
-<br/>false:允许编辑填写控件（默认值）
-<br/>
+        r"""<p>禁止编辑填写控件<br><br>true:禁止编辑填写控件<br><br>false:允许编辑填写控件（默认值）<br><br></p>
         :rtype: bool
         """
         return self._ForbidEditFillComponent
@@ -12150,8 +12028,7 @@ class CreateFlowOption(AbstractModel):
 
     @property
     def CustomCreateFlowDescription(self):
-        r"""定制化发起合同弹窗的描述信息，描述信息最长500字符
-
+        r"""<p>定制化发起合同弹窗的描述信息，描述信息最长500字符</p>
         :rtype: str
         """
         return self._CustomCreateFlowDescription
@@ -12162,8 +12039,7 @@ class CreateFlowOption(AbstractModel):
 
     @property
     def ForbidAddApprover(self):
-        r""" 禁止添加签署方，若为true则在发起流程的可嵌入页面隐藏“添加签署人按钮”
-
+        r"""<p>禁止添加签署方，若为true则在发起流程的可嵌入页面隐藏“添加签署人按钮”</p>
         :rtype: bool
         """
         return self._ForbidAddApprover
@@ -12174,10 +12050,7 @@ class CreateFlowOption(AbstractModel):
 
     @property
     def ForbidEditApprover(self):
-        r"""是否可以编辑签署人包括新增，修改，删除 
-<ul><li>（默认） false -可以编辑签署人</li> <li> true - 禁止编辑签署人</li></ul>
-
-注意：如果设置参数为  true， 则 参数签署人 [FlowApproverList](https://qian.tencent.com/developers/partnerApis/embedPages/ChannelCreatePrepareFlow) 不能为空
+        r"""<p>是否可以编辑签署人包括新增，修改，删除 </p><ul><li>（默认） false -可以编辑签署人</li> <li> true - 禁止编辑签署人</li></ul><p>注意：如果设置参数为  true， 则 参数签署人 <a href="https://qian.tencent.com/developers/partnerApis/embedPages/ChannelCreatePrepareFlow">FlowApproverList</a> 不能为空</p>
         :rtype: bool
         """
         return self._ForbidEditApprover
@@ -12188,8 +12061,7 @@ class CreateFlowOption(AbstractModel):
 
     @property
     def ForbidEditFlowProperties(self):
-        r"""  禁止设置签署流程属性 (顺序、合同签署认证方式等)，若为true则在发起流程的可嵌入页面隐藏签署流程设置面板
-
+        r"""<p>禁止设置签署流程属性 (顺序、合同签署认证方式等)，若为true则在发起流程的可嵌入页面隐藏签署流程设置面板</p>
         :rtype: bool
         """
         return self._ForbidEditFlowProperties
@@ -12200,36 +12072,7 @@ class CreateFlowOption(AbstractModel):
 
     @property
     def HideComponentTypes(self):
-        r"""在发起流程的可嵌入页面要隐藏的控件列表，和 ShowComponentTypes 参数 只能二选一使用（注: 
-<font color='red'>空数组代表未指定</font>），具体的控件类型如下
-
-<ul><li>SIGN_SIGNATURE : 个人签名/印章</li>
-<li>SIGN_SEAL : 企业印章</li>
-<li>SIGN_PAGING_SEAL : 骑缝章</li>
-<li>SIGN_LEGAL_PERSON_SEAL : 法定代表人章</li>
-<li>SIGN_APPROVE : 签批</li>
-<li>SIGN_OPINION : 签署意见</li>
-<li>SIGN_PAGING_SIGNATURE : 手写签名骑缝控件</li>
-<li>BUSI-FULL-NAME  : 企业全称</li>
-<li>BUSI-CREDIT-CODE : 统一社会信用代码</li>
-<li>BUSI-LEGAL-NAME : 法人/经营者姓名</li>
-<li>PERSONAL-NAME : 签署人姓名</li>
-<li>PERSONAL-MOBILE : 签署人手机号</li>
-<li>PERSONAL-IDCARD-TYPE : 签署人证件类型</li>
-<li>PERSONAL-IDCARD : 签署人证件号</li>
-<li>TEXT : 单行文本</li>
-<li>MULTI_LINE_TEXT : 多行文本</li>
-<li>CHECK_BOX : 勾选框</li>
-<li>SELECTOR : 选择器</li>
-<li>DIGIT : 数字</li>
-<li>DATE : 日期</li>
-<li>FILL_IMAGE : 图片</li>
-<li>ATTACHMENT : 附件</li>
-<li>EMAIL : 邮箱</li>
-<li>LOCATION : 地址</li>
-<li>EDUCATION : 学历</li>
-<li>GENDER : 性别</li>
-<li>DISTRICT : 省市区</li></ul>
+        r"""<p>在发起流程的可嵌入页面要隐藏的控件列表，和 ShowComponentTypes 参数 只能二选一使用（注:<br><font color="red">空数组代表未指定</font>），具体的控件类型如下</p><ul><li>SIGN_SIGNATURE : 个人签名/印章</li><li>SIGN_SEAL : 企业印章</li><li>SIGN_PAGING_SEAL : 骑缝章</li><li>SIGN_LEGAL_PERSON_SEAL : 法定代表人章</li><li>SIGN_APPROVE : 签批</li><li>SIGN_OPINION : 签署意见</li><li>SIGN_PAGING_SIGNATURE : 手写签名骑缝控件</li><li>BUSI-FULL-NAME  : 企业全称</li><li>BUSI-CREDIT-CODE : 统一社会信用代码</li><li>BUSI-LEGAL-NAME : 法人/经营者姓名</li><li>PERSONAL-NAME : 签署人姓名</li><li>PERSONAL-MOBILE : 签署人手机号</li><li>PERSONAL-IDCARD-TYPE : 签署人证件类型</li><li>PERSONAL-IDCARD : 签署人证件号</li><li>TEXT : 单行文本</li><li>MULTI_LINE_TEXT : 多行文本</li><li>CHECK_BOX : 勾选框</li><li>SELECTOR : 选择器</li><li>DIGIT : 数字</li><li>DATE : 日期</li><li>FILL_IMAGE : 图片</li><li>ATTACHMENT : 附件</li><li>EMAIL : 邮箱</li><li>LOCATION : 地址</li><li>EDUCATION : 学历</li><li>GENDER : 性别</li><li>DISTRICT : 省市区</li></ul>
         :rtype: list of str
         """
         return self._HideComponentTypes
@@ -12240,35 +12083,7 @@ class CreateFlowOption(AbstractModel):
 
     @property
     def ShowComponentTypes(self):
-        r"""在发起流程的可嵌入页面要显示的控件列表，和 HideComponentTypes 参数 只能二选一使用（注: 
-<font color='red'>空数组代表未指定</font>），具体的控件类型如下
-<ul><li>SIGN_SIGNATURE : 个人签名/印章</li>
-<li>SIGN_SEAL : 企业印章</li>
-<li>SIGN_PAGING_SEAL : 骑缝章</li>
-<li>SIGN_LEGAL_PERSON_SEAL : 法定代表人章</li>
-<li>SIGN_APPROVE : 签批</li>
-<li>SIGN_OPINION : 签署意见</li>
-<li>SIGN_PAGING_SIGNATURE : 手写签名骑缝控件</li>
-<li>BUSI-FULL-NAME  : 企业全称</li>
-<li>BUSI-CREDIT-CODE : 统一社会信用代码</li>
-<li>BUSI-LEGAL-NAME : 法人/经营者姓名</li>
-<li>PERSONAL-NAME : 签署人姓名</li>
-<li>PERSONAL-MOBILE : 签署人手机号</li>
-<li>PERSONAL-IDCARD-TYPE : 签署人证件类型</li>
-<li>PERSONAL-IDCARD : 签署人证件号</li>
-<li>TEXT : 单行文本</li>
-<li>MULTI_LINE_TEXT : 多行文本</li>
-<li>CHECK_BOX : 勾选框</li>
-<li>SELECTOR : 选择器</li>
-<li>DIGIT : 数字</li>
-<li>DATE : 日期</li>
-<li>FILL_IMAGE : 图片</li>
-<li>ATTACHMENT : 附件</li>
-<li>EMAIL : 邮箱</li>
-<li>LOCATION : 地址</li>
-<li>EDUCATION : 学历</li>
-<li>GENDER : 性别</li>
-<li>DISTRICT : 省市区</li></ul>
+        r"""<p>在发起流程的可嵌入页面要显示的控件列表，和 HideComponentTypes 参数 只能二选一使用（注:<br><font color="red">空数组代表未指定</font>），具体的控件类型如下</p><ul><li>SIGN_SIGNATURE : 个人签名/印章</li><li>SIGN_SEAL : 企业印章</li><li>SIGN_PAGING_SEAL : 骑缝章</li><li>SIGN_LEGAL_PERSON_SEAL : 法定代表人章</li><li>SIGN_APPROVE : 签批</li><li>SIGN_OPINION : 签署意见</li><li>SIGN_PAGING_SIGNATURE : 手写签名骑缝控件</li><li>BUSI-FULL-NAME  : 企业全称</li><li>BUSI-CREDIT-CODE : 统一社会信用代码</li><li>BUSI-LEGAL-NAME : 法人/经营者姓名</li><li>PERSONAL-NAME : 签署人姓名</li><li>PERSONAL-MOBILE : 签署人手机号</li><li>PERSONAL-IDCARD-TYPE : 签署人证件类型</li><li>PERSONAL-IDCARD : 签署人证件号</li><li>TEXT : 单行文本</li><li>MULTI_LINE_TEXT : 多行文本</li><li>CHECK_BOX : 勾选框</li><li>SELECTOR : 选择器</li><li>DIGIT : 数字</li><li>DATE : 日期</li><li>FILL_IMAGE : 图片</li><li>ATTACHMENT : 附件</li><li>EMAIL : 邮箱</li><li>LOCATION : 地址</li><li>EDUCATION : 学历</li><li>GENDER : 性别</li><li>DISTRICT : 省市区</li></ul>
         :rtype: list of str
         """
         return self._ShowComponentTypes
@@ -12279,7 +12094,7 @@ class CreateFlowOption(AbstractModel):
 
     @property
     def ResultPageConfig(self):
-        r"""发起流程的可嵌入页面结果页配置
+        r"""<p>发起流程的可嵌入页面结果页配置</p>
         :rtype: list of CreateResultPageConfig
         """
         return self._ResultPageConfig
@@ -12290,8 +12105,7 @@ class CreateFlowOption(AbstractModel):
 
     @property
     def SignComponentConfig(self):
-        r"""签署控件的配置信息，用在嵌入式发起的页面配置，包括 
- - 签署控件 是否默认展示日期.
+        r"""<p>签署控件的配置信息，用在嵌入式发起的页面配置，包括 </p><ul><li>签署控件 是否默认展示日期.</li></ul>
         :rtype: :class:`tencentcloud.ess.v20201111.models.SignComponentConfig`
         """
         return self._SignComponentConfig
@@ -12302,8 +12116,7 @@ class CreateFlowOption(AbstractModel):
 
     @property
     def ForbidEditWatermark(self):
-        r"""是否禁止编辑（展示）水印控件属性
-<ul><li>（默认） false -否</li> <li> true - 禁止编辑</li></ul>
+        r"""<p>是否禁止编辑（展示）水印控件属性</p><ul><li>（默认） false -否</li> <li> true - 禁止编辑</li></ul>
         :rtype: bool
         """
         return self._ForbidEditWatermark
@@ -12316,13 +12129,7 @@ class CreateFlowOption(AbstractModel):
     def HideOperationInstructions(self):
         warnings.warn("parameter `HideOperationInstructions` is deprecated", DeprecationWarning) 
 
-        r"""隐藏操作指引: 具体的控件类型如下
-
-<ul><li>1 : 操作指引入口</li>
-<li>2 : 操作文档</li>
-<li>3 : 操作视频</li>
-</ul>
-注：仅对新版页面生效
+        r"""<p>隐藏操作指引: 具体的控件类型如下</p><ul><li>1 : 操作指引入口</li><li>2 : 操作文档</li><li>3 : 操作视频</li></ul>注：仅对新版页面生效
         :rtype: list of int non-negative
         """
         return self._HideOperationInstructions
@@ -12335,13 +12142,7 @@ class CreateFlowOption(AbstractModel):
 
     @property
     def HideOperationSteps(self):
-        r"""隐藏操作步骤: 具体的控件类型如下
-
-<ul><li>1 : 选择文件及签署方</li>
-<li>2 : 补充文件内容</li>
-<li>4 : 发起前合同信息与设置确认</li>
-</ul>
-注：仅对新版页面生效
+        r"""<p>隐藏操作步骤: 具体的控件类型如下</p><ul><li>1 : 选择文件及签署方</li><li>2 : 补充文件内容</li><li>4 : 发起前合同信息与设置确认</li></ul>注：仅对新版页面生效
         :rtype: list of int non-negative
         """
         return self._HideOperationSteps
@@ -12352,7 +12153,7 @@ class CreateFlowOption(AbstractModel):
 
     @property
     def SelfName(self):
-        r"""本企业简称，注：仅对新版页面生效
+        r"""<p>本企业简称，注：仅对新版页面生效</p>
         :rtype: str
         """
         return self._SelfName
@@ -12363,7 +12164,7 @@ class CreateFlowOption(AbstractModel):
 
     @property
     def HideSignCodeAfterStart(self):
-        r"""发起后签署码隐藏，默认false，注：仅对新版页面生效
+        r"""<p>发起后签署码隐藏，默认false，注：仅对新版页面生效</p>
         :rtype: bool
         """
         return self._HideSignCodeAfterStart
@@ -12374,7 +12175,7 @@ class CreateFlowOption(AbstractModel):
 
     @property
     def PreviewAfterStart(self):
-        r"""发起成功后是否预览合同 <ul><li>（默认） false -否</li> <li> true - 展示预览按钮</li></ul>	
+        r"""<p>发起成功后是否预览合同 <ul><li>（默认） false -否</li> <li> true - 展示预览按钮</li></ul></p>
         :rtype: bool
         """
         return self._PreviewAfterStart
@@ -12385,7 +12186,7 @@ class CreateFlowOption(AbstractModel):
 
     @property
     def SignAfterStart(self):
-        r"""发起成功之后是否签署合同，仅当前经办人作为签署人时生效 <ul><li>（默认） false -否</li> <li> true - 展示签署按钮</li></ul>	
+        r"""<p>发起成功之后是否签署合同，仅当前经办人作为签署人时生效 <ul><li>（默认） false -否</li> <li> true - 展示签署按钮</li></ul></p>
         :rtype: bool
         """
         return self._SignAfterStart
@@ -12396,7 +12197,7 @@ class CreateFlowOption(AbstractModel):
 
     @property
     def NeedFlowDraft(self):
-        r"""发起过程中是否保存草稿
+        r"""<p>发起过程中是否保存草稿</p>
         :rtype: bool
         """
         return self._NeedFlowDraft
@@ -12404,6 +12205,17 @@ class CreateFlowOption(AbstractModel):
     @NeedFlowDraft.setter
     def NeedFlowDraft(self, NeedFlowDraft):
         self._NeedFlowDraft = NeedFlowDraft
+
+    @property
+    def CcInfoVisibility(self):
+        r"""<p>若指定了合同抄送人，此参数用来控制操作人能否在嵌入式页面看见或编辑（修改、增加、删除）抄送人信息。</p><p>枚举值：</p><ul><li>0： 不可见不可编辑</li><li>1： 可见不可编辑</li><li>2： 可见可编辑</li></ul><p>默认值：0</p>
+        :rtype: int
+        """
+        return self._CcInfoVisibility
+
+    @CcInfoVisibility.setter
+    def CcInfoVisibility(self, CcInfoVisibility):
+        self._CcInfoVisibility = CcInfoVisibility
 
 
     def _deserialize(self, params):
@@ -12438,6 +12250,7 @@ class CreateFlowOption(AbstractModel):
         self._PreviewAfterStart = params.get("PreviewAfterStart")
         self._SignAfterStart = params.get("SignAfterStart")
         self._NeedFlowDraft = params.get("NeedFlowDraft")
+        self._CcInfoVisibility = params.get("CcInfoVisibility")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

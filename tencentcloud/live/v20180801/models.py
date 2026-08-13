@@ -44565,14 +44565,17 @@ class SwitchCasterToEmergencyRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _CasterId: 导播台ID。
+        :param _CasterId: <p>导播台ID。</p>
         :type CasterId: int
+        :param _FromBeginning: <p>是否启用从头开始播放功能，仅对单点播输入源生效</p><p>默认值：false</p>
+        :type FromBeginning: bool
         """
         self._CasterId = None
+        self._FromBeginning = None
 
     @property
     def CasterId(self):
-        r"""导播台ID。
+        r"""<p>导播台ID。</p>
         :rtype: int
         """
         return self._CasterId
@@ -44581,9 +44584,21 @@ class SwitchCasterToEmergencyRequest(AbstractModel):
     def CasterId(self, CasterId):
         self._CasterId = CasterId
 
+    @property
+    def FromBeginning(self):
+        r"""<p>是否启用从头开始播放功能，仅对单点播输入源生效</p><p>默认值：false</p>
+        :rtype: bool
+        """
+        return self._FromBeginning
+
+    @FromBeginning.setter
+    def FromBeginning(self, FromBeginning):
+        self._FromBeginning = FromBeginning
+
 
     def _deserialize(self, params):
         self._CasterId = params.get("CasterId")
+        self._FromBeginning = params.get("FromBeginning")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -44601,10 +44616,7 @@ class SwitchCasterToEmergencyResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _EmergencyStatus: 备播状态，范围[0,1,2]
-0. 正常直播状态
-1. 备播状态
-2. 备播切换正常直播中，在配置了延播时长时出现
+        :param _EmergencyStatus: <p>备播状态，范围[0,1,2]</p><ol start="0"><li>正常直播状态</li><li>备播状态</li><li>备播切换正常直播中，在配置了延播时长时出现</li></ol>
         :type EmergencyStatus: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -44614,10 +44626,7 @@ class SwitchCasterToEmergencyResponse(AbstractModel):
 
     @property
     def EmergencyStatus(self):
-        r"""备播状态，范围[0,1,2]
-0. 正常直播状态
-1. 备播状态
-2. 备播切换正常直播中，在配置了延播时长时出现
+        r"""<p>备播状态，范围[0,1,2]</p><ol start="0"><li>正常直播状态</li><li>备播状态</li><li>备播切换正常直播中，在配置了延播时长时出现</li></ol>
         :rtype: int
         """
         return self._EmergencyStatus

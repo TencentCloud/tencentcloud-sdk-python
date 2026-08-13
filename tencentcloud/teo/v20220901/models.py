@@ -8728,6 +8728,302 @@ class CompressionParameters(AbstractModel):
         
 
 
+class ConfigGroupFunctionRegionSelection(AbstractModel):
+    r"""地区策略配置。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Function: <p>指定执行的函数，取值为函数在站点内的唯一标识。当 TriggerType 为 direct 时生效。</p>
+        :type Function: str
+        :param _Regions: <p>国家/地区列表。示例值：CN：中国，CN.GD：中国广东。取值请参考：<a href="https://cloud.tencent.com/document/product/1552/112542">国家/地区及对应代码枚举</a>。</p>
+        :type Regions: list of str
+        """
+        self._Function = None
+        self._Regions = None
+
+    @property
+    def Function(self):
+        r"""<p>指定执行的函数，取值为函数在站点内的唯一标识。当 TriggerType 为 direct 时生效。</p>
+        :rtype: str
+        """
+        return self._Function
+
+    @Function.setter
+    def Function(self, Function):
+        self._Function = Function
+
+    @property
+    def Regions(self):
+        r"""<p>国家/地区列表。示例值：CN：中国，CN.GD：中国广东。取值请参考：<a href="https://cloud.tencent.com/document/product/1552/112542">国家/地区及对应代码枚举</a>。</p>
+        :rtype: list of str
+        """
+        return self._Regions
+
+    @Regions.setter
+    def Regions(self, Regions):
+        self._Regions = Regions
+
+
+    def _deserialize(self, params):
+        self._Function = params.get("Function")
+        self._Regions = params.get("Regions")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ConfigGroupFunctionTrigger(AbstractModel):
+    r"""边缘函数触发规则。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Condition: <p><a href="https://cloud.tencent.com/document/product/1552/90438#33f65828-c6c6-4b66-a011-25a20b548d5d">匹配条件。</a></p>
+        :type Condition: str
+        :param _TriggerType: <p>函数选择配置类型：</p><p>枚举值：</p><ul><li>direct： 直接指定执行函数</li><li>weight： 基于权重比选择函数</li><li>region： 基于客户端 IP 的国家/地区选择函数</li></ul>
+        :type TriggerType: str
+        :param _Function: <p>指定执行的函数，取值为函数在站点内的唯一标识。当 TriggerType 为 direct 时生效。</p>
+        :type Function: str
+        :param _RegionMappingSelections: <p>基于客户端 IP 国家/地区的函数选择配置。</p>
+        :type RegionMappingSelections: list of ConfigGroupFunctionRegionSelection
+        :param _WeightedSelections: <p>基于权重的函数选择配置。</p>
+        :type WeightedSelections: list of ConfigGroupFunctionWeightedSelection
+        :param _Remark: <p>规则描述。</p>
+        :type Remark: str
+        """
+        self._Condition = None
+        self._TriggerType = None
+        self._Function = None
+        self._RegionMappingSelections = None
+        self._WeightedSelections = None
+        self._Remark = None
+
+    @property
+    def Condition(self):
+        r"""<p><a href="https://cloud.tencent.com/document/product/1552/90438#33f65828-c6c6-4b66-a011-25a20b548d5d">匹配条件。</a></p>
+        :rtype: str
+        """
+        return self._Condition
+
+    @Condition.setter
+    def Condition(self, Condition):
+        self._Condition = Condition
+
+    @property
+    def TriggerType(self):
+        r"""<p>函数选择配置类型：</p><p>枚举值：</p><ul><li>direct： 直接指定执行函数</li><li>weight： 基于权重比选择函数</li><li>region： 基于客户端 IP 的国家/地区选择函数</li></ul>
+        :rtype: str
+        """
+        return self._TriggerType
+
+    @TriggerType.setter
+    def TriggerType(self, TriggerType):
+        self._TriggerType = TriggerType
+
+    @property
+    def Function(self):
+        r"""<p>指定执行的函数，取值为函数在站点内的唯一标识。当 TriggerType 为 direct 时生效。</p>
+        :rtype: str
+        """
+        return self._Function
+
+    @Function.setter
+    def Function(self, Function):
+        self._Function = Function
+
+    @property
+    def RegionMappingSelections(self):
+        r"""<p>基于客户端 IP 国家/地区的函数选择配置。</p>
+        :rtype: list of ConfigGroupFunctionRegionSelection
+        """
+        return self._RegionMappingSelections
+
+    @RegionMappingSelections.setter
+    def RegionMappingSelections(self, RegionMappingSelections):
+        self._RegionMappingSelections = RegionMappingSelections
+
+    @property
+    def WeightedSelections(self):
+        r"""<p>基于权重的函数选择配置。</p>
+        :rtype: list of ConfigGroupFunctionWeightedSelection
+        """
+        return self._WeightedSelections
+
+    @WeightedSelections.setter
+    def WeightedSelections(self, WeightedSelections):
+        self._WeightedSelections = WeightedSelections
+
+    @property
+    def Remark(self):
+        r"""<p>规则描述。</p>
+        :rtype: str
+        """
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+
+    def _deserialize(self, params):
+        self._Condition = params.get("Condition")
+        self._TriggerType = params.get("TriggerType")
+        self._Function = params.get("Function")
+        if params.get("RegionMappingSelections") is not None:
+            self._RegionMappingSelections = []
+            for item in params.get("RegionMappingSelections"):
+                obj = ConfigGroupFunctionRegionSelection()
+                obj._deserialize(item)
+                self._RegionMappingSelections.append(obj)
+        if params.get("WeightedSelections") is not None:
+            self._WeightedSelections = []
+            for item in params.get("WeightedSelections"):
+                obj = ConfigGroupFunctionWeightedSelection()
+                obj._deserialize(item)
+                self._WeightedSelections.append(obj)
+        self._Remark = params.get("Remark")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ConfigGroupFunctionWeightedSelection(AbstractModel):
+    r"""权重策略配置。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Function: <p>指定执行的函数，取值为函数在站点内的唯一标识。当 TriggerType 为 direct 时生效。</p>
+        :type Function: str
+        :param _Weight: <p>选中权重。取值范围0-100，所有的权重之和需要为100。 选中概率计算方式为： weight/100。例如设置了两个函数 A 和 B ，其中 A 的权重为30，那么 B 的权重必须为70，最终选中 A 的概率为30%，选中 B 的概率为70%。</p>
+        :type Weight: int
+        """
+        self._Function = None
+        self._Weight = None
+
+    @property
+    def Function(self):
+        r"""<p>指定执行的函数，取值为函数在站点内的唯一标识。当 TriggerType 为 direct 时生效。</p>
+        :rtype: str
+        """
+        return self._Function
+
+    @Function.setter
+    def Function(self, Function):
+        self._Function = Function
+
+    @property
+    def Weight(self):
+        r"""<p>选中权重。取值范围0-100，所有的权重之和需要为100。 选中概率计算方式为： weight/100。例如设置了两个函数 A 和 B ，其中 A 的权重为30，那么 B 的权重必须为70，最终选中 A 的概率为30%，选中 B 的概率为70%。</p>
+        :rtype: int
+        """
+        return self._Weight
+
+    @Weight.setter
+    def Weight(self, Weight):
+        self._Weight = Weight
+
+
+    def _deserialize(self, params):
+        self._Function = params.get("Function")
+        self._Weight = params.get("Weight")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ConfigGroupRuleEngineItem(AbstractModel):
+    r"""七层加速规则，执行顺序由数组顺序决定。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RuleName: <p>规则名称。名称长度限制不超过 255 个字符。</p>
+        :type RuleName: str
+        :param _Description: <p>规则注释。可以填写多个注释。</p>
+        :type Description: list of str
+        :param _Branches: <p>子规则分支。此列表当前只支持填写一项规则，多填无效。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Branches: list of RuleBranch
+        """
+        self._RuleName = None
+        self._Description = None
+        self._Branches = None
+
+    @property
+    def RuleName(self):
+        r"""<p>规则名称。名称长度限制不超过 255 个字符。</p>
+        :rtype: str
+        """
+        return self._RuleName
+
+    @RuleName.setter
+    def RuleName(self, RuleName):
+        self._RuleName = RuleName
+
+    @property
+    def Description(self):
+        r"""<p>规则注释。可以填写多个注释。</p>
+        :rtype: list of str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def Branches(self):
+        r"""<p>子规则分支。此列表当前只支持填写一项规则，多填无效。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of RuleBranch
+        """
+        return self._Branches
+
+    @Branches.setter
+    def Branches(self, Branches):
+        self._Branches = Branches
+
+
+    def _deserialize(self, params):
+        self._RuleName = params.get("RuleName")
+        self._Description = params.get("Description")
+        if params.get("Branches") is not None:
+            self._Branches = []
+            for item in params.get("Branches"):
+                obj = RuleBranch()
+                obj._deserialize(item)
+                self._Branches.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ConfigGroupVersionInfo(AbstractModel):
     r"""配置组版本信息。
 
@@ -13857,6 +14153,8 @@ class CreateRealtimeLogDeliveryTaskRequest(AbstractModel):
         :type Fields: list of str
         :param _CustomFields: <p>投递的自定义字段列表，支持在 HTTP 请求头、响应头、Cookie、请求正文中提取指定内容。<br>自定义字段名称不能重复，仅七层访问日志（LogType= l7-access-logs 或 domain）支持添加自定义字段。<br>允许配置的自定义字段个数有配额限制，如遇配额不足请 [联系我们](https://cloud.tencent.com/online-service?from=sales&amp;source=PRESALE)。</p>
         :type CustomFields: list of CustomField
+        :param _CustomExpressionFields: <p>投递的自定义表达式字段列表，可以通过自定义日志推送字段名称和取值表达式，实现个性化的实时日志内容推送，使用详情见 [自定义日志字段表达式]()。<br>仅七层访问日志（LogType= l7-access-logs 或 domain）支持添加自定义字段。<br>允许配置的自定义字段个数有配额限制，如遇配额不足请 [联系我们](https://cloud.tencent.com/online-service?from=sales&amp;source=PRESALE) 。<br>**注意**：若 CustomExpressionFields 中存在命名 与 Fields 和 CustomFields 中同名的字段，以  CustomExpressionFields 中的取值为准。</p>
+        :type CustomExpressionFields: list of CustomExpressionField
         :param _DeliveryConditions: <p>日志投递的过滤条件，不填表示投递全量日志。</p>
         :type DeliveryConditions: list of DeliveryCondition
         :param _Sample: <p>采样比例，采用千分制，取值范围为1-1000，例如：填写 605 表示采样比例为 60.5%。不填表示采样比例为 100%。</p>
@@ -13878,6 +14176,7 @@ class CreateRealtimeLogDeliveryTaskRequest(AbstractModel):
         self._EntityList = None
         self._Fields = None
         self._CustomFields = None
+        self._CustomExpressionFields = None
         self._DeliveryConditions = None
         self._Sample = None
         self._LogFormat = None
@@ -13974,6 +14273,17 @@ class CreateRealtimeLogDeliveryTaskRequest(AbstractModel):
         self._CustomFields = CustomFields
 
     @property
+    def CustomExpressionFields(self):
+        r"""<p>投递的自定义表达式字段列表，可以通过自定义日志推送字段名称和取值表达式，实现个性化的实时日志内容推送，使用详情见 [自定义日志字段表达式]()。<br>仅七层访问日志（LogType= l7-access-logs 或 domain）支持添加自定义字段。<br>允许配置的自定义字段个数有配额限制，如遇配额不足请 [联系我们](https://cloud.tencent.com/online-service?from=sales&amp;source=PRESALE) 。<br>**注意**：若 CustomExpressionFields 中存在命名 与 Fields 和 CustomFields 中同名的字段，以  CustomExpressionFields 中的取值为准。</p>
+        :rtype: list of CustomExpressionField
+        """
+        return self._CustomExpressionFields
+
+    @CustomExpressionFields.setter
+    def CustomExpressionFields(self, CustomExpressionFields):
+        self._CustomExpressionFields = CustomExpressionFields
+
+    @property
     def DeliveryConditions(self):
         r"""<p>日志投递的过滤条件，不填表示投递全量日志。</p>
         :rtype: list of DeliveryCondition
@@ -14054,6 +14364,12 @@ class CreateRealtimeLogDeliveryTaskRequest(AbstractModel):
                 obj = CustomField()
                 obj._deserialize(item)
                 self._CustomFields.append(obj)
+        if params.get("CustomExpressionFields") is not None:
+            self._CustomExpressionFields = []
+            for item in params.get("CustomExpressionFields"):
+                obj = CustomExpressionField()
+                obj._deserialize(item)
+                self._CustomExpressionFields.append(obj)
         if params.get("DeliveryConditions") is not None:
             self._DeliveryConditions = []
             for item in params.get("DeliveryConditions"):
@@ -15343,6 +15659,259 @@ class CurrentOriginACL(AbstractModel):
         
 
 
+class CustomAction(AbstractModel):
+    r"""定制配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ActionId: <p>定制配置的配置项 Id。</p><p>您可以通过 DescribeAvailableCustomActionsForRuleEngine 接口的返回值 CustomActionSet[].ActionId 获取。</p>
+        :type ActionId: str
+        :param _Parameters: <p>该定制配置项下各参数字段的取值。</p><p>您可以通过 DescribeAvailableCustomActionsForRuleEngine 接口返回值 CustomActionSet[].Parameters 获取。</p>
+        :type Parameters: list of CustomActionParameter
+        """
+        self._ActionId = None
+        self._Parameters = None
+
+    @property
+    def ActionId(self):
+        r"""<p>定制配置的配置项 Id。</p><p>您可以通过 DescribeAvailableCustomActionsForRuleEngine 接口的返回值 CustomActionSet[].ActionId 获取。</p>
+        :rtype: str
+        """
+        return self._ActionId
+
+    @ActionId.setter
+    def ActionId(self, ActionId):
+        self._ActionId = ActionId
+
+    @property
+    def Parameters(self):
+        r"""<p>该定制配置项下各参数字段的取值。</p><p>您可以通过 DescribeAvailableCustomActionsForRuleEngine 接口返回值 CustomActionSet[].Parameters 获取。</p>
+        :rtype: list of CustomActionParameter
+        """
+        return self._Parameters
+
+    @Parameters.setter
+    def Parameters(self, Parameters):
+        self._Parameters = Parameters
+
+
+    def _deserialize(self, params):
+        self._ActionId = params.get("ActionId")
+        if params.get("Parameters") is not None:
+            self._Parameters = []
+            for item in params.get("Parameters"):
+                obj = CustomActionParameter()
+                obj._deserialize(item)
+                self._Parameters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CustomActionParameter(AbstractModel):
+    r"""定制配置的单个字段参数内容。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: <p>定制配置项下各参数字段名称。</p><p>您可以通过 DescribeAvailableCustomActionsForRuleEngine 接口返回值 CustomActionSet[].Parameters[].Name 获取，如 &quot;Seconds&quot;、&quot;Ports&quot;、&quot;StatusCode&quot;。</p>
+        :type Name: str
+        :param _ValueType: <p>定制配置项下各参数字段值的类型。</p><p>枚举值：</p><ul><li>String： 字符串类型。</li><li>Integer： 整型类型。</li><li>Float： 浮点数类型。</li><li>Boolean： 布尔类型。</li><li>ArrayOfString： 字符串数组类型。</li><li>ArrayOfInteger： 整型数组类型。</li><li>ArrayOfFloat： 浮点数数组类型。</li></ul><p>您可以通过 DescribeAvailableCustomActionsForRuleEngine 接口返回值 CustomActionSet[].Parameters[].Type 获取。</p>
+        :type ValueType: str
+        :param _StringValue: <p>字符串类型参数值。当 ValueType 为 String 时，该参数必填。</p><p>您可以通过 DescribeAvailableCustomActionsForRuleEngine 接口返回值 CustomActionSet[].Parameters 获取参数值的默认值、单位、限制等说明。</p>
+        :type StringValue: str
+        :param _IntegerValue: <p>整型类型参数值。当 ValueType 为 Integer 时，该参数必填。</p><p>您可以通过 DescribeAvailableCustomActionsForRuleEngine 接口返回值 CustomActionSet[].Parameters 获取参数值的默认值、单位、限制等说明。</p>
+        :type IntegerValue: int
+        :param _FloatValue: <p>浮点数类型参数值。当 ValueType 为 Float 时，该参数必填。</p><p>您可以通过 DescribeAvailableCustomActionsForRuleEngine 接口返回值 CustomActionSet[].Parameters 获取参数值的默认值、单位、限制等说明。</p>
+        :type FloatValue: float
+        :param _BooleanValue: <p>布尔类型参数值。当 ValueType 为 Boolean 时，该参数必填。</p><p>您可以通过 DescribeAvailableCustomActionsForRuleEngine 接口返回值 CustomActionSet[].Parameters 获取参数值的默认值、单位、限制等说明。</p>
+        :type BooleanValue: bool
+        :param _StringArrayValue: <p>字符串数组类型参数值。当 ValueType 为 ArrayOfString 时，该参数必填。</p><p>您可以通过 DescribeAvailableCustomActionsForRuleEngine 接口返回值 CustomActionSet[].Parameters 获取参数值的默认值、单位、限制等说明。</p>
+        :type StringArrayValue: list of str
+        :param _IntegerArrayValue: <p>整型数组类型参数值。当 ValueType 为 ArrayOfInteger 时，该参数必填。</p><p>您可以通过 DescribeAvailableCustomActionsForRuleEngine 接口返回值 CustomActionSet[].Parameters 获取参数值的默认值、单位、限制等说明。</p>
+        :type IntegerArrayValue: list of int
+        :param _FloatArrayValue: <p>浮点数数组类型参数值。当 ValueType 为 ArrayOfFloat 时，该参数必填。</p><p>您可以通过 DescribeAvailableCustomActionsForRuleEngine 接口返回值 CustomActionSet[].Parameters 获取参数值的默认值、单位、限制等说明。</p>
+        :type FloatArrayValue: list of float
+        """
+        self._Name = None
+        self._ValueType = None
+        self._StringValue = None
+        self._IntegerValue = None
+        self._FloatValue = None
+        self._BooleanValue = None
+        self._StringArrayValue = None
+        self._IntegerArrayValue = None
+        self._FloatArrayValue = None
+
+    @property
+    def Name(self):
+        r"""<p>定制配置项下各参数字段名称。</p><p>您可以通过 DescribeAvailableCustomActionsForRuleEngine 接口返回值 CustomActionSet[].Parameters[].Name 获取，如 &quot;Seconds&quot;、&quot;Ports&quot;、&quot;StatusCode&quot;。</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def ValueType(self):
+        r"""<p>定制配置项下各参数字段值的类型。</p><p>枚举值：</p><ul><li>String： 字符串类型。</li><li>Integer： 整型类型。</li><li>Float： 浮点数类型。</li><li>Boolean： 布尔类型。</li><li>ArrayOfString： 字符串数组类型。</li><li>ArrayOfInteger： 整型数组类型。</li><li>ArrayOfFloat： 浮点数数组类型。</li></ul><p>您可以通过 DescribeAvailableCustomActionsForRuleEngine 接口返回值 CustomActionSet[].Parameters[].Type 获取。</p>
+        :rtype: str
+        """
+        return self._ValueType
+
+    @ValueType.setter
+    def ValueType(self, ValueType):
+        self._ValueType = ValueType
+
+    @property
+    def StringValue(self):
+        r"""<p>字符串类型参数值。当 ValueType 为 String 时，该参数必填。</p><p>您可以通过 DescribeAvailableCustomActionsForRuleEngine 接口返回值 CustomActionSet[].Parameters 获取参数值的默认值、单位、限制等说明。</p>
+        :rtype: str
+        """
+        return self._StringValue
+
+    @StringValue.setter
+    def StringValue(self, StringValue):
+        self._StringValue = StringValue
+
+    @property
+    def IntegerValue(self):
+        r"""<p>整型类型参数值。当 ValueType 为 Integer 时，该参数必填。</p><p>您可以通过 DescribeAvailableCustomActionsForRuleEngine 接口返回值 CustomActionSet[].Parameters 获取参数值的默认值、单位、限制等说明。</p>
+        :rtype: int
+        """
+        return self._IntegerValue
+
+    @IntegerValue.setter
+    def IntegerValue(self, IntegerValue):
+        self._IntegerValue = IntegerValue
+
+    @property
+    def FloatValue(self):
+        r"""<p>浮点数类型参数值。当 ValueType 为 Float 时，该参数必填。</p><p>您可以通过 DescribeAvailableCustomActionsForRuleEngine 接口返回值 CustomActionSet[].Parameters 获取参数值的默认值、单位、限制等说明。</p>
+        :rtype: float
+        """
+        return self._FloatValue
+
+    @FloatValue.setter
+    def FloatValue(self, FloatValue):
+        self._FloatValue = FloatValue
+
+    @property
+    def BooleanValue(self):
+        r"""<p>布尔类型参数值。当 ValueType 为 Boolean 时，该参数必填。</p><p>您可以通过 DescribeAvailableCustomActionsForRuleEngine 接口返回值 CustomActionSet[].Parameters 获取参数值的默认值、单位、限制等说明。</p>
+        :rtype: bool
+        """
+        return self._BooleanValue
+
+    @BooleanValue.setter
+    def BooleanValue(self, BooleanValue):
+        self._BooleanValue = BooleanValue
+
+    @property
+    def StringArrayValue(self):
+        r"""<p>字符串数组类型参数值。当 ValueType 为 ArrayOfString 时，该参数必填。</p><p>您可以通过 DescribeAvailableCustomActionsForRuleEngine 接口返回值 CustomActionSet[].Parameters 获取参数值的默认值、单位、限制等说明。</p>
+        :rtype: list of str
+        """
+        return self._StringArrayValue
+
+    @StringArrayValue.setter
+    def StringArrayValue(self, StringArrayValue):
+        self._StringArrayValue = StringArrayValue
+
+    @property
+    def IntegerArrayValue(self):
+        r"""<p>整型数组类型参数值。当 ValueType 为 ArrayOfInteger 时，该参数必填。</p><p>您可以通过 DescribeAvailableCustomActionsForRuleEngine 接口返回值 CustomActionSet[].Parameters 获取参数值的默认值、单位、限制等说明。</p>
+        :rtype: list of int
+        """
+        return self._IntegerArrayValue
+
+    @IntegerArrayValue.setter
+    def IntegerArrayValue(self, IntegerArrayValue):
+        self._IntegerArrayValue = IntegerArrayValue
+
+    @property
+    def FloatArrayValue(self):
+        r"""<p>浮点数数组类型参数值。当 ValueType 为 ArrayOfFloat 时，该参数必填。</p><p>您可以通过 DescribeAvailableCustomActionsForRuleEngine 接口返回值 CustomActionSet[].Parameters 获取参数值的默认值、单位、限制等说明。</p>
+        :rtype: list of float
+        """
+        return self._FloatArrayValue
+
+    @FloatArrayValue.setter
+    def FloatArrayValue(self, FloatArrayValue):
+        self._FloatArrayValue = FloatArrayValue
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._ValueType = params.get("ValueType")
+        self._StringValue = params.get("StringValue")
+        self._IntegerValue = params.get("IntegerValue")
+        self._FloatValue = params.get("FloatValue")
+        self._BooleanValue = params.get("BooleanValue")
+        self._StringArrayValue = params.get("StringArrayValue")
+        self._IntegerArrayValue = params.get("IntegerArrayValue")
+        self._FloatArrayValue = params.get("FloatArrayValue")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CustomActionParameters(AbstractModel):
+    r"""定制配置操作参数。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CustomActions: <p>需要配置的定制配置列表。</p>
+        :type CustomActions: list of CustomAction
+        """
+        self._CustomActions = None
+
+    @property
+    def CustomActions(self):
+        r"""<p>需要配置的定制配置列表。</p>
+        :rtype: list of CustomAction
+        """
+        return self._CustomActions
+
+    @CustomActions.setter
+    def CustomActions(self, CustomActions):
+        self._CustomActions = CustomActions
+
+
+    def _deserialize(self, params):
+        if params.get("CustomActions") is not None:
+            self._CustomActions = []
+            for item in params.get("CustomActions"):
+                obj = CustomAction()
+                obj._deserialize(item)
+                self._CustomActions.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CustomEndpoint(AbstractModel):
     r"""实时日志投递到自定义 HTTP(S) 接口的配置信息。
 
@@ -15584,6 +16153,72 @@ class CustomErrorPage(AbstractModel):
                 obj = ErrorPageReference()
                 obj._deserialize(item)
                 self._References.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CustomExpressionField(AbstractModel):
+    r"""实时日志投递任务中的自定义日志字段，字段支持自定义命名和配置取值表达式，使用详情见 [自定义日志字段表达式]()。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: <p>自定义日志字段名称。可输入1-100个字符，允许的字符为字母、数字、_，仅能以字母开头，该名称不能重复。</p>
+        :type Name: str
+        :param _Expression: <p>自定义日志字段的取值表达式，表达式长度上限 4KB，语法说明详见 <a href=""> 自定义日志字段表达式</a>。</p>
+        :type Expression: str
+        :param _Enabled: <p>是否投递该字段，不填表示不投递此字段。</p>
+        :type Enabled: bool
+        """
+        self._Name = None
+        self._Expression = None
+        self._Enabled = None
+
+    @property
+    def Name(self):
+        r"""<p>自定义日志字段名称。可输入1-100个字符，允许的字符为字母、数字、_，仅能以字母开头，该名称不能重复。</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Expression(self):
+        r"""<p>自定义日志字段的取值表达式，表达式长度上限 4KB，语法说明详见 <a href=""> 自定义日志字段表达式</a>。</p>
+        :rtype: str
+        """
+        return self._Expression
+
+    @Expression.setter
+    def Expression(self, Expression):
+        self._Expression = Expression
+
+    @property
+    def Enabled(self):
+        r"""<p>是否投递该字段，不填表示不投递此字段。</p>
+        :rtype: bool
+        """
+        return self._Enabled
+
+    @Enabled.setter
+    def Enabled(self, Enabled):
+        self._Enabled = Enabled
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Expression = params.get("Expression")
+        self._Enabled = params.get("Enabled")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -33682,6 +34317,57 @@ class DropPageDetail(AbstractModel):
         
 
 
+class DummyParseZoneFullConfigRequest(AbstractModel):
+    r"""DummyParseZoneFullConfig请求参数结构体
+
+    """
+
+
+class DummyParseZoneFullConfigResponse(AbstractModel):
+    r"""DummyParseZoneFullConfig返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneFullConfig: <p>站点完整配置结构。</p>
+        :type ZoneFullConfig: :class:`tencentcloud.teo.v20220901.models.ZoneFullConfig`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ZoneFullConfig = None
+        self._RequestId = None
+
+    @property
+    def ZoneFullConfig(self):
+        r"""<p>站点完整配置结构。</p>
+        :rtype: :class:`tencentcloud.teo.v20220901.models.ZoneFullConfig`
+        """
+        return self._ZoneFullConfig
+
+    @ZoneFullConfig.setter
+    def ZoneFullConfig(self, ZoneFullConfig):
+        self._ZoneFullConfig = ZoneFullConfig
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("ZoneFullConfig") is not None:
+            self._ZoneFullConfig = ZoneFullConfig()
+            self._ZoneFullConfig._deserialize(params.get("ZoneFullConfig"))
+        self._RequestId = params.get("RequestId")
+
+
 class EdgeKVDeleteRequest(AbstractModel):
     r"""EdgeKVDelete请求参数结构体
 
@@ -37935,6 +38621,89 @@ class HostName(AbstractModel):
     def _deserialize(self, params):
         self._Action = params.get("Action")
         self._Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class HostPolicy(AbstractModel):
+    r"""域名级策略。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Host: <p>站点级策略，针对站点下所有域名生效的策略，详情见 站点级策略。</p>
+        :type Host: str
+        :param _PolicyType: <p>当前域名使用的策略类型。取值有：<li>ZoneDefault：使用站点级策略，即 ZoneDefaultPolicy 中定义的策略配置。</li><li>Custom：使用域名级策略。使用该选项时，必须同时配置 Policy 字段，指定详细策略配置。</li><li>Template：使用策略模板。使用该选项时，必须同时配置 TemplateId 字段，指定当前域名使用的策略模板。</li></p>
+        :type PolicyType: str
+        :param _Policy: <p>可选。当 PolicyType 为 Custom 时，该字段为当前域名的详细策略配置，对当前域名生效。</p>
+        :type Policy: :class:`tencentcloud.teo.v20220901.models.SecurityPolicy`
+        :param _TemplateId: <p>可选。当 PolicyType 为 Template 时，该字段用于指定当前域名所使用的策略模板的 Id。</p>
+        :type TemplateId: str
+        """
+        self._Host = None
+        self._PolicyType = None
+        self._Policy = None
+        self._TemplateId = None
+
+    @property
+    def Host(self):
+        r"""<p>站点级策略，针对站点下所有域名生效的策略，详情见 站点级策略。</p>
+        :rtype: str
+        """
+        return self._Host
+
+    @Host.setter
+    def Host(self, Host):
+        self._Host = Host
+
+    @property
+    def PolicyType(self):
+        r"""<p>当前域名使用的策略类型。取值有：<li>ZoneDefault：使用站点级策略，即 ZoneDefaultPolicy 中定义的策略配置。</li><li>Custom：使用域名级策略。使用该选项时，必须同时配置 Policy 字段，指定详细策略配置。</li><li>Template：使用策略模板。使用该选项时，必须同时配置 TemplateId 字段，指定当前域名使用的策略模板。</li></p>
+        :rtype: str
+        """
+        return self._PolicyType
+
+    @PolicyType.setter
+    def PolicyType(self, PolicyType):
+        self._PolicyType = PolicyType
+
+    @property
+    def Policy(self):
+        r"""<p>可选。当 PolicyType 为 Custom 时，该字段为当前域名的详细策略配置，对当前域名生效。</p>
+        :rtype: :class:`tencentcloud.teo.v20220901.models.SecurityPolicy`
+        """
+        return self._Policy
+
+    @Policy.setter
+    def Policy(self, Policy):
+        self._Policy = Policy
+
+    @property
+    def TemplateId(self):
+        r"""<p>可选。当 PolicyType 为 Template 时，该字段用于指定当前域名所使用的策略模板的 Id。</p>
+        :rtype: str
+        """
+        return self._TemplateId
+
+    @TemplateId.setter
+    def TemplateId(self, TemplateId):
+        self._TemplateId = TemplateId
+
+
+    def _deserialize(self, params):
+        self._Host = params.get("Host")
+        self._PolicyType = params.get("PolicyType")
+        if params.get("Policy") is not None:
+            self._Policy = SecurityPolicy()
+            self._Policy._deserialize(params.get("Policy"))
+        self._TemplateId = params.get("TemplateId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -43594,33 +44363,27 @@ class LogAnalysisDownloadTask(AbstractModel):
 
 
 class LogFormat(AbstractModel):
-    r"""实时日志投递的输出格式。您可以直接通过 FormatType 参数使用指定预设日志输出格式（JSON Lines / csv），也可以在预设日志输出格式基础上，通过其他参数来自定义变体输出格式。
+    r"""实时日志投递的输出格式。您可以直接通过 FormatType 参数使用指定预设日志输出格式（JSON Lines / csv），也可以在预设日志输出格式基础上，通过其他参数来自定义变体输出格式，使用详情见 [自定义日志输出格式](https://cloud.tencent.com/document/product/1552/110448)。
 
     """
 
     def __init__(self):
         r"""
-        :param _FormatType: 日志投递的预设输出格式类型，取值有：
-<li>json：使用预设日志输出格式 JSON Lines，单条日志中的字段以键值对方式呈现；</li>
-<li>csv：使用预设日志输出格式 csv，单条日志中仅呈现字段值，不呈现字段名称。</li>
+        :param _FormatType: <p>日志输出格式，取值有：</p><ul><li>json：使用预设日志输出格式 JSON Lines，单条日志中的字段以键值对方式呈现；</li><li>csv：使用预设日志输出格式 csv，单条日志中仅呈现字段值，不呈现字段名称。</li><li>template：使用用户自定义输出模板，单条日志中支持按照自定义模板进行自定义排版和拼接，需配合 RecordTemplate 字段使用。</li></ul>
         :type FormatType: str
-        :param _BatchPrefix: 在每个日志投递批次之前添加的字符串。每个日志投递批次可能包含多条日志记录。
+        :param _BatchPrefix: <p>在每个日志投递批次之前添加的字符串。每个日志投递批次可能包含多条日志记录。</p>
         :type BatchPrefix: str
-        :param _BatchSuffix: 在每个日志投递批次后附加的字符串。
+        :param _BatchSuffix: <p>在每个日志投递批次后附加的字符串。</p>
         :type BatchSuffix: str
-        :param _RecordPrefix: 在每条日志记录之前添加的字符串。
+        :param _RecordPrefix: <p>单条日志前缀，在每条日志记录之前添加的字符串。</p>
         :type RecordPrefix: str
-        :param _RecordSuffix: 在每条日志记录后附加的字符串。
+        :param _RecordSuffix: <p>单条日志后缀，在每条日志记录后附加的字符串。</p>
         :type RecordSuffix: str
-        :param _RecordDelimiter: 插入日志记录之间作为分隔符的字符串，取值有：
-<li>\n：换行符；</li>
-<li>\t：制表符；</li>
-<li>，：半角逗号。</li>
+        :param _RecordDelimiter: <p>日志分隔符，插入日志记录之间作为分隔的字符串，取值有：</p><ul><li>\n：换行符；</li><li>\t：制表符；</li><li>，：半角逗号。</li></ul>
         :type RecordDelimiter: str
-        :param _FieldDelimiter: 单条日志记录内，插入字段之间作为分隔符的字符串，取值有：
-<li>\t：制表符；</li>
-<li>，：半角逗号；</li>
-<li>;：半角分号。</li>
+        :param _RecordTemplate: <p>日志模板，单条日志的输出模板，长度限制 4KB，仅当 FormatType = template 生效。支持对配置的推送字段按照模板进行自定义排版和拼接。</p>
+        :type RecordTemplate: str
+        :param _FieldDelimiter: <p>字段分隔符，单条日志记录内，插入字段之间作为分隔符的字符串，仅当 FormatType = csv 生效。取值有：<ul><li>\t：制表符；</li><li>，：半角逗号；</li><li>;：半角分号。</li></ul></p>
         :type FieldDelimiter: str
         """
         self._FormatType = None
@@ -43629,13 +44392,12 @@ class LogFormat(AbstractModel):
         self._RecordPrefix = None
         self._RecordSuffix = None
         self._RecordDelimiter = None
+        self._RecordTemplate = None
         self._FieldDelimiter = None
 
     @property
     def FormatType(self):
-        r"""日志投递的预设输出格式类型，取值有：
-<li>json：使用预设日志输出格式 JSON Lines，单条日志中的字段以键值对方式呈现；</li>
-<li>csv：使用预设日志输出格式 csv，单条日志中仅呈现字段值，不呈现字段名称。</li>
+        r"""<p>日志输出格式，取值有：</p><ul><li>json：使用预设日志输出格式 JSON Lines，单条日志中的字段以键值对方式呈现；</li><li>csv：使用预设日志输出格式 csv，单条日志中仅呈现字段值，不呈现字段名称。</li><li>template：使用用户自定义输出模板，单条日志中支持按照自定义模板进行自定义排版和拼接，需配合 RecordTemplate 字段使用。</li></ul>
         :rtype: str
         """
         return self._FormatType
@@ -43646,7 +44408,7 @@ class LogFormat(AbstractModel):
 
     @property
     def BatchPrefix(self):
-        r"""在每个日志投递批次之前添加的字符串。每个日志投递批次可能包含多条日志记录。
+        r"""<p>在每个日志投递批次之前添加的字符串。每个日志投递批次可能包含多条日志记录。</p>
         :rtype: str
         """
         return self._BatchPrefix
@@ -43657,7 +44419,7 @@ class LogFormat(AbstractModel):
 
     @property
     def BatchSuffix(self):
-        r"""在每个日志投递批次后附加的字符串。
+        r"""<p>在每个日志投递批次后附加的字符串。</p>
         :rtype: str
         """
         return self._BatchSuffix
@@ -43668,7 +44430,7 @@ class LogFormat(AbstractModel):
 
     @property
     def RecordPrefix(self):
-        r"""在每条日志记录之前添加的字符串。
+        r"""<p>单条日志前缀，在每条日志记录之前添加的字符串。</p>
         :rtype: str
         """
         return self._RecordPrefix
@@ -43679,7 +44441,7 @@ class LogFormat(AbstractModel):
 
     @property
     def RecordSuffix(self):
-        r"""在每条日志记录后附加的字符串。
+        r"""<p>单条日志后缀，在每条日志记录后附加的字符串。</p>
         :rtype: str
         """
         return self._RecordSuffix
@@ -43690,10 +44452,7 @@ class LogFormat(AbstractModel):
 
     @property
     def RecordDelimiter(self):
-        r"""插入日志记录之间作为分隔符的字符串，取值有：
-<li>\n：换行符；</li>
-<li>\t：制表符；</li>
-<li>，：半角逗号。</li>
+        r"""<p>日志分隔符，插入日志记录之间作为分隔的字符串，取值有：</p><ul><li>\n：换行符；</li><li>\t：制表符；</li><li>，：半角逗号。</li></ul>
         :rtype: str
         """
         return self._RecordDelimiter
@@ -43703,11 +44462,19 @@ class LogFormat(AbstractModel):
         self._RecordDelimiter = RecordDelimiter
 
     @property
+    def RecordTemplate(self):
+        r"""<p>日志模板，单条日志的输出模板，长度限制 4KB，仅当 FormatType = template 生效。支持对配置的推送字段按照模板进行自定义排版和拼接。</p>
+        :rtype: str
+        """
+        return self._RecordTemplate
+
+    @RecordTemplate.setter
+    def RecordTemplate(self, RecordTemplate):
+        self._RecordTemplate = RecordTemplate
+
+    @property
     def FieldDelimiter(self):
-        r"""单条日志记录内，插入字段之间作为分隔符的字符串，取值有：
-<li>\t：制表符；</li>
-<li>，：半角逗号；</li>
-<li>;：半角分号。</li>
+        r"""<p>字段分隔符，单条日志记录内，插入字段之间作为分隔符的字符串，仅当 FormatType = csv 生效。取值有：<ul><li>\t：制表符；</li><li>，：半角逗号；</li><li>;：半角分号。</li></ul></p>
         :rtype: str
         """
         return self._FieldDelimiter
@@ -43724,6 +44491,7 @@ class LogFormat(AbstractModel):
         self._RecordPrefix = params.get("RecordPrefix")
         self._RecordSuffix = params.get("RecordSuffix")
         self._RecordDelimiter = params.get("RecordDelimiter")
+        self._RecordTemplate = params.get("RecordTemplate")
         self._FieldDelimiter = params.get("FieldDelimiter")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -49183,34 +49951,31 @@ class ModifyRealtimeLogDeliveryTaskRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ZoneId: 站点 ID。
+        :param _ZoneId: <p>站点 ID。</p>
         :type ZoneId: str
-        :param _TaskId: 实时日志投递任务 ID。
+        :param _TaskId: <p>实时日志投递任务 ID。</p>
         :type TaskId: str
-        :param _TaskName: 实时日志投递任务的名称，格式为数字、英文、-和_组合，最多 200 个字符。不填保持原有配置。
+        :param _TaskName: <p>实时日志投递任务的名称，格式为数字、英文、-和_组合，最多 200 个字符。不填保持原有配置。</p>
         :type TaskName: str
-        :param _DeliveryStatus: 实时日志投递任务的状态，取值有：
-<li>enabled: 启用；</li>
-<li>disabled: 停用。</li>不填保持原有配置。
+        :param _DeliveryStatus: <p>实时日志投递任务的状态，取值有：</p><li>enabled: 启用；</li><li>disabled: 停用。</li>不填保持原有配置。
         :type DeliveryStatus: str
-        :param _EntityList: 实时日志投递任务对应的实体（七层域名或者四层代理实例）列表。取值示例如下：
-<li>七层域名：domain.example.com；</li>
-<li>四层代理实例：sid-2s69eb5wcms7。</li>不填保持原有配置。
+        :param _EntityList: <p>实时日志投递任务对应的实体（七层域名或者四层代理实例）列表。取值示例如下：</p><li>七层域名：domain.example.com；</li><li>四层代理实例：sid-2s69eb5wcms7。</li>不填保持原有配置。<p>取值参考：<a href="https://cloud.tencent.com/document/api/1552/80690">DescribeApplicationProxies</a></p>
         :type EntityList: list of str
-        :param _Fields: 投递的预设字段列表。不填保持原有配置。
+        :param _Fields: <p>投递的预设字段列表。不填保持原有配置。</p><p>取值参考：DescribeLogFields</p>
         :type Fields: list of str
-        :param _CustomFields: 投递的自定义字段列表，支持在 HTTP 请求头、响应头、Cookie、请求正文中提取指定内容。不填保持原有配置。自定义字段名称不能重复，且最多不能超过 200 个字段。单个实时日志推送任务最多添加 5 个请求正文类型的自定义字段。目前仅站点加速日志（LogType=domain）支持添加自定义字段。
+        :param _CustomFields: <p>投递的自定义日志字段列表，可以通过自定义日志推送字段名称和取值表达式，实现个性化的实时日志内容推送，详见 <a href="">自定义日志字段表达式</a>。<br>仅七层访问日志（LogType= l7-access-logs 或 domain）支持添加自定义字段，允许配置的自定义字段个数有配额限制，如遇配额不足请 <a href="https://cloud.tencent.com/online-service?from=sales&amp;source=PRESALE">联系我们</a> 。</p>
         :type CustomFields: list of CustomField
-        :param _DeliveryConditions: 日志投递的过滤条件。不填表示投递全量日志。
+        :param _CustomExpressionFields: <p>投递的自定义表达式字段列表，可以通过自定义日志推送字段名称和取值表达式，实现个性化的实时日志内容推送，使用详情见 [自定义日志字段表达式]()。<br>仅七层访问日志（LogType= l7-access-logs 或 domain）支持添加自定义字段。允许配置的自定义字段个数有配额限制，如遇配额不足请 [联系我们](https://cloud.tencent.com/online-service?from=sales&amp;source=PRESALE) 。<br>**注意**：若 CustomExpressionFields 中存在命名 与 Fields 和 CustomFields 中同名的字段，以  CustomExpressionFields 中的取值为准。</p>
+        :type CustomExpressionFields: list of CustomExpressionField
+        :param _DeliveryConditions: <p>日志投递的过滤条件。不填表示投递全量日志。</p>
         :type DeliveryConditions: list of DeliveryCondition
-        :param _Sample: 采样比例，采用千分制，取值范围为1-1000，例如：填写 605 表示采样比例为 60.5%。不填保持原有配置。
+        :param _Sample: <p>采样比例，采用千分制，取值范围为1-1000，例如：填写 605 表示采样比例为 60.5%。不填保持原有配置。</p>
         :type Sample: int
-        :param _LogFormat: 日志投递的输出格式。不填保持原有配置。
-特别地，当 TaskType 取值为 cls 时，LogFormat.FormatType 的值只能为 json，且 LogFormat 中其他参数将被忽略，建议不传 LogFormat。
+        :param _LogFormat: <p>日志投递的输出格式，使用详情见 <a href="https://cloud.tencent.com/document/product/1552/110448">自定义日志输出格式</a>。不填表示为默认格式，默认格式逻辑如下：<ul><li>当 TaskType 取值为 custom_endpoint 时，默认格式为多个 JSON 对象组成的数组，每个 JSON 对象为一条日志；</li><li>当 TaskType 取值为 s3 时，默认格式为 JSON Lines；</li></ul>特别地，当 TaskType 取值为 cls 或 log_analysis 时，LogFormat.FormatType 的值只能为 json，且 LogFormat 中其他参数将被忽略，建议不传 LogFormat。</p>
         :type LogFormat: :class:`tencentcloud.teo.v20220901.models.LogFormat`
-        :param _CustomEndpoint: 自定义 HTTP 服务的配置信息，不填保持原有配置。 
+        :param _CustomEndpoint: <p>自定义 HTTP 服务的配置信息，不填保持原有配置。</p>
         :type CustomEndpoint: :class:`tencentcloud.teo.v20220901.models.CustomEndpoint`
-        :param _S3: AWS S3 兼容存储桶的配置信息，不填保持原有配置。
+        :param _S3: <p>AWS S3 兼容存储桶的配置信息，不填保持原有配置。</p>
         :type S3: :class:`tencentcloud.teo.v20220901.models.S3`
         """
         self._ZoneId = None
@@ -49220,6 +49985,7 @@ class ModifyRealtimeLogDeliveryTaskRequest(AbstractModel):
         self._EntityList = None
         self._Fields = None
         self._CustomFields = None
+        self._CustomExpressionFields = None
         self._DeliveryConditions = None
         self._Sample = None
         self._LogFormat = None
@@ -49228,7 +49994,7 @@ class ModifyRealtimeLogDeliveryTaskRequest(AbstractModel):
 
     @property
     def ZoneId(self):
-        r"""站点 ID。
+        r"""<p>站点 ID。</p>
         :rtype: str
         """
         return self._ZoneId
@@ -49239,7 +50005,7 @@ class ModifyRealtimeLogDeliveryTaskRequest(AbstractModel):
 
     @property
     def TaskId(self):
-        r"""实时日志投递任务 ID。
+        r"""<p>实时日志投递任务 ID。</p>
         :rtype: str
         """
         return self._TaskId
@@ -49250,7 +50016,7 @@ class ModifyRealtimeLogDeliveryTaskRequest(AbstractModel):
 
     @property
     def TaskName(self):
-        r"""实时日志投递任务的名称，格式为数字、英文、-和_组合，最多 200 个字符。不填保持原有配置。
+        r"""<p>实时日志投递任务的名称，格式为数字、英文、-和_组合，最多 200 个字符。不填保持原有配置。</p>
         :rtype: str
         """
         return self._TaskName
@@ -49261,9 +50027,7 @@ class ModifyRealtimeLogDeliveryTaskRequest(AbstractModel):
 
     @property
     def DeliveryStatus(self):
-        r"""实时日志投递任务的状态，取值有：
-<li>enabled: 启用；</li>
-<li>disabled: 停用。</li>不填保持原有配置。
+        r"""<p>实时日志投递任务的状态，取值有：</p><li>enabled: 启用；</li><li>disabled: 停用。</li>不填保持原有配置。
         :rtype: str
         """
         return self._DeliveryStatus
@@ -49274,9 +50038,7 @@ class ModifyRealtimeLogDeliveryTaskRequest(AbstractModel):
 
     @property
     def EntityList(self):
-        r"""实时日志投递任务对应的实体（七层域名或者四层代理实例）列表。取值示例如下：
-<li>七层域名：domain.example.com；</li>
-<li>四层代理实例：sid-2s69eb5wcms7。</li>不填保持原有配置。
+        r"""<p>实时日志投递任务对应的实体（七层域名或者四层代理实例）列表。取值示例如下：</p><li>七层域名：domain.example.com；</li><li>四层代理实例：sid-2s69eb5wcms7。</li>不填保持原有配置。<p>取值参考：<a href="https://cloud.tencent.com/document/api/1552/80690">DescribeApplicationProxies</a></p>
         :rtype: list of str
         """
         return self._EntityList
@@ -49287,7 +50049,7 @@ class ModifyRealtimeLogDeliveryTaskRequest(AbstractModel):
 
     @property
     def Fields(self):
-        r"""投递的预设字段列表。不填保持原有配置。
+        r"""<p>投递的预设字段列表。不填保持原有配置。</p><p>取值参考：DescribeLogFields</p>
         :rtype: list of str
         """
         return self._Fields
@@ -49298,7 +50060,7 @@ class ModifyRealtimeLogDeliveryTaskRequest(AbstractModel):
 
     @property
     def CustomFields(self):
-        r"""投递的自定义字段列表，支持在 HTTP 请求头、响应头、Cookie、请求正文中提取指定内容。不填保持原有配置。自定义字段名称不能重复，且最多不能超过 200 个字段。单个实时日志推送任务最多添加 5 个请求正文类型的自定义字段。目前仅站点加速日志（LogType=domain）支持添加自定义字段。
+        r"""<p>投递的自定义日志字段列表，可以通过自定义日志推送字段名称和取值表达式，实现个性化的实时日志内容推送，详见 <a href="">自定义日志字段表达式</a>。<br>仅七层访问日志（LogType= l7-access-logs 或 domain）支持添加自定义字段，允许配置的自定义字段个数有配额限制，如遇配额不足请 <a href="https://cloud.tencent.com/online-service?from=sales&amp;source=PRESALE">联系我们</a> 。</p>
         :rtype: list of CustomField
         """
         return self._CustomFields
@@ -49308,8 +50070,19 @@ class ModifyRealtimeLogDeliveryTaskRequest(AbstractModel):
         self._CustomFields = CustomFields
 
     @property
+    def CustomExpressionFields(self):
+        r"""<p>投递的自定义表达式字段列表，可以通过自定义日志推送字段名称和取值表达式，实现个性化的实时日志内容推送，使用详情见 [自定义日志字段表达式]()。<br>仅七层访问日志（LogType= l7-access-logs 或 domain）支持添加自定义字段。允许配置的自定义字段个数有配额限制，如遇配额不足请 [联系我们](https://cloud.tencent.com/online-service?from=sales&amp;source=PRESALE) 。<br>**注意**：若 CustomExpressionFields 中存在命名 与 Fields 和 CustomFields 中同名的字段，以  CustomExpressionFields 中的取值为准。</p>
+        :rtype: list of CustomExpressionField
+        """
+        return self._CustomExpressionFields
+
+    @CustomExpressionFields.setter
+    def CustomExpressionFields(self, CustomExpressionFields):
+        self._CustomExpressionFields = CustomExpressionFields
+
+    @property
     def DeliveryConditions(self):
-        r"""日志投递的过滤条件。不填表示投递全量日志。
+        r"""<p>日志投递的过滤条件。不填表示投递全量日志。</p>
         :rtype: list of DeliveryCondition
         """
         return self._DeliveryConditions
@@ -49320,7 +50093,7 @@ class ModifyRealtimeLogDeliveryTaskRequest(AbstractModel):
 
     @property
     def Sample(self):
-        r"""采样比例，采用千分制，取值范围为1-1000，例如：填写 605 表示采样比例为 60.5%。不填保持原有配置。
+        r"""<p>采样比例，采用千分制，取值范围为1-1000，例如：填写 605 表示采样比例为 60.5%。不填保持原有配置。</p>
         :rtype: int
         """
         return self._Sample
@@ -49331,8 +50104,7 @@ class ModifyRealtimeLogDeliveryTaskRequest(AbstractModel):
 
     @property
     def LogFormat(self):
-        r"""日志投递的输出格式。不填保持原有配置。
-特别地，当 TaskType 取值为 cls 时，LogFormat.FormatType 的值只能为 json，且 LogFormat 中其他参数将被忽略，建议不传 LogFormat。
+        r"""<p>日志投递的输出格式，使用详情见 <a href="https://cloud.tencent.com/document/product/1552/110448">自定义日志输出格式</a>。不填表示为默认格式，默认格式逻辑如下：<ul><li>当 TaskType 取值为 custom_endpoint 时，默认格式为多个 JSON 对象组成的数组，每个 JSON 对象为一条日志；</li><li>当 TaskType 取值为 s3 时，默认格式为 JSON Lines；</li></ul>特别地，当 TaskType 取值为 cls 或 log_analysis 时，LogFormat.FormatType 的值只能为 json，且 LogFormat 中其他参数将被忽略，建议不传 LogFormat。</p>
         :rtype: :class:`tencentcloud.teo.v20220901.models.LogFormat`
         """
         return self._LogFormat
@@ -49343,7 +50115,7 @@ class ModifyRealtimeLogDeliveryTaskRequest(AbstractModel):
 
     @property
     def CustomEndpoint(self):
-        r"""自定义 HTTP 服务的配置信息，不填保持原有配置。 
+        r"""<p>自定义 HTTP 服务的配置信息，不填保持原有配置。</p>
         :rtype: :class:`tencentcloud.teo.v20220901.models.CustomEndpoint`
         """
         return self._CustomEndpoint
@@ -49354,7 +50126,7 @@ class ModifyRealtimeLogDeliveryTaskRequest(AbstractModel):
 
     @property
     def S3(self):
-        r"""AWS S3 兼容存储桶的配置信息，不填保持原有配置。
+        r"""<p>AWS S3 兼容存储桶的配置信息，不填保持原有配置。</p>
         :rtype: :class:`tencentcloud.teo.v20220901.models.S3`
         """
         return self._S3
@@ -49377,6 +50149,12 @@ class ModifyRealtimeLogDeliveryTaskRequest(AbstractModel):
                 obj = CustomField()
                 obj._deserialize(item)
                 self._CustomFields.append(obj)
+        if params.get("CustomExpressionFields") is not None:
+            self._CustomExpressionFields = []
+            for item in params.get("CustomExpressionFields"):
+                obj = CustomExpressionField()
+                obj._deserialize(item)
+                self._CustomExpressionFields.append(obj)
         if params.get("DeliveryConditions") is not None:
             self._DeliveryConditions = []
             for item in params.get("DeliveryConditions"):
@@ -56853,7 +57631,7 @@ class RealtimeLogDeliveryTask(AbstractModel):
         :type TaskName: str
         :param _DeliveryStatus: <p>实时日志投递任务的状态，取值有： <li>enabled: 已启用；</li> <li>disabled: 已停用；</li><li>deleted: 异常删除状态，请检查目的地腾讯云 CLS 日志集/日志主题是否已被删除。</li></p>
         :type DeliveryStatus: str
-        :param _TaskType: <p>实时日志投递任务类型，取值有： <li>cls: 推送到腾讯云 CLS；</li> <li>custom_endpoint：推送到自定义 HTTP(S) 地址；</li> <li>s3：推送到 AWS S3 兼容存储桶地址；</li><li>log_analysis：推送到 EdgeOne 日志分析。</li></p>
+        :param _TaskType: <p>实时日志投递任务类型，取值有： <ul><li>cls: 推送到腾讯云 CLS；</li> <li>custom_endpoint：推送到自定义 HTTP(S) 地址；</li> <li>s3：推送到 S3 兼容（兼容 SigV4 鉴权算法）的对象存储的地址；</li><li>log_analysis：推送到 EdgeOne 日志分析。</li></ul></p>
         :type TaskType: str
         :param _EntityList: <p>实时日志投递任务对应的实体（七层域名或者四层代理实例）列表。取值示例如下： <li>七层域名：domain.example.com；</li> <li>四层代理实例：sid-2s69eb5wcms7。</li></p>
         :type EntityList: list of str
@@ -56865,6 +57643,8 @@ class RealtimeLogDeliveryTask(AbstractModel):
         :type Fields: list of str
         :param _CustomFields: <p>投递的自定义字段列表。</p>
         :type CustomFields: list of CustomField
+        :param _CustomExpressionFields: <p>投递的自定义表达式字段列表。</p>
+        :type CustomExpressionFields: list of CustomExpressionField
         :param _DeliveryConditions: <p>日志投递的过滤条件。</p>
         :type DeliveryConditions: list of DeliveryCondition
         :param _Sample: <p>采样比例，采用千分制，取值范围为1-1000，例如：605 表示采样比例为 60.5%。</p>
@@ -56878,7 +57658,7 @@ class RealtimeLogDeliveryTask(AbstractModel):
         :param _CustomEndpoint: <p>自定义 HTTP 服务的配置信息。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type CustomEndpoint: :class:`tencentcloud.teo.v20220901.models.CustomEndpoint`
-        :param _S3: <p>AWS S3 兼容存储桶的配置信息。</p>
+        :param _S3: <p>S3 兼容（兼容 SigV4 鉴权算法）的对象存储的配置信息。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type S3: :class:`tencentcloud.teo.v20220901.models.S3`
         :param _CreateTime: <p>创建时间。</p>
@@ -56895,6 +57675,7 @@ class RealtimeLogDeliveryTask(AbstractModel):
         self._Area = None
         self._Fields = None
         self._CustomFields = None
+        self._CustomExpressionFields = None
         self._DeliveryConditions = None
         self._Sample = None
         self._LogFormat = None
@@ -56939,7 +57720,7 @@ class RealtimeLogDeliveryTask(AbstractModel):
 
     @property
     def TaskType(self):
-        r"""<p>实时日志投递任务类型，取值有： <li>cls: 推送到腾讯云 CLS；</li> <li>custom_endpoint：推送到自定义 HTTP(S) 地址；</li> <li>s3：推送到 AWS S3 兼容存储桶地址；</li><li>log_analysis：推送到 EdgeOne 日志分析。</li></p>
+        r"""<p>实时日志投递任务类型，取值有： <ul><li>cls: 推送到腾讯云 CLS；</li> <li>custom_endpoint：推送到自定义 HTTP(S) 地址；</li> <li>s3：推送到 S3 兼容（兼容 SigV4 鉴权算法）的对象存储的地址；</li><li>log_analysis：推送到 EdgeOne 日志分析。</li></ul></p>
         :rtype: str
         """
         return self._TaskType
@@ -57004,6 +57785,17 @@ class RealtimeLogDeliveryTask(AbstractModel):
         self._CustomFields = CustomFields
 
     @property
+    def CustomExpressionFields(self):
+        r"""<p>投递的自定义表达式字段列表。</p>
+        :rtype: list of CustomExpressionField
+        """
+        return self._CustomExpressionFields
+
+    @CustomExpressionFields.setter
+    def CustomExpressionFields(self, CustomExpressionFields):
+        self._CustomExpressionFields = CustomExpressionFields
+
+    @property
     def DeliveryConditions(self):
         r"""<p>日志投递的过滤条件。</p>
         :rtype: list of DeliveryCondition
@@ -57063,7 +57855,7 @@ class RealtimeLogDeliveryTask(AbstractModel):
 
     @property
     def S3(self):
-        r"""<p>AWS S3 兼容存储桶的配置信息。</p>
+        r"""<p>S3 兼容（兼容 SigV4 鉴权算法）的对象存储的配置信息。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.teo.v20220901.models.S3`
         """
@@ -57111,6 +57903,12 @@ class RealtimeLogDeliveryTask(AbstractModel):
                 obj = CustomField()
                 obj._deserialize(item)
                 self._CustomFields.append(obj)
+        if params.get("CustomExpressionFields") is not None:
+            self._CustomExpressionFields = []
+            for item in params.get("CustomExpressionFields"):
+                obj = CustomExpressionField()
+                obj._deserialize(item)
+                self._CustomExpressionFields.append(obj)
         if params.get("DeliveryConditions") is not None:
             self._DeliveryConditions = []
             for item in params.get("DeliveryConditions"):
@@ -58650,7 +59448,7 @@ class RuleEngineAction(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Name: <p>操作名称。名称需要与参数结构体对应，例如 Name=Cache，则 CacheParameters 必填。</p><li>Cache：节点缓存 TTL；</li><li>CacheKey：自定义 Cache Key；</li><li>CachePrefresh：缓存预刷新；</li><li>AccessURLRedirect：访问 URL 重定向；</li><li>UpstreamURLRewrite：回源 URL 重写；</li><li>QUIC：QUIC；</li><li>WebSocket：WebSocket；</li><li>Authentication：Token 鉴权；</li><li>MaxAge：浏览器缓存 TTL；</li><li>StatusCodeCache：状态码缓存 TTL；</li><li>OfflineCache：离线缓存；</li><li>SmartRouting：智能加速；</li><li>AdvancedOriginRouting：高级回源优化；</li><li>RangeOriginPull：分片回源 ；</li><li>UpstreamHTTP2：HTTP2 回源；</li><li>HostHeader：Host Header 重写；</li><li>ForceRedirectHTTPS：访问协议强制 HTTPS 跳转配置；</li><li>OriginPullProtocol：回源 HTTPS；</li><li>Compression：智能压缩配置；</li><li>HSTS：HSTS；</li><li>ClientIPHeader：存储客户端请求 IP 的头部信息配置；</li><li>OCSPStapling：OCSP 装订；</li><li>HTTP2：HTTP2 接入；</li><li>PostMaxSize：POST 请求上传文件流式传输最大限制配置；</li><li>ClientIPCountry：回源时携带客户端 IP 所属地域信息；</li><li>UpstreamFollowRedirect：回源跟随重定向参数配置；</li><li>UpstreamRequest：回源请求参数；</li><li>Shield：源站卸载配置；</li><li>TLSConfig：SSL/TLS 安全；</li><li>ModifyOrigin：修改源站；</li><li> SiteFailover：源站故障转移；</li><li>HTTPUpstreamTimeout：七层回源超时配置；</li><li>HttpResponse：HTTP 应答；</li><li>ErrorPage：自定义错误页面；</li><li>ModifyResponseHeader：修改 HTTP 节点响应头；</li><li>ModifyRequestHeader：修改 HTTP 节点请求头；</li><li>ResponseSpeedLimit：单连接下载限速；</li><li>SetContentIdentifier：设置内容标识符；</li><li>Vary：Vary 特性配置；</li><li>ContentCompression：内容压缩配置；</li><li>OriginAuthentication：回源鉴权配置。</li>
+        :param _Name: <p>操作名称。名称需要与参数结构体对应，例如 Name=Cache，则 CacheParameters 必填。<li>Cache：节点缓存 TTL；</li><li>CacheKey：自定义 Cache Key；</li><li>CachePrefresh：缓存预刷新；</li><li>AccessURLRedirect：访问 URL 重定向；</li><li>UpstreamURLRewrite：回源 URL 重写；</li><li>QUIC：QUIC；</li><li>WebSocket：WebSocket；</li><li>Authentication：Token 鉴权；</li><li>MaxAge：浏览器缓存 TTL；</li><li>StatusCodeCache：状态码缓存 TTL；</li><li>OfflineCache：离线缓存；</li><li>SmartRouting：智能加速；</li><li>AdvancedOriginRouting：高级回源优化；</li><li>RangeOriginPull：分片回源 ；</li><li>UpstreamHTTP2：HTTP2 回源；</li><li>HostHeader：Host Header 重写；</li><li>ForceRedirectHTTPS：访问协议强制 HTTPS 跳转配置；</li><li>OriginPullProtocol：回源 HTTPS；</li><li>Compression：智能压缩配置；</li><li>HSTS：HSTS；</li><li>ClientIPHeader：存储客户端请求 IP 的头部信息配置；</li><li>OCSPStapling：OCSP 装订；</li><li>HTTP2：HTTP2 接入；</li><li>PostMaxSize：POST 请求上传文件流式传输最大限制配置；</li><li>ClientIPCountry：回源时携带客户端 IP 所属地域信息；</li><li>UpstreamFollowRedirect：回源跟随重定向参数配置；</li><li>UpstreamRequest：回源请求参数；</li><li>Shield：源站卸载配置；</li><li>TLSConfig：SSL/TLS 安全；</li><li>ModifyOrigin：修改源站；</li><li> SiteFailover：源站故障转移；</li><li>HTTPUpstreamTimeout：七层回源超时配置；</li><li>HttpResponse：HTTP 应答；</li><li>ErrorPage：自定义错误页面；</li><li>ModifyResponseHeader：修改 HTTP 节点响应头；</li><li>ModifyRequestHeader：修改 HTTP 节点请求头；</li><li>ResponseSpeedLimit：单连接下载限速；</li><li>SetContentIdentifier：设置内容标识符；</li><li>Vary：Vary 特性配置；</li><li>ContentCompression：内容压缩配置；</li><li>OriginAuthentication：回源鉴权配置；</li><li>CustomAction：定制配置。</li></p>
         :type Name: str
         :param _CacheParameters: <p>节点缓存 TTL 配置参数，当 Name 取值为 Cache 时，该参数必填。</p>
 注意：此字段可能返回 null，表示取不到有效值。
@@ -58772,6 +59570,8 @@ class RuleEngineAction(AbstractModel):
         :type ContentCompressionParameters: :class:`tencentcloud.teo.v20220901.models.ContentCompressionParameters`
         :param _OriginAuthenticationParameters: <p>回源鉴权配置参数，当 Name 取值为 OriginAuthentication 时，该参数必填。该参数为白名单功能，如有需要，请联系腾讯云工程师处理。</p>
         :type OriginAuthenticationParameters: :class:`tencentcloud.teo.v20220901.models.OriginAuthenticationParameters`
+        :param _CustomActionParameters: <p>定制配置操作参数，当 Name 取值为 CustomAction 时，该参数必填。</p><p>您可以通过 DescribeAvailableCustomActionsForRuleEngine 接口的返回值 CustomActionSet 获取您当前支持的定制配置项列表。</p>
+        :type CustomActionParameters: :class:`tencentcloud.teo.v20220901.models.CustomActionParameters`
         """
         self._Name = None
         self._CacheParameters = None
@@ -58815,10 +59615,11 @@ class RuleEngineAction(AbstractModel):
         self._VaryParameters = None
         self._ContentCompressionParameters = None
         self._OriginAuthenticationParameters = None
+        self._CustomActionParameters = None
 
     @property
     def Name(self):
-        r"""<p>操作名称。名称需要与参数结构体对应，例如 Name=Cache，则 CacheParameters 必填。</p><li>Cache：节点缓存 TTL；</li><li>CacheKey：自定义 Cache Key；</li><li>CachePrefresh：缓存预刷新；</li><li>AccessURLRedirect：访问 URL 重定向；</li><li>UpstreamURLRewrite：回源 URL 重写；</li><li>QUIC：QUIC；</li><li>WebSocket：WebSocket；</li><li>Authentication：Token 鉴权；</li><li>MaxAge：浏览器缓存 TTL；</li><li>StatusCodeCache：状态码缓存 TTL；</li><li>OfflineCache：离线缓存；</li><li>SmartRouting：智能加速；</li><li>AdvancedOriginRouting：高级回源优化；</li><li>RangeOriginPull：分片回源 ；</li><li>UpstreamHTTP2：HTTP2 回源；</li><li>HostHeader：Host Header 重写；</li><li>ForceRedirectHTTPS：访问协议强制 HTTPS 跳转配置；</li><li>OriginPullProtocol：回源 HTTPS；</li><li>Compression：智能压缩配置；</li><li>HSTS：HSTS；</li><li>ClientIPHeader：存储客户端请求 IP 的头部信息配置；</li><li>OCSPStapling：OCSP 装订；</li><li>HTTP2：HTTP2 接入；</li><li>PostMaxSize：POST 请求上传文件流式传输最大限制配置；</li><li>ClientIPCountry：回源时携带客户端 IP 所属地域信息；</li><li>UpstreamFollowRedirect：回源跟随重定向参数配置；</li><li>UpstreamRequest：回源请求参数；</li><li>Shield：源站卸载配置；</li><li>TLSConfig：SSL/TLS 安全；</li><li>ModifyOrigin：修改源站；</li><li> SiteFailover：源站故障转移；</li><li>HTTPUpstreamTimeout：七层回源超时配置；</li><li>HttpResponse：HTTP 应答；</li><li>ErrorPage：自定义错误页面；</li><li>ModifyResponseHeader：修改 HTTP 节点响应头；</li><li>ModifyRequestHeader：修改 HTTP 节点请求头；</li><li>ResponseSpeedLimit：单连接下载限速；</li><li>SetContentIdentifier：设置内容标识符；</li><li>Vary：Vary 特性配置；</li><li>ContentCompression：内容压缩配置；</li><li>OriginAuthentication：回源鉴权配置。</li>
+        r"""<p>操作名称。名称需要与参数结构体对应，例如 Name=Cache，则 CacheParameters 必填。<li>Cache：节点缓存 TTL；</li><li>CacheKey：自定义 Cache Key；</li><li>CachePrefresh：缓存预刷新；</li><li>AccessURLRedirect：访问 URL 重定向；</li><li>UpstreamURLRewrite：回源 URL 重写；</li><li>QUIC：QUIC；</li><li>WebSocket：WebSocket；</li><li>Authentication：Token 鉴权；</li><li>MaxAge：浏览器缓存 TTL；</li><li>StatusCodeCache：状态码缓存 TTL；</li><li>OfflineCache：离线缓存；</li><li>SmartRouting：智能加速；</li><li>AdvancedOriginRouting：高级回源优化；</li><li>RangeOriginPull：分片回源 ；</li><li>UpstreamHTTP2：HTTP2 回源；</li><li>HostHeader：Host Header 重写；</li><li>ForceRedirectHTTPS：访问协议强制 HTTPS 跳转配置；</li><li>OriginPullProtocol：回源 HTTPS；</li><li>Compression：智能压缩配置；</li><li>HSTS：HSTS；</li><li>ClientIPHeader：存储客户端请求 IP 的头部信息配置；</li><li>OCSPStapling：OCSP 装订；</li><li>HTTP2：HTTP2 接入；</li><li>PostMaxSize：POST 请求上传文件流式传输最大限制配置；</li><li>ClientIPCountry：回源时携带客户端 IP 所属地域信息；</li><li>UpstreamFollowRedirect：回源跟随重定向参数配置；</li><li>UpstreamRequest：回源请求参数；</li><li>Shield：源站卸载配置；</li><li>TLSConfig：SSL/TLS 安全；</li><li>ModifyOrigin：修改源站；</li><li> SiteFailover：源站故障转移；</li><li>HTTPUpstreamTimeout：七层回源超时配置；</li><li>HttpResponse：HTTP 应答；</li><li>ErrorPage：自定义错误页面；</li><li>ModifyResponseHeader：修改 HTTP 节点响应头；</li><li>ModifyRequestHeader：修改 HTTP 节点请求头；</li><li>ResponseSpeedLimit：单连接下载限速；</li><li>SetContentIdentifier：设置内容标识符；</li><li>Vary：Vary 特性配置；</li><li>ContentCompression：内容压缩配置；</li><li>OriginAuthentication：回源鉴权配置；</li><li>CustomAction：定制配置。</li></p>
         :rtype: str
         """
         return self._Name
@@ -59316,6 +60117,17 @@ class RuleEngineAction(AbstractModel):
     def OriginAuthenticationParameters(self, OriginAuthenticationParameters):
         self._OriginAuthenticationParameters = OriginAuthenticationParameters
 
+    @property
+    def CustomActionParameters(self):
+        r"""<p>定制配置操作参数，当 Name 取值为 CustomAction 时，该参数必填。</p><p>您可以通过 DescribeAvailableCustomActionsForRuleEngine 接口的返回值 CustomActionSet 获取您当前支持的定制配置项列表。</p>
+        :rtype: :class:`tencentcloud.teo.v20220901.models.CustomActionParameters`
+        """
+        return self._CustomActionParameters
+
+    @CustomActionParameters.setter
+    def CustomActionParameters(self, CustomActionParameters):
+        self._CustomActionParameters = CustomActionParameters
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -59442,6 +60254,9 @@ class RuleEngineAction(AbstractModel):
         if params.get("OriginAuthenticationParameters") is not None:
             self._OriginAuthenticationParameters = OriginAuthenticationParameters()
             self._OriginAuthenticationParameters._deserialize(params.get("OriginAuthenticationParameters"))
+        if params.get("CustomActionParameters") is not None:
+            self._CustomActionParameters = CustomActionParameters()
+            self._CustomActionParameters._deserialize(params.get("CustomActionParameters"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -65470,6 +66285,146 @@ class WafRule(AbstractModel):
         
 
 
+class WebSecurity(AbstractModel):
+    r"""序列化的安全结构
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneDefaultPolicy: 站点级策略的配置详情。
+        :type ZoneDefaultPolicy: :class:`tencentcloud.teo.v20220901.models.SecurityPolicy`
+        :param _HostPolicy: 域名级策略的配置详情。
+        :type HostPolicy: :class:`tencentcloud.teo.v20220901.models.HostPolicy`
+        :param _Templates: 策略模板的配置详情。
+        :type Templates: :class:`tencentcloud.teo.v20220901.models.WebSecurityTemplates`
+        """
+        self._ZoneDefaultPolicy = None
+        self._HostPolicy = None
+        self._Templates = None
+
+    @property
+    def ZoneDefaultPolicy(self):
+        r"""站点级策略的配置详情。
+        :rtype: :class:`tencentcloud.teo.v20220901.models.SecurityPolicy`
+        """
+        return self._ZoneDefaultPolicy
+
+    @ZoneDefaultPolicy.setter
+    def ZoneDefaultPolicy(self, ZoneDefaultPolicy):
+        self._ZoneDefaultPolicy = ZoneDefaultPolicy
+
+    @property
+    def HostPolicy(self):
+        r"""域名级策略的配置详情。
+        :rtype: :class:`tencentcloud.teo.v20220901.models.HostPolicy`
+        """
+        return self._HostPolicy
+
+    @HostPolicy.setter
+    def HostPolicy(self, HostPolicy):
+        self._HostPolicy = HostPolicy
+
+    @property
+    def Templates(self):
+        r"""策略模板的配置详情。
+        :rtype: :class:`tencentcloud.teo.v20220901.models.WebSecurityTemplates`
+        """
+        return self._Templates
+
+    @Templates.setter
+    def Templates(self, Templates):
+        self._Templates = Templates
+
+
+    def _deserialize(self, params):
+        if params.get("ZoneDefaultPolicy") is not None:
+            self._ZoneDefaultPolicy = SecurityPolicy()
+            self._ZoneDefaultPolicy._deserialize(params.get("ZoneDefaultPolicy"))
+        if params.get("HostPolicy") is not None:
+            self._HostPolicy = HostPolicy()
+            self._HostPolicy._deserialize(params.get("HostPolicy"))
+        if params.get("Templates") is not None:
+            self._Templates = WebSecurityTemplates()
+            self._Templates._deserialize(params.get("Templates"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class WebSecurityTemplates(AbstractModel):
+    r"""模板的安全配置。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TemplateId: <p>策略模板的 ID</p>
+        :type TemplateId: str
+        :param _TemplateName: <p>策略模板名称。由中文、英文、数字和下划线组成，不能以下划线开头，且长度不能超过 32 个字符。</p>
+        :type TemplateName: str
+        :param _Policy: <p>策略模板的策略配置，配置对所有关联了该策略模板的域名生效。</p>
+        :type Policy: :class:`tencentcloud.teo.v20220901.models.SecurityPolicy`
+        """
+        self._TemplateId = None
+        self._TemplateName = None
+        self._Policy = None
+
+    @property
+    def TemplateId(self):
+        r"""<p>策略模板的 ID</p>
+        :rtype: str
+        """
+        return self._TemplateId
+
+    @TemplateId.setter
+    def TemplateId(self, TemplateId):
+        self._TemplateId = TemplateId
+
+    @property
+    def TemplateName(self):
+        r"""<p>策略模板名称。由中文、英文、数字和下划线组成，不能以下划线开头，且长度不能超过 32 个字符。</p>
+        :rtype: str
+        """
+        return self._TemplateName
+
+    @TemplateName.setter
+    def TemplateName(self, TemplateName):
+        self._TemplateName = TemplateName
+
+    @property
+    def Policy(self):
+        r"""<p>策略模板的策略配置，配置对所有关联了该策略模板的域名生效。</p>
+        :rtype: :class:`tencentcloud.teo.v20220901.models.SecurityPolicy`
+        """
+        return self._Policy
+
+    @Policy.setter
+    def Policy(self, Policy):
+        self._Policy = Policy
+
+
+    def _deserialize(self, params):
+        self._TemplateId = params.get("TemplateId")
+        self._TemplateName = params.get("TemplateName")
+        if params.get("Policy") is not None:
+            self._Policy = SecurityPolicy()
+            self._Policy._deserialize(params.get("Policy"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class WebSocket(AbstractModel):
     r"""WebSocket配置
 
@@ -66563,6 +67518,116 @@ class ZoneConfigParameters(AbstractModel):
         if params.get("ZoneConfig") is not None:
             self._ZoneConfig = ZoneConfig()
             self._ZoneConfig._deserialize(params.get("ZoneConfig"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ZoneFullConfig(AbstractModel):
+    r"""站点完整配置结构。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FormatVersion: <p>语法版本，当前默认为 1.0，输入其他值将会报错。</p>
+        :type FormatVersion: str
+        :param _ZoneConfig: <p>站点级配置，包含「站点加速」中所有配置项，且所有项均为必选，否则配置无效。</p>
+        :type ZoneConfig: :class:`tencentcloud.teo.v20220901.models.ZoneConfig`
+        :param _Rules: <p>规则级配置，包含「规则引擎」中所有规则，且数组可为空，表示不启用任何规则。</p>
+        :type Rules: list of ConfigGroupRuleEngineItem
+        :param _WebSecurity: <p>Web 安全防护配置，对应控制台中「安全防护 - Web 防护」里支持的功能。</p>
+        :type WebSecurity: :class:`tencentcloud.teo.v20220901.models.WebSecurity`
+        :param _FunctionTriggers: <p>边缘函数触发规则配置，包含触发「边缘函数」中所有规则，且数组可为空，表示不启用任何规则。</p>
+        :type FunctionTriggers: list of ConfigGroupFunctionTrigger
+        """
+        self._FormatVersion = None
+        self._ZoneConfig = None
+        self._Rules = None
+        self._WebSecurity = None
+        self._FunctionTriggers = None
+
+    @property
+    def FormatVersion(self):
+        r"""<p>语法版本，当前默认为 1.0，输入其他值将会报错。</p>
+        :rtype: str
+        """
+        return self._FormatVersion
+
+    @FormatVersion.setter
+    def FormatVersion(self, FormatVersion):
+        self._FormatVersion = FormatVersion
+
+    @property
+    def ZoneConfig(self):
+        r"""<p>站点级配置，包含「站点加速」中所有配置项，且所有项均为必选，否则配置无效。</p>
+        :rtype: :class:`tencentcloud.teo.v20220901.models.ZoneConfig`
+        """
+        return self._ZoneConfig
+
+    @ZoneConfig.setter
+    def ZoneConfig(self, ZoneConfig):
+        self._ZoneConfig = ZoneConfig
+
+    @property
+    def Rules(self):
+        r"""<p>规则级配置，包含「规则引擎」中所有规则，且数组可为空，表示不启用任何规则。</p>
+        :rtype: list of ConfigGroupRuleEngineItem
+        """
+        return self._Rules
+
+    @Rules.setter
+    def Rules(self, Rules):
+        self._Rules = Rules
+
+    @property
+    def WebSecurity(self):
+        r"""<p>Web 安全防护配置，对应控制台中「安全防护 - Web 防护」里支持的功能。</p>
+        :rtype: :class:`tencentcloud.teo.v20220901.models.WebSecurity`
+        """
+        return self._WebSecurity
+
+    @WebSecurity.setter
+    def WebSecurity(self, WebSecurity):
+        self._WebSecurity = WebSecurity
+
+    @property
+    def FunctionTriggers(self):
+        r"""<p>边缘函数触发规则配置，包含触发「边缘函数」中所有规则，且数组可为空，表示不启用任何规则。</p>
+        :rtype: list of ConfigGroupFunctionTrigger
+        """
+        return self._FunctionTriggers
+
+    @FunctionTriggers.setter
+    def FunctionTriggers(self, FunctionTriggers):
+        self._FunctionTriggers = FunctionTriggers
+
+
+    def _deserialize(self, params):
+        self._FormatVersion = params.get("FormatVersion")
+        if params.get("ZoneConfig") is not None:
+            self._ZoneConfig = ZoneConfig()
+            self._ZoneConfig._deserialize(params.get("ZoneConfig"))
+        if params.get("Rules") is not None:
+            self._Rules = []
+            for item in params.get("Rules"):
+                obj = ConfigGroupRuleEngineItem()
+                obj._deserialize(item)
+                self._Rules.append(obj)
+        if params.get("WebSecurity") is not None:
+            self._WebSecurity = WebSecurity()
+            self._WebSecurity._deserialize(params.get("WebSecurity"))
+        if params.get("FunctionTriggers") is not None:
+            self._FunctionTriggers = []
+            for item in params.get("FunctionTriggers"):
+                obj = ConfigGroupFunctionTrigger()
+                obj._deserialize(item)
+                self._FunctionTriggers.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

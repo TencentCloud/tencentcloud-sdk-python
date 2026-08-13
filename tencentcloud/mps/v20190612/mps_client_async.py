@@ -1714,6 +1714,24 @@ class MpsClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeAigcTaskList(
+            self,
+            request: models.DescribeAigcTaskListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeAigcTaskListResponse:
+        """
+        查询AIGC任务列表详细信息
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeAigcTaskList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeAigcTaskListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeAigcTaskStatus(
             self,
             request: models.DescribeAigcTaskStatusRequest,

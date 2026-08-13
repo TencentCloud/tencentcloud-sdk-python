@@ -11569,9 +11569,9 @@ class DescribeDSPAAssessmentRiskSideListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DspaId: DSPA实例ID
+        :param _DspaId: <p>DSPA实例ID</p>
         :type DspaId: str
-        :param _TemplateId: 评估模板id
+        :param _TemplateId: <p>评估模板id</p>
         :type TemplateId: int
         """
         self._DspaId = None
@@ -11579,7 +11579,7 @@ class DescribeDSPAAssessmentRiskSideListRequest(AbstractModel):
 
     @property
     def DspaId(self):
-        r"""DSPA实例ID
+        r"""<p>DSPA实例ID</p>
         :rtype: str
         """
         return self._DspaId
@@ -11590,7 +11590,7 @@ class DescribeDSPAAssessmentRiskSideListRequest(AbstractModel):
 
     @property
     def TemplateId(self):
-        r"""评估模板id
+        r"""<p>评估模板id</p>
         :rtype: int
         """
         return self._TemplateId
@@ -11620,9 +11620,9 @@ class DescribeDSPAAssessmentRiskSideListResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RiskSideItmeList: 风险面列表
+        :param _RiskSideItmeList: <p>风险面列表</p>
         :type RiskSideItmeList: list of Note
-        :param _RiskSideItemList: 风险面列表
+        :param _RiskSideItemList: <p>风险面列表</p>
         :type RiskSideItemList: list of Note
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -11635,7 +11635,7 @@ class DescribeDSPAAssessmentRiskSideListResponse(AbstractModel):
     def RiskSideItmeList(self):
         warnings.warn("parameter `RiskSideItmeList` is deprecated", DeprecationWarning) 
 
-        r"""风险面列表
+        r"""<p>风险面列表</p>
         :rtype: list of Note
         """
         return self._RiskSideItmeList
@@ -11648,7 +11648,7 @@ class DescribeDSPAAssessmentRiskSideListResponse(AbstractModel):
 
     @property
     def RiskSideItemList(self):
-        r"""风险面列表
+        r"""<p>风险面列表</p>
         :rtype: list of Note
         """
         return self._RiskSideItemList
