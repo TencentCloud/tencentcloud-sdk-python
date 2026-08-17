@@ -1737,6 +1737,14 @@ class FileInfo(AbstractModel):
         :type WebUrl: str
         :param _Capabilities: <p>文件能力标识列表</p>
         :type Capabilities: list of str
+        :param _EnableGraphBuild: <p>0:关闭 1:开启图谱构建（入库时构建图谱），默认0</p>
+        :type EnableGraphBuild: int
+        :param _EnableTreeBuild: <p>0:关闭 1:开启树构建（入库时构建树），默认0</p>
+        :type EnableTreeBuild: int
+        :param _GraphBuildStatus: <p>图谱构建状态：null=未启用图谱; 0=待入库; 1=入库中; 2=入库成功; -1=入库失败（仅 EnableGraphBuild=1 时有意义）</p>
+        :type GraphBuildStatus: int
+        :param _TreeBuildStatus: <p>图谱构建状态：null=未启用图谱; 0=待入库; 1=入库中; 2=入库成功; -1=入库失败（仅 EnableGraphBuild=1 时有意义）</p>
+        :type TreeBuildStatus: int
         """
         self._FileName = None
         self._FileSize = None
@@ -1753,6 +1761,10 @@ class FileInfo(AbstractModel):
         self._DocumentSummary = None
         self._WebUrl = None
         self._Capabilities = None
+        self._EnableGraphBuild = None
+        self._EnableTreeBuild = None
+        self._GraphBuildStatus = None
+        self._TreeBuildStatus = None
 
     @property
     def FileName(self):
@@ -1919,6 +1931,50 @@ class FileInfo(AbstractModel):
     def Capabilities(self, Capabilities):
         self._Capabilities = Capabilities
 
+    @property
+    def EnableGraphBuild(self):
+        r"""<p>0:关闭 1:开启图谱构建（入库时构建图谱），默认0</p>
+        :rtype: int
+        """
+        return self._EnableGraphBuild
+
+    @EnableGraphBuild.setter
+    def EnableGraphBuild(self, EnableGraphBuild):
+        self._EnableGraphBuild = EnableGraphBuild
+
+    @property
+    def EnableTreeBuild(self):
+        r"""<p>0:关闭 1:开启树构建（入库时构建树），默认0</p>
+        :rtype: int
+        """
+        return self._EnableTreeBuild
+
+    @EnableTreeBuild.setter
+    def EnableTreeBuild(self, EnableTreeBuild):
+        self._EnableTreeBuild = EnableTreeBuild
+
+    @property
+    def GraphBuildStatus(self):
+        r"""<p>图谱构建状态：null=未启用图谱; 0=待入库; 1=入库中; 2=入库成功; -1=入库失败（仅 EnableGraphBuild=1 时有意义）</p>
+        :rtype: int
+        """
+        return self._GraphBuildStatus
+
+    @GraphBuildStatus.setter
+    def GraphBuildStatus(self, GraphBuildStatus):
+        self._GraphBuildStatus = GraphBuildStatus
+
+    @property
+    def TreeBuildStatus(self):
+        r"""<p>图谱构建状态：null=未启用图谱; 0=待入库; 1=入库中; 2=入库成功; -1=入库失败（仅 EnableGraphBuild=1 时有意义）</p>
+        :rtype: int
+        """
+        return self._TreeBuildStatus
+
+    @TreeBuildStatus.setter
+    def TreeBuildStatus(self, TreeBuildStatus):
+        self._TreeBuildStatus = TreeBuildStatus
+
 
     def _deserialize(self, params):
         self._FileName = params.get("FileName")
@@ -1938,6 +1994,10 @@ class FileInfo(AbstractModel):
         self._DocumentSummary = params.get("DocumentSummary")
         self._WebUrl = params.get("WebUrl")
         self._Capabilities = params.get("Capabilities")
+        self._EnableGraphBuild = params.get("EnableGraphBuild")
+        self._EnableTreeBuild = params.get("EnableTreeBuild")
+        self._GraphBuildStatus = params.get("GraphBuildStatus")
+        self._TreeBuildStatus = params.get("TreeBuildStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2786,6 +2846,10 @@ class KnowledgeTaskConfig(AbstractModel):
         :type EnableImageUnderstanding: int
         :param _EnableExtractDb: <p>是否开启表格结构化提取</p><p>枚举值：</p><ul><li>0： 不开启表格提取</li><li>1： 开启表格提取</li></ul><p>默认值：1</p>
         :type EnableExtractDb: int
+        :param _EnableGraphBuild: <p>0:关闭 1:开启图谱构建（入库时），默认0</p>
+        :type EnableGraphBuild: int
+        :param _EnableTreeBuild: <p>0:关闭 1:开启树构建（入库时），默认0</p>
+        :type EnableTreeBuild: int
         """
         self._ChunkType = None
         self._MaxChunkSize = None
@@ -2797,6 +2861,8 @@ class KnowledgeTaskConfig(AbstractModel):
         self._GenParaSummary = None
         self._EnableImageUnderstanding = None
         self._EnableExtractDb = None
+        self._EnableGraphBuild = None
+        self._EnableTreeBuild = None
 
     @property
     def ChunkType(self):
@@ -2909,6 +2975,28 @@ class KnowledgeTaskConfig(AbstractModel):
     def EnableExtractDb(self, EnableExtractDb):
         self._EnableExtractDb = EnableExtractDb
 
+    @property
+    def EnableGraphBuild(self):
+        r"""<p>0:关闭 1:开启图谱构建（入库时），默认0</p>
+        :rtype: int
+        """
+        return self._EnableGraphBuild
+
+    @EnableGraphBuild.setter
+    def EnableGraphBuild(self, EnableGraphBuild):
+        self._EnableGraphBuild = EnableGraphBuild
+
+    @property
+    def EnableTreeBuild(self):
+        r"""<p>0:关闭 1:开启树构建（入库时），默认0</p>
+        :rtype: int
+        """
+        return self._EnableTreeBuild
+
+    @EnableTreeBuild.setter
+    def EnableTreeBuild(self, EnableTreeBuild):
+        self._EnableTreeBuild = EnableTreeBuild
+
 
     def _deserialize(self, params):
         self._ChunkType = params.get("ChunkType")
@@ -2926,6 +3014,8 @@ class KnowledgeTaskConfig(AbstractModel):
         self._GenParaSummary = params.get("GenParaSummary")
         self._EnableImageUnderstanding = params.get("EnableImageUnderstanding")
         self._EnableExtractDb = params.get("EnableExtractDb")
+        self._EnableGraphBuild = params.get("EnableGraphBuild")
+        self._EnableTreeBuild = params.get("EnableTreeBuild")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4670,20 +4760,24 @@ class SearchConfig(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Type: 检索类型：0:混合搜索 1：向量搜索 2：全文搜索
+        :param _Type: <p>检索类型：0:混合搜索 1：向量搜索 2：全文搜索</p>
         :type Type: int
-        :param _Num: 召回数量最大值
+        :param _Num: <p>召回数量最大值</p>
         :type Num: int
-        :param _EmbeddingWeight: 权重配置
+        :param _EmbeddingWeight: <p>权重配置</p>
         :type EmbeddingWeight: float
-        :param _Rerank: 0:关闭 1:开启，默认1
+        :param _Rerank: <p>0:关闭 1:开启，默认1</p>
         :type Rerank: int
-        :param _AutoRag: 0:关闭 1:开启，默认0
+        :param _AutoRag: <p>0:关闭 1:开启，默认0</p>
         :type AutoRag: int
-        :param _KnowledgeBaseIds: AutoRag关联的知识库ID列表
+        :param _KnowledgeBaseIds: <p>AutoRag关联的知识库ID列表</p>
         :type KnowledgeBaseIds: list of str
-        :param _SearchStatus: AutoRag搜索状态：0-未完成，1-已完成。仅当AutoRag=1时，该字段有效
+        :param _SearchStatus: <p>AutoRag搜索状态：0-未完成，1-已完成。仅当AutoRag=1时，该字段有效</p>
         :type SearchStatus: int
+        :param _EnableGraphSearch: <p>0:关闭 1:开启图谱检索，默认0</p>
+        :type EnableGraphSearch: int
+        :param _EnableTreeSearch: <p>0:关闭 1:开启树检索，默认0</p>
+        :type EnableTreeSearch: int
         """
         self._Type = None
         self._Num = None
@@ -4692,10 +4786,12 @@ class SearchConfig(AbstractModel):
         self._AutoRag = None
         self._KnowledgeBaseIds = None
         self._SearchStatus = None
+        self._EnableGraphSearch = None
+        self._EnableTreeSearch = None
 
     @property
     def Type(self):
-        r"""检索类型：0:混合搜索 1：向量搜索 2：全文搜索
+        r"""<p>检索类型：0:混合搜索 1：向量搜索 2：全文搜索</p>
         :rtype: int
         """
         return self._Type
@@ -4706,7 +4802,7 @@ class SearchConfig(AbstractModel):
 
     @property
     def Num(self):
-        r"""召回数量最大值
+        r"""<p>召回数量最大值</p>
         :rtype: int
         """
         return self._Num
@@ -4717,7 +4813,7 @@ class SearchConfig(AbstractModel):
 
     @property
     def EmbeddingWeight(self):
-        r"""权重配置
+        r"""<p>权重配置</p>
         :rtype: float
         """
         return self._EmbeddingWeight
@@ -4728,7 +4824,7 @@ class SearchConfig(AbstractModel):
 
     @property
     def Rerank(self):
-        r"""0:关闭 1:开启，默认1
+        r"""<p>0:关闭 1:开启，默认1</p>
         :rtype: int
         """
         return self._Rerank
@@ -4739,7 +4835,7 @@ class SearchConfig(AbstractModel):
 
     @property
     def AutoRag(self):
-        r"""0:关闭 1:开启，默认0
+        r"""<p>0:关闭 1:开启，默认0</p>
         :rtype: int
         """
         return self._AutoRag
@@ -4750,7 +4846,7 @@ class SearchConfig(AbstractModel):
 
     @property
     def KnowledgeBaseIds(self):
-        r"""AutoRag关联的知识库ID列表
+        r"""<p>AutoRag关联的知识库ID列表</p>
         :rtype: list of str
         """
         return self._KnowledgeBaseIds
@@ -4761,7 +4857,7 @@ class SearchConfig(AbstractModel):
 
     @property
     def SearchStatus(self):
-        r"""AutoRag搜索状态：0-未完成，1-已完成。仅当AutoRag=1时，该字段有效
+        r"""<p>AutoRag搜索状态：0-未完成，1-已完成。仅当AutoRag=1时，该字段有效</p>
         :rtype: int
         """
         return self._SearchStatus
@@ -4769,6 +4865,28 @@ class SearchConfig(AbstractModel):
     @SearchStatus.setter
     def SearchStatus(self, SearchStatus):
         self._SearchStatus = SearchStatus
+
+    @property
+    def EnableGraphSearch(self):
+        r"""<p>0:关闭 1:开启图谱检索，默认0</p>
+        :rtype: int
+        """
+        return self._EnableGraphSearch
+
+    @EnableGraphSearch.setter
+    def EnableGraphSearch(self, EnableGraphSearch):
+        self._EnableGraphSearch = EnableGraphSearch
+
+    @property
+    def EnableTreeSearch(self):
+        r"""<p>0:关闭 1:开启树检索，默认0</p>
+        :rtype: int
+        """
+        return self._EnableTreeSearch
+
+    @EnableTreeSearch.setter
+    def EnableTreeSearch(self, EnableTreeSearch):
+        self._EnableTreeSearch = EnableTreeSearch
 
 
     def _deserialize(self, params):
@@ -4779,6 +4897,8 @@ class SearchConfig(AbstractModel):
         self._AutoRag = params.get("AutoRag")
         self._KnowledgeBaseIds = params.get("KnowledgeBaseIds")
         self._SearchStatus = params.get("SearchStatus")
+        self._EnableGraphSearch = params.get("EnableGraphSearch")
+        self._EnableTreeSearch = params.get("EnableTreeSearch")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

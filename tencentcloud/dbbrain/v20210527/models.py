@@ -6754,6 +6754,8 @@ class DescribeDBDiagEventsRequest(AbstractModel):
         :type EndTime: str
         :param _Severities: <p>风险等级列表，取值按影响程度从高至低分别为：1 - 致命、2 -严重、3 - 告警、4 - 提示、5 -健康。</p>
         :type Severities: list of int
+        :param _DiagItems: <p>诊断项列表，对于MySQL支持Connectivity,IUDSlow,SlowSql,SlowQueries,WaitRowLock,TrxNotCommit,DDLWaitMDL,IUDWaitMDL,QueryWaitMDL,DeadLock,ReadLock,SqlWaitMDL,FlushWaitLock,HighActiveSession,HighRequest,ManyPrepareStatement,SpaceUsage,MemoryUsage,CpuUsage,DbHealthCheck,LowTableOpenCacheHit,RiskAccount,BigTable,ReplIOError,ReplROResources,ReplSqlError,ReplDelayByDDL,ReplDelayByTrx,ReplDelayByRLock,AutoIncrement,AutoIncrementOverflowV2,BinlogDumpNonGtid,ReplDelay,Switch,BackendInstanceMigration,RoRemove,OutOfStorage,OutOfMemory,CpuUsagePeak,MemoryUsagePeak,SpaceUsagePeak,SqlJoinColumnTypeInconsistent,HighLatencyInTimeWindow</p>
+        :type DiagItems: list of str
         :param _InstanceIds: <p>实例ID列表。可通过 <a href="https://cloud.tencent.com/document/api/1130/57798">DescribeDiagDBInstances</a> 接口获取。<br>查询TDSQL MySQL分布式实例:Instanceld：填写集群ID&amp;Shard实例ID，如：dcdbt-157xxxk&amp;shard-qxxxx</p>
         :type InstanceIds: list of str
         :param _Product: <p>服务产品类型，支持值包括：&quot;mysql&quot; - 云数据库 MySQL，&quot;mongodb&quot;- 云数据库MongoDB, &quot;postgres&quot;-云数据库postgres,云数据库&quot;redis&quot; - 云数据库 Redis，&quot;mariadb&quot;-数据库mariadb，&quot;cynosdb&quot;-数据库 TDSQL-C, &quot;dcdb&quot;-数据库TDSQL MySQL    默认为&quot;mysql&quot;。</p>
@@ -6766,6 +6768,7 @@ class DescribeDBDiagEventsRequest(AbstractModel):
         self._StartTime = None
         self._EndTime = None
         self._Severities = None
+        self._DiagItems = None
         self._InstanceIds = None
         self._Product = None
         self._Offset = None
@@ -6803,6 +6806,17 @@ class DescribeDBDiagEventsRequest(AbstractModel):
     @Severities.setter
     def Severities(self, Severities):
         self._Severities = Severities
+
+    @property
+    def DiagItems(self):
+        r"""<p>诊断项列表，对于MySQL支持Connectivity,IUDSlow,SlowSql,SlowQueries,WaitRowLock,TrxNotCommit,DDLWaitMDL,IUDWaitMDL,QueryWaitMDL,DeadLock,ReadLock,SqlWaitMDL,FlushWaitLock,HighActiveSession,HighRequest,ManyPrepareStatement,SpaceUsage,MemoryUsage,CpuUsage,DbHealthCheck,LowTableOpenCacheHit,RiskAccount,BigTable,ReplIOError,ReplROResources,ReplSqlError,ReplDelayByDDL,ReplDelayByTrx,ReplDelayByRLock,AutoIncrement,AutoIncrementOverflowV2,BinlogDumpNonGtid,ReplDelay,Switch,BackendInstanceMigration,RoRemove,OutOfStorage,OutOfMemory,CpuUsagePeak,MemoryUsagePeak,SpaceUsagePeak,SqlJoinColumnTypeInconsistent,HighLatencyInTimeWindow</p>
+        :rtype: list of str
+        """
+        return self._DiagItems
+
+    @DiagItems.setter
+    def DiagItems(self, DiagItems):
+        self._DiagItems = DiagItems
 
     @property
     def InstanceIds(self):
@@ -6853,6 +6867,7 @@ class DescribeDBDiagEventsRequest(AbstractModel):
         self._StartTime = params.get("StartTime")
         self._EndTime = params.get("EndTime")
         self._Severities = params.get("Severities")
+        self._DiagItems = params.get("DiagItems")
         self._InstanceIds = params.get("InstanceIds")
         self._Product = params.get("Product")
         self._Offset = params.get("Offset")

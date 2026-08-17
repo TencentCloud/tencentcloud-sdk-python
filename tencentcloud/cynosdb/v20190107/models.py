@@ -13674,7 +13674,7 @@ class CynosdbClusterDetail(AbstractModel):
         :type ClusterName: str
         :param _Region: <p>地域</p>
         :type Region: str
-        :param _Zone: <p>可用区</p>
+        :param _Zone: <p>集群主可用区</p>
         :type Zone: str
         :param _PhysicalZone: <p>物理可用区</p>
         :type PhysicalZone: str
@@ -13734,7 +13734,7 @@ class CynosdbClusterDetail(AbstractModel):
         :type IsFreeze: str
         :param _Tasks: <p>任务列表</p>
         :type Tasks: list of ObjectTask
-        :param _MasterZone: <p>主可用区</p>
+        :param _MasterZone: <p>读写实例当前所在可用区</p>
         :type MasterZone: str
         :param _SlaveZones: <p>从可用区列表</p>
         :type SlaveZones: list of str
@@ -13784,6 +13784,8 @@ class CynosdbClusterDetail(AbstractModel):
         :type ClusterLevel: str
         :param _IsOpenTDE: <p>是否开启透明加密</p>
         :type IsOpenTDE: bool
+        :param _RealZone: <p>实例当前所在可用区</p>
+        :type RealZone: str
         """
         self._ClusterId = None
         self._ClusterName = None
@@ -13843,6 +13845,7 @@ class CynosdbClusterDetail(AbstractModel):
         self._ArchiveProgress = None
         self._ClusterLevel = None
         self._IsOpenTDE = None
+        self._RealZone = None
 
     @property
     def ClusterId(self):
@@ -13879,7 +13882,7 @@ class CynosdbClusterDetail(AbstractModel):
 
     @property
     def Zone(self):
-        r"""<p>可用区</p>
+        r"""<p>集群主可用区</p>
         :rtype: str
         """
         return self._Zone
@@ -14209,7 +14212,7 @@ class CynosdbClusterDetail(AbstractModel):
 
     @property
     def MasterZone(self):
-        r"""<p>主可用区</p>
+        r"""<p>读写实例当前所在可用区</p>
         :rtype: str
         """
         return self._MasterZone
@@ -14482,6 +14485,17 @@ class CynosdbClusterDetail(AbstractModel):
     def IsOpenTDE(self, IsOpenTDE):
         self._IsOpenTDE = IsOpenTDE
 
+    @property
+    def RealZone(self):
+        r"""<p>实例当前所在可用区</p>
+        :rtype: str
+        """
+        return self._RealZone
+
+    @RealZone.setter
+    def RealZone(self, RealZone):
+        self._RealZone = RealZone
+
 
     def _deserialize(self, params):
         self._ClusterId = params.get("ClusterId")
@@ -14574,6 +14588,7 @@ class CynosdbClusterDetail(AbstractModel):
         self._ArchiveProgress = params.get("ArchiveProgress")
         self._ClusterLevel = params.get("ClusterLevel")
         self._IsOpenTDE = params.get("IsOpenTDE")
+        self._RealZone = params.get("RealZone")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -14673,7 +14688,7 @@ class CynosdbInstance(AbstractModel):
         :type ProjectId: int
         :param _Region: <p>地域</p>
         :type Region: str
-        :param _Zone: <p>可用区</p>
+        :param _Zone: <p>集群主可用区</p>
         :type Zone: str
         :param _Status: <p>实例状态</p>
         :type Status: str
@@ -14754,7 +14769,7 @@ class CynosdbInstance(AbstractModel):
         :param _ResourceTags: <p>资源标签</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ResourceTags: list of Tag
-        :param _MasterZone: <p>主可用区</p>
+        :param _MasterZone: <p>读写实例当前所在可用区</p>
         :type MasterZone: str
         :param _SlaveZones: <p>备可用区</p>
 注意：此字段可能返回 null，表示取不到有效值。
@@ -14778,6 +14793,8 @@ class CynosdbInstance(AbstractModel):
         :type NodeList: list of str
         :param _GdnId: <p>全球数据库唯一标识</p>
         :type GdnId: str
+        :param _RealZone: <p>实例当前所在可用区</p>
+        :type RealZone: str
         """
         self._Uin = None
         self._AppId = None
@@ -14838,6 +14855,7 @@ class CynosdbInstance(AbstractModel):
         self._CynosVersionTag = None
         self._NodeList = None
         self._GdnId = None
+        self._RealZone = None
 
     @property
     def Uin(self):
@@ -14929,7 +14947,7 @@ class CynosdbInstance(AbstractModel):
 
     @property
     def Zone(self):
-        r"""<p>可用区</p>
+        r"""<p>集群主可用区</p>
         :rtype: str
         """
         return self._Zone
@@ -15370,7 +15388,7 @@ class CynosdbInstance(AbstractModel):
 
     @property
     def MasterZone(self):
-        r"""<p>主可用区</p>
+        r"""<p>读写实例当前所在可用区</p>
         :rtype: str
         """
         return self._MasterZone
@@ -15491,6 +15509,17 @@ class CynosdbInstance(AbstractModel):
     def GdnId(self, GdnId):
         self._GdnId = GdnId
 
+    @property
+    def RealZone(self):
+        r"""<p>实例当前所在可用区</p>
+        :rtype: str
+        """
+        return self._RealZone
+
+    @RealZone.setter
+    def RealZone(self, RealZone):
+        self._RealZone = RealZone
+
 
     def _deserialize(self, params):
         self._Uin = params.get("Uin")
@@ -15574,6 +15603,7 @@ class CynosdbInstance(AbstractModel):
         self._CynosVersionTag = params.get("CynosVersionTag")
         self._NodeList = params.get("NodeList")
         self._GdnId = params.get("GdnId")
+        self._RealZone = params.get("RealZone")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -22735,14 +22765,14 @@ class DescribeClusterDetailRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ClusterId: 集群Id
+        :param _ClusterId: <p>集群Id</p>
         :type ClusterId: str
         """
         self._ClusterId = None
 
     @property
     def ClusterId(self):
-        r"""集群Id
+        r"""<p>集群Id</p>
         :rtype: str
         """
         return self._ClusterId
@@ -22771,7 +22801,7 @@ class DescribeClusterDetailResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Detail: 集群详细信息
+        :param _Detail: <p>集群详细信息</p>
         :type Detail: :class:`tencentcloud.cynosdb.v20190107.models.CynosdbClusterDetail`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -22781,7 +22811,7 @@ class DescribeClusterDetailResponse(AbstractModel):
 
     @property
     def Detail(self):
-        r"""集群详细信息
+        r"""<p>集群详细信息</p>
         :rtype: :class:`tencentcloud.cynosdb.v20190107.models.CynosdbClusterDetail`
         """
         return self._Detail

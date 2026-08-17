@@ -107,14 +107,14 @@ class AssetsInfo(AbstractModel):
         :type AssetGroupId: int
         :param _IsNewCloudAudit: <p>是否是新云原生审计流程</p>
         :type IsNewCloudAudit: bool
-        :param _AuditCapability: <p>审计功能支持说明</p>
-        :type AuditCapability: list of AuditCapability
         :param _TrafficMirrorOn: <p>1</p><p>取值范围：[0, 1]</p>
         :type TrafficMirrorOn: int
         :param _AuditScope: <p>流量镜像审计范围</p><p>枚举值：</p><ul><li>ALL： 全地域</li><li>REGION： 资产所在地域</li><li>VPC： 资产所在VPC</li></ul><p>默认值：REGION</p>
         :type AuditScope: str
         :param _InstanceGroupId: <p>实例集群ID</p>
         :type InstanceGroupId: str
+        :param _AssetGroups: <p>该资产所在的资产组</p>
+        :type AssetGroups: list of IdWithName
         """
         self._AddTime = None
         self._Aid = None
@@ -157,10 +157,10 @@ class AssetsInfo(AbstractModel):
         self._GroupName = None
         self._AssetGroupId = None
         self._IsNewCloudAudit = None
-        self._AuditCapability = None
         self._TrafficMirrorOn = None
         self._AuditScope = None
         self._InstanceGroupId = None
+        self._AssetGroups = None
 
     @property
     def AddTime(self):
@@ -614,17 +614,6 @@ class AssetsInfo(AbstractModel):
         self._IsNewCloudAudit = IsNewCloudAudit
 
     @property
-    def AuditCapability(self):
-        r"""<p>审计功能支持说明</p>
-        :rtype: list of AuditCapability
-        """
-        return self._AuditCapability
-
-    @AuditCapability.setter
-    def AuditCapability(self, AuditCapability):
-        self._AuditCapability = AuditCapability
-
-    @property
     def TrafficMirrorOn(self):
         r"""<p>1</p><p>取值范围：[0, 1]</p>
         :rtype: int
@@ -656,6 +645,17 @@ class AssetsInfo(AbstractModel):
     @InstanceGroupId.setter
     def InstanceGroupId(self, InstanceGroupId):
         self._InstanceGroupId = InstanceGroupId
+
+    @property
+    def AssetGroups(self):
+        r"""<p>该资产所在的资产组</p>
+        :rtype: list of IdWithName
+        """
+        return self._AssetGroups
+
+    @AssetGroups.setter
+    def AssetGroups(self, AssetGroups):
+        self._AssetGroups = AssetGroups
 
 
     def _deserialize(self, params):
@@ -712,15 +712,15 @@ class AssetsInfo(AbstractModel):
         self._GroupName = params.get("GroupName")
         self._AssetGroupId = params.get("AssetGroupId")
         self._IsNewCloudAudit = params.get("IsNewCloudAudit")
-        if params.get("AuditCapability") is not None:
-            self._AuditCapability = []
-            for item in params.get("AuditCapability"):
-                obj = AuditCapability()
-                obj._deserialize(item)
-                self._AuditCapability.append(obj)
         self._TrafficMirrorOn = params.get("TrafficMirrorOn")
         self._AuditScope = params.get("AuditScope")
         self._InstanceGroupId = params.get("InstanceGroupId")
+        if params.get("AssetGroups") is not None:
+            self._AssetGroups = []
+            for item in params.get("AssetGroups"):
+                obj = IdWithName()
+                obj._deserialize(item)
+                self._AssetGroups.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -729,12 +729,6 @@ class AssetsInfo(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
-
-
-class AuditCapability(AbstractModel):
-    r"""资产支持的审计能力
-
-    """
 
 
 class CdsAuditInstance(AbstractModel):
@@ -1005,14 +999,14 @@ class CreateReportPdfRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Id: 报表 Id
+        :param _Id: <p>报表 Id</p>
         :type Id: int
         """
         self._Id = None
 
     @property
     def Id(self):
-        r"""报表 Id
+        r"""<p>报表 Id</p>
         :rtype: int
         """
         return self._Id
@@ -1041,7 +1035,7 @@ class CreateReportPdfResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Url: 下载地址
+        :param _Url: <p>下载地址</p>
         :type Url: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1051,7 +1045,7 @@ class CreateReportPdfResponse(AbstractModel):
 
     @property
     def Url(self):
-        r"""下载地址
+        r"""<p>下载地址</p>
         :rtype: str
         """
         return self._Url
@@ -2973,52 +2967,36 @@ class ReportMission(AbstractModel):
         :param _Id: 报表任务id
         :type Id: int
         :param _TplName: 任务名称
-注意：此字段可能返回 null，表示取不到有效值。
         :type TplName: str
         :param _ReportType: 报表类型 1:单次报表 2:周期报表
-注意：此字段可能返回 null，表示取不到有效值。
         :type ReportType: int
         :param _Remark: 报告说明
-注意：此字段可能返回 null，表示取不到有效值。
         :type Remark: str
         :param _TemplateId: 报表模板 1:综合分析报告 2:等保合规报告
-注意：此字段可能返回 null，表示取不到有效值。
         :type TemplateId: int
         :param _AssetsList: 包含资产
-注意：此字段可能返回 null，表示取不到有效值。
         :type AssetsList: list of AssetsInfo
         :param _NextStartTime: 下次启动时间
-注意：此字段可能返回 null，表示取不到有效值。
         :type NextStartTime: int
         :param _MissionStatus: 任务状态 1:生成中 2:待生成3:已生成4:生成失败5:已暂停
-注意：此字段可能返回 null，表示取不到有效值。
         :type MissionStatus: int
         :param _MissionStatusMessage: 任务状态说明 仅生成中和生成失败有效
-注意：此字段可能返回 null，表示取不到有效值。
         :type MissionStatusMessage: str
         :param _ReportCount: 已生成报表数
-注意：此字段可能返回 null，表示取不到有效值。
         :type ReportCount: int
         :param _MissionStart: 任务起停 1:关闭 2:开启 仅周期报表有效
-注意：此字段可能返回 null，表示取不到有效值。
         :type MissionStart: int
         :param _CntDay: 统计周期 1:24小时 7:近一周 30:近30天 90:近90天 180:
-注意：此字段可能返回 null，表示取不到有效值。
         :type CntDay: int
         :param _CntCycle: 重复周期 1:每天 2:每周 3:每月
-注意：此字段可能返回 null，表示取不到有效值。
         :type CntCycle: int
         :param _CntTime: 执行日期 重复周期为天：无意义 周：星期几 1-7  月每月
-注意：此字段可能返回 null，表示取不到有效值。
         :type CntTime: int
         :param _CntDate: 执行时间 格式15:04 到分钟
-注意：此字段可能返回 null，表示取不到有效值。
         :type CntDate: str
         :param _Receivers: 创建者 0:内置 其余存放用户(uin)
-注意：此字段可能返回 null，表示取不到有效值。
         :type Receivers: str
         :param _Notification: Notification  int  1关闭 2开启 不变更为0
-注意：此字段可能返回 null，表示取不到有效值。
         :type Notification: int
         """
         self._Id = None
@@ -3053,7 +3031,6 @@ class ReportMission(AbstractModel):
     @property
     def TplName(self):
         r"""任务名称
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._TplName
@@ -3065,7 +3042,6 @@ class ReportMission(AbstractModel):
     @property
     def ReportType(self):
         r"""报表类型 1:单次报表 2:周期报表
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ReportType
@@ -3077,7 +3053,6 @@ class ReportMission(AbstractModel):
     @property
     def Remark(self):
         r"""报告说明
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Remark
@@ -3089,7 +3064,6 @@ class ReportMission(AbstractModel):
     @property
     def TemplateId(self):
         r"""报表模板 1:综合分析报告 2:等保合规报告
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TemplateId
@@ -3101,7 +3075,6 @@ class ReportMission(AbstractModel):
     @property
     def AssetsList(self):
         r"""包含资产
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of AssetsInfo
         """
         return self._AssetsList
@@ -3113,7 +3086,6 @@ class ReportMission(AbstractModel):
     @property
     def NextStartTime(self):
         r"""下次启动时间
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._NextStartTime
@@ -3125,7 +3097,6 @@ class ReportMission(AbstractModel):
     @property
     def MissionStatus(self):
         r"""任务状态 1:生成中 2:待生成3:已生成4:生成失败5:已暂停
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._MissionStatus
@@ -3137,7 +3108,6 @@ class ReportMission(AbstractModel):
     @property
     def MissionStatusMessage(self):
         r"""任务状态说明 仅生成中和生成失败有效
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._MissionStatusMessage
@@ -3149,7 +3119,6 @@ class ReportMission(AbstractModel):
     @property
     def ReportCount(self):
         r"""已生成报表数
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._ReportCount
@@ -3161,7 +3130,6 @@ class ReportMission(AbstractModel):
     @property
     def MissionStart(self):
         r"""任务起停 1:关闭 2:开启 仅周期报表有效
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._MissionStart
@@ -3173,7 +3141,6 @@ class ReportMission(AbstractModel):
     @property
     def CntDay(self):
         r"""统计周期 1:24小时 7:近一周 30:近30天 90:近90天 180:
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._CntDay
@@ -3185,7 +3152,6 @@ class ReportMission(AbstractModel):
     @property
     def CntCycle(self):
         r"""重复周期 1:每天 2:每周 3:每月
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._CntCycle
@@ -3197,7 +3163,6 @@ class ReportMission(AbstractModel):
     @property
     def CntTime(self):
         r"""执行日期 重复周期为天：无意义 周：星期几 1-7  月每月
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._CntTime
@@ -3209,7 +3174,6 @@ class ReportMission(AbstractModel):
     @property
     def CntDate(self):
         r"""执行时间 格式15:04 到分钟
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._CntDate
@@ -3221,7 +3185,6 @@ class ReportMission(AbstractModel):
     @property
     def Receivers(self):
         r"""创建者 0:内置 其余存放用户(uin)
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._Receivers
@@ -3233,7 +3196,6 @@ class ReportMission(AbstractModel):
     @property
     def Notification(self):
         r"""Notification  int  1关闭 2开启 不变更为0
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Notification
@@ -3314,13 +3276,10 @@ class Reports(AbstractModel):
         :param _Title: 报告名称
         :type Title: str
         :param _TemplateId: 报表模板
-注意：此字段可能返回 null，表示取不到有效值。
         :type TemplateId: int
         :param _AssetsList: 包含资产
-注意：此字段可能返回 null，表示取不到有效值。
         :type AssetsList: list of AssetsInfo
         :param _CntDay: 时间范围 1:24小时 7:近一周 30:近30天 90:近90天 180:近180天 不变更为0
-注意：此字段可能返回 null，表示取不到有效值。
         :type CntDay: int
         """
         self._AddTime = None
@@ -3510,7 +3469,6 @@ class Reports(AbstractModel):
     @property
     def TemplateId(self):
         r"""报表模板
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._TemplateId
@@ -3522,7 +3480,6 @@ class Reports(AbstractModel):
     @property
     def AssetsList(self):
         r"""包含资产
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of AssetsInfo
         """
         return self._AssetsList
@@ -3534,7 +3491,6 @@ class Reports(AbstractModel):
     @property
     def CntDay(self):
         r"""时间范围 1:24小时 7:近一周 30:近30天 90:近90天 180:近180天 不变更为0
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._CntDay

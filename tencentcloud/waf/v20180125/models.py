@@ -11960,6 +11960,8 @@ class ClbObject(AbstractModel):
         :type BotStatus: int
         :param _ApiStatus: <p>api防护开关</p>
         :type ApiStatus: int
+        :param _LLMStatus: <p>LLMWAF开关</p>
+        :type LLMStatus: int
         :param _ObjectFlowMode: <p>对象接入模式，0表示镜像模式，1表示清洗模式，2表示体检模式，默认为清洗模式</p>
         :type ObjectFlowMode: int
         :param _NumericalVpcId: <p>数值形式的私有网络 ID</p>
@@ -12004,6 +12006,7 @@ class ClbObject(AbstractModel):
         self._IpHeaders = None
         self._BotStatus = None
         self._ApiStatus = None
+        self._LLMStatus = None
         self._ObjectFlowMode = None
         self._NumericalVpcId = None
         self._ModifyTime = None
@@ -12248,6 +12251,17 @@ class ClbObject(AbstractModel):
         self._ApiStatus = ApiStatus
 
     @property
+    def LLMStatus(self):
+        r"""<p>LLMWAF开关</p>
+        :rtype: int
+        """
+        return self._LLMStatus
+
+    @LLMStatus.setter
+    def LLMStatus(self, LLMStatus):
+        self._LLMStatus = LLMStatus
+
+    @property
     def ObjectFlowMode(self):
         r"""<p>对象接入模式，0表示镜像模式，1表示清洗模式，2表示体检模式，默认为清洗模式</p>
         :rtype: int
@@ -12391,6 +12405,7 @@ class ClbObject(AbstractModel):
         self._IpHeaders = params.get("IpHeaders")
         self._BotStatus = params.get("BotStatus")
         self._ApiStatus = params.get("ApiStatus")
+        self._LLMStatus = params.get("LLMStatus")
         self._ObjectFlowMode = params.get("ObjectFlowMode")
         self._NumericalVpcId = params.get("NumericalVpcId")
         self._ModifyTime = params.get("ModifyTime")

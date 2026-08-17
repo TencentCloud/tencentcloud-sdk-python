@@ -18,6 +18,117 @@ import warnings
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class AccessPointInfo(AbstractModel):
+    r"""接入点信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Vendor: <p>接入点运营商。</p>
+        :type Vendor: str
+        :param _PublicAddr: <p>接入点地址。</p>
+        :type PublicAddr: str
+        :param _Region: <p>接入点地域。</p>
+        :type Region: str
+        :param _BigArea: <p>接入点大区。</p>
+        :type BigArea: str
+        :param _Available: <p>接入点是否可用。</p><p>枚举值：</p><ul><li>true： 接入点可用</li><li>false： 接入点不可用</li></ul>
+        :type Available: bool
+        :param _GwGroupId: <p>集群ID</p>
+        :type GwGroupId: str
+        """
+        self._Vendor = None
+        self._PublicAddr = None
+        self._Region = None
+        self._BigArea = None
+        self._Available = None
+        self._GwGroupId = None
+
+    @property
+    def Vendor(self):
+        r"""<p>接入点运营商。</p>
+        :rtype: str
+        """
+        return self._Vendor
+
+    @Vendor.setter
+    def Vendor(self, Vendor):
+        self._Vendor = Vendor
+
+    @property
+    def PublicAddr(self):
+        r"""<p>接入点地址。</p>
+        :rtype: str
+        """
+        return self._PublicAddr
+
+    @PublicAddr.setter
+    def PublicAddr(self, PublicAddr):
+        self._PublicAddr = PublicAddr
+
+    @property
+    def Region(self):
+        r"""<p>接入点地域。</p>
+        :rtype: str
+        """
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def BigArea(self):
+        r"""<p>接入点大区。</p>
+        :rtype: str
+        """
+        return self._BigArea
+
+    @BigArea.setter
+    def BigArea(self, BigArea):
+        self._BigArea = BigArea
+
+    @property
+    def Available(self):
+        r"""<p>接入点是否可用。</p><p>枚举值：</p><ul><li>true： 接入点可用</li><li>false： 接入点不可用</li></ul>
+        :rtype: bool
+        """
+        return self._Available
+
+    @Available.setter
+    def Available(self, Available):
+        self._Available = Available
+
+    @property
+    def GwGroupId(self):
+        r"""<p>集群ID</p>
+        :rtype: str
+        """
+        return self._GwGroupId
+
+    @GwGroupId.setter
+    def GwGroupId(self, GwGroupId):
+        self._GwGroupId = GwGroupId
+
+
+    def _deserialize(self, params):
+        self._Vendor = params.get("Vendor")
+        self._PublicAddr = params.get("PublicAddr")
+        self._Region = params.get("Region")
+        self._BigArea = params.get("BigArea")
+        self._Available = params.get("Available")
+        self._GwGroupId = params.get("GwGroupId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ActivateHardware(AbstractModel):
     r"""激活设备
 
@@ -508,6 +619,115 @@ class AddApplicationResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class AddCustomerGatewayClusterRequest(AbstractModel):
+    r"""AddCustomerGatewayCluster请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterName: <p>集群名称。最大 64 字符，支持字母、数字、中划线、下划线、点及中文。</p>
+        :type ClusterName: str
+        :param _BigArea: <p>部署大区标识。最大 32 字符。例如 CN 表示中国大陆。</p>
+        :type BigArea: str
+        :param _RegionId: <p>地域标识。最大 32 字符。例如 ap-guangzhou。</p>
+        :type RegionId: str
+        """
+        self._ClusterName = None
+        self._BigArea = None
+        self._RegionId = None
+
+    @property
+    def ClusterName(self):
+        r"""<p>集群名称。最大 64 字符，支持字母、数字、中划线、下划线、点及中文。</p>
+        :rtype: str
+        """
+        return self._ClusterName
+
+    @ClusterName.setter
+    def ClusterName(self, ClusterName):
+        self._ClusterName = ClusterName
+
+    @property
+    def BigArea(self):
+        r"""<p>部署大区标识。最大 32 字符。例如 CN 表示中国大陆。</p>
+        :rtype: str
+        """
+        return self._BigArea
+
+    @BigArea.setter
+    def BigArea(self, BigArea):
+        self._BigArea = BigArea
+
+    @property
+    def RegionId(self):
+        r"""<p>地域标识。最大 32 字符。例如 ap-guangzhou。</p>
+        :rtype: str
+        """
+        return self._RegionId
+
+    @RegionId.setter
+    def RegionId(self, RegionId):
+        self._RegionId = RegionId
+
+
+    def _deserialize(self, params):
+        self._ClusterName = params.get("ClusterName")
+        self._BigArea = params.get("BigArea")
+        self._RegionId = params.get("RegionId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AddCustomerGatewayClusterResponse(AbstractModel):
+    r"""AddCustomerGatewayCluster返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: <p>集群 ID。</p>
+        :type ClusterId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ClusterId = None
+        self._RequestId = None
+
+    @property
+    def ClusterId(self):
+        r"""<p>集群 ID。</p>
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        self._RequestId = params.get("RequestId")
+
+
 class AddDeviceRequest(AbstractModel):
     r"""AddDevice请求参数结构体
 
@@ -752,6 +972,190 @@ class AddDeviceResponse(AbstractModel):
         self._DataKey = params.get("DataKey")
         self._DeviceId = params.get("DeviceId")
         self._Signature = params.get("Signature")
+        self._RequestId = params.get("RequestId")
+
+
+class AddGatewayRequest(AbstractModel):
+    r"""AddGateway请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: <p>集群 ID。可通过 GetCustomerGatewayClusterList 接口获取。</p>
+        :type ClusterId: str
+        :param _Username: <p>网关登录用户名。最大 64 字符。</p>
+        :type Username: str
+        :param _Password: <p>网关登录密码。最大 128 字符。</p>
+        :type Password: str
+        :param _GatewayIp: <p>网关内网IP。</p>
+        :type GatewayIp: str
+        :param _RegionId: <p>地域标识。最大 32 字符。例如 ap-guangzhou。可通过 DescribeAccessPointList 接口获取。</p>
+        :type RegionId: str
+        """
+        self._ClusterId = None
+        self._Username = None
+        self._Password = None
+        self._GatewayIp = None
+        self._RegionId = None
+
+    @property
+    def ClusterId(self):
+        r"""<p>集群 ID。可通过 GetCustomerGatewayClusterList 接口获取。</p>
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def Username(self):
+        r"""<p>网关登录用户名。最大 64 字符。</p>
+        :rtype: str
+        """
+        return self._Username
+
+    @Username.setter
+    def Username(self, Username):
+        self._Username = Username
+
+    @property
+    def Password(self):
+        r"""<p>网关登录密码。最大 128 字符。</p>
+        :rtype: str
+        """
+        return self._Password
+
+    @Password.setter
+    def Password(self, Password):
+        self._Password = Password
+
+    @property
+    def GatewayIp(self):
+        r"""<p>网关内网IP。</p>
+        :rtype: str
+        """
+        return self._GatewayIp
+
+    @GatewayIp.setter
+    def GatewayIp(self, GatewayIp):
+        self._GatewayIp = GatewayIp
+
+    @property
+    def RegionId(self):
+        r"""<p>地域标识。最大 32 字符。例如 ap-guangzhou。可通过 DescribeAccessPointList 接口获取。</p>
+        :rtype: str
+        """
+        return self._RegionId
+
+    @RegionId.setter
+    def RegionId(self, RegionId):
+        self._RegionId = RegionId
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        self._Username = params.get("Username")
+        self._Password = params.get("Password")
+        self._GatewayIp = params.get("GatewayIp")
+        self._RegionId = params.get("RegionId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AddGatewayResponse(AbstractModel):
+    r"""AddGateway返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GatewayId: <p>网关ID。</p>
+        :type GatewayId: str
+        :param _Token: <p>网关鉴权 Token。</p>
+        :type Token: str
+        :param _RegisterCenterUrl: <p>网关注册地址。</p>
+        :type RegisterCenterUrl: str
+        :param _TelemetryUrl: <p>网关上报地址。</p>
+        :type TelemetryUrl: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._GatewayId = None
+        self._Token = None
+        self._RegisterCenterUrl = None
+        self._TelemetryUrl = None
+        self._RequestId = None
+
+    @property
+    def GatewayId(self):
+        r"""<p>网关ID。</p>
+        :rtype: str
+        """
+        return self._GatewayId
+
+    @GatewayId.setter
+    def GatewayId(self, GatewayId):
+        self._GatewayId = GatewayId
+
+    @property
+    def Token(self):
+        r"""<p>网关鉴权 Token。</p>
+        :rtype: str
+        """
+        return self._Token
+
+    @Token.setter
+    def Token(self, Token):
+        self._Token = Token
+
+    @property
+    def RegisterCenterUrl(self):
+        r"""<p>网关注册地址。</p>
+        :rtype: str
+        """
+        return self._RegisterCenterUrl
+
+    @RegisterCenterUrl.setter
+    def RegisterCenterUrl(self, RegisterCenterUrl):
+        self._RegisterCenterUrl = RegisterCenterUrl
+
+    @property
+    def TelemetryUrl(self):
+        r"""<p>网关上报地址。</p>
+        :rtype: str
+        """
+        return self._TelemetryUrl
+
+    @TelemetryUrl.setter
+    def TelemetryUrl(self, TelemetryUrl):
+        self._TelemetryUrl = TelemetryUrl
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._GatewayId = params.get("GatewayId")
+        self._Token = params.get("Token")
+        self._RegisterCenterUrl = params.get("RegisterCenterUrl")
+        self._TelemetryUrl = params.get("TelemetryUrl")
         self._RequestId = params.get("RequestId")
 
 
@@ -1231,6 +1635,70 @@ class DeleteApplicationResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DeleteCustomerGatewayClusterRequest(AbstractModel):
+    r"""DeleteCustomerGatewayCluster请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: <p>集群 ID。可通过 GetCustomerGatewayClusterList 接口获取。</p>
+        :type ClusterId: str
+        """
+        self._ClusterId = None
+
+    @property
+    def ClusterId(self):
+        r"""<p>集群 ID。可通过 GetCustomerGatewayClusterList 接口获取。</p>
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteCustomerGatewayClusterResponse(AbstractModel):
+    r"""DeleteCustomerGatewayCluster返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class DeleteDeviceRequest(AbstractModel):
     r"""DeleteDevice请求参数结构体
 
@@ -1269,6 +1737,100 @@ class DeleteDeviceRequest(AbstractModel):
 
 class DeleteDeviceResponse(AbstractModel):
     r"""DeleteDevice返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteGatewayRequest(AbstractModel):
+    r"""DeleteGateway请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: <p>集群 ID。可通过 GetCustomerGatewayClusterList 接口获取。</p>
+        :type ClusterId: str
+        :param _GatewayId: <p>网关ID。</p>
+        :type GatewayId: str
+        :param _GatewayIp: <p>网关内网IP。</p>
+        :type GatewayIp: str
+        """
+        self._ClusterId = None
+        self._GatewayId = None
+        self._GatewayIp = None
+
+    @property
+    def ClusterId(self):
+        r"""<p>集群 ID。可通过 GetCustomerGatewayClusterList 接口获取。</p>
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def GatewayId(self):
+        r"""<p>网关ID。</p>
+        :rtype: str
+        """
+        return self._GatewayId
+
+    @GatewayId.setter
+    def GatewayId(self, GatewayId):
+        self._GatewayId = GatewayId
+
+    @property
+    def GatewayIp(self):
+        r"""<p>网关内网IP。</p>
+        :rtype: str
+        """
+        return self._GatewayIp
+
+    @GatewayIp.setter
+    def GatewayIp(self, GatewayIp):
+        self._GatewayIp = GatewayIp
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        self._GatewayId = params.get("GatewayId")
+        self._GatewayIp = params.get("GatewayIp")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteGatewayResponse(AbstractModel):
+    r"""DeleteGateway返回参数结构体
 
     """
 
@@ -1420,6 +1982,90 @@ class DeleteL3ConnResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeAccessPointListRequest(AbstractModel):
+    r"""DescribeAccessPointList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Regions: <p>地域列表</p>
+        :type Regions: list of str
+        """
+        self._Regions = None
+
+    @property
+    def Regions(self):
+        r"""<p>地域列表</p>
+        :rtype: list of str
+        """
+        return self._Regions
+
+    @Regions.setter
+    def Regions(self, Regions):
+        self._Regions = Regions
+
+
+    def _deserialize(self, params):
+        self._Regions = params.get("Regions")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAccessPointListResponse(AbstractModel):
+    r"""DescribeAccessPointList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AccessPointList: <p>接入点列表</p>
+        :type AccessPointList: list of AccessPointInfo
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._AccessPointList = None
+        self._RequestId = None
+
+    @property
+    def AccessPointList(self):
+        r"""<p>接入点列表</p>
+        :rtype: list of AccessPointInfo
+        """
+        return self._AccessPointList
+
+    @AccessPointList.setter
+    def AccessPointList(self, AccessPointList):
+        self._AccessPointList = AccessPointList
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("AccessPointList") is not None:
+            self._AccessPointList = []
+            for item in params.get("AccessPointList"):
+                obj = AccessPointInfo()
+                obj._deserialize(item)
+                self._AccessPointList.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -2746,6 +3392,122 @@ DEVICE_5_FLOW_500G，分别代表20G、50G、100G、500G档位的流量包。
         
 
 
+class GatewayClusterInfo(AbstractModel):
+    r"""客户自有网关集群信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: <p>集群 ID。</p>
+        :type ClusterId: str
+        :param _ClusterName: <p>集群名称。</p>
+        :type ClusterName: str
+        :param _CreateTime: <p>创建时间。</p>
+        :type CreateTime: int
+        :param _PublicIp: <p>公网访问 IP。</p>
+        :type PublicIp: str
+        :param _InstanceCount: <p>集群下网关实例数量。</p>
+        :type InstanceCount: int
+        :param _GatewayList: <p>网关列表。</p>
+        :type GatewayList: list of GatewayInfo
+        """
+        self._ClusterId = None
+        self._ClusterName = None
+        self._CreateTime = None
+        self._PublicIp = None
+        self._InstanceCount = None
+        self._GatewayList = None
+
+    @property
+    def ClusterId(self):
+        r"""<p>集群 ID。</p>
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def ClusterName(self):
+        r"""<p>集群名称。</p>
+        :rtype: str
+        """
+        return self._ClusterName
+
+    @ClusterName.setter
+    def ClusterName(self, ClusterName):
+        self._ClusterName = ClusterName
+
+    @property
+    def CreateTime(self):
+        r"""<p>创建时间。</p>
+        :rtype: int
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def PublicIp(self):
+        r"""<p>公网访问 IP。</p>
+        :rtype: str
+        """
+        return self._PublicIp
+
+    @PublicIp.setter
+    def PublicIp(self, PublicIp):
+        self._PublicIp = PublicIp
+
+    @property
+    def InstanceCount(self):
+        r"""<p>集群下网关实例数量。</p>
+        :rtype: int
+        """
+        return self._InstanceCount
+
+    @InstanceCount.setter
+    def InstanceCount(self, InstanceCount):
+        self._InstanceCount = InstanceCount
+
+    @property
+    def GatewayList(self):
+        r"""<p>网关列表。</p>
+        :rtype: list of GatewayInfo
+        """
+        return self._GatewayList
+
+    @GatewayList.setter
+    def GatewayList(self, GatewayList):
+        self._GatewayList = GatewayList
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        self._ClusterName = params.get("ClusterName")
+        self._CreateTime = params.get("CreateTime")
+        self._PublicIp = params.get("PublicIp")
+        self._InstanceCount = params.get("InstanceCount")
+        if params.get("GatewayList") is not None:
+            self._GatewayList = []
+            for item in params.get("GatewayList"):
+                obj = GatewayInfo()
+                obj._deserialize(item)
+                self._GatewayList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class GatewayInfo(AbstractModel):
     r"""网关信息
 
@@ -3287,6 +4049,135 @@ class GetApplicationResponse(AbstractModel):
         self._MpApplicationName = params.get("MpApplicationName")
         self._Remark = params.get("Remark")
         self._AccessScope = params.get("AccessScope")
+        self._RequestId = params.get("RequestId")
+
+
+class GetCustomerGatewayClusterListRequest(AbstractModel):
+    r"""GetCustomerGatewayClusterList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Keyword: <p>按集群名称模糊匹配的关键字。最大 64 字符。</p>
+        :type Keyword: str
+        :param _PageNumber: <p>当前查看页码。</p>
+        :type PageNumber: int
+        :param _PageSize: <p>每页显示记录数。</p>
+        :type PageSize: int
+        """
+        self._Keyword = None
+        self._PageNumber = None
+        self._PageSize = None
+
+    @property
+    def Keyword(self):
+        r"""<p>按集群名称模糊匹配的关键字。最大 64 字符。</p>
+        :rtype: str
+        """
+        return self._Keyword
+
+    @Keyword.setter
+    def Keyword(self, Keyword):
+        self._Keyword = Keyword
+
+    @property
+    def PageNumber(self):
+        r"""<p>当前查看页码。</p>
+        :rtype: int
+        """
+        return self._PageNumber
+
+    @PageNumber.setter
+    def PageNumber(self, PageNumber):
+        self._PageNumber = PageNumber
+
+    @property
+    def PageSize(self):
+        r"""<p>每页显示记录数。</p>
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+
+    def _deserialize(self, params):
+        self._Keyword = params.get("Keyword")
+        self._PageNumber = params.get("PageNumber")
+        self._PageSize = params.get("PageSize")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetCustomerGatewayClusterListResponse(AbstractModel):
+    r"""GetCustomerGatewayClusterList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterList: <p>集群列表。</p>
+        :type ClusterList: list of GatewayClusterInfo
+        :param _TotalCount: <p>集群总数。</p>
+        :type TotalCount: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ClusterList = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def ClusterList(self):
+        r"""<p>集群列表。</p>
+        :rtype: list of GatewayClusterInfo
+        """
+        return self._ClusterList
+
+    @ClusterList.setter
+    def ClusterList(self, ClusterList):
+        self._ClusterList = ClusterList
+
+    @property
+    def TotalCount(self):
+        r"""<p>集群总数。</p>
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("ClusterList") is not None:
+            self._ClusterList = []
+            for item in params.get("ClusterList"):
+                obj = GatewayClusterInfo()
+                obj._deserialize(item)
+                self._ClusterList.append(obj)
+        self._TotalCount = params.get("TotalCount")
         self._RequestId = params.get("RequestId")
 
 
@@ -7859,6 +8750,85 @@ class ModifyDeviceAccessRegionsResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyDeviceAccessScopeRequest(AbstractModel):
+    r"""ModifyDeviceAccessScope请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DeviceIds: <p>设备ID</p>
+        :type DeviceIds: list of str
+        :param _AccessScope: <p>接入网关类型</p><p>枚举值：</p><ul><li>0： 公有云网关</li><li>1： 客户私有网关</li></ul><p>默认值：0</p><p>如果不传，则默认修改为接入公有云网关。</p>
+        :type AccessScope: int
+        """
+        self._DeviceIds = None
+        self._AccessScope = None
+
+    @property
+    def DeviceIds(self):
+        r"""<p>设备ID</p>
+        :rtype: list of str
+        """
+        return self._DeviceIds
+
+    @DeviceIds.setter
+    def DeviceIds(self, DeviceIds):
+        self._DeviceIds = DeviceIds
+
+    @property
+    def AccessScope(self):
+        r"""<p>接入网关类型</p><p>枚举值：</p><ul><li>0： 公有云网关</li><li>1： 客户私有网关</li></ul><p>默认值：0</p><p>如果不传，则默认修改为接入公有云网关。</p>
+        :rtype: int
+        """
+        return self._AccessScope
+
+    @AccessScope.setter
+    def AccessScope(self, AccessScope):
+        self._AccessScope = AccessScope
+
+
+    def _deserialize(self, params):
+        self._DeviceIds = params.get("DeviceIds")
+        self._AccessScope = params.get("AccessScope")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyDeviceAccessScopeResponse(AbstractModel):
+    r"""ModifyDeviceAccessScope返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyPackageRenewFlagRequest(AbstractModel):
     r"""ModifyPackageRenewFlag请求参数结构体
 
@@ -9025,6 +9995,85 @@ class UpdateApplicationKeyRequest(AbstractModel):
 
 class UpdateApplicationKeyResponse(AbstractModel):
     r"""UpdateApplicationKey返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class UpdateCustomerGatewayClusterRequest(AbstractModel):
+    r"""UpdateCustomerGatewayCluster请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: <p>集群 ID。可通过 GetCustomerGatewayClusterList 接口获取。</p>
+        :type ClusterId: str
+        :param _PublicIp: <p>公网访问 IP。最大 64 字符，需为合法的 IPv4 或 IPv6 地址。</p>
+        :type PublicIp: str
+        """
+        self._ClusterId = None
+        self._PublicIp = None
+
+    @property
+    def ClusterId(self):
+        r"""<p>集群 ID。可通过 GetCustomerGatewayClusterList 接口获取。</p>
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def PublicIp(self):
+        r"""<p>公网访问 IP。最大 64 字符，需为合法的 IPv4 或 IPv6 地址。</p>
+        :rtype: str
+        """
+        return self._PublicIp
+
+    @PublicIp.setter
+    def PublicIp(self, PublicIp):
+        self._PublicIp = PublicIp
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        self._PublicIp = params.get("PublicIp")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateCustomerGatewayClusterResponse(AbstractModel):
+    r"""UpdateCustomerGatewayCluster返回参数结构体
 
     """
 

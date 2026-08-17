@@ -15200,33 +15200,33 @@ class HTTPServiceDomain(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Domain: 域名
+        :param _Domain: <p>域名</p>
         :type Domain: str
-        :param _DomainType: 域名类型。 HTTPSERVICE: HTTP访问服务，CBR: 云托管服务，ANYSERVICE: 任意服务，AI_AGENT: AI agent，VM: 主机，INTEGRATION_CALLBACK: 集成回调
+        :param _DomainType: <p>域名类型。 HTTPSERVICE: HTTP访问服务，CBR: 云托管服务，ANYSERVICE: 任意服务，AI_AGENT: AI agent，VM: 主机，INTEGRATION_CALLBACK: 集成回调</p>
         :type DomainType: str
-        :param _AccessType: 绑定类型。默认DIRECT。DIRECT: 直连到HTTP访问服务， CDN: 接入云开发CDN，CUSTOM: 自定义接入类型（其他CDN或者WAF）
+        :param _AccessType: <p>绑定类型。默认DIRECT。DIRECT: 直连到HTTP访问服务， CDN: 接入云开发CDN，CUSTOM: 自定义接入类型（其他CDN或者WAF）</p>
         :type AccessType: str
-        :param _CertId: 证书ID。当前账户下SSL平台的证书ID
+        :param _CertId: <p>证书ID。当前账户下SSL平台的证书ID</p>
         :type CertId: str
-        :param _Protocol: 协议类型。默认HTTP_AND_HTTPS。HTTP_AND_HTTPS: 同时开启http和https，HTTP_TO_HTTPS: http重定向成https，HTTPS_TO_HTTP: https重定向成http。如果未配置证书无法访问https或者进行重定向
+        :param _Protocol: <p>协议类型。默认HTTP_AND_HTTPS。HTTP_AND_HTTPS: 同时开启http和https，HTTP_TO_HTTPS: http重定向成https，HTTPS_TO_HTTP: https重定向成http。如果未配置证书无法访问https或者进行重定向</p>
         :type Protocol: str
-        :param _Cname: 配置DNS解析的CNAME。根据AccessType返回不同的CNAME值。
+        :param _Cname: <p>配置DNS解析的CNAME。根据AccessType返回不同的CNAME值。</p>
         :type Cname: str
-        :param _IsDefault: 是否是默认域名
+        :param _IsDefault: <p>是否是默认域名</p>
         :type IsDefault: bool
-        :param _Enable: 域名开启状态
+        :param _Enable: <p>域名开启状态</p>
         :type Enable: bool
-        :param _Status: 状态。PROCESSING、FAIL，SUCCESS。
+        :param _Status: <p>状态。</p><p>枚举值：</p><ul><li>PROCESSING： 处理中</li><li>FAIL： 失败</li><li>EO_PENDING_VERIFICATION： 待验证edgeone归属权</li><li>SUCCESS： 成功</li></ul>
         :type Status: str
-        :param _DNSStatus: DNS解析状态。OK： 解析正常，INVALID：解析不正确，域名未解析到当前Cname域名。
+        :param _DNSStatus: <p>DNS解析状态</p><p>枚举值：</p><ul><li>OK： 正常，命中目标 cname</li><li>EMPTY： 解析为空，域名尚未配置 CNAME 或未生效</li><li>INVALID： 异常，解析到其他非目标地址</li></ul>
         :type DNSStatus: str
-        :param _Routes: HTTP访问服务路由信息
+        :param _Routes: <p>HTTP访问服务路由信息</p>
         :type Routes: list of HTTPServiceRoute
-        :param _Extension: 扩展字段，内部包含headers处理等
+        :param _Extension: <p>扩展字段，内部包含headers处理等</p>
         :type Extension: :class:`tencentcloud.tcb.v20180608.models.HTTPServiceExtension`
-        :param _CreateTime: 域名创建时间
+        :param _CreateTime: <p>域名创建时间</p>
         :type CreateTime: str
-        :param _UpdateTime: 域名更新时间
+        :param _UpdateTime: <p>域名更新时间</p>
         :type UpdateTime: str
         """
         self._Domain = None
@@ -15246,7 +15246,7 @@ class HTTPServiceDomain(AbstractModel):
 
     @property
     def Domain(self):
-        r"""域名
+        r"""<p>域名</p>
         :rtype: str
         """
         return self._Domain
@@ -15257,7 +15257,7 @@ class HTTPServiceDomain(AbstractModel):
 
     @property
     def DomainType(self):
-        r"""域名类型。 HTTPSERVICE: HTTP访问服务，CBR: 云托管服务，ANYSERVICE: 任意服务，AI_AGENT: AI agent，VM: 主机，INTEGRATION_CALLBACK: 集成回调
+        r"""<p>域名类型。 HTTPSERVICE: HTTP访问服务，CBR: 云托管服务，ANYSERVICE: 任意服务，AI_AGENT: AI agent，VM: 主机，INTEGRATION_CALLBACK: 集成回调</p>
         :rtype: str
         """
         return self._DomainType
@@ -15268,7 +15268,7 @@ class HTTPServiceDomain(AbstractModel):
 
     @property
     def AccessType(self):
-        r"""绑定类型。默认DIRECT。DIRECT: 直连到HTTP访问服务， CDN: 接入云开发CDN，CUSTOM: 自定义接入类型（其他CDN或者WAF）
+        r"""<p>绑定类型。默认DIRECT。DIRECT: 直连到HTTP访问服务， CDN: 接入云开发CDN，CUSTOM: 自定义接入类型（其他CDN或者WAF）</p>
         :rtype: str
         """
         return self._AccessType
@@ -15279,7 +15279,7 @@ class HTTPServiceDomain(AbstractModel):
 
     @property
     def CertId(self):
-        r"""证书ID。当前账户下SSL平台的证书ID
+        r"""<p>证书ID。当前账户下SSL平台的证书ID</p>
         :rtype: str
         """
         return self._CertId
@@ -15290,7 +15290,7 @@ class HTTPServiceDomain(AbstractModel):
 
     @property
     def Protocol(self):
-        r"""协议类型。默认HTTP_AND_HTTPS。HTTP_AND_HTTPS: 同时开启http和https，HTTP_TO_HTTPS: http重定向成https，HTTPS_TO_HTTP: https重定向成http。如果未配置证书无法访问https或者进行重定向
+        r"""<p>协议类型。默认HTTP_AND_HTTPS。HTTP_AND_HTTPS: 同时开启http和https，HTTP_TO_HTTPS: http重定向成https，HTTPS_TO_HTTP: https重定向成http。如果未配置证书无法访问https或者进行重定向</p>
         :rtype: str
         """
         return self._Protocol
@@ -15301,7 +15301,7 @@ class HTTPServiceDomain(AbstractModel):
 
     @property
     def Cname(self):
-        r"""配置DNS解析的CNAME。根据AccessType返回不同的CNAME值。
+        r"""<p>配置DNS解析的CNAME。根据AccessType返回不同的CNAME值。</p>
         :rtype: str
         """
         return self._Cname
@@ -15312,7 +15312,7 @@ class HTTPServiceDomain(AbstractModel):
 
     @property
     def IsDefault(self):
-        r"""是否是默认域名
+        r"""<p>是否是默认域名</p>
         :rtype: bool
         """
         return self._IsDefault
@@ -15323,7 +15323,7 @@ class HTTPServiceDomain(AbstractModel):
 
     @property
     def Enable(self):
-        r"""域名开启状态
+        r"""<p>域名开启状态</p>
         :rtype: bool
         """
         return self._Enable
@@ -15334,7 +15334,7 @@ class HTTPServiceDomain(AbstractModel):
 
     @property
     def Status(self):
-        r"""状态。PROCESSING、FAIL，SUCCESS。
+        r"""<p>状态。</p><p>枚举值：</p><ul><li>PROCESSING： 处理中</li><li>FAIL： 失败</li><li>EO_PENDING_VERIFICATION： 待验证edgeone归属权</li><li>SUCCESS： 成功</li></ul>
         :rtype: str
         """
         return self._Status
@@ -15345,7 +15345,7 @@ class HTTPServiceDomain(AbstractModel):
 
     @property
     def DNSStatus(self):
-        r"""DNS解析状态。OK： 解析正常，INVALID：解析不正确，域名未解析到当前Cname域名。
+        r"""<p>DNS解析状态</p><p>枚举值：</p><ul><li>OK： 正常，命中目标 cname</li><li>EMPTY： 解析为空，域名尚未配置 CNAME 或未生效</li><li>INVALID： 异常，解析到其他非目标地址</li></ul>
         :rtype: str
         """
         return self._DNSStatus
@@ -15356,7 +15356,7 @@ class HTTPServiceDomain(AbstractModel):
 
     @property
     def Routes(self):
-        r"""HTTP访问服务路由信息
+        r"""<p>HTTP访问服务路由信息</p>
         :rtype: list of HTTPServiceRoute
         """
         return self._Routes
@@ -15367,7 +15367,7 @@ class HTTPServiceDomain(AbstractModel):
 
     @property
     def Extension(self):
-        r"""扩展字段，内部包含headers处理等
+        r"""<p>扩展字段，内部包含headers处理等</p>
         :rtype: :class:`tencentcloud.tcb.v20180608.models.HTTPServiceExtension`
         """
         return self._Extension
@@ -15378,7 +15378,7 @@ class HTTPServiceDomain(AbstractModel):
 
     @property
     def CreateTime(self):
-        r"""域名创建时间
+        r"""<p>域名创建时间</p>
         :rtype: str
         """
         return self._CreateTime
@@ -15389,7 +15389,7 @@ class HTTPServiceDomain(AbstractModel):
 
     @property
     def UpdateTime(self):
-        r"""域名更新时间
+        r"""<p>域名更新时间</p>
         :rtype: str
         """
         return self._UpdateTime

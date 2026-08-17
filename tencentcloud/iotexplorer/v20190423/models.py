@@ -7599,6 +7599,8 @@ class CreateTWeSeeDirectUploadCredentialRequest(AbstractModel):
         :type StorageRegion: str
         :param _UploadMethod: <p>上传方式</p><p>枚举值：</p><ul><li>single： 单文件上传</li><li>manifest： 上传源文件与 Manifest（先上传多个源文件，然后上传 Manifest JSON 触发分析）</li></ul><p>默认值：single</p>
         :type UploadMethod: str
+        :param _UploadTarget: <p>上传目标</p><p>枚举值：</p><ul><li>session： 一次性上传会话（默认，通过入参传递 ComprehensionConfig 等上传参数）</li><li>stream： 上传到指定设备（加载对应设备的 ComprehensionConfig 等配置）</li></ul><p>默认值：session</p>
+        :type UploadTarget: str
         """
         self._ProductId = None
         self._DeviceName = None
@@ -7611,6 +7613,7 @@ class CreateTWeSeeDirectUploadCredentialRequest(AbstractModel):
         self._MaxInvokeCount = None
         self._StorageRegion = None
         self._UploadMethod = None
+        self._UploadTarget = None
 
     @property
     def ProductId(self):
@@ -7733,6 +7736,17 @@ class CreateTWeSeeDirectUploadCredentialRequest(AbstractModel):
     def UploadMethod(self, UploadMethod):
         self._UploadMethod = UploadMethod
 
+    @property
+    def UploadTarget(self):
+        r"""<p>上传目标</p><p>枚举值：</p><ul><li>session： 一次性上传会话（默认，通过入参传递 ComprehensionConfig 等上传参数）</li><li>stream： 上传到指定设备（加载对应设备的 ComprehensionConfig 等配置）</li></ul><p>默认值：session</p>
+        :rtype: str
+        """
+        return self._UploadTarget
+
+    @UploadTarget.setter
+    def UploadTarget(self, UploadTarget):
+        self._UploadTarget = UploadTarget
+
 
     def _deserialize(self, params):
         self._ProductId = params.get("ProductId")
@@ -7748,6 +7762,7 @@ class CreateTWeSeeDirectUploadCredentialRequest(AbstractModel):
         self._MaxInvokeCount = params.get("MaxInvokeCount")
         self._StorageRegion = params.get("StorageRegion")
         self._UploadMethod = params.get("UploadMethod")
+        self._UploadTarget = params.get("UploadTarget")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -32174,42 +32189,30 @@ class ListTWeSeeTasksRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ProductId: 产品 ID
+        :param _ProductId: <p>产品 ID</p>
         :type ProductId: str
-        :param _DeviceName: 设备名称
+        :param _DeviceName: <p>设备名称</p>
         :type DeviceName: str
-        :param _ServiceCategory: 算法类目。可选值：
-- `COMPREHENSION`：视觉理解
-- `HIGHLIGHT`：视频浓缩
+        :param _ServiceCategory: <p>算法类目。可选值：</p><ul><li><code>COMPREHENSION</code>：视觉理解</li><li><code>HIGHLIGHT</code>：视频浓缩</li></ul>
         :type ServiceCategory: str
-        :param _Limit: 分页拉取数量
+        :param _Limit: <p>分页拉取数量</p>
         :type Limit: int
-        :param _Offset: 分页拉取偏移
+        :param _Offset: <p>分页拉取偏移</p>
         :type Offset: int
-        :param _ServiceTypes: 算法类型。
-
-当 ServiceCategory 为 `COMPREHENSION` 时，可选值包括：
-- `VID_COMP`：视频理解
-- `IMG_COMP`：图片理解
-- `CONT_PERSON_MOTIONLESS`：静姿检测
-
-当 ServiceCategory 为 `HIGHLIGHT` 时，可选值包括：
-- `COMP_HIGHLIGHT`：视频浓缩
+        :param _ServiceTypes: <p>算法类型。</p><p>当 ServiceCategory 为 <code>COMPREHENSION</code> 时，可选值包括：</p><ul><li><code>VID_COMP</code>：视频理解</li><li><code>IMG_COMP</code>：图片理解</li><li><code>CONT_PERSON_MOTIONLESS</code>：静姿检测</li></ul><p>当 ServiceCategory 为 <code>HIGHLIGHT</code> 时，可选值包括：</p><ul><li><code>COMP_HIGHLIGHT</code>：视频浓缩</li></ul>
         :type ServiceTypes: list of str
-        :param _ChannelId: 通道 ID
+        :param _ChannelId: <p>通道 ID</p>
         :type ChannelId: int
-        :param _StartTimeMs: 查询任务时间范围的起始时间（毫秒级 UNIX 时间戳）。不传则不生效时间范围条件。
+        :param _StartTimeMs: <p>查询任务时间范围的起始时间（毫秒级 UNIX 时间戳）。不传则不生效时间范围条件。</p>
         :type StartTimeMs: int
-        :param _EndTimeMs: 查询任务时间范围的结束时间（毫秒级 UNIX 时间戳）。不传则不生效时间范围条件。
+        :param _EndTimeMs: <p>查询任务时间范围的结束时间（毫秒级 UNIX 时间戳）。不传则不生效时间范围条件。</p>
         :type EndTimeMs: int
-        :param _Status: 要查询的任务的状态条件。不传则不按照状态过滤，可选值：
-
-- `1`：失败
-- `2`：空结果
-- `3`：有效结果
+        :param _Status: <p>要查询的任务的状态条件。不传则不按照状态过滤，可选值：</p><ul><li><code>1</code>：失败</li><li><code>2</code>：空结果</li><li><code>3</code>：有效结果</li></ul>
         :type Status: int
-        :param _FileURLExpireTime: 下载 URL 的过期时间（秒级 UNIX 时间戳）。若传入该参数，则响应中将包含所有文件的下载 URL
+        :param _FileURLExpireTime: <p>下载 URL 的过期时间（秒级 UNIX 时间戳）。若传入该参数，则响应中将包含所有文件的下载 URL</p>
         :type FileURLExpireTime: int
+        :param _Filters: <p>任务结果过滤条件</p>
+        :type Filters: list of VisionRecognitionTaskFilter
         """
         self._ProductId = None
         self._DeviceName = None
@@ -32222,10 +32225,11 @@ class ListTWeSeeTasksRequest(AbstractModel):
         self._EndTimeMs = None
         self._Status = None
         self._FileURLExpireTime = None
+        self._Filters = None
 
     @property
     def ProductId(self):
-        r"""产品 ID
+        r"""<p>产品 ID</p>
         :rtype: str
         """
         return self._ProductId
@@ -32236,7 +32240,7 @@ class ListTWeSeeTasksRequest(AbstractModel):
 
     @property
     def DeviceName(self):
-        r"""设备名称
+        r"""<p>设备名称</p>
         :rtype: str
         """
         return self._DeviceName
@@ -32247,9 +32251,7 @@ class ListTWeSeeTasksRequest(AbstractModel):
 
     @property
     def ServiceCategory(self):
-        r"""算法类目。可选值：
-- `COMPREHENSION`：视觉理解
-- `HIGHLIGHT`：视频浓缩
+        r"""<p>算法类目。可选值：</p><ul><li><code>COMPREHENSION</code>：视觉理解</li><li><code>HIGHLIGHT</code>：视频浓缩</li></ul>
         :rtype: str
         """
         return self._ServiceCategory
@@ -32260,7 +32262,7 @@ class ListTWeSeeTasksRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""分页拉取数量
+        r"""<p>分页拉取数量</p>
         :rtype: int
         """
         return self._Limit
@@ -32271,7 +32273,7 @@ class ListTWeSeeTasksRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""分页拉取偏移
+        r"""<p>分页拉取偏移</p>
         :rtype: int
         """
         return self._Offset
@@ -32282,15 +32284,7 @@ class ListTWeSeeTasksRequest(AbstractModel):
 
     @property
     def ServiceTypes(self):
-        r"""算法类型。
-
-当 ServiceCategory 为 `COMPREHENSION` 时，可选值包括：
-- `VID_COMP`：视频理解
-- `IMG_COMP`：图片理解
-- `CONT_PERSON_MOTIONLESS`：静姿检测
-
-当 ServiceCategory 为 `HIGHLIGHT` 时，可选值包括：
-- `COMP_HIGHLIGHT`：视频浓缩
+        r"""<p>算法类型。</p><p>当 ServiceCategory 为 <code>COMPREHENSION</code> 时，可选值包括：</p><ul><li><code>VID_COMP</code>：视频理解</li><li><code>IMG_COMP</code>：图片理解</li><li><code>CONT_PERSON_MOTIONLESS</code>：静姿检测</li></ul><p>当 ServiceCategory 为 <code>HIGHLIGHT</code> 时，可选值包括：</p><ul><li><code>COMP_HIGHLIGHT</code>：视频浓缩</li></ul>
         :rtype: list of str
         """
         return self._ServiceTypes
@@ -32301,7 +32295,7 @@ class ListTWeSeeTasksRequest(AbstractModel):
 
     @property
     def ChannelId(self):
-        r"""通道 ID
+        r"""<p>通道 ID</p>
         :rtype: int
         """
         return self._ChannelId
@@ -32312,7 +32306,7 @@ class ListTWeSeeTasksRequest(AbstractModel):
 
     @property
     def StartTimeMs(self):
-        r"""查询任务时间范围的起始时间（毫秒级 UNIX 时间戳）。不传则不生效时间范围条件。
+        r"""<p>查询任务时间范围的起始时间（毫秒级 UNIX 时间戳）。不传则不生效时间范围条件。</p>
         :rtype: int
         """
         return self._StartTimeMs
@@ -32323,7 +32317,7 @@ class ListTWeSeeTasksRequest(AbstractModel):
 
     @property
     def EndTimeMs(self):
-        r"""查询任务时间范围的结束时间（毫秒级 UNIX 时间戳）。不传则不生效时间范围条件。
+        r"""<p>查询任务时间范围的结束时间（毫秒级 UNIX 时间戳）。不传则不生效时间范围条件。</p>
         :rtype: int
         """
         return self._EndTimeMs
@@ -32334,11 +32328,7 @@ class ListTWeSeeTasksRequest(AbstractModel):
 
     @property
     def Status(self):
-        r"""要查询的任务的状态条件。不传则不按照状态过滤，可选值：
-
-- `1`：失败
-- `2`：空结果
-- `3`：有效结果
+        r"""<p>要查询的任务的状态条件。不传则不按照状态过滤，可选值：</p><ul><li><code>1</code>：失败</li><li><code>2</code>：空结果</li><li><code>3</code>：有效结果</li></ul>
         :rtype: int
         """
         return self._Status
@@ -32349,7 +32339,7 @@ class ListTWeSeeTasksRequest(AbstractModel):
 
     @property
     def FileURLExpireTime(self):
-        r"""下载 URL 的过期时间（秒级 UNIX 时间戳）。若传入该参数，则响应中将包含所有文件的下载 URL
+        r"""<p>下载 URL 的过期时间（秒级 UNIX 时间戳）。若传入该参数，则响应中将包含所有文件的下载 URL</p>
         :rtype: int
         """
         return self._FileURLExpireTime
@@ -32357,6 +32347,17 @@ class ListTWeSeeTasksRequest(AbstractModel):
     @FileURLExpireTime.setter
     def FileURLExpireTime(self, FileURLExpireTime):
         self._FileURLExpireTime = FileURLExpireTime
+
+    @property
+    def Filters(self):
+        r"""<p>任务结果过滤条件</p>
+        :rtype: list of VisionRecognitionTaskFilter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
 
 
     def _deserialize(self, params):
@@ -32371,6 +32372,12 @@ class ListTWeSeeTasksRequest(AbstractModel):
         self._EndTimeMs = params.get("EndTimeMs")
         self._Status = params.get("Status")
         self._FileURLExpireTime = params.get("FileURLExpireTime")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = VisionRecognitionTaskFilter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -32388,9 +32395,9 @@ class ListTWeSeeTasksResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Tasks: 任务列表
+        :param _Tasks: <p>任务列表</p>
         :type Tasks: list of SeeTaskInfo
-        :param _Total: 任务数量
+        :param _Total: <p>任务数量</p>
         :type Total: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -32401,7 +32408,7 @@ class ListTWeSeeTasksResponse(AbstractModel):
 
     @property
     def Tasks(self):
-        r"""任务列表
+        r"""<p>任务列表</p>
         :rtype: list of SeeTaskInfo
         """
         return self._Tasks
@@ -32412,7 +32419,7 @@ class ListTWeSeeTasksResponse(AbstractModel):
 
     @property
     def Total(self):
-        r"""任务数量
+        r"""<p>任务数量</p>
         :rtype: int
         """
         return self._Total
@@ -41259,51 +41266,38 @@ class SeeTaskInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskId: 任务 ID
+        :param _TaskId: <p>任务 ID</p>
         :type TaskId: str
-        :param _Status: 任务状态。可能取值：
-
-- `1`：失败
-- `2`：空结果
-- `3`：有效结果
-- `4`：处理中
+        :param _Status: <p>任务状态。可能取值：</p><ul><li><code>1</code>：失败</li><li><code>2</code>：空结果</li><li><code>3</code>：有效结果</li><li><code>4</code>：处理中</li></ul>
         :type Status: int
-        :param _Metadata: 任务元数据
+        :param _Metadata: <p>任务元数据</p>
         :type Metadata: :class:`tencentcloud.iotexplorer.v20190423.models.SeeTaskMetadata`
-        :param _ServiceCategory: 算法类目。可能取值：
-
-- `COMPREHENSION`：视觉理解
-- `HIGHLIGHT`：视频浓缩
+        :param _ServiceCategory: <p>算法类目。可能取值：</p><ul><li><code>COMPREHENSION</code>：视觉理解</li><li><code>HIGHLIGHT</code>：视频浓缩</li></ul>
         :type ServiceCategory: str
-        :param _ServiceType: 算法类型。可能取值：
-
-- `VID_COMP`：视频理解
-- `IMG_COMP`：图片理解
-- `COMP_HIGHLIGHT`：视频浓缩
+        :param _ServiceType: <p>算法类型。可能取值：</p><ul><li><code>VID_COMP</code>：视频理解</li><li><code>IMG_COMP</code>：图片理解</li><li><code>COMP_HIGHLIGHT</code>：视频浓缩</li></ul>
         :type ServiceType: str
-        :param _ServiceTier: 套餐规格。可能取值：
-
-- `POSTPAID`：后付费（适用于视频理解、图片理解）
-- `BASIC`：包年包月基础版（适用于视频理解）
+        :param _ServiceTier: <p>套餐规格。可能取值：</p><ul><li><code>POSTPAID</code>：后付费（适用于视频理解、图片理解）</li><li><code>BASIC</code>：包年包月基础版（适用于视频理解）</li></ul>
         :type ServiceTier: str
-        :param _ComprehensionResult: 视觉理解结果（适用于视频理解、图片理解）
+        :param _ComprehensionResult: <p>视觉理解结果（适用于视频理解、图片理解）</p>
         :type ComprehensionResult: :class:`tencentcloud.iotexplorer.v20190423.models.SeeComprehensionResult`
-        :param _CompHighlightResult: 视频语义浓缩结果（适用于视频语义浓缩）
+        :param _CompHighlightResult: <p>视频语义浓缩结果（适用于视频语义浓缩）</p>
         :type CompHighlightResult: :class:`tencentcloud.iotexplorer.v20190423.models.SeeCompHighlightResult`
-        :param _DetectContinuousResult: 标签持续检测结果
+        :param _DetectContinuousResult: <p>标签持续检测结果</p>
         :type DetectContinuousResult: :class:`tencentcloud.iotexplorer.v20190423.models.SeeDetectContinuousResult`
-        :param _CostBasic: 完成该任务所消耗的基础能力额度
+        :param _CostBasic: <p>完成该任务所消耗的基础能力额度</p>
         :type CostBasic: int
-        :param _CostAdvanced: 完成该任务所消耗的高级能力额度
+        :param _CostAdvanced: <p>完成该任务所消耗的高级能力额度</p>
         :type CostAdvanced: int
-        :param _Files: 输出文件名列表
+        :param _Files: <p>输出文件名列表</p>
         :type Files: list of str
-        :param _FilesInfo: 输出文件详情列表
+        :param _FilesInfo: <p>输出文件详情列表</p>
         :type FilesInfo: list of CloudStorageAIServiceTaskFileInfo
-        :param _CreateTime: 创建时间
+        :param _CreateTime: <p>创建时间</p>
         :type CreateTime: int
-        :param _UpdateTime: 最后更新时间
+        :param _UpdateTime: <p>最后更新时间</p>
         :type UpdateTime: int
+        :param _COSURI: <p>直传 COS 的对象 URI</p>
+        :type COSURI: str
         """
         self._TaskId = None
         self._Status = None
@@ -41320,10 +41314,11 @@ class SeeTaskInfo(AbstractModel):
         self._FilesInfo = None
         self._CreateTime = None
         self._UpdateTime = None
+        self._COSURI = None
 
     @property
     def TaskId(self):
-        r"""任务 ID
+        r"""<p>任务 ID</p>
         :rtype: str
         """
         return self._TaskId
@@ -41334,12 +41329,7 @@ class SeeTaskInfo(AbstractModel):
 
     @property
     def Status(self):
-        r"""任务状态。可能取值：
-
-- `1`：失败
-- `2`：空结果
-- `3`：有效结果
-- `4`：处理中
+        r"""<p>任务状态。可能取值：</p><ul><li><code>1</code>：失败</li><li><code>2</code>：空结果</li><li><code>3</code>：有效结果</li><li><code>4</code>：处理中</li></ul>
         :rtype: int
         """
         return self._Status
@@ -41350,7 +41340,7 @@ class SeeTaskInfo(AbstractModel):
 
     @property
     def Metadata(self):
-        r"""任务元数据
+        r"""<p>任务元数据</p>
         :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.SeeTaskMetadata`
         """
         return self._Metadata
@@ -41361,10 +41351,7 @@ class SeeTaskInfo(AbstractModel):
 
     @property
     def ServiceCategory(self):
-        r"""算法类目。可能取值：
-
-- `COMPREHENSION`：视觉理解
-- `HIGHLIGHT`：视频浓缩
+        r"""<p>算法类目。可能取值：</p><ul><li><code>COMPREHENSION</code>：视觉理解</li><li><code>HIGHLIGHT</code>：视频浓缩</li></ul>
         :rtype: str
         """
         return self._ServiceCategory
@@ -41375,11 +41362,7 @@ class SeeTaskInfo(AbstractModel):
 
     @property
     def ServiceType(self):
-        r"""算法类型。可能取值：
-
-- `VID_COMP`：视频理解
-- `IMG_COMP`：图片理解
-- `COMP_HIGHLIGHT`：视频浓缩
+        r"""<p>算法类型。可能取值：</p><ul><li><code>VID_COMP</code>：视频理解</li><li><code>IMG_COMP</code>：图片理解</li><li><code>COMP_HIGHLIGHT</code>：视频浓缩</li></ul>
         :rtype: str
         """
         return self._ServiceType
@@ -41390,10 +41373,7 @@ class SeeTaskInfo(AbstractModel):
 
     @property
     def ServiceTier(self):
-        r"""套餐规格。可能取值：
-
-- `POSTPAID`：后付费（适用于视频理解、图片理解）
-- `BASIC`：包年包月基础版（适用于视频理解）
+        r"""<p>套餐规格。可能取值：</p><ul><li><code>POSTPAID</code>：后付费（适用于视频理解、图片理解）</li><li><code>BASIC</code>：包年包月基础版（适用于视频理解）</li></ul>
         :rtype: str
         """
         return self._ServiceTier
@@ -41404,7 +41384,7 @@ class SeeTaskInfo(AbstractModel):
 
     @property
     def ComprehensionResult(self):
-        r"""视觉理解结果（适用于视频理解、图片理解）
+        r"""<p>视觉理解结果（适用于视频理解、图片理解）</p>
         :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.SeeComprehensionResult`
         """
         return self._ComprehensionResult
@@ -41415,7 +41395,7 @@ class SeeTaskInfo(AbstractModel):
 
     @property
     def CompHighlightResult(self):
-        r"""视频语义浓缩结果（适用于视频语义浓缩）
+        r"""<p>视频语义浓缩结果（适用于视频语义浓缩）</p>
         :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.SeeCompHighlightResult`
         """
         return self._CompHighlightResult
@@ -41426,7 +41406,7 @@ class SeeTaskInfo(AbstractModel):
 
     @property
     def DetectContinuousResult(self):
-        r"""标签持续检测结果
+        r"""<p>标签持续检测结果</p>
         :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.SeeDetectContinuousResult`
         """
         return self._DetectContinuousResult
@@ -41437,7 +41417,7 @@ class SeeTaskInfo(AbstractModel):
 
     @property
     def CostBasic(self):
-        r"""完成该任务所消耗的基础能力额度
+        r"""<p>完成该任务所消耗的基础能力额度</p>
         :rtype: int
         """
         return self._CostBasic
@@ -41448,7 +41428,7 @@ class SeeTaskInfo(AbstractModel):
 
     @property
     def CostAdvanced(self):
-        r"""完成该任务所消耗的高级能力额度
+        r"""<p>完成该任务所消耗的高级能力额度</p>
         :rtype: int
         """
         return self._CostAdvanced
@@ -41459,7 +41439,7 @@ class SeeTaskInfo(AbstractModel):
 
     @property
     def Files(self):
-        r"""输出文件名列表
+        r"""<p>输出文件名列表</p>
         :rtype: list of str
         """
         return self._Files
@@ -41470,7 +41450,7 @@ class SeeTaskInfo(AbstractModel):
 
     @property
     def FilesInfo(self):
-        r"""输出文件详情列表
+        r"""<p>输出文件详情列表</p>
         :rtype: list of CloudStorageAIServiceTaskFileInfo
         """
         return self._FilesInfo
@@ -41481,7 +41461,7 @@ class SeeTaskInfo(AbstractModel):
 
     @property
     def CreateTime(self):
-        r"""创建时间
+        r"""<p>创建时间</p>
         :rtype: int
         """
         return self._CreateTime
@@ -41492,7 +41472,7 @@ class SeeTaskInfo(AbstractModel):
 
     @property
     def UpdateTime(self):
-        r"""最后更新时间
+        r"""<p>最后更新时间</p>
         :rtype: int
         """
         return self._UpdateTime
@@ -41500,6 +41480,17 @@ class SeeTaskInfo(AbstractModel):
     @UpdateTime.setter
     def UpdateTime(self, UpdateTime):
         self._UpdateTime = UpdateTime
+
+    @property
+    def COSURI(self):
+        r"""<p>直传 COS 的对象 URI</p>
+        :rtype: str
+        """
+        return self._COSURI
+
+    @COSURI.setter
+    def COSURI(self, COSURI):
+        self._COSURI = COSURI
 
 
     def _deserialize(self, params):
@@ -41531,6 +41522,7 @@ class SeeTaskInfo(AbstractModel):
                 self._FilesInfo.append(obj)
         self._CreateTime = params.get("CreateTime")
         self._UpdateTime = params.get("UpdateTime")
+        self._COSURI = params.get("COSURI")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -48375,6 +48367,57 @@ class VisionRecognitionTask(AbstractModel):
                 obj = CloudStorageAIServiceTaskFileInfo()
                 obj._deserialize(item)
                 self._FilesInfo.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VisionRecognitionTaskFilter(AbstractModel):
+    r"""TWeSee 语义理解任务过滤条件
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Key: 需要过滤的字段
+        :type Key: str
+        :param _Values: 需要过滤的值
+        :type Values: list of str
+        """
+        self._Key = None
+        self._Values = None
+
+    @property
+    def Key(self):
+        r"""需要过滤的字段
+        :rtype: str
+        """
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Values(self):
+        r"""需要过滤的值
+        :rtype: list of str
+        """
+        return self._Values
+
+    @Values.setter
+    def Values(self, Values):
+        self._Values = Values
+
+
+    def _deserialize(self, params):
+        self._Key = params.get("Key")
+        self._Values = params.get("Values")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -72,6 +72,31 @@ class MnaClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def AddCustomerGatewayCluster(self, request):
+        r"""创建客户自有网关集群。
+
+        用于承载客户侧的自有网关实例，创建成功后返回集群 ID。
+
+        :param request: Request instance for AddCustomerGatewayCluster.
+        :type request: :class:`tencentcloud.mna.v20210119.models.AddCustomerGatewayClusterRequest`
+        :rtype: :class:`tencentcloud.mna.v20210119.models.AddCustomerGatewayClusterResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("AddCustomerGatewayCluster", params, headers=headers)
+            response = json.loads(body)
+            model = models.AddCustomerGatewayClusterResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def AddDevice(self, request):
         r"""新建设备记录
 
@@ -86,6 +111,31 @@ class MnaClient(AbstractClient):
             body = self.call("AddDevice", params, headers=headers)
             response = json.loads(body)
             model = models.AddDeviceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def AddGateway(self, request):
+        r"""向指定的客户自有网关集群注册一个网关实例。
+
+        注册成功后返回网关实例 ID、鉴权 Token 及 Agent 相关地址信息，用于后续网关 Agent 上报。
+
+        :param request: Request instance for AddGateway.
+        :type request: :class:`tencentcloud.mna.v20210119.models.AddGatewayRequest`
+        :rtype: :class:`tencentcloud.mna.v20210119.models.AddGatewayResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("AddGateway", params, headers=headers)
+            response = json.loads(body)
+            model = models.AddGatewayResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -210,6 +260,31 @@ class MnaClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DeleteCustomerGatewayCluster(self, request):
+        r"""删除客户自有网关集群。
+
+        删除指定的客户自有网关集群，操作不可逆。调用接口后，若通过 GetCustomerGatewayClusterList 接口查询不到对应集群，则表示删除成功。
+
+        :param request: Request instance for DeleteCustomerGatewayCluster.
+        :type request: :class:`tencentcloud.mna.v20210119.models.DeleteCustomerGatewayClusterRequest`
+        :rtype: :class:`tencentcloud.mna.v20210119.models.DeleteCustomerGatewayClusterResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteCustomerGatewayCluster", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteCustomerGatewayClusterResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DeleteDevice(self, request):
         r"""删除设备信息
 
@@ -224,6 +299,31 @@ class MnaClient(AbstractClient):
             body = self.call("DeleteDevice", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteDeviceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteGateway(self, request):
+        r"""从指定集群下删除一个客户自有网关实例。
+
+        删除后，通过 GetCustomerGatewayClusterList 查询不到对应实例，则表示删除成功。
+
+        :param request: Request instance for DeleteGateway.
+        :type request: :class:`tencentcloud.mna.v20210119.models.DeleteGatewayRequest`
+        :rtype: :class:`tencentcloud.mna.v20210119.models.DeleteGatewayResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteGateway", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteGatewayResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -270,6 +370,29 @@ class MnaClient(AbstractClient):
             body = self.call("DeleteL3Conn", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteL3ConnResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeAccessPointList(self, request):
+        r"""此接口用来查询接入点列表。
+
+        :param request: Request instance for DescribeAccessPointList.
+        :type request: :class:`tencentcloud.mna.v20210119.models.DescribeAccessPointListRequest`
+        :rtype: :class:`tencentcloud.mna.v20210119.models.DescribeAccessPointListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAccessPointList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeAccessPointListResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -362,6 +485,31 @@ class MnaClient(AbstractClient):
             body = self.call("GetApplication", params, headers=headers)
             response = json.loads(body)
             model = models.GetApplicationResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def GetCustomerGatewayClusterList(self, request):
+        r"""查询客户自有网关集群列表。
+
+        支持按集群名称关键字过滤，使用 Offset/Limit 分页返回集群及其下网关实例信息。
+
+        :param request: Request instance for GetCustomerGatewayClusterList.
+        :type request: :class:`tencentcloud.mna.v20210119.models.GetCustomerGatewayClusterListRequest`
+        :rtype: :class:`tencentcloud.mna.v20210119.models.GetCustomerGatewayClusterListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("GetCustomerGatewayClusterList", params, headers=headers)
+            response = json.loads(body)
+            model = models.GetCustomerGatewayClusterListResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -992,6 +1140,29 @@ class MnaClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyDeviceAccessScope(self, request):
+        r"""修改设备接入网关类型。
+
+        :param request: Request instance for ModifyDeviceAccessScope.
+        :type request: :class:`tencentcloud.mna.v20210119.models.ModifyDeviceAccessScopeRequest`
+        :rtype: :class:`tencentcloud.mna.v20210119.models.ModifyDeviceAccessScopeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyDeviceAccessScope", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyDeviceAccessScopeResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyPackageRenewFlag(self, request):
         r"""可开启/关闭流量包自动续费，不影响当前周期正在生效的流量包。
 
@@ -1144,6 +1315,31 @@ class MnaClient(AbstractClient):
             body = self.call("UpdateApplicationKey", params, headers=headers)
             response = json.loads(body)
             model = models.UpdateApplicationKeyResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def UpdateCustomerGatewayCluster(self, request):
+        r"""更新客户自有网关集群配置。
+
+        目前仅支持修改集群的公网访问 IP。
+
+        :param request: Request instance for UpdateCustomerGatewayCluster.
+        :type request: :class:`tencentcloud.mna.v20210119.models.UpdateCustomerGatewayClusterRequest`
+        :rtype: :class:`tencentcloud.mna.v20210119.models.UpdateCustomerGatewayClusterResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UpdateCustomerGatewayCluster", params, headers=headers)
+            response = json.loads(body)
+            model = models.UpdateCustomerGatewayClusterResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

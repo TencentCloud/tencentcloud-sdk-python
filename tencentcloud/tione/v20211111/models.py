@@ -9938,14 +9938,17 @@ class DescribeExportRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ExportId: 日志下载任务的ID
+        :param _ExportId: <p>日志下载任务的ID</p>
         :type ExportId: str
+        :param _TiProjectId: <p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+        :type TiProjectId: str
         """
         self._ExportId = None
+        self._TiProjectId = None
 
     @property
     def ExportId(self):
-        r"""日志下载任务的ID
+        r"""<p>日志下载任务的ID</p>
         :rtype: str
         """
         return self._ExportId
@@ -9954,9 +9957,21 @@ class DescribeExportRequest(AbstractModel):
     def ExportId(self, ExportId):
         self._ExportId = ExportId
 
+    @property
+    def TiProjectId(self):
+        r"""<p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+        :rtype: str
+        """
+        return self._TiProjectId
+
+    @TiProjectId.setter
+    def TiProjectId(self, TiProjectId):
+        self._TiProjectId = TiProjectId
+
 
     def _deserialize(self, params):
         self._ExportId = params.get("ExportId")
+        self._TiProjectId = params.get("TiProjectId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -9974,17 +9989,17 @@ class DescribeExportResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ExportId: 日志下载任务的ID
+        :param _ExportId: <p>日志下载任务的ID</p>
         :type ExportId: str
-        :param _FileName: 日志下载文件名
+        :param _FileName: <p>日志下载文件名</p>
         :type FileName: str
-        :param _CosPath: 日志导出路径,有效期一个小时，请尽快使用该路径下载。
+        :param _CosPath: <p>日志导出路径,有效期一个小时，请尽快使用该路径下载。</p>
         :type CosPath: str
-        :param _CreateTime: 下载任务创建时间
+        :param _CreateTime: <p>下载任务创建时间</p>
         :type CreateTime: str
-        :param _FileSize: 日志文件大小
+        :param _FileSize: <p>日志文件大小</p>
         :type FileSize: str
-        :param _Status: 日志下载状态。Processing:导出正在进行中，Completed:导出完成，Failed:导出失败，Expired:日志导出已过期(三天有效期), Queuing 排队中
+        :param _Status: <p>日志下载状态。Processing:导出正在进行中，Completed:导出完成，Failed:导出失败，Expired:日志导出已过期(三天有效期), Queuing 排队中</p>
         :type Status: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -9999,7 +10014,7 @@ class DescribeExportResponse(AbstractModel):
 
     @property
     def ExportId(self):
-        r"""日志下载任务的ID
+        r"""<p>日志下载任务的ID</p>
         :rtype: str
         """
         return self._ExportId
@@ -10010,7 +10025,7 @@ class DescribeExportResponse(AbstractModel):
 
     @property
     def FileName(self):
-        r"""日志下载文件名
+        r"""<p>日志下载文件名</p>
         :rtype: str
         """
         return self._FileName
@@ -10021,7 +10036,7 @@ class DescribeExportResponse(AbstractModel):
 
     @property
     def CosPath(self):
-        r"""日志导出路径,有效期一个小时，请尽快使用该路径下载。
+        r"""<p>日志导出路径,有效期一个小时，请尽快使用该路径下载。</p>
         :rtype: str
         """
         return self._CosPath
@@ -10032,7 +10047,7 @@ class DescribeExportResponse(AbstractModel):
 
     @property
     def CreateTime(self):
-        r"""下载任务创建时间
+        r"""<p>下载任务创建时间</p>
         :rtype: str
         """
         return self._CreateTime
@@ -10043,7 +10058,7 @@ class DescribeExportResponse(AbstractModel):
 
     @property
     def FileSize(self):
-        r"""日志文件大小
+        r"""<p>日志文件大小</p>
         :rtype: str
         """
         return self._FileSize
@@ -10054,7 +10069,7 @@ class DescribeExportResponse(AbstractModel):
 
     @property
     def Status(self):
-        r"""日志下载状态。Processing:导出正在进行中，Completed:导出完成，Failed:导出失败，Expired:日志导出已过期(三天有效期), Queuing 排队中
+        r"""<p>日志下载状态。Processing:导出正在进行中，Completed:导出完成，Failed:导出失败，Expired:日志导出已过期(三天有效期), Queuing 排队中</p>
         :rtype: str
         """
         return self._Status

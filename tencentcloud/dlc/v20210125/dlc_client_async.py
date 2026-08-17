@@ -2517,7 +2517,7 @@ class DlcClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeSaleResourceInfoResponse:
         """
-        查询当前地域可售卖的资源规格和最大配额
+        查询当前地域可售卖的资源规格、最大配额，以及库存情况。StatusCategory 与 DescribePartitionAvailableQuota 数据同源，将实时可新增数量映射为库存分级；当请求 Region 与资源池实际部署地域不一致，或服务 cold-start 快照尚未就绪时，StatusCategory 为 null。
         """
         
         kwargs = {}
@@ -4036,6 +4036,24 @@ class DlcClient(AbstractClient):
         kwargs["action"] = "ListExamples"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ListExamplesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ListImages(
+            self,
+            request: models.ListImagesRequest,
+            opts: Dict = None,
+    ) -> models.ListImagesResponse:
+        """
+        列出所有镜像
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ListImages"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ListImagesResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

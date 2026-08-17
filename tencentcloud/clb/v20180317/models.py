@@ -7653,7 +7653,7 @@ class CreateModelRouterRequest(AbstractModel):
         :type Port: int
         :param _RateLimitConfig: <p>限速配置</p>
         :type RateLimitConfig: :class:`tencentcloud.clb.v20180317.models.RateLimitConfigForModelRouter`
-        :param _RouterSetting: <p>路由配置</p>
+        :param _RouterSetting: <p>路由配置</p><p>新创建实例时，默认会开启粘连路由</p>
         :type RouterSetting: :class:`tencentcloud.clb.v20180317.models.RouterSettingWithoutFallBack`
         :param _Schema: <p>模型路由实例的网络协议</p><p>枚举值：</p><ul><li>HTTP： HTTP协议</li><li>HTTPS： HTTPS协议</li></ul>
         :type Schema: str
@@ -7667,6 +7667,10 @@ class CreateModelRouterRequest(AbstractModel):
         :type ModelRouterBillingConfig: :class:`tencentcloud.clb.v20180317.models.ModelRouterBillingConfigInput`
         :param _ClientToken: <p>客户端Token，用于保证请求的幂等性。  从您的客户端生成一个参数值，确保不同请求间该参数值唯一。ClientToken只支持ASCII字符。</p>
         :type ClientToken: str
+        :param _EipAddressId: <p>弹性公网IP的ID</p>
+        :type EipAddressId: str
+        :param _Bandwidth: <p>单位</p><p>取值范围：[1, 2048]</p><p>单位：Mbps</p>
+        :type Bandwidth: int
         """
         self._ModelRouterType = None
         self._BudgetId = None
@@ -7683,6 +7687,8 @@ class CreateModelRouterRequest(AbstractModel):
         self._VpcId = None
         self._ModelRouterBillingConfig = None
         self._ClientToken = None
+        self._EipAddressId = None
+        self._Bandwidth = None
 
     @property
     def ModelRouterType(self):
@@ -7774,7 +7780,7 @@ class CreateModelRouterRequest(AbstractModel):
 
     @property
     def RouterSetting(self):
-        r"""<p>路由配置</p>
+        r"""<p>路由配置</p><p>新创建实例时，默认会开启粘连路由</p>
         :rtype: :class:`tencentcloud.clb.v20180317.models.RouterSettingWithoutFallBack`
         """
         return self._RouterSetting
@@ -7849,6 +7855,28 @@ class CreateModelRouterRequest(AbstractModel):
     def ClientToken(self, ClientToken):
         self._ClientToken = ClientToken
 
+    @property
+    def EipAddressId(self):
+        r"""<p>弹性公网IP的ID</p>
+        :rtype: str
+        """
+        return self._EipAddressId
+
+    @EipAddressId.setter
+    def EipAddressId(self, EipAddressId):
+        self._EipAddressId = EipAddressId
+
+    @property
+    def Bandwidth(self):
+        r"""<p>单位</p><p>取值范围：[1, 2048]</p><p>单位：Mbps</p>
+        :rtype: int
+        """
+        return self._Bandwidth
+
+    @Bandwidth.setter
+    def Bandwidth(self, Bandwidth):
+        self._Bandwidth = Bandwidth
+
 
     def _deserialize(self, params):
         self._ModelRouterType = params.get("ModelRouterType")
@@ -7879,6 +7907,8 @@ class CreateModelRouterRequest(AbstractModel):
             self._ModelRouterBillingConfig = ModelRouterBillingConfigInput()
             self._ModelRouterBillingConfig._deserialize(params.get("ModelRouterBillingConfig"))
         self._ClientToken = params.get("ClientToken")
+        self._EipAddressId = params.get("EipAddressId")
+        self._Bandwidth = params.get("Bandwidth")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -25346,6 +25376,78 @@ class ModelRouterBillingConfigInput(AbstractModel):
         
 
 
+class ModelRouterBillingConfigOutput(AbstractModel):
+    r"""模型路由计费信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ChargeType: <p>模型路由计费模式</p><p>枚举值：</p><ul><li>POSTPAID_BY_HOUR： 按量计费</li><li>RESOURCE_PACKAGE： 按资源包抵扣</li></ul>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ChargeType: str
+        :param _SlaType: <p>实例规格</p><p>枚举值：</p><ul><li>t1.nano-01： 入门版</li><li>t1.nano-02： 轻量版</li><li>t1.nano-03： 轻量增强版</li><li>t1.micro-01： 微型版</li><li>t1.micro-02： 基础版</li><li>t1.small-01： 标准版</li><li>t1.small-02： 标准增强版</li><li>t1.medium-01： 进阶版</li><li>t1.medium-02： 进阶增强版</li><li>t1.large-01： 专业版</li><li>t1.large-02： 专业增强版</li><li>t1.xlarge-01： 旗舰版</li><li>t1.xlarge-02： 至尊版</li></ul>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SlaType: str
+        :param _AssociateResourcePackage: <p>是否关联资源包抵扣</p><p>枚举值：</p><ul><li>true： 关联</li><li>false： 不关联</li></ul>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AssociateResourcePackage: bool
+        """
+        self._ChargeType = None
+        self._SlaType = None
+        self._AssociateResourcePackage = None
+
+    @property
+    def ChargeType(self):
+        r"""<p>模型路由计费模式</p><p>枚举值：</p><ul><li>POSTPAID_BY_HOUR： 按量计费</li><li>RESOURCE_PACKAGE： 按资源包抵扣</li></ul>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ChargeType
+
+    @ChargeType.setter
+    def ChargeType(self, ChargeType):
+        self._ChargeType = ChargeType
+
+    @property
+    def SlaType(self):
+        r"""<p>实例规格</p><p>枚举值：</p><ul><li>t1.nano-01： 入门版</li><li>t1.nano-02： 轻量版</li><li>t1.nano-03： 轻量增强版</li><li>t1.micro-01： 微型版</li><li>t1.micro-02： 基础版</li><li>t1.small-01： 标准版</li><li>t1.small-02： 标准增强版</li><li>t1.medium-01： 进阶版</li><li>t1.medium-02： 进阶增强版</li><li>t1.large-01： 专业版</li><li>t1.large-02： 专业增强版</li><li>t1.xlarge-01： 旗舰版</li><li>t1.xlarge-02： 至尊版</li></ul>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._SlaType
+
+    @SlaType.setter
+    def SlaType(self, SlaType):
+        self._SlaType = SlaType
+
+    @property
+    def AssociateResourcePackage(self):
+        r"""<p>是否关联资源包抵扣</p><p>枚举值：</p><ul><li>true： 关联</li><li>false： 不关联</li></ul>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._AssociateResourcePackage
+
+    @AssociateResourcePackage.setter
+    def AssociateResourcePackage(self, AssociateResourcePackage):
+        self._AssociateResourcePackage = AssociateResourcePackage
+
+
+    def _deserialize(self, params):
+        self._ChargeType = params.get("ChargeType")
+        self._SlaType = params.get("SlaType")
+        self._AssociateResourcePackage = params.get("AssociateResourcePackage")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ModelRouterDetail(AbstractModel):
     r"""查询单个实例详细信息
 
@@ -25404,6 +25506,8 @@ class ModelRouterDetail(AbstractModel):
         :type Bandwidth: int
         :param _EipAddressId: <p>弹性公网IP的ID</p>
         :type EipAddressId: str
+        :param _BillingConfig: <p>计费信息</p>
+        :type BillingConfig: :class:`tencentcloud.clb.v20180317.models.ModelRouterBillingConfigOutput`
         """
         self._BudgetId = None
         self._BudgetName = None
@@ -25429,6 +25533,7 @@ class ModelRouterDetail(AbstractModel):
         self._VpcId = None
         self._Bandwidth = None
         self._EipAddressId = None
+        self._BillingConfig = None
 
     @property
     def BudgetId(self):
@@ -25697,6 +25802,17 @@ class ModelRouterDetail(AbstractModel):
     def EipAddressId(self, EipAddressId):
         self._EipAddressId = EipAddressId
 
+    @property
+    def BillingConfig(self):
+        r"""<p>计费信息</p>
+        :rtype: :class:`tencentcloud.clb.v20180317.models.ModelRouterBillingConfigOutput`
+        """
+        return self._BillingConfig
+
+    @BillingConfig.setter
+    def BillingConfig(self, BillingConfig):
+        self._BillingConfig = BillingConfig
+
 
     def _deserialize(self, params):
         self._BudgetId = params.get("BudgetId")
@@ -25744,6 +25860,9 @@ class ModelRouterDetail(AbstractModel):
         self._VpcId = params.get("VpcId")
         self._Bandwidth = params.get("Bandwidth")
         self._EipAddressId = params.get("EipAddressId")
+        if params.get("BillingConfig") is not None:
+            self._BillingConfig = ModelRouterBillingConfigOutput()
+            self._BillingConfig._deserialize(params.get("BillingConfig"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -26690,9 +26809,12 @@ class ModelRouterSet(AbstractModel):
         :param _VpcId: <p>模型路由实例所属VPC的ID</p>
         :type VpcId: str
         :param _Bandwidth: <p>带宽</p><p>单位：Mbps</p>
+注意：此字段可能返回 null，表示取不到有效值。
         :type Bandwidth: int
         :param _EipAddressId: <p>弹性公网IP的ID</p>
         :type EipAddressId: str
+        :param _BillingConfig: <p>计费信息</p>
+        :type BillingConfig: :class:`tencentcloud.clb.v20180317.models.ModelRouterBillingConfigOutput`
         """
         self._BudgetId = None
         self._BudgetName = None
@@ -26713,6 +26835,7 @@ class ModelRouterSet(AbstractModel):
         self._VpcId = None
         self._Bandwidth = None
         self._EipAddressId = None
+        self._BillingConfig = None
 
     @property
     def BudgetId(self):
@@ -26906,6 +27029,7 @@ class ModelRouterSet(AbstractModel):
     @property
     def Bandwidth(self):
         r"""<p>带宽</p><p>单位：Mbps</p>
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Bandwidth
@@ -26924,6 +27048,17 @@ class ModelRouterSet(AbstractModel):
     @EipAddressId.setter
     def EipAddressId(self, EipAddressId):
         self._EipAddressId = EipAddressId
+
+    @property
+    def BillingConfig(self):
+        r"""<p>计费信息</p>
+        :rtype: :class:`tencentcloud.clb.v20180317.models.ModelRouterBillingConfigOutput`
+        """
+        return self._BillingConfig
+
+    @BillingConfig.setter
+    def BillingConfig(self, BillingConfig):
+        self._BillingConfig = BillingConfig
 
 
     def _deserialize(self, params):
@@ -26958,6 +27093,9 @@ class ModelRouterSet(AbstractModel):
         self._VpcId = params.get("VpcId")
         self._Bandwidth = params.get("Bandwidth")
         self._EipAddressId = params.get("EipAddressId")
+        if params.get("BillingConfig") is not None:
+            self._BillingConfig = ModelRouterBillingConfigOutput()
+            self._BillingConfig._deserialize(params.get("BillingConfig"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -32949,12 +33087,15 @@ class RouterSettingWithFallBack(AbstractModel):
         :param _RoutingStrategyArgs: <p>L2模型组内路由调度算法参数</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type RoutingStrategyArgs: :class:`tencentcloud.clb.v20180317.models.RoutingStrategyArgs`
+        :param _StickyConfig: <p>粘连配置参数</p>
+        :type StickyConfig: :class:`tencentcloud.clb.v20180317.models.StickyConfig`
         """
         self._CrossModelGroupRoutingStrategy = None
         self._FallBack = None
         self._RoutingStrategy = None
         self._NumRetries = None
         self._RoutingStrategyArgs = None
+        self._StickyConfig = None
 
     @property
     def CrossModelGroupRoutingStrategy(self):
@@ -33016,6 +33157,17 @@ class RouterSettingWithFallBack(AbstractModel):
     def RoutingStrategyArgs(self, RoutingStrategyArgs):
         self._RoutingStrategyArgs = RoutingStrategyArgs
 
+    @property
+    def StickyConfig(self):
+        r"""<p>粘连配置参数</p>
+        :rtype: :class:`tencentcloud.clb.v20180317.models.StickyConfig`
+        """
+        return self._StickyConfig
+
+    @StickyConfig.setter
+    def StickyConfig(self, StickyConfig):
+        self._StickyConfig = StickyConfig
+
 
     def _deserialize(self, params):
         self._CrossModelGroupRoutingStrategy = params.get("CrossModelGroupRoutingStrategy")
@@ -33027,6 +33179,9 @@ class RouterSettingWithFallBack(AbstractModel):
         if params.get("RoutingStrategyArgs") is not None:
             self._RoutingStrategyArgs = RoutingStrategyArgs()
             self._RoutingStrategyArgs._deserialize(params.get("RoutingStrategyArgs"))
+        if params.get("StickyConfig") is not None:
+            self._StickyConfig = StickyConfig()
+            self._StickyConfig._deserialize(params.get("StickyConfig"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -33052,11 +33207,14 @@ class RouterSettingWithoutFallBack(AbstractModel):
         :type RoutingStrategyArgs: :class:`tencentcloud.clb.v20180317.models.RoutingStrategyArgs`
         :param _NumRetries: <p>CMR实例级别请求组内重试次数</p><p>取值范围：[0, 5]</p><p>默认值：2</p>
         :type NumRetries: int
+        :param _StickyConfig: <p>粘连路由配置参数</p>
+        :type StickyConfig: :class:`tencentcloud.clb.v20180317.models.StickyConfig`
         """
         self._RoutingStrategy = None
         self._CrossModelGroupRoutingStrategy = None
         self._RoutingStrategyArgs = None
         self._NumRetries = None
+        self._StickyConfig = None
 
     @property
     def RoutingStrategy(self):
@@ -33102,6 +33260,17 @@ class RouterSettingWithoutFallBack(AbstractModel):
     def NumRetries(self, NumRetries):
         self._NumRetries = NumRetries
 
+    @property
+    def StickyConfig(self):
+        r"""<p>粘连路由配置参数</p>
+        :rtype: :class:`tencentcloud.clb.v20180317.models.StickyConfig`
+        """
+        return self._StickyConfig
+
+    @StickyConfig.setter
+    def StickyConfig(self, StickyConfig):
+        self._StickyConfig = StickyConfig
+
 
     def _deserialize(self, params):
         self._RoutingStrategy = params.get("RoutingStrategy")
@@ -33110,6 +33279,9 @@ class RouterSettingWithoutFallBack(AbstractModel):
             self._RoutingStrategyArgs = RoutingStrategyArgs()
             self._RoutingStrategyArgs._deserialize(params.get("RoutingStrategyArgs"))
         self._NumRetries = params.get("NumRetries")
+        if params.get("StickyConfig") is not None:
+            self._StickyConfig = StickyConfig()
+            self._StickyConfig._deserialize(params.get("StickyConfig"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -35731,6 +35903,42 @@ class SpecAvailability(AbstractModel):
     def _deserialize(self, params):
         self._SpecType = params.get("SpecType")
         self._Availability = params.get("Availability")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class StickyConfig(AbstractModel):
+    r"""粘连路由配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Enabled: <p>是否开启粘连路由</p>
+        :type Enabled: bool
+        """
+        self._Enabled = None
+
+    @property
+    def Enabled(self):
+        r"""<p>是否开启粘连路由</p>
+        :rtype: bool
+        """
+        return self._Enabled
+
+    @Enabled.setter
+    def Enabled(self, Enabled):
+        self._Enabled = Enabled
+
+
+    def _deserialize(self, params):
+        self._Enabled = params.get("Enabled")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

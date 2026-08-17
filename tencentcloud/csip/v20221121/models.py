@@ -10247,6 +10247,305 @@ class CICDToken(AbstractModel):
         
 
 
+class CSIPMachineExtraInfo(AbstractModel):
+    r"""CSIP扫描任务主机额外资产信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _WanIP: <p>公网IP</p>
+        :type WanIP: str
+        :param _PrivateIP: <p>内网IP</p>
+        :type PrivateIP: str
+        :param _InstanceID: <p>实例ID（CVM/BM/ECM唯一标识）</p>
+        :type InstanceID: str
+        """
+        self._WanIP = None
+        self._PrivateIP = None
+        self._InstanceID = None
+
+    @property
+    def WanIP(self):
+        r"""<p>公网IP</p>
+        :rtype: str
+        """
+        return self._WanIP
+
+    @WanIP.setter
+    def WanIP(self, WanIP):
+        self._WanIP = WanIP
+
+    @property
+    def PrivateIP(self):
+        r"""<p>内网IP</p>
+        :rtype: str
+        """
+        return self._PrivateIP
+
+    @PrivateIP.setter
+    def PrivateIP(self, PrivateIP):
+        self._PrivateIP = PrivateIP
+
+    @property
+    def InstanceID(self):
+        r"""<p>实例ID（CVM/BM/ECM唯一标识）</p>
+        :rtype: str
+        """
+        return self._InstanceID
+
+    @InstanceID.setter
+    def InstanceID(self, InstanceID):
+        self._InstanceID = InstanceID
+
+
+    def _deserialize(self, params):
+        self._WanIP = params.get("WanIP")
+        self._PrivateIP = params.get("PrivateIP")
+        self._InstanceID = params.get("InstanceID")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CSIPMalwareScanUuidDetailItem(AbstractModel):
+    r"""文件查杀手动扫描详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Uuid: <p>UUID</p>
+        :type Uuid: str
+        :param _Quuid: <p>QUUID</p>
+        :type Quuid: str
+        :param _MachineAppId: <p>机器APPID</p>
+        :type MachineAppId: int
+        :param _MachineName: <p>机器名</p>
+        :type MachineName: str
+        :param _MachineIP: <p>机器IP</p>
+        :type MachineIP: str
+        :param _OsType: <p>类型</p>
+        :type OsType: str
+        :param _MachineExtraInfo: <p>主机额外信息（公网IP、内网IP、实例ID）</p>
+        :type MachineExtraInfo: :class:`tencentcloud.csip.v20221121.models.CSIPMachineExtraInfo`
+        :param _Status: <p>状态</p>
+        :type Status: int
+        :param _RiskCount: <p>风险个数</p>
+        :type RiskCount: int
+        :param _UsedTimeS: <p>扫描耗时（秒）</p>
+        :type UsedTimeS: int
+        :param _Exception: <p>异常码</p>
+        :type Exception: int
+        :param _ExceptionMessage: <p>异常信息</p>
+        :type ExceptionMessage: str
+        :param _CreateTime: <p>创建时间</p>
+        :type CreateTime: str
+        :param _ModifyTime: <p>修改时间</p>
+        :type ModifyTime: str
+        """
+        self._Uuid = None
+        self._Quuid = None
+        self._MachineAppId = None
+        self._MachineName = None
+        self._MachineIP = None
+        self._OsType = None
+        self._MachineExtraInfo = None
+        self._Status = None
+        self._RiskCount = None
+        self._UsedTimeS = None
+        self._Exception = None
+        self._ExceptionMessage = None
+        self._CreateTime = None
+        self._ModifyTime = None
+
+    @property
+    def Uuid(self):
+        r"""<p>UUID</p>
+        :rtype: str
+        """
+        return self._Uuid
+
+    @Uuid.setter
+    def Uuid(self, Uuid):
+        self._Uuid = Uuid
+
+    @property
+    def Quuid(self):
+        r"""<p>QUUID</p>
+        :rtype: str
+        """
+        return self._Quuid
+
+    @Quuid.setter
+    def Quuid(self, Quuid):
+        self._Quuid = Quuid
+
+    @property
+    def MachineAppId(self):
+        r"""<p>机器APPID</p>
+        :rtype: int
+        """
+        return self._MachineAppId
+
+    @MachineAppId.setter
+    def MachineAppId(self, MachineAppId):
+        self._MachineAppId = MachineAppId
+
+    @property
+    def MachineName(self):
+        r"""<p>机器名</p>
+        :rtype: str
+        """
+        return self._MachineName
+
+    @MachineName.setter
+    def MachineName(self, MachineName):
+        self._MachineName = MachineName
+
+    @property
+    def MachineIP(self):
+        r"""<p>机器IP</p>
+        :rtype: str
+        """
+        return self._MachineIP
+
+    @MachineIP.setter
+    def MachineIP(self, MachineIP):
+        self._MachineIP = MachineIP
+
+    @property
+    def OsType(self):
+        r"""<p>类型</p>
+        :rtype: str
+        """
+        return self._OsType
+
+    @OsType.setter
+    def OsType(self, OsType):
+        self._OsType = OsType
+
+    @property
+    def MachineExtraInfo(self):
+        r"""<p>主机额外信息（公网IP、内网IP、实例ID）</p>
+        :rtype: :class:`tencentcloud.csip.v20221121.models.CSIPMachineExtraInfo`
+        """
+        return self._MachineExtraInfo
+
+    @MachineExtraInfo.setter
+    def MachineExtraInfo(self, MachineExtraInfo):
+        self._MachineExtraInfo = MachineExtraInfo
+
+    @property
+    def Status(self):
+        r"""<p>状态</p>
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def RiskCount(self):
+        r"""<p>风险个数</p>
+        :rtype: int
+        """
+        return self._RiskCount
+
+    @RiskCount.setter
+    def RiskCount(self, RiskCount):
+        self._RiskCount = RiskCount
+
+    @property
+    def UsedTimeS(self):
+        r"""<p>扫描耗时（秒）</p>
+        :rtype: int
+        """
+        return self._UsedTimeS
+
+    @UsedTimeS.setter
+    def UsedTimeS(self, UsedTimeS):
+        self._UsedTimeS = UsedTimeS
+
+    @property
+    def Exception(self):
+        r"""<p>异常码</p>
+        :rtype: int
+        """
+        return self._Exception
+
+    @Exception.setter
+    def Exception(self, Exception):
+        self._Exception = Exception
+
+    @property
+    def ExceptionMessage(self):
+        r"""<p>异常信息</p>
+        :rtype: str
+        """
+        return self._ExceptionMessage
+
+    @ExceptionMessage.setter
+    def ExceptionMessage(self, ExceptionMessage):
+        self._ExceptionMessage = ExceptionMessage
+
+    @property
+    def CreateTime(self):
+        r"""<p>创建时间</p>
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def ModifyTime(self):
+        r"""<p>修改时间</p>
+        :rtype: str
+        """
+        return self._ModifyTime
+
+    @ModifyTime.setter
+    def ModifyTime(self, ModifyTime):
+        self._ModifyTime = ModifyTime
+
+
+    def _deserialize(self, params):
+        self._Uuid = params.get("Uuid")
+        self._Quuid = params.get("Quuid")
+        self._MachineAppId = params.get("MachineAppId")
+        self._MachineName = params.get("MachineName")
+        self._MachineIP = params.get("MachineIP")
+        self._OsType = params.get("OsType")
+        if params.get("MachineExtraInfo") is not None:
+            self._MachineExtraInfo = CSIPMachineExtraInfo()
+            self._MachineExtraInfo._deserialize(params.get("MachineExtraInfo"))
+        self._Status = params.get("Status")
+        self._RiskCount = params.get("RiskCount")
+        self._UsedTimeS = params.get("UsedTimeS")
+        self._Exception = params.get("Exception")
+        self._ExceptionMessage = params.get("ExceptionMessage")
+        self._CreateTime = params.get("CreateTime")
+        self._ModifyTime = params.get("ModifyTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CSIPTag(AbstractModel):
     r"""安全中心标签
 
@@ -11816,6 +12115,105 @@ class CallRecord(AbstractModel):
         
 
 
+class CancelEdrAlertIgnoreRequest(AbstractModel):
+    r"""CancelEdrAlertIgnore请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Targets: <p>告警定位列表（支持跨账号），最多500条</p>
+        :type Targets: list of EdrAlertTargetForIgnore
+        :param _MemberId: <p>集团账号的成员id</p>
+        :type MemberId: list of str
+        """
+        self._Targets = None
+        self._MemberId = None
+
+    @property
+    def Targets(self):
+        r"""<p>告警定位列表（支持跨账号），最多500条</p>
+        :rtype: list of EdrAlertTargetForIgnore
+        """
+        return self._Targets
+
+    @Targets.setter
+    def Targets(self, Targets):
+        self._Targets = Targets
+
+    @property
+    def MemberId(self):
+        r"""<p>集团账号的成员id</p>
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+
+    def _deserialize(self, params):
+        if params.get("Targets") is not None:
+            self._Targets = []
+            for item in params.get("Targets"):
+                obj = EdrAlertTargetForIgnore()
+                obj._deserialize(item)
+                self._Targets.append(obj)
+        self._MemberId = params.get("MemberId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CancelEdrAlertIgnoreResponse(AbstractModel):
+    r"""CancelEdrAlertIgnore返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CancelledCount: <p>数量</p>
+        :type CancelledCount: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._CancelledCount = None
+        self._RequestId = None
+
+    @property
+    def CancelledCount(self):
+        r"""<p>数量</p>
+        :rtype: int
+        """
+        return self._CancelledCount
+
+    @CancelledCount.setter
+    def CancelledCount(self, CancelledCount):
+        self._CancelledCount = CancelledCount
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._CancelledCount = params.get("CancelledCount")
+        self._RequestId = params.get("RequestId")
+
+
 class CheckViewRiskItem(AbstractModel):
     r"""检查项视角风险
 
@@ -12395,6 +12793,61 @@ class ClusterIDWithAppIdItem(AbstractModel):
     @property
     def AppId(self):
         r"""集群所属AppId
+        :rtype: int
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+
+    def _deserialize(self, params):
+        self._ClusterID = params.get("ClusterID")
+        self._AppId = params.get("AppId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ClusterWithAppIdItem(AbstractModel):
+    r"""集群定位信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterID: 集群ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClusterID: str
+        :param _AppId: 集群所属AppId
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AppId: int
+        """
+        self._ClusterID = None
+        self._AppId = None
+
+    @property
+    def ClusterID(self):
+        r"""集群ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ClusterID
+
+    @ClusterID.setter
+    def ClusterID(self, ClusterID):
+        self._ClusterID = ClusterID
+
+    @property
+    def AppId(self):
+        r"""集群所属AppId
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._AppId
@@ -17419,6 +17872,215 @@ class CreateAccessKeySyncTaskResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateCSIPManualMalwareScanRequest(AbstractModel):
+    r"""CreateCSIPManualMalwareScan请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ScanPattern: <p>扫描模式：0=全盘扫描 / 1=快速扫描，与 cwp_malware Scan RPC 的 scan_type 字段语义一致</p>
+        :type ScanPattern: int
+        :param _Scope: <p>生效范围档位：0=指定主机（ScopeSpecified） / 1=全选 CSIP 付费机器（ScopeAll）。旧前端不传时零值默认 0，保持兼容</p>
+        :type Scope: int
+        :param _MemberId: <p>集团账号的成员id</p>
+        :type MemberId: list of str
+        :param _EnableMemShellScan: <p>是否启用内存马扫描（0/1），透传给 cwp_malware</p>
+        :type EnableMemShellScan: int
+        :param _Timeout: <p>单机扫描超时秒数；&lt;=0 时取默认 3600</p>
+        :type Timeout: int
+        :param _TargetAppIDs: <p>多账号体系目标 AppId 列表；为空时 fallback 到 [req.AppID]（仅自身）。无论 Scope=0/1，均经过 csip.ValidateTargetAppIDsViaCSIP 校验</p>
+        :type TargetAppIDs: list of int non-negative
+        :param _EngineType: <p>扫描引擎类型，cloudapi 层透传给 cwp_malware，不持久化到主表，引擎模式 1标准模式 2增强模式 3严格模式枚举值：1： 标准模式2： 增强模式3： 严格模式</p>
+        :type EngineType: int
+        :param _InstanceIDsWithAppId: <p>指定机器列表，实例ID版本</p>
+        :type InstanceIDsWithAppId: list of InstanceIDWithAppIdItem
+        :param _ExcludeInstanceIDsWithAppId: <p>全选时候排除的机器，实例ID版本</p>
+        :type ExcludeInstanceIDsWithAppId: list of InstanceIDWithAppIdItem
+        """
+        self._ScanPattern = None
+        self._Scope = None
+        self._MemberId = None
+        self._EnableMemShellScan = None
+        self._Timeout = None
+        self._TargetAppIDs = None
+        self._EngineType = None
+        self._InstanceIDsWithAppId = None
+        self._ExcludeInstanceIDsWithAppId = None
+
+    @property
+    def ScanPattern(self):
+        r"""<p>扫描模式：0=全盘扫描 / 1=快速扫描，与 cwp_malware Scan RPC 的 scan_type 字段语义一致</p>
+        :rtype: int
+        """
+        return self._ScanPattern
+
+    @ScanPattern.setter
+    def ScanPattern(self, ScanPattern):
+        self._ScanPattern = ScanPattern
+
+    @property
+    def Scope(self):
+        r"""<p>生效范围档位：0=指定主机（ScopeSpecified） / 1=全选 CSIP 付费机器（ScopeAll）。旧前端不传时零值默认 0，保持兼容</p>
+        :rtype: int
+        """
+        return self._Scope
+
+    @Scope.setter
+    def Scope(self, Scope):
+        self._Scope = Scope
+
+    @property
+    def MemberId(self):
+        r"""<p>集团账号的成员id</p>
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+    @property
+    def EnableMemShellScan(self):
+        r"""<p>是否启用内存马扫描（0/1），透传给 cwp_malware</p>
+        :rtype: int
+        """
+        return self._EnableMemShellScan
+
+    @EnableMemShellScan.setter
+    def EnableMemShellScan(self, EnableMemShellScan):
+        self._EnableMemShellScan = EnableMemShellScan
+
+    @property
+    def Timeout(self):
+        r"""<p>单机扫描超时秒数；&lt;=0 时取默认 3600</p>
+        :rtype: int
+        """
+        return self._Timeout
+
+    @Timeout.setter
+    def Timeout(self, Timeout):
+        self._Timeout = Timeout
+
+    @property
+    def TargetAppIDs(self):
+        r"""<p>多账号体系目标 AppId 列表；为空时 fallback 到 [req.AppID]（仅自身）。无论 Scope=0/1，均经过 csip.ValidateTargetAppIDsViaCSIP 校验</p>
+        :rtype: list of int non-negative
+        """
+        return self._TargetAppIDs
+
+    @TargetAppIDs.setter
+    def TargetAppIDs(self, TargetAppIDs):
+        self._TargetAppIDs = TargetAppIDs
+
+    @property
+    def EngineType(self):
+        r"""<p>扫描引擎类型，cloudapi 层透传给 cwp_malware，不持久化到主表，引擎模式 1标准模式 2增强模式 3严格模式枚举值：1： 标准模式2： 增强模式3： 严格模式</p>
+        :rtype: int
+        """
+        return self._EngineType
+
+    @EngineType.setter
+    def EngineType(self, EngineType):
+        self._EngineType = EngineType
+
+    @property
+    def InstanceIDsWithAppId(self):
+        r"""<p>指定机器列表，实例ID版本</p>
+        :rtype: list of InstanceIDWithAppIdItem
+        """
+        return self._InstanceIDsWithAppId
+
+    @InstanceIDsWithAppId.setter
+    def InstanceIDsWithAppId(self, InstanceIDsWithAppId):
+        self._InstanceIDsWithAppId = InstanceIDsWithAppId
+
+    @property
+    def ExcludeInstanceIDsWithAppId(self):
+        r"""<p>全选时候排除的机器，实例ID版本</p>
+        :rtype: list of InstanceIDWithAppIdItem
+        """
+        return self._ExcludeInstanceIDsWithAppId
+
+    @ExcludeInstanceIDsWithAppId.setter
+    def ExcludeInstanceIDsWithAppId(self, ExcludeInstanceIDsWithAppId):
+        self._ExcludeInstanceIDsWithAppId = ExcludeInstanceIDsWithAppId
+
+
+    def _deserialize(self, params):
+        self._ScanPattern = params.get("ScanPattern")
+        self._Scope = params.get("Scope")
+        self._MemberId = params.get("MemberId")
+        self._EnableMemShellScan = params.get("EnableMemShellScan")
+        self._Timeout = params.get("Timeout")
+        self._TargetAppIDs = params.get("TargetAppIDs")
+        self._EngineType = params.get("EngineType")
+        if params.get("InstanceIDsWithAppId") is not None:
+            self._InstanceIDsWithAppId = []
+            for item in params.get("InstanceIDsWithAppId"):
+                obj = InstanceIDWithAppIdItem()
+                obj._deserialize(item)
+                self._InstanceIDsWithAppId.append(obj)
+        if params.get("ExcludeInstanceIDsWithAppId") is not None:
+            self._ExcludeInstanceIDsWithAppId = []
+            for item in params.get("ExcludeInstanceIDsWithAppId"):
+                obj = InstanceIDWithAppIdItem()
+                obj._deserialize(item)
+                self._ExcludeInstanceIDsWithAppId.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateCSIPManualMalwareScanResponse(AbstractModel):
+    r"""CreateCSIPManualMalwareScan返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: <p>任务ID</p>
+        :type TaskId: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        r"""<p>任务ID</p>
+        :rtype: int
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
+
+
 class CreateCosAssetSyncTaskRequest(AbstractModel):
     r"""CreateCosAssetSyncTask请求参数结构体
 
@@ -20596,6 +21258,434 @@ class CreateDspmWhitelistStrategyResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateEDRManualScanRequest(AbstractModel):
+    r"""CreateEDRManualScan请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AssetSelectionType: <p>资产选择方式：all-全部资产/tag-按标签选择(仅主机)/direct-直接选择</p>
+        :type AssetSelectionType: str
+        :param _ScanType: <p>检测模式：full-全盘检测/quick-快速检测/include-仅检测指定路径/exclude-排除指定路径</p>
+        :type ScanType: str
+        :param _MemberId: <p>集团账号的成员id</p>
+        :type MemberId: list of str
+        :param _InstanceIDsWithAppId: <p>直接选择的主机列表（AssetSelectionType=direct或all时使用）</p>
+        :type InstanceIDsWithAppId: list of InstanceIDWithAppIdItem
+        :param _ExcludeInstanceIDsWithAppId: <p>剔除的主机列表（AssetSelectionType=all时使用）</p>
+        :type ExcludeInstanceIDsWithAppId: list of InstanceIDWithAppIdItem
+        :param _TagIds: <p>主机对应的标签ID</p>
+        :type TagIds: list of int non-negative
+        :param _ClusterIDsWithAppId: <p>直接选择的集群列表</p>
+        :type ClusterIDsWithAppId: list of ClusterWithAppIdItem
+        :param _ExcludeClusterIDsWithAppId: <p>剔除的集群列表（AssetSelectionType=all时使用）</p>
+        :type ExcludeClusterIDsWithAppId: list of ClusterWithAppIdItem
+        :param _CustomPaths: <p>自选路径列表（ScanType=include或exclude时必填，最多100条）</p>
+        :type CustomPaths: list of str
+        :param _Timeout: <p>超时时间（秒），上限7200</p>
+        :type Timeout: int
+        :param _EnableMemShellScan: <p>是否开启深度检测：0-否/1-是</p>
+        :type EnableMemShellScan: int
+        """
+        self._AssetSelectionType = None
+        self._ScanType = None
+        self._MemberId = None
+        self._InstanceIDsWithAppId = None
+        self._ExcludeInstanceIDsWithAppId = None
+        self._TagIds = None
+        self._ClusterIDsWithAppId = None
+        self._ExcludeClusterIDsWithAppId = None
+        self._CustomPaths = None
+        self._Timeout = None
+        self._EnableMemShellScan = None
+
+    @property
+    def AssetSelectionType(self):
+        r"""<p>资产选择方式：all-全部资产/tag-按标签选择(仅主机)/direct-直接选择</p>
+        :rtype: str
+        """
+        return self._AssetSelectionType
+
+    @AssetSelectionType.setter
+    def AssetSelectionType(self, AssetSelectionType):
+        self._AssetSelectionType = AssetSelectionType
+
+    @property
+    def ScanType(self):
+        r"""<p>检测模式：full-全盘检测/quick-快速检测/include-仅检测指定路径/exclude-排除指定路径</p>
+        :rtype: str
+        """
+        return self._ScanType
+
+    @ScanType.setter
+    def ScanType(self, ScanType):
+        self._ScanType = ScanType
+
+    @property
+    def MemberId(self):
+        r"""<p>集团账号的成员id</p>
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+    @property
+    def InstanceIDsWithAppId(self):
+        r"""<p>直接选择的主机列表（AssetSelectionType=direct或all时使用）</p>
+        :rtype: list of InstanceIDWithAppIdItem
+        """
+        return self._InstanceIDsWithAppId
+
+    @InstanceIDsWithAppId.setter
+    def InstanceIDsWithAppId(self, InstanceIDsWithAppId):
+        self._InstanceIDsWithAppId = InstanceIDsWithAppId
+
+    @property
+    def ExcludeInstanceIDsWithAppId(self):
+        r"""<p>剔除的主机列表（AssetSelectionType=all时使用）</p>
+        :rtype: list of InstanceIDWithAppIdItem
+        """
+        return self._ExcludeInstanceIDsWithAppId
+
+    @ExcludeInstanceIDsWithAppId.setter
+    def ExcludeInstanceIDsWithAppId(self, ExcludeInstanceIDsWithAppId):
+        self._ExcludeInstanceIDsWithAppId = ExcludeInstanceIDsWithAppId
+
+    @property
+    def TagIds(self):
+        r"""<p>主机对应的标签ID</p>
+        :rtype: list of int non-negative
+        """
+        return self._TagIds
+
+    @TagIds.setter
+    def TagIds(self, TagIds):
+        self._TagIds = TagIds
+
+    @property
+    def ClusterIDsWithAppId(self):
+        r"""<p>直接选择的集群列表</p>
+        :rtype: list of ClusterWithAppIdItem
+        """
+        return self._ClusterIDsWithAppId
+
+    @ClusterIDsWithAppId.setter
+    def ClusterIDsWithAppId(self, ClusterIDsWithAppId):
+        self._ClusterIDsWithAppId = ClusterIDsWithAppId
+
+    @property
+    def ExcludeClusterIDsWithAppId(self):
+        r"""<p>剔除的集群列表（AssetSelectionType=all时使用）</p>
+        :rtype: list of ClusterWithAppIdItem
+        """
+        return self._ExcludeClusterIDsWithAppId
+
+    @ExcludeClusterIDsWithAppId.setter
+    def ExcludeClusterIDsWithAppId(self, ExcludeClusterIDsWithAppId):
+        self._ExcludeClusterIDsWithAppId = ExcludeClusterIDsWithAppId
+
+    @property
+    def CustomPaths(self):
+        r"""<p>自选路径列表（ScanType=include或exclude时必填，最多100条）</p>
+        :rtype: list of str
+        """
+        return self._CustomPaths
+
+    @CustomPaths.setter
+    def CustomPaths(self, CustomPaths):
+        self._CustomPaths = CustomPaths
+
+    @property
+    def Timeout(self):
+        r"""<p>超时时间（秒），上限7200</p>
+        :rtype: int
+        """
+        return self._Timeout
+
+    @Timeout.setter
+    def Timeout(self, Timeout):
+        self._Timeout = Timeout
+
+    @property
+    def EnableMemShellScan(self):
+        r"""<p>是否开启深度检测：0-否/1-是</p>
+        :rtype: int
+        """
+        return self._EnableMemShellScan
+
+    @EnableMemShellScan.setter
+    def EnableMemShellScan(self, EnableMemShellScan):
+        self._EnableMemShellScan = EnableMemShellScan
+
+
+    def _deserialize(self, params):
+        self._AssetSelectionType = params.get("AssetSelectionType")
+        self._ScanType = params.get("ScanType")
+        self._MemberId = params.get("MemberId")
+        if params.get("InstanceIDsWithAppId") is not None:
+            self._InstanceIDsWithAppId = []
+            for item in params.get("InstanceIDsWithAppId"):
+                obj = InstanceIDWithAppIdItem()
+                obj._deserialize(item)
+                self._InstanceIDsWithAppId.append(obj)
+        if params.get("ExcludeInstanceIDsWithAppId") is not None:
+            self._ExcludeInstanceIDsWithAppId = []
+            for item in params.get("ExcludeInstanceIDsWithAppId"):
+                obj = InstanceIDWithAppIdItem()
+                obj._deserialize(item)
+                self._ExcludeInstanceIDsWithAppId.append(obj)
+        self._TagIds = params.get("TagIds")
+        if params.get("ClusterIDsWithAppId") is not None:
+            self._ClusterIDsWithAppId = []
+            for item in params.get("ClusterIDsWithAppId"):
+                obj = ClusterWithAppIdItem()
+                obj._deserialize(item)
+                self._ClusterIDsWithAppId.append(obj)
+        if params.get("ExcludeClusterIDsWithAppId") is not None:
+            self._ExcludeClusterIDsWithAppId = []
+            for item in params.get("ExcludeClusterIDsWithAppId"):
+                obj = ClusterWithAppIdItem()
+                obj._deserialize(item)
+                self._ExcludeClusterIDsWithAppId.append(obj)
+        self._CustomPaths = params.get("CustomPaths")
+        self._Timeout = params.get("Timeout")
+        self._EnableMemShellScan = params.get("EnableMemShellScan")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateEDRManualScanResponse(AbstractModel):
+    r"""CreateEDRManualScan返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Tasks: <p>创建的任务列表（主机和容器分别一条）</p>
+        :type Tasks: list of CreatedTaskItem
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Tasks = None
+        self._RequestId = None
+
+    @property
+    def Tasks(self):
+        r"""<p>创建的任务列表（主机和容器分别一条）</p>
+        :rtype: list of CreatedTaskItem
+        """
+        return self._Tasks
+
+    @Tasks.setter
+    def Tasks(self, Tasks):
+        self._Tasks = Tasks
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Tasks") is not None:
+            self._Tasks = []
+            for item in params.get("Tasks"):
+                obj = CreatedTaskItem()
+                obj._deserialize(item)
+                self._Tasks.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class CreateEdrAlertExportJobRequest(AbstractModel):
+    r"""CreateEdrAlertExportJob请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MemberId: <p>集团账号的成员id</p>
+        :type MemberId: list of str
+        :param _Filters: <p>PolicyType - int - 是否必填：否 - 策略类型PolicyName - string - 是否必填：否 - 策略名称Domain - string - 是否必填：否 - 域名(先对域名做urlencode,再base64)PolicyAction- int - 是否必填：否 - 策略动作IsEnabled - int - 是否必填：否 - 是否生效</p>
+        :type Filters: list of EDRFilter
+        :param _Limit: <p>限制条数,默认10,最大100</p>
+        :type Limit: int
+        :param _Offset: <p>偏移量,默认0</p>
+        :type Offset: int
+        :param _Order: <p>排序方式: [ASC:升序|DESC:降序]</p>
+        :type Order: str
+        :param _By: <p>可选排序列: [LatestDetectTime]</p>
+        :type By: str
+        :param _JobName: <p>自定义任务名，允许重复；传空自动生成默认名 alert_{appid}_{时间戳}（如 alert_1234567890_20260501114522）；仅支持数字/字母/下划线/短横线/中文，≤100 字符（按字符/rune 计，中文按 1 个字符），校验失败返回 InvalidParameter（文案 TextEdrExportJobNameInvalid）</p>
+        :type JobName: str
+        """
+        self._MemberId = None
+        self._Filters = None
+        self._Limit = None
+        self._Offset = None
+        self._Order = None
+        self._By = None
+        self._JobName = None
+
+    @property
+    def MemberId(self):
+        r"""<p>集团账号的成员id</p>
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+    @property
+    def Filters(self):
+        r"""<p>PolicyType - int - 是否必填：否 - 策略类型PolicyName - string - 是否必填：否 - 策略名称Domain - string - 是否必填：否 - 域名(先对域名做urlencode,再base64)PolicyAction- int - 是否必填：否 - 策略动作IsEnabled - int - 是否必填：否 - 是否生效</p>
+        :rtype: list of EDRFilter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Limit(self):
+        r"""<p>限制条数,默认10,最大100</p>
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        r"""<p>偏移量,默认0</p>
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Order(self):
+        r"""<p>排序方式: [ASC:升序|DESC:降序]</p>
+        :rtype: str
+        """
+        return self._Order
+
+    @Order.setter
+    def Order(self, Order):
+        self._Order = Order
+
+    @property
+    def By(self):
+        r"""<p>可选排序列: [LatestDetectTime]</p>
+        :rtype: str
+        """
+        return self._By
+
+    @By.setter
+    def By(self, By):
+        self._By = By
+
+    @property
+    def JobName(self):
+        r"""<p>自定义任务名，允许重复；传空自动生成默认名 alert_{appid}_{时间戳}（如 alert_1234567890_20260501114522）；仅支持数字/字母/下划线/短横线/中文，≤100 字符（按字符/rune 计，中文按 1 个字符），校验失败返回 InvalidParameter（文案 TextEdrExportJobNameInvalid）</p>
+        :rtype: str
+        """
+        return self._JobName
+
+    @JobName.setter
+    def JobName(self, JobName):
+        self._JobName = JobName
+
+
+    def _deserialize(self, params):
+        self._MemberId = params.get("MemberId")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = EDRFilter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        self._Order = params.get("Order")
+        self._By = params.get("By")
+        self._JobName = params.get("JobName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateEdrAlertExportJobResponse(AbstractModel):
+    r"""CreateEdrAlertExportJob返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _JobId: <p>导出任务ID</p>
+        :type JobId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._JobId = None
+        self._RequestId = None
+
+    @property
+    def JobId(self):
+        r"""<p>导出任务ID</p>
+        :rtype: str
+        """
+        return self._JobId
+
+    @JobId.setter
+    def JobId(self, JobId):
+        self._JobId = JobId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._JobId = params.get("JobId")
+        self._RequestId = params.get("RequestId")
+
+
 class CreateHostVulExportJobRequest(AbstractModel):
     r"""CreateHostVulExportJob请求参数结构体
 
@@ -22157,6 +23247,78 @@ class CreateVulScanManualResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreatedTaskItem(AbstractModel):
+    r"""创建任务返回项
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: <p>任务ID</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskId: int
+        :param _TaskType: <p>任务类型：HOST-主机扫描/CONTAINER-容器扫描</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskType: str
+        :param _AppId: <p>任务所属账号AppId</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AppId: int
+        """
+        self._TaskId = None
+        self._TaskType = None
+        self._AppId = None
+
+    @property
+    def TaskId(self):
+        r"""<p>任务ID</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def TaskType(self):
+        r"""<p>任务类型：HOST-主机扫描/CONTAINER-容器扫描</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TaskType
+
+    @TaskType.setter
+    def TaskType(self, TaskType):
+        self._TaskType = TaskType
+
+    @property
+    def AppId(self):
+        r"""<p>任务所属账号AppId</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._TaskType = params.get("TaskType")
+        self._AppId = params.get("AppId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CredentialEffectScope(AbstractModel):
     r"""生效机器范围，用于指定凭证在哪些机器上生效
 
@@ -23242,6 +24404,115 @@ class DbAssetInfo(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class DeleteCSIPMalwareScanTaskRequest(AbstractModel):
+    r"""DeleteCSIPMalwareScanTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskIds: <p>任务ID</p>
+        :type TaskIds: list of int non-negative
+        :param _MemberId: <p>集团账号的成员id</p>
+        :type MemberId: list of str
+        """
+        self._TaskIds = None
+        self._MemberId = None
+
+    @property
+    def TaskIds(self):
+        r"""<p>任务ID</p>
+        :rtype: list of int non-negative
+        """
+        return self._TaskIds
+
+    @TaskIds.setter
+    def TaskIds(self, TaskIds):
+        self._TaskIds = TaskIds
+
+    @property
+    def MemberId(self):
+        r"""<p>集团账号的成员id</p>
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+
+    def _deserialize(self, params):
+        self._TaskIds = params.get("TaskIds")
+        self._MemberId = params.get("MemberId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteCSIPMalwareScanTaskResponse(AbstractModel):
+    r"""DeleteCSIPMalwareScanTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SuccessCount: <p>实际物理删除的任务数（主表 affected rows）</p>
+        :type SuccessCount: int
+        :param _FailedIds: <p>因运行中（子表 status IN {0,1,11} 计数 &gt; 0）而未删除的 TaskId 列表；越权 / 不存在的 ID 不出现在此</p>
+        :type FailedIds: list of int non-negative
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._SuccessCount = None
+        self._FailedIds = None
+        self._RequestId = None
+
+    @property
+    def SuccessCount(self):
+        r"""<p>实际物理删除的任务数（主表 affected rows）</p>
+        :rtype: int
+        """
+        return self._SuccessCount
+
+    @SuccessCount.setter
+    def SuccessCount(self, SuccessCount):
+        self._SuccessCount = SuccessCount
+
+    @property
+    def FailedIds(self):
+        r"""<p>因运行中（子表 status IN {0,1,11} 计数 &gt; 0）而未删除的 TaskId 列表；越权 / 不存在的 ID 不出现在此</p>
+        :rtype: list of int non-negative
+        """
+        return self._FailedIds
+
+    @FailedIds.setter
+    def FailedIds(self, FailedIds):
+        self._FailedIds = FailedIds
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._SuccessCount = params.get("SuccessCount")
+        self._FailedIds = params.get("FailedIds")
+        self._RequestId = params.get("RequestId")
 
 
 class DeleteCosAkAssetRequest(AbstractModel):
@@ -24625,6 +25896,209 @@ class DeleteDspmWhitelistStrategyResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteEDRRulesRequest(AbstractModel):
+    r"""DeleteEDRRules请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RuleIDs: <p>规则ID数组. (最大100条)</p>
+        :type RuleIDs: list of str
+        :param _RuleType: <p>规则类型，0-system 1-custom，目前只支持删除自定义规则</p>
+        :type RuleType: int
+        :param _MemberId: <p>集团账号的成员id</p>
+        :type MemberId: list of str
+        :param _TargetAppIDs: <p>删除策略对应的APPID</p>
+        :type TargetAppIDs: list of int non-negative
+        """
+        self._RuleIDs = None
+        self._RuleType = None
+        self._MemberId = None
+        self._TargetAppIDs = None
+
+    @property
+    def RuleIDs(self):
+        r"""<p>规则ID数组. (最大100条)</p>
+        :rtype: list of str
+        """
+        return self._RuleIDs
+
+    @RuleIDs.setter
+    def RuleIDs(self, RuleIDs):
+        self._RuleIDs = RuleIDs
+
+    @property
+    def RuleType(self):
+        r"""<p>规则类型，0-system 1-custom，目前只支持删除自定义规则</p>
+        :rtype: int
+        """
+        return self._RuleType
+
+    @RuleType.setter
+    def RuleType(self, RuleType):
+        self._RuleType = RuleType
+
+    @property
+    def MemberId(self):
+        r"""<p>集团账号的成员id</p>
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+    @property
+    def TargetAppIDs(self):
+        r"""<p>删除策略对应的APPID</p>
+        :rtype: list of int non-negative
+        """
+        return self._TargetAppIDs
+
+    @TargetAppIDs.setter
+    def TargetAppIDs(self, TargetAppIDs):
+        self._TargetAppIDs = TargetAppIDs
+
+
+    def _deserialize(self, params):
+        self._RuleIDs = params.get("RuleIDs")
+        self._RuleType = params.get("RuleType")
+        self._MemberId = params.get("MemberId")
+        self._TargetAppIDs = params.get("TargetAppIDs")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteEDRRulesResponse(AbstractModel):
+    r"""DeleteEDRRules返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteEDRScanTaskRequest(AbstractModel):
+    r"""DeleteEDRScanTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: <p>任务ID</p>
+        :type TaskId: int
+        :param _MemberId: <p>集团账号的成员id</p>
+        :type MemberId: list of str
+        """
+        self._TaskId = None
+        self._MemberId = None
+
+    @property
+    def TaskId(self):
+        r"""<p>任务ID</p>
+        :rtype: int
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def MemberId(self):
+        r"""<p>集团账号的成员id</p>
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._MemberId = params.get("MemberId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteEDRScanTaskResponse(AbstractModel):
+    r"""DeleteEDRScanTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: <p>被删除任务的taskId</p>
+        :type TaskId: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        r"""<p>被删除任务的taskId</p>
+        :rtype: int
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
         self._RequestId = params.get("RequestId")
 
 
@@ -28495,6 +29969,489 @@ class DescribeCLSLogListV3Response(AbstractModel):
         if params.get("Topics") is not None:
             self._Topics = LogSearchTopics()
             self._Topics._deserialize(params.get("Topics"))
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeCSIPMalwareScanTaskDetailRequest(AbstractModel):
+    r"""DescribeCSIPMalwareScanTaskDetail请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: <p>任务ID</p>
+        :type TaskId: int
+        :param _MemberId: <p>集团账号的成员id</p>
+        :type MemberId: list of str
+        :param _Filters: <p>PolicyType - int - 是否必填：否 - 策略类型PolicyName - string - 是否必填：否 - 策略名称Domain - string - 是否必填：否 - 域名(先对域名做urlencode,再base64)PolicyAction- int - 是否必填：否 - 策略动作IsEnabled - int - 是否必填：否 - 是否生效</p>
+        :type Filters: list of EDRFilter
+        :param _Limit: <p>限制条数,默认10,最大100</p>
+        :type Limit: int
+        :param _Offset: <p>偏移量,默认0</p>
+        :type Offset: int
+        :param _Order: <p>排序方式: [ASC:升序|DESC:降序]</p>
+        :type Order: str
+        :param _By: <p>可选排序列，暂不支持排序，默认按照id降序排列</p>
+        :type By: str
+        """
+        self._TaskId = None
+        self._MemberId = None
+        self._Filters = None
+        self._Limit = None
+        self._Offset = None
+        self._Order = None
+        self._By = None
+
+    @property
+    def TaskId(self):
+        r"""<p>任务ID</p>
+        :rtype: int
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def MemberId(self):
+        r"""<p>集团账号的成员id</p>
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+    @property
+    def Filters(self):
+        r"""<p>PolicyType - int - 是否必填：否 - 策略类型PolicyName - string - 是否必填：否 - 策略名称Domain - string - 是否必填：否 - 域名(先对域名做urlencode,再base64)PolicyAction- int - 是否必填：否 - 策略动作IsEnabled - int - 是否必填：否 - 是否生效</p>
+        :rtype: list of EDRFilter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Limit(self):
+        r"""<p>限制条数,默认10,最大100</p>
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        r"""<p>偏移量,默认0</p>
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Order(self):
+        r"""<p>排序方式: [ASC:升序|DESC:降序]</p>
+        :rtype: str
+        """
+        return self._Order
+
+    @Order.setter
+    def Order(self, Order):
+        self._Order = Order
+
+    @property
+    def By(self):
+        r"""<p>可选排序列，暂不支持排序，默认按照id降序排列</p>
+        :rtype: str
+        """
+        return self._By
+
+    @By.setter
+    def By(self, By):
+        self._By = By
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._MemberId = params.get("MemberId")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = EDRFilter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        self._Order = params.get("Order")
+        self._By = params.get("By")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCSIPMalwareScanTaskDetailResponse(AbstractModel):
+    r"""DescribeCSIPMalwareScanTaskDetail返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: <p>总数</p>
+        :type TotalCount: int
+        :param _List: <p>列表</p>
+        :type List: list of CSIPMalwareScanUuidDetailItem
+        :param _ScanBeginTime: <p>扫描开始时间，格式 2006-01-02 15:04:05</p>
+        :type ScanBeginTime: str
+        :param _ScanEndTime: <p>扫描结束时间，格式 2006-01-02 15:04:05，扫描未完成时为空字符串</p>
+        :type ScanEndTime: str
+        :param _ScanMachineCount: <p>扫描机器总数</p>
+        :type ScanMachineCount: int
+        :param _RiskMachineCount: <p>影响机器数（有风险的机器数）</p>
+        :type RiskMachineCount: int
+        :param _ScanContent: <p>扫描内容，0-全盘扫描 1-快速扫描</p>
+        :type ScanContent: list of str
+        :param _Type: <p>任务类型，0-一键扫描 1-定时扫描 2-重新扫描</p>
+        :type Type: int
+        :param _ScanLeftTime: <p>预估剩余扫描时间（分钟），扫描完成时为0</p>
+        :type ScanLeftTime: int
+        :param _StoppingAll: <p>是否所有机器正在停止中，true表示停止中</p>
+        :type StoppingAll: bool
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._List = None
+        self._ScanBeginTime = None
+        self._ScanEndTime = None
+        self._ScanMachineCount = None
+        self._RiskMachineCount = None
+        self._ScanContent = None
+        self._Type = None
+        self._ScanLeftTime = None
+        self._StoppingAll = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        r"""<p>总数</p>
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def List(self):
+        r"""<p>列表</p>
+        :rtype: list of CSIPMalwareScanUuidDetailItem
+        """
+        return self._List
+
+    @List.setter
+    def List(self, List):
+        self._List = List
+
+    @property
+    def ScanBeginTime(self):
+        r"""<p>扫描开始时间，格式 2006-01-02 15:04:05</p>
+        :rtype: str
+        """
+        return self._ScanBeginTime
+
+    @ScanBeginTime.setter
+    def ScanBeginTime(self, ScanBeginTime):
+        self._ScanBeginTime = ScanBeginTime
+
+    @property
+    def ScanEndTime(self):
+        r"""<p>扫描结束时间，格式 2006-01-02 15:04:05，扫描未完成时为空字符串</p>
+        :rtype: str
+        """
+        return self._ScanEndTime
+
+    @ScanEndTime.setter
+    def ScanEndTime(self, ScanEndTime):
+        self._ScanEndTime = ScanEndTime
+
+    @property
+    def ScanMachineCount(self):
+        r"""<p>扫描机器总数</p>
+        :rtype: int
+        """
+        return self._ScanMachineCount
+
+    @ScanMachineCount.setter
+    def ScanMachineCount(self, ScanMachineCount):
+        self._ScanMachineCount = ScanMachineCount
+
+    @property
+    def RiskMachineCount(self):
+        r"""<p>影响机器数（有风险的机器数）</p>
+        :rtype: int
+        """
+        return self._RiskMachineCount
+
+    @RiskMachineCount.setter
+    def RiskMachineCount(self, RiskMachineCount):
+        self._RiskMachineCount = RiskMachineCount
+
+    @property
+    def ScanContent(self):
+        r"""<p>扫描内容，0-全盘扫描 1-快速扫描</p>
+        :rtype: list of str
+        """
+        return self._ScanContent
+
+    @ScanContent.setter
+    def ScanContent(self, ScanContent):
+        self._ScanContent = ScanContent
+
+    @property
+    def Type(self):
+        r"""<p>任务类型，0-一键扫描 1-定时扫描 2-重新扫描</p>
+        :rtype: int
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def ScanLeftTime(self):
+        r"""<p>预估剩余扫描时间（分钟），扫描完成时为0</p>
+        :rtype: int
+        """
+        return self._ScanLeftTime
+
+    @ScanLeftTime.setter
+    def ScanLeftTime(self, ScanLeftTime):
+        self._ScanLeftTime = ScanLeftTime
+
+    @property
+    def StoppingAll(self):
+        r"""<p>是否所有机器正在停止中，true表示停止中</p>
+        :rtype: bool
+        """
+        return self._StoppingAll
+
+    @StoppingAll.setter
+    def StoppingAll(self, StoppingAll):
+        self._StoppingAll = StoppingAll
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("List") is not None:
+            self._List = []
+            for item in params.get("List"):
+                obj = CSIPMalwareScanUuidDetailItem()
+                obj._deserialize(item)
+                self._List.append(obj)
+        self._ScanBeginTime = params.get("ScanBeginTime")
+        self._ScanEndTime = params.get("ScanEndTime")
+        self._ScanMachineCount = params.get("ScanMachineCount")
+        self._RiskMachineCount = params.get("RiskMachineCount")
+        self._ScanContent = params.get("ScanContent")
+        self._Type = params.get("Type")
+        self._ScanLeftTime = params.get("ScanLeftTime")
+        self._StoppingAll = params.get("StoppingAll")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeCSIPMalwareScanTaskProgressRequest(AbstractModel):
+    r"""DescribeCSIPMalwareScanTaskProgress请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MemberId: <p>集团账号的成员id</p>
+        :type MemberId: list of str
+        :param _TaskId: <p>任务ID</p>
+        :type TaskId: int
+        """
+        self._MemberId = None
+        self._TaskId = None
+
+    @property
+    def MemberId(self):
+        r"""<p>集团账号的成员id</p>
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+    @property
+    def TaskId(self):
+        r"""<p>任务ID</p>
+        :rtype: int
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+
+    def _deserialize(self, params):
+        self._MemberId = params.get("MemberId")
+        self._TaskId = params.get("TaskId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCSIPMalwareScanTaskProgressResponse(AbstractModel):
+    r"""DescribeCSIPMalwareScanTaskProgress返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: <p>任务ID</p>
+        :type TaskId: int
+        :param _Status: <p>任务整体状态枚举值：0： NeverScanned1： Scanning2： Finished3： Stopping4： Stopped</p>
+        :type Status: int
+        :param _Schedule: <p>进度百分比 0~100（公式：20 + 80 × finished/total，含运行中机器时强制 ≤ 99；Status=Stopped 时强制 100）</p>
+        :type Schedule: int
+        :param _TotalCount: <p>子表机器总数</p>
+        :type TotalCount: int
+        :param _FinishedCount: <p>进入终态的机器数（含 Terminating(6) / Terminated(7)）</p>
+        :type FinishedCount: int
+        :param _RiskCount: <p>累计风险告警数（来自主表 total_risk_count）</p>
+        :type RiskCount: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._Status = None
+        self._Schedule = None
+        self._TotalCount = None
+        self._FinishedCount = None
+        self._RiskCount = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        r"""<p>任务ID</p>
+        :rtype: int
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def Status(self):
+        r"""<p>任务整体状态枚举值：0： NeverScanned1： Scanning2： Finished3： Stopping4： Stopped</p>
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Schedule(self):
+        r"""<p>进度百分比 0~100（公式：20 + 80 × finished/total，含运行中机器时强制 ≤ 99；Status=Stopped 时强制 100）</p>
+        :rtype: int
+        """
+        return self._Schedule
+
+    @Schedule.setter
+    def Schedule(self, Schedule):
+        self._Schedule = Schedule
+
+    @property
+    def TotalCount(self):
+        r"""<p>子表机器总数</p>
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def FinishedCount(self):
+        r"""<p>进入终态的机器数（含 Terminating(6) / Terminated(7)）</p>
+        :rtype: int
+        """
+        return self._FinishedCount
+
+    @FinishedCount.setter
+    def FinishedCount(self, FinishedCount):
+        self._FinishedCount = FinishedCount
+
+    @property
+    def RiskCount(self):
+        r"""<p>累计风险告警数（来自主表 total_risk_count）</p>
+        :rtype: int
+        """
+        return self._RiskCount
+
+    @RiskCount.setter
+    def RiskCount(self, RiskCount):
+        self._RiskCount = RiskCount
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._Status = params.get("Status")
+        self._Schedule = params.get("Schedule")
+        self._TotalCount = params.get("TotalCount")
+        self._FinishedCount = params.get("FinishedCount")
+        self._RiskCount = params.get("RiskCount")
         self._RequestId = params.get("RequestId")
 
 
@@ -42294,6 +44251,825 @@ class DescribeEDRRuleListResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeEDRScanRecordListRequest(AbstractModel):
+    r"""DescribeEDRScanRecordList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MemberId: <p>集团账号的成员id</p>
+        :type MemberId: list of str
+        :param _Filter: <p>通用查询参数（含Filters/Limit/Offset/Order/By）</p>
+        :type Filter: :class:`tencentcloud.csip.v20221121.models.Filter`
+        """
+        self._MemberId = None
+        self._Filter = None
+
+    @property
+    def MemberId(self):
+        r"""<p>集团账号的成员id</p>
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+    @property
+    def Filter(self):
+        r"""<p>通用查询参数（含Filters/Limit/Offset/Order/By）</p>
+        :rtype: :class:`tencentcloud.csip.v20221121.models.Filter`
+        """
+        return self._Filter
+
+    @Filter.setter
+    def Filter(self, Filter):
+        self._Filter = Filter
+
+
+    def _deserialize(self, params):
+        self._MemberId = params.get("MemberId")
+        if params.get("Filter") is not None:
+            self._Filter = Filter()
+            self._Filter._deserialize(params.get("Filter"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeEDRScanRecordListResponse(AbstractModel):
+    r"""DescribeEDRScanRecordList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: <p>符合条件的总数</p>
+        :type TotalCount: int
+        :param _RecordList: <p>扫描任务记录列表</p>
+        :type RecordList: list of EDRScanRecordItem
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._RecordList = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        r"""<p>符合条件的总数</p>
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RecordList(self):
+        r"""<p>扫描任务记录列表</p>
+        :rtype: list of EDRScanRecordItem
+        """
+        return self._RecordList
+
+    @RecordList.setter
+    def RecordList(self, RecordList):
+        self._RecordList = RecordList
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("RecordList") is not None:
+            self._RecordList = []
+            for item in params.get("RecordList"):
+                obj = EDRScanRecordItem()
+                obj._deserialize(item)
+                self._RecordList.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeEDRScanTaskDetailRequest(AbstractModel):
+    r"""DescribeEDRScanTaskDetail请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: <p>任务ID</p>
+        :type TaskId: int
+        :param _MemberId: <p>集团账号的成员id</p>
+        :type MemberId: list of str
+        :param _Filter: <p>通用查询参数（含Filters/Limit/Offset）</p>
+        :type Filter: :class:`tencentcloud.csip.v20221121.models.Filter`
+        """
+        self._TaskId = None
+        self._MemberId = None
+        self._Filter = None
+
+    @property
+    def TaskId(self):
+        r"""<p>任务ID</p>
+        :rtype: int
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def MemberId(self):
+        r"""<p>集团账号的成员id</p>
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+    @property
+    def Filter(self):
+        r"""<p>通用查询参数（含Filters/Limit/Offset）</p>
+        :rtype: :class:`tencentcloud.csip.v20221121.models.Filter`
+        """
+        return self._Filter
+
+    @Filter.setter
+    def Filter(self, Filter):
+        self._Filter = Filter
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._MemberId = params.get("MemberId")
+        if params.get("Filter") is not None:
+            self._Filter = Filter()
+            self._Filter._deserialize(params.get("Filter"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeEDRScanTaskDetailResponse(AbstractModel):
+    r"""DescribeEDRScanTaskDetail返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: <p>任务ID</p>
+        :type TaskId: int
+        :param _TaskName: <p>任务名称</p>
+        :type TaskName: str
+        :param _Status: <p>整体状态：WAIT/SCANNING/FINISHED/FAILED/CANCELED/TERMINATED/TIMEOUT</p>
+        :type Status: str
+        :param _TaskType: <p>任务类型：HOST/CONTAINER</p>
+        :type TaskType: str
+        :param _TriggerType: <p>触发方式：MANUAL/CYCLE</p>
+        :type TriggerType: str
+        :param _StartTime: <p>任务开始时间</p>
+        :type StartTime: str
+        :param _EndTime: <p>任务结束时间</p>
+        :type EndTime: str
+        :param _ScanType: <p>检测模式：full/quick/include/exclude</p>
+        :type ScanType: str
+        :param _CustomPaths: <p>自选路径列表</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CustomPaths: list of str
+        :param _Timeout: <p>超时时间（秒）</p>
+        :type Timeout: int
+        :param _EnableMemShellScan: <p>是否开启深度检测：0-否/1-是</p>
+        :type EnableMemShellScan: int
+        :param _CreateAppID: <p>创建者账号AppId</p>
+        :type CreateAppID: int
+        :param _AccountName: <p>任务创建者账号名称（后端富化）</p>
+        :type AccountName: str
+        :param _CloudType: <p>创建者云类型</p>
+        :type CloudType: int
+        :param _TotalAssetCount: <p>任务总资产数</p>
+        :type TotalAssetCount: int
+        :param _FinishedAssetCount: <p>已完成资产数</p>
+        :type FinishedAssetCount: int
+        :param _RiskAssetCount: <p>风险资产数</p>
+        :type RiskAssetCount: int
+        :param _HostList: <p>主机资产列表（TaskType=HOST时有值）</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HostList: list of EDRScanTaskHostItem
+        :param _ContainerList: <p>容器资产列表（TaskType=CONTAINER时有值）</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ContainerList: list of EDRScanTaskContainerItem
+        :param _TotalCount: <p>当前筛选条件下资产列表总条数</p>
+        :type TotalCount: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._TaskName = None
+        self._Status = None
+        self._TaskType = None
+        self._TriggerType = None
+        self._StartTime = None
+        self._EndTime = None
+        self._ScanType = None
+        self._CustomPaths = None
+        self._Timeout = None
+        self._EnableMemShellScan = None
+        self._CreateAppID = None
+        self._AccountName = None
+        self._CloudType = None
+        self._TotalAssetCount = None
+        self._FinishedAssetCount = None
+        self._RiskAssetCount = None
+        self._HostList = None
+        self._ContainerList = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        r"""<p>任务ID</p>
+        :rtype: int
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def TaskName(self):
+        r"""<p>任务名称</p>
+        :rtype: str
+        """
+        return self._TaskName
+
+    @TaskName.setter
+    def TaskName(self, TaskName):
+        self._TaskName = TaskName
+
+    @property
+    def Status(self):
+        r"""<p>整体状态：WAIT/SCANNING/FINISHED/FAILED/CANCELED/TERMINATED/TIMEOUT</p>
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def TaskType(self):
+        r"""<p>任务类型：HOST/CONTAINER</p>
+        :rtype: str
+        """
+        return self._TaskType
+
+    @TaskType.setter
+    def TaskType(self, TaskType):
+        self._TaskType = TaskType
+
+    @property
+    def TriggerType(self):
+        r"""<p>触发方式：MANUAL/CYCLE</p>
+        :rtype: str
+        """
+        return self._TriggerType
+
+    @TriggerType.setter
+    def TriggerType(self, TriggerType):
+        self._TriggerType = TriggerType
+
+    @property
+    def StartTime(self):
+        r"""<p>任务开始时间</p>
+        :rtype: str
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""<p>任务结束时间</p>
+        :rtype: str
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def ScanType(self):
+        r"""<p>检测模式：full/quick/include/exclude</p>
+        :rtype: str
+        """
+        return self._ScanType
+
+    @ScanType.setter
+    def ScanType(self, ScanType):
+        self._ScanType = ScanType
+
+    @property
+    def CustomPaths(self):
+        r"""<p>自选路径列表</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._CustomPaths
+
+    @CustomPaths.setter
+    def CustomPaths(self, CustomPaths):
+        self._CustomPaths = CustomPaths
+
+    @property
+    def Timeout(self):
+        r"""<p>超时时间（秒）</p>
+        :rtype: int
+        """
+        return self._Timeout
+
+    @Timeout.setter
+    def Timeout(self, Timeout):
+        self._Timeout = Timeout
+
+    @property
+    def EnableMemShellScan(self):
+        r"""<p>是否开启深度检测：0-否/1-是</p>
+        :rtype: int
+        """
+        return self._EnableMemShellScan
+
+    @EnableMemShellScan.setter
+    def EnableMemShellScan(self, EnableMemShellScan):
+        self._EnableMemShellScan = EnableMemShellScan
+
+    @property
+    def CreateAppID(self):
+        r"""<p>创建者账号AppId</p>
+        :rtype: int
+        """
+        return self._CreateAppID
+
+    @CreateAppID.setter
+    def CreateAppID(self, CreateAppID):
+        self._CreateAppID = CreateAppID
+
+    @property
+    def AccountName(self):
+        r"""<p>任务创建者账号名称（后端富化）</p>
+        :rtype: str
+        """
+        return self._AccountName
+
+    @AccountName.setter
+    def AccountName(self, AccountName):
+        self._AccountName = AccountName
+
+    @property
+    def CloudType(self):
+        r"""<p>创建者云类型</p>
+        :rtype: int
+        """
+        return self._CloudType
+
+    @CloudType.setter
+    def CloudType(self, CloudType):
+        self._CloudType = CloudType
+
+    @property
+    def TotalAssetCount(self):
+        r"""<p>任务总资产数</p>
+        :rtype: int
+        """
+        return self._TotalAssetCount
+
+    @TotalAssetCount.setter
+    def TotalAssetCount(self, TotalAssetCount):
+        self._TotalAssetCount = TotalAssetCount
+
+    @property
+    def FinishedAssetCount(self):
+        r"""<p>已完成资产数</p>
+        :rtype: int
+        """
+        return self._FinishedAssetCount
+
+    @FinishedAssetCount.setter
+    def FinishedAssetCount(self, FinishedAssetCount):
+        self._FinishedAssetCount = FinishedAssetCount
+
+    @property
+    def RiskAssetCount(self):
+        r"""<p>风险资产数</p>
+        :rtype: int
+        """
+        return self._RiskAssetCount
+
+    @RiskAssetCount.setter
+    def RiskAssetCount(self, RiskAssetCount):
+        self._RiskAssetCount = RiskAssetCount
+
+    @property
+    def HostList(self):
+        r"""<p>主机资产列表（TaskType=HOST时有值）</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of EDRScanTaskHostItem
+        """
+        return self._HostList
+
+    @HostList.setter
+    def HostList(self, HostList):
+        self._HostList = HostList
+
+    @property
+    def ContainerList(self):
+        r"""<p>容器资产列表（TaskType=CONTAINER时有值）</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of EDRScanTaskContainerItem
+        """
+        return self._ContainerList
+
+    @ContainerList.setter
+    def ContainerList(self, ContainerList):
+        self._ContainerList = ContainerList
+
+    @property
+    def TotalCount(self):
+        r"""<p>当前筛选条件下资产列表总条数</p>
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._TaskName = params.get("TaskName")
+        self._Status = params.get("Status")
+        self._TaskType = params.get("TaskType")
+        self._TriggerType = params.get("TriggerType")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._ScanType = params.get("ScanType")
+        self._CustomPaths = params.get("CustomPaths")
+        self._Timeout = params.get("Timeout")
+        self._EnableMemShellScan = params.get("EnableMemShellScan")
+        self._CreateAppID = params.get("CreateAppID")
+        self._AccountName = params.get("AccountName")
+        self._CloudType = params.get("CloudType")
+        self._TotalAssetCount = params.get("TotalAssetCount")
+        self._FinishedAssetCount = params.get("FinishedAssetCount")
+        self._RiskAssetCount = params.get("RiskAssetCount")
+        if params.get("HostList") is not None:
+            self._HostList = []
+            for item in params.get("HostList"):
+                obj = EDRScanTaskHostItem()
+                obj._deserialize(item)
+                self._HostList.append(obj)
+        if params.get("ContainerList") is not None:
+            self._ContainerList = []
+            for item in params.get("ContainerList"):
+                obj = EDRScanTaskContainerItem()
+                obj._deserialize(item)
+                self._ContainerList.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeEdrAlertCountForAssetRequest(AbstractModel):
+    r"""DescribeEdrAlertCountForAsset请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MemberId: <p>集团账号的成员id</p>
+        :type MemberId: list of str
+        :param _InstanceIds: <p>主机instance_id列表，为空时返回MemberId对应appid范围内的汇总统计，非空时按每个instance_id粒度分别返回统计</p>
+        :type InstanceIds: list of str
+        :param _Filters: <p>筛选条件列表，与DescribeEdrAlertList保持一致。支持的Name取值及对应Values枚举：Status - string - 是否必填：否 - 告警状态。Values取值：PENDING（待处理）、WHITELISTED（已加白）、PROCESSED（已处理）、IGNORED（已忽略）Level - string - 是否必填：否 - 告警等级。Values取值：CRITICAL（严重）、HIGH（高危）、MEDIUM（中危）、LOW（低危）、INFO（提示）DetectMode - string - 是否必填：否 - 检测模式。Values取值：PRECISE（精准）、BALANCED（均衡）、DEEP（深度）AlertCategory - string - 是否必填：否 - 告警大类。Values取值：VIRUS_TROJAN（病毒木马）、ABNORMAL_LOGIN（异常登录）、HOST_BEHAVIOR（主机行为）、NETWORK_BEHAVIOR（网络行为）、AI_LINK_ENGINE（AI关联引擎）AlertSubType - string - 是否必填：否 - 告警子类型。Values取值：MALWARE_FILE（恶意文件）、MALWARE_PROCESS（恶意进程）、RISK_LOGIN（异常登录）、BRUTE_FORCE（密码破解）、DNS（恶意请求）、BASH（高危命令）、PRIV_ESCALATION（本地提权）、REVERSE_SHELL（反弹Shell）、NET_ATTACK（网络攻击）、VUL_DEFENCE（漏洞防御）、MEMORY_SHELL_INJECT（内存马注入）、MEMORY_SHELL_SCAN（内存马扫描）、MULTI_BEHAVIOR_ATTACK（多行为攻击）AttackStage - string - 是否必填：否 - ATT&amp;CK攻击阶段。Values取值：TA0001~TA0011、TA0040、TA0042、TA0043，空字符串表示未分类AlertSource - string - 是否必填：否 - 告警来源。Values取值：HOST（主机）StartTime - string - 是否必填：否 - 起始时间，格式YYYY-MM-DD HH:MM:SS，不传默认近180天EndTime - string - 是否必填：否 - 结束时间，格式YYYY-MM-DD HH:MM:SS，不传默认当前时间</p>
+        :type Filters: list of EDRFilters
+        """
+        self._MemberId = None
+        self._InstanceIds = None
+        self._Filters = None
+
+    @property
+    def MemberId(self):
+        r"""<p>集团账号的成员id</p>
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+    @property
+    def InstanceIds(self):
+        r"""<p>主机instance_id列表，为空时返回MemberId对应appid范围内的汇总统计，非空时按每个instance_id粒度分别返回统计</p>
+        :rtype: list of str
+        """
+        return self._InstanceIds
+
+    @InstanceIds.setter
+    def InstanceIds(self, InstanceIds):
+        self._InstanceIds = InstanceIds
+
+    @property
+    def Filters(self):
+        r"""<p>筛选条件列表，与DescribeEdrAlertList保持一致。支持的Name取值及对应Values枚举：Status - string - 是否必填：否 - 告警状态。Values取值：PENDING（待处理）、WHITELISTED（已加白）、PROCESSED（已处理）、IGNORED（已忽略）Level - string - 是否必填：否 - 告警等级。Values取值：CRITICAL（严重）、HIGH（高危）、MEDIUM（中危）、LOW（低危）、INFO（提示）DetectMode - string - 是否必填：否 - 检测模式。Values取值：PRECISE（精准）、BALANCED（均衡）、DEEP（深度）AlertCategory - string - 是否必填：否 - 告警大类。Values取值：VIRUS_TROJAN（病毒木马）、ABNORMAL_LOGIN（异常登录）、HOST_BEHAVIOR（主机行为）、NETWORK_BEHAVIOR（网络行为）、AI_LINK_ENGINE（AI关联引擎）AlertSubType - string - 是否必填：否 - 告警子类型。Values取值：MALWARE_FILE（恶意文件）、MALWARE_PROCESS（恶意进程）、RISK_LOGIN（异常登录）、BRUTE_FORCE（密码破解）、DNS（恶意请求）、BASH（高危命令）、PRIV_ESCALATION（本地提权）、REVERSE_SHELL（反弹Shell）、NET_ATTACK（网络攻击）、VUL_DEFENCE（漏洞防御）、MEMORY_SHELL_INJECT（内存马注入）、MEMORY_SHELL_SCAN（内存马扫描）、MULTI_BEHAVIOR_ATTACK（多行为攻击）AttackStage - string - 是否必填：否 - ATT&amp;CK攻击阶段。Values取值：TA0001~TA0011、TA0040、TA0042、TA0043，空字符串表示未分类AlertSource - string - 是否必填：否 - 告警来源。Values取值：HOST（主机）StartTime - string - 是否必填：否 - 起始时间，格式YYYY-MM-DD HH:MM:SS，不传默认近180天EndTime - string - 是否必填：否 - 结束时间，格式YYYY-MM-DD HH:MM:SS，不传默认当前时间</p>
+        :rtype: list of EDRFilters
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+
+    def _deserialize(self, params):
+        self._MemberId = params.get("MemberId")
+        self._InstanceIds = params.get("InstanceIds")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = EDRFilters()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeEdrAlertCountForAssetResponse(AbstractModel):
+    r"""DescribeEdrAlertCountForAsset返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GlobalCount: <p>全局汇总统计（Quuids为空时返回）</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GlobalCount: :class:`tencentcloud.csip.v20221121.models.EdrAlertCountItem`
+        :param _Items: <p>按quuid粒度统计列表（Quuids非空时返回）</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Items: list of EdrAlertCountItem
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._GlobalCount = None
+        self._Items = None
+        self._RequestId = None
+
+    @property
+    def GlobalCount(self):
+        r"""<p>全局汇总统计（Quuids为空时返回）</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.csip.v20221121.models.EdrAlertCountItem`
+        """
+        return self._GlobalCount
+
+    @GlobalCount.setter
+    def GlobalCount(self, GlobalCount):
+        self._GlobalCount = GlobalCount
+
+    @property
+    def Items(self):
+        r"""<p>按quuid粒度统计列表（Quuids非空时返回）</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of EdrAlertCountItem
+        """
+        return self._Items
+
+    @Items.setter
+    def Items(self, Items):
+        self._Items = Items
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("GlobalCount") is not None:
+            self._GlobalCount = EdrAlertCountItem()
+            self._GlobalCount._deserialize(params.get("GlobalCount"))
+        if params.get("Items") is not None:
+            self._Items = []
+            for item in params.get("Items"):
+                obj = EdrAlertCountItem()
+                obj._deserialize(item)
+                self._Items.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeEdrAlertCountForContainerRequest(AbstractModel):
+    r"""DescribeEdrAlertCountForContainer请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MemberId: <p>集团账号的成员id</p>
+        :type MemberId: list of str
+        :param _ClusterIds: <p>集群 ID 列表（≤500）；非空且 ContainerIds 为空时按集群分组统计</p>
+        :type ClusterIds: list of str
+        :param _ContainerIds: <p>容器 ID 列表（≤500）；非空时按容器分组统计（优先级高于 ClusterIds）</p>
+        :type ContainerIds: list of str
+        :param _Filters: <li>PolicyType - int - 是否必填：否 - 策略类型</li><li>PolicyName - string - 是否必填：否 - 策略名称</li><li>Domain - string - 是否必填：否 - 域名(先对域名做urlencode,再base64)</li><li>PolicyAction- int - 是否必填：否 - 策略动作</li><li>IsEnabled - int - 是否必填：否 - 是否生效</li><li>ContainerId - string - 是否必填：否 - 容器ID（精确/IN，容器维度筛选）</li><li>ClusterId - string - 是否必填：否 - 集群ID（精确/IN，容器维度筛选）</li><li>ClusterName - string - 是否必填：否 - 集群名称（前缀模糊）</li><li>ContainerName - string - 是否必填：否 - 容器名称（前缀模糊）</li><li>AlertSource - string - 是否必填：否 - 告警来源：HOST-主机告警 / CONTAINER-容器告警，不传返回全部</li>
+        :type Filters: list of EDRFilter
+        """
+        self._MemberId = None
+        self._ClusterIds = None
+        self._ContainerIds = None
+        self._Filters = None
+
+    @property
+    def MemberId(self):
+        r"""<p>集团账号的成员id</p>
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+    @property
+    def ClusterIds(self):
+        r"""<p>集群 ID 列表（≤500）；非空且 ContainerIds 为空时按集群分组统计</p>
+        :rtype: list of str
+        """
+        return self._ClusterIds
+
+    @ClusterIds.setter
+    def ClusterIds(self, ClusterIds):
+        self._ClusterIds = ClusterIds
+
+    @property
+    def ContainerIds(self):
+        r"""<p>容器 ID 列表（≤500）；非空时按容器分组统计（优先级高于 ClusterIds）</p>
+        :rtype: list of str
+        """
+        return self._ContainerIds
+
+    @ContainerIds.setter
+    def ContainerIds(self, ContainerIds):
+        self._ContainerIds = ContainerIds
+
+    @property
+    def Filters(self):
+        r"""<li>PolicyType - int - 是否必填：否 - 策略类型</li><li>PolicyName - string - 是否必填：否 - 策略名称</li><li>Domain - string - 是否必填：否 - 域名(先对域名做urlencode,再base64)</li><li>PolicyAction- int - 是否必填：否 - 策略动作</li><li>IsEnabled - int - 是否必填：否 - 是否生效</li><li>ContainerId - string - 是否必填：否 - 容器ID（精确/IN，容器维度筛选）</li><li>ClusterId - string - 是否必填：否 - 集群ID（精确/IN，容器维度筛选）</li><li>ClusterName - string - 是否必填：否 - 集群名称（前缀模糊）</li><li>ContainerName - string - 是否必填：否 - 容器名称（前缀模糊）</li><li>AlertSource - string - 是否必填：否 - 告警来源：HOST-主机告警 / CONTAINER-容器告警，不传返回全部</li>
+        :rtype: list of EDRFilter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+
+    def _deserialize(self, params):
+        self._MemberId = params.get("MemberId")
+        self._ClusterIds = params.get("ClusterIds")
+        self._ContainerIds = params.get("ContainerIds")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = EDRFilter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeEdrAlertCountForContainerResponse(AbstractModel):
+    r"""DescribeEdrAlertCountForContainer返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GlobalCount: <p>全局模式返回（两个 ID 数组都为空时）；分组模式为 null</p>
+        :type GlobalCount: :class:`tencentcloud.csip.v20221121.models.EdrContainerGlobalCount`
+        :param _Items: <p>分组模式返回（ContainerIds 或 ClusterIds 非空时）；空返回 []</p>
+        :type Items: list of EdrContainerAlertCountItem
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._GlobalCount = None
+        self._Items = None
+        self._RequestId = None
+
+    @property
+    def GlobalCount(self):
+        r"""<p>全局模式返回（两个 ID 数组都为空时）；分组模式为 null</p>
+        :rtype: :class:`tencentcloud.csip.v20221121.models.EdrContainerGlobalCount`
+        """
+        return self._GlobalCount
+
+    @GlobalCount.setter
+    def GlobalCount(self, GlobalCount):
+        self._GlobalCount = GlobalCount
+
+    @property
+    def Items(self):
+        r"""<p>分组模式返回（ContainerIds 或 ClusterIds 非空时）；空返回 []</p>
+        :rtype: list of EdrContainerAlertCountItem
+        """
+        return self._Items
+
+    @Items.setter
+    def Items(self, Items):
+        self._Items = Items
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("GlobalCount") is not None:
+            self._GlobalCount = EdrContainerGlobalCount()
+            self._GlobalCount._deserialize(params.get("GlobalCount"))
+        if params.get("Items") is not None:
+            self._Items = []
+            for item in params.get("Items"):
+                obj = EdrContainerAlertCountItem()
+                obj._deserialize(item)
+                self._Items.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeEdrAlertInfoRequest(AbstractModel):
     r"""DescribeEdrAlertInfo请求参数结构体
 
@@ -42608,6 +45384,492 @@ class DescribeEdrAlertListResponse(AbstractModel):
                 obj = EdrAlertCategoryCount()
                 obj._deserialize(item)
                 self._AlertCategoryCounts.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeEdrAlertMultiAttackStagesRequest(AbstractModel):
+    r"""DescribeEdrAlertMultiAttackStages请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Targets: <p>目标告警信息</p>
+        :type Targets: list of EdrAlertTarget
+        :param _MemberId: <p>集团账号的成员id</p>
+        :type MemberId: list of str
+        """
+        self._Targets = None
+        self._MemberId = None
+
+    @property
+    def Targets(self):
+        r"""<p>目标告警信息</p>
+        :rtype: list of EdrAlertTarget
+        """
+        return self._Targets
+
+    @Targets.setter
+    def Targets(self, Targets):
+        self._Targets = Targets
+
+    @property
+    def MemberId(self):
+        r"""<p>集团账号的成员id</p>
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+
+    def _deserialize(self, params):
+        if params.get("Targets") is not None:
+            self._Targets = []
+            for item in params.get("Targets"):
+                obj = EdrAlertTarget()
+                obj._deserialize(item)
+                self._Targets.append(obj)
+        self._MemberId = params.get("MemberId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeEdrAlertMultiAttackStagesResponse(AbstractModel):
+    r"""DescribeEdrAlertMultiAttackStages返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _List: <p>多攻击阶段详情</p>
+        :type List: list of MultiAttackStageItem
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._List = None
+        self._RequestId = None
+
+    @property
+    def List(self):
+        r"""<p>多攻击阶段详情</p>
+        :rtype: list of MultiAttackStageItem
+        """
+        return self._List
+
+    @List.setter
+    def List(self, List):
+        self._List = List
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("List") is not None:
+            self._List = []
+            for item in params.get("List"):
+                obj = MultiAttackStageItem()
+                obj._deserialize(item)
+                self._List.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeEdrAlertSummaryRequest(AbstractModel):
+    r"""DescribeEdrAlertSummary请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MemberId: <p>集团账号的成员id</p>
+        :type MemberId: list of str
+        """
+        self._MemberId = None
+
+    @property
+    def MemberId(self):
+        r"""<p>集团账号的成员id</p>
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+
+    def _deserialize(self, params):
+        self._MemberId = params.get("MemberId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeEdrAlertSummaryResponse(AbstractModel):
+    r"""DescribeEdrAlertSummary返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CriticalPendingCount: <p>严重+高危待处理数（Level IN CRITICAL,HIGH，DB 内部值 1,5）</p>
+        :type CriticalPendingCount: int
+        :param _TotalPendingCount: <p>全部待处理数</p>
+        :type TotalPendingCount: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._CriticalPendingCount = None
+        self._TotalPendingCount = None
+        self._RequestId = None
+
+    @property
+    def CriticalPendingCount(self):
+        r"""<p>严重+高危待处理数（Level IN CRITICAL,HIGH，DB 内部值 1,5）</p>
+        :rtype: int
+        """
+        return self._CriticalPendingCount
+
+    @CriticalPendingCount.setter
+    def CriticalPendingCount(self, CriticalPendingCount):
+        self._CriticalPendingCount = CriticalPendingCount
+
+    @property
+    def TotalPendingCount(self):
+        r"""<p>全部待处理数</p>
+        :rtype: int
+        """
+        return self._TotalPendingCount
+
+    @TotalPendingCount.setter
+    def TotalPendingCount(self, TotalPendingCount):
+        self._TotalPendingCount = TotalPendingCount
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._CriticalPendingCount = params.get("CriticalPendingCount")
+        self._TotalPendingCount = params.get("TotalPendingCount")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeEdrExportJobDownloadURLRequest(AbstractModel):
+    r"""DescribeEdrExportJobDownloadURL请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MemberId: <p>集团账号的成员id</p>
+        :type MemberId: list of str
+        :param _JobId: <p>导出任务 ID</p>
+        :type JobId: str
+        """
+        self._MemberId = None
+        self._JobId = None
+
+    @property
+    def MemberId(self):
+        r"""<p>集团账号的成员id</p>
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+    @property
+    def JobId(self):
+        r"""<p>导出任务 ID</p>
+        :rtype: str
+        """
+        return self._JobId
+
+    @JobId.setter
+    def JobId(self, JobId):
+        self._JobId = JobId
+
+
+    def _deserialize(self, params):
+        self._MemberId = params.get("MemberId")
+        self._JobId = params.get("JobId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeEdrExportJobDownloadURLResponse(AbstractModel):
+    r"""DescribeEdrExportJobDownloadURL返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DownloadUrl: <p>COS 预签名下载链接（2 小时有效）</p>
+        :type DownloadUrl: str
+        :param _FileName: <p>文件名</p>
+        :type FileName: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._DownloadUrl = None
+        self._FileName = None
+        self._RequestId = None
+
+    @property
+    def DownloadUrl(self):
+        r"""<p>COS 预签名下载链接（2 小时有效）</p>
+        :rtype: str
+        """
+        return self._DownloadUrl
+
+    @DownloadUrl.setter
+    def DownloadUrl(self, DownloadUrl):
+        self._DownloadUrl = DownloadUrl
+
+    @property
+    def FileName(self):
+        r"""<p>文件名</p>
+        :rtype: str
+        """
+        return self._FileName
+
+    @FileName.setter
+    def FileName(self, FileName):
+        self._FileName = FileName
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._DownloadUrl = params.get("DownloadUrl")
+        self._FileName = params.get("FileName")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeEdrExportJobListRequest(AbstractModel):
+    r"""DescribeEdrExportJobList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MemberId: <p>集团账号的成员id</p>
+        :type MemberId: list of str
+        :param _Filters: <p>PolicyType - int - 是否必填：否 - 策略类型PolicyName - string - 是否必填：否 - 策略名称Domain - string - 是否必填：否 - 域名(先对域名做urlencode,再base64)PolicyAction- int - 是否必填：否 - 策略动作IsEnabled - int - 是否必填：否 - 是否生效</p>
+        :type Filters: list of EDRFilter
+        :param _Limit: <p>限制条数,默认10,最大100</p>
+        :type Limit: int
+        :param _Offset: <p>偏移量,默认0</p>
+        :type Offset: int
+        :param _Order: <p>按 任务创建时间排序方向，仅支持 <code>ASC</code> / <code>DESC</code></p><p>枚举值：</p><ul><li>ASC： 升序</li><li>DESC： 降序</li></ul>
+        :type Order: str
+        :param _By: <p>排序字段，目前仅支持 InsertTime（按任务下发时间排序），不传默认 InsertTime；传入其他值返回 InvalidParameter</p>
+        :type By: str
+        """
+        self._MemberId = None
+        self._Filters = None
+        self._Limit = None
+        self._Offset = None
+        self._Order = None
+        self._By = None
+
+    @property
+    def MemberId(self):
+        r"""<p>集团账号的成员id</p>
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+    @property
+    def Filters(self):
+        r"""<p>PolicyType - int - 是否必填：否 - 策略类型PolicyName - string - 是否必填：否 - 策略名称Domain - string - 是否必填：否 - 域名(先对域名做urlencode,再base64)PolicyAction- int - 是否必填：否 - 策略动作IsEnabled - int - 是否必填：否 - 是否生效</p>
+        :rtype: list of EDRFilter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Limit(self):
+        r"""<p>限制条数,默认10,最大100</p>
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        r"""<p>偏移量,默认0</p>
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Order(self):
+        r"""<p>按 任务创建时间排序方向，仅支持 <code>ASC</code> / <code>DESC</code></p><p>枚举值：</p><ul><li>ASC： 升序</li><li>DESC： 降序</li></ul>
+        :rtype: str
+        """
+        return self._Order
+
+    @Order.setter
+    def Order(self, Order):
+        self._Order = Order
+
+    @property
+    def By(self):
+        r"""<p>排序字段，目前仅支持 InsertTime（按任务下发时间排序），不传默认 InsertTime；传入其他值返回 InvalidParameter</p>
+        :rtype: str
+        """
+        return self._By
+
+    @By.setter
+    def By(self, By):
+        self._By = By
+
+
+    def _deserialize(self, params):
+        self._MemberId = params.get("MemberId")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = EDRFilter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        self._Order = params.get("Order")
+        self._By = params.get("By")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeEdrExportJobListResponse(AbstractModel):
+    r"""DescribeEdrExportJobList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: <p>下载文件数量</p>
+        :type TotalCount: int
+        :param _List: <p>下载文件信息</p>
+        :type List: list of EDRExportJobItem
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._List = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        r"""<p>下载文件数量</p>
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def List(self):
+        r"""<p>下载文件信息</p>
+        :rtype: list of EDRExportJobItem
+        """
+        return self._List
+
+    @List.setter
+    def List(self, List):
+        self._List = List
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("List") is not None:
+            self._List = []
+            for item in params.get("List"):
+                obj = EDRExportJobItem()
+                obj._deserialize(item)
+                self._List.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -45603,6 +48865,220 @@ class DescribeNICAssetsResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeNetAttackSettingRequest(AbstractModel):
+    r"""DescribeNetAttackSetting请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MemberId: <p>集团账号的成员id</p>
+        :type MemberId: list of str
+        """
+        self._MemberId = None
+
+    @property
+    def MemberId(self):
+        r"""<p>集团账号的成员id</p>
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+
+    def _deserialize(self, params):
+        self._MemberId = params.get("MemberId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeNetAttackSettingResponse(AbstractModel):
+    r"""DescribeNetAttackSetting返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _NetAttackEnable: <p>0 关闭网络攻击检测，1开启网络攻击检测</p>
+        :type NetAttackEnable: int
+        :param _NetAttackAlarmStatus: <p>0 新增告警事件默认待处理，1新增告警事件默认已处理，3新增告警事件默认忽略</p>
+        :type NetAttackAlarmStatus: int
+        :param _AutoInclude: <p>新增资产自动包含 0 不包含 1包含</p>
+        :type AutoInclude: int
+        :param _CWPScope: <p>主机范围</p>
+        :type CWPScope: int
+        :param _InstanceIDs: <p>指定主机instance_id列表</p>
+        :type InstanceIDs: list of str
+        :param _ExcludeInstanceIDs: <p>排除主机instance_id列表</p>
+        :type ExcludeInstanceIDs: list of str
+        :param _TagIDs: <p>标签ID列表</p>
+        :type TagIDs: list of str
+        :param _TCSSScope: <p>容器范围</p>
+        :type TCSSScope: int
+        :param _ClusterIDs: <p>指定集群ID列表</p>
+        :type ClusterIDs: list of str
+        :param _ExcludeClusterIDs: <p>排除集群ID列表</p>
+        :type ExcludeClusterIDs: list of str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._NetAttackEnable = None
+        self._NetAttackAlarmStatus = None
+        self._AutoInclude = None
+        self._CWPScope = None
+        self._InstanceIDs = None
+        self._ExcludeInstanceIDs = None
+        self._TagIDs = None
+        self._TCSSScope = None
+        self._ClusterIDs = None
+        self._ExcludeClusterIDs = None
+        self._RequestId = None
+
+    @property
+    def NetAttackEnable(self):
+        r"""<p>0 关闭网络攻击检测，1开启网络攻击检测</p>
+        :rtype: int
+        """
+        return self._NetAttackEnable
+
+    @NetAttackEnable.setter
+    def NetAttackEnable(self, NetAttackEnable):
+        self._NetAttackEnable = NetAttackEnable
+
+    @property
+    def NetAttackAlarmStatus(self):
+        r"""<p>0 新增告警事件默认待处理，1新增告警事件默认已处理，3新增告警事件默认忽略</p>
+        :rtype: int
+        """
+        return self._NetAttackAlarmStatus
+
+    @NetAttackAlarmStatus.setter
+    def NetAttackAlarmStatus(self, NetAttackAlarmStatus):
+        self._NetAttackAlarmStatus = NetAttackAlarmStatus
+
+    @property
+    def AutoInclude(self):
+        r"""<p>新增资产自动包含 0 不包含 1包含</p>
+        :rtype: int
+        """
+        return self._AutoInclude
+
+    @AutoInclude.setter
+    def AutoInclude(self, AutoInclude):
+        self._AutoInclude = AutoInclude
+
+    @property
+    def CWPScope(self):
+        r"""<p>主机范围</p>
+        :rtype: int
+        """
+        return self._CWPScope
+
+    @CWPScope.setter
+    def CWPScope(self, CWPScope):
+        self._CWPScope = CWPScope
+
+    @property
+    def InstanceIDs(self):
+        r"""<p>指定主机instance_id列表</p>
+        :rtype: list of str
+        """
+        return self._InstanceIDs
+
+    @InstanceIDs.setter
+    def InstanceIDs(self, InstanceIDs):
+        self._InstanceIDs = InstanceIDs
+
+    @property
+    def ExcludeInstanceIDs(self):
+        r"""<p>排除主机instance_id列表</p>
+        :rtype: list of str
+        """
+        return self._ExcludeInstanceIDs
+
+    @ExcludeInstanceIDs.setter
+    def ExcludeInstanceIDs(self, ExcludeInstanceIDs):
+        self._ExcludeInstanceIDs = ExcludeInstanceIDs
+
+    @property
+    def TagIDs(self):
+        r"""<p>标签ID列表</p>
+        :rtype: list of str
+        """
+        return self._TagIDs
+
+    @TagIDs.setter
+    def TagIDs(self, TagIDs):
+        self._TagIDs = TagIDs
+
+    @property
+    def TCSSScope(self):
+        r"""<p>容器范围</p>
+        :rtype: int
+        """
+        return self._TCSSScope
+
+    @TCSSScope.setter
+    def TCSSScope(self, TCSSScope):
+        self._TCSSScope = TCSSScope
+
+    @property
+    def ClusterIDs(self):
+        r"""<p>指定集群ID列表</p>
+        :rtype: list of str
+        """
+        return self._ClusterIDs
+
+    @ClusterIDs.setter
+    def ClusterIDs(self, ClusterIDs):
+        self._ClusterIDs = ClusterIDs
+
+    @property
+    def ExcludeClusterIDs(self):
+        r"""<p>排除集群ID列表</p>
+        :rtype: list of str
+        """
+        return self._ExcludeClusterIDs
+
+    @ExcludeClusterIDs.setter
+    def ExcludeClusterIDs(self, ExcludeClusterIDs):
+        self._ExcludeClusterIDs = ExcludeClusterIDs
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._NetAttackEnable = params.get("NetAttackEnable")
+        self._NetAttackAlarmStatus = params.get("NetAttackAlarmStatus")
+        self._AutoInclude = params.get("AutoInclude")
+        self._CWPScope = params.get("CWPScope")
+        self._InstanceIDs = params.get("InstanceIDs")
+        self._ExcludeInstanceIDs = params.get("ExcludeInstanceIDs")
+        self._TagIDs = params.get("TagIDs")
+        self._TCSSScope = params.get("TCSSScope")
+        self._ClusterIDs = params.get("ClusterIDs")
+        self._ExcludeClusterIDs = params.get("ExcludeClusterIDs")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeNotifyAssetConfigRequest(AbstractModel):
     r"""DescribeNotifyAssetConfig请求参数结构体
 
@@ -46779,6 +50255,205 @@ class DescribeRepositoryImageAssetsResponse(AbstractModel):
                 obj = FilterDataObject()
                 obj._deserialize(item)
                 self._RegionList.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeReverseShellSystemPolicyConfigRequest(AbstractModel):
+    r"""DescribeReverseShellSystemPolicyConfig请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MemberId: <p>集团账号的成员id</p>
+        :type MemberId: list of str
+        """
+        self._MemberId = None
+
+    @property
+    def MemberId(self):
+        r"""<p>集团账号的成员id</p>
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+
+    def _deserialize(self, params):
+        self._MemberId = params.get("MemberId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeReverseShellSystemPolicyConfigResponse(AbstractModel):
+    r"""DescribeReverseShellSystemPolicyConfig返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InnerNetAlarmShow: <p>内网告警展示</p>
+        :type InnerNetAlarmShow: bool
+        :param _InnerIPShow: <p>内网ip展示</p>
+        :type InnerIPShow: bool
+        :param _CWPScope: <p>主机范围</p>
+        :type CWPScope: int
+        :param _InstanceIDs: <p>指定主机instance_id列表</p>
+        :type InstanceIDs: list of str
+        :param _ExcludeInstanceIDs: <p>排除主机instance_id列表</p>
+        :type ExcludeInstanceIDs: list of str
+        :param _TagIDs: <p>标签ID列表</p>
+        :type TagIDs: list of str
+        :param _TCSSScope: <p>容器范围</p>
+        :type TCSSScope: int
+        :param _ClusterIDs: <p>指定集群ID列表</p>
+        :type ClusterIDs: list of str
+        :param _ExcludeClusterIDs: <p>排除集群ID列表</p>
+        :type ExcludeClusterIDs: list of str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._InnerNetAlarmShow = None
+        self._InnerIPShow = None
+        self._CWPScope = None
+        self._InstanceIDs = None
+        self._ExcludeInstanceIDs = None
+        self._TagIDs = None
+        self._TCSSScope = None
+        self._ClusterIDs = None
+        self._ExcludeClusterIDs = None
+        self._RequestId = None
+
+    @property
+    def InnerNetAlarmShow(self):
+        r"""<p>内网告警展示</p>
+        :rtype: bool
+        """
+        return self._InnerNetAlarmShow
+
+    @InnerNetAlarmShow.setter
+    def InnerNetAlarmShow(self, InnerNetAlarmShow):
+        self._InnerNetAlarmShow = InnerNetAlarmShow
+
+    @property
+    def InnerIPShow(self):
+        r"""<p>内网ip展示</p>
+        :rtype: bool
+        """
+        return self._InnerIPShow
+
+    @InnerIPShow.setter
+    def InnerIPShow(self, InnerIPShow):
+        self._InnerIPShow = InnerIPShow
+
+    @property
+    def CWPScope(self):
+        r"""<p>主机范围</p>
+        :rtype: int
+        """
+        return self._CWPScope
+
+    @CWPScope.setter
+    def CWPScope(self, CWPScope):
+        self._CWPScope = CWPScope
+
+    @property
+    def InstanceIDs(self):
+        r"""<p>指定主机instance_id列表</p>
+        :rtype: list of str
+        """
+        return self._InstanceIDs
+
+    @InstanceIDs.setter
+    def InstanceIDs(self, InstanceIDs):
+        self._InstanceIDs = InstanceIDs
+
+    @property
+    def ExcludeInstanceIDs(self):
+        r"""<p>排除主机instance_id列表</p>
+        :rtype: list of str
+        """
+        return self._ExcludeInstanceIDs
+
+    @ExcludeInstanceIDs.setter
+    def ExcludeInstanceIDs(self, ExcludeInstanceIDs):
+        self._ExcludeInstanceIDs = ExcludeInstanceIDs
+
+    @property
+    def TagIDs(self):
+        r"""<p>标签ID列表</p>
+        :rtype: list of str
+        """
+        return self._TagIDs
+
+    @TagIDs.setter
+    def TagIDs(self, TagIDs):
+        self._TagIDs = TagIDs
+
+    @property
+    def TCSSScope(self):
+        r"""<p>容器范围</p>
+        :rtype: int
+        """
+        return self._TCSSScope
+
+    @TCSSScope.setter
+    def TCSSScope(self, TCSSScope):
+        self._TCSSScope = TCSSScope
+
+    @property
+    def ClusterIDs(self):
+        r"""<p>指定集群ID列表</p>
+        :rtype: list of str
+        """
+        return self._ClusterIDs
+
+    @ClusterIDs.setter
+    def ClusterIDs(self, ClusterIDs):
+        self._ClusterIDs = ClusterIDs
+
+    @property
+    def ExcludeClusterIDs(self):
+        r"""<p>排除集群ID列表</p>
+        :rtype: list of str
+        """
+        return self._ExcludeClusterIDs
+
+    @ExcludeClusterIDs.setter
+    def ExcludeClusterIDs(self, ExcludeClusterIDs):
+        self._ExcludeClusterIDs = ExcludeClusterIDs
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._InnerNetAlarmShow = params.get("InnerNetAlarmShow")
+        self._InnerIPShow = params.get("InnerIPShow")
+        self._CWPScope = params.get("CWPScope")
+        self._InstanceIDs = params.get("InstanceIDs")
+        self._ExcludeInstanceIDs = params.get("ExcludeInstanceIDs")
+        self._TagIDs = params.get("TagIDs")
+        self._TCSSScope = params.get("TCSSScope")
+        self._ClusterIDs = params.get("ClusterIDs")
+        self._ExcludeClusterIDs = params.get("ExcludeClusterIDs")
         self._RequestId = params.get("RequestId")
 
 
@@ -66375,6 +70050,147 @@ class DspmWhitelistStrategy(AbstractModel):
         
 
 
+class EDRExportJobItem(AbstractModel):
+    r"""EDR任务列表
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _JobId: <p>任务ID</p>
+        :type JobId: str
+        :param _JobName: <p>任务名</p>
+        :type JobName: str
+        :param _Source: <p>数据源</p>
+        :type Source: str
+        :param _ExportStatus: <p>导出状态</p>
+        :type ExportStatus: str
+        :param _ExportProgress: <p>导出进度</p>
+        :type ExportProgress: int
+        :param _FailureMsg: <p>失败信息</p>
+        :type FailureMsg: str
+        :param _Timeout: <p>超时时间</p>
+        :type Timeout: str
+        :param _InsertTime: <p>插入时间</p>
+        :type InsertTime: str
+        """
+        self._JobId = None
+        self._JobName = None
+        self._Source = None
+        self._ExportStatus = None
+        self._ExportProgress = None
+        self._FailureMsg = None
+        self._Timeout = None
+        self._InsertTime = None
+
+    @property
+    def JobId(self):
+        r"""<p>任务ID</p>
+        :rtype: str
+        """
+        return self._JobId
+
+    @JobId.setter
+    def JobId(self, JobId):
+        self._JobId = JobId
+
+    @property
+    def JobName(self):
+        r"""<p>任务名</p>
+        :rtype: str
+        """
+        return self._JobName
+
+    @JobName.setter
+    def JobName(self, JobName):
+        self._JobName = JobName
+
+    @property
+    def Source(self):
+        r"""<p>数据源</p>
+        :rtype: str
+        """
+        return self._Source
+
+    @Source.setter
+    def Source(self, Source):
+        self._Source = Source
+
+    @property
+    def ExportStatus(self):
+        r"""<p>导出状态</p>
+        :rtype: str
+        """
+        return self._ExportStatus
+
+    @ExportStatus.setter
+    def ExportStatus(self, ExportStatus):
+        self._ExportStatus = ExportStatus
+
+    @property
+    def ExportProgress(self):
+        r"""<p>导出进度</p>
+        :rtype: int
+        """
+        return self._ExportProgress
+
+    @ExportProgress.setter
+    def ExportProgress(self, ExportProgress):
+        self._ExportProgress = ExportProgress
+
+    @property
+    def FailureMsg(self):
+        r"""<p>失败信息</p>
+        :rtype: str
+        """
+        return self._FailureMsg
+
+    @FailureMsg.setter
+    def FailureMsg(self, FailureMsg):
+        self._FailureMsg = FailureMsg
+
+    @property
+    def Timeout(self):
+        r"""<p>超时时间</p>
+        :rtype: str
+        """
+        return self._Timeout
+
+    @Timeout.setter
+    def Timeout(self, Timeout):
+        self._Timeout = Timeout
+
+    @property
+    def InsertTime(self):
+        r"""<p>插入时间</p>
+        :rtype: str
+        """
+        return self._InsertTime
+
+    @InsertTime.setter
+    def InsertTime(self, InsertTime):
+        self._InsertTime = InsertTime
+
+
+    def _deserialize(self, params):
+        self._JobId = params.get("JobId")
+        self._JobName = params.get("JobName")
+        self._Source = params.get("Source")
+        self._ExportStatus = params.get("ExportStatus")
+        self._ExportProgress = params.get("ExportProgress")
+        self._FailureMsg = params.get("FailureMsg")
+        self._Timeout = params.get("Timeout")
+        self._InsertTime = params.get("InsertTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class EDRFilter(AbstractModel):
     r"""描述键值对过滤器，用于条件过滤查询。例如过滤ID、名称、状态等
 
@@ -66424,6 +70240,75 @@ class EDRFilter(AbstractModel):
     @property
     def ExactMatch(self):
         r"""<p>模糊搜索</p>
+        :rtype: bool
+        """
+        return self._ExactMatch
+
+    @ExactMatch.setter
+    def ExactMatch(self, ExactMatch):
+        self._ExactMatch = ExactMatch
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Values = params.get("Values")
+        self._ExactMatch = params.get("ExactMatch")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class EDRFilters(AbstractModel):
+    r"""描述键值对过滤器，用于条件过滤查询。例如过滤ID、名称、状态等
+
+    若存在多个Filter时，Filter间的关系为逻辑与（AND）关系。
+    若同一个Filter存在多个Values，同一Filter下Values间的关系为逻辑或（OR）关系。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: <p>过滤键的名称。</p>
+        :type Name: str
+        :param _Values: <p>一个或者多个过滤值。</p>
+        :type Values: list of str
+        :param _ExactMatch: <p>是否模糊匹配，前端框架会带上，可以不管</p>
+        :type ExactMatch: bool
+        """
+        self._Name = None
+        self._Values = None
+        self._ExactMatch = None
+
+    @property
+    def Name(self):
+        r"""<p>过滤键的名称。</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Values(self):
+        r"""<p>一个或者多个过滤值。</p>
+        :rtype: list of str
+        """
+        return self._Values
+
+    @Values.setter
+    def Values(self, Values):
+        self._Values = Values
+
+    @property
+    def ExactMatch(self):
+        r"""<p>是否模糊匹配，前端框架会带上，可以不管</p>
         :rtype: bool
         """
         return self._ExactMatch
@@ -67163,6 +71048,800 @@ class EDRRuleTagItem(AbstractModel):
         
 
 
+class EDRScanRecordItem(AbstractModel):
+    r"""扫描任务记录项
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: <p>任务主键 ID</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskId: int
+        :param _TaskName: <p>任务名称，如 Malware_20260702_030000</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskName: str
+        :param _TriggerType: <p>扫描类型</p><p>枚举值：</p><ul><li>MANNAL： 手动扫描</li><li>CYCLE： 定时扫描</li></ul>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TriggerType: str
+        :param _ScheduleDesc: <p>定时调度描述（ScanType=1 时有值），如“每天 03:00:00”</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ScheduleDesc: str
+        :param _TaskType: <p>任务资产类型：0=主机扫描，1=容器扫描</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskType: str
+        :param _TargetAppIDs: <p>扫描目标涉及的账号AppId列表</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TargetAppIDs: list of int non-negative
+        :param _AccountName: <p>任务创建者账号名称</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AccountName: str
+        :param _CloudType: <p>云类型：0=腾讯云，1=AWS，2=Azure，4=阿里云</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CloudType: int
+        :param _AssetSelectionType: <p>资产选择方式：all=全部资产，tag=按标签选择，direct=直接选择</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AssetSelectionType: str
+        :param _TotalAssetCount: <p>扫描资产总数</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalAssetCount: int
+        :param _CreateAppID: <p>创建者账号AppId（前端据此判断操作权限）</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateAppID: int
+        :param _Creator: <p>创建者账号uin</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Creator: str
+        :param _CreatorName: <p>创建者账号名称</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreatorName: str
+        :param _CreatorCloudType: <p>创建者云类型：0=腾讯云, 1=AWS, 2=Azure, 4=阿里云</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreatorCloudType: int
+        :param _StartTime: <p>任务开始时间，格式 2006-01-02 15:04:05</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StartTime: str
+        :param _EndTime: <p>任务结束时间，未结束为空字符串</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EndTime: str
+        :param _Status: <p>WAIT：待扫描，SCANNING：扫描中，FINISHED：已完成，FAILED：失败，CANCELED：已停止</p><p>枚举值：</p><ul><li>WAIT： 待扫描</li><li>SCANNING： 扫描中</li><li>FINISHED： 已完成</li><li>FAILED： 失败</li><li>CANCELED： 已停止</li></ul>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: str
+        """
+        self._TaskId = None
+        self._TaskName = None
+        self._TriggerType = None
+        self._ScheduleDesc = None
+        self._TaskType = None
+        self._TargetAppIDs = None
+        self._AccountName = None
+        self._CloudType = None
+        self._AssetSelectionType = None
+        self._TotalAssetCount = None
+        self._CreateAppID = None
+        self._Creator = None
+        self._CreatorName = None
+        self._CreatorCloudType = None
+        self._StartTime = None
+        self._EndTime = None
+        self._Status = None
+
+    @property
+    def TaskId(self):
+        r"""<p>任务主键 ID</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def TaskName(self):
+        r"""<p>任务名称，如 Malware_20260702_030000</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TaskName
+
+    @TaskName.setter
+    def TaskName(self, TaskName):
+        self._TaskName = TaskName
+
+    @property
+    def TriggerType(self):
+        r"""<p>扫描类型</p><p>枚举值：</p><ul><li>MANNAL： 手动扫描</li><li>CYCLE： 定时扫描</li></ul>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TriggerType
+
+    @TriggerType.setter
+    def TriggerType(self, TriggerType):
+        self._TriggerType = TriggerType
+
+    @property
+    def ScheduleDesc(self):
+        r"""<p>定时调度描述（ScanType=1 时有值），如“每天 03:00:00”</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ScheduleDesc
+
+    @ScheduleDesc.setter
+    def ScheduleDesc(self, ScheduleDesc):
+        self._ScheduleDesc = ScheduleDesc
+
+    @property
+    def TaskType(self):
+        r"""<p>任务资产类型：0=主机扫描，1=容器扫描</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TaskType
+
+    @TaskType.setter
+    def TaskType(self, TaskType):
+        self._TaskType = TaskType
+
+    @property
+    def TargetAppIDs(self):
+        r"""<p>扫描目标涉及的账号AppId列表</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of int non-negative
+        """
+        return self._TargetAppIDs
+
+    @TargetAppIDs.setter
+    def TargetAppIDs(self, TargetAppIDs):
+        self._TargetAppIDs = TargetAppIDs
+
+    @property
+    def AccountName(self):
+        r"""<p>任务创建者账号名称</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._AccountName
+
+    @AccountName.setter
+    def AccountName(self, AccountName):
+        self._AccountName = AccountName
+
+    @property
+    def CloudType(self):
+        r"""<p>云类型：0=腾讯云，1=AWS，2=Azure，4=阿里云</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._CloudType
+
+    @CloudType.setter
+    def CloudType(self, CloudType):
+        self._CloudType = CloudType
+
+    @property
+    def AssetSelectionType(self):
+        r"""<p>资产选择方式：all=全部资产，tag=按标签选择，direct=直接选择</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._AssetSelectionType
+
+    @AssetSelectionType.setter
+    def AssetSelectionType(self, AssetSelectionType):
+        self._AssetSelectionType = AssetSelectionType
+
+    @property
+    def TotalAssetCount(self):
+        r"""<p>扫描资产总数</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._TotalAssetCount
+
+    @TotalAssetCount.setter
+    def TotalAssetCount(self, TotalAssetCount):
+        self._TotalAssetCount = TotalAssetCount
+
+    @property
+    def CreateAppID(self):
+        r"""<p>创建者账号AppId（前端据此判断操作权限）</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._CreateAppID
+
+    @CreateAppID.setter
+    def CreateAppID(self, CreateAppID):
+        self._CreateAppID = CreateAppID
+
+    @property
+    def Creator(self):
+        r"""<p>创建者账号uin</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Creator
+
+    @Creator.setter
+    def Creator(self, Creator):
+        self._Creator = Creator
+
+    @property
+    def CreatorName(self):
+        r"""<p>创建者账号名称</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CreatorName
+
+    @CreatorName.setter
+    def CreatorName(self, CreatorName):
+        self._CreatorName = CreatorName
+
+    @property
+    def CreatorCloudType(self):
+        r"""<p>创建者云类型：0=腾讯云, 1=AWS, 2=Azure, 4=阿里云</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._CreatorCloudType
+
+    @CreatorCloudType.setter
+    def CreatorCloudType(self, CreatorCloudType):
+        self._CreatorCloudType = CreatorCloudType
+
+    @property
+    def StartTime(self):
+        r"""<p>任务开始时间，格式 2006-01-02 15:04:05</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""<p>任务结束时间，未结束为空字符串</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def Status(self):
+        r"""<p>WAIT：待扫描，SCANNING：扫描中，FINISHED：已完成，FAILED：失败，CANCELED：已停止</p><p>枚举值：</p><ul><li>WAIT： 待扫描</li><li>SCANNING： 扫描中</li><li>FINISHED： 已完成</li><li>FAILED： 失败</li><li>CANCELED： 已停止</li></ul>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._TaskName = params.get("TaskName")
+        self._TriggerType = params.get("TriggerType")
+        self._ScheduleDesc = params.get("ScheduleDesc")
+        self._TaskType = params.get("TaskType")
+        self._TargetAppIDs = params.get("TargetAppIDs")
+        self._AccountName = params.get("AccountName")
+        self._CloudType = params.get("CloudType")
+        self._AssetSelectionType = params.get("AssetSelectionType")
+        self._TotalAssetCount = params.get("TotalAssetCount")
+        self._CreateAppID = params.get("CreateAppID")
+        self._Creator = params.get("Creator")
+        self._CreatorName = params.get("CreatorName")
+        self._CreatorCloudType = params.get("CreatorCloudType")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class EDRScanTaskContainerItem(AbstractModel):
+    r"""容器资产扫描详情项
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ContainerID: <p>容器ID</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ContainerID: str
+        :param _ContainerName: <p>容器名称</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ContainerName: str
+        :param _PodName: <p>Pod名称</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PodName: str
+        :param _ClusterID: <p>集群ID</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClusterID: str
+        :param _ClusterName: <p>集群名称</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClusterName: str
+        :param _ClusterType: <p>集群类型</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClusterType: str
+        :param _AccountName: <p>资产所属账号名称（后端富化）</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AccountName: str
+        :param _AppId: <p>所属账号AppId</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AppId: int
+        :param _CloudType: <p>云类型</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CloudType: int
+        :param _Status: <p>扫描状态：WAIT/SCANNING/FINISHED/FAILED</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: str
+        :param _RiskCount: <p>告警数</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RiskCount: int
+        :param _FailReason: <p>失败原因</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FailReason: str
+        :param _FixSuggestion: <p>解决方案</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FixSuggestion: str
+        """
+        self._ContainerID = None
+        self._ContainerName = None
+        self._PodName = None
+        self._ClusterID = None
+        self._ClusterName = None
+        self._ClusterType = None
+        self._AccountName = None
+        self._AppId = None
+        self._CloudType = None
+        self._Status = None
+        self._RiskCount = None
+        self._FailReason = None
+        self._FixSuggestion = None
+
+    @property
+    def ContainerID(self):
+        r"""<p>容器ID</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ContainerID
+
+    @ContainerID.setter
+    def ContainerID(self, ContainerID):
+        self._ContainerID = ContainerID
+
+    @property
+    def ContainerName(self):
+        r"""<p>容器名称</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ContainerName
+
+    @ContainerName.setter
+    def ContainerName(self, ContainerName):
+        self._ContainerName = ContainerName
+
+    @property
+    def PodName(self):
+        r"""<p>Pod名称</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._PodName
+
+    @PodName.setter
+    def PodName(self, PodName):
+        self._PodName = PodName
+
+    @property
+    def ClusterID(self):
+        r"""<p>集群ID</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ClusterID
+
+    @ClusterID.setter
+    def ClusterID(self, ClusterID):
+        self._ClusterID = ClusterID
+
+    @property
+    def ClusterName(self):
+        r"""<p>集群名称</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ClusterName
+
+    @ClusterName.setter
+    def ClusterName(self, ClusterName):
+        self._ClusterName = ClusterName
+
+    @property
+    def ClusterType(self):
+        r"""<p>集群类型</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ClusterType
+
+    @ClusterType.setter
+    def ClusterType(self, ClusterType):
+        self._ClusterType = ClusterType
+
+    @property
+    def AccountName(self):
+        r"""<p>资产所属账号名称（后端富化）</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._AccountName
+
+    @AccountName.setter
+    def AccountName(self, AccountName):
+        self._AccountName = AccountName
+
+    @property
+    def AppId(self):
+        r"""<p>所属账号AppId</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def CloudType(self):
+        r"""<p>云类型</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._CloudType
+
+    @CloudType.setter
+    def CloudType(self, CloudType):
+        self._CloudType = CloudType
+
+    @property
+    def Status(self):
+        r"""<p>扫描状态：WAIT/SCANNING/FINISHED/FAILED</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def RiskCount(self):
+        r"""<p>告警数</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._RiskCount
+
+    @RiskCount.setter
+    def RiskCount(self, RiskCount):
+        self._RiskCount = RiskCount
+
+    @property
+    def FailReason(self):
+        r"""<p>失败原因</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._FailReason
+
+    @FailReason.setter
+    def FailReason(self, FailReason):
+        self._FailReason = FailReason
+
+    @property
+    def FixSuggestion(self):
+        r"""<p>解决方案</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._FixSuggestion
+
+    @FixSuggestion.setter
+    def FixSuggestion(self, FixSuggestion):
+        self._FixSuggestion = FixSuggestion
+
+
+    def _deserialize(self, params):
+        self._ContainerID = params.get("ContainerID")
+        self._ContainerName = params.get("ContainerName")
+        self._PodName = params.get("PodName")
+        self._ClusterID = params.get("ClusterID")
+        self._ClusterName = params.get("ClusterName")
+        self._ClusterType = params.get("ClusterType")
+        self._AccountName = params.get("AccountName")
+        self._AppId = params.get("AppId")
+        self._CloudType = params.get("CloudType")
+        self._Status = params.get("Status")
+        self._RiskCount = params.get("RiskCount")
+        self._FailReason = params.get("FailReason")
+        self._FixSuggestion = params.get("FixSuggestion")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class EDRScanTaskHostItem(AbstractModel):
+    r"""主机资产扫描详情项
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Quuid: <p>主机唯一标识</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Quuid: str
+        :param _HostName: <p>主机名称</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HostName: str
+        :param _InstanceId: <p>实例ID</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceId: str
+        :param _PublicIp: <p>公网IP</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PublicIp: str
+        :param _PrivateIp: <p>内网IP</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PrivateIp: str
+        :param _OsType: <p>操作系统</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OsType: str
+        :param _AccountName: <p>资产所属账号名称（后端富化）</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AccountName: str
+        :param _AppId: <p>资产所属账号AppId</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AppId: int
+        :param _CloudType: <p>云类型</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CloudType: int
+        :param _Status: <p>扫描状态：WAIT/SCANNING/FINISHED/FAILED</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: str
+        :param _RiskCount: <p>风险数</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RiskCount: int
+        :param _FailReason: <p>失败原因</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FailReason: str
+        :param _FixSuggestion: <p>解决方案</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FixSuggestion: str
+        """
+        self._Quuid = None
+        self._HostName = None
+        self._InstanceId = None
+        self._PublicIp = None
+        self._PrivateIp = None
+        self._OsType = None
+        self._AccountName = None
+        self._AppId = None
+        self._CloudType = None
+        self._Status = None
+        self._RiskCount = None
+        self._FailReason = None
+        self._FixSuggestion = None
+
+    @property
+    def Quuid(self):
+        r"""<p>主机唯一标识</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Quuid
+
+    @Quuid.setter
+    def Quuid(self, Quuid):
+        self._Quuid = Quuid
+
+    @property
+    def HostName(self):
+        r"""<p>主机名称</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._HostName
+
+    @HostName.setter
+    def HostName(self, HostName):
+        self._HostName = HostName
+
+    @property
+    def InstanceId(self):
+        r"""<p>实例ID</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def PublicIp(self):
+        r"""<p>公网IP</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._PublicIp
+
+    @PublicIp.setter
+    def PublicIp(self, PublicIp):
+        self._PublicIp = PublicIp
+
+    @property
+    def PrivateIp(self):
+        r"""<p>内网IP</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._PrivateIp
+
+    @PrivateIp.setter
+    def PrivateIp(self, PrivateIp):
+        self._PrivateIp = PrivateIp
+
+    @property
+    def OsType(self):
+        r"""<p>操作系统</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._OsType
+
+    @OsType.setter
+    def OsType(self, OsType):
+        self._OsType = OsType
+
+    @property
+    def AccountName(self):
+        r"""<p>资产所属账号名称（后端富化）</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._AccountName
+
+    @AccountName.setter
+    def AccountName(self, AccountName):
+        self._AccountName = AccountName
+
+    @property
+    def AppId(self):
+        r"""<p>资产所属账号AppId</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def CloudType(self):
+        r"""<p>云类型</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._CloudType
+
+    @CloudType.setter
+    def CloudType(self, CloudType):
+        self._CloudType = CloudType
+
+    @property
+    def Status(self):
+        r"""<p>扫描状态：WAIT/SCANNING/FINISHED/FAILED</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def RiskCount(self):
+        r"""<p>风险数</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._RiskCount
+
+    @RiskCount.setter
+    def RiskCount(self, RiskCount):
+        self._RiskCount = RiskCount
+
+    @property
+    def FailReason(self):
+        r"""<p>失败原因</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._FailReason
+
+    @FailReason.setter
+    def FailReason(self, FailReason):
+        self._FailReason = FailReason
+
+    @property
+    def FixSuggestion(self):
+        r"""<p>解决方案</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._FixSuggestion
+
+    @FixSuggestion.setter
+    def FixSuggestion(self, FixSuggestion):
+        self._FixSuggestion = FixSuggestion
+
+
+    def _deserialize(self, params):
+        self._Quuid = params.get("Quuid")
+        self._HostName = params.get("HostName")
+        self._InstanceId = params.get("InstanceId")
+        self._PublicIp = params.get("PublicIp")
+        self._PrivateIp = params.get("PrivateIp")
+        self._OsType = params.get("OsType")
+        self._AccountName = params.get("AccountName")
+        self._AppId = params.get("AppId")
+        self._CloudType = params.get("CloudType")
+        self._Status = params.get("Status")
+        self._RiskCount = params.get("RiskCount")
+        self._FailReason = params.get("FailReason")
+        self._FixSuggestion = params.get("FixSuggestion")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class EdrAlertCategoryCount(AbstractModel):
     r"""EDR告警大类对应的告警数量
 
@@ -67204,6 +71883,132 @@ class EdrAlertCategoryCount(AbstractModel):
     def _deserialize(self, params):
         self._AlertCategory = params.get("AlertCategory")
         self._Count = params.get("Count")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class EdrAlertCountItem(AbstractModel):
+    r"""EDR告警数量统计项
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: <p>查询实例ID</p>
+        :type InstanceId: str
+        :param _TotalCount: <p>总告警条数</p>
+        :type TotalCount: int
+        :param _VirusTrojanCount: <p>病毒木马（VIRUS_TROJAN）数量</p>
+        :type VirusTrojanCount: int
+        :param _AbnormalLoginCount: <p>异常登录（ABNORMAL_LOGIN）数量</p>
+        :type AbnormalLoginCount: int
+        :param _HostBehaviorCount: <p>主机行为（HOST_BEHAVIOR）数量</p>
+        :type HostBehaviorCount: int
+        :param _NetworkBehaviorCount: <p>网络行为（NETWORK_BEHAVIOR）数量</p>
+        :type NetworkBehaviorCount: int
+        :param _InstancesCount: <p>存在告警的主机数量（仅 GlobalCount 模式有值）</p>
+        :type InstancesCount: int
+        """
+        self._InstanceId = None
+        self._TotalCount = None
+        self._VirusTrojanCount = None
+        self._AbnormalLoginCount = None
+        self._HostBehaviorCount = None
+        self._NetworkBehaviorCount = None
+        self._InstancesCount = None
+
+    @property
+    def InstanceId(self):
+        r"""<p>查询实例ID</p>
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def TotalCount(self):
+        r"""<p>总告警条数</p>
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def VirusTrojanCount(self):
+        r"""<p>病毒木马（VIRUS_TROJAN）数量</p>
+        :rtype: int
+        """
+        return self._VirusTrojanCount
+
+    @VirusTrojanCount.setter
+    def VirusTrojanCount(self, VirusTrojanCount):
+        self._VirusTrojanCount = VirusTrojanCount
+
+    @property
+    def AbnormalLoginCount(self):
+        r"""<p>异常登录（ABNORMAL_LOGIN）数量</p>
+        :rtype: int
+        """
+        return self._AbnormalLoginCount
+
+    @AbnormalLoginCount.setter
+    def AbnormalLoginCount(self, AbnormalLoginCount):
+        self._AbnormalLoginCount = AbnormalLoginCount
+
+    @property
+    def HostBehaviorCount(self):
+        r"""<p>主机行为（HOST_BEHAVIOR）数量</p>
+        :rtype: int
+        """
+        return self._HostBehaviorCount
+
+    @HostBehaviorCount.setter
+    def HostBehaviorCount(self, HostBehaviorCount):
+        self._HostBehaviorCount = HostBehaviorCount
+
+    @property
+    def NetworkBehaviorCount(self):
+        r"""<p>网络行为（NETWORK_BEHAVIOR）数量</p>
+        :rtype: int
+        """
+        return self._NetworkBehaviorCount
+
+    @NetworkBehaviorCount.setter
+    def NetworkBehaviorCount(self, NetworkBehaviorCount):
+        self._NetworkBehaviorCount = NetworkBehaviorCount
+
+    @property
+    def InstancesCount(self):
+        r"""<p>存在告警的主机数量（仅 GlobalCount 模式有值）</p>
+        :rtype: int
+        """
+        return self._InstancesCount
+
+    @InstancesCount.setter
+    def InstancesCount(self, InstancesCount):
+        self._InstancesCount = InstancesCount
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._TotalCount = params.get("TotalCount")
+        self._VirusTrojanCount = params.get("VirusTrojanCount")
+        self._AbnormalLoginCount = params.get("AbnormalLoginCount")
+        self._HostBehaviorCount = params.get("HostBehaviorCount")
+        self._NetworkBehaviorCount = params.get("NetworkBehaviorCount")
+        self._InstancesCount = params.get("InstancesCount")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -68805,6 +73610,123 @@ class EdrAlertTargetForIgnore(AbstractModel):
         
 
 
+class EdrContainerAlertCountItem(AbstractModel):
+    r"""容器告警分组统计项（仅返回 TotalCount，不做告警大类拆分）
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: <p>集群 ID（按集群分组时有值，否则空串）</p>
+        :type ClusterId: str
+        :param _ContainerId: <p>容器 ID（按容器分组时有值，否则空串）</p>
+        :type ContainerId: str
+        :param _TotalCount: <p>该集群/容器的告警总条数</p>
+        :type TotalCount: int
+        """
+        self._ClusterId = None
+        self._ContainerId = None
+        self._TotalCount = None
+
+    @property
+    def ClusterId(self):
+        r"""<p>集群 ID（按集群分组时有值，否则空串）</p>
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def ContainerId(self):
+        r"""<p>容器 ID（按容器分组时有值，否则空串）</p>
+        :rtype: str
+        """
+        return self._ContainerId
+
+    @ContainerId.setter
+    def ContainerId(self, ContainerId):
+        self._ContainerId = ContainerId
+
+    @property
+    def TotalCount(self):
+        r"""<p>该集群/容器的告警总条数</p>
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        self._ContainerId = params.get("ContainerId")
+        self._TotalCount = params.get("TotalCount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class EdrContainerGlobalCount(AbstractModel):
+    r"""容器告警全局统计
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: <p>总告警条数</p>
+        :type TotalCount: int
+        :param _ClustersCount: <p>存在告警的集群数量（COUNT(DISTINCT cluster_id)，排除空 cluster_id）</p>
+        :type ClustersCount: int
+        """
+        self._TotalCount = None
+        self._ClustersCount = None
+
+    @property
+    def TotalCount(self):
+        r"""<p>总告警条数</p>
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def ClustersCount(self):
+        r"""<p>存在告警的集群数量（COUNT(DISTINCT cluster_id)，排除空 cluster_id）</p>
+        :rtype: int
+        """
+        return self._ClustersCount
+
+    @ClustersCount.setter
+    def ClustersCount(self, ClustersCount):
+        self._ClustersCount = ClustersCount
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        self._ClustersCount = params.get("ClustersCount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Element(AbstractModel):
     r"""统计条目
 
@@ -68854,6 +73776,249 @@ class Element(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class ExportCSIPMalwareScanTaskDetailRequest(AbstractModel):
+    r"""ExportCSIPMalwareScanTaskDetail请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: <p>CSIP扫描任务ID</p>
+        :type TaskId: int
+        :param _MemberId: <p>集团账号的成员id</p>
+        :type MemberId: list of str
+        :param _Filters: <p>Status - int - 是否必填：否 - 扫描状态过滤Quuid - string - 是否必填：否 - 主机Quuid过滤MachineName - string - 是否必填：否 - 主机名称模糊搜索InstanceID - string - 是否必填：否 - 实例ID过滤（单值模糊匹配，多值精确匹配）IP - string - 是否必填：否 - IP地址过滤（内网IP+公网IP双向模糊匹配）</p>
+        :type Filters: list of EDRFilter
+        """
+        self._TaskId = None
+        self._MemberId = None
+        self._Filters = None
+
+    @property
+    def TaskId(self):
+        r"""<p>CSIP扫描任务ID</p>
+        :rtype: int
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def MemberId(self):
+        r"""<p>集团账号的成员id</p>
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+    @property
+    def Filters(self):
+        r"""<p>Status - int - 是否必填：否 - 扫描状态过滤Quuid - string - 是否必填：否 - 主机Quuid过滤MachineName - string - 是否必填：否 - 主机名称模糊搜索InstanceID - string - 是否必填：否 - 实例ID过滤（单值模糊匹配，多值精确匹配）IP - string - 是否必填：否 - IP地址过滤（内网IP+公网IP双向模糊匹配）</p>
+        :rtype: list of EDRFilter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._MemberId = params.get("MemberId")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = EDRFilter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ExportCSIPMalwareScanTaskDetailResponse(AbstractModel):
+    r"""ExportCSIPMalwareScanTaskDetail返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: <p>导出任务ID，用于查询导出结果</p>
+        :type TaskId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        r"""<p>导出任务ID，用于查询导出结果</p>
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
+
+
+class ExportEDRRulesRequest(AbstractModel):
+    r"""ExportEDRRules请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MemberId: <p>集团账号的成员id</p>
+        :type MemberId: list of str
+        :param _Filters: <p>过滤条件：Name、RuleContent、RuleType、ContentType、Action、Level、DetectMode、DetectType、AttackStage、Status</p>
+        :type Filters: list of EDRFilter
+        :param _Order: <p>排序，大小写无关：ASC 升序，DESC降序</p>
+        :type Order: str
+        :param _By: <p>排序列，ModifyTime</p>
+        :type By: str
+        """
+        self._MemberId = None
+        self._Filters = None
+        self._Order = None
+        self._By = None
+
+    @property
+    def MemberId(self):
+        r"""<p>集团账号的成员id</p>
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+    @property
+    def Filters(self):
+        r"""<p>过滤条件：Name、RuleContent、RuleType、ContentType、Action、Level、DetectMode、DetectType、AttackStage、Status</p>
+        :rtype: list of EDRFilter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Order(self):
+        r"""<p>排序，大小写无关：ASC 升序，DESC降序</p>
+        :rtype: str
+        """
+        return self._Order
+
+    @Order.setter
+    def Order(self, Order):
+        self._Order = Order
+
+    @property
+    def By(self):
+        r"""<p>排序列，ModifyTime</p>
+        :rtype: str
+        """
+        return self._By
+
+    @By.setter
+    def By(self, By):
+        self._By = By
+
+
+    def _deserialize(self, params):
+        self._MemberId = params.get("MemberId")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = EDRFilter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._Order = params.get("Order")
+        self._By = params.get("By")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ExportEDRRulesResponse(AbstractModel):
+    r"""ExportEDRRules返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: <p>任务ID,需要到接口 <a href="https://cloud.tencent.com/document/product/296/52508" target="_blank">异步导出任务</a>获取DownloadUrl下载地址</p>
+        :type TaskId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        r"""<p>任务ID,需要到接口 <a href="https://cloud.tencent.com/document/product/296/52508" target="_blank">异步导出任务</a>获取DownloadUrl下载地址</p>
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
 
 
 class ExportTask(AbstractModel):
@@ -80419,6 +85584,353 @@ class ModifyEDRRuleResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyEDRRuleStatusRequest(AbstractModel):
+    r"""ModifyEDRRuleStatus请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Status: <p>开启状态：0-开启，1-关闭</p>
+        :type Status: int
+        :param _RuleIDs: <p>策略ID数组</p>
+        :type RuleIDs: list of str
+        :param _RuleType: <p>策略类型，0-system 1-custom</p>
+        :type RuleType: int
+        :param _MemberId: <p>集团账号的成员id</p>
+        :type MemberId: list of str
+        :param _TargetAppIDs: <p>修改策略对应的APPID</p>
+        :type TargetAppIDs: list of int non-negative
+        """
+        self._Status = None
+        self._RuleIDs = None
+        self._RuleType = None
+        self._MemberId = None
+        self._TargetAppIDs = None
+
+    @property
+    def Status(self):
+        r"""<p>开启状态：0-开启，1-关闭</p>
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def RuleIDs(self):
+        r"""<p>策略ID数组</p>
+        :rtype: list of str
+        """
+        return self._RuleIDs
+
+    @RuleIDs.setter
+    def RuleIDs(self, RuleIDs):
+        self._RuleIDs = RuleIDs
+
+    @property
+    def RuleType(self):
+        r"""<p>策略类型，0-system 1-custom</p>
+        :rtype: int
+        """
+        return self._RuleType
+
+    @RuleType.setter
+    def RuleType(self, RuleType):
+        self._RuleType = RuleType
+
+    @property
+    def MemberId(self):
+        r"""<p>集团账号的成员id</p>
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+    @property
+    def TargetAppIDs(self):
+        r"""<p>修改策略对应的APPID</p>
+        :rtype: list of int non-negative
+        """
+        return self._TargetAppIDs
+
+    @TargetAppIDs.setter
+    def TargetAppIDs(self, TargetAppIDs):
+        self._TargetAppIDs = TargetAppIDs
+
+
+    def _deserialize(self, params):
+        self._Status = params.get("Status")
+        self._RuleIDs = params.get("RuleIDs")
+        self._RuleType = params.get("RuleType")
+        self._MemberId = params.get("MemberId")
+        self._TargetAppIDs = params.get("TargetAppIDs")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyEDRRuleStatusResponse(AbstractModel):
+    r"""ModifyEDRRuleStatus返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyEDRRulesActionRequest(AbstractModel):
+    r"""ModifyEDRRulesAction请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RuleIDs: <p>策略ID数组</p>
+        :type RuleIDs: list of str
+        :param _AlertAction: <p>目标 Action：0-告警 1-放行 2-告警并拦截</p>
+        :type AlertAction: int
+        :param _TargetAppIDs: <p>目标账号 AppId 列表</p>
+        :type TargetAppIDs: list of int non-negative
+        :param _MemberId: <p>集团账号的成员id</p>
+        :type MemberId: list of str
+        """
+        self._RuleIDs = None
+        self._AlertAction = None
+        self._TargetAppIDs = None
+        self._MemberId = None
+
+    @property
+    def RuleIDs(self):
+        r"""<p>策略ID数组</p>
+        :rtype: list of str
+        """
+        return self._RuleIDs
+
+    @RuleIDs.setter
+    def RuleIDs(self, RuleIDs):
+        self._RuleIDs = RuleIDs
+
+    @property
+    def AlertAction(self):
+        r"""<p>目标 Action：0-告警 1-放行 2-告警并拦截</p>
+        :rtype: int
+        """
+        return self._AlertAction
+
+    @AlertAction.setter
+    def AlertAction(self, AlertAction):
+        self._AlertAction = AlertAction
+
+    @property
+    def TargetAppIDs(self):
+        r"""<p>目标账号 AppId 列表</p>
+        :rtype: list of int non-negative
+        """
+        return self._TargetAppIDs
+
+    @TargetAppIDs.setter
+    def TargetAppIDs(self, TargetAppIDs):
+        self._TargetAppIDs = TargetAppIDs
+
+    @property
+    def MemberId(self):
+        r"""<p>集团账号的成员id</p>
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+
+    def _deserialize(self, params):
+        self._RuleIDs = params.get("RuleIDs")
+        self._AlertAction = params.get("AlertAction")
+        self._TargetAppIDs = params.get("TargetAppIDs")
+        self._MemberId = params.get("MemberId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyEDRRulesActionResponse(AbstractModel):
+    r"""ModifyEDRRulesAction返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyEdrAlertIsolationRequest(AbstractModel):
+    r"""ModifyEdrAlertIsolation请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Targets: <p>告警定位列表（1-500）</p>
+        :type Targets: list of EdrAlertTarget
+        :param _Status: <p>操作类型：Isolate（隔离）/ RestoreIsolate（恢复隔离）/ KillProcess（进程查杀）枚举值：Isolate： 隔离RestoreIsolate： 恢复隔离KillProcess： 进程查杀</p>
+        :type Status: str
+        :param _MemberId: <p>集团账号的成员id</p>
+        :type MemberId: list of str
+        :param _KillProcess: <p>是否终止关联进程，仅 Status=Isolate 有效，Status=KillProcess 时忽略</p>
+        :type KillProcess: bool
+        """
+        self._Targets = None
+        self._Status = None
+        self._MemberId = None
+        self._KillProcess = None
+
+    @property
+    def Targets(self):
+        r"""<p>告警定位列表（1-500）</p>
+        :rtype: list of EdrAlertTarget
+        """
+        return self._Targets
+
+    @Targets.setter
+    def Targets(self, Targets):
+        self._Targets = Targets
+
+    @property
+    def Status(self):
+        r"""<p>操作类型：Isolate（隔离）/ RestoreIsolate（恢复隔离）/ KillProcess（进程查杀）枚举值：Isolate： 隔离RestoreIsolate： 恢复隔离KillProcess： 进程查杀</p>
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def MemberId(self):
+        r"""<p>集团账号的成员id</p>
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+    @property
+    def KillProcess(self):
+        r"""<p>是否终止关联进程，仅 Status=Isolate 有效，Status=KillProcess 时忽略</p>
+        :rtype: bool
+        """
+        return self._KillProcess
+
+    @KillProcess.setter
+    def KillProcess(self, KillProcess):
+        self._KillProcess = KillProcess
+
+
+    def _deserialize(self, params):
+        if params.get("Targets") is not None:
+            self._Targets = []
+            for item in params.get("Targets"):
+                obj = EdrAlertTarget()
+                obj._deserialize(item)
+                self._Targets.append(obj)
+        self._Status = params.get("Status")
+        self._MemberId = params.get("MemberId")
+        self._KillProcess = params.get("KillProcess")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyEdrAlertIsolationResponse(AbstractModel):
+    r"""ModifyEdrAlertIsolation返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyEdrAlertPermanentIgnoreRequest(AbstractModel):
     r"""ModifyEdrAlertPermanentIgnore请求参数结构体
 
@@ -80515,6 +86027,105 @@ class ModifyEdrAlertPermanentIgnoreResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._IgnoredCount = params.get("IgnoredCount")
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyEdrAlertStatusRequest(AbstractModel):
+    r"""ModifyEdrAlertStatus请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Targets: <p>目标告警信息</p>
+        :type Targets: list of EdrAlertTarget
+        :param _Status: <p>想达到的告警状态枚举值：PROCESSED： 已处理WHITELISTED： 已加白IGNORED： 已忽略DELETED： 已删除-软删除</p>
+        :type Status: str
+        :param _MemberId: <p>集团账号的成员id</p>
+        :type MemberId: list of str
+        """
+        self._Targets = None
+        self._Status = None
+        self._MemberId = None
+
+    @property
+    def Targets(self):
+        r"""<p>目标告警信息</p>
+        :rtype: list of EdrAlertTarget
+        """
+        return self._Targets
+
+    @Targets.setter
+    def Targets(self, Targets):
+        self._Targets = Targets
+
+    @property
+    def Status(self):
+        r"""<p>想达到的告警状态枚举值：PROCESSED： 已处理WHITELISTED： 已加白IGNORED： 已忽略DELETED： 已删除-软删除</p>
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def MemberId(self):
+        r"""<p>集团账号的成员id</p>
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+
+    def _deserialize(self, params):
+        if params.get("Targets") is not None:
+            self._Targets = []
+            for item in params.get("Targets"):
+                obj = EdrAlertTarget()
+                obj._deserialize(item)
+                self._Targets.append(obj)
+        self._Status = params.get("Status")
+        self._MemberId = params.get("MemberId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyEdrAlertStatusResponse(AbstractModel):
+    r"""ModifyEdrAlertStatus返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
 
 
@@ -80665,6 +86276,240 @@ class ModifyMachineRemarkRequest(AbstractModel):
 
 class ModifyMachineRemarkResponse(AbstractModel):
     r"""ModifyMachineRemark返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyNetAttackSettingRequest(AbstractModel):
+    r"""ModifyNetAttackSetting请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _NetAttackEnable: <p>0 关闭网络攻击检测，1开启网络攻击检测</p>
+        :type NetAttackEnable: int
+        :param _MemberId: <p>集团账号的成员id</p>
+        :type MemberId: list of str
+        :param _NetAttackAlarmStatus: <p>0 新增告警事件默认待处理，1新增告警事件默认已处理，3新增告警事件默认忽略</p>
+        :type NetAttackAlarmStatus: int
+        :param _AutoInclude: <p>新增资产自动包含 0 不包含 1包含</p>
+        :type AutoInclude: int
+        :param _CWPScope: <p>主机范围：0-指定 1-全部 2-专业版 3-旗舰版 4-专业+旗舰</p>
+        :type CWPScope: int
+        :param _InstanceIDsWithAppId: <p>指定主机列表（CWPScope=0时使用）</p>
+        :type InstanceIDsWithAppId: list of InstanceIDWithAppIdItem
+        :param _ExcludeInstanceIDsWithAppId: <p>排除主机列表</p>
+        :type ExcludeInstanceIDsWithAppId: list of InstanceIDWithAppIdItem
+        :param _TagIDs: <p>标签ID列表</p>
+        :type TagIDs: list of str
+        :param _TCSSScope: <p>容器范围：0-指定集群 1-全部集群</p>
+        :type TCSSScope: int
+        :param _ClusterIDsWithAppId: <p>指定集群列表（TCSSScope=0时使用）</p>
+        :type ClusterIDsWithAppId: list of ClusterIDWithAppIdItem
+        :param _ExcludeClusterIDsWithAppId: <p>排除集群列表</p>
+        :type ExcludeClusterIDsWithAppId: list of ClusterIDWithAppIdItem
+        """
+        self._NetAttackEnable = None
+        self._MemberId = None
+        self._NetAttackAlarmStatus = None
+        self._AutoInclude = None
+        self._CWPScope = None
+        self._InstanceIDsWithAppId = None
+        self._ExcludeInstanceIDsWithAppId = None
+        self._TagIDs = None
+        self._TCSSScope = None
+        self._ClusterIDsWithAppId = None
+        self._ExcludeClusterIDsWithAppId = None
+
+    @property
+    def NetAttackEnable(self):
+        r"""<p>0 关闭网络攻击检测，1开启网络攻击检测</p>
+        :rtype: int
+        """
+        return self._NetAttackEnable
+
+    @NetAttackEnable.setter
+    def NetAttackEnable(self, NetAttackEnable):
+        self._NetAttackEnable = NetAttackEnable
+
+    @property
+    def MemberId(self):
+        r"""<p>集团账号的成员id</p>
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+    @property
+    def NetAttackAlarmStatus(self):
+        r"""<p>0 新增告警事件默认待处理，1新增告警事件默认已处理，3新增告警事件默认忽略</p>
+        :rtype: int
+        """
+        return self._NetAttackAlarmStatus
+
+    @NetAttackAlarmStatus.setter
+    def NetAttackAlarmStatus(self, NetAttackAlarmStatus):
+        self._NetAttackAlarmStatus = NetAttackAlarmStatus
+
+    @property
+    def AutoInclude(self):
+        r"""<p>新增资产自动包含 0 不包含 1包含</p>
+        :rtype: int
+        """
+        return self._AutoInclude
+
+    @AutoInclude.setter
+    def AutoInclude(self, AutoInclude):
+        self._AutoInclude = AutoInclude
+
+    @property
+    def CWPScope(self):
+        r"""<p>主机范围：0-指定 1-全部 2-专业版 3-旗舰版 4-专业+旗舰</p>
+        :rtype: int
+        """
+        return self._CWPScope
+
+    @CWPScope.setter
+    def CWPScope(self, CWPScope):
+        self._CWPScope = CWPScope
+
+    @property
+    def InstanceIDsWithAppId(self):
+        r"""<p>指定主机列表（CWPScope=0时使用）</p>
+        :rtype: list of InstanceIDWithAppIdItem
+        """
+        return self._InstanceIDsWithAppId
+
+    @InstanceIDsWithAppId.setter
+    def InstanceIDsWithAppId(self, InstanceIDsWithAppId):
+        self._InstanceIDsWithAppId = InstanceIDsWithAppId
+
+    @property
+    def ExcludeInstanceIDsWithAppId(self):
+        r"""<p>排除主机列表</p>
+        :rtype: list of InstanceIDWithAppIdItem
+        """
+        return self._ExcludeInstanceIDsWithAppId
+
+    @ExcludeInstanceIDsWithAppId.setter
+    def ExcludeInstanceIDsWithAppId(self, ExcludeInstanceIDsWithAppId):
+        self._ExcludeInstanceIDsWithAppId = ExcludeInstanceIDsWithAppId
+
+    @property
+    def TagIDs(self):
+        r"""<p>标签ID列表</p>
+        :rtype: list of str
+        """
+        return self._TagIDs
+
+    @TagIDs.setter
+    def TagIDs(self, TagIDs):
+        self._TagIDs = TagIDs
+
+    @property
+    def TCSSScope(self):
+        r"""<p>容器范围：0-指定集群 1-全部集群</p>
+        :rtype: int
+        """
+        return self._TCSSScope
+
+    @TCSSScope.setter
+    def TCSSScope(self, TCSSScope):
+        self._TCSSScope = TCSSScope
+
+    @property
+    def ClusterIDsWithAppId(self):
+        r"""<p>指定集群列表（TCSSScope=0时使用）</p>
+        :rtype: list of ClusterIDWithAppIdItem
+        """
+        return self._ClusterIDsWithAppId
+
+    @ClusterIDsWithAppId.setter
+    def ClusterIDsWithAppId(self, ClusterIDsWithAppId):
+        self._ClusterIDsWithAppId = ClusterIDsWithAppId
+
+    @property
+    def ExcludeClusterIDsWithAppId(self):
+        r"""<p>排除集群列表</p>
+        :rtype: list of ClusterIDWithAppIdItem
+        """
+        return self._ExcludeClusterIDsWithAppId
+
+    @ExcludeClusterIDsWithAppId.setter
+    def ExcludeClusterIDsWithAppId(self, ExcludeClusterIDsWithAppId):
+        self._ExcludeClusterIDsWithAppId = ExcludeClusterIDsWithAppId
+
+
+    def _deserialize(self, params):
+        self._NetAttackEnable = params.get("NetAttackEnable")
+        self._MemberId = params.get("MemberId")
+        self._NetAttackAlarmStatus = params.get("NetAttackAlarmStatus")
+        self._AutoInclude = params.get("AutoInclude")
+        self._CWPScope = params.get("CWPScope")
+        if params.get("InstanceIDsWithAppId") is not None:
+            self._InstanceIDsWithAppId = []
+            for item in params.get("InstanceIDsWithAppId"):
+                obj = InstanceIDWithAppIdItem()
+                obj._deserialize(item)
+                self._InstanceIDsWithAppId.append(obj)
+        if params.get("ExcludeInstanceIDsWithAppId") is not None:
+            self._ExcludeInstanceIDsWithAppId = []
+            for item in params.get("ExcludeInstanceIDsWithAppId"):
+                obj = InstanceIDWithAppIdItem()
+                obj._deserialize(item)
+                self._ExcludeInstanceIDsWithAppId.append(obj)
+        self._TagIDs = params.get("TagIDs")
+        self._TCSSScope = params.get("TCSSScope")
+        if params.get("ClusterIDsWithAppId") is not None:
+            self._ClusterIDsWithAppId = []
+            for item in params.get("ClusterIDsWithAppId"):
+                obj = ClusterIDWithAppIdItem()
+                obj._deserialize(item)
+                self._ClusterIDsWithAppId.append(obj)
+        if params.get("ExcludeClusterIDsWithAppId") is not None:
+            self._ExcludeClusterIDsWithAppId = []
+            for item in params.get("ExcludeClusterIDsWithAppId"):
+                obj = ClusterIDWithAppIdItem()
+                obj._deserialize(item)
+                self._ExcludeClusterIDsWithAppId.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyNetAttackSettingResponse(AbstractModel):
+    r"""ModifyNetAttackSetting返回参数结构体
 
     """
 
@@ -81115,6 +86960,225 @@ class ModifyPolicyStatusRequest(AbstractModel):
 
 class ModifyPolicyStatusResponse(AbstractModel):
     r"""ModifyPolicyStatus返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyReverseShellSystemPolicyConfigRequest(AbstractModel):
+    r"""ModifyReverseShellSystemPolicyConfig请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MemberId: <p>集团账号的成员id</p>
+        :type MemberId: list of str
+        :param _InnerNetAlarmShow: <p>内网告警展示</p>
+        :type InnerNetAlarmShow: bool
+        :param _InnerIPShow: <p>内网ip展示</p>
+        :type InnerIPShow: bool
+        :param _CWPScope: <p>主机范围：0-指定 1-全部 2-专业版 3-旗舰版 4-专业+旗舰</p>
+        :type CWPScope: int
+        :param _InstanceIDsWithAppId: <p>指定主机列表（CWPScope=0时使用）</p>
+        :type InstanceIDsWithAppId: list of InstanceIDWithAppIdItem
+        :param _ExcludeInstanceIDsWithAppId: <p>排除主机列表</p>
+        :type ExcludeInstanceIDsWithAppId: list of InstanceIDWithAppIdItem
+        :param _TagIDs: <p>标签ID列表</p>
+        :type TagIDs: list of str
+        :param _TCSSScope: <p>容器范围：0-指定集群 1-全部集群</p>
+        :type TCSSScope: int
+        :param _ClusterIDsWithAppId: <p>指定集群列表（TCSSScope=0时使用）</p>
+        :type ClusterIDsWithAppId: list of ClusterIDWithAppIdItem
+        :param _ExcludeClusterIDsWithAppId: <p>排除集群列表</p>
+        :type ExcludeClusterIDsWithAppId: list of ClusterIDWithAppIdItem
+        """
+        self._MemberId = None
+        self._InnerNetAlarmShow = None
+        self._InnerIPShow = None
+        self._CWPScope = None
+        self._InstanceIDsWithAppId = None
+        self._ExcludeInstanceIDsWithAppId = None
+        self._TagIDs = None
+        self._TCSSScope = None
+        self._ClusterIDsWithAppId = None
+        self._ExcludeClusterIDsWithAppId = None
+
+    @property
+    def MemberId(self):
+        r"""<p>集团账号的成员id</p>
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+    @property
+    def InnerNetAlarmShow(self):
+        r"""<p>内网告警展示</p>
+        :rtype: bool
+        """
+        return self._InnerNetAlarmShow
+
+    @InnerNetAlarmShow.setter
+    def InnerNetAlarmShow(self, InnerNetAlarmShow):
+        self._InnerNetAlarmShow = InnerNetAlarmShow
+
+    @property
+    def InnerIPShow(self):
+        r"""<p>内网ip展示</p>
+        :rtype: bool
+        """
+        return self._InnerIPShow
+
+    @InnerIPShow.setter
+    def InnerIPShow(self, InnerIPShow):
+        self._InnerIPShow = InnerIPShow
+
+    @property
+    def CWPScope(self):
+        r"""<p>主机范围：0-指定 1-全部 2-专业版 3-旗舰版 4-专业+旗舰</p>
+        :rtype: int
+        """
+        return self._CWPScope
+
+    @CWPScope.setter
+    def CWPScope(self, CWPScope):
+        self._CWPScope = CWPScope
+
+    @property
+    def InstanceIDsWithAppId(self):
+        r"""<p>指定主机列表（CWPScope=0时使用）</p>
+        :rtype: list of InstanceIDWithAppIdItem
+        """
+        return self._InstanceIDsWithAppId
+
+    @InstanceIDsWithAppId.setter
+    def InstanceIDsWithAppId(self, InstanceIDsWithAppId):
+        self._InstanceIDsWithAppId = InstanceIDsWithAppId
+
+    @property
+    def ExcludeInstanceIDsWithAppId(self):
+        r"""<p>排除主机列表</p>
+        :rtype: list of InstanceIDWithAppIdItem
+        """
+        return self._ExcludeInstanceIDsWithAppId
+
+    @ExcludeInstanceIDsWithAppId.setter
+    def ExcludeInstanceIDsWithAppId(self, ExcludeInstanceIDsWithAppId):
+        self._ExcludeInstanceIDsWithAppId = ExcludeInstanceIDsWithAppId
+
+    @property
+    def TagIDs(self):
+        r"""<p>标签ID列表</p>
+        :rtype: list of str
+        """
+        return self._TagIDs
+
+    @TagIDs.setter
+    def TagIDs(self, TagIDs):
+        self._TagIDs = TagIDs
+
+    @property
+    def TCSSScope(self):
+        r"""<p>容器范围：0-指定集群 1-全部集群</p>
+        :rtype: int
+        """
+        return self._TCSSScope
+
+    @TCSSScope.setter
+    def TCSSScope(self, TCSSScope):
+        self._TCSSScope = TCSSScope
+
+    @property
+    def ClusterIDsWithAppId(self):
+        r"""<p>指定集群列表（TCSSScope=0时使用）</p>
+        :rtype: list of ClusterIDWithAppIdItem
+        """
+        return self._ClusterIDsWithAppId
+
+    @ClusterIDsWithAppId.setter
+    def ClusterIDsWithAppId(self, ClusterIDsWithAppId):
+        self._ClusterIDsWithAppId = ClusterIDsWithAppId
+
+    @property
+    def ExcludeClusterIDsWithAppId(self):
+        r"""<p>排除集群列表</p>
+        :rtype: list of ClusterIDWithAppIdItem
+        """
+        return self._ExcludeClusterIDsWithAppId
+
+    @ExcludeClusterIDsWithAppId.setter
+    def ExcludeClusterIDsWithAppId(self, ExcludeClusterIDsWithAppId):
+        self._ExcludeClusterIDsWithAppId = ExcludeClusterIDsWithAppId
+
+
+    def _deserialize(self, params):
+        self._MemberId = params.get("MemberId")
+        self._InnerNetAlarmShow = params.get("InnerNetAlarmShow")
+        self._InnerIPShow = params.get("InnerIPShow")
+        self._CWPScope = params.get("CWPScope")
+        if params.get("InstanceIDsWithAppId") is not None:
+            self._InstanceIDsWithAppId = []
+            for item in params.get("InstanceIDsWithAppId"):
+                obj = InstanceIDWithAppIdItem()
+                obj._deserialize(item)
+                self._InstanceIDsWithAppId.append(obj)
+        if params.get("ExcludeInstanceIDsWithAppId") is not None:
+            self._ExcludeInstanceIDsWithAppId = []
+            for item in params.get("ExcludeInstanceIDsWithAppId"):
+                obj = InstanceIDWithAppIdItem()
+                obj._deserialize(item)
+                self._ExcludeInstanceIDsWithAppId.append(obj)
+        self._TagIDs = params.get("TagIDs")
+        self._TCSSScope = params.get("TCSSScope")
+        if params.get("ClusterIDsWithAppId") is not None:
+            self._ClusterIDsWithAppId = []
+            for item in params.get("ClusterIDsWithAppId"):
+                obj = ClusterIDWithAppIdItem()
+                obj._deserialize(item)
+                self._ClusterIDsWithAppId.append(obj)
+        if params.get("ExcludeClusterIDsWithAppId") is not None:
+            self._ExcludeClusterIDsWithAppId = []
+            for item in params.get("ExcludeClusterIDsWithAppId"):
+                obj = ClusterIDWithAppIdItem()
+                obj._deserialize(item)
+                self._ExcludeClusterIDsWithAppId.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyReverseShellSystemPolicyConfigResponse(AbstractModel):
+    r"""ModifyReverseShellSystemPolicyConfig返回参数结构体
 
     """
 
@@ -82165,6 +88229,87 @@ class ModifyVulWhitelistSwitchResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
+
+
+class MultiAttackStageItem(AbstractModel):
+    r"""告警对应的多攻击阶段
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: <p>表id</p>
+        :type Id: int
+        :param _AppId: <p>APPID</p>
+        :type AppId: int
+        :param _AlertId: <p>告警ID</p>
+        :type AlertId: str
+        :param _AttackStages: <p>攻击阶段列表</p>
+        :type AttackStages: list of str
+        """
+        self._Id = None
+        self._AppId = None
+        self._AlertId = None
+        self._AttackStages = None
+
+    @property
+    def Id(self):
+        r"""<p>表id</p>
+        :rtype: int
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def AppId(self):
+        r"""<p>APPID</p>
+        :rtype: int
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def AlertId(self):
+        r"""<p>告警ID</p>
+        :rtype: str
+        """
+        return self._AlertId
+
+    @AlertId.setter
+    def AlertId(self, AlertId):
+        self._AlertId = AlertId
+
+    @property
+    def AttackStages(self):
+        r"""<p>攻击阶段列表</p>
+        :rtype: list of str
+        """
+        return self._AttackStages
+
+    @AttackStages.setter
+    def AttackStages(self, AttackStages):
+        self._AttackStages = AttackStages
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._AppId = params.get("AppId")
+        self._AlertId = params.get("AlertId")
+        self._AttackStages = params.get("AttackStages")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class NICAsset(AbstractModel):
@@ -86858,6 +93003,254 @@ class STSCredentialOutput(AbstractModel):
         
 
 
+class ScanCSIPTaskAgainRequest(AbstractModel):
+    r"""ScanCSIPTaskAgain请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: <p>扫描任务ID</p>
+        :type TaskId: int
+        :param _MemberId: <p>集团账号的成员id</p>
+        :type MemberId: list of str
+        :param _InstanceIDList: <p>限定本次重扫的目标主机列表；为空时取主表对应子表的全量 实例ID；长度上限 1000</p>
+        :type InstanceIDList: list of str
+        :param _TimeoutPeriod: <p>扫描超时时长（秒），可选。非零时更新一键扫描超时配置并同步更新子表 timeout 字段。上限 7200 秒（2小时），超出返回 InvalidParameter。</p>
+        :type TimeoutPeriod: int
+        """
+        self._TaskId = None
+        self._MemberId = None
+        self._InstanceIDList = None
+        self._TimeoutPeriod = None
+
+    @property
+    def TaskId(self):
+        r"""<p>扫描任务ID</p>
+        :rtype: int
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def MemberId(self):
+        r"""<p>集团账号的成员id</p>
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+    @property
+    def InstanceIDList(self):
+        r"""<p>限定本次重扫的目标主机列表；为空时取主表对应子表的全量 实例ID；长度上限 1000</p>
+        :rtype: list of str
+        """
+        return self._InstanceIDList
+
+    @InstanceIDList.setter
+    def InstanceIDList(self, InstanceIDList):
+        self._InstanceIDList = InstanceIDList
+
+    @property
+    def TimeoutPeriod(self):
+        r"""<p>扫描超时时长（秒），可选。非零时更新一键扫描超时配置并同步更新子表 timeout 字段。上限 7200 秒（2小时），超出返回 InvalidParameter。</p>
+        :rtype: int
+        """
+        return self._TimeoutPeriod
+
+    @TimeoutPeriod.setter
+    def TimeoutPeriod(self, TimeoutPeriod):
+        self._TimeoutPeriod = TimeoutPeriod
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._MemberId = params.get("MemberId")
+        self._InstanceIDList = params.get("InstanceIDList")
+        self._TimeoutPeriod = params.get("TimeoutPeriod")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ScanCSIPTaskAgainResponse(AbstractModel):
+    r"""ScanCSIPTaskAgain返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SuccessCount: <p>本次实际触发重扫的机器数（= 状态白名单过滤后的候选机器数）单位：个</p>
+        :type SuccessCount: int
+        :param _TaskId: <p>原任务 ID（与入参一致；CWP 原版同样返回原 ID 而非新 ID，重扫为原地复用）</p>
+        :type TaskId: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._SuccessCount = None
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def SuccessCount(self):
+        r"""<p>本次实际触发重扫的机器数（= 状态白名单过滤后的候选机器数）单位：个</p>
+        :rtype: int
+        """
+        return self._SuccessCount
+
+    @SuccessCount.setter
+    def SuccessCount(self, SuccessCount):
+        self._SuccessCount = SuccessCount
+
+    @property
+    def TaskId(self):
+        r"""<p>原任务 ID（与入参一致；CWP 原版同样返回原 ID 而非新 ID，重扫为原地复用）</p>
+        :rtype: int
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._SuccessCount = params.get("SuccessCount")
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
+
+
+class ScanEDRTaskAgainRequest(AbstractModel):
+    r"""ScanEDRTaskAgain请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: <p>原任务ID</p>
+        :type TaskId: int
+        :param _MemberId: <p>集团账号的成员id</p>
+        :type MemberId: list of str
+        :param _AssetId: <p>主机Quuid或ContainerID（详情页单资产重扫时传，为空则全量重扫）</p>
+        :type AssetId: str
+        """
+        self._TaskId = None
+        self._MemberId = None
+        self._AssetId = None
+
+    @property
+    def TaskId(self):
+        r"""<p>原任务ID</p>
+        :rtype: int
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def MemberId(self):
+        r"""<p>集团账号的成员id</p>
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+    @property
+    def AssetId(self):
+        r"""<p>主机Quuid或ContainerID（详情页单资产重扫时传，为空则全量重扫）</p>
+        :rtype: str
+        """
+        return self._AssetId
+
+    @AssetId.setter
+    def AssetId(self, AssetId):
+        self._AssetId = AssetId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._MemberId = params.get("MemberId")
+        self._AssetId = params.get("AssetId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ScanEDRTaskAgainResponse(AbstractModel):
+    r"""ScanEDRTaskAgain返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _NewTaskId: <p>新建任务的TaskId</p>
+        :type NewTaskId: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._NewTaskId = None
+        self._RequestId = None
+
+    @property
+    def NewTaskId(self):
+        r"""<p>新建任务的TaskId</p>
+        :rtype: int
+        """
+        return self._NewTaskId
+
+    @NewTaskId.setter
+    def NewTaskId(self, NewTaskId):
+        self._NewTaskId = NewTaskId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._NewTaskId = params.get("NewTaskId")
+        self._RequestId = params.get("RequestId")
+
+
 class ScanTaskInfo(AbstractModel):
     r"""扫描任务详情
 
@@ -89599,6 +95992,194 @@ class StatisticalFilter(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class StopCSIPManualMalwareScanRequest(AbstractModel):
+    r"""StopCSIPManualMalwareScan请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: <p>任务ID</p>
+        :type TaskId: int
+        :param _MemberId: <p>集团账号的成员id</p>
+        :type MemberId: list of str
+        """
+        self._TaskId = None
+        self._MemberId = None
+
+    @property
+    def TaskId(self):
+        r"""<p>任务ID</p>
+        :rtype: int
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def MemberId(self):
+        r"""<p>集团账号的成员id</p>
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._MemberId = params.get("MemberId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class StopCSIPManualMalwareScanResponse(AbstractModel):
+    r"""StopCSIPManualMalwareScan返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: <p>任务ID</p>
+        :type TaskId: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        r"""<p>任务ID</p>
+        :rtype: int
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
+
+
+class StopEDRScanTaskRequest(AbstractModel):
+    r"""StopEDRScanTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: <p>任务ID</p>
+        :type TaskId: int
+        :param _MemberId: <p>集团账号的成员id</p>
+        :type MemberId: list of str
+        """
+        self._TaskId = None
+        self._MemberId = None
+
+    @property
+    def TaskId(self):
+        r"""<p>任务ID</p>
+        :rtype: int
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def MemberId(self):
+        r"""<p>集团账号的成员id</p>
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._MemberId = params.get("MemberId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class StopEDRScanTaskResponse(AbstractModel):
+    r"""StopEDRScanTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: <p>任务ID</p>
+        :type TaskId: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        r"""<p>任务ID</p>
+        :rtype: int
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
 
 
 class StopRiskCenterTaskRequest(AbstractModel):

@@ -167,7 +167,7 @@ class DetailResults(AbstractModel):
         :type Keywords: list of str
         :param _Score: <p>该字段用于返回当前标签（Label）下的置信度，取值范围：0（<strong>置信度最低</strong>）-100（<strong>置信度最高</strong> ），越高代表文本越有可能属于当前返回的标签；如：<em>色情 99</em>，则表明该文本非常有可能属于色情内容；<em>色情 0</em>，则表明该文本不属于色情内容。</p>
         :type Score: int
-        :param _LibType: <p>该字段用于返回自定义关键词对应的词库类型，取值为<strong>1</strong>（黑白库）和<strong>2</strong>（自定义关键词库），若未配置自定义关键词库,则默认值为1（黑白库匹配）。</p>
+        :param _LibType: <p>该字段用于返回自定义关键词对应的词库类型，取值为<strong>1</strong>（黑白库）和<strong>2</strong>（自定义关键词库），若未配置自定义关键词库,则默认值为1（黑白库匹配）。</p><p>枚举值：</p><ul><li>1： 黑白库</li><li>2： 自定义关键词库</li></ul>
         :type LibType: int
         :param _LibId: <p>该字段用于返回自定义库的ID，以方便自定义库管理和配置。</p>
         :type LibId: str
@@ -180,6 +180,9 @@ class DetailResults(AbstractModel):
         :type Tags: list of Tag
         :param _HitInfos: <p>该字段用于返回违规文本命中信息</p>
         :type HitInfos: list of HitInfo
+        :param _HitSnippetInfos: <p>该字段用于标记导致本次审核命中标签的原文内容位置信息</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HitSnippetInfos: list of HitSnippetInfo
         """
         self._Label = None
         self._Suggestion = None
@@ -191,6 +194,7 @@ class DetailResults(AbstractModel):
         self._SubLabel = None
         self._Tags = None
         self._HitInfos = None
+        self._HitSnippetInfos = None
 
     @property
     def Label(self):
@@ -238,7 +242,7 @@ class DetailResults(AbstractModel):
 
     @property
     def LibType(self):
-        r"""<p>该字段用于返回自定义关键词对应的词库类型，取值为<strong>1</strong>（黑白库）和<strong>2</strong>（自定义关键词库），若未配置自定义关键词库,则默认值为1（黑白库匹配）。</p>
+        r"""<p>该字段用于返回自定义关键词对应的词库类型，取值为<strong>1</strong>（黑白库）和<strong>2</strong>（自定义关键词库），若未配置自定义关键词库,则默认值为1（黑白库匹配）。</p><p>枚举值：</p><ul><li>1： 黑白库</li><li>2： 自定义关键词库</li></ul>
         :rtype: int
         """
         return self._LibType
@@ -303,6 +307,18 @@ class DetailResults(AbstractModel):
     def HitInfos(self, HitInfos):
         self._HitInfos = HitInfos
 
+    @property
+    def HitSnippetInfos(self):
+        r"""<p>该字段用于标记导致本次审核命中标签的原文内容位置信息</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of HitSnippetInfo
+        """
+        return self._HitSnippetInfos
+
+    @HitSnippetInfos.setter
+    def HitSnippetInfos(self, HitSnippetInfos):
+        self._HitSnippetInfos = HitSnippetInfos
+
 
     def _deserialize(self, params):
         self._Label = params.get("Label")
@@ -325,6 +341,12 @@ class DetailResults(AbstractModel):
                 obj = HitInfo()
                 obj._deserialize(item)
                 self._HitInfos.append(obj)
+        if params.get("HitSnippetInfos") is not None:
+            self._HitSnippetInfos = []
+            for item in params.get("HitSnippetInfos"):
+                obj = HitSnippetInfo()
+                obj._deserialize(item)
+                self._HitSnippetInfos.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1317,6 +1339,8 @@ class TextModerationRequest(AbstractModel):
         :type Type: str
         :param _SessionId: <p>适用于上下文关联审核场景，若多条文本内容需要联合审核，通过该字段关联会话。</p>
         :type SessionId: str
+        :param _BizTag: <p>该参数是送审客户的自定义参数，可用于标记客户的一些内部信息方便做审核明细取数筛选，没有特殊需求客户可不填写</p>
+        :type BizTag: str
         """
         self._Content = None
         self._BizType = None
@@ -1326,6 +1350,7 @@ class TextModerationRequest(AbstractModel):
         self._SourceLanguage = None
         self._Type = None
         self._SessionId = None
+        self._BizTag = None
 
     @property
     def Content(self):
@@ -1415,6 +1440,17 @@ class TextModerationRequest(AbstractModel):
     def SessionId(self, SessionId):
         self._SessionId = SessionId
 
+    @property
+    def BizTag(self):
+        r"""<p>该参数是送审客户的自定义参数，可用于标记客户的一些内部信息方便做审核明细取数筛选，没有特殊需求客户可不填写</p>
+        :rtype: str
+        """
+        return self._BizTag
+
+    @BizTag.setter
+    def BizTag(self, BizTag):
+        self._BizTag = BizTag
+
 
     def _deserialize(self, params):
         self._Content = params.get("Content")
@@ -1429,6 +1465,7 @@ class TextModerationRequest(AbstractModel):
         self._SourceLanguage = params.get("SourceLanguage")
         self._Type = params.get("Type")
         self._SessionId = params.get("SessionId")
+        self._BizTag = params.get("BizTag")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

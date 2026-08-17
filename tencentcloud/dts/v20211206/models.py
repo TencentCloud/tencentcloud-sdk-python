@@ -371,33 +371,33 @@ class CompareAbstractInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Options: 校验配置参数
+        :param _Options: <p>校验配置参数</p>
         :type Options: :class:`tencentcloud.dts.v20211206.models.CompareOptions`
-        :param _Objects: 一致性校验对比对象
+        :param _Objects: <p>一致性校验对比对象</p>
         :type Objects: :class:`tencentcloud.dts.v20211206.models.CompareObject`
-        :param _Conclusion: 对比结论: same,different
+        :param _Conclusion: <p>对比结论: same,different</p>
         :type Conclusion: str
-        :param _Status: 任务状态: success,failed
+        :param _Status: <p>任务状态: success,failed</p>
         :type Status: str
-        :param _TotalTables: 总的表数量
+        :param _TotalTables: <p>总的表数量</p>
         :type TotalTables: int
-        :param _CheckedTables: 已校验的表数量
+        :param _CheckedTables: <p>已校验的表数量</p>
         :type CheckedTables: int
-        :param _DifferentTables: 不一致的表数量
+        :param _DifferentTables: <p>不一致的表数量</p>
         :type DifferentTables: int
-        :param _SkippedTables: 跳过校验的表数量
+        :param _SkippedTables: <p>跳过校验的表数量</p>
         :type SkippedTables: int
-        :param _NearlyTableCount: 预估表总数
+        :param _NearlyTableCount: <p>预估表总数</p>
         :type NearlyTableCount: int
-        :param _DifferentRows: 不一致的数据行数量
+        :param _DifferentRows: <p>不一致的数据行数量</p>
         :type DifferentRows: int
-        :param _SrcSampleRows: 源库行数，当对比类型为**行数对比**时此项有意义
+        :param _SrcSampleRows: <p>源库行数，当对比类型为<strong>行数对比</strong>时此项有意义</p>
         :type SrcSampleRows: int
-        :param _DstSampleRows: 目标库行数，当对比类型为**行数对比**时此项有意义
+        :param _DstSampleRows: <p>目标库行数，当对比类型为<strong>行数对比</strong>时此项有意义</p>
         :type DstSampleRows: int
-        :param _StartedAt: 开始时间
+        :param _StartedAt: <p>开始时间。当 <code>DateTimeISOFormat=true</code> 时返回 RFC 3339 格式（如 <code>2026-04-23T20:21:35+08:00</code>），否则返回 <code>yyyy-mm-dd hh:mm:ss</code>（北京时间）</p>
         :type StartedAt: str
-        :param _FinishedAt: 结束时间
+        :param _FinishedAt: <p>结束时间。当 <code>DateTimeISOFormat=true</code> 时返回 RFC 3339 格式（如 <code>2026-04-23T20:21:35+08:00</code>），否则返回 <code>yyyy-mm-dd hh:mm:ss</code>（北京时间）</p>
         :type FinishedAt: str
         """
         self._Options = None
@@ -417,7 +417,7 @@ class CompareAbstractInfo(AbstractModel):
 
     @property
     def Options(self):
-        r"""校验配置参数
+        r"""<p>校验配置参数</p>
         :rtype: :class:`tencentcloud.dts.v20211206.models.CompareOptions`
         """
         return self._Options
@@ -428,7 +428,7 @@ class CompareAbstractInfo(AbstractModel):
 
     @property
     def Objects(self):
-        r"""一致性校验对比对象
+        r"""<p>一致性校验对比对象</p>
         :rtype: :class:`tencentcloud.dts.v20211206.models.CompareObject`
         """
         return self._Objects
@@ -439,7 +439,7 @@ class CompareAbstractInfo(AbstractModel):
 
     @property
     def Conclusion(self):
-        r"""对比结论: same,different
+        r"""<p>对比结论: same,different</p>
         :rtype: str
         """
         return self._Conclusion
@@ -450,7 +450,7 @@ class CompareAbstractInfo(AbstractModel):
 
     @property
     def Status(self):
-        r"""任务状态: success,failed
+        r"""<p>任务状态: success,failed</p>
         :rtype: str
         """
         return self._Status
@@ -461,7 +461,7 @@ class CompareAbstractInfo(AbstractModel):
 
     @property
     def TotalTables(self):
-        r"""总的表数量
+        r"""<p>总的表数量</p>
         :rtype: int
         """
         return self._TotalTables
@@ -472,7 +472,7 @@ class CompareAbstractInfo(AbstractModel):
 
     @property
     def CheckedTables(self):
-        r"""已校验的表数量
+        r"""<p>已校验的表数量</p>
         :rtype: int
         """
         return self._CheckedTables
@@ -483,7 +483,7 @@ class CompareAbstractInfo(AbstractModel):
 
     @property
     def DifferentTables(self):
-        r"""不一致的表数量
+        r"""<p>不一致的表数量</p>
         :rtype: int
         """
         return self._DifferentTables
@@ -494,7 +494,7 @@ class CompareAbstractInfo(AbstractModel):
 
     @property
     def SkippedTables(self):
-        r"""跳过校验的表数量
+        r"""<p>跳过校验的表数量</p>
         :rtype: int
         """
         return self._SkippedTables
@@ -505,7 +505,7 @@ class CompareAbstractInfo(AbstractModel):
 
     @property
     def NearlyTableCount(self):
-        r"""预估表总数
+        r"""<p>预估表总数</p>
         :rtype: int
         """
         return self._NearlyTableCount
@@ -516,7 +516,7 @@ class CompareAbstractInfo(AbstractModel):
 
     @property
     def DifferentRows(self):
-        r"""不一致的数据行数量
+        r"""<p>不一致的数据行数量</p>
         :rtype: int
         """
         return self._DifferentRows
@@ -527,7 +527,7 @@ class CompareAbstractInfo(AbstractModel):
 
     @property
     def SrcSampleRows(self):
-        r"""源库行数，当对比类型为**行数对比**时此项有意义
+        r"""<p>源库行数，当对比类型为<strong>行数对比</strong>时此项有意义</p>
         :rtype: int
         """
         return self._SrcSampleRows
@@ -538,7 +538,7 @@ class CompareAbstractInfo(AbstractModel):
 
     @property
     def DstSampleRows(self):
-        r"""目标库行数，当对比类型为**行数对比**时此项有意义
+        r"""<p>目标库行数，当对比类型为<strong>行数对比</strong>时此项有意义</p>
         :rtype: int
         """
         return self._DstSampleRows
@@ -549,7 +549,7 @@ class CompareAbstractInfo(AbstractModel):
 
     @property
     def StartedAt(self):
-        r"""开始时间
+        r"""<p>开始时间。当 <code>DateTimeISOFormat=true</code> 时返回 RFC 3339 格式（如 <code>2026-04-23T20:21:35+08:00</code>），否则返回 <code>yyyy-mm-dd hh:mm:ss</code>（北京时间）</p>
         :rtype: str
         """
         return self._StartedAt
@@ -560,7 +560,7 @@ class CompareAbstractInfo(AbstractModel):
 
     @property
     def FinishedAt(self):
-        r"""结束时间
+        r"""<p>结束时间。当 <code>DateTimeISOFormat=true</code> 时返回 RFC 3339 格式（如 <code>2026-04-23T20:21:35+08:00</code>），否则返回 <code>yyyy-mm-dd hh:mm:ss</code>（北京时间）</p>
         :rtype: str
         """
         return self._FinishedAt
@@ -889,19 +889,19 @@ class CompareObjectItem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DbName: 数据库名
+        :param _DbName: <p>数据库名</p>
         :type DbName: str
-        :param _DbMode: 数据库选择模式: all 为当前对象下的所有对象,partial 为部分对象
+        :param _DbMode: <p>数据库选择模式: all 为当前对象下的所有对象,partial 为部分对象</p>
         :type DbMode: str
-        :param _SchemaName: schema名称
+        :param _SchemaName: <p>schema名称</p>
         :type SchemaName: str
-        :param _TableMode: 表选择模式: all 为当前对象下的所有表对象,partial 为部分表对象
+        :param _TableMode: <p>表选择模式: all 为当前对象下的所有表对象,partial 为部分表对象</p>
         :type TableMode: str
-        :param _Tables: 用于一致性校验的表配置，当 TableMode 为 partial 时，需要填写
+        :param _Tables: <p>用于一致性校验的表配置，当 TableMode 为 partial 时，需要填写</p>
         :type Tables: list of CompareTableItem
-        :param _ViewMode: 视图选择模式: all 为当前对象下的所有视图对象,partial 为部分视图对象(一致性校验不校验视图，当前参数未启作用)
+        :param _ViewMode: <p>视图选择模式: all 为当前对象下的所有视图对象,partial 为部分视图对象(一致性校验不校验视图，当前参数未启作用)</p>
         :type ViewMode: str
-        :param _Views: 用于一致性校验的视图配置，当 ViewMode 为 partial 时， 需要填写(一致性校验不校验视图，当前参数未启作用)
+        :param _Views: <p>用于一致性校验的视图配置，当 ViewMode 为 partial 时， 需要填写(一致性校验不校验视图，当前参数未启作用)</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Views: list of CompareViewItem
         """
@@ -915,7 +915,7 @@ class CompareObjectItem(AbstractModel):
 
     @property
     def DbName(self):
-        r"""数据库名
+        r"""<p>数据库名</p>
         :rtype: str
         """
         return self._DbName
@@ -926,7 +926,7 @@ class CompareObjectItem(AbstractModel):
 
     @property
     def DbMode(self):
-        r"""数据库选择模式: all 为当前对象下的所有对象,partial 为部分对象
+        r"""<p>数据库选择模式: all 为当前对象下的所有对象,partial 为部分对象</p>
         :rtype: str
         """
         return self._DbMode
@@ -937,7 +937,7 @@ class CompareObjectItem(AbstractModel):
 
     @property
     def SchemaName(self):
-        r"""schema名称
+        r"""<p>schema名称</p>
         :rtype: str
         """
         return self._SchemaName
@@ -948,7 +948,7 @@ class CompareObjectItem(AbstractModel):
 
     @property
     def TableMode(self):
-        r"""表选择模式: all 为当前对象下的所有表对象,partial 为部分表对象
+        r"""<p>表选择模式: all 为当前对象下的所有表对象,partial 为部分表对象</p>
         :rtype: str
         """
         return self._TableMode
@@ -959,7 +959,7 @@ class CompareObjectItem(AbstractModel):
 
     @property
     def Tables(self):
-        r"""用于一致性校验的表配置，当 TableMode 为 partial 时，需要填写
+        r"""<p>用于一致性校验的表配置，当 TableMode 为 partial 时，需要填写</p>
         :rtype: list of CompareTableItem
         """
         return self._Tables
@@ -970,7 +970,7 @@ class CompareObjectItem(AbstractModel):
 
     @property
     def ViewMode(self):
-        r"""视图选择模式: all 为当前对象下的所有视图对象,partial 为部分视图对象(一致性校验不校验视图，当前参数未启作用)
+        r"""<p>视图选择模式: all 为当前对象下的所有视图对象,partial 为部分视图对象(一致性校验不校验视图，当前参数未启作用)</p>
         :rtype: str
         """
         return self._ViewMode
@@ -981,7 +981,7 @@ class CompareObjectItem(AbstractModel):
 
     @property
     def Views(self):
-        r"""用于一致性校验的视图配置，当 ViewMode 为 partial 时， 需要填写(一致性校验不校验视图，当前参数未启作用)
+        r"""<p>用于一致性校验的视图配置，当 ViewMode 为 partial 时， 需要填写(一致性校验不校验视图，当前参数未启作用)</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of CompareViewItem
         """
@@ -1314,29 +1314,29 @@ class CompareTableResult(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Db: 库名
+        :param _Db: <p>库名</p>
         :type Db: str
-        :param _Schema: schema名
+        :param _Schema: <p>schema名</p>
         :type Schema: str
-        :param _Table: 表名
+        :param _Table: <p>表名</p>
         :type Table: str
-        :param _Conclusion: 校验结果
+        :param _Conclusion: <p>校验结果</p>
         :type Conclusion: str
-        :param _Status: 校验状态。仅全量阶段有意义
+        :param _Status: <p>校验状态。仅全量阶段有意义</p>
         :type Status: str
-        :param _Progress: 校验进度。仅全量阶段有意义
+        :param _Progress: <p>校验进度。仅全量阶段有意义</p>
         :type Progress: int
-        :param _RowCount: 不一致行数
+        :param _RowCount: <p>不一致行数</p>
         :type RowCount: int
-        :param _StartedAt: 该表开始校验的时间
+        :param _StartedAt: <p>该表开始校验的时间。当 <code>DateTimeISOFormat=true</code> 时返回 RFC 3339 格式（如 <code>2026-04-23T20:21:35+08:00</code>），否则返回 <code>yyyy-mm-dd hh:mm:ss</code>（北京时间）</p>
         :type StartedAt: str
-        :param _FinishedAt: 该表校验结束的时间
+        :param _FinishedAt: <p>该表校验结束的时间。当 <code>DateTimeISOFormat=true</code> 时返回 RFC 3339 格式（如 <code>2026-04-23T20:21:35+08:00</code>），否则返回 <code>yyyy-mm-dd hh:mm:ss</code>（北京时间）</p>
         :type FinishedAt: str
-        :param _ExpectedAt: 预计该表校验结束的时间
+        :param _ExpectedAt: <p>预计该表校验结束的时间。当 <code>DateTimeISOFormat=true</code> 时返回 RFC 3339 格式（如 <code>2026-04-23T20:21:35+08:00</code>），否则返回 <code>yyyy-mm-dd hh:mm:ss</code>（北京时间）</p>
         :type ExpectedAt: str
-        :param _SrcItem: 源端行数，如果是行数校验此值有意义
+        :param _SrcItem: <p>源端行数，如果是行数校验此值有意义</p>
         :type SrcItem: str
-        :param _DstItem: 目标端行数，如果是行数校验此值有意义
+        :param _DstItem: <p>目标端行数，如果是行数校验此值有意义</p>
         :type DstItem: str
         """
         self._Db = None
@@ -1354,7 +1354,7 @@ class CompareTableResult(AbstractModel):
 
     @property
     def Db(self):
-        r"""库名
+        r"""<p>库名</p>
         :rtype: str
         """
         return self._Db
@@ -1365,7 +1365,7 @@ class CompareTableResult(AbstractModel):
 
     @property
     def Schema(self):
-        r"""schema名
+        r"""<p>schema名</p>
         :rtype: str
         """
         return self._Schema
@@ -1376,7 +1376,7 @@ class CompareTableResult(AbstractModel):
 
     @property
     def Table(self):
-        r"""表名
+        r"""<p>表名</p>
         :rtype: str
         """
         return self._Table
@@ -1387,7 +1387,7 @@ class CompareTableResult(AbstractModel):
 
     @property
     def Conclusion(self):
-        r"""校验结果
+        r"""<p>校验结果</p>
         :rtype: str
         """
         return self._Conclusion
@@ -1398,7 +1398,7 @@ class CompareTableResult(AbstractModel):
 
     @property
     def Status(self):
-        r"""校验状态。仅全量阶段有意义
+        r"""<p>校验状态。仅全量阶段有意义</p>
         :rtype: str
         """
         return self._Status
@@ -1409,7 +1409,7 @@ class CompareTableResult(AbstractModel):
 
     @property
     def Progress(self):
-        r"""校验进度。仅全量阶段有意义
+        r"""<p>校验进度。仅全量阶段有意义</p>
         :rtype: int
         """
         return self._Progress
@@ -1420,7 +1420,7 @@ class CompareTableResult(AbstractModel):
 
     @property
     def RowCount(self):
-        r"""不一致行数
+        r"""<p>不一致行数</p>
         :rtype: int
         """
         return self._RowCount
@@ -1431,7 +1431,7 @@ class CompareTableResult(AbstractModel):
 
     @property
     def StartedAt(self):
-        r"""该表开始校验的时间
+        r"""<p>该表开始校验的时间。当 <code>DateTimeISOFormat=true</code> 时返回 RFC 3339 格式（如 <code>2026-04-23T20:21:35+08:00</code>），否则返回 <code>yyyy-mm-dd hh:mm:ss</code>（北京时间）</p>
         :rtype: str
         """
         return self._StartedAt
@@ -1442,7 +1442,7 @@ class CompareTableResult(AbstractModel):
 
     @property
     def FinishedAt(self):
-        r"""该表校验结束的时间
+        r"""<p>该表校验结束的时间。当 <code>DateTimeISOFormat=true</code> 时返回 RFC 3339 格式（如 <code>2026-04-23T20:21:35+08:00</code>），否则返回 <code>yyyy-mm-dd hh:mm:ss</code>（北京时间）</p>
         :rtype: str
         """
         return self._FinishedAt
@@ -1453,7 +1453,7 @@ class CompareTableResult(AbstractModel):
 
     @property
     def ExpectedAt(self):
-        r"""预计该表校验结束的时间
+        r"""<p>预计该表校验结束的时间。当 <code>DateTimeISOFormat=true</code> 时返回 RFC 3339 格式（如 <code>2026-04-23T20:21:35+08:00</code>），否则返回 <code>yyyy-mm-dd hh:mm:ss</code>（北京时间）</p>
         :rtype: str
         """
         return self._ExpectedAt
@@ -1464,7 +1464,7 @@ class CompareTableResult(AbstractModel):
 
     @property
     def SrcItem(self):
-        r"""源端行数，如果是行数校验此值有意义
+        r"""<p>源端行数，如果是行数校验此值有意义</p>
         :rtype: str
         """
         return self._SrcItem
@@ -1475,7 +1475,7 @@ class CompareTableResult(AbstractModel):
 
     @property
     def DstItem(self):
-        r"""目标端行数，如果是行数校验此值有意义
+        r"""<p>目标端行数，如果是行数校验此值有意义</p>
         :rtype: str
         """
         return self._DstItem
@@ -1566,33 +1566,33 @@ class CompareTaskItem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _JobId: 任务id
+        :param _JobId: <p>任务id</p>
         :type JobId: str
-        :param _CompareTaskId: 对比任务 Id
+        :param _CompareTaskId: <p>对比任务 Id</p>
         :type CompareTaskId: str
-        :param _TaskName: 对比任务名称
+        :param _TaskName: <p>对比任务名称</p>
         :type TaskName: str
-        :param _Status: 对比任务状态, 可能的值：created - 创建完成；readyRun - 等待运行；running - 运行中；success - 成功；stopping - 结束中；failed - 失败；canceled - 已终止
+        :param _Status: <p>对比任务状态, 可能的值：created - 创建完成；readyRun - 等待运行；running - 运行中；success - 成功；stopping - 结束中；failed - 失败；canceled - 已终止</p>
         :type Status: str
-        :param _Config: 对比任务配置
+        :param _Config: <p>对比任务配置</p>
         :type Config: :class:`tencentcloud.dts.v20211206.models.CompareObject`
-        :param _CheckProcess: 对比任务校验详情
+        :param _CheckProcess: <p>对比任务校验详情</p>
         :type CheckProcess: :class:`tencentcloud.dts.v20211206.models.ProcessProgress`
-        :param _CompareProcess: 对比任务运行详情
+        :param _CompareProcess: <p>对比任务运行详情</p>
         :type CompareProcess: :class:`tencentcloud.dts.v20211206.models.ProcessProgress`
-        :param _Conclusion: 对比结果, 可能的值：same - 一致；different - 不一致；skipAll - 跳过
+        :param _Conclusion: <p>对比结果, 可能的值：same - 一致；different - 不一致；skipAll - 跳过</p>
         :type Conclusion: str
-        :param _CreatedAt: 任务创建时间
+        :param _CreatedAt: <p>任务创建时间。当 <code>DateTimeISOFormat=true</code> 时返回 RFC 3339 格式（如 <code>2026-04-23T20:21:35+08:00</code>），否则返回 <code>yyyy-mm-dd hh:mm:ss</code>（北京时间）</p>
         :type CreatedAt: str
-        :param _StartedAt: 任务启动时间
+        :param _StartedAt: <p>任务启动时间。当 <code>DateTimeISOFormat=true</code> 时返回 RFC 3339 格式（如 <code>2026-04-23T20:21:35+08:00</code>），否则返回 <code>yyyy-mm-dd hh:mm:ss</code>（北京时间）</p>
         :type StartedAt: str
-        :param _FinishedAt: 对比结束时间
+        :param _FinishedAt: <p>对比结束时间。当 <code>DateTimeISOFormat=true</code> 时返回 RFC 3339 格式（如 <code>2026-04-23T20:21:35+08:00</code>），否则返回 <code>yyyy-mm-dd hh:mm:ss</code>（北京时间）</p>
         :type FinishedAt: str
-        :param _Method: 对比类型，dataCheck(完整数据对比)、sampleDataCheck(抽样数据对比)、rowsCount(行数对比)
+        :param _Method: <p>对比类型，dataCheck(完整数据对比)、sampleDataCheck(抽样数据对比)、rowsCount(行数对比)</p>
         :type Method: str
-        :param _Options: 对比配置信息
+        :param _Options: <p>对比配置信息</p>
         :type Options: :class:`tencentcloud.dts.v20211206.models.CompareOptions`
-        :param _Message: 一致性校验提示信息
+        :param _Message: <p>一致性校验提示信息</p>
         :type Message: str
         """
         self._JobId = None
@@ -1612,7 +1612,7 @@ class CompareTaskItem(AbstractModel):
 
     @property
     def JobId(self):
-        r"""任务id
+        r"""<p>任务id</p>
         :rtype: str
         """
         return self._JobId
@@ -1623,7 +1623,7 @@ class CompareTaskItem(AbstractModel):
 
     @property
     def CompareTaskId(self):
-        r"""对比任务 Id
+        r"""<p>对比任务 Id</p>
         :rtype: str
         """
         return self._CompareTaskId
@@ -1634,7 +1634,7 @@ class CompareTaskItem(AbstractModel):
 
     @property
     def TaskName(self):
-        r"""对比任务名称
+        r"""<p>对比任务名称</p>
         :rtype: str
         """
         return self._TaskName
@@ -1645,7 +1645,7 @@ class CompareTaskItem(AbstractModel):
 
     @property
     def Status(self):
-        r"""对比任务状态, 可能的值：created - 创建完成；readyRun - 等待运行；running - 运行中；success - 成功；stopping - 结束中；failed - 失败；canceled - 已终止
+        r"""<p>对比任务状态, 可能的值：created - 创建完成；readyRun - 等待运行；running - 运行中；success - 成功；stopping - 结束中；failed - 失败；canceled - 已终止</p>
         :rtype: str
         """
         return self._Status
@@ -1656,7 +1656,7 @@ class CompareTaskItem(AbstractModel):
 
     @property
     def Config(self):
-        r"""对比任务配置
+        r"""<p>对比任务配置</p>
         :rtype: :class:`tencentcloud.dts.v20211206.models.CompareObject`
         """
         return self._Config
@@ -1667,7 +1667,7 @@ class CompareTaskItem(AbstractModel):
 
     @property
     def CheckProcess(self):
-        r"""对比任务校验详情
+        r"""<p>对比任务校验详情</p>
         :rtype: :class:`tencentcloud.dts.v20211206.models.ProcessProgress`
         """
         return self._CheckProcess
@@ -1678,7 +1678,7 @@ class CompareTaskItem(AbstractModel):
 
     @property
     def CompareProcess(self):
-        r"""对比任务运行详情
+        r"""<p>对比任务运行详情</p>
         :rtype: :class:`tencentcloud.dts.v20211206.models.ProcessProgress`
         """
         return self._CompareProcess
@@ -1689,7 +1689,7 @@ class CompareTaskItem(AbstractModel):
 
     @property
     def Conclusion(self):
-        r"""对比结果, 可能的值：same - 一致；different - 不一致；skipAll - 跳过
+        r"""<p>对比结果, 可能的值：same - 一致；different - 不一致；skipAll - 跳过</p>
         :rtype: str
         """
         return self._Conclusion
@@ -1700,7 +1700,7 @@ class CompareTaskItem(AbstractModel):
 
     @property
     def CreatedAt(self):
-        r"""任务创建时间
+        r"""<p>任务创建时间。当 <code>DateTimeISOFormat=true</code> 时返回 RFC 3339 格式（如 <code>2026-04-23T20:21:35+08:00</code>），否则返回 <code>yyyy-mm-dd hh:mm:ss</code>（北京时间）</p>
         :rtype: str
         """
         return self._CreatedAt
@@ -1711,7 +1711,7 @@ class CompareTaskItem(AbstractModel):
 
     @property
     def StartedAt(self):
-        r"""任务启动时间
+        r"""<p>任务启动时间。当 <code>DateTimeISOFormat=true</code> 时返回 RFC 3339 格式（如 <code>2026-04-23T20:21:35+08:00</code>），否则返回 <code>yyyy-mm-dd hh:mm:ss</code>（北京时间）</p>
         :rtype: str
         """
         return self._StartedAt
@@ -1722,7 +1722,7 @@ class CompareTaskItem(AbstractModel):
 
     @property
     def FinishedAt(self):
-        r"""对比结束时间
+        r"""<p>对比结束时间。当 <code>DateTimeISOFormat=true</code> 时返回 RFC 3339 格式（如 <code>2026-04-23T20:21:35+08:00</code>），否则返回 <code>yyyy-mm-dd hh:mm:ss</code>（北京时间）</p>
         :rtype: str
         """
         return self._FinishedAt
@@ -1733,7 +1733,7 @@ class CompareTaskItem(AbstractModel):
 
     @property
     def Method(self):
-        r"""对比类型，dataCheck(完整数据对比)、sampleDataCheck(抽样数据对比)、rowsCount(行数对比)
+        r"""<p>对比类型，dataCheck(完整数据对比)、sampleDataCheck(抽样数据对比)、rowsCount(行数对比)</p>
         :rtype: str
         """
         return self._Method
@@ -1744,7 +1744,7 @@ class CompareTaskItem(AbstractModel):
 
     @property
     def Options(self):
-        r"""对比配置信息
+        r"""<p>对比配置信息</p>
         :rtype: :class:`tencentcloud.dts.v20211206.models.CompareOptions`
         """
         return self._Options
@@ -1755,7 +1755,7 @@ class CompareTaskItem(AbstractModel):
 
     @property
     def Message(self):
-        r"""一致性校验提示信息
+        r"""<p>一致性校验提示信息</p>
         :rtype: str
         """
         return self._Message
@@ -2178,7 +2178,7 @@ class ConfigureSyncJobRequest(AbstractModel):
         :type JobMode: str
         :param _RunMode: <p>运行模式，取值如：Immediate(表示立即运行，默认为此项值)、Timed(表示定时运行)</p>
         :type RunMode: str
-        :param _ExpectRunTime: <p>期待启动时间，当RunMode取值为Timed时，此值必填，形如：&quot;2006-01-02 15:04:05&quot;</p>
+        :param _ExpectRunTime: <p>期待启动时间，当 <code>RunMode</code> 取值为 <code>Timed</code> 时此值必填。当 <code>DateTimeISOFormat=true</code> 时按 RFC 3339 传入（如 <code>2026-04-23T20:21:35+08:00</code>），否则按 <code>yyyy-mm-dd hh:mm:ss</code>（北京时间）传入</p>
         :type ExpectRunTime: str
         :param _SrcConnectType: <p>源端tdsql连接方式：proxy-通过tdsql proxy主机访问各个set节点，注意只有在自研上云的网络环境下才能通过这种方式连接，SrcInfos中只需要提供proxy主机信息。set-直连set节点，如选择直连set方式，需要正确填写proxy主机信息及所有set节点信息。源端是tdsqlmysql类型必填。</p>
         :type SrcConnectType: str
@@ -2194,7 +2194,7 @@ class ConfigureSyncJobRequest(AbstractModel):
         :type DstInfos: :class:`tencentcloud.dts.v20211206.models.SyncDBEndpointInfos`
         :param _DstNodeType: <p>枚举值：cluster、single。目标库为单节点数据库使用single，多节点使用cluster</p>
         :type DstNodeType: str
-        :param _Options: <p>同步任务选项；该字段下的RateLimitOption暂时无法生效、如果需要修改限速、可通过ModifySyncRateLimit接口完成限速</p>
+        :param _Options: <p>同步任务选项</p>
         :type Options: :class:`tencentcloud.dts.v20211206.models.Options`
         :param _AutoRetryTimeRangeMinutes: <p>自动重试的时间段、可设置5至720分钟、0表示不重试</p>
         :type AutoRetryTimeRangeMinutes: int
@@ -2296,7 +2296,7 @@ class ConfigureSyncJobRequest(AbstractModel):
 
     @property
     def ExpectRunTime(self):
-        r"""<p>期待启动时间，当RunMode取值为Timed时，此值必填，形如：&quot;2006-01-02 15:04:05&quot;</p>
+        r"""<p>期待启动时间，当 <code>RunMode</code> 取值为 <code>Timed</code> 时此值必填。当 <code>DateTimeISOFormat=true</code> 时按 RFC 3339 传入（如 <code>2026-04-23T20:21:35+08:00</code>），否则按 <code>yyyy-mm-dd hh:mm:ss</code>（北京时间）传入</p>
         :rtype: str
         """
         return self._ExpectRunTime
@@ -2384,7 +2384,7 @@ class ConfigureSyncJobRequest(AbstractModel):
 
     @property
     def Options(self):
-        r"""<p>同步任务选项；该字段下的RateLimitOption暂时无法生效、如果需要修改限速、可通过ModifySyncRateLimit接口完成限速</p>
+        r"""<p>同步任务选项</p>
         :rtype: :class:`tencentcloud.dts.v20211206.models.Options`
         """
         return self._Options
@@ -4652,45 +4652,45 @@ class DBItem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DbName: 需要迁移或同步的库名，当ObjectMode为partial时，此项必填
+        :param _DbName: <p>需要迁移或同步的库名，当ObjectMode为partial时，此项必填</p>
         :type DbName: str
-        :param _NewDbName: 迁移或同步后的库名，默认与源库相同
+        :param _NewDbName: <p>迁移或同步后的库名，默认与源库相同</p>
         :type NewDbName: str
-        :param _SchemaName: 迁移或同步的 schema
+        :param _SchemaName: <p>迁移或同步的 schema</p>
         :type SchemaName: str
-        :param _NewSchemaName: 迁移或同步后的 schema name
+        :param _NewSchemaName: <p>迁移或同步后的 schema name</p>
         :type NewSchemaName: str
-        :param _DBMode: DB选择模式: all(为当前对象下的所有对象)，partial(部分对象)，当ObjectMode为partial时，此项必填
+        :param _DBMode: <p>DB选择模式: all(为当前对象下的所有对象)，partial(部分对象)，当ObjectMode为partial时，此项必填</p>
         :type DBMode: str
-        :param _SchemaMode: schema选择模式: all(为当前对象下的所有对象)，partial(部分对象)
+        :param _SchemaMode: <p>schema选择模式: all(为当前对象下的所有对象)，partial(部分对象)</p>
         :type SchemaMode: str
-        :param _TableMode: 表选择模式: all(为当前对象下的所有对象)，partial(部分对象)，当DBMode为partial时此项必填
+        :param _TableMode: <p>表选择模式: all(为当前对象下的所有对象)，partial(部分对象)，当DBMode为partial时此项必填</p>
         :type TableMode: str
-        :param _Tables: 表图对象集合，当 TableMode 为 partial 时，此项需要填写
+        :param _Tables: <p>表图对象集合，当 TableMode 为 partial 时，此项需要填写</p>
         :type Tables: list of TableItem
-        :param _ViewMode: 视图选择模式: all 为当前对象下的所有视图对象,partial 为部分视图对象
+        :param _ViewMode: <p>视图选择模式: all 为当前对象下的所有视图对象,partial 为部分视图对象</p>
         :type ViewMode: str
-        :param _Views: 视图对象集合，当 ViewMode 为 partial 时， 此项需要填写
+        :param _Views: <p>视图对象集合，当 ViewMode 为 partial 时， 此项需要填写</p>
         :type Views: list of ViewItem
-        :param _RoleMode: postgresql独有参数，角色选择模式: all 为当前对象下的所有角色对象,partial 为部分角色对象
+        :param _RoleMode: <p>postgresql独有参数，角色选择模式: all 为当前对象下的所有角色对象,partial 为部分角色对象</p>
         :type RoleMode: str
-        :param _Roles: postgresql独有参数，当 RoleMode 为 partial 时， 此项需要填写
+        :param _Roles: <p>postgresql独有参数，当 RoleMode 为 partial 时， 此项需要填写</p>
         :type Roles: list of RoleItem
-        :param _FunctionMode: 选择要同步的模式，partial为部分，all为整选
+        :param _FunctionMode: <p>选择要同步的模式，partial为部分，all为整选</p>
         :type FunctionMode: str
-        :param _TriggerMode: 选择要同步的模式，partial为部分，all为整选
+        :param _TriggerMode: <p>选择要同步的模式，partial为部分，all为整选</p>
         :type TriggerMode: str
-        :param _EventMode: 选择要同步的模式，partial为部分，all为整选
+        :param _EventMode: <p>选择要同步的模式，partial为部分，all为整选</p>
         :type EventMode: str
-        :param _ProcedureMode: 选择要同步的模式，partial为部分，all为整选
+        :param _ProcedureMode: <p>选择要同步的模式，partial为部分，all为整选</p>
         :type ProcedureMode: str
-        :param _Functions: FunctionMode取值为partial时需要填写
+        :param _Functions: <p>FunctionMode取值为partial时需要填写</p>
         :type Functions: list of str
-        :param _Procedures: ProcedureMode取值为partial时需要填写
+        :param _Procedures: <p>ProcedureMode取值为partial时需要填写</p>
         :type Procedures: list of str
-        :param _Events: EventMode取值为partial时需要填写
+        :param _Events: <p>EventMode取值为partial时需要填写</p>
         :type Events: list of str
-        :param _Triggers: TriggerMode取值为partial时需要填写
+        :param _Triggers: <p>TriggerMode取值为partial时需要填写</p>
         :type Triggers: list of str
         """
         self._DbName = None
@@ -4716,7 +4716,7 @@ class DBItem(AbstractModel):
 
     @property
     def DbName(self):
-        r"""需要迁移或同步的库名，当ObjectMode为partial时，此项必填
+        r"""<p>需要迁移或同步的库名，当ObjectMode为partial时，此项必填</p>
         :rtype: str
         """
         return self._DbName
@@ -4727,7 +4727,7 @@ class DBItem(AbstractModel):
 
     @property
     def NewDbName(self):
-        r"""迁移或同步后的库名，默认与源库相同
+        r"""<p>迁移或同步后的库名，默认与源库相同</p>
         :rtype: str
         """
         return self._NewDbName
@@ -4738,7 +4738,7 @@ class DBItem(AbstractModel):
 
     @property
     def SchemaName(self):
-        r"""迁移或同步的 schema
+        r"""<p>迁移或同步的 schema</p>
         :rtype: str
         """
         return self._SchemaName
@@ -4749,7 +4749,7 @@ class DBItem(AbstractModel):
 
     @property
     def NewSchemaName(self):
-        r"""迁移或同步后的 schema name
+        r"""<p>迁移或同步后的 schema name</p>
         :rtype: str
         """
         return self._NewSchemaName
@@ -4760,7 +4760,7 @@ class DBItem(AbstractModel):
 
     @property
     def DBMode(self):
-        r"""DB选择模式: all(为当前对象下的所有对象)，partial(部分对象)，当ObjectMode为partial时，此项必填
+        r"""<p>DB选择模式: all(为当前对象下的所有对象)，partial(部分对象)，当ObjectMode为partial时，此项必填</p>
         :rtype: str
         """
         return self._DBMode
@@ -4771,7 +4771,7 @@ class DBItem(AbstractModel):
 
     @property
     def SchemaMode(self):
-        r"""schema选择模式: all(为当前对象下的所有对象)，partial(部分对象)
+        r"""<p>schema选择模式: all(为当前对象下的所有对象)，partial(部分对象)</p>
         :rtype: str
         """
         return self._SchemaMode
@@ -4782,7 +4782,7 @@ class DBItem(AbstractModel):
 
     @property
     def TableMode(self):
-        r"""表选择模式: all(为当前对象下的所有对象)，partial(部分对象)，当DBMode为partial时此项必填
+        r"""<p>表选择模式: all(为当前对象下的所有对象)，partial(部分对象)，当DBMode为partial时此项必填</p>
         :rtype: str
         """
         return self._TableMode
@@ -4793,7 +4793,7 @@ class DBItem(AbstractModel):
 
     @property
     def Tables(self):
-        r"""表图对象集合，当 TableMode 为 partial 时，此项需要填写
+        r"""<p>表图对象集合，当 TableMode 为 partial 时，此项需要填写</p>
         :rtype: list of TableItem
         """
         return self._Tables
@@ -4804,7 +4804,7 @@ class DBItem(AbstractModel):
 
     @property
     def ViewMode(self):
-        r"""视图选择模式: all 为当前对象下的所有视图对象,partial 为部分视图对象
+        r"""<p>视图选择模式: all 为当前对象下的所有视图对象,partial 为部分视图对象</p>
         :rtype: str
         """
         return self._ViewMode
@@ -4815,7 +4815,7 @@ class DBItem(AbstractModel):
 
     @property
     def Views(self):
-        r"""视图对象集合，当 ViewMode 为 partial 时， 此项需要填写
+        r"""<p>视图对象集合，当 ViewMode 为 partial 时， 此项需要填写</p>
         :rtype: list of ViewItem
         """
         return self._Views
@@ -4826,7 +4826,7 @@ class DBItem(AbstractModel):
 
     @property
     def RoleMode(self):
-        r"""postgresql独有参数，角色选择模式: all 为当前对象下的所有角色对象,partial 为部分角色对象
+        r"""<p>postgresql独有参数，角色选择模式: all 为当前对象下的所有角色对象,partial 为部分角色对象</p>
         :rtype: str
         """
         return self._RoleMode
@@ -4837,7 +4837,7 @@ class DBItem(AbstractModel):
 
     @property
     def Roles(self):
-        r"""postgresql独有参数，当 RoleMode 为 partial 时， 此项需要填写
+        r"""<p>postgresql独有参数，当 RoleMode 为 partial 时， 此项需要填写</p>
         :rtype: list of RoleItem
         """
         return self._Roles
@@ -4848,7 +4848,7 @@ class DBItem(AbstractModel):
 
     @property
     def FunctionMode(self):
-        r"""选择要同步的模式，partial为部分，all为整选
+        r"""<p>选择要同步的模式，partial为部分，all为整选</p>
         :rtype: str
         """
         return self._FunctionMode
@@ -4859,7 +4859,7 @@ class DBItem(AbstractModel):
 
     @property
     def TriggerMode(self):
-        r"""选择要同步的模式，partial为部分，all为整选
+        r"""<p>选择要同步的模式，partial为部分，all为整选</p>
         :rtype: str
         """
         return self._TriggerMode
@@ -4870,7 +4870,7 @@ class DBItem(AbstractModel):
 
     @property
     def EventMode(self):
-        r"""选择要同步的模式，partial为部分，all为整选
+        r"""<p>选择要同步的模式，partial为部分，all为整选</p>
         :rtype: str
         """
         return self._EventMode
@@ -4881,7 +4881,7 @@ class DBItem(AbstractModel):
 
     @property
     def ProcedureMode(self):
-        r"""选择要同步的模式，partial为部分，all为整选
+        r"""<p>选择要同步的模式，partial为部分，all为整选</p>
         :rtype: str
         """
         return self._ProcedureMode
@@ -4892,7 +4892,7 @@ class DBItem(AbstractModel):
 
     @property
     def Functions(self):
-        r"""FunctionMode取值为partial时需要填写
+        r"""<p>FunctionMode取值为partial时需要填写</p>
         :rtype: list of str
         """
         return self._Functions
@@ -4903,7 +4903,7 @@ class DBItem(AbstractModel):
 
     @property
     def Procedures(self):
-        r"""ProcedureMode取值为partial时需要填写
+        r"""<p>ProcedureMode取值为partial时需要填写</p>
         :rtype: list of str
         """
         return self._Procedures
@@ -4914,7 +4914,7 @@ class DBItem(AbstractModel):
 
     @property
     def Events(self):
-        r"""EventMode取值为partial时需要填写
+        r"""<p>EventMode取值为partial时需要填写</p>
         :rtype: list of str
         """
         return self._Events
@@ -4925,7 +4925,7 @@ class DBItem(AbstractModel):
 
     @property
     def Triggers(self):
-        r"""TriggerMode取值为partial时需要填写
+        r"""<p>TriggerMode取值为partial时需要填写</p>
         :rtype: list of str
         """
         return self._Triggers
@@ -5933,21 +5933,21 @@ class DescribeCompareDiffItemsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _JobId: 迁移任务 Id
+        :param _JobId: <p>迁移任务 Id</p>
         :type JobId: str
-        :param _CompareTaskId: 校验任务 Id
+        :param _CompareTaskId: <p>校验任务 Id</p>
         :type CompareTaskId: str
-        :param _DBName: 数据库名
+        :param _DBName: <p>数据库名</p>
         :type DBName: str
-        :param _SchemaName: schema名
+        :param _SchemaName: <p>schema名</p>
         :type SchemaName: str
-        :param _TableName: 数据表名
+        :param _TableName: <p>数据表名</p>
         :type TableName: str
-        :param _ChunkId: 数据分块号
+        :param _ChunkId: <p>数据分块号</p>
         :type ChunkId: int
-        :param _Limit: 分页条件，查询结果返回条数
+        :param _Limit: <p>分页条件，查询结果返回条数</p>
         :type Limit: int
-        :param _Offset: 分页条件，查询的起始位置
+        :param _Offset: <p>分页条件，查询的起始位置</p>
         :type Offset: int
         """
         self._JobId = None
@@ -5961,7 +5961,7 @@ class DescribeCompareDiffItemsRequest(AbstractModel):
 
     @property
     def JobId(self):
-        r"""迁移任务 Id
+        r"""<p>迁移任务 Id</p>
         :rtype: str
         """
         return self._JobId
@@ -5972,7 +5972,7 @@ class DescribeCompareDiffItemsRequest(AbstractModel):
 
     @property
     def CompareTaskId(self):
-        r"""校验任务 Id
+        r"""<p>校验任务 Id</p>
         :rtype: str
         """
         return self._CompareTaskId
@@ -5983,7 +5983,7 @@ class DescribeCompareDiffItemsRequest(AbstractModel):
 
     @property
     def DBName(self):
-        r"""数据库名
+        r"""<p>数据库名</p>
         :rtype: str
         """
         return self._DBName
@@ -5994,7 +5994,7 @@ class DescribeCompareDiffItemsRequest(AbstractModel):
 
     @property
     def SchemaName(self):
-        r"""schema名
+        r"""<p>schema名</p>
         :rtype: str
         """
         return self._SchemaName
@@ -6005,7 +6005,7 @@ class DescribeCompareDiffItemsRequest(AbstractModel):
 
     @property
     def TableName(self):
-        r"""数据表名
+        r"""<p>数据表名</p>
         :rtype: str
         """
         return self._TableName
@@ -6016,7 +6016,7 @@ class DescribeCompareDiffItemsRequest(AbstractModel):
 
     @property
     def ChunkId(self):
-        r"""数据分块号
+        r"""<p>数据分块号</p>
         :rtype: int
         """
         return self._ChunkId
@@ -6027,7 +6027,7 @@ class DescribeCompareDiffItemsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""分页条件，查询结果返回条数
+        r"""<p>分页条件，查询结果返回条数</p>
         :rtype: int
         """
         return self._Limit
@@ -6038,7 +6038,7 @@ class DescribeCompareDiffItemsRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""分页条件，查询的起始位置
+        r"""<p>分页条件，查询的起始位置</p>
         :rtype: int
         """
         return self._Offset
@@ -6074,9 +6074,9 @@ class DescribeCompareDiffItemsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TotalCount: 查询结果的数量
+        :param _TotalCount: <p>查询结果的数量</p>
         :type TotalCount: int
-        :param _Items: 查询结果详情
+        :param _Items: <p>查询结果详情</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Items: list of DiffChunkItem
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -6088,7 +6088,7 @@ class DescribeCompareDiffItemsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        r"""查询结果的数量
+        r"""<p>查询结果的数量</p>
         :rtype: int
         """
         return self._TotalCount
@@ -6099,7 +6099,7 @@ class DescribeCompareDiffItemsResponse(AbstractModel):
 
     @property
     def Items(self):
-        r"""查询结果详情
+        r"""<p>查询结果详情</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of DiffChunkItem
         """
@@ -6372,16 +6372,15 @@ class DescribeCompareTasksRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _JobId: 迁移任务 Id，可通过 [DescribeMigrationJobs](https://cloud.tencent.com/document/product/571/82084) 接口获取。
-
+        :param _JobId: <p>迁移任务 Id，可通过 <a href="https://cloud.tencent.com/document/product/571/82084">DescribeMigrationJobs</a> 接口获取。</p>
         :type JobId: str
-        :param _Limit: 分页设置，表示每页显示多少条任务，默认为 20
+        :param _Limit: <p>分页设置，表示每页显示多少条任务，默认为 20</p>
         :type Limit: int
-        :param _Offset: 分页偏移量
+        :param _Offset: <p>分页偏移量</p>
         :type Offset: int
-        :param _CompareTaskId: 校验任务 ID
+        :param _CompareTaskId: <p>校验任务 ID</p>
         :type CompareTaskId: str
-        :param _Status: 任务状态过滤，可能的值：created - 创建完成；readyRun - 等待运行；running - 运行中；success - 成功；stopping - 结束中；failed - 失败；canceled - 已终止
+        :param _Status: <p>任务状态过滤，可能的值：created - 创建完成；readyRun - 等待运行；running - 运行中；success - 成功；stopping - 结束中；failed - 失败；canceled - 已终止</p>
         :type Status: list of str
         """
         self._JobId = None
@@ -6392,8 +6391,7 @@ class DescribeCompareTasksRequest(AbstractModel):
 
     @property
     def JobId(self):
-        r"""迁移任务 Id，可通过 [DescribeMigrationJobs](https://cloud.tencent.com/document/product/571/82084) 接口获取。
-
+        r"""<p>迁移任务 Id，可通过 <a href="https://cloud.tencent.com/document/product/571/82084">DescribeMigrationJobs</a> 接口获取。</p>
         :rtype: str
         """
         return self._JobId
@@ -6404,7 +6402,7 @@ class DescribeCompareTasksRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""分页设置，表示每页显示多少条任务，默认为 20
+        r"""<p>分页设置，表示每页显示多少条任务，默认为 20</p>
         :rtype: int
         """
         return self._Limit
@@ -6415,7 +6413,7 @@ class DescribeCompareTasksRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""分页偏移量
+        r"""<p>分页偏移量</p>
         :rtype: int
         """
         return self._Offset
@@ -6426,7 +6424,7 @@ class DescribeCompareTasksRequest(AbstractModel):
 
     @property
     def CompareTaskId(self):
-        r"""校验任务 ID
+        r"""<p>校验任务 ID</p>
         :rtype: str
         """
         return self._CompareTaskId
@@ -6437,7 +6435,7 @@ class DescribeCompareTasksRequest(AbstractModel):
 
     @property
     def Status(self):
-        r"""任务状态过滤，可能的值：created - 创建完成；readyRun - 等待运行；running - 运行中；success - 成功；stopping - 结束中；failed - 失败；canceled - 已终止
+        r"""<p>任务状态过滤，可能的值：created - 创建完成；readyRun - 等待运行；running - 运行中；success - 成功；stopping - 结束中；failed - 失败；canceled - 已终止</p>
         :rtype: list of str
         """
         return self._Status
@@ -6470,9 +6468,9 @@ class DescribeCompareTasksResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TotalCount: 数量
+        :param _TotalCount: <p>数量</p>
         :type TotalCount: int
-        :param _Items: 一致性校验列表
+        :param _Items: <p>一致性校验列表</p>
         :type Items: list of CompareTaskItem
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -6483,7 +6481,7 @@ class DescribeCompareTasksResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        r"""数量
+        r"""<p>数量</p>
         :rtype: int
         """
         return self._TotalCount
@@ -6494,7 +6492,7 @@ class DescribeCompareTasksResponse(AbstractModel):
 
     @property
     def Items(self):
-        r"""一致性校验列表
+        r"""<p>一致性校验列表</p>
         :rtype: list of CompareTaskItem
         """
         return self._Items
@@ -7186,16 +7184,14 @@ class DescribeMigrationDetailRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _JobId: 数据迁移任务ID，可通过[DescribeMigrationJobs](https://cloud.tencent.com/document/product/571/82084)接口获取。
-
+        :param _JobId: <p>数据迁移任务ID，可通过<a href="https://cloud.tencent.com/document/product/571/82084">DescribeMigrationJobs</a>接口获取。</p>
         :type JobId: str
         """
         self._JobId = None
 
     @property
     def JobId(self):
-        r"""数据迁移任务ID，可通过[DescribeMigrationJobs](https://cloud.tencent.com/document/product/571/82084)接口获取。
-
+        r"""<p>数据迁移任务ID，可通过<a href="https://cloud.tencent.com/document/product/571/82084">DescribeMigrationJobs</a>接口获取。</p>
         :rtype: str
         """
         return self._JobId
@@ -7224,51 +7220,49 @@ class DescribeMigrationDetailResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _JobId: 数据迁移任务ID
+        :param _JobId: <p>数据迁移任务ID</p>
         :type JobId: str
-        :param _JobName: 数据迁移任务名称
+        :param _JobName: <p>数据迁移任务名称</p>
         :type JobName: str
-        :param _CreateTime: 任务创建(提交)时间，格式为 yyyy-mm-dd hh:mm:ss
+        :param _CreateTime: <p>任务创建(提交)时间。当 <code>DateTimeISOFormat=true</code> 时返回 RFC 3339 格式（如 <code>2026-04-23T20:21:35+08:00</code>），否则返回 <code>yyyy-mm-dd hh:mm:ss</code>（北京时间）</p>
         :type CreateTime: str
-        :param _UpdateTime: 任务更新时间，格式为 yyyy-mm-dd hh:mm:ss
+        :param _UpdateTime: <p>任务更新时间。当 <code>DateTimeISOFormat=true</code> 时返回 RFC 3339 格式（如 <code>2026-04-23T20:21:35+08:00</code>），否则返回 <code>yyyy-mm-dd hh:mm:ss</code>（北京时间）</p>
         :type UpdateTime: str
-        :param _StartTime: 任务开始执行时间，格式为 yyyy-mm-dd hh:mm:ss
+        :param _StartTime: <p>任务开始执行时间。当 <code>DateTimeISOFormat=true</code> 时返回 RFC 3339 格式（如 <code>2026-04-23T20:21:35+08:00</code>），否则返回 <code>yyyy-mm-dd hh:mm:ss</code>（北京时间）</p>
         :type StartTime: str
-        :param _EndTime: 任务执行结束时间，格式为 yyyy-mm-dd hh:mm:ss
+        :param _EndTime: <p>任务执行结束时间。当 <code>DateTimeISOFormat=true</code> 时返回 RFC 3339 格式（如 <code>2026-04-23T20:21:35+08:00</code>），否则返回 <code>yyyy-mm-dd hh:mm:ss</code>（北京时间）</p>
         :type EndTime: str
-        :param _BriefMsg: 迁移任务简要错误信息
+        :param _BriefMsg: <p>迁移任务简要错误信息</p>
         :type BriefMsg: str
-        :param _Status: 任务状态，取值为：created(创建完成)、checking(校验中)、checkPass(校验通过)、checkNotPass(校验不通过)、readyRun(准备运行)、running(任务运行中)、readyComplete(准备完成)、success(任务成功)、failed(任务失败)、stopping(中止中)、completing(完成中)、
-pausing(暂停中)、
-manualPaused(已暂停)
+        :param _Status: <p>任务状态，取值为：created(创建完成)、checking(校验中)、checkPass(校验通过)、checkNotPass(校验不通过)、readyRun(准备运行)、running(任务运行中)、readyComplete(准备完成)、success(任务成功)、failed(任务失败)、stopping(中止中)、completing(完成中)、<br>pausing(暂停中)、<br>manualPaused(已暂停)</p>
         :type Status: str
-        :param _Action: 任务操作信息
+        :param _Action: <p>任务操作信息</p>
         :type Action: :class:`tencentcloud.dts.v20211206.models.MigrateAction`
-        :param _StepInfo: 迁移执行过程信息，在校验阶段显示校验过程步骤信息，在迁移阶段会显示迁移步骤信息
+        :param _StepInfo: <p>迁移执行过程信息，在校验阶段显示校验过程步骤信息，在迁移阶段会显示迁移步骤信息</p>
         :type StepInfo: :class:`tencentcloud.dts.v20211206.models.MigrateDetailInfo`
-        :param _SrcInfo: 源实例信息
+        :param _SrcInfo: <p>源实例信息</p>
         :type SrcInfo: :class:`tencentcloud.dts.v20211206.models.DBEndpointInfo`
-        :param _DstInfo: 目标端信息
+        :param _DstInfo: <p>目标端信息</p>
         :type DstInfo: :class:`tencentcloud.dts.v20211206.models.DBEndpointInfo`
-        :param _CompareTask: 数据一致性校验结果
+        :param _CompareTask: <p>数据一致性校验结果</p>
         :type CompareTask: :class:`tencentcloud.dts.v20211206.models.CompareTaskInfo`
-        :param _Tags: 标签信息
+        :param _Tags: <p>标签信息</p>
         :type Tags: list of TagItem
-        :param _RunMode: 运行模式，取值如：immediate(表示立即运行)、timed(表示定时运行)
+        :param _RunMode: <p>运行模式，取值如：immediate(表示立即运行)、timed(表示定时运行)</p>
         :type RunMode: str
-        :param _ExpectRunTime: 期待启动时间，当RunMode取值为timed时，此值必填，形如："2006-01-02 15:04:05"
+        :param _ExpectRunTime: <p>期待启动时间，当 <code>RunMode</code> 取值为 <code>timed</code> 时此值必填。当 <code>DateTimeISOFormat=true</code> 时返回 RFC 3339 格式（如 <code>2026-04-23T20:21:35+08:00</code>），否则返回 <code>yyyy-mm-dd hh:mm:ss</code>（北京时间）</p>
         :type ExpectRunTime: str
-        :param _MigrateOption: 迁移选项，描述任务如何执行迁移等一系列配置信息
+        :param _MigrateOption: <p>迁移选项，描述任务如何执行迁移等一系列配置信息</p>
         :type MigrateOption: :class:`tencentcloud.dts.v20211206.models.MigrateOption`
-        :param _CheckStepInfo: 校验任务运行详情
+        :param _CheckStepInfo: <p>校验任务运行详情</p>
         :type CheckStepInfo: :class:`tencentcloud.dts.v20211206.models.CheckStepInfo`
-        :param _TradeInfo: 描述计费相关的信息
+        :param _TradeInfo: <p>描述计费相关的信息</p>
         :type TradeInfo: :class:`tencentcloud.dts.v20211206.models.TradeInfo`
-        :param _ErrorInfo: 任务错误信息
+        :param _ErrorInfo: <p>任务错误信息</p>
         :type ErrorInfo: list of ErrorInfoItem
-        :param _DumperResumeCtrl: 全量导出可重入标识：enum::"yes"/"no"。yes表示当前任务可重入、no表示当前任务处于全量导出且不可重入阶段；如果在该值为no时重启任务导出流程不支持断点续传
+        :param _DumperResumeCtrl: <p>全量导出可重入标识：enum::&quot;yes&quot;/&quot;no&quot;。yes表示当前任务可重入、no表示当前任务处于全量导出且不可重入阶段；如果在该值为no时重启任务导出流程不支持断点续传</p>
         :type DumperResumeCtrl: str
-        :param _RateLimitOption: 任务的限速信息
+        :param _RateLimitOption: <p>任务的限速信息</p>
         :type RateLimitOption: :class:`tencentcloud.dts.v20211206.models.RateLimitOption`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -7299,7 +7293,7 @@ manualPaused(已暂停)
 
     @property
     def JobId(self):
-        r"""数据迁移任务ID
+        r"""<p>数据迁移任务ID</p>
         :rtype: str
         """
         return self._JobId
@@ -7310,7 +7304,7 @@ manualPaused(已暂停)
 
     @property
     def JobName(self):
-        r"""数据迁移任务名称
+        r"""<p>数据迁移任务名称</p>
         :rtype: str
         """
         return self._JobName
@@ -7321,7 +7315,7 @@ manualPaused(已暂停)
 
     @property
     def CreateTime(self):
-        r"""任务创建(提交)时间，格式为 yyyy-mm-dd hh:mm:ss
+        r"""<p>任务创建(提交)时间。当 <code>DateTimeISOFormat=true</code> 时返回 RFC 3339 格式（如 <code>2026-04-23T20:21:35+08:00</code>），否则返回 <code>yyyy-mm-dd hh:mm:ss</code>（北京时间）</p>
         :rtype: str
         """
         return self._CreateTime
@@ -7332,7 +7326,7 @@ manualPaused(已暂停)
 
     @property
     def UpdateTime(self):
-        r"""任务更新时间，格式为 yyyy-mm-dd hh:mm:ss
+        r"""<p>任务更新时间。当 <code>DateTimeISOFormat=true</code> 时返回 RFC 3339 格式（如 <code>2026-04-23T20:21:35+08:00</code>），否则返回 <code>yyyy-mm-dd hh:mm:ss</code>（北京时间）</p>
         :rtype: str
         """
         return self._UpdateTime
@@ -7343,7 +7337,7 @@ manualPaused(已暂停)
 
     @property
     def StartTime(self):
-        r"""任务开始执行时间，格式为 yyyy-mm-dd hh:mm:ss
+        r"""<p>任务开始执行时间。当 <code>DateTimeISOFormat=true</code> 时返回 RFC 3339 格式（如 <code>2026-04-23T20:21:35+08:00</code>），否则返回 <code>yyyy-mm-dd hh:mm:ss</code>（北京时间）</p>
         :rtype: str
         """
         return self._StartTime
@@ -7354,7 +7348,7 @@ manualPaused(已暂停)
 
     @property
     def EndTime(self):
-        r"""任务执行结束时间，格式为 yyyy-mm-dd hh:mm:ss
+        r"""<p>任务执行结束时间。当 <code>DateTimeISOFormat=true</code> 时返回 RFC 3339 格式（如 <code>2026-04-23T20:21:35+08:00</code>），否则返回 <code>yyyy-mm-dd hh:mm:ss</code>（北京时间）</p>
         :rtype: str
         """
         return self._EndTime
@@ -7365,7 +7359,7 @@ manualPaused(已暂停)
 
     @property
     def BriefMsg(self):
-        r"""迁移任务简要错误信息
+        r"""<p>迁移任务简要错误信息</p>
         :rtype: str
         """
         return self._BriefMsg
@@ -7376,9 +7370,7 @@ manualPaused(已暂停)
 
     @property
     def Status(self):
-        r"""任务状态，取值为：created(创建完成)、checking(校验中)、checkPass(校验通过)、checkNotPass(校验不通过)、readyRun(准备运行)、running(任务运行中)、readyComplete(准备完成)、success(任务成功)、failed(任务失败)、stopping(中止中)、completing(完成中)、
-pausing(暂停中)、
-manualPaused(已暂停)
+        r"""<p>任务状态，取值为：created(创建完成)、checking(校验中)、checkPass(校验通过)、checkNotPass(校验不通过)、readyRun(准备运行)、running(任务运行中)、readyComplete(准备完成)、success(任务成功)、failed(任务失败)、stopping(中止中)、completing(完成中)、<br>pausing(暂停中)、<br>manualPaused(已暂停)</p>
         :rtype: str
         """
         return self._Status
@@ -7389,7 +7381,7 @@ manualPaused(已暂停)
 
     @property
     def Action(self):
-        r"""任务操作信息
+        r"""<p>任务操作信息</p>
         :rtype: :class:`tencentcloud.dts.v20211206.models.MigrateAction`
         """
         return self._Action
@@ -7400,7 +7392,7 @@ manualPaused(已暂停)
 
     @property
     def StepInfo(self):
-        r"""迁移执行过程信息，在校验阶段显示校验过程步骤信息，在迁移阶段会显示迁移步骤信息
+        r"""<p>迁移执行过程信息，在校验阶段显示校验过程步骤信息，在迁移阶段会显示迁移步骤信息</p>
         :rtype: :class:`tencentcloud.dts.v20211206.models.MigrateDetailInfo`
         """
         return self._StepInfo
@@ -7411,7 +7403,7 @@ manualPaused(已暂停)
 
     @property
     def SrcInfo(self):
-        r"""源实例信息
+        r"""<p>源实例信息</p>
         :rtype: :class:`tencentcloud.dts.v20211206.models.DBEndpointInfo`
         """
         return self._SrcInfo
@@ -7422,7 +7414,7 @@ manualPaused(已暂停)
 
     @property
     def DstInfo(self):
-        r"""目标端信息
+        r"""<p>目标端信息</p>
         :rtype: :class:`tencentcloud.dts.v20211206.models.DBEndpointInfo`
         """
         return self._DstInfo
@@ -7433,7 +7425,7 @@ manualPaused(已暂停)
 
     @property
     def CompareTask(self):
-        r"""数据一致性校验结果
+        r"""<p>数据一致性校验结果</p>
         :rtype: :class:`tencentcloud.dts.v20211206.models.CompareTaskInfo`
         """
         return self._CompareTask
@@ -7444,7 +7436,7 @@ manualPaused(已暂停)
 
     @property
     def Tags(self):
-        r"""标签信息
+        r"""<p>标签信息</p>
         :rtype: list of TagItem
         """
         return self._Tags
@@ -7455,7 +7447,7 @@ manualPaused(已暂停)
 
     @property
     def RunMode(self):
-        r"""运行模式，取值如：immediate(表示立即运行)、timed(表示定时运行)
+        r"""<p>运行模式，取值如：immediate(表示立即运行)、timed(表示定时运行)</p>
         :rtype: str
         """
         return self._RunMode
@@ -7466,7 +7458,7 @@ manualPaused(已暂停)
 
     @property
     def ExpectRunTime(self):
-        r"""期待启动时间，当RunMode取值为timed时，此值必填，形如："2006-01-02 15:04:05"
+        r"""<p>期待启动时间，当 <code>RunMode</code> 取值为 <code>timed</code> 时此值必填。当 <code>DateTimeISOFormat=true</code> 时返回 RFC 3339 格式（如 <code>2026-04-23T20:21:35+08:00</code>），否则返回 <code>yyyy-mm-dd hh:mm:ss</code>（北京时间）</p>
         :rtype: str
         """
         return self._ExpectRunTime
@@ -7477,7 +7469,7 @@ manualPaused(已暂停)
 
     @property
     def MigrateOption(self):
-        r"""迁移选项，描述任务如何执行迁移等一系列配置信息
+        r"""<p>迁移选项，描述任务如何执行迁移等一系列配置信息</p>
         :rtype: :class:`tencentcloud.dts.v20211206.models.MigrateOption`
         """
         return self._MigrateOption
@@ -7488,7 +7480,7 @@ manualPaused(已暂停)
 
     @property
     def CheckStepInfo(self):
-        r"""校验任务运行详情
+        r"""<p>校验任务运行详情</p>
         :rtype: :class:`tencentcloud.dts.v20211206.models.CheckStepInfo`
         """
         return self._CheckStepInfo
@@ -7499,7 +7491,7 @@ manualPaused(已暂停)
 
     @property
     def TradeInfo(self):
-        r"""描述计费相关的信息
+        r"""<p>描述计费相关的信息</p>
         :rtype: :class:`tencentcloud.dts.v20211206.models.TradeInfo`
         """
         return self._TradeInfo
@@ -7510,7 +7502,7 @@ manualPaused(已暂停)
 
     @property
     def ErrorInfo(self):
-        r"""任务错误信息
+        r"""<p>任务错误信息</p>
         :rtype: list of ErrorInfoItem
         """
         return self._ErrorInfo
@@ -7521,7 +7513,7 @@ manualPaused(已暂停)
 
     @property
     def DumperResumeCtrl(self):
-        r"""全量导出可重入标识：enum::"yes"/"no"。yes表示当前任务可重入、no表示当前任务处于全量导出且不可重入阶段；如果在该值为no时重启任务导出流程不支持断点续传
+        r"""<p>全量导出可重入标识：enum::&quot;yes&quot;/&quot;no&quot;。yes表示当前任务可重入、no表示当前任务处于全量导出且不可重入阶段；如果在该值为no时重启任务导出流程不支持断点续传</p>
         :rtype: str
         """
         return self._DumperResumeCtrl
@@ -7532,7 +7524,7 @@ manualPaused(已暂停)
 
     @property
     def RateLimitOption(self):
-        r"""任务的限速信息
+        r"""<p>任务的限速信息</p>
         :rtype: :class:`tencentcloud.dts.v20211206.models.RateLimitOption`
         """
         return self._RateLimitOption
@@ -8091,9 +8083,9 @@ class DescribeOffsetByTimeRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SubscribeId: 数据订阅实例的 ID，可通过[DescribeSubscribeJobs](https://cloud.tencent.com/document/product/571/102943)接口获取。
+        :param _SubscribeId: <p>数据订阅实例的 ID，可通过<a href="https://cloud.tencent.com/document/product/571/102943">DescribeSubscribeJobs</a>接口获取。</p>
         :type SubscribeId: str
-        :param _Time: 时间点，格式为：Y-m-d h:m:s。如果输入时间比当前时间晚的多，相当于查询最新offset；如果输入时间比当前时间早的多，相当于查询最老offset；如果输入空，默认0时间，等价于查询最老offset。
+        :param _Time: <p>时间。当 <code>DateTimeISOFormat=true</code> 时按 RFC 3339 传入（如 <code>2026-04-23T20:21:35+08:00</code>），否则按 <code>Y-m-d h:m:s</code>（北京时间）传入。如果输入时间比当前时间晚的多，相当于查询最新 offset；如果输入时间比当前时间早的多，相当于查询最老 offset；如果输入空，默认 0 时间，等价于查询最老 offset。</p><p>参数格式：2026-04-23T20:21:35+08:00</p>
         :type Time: str
         """
         self._SubscribeId = None
@@ -8101,7 +8093,7 @@ class DescribeOffsetByTimeRequest(AbstractModel):
 
     @property
     def SubscribeId(self):
-        r"""数据订阅实例的 ID，可通过[DescribeSubscribeJobs](https://cloud.tencent.com/document/product/571/102943)接口获取。
+        r"""<p>数据订阅实例的 ID，可通过<a href="https://cloud.tencent.com/document/product/571/102943">DescribeSubscribeJobs</a>接口获取。</p>
         :rtype: str
         """
         return self._SubscribeId
@@ -8112,7 +8104,7 @@ class DescribeOffsetByTimeRequest(AbstractModel):
 
     @property
     def Time(self):
-        r"""时间点，格式为：Y-m-d h:m:s。如果输入时间比当前时间晚的多，相当于查询最新offset；如果输入时间比当前时间早的多，相当于查询最老offset；如果输入空，默认0时间，等价于查询最老offset。
+        r"""<p>时间。当 <code>DateTimeISOFormat=true</code> 时按 RFC 3339 传入（如 <code>2026-04-23T20:21:35+08:00</code>），否则按 <code>Y-m-d h:m:s</code>（北京时间）传入。如果输入时间比当前时间晚的多，相当于查询最新 offset；如果输入时间比当前时间早的多，相当于查询最老 offset；如果输入空，默认 0 时间，等价于查询最老 offset。</p><p>参数格式：2026-04-23T20:21:35+08:00</p>
         :rtype: str
         """
         return self._Time
@@ -8142,7 +8134,7 @@ class DescribeOffsetByTimeResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Items: 时间与Offset的对应
+        :param _Items: <p>时间与Offset的对应</p>
         :type Items: list of OffsetTimeMap
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -8152,7 +8144,7 @@ class DescribeOffsetByTimeResponse(AbstractModel):
 
     @property
     def Items(self):
-        r"""时间与Offset的对应
+        r"""<p>时间与Offset的对应</p>
         :rtype: list of OffsetTimeMap
         """
         return self._Items
@@ -8414,15 +8406,15 @@ class DescribeSubscribeDetailResponse(AbstractModel):
         :type Status: str
         :param _SubsStatus: <p>订阅任务状态，可能值为：未启动notStarted, 校验中checking, 校验不通过checkNotPass, 校验通过checkPass, 启动中starting, 运行中running, 异常出错error</p>
         :type SubsStatus: str
-        :param _ModifyTime: <p>修改时间。</p>
+        :param _ModifyTime: <p>修改时间。当 <code>DateTimeISOFormat=true</code> 时返回 RFC 3339 格式（如 <code>2026-04-23T20:21:35+08:00</code>），否则返回 <code>Y-m-d h:m:s</code>（北京时间）。</p>
         :type ModifyTime: str
-        :param _CreateTime: <p>创建时间。</p>
+        :param _CreateTime: <p>创建时间。当 <code>DateTimeISOFormat=true</code> 时返回 RFC 3339 格式（如 <code>2026-04-23T20:21:35+08:00</code>），否则返回 <code>Y-m-d h:m:s</code>（北京时间）。</p>
         :type CreateTime: str
-        :param _IsolateTime: <p>隔离时间。</p>
+        :param _IsolateTime: <p>隔离时间。当 <code>DateTimeISOFormat=true</code> 时返回 RFC 3339 格式（如 <code>2026-04-23T20:21:35+08:00</code>），否则返回 <code>Y-m-d h:m:s</code>（北京时间）。</p>
         :type IsolateTime: str
-        :param _ExpireTime: <p>包年包月任务的到期时间。</p>
+        :param _ExpireTime: <p>包年包月任务的到期时间。当 <code>DateTimeISOFormat=true</code> 时返回 RFC 3339 格式（如 <code>2026-04-23T20:21:35+08:00</code>），否则返回 <code>Y-m-d h:m:s</code>（北京时间）。</p>
         :type ExpireTime: str
-        :param _OfflineTime: <p>下线时间。</p>
+        :param _OfflineTime: <p>下线时间。当 <code>DateTimeISOFormat=true</code> 时返回 RFC 3339 格式（如 <code>2026-04-23T20:21:35+08:00</code>），否则返回 <code>Y-m-d h:m:s</code>（北京时间）。</p>
         :type OfflineTime: str
         :param _PayType: <p>付费方式，可能值为：0-包年包月，1-按量计费</p>
         :type PayType: int
@@ -8581,7 +8573,7 @@ class DescribeSubscribeDetailResponse(AbstractModel):
 
     @property
     def ModifyTime(self):
-        r"""<p>修改时间。</p>
+        r"""<p>修改时间。当 <code>DateTimeISOFormat=true</code> 时返回 RFC 3339 格式（如 <code>2026-04-23T20:21:35+08:00</code>），否则返回 <code>Y-m-d h:m:s</code>（北京时间）。</p>
         :rtype: str
         """
         return self._ModifyTime
@@ -8592,7 +8584,7 @@ class DescribeSubscribeDetailResponse(AbstractModel):
 
     @property
     def CreateTime(self):
-        r"""<p>创建时间。</p>
+        r"""<p>创建时间。当 <code>DateTimeISOFormat=true</code> 时返回 RFC 3339 格式（如 <code>2026-04-23T20:21:35+08:00</code>），否则返回 <code>Y-m-d h:m:s</code>（北京时间）。</p>
         :rtype: str
         """
         return self._CreateTime
@@ -8603,7 +8595,7 @@ class DescribeSubscribeDetailResponse(AbstractModel):
 
     @property
     def IsolateTime(self):
-        r"""<p>隔离时间。</p>
+        r"""<p>隔离时间。当 <code>DateTimeISOFormat=true</code> 时返回 RFC 3339 格式（如 <code>2026-04-23T20:21:35+08:00</code>），否则返回 <code>Y-m-d h:m:s</code>（北京时间）。</p>
         :rtype: str
         """
         return self._IsolateTime
@@ -8614,7 +8606,7 @@ class DescribeSubscribeDetailResponse(AbstractModel):
 
     @property
     def ExpireTime(self):
-        r"""<p>包年包月任务的到期时间。</p>
+        r"""<p>包年包月任务的到期时间。当 <code>DateTimeISOFormat=true</code> 时返回 RFC 3339 格式（如 <code>2026-04-23T20:21:35+08:00</code>），否则返回 <code>Y-m-d h:m:s</code>（北京时间）。</p>
         :rtype: str
         """
         return self._ExpireTime
@@ -8625,7 +8617,7 @@ class DescribeSubscribeDetailResponse(AbstractModel):
 
     @property
     def OfflineTime(self):
-        r"""<p>下线时间。</p>
+        r"""<p>下线时间。当 <code>DateTimeISOFormat=true</code> 时返回 RFC 3339 格式（如 <code>2026-04-23T20:21:35+08:00</code>），否则返回 <code>Y-m-d h:m:s</code>（北京时间）。</p>
         :rtype: str
         """
         return self._OfflineTime
@@ -8942,31 +8934,31 @@ class DescribeSubscribeJobsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SubscribeId: 订阅 ID 筛选，精确匹配
+        :param _SubscribeId: <p>订阅 ID 筛选，精确匹配</p>
         :type SubscribeId: str
-        :param _SubscribeIds: 订阅 ID 筛选，精确匹配
+        :param _SubscribeIds: <p>订阅 ID 筛选，精确匹配</p>
         :type SubscribeIds: list of str
-        :param _SubscribeName: 订阅名称，前缀模糊匹配
+        :param _SubscribeName: <p>订阅名称，前缀模糊匹配</p>
         :type SubscribeName: str
-        :param _InstanceId: 订阅的云上数据库实例的 ID，精确匹配
+        :param _InstanceId: <p>订阅的云上数据库实例的 ID，精确匹配</p>
         :type InstanceId: str
-        :param _Topic: 订阅的topicName
+        :param _Topic: <p>订阅的topicName</p>
         :type Topic: str
-        :param _PayType: 计费模式筛选，可能的值：0-包年包月，1-按量计费
+        :param _PayType: <p>计费模式筛选，可能的值：0-包年包月，1-按量计费</p>
         :type PayType: int
-        :param _Product: 订阅的数据库产品，目前支持 cynosdbmysql,mariadb,mongodb,mysql,percona,tdpg,tdsqlpercona(tdsqlmysql)
+        :param _Product: <p>订阅的数据库产品，目前支持 cynosdbmysql,mariadb,mongodb,mysql,percona,tdpg,tdsqlpercona(tdsqlmysql)</p>
         :type Product: str
-        :param _Status: 数据订阅生命周期状态，可能的值为：正常 normal, 隔离中 isolating, 已隔离 isolated, 下线中 offlining，按量转包年包月中 post2PrePayIng
+        :param _Status: <p>数据订阅生命周期状态，可能的值为：正常 normal, 隔离中 isolating, 已隔离 isolated, 下线中 offlining，按量转包年包月中 post2PrePayIng</p>
         :type Status: list of str
-        :param _SubsStatus: 数据订阅状态，可能的值为：未启动 notStarted, 校验中 checking, 校验不通过 checkNotPass, 校验通过 checkPass, 启动中 starting, 运行中 running, 异常出错 error
+        :param _SubsStatus: <p>数据订阅状态，可能的值为：未启动 notStarted, 校验中 checking, 校验不通过 checkNotPass, 校验通过 checkPass, 启动中 starting, 运行中 running, 异常出错 error</p>
         :type SubsStatus: list of str
-        :param _Offset: 返回记录的起始偏移量。默认0
+        :param _Offset: <p>返回记录的起始偏移量。默认0</p>
         :type Offset: int
-        :param _Limit: 单次返回的记录数量。默认20，最大100
+        :param _Limit: <p>单次返回的记录数量。默认20，最大100</p>
         :type Limit: int
-        :param _OrderDirection: 排序方向，可选的值为"DESC"和"ASC"，默认为"DESC"，按创建时间逆序排序
+        :param _OrderDirection: <p>排序方向，可选的值为&quot;DESC&quot;和&quot;ASC&quot;，默认为&quot;DESC&quot;，按创建时间逆序排序</p>
         :type OrderDirection: str
-        :param _TagFilters: tag 过滤条件，多个 TagFilter 之间关系为且
+        :param _TagFilters: <p>tag 过滤条件，多个 TagFilter 之间关系为且</p>
         :type TagFilters: list of TagFilter
         """
         self._SubscribeId = None
@@ -8985,7 +8977,7 @@ class DescribeSubscribeJobsRequest(AbstractModel):
 
     @property
     def SubscribeId(self):
-        r"""订阅 ID 筛选，精确匹配
+        r"""<p>订阅 ID 筛选，精确匹配</p>
         :rtype: str
         """
         return self._SubscribeId
@@ -8996,7 +8988,7 @@ class DescribeSubscribeJobsRequest(AbstractModel):
 
     @property
     def SubscribeIds(self):
-        r"""订阅 ID 筛选，精确匹配
+        r"""<p>订阅 ID 筛选，精确匹配</p>
         :rtype: list of str
         """
         return self._SubscribeIds
@@ -9007,7 +8999,7 @@ class DescribeSubscribeJobsRequest(AbstractModel):
 
     @property
     def SubscribeName(self):
-        r"""订阅名称，前缀模糊匹配
+        r"""<p>订阅名称，前缀模糊匹配</p>
         :rtype: str
         """
         return self._SubscribeName
@@ -9018,7 +9010,7 @@ class DescribeSubscribeJobsRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""订阅的云上数据库实例的 ID，精确匹配
+        r"""<p>订阅的云上数据库实例的 ID，精确匹配</p>
         :rtype: str
         """
         return self._InstanceId
@@ -9029,7 +9021,7 @@ class DescribeSubscribeJobsRequest(AbstractModel):
 
     @property
     def Topic(self):
-        r"""订阅的topicName
+        r"""<p>订阅的topicName</p>
         :rtype: str
         """
         return self._Topic
@@ -9040,7 +9032,7 @@ class DescribeSubscribeJobsRequest(AbstractModel):
 
     @property
     def PayType(self):
-        r"""计费模式筛选，可能的值：0-包年包月，1-按量计费
+        r"""<p>计费模式筛选，可能的值：0-包年包月，1-按量计费</p>
         :rtype: int
         """
         return self._PayType
@@ -9051,7 +9043,7 @@ class DescribeSubscribeJobsRequest(AbstractModel):
 
     @property
     def Product(self):
-        r"""订阅的数据库产品，目前支持 cynosdbmysql,mariadb,mongodb,mysql,percona,tdpg,tdsqlpercona(tdsqlmysql)
+        r"""<p>订阅的数据库产品，目前支持 cynosdbmysql,mariadb,mongodb,mysql,percona,tdpg,tdsqlpercona(tdsqlmysql)</p>
         :rtype: str
         """
         return self._Product
@@ -9062,7 +9054,7 @@ class DescribeSubscribeJobsRequest(AbstractModel):
 
     @property
     def Status(self):
-        r"""数据订阅生命周期状态，可能的值为：正常 normal, 隔离中 isolating, 已隔离 isolated, 下线中 offlining，按量转包年包月中 post2PrePayIng
+        r"""<p>数据订阅生命周期状态，可能的值为：正常 normal, 隔离中 isolating, 已隔离 isolated, 下线中 offlining，按量转包年包月中 post2PrePayIng</p>
         :rtype: list of str
         """
         return self._Status
@@ -9073,7 +9065,7 @@ class DescribeSubscribeJobsRequest(AbstractModel):
 
     @property
     def SubsStatus(self):
-        r"""数据订阅状态，可能的值为：未启动 notStarted, 校验中 checking, 校验不通过 checkNotPass, 校验通过 checkPass, 启动中 starting, 运行中 running, 异常出错 error
+        r"""<p>数据订阅状态，可能的值为：未启动 notStarted, 校验中 checking, 校验不通过 checkNotPass, 校验通过 checkPass, 启动中 starting, 运行中 running, 异常出错 error</p>
         :rtype: list of str
         """
         return self._SubsStatus
@@ -9084,7 +9076,7 @@ class DescribeSubscribeJobsRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""返回记录的起始偏移量。默认0
+        r"""<p>返回记录的起始偏移量。默认0</p>
         :rtype: int
         """
         return self._Offset
@@ -9095,7 +9087,7 @@ class DescribeSubscribeJobsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""单次返回的记录数量。默认20，最大100
+        r"""<p>单次返回的记录数量。默认20，最大100</p>
         :rtype: int
         """
         return self._Limit
@@ -9106,7 +9098,7 @@ class DescribeSubscribeJobsRequest(AbstractModel):
 
     @property
     def OrderDirection(self):
-        r"""排序方向，可选的值为"DESC"和"ASC"，默认为"DESC"，按创建时间逆序排序
+        r"""<p>排序方向，可选的值为&quot;DESC&quot;和&quot;ASC&quot;，默认为&quot;DESC&quot;，按创建时间逆序排序</p>
         :rtype: str
         """
         return self._OrderDirection
@@ -9117,7 +9109,7 @@ class DescribeSubscribeJobsRequest(AbstractModel):
 
     @property
     def TagFilters(self):
-        r"""tag 过滤条件，多个 TagFilter 之间关系为且
+        r"""<p>tag 过滤条件，多个 TagFilter 之间关系为且</p>
         :rtype: list of TagFilter
         """
         return self._TagFilters
@@ -9163,9 +9155,9 @@ class DescribeSubscribeJobsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TotalCount: 符合查询条件的实例总数
+        :param _TotalCount: <p>符合查询条件的实例总数</p>
         :type TotalCount: int
-        :param _Items: 数据订阅实例的信息列表
+        :param _Items: <p>数据订阅实例的信息列表</p>
         :type Items: list of SubscribeInfo
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -9176,7 +9168,7 @@ class DescribeSubscribeJobsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        r"""符合查询条件的实例总数
+        r"""<p>符合查询条件的实例总数</p>
         :rtype: int
         """
         return self._TotalCount
@@ -9187,7 +9179,7 @@ class DescribeSubscribeJobsResponse(AbstractModel):
 
     @property
     def Items(self):
-        r"""数据订阅实例的信息列表
+        r"""<p>数据订阅实例的信息列表</p>
         :rtype: list of SubscribeInfo
         """
         return self._Items
@@ -9320,21 +9312,21 @@ class DescribeSyncCompareDiffItemsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _JobId: 迁移任务 Id
+        :param _JobId: <p>迁移任务 Id</p>
         :type JobId: str
-        :param _CompareTaskId: 校验任务 Id
+        :param _CompareTaskId: <p>校验任务 Id</p>
         :type CompareTaskId: str
-        :param _DBName: 数据库名
+        :param _DBName: <p>数据库名</p>
         :type DBName: str
-        :param _SchemaName: schema名
+        :param _SchemaName: <p>schema名</p>
         :type SchemaName: str
-        :param _TableName: 数据表名
+        :param _TableName: <p>数据表名</p>
         :type TableName: str
-        :param _ChunkId: 数据分块号
+        :param _ChunkId: <p>数据分块号</p>
         :type ChunkId: int
-        :param _Limit: 分页条件，查询结果返回条数
+        :param _Limit: <p>分页条件，查询结果返回条数</p>
         :type Limit: int
-        :param _Offset: 分页条件，查询的起始位置
+        :param _Offset: <p>分页条件，查询的起始位置</p>
         :type Offset: int
         """
         self._JobId = None
@@ -9348,7 +9340,7 @@ class DescribeSyncCompareDiffItemsRequest(AbstractModel):
 
     @property
     def JobId(self):
-        r"""迁移任务 Id
+        r"""<p>迁移任务 Id</p>
         :rtype: str
         """
         return self._JobId
@@ -9359,7 +9351,7 @@ class DescribeSyncCompareDiffItemsRequest(AbstractModel):
 
     @property
     def CompareTaskId(self):
-        r"""校验任务 Id
+        r"""<p>校验任务 Id</p>
         :rtype: str
         """
         return self._CompareTaskId
@@ -9370,7 +9362,7 @@ class DescribeSyncCompareDiffItemsRequest(AbstractModel):
 
     @property
     def DBName(self):
-        r"""数据库名
+        r"""<p>数据库名</p>
         :rtype: str
         """
         return self._DBName
@@ -9381,7 +9373,7 @@ class DescribeSyncCompareDiffItemsRequest(AbstractModel):
 
     @property
     def SchemaName(self):
-        r"""schema名
+        r"""<p>schema名</p>
         :rtype: str
         """
         return self._SchemaName
@@ -9392,7 +9384,7 @@ class DescribeSyncCompareDiffItemsRequest(AbstractModel):
 
     @property
     def TableName(self):
-        r"""数据表名
+        r"""<p>数据表名</p>
         :rtype: str
         """
         return self._TableName
@@ -9403,7 +9395,7 @@ class DescribeSyncCompareDiffItemsRequest(AbstractModel):
 
     @property
     def ChunkId(self):
-        r"""数据分块号
+        r"""<p>数据分块号</p>
         :rtype: int
         """
         return self._ChunkId
@@ -9414,7 +9406,7 @@ class DescribeSyncCompareDiffItemsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""分页条件，查询结果返回条数
+        r"""<p>分页条件，查询结果返回条数</p>
         :rtype: int
         """
         return self._Limit
@@ -9425,7 +9417,7 @@ class DescribeSyncCompareDiffItemsRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""分页条件，查询的起始位置
+        r"""<p>分页条件，查询的起始位置</p>
         :rtype: int
         """
         return self._Offset
@@ -9461,9 +9453,9 @@ class DescribeSyncCompareDiffItemsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TotalCount: 查询结果的数量
+        :param _TotalCount: <p>查询结果的数量</p>
         :type TotalCount: int
-        :param _Items: 查询结果详情
+        :param _Items: <p>查询结果详情</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Items: list of DiffChunkItem
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -9475,7 +9467,7 @@ class DescribeSyncCompareDiffItemsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        r"""查询结果的数量
+        r"""<p>查询结果的数量</p>
         :rtype: int
         """
         return self._TotalCount
@@ -9486,7 +9478,7 @@ class DescribeSyncCompareDiffItemsResponse(AbstractModel):
 
     @property
     def Items(self):
-        r"""查询结果详情
+        r"""<p>查询结果详情</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of DiffChunkItem
         """
@@ -9780,15 +9772,15 @@ class DescribeSyncCompareTasksRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _JobId: 任务 Id
+        :param _JobId: <p>任务 Id</p>
         :type JobId: str
-        :param _Limit: 分页设置，表示每页显示多少条任务，默认为 20
+        :param _Limit: <p>分页设置，表示每页显示多少条任务，默认为 20</p>
         :type Limit: int
-        :param _Offset: 分页偏移量
+        :param _Offset: <p>分页偏移量</p>
         :type Offset: int
-        :param _CompareTaskId: 校验任务 ID
+        :param _CompareTaskId: <p>校验任务 ID</p>
         :type CompareTaskId: str
-        :param _Status: 任务状态过滤，可能的值：created - 创建完成；readyRun - 等待运行；running - 运行中；success - 成功；stopping - 结束中；failed - 失败；canceled - 已终止
+        :param _Status: <p>任务状态过滤，可能的值：created - 创建完成；readyRun - 等待运行；running - 运行中；success - 成功；stopping - 结束中；failed - 失败；canceled - 已终止</p>
         :type Status: list of str
         """
         self._JobId = None
@@ -9799,7 +9791,7 @@ class DescribeSyncCompareTasksRequest(AbstractModel):
 
     @property
     def JobId(self):
-        r"""任务 Id
+        r"""<p>任务 Id</p>
         :rtype: str
         """
         return self._JobId
@@ -9810,7 +9802,7 @@ class DescribeSyncCompareTasksRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""分页设置，表示每页显示多少条任务，默认为 20
+        r"""<p>分页设置，表示每页显示多少条任务，默认为 20</p>
         :rtype: int
         """
         return self._Limit
@@ -9821,7 +9813,7 @@ class DescribeSyncCompareTasksRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""分页偏移量
+        r"""<p>分页偏移量</p>
         :rtype: int
         """
         return self._Offset
@@ -9832,7 +9824,7 @@ class DescribeSyncCompareTasksRequest(AbstractModel):
 
     @property
     def CompareTaskId(self):
-        r"""校验任务 ID
+        r"""<p>校验任务 ID</p>
         :rtype: str
         """
         return self._CompareTaskId
@@ -9843,7 +9835,7 @@ class DescribeSyncCompareTasksRequest(AbstractModel):
 
     @property
     def Status(self):
-        r"""任务状态过滤，可能的值：created - 创建完成；readyRun - 等待运行；running - 运行中；success - 成功；stopping - 结束中；failed - 失败；canceled - 已终止
+        r"""<p>任务状态过滤，可能的值：created - 创建完成；readyRun - 等待运行；running - 运行中；success - 成功；stopping - 结束中；failed - 失败；canceled - 已终止</p>
         :rtype: list of str
         """
         return self._Status
@@ -9876,10 +9868,10 @@ class DescribeSyncCompareTasksResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TotalCount: 数量
+        :param _TotalCount: <p>数量</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCount: int
-        :param _Items: 一致性校验任务列表
+        :param _Items: <p>一致性校验任务列表</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Items: list of CompareTaskItem
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -9891,7 +9883,7 @@ class DescribeSyncCompareTasksResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        r"""数量
+        r"""<p>数量</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -9903,7 +9895,7 @@ class DescribeSyncCompareTasksResponse(AbstractModel):
 
     @property
     def Items(self):
-        r"""一致性校验任务列表
+        r"""<p>一致性校验任务列表</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of CompareTaskItem
         """
@@ -10102,34 +10094,33 @@ class DescribeSyncJobsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _JobId: 同步任务id，如sync-werwfs23，可通过[DescribeSyncJobs](https://cloud.tencent.com/document/product/571/82103)接口获取。
-
+        :param _JobId: <p>同步任务id，如sync-werwfs23，可通过<a href="https://cloud.tencent.com/document/product/571/82103">DescribeSyncJobs</a>接口获取。</p>
         :type JobId: str
-        :param _JobIds: 同步任务id列表，如["sync-n3gh7md9"]
+        :param _JobIds: <p>同步任务id列表，如[&quot;sync-n3gh7md9&quot;]</p>
         :type JobIds: list of str
-        :param _JobName: 同步任务名
+        :param _JobName: <p>同步任务名</p>
         :type JobName: str
-        :param _Order: 排序字段，目前仅支持CreateTime字段排序
+        :param _Order: <p>排序字段，目前仅支持CreateTime字段排序</p>
         :type Order: str
-        :param _OrderSeq: 排序方式，升序为ASC，降序为DESC，默认为CreateTime降序
+        :param _OrderSeq: <p>排序方式，升序为ASC，降序为DESC，默认为CreateTime降序</p>
         :type OrderSeq: str
-        :param _Offset: 偏移量，默认为0
+        :param _Offset: <p>偏移量，默认为0</p>
         :type Offset: int
-        :param _Limit: 返回同步任务实例数量，默认20，有效区间[1,100]
+        :param _Limit: <p>返回同步任务实例数量，默认20，有效区间[1,100]</p>
         :type Limit: int
-        :param _Status: 状态集合，如Initialized(初始化),CheckPass(校验通过),Running(运行中),ResumableErr(恢复中),Stopped(已结束)
+        :param _Status: <p>状态集合，如Initialized(初始化),CheckPass(校验通过),Running(运行中),ResumableErr(恢复中),Stopped(已结束)</p>
         :type Status: list of str
-        :param _RunMode: 运行模式，如Immediate:立即运行，Timed:定时运行
+        :param _RunMode: <p>运行模式，如Immediate:立即运行，Timed:定时运行</p>
         :type RunMode: str
-        :param _JobType: 任务类型，如mysql2mysql：msyql同步到mysql;可取值有mysql2mysql、mysql2kafka、tdsqlmysql2kafka、tdsqlmysql2tdsqlmysql、tdsqlmysql2mysql、mysql2tdsqlmysql、mysql2mariadb、mariadb2mariadb、mariadb2kafka、cynosdbmysql2kafka、cynosdbmysql2cynosdbmysql、cynosdbmysql2mysql、mysql2cynosdbmysql、mariadb2tdsqlmysql、tdsqlmysql2cynosdbmysql、cynosdbmysql2tdsqlmysql、tdstore2mysql、tdstore2percona、tdstore2mariadb、tdstore2cynosdbmysql、cynosdbmysql2mariadb、mariadb2cynosdbmysql、tdsqlmysql2mariadb、mariadb2mysql、percona2mariadb、postgresql2postgresql、tdstore2tdsqlmysql、mongodb2mongodb
+        :param _JobType: <p>任务类型，如mysql2mysql：msyql同步到mysql;可取值有mysql2mysql、mysql2kafka、tdsqlmysql2kafka、tdsqlmysql2tdsqlmysql、tdsqlmysql2mysql、mysql2tdsqlmysql、mysql2mariadb、mariadb2mariadb、mariadb2kafka、cynosdbmysql2kafka、cynosdbmysql2cynosdbmysql、cynosdbmysql2mysql、mysql2cynosdbmysql、mariadb2tdsqlmysql、tdsqlmysql2cynosdbmysql、cynosdbmysql2tdsqlmysql、tdstore2mysql、tdstore2percona、tdstore2mariadb、tdstore2cynosdbmysql、cynosdbmysql2mariadb、mariadb2cynosdbmysql、tdsqlmysql2mariadb、mariadb2mysql、percona2mariadb、postgresql2postgresql、tdstore2tdsqlmysql、mongodb2mongodb</p>
         :type JobType: str
-        :param _PayMode: 付费类型，PrePay：预付费，PostPay：后付费
+        :param _PayMode: <p>付费类型，PrePay：预付费，PostPay：后付费</p>
         :type PayMode: str
-        :param _TagFilters: tag
+        :param _TagFilters: <p>tag</p>
         :type TagFilters: list of TagFilter
-        :param _SrcInfoPattern: 源端数据库连接信息，可以输入实例ID或者IP等
+        :param _SrcInfoPattern: <p>源端数据库连接信息，可以输入实例ID或者IP等</p>
         :type SrcInfoPattern: str
-        :param _DstInfoPattern: 目标端数据库连接信息，可以输入实例ID或者IP等
+        :param _DstInfoPattern: <p>目标端数据库连接信息，可以输入实例ID或者IP等</p>
         :type DstInfoPattern: str
         """
         self._JobId = None
@@ -10149,8 +10140,7 @@ class DescribeSyncJobsRequest(AbstractModel):
 
     @property
     def JobId(self):
-        r"""同步任务id，如sync-werwfs23，可通过[DescribeSyncJobs](https://cloud.tencent.com/document/product/571/82103)接口获取。
-
+        r"""<p>同步任务id，如sync-werwfs23，可通过<a href="https://cloud.tencent.com/document/product/571/82103">DescribeSyncJobs</a>接口获取。</p>
         :rtype: str
         """
         return self._JobId
@@ -10161,7 +10151,7 @@ class DescribeSyncJobsRequest(AbstractModel):
 
     @property
     def JobIds(self):
-        r"""同步任务id列表，如["sync-n3gh7md9"]
+        r"""<p>同步任务id列表，如[&quot;sync-n3gh7md9&quot;]</p>
         :rtype: list of str
         """
         return self._JobIds
@@ -10172,7 +10162,7 @@ class DescribeSyncJobsRequest(AbstractModel):
 
     @property
     def JobName(self):
-        r"""同步任务名
+        r"""<p>同步任务名</p>
         :rtype: str
         """
         return self._JobName
@@ -10183,7 +10173,7 @@ class DescribeSyncJobsRequest(AbstractModel):
 
     @property
     def Order(self):
-        r"""排序字段，目前仅支持CreateTime字段排序
+        r"""<p>排序字段，目前仅支持CreateTime字段排序</p>
         :rtype: str
         """
         return self._Order
@@ -10194,7 +10184,7 @@ class DescribeSyncJobsRequest(AbstractModel):
 
     @property
     def OrderSeq(self):
-        r"""排序方式，升序为ASC，降序为DESC，默认为CreateTime降序
+        r"""<p>排序方式，升序为ASC，降序为DESC，默认为CreateTime降序</p>
         :rtype: str
         """
         return self._OrderSeq
@@ -10205,7 +10195,7 @@ class DescribeSyncJobsRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""偏移量，默认为0
+        r"""<p>偏移量，默认为0</p>
         :rtype: int
         """
         return self._Offset
@@ -10216,7 +10206,7 @@ class DescribeSyncJobsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""返回同步任务实例数量，默认20，有效区间[1,100]
+        r"""<p>返回同步任务实例数量，默认20，有效区间[1,100]</p>
         :rtype: int
         """
         return self._Limit
@@ -10227,7 +10217,7 @@ class DescribeSyncJobsRequest(AbstractModel):
 
     @property
     def Status(self):
-        r"""状态集合，如Initialized(初始化),CheckPass(校验通过),Running(运行中),ResumableErr(恢复中),Stopped(已结束)
+        r"""<p>状态集合，如Initialized(初始化),CheckPass(校验通过),Running(运行中),ResumableErr(恢复中),Stopped(已结束)</p>
         :rtype: list of str
         """
         return self._Status
@@ -10238,7 +10228,7 @@ class DescribeSyncJobsRequest(AbstractModel):
 
     @property
     def RunMode(self):
-        r"""运行模式，如Immediate:立即运行，Timed:定时运行
+        r"""<p>运行模式，如Immediate:立即运行，Timed:定时运行</p>
         :rtype: str
         """
         return self._RunMode
@@ -10249,7 +10239,7 @@ class DescribeSyncJobsRequest(AbstractModel):
 
     @property
     def JobType(self):
-        r"""任务类型，如mysql2mysql：msyql同步到mysql;可取值有mysql2mysql、mysql2kafka、tdsqlmysql2kafka、tdsqlmysql2tdsqlmysql、tdsqlmysql2mysql、mysql2tdsqlmysql、mysql2mariadb、mariadb2mariadb、mariadb2kafka、cynosdbmysql2kafka、cynosdbmysql2cynosdbmysql、cynosdbmysql2mysql、mysql2cynosdbmysql、mariadb2tdsqlmysql、tdsqlmysql2cynosdbmysql、cynosdbmysql2tdsqlmysql、tdstore2mysql、tdstore2percona、tdstore2mariadb、tdstore2cynosdbmysql、cynosdbmysql2mariadb、mariadb2cynosdbmysql、tdsqlmysql2mariadb、mariadb2mysql、percona2mariadb、postgresql2postgresql、tdstore2tdsqlmysql、mongodb2mongodb
+        r"""<p>任务类型，如mysql2mysql：msyql同步到mysql;可取值有mysql2mysql、mysql2kafka、tdsqlmysql2kafka、tdsqlmysql2tdsqlmysql、tdsqlmysql2mysql、mysql2tdsqlmysql、mysql2mariadb、mariadb2mariadb、mariadb2kafka、cynosdbmysql2kafka、cynosdbmysql2cynosdbmysql、cynosdbmysql2mysql、mysql2cynosdbmysql、mariadb2tdsqlmysql、tdsqlmysql2cynosdbmysql、cynosdbmysql2tdsqlmysql、tdstore2mysql、tdstore2percona、tdstore2mariadb、tdstore2cynosdbmysql、cynosdbmysql2mariadb、mariadb2cynosdbmysql、tdsqlmysql2mariadb、mariadb2mysql、percona2mariadb、postgresql2postgresql、tdstore2tdsqlmysql、mongodb2mongodb</p>
         :rtype: str
         """
         return self._JobType
@@ -10260,7 +10250,7 @@ class DescribeSyncJobsRequest(AbstractModel):
 
     @property
     def PayMode(self):
-        r"""付费类型，PrePay：预付费，PostPay：后付费
+        r"""<p>付费类型，PrePay：预付费，PostPay：后付费</p>
         :rtype: str
         """
         return self._PayMode
@@ -10271,7 +10261,7 @@ class DescribeSyncJobsRequest(AbstractModel):
 
     @property
     def TagFilters(self):
-        r"""tag
+        r"""<p>tag</p>
         :rtype: list of TagFilter
         """
         return self._TagFilters
@@ -10282,7 +10272,7 @@ class DescribeSyncJobsRequest(AbstractModel):
 
     @property
     def SrcInfoPattern(self):
-        r"""源端数据库连接信息，可以输入实例ID或者IP等
+        r"""<p>源端数据库连接信息，可以输入实例ID或者IP等</p>
         :rtype: str
         """
         return self._SrcInfoPattern
@@ -10293,7 +10283,7 @@ class DescribeSyncJobsRequest(AbstractModel):
 
     @property
     def DstInfoPattern(self):
-        r"""目标端数据库连接信息，可以输入实例ID或者IP等
+        r"""<p>目标端数据库连接信息，可以输入实例ID或者IP等</p>
         :rtype: str
         """
         return self._DstInfoPattern
@@ -10340,9 +10330,9 @@ class DescribeSyncJobsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TotalCount: 任务数目
+        :param _TotalCount: <p>任务数目</p>
         :type TotalCount: int
-        :param _JobList: 任务详情数组
+        :param _JobList: <p>任务详情数组</p>
         :type JobList: list of SyncJobInfo
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -10353,7 +10343,7 @@ class DescribeSyncJobsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        r"""任务数目
+        r"""<p>任务数目</p>
         :rtype: int
         """
         return self._TotalCount
@@ -10364,7 +10354,7 @@ class DescribeSyncJobsResponse(AbstractModel):
 
     @property
     def JobList(self):
-        r"""任务详情数组
+        r"""<p>任务详情数组</p>
         :rtype: list of SyncJobInfo
         """
         return self._JobList
@@ -10740,33 +10730,33 @@ class DiffChunkItem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DBName: 数据库名
+        :param _DBName: <p>数据库名</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type DBName: str
-        :param _SchemaName: schema名
+        :param _SchemaName: <p>schema名</p>
         :type SchemaName: str
-        :param _TableName: 数据表名
+        :param _TableName: <p>数据表名</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TableName: str
-        :param _ChunkId: 分块号
+        :param _ChunkId: <p>分块号</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ChunkId: int
-        :param _Identifier: 数据标识符，比如主键信息等
+        :param _Identifier: <p>数据标识符，比如主键信息等</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Identifier: str
-        :param _DiffType: 不一致类型，可能的取值为：data - 两边数据不一致；srcLack - 源缺失；dstLack - 目标缺失
+        :param _DiffType: <p>不一致类型，可能的取值为：data - 两边数据不一致；srcLack - 源缺失；dstLack - 目标缺失</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type DiffType: str
-        :param _SchemaInfo: 表结构信息
+        :param _SchemaInfo: <p>表结构信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type SchemaInfo: list of str
-        :param _SrcItem: 源端数据
+        :param _SrcItem: <p>源端数据</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type SrcItem: list of str
-        :param _DstItem: 目标端数据
+        :param _DstItem: <p>目标端数据</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type DstItem: list of str
-        :param _FinishedAt: 完成时间
+        :param _FinishedAt: <p>完成时间。当 <code>DateTimeISOFormat=true</code> 时返回 RFC 3339 格式（如 <code>2026-04-23T20:21:35+08:00</code>），否则返回 <code>yyyy-mm-dd hh:mm:ss</code>（北京时间）</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type FinishedAt: str
         """
@@ -10783,7 +10773,7 @@ class DiffChunkItem(AbstractModel):
 
     @property
     def DBName(self):
-        r"""数据库名
+        r"""<p>数据库名</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -10795,7 +10785,7 @@ class DiffChunkItem(AbstractModel):
 
     @property
     def SchemaName(self):
-        r"""schema名
+        r"""<p>schema名</p>
         :rtype: str
         """
         return self._SchemaName
@@ -10806,7 +10796,7 @@ class DiffChunkItem(AbstractModel):
 
     @property
     def TableName(self):
-        r"""数据表名
+        r"""<p>数据表名</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -10818,7 +10808,7 @@ class DiffChunkItem(AbstractModel):
 
     @property
     def ChunkId(self):
-        r"""分块号
+        r"""<p>分块号</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -10830,7 +10820,7 @@ class DiffChunkItem(AbstractModel):
 
     @property
     def Identifier(self):
-        r"""数据标识符，比如主键信息等
+        r"""<p>数据标识符，比如主键信息等</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -10842,7 +10832,7 @@ class DiffChunkItem(AbstractModel):
 
     @property
     def DiffType(self):
-        r"""不一致类型，可能的取值为：data - 两边数据不一致；srcLack - 源缺失；dstLack - 目标缺失
+        r"""<p>不一致类型，可能的取值为：data - 两边数据不一致；srcLack - 源缺失；dstLack - 目标缺失</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -10854,7 +10844,7 @@ class DiffChunkItem(AbstractModel):
 
     @property
     def SchemaInfo(self):
-        r"""表结构信息
+        r"""<p>表结构信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -10866,7 +10856,7 @@ class DiffChunkItem(AbstractModel):
 
     @property
     def SrcItem(self):
-        r"""源端数据
+        r"""<p>源端数据</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -10878,7 +10868,7 @@ class DiffChunkItem(AbstractModel):
 
     @property
     def DstItem(self):
-        r"""目标端数据
+        r"""<p>目标端数据</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -10890,7 +10880,7 @@ class DiffChunkItem(AbstractModel):
 
     @property
     def FinishedAt(self):
-        r"""完成时间
+        r"""<p>完成时间。当 <code>DateTimeISOFormat=true</code> 时返回 RFC 3339 格式（如 <code>2026-04-23T20:21:35+08:00</code>），否则返回 <code>yyyy-mm-dd hh:mm:ss</code>（北京时间）</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -11400,27 +11390,27 @@ class DifferenceItem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Db: 数据库名
+        :param _Db: <p>数据库名</p>
         :type Db: str
-        :param _Schema: schema
+        :param _Schema: <p>schema</p>
         :type Schema: str
-        :param _Table: 表名
+        :param _Table: <p>表名</p>
         :type Table: str
-        :param _Chunk: 分块号
+        :param _Chunk: <p>分块号</p>
         :type Chunk: int
-        :param _SrcItem: 源库数值
+        :param _SrcItem: <p>源库数值</p>
         :type SrcItem: str
-        :param _DstItem: 目标库数值
+        :param _DstItem: <p>目标库数值</p>
         :type DstItem: str
-        :param _IndexName: 索引名称
+        :param _IndexName: <p>索引名称</p>
         :type IndexName: str
-        :param _LowerBoundary: 索引下边界
+        :param _LowerBoundary: <p>索引下边界</p>
         :type LowerBoundary: str
-        :param _UpperBoundary: 索引上边界
+        :param _UpperBoundary: <p>索引上边界</p>
         :type UpperBoundary: str
-        :param _CostTime: 对比消耗时间,单位为 ms
+        :param _CostTime: <p>对比消耗时间,单位为 ms</p>
         :type CostTime: float
-        :param _FinishedAt: 完成时间
+        :param _FinishedAt: <p>完成时间。当 <code>DateTimeISOFormat=true</code> 时返回 RFC 3339 格式（如 <code>2026-04-23T20:21:35+08:00</code>），否则返回 <code>yyyy-mm-dd hh:mm:ss</code>（北京时间）</p>
         :type FinishedAt: str
         """
         self._Db = None
@@ -11437,7 +11427,7 @@ class DifferenceItem(AbstractModel):
 
     @property
     def Db(self):
-        r"""数据库名
+        r"""<p>数据库名</p>
         :rtype: str
         """
         return self._Db
@@ -11448,7 +11438,7 @@ class DifferenceItem(AbstractModel):
 
     @property
     def Schema(self):
-        r"""schema
+        r"""<p>schema</p>
         :rtype: str
         """
         return self._Schema
@@ -11459,7 +11449,7 @@ class DifferenceItem(AbstractModel):
 
     @property
     def Table(self):
-        r"""表名
+        r"""<p>表名</p>
         :rtype: str
         """
         return self._Table
@@ -11470,7 +11460,7 @@ class DifferenceItem(AbstractModel):
 
     @property
     def Chunk(self):
-        r"""分块号
+        r"""<p>分块号</p>
         :rtype: int
         """
         return self._Chunk
@@ -11481,7 +11471,7 @@ class DifferenceItem(AbstractModel):
 
     @property
     def SrcItem(self):
-        r"""源库数值
+        r"""<p>源库数值</p>
         :rtype: str
         """
         return self._SrcItem
@@ -11492,7 +11482,7 @@ class DifferenceItem(AbstractModel):
 
     @property
     def DstItem(self):
-        r"""目标库数值
+        r"""<p>目标库数值</p>
         :rtype: str
         """
         return self._DstItem
@@ -11503,7 +11493,7 @@ class DifferenceItem(AbstractModel):
 
     @property
     def IndexName(self):
-        r"""索引名称
+        r"""<p>索引名称</p>
         :rtype: str
         """
         return self._IndexName
@@ -11514,7 +11504,7 @@ class DifferenceItem(AbstractModel):
 
     @property
     def LowerBoundary(self):
-        r"""索引下边界
+        r"""<p>索引下边界</p>
         :rtype: str
         """
         return self._LowerBoundary
@@ -11525,7 +11515,7 @@ class DifferenceItem(AbstractModel):
 
     @property
     def UpperBoundary(self):
-        r"""索引上边界
+        r"""<p>索引上边界</p>
         :rtype: str
         """
         return self._UpperBoundary
@@ -11536,7 +11526,7 @@ class DifferenceItem(AbstractModel):
 
     @property
     def CostTime(self):
-        r"""对比消耗时间,单位为 ms
+        r"""<p>对比消耗时间,单位为 ms</p>
         :rtype: float
         """
         return self._CostTime
@@ -11547,7 +11537,7 @@ class DifferenceItem(AbstractModel):
 
     @property
     def FinishedAt(self):
-        r"""完成时间
+        r"""<p>完成时间。当 <code>DateTimeISOFormat=true</code> 时返回 RFC 3339 格式（如 <code>2026-04-23T20:21:35+08:00</code>），否则返回 <code>yyyy-mm-dd hh:mm:ss</code>（北京时间）</p>
         :rtype: str
         """
         return self._FinishedAt
@@ -13412,43 +13402,43 @@ class JobItem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _JobId: 数据迁移任务ID
+        :param _JobId: <p>数据迁移任务ID</p>
         :type JobId: str
-        :param _JobName: 数据迁移任务名称
+        :param _JobName: <p>数据迁移任务名称</p>
         :type JobName: str
-        :param _CreateTime: 任务创建(提交)时间，格式为 yyyy-mm-dd hh:mm:ss
+        :param _CreateTime: <p>任务创建(提交)时间。当 <code>DateTimeISOFormat=true</code> 时返回 RFC 3339 格式（如 <code>2026-04-23T20:21:35+08:00</code>），否则返回 <code>yyyy-mm-dd hh:mm:ss</code>（北京时间）</p>
         :type CreateTime: str
-        :param _UpdateTime: 任务更新时间，格式为 yyyy-mm-dd hh:mm:ss
+        :param _UpdateTime: <p>任务更新时间。当 <code>DateTimeISOFormat=true</code> 时返回 RFC 3339 格式（如 <code>2026-04-23T20:21:35+08:00</code>），否则返回 <code>yyyy-mm-dd hh:mm:ss</code>（北京时间）</p>
         :type UpdateTime: str
-        :param _StartTime: 任务开始执行时间，格式为 yyyy-mm-dd hh:mm:ss
+        :param _StartTime: <p>任务开始执行时间。当 <code>DateTimeISOFormat=true</code> 时返回 RFC 3339 格式（如 <code>2026-04-23T20:21:35+08:00</code>），否则返回 <code>yyyy-mm-dd hh:mm:ss</code>（北京时间）</p>
         :type StartTime: str
-        :param _EndTime: 任务执行结束时间，格式为 yyyy-mm-dd hh:mm:ss
+        :param _EndTime: <p>任务执行结束时间。当 <code>DateTimeISOFormat=true</code> 时返回 RFC 3339 格式（如 <code>2026-04-23T20:21:35+08:00</code>），否则返回 <code>yyyy-mm-dd hh:mm:ss</code>（北京时间）</p>
         :type EndTime: str
-        :param _BriefMsg: 迁移任务错误信息
+        :param _BriefMsg: <p>迁移任务错误信息</p>
         :type BriefMsg: str
-        :param _Status: 任务状态，取值为：creating(创建中)、created(创建完成)、checking(校验中)、checkPass(校验通过)、checkNotPass(校验不通过)、readyRun(准备运行)、running(任务运行)、readyComplete(准备完成)、success(任务成功)、failed(任务失败)、stopping(终止中)、completing(完成中)、pausing(暂停中)、manualPaused(已暂停)、resumableErr(可重试错误)、resuming(重试中)、unknown(未知状态)、error(任务错误)、canceled(已取消)
+        :param _Status: <p>任务状态，取值为：creating(创建中)、created(创建完成)、checking(校验中)、checkPass(校验通过)、checkNotPass(校验不通过)、readyRun(准备运行)、running(任务运行)、readyComplete(准备完成)、success(任务成功)、failed(任务失败)、stopping(终止中)、completing(完成中)、pausing(暂停中)、manualPaused(已暂停)、resumableErr(可重试错误)、resuming(重试中)、unknown(未知状态)、error(任务错误)、canceled(已取消)</p>
         :type Status: str
-        :param _RunMode: 任务运行模式，值包括：immediate(立即运行)，timed(定时运行)
+        :param _RunMode: <p>任务运行模式，值包括：immediate(立即运行)，timed(定时运行)</p>
         :type RunMode: str
-        :param _ExpectRunTime: 期待启动时间，当RunMode取值为timed时，此值必填，形如：2022-07-11 16:20:49
+        :param _ExpectRunTime: <p>期待启动时间，当 <code>RunMode</code> 取值为 <code>timed</code> 时此值必填。当 <code>DateTimeISOFormat=true</code> 时返回 RFC 3339 格式（如 <code>2026-04-23T20:21:35+08:00</code>），否则返回 <code>yyyy-mm-dd hh:mm:ss</code>（北京时间）</p>
         :type ExpectRunTime: str
-        :param _Action: 任务操作信息
+        :param _Action: <p>任务操作信息</p>
         :type Action: :class:`tencentcloud.dts.v20211206.models.MigrateAction`
-        :param _StepInfo: 迁移执行过程信息
+        :param _StepInfo: <p>迁移执行过程信息</p>
         :type StepInfo: :class:`tencentcloud.dts.v20211206.models.MigrateDetailInfo`
-        :param _SrcInfo: 源实例信息
+        :param _SrcInfo: <p>源实例信息</p>
         :type SrcInfo: :class:`tencentcloud.dts.v20211206.models.DBEndpointInfo`
-        :param _DstInfo: 目标端信息
+        :param _DstInfo: <p>目标端信息</p>
         :type DstInfo: :class:`tencentcloud.dts.v20211206.models.DBEndpointInfo`
-        :param _CompareTask: 数据一致性校验结果
+        :param _CompareTask: <p>数据一致性校验结果</p>
         :type CompareTask: :class:`tencentcloud.dts.v20211206.models.CompareTaskInfo`
-        :param _TradeInfo: 计费状态信息
+        :param _TradeInfo: <p>计费状态信息</p>
         :type TradeInfo: :class:`tencentcloud.dts.v20211206.models.TradeInfo`
-        :param _Tags: 标签信息
+        :param _Tags: <p>标签信息</p>
         :type Tags: list of TagItem
-        :param _AutoRetryTimeRangeMinutes: 自动重试时间段信息
+        :param _AutoRetryTimeRangeMinutes: <p>自动重试时间段信息</p>
         :type AutoRetryTimeRangeMinutes: int
-        :param _DumperResumeCtrl: 全量导出可重入标识：enum::"yes"/"no"。yes表示当前任务可重入、no表示当前任务处于全量导出且不可重入阶段；如果在该值为no时重启任务导出流程不支持断点续传
+        :param _DumperResumeCtrl: <p>全量导出可重入标识：enum::&quot;yes&quot;/&quot;no&quot;。yes表示当前任务可重入、no表示当前任务处于全量导出且不可重入阶段；如果在该值为no时重启任务导出流程不支持断点续传</p>
         :type DumperResumeCtrl: str
         """
         self._JobId = None
@@ -13473,7 +13463,7 @@ class JobItem(AbstractModel):
 
     @property
     def JobId(self):
-        r"""数据迁移任务ID
+        r"""<p>数据迁移任务ID</p>
         :rtype: str
         """
         return self._JobId
@@ -13484,7 +13474,7 @@ class JobItem(AbstractModel):
 
     @property
     def JobName(self):
-        r"""数据迁移任务名称
+        r"""<p>数据迁移任务名称</p>
         :rtype: str
         """
         return self._JobName
@@ -13495,7 +13485,7 @@ class JobItem(AbstractModel):
 
     @property
     def CreateTime(self):
-        r"""任务创建(提交)时间，格式为 yyyy-mm-dd hh:mm:ss
+        r"""<p>任务创建(提交)时间。当 <code>DateTimeISOFormat=true</code> 时返回 RFC 3339 格式（如 <code>2026-04-23T20:21:35+08:00</code>），否则返回 <code>yyyy-mm-dd hh:mm:ss</code>（北京时间）</p>
         :rtype: str
         """
         return self._CreateTime
@@ -13506,7 +13496,7 @@ class JobItem(AbstractModel):
 
     @property
     def UpdateTime(self):
-        r"""任务更新时间，格式为 yyyy-mm-dd hh:mm:ss
+        r"""<p>任务更新时间。当 <code>DateTimeISOFormat=true</code> 时返回 RFC 3339 格式（如 <code>2026-04-23T20:21:35+08:00</code>），否则返回 <code>yyyy-mm-dd hh:mm:ss</code>（北京时间）</p>
         :rtype: str
         """
         return self._UpdateTime
@@ -13517,7 +13507,7 @@ class JobItem(AbstractModel):
 
     @property
     def StartTime(self):
-        r"""任务开始执行时间，格式为 yyyy-mm-dd hh:mm:ss
+        r"""<p>任务开始执行时间。当 <code>DateTimeISOFormat=true</code> 时返回 RFC 3339 格式（如 <code>2026-04-23T20:21:35+08:00</code>），否则返回 <code>yyyy-mm-dd hh:mm:ss</code>（北京时间）</p>
         :rtype: str
         """
         return self._StartTime
@@ -13528,7 +13518,7 @@ class JobItem(AbstractModel):
 
     @property
     def EndTime(self):
-        r"""任务执行结束时间，格式为 yyyy-mm-dd hh:mm:ss
+        r"""<p>任务执行结束时间。当 <code>DateTimeISOFormat=true</code> 时返回 RFC 3339 格式（如 <code>2026-04-23T20:21:35+08:00</code>），否则返回 <code>yyyy-mm-dd hh:mm:ss</code>（北京时间）</p>
         :rtype: str
         """
         return self._EndTime
@@ -13539,7 +13529,7 @@ class JobItem(AbstractModel):
 
     @property
     def BriefMsg(self):
-        r"""迁移任务错误信息
+        r"""<p>迁移任务错误信息</p>
         :rtype: str
         """
         return self._BriefMsg
@@ -13550,7 +13540,7 @@ class JobItem(AbstractModel):
 
     @property
     def Status(self):
-        r"""任务状态，取值为：creating(创建中)、created(创建完成)、checking(校验中)、checkPass(校验通过)、checkNotPass(校验不通过)、readyRun(准备运行)、running(任务运行)、readyComplete(准备完成)、success(任务成功)、failed(任务失败)、stopping(终止中)、completing(完成中)、pausing(暂停中)、manualPaused(已暂停)、resumableErr(可重试错误)、resuming(重试中)、unknown(未知状态)、error(任务错误)、canceled(已取消)
+        r"""<p>任务状态，取值为：creating(创建中)、created(创建完成)、checking(校验中)、checkPass(校验通过)、checkNotPass(校验不通过)、readyRun(准备运行)、running(任务运行)、readyComplete(准备完成)、success(任务成功)、failed(任务失败)、stopping(终止中)、completing(完成中)、pausing(暂停中)、manualPaused(已暂停)、resumableErr(可重试错误)、resuming(重试中)、unknown(未知状态)、error(任务错误)、canceled(已取消)</p>
         :rtype: str
         """
         return self._Status
@@ -13561,7 +13551,7 @@ class JobItem(AbstractModel):
 
     @property
     def RunMode(self):
-        r"""任务运行模式，值包括：immediate(立即运行)，timed(定时运行)
+        r"""<p>任务运行模式，值包括：immediate(立即运行)，timed(定时运行)</p>
         :rtype: str
         """
         return self._RunMode
@@ -13572,7 +13562,7 @@ class JobItem(AbstractModel):
 
     @property
     def ExpectRunTime(self):
-        r"""期待启动时间，当RunMode取值为timed时，此值必填，形如：2022-07-11 16:20:49
+        r"""<p>期待启动时间，当 <code>RunMode</code> 取值为 <code>timed</code> 时此值必填。当 <code>DateTimeISOFormat=true</code> 时返回 RFC 3339 格式（如 <code>2026-04-23T20:21:35+08:00</code>），否则返回 <code>yyyy-mm-dd hh:mm:ss</code>（北京时间）</p>
         :rtype: str
         """
         return self._ExpectRunTime
@@ -13583,7 +13573,7 @@ class JobItem(AbstractModel):
 
     @property
     def Action(self):
-        r"""任务操作信息
+        r"""<p>任务操作信息</p>
         :rtype: :class:`tencentcloud.dts.v20211206.models.MigrateAction`
         """
         return self._Action
@@ -13594,7 +13584,7 @@ class JobItem(AbstractModel):
 
     @property
     def StepInfo(self):
-        r"""迁移执行过程信息
+        r"""<p>迁移执行过程信息</p>
         :rtype: :class:`tencentcloud.dts.v20211206.models.MigrateDetailInfo`
         """
         return self._StepInfo
@@ -13605,7 +13595,7 @@ class JobItem(AbstractModel):
 
     @property
     def SrcInfo(self):
-        r"""源实例信息
+        r"""<p>源实例信息</p>
         :rtype: :class:`tencentcloud.dts.v20211206.models.DBEndpointInfo`
         """
         return self._SrcInfo
@@ -13616,7 +13606,7 @@ class JobItem(AbstractModel):
 
     @property
     def DstInfo(self):
-        r"""目标端信息
+        r"""<p>目标端信息</p>
         :rtype: :class:`tencentcloud.dts.v20211206.models.DBEndpointInfo`
         """
         return self._DstInfo
@@ -13627,7 +13617,7 @@ class JobItem(AbstractModel):
 
     @property
     def CompareTask(self):
-        r"""数据一致性校验结果
+        r"""<p>数据一致性校验结果</p>
         :rtype: :class:`tencentcloud.dts.v20211206.models.CompareTaskInfo`
         """
         return self._CompareTask
@@ -13638,7 +13628,7 @@ class JobItem(AbstractModel):
 
     @property
     def TradeInfo(self):
-        r"""计费状态信息
+        r"""<p>计费状态信息</p>
         :rtype: :class:`tencentcloud.dts.v20211206.models.TradeInfo`
         """
         return self._TradeInfo
@@ -13649,7 +13639,7 @@ class JobItem(AbstractModel):
 
     @property
     def Tags(self):
-        r"""标签信息
+        r"""<p>标签信息</p>
         :rtype: list of TagItem
         """
         return self._Tags
@@ -13660,7 +13650,7 @@ class JobItem(AbstractModel):
 
     @property
     def AutoRetryTimeRangeMinutes(self):
-        r"""自动重试时间段信息
+        r"""<p>自动重试时间段信息</p>
         :rtype: int
         """
         return self._AutoRetryTimeRangeMinutes
@@ -13671,7 +13661,7 @@ class JobItem(AbstractModel):
 
     @property
     def DumperResumeCtrl(self):
-        r"""全量导出可重入标识：enum::"yes"/"no"。yes表示当前任务可重入、no表示当前任务处于全量导出且不可重入阶段；如果在该值为no时重启任务导出流程不支持断点续传
+        r"""<p>全量导出可重入标识：enum::&quot;yes&quot;/&quot;no&quot;。yes表示当前任务可重入、no表示当前任务处于全量导出且不可重入阶段；如果在该值为no时重启任务导出流程不支持断点续传</p>
         :rtype: str
         """
         return self._DumperResumeCtrl
@@ -14168,7 +14158,7 @@ class MigrateOption(AbstractModel):
         :type IsOverrideRoot: bool
         :param _IsDstReadOnly: <p>是否在迁移时设置目标库只读(仅对mysql有效)，true(设置只读)、false(不设置只读，默认此值)</p>
         :type IsDstReadOnly: bool
-        :param _ExtraAttr: <p>其他附加信息，对于特定库可设置额外参数，Redis可定义如下的参数:<br>[&quot;DstWriteMode&quot;:normal,     目标库写入模式,可取值clearData(清空目标实例数据)、overwrite(以覆盖写的方式执行任务)、normal(要求目标端为空，否则校验不通过) ，不显示指定默认以覆盖写的方式执行任务    &quot;IsDstReadOnly&quot;:true,     是否在迁移时设置目标库只读,true(设置只读)、false(不设置只读)     &quot;ClientOutputBufferHardLimit&quot;:512,     从机缓冲区的硬性容量限制(MB)     &quot;ClientOutputBufferSoftLimit&quot;:512,     从机缓冲区的软性容量限制(MB)     &quot;ClientOutputBufferPersistTime&quot;:60, 从机缓冲区的软性限制持续时间(秒)     &quot;ReplBacklogSize&quot;:512,     环形缓冲区容量限制(MB)     &quot;ReplTimeout&quot;:120，        复制超时时间(秒)     &quot;IsExpireKey&quot;:&quot;true&quot;,过期key自动淘汰]</p>
+        :param _ExtraAttr: <p>其他附加信息，对于特定库可设置额外参数。<br>Redis可定义如下的参数:<br>[&quot;DstWriteMode&quot;:normal,     目标库写入模式,可取值clearData(清空目标实例数据)、overwrite(以覆盖写的方式执行任务)、normal(要求目标端为空，否则校验不通过) ，不显示指定默认以覆盖写的方式执行任务    &quot;IsDstReadOnly&quot;:true,     是否在迁移时设置目标库只读,true(设置只读)、false(不设置只读)     &quot;ClientOutputBufferHardLimit&quot;:512,     从机缓冲区的硬性容量限制(MB)     &quot;ClientOutputBufferSoftLimit&quot;:512,     从机缓冲区的软性容量限制(MB)     &quot;ClientOutputBufferPersistTime&quot;:60, 从机缓冲区的软性限制持续时间(秒)     &quot;ReplBacklogSize&quot;:512,     环形缓冲区容量限制(MB)     &quot;ReplTimeout&quot;:120，        复制超时时间(秒)     &quot;IsExpireKey&quot;:&quot;true&quot;,过期key自动淘汰]</p><p>Tidb可定义如下的参数<br>[&quot;tidb_increment_enable&quot;:true,     增量迁移开关,可取值true(开启增量,平台从下列ticdc_kafka_<em>字段提取用户自建Kafka配置)、false或不传(仅做结构+全量迁移,忽略所有ticdc_kafka_</em>字段) ,严格匹配字符串true(不区分大小写)才算开启    &quot;ticdc_kafka_broker&quot;:&quot;1.1.1.1:9092&quot;,     TiCDC输出的Kafka broker地址(用户自建Kafka,平台不负责创建/回收topic),增量开启时必填    &quot;ticdc_kafka_topic&quot;:&quot;tidb_topic&quot;,     TiCDC输出的Kafka topic,增量开启时必填(连通性测试场景可不填)    &quot;ticdc_kafka_data_format&quot;:&quot;open-protocol&quot;,     数据格式,可取值open-protocol(默认,不传时按此处理)、canal-json,其他值校验不通过    &quot;ticdc_kafka_security_protocol&quot;:&quot;PLAINTEXT&quot;,     传输层安全协议,可取值PLAINTEXT(默认,无认证,忽略下方认证字段)、SASL_PLAINTEXT、SASL_SSL,其他值校验不通过    &quot;ticdc_kafka_sasl_mechanism&quot;:&quot;SCRAM-SHA-256&quot;,     SASL认证机制,可取值SCRAM-SHA-256、SCRAM-SHA-512,当security_protocol为SASL_PLAINTEXT/SASL_SSL时必填    &quot;ticdc_kafka_username&quot;:&quot;user&quot;,     Kafka SASL用户名,当security_protocol为SASL_PLAINTEXT/SASL_SSL时必填    &quot;ticdc_kafka_password&quot;:&quot;password&quot;,     Kafka SASL密码,当security_protocol为SASL_PLAINTEXT/SASL_SSL时必填(不做trim,允许首尾空格)    &quot;ticdc_kafka_ssl_ca_base64_content&quot;:&quot;base64字符串&quot;,     base64编码的CA证书内容,仅security_protocol=SASL_SSL时使用,可选(为空表示信任系统根证书)]</p>
         :type ExtraAttr: list of KeyValuePairOption
         :param _MigrateWay: <p>pgsql迁移分类：logical(逻辑迁移)、physical(物理迁移)</p>
         :type MigrateWay: str
@@ -14254,7 +14244,7 @@ class MigrateOption(AbstractModel):
 
     @property
     def ExtraAttr(self):
-        r"""<p>其他附加信息，对于特定库可设置额外参数，Redis可定义如下的参数:<br>[&quot;DstWriteMode&quot;:normal,     目标库写入模式,可取值clearData(清空目标实例数据)、overwrite(以覆盖写的方式执行任务)、normal(要求目标端为空，否则校验不通过) ，不显示指定默认以覆盖写的方式执行任务    &quot;IsDstReadOnly&quot;:true,     是否在迁移时设置目标库只读,true(设置只读)、false(不设置只读)     &quot;ClientOutputBufferHardLimit&quot;:512,     从机缓冲区的硬性容量限制(MB)     &quot;ClientOutputBufferSoftLimit&quot;:512,     从机缓冲区的软性容量限制(MB)     &quot;ClientOutputBufferPersistTime&quot;:60, 从机缓冲区的软性限制持续时间(秒)     &quot;ReplBacklogSize&quot;:512,     环形缓冲区容量限制(MB)     &quot;ReplTimeout&quot;:120，        复制超时时间(秒)     &quot;IsExpireKey&quot;:&quot;true&quot;,过期key自动淘汰]</p>
+        r"""<p>其他附加信息，对于特定库可设置额外参数。<br>Redis可定义如下的参数:<br>[&quot;DstWriteMode&quot;:normal,     目标库写入模式,可取值clearData(清空目标实例数据)、overwrite(以覆盖写的方式执行任务)、normal(要求目标端为空，否则校验不通过) ，不显示指定默认以覆盖写的方式执行任务    &quot;IsDstReadOnly&quot;:true,     是否在迁移时设置目标库只读,true(设置只读)、false(不设置只读)     &quot;ClientOutputBufferHardLimit&quot;:512,     从机缓冲区的硬性容量限制(MB)     &quot;ClientOutputBufferSoftLimit&quot;:512,     从机缓冲区的软性容量限制(MB)     &quot;ClientOutputBufferPersistTime&quot;:60, 从机缓冲区的软性限制持续时间(秒)     &quot;ReplBacklogSize&quot;:512,     环形缓冲区容量限制(MB)     &quot;ReplTimeout&quot;:120，        复制超时时间(秒)     &quot;IsExpireKey&quot;:&quot;true&quot;,过期key自动淘汰]</p><p>Tidb可定义如下的参数<br>[&quot;tidb_increment_enable&quot;:true,     增量迁移开关,可取值true(开启增量,平台从下列ticdc_kafka_<em>字段提取用户自建Kafka配置)、false或不传(仅做结构+全量迁移,忽略所有ticdc_kafka_</em>字段) ,严格匹配字符串true(不区分大小写)才算开启    &quot;ticdc_kafka_broker&quot;:&quot;1.1.1.1:9092&quot;,     TiCDC输出的Kafka broker地址(用户自建Kafka,平台不负责创建/回收topic),增量开启时必填    &quot;ticdc_kafka_topic&quot;:&quot;tidb_topic&quot;,     TiCDC输出的Kafka topic,增量开启时必填(连通性测试场景可不填)    &quot;ticdc_kafka_data_format&quot;:&quot;open-protocol&quot;,     数据格式,可取值open-protocol(默认,不传时按此处理)、canal-json,其他值校验不通过    &quot;ticdc_kafka_security_protocol&quot;:&quot;PLAINTEXT&quot;,     传输层安全协议,可取值PLAINTEXT(默认,无认证,忽略下方认证字段)、SASL_PLAINTEXT、SASL_SSL,其他值校验不通过    &quot;ticdc_kafka_sasl_mechanism&quot;:&quot;SCRAM-SHA-256&quot;,     SASL认证机制,可取值SCRAM-SHA-256、SCRAM-SHA-512,当security_protocol为SASL_PLAINTEXT/SASL_SSL时必填    &quot;ticdc_kafka_username&quot;:&quot;user&quot;,     Kafka SASL用户名,当security_protocol为SASL_PLAINTEXT/SASL_SSL时必填    &quot;ticdc_kafka_password&quot;:&quot;password&quot;,     Kafka SASL密码,当security_protocol为SASL_PLAINTEXT/SASL_SSL时必填(不做trim,允许首尾空格)    &quot;ticdc_kafka_ssl_ca_base64_content&quot;:&quot;base64字符串&quot;,     base64编码的CA证书内容,仅security_protocol=SASL_SSL时使用,可选(为空表示信任系统根证书)]</p>
         :rtype: list of KeyValuePairOption
         """
         return self._ExtraAttr
@@ -15260,7 +15250,7 @@ class ModifyMigrationJobRequest(AbstractModel):
         :type DstInfo: :class:`tencentcloud.dts.v20211206.models.DBEndpointInfo`
         :param _JobName: <p>迁移任务名称，最大长度128</p>
         :type JobName: str
-        :param _ExpectRunTime: <p>期待启动时间，当RunMode取值为timed时，此值必填，形如：&quot;2006-01-02 15:04:05&quot;</p>
+        :param _ExpectRunTime: <p>期待启动时间，当RunMode取值为timed时，此值必填。</p><p>参数格式：当 <code>DateTimeISOFormat=true</code> 时按 RFC 3339 传入（如 <code>2026-04-23T20:21:35+08:00</code>），否则按 <code>yyyy-mm-dd hh:mm:ss</code>（北京时间）传入</p>
         :type ExpectRunTime: str
         :param _Tags: <p>标签信息</p>
         :type Tags: list of TagItem
@@ -15345,7 +15335,7 @@ class ModifyMigrationJobRequest(AbstractModel):
 
     @property
     def ExpectRunTime(self):
-        r"""<p>期待启动时间，当RunMode取值为timed时，此值必填，形如：&quot;2006-01-02 15:04:05&quot;</p>
+        r"""<p>期待启动时间，当RunMode取值为timed时，此值必填。</p><p>参数格式：当 <code>DateTimeISOFormat=true</code> 时按 RFC 3339 传入（如 <code>2026-04-23T20:21:35+08:00</code>），否则按 <code>yyyy-mm-dd hh:mm:ss</code>（北京时间）传入</p>
         :rtype: str
         """
         return self._ExpectRunTime
@@ -16094,17 +16084,17 @@ class ModifySyncRateLimitRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _JobId: 同步任务ID，可通过[DescribeSyncJobs](https://cloud.tencent.com/document/product/571/82103)接口获取。
+        :param _JobId: <p>同步任务ID，可通过<a href="https://cloud.tencent.com/document/product/571/82103">DescribeSyncJobs</a>接口获取。</p>
         :type JobId: str
-        :param _DumpThread: 同步任务全量导出线程数、有效值为 1-16
+        :param _DumpThread: <p>同步任务全量导出线程数、有效值为 1-16</p>
         :type DumpThread: int
-        :param _DumpRps: 同步任务全量导出的 Rps 限制、需要大于 0;对于mongodb最大值为20000，其他数据库最大值为50000000
+        :param _DumpRps: <p>同步任务全量导出的 Rps 限制、需要大于 0;对于mongodb最大值为20000，其他数据库最大值为50000000</p>
         :type DumpRps: int
-        :param _LoadThread: 同步任务全量导入线程数、有效值为 1-16
+        :param _LoadThread: <p>同步任务全量导入线程数、有效值为 1-16</p>
         :type LoadThread: int
-        :param _SinkerThread: 同步任务增量导入线程数、有效值为 1-128
+        :param _SinkerThread: <p>同步任务增量导入线程数、有效值为 1-128</p>
         :type SinkerThread: int
-        :param _LoadRps: 同步任务全量导入的Rps
+        :param _LoadRps: <p>同步任务全量导入的Rps</p>
         :type LoadRps: int
         """
         self._JobId = None
@@ -16116,7 +16106,7 @@ class ModifySyncRateLimitRequest(AbstractModel):
 
     @property
     def JobId(self):
-        r"""同步任务ID，可通过[DescribeSyncJobs](https://cloud.tencent.com/document/product/571/82103)接口获取。
+        r"""<p>同步任务ID，可通过<a href="https://cloud.tencent.com/document/product/571/82103">DescribeSyncJobs</a>接口获取。</p>
         :rtype: str
         """
         return self._JobId
@@ -16127,7 +16117,7 @@ class ModifySyncRateLimitRequest(AbstractModel):
 
     @property
     def DumpThread(self):
-        r"""同步任务全量导出线程数、有效值为 1-16
+        r"""<p>同步任务全量导出线程数、有效值为 1-16</p>
         :rtype: int
         """
         return self._DumpThread
@@ -16138,7 +16128,7 @@ class ModifySyncRateLimitRequest(AbstractModel):
 
     @property
     def DumpRps(self):
-        r"""同步任务全量导出的 Rps 限制、需要大于 0;对于mongodb最大值为20000，其他数据库最大值为50000000
+        r"""<p>同步任务全量导出的 Rps 限制、需要大于 0;对于mongodb最大值为20000，其他数据库最大值为50000000</p>
         :rtype: int
         """
         return self._DumpRps
@@ -16149,7 +16139,7 @@ class ModifySyncRateLimitRequest(AbstractModel):
 
     @property
     def LoadThread(self):
-        r"""同步任务全量导入线程数、有效值为 1-16
+        r"""<p>同步任务全量导入线程数、有效值为 1-16</p>
         :rtype: int
         """
         return self._LoadThread
@@ -16160,7 +16150,7 @@ class ModifySyncRateLimitRequest(AbstractModel):
 
     @property
     def SinkerThread(self):
-        r"""同步任务增量导入线程数、有效值为 1-128
+        r"""<p>同步任务增量导入线程数、有效值为 1-128</p>
         :rtype: int
         """
         return self._SinkerThread
@@ -16171,7 +16161,7 @@ class ModifySyncRateLimitRequest(AbstractModel):
 
     @property
     def LoadRps(self):
-        r"""同步任务全量导入的Rps
+        r"""<p>同步任务全量导入的Rps</p>
         :rtype: int
         """
         return self._LoadRps
@@ -16424,9 +16414,9 @@ class OffsetTimeMap(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _PartitionNo: kafka分区编号
+        :param _PartitionNo: <p>kafka分区编号</p>
         :type PartitionNo: int
-        :param _Offset: kafka offset
+        :param _Offset: <p>kafka offset</p>
         :type Offset: int
         """
         self._PartitionNo = None
@@ -16434,7 +16424,7 @@ class OffsetTimeMap(AbstractModel):
 
     @property
     def PartitionNo(self):
-        r"""kafka分区编号
+        r"""<p>kafka分区编号</p>
         :rtype: int
         """
         return self._PartitionNo
@@ -16445,7 +16435,7 @@ class OffsetTimeMap(AbstractModel):
 
     @property
     def Offset(self):
-        r"""kafka offset
+        r"""<p>kafka offset</p>
         :rtype: int
         """
         return self._Offset
@@ -17741,17 +17731,17 @@ class ResetConsumerGroupOffsetRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SubscribeId: 订阅实例id，可通过[DescribeSyncJobs](https://cloud.tencent.com/document/product/571/82103)接口获取。
+        :param _SubscribeId: <p>订阅实例id，可通过<a href="https://cloud.tencent.com/document/product/571/82103">DescribeSyncJobs</a>接口获取。</p>
         :type SubscribeId: str
-        :param _TopicName: 订阅的kafka topic，可通过[DescribeSyncJobs](https://cloud.tencent.com/document/product/571/82103)接口获取。
+        :param _TopicName: <p>订阅的kafka topic，可通过<a href="https://cloud.tencent.com/document/product/571/82103">DescribeSyncJobs</a>接口获取。</p>
         :type TopicName: str
-        :param _ConsumerGroupName: 消费组名称。实际的消费组全称形如：consumer-grp-#{SubscribeId}-#{ConsumerGroupName}。可通过[DescribeConsumerGroups](https://cloud.tencent.com/document/api/571/102947)接口获取。
+        :param _ConsumerGroupName: <p>消费组名称。实际的消费组全称形如：consumer-grp-#{SubscribeId}-#{ConsumerGroupName}。可通过<a href="https://cloud.tencent.com/document/api/571/102947">DescribeConsumerGroups</a>接口获取。</p>
         :type ConsumerGroupName: str
-        :param _PartitionNos: 需要修改offset的分区编号，可通过[DescribeOffsetByTime](https://cloud.tencent.com/document/api/571/102946)接口获取。
+        :param _PartitionNos: <p>需要修改offset的分区编号，可通过<a href="https://cloud.tencent.com/document/api/571/102946">DescribeOffsetByTime</a>接口获取。</p>
         :type PartitionNos: list of int
-        :param _ResetMode: 重置方式。枚举值为 earliest-从最开始位置开始消费；latest-从最新位置开始消费；datetime-从指定时间前最近的checkpoint开始消费
+        :param _ResetMode: <p>重置方式。枚举值为 earliest-从最开始位置开始消费；latest-从最新位置开始消费；datetime-从指定时间前最近的checkpoint开始消费</p>
         :type ResetMode: str
-        :param _ResetDatetime: 当 ResetMode 为 datetime 时，该项需要填，格式为：Y-m-d h:m:s。如果不填，默认用0时间，效果与earliest相同。
+        :param _ResetDatetime: <p>当 <code>ResetMode</code> 为 <code>datetime</code> 时该项需要填。当 <code>DateTimeISOFormat=true</code> 时按 RFC 3339 传入（如 <code>2026-04-23T20:21:35+08:00</code>），否则按 <code>Y-m-d h:m:s</code>（北京时间）传入。如果不填，默认用 0 时间，效果与 <code>earliest</code> 相同。 </p><p>参数格式：2026-04-23T20:21:35+08:00</p>
         :type ResetDatetime: str
         """
         self._SubscribeId = None
@@ -17763,7 +17753,7 @@ class ResetConsumerGroupOffsetRequest(AbstractModel):
 
     @property
     def SubscribeId(self):
-        r"""订阅实例id，可通过[DescribeSyncJobs](https://cloud.tencent.com/document/product/571/82103)接口获取。
+        r"""<p>订阅实例id，可通过<a href="https://cloud.tencent.com/document/product/571/82103">DescribeSyncJobs</a>接口获取。</p>
         :rtype: str
         """
         return self._SubscribeId
@@ -17774,7 +17764,7 @@ class ResetConsumerGroupOffsetRequest(AbstractModel):
 
     @property
     def TopicName(self):
-        r"""订阅的kafka topic，可通过[DescribeSyncJobs](https://cloud.tencent.com/document/product/571/82103)接口获取。
+        r"""<p>订阅的kafka topic，可通过<a href="https://cloud.tencent.com/document/product/571/82103">DescribeSyncJobs</a>接口获取。</p>
         :rtype: str
         """
         return self._TopicName
@@ -17785,7 +17775,7 @@ class ResetConsumerGroupOffsetRequest(AbstractModel):
 
     @property
     def ConsumerGroupName(self):
-        r"""消费组名称。实际的消费组全称形如：consumer-grp-#{SubscribeId}-#{ConsumerGroupName}。可通过[DescribeConsumerGroups](https://cloud.tencent.com/document/api/571/102947)接口获取。
+        r"""<p>消费组名称。实际的消费组全称形如：consumer-grp-#{SubscribeId}-#{ConsumerGroupName}。可通过<a href="https://cloud.tencent.com/document/api/571/102947">DescribeConsumerGroups</a>接口获取。</p>
         :rtype: str
         """
         return self._ConsumerGroupName
@@ -17796,7 +17786,7 @@ class ResetConsumerGroupOffsetRequest(AbstractModel):
 
     @property
     def PartitionNos(self):
-        r"""需要修改offset的分区编号，可通过[DescribeOffsetByTime](https://cloud.tencent.com/document/api/571/102946)接口获取。
+        r"""<p>需要修改offset的分区编号，可通过<a href="https://cloud.tencent.com/document/api/571/102946">DescribeOffsetByTime</a>接口获取。</p>
         :rtype: list of int
         """
         return self._PartitionNos
@@ -17807,7 +17797,7 @@ class ResetConsumerGroupOffsetRequest(AbstractModel):
 
     @property
     def ResetMode(self):
-        r"""重置方式。枚举值为 earliest-从最开始位置开始消费；latest-从最新位置开始消费；datetime-从指定时间前最近的checkpoint开始消费
+        r"""<p>重置方式。枚举值为 earliest-从最开始位置开始消费；latest-从最新位置开始消费；datetime-从指定时间前最近的checkpoint开始消费</p>
         :rtype: str
         """
         return self._ResetMode
@@ -17818,7 +17808,7 @@ class ResetConsumerGroupOffsetRequest(AbstractModel):
 
     @property
     def ResetDatetime(self):
-        r"""当 ResetMode 为 datetime 时，该项需要填，格式为：Y-m-d h:m:s。如果不填，默认用0时间，效果与earliest相同。
+        r"""<p>当 <code>ResetMode</code> 为 <code>datetime</code> 时该项需要填。当 <code>DateTimeISOFormat=true</code> 时按 RFC 3339 传入（如 <code>2026-04-23T20:21:35+08:00</code>），否则按 <code>Y-m-d h:m:s</code>（北京时间）传入。如果不填，默认用 0 时间，效果与 <code>earliest</code> 相同。 </p><p>参数格式：2026-04-23T20:21:35+08:00</p>
         :rtype: str
         """
         return self._ResetDatetime
@@ -18236,16 +18226,14 @@ class ResumeSyncJobRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _JobId: 同步任务id，可通过[DescribeSyncJobs](https://cloud.tencent.com/document/product/571/82103)接口获取。
-
+        :param _JobId: <p>同步任务id，可通过<a href="https://cloud.tencent.com/document/product/571/82103">DescribeSyncJobs</a>接口获取。</p>
         :type JobId: str
         """
         self._JobId = None
 
     @property
     def JobId(self):
-        r"""同步任务id，可通过[DescribeSyncJobs](https://cloud.tencent.com/document/product/571/82103)接口获取。
-
+        r"""<p>同步任务id，可通过<a href="https://cloud.tencent.com/document/product/571/82103">DescribeSyncJobs</a>接口获取。</p>
         :rtype: str
         """
         return self._JobId
@@ -19470,9 +19458,9 @@ class StepInfo(AbstractModel):
         :type StepId: str
         :param _Status: <p>当前步骤状态,可能返回有 notStarted(未开始)、running(校验中)、failed(校验任务失败)、finished(完成)、skipped(跳过)、paused(暂停)</p>
         :type Status: str
-        :param _StartTime: <p>步骤开始时间，可能为空</p>
+        :param _StartTime: <p>步骤开始时间。当 <code>DateTimeISOFormat=true</code> 时返回 RFC 3339 格式（如 <code>2026-04-23T20:21:35+08:00</code>），否则返回 <code>yyyy-mm-dd hh:mm:ss</code>（北京时间）</p>
         :type StartTime: str
-        :param _FinishTime: <p>完成时间</p>
+        :param _FinishTime: <p>完成时间。当 <code>DateTimeISOFormat=true</code> 时返回 RFC 3339 格式（如 <code>2026-04-23T20:21:35+08:00</code>），否则返回 <code>yyyy-mm-dd hh:mm:ss</code>（北京时间）</p>
         :type FinishTime: str
         :param _Errors: <p>错误信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
@@ -19539,7 +19527,7 @@ class StepInfo(AbstractModel):
 
     @property
     def StartTime(self):
-        r"""<p>步骤开始时间，可能为空</p>
+        r"""<p>步骤开始时间。当 <code>DateTimeISOFormat=true</code> 时返回 RFC 3339 格式（如 <code>2026-04-23T20:21:35+08:00</code>），否则返回 <code>yyyy-mm-dd hh:mm:ss</code>（北京时间）</p>
         :rtype: str
         """
         return self._StartTime
@@ -19550,7 +19538,7 @@ class StepInfo(AbstractModel):
 
     @property
     def FinishTime(self):
-        r"""<p>完成时间</p>
+        r"""<p>完成时间。当 <code>DateTimeISOFormat=true</code> 时返回 RFC 3339 格式（如 <code>2026-04-23T20:21:35+08:00</code>），否则返回 <code>yyyy-mm-dd hh:mm:ss</code>（北京时间）</p>
         :rtype: str
         """
         return self._FinishTime
@@ -21101,78 +21089,78 @@ class SyncJobInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _JobId: 同步任务id，如：sync-btso140
+        :param _JobId: <p>同步任务id，如：sync-btso140</p>
         :type JobId: str
-        :param _JobName: 同步任务名
+        :param _JobName: <p>同步任务名</p>
         :type JobName: str
-        :param _PayMode: 付款方式，PostPay(按量付费)、PrePay(包年包月)
+        :param _PayMode: <p>付款方式，PostPay(按量付费)、PrePay(包年包月)</p>
         :type PayMode: str
-        :param _RunMode: 运行模式，Immediate(表示立即运行，默认为此项值)、Timed(表示定时运行)
+        :param _RunMode: <p>运行模式，Immediate(表示立即运行，默认为此项值)、Timed(表示定时运行)</p>
         :type RunMode: str
-        :param _ExpectRunTime: 期待运行时间，格式为 yyyy-mm-dd hh:mm:ss
+        :param _ExpectRunTime: <p>期待运行时间。当 <code>DateTimeISOFormat=true</code> 时返回 RFC 3339 格式（如 <code>2026-04-23T20:21:35+08:00</code>），否则返回 <code>yyyy-mm-dd hh:mm:ss</code>（北京时间）</p>
         :type ExpectRunTime: str
-        :param _AllActions: 支持的所有操作
+        :param _AllActions: <p>支持的所有操作</p>
         :type AllActions: list of str
-        :param _Actions: 当前状态能进行的操作
+        :param _Actions: <p>当前状态能进行的操作</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Actions: list of str
-        :param _Options: 同步选项
+        :param _Options: <p>同步选项</p>
         :type Options: :class:`tencentcloud.dts.v20211206.models.Options`
-        :param _Objects: 同步库表对象
+        :param _Objects: <p>同步库表对象</p>
         :type Objects: :class:`tencentcloud.dts.v20211206.models.Objects`
-        :param _Specification: 任务规格
+        :param _Specification: <p>任务规格</p>
         :type Specification: str
-        :param _ExpireTime: 过期时间，格式为 yyyy-mm-dd hh:mm:ss
+        :param _ExpireTime: <p>过期时间，格式为 yyyy-mm-dd hh:mm:ss</p>
         :type ExpireTime: str
-        :param _SrcRegion: 源端地域，如：ap-guangzhou等
+        :param _SrcRegion: <p>源端地域，如：ap-guangzhou等</p>
         :type SrcRegion: str
-        :param _SrcDatabaseType: 源端数据库类型，mysql,tdsqlmysql,mariadb,cynosdbmysql(表示tdsql-c实例),tdstore,percona,postgresql,mongodb等。
+        :param _SrcDatabaseType: <p>源端数据库类型，mysql,tdsqlmysql,mariadb,cynosdbmysql(表示tdsql-c实例),tdstore,percona,postgresql,mongodb等。</p>
         :type SrcDatabaseType: str
-        :param _SrcAccessType: 源端接入类型，cdb(云数据库)、cvm(云服务器自建)、vpc(私有网络)、extranet(外网)、vpncloud(vpn接入)、dcg(专线接入)、ccn(云联网)、intranet(自研上云)
+        :param _SrcAccessType: <p>源端接入类型，cdb(云数据库)、cvm(云服务器自建)、vpc(私有网络)、extranet(外网)、vpncloud(vpn接入)、dcg(专线接入)、ccn(云联网)、intranet(自研上云)</p>
         :type SrcAccessType: str
-        :param _SrcInfo: 源端信息，单节点数据库使用
+        :param _SrcInfo: <p>源端信息，单节点数据库使用</p>
         :type SrcInfo: :class:`tencentcloud.dts.v20211206.models.Endpoint`
-        :param _SrcNodeType: 枚举值：cluster、single。源库为单节点数据库使用single，多节点使用cluster
+        :param _SrcNodeType: <p>枚举值：cluster、single。源库为单节点数据库使用single，多节点使用cluster</p>
         :type SrcNodeType: str
-        :param _SrcInfos: 源端信息，若SrcNodeType=cluster，则源端信息在这个字段里，mongodb链路使用此参数透传。
+        :param _SrcInfos: <p>源端信息，若SrcNodeType=cluster，则源端信息在这个字段里，mongodb链路使用此参数透传。</p>
         :type SrcInfos: :class:`tencentcloud.dts.v20211206.models.SyncDBEndpointInfos`
-        :param _DstRegion: 目标端地域，如：ap-guangzhou等
+        :param _DstRegion: <p>目标端地域，如：ap-guangzhou等</p>
         :type DstRegion: str
-        :param _DstDatabaseType: 目标端数据库类型，mysql,tdsqlmysql,mariadb,cynosdbmysql(表示tdsql-c实例),tdstore,percona,postgresql,mongodb等。
+        :param _DstDatabaseType: <p>目标端数据库类型，mysql,tdsqlmysql,mariadb,cynosdbmysql(表示tdsql-c实例),tdstore,percona,postgresql,mongodb等。</p>
         :type DstDatabaseType: str
-        :param _DstAccessType: 目标端接入类型，cdb(云数据库)、cvm(云主机自建)、vpc(私有网络)、extranet(外网)、vpncloud(vpn接入)、dcg(专线接入)、ccn(云联网)、intranet(自研上云)
+        :param _DstAccessType: <p>目标端接入类型，cdb(云数据库)、cvm(云主机自建)、vpc(私有网络)、extranet(外网)、vpncloud(vpn接入)、dcg(专线接入)、ccn(云联网)、intranet(自研上云)</p>
         :type DstAccessType: str
-        :param _DstInfo: 目标端信息，单节点数据库使用
+        :param _DstInfo: <p>目标端信息，单节点数据库使用</p>
         :type DstInfo: :class:`tencentcloud.dts.v20211206.models.Endpoint`
-        :param _DstNodeType: 枚举值：cluster、single。目标库为单节点数据库使用single，多节点使用cluster
+        :param _DstNodeType: <p>枚举值：cluster、single。目标库为单节点数据库使用single，多节点使用cluster</p>
         :type DstNodeType: str
-        :param _DstInfos: 目标端信息，若SrcNodeType=cluster，则源端信息在这个字段里，mongodb链路使用此参数透传。
+        :param _DstInfos: <p>目标端信息，若SrcNodeType=cluster，则源端信息在这个字段里，mongodb链路使用此参数透传。</p>
         :type DstInfos: :class:`tencentcloud.dts.v20211206.models.SyncDBEndpointInfos`
-        :param _CreateTime: 创建时间，格式为 yyyy-mm-dd hh:mm:ss
+        :param _CreateTime: <p>创建时间。当 <code>DateTimeISOFormat=true</code> 时返回 RFC 3339 格式（如 <code>2026-04-23T20:21:35+08:00</code>），否则返回 <code>yyyy-mm-dd hh:mm:ss</code>（北京时间）</p>
         :type CreateTime: str
-        :param _StartTime: 开始时间，格式为 yyyy-mm-dd hh:mm:ss
+        :param _StartTime: <p>开始时间。当 <code>DateTimeISOFormat=true</code> 时返回 RFC 3339 格式（如 <code>2026-04-23T20:21:35+08:00</code>），否则返回 <code>yyyy-mm-dd hh:mm:ss</code>（北京时间）</p>
         :type StartTime: str
-        :param _Status: 任务状态，UnInitialized(未初始化)、Initialized(已初始化)、Checking(校验中)、CheckPass(校验通过)、CheckNotPass(校验不通过)、ReadyRunning(准备运行)、Running(运行中)、Pausing(暂停中)、Paused(已暂停)、Stopping(停止中)、Stopped(已结束)、ResumableErr(任务错误)、Resuming(恢复中)、Failed(失败)、Released(已释放)、Resetting(重置中)、Unknown(未知)
+        :param _Status: <p>任务状态，UnInitialized(未初始化)、Initialized(已初始化)、Checking(校验中)、CheckPass(校验通过)、CheckNotPass(校验不通过)、ReadyRunning(准备运行)、Running(运行中)、Pausing(暂停中)、Paused(已暂停)、Stopping(停止中)、Stopped(已结束)、ResumableErr(任务错误)、Resuming(恢复中)、Failed(失败)、Released(已释放)、Resetting(重置中)、Unknown(未知)</p>
         :type Status: str
-        :param _EndTime: 结束时间，格式为 yyyy-mm-dd hh:mm:ss
+        :param _EndTime: <p>结束时间。当 <code>DateTimeISOFormat=true</code> 时返回 RFC 3339 格式（如 <code>2026-04-23T20:21:35+08:00</code>），否则返回 <code>yyyy-mm-dd hh:mm:ss</code>（北京时间）</p>
         :type EndTime: str
-        :param _Tags: 标签相关信息
+        :param _Tags: <p>标签相关信息</p>
         :type Tags: list of TagItem
-        :param _Detail: 同步任务运行步骤信息
+        :param _Detail: <p>同步任务运行步骤信息</p>
         :type Detail: :class:`tencentcloud.dts.v20211206.models.SyncDetailInfo`
-        :param _TradeStatus: 用于计费的状态，可能取值有：Normal(正常状态)、Resizing(变配中)、Renewing(续费中)、Isolating(隔离中)、Isolated(已隔离)、Offlining(下线中)、Offlined(已下线)、NotBilled(未计费)、Recovering(解隔离)、PostPay2Prepaying(按量计费转包年包月中)、PrePay2Postpaying(包年包月转按量计费中)
+        :param _TradeStatus: <p>用于计费的状态，可能取值有：Normal(正常状态)、Resizing(变配中)、Renewing(续费中)、Isolating(隔离中)、Isolated(已隔离)、Offlining(下线中)、Offlined(已下线)、NotBilled(未计费)、Recovering(解隔离)、PostPay2Prepaying(按量计费转包年包月中)、PrePay2Postpaying(包年包月转按量计费中)</p>
         :type TradeStatus: str
-        :param _InstanceClass: 同步链路规格，如micro,small,medium,large
+        :param _InstanceClass: <p>同步链路规格，如micro,small,medium,large</p>
         :type InstanceClass: str
-        :param _AutoRenew: 自动续费标识，当PayMode值为PrePay则此项配置有意义，取值为：1（表示自动续费）、0（不自动续费）
+        :param _AutoRenew: <p>自动续费标识，当PayMode值为PrePay则此项配置有意义，取值为：1（表示自动续费）、0（不自动续费）</p>
         :type AutoRenew: int
-        :param _OfflineTime: 下线时间，格式为 yyyy-mm-dd hh:mm:ss
+        :param _OfflineTime: <p>下线时间，格式为 yyyy-mm-dd hh:mm:ss</p>
         :type OfflineTime: str
-        :param _OptObjStatus: 动态修改对象，修改任务的状态等
+        :param _OptObjStatus: <p>动态修改对象，修改任务的状态等</p>
         :type OptObjStatus: str
-        :param _AutoRetryTimeRangeMinutes: 自动重试时间段设置
+        :param _AutoRetryTimeRangeMinutes: <p>自动重试时间段设置</p>
         :type AutoRetryTimeRangeMinutes: int
-        :param _DumperResumeCtrl: 全量导出可重入标识：enum::"yes"/"no"。yes表示当前任务可重入、no表示当前任务处于全量导出且不可重入阶段；如果在该值为no时重启任务导出流程不支持断点续传
+        :param _DumperResumeCtrl: <p>全量导出可重入标识：enum::&quot;yes&quot;/&quot;no&quot;。yes表示当前任务可重入、no表示当前任务处于全量导出且不可重入阶段；如果在该值为no时重启任务导出流程不支持断点续传</p>
         :type DumperResumeCtrl: str
         """
         self._JobId = None
@@ -21214,7 +21202,7 @@ class SyncJobInfo(AbstractModel):
 
     @property
     def JobId(self):
-        r"""同步任务id，如：sync-btso140
+        r"""<p>同步任务id，如：sync-btso140</p>
         :rtype: str
         """
         return self._JobId
@@ -21225,7 +21213,7 @@ class SyncJobInfo(AbstractModel):
 
     @property
     def JobName(self):
-        r"""同步任务名
+        r"""<p>同步任务名</p>
         :rtype: str
         """
         return self._JobName
@@ -21236,7 +21224,7 @@ class SyncJobInfo(AbstractModel):
 
     @property
     def PayMode(self):
-        r"""付款方式，PostPay(按量付费)、PrePay(包年包月)
+        r"""<p>付款方式，PostPay(按量付费)、PrePay(包年包月)</p>
         :rtype: str
         """
         return self._PayMode
@@ -21247,7 +21235,7 @@ class SyncJobInfo(AbstractModel):
 
     @property
     def RunMode(self):
-        r"""运行模式，Immediate(表示立即运行，默认为此项值)、Timed(表示定时运行)
+        r"""<p>运行模式，Immediate(表示立即运行，默认为此项值)、Timed(表示定时运行)</p>
         :rtype: str
         """
         return self._RunMode
@@ -21258,7 +21246,7 @@ class SyncJobInfo(AbstractModel):
 
     @property
     def ExpectRunTime(self):
-        r"""期待运行时间，格式为 yyyy-mm-dd hh:mm:ss
+        r"""<p>期待运行时间。当 <code>DateTimeISOFormat=true</code> 时返回 RFC 3339 格式（如 <code>2026-04-23T20:21:35+08:00</code>），否则返回 <code>yyyy-mm-dd hh:mm:ss</code>（北京时间）</p>
         :rtype: str
         """
         return self._ExpectRunTime
@@ -21269,7 +21257,7 @@ class SyncJobInfo(AbstractModel):
 
     @property
     def AllActions(self):
-        r"""支持的所有操作
+        r"""<p>支持的所有操作</p>
         :rtype: list of str
         """
         return self._AllActions
@@ -21280,7 +21268,7 @@ class SyncJobInfo(AbstractModel):
 
     @property
     def Actions(self):
-        r"""当前状态能进行的操作
+        r"""<p>当前状态能进行的操作</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -21292,7 +21280,7 @@ class SyncJobInfo(AbstractModel):
 
     @property
     def Options(self):
-        r"""同步选项
+        r"""<p>同步选项</p>
         :rtype: :class:`tencentcloud.dts.v20211206.models.Options`
         """
         return self._Options
@@ -21303,7 +21291,7 @@ class SyncJobInfo(AbstractModel):
 
     @property
     def Objects(self):
-        r"""同步库表对象
+        r"""<p>同步库表对象</p>
         :rtype: :class:`tencentcloud.dts.v20211206.models.Objects`
         """
         return self._Objects
@@ -21314,7 +21302,7 @@ class SyncJobInfo(AbstractModel):
 
     @property
     def Specification(self):
-        r"""任务规格
+        r"""<p>任务规格</p>
         :rtype: str
         """
         return self._Specification
@@ -21325,7 +21313,7 @@ class SyncJobInfo(AbstractModel):
 
     @property
     def ExpireTime(self):
-        r"""过期时间，格式为 yyyy-mm-dd hh:mm:ss
+        r"""<p>过期时间，格式为 yyyy-mm-dd hh:mm:ss</p>
         :rtype: str
         """
         return self._ExpireTime
@@ -21336,7 +21324,7 @@ class SyncJobInfo(AbstractModel):
 
     @property
     def SrcRegion(self):
-        r"""源端地域，如：ap-guangzhou等
+        r"""<p>源端地域，如：ap-guangzhou等</p>
         :rtype: str
         """
         return self._SrcRegion
@@ -21347,7 +21335,7 @@ class SyncJobInfo(AbstractModel):
 
     @property
     def SrcDatabaseType(self):
-        r"""源端数据库类型，mysql,tdsqlmysql,mariadb,cynosdbmysql(表示tdsql-c实例),tdstore,percona,postgresql,mongodb等。
+        r"""<p>源端数据库类型，mysql,tdsqlmysql,mariadb,cynosdbmysql(表示tdsql-c实例),tdstore,percona,postgresql,mongodb等。</p>
         :rtype: str
         """
         return self._SrcDatabaseType
@@ -21358,7 +21346,7 @@ class SyncJobInfo(AbstractModel):
 
     @property
     def SrcAccessType(self):
-        r"""源端接入类型，cdb(云数据库)、cvm(云服务器自建)、vpc(私有网络)、extranet(外网)、vpncloud(vpn接入)、dcg(专线接入)、ccn(云联网)、intranet(自研上云)
+        r"""<p>源端接入类型，cdb(云数据库)、cvm(云服务器自建)、vpc(私有网络)、extranet(外网)、vpncloud(vpn接入)、dcg(专线接入)、ccn(云联网)、intranet(自研上云)</p>
         :rtype: str
         """
         return self._SrcAccessType
@@ -21369,7 +21357,7 @@ class SyncJobInfo(AbstractModel):
 
     @property
     def SrcInfo(self):
-        r"""源端信息，单节点数据库使用
+        r"""<p>源端信息，单节点数据库使用</p>
         :rtype: :class:`tencentcloud.dts.v20211206.models.Endpoint`
         """
         return self._SrcInfo
@@ -21380,7 +21368,7 @@ class SyncJobInfo(AbstractModel):
 
     @property
     def SrcNodeType(self):
-        r"""枚举值：cluster、single。源库为单节点数据库使用single，多节点使用cluster
+        r"""<p>枚举值：cluster、single。源库为单节点数据库使用single，多节点使用cluster</p>
         :rtype: str
         """
         return self._SrcNodeType
@@ -21391,7 +21379,7 @@ class SyncJobInfo(AbstractModel):
 
     @property
     def SrcInfos(self):
-        r"""源端信息，若SrcNodeType=cluster，则源端信息在这个字段里，mongodb链路使用此参数透传。
+        r"""<p>源端信息，若SrcNodeType=cluster，则源端信息在这个字段里，mongodb链路使用此参数透传。</p>
         :rtype: :class:`tencentcloud.dts.v20211206.models.SyncDBEndpointInfos`
         """
         return self._SrcInfos
@@ -21402,7 +21390,7 @@ class SyncJobInfo(AbstractModel):
 
     @property
     def DstRegion(self):
-        r"""目标端地域，如：ap-guangzhou等
+        r"""<p>目标端地域，如：ap-guangzhou等</p>
         :rtype: str
         """
         return self._DstRegion
@@ -21413,7 +21401,7 @@ class SyncJobInfo(AbstractModel):
 
     @property
     def DstDatabaseType(self):
-        r"""目标端数据库类型，mysql,tdsqlmysql,mariadb,cynosdbmysql(表示tdsql-c实例),tdstore,percona,postgresql,mongodb等。
+        r"""<p>目标端数据库类型，mysql,tdsqlmysql,mariadb,cynosdbmysql(表示tdsql-c实例),tdstore,percona,postgresql,mongodb等。</p>
         :rtype: str
         """
         return self._DstDatabaseType
@@ -21424,7 +21412,7 @@ class SyncJobInfo(AbstractModel):
 
     @property
     def DstAccessType(self):
-        r"""目标端接入类型，cdb(云数据库)、cvm(云主机自建)、vpc(私有网络)、extranet(外网)、vpncloud(vpn接入)、dcg(专线接入)、ccn(云联网)、intranet(自研上云)
+        r"""<p>目标端接入类型，cdb(云数据库)、cvm(云主机自建)、vpc(私有网络)、extranet(外网)、vpncloud(vpn接入)、dcg(专线接入)、ccn(云联网)、intranet(自研上云)</p>
         :rtype: str
         """
         return self._DstAccessType
@@ -21435,7 +21423,7 @@ class SyncJobInfo(AbstractModel):
 
     @property
     def DstInfo(self):
-        r"""目标端信息，单节点数据库使用
+        r"""<p>目标端信息，单节点数据库使用</p>
         :rtype: :class:`tencentcloud.dts.v20211206.models.Endpoint`
         """
         return self._DstInfo
@@ -21446,7 +21434,7 @@ class SyncJobInfo(AbstractModel):
 
     @property
     def DstNodeType(self):
-        r"""枚举值：cluster、single。目标库为单节点数据库使用single，多节点使用cluster
+        r"""<p>枚举值：cluster、single。目标库为单节点数据库使用single，多节点使用cluster</p>
         :rtype: str
         """
         return self._DstNodeType
@@ -21457,7 +21445,7 @@ class SyncJobInfo(AbstractModel):
 
     @property
     def DstInfos(self):
-        r"""目标端信息，若SrcNodeType=cluster，则源端信息在这个字段里，mongodb链路使用此参数透传。
+        r"""<p>目标端信息，若SrcNodeType=cluster，则源端信息在这个字段里，mongodb链路使用此参数透传。</p>
         :rtype: :class:`tencentcloud.dts.v20211206.models.SyncDBEndpointInfos`
         """
         return self._DstInfos
@@ -21468,7 +21456,7 @@ class SyncJobInfo(AbstractModel):
 
     @property
     def CreateTime(self):
-        r"""创建时间，格式为 yyyy-mm-dd hh:mm:ss
+        r"""<p>创建时间。当 <code>DateTimeISOFormat=true</code> 时返回 RFC 3339 格式（如 <code>2026-04-23T20:21:35+08:00</code>），否则返回 <code>yyyy-mm-dd hh:mm:ss</code>（北京时间）</p>
         :rtype: str
         """
         return self._CreateTime
@@ -21479,7 +21467,7 @@ class SyncJobInfo(AbstractModel):
 
     @property
     def StartTime(self):
-        r"""开始时间，格式为 yyyy-mm-dd hh:mm:ss
+        r"""<p>开始时间。当 <code>DateTimeISOFormat=true</code> 时返回 RFC 3339 格式（如 <code>2026-04-23T20:21:35+08:00</code>），否则返回 <code>yyyy-mm-dd hh:mm:ss</code>（北京时间）</p>
         :rtype: str
         """
         return self._StartTime
@@ -21490,7 +21478,7 @@ class SyncJobInfo(AbstractModel):
 
     @property
     def Status(self):
-        r"""任务状态，UnInitialized(未初始化)、Initialized(已初始化)、Checking(校验中)、CheckPass(校验通过)、CheckNotPass(校验不通过)、ReadyRunning(准备运行)、Running(运行中)、Pausing(暂停中)、Paused(已暂停)、Stopping(停止中)、Stopped(已结束)、ResumableErr(任务错误)、Resuming(恢复中)、Failed(失败)、Released(已释放)、Resetting(重置中)、Unknown(未知)
+        r"""<p>任务状态，UnInitialized(未初始化)、Initialized(已初始化)、Checking(校验中)、CheckPass(校验通过)、CheckNotPass(校验不通过)、ReadyRunning(准备运行)、Running(运行中)、Pausing(暂停中)、Paused(已暂停)、Stopping(停止中)、Stopped(已结束)、ResumableErr(任务错误)、Resuming(恢复中)、Failed(失败)、Released(已释放)、Resetting(重置中)、Unknown(未知)</p>
         :rtype: str
         """
         return self._Status
@@ -21501,7 +21489,7 @@ class SyncJobInfo(AbstractModel):
 
     @property
     def EndTime(self):
-        r"""结束时间，格式为 yyyy-mm-dd hh:mm:ss
+        r"""<p>结束时间。当 <code>DateTimeISOFormat=true</code> 时返回 RFC 3339 格式（如 <code>2026-04-23T20:21:35+08:00</code>），否则返回 <code>yyyy-mm-dd hh:mm:ss</code>（北京时间）</p>
         :rtype: str
         """
         return self._EndTime
@@ -21512,7 +21500,7 @@ class SyncJobInfo(AbstractModel):
 
     @property
     def Tags(self):
-        r"""标签相关信息
+        r"""<p>标签相关信息</p>
         :rtype: list of TagItem
         """
         return self._Tags
@@ -21523,7 +21511,7 @@ class SyncJobInfo(AbstractModel):
 
     @property
     def Detail(self):
-        r"""同步任务运行步骤信息
+        r"""<p>同步任务运行步骤信息</p>
         :rtype: :class:`tencentcloud.dts.v20211206.models.SyncDetailInfo`
         """
         return self._Detail
@@ -21534,7 +21522,7 @@ class SyncJobInfo(AbstractModel):
 
     @property
     def TradeStatus(self):
-        r"""用于计费的状态，可能取值有：Normal(正常状态)、Resizing(变配中)、Renewing(续费中)、Isolating(隔离中)、Isolated(已隔离)、Offlining(下线中)、Offlined(已下线)、NotBilled(未计费)、Recovering(解隔离)、PostPay2Prepaying(按量计费转包年包月中)、PrePay2Postpaying(包年包月转按量计费中)
+        r"""<p>用于计费的状态，可能取值有：Normal(正常状态)、Resizing(变配中)、Renewing(续费中)、Isolating(隔离中)、Isolated(已隔离)、Offlining(下线中)、Offlined(已下线)、NotBilled(未计费)、Recovering(解隔离)、PostPay2Prepaying(按量计费转包年包月中)、PrePay2Postpaying(包年包月转按量计费中)</p>
         :rtype: str
         """
         return self._TradeStatus
@@ -21545,7 +21533,7 @@ class SyncJobInfo(AbstractModel):
 
     @property
     def InstanceClass(self):
-        r"""同步链路规格，如micro,small,medium,large
+        r"""<p>同步链路规格，如micro,small,medium,large</p>
         :rtype: str
         """
         return self._InstanceClass
@@ -21556,7 +21544,7 @@ class SyncJobInfo(AbstractModel):
 
     @property
     def AutoRenew(self):
-        r"""自动续费标识，当PayMode值为PrePay则此项配置有意义，取值为：1（表示自动续费）、0（不自动续费）
+        r"""<p>自动续费标识，当PayMode值为PrePay则此项配置有意义，取值为：1（表示自动续费）、0（不自动续费）</p>
         :rtype: int
         """
         return self._AutoRenew
@@ -21567,7 +21555,7 @@ class SyncJobInfo(AbstractModel):
 
     @property
     def OfflineTime(self):
-        r"""下线时间，格式为 yyyy-mm-dd hh:mm:ss
+        r"""<p>下线时间，格式为 yyyy-mm-dd hh:mm:ss</p>
         :rtype: str
         """
         return self._OfflineTime
@@ -21578,7 +21566,7 @@ class SyncJobInfo(AbstractModel):
 
     @property
     def OptObjStatus(self):
-        r"""动态修改对象，修改任务的状态等
+        r"""<p>动态修改对象，修改任务的状态等</p>
         :rtype: str
         """
         return self._OptObjStatus
@@ -21589,7 +21577,7 @@ class SyncJobInfo(AbstractModel):
 
     @property
     def AutoRetryTimeRangeMinutes(self):
-        r"""自动重试时间段设置
+        r"""<p>自动重试时间段设置</p>
         :rtype: int
         """
         return self._AutoRetryTimeRangeMinutes
@@ -21600,7 +21588,7 @@ class SyncJobInfo(AbstractModel):
 
     @property
     def DumperResumeCtrl(self):
-        r"""全量导出可重入标识：enum::"yes"/"no"。yes表示当前任务可重入、no表示当前任务处于全量导出且不可重入阶段；如果在该值为no时重启任务导出流程不支持断点续传
+        r"""<p>全量导出可重入标识：enum::&quot;yes&quot;/&quot;no&quot;。yes表示当前任务可重入、no表示当前任务处于全量导出且不可重入阶段；如果在该值为no时重启任务导出流程不支持断点续传</p>
         :rtype: str
         """
         return self._DumperResumeCtrl
@@ -22178,27 +22166,27 @@ class TradeInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DealName: 交易订单号
+        :param _DealName: <p>交易订单号</p>
         :type DealName: str
-        :param _LastDealName: 上一次交易订单号
+        :param _LastDealName: <p>上一次交易订单号</p>
         :type LastDealName: str
-        :param _InstanceClass: 实例规格，包括：micro、small、medium、large、xlarge、2xlarge等
+        :param _InstanceClass: <p>实例规格，包括：micro、small、medium、large、xlarge、2xlarge等</p>
         :type InstanceClass: str
-        :param _TradeStatus: 计费任务状态， normal(计费或待计费)、resizing(变配中)、reversing(冲正中，比较短暂的状态)、isolating(隔离中，比较短暂的状态)、isolated(已隔离)、offlining(下线中)、offlined(已下线)、notBilled(未计费)
+        :param _TradeStatus: <p>计费任务状态， normal(计费或待计费)、resizing(变配中)、reversing(冲正中，比较短暂的状态)、isolating(隔离中，比较短暂的状态)、isolated(已隔离)、offlining(下线中)、offlined(已下线)、notBilled(未计费)</p>
         :type TradeStatus: str
-        :param _ExpireTime: 到期时间，格式为"yyyy-mm-dd hh:mm:ss"
+        :param _ExpireTime: <p>到期时间。当 <code>DateTimeISOFormat=true</code> 时返回 RFC 3339 格式（如 <code>2026-04-23T20:21:35+08:00</code>），否则返回 <code>yyyy-mm-dd hh:mm:ss</code>（北京时间）</p>
         :type ExpireTime: str
-        :param _OfflineTime: 下线时间，格式为"yyyy-mm-dd hh:mm:ss"
+        :param _OfflineTime: <p>下线时间。当 <code>DateTimeISOFormat=true</code> 时返回 RFC 3339 格式（如 <code>2026-04-23T20:21:35+08:00</code>），否则返回 <code>yyyy-mm-dd hh:mm:ss</code>（北京时间）</p>
         :type OfflineTime: str
-        :param _IsolateTime: 隔离时间，格式为"yyyy-mm-dd hh:mm:ss"
+        :param _IsolateTime: <p>隔离时间。当 <code>DateTimeISOFormat=true</code> 时返回 RFC 3339 格式（如 <code>2026-04-23T20:21:35+08:00</code>），否则返回 <code>yyyy-mm-dd hh:mm:ss</code>（北京时间）</p>
         :type IsolateTime: str
-        :param _OfflineReason: 下线原因
+        :param _OfflineReason: <p>下线原因</p>
         :type OfflineReason: str
-        :param _IsolateReason: 隔离原因
+        :param _IsolateReason: <p>隔离原因</p>
         :type IsolateReason: str
-        :param _PayType: 付费类型，包括：postpay(后付费)、prepay(预付费)
+        :param _PayType: <p>付费类型，包括：postpay(后付费)、prepay(预付费)</p>
         :type PayType: str
-        :param _BillingType: 任务计费类型，包括：billing(计费)、notBilling(不计费)、 promotions(促销活动中)
+        :param _BillingType: <p>任务计费类型，包括：billing(计费)、notBilling(不计费)、 promotions(促销活动中)</p>
         :type BillingType: str
         """
         self._DealName = None
@@ -22215,7 +22203,7 @@ class TradeInfo(AbstractModel):
 
     @property
     def DealName(self):
-        r"""交易订单号
+        r"""<p>交易订单号</p>
         :rtype: str
         """
         return self._DealName
@@ -22226,7 +22214,7 @@ class TradeInfo(AbstractModel):
 
     @property
     def LastDealName(self):
-        r"""上一次交易订单号
+        r"""<p>上一次交易订单号</p>
         :rtype: str
         """
         return self._LastDealName
@@ -22237,7 +22225,7 @@ class TradeInfo(AbstractModel):
 
     @property
     def InstanceClass(self):
-        r"""实例规格，包括：micro、small、medium、large、xlarge、2xlarge等
+        r"""<p>实例规格，包括：micro、small、medium、large、xlarge、2xlarge等</p>
         :rtype: str
         """
         return self._InstanceClass
@@ -22248,7 +22236,7 @@ class TradeInfo(AbstractModel):
 
     @property
     def TradeStatus(self):
-        r"""计费任务状态， normal(计费或待计费)、resizing(变配中)、reversing(冲正中，比较短暂的状态)、isolating(隔离中，比较短暂的状态)、isolated(已隔离)、offlining(下线中)、offlined(已下线)、notBilled(未计费)
+        r"""<p>计费任务状态， normal(计费或待计费)、resizing(变配中)、reversing(冲正中，比较短暂的状态)、isolating(隔离中，比较短暂的状态)、isolated(已隔离)、offlining(下线中)、offlined(已下线)、notBilled(未计费)</p>
         :rtype: str
         """
         return self._TradeStatus
@@ -22259,7 +22247,7 @@ class TradeInfo(AbstractModel):
 
     @property
     def ExpireTime(self):
-        r"""到期时间，格式为"yyyy-mm-dd hh:mm:ss"
+        r"""<p>到期时间。当 <code>DateTimeISOFormat=true</code> 时返回 RFC 3339 格式（如 <code>2026-04-23T20:21:35+08:00</code>），否则返回 <code>yyyy-mm-dd hh:mm:ss</code>（北京时间）</p>
         :rtype: str
         """
         return self._ExpireTime
@@ -22270,7 +22258,7 @@ class TradeInfo(AbstractModel):
 
     @property
     def OfflineTime(self):
-        r"""下线时间，格式为"yyyy-mm-dd hh:mm:ss"
+        r"""<p>下线时间。当 <code>DateTimeISOFormat=true</code> 时返回 RFC 3339 格式（如 <code>2026-04-23T20:21:35+08:00</code>），否则返回 <code>yyyy-mm-dd hh:mm:ss</code>（北京时间）</p>
         :rtype: str
         """
         return self._OfflineTime
@@ -22281,7 +22269,7 @@ class TradeInfo(AbstractModel):
 
     @property
     def IsolateTime(self):
-        r"""隔离时间，格式为"yyyy-mm-dd hh:mm:ss"
+        r"""<p>隔离时间。当 <code>DateTimeISOFormat=true</code> 时返回 RFC 3339 格式（如 <code>2026-04-23T20:21:35+08:00</code>），否则返回 <code>yyyy-mm-dd hh:mm:ss</code>（北京时间）</p>
         :rtype: str
         """
         return self._IsolateTime
@@ -22292,7 +22280,7 @@ class TradeInfo(AbstractModel):
 
     @property
     def OfflineReason(self):
-        r"""下线原因
+        r"""<p>下线原因</p>
         :rtype: str
         """
         return self._OfflineReason
@@ -22303,7 +22291,7 @@ class TradeInfo(AbstractModel):
 
     @property
     def IsolateReason(self):
-        r"""隔离原因
+        r"""<p>隔离原因</p>
         :rtype: str
         """
         return self._IsolateReason
@@ -22314,7 +22302,7 @@ class TradeInfo(AbstractModel):
 
     @property
     def PayType(self):
-        r"""付费类型，包括：postpay(后付费)、prepay(预付费)
+        r"""<p>付费类型，包括：postpay(后付费)、prepay(预付费)</p>
         :rtype: str
         """
         return self._PayType
@@ -22325,7 +22313,7 @@ class TradeInfo(AbstractModel):
 
     @property
     def BillingType(self):
-        r"""任务计费类型，包括：billing(计费)、notBilling(不计费)、 promotions(促销活动中)
+        r"""<p>任务计费类型，包括：billing(计费)、notBilling(不计费)、 promotions(促销活动中)</p>
         :rtype: str
         """
         return self._BillingType

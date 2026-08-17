@@ -465,6 +465,10 @@ class ApmAppConfig(AbstractModel):
         :type HeadSamplerType: str
         :param _HeadSamplerArg: <p>采样阈值，100等于关闭采样，0表示全采样</p>
         :type HeadSamplerArg: int
+        :param _CrossAccountStatus: <p>是否为跨账号</p><p>枚举值：</p><ul><li>0： 否</li><li>1： 是</li></ul>
+        :type CrossAccountStatus: int
+        :param _CrossAccountPeerId: <p>跨账号关联ID</p>
+        :type CrossAccountPeerId: str
         """
         self._InstanceKey = None
         self._ServiceName = None
@@ -532,6 +536,8 @@ class ApmAppConfig(AbstractModel):
         self._EnableHeadSampler = None
         self._HeadSamplerType = None
         self._HeadSamplerArg = None
+        self._CrossAccountStatus = None
+        self._CrossAccountPeerId = None
 
     @property
     def InstanceKey(self):
@@ -1282,6 +1288,28 @@ class ApmAppConfig(AbstractModel):
     def HeadSamplerArg(self, HeadSamplerArg):
         self._HeadSamplerArg = HeadSamplerArg
 
+    @property
+    def CrossAccountStatus(self):
+        r"""<p>是否为跨账号</p><p>枚举值：</p><ul><li>0： 否</li><li>1： 是</li></ul>
+        :rtype: int
+        """
+        return self._CrossAccountStatus
+
+    @CrossAccountStatus.setter
+    def CrossAccountStatus(self, CrossAccountStatus):
+        self._CrossAccountStatus = CrossAccountStatus
+
+    @property
+    def CrossAccountPeerId(self):
+        r"""<p>跨账号关联ID</p>
+        :rtype: str
+        """
+        return self._CrossAccountPeerId
+
+    @CrossAccountPeerId.setter
+    def CrossAccountPeerId(self, CrossAccountPeerId):
+        self._CrossAccountPeerId = CrossAccountPeerId
+
 
     def _deserialize(self, params):
         self._InstanceKey = params.get("InstanceKey")
@@ -1364,6 +1392,8 @@ class ApmAppConfig(AbstractModel):
         self._EnableHeadSampler = params.get("EnableHeadSampler")
         self._HeadSamplerType = params.get("HeadSamplerType")
         self._HeadSamplerArg = params.get("HeadSamplerArg")
+        self._CrossAccountStatus = params.get("CrossAccountStatus")
+        self._CrossAccountPeerId = params.get("CrossAccountPeerId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2535,6 +2565,10 @@ class ApmInstanceDetail(AbstractModel):
         :type LogSpanIdKey: str
         :param _DisableAiAbility: <p>是否禁用 AI 能力</p><p>单位：无</p>
         :type DisableAiAbility: int
+        :param _CrossAccountStatus: <p>是否为跨账号</p><p>枚举值：</p><ul><li>0： 否</li><li>1： 是</li></ul>
+        :type CrossAccountStatus: int
+        :param _CrossAccountPeerId: <p>跨账号关联ID</p>
+        :type CrossAccountPeerId: str
         """
         self._InstanceId = None
         self._Name = None
@@ -2594,6 +2628,8 @@ class ApmInstanceDetail(AbstractModel):
         self._UrlNumberSegmentThreshold = None
         self._LogSpanIdKey = None
         self._DisableAiAbility = None
+        self._CrossAccountStatus = None
+        self._CrossAccountPeerId = None
 
     @property
     def InstanceId(self):
@@ -3233,6 +3269,28 @@ class ApmInstanceDetail(AbstractModel):
     def DisableAiAbility(self, DisableAiAbility):
         self._DisableAiAbility = DisableAiAbility
 
+    @property
+    def CrossAccountStatus(self):
+        r"""<p>是否为跨账号</p><p>枚举值：</p><ul><li>0： 否</li><li>1： 是</li></ul>
+        :rtype: int
+        """
+        return self._CrossAccountStatus
+
+    @CrossAccountStatus.setter
+    def CrossAccountStatus(self, CrossAccountStatus):
+        self._CrossAccountStatus = CrossAccountStatus
+
+    @property
+    def CrossAccountPeerId(self):
+        r"""<p>跨账号关联ID</p>
+        :rtype: str
+        """
+        return self._CrossAccountPeerId
+
+    @CrossAccountPeerId.setter
+    def CrossAccountPeerId(self, CrossAccountPeerId):
+        self._CrossAccountPeerId = CrossAccountPeerId
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -3298,6 +3356,8 @@ class ApmInstanceDetail(AbstractModel):
         self._UrlNumberSegmentThreshold = params.get("UrlNumberSegmentThreshold")
         self._LogSpanIdKey = params.get("LogSpanIdKey")
         self._DisableAiAbility = params.get("DisableAiAbility")
+        self._CrossAccountStatus = params.get("CrossAccountStatus")
+        self._CrossAccountPeerId = params.get("CrossAccountPeerId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -9267,12 +9327,16 @@ class ModifyApmApplicationConfigRequest(AbstractModel):
         :type ResponseDurationWarningThreshold: int
         :param _UseDefaultFuseConfig: <p>是否使用探针默认熔断阈值</p>
         :type UseDefaultFuseConfig: bool
-        :param _EnableHeadSampler: <p>是否开启探针头采样</p>
+        :param _EnableHeadSampler: <p>是否开启探针头采样</p><p>（受限）</p>
         :type EnableHeadSampler: bool
-        :param _HeadSamplerType: <p>头采样类型</p><p>枚举值：</p><ul><li>parentbased_traceidratio： 跟随parent</li></ul>
+        :param _HeadSamplerType: <p>头采样类型</p><p>枚举值：</p><ul><li>parentbased_traceidratio： 跟随parent</li></ul><p>（受限）</p>
         :type HeadSamplerType: str
-        :param _HeadSamplerArg: <p>采样率</p><p>取值范围：[0, 100]</p><p>默认值：100</p>
+        :param _HeadSamplerArg: <p>采样率</p><p>取值范围：[0, 100]</p><p>默认值：100</p><p>（受限）</p>
         :type HeadSamplerArg: int
+        :param _CrossAccountStatus: <p>是否为跨账号</p><p>枚举值：</p><ul><li>0： 否</li><li>1： 是</li></ul>
+        :type CrossAccountStatus: int
+        :param _CrossAccountPeerId: <p>跨账号关联ID</p>
+        :type CrossAccountPeerId: str
         """
         self._InstanceId = None
         self._ServiceName = None
@@ -9336,6 +9400,8 @@ class ModifyApmApplicationConfigRequest(AbstractModel):
         self._EnableHeadSampler = None
         self._HeadSamplerType = None
         self._HeadSamplerArg = None
+        self._CrossAccountStatus = None
+        self._CrossAccountPeerId = None
 
     @property
     def InstanceId(self):
@@ -9988,7 +10054,7 @@ class ModifyApmApplicationConfigRequest(AbstractModel):
 
     @property
     def EnableHeadSampler(self):
-        r"""<p>是否开启探针头采样</p>
+        r"""<p>是否开启探针头采样</p><p>（受限）</p>
         :rtype: bool
         """
         return self._EnableHeadSampler
@@ -9999,7 +10065,7 @@ class ModifyApmApplicationConfigRequest(AbstractModel):
 
     @property
     def HeadSamplerType(self):
-        r"""<p>头采样类型</p><p>枚举值：</p><ul><li>parentbased_traceidratio： 跟随parent</li></ul>
+        r"""<p>头采样类型</p><p>枚举值：</p><ul><li>parentbased_traceidratio： 跟随parent</li></ul><p>（受限）</p>
         :rtype: str
         """
         return self._HeadSamplerType
@@ -10010,7 +10076,7 @@ class ModifyApmApplicationConfigRequest(AbstractModel):
 
     @property
     def HeadSamplerArg(self):
-        r"""<p>采样率</p><p>取值范围：[0, 100]</p><p>默认值：100</p>
+        r"""<p>采样率</p><p>取值范围：[0, 100]</p><p>默认值：100</p><p>（受限）</p>
         :rtype: int
         """
         return self._HeadSamplerArg
@@ -10018,6 +10084,28 @@ class ModifyApmApplicationConfigRequest(AbstractModel):
     @HeadSamplerArg.setter
     def HeadSamplerArg(self, HeadSamplerArg):
         self._HeadSamplerArg = HeadSamplerArg
+
+    @property
+    def CrossAccountStatus(self):
+        r"""<p>是否为跨账号</p><p>枚举值：</p><ul><li>0： 否</li><li>1： 是</li></ul>
+        :rtype: int
+        """
+        return self._CrossAccountStatus
+
+    @CrossAccountStatus.setter
+    def CrossAccountStatus(self, CrossAccountStatus):
+        self._CrossAccountStatus = CrossAccountStatus
+
+    @property
+    def CrossAccountPeerId(self):
+        r"""<p>跨账号关联ID</p>
+        :rtype: str
+        """
+        return self._CrossAccountPeerId
+
+    @CrossAccountPeerId.setter
+    def CrossAccountPeerId(self, CrossAccountPeerId):
+        self._CrossAccountPeerId = CrossAccountPeerId
 
 
     def _deserialize(self, params):
@@ -10097,6 +10185,8 @@ class ModifyApmApplicationConfigRequest(AbstractModel):
         self._EnableHeadSampler = params.get("EnableHeadSampler")
         self._HeadSamplerType = params.get("HeadSamplerType")
         self._HeadSamplerArg = params.get("HeadSamplerArg")
+        self._CrossAccountStatus = params.get("CrossAccountStatus")
+        self._CrossAccountPeerId = params.get("CrossAccountPeerId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -10375,6 +10465,10 @@ class ModifyApmInstanceRequest(AbstractModel):
         :type HeadSamplerArg: int
         :param _DisableAiAbility: <p>是否禁用 AI 能力</p><p>单位：无</p>
         :type DisableAiAbility: int
+        :param _CrossAccountStatus: <p>是否为跨账号</p><p>枚举值：</p><ul><li>0： 否</li><li>1： 是</li></ul>
+        :type CrossAccountStatus: int
+        :param _CrossAccountPeerId: <p>跨账号关联ID</p>
+        :type CrossAccountPeerId: str
         """
         self._InstanceId = None
         self._Name = None
@@ -10423,6 +10517,8 @@ class ModifyApmInstanceRequest(AbstractModel):
         self._HeadSamplerType = None
         self._HeadSamplerArg = None
         self._DisableAiAbility = None
+        self._CrossAccountStatus = None
+        self._CrossAccountPeerId = None
 
     @property
     def InstanceId(self):
@@ -10941,6 +11037,28 @@ class ModifyApmInstanceRequest(AbstractModel):
     def DisableAiAbility(self, DisableAiAbility):
         self._DisableAiAbility = DisableAiAbility
 
+    @property
+    def CrossAccountStatus(self):
+        r"""<p>是否为跨账号</p><p>枚举值：</p><ul><li>0： 否</li><li>1： 是</li></ul>
+        :rtype: int
+        """
+        return self._CrossAccountStatus
+
+    @CrossAccountStatus.setter
+    def CrossAccountStatus(self, CrossAccountStatus):
+        self._CrossAccountStatus = CrossAccountStatus
+
+    @property
+    def CrossAccountPeerId(self):
+        r"""<p>跨账号关联ID</p>
+        :rtype: str
+        """
+        return self._CrossAccountPeerId
+
+    @CrossAccountPeerId.setter
+    def CrossAccountPeerId(self, CrossAccountPeerId):
+        self._CrossAccountPeerId = CrossAccountPeerId
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -10995,6 +11113,8 @@ class ModifyApmInstanceRequest(AbstractModel):
         self._HeadSamplerType = params.get("HeadSamplerType")
         self._HeadSamplerArg = params.get("HeadSamplerArg")
         self._DisableAiAbility = params.get("DisableAiAbility")
+        self._CrossAccountStatus = params.get("CrossAccountStatus")
+        self._CrossAccountPeerId = params.get("CrossAccountPeerId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

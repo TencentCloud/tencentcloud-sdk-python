@@ -61,6 +61,26 @@ class MnaClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def AddCustomerGatewayCluster(
+            self,
+            request: models.AddCustomerGatewayClusterRequest,
+            opts: Dict = None,
+    ) -> models.AddCustomerGatewayClusterResponse:
+        """
+        创建客户自有网关集群。
+
+        用于承载客户侧的自有网关实例，创建成功后返回集群 ID。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "AddCustomerGatewayCluster"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.AddCustomerGatewayClusterResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def AddDevice(
             self,
             request: models.AddDeviceRequest,
@@ -74,6 +94,26 @@ class MnaClient(AbstractClient):
         kwargs["action"] = "AddDevice"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.AddDeviceResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def AddGateway(
+            self,
+            request: models.AddGatewayRequest,
+            opts: Dict = None,
+    ) -> models.AddGatewayResponse:
+        """
+        向指定的客户自有网关集群注册一个网关实例。
+
+        注册成功后返回网关实例 ID、鉴权 Token 及 Agent 相关地址信息，用于后续网关 Agent 上报。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "AddGateway"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.AddGatewayResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -169,6 +209,26 @@ class MnaClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DeleteCustomerGatewayCluster(
+            self,
+            request: models.DeleteCustomerGatewayClusterRequest,
+            opts: Dict = None,
+    ) -> models.DeleteCustomerGatewayClusterResponse:
+        """
+        删除客户自有网关集群。
+
+        删除指定的客户自有网关集群，操作不可逆。调用接口后，若通过 GetCustomerGatewayClusterList 接口查询不到对应集群，则表示删除成功。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteCustomerGatewayCluster"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteCustomerGatewayClusterResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DeleteDevice(
             self,
             request: models.DeleteDeviceRequest,
@@ -182,6 +242,26 @@ class MnaClient(AbstractClient):
         kwargs["action"] = "DeleteDevice"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DeleteDeviceResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteGateway(
+            self,
+            request: models.DeleteGatewayRequest,
+            opts: Dict = None,
+    ) -> models.DeleteGatewayResponse:
+        """
+        从指定集群下删除一个客户自有网关实例。
+
+        删除后，通过 GetCustomerGatewayClusterList 查询不到对应实例，则表示删除成功。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteGateway"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteGatewayResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -218,6 +298,24 @@ class MnaClient(AbstractClient):
         kwargs["action"] = "DeleteL3Conn"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DeleteL3ConnResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeAccessPointList(
+            self,
+            request: models.DescribeAccessPointListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeAccessPointListResponse:
+        """
+        此接口用来查询接入点列表。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeAccessPointList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeAccessPointListResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -290,6 +388,26 @@ class MnaClient(AbstractClient):
         kwargs["action"] = "GetApplication"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.GetApplicationResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def GetCustomerGatewayClusterList(
+            self,
+            request: models.GetCustomerGatewayClusterListRequest,
+            opts: Dict = None,
+    ) -> models.GetCustomerGatewayClusterListResponse:
+        """
+        查询客户自有网关集群列表。
+
+        支持按集群名称关键字过滤，使用 Offset/Limit 分页返回集群及其下网关实例信息。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "GetCustomerGatewayClusterList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.GetCustomerGatewayClusterListResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -781,6 +899,24 @@ class MnaClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def ModifyDeviceAccessScope(
+            self,
+            request: models.ModifyDeviceAccessScopeRequest,
+            opts: Dict = None,
+    ) -> models.ModifyDeviceAccessScopeResponse:
+        """
+        修改设备接入网关类型。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyDeviceAccessScope"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyDeviceAccessScopeResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ModifyPackageRenewFlag(
             self,
             request: models.ModifyPackageRenewFlagRequest,
@@ -902,6 +1038,26 @@ class MnaClient(AbstractClient):
         kwargs["action"] = "UpdateApplicationKey"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.UpdateApplicationKeyResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def UpdateCustomerGatewayCluster(
+            self,
+            request: models.UpdateCustomerGatewayClusterRequest,
+            opts: Dict = None,
+    ) -> models.UpdateCustomerGatewayClusterResponse:
+        """
+        更新客户自有网关集群配置。
+
+        目前仅支持修改集群的公网访问 IP。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "UpdateCustomerGatewayCluster"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.UpdateCustomerGatewayClusterResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

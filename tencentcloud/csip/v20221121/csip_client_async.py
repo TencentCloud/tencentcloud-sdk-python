@@ -79,6 +79,24 @@ class CsipClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CancelEdrAlertIgnore(
+            self,
+            request: models.CancelEdrAlertIgnoreRequest,
+            opts: Dict = None,
+    ) -> models.CancelEdrAlertIgnoreResponse:
+        """
+        取消已永久忽略的EDR多行为告警，从AI-Link永久忽略白名单移除对应主机+规则记录，并将告警状态恢复为待处理（PENDING）
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CancelEdrAlertIgnore"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CancelEdrAlertIgnoreResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateAccessKeyCheckTask(
             self,
             request: models.CreateAccessKeyCheckTaskRequest,
@@ -110,6 +128,24 @@ class CsipClient(AbstractClient):
         kwargs["action"] = "CreateAccessKeySyncTask"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.CreateAccessKeySyncTaskResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def CreateCSIPManualMalwareScan(
+            self,
+            request: models.CreateCSIPManualMalwareScanRequest,
+            opts: Dict = None,
+    ) -> models.CreateCSIPManualMalwareScanResponse:
+        """
+        CSIP 手动扫描创建接口
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateCSIPManualMalwareScan"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateCSIPManualMalwareScanResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -529,6 +565,42 @@ class CsipClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateEDRManualScan(
+            self,
+            request: models.CreateEDRManualScanRequest,
+            opts: Dict = None,
+    ) -> models.CreateEDRManualScanResponse:
+        """
+        点击开始扫描后触发，支持多账号、多资产类型。同时选主机和容器集群时拆分为两个独立任务（主机+容器）。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateEDRManualScan"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateEDRManualScanResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def CreateEdrAlertExportJob(
+            self,
+            request: models.CreateEdrAlertExportJobRequest,
+            opts: Dict = None,
+    ) -> models.CreateEdrAlertExportJobResponse:
+        """
+        创建EDR告警导出任务
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateEdrAlertExportJob"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateEdrAlertExportJobResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateHostVulExportJob(
             self,
             request: models.CreateHostVulExportJobRequest,
@@ -722,6 +794,24 @@ class CsipClient(AbstractClient):
         kwargs["action"] = "CreateVulScanManual"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.CreateVulScanManualResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteCSIPMalwareScanTask(
+            self,
+            request: models.DeleteCSIPMalwareScanTaskRequest,
+            opts: Dict = None,
+    ) -> models.DeleteCSIPMalwareScanTaskResponse:
+        """
+        CSIP 手动扫描任务删除接口
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteCSIPMalwareScanTask"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteCSIPMalwareScanTaskResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -1010,6 +1100,42 @@ class CsipClient(AbstractClient):
         kwargs["action"] = "DeleteDspmWhitelistStrategy"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DeleteDspmWhitelistStrategyResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteEDRRules(
+            self,
+            request: models.DeleteEDRRulesRequest,
+            opts: Dict = None,
+    ) -> models.DeleteEDRRulesResponse:
+        """
+        删除EDR策略
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteEDRRules"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteEDRRulesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteEDRScanTask(
+            self,
+            request: models.DeleteEDRScanTaskRequest,
+            opts: Dict = None,
+    ) -> models.DeleteEDRScanTaskResponse:
+        """
+        删除已终止的扫描任务（物理删除主表及明细表）。只允许删除终态任务，只有创建者可操作。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteEDRScanTask"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteEDRScanTaskResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -1442,6 +1568,42 @@ class CsipClient(AbstractClient):
         kwargs["action"] = "DescribeCLSLogListV3"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeCLSLogListV3Response
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeCSIPMalwareScanTaskDetail(
+            self,
+            request: models.DescribeCSIPMalwareScanTaskDetailRequest,
+            opts: Dict = None,
+    ) -> models.DescribeCSIPMalwareScanTaskDetailResponse:
+        """
+        CSIP 扫描任务主机详情接口
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeCSIPMalwareScanTaskDetail"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeCSIPMalwareScanTaskDetailResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeCSIPMalwareScanTaskProgress(
+            self,
+            request: models.DescribeCSIPMalwareScanTaskProgressRequest,
+            opts: Dict = None,
+    ) -> models.DescribeCSIPMalwareScanTaskProgressResponse:
+        """
+        CSIP 手动扫描进度查询接口
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeCSIPMalwareScanTaskProgress"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeCSIPMalwareScanTaskProgressResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -3175,6 +3337,78 @@ class CsipClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeEDRScanRecordList(
+            self,
+            request: models.DescribeEDRScanRecordListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeEDRScanRecordListResponse:
+        """
+        查询扫描任务列表。Filter.Filters支持Name：Keyword(模糊OperatorType=9)、ScanType(MANUAL/CYCLE)、TaskType(HOST/CONTAINER)、Status(WAIT/SCANNING/FINISHED/FAILED/CANCELED)、AppId(账号)。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeEDRScanRecordList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeEDRScanRecordListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeEDRScanTaskDetail(
+            self,
+            request: models.DescribeEDRScanTaskDetailRequest,
+            opts: Dict = None,
+    ) -> models.DescribeEDRScanTaskDetailResponse:
+        """
+        查询扫描任务详情。Filter.Filters支持Name：Status（资产扫描状态，OperatorType=7 IN匹配，取值WAIT/SCANNING/FINISHED/FAILED）。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeEDRScanTaskDetail"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeEDRScanTaskDetailResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeEdrAlertCountForAsset(
+            self,
+            request: models.DescribeEdrAlertCountForAssetRequest,
+            opts: Dict = None,
+    ) -> models.DescribeEdrAlertCountForAssetResponse:
+        """
+        获取EDR告警数量统计，供资产模块调用。根据传入的MemberId和InstanceIDs，查询EDR告警表并返回告警记录条数信息。当InstanceIDs为空时返回汇总统计，非空时按InstanceIDs粒度分别返回统计。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeEdrAlertCountForAsset"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeEdrAlertCountForAssetResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeEdrAlertCountForContainer(
+            self,
+            request: models.DescribeEdrAlertCountForContainerRequest,
+            opts: Dict = None,
+    ) -> models.DescribeEdrAlertCountForContainerResponse:
+        """
+        容器场景告警数量统计
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeEdrAlertCountForContainer"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeEdrAlertCountForContainerResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeEdrAlertInfo(
             self,
             request: models.DescribeEdrAlertInfoRequest,
@@ -3206,6 +3440,78 @@ class CsipClient(AbstractClient):
         kwargs["action"] = "DescribeEdrAlertList"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeEdrAlertListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeEdrAlertMultiAttackStages(
+            self,
+            request: models.DescribeEdrAlertMultiAttackStagesRequest,
+            opts: Dict = None,
+    ) -> models.DescribeEdrAlertMultiAttackStagesResponse:
+        """
+        EDR告警多攻击阶段查询
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeEdrAlertMultiAttackStages"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeEdrAlertMultiAttackStagesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeEdrAlertSummary(
+            self,
+            request: models.DescribeEdrAlertSummaryRequest,
+            opts: Dict = None,
+    ) -> models.DescribeEdrAlertSummaryResponse:
+        """
+        获取EDR告警统计
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeEdrAlertSummary"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeEdrAlertSummaryResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeEdrExportJobDownloadURL(
+            self,
+            request: models.DescribeEdrExportJobDownloadURLRequest,
+            opts: Dict = None,
+    ) -> models.DescribeEdrExportJobDownloadURLResponse:
+        """
+        获取EDR导出下载链接
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeEdrExportJobDownloadURL"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeEdrExportJobDownloadURLResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeEdrExportJobList(
+            self,
+            request: models.DescribeEdrExportJobListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeEdrExportJobListResponse:
+        """
+        导出EDR任务列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeEdrExportJobList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeEdrExportJobListResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -3589,6 +3895,24 @@ class CsipClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeNetAttackSetting(
+            self,
+            request: models.DescribeNetAttackSettingRequest,
+            opts: Dict = None,
+    ) -> models.DescribeNetAttackSettingResponse:
+        """
+        查询网络攻击检测开关及资产范围配置
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeNetAttackSetting"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeNetAttackSettingResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeNotifyAssetConfig(
             self,
             request: models.DescribeNotifyAssetConfigRequest,
@@ -3746,6 +4070,24 @@ class CsipClient(AbstractClient):
         kwargs["action"] = "DescribeRepositoryImageAssets"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeRepositoryImageAssetsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeReverseShellSystemPolicyConfig(
+            self,
+            request: models.DescribeReverseShellSystemPolicyConfigRequest,
+            opts: Dict = None,
+    ) -> models.DescribeReverseShellSystemPolicyConfigResponse:
+        """
+        查询反弹Shell内网告警与资产范围配置
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeReverseShellSystemPolicyConfig"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeReverseShellSystemPolicyConfigResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -4705,6 +5047,42 @@ class CsipClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def ExportCSIPMalwareScanTaskDetail(
+            self,
+            request: models.ExportCSIPMalwareScanTaskDetailRequest,
+            opts: Dict = None,
+    ) -> models.ExportCSIPMalwareScanTaskDetailResponse:
+        """
+        导出CSIP扫描任务主机详情为Excel文件，异步生成后通过DescribeExportMachines查询下载地址
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ExportCSIPMalwareScanTaskDetail"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ExportCSIPMalwareScanTaskDetailResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ExportEDRRules(
+            self,
+            request: models.ExportEDRRulesRequest,
+            opts: Dict = None,
+    ) -> models.ExportEDRRulesResponse:
+        """
+        导出EDR策略列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ExportEDRRules"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ExportEDRRulesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ModifyAILinkSetting(
             self,
             request: models.ModifyAILinkSettingRequest,
@@ -5299,6 +5677,60 @@ class CsipClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def ModifyEDRRuleStatus(
+            self,
+            request: models.ModifyEDRRuleStatusRequest,
+            opts: Dict = None,
+    ) -> models.ModifyEDRRuleStatusResponse:
+        """
+        修改EDR策略开关状态
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyEDRRuleStatus"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyEDRRuleStatusResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyEDRRulesAction(
+            self,
+            request: models.ModifyEDRRulesActionRequest,
+            opts: Dict = None,
+    ) -> models.ModifyEDRRulesActionResponse:
+        """
+        批量修改EDR策略动作
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyEDRRulesAction"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyEDRRulesActionResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyEdrAlertIsolation(
+            self,
+            request: models.ModifyEdrAlertIsolationRequest,
+            opts: Dict = None,
+    ) -> models.ModifyEdrAlertIsolationResponse:
+        """
+        EDR告警隔离和恢复
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyEdrAlertIsolation"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyEdrAlertIsolationResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ModifyEdrAlertPermanentIgnore(
             self,
             request: models.ModifyEdrAlertPermanentIgnoreRequest,
@@ -5312,6 +5744,24 @@ class CsipClient(AbstractClient):
         kwargs["action"] = "ModifyEdrAlertPermanentIgnore"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ModifyEdrAlertPermanentIgnoreResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyEdrAlertStatus(
+            self,
+            request: models.ModifyEdrAlertStatusRequest,
+            opts: Dict = None,
+    ) -> models.ModifyEdrAlertStatusResponse:
+        """
+        EDR告警状态处置
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyEdrAlertStatus"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyEdrAlertStatusResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -5348,6 +5798,24 @@ class CsipClient(AbstractClient):
         kwargs["action"] = "ModifyMachineRemark"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ModifyMachineRemarkResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyNetAttackSetting(
+            self,
+            request: models.ModifyNetAttackSettingRequest,
+            opts: Dict = None,
+    ) -> models.ModifyNetAttackSettingResponse:
+        """
+        修改网络攻击检测开关及资产范围配置
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyNetAttackSetting"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyNetAttackSettingResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -5438,6 +5906,24 @@ class CsipClient(AbstractClient):
         kwargs["action"] = "ModifyPolicyStatus"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ModifyPolicyStatusResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyReverseShellSystemPolicyConfig(
+            self,
+            request: models.ModifyReverseShellSystemPolicyConfigRequest,
+            opts: Dict = None,
+    ) -> models.ModifyReverseShellSystemPolicyConfigResponse:
+        """
+        修改反弹Shell内网告警与资产范围配置
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyReverseShellSystemPolicyConfig"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyReverseShellSystemPolicyConfigResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -5605,6 +6091,42 @@ class CsipClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def ScanCSIPTaskAgain(
+            self,
+            request: models.ScanCSIPTaskAgainRequest,
+            opts: Dict = None,
+    ) -> models.ScanCSIPTaskAgainResponse:
+        """
+        CSIP 手动扫描任务删除接口
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ScanCSIPTaskAgain"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ScanCSIPTaskAgainResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ScanEDRTaskAgain(
+            self,
+            request: models.ScanEDRTaskAgainRequest,
+            opts: Dict = None,
+    ) -> models.ScanEDRTaskAgainResponse:
+        """
+        基于原任务配置新建扫描任务。AssetId为空时从TaskId获取全部资产信息；AssetId非空时仅含该单资产。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ScanEDRTaskAgain"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ScanEDRTaskAgainResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def SendDspmAssetLoginSmsCode(
             self,
             request: models.SendDspmAssetLoginSmsCodeRequest,
@@ -5618,6 +6140,42 @@ class CsipClient(AbstractClient):
         kwargs["action"] = "SendDspmAssetLoginSmsCode"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.SendDspmAssetLoginSmsCodeResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def StopCSIPManualMalwareScan(
+            self,
+            request: models.StopCSIPManualMalwareScanRequest,
+            opts: Dict = None,
+    ) -> models.StopCSIPManualMalwareScanResponse:
+        """
+        CSIP 手动扫描停止接口
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "StopCSIPManualMalwareScan"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.StopCSIPManualMalwareScanResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def StopEDRScanTask(
+            self,
+            request: models.StopEDRScanTaskRequest,
+            opts: Dict = None,
+    ) -> models.StopEDRScanTaskResponse:
+        """
+        停止或取消扫描任务。SCANNING状态调RPC停止，WAIT状态直接改库取消。只有任务创建者可操作。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "StopEDRScanTask"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.StopEDRScanTaskResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

@@ -843,96 +843,86 @@ class ChcHost(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ChcId: CHC物理服务器ID。
+        :param _ChcId: <p>CHC物理服务器ID。</p>
         :type ChcId: str
-        :param _InstanceName: 实例名称。
+        :param _InstanceName: <p>实例名称。</p>
         :type InstanceName: str
-        :param _SerialNumber: 服务器序列号。
+        :param _SerialNumber: <p>服务器序列号。</p>
         :type SerialNumber: str
-        :param _InstanceState: CHC的状态<br/>
-<ul>
-<li>INIT: 设备已录入。还未配置带外和部署网络</li>
-<li>READY: 已配置带外和部署网络</li>
-<li>PREPARED: 可分配云主机</li>
-<li>ONLINE: 已分配云主机</li>
-<li>OPERATING: 设备操作中，如正在配置带外网络等。</li>
-<li>CLEAR_NETWORK_FAILED: 清理带外和部署网络失败</li>
-</ul>
+        :param _InstanceState: <p>CHC的状态<br></p><ul><li>INIT: 设备已录入。还未配置带外和部署网络</li><li>READY: 已配置带外和部署网络</li><li>PREPARED: 可分配云主机</li><li>ONLINE: 已分配云主机</li><li>OPERATING: 设备操作中，如正在配置带外网络等。</li><li>CLEAR_NETWORK_FAILED: 清理带外和部署网络失败</li></ul>
         :type InstanceState: str
-        :param _DeviceType: 设备类型。
+        :param _DeviceType: <p>设备类型。</p>
         :type DeviceType: str
-        :param _Placement: 所属可用区
+        :param _Placement: <p>所属可用区。</p>
         :type Placement: :class:`tencentcloud.cvm.v20170312.models.Placement`
-        :param _BmcVirtualPrivateCloud: 带外网络。
+        :param _BmcVirtualPrivateCloud: <p>带外网络。</p>
         :type BmcVirtualPrivateCloud: :class:`tencentcloud.cvm.v20170312.models.VirtualPrivateCloud`
-        :param _BmcIp: 带外网络Ip。
+        :param _BmcIp: <p>带外网络IP。</p>
         :type BmcIp: str
-        :param _BmcSecurityGroupIds: 带外网络安全组Id。
+        :param _BmcSecurityGroupIds: <p>带外网络安全组ID。</p>
         :type BmcSecurityGroupIds: list of str
-        :param _DeployVirtualPrivateCloud: 部署网络。
+        :param _DeployVirtualPrivateCloud: <p>部署网络。</p>
         :type DeployVirtualPrivateCloud: :class:`tencentcloud.cvm.v20170312.models.VirtualPrivateCloud`
-        :param _DeployIp: 部署网络Ip。
+        :param _DeployIp: <p>部署网络IP。</p>
         :type DeployIp: str
-        :param _DeploySecurityGroupIds: 部署网络安全组Id。
+        :param _DeploySecurityGroupIds: <p>部署网络安全组ID。</p>
         :type DeploySecurityGroupIds: list of str
-        :param _CvmInstanceId: 关联的云主机Id。
+        :param _CvmInstanceId: <p>关联的云主机ID。</p>
         :type CvmInstanceId: str
-        :param _CreatedTime: 服务器导入的时间。
+        :param _CreatedTime: <p>服务器导入的时间。</p>
         :type CreatedTime: str
-        :param _HardwareDescription: 机型的硬件描述，分别为CPU核数，内存容量和磁盘容量
+        :param _HardwareDescription: <p>机型的硬件描述，分别为CPU核数，内存容量和磁盘容量。</p>
         :type HardwareDescription: str
-        :param _CPU: CHC物理服务器的CPU核数
+        :param _CPU: <p>CHC物理服务器的CPU核数。</p>
         :type CPU: int
-        :param _Memory: CHC物理服务器的内存大小，单位为GB
+        :param _Memory: <p>CHC物理服务器的内存大小，单位为GB。</p>
         :type Memory: int
-        :param _Disk: CHC物理服务器的磁盘信息
+        :param _Disk: <p>CHC物理服务器的磁盘信息。</p>
         :type Disk: str
-        :param _BmcMAC: 带外网络下分配的MAC地址
+        :param _BmcMAC: <p>带外网络下分配的MAC地址。</p>
         :type BmcMAC: str
-        :param _DeployMAC: 部署网络下分配的MAC地址
+        :param _DeployMAC: <p>部署网络下分配的MAC地址。</p>
         :type DeployMAC: str
-        :param _TenantType: 设备托管类型。
-HOSTING: 托管
-TENANT: 租赁
+        :param _TenantType: <p>设备托管类型。</p><p>枚举值：</p><ul><li>HOSTING： 托管类型。</li><li>TENANT： 租赁类型。</li></ul>
         :type TenantType: str
-        :param _DeployExtraConfig: chc dhcp选项，用于minios调试。
+        :param _DeployExtraConfig: <p>CHC DHCP选项，用于客户自建PXE环境。</p>
         :type DeployExtraConfig: :class:`tencentcloud.cvm.v20170312.models.ChcDeployExtraConfig`
-        :param _Gpu: GPU型号。
+        :param _Gpu: <p>GPU型号。</p>
         :type Gpu: str
-        :param _NetworkCard: 网卡型号。主要指RDMA网卡。
+        :param _NetworkCard: <p>网卡型号。主要指RDMA网卡。</p>
         :type NetworkCard: str
-        :param _IsPredefinedType: 是否是预定义机型。
+        :param _IsPredefinedType: <p>是否是预定义机型。</p>
         :type IsPredefinedType: bool
-        :param _ChcInstanceType: CHC云主机机型。
+        :param _ChcInstanceType: <p>CHC云主机机型。</p>
         :type ChcInstanceType: str
-        :param _ChcInstanceFamily: CHC云主机机型簇。
+        :param _ChcInstanceFamily: <p>CHC云主机机型簇。</p>
         :type ChcInstanceFamily: str
-        :param _ChcInstanceFamilyName: CHC云主机机型簇名称。
+        :param _ChcInstanceFamilyName: <p>CHC云主机机型簇名称。</p>
         :type ChcInstanceFamilyName: str
-        :param _ResaleAppId: 转售客户的AppId。
+        :param _ResaleAppId: <p>转售客户的AppID。</p>
         :type ResaleAppId: str
-        :param _ResaleAccountId: 转售客户的账号ID。
+        :param _ResaleAccountId: <p>转售客户的账号ID。</p>
         :type ResaleAccountId: str
-        :param _SaleStatus: 售卖状态。<br/>
-<ul>
-<li>NOT_FOR_SALE:不可售卖</li>
-<li>AVAILABLE: 可售卖</li>
-<li>SOLD: 已售卖</li>
-</ul>
-
+        :param _SaleStatus: <p>售卖状态。<br></p><ul><li>NOT_FOR_SALE:不可售卖</li><li>AVAILABLE: 可售卖</li><li>SOLD: 已售卖</li></ul>
         :type SaleStatus: str
-        :param _Tags: CHC物理服务器关联的标签列表。
+        :param _Tags: <p>CHC物理服务器关联的标签列表。</p>
         :type Tags: list of Tag
-        :param _LatestOperation: 最近操作
+        :param _LatestOperation: <p>最近操作。</p>
         :type LatestOperation: str
-        :param _LatestOperationErrorCode: 最近操作错误码
+        :param _LatestOperationErrorCode: <p>最近操作错误码。</p>
         :type LatestOperationErrorCode: str
-        :param _LatestOperationErrorMsg: 最近操作错误详情和建议项
+        :param _LatestOperationErrorMsg: <p>最近操作错误详情和建议项。</p>
         :type LatestOperationErrorMsg: str
-        :param _LatestOperationName: 最近操作名称
+        :param _LatestOperationName: <p>最近操作名称。</p>
         :type LatestOperationName: str
-        :param _LatestOperationState: 最近操作状态
+        :param _LatestOperationState: <p>最近操作状态。</p><p>枚举值：</p><ul><li>SUCCESS： 成功。</li><li>FAILED： 失败。</li></ul>
         :type LatestOperationState: str
+        :param _ChcGatewayId: <p>所在的CHC网关的ID，只有专属网关才会返回。</p>
+        :type ChcGatewayId: str
+        :param _DedicatedClusterId: <p>所属的CDC集群ID。</p>
+        :type DedicatedClusterId: str
+        :param _NetworkMode: <p>业务网卡网络模式。</p><p>枚举值：</p><ul><li>DEPLOY： 部署网络模式</li><li>BUSINESS： 业务网络模式</li></ul>
+        :type NetworkMode: str
         """
         self._ChcId = None
         self._InstanceName = None
@@ -971,10 +961,13 @@ TENANT: 租赁
         self._LatestOperationErrorMsg = None
         self._LatestOperationName = None
         self._LatestOperationState = None
+        self._ChcGatewayId = None
+        self._DedicatedClusterId = None
+        self._NetworkMode = None
 
     @property
     def ChcId(self):
-        r"""CHC物理服务器ID。
+        r"""<p>CHC物理服务器ID。</p>
         :rtype: str
         """
         return self._ChcId
@@ -985,7 +978,7 @@ TENANT: 租赁
 
     @property
     def InstanceName(self):
-        r"""实例名称。
+        r"""<p>实例名称。</p>
         :rtype: str
         """
         return self._InstanceName
@@ -996,7 +989,7 @@ TENANT: 租赁
 
     @property
     def SerialNumber(self):
-        r"""服务器序列号。
+        r"""<p>服务器序列号。</p>
         :rtype: str
         """
         return self._SerialNumber
@@ -1007,15 +1000,7 @@ TENANT: 租赁
 
     @property
     def InstanceState(self):
-        r"""CHC的状态<br/>
-<ul>
-<li>INIT: 设备已录入。还未配置带外和部署网络</li>
-<li>READY: 已配置带外和部署网络</li>
-<li>PREPARED: 可分配云主机</li>
-<li>ONLINE: 已分配云主机</li>
-<li>OPERATING: 设备操作中，如正在配置带外网络等。</li>
-<li>CLEAR_NETWORK_FAILED: 清理带外和部署网络失败</li>
-</ul>
+        r"""<p>CHC的状态<br></p><ul><li>INIT: 设备已录入。还未配置带外和部署网络</li><li>READY: 已配置带外和部署网络</li><li>PREPARED: 可分配云主机</li><li>ONLINE: 已分配云主机</li><li>OPERATING: 设备操作中，如正在配置带外网络等。</li><li>CLEAR_NETWORK_FAILED: 清理带外和部署网络失败</li></ul>
         :rtype: str
         """
         return self._InstanceState
@@ -1026,7 +1011,7 @@ TENANT: 租赁
 
     @property
     def DeviceType(self):
-        r"""设备类型。
+        r"""<p>设备类型。</p>
         :rtype: str
         """
         return self._DeviceType
@@ -1037,7 +1022,7 @@ TENANT: 租赁
 
     @property
     def Placement(self):
-        r"""所属可用区
+        r"""<p>所属可用区。</p>
         :rtype: :class:`tencentcloud.cvm.v20170312.models.Placement`
         """
         return self._Placement
@@ -1048,7 +1033,7 @@ TENANT: 租赁
 
     @property
     def BmcVirtualPrivateCloud(self):
-        r"""带外网络。
+        r"""<p>带外网络。</p>
         :rtype: :class:`tencentcloud.cvm.v20170312.models.VirtualPrivateCloud`
         """
         return self._BmcVirtualPrivateCloud
@@ -1059,7 +1044,7 @@ TENANT: 租赁
 
     @property
     def BmcIp(self):
-        r"""带外网络Ip。
+        r"""<p>带外网络IP。</p>
         :rtype: str
         """
         return self._BmcIp
@@ -1070,7 +1055,7 @@ TENANT: 租赁
 
     @property
     def BmcSecurityGroupIds(self):
-        r"""带外网络安全组Id。
+        r"""<p>带外网络安全组ID。</p>
         :rtype: list of str
         """
         return self._BmcSecurityGroupIds
@@ -1081,7 +1066,7 @@ TENANT: 租赁
 
     @property
     def DeployVirtualPrivateCloud(self):
-        r"""部署网络。
+        r"""<p>部署网络。</p>
         :rtype: :class:`tencentcloud.cvm.v20170312.models.VirtualPrivateCloud`
         """
         return self._DeployVirtualPrivateCloud
@@ -1092,7 +1077,7 @@ TENANT: 租赁
 
     @property
     def DeployIp(self):
-        r"""部署网络Ip。
+        r"""<p>部署网络IP。</p>
         :rtype: str
         """
         return self._DeployIp
@@ -1103,7 +1088,7 @@ TENANT: 租赁
 
     @property
     def DeploySecurityGroupIds(self):
-        r"""部署网络安全组Id。
+        r"""<p>部署网络安全组ID。</p>
         :rtype: list of str
         """
         return self._DeploySecurityGroupIds
@@ -1114,7 +1099,7 @@ TENANT: 租赁
 
     @property
     def CvmInstanceId(self):
-        r"""关联的云主机Id。
+        r"""<p>关联的云主机ID。</p>
         :rtype: str
         """
         return self._CvmInstanceId
@@ -1125,7 +1110,7 @@ TENANT: 租赁
 
     @property
     def CreatedTime(self):
-        r"""服务器导入的时间。
+        r"""<p>服务器导入的时间。</p>
         :rtype: str
         """
         return self._CreatedTime
@@ -1136,7 +1121,7 @@ TENANT: 租赁
 
     @property
     def HardwareDescription(self):
-        r"""机型的硬件描述，分别为CPU核数，内存容量和磁盘容量
+        r"""<p>机型的硬件描述，分别为CPU核数，内存容量和磁盘容量。</p>
         :rtype: str
         """
         return self._HardwareDescription
@@ -1147,7 +1132,7 @@ TENANT: 租赁
 
     @property
     def CPU(self):
-        r"""CHC物理服务器的CPU核数
+        r"""<p>CHC物理服务器的CPU核数。</p>
         :rtype: int
         """
         return self._CPU
@@ -1158,7 +1143,7 @@ TENANT: 租赁
 
     @property
     def Memory(self):
-        r"""CHC物理服务器的内存大小，单位为GB
+        r"""<p>CHC物理服务器的内存大小，单位为GB。</p>
         :rtype: int
         """
         return self._Memory
@@ -1169,7 +1154,7 @@ TENANT: 租赁
 
     @property
     def Disk(self):
-        r"""CHC物理服务器的磁盘信息
+        r"""<p>CHC物理服务器的磁盘信息。</p>
         :rtype: str
         """
         return self._Disk
@@ -1180,7 +1165,7 @@ TENANT: 租赁
 
     @property
     def BmcMAC(self):
-        r"""带外网络下分配的MAC地址
+        r"""<p>带外网络下分配的MAC地址。</p>
         :rtype: str
         """
         return self._BmcMAC
@@ -1191,7 +1176,7 @@ TENANT: 租赁
 
     @property
     def DeployMAC(self):
-        r"""部署网络下分配的MAC地址
+        r"""<p>部署网络下分配的MAC地址。</p>
         :rtype: str
         """
         return self._DeployMAC
@@ -1202,9 +1187,7 @@ TENANT: 租赁
 
     @property
     def TenantType(self):
-        r"""设备托管类型。
-HOSTING: 托管
-TENANT: 租赁
+        r"""<p>设备托管类型。</p><p>枚举值：</p><ul><li>HOSTING： 托管类型。</li><li>TENANT： 租赁类型。</li></ul>
         :rtype: str
         """
         return self._TenantType
@@ -1215,7 +1198,7 @@ TENANT: 租赁
 
     @property
     def DeployExtraConfig(self):
-        r"""chc dhcp选项，用于minios调试。
+        r"""<p>CHC DHCP选项，用于客户自建PXE环境。</p>
         :rtype: :class:`tencentcloud.cvm.v20170312.models.ChcDeployExtraConfig`
         """
         return self._DeployExtraConfig
@@ -1226,7 +1209,7 @@ TENANT: 租赁
 
     @property
     def Gpu(self):
-        r"""GPU型号。
+        r"""<p>GPU型号。</p>
         :rtype: str
         """
         return self._Gpu
@@ -1237,7 +1220,7 @@ TENANT: 租赁
 
     @property
     def NetworkCard(self):
-        r"""网卡型号。主要指RDMA网卡。
+        r"""<p>网卡型号。主要指RDMA网卡。</p>
         :rtype: str
         """
         return self._NetworkCard
@@ -1248,7 +1231,7 @@ TENANT: 租赁
 
     @property
     def IsPredefinedType(self):
-        r"""是否是预定义机型。
+        r"""<p>是否是预定义机型。</p>
         :rtype: bool
         """
         return self._IsPredefinedType
@@ -1259,7 +1242,7 @@ TENANT: 租赁
 
     @property
     def ChcInstanceType(self):
-        r"""CHC云主机机型。
+        r"""<p>CHC云主机机型。</p>
         :rtype: str
         """
         return self._ChcInstanceType
@@ -1270,7 +1253,7 @@ TENANT: 租赁
 
     @property
     def ChcInstanceFamily(self):
-        r"""CHC云主机机型簇。
+        r"""<p>CHC云主机机型簇。</p>
         :rtype: str
         """
         return self._ChcInstanceFamily
@@ -1281,7 +1264,7 @@ TENANT: 租赁
 
     @property
     def ChcInstanceFamilyName(self):
-        r"""CHC云主机机型簇名称。
+        r"""<p>CHC云主机机型簇名称。</p>
         :rtype: str
         """
         return self._ChcInstanceFamilyName
@@ -1292,7 +1275,7 @@ TENANT: 租赁
 
     @property
     def ResaleAppId(self):
-        r"""转售客户的AppId。
+        r"""<p>转售客户的AppID。</p>
         :rtype: str
         """
         return self._ResaleAppId
@@ -1303,7 +1286,7 @@ TENANT: 租赁
 
     @property
     def ResaleAccountId(self):
-        r"""转售客户的账号ID。
+        r"""<p>转售客户的账号ID。</p>
         :rtype: str
         """
         return self._ResaleAccountId
@@ -1314,13 +1297,7 @@ TENANT: 租赁
 
     @property
     def SaleStatus(self):
-        r"""售卖状态。<br/>
-<ul>
-<li>NOT_FOR_SALE:不可售卖</li>
-<li>AVAILABLE: 可售卖</li>
-<li>SOLD: 已售卖</li>
-</ul>
-
+        r"""<p>售卖状态。<br></p><ul><li>NOT_FOR_SALE:不可售卖</li><li>AVAILABLE: 可售卖</li><li>SOLD: 已售卖</li></ul>
         :rtype: str
         """
         return self._SaleStatus
@@ -1331,7 +1308,7 @@ TENANT: 租赁
 
     @property
     def Tags(self):
-        r"""CHC物理服务器关联的标签列表。
+        r"""<p>CHC物理服务器关联的标签列表。</p>
         :rtype: list of Tag
         """
         return self._Tags
@@ -1342,7 +1319,7 @@ TENANT: 租赁
 
     @property
     def LatestOperation(self):
-        r"""最近操作
+        r"""<p>最近操作。</p>
         :rtype: str
         """
         return self._LatestOperation
@@ -1353,7 +1330,7 @@ TENANT: 租赁
 
     @property
     def LatestOperationErrorCode(self):
-        r"""最近操作错误码
+        r"""<p>最近操作错误码。</p>
         :rtype: str
         """
         return self._LatestOperationErrorCode
@@ -1364,7 +1341,7 @@ TENANT: 租赁
 
     @property
     def LatestOperationErrorMsg(self):
-        r"""最近操作错误详情和建议项
+        r"""<p>最近操作错误详情和建议项。</p>
         :rtype: str
         """
         return self._LatestOperationErrorMsg
@@ -1375,7 +1352,7 @@ TENANT: 租赁
 
     @property
     def LatestOperationName(self):
-        r"""最近操作名称
+        r"""<p>最近操作名称。</p>
         :rtype: str
         """
         return self._LatestOperationName
@@ -1386,7 +1363,7 @@ TENANT: 租赁
 
     @property
     def LatestOperationState(self):
-        r"""最近操作状态
+        r"""<p>最近操作状态。</p><p>枚举值：</p><ul><li>SUCCESS： 成功。</li><li>FAILED： 失败。</li></ul>
         :rtype: str
         """
         return self._LatestOperationState
@@ -1394,6 +1371,39 @@ TENANT: 租赁
     @LatestOperationState.setter
     def LatestOperationState(self, LatestOperationState):
         self._LatestOperationState = LatestOperationState
+
+    @property
+    def ChcGatewayId(self):
+        r"""<p>所在的CHC网关的ID，只有专属网关才会返回。</p>
+        :rtype: str
+        """
+        return self._ChcGatewayId
+
+    @ChcGatewayId.setter
+    def ChcGatewayId(self, ChcGatewayId):
+        self._ChcGatewayId = ChcGatewayId
+
+    @property
+    def DedicatedClusterId(self):
+        r"""<p>所属的CDC集群ID。</p>
+        :rtype: str
+        """
+        return self._DedicatedClusterId
+
+    @DedicatedClusterId.setter
+    def DedicatedClusterId(self, DedicatedClusterId):
+        self._DedicatedClusterId = DedicatedClusterId
+
+    @property
+    def NetworkMode(self):
+        r"""<p>业务网卡网络模式。</p><p>枚举值：</p><ul><li>DEPLOY： 部署网络模式</li><li>BUSINESS： 业务网络模式</li></ul>
+        :rtype: str
+        """
+        return self._NetworkMode
+
+    @NetworkMode.setter
+    def NetworkMode(self, NetworkMode):
+        self._NetworkMode = NetworkMode
 
 
     def _deserialize(self, params):
@@ -1447,6 +1457,9 @@ TENANT: 租赁
         self._LatestOperationErrorMsg = params.get("LatestOperationErrorMsg")
         self._LatestOperationName = params.get("LatestOperationName")
         self._LatestOperationState = params.get("LatestOperationState")
+        self._ChcGatewayId = params.get("ChcGatewayId")
+        self._DedicatedClusterId = params.get("DedicatedClusterId")
+        self._NetworkMode = params.get("NetworkMode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

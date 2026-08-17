@@ -3203,7 +3203,7 @@ class DlcClient(AbstractClient):
 
 
     def DescribeSaleResourceInfo(self, request):
-        r"""查询当前地域可售卖的资源规格和最大配额
+        r"""查询当前地域可售卖的资源规格、最大配额，以及库存情况。StatusCategory 与 DescribePartitionAvailableQuota 数据同源，将实时可新增数量映射为库存分级；当请求 Region 与资源池实际部署地域不一致，或服务 cold-start 快照尚未就绪时，StatusCategory 为 null。
 
         :param request: Request instance for DescribeSaleResourceInfo.
         :type request: :class:`tencentcloud.dlc.v20210125.models.DescribeSaleResourceInfoRequest`
@@ -5148,6 +5148,29 @@ class DlcClient(AbstractClient):
             body = self.call("ListExamples", params, headers=headers)
             response = json.loads(body)
             model = models.ListExamplesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ListImages(self, request):
+        r"""列出所有镜像
+
+        :param request: Request instance for ListImages.
+        :type request: :class:`tencentcloud.dlc.v20210125.models.ListImagesRequest`
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.ListImagesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ListImages", params, headers=headers)
+            response = json.loads(body)
+            model = models.ListImagesResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

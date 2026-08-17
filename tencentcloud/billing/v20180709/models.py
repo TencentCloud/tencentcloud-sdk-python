@@ -24190,25 +24190,30 @@ class DescribeCostDetailRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Limit: 数量，最大值为100
+        :param _Limit: <p>数量，最大值为100</p>
         :type Limit: int
-        :param _Offset: 偏移量
+        :param _Offset: <p>偏移量</p>
         :type Offset: int
-        :param _BeginTime: 周期开始时间，查询粒度为天级别，需传入时分秒参数，格式为yyyy-mm-dd hh:ii:ss，Month和BeginTime&EndTime必传一个，如果有该字段则Month字段无效。BeginTime和EndTime必须一起传，且为同一月份，暂不支持跨月拉取。可拉取的数据是开通消耗账单后，且距今 18 个月内的数据。
+        :param _BeginTime: <p>周期开始时间，查询粒度为天级别，需传入时分秒参数，格式为yyyy-mm-dd hh:ii:ss，Month和BeginTime&amp;EndTime必传一个，如果有该字段则Month字段无效。BeginTime和EndTime必须一起传，且为同一月份，暂不支持跨月拉取。可拉取的数据是开通消耗账单后，且距今 18 个月内的数据。</p>
         :type BeginTime: str
-        :param _EndTime: 周期结束时间，查询粒度为天级别，需传入时分秒参数，格式为yyyy-mm-dd hh:ii:ss，Month和BeginTime&EndTime必传一个，如果有该字段则Month字段无效。BeginTime和EndTime必须一起传，且为同一月份，暂不支持跨月拉取。可拉取的数据是开通消耗账单后，且距今 18 个月内的数据。
+        :param _EndTime: <p>周期结束时间，查询粒度为天级别，需传入时分秒参数，格式为yyyy-mm-dd hh:ii:ss，Month和BeginTime&amp;EndTime必传一个，如果有该字段则Month字段无效。BeginTime和EndTime必须一起传，且为同一月份，暂不支持跨月拉取。可拉取的数据是开通消耗账单后，且距今 18 个月内的数据。</p>
         :type EndTime: str
-        :param _NeedRecordNum: 是否需要访问列表的总记录数，用于前端分页
-1-表示需要， 0-表示不需要
+        :param _NeedRecordNum: <p>是否需要访问列表的总记录数，用于前端分页<br>1-表示需要， 0-表示不需要</p>
         :type NeedRecordNum: int
-        :param _Month: 月份，格式为yyyy-mm，Month和BeginTime&EndTime必传一个，如果有传BeginTime&EndTime则Month字段无效。不能早于开通消耗账单的月份，最多可拉取18个月内的数据。
+        :param _Month: <p>月份，格式为yyyy-mm，Month和BeginTime&amp;EndTime必传一个，如果有传BeginTime&amp;EndTime则Month字段无效。不能早于开通消耗账单的月份，最多可拉取18个月内的数据。</p>
         :type Month: str
-        :param _ProductCode: 查询指定产品信息
+        :param _ProductCode: <p>查询指定产品信息</p>
         :type ProductCode: str
-        :param _PayMode: 付费模式 prePay/postPay
+        :param _PayMode: <p>付费模式 prePay/postPay</p>
         :type PayMode: str
-        :param _ResourceId: 查询指定资源信息
+        :param _ResourceId: <p>查询指定资源信息</p>
         :type ResourceId: str
+        :param _BusinessCode: <p>产品名称代码</p>
+        :type BusinessCode: str
+        :param _ProjectId: <p>项目ID:资源所属项目ID</p>
+        :type ProjectId: str
+        :param _RegionId: <p>地域ID</p>
+        :type RegionId: str
         """
         self._Limit = None
         self._Offset = None
@@ -24219,10 +24224,13 @@ class DescribeCostDetailRequest(AbstractModel):
         self._ProductCode = None
         self._PayMode = None
         self._ResourceId = None
+        self._BusinessCode = None
+        self._ProjectId = None
+        self._RegionId = None
 
     @property
     def Limit(self):
-        r"""数量，最大值为100
+        r"""<p>数量，最大值为100</p>
         :rtype: int
         """
         return self._Limit
@@ -24233,7 +24241,7 @@ class DescribeCostDetailRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""偏移量
+        r"""<p>偏移量</p>
         :rtype: int
         """
         return self._Offset
@@ -24244,7 +24252,7 @@ class DescribeCostDetailRequest(AbstractModel):
 
     @property
     def BeginTime(self):
-        r"""周期开始时间，查询粒度为天级别，需传入时分秒参数，格式为yyyy-mm-dd hh:ii:ss，Month和BeginTime&EndTime必传一个，如果有该字段则Month字段无效。BeginTime和EndTime必须一起传，且为同一月份，暂不支持跨月拉取。可拉取的数据是开通消耗账单后，且距今 18 个月内的数据。
+        r"""<p>周期开始时间，查询粒度为天级别，需传入时分秒参数，格式为yyyy-mm-dd hh:ii:ss，Month和BeginTime&amp;EndTime必传一个，如果有该字段则Month字段无效。BeginTime和EndTime必须一起传，且为同一月份，暂不支持跨月拉取。可拉取的数据是开通消耗账单后，且距今 18 个月内的数据。</p>
         :rtype: str
         """
         return self._BeginTime
@@ -24255,7 +24263,7 @@ class DescribeCostDetailRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        r"""周期结束时间，查询粒度为天级别，需传入时分秒参数，格式为yyyy-mm-dd hh:ii:ss，Month和BeginTime&EndTime必传一个，如果有该字段则Month字段无效。BeginTime和EndTime必须一起传，且为同一月份，暂不支持跨月拉取。可拉取的数据是开通消耗账单后，且距今 18 个月内的数据。
+        r"""<p>周期结束时间，查询粒度为天级别，需传入时分秒参数，格式为yyyy-mm-dd hh:ii:ss，Month和BeginTime&amp;EndTime必传一个，如果有该字段则Month字段无效。BeginTime和EndTime必须一起传，且为同一月份，暂不支持跨月拉取。可拉取的数据是开通消耗账单后，且距今 18 个月内的数据。</p>
         :rtype: str
         """
         return self._EndTime
@@ -24266,8 +24274,7 @@ class DescribeCostDetailRequest(AbstractModel):
 
     @property
     def NeedRecordNum(self):
-        r"""是否需要访问列表的总记录数，用于前端分页
-1-表示需要， 0-表示不需要
+        r"""<p>是否需要访问列表的总记录数，用于前端分页<br>1-表示需要， 0-表示不需要</p>
         :rtype: int
         """
         return self._NeedRecordNum
@@ -24278,7 +24285,7 @@ class DescribeCostDetailRequest(AbstractModel):
 
     @property
     def Month(self):
-        r"""月份，格式为yyyy-mm，Month和BeginTime&EndTime必传一个，如果有传BeginTime&EndTime则Month字段无效。不能早于开通消耗账单的月份，最多可拉取18个月内的数据。
+        r"""<p>月份，格式为yyyy-mm，Month和BeginTime&amp;EndTime必传一个，如果有传BeginTime&amp;EndTime则Month字段无效。不能早于开通消耗账单的月份，最多可拉取18个月内的数据。</p>
         :rtype: str
         """
         return self._Month
@@ -24289,7 +24296,7 @@ class DescribeCostDetailRequest(AbstractModel):
 
     @property
     def ProductCode(self):
-        r"""查询指定产品信息
+        r"""<p>查询指定产品信息</p>
         :rtype: str
         """
         return self._ProductCode
@@ -24300,7 +24307,7 @@ class DescribeCostDetailRequest(AbstractModel):
 
     @property
     def PayMode(self):
-        r"""付费模式 prePay/postPay
+        r"""<p>付费模式 prePay/postPay</p>
         :rtype: str
         """
         return self._PayMode
@@ -24311,7 +24318,7 @@ class DescribeCostDetailRequest(AbstractModel):
 
     @property
     def ResourceId(self):
-        r"""查询指定资源信息
+        r"""<p>查询指定资源信息</p>
         :rtype: str
         """
         return self._ResourceId
@@ -24319,6 +24326,39 @@ class DescribeCostDetailRequest(AbstractModel):
     @ResourceId.setter
     def ResourceId(self, ResourceId):
         self._ResourceId = ResourceId
+
+    @property
+    def BusinessCode(self):
+        r"""<p>产品名称代码</p>
+        :rtype: str
+        """
+        return self._BusinessCode
+
+    @BusinessCode.setter
+    def BusinessCode(self, BusinessCode):
+        self._BusinessCode = BusinessCode
+
+    @property
+    def ProjectId(self):
+        r"""<p>项目ID:资源所属项目ID</p>
+        :rtype: str
+        """
+        return self._ProjectId
+
+    @ProjectId.setter
+    def ProjectId(self, ProjectId):
+        self._ProjectId = ProjectId
+
+    @property
+    def RegionId(self):
+        r"""<p>地域ID</p>
+        :rtype: str
+        """
+        return self._RegionId
+
+    @RegionId.setter
+    def RegionId(self, RegionId):
+        self._RegionId = RegionId
 
 
     def _deserialize(self, params):
@@ -24331,6 +24371,9 @@ class DescribeCostDetailRequest(AbstractModel):
         self._ProductCode = params.get("ProductCode")
         self._PayMode = params.get("PayMode")
         self._ResourceId = params.get("ResourceId")
+        self._BusinessCode = params.get("BusinessCode")
+        self._ProjectId = params.get("ProjectId")
+        self._RegionId = params.get("RegionId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -24348,9 +24391,9 @@ class DescribeCostDetailResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DetailSet: 消耗明细
+        :param _DetailSet: <p>消耗明细</p>
         :type DetailSet: list of CostDetail
-        :param _Total: 记录数
+        :param _Total: <p>记录数</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Total: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -24362,7 +24405,7 @@ class DescribeCostDetailResponse(AbstractModel):
 
     @property
     def DetailSet(self):
-        r"""消耗明细
+        r"""<p>消耗明细</p>
         :rtype: list of CostDetail
         """
         return self._DetailSet
@@ -24373,7 +24416,7 @@ class DescribeCostDetailResponse(AbstractModel):
 
     @property
     def Total(self):
-        r"""记录数
+        r"""<p>记录数</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -25333,22 +25376,26 @@ class DescribeCostSummaryByResourceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _BeginTime: 目前必须和EndTime相同月份，不支持跨月查询，且查询结果是整月数据，例如 BeginTime为2018-09，EndTime 为 2018-09，查询结果是 2018 年 9 月数据。
+        :param _BeginTime: <p>目前必须和EndTime相同月份，不支持跨月查询，且查询结果是整月数据，例如 BeginTime为2018-09，EndTime 为 2018-09，查询结果是 2018 年 9 月数据。</p>
         :type BeginTime: str
-        :param _EndTime: 目前必须和BeginTime为相同月份，不支持跨月查询，且查询结果是整月数据，例如 BeginTime为2018-09，EndTime 为 2018-09，查询结果是 2018 年 9 月数据。
+        :param _EndTime: <p>目前必须和BeginTime为相同月份，不支持跨月查询，且查询结果是整月数据，例如 BeginTime为2018-09，EndTime 为 2018-09，查询结果是 2018 年 9 月数据。</p>
         :type EndTime: str
-        :param _Limit: 每次获取数据量，最大值为100
+        :param _Limit: <p>每次获取数据量，最大值为100</p>
         :type Limit: int
-        :param _Offset: 偏移量,默认从0开始
+        :param _Offset: <p>偏移量,默认从0开始</p>
         :type Offset: int
-        :param _PayerUin: 查询账单数据的用户UIN
+        :param _PayerUin: <p>查询账单数据的用户UIN</p>
         :type PayerUin: str
-        :param _NeedRecordNum: 是否需要返回记录数量，0不需要，1需要，默认不需要
+        :param _NeedRecordNum: <p>是否需要返回记录数量，0不需要，1需要，默认不需要</p>
         :type NeedRecordNum: int
-        :param _NeedConditionValue: 是否需要返回过滤条件，0不需要，1需要，默认不需要
+        :param _NeedConditionValue: <p>是否需要返回过滤条件，0不需要，1需要，默认不需要</p>
         :type NeedConditionValue: int
-        :param _Conditions: 过滤条件，只支持ResourceKeyword(资源关键字，支持资源id及资源名称模糊查询)，ProjectIds（项目id），RegionIds(地域id)，PayModes(付费模式，可选prePay和postPay)，HideFreeCost（是否隐藏0元流水，可选0和1），OrderByCost（按费用排序规则，可选desc和asc）
+        :param _Conditions: <p>过滤条件，只支持ResourceKeyword(资源关键字，支持资源id及资源名称模糊查询)，ProjectIds（项目id），RegionIds(地域id)，PayModes(付费模式，可选prePay和postPay)，HideFreeCost（是否隐藏0元流水，可选0和1），OrderByCost（按费用排序规则，可选desc和asc）</p>
         :type Conditions: :class:`tencentcloud.billing.v20180709.models.Conditions`
+        :param _TagKey: <p>分账标签键，用户自定义</p>
+        :type TagKey: str
+        :param _TagValue: <p>分账标签值，该参数为空表示该标签键下未设置标签值的记录</p>
+        :type TagValue: str
         """
         self._BeginTime = None
         self._EndTime = None
@@ -25358,10 +25405,12 @@ class DescribeCostSummaryByResourceRequest(AbstractModel):
         self._NeedRecordNum = None
         self._NeedConditionValue = None
         self._Conditions = None
+        self._TagKey = None
+        self._TagValue = None
 
     @property
     def BeginTime(self):
-        r"""目前必须和EndTime相同月份，不支持跨月查询，且查询结果是整月数据，例如 BeginTime为2018-09，EndTime 为 2018-09，查询结果是 2018 年 9 月数据。
+        r"""<p>目前必须和EndTime相同月份，不支持跨月查询，且查询结果是整月数据，例如 BeginTime为2018-09，EndTime 为 2018-09，查询结果是 2018 年 9 月数据。</p>
         :rtype: str
         """
         return self._BeginTime
@@ -25372,7 +25421,7 @@ class DescribeCostSummaryByResourceRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        r"""目前必须和BeginTime为相同月份，不支持跨月查询，且查询结果是整月数据，例如 BeginTime为2018-09，EndTime 为 2018-09，查询结果是 2018 年 9 月数据。
+        r"""<p>目前必须和BeginTime为相同月份，不支持跨月查询，且查询结果是整月数据，例如 BeginTime为2018-09，EndTime 为 2018-09，查询结果是 2018 年 9 月数据。</p>
         :rtype: str
         """
         return self._EndTime
@@ -25383,7 +25432,7 @@ class DescribeCostSummaryByResourceRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""每次获取数据量，最大值为100
+        r"""<p>每次获取数据量，最大值为100</p>
         :rtype: int
         """
         return self._Limit
@@ -25394,7 +25443,7 @@ class DescribeCostSummaryByResourceRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""偏移量,默认从0开始
+        r"""<p>偏移量,默认从0开始</p>
         :rtype: int
         """
         return self._Offset
@@ -25405,7 +25454,7 @@ class DescribeCostSummaryByResourceRequest(AbstractModel):
 
     @property
     def PayerUin(self):
-        r"""查询账单数据的用户UIN
+        r"""<p>查询账单数据的用户UIN</p>
         :rtype: str
         """
         return self._PayerUin
@@ -25416,7 +25465,7 @@ class DescribeCostSummaryByResourceRequest(AbstractModel):
 
     @property
     def NeedRecordNum(self):
-        r"""是否需要返回记录数量，0不需要，1需要，默认不需要
+        r"""<p>是否需要返回记录数量，0不需要，1需要，默认不需要</p>
         :rtype: int
         """
         return self._NeedRecordNum
@@ -25427,7 +25476,7 @@ class DescribeCostSummaryByResourceRequest(AbstractModel):
 
     @property
     def NeedConditionValue(self):
-        r"""是否需要返回过滤条件，0不需要，1需要，默认不需要
+        r"""<p>是否需要返回过滤条件，0不需要，1需要，默认不需要</p>
         :rtype: int
         """
         return self._NeedConditionValue
@@ -25438,7 +25487,7 @@ class DescribeCostSummaryByResourceRequest(AbstractModel):
 
     @property
     def Conditions(self):
-        r"""过滤条件，只支持ResourceKeyword(资源关键字，支持资源id及资源名称模糊查询)，ProjectIds（项目id），RegionIds(地域id)，PayModes(付费模式，可选prePay和postPay)，HideFreeCost（是否隐藏0元流水，可选0和1），OrderByCost（按费用排序规则，可选desc和asc）
+        r"""<p>过滤条件，只支持ResourceKeyword(资源关键字，支持资源id及资源名称模糊查询)，ProjectIds（项目id），RegionIds(地域id)，PayModes(付费模式，可选prePay和postPay)，HideFreeCost（是否隐藏0元流水，可选0和1），OrderByCost（按费用排序规则，可选desc和asc）</p>
         :rtype: :class:`tencentcloud.billing.v20180709.models.Conditions`
         """
         return self._Conditions
@@ -25446,6 +25495,28 @@ class DescribeCostSummaryByResourceRequest(AbstractModel):
     @Conditions.setter
     def Conditions(self, Conditions):
         self._Conditions = Conditions
+
+    @property
+    def TagKey(self):
+        r"""<p>分账标签键，用户自定义</p>
+        :rtype: str
+        """
+        return self._TagKey
+
+    @TagKey.setter
+    def TagKey(self, TagKey):
+        self._TagKey = TagKey
+
+    @property
+    def TagValue(self):
+        r"""<p>分账标签值，该参数为空表示该标签键下未设置标签值的记录</p>
+        :rtype: str
+        """
+        return self._TagValue
+
+    @TagValue.setter
+    def TagValue(self, TagValue):
+        self._TagValue = TagValue
 
 
     def _deserialize(self, params):
@@ -25459,6 +25530,8 @@ class DescribeCostSummaryByResourceRequest(AbstractModel):
         if params.get("Conditions") is not None:
             self._Conditions = Conditions()
             self._Conditions._deserialize(params.get("Conditions"))
+        self._TagKey = params.get("TagKey")
+        self._TagValue = params.get("TagValue")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -25476,17 +25549,17 @@ class DescribeCostSummaryByResourceResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Ready: 数据是否准备好，0未准备好，1准备好
+        :param _Ready: <p>数据是否准备好，0未准备好，1准备好</p>
         :type Ready: int
-        :param _Total: 消耗详情
+        :param _Total: <p>消耗详情</p>
         :type Total: :class:`tencentcloud.billing.v20180709.models.ConsumptionSummaryTotal`
-        :param _ConditionValue: 过滤条件
+        :param _ConditionValue: <p>过滤条件</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ConditionValue: :class:`tencentcloud.billing.v20180709.models.ConsumptionResourceSummaryConditionValue`
-        :param _RecordNum: 记录数量
+        :param _RecordNum: <p>记录数量</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type RecordNum: int
-        :param _Data: 资源消耗详情
+        :param _Data: <p>资源消耗详情</p>
         :type Data: list of ConsumptionResourceSummaryDataItem
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -25500,7 +25573,7 @@ class DescribeCostSummaryByResourceResponse(AbstractModel):
 
     @property
     def Ready(self):
-        r"""数据是否准备好，0未准备好，1准备好
+        r"""<p>数据是否准备好，0未准备好，1准备好</p>
         :rtype: int
         """
         return self._Ready
@@ -25511,7 +25584,7 @@ class DescribeCostSummaryByResourceResponse(AbstractModel):
 
     @property
     def Total(self):
-        r"""消耗详情
+        r"""<p>消耗详情</p>
         :rtype: :class:`tencentcloud.billing.v20180709.models.ConsumptionSummaryTotal`
         """
         return self._Total
@@ -25522,7 +25595,7 @@ class DescribeCostSummaryByResourceResponse(AbstractModel):
 
     @property
     def ConditionValue(self):
-        r"""过滤条件
+        r"""<p>过滤条件</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.billing.v20180709.models.ConsumptionResourceSummaryConditionValue`
         """
@@ -25534,7 +25607,7 @@ class DescribeCostSummaryByResourceResponse(AbstractModel):
 
     @property
     def RecordNum(self):
-        r"""记录数量
+        r"""<p>记录数量</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -25546,7 +25619,7 @@ class DescribeCostSummaryByResourceResponse(AbstractModel):
 
     @property
     def Data(self):
-        r"""资源消耗详情
+        r"""<p>资源消耗详情</p>
         :rtype: list of ConsumptionResourceSummaryDataItem
         """
         return self._Data

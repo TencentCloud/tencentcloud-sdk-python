@@ -7671,6 +7671,12 @@ class CreateInferenceModelRequest(AbstractModel):
         :type Tasks: list of str
         :param _ModelUid: <p>模型 UID（可选，前端预先生成的 UID，不传则后端自动生成）</p>
         :type ModelUid: str
+        :param _ResourceTags: <p>系统标签列表（TagKey-TagValue）</p>
+        :type ResourceTags: list of Tag
+        :param _GooseFSConfig: <p>模型文件来源于goosefs</p>
+        :type GooseFSConfig: :class:`tencentcloud.dlc.v20210125.models.GooseFSConfig`
+        :param _StorageType: <p>模型上传来源类型</p><p>枚举值：</p><ul><li>Local： 本地上传</li><li>COS： COS上传</li><li>CFS： CFS上传</li><li>CFSTurbo： CFSTurbo上传</li><li>GooseFS： GooseFS上传</li></ul>
+        :type StorageType: str
         """
         self._Name = None
         self._ModelType = None
@@ -7683,6 +7689,9 @@ class CreateInferenceModelRequest(AbstractModel):
         self._UseCustomStorage = None
         self._Tasks = None
         self._ModelUid = None
+        self._ResourceTags = None
+        self._GooseFSConfig = None
+        self._StorageType = None
 
     @property
     def Name(self):
@@ -7805,6 +7814,39 @@ class CreateInferenceModelRequest(AbstractModel):
     def ModelUid(self, ModelUid):
         self._ModelUid = ModelUid
 
+    @property
+    def ResourceTags(self):
+        r"""<p>系统标签列表（TagKey-TagValue）</p>
+        :rtype: list of Tag
+        """
+        return self._ResourceTags
+
+    @ResourceTags.setter
+    def ResourceTags(self, ResourceTags):
+        self._ResourceTags = ResourceTags
+
+    @property
+    def GooseFSConfig(self):
+        r"""<p>模型文件来源于goosefs</p>
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.GooseFSConfig`
+        """
+        return self._GooseFSConfig
+
+    @GooseFSConfig.setter
+    def GooseFSConfig(self, GooseFSConfig):
+        self._GooseFSConfig = GooseFSConfig
+
+    @property
+    def StorageType(self):
+        r"""<p>模型上传来源类型</p><p>枚举值：</p><ul><li>Local： 本地上传</li><li>COS： COS上传</li><li>CFS： CFS上传</li><li>CFSTurbo： CFSTurbo上传</li><li>GooseFS： GooseFS上传</li></ul>
+        :rtype: str
+        """
+        return self._StorageType
+
+    @StorageType.setter
+    def StorageType(self, StorageType):
+        self._StorageType = StorageType
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -7818,6 +7860,16 @@ class CreateInferenceModelRequest(AbstractModel):
         self._UseCustomStorage = params.get("UseCustomStorage")
         self._Tasks = params.get("Tasks")
         self._ModelUid = params.get("ModelUid")
+        if params.get("ResourceTags") is not None:
+            self._ResourceTags = []
+            for item in params.get("ResourceTags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._ResourceTags.append(obj)
+        if params.get("GooseFSConfig") is not None:
+            self._GooseFSConfig = GooseFSConfig()
+            self._GooseFSConfig._deserialize(params.get("GooseFSConfig"))
+        self._StorageType = params.get("StorageType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7876,6 +7928,8 @@ class CreateInferenceModelResponse(AbstractModel):
         :type UpdateTime: int
         :param _SubAccountUin: <p>Sub UIN</p>
         :type SubAccountUin: str
+        :param _ResourceTags: <p>系统标签列表（TagKey-TagValue）</p>
+        :type ResourceTags: list of Tag
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -7899,6 +7953,7 @@ class CreateInferenceModelResponse(AbstractModel):
         self._CreateTime = None
         self._UpdateTime = None
         self._SubAccountUin = None
+        self._ResourceTags = None
         self._RequestId = None
 
     @property
@@ -8123,6 +8178,17 @@ class CreateInferenceModelResponse(AbstractModel):
         self._SubAccountUin = SubAccountUin
 
     @property
+    def ResourceTags(self):
+        r"""<p>系统标签列表（TagKey-TagValue）</p>
+        :rtype: list of Tag
+        """
+        return self._ResourceTags
+
+    @ResourceTags.setter
+    def ResourceTags(self, ResourceTags):
+        self._ResourceTags = ResourceTags
+
+    @property
     def RequestId(self):
         r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -8155,6 +8221,12 @@ class CreateInferenceModelResponse(AbstractModel):
         self._CreateTime = params.get("CreateTime")
         self._UpdateTime = params.get("UpdateTime")
         self._SubAccountUin = params.get("SubAccountUin")
+        if params.get("ResourceTags") is not None:
+            self._ResourceTags = []
+            for item in params.get("ResourceTags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._ResourceTags.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -8201,6 +8273,14 @@ class CreateInferenceServiceRequest(AbstractModel):
         :type AutoscalerOptions: str
         :param _ApiKeyIds: <p>ApiKeyIds</p>
         :type ApiKeyIds: list of str
+        :param _AdvancedOptions: <p>AdvancedOptions 高级参数 JSON 字符串（可选），扁平 KV 结构，作用于 K8s RayService CR YAML 字段级</p>
+        :type AdvancedOptions: str
+        :param _ResourceTags: <p>系统标签列表（TagKey-TagValue）</p>
+        :type ResourceTags: list of Tag
+        :param _IsCustom: <p>自定义RayServe提交</p>
+        :type IsCustom: bool
+        :param _RuntimeEnv: <p>python runtime env</p>
+        :type RuntimeEnv: str
         """
         self._Name = None
         self._ModelUid = None
@@ -8220,6 +8300,10 @@ class CreateInferenceServiceRequest(AbstractModel):
         self._MaxReplicas = None
         self._AutoscalerOptions = None
         self._ApiKeyIds = None
+        self._AdvancedOptions = None
+        self._ResourceTags = None
+        self._IsCustom = None
+        self._RuntimeEnv = None
 
     @property
     def Name(self):
@@ -8419,6 +8503,50 @@ class CreateInferenceServiceRequest(AbstractModel):
     def ApiKeyIds(self, ApiKeyIds):
         self._ApiKeyIds = ApiKeyIds
 
+    @property
+    def AdvancedOptions(self):
+        r"""<p>AdvancedOptions 高级参数 JSON 字符串（可选），扁平 KV 结构，作用于 K8s RayService CR YAML 字段级</p>
+        :rtype: str
+        """
+        return self._AdvancedOptions
+
+    @AdvancedOptions.setter
+    def AdvancedOptions(self, AdvancedOptions):
+        self._AdvancedOptions = AdvancedOptions
+
+    @property
+    def ResourceTags(self):
+        r"""<p>系统标签列表（TagKey-TagValue）</p>
+        :rtype: list of Tag
+        """
+        return self._ResourceTags
+
+    @ResourceTags.setter
+    def ResourceTags(self, ResourceTags):
+        self._ResourceTags = ResourceTags
+
+    @property
+    def IsCustom(self):
+        r"""<p>自定义RayServe提交</p>
+        :rtype: bool
+        """
+        return self._IsCustom
+
+    @IsCustom.setter
+    def IsCustom(self, IsCustom):
+        self._IsCustom = IsCustom
+
+    @property
+    def RuntimeEnv(self):
+        r"""<p>python runtime env</p>
+        :rtype: str
+        """
+        return self._RuntimeEnv
+
+    @RuntimeEnv.setter
+    def RuntimeEnv(self, RuntimeEnv):
+        self._RuntimeEnv = RuntimeEnv
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -8439,6 +8567,15 @@ class CreateInferenceServiceRequest(AbstractModel):
         self._MaxReplicas = params.get("MaxReplicas")
         self._AutoscalerOptions = params.get("AutoscalerOptions")
         self._ApiKeyIds = params.get("ApiKeyIds")
+        self._AdvancedOptions = params.get("AdvancedOptions")
+        if params.get("ResourceTags") is not None:
+            self._ResourceTags = []
+            for item in params.get("ResourceTags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._ResourceTags.append(obj)
+        self._IsCustom = params.get("IsCustom")
+        self._RuntimeEnv = params.get("RuntimeEnv")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -8529,6 +8666,14 @@ class CreateInferenceServiceResponse(AbstractModel):
         :type CpuResourceSummary: :class:`tencentcloud.dlc.v20210125.models.CpuSummaryItem`
         :param _ResourceConfig: <p>资源配置（JSON 字符串，取自第一个部署）</p>
         :type ResourceConfig: str
+        :param _AdvancedOptions: <p>AdvancedOptions 高级参数 JSON 字符串（扁平 KV 结构，取自第一个部署）</p>
+        :type AdvancedOptions: str
+        :param _ResourceTags: <p>系统标签列表（TagKey-TagValue）</p>
+        :type ResourceTags: list of Tag
+        :param _DeploymentMode: <p>部署模式</p>
+        :type DeploymentMode: str
+        :param _IsCustom: <p>是否是自定义 RayServe 创建</p>
+        :type IsCustom: bool
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -8558,6 +8703,10 @@ class CreateInferenceServiceResponse(AbstractModel):
         self._SubAccountUin = None
         self._CpuResourceSummary = None
         self._ResourceConfig = None
+        self._AdvancedOptions = None
+        self._ResourceTags = None
+        self._DeploymentMode = None
+        self._IsCustom = None
         self._RequestId = None
 
     @property
@@ -8868,6 +9017,50 @@ class CreateInferenceServiceResponse(AbstractModel):
         self._ResourceConfig = ResourceConfig
 
     @property
+    def AdvancedOptions(self):
+        r"""<p>AdvancedOptions 高级参数 JSON 字符串（扁平 KV 结构，取自第一个部署）</p>
+        :rtype: str
+        """
+        return self._AdvancedOptions
+
+    @AdvancedOptions.setter
+    def AdvancedOptions(self, AdvancedOptions):
+        self._AdvancedOptions = AdvancedOptions
+
+    @property
+    def ResourceTags(self):
+        r"""<p>系统标签列表（TagKey-TagValue）</p>
+        :rtype: list of Tag
+        """
+        return self._ResourceTags
+
+    @ResourceTags.setter
+    def ResourceTags(self, ResourceTags):
+        self._ResourceTags = ResourceTags
+
+    @property
+    def DeploymentMode(self):
+        r"""<p>部署模式</p>
+        :rtype: str
+        """
+        return self._DeploymentMode
+
+    @DeploymentMode.setter
+    def DeploymentMode(self, DeploymentMode):
+        self._DeploymentMode = DeploymentMode
+
+    @property
+    def IsCustom(self):
+        r"""<p>是否是自定义 RayServe 创建</p>
+        :rtype: bool
+        """
+        return self._IsCustom
+
+    @IsCustom.setter
+    def IsCustom(self, IsCustom):
+        self._IsCustom = IsCustom
+
+    @property
     def RequestId(self):
         r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -8908,6 +9101,15 @@ class CreateInferenceServiceResponse(AbstractModel):
             self._CpuResourceSummary = CpuSummaryItem()
             self._CpuResourceSummary._deserialize(params.get("CpuResourceSummary"))
         self._ResourceConfig = params.get("ResourceConfig")
+        self._AdvancedOptions = params.get("AdvancedOptions")
+        if params.get("ResourceTags") is not None:
+            self._ResourceTags = []
+            for item in params.get("ResourceTags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._ResourceTags.append(obj)
+        self._DeploymentMode = params.get("DeploymentMode")
+        self._IsCustom = params.get("IsCustom")
         self._RequestId = params.get("RequestId")
 
 
@@ -10982,12 +11184,18 @@ class CreateModelVersionRequest(AbstractModel):
         :type StorageUri: str
         :param _UseCustomStorage: <p>是否使用用户自带存储桶（默认 false 表示平台托管）</p>
         :type UseCustomStorage: bool
+        :param _GooseFSConfig: <p>创建模型时，模型从goosfe里面选取，则需要传递该参数</p>
+        :type GooseFSConfig: :class:`tencentcloud.dlc.v20210125.models.GooseFSConfig`
+        :param _StorageType: <p>模型上传路径类型</p><p>枚举值：</p><ul><li>LOCAL： 本地上传</li><li>CFS： CFS上传</li><li>COS： COS上传</li><li>CFSTurbo： CFSTurbo上传</li><li>GooseFS： GooseFS上传</li></ul><p>选择cos、cfs、cfstrubo则必须要传storageuri，选择local时不能传递goosefsconfig</p>
+        :type StorageType: str
         """
         self._ModelUid = None
         self._ModelVersion = None
         self._Description = None
         self._StorageUri = None
         self._UseCustomStorage = None
+        self._GooseFSConfig = None
+        self._StorageType = None
 
     @property
     def ModelUid(self):
@@ -11044,6 +11252,28 @@ class CreateModelVersionRequest(AbstractModel):
     def UseCustomStorage(self, UseCustomStorage):
         self._UseCustomStorage = UseCustomStorage
 
+    @property
+    def GooseFSConfig(self):
+        r"""<p>创建模型时，模型从goosfe里面选取，则需要传递该参数</p>
+        :rtype: :class:`tencentcloud.dlc.v20210125.models.GooseFSConfig`
+        """
+        return self._GooseFSConfig
+
+    @GooseFSConfig.setter
+    def GooseFSConfig(self, GooseFSConfig):
+        self._GooseFSConfig = GooseFSConfig
+
+    @property
+    def StorageType(self):
+        r"""<p>模型上传路径类型</p><p>枚举值：</p><ul><li>LOCAL： 本地上传</li><li>CFS： CFS上传</li><li>COS： COS上传</li><li>CFSTurbo： CFSTurbo上传</li><li>GooseFS： GooseFS上传</li></ul><p>选择cos、cfs、cfstrubo则必须要传storageuri，选择local时不能传递goosefsconfig</p>
+        :rtype: str
+        """
+        return self._StorageType
+
+    @StorageType.setter
+    def StorageType(self, StorageType):
+        self._StorageType = StorageType
+
 
     def _deserialize(self, params):
         self._ModelUid = params.get("ModelUid")
@@ -11051,6 +11281,10 @@ class CreateModelVersionRequest(AbstractModel):
         self._Description = params.get("Description")
         self._StorageUri = params.get("StorageUri")
         self._UseCustomStorage = params.get("UseCustomStorage")
+        if params.get("GooseFSConfig") is not None:
+            self._GooseFSConfig = GooseFSConfig()
+            self._GooseFSConfig._deserialize(params.get("GooseFSConfig"))
+        self._StorageType = params.get("StorageType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -28599,8 +28833,11 @@ class DescribeMCPTaskResultRequest(AbstractModel):
         r"""
         :param _TaskId: <p>任务ID</p>
         :type TaskId: str
+        :param _NextToken: <p>下一次请求数据</p>
+        :type NextToken: str
         """
         self._TaskId = None
+        self._NextToken = None
 
     @property
     def TaskId(self):
@@ -28613,9 +28850,21 @@ class DescribeMCPTaskResultRequest(AbstractModel):
     def TaskId(self, TaskId):
         self._TaskId = TaskId
 
+    @property
+    def NextToken(self):
+        r"""<p>下一次请求数据</p>
+        :rtype: str
+        """
+        return self._NextToken
+
+    @NextToken.setter
+    def NextToken(self, NextToken):
+        self._NextToken = NextToken
+
 
     def _deserialize(self, params):
         self._TaskId = params.get("TaskId")
+        self._NextToken = params.get("NextToken")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -30784,7 +31033,7 @@ class DescribeSaleResourceInfoResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SaleResourceInfoList: 可售卖资源规格列表
+        :param _SaleResourceInfoList: 可售卖资源规格列表，包含规格、步长、单账户上限、以及库存情况
         :type SaleResourceInfoList: list of ResourceSaleInfo
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -30794,7 +31043,7 @@ class DescribeSaleResourceInfoResponse(AbstractModel):
 
     @property
     def SaleResourceInfoList(self):
-        r"""可售卖资源规格列表
+        r"""可售卖资源规格列表，包含规格、步长、单账户上限、以及库存情况
         :rtype: list of ResourceSaleInfo
         """
         return self._SaleResourceInfoList
@@ -40523,6 +40772,9 @@ class GetInferenceModelResponse(AbstractModel):
         :type UpdateTime: int
         :param _SubAccountUin: <p>Sub UIN</p>
         :type SubAccountUin: str
+        :param _ResourceTags: <p>系统标签列表（TagKey-TagValue）</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResourceTags: list of Tag
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -40549,6 +40801,7 @@ class GetInferenceModelResponse(AbstractModel):
         self._CreateTime = None
         self._UpdateTime = None
         self._SubAccountUin = None
+        self._ResourceTags = None
         self._RequestId = None
 
     @property
@@ -40805,6 +41058,18 @@ class GetInferenceModelResponse(AbstractModel):
         self._SubAccountUin = SubAccountUin
 
     @property
+    def ResourceTags(self):
+        r"""<p>系统标签列表（TagKey-TagValue）</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of Tag
+        """
+        return self._ResourceTags
+
+    @ResourceTags.setter
+    def ResourceTags(self, ResourceTags):
+        self._ResourceTags = ResourceTags
+
+    @property
     def RequestId(self):
         r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -40840,6 +41105,12 @@ class GetInferenceModelResponse(AbstractModel):
         self._CreateTime = params.get("CreateTime")
         self._UpdateTime = params.get("UpdateTime")
         self._SubAccountUin = params.get("SubAccountUin")
+        if params.get("ResourceTags") is not None:
+            self._ResourceTags = []
+            for item in params.get("ResourceTags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._ResourceTags.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -40958,6 +41229,12 @@ class GetInferenceServiceResponse(AbstractModel):
         :type CpuResourceSummary: :class:`tencentcloud.dlc.v20210125.models.CpuSummaryItem`
         :param _ResourceConfig: <p>资源配置（JSON 字符串，取自第一个部署）</p>
         :type ResourceConfig: str
+        :param _DeploymentMode: <p>部署模式</p>
+        :type DeploymentMode: str
+        :param _IsCustom: <p>是否为自定义代码部署</p>
+        :type IsCustom: bool
+        :param _ResourceTags: <p>系统标签列表（TagKey-TagValue）</p>
+        :type ResourceTags: list of Tag
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -40986,6 +41263,9 @@ class GetInferenceServiceResponse(AbstractModel):
         self._SubAccountUin = None
         self._CpuResourceSummary = None
         self._ResourceConfig = None
+        self._DeploymentMode = None
+        self._IsCustom = None
+        self._ResourceTags = None
         self._RequestId = None
 
     @property
@@ -41286,6 +41566,39 @@ class GetInferenceServiceResponse(AbstractModel):
         self._ResourceConfig = ResourceConfig
 
     @property
+    def DeploymentMode(self):
+        r"""<p>部署模式</p>
+        :rtype: str
+        """
+        return self._DeploymentMode
+
+    @DeploymentMode.setter
+    def DeploymentMode(self, DeploymentMode):
+        self._DeploymentMode = DeploymentMode
+
+    @property
+    def IsCustom(self):
+        r"""<p>是否为自定义代码部署</p>
+        :rtype: bool
+        """
+        return self._IsCustom
+
+    @IsCustom.setter
+    def IsCustom(self, IsCustom):
+        self._IsCustom = IsCustom
+
+    @property
+    def ResourceTags(self):
+        r"""<p>系统标签列表（TagKey-TagValue）</p>
+        :rtype: list of Tag
+        """
+        return self._ResourceTags
+
+    @ResourceTags.setter
+    def ResourceTags(self, ResourceTags):
+        self._ResourceTags = ResourceTags
+
+    @property
     def RequestId(self):
         r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -41330,6 +41643,14 @@ class GetInferenceServiceResponse(AbstractModel):
             self._CpuResourceSummary = CpuSummaryItem()
             self._CpuResourceSummary._deserialize(params.get("CpuResourceSummary"))
         self._ResourceConfig = params.get("ResourceConfig")
+        self._DeploymentMode = params.get("DeploymentMode")
+        self._IsCustom = params.get("IsCustom")
+        if params.get("ResourceTags") is not None:
+            self._ResourceTags = []
+            for item in params.get("ResourceTags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._ResourceTags.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -46987,10 +47308,142 @@ class GetResourceConfigResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class GooseFSConfig(AbstractModel):
+    r"""推理模型接入goosefs参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: <p>goosefs集群id</p>
+        :type ClusterId: str
+        :param _GooseFSPath: <p>goosefs命名空间名称</p>
+        :type GooseFSPath: str
+        :param _MasterAddresses: <p>主从节点信息</p>
+        :type MasterAddresses: list of str
+        """
+        self._ClusterId = None
+        self._GooseFSPath = None
+        self._MasterAddresses = None
+
+    @property
+    def ClusterId(self):
+        r"""<p>goosefs集群id</p>
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def GooseFSPath(self):
+        r"""<p>goosefs命名空间名称</p>
+        :rtype: str
+        """
+        return self._GooseFSPath
+
+    @GooseFSPath.setter
+    def GooseFSPath(self, GooseFSPath):
+        self._GooseFSPath = GooseFSPath
+
+    @property
+    def MasterAddresses(self):
+        r"""<p>主从节点信息</p>
+        :rtype: list of str
+        """
+        return self._MasterAddresses
+
+    @MasterAddresses.setter
+    def MasterAddresses(self, MasterAddresses):
+        self._MasterAddresses = MasterAddresses
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        self._GooseFSPath = params.get("GooseFSPath")
+        self._MasterAddresses = params.get("MasterAddresses")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class GpuSummaryItem(AbstractModel):
     r"""运行中部署的 GPU 资源汇总
 
     """
+
+    def __init__(self):
+        r"""
+        :param _GpuType: <p>GPU 型号</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GpuType: str
+        :param _GpuCount: <p>GPU 总数（gpuNum × replicas）</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GpuCount: int
+        :param _Replicas: <p>运行中的副本数</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Replicas: int
+        """
+        self._GpuType = None
+        self._GpuCount = None
+        self._Replicas = None
+
+    @property
+    def GpuType(self):
+        r"""<p>GPU 型号</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._GpuType
+
+    @GpuType.setter
+    def GpuType(self, GpuType):
+        self._GpuType = GpuType
+
+    @property
+    def GpuCount(self):
+        r"""<p>GPU 总数（gpuNum × replicas）</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._GpuCount
+
+    @GpuCount.setter
+    def GpuCount(self, GpuCount):
+        self._GpuCount = GpuCount
+
+    @property
+    def Replicas(self):
+        r"""<p>运行中的副本数</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Replicas
+
+    @Replicas.setter
+    def Replicas(self, Replicas):
+        self._Replicas = Replicas
+
+
+    def _deserialize(self, params):
+        self._GpuType = params.get("GpuType")
+        self._GpuCount = params.get("GpuCount")
+        self._Replicas = params.get("Replicas")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class GrantDLCCatalogAccessRequest(AbstractModel):
@@ -47972,6 +48425,147 @@ class IcebergTablePartition(AbstractModel):
         
 
 
+class ImageDto(AbstractModel):
+    r"""镜像响应类
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: <p>镜像ID</p>
+        :type Id: int
+        :param _Name: <p>镜像名称</p>
+        :type Name: str
+        :param _Url: <p>镜像地址</p>
+        :type Url: str
+        :param _Description: <p>镜像描述</p>
+        :type Description: str
+        :param _Type: <p>镜像类型（Ray/Workspace）</p>
+        :type Type: str
+        :param _RayVersion: <p>镜像内置的 Ray 版本号</p>
+        :type RayVersion: str
+        :param _CreateTime: <p>创建时间</p>
+        :type CreateTime: int
+        :param _UpdateTime: <p>更新时间</p>
+        :type UpdateTime: int
+        """
+        self._Id = None
+        self._Name = None
+        self._Url = None
+        self._Description = None
+        self._Type = None
+        self._RayVersion = None
+        self._CreateTime = None
+        self._UpdateTime = None
+
+    @property
+    def Id(self):
+        r"""<p>镜像ID</p>
+        :rtype: int
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Name(self):
+        r"""<p>镜像名称</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Url(self):
+        r"""<p>镜像地址</p>
+        :rtype: str
+        """
+        return self._Url
+
+    @Url.setter
+    def Url(self, Url):
+        self._Url = Url
+
+    @property
+    def Description(self):
+        r"""<p>镜像描述</p>
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def Type(self):
+        r"""<p>镜像类型（Ray/Workspace）</p>
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def RayVersion(self):
+        r"""<p>镜像内置的 Ray 版本号</p>
+        :rtype: str
+        """
+        return self._RayVersion
+
+    @RayVersion.setter
+    def RayVersion(self, RayVersion):
+        self._RayVersion = RayVersion
+
+    @property
+    def CreateTime(self):
+        r"""<p>创建时间</p>
+        :rtype: int
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        r"""<p>更新时间</p>
+        :rtype: int
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._Name = params.get("Name")
+        self._Url = params.get("Url")
+        self._Description = params.get("Description")
+        self._Type = params.get("Type")
+        self._RayVersion = params.get("RayVersion")
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class InferenceEngineInfo(AbstractModel):
     r"""推理引擎具体信息
 
@@ -48204,6 +48798,9 @@ class InferenceModelInfo(AbstractModel):
         :type UpdateTime: int
         :param _SubAccountUin: <p>云账户的 Sub UIN</p>
         :type SubAccountUin: str
+        :param _ResourceTags: <p>系统标签列表（TagKey-TagValue）</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResourceTags: list of Tag
         """
         self._ModelId = None
         self._ModelUid = None
@@ -48228,6 +48825,7 @@ class InferenceModelInfo(AbstractModel):
         self._CreateTime = None
         self._UpdateTime = None
         self._SubAccountUin = None
+        self._ResourceTags = None
 
     @property
     def ModelId(self):
@@ -48503,6 +49101,18 @@ class InferenceModelInfo(AbstractModel):
     def SubAccountUin(self, SubAccountUin):
         self._SubAccountUin = SubAccountUin
 
+    @property
+    def ResourceTags(self):
+        r"""<p>系统标签列表（TagKey-TagValue）</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of Tag
+        """
+        return self._ResourceTags
+
+    @ResourceTags.setter
+    def ResourceTags(self, ResourceTags):
+        self._ResourceTags = ResourceTags
+
 
     def _deserialize(self, params):
         self._ModelId = params.get("ModelId")
@@ -48528,6 +49138,12 @@ class InferenceModelInfo(AbstractModel):
         self._CreateTime = params.get("CreateTime")
         self._UpdateTime = params.get("UpdateTime")
         self._SubAccountUin = params.get("SubAccountUin")
+        if params.get("ResourceTags") is not None:
+            self._ResourceTags = []
+            for item in params.get("ResourceTags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._ResourceTags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -52322,6 +52938,195 @@ class ListExamplesResponse(AbstractModel):
             self._Items = []
             for item in params.get("Items"):
                 obj = ExampleEntity()
+                obj._deserialize(item)
+                self._Items.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class ListImagesRequest(AbstractModel):
+    r"""ListImages请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Keyword: 关键词搜索（模糊匹配名称或描述）
+        :type Keyword: str
+        :param _Type: 镜像类型过滤（Ray/Workspace）
+        :type Type: str
+        :param _Page: 页数
+        :type Page: int
+        :param _PageSize: 数量
+        :type PageSize: int
+        """
+        self._Keyword = None
+        self._Type = None
+        self._Page = None
+        self._PageSize = None
+
+    @property
+    def Keyword(self):
+        r"""关键词搜索（模糊匹配名称或描述）
+        :rtype: str
+        """
+        return self._Keyword
+
+    @Keyword.setter
+    def Keyword(self, Keyword):
+        self._Keyword = Keyword
+
+    @property
+    def Type(self):
+        r"""镜像类型过滤（Ray/Workspace）
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Page(self):
+        r"""页数
+        :rtype: int
+        """
+        return self._Page
+
+    @Page.setter
+    def Page(self, Page):
+        self._Page = Page
+
+    @property
+    def PageSize(self):
+        r"""数量
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+
+    def _deserialize(self, params):
+        self._Keyword = params.get("Keyword")
+        self._Type = params.get("Type")
+        self._Page = params.get("Page")
+        self._PageSize = params.get("PageSize")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ListImagesResponse(AbstractModel):
+    r"""ListImages返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Total: 总记录数
+        :type Total: int
+        :param _Page: 当前页码（从1开始）
+        :type Page: int
+        :param _PageSize: 页数
+        :type PageSize: int
+        :param _TotalPages: 总页数
+        :type TotalPages: int
+        :param _Items: 镜像列表
+        :type Items: list of ImageDto
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Total = None
+        self._Page = None
+        self._PageSize = None
+        self._TotalPages = None
+        self._Items = None
+        self._RequestId = None
+
+    @property
+    def Total(self):
+        r"""总记录数
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def Page(self):
+        r"""当前页码（从1开始）
+        :rtype: int
+        """
+        return self._Page
+
+    @Page.setter
+    def Page(self, Page):
+        self._Page = Page
+
+    @property
+    def PageSize(self):
+        r"""页数
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def TotalPages(self):
+        r"""总页数
+        :rtype: int
+        """
+        return self._TotalPages
+
+    @TotalPages.setter
+    def TotalPages(self, TotalPages):
+        self._TotalPages = TotalPages
+
+    @property
+    def Items(self):
+        r"""镜像列表
+        :rtype: list of ImageDto
+        """
+        return self._Items
+
+    @Items.setter
+    def Items(self, Items):
+        self._Items = Items
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Total = params.get("Total")
+        self._Page = params.get("Page")
+        self._PageSize = params.get("PageSize")
+        self._TotalPages = params.get("TotalPages")
+        if params.get("Items") is not None:
+            self._Items = []
+            for item in params.get("Items"):
+                obj = ImageDto()
                 obj._deserialize(item)
                 self._Items.append(obj)
         self._RequestId = params.get("RequestId")
@@ -66189,10 +66994,14 @@ class ResourceSaleInfo(AbstractModel):
         :param _MaxSpec: <p>最大资源数量，仅GU有值</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type MaxSpec: int
+        :param _StatusCategory: <p>库存情况，对当前地域该计费项实时可新增数量的分级预估。取值复用 BcpConstants 库存状态常量：</p><ul><li>EnoughStock：余量充足</li><li>NormalStock：余量正常</li><li>UnderStock：余量紧张</li><li>WithoutStock：无库存</li></ul><p>该值为底层提供的预估值，不代表保证可发货量，仅用于展示库存概况。当请求 Region 与资源池地域不一致、cold-start 缓存未 ready、或该计费项在快照中缺失时返回 null。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StatusCategory: str
         """
         self._ResourceSpec = None
         self._Step = None
         self._MaxSpec = None
+        self._StatusCategory = None
 
     @property
     def ResourceSpec(self):
@@ -66229,6 +67038,18 @@ class ResourceSaleInfo(AbstractModel):
     def MaxSpec(self, MaxSpec):
         self._MaxSpec = MaxSpec
 
+    @property
+    def StatusCategory(self):
+        r"""<p>库存情况，对当前地域该计费项实时可新增数量的分级预估。取值复用 BcpConstants 库存状态常量：</p><ul><li>EnoughStock：余量充足</li><li>NormalStock：余量正常</li><li>UnderStock：余量紧张</li><li>WithoutStock：无库存</li></ul><p>该值为底层提供的预估值，不代表保证可发货量，仅用于展示库存概况。当请求 Region 与资源池地域不一致、cold-start 缓存未 ready、或该计费项在快照中缺失时返回 null。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._StatusCategory
+
+    @StatusCategory.setter
+    def StatusCategory(self, StatusCategory):
+        self._StatusCategory = StatusCategory
+
 
     def _deserialize(self, params):
         if params.get("ResourceSpec") is not None:
@@ -66236,6 +67057,7 @@ class ResourceSaleInfo(AbstractModel):
             self._ResourceSpec._deserialize(params.get("ResourceSpec"))
         self._Step = params.get("Step")
         self._MaxSpec = params.get("MaxSpec")
+        self._StatusCategory = params.get("StatusCategory")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -66632,6 +67454,9 @@ class RestartInferenceServiceResponse(AbstractModel):
         :type CpuResourceSummary: :class:`tencentcloud.dlc.v20210125.models.CpuSummaryItem`
         :param _ResourceConfig: <p>资源配置（JSON 字符串，取自第一个部署）</p>
         :type ResourceConfig: str
+        :param _ResourceTags: <p>系统标签列表（TagKey-TagValue）</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResourceTags: list of Tag
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -66658,6 +67483,7 @@ class RestartInferenceServiceResponse(AbstractModel):
         self._SubAccountUin = None
         self._CpuResourceSummary = None
         self._ResourceConfig = None
+        self._ResourceTags = None
         self._RequestId = None
 
     @property
@@ -66934,6 +67760,18 @@ class RestartInferenceServiceResponse(AbstractModel):
         self._ResourceConfig = ResourceConfig
 
     @property
+    def ResourceTags(self):
+        r"""<p>系统标签列表（TagKey-TagValue）</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of Tag
+        """
+        return self._ResourceTags
+
+    @ResourceTags.setter
+    def ResourceTags(self, ResourceTags):
+        self._ResourceTags = ResourceTags
+
+    @property
     def RequestId(self):
         r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -66971,6 +67809,12 @@ class RestartInferenceServiceResponse(AbstractModel):
             self._CpuResourceSummary = CpuSummaryItem()
             self._CpuResourceSummary._deserialize(params.get("CpuResourceSummary"))
         self._ResourceConfig = params.get("ResourceConfig")
+        if params.get("ResourceTags") is not None:
+            self._ResourceTags = []
+            for item in params.get("ResourceTags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._ResourceTags.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -72197,6 +73041,13 @@ class StopInferenceServiceResponse(AbstractModel):
         :type CpuResourceSummary: :class:`tencentcloud.dlc.v20210125.models.CpuSummaryItem`
         :param _ResourceConfig: <p>资源配置（JSON 字符串，取自第一个部署）</p>
         :type ResourceConfig: str
+        :param _ResourceTags: <p>系统标签列表（TagKey-TagValue）</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResourceTags: list of Tag
+        :param _DeploymentMode: <p>部署模式</p>
+        :type DeploymentMode: str
+        :param _IsCustom: <p>是否为自定义代码部署</p>
+        :type IsCustom: bool
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -72223,6 +73074,9 @@ class StopInferenceServiceResponse(AbstractModel):
         self._SubAccountUin = None
         self._CpuResourceSummary = None
         self._ResourceConfig = None
+        self._ResourceTags = None
+        self._DeploymentMode = None
+        self._IsCustom = None
         self._RequestId = None
 
     @property
@@ -72499,6 +73353,40 @@ class StopInferenceServiceResponse(AbstractModel):
         self._ResourceConfig = ResourceConfig
 
     @property
+    def ResourceTags(self):
+        r"""<p>系统标签列表（TagKey-TagValue）</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of Tag
+        """
+        return self._ResourceTags
+
+    @ResourceTags.setter
+    def ResourceTags(self, ResourceTags):
+        self._ResourceTags = ResourceTags
+
+    @property
+    def DeploymentMode(self):
+        r"""<p>部署模式</p>
+        :rtype: str
+        """
+        return self._DeploymentMode
+
+    @DeploymentMode.setter
+    def DeploymentMode(self, DeploymentMode):
+        self._DeploymentMode = DeploymentMode
+
+    @property
+    def IsCustom(self):
+        r"""<p>是否为自定义代码部署</p>
+        :rtype: bool
+        """
+        return self._IsCustom
+
+    @IsCustom.setter
+    def IsCustom(self, IsCustom):
+        self._IsCustom = IsCustom
+
+    @property
     def RequestId(self):
         r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -72536,6 +73424,14 @@ class StopInferenceServiceResponse(AbstractModel):
             self._CpuResourceSummary = CpuSummaryItem()
             self._CpuResourceSummary._deserialize(params.get("CpuResourceSummary"))
         self._ResourceConfig = params.get("ResourceConfig")
+        if params.get("ResourceTags") is not None:
+            self._ResourceTags = []
+            for item in params.get("ResourceTags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._ResourceTags.append(obj)
+        self._DeploymentMode = params.get("DeploymentMode")
+        self._IsCustom = params.get("IsCustom")
         self._RequestId = params.get("RequestId")
 
 
@@ -79208,12 +80104,15 @@ class UpdateInferenceModelRequest(AbstractModel):
         :type ParameterSize: str
         :param _Tags: <p>模型标签列表（可选）</p>
         :type Tags: list of str
+        :param _ResourceTags: <p>系统标签列表（TagKey-TagValue）</p>
+        :type ResourceTags: list of Tag
         """
         self._ModelUid = None
         self._Name = None
         self._Description = None
         self._ParameterSize = None
         self._Tags = None
+        self._ResourceTags = None
 
     @property
     def ModelUid(self):
@@ -79270,6 +80169,17 @@ class UpdateInferenceModelRequest(AbstractModel):
     def Tags(self, Tags):
         self._Tags = Tags
 
+    @property
+    def ResourceTags(self):
+        r"""<p>系统标签列表（TagKey-TagValue）</p>
+        :rtype: list of Tag
+        """
+        return self._ResourceTags
+
+    @ResourceTags.setter
+    def ResourceTags(self, ResourceTags):
+        self._ResourceTags = ResourceTags
+
 
     def _deserialize(self, params):
         self._ModelUid = params.get("ModelUid")
@@ -79277,6 +80187,12 @@ class UpdateInferenceModelRequest(AbstractModel):
         self._Description = params.get("Description")
         self._ParameterSize = params.get("ParameterSize")
         self._Tags = params.get("Tags")
+        if params.get("ResourceTags") is not None:
+            self._ResourceTags = []
+            for item in params.get("ResourceTags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._ResourceTags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -79334,6 +80250,9 @@ class UpdateInferenceModelResponse(AbstractModel):
         :type UpdateTime: int
         :param _SubAccountUin: <p>SUB UIN</p>
         :type SubAccountUin: str
+        :param _ResourceTags: <p>系统标签列表（TagKey-TagValue）</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResourceTags: list of Tag
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -79357,6 +80276,7 @@ class UpdateInferenceModelResponse(AbstractModel):
         self._CreateTime = None
         self._UpdateTime = None
         self._SubAccountUin = None
+        self._ResourceTags = None
         self._RequestId = None
 
     @property
@@ -79580,6 +80500,18 @@ class UpdateInferenceModelResponse(AbstractModel):
         self._SubAccountUin = SubAccountUin
 
     @property
+    def ResourceTags(self):
+        r"""<p>系统标签列表（TagKey-TagValue）</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of Tag
+        """
+        return self._ResourceTags
+
+    @ResourceTags.setter
+    def ResourceTags(self, ResourceTags):
+        self._ResourceTags = ResourceTags
+
+    @property
     def RequestId(self):
         r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -79612,6 +80544,12 @@ class UpdateInferenceModelResponse(AbstractModel):
         self._CreateTime = params.get("CreateTime")
         self._UpdateTime = params.get("UpdateTime")
         self._SubAccountUin = params.get("SubAccountUin")
+        if params.get("ResourceTags") is not None:
+            self._ResourceTags = []
+            for item in params.get("ResourceTags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._ResourceTags.append(obj)
         self._RequestId = params.get("RequestId")
 
 

@@ -607,9 +607,7 @@ class DtsClient(AbstractClient):
 
 
     def DescribeMigrationCheckJob(self, request):
-        r"""本接口用于创建校验后,获取校验的结果. 能查询到当前校验的状态和进度.
-        若通过校验, 则可调用'StartMigrateJob' 开始迁移.
-        若未通过校验, 则能查询到校验失败的原因. 请按照报错, 通过'ModifyMigrationJob'修改迁移配置或是调整源/目标实例的相关参数.
+        r"""本接口用于创建校验后，获取校验的结果，能查询到当前校验的状态和进度。
 
         :param request: Request instance for DescribeMigrationCheckJob.
         :type request: :class:`tencentcloud.dts.v20211206.models.DescribeMigrationCheckJobRequest`

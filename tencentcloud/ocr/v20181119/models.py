@@ -14618,9 +14618,9 @@ class ItemCoord(AbstractModel):
         :type X: int
         :param _Y: <p>左上角y。</p>
         :type Y: int
-        :param _Width: <p>宽width。</p>
+        :param _Width: <p>宽width。</p><p>单位：px</p>
         :type Width: int
-        :param _Height: <p>高height。</p>
+        :param _Height: <p>高height。</p><p>单位：px</p>
         :type Height: int
         """
         self._X = None
@@ -14652,7 +14652,7 @@ class ItemCoord(AbstractModel):
 
     @property
     def Width(self):
-        r"""<p>宽width。</p>
+        r"""<p>宽width。</p><p>单位：px</p>
         :rtype: int
         """
         return self._Width
@@ -14663,7 +14663,7 @@ class ItemCoord(AbstractModel):
 
     @property
     def Height(self):
-        r"""<p>高height。</p>
+        r"""<p>高height。</p><p>单位：px</p>
         :rtype: int
         """
         return self._Height
@@ -39701,6 +39701,336 @@ class VerifyBizLicenseEnterprise4Response(AbstractModel):
         self._IsIdNumConsistent = params.get("IsIdNumConsistent")
         self._OperatingStatus = params.get("OperatingStatus")
         self._OperatingPeriod = params.get("OperatingPeriod")
+        self._RequestId = params.get("RequestId")
+
+
+class VerifyGeneralCardWarnRequest(AbstractModel):
+    r"""VerifyGeneralCardWarn请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CardType: <p>卡证类型参数，仅支持传入下列指定值，请按实际情况选择对应卡证类型，目前支持以下类型：<br><strong>身份证件</strong><br>0101 身份证<br>0102 护照<br><strong>经营证照</strong><br>0201 营业执照<br><strong>权属登记</strong><br>0301 行驶证<br><strong>资格许可</strong><br>0401 驾驶证</p>
+        :type CardType: str
+        :param _ImageUrl: <p>图片的 Url 地址。要求图片经Base64编码后不超过 10M。</p>
+        :type ImageUrl: str
+        :param _ImageBase64: <p>图片的 Base64 值。要求图片经Base64编码后不超过 10M。</p>
+        :type ImageBase64: str
+        """
+        self._CardType = None
+        self._ImageUrl = None
+        self._ImageBase64 = None
+
+    @property
+    def CardType(self):
+        r"""<p>卡证类型参数，仅支持传入下列指定值，请按实际情况选择对应卡证类型，目前支持以下类型：<br><strong>身份证件</strong><br>0101 身份证<br>0102 护照<br><strong>经营证照</strong><br>0201 营业执照<br><strong>权属登记</strong><br>0301 行驶证<br><strong>资格许可</strong><br>0401 驾驶证</p>
+        :rtype: str
+        """
+        return self._CardType
+
+    @CardType.setter
+    def CardType(self, CardType):
+        self._CardType = CardType
+
+    @property
+    def ImageUrl(self):
+        r"""<p>图片的 Url 地址。要求图片经Base64编码后不超过 10M。</p>
+        :rtype: str
+        """
+        return self._ImageUrl
+
+    @ImageUrl.setter
+    def ImageUrl(self, ImageUrl):
+        self._ImageUrl = ImageUrl
+
+    @property
+    def ImageBase64(self):
+        r"""<p>图片的 Base64 值。要求图片经Base64编码后不超过 10M。</p>
+        :rtype: str
+        """
+        return self._ImageBase64
+
+    @ImageBase64.setter
+    def ImageBase64(self, ImageBase64):
+        self._ImageBase64 = ImageBase64
+
+
+    def _deserialize(self, params):
+        self._CardType = params.get("CardType")
+        self._ImageUrl = params.get("ImageUrl")
+        self._ImageBase64 = params.get("ImageBase64")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VerifyGeneralCardWarnResponse(AbstractModel):
+    r"""VerifyGeneralCardWarn返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Tamper: <p>区域篡改提示</p>
+        :type Tamper: :class:`tencentcloud.ocr.v20181119.models.GeneralCardWarnInfo`
+        :param _Synthesis: <p>AIGC合成提示</p>
+        :type Synthesis: :class:`tencentcloud.ocr.v20181119.models.GeneralCardWarnInfo`
+        :param _Template: <p>模板图片提示</p>
+        :type Template: :class:`tencentcloud.ocr.v20181119.models.GeneralCardWarnInfo`
+        :param _RemakeScreen: <p>屏幕翻拍提示</p>
+        :type RemakeScreen: :class:`tencentcloud.ocr.v20181119.models.GeneralCardWarnInfo`
+        :param _Screenshot: <p>截图提示</p>
+        :type Screenshot: :class:`tencentcloud.ocr.v20181119.models.GeneralCardWarnInfo`
+        :param _Blur: <p>模糊提示</p>
+        :type Blur: :class:`tencentcloud.ocr.v20181119.models.GeneralCardWarnInfo`
+        :param _BorderIncomplete: <p>边框不完整提示</p>
+        :type BorderIncomplete: :class:`tencentcloud.ocr.v20181119.models.GeneralCardWarnInfo`
+        :param _Copy: <p>复印件提示</p>
+        :type Copy: :class:`tencentcloud.ocr.v20181119.models.GeneralCardWarnInfo`
+        :param _Reflection: <p>反光提示</p>
+        :type Reflection: :class:`tencentcloud.ocr.v20181119.models.GeneralCardWarnInfo`
+        :param _Cover: <p>遮挡提示</p>
+        :type Cover: :class:`tencentcloud.ocr.v20181119.models.GeneralCardWarnInfo`
+        :param _Overlap: <p>重叠提示</p>
+        :type Overlap: :class:`tencentcloud.ocr.v20181119.models.GeneralCardWarnInfo`
+        :param _Electron: <p>电子证照提示（目前仅支持电子身份证、电子营业执照识别）</p>
+        :type Electron: :class:`tencentcloud.ocr.v20181119.models.GeneralCardWarnInfo`
+        :param _TextWatermark: <p>文字水印提示</p>
+        :type TextWatermark: :class:`tencentcloud.ocr.v20181119.models.GeneralCardWarnInfo`
+        :param _WatermarkContent: <p>水印内容，当未检测到文字水印时不返回，返回多组水印时以 | 分隔。</p>
+        :type WatermarkContent: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Tamper = None
+        self._Synthesis = None
+        self._Template = None
+        self._RemakeScreen = None
+        self._Screenshot = None
+        self._Blur = None
+        self._BorderIncomplete = None
+        self._Copy = None
+        self._Reflection = None
+        self._Cover = None
+        self._Overlap = None
+        self._Electron = None
+        self._TextWatermark = None
+        self._WatermarkContent = None
+        self._RequestId = None
+
+    @property
+    def Tamper(self):
+        r"""<p>区域篡改提示</p>
+        :rtype: :class:`tencentcloud.ocr.v20181119.models.GeneralCardWarnInfo`
+        """
+        return self._Tamper
+
+    @Tamper.setter
+    def Tamper(self, Tamper):
+        self._Tamper = Tamper
+
+    @property
+    def Synthesis(self):
+        r"""<p>AIGC合成提示</p>
+        :rtype: :class:`tencentcloud.ocr.v20181119.models.GeneralCardWarnInfo`
+        """
+        return self._Synthesis
+
+    @Synthesis.setter
+    def Synthesis(self, Synthesis):
+        self._Synthesis = Synthesis
+
+    @property
+    def Template(self):
+        r"""<p>模板图片提示</p>
+        :rtype: :class:`tencentcloud.ocr.v20181119.models.GeneralCardWarnInfo`
+        """
+        return self._Template
+
+    @Template.setter
+    def Template(self, Template):
+        self._Template = Template
+
+    @property
+    def RemakeScreen(self):
+        r"""<p>屏幕翻拍提示</p>
+        :rtype: :class:`tencentcloud.ocr.v20181119.models.GeneralCardWarnInfo`
+        """
+        return self._RemakeScreen
+
+    @RemakeScreen.setter
+    def RemakeScreen(self, RemakeScreen):
+        self._RemakeScreen = RemakeScreen
+
+    @property
+    def Screenshot(self):
+        r"""<p>截图提示</p>
+        :rtype: :class:`tencentcloud.ocr.v20181119.models.GeneralCardWarnInfo`
+        """
+        return self._Screenshot
+
+    @Screenshot.setter
+    def Screenshot(self, Screenshot):
+        self._Screenshot = Screenshot
+
+    @property
+    def Blur(self):
+        r"""<p>模糊提示</p>
+        :rtype: :class:`tencentcloud.ocr.v20181119.models.GeneralCardWarnInfo`
+        """
+        return self._Blur
+
+    @Blur.setter
+    def Blur(self, Blur):
+        self._Blur = Blur
+
+    @property
+    def BorderIncomplete(self):
+        r"""<p>边框不完整提示</p>
+        :rtype: :class:`tencentcloud.ocr.v20181119.models.GeneralCardWarnInfo`
+        """
+        return self._BorderIncomplete
+
+    @BorderIncomplete.setter
+    def BorderIncomplete(self, BorderIncomplete):
+        self._BorderIncomplete = BorderIncomplete
+
+    @property
+    def Copy(self):
+        r"""<p>复印件提示</p>
+        :rtype: :class:`tencentcloud.ocr.v20181119.models.GeneralCardWarnInfo`
+        """
+        return self._Copy
+
+    @Copy.setter
+    def Copy(self, Copy):
+        self._Copy = Copy
+
+    @property
+    def Reflection(self):
+        r"""<p>反光提示</p>
+        :rtype: :class:`tencentcloud.ocr.v20181119.models.GeneralCardWarnInfo`
+        """
+        return self._Reflection
+
+    @Reflection.setter
+    def Reflection(self, Reflection):
+        self._Reflection = Reflection
+
+    @property
+    def Cover(self):
+        r"""<p>遮挡提示</p>
+        :rtype: :class:`tencentcloud.ocr.v20181119.models.GeneralCardWarnInfo`
+        """
+        return self._Cover
+
+    @Cover.setter
+    def Cover(self, Cover):
+        self._Cover = Cover
+
+    @property
+    def Overlap(self):
+        r"""<p>重叠提示</p>
+        :rtype: :class:`tencentcloud.ocr.v20181119.models.GeneralCardWarnInfo`
+        """
+        return self._Overlap
+
+    @Overlap.setter
+    def Overlap(self, Overlap):
+        self._Overlap = Overlap
+
+    @property
+    def Electron(self):
+        r"""<p>电子证照提示（目前仅支持电子身份证、电子营业执照识别）</p>
+        :rtype: :class:`tencentcloud.ocr.v20181119.models.GeneralCardWarnInfo`
+        """
+        return self._Electron
+
+    @Electron.setter
+    def Electron(self, Electron):
+        self._Electron = Electron
+
+    @property
+    def TextWatermark(self):
+        r"""<p>文字水印提示</p>
+        :rtype: :class:`tencentcloud.ocr.v20181119.models.GeneralCardWarnInfo`
+        """
+        return self._TextWatermark
+
+    @TextWatermark.setter
+    def TextWatermark(self, TextWatermark):
+        self._TextWatermark = TextWatermark
+
+    @property
+    def WatermarkContent(self):
+        r"""<p>水印内容，当未检测到文字水印时不返回，返回多组水印时以 | 分隔。</p>
+        :rtype: str
+        """
+        return self._WatermarkContent
+
+    @WatermarkContent.setter
+    def WatermarkContent(self, WatermarkContent):
+        self._WatermarkContent = WatermarkContent
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Tamper") is not None:
+            self._Tamper = GeneralCardWarnInfo()
+            self._Tamper._deserialize(params.get("Tamper"))
+        if params.get("Synthesis") is not None:
+            self._Synthesis = GeneralCardWarnInfo()
+            self._Synthesis._deserialize(params.get("Synthesis"))
+        if params.get("Template") is not None:
+            self._Template = GeneralCardWarnInfo()
+            self._Template._deserialize(params.get("Template"))
+        if params.get("RemakeScreen") is not None:
+            self._RemakeScreen = GeneralCardWarnInfo()
+            self._RemakeScreen._deserialize(params.get("RemakeScreen"))
+        if params.get("Screenshot") is not None:
+            self._Screenshot = GeneralCardWarnInfo()
+            self._Screenshot._deserialize(params.get("Screenshot"))
+        if params.get("Blur") is not None:
+            self._Blur = GeneralCardWarnInfo()
+            self._Blur._deserialize(params.get("Blur"))
+        if params.get("BorderIncomplete") is not None:
+            self._BorderIncomplete = GeneralCardWarnInfo()
+            self._BorderIncomplete._deserialize(params.get("BorderIncomplete"))
+        if params.get("Copy") is not None:
+            self._Copy = GeneralCardWarnInfo()
+            self._Copy._deserialize(params.get("Copy"))
+        if params.get("Reflection") is not None:
+            self._Reflection = GeneralCardWarnInfo()
+            self._Reflection._deserialize(params.get("Reflection"))
+        if params.get("Cover") is not None:
+            self._Cover = GeneralCardWarnInfo()
+            self._Cover._deserialize(params.get("Cover"))
+        if params.get("Overlap") is not None:
+            self._Overlap = GeneralCardWarnInfo()
+            self._Overlap._deserialize(params.get("Overlap"))
+        if params.get("Electron") is not None:
+            self._Electron = GeneralCardWarnInfo()
+            self._Electron._deserialize(params.get("Electron"))
+        if params.get("TextWatermark") is not None:
+            self._TextWatermark = GeneralCardWarnInfo()
+            self._TextWatermark._deserialize(params.get("TextWatermark"))
+        self._WatermarkContent = params.get("WatermarkContent")
         self._RequestId = params.get("RequestId")
 
 

@@ -5133,6 +5133,8 @@ class Model(AbstractModel):
         :type ModelName: str
         :param _ModelId: <p>模型 ID。</p>
         :type ModelId: str
+        :param _ExtraModelIds: <p>模型id别名列表</p>
+        :type ExtraModelIds: list of str
         :param _DisplayName: <p>模型显示名称。</p>
         :type DisplayName: str
         :param _Description: <p>模型描述。</p>
@@ -5170,6 +5172,7 @@ class Model(AbstractModel):
         """
         self._ModelName = None
         self._ModelId = None
+        self._ExtraModelIds = None
         self._DisplayName = None
         self._Description = None
         self._Summary = None
@@ -5209,6 +5212,17 @@ class Model(AbstractModel):
     @ModelId.setter
     def ModelId(self, ModelId):
         self._ModelId = ModelId
+
+    @property
+    def ExtraModelIds(self):
+        r"""<p>模型id别名列表</p>
+        :rtype: list of str
+        """
+        return self._ExtraModelIds
+
+    @ExtraModelIds.setter
+    def ExtraModelIds(self, ExtraModelIds):
+        self._ExtraModelIds = ExtraModelIds
 
     @property
     def DisplayName(self):
@@ -5401,6 +5415,7 @@ class Model(AbstractModel):
     def _deserialize(self, params):
         self._ModelName = params.get("ModelName")
         self._ModelId = params.get("ModelId")
+        self._ExtraModelIds = params.get("ExtraModelIds")
         self._DisplayName = params.get("DisplayName")
         self._Description = params.get("Description")
         self._Summary = params.get("Summary")
@@ -5615,12 +5630,21 @@ class ModelChargingItem(AbstractModel):
         :type PriceUnit: str
         :param _PeakPrice: <p>高峰价格，为空表示无高峰定价</p>
         :type PeakPrice: str
+        :param _Specification: <p>规格描述，例如视觉/语音类模型有值（如 有参考视频 540P、图生视频 首帧 720P、动作控制 1080P、有声-未指定音色），其他模型为空。</p>
+        :type Specification: str
+        :param _Usage: <p>Token 用量描述，例如视觉/语音类模型有值（如 第1秒 62,500 Tokens，后续每秒 15,625 Tokens），其他模型为空。</p>
+        :type Usage: str
+        :param _ReferencePrice: <p>参考费用/预估费用描述，例如视觉/语音类模型有值（如 第1秒 0.625 元，后续每秒 0.15625 元），其他模型为空。</p>
+        :type ReferencePrice: str
         """
         self._PriceName = None
         self._DisplayName = None
         self._Price = None
         self._PriceUnit = None
         self._PeakPrice = None
+        self._Specification = None
+        self._Usage = None
+        self._ReferencePrice = None
 
     @property
     def PriceName(self):
@@ -5677,6 +5701,39 @@ class ModelChargingItem(AbstractModel):
     def PeakPrice(self, PeakPrice):
         self._PeakPrice = PeakPrice
 
+    @property
+    def Specification(self):
+        r"""<p>规格描述，例如视觉/语音类模型有值（如 有参考视频 540P、图生视频 首帧 720P、动作控制 1080P、有声-未指定音色），其他模型为空。</p>
+        :rtype: str
+        """
+        return self._Specification
+
+    @Specification.setter
+    def Specification(self, Specification):
+        self._Specification = Specification
+
+    @property
+    def Usage(self):
+        r"""<p>Token 用量描述，例如视觉/语音类模型有值（如 第1秒 62,500 Tokens，后续每秒 15,625 Tokens），其他模型为空。</p>
+        :rtype: str
+        """
+        return self._Usage
+
+    @Usage.setter
+    def Usage(self, Usage):
+        self._Usage = Usage
+
+    @property
+    def ReferencePrice(self):
+        r"""<p>参考费用/预估费用描述，例如视觉/语音类模型有值（如 第1秒 0.625 元，后续每秒 0.15625 元），其他模型为空。</p>
+        :rtype: str
+        """
+        return self._ReferencePrice
+
+    @ReferencePrice.setter
+    def ReferencePrice(self, ReferencePrice):
+        self._ReferencePrice = ReferencePrice
+
 
     def _deserialize(self, params):
         self._PriceName = params.get("PriceName")
@@ -5684,6 +5741,9 @@ class ModelChargingItem(AbstractModel):
         self._Price = params.get("Price")
         self._PriceUnit = params.get("PriceUnit")
         self._PeakPrice = params.get("PeakPrice")
+        self._Specification = params.get("Specification")
+        self._Usage = params.get("Usage")
+        self._ReferencePrice = params.get("ReferencePrice")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5707,10 +5767,14 @@ class ModelEndpointView(AbstractModel):
         :type EndpointName: str
         :param _ModelId: <p>模型 ID。</p>
         :type ModelId: str
+        :param _ExtraModelIds: <p>模型id别名列表</p>
+        :type ExtraModelIds: list of str
         :param _ModelName: <p>模型名称。</p>
         :type ModelName: str
         :param _Status: <p>状态。取值：ACTIVE（运行中）、INACTIVE（已停止）。</p>
         :type Status: str
+        :param _ModelStatus: <p>模型状态</p><p>枚举值：</p><ul><li>online： 在线</li><li>pre-offline： 预下线</li><li>discontinued： 停止新购</li><li>maintenance： 维护中</li><li>offline： 下线</li></ul>
+        :type ModelStatus: str
         :param _ServiceType: <p>服务类型。固定为 TEXT_GENERATION（文本生成）。</p>
         :type ServiceType: str
         :param _ChargeType: <p>计费方式。取值：FREE（免费体验）、TOKEN（按 Token 计费）。未激活时为空。</p>
@@ -5729,8 +5793,10 @@ class ModelEndpointView(AbstractModel):
         self._EndpointId = None
         self._EndpointName = None
         self._ModelId = None
+        self._ExtraModelIds = None
         self._ModelName = None
         self._Status = None
+        self._ModelStatus = None
         self._ServiceType = None
         self._ChargeType = None
         self._PaymentEnabled = None
@@ -5773,6 +5839,17 @@ class ModelEndpointView(AbstractModel):
         self._ModelId = ModelId
 
     @property
+    def ExtraModelIds(self):
+        r"""<p>模型id别名列表</p>
+        :rtype: list of str
+        """
+        return self._ExtraModelIds
+
+    @ExtraModelIds.setter
+    def ExtraModelIds(self, ExtraModelIds):
+        self._ExtraModelIds = ExtraModelIds
+
+    @property
     def ModelName(self):
         r"""<p>模型名称。</p>
         :rtype: str
@@ -5793,6 +5870,17 @@ class ModelEndpointView(AbstractModel):
     @Status.setter
     def Status(self, Status):
         self._Status = Status
+
+    @property
+    def ModelStatus(self):
+        r"""<p>模型状态</p><p>枚举值：</p><ul><li>online： 在线</li><li>pre-offline： 预下线</li><li>discontinued： 停止新购</li><li>maintenance： 维护中</li><li>offline： 下线</li></ul>
+        :rtype: str
+        """
+        return self._ModelStatus
+
+    @ModelStatus.setter
+    def ModelStatus(self, ModelStatus):
+        self._ModelStatus = ModelStatus
 
     @property
     def ServiceType(self):
@@ -5876,8 +5964,10 @@ class ModelEndpointView(AbstractModel):
         self._EndpointId = params.get("EndpointId")
         self._EndpointName = params.get("EndpointName")
         self._ModelId = params.get("ModelId")
+        self._ExtraModelIds = params.get("ExtraModelIds")
         self._ModelName = params.get("ModelName")
         self._Status = params.get("Status")
+        self._ModelStatus = params.get("ModelStatus")
         self._ServiceType = params.get("ServiceType")
         self._ChargeType = params.get("ChargeType")
         self._PaymentEnabled = params.get("PaymentEnabled")
