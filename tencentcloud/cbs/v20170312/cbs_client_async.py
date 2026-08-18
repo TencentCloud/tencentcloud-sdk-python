@@ -410,6 +410,24 @@ class CbsClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeDedicatedClusterDiskStatistics(
+            self,
+            request: models.DescribeDedicatedClusterDiskStatisticsRequest,
+            opts: Dict = None,
+    ) -> models.DescribeDedicatedClusterDiskStatisticsResponse:
+        """
+        查询 CVM CDC 独享集群云硬盘统计信息。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeDedicatedClusterDiskStatistics"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeDedicatedClusterDiskStatisticsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeDiskAssociatedAutoSnapshotPolicy(
             self,
             request: models.DescribeDiskAssociatedAutoSnapshotPolicyRequest,

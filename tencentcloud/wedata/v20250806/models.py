@@ -8364,6 +8364,8 @@ class CreateTriggerWorkflowRequest(AbstractModel):
         :type SchedulerStatus: str
         :param _TriggerMode: <p>触发方式：定时触发：TIME_TRIGGER 。配置完之后，内部的TriggerMode状态可不配置，如果配置，内容会被该值覆盖。</p><p>枚举值：</p><ul><li>TIME_TRIGGER： 定时触发</li></ul>
         :type TriggerMode: str
+        :param _ExecuteUserUin: <p>运行账号ID,未传时默认使用当前登录用户ID</p>
+        :type ExecuteUserUin: str
         """
         self._ProjectId = None
         self._WorkflowName = None
@@ -8378,6 +8380,7 @@ class CreateTriggerWorkflowRequest(AbstractModel):
         self._TriggerWorkflowRunConfiguration = None
         self._SchedulerStatus = None
         self._TriggerMode = None
+        self._ExecuteUserUin = None
 
     @property
     def ProjectId(self):
@@ -8522,6 +8525,17 @@ class CreateTriggerWorkflowRequest(AbstractModel):
     def TriggerMode(self, TriggerMode):
         self._TriggerMode = TriggerMode
 
+    @property
+    def ExecuteUserUin(self):
+        r"""<p>运行账号ID,未传时默认使用当前登录用户ID</p>
+        :rtype: str
+        """
+        return self._ExecuteUserUin
+
+    @ExecuteUserUin.setter
+    def ExecuteUserUin(self, ExecuteUserUin):
+        self._ExecuteUserUin = ExecuteUserUin
+
 
     def _deserialize(self, params):
         self._ProjectId = params.get("ProjectId")
@@ -8554,6 +8568,7 @@ class CreateTriggerWorkflowRequest(AbstractModel):
             self._TriggerWorkflowRunConfiguration._deserialize(params.get("TriggerWorkflowRunConfiguration"))
         self._SchedulerStatus = params.get("SchedulerStatus")
         self._TriggerMode = params.get("TriggerMode")
+        self._ExecuteUserUin = params.get("ExecuteUserUin")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -15455,9 +15470,9 @@ class Filter(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Name: 过滤字段名称
+        :param _Name: <p>过滤字段名称</p>
         :type Name: str
-        :param _Values: 过滤值列表
+        :param _Values: <p>过滤值列表</p>
         :type Values: list of str
         """
         self._Name = None
@@ -15465,7 +15480,7 @@ class Filter(AbstractModel):
 
     @property
     def Name(self):
-        r"""过滤字段名称
+        r"""<p>过滤字段名称</p>
         :rtype: str
         """
         return self._Name
@@ -15476,7 +15491,7 @@ class Filter(AbstractModel):
 
     @property
     def Values(self):
-        r"""过滤值列表
+        r"""<p>过滤值列表</p>
         :rtype: list of str
         """
         return self._Values
@@ -32512,7 +32527,7 @@ class ListTriggerWorkflowRunsRequest(AbstractModel):
         r"""
         :param _ProjectId: 项目ID
         :type ProjectId: str
-        :param _Filters: 过滤参数, 工作流名称或ID查询名称: Keyword, 工作流ID查询名称: WorkflowId,文件夹查询名称: FolderId, 负责人查询名称: InChargeUin, 工作流执行id: ExecutionId, 计划调度时间区间: ScheduleTimeGreaterEqual, ScheduleTimeLessEqual
+        :param _Filters: 过滤参数, 工作流名称或ID查询名称: Keyword, 工作流ID查询名称: WorkflowId,文件夹查询名称: FolderId, 负责人查询名称: InChargeUin, 运行账号ID查询名称: ExecuteUserUin, 工作流执行id: ExecutionId, 计划调度时间区间: ScheduleTimeGreaterEqual, ScheduleTimeLessEqual
         :type Filters: list of Filter
         :param _OrderFields: 排序字段，排序字段名称	如下开始时间：CreateTime，结束时间：EndTime，计划调度时间：ScheduleTime
         :type OrderFields: list of OrderField
@@ -32540,7 +32555,7 @@ class ListTriggerWorkflowRunsRequest(AbstractModel):
 
     @property
     def Filters(self):
-        r"""过滤参数, 工作流名称或ID查询名称: Keyword, 工作流ID查询名称: WorkflowId,文件夹查询名称: FolderId, 负责人查询名称: InChargeUin, 工作流执行id: ExecutionId, 计划调度时间区间: ScheduleTimeGreaterEqual, ScheduleTimeLessEqual
+        r"""过滤参数, 工作流名称或ID查询名称: Keyword, 工作流ID查询名称: WorkflowId,文件夹查询名称: FolderId, 负责人查询名称: InChargeUin, 运行账号ID查询名称: ExecuteUserUin, 工作流执行id: ExecutionId, 计划调度时间区间: ScheduleTimeGreaterEqual, ScheduleTimeLessEqual
         :rtype: list of Filter
         """
         return self._Filters
@@ -32661,25 +32676,27 @@ class ListTriggerWorkflowsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ProjectId: 项目ID
+        :param _ProjectId: <p>项目ID</p>
         :type ProjectId: str
-        :param _PageNumber: 请求的数据页数。默认值为1，取值大于等于1
+        :param _PageNumber: <p>请求的数据页数。默认值为1，取值大于等于1</p>
         :type PageNumber: int
-        :param _PageSize: 每页显示的数据条数。默认值为10 ，最小值为10，最大值为200
+        :param _PageSize: <p>每页显示的数据条数。默认值为10 ，最小值为10，最大值为200</p>
         :type PageSize: int
-        :param _Keyword: 搜索关键词
+        :param _Keyword: <p>搜索关键词</p>
         :type Keyword: str
-        :param _ParentFolderPath: 工作流所属文件夹
+        :param _ParentFolderPath: <p>工作流所属文件夹</p>
         :type ParentFolderPath: str
-        :param _BundleId: bundleId项
+        :param _BundleId: <p>bundleId项</p>
         :type BundleId: str
-        :param _OwnerUin: 负责人ID
+        :param _OwnerUin: <p>负责人ID</p>
         :type OwnerUin: str
-        :param _CreateUserUin: 创建人ID
+        :param _CreateUserUin: <p>创建人ID</p>
         :type CreateUserUin: str
-        :param _ModifyTime: 修改时间区间 yyyy-MM-dd HH:mm:ss，需要在数组填入两个时间
+        :param _ExecuteUserUin: <p>运行账号ID</p>
+        :type ExecuteUserUin: str
+        :param _ModifyTime: <p>修改时间区间 yyyy-MM-dd HH:mm:ss，需要在数组填入两个时间</p>
         :type ModifyTime: list of str
-        :param _CreateTime: 创建时间区间 yyyy-MM-dd HH:mm:ss，需要在数组填入两个时间
+        :param _CreateTime: <p>创建时间区间 yyyy-MM-dd HH:mm:ss，需要在数组填入两个时间</p>
         :type CreateTime: list of str
         """
         self._ProjectId = None
@@ -32690,12 +32707,13 @@ class ListTriggerWorkflowsRequest(AbstractModel):
         self._BundleId = None
         self._OwnerUin = None
         self._CreateUserUin = None
+        self._ExecuteUserUin = None
         self._ModifyTime = None
         self._CreateTime = None
 
     @property
     def ProjectId(self):
-        r"""项目ID
+        r"""<p>项目ID</p>
         :rtype: str
         """
         return self._ProjectId
@@ -32706,7 +32724,7 @@ class ListTriggerWorkflowsRequest(AbstractModel):
 
     @property
     def PageNumber(self):
-        r"""请求的数据页数。默认值为1，取值大于等于1
+        r"""<p>请求的数据页数。默认值为1，取值大于等于1</p>
         :rtype: int
         """
         return self._PageNumber
@@ -32717,7 +32735,7 @@ class ListTriggerWorkflowsRequest(AbstractModel):
 
     @property
     def PageSize(self):
-        r"""每页显示的数据条数。默认值为10 ，最小值为10，最大值为200
+        r"""<p>每页显示的数据条数。默认值为10 ，最小值为10，最大值为200</p>
         :rtype: int
         """
         return self._PageSize
@@ -32728,7 +32746,7 @@ class ListTriggerWorkflowsRequest(AbstractModel):
 
     @property
     def Keyword(self):
-        r"""搜索关键词
+        r"""<p>搜索关键词</p>
         :rtype: str
         """
         return self._Keyword
@@ -32739,7 +32757,7 @@ class ListTriggerWorkflowsRequest(AbstractModel):
 
     @property
     def ParentFolderPath(self):
-        r"""工作流所属文件夹
+        r"""<p>工作流所属文件夹</p>
         :rtype: str
         """
         return self._ParentFolderPath
@@ -32750,7 +32768,7 @@ class ListTriggerWorkflowsRequest(AbstractModel):
 
     @property
     def BundleId(self):
-        r"""bundleId项
+        r"""<p>bundleId项</p>
         :rtype: str
         """
         return self._BundleId
@@ -32761,7 +32779,7 @@ class ListTriggerWorkflowsRequest(AbstractModel):
 
     @property
     def OwnerUin(self):
-        r"""负责人ID
+        r"""<p>负责人ID</p>
         :rtype: str
         """
         return self._OwnerUin
@@ -32772,7 +32790,7 @@ class ListTriggerWorkflowsRequest(AbstractModel):
 
     @property
     def CreateUserUin(self):
-        r"""创建人ID
+        r"""<p>创建人ID</p>
         :rtype: str
         """
         return self._CreateUserUin
@@ -32782,8 +32800,19 @@ class ListTriggerWorkflowsRequest(AbstractModel):
         self._CreateUserUin = CreateUserUin
 
     @property
+    def ExecuteUserUin(self):
+        r"""<p>运行账号ID</p>
+        :rtype: str
+        """
+        return self._ExecuteUserUin
+
+    @ExecuteUserUin.setter
+    def ExecuteUserUin(self, ExecuteUserUin):
+        self._ExecuteUserUin = ExecuteUserUin
+
+    @property
     def ModifyTime(self):
-        r"""修改时间区间 yyyy-MM-dd HH:mm:ss，需要在数组填入两个时间
+        r"""<p>修改时间区间 yyyy-MM-dd HH:mm:ss，需要在数组填入两个时间</p>
         :rtype: list of str
         """
         return self._ModifyTime
@@ -32794,7 +32823,7 @@ class ListTriggerWorkflowsRequest(AbstractModel):
 
     @property
     def CreateTime(self):
-        r"""创建时间区间 yyyy-MM-dd HH:mm:ss，需要在数组填入两个时间
+        r"""<p>创建时间区间 yyyy-MM-dd HH:mm:ss，需要在数组填入两个时间</p>
         :rtype: list of str
         """
         return self._CreateTime
@@ -32813,6 +32842,7 @@ class ListTriggerWorkflowsRequest(AbstractModel):
         self._BundleId = params.get("BundleId")
         self._OwnerUin = params.get("OwnerUin")
         self._CreateUserUin = params.get("CreateUserUin")
+        self._ExecuteUserUin = params.get("ExecuteUserUin")
         self._ModifyTime = params.get("ModifyTime")
         self._CreateTime = params.get("CreateTime")
         memeber_set = set(params.keys())
@@ -32832,7 +32862,7 @@ class ListTriggerWorkflowsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Data: 查询工作流分页信息
+        :param _Data: <p>查询工作流分页信息</p>
         :type Data: :class:`tencentcloud.wedata.v20250806.models.ListTriggerWorkflowInfo`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -32842,7 +32872,7 @@ class ListTriggerWorkflowsResponse(AbstractModel):
 
     @property
     def Data(self):
-        r"""查询工作流分页信息
+        r"""<p>查询工作流分页信息</p>
         :rtype: :class:`tencentcloud.wedata.v20250806.models.ListTriggerWorkflowInfo`
         """
         return self._Data
@@ -36430,9 +36460,9 @@ class OrderField(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Name: 排序字段名称
+        :param _Name: <p>排序字段名称</p>
         :type Name: str
-        :param _Direction: 排序方向：ASC|DESC
+        :param _Direction: <p>排序方向：ASC|DESC</p>
         :type Direction: str
         """
         self._Name = None
@@ -36440,7 +36470,7 @@ class OrderField(AbstractModel):
 
     @property
     def Name(self):
-        r"""排序字段名称
+        r"""<p>排序字段名称</p>
         :rtype: str
         """
         return self._Name
@@ -36451,7 +36481,7 @@ class OrderField(AbstractModel):
 
     @property
     def Direction(self):
-        r"""排序方向：ASC|DESC
+        r"""<p>排序方向：ASC|DESC</p>
         :rtype: str
         """
         return self._Direction
@@ -54692,51 +54722,54 @@ class TriggerTaskBrief(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ProjectId: 项目id
+        :param _ProjectId: <p>项目id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ProjectId: str
-        :param _ProjectName: 项目名称
+        :param _ProjectName: <p>项目名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ProjectName: str
-        :param _WorkflowId: 工作流id
+        :param _WorkflowId: <p>工作流id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type WorkflowId: str
-        :param _WorkflowName: 工作流名称
+        :param _WorkflowName: <p>工作流名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type WorkflowName: str
-        :param _TaskId: 任务id
+        :param _TaskId: <p>任务id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TaskId: str
-        :param _TaskName: 任务名称
+        :param _TaskName: <p>任务名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TaskName: str
-        :param _TaskType: 任务类型
+        :param _TaskType: <p>任务类型</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TaskType: str
-        :param _UserUinInCharge: 责任人user UIN
+        :param _UserUinInCharge: <p>责任人user UIN</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type UserUinInCharge: str
-        :param _UserNameInCharge: 责任人名称
+        :param _UserNameInCharge: <p>责任人名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type UserNameInCharge: str
-        :param _FolderId: 文件夹ID
+        :param _FolderId: <p>文件夹ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type FolderId: str
-        :param _FolderName: 文件夹名称
+        :param _FolderName: <p>文件夹名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type FolderName: str
-        :param _TaskTypeId: 任务类型ID
+        :param _TaskTypeId: <p>任务类型ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TaskTypeId: int
-        :param _ExecutionState: 任务状态
+        :param _ExecutionState: <p>任务状态</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ExecutionState: str
-        :param _ExecutionStartTime: 运行开始时间
+        :param _ExecutionStartTime: <p>运行开始时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ExecutionStartTime: str
-        :param _DependencyTriggerPolicy: 依赖策略
+        :param _DependencyTriggerPolicy: <p>依赖策略</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type DependencyTriggerPolicy: str
+        :param _ExecuteUserUin: <p>运行账号ID</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExecuteUserUin: str
         """
         self._ProjectId = None
         self._ProjectName = None
@@ -54753,10 +54786,11 @@ class TriggerTaskBrief(AbstractModel):
         self._ExecutionState = None
         self._ExecutionStartTime = None
         self._DependencyTriggerPolicy = None
+        self._ExecuteUserUin = None
 
     @property
     def ProjectId(self):
-        r"""项目id
+        r"""<p>项目id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -54768,7 +54802,7 @@ class TriggerTaskBrief(AbstractModel):
 
     @property
     def ProjectName(self):
-        r"""项目名称
+        r"""<p>项目名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -54780,7 +54814,7 @@ class TriggerTaskBrief(AbstractModel):
 
     @property
     def WorkflowId(self):
-        r"""工作流id
+        r"""<p>工作流id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -54792,7 +54826,7 @@ class TriggerTaskBrief(AbstractModel):
 
     @property
     def WorkflowName(self):
-        r"""工作流名称
+        r"""<p>工作流名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -54804,7 +54838,7 @@ class TriggerTaskBrief(AbstractModel):
 
     @property
     def TaskId(self):
-        r"""任务id
+        r"""<p>任务id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -54816,7 +54850,7 @@ class TriggerTaskBrief(AbstractModel):
 
     @property
     def TaskName(self):
-        r"""任务名称
+        r"""<p>任务名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -54828,7 +54862,7 @@ class TriggerTaskBrief(AbstractModel):
 
     @property
     def TaskType(self):
-        r"""任务类型
+        r"""<p>任务类型</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -54840,7 +54874,7 @@ class TriggerTaskBrief(AbstractModel):
 
     @property
     def UserUinInCharge(self):
-        r"""责任人user UIN
+        r"""<p>责任人user UIN</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -54852,7 +54886,7 @@ class TriggerTaskBrief(AbstractModel):
 
     @property
     def UserNameInCharge(self):
-        r"""责任人名称
+        r"""<p>责任人名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -54864,7 +54898,7 @@ class TriggerTaskBrief(AbstractModel):
 
     @property
     def FolderId(self):
-        r"""文件夹ID
+        r"""<p>文件夹ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -54876,7 +54910,7 @@ class TriggerTaskBrief(AbstractModel):
 
     @property
     def FolderName(self):
-        r"""文件夹名称
+        r"""<p>文件夹名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -54888,7 +54922,7 @@ class TriggerTaskBrief(AbstractModel):
 
     @property
     def TaskTypeId(self):
-        r"""任务类型ID
+        r"""<p>任务类型ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -54900,7 +54934,7 @@ class TriggerTaskBrief(AbstractModel):
 
     @property
     def ExecutionState(self):
-        r"""任务状态
+        r"""<p>任务状态</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -54912,7 +54946,7 @@ class TriggerTaskBrief(AbstractModel):
 
     @property
     def ExecutionStartTime(self):
-        r"""运行开始时间
+        r"""<p>运行开始时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -54924,7 +54958,7 @@ class TriggerTaskBrief(AbstractModel):
 
     @property
     def DependencyTriggerPolicy(self):
-        r"""依赖策略
+        r"""<p>依赖策略</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -54933,6 +54967,18 @@ class TriggerTaskBrief(AbstractModel):
     @DependencyTriggerPolicy.setter
     def DependencyTriggerPolicy(self, DependencyTriggerPolicy):
         self._DependencyTriggerPolicy = DependencyTriggerPolicy
+
+    @property
+    def ExecuteUserUin(self):
+        r"""<p>运行账号ID</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ExecuteUserUin
+
+    @ExecuteUserUin.setter
+    def ExecuteUserUin(self, ExecuteUserUin):
+        self._ExecuteUserUin = ExecuteUserUin
 
 
     def _deserialize(self, params):
@@ -54951,6 +54997,7 @@ class TriggerTaskBrief(AbstractModel):
         self._ExecutionState = params.get("ExecutionState")
         self._ExecutionStartTime = params.get("ExecutionStartTime")
         self._DependencyTriggerPolicy = params.get("DependencyTriggerPolicy")
+        self._ExecuteUserUin = params.get("ExecuteUserUin")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -57286,35 +57333,38 @@ class TriggerWorkflowBrief(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ProjectId: 项目ID
+        :param _ProjectId: <p>项目ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ProjectId: str
-        :param _WorkflowId: 工作ID
+        :param _WorkflowId: <p>工作ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type WorkflowId: str
-        :param _WorkflowName: 工作流名称
+        :param _WorkflowName: <p>工作流名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type WorkflowName: str
-        :param _TaskCount: 任务数量
+        :param _TaskCount: <p>任务数量</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TaskCount: int
-        :param _FolderId: 文件夹ID
+        :param _FolderId: <p>文件夹ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type FolderId: str
-        :param _FolderName: 文件夹名称
+        :param _FolderName: <p>文件夹名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type FolderName: str
-        :param _WorkflowTriggerConfig: 调度配置
+        :param _WorkflowTriggerConfig: <p>调度配置</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type WorkflowTriggerConfig: :class:`tencentcloud.wedata.v20250806.models.WorkflowTriggerConfig`
-        :param _UserNameInCharge: 责任人
+        :param _UserNameInCharge: <p>责任人</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type UserNameInCharge: str
-        :param _UserUinInCharge: 责任人ID
+        :param _UserUinInCharge: <p>责任人ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type UserUinInCharge: str
-        :param _WorkflowParams: 工作流参数
+        :param _WorkflowParams: <p>工作流参数</p>
         :type WorkflowParams: str
+        :param _ExecuteUserUin: <p>运行账号ID</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExecuteUserUin: str
         """
         self._ProjectId = None
         self._WorkflowId = None
@@ -57326,10 +57376,11 @@ class TriggerWorkflowBrief(AbstractModel):
         self._UserNameInCharge = None
         self._UserUinInCharge = None
         self._WorkflowParams = None
+        self._ExecuteUserUin = None
 
     @property
     def ProjectId(self):
-        r"""项目ID
+        r"""<p>项目ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -57341,7 +57392,7 @@ class TriggerWorkflowBrief(AbstractModel):
 
     @property
     def WorkflowId(self):
-        r"""工作ID
+        r"""<p>工作ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -57353,7 +57404,7 @@ class TriggerWorkflowBrief(AbstractModel):
 
     @property
     def WorkflowName(self):
-        r"""工作流名称
+        r"""<p>工作流名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -57365,7 +57416,7 @@ class TriggerWorkflowBrief(AbstractModel):
 
     @property
     def TaskCount(self):
-        r"""任务数量
+        r"""<p>任务数量</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -57377,7 +57428,7 @@ class TriggerWorkflowBrief(AbstractModel):
 
     @property
     def FolderId(self):
-        r"""文件夹ID
+        r"""<p>文件夹ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -57389,7 +57440,7 @@ class TriggerWorkflowBrief(AbstractModel):
 
     @property
     def FolderName(self):
-        r"""文件夹名称
+        r"""<p>文件夹名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -57401,7 +57452,7 @@ class TriggerWorkflowBrief(AbstractModel):
 
     @property
     def WorkflowTriggerConfig(self):
-        r"""调度配置
+        r"""<p>调度配置</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.wedata.v20250806.models.WorkflowTriggerConfig`
         """
@@ -57413,7 +57464,7 @@ class TriggerWorkflowBrief(AbstractModel):
 
     @property
     def UserNameInCharge(self):
-        r"""责任人
+        r"""<p>责任人</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -57425,7 +57476,7 @@ class TriggerWorkflowBrief(AbstractModel):
 
     @property
     def UserUinInCharge(self):
-        r"""责任人ID
+        r"""<p>责任人ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -57437,7 +57488,7 @@ class TriggerWorkflowBrief(AbstractModel):
 
     @property
     def WorkflowParams(self):
-        r"""工作流参数
+        r"""<p>工作流参数</p>
         :rtype: str
         """
         return self._WorkflowParams
@@ -57445,6 +57496,18 @@ class TriggerWorkflowBrief(AbstractModel):
     @WorkflowParams.setter
     def WorkflowParams(self, WorkflowParams):
         self._WorkflowParams = WorkflowParams
+
+    @property
+    def ExecuteUserUin(self):
+        r"""<p>运行账号ID</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ExecuteUserUin
+
+    @ExecuteUserUin.setter
+    def ExecuteUserUin(self, ExecuteUserUin):
+        self._ExecuteUserUin = ExecuteUserUin
 
 
     def _deserialize(self, params):
@@ -57460,6 +57523,7 @@ class TriggerWorkflowBrief(AbstractModel):
         self._UserNameInCharge = params.get("UserNameInCharge")
         self._UserUinInCharge = params.get("UserUinInCharge")
         self._WorkflowParams = params.get("WorkflowParams")
+        self._ExecuteUserUin = params.get("ExecuteUserUin")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -57516,6 +57580,9 @@ class TriggerWorkflowDetail(AbstractModel):
         :param _TriggerMode: <p>触发方式：定时触发：TIME_TRIGGER 。这里配置之后，内部的触发方式可不填，否则需要保持一致</p><p>枚举值：</p><ul><li>TIME_TRIGGER： 定时触发</li></ul>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TriggerMode: str
+        :param _ExecuteUserUin: <p>运行账号ID</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExecuteUserUin: str
         """
         self._WorkflowName = None
         self._OwnerUin = None
@@ -57530,6 +57597,7 @@ class TriggerWorkflowDetail(AbstractModel):
         self._SchedulerStatus = None
         self._TriggerWorkflowRunConfiguration = None
         self._TriggerMode = None
+        self._ExecuteUserUin = None
 
     @property
     def WorkflowName(self):
@@ -57687,6 +57755,18 @@ class TriggerWorkflowDetail(AbstractModel):
     def TriggerMode(self, TriggerMode):
         self._TriggerMode = TriggerMode
 
+    @property
+    def ExecuteUserUin(self):
+        r"""<p>运行账号ID</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ExecuteUserUin
+
+    @ExecuteUserUin.setter
+    def ExecuteUserUin(self, ExecuteUserUin):
+        self._ExecuteUserUin = ExecuteUserUin
+
 
     def _deserialize(self, params):
         self._WorkflowName = params.get("WorkflowName")
@@ -57719,6 +57799,7 @@ class TriggerWorkflowDetail(AbstractModel):
             self._TriggerWorkflowRunConfiguration = WorkflowRunConfig()
             self._TriggerWorkflowRunConfiguration._deserialize(params.get("TriggerWorkflowRunConfiguration"))
         self._TriggerMode = params.get("TriggerMode")
+        self._ExecuteUserUin = params.get("ExecuteUserUin")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -57736,30 +57817,33 @@ class TriggerWorkflowInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _WorkflowId: 工作流ID
+        :param _WorkflowId: <p>工作流ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type WorkflowId: str
-        :param _WorkflowName: 工作流名称
+        :param _WorkflowName: <p>工作流名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type WorkflowName: str
-        :param _OwnerUin: 负责人ID
+        :param _OwnerUin: <p>负责人ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type OwnerUin: str
-        :param _CreateTime: 创建时间
+        :param _CreateTime: <p>创建时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type CreateTime: str
-        :param _ModifyTime: 最新修改时间
+        :param _ModifyTime: <p>最新修改时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ModifyTime: str
-        :param _UpdateUserUin: 最后更新人ID
+        :param _UpdateUserUin: <p>最后更新人ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type UpdateUserUin: str
-        :param _WorkflowDesc: 工作流描述
+        :param _WorkflowDesc: <p>工作流描述</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type WorkflowDesc: str
-        :param _CreateUserUin: 创建人ID
+        :param _CreateUserUin: <p>创建人ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type CreateUserUin: str
+        :param _ExecuteUserUin: <p>运行账号ID</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExecuteUserUin: str
         """
         self._WorkflowId = None
         self._WorkflowName = None
@@ -57769,10 +57853,11 @@ class TriggerWorkflowInfo(AbstractModel):
         self._UpdateUserUin = None
         self._WorkflowDesc = None
         self._CreateUserUin = None
+        self._ExecuteUserUin = None
 
     @property
     def WorkflowId(self):
-        r"""工作流ID
+        r"""<p>工作流ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -57784,7 +57869,7 @@ class TriggerWorkflowInfo(AbstractModel):
 
     @property
     def WorkflowName(self):
-        r"""工作流名称
+        r"""<p>工作流名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -57796,7 +57881,7 @@ class TriggerWorkflowInfo(AbstractModel):
 
     @property
     def OwnerUin(self):
-        r"""负责人ID
+        r"""<p>负责人ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -57808,7 +57893,7 @@ class TriggerWorkflowInfo(AbstractModel):
 
     @property
     def CreateTime(self):
-        r"""创建时间
+        r"""<p>创建时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -57820,7 +57905,7 @@ class TriggerWorkflowInfo(AbstractModel):
 
     @property
     def ModifyTime(self):
-        r"""最新修改时间
+        r"""<p>最新修改时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -57832,7 +57917,7 @@ class TriggerWorkflowInfo(AbstractModel):
 
     @property
     def UpdateUserUin(self):
-        r"""最后更新人ID
+        r"""<p>最后更新人ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -57844,7 +57929,7 @@ class TriggerWorkflowInfo(AbstractModel):
 
     @property
     def WorkflowDesc(self):
-        r"""工作流描述
+        r"""<p>工作流描述</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -57856,7 +57941,7 @@ class TriggerWorkflowInfo(AbstractModel):
 
     @property
     def CreateUserUin(self):
-        r"""创建人ID
+        r"""<p>创建人ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -57865,6 +57950,18 @@ class TriggerWorkflowInfo(AbstractModel):
     @CreateUserUin.setter
     def CreateUserUin(self, CreateUserUin):
         self._CreateUserUin = CreateUserUin
+
+    @property
+    def ExecuteUserUin(self):
+        r"""<p>运行账号ID</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ExecuteUserUin
+
+    @ExecuteUserUin.setter
+    def ExecuteUserUin(self, ExecuteUserUin):
+        self._ExecuteUserUin = ExecuteUserUin
 
 
     def _deserialize(self, params):
@@ -57876,6 +57973,7 @@ class TriggerWorkflowInfo(AbstractModel):
         self._UpdateUserUin = params.get("UpdateUserUin")
         self._WorkflowDesc = params.get("WorkflowDesc")
         self._CreateUserUin = params.get("CreateUserUin")
+        self._ExecuteUserUin = params.get("ExecuteUserUin")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -58004,102 +58102,114 @@ class TriggerWorkflowRunBrief(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AppId: 用户AppId
+        :param _AppId: <p>用户AppId</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type AppId: str
-        :param _ProjectId: 项目ID
+        :param _ProjectId: <p>项目ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ProjectId: str
-        :param _WorkflowName: 工作流名称
+        :param _WorkflowName: <p>工作流名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type WorkflowName: str
-        :param _WorkflowId: 工作流ID
+        :param _WorkflowId: <p>工作流ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type WorkflowId: str
-        :param _ExecutionId: 工作流运行ID
+        :param _ExecutionId: <p>工作流运行ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ExecutionId: str
-        :param _TriggerId: 触发器ID
+        :param _TriggerId: <p>触发器ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TriggerId: str
-        :param _TriggerType: 触发方式:调度触发Scheduler、手动触发ManualTrigger、事件触发Event
+        :param _TriggerType: <p>触发方式:调度触发Scheduler、手动触发ManualTrigger、事件触发Event</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TriggerType: str
-        :param _CreateTime: 工作流触发时间
+        :param _CreateTime: <p>工作流触发时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type CreateTime: str
-        :param _ScheduleTime: 计划调度时间
+        :param _ScheduleTime: <p>计划调度时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ScheduleTime: str
-        :param _ExecutionStartTime: 执行开始时间戳
+        :param _ExecutionStartTime: <p>执行开始时间戳</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ExecutionStartTime: str
-        :param _ExecutionEndTime: 执行结束时间戳
+        :param _ExecutionEndTime: <p>执行结束时间戳</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ExecutionEndTime: str
-        :param _ExecutionCostTime: 运行时长，单位秒
+        :param _ExecutionCostTime: <p>运行时长，单位秒</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ExecutionCostTime: str
-        :param _QueueCostTime: 并发排队花费时间，单位秒
+        :param _QueueCostTime: <p>并发排队花费时间，单位秒</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type QueueCostTime: str
-        :param _PendingCostTime: 等待资源花费时间，单位秒
+        :param _PendingCostTime: <p>等待资源花费时间，单位秒</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type PendingCostTime: str
-        :param _ExecutionState: 执行状态，运行失败:FAILED、运行成功:SUCCESS、等待中:PENDING、跳过运行:SKIPED、运行中:RUNNING
+        :param _ExecutionState: <p>执行状态，运行失败:FAILED、运行成功:SUCCESS、等待中:PENDING、跳过运行:SKIPED、运行中:RUNNING</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ExecutionState: str
-        :param _ExecuteUserUin: 运行用户UIN
+        :param _ExecuteUserUin: <p>运行用户UIN</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ExecuteUserUin: str
-        :param _ExecuteUserName: 运行用户名称
+        :param _ExecuteUserName: <p>运行用户名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ExecuteUserName: str
-        :param _ErrorCodeStr: 错误码
+        :param _ErrorCodeStr: <p>错误码</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ErrorCodeStr: str
-        :param _WorkflowParams: 运行参数
+        :param _WorkflowParams: <p>运行参数</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type WorkflowParams: str
-        :param _WorkflowVersionId: 工作流版本信息ID
+        :param _WorkflowVersionId: <p>工作流版本信息ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type WorkflowVersionId: str
-        :param _SupportRerun: 是否支持重跑
+        :param _SupportRerun: <p>是否支持重跑</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type SupportRerun: bool
-        :param _RerunTimes: 重跑次数
+        :param _RerunTimes: <p>重跑次数</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type RerunTimes: int
-        :param _SelectedTaskIds: 运行的任务范围,逗号分隔的任务ID列表
+        :param _SelectedTaskIds: <p>运行的任务范围,逗号分隔的任务ID列表</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type SelectedTaskIds: list of str
-        :param _PendingStartTime: 等待并发开始时间
+        :param _PendingStartTime: <p>等待并发开始时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type PendingStartTime: str
-        :param _QueueStartTime: 排队等待开始时间
+        :param _QueueStartTime: <p>排队等待开始时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type QueueStartTime: str
-        :param _EndTime: 运行结束时间
+        :param _EndTime: <p>运行结束时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type EndTime: str
-        :param _FolderId: 文件夹ID
+        :param _FolderId: <p>文件夹ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type FolderId: str
-        :param _FolderName: 文件夹名称
+        :param _FolderName: <p>文件夹名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type FolderName: str
-        :param _PlannedSchedulingTime: 计划调度时间
+        :param _PlannedSchedulingTime: <p>计划调度时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type PlannedSchedulingTime: str
-        :param _CycleType: 周期类型
+        :param _CycleType: <p>周期类型</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type CycleType: str
-        :param _UserNameInCharge: 责任人名称
+        :param _UserNameInCharge: <p>责任人名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type UserNameInCharge: str
-        :param _UserUinInCharge: 责任人ID
+        :param _UserUinInCharge: <p>责任人ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type UserUinInCharge: str
+        :param _AssociatedEntityExist: <p>关联实体是否存在</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AssociatedEntityExist: bool
+        :param _ParentWorkflowExecutionId: <p>父工作流运行ID 【由嵌套工作流触发独有】</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ParentWorkflowExecutionId: str
+        :param _ParentTaskExecutionId: <p>父任务运行ID 【由嵌套工作流触发独有】</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ParentTaskExecutionId: str
+        :param _ParentTaskExecutionName: <p>父任务运行名称 【由嵌套工作流触发独有】</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ParentTaskExecutionName: str
         """
         self._AppId = None
         self._ProjectId = None
@@ -58133,10 +58243,14 @@ class TriggerWorkflowRunBrief(AbstractModel):
         self._CycleType = None
         self._UserNameInCharge = None
         self._UserUinInCharge = None
+        self._AssociatedEntityExist = None
+        self._ParentWorkflowExecutionId = None
+        self._ParentTaskExecutionId = None
+        self._ParentTaskExecutionName = None
 
     @property
     def AppId(self):
-        r"""用户AppId
+        r"""<p>用户AppId</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -58148,7 +58262,7 @@ class TriggerWorkflowRunBrief(AbstractModel):
 
     @property
     def ProjectId(self):
-        r"""项目ID
+        r"""<p>项目ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -58160,7 +58274,7 @@ class TriggerWorkflowRunBrief(AbstractModel):
 
     @property
     def WorkflowName(self):
-        r"""工作流名称
+        r"""<p>工作流名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -58172,7 +58286,7 @@ class TriggerWorkflowRunBrief(AbstractModel):
 
     @property
     def WorkflowId(self):
-        r"""工作流ID
+        r"""<p>工作流ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -58184,7 +58298,7 @@ class TriggerWorkflowRunBrief(AbstractModel):
 
     @property
     def ExecutionId(self):
-        r"""工作流运行ID
+        r"""<p>工作流运行ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -58196,7 +58310,7 @@ class TriggerWorkflowRunBrief(AbstractModel):
 
     @property
     def TriggerId(self):
-        r"""触发器ID
+        r"""<p>触发器ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -58208,7 +58322,7 @@ class TriggerWorkflowRunBrief(AbstractModel):
 
     @property
     def TriggerType(self):
-        r"""触发方式:调度触发Scheduler、手动触发ManualTrigger、事件触发Event
+        r"""<p>触发方式:调度触发Scheduler、手动触发ManualTrigger、事件触发Event</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -58220,7 +58334,7 @@ class TriggerWorkflowRunBrief(AbstractModel):
 
     @property
     def CreateTime(self):
-        r"""工作流触发时间
+        r"""<p>工作流触发时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -58232,7 +58346,7 @@ class TriggerWorkflowRunBrief(AbstractModel):
 
     @property
     def ScheduleTime(self):
-        r"""计划调度时间
+        r"""<p>计划调度时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -58244,7 +58358,7 @@ class TriggerWorkflowRunBrief(AbstractModel):
 
     @property
     def ExecutionStartTime(self):
-        r"""执行开始时间戳
+        r"""<p>执行开始时间戳</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -58256,7 +58370,7 @@ class TriggerWorkflowRunBrief(AbstractModel):
 
     @property
     def ExecutionEndTime(self):
-        r"""执行结束时间戳
+        r"""<p>执行结束时间戳</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -58268,7 +58382,7 @@ class TriggerWorkflowRunBrief(AbstractModel):
 
     @property
     def ExecutionCostTime(self):
-        r"""运行时长，单位秒
+        r"""<p>运行时长，单位秒</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -58280,7 +58394,7 @@ class TriggerWorkflowRunBrief(AbstractModel):
 
     @property
     def QueueCostTime(self):
-        r"""并发排队花费时间，单位秒
+        r"""<p>并发排队花费时间，单位秒</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -58292,7 +58406,7 @@ class TriggerWorkflowRunBrief(AbstractModel):
 
     @property
     def PendingCostTime(self):
-        r"""等待资源花费时间，单位秒
+        r"""<p>等待资源花费时间，单位秒</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -58304,7 +58418,7 @@ class TriggerWorkflowRunBrief(AbstractModel):
 
     @property
     def ExecutionState(self):
-        r"""执行状态，运行失败:FAILED、运行成功:SUCCESS、等待中:PENDING、跳过运行:SKIPED、运行中:RUNNING
+        r"""<p>执行状态，运行失败:FAILED、运行成功:SUCCESS、等待中:PENDING、跳过运行:SKIPED、运行中:RUNNING</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -58316,7 +58430,7 @@ class TriggerWorkflowRunBrief(AbstractModel):
 
     @property
     def ExecuteUserUin(self):
-        r"""运行用户UIN
+        r"""<p>运行用户UIN</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -58328,7 +58442,7 @@ class TriggerWorkflowRunBrief(AbstractModel):
 
     @property
     def ExecuteUserName(self):
-        r"""运行用户名称
+        r"""<p>运行用户名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -58340,7 +58454,7 @@ class TriggerWorkflowRunBrief(AbstractModel):
 
     @property
     def ErrorCodeStr(self):
-        r"""错误码
+        r"""<p>错误码</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -58352,7 +58466,7 @@ class TriggerWorkflowRunBrief(AbstractModel):
 
     @property
     def WorkflowParams(self):
-        r"""运行参数
+        r"""<p>运行参数</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -58364,7 +58478,7 @@ class TriggerWorkflowRunBrief(AbstractModel):
 
     @property
     def WorkflowVersionId(self):
-        r"""工作流版本信息ID
+        r"""<p>工作流版本信息ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -58376,7 +58490,7 @@ class TriggerWorkflowRunBrief(AbstractModel):
 
     @property
     def SupportRerun(self):
-        r"""是否支持重跑
+        r"""<p>是否支持重跑</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
@@ -58388,7 +58502,7 @@ class TriggerWorkflowRunBrief(AbstractModel):
 
     @property
     def RerunTimes(self):
-        r"""重跑次数
+        r"""<p>重跑次数</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -58400,7 +58514,7 @@ class TriggerWorkflowRunBrief(AbstractModel):
 
     @property
     def SelectedTaskIds(self):
-        r"""运行的任务范围,逗号分隔的任务ID列表
+        r"""<p>运行的任务范围,逗号分隔的任务ID列表</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -58412,7 +58526,7 @@ class TriggerWorkflowRunBrief(AbstractModel):
 
     @property
     def PendingStartTime(self):
-        r"""等待并发开始时间
+        r"""<p>等待并发开始时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -58424,7 +58538,7 @@ class TriggerWorkflowRunBrief(AbstractModel):
 
     @property
     def QueueStartTime(self):
-        r"""排队等待开始时间
+        r"""<p>排队等待开始时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -58436,7 +58550,7 @@ class TriggerWorkflowRunBrief(AbstractModel):
 
     @property
     def EndTime(self):
-        r"""运行结束时间
+        r"""<p>运行结束时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -58448,7 +58562,7 @@ class TriggerWorkflowRunBrief(AbstractModel):
 
     @property
     def FolderId(self):
-        r"""文件夹ID
+        r"""<p>文件夹ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -58460,7 +58574,7 @@ class TriggerWorkflowRunBrief(AbstractModel):
 
     @property
     def FolderName(self):
-        r"""文件夹名称
+        r"""<p>文件夹名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -58472,7 +58586,7 @@ class TriggerWorkflowRunBrief(AbstractModel):
 
     @property
     def PlannedSchedulingTime(self):
-        r"""计划调度时间
+        r"""<p>计划调度时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -58484,7 +58598,7 @@ class TriggerWorkflowRunBrief(AbstractModel):
 
     @property
     def CycleType(self):
-        r"""周期类型
+        r"""<p>周期类型</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -58496,7 +58610,7 @@ class TriggerWorkflowRunBrief(AbstractModel):
 
     @property
     def UserNameInCharge(self):
-        r"""责任人名称
+        r"""<p>责任人名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -58508,7 +58622,7 @@ class TriggerWorkflowRunBrief(AbstractModel):
 
     @property
     def UserUinInCharge(self):
-        r"""责任人ID
+        r"""<p>责任人ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -58517,6 +58631,54 @@ class TriggerWorkflowRunBrief(AbstractModel):
     @UserUinInCharge.setter
     def UserUinInCharge(self, UserUinInCharge):
         self._UserUinInCharge = UserUinInCharge
+
+    @property
+    def AssociatedEntityExist(self):
+        r"""<p>关联实体是否存在</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._AssociatedEntityExist
+
+    @AssociatedEntityExist.setter
+    def AssociatedEntityExist(self, AssociatedEntityExist):
+        self._AssociatedEntityExist = AssociatedEntityExist
+
+    @property
+    def ParentWorkflowExecutionId(self):
+        r"""<p>父工作流运行ID 【由嵌套工作流触发独有】</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ParentWorkflowExecutionId
+
+    @ParentWorkflowExecutionId.setter
+    def ParentWorkflowExecutionId(self, ParentWorkflowExecutionId):
+        self._ParentWorkflowExecutionId = ParentWorkflowExecutionId
+
+    @property
+    def ParentTaskExecutionId(self):
+        r"""<p>父任务运行ID 【由嵌套工作流触发独有】</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ParentTaskExecutionId
+
+    @ParentTaskExecutionId.setter
+    def ParentTaskExecutionId(self, ParentTaskExecutionId):
+        self._ParentTaskExecutionId = ParentTaskExecutionId
+
+    @property
+    def ParentTaskExecutionName(self):
+        r"""<p>父任务运行名称 【由嵌套工作流触发独有】</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ParentTaskExecutionName
+
+    @ParentTaskExecutionName.setter
+    def ParentTaskExecutionName(self, ParentTaskExecutionName):
+        self._ParentTaskExecutionName = ParentTaskExecutionName
 
 
     def _deserialize(self, params):
@@ -58552,6 +58714,10 @@ class TriggerWorkflowRunBrief(AbstractModel):
         self._CycleType = params.get("CycleType")
         self._UserNameInCharge = params.get("UserNameInCharge")
         self._UserUinInCharge = params.get("UserUinInCharge")
+        self._AssociatedEntityExist = params.get("AssociatedEntityExist")
+        self._ParentWorkflowExecutionId = params.get("ParentWorkflowExecutionId")
+        self._ParentTaskExecutionId = params.get("ParentTaskExecutionId")
+        self._ParentTaskExecutionName = params.get("ParentTaskExecutionName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -62140,8 +62306,10 @@ class UpdateTriggerWorkflowPartially(AbstractModel):
         :type TriggerWorkflowRunConfiguration: :class:`tencentcloud.wedata.v20250806.models.WorkflowRunConfig`
         :param _SchedulerStatus: <p>Trigger 状态 启动ACTIVE，暂停PAUSED。配置完之后，内部的Trigger状态可不配置，如果配置，内容会被该值覆盖。</p><p>枚举值：</p><ul><li>ACTIVE： 启动</li><li>PAUSED： 暂停</li></ul>
         :type SchedulerStatus: str
-        :param _TriggerMode: <p>触发方式：定时触发：TIME_TRIGGER 。配置完之后，内部的TriggerMode状态可不配置，如果配置，内容会被该值覆盖。</p><p>枚举值：</p><ul><li>TIME_TRIGGER： 定时触发</li></ul>
+        :param _TriggerMode: <p>触发方式：定时触发：TIME_TRIGGER ，文件到达：FILE_ARRIVAL。配置完之后，内部的TriggerMode状态可不配置，如果配置，内容会被该值覆盖。</p><p>枚举值：</p><ul><li>TIME_TRIGGER： 定时触发</li><li>FILE_ARRIVAL： 文件到达</li></ul>
         :type TriggerMode: str
+        :param _ExecuteUserUin: <p>运行账号ID</p>
+        :type ExecuteUserUin: str
         """
         self._WorkflowName = None
         self._OwnerUin = None
@@ -62154,6 +62322,7 @@ class UpdateTriggerWorkflowPartially(AbstractModel):
         self._TriggerWorkflowRunConfiguration = None
         self._SchedulerStatus = None
         self._TriggerMode = None
+        self._ExecuteUserUin = None
 
     @property
     def WorkflowName(self):
@@ -62267,7 +62436,7 @@ class UpdateTriggerWorkflowPartially(AbstractModel):
 
     @property
     def TriggerMode(self):
-        r"""<p>触发方式：定时触发：TIME_TRIGGER 。配置完之后，内部的TriggerMode状态可不配置，如果配置，内容会被该值覆盖。</p><p>枚举值：</p><ul><li>TIME_TRIGGER： 定时触发</li></ul>
+        r"""<p>触发方式：定时触发：TIME_TRIGGER ，文件到达：FILE_ARRIVAL。配置完之后，内部的TriggerMode状态可不配置，如果配置，内容会被该值覆盖。</p><p>枚举值：</p><ul><li>TIME_TRIGGER： 定时触发</li><li>FILE_ARRIVAL： 文件到达</li></ul>
         :rtype: str
         """
         return self._TriggerMode
@@ -62275,6 +62444,17 @@ class UpdateTriggerWorkflowPartially(AbstractModel):
     @TriggerMode.setter
     def TriggerMode(self, TriggerMode):
         self._TriggerMode = TriggerMode
+
+    @property
+    def ExecuteUserUin(self):
+        r"""<p>运行账号ID</p>
+        :rtype: str
+        """
+        return self._ExecuteUserUin
+
+    @ExecuteUserUin.setter
+    def ExecuteUserUin(self, ExecuteUserUin):
+        self._ExecuteUserUin = ExecuteUserUin
 
 
     def _deserialize(self, params):
@@ -62306,6 +62486,7 @@ class UpdateTriggerWorkflowPartially(AbstractModel):
             self._TriggerWorkflowRunConfiguration._deserialize(params.get("TriggerWorkflowRunConfiguration"))
         self._SchedulerStatus = params.get("SchedulerStatus")
         self._TriggerMode = params.get("TriggerMode")
+        self._ExecuteUserUin = params.get("ExecuteUserUin")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -62323,17 +62504,13 @@ class UpdateTriggerWorkflowPartiallyRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ProjectId: 项目ID
+        :param _ProjectId: <p>项目ID</p>
         :type ProjectId: str
-        :param _WorkflowId: 工作流ID
+        :param _WorkflowId: <p>工作流ID</p>
         :type WorkflowId: str
-        :param _NewSetting: 责任人ID
+        :param _NewSetting: <p>责任人ID</p>
         :type NewSetting: :class:`tencentcloud.wedata.v20250806.models.UpdateTriggerWorkflowPartially`
-        :param _FieldToRemoveList: 删除字段内容，采用属性路径的形式标识，删除的值以":"分割，多个值以","分割
- // 删除调度参数中 ParamKey 为 aa,bb 的属性 "WorkflowParams:aa,bb"
- // 删除配置的 TriggerId 为 da46d950-d5ca-4cfb-a5a9-f3c2eeea1bf0 的调度配置"TriggerWorkflowSchedulerConfigurations :da46d950-d5ca-4cfb-a5a9-f3c2eeea1bf0" 
-// 删除spark sql通用参数 "GeneralTaskParams: SPARK_SQL" 
-
+        :param _FieldToRemoveList: <p>删除字段内容，采用属性路径的形式标识，删除的值以&quot;:&quot;分割，多个值以&quot;,&quot;分割<br> // 删除调度参数中 ParamKey 为 aa,bb 的属性 &quot;WorkflowParams:aa,bb&quot;<br> // 删除配置的 TriggerId 为 da46d950-d5ca-4cfb-a5a9-f3c2eeea1bf0 的调度配置&quot;TriggerWorkflowSchedulerConfigurations :da46d950-d5ca-4cfb-a5a9-f3c2eeea1bf0&quot;<br>// 删除spark sql通用参数 &quot;GeneralTaskParams: SPARK_SQL&quot;</p>
         :type FieldToRemoveList: list of str
         """
         self._ProjectId = None
@@ -62343,7 +62520,7 @@ class UpdateTriggerWorkflowPartiallyRequest(AbstractModel):
 
     @property
     def ProjectId(self):
-        r"""项目ID
+        r"""<p>项目ID</p>
         :rtype: str
         """
         return self._ProjectId
@@ -62354,7 +62531,7 @@ class UpdateTriggerWorkflowPartiallyRequest(AbstractModel):
 
     @property
     def WorkflowId(self):
-        r"""工作流ID
+        r"""<p>工作流ID</p>
         :rtype: str
         """
         return self._WorkflowId
@@ -62365,7 +62542,7 @@ class UpdateTriggerWorkflowPartiallyRequest(AbstractModel):
 
     @property
     def NewSetting(self):
-        r"""责任人ID
+        r"""<p>责任人ID</p>
         :rtype: :class:`tencentcloud.wedata.v20250806.models.UpdateTriggerWorkflowPartially`
         """
         return self._NewSetting
@@ -62376,11 +62553,7 @@ class UpdateTriggerWorkflowPartiallyRequest(AbstractModel):
 
     @property
     def FieldToRemoveList(self):
-        r"""删除字段内容，采用属性路径的形式标识，删除的值以":"分割，多个值以","分割
- // 删除调度参数中 ParamKey 为 aa,bb 的属性 "WorkflowParams:aa,bb"
- // 删除配置的 TriggerId 为 da46d950-d5ca-4cfb-a5a9-f3c2eeea1bf0 的调度配置"TriggerWorkflowSchedulerConfigurations :da46d950-d5ca-4cfb-a5a9-f3c2eeea1bf0" 
-// 删除spark sql通用参数 "GeneralTaskParams: SPARK_SQL" 
-
+        r"""<p>删除字段内容，采用属性路径的形式标识，删除的值以&quot;:&quot;分割，多个值以&quot;,&quot;分割<br> // 删除调度参数中 ParamKey 为 aa,bb 的属性 &quot;WorkflowParams:aa,bb&quot;<br> // 删除配置的 TriggerId 为 da46d950-d5ca-4cfb-a5a9-f3c2eeea1bf0 的调度配置&quot;TriggerWorkflowSchedulerConfigurations :da46d950-d5ca-4cfb-a5a9-f3c2eeea1bf0&quot;<br>// 删除spark sql通用参数 &quot;GeneralTaskParams: SPARK_SQL&quot;</p>
         :rtype: list of str
         """
         return self._FieldToRemoveList
@@ -62414,7 +62587,7 @@ class UpdateTriggerWorkflowPartiallyResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Data: true代表成功，false代表失败
+        :param _Data: <p>true代表成功，false代表失败</p>
         :type Data: :class:`tencentcloud.wedata.v20250806.models.UpdateTriggerWorkflowResult`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -62424,7 +62597,7 @@ class UpdateTriggerWorkflowPartiallyResponse(AbstractModel):
 
     @property
     def Data(self):
-        r"""true代表成功，false代表失败
+        r"""<p>true代表成功，false代表失败</p>
         :rtype: :class:`tencentcloud.wedata.v20250806.models.UpdateTriggerWorkflowResult`
         """
         return self._Data
@@ -62483,8 +62656,10 @@ class UpdateTriggerWorkflowRequest(AbstractModel):
         :type TriggerWorkflowRunConfiguration: :class:`tencentcloud.wedata.v20250806.models.WorkflowRunConfig`
         :param _SchedulerStatus: <p>Trigger 状态 启动ACTIVE，暂停PAUSED。配置完之后，内部的SchedulerStatus可不配置，如果配置，内容会被改值覆盖。</p><p>枚举值：</p><ul><li>ACTIVE： 启动</li><li>PAUSED： 暂停</li></ul>
         :type SchedulerStatus: str
-        :param _TriggerMode: <p>触发方式：定时触发：TIME_TRIGGER 。配置完之后，内部的TriggerMode状态可不配置，如果配置，内容会被该值覆盖。</p><p>枚举值：</p><ul><li>TIME_TRIGGER： 定时触发</li></ul>
+        :param _TriggerMode: <p>触发方式：定时触发：TIME_TRIGGER 。配置完之后，内部的TriggerMode状态可不配置，如果配置，内容会被该值覆盖。</p><p>枚举值：</p><ul><li>TIME_TRIGGER： 定时触发</li><li>FILE_ARRIVAL： 文件到达</li></ul>
         :type TriggerMode: str
+        :param _ExecuteUserUin: <p>运行账号ID</p>
+        :type ExecuteUserUin: str
         """
         self._ProjectId = None
         self._WorkflowId = None
@@ -62499,6 +62674,7 @@ class UpdateTriggerWorkflowRequest(AbstractModel):
         self._TriggerWorkflowRunConfiguration = None
         self._SchedulerStatus = None
         self._TriggerMode = None
+        self._ExecuteUserUin = None
 
     @property
     def ProjectId(self):
@@ -62634,7 +62810,7 @@ class UpdateTriggerWorkflowRequest(AbstractModel):
 
     @property
     def TriggerMode(self):
-        r"""<p>触发方式：定时触发：TIME_TRIGGER 。配置完之后，内部的TriggerMode状态可不配置，如果配置，内容会被该值覆盖。</p><p>枚举值：</p><ul><li>TIME_TRIGGER： 定时触发</li></ul>
+        r"""<p>触发方式：定时触发：TIME_TRIGGER 。配置完之后，内部的TriggerMode状态可不配置，如果配置，内容会被该值覆盖。</p><p>枚举值：</p><ul><li>TIME_TRIGGER： 定时触发</li><li>FILE_ARRIVAL： 文件到达</li></ul>
         :rtype: str
         """
         return self._TriggerMode
@@ -62642,6 +62818,17 @@ class UpdateTriggerWorkflowRequest(AbstractModel):
     @TriggerMode.setter
     def TriggerMode(self, TriggerMode):
         self._TriggerMode = TriggerMode
+
+    @property
+    def ExecuteUserUin(self):
+        r"""<p>运行账号ID</p>
+        :rtype: str
+        """
+        return self._ExecuteUserUin
+
+    @ExecuteUserUin.setter
+    def ExecuteUserUin(self, ExecuteUserUin):
+        self._ExecuteUserUin = ExecuteUserUin
 
 
     def _deserialize(self, params):
@@ -62675,6 +62862,7 @@ class UpdateTriggerWorkflowRequest(AbstractModel):
             self._TriggerWorkflowRunConfiguration._deserialize(params.get("TriggerWorkflowRunConfiguration"))
         self._SchedulerStatus = params.get("SchedulerStatus")
         self._TriggerMode = params.get("TriggerMode")
+        self._ExecuteUserUin = params.get("ExecuteUserUin")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -64840,7 +65028,7 @@ class WorkflowTriggerConfig(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TriggerMode: <p>触发方式，非必填，外部结构的TriggerMode字段优先级比当前字段高</p><ul><li>定时触发：TIME_TRIGGER</li><li>持续运行：CONTINUE_RUN（暂不支持）</li><li>文件到达：FILE_ARRIVAL（暂不支持）</li></ul><p>注意：</p><ul><li>TIME_TRIGGER 和 CONTINUE_RUN 模式下，SchedulerStatus、SchedulerTimeZone、StartTime、EndTime、ConfigMode、CycleType、CrontabExpression 必填；</li><li>FILE_ARRIVAL 模式下，FileArrivalPath、TriggerMinimumIntervalSecond、TriggerWaitTimeSecond 必填；</li></ul><p>枚举值：</p><ul><li>TIME_TRIGGER： 定时触发</li></ul>
+        :param _TriggerMode: <p>触发方式，非必填，外部结构的TriggerMode字段优先级比当前字段高</p><ul><li>定时触发：TIME_TRIGGER</li><li>文件到达：FILE_ARRIVAL</li><li>持续运行：CONTINUE_RUN（暂不支持）</li></ul><p>注意：</p><ul><li>TIME_TRIGGER 和 CONTINUE_RUN 模式下，SchedulerStatus、SchedulerTimeZone、StartTime、EndTime、ConfigMode、CycleType、CrontabExpression 必填；</li><li>FILE_ARRIVAL 模式下，FileArrivalPath、TriggerMinimumIntervalSecond、TriggerWaitTimeSecond 必填；</li></ul><p>枚举值：</p><ul><li>TIME_TRIGGER： 定时触发</li><li>FILE_ARRIVAL： 文件到达</li></ul>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TriggerMode: str
         :param _ExtraInfo: <p>WorkflowTriggerConfig转换成Json格式，对账使用</p>
@@ -64870,15 +65058,21 @@ class WorkflowTriggerConfig(AbstractModel):
         :param _FileArrivalPath: <p>文件到达模式下    存储系统中的监听路径</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type FileArrivalPath: str
-        :param _TriggerMinimumIntervalSecond: <p>文件到达模式下    触发最短间隔时间（单位：秒）</p>
-注意：此字段可能返回 null，表示取不到有效值。
-        :type TriggerMinimumIntervalSecond: int
-        :param _TriggerWaitTimeSecond: <p>文件到达模式下    触发等待时间（单位：秒）</p>
-注意：此字段可能返回 null，表示取不到有效值。
-        :type TriggerWaitTimeSecond: int
         :param _SchedulerStatus: <p>Trigger 状态 启动ACTIVE，暂停PAUSED。外部的TriggerStatus优先级大于当前值</p><p>枚举值：</p><ul><li>ACTIVE： 启动</li><li>PAUSED： 暂停</li></ul>
 注意：此字段可能返回 null，表示取不到有效值。
         :type SchedulerStatus: str
+        :param _FileNamePattern: <p>文件到达模式下 文件匹配规则</p><p>入参限制：文件名匹配仅支持文件名和 *，不能包含路径分隔符 /</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FileNamePattern: str
+        :param _Recursive: <p>文件到达模式下 是否递归检测子目录</p><p>取值范围：[0, 1]</p><p>默认值：1</p><p>默认 1（开启） 0 （关闭）</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Recursive: int
+        :param _TriggerMinimumIntervalSecond: <p>文件到达模式下    触发最短间隔时间</p><p>单位：秒</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TriggerMinimumIntervalSecond: int
+        :param _TriggerWaitTimeSecond: <p>文件到达模式下    触发等待时间</p><p>单位：秒</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TriggerWaitTimeSecond: int
         """
         self._TriggerMode = None
         self._ExtraInfo = None
@@ -64890,13 +65084,15 @@ class WorkflowTriggerConfig(AbstractModel):
         self._CrontabExpression = None
         self._TriggerId = None
         self._FileArrivalPath = None
+        self._SchedulerStatus = None
+        self._FileNamePattern = None
+        self._Recursive = None
         self._TriggerMinimumIntervalSecond = None
         self._TriggerWaitTimeSecond = None
-        self._SchedulerStatus = None
 
     @property
     def TriggerMode(self):
-        r"""<p>触发方式，非必填，外部结构的TriggerMode字段优先级比当前字段高</p><ul><li>定时触发：TIME_TRIGGER</li><li>持续运行：CONTINUE_RUN（暂不支持）</li><li>文件到达：FILE_ARRIVAL（暂不支持）</li></ul><p>注意：</p><ul><li>TIME_TRIGGER 和 CONTINUE_RUN 模式下，SchedulerStatus、SchedulerTimeZone、StartTime、EndTime、ConfigMode、CycleType、CrontabExpression 必填；</li><li>FILE_ARRIVAL 模式下，FileArrivalPath、TriggerMinimumIntervalSecond、TriggerWaitTimeSecond 必填；</li></ul><p>枚举值：</p><ul><li>TIME_TRIGGER： 定时触发</li></ul>
+        r"""<p>触发方式，非必填，外部结构的TriggerMode字段优先级比当前字段高</p><ul><li>定时触发：TIME_TRIGGER</li><li>文件到达：FILE_ARRIVAL</li><li>持续运行：CONTINUE_RUN（暂不支持）</li></ul><p>注意：</p><ul><li>TIME_TRIGGER 和 CONTINUE_RUN 模式下，SchedulerStatus、SchedulerTimeZone、StartTime、EndTime、ConfigMode、CycleType、CrontabExpression 必填；</li><li>FILE_ARRIVAL 模式下，FileArrivalPath、TriggerMinimumIntervalSecond、TriggerWaitTimeSecond 必填；</li></ul><p>枚举值：</p><ul><li>TIME_TRIGGER： 定时触发</li><li>FILE_ARRIVAL： 文件到达</li></ul>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -65015,8 +65211,44 @@ class WorkflowTriggerConfig(AbstractModel):
         self._FileArrivalPath = FileArrivalPath
 
     @property
+    def SchedulerStatus(self):
+        r"""<p>Trigger 状态 启动ACTIVE，暂停PAUSED。外部的TriggerStatus优先级大于当前值</p><p>枚举值：</p><ul><li>ACTIVE： 启动</li><li>PAUSED： 暂停</li></ul>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._SchedulerStatus
+
+    @SchedulerStatus.setter
+    def SchedulerStatus(self, SchedulerStatus):
+        self._SchedulerStatus = SchedulerStatus
+
+    @property
+    def FileNamePattern(self):
+        r"""<p>文件到达模式下 文件匹配规则</p><p>入参限制：文件名匹配仅支持文件名和 *，不能包含路径分隔符 /</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._FileNamePattern
+
+    @FileNamePattern.setter
+    def FileNamePattern(self, FileNamePattern):
+        self._FileNamePattern = FileNamePattern
+
+    @property
+    def Recursive(self):
+        r"""<p>文件到达模式下 是否递归检测子目录</p><p>取值范围：[0, 1]</p><p>默认值：1</p><p>默认 1（开启） 0 （关闭）</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Recursive
+
+    @Recursive.setter
+    def Recursive(self, Recursive):
+        self._Recursive = Recursive
+
+    @property
     def TriggerMinimumIntervalSecond(self):
-        r"""<p>文件到达模式下    触发最短间隔时间（单位：秒）</p>
+        r"""<p>文件到达模式下    触发最短间隔时间</p><p>单位：秒</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -65028,7 +65260,7 @@ class WorkflowTriggerConfig(AbstractModel):
 
     @property
     def TriggerWaitTimeSecond(self):
-        r"""<p>文件到达模式下    触发等待时间（单位：秒）</p>
+        r"""<p>文件到达模式下    触发等待时间</p><p>单位：秒</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -65037,18 +65269,6 @@ class WorkflowTriggerConfig(AbstractModel):
     @TriggerWaitTimeSecond.setter
     def TriggerWaitTimeSecond(self, TriggerWaitTimeSecond):
         self._TriggerWaitTimeSecond = TriggerWaitTimeSecond
-
-    @property
-    def SchedulerStatus(self):
-        r"""<p>Trigger 状态 启动ACTIVE，暂停PAUSED。外部的TriggerStatus优先级大于当前值</p><p>枚举值：</p><ul><li>ACTIVE： 启动</li><li>PAUSED： 暂停</li></ul>
-注意：此字段可能返回 null，表示取不到有效值。
-        :rtype: str
-        """
-        return self._SchedulerStatus
-
-    @SchedulerStatus.setter
-    def SchedulerStatus(self, SchedulerStatus):
-        self._SchedulerStatus = SchedulerStatus
 
 
     def _deserialize(self, params):
@@ -65062,9 +65282,11 @@ class WorkflowTriggerConfig(AbstractModel):
         self._CrontabExpression = params.get("CrontabExpression")
         self._TriggerId = params.get("TriggerId")
         self._FileArrivalPath = params.get("FileArrivalPath")
+        self._SchedulerStatus = params.get("SchedulerStatus")
+        self._FileNamePattern = params.get("FileNamePattern")
+        self._Recursive = params.get("Recursive")
         self._TriggerMinimumIntervalSecond = params.get("TriggerMinimumIntervalSecond")
         self._TriggerWaitTimeSecond = params.get("TriggerWaitTimeSecond")
-        self._SchedulerStatus = params.get("SchedulerStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

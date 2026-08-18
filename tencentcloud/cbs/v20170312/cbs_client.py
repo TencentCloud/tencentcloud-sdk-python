@@ -506,6 +506,29 @@ class CbsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeDedicatedClusterDiskStatistics(self, request):
+        r"""查询 CVM CDC 独享集群云硬盘统计信息。
+
+        :param request: Request instance for DescribeDedicatedClusterDiskStatistics.
+        :type request: :class:`tencentcloud.cbs.v20170312.models.DescribeDedicatedClusterDiskStatisticsRequest`
+        :rtype: :class:`tencentcloud.cbs.v20170312.models.DescribeDedicatedClusterDiskStatisticsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDedicatedClusterDiskStatistics", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDedicatedClusterDiskStatisticsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeDiskAssociatedAutoSnapshotPolicy(self, request):
         r"""本接口（DescribeDiskAssociatedAutoSnapshotPolicy）用于查询云盘绑定的定期快照策略。
 

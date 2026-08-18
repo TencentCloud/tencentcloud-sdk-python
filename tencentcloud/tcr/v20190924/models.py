@@ -16524,7 +16524,7 @@ class Registry(AbstractModel):
         :type RegionId: int
         :param _EnableAnonymous: <p>是否支持匿名</p>
         :type EnableAnonymous: bool
-        :param _TokenValidTime: <p>Token有效时间</p>
+        :param _TokenValidTime: <p>Token有效时间，单位：小时</p>
         :type TokenValidTime: int
         :param _InternalEndpoint: <p>实例内部访问地址</p>
         :type InternalEndpoint: str
@@ -16667,7 +16667,7 @@ class Registry(AbstractModel):
 
     @property
     def TokenValidTime(self):
-        r"""<p>Token有效时间</p>
+        r"""<p>Token有效时间，单位：小时</p>
         :rtype: int
         """
         return self._TokenValidTime
@@ -19491,35 +19491,35 @@ class TagInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TagName: Tag名称
+        :param _TagName: <p>Tag名称</p>
         :type TagName: str
-        :param _TagId: 制品的 ID
+        :param _TagId: <p>制品的 ID</p>
         :type TagId: str
-        :param _ImageId: docker image 可以看到的id
+        :param _ImageId: <p>docker image 可以看到的id</p>
         :type ImageId: str
-        :param _Size: 大小
+        :param _Size: <p>大小</p>
         :type Size: str
-        :param _CreationTime: 制品的创建时间
+        :param _CreationTime: <p>制品的创建时间</p>
         :type CreationTime: str
-        :param _DurationDays: 制品创建至今时间长度
+        :param _DurationDays: <p>制品创建至今时间长度</p>
         :type DurationDays: str
-        :param _Author: 标注的制品作者
+        :param _Author: <p>标注的制品作者</p>
         :type Author: str
-        :param _Architecture: 标注的制品平台
+        :param _Architecture: <p>标注的制品平台</p>
         :type Architecture: str
-        :param _DockerVersion: 创建制品的 Docker 版本
+        :param _DockerVersion: <p>创建制品的 Docker 版本</p>
         :type DockerVersion: str
-        :param _OS: 标注的制品操作系统
+        :param _OS: <p>标注的制品操作系统</p>
         :type OS: str
-        :param _SizeByte: 制品大小
+        :param _SizeByte: <p>制品大小，单位：Byte</p>
         :type SizeByte: int
-        :param _Id: 序号
+        :param _Id: <p>序号</p>
         :type Id: int
-        :param _UpdateTime: 数据更新时间
+        :param _UpdateTime: <p>数据更新时间</p>
         :type UpdateTime: str
-        :param _PushTime: 制品更新时间
+        :param _PushTime: <p>制品更新时间</p>
         :type PushTime: str
-        :param _Kind: 制品类型
+        :param _Kind: <p>制品类型</p>
         :type Kind: str
         """
         self._TagName = None
@@ -19540,7 +19540,7 @@ class TagInfo(AbstractModel):
 
     @property
     def TagName(self):
-        r"""Tag名称
+        r"""<p>Tag名称</p>
         :rtype: str
         """
         return self._TagName
@@ -19551,7 +19551,7 @@ class TagInfo(AbstractModel):
 
     @property
     def TagId(self):
-        r"""制品的 ID
+        r"""<p>制品的 ID</p>
         :rtype: str
         """
         return self._TagId
@@ -19562,7 +19562,7 @@ class TagInfo(AbstractModel):
 
     @property
     def ImageId(self):
-        r"""docker image 可以看到的id
+        r"""<p>docker image 可以看到的id</p>
         :rtype: str
         """
         return self._ImageId
@@ -19573,7 +19573,7 @@ class TagInfo(AbstractModel):
 
     @property
     def Size(self):
-        r"""大小
+        r"""<p>大小</p>
         :rtype: str
         """
         return self._Size
@@ -19584,7 +19584,7 @@ class TagInfo(AbstractModel):
 
     @property
     def CreationTime(self):
-        r"""制品的创建时间
+        r"""<p>制品的创建时间</p>
         :rtype: str
         """
         return self._CreationTime
@@ -19595,7 +19595,7 @@ class TagInfo(AbstractModel):
 
     @property
     def DurationDays(self):
-        r"""制品创建至今时间长度
+        r"""<p>制品创建至今时间长度</p>
         :rtype: str
         """
         return self._DurationDays
@@ -19606,7 +19606,7 @@ class TagInfo(AbstractModel):
 
     @property
     def Author(self):
-        r"""标注的制品作者
+        r"""<p>标注的制品作者</p>
         :rtype: str
         """
         return self._Author
@@ -19617,7 +19617,7 @@ class TagInfo(AbstractModel):
 
     @property
     def Architecture(self):
-        r"""标注的制品平台
+        r"""<p>标注的制品平台</p>
         :rtype: str
         """
         return self._Architecture
@@ -19628,7 +19628,7 @@ class TagInfo(AbstractModel):
 
     @property
     def DockerVersion(self):
-        r"""创建制品的 Docker 版本
+        r"""<p>创建制品的 Docker 版本</p>
         :rtype: str
         """
         return self._DockerVersion
@@ -19639,7 +19639,7 @@ class TagInfo(AbstractModel):
 
     @property
     def OS(self):
-        r"""标注的制品操作系统
+        r"""<p>标注的制品操作系统</p>
         :rtype: str
         """
         return self._OS
@@ -19650,7 +19650,7 @@ class TagInfo(AbstractModel):
 
     @property
     def SizeByte(self):
-        r"""制品大小
+        r"""<p>制品大小，单位：Byte</p>
         :rtype: int
         """
         return self._SizeByte
@@ -19661,7 +19661,7 @@ class TagInfo(AbstractModel):
 
     @property
     def Id(self):
-        r"""序号
+        r"""<p>序号</p>
         :rtype: int
         """
         return self._Id
@@ -19672,7 +19672,7 @@ class TagInfo(AbstractModel):
 
     @property
     def UpdateTime(self):
-        r"""数据更新时间
+        r"""<p>数据更新时间</p>
         :rtype: str
         """
         return self._UpdateTime
@@ -19683,7 +19683,7 @@ class TagInfo(AbstractModel):
 
     @property
     def PushTime(self):
-        r"""制品更新时间
+        r"""<p>制品更新时间</p>
         :rtype: str
         """
         return self._PushTime
@@ -19694,7 +19694,7 @@ class TagInfo(AbstractModel):
 
     @property
     def Kind(self):
-        r"""制品类型
+        r"""<p>制品类型</p>
         :rtype: str
         """
         return self._Kind

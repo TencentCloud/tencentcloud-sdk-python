@@ -11292,51 +11292,34 @@ class ChannelOrganizationInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _OrganizationId: 电子签平台给企业分配的ID（在不同应用下同一个企业会分配通用的ID）
+        :param _OrganizationId: <p>电子签平台给企业分配的ID（在不同应用下同一个企业会分配通用的ID）</p>
         :type OrganizationId: str
-        :param _OrganizationOpenId: 第三方平台子客企业的唯一标识
+        :param _OrganizationOpenId: <p>第三方平台子客企业的唯一标识</p>
         :type OrganizationOpenId: str
-        :param _OrganizationName: 第三方平台子客企业名称
+        :param _OrganizationName: <p>第三方平台子客企业名称</p>
         :type OrganizationName: str
-        :param _UnifiedSocialCreditCode: 企业的统一社会信用代码
+        :param _UnifiedSocialCreditCode: <p>企业的统一社会信用代码</p>
         :type UnifiedSocialCreditCode: str
-        :param _LegalName: 企业法定代表人的姓名
+        :param _LegalName: <p>企业法定代表人的姓名</p>
         :type LegalName: str
-        :param _LegalOpenId: 企业法定代表人作为第三方平台子客企业员工的唯一标识
+        :param _LegalOpenId: <p>企业法定代表人作为第三方平台子客企业员工的唯一标识</p>
         :type LegalOpenId: str
-        :param _AdminName: 企业超级管理员的姓名
+        :param _AdminName: <p>企业超级管理员的姓名</p>
         :type AdminName: str
-        :param _AdminOpenId: 企业超级管理员作为第三方平台子客企业员工的唯一标识
+        :param _AdminOpenId: <p>企业超级管理员作为第三方平台子客企业员工的唯一标识</p>
         :type AdminOpenId: str
-        :param _AdminMobile: 企业超级管理员的手机号码
-**注**：`手机号码脱敏（隐藏部分用*替代）`
+        :param _AdminMobile: <p>企业超级管理员的手机号码<br><strong>注</strong>：<code>手机号码脱敏（隐藏部分用*替代）</code></p>
         :type AdminMobile: str
-        :param _AuthorizationStatus: 企业认证状态字段。值如下：
-<ul>
-  <li>**"UNVERIFIED"**： 未认证的企业</li>
-  <li>**"VERIFYINGLEGALPENDINGAUTHORIZATION"**： 认证中待法人授权的企业</li>
-  <li>**"VERIFYINGAUTHORIZATIONFILEPENDING"**： 认证中授权书审核中的企业</li>
-  <li>**"VERIFYINGAUTHORIZATIONFILEREJECT"**： 认证中授权书已驳回的企业</li>
-  <li>**"VERIFYING"**： 认证中的企业</li>
-  <li>**"VERIFIED"**： 已认证的企业</li>
-</ul>
+        :param _AuthorizationStatus: <p>企业认证状态枚举值及说明如下：</p><table>  <thead>    <tr>      <th>枚举值</th>      <th>说明</th>    </tr>  </thead>  <tbody>    <tr>      <td><code>UNVERIFIED</code></td>      <td>企业未认证</td>    </tr>    <tr>      <td><code>VERIFYING</code></td>      <td>企业认证中，还未选择授权方式</td>    </tr>    <tr>      <td><code>VERIFYINGLEGALPENDINGAUTHORIZATION</code></td>      <td>企业认证中，待法人授权或法人认证</td>    </tr>    <tr>      <td><code>VERIFYINGAUTHORIZATIONFILEPENDING</code></td>      <td>企业认证中，已上传授权书，授权书待审核</td>    </tr>    <tr>      <td><code>VERIFYINGAUTHORIZATIONFILEREJECT</code></td>      <td>企业认证中，授权书审核被驳回</td>    </tr>    <tr>      <td><code>VERIFIED</code></td>      <td>企业已认证成功</td>    </tr>  </tbody></table><p>企业认证流程的典型流转路径如下：</p><pre><code>UNVERIFIED → VERIFYING（提交企业信息，选择授权方式）                ├─ 法人授权 → VERIFYINGLEGALPENDINGAUTHORIZATION → VERIFIED                ├─ 法人认证 → VERIFYINGLEGALPENDINGAUTHORIZATION → VERIFIED                └─ 授权书 → VERIFYINGAUTHORIZATIONFILEPENDING                              ├─ 审核通过 → VERIFIED                              └─ 审核驳回 → VERIFYINGAUTHORIZATIONFILEREJECT</code></pre><p>枚举值：</p><ul><li>UNVERIFIED： 企业未认证</li><li>VERIFYING： 企业认证中，还未选择授权方式</li><li>VERIFYINGLEGALPENDINGAUTHORIZATION： 企业认证中，待法人授权或法人认证</li><li>VERIFYINGAUTHORIZATIONFILEPENDING： 企业认证中，已上传授权书，授权书待审核</li><li>VERIFYINGAUTHORIZATIONFILEREJECT： 企业认证中，授权书审核被驳回</li><li>VERIFIED： 企业已认证成功</li></ul>
         :type AuthorizationStatus: str
-        :param _AuthorizationType: 企业认证方式字段。值如下：
-<ul>
-  <li>**"AuthorizationInit"**： 暂未选择授权方式</li>
-  <li>**"AuthorizationFile"**： 授权书</li>
-  <li>**"AuthorizationLegalPerson"**： 法人授权超管</li>
-  <li>**"AuthorizationLegalIdentity"**： 法人直接认证</li>
-</ul>
+        :param _AuthorizationType: <p>企业认证方式字段。值如下：</p><ul>  <li>**"AuthorizationInit"**： 暂未选择授权方式</li>  <li>**"AuthorizationFile"**： 授权书</li>  <li>**"AuthorizationLegalPerson"**： 法人授权超管</li>  <li>**"AuthorizationLegalIdentity"**： 法人直接认证</li></ul>
         :type AuthorizationType: str
-        :param _ActiveStatus: 子企业激活状态。值如下：
-<ul>
-  <li>**0**： 未激活</li>
-  <li>**1**： 已激活</li>
-</ul>
+        :param _ActiveStatus: <p>子企业激活状态。值如下：</p><ul>  <li>**0**： 未激活</li>  <li>**1**： 已激活</li></ul>
         :type ActiveStatus: int
-        :param _LicenseExpireTime: 账号到期时间，时间戳
+        :param _LicenseExpireTime: <p>账号到期时间，时间戳</p>
         :type LicenseExpireTime: int
+        :param _HasSubmittedAuthInfo: <p>是否已提交企业认证信息</p><p>默认值：false</p><p>此参数表示客户是否已提交企业信息。如图所示，在点击提交按钮之前，该字段为 <code>false</code>；点击提交按钮之后，该字段变为 <code>true</code>。</p><img src="https://qcloudimg.tencent-cloud.cn/raw/548d838430b60e797dbfba80cb4a3ef7.png" alt="企业信息提交状态示意图"><p><strong>注意：</strong>该字段并非在变为 <code>true</code> 后就不再变化。任何导致当前认证记录失效的操作都会将其重置为 <code>false</code>，包括但不限于：重新提交企业信息、审核被拒绝后重新上传企业信息等操作。</p>
+        :type HasSubmittedAuthInfo: bool
         """
         self._OrganizationId = None
         self._OrganizationOpenId = None
@@ -11351,10 +11334,11 @@ class ChannelOrganizationInfo(AbstractModel):
         self._AuthorizationType = None
         self._ActiveStatus = None
         self._LicenseExpireTime = None
+        self._HasSubmittedAuthInfo = None
 
     @property
     def OrganizationId(self):
-        r"""电子签平台给企业分配的ID（在不同应用下同一个企业会分配通用的ID）
+        r"""<p>电子签平台给企业分配的ID（在不同应用下同一个企业会分配通用的ID）</p>
         :rtype: str
         """
         return self._OrganizationId
@@ -11365,7 +11349,7 @@ class ChannelOrganizationInfo(AbstractModel):
 
     @property
     def OrganizationOpenId(self):
-        r"""第三方平台子客企业的唯一标识
+        r"""<p>第三方平台子客企业的唯一标识</p>
         :rtype: str
         """
         return self._OrganizationOpenId
@@ -11376,7 +11360,7 @@ class ChannelOrganizationInfo(AbstractModel):
 
     @property
     def OrganizationName(self):
-        r"""第三方平台子客企业名称
+        r"""<p>第三方平台子客企业名称</p>
         :rtype: str
         """
         return self._OrganizationName
@@ -11387,7 +11371,7 @@ class ChannelOrganizationInfo(AbstractModel):
 
     @property
     def UnifiedSocialCreditCode(self):
-        r"""企业的统一社会信用代码
+        r"""<p>企业的统一社会信用代码</p>
         :rtype: str
         """
         return self._UnifiedSocialCreditCode
@@ -11398,7 +11382,7 @@ class ChannelOrganizationInfo(AbstractModel):
 
     @property
     def LegalName(self):
-        r"""企业法定代表人的姓名
+        r"""<p>企业法定代表人的姓名</p>
         :rtype: str
         """
         return self._LegalName
@@ -11409,7 +11393,7 @@ class ChannelOrganizationInfo(AbstractModel):
 
     @property
     def LegalOpenId(self):
-        r"""企业法定代表人作为第三方平台子客企业员工的唯一标识
+        r"""<p>企业法定代表人作为第三方平台子客企业员工的唯一标识</p>
         :rtype: str
         """
         return self._LegalOpenId
@@ -11420,7 +11404,7 @@ class ChannelOrganizationInfo(AbstractModel):
 
     @property
     def AdminName(self):
-        r"""企业超级管理员的姓名
+        r"""<p>企业超级管理员的姓名</p>
         :rtype: str
         """
         return self._AdminName
@@ -11431,7 +11415,7 @@ class ChannelOrganizationInfo(AbstractModel):
 
     @property
     def AdminOpenId(self):
-        r"""企业超级管理员作为第三方平台子客企业员工的唯一标识
+        r"""<p>企业超级管理员作为第三方平台子客企业员工的唯一标识</p>
         :rtype: str
         """
         return self._AdminOpenId
@@ -11442,8 +11426,7 @@ class ChannelOrganizationInfo(AbstractModel):
 
     @property
     def AdminMobile(self):
-        r"""企业超级管理员的手机号码
-**注**：`手机号码脱敏（隐藏部分用*替代）`
+        r"""<p>企业超级管理员的手机号码<br><strong>注</strong>：<code>手机号码脱敏（隐藏部分用*替代）</code></p>
         :rtype: str
         """
         return self._AdminMobile
@@ -11454,15 +11437,7 @@ class ChannelOrganizationInfo(AbstractModel):
 
     @property
     def AuthorizationStatus(self):
-        r"""企业认证状态字段。值如下：
-<ul>
-  <li>**"UNVERIFIED"**： 未认证的企业</li>
-  <li>**"VERIFYINGLEGALPENDINGAUTHORIZATION"**： 认证中待法人授权的企业</li>
-  <li>**"VERIFYINGAUTHORIZATIONFILEPENDING"**： 认证中授权书审核中的企业</li>
-  <li>**"VERIFYINGAUTHORIZATIONFILEREJECT"**： 认证中授权书已驳回的企业</li>
-  <li>**"VERIFYING"**： 认证中的企业</li>
-  <li>**"VERIFIED"**： 已认证的企业</li>
-</ul>
+        r"""<p>企业认证状态枚举值及说明如下：</p><table>  <thead>    <tr>      <th>枚举值</th>      <th>说明</th>    </tr>  </thead>  <tbody>    <tr>      <td><code>UNVERIFIED</code></td>      <td>企业未认证</td>    </tr>    <tr>      <td><code>VERIFYING</code></td>      <td>企业认证中，还未选择授权方式</td>    </tr>    <tr>      <td><code>VERIFYINGLEGALPENDINGAUTHORIZATION</code></td>      <td>企业认证中，待法人授权或法人认证</td>    </tr>    <tr>      <td><code>VERIFYINGAUTHORIZATIONFILEPENDING</code></td>      <td>企业认证中，已上传授权书，授权书待审核</td>    </tr>    <tr>      <td><code>VERIFYINGAUTHORIZATIONFILEREJECT</code></td>      <td>企业认证中，授权书审核被驳回</td>    </tr>    <tr>      <td><code>VERIFIED</code></td>      <td>企业已认证成功</td>    </tr>  </tbody></table><p>企业认证流程的典型流转路径如下：</p><pre><code>UNVERIFIED → VERIFYING（提交企业信息，选择授权方式）                ├─ 法人授权 → VERIFYINGLEGALPENDINGAUTHORIZATION → VERIFIED                ├─ 法人认证 → VERIFYINGLEGALPENDINGAUTHORIZATION → VERIFIED                └─ 授权书 → VERIFYINGAUTHORIZATIONFILEPENDING                              ├─ 审核通过 → VERIFIED                              └─ 审核驳回 → VERIFYINGAUTHORIZATIONFILEREJECT</code></pre><p>枚举值：</p><ul><li>UNVERIFIED： 企业未认证</li><li>VERIFYING： 企业认证中，还未选择授权方式</li><li>VERIFYINGLEGALPENDINGAUTHORIZATION： 企业认证中，待法人授权或法人认证</li><li>VERIFYINGAUTHORIZATIONFILEPENDING： 企业认证中，已上传授权书，授权书待审核</li><li>VERIFYINGAUTHORIZATIONFILEREJECT： 企业认证中，授权书审核被驳回</li><li>VERIFIED： 企业已认证成功</li></ul>
         :rtype: str
         """
         return self._AuthorizationStatus
@@ -11473,13 +11448,7 @@ class ChannelOrganizationInfo(AbstractModel):
 
     @property
     def AuthorizationType(self):
-        r"""企业认证方式字段。值如下：
-<ul>
-  <li>**"AuthorizationInit"**： 暂未选择授权方式</li>
-  <li>**"AuthorizationFile"**： 授权书</li>
-  <li>**"AuthorizationLegalPerson"**： 法人授权超管</li>
-  <li>**"AuthorizationLegalIdentity"**： 法人直接认证</li>
-</ul>
+        r"""<p>企业认证方式字段。值如下：</p><ul>  <li>**"AuthorizationInit"**： 暂未选择授权方式</li>  <li>**"AuthorizationFile"**： 授权书</li>  <li>**"AuthorizationLegalPerson"**： 法人授权超管</li>  <li>**"AuthorizationLegalIdentity"**： 法人直接认证</li></ul>
         :rtype: str
         """
         return self._AuthorizationType
@@ -11490,11 +11459,7 @@ class ChannelOrganizationInfo(AbstractModel):
 
     @property
     def ActiveStatus(self):
-        r"""子企业激活状态。值如下：
-<ul>
-  <li>**0**： 未激活</li>
-  <li>**1**： 已激活</li>
-</ul>
+        r"""<p>子企业激活状态。值如下：</p><ul>  <li>**0**： 未激活</li>  <li>**1**： 已激活</li></ul>
         :rtype: int
         """
         return self._ActiveStatus
@@ -11505,7 +11470,7 @@ class ChannelOrganizationInfo(AbstractModel):
 
     @property
     def LicenseExpireTime(self):
-        r"""账号到期时间，时间戳
+        r"""<p>账号到期时间，时间戳</p>
         :rtype: int
         """
         return self._LicenseExpireTime
@@ -11513,6 +11478,17 @@ class ChannelOrganizationInfo(AbstractModel):
     @LicenseExpireTime.setter
     def LicenseExpireTime(self, LicenseExpireTime):
         self._LicenseExpireTime = LicenseExpireTime
+
+    @property
+    def HasSubmittedAuthInfo(self):
+        r"""<p>是否已提交企业认证信息</p><p>默认值：false</p><p>此参数表示客户是否已提交企业信息。如图所示，在点击提交按钮之前，该字段为 <code>false</code>；点击提交按钮之后，该字段变为 <code>true</code>。</p><img src="https://qcloudimg.tencent-cloud.cn/raw/548d838430b60e797dbfba80cb4a3ef7.png" alt="企业信息提交状态示意图"><p><strong>注意：</strong>该字段并非在变为 <code>true</code> 后就不再变化。任何导致当前认证记录失效的操作都会将其重置为 <code>false</code>，包括但不限于：重新提交企业信息、审核被拒绝后重新上传企业信息等操作。</p>
+        :rtype: bool
+        """
+        return self._HasSubmittedAuthInfo
+
+    @HasSubmittedAuthInfo.setter
+    def HasSubmittedAuthInfo(self, HasSubmittedAuthInfo):
+        self._HasSubmittedAuthInfo = HasSubmittedAuthInfo
 
 
     def _deserialize(self, params):
@@ -11529,6 +11505,7 @@ class ChannelOrganizationInfo(AbstractModel):
         self._AuthorizationType = params.get("AuthorizationType")
         self._ActiveStatus = params.get("ActiveStatus")
         self._LicenseExpireTime = params.get("LicenseExpireTime")
+        self._HasSubmittedAuthInfo = params.get("HasSubmittedAuthInfo")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -15935,142 +15912,52 @@ class CreateFlowOption(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _CanEditFlow: 是否允许修改合同信息，
-**true**：可以
-**false**：（默认）不可以
+        :param _CanEditFlow: <p>是否允许修改合同信息，<br><strong>true</strong>：可以<br><strong>false</strong>：（默认）不可以</p>
         :type CanEditFlow: bool
-        :param _HideShowFlowName: 是否允许发起合同弹窗隐藏合同名称
-**true**：允许
-**false**：（默认）不允许
+        :param _HideShowFlowName: <p>是否允许发起合同弹窗隐藏合同名称<br><strong>true</strong>：允许<br><strong>false</strong>：（默认）不允许</p>
         :type HideShowFlowName: bool
-        :param _HideShowFlowType: 是否允许发起合同弹窗隐藏合同类型，
-**true**：允许
-**false**：（默认）不允许
+        :param _HideShowFlowType: <p>是否允许发起合同弹窗隐藏合同类型，<br><strong>true</strong>：允许<br><strong>false</strong>：（默认）不允许</p>
         :type HideShowFlowType: bool
-        :param _HideShowDeadline: 是否允许发起合同弹窗隐藏合同到期时间
-**true**：允许
-**false**：（默认）不允许
+        :param _HideShowDeadline: <p>是否允许发起合同弹窗隐藏合同到期时间<br><strong>true</strong>：允许<br><strong>false</strong>：（默认）不允许</p>
         :type HideShowDeadline: bool
-        :param _CanSkipAddApprover: 是否允许发起合同步骤跳过指定签署方步骤
-**true**：允许
-**false**：（默认）不允许
+        :param _CanSkipAddApprover: <p>是否允许发起合同步骤跳过指定签署方步骤<br><strong>true</strong>：允许<br><strong>false</strong>：（默认）不允许</p>
         :type CanSkipAddApprover: bool
-        :param _ForbidEditApprover: 是否可以编辑签署人包括新增，修改，删除 
-<ul><li>（默认） false -可以编辑签署人</li> <li> true - 禁止编辑签署人</li></ul>
-
-
-
-注意：
-* 如果设置参数为 true， 则 参数签署人 [FlowApproverList](https://qian.tencent.com/developers/partnerApis/embedPages/ChannelCreatePrepareFlow) 不能为空
-* 此参数对子客和自动签无效，不允许进行修改。
+        :param _ForbidEditApprover: <p>是否可以编辑签署人包括新增，修改，删除 </p><ul><li>（默认） false -可以编辑签署人</li> <li> true - 禁止编辑签署人</li></ul><p>注意：</p><ul><li>如果设置参数为 true， 则 参数签署人 <a href="https://qian.tencent.com/developers/partnerApis/embedPages/ChannelCreatePrepareFlow">FlowApproverList</a> 不能为空</li><li>此参数对子客和自动签无效，不允许进行修改。</li></ul>
         :type ForbidEditApprover: bool
-        :param _CustomCreateFlowDescription: 定制化发起合同弹窗的描述信息，长度不能超过500，只能由中文、字母、数字和标点组成。
+        :param _CustomCreateFlowDescription: <p>定制化发起合同弹窗的描述信息，长度不能超过500，只能由中文、字母、数字和标点组成。</p>
         :type CustomCreateFlowDescription: str
-        :param _ForbidEditFillComponent: 禁止编辑填写控件
-
-**true**：禁止编辑填写控件
-**false**：（默认）允许编辑填写控件
+        :param _ForbidEditFillComponent: <p>禁止编辑填写控件</p><p><strong>true</strong>：禁止编辑填写控件<br><strong>false</strong>：（默认）允许编辑填写控件</p>
         :type ForbidEditFillComponent: bool
-        :param _SkipUploadFile: 跳过上传文件步骤
-
-**true**：跳过
-**false**：（默认）不跳过，需要传ResourceId
+        :param _SkipUploadFile: <p>跳过上传文件步骤</p><p><strong>true</strong>：跳过<br><strong>false</strong>：（默认）不跳过，需要传ResourceId</p>
         :type SkipUploadFile: bool
-        :param _SignComponentConfig: 签署控件的配置信息，用在嵌入式发起的页面配置，包括 
- - 签署控件 是否默认展示日期.
+        :param _SignComponentConfig: <p>签署控件的配置信息，用在嵌入式发起的页面配置，包括 </p><ul><li>签署控件 是否默认展示日期.</li></ul>
         :type SignComponentConfig: :class:`tencentcloud.essbasic.v20210526.models.SignComponentConfig`
-        :param _ForbidEditWatermark: 是否禁止编辑（展示）水印控件属性
-<ul><li>（默认） false -否</li> <li> true - 禁止编辑</li></ul>
+        :param _ForbidEditWatermark: <p>是否禁止编辑（展示）水印控件属性</p><ul><li>（默认） false -否</li> <li> true - 禁止编辑</li></ul>
         :type ForbidEditWatermark: bool
-        :param _PreviewAfterStart: 发起成功后是否预览合同
-<ul><li>（默认） false -否</li> <li> true - 展示预览按钮</li></ul>
+        :param _PreviewAfterStart: <p>发起成功后是否预览合同</p><ul><li>（默认） false -否</li> <li> true - 展示预览按钮</li></ul>
         :type PreviewAfterStart: bool
-        :param _SignAfterStart: 发起成功之后是否签署合同，仅当前经办人作为签署人时生效
-<ul><li>（默认） false -否</li> <li> true - 展示签署按钮</li></ul>
+        :param _SignAfterStart: <p>发起成功之后是否签署合同，仅当前经办人作为签署人时生效</p><ul><li>（默认） false -否</li> <li> true - 展示签署按钮</li></ul>
         :type SignAfterStart: bool
-        :param _HideOperationSteps: 隐藏操作步骤: 具体的控件类型如下
-
-<ul><li>1 : 选择文件及签署方</li>
-<li>2 : 补充文件内容</li>
-<li>4 : 发起前合同信息与设置确认</li>
-</ul>
-注：仅对新版页面生效
+        :param _HideOperationSteps: <p>隐藏操作步骤: 具体的控件类型如下</p><ul><li>1 : 选择文件及签署方</li><li>2 : 补充文件内容</li><li>4 : 发起前合同信息与设置确认</li></ul>注：仅对新版页面生效
         :type HideOperationSteps: list of int non-negative
-        :param _SelfName: 本企业简称，注：仅对新版页面生效
+        :param _SelfName: <p>本企业简称，注：仅对新版页面生效</p>
         :type SelfName: str
-        :param _HideSignCodeAfterStart: 发起后签署码隐藏，默认false，注：仅对新版页面生效
+        :param _HideSignCodeAfterStart: <p>发起后签署码隐藏，默认false，注：仅对新版页面生效</p>
         :type HideSignCodeAfterStart: bool
-        :param _NeedFlowDraft: 发起过程中是否保存草稿	
+        :param _NeedFlowDraft: <p>发起过程中是否保存草稿</p>
         :type NeedFlowDraft: bool
-        :param _HideComponentTypes: 在发起流程的可嵌入页面要隐藏的控件列表，和 ShowComponentTypes 参数 只能二选一使用（注: 
-<font color='red'>空数组代表未指定</font>），具体的控件类型如下
-
-<ul><li>SIGN_SIGNATURE : 个人签名/印章</li>
-<li>SIGN_SEAL : 企业印章</li>
-<li>SIGN_PAGING_SEAL : 骑缝章</li>
-<li>SIGN_LEGAL_PERSON_SEAL : 法定代表人章</li>
-<li>SIGN_APPROVE : 签批</li>
-<li>SIGN_OPINION : 签署意见</li>
-<li>SIGN_PAGING_SIGNATURE : 手写签名骑缝控件</li>
-<li>BUSI-FULL-NAME  : 企业全称</li>
-<li>BUSI-CREDIT-CODE : 统一社会信用代码</li>
-<li>BUSI-LEGAL-NAME : 法人/经营者姓名</li>
-<li>PERSONAL-NAME : 签署人姓名</li>
-<li>PERSONAL-MOBILE : 签署人手机号</li>
-<li>PERSONAL-IDCARD-TYPE : 签署人证件类型</li>
-<li>PERSONAL-IDCARD : 签署人证件号</li>
-<li>TEXT : 单行文本</li>
-<li>MULTI_LINE_TEXT : 多行文本</li>
-<li>CHECK_BOX : 勾选框</li>
-<li>SELECTOR : 选择器</li>
-<li>DIGIT : 数字</li>
-<li>DATE : 日期</li>
-<li>FILL_IMAGE : 图片</li>
-<li>ATTACHMENT : 附件</li>
-<li>EMAIL : 邮箱</li>
-<li>LOCATION : 地址</li>
-<li>EDUCATION : 学历</li>
-<li>GENDER : 性别</li>
-<li>DISTRICT : 省市区</li></ul>
+        :param _HideComponentTypes: <p>在发起流程的可嵌入页面要隐藏的控件列表，和 ShowComponentTypes 参数 只能二选一使用（注:<br><font color="red">空数组代表未指定</font>），具体的控件类型如下</p><ul><li>SIGN_SIGNATURE : 个人签名/印章</li><li>SIGN_SEAL : 企业印章</li><li>SIGN_PAGING_SEAL : 骑缝章</li><li>SIGN_LEGAL_PERSON_SEAL : 法定代表人章</li><li>SIGN_APPROVE : 签批</li><li>SIGN_OPINION : 签署意见</li><li>SIGN_PAGING_SIGNATURE : 手写签名骑缝控件</li><li>BUSI-FULL-NAME  : 企业全称</li><li>BUSI-CREDIT-CODE : 统一社会信用代码</li><li>BUSI-LEGAL-NAME : 法人/经营者姓名</li><li>PERSONAL-NAME : 签署人姓名</li><li>PERSONAL-MOBILE : 签署人手机号</li><li>PERSONAL-IDCARD-TYPE : 签署人证件类型</li><li>PERSONAL-IDCARD : 签署人证件号</li><li>TEXT : 单行文本</li><li>MULTI_LINE_TEXT : 多行文本</li><li>CHECK_BOX : 勾选框</li><li>SELECTOR : 选择器</li><li>DIGIT : 数字</li><li>DATE : 日期</li><li>FILL_IMAGE : 图片</li><li>ATTACHMENT : 附件</li><li>EMAIL : 邮箱</li><li>LOCATION : 地址</li><li>EDUCATION : 学历</li><li>GENDER : 性别</li><li>DISTRICT : 省市区</li></ul>
         :type HideComponentTypes: list of str
-        :param _ShowComponentTypes: 在发起流程的可嵌入页面要显示的控件列表，和 HideComponentTypes 参数 只能二选一使用（注: 
-<font color='red'>空数组代表未指定</font>），具体的控件类型如下
-<ul><li>SIGN_SIGNATURE : 个人签名/印章</li>
-<li>SIGN_SEAL : 企业印章</li>
-<li>SIGN_PAGING_SEAL : 骑缝章</li>
-<li>SIGN_LEGAL_PERSON_SEAL : 法定代表人章</li>
-<li>SIGN_APPROVE : 签批</li>
-<li>SIGN_OPINION : 签署意见</li>
-<li>SIGN_PAGING_SIGNATURE : 手写签名骑缝控件</li>
-<li>BUSI-FULL-NAME  : 企业全称</li>
-<li>BUSI-CREDIT-CODE : 统一社会信用代码</li>
-<li>BUSI-LEGAL-NAME : 法人/经营者姓名</li>
-<li>PERSONAL-NAME : 签署人姓名</li>
-<li>PERSONAL-MOBILE : 签署人手机号</li>
-<li>PERSONAL-IDCARD-TYPE : 签署人证件类型</li>
-<li>PERSONAL-IDCARD : 签署人证件号</li>
-<li>TEXT : 单行文本</li>
-<li>MULTI_LINE_TEXT : 多行文本</li>
-<li>CHECK_BOX : 勾选框</li>
-<li>SELECTOR : 选择器</li>
-<li>DIGIT : 数字</li>
-<li>DATE : 日期</li>
-<li>FILL_IMAGE : 图片</li>
-<li>ATTACHMENT : 附件</li>
-<li>EMAIL : 邮箱</li>
-<li>LOCATION : 地址</li>
-<li>EDUCATION : 学历</li>
-<li>GENDER : 性别</li>
-<li>DISTRICT : 省市区</li></ul>
+        :param _ShowComponentTypes: <p>在发起流程的可嵌入页面要显示的控件列表，和 HideComponentTypes 参数 只能二选一使用（注:<br><font color="red">空数组代表未指定</font>），具体的控件类型如下</p><ul><li>SIGN_SIGNATURE : 个人签名/印章</li><li>SIGN_SEAL : 企业印章</li><li>SIGN_PAGING_SEAL : 骑缝章</li><li>SIGN_LEGAL_PERSON_SEAL : 法定代表人章</li><li>SIGN_APPROVE : 签批</li><li>SIGN_OPINION : 签署意见</li><li>SIGN_PAGING_SIGNATURE : 手写签名骑缝控件</li><li>BUSI-FULL-NAME  : 企业全称</li><li>BUSI-CREDIT-CODE : 统一社会信用代码</li><li>BUSI-LEGAL-NAME : 法人/经营者姓名</li><li>PERSONAL-NAME : 签署人姓名</li><li>PERSONAL-MOBILE : 签署人手机号</li><li>PERSONAL-IDCARD-TYPE : 签署人证件类型</li><li>PERSONAL-IDCARD : 签署人证件号</li><li>TEXT : 单行文本</li><li>MULTI_LINE_TEXT : 多行文本</li><li>CHECK_BOX : 勾选框</li><li>SELECTOR : 选择器</li><li>DIGIT : 数字</li><li>DATE : 日期</li><li>FILL_IMAGE : 图片</li><li>ATTACHMENT : 附件</li><li>EMAIL : 邮箱</li><li>LOCATION : 地址</li><li>EDUCATION : 学历</li><li>GENDER : 性别</li><li>DISTRICT : 省市区</li></ul>
         :type ShowComponentTypes: list of str
-        :param _ForbidAddApprover:  禁止添加签署方，若为true则在发起流程的可嵌入页面隐藏“添加签署人按钮”
-
+        :param _ForbidAddApprover: <p>禁止添加签署方，若为true则在发起流程的可嵌入页面隐藏“添加签署人按钮”</p>
         :type ForbidAddApprover: bool
-        :param _ForbidEditFlowProperties:   禁止设置签署流程属性 (顺序、合同签署认证方式等)，若为true则在发起流程的可嵌入页面隐藏签署流程设置面板
-
+        :param _ForbidEditFlowProperties: <p>禁止设置签署流程属性 (顺序、合同签署认证方式等)，若为true则在发起流程的可嵌入页面隐藏签署流程设置面板</p>
         :type ForbidEditFlowProperties: bool
-        :param _ResultPageConfig: 发起流程的可嵌入页面结果页配置
+        :param _ResultPageConfig: <p>发起流程的可嵌入页面结果页配置</p>
         :type ResultPageConfig: :class:`tencentcloud.essbasic.v20210526.models.CreateResultPageConfig`
+        :param _CcInfoVisibility: <p>若指定了合同抄送人，此参数用来控制操作人能否在嵌入式页面看见或编辑（修改、增加、删除）抄送人信息。</p><p>枚举值：</p><ul><li>0： 不可见不可编辑</li><li>1： 可见不可编辑</li><li>2： 可见可编辑</li></ul><p>默认值：0</p>
+        :type CcInfoVisibility: int
         """
         self._CanEditFlow = None
         self._HideShowFlowName = None
@@ -16094,12 +15981,11 @@ class CreateFlowOption(AbstractModel):
         self._ForbidAddApprover = None
         self._ForbidEditFlowProperties = None
         self._ResultPageConfig = None
+        self._CcInfoVisibility = None
 
     @property
     def CanEditFlow(self):
-        r"""是否允许修改合同信息，
-**true**：可以
-**false**：（默认）不可以
+        r"""<p>是否允许修改合同信息，<br><strong>true</strong>：可以<br><strong>false</strong>：（默认）不可以</p>
         :rtype: bool
         """
         return self._CanEditFlow
@@ -16110,9 +15996,7 @@ class CreateFlowOption(AbstractModel):
 
     @property
     def HideShowFlowName(self):
-        r"""是否允许发起合同弹窗隐藏合同名称
-**true**：允许
-**false**：（默认）不允许
+        r"""<p>是否允许发起合同弹窗隐藏合同名称<br><strong>true</strong>：允许<br><strong>false</strong>：（默认）不允许</p>
         :rtype: bool
         """
         return self._HideShowFlowName
@@ -16123,9 +16007,7 @@ class CreateFlowOption(AbstractModel):
 
     @property
     def HideShowFlowType(self):
-        r"""是否允许发起合同弹窗隐藏合同类型，
-**true**：允许
-**false**：（默认）不允许
+        r"""<p>是否允许发起合同弹窗隐藏合同类型，<br><strong>true</strong>：允许<br><strong>false</strong>：（默认）不允许</p>
         :rtype: bool
         """
         return self._HideShowFlowType
@@ -16136,9 +16018,7 @@ class CreateFlowOption(AbstractModel):
 
     @property
     def HideShowDeadline(self):
-        r"""是否允许发起合同弹窗隐藏合同到期时间
-**true**：允许
-**false**：（默认）不允许
+        r"""<p>是否允许发起合同弹窗隐藏合同到期时间<br><strong>true</strong>：允许<br><strong>false</strong>：（默认）不允许</p>
         :rtype: bool
         """
         return self._HideShowDeadline
@@ -16149,9 +16029,7 @@ class CreateFlowOption(AbstractModel):
 
     @property
     def CanSkipAddApprover(self):
-        r"""是否允许发起合同步骤跳过指定签署方步骤
-**true**：允许
-**false**：（默认）不允许
+        r"""<p>是否允许发起合同步骤跳过指定签署方步骤<br><strong>true</strong>：允许<br><strong>false</strong>：（默认）不允许</p>
         :rtype: bool
         """
         return self._CanSkipAddApprover
@@ -16162,14 +16040,7 @@ class CreateFlowOption(AbstractModel):
 
     @property
     def ForbidEditApprover(self):
-        r"""是否可以编辑签署人包括新增，修改，删除 
-<ul><li>（默认） false -可以编辑签署人</li> <li> true - 禁止编辑签署人</li></ul>
-
-
-
-注意：
-* 如果设置参数为 true， 则 参数签署人 [FlowApproverList](https://qian.tencent.com/developers/partnerApis/embedPages/ChannelCreatePrepareFlow) 不能为空
-* 此参数对子客和自动签无效，不允许进行修改。
+        r"""<p>是否可以编辑签署人包括新增，修改，删除 </p><ul><li>（默认） false -可以编辑签署人</li> <li> true - 禁止编辑签署人</li></ul><p>注意：</p><ul><li>如果设置参数为 true， 则 参数签署人 <a href="https://qian.tencent.com/developers/partnerApis/embedPages/ChannelCreatePrepareFlow">FlowApproverList</a> 不能为空</li><li>此参数对子客和自动签无效，不允许进行修改。</li></ul>
         :rtype: bool
         """
         return self._ForbidEditApprover
@@ -16180,7 +16051,7 @@ class CreateFlowOption(AbstractModel):
 
     @property
     def CustomCreateFlowDescription(self):
-        r"""定制化发起合同弹窗的描述信息，长度不能超过500，只能由中文、字母、数字和标点组成。
+        r"""<p>定制化发起合同弹窗的描述信息，长度不能超过500，只能由中文、字母、数字和标点组成。</p>
         :rtype: str
         """
         return self._CustomCreateFlowDescription
@@ -16191,10 +16062,7 @@ class CreateFlowOption(AbstractModel):
 
     @property
     def ForbidEditFillComponent(self):
-        r"""禁止编辑填写控件
-
-**true**：禁止编辑填写控件
-**false**：（默认）允许编辑填写控件
+        r"""<p>禁止编辑填写控件</p><p><strong>true</strong>：禁止编辑填写控件<br><strong>false</strong>：（默认）允许编辑填写控件</p>
         :rtype: bool
         """
         return self._ForbidEditFillComponent
@@ -16205,10 +16073,7 @@ class CreateFlowOption(AbstractModel):
 
     @property
     def SkipUploadFile(self):
-        r"""跳过上传文件步骤
-
-**true**：跳过
-**false**：（默认）不跳过，需要传ResourceId
+        r"""<p>跳过上传文件步骤</p><p><strong>true</strong>：跳过<br><strong>false</strong>：（默认）不跳过，需要传ResourceId</p>
         :rtype: bool
         """
         return self._SkipUploadFile
@@ -16219,8 +16084,7 @@ class CreateFlowOption(AbstractModel):
 
     @property
     def SignComponentConfig(self):
-        r"""签署控件的配置信息，用在嵌入式发起的页面配置，包括 
- - 签署控件 是否默认展示日期.
+        r"""<p>签署控件的配置信息，用在嵌入式发起的页面配置，包括 </p><ul><li>签署控件 是否默认展示日期.</li></ul>
         :rtype: :class:`tencentcloud.essbasic.v20210526.models.SignComponentConfig`
         """
         return self._SignComponentConfig
@@ -16231,8 +16095,7 @@ class CreateFlowOption(AbstractModel):
 
     @property
     def ForbidEditWatermark(self):
-        r"""是否禁止编辑（展示）水印控件属性
-<ul><li>（默认） false -否</li> <li> true - 禁止编辑</li></ul>
+        r"""<p>是否禁止编辑（展示）水印控件属性</p><ul><li>（默认） false -否</li> <li> true - 禁止编辑</li></ul>
         :rtype: bool
         """
         return self._ForbidEditWatermark
@@ -16243,8 +16106,7 @@ class CreateFlowOption(AbstractModel):
 
     @property
     def PreviewAfterStart(self):
-        r"""发起成功后是否预览合同
-<ul><li>（默认） false -否</li> <li> true - 展示预览按钮</li></ul>
+        r"""<p>发起成功后是否预览合同</p><ul><li>（默认） false -否</li> <li> true - 展示预览按钮</li></ul>
         :rtype: bool
         """
         return self._PreviewAfterStart
@@ -16255,8 +16117,7 @@ class CreateFlowOption(AbstractModel):
 
     @property
     def SignAfterStart(self):
-        r"""发起成功之后是否签署合同，仅当前经办人作为签署人时生效
-<ul><li>（默认） false -否</li> <li> true - 展示签署按钮</li></ul>
+        r"""<p>发起成功之后是否签署合同，仅当前经办人作为签署人时生效</p><ul><li>（默认） false -否</li> <li> true - 展示签署按钮</li></ul>
         :rtype: bool
         """
         return self._SignAfterStart
@@ -16267,13 +16128,7 @@ class CreateFlowOption(AbstractModel):
 
     @property
     def HideOperationSteps(self):
-        r"""隐藏操作步骤: 具体的控件类型如下
-
-<ul><li>1 : 选择文件及签署方</li>
-<li>2 : 补充文件内容</li>
-<li>4 : 发起前合同信息与设置确认</li>
-</ul>
-注：仅对新版页面生效
+        r"""<p>隐藏操作步骤: 具体的控件类型如下</p><ul><li>1 : 选择文件及签署方</li><li>2 : 补充文件内容</li><li>4 : 发起前合同信息与设置确认</li></ul>注：仅对新版页面生效
         :rtype: list of int non-negative
         """
         return self._HideOperationSteps
@@ -16284,7 +16139,7 @@ class CreateFlowOption(AbstractModel):
 
     @property
     def SelfName(self):
-        r"""本企业简称，注：仅对新版页面生效
+        r"""<p>本企业简称，注：仅对新版页面生效</p>
         :rtype: str
         """
         return self._SelfName
@@ -16295,7 +16150,7 @@ class CreateFlowOption(AbstractModel):
 
     @property
     def HideSignCodeAfterStart(self):
-        r"""发起后签署码隐藏，默认false，注：仅对新版页面生效
+        r"""<p>发起后签署码隐藏，默认false，注：仅对新版页面生效</p>
         :rtype: bool
         """
         return self._HideSignCodeAfterStart
@@ -16306,7 +16161,7 @@ class CreateFlowOption(AbstractModel):
 
     @property
     def NeedFlowDraft(self):
-        r"""发起过程中是否保存草稿	
+        r"""<p>发起过程中是否保存草稿</p>
         :rtype: bool
         """
         return self._NeedFlowDraft
@@ -16317,36 +16172,7 @@ class CreateFlowOption(AbstractModel):
 
     @property
     def HideComponentTypes(self):
-        r"""在发起流程的可嵌入页面要隐藏的控件列表，和 ShowComponentTypes 参数 只能二选一使用（注: 
-<font color='red'>空数组代表未指定</font>），具体的控件类型如下
-
-<ul><li>SIGN_SIGNATURE : 个人签名/印章</li>
-<li>SIGN_SEAL : 企业印章</li>
-<li>SIGN_PAGING_SEAL : 骑缝章</li>
-<li>SIGN_LEGAL_PERSON_SEAL : 法定代表人章</li>
-<li>SIGN_APPROVE : 签批</li>
-<li>SIGN_OPINION : 签署意见</li>
-<li>SIGN_PAGING_SIGNATURE : 手写签名骑缝控件</li>
-<li>BUSI-FULL-NAME  : 企业全称</li>
-<li>BUSI-CREDIT-CODE : 统一社会信用代码</li>
-<li>BUSI-LEGAL-NAME : 法人/经营者姓名</li>
-<li>PERSONAL-NAME : 签署人姓名</li>
-<li>PERSONAL-MOBILE : 签署人手机号</li>
-<li>PERSONAL-IDCARD-TYPE : 签署人证件类型</li>
-<li>PERSONAL-IDCARD : 签署人证件号</li>
-<li>TEXT : 单行文本</li>
-<li>MULTI_LINE_TEXT : 多行文本</li>
-<li>CHECK_BOX : 勾选框</li>
-<li>SELECTOR : 选择器</li>
-<li>DIGIT : 数字</li>
-<li>DATE : 日期</li>
-<li>FILL_IMAGE : 图片</li>
-<li>ATTACHMENT : 附件</li>
-<li>EMAIL : 邮箱</li>
-<li>LOCATION : 地址</li>
-<li>EDUCATION : 学历</li>
-<li>GENDER : 性别</li>
-<li>DISTRICT : 省市区</li></ul>
+        r"""<p>在发起流程的可嵌入页面要隐藏的控件列表，和 ShowComponentTypes 参数 只能二选一使用（注:<br><font color="red">空数组代表未指定</font>），具体的控件类型如下</p><ul><li>SIGN_SIGNATURE : 个人签名/印章</li><li>SIGN_SEAL : 企业印章</li><li>SIGN_PAGING_SEAL : 骑缝章</li><li>SIGN_LEGAL_PERSON_SEAL : 法定代表人章</li><li>SIGN_APPROVE : 签批</li><li>SIGN_OPINION : 签署意见</li><li>SIGN_PAGING_SIGNATURE : 手写签名骑缝控件</li><li>BUSI-FULL-NAME  : 企业全称</li><li>BUSI-CREDIT-CODE : 统一社会信用代码</li><li>BUSI-LEGAL-NAME : 法人/经营者姓名</li><li>PERSONAL-NAME : 签署人姓名</li><li>PERSONAL-MOBILE : 签署人手机号</li><li>PERSONAL-IDCARD-TYPE : 签署人证件类型</li><li>PERSONAL-IDCARD : 签署人证件号</li><li>TEXT : 单行文本</li><li>MULTI_LINE_TEXT : 多行文本</li><li>CHECK_BOX : 勾选框</li><li>SELECTOR : 选择器</li><li>DIGIT : 数字</li><li>DATE : 日期</li><li>FILL_IMAGE : 图片</li><li>ATTACHMENT : 附件</li><li>EMAIL : 邮箱</li><li>LOCATION : 地址</li><li>EDUCATION : 学历</li><li>GENDER : 性别</li><li>DISTRICT : 省市区</li></ul>
         :rtype: list of str
         """
         return self._HideComponentTypes
@@ -16357,35 +16183,7 @@ class CreateFlowOption(AbstractModel):
 
     @property
     def ShowComponentTypes(self):
-        r"""在发起流程的可嵌入页面要显示的控件列表，和 HideComponentTypes 参数 只能二选一使用（注: 
-<font color='red'>空数组代表未指定</font>），具体的控件类型如下
-<ul><li>SIGN_SIGNATURE : 个人签名/印章</li>
-<li>SIGN_SEAL : 企业印章</li>
-<li>SIGN_PAGING_SEAL : 骑缝章</li>
-<li>SIGN_LEGAL_PERSON_SEAL : 法定代表人章</li>
-<li>SIGN_APPROVE : 签批</li>
-<li>SIGN_OPINION : 签署意见</li>
-<li>SIGN_PAGING_SIGNATURE : 手写签名骑缝控件</li>
-<li>BUSI-FULL-NAME  : 企业全称</li>
-<li>BUSI-CREDIT-CODE : 统一社会信用代码</li>
-<li>BUSI-LEGAL-NAME : 法人/经营者姓名</li>
-<li>PERSONAL-NAME : 签署人姓名</li>
-<li>PERSONAL-MOBILE : 签署人手机号</li>
-<li>PERSONAL-IDCARD-TYPE : 签署人证件类型</li>
-<li>PERSONAL-IDCARD : 签署人证件号</li>
-<li>TEXT : 单行文本</li>
-<li>MULTI_LINE_TEXT : 多行文本</li>
-<li>CHECK_BOX : 勾选框</li>
-<li>SELECTOR : 选择器</li>
-<li>DIGIT : 数字</li>
-<li>DATE : 日期</li>
-<li>FILL_IMAGE : 图片</li>
-<li>ATTACHMENT : 附件</li>
-<li>EMAIL : 邮箱</li>
-<li>LOCATION : 地址</li>
-<li>EDUCATION : 学历</li>
-<li>GENDER : 性别</li>
-<li>DISTRICT : 省市区</li></ul>
+        r"""<p>在发起流程的可嵌入页面要显示的控件列表，和 HideComponentTypes 参数 只能二选一使用（注:<br><font color="red">空数组代表未指定</font>），具体的控件类型如下</p><ul><li>SIGN_SIGNATURE : 个人签名/印章</li><li>SIGN_SEAL : 企业印章</li><li>SIGN_PAGING_SEAL : 骑缝章</li><li>SIGN_LEGAL_PERSON_SEAL : 法定代表人章</li><li>SIGN_APPROVE : 签批</li><li>SIGN_OPINION : 签署意见</li><li>SIGN_PAGING_SIGNATURE : 手写签名骑缝控件</li><li>BUSI-FULL-NAME  : 企业全称</li><li>BUSI-CREDIT-CODE : 统一社会信用代码</li><li>BUSI-LEGAL-NAME : 法人/经营者姓名</li><li>PERSONAL-NAME : 签署人姓名</li><li>PERSONAL-MOBILE : 签署人手机号</li><li>PERSONAL-IDCARD-TYPE : 签署人证件类型</li><li>PERSONAL-IDCARD : 签署人证件号</li><li>TEXT : 单行文本</li><li>MULTI_LINE_TEXT : 多行文本</li><li>CHECK_BOX : 勾选框</li><li>SELECTOR : 选择器</li><li>DIGIT : 数字</li><li>DATE : 日期</li><li>FILL_IMAGE : 图片</li><li>ATTACHMENT : 附件</li><li>EMAIL : 邮箱</li><li>LOCATION : 地址</li><li>EDUCATION : 学历</li><li>GENDER : 性别</li><li>DISTRICT : 省市区</li></ul>
         :rtype: list of str
         """
         return self._ShowComponentTypes
@@ -16396,8 +16194,7 @@ class CreateFlowOption(AbstractModel):
 
     @property
     def ForbidAddApprover(self):
-        r""" 禁止添加签署方，若为true则在发起流程的可嵌入页面隐藏“添加签署人按钮”
-
+        r"""<p>禁止添加签署方，若为true则在发起流程的可嵌入页面隐藏“添加签署人按钮”</p>
         :rtype: bool
         """
         return self._ForbidAddApprover
@@ -16408,8 +16205,7 @@ class CreateFlowOption(AbstractModel):
 
     @property
     def ForbidEditFlowProperties(self):
-        r"""  禁止设置签署流程属性 (顺序、合同签署认证方式等)，若为true则在发起流程的可嵌入页面隐藏签署流程设置面板
-
+        r"""<p>禁止设置签署流程属性 (顺序、合同签署认证方式等)，若为true则在发起流程的可嵌入页面隐藏签署流程设置面板</p>
         :rtype: bool
         """
         return self._ForbidEditFlowProperties
@@ -16420,7 +16216,7 @@ class CreateFlowOption(AbstractModel):
 
     @property
     def ResultPageConfig(self):
-        r"""发起流程的可嵌入页面结果页配置
+        r"""<p>发起流程的可嵌入页面结果页配置</p>
         :rtype: :class:`tencentcloud.essbasic.v20210526.models.CreateResultPageConfig`
         """
         return self._ResultPageConfig
@@ -16428,6 +16224,17 @@ class CreateFlowOption(AbstractModel):
     @ResultPageConfig.setter
     def ResultPageConfig(self, ResultPageConfig):
         self._ResultPageConfig = ResultPageConfig
+
+    @property
+    def CcInfoVisibility(self):
+        r"""<p>若指定了合同抄送人，此参数用来控制操作人能否在嵌入式页面看见或编辑（修改、增加、删除）抄送人信息。</p><p>枚举值：</p><ul><li>0： 不可见不可编辑</li><li>1： 可见不可编辑</li><li>2： 可见可编辑</li></ul><p>默认值：0</p>
+        :rtype: int
+        """
+        return self._CcInfoVisibility
+
+    @CcInfoVisibility.setter
+    def CcInfoVisibility(self, CcInfoVisibility):
+        self._CcInfoVisibility = CcInfoVisibility
 
 
     def _deserialize(self, params):
@@ -16457,6 +16264,7 @@ class CreateFlowOption(AbstractModel):
         if params.get("ResultPageConfig") is not None:
             self._ResultPageConfig = CreateResultPageConfig()
             self._ResultPageConfig._deserialize(params.get("ResultPageConfig"))
+        self._CcInfoVisibility = params.get("CcInfoVisibility")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

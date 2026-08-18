@@ -10198,16 +10198,16 @@ class CreateLabRequest(AbstractModel):
         r"""
         :param _Name: <p>数据实验室名称</p>
         :type Name: str
-        :param _LabImage: <p>Lab 镜像地址（必填，用于开发工具如 Jupyter/VSCode/WebShell）。前端在&quot;内置 / 自定义&quot;两态中选择此值；当 Image 字段未显式传入时，后端会基于该字段按 R1（镜像表命中）/R2（同值 fallback）派生 Ray 集群镜像。</p>
-        :type LabImage: str
         :param _ResourcePartitionId: <p>资源分区ID</p>
         :type ResourcePartitionId: str
         :param _Queue: <p>队列名称</p>
         :type Queue: str
-        :param _Description: <p>数据实验室描述</p>
-        :type Description: str
         :param _Image: <p>Ray 集群镜像地址（可选，OpenAPI/SDK 高级控制入口）。前端不再传递此字段；为空时后端按 R1（镜像表查询命中）→ R2（同值 fallback）顺序自动派生。非空时直接作为 Ray 集群镜像，跳过派生（EXPLICIT），且后端不校验其与 LabImage 的兼容性。</p>
         :type Image: str
+        :param _LabImage: <p>Lab 镜像地址（必填，用于开发工具如 Jupyter/VSCode/WebShell）。前端在&quot;内置 / 自定义&quot;两态中选择此值；当 Image 字段未显式传入时，后端会基于该字段按 R1（镜像表命中）/R2（同值 fallback）派生 Ray 集群镜像。</p>
+        :type LabImage: str
+        :param _Description: <p>数据实验室描述</p>
+        :type Description: str
         :param _ImagePullPolicy: <p>镜像拉取策略（Always, IfNotPresent, Never）</p>
         :type ImagePullPolicy: str
         :param _ResourceConfig: <p>资源配置</p>
@@ -10242,11 +10242,11 @@ class CreateLabRequest(AbstractModel):
         :type LabImagePullType: str
         """
         self._Name = None
-        self._LabImage = None
         self._ResourcePartitionId = None
         self._Queue = None
-        self._Description = None
         self._Image = None
+        self._LabImage = None
+        self._Description = None
         self._ImagePullPolicy = None
         self._ResourceConfig = None
         self._ResourceConfigId = None
@@ -10276,17 +10276,6 @@ class CreateLabRequest(AbstractModel):
         self._Name = Name
 
     @property
-    def LabImage(self):
-        r"""<p>Lab 镜像地址（必填，用于开发工具如 Jupyter/VSCode/WebShell）。前端在&quot;内置 / 自定义&quot;两态中选择此值；当 Image 字段未显式传入时，后端会基于该字段按 R1（镜像表命中）/R2（同值 fallback）派生 Ray 集群镜像。</p>
-        :rtype: str
-        """
-        return self._LabImage
-
-    @LabImage.setter
-    def LabImage(self, LabImage):
-        self._LabImage = LabImage
-
-    @property
     def ResourcePartitionId(self):
         r"""<p>资源分区ID</p>
         :rtype: str
@@ -10309,17 +10298,6 @@ class CreateLabRequest(AbstractModel):
         self._Queue = Queue
 
     @property
-    def Description(self):
-        r"""<p>数据实验室描述</p>
-        :rtype: str
-        """
-        return self._Description
-
-    @Description.setter
-    def Description(self, Description):
-        self._Description = Description
-
-    @property
     def Image(self):
         r"""<p>Ray 集群镜像地址（可选，OpenAPI/SDK 高级控制入口）。前端不再传递此字段；为空时后端按 R1（镜像表查询命中）→ R2（同值 fallback）顺序自动派生。非空时直接作为 Ray 集群镜像，跳过派生（EXPLICIT），且后端不校验其与 LabImage 的兼容性。</p>
         :rtype: str
@@ -10329,6 +10307,28 @@ class CreateLabRequest(AbstractModel):
     @Image.setter
     def Image(self, Image):
         self._Image = Image
+
+    @property
+    def LabImage(self):
+        r"""<p>Lab 镜像地址（必填，用于开发工具如 Jupyter/VSCode/WebShell）。前端在&quot;内置 / 自定义&quot;两态中选择此值；当 Image 字段未显式传入时，后端会基于该字段按 R1（镜像表命中）/R2（同值 fallback）派生 Ray 集群镜像。</p>
+        :rtype: str
+        """
+        return self._LabImage
+
+    @LabImage.setter
+    def LabImage(self, LabImage):
+        self._LabImage = LabImage
+
+    @property
+    def Description(self):
+        r"""<p>数据实验室描述</p>
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
 
     @property
     def ImagePullPolicy(self):
@@ -10509,11 +10509,11 @@ class CreateLabRequest(AbstractModel):
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
-        self._LabImage = params.get("LabImage")
         self._ResourcePartitionId = params.get("ResourcePartitionId")
         self._Queue = params.get("Queue")
-        self._Description = params.get("Description")
         self._Image = params.get("Image")
+        self._LabImage = params.get("LabImage")
+        self._Description = params.get("Description")
         self._ImagePullPolicy = params.get("ImagePullPolicy")
         self._ResourceConfig = params.get("ResourceConfig")
         self._ResourceConfigId = params.get("ResourceConfigId")
@@ -82082,12 +82082,12 @@ class UpdateLabRequest(AbstractModel):
         r"""
         :param _Name: <p>数据实验室名称</p>
         :type Name: str
+        :param _Image: <p>Ray 集群镜像地址（可选，OpenAPI/SDK 高级控制入口）。前端不再传递此字段；为空时后端按 R1（镜像表查询命中）→ R2（同值 fallback）顺序自动派生。非空时直接作为 Ray 集群镜像，跳过派生（EXPLICIT），且后端不校验其与 LabImage 的兼容性。</p>
+        :type Image: str
         :param _LabImage: <p>Lab 镜像地址（必填，用于开发工具如 Jupyter/VSCode/WebShell）。前端在&quot;内置 / 自定义&quot;两态中选择此值；当 Image 字段未显式传入时，后端会基于该字段按 R1（镜像表命中）/R2（同值 fallback）派生 Ray 集群镜像。</p>
         :type LabImage: str
         :param _Description: <p>数据实验室描述</p>
         :type Description: str
-        :param _Image: <p>Ray 集群镜像地址（可选，OpenAPI/SDK 高级控制入口）。前端不再传递此字段；为空时后端按 R1（镜像表查询命中）→ R2（同值 fallback）顺序自动派生。非空时直接作为 Ray 集群镜像，跳过派生（EXPLICIT），且后端不校验其与 LabImage 的兼容性。</p>
-        :type Image: str
         :param _ImagePullPolicy: <p>镜像拉取策略（Always, IfNotPresent, Never）</p>
         :type ImagePullPolicy: str
         :param _ResourceConfigId: <p>资源配置ID</p>
@@ -82118,9 +82118,9 @@ class UpdateLabRequest(AbstractModel):
         :type LabImagePullType: str
         """
         self._Name = None
+        self._Image = None
         self._LabImage = None
         self._Description = None
-        self._Image = None
         self._ImagePullPolicy = None
         self._ResourceConfigId = None
         self._GroupId = None
@@ -82148,6 +82148,17 @@ class UpdateLabRequest(AbstractModel):
         self._Name = Name
 
     @property
+    def Image(self):
+        r"""<p>Ray 集群镜像地址（可选，OpenAPI/SDK 高级控制入口）。前端不再传递此字段；为空时后端按 R1（镜像表查询命中）→ R2（同值 fallback）顺序自动派生。非空时直接作为 Ray 集群镜像，跳过派生（EXPLICIT），且后端不校验其与 LabImage 的兼容性。</p>
+        :rtype: str
+        """
+        return self._Image
+
+    @Image.setter
+    def Image(self, Image):
+        self._Image = Image
+
+    @property
     def LabImage(self):
         r"""<p>Lab 镜像地址（必填，用于开发工具如 Jupyter/VSCode/WebShell）。前端在&quot;内置 / 自定义&quot;两态中选择此值；当 Image 字段未显式传入时，后端会基于该字段按 R1（镜像表命中）/R2（同值 fallback）派生 Ray 集群镜像。</p>
         :rtype: str
@@ -82168,17 +82179,6 @@ class UpdateLabRequest(AbstractModel):
     @Description.setter
     def Description(self, Description):
         self._Description = Description
-
-    @property
-    def Image(self):
-        r"""<p>Ray 集群镜像地址（可选，OpenAPI/SDK 高级控制入口）。前端不再传递此字段；为空时后端按 R1（镜像表查询命中）→ R2（同值 fallback）顺序自动派生。非空时直接作为 Ray 集群镜像，跳过派生（EXPLICIT），且后端不校验其与 LabImage 的兼容性。</p>
-        :rtype: str
-        """
-        return self._Image
-
-    @Image.setter
-    def Image(self, Image):
-        self._Image = Image
 
     @property
     def ImagePullPolicy(self):
@@ -82337,9 +82337,9 @@ class UpdateLabRequest(AbstractModel):
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
+        self._Image = params.get("Image")
         self._LabImage = params.get("LabImage")
         self._Description = params.get("Description")
-        self._Image = params.get("Image")
         self._ImagePullPolicy = params.get("ImagePullPolicy")
         self._ResourceConfigId = params.get("ResourceConfigId")
         self._GroupId = params.get("GroupId")

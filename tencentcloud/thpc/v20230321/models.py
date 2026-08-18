@@ -5503,6 +5503,134 @@ class GooseFSxOptionOverview(AbstractModel):
         
 
 
+class InquirePriceModifyWorkspacesChargeTypeRequest(AbstractModel):
+    r"""InquirePriceModifyWorkspacesChargeType请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SpaceIds: <p>工作空间 ID 列表。每次请求的工作空间计费模式必须一致。</p>
+        :type SpaceIds: list of str
+        :param _SpaceChargeType: <p>转换的目标计费模式。当前仅支持 PREPAID（按量计费转包年包月）。</p>
+        :type SpaceChargeType: str
+        :param _DryRun: <p>是否只进行参数和资源预检。true：不发起询价、组单或正式下单；false：执行对应操作。默认为 false。</p>
+        :type DryRun: bool
+        :param _SpaceChargePrepaid: <p>预付费参数。Period 和 RenewFlag 均为可选字段；未传入时后端使用默认值 Period=1、RenewFlag=NOTIFY_AND_MANUAL_RENEW。</p>
+        :type SpaceChargePrepaid: :class:`tencentcloud.thpc.v20230321.models.SpaceChargePrepaid`
+        """
+        self._SpaceIds = None
+        self._SpaceChargeType = None
+        self._DryRun = None
+        self._SpaceChargePrepaid = None
+
+    @property
+    def SpaceIds(self):
+        r"""<p>工作空间 ID 列表。每次请求的工作空间计费模式必须一致。</p>
+        :rtype: list of str
+        """
+        return self._SpaceIds
+
+    @SpaceIds.setter
+    def SpaceIds(self, SpaceIds):
+        self._SpaceIds = SpaceIds
+
+    @property
+    def SpaceChargeType(self):
+        r"""<p>转换的目标计费模式。当前仅支持 PREPAID（按量计费转包年包月）。</p>
+        :rtype: str
+        """
+        return self._SpaceChargeType
+
+    @SpaceChargeType.setter
+    def SpaceChargeType(self, SpaceChargeType):
+        self._SpaceChargeType = SpaceChargeType
+
+    @property
+    def DryRun(self):
+        r"""<p>是否只进行参数和资源预检。true：不发起询价、组单或正式下单；false：执行对应操作。默认为 false。</p>
+        :rtype: bool
+        """
+        return self._DryRun
+
+    @DryRun.setter
+    def DryRun(self, DryRun):
+        self._DryRun = DryRun
+
+    @property
+    def SpaceChargePrepaid(self):
+        r"""<p>预付费参数。Period 和 RenewFlag 均为可选字段；未传入时后端使用默认值 Period=1、RenewFlag=NOTIFY_AND_MANUAL_RENEW。</p>
+        :rtype: :class:`tencentcloud.thpc.v20230321.models.SpaceChargePrepaid`
+        """
+        return self._SpaceChargePrepaid
+
+    @SpaceChargePrepaid.setter
+    def SpaceChargePrepaid(self, SpaceChargePrepaid):
+        self._SpaceChargePrepaid = SpaceChargePrepaid
+
+
+    def _deserialize(self, params):
+        self._SpaceIds = params.get("SpaceIds")
+        self._SpaceChargeType = params.get("SpaceChargeType")
+        self._DryRun = params.get("DryRun")
+        if params.get("SpaceChargePrepaid") is not None:
+            self._SpaceChargePrepaid = SpaceChargePrepaid()
+            self._SpaceChargePrepaid._deserialize(params.get("SpaceChargePrepaid"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class InquirePriceModifyWorkspacesChargeTypeResponse(AbstractModel):
+    r"""InquirePriceModifyWorkspacesChargeType返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Price: <p>该参数表示对应规格工作空间的价格</p>
+        :type Price: :class:`tencentcloud.thpc.v20230321.models.Price`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Price = None
+        self._RequestId = None
+
+    @property
+    def Price(self):
+        r"""<p>该参数表示对应规格工作空间的价格</p>
+        :rtype: :class:`tencentcloud.thpc.v20230321.models.Price`
+        """
+        return self._Price
+
+    @Price.setter
+    def Price(self, Price):
+        self._Price = Price
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Price") is not None:
+            self._Price = Price()
+            self._Price._deserialize(params.get("Price"))
+        self._RequestId = params.get("RequestId")
+
+
 class InstanceChargePrepaid(AbstractModel):
     r"""描述了实例的计费模式
 
@@ -5623,6 +5751,164 @@ BANDWIDTH_PACKAGE：带宽包用户
     def _deserialize(self, params):
         self._InternetChargeType = params.get("InternetChargeType")
         self._InternetMaxBandwidthOut = params.get("InternetMaxBandwidthOut")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ItemPrice(AbstractModel):
+    r"""描述了单项的价格信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _OriginalPrice: 预支合计费用的原价，预付费模式使用，单位：元。	
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OriginalPrice: float
+        :param _DiscountPrice: 预支合计费用的折扣价，预付费模式使用，单位：元。	
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DiscountPrice: float
+        :param _Discount: 折扣，如20.0代表2折。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Discount: float
+        :param _UnitPrice: 后续合计费用的原价，后付费模式使用，单位：元。
+
+如返回了其他时间区间项，如UnitPriceSecondStep，则本项代表时间区间在(0, 96)小时；若未返回其他时间区间项，则本项代表全时段，即(0, ∞)小时
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UnitPrice: float
+        :param _DiscountUnitPrice: 后续合计费用的折扣价，后付费模式使用，单位：元
+
+如返回了其他时间区间项，如DiscountUnitPriceSecondStep，则本项代表时间区间在(0, 96)小时；若未返回其他时间区间项，则本项代表全时段，即(0, ∞)小时
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DiscountUnitPrice: float
+        :param _ChargeUnit: 后续计价单元，后付费模式使用，可取值范围：
+
+HOUR：表示计价单元是按每小时来计算。当前涉及该计价单元的场景有：实例按小时后付费（POSTPAID_BY_HOUR）、带宽按小时后付费（BANDWIDTH_POSTPAID_BY_HOUR）：
+GB：表示计价单元是按每GB来计算。当前涉及该计价单元的场景有：流量按小时后付费（TRAFFIC_POSTPAID_BY_HOUR）。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ChargeUnit: str
+        :param _UnitPriceDiscount: 后续合计费用的折扣价，后付费模式使用，单位：元
+
+如返回了其他时间区间项，如UnitPriceDiscount
+float，则本项代表时间区间在(0, 96)小时；若未返回其他时间区间项，则本项代表全时段，即(0, ∞)小时
+        :type UnitPriceDiscount: float
+        """
+        self._OriginalPrice = None
+        self._DiscountPrice = None
+        self._Discount = None
+        self._UnitPrice = None
+        self._DiscountUnitPrice = None
+        self._ChargeUnit = None
+        self._UnitPriceDiscount = None
+
+    @property
+    def OriginalPrice(self):
+        r"""预支合计费用的原价，预付费模式使用，单位：元。	
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
+        return self._OriginalPrice
+
+    @OriginalPrice.setter
+    def OriginalPrice(self, OriginalPrice):
+        self._OriginalPrice = OriginalPrice
+
+    @property
+    def DiscountPrice(self):
+        r"""预支合计费用的折扣价，预付费模式使用，单位：元。	
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
+        return self._DiscountPrice
+
+    @DiscountPrice.setter
+    def DiscountPrice(self, DiscountPrice):
+        self._DiscountPrice = DiscountPrice
+
+    @property
+    def Discount(self):
+        r"""折扣，如20.0代表2折。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
+        return self._Discount
+
+    @Discount.setter
+    def Discount(self, Discount):
+        self._Discount = Discount
+
+    @property
+    def UnitPrice(self):
+        r"""后续合计费用的原价，后付费模式使用，单位：元。
+
+如返回了其他时间区间项，如UnitPriceSecondStep，则本项代表时间区间在(0, 96)小时；若未返回其他时间区间项，则本项代表全时段，即(0, ∞)小时
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
+        return self._UnitPrice
+
+    @UnitPrice.setter
+    def UnitPrice(self, UnitPrice):
+        self._UnitPrice = UnitPrice
+
+    @property
+    def DiscountUnitPrice(self):
+        r"""后续合计费用的折扣价，后付费模式使用，单位：元
+
+如返回了其他时间区间项，如DiscountUnitPriceSecondStep，则本项代表时间区间在(0, 96)小时；若未返回其他时间区间项，则本项代表全时段，即(0, ∞)小时
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
+        return self._DiscountUnitPrice
+
+    @DiscountUnitPrice.setter
+    def DiscountUnitPrice(self, DiscountUnitPrice):
+        self._DiscountUnitPrice = DiscountUnitPrice
+
+    @property
+    def ChargeUnit(self):
+        r"""后续计价单元，后付费模式使用，可取值范围：
+
+HOUR：表示计价单元是按每小时来计算。当前涉及该计价单元的场景有：实例按小时后付费（POSTPAID_BY_HOUR）、带宽按小时后付费（BANDWIDTH_POSTPAID_BY_HOUR）：
+GB：表示计价单元是按每GB来计算。当前涉及该计价单元的场景有：流量按小时后付费（TRAFFIC_POSTPAID_BY_HOUR）。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ChargeUnit
+
+    @ChargeUnit.setter
+    def ChargeUnit(self, ChargeUnit):
+        self._ChargeUnit = ChargeUnit
+
+    @property
+    def UnitPriceDiscount(self):
+        r"""后续合计费用的折扣价，后付费模式使用，单位：元
+
+如返回了其他时间区间项，如UnitPriceDiscount
+float，则本项代表时间区间在(0, 96)小时；若未返回其他时间区间项，则本项代表全时段，即(0, ∞)小时
+        :rtype: float
+        """
+        return self._UnitPriceDiscount
+
+    @UnitPriceDiscount.setter
+    def UnitPriceDiscount(self, UnitPriceDiscount):
+        self._UnitPriceDiscount = UnitPriceDiscount
+
+
+    def _deserialize(self, params):
+        self._OriginalPrice = params.get("OriginalPrice")
+        self._DiscountPrice = params.get("DiscountPrice")
+        self._Discount = params.get("Discount")
+        self._UnitPrice = params.get("UnitPrice")
+        self._DiscountUnitPrice = params.get("DiscountUnitPrice")
+        self._ChargeUnit = params.get("ChargeUnit")
+        self._UnitPriceDiscount = params.get("UnitPriceDiscount")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -6728,6 +7014,117 @@ class ModifyWorkspacesAttributeResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyWorkspacesChargeTypeRequest(AbstractModel):
+    r"""ModifyWorkspacesChargeType请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SpaceIds: <p>工作空间 ID 列表。每次请求的工作空间计费模式必须一致。</p>
+        :type SpaceIds: list of str
+        :param _SpaceChargeType: <p>转换的目标计费模式。当前仅支持 PREPAID（按量计费转包年包月）。</p>
+        :type SpaceChargeType: str
+        :param _DryRun: <p>是否只进行参数和资源预检。true：不发起询价、组单或正式下单；false：执行对应操作。默认为 false。</p>
+        :type DryRun: bool
+        :param _SpaceChargePrepaid: <p>预付费参数。Period 和 RenewFlag 均为可选字段；未传入时后端使用默认值 Period=1、RenewFlag=NOTIFY_AND_MANUAL_RENEW。</p>
+        :type SpaceChargePrepaid: :class:`tencentcloud.thpc.v20230321.models.SpaceChargePrepaid`
+        """
+        self._SpaceIds = None
+        self._SpaceChargeType = None
+        self._DryRun = None
+        self._SpaceChargePrepaid = None
+
+    @property
+    def SpaceIds(self):
+        r"""<p>工作空间 ID 列表。每次请求的工作空间计费模式必须一致。</p>
+        :rtype: list of str
+        """
+        return self._SpaceIds
+
+    @SpaceIds.setter
+    def SpaceIds(self, SpaceIds):
+        self._SpaceIds = SpaceIds
+
+    @property
+    def SpaceChargeType(self):
+        r"""<p>转换的目标计费模式。当前仅支持 PREPAID（按量计费转包年包月）。</p>
+        :rtype: str
+        """
+        return self._SpaceChargeType
+
+    @SpaceChargeType.setter
+    def SpaceChargeType(self, SpaceChargeType):
+        self._SpaceChargeType = SpaceChargeType
+
+    @property
+    def DryRun(self):
+        r"""<p>是否只进行参数和资源预检。true：不发起询价、组单或正式下单；false：执行对应操作。默认为 false。</p>
+        :rtype: bool
+        """
+        return self._DryRun
+
+    @DryRun.setter
+    def DryRun(self, DryRun):
+        self._DryRun = DryRun
+
+    @property
+    def SpaceChargePrepaid(self):
+        r"""<p>预付费参数。Period 和 RenewFlag 均为可选字段；未传入时后端使用默认值 Period=1、RenewFlag=NOTIFY_AND_MANUAL_RENEW。</p>
+        :rtype: :class:`tencentcloud.thpc.v20230321.models.SpaceChargePrepaid`
+        """
+        return self._SpaceChargePrepaid
+
+    @SpaceChargePrepaid.setter
+    def SpaceChargePrepaid(self, SpaceChargePrepaid):
+        self._SpaceChargePrepaid = SpaceChargePrepaid
+
+
+    def _deserialize(self, params):
+        self._SpaceIds = params.get("SpaceIds")
+        self._SpaceChargeType = params.get("SpaceChargeType")
+        self._DryRun = params.get("DryRun")
+        if params.get("SpaceChargePrepaid") is not None:
+            self._SpaceChargePrepaid = SpaceChargePrepaid()
+            self._SpaceChargePrepaid._deserialize(params.get("SpaceChargePrepaid"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyWorkspacesChargeTypeResponse(AbstractModel):
+    r"""ModifyWorkspacesChargeType返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyWorkspacesRenewFlagRequest(AbstractModel):
     r"""ModifyWorkspacesRenewFlag请求参数结构体
 
@@ -7243,6 +7640,61 @@ class Placement(AbstractModel):
 
     def _deserialize(self, params):
         self._Zone = params.get("Zone")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class Price(AbstractModel):
+    r"""价格
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SpacePrice: 工作空间价格
+        :type SpacePrice: :class:`tencentcloud.thpc.v20230321.models.ItemPrice`
+        :param _BandwidthPrice: 网络价格
+        :type BandwidthPrice: :class:`tencentcloud.thpc.v20230321.models.ItemPrice`
+        """
+        self._SpacePrice = None
+        self._BandwidthPrice = None
+
+    @property
+    def SpacePrice(self):
+        r"""工作空间价格
+        :rtype: :class:`tencentcloud.thpc.v20230321.models.ItemPrice`
+        """
+        return self._SpacePrice
+
+    @SpacePrice.setter
+    def SpacePrice(self, SpacePrice):
+        self._SpacePrice = SpacePrice
+
+    @property
+    def BandwidthPrice(self):
+        r"""网络价格
+        :rtype: :class:`tencentcloud.thpc.v20230321.models.ItemPrice`
+        """
+        return self._BandwidthPrice
+
+    @BandwidthPrice.setter
+    def BandwidthPrice(self, BandwidthPrice):
+        self._BandwidthPrice = BandwidthPrice
+
+
+    def _deserialize(self, params):
+        if params.get("SpacePrice") is not None:
+            self._SpacePrice = ItemPrice()
+            self._SpacePrice._deserialize(params.get("SpacePrice"))
+        if params.get("BandwidthPrice") is not None:
+            self._BandwidthPrice = ItemPrice()
+            self._BandwidthPrice._deserialize(params.get("BandwidthPrice"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

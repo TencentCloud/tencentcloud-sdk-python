@@ -4250,6 +4250,8 @@ class CreateConnectResourceRequest(AbstractModel):
         :type KafkaConnectParam: :class:`tencentcloud.ckafka.v20190819.models.KafkaConnectParam`
         :param _MqttConnectParam: <p>MQTT配置，Type为 MQTT 时必填</p>
         :type MqttConnectParam: :class:`tencentcloud.ckafka.v20190819.models.MqttConnectParam`
+        :param _IcebergConnectParam: <p>Iceberg配置，Type为ICEBERG时必填</p>
+        :type IcebergConnectParam: :class:`tencentcloud.ckafka.v20190819.models.IcebergConnectParam`
         :param _Tags: <p>标签列表</p>
         :type Tags: list of Tag
         """
@@ -4267,6 +4269,7 @@ class CreateConnectResourceRequest(AbstractModel):
         self._DorisConnectParam = None
         self._KafkaConnectParam = None
         self._MqttConnectParam = None
+        self._IcebergConnectParam = None
         self._Tags = None
 
     @property
@@ -4424,6 +4427,17 @@ class CreateConnectResourceRequest(AbstractModel):
         self._MqttConnectParam = MqttConnectParam
 
     @property
+    def IcebergConnectParam(self):
+        r"""<p>Iceberg配置，Type为ICEBERG时必填</p>
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.IcebergConnectParam`
+        """
+        return self._IcebergConnectParam
+
+    @IcebergConnectParam.setter
+    def IcebergConnectParam(self, IcebergConnectParam):
+        self._IcebergConnectParam = IcebergConnectParam
+
+    @property
     def Tags(self):
         r"""<p>标签列表</p>
         :rtype: list of Tag
@@ -4472,6 +4486,9 @@ class CreateConnectResourceRequest(AbstractModel):
         if params.get("MqttConnectParam") is not None:
             self._MqttConnectParam = MqttConnectParam()
             self._MqttConnectParam._deserialize(params.get("MqttConnectParam"))
+        if params.get("IcebergConnectParam") is not None:
+            self._IcebergConnectParam = IcebergConnectParam()
+            self._IcebergConnectParam._deserialize(params.get("IcebergConnectParam"))
         if params.get("Tags") is not None:
             self._Tags = []
             for item in params.get("Tags"):
@@ -8585,88 +8602,61 @@ class DatahubResource(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Type: 资源类型  type类型如下: 
-KAFKA,
-EB_ES,
-EB_COS,
-EB_CLS,
-EB_,
-MONGODB,
-HTTP,
-TDW,
-ES,
-CLICKHOUSE,
-DTS,
-CLS,
-COS,
-TOPIC,
-MYSQL,
-MQTT,
-MYSQL_DATA,
-DORIS,
-POSTGRESQL,
-TDSQL_C_POSTGRESQL,
-TDSQL_POSTGRESQL,
-WAREHOUSE_POSTGRESQL,
-TDSQL_C_MYSQL,
-MARIADB,
-SQLSERVER,
-CTSDB,
-SCF
-
-
+        :param _Type: <p>资源类型  type类型如下:<br>KAFKA,<br>EB_ES,<br>EB_COS,<br>EB_CLS,<br>EB_,<br>MONGODB,<br>HTTP,<br>TDW,<br>ES,<br>CLICKHOUSE,<br>DTS,<br>CLS,<br>COS,<br>TOPIC,<br>MYSQL,<br>MQTT,<br>MYSQL_DATA,<br>DORIS,<br>POSTGRESQL,<br>TDSQL_C_POSTGRESQL,<br>TDSQL_POSTGRESQL,<br>WAREHOUSE_POSTGRESQL,<br>TDSQL_C_MYSQL,<br>MARIADB,<br>SQLSERVER,<br>CTSDB,<br>SCF</p>
         :type Type: str
-        :param _KafkaParam: ckafka配置，Type为KAFKA时必填
+        :param _KafkaParam: <p>ckafka配置，Type为KAFKA时必填</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type KafkaParam: :class:`tencentcloud.ckafka.v20190819.models.KafkaParam`
-        :param _EventBusParam: EB配置，Type为EB时必填
+        :param _EventBusParam: <p>EB配置，Type为EB时必填</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type EventBusParam: :class:`tencentcloud.ckafka.v20190819.models.EventBusParam`
-        :param _MongoDBParam: MongoDB配置，Type为MONGODB时必填
+        :param _MongoDBParam: <p>MongoDB配置，Type为MONGODB时必填</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type MongoDBParam: :class:`tencentcloud.ckafka.v20190819.models.MongoDBParam`
-        :param _EsParam: Es配置，Type为ES时必填
+        :param _EsParam: <p>Es配置，Type为ES时必填</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type EsParam: :class:`tencentcloud.ckafka.v20190819.models.EsParam`
-        :param _TdwParam: Tdw配置，Type为TDW时必填
+        :param _TdwParam: <p>Tdw配置，Type为TDW时必填</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TdwParam: :class:`tencentcloud.ckafka.v20190819.models.TdwParam`
-        :param _DtsParam: Dts配置，Type为DTS时必填
+        :param _DtsParam: <p>Dts配置，Type为DTS时必填</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type DtsParam: :class:`tencentcloud.ckafka.v20190819.models.DtsParam`
-        :param _ClickHouseParam: ClickHouse配置，Type为CLICKHOUSE时必填
+        :param _ClickHouseParam: <p>ClickHouse配置，Type为CLICKHOUSE时必填</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ClickHouseParam: :class:`tencentcloud.ckafka.v20190819.models.ClickHouseParam`
-        :param _ClsParam: Cls配置，Type为CLS时必填
+        :param _ClsParam: <p>Cls配置，Type为CLS时必填</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ClsParam: :class:`tencentcloud.ckafka.v20190819.models.ClsParam`
-        :param _CosParam: Cos配置，Type为COS时必填
+        :param _CosParam: <p>Cos配置，Type为COS时必填</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type CosParam: :class:`tencentcloud.ckafka.v20190819.models.CosParam`
-        :param _MySQLParam: MySQL配置，Type为MYSQL时必填
+        :param _MySQLParam: <p>MySQL配置，Type为MYSQL时必填</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type MySQLParam: :class:`tencentcloud.ckafka.v20190819.models.MySQLParam`
-        :param _PostgreSQLParam: PostgreSQL配置，Type为POSTGRESQL或TDSQL_C_POSTGRESQL时必填
+        :param _PostgreSQLParam: <p>PostgreSQL配置，Type为POSTGRESQL或TDSQL_C_POSTGRESQL时必填</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type PostgreSQLParam: :class:`tencentcloud.ckafka.v20190819.models.PostgreSQLParam`
-        :param _TopicParam: Topic配置，Type为Topic时必填
+        :param _TopicParam: <p>Topic配置，Type为Topic时必填</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TopicParam: :class:`tencentcloud.ckafka.v20190819.models.TopicParam`
-        :param _MariaDBParam: MariaDB配置，Type为MARIADB时必填
+        :param _MariaDBParam: <p>MariaDB配置，Type为MARIADB时必填</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type MariaDBParam: :class:`tencentcloud.ckafka.v20190819.models.MariaDBParam`
-        :param _SQLServerParam: SQLServer配置，Type为SQLSERVER时必填
+        :param _SQLServerParam: <p>SQLServer配置，Type为SQLSERVER时必填</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type SQLServerParam: :class:`tencentcloud.ckafka.v20190819.models.SQLServerParam`
-        :param _CtsdbParam: Ctsdb配置，Type为CTSDB时必填
+        :param _CtsdbParam: <p>Ctsdb配置，Type为CTSDB时必填</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type CtsdbParam: :class:`tencentcloud.ckafka.v20190819.models.CtsdbParam`
-        :param _ScfParam: Scf配置，Type为SCF时必填
+        :param _ScfParam: <p>Scf配置，Type为SCF时必填</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ScfParam: :class:`tencentcloud.ckafka.v20190819.models.ScfParam`
-        :param _MqttParam: MQTT配置，Type为 MQTT 时必填
+        :param _MqttParam: <p>MQTT配置，Type为 MQTT 时必填</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type MqttParam: :class:`tencentcloud.ckafka.v20190819.models.MqttParam`
+        :param _IcebergParam: <p>IceBerg配置</p>
+        :type IcebergParam: :class:`tencentcloud.ckafka.v20190819.models.IcebergParam`
         """
         self._Type = None
         self._KafkaParam = None
@@ -8686,39 +8676,11 @@ SCF
         self._CtsdbParam = None
         self._ScfParam = None
         self._MqttParam = None
+        self._IcebergParam = None
 
     @property
     def Type(self):
-        r"""资源类型  type类型如下: 
-KAFKA,
-EB_ES,
-EB_COS,
-EB_CLS,
-EB_,
-MONGODB,
-HTTP,
-TDW,
-ES,
-CLICKHOUSE,
-DTS,
-CLS,
-COS,
-TOPIC,
-MYSQL,
-MQTT,
-MYSQL_DATA,
-DORIS,
-POSTGRESQL,
-TDSQL_C_POSTGRESQL,
-TDSQL_POSTGRESQL,
-WAREHOUSE_POSTGRESQL,
-TDSQL_C_MYSQL,
-MARIADB,
-SQLSERVER,
-CTSDB,
-SCF
-
-
+        r"""<p>资源类型  type类型如下:<br>KAFKA,<br>EB_ES,<br>EB_COS,<br>EB_CLS,<br>EB_,<br>MONGODB,<br>HTTP,<br>TDW,<br>ES,<br>CLICKHOUSE,<br>DTS,<br>CLS,<br>COS,<br>TOPIC,<br>MYSQL,<br>MQTT,<br>MYSQL_DATA,<br>DORIS,<br>POSTGRESQL,<br>TDSQL_C_POSTGRESQL,<br>TDSQL_POSTGRESQL,<br>WAREHOUSE_POSTGRESQL,<br>TDSQL_C_MYSQL,<br>MARIADB,<br>SQLSERVER,<br>CTSDB,<br>SCF</p>
         :rtype: str
         """
         return self._Type
@@ -8729,7 +8691,7 @@ SCF
 
     @property
     def KafkaParam(self):
-        r"""ckafka配置，Type为KAFKA时必填
+        r"""<p>ckafka配置，Type为KAFKA时必填</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.ckafka.v20190819.models.KafkaParam`
         """
@@ -8741,7 +8703,7 @@ SCF
 
     @property
     def EventBusParam(self):
-        r"""EB配置，Type为EB时必填
+        r"""<p>EB配置，Type为EB时必填</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.ckafka.v20190819.models.EventBusParam`
         """
@@ -8753,7 +8715,7 @@ SCF
 
     @property
     def MongoDBParam(self):
-        r"""MongoDB配置，Type为MONGODB时必填
+        r"""<p>MongoDB配置，Type为MONGODB时必填</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.ckafka.v20190819.models.MongoDBParam`
         """
@@ -8765,7 +8727,7 @@ SCF
 
     @property
     def EsParam(self):
-        r"""Es配置，Type为ES时必填
+        r"""<p>Es配置，Type为ES时必填</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.ckafka.v20190819.models.EsParam`
         """
@@ -8777,7 +8739,7 @@ SCF
 
     @property
     def TdwParam(self):
-        r"""Tdw配置，Type为TDW时必填
+        r"""<p>Tdw配置，Type为TDW时必填</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.ckafka.v20190819.models.TdwParam`
         """
@@ -8789,7 +8751,7 @@ SCF
 
     @property
     def DtsParam(self):
-        r"""Dts配置，Type为DTS时必填
+        r"""<p>Dts配置，Type为DTS时必填</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.ckafka.v20190819.models.DtsParam`
         """
@@ -8801,7 +8763,7 @@ SCF
 
     @property
     def ClickHouseParam(self):
-        r"""ClickHouse配置，Type为CLICKHOUSE时必填
+        r"""<p>ClickHouse配置，Type为CLICKHOUSE时必填</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.ckafka.v20190819.models.ClickHouseParam`
         """
@@ -8813,7 +8775,7 @@ SCF
 
     @property
     def ClsParam(self):
-        r"""Cls配置，Type为CLS时必填
+        r"""<p>Cls配置，Type为CLS时必填</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.ckafka.v20190819.models.ClsParam`
         """
@@ -8825,7 +8787,7 @@ SCF
 
     @property
     def CosParam(self):
-        r"""Cos配置，Type为COS时必填
+        r"""<p>Cos配置，Type为COS时必填</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.ckafka.v20190819.models.CosParam`
         """
@@ -8837,7 +8799,7 @@ SCF
 
     @property
     def MySQLParam(self):
-        r"""MySQL配置，Type为MYSQL时必填
+        r"""<p>MySQL配置，Type为MYSQL时必填</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.ckafka.v20190819.models.MySQLParam`
         """
@@ -8849,7 +8811,7 @@ SCF
 
     @property
     def PostgreSQLParam(self):
-        r"""PostgreSQL配置，Type为POSTGRESQL或TDSQL_C_POSTGRESQL时必填
+        r"""<p>PostgreSQL配置，Type为POSTGRESQL或TDSQL_C_POSTGRESQL时必填</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.ckafka.v20190819.models.PostgreSQLParam`
         """
@@ -8861,7 +8823,7 @@ SCF
 
     @property
     def TopicParam(self):
-        r"""Topic配置，Type为Topic时必填
+        r"""<p>Topic配置，Type为Topic时必填</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.ckafka.v20190819.models.TopicParam`
         """
@@ -8873,7 +8835,7 @@ SCF
 
     @property
     def MariaDBParam(self):
-        r"""MariaDB配置，Type为MARIADB时必填
+        r"""<p>MariaDB配置，Type为MARIADB时必填</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.ckafka.v20190819.models.MariaDBParam`
         """
@@ -8885,7 +8847,7 @@ SCF
 
     @property
     def SQLServerParam(self):
-        r"""SQLServer配置，Type为SQLSERVER时必填
+        r"""<p>SQLServer配置，Type为SQLSERVER时必填</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.ckafka.v20190819.models.SQLServerParam`
         """
@@ -8897,7 +8859,7 @@ SCF
 
     @property
     def CtsdbParam(self):
-        r"""Ctsdb配置，Type为CTSDB时必填
+        r"""<p>Ctsdb配置，Type为CTSDB时必填</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.ckafka.v20190819.models.CtsdbParam`
         """
@@ -8909,7 +8871,7 @@ SCF
 
     @property
     def ScfParam(self):
-        r"""Scf配置，Type为SCF时必填
+        r"""<p>Scf配置，Type为SCF时必填</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.ckafka.v20190819.models.ScfParam`
         """
@@ -8921,7 +8883,7 @@ SCF
 
     @property
     def MqttParam(self):
-        r"""MQTT配置，Type为 MQTT 时必填
+        r"""<p>MQTT配置，Type为 MQTT 时必填</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.ckafka.v20190819.models.MqttParam`
         """
@@ -8930,6 +8892,17 @@ SCF
     @MqttParam.setter
     def MqttParam(self, MqttParam):
         self._MqttParam = MqttParam
+
+    @property
+    def IcebergParam(self):
+        r"""<p>IceBerg配置</p>
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.IcebergParam`
+        """
+        return self._IcebergParam
+
+    @IcebergParam.setter
+    def IcebergParam(self, IcebergParam):
+        self._IcebergParam = IcebergParam
 
 
     def _deserialize(self, params):
@@ -8985,6 +8958,9 @@ SCF
         if params.get("MqttParam") is not None:
             self._MqttParam = MqttParam()
             self._MqttParam._deserialize(params.get("MqttParam"))
+        if params.get("IcebergParam") is not None:
+            self._IcebergParam = IcebergParam()
+            self._IcebergParam._deserialize(params.get("IcebergParam"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -9002,14 +8978,18 @@ class DatahubTaskIdRes(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskId: 任务id
+        :param _TaskId: <p>任务id</p>
         :type TaskId: str
+        :param _DatahubId: <p>DatahubId</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DatahubId: str
         """
         self._TaskId = None
+        self._DatahubId = None
 
     @property
     def TaskId(self):
-        r"""任务id
+        r"""<p>任务id</p>
         :rtype: str
         """
         return self._TaskId
@@ -9018,9 +8998,22 @@ class DatahubTaskIdRes(AbstractModel):
     def TaskId(self, TaskId):
         self._TaskId = TaskId
 
+    @property
+    def DatahubId(self):
+        r"""<p>DatahubId</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._DatahubId
+
+    @DatahubId.setter
+    def DatahubId(self, DatahubId):
+        self._DatahubId = DatahubId
+
 
     def _deserialize(self, params):
         self._TaskId = params.get("TaskId")
+        self._DatahubId = params.get("DatahubId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -11690,6 +11683,8 @@ class DescribeConnectResource(AbstractModel):
         :param _MqttConnectParam: <p>MQTT配置，Type 为 MQTT 时返回</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type MqttConnectParam: :class:`tencentcloud.ckafka.v20190819.models.MqttConnectParam`
+        :param _IcebergConnectParam: <p>Iceberg配置，Type为ICEBERG时返回</p>
+        :type IcebergConnectParam: :class:`tencentcloud.ckafka.v20190819.models.IcebergConnectParam`
         :param _Tags: <p>标签列表</p>
         :type Tags: list of Tag
         """
@@ -11716,6 +11711,7 @@ class DescribeConnectResource(AbstractModel):
         self._DorisConnectParam = None
         self._KafkaConnectParam = None
         self._MqttConnectParam = None
+        self._IcebergConnectParam = None
         self._Tags = None
 
     @property
@@ -11984,6 +11980,17 @@ class DescribeConnectResource(AbstractModel):
         self._MqttConnectParam = MqttConnectParam
 
     @property
+    def IcebergConnectParam(self):
+        r"""<p>Iceberg配置，Type为ICEBERG时返回</p>
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.IcebergConnectParam`
+        """
+        return self._IcebergConnectParam
+
+    @IcebergConnectParam.setter
+    def IcebergConnectParam(self, IcebergConnectParam):
+        self._IcebergConnectParam = IcebergConnectParam
+
+    @property
     def Tags(self):
         r"""<p>标签列表</p>
         :rtype: list of Tag
@@ -12043,6 +12050,9 @@ class DescribeConnectResource(AbstractModel):
         if params.get("MqttConnectParam") is not None:
             self._MqttConnectParam = MqttConnectParam()
             self._MqttConnectParam._deserialize(params.get("MqttConnectParam"))
+        if params.get("IcebergConnectParam") is not None:
+            self._IcebergConnectParam = IcebergConnectParam()
+            self._IcebergConnectParam._deserialize(params.get("IcebergConnectParam"))
         if params.get("Tags") is not None:
             self._Tags = []
             for item in params.get("Tags"):
@@ -12157,8 +12167,12 @@ class DescribeConnectResourceResp(AbstractModel):
         :param _MqttConnectParam: <p>MQTT配置，Type 为 MQTT 时返回</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type MqttConnectParam: :class:`tencentcloud.ckafka.v20190819.models.MqttConnectParam`
+        :param _IcebergConnectParam: <p>Iceberg配置，Type为ICEBERG时返回</p>
+        :type IcebergConnectParam: :class:`tencentcloud.ckafka.v20190819.models.IcebergConnectParam`
         :param _Tags: <p>标签列表</p>
         :type Tags: list of Tag
+        :param _IcebergDatabases: <p>iceberg数据库和表信息</p>
+        :type IcebergDatabases: list of IcebergDatabaseInfo
         """
         self._ResourceId = None
         self._ResourceName = None
@@ -12181,7 +12195,9 @@ class DescribeConnectResourceResp(AbstractModel):
         self._DorisConnectParam = None
         self._KafkaConnectParam = None
         self._MqttConnectParam = None
+        self._IcebergConnectParam = None
         self._Tags = None
+        self._IcebergDatabases = None
 
     @property
     def ResourceId(self):
@@ -12428,6 +12444,17 @@ class DescribeConnectResourceResp(AbstractModel):
         self._MqttConnectParam = MqttConnectParam
 
     @property
+    def IcebergConnectParam(self):
+        r"""<p>Iceberg配置，Type为ICEBERG时返回</p>
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.IcebergConnectParam`
+        """
+        return self._IcebergConnectParam
+
+    @IcebergConnectParam.setter
+    def IcebergConnectParam(self, IcebergConnectParam):
+        self._IcebergConnectParam = IcebergConnectParam
+
+    @property
     def Tags(self):
         r"""<p>标签列表</p>
         :rtype: list of Tag
@@ -12437,6 +12464,17 @@ class DescribeConnectResourceResp(AbstractModel):
     @Tags.setter
     def Tags(self, Tags):
         self._Tags = Tags
+
+    @property
+    def IcebergDatabases(self):
+        r"""<p>iceberg数据库和表信息</p>
+        :rtype: list of IcebergDatabaseInfo
+        """
+        return self._IcebergDatabases
+
+    @IcebergDatabases.setter
+    def IcebergDatabases(self, IcebergDatabases):
+        self._IcebergDatabases = IcebergDatabases
 
 
     def _deserialize(self, params):
@@ -12485,12 +12523,21 @@ class DescribeConnectResourceResp(AbstractModel):
         if params.get("MqttConnectParam") is not None:
             self._MqttConnectParam = MqttConnectParam()
             self._MqttConnectParam._deserialize(params.get("MqttConnectParam"))
+        if params.get("IcebergConnectParam") is not None:
+            self._IcebergConnectParam = IcebergConnectParam()
+            self._IcebergConnectParam._deserialize(params.get("IcebergConnectParam"))
         if params.get("Tags") is not None:
             self._Tags = []
             for item in params.get("Tags"):
                 obj = Tag()
                 obj._deserialize(item)
                 self._Tags.append(obj)
+        if params.get("IcebergDatabases") is not None:
+            self._IcebergDatabases = []
+            for item in params.get("IcebergDatabases"):
+                obj = IcebergDatabaseInfo()
+                obj._deserialize(item)
+                self._IcebergDatabases.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -18257,23 +18304,31 @@ class EsConnectParam(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Port: Es的连接port
+        :param _Port: <p>Es的连接port</p>
         :type Port: int
-        :param _UserName: Es连接源的用户名
+        :param _UserName: <p>Es连接源的用户名</p>
         :type UserName: str
-        :param _Password: Es连接源的密码
+        :param _Password: <p>Es连接源的密码</p>
         :type Password: str
-        :param _Resource: Es连接源的实例资源
+        :param _Resource: <p>Es连接源的实例资源</p>
         :type Resource: str
-        :param _SelfBuilt: Es连接源是否为自建集群
+        :param _SelfBuilt: <p>Es连接源是否为自建集群</p>
         :type SelfBuilt: bool
-        :param _ServiceVip: Es连接源的实例vip，当为腾讯云实例时，必填
+        :param _ServiceVip: <p>Es连接源的实例vip，当为腾讯云实例时，必填</p>
         :type ServiceVip: str
-        :param _UniqVpcId: Es连接源的vpcId，当为腾讯云实例时，必填
+        :param _UniqVpcId: <p>Es连接源的vpcId，当为腾讯云实例时，必填</p>
         :type UniqVpcId: str
-        :param _IsUpdate: 是否更新到关联的Datahub任务
+        :param _IsUpdate: <p>是否更新到关联的Datahub任务</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type IsUpdate: bool
+        :param _EsType: <p>es类型</p><p>枚举值：</p><ul><li>CLUSTER： 普通集群es</li><li>SERVERLESS： serverless形态es</li></ul>
+        :type EsType: str
+        :param _EsVersion: <p>es版本</p><p>默认值：7.14.2</p>
+        :type EsVersion: str
+        :param _EndpointUrl: <p>endpointUrl，es的serverless版本的访问入口地址</p>
+        :type EndpointUrl: str
+        :param _Protocol: <p>集群版 ES 连接协议，默认http协议</p><p>枚举值：</p><ul><li>http： http协议</li><li>https： https协议</li></ul>
+        :type Protocol: str
         """
         self._Port = None
         self._UserName = None
@@ -18283,10 +18338,14 @@ class EsConnectParam(AbstractModel):
         self._ServiceVip = None
         self._UniqVpcId = None
         self._IsUpdate = None
+        self._EsType = None
+        self._EsVersion = None
+        self._EndpointUrl = None
+        self._Protocol = None
 
     @property
     def Port(self):
-        r"""Es的连接port
+        r"""<p>Es的连接port</p>
         :rtype: int
         """
         return self._Port
@@ -18297,7 +18356,7 @@ class EsConnectParam(AbstractModel):
 
     @property
     def UserName(self):
-        r"""Es连接源的用户名
+        r"""<p>Es连接源的用户名</p>
         :rtype: str
         """
         return self._UserName
@@ -18308,7 +18367,7 @@ class EsConnectParam(AbstractModel):
 
     @property
     def Password(self):
-        r"""Es连接源的密码
+        r"""<p>Es连接源的密码</p>
         :rtype: str
         """
         return self._Password
@@ -18319,7 +18378,7 @@ class EsConnectParam(AbstractModel):
 
     @property
     def Resource(self):
-        r"""Es连接源的实例资源
+        r"""<p>Es连接源的实例资源</p>
         :rtype: str
         """
         return self._Resource
@@ -18330,7 +18389,7 @@ class EsConnectParam(AbstractModel):
 
     @property
     def SelfBuilt(self):
-        r"""Es连接源是否为自建集群
+        r"""<p>Es连接源是否为自建集群</p>
         :rtype: bool
         """
         return self._SelfBuilt
@@ -18341,7 +18400,7 @@ class EsConnectParam(AbstractModel):
 
     @property
     def ServiceVip(self):
-        r"""Es连接源的实例vip，当为腾讯云实例时，必填
+        r"""<p>Es连接源的实例vip，当为腾讯云实例时，必填</p>
         :rtype: str
         """
         return self._ServiceVip
@@ -18352,7 +18411,7 @@ class EsConnectParam(AbstractModel):
 
     @property
     def UniqVpcId(self):
-        r"""Es连接源的vpcId，当为腾讯云实例时，必填
+        r"""<p>Es连接源的vpcId，当为腾讯云实例时，必填</p>
         :rtype: str
         """
         return self._UniqVpcId
@@ -18363,7 +18422,7 @@ class EsConnectParam(AbstractModel):
 
     @property
     def IsUpdate(self):
-        r"""是否更新到关联的Datahub任务
+        r"""<p>是否更新到关联的Datahub任务</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
@@ -18372,6 +18431,50 @@ class EsConnectParam(AbstractModel):
     @IsUpdate.setter
     def IsUpdate(self, IsUpdate):
         self._IsUpdate = IsUpdate
+
+    @property
+    def EsType(self):
+        r"""<p>es类型</p><p>枚举值：</p><ul><li>CLUSTER： 普通集群es</li><li>SERVERLESS： serverless形态es</li></ul>
+        :rtype: str
+        """
+        return self._EsType
+
+    @EsType.setter
+    def EsType(self, EsType):
+        self._EsType = EsType
+
+    @property
+    def EsVersion(self):
+        r"""<p>es版本</p><p>默认值：7.14.2</p>
+        :rtype: str
+        """
+        return self._EsVersion
+
+    @EsVersion.setter
+    def EsVersion(self, EsVersion):
+        self._EsVersion = EsVersion
+
+    @property
+    def EndpointUrl(self):
+        r"""<p>endpointUrl，es的serverless版本的访问入口地址</p>
+        :rtype: str
+        """
+        return self._EndpointUrl
+
+    @EndpointUrl.setter
+    def EndpointUrl(self, EndpointUrl):
+        self._EndpointUrl = EndpointUrl
+
+    @property
+    def Protocol(self):
+        r"""<p>集群版 ES 连接协议，默认http协议</p><p>枚举值：</p><ul><li>http： http协议</li><li>https： https协议</li></ul>
+        :rtype: str
+        """
+        return self._Protocol
+
+    @Protocol.setter
+    def Protocol(self, Protocol):
+        self._Protocol = Protocol
 
 
     def _deserialize(self, params):
@@ -18383,6 +18486,10 @@ class EsConnectParam(AbstractModel):
         self._ServiceVip = params.get("ServiceVip")
         self._UniqVpcId = params.get("UniqVpcId")
         self._IsUpdate = params.get("IsUpdate")
+        self._EsType = params.get("EsType")
+        self._EsVersion = params.get("EsVersion")
+        self._EndpointUrl = params.get("EndpointUrl")
+        self._Protocol = params.get("Protocol")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -18400,22 +18507,30 @@ class EsModifyConnectParam(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Resource: Es连接源的实例资源【不支持修改】
+        :param _Resource: <p>Es连接源的实例资源【不支持修改】</p>
         :type Resource: str
-        :param _Port: Es的连接port【不支持修改】
+        :param _Port: <p>Es的连接port【不支持修改】</p>
         :type Port: int
-        :param _ServiceVip: Es连接源的实例vip【不支持修改】
+        :param _ServiceVip: <p>Es连接源的实例vip【不支持修改】</p>
         :type ServiceVip: str
-        :param _UniqVpcId: Es连接源的vpcId【不支持修改】
+        :param _UniqVpcId: <p>Es连接源的vpcId【不支持修改】</p>
         :type UniqVpcId: str
-        :param _UserName: Es连接源的用户名
+        :param _UserName: <p>Es连接源的用户名</p>
         :type UserName: str
-        :param _Password: Es连接源的密码
+        :param _Password: <p>Es连接源的密码</p>
         :type Password: str
-        :param _SelfBuilt: Es连接源是否为自建集群【不支持修改】
+        :param _SelfBuilt: <p>Es连接源是否为自建集群【不支持修改】</p>
         :type SelfBuilt: bool
-        :param _IsUpdate: 是否更新到关联的Datahub任务
+        :param _IsUpdate: <p>是否更新到关联的Datahub任务</p>
         :type IsUpdate: bool
+        :param _EsType: <p>es类型</p><p>枚举值：</p><ul><li>CLUSTER： 普通集群es</li><li>SERVERLESS： serverless形态es</li></ul>
+        :type EsType: str
+        :param _EsVersion: <p>es版本，默认7.14.2</p><p>默认值：7.14.2</p>
+        :type EsVersion: str
+        :param _EndpointUrl: <p>endpointUrl，es的serverless版本的访问入口地址</p>
+        :type EndpointUrl: str
+        :param _Protocol: <p>集群版 ES 连接协议，默认http协议</p><p>枚举值：</p><ul><li>http： http协议</li><li>https： https协议</li></ul>
+        :type Protocol: str
         """
         self._Resource = None
         self._Port = None
@@ -18425,10 +18540,14 @@ class EsModifyConnectParam(AbstractModel):
         self._Password = None
         self._SelfBuilt = None
         self._IsUpdate = None
+        self._EsType = None
+        self._EsVersion = None
+        self._EndpointUrl = None
+        self._Protocol = None
 
     @property
     def Resource(self):
-        r"""Es连接源的实例资源【不支持修改】
+        r"""<p>Es连接源的实例资源【不支持修改】</p>
         :rtype: str
         """
         return self._Resource
@@ -18439,7 +18558,7 @@ class EsModifyConnectParam(AbstractModel):
 
     @property
     def Port(self):
-        r"""Es的连接port【不支持修改】
+        r"""<p>Es的连接port【不支持修改】</p>
         :rtype: int
         """
         return self._Port
@@ -18450,7 +18569,7 @@ class EsModifyConnectParam(AbstractModel):
 
     @property
     def ServiceVip(self):
-        r"""Es连接源的实例vip【不支持修改】
+        r"""<p>Es连接源的实例vip【不支持修改】</p>
         :rtype: str
         """
         return self._ServiceVip
@@ -18461,7 +18580,7 @@ class EsModifyConnectParam(AbstractModel):
 
     @property
     def UniqVpcId(self):
-        r"""Es连接源的vpcId【不支持修改】
+        r"""<p>Es连接源的vpcId【不支持修改】</p>
         :rtype: str
         """
         return self._UniqVpcId
@@ -18472,7 +18591,7 @@ class EsModifyConnectParam(AbstractModel):
 
     @property
     def UserName(self):
-        r"""Es连接源的用户名
+        r"""<p>Es连接源的用户名</p>
         :rtype: str
         """
         return self._UserName
@@ -18483,7 +18602,7 @@ class EsModifyConnectParam(AbstractModel):
 
     @property
     def Password(self):
-        r"""Es连接源的密码
+        r"""<p>Es连接源的密码</p>
         :rtype: str
         """
         return self._Password
@@ -18494,7 +18613,7 @@ class EsModifyConnectParam(AbstractModel):
 
     @property
     def SelfBuilt(self):
-        r"""Es连接源是否为自建集群【不支持修改】
+        r"""<p>Es连接源是否为自建集群【不支持修改】</p>
         :rtype: bool
         """
         return self._SelfBuilt
@@ -18505,7 +18624,7 @@ class EsModifyConnectParam(AbstractModel):
 
     @property
     def IsUpdate(self):
-        r"""是否更新到关联的Datahub任务
+        r"""<p>是否更新到关联的Datahub任务</p>
         :rtype: bool
         """
         return self._IsUpdate
@@ -18513,6 +18632,50 @@ class EsModifyConnectParam(AbstractModel):
     @IsUpdate.setter
     def IsUpdate(self, IsUpdate):
         self._IsUpdate = IsUpdate
+
+    @property
+    def EsType(self):
+        r"""<p>es类型</p><p>枚举值：</p><ul><li>CLUSTER： 普通集群es</li><li>SERVERLESS： serverless形态es</li></ul>
+        :rtype: str
+        """
+        return self._EsType
+
+    @EsType.setter
+    def EsType(self, EsType):
+        self._EsType = EsType
+
+    @property
+    def EsVersion(self):
+        r"""<p>es版本，默认7.14.2</p><p>默认值：7.14.2</p>
+        :rtype: str
+        """
+        return self._EsVersion
+
+    @EsVersion.setter
+    def EsVersion(self, EsVersion):
+        self._EsVersion = EsVersion
+
+    @property
+    def EndpointUrl(self):
+        r"""<p>endpointUrl，es的serverless版本的访问入口地址</p>
+        :rtype: str
+        """
+        return self._EndpointUrl
+
+    @EndpointUrl.setter
+    def EndpointUrl(self, EndpointUrl):
+        self._EndpointUrl = EndpointUrl
+
+    @property
+    def Protocol(self):
+        r"""<p>集群版 ES 连接协议，默认http协议</p><p>枚举值：</p><ul><li>http： http协议</li><li>https： https协议</li></ul>
+        :rtype: str
+        """
+        return self._Protocol
+
+    @Protocol.setter
+    def Protocol(self, Protocol):
+        self._Protocol = Protocol
 
 
     def _deserialize(self, params):
@@ -18524,6 +18687,10 @@ class EsModifyConnectParam(AbstractModel):
         self._Password = params.get("Password")
         self._SelfBuilt = params.get("SelfBuilt")
         self._IsUpdate = params.get("IsUpdate")
+        self._EsType = params.get("EsType")
+        self._EsVersion = params.get("EsVersion")
+        self._EndpointUrl = params.get("EndpointUrl")
+        self._Protocol = params.get("Protocol")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -18541,46 +18708,48 @@ class EsParam(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Resource: Es实例资源Id
+        :param _Resource: <p>Es实例资源Id</p>
         :type Resource: str
-        :param _Port: Es的连接port
+        :param _Port: <p>Es的连接port</p>
         :type Port: int
-        :param _UserName: Es用户名
+        :param _UserName: <p>Es用户名</p>
         :type UserName: str
-        :param _Password: Es密码
+        :param _Password: <p>Es密码</p>
         :type Password: str
-        :param _SelfBuilt: 是否为自建集群
+        :param _SelfBuilt: <p>是否为自建集群</p>
         :type SelfBuilt: bool
-        :param _ServiceVip: 实例vip
+        :param _ServiceVip: <p>实例vip</p>
         :type ServiceVip: str
-        :param _UniqVpcId: 实例的vpcId
+        :param _UniqVpcId: <p>实例的vpcId</p>
         :type UniqVpcId: str
-        :param _DropInvalidMessage: Es是否抛弃解析失败的消息
+        :param _DropInvalidMessage: <p>Es是否抛弃解析失败的消息</p>
         :type DropInvalidMessage: bool
-        :param _Index: Es自定义index名称
+        :param _Index: <p>Es自定义index名称</p>
         :type Index: str
-        :param _DateFormat: Es自定义日期后缀
+        :param _DateFormat: <p>Es自定义日期后缀</p>
         :type DateFormat: str
-        :param _ContentKey: 非json格式数据的自定义key
+        :param _ContentKey: <p>非json格式数据的自定义key</p>
         :type ContentKey: str
-        :param _DropInvalidJsonMessage: Es是否抛弃非json格式的消息
+        :param _DropInvalidJsonMessage: <p>Es是否抛弃非json格式的消息</p>
         :type DropInvalidJsonMessage: bool
-        :param _DocumentIdField: 转储到Es中的文档ID取值字段名
+        :param _DocumentIdField: <p>转储到Es中的文档ID取值字段名</p>
         :type DocumentIdField: str
-        :param _IndexType: Es自定义index名称的类型，STRING，JSONPATH，默认为STRING
+        :param _IndexType: <p>Es自定义index名称的类型，STRING，JSONPATH，默认为STRING</p>
         :type IndexType: str
-        :param _DropCls: 当设置成员参数DropInvalidMessageToCls设置为true时,DropInvalidMessage参数失效
+        :param _DropCls: <p>当设置成员参数DropInvalidMessageToCls设置为true时,DropInvalidMessage参数失效</p>
         :type DropCls: :class:`tencentcloud.ckafka.v20190819.models.DropCls`
-        :param _DatabasePrimaryKey: 转储到ES的消息为Database的binlog时，如果需要同步数据库操作，即增删改的操作到ES时填写数据库表主键
+        :param _DatabasePrimaryKey: <p>转储到ES的消息为Database的binlog时，如果需要同步数据库操作，即增删改的操作到ES时填写数据库表主键</p>
         :type DatabasePrimaryKey: str
-        :param _DropDlq: 死信队列
+        :param _DropDlq: <p>死信队列</p>
         :type DropDlq: :class:`tencentcloud.ckafka.v20190819.models.FailureParam`
-        :param _RecordMappingList: 使用数据订阅格式导入 es 时，消息与 es 索引字段映射关系。不填默认为默认字段匹配
+        :param _RecordMappingList: <p>使用数据订阅格式导入 es 时，消息与 es 索引字段映射关系。不填默认为默认字段匹配</p>
         :type RecordMappingList: list of EsRecordMapping
-        :param _DateField: 消息要映射为 es 索引中 @timestamp 的字段，如果当前配置为空，则使用消息的时间戳进行映射
+        :param _DateField: <p>消息要映射为 es 索引中 @timestamp 的字段，如果当前配置为空，则使用消息的时间戳进行映射</p>
         :type DateField: str
-        :param _RecordMappingMode: 用来区分当前索引映射，属于新建索引还是存量索引。"EXIST_MAPPING"：从存量索引中选择；"NEW_MAPPING"：新建索引
+        :param _RecordMappingMode: <p>用来区分当前索引映射，属于新建索引还是存量索引。&quot;EXIST_MAPPING&quot;：从存量索引中选择；&quot;NEW_MAPPING&quot;：新建索引</p>
         :type RecordMappingMode: str
+        :param _Protocol: <p>集群版 ES 连接协议，默认http协议</p><p>枚举值：</p><ul><li>http： http协议</li><li>https： https协议</li></ul>
+        :type Protocol: str
         """
         self._Resource = None
         self._Port = None
@@ -18602,10 +18771,11 @@ class EsParam(AbstractModel):
         self._RecordMappingList = None
         self._DateField = None
         self._RecordMappingMode = None
+        self._Protocol = None
 
     @property
     def Resource(self):
-        r"""Es实例资源Id
+        r"""<p>Es实例资源Id</p>
         :rtype: str
         """
         return self._Resource
@@ -18616,7 +18786,7 @@ class EsParam(AbstractModel):
 
     @property
     def Port(self):
-        r"""Es的连接port
+        r"""<p>Es的连接port</p>
         :rtype: int
         """
         return self._Port
@@ -18627,7 +18797,7 @@ class EsParam(AbstractModel):
 
     @property
     def UserName(self):
-        r"""Es用户名
+        r"""<p>Es用户名</p>
         :rtype: str
         """
         return self._UserName
@@ -18638,7 +18808,7 @@ class EsParam(AbstractModel):
 
     @property
     def Password(self):
-        r"""Es密码
+        r"""<p>Es密码</p>
         :rtype: str
         """
         return self._Password
@@ -18649,7 +18819,7 @@ class EsParam(AbstractModel):
 
     @property
     def SelfBuilt(self):
-        r"""是否为自建集群
+        r"""<p>是否为自建集群</p>
         :rtype: bool
         """
         return self._SelfBuilt
@@ -18660,7 +18830,7 @@ class EsParam(AbstractModel):
 
     @property
     def ServiceVip(self):
-        r"""实例vip
+        r"""<p>实例vip</p>
         :rtype: str
         """
         return self._ServiceVip
@@ -18671,7 +18841,7 @@ class EsParam(AbstractModel):
 
     @property
     def UniqVpcId(self):
-        r"""实例的vpcId
+        r"""<p>实例的vpcId</p>
         :rtype: str
         """
         return self._UniqVpcId
@@ -18682,7 +18852,7 @@ class EsParam(AbstractModel):
 
     @property
     def DropInvalidMessage(self):
-        r"""Es是否抛弃解析失败的消息
+        r"""<p>Es是否抛弃解析失败的消息</p>
         :rtype: bool
         """
         return self._DropInvalidMessage
@@ -18693,7 +18863,7 @@ class EsParam(AbstractModel):
 
     @property
     def Index(self):
-        r"""Es自定义index名称
+        r"""<p>Es自定义index名称</p>
         :rtype: str
         """
         return self._Index
@@ -18704,7 +18874,7 @@ class EsParam(AbstractModel):
 
     @property
     def DateFormat(self):
-        r"""Es自定义日期后缀
+        r"""<p>Es自定义日期后缀</p>
         :rtype: str
         """
         return self._DateFormat
@@ -18715,7 +18885,7 @@ class EsParam(AbstractModel):
 
     @property
     def ContentKey(self):
-        r"""非json格式数据的自定义key
+        r"""<p>非json格式数据的自定义key</p>
         :rtype: str
         """
         return self._ContentKey
@@ -18726,7 +18896,7 @@ class EsParam(AbstractModel):
 
     @property
     def DropInvalidJsonMessage(self):
-        r"""Es是否抛弃非json格式的消息
+        r"""<p>Es是否抛弃非json格式的消息</p>
         :rtype: bool
         """
         return self._DropInvalidJsonMessage
@@ -18737,7 +18907,7 @@ class EsParam(AbstractModel):
 
     @property
     def DocumentIdField(self):
-        r"""转储到Es中的文档ID取值字段名
+        r"""<p>转储到Es中的文档ID取值字段名</p>
         :rtype: str
         """
         return self._DocumentIdField
@@ -18748,7 +18918,7 @@ class EsParam(AbstractModel):
 
     @property
     def IndexType(self):
-        r"""Es自定义index名称的类型，STRING，JSONPATH，默认为STRING
+        r"""<p>Es自定义index名称的类型，STRING，JSONPATH，默认为STRING</p>
         :rtype: str
         """
         return self._IndexType
@@ -18759,7 +18929,7 @@ class EsParam(AbstractModel):
 
     @property
     def DropCls(self):
-        r"""当设置成员参数DropInvalidMessageToCls设置为true时,DropInvalidMessage参数失效
+        r"""<p>当设置成员参数DropInvalidMessageToCls设置为true时,DropInvalidMessage参数失效</p>
         :rtype: :class:`tencentcloud.ckafka.v20190819.models.DropCls`
         """
         return self._DropCls
@@ -18770,7 +18940,7 @@ class EsParam(AbstractModel):
 
     @property
     def DatabasePrimaryKey(self):
-        r"""转储到ES的消息为Database的binlog时，如果需要同步数据库操作，即增删改的操作到ES时填写数据库表主键
+        r"""<p>转储到ES的消息为Database的binlog时，如果需要同步数据库操作，即增删改的操作到ES时填写数据库表主键</p>
         :rtype: str
         """
         return self._DatabasePrimaryKey
@@ -18781,7 +18951,7 @@ class EsParam(AbstractModel):
 
     @property
     def DropDlq(self):
-        r"""死信队列
+        r"""<p>死信队列</p>
         :rtype: :class:`tencentcloud.ckafka.v20190819.models.FailureParam`
         """
         return self._DropDlq
@@ -18792,7 +18962,7 @@ class EsParam(AbstractModel):
 
     @property
     def RecordMappingList(self):
-        r"""使用数据订阅格式导入 es 时，消息与 es 索引字段映射关系。不填默认为默认字段匹配
+        r"""<p>使用数据订阅格式导入 es 时，消息与 es 索引字段映射关系。不填默认为默认字段匹配</p>
         :rtype: list of EsRecordMapping
         """
         return self._RecordMappingList
@@ -18803,7 +18973,7 @@ class EsParam(AbstractModel):
 
     @property
     def DateField(self):
-        r"""消息要映射为 es 索引中 @timestamp 的字段，如果当前配置为空，则使用消息的时间戳进行映射
+        r"""<p>消息要映射为 es 索引中 @timestamp 的字段，如果当前配置为空，则使用消息的时间戳进行映射</p>
         :rtype: str
         """
         return self._DateField
@@ -18814,7 +18984,7 @@ class EsParam(AbstractModel):
 
     @property
     def RecordMappingMode(self):
-        r"""用来区分当前索引映射，属于新建索引还是存量索引。"EXIST_MAPPING"：从存量索引中选择；"NEW_MAPPING"：新建索引
+        r"""<p>用来区分当前索引映射，属于新建索引还是存量索引。&quot;EXIST_MAPPING&quot;：从存量索引中选择；&quot;NEW_MAPPING&quot;：新建索引</p>
         :rtype: str
         """
         return self._RecordMappingMode
@@ -18822,6 +18992,17 @@ class EsParam(AbstractModel):
     @RecordMappingMode.setter
     def RecordMappingMode(self, RecordMappingMode):
         self._RecordMappingMode = RecordMappingMode
+
+    @property
+    def Protocol(self):
+        r"""<p>集群版 ES 连接协议，默认http协议</p><p>枚举值：</p><ul><li>http： http协议</li><li>https： https协议</li></ul>
+        :rtype: str
+        """
+        return self._Protocol
+
+    @Protocol.setter
+    def Protocol(self, Protocol):
+        self._Protocol = Protocol
 
 
     def _deserialize(self, params):
@@ -18854,6 +19035,7 @@ class EsParam(AbstractModel):
                 self._RecordMappingList.append(obj)
         self._DateField = params.get("DateField")
         self._RecordMappingMode = params.get("RecordMappingMode")
+        self._Protocol = params.get("Protocol")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -20727,6 +20909,369 @@ class GroupResponse(AbstractModel):
                 obj._deserialize(item)
                 self._GroupList.append(obj)
         self._GroupCountQuota = params.get("GroupCountQuota")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class IcebergConnectParam(AbstractModel):
+    r"""Iceberg连接源参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ServiceVip: <p>EMR实例的HiveMetaStore节点IP</p><p>参数格式：多个使用英文分号;分隔</p><p>创建连接时必选，编辑连接时不接收该参数</p>
+        :type ServiceVip: str
+        :param _Resource: <p>EMR实例ID</p><p>创建连接时必选，编辑连接时不接收该参数</p>
+        :type Resource: str
+        :param _UniqVpcId: <p>EMR实例的集群网络vpcId</p><p>创建连接时必选，编辑连接时不接收该参数</p>
+        :type UniqVpcId: str
+        :param _AuthType: <p>认证类型</p><p>枚举值：</p><ul><li>NONE： 无认证</li><li>KERBEROS： Kerberos认证</li></ul><p>开启Kerberos认证的EMR实例，此处需传入KERBEROS，创建连接时必选，编辑连接时非必选</p>
+        :type AuthType: str
+        :param _EniIdList: <p>EMR实例的HiveMetaStore节点IP绑定的弹性网卡Id列表</p><p>数量和顺序必须与ServiceVip字段中的多个IP对应，创建连接时必选，编辑连接时不接收该参数</p>
+        :type EniIdList: list of str
+        :param _CatalogType: <p>Catalog数据目录类型</p><p>枚举值：</p><ul><li>HIVE： Hive Catalog</li></ul><p>默认值：HIVE</p><p>仅支持Hive Catalog</p>
+        :type CatalogType: str
+        :param _KeyTabContent: <p>用于Kerberos认证的user.keytab文件的内容</p><p>入参限制：文件内容需使用Base64编码</p><p>AuthType为KERBEROS时必传</p>
+        :type KeyTabContent: str
+        :param _KRB5ConfContent: <p>用于Kerberos认证的krb5.conf文件的内容</p><p>入参限制：文件内容需使用Base64编码</p><p>AuthType为KERBEROS时必传</p>
+        :type KRB5ConfContent: str
+        :param _KerberosUserPrincipal: <p>用户的Kerberos身份凭证</p>
+        :type KerberosUserPrincipal: str
+        :param _KerberosPrincipal: <p>HiveMetastore服务端配置的Kerberos Principal</p><p>hive-site.xml中hive.metastore.kerberos.principal的值</p>
+        :type KerberosPrincipal: str
+        :param _IsUpdate: <p>是否更新并重启所有关联的连接器任务</p><p>编辑连接时使用，如果不传，则根据认证类型及认证参数是否发生变化，来判断是否更新并重启所有关联的连接器任务</p>
+        :type IsUpdate: bool
+        """
+        self._ServiceVip = None
+        self._Resource = None
+        self._UniqVpcId = None
+        self._AuthType = None
+        self._EniIdList = None
+        self._CatalogType = None
+        self._KeyTabContent = None
+        self._KRB5ConfContent = None
+        self._KerberosUserPrincipal = None
+        self._KerberosPrincipal = None
+        self._IsUpdate = None
+
+    @property
+    def ServiceVip(self):
+        r"""<p>EMR实例的HiveMetaStore节点IP</p><p>参数格式：多个使用英文分号;分隔</p><p>创建连接时必选，编辑连接时不接收该参数</p>
+        :rtype: str
+        """
+        return self._ServiceVip
+
+    @ServiceVip.setter
+    def ServiceVip(self, ServiceVip):
+        self._ServiceVip = ServiceVip
+
+    @property
+    def Resource(self):
+        r"""<p>EMR实例ID</p><p>创建连接时必选，编辑连接时不接收该参数</p>
+        :rtype: str
+        """
+        return self._Resource
+
+    @Resource.setter
+    def Resource(self, Resource):
+        self._Resource = Resource
+
+    @property
+    def UniqVpcId(self):
+        r"""<p>EMR实例的集群网络vpcId</p><p>创建连接时必选，编辑连接时不接收该参数</p>
+        :rtype: str
+        """
+        return self._UniqVpcId
+
+    @UniqVpcId.setter
+    def UniqVpcId(self, UniqVpcId):
+        self._UniqVpcId = UniqVpcId
+
+    @property
+    def AuthType(self):
+        r"""<p>认证类型</p><p>枚举值：</p><ul><li>NONE： 无认证</li><li>KERBEROS： Kerberos认证</li></ul><p>开启Kerberos认证的EMR实例，此处需传入KERBEROS，创建连接时必选，编辑连接时非必选</p>
+        :rtype: str
+        """
+        return self._AuthType
+
+    @AuthType.setter
+    def AuthType(self, AuthType):
+        self._AuthType = AuthType
+
+    @property
+    def EniIdList(self):
+        r"""<p>EMR实例的HiveMetaStore节点IP绑定的弹性网卡Id列表</p><p>数量和顺序必须与ServiceVip字段中的多个IP对应，创建连接时必选，编辑连接时不接收该参数</p>
+        :rtype: list of str
+        """
+        return self._EniIdList
+
+    @EniIdList.setter
+    def EniIdList(self, EniIdList):
+        self._EniIdList = EniIdList
+
+    @property
+    def CatalogType(self):
+        r"""<p>Catalog数据目录类型</p><p>枚举值：</p><ul><li>HIVE： Hive Catalog</li></ul><p>默认值：HIVE</p><p>仅支持Hive Catalog</p>
+        :rtype: str
+        """
+        return self._CatalogType
+
+    @CatalogType.setter
+    def CatalogType(self, CatalogType):
+        self._CatalogType = CatalogType
+
+    @property
+    def KeyTabContent(self):
+        r"""<p>用于Kerberos认证的user.keytab文件的内容</p><p>入参限制：文件内容需使用Base64编码</p><p>AuthType为KERBEROS时必传</p>
+        :rtype: str
+        """
+        return self._KeyTabContent
+
+    @KeyTabContent.setter
+    def KeyTabContent(self, KeyTabContent):
+        self._KeyTabContent = KeyTabContent
+
+    @property
+    def KRB5ConfContent(self):
+        r"""<p>用于Kerberos认证的krb5.conf文件的内容</p><p>入参限制：文件内容需使用Base64编码</p><p>AuthType为KERBEROS时必传</p>
+        :rtype: str
+        """
+        return self._KRB5ConfContent
+
+    @KRB5ConfContent.setter
+    def KRB5ConfContent(self, KRB5ConfContent):
+        self._KRB5ConfContent = KRB5ConfContent
+
+    @property
+    def KerberosUserPrincipal(self):
+        r"""<p>用户的Kerberos身份凭证</p>
+        :rtype: str
+        """
+        return self._KerberosUserPrincipal
+
+    @KerberosUserPrincipal.setter
+    def KerberosUserPrincipal(self, KerberosUserPrincipal):
+        self._KerberosUserPrincipal = KerberosUserPrincipal
+
+    @property
+    def KerberosPrincipal(self):
+        r"""<p>HiveMetastore服务端配置的Kerberos Principal</p><p>hive-site.xml中hive.metastore.kerberos.principal的值</p>
+        :rtype: str
+        """
+        return self._KerberosPrincipal
+
+    @KerberosPrincipal.setter
+    def KerberosPrincipal(self, KerberosPrincipal):
+        self._KerberosPrincipal = KerberosPrincipal
+
+    @property
+    def IsUpdate(self):
+        r"""<p>是否更新并重启所有关联的连接器任务</p><p>编辑连接时使用，如果不传，则根据认证类型及认证参数是否发生变化，来判断是否更新并重启所有关联的连接器任务</p>
+        :rtype: bool
+        """
+        return self._IsUpdate
+
+    @IsUpdate.setter
+    def IsUpdate(self, IsUpdate):
+        self._IsUpdate = IsUpdate
+
+
+    def _deserialize(self, params):
+        self._ServiceVip = params.get("ServiceVip")
+        self._Resource = params.get("Resource")
+        self._UniqVpcId = params.get("UniqVpcId")
+        self._AuthType = params.get("AuthType")
+        self._EniIdList = params.get("EniIdList")
+        self._CatalogType = params.get("CatalogType")
+        self._KeyTabContent = params.get("KeyTabContent")
+        self._KRB5ConfContent = params.get("KRB5ConfContent")
+        self._KerberosUserPrincipal = params.get("KerberosUserPrincipal")
+        self._KerberosPrincipal = params.get("KerberosPrincipal")
+        self._IsUpdate = params.get("IsUpdate")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class IcebergDatabaseInfo(AbstractModel):
+    r"""iceberg数据
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: <p>数据库名</p>
+        :type Name: str
+        :param _Tables: <p>表名称</p>
+        :type Tables: list of str
+        """
+        self._Name = None
+        self._Tables = None
+
+    @property
+    def Name(self):
+        r"""<p>数据库名</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Tables(self):
+        r"""<p>表名称</p>
+        :rtype: list of str
+        """
+        return self._Tables
+
+    @Tables.setter
+    def Tables(self, Tables):
+        self._Tables = Tables
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Tables = params.get("Tables")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class IcebergParam(AbstractModel):
+    r"""Iceberg接入参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Resource: <p>Iceberg 连接资源 (EMR 实例)</p>
+        :type Resource: str
+        :param _Database: <p>目标数据库名（Hive catalog 下的 namespace），必填</p>
+        :type Database: str
+        :param _TableName: <p>目标表名</p>
+        :type TableName: str
+        :param _SchemeType: <p>消息解析格式，当前仅支持 JSON</p><p>枚举值：</p><ul><li>JSON： JSON解析格式</li></ul>
+        :type SchemeType: str
+        :param _EnableFieldExtension: <p>表字段扩展开关</p><p>枚举值：</p><ul><li>true： 开</li><li>false： 关</li></ul>
+        :type EnableFieldExtension: bool
+        :param _UpsertMode: <p>Upset/CDC 模式，默认off</p><p>枚举值：</p><ul><li>Off： Off</li><li>UPSERT： UPSERT</li><li>CDC： CDC</li></ul>
+        :type UpsertMode: str
+        :param _PrimaryKeys: <p>主键字段：UPSERT / CDC 模式必填（多个字段以英文逗号分隔）</p>
+        :type PrimaryKeys: str
+        """
+        self._Resource = None
+        self._Database = None
+        self._TableName = None
+        self._SchemeType = None
+        self._EnableFieldExtension = None
+        self._UpsertMode = None
+        self._PrimaryKeys = None
+
+    @property
+    def Resource(self):
+        r"""<p>Iceberg 连接资源 (EMR 实例)</p>
+        :rtype: str
+        """
+        return self._Resource
+
+    @Resource.setter
+    def Resource(self, Resource):
+        self._Resource = Resource
+
+    @property
+    def Database(self):
+        r"""<p>目标数据库名（Hive catalog 下的 namespace），必填</p>
+        :rtype: str
+        """
+        return self._Database
+
+    @Database.setter
+    def Database(self, Database):
+        self._Database = Database
+
+    @property
+    def TableName(self):
+        r"""<p>目标表名</p>
+        :rtype: str
+        """
+        return self._TableName
+
+    @TableName.setter
+    def TableName(self, TableName):
+        self._TableName = TableName
+
+    @property
+    def SchemeType(self):
+        r"""<p>消息解析格式，当前仅支持 JSON</p><p>枚举值：</p><ul><li>JSON： JSON解析格式</li></ul>
+        :rtype: str
+        """
+        return self._SchemeType
+
+    @SchemeType.setter
+    def SchemeType(self, SchemeType):
+        self._SchemeType = SchemeType
+
+    @property
+    def EnableFieldExtension(self):
+        r"""<p>表字段扩展开关</p><p>枚举值：</p><ul><li>true： 开</li><li>false： 关</li></ul>
+        :rtype: bool
+        """
+        return self._EnableFieldExtension
+
+    @EnableFieldExtension.setter
+    def EnableFieldExtension(self, EnableFieldExtension):
+        self._EnableFieldExtension = EnableFieldExtension
+
+    @property
+    def UpsertMode(self):
+        r"""<p>Upset/CDC 模式，默认off</p><p>枚举值：</p><ul><li>Off： Off</li><li>UPSERT： UPSERT</li><li>CDC： CDC</li></ul>
+        :rtype: str
+        """
+        return self._UpsertMode
+
+    @UpsertMode.setter
+    def UpsertMode(self, UpsertMode):
+        self._UpsertMode = UpsertMode
+
+    @property
+    def PrimaryKeys(self):
+        r"""<p>主键字段：UPSERT / CDC 模式必填（多个字段以英文逗号分隔）</p>
+        :rtype: str
+        """
+        return self._PrimaryKeys
+
+    @PrimaryKeys.setter
+    def PrimaryKeys(self, PrimaryKeys):
+        self._PrimaryKeys = PrimaryKeys
+
+
+    def _deserialize(self, params):
+        self._Resource = params.get("Resource")
+        self._Database = params.get("Database")
+        self._TableName = params.get("TableName")
+        self._SchemeType = params.get("SchemeType")
+        self._EnableFieldExtension = params.get("EnableFieldExtension")
+        self._UpsertMode = params.get("UpsertMode")
+        self._PrimaryKeys = params.get("PrimaryKeys")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -25454,6 +25999,8 @@ class ModifyConnectResourceRequest(AbstractModel):
         :type KafkaConnectParam: :class:`tencentcloud.ckafka.v20190819.models.KafkaConnectParam`
         :param _MqttConnectParam: <p>MQTT配置，Type为 MQTT 时必填</p>
         :type MqttConnectParam: :class:`tencentcloud.ckafka.v20190819.models.MqttConnectParam`
+        :param _IcebergConnectParam: <p>Iceberg配置，Type为ICEBERG时必填</p>
+        :type IcebergConnectParam: :class:`tencentcloud.ckafka.v20190819.models.IcebergConnectParam`
         """
         self._ResourceId = None
         self._ResourceName = None
@@ -25471,6 +26018,7 @@ class ModifyConnectResourceRequest(AbstractModel):
         self._DorisConnectParam = None
         self._KafkaConnectParam = None
         self._MqttConnectParam = None
+        self._IcebergConnectParam = None
 
     @property
     def ResourceId(self):
@@ -25648,6 +26196,17 @@ class ModifyConnectResourceRequest(AbstractModel):
     def MqttConnectParam(self, MqttConnectParam):
         self._MqttConnectParam = MqttConnectParam
 
+    @property
+    def IcebergConnectParam(self):
+        r"""<p>Iceberg配置，Type为ICEBERG时必填</p>
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.IcebergConnectParam`
+        """
+        return self._IcebergConnectParam
+
+    @IcebergConnectParam.setter
+    def IcebergConnectParam(self, IcebergConnectParam):
+        self._IcebergConnectParam = IcebergConnectParam
+
 
     def _deserialize(self, params):
         self._ResourceId = params.get("ResourceId")
@@ -25690,6 +26249,9 @@ class ModifyConnectResourceRequest(AbstractModel):
         if params.get("MqttConnectParam") is not None:
             self._MqttConnectParam = MqttConnectParam()
             self._MqttConnectParam._deserialize(params.get("MqttConnectParam"))
+        if params.get("IcebergConnectParam") is not None:
+            self._IcebergConnectParam = IcebergConnectParam()
+            self._IcebergConnectParam._deserialize(params.get("IcebergConnectParam"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -34185,21 +34747,21 @@ class TopicParam(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Resource: 单独售卖Topic的Topic名称
+        :param _Resource: <p>单独售卖Topic的Topic名称</p>
         :type Resource: str
-        :param _OffsetType: Offset类型，最开始位置earliest，最新位置latest，时间点位置timestamp
+        :param _OffsetType: <p>Offset类型，最开始位置earliest，最新位置latest，时间点位置timestamp</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type OffsetType: str
-        :param _StartTime: Offset类型为timestamp时必传，传时间戳，精确到秒
+        :param _StartTime: <p>Offset类型为timestamp时必传，传时间戳，精确到秒</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type StartTime: int
-        :param _TopicId: Topic的TopicId【出参】
+        :param _TopicId: <p>Topic的TopicId【出参】</p>
         :type TopicId: str
-        :param _CompressionType: 写入Topic时是否进行压缩，不开启填"none"，开启的话，可选择"gzip", "snappy", "lz4"中的一个进行填写。
+        :param _CompressionType: <p>写入Topic时是否进行压缩，不开启填&quot;none&quot;，开启的话，可选择&quot;gzip&quot;, &quot;snappy&quot;, &quot;lz4&quot;中的一个进行填写。</p>
         :type CompressionType: str
-        :param _UseAutoCreateTopic: 使用的Topic是否需要自动创建（目前只支持SOURCE流入任务）
+        :param _UseAutoCreateTopic: <p>使用的Topic是否需要自动创建（目前只支持SOURCE流入任务）</p>
         :type UseAutoCreateTopic: bool
-        :param _MsgMultiple: 源topic消息1条扩增成msgMultiple条写入目标topic(该参数目前只有ckafka流入ckafka适用)
+        :param _MsgMultiple: <p>源topic消息1条扩增成msgMultiple条写入目标topic(该参数目前只有ckafka流入ckafka适用)</p>
         :type MsgMultiple: int
         """
         self._Resource = None
@@ -34212,7 +34774,7 @@ class TopicParam(AbstractModel):
 
     @property
     def Resource(self):
-        r"""单独售卖Topic的Topic名称
+        r"""<p>单独售卖Topic的Topic名称</p>
         :rtype: str
         """
         return self._Resource
@@ -34223,7 +34785,7 @@ class TopicParam(AbstractModel):
 
     @property
     def OffsetType(self):
-        r"""Offset类型，最开始位置earliest，最新位置latest，时间点位置timestamp
+        r"""<p>Offset类型，最开始位置earliest，最新位置latest，时间点位置timestamp</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -34235,7 +34797,7 @@ class TopicParam(AbstractModel):
 
     @property
     def StartTime(self):
-        r"""Offset类型为timestamp时必传，传时间戳，精确到秒
+        r"""<p>Offset类型为timestamp时必传，传时间戳，精确到秒</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -34247,7 +34809,7 @@ class TopicParam(AbstractModel):
 
     @property
     def TopicId(self):
-        r"""Topic的TopicId【出参】
+        r"""<p>Topic的TopicId【出参】</p>
         :rtype: str
         """
         return self._TopicId
@@ -34258,7 +34820,7 @@ class TopicParam(AbstractModel):
 
     @property
     def CompressionType(self):
-        r"""写入Topic时是否进行压缩，不开启填"none"，开启的话，可选择"gzip", "snappy", "lz4"中的一个进行填写。
+        r"""<p>写入Topic时是否进行压缩，不开启填&quot;none&quot;，开启的话，可选择&quot;gzip&quot;, &quot;snappy&quot;, &quot;lz4&quot;中的一个进行填写。</p>
         :rtype: str
         """
         return self._CompressionType
@@ -34269,7 +34831,7 @@ class TopicParam(AbstractModel):
 
     @property
     def UseAutoCreateTopic(self):
-        r"""使用的Topic是否需要自动创建（目前只支持SOURCE流入任务）
+        r"""<p>使用的Topic是否需要自动创建（目前只支持SOURCE流入任务）</p>
         :rtype: bool
         """
         return self._UseAutoCreateTopic
@@ -34280,7 +34842,7 @@ class TopicParam(AbstractModel):
 
     @property
     def MsgMultiple(self):
-        r"""源topic消息1条扩增成msgMultiple条写入目标topic(该参数目前只有ckafka流入ckafka适用)
+        r"""<p>源topic消息1条扩增成msgMultiple条写入目标topic(该参数目前只有ckafka流入ckafka适用)</p>
         :rtype: int
         """
         return self._MsgMultiple

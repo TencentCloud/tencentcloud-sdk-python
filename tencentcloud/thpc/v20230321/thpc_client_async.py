@@ -446,6 +446,24 @@ class ThpcClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def InquirePriceModifyWorkspacesChargeType(
+            self,
+            request: models.InquirePriceModifyWorkspacesChargeTypeRequest,
+            opts: Dict = None,
+    ) -> models.InquirePriceModifyWorkspacesChargeTypeResponse:
+        """
+        查询按量计费工作空间转换为包年包月的价格。不会创建订单或变更资源。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "InquirePriceModifyWorkspacesChargeType"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.InquirePriceModifyWorkspacesChargeTypeResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ModifyClusterDeletionProtection(
             self,
             request: models.ModifyClusterDeletionProtectionRequest,
@@ -513,6 +531,24 @@ class ThpcClient(AbstractClient):
         kwargs["action"] = "ModifyWorkspacesAttribute"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ModifyWorkspacesAttributeResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyWorkspacesChargeType(
+            self,
+            request: models.ModifyWorkspacesChargeTypeRequest,
+            opts: Dict = None,
+    ) -> models.ModifyWorkspacesChargeTypeResponse:
+        """
+        正式提交按量计费工作空间转包年包月订单。仅支持 ONLINE 且计费模式为 POSTPAID_BY_HOUR 的工作空间。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyWorkspacesChargeType"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyWorkspacesChargeTypeResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

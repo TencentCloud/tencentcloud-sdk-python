@@ -78482,27 +78482,27 @@ class ModifyProjectRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ProjectId: 目标修改的项目ID
+        :param _ProjectId: <p>目标修改的项目ID</p>
         :type ProjectId: str
-        :param _DisplayName: 项目显示名称，可以为中文名,需要租户范围内唯一
+        :param _DisplayName: <p>项目显示名称，可以为中文名,需要租户范围内唯一</p>
         :type DisplayName: str
-        :param _Description: 备注
+        :param _Description: <p>备注</p>
         :type Description: str
-        :param _TaskSubmitApproval: true/false则修改，不带该参数不修改。
+        :param _TaskSubmitApproval: <p>true/false则修改，不带该参数不修改。</p>
         :type TaskSubmitApproval: bool
-        :param _ResourcePoolInfo: 资源池信息
+        :param _ResourcePoolInfo: <p>资源池信息</p>
         :type ResourcePoolInfo: :class:`tencentcloud.wedata.v20210820.models.ResourcePoolInfo`
-        :param _ProjectManagers: 项目管理员
+        :param _ProjectManagers: <p>项目管理员</p>
         :type ProjectManagers: list of str
-        :param _TaskStrictMode: 调度任务严格模式
+        :param _TaskStrictMode: <p>调度任务严格模式</p>
         :type TaskStrictMode: bool
-        :param _ExtraOptions: 以后新增选项可以直接通过前端的json格式写入去实现
+        :param _ExtraOptions: <p>以后新增选项可以直接通过前端的json格式写入去实现</p>
         :type ExtraOptions: str
-        :param _Model: 项目类型，SIMPLE：简单模式 STANDARD：标准模式
+        :param _Model: <p>项目类型，SIMPLE：简单模式 STANDARD：标准模式</p>
         :type Model: str
-        :param _ProjectOwner: 项目负责人
+        :param _ProjectOwner: <p>项目负责人</p>
         :type ProjectOwner: list of str
-        :param _ModifyType: 更新类型
+        :param _ModifyType: <p>更新类型</p>
         :type ModifyType: str
         """
         self._ProjectId = None
@@ -78519,7 +78519,7 @@ class ModifyProjectRequest(AbstractModel):
 
     @property
     def ProjectId(self):
-        r"""目标修改的项目ID
+        r"""<p>目标修改的项目ID</p>
         :rtype: str
         """
         return self._ProjectId
@@ -78530,7 +78530,7 @@ class ModifyProjectRequest(AbstractModel):
 
     @property
     def DisplayName(self):
-        r"""项目显示名称，可以为中文名,需要租户范围内唯一
+        r"""<p>项目显示名称，可以为中文名,需要租户范围内唯一</p>
         :rtype: str
         """
         return self._DisplayName
@@ -78541,7 +78541,7 @@ class ModifyProjectRequest(AbstractModel):
 
     @property
     def Description(self):
-        r"""备注
+        r"""<p>备注</p>
         :rtype: str
         """
         return self._Description
@@ -78552,7 +78552,7 @@ class ModifyProjectRequest(AbstractModel):
 
     @property
     def TaskSubmitApproval(self):
-        r"""true/false则修改，不带该参数不修改。
+        r"""<p>true/false则修改，不带该参数不修改。</p>
         :rtype: bool
         """
         return self._TaskSubmitApproval
@@ -78563,7 +78563,7 @@ class ModifyProjectRequest(AbstractModel):
 
     @property
     def ResourcePoolInfo(self):
-        r"""资源池信息
+        r"""<p>资源池信息</p>
         :rtype: :class:`tencentcloud.wedata.v20210820.models.ResourcePoolInfo`
         """
         return self._ResourcePoolInfo
@@ -78574,7 +78574,7 @@ class ModifyProjectRequest(AbstractModel):
 
     @property
     def ProjectManagers(self):
-        r"""项目管理员
+        r"""<p>项目管理员</p>
         :rtype: list of str
         """
         return self._ProjectManagers
@@ -78585,7 +78585,7 @@ class ModifyProjectRequest(AbstractModel):
 
     @property
     def TaskStrictMode(self):
-        r"""调度任务严格模式
+        r"""<p>调度任务严格模式</p>
         :rtype: bool
         """
         return self._TaskStrictMode
@@ -78596,7 +78596,7 @@ class ModifyProjectRequest(AbstractModel):
 
     @property
     def ExtraOptions(self):
-        r"""以后新增选项可以直接通过前端的json格式写入去实现
+        r"""<p>以后新增选项可以直接通过前端的json格式写入去实现</p>
         :rtype: str
         """
         return self._ExtraOptions
@@ -78607,7 +78607,7 @@ class ModifyProjectRequest(AbstractModel):
 
     @property
     def Model(self):
-        r"""项目类型，SIMPLE：简单模式 STANDARD：标准模式
+        r"""<p>项目类型，SIMPLE：简单模式 STANDARD：标准模式</p>
         :rtype: str
         """
         return self._Model
@@ -78618,7 +78618,7 @@ class ModifyProjectRequest(AbstractModel):
 
     @property
     def ProjectOwner(self):
-        r"""项目负责人
+        r"""<p>项目负责人</p>
         :rtype: list of str
         """
         return self._ProjectOwner
@@ -78629,7 +78629,7 @@ class ModifyProjectRequest(AbstractModel):
 
     @property
     def ModifyType(self):
-        r"""更新类型
+        r"""<p>更新类型</p>
         :rtype: str
         """
         return self._ModifyType
@@ -123008,63 +123008,66 @@ class WorkflowDsDTO(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _WorkflowId: 工作流ID
+        :param _WorkflowId: <p>工作流ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type WorkflowId: str
-        :param _Owner: 责任人
+        :param _Owner: <p>责任人</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Owner: str
-        :param _OwnerId: 责任人ID
+        :param _OwnerId: <p>责任人ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type OwnerId: str
-        :param _ProjectId: 项目ID
+        :param _ProjectId: <p>项目ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ProjectId: str
-        :param _ProjectIdent: 项目标识
+        :param _ProjectIdent: <p>项目标识</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ProjectIdent: str
-        :param _ProjectName: 项目名称
+        :param _ProjectName: <p>项目名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ProjectName: str
-        :param _WorkflowDesc: 工作流描述
+        :param _WorkflowDesc: <p>工作流描述</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type WorkflowDesc: str
-        :param _WorkflowName: 工作流名称
+        :param _WorkflowName: <p>工作流名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type WorkflowName: str
-        :param _FolderId: 文件夹ID
+        :param _FolderId: <p>文件夹ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type FolderId: str
-        :param _SparkParams: SparkSQL参数
+        :param _SparkParams: <p>SparkSQL参数</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type SparkParams: str
-        :param _Tasks: 任务列表
+        :param _Tasks: <p>任务列表</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Tasks: list of TaskDsDTO
-        :param _Links: 任务链接列表
+        :param _Links: <p>任务链接列表</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Links: list of TaskLinkDsDTO
-        :param _Params: 参数列表
+        :param _Params: <p>参数列表</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Params: list of ParameterTaskDsDto
-        :param _WorkflowType: 工作流类型, 取值示例
-
-- cycle 周期工作流
-- manual 手动工作流
+        :param _WorkflowType: <p>工作流类型, 取值示例</p><ul><li>cycle 周期工作流</li><li>manual 手动工作流</li></ul>
 注意：此字段可能返回 null，表示取不到有效值。
         :type WorkflowType: str
-        :param _UpdateUser: 最近更新人名称
+        :param _UpdateUser: <p>最近更新人名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type UpdateUser: str
-        :param _UpdateUserId: 最近更新人id
+        :param _UpdateUserId: <p>最近更新人id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type UpdateUserId: str
-        :param _BundleId: BundleId CI/CD工程生成的bundle唯一标识	
+        :param _BundleId: <p>BundleId CI/CD工程生成的bundle唯一标识</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type BundleId: str
-        :param _BundleInfo: BundleId信息
+        :param _BundleInfo: <p>BundleId信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type BundleInfo: str
+        :param _ExecuteUserUin: <p>运行账号ID</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExecuteUserUin: str
+        :param _ExecuteUserName: <p>运行账号名称</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExecuteUserName: str
         """
         self._WorkflowId = None
         self._Owner = None
@@ -123084,10 +123087,12 @@ class WorkflowDsDTO(AbstractModel):
         self._UpdateUserId = None
         self._BundleId = None
         self._BundleInfo = None
+        self._ExecuteUserUin = None
+        self._ExecuteUserName = None
 
     @property
     def WorkflowId(self):
-        r"""工作流ID
+        r"""<p>工作流ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -123099,7 +123104,7 @@ class WorkflowDsDTO(AbstractModel):
 
     @property
     def Owner(self):
-        r"""责任人
+        r"""<p>责任人</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -123111,7 +123116,7 @@ class WorkflowDsDTO(AbstractModel):
 
     @property
     def OwnerId(self):
-        r"""责任人ID
+        r"""<p>责任人ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -123123,7 +123128,7 @@ class WorkflowDsDTO(AbstractModel):
 
     @property
     def ProjectId(self):
-        r"""项目ID
+        r"""<p>项目ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -123135,7 +123140,7 @@ class WorkflowDsDTO(AbstractModel):
 
     @property
     def ProjectIdent(self):
-        r"""项目标识
+        r"""<p>项目标识</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -123147,7 +123152,7 @@ class WorkflowDsDTO(AbstractModel):
 
     @property
     def ProjectName(self):
-        r"""项目名称
+        r"""<p>项目名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -123159,7 +123164,7 @@ class WorkflowDsDTO(AbstractModel):
 
     @property
     def WorkflowDesc(self):
-        r"""工作流描述
+        r"""<p>工作流描述</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -123171,7 +123176,7 @@ class WorkflowDsDTO(AbstractModel):
 
     @property
     def WorkflowName(self):
-        r"""工作流名称
+        r"""<p>工作流名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -123183,7 +123188,7 @@ class WorkflowDsDTO(AbstractModel):
 
     @property
     def FolderId(self):
-        r"""文件夹ID
+        r"""<p>文件夹ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -123195,7 +123200,7 @@ class WorkflowDsDTO(AbstractModel):
 
     @property
     def SparkParams(self):
-        r"""SparkSQL参数
+        r"""<p>SparkSQL参数</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -123207,7 +123212,7 @@ class WorkflowDsDTO(AbstractModel):
 
     @property
     def Tasks(self):
-        r"""任务列表
+        r"""<p>任务列表</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of TaskDsDTO
         """
@@ -123219,7 +123224,7 @@ class WorkflowDsDTO(AbstractModel):
 
     @property
     def Links(self):
-        r"""任务链接列表
+        r"""<p>任务链接列表</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of TaskLinkDsDTO
         """
@@ -123231,7 +123236,7 @@ class WorkflowDsDTO(AbstractModel):
 
     @property
     def Params(self):
-        r"""参数列表
+        r"""<p>参数列表</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ParameterTaskDsDto
         """
@@ -123243,10 +123248,7 @@ class WorkflowDsDTO(AbstractModel):
 
     @property
     def WorkflowType(self):
-        r"""工作流类型, 取值示例
-
-- cycle 周期工作流
-- manual 手动工作流
+        r"""<p>工作流类型, 取值示例</p><ul><li>cycle 周期工作流</li><li>manual 手动工作流</li></ul>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -123258,7 +123260,7 @@ class WorkflowDsDTO(AbstractModel):
 
     @property
     def UpdateUser(self):
-        r"""最近更新人名称
+        r"""<p>最近更新人名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -123270,7 +123272,7 @@ class WorkflowDsDTO(AbstractModel):
 
     @property
     def UpdateUserId(self):
-        r"""最近更新人id
+        r"""<p>最近更新人id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -123282,7 +123284,7 @@ class WorkflowDsDTO(AbstractModel):
 
     @property
     def BundleId(self):
-        r"""BundleId CI/CD工程生成的bundle唯一标识	
+        r"""<p>BundleId CI/CD工程生成的bundle唯一标识</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -123294,7 +123296,7 @@ class WorkflowDsDTO(AbstractModel):
 
     @property
     def BundleInfo(self):
-        r"""BundleId信息
+        r"""<p>BundleId信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -123303,6 +123305,30 @@ class WorkflowDsDTO(AbstractModel):
     @BundleInfo.setter
     def BundleInfo(self, BundleInfo):
         self._BundleInfo = BundleInfo
+
+    @property
+    def ExecuteUserUin(self):
+        r"""<p>运行账号ID</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ExecuteUserUin
+
+    @ExecuteUserUin.setter
+    def ExecuteUserUin(self, ExecuteUserUin):
+        self._ExecuteUserUin = ExecuteUserUin
+
+    @property
+    def ExecuteUserName(self):
+        r"""<p>运行账号名称</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ExecuteUserName
+
+    @ExecuteUserName.setter
+    def ExecuteUserName(self, ExecuteUserName):
+        self._ExecuteUserName = ExecuteUserName
 
 
     def _deserialize(self, params):
@@ -123339,6 +123365,8 @@ class WorkflowDsDTO(AbstractModel):
         self._UpdateUserId = params.get("UpdateUserId")
         self._BundleId = params.get("BundleId")
         self._BundleInfo = params.get("BundleInfo")
+        self._ExecuteUserUin = params.get("ExecuteUserUin")
+        self._ExecuteUserName = params.get("ExecuteUserName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

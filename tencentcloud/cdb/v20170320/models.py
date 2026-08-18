@@ -8667,6 +8667,8 @@ class CreateDBInstanceHourRequest(AbstractModel):
         :type ClusterTopology: :class:`tencentcloud.cdb.v20170320.models.ClusterTopology`
         :param _DiskType: <p>硬盘类型，单节点（云盘）或者云盘版实例可以指定此参数。CLOUD_SSD 表示 SSD 云硬盘，CLOUD_HSSD 表示增强型 SSD 云硬盘，CLOUD_PREMIUM 表示高性能云硬盘。<br>说明：单节点（云盘）、云盘版实例硬盘类型所支持的地域略有不同，具体支持情况请参考 <a href="https://cloud.tencent.com/document/product/236/8458">地域和可用区</a>。</p>
         :type DiskType: str
+        :param _CdcId: <p>CDC集群ID，非CDC场景无需指定该入参</p>
+        :type CdcId: str
         :param _ClusterType: <p>集群类型:cage——金融围拢，cdc——CDB ON CDC；dedicate——独享集群</p>
         :type ClusterType: str
         :param _DiskEncryption: <p>是否对磁盘进行加密。仅云盘版实例支持该功能。 指定为 &quot;on&quot; 表示开启加密， 否则不加密。 购买只读实例、灾备实例、新克隆实例时该参数自动和主实例保持一致。</p>
@@ -8716,6 +8718,7 @@ class CreateDBInstanceHourRequest(AbstractModel):
         self._DataProtectVolume = None
         self._ClusterTopology = None
         self._DiskType = None
+        self._CdcId = None
         self._ClusterType = None
         self._DiskEncryption = None
         self._DestroyProtect = None
@@ -9162,6 +9165,17 @@ class CreateDBInstanceHourRequest(AbstractModel):
         self._DiskType = DiskType
 
     @property
+    def CdcId(self):
+        r"""<p>CDC集群ID，非CDC场景无需指定该入参</p>
+        :rtype: str
+        """
+        return self._CdcId
+
+    @CdcId.setter
+    def CdcId(self, CdcId):
+        self._CdcId = CdcId
+
+    @property
     def ClusterType(self):
         r"""<p>集群类型:cage——金融围拢，cdc——CDB ON CDC；dedicate——独享集群</p>
         :rtype: str
@@ -9261,6 +9275,7 @@ class CreateDBInstanceHourRequest(AbstractModel):
             self._ClusterTopology = ClusterTopology()
             self._ClusterTopology._deserialize(params.get("ClusterTopology"))
         self._DiskType = params.get("DiskType")
+        self._CdcId = params.get("CdcId")
         self._ClusterType = params.get("ClusterType")
         self._DiskEncryption = params.get("DiskEncryption")
         self._DestroyProtect = params.get("DestroyProtect")

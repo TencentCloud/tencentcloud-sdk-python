@@ -99639,6 +99639,204 @@ class UserDspmInfo(AbstractModel):
         
 
 
+class VPRExplainDimension(AbstractModel):
+    r"""VPR解释卡片中的单个维度
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Key: <p>标签key</p>
+        :type Key: str
+        :param _Name: <p>标签名称</p>
+        :type Name: str
+        :param _Items: <p>标签子项</p>
+        :type Items: list of VPRExplainDimensionItem
+        """
+        self._Key = None
+        self._Name = None
+        self._Items = None
+
+    @property
+    def Key(self):
+        r"""<p>标签key</p>
+        :rtype: str
+        """
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Name(self):
+        r"""<p>标签名称</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Items(self):
+        r"""<p>标签子项</p>
+        :rtype: list of VPRExplainDimensionItem
+        """
+        return self._Items
+
+    @Items.setter
+    def Items(self, Items):
+        self._Items = Items
+
+
+    def _deserialize(self, params):
+        self._Key = params.get("Key")
+        self._Name = params.get("Name")
+        if params.get("Items") is not None:
+            self._Items = []
+            for item in params.get("Items"):
+                obj = VPRExplainDimensionItem()
+                obj._deserialize(item)
+                self._Items.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VPRExplainDimensionItem(AbstractModel):
+    r"""VPR解释卡片中的单个标签项
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Key: <p>标签</p>
+        :type Key: str
+        :param _Name: <p>标签名称</p>
+        :type Name: str
+        :param _Remark: <p>标签描述</p>
+        :type Remark: str
+        """
+        self._Key = None
+        self._Name = None
+        self._Remark = None
+
+    @property
+    def Key(self):
+        r"""<p>标签</p>
+        :rtype: str
+        """
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Name(self):
+        r"""<p>标签名称</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Remark(self):
+        r"""<p>标签描述</p>
+        :rtype: str
+        """
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+
+    def _deserialize(self, params):
+        self._Key = params.get("Key")
+        self._Name = params.get("Name")
+        self._Remark = params.get("Remark")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VPRExplainInfo(AbstractModel):
+    r"""VPR评级解释卡片
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VulIntel: <p>漏洞情报</p>
+        :type VulIntel: list of VPRExplainDimension
+        :param _AssetContext: <p>资产上下文</p>
+        :type AssetContext: list of VPRExplainDimension
+        """
+        self._VulIntel = None
+        self._AssetContext = None
+
+    @property
+    def VulIntel(self):
+        r"""<p>漏洞情报</p>
+        :rtype: list of VPRExplainDimension
+        """
+        return self._VulIntel
+
+    @VulIntel.setter
+    def VulIntel(self, VulIntel):
+        self._VulIntel = VulIntel
+
+    @property
+    def AssetContext(self):
+        r"""<p>资产上下文</p>
+        :rtype: list of VPRExplainDimension
+        """
+        return self._AssetContext
+
+    @AssetContext.setter
+    def AssetContext(self, AssetContext):
+        self._AssetContext = AssetContext
+
+
+    def _deserialize(self, params):
+        if params.get("VulIntel") is not None:
+            self._VulIntel = []
+            for item in params.get("VulIntel"):
+                obj = VPRExplainDimension()
+                obj._deserialize(item)
+                self._VulIntel.append(obj)
+        if params.get("AssetContext") is not None:
+            self._AssetContext = []
+            for item in params.get("AssetContext"):
+                obj = VPRExplainDimension()
+                obj._deserialize(item)
+                self._AssetContext.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class VPRLabel(AbstractModel):
     r"""漏洞VPR标签
 
@@ -104277,40 +104475,30 @@ class VulFixedItem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _VulId: 漏洞ID
+        :param _VulId: <p>漏洞ID</p>
         :type VulId: int
-        :param _VulName: 漏洞名称
+        :param _VulName: <p>漏洞名称</p>
         :type VulName: str
-        :param _Level: 漏洞等级
-枚举值：
-LOW：低危
-MEDIUM：中危
-HIGH：高危
-CRITICAL：严重
+        :param _Level: <p>漏洞等级<br>枚举值：<br>LOW：低危<br>MEDIUM：中危<br>HIGH：高危<br>CRITICAL：严重</p>
         :type Level: str
-        :param _VRPRatingInfo: VPR 评级信息（包含评级结果、说明和分阶段评分），与 DescribeHostVulRiskList 一致
+        :param _VRPRatingInfo: <p>VPR 评级信息（包含评级结果、说明和分阶段评分），与 DescribeHostVulRiskList 一致</p>
         :type VRPRatingInfo: :class:`tencentcloud.csip.v20221121.models.VPRRatingInfo`
-        :param _VulCategory: 漏洞类型
-枚举值：
-LINUX：Linux软件漏洞
-WINDOWS：Windows系统补丁漏洞
-WEB_CMS：Web-CMS漏洞
-APPLICATION：应用漏洞
-EMERGENCY：应急漏洞
+        :param _VulCategory: <p>漏洞类型<br>枚举值：<br>LINUX：Linux软件漏洞<br>WINDOWS：Windows系统补丁漏洞<br>WEB_CMS：Web-CMS漏洞<br>APPLICATION：应用漏洞<br>EMERGENCY：应急漏洞</p>
         :type VulCategory: str
-        :param _CveId: CVE编号
+        :param _CveId: <p>CVE编号</p>
         :type CveId: str
-        :param _MachineName: 修复主机名称
+        :param _MachineName: <p>修复主机名称</p>
         :type MachineName: str
-        :param _InstanceId: 修复主机实例ID
+        :param _InstanceId: <p>修复主机实例ID</p>
         :type InstanceId: str
-        :param _ComponentCount: 关联组件&路径数量
+        :param _ComponentCount: <p>关联组件&amp;路径数量</p>
         :type ComponentCount: int
-        :param _Components: 关联组件&路径列表
+        :param _Components: <p>关联组件&amp;路径列表</p>
         :type Components: list of str
-        :param _LatestFixTime: 最近一次修复时间
-参数格式：YYYY-MM-DDTHH:mm:ssZ（ISO8601格式）
+        :param _LatestFixTime: <p>最近一次修复时间<br>参数格式：YYYY-MM-DDTHH:mm:ssZ（ISO8601格式）</p>
         :type LatestFixTime: str
+        :param _VPRExplainInfo: <p>VPR评级依据</p>
+        :type VPRExplainInfo: :class:`tencentcloud.csip.v20221121.models.VPRExplainInfo`
         """
         self._VulId = None
         self._VulName = None
@@ -104323,10 +104511,11 @@ EMERGENCY：应急漏洞
         self._ComponentCount = None
         self._Components = None
         self._LatestFixTime = None
+        self._VPRExplainInfo = None
 
     @property
     def VulId(self):
-        r"""漏洞ID
+        r"""<p>漏洞ID</p>
         :rtype: int
         """
         return self._VulId
@@ -104337,7 +104526,7 @@ EMERGENCY：应急漏洞
 
     @property
     def VulName(self):
-        r"""漏洞名称
+        r"""<p>漏洞名称</p>
         :rtype: str
         """
         return self._VulName
@@ -104348,12 +104537,7 @@ EMERGENCY：应急漏洞
 
     @property
     def Level(self):
-        r"""漏洞等级
-枚举值：
-LOW：低危
-MEDIUM：中危
-HIGH：高危
-CRITICAL：严重
+        r"""<p>漏洞等级<br>枚举值：<br>LOW：低危<br>MEDIUM：中危<br>HIGH：高危<br>CRITICAL：严重</p>
         :rtype: str
         """
         return self._Level
@@ -104364,7 +104548,7 @@ CRITICAL：严重
 
     @property
     def VRPRatingInfo(self):
-        r"""VPR 评级信息（包含评级结果、说明和分阶段评分），与 DescribeHostVulRiskList 一致
+        r"""<p>VPR 评级信息（包含评级结果、说明和分阶段评分），与 DescribeHostVulRiskList 一致</p>
         :rtype: :class:`tencentcloud.csip.v20221121.models.VPRRatingInfo`
         """
         return self._VRPRatingInfo
@@ -104375,13 +104559,7 @@ CRITICAL：严重
 
     @property
     def VulCategory(self):
-        r"""漏洞类型
-枚举值：
-LINUX：Linux软件漏洞
-WINDOWS：Windows系统补丁漏洞
-WEB_CMS：Web-CMS漏洞
-APPLICATION：应用漏洞
-EMERGENCY：应急漏洞
+        r"""<p>漏洞类型<br>枚举值：<br>LINUX：Linux软件漏洞<br>WINDOWS：Windows系统补丁漏洞<br>WEB_CMS：Web-CMS漏洞<br>APPLICATION：应用漏洞<br>EMERGENCY：应急漏洞</p>
         :rtype: str
         """
         return self._VulCategory
@@ -104392,7 +104570,7 @@ EMERGENCY：应急漏洞
 
     @property
     def CveId(self):
-        r"""CVE编号
+        r"""<p>CVE编号</p>
         :rtype: str
         """
         return self._CveId
@@ -104403,7 +104581,7 @@ EMERGENCY：应急漏洞
 
     @property
     def MachineName(self):
-        r"""修复主机名称
+        r"""<p>修复主机名称</p>
         :rtype: str
         """
         return self._MachineName
@@ -104414,7 +104592,7 @@ EMERGENCY：应急漏洞
 
     @property
     def InstanceId(self):
-        r"""修复主机实例ID
+        r"""<p>修复主机实例ID</p>
         :rtype: str
         """
         return self._InstanceId
@@ -104425,7 +104603,7 @@ EMERGENCY：应急漏洞
 
     @property
     def ComponentCount(self):
-        r"""关联组件&路径数量
+        r"""<p>关联组件&amp;路径数量</p>
         :rtype: int
         """
         return self._ComponentCount
@@ -104436,7 +104614,7 @@ EMERGENCY：应急漏洞
 
     @property
     def Components(self):
-        r"""关联组件&路径列表
+        r"""<p>关联组件&amp;路径列表</p>
         :rtype: list of str
         """
         return self._Components
@@ -104447,8 +104625,7 @@ EMERGENCY：应急漏洞
 
     @property
     def LatestFixTime(self):
-        r"""最近一次修复时间
-参数格式：YYYY-MM-DDTHH:mm:ssZ（ISO8601格式）
+        r"""<p>最近一次修复时间<br>参数格式：YYYY-MM-DDTHH:mm:ssZ（ISO8601格式）</p>
         :rtype: str
         """
         return self._LatestFixTime
@@ -104456,6 +104633,17 @@ EMERGENCY：应急漏洞
     @LatestFixTime.setter
     def LatestFixTime(self, LatestFixTime):
         self._LatestFixTime = LatestFixTime
+
+    @property
+    def VPRExplainInfo(self):
+        r"""<p>VPR评级依据</p>
+        :rtype: :class:`tencentcloud.csip.v20221121.models.VPRExplainInfo`
+        """
+        return self._VPRExplainInfo
+
+    @VPRExplainInfo.setter
+    def VPRExplainInfo(self, VPRExplainInfo):
+        self._VPRExplainInfo = VPRExplainInfo
 
 
     def _deserialize(self, params):
@@ -104472,6 +104660,9 @@ EMERGENCY：应急漏洞
         self._ComponentCount = params.get("ComponentCount")
         self._Components = params.get("Components")
         self._LatestFixTime = params.get("LatestFixTime")
+        if params.get("VPRExplainInfo") is not None:
+            self._VPRExplainInfo = VPRExplainInfo()
+            self._VPRExplainInfo._deserialize(params.get("VPRExplainInfo"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -26483,7 +26483,7 @@ class DescribeAssetImageRegistryRegistryDetailResponse(AbstractModel):
         :type Insecure: int
         :param _ConnDetectDetail: <p>联通性检测结果详情</p>
         :type ConnDetectDetail: list of RegistryConnDetectResult
-        :param _InstanceID: <p>tcr情况下instance_id</p>
+        :param _InstanceID: <p>TCR实例ID</p>
         :type InstanceID: str
         :param _SyncMode: <p>同步方式，0全量同步，1增量同步</p>
         :type SyncMode: int
@@ -26637,7 +26637,7 @@ class DescribeAssetImageRegistryRegistryDetailResponse(AbstractModel):
 
     @property
     def InstanceID(self):
-        r"""<p>tcr情况下instance_id</p>
+        r"""<p>TCR实例ID</p>
         :rtype: str
         """
         return self._InstanceID

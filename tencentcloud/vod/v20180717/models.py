@@ -12683,14 +12683,14 @@ class AigcImageTaskOutput(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _FileInfos: AIGC 生图任务的输出文件信息。
+        :param _FileInfos: <p>AIGC 生图任务的输出文件信息。</p>
         :type FileInfos: list of AigcImageTaskOutputFileInfo
         """
         self._FileInfos = None
 
     @property
     def FileInfos(self):
-        r"""AIGC 生图任务的输出文件信息。
+        r"""<p>AIGC 生图任务的输出文件信息。</p>
         :rtype: list of AigcImageTaskOutputFileInfo
         """
         return self._FileInfos

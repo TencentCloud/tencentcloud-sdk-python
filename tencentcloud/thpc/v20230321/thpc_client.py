@@ -562,6 +562,29 @@ class ThpcClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def InquirePriceModifyWorkspacesChargeType(self, request):
+        r"""查询按量计费工作空间转换为包年包月的价格。不会创建订单或变更资源。
+
+        :param request: Request instance for InquirePriceModifyWorkspacesChargeType.
+        :type request: :class:`tencentcloud.thpc.v20230321.models.InquirePriceModifyWorkspacesChargeTypeRequest`
+        :rtype: :class:`tencentcloud.thpc.v20230321.models.InquirePriceModifyWorkspacesChargeTypeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("InquirePriceModifyWorkspacesChargeType", params, headers=headers)
+            response = json.loads(body)
+            model = models.InquirePriceModifyWorkspacesChargeTypeResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyClusterDeletionProtection(self, request):
         r"""修改集群删除保护状态
 
@@ -645,6 +668,29 @@ class ThpcClient(AbstractClient):
             body = self.call("ModifyWorkspacesAttribute", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyWorkspacesAttributeResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyWorkspacesChargeType(self, request):
+        r"""正式提交按量计费工作空间转包年包月订单。仅支持 ONLINE 且计费模式为 POSTPAID_BY_HOUR 的工作空间。
+
+        :param request: Request instance for ModifyWorkspacesChargeType.
+        :type request: :class:`tencentcloud.thpc.v20230321.models.ModifyWorkspacesChargeTypeRequest`
+        :rtype: :class:`tencentcloud.thpc.v20230321.models.ModifyWorkspacesChargeTypeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyWorkspacesChargeType", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyWorkspacesChargeTypeResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
