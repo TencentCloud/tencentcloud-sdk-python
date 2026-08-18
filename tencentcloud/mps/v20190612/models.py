@@ -549,6 +549,8 @@ class Activity(AbstractModel):
         r"""
         :param _ActivityType: <p>原子任务类型：</p><li>input: 起始节点</li><li>output：终止节点</li><li>action-trans：转码</li><li>action-samplesnapshot：采样截图</li><li>action-AIAnalysis: 分析</li><li>action-AIRecognition：识别</li><li>action-aiReview：审核</li><li>action-animated-graphics：转动图</li><li>action-image-sprite：雪碧图</li><li>action-snapshotByTimeOffset: 时间点截图</li><li>action-adaptive-substream：自适应码流</li><li>action-AIQualityControl：媒体质检</li><li>action-SmartSubtitles：智能字幕</li><li>action-exec-rules：判断规则</li><li>action-SmartErase：智能擦除</li>
         :type ActivityType: str
+        :param _PredriveIndex: <p>前驱节点索引数组。<br>注意：创建和修改编排时，该参数无效，由服务端自动生成。</p>
+        :type PredriveIndex: list of int
         :param _ReardriveIndex: <p>后驱节点索引数组</p>
         :type ReardriveIndex: list of int
         :param _ActivityPara: <p>原子任务参数</p>
@@ -556,6 +558,7 @@ class Activity(AbstractModel):
         :type ActivityPara: :class:`tencentcloud.mps.v20190612.models.ActivityPara`
         """
         self._ActivityType = None
+        self._PredriveIndex = None
         self._ReardriveIndex = None
         self._ActivityPara = None
 
@@ -569,6 +572,17 @@ class Activity(AbstractModel):
     @ActivityType.setter
     def ActivityType(self, ActivityType):
         self._ActivityType = ActivityType
+
+    @property
+    def PredriveIndex(self):
+        r"""<p>前驱节点索引数组。<br>注意：创建和修改编排时，该参数无效，由服务端自动生成。</p>
+        :rtype: list of int
+        """
+        return self._PredriveIndex
+
+    @PredriveIndex.setter
+    def PredriveIndex(self, PredriveIndex):
+        self._PredriveIndex = PredriveIndex
 
     @property
     def ReardriveIndex(self):
@@ -596,6 +610,7 @@ class Activity(AbstractModel):
 
     def _deserialize(self, params):
         self._ActivityType = params.get("ActivityType")
+        self._PredriveIndex = params.get("PredriveIndex")
         self._ReardriveIndex = params.get("ReardriveIndex")
         if params.get("ActivityPara") is not None:
             self._ActivityPara = ActivityPara()
@@ -23905,11 +23920,14 @@ class CreateImageConfig(AbstractModel):
         :type Resolution: str
         :param _AspectRatio: <p>输出图片的宽高比</p><p>枚举值：</p><ul><li>1:1： 宽高比 1:1</li><li>2:3： 宽高比 2:3</li><li>3:2： 宽高比 3:2</li><li>3:4： 宽高比 3:4</li><li>4:3： 宽高比 4:3</li><li>9:16： 宽高比 9:16</li><li>16:9： 宽高比 16:9</li></ul><p>默认值：1:1</p>
         :type AspectRatio: str
+        :param _AdditionalParameters: <p>附加参数。</p>
+        :type AdditionalParameters: str
         """
         self._Model = None
         self._Prompt = None
         self._Resolution = None
         self._AspectRatio = None
+        self._AdditionalParameters = None
 
     @property
     def Model(self):
@@ -23955,12 +23973,24 @@ class CreateImageConfig(AbstractModel):
     def AspectRatio(self, AspectRatio):
         self._AspectRatio = AspectRatio
 
+    @property
+    def AdditionalParameters(self):
+        r"""<p>附加参数。</p>
+        :rtype: str
+        """
+        return self._AdditionalParameters
+
+    @AdditionalParameters.setter
+    def AdditionalParameters(self, AdditionalParameters):
+        self._AdditionalParameters = AdditionalParameters
+
 
     def _deserialize(self, params):
         self._Model = params.get("Model")
         self._Prompt = params.get("Prompt")
         self._Resolution = params.get("Resolution")
         self._AspectRatio = params.get("AspectRatio")
+        self._AdditionalParameters = params.get("AdditionalParameters")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
