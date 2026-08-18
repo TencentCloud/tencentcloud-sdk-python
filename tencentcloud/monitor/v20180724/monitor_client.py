@@ -3407,6 +3407,29 @@ class MonitorClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyPrometheusInstanceAccessPoints(self, request):
+        r"""ModifyPrometheusInstanceAccessPoints 用于管理 Prometheus 实例的访问入口，当前支持 HTTP 与 HTTPS 两种协议：默认启用 HTTP，HTTPS（mTLS）为可选项，但至少需启用一种协议。现阶段对 Prometheus 的读写均通过私有网络入口完成；由于 HTTPS 依赖 mTLS，配置与运维复杂度更高，且在绝大多数场景下并无必要，因此通常不建议启用。
+
+        :param request: Request instance for ModifyPrometheusInstanceAccessPoints.
+        :type request: :class:`tencentcloud.monitor.v20180724.models.ModifyPrometheusInstanceAccessPointsRequest`
+        :rtype: :class:`tencentcloud.monitor.v20180724.models.ModifyPrometheusInstanceAccessPointsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyPrometheusInstanceAccessPoints", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyPrometheusInstanceAccessPointsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyPrometheusInstanceAttributes(self, request):
         r"""修改 Prometheus 实例相关属性
 

@@ -473,6 +473,29 @@ class TokenhubClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeModelQuota(self, request):
+        r"""查询指定模型的 TPM 和 QPM 配额上限。
+
+        :param request: Request instance for DescribeModelQuota.
+        :type request: :class:`tencentcloud.tokenhub.v20260322.models.DescribeModelQuotaRequest`
+        :rtype: :class:`tencentcloud.tokenhub.v20260322.models.DescribeModelQuotaResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeModelQuota", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeModelQuotaResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeTokenPlan(self, request):
         r"""查询 TokenPlan 套餐详情。
 

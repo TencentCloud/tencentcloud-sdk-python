@@ -10732,14 +10732,14 @@ class DescribeDBInstanceSSLConfigRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DBInstanceId: 实例ID，形如postgres-6bwgamo3。可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取
+        :param _DBInstanceId: <p>实例ID，形如postgres-6bwgamo3。可通过<a href="https://cloud.tencent.com/document/api/409/16773">DescribeDBInstances</a>接口获取</p>
         :type DBInstanceId: str
         """
         self._DBInstanceId = None
 
     @property
     def DBInstanceId(self):
-        r"""实例ID，形如postgres-6bwgamo3。可通过[DescribeDBInstances](https://cloud.tencent.com/document/api/409/16773)接口获取
+        r"""<p>实例ID，形如postgres-6bwgamo3。可通过<a href="https://cloud.tencent.com/document/api/409/16773">DescribeDBInstances</a>接口获取</p>
         :rtype: str
         """
         return self._DBInstanceId
@@ -10768,23 +10768,32 @@ class DescribeDBInstanceSSLConfigResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SSLEnabled: true 代表开通 ，false 代表未开通
+        :param _SSLEnabled: <p>true 代表开通 ，false 代表未开通</p>
         :type SSLEnabled: bool
-        :param _CAUrl: 云端根证书下载链接
+        :param _CAUrl: <p>云端根证书下载链接</p>
         :type CAUrl: str
-        :param _ConnectAddress: 服务器证书中配置的内网或外网连接地址
+        :param _ConnectAddress: <p>服务器证书中配置的内网或外网连接地址</p>
         :type ConnectAddress: str
+        :param _CACert: <p>CA证书公钥，仅云盘版</p>
+        :type CACert: str
+        :param _CAJKS: <p>JKS公钥，仅云盘版</p>
+        :type CAJKS: str
+        :param _CAP7B: <p>CAP7B公钥，仅云盘版</p>
+        :type CAP7B: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._SSLEnabled = None
         self._CAUrl = None
         self._ConnectAddress = None
+        self._CACert = None
+        self._CAJKS = None
+        self._CAP7B = None
         self._RequestId = None
 
     @property
     def SSLEnabled(self):
-        r"""true 代表开通 ，false 代表未开通
+        r"""<p>true 代表开通 ，false 代表未开通</p>
         :rtype: bool
         """
         return self._SSLEnabled
@@ -10795,7 +10804,7 @@ class DescribeDBInstanceSSLConfigResponse(AbstractModel):
 
     @property
     def CAUrl(self):
-        r"""云端根证书下载链接
+        r"""<p>云端根证书下载链接</p>
         :rtype: str
         """
         return self._CAUrl
@@ -10806,7 +10815,7 @@ class DescribeDBInstanceSSLConfigResponse(AbstractModel):
 
     @property
     def ConnectAddress(self):
-        r"""服务器证书中配置的内网或外网连接地址
+        r"""<p>服务器证书中配置的内网或外网连接地址</p>
         :rtype: str
         """
         return self._ConnectAddress
@@ -10814,6 +10823,39 @@ class DescribeDBInstanceSSLConfigResponse(AbstractModel):
     @ConnectAddress.setter
     def ConnectAddress(self, ConnectAddress):
         self._ConnectAddress = ConnectAddress
+
+    @property
+    def CACert(self):
+        r"""<p>CA证书公钥，仅云盘版</p>
+        :rtype: str
+        """
+        return self._CACert
+
+    @CACert.setter
+    def CACert(self, CACert):
+        self._CACert = CACert
+
+    @property
+    def CAJKS(self):
+        r"""<p>JKS公钥，仅云盘版</p>
+        :rtype: str
+        """
+        return self._CAJKS
+
+    @CAJKS.setter
+    def CAJKS(self, CAJKS):
+        self._CAJKS = CAJKS
+
+    @property
+    def CAP7B(self):
+        r"""<p>CAP7B公钥，仅云盘版</p>
+        :rtype: str
+        """
+        return self._CAP7B
+
+    @CAP7B.setter
+    def CAP7B(self, CAP7B):
+        self._CAP7B = CAP7B
 
     @property
     def RequestId(self):
@@ -10831,6 +10873,9 @@ class DescribeDBInstanceSSLConfigResponse(AbstractModel):
         self._SSLEnabled = params.get("SSLEnabled")
         self._CAUrl = params.get("CAUrl")
         self._ConnectAddress = params.get("ConnectAddress")
+        self._CACert = params.get("CACert")
+        self._CAJKS = params.get("CAJKS")
+        self._CAP7B = params.get("CAP7B")
         self._RequestId = params.get("RequestId")
 
 

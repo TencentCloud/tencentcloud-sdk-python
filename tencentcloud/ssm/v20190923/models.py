@@ -1587,6 +1587,8 @@ class DescribeSecretResponse(AbstractModel):
         :type TargetUinString: str
         :param _AccountInfoList: <p>对应云产品的账号信息</p>
         :type AccountInfoList: list of SecretAccountInfo
+        :param _NextRotationTime: 
+        :type NextRotationTime: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1612,6 +1614,7 @@ class DescribeSecretResponse(AbstractModel):
         self._CreateUinString = None
         self._TargetUinString = None
         self._AccountInfoList = None
+        self._NextRotationTime = None
         self._RequestId = None
 
     @property
@@ -1857,6 +1860,17 @@ class DescribeSecretResponse(AbstractModel):
         self._AccountInfoList = AccountInfoList
 
     @property
+    def NextRotationTime(self):
+        r"""
+        :rtype: str
+        """
+        return self._NextRotationTime
+
+    @NextRotationTime.setter
+    def NextRotationTime(self, NextRotationTime):
+        self._NextRotationTime = NextRotationTime
+
+    @property
     def RequestId(self):
         r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -1896,6 +1910,7 @@ class DescribeSecretResponse(AbstractModel):
                 obj = SecretAccountInfo()
                 obj._deserialize(item)
                 self._AccountInfoList.append(obj)
+        self._NextRotationTime = params.get("NextRotationTime")
         self._RequestId = params.get("RequestId")
 
 
@@ -2365,9 +2380,15 @@ class GetSecretValueRequest(AbstractModel):
         :param _VersionId: 指定对应凭据的版本号。
 对于云产品凭据如Mysql凭据，通过指定凭据名称和历史版本号来获取历史轮转凭据的明文信息，如果要获取当前正在使用的凭据版本的明文，需要将版本号指定为：SSM_Current。
         :type VersionId: str
+        :param _EncryptionPublicKey: 
+        :type EncryptionPublicKey: str
+        :param _EncryptionAlgorithm: 
+        :type EncryptionAlgorithm: str
         """
         self._SecretName = None
         self._VersionId = None
+        self._EncryptionPublicKey = None
+        self._EncryptionAlgorithm = None
 
     @property
     def SecretName(self):
@@ -2392,10 +2413,34 @@ class GetSecretValueRequest(AbstractModel):
     def VersionId(self, VersionId):
         self._VersionId = VersionId
 
+    @property
+    def EncryptionPublicKey(self):
+        r"""
+        :rtype: str
+        """
+        return self._EncryptionPublicKey
+
+    @EncryptionPublicKey.setter
+    def EncryptionPublicKey(self, EncryptionPublicKey):
+        self._EncryptionPublicKey = EncryptionPublicKey
+
+    @property
+    def EncryptionAlgorithm(self):
+        r"""
+        :rtype: str
+        """
+        return self._EncryptionAlgorithm
+
+    @EncryptionAlgorithm.setter
+    def EncryptionAlgorithm(self, EncryptionAlgorithm):
+        self._EncryptionAlgorithm = EncryptionAlgorithm
+
 
     def _deserialize(self, params):
         self._SecretName = params.get("SecretName")
         self._VersionId = params.get("VersionId")
+        self._EncryptionPublicKey = params.get("EncryptionPublicKey")
+        self._EncryptionAlgorithm = params.get("EncryptionAlgorithm")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2821,6 +2866,8 @@ class ListSecretsRequest(AbstractModel):
         :type ProductName: str
         :param _EncryptType: <p>凭据加密类型</p><p>枚举值：</p><ul><li>0： KMS 密钥加密</li><li>1： 软密钥加密</li></ul><p>默认值：0</p>
         :type EncryptType: int
+        :param _InstanceID: <p>云产品实例 ID</p>
+        :type InstanceID: str
         """
         self._Offset = None
         self._Limit = None
@@ -2831,6 +2878,7 @@ class ListSecretsRequest(AbstractModel):
         self._SecretType = None
         self._ProductName = None
         self._EncryptType = None
+        self._InstanceID = None
 
     @property
     def Offset(self):
@@ -2931,6 +2979,17 @@ class ListSecretsRequest(AbstractModel):
     def EncryptType(self, EncryptType):
         self._EncryptType = EncryptType
 
+    @property
+    def InstanceID(self):
+        r"""<p>云产品实例 ID</p>
+        :rtype: str
+        """
+        return self._InstanceID
+
+    @InstanceID.setter
+    def InstanceID(self, InstanceID):
+        self._InstanceID = InstanceID
+
 
     def _deserialize(self, params):
         self._Offset = params.get("Offset")
@@ -2947,6 +3006,7 @@ class ListSecretsRequest(AbstractModel):
         self._SecretType = params.get("SecretType")
         self._ProductName = params.get("ProductName")
         self._EncryptType = params.get("EncryptType")
+        self._InstanceID = params.get("InstanceID")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

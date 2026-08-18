@@ -49,29 +49,6 @@ class DataagentClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def AddScene(self, request):
-        r"""新增场景
-
-        :param request: Request instance for AddScene.
-        :type request: :class:`tencentcloud.dataagent.v20250513.models.AddSceneRequest`
-        :rtype: :class:`tencentcloud.dataagent.v20250513.models.AddSceneResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("AddScene", params, headers=headers)
-            response = json.loads(body)
-            model = models.AddSceneResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def AppendKnowledgeTask(self, request):
         r"""追加文件
 
@@ -173,29 +150,6 @@ class DataagentClient(AbstractClient):
             body = self.call("DeleteDataAgentSession", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteDataAgentSessionResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def DeleteScene(self, request):
-        r"""删除场景
-
-        :param request: Request instance for DeleteScene.
-        :type request: :class:`tencentcloud.dataagent.v20250513.models.DeleteSceneRequest`
-        :rtype: :class:`tencentcloud.dataagent.v20250513.models.DeleteSceneResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DeleteScene", params, headers=headers)
-            response = json.loads(body)
-            model = models.DeleteSceneResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -522,29 +476,6 @@ class DataagentClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def QuerySceneList(self, request):
-        r"""查询场景列表
-
-        :param request: Request instance for QuerySceneList.
-        :type request: :class:`tencentcloud.dataagent.v20250513.models.QuerySceneListRequest`
-        :rtype: :class:`tencentcloud.dataagent.v20250513.models.QuerySceneListResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("QuerySceneList", params, headers=headers)
-            response = json.loads(body)
-            model = models.QuerySceneListResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def QueryUserAuthority(self, request):
         r"""查询对象权限
 
@@ -582,29 +513,6 @@ class DataagentClient(AbstractClient):
             body = self.call("StopChatAI", params, headers=headers)
             response = json.loads(body)
             model = models.StopChatAIResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def UpdateScene(self, request):
-        r"""更新场景
-
-        :param request: Request instance for UpdateScene.
-        :type request: :class:`tencentcloud.dataagent.v20250513.models.UpdateSceneRequest`
-        :rtype: :class:`tencentcloud.dataagent.v20250513.models.UpdateSceneResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("UpdateScene", params, headers=headers)
-            response = json.loads(body)
-            model = models.UpdateSceneResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

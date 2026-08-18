@@ -8983,45 +8983,23 @@ class CreateConfigRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Name: 采集配置名称
-- 名称种不得包含特殊字符｜
-- 名称最长255字符，超过截断
+        :param _Name: <p>采集配置名称</p><ul><li>名称种不得包含特殊字符｜</li><li>名称最长255字符，超过截断</li></ul>
         :type Name: str
-        :param _Output: 采集配置所属日志主题ID即TopicId
-- 通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题Id。
+        :param _Output: <p>采集配置所属日志主题ID即TopicId</p><ul><li>通过<a href="https://cloud.tencent.com/document/product/614/56454">获取日志主题列表</a>获取日志主题Id。</li></ul>
         :type Output: str
-        :param _Path: 日志采集路径，包含文件名，支持多个路径，多个路径之间英文逗号分隔，文件采集情况下必填
+        :param _Path: <p>日志采集路径，包含文件名，支持多个路径，多个路径之间英文逗号分隔，文件采集情况下必填</p>
         :type Path: str
-        :param _LogType: 采集的日志类型，默认为minimalist_log。支持以下类型：
-- json_log代表：JSON-文件日志（详见[使用 JSON 提取模式采集日志](https://cloud.tencent.com/document/product/614/17419)）；
-- delimiter_log代表：分隔符-文件日志（详见[使用分隔符提取模式采集日志](https://cloud.tencent.com/document/product/614/17420)）；
-- minimalist_log代表：单行全文-文件日志（详见[使用单行全文提取模式采集日志](https://cloud.tencent.com/document/product/614/17421)）；
-- fullregex_log代表：单行完全正则-文件日志（详见[使用单行-完全正则提取模式采集日志](https://cloud.tencent.com/document/product/614/52365)）；
-- multiline_log代表：多行全文-文件日志（详见[使用多行全文提取模式采集日志](https://cloud.tencent.com/document/product/614/17422)）；
-- multiline_fullregex_log代表：多行完全正则-文件日志（详见[使用多行-完全正则提取模式采集日志](https://cloud.tencent.com/document/product/614/52366)）；
-- user_define_log代表：组合解析（适用于多格式嵌套的日志，详见[使用组合解析提取模式采集日志](https://cloud.tencent.com/document/product/614/61310)）；
-- service_syslog代表：syslog 采集（详见[采集 Syslog](https://cloud.tencent.com/document/product/614/81454)）；
-- windows_event_log代表：Windows事件日志（详见[采集 Windows 事件日志](https://cloud.tencent.com/document/product/614/96678)）。
+        :param _LogType: <p>采集的日志类型，默认为minimalist_log。支持以下类型：</p><ul><li>json_log代表：JSON-文件日志（详见<a href="https://cloud.tencent.com/document/product/614/17419">使用 JSON 提取模式采集日志</a>）；</li><li>delimiter_log代表：分隔符-文件日志（详见<a href="https://cloud.tencent.com/document/product/614/17420">使用分隔符提取模式采集日志</a>）；</li><li>minimalist_log代表：单行全文-文件日志（详见<a href="https://cloud.tencent.com/document/product/614/17421">使用单行全文提取模式采集日志</a>）；</li><li>fullregex_log代表：单行完全正则-文件日志（详见<a href="https://cloud.tencent.com/document/product/614/52365">使用单行-完全正则提取模式采集日志</a>）；</li><li>multiline_log代表：多行全文-文件日志（详见<a href="https://cloud.tencent.com/document/product/614/17422">使用多行全文提取模式采集日志</a>）；</li><li>multiline_fullregex_log代表：多行完全正则-文件日志（详见<a href="https://cloud.tencent.com/document/product/614/52366">使用多行-完全正则提取模式采集日志</a>）；</li><li>user_define_log代表：组合解析（适用于多格式嵌套的日志，详见<a href="https://cloud.tencent.com/document/product/614/61310">使用组合解析提取模式采集日志</a>）；</li><li>service_syslog代表：syslog 采集（详见<a href="https://cloud.tencent.com/document/product/614/81454">采集 Syslog</a>）；</li><li>windows_event_log代表：Windows事件日志（详见<a href="https://cloud.tencent.com/document/product/614/96678">采集 Windows 事件日志</a>）。</li><li>journal_log代表：journal日志采集</li></ul>
         :type LogType: str
-        :param _ExtractRule: 提取规则，如果设置了ExtractRule，则必须设置LogType
+        :param _ExtractRule: <p>提取规则，如果设置了ExtractRule，则必须设置LogType</p>
         :type ExtractRule: :class:`tencentcloud.cls.v20201016.models.ExtractRuleInfo`
-        :param _ExcludePaths: 采集黑名单路径列表
+        :param _ExcludePaths: <p>采集黑名单路径列表</p>
         :type ExcludePaths: list of ExcludePathInfo
-        :param _UserDefineRule: 用户自定义采集规则，Json格式序列化的字符串。当LogType为user_define_log时，必填。
+        :param _UserDefineRule: <p>用户自定义采集规则，Json格式序列化的字符串。当LogType为user_define_log时，必填。</p>
         :type UserDefineRule: str
-        :param _AdvancedConfig: 高级采集配置。 Json字符串， Key/Value定义为如下：
-- ClsAgentFileTimeout(超时属性), 取值范围: 大于等于0的整数， 0为不超时
-- ClsAgentMaxDepth(最大目录深度)，取值范围: 大于等于0的整数
-- ClsAgentParseFailMerge(合并解析失败日志)，取值范围: true或false
-样例：
-`{\"ClsAgentFileTimeout\":0,\"ClsAgentMaxDepth\":10,\"ClsAgentParseFailMerge\":true}`
-
-控制台默认占位值：`{\"ClsAgentDefault\":0}`
+        :param _AdvancedConfig: <p>高级采集配置。 Json字符串， Key/Value定义为如下：</p><ul><li>ClsAgentFileTimeout(超时属性), 取值范围: 大于等于0的整数， 0为不超时</li><li>ClsAgentMaxDepth(最大目录深度)，取值范围: 大于等于0的整数</li><li>ClsAgentParseFailMerge(合并解析失败日志)，取值范围: true或false<br>样例：<br><code>{\&quot;ClsAgentFileTimeout\&quot;:0,\&quot;ClsAgentMaxDepth\&quot;:10,\&quot;ClsAgentParseFailMerge\&quot;:true}</code></li></ul><p>控制台默认占位值：<code>{\&quot;ClsAgentDefault\&quot;:0}</code></p>
         :type AdvancedConfig: str
-        :param _InputType: 日志输入类型（<span style="color:red; font-weight:bold">注：windows场景必填且仅支持file和windows_event类型</span>）
-- file: 文件类型采集
-- windows_event：windows事件采集
-- syslog：系统日志采集
+        :param _InputType: <p>日志输入类型（<span style="color:red; font-weight:bold">注：windows场景必填且仅支持file和windows_event类型</span>）</p><ul><li>file: 文件类型采集</li><li>windows_event：windows事件采集</li><li>syslog：系统日志采集</li></ul>
         :type InputType: str
         """
         self._Name = None
@@ -9036,9 +9014,7 @@ class CreateConfigRequest(AbstractModel):
 
     @property
     def Name(self):
-        r"""采集配置名称
-- 名称种不得包含特殊字符｜
-- 名称最长255字符，超过截断
+        r"""<p>采集配置名称</p><ul><li>名称种不得包含特殊字符｜</li><li>名称最长255字符，超过截断</li></ul>
         :rtype: str
         """
         return self._Name
@@ -9049,8 +9025,7 @@ class CreateConfigRequest(AbstractModel):
 
     @property
     def Output(self):
-        r"""采集配置所属日志主题ID即TopicId
-- 通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题Id。
+        r"""<p>采集配置所属日志主题ID即TopicId</p><ul><li>通过<a href="https://cloud.tencent.com/document/product/614/56454">获取日志主题列表</a>获取日志主题Id。</li></ul>
         :rtype: str
         """
         return self._Output
@@ -9061,7 +9036,7 @@ class CreateConfigRequest(AbstractModel):
 
     @property
     def Path(self):
-        r"""日志采集路径，包含文件名，支持多个路径，多个路径之间英文逗号分隔，文件采集情况下必填
+        r"""<p>日志采集路径，包含文件名，支持多个路径，多个路径之间英文逗号分隔，文件采集情况下必填</p>
         :rtype: str
         """
         return self._Path
@@ -9072,16 +9047,7 @@ class CreateConfigRequest(AbstractModel):
 
     @property
     def LogType(self):
-        r"""采集的日志类型，默认为minimalist_log。支持以下类型：
-- json_log代表：JSON-文件日志（详见[使用 JSON 提取模式采集日志](https://cloud.tencent.com/document/product/614/17419)）；
-- delimiter_log代表：分隔符-文件日志（详见[使用分隔符提取模式采集日志](https://cloud.tencent.com/document/product/614/17420)）；
-- minimalist_log代表：单行全文-文件日志（详见[使用单行全文提取模式采集日志](https://cloud.tencent.com/document/product/614/17421)）；
-- fullregex_log代表：单行完全正则-文件日志（详见[使用单行-完全正则提取模式采集日志](https://cloud.tencent.com/document/product/614/52365)）；
-- multiline_log代表：多行全文-文件日志（详见[使用多行全文提取模式采集日志](https://cloud.tencent.com/document/product/614/17422)）；
-- multiline_fullregex_log代表：多行完全正则-文件日志（详见[使用多行-完全正则提取模式采集日志](https://cloud.tencent.com/document/product/614/52366)）；
-- user_define_log代表：组合解析（适用于多格式嵌套的日志，详见[使用组合解析提取模式采集日志](https://cloud.tencent.com/document/product/614/61310)）；
-- service_syslog代表：syslog 采集（详见[采集 Syslog](https://cloud.tencent.com/document/product/614/81454)）；
-- windows_event_log代表：Windows事件日志（详见[采集 Windows 事件日志](https://cloud.tencent.com/document/product/614/96678)）。
+        r"""<p>采集的日志类型，默认为minimalist_log。支持以下类型：</p><ul><li>json_log代表：JSON-文件日志（详见<a href="https://cloud.tencent.com/document/product/614/17419">使用 JSON 提取模式采集日志</a>）；</li><li>delimiter_log代表：分隔符-文件日志（详见<a href="https://cloud.tencent.com/document/product/614/17420">使用分隔符提取模式采集日志</a>）；</li><li>minimalist_log代表：单行全文-文件日志（详见<a href="https://cloud.tencent.com/document/product/614/17421">使用单行全文提取模式采集日志</a>）；</li><li>fullregex_log代表：单行完全正则-文件日志（详见<a href="https://cloud.tencent.com/document/product/614/52365">使用单行-完全正则提取模式采集日志</a>）；</li><li>multiline_log代表：多行全文-文件日志（详见<a href="https://cloud.tencent.com/document/product/614/17422">使用多行全文提取模式采集日志</a>）；</li><li>multiline_fullregex_log代表：多行完全正则-文件日志（详见<a href="https://cloud.tencent.com/document/product/614/52366">使用多行-完全正则提取模式采集日志</a>）；</li><li>user_define_log代表：组合解析（适用于多格式嵌套的日志，详见<a href="https://cloud.tencent.com/document/product/614/61310">使用组合解析提取模式采集日志</a>）；</li><li>service_syslog代表：syslog 采集（详见<a href="https://cloud.tencent.com/document/product/614/81454">采集 Syslog</a>）；</li><li>windows_event_log代表：Windows事件日志（详见<a href="https://cloud.tencent.com/document/product/614/96678">采集 Windows 事件日志</a>）。</li><li>journal_log代表：journal日志采集</li></ul>
         :rtype: str
         """
         return self._LogType
@@ -9092,7 +9058,7 @@ class CreateConfigRequest(AbstractModel):
 
     @property
     def ExtractRule(self):
-        r"""提取规则，如果设置了ExtractRule，则必须设置LogType
+        r"""<p>提取规则，如果设置了ExtractRule，则必须设置LogType</p>
         :rtype: :class:`tencentcloud.cls.v20201016.models.ExtractRuleInfo`
         """
         return self._ExtractRule
@@ -9103,7 +9069,7 @@ class CreateConfigRequest(AbstractModel):
 
     @property
     def ExcludePaths(self):
-        r"""采集黑名单路径列表
+        r"""<p>采集黑名单路径列表</p>
         :rtype: list of ExcludePathInfo
         """
         return self._ExcludePaths
@@ -9114,7 +9080,7 @@ class CreateConfigRequest(AbstractModel):
 
     @property
     def UserDefineRule(self):
-        r"""用户自定义采集规则，Json格式序列化的字符串。当LogType为user_define_log时，必填。
+        r"""<p>用户自定义采集规则，Json格式序列化的字符串。当LogType为user_define_log时，必填。</p>
         :rtype: str
         """
         return self._UserDefineRule
@@ -9125,14 +9091,7 @@ class CreateConfigRequest(AbstractModel):
 
     @property
     def AdvancedConfig(self):
-        r"""高级采集配置。 Json字符串， Key/Value定义为如下：
-- ClsAgentFileTimeout(超时属性), 取值范围: 大于等于0的整数， 0为不超时
-- ClsAgentMaxDepth(最大目录深度)，取值范围: 大于等于0的整数
-- ClsAgentParseFailMerge(合并解析失败日志)，取值范围: true或false
-样例：
-`{\"ClsAgentFileTimeout\":0,\"ClsAgentMaxDepth\":10,\"ClsAgentParseFailMerge\":true}`
-
-控制台默认占位值：`{\"ClsAgentDefault\":0}`
+        r"""<p>高级采集配置。 Json字符串， Key/Value定义为如下：</p><ul><li>ClsAgentFileTimeout(超时属性), 取值范围: 大于等于0的整数， 0为不超时</li><li>ClsAgentMaxDepth(最大目录深度)，取值范围: 大于等于0的整数</li><li>ClsAgentParseFailMerge(合并解析失败日志)，取值范围: true或false<br>样例：<br><code>{\&quot;ClsAgentFileTimeout\&quot;:0,\&quot;ClsAgentMaxDepth\&quot;:10,\&quot;ClsAgentParseFailMerge\&quot;:true}</code></li></ul><p>控制台默认占位值：<code>{\&quot;ClsAgentDefault\&quot;:0}</code></p>
         :rtype: str
         """
         return self._AdvancedConfig
@@ -9143,10 +9102,7 @@ class CreateConfigRequest(AbstractModel):
 
     @property
     def InputType(self):
-        r"""日志输入类型（<span style="color:red; font-weight:bold">注：windows场景必填且仅支持file和windows_event类型</span>）
-- file: 文件类型采集
-- windows_event：windows事件采集
-- syslog：系统日志采集
+        r"""<p>日志输入类型（<span style="color:red; font-weight:bold">注：windows场景必填且仅支持file和windows_event类型</span>）</p><ul><li>file: 文件类型采集</li><li>windows_event：windows事件采集</li><li>syslog：系统日志采集</li></ul>
         :rtype: str
         """
         return self._InputType
@@ -9190,7 +9146,7 @@ class CreateConfigResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ConfigId: 采集配置ID
+        :param _ConfigId: <p>采集配置ID</p>
         :type ConfigId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -9200,7 +9156,7 @@ class CreateConfigResponse(AbstractModel):
 
     @property
     def ConfigId(self):
-        r"""采集配置ID
+        r"""<p>采集配置ID</p>
         :rtype: str
         """
         return self._ConfigId
@@ -20932,13 +20888,13 @@ class DescribeAgentConfigsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AgentVersion: agent的版本号
+        :param _AgentVersion: <p>agent的版本号</p>
         :type AgentVersion: str
-        :param _AgentIp: agent的IP地址
+        :param _AgentIp: <p>agent的IP地址</p>
         :type AgentIp: str
-        :param _Labels: 机器组标签列表
+        :param _Labels: <p>机器组标签列表</p>
         :type Labels: list of str
-        :param _InstanceId: agent的instance id
+        :param _InstanceId: <p>agent的instance id</p>
         :type InstanceId: str
         """
         self._AgentVersion = None
@@ -20948,7 +20904,7 @@ class DescribeAgentConfigsRequest(AbstractModel):
 
     @property
     def AgentVersion(self):
-        r"""agent的版本号
+        r"""<p>agent的版本号</p>
         :rtype: str
         """
         return self._AgentVersion
@@ -20959,7 +20915,7 @@ class DescribeAgentConfigsRequest(AbstractModel):
 
     @property
     def AgentIp(self):
-        r"""agent的IP地址
+        r"""<p>agent的IP地址</p>
         :rtype: str
         """
         return self._AgentIp
@@ -20970,7 +20926,7 @@ class DescribeAgentConfigsRequest(AbstractModel):
 
     @property
     def Labels(self):
-        r"""机器组标签列表
+        r"""<p>机器组标签列表</p>
         :rtype: list of str
         """
         return self._Labels
@@ -20981,7 +20937,7 @@ class DescribeAgentConfigsRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""agent的instance id
+        r"""<p>agent的instance id</p>
         :rtype: str
         """
         return self._InstanceId
@@ -21013,22 +20969,22 @@ class DescribeAgentConfigsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _LogConfigs: 采集配置
+        :param _LogConfigs: <p>采集配置</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type LogConfigs: list of LogConfigInfo
-        :param _ServiceLogConfigs: 服务日志的配置信息
+        :param _ServiceLogConfigs: <p>服务日志的配置信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ServiceLogConfigs: list of ServiceLogConfigInfo
-        :param _LastVersion: 弃用
+        :param _LastVersion: <p>弃用</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type LastVersion: str
-        :param _NeedUpdate: 弃用
+        :param _NeedUpdate: <p>弃用</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type NeedUpdate: bool
-        :param _URL: 弃用
+        :param _URL: <p>弃用</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type URL: str
-        :param _FileMd5: 弃用
+        :param _FileMd5: <p>弃用</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type FileMd5: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -21044,7 +21000,7 @@ class DescribeAgentConfigsResponse(AbstractModel):
 
     @property
     def LogConfigs(self):
-        r"""采集配置
+        r"""<p>采集配置</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of LogConfigInfo
         """
@@ -21056,7 +21012,7 @@ class DescribeAgentConfigsResponse(AbstractModel):
 
     @property
     def ServiceLogConfigs(self):
-        r"""服务日志的配置信息
+        r"""<p>服务日志的配置信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ServiceLogConfigInfo
         """
@@ -21068,7 +21024,7 @@ class DescribeAgentConfigsResponse(AbstractModel):
 
     @property
     def LastVersion(self):
-        r"""弃用
+        r"""<p>弃用</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -21080,7 +21036,7 @@ class DescribeAgentConfigsResponse(AbstractModel):
 
     @property
     def NeedUpdate(self):
-        r"""弃用
+        r"""<p>弃用</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
@@ -21092,7 +21048,7 @@ class DescribeAgentConfigsResponse(AbstractModel):
 
     @property
     def URL(self):
-        r"""弃用
+        r"""<p>弃用</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -21104,7 +21060,7 @@ class DescribeAgentConfigsResponse(AbstractModel):
 
     @property
     def FileMd5(self):
-        r"""弃用
+        r"""<p>弃用</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -32698,6 +32654,16 @@ class ExtractRuleInfo(AbstractModel):
         :type AdvanceFilterRules: list of AdvanceFilterRuleInfo
         :param _RawLogKey: <p>原始日志的键名称(Key)；所有原始日志， 均以您指定的键名称（Key），原始日志内容作为值（Value）进行上传，为空时表示不开启原始日志上传。</p><ul><li>COS导入不支持此字段。</li></ul>
         :type RawLogKey: str
+        :param _Units: <p>采集范围。空数组表示采集全部Unit，非空数组表示采集指定Unit</p>
+        :type Units: list of str
+        :param _IncludeKernel: <p>是否采集内核日志</p><p>默认值：true</p>
+        :type IncludeKernel: bool
+        :param _UseJournalTime: <p>是否使用journal原始时间。true ：用 journal 原始时间；false： 用采集时间 </p><p>默认值：false</p>
+        :type UseJournalTime: bool
+        :param _KeysDelimiter: <p>字段间分隔符数组（长度 = keys.length），每个元素是前一字段结尾到当前字段开头的分隔串</p>
+        :type KeysDelimiter: list of str
+        :param _KeysFlag: <p>字段标志位数组（长度 = keys.length），<code>0</code> = 普通字段，<code>1</code> = 包含子字段需二次拆分</p>
+        :type KeysFlag: list of int
         """
         self._TimeKey = None
         self._TimeFormat = None
@@ -32720,6 +32686,11 @@ class ExtractRuleInfo(AbstractModel):
         self._EventLogRules = None
         self._AdvanceFilterRules = None
         self._RawLogKey = None
+        self._Units = None
+        self._IncludeKernel = None
+        self._UseJournalTime = None
+        self._KeysDelimiter = None
+        self._KeysFlag = None
 
     @property
     def TimeKey(self):
@@ -32958,6 +32929,61 @@ class ExtractRuleInfo(AbstractModel):
     def RawLogKey(self, RawLogKey):
         self._RawLogKey = RawLogKey
 
+    @property
+    def Units(self):
+        r"""<p>采集范围。空数组表示采集全部Unit，非空数组表示采集指定Unit</p>
+        :rtype: list of str
+        """
+        return self._Units
+
+    @Units.setter
+    def Units(self, Units):
+        self._Units = Units
+
+    @property
+    def IncludeKernel(self):
+        r"""<p>是否采集内核日志</p><p>默认值：true</p>
+        :rtype: bool
+        """
+        return self._IncludeKernel
+
+    @IncludeKernel.setter
+    def IncludeKernel(self, IncludeKernel):
+        self._IncludeKernel = IncludeKernel
+
+    @property
+    def UseJournalTime(self):
+        r"""<p>是否使用journal原始时间。true ：用 journal 原始时间；false： 用采集时间 </p><p>默认值：false</p>
+        :rtype: bool
+        """
+        return self._UseJournalTime
+
+    @UseJournalTime.setter
+    def UseJournalTime(self, UseJournalTime):
+        self._UseJournalTime = UseJournalTime
+
+    @property
+    def KeysDelimiter(self):
+        r"""<p>字段间分隔符数组（长度 = keys.length），每个元素是前一字段结尾到当前字段开头的分隔串</p>
+        :rtype: list of str
+        """
+        return self._KeysDelimiter
+
+    @KeysDelimiter.setter
+    def KeysDelimiter(self, KeysDelimiter):
+        self._KeysDelimiter = KeysDelimiter
+
+    @property
+    def KeysFlag(self):
+        r"""<p>字段标志位数组（长度 = keys.length），<code>0</code> = 普通字段，<code>1</code> = 包含子字段需二次拆分</p>
+        :rtype: list of int
+        """
+        return self._KeysFlag
+
+    @KeysFlag.setter
+    def KeysFlag(self, KeysFlag):
+        self._KeysFlag = KeysFlag
+
 
     def _deserialize(self, params):
         self._TimeKey = params.get("TimeKey")
@@ -33001,6 +33027,11 @@ class ExtractRuleInfo(AbstractModel):
                 obj._deserialize(item)
                 self._AdvanceFilterRules.append(obj)
         self._RawLogKey = params.get("RawLogKey")
+        self._Units = params.get("Units")
+        self._IncludeKernel = params.get("IncludeKernel")
+        self._UseJournalTime = params.get("UseJournalTime")
+        self._KeysDelimiter = params.get("KeysDelimiter")
+        self._KeysFlag = params.get("KeysFlag")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -39774,47 +39805,25 @@ class ModifyConfigRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ConfigId: 采集规则配置ID，通过[获取采集规则配置](https://cloud.tencent.com/document/product/614/58616)返回信息获取。
+        :param _ConfigId: <p>采集规则配置ID，通过<a href="https://cloud.tencent.com/document/product/614/58616">获取采集规则配置</a>返回信息获取。</p>
         :type ConfigId: str
-        :param _Name: 采集规则配置名称
-- 不能包含特殊字符｜
-- 长度不能超过255字符，超过会被截断
+        :param _Name: <p>采集规则配置名称</p><ul><li>不能包含特殊字符｜</li><li>长度不能超过255字符，超过会被截断</li></ul>
         :type Name: str
-        :param _Path: 日志采集路径，包含文件名
+        :param _Path: <p>日志采集路径，包含文件名</p>
         :type Path: str
-        :param _LogType: 采集的日志类型。支持以下类型：
-- json_log代表：JSON-文件日志（详见[使用 JSON 提取模式采集日志](https://cloud.tencent.com/document/product/614/17419)）；
-- delimiter_log代表：分隔符-文件日志（详见[使用分隔符提取模式采集日志](https://cloud.tencent.com/document/product/614/17420)）；
-- minimalist_log代表：单行全文-文件日志（详见[使用单行全文提取模式采集日志](https://cloud.tencent.com/document/product/614/17421)）；
-- fullregex_log代表：单行完全正则-文件日志（详见[使用单行-完全正则提取模式采集日志](https://cloud.tencent.com/document/product/614/52365)）；
-- multiline_log代表：多行全文-文件日志（详见[使用多行全文提取模式采集日志](https://cloud.tencent.com/document/product/614/17422)）；
-- multiline_fullregex_log代表：多行完全正则-文件日志（详见[使用多行-完全正则提取模式采集日志](https://cloud.tencent.com/document/product/614/52366)）；
-- user_define_log代表：组合解析（适用于多格式嵌套的日志，详见[使用组合解析提取模式采集日志](https://cloud.tencent.com/document/product/614/61310)）；
-- service_syslog代表：syslog 采集（详见[采集 Syslog](https://cloud.tencent.com/document/product/614/81454)）；
-- windows_event_log代表：Windows事件日志（详见[采集 Windows 事件日志](https://cloud.tencent.com/document/product/614/96678)）。
-
-
+        :param _LogType: <p>采集的日志类型。支持以下类型：</p><ul><li>json_log代表：JSON-文件日志（详见<a href="https://cloud.tencent.com/document/product/614/17419">使用 JSON 提取模式采集日志</a>）；</li><li>delimiter_log代表：分隔符-文件日志（详见<a href="https://cloud.tencent.com/document/product/614/17420">使用分隔符提取模式采集日志</a>）；</li><li>minimalist_log代表：单行全文-文件日志（详见<a href="https://cloud.tencent.com/document/product/614/17421">使用单行全文提取模式采集日志</a>）；</li><li>fullregex_log代表：单行完全正则-文件日志（详见<a href="https://cloud.tencent.com/document/product/614/52365">使用单行-完全正则提取模式采集日志</a>）；</li><li>multiline_log代表：多行全文-文件日志（详见<a href="https://cloud.tencent.com/document/product/614/17422">使用多行全文提取模式采集日志</a>）；</li><li>multiline_fullregex_log代表：多行完全正则-文件日志（详见<a href="https://cloud.tencent.com/document/product/614/52366">使用多行-完全正则提取模式采集日志</a>）；</li><li>user_define_log代表：组合解析（适用于多格式嵌套的日志，详见<a href="https://cloud.tencent.com/document/product/614/61310">使用组合解析提取模式采集日志</a>）；</li><li>service_syslog代表：syslog 采集（详见<a href="https://cloud.tencent.com/document/product/614/81454">采集 Syslog</a>）；</li><li>windows_event_log代表：Windows事件日志（详见<a href="https://cloud.tencent.com/document/product/614/96678">采集 Windows 事件日志</a>）。</li><li>journal_log代表：journal日志采集</li></ul>
         :type LogType: str
-        :param _ExtractRule: 提取规则，如果设置了ExtractRule，则必须设置LogType
+        :param _ExtractRule: <p>提取规则，如果设置了ExtractRule，则必须设置LogType</p>
         :type ExtractRule: :class:`tencentcloud.cls.v20201016.models.ExtractRuleInfo`
-        :param _ExcludePaths: 采集黑名单路径列表
+        :param _ExcludePaths: <p>采集黑名单路径列表</p>
         :type ExcludePaths: list of ExcludePathInfo
-        :param _Output: 采集配置关联的日志主题（TopicId）
-- 通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题Id。
+        :param _Output: <p>采集配置关联的日志主题（TopicId）</p><ul><li>通过<a href="https://cloud.tencent.com/document/product/614/56454">获取日志主题列表</a>获取日志主题Id。</li></ul>
         :type Output: str
-        :param _UserDefineRule: 用户自定义解析字符串，Json格式序列化的字符串。
+        :param _UserDefineRule: <p>用户自定义解析字符串，Json格式序列化的字符串。</p>
         :type UserDefineRule: str
-        :param _AdvancedConfig: 高级采集配置。 Json字符串， Key/Value定义为如下：
-- ClsAgentFileTimeout(超时属性), 取值范围: 大于等于0的整数， 0为不超时
-- ClsAgentMaxDepth(最大目录深度)，取值范围: 大于等于0的整数
-- ClsAgentParseFailMerge(合并解析失败日志)，取值范围: true或false
-样例：
-`{\"ClsAgentFileTimeout\":0,\"ClsAgentMaxDepth\":10,\"ClsAgentParseFailMerge\":true}`
+        :param _AdvancedConfig: <p>高级采集配置。 Json字符串， Key/Value定义为如下：</p><ul><li>ClsAgentFileTimeout(超时属性), 取值范围: 大于等于0的整数， 0为不超时</li><li>ClsAgentMaxDepth(最大目录深度)，取值范围: 大于等于0的整数</li><li>ClsAgentParseFailMerge(合并解析失败日志)，取值范围: true或false<br>样例：<br><code>{\&quot;ClsAgentFileTimeout\&quot;:0,\&quot;ClsAgentMaxDepth\&quot;:10,\&quot;ClsAgentParseFailMerge\&quot;:true}</code></li></ul>
         :type AdvancedConfig: str
-        :param _InputType: 日志输入类型（<span style="color:red; font-weight:bold">注：windows场景必填且仅支持file和windows_event类型</span>）
-- file: 文件类型采集
-- windows_event：windows事件采集
-- syslog：系统日志采集
+        :param _InputType: <p>日志输入类型（<span style="color:red; font-weight:bold">注：windows场景必填且仅支持file和windows_event类型</span>）</p><ul><li>file: 文件类型采集</li><li>windows_event：windows事件采集</li><li>syslog：系统日志采集</li></ul>
         :type InputType: str
         """
         self._ConfigId = None
@@ -39830,7 +39839,7 @@ class ModifyConfigRequest(AbstractModel):
 
     @property
     def ConfigId(self):
-        r"""采集规则配置ID，通过[获取采集规则配置](https://cloud.tencent.com/document/product/614/58616)返回信息获取。
+        r"""<p>采集规则配置ID，通过<a href="https://cloud.tencent.com/document/product/614/58616">获取采集规则配置</a>返回信息获取。</p>
         :rtype: str
         """
         return self._ConfigId
@@ -39841,9 +39850,7 @@ class ModifyConfigRequest(AbstractModel):
 
     @property
     def Name(self):
-        r"""采集规则配置名称
-- 不能包含特殊字符｜
-- 长度不能超过255字符，超过会被截断
+        r"""<p>采集规则配置名称</p><ul><li>不能包含特殊字符｜</li><li>长度不能超过255字符，超过会被截断</li></ul>
         :rtype: str
         """
         return self._Name
@@ -39854,7 +39861,7 @@ class ModifyConfigRequest(AbstractModel):
 
     @property
     def Path(self):
-        r"""日志采集路径，包含文件名
+        r"""<p>日志采集路径，包含文件名</p>
         :rtype: str
         """
         return self._Path
@@ -39865,18 +39872,7 @@ class ModifyConfigRequest(AbstractModel):
 
     @property
     def LogType(self):
-        r"""采集的日志类型。支持以下类型：
-- json_log代表：JSON-文件日志（详见[使用 JSON 提取模式采集日志](https://cloud.tencent.com/document/product/614/17419)）；
-- delimiter_log代表：分隔符-文件日志（详见[使用分隔符提取模式采集日志](https://cloud.tencent.com/document/product/614/17420)）；
-- minimalist_log代表：单行全文-文件日志（详见[使用单行全文提取模式采集日志](https://cloud.tencent.com/document/product/614/17421)）；
-- fullregex_log代表：单行完全正则-文件日志（详见[使用单行-完全正则提取模式采集日志](https://cloud.tencent.com/document/product/614/52365)）；
-- multiline_log代表：多行全文-文件日志（详见[使用多行全文提取模式采集日志](https://cloud.tencent.com/document/product/614/17422)）；
-- multiline_fullregex_log代表：多行完全正则-文件日志（详见[使用多行-完全正则提取模式采集日志](https://cloud.tencent.com/document/product/614/52366)）；
-- user_define_log代表：组合解析（适用于多格式嵌套的日志，详见[使用组合解析提取模式采集日志](https://cloud.tencent.com/document/product/614/61310)）；
-- service_syslog代表：syslog 采集（详见[采集 Syslog](https://cloud.tencent.com/document/product/614/81454)）；
-- windows_event_log代表：Windows事件日志（详见[采集 Windows 事件日志](https://cloud.tencent.com/document/product/614/96678)）。
-
-
+        r"""<p>采集的日志类型。支持以下类型：</p><ul><li>json_log代表：JSON-文件日志（详见<a href="https://cloud.tencent.com/document/product/614/17419">使用 JSON 提取模式采集日志</a>）；</li><li>delimiter_log代表：分隔符-文件日志（详见<a href="https://cloud.tencent.com/document/product/614/17420">使用分隔符提取模式采集日志</a>）；</li><li>minimalist_log代表：单行全文-文件日志（详见<a href="https://cloud.tencent.com/document/product/614/17421">使用单行全文提取模式采集日志</a>）；</li><li>fullregex_log代表：单行完全正则-文件日志（详见<a href="https://cloud.tencent.com/document/product/614/52365">使用单行-完全正则提取模式采集日志</a>）；</li><li>multiline_log代表：多行全文-文件日志（详见<a href="https://cloud.tencent.com/document/product/614/17422">使用多行全文提取模式采集日志</a>）；</li><li>multiline_fullregex_log代表：多行完全正则-文件日志（详见<a href="https://cloud.tencent.com/document/product/614/52366">使用多行-完全正则提取模式采集日志</a>）；</li><li>user_define_log代表：组合解析（适用于多格式嵌套的日志，详见<a href="https://cloud.tencent.com/document/product/614/61310">使用组合解析提取模式采集日志</a>）；</li><li>service_syslog代表：syslog 采集（详见<a href="https://cloud.tencent.com/document/product/614/81454">采集 Syslog</a>）；</li><li>windows_event_log代表：Windows事件日志（详见<a href="https://cloud.tencent.com/document/product/614/96678">采集 Windows 事件日志</a>）。</li><li>journal_log代表：journal日志采集</li></ul>
         :rtype: str
         """
         return self._LogType
@@ -39887,7 +39883,7 @@ class ModifyConfigRequest(AbstractModel):
 
     @property
     def ExtractRule(self):
-        r"""提取规则，如果设置了ExtractRule，则必须设置LogType
+        r"""<p>提取规则，如果设置了ExtractRule，则必须设置LogType</p>
         :rtype: :class:`tencentcloud.cls.v20201016.models.ExtractRuleInfo`
         """
         return self._ExtractRule
@@ -39898,7 +39894,7 @@ class ModifyConfigRequest(AbstractModel):
 
     @property
     def ExcludePaths(self):
-        r"""采集黑名单路径列表
+        r"""<p>采集黑名单路径列表</p>
         :rtype: list of ExcludePathInfo
         """
         return self._ExcludePaths
@@ -39909,8 +39905,7 @@ class ModifyConfigRequest(AbstractModel):
 
     @property
     def Output(self):
-        r"""采集配置关联的日志主题（TopicId）
-- 通过[获取日志主题列表](https://cloud.tencent.com/document/product/614/56454)获取日志主题Id。
+        r"""<p>采集配置关联的日志主题（TopicId）</p><ul><li>通过<a href="https://cloud.tencent.com/document/product/614/56454">获取日志主题列表</a>获取日志主题Id。</li></ul>
         :rtype: str
         """
         return self._Output
@@ -39921,7 +39916,7 @@ class ModifyConfigRequest(AbstractModel):
 
     @property
     def UserDefineRule(self):
-        r"""用户自定义解析字符串，Json格式序列化的字符串。
+        r"""<p>用户自定义解析字符串，Json格式序列化的字符串。</p>
         :rtype: str
         """
         return self._UserDefineRule
@@ -39932,12 +39927,7 @@ class ModifyConfigRequest(AbstractModel):
 
     @property
     def AdvancedConfig(self):
-        r"""高级采集配置。 Json字符串， Key/Value定义为如下：
-- ClsAgentFileTimeout(超时属性), 取值范围: 大于等于0的整数， 0为不超时
-- ClsAgentMaxDepth(最大目录深度)，取值范围: 大于等于0的整数
-- ClsAgentParseFailMerge(合并解析失败日志)，取值范围: true或false
-样例：
-`{\"ClsAgentFileTimeout\":0,\"ClsAgentMaxDepth\":10,\"ClsAgentParseFailMerge\":true}`
+        r"""<p>高级采集配置。 Json字符串， Key/Value定义为如下：</p><ul><li>ClsAgentFileTimeout(超时属性), 取值范围: 大于等于0的整数， 0为不超时</li><li>ClsAgentMaxDepth(最大目录深度)，取值范围: 大于等于0的整数</li><li>ClsAgentParseFailMerge(合并解析失败日志)，取值范围: true或false<br>样例：<br><code>{\&quot;ClsAgentFileTimeout\&quot;:0,\&quot;ClsAgentMaxDepth\&quot;:10,\&quot;ClsAgentParseFailMerge\&quot;:true}</code></li></ul>
         :rtype: str
         """
         return self._AdvancedConfig
@@ -39948,10 +39938,7 @@ class ModifyConfigRequest(AbstractModel):
 
     @property
     def InputType(self):
-        r"""日志输入类型（<span style="color:red; font-weight:bold">注：windows场景必填且仅支持file和windows_event类型</span>）
-- file: 文件类型采集
-- windows_event：windows事件采集
-- syslog：系统日志采集
+        r"""<p>日志输入类型（<span style="color:red; font-weight:bold">注：windows场景必填且仅支持file和windows_event类型</span>）</p><ul><li>file: 文件类型采集</li><li>windows_event：windows事件采集</li><li>syslog：系统日志采集</li></ul>
         :rtype: str
         """
         return self._InputType

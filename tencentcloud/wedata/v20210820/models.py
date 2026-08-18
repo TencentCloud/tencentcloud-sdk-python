@@ -36418,15 +36418,15 @@ class DescribeIntegrationTaskRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskId: 任务id
+        :param _TaskId: <p>任务id</p>
         :type TaskId: str
-        :param _ProjectId: 项目id
+        :param _ProjectId: <p>项目id</p>
         :type ProjectId: str
-        :param _TaskType: 任务类型，201: 实时集成任务,   202：离线集成任务，不传默认值为201 实时任务类型
+        :param _TaskType: <p>任务类型，201: 实时集成任务,   202：离线集成任务，不传默认值为201 实时任务类型</p>
         :type TaskType: int
-        :param _InstanceVersion: 提交版本号
+        :param _InstanceVersion: <p>提交版本号</p>
         :type InstanceVersion: int
-        :param _ExtConfig: 额外参数
+        :param _ExtConfig: <p>额外参数</p>
         :type ExtConfig: list of RecordField
         """
         self._TaskId = None
@@ -36437,7 +36437,7 @@ class DescribeIntegrationTaskRequest(AbstractModel):
 
     @property
     def TaskId(self):
-        r"""任务id
+        r"""<p>任务id</p>
         :rtype: str
         """
         return self._TaskId
@@ -36448,7 +36448,7 @@ class DescribeIntegrationTaskRequest(AbstractModel):
 
     @property
     def ProjectId(self):
-        r"""项目id
+        r"""<p>项目id</p>
         :rtype: str
         """
         return self._ProjectId
@@ -36459,7 +36459,7 @@ class DescribeIntegrationTaskRequest(AbstractModel):
 
     @property
     def TaskType(self):
-        r"""任务类型，201: 实时集成任务,   202：离线集成任务，不传默认值为201 实时任务类型
+        r"""<p>任务类型，201: 实时集成任务,   202：离线集成任务，不传默认值为201 实时任务类型</p>
         :rtype: int
         """
         return self._TaskType
@@ -36470,7 +36470,7 @@ class DescribeIntegrationTaskRequest(AbstractModel):
 
     @property
     def InstanceVersion(self):
-        r"""提交版本号
+        r"""<p>提交版本号</p>
         :rtype: int
         """
         return self._InstanceVersion
@@ -36481,7 +36481,7 @@ class DescribeIntegrationTaskRequest(AbstractModel):
 
     @property
     def ExtConfig(self):
-        r"""额外参数
+        r"""<p>额外参数</p>
         :rtype: list of RecordField
         """
         return self._ExtConfig
@@ -36519,26 +36519,29 @@ class DescribeIntegrationTaskResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskInfo: 任务信息
+        :param _TaskInfo: <p>任务信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TaskInfo: :class:`tencentcloud.wedata.v20210820.models.IntegrationTaskInfo`
-        :param _AgentStatus: 采集器统计信息
+        :param _AgentStatus: <p>采集器统计信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type AgentStatus: :class:`tencentcloud.wedata.v20210820.models.AgentStatus`
-        :param _TaskVersion: 任务版本信息
+        :param _TaskVersion: <p>任务版本信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TaskVersion: :class:`tencentcloud.wedata.v20210820.models.TaskVersionInstance`
+        :param _TaskVersionList: <p>历史实例信息</p>
+        :type TaskVersionList: list of RealtimeTaskInstanceVO
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._TaskInfo = None
         self._AgentStatus = None
         self._TaskVersion = None
+        self._TaskVersionList = None
         self._RequestId = None
 
     @property
     def TaskInfo(self):
-        r"""任务信息
+        r"""<p>任务信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.wedata.v20210820.models.IntegrationTaskInfo`
         """
@@ -36550,7 +36553,7 @@ class DescribeIntegrationTaskResponse(AbstractModel):
 
     @property
     def AgentStatus(self):
-        r"""采集器统计信息
+        r"""<p>采集器统计信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.wedata.v20210820.models.AgentStatus`
         """
@@ -36562,7 +36565,7 @@ class DescribeIntegrationTaskResponse(AbstractModel):
 
     @property
     def TaskVersion(self):
-        r"""任务版本信息
+        r"""<p>任务版本信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.wedata.v20210820.models.TaskVersionInstance`
         """
@@ -36571,6 +36574,17 @@ class DescribeIntegrationTaskResponse(AbstractModel):
     @TaskVersion.setter
     def TaskVersion(self, TaskVersion):
         self._TaskVersion = TaskVersion
+
+    @property
+    def TaskVersionList(self):
+        r"""<p>历史实例信息</p>
+        :rtype: list of RealtimeTaskInstanceVO
+        """
+        return self._TaskVersionList
+
+    @TaskVersionList.setter
+    def TaskVersionList(self, TaskVersionList):
+        self._TaskVersionList = TaskVersionList
 
     @property
     def RequestId(self):
@@ -36594,6 +36608,12 @@ class DescribeIntegrationTaskResponse(AbstractModel):
         if params.get("TaskVersion") is not None:
             self._TaskVersion = TaskVersionInstance()
             self._TaskVersion._deserialize(params.get("TaskVersion"))
+        if params.get("TaskVersionList") is not None:
+            self._TaskVersionList = []
+            for item in params.get("TaskVersionList"):
+                obj = RealtimeTaskInstanceVO()
+                obj._deserialize(item)
+                self._TaskVersionList.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -45982,6 +46002,8 @@ class DescribeStreamTaskLogListRequest(AbstractModel):
         :type Keyword: str
         :param _JobType: <p>任务类型，不传时按 <code>INTEGRATION</code> 处理 </p><p>枚举值：</p><ul><li>INTEGRATION： 集成任务</li><li>VALIDATE： 对账任务</li></ul>
         :type JobType: str
+        :param _Context: <p>滚动查询游标</p>
+        :type Context: str
         """
         self._ProjectId = None
         self._TaskId = None
@@ -45994,6 +46016,7 @@ class DescribeStreamTaskLogListRequest(AbstractModel):
         self._RunningOrderId = None
         self._Keyword = None
         self._JobType = None
+        self._Context = None
 
     @property
     def ProjectId(self):
@@ -46116,6 +46139,17 @@ class DescribeStreamTaskLogListRequest(AbstractModel):
     def JobType(self, JobType):
         self._JobType = JobType
 
+    @property
+    def Context(self):
+        r"""<p>滚动查询游标</p>
+        :rtype: str
+        """
+        return self._Context
+
+    @Context.setter
+    def Context(self, Context):
+        self._Context = Context
+
 
     def _deserialize(self, params):
         self._ProjectId = params.get("ProjectId")
@@ -46129,6 +46163,7 @@ class DescribeStreamTaskLogListRequest(AbstractModel):
         self._RunningOrderId = params.get("RunningOrderId")
         self._Keyword = params.get("Keyword")
         self._JobType = params.get("JobType")
+        self._Context = params.get("Context")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -46152,11 +46187,14 @@ class DescribeStreamTaskLogListResponse(AbstractModel):
         :param _LogContentList: <p>日志集合</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type LogContentList: list of LogContentInfo
+        :param _Context: <p>滚动查询游标</p>
+        :type Context: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._ListOver = None
         self._LogContentList = None
+        self._Context = None
         self._RequestId = None
 
     @property
@@ -46184,6 +46222,17 @@ class DescribeStreamTaskLogListResponse(AbstractModel):
         self._LogContentList = LogContentList
 
     @property
+    def Context(self):
+        r"""<p>滚动查询游标</p>
+        :rtype: str
+        """
+        return self._Context
+
+    @Context.setter
+    def Context(self, Context):
+        self._Context = Context
+
+    @property
     def RequestId(self):
         r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -46203,6 +46252,7 @@ class DescribeStreamTaskLogListResponse(AbstractModel):
                 obj = LogContentInfo()
                 obj._deserialize(item)
                 self._LogContentList.append(obj)
+        self._Context = params.get("Context")
         self._RequestId = params.get("RequestId")
 
 
@@ -46569,26 +46619,32 @@ class DescribeTableContentPreviewRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TableId: 表ID
+        :param _TableId: <p>表ID</p>
         :type TableId: str
-        :param _TechnologyType: 组件类型枚举值，支持的值有 HDFS/HBASE/HIVE/KAFKA
+        :param _TechnologyType: <p>组件类型枚举值，支持的值有 HDFS/HBASE/HIVE/KAFKA</p>
         :type TechnologyType: str
-        :param _ClusterId: 集群id
+        :param _ClusterId: <p>集群id</p>
         :type ClusterId: str
-        :param _ResourceType: 资源类型枚举值，支持的值有TOPIC/PATH/TABLE/DATABASE
+        :param _ResourceType: <p>资源类型枚举值，支持的值有TOPIC/PATH/TABLE/DATABASE</p>
         :type ResourceType: str
-        :param _TableName: 表名
+        :param _TableName: <p>表名</p>
         :type TableName: str
-        :param _ProjectId: 项目id
+        :param _ProjectId: <p>项目id</p>
         :type ProjectId: str
-        :param _RowNum: 预览的行数，默认10行
+        :param _RowNum: <p>预览的行数，默认10行</p>
         :type RowNum: int
-        :param _DatabaseName: 数据库名，kafka或其他无数据库概念的不填
+        :param _DatabaseName: <p>数据库名，kafka或其他无数据库概念的不填</p>
         :type DatabaseName: str
-        :param _TaskId: 异步查询预览结果时填写
+        :param _TaskId: <p>异步查询预览结果时填写</p>
         :type TaskId: str
-        :param _PartitionName: 分区信息
+        :param _PartitionName: <p>分区信息</p>
         :type PartitionName: str
+        :param _ResourceGroupId: <p>资源组ID</p>
+        :type ResourceGroupId: str
+        :param _Sql: <p>执行SQL</p>
+        :type Sql: str
+        :param _EngineId: <p>引擎名</p>
+        :type EngineId: str
         """
         self._TableId = None
         self._TechnologyType = None
@@ -46600,10 +46656,13 @@ class DescribeTableContentPreviewRequest(AbstractModel):
         self._DatabaseName = None
         self._TaskId = None
         self._PartitionName = None
+        self._ResourceGroupId = None
+        self._Sql = None
+        self._EngineId = None
 
     @property
     def TableId(self):
-        r"""表ID
+        r"""<p>表ID</p>
         :rtype: str
         """
         return self._TableId
@@ -46614,7 +46673,7 @@ class DescribeTableContentPreviewRequest(AbstractModel):
 
     @property
     def TechnologyType(self):
-        r"""组件类型枚举值，支持的值有 HDFS/HBASE/HIVE/KAFKA
+        r"""<p>组件类型枚举值，支持的值有 HDFS/HBASE/HIVE/KAFKA</p>
         :rtype: str
         """
         return self._TechnologyType
@@ -46625,7 +46684,7 @@ class DescribeTableContentPreviewRequest(AbstractModel):
 
     @property
     def ClusterId(self):
-        r"""集群id
+        r"""<p>集群id</p>
         :rtype: str
         """
         return self._ClusterId
@@ -46636,7 +46695,7 @@ class DescribeTableContentPreviewRequest(AbstractModel):
 
     @property
     def ResourceType(self):
-        r"""资源类型枚举值，支持的值有TOPIC/PATH/TABLE/DATABASE
+        r"""<p>资源类型枚举值，支持的值有TOPIC/PATH/TABLE/DATABASE</p>
         :rtype: str
         """
         return self._ResourceType
@@ -46647,7 +46706,7 @@ class DescribeTableContentPreviewRequest(AbstractModel):
 
     @property
     def TableName(self):
-        r"""表名
+        r"""<p>表名</p>
         :rtype: str
         """
         return self._TableName
@@ -46658,7 +46717,7 @@ class DescribeTableContentPreviewRequest(AbstractModel):
 
     @property
     def ProjectId(self):
-        r"""项目id
+        r"""<p>项目id</p>
         :rtype: str
         """
         return self._ProjectId
@@ -46669,7 +46728,7 @@ class DescribeTableContentPreviewRequest(AbstractModel):
 
     @property
     def RowNum(self):
-        r"""预览的行数，默认10行
+        r"""<p>预览的行数，默认10行</p>
         :rtype: int
         """
         return self._RowNum
@@ -46680,7 +46739,7 @@ class DescribeTableContentPreviewRequest(AbstractModel):
 
     @property
     def DatabaseName(self):
-        r"""数据库名，kafka或其他无数据库概念的不填
+        r"""<p>数据库名，kafka或其他无数据库概念的不填</p>
         :rtype: str
         """
         return self._DatabaseName
@@ -46691,7 +46750,7 @@ class DescribeTableContentPreviewRequest(AbstractModel):
 
     @property
     def TaskId(self):
-        r"""异步查询预览结果时填写
+        r"""<p>异步查询预览结果时填写</p>
         :rtype: str
         """
         return self._TaskId
@@ -46702,7 +46761,7 @@ class DescribeTableContentPreviewRequest(AbstractModel):
 
     @property
     def PartitionName(self):
-        r"""分区信息
+        r"""<p>分区信息</p>
         :rtype: str
         """
         return self._PartitionName
@@ -46710,6 +46769,39 @@ class DescribeTableContentPreviewRequest(AbstractModel):
     @PartitionName.setter
     def PartitionName(self, PartitionName):
         self._PartitionName = PartitionName
+
+    @property
+    def ResourceGroupId(self):
+        r"""<p>资源组ID</p>
+        :rtype: str
+        """
+        return self._ResourceGroupId
+
+    @ResourceGroupId.setter
+    def ResourceGroupId(self, ResourceGroupId):
+        self._ResourceGroupId = ResourceGroupId
+
+    @property
+    def Sql(self):
+        r"""<p>执行SQL</p>
+        :rtype: str
+        """
+        return self._Sql
+
+    @Sql.setter
+    def Sql(self, Sql):
+        self._Sql = Sql
+
+    @property
+    def EngineId(self):
+        r"""<p>引擎名</p>
+        :rtype: str
+        """
+        return self._EngineId
+
+    @EngineId.setter
+    def EngineId(self, EngineId):
+        self._EngineId = EngineId
 
 
     def _deserialize(self, params):
@@ -46723,6 +46815,9 @@ class DescribeTableContentPreviewRequest(AbstractModel):
         self._DatabaseName = params.get("DatabaseName")
         self._TaskId = params.get("TaskId")
         self._PartitionName = params.get("PartitionName")
+        self._ResourceGroupId = params.get("ResourceGroupId")
+        self._Sql = params.get("Sql")
+        self._EngineId = params.get("EngineId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -46740,16 +46835,16 @@ class DescribeTableContentPreviewResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ColumnNames: 表的列名列表
+        :param _ColumnNames: <p>表的列名列表</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ColumnNames: list of str
-        :param _TableRecordSet: 表的行数据列表
+        :param _TableRecordSet: <p>表的行数据列表</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TableRecordSet: list of TableRecord
-        :param _TaskId: 异步预览任务ID
+        :param _TaskId: <p>异步预览任务ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TaskId: str
-        :param _AsyncState: 异步预览结果状态: 0 初始化， 1 执行中， 2 执行成功
+        :param _AsyncState: <p>异步预览结果状态: 0 初始化， 1 执行中， 2 执行成功</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type AsyncState: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -46763,7 +46858,7 @@ class DescribeTableContentPreviewResponse(AbstractModel):
 
     @property
     def ColumnNames(self):
-        r"""表的列名列表
+        r"""<p>表的列名列表</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -46775,7 +46870,7 @@ class DescribeTableContentPreviewResponse(AbstractModel):
 
     @property
     def TableRecordSet(self):
-        r"""表的行数据列表
+        r"""<p>表的行数据列表</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of TableRecord
         """
@@ -46787,7 +46882,7 @@ class DescribeTableContentPreviewResponse(AbstractModel):
 
     @property
     def TaskId(self):
-        r"""异步预览任务ID
+        r"""<p>异步预览任务ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -46799,7 +46894,7 @@ class DescribeTableContentPreviewResponse(AbstractModel):
 
     @property
     def AsyncState(self):
-        r"""异步预览结果状态: 0 初始化， 1 执行中， 2 执行成功
+        r"""<p>异步预览结果状态: 0 初始化， 1 执行中， 2 执行成功</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -87709,6 +87804,57 @@ class RealTimeTaskSpeed(AbstractModel):
                 obj = BytesSpeed()
                 obj._deserialize(item)
                 self._BytesLogSpeed.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RealtimeTaskInstanceVO(AbstractModel):
+    r"""历史实例信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceDate: <p>实例生成时间</p>
+        :type InstanceDate: str
+        :param _RunningOrderId: <p>实例id</p>
+        :type RunningOrderId: int
+        """
+        self._InstanceDate = None
+        self._RunningOrderId = None
+
+    @property
+    def InstanceDate(self):
+        r"""<p>实例生成时间</p>
+        :rtype: str
+        """
+        return self._InstanceDate
+
+    @InstanceDate.setter
+    def InstanceDate(self, InstanceDate):
+        self._InstanceDate = InstanceDate
+
+    @property
+    def RunningOrderId(self):
+        r"""<p>实例id</p>
+        :rtype: int
+        """
+        return self._RunningOrderId
+
+    @RunningOrderId.setter
+    def RunningOrderId(self, RunningOrderId):
+        self._RunningOrderId = RunningOrderId
+
+
+    def _deserialize(self, params):
+        self._InstanceDate = params.get("InstanceDate")
+        self._RunningOrderId = params.get("RunningOrderId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

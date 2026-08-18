@@ -1786,20 +1786,19 @@ class BatchTarget(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ListenerId: 监听器 ID。
+        :param _ListenerId: <p>监听器 ID。</p>
         :type ListenerId: str
-        :param _Port: 绑定端口。
+        :param _Port: <p>绑定端口。</p>
         :type Port: int
-        :param _InstanceId: 子机 ID。表示绑定主网卡主 IP。
+        :param _InstanceId: <p>子机 ID。表示绑定主网卡主 IP。</p>
         :type InstanceId: str
-        :param _EniIp: 绑定 IP 时需要传入此参数，支持弹性网卡的 IP 和其他内网 IP，如果是弹性网卡则必须先绑定至CVM，然后才能绑定到负载均衡实例。
-注意：参数 InstanceId、EniIp 只能传入一个且必须传入一个。如果绑定双栈IPV6子机，必须传该参数。
+        :param _EniIp: <p>绑定 IP 时需要传入此参数，支持弹性网卡的 IP 和其他内网 IP，如果是弹性网卡则必须先绑定至CVM，然后才能绑定到负载均衡实例。注意：参数 InstanceId、EniIp 只能传入一个且必须传入一个。如果绑定双栈IPV6子机，必须传该参数。如果是跨地域绑定，则必须传该参数，不支持传InstanceId参数。</p>
         :type EniIp: str
-        :param _Weight: 子机权重，范围[0, 100]。绑定时如果不存在，则默认为10。
+        :param _Weight: <p>子机权重，范围[0, 100]。绑定时如果不存在，则默认为10。</p>
         :type Weight: int
-        :param _LocationId: 七层规则 ID。7层负载均衡该参数必填
+        :param _LocationId: <p>七层规则 ID。7层负载均衡该参数必填</p>
         :type LocationId: str
-        :param _Tag: 标签。
+        :param _Tag: <p>标签。</p>
         :type Tag: str
         """
         self._ListenerId = None
@@ -1812,7 +1811,7 @@ class BatchTarget(AbstractModel):
 
     @property
     def ListenerId(self):
-        r"""监听器 ID。
+        r"""<p>监听器 ID。</p>
         :rtype: str
         """
         return self._ListenerId
@@ -1823,7 +1822,7 @@ class BatchTarget(AbstractModel):
 
     @property
     def Port(self):
-        r"""绑定端口。
+        r"""<p>绑定端口。</p>
         :rtype: int
         """
         return self._Port
@@ -1834,7 +1833,7 @@ class BatchTarget(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""子机 ID。表示绑定主网卡主 IP。
+        r"""<p>子机 ID。表示绑定主网卡主 IP。</p>
         :rtype: str
         """
         return self._InstanceId
@@ -1845,8 +1844,7 @@ class BatchTarget(AbstractModel):
 
     @property
     def EniIp(self):
-        r"""绑定 IP 时需要传入此参数，支持弹性网卡的 IP 和其他内网 IP，如果是弹性网卡则必须先绑定至CVM，然后才能绑定到负载均衡实例。
-注意：参数 InstanceId、EniIp 只能传入一个且必须传入一个。如果绑定双栈IPV6子机，必须传该参数。
+        r"""<p>绑定 IP 时需要传入此参数，支持弹性网卡的 IP 和其他内网 IP，如果是弹性网卡则必须先绑定至CVM，然后才能绑定到负载均衡实例。注意：参数 InstanceId、EniIp 只能传入一个且必须传入一个。如果绑定双栈IPV6子机，必须传该参数。如果是跨地域绑定，则必须传该参数，不支持传InstanceId参数。</p>
         :rtype: str
         """
         return self._EniIp
@@ -1857,7 +1855,7 @@ class BatchTarget(AbstractModel):
 
     @property
     def Weight(self):
-        r"""子机权重，范围[0, 100]。绑定时如果不存在，则默认为10。
+        r"""<p>子机权重，范围[0, 100]。绑定时如果不存在，则默认为10。</p>
         :rtype: int
         """
         return self._Weight
@@ -1868,7 +1866,7 @@ class BatchTarget(AbstractModel):
 
     @property
     def LocationId(self):
-        r"""七层规则 ID。7层负载均衡该参数必填
+        r"""<p>七层规则 ID。7层负载均衡该参数必填</p>
         :rtype: str
         """
         return self._LocationId
@@ -1879,7 +1877,7 @@ class BatchTarget(AbstractModel):
 
     @property
     def Tag(self):
-        r"""标签。
+        r"""<p>标签。</p>
         :rtype: str
         """
         return self._Tag

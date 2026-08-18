@@ -831,6 +831,52 @@ class AdpClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeConcurrencyLimitDetailList(self, request):
+        r"""查询并发超限明细，包含QPM/TPM超限与专属并发超限记录，返回超限发生时间、空间、应用、模型及请求内容
+
+        :param request: Request instance for DescribeConcurrencyLimitDetailList.
+        :type request: :class:`tencentcloud.adp.v20260520.models.DescribeConcurrencyLimitDetailListRequest`
+        :rtype: :class:`tencentcloud.adp.v20260520.models.DescribeConcurrencyLimitDetailListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeConcurrencyLimitDetailList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeConcurrencyLimitDetailListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeConsumptionDetailList(self, request):
+        r"""查询资源消耗明细，包含计费相关字段（消耗类型、消耗目标、消耗场景、套餐包及PU消耗等）
+
+        :param request: Request instance for DescribeConsumptionDetailList.
+        :type request: :class:`tencentcloud.adp.v20260520.models.DescribeConsumptionDetailListRequest`
+        :rtype: :class:`tencentcloud.adp.v20260520.models.DescribeConsumptionDetailListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeConsumptionDetailList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeConsumptionDetailListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeConversation(self, request):
         r"""查看会话信息
 
@@ -914,6 +960,29 @@ class AdpClient(AbstractClient):
             body = self.call("DescribeLatestRelease", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeLatestReleaseResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeMetricOverviewList(self, request):
+        r"""查询看板总览KPI卡片数据，通过resource_type区分资源看板与业务看板域，返回各域KPI指标列表
+
+        :param request: Request instance for DescribeMetricOverviewList.
+        :type request: :class:`tencentcloud.adp.v20260520.models.DescribeMetricOverviewListRequest`
+        :rtype: :class:`tencentcloud.adp.v20260520.models.DescribeMetricOverviewListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeMetricOverviewList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeMetricOverviewListResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1167,6 +1236,52 @@ class AdpClient(AbstractClient):
             body = self.call("DescribeSystemVariableList", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeSystemVariableListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeUsageDetailList(self, request):
+        r"""查询资源调用时序明细，支持模型和插件两类资源，按时间顺序返回每条调用记录的详细信息
+
+        :param request: Request instance for DescribeUsageDetailList.
+        :type request: :class:`tencentcloud.adp.v20260520.models.DescribeUsageDetailListRequest`
+        :rtype: :class:`tencentcloud.adp.v20260520.models.DescribeUsageDetailListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeUsageDetailList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeUsageDetailListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeUsageSummaryList(self, request):
+        r"""查询资源用量聚合明细，支持模型、插件、平台三类资源，按空间/应用维度聚合展示调用次数、Token消耗等指标
+
+        :param request: Request instance for DescribeUsageSummaryList.
+        :type request: :class:`tencentcloud.adp.v20260520.models.DescribeUsageSummaryListRequest`
+        :rtype: :class:`tencentcloud.adp.v20260520.models.DescribeUsageSummaryListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeUsageSummaryList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeUsageSummaryListResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

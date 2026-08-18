@@ -10870,6 +10870,8 @@ class JobConfig(AbstractModel):
         :param _LogCOSBucket: <p>日志桶</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type LogCOSBucket: str
+        :param _IsLocked: <p>是否支持滚动删除，0，手动删除，1，自动滚动删除</p>
+        :type IsLocked: int
         """
         self._JobId = None
         self._EntrypointClass = None
@@ -10915,6 +10917,7 @@ class JobConfig(AbstractModel):
         self._VariableReplaceMode = None
         self._StateCOSBucket = None
         self._LogCOSBucket = None
+        self._IsLocked = None
 
     @property
     def JobId(self):
@@ -11437,6 +11440,17 @@ class JobConfig(AbstractModel):
     def LogCOSBucket(self, LogCOSBucket):
         self._LogCOSBucket = LogCOSBucket
 
+    @property
+    def IsLocked(self):
+        r"""<p>是否支持滚动删除，0，手动删除，1，自动滚动删除</p>
+        :rtype: int
+        """
+        return self._IsLocked
+
+    @IsLocked.setter
+    def IsLocked(self, IsLocked):
+        self._IsLocked = IsLocked
+
 
     def _deserialize(self, params):
         self._JobId = params.get("JobId")
@@ -11506,6 +11520,7 @@ class JobConfig(AbstractModel):
         self._VariableReplaceMode = params.get("VariableReplaceMode")
         self._StateCOSBucket = params.get("StateCOSBucket")
         self._LogCOSBucket = params.get("LogCOSBucket")
+        self._IsLocked = params.get("IsLocked")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

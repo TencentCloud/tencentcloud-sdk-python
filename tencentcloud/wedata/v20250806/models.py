@@ -55731,177 +55731,183 @@ class TriggerTaskRunBrief(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ExecutionId: 任务运行ID
+        :param _ExecutionId: <p>任务运行ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ExecutionId: str
-        :param _ExecutionState: 执行状态，运行失败:FAILED、运行成功:SUCCESS、等待中:PENDING、跳过运行:SKIP、运行中:RUNNING
+        :param _ExecutionState: <p>执行状态，运行失败:FAILED、运行成功:SUCCESS、等待中:PENDING、跳过运行:SKIP、运行中:RUNNING</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ExecutionState: str
-        :param _ProjectId: 项目ID
+        :param _ProjectId: <p>项目ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ProjectId: str
-        :param _WorkflowId: 工作流ID
+        :param _WorkflowId: <p>工作流ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type WorkflowId: str
-        :param _WorkflowExecutionId: 工作流运行ID
+        :param _WorkflowExecutionId: <p>工作流运行ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type WorkflowExecutionId: str
-        :param _TaskId: 任务 ID
+        :param _TaskId: <p>任务 ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TaskId: str
-        :param _TaskType: 任务类型
+        :param _TaskType: <p>任务类型</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TaskType: str
-        :param _TaskVersionId: 任务版本
+        :param _TaskVersionId: <p>任务版本</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TaskVersionId: str
-        :param _TriggerType: 触发类型
+        :param _TriggerType: <p>触发类型</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TriggerType: str
-        :param _WaitTime: 等待时长，单位秒
+        :param _WaitTime: <p>等待时长，单位秒</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type WaitTime: str
-        :param _ResourceGroup: 所属资源组
+        :param _ResourceGroup: <p>所属资源组</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ResourceGroup: str
-        :param _ErrorCode: 错误码
+        :param _ErrorCode: <p>错误码</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ErrorCode: str
-        :param _ExecuteUserUin: 运行账号
+        :param _ExecuteUserUin: <p>运行账号</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ExecuteUserUin: str
-        :param _CreaterUin: 创建人 ID
+        :param _CreaterUin: <p>创建人 ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type CreaterUin: str
-        :param _JobId: 执行平台执行 ID
+        :param _JobId: <p>执行平台执行 ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type JobId: str
-        :param _CreateTime: 创建时间戳
+        :param _CreateTime: <p>创建时间戳</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type CreateTime: str
-        :param _ScheduleTime: 计划调度时间
+        :param _ScheduleTime: <p>计划调度时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ScheduleTime: str
-        :param _UpdateTime: 更新时间戳
+        :param _UpdateTime: <p>更新时间戳</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type UpdateTime: str
-        :param _DependenceFinishedTime: 依赖任务完成时间
+        :param _DependenceFinishedTime: <p>依赖任务完成时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type DependenceFinishedTime: str
-        :param _QueueStartTime: 任务下发执行平台时间
+        :param _QueueStartTime: <p>任务下发执行平台时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type QueueStartTime: str
-        :param _PendingStartTime: 开始等待资源时间
+        :param _PendingStartTime: <p>开始等待资源时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type PendingStartTime: str
-        :param _ExecutionStartTime: 运行开始时间
+        :param _ExecutionStartTime: <p>运行开始时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ExecutionStartTime: str
-        :param _ExecutionEndTime: 运行结束时间
+        :param _ExecutionEndTime: <p>运行结束时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ExecutionEndTime: str
-        :param _QueueCostTime: 排队时间
+        :param _QueueCostTime: <p>排队时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type QueueCostTime: str
-        :param _ExecutionTime: 运行时间
+        :param _ExecutionTime: <p>运行时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ExecutionTime: str
-        :param _AllCostTime: 总花费时间
+        :param _AllCostTime: <p>总花费时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type AllCostTime: str
-        :param _TimeZone: 时区
+        :param _TimeZone: <p>时区</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TimeZone: str
-        :param _DependOnList: 依赖上游任务 ID 列表
+        :param _DependOnList: <p>依赖上游任务 ID 列表</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type DependOnList: list of str
-        :param _RunParams: 运行参数
+        :param _RunParams: <p>运行参数</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type RunParams: str
-        :param _TaskTypeExtensions: 任务扩展信息，包含脚本路径
+        :param _TaskTypeExtensions: <p>任务扩展信息，包含脚本路径</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TaskTypeExtensions: str
-        :param _RetryTimes: 重试次数，为 0 则表示首次运行
+        :param _RetryTimes: <p>重试次数，为 0 则表示首次运行</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type RetryTimes: int
-        :param _LeftCoordinate: 左侧坐标
+        :param _LeftCoordinate: <p>左侧坐标</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type LeftCoordinate: float
-        :param _TopCoordinate: 顶部坐标
+        :param _TopCoordinate: <p>顶部坐标</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TopCoordinate: float
-        :param _ResourceGroupId: 资源组 ID
+        :param _ResourceGroupId: <p>资源组 ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ResourceGroupId: str
-        :param _ErrorCodeStr: 错误码描述
+        :param _ErrorCodeStr: <p>错误码描述</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ErrorCodeStr: str
-        :param _CreateUin: 创建人 UIN
+        :param _CreateUin: <p>创建人 UIN</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type CreateUin: str
-        :param _IssueTime: 下发执行平台时间
+        :param _IssueTime: <p>下发执行平台时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type IssueTime: str
-        :param _TaskName: 任务名称
+        :param _TaskName: <p>任务名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TaskName: str
-        :param _WorkflowName: 工作流名称
+        :param _WorkflowName: <p>工作流名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type WorkflowName: str
-        :param _ExecuteUserName: 运行人名称
+        :param _ExecuteUserName: <p>运行人名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ExecuteUserName: str
-        :param _RerunTimes: 重跑次数
+        :param _RerunTimes: <p>重跑次数</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type RerunTimes: int
-        :param _IsLatestExecution: 是否是最新一次运行
+        :param _IsLatestExecution: <p>是否是最新一次运行</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type IsLatestExecution: bool
-        :param _TaskExecutionState: 任务运行状态
+        :param _TaskExecutionState: <p>任务运行状态</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TaskExecutionState: str
-        :param _CycleType: 周期类型
+        :param _CycleType: <p>周期类型</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type CycleType: str
-        :param _UserNameInCharge: 责任人名称
+        :param _UserNameInCharge: <p>责任人名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type UserNameInCharge: str
-        :param _UserUinInCharge: 责任人id
+        :param _UserUinInCharge: <p>责任人id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type UserUinInCharge: str
-        :param _ResourceGroupName: 资源组名称
+        :param _ResourceGroupName: <p>资源组名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ResourceGroupName: str
-        :param _Timezone: 时区
+        :param _Timezone: <p>时区</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Timezone: str
-        :param _FolderId: 文件夹id
+        :param _FolderId: <p>文件夹id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type FolderId: str
-        :param _FolderName: 文件夹名称
+        :param _FolderName: <p>文件夹名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type FolderName: str
-        :param _ProjectName: 项目名称
+        :param _ProjectName: <p>项目名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ProjectName: str
-        :param _TaskTypeId: 任务类型id
+        :param _TaskTypeId: <p>任务类型id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TaskTypeId: int
-        :param _WorkflowParams: 工作流运行参数
+        :param _WorkflowParams: <p>工作流运行参数</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type WorkflowParams: str
-        :param _SupportRerun: 是否支持重跑
+        :param _SupportRerun: <p>是否支持重跑</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type SupportRerun: bool
-        :param _WorkflowExecutionState: 工作流运行状态
+        :param _WorkflowExecutionState: <p>工作流运行状态</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type WorkflowExecutionState: str
-        :param _ExecutionResult: 任务执行结果
+        :param _ExecutionResult: <p>任务执行结果</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ExecutionResult: str
-        :param _DependencyTriggerPolicy: 依赖策略
+        :param _DependencyTriggerPolicy: <p>依赖策略</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type DependencyTriggerPolicy: str
+        :param _AssociatedEntityExist: <p>关联实体是否存在，true表示任务/工作流等实体存在，false表示实体已被删除</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AssociatedEntityExist: bool
+        :param _ScheduleRunType: <p>调度执行类型</p><p>枚举值：</p><ul><li>0： 正常调度</li><li>1： 空跑调度</li><li>2： 用户驱动，手动触发</li></ul>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ScheduleRunType: str
         """
         self._ExecutionId = None
         self._ExecutionState = None
@@ -55960,10 +55966,12 @@ class TriggerTaskRunBrief(AbstractModel):
         self._WorkflowExecutionState = None
         self._ExecutionResult = None
         self._DependencyTriggerPolicy = None
+        self._AssociatedEntityExist = None
+        self._ScheduleRunType = None
 
     @property
     def ExecutionId(self):
-        r"""任务运行ID
+        r"""<p>任务运行ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -55975,7 +55983,7 @@ class TriggerTaskRunBrief(AbstractModel):
 
     @property
     def ExecutionState(self):
-        r"""执行状态，运行失败:FAILED、运行成功:SUCCESS、等待中:PENDING、跳过运行:SKIP、运行中:RUNNING
+        r"""<p>执行状态，运行失败:FAILED、运行成功:SUCCESS、等待中:PENDING、跳过运行:SKIP、运行中:RUNNING</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -55987,7 +55995,7 @@ class TriggerTaskRunBrief(AbstractModel):
 
     @property
     def ProjectId(self):
-        r"""项目ID
+        r"""<p>项目ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -55999,7 +56007,7 @@ class TriggerTaskRunBrief(AbstractModel):
 
     @property
     def WorkflowId(self):
-        r"""工作流ID
+        r"""<p>工作流ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -56011,7 +56019,7 @@ class TriggerTaskRunBrief(AbstractModel):
 
     @property
     def WorkflowExecutionId(self):
-        r"""工作流运行ID
+        r"""<p>工作流运行ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -56023,7 +56031,7 @@ class TriggerTaskRunBrief(AbstractModel):
 
     @property
     def TaskId(self):
-        r"""任务 ID
+        r"""<p>任务 ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -56035,7 +56043,7 @@ class TriggerTaskRunBrief(AbstractModel):
 
     @property
     def TaskType(self):
-        r"""任务类型
+        r"""<p>任务类型</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -56047,7 +56055,7 @@ class TriggerTaskRunBrief(AbstractModel):
 
     @property
     def TaskVersionId(self):
-        r"""任务版本
+        r"""<p>任务版本</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -56059,7 +56067,7 @@ class TriggerTaskRunBrief(AbstractModel):
 
     @property
     def TriggerType(self):
-        r"""触发类型
+        r"""<p>触发类型</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -56071,7 +56079,7 @@ class TriggerTaskRunBrief(AbstractModel):
 
     @property
     def WaitTime(self):
-        r"""等待时长，单位秒
+        r"""<p>等待时长，单位秒</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -56083,7 +56091,7 @@ class TriggerTaskRunBrief(AbstractModel):
 
     @property
     def ResourceGroup(self):
-        r"""所属资源组
+        r"""<p>所属资源组</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -56095,7 +56103,7 @@ class TriggerTaskRunBrief(AbstractModel):
 
     @property
     def ErrorCode(self):
-        r"""错误码
+        r"""<p>错误码</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -56107,7 +56115,7 @@ class TriggerTaskRunBrief(AbstractModel):
 
     @property
     def ExecuteUserUin(self):
-        r"""运行账号
+        r"""<p>运行账号</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -56119,7 +56127,7 @@ class TriggerTaskRunBrief(AbstractModel):
 
     @property
     def CreaterUin(self):
-        r"""创建人 ID
+        r"""<p>创建人 ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -56131,7 +56139,7 @@ class TriggerTaskRunBrief(AbstractModel):
 
     @property
     def JobId(self):
-        r"""执行平台执行 ID
+        r"""<p>执行平台执行 ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -56143,7 +56151,7 @@ class TriggerTaskRunBrief(AbstractModel):
 
     @property
     def CreateTime(self):
-        r"""创建时间戳
+        r"""<p>创建时间戳</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -56155,7 +56163,7 @@ class TriggerTaskRunBrief(AbstractModel):
 
     @property
     def ScheduleTime(self):
-        r"""计划调度时间
+        r"""<p>计划调度时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -56167,7 +56175,7 @@ class TriggerTaskRunBrief(AbstractModel):
 
     @property
     def UpdateTime(self):
-        r"""更新时间戳
+        r"""<p>更新时间戳</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -56179,7 +56187,7 @@ class TriggerTaskRunBrief(AbstractModel):
 
     @property
     def DependenceFinishedTime(self):
-        r"""依赖任务完成时间
+        r"""<p>依赖任务完成时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -56191,7 +56199,7 @@ class TriggerTaskRunBrief(AbstractModel):
 
     @property
     def QueueStartTime(self):
-        r"""任务下发执行平台时间
+        r"""<p>任务下发执行平台时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -56203,7 +56211,7 @@ class TriggerTaskRunBrief(AbstractModel):
 
     @property
     def PendingStartTime(self):
-        r"""开始等待资源时间
+        r"""<p>开始等待资源时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -56215,7 +56223,7 @@ class TriggerTaskRunBrief(AbstractModel):
 
     @property
     def ExecutionStartTime(self):
-        r"""运行开始时间
+        r"""<p>运行开始时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -56227,7 +56235,7 @@ class TriggerTaskRunBrief(AbstractModel):
 
     @property
     def ExecutionEndTime(self):
-        r"""运行结束时间
+        r"""<p>运行结束时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -56239,7 +56247,7 @@ class TriggerTaskRunBrief(AbstractModel):
 
     @property
     def QueueCostTime(self):
-        r"""排队时间
+        r"""<p>排队时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -56251,7 +56259,7 @@ class TriggerTaskRunBrief(AbstractModel):
 
     @property
     def ExecutionTime(self):
-        r"""运行时间
+        r"""<p>运行时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -56263,7 +56271,7 @@ class TriggerTaskRunBrief(AbstractModel):
 
     @property
     def AllCostTime(self):
-        r"""总花费时间
+        r"""<p>总花费时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -56275,7 +56283,7 @@ class TriggerTaskRunBrief(AbstractModel):
 
     @property
     def TimeZone(self):
-        r"""时区
+        r"""<p>时区</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -56287,7 +56295,7 @@ class TriggerTaskRunBrief(AbstractModel):
 
     @property
     def DependOnList(self):
-        r"""依赖上游任务 ID 列表
+        r"""<p>依赖上游任务 ID 列表</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -56299,7 +56307,7 @@ class TriggerTaskRunBrief(AbstractModel):
 
     @property
     def RunParams(self):
-        r"""运行参数
+        r"""<p>运行参数</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -56311,7 +56319,7 @@ class TriggerTaskRunBrief(AbstractModel):
 
     @property
     def TaskTypeExtensions(self):
-        r"""任务扩展信息，包含脚本路径
+        r"""<p>任务扩展信息，包含脚本路径</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -56323,7 +56331,7 @@ class TriggerTaskRunBrief(AbstractModel):
 
     @property
     def RetryTimes(self):
-        r"""重试次数，为 0 则表示首次运行
+        r"""<p>重试次数，为 0 则表示首次运行</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -56335,7 +56343,7 @@ class TriggerTaskRunBrief(AbstractModel):
 
     @property
     def LeftCoordinate(self):
-        r"""左侧坐标
+        r"""<p>左侧坐标</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
@@ -56347,7 +56355,7 @@ class TriggerTaskRunBrief(AbstractModel):
 
     @property
     def TopCoordinate(self):
-        r"""顶部坐标
+        r"""<p>顶部坐标</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: float
         """
@@ -56359,7 +56367,7 @@ class TriggerTaskRunBrief(AbstractModel):
 
     @property
     def ResourceGroupId(self):
-        r"""资源组 ID
+        r"""<p>资源组 ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -56371,7 +56379,7 @@ class TriggerTaskRunBrief(AbstractModel):
 
     @property
     def ErrorCodeStr(self):
-        r"""错误码描述
+        r"""<p>错误码描述</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -56383,7 +56391,7 @@ class TriggerTaskRunBrief(AbstractModel):
 
     @property
     def CreateUin(self):
-        r"""创建人 UIN
+        r"""<p>创建人 UIN</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -56395,7 +56403,7 @@ class TriggerTaskRunBrief(AbstractModel):
 
     @property
     def IssueTime(self):
-        r"""下发执行平台时间
+        r"""<p>下发执行平台时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -56407,7 +56415,7 @@ class TriggerTaskRunBrief(AbstractModel):
 
     @property
     def TaskName(self):
-        r"""任务名称
+        r"""<p>任务名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -56419,7 +56427,7 @@ class TriggerTaskRunBrief(AbstractModel):
 
     @property
     def WorkflowName(self):
-        r"""工作流名称
+        r"""<p>工作流名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -56431,7 +56439,7 @@ class TriggerTaskRunBrief(AbstractModel):
 
     @property
     def ExecuteUserName(self):
-        r"""运行人名称
+        r"""<p>运行人名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -56443,7 +56451,7 @@ class TriggerTaskRunBrief(AbstractModel):
 
     @property
     def RerunTimes(self):
-        r"""重跑次数
+        r"""<p>重跑次数</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -56455,7 +56463,7 @@ class TriggerTaskRunBrief(AbstractModel):
 
     @property
     def IsLatestExecution(self):
-        r"""是否是最新一次运行
+        r"""<p>是否是最新一次运行</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
@@ -56467,7 +56475,7 @@ class TriggerTaskRunBrief(AbstractModel):
 
     @property
     def TaskExecutionState(self):
-        r"""任务运行状态
+        r"""<p>任务运行状态</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -56479,7 +56487,7 @@ class TriggerTaskRunBrief(AbstractModel):
 
     @property
     def CycleType(self):
-        r"""周期类型
+        r"""<p>周期类型</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -56491,7 +56499,7 @@ class TriggerTaskRunBrief(AbstractModel):
 
     @property
     def UserNameInCharge(self):
-        r"""责任人名称
+        r"""<p>责任人名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -56503,7 +56511,7 @@ class TriggerTaskRunBrief(AbstractModel):
 
     @property
     def UserUinInCharge(self):
-        r"""责任人id
+        r"""<p>责任人id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -56515,7 +56523,7 @@ class TriggerTaskRunBrief(AbstractModel):
 
     @property
     def ResourceGroupName(self):
-        r"""资源组名称
+        r"""<p>资源组名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -56527,7 +56535,7 @@ class TriggerTaskRunBrief(AbstractModel):
 
     @property
     def Timezone(self):
-        r"""时区
+        r"""<p>时区</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -56539,7 +56547,7 @@ class TriggerTaskRunBrief(AbstractModel):
 
     @property
     def FolderId(self):
-        r"""文件夹id
+        r"""<p>文件夹id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -56551,7 +56559,7 @@ class TriggerTaskRunBrief(AbstractModel):
 
     @property
     def FolderName(self):
-        r"""文件夹名称
+        r"""<p>文件夹名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -56563,7 +56571,7 @@ class TriggerTaskRunBrief(AbstractModel):
 
     @property
     def ProjectName(self):
-        r"""项目名称
+        r"""<p>项目名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -56575,7 +56583,7 @@ class TriggerTaskRunBrief(AbstractModel):
 
     @property
     def TaskTypeId(self):
-        r"""任务类型id
+        r"""<p>任务类型id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -56587,7 +56595,7 @@ class TriggerTaskRunBrief(AbstractModel):
 
     @property
     def WorkflowParams(self):
-        r"""工作流运行参数
+        r"""<p>工作流运行参数</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -56599,7 +56607,7 @@ class TriggerTaskRunBrief(AbstractModel):
 
     @property
     def SupportRerun(self):
-        r"""是否支持重跑
+        r"""<p>是否支持重跑</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
@@ -56611,7 +56619,7 @@ class TriggerTaskRunBrief(AbstractModel):
 
     @property
     def WorkflowExecutionState(self):
-        r"""工作流运行状态
+        r"""<p>工作流运行状态</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -56623,7 +56631,7 @@ class TriggerTaskRunBrief(AbstractModel):
 
     @property
     def ExecutionResult(self):
-        r"""任务执行结果
+        r"""<p>任务执行结果</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -56635,7 +56643,7 @@ class TriggerTaskRunBrief(AbstractModel):
 
     @property
     def DependencyTriggerPolicy(self):
-        r"""依赖策略
+        r"""<p>依赖策略</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -56644,6 +56652,30 @@ class TriggerTaskRunBrief(AbstractModel):
     @DependencyTriggerPolicy.setter
     def DependencyTriggerPolicy(self, DependencyTriggerPolicy):
         self._DependencyTriggerPolicy = DependencyTriggerPolicy
+
+    @property
+    def AssociatedEntityExist(self):
+        r"""<p>关联实体是否存在，true表示任务/工作流等实体存在，false表示实体已被删除</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._AssociatedEntityExist
+
+    @AssociatedEntityExist.setter
+    def AssociatedEntityExist(self, AssociatedEntityExist):
+        self._AssociatedEntityExist = AssociatedEntityExist
+
+    @property
+    def ScheduleRunType(self):
+        r"""<p>调度执行类型</p><p>枚举值：</p><ul><li>0： 正常调度</li><li>1： 空跑调度</li><li>2： 用户驱动，手动触发</li></ul>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ScheduleRunType
+
+    @ScheduleRunType.setter
+    def ScheduleRunType(self, ScheduleRunType):
+        self._ScheduleRunType = ScheduleRunType
 
 
     def _deserialize(self, params):
@@ -56704,6 +56736,8 @@ class TriggerTaskRunBrief(AbstractModel):
         self._WorkflowExecutionState = params.get("WorkflowExecutionState")
         self._ExecutionResult = params.get("ExecutionResult")
         self._DependencyTriggerPolicy = params.get("DependencyTriggerPolicy")
+        self._AssociatedEntityExist = params.get("AssociatedEntityExist")
+        self._ScheduleRunType = params.get("ScheduleRunType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

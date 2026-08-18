@@ -3947,14 +3947,14 @@ class DescribeJobsOverviewRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ClusterId: 集群ID
+        :param _ClusterId: <p>集群ID</p>
         :type ClusterId: str
         """
         self._ClusterId = None
 
     @property
     def ClusterId(self):
-        r"""集群ID
+        r"""<p>集群ID</p>
         :rtype: str
         """
         return self._ClusterId
@@ -3983,11 +3983,11 @@ class DescribeJobsOverviewResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _JobTotal: 作业任务数量
+        :param _JobTotal: <p>作业任务数量</p>
         :type JobTotal: int
-        :param _QueuingJobTotal: 排队中的作业任务数量
+        :param _QueuingJobTotal: <p>排队中的作业任务数量</p>
         :type QueuingJobTotal: int
-        :param _RunningJobTotal: 运行中的作业数量
+        :param _RunningJobTotal: <p>运行中的作业数量</p>
         :type RunningJobTotal: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -3999,7 +3999,7 @@ class DescribeJobsOverviewResponse(AbstractModel):
 
     @property
     def JobTotal(self):
-        r"""作业任务数量
+        r"""<p>作业任务数量</p>
         :rtype: int
         """
         return self._JobTotal
@@ -4010,7 +4010,7 @@ class DescribeJobsOverviewResponse(AbstractModel):
 
     @property
     def QueuingJobTotal(self):
-        r"""排队中的作业任务数量
+        r"""<p>排队中的作业任务数量</p>
         :rtype: int
         """
         return self._QueuingJobTotal
@@ -4021,7 +4021,7 @@ class DescribeJobsOverviewResponse(AbstractModel):
 
     @property
     def RunningJobTotal(self):
-        r"""运行中的作业数量
+        r"""<p>运行中的作业数量</p>
         :rtype: int
         """
         return self._RunningJobTotal
@@ -4632,9 +4632,9 @@ class DetachNodesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ClusterId: 集群id
+        :param _ClusterId: <p>集群id</p>
         :type ClusterId: str
-        :param _NodeIds: 集群中的节点id
+        :param _NodeIds: <p>集群中的节点id</p>
         :type NodeIds: list of str
         """
         self._ClusterId = None
@@ -4642,7 +4642,7 @@ class DetachNodesRequest(AbstractModel):
 
     @property
     def ClusterId(self):
-        r"""集群id
+        r"""<p>集群id</p>
         :rtype: str
         """
         return self._ClusterId
@@ -4653,7 +4653,7 @@ class DetachNodesRequest(AbstractModel):
 
     @property
     def NodeIds(self):
-        r"""集群中的节点id
+        r"""<p>集群中的节点id</p>
         :rtype: list of str
         """
         return self._NodeIds

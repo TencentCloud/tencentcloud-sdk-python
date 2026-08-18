@@ -655,6 +655,42 @@ class AdpClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeConcurrencyLimitDetailList(
+            self,
+            request: models.DescribeConcurrencyLimitDetailListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeConcurrencyLimitDetailListResponse:
+        """
+        查询并发超限明细，包含QPM/TPM超限与专属并发超限记录，返回超限发生时间、空间、应用、模型及请求内容
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeConcurrencyLimitDetailList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeConcurrencyLimitDetailListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeConsumptionDetailList(
+            self,
+            request: models.DescribeConsumptionDetailListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeConsumptionDetailListResponse:
+        """
+        查询资源消耗明细，包含计费相关字段（消耗类型、消耗目标、消耗场景、套餐包及PU消耗等）
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeConsumptionDetailList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeConsumptionDetailListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeConversation(
             self,
             request: models.DescribeConversationRequest,
@@ -722,6 +758,24 @@ class AdpClient(AbstractClient):
         kwargs["action"] = "DescribeLatestRelease"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeLatestReleaseResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeMetricOverviewList(
+            self,
+            request: models.DescribeMetricOverviewListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeMetricOverviewListResponse:
+        """
+        查询看板总览KPI卡片数据，通过resource_type区分资源看板与业务看板域，返回各域KPI指标列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeMetricOverviewList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeMetricOverviewListResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -920,6 +974,42 @@ class AdpClient(AbstractClient):
         kwargs["action"] = "DescribeSystemVariableList"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeSystemVariableListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeUsageDetailList(
+            self,
+            request: models.DescribeUsageDetailListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeUsageDetailListResponse:
+        """
+        查询资源调用时序明细，支持模型和插件两类资源，按时间顺序返回每条调用记录的详细信息
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeUsageDetailList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeUsageDetailListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeUsageSummaryList(
+            self,
+            request: models.DescribeUsageSummaryListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeUsageSummaryListResponse:
+        """
+        查询资源用量聚合明细，支持模型、插件、平台三类资源，按空间/应用维度聚合展示调用次数、Token消耗等指标
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeUsageSummaryList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeUsageSummaryListResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

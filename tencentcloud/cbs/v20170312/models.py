@@ -2716,6 +2716,87 @@ class CreateSnapshotResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DedicatedClusterDiskStatistic(AbstractModel):
+    r"""CDC 独享集群云硬盘统计信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DiskType: <p>硬盘介质类型。取值范围：<br>&lt;li&gt;CLOUD_BASIC：表示普通云硬盘<br>&lt;li&gt;CLOUD_PREMIUM：表示高性能云硬盘<br>&lt;li&gt;CLOUD_SSD：表示SSD云硬盘<br>&lt;li&gt;CLOUD_HSSD：表示增强型SSD云硬盘<br>&lt;li&gt;CLOUD_TSSD：表示极速型SSD云硬盘。</p>
+        :type DiskType: str
+        :param _TotalDiskSize: <p>云硬盘总容量。</p><p>单位：GiB</p>
+        :type TotalDiskSize: int
+        :param _UsedDiskSize: <p>已使用的云硬盘容量。</p><p>单位：GiB</p>
+        :type UsedDiskSize: int
+        :param _AvailableDiskSize: <p>可用的云硬盘容量。</p><p>单位：GiB</p>
+        :type AvailableDiskSize: int
+        """
+        self._DiskType = None
+        self._TotalDiskSize = None
+        self._UsedDiskSize = None
+        self._AvailableDiskSize = None
+
+    @property
+    def DiskType(self):
+        r"""<p>硬盘介质类型。取值范围：<br>&lt;li&gt;CLOUD_BASIC：表示普通云硬盘<br>&lt;li&gt;CLOUD_PREMIUM：表示高性能云硬盘<br>&lt;li&gt;CLOUD_SSD：表示SSD云硬盘<br>&lt;li&gt;CLOUD_HSSD：表示增强型SSD云硬盘<br>&lt;li&gt;CLOUD_TSSD：表示极速型SSD云硬盘。</p>
+        :rtype: str
+        """
+        return self._DiskType
+
+    @DiskType.setter
+    def DiskType(self, DiskType):
+        self._DiskType = DiskType
+
+    @property
+    def TotalDiskSize(self):
+        r"""<p>云硬盘总容量。</p><p>单位：GiB</p>
+        :rtype: int
+        """
+        return self._TotalDiskSize
+
+    @TotalDiskSize.setter
+    def TotalDiskSize(self, TotalDiskSize):
+        self._TotalDiskSize = TotalDiskSize
+
+    @property
+    def UsedDiskSize(self):
+        r"""<p>已使用的云硬盘容量。</p><p>单位：GiB</p>
+        :rtype: int
+        """
+        return self._UsedDiskSize
+
+    @UsedDiskSize.setter
+    def UsedDiskSize(self, UsedDiskSize):
+        self._UsedDiskSize = UsedDiskSize
+
+    @property
+    def AvailableDiskSize(self):
+        r"""<p>可用的云硬盘容量。</p><p>单位：GiB</p>
+        :rtype: int
+        """
+        return self._AvailableDiskSize
+
+    @AvailableDiskSize.setter
+    def AvailableDiskSize(self, AvailableDiskSize):
+        self._AvailableDiskSize = AvailableDiskSize
+
+
+    def _deserialize(self, params):
+        self._DiskType = params.get("DiskType")
+        self._TotalDiskSize = params.get("TotalDiskSize")
+        self._UsedDiskSize = params.get("UsedDiskSize")
+        self._AvailableDiskSize = params.get("AvailableDiskSize")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DeleteAutoSnapshotPoliciesRequest(AbstractModel):
     r"""DeleteAutoSnapshotPolicies请求参数结构体
 
@@ -3207,6 +3288,36 @@ class DescribeDedicatedClusterDiskStatisticsRequest(AbstractModel):
 
     """
 
+    def __init__(self):
+        r"""
+        :param _DedicatedClusterId: <p>云服务器独享集群ID。</p>
+        :type DedicatedClusterId: str
+        """
+        self._DedicatedClusterId = None
+
+    @property
+    def DedicatedClusterId(self):
+        r"""<p>云服务器独享集群ID。</p>
+        :rtype: str
+        """
+        return self._DedicatedClusterId
+
+    @DedicatedClusterId.setter
+    def DedicatedClusterId(self, DedicatedClusterId):
+        self._DedicatedClusterId = DedicatedClusterId
+
+
+    def _deserialize(self, params):
+        self._DedicatedClusterId = params.get("DedicatedClusterId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
 
 class DescribeDedicatedClusterDiskStatisticsResponse(AbstractModel):
     r"""DescribeDedicatedClusterDiskStatistics返回参数结构体
@@ -3215,10 +3326,24 @@ class DescribeDedicatedClusterDiskStatisticsResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _DedicatedClusterDiskStatisticSet: <p>云服务器独享集群云硬盘统计信息。</p>
+        :type DedicatedClusterDiskStatisticSet: list of DedicatedClusterDiskStatistic
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._DedicatedClusterDiskStatisticSet = None
         self._RequestId = None
+
+    @property
+    def DedicatedClusterDiskStatisticSet(self):
+        r"""<p>云服务器独享集群云硬盘统计信息。</p>
+        :rtype: list of DedicatedClusterDiskStatistic
+        """
+        return self._DedicatedClusterDiskStatisticSet
+
+    @DedicatedClusterDiskStatisticSet.setter
+    def DedicatedClusterDiskStatisticSet(self, DedicatedClusterDiskStatisticSet):
+        self._DedicatedClusterDiskStatisticSet = DedicatedClusterDiskStatisticSet
 
     @property
     def RequestId(self):
@@ -3233,6 +3358,12 @@ class DescribeDedicatedClusterDiskStatisticsResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        if params.get("DedicatedClusterDiskStatisticSet") is not None:
+            self._DedicatedClusterDiskStatisticSet = []
+            for item in params.get("DedicatedClusterDiskStatisticSet"):
+                obj = DedicatedClusterDiskStatistic()
+                obj._deserialize(item)
+                self._DedicatedClusterDiskStatisticSet.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -4346,10 +4477,38 @@ class DescribeRemoteDisksResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _RemoteDiskSet: <p>单副本SSD硬盘的详细信息列表。</p>
+        :type RemoteDiskSet: list of RemoteDiskDetail
+        :param _TotalCount: <p>符合条件的单副本SSD硬盘数量。</p>
+        :type TotalCount: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._RemoteDiskSet = None
+        self._TotalCount = None
         self._RequestId = None
+
+    @property
+    def RemoteDiskSet(self):
+        r"""<p>单副本SSD硬盘的详细信息列表。</p>
+        :rtype: list of RemoteDiskDetail
+        """
+        return self._RemoteDiskSet
+
+    @RemoteDiskSet.setter
+    def RemoteDiskSet(self, RemoteDiskSet):
+        self._RemoteDiskSet = RemoteDiskSet
+
+    @property
+    def TotalCount(self):
+        r"""<p>符合条件的单副本SSD硬盘数量。</p>
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
 
     @property
     def RequestId(self):
@@ -4364,6 +4523,13 @@ class DescribeRemoteDisksResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        if params.get("RemoteDiskSet") is not None:
+            self._RemoteDiskSet = []
+            for item in params.get("RemoteDiskSet"):
+                obj = RemoteDiskDetail()
+                obj._deserialize(item)
+                self._RemoteDiskSet.append(obj)
+        self._TotalCount = params.get("TotalCount")
         self._RequestId = params.get("RequestId")
 
 
@@ -9127,6 +9293,44 @@ class RemoteDiskChargePrepaid(AbstractModel):
         self._Period = params.get("Period")
         self._CurInstanceDeadline = params.get("CurInstanceDeadline")
         self._RenewFlag = params.get("RenewFlag")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RemoteDiskDetail(AbstractModel):
+    r"""单副本SSD硬盘详情。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Placement: <p>单副本SSD硬盘所在的位置。</p>
+        :type Placement: :class:`tencentcloud.cbs.v20170312.models.Placement`
+        """
+        self._Placement = None
+
+    @property
+    def Placement(self):
+        r"""<p>单副本SSD硬盘所在的位置。</p>
+        :rtype: :class:`tencentcloud.cbs.v20170312.models.Placement`
+        """
+        return self._Placement
+
+    @Placement.setter
+    def Placement(self, Placement):
+        self._Placement = Placement
+
+
+    def _deserialize(self, params):
+        if params.get("Placement") is not None:
+            self._Placement = Placement()
+            self._Placement._deserialize(params.get("Placement"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

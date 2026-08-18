@@ -35170,6 +35170,8 @@ class RoGroup(AbstractModel):
         :type RoGroupZone: str
         :param _DelayReplicationTime: <p>延迟复制时间。单位：秒。值范围：1-259200，整数。</p>
         :type DelayReplicationTime: int
+        :param _RoGroupType: <p>只读组类型。</p><p>枚举值：</p><ul><li>normal： 普通RO组</li><li>direct： 纯网络转发模式</li><li>default： 默认RO组</li></ul><p>默认值：normal</p>
+        :type RoGroupType: str
         """
         self._RoGroupMode = None
         self._RoGroupId = None
@@ -35187,6 +35189,7 @@ class RoGroup(AbstractModel):
         self._RoGroupRegion = None
         self._RoGroupZone = None
         self._DelayReplicationTime = None
+        self._RoGroupType = None
 
     @property
     def RoGroupMode(self):
@@ -35364,6 +35367,17 @@ class RoGroup(AbstractModel):
     def DelayReplicationTime(self, DelayReplicationTime):
         self._DelayReplicationTime = DelayReplicationTime
 
+    @property
+    def RoGroupType(self):
+        r"""<p>只读组类型。</p><p>枚举值：</p><ul><li>normal： 普通RO组</li><li>direct： 纯网络转发模式</li><li>default： 默认RO组</li></ul><p>默认值：normal</p>
+        :rtype: str
+        """
+        return self._RoGroupType
+
+    @RoGroupType.setter
+    def RoGroupType(self, RoGroupType):
+        self._RoGroupType = RoGroupType
+
 
     def _deserialize(self, params):
         self._RoGroupMode = params.get("RoGroupMode")
@@ -35387,6 +35401,7 @@ class RoGroup(AbstractModel):
         self._RoGroupRegion = params.get("RoGroupRegion")
         self._RoGroupZone = params.get("RoGroupZone")
         self._DelayReplicationTime = params.get("DelayReplicationTime")
+        self._RoGroupType = params.get("RoGroupType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

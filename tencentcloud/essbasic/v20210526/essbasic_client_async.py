@@ -2710,7 +2710,7 @@ class EssbasicClient(AbstractClient):
         ##  变更审核流程
 
         接口在处理变更时，会先进行工商三要素（企业名称、法人姓名、统一社会信用代码）核验，流程分为以下两条路径：
-        <img src="https://qcloudimg.tencent-cloud.cn/raw/123767975de1754bd30b24617661ea65.png" width="380" >
+        <img src="https://qcloudimg.tencent-cloud.cn/raw/6976bc5589fa4835d4a5d5d1d6e0d9ef.png" width="380" >
 
         ### 触发人工审核（收录流程）的具体场景：
 

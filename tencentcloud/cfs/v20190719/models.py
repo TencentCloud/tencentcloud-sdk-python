@@ -25,9 +25,9 @@ class ApplyPathLifecyclePolicyRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _LifecyclePolicyID: 生命周期管理策略ID
+        :param _LifecyclePolicyID: <p>生命周期管理策略ID</p>
         :type LifecyclePolicyID: str
-        :param _Paths: 生命周期管理策略关联目录的绝对路径列表
+        :param _Paths: <p>生命周期管理策略所关联的目录路径列表，每个路径必须以 /cfs/ 开头，代表文件存储实例内部的逻辑路径，而非本地挂载点路径。</p><p>示例：</p><ul><li>若挂载的是CFS根目录 /，需关联挂载路径下的 test1/test2，则入参值为 /cfs/test1/test2</li><li>若挂载的是CFS子目录 /subdir，需关联挂载路径下的 test1/test2，则入参值为 /cfs/subdir/test1/test2</li></ul>
         :type Paths: list of PathInfo
         """
         self._LifecyclePolicyID = None
@@ -35,7 +35,7 @@ class ApplyPathLifecyclePolicyRequest(AbstractModel):
 
     @property
     def LifecyclePolicyID(self):
-        r"""生命周期管理策略ID
+        r"""<p>生命周期管理策略ID</p>
         :rtype: str
         """
         return self._LifecyclePolicyID
@@ -46,7 +46,7 @@ class ApplyPathLifecyclePolicyRequest(AbstractModel):
 
     @property
     def Paths(self):
-        r"""生命周期管理策略关联目录的绝对路径列表
+        r"""<p>生命周期管理策略所关联的目录路径列表，每个路径必须以 /cfs/ 开头，代表文件存储实例内部的逻辑路径，而非本地挂载点路径。</p><p>示例：</p><ul><li>若挂载的是CFS根目录 /，需关联挂载路径下的 test1/test2，则入参值为 /cfs/test1/test2</li><li>若挂载的是CFS子目录 /subdir，需关联挂载路径下的 test1/test2，则入参值为 /cfs/subdir/test1/test2</li></ul>
         :rtype: list of PathInfo
         """
         return self._Paths
@@ -81,7 +81,7 @@ class ApplyPathLifecyclePolicyResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _CheckResults: 有规则冲突时返回的已有冲突规则信息
+        :param _CheckResults: <p>有规则冲突时返回的已有冲突规则信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type CheckResults: list of CheckResult
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -92,7 +92,7 @@ class ApplyPathLifecyclePolicyResponse(AbstractModel):
 
     @property
     def CheckResults(self):
-        r"""有规则冲突时返回的已有冲突规则信息
+        r"""<p>有规则冲突时返回的已有冲突规则信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of CheckResult
         """
@@ -2293,31 +2293,31 @@ class CreateDataFlowRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _FileSystemId: 文件系统 ID ，通过查询文件系统 [DescribeCfsFileSystems](https://cloud.tencent.com/document/product/582/38170) 获取
+        :param _FileSystemId: <p>文件系统 ID ，通过查询文件系统 <a href="https://cloud.tencent.com/document/product/582/38170">DescribeCfsFileSystems</a> 获取</p>
         :type FileSystemId: str
-        :param _SourceStorageType: 源端数据类型；包含S3_COS，S3_L5 
+        :param _SourceStorageType: <p>源端数据类型；包含S3_COS，S3_L5</p>
         :type SourceStorageType: str
-        :param _SourceStorageAddress: 源端存储地址
+        :param _SourceStorageAddress: <p>源端存储地址</p>
         :type SourceStorageAddress: str
-        :param _SourcePath: 源端路径
+        :param _SourcePath: <p>源端路径</p>
         :type SourcePath: str
-        :param _TargetPath: 文件系统内目标路径
+        :param _TargetPath: <p>设置数据流动时指定的文件系统内目标路径，必须以 /cfs/ 开头，代表文件存储实例内部的逻辑路径，而非本地挂载点路径。<br>示例：</p><ul><li>若挂载的是CFS根目录 /，需将对象存储上的源端目录与挂载路径下的 test1/test2 建立映射关系，则入参值为 /cfs/test1/test2</li><li>若挂载的是CFS子目录 /subdir，需将对象存储上的源端目录与挂载路径下的 test1/test2 建立映射关系，则入参值为 /cfs/subdir/test1/test2</li></ul>
         :type TargetPath: str
-        :param _SecretId: 密钥 ID
+        :param _SecretId: <p>密钥 ID</p>
         :type SecretId: str
-        :param _SecretKey: 密钥 key
+        :param _SecretKey: <p>密钥 key</p>
         :type SecretKey: str
-        :param _DataFlowName: 数据流动名称；支持不超过64字符长度，支持中文、数字、_、-
+        :param _DataFlowName: <p>数据流动名称；支持不超过64字符长度，支持中文、数字、_、-</p>
         :type DataFlowName: str
-        :param _AutoRefresh:  0：不开启自动更新  1：开启自动更新
+        :param _AutoRefresh: <p>0：不开启自动更新  1：开启自动更新</p>
         :type AutoRefresh: int
-        :param _UserKafkaTopic: KafkaConsumer 消费时使用的Topic参数
+        :param _UserKafkaTopic: <p>KafkaConsumer 消费时使用的Topic参数</p>
         :type UserKafkaTopic: str
-        :param _ServerAddr: 	服务地址 示例值：kafkaconsumer-ap-beijing.cls.tencentyun.com:9095
+        :param _ServerAddr: <p>服务地址 示例值：kafkaconsumer-ap-beijing.cls.tencentyun.com:9095</p>
         :type ServerAddr: str
-        :param _UserName: Kafka消费用户名.示例值：name
+        :param _UserName: <p>Kafka消费用户名.示例值：name</p>
         :type UserName: str
-        :param _Password: Kafka消费用户密码。默认${SecretId}#${SecretKey}。
+        :param _Password: <p>Kafka消费用户密码。默认${SecretId}#${SecretKey}。</p>
         :type Password: str
         """
         self._FileSystemId = None
@@ -2336,7 +2336,7 @@ class CreateDataFlowRequest(AbstractModel):
 
     @property
     def FileSystemId(self):
-        r"""文件系统 ID ，通过查询文件系统 [DescribeCfsFileSystems](https://cloud.tencent.com/document/product/582/38170) 获取
+        r"""<p>文件系统 ID ，通过查询文件系统 <a href="https://cloud.tencent.com/document/product/582/38170">DescribeCfsFileSystems</a> 获取</p>
         :rtype: str
         """
         return self._FileSystemId
@@ -2347,7 +2347,7 @@ class CreateDataFlowRequest(AbstractModel):
 
     @property
     def SourceStorageType(self):
-        r"""源端数据类型；包含S3_COS，S3_L5 
+        r"""<p>源端数据类型；包含S3_COS，S3_L5</p>
         :rtype: str
         """
         return self._SourceStorageType
@@ -2358,7 +2358,7 @@ class CreateDataFlowRequest(AbstractModel):
 
     @property
     def SourceStorageAddress(self):
-        r"""源端存储地址
+        r"""<p>源端存储地址</p>
         :rtype: str
         """
         return self._SourceStorageAddress
@@ -2369,7 +2369,7 @@ class CreateDataFlowRequest(AbstractModel):
 
     @property
     def SourcePath(self):
-        r"""源端路径
+        r"""<p>源端路径</p>
         :rtype: str
         """
         return self._SourcePath
@@ -2380,7 +2380,7 @@ class CreateDataFlowRequest(AbstractModel):
 
     @property
     def TargetPath(self):
-        r"""文件系统内目标路径
+        r"""<p>设置数据流动时指定的文件系统内目标路径，必须以 /cfs/ 开头，代表文件存储实例内部的逻辑路径，而非本地挂载点路径。<br>示例：</p><ul><li>若挂载的是CFS根目录 /，需将对象存储上的源端目录与挂载路径下的 test1/test2 建立映射关系，则入参值为 /cfs/test1/test2</li><li>若挂载的是CFS子目录 /subdir，需将对象存储上的源端目录与挂载路径下的 test1/test2 建立映射关系，则入参值为 /cfs/subdir/test1/test2</li></ul>
         :rtype: str
         """
         return self._TargetPath
@@ -2391,7 +2391,7 @@ class CreateDataFlowRequest(AbstractModel):
 
     @property
     def SecretId(self):
-        r"""密钥 ID
+        r"""<p>密钥 ID</p>
         :rtype: str
         """
         return self._SecretId
@@ -2402,7 +2402,7 @@ class CreateDataFlowRequest(AbstractModel):
 
     @property
     def SecretKey(self):
-        r"""密钥 key
+        r"""<p>密钥 key</p>
         :rtype: str
         """
         return self._SecretKey
@@ -2413,7 +2413,7 @@ class CreateDataFlowRequest(AbstractModel):
 
     @property
     def DataFlowName(self):
-        r"""数据流动名称；支持不超过64字符长度，支持中文、数字、_、-
+        r"""<p>数据流动名称；支持不超过64字符长度，支持中文、数字、_、-</p>
         :rtype: str
         """
         return self._DataFlowName
@@ -2424,7 +2424,7 @@ class CreateDataFlowRequest(AbstractModel):
 
     @property
     def AutoRefresh(self):
-        r""" 0：不开启自动更新  1：开启自动更新
+        r"""<p>0：不开启自动更新  1：开启自动更新</p>
         :rtype: int
         """
         return self._AutoRefresh
@@ -2435,7 +2435,7 @@ class CreateDataFlowRequest(AbstractModel):
 
     @property
     def UserKafkaTopic(self):
-        r"""KafkaConsumer 消费时使用的Topic参数
+        r"""<p>KafkaConsumer 消费时使用的Topic参数</p>
         :rtype: str
         """
         return self._UserKafkaTopic
@@ -2446,7 +2446,7 @@ class CreateDataFlowRequest(AbstractModel):
 
     @property
     def ServerAddr(self):
-        r"""	服务地址 示例值：kafkaconsumer-ap-beijing.cls.tencentyun.com:9095
+        r"""<p>服务地址 示例值：kafkaconsumer-ap-beijing.cls.tencentyun.com:9095</p>
         :rtype: str
         """
         return self._ServerAddr
@@ -2457,7 +2457,7 @@ class CreateDataFlowRequest(AbstractModel):
 
     @property
     def UserName(self):
-        r"""Kafka消费用户名.示例值：name
+        r"""<p>Kafka消费用户名.示例值：name</p>
         :rtype: str
         """
         return self._UserName
@@ -2468,7 +2468,7 @@ class CreateDataFlowRequest(AbstractModel):
 
     @property
     def Password(self):
-        r"""Kafka消费用户密码。默认${SecretId}#${SecretKey}。
+        r"""<p>Kafka消费用户密码。默认${SecretId}#${SecretKey}。</p>
         :rtype: str
         """
         return self._Password
@@ -2509,7 +2509,7 @@ class CreateDataFlowResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DataFlowId: 数据流动管理 ID
+        :param _DataFlowId: <p>数据流动管理 ID</p>
         :type DataFlowId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -2519,7 +2519,7 @@ class CreateDataFlowResponse(AbstractModel):
 
     @property
     def DataFlowId(self):
-        r"""数据流动管理 ID
+        r"""<p>数据流动管理 ID</p>
         :rtype: str
         """
         return self._DataFlowId
@@ -2733,7 +2733,7 @@ class CreateLifecycleDataTaskRequest(AbstractModel):
         :type DataFlowId: str
         :param _IsOverwrite: <p>当CFSTurbo内的文件和外置存储存在同名情况时，是否覆盖。  ture：覆盖  false：不覆盖（同时也不会释放热存数据）  为空时，默认为false</p>
         :type IsOverwrite: bool
-        :param _ListPath: <p>【新增】数据清单文件路径，清单文件内每行一条待处理文件的完整路径。与 TaskPath 二选一。路径必须以 /cfs 开头，且必须为 CFS 文件系统内已存在的文件。示例值：/cfs/lists/archive_list.txt</p>
+        :param _ListPath: <p>数据清单文件路径，清单文件内每行为待处理文件的完整路径。所有路径（包括清单文件路径、清单文件内每行表示的待处理文件的路径）必须以 /cfs 开头，指向CFS文件系统内已存在的文件，与 TaskPath 参数二选一填写。<br>示例：</p><ul><li>若挂载的是CFS根目录 /，清单文件位于挂载路径下的 lists/archive_list.txt，则入参值为 /cfs/lists/archive_list.txt</li><li>若挂载的是CFS子目录 /subdir，清单文件位于挂载路径下的 lists/archive_list.txt，则入参值为 /cfs/subdir/lists/archive_list.txt</li></ul>
         :type ListPath: str
         """
         self._FileSystemId = None
@@ -2812,7 +2812,7 @@ class CreateLifecycleDataTaskRequest(AbstractModel):
 
     @property
     def ListPath(self):
-        r"""<p>【新增】数据清单文件路径，清单文件内每行一条待处理文件的完整路径。与 TaskPath 二选一。路径必须以 /cfs 开头，且必须为 CFS 文件系统内已存在的文件。示例值：/cfs/lists/archive_list.txt</p>
+        r"""<p>数据清单文件路径，清单文件内每行为待处理文件的完整路径。所有路径（包括清单文件路径、清单文件内每行表示的待处理文件的路径）必须以 /cfs 开头，指向CFS文件系统内已存在的文件，与 TaskPath 参数二选一填写。<br>示例：</p><ul><li>若挂载的是CFS根目录 /，清单文件位于挂载路径下的 lists/archive_list.txt，则入参值为 /cfs/lists/archive_list.txt</li><li>若挂载的是CFS子目录 /subdir，清单文件位于挂载路径下的 lists/archive_list.txt，则入参值为 /cfs/subdir/lists/archive_list.txt</li></ul>
         :rtype: str
         """
         return self._ListPath
@@ -3095,7 +3095,7 @@ class CreateMigrationTaskRequest(AbstractModel):
         :type SrcSecretKey: str
         :param _FileSystemId: <p>文件系统实例 ID，通过查询文件系统 <a href="https://cloud.tencent.com/document/product/582/38170">DescribeCfsFileSystems</a> 获取</p>
         :type FileSystemId: str
-        :param _FsPath: <p>文件系统路径</p>
+        :param _FsPath: <p>文件系统内目录路径，不涉及实际挂载子目录/根目录，无需以/cfs/作为前缀</p>
         :type FsPath: str
         :param _CoverType: <p>同名文件迁移时覆盖策略，默认为0。0: 最后修改时间优先；1: 全覆盖；2: 不覆盖</p>
         :type CoverType: int
@@ -3201,7 +3201,7 @@ class CreateMigrationTaskRequest(AbstractModel):
 
     @property
     def FsPath(self):
-        r"""<p>文件系统路径</p>
+        r"""<p>文件系统内目录路径，不涉及实际挂载子目录/根目录，无需以/cfs/作为前缀</p>
         :rtype: str
         """
         return self._FsPath
@@ -3387,42 +3387,35 @@ class DataFlowInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DataFlowId: 数据流动管理 ID
+        :param _DataFlowId: <p>数据流动管理 ID</p>
         :type DataFlowId: str
-        :param _DataFlowName: 数据流动名称
+        :param _DataFlowName: <p>数据流动名称</p>
         :type DataFlowName: str
-        :param _SourceStorageType: 源端数据类型
+        :param _SourceStorageType: <p>源端数据类型</p>
         :type SourceStorageType: str
-        :param _SourceStorageAddress: 源端存储地址
+        :param _SourceStorageAddress: <p>源端存储地址</p>
         :type SourceStorageAddress: str
-        :param _SourcePath: 源端路径
+        :param _SourcePath: <p>源端路径</p>
         :type SourcePath: str
-        :param _TargetPath: 目录路径
+        :param _TargetPath: <p>设置数据流动时指定的文件系统内目标路径，必须以 /cfs/ 开头，代表文件存储实例内部的逻辑路径，而非本地挂载点路径。<br>示例：</p><ul><li>若挂载的是CFS根目录 /，需将对象存储上的源端目录与挂载路径下的 test1/test2 建立映射关系，则入参值为 /cfs/test1/test2</li><li>若挂载的是CFS子目录 /subdir，需将对象存储上的源端目录与挂载路径下的 test1/test2 建立映射关系，则入参值为 /cfs/subdir/test1/test2</li></ul>
         :type TargetPath: str
-        :param _Status: available：已生效
-pending：配置中
-unavailable：失效
-deleting：删除中
+        :param _Status: <p>available：已生效<br>pending：配置中<br>unavailable：失效<br>deleting：删除中</p>
         :type Status: str
-        :param _CreationTime: 创建时间
+        :param _CreationTime: <p>创建时间</p>
         :type CreationTime: str
-        :param _FileSystemId: 文件系统 ID
+        :param _FileSystemId: <p>文件系统 ID</p>
         :type FileSystemId: str
-        :param _AutoRefresh: 0：不开启自动更新
-
-1：开启自动更新
+        :param _AutoRefresh: <p>0：不开启自动更新</p><p>1：开启自动更新</p>
         :type AutoRefresh: int
-        :param _UserKafkaTopic: KafkaConsumer 消费时使用的Topic参数
+        :param _UserKafkaTopic: <p>KafkaConsumer 消费时使用的Topic参数</p>
         :type UserKafkaTopic: str
-        :param _ServerAddr: 服务地址
+        :param _ServerAddr: <p>服务地址</p>
         :type ServerAddr: str
-        :param _UserName: Kafka消费用户名
+        :param _UserName: <p>Kafka消费用户名</p>
         :type UserName: str
-        :param _AutoRefreshStatus: 自动刷新的状态，available：已生效
-pending：配置中
-unavailable：失效
+        :param _AutoRefreshStatus: <p>自动刷新的状态，available：已生效<br>pending：配置中<br>unavailable：失效</p>
         :type AutoRefreshStatus: str
-        :param _AutoRefreshTime: 自动刷新开启时间
+        :param _AutoRefreshTime: <p>自动刷新开启时间</p>
         :type AutoRefreshTime: str
         """
         self._DataFlowId = None
@@ -3443,7 +3436,7 @@ unavailable：失效
 
     @property
     def DataFlowId(self):
-        r"""数据流动管理 ID
+        r"""<p>数据流动管理 ID</p>
         :rtype: str
         """
         return self._DataFlowId
@@ -3454,7 +3447,7 @@ unavailable：失效
 
     @property
     def DataFlowName(self):
-        r"""数据流动名称
+        r"""<p>数据流动名称</p>
         :rtype: str
         """
         return self._DataFlowName
@@ -3465,7 +3458,7 @@ unavailable：失效
 
     @property
     def SourceStorageType(self):
-        r"""源端数据类型
+        r"""<p>源端数据类型</p>
         :rtype: str
         """
         return self._SourceStorageType
@@ -3476,7 +3469,7 @@ unavailable：失效
 
     @property
     def SourceStorageAddress(self):
-        r"""源端存储地址
+        r"""<p>源端存储地址</p>
         :rtype: str
         """
         return self._SourceStorageAddress
@@ -3487,7 +3480,7 @@ unavailable：失效
 
     @property
     def SourcePath(self):
-        r"""源端路径
+        r"""<p>源端路径</p>
         :rtype: str
         """
         return self._SourcePath
@@ -3498,7 +3491,7 @@ unavailable：失效
 
     @property
     def TargetPath(self):
-        r"""目录路径
+        r"""<p>设置数据流动时指定的文件系统内目标路径，必须以 /cfs/ 开头，代表文件存储实例内部的逻辑路径，而非本地挂载点路径。<br>示例：</p><ul><li>若挂载的是CFS根目录 /，需将对象存储上的源端目录与挂载路径下的 test1/test2 建立映射关系，则入参值为 /cfs/test1/test2</li><li>若挂载的是CFS子目录 /subdir，需将对象存储上的源端目录与挂载路径下的 test1/test2 建立映射关系，则入参值为 /cfs/subdir/test1/test2</li></ul>
         :rtype: str
         """
         return self._TargetPath
@@ -3509,10 +3502,7 @@ unavailable：失效
 
     @property
     def Status(self):
-        r"""available：已生效
-pending：配置中
-unavailable：失效
-deleting：删除中
+        r"""<p>available：已生效<br>pending：配置中<br>unavailable：失效<br>deleting：删除中</p>
         :rtype: str
         """
         return self._Status
@@ -3523,7 +3513,7 @@ deleting：删除中
 
     @property
     def CreationTime(self):
-        r"""创建时间
+        r"""<p>创建时间</p>
         :rtype: str
         """
         return self._CreationTime
@@ -3534,7 +3524,7 @@ deleting：删除中
 
     @property
     def FileSystemId(self):
-        r"""文件系统 ID
+        r"""<p>文件系统 ID</p>
         :rtype: str
         """
         return self._FileSystemId
@@ -3545,9 +3535,7 @@ deleting：删除中
 
     @property
     def AutoRefresh(self):
-        r"""0：不开启自动更新
-
-1：开启自动更新
+        r"""<p>0：不开启自动更新</p><p>1：开启自动更新</p>
         :rtype: int
         """
         return self._AutoRefresh
@@ -3558,7 +3546,7 @@ deleting：删除中
 
     @property
     def UserKafkaTopic(self):
-        r"""KafkaConsumer 消费时使用的Topic参数
+        r"""<p>KafkaConsumer 消费时使用的Topic参数</p>
         :rtype: str
         """
         return self._UserKafkaTopic
@@ -3569,7 +3557,7 @@ deleting：删除中
 
     @property
     def ServerAddr(self):
-        r"""服务地址
+        r"""<p>服务地址</p>
         :rtype: str
         """
         return self._ServerAddr
@@ -3580,7 +3568,7 @@ deleting：删除中
 
     @property
     def UserName(self):
-        r"""Kafka消费用户名
+        r"""<p>Kafka消费用户名</p>
         :rtype: str
         """
         return self._UserName
@@ -3591,9 +3579,7 @@ deleting：删除中
 
     @property
     def AutoRefreshStatus(self):
-        r"""自动刷新的状态，available：已生效
-pending：配置中
-unavailable：失效
+        r"""<p>自动刷新的状态，available：已生效<br>pending：配置中<br>unavailable：失效</p>
         :rtype: str
         """
         return self._AutoRefreshStatus
@@ -3604,7 +3590,7 @@ unavailable：失效
 
     @property
     def AutoRefreshTime(self):
-        r"""自动刷新开启时间
+        r"""<p>自动刷新开启时间</p>
         :rtype: str
         """
         return self._AutoRefreshTime
@@ -4732,13 +4718,13 @@ class DeleteUserQuotaRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _FileSystemId: 文件系统ID，通过查询文件系统列表获取；[DescribeCfsFileSystems](https://cloud.tencent.com/document/product/582/38170)
+        :param _FileSystemId: <p>文件系统ID，通过查询文件系统列表获取；<a href="https://cloud.tencent.com/document/product/582/38170">DescribeCfsFileSystems</a></p>
         :type FileSystemId: str
-        :param _UserType: 指定配额类型，包括Uid（按用户ID限制）、Gid（按用户组ID限制）、Dir（按目录限制）
+        :param _UserType: <p>指定配额类型，包括Uid（按用户ID限制）、Gid（按用户组ID限制）、Dir（按目录限制）</p>
         :type UserType: str
-        :param _UserId: UID/GID信息，和DirectoryPath参数，两者必须填写一个
+        :param _UserId: <p>UID/GID信息，和DirectoryPath参数，两者必须填写一个</p>
         :type UserId: str
-        :param _DirectoryPath: 设置目录配额的目录的绝对路径，和UserId参数，两者必须填写一个
+        :param _DirectoryPath: <p>需删除配额的目录路径，必须以 /cfs/ 开头，代表文件存储实例内部的逻辑路径，而非本地挂载点路径。该参数与 UserId 参数至少填写一个。<br>示例：</p><ul><li>若挂载的是CFS根目录 /，需删除挂载路径下 test1/test2 的配额，则入参值为 /cfs/test1/test2</li><li>若挂载的是CFS子目录 /subdir，需删除挂载路径下 test1/test2 的配额，则入参值为 /cfs/subdir/test1/test2</li></ul>
         :type DirectoryPath: str
         """
         self._FileSystemId = None
@@ -4748,7 +4734,7 @@ class DeleteUserQuotaRequest(AbstractModel):
 
     @property
     def FileSystemId(self):
-        r"""文件系统ID，通过查询文件系统列表获取；[DescribeCfsFileSystems](https://cloud.tencent.com/document/product/582/38170)
+        r"""<p>文件系统ID，通过查询文件系统列表获取；<a href="https://cloud.tencent.com/document/product/582/38170">DescribeCfsFileSystems</a></p>
         :rtype: str
         """
         return self._FileSystemId
@@ -4759,7 +4745,7 @@ class DeleteUserQuotaRequest(AbstractModel):
 
     @property
     def UserType(self):
-        r"""指定配额类型，包括Uid（按用户ID限制）、Gid（按用户组ID限制）、Dir（按目录限制）
+        r"""<p>指定配额类型，包括Uid（按用户ID限制）、Gid（按用户组ID限制）、Dir（按目录限制）</p>
         :rtype: str
         """
         return self._UserType
@@ -4770,7 +4756,7 @@ class DeleteUserQuotaRequest(AbstractModel):
 
     @property
     def UserId(self):
-        r"""UID/GID信息，和DirectoryPath参数，两者必须填写一个
+        r"""<p>UID/GID信息，和DirectoryPath参数，两者必须填写一个</p>
         :rtype: str
         """
         return self._UserId
@@ -4781,7 +4767,7 @@ class DeleteUserQuotaRequest(AbstractModel):
 
     @property
     def DirectoryPath(self):
-        r"""设置目录配额的目录的绝对路径，和UserId参数，两者必须填写一个
+        r"""<p>需删除配额的目录路径，必须以 /cfs/ 开头，代表文件存储实例内部的逻辑路径，而非本地挂载点路径。该参数与 UserId 参数至少填写一个。<br>示例：</p><ul><li>若挂载的是CFS根目录 /，需删除挂载路径下 test1/test2 的配额，则入参值为 /cfs/test1/test2</li><li>若挂载的是CFS子目录 /subdir，需删除挂载路径下 test1/test2 的配额，则入参值为 /cfs/subdir/test1/test2</li></ul>
         :rtype: str
         """
         return self._DirectoryPath
@@ -7340,17 +7326,15 @@ class DoDirectoryOperationRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _FileSystemId: 文件系统 ID。当前仅 Turbo 系列文件系统支持调用此接口，通用系列文件系统（含增强型）不支持调用。
+        :param _FileSystemId: <p>文件系统 ID。当前仅 Turbo 系列文件系统支持调用此接口，通用系列文件系统（含增强型）不支持调用。</p>
         :type FileSystemId: str
-        :param _OpetationType: create：创建目录，等同于mkdir。
-check：确认目录是否存在，等同于stat。
-move：对文件/目录进行重命名，等同于mv。
+        :param _OpetationType: <p>create：创建目录，等同于mkdir。<br>check：确认目录是否存在，等同于stat。<br>move：对文件/目录进行重命名，等同于mv。</p>
         :type OpetationType: str
-        :param _DirectoryPath: 目录的绝对路径  默认递归创建（即如果目录中有子目录不存在，则先创建出对应子目录）
+        :param _DirectoryPath: <p>系统会默认递归创建路径中的所有父级目录。路径必须从 /cfs/ 开始，代表文件存储实例内部的逻辑路径，而非本地挂载点路径。<br>示例：</p><ul><li><p>若操作为 create/check</p><ul><li>若挂载的是CFS根目录 /，需在挂载路径下创建/检查是否存在 test1/test2，则入参值为 /cfs/test1/test2</li><li>若挂载的是CFS子目录 /subdir，需在挂载路径下创建/检查是否存在 test1/test2，则入参值为 /cfs/subdir/test1/test2</li></ul></li><li><p>若操作为 move</p><ul><li>若挂载的是CFS根目录 /，需在挂载路径下移动 test1/test2 下的文件到 DestPath，则入参值为 /cfs/test1/test2</li><li>若挂载的是CFS子目录 /subdir，需在挂载路径下挂载路径下移动 test1/test2 下的文件到 DestPath，则入参值为 /cfs/subdir/test1/test2</li></ul></li></ul>
         :type DirectoryPath: str
-        :param _Mode: 创建目录的权限，若不传，默认为0755。若OperationType为 check，此值无实际意义。
+        :param _Mode: <p>创建目录的权限，若不传，默认为0755。若OperationType为 check，此值无实际意义。</p>
         :type Mode: str
-        :param _DestPath: mv 操作的目标目录名称。路径必须以/cfs/开头
+        :param _DestPath: <p>mv 操作的目标目录路径，必须以 /cfs/ 开头，代表文件存储实例内部的逻辑路径，而非本地挂载点路径。<br>示例：</p><ul><li>若挂载的是CFS根目录 /，需将 DirectoryPath 下的文件移动到挂载路径下的 test3/test4，则入参值为 /cfs/test3/test4</li><li>若挂载的是CFS子目录 /subdir，需将 DirectoryPath 下的文件移动到挂载路径下的 test3/test4，则入参值为 /cfs/subdir/ test3/test4</li></ul>
         :type DestPath: str
         """
         self._FileSystemId = None
@@ -7361,7 +7345,7 @@ move：对文件/目录进行重命名，等同于mv。
 
     @property
     def FileSystemId(self):
-        r"""文件系统 ID。当前仅 Turbo 系列文件系统支持调用此接口，通用系列文件系统（含增强型）不支持调用。
+        r"""<p>文件系统 ID。当前仅 Turbo 系列文件系统支持调用此接口，通用系列文件系统（含增强型）不支持调用。</p>
         :rtype: str
         """
         return self._FileSystemId
@@ -7372,9 +7356,7 @@ move：对文件/目录进行重命名，等同于mv。
 
     @property
     def OpetationType(self):
-        r"""create：创建目录，等同于mkdir。
-check：确认目录是否存在，等同于stat。
-move：对文件/目录进行重命名，等同于mv。
+        r"""<p>create：创建目录，等同于mkdir。<br>check：确认目录是否存在，等同于stat。<br>move：对文件/目录进行重命名，等同于mv。</p>
         :rtype: str
         """
         return self._OpetationType
@@ -7385,7 +7367,7 @@ move：对文件/目录进行重命名，等同于mv。
 
     @property
     def DirectoryPath(self):
-        r"""目录的绝对路径  默认递归创建（即如果目录中有子目录不存在，则先创建出对应子目录）
+        r"""<p>系统会默认递归创建路径中的所有父级目录。路径必须从 /cfs/ 开始，代表文件存储实例内部的逻辑路径，而非本地挂载点路径。<br>示例：</p><ul><li><p>若操作为 create/check</p><ul><li>若挂载的是CFS根目录 /，需在挂载路径下创建/检查是否存在 test1/test2，则入参值为 /cfs/test1/test2</li><li>若挂载的是CFS子目录 /subdir，需在挂载路径下创建/检查是否存在 test1/test2，则入参值为 /cfs/subdir/test1/test2</li></ul></li><li><p>若操作为 move</p><ul><li>若挂载的是CFS根目录 /，需在挂载路径下移动 test1/test2 下的文件到 DestPath，则入参值为 /cfs/test1/test2</li><li>若挂载的是CFS子目录 /subdir，需在挂载路径下挂载路径下移动 test1/test2 下的文件到 DestPath，则入参值为 /cfs/subdir/test1/test2</li></ul></li></ul>
         :rtype: str
         """
         return self._DirectoryPath
@@ -7396,7 +7378,7 @@ move：对文件/目录进行重命名，等同于mv。
 
     @property
     def Mode(self):
-        r"""创建目录的权限，若不传，默认为0755。若OperationType为 check，此值无实际意义。
+        r"""<p>创建目录的权限，若不传，默认为0755。若OperationType为 check，此值无实际意义。</p>
         :rtype: str
         """
         return self._Mode
@@ -7407,7 +7389,7 @@ move：对文件/目录进行重命名，等同于mv。
 
     @property
     def DestPath(self):
-        r"""mv 操作的目标目录名称。路径必须以/cfs/开头
+        r"""<p>mv 操作的目标目录路径，必须以 /cfs/ 开头，代表文件存储实例内部的逻辑路径，而非本地挂载点路径。<br>示例：</p><ul><li>若挂载的是CFS根目录 /，需将 DirectoryPath 下的文件移动到挂载路径下的 test3/test4，则入参值为 /cfs/test3/test4</li><li>若挂载的是CFS子目录 /subdir，需将 DirectoryPath 下的文件移动到挂载路径下的 test3/test4，则入参值为 /cfs/subdir/ test3/test4</li></ul>
         :rtype: str
         """
         return self._DestPath
@@ -7440,7 +7422,7 @@ class DoDirectoryOperationResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Result: 1:成功 0:失败。创建目录的操作，1表示创建成功，0表示创建失败。  确认目录是否存在的操作，1表示目录存在，0表示目录不存在。此外，创建目录操作若目录已存在，也会返回创建成功。
+        :param _Result: <p>1:成功 0:失败。创建目录的操作，1表示创建成功，0表示创建失败。  确认目录是否存在的操作，1表示目录存在，0表示目录不存在。此外，创建目录操作若目录已存在，也会返回创建成功。</p>
         :type Result: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -7450,7 +7432,7 @@ class DoDirectoryOperationResponse(AbstractModel):
 
     @property
     def Result(self):
-        r"""1:成功 0:失败。创建目录的操作，1表示创建成功，0表示创建失败。  确认目录是否存在的操作，1表示目录存在，0表示目录不存在。此外，创建目录操作若目录已存在，也会返回创建成功。
+        r"""<p>1:成功 0:失败。创建目录的操作，1表示创建成功，0表示创建失败。  确认目录是否存在的操作，1表示目录存在，0表示目录不存在。此外，创建目录操作若目录已存在，也会返回创建成功。</p>
         :rtype: int
         """
         return self._Result
@@ -8420,7 +8402,7 @@ class LifecycleDataTaskInfo(AbstractModel):
         :type DataFlowId: str
         :param _IsOverwrite: <p>当CFSTurbo内的文件和外置存储存在同名情况时，是否覆盖。</p><p>ture：覆盖</p><p>false：不覆盖（同时也不会释放热存数据）<br>为空时，默认为false</p>
         :type IsOverwrite: bool
-        :param _ListPath: <p>【新增】数据清单文件路径，清单文件内每行一条待处理文件的完整路径。与 TaskPath 二选一。路径必须以 /cfs 开头，且必须为 CFS 文件系统内已存在的文件。示例值：/cfs/lists/archive_list.txt</p>
+        :param _ListPath: <p>数据清单文件路径，清单文件内每行为待处理文件的完整路径。所有路径（包括清单文件路径、清单文件内每行表示的待处理文件的路径）必须以 /cfs 开头，指向CFS文件系统内已存在的文件，与 TaskPath 参数二选一填写。<br>示例：</p><ul><li>若挂载的是CFS根目录 /，清单文件位于挂载路径下的 lists/archive_list.txt，则入参值为 /cfs/lists/archive_list.txt</li><li>若挂载的是CFS子目录 /subdir，清单文件位于挂载路径下的 lists/archive_list.txt，则入参值为 /cfs/subdir/lists/archive_list.txt</li></ul>
         :type ListPath: str
         """
         self._TaskId = None
@@ -8655,7 +8637,7 @@ class LifecycleDataTaskInfo(AbstractModel):
 
     @property
     def ListPath(self):
-        r"""<p>【新增】数据清单文件路径，清单文件内每行一条待处理文件的完整路径。与 TaskPath 二选一。路径必须以 /cfs 开头，且必须为 CFS 文件系统内已存在的文件。示例值：/cfs/lists/archive_list.txt</p>
+        r"""<p>数据清单文件路径，清单文件内每行为待处理文件的完整路径。所有路径（包括清单文件路径、清单文件内每行表示的待处理文件的路径）必须以 /cfs 开头，指向CFS文件系统内已存在的文件，与 TaskPath 参数二选一填写。<br>示例：</p><ul><li>若挂载的是CFS根目录 /，清单文件位于挂载路径下的 lists/archive_list.txt，则入参值为 /cfs/lists/archive_list.txt</li><li>若挂载的是CFS子目录 /subdir，清单文件位于挂载路径下的 lists/archive_list.txt，则入参值为 /cfs/subdir/lists/archive_list.txt</li></ul>
         :rtype: str
         """
         return self._ListPath
@@ -9057,7 +9039,7 @@ class MigrationTaskInfo(AbstractModel):
         :type FsName: str
         :param _FileSystemId: <p>文件系统实例Id</p>
         :type FileSystemId: str
-        :param _FsPath: <p>文件系统路径</p>
+        :param _FsPath: <p>文件系统内目录路径，不涉及实际挂载子目录/根目录，无需以/cfs/作为前缀</p>
         :type FsPath: str
         :param _CoverType: <p>同名文件迁移时覆盖策略，默认为0。0: 最后修改时间优先；1: 全覆盖；2: 不覆盖</p>
         :type CoverType: int
@@ -9232,7 +9214,7 @@ class MigrationTaskInfo(AbstractModel):
 
     @property
     def FsPath(self):
-        r"""<p>文件系统路径</p>
+        r"""<p>文件系统内目录路径，不涉及实际挂载子目录/根目录，无需以/cfs/作为前缀</p>
         :rtype: str
         """
         return self._FsPath
@@ -10954,17 +10936,17 @@ class SetUserQuotaRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _FileSystemId: 文件系统 ID,通过[查询文件系统列表](https://cloud.tencent.com/document/api/582/38170)获取
+        :param _FileSystemId: <p>文件系统 ID,通过<a href="https://cloud.tencent.com/document/api/582/38170">查询文件系统列表</a>获取</p>
         :type FileSystemId: str
-        :param _UserType: 指定配额类型，包括Uid、Gid，Dir，分别代表用户配额，用户组配额，目录配额
+        :param _UserType: <p>指定配额类型，包括Uid、Gid，Dir，分别代表用户配额，用户组配额，目录配额</p>
         :type UserType: str
-        :param _UserId: UID/GID信息
+        :param _UserId: <p>UID/GID信息</p>
         :type UserId: str
-        :param _CapacityHardLimit: 容量硬限制，单位GiB。设置范围10-10000000。
+        :param _CapacityHardLimit: <p>容量硬限制，单位GiB。设置范围10-10000000。</p>
         :type CapacityHardLimit: int
-        :param _FileHardLimit: 文件硬限制，单位个。设置范围1000-100000000
+        :param _FileHardLimit: <p>文件硬限制，单位个。设置范围1000-100000000</p>
         :type FileHardLimit: int
-        :param _DirectoryPath: 需设置目录配额的目录绝对路径，不同目录不可存在包含关系
+        :param _DirectoryPath: <p>需设置配额的目录路径，必须以 /cfs/ 开头，代表文件存储实例内部的逻辑路径，而非本地挂载点路径。不同目录之间不可存在包含关系。<br>示例：</p><ul><li>若挂载的是CFS根目录 /，需对挂载路径下的 test1/test2 设置配额，则入参值为 /cfs/test1/test2</li><li>若挂载的是CFS子目录 /subdir，需对挂载路径下的 test1/test2 设置配额，则入参值为 /cfs/subdir/test1/test2</li></ul>
         :type DirectoryPath: str
         """
         self._FileSystemId = None
@@ -10976,7 +10958,7 @@ class SetUserQuotaRequest(AbstractModel):
 
     @property
     def FileSystemId(self):
-        r"""文件系统 ID,通过[查询文件系统列表](https://cloud.tencent.com/document/api/582/38170)获取
+        r"""<p>文件系统 ID,通过<a href="https://cloud.tencent.com/document/api/582/38170">查询文件系统列表</a>获取</p>
         :rtype: str
         """
         return self._FileSystemId
@@ -10987,7 +10969,7 @@ class SetUserQuotaRequest(AbstractModel):
 
     @property
     def UserType(self):
-        r"""指定配额类型，包括Uid、Gid，Dir，分别代表用户配额，用户组配额，目录配额
+        r"""<p>指定配额类型，包括Uid、Gid，Dir，分别代表用户配额，用户组配额，目录配额</p>
         :rtype: str
         """
         return self._UserType
@@ -10998,7 +10980,7 @@ class SetUserQuotaRequest(AbstractModel):
 
     @property
     def UserId(self):
-        r"""UID/GID信息
+        r"""<p>UID/GID信息</p>
         :rtype: str
         """
         return self._UserId
@@ -11009,7 +10991,7 @@ class SetUserQuotaRequest(AbstractModel):
 
     @property
     def CapacityHardLimit(self):
-        r"""容量硬限制，单位GiB。设置范围10-10000000。
+        r"""<p>容量硬限制，单位GiB。设置范围10-10000000。</p>
         :rtype: int
         """
         return self._CapacityHardLimit
@@ -11020,7 +11002,7 @@ class SetUserQuotaRequest(AbstractModel):
 
     @property
     def FileHardLimit(self):
-        r"""文件硬限制，单位个。设置范围1000-100000000
+        r"""<p>文件硬限制，单位个。设置范围1000-100000000</p>
         :rtype: int
         """
         return self._FileHardLimit
@@ -11031,7 +11013,7 @@ class SetUserQuotaRequest(AbstractModel):
 
     @property
     def DirectoryPath(self):
-        r"""需设置目录配额的目录绝对路径，不同目录不可存在包含关系
+        r"""<p>需设置配额的目录路径，必须以 /cfs/ 开头，代表文件存储实例内部的逻辑路径，而非本地挂载点路径。不同目录之间不可存在包含关系。<br>示例：</p><ul><li>若挂载的是CFS根目录 /，需对挂载路径下的 test1/test2 设置配额，则入参值为 /cfs/test1/test2</li><li>若挂载的是CFS子目录 /subdir，需对挂载路径下的 test1/test2 设置配额，则入参值为 /cfs/subdir/test1/test2</li></ul>
         :rtype: str
         """
         return self._DirectoryPath
@@ -11065,7 +11047,7 @@ class SetUserQuotaResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _UserId: UID/GID信息
+        :param _UserId: <p>UID/GID信息</p>
         :type UserId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -11075,7 +11057,7 @@ class SetUserQuotaResponse(AbstractModel):
 
     @property
     def UserId(self):
-        r"""UID/GID信息
+        r"""<p>UID/GID信息</p>
         :rtype: str
         """
         return self._UserId
@@ -13006,24 +12988,24 @@ class UserQuota(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _UserType: 指定配额类型，包括Uid、Gid、Dir
+        :param _UserType: <p>指定配额类型，包括Uid、Gid、Dir</p>
         :type UserType: str
-        :param _UserId: UID/GID信息
+        :param _UserId: <p>UID/GID信息</p>
         :type UserId: str
-        :param _CapacityHardLimit: 容量硬限制，单位GiB
+        :param _CapacityHardLimit: <p>容量硬限制，单位GiB</p>
         :type CapacityHardLimit: int
-        :param _FileHardLimit: 文件硬限制，单位个
+        :param _FileHardLimit: <p>文件硬限制，单位个</p>
         :type FileHardLimit: int
-        :param _FileSystemId: 文件系统ID
+        :param _FileSystemId: <p>文件系统ID</p>
         :type FileSystemId: str
-        :param _CapacityUsed: 容量使用，单位GiB
+        :param _CapacityUsed: <p>容量使用，单位GiB</p>
         :type CapacityUsed: int
-        :param _FileUsed: 文件使用个数，单位个
+        :param _FileUsed: <p>文件使用个数，单位个</p>
         :type FileUsed: int
-        :param _DirectoryPath: 目录配额的目录绝对路径
+        :param _DirectoryPath: <p>需设置配额的目录路径，必须以 /cfs/ 开头，代表文件存储实例内部的逻辑路径，而非本地挂载点路径。不同目录之间不可存在包含关系。<br>示例：</p><ul><li>若挂载的是CFS根目录 /，需对挂载路径下的 test1/test2 设置配额，则入参值为 /cfs/test1/test2</li><li>若挂载的是CFS子目录 /subdir，需对挂载路径下的 test1/test2 设置配额，则入参值为 /cfs/subdir/test1/test2</li></ul>
 注意：此字段可能返回 null，表示取不到有效值。
         :type DirectoryPath: str
-        :param _Status: 配置规则状态，inavailable---配置中，available --已生效，deleting--删除中，deleted 已删除，failed--配置失败
+        :param _Status: <p>配置规则状态，inavailable---配置中，available --已生效，deleting--删除中，deleted 已删除，failed--配置失败</p>
         :type Status: str
         """
         self._UserType = None
@@ -13038,7 +13020,7 @@ class UserQuota(AbstractModel):
 
     @property
     def UserType(self):
-        r"""指定配额类型，包括Uid、Gid、Dir
+        r"""<p>指定配额类型，包括Uid、Gid、Dir</p>
         :rtype: str
         """
         return self._UserType
@@ -13049,7 +13031,7 @@ class UserQuota(AbstractModel):
 
     @property
     def UserId(self):
-        r"""UID/GID信息
+        r"""<p>UID/GID信息</p>
         :rtype: str
         """
         return self._UserId
@@ -13060,7 +13042,7 @@ class UserQuota(AbstractModel):
 
     @property
     def CapacityHardLimit(self):
-        r"""容量硬限制，单位GiB
+        r"""<p>容量硬限制，单位GiB</p>
         :rtype: int
         """
         return self._CapacityHardLimit
@@ -13071,7 +13053,7 @@ class UserQuota(AbstractModel):
 
     @property
     def FileHardLimit(self):
-        r"""文件硬限制，单位个
+        r"""<p>文件硬限制，单位个</p>
         :rtype: int
         """
         return self._FileHardLimit
@@ -13082,7 +13064,7 @@ class UserQuota(AbstractModel):
 
     @property
     def FileSystemId(self):
-        r"""文件系统ID
+        r"""<p>文件系统ID</p>
         :rtype: str
         """
         return self._FileSystemId
@@ -13093,7 +13075,7 @@ class UserQuota(AbstractModel):
 
     @property
     def CapacityUsed(self):
-        r"""容量使用，单位GiB
+        r"""<p>容量使用，单位GiB</p>
         :rtype: int
         """
         return self._CapacityUsed
@@ -13104,7 +13086,7 @@ class UserQuota(AbstractModel):
 
     @property
     def FileUsed(self):
-        r"""文件使用个数，单位个
+        r"""<p>文件使用个数，单位个</p>
         :rtype: int
         """
         return self._FileUsed
@@ -13115,7 +13097,7 @@ class UserQuota(AbstractModel):
 
     @property
     def DirectoryPath(self):
-        r"""目录配额的目录绝对路径
+        r"""<p>需设置配额的目录路径，必须以 /cfs/ 开头，代表文件存储实例内部的逻辑路径，而非本地挂载点路径。不同目录之间不可存在包含关系。<br>示例：</p><ul><li>若挂载的是CFS根目录 /，需对挂载路径下的 test1/test2 设置配额，则入参值为 /cfs/test1/test2</li><li>若挂载的是CFS子目录 /subdir，需对挂载路径下的 test1/test2 设置配额，则入参值为 /cfs/subdir/test1/test2</li></ul>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -13127,7 +13109,7 @@ class UserQuota(AbstractModel):
 
     @property
     def Status(self):
-        r"""配置规则状态，inavailable---配置中，available --已生效，deleting--删除中，deleted 已删除，failed--配置失败
+        r"""<p>配置规则状态，inavailable---配置中，available --已生效，deleting--删除中，deleted 已删除，failed--配置失败</p>
         :rtype: str
         """
         return self._Status

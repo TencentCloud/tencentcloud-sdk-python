@@ -382,6 +382,24 @@ class TokenhubClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeModelQuota(
+            self,
+            request: models.DescribeModelQuotaRequest,
+            opts: Dict = None,
+    ) -> models.DescribeModelQuotaResponse:
+        """
+        查询指定模型的 TPM 和 QPM 配额上限。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeModelQuota"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeModelQuotaResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeTokenPlan(
             self,
             request: models.DescribeTokenPlanRequest,

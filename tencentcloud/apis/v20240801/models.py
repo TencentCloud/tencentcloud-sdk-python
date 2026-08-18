@@ -3933,9 +3933,9 @@ class DeleteServiceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceID: 实例ID
+        :param _InstanceID: <p>实例ID</p>
         :type InstanceID: str
-        :param _ID: 业务ID
+        :param _ID: <p>业务ID</p>
         :type ID: str
         """
         self._InstanceID = None
@@ -3943,7 +3943,7 @@ class DeleteServiceRequest(AbstractModel):
 
     @property
     def InstanceID(self):
-        r"""实例ID
+        r"""<p>实例ID</p>
         :rtype: str
         """
         return self._InstanceID
@@ -3954,7 +3954,7 @@ class DeleteServiceRequest(AbstractModel):
 
     @property
     def ID(self):
-        r"""业务ID
+        r"""<p>业务ID</p>
         :rtype: str
         """
         return self._ID
@@ -8549,9 +8549,9 @@ class DescribeServiceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceID: 实例ID
+        :param _InstanceID: <p>实例ID</p>
         :type InstanceID: str
-        :param _ID: 业务ID
+        :param _ID: <p>业务ID</p>
         :type ID: str
         """
         self._InstanceID = None
@@ -8559,7 +8559,7 @@ class DescribeServiceRequest(AbstractModel):
 
     @property
     def InstanceID(self):
-        r"""实例ID
+        r"""<p>实例ID</p>
         :rtype: str
         """
         return self._InstanceID
@@ -8570,7 +8570,7 @@ class DescribeServiceRequest(AbstractModel):
 
     @property
     def ID(self):
-        r"""业务ID
+        r"""<p>业务ID</p>
         :rtype: str
         """
         return self._ID

@@ -14688,8 +14688,10 @@ class ModifyDBInstanceSpecRequest(AbstractModel):
         :type RemoveNodeList: list of RemoveNodeList
         :param _Cpu: <p>实例配置变更后的CPU大小。单位：C。该参数为空值时，默认取实例当前的 CPU 大小。当前所支持的CPU规格，请参见<a href="https://cloud.tencent.com/document/product/240/64125">产品规格</a>。</p>
         :type Cpu: int
-        :param _MachineCode: <p>实例配置变更后的产品规格类型。该参数为空值时，默认取实例当前的产品规格类型。<br>当前支持的产品规格类型如下：<br>产品推荐规格类型：</p><ul><li>GE.LD.T1：本地盘（通用I型）。</li><li>GE.CD.T1：云盘（通用I型）。</li></ul><p>产品白名单规格类型：</p><ul><li>HIO10G：本地盘（高IO万兆型）。</li><li>HCD：云盘（云盘版）。</li></ul><p>注意：</p><ol><li>白名单规格类型为白名单控制，如若需要，请 <a href="https://console.cloud.tencent.com/workorder/category">提交工单</a> 申请</li><li>通用 I 型不能变更到白名单规格类型</li></ol>
+        :param _MachineCode: <p>实例配置变更后的产品规格类型。该参数为空值时，默认取实例当前的产品规格类型。<br>当前支持的产品规格类型如下：<br>产品推荐规格类型：</p><ul><li>GE.LD.T2：本地盘（通用II型）。</li><li>GE.CD.T2：云盘（通用II型）。</li><li>EX.LD.T2：本地盘（独享II型）。</li></ul><p>产品白名单规格类型：</p><ul><li>GE.LD.T1：本地盘（通用I型），预计将逐步售罄，建议选择通用II型。</li><li>GE.CD.T1：云盘（通用I型），预计将逐步售罄，建议选择通用II型。</li><li>HIO10G：本地盘（高IO万兆型），已售罄，建议选择通用II型。</li><li>HCD：云盘（云盘版），已售罄，建议选择通用II型。</li></ul><p>注意：</p><ol><li>白名单规格类型为白名单控制，如若需要，请 <a href="https://console.cloud.tencent.com/workorder/category">提交工单</a> 申请</li><li>默认不能变更到白名单规格类型</li><li>产品推荐的规格类型之间不支持相互变更</li></ol>
         :type MachineCode: str
+        :param _ModifyShardList: <p>单分片变配列表，用于指定需要单独调整规格的分片。每次设置时 CPU、内存、磁盘都必须指定；如果指定多个分片，所有分片的目标规格必须一致；未指定的分片保持不变。仅分片集群支持，副本集不支持。注意：此参数与整实例级别的变配参数（如 Memory、Volume、CpuNum 等）互斥，不能同时传入。</p>
+        :type ModifyShardList: list of ModifyShardSpecInfo
         """
         self._InstanceId = None
         self._Memory = None
@@ -14703,6 +14705,7 @@ class ModifyDBInstanceSpecRequest(AbstractModel):
         self._RemoveNodeList = None
         self._Cpu = None
         self._MachineCode = None
+        self._ModifyShardList = None
 
     @property
     def InstanceId(self):
@@ -14831,7 +14834,7 @@ class ModifyDBInstanceSpecRequest(AbstractModel):
 
     @property
     def MachineCode(self):
-        r"""<p>实例配置变更后的产品规格类型。该参数为空值时，默认取实例当前的产品规格类型。<br>当前支持的产品规格类型如下：<br>产品推荐规格类型：</p><ul><li>GE.LD.T1：本地盘（通用I型）。</li><li>GE.CD.T1：云盘（通用I型）。</li></ul><p>产品白名单规格类型：</p><ul><li>HIO10G：本地盘（高IO万兆型）。</li><li>HCD：云盘（云盘版）。</li></ul><p>注意：</p><ol><li>白名单规格类型为白名单控制，如若需要，请 <a href="https://console.cloud.tencent.com/workorder/category">提交工单</a> 申请</li><li>通用 I 型不能变更到白名单规格类型</li></ol>
+        r"""<p>实例配置变更后的产品规格类型。该参数为空值时，默认取实例当前的产品规格类型。<br>当前支持的产品规格类型如下：<br>产品推荐规格类型：</p><ul><li>GE.LD.T2：本地盘（通用II型）。</li><li>GE.CD.T2：云盘（通用II型）。</li><li>EX.LD.T2：本地盘（独享II型）。</li></ul><p>产品白名单规格类型：</p><ul><li>GE.LD.T1：本地盘（通用I型），预计将逐步售罄，建议选择通用II型。</li><li>GE.CD.T1：云盘（通用I型），预计将逐步售罄，建议选择通用II型。</li><li>HIO10G：本地盘（高IO万兆型），已售罄，建议选择通用II型。</li><li>HCD：云盘（云盘版），已售罄，建议选择通用II型。</li></ul><p>注意：</p><ol><li>白名单规格类型为白名单控制，如若需要，请 <a href="https://console.cloud.tencent.com/workorder/category">提交工单</a> 申请</li><li>默认不能变更到白名单规格类型</li><li>产品推荐的规格类型之间不支持相互变更</li></ol>
         :rtype: str
         """
         return self._MachineCode
@@ -14839,6 +14842,17 @@ class ModifyDBInstanceSpecRequest(AbstractModel):
     @MachineCode.setter
     def MachineCode(self, MachineCode):
         self._MachineCode = MachineCode
+
+    @property
+    def ModifyShardList(self):
+        r"""<p>单分片变配列表，用于指定需要单独调整规格的分片。每次设置时 CPU、内存、磁盘都必须指定；如果指定多个分片，所有分片的目标规格必须一致；未指定的分片保持不变。仅分片集群支持，副本集不支持。注意：此参数与整实例级别的变配参数（如 Memory、Volume、CpuNum 等）互斥，不能同时传入。</p>
+        :rtype: list of ModifyShardSpecInfo
+        """
+        return self._ModifyShardList
+
+    @ModifyShardList.setter
+    def ModifyShardList(self, ModifyShardList):
+        self._ModifyShardList = ModifyShardList
 
 
     def _deserialize(self, params):
@@ -14864,6 +14878,12 @@ class ModifyDBInstanceSpecRequest(AbstractModel):
                 self._RemoveNodeList.append(obj)
         self._Cpu = params.get("Cpu")
         self._MachineCode = params.get("MachineCode")
+        if params.get("ModifyShardList") is not None:
+            self._ModifyShardList = []
+            for item in params.get("ModifyShardList"):
+                obj = ModifyShardSpecInfo()
+                obj._deserialize(item)
+                self._ModifyShardList.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -15394,6 +15414,87 @@ class ModifySRVConnectionUrlResponse(AbstractModel):
     def _deserialize(self, params):
         self._FlowId = params.get("FlowId")
         self._RequestId = params.get("RequestId")
+
+
+class ModifyShardSpecInfo(AbstractModel):
+    r"""单shark变配入参
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ReplicaSetId: <p>分片ID</p>
+        :type ReplicaSetId: str
+        :param _Cpu: <p>CPU核数。单位：C。</p>
+        :type Cpu: int
+        :param _Memory: <p>内存大小，单位：GB。</p>
+        :type Memory: int
+        :param _Volume: <p>硬盘大小，单位：GB。</p>
+        :type Volume: int
+        """
+        self._ReplicaSetId = None
+        self._Cpu = None
+        self._Memory = None
+        self._Volume = None
+
+    @property
+    def ReplicaSetId(self):
+        r"""<p>分片ID</p>
+        :rtype: str
+        """
+        return self._ReplicaSetId
+
+    @ReplicaSetId.setter
+    def ReplicaSetId(self, ReplicaSetId):
+        self._ReplicaSetId = ReplicaSetId
+
+    @property
+    def Cpu(self):
+        r"""<p>CPU核数。单位：C。</p>
+        :rtype: int
+        """
+        return self._Cpu
+
+    @Cpu.setter
+    def Cpu(self, Cpu):
+        self._Cpu = Cpu
+
+    @property
+    def Memory(self):
+        r"""<p>内存大小，单位：GB。</p>
+        :rtype: int
+        """
+        return self._Memory
+
+    @Memory.setter
+    def Memory(self, Memory):
+        self._Memory = Memory
+
+    @property
+    def Volume(self):
+        r"""<p>硬盘大小，单位：GB。</p>
+        :rtype: int
+        """
+        return self._Volume
+
+    @Volume.setter
+    def Volume(self, Volume):
+        self._Volume = Volume
+
+
+    def _deserialize(self, params):
+        self._ReplicaSetId = params.get("ReplicaSetId")
+        self._Cpu = params.get("Cpu")
+        self._Memory = params.get("Memory")
+        self._Volume = params.get("Volume")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class NodeProperty(AbstractModel):

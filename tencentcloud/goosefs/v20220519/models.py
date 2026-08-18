@@ -920,6 +920,8 @@ class ClientNodeAttribute(AbstractModel):
         :type MountPoint: str
         :param _ClusterId: <p>客户端集群id</p>
         :type ClusterId: str
+        :param _MountPoints: 
+        :type MountPoints: list of MountPointEntry
         """
         self._ClientNodeIp = None
         self._Status = None
@@ -929,6 +931,7 @@ class ClientNodeAttribute(AbstractModel):
         self._InstanceId = None
         self._MountPoint = None
         self._ClusterId = None
+        self._MountPoints = None
 
     @property
     def ClientNodeIp(self):
@@ -1018,6 +1021,17 @@ class ClientNodeAttribute(AbstractModel):
     def ClusterId(self, ClusterId):
         self._ClusterId = ClusterId
 
+    @property
+    def MountPoints(self):
+        r"""
+        :rtype: list of MountPointEntry
+        """
+        return self._MountPoints
+
+    @MountPoints.setter
+    def MountPoints(self, MountPoints):
+        self._MountPoints = MountPoints
+
 
     def _deserialize(self, params):
         self._ClientNodeIp = params.get("ClientNodeIp")
@@ -1028,6 +1042,12 @@ class ClientNodeAttribute(AbstractModel):
         self._InstanceId = params.get("InstanceId")
         self._MountPoint = params.get("MountPoint")
         self._ClusterId = params.get("ClusterId")
+        if params.get("MountPoints") is not None:
+            self._MountPoints = []
+            for item in params.get("MountPoints"):
+                obj = MountPointEntry()
+                obj._deserialize(item)
+                self._MountPoints.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1932,6 +1952,12 @@ class CustomerClusterAttr(AbstractModel):
         :type Status: int
         :param _ClusterMountSet: 客户端集群挂载存储集合
         :type ClusterMountSet: list of ClusterMountAttr
+        :param _Zone: 
+        :type Zone: str
+        :param _MountStorageNum: 
+        :type MountStorageNum: int
+        :param _StorageFileSystemId: 
+        :type StorageFileSystemId: str
         """
         self._ClusterId = None
         self._VpcId = None
@@ -1942,6 +1968,9 @@ class CustomerClusterAttr(AbstractModel):
         self._ManagerNodes = None
         self._Status = None
         self._ClusterMountSet = None
+        self._Zone = None
+        self._MountStorageNum = None
+        self._StorageFileSystemId = None
 
     @property
     def ClusterId(self):
@@ -2042,6 +2071,39 @@ class CustomerClusterAttr(AbstractModel):
     def ClusterMountSet(self, ClusterMountSet):
         self._ClusterMountSet = ClusterMountSet
 
+    @property
+    def Zone(self):
+        r"""
+        :rtype: str
+        """
+        return self._Zone
+
+    @Zone.setter
+    def Zone(self, Zone):
+        self._Zone = Zone
+
+    @property
+    def MountStorageNum(self):
+        r"""
+        :rtype: int
+        """
+        return self._MountStorageNum
+
+    @MountStorageNum.setter
+    def MountStorageNum(self, MountStorageNum):
+        self._MountStorageNum = MountStorageNum
+
+    @property
+    def StorageFileSystemId(self):
+        r"""
+        :rtype: str
+        """
+        return self._StorageFileSystemId
+
+    @StorageFileSystemId.setter
+    def StorageFileSystemId(self, StorageFileSystemId):
+        self._StorageFileSystemId = StorageFileSystemId
+
 
     def _deserialize(self, params):
         self._ClusterId = params.get("ClusterId")
@@ -2063,6 +2125,9 @@ class CustomerClusterAttr(AbstractModel):
                 obj = ClusterMountAttr()
                 obj._deserialize(item)
                 self._ClusterMountSet.append(obj)
+        self._Zone = params.get("Zone")
+        self._MountStorageNum = params.get("MountStorageNum")
+        self._StorageFileSystemId = params.get("StorageFileSystemId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5380,6 +5445,57 @@ class MountMultipleStorageFileSystemResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
+
+
+class MountPointEntry(AbstractModel):
+    r"""客户端挂载点
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _StorageFileSystemId: 
+        :type StorageFileSystemId: str
+        :param _MountDir: 
+        :type MountDir: str
+        """
+        self._StorageFileSystemId = None
+        self._MountDir = None
+
+    @property
+    def StorageFileSystemId(self):
+        r"""
+        :rtype: str
+        """
+        return self._StorageFileSystemId
+
+    @StorageFileSystemId.setter
+    def StorageFileSystemId(self, StorageFileSystemId):
+        self._StorageFileSystemId = StorageFileSystemId
+
+    @property
+    def MountDir(self):
+        r"""
+        :rtype: str
+        """
+        return self._MountDir
+
+    @MountDir.setter
+    def MountDir(self, MountDir):
+        self._MountDir = MountDir
+
+
+    def _deserialize(self, params):
+        self._StorageFileSystemId = params.get("StorageFileSystemId")
+        self._MountDir = params.get("MountDir")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class QueryClientNodeMountCommandRequest(AbstractModel):

@@ -9063,6 +9063,8 @@ class DatahubTaskInfo(AbstractModel):
         :type SyncThrottleLimit: int
         :param _AutoExpandFlag: <p>任务是否自动扩容标识</p><p>枚举值：</p><ul><li>true： 自动扩容</li><li>false： 手动扩容</li></ul><p>默认值：true</p>
         :type AutoExpandFlag: bool
+        :param _WarnMessage: <p>不影响任务执行的警告信息</p>
+        :type WarnMessage: str
         """
         self._TaskId = None
         self._TaskName = None
@@ -9080,6 +9082,7 @@ class DatahubTaskInfo(AbstractModel):
         self._TaskMax = None
         self._SyncThrottleLimit = None
         self._AutoExpandFlag = None
+        self._WarnMessage = None
 
     @property
     def TaskId(self):
@@ -9257,6 +9260,17 @@ class DatahubTaskInfo(AbstractModel):
     def AutoExpandFlag(self, AutoExpandFlag):
         self._AutoExpandFlag = AutoExpandFlag
 
+    @property
+    def WarnMessage(self):
+        r"""<p>不影响任务执行的警告信息</p>
+        :rtype: str
+        """
+        return self._WarnMessage
+
+    @WarnMessage.setter
+    def WarnMessage(self, WarnMessage):
+        self._WarnMessage = WarnMessage
+
 
     def _deserialize(self, params):
         self._TaskId = params.get("TaskId")
@@ -9279,6 +9293,7 @@ class DatahubTaskInfo(AbstractModel):
         self._TaskMax = params.get("TaskMax")
         self._SyncThrottleLimit = params.get("SyncThrottleLimit")
         self._AutoExpandFlag = params.get("AutoExpandFlag")
+        self._WarnMessage = params.get("WarnMessage")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -10194,11 +10209,11 @@ class DeleteGroupSubscribeTopicRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: ckafka集群实例Id
+        :param _InstanceId: <p>ckafka集群实例Id</p>
         :type InstanceId: str
-        :param _Group: 消费分组名称
+        :param _Group: <p>消费分组名称</p>
         :type Group: str
-        :param _Topic: 主题名
+        :param _Topic: <p>主题名</p>
         :type Topic: str
         """
         self._InstanceId = None
@@ -10207,7 +10222,7 @@ class DeleteGroupSubscribeTopicRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""ckafka集群实例Id
+        r"""<p>ckafka集群实例Id</p>
         :rtype: str
         """
         return self._InstanceId
@@ -10218,7 +10233,7 @@ class DeleteGroupSubscribeTopicRequest(AbstractModel):
 
     @property
     def Group(self):
-        r"""消费分组名称
+        r"""<p>消费分组名称</p>
         :rtype: str
         """
         return self._Group
@@ -10229,7 +10244,7 @@ class DeleteGroupSubscribeTopicRequest(AbstractModel):
 
     @property
     def Topic(self):
-        r"""主题名
+        r"""<p>主题名</p>
         :rtype: str
         """
         return self._Topic
@@ -10260,7 +10275,7 @@ class DeleteGroupSubscribeTopicResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Result: 返回结果
+        :param _Result: <p>返回结果</p>
         :type Result: :class:`tencentcloud.ckafka.v20190819.models.JgwOperateResponse`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -10270,7 +10285,7 @@ class DeleteGroupSubscribeTopicResponse(AbstractModel):
 
     @property
     def Result(self):
-        r"""返回结果
+        r"""<p>返回结果</p>
         :rtype: :class:`tencentcloud.ckafka.v20190819.models.JgwOperateResponse`
         """
         return self._Result
@@ -13238,6 +13253,8 @@ class DescribeDatahubTaskRes(AbstractModel):
         :type SyncThrottleLimit: int
         :param _AutoExpandFlag: <p>自动扩容 true:自动扩容 false:手动扩容</p><p>默认值：true</p>
         :type AutoExpandFlag: bool
+        :param _WarnMessage: <p>不影响任务执行的警告信息</p>
+        :type WarnMessage: str
         """
         self._TaskId = None
         self._TaskName = None
@@ -13259,6 +13276,7 @@ class DescribeDatahubTaskRes(AbstractModel):
         self._TaskMax = None
         self._SyncThrottleLimit = None
         self._AutoExpandFlag = None
+        self._WarnMessage = None
 
     @property
     def TaskId(self):
@@ -13482,6 +13500,17 @@ class DescribeDatahubTaskRes(AbstractModel):
     def AutoExpandFlag(self, AutoExpandFlag):
         self._AutoExpandFlag = AutoExpandFlag
 
+    @property
+    def WarnMessage(self):
+        r"""<p>不影响任务执行的警告信息</p>
+        :rtype: str
+        """
+        return self._WarnMessage
+
+    @WarnMessage.setter
+    def WarnMessage(self, WarnMessage):
+        self._WarnMessage = WarnMessage
+
 
     def _deserialize(self, params):
         self._TaskId = params.get("TaskId")
@@ -13522,6 +13551,7 @@ class DescribeDatahubTaskRes(AbstractModel):
         self._TaskMax = params.get("TaskMax")
         self._SyncThrottleLimit = params.get("SyncThrottleLimit")
         self._AutoExpandFlag = params.get("AutoExpandFlag")
+        self._WarnMessage = params.get("WarnMessage")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -16220,6 +16250,8 @@ class DescribeTopicDetailRequest(AbstractModel):
         :type OrderType: int
         :param _Filters: <p>目前支持 ReplicaNum （副本数）筛选</p>
         :type Filters: list of Filter
+        :param _SearchWordIgnoreCaseFlag: <p>搜索topic时是否忽略大小写敏感</p>
+        :type SearchWordIgnoreCaseFlag: bool
         """
         self._InstanceId = None
         self._SearchWord = None
@@ -16229,6 +16261,7 @@ class DescribeTopicDetailRequest(AbstractModel):
         self._OrderBy = None
         self._OrderType = None
         self._Filters = None
+        self._SearchWordIgnoreCaseFlag = None
 
     @property
     def InstanceId(self):
@@ -16318,6 +16351,17 @@ class DescribeTopicDetailRequest(AbstractModel):
     def Filters(self, Filters):
         self._Filters = Filters
 
+    @property
+    def SearchWordIgnoreCaseFlag(self):
+        r"""<p>搜索topic时是否忽略大小写敏感</p>
+        :rtype: bool
+        """
+        return self._SearchWordIgnoreCaseFlag
+
+    @SearchWordIgnoreCaseFlag.setter
+    def SearchWordIgnoreCaseFlag(self, SearchWordIgnoreCaseFlag):
+        self._SearchWordIgnoreCaseFlag = SearchWordIgnoreCaseFlag
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -16333,6 +16377,7 @@ class DescribeTopicDetailRequest(AbstractModel):
                 obj = Filter()
                 obj._deserialize(item)
                 self._Filters.append(obj)
+        self._SearchWordIgnoreCaseFlag = params.get("SearchWordIgnoreCaseFlag")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -26875,11 +26920,11 @@ class ModifyInstanceAttributesRequest(AbstractModel):
         :type UncleanLeaderElectionEnable: int
         :param _DeleteProtectionEnable: <p>实例删除保护开关: 1 开启  0 关闭</p>
         :type DeleteProtectionEnable: int
-        :param _RetentionBytes: <p>实例级别消息保留大小</p>单位：byte<br>默认值：-1<br><p>实例级别消息保留大小</p>
+        :param _RetentionBytes: <p>实例级别消息保留大小</p><p>单位：byte</p><p>默认值：-1</p><p>实例级别消息保留大小</p>
         :type RetentionBytes: int
         :param _AdminSecurity: <p>是否封禁高风险admin接口; true则封禁高风险adminApi; 关闭后不支持打开,仅专业版支持; 默认是false 对高风险admin接口不做处理</p>
         :type AdminSecurity: bool
-        :param _TransactionalIdExpirationMs: <p>事务ID最大空闲时间，超时未提交的事务将被标记为过期</p>取值范围：[3600000, 604800000]<br>单位：ms
+        :param _TransactionalIdExpirationMs: <p>事务ID最大空闲时间，超时未提交的事务将被标记为过期</p><p>取值范围：[3600000, 604800000]</p><p>单位：ms</p>
         :type TransactionalIdExpirationMs: int
         """
         self._InstanceId = None
@@ -27024,7 +27069,7 @@ class ModifyInstanceAttributesRequest(AbstractModel):
 
     @property
     def RetentionBytes(self):
-        r"""<p>实例级别消息保留大小</p>单位：byte<br>默认值：-1<br><p>实例级别消息保留大小</p>
+        r"""<p>实例级别消息保留大小</p><p>单位：byte</p><p>默认值：-1</p><p>实例级别消息保留大小</p>
         :rtype: int
         """
         return self._RetentionBytes
@@ -27046,7 +27091,7 @@ class ModifyInstanceAttributesRequest(AbstractModel):
 
     @property
     def TransactionalIdExpirationMs(self):
-        r"""<p>事务ID最大空闲时间，超时未提交的事务将被标记为过期</p>取值范围：[3600000, 604800000]<br>单位：ms
+        r"""<p>事务ID最大空闲时间，超时未提交的事务将被标记为过期</p><p>取值范围：[3600000, 604800000]</p><p>单位：ms</p>
         :rtype: int
         """
         return self._TransactionalIdExpirationMs
@@ -31541,7 +31586,7 @@ class Route(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AccessType: <p>实例接入方式0：PLAINTEXT (明文方式，没有带用户信息老版本及社区版本都支持)1：SASL_PLAINTEXT（明文方式，不过在数据开始时，会通过SASL方式登录鉴权，仅社区版本支持）2：SSL（SSL加密通信，没有带用户信息，老版本及社区版本都支持）3：SASL_SSL（SSL加密通信，在数据开始时，会通过SASL方式登录鉴权，仅社区版本支持）</p>
+        :param _AccessType: <p>实例接入方式<br>0：PLAINTEXT (明文方式，没有带用户信息老版本及社区版本都支持)<br>1：SASL_PLAINTEXT（明文方式，不过在数据开始时，会通过SASL方式登录鉴权，仅社区版本支持）<br>2：SSL（SSL加密通信，没有带用户信息，老版本及社区版本都支持）<br>3：SASL_SSL（SSL加密通信，在数据开始时，会通过SASL方式登录鉴权，仅社区版本支持）</p>
         :type AccessType: int
         :param _RouteId: <p>路由Id</p>
         :type RouteId: int
@@ -31587,7 +31632,7 @@ class Route(AbstractModel):
 
     @property
     def AccessType(self):
-        r"""<p>实例接入方式0：PLAINTEXT (明文方式，没有带用户信息老版本及社区版本都支持)1：SASL_PLAINTEXT（明文方式，不过在数据开始时，会通过SASL方式登录鉴权，仅社区版本支持）2：SSL（SSL加密通信，没有带用户信息，老版本及社区版本都支持）3：SASL_SSL（SSL加密通信，在数据开始时，会通过SASL方式登录鉴权，仅社区版本支持）</p>
+        r"""<p>实例接入方式<br>0：PLAINTEXT (明文方式，没有带用户信息老版本及社区版本都支持)<br>1：SASL_PLAINTEXT（明文方式，不过在数据开始时，会通过SASL方式登录鉴权，仅社区版本支持）<br>2：SSL（SSL加密通信，没有带用户信息，老版本及社区版本都支持）<br>3：SASL_SSL（SSL加密通信，在数据开始时，会通过SASL方式登录鉴权，仅社区版本支持）</p>
         :rtype: int
         """
         return self._AccessType
@@ -32439,13 +32484,13 @@ class SaleInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Flag: 手动设置的flag标志，true表示售罄，false表示可售。
+        :param _Flag: <p>手动设置的flag标志，true表示售罄，false表示可售。</p>
         :type Flag: bool
-        :param _Version: ckafka版本号(1.1.1/2.4.2/0.10.2)
+        :param _Version: <p>ckafka版本号(1.1.1/2.4.2/0.10.2)</p>
         :type Version: str
-        :param _Platform: 专业版、标准版标志
+        :param _Platform: <p>专业版、标准版标志</p>
         :type Platform: str
-        :param _SoldOut: 售罄标志：true售罄
+        :param _SoldOut: <p>售罄标志：true售罄</p>
         :type SoldOut: bool
         """
         self._Flag = None
@@ -32455,7 +32500,7 @@ class SaleInfo(AbstractModel):
 
     @property
     def Flag(self):
-        r"""手动设置的flag标志，true表示售罄，false表示可售。
+        r"""<p>手动设置的flag标志，true表示售罄，false表示可售。</p>
         :rtype: bool
         """
         return self._Flag
@@ -32466,7 +32511,7 @@ class SaleInfo(AbstractModel):
 
     @property
     def Version(self):
-        r"""ckafka版本号(1.1.1/2.4.2/0.10.2)
+        r"""<p>ckafka版本号(1.1.1/2.4.2/0.10.2)</p>
         :rtype: str
         """
         return self._Version
@@ -32477,7 +32522,7 @@ class SaleInfo(AbstractModel):
 
     @property
     def Platform(self):
-        r"""专业版、标准版标志
+        r"""<p>专业版、标准版标志</p>
         :rtype: str
         """
         return self._Platform
@@ -32488,7 +32533,7 @@ class SaleInfo(AbstractModel):
 
     @property
     def SoldOut(self):
-        r"""售罄标志：true售罄
+        r"""<p>售罄标志：true售罄</p>
         :rtype: bool
         """
         return self._SoldOut
@@ -35558,7 +35603,7 @@ class UpgradeBrokerVersionRequest(AbstractModel):
         r"""
         :param _InstanceId: <p>ckafka集群实例Id</p>
         :type InstanceId: str
-        :param _Type: <p>版本升级类型</p><p>枚举值：</p><ul><li>1： 小版本迁移升级(推荐)</li></ul>
+        :param _Type: <p>版本升级类型</p><p>枚举值：</p><ul><li>1： 小版本迁移升级(推荐)</li><li>5： 小版原地升级</li></ul>
         :type Type: int
         :param _SourceVersion: <p>版本号</p>
         :type SourceVersion: str
@@ -35586,7 +35631,7 @@ class UpgradeBrokerVersionRequest(AbstractModel):
 
     @property
     def Type(self):
-        r"""<p>版本升级类型</p><p>枚举值：</p><ul><li>1： 小版本迁移升级(推荐)</li></ul>
+        r"""<p>版本升级类型</p><p>枚举值：</p><ul><li>1： 小版本迁移升级(推荐)</li><li>5： 小版原地升级</li></ul>
         :rtype: int
         """
         return self._Type

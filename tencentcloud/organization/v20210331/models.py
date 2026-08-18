@@ -6752,15 +6752,15 @@ class DescribeOrganizationMembersAuthPolicyRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Offset: 偏移量。取值是limit的整数倍。默认值 : 0。
+        :param _Offset: <p>偏移量。取值是limit的整数倍。默认值 : 0。</p>
         :type Offset: int
-        :param _Limit: 限制数目。取值范围：1~50。默认值：10。
+        :param _Limit: <p>限制数目。取值范围：1~50。默认值：10。</p>
         :type Limit: int
-        :param _MemberUin: 成员uin。
+        :param _MemberUin: <p>成员uin。</p>
         :type MemberUin: int
-        :param _OrgSubAccountUin: 集团管理员子账号uin。
+        :param _OrgSubAccountUin: <p>集团管理员子账号uin。</p>
         :type OrgSubAccountUin: int
-        :param _PolicyId: 成员访问策略Id。
+        :param _PolicyId: <p>成员访问策略Id。</p>
         :type PolicyId: int
         """
         self._Offset = None
@@ -6771,7 +6771,7 @@ class DescribeOrganizationMembersAuthPolicyRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""偏移量。取值是limit的整数倍。默认值 : 0。
+        r"""<p>偏移量。取值是limit的整数倍。默认值 : 0。</p>
         :rtype: int
         """
         return self._Offset
@@ -6782,7 +6782,7 @@ class DescribeOrganizationMembersAuthPolicyRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""限制数目。取值范围：1~50。默认值：10。
+        r"""<p>限制数目。取值范围：1~50。默认值：10。</p>
         :rtype: int
         """
         return self._Limit
@@ -6793,7 +6793,7 @@ class DescribeOrganizationMembersAuthPolicyRequest(AbstractModel):
 
     @property
     def MemberUin(self):
-        r"""成员uin。
+        r"""<p>成员uin。</p>
         :rtype: int
         """
         return self._MemberUin
@@ -6804,7 +6804,7 @@ class DescribeOrganizationMembersAuthPolicyRequest(AbstractModel):
 
     @property
     def OrgSubAccountUin(self):
-        r"""集团管理员子账号uin。
+        r"""<p>集团管理员子账号uin。</p>
         :rtype: int
         """
         return self._OrgSubAccountUin
@@ -6815,7 +6815,7 @@ class DescribeOrganizationMembersAuthPolicyRequest(AbstractModel):
 
     @property
     def PolicyId(self):
-        r"""成员访问策略Id。
+        r"""<p>成员访问策略Id。</p>
         :rtype: int
         """
         return self._PolicyId
@@ -6848,10 +6848,10 @@ class DescribeOrganizationMembersAuthPolicyResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Items: 访问授权策略列表。
+        :param _Items: <p>访问授权策略列表。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Items: list of OrgMembersAuthPolicy
-        :param _Total: 总数目。
+        :param _Total: <p>总数目。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Total: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -6863,7 +6863,7 @@ class DescribeOrganizationMembersAuthPolicyResponse(AbstractModel):
 
     @property
     def Items(self):
-        r"""访问授权策略列表。
+        r"""<p>访问授权策略列表。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of OrgMembersAuthPolicy
         """
@@ -6875,7 +6875,7 @@ class DescribeOrganizationMembersAuthPolicyResponse(AbstractModel):
 
     @property
     def Total(self):
-        r"""总数目。
+        r"""<p>总数目。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -13489,17 +13489,17 @@ class ListRoleConfigurationsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ZoneId: 空间 ID。
+        :param _ZoneId: <p>空间 ID。</p>
         :type ZoneId: str
-        :param _NextToken: 查询返回结果下一页的令牌。首次调用 API 不需要NextToken。  当您首次调用 API 时，如果返回数据总条数超过MaxResults限制，数据会被截断，只返回MaxResults条数据，同时，返回参数IsTruncated为true，返回一个NextToken。您可以使用上一次返回的NextToken继续调用 API，其他请求参数保持不变，查询被截断的数据。您可以按此方法多次查询，直到IsTruncated为false，表示全部数据查询完毕。
+        :param _NextToken: <p>查询返回结果下一页的令牌。首次调用 API 不需要NextToken。  当您首次调用 API 时，如果返回数据总条数超过MaxResults限制，数据会被截断，只返回MaxResults条数据，同时，返回参数IsTruncated为true，返回一个NextToken。您可以使用上一次返回的NextToken继续调用 API，其他请求参数保持不变，查询被截断的数据。您可以按此方法多次查询，直到IsTruncated为false，表示全部数据查询完毕。</p>
         :type NextToken: str
-        :param _MaxResults: 每页的最大数据条数。  取值范围：1~100。  默认值：10。
+        :param _MaxResults: <p>每页的最大数据条数。  取值范围：1~100。  默认值：10。</p>
         :type MaxResults: int
-        :param _Filter: 过滤文本。不区分大小写。目前，支持 RoleConfigurationName和Description. 示例：Filter = "test"，表示查询名称或描述里包含 test 的权限配置。
+        :param _Filter: <p>过滤文本。不区分大小写。目前，支持 RoleConfigurationName和Description. 示例：Filter = &quot;test&quot;，表示查询名称或描述里包含 test 的权限配置。</p>
         :type Filter: str
-        :param _FilterTargets: 检索成员账号是否配置过权限，如果配置过返回IsSelected: true, 否则返回false。
+        :param _FilterTargets: <p>检索成员账号是否配置过权限，如果配置过返回IsSelected: true, 否则返回false。</p>
         :type FilterTargets: list of int
-        :param _PrincipalId: 授权的用户UserId或者用户组的GroupId，必须和入参数FilterTargets一起设置
+        :param _PrincipalId: <p>授权的用户UserId或者用户组的GroupId，必须和入参数FilterTargets一起设置</p>
         :type PrincipalId: str
         """
         self._ZoneId = None
@@ -13511,7 +13511,7 @@ class ListRoleConfigurationsRequest(AbstractModel):
 
     @property
     def ZoneId(self):
-        r"""空间 ID。
+        r"""<p>空间 ID。</p>
         :rtype: str
         """
         return self._ZoneId
@@ -13522,7 +13522,7 @@ class ListRoleConfigurationsRequest(AbstractModel):
 
     @property
     def NextToken(self):
-        r"""查询返回结果下一页的令牌。首次调用 API 不需要NextToken。  当您首次调用 API 时，如果返回数据总条数超过MaxResults限制，数据会被截断，只返回MaxResults条数据，同时，返回参数IsTruncated为true，返回一个NextToken。您可以使用上一次返回的NextToken继续调用 API，其他请求参数保持不变，查询被截断的数据。您可以按此方法多次查询，直到IsTruncated为false，表示全部数据查询完毕。
+        r"""<p>查询返回结果下一页的令牌。首次调用 API 不需要NextToken。  当您首次调用 API 时，如果返回数据总条数超过MaxResults限制，数据会被截断，只返回MaxResults条数据，同时，返回参数IsTruncated为true，返回一个NextToken。您可以使用上一次返回的NextToken继续调用 API，其他请求参数保持不变，查询被截断的数据。您可以按此方法多次查询，直到IsTruncated为false，表示全部数据查询完毕。</p>
         :rtype: str
         """
         return self._NextToken
@@ -13533,7 +13533,7 @@ class ListRoleConfigurationsRequest(AbstractModel):
 
     @property
     def MaxResults(self):
-        r"""每页的最大数据条数。  取值范围：1~100。  默认值：10。
+        r"""<p>每页的最大数据条数。  取值范围：1~100。  默认值：10。</p>
         :rtype: int
         """
         return self._MaxResults
@@ -13544,7 +13544,7 @@ class ListRoleConfigurationsRequest(AbstractModel):
 
     @property
     def Filter(self):
-        r"""过滤文本。不区分大小写。目前，支持 RoleConfigurationName和Description. 示例：Filter = "test"，表示查询名称或描述里包含 test 的权限配置。
+        r"""<p>过滤文本。不区分大小写。目前，支持 RoleConfigurationName和Description. 示例：Filter = &quot;test&quot;，表示查询名称或描述里包含 test 的权限配置。</p>
         :rtype: str
         """
         return self._Filter
@@ -13555,7 +13555,7 @@ class ListRoleConfigurationsRequest(AbstractModel):
 
     @property
     def FilterTargets(self):
-        r"""检索成员账号是否配置过权限，如果配置过返回IsSelected: true, 否则返回false。
+        r"""<p>检索成员账号是否配置过权限，如果配置过返回IsSelected: true, 否则返回false。</p>
         :rtype: list of int
         """
         return self._FilterTargets
@@ -13566,7 +13566,7 @@ class ListRoleConfigurationsRequest(AbstractModel):
 
     @property
     def PrincipalId(self):
-        r"""授权的用户UserId或者用户组的GroupId，必须和入参数FilterTargets一起设置
+        r"""<p>授权的用户UserId或者用户组的GroupId，必须和入参数FilterTargets一起设置</p>
         :rtype: str
         """
         return self._PrincipalId
@@ -13600,15 +13600,15 @@ class ListRoleConfigurationsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TotalCounts: 符合请求参数条件的数据总条数。
+        :param _TotalCounts: <p>符合请求参数条件的数据总条数。</p>
         :type TotalCounts: int
-        :param _MaxResults: 每页的最大数据条数。
+        :param _MaxResults: <p>每页的最大数据条数。</p>
         :type MaxResults: int
-        :param _IsTruncated: 返回结果是否被截断。取值：  true：已截断。 false：未截断。
+        :param _IsTruncated: <p>返回结果是否被截断。取值：  true：已截断。 false：未截断。</p>
         :type IsTruncated: bool
-        :param _NextToken: 查询返回结果下一页的令牌。  说明 只有IsTruncated为true时，才显示该参数。
+        :param _NextToken: <p>查询返回结果下一页的令牌。  说明 只有IsTruncated为true时，才显示该参数。</p>
         :type NextToken: str
-        :param _RoleConfigurations: 权限配置列表。
+        :param _RoleConfigurations: <p>权限配置列表。</p>
         :type RoleConfigurations: list of RoleConfiguration
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -13622,7 +13622,7 @@ class ListRoleConfigurationsResponse(AbstractModel):
 
     @property
     def TotalCounts(self):
-        r"""符合请求参数条件的数据总条数。
+        r"""<p>符合请求参数条件的数据总条数。</p>
         :rtype: int
         """
         return self._TotalCounts
@@ -13633,7 +13633,7 @@ class ListRoleConfigurationsResponse(AbstractModel):
 
     @property
     def MaxResults(self):
-        r"""每页的最大数据条数。
+        r"""<p>每页的最大数据条数。</p>
         :rtype: int
         """
         return self._MaxResults
@@ -13644,7 +13644,7 @@ class ListRoleConfigurationsResponse(AbstractModel):
 
     @property
     def IsTruncated(self):
-        r"""返回结果是否被截断。取值：  true：已截断。 false：未截断。
+        r"""<p>返回结果是否被截断。取值：  true：已截断。 false：未截断。</p>
         :rtype: bool
         """
         return self._IsTruncated
@@ -13655,7 +13655,7 @@ class ListRoleConfigurationsResponse(AbstractModel):
 
     @property
     def NextToken(self):
-        r"""查询返回结果下一页的令牌。  说明 只有IsTruncated为true时，才显示该参数。
+        r"""<p>查询返回结果下一页的令牌。  说明 只有IsTruncated为true时，才显示该参数。</p>
         :rtype: str
         """
         return self._NextToken
@@ -13666,7 +13666,7 @@ class ListRoleConfigurationsResponse(AbstractModel):
 
     @property
     def RoleConfigurations(self):
-        r"""权限配置列表。
+        r"""<p>权限配置列表。</p>
         :rtype: list of RoleConfiguration
         """
         return self._RoleConfigurations

@@ -7424,31 +7424,20 @@ class ExportCustomerWorkOrderDetailRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _WorkOrderType: 服务工单类型
-        :type WorkOrderType: list of str
-        :param _BeginDateTime: 要导出的工单的起始时间
+        :param _BeginDateTime: <p>要导出的工单的起始时间</p>
         :type BeginDateTime: str
-        :param _EndDateTime: 要导出的工单的结束时间
+        :param _EndDateTime: <p>要导出的工单的结束时间</p>
         :type EndDateTime: str
+        :param _WorkOrderType: <p>服务工单类型</p>
+        :type WorkOrderType: list of str
         """
-        self._WorkOrderType = None
         self._BeginDateTime = None
         self._EndDateTime = None
-
-    @property
-    def WorkOrderType(self):
-        r"""服务工单类型
-        :rtype: list of str
-        """
-        return self._WorkOrderType
-
-    @WorkOrderType.setter
-    def WorkOrderType(self, WorkOrderType):
-        self._WorkOrderType = WorkOrderType
+        self._WorkOrderType = None
 
     @property
     def BeginDateTime(self):
-        r"""要导出的工单的起始时间
+        r"""<p>要导出的工单的起始时间</p>
         :rtype: str
         """
         return self._BeginDateTime
@@ -7459,7 +7448,7 @@ class ExportCustomerWorkOrderDetailRequest(AbstractModel):
 
     @property
     def EndDateTime(self):
-        r"""要导出的工单的结束时间
+        r"""<p>要导出的工单的结束时间</p>
         :rtype: str
         """
         return self._EndDateTime
@@ -7468,11 +7457,22 @@ class ExportCustomerWorkOrderDetailRequest(AbstractModel):
     def EndDateTime(self, EndDateTime):
         self._EndDateTime = EndDateTime
 
+    @property
+    def WorkOrderType(self):
+        r"""<p>服务工单类型</p>
+        :rtype: list of str
+        """
+        return self._WorkOrderType
+
+    @WorkOrderType.setter
+    def WorkOrderType(self, WorkOrderType):
+        self._WorkOrderType = WorkOrderType
+
 
     def _deserialize(self, params):
-        self._WorkOrderType = params.get("WorkOrderType")
         self._BeginDateTime = params.get("BeginDateTime")
         self._EndDateTime = params.get("EndDateTime")
+        self._WorkOrderType = params.get("WorkOrderType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7490,7 +7490,7 @@ class ExportCustomerWorkOrderDetailResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DownloadUrl: 返回下载地址
+        :param _DownloadUrl: <p>返回下载地址</p>
         :type DownloadUrl: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -7500,7 +7500,7 @@ class ExportCustomerWorkOrderDetailResponse(AbstractModel):
 
     @property
     def DownloadUrl(self):
-        r"""返回下载地址
+        r"""<p>返回下载地址</p>
         :rtype: str
         """
         return self._DownloadUrl

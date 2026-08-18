@@ -43,24 +43,6 @@ class DataagentClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
-    async def AddScene(
-            self,
-            request: models.AddSceneRequest,
-            opts: Dict = None,
-    ) -> models.AddSceneResponse:
-        """
-        新增场景
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "AddScene"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.AddSceneResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
     async def AppendKnowledgeTask(
             self,
             request: models.AppendKnowledgeTaskRequest,
@@ -146,24 +128,6 @@ class DataagentClient(AbstractClient):
         kwargs["action"] = "DeleteDataAgentSession"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DeleteDataAgentSessionResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
-    async def DeleteScene(
-            self,
-            request: models.DeleteSceneRequest,
-            opts: Dict = None,
-    ) -> models.DeleteSceneResponse:
-        """
-        删除场景
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "DeleteScene"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.DeleteSceneResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -421,24 +385,6 @@ class DataagentClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
-    async def QuerySceneList(
-            self,
-            request: models.QuerySceneListRequest,
-            opts: Dict = None,
-    ) -> models.QuerySceneListResponse:
-        """
-        查询场景列表
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "QuerySceneList"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.QuerySceneListResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
     async def QueryUserAuthority(
             self,
             request: models.QueryUserAuthorityRequest,
@@ -470,24 +416,6 @@ class DataagentClient(AbstractClient):
         kwargs["action"] = "StopChatAI"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.StopChatAIResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
-    async def UpdateScene(
-            self,
-            request: models.UpdateSceneRequest,
-            opts: Dict = None,
-    ) -> models.UpdateSceneResponse:
-        """
-        更新场景
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "UpdateScene"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.UpdateSceneResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

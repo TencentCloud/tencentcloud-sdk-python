@@ -507,7 +507,7 @@ class CbsClient(AbstractClient):
 
 
     def DescribeDedicatedClusterDiskStatistics(self, request):
-        r"""查询 CVM CDC 独享集群云硬盘统计信息。
+        r"""查询云服务器独享集群云硬盘统计信息。
 
         :param request: Request instance for DescribeDedicatedClusterDiskStatistics.
         :type request: :class:`tencentcloud.cbs.v20170312.models.DescribeDedicatedClusterDiskStatisticsRequest`
