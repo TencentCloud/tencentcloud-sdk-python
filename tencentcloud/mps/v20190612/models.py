@@ -35624,7 +35624,7 @@ class DescribeDesignTaskResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ErrorCode: <p>错误码，成功时返回0</p>
+        :param _ErrorCode: <p>错误码，成功时返回0，处理中返回100</p>
         :type ErrorCode: int
         :param _Msg: <p>错误信息，成功时返回success</p>
         :type Msg: str
@@ -35651,7 +35651,7 @@ class DescribeDesignTaskResponse(AbstractModel):
 
     @property
     def ErrorCode(self):
-        r"""<p>错误码，成功时返回0</p>
+        r"""<p>错误码，成功时返回0，处理中返回100</p>
         :rtype: int
         """
         return self._ErrorCode
@@ -53697,6 +53697,42 @@ class ImageProcessTaskResult(AbstractModel):
         
 
 
+class ImageQualityConfig(AbstractModel):
+    r"""图片质量评估任务。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Attributes: <p>图片质量评估维度</p><p>枚举值：</p><ul><li>Brightness： 亮度评估</li><li>Contrast： 对比度评估</li><li>Sharpness： 清晰度评估</li><li>IQA： 综合质量评估</li></ul>
+        :type Attributes: list of str
+        """
+        self._Attributes = None
+
+    @property
+    def Attributes(self):
+        r"""<p>图片质量评估维度</p><p>枚举值：</p><ul><li>Brightness： 亮度评估</li><li>Contrast： 对比度评估</li><li>Sharpness： 清晰度评估</li><li>IQA： 综合质量评估</li></ul>
+        :rtype: list of str
+        """
+        return self._Attributes
+
+    @Attributes.setter
+    def Attributes(self, Attributes):
+        self._Attributes = Attributes
+
+
+    def _deserialize(self, params):
+        self._Attributes = params.get("Attributes")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ImageQualityEnhanceConfig(AbstractModel):
     r"""综合增强配置
 
@@ -54516,6 +54552,8 @@ class ImageTaskInput(AbstractModel):
         :type AiStoryboardConfig: :class:`tencentcloud.mps.v20190612.models.AiStoryboardConfig`
         :param _UnderstandImageConfig: <p>图片理解配置</p>
         :type UnderstandImageConfig: :class:`tencentcloud.mps.v20190612.models.UnderstandImageConfig`
+        :param _ImageQualityConfig: <p>图片质量评估配置</p>
+        :type ImageQualityConfig: :class:`tencentcloud.mps.v20190612.models.ImageQualityConfig`
         """
         self._EncodeConfig = None
         self._EnhanceConfig = None
@@ -54530,6 +54568,7 @@ class ImageTaskInput(AbstractModel):
         self._AiExpansionConfig = None
         self._AiStoryboardConfig = None
         self._UnderstandImageConfig = None
+        self._ImageQualityConfig = None
 
     @property
     def EncodeConfig(self):
@@ -54678,6 +54717,17 @@ class ImageTaskInput(AbstractModel):
     def UnderstandImageConfig(self, UnderstandImageConfig):
         self._UnderstandImageConfig = UnderstandImageConfig
 
+    @property
+    def ImageQualityConfig(self):
+        r"""<p>图片质量评估配置</p>
+        :rtype: :class:`tencentcloud.mps.v20190612.models.ImageQualityConfig`
+        """
+        return self._ImageQualityConfig
+
+    @ImageQualityConfig.setter
+    def ImageQualityConfig(self, ImageQualityConfig):
+        self._ImageQualityConfig = ImageQualityConfig
+
 
     def _deserialize(self, params):
         if params.get("EncodeConfig") is not None:
@@ -54719,6 +54769,9 @@ class ImageTaskInput(AbstractModel):
         if params.get("UnderstandImageConfig") is not None:
             self._UnderstandImageConfig = UnderstandImageConfig()
             self._UnderstandImageConfig._deserialize(params.get("UnderstandImageConfig"))
+        if params.get("ImageQualityConfig") is not None:
+            self._ImageQualityConfig = ImageQualityConfig()
+            self._ImageQualityConfig._deserialize(params.get("ImageQualityConfig"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

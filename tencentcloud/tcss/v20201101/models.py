@@ -35466,19 +35466,15 @@ class DescribeEventEscapeImageListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Limit: 需要返回的数量，默认为10，最大值为100
+        :param _Limit: <p>需要返回的数量，默认为10，最大值为100</p>
         :type Limit: int
-        :param _Offset: 偏移量，默认为0。
+        :param _Offset: <p>偏移量，默认为0。</p>
         :type Offset: int
-        :param _Filters: 过滤参数:
-EventType: 事件类型(MOUNT_SENSITIVE_PTAH:敏感路径挂载 PRIVILEGE_CONTAINER_START:特权容器)
-Status: 事件状态(EVENT_UNDEAL:未处理，EVENT_DEALED:已处理，EVENT_INGNORE:忽略)
-ImageID: 镜像id
-ImageName:镜像名称
+        :param _Filters: <p>过滤参数:<br>EventType: 事件类型(MOUNT_SENSITIVE_PTAH:敏感路径挂载 PRIVILEGE_CONTAINER_START:特权容器)<br>Status: 事件状态(EVENT_UNDEAL:未处理，EVENT_DEALED:已处理，EVENT_INGNORE:忽略)<br>ImageID: 镜像id<br>ImageName:镜像名称</p>
         :type Filters: list of RunTimeFilters
-        :param _Order: 升序降序,asc desc
+        :param _Order: <p>升序降序,asc desc</p>
         :type Order: str
-        :param _By: 排序字段
+        :param _By: <p>排序字段</p>
         :type By: str
         """
         self._Limit = None
@@ -35489,7 +35485,7 @@ ImageName:镜像名称
 
     @property
     def Limit(self):
-        r"""需要返回的数量，默认为10，最大值为100
+        r"""<p>需要返回的数量，默认为10，最大值为100</p>
         :rtype: int
         """
         return self._Limit
@@ -35500,7 +35496,7 @@ ImageName:镜像名称
 
     @property
     def Offset(self):
-        r"""偏移量，默认为0。
+        r"""<p>偏移量，默认为0。</p>
         :rtype: int
         """
         return self._Offset
@@ -35511,11 +35507,7 @@ ImageName:镜像名称
 
     @property
     def Filters(self):
-        r"""过滤参数:
-EventType: 事件类型(MOUNT_SENSITIVE_PTAH:敏感路径挂载 PRIVILEGE_CONTAINER_START:特权容器)
-Status: 事件状态(EVENT_UNDEAL:未处理，EVENT_DEALED:已处理，EVENT_INGNORE:忽略)
-ImageID: 镜像id
-ImageName:镜像名称
+        r"""<p>过滤参数:<br>EventType: 事件类型(MOUNT_SENSITIVE_PTAH:敏感路径挂载 PRIVILEGE_CONTAINER_START:特权容器)<br>Status: 事件状态(EVENT_UNDEAL:未处理，EVENT_DEALED:已处理，EVENT_INGNORE:忽略)<br>ImageID: 镜像id<br>ImageName:镜像名称</p>
         :rtype: list of RunTimeFilters
         """
         return self._Filters
@@ -35526,7 +35518,7 @@ ImageName:镜像名称
 
     @property
     def Order(self):
-        r"""升序降序,asc desc
+        r"""<p>升序降序,asc desc</p>
         :rtype: str
         """
         return self._Order
@@ -35537,7 +35529,7 @@ ImageName:镜像名称
 
     @property
     def By(self):
-        r"""排序字段
+        r"""<p>排序字段</p>
         :rtype: str
         """
         return self._By
@@ -35575,9 +35567,9 @@ class DescribeEventEscapeImageListResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _List: 风险容器镜像列表
+        :param _List: <p>风险容器镜像列表</p>
         :type List: list of EventEscapeImageInfo
-        :param _TotalCount: 事件总数量
+        :param _TotalCount: <p>事件总数量</p>
         :type TotalCount: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -35588,7 +35580,7 @@ class DescribeEventEscapeImageListResponse(AbstractModel):
 
     @property
     def List(self):
-        r"""风险容器镜像列表
+        r"""<p>风险容器镜像列表</p>
         :rtype: list of EventEscapeImageInfo
         """
         return self._List
@@ -35599,7 +35591,7 @@ class DescribeEventEscapeImageListResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        r"""事件总数量
+        r"""<p>事件总数量</p>
         :rtype: int
         """
         return self._TotalCount

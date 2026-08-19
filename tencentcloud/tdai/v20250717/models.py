@@ -397,6 +397,12 @@ class AgentInstance(AbstractModel):
         :type Description: str
         :param _CreatingProgress: <p>发货进度详情</p>
         :type CreatingProgress: :class:`tencentcloud.tdai.v20250717.models.CreatingProgress`
+        :param _RoleName: <p>实例关联的角色名称</p>
+        :type RoleName: str
+        :param _OfflineTime: <p>实例下线时间</p><p>参数格式：2026-08-12 17:02:43</p>
+        :type OfflineTime: str
+        :param _ProductName: <p>商业化资源归属</p>
+        :type ProductName: str
         """
         self._InstanceId = None
         self._InstanceName = None
@@ -418,6 +424,9 @@ class AgentInstance(AbstractModel):
         self._LastActiveTime = None
         self._Description = None
         self._CreatingProgress = None
+        self._RoleName = None
+        self._OfflineTime = None
+        self._ProductName = None
 
     @property
     def InstanceId(self):
@@ -639,6 +648,39 @@ class AgentInstance(AbstractModel):
     def CreatingProgress(self, CreatingProgress):
         self._CreatingProgress = CreatingProgress
 
+    @property
+    def RoleName(self):
+        r"""<p>实例关联的角色名称</p>
+        :rtype: str
+        """
+        return self._RoleName
+
+    @RoleName.setter
+    def RoleName(self, RoleName):
+        self._RoleName = RoleName
+
+    @property
+    def OfflineTime(self):
+        r"""<p>实例下线时间</p><p>参数格式：2026-08-12 17:02:43</p>
+        :rtype: str
+        """
+        return self._OfflineTime
+
+    @OfflineTime.setter
+    def OfflineTime(self, OfflineTime):
+        self._OfflineTime = OfflineTime
+
+    @property
+    def ProductName(self):
+        r"""<p>商业化资源归属</p>
+        :rtype: str
+        """
+        return self._ProductName
+
+    @ProductName.setter
+    def ProductName(self, ProductName):
+        self._ProductName = ProductName
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -675,6 +717,9 @@ class AgentInstance(AbstractModel):
         if params.get("CreatingProgress") is not None:
             self._CreatingProgress = CreatingProgress()
             self._CreatingProgress._deserialize(params.get("CreatingProgress"))
+        self._RoleName = params.get("RoleName")
+        self._OfflineTime = params.get("OfflineTime")
+        self._ProductName = params.get("ProductName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1265,6 +1310,8 @@ class CreateAgentInstanceRequest(AbstractModel):
         :type SoulId: int
         :param _Description: <p>无</p>
         :type Description: str
+        :param _UsePlatformAccount: <p>企业版是否使用平台大账号模式发货</p>
+        :type UsePlatformAccount: bool
         """
         self._AgentId = None
         self._AgentVersion = None
@@ -1276,6 +1323,7 @@ class CreateAgentInstanceRequest(AbstractModel):
         self._Skills = None
         self._SoulId = None
         self._Description = None
+        self._UsePlatformAccount = None
 
     @property
     def AgentId(self):
@@ -1387,6 +1435,17 @@ class CreateAgentInstanceRequest(AbstractModel):
     def Description(self, Description):
         self._Description = Description
 
+    @property
+    def UsePlatformAccount(self):
+        r"""<p>企业版是否使用平台大账号模式发货</p>
+        :rtype: bool
+        """
+        return self._UsePlatformAccount
+
+    @UsePlatformAccount.setter
+    def UsePlatformAccount(self, UsePlatformAccount):
+        self._UsePlatformAccount = UsePlatformAccount
+
 
     def _deserialize(self, params):
         self._AgentId = params.get("AgentId")
@@ -1409,6 +1468,7 @@ class CreateAgentInstanceRequest(AbstractModel):
         self._Skills = params.get("Skills")
         self._SoulId = params.get("SoulId")
         self._Description = params.get("Description")
+        self._UsePlatformAccount = params.get("UsePlatformAccount")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

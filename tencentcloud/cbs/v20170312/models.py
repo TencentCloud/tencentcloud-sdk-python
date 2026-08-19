@@ -9310,10 +9310,100 @@ class RemoteDiskDetail(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _CreateTime: <p>单副本SSD硬盘的创建时间。</p>
+        :type CreateTime: str
+        :param _DeadlineTime: <p>单副本SSD硬盘到期时间。按小时后付费单副本SSD硬盘可能为空。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DeadlineTime: str
+        :param _DiskChargeType: <p>单副本SSD硬盘计费类型。</p><p>枚举值：</p><ul><li>PREPAID： 预付费</li><li>POSTPAID_BY_HOUR： 按小时后付费</li></ul>
+        :type DiskChargeType: str
+        :param _DiskSize: <p>单副本SSD硬盘大小，单位为 GiB。</p>
+        :type DiskSize: int
+        :param _InstanceId: <p>单副本SSD硬盘挂载的云服务器实例ID。未挂载时为空字符串。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceId: str
         :param _Placement: <p>单副本SSD硬盘所在的位置。</p>
         :type Placement: :class:`tencentcloud.cbs.v20170312.models.Placement`
+        :param _RemoteDiskId: <p>单副本SSD硬盘ID。</p>
+        :type RemoteDiskId: str
+        :param _RemoteDiskName: <p>单副本SSD硬盘名称。</p>
+        :type RemoteDiskName: str
+        :param _RemoteDiskState: <p>单副本SSD硬盘状态。</p><p>枚举值：</p><ul><li>UNATTACHED： 未挂载</li><li>ATTACHED： 已挂载</li><li>TORECYCLE： 待回收</li></ul>
+        :type RemoteDiskState: str
+        :param _RemoteDiskType: <p>单副本SSD硬盘类型。</p><p>枚举值：</p><ul><li>REMOTE_SSD： 单副本SSD硬盘</li><li>ELASTIC_REMOTE_SSD： 弹性单副本SSD硬盘</li></ul>
+        :type RemoteDiskType: str
+        :param _RenewFlag: <p>自动续费标识。</p><p>枚举值：</p><ul><li>NOTIFY_AND_AUTO_RENEW： 通知过期且自动续费</li><li>NOTIFY_AND_MANUAL_RENEW： 通知过期不自动续费</li><li>DISABLE_NOTIFY_AND_MANUAL_RENEW： 不通知过期不自动续费</li></ul>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RenewFlag: str
         """
+        self._CreateTime = None
+        self._DeadlineTime = None
+        self._DiskChargeType = None
+        self._DiskSize = None
+        self._InstanceId = None
         self._Placement = None
+        self._RemoteDiskId = None
+        self._RemoteDiskName = None
+        self._RemoteDiskState = None
+        self._RemoteDiskType = None
+        self._RenewFlag = None
+
+    @property
+    def CreateTime(self):
+        r"""<p>单副本SSD硬盘的创建时间。</p>
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def DeadlineTime(self):
+        r"""<p>单副本SSD硬盘到期时间。按小时后付费单副本SSD硬盘可能为空。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._DeadlineTime
+
+    @DeadlineTime.setter
+    def DeadlineTime(self, DeadlineTime):
+        self._DeadlineTime = DeadlineTime
+
+    @property
+    def DiskChargeType(self):
+        r"""<p>单副本SSD硬盘计费类型。</p><p>枚举值：</p><ul><li>PREPAID： 预付费</li><li>POSTPAID_BY_HOUR： 按小时后付费</li></ul>
+        :rtype: str
+        """
+        return self._DiskChargeType
+
+    @DiskChargeType.setter
+    def DiskChargeType(self, DiskChargeType):
+        self._DiskChargeType = DiskChargeType
+
+    @property
+    def DiskSize(self):
+        r"""<p>单副本SSD硬盘大小，单位为 GiB。</p>
+        :rtype: int
+        """
+        return self._DiskSize
+
+    @DiskSize.setter
+    def DiskSize(self, DiskSize):
+        self._DiskSize = DiskSize
+
+    @property
+    def InstanceId(self):
+        r"""<p>单副本SSD硬盘挂载的云服务器实例ID。未挂载时为空字符串。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
 
     @property
     def Placement(self):
@@ -9326,11 +9416,77 @@ class RemoteDiskDetail(AbstractModel):
     def Placement(self, Placement):
         self._Placement = Placement
 
+    @property
+    def RemoteDiskId(self):
+        r"""<p>单副本SSD硬盘ID。</p>
+        :rtype: str
+        """
+        return self._RemoteDiskId
+
+    @RemoteDiskId.setter
+    def RemoteDiskId(self, RemoteDiskId):
+        self._RemoteDiskId = RemoteDiskId
+
+    @property
+    def RemoteDiskName(self):
+        r"""<p>单副本SSD硬盘名称。</p>
+        :rtype: str
+        """
+        return self._RemoteDiskName
+
+    @RemoteDiskName.setter
+    def RemoteDiskName(self, RemoteDiskName):
+        self._RemoteDiskName = RemoteDiskName
+
+    @property
+    def RemoteDiskState(self):
+        r"""<p>单副本SSD硬盘状态。</p><p>枚举值：</p><ul><li>UNATTACHED： 未挂载</li><li>ATTACHED： 已挂载</li><li>TORECYCLE： 待回收</li></ul>
+        :rtype: str
+        """
+        return self._RemoteDiskState
+
+    @RemoteDiskState.setter
+    def RemoteDiskState(self, RemoteDiskState):
+        self._RemoteDiskState = RemoteDiskState
+
+    @property
+    def RemoteDiskType(self):
+        r"""<p>单副本SSD硬盘类型。</p><p>枚举值：</p><ul><li>REMOTE_SSD： 单副本SSD硬盘</li><li>ELASTIC_REMOTE_SSD： 弹性单副本SSD硬盘</li></ul>
+        :rtype: str
+        """
+        return self._RemoteDiskType
+
+    @RemoteDiskType.setter
+    def RemoteDiskType(self, RemoteDiskType):
+        self._RemoteDiskType = RemoteDiskType
+
+    @property
+    def RenewFlag(self):
+        r"""<p>自动续费标识。</p><p>枚举值：</p><ul><li>NOTIFY_AND_AUTO_RENEW： 通知过期且自动续费</li><li>NOTIFY_AND_MANUAL_RENEW： 通知过期不自动续费</li><li>DISABLE_NOTIFY_AND_MANUAL_RENEW： 不通知过期不自动续费</li></ul>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._RenewFlag
+
+    @RenewFlag.setter
+    def RenewFlag(self, RenewFlag):
+        self._RenewFlag = RenewFlag
+
 
     def _deserialize(self, params):
+        self._CreateTime = params.get("CreateTime")
+        self._DeadlineTime = params.get("DeadlineTime")
+        self._DiskChargeType = params.get("DiskChargeType")
+        self._DiskSize = params.get("DiskSize")
+        self._InstanceId = params.get("InstanceId")
         if params.get("Placement") is not None:
             self._Placement = Placement()
             self._Placement._deserialize(params.get("Placement"))
+        self._RemoteDiskId = params.get("RemoteDiskId")
+        self._RemoteDiskName = params.get("RemoteDiskName")
+        self._RemoteDiskState = params.get("RemoteDiskState")
+        self._RemoteDiskType = params.get("RemoteDiskType")
+        self._RenewFlag = params.get("RenewFlag")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

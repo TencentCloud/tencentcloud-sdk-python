@@ -52996,16 +52996,15 @@ class DescribeReverseShellRulesAggregationRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Limit: 返回数量，默认为10，最大值为100。
+        :param _Limit: <p>返回数量，默认为10，最大值为100。</p>
         :type Limit: int
-        :param _Offset: 偏移量，默认为0。
+        :param _Offset: <p>偏移量，默认为0。</p>
         :type Offset: int
-        :param _Filters: 过滤条件。
-<li>Keywords - String - 是否必填：否 - 关键字(进程名称)</li>
+        :param _Filters: <p>过滤条件。</p><li>Keywords - String - 是否必填：否 - 关键字(进程名称)</li>
         :type Filters: list of Filter
-        :param _By: 排序字段，目前有：CreateTime、ModifyTime，默认按照ModifyTime排序
+        :param _By: <p>排序字段，目前有：CreateTime、ModifyTime，默认按照ModifyTime排序</p>
         :type By: str
-        :param _Order: 排序升序还是倒序，DESC有ASC、
+        :param _Order: <p>排序升序还是倒序，DESC有ASC、</p>
         :type Order: str
         """
         self._Limit = None
@@ -53016,7 +53015,7 @@ class DescribeReverseShellRulesAggregationRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""返回数量，默认为10，最大值为100。
+        r"""<p>返回数量，默认为10，最大值为100。</p>
         :rtype: int
         """
         return self._Limit
@@ -53027,7 +53026,7 @@ class DescribeReverseShellRulesAggregationRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""偏移量，默认为0。
+        r"""<p>偏移量，默认为0。</p>
         :rtype: int
         """
         return self._Offset
@@ -53038,8 +53037,7 @@ class DescribeReverseShellRulesAggregationRequest(AbstractModel):
 
     @property
     def Filters(self):
-        r"""过滤条件。
-<li>Keywords - String - 是否必填：否 - 关键字(进程名称)</li>
+        r"""<p>过滤条件。</p><li>Keywords - String - 是否必填：否 - 关键字(进程名称)</li>
         :rtype: list of Filter
         """
         return self._Filters
@@ -53050,7 +53048,7 @@ class DescribeReverseShellRulesAggregationRequest(AbstractModel):
 
     @property
     def By(self):
-        r"""排序字段，目前有：CreateTime、ModifyTime，默认按照ModifyTime排序
+        r"""<p>排序字段，目前有：CreateTime、ModifyTime，默认按照ModifyTime排序</p>
         :rtype: str
         """
         return self._By
@@ -53061,7 +53059,7 @@ class DescribeReverseShellRulesAggregationRequest(AbstractModel):
 
     @property
     def Order(self):
-        r"""排序升序还是倒序，DESC有ASC、
+        r"""<p>排序升序还是倒序，DESC有ASC、</p>
         :rtype: str
         """
         return self._Order
@@ -53099,9 +53097,9 @@ class DescribeReverseShellRulesAggregationResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _List: 列表内容
+        :param _List: <p>列表内容</p>
         :type List: list of ReverseShellRuleAggregation
-        :param _TotalCount: 总条数
+        :param _TotalCount: <p>总条数</p>
         :type TotalCount: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -53112,7 +53110,7 @@ class DescribeReverseShellRulesAggregationResponse(AbstractModel):
 
     @property
     def List(self):
-        r"""列表内容
+        r"""<p>列表内容</p>
         :rtype: list of ReverseShellRuleAggregation
         """
         return self._List
@@ -53123,7 +53121,7 @@ class DescribeReverseShellRulesAggregationResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        r"""总条数
+        r"""<p>总条数</p>
         :rtype: int
         """
         return self._TotalCount

@@ -1067,28 +1067,29 @@ class ChatCompletionRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Model: 对话的目标模型ID。
-自行部署的开源大模型聊天：部署的模型服务组ID，形如ms-q7pfr29p。
+        :param _Model: <p>对话的目标模型ID。<br>自行部署的开源大模型聊天：部署的模型服务组ID，形如ms-q7pfr29p。</p>
         :type Model: str
-        :param _Messages: 输入对话历史。旧的对话在前，数组中最后一项应该为这次的问题。
+        :param _Messages: <p>输入对话历史。旧的对话在前，数组中最后一项应该为这次的问题。</p>
         :type Messages: list of Message
-        :param _Temperature: 仅当模型为自行部署的开源大模型时生效。采样随机值，默认值为0.7，取值范围[0,2]。较高的值(如0.8)将使输出更加随机，而较低的值(如0.2)将使输出更加确定。建议仅修改此参数或TopP，但不建议两者都修改。
+        :param _TiProjectId: <p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+        :type TiProjectId: str
+        :param _Temperature: <p>仅当模型为自行部署的开源大模型时生效。采样随机值，默认值为0.7，取值范围[0,2]。较高的值(如0.8)将使输出更加随机，而较低的值(如0.2)将使输出更加确定。建议仅修改此参数或TopP，但不建议两者都修改。</p>
         :type Temperature: float
-        :param _TopP: 仅当模型为自行部署的开源大模型时生效。核采样，默认值为1，取值范围[0,1]。指的是预先设置一个概率界限 p，然后将所有可能生成的token，根据概率大小从高到低排列，依次选取。当这些选取的token的累积概率大于或等于 p 值时停止，然后从已经选取的token中进行采样，生成下一个token。例如top_p为0.1时意味着模型只考虑累积概率为10%的token。建议仅修改此参数或Temperature，不建议两者都修改。
+        :param _TopP: <p>仅当模型为自行部署的开源大模型时生效。核采样，默认值为1，取值范围[0,1]。指的是预先设置一个概率界限 p，然后将所有可能生成的token，根据概率大小从高到低排列，依次选取。当这些选取的token的累积概率大于或等于 p 值时停止，然后从已经选取的token中进行采样，生成下一个token。例如top_p为0.1时意味着模型只考虑累积概率为10%的token。建议仅修改此参数或Temperature，不建议两者都修改。</p>
         :type TopP: float
-        :param _MaxTokens: 仅当模型为自行部署的开源大模型时生效。默认 512，模型可生成内容的最长 token 数量，最大不能超过模型支持的上下文长度。
+        :param _MaxTokens: <p>仅当模型为自行部署的开源大模型时生效。默认 512，模型可生成内容的最长 token 数量，最大不能超过模型支持的上下文长度。</p>
         :type MaxTokens: int
         """
         self._Model = None
         self._Messages = None
+        self._TiProjectId = None
         self._Temperature = None
         self._TopP = None
         self._MaxTokens = None
 
     @property
     def Model(self):
-        r"""对话的目标模型ID。
-自行部署的开源大模型聊天：部署的模型服务组ID，形如ms-q7pfr29p。
+        r"""<p>对话的目标模型ID。<br>自行部署的开源大模型聊天：部署的模型服务组ID，形如ms-q7pfr29p。</p>
         :rtype: str
         """
         return self._Model
@@ -1099,7 +1100,7 @@ class ChatCompletionRequest(AbstractModel):
 
     @property
     def Messages(self):
-        r"""输入对话历史。旧的对话在前，数组中最后一项应该为这次的问题。
+        r"""<p>输入对话历史。旧的对话在前，数组中最后一项应该为这次的问题。</p>
         :rtype: list of Message
         """
         return self._Messages
@@ -1109,8 +1110,19 @@ class ChatCompletionRequest(AbstractModel):
         self._Messages = Messages
 
     @property
+    def TiProjectId(self):
+        r"""<p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+        :rtype: str
+        """
+        return self._TiProjectId
+
+    @TiProjectId.setter
+    def TiProjectId(self, TiProjectId):
+        self._TiProjectId = TiProjectId
+
+    @property
     def Temperature(self):
-        r"""仅当模型为自行部署的开源大模型时生效。采样随机值，默认值为0.7，取值范围[0,2]。较高的值(如0.8)将使输出更加随机，而较低的值(如0.2)将使输出更加确定。建议仅修改此参数或TopP，但不建议两者都修改。
+        r"""<p>仅当模型为自行部署的开源大模型时生效。采样随机值，默认值为0.7，取值范围[0,2]。较高的值(如0.8)将使输出更加随机，而较低的值(如0.2)将使输出更加确定。建议仅修改此参数或TopP，但不建议两者都修改。</p>
         :rtype: float
         """
         return self._Temperature
@@ -1121,7 +1133,7 @@ class ChatCompletionRequest(AbstractModel):
 
     @property
     def TopP(self):
-        r"""仅当模型为自行部署的开源大模型时生效。核采样，默认值为1，取值范围[0,1]。指的是预先设置一个概率界限 p，然后将所有可能生成的token，根据概率大小从高到低排列，依次选取。当这些选取的token的累积概率大于或等于 p 值时停止，然后从已经选取的token中进行采样，生成下一个token。例如top_p为0.1时意味着模型只考虑累积概率为10%的token。建议仅修改此参数或Temperature，不建议两者都修改。
+        r"""<p>仅当模型为自行部署的开源大模型时生效。核采样，默认值为1，取值范围[0,1]。指的是预先设置一个概率界限 p，然后将所有可能生成的token，根据概率大小从高到低排列，依次选取。当这些选取的token的累积概率大于或等于 p 值时停止，然后从已经选取的token中进行采样，生成下一个token。例如top_p为0.1时意味着模型只考虑累积概率为10%的token。建议仅修改此参数或Temperature，不建议两者都修改。</p>
         :rtype: float
         """
         return self._TopP
@@ -1132,7 +1144,7 @@ class ChatCompletionRequest(AbstractModel):
 
     @property
     def MaxTokens(self):
-        r"""仅当模型为自行部署的开源大模型时生效。默认 512，模型可生成内容的最长 token 数量，最大不能超过模型支持的上下文长度。
+        r"""<p>仅当模型为自行部署的开源大模型时生效。默认 512，模型可生成内容的最长 token 数量，最大不能超过模型支持的上下文长度。</p>
         :rtype: int
         """
         return self._MaxTokens
@@ -1150,6 +1162,7 @@ class ChatCompletionRequest(AbstractModel):
                 obj = Message()
                 obj._deserialize(item)
                 self._Messages.append(obj)
+        self._TiProjectId = params.get("TiProjectId")
         self._Temperature = params.get("Temperature")
         self._TopP = params.get("TopP")
         self._MaxTokens = params.get("MaxTokens")
@@ -1170,13 +1183,13 @@ class ChatCompletionResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Model: 对话的模型服务组ID
+        :param _Model: <p>对话的模型服务组ID</p>
         :type Model: str
-        :param _Choices: 本次问答的答案。
+        :param _Choices: <p>本次问答的答案。</p>
         :type Choices: list of Choice
-        :param _Id: 会话Id。
+        :param _Id: <p>会话Id。</p>
         :type Id: str
-        :param _Usage: token统计
+        :param _Usage: <p>token统计</p>
         :type Usage: :class:`tencentcloud.tione.v20211111.models.Usage`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1189,7 +1202,7 @@ class ChatCompletionResponse(AbstractModel):
 
     @property
     def Model(self):
-        r"""对话的模型服务组ID
+        r"""<p>对话的模型服务组ID</p>
         :rtype: str
         """
         return self._Model
@@ -1200,7 +1213,7 @@ class ChatCompletionResponse(AbstractModel):
 
     @property
     def Choices(self):
-        r"""本次问答的答案。
+        r"""<p>本次问答的答案。</p>
         :rtype: list of Choice
         """
         return self._Choices
@@ -1211,7 +1224,7 @@ class ChatCompletionResponse(AbstractModel):
 
     @property
     def Id(self):
-        r"""会话Id。
+        r"""<p>会话Id。</p>
         :rtype: str
         """
         return self._Id
@@ -1222,7 +1235,7 @@ class ChatCompletionResponse(AbstractModel):
 
     @property
     def Usage(self):
-        r"""token统计
+        r"""<p>token统计</p>
         :rtype: :class:`tencentcloud.tione.v20211111.models.Usage`
         """
         return self._Usage
@@ -2350,20 +2363,23 @@ class CreateModelServiceAuthTokenRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ServiceGroupId: 服务组 id
+        :param _ServiceGroupId: <p>服务组 id</p>
         :type ServiceGroupId: str
-        :param _Name: token 名称
+        :param _TiProjectId: <p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+        :type TiProjectId: str
+        :param _Name: <p>token 名称</p>
         :type Name: str
-        :param _Description: Description 描述
+        :param _Description: <p>Description 描述</p>
         :type Description: str
         """
         self._ServiceGroupId = None
+        self._TiProjectId = None
         self._Name = None
         self._Description = None
 
     @property
     def ServiceGroupId(self):
-        r"""服务组 id
+        r"""<p>服务组 id</p>
         :rtype: str
         """
         return self._ServiceGroupId
@@ -2373,8 +2389,19 @@ class CreateModelServiceAuthTokenRequest(AbstractModel):
         self._ServiceGroupId = ServiceGroupId
 
     @property
+    def TiProjectId(self):
+        r"""<p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+        :rtype: str
+        """
+        return self._TiProjectId
+
+    @TiProjectId.setter
+    def TiProjectId(self, TiProjectId):
+        self._TiProjectId = TiProjectId
+
+    @property
     def Name(self):
-        r"""token 名称
+        r"""<p>token 名称</p>
         :rtype: str
         """
         return self._Name
@@ -2385,7 +2412,7 @@ class CreateModelServiceAuthTokenRequest(AbstractModel):
 
     @property
     def Description(self):
-        r"""Description 描述
+        r"""<p>Description 描述</p>
         :rtype: str
         """
         return self._Description
@@ -2397,6 +2424,7 @@ class CreateModelServiceAuthTokenRequest(AbstractModel):
 
     def _deserialize(self, params):
         self._ServiceGroupId = params.get("ServiceGroupId")
+        self._TiProjectId = params.get("TiProjectId")
         self._Name = params.get("Name")
         self._Description = params.get("Description")
         memeber_set = set(params.keys())
@@ -7292,17 +7320,20 @@ class DeleteModelServiceAuthTokenRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ServiceGroupId: 服务组 id
+        :param _ServiceGroupId: <p>服务组 id</p>
         :type ServiceGroupId: str
-        :param _AuthTokenValue: token 值
+        :param _TiProjectId: <p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+        :type TiProjectId: str
+        :param _AuthTokenValue: <p>token 值</p>
         :type AuthTokenValue: str
         """
         self._ServiceGroupId = None
+        self._TiProjectId = None
         self._AuthTokenValue = None
 
     @property
     def ServiceGroupId(self):
-        r"""服务组 id
+        r"""<p>服务组 id</p>
         :rtype: str
         """
         return self._ServiceGroupId
@@ -7312,8 +7343,19 @@ class DeleteModelServiceAuthTokenRequest(AbstractModel):
         self._ServiceGroupId = ServiceGroupId
 
     @property
+    def TiProjectId(self):
+        r"""<p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+        :rtype: str
+        """
+        return self._TiProjectId
+
+    @TiProjectId.setter
+    def TiProjectId(self, TiProjectId):
+        self._TiProjectId = TiProjectId
+
+    @property
     def AuthTokenValue(self):
-        r"""token 值
+        r"""<p>token 值</p>
         :rtype: str
         """
         return self._AuthTokenValue
@@ -7325,6 +7367,7 @@ class DeleteModelServiceAuthTokenRequest(AbstractModel):
 
     def _deserialize(self, params):
         self._ServiceGroupId = params.get("ServiceGroupId")
+        self._TiProjectId = params.get("TiProjectId")
         self._AuthTokenValue = params.get("AuthTokenValue")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -18453,20 +18496,23 @@ class ModifyModelServiceAuthTokenRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ServiceGroupId: 服务组 id
+        :param _ServiceGroupId: <p>服务组 id</p>
         :type ServiceGroupId: str
-        :param _NeedReset: 是否需要重置，如果为 true，重置 token 值
+        :param _TiProjectId: <p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+        :type TiProjectId: str
+        :param _NeedReset: <p>是否需要重置，如果为 true，重置 token 值</p>
         :type NeedReset: bool
-        :param _AuthToken: AuthToken 数据
+        :param _AuthToken: <p>AuthToken 数据</p>
         :type AuthToken: :class:`tencentcloud.tione.v20211111.models.AuthToken`
         """
         self._ServiceGroupId = None
+        self._TiProjectId = None
         self._NeedReset = None
         self._AuthToken = None
 
     @property
     def ServiceGroupId(self):
-        r"""服务组 id
+        r"""<p>服务组 id</p>
         :rtype: str
         """
         return self._ServiceGroupId
@@ -18476,8 +18522,19 @@ class ModifyModelServiceAuthTokenRequest(AbstractModel):
         self._ServiceGroupId = ServiceGroupId
 
     @property
+    def TiProjectId(self):
+        r"""<p>TI工作空间ID</p><p>仅用于“工作空间”白名单功能。如需使用，请联系TI管理员开通白名单。</p>
+        :rtype: str
+        """
+        return self._TiProjectId
+
+    @TiProjectId.setter
+    def TiProjectId(self, TiProjectId):
+        self._TiProjectId = TiProjectId
+
+    @property
     def NeedReset(self):
-        r"""是否需要重置，如果为 true，重置 token 值
+        r"""<p>是否需要重置，如果为 true，重置 token 值</p>
         :rtype: bool
         """
         return self._NeedReset
@@ -18488,7 +18545,7 @@ class ModifyModelServiceAuthTokenRequest(AbstractModel):
 
     @property
     def AuthToken(self):
-        r"""AuthToken 数据
+        r"""<p>AuthToken 数据</p>
         :rtype: :class:`tencentcloud.tione.v20211111.models.AuthToken`
         """
         return self._AuthToken
@@ -18500,6 +18557,7 @@ class ModifyModelServiceAuthTokenRequest(AbstractModel):
 
     def _deserialize(self, params):
         self._ServiceGroupId = params.get("ServiceGroupId")
+        self._TiProjectId = params.get("TiProjectId")
         self._NeedReset = params.get("NeedReset")
         if params.get("AuthToken") is not None:
             self._AuthToken = AuthToken()

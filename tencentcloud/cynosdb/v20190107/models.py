@@ -13786,6 +13786,10 @@ class CynosdbClusterDetail(AbstractModel):
         :type IsOpenTDE: bool
         :param _RealZone: <p>实例当前所在可用区</p>
         :type RealZone: str
+        :param _StorageOverUse: <p>超限开启状态</p><p>枚举值：</p><ul><li>yes： 超限开启</li><li>no： 超限关闭</li></ul><p>默认值：no</p>
+        :type StorageOverUse: str
+        :param _StorageAutoExpand: <p>自动扩容开启状态</p><p>枚举值：</p><ul><li>yes： 已开启</li><li>no： 关闭</li></ul><p>默认值：no</p>
+        :type StorageAutoExpand: str
         """
         self._ClusterId = None
         self._ClusterName = None
@@ -13846,6 +13850,8 @@ class CynosdbClusterDetail(AbstractModel):
         self._ClusterLevel = None
         self._IsOpenTDE = None
         self._RealZone = None
+        self._StorageOverUse = None
+        self._StorageAutoExpand = None
 
     @property
     def ClusterId(self):
@@ -14496,6 +14502,28 @@ class CynosdbClusterDetail(AbstractModel):
     def RealZone(self, RealZone):
         self._RealZone = RealZone
 
+    @property
+    def StorageOverUse(self):
+        r"""<p>超限开启状态</p><p>枚举值：</p><ul><li>yes： 超限开启</li><li>no： 超限关闭</li></ul><p>默认值：no</p>
+        :rtype: str
+        """
+        return self._StorageOverUse
+
+    @StorageOverUse.setter
+    def StorageOverUse(self, StorageOverUse):
+        self._StorageOverUse = StorageOverUse
+
+    @property
+    def StorageAutoExpand(self):
+        r"""<p>自动扩容开启状态</p><p>枚举值：</p><ul><li>yes： 已开启</li><li>no： 关闭</li></ul><p>默认值：no</p>
+        :rtype: str
+        """
+        return self._StorageAutoExpand
+
+    @StorageAutoExpand.setter
+    def StorageAutoExpand(self, StorageAutoExpand):
+        self._StorageAutoExpand = StorageAutoExpand
+
 
     def _deserialize(self, params):
         self._ClusterId = params.get("ClusterId")
@@ -14589,6 +14617,8 @@ class CynosdbClusterDetail(AbstractModel):
         self._ClusterLevel = params.get("ClusterLevel")
         self._IsOpenTDE = params.get("IsOpenTDE")
         self._RealZone = params.get("RealZone")
+        self._StorageOverUse = params.get("StorageOverUse")
+        self._StorageAutoExpand = params.get("StorageAutoExpand")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

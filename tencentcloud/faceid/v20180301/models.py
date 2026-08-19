@@ -1947,49 +1947,29 @@ class DetectAuthRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RuleId: 业务流程ID。
-- 用于细分客户使用场景, 可为业务配置不同的业务流程。
-- 申请开通服务后，登录腾讯云[慧眼人脸核身控制](https://console.cloud.tencent.com/faceid)进行创建，审核通过后即可调用。
-- 如有疑问，请添加[腾讯云人脸核身小助手](https://cloud.tencent.com/document/product/1007/56130)进行咨询。
+        :param _RuleId: <p>业务流程ID。</p><ul><li>用于细分客户使用场景, 可为业务配置不同的业务流程。</li><li>申请开通服务后，登录腾讯云<a href="https://console.cloud.tencent.com/faceid">慧眼人脸核身控制</a>进行创建，审核通过后即可调用。</li><li>如有疑问，请添加<a href="https://cloud.tencent.com/document/product/1007/56130">腾讯云人脸核身小助手</a>进行咨询。</li></ul>
         :type RuleId: str
-        :param _TerminalType: 本接口不需要传递此参数。
+        :param _TerminalType: <p>本接口不需要传递此参数。</p>
         :type TerminalType: str
-        :param _IdCard: 验证人的身份证号码。
-- 是否必传基于[控制台](https://console.cloud.tencent.com/faceid/access)申请业务流程时配置的提示。
-
+        :param _IdCard: <p>验证人的身份证号码。</p><ul><li>调用 detectAuth 时，该字段是否必传，以在<a href="https://console.cloud.tencent.com/faceid/access">控制台</a>申请 ruleId 时的配置提示为准，具体必填字段请参阅控制台界面。</li><li>若身份证号包含字母，该字母必须为大写 X，小写 x 将无法通过校验。</li></ul>
         :type IdCard: str
-        :param _Name: 验证人的姓名。
-- 是否必传基于[控制台](https://console.cloud.tencent.com/faceid/access)申请业务流程时配置的提示。
-- 最长长度32位。中文请使用UTF-8编码。
+        :param _Name: <p>验证人的姓名。</p><ul><li>调用 detectAuth 时，该字段是否必传，以在<a href="https://console.cloud.tencent.com/faceid/access">控制台</a>申请 ruleId 时的配置提示为准，具体必填字段请参阅控制台界面。</li><li>最长长度32位。中文请使用UTF-8编码。</li></ul>
         :type Name: str
-        :param _RedirectUrl: 认证结束后重定向的回调链接地址，仅微信H5场景使用。
-- 最长长度1024位。
-- 默认值：[腾讯云人脸核身产品介绍页](URL Here)https://cloud.tencent.com/product/faceid?Is=sdk-topnav 
-
+        :param _RedirectUrl: <p>认证结束后重定向的回调链接地址，仅微信H5场景使用。</p><ul><li>最长长度1024位。</li><li>默认值：[腾讯云人脸核身产品介绍页](URL Here)https://cloud.tencent.com/product/faceid?Is=sdk-topnav</li></ul>
         :type RedirectUrl: str
-        :param _Extra: 透传字段，在获取验证结果时返回。
-- 最长长度1024位。
+        :param _Extra: <p>透传字段，在获取验证结果时返回。</p><ul><li>最长长度1024位。</li></ul>
         :type Extra: str
-        :param _ImageBase64: 用于人脸比对的图像数据，使用base64编码。
-- Base64编码后的图片数据大小不超过3M。
-- 仅支持jpg、png格式。
-- 请使用标准的Base64编码方式(带=补位)，编码规范参考RFC4648。
+        :param _ImageBase64: <p>用于人脸比对的图像数据，使用base64编码。</p><ul><li>Base64编码后的图片数据大小不超过3M。</li><li>仅支持jpg、png格式。</li><li>请使用标准的Base64编码方式(带=补位)，编码规范参考RFC4648。</li></ul>
         :type ImageBase64: str
-        :param _Encryption: 敏感数据加密信息。对传入信息（姓名、身份证号）有加密需求的用户可使用此参数，详情请点击左侧链接。
+        :param _Encryption: <p>敏感数据加密信息。对传入信息（姓名、身份证号）有加密需求的用户可使用此参数，详情请点击左侧链接。</p>
         :type Encryption: :class:`tencentcloud.faceid.v20180301.models.Encryption`
-        :param _IntentionVerifyText: 意愿核身（朗读模式）使用的文案。
-- 若未使用意愿核身（朗读模式），则该字段无需传入。
-- 最长可接受120的字符串长度。
+        :param _IntentionVerifyText: <p>意愿核身（朗读模式）使用的文案。</p><ul><li>若未使用意愿核身（朗读模式），则该字段无需传入。</li><li>最长可接受120的字符串长度。</li></ul>
         :type IntentionVerifyText: str
-        :param _IntentionQuestions: 意愿核身（语音播报+语音回答模式）使用的文案。
-- 包括：系统语音播报的文本、需要核验的标准文本。
-- 问答模式支持1-10轮（不超过10轮）的意愿确认。
+        :param _IntentionQuestions: <p>意愿核身（语音播报+语音回答模式）使用的文案。</p><ul><li>包括：系统语音播报的文本、需要核验的标准文本。</li><li>问答模式支持1-10轮（不超过10轮）的意愿确认。</li></ul>
         :type IntentionQuestions: list of IntentionQuestion
-        :param _IntentionActions: 意愿核身（点头确认模式）使用的文案。
-- 若未使用意愿核身（点头确认模式），则该字段无需传入。
-- 点头确认模式支持1-10轮（不超过10轮）的意愿确认。
+        :param _IntentionActions: <p>意愿核身（点头确认模式）使用的文案。</p><ul><li>若未使用意愿核身（点头确认模式），则该字段无需传入。</li><li>点头确认模式支持1-10轮（不超过10轮）的意愿确认。</li></ul>
         :type IntentionActions: list of IntentionActionConfig
-        :param _Config: 意愿核身流程配置。
+        :param _Config: <p>意愿核身流程配置。</p>
         :type Config: :class:`tencentcloud.faceid.v20180301.models.RuleIdConfig`
         """
         self._RuleId = None
@@ -2007,10 +1987,7 @@ class DetectAuthRequest(AbstractModel):
 
     @property
     def RuleId(self):
-        r"""业务流程ID。
-- 用于细分客户使用场景, 可为业务配置不同的业务流程。
-- 申请开通服务后，登录腾讯云[慧眼人脸核身控制](https://console.cloud.tencent.com/faceid)进行创建，审核通过后即可调用。
-- 如有疑问，请添加[腾讯云人脸核身小助手](https://cloud.tencent.com/document/product/1007/56130)进行咨询。
+        r"""<p>业务流程ID。</p><ul><li>用于细分客户使用场景, 可为业务配置不同的业务流程。</li><li>申请开通服务后，登录腾讯云<a href="https://console.cloud.tencent.com/faceid">慧眼人脸核身控制</a>进行创建，审核通过后即可调用。</li><li>如有疑问，请添加<a href="https://cloud.tencent.com/document/product/1007/56130">腾讯云人脸核身小助手</a>进行咨询。</li></ul>
         :rtype: str
         """
         return self._RuleId
@@ -2021,7 +1998,7 @@ class DetectAuthRequest(AbstractModel):
 
     @property
     def TerminalType(self):
-        r"""本接口不需要传递此参数。
+        r"""<p>本接口不需要传递此参数。</p>
         :rtype: str
         """
         return self._TerminalType
@@ -2032,9 +2009,7 @@ class DetectAuthRequest(AbstractModel):
 
     @property
     def IdCard(self):
-        r"""验证人的身份证号码。
-- 是否必传基于[控制台](https://console.cloud.tencent.com/faceid/access)申请业务流程时配置的提示。
-
+        r"""<p>验证人的身份证号码。</p><ul><li>调用 detectAuth 时，该字段是否必传，以在<a href="https://console.cloud.tencent.com/faceid/access">控制台</a>申请 ruleId 时的配置提示为准，具体必填字段请参阅控制台界面。</li><li>若身份证号包含字母，该字母必须为大写 X，小写 x 将无法通过校验。</li></ul>
         :rtype: str
         """
         return self._IdCard
@@ -2045,9 +2020,7 @@ class DetectAuthRequest(AbstractModel):
 
     @property
     def Name(self):
-        r"""验证人的姓名。
-- 是否必传基于[控制台](https://console.cloud.tencent.com/faceid/access)申请业务流程时配置的提示。
-- 最长长度32位。中文请使用UTF-8编码。
+        r"""<p>验证人的姓名。</p><ul><li>调用 detectAuth 时，该字段是否必传，以在<a href="https://console.cloud.tencent.com/faceid/access">控制台</a>申请 ruleId 时的配置提示为准，具体必填字段请参阅控制台界面。</li><li>最长长度32位。中文请使用UTF-8编码。</li></ul>
         :rtype: str
         """
         return self._Name
@@ -2058,10 +2031,7 @@ class DetectAuthRequest(AbstractModel):
 
     @property
     def RedirectUrl(self):
-        r"""认证结束后重定向的回调链接地址，仅微信H5场景使用。
-- 最长长度1024位。
-- 默认值：[腾讯云人脸核身产品介绍页](URL Here)https://cloud.tencent.com/product/faceid?Is=sdk-topnav 
-
+        r"""<p>认证结束后重定向的回调链接地址，仅微信H5场景使用。</p><ul><li>最长长度1024位。</li><li>默认值：[腾讯云人脸核身产品介绍页](URL Here)https://cloud.tencent.com/product/faceid?Is=sdk-topnav</li></ul>
         :rtype: str
         """
         return self._RedirectUrl
@@ -2072,8 +2042,7 @@ class DetectAuthRequest(AbstractModel):
 
     @property
     def Extra(self):
-        r"""透传字段，在获取验证结果时返回。
-- 最长长度1024位。
+        r"""<p>透传字段，在获取验证结果时返回。</p><ul><li>最长长度1024位。</li></ul>
         :rtype: str
         """
         return self._Extra
@@ -2084,10 +2053,7 @@ class DetectAuthRequest(AbstractModel):
 
     @property
     def ImageBase64(self):
-        r"""用于人脸比对的图像数据，使用base64编码。
-- Base64编码后的图片数据大小不超过3M。
-- 仅支持jpg、png格式。
-- 请使用标准的Base64编码方式(带=补位)，编码规范参考RFC4648。
+        r"""<p>用于人脸比对的图像数据，使用base64编码。</p><ul><li>Base64编码后的图片数据大小不超过3M。</li><li>仅支持jpg、png格式。</li><li>请使用标准的Base64编码方式(带=补位)，编码规范参考RFC4648。</li></ul>
         :rtype: str
         """
         return self._ImageBase64
@@ -2098,7 +2064,7 @@ class DetectAuthRequest(AbstractModel):
 
     @property
     def Encryption(self):
-        r"""敏感数据加密信息。对传入信息（姓名、身份证号）有加密需求的用户可使用此参数，详情请点击左侧链接。
+        r"""<p>敏感数据加密信息。对传入信息（姓名、身份证号）有加密需求的用户可使用此参数，详情请点击左侧链接。</p>
         :rtype: :class:`tencentcloud.faceid.v20180301.models.Encryption`
         """
         return self._Encryption
@@ -2109,9 +2075,7 @@ class DetectAuthRequest(AbstractModel):
 
     @property
     def IntentionVerifyText(self):
-        r"""意愿核身（朗读模式）使用的文案。
-- 若未使用意愿核身（朗读模式），则该字段无需传入。
-- 最长可接受120的字符串长度。
+        r"""<p>意愿核身（朗读模式）使用的文案。</p><ul><li>若未使用意愿核身（朗读模式），则该字段无需传入。</li><li>最长可接受120的字符串长度。</li></ul>
         :rtype: str
         """
         return self._IntentionVerifyText
@@ -2122,9 +2086,7 @@ class DetectAuthRequest(AbstractModel):
 
     @property
     def IntentionQuestions(self):
-        r"""意愿核身（语音播报+语音回答模式）使用的文案。
-- 包括：系统语音播报的文本、需要核验的标准文本。
-- 问答模式支持1-10轮（不超过10轮）的意愿确认。
+        r"""<p>意愿核身（语音播报+语音回答模式）使用的文案。</p><ul><li>包括：系统语音播报的文本、需要核验的标准文本。</li><li>问答模式支持1-10轮（不超过10轮）的意愿确认。</li></ul>
         :rtype: list of IntentionQuestion
         """
         return self._IntentionQuestions
@@ -2135,9 +2097,7 @@ class DetectAuthRequest(AbstractModel):
 
     @property
     def IntentionActions(self):
-        r"""意愿核身（点头确认模式）使用的文案。
-- 若未使用意愿核身（点头确认模式），则该字段无需传入。
-- 点头确认模式支持1-10轮（不超过10轮）的意愿确认。
+        r"""<p>意愿核身（点头确认模式）使用的文案。</p><ul><li>若未使用意愿核身（点头确认模式），则该字段无需传入。</li><li>点头确认模式支持1-10轮（不超过10轮）的意愿确认。</li></ul>
         :rtype: list of IntentionActionConfig
         """
         return self._IntentionActions
@@ -2148,7 +2108,7 @@ class DetectAuthRequest(AbstractModel):
 
     @property
     def Config(self):
-        r"""意愿核身流程配置。
+        r"""<p>意愿核身流程配置。</p>
         :rtype: :class:`tencentcloud.faceid.v20180301.models.RuleIdConfig`
         """
         return self._Config
@@ -2202,11 +2162,9 @@ class DetectAuthResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Url: 用于发起核身流程的URL，仅微信H5场景使用。
+        :param _Url: <p>用于发起核身流程的URL，仅微信H5场景使用。</p>
         :type Url: str
-        :param _BizToken: 一次核验流程的唯一标识。
-- 有效时间为7,200秒，超过有效期再进行人脸核验会报错，请在有效期内进行核验。
-- 完成人脸核验后，需根据此标识调用[获取实名核身结果信息增强版](https://cloud.tencent.com/document/api/1007/41957)获取用户最终验证结果信息。
+        :param _BizToken: <p>一次核验流程的唯一标识。</p><ul><li>有效时间为7,200秒，超过有效期再进行人脸核验会报错，请在有效期内进行核验。</li><li>完成人脸核验后，需根据此标识调用<a href="https://cloud.tencent.com/document/api/1007/41957">获取实名核身结果信息增强版</a>获取用户最终验证结果信息。</li></ul>
         :type BizToken: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -2217,7 +2175,7 @@ class DetectAuthResponse(AbstractModel):
 
     @property
     def Url(self):
-        r"""用于发起核身流程的URL，仅微信H5场景使用。
+        r"""<p>用于发起核身流程的URL，仅微信H5场景使用。</p>
         :rtype: str
         """
         return self._Url
@@ -2228,9 +2186,7 @@ class DetectAuthResponse(AbstractModel):
 
     @property
     def BizToken(self):
-        r"""一次核验流程的唯一标识。
-- 有效时间为7,200秒，超过有效期再进行人脸核验会报错，请在有效期内进行核验。
-- 完成人脸核验后，需根据此标识调用[获取实名核身结果信息增强版](https://cloud.tencent.com/document/api/1007/41957)获取用户最终验证结果信息。
+        r"""<p>一次核验流程的唯一标识。</p><ul><li>有效时间为7,200秒，超过有效期再进行人脸核验会报错，请在有效期内进行核验。</li><li>完成人脸核验后，需根据此标识调用<a href="https://cloud.tencent.com/document/api/1007/41957">获取实名核身结果信息增强版</a>获取用户最终验证结果信息。</li></ul>
         :rtype: str
         """
         return self._BizToken
@@ -5305,19 +5261,15 @@ class GetFaceIdResultRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _FaceIdToken: SDK人脸核身流程的标识。
-- 调用[GetFaceIdToken](https://cloud.tencent.com/document/product/1007/49198)接口时生成。
+        :param _FaceIdToken: <p>SDK人脸核身流程的标识。</p><ul><li>调用<a href="https://cloud.tencent.com/document/product/1007/49198">GetFaceIdToken</a>接口时生成。</li></ul>
         :type FaceIdToken: str
-        :param _IsNeedVideo: 是否需要拉取视频。
-- 默认false：不需要。
+        :param _IsNeedVideo: <p>是否需要拉取视频。</p><ul><li>默认false：不需要。</li></ul>
         :type IsNeedVideo: bool
-        :param _IsNeedBestFrame: 是否需要拉取截帧。
-- 默认false：不需要。
+        :param _IsNeedBestFrame: <p>是否需要拉取截帧。</p><ul><li>默认false：不需要。</li></ul>
         :type IsNeedBestFrame: bool
-        :param _IsEncryptResponse: 是否对回包整体进行加密。
+        :param _IsEncryptResponse: <p>是否对回包整体进行加密。</p>
         :type IsEncryptResponse: bool
-        :param _Encryption: 是否需要对返回中的敏感信息进行加密。  
-只需指定加密算法Algorithm即可，其余字段传入默认值。
+        :param _Encryption: <p>是否需要对返回中的敏感信息进行加密。<br>只需指定加密算法Algorithm即可，其余字段传入默认值。</p>
         :type Encryption: :class:`tencentcloud.faceid.v20180301.models.Encryption`
         """
         self._FaceIdToken = None
@@ -5328,8 +5280,7 @@ class GetFaceIdResultRequest(AbstractModel):
 
     @property
     def FaceIdToken(self):
-        r"""SDK人脸核身流程的标识。
-- 调用[GetFaceIdToken](https://cloud.tencent.com/document/product/1007/49198)接口时生成。
+        r"""<p>SDK人脸核身流程的标识。</p><ul><li>调用<a href="https://cloud.tencent.com/document/product/1007/49198">GetFaceIdToken</a>接口时生成。</li></ul>
         :rtype: str
         """
         return self._FaceIdToken
@@ -5340,8 +5291,7 @@ class GetFaceIdResultRequest(AbstractModel):
 
     @property
     def IsNeedVideo(self):
-        r"""是否需要拉取视频。
-- 默认false：不需要。
+        r"""<p>是否需要拉取视频。</p><ul><li>默认false：不需要。</li></ul>
         :rtype: bool
         """
         return self._IsNeedVideo
@@ -5352,8 +5302,7 @@ class GetFaceIdResultRequest(AbstractModel):
 
     @property
     def IsNeedBestFrame(self):
-        r"""是否需要拉取截帧。
-- 默认false：不需要。
+        r"""<p>是否需要拉取截帧。</p><ul><li>默认false：不需要。</li></ul>
         :rtype: bool
         """
         return self._IsNeedBestFrame
@@ -5364,7 +5313,7 @@ class GetFaceIdResultRequest(AbstractModel):
 
     @property
     def IsEncryptResponse(self):
-        r"""是否对回包整体进行加密。
+        r"""<p>是否对回包整体进行加密。</p>
         :rtype: bool
         """
         return self._IsEncryptResponse
@@ -5375,8 +5324,7 @@ class GetFaceIdResultRequest(AbstractModel):
 
     @property
     def Encryption(self):
-        r"""是否需要对返回中的敏感信息进行加密。  
-只需指定加密算法Algorithm即可，其余字段传入默认值。
+        r"""<p>是否需要对返回中的敏感信息进行加密。<br>只需指定加密算法Algorithm即可，其余字段传入默认值。</p>
         :rtype: :class:`tencentcloud.faceid.v20180301.models.Encryption`
         """
         return self._Encryption
@@ -5411,78 +5359,45 @@ class GetFaceIdResultResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _IdCard: 身份证。
+        :param _IdCard: <p>身份证。</p>
         :type IdCard: str
-        :param _Name: 姓名。
+        :param _Name: <p>姓名。</p>
         :type Name: str
-        :param _Result: 业务核验结果。
-- 参考：https://cloud.tencent.com/document/product/1007/47912。
+        :param _Result: <p>业务核验结果。</p><ul><li>参考：https://cloud.tencent.com/document/product/1007/47912。</li></ul>
         :type Result: str
-        :param _Description: 业务核验描述。
+        :param _Description: <p>业务核验描述。</p>
         :type Description: str
-        :param _Similarity: 相似度。
-- 取值：0-100。
-- 数值越大相似度越高。
+        :param _Similarity: <p>相似度。</p><ul><li>取值：0-100。</li><li>数值越大相似度越高。</li></ul>
         :type Similarity: float
-        :param _VideoBase64: 用户核验的视频base64。
-- 如果选择了使用cos，返回完整cos地址，如https://bucket.cos.ap-guangzhou.myqcloud.com/objectKey。
+        :param _VideoBase64: <p>用户核验的视频base64。</p><ul><li>如果选择了使用cos，返回完整cos地址，如https://bucket.cos.ap-guangzhou.myqcloud.com/objectKey。</li></ul>
 注意：此字段可能返回 null，表示取不到有效值。
         :type VideoBase64: str
-        :param _BestFrameBase64: 用户核验视频的截帧base64。
-- 如果选择了使用cos，返回完整cos地址如https://bucket.cos.ap-guangzhou.myqcloud.com/objectKey。
+        :param _BestFrameBase64: <p>用户核验视频的截帧base64。</p><ul><li>如果选择了使用cos，返回完整cos地址如https://bucket.cos.ap-guangzhou.myqcloud.com/objectKey。</li></ul>
 注意：此字段可能返回 null，表示取不到有效值。
         :type BestFrameBase64: str
-        :param _Extra: 获取token时透传的信息。
+        :param _Extra: <p>获取token时透传的信息。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Extra: str
-        :param _DeviceInfoTag: plus版：描述当前请求所在设备的风险标签。
-- 详情如下：
-06-疑似黑产设备。
-null-无设备风险。
-- 增强版：此字段不生效，默认为null。
+        :param _DeviceInfoTag: <p>plus版：描述当前请求所在设备的风险标签。</p><ul><li>详情如下：<br>01-设备疑似被Root/设备疑似越狱。<br>02-设备疑似被注入。<br>03-设备疑似为模拟器。<br>04-设备疑似存在风险操作。<br>05-摄像头疑似被劫持。<br>06-疑似黑产设备。<br>null-无设备风险。</li><li>增强版：此字段不生效，默认为null。</li></ul>
 注意：此字段可能返回 null，表示取不到有效值。
         :type DeviceInfoTag: str
-        :param _RiskInfoTag: 行为风险标签。
-- 仅错误码返回1007（设备疑似被劫持）时返回风险标签。
-- 标签说明：
-02：攻击风险
+        :param _RiskInfoTag: <p>行为风险标签。</p><ul><li>仅错误码返回1007（设备疑似被劫持）时返回风险标签。</li><li>标签说明：<br>02：攻击风险</li></ul>
 注意：此字段可能返回 null，表示取不到有效值。
         :type RiskInfoTag: str
-        :param _LivenessInfoTag: plus版：描述当前请求活体阶段被拒绝的详细原因。
-- 详情如下：
-01-用户全程闭眼。
-02-用户未完成指定动作。
-03-疑似翻拍攻击。
-04-疑似合成图片。
-05-疑似合成视频。
-06-疑似合成动作。
-07-疑似黑产模板。
-08-疑似存在水印。
-09-反光校验未通过。
-10-最佳帧校验未通过。
-11-人脸质量过差。
-12-人脸距离不匹配。
-13-疑似对抗样本攻击。
-null-无。
-- 增强版：此字段不生效，默认为null。
+        :param _LivenessInfoTag: <p>plus版：描述当前请求活体阶段被拒绝的详细原因。</p><ul><li>详情如下：<br>01-用户全程闭眼。<br>02-用户未完成指定动作。<br>03-疑似翻拍攻击。<br>04-疑似合成图片。<br>05-疑似合成视频。<br>06-疑似合成动作。<br>07-疑似黑产模板。<br>08-疑似存在水印。<br>09-反光校验未通过。<br>10-最佳帧校验未通过。<br>11-人脸质量过差。<br>12-人脸距离不匹配。<br>13-疑似对抗样本攻击。<br>null-无。</li><li>增强版：此字段不生效，默认为null。</li></ul>
 注意：此字段可能返回 null，表示取不到有效值。
         :type LivenessInfoTag: str
-        :param _DeviceInfoLevel: plus版：描述当前请求所在设备的风险等级，共4级。
-- 详情如下：
-1 - 安全。
-2 - 低风险。
-3 - 中风险。
-4 - 高危。
-null - 未获取到风险等级。
-- 增强版：此字段不生效，默认为null。
+        :param _DeviceInfoLevel: <p>plus版：描述当前请求所在设备的风险等级，共4级。</p><ul><li>详情如下：<br>1 - 安全。<br>2 - 低风险。<br>3 - 中风险。<br>4 - 高危。<br>null - 未获取到风险等级。</li><li>增强版：此字段不生效，默认为null。</li></ul>
 注意：此字段可能返回 null，表示取不到有效值。
         :type DeviceInfoLevel: str
-        :param _Encryption: 敏感数据加密信息。
+        :param _Encryption: <p>敏感数据加密信息。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Encryption: :class:`tencentcloud.faceid.v20180301.models.Encryption`
-        :param _EncryptedBody: 加密后的数据。
+        :param _EncryptedBody: <p>加密后的数据。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type EncryptedBody: str
+        :param _IdCardFrontBase64: <p>用户核验的身份证人像页base64</p>
+        :type IdCardFrontBase64: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -5500,11 +5415,12 @@ null - 未获取到风险等级。
         self._DeviceInfoLevel = None
         self._Encryption = None
         self._EncryptedBody = None
+        self._IdCardFrontBase64 = None
         self._RequestId = None
 
     @property
     def IdCard(self):
-        r"""身份证。
+        r"""<p>身份证。</p>
         :rtype: str
         """
         return self._IdCard
@@ -5515,7 +5431,7 @@ null - 未获取到风险等级。
 
     @property
     def Name(self):
-        r"""姓名。
+        r"""<p>姓名。</p>
         :rtype: str
         """
         return self._Name
@@ -5526,8 +5442,7 @@ null - 未获取到风险等级。
 
     @property
     def Result(self):
-        r"""业务核验结果。
-- 参考：https://cloud.tencent.com/document/product/1007/47912。
+        r"""<p>业务核验结果。</p><ul><li>参考：https://cloud.tencent.com/document/product/1007/47912。</li></ul>
         :rtype: str
         """
         return self._Result
@@ -5538,7 +5453,7 @@ null - 未获取到风险等级。
 
     @property
     def Description(self):
-        r"""业务核验描述。
+        r"""<p>业务核验描述。</p>
         :rtype: str
         """
         return self._Description
@@ -5549,9 +5464,7 @@ null - 未获取到风险等级。
 
     @property
     def Similarity(self):
-        r"""相似度。
-- 取值：0-100。
-- 数值越大相似度越高。
+        r"""<p>相似度。</p><ul><li>取值：0-100。</li><li>数值越大相似度越高。</li></ul>
         :rtype: float
         """
         return self._Similarity
@@ -5562,8 +5475,7 @@ null - 未获取到风险等级。
 
     @property
     def VideoBase64(self):
-        r"""用户核验的视频base64。
-- 如果选择了使用cos，返回完整cos地址，如https://bucket.cos.ap-guangzhou.myqcloud.com/objectKey。
+        r"""<p>用户核验的视频base64。</p><ul><li>如果选择了使用cos，返回完整cos地址，如https://bucket.cos.ap-guangzhou.myqcloud.com/objectKey。</li></ul>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -5575,8 +5487,7 @@ null - 未获取到风险等级。
 
     @property
     def BestFrameBase64(self):
-        r"""用户核验视频的截帧base64。
-- 如果选择了使用cos，返回完整cos地址如https://bucket.cos.ap-guangzhou.myqcloud.com/objectKey。
+        r"""<p>用户核验视频的截帧base64。</p><ul><li>如果选择了使用cos，返回完整cos地址如https://bucket.cos.ap-guangzhou.myqcloud.com/objectKey。</li></ul>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -5588,7 +5499,7 @@ null - 未获取到风险等级。
 
     @property
     def Extra(self):
-        r"""获取token时透传的信息。
+        r"""<p>获取token时透传的信息。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -5600,11 +5511,7 @@ null - 未获取到风险等级。
 
     @property
     def DeviceInfoTag(self):
-        r"""plus版：描述当前请求所在设备的风险标签。
-- 详情如下：
-06-疑似黑产设备。
-null-无设备风险。
-- 增强版：此字段不生效，默认为null。
+        r"""<p>plus版：描述当前请求所在设备的风险标签。</p><ul><li>详情如下：<br>01-设备疑似被Root/设备疑似越狱。<br>02-设备疑似被注入。<br>03-设备疑似为模拟器。<br>04-设备疑似存在风险操作。<br>05-摄像头疑似被劫持。<br>06-疑似黑产设备。<br>null-无设备风险。</li><li>增强版：此字段不生效，默认为null。</li></ul>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -5616,10 +5523,7 @@ null-无设备风险。
 
     @property
     def RiskInfoTag(self):
-        r"""行为风险标签。
-- 仅错误码返回1007（设备疑似被劫持）时返回风险标签。
-- 标签说明：
-02：攻击风险
+        r"""<p>行为风险标签。</p><ul><li>仅错误码返回1007（设备疑似被劫持）时返回风险标签。</li><li>标签说明：<br>02：攻击风险</li></ul>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -5631,23 +5535,7 @@ null-无设备风险。
 
     @property
     def LivenessInfoTag(self):
-        r"""plus版：描述当前请求活体阶段被拒绝的详细原因。
-- 详情如下：
-01-用户全程闭眼。
-02-用户未完成指定动作。
-03-疑似翻拍攻击。
-04-疑似合成图片。
-05-疑似合成视频。
-06-疑似合成动作。
-07-疑似黑产模板。
-08-疑似存在水印。
-09-反光校验未通过。
-10-最佳帧校验未通过。
-11-人脸质量过差。
-12-人脸距离不匹配。
-13-疑似对抗样本攻击。
-null-无。
-- 增强版：此字段不生效，默认为null。
+        r"""<p>plus版：描述当前请求活体阶段被拒绝的详细原因。</p><ul><li>详情如下：<br>01-用户全程闭眼。<br>02-用户未完成指定动作。<br>03-疑似翻拍攻击。<br>04-疑似合成图片。<br>05-疑似合成视频。<br>06-疑似合成动作。<br>07-疑似黑产模板。<br>08-疑似存在水印。<br>09-反光校验未通过。<br>10-最佳帧校验未通过。<br>11-人脸质量过差。<br>12-人脸距离不匹配。<br>13-疑似对抗样本攻击。<br>null-无。</li><li>增强版：此字段不生效，默认为null。</li></ul>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -5659,14 +5547,7 @@ null-无。
 
     @property
     def DeviceInfoLevel(self):
-        r"""plus版：描述当前请求所在设备的风险等级，共4级。
-- 详情如下：
-1 - 安全。
-2 - 低风险。
-3 - 中风险。
-4 - 高危。
-null - 未获取到风险等级。
-- 增强版：此字段不生效，默认为null。
+        r"""<p>plus版：描述当前请求所在设备的风险等级，共4级。</p><ul><li>详情如下：<br>1 - 安全。<br>2 - 低风险。<br>3 - 中风险。<br>4 - 高危。<br>null - 未获取到风险等级。</li><li>增强版：此字段不生效，默认为null。</li></ul>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -5678,7 +5559,7 @@ null - 未获取到风险等级。
 
     @property
     def Encryption(self):
-        r"""敏感数据加密信息。
+        r"""<p>敏感数据加密信息。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.faceid.v20180301.models.Encryption`
         """
@@ -5690,7 +5571,7 @@ null - 未获取到风险等级。
 
     @property
     def EncryptedBody(self):
-        r"""加密后的数据。
+        r"""<p>加密后的数据。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -5699,6 +5580,17 @@ null - 未获取到风险等级。
     @EncryptedBody.setter
     def EncryptedBody(self, EncryptedBody):
         self._EncryptedBody = EncryptedBody
+
+    @property
+    def IdCardFrontBase64(self):
+        r"""<p>用户核验的身份证人像页base64</p>
+        :rtype: str
+        """
+        return self._IdCardFrontBase64
+
+    @IdCardFrontBase64.setter
+    def IdCardFrontBase64(self, IdCardFrontBase64):
+        self._IdCardFrontBase64 = IdCardFrontBase64
 
     @property
     def RequestId(self):
@@ -5729,6 +5621,7 @@ null - 未获取到风险等级。
             self._Encryption = Encryption()
             self._Encryption._deserialize(params.get("Encryption"))
         self._EncryptedBody = params.get("EncryptedBody")
+        self._IdCardFrontBase64 = params.get("IdCardFrontBase64")
         self._RequestId = params.get("RequestId")
 
 
@@ -5961,39 +5854,26 @@ class GetFaceIdTokenRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _CompareLib: 比对库。
-- 取值范围：
-LOCAL：本地上传照片。
-BUSINESS：商业库。
+        :param _CompareLib: <p>比对库。</p><ul><li>取值范围：<br>LOCAL：本地上传照片。<br>BUSINESS：商业库。</li></ul>
         :type CompareLib: str
-        :param _IdCard: 身份证。
-- CompareLib为商业库时必传。
+        :param _IdCard: <p>身份证。</p><ul><li>CompareLib为商业库时必传。</li></ul>
         :type IdCard: str
-        :param _Name: 姓名。
-- CompareLib为商业库时必传。
+        :param _Name: <p>姓名。</p><ul><li>CompareLib为商业库时必传。</li></ul>
         :type Name: str
-        :param _ImageBase64: 图片的Base64。
-- CompareLib为上传照片比对时必传。
-- Base64后图片最大8MB。
-- 请使用标准的Base64编码方式(带=补位)，编码规范参考RFC4648。
+        :param _ImageBase64: <p>图片的Base64。</p><ul><li>CompareLib为上传照片比对时必传。</li><li>Base64后图片最大8MB。</li><li>请使用标准的Base64编码方式(带=补位)，编码规范参考RFC4648。</li></ul>
         :type ImageBase64: str
-        :param _Meta: SDK中生成的Meta字符串。
+        :param _Meta: <p>SDK中生成的Meta字符串。</p>
         :type Meta: str
-        :param _Extra: 透传参数。
-- 1000长度字符串
+        :param _Extra: <p>透传参数。</p><ul><li>1000长度字符串</li></ul>
         :type Extra: str
-        :param _UseCos: 是否使用cos桶。
-- 默认为false。
-- 设置该参数为true后，核身过程中的视频图片将会存储在人脸核身控制台授权cos的bucket中，拉取结果时会返回对应资源完整cos地址。
-- 开通地址见https://console.cloud.tencent.com/faceid/cos
-- 【注意】选择该参数为true后将不返回base64数据，请根据接入情况谨慎修改。
+        :param _UseCos: <p>是否使用cos桶。</p><ul><li>默认为false。</li><li>设置该参数为true后，核身过程中的视频图片将会存储在人脸核身控制台授权cos的bucket中，拉取结果时会返回对应资源完整cos地址。</li><li>开通地址见https://console.cloud.tencent.com/faceid/cos</li><li>【注意】选择该参数为true后将不返回base64数据，请根据接入情况谨慎修改。</li></ul>
         :type UseCos: bool
-        :param _Encryption: 敏感数据加密信息。对传入信息（姓名、身份证号、自传照片）有加密需求的用户可使用此参数，详情请点击左侧链接。
+        :param _Encryption: <p>敏感数据加密信息。对传入信息（姓名、身份证号、自传照片）有加密需求的用户可使用此参数，详情请点击左侧链接。</p>
         :type Encryption: :class:`tencentcloud.faceid.v20180301.models.Encryption`
-        :param _RuleId: 用于细分客户使用场景。
-- 申请开通服务后，可以在腾讯云慧眼人脸核身控制台（https://console.cloud.tencent.com/faceid） 自助接入里面创建，审核通过后即可调用。
-- 如有疑问，请添加腾讯云人脸核身小助手进行咨询。
+        :param _RuleId: <p>用于细分客户使用场景。</p><ul><li>申请开通服务后，可以在腾讯云慧眼人脸核身控制台（https://console.cloud.tencent.com/faceid） 自助接入里面创建，审核通过后即可调用。</li><li>如有疑问，请添加腾讯云人脸核身小助手进行咨询。</li></ul>
         :type RuleId: str
+        :param _MetaData: <p>SDK和用户设备的元信息。该字段的值由HuiYan SDK以JSON字符串格式返回。  说明：不要修改返回值，直接传递即可。</p>
+        :type MetaData: str
         """
         self._CompareLib = None
         self._IdCard = None
@@ -6004,13 +5884,11 @@ BUSINESS：商业库。
         self._UseCos = None
         self._Encryption = None
         self._RuleId = None
+        self._MetaData = None
 
     @property
     def CompareLib(self):
-        r"""比对库。
-- 取值范围：
-LOCAL：本地上传照片。
-BUSINESS：商业库。
+        r"""<p>比对库。</p><ul><li>取值范围：<br>LOCAL：本地上传照片。<br>BUSINESS：商业库。</li></ul>
         :rtype: str
         """
         return self._CompareLib
@@ -6021,8 +5899,7 @@ BUSINESS：商业库。
 
     @property
     def IdCard(self):
-        r"""身份证。
-- CompareLib为商业库时必传。
+        r"""<p>身份证。</p><ul><li>CompareLib为商业库时必传。</li></ul>
         :rtype: str
         """
         return self._IdCard
@@ -6033,8 +5910,7 @@ BUSINESS：商业库。
 
     @property
     def Name(self):
-        r"""姓名。
-- CompareLib为商业库时必传。
+        r"""<p>姓名。</p><ul><li>CompareLib为商业库时必传。</li></ul>
         :rtype: str
         """
         return self._Name
@@ -6045,10 +5921,7 @@ BUSINESS：商业库。
 
     @property
     def ImageBase64(self):
-        r"""图片的Base64。
-- CompareLib为上传照片比对时必传。
-- Base64后图片最大8MB。
-- 请使用标准的Base64编码方式(带=补位)，编码规范参考RFC4648。
+        r"""<p>图片的Base64。</p><ul><li>CompareLib为上传照片比对时必传。</li><li>Base64后图片最大8MB。</li><li>请使用标准的Base64编码方式(带=补位)，编码规范参考RFC4648。</li></ul>
         :rtype: str
         """
         return self._ImageBase64
@@ -6059,7 +5932,7 @@ BUSINESS：商业库。
 
     @property
     def Meta(self):
-        r"""SDK中生成的Meta字符串。
+        r"""<p>SDK中生成的Meta字符串。</p>
         :rtype: str
         """
         return self._Meta
@@ -6070,8 +5943,7 @@ BUSINESS：商业库。
 
     @property
     def Extra(self):
-        r"""透传参数。
-- 1000长度字符串
+        r"""<p>透传参数。</p><ul><li>1000长度字符串</li></ul>
         :rtype: str
         """
         return self._Extra
@@ -6082,11 +5954,7 @@ BUSINESS：商业库。
 
     @property
     def UseCos(self):
-        r"""是否使用cos桶。
-- 默认为false。
-- 设置该参数为true后，核身过程中的视频图片将会存储在人脸核身控制台授权cos的bucket中，拉取结果时会返回对应资源完整cos地址。
-- 开通地址见https://console.cloud.tencent.com/faceid/cos
-- 【注意】选择该参数为true后将不返回base64数据，请根据接入情况谨慎修改。
+        r"""<p>是否使用cos桶。</p><ul><li>默认为false。</li><li>设置该参数为true后，核身过程中的视频图片将会存储在人脸核身控制台授权cos的bucket中，拉取结果时会返回对应资源完整cos地址。</li><li>开通地址见https://console.cloud.tencent.com/faceid/cos</li><li>【注意】选择该参数为true后将不返回base64数据，请根据接入情况谨慎修改。</li></ul>
         :rtype: bool
         """
         return self._UseCos
@@ -6097,7 +5965,7 @@ BUSINESS：商业库。
 
     @property
     def Encryption(self):
-        r"""敏感数据加密信息。对传入信息（姓名、身份证号、自传照片）有加密需求的用户可使用此参数，详情请点击左侧链接。
+        r"""<p>敏感数据加密信息。对传入信息（姓名、身份证号、自传照片）有加密需求的用户可使用此参数，详情请点击左侧链接。</p>
         :rtype: :class:`tencentcloud.faceid.v20180301.models.Encryption`
         """
         return self._Encryption
@@ -6108,9 +5976,7 @@ BUSINESS：商业库。
 
     @property
     def RuleId(self):
-        r"""用于细分客户使用场景。
-- 申请开通服务后，可以在腾讯云慧眼人脸核身控制台（https://console.cloud.tencent.com/faceid） 自助接入里面创建，审核通过后即可调用。
-- 如有疑问，请添加腾讯云人脸核身小助手进行咨询。
+        r"""<p>用于细分客户使用场景。</p><ul><li>申请开通服务后，可以在腾讯云慧眼人脸核身控制台（https://console.cloud.tencent.com/faceid） 自助接入里面创建，审核通过后即可调用。</li><li>如有疑问，请添加腾讯云人脸核身小助手进行咨询。</li></ul>
         :rtype: str
         """
         return self._RuleId
@@ -6118,6 +5984,17 @@ BUSINESS：商业库。
     @RuleId.setter
     def RuleId(self, RuleId):
         self._RuleId = RuleId
+
+    @property
+    def MetaData(self):
+        r"""<p>SDK和用户设备的元信息。该字段的值由HuiYan SDK以JSON字符串格式返回。  说明：不要修改返回值，直接传递即可。</p>
+        :rtype: str
+        """
+        return self._MetaData
+
+    @MetaData.setter
+    def MetaData(self, MetaData):
+        self._MetaData = MetaData
 
 
     def _deserialize(self, params):
@@ -6132,6 +6009,7 @@ BUSINESS：商业库。
             self._Encryption = Encryption()
             self._Encryption._deserialize(params.get("Encryption"))
         self._RuleId = params.get("RuleId")
+        self._MetaData = params.get("MetaData")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -6149,17 +6027,20 @@ class GetFaceIdTokenResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _FaceIdToken: token值。- 有效期 10分钟。- 只能完成1次核身。
+        :param _FaceIdToken: <p>token值。- 有效期 10分钟。- 只能完成1次核身。</p>
         :type FaceIdToken: str
+        :param _ClientConfig: <p>客户端配置信息，SDK将使用该配置进行后续操作。请将返回值原样传递给客户端SDK。</p>
+        :type ClientConfig: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._FaceIdToken = None
+        self._ClientConfig = None
         self._RequestId = None
 
     @property
     def FaceIdToken(self):
-        r"""token值。- 有效期 10分钟。- 只能完成1次核身。
+        r"""<p>token值。- 有效期 10分钟。- 只能完成1次核身。</p>
         :rtype: str
         """
         return self._FaceIdToken
@@ -6167,6 +6048,17 @@ class GetFaceIdTokenResponse(AbstractModel):
     @FaceIdToken.setter
     def FaceIdToken(self, FaceIdToken):
         self._FaceIdToken = FaceIdToken
+
+    @property
+    def ClientConfig(self):
+        r"""<p>客户端配置信息，SDK将使用该配置进行后续操作。请将返回值原样传递给客户端SDK。</p>
+        :rtype: str
+        """
+        return self._ClientConfig
+
+    @ClientConfig.setter
+    def ClientConfig(self, ClientConfig):
+        self._ClientConfig = ClientConfig
 
     @property
     def RequestId(self):
@@ -6182,6 +6074,7 @@ class GetFaceIdTokenResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._FaceIdToken = params.get("FaceIdToken")
+        self._ClientConfig = params.get("ClientConfig")
         self._RequestId = params.get("RequestId")
 
 

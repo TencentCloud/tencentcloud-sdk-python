@@ -11376,6 +11376,10 @@ class AigcAudioTaskInput(AbstractModel):
         :type Prompt: str
         :param _NegativePrompt: <p>要阻止模型生成视频的提示词。最大支持1000字符。</p>
         :type NegativePrompt: str
+        :param _AudioInfos: <p>参考音频信息</p>
+        :type AudioInfos: list of AigcAudioReferenceAudioInfo
+        :param _VideoInfos: <p>参考视频信息</p>
+        :type VideoInfos: list of AigcAudioReferenceVideoInfo
         :param _EnhancePrompt: <p>是否自动优化提示词。开启时将自动优化传入的Prompt，以提升生成质量。取值有： <li>Enabled：开启；</li> <li>Disabled：关闭；</li></p>
         :type EnhancePrompt: bool
         :param _OutputConfig: <p>AIGC 生图输出结果文件输出。</p>
@@ -11388,6 +11392,8 @@ class AigcAudioTaskInput(AbstractModel):
         self._SceneType = None
         self._Prompt = None
         self._NegativePrompt = None
+        self._AudioInfos = None
+        self._VideoInfos = None
         self._EnhancePrompt = None
         self._OutputConfig = None
         self._AdditionalParameters = None
@@ -11448,6 +11454,28 @@ class AigcAudioTaskInput(AbstractModel):
         self._NegativePrompt = NegativePrompt
 
     @property
+    def AudioInfos(self):
+        r"""<p>参考音频信息</p>
+        :rtype: list of AigcAudioReferenceAudioInfo
+        """
+        return self._AudioInfos
+
+    @AudioInfos.setter
+    def AudioInfos(self, AudioInfos):
+        self._AudioInfos = AudioInfos
+
+    @property
+    def VideoInfos(self):
+        r"""<p>参考视频信息</p>
+        :rtype: list of AigcAudioReferenceVideoInfo
+        """
+        return self._VideoInfos
+
+    @VideoInfos.setter
+    def VideoInfos(self, VideoInfos):
+        self._VideoInfos = VideoInfos
+
+    @property
     def EnhancePrompt(self):
         r"""<p>是否自动优化提示词。开启时将自动优化传入的Prompt，以提升生成质量。取值有： <li>Enabled：开启；</li> <li>Disabled：关闭；</li></p>
         :rtype: bool
@@ -11487,6 +11515,18 @@ class AigcAudioTaskInput(AbstractModel):
         self._SceneType = params.get("SceneType")
         self._Prompt = params.get("Prompt")
         self._NegativePrompt = params.get("NegativePrompt")
+        if params.get("AudioInfos") is not None:
+            self._AudioInfos = []
+            for item in params.get("AudioInfos"):
+                obj = AigcAudioReferenceAudioInfo()
+                obj._deserialize(item)
+                self._AudioInfos.append(obj)
+        if params.get("VideoInfos") is not None:
+            self._VideoInfos = []
+            for item in params.get("VideoInfos"):
+                obj = AigcAudioReferenceVideoInfo()
+                obj._deserialize(item)
+                self._VideoInfos.append(obj)
         self._EnhancePrompt = params.get("EnhancePrompt")
         if params.get("OutputConfig") is not None:
             self._OutputConfig = AigcAudioOutputConfig()
@@ -14269,7 +14309,7 @@ class AigcVideoTask(AbstractModel):
         :type Status: str
         :param _ErrCode: <p>错误码。源异常时返回非0错误码，返回0时请使用各个具体任务的 ErrCode。</p>
         :type ErrCode: int
-        :param _ErrCodeExt: <p>扩展错误码。</p><p>枚举值：</p><ul><li>RequestLimitExceeded： 调用超出并发限制。</li><li>InvalidParameter.VoilationContent： 输入 prompt 违反内容安全策略。</li><li>InvalidParameterValue： 参数错误。</li><li>FailedOperation： 模型任务堆积。</li><li>InternalError： 内部错误。</li></ul>
+        :param _ErrCodeExt: <p>扩展错误码。</p><p>枚举值：</p><ul><li>RequestLimitExceeded： 调用超出并发限制。</li><li>InvalidParameter.VoilationContent： 输入 prompt 违反内容安全策略。</li><li>InvalidParameterValue： 参数值错误。</li><li>FailedOperation： 模型任务堆积。</li><li>InternalError： 内部错误。</li><li>InvalidParameter： 非法参数。</li><li>InvalidParameter.MediaFormat： 无效的媒体格式。</li><li>ContentModerationFailed： 内容审核未通过。</li><li>ResourceInsufficient： 资源不足。</li><li>ModelGenerateFailed： 模型生成失败。</li><li>ResourceNotFound： 资源不存在。</li><li>OperationCanceled： 操作已取消。</li><li>TaskTimeout： 任务超时。</li></ul>
         :type ErrCodeExt: str
         :param _Message: <p>错误信息。</p>
         :type Message: str
@@ -14330,7 +14370,7 @@ class AigcVideoTask(AbstractModel):
 
     @property
     def ErrCodeExt(self):
-        r"""<p>扩展错误码。</p><p>枚举值：</p><ul><li>RequestLimitExceeded： 调用超出并发限制。</li><li>InvalidParameter.VoilationContent： 输入 prompt 违反内容安全策略。</li><li>InvalidParameterValue： 参数错误。</li><li>FailedOperation： 模型任务堆积。</li><li>InternalError： 内部错误。</li></ul>
+        r"""<p>扩展错误码。</p><p>枚举值：</p><ul><li>RequestLimitExceeded： 调用超出并发限制。</li><li>InvalidParameter.VoilationContent： 输入 prompt 违反内容安全策略。</li><li>InvalidParameterValue： 参数值错误。</li><li>FailedOperation： 模型任务堆积。</li><li>InternalError： 内部错误。</li><li>InvalidParameter： 非法参数。</li><li>InvalidParameter.MediaFormat： 无效的媒体格式。</li><li>ContentModerationFailed： 内容审核未通过。</li><li>ResourceInsufficient： 资源不足。</li><li>ModelGenerateFailed： 模型生成失败。</li><li>ResourceNotFound： 资源不存在。</li><li>OperationCanceled： 操作已取消。</li><li>TaskTimeout： 任务超时。</li></ul>
         :rtype: str
         """
         return self._ErrCodeExt
@@ -44266,7 +44306,7 @@ class DescribeTaskDetailResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskType: <p>任务类型，取值：<li>Procedure：视频处理任务；</li><li>EditMedia：视频编辑任务；</li><li>SplitMedia：视频拆条任务；</li><li>ComposeMedia：制作媒体文件任务；</li><li>WechatPublish：微信发布任务；</li><li>WechatMiniProgramPublish：微信小程序视频发布任务；</li><li>PullUpload：拉取上传媒体文件任务；</li><li>FastClipMedia：快速剪辑任务；</li><li>RemoveWatermarkTask：智能去除水印任务；</li><li>DescribeFileAttributesTask：获取文件属性任务；</li><li>RebuildMedia：音画质重生任务（不推荐使用）；</li><li>ReviewAudioVideo：音视频审核任务；</li><li>ExtractTraceWatermark：提取溯源水印任务；</li><li>ExtractCopyRightWatermark：提取版权水印任务；</li><li>QualityInspect：音画质检测任务；</li><li>QualityEnhance：音画质重生任务；</li><li>ComplexAdaptiveDynamicStreaming：复杂自适应码流任务；</li><li>ProcessMediaByMPS：MPS 视频处理任务；</li><li>AigcImageTask：AIGC 生图任务；</li><li>SceneAigcImageTask：场景化 AIGC 生图任务；</li><li>AigcVideoTask：AIGC 生视频任务；</li><li>ImportMediaKnowledge：导入媒体知识任务。</li><li>SceneAigcVideoTask：场景化 AIGC 生视频任务；</li><li> ExtractBlindWatermark：提取数字水印任务。</li><li> ExtractBlindWatermark：提取数字水印任务。</li><li> CreateAigcAdvancedCustomElement：创建自定义主体任务</li><li>CreateAigcCustomVoice：创建自定义音色任务</li><li>CreateAigcSubject：创建主体任务</li><li>AigcVideoRedrawTask：AIGC 视频转绘任务</li><li>CreateAigcAudioClone：AIGC 声音复刻任务</li><li>DescribeAigcFaceInfoAsync：异步获取 AIGC 人脸信息任务</li></p>
+        :param _TaskType: <p>任务类型，取值：<li>Procedure：视频处理任务；</li><li>EditMedia：视频编辑任务；</li><li>SplitMedia：视频拆条任务；</li><li>ComposeMedia：制作媒体文件任务；</li><li>WechatPublish：微信发布任务；</li><li>WechatMiniProgramPublish：微信小程序视频发布任务；</li><li>PullUpload：拉取上传媒体文件任务；</li><li>FastClipMedia：快速剪辑任务；</li><li>RemoveWatermarkTask：智能去除水印任务；</li><li>DescribeFileAttributesTask：获取文件属性任务；</li><li>RebuildMedia：音画质重生任务（不推荐使用）；</li><li>ReviewAudioVideo：音视频审核任务；</li><li>ExtractTraceWatermark：提取溯源水印任务；</li><li>ExtractCopyRightWatermark：提取版权水印任务；</li><li>QualityInspect：音画质检测任务；</li><li>QualityEnhance：音画质重生任务；</li><li>ComplexAdaptiveDynamicStreaming：复杂自适应码流任务；</li><li>ProcessMediaByMPS：MPS 视频处理任务；</li><li>AigcImageTask：AIGC 生图任务；</li><li>SceneAigcImageTask：场景化 AIGC 生图任务；</li><li>AigcVideoTask：AIGC 生视频任务；</li><li>ImportMediaKnowledge：导入媒体知识任务。</li><li>SceneAigcVideoTask：场景化 AIGC 生视频任务；</li><li> ExtractBlindWatermark：提取数字水印任务。</li><li> ExtractBlindWatermark：提取数字水印任务。</li><li> CreateAigcAdvancedCustomElement：创建自定义主体任务</li><li>CreateAigcCustomVoice：创建自定义音色任务</li><li>CreateAigcSubject：创建主体任务</li><li>AigcVideoRedrawTask：AIGC 视频转绘任务</li><li>CreateAigcAudioClone：AIGC 声音复刻任务</li><li>DescribeAigcFaceInfoAsync：异步获取 AIGC 人脸信息任务</li><li>WandAsrTask：WAND 语音识别</li></p>
         :type TaskType: str
         :param _Status: <p>任务状态，取值：</p><li>WAITING：等待中；</li><li>PROCESSING：处理中；</li><li>FINISH：已完成；</li><li>ABORTED：已终止。</li>
         :type Status: str
@@ -44421,7 +44461,7 @@ class DescribeTaskDetailResponse(AbstractModel):
 
     @property
     def TaskType(self):
-        r"""<p>任务类型，取值：<li>Procedure：视频处理任务；</li><li>EditMedia：视频编辑任务；</li><li>SplitMedia：视频拆条任务；</li><li>ComposeMedia：制作媒体文件任务；</li><li>WechatPublish：微信发布任务；</li><li>WechatMiniProgramPublish：微信小程序视频发布任务；</li><li>PullUpload：拉取上传媒体文件任务；</li><li>FastClipMedia：快速剪辑任务；</li><li>RemoveWatermarkTask：智能去除水印任务；</li><li>DescribeFileAttributesTask：获取文件属性任务；</li><li>RebuildMedia：音画质重生任务（不推荐使用）；</li><li>ReviewAudioVideo：音视频审核任务；</li><li>ExtractTraceWatermark：提取溯源水印任务；</li><li>ExtractCopyRightWatermark：提取版权水印任务；</li><li>QualityInspect：音画质检测任务；</li><li>QualityEnhance：音画质重生任务；</li><li>ComplexAdaptiveDynamicStreaming：复杂自适应码流任务；</li><li>ProcessMediaByMPS：MPS 视频处理任务；</li><li>AigcImageTask：AIGC 生图任务；</li><li>SceneAigcImageTask：场景化 AIGC 生图任务；</li><li>AigcVideoTask：AIGC 生视频任务；</li><li>ImportMediaKnowledge：导入媒体知识任务。</li><li>SceneAigcVideoTask：场景化 AIGC 生视频任务；</li><li> ExtractBlindWatermark：提取数字水印任务。</li><li> ExtractBlindWatermark：提取数字水印任务。</li><li> CreateAigcAdvancedCustomElement：创建自定义主体任务</li><li>CreateAigcCustomVoice：创建自定义音色任务</li><li>CreateAigcSubject：创建主体任务</li><li>AigcVideoRedrawTask：AIGC 视频转绘任务</li><li>CreateAigcAudioClone：AIGC 声音复刻任务</li><li>DescribeAigcFaceInfoAsync：异步获取 AIGC 人脸信息任务</li></p>
+        r"""<p>任务类型，取值：<li>Procedure：视频处理任务；</li><li>EditMedia：视频编辑任务；</li><li>SplitMedia：视频拆条任务；</li><li>ComposeMedia：制作媒体文件任务；</li><li>WechatPublish：微信发布任务；</li><li>WechatMiniProgramPublish：微信小程序视频发布任务；</li><li>PullUpload：拉取上传媒体文件任务；</li><li>FastClipMedia：快速剪辑任务；</li><li>RemoveWatermarkTask：智能去除水印任务；</li><li>DescribeFileAttributesTask：获取文件属性任务；</li><li>RebuildMedia：音画质重生任务（不推荐使用）；</li><li>ReviewAudioVideo：音视频审核任务；</li><li>ExtractTraceWatermark：提取溯源水印任务；</li><li>ExtractCopyRightWatermark：提取版权水印任务；</li><li>QualityInspect：音画质检测任务；</li><li>QualityEnhance：音画质重生任务；</li><li>ComplexAdaptiveDynamicStreaming：复杂自适应码流任务；</li><li>ProcessMediaByMPS：MPS 视频处理任务；</li><li>AigcImageTask：AIGC 生图任务；</li><li>SceneAigcImageTask：场景化 AIGC 生图任务；</li><li>AigcVideoTask：AIGC 生视频任务；</li><li>ImportMediaKnowledge：导入媒体知识任务。</li><li>SceneAigcVideoTask：场景化 AIGC 生视频任务；</li><li> ExtractBlindWatermark：提取数字水印任务。</li><li> ExtractBlindWatermark：提取数字水印任务。</li><li> CreateAigcAdvancedCustomElement：创建自定义主体任务</li><li>CreateAigcCustomVoice：创建自定义音色任务</li><li>CreateAigcSubject：创建主体任务</li><li>AigcVideoRedrawTask：AIGC 视频转绘任务</li><li>CreateAigcAudioClone：AIGC 声音复刻任务</li><li>DescribeAigcFaceInfoAsync：异步获取 AIGC 人脸信息任务</li><li>WandAsrTask：WAND 语音识别</li></p>
         :rtype: str
         """
         return self._TaskType

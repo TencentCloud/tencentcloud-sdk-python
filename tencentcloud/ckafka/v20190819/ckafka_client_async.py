@@ -25,6 +25,24 @@ class CkafkaClient(AbstractClient):
     _endpoint = 'ckafka.tencentcloudapi.com'
     _service = 'ckafka'
 
+    async def AssociateRoutesSecurityGroup(
+            self,
+            request: models.AssociateRoutesSecurityGroupRequest,
+            opts: Dict = None,
+    ) -> models.AssociateRoutesSecurityGroupResponse:
+        """
+        绑定路由安全组
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "AssociateRoutesSecurityGroup"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.AssociateRoutesSecurityGroupResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def AuthorizeToken(
             self,
             request: models.AuthorizeTokenRequest,
@@ -1394,6 +1412,24 @@ class CkafkaClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DisassociateRoutesSecurityGroup(
+            self,
+            request: models.DisassociateRoutesSecurityGroupRequest,
+            opts: Dict = None,
+    ) -> models.DisassociateRoutesSecurityGroupResponse:
+        """
+        解绑路由安全组
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DisassociateRoutesSecurityGroup"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DisassociateRoutesSecurityGroupResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def FetchDatahubMessageByOffset(
             self,
             request: models.FetchDatahubMessageByOffsetRequest,
@@ -1695,6 +1731,24 @@ class CkafkaClient(AbstractClient):
         kwargs["action"] = "ModifyPassword"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ModifyPasswordResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyRouteSecurityGroups(
+            self,
+            request: models.ModifyRouteSecurityGroupsRequest,
+            opts: Dict = None,
+    ) -> models.ModifyRouteSecurityGroupsResponse:
+        """
+        修改路由安全组关联
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyRouteSecurityGroups"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyRouteSecurityGroupsResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

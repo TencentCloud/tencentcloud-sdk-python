@@ -4909,14 +4909,14 @@ class DescribeMarkEssayAgentJobRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _JobId: 任务唯一ID。由服务端生成。
+        :param _JobId: <p>任务唯一ID。由服务端生成。</p>
         :type JobId: str
         """
         self._JobId = None
 
     @property
     def JobId(self):
-        r"""任务唯一ID。由服务端生成。
+        r"""<p>任务唯一ID。由服务端生成。</p>
         :rtype: str
         """
         return self._JobId
@@ -4945,15 +4945,15 @@ class DescribeMarkEssayAgentJobResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Angle: 图片旋转角度(角度制)，文本的水平方向为 0；顺时针为正，逆时针为负。
+        :param _Angle: <p>图片旋转角度(角度制)，文本的水平方向为 0；顺时针为正，逆时针为负。</p>
         :type Angle: float
-        :param _SentenceSuggests: 配置结构化文本信息。
+        :param _SentenceSuggests: <p>配置结构化文本信息。</p>
         :type SentenceSuggests: list of MarkEssaySuggestions
-        :param _ErrorCode: 任务执行错误码。当任务状态不为 FAIL 时，该值为""。
+        :param _ErrorCode: <p>任务执行错误码。当任务状态不为 FAIL 时，该值为&quot;&quot;。</p>
         :type ErrorCode: str
-        :param _ErrorMessage: 任务执行错误信息。当任务状态不为 FAIL 时，该值为""。
+        :param _ErrorMessage: <p>任务执行错误信息。当任务状态不为 FAIL 时，该值为&quot;&quot;。</p>
         :type ErrorMessage: str
-        :param _JobStatus: 任务状态。WAIT：等待中，RUN：执行中，FAIL：任务失败，DONE：任务成功
+        :param _JobStatus: <p>任务状态。WAIT：等待中，RUN：执行中，FAIL：任务失败，DONE：任务成功</p>
         :type JobStatus: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -4967,7 +4967,7 @@ class DescribeMarkEssayAgentJobResponse(AbstractModel):
 
     @property
     def Angle(self):
-        r"""图片旋转角度(角度制)，文本的水平方向为 0；顺时针为正，逆时针为负。
+        r"""<p>图片旋转角度(角度制)，文本的水平方向为 0；顺时针为正，逆时针为负。</p>
         :rtype: float
         """
         return self._Angle
@@ -4978,7 +4978,7 @@ class DescribeMarkEssayAgentJobResponse(AbstractModel):
 
     @property
     def SentenceSuggests(self):
-        r"""配置结构化文本信息。
+        r"""<p>配置结构化文本信息。</p>
         :rtype: list of MarkEssaySuggestions
         """
         return self._SentenceSuggests
@@ -4989,7 +4989,7 @@ class DescribeMarkEssayAgentJobResponse(AbstractModel):
 
     @property
     def ErrorCode(self):
-        r"""任务执行错误码。当任务状态不为 FAIL 时，该值为""。
+        r"""<p>任务执行错误码。当任务状态不为 FAIL 时，该值为&quot;&quot;。</p>
         :rtype: str
         """
         return self._ErrorCode
@@ -5000,7 +5000,7 @@ class DescribeMarkEssayAgentJobResponse(AbstractModel):
 
     @property
     def ErrorMessage(self):
-        r"""任务执行错误信息。当任务状态不为 FAIL 时，该值为""。
+        r"""<p>任务执行错误信息。当任务状态不为 FAIL 时，该值为&quot;&quot;。</p>
         :rtype: str
         """
         return self._ErrorMessage
@@ -5011,7 +5011,7 @@ class DescribeMarkEssayAgentJobResponse(AbstractModel):
 
     @property
     def JobStatus(self):
-        r"""任务状态。WAIT：等待中，RUN：执行中，FAIL：任务失败，DONE：任务成功
+        r"""<p>任务状态。WAIT：等待中，RUN：执行中，FAIL：任务失败，DONE：任务成功</p>
         :rtype: str
         """
         return self._JobStatus
@@ -29341,13 +29341,13 @@ class SubmitMarkEssayAgentJobRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ImageBase64List: 图片/PDF的 Base64 值。要求Base64不超过10M，分辨率建议600*800以上，支持PNG、JPG、JPEG、BMP、PDF格式。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。  示例值：/9j/4AAQSkZJRg.....s97n//2Q==
+        :param _ImageBase64List: <p>图片/PDF的 Base64 值。要求Base64不超过10M，分辨率建议600*800以上，支持PNG、JPG、JPEG、BMP、PDF格式。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。  示例值：/9j/4AAQSkZJRg.....s97n//2Q==</p>
         :type ImageBase64List: list of str
-        :param _ImageUrlList: 图片/PDF的 Url 地址。要求图片经Base64编码后不超过10M，分辨率建议600*800以上，支持PNG、JPG、JPEG、BMP、PDF格式。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。  示例值：https://ocr-demo-1254418846.cos.ap-guangzhou.myqcloud.com/general/GeneralAccurateOCR/GeneralAccurateOCR1.jpg
+        :param _ImageUrlList: <p>图片/PDF的 Url 地址。要求图片经Base64编码后不超过10M，分辨率建议600*800以上，支持PNG、JPG、JPEG、BMP、PDF格式。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。  示例值：https://ocr-demo-1254418846.cos.ap-guangzhou.myqcloud.com/general/GeneralAccurateOCR/GeneralAccurateOCR1.jpg</p>
         :type ImageUrlList: list of str
-        :param _PdfPageNumber: 需要识别的PDF页面的对应页码，仅支持PDF单页识别，默认值为1。 示例值：1
+        :param _PdfPageNumber: <p>需要识别的PDF页面的对应页码，仅支持PDF单页识别，默认值为1。 示例值：1</p>
         :type PdfPageNumber: int
-        :param _QuestionConfigMap: 批改信息输出配置，当key对应为1表示开启配置开关。  当key为StructureAndContent  value为1 表示SentenceSuggest返回篇章结构和内容信息，默认只返回词汇、语句
+        :param _QuestionConfigMap: <p>批改信息输出配置，当key对应为1表示开启配置开关。  当key为StructureAndContent  value为1 表示SentenceSuggest返回篇章结构和内容信息，默认只返回词汇、语句</p>
         :type QuestionConfigMap: str
         """
         self._ImageBase64List = None
@@ -29357,7 +29357,7 @@ class SubmitMarkEssayAgentJobRequest(AbstractModel):
 
     @property
     def ImageBase64List(self):
-        r"""图片/PDF的 Base64 值。要求Base64不超过10M，分辨率建议600*800以上，支持PNG、JPG、JPEG、BMP、PDF格式。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。  示例值：/9j/4AAQSkZJRg.....s97n//2Q==
+        r"""<p>图片/PDF的 Base64 值。要求Base64不超过10M，分辨率建议600*800以上，支持PNG、JPG、JPEG、BMP、PDF格式。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。  示例值：/9j/4AAQSkZJRg.....s97n//2Q==</p>
         :rtype: list of str
         """
         return self._ImageBase64List
@@ -29368,7 +29368,7 @@ class SubmitMarkEssayAgentJobRequest(AbstractModel):
 
     @property
     def ImageUrlList(self):
-        r"""图片/PDF的 Url 地址。要求图片经Base64编码后不超过10M，分辨率建议600*800以上，支持PNG、JPG、JPEG、BMP、PDF格式。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。  示例值：https://ocr-demo-1254418846.cos.ap-guangzhou.myqcloud.com/general/GeneralAccurateOCR/GeneralAccurateOCR1.jpg
+        r"""<p>图片/PDF的 Url 地址。要求图片经Base64编码后不超过10M，分辨率建议600*800以上，支持PNG、JPG、JPEG、BMP、PDF格式。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。  示例值：https://ocr-demo-1254418846.cos.ap-guangzhou.myqcloud.com/general/GeneralAccurateOCR/GeneralAccurateOCR1.jpg</p>
         :rtype: list of str
         """
         return self._ImageUrlList
@@ -29379,7 +29379,7 @@ class SubmitMarkEssayAgentJobRequest(AbstractModel):
 
     @property
     def PdfPageNumber(self):
-        r"""需要识别的PDF页面的对应页码，仅支持PDF单页识别，默认值为1。 示例值：1
+        r"""<p>需要识别的PDF页面的对应页码，仅支持PDF单页识别，默认值为1。 示例值：1</p>
         :rtype: int
         """
         return self._PdfPageNumber
@@ -29390,7 +29390,7 @@ class SubmitMarkEssayAgentJobRequest(AbstractModel):
 
     @property
     def QuestionConfigMap(self):
-        r"""批改信息输出配置，当key对应为1表示开启配置开关。  当key为StructureAndContent  value为1 表示SentenceSuggest返回篇章结构和内容信息，默认只返回词汇、语句
+        r"""<p>批改信息输出配置，当key对应为1表示开启配置开关。  当key为StructureAndContent  value为1 表示SentenceSuggest返回篇章结构和内容信息，默认只返回词汇、语句</p>
         :rtype: str
         """
         return self._QuestionConfigMap
@@ -29422,7 +29422,7 @@ class SubmitMarkEssayAgentJobResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _JobIds: 任务唯一ID。由服务端生成。 示例值：1334797167793684480
+        :param _JobIds: <p>任务唯一ID。由服务端生成。 示例值：1334797167793684480</p>
         :type JobIds: list of str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -29432,7 +29432,7 @@ class SubmitMarkEssayAgentJobResponse(AbstractModel):
 
     @property
     def JobIds(self):
-        r"""任务唯一ID。由服务端生成。 示例值：1334797167793684480
+        r"""<p>任务唯一ID。由服务端生成。 示例值：1334797167793684480</p>
         :rtype: list of str
         """
         return self._JobIds

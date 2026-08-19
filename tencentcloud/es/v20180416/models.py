@@ -13495,29 +13495,29 @@ class ExportIpTraceLogRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: ES集群ID
+        :param _InstanceId: <p>ES集群ID</p>
         :type InstanceId: str
-        :param _StartTime: 开始时间
+        :param _StartTime: <p>开始时间</p>
         :type StartTime: str
-        :param _EndTime: 结束时间
+        :param _EndTime: <p>结束时间</p>
         :type EndTime: str
-        :param _Offset: 起始偏移量
+        :param _Offset: <p>起始偏移量</p>
         :type Offset: int
-        :param _Limit: 数据条数
+        :param _Limit: <p>数据条数</p>
         :type Limit: int
-        :param _RemoteIp: 访问IP
+        :param _RemoteIp: <p>访问IP</p>
         :type RemoteIp: list of str
-        :param _TraceType: Request/Response 请求/返回, 非必填
+        :param _TraceType: <p>Request/Response 请求/返回, 非必填</p>
         :type TraceType: list of str
-        :param _NetType: Public/Private 公网访问/内网访问, 非必填
+        :param _NetType: <p>Public/Private 公网访问/内网访问, 非必填</p>
         :type NetType: list of str
-        :param _ReqTypeOrRspStatus: POST/GET/PUT/DELETE/HEAD/OPTIONS/PATCH/CONNECT/TRACE/CONNECT等, 非必填
+        :param _ReqTypeOrRspStatus: <p>POST/GET/PUT/DELETE/HEAD/OPTIONS/PATCH/CONNECT/TRACE/CONNECT等, 非必填</p>
         :type ReqTypeOrRspStatus: list of str
-        :param _SearchKey: 关键字模糊查询，支持Lucene Query String
+        :param _SearchKey: <p>关键字模糊查询，支持Lucene Query String</p>
         :type SearchKey: str
-        :param _Uri: uri搜索
+        :param _Uri: <p>uri搜索</p>
         :type Uri: str
-        :param _NodeIp: 集群节点IP
+        :param _NodeIp: <p>集群节点IP</p>
         :type NodeIp: list of str
         """
         self._InstanceId = None
@@ -13535,7 +13535,7 @@ class ExportIpTraceLogRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""ES集群ID
+        r"""<p>ES集群ID</p>
         :rtype: str
         """
         return self._InstanceId
@@ -13546,7 +13546,7 @@ class ExportIpTraceLogRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        r"""开始时间
+        r"""<p>开始时间</p>
         :rtype: str
         """
         return self._StartTime
@@ -13557,7 +13557,7 @@ class ExportIpTraceLogRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        r"""结束时间
+        r"""<p>结束时间</p>
         :rtype: str
         """
         return self._EndTime
@@ -13568,7 +13568,7 @@ class ExportIpTraceLogRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""起始偏移量
+        r"""<p>起始偏移量</p>
         :rtype: int
         """
         return self._Offset
@@ -13579,7 +13579,7 @@ class ExportIpTraceLogRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""数据条数
+        r"""<p>数据条数</p>
         :rtype: int
         """
         return self._Limit
@@ -13590,7 +13590,7 @@ class ExportIpTraceLogRequest(AbstractModel):
 
     @property
     def RemoteIp(self):
-        r"""访问IP
+        r"""<p>访问IP</p>
         :rtype: list of str
         """
         return self._RemoteIp
@@ -13601,7 +13601,7 @@ class ExportIpTraceLogRequest(AbstractModel):
 
     @property
     def TraceType(self):
-        r"""Request/Response 请求/返回, 非必填
+        r"""<p>Request/Response 请求/返回, 非必填</p>
         :rtype: list of str
         """
         return self._TraceType
@@ -13612,7 +13612,7 @@ class ExportIpTraceLogRequest(AbstractModel):
 
     @property
     def NetType(self):
-        r"""Public/Private 公网访问/内网访问, 非必填
+        r"""<p>Public/Private 公网访问/内网访问, 非必填</p>
         :rtype: list of str
         """
         return self._NetType
@@ -13623,7 +13623,7 @@ class ExportIpTraceLogRequest(AbstractModel):
 
     @property
     def ReqTypeOrRspStatus(self):
-        r"""POST/GET/PUT/DELETE/HEAD/OPTIONS/PATCH/CONNECT/TRACE/CONNECT等, 非必填
+        r"""<p>POST/GET/PUT/DELETE/HEAD/OPTIONS/PATCH/CONNECT/TRACE/CONNECT等, 非必填</p>
         :rtype: list of str
         """
         return self._ReqTypeOrRspStatus
@@ -13634,7 +13634,7 @@ class ExportIpTraceLogRequest(AbstractModel):
 
     @property
     def SearchKey(self):
-        r"""关键字模糊查询，支持Lucene Query String
+        r"""<p>关键字模糊查询，支持Lucene Query String</p>
         :rtype: str
         """
         return self._SearchKey
@@ -13645,7 +13645,7 @@ class ExportIpTraceLogRequest(AbstractModel):
 
     @property
     def Uri(self):
-        r"""uri搜索
+        r"""<p>uri搜索</p>
         :rtype: str
         """
         return self._Uri
@@ -13656,7 +13656,7 @@ class ExportIpTraceLogRequest(AbstractModel):
 
     @property
     def NodeIp(self):
-        r"""集群节点IP
+        r"""<p>集群节点IP</p>
         :rtype: list of str
         """
         return self._NodeIp
@@ -13696,7 +13696,7 @@ class ExportIpTraceLogResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _IpTraceList: IP时间列表
+        :param _IpTraceList: <p>IP时间列表</p>
         :type IpTraceList: list of IpTimePair
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -13706,7 +13706,7 @@ class ExportIpTraceLogResponse(AbstractModel):
 
     @property
     def IpTraceList(self):
-        r"""IP时间列表
+        r"""<p>IP时间列表</p>
         :rtype: list of IpTimePair
         """
         return self._IpTraceList
@@ -13977,14 +13977,14 @@ class GetIpTraceStatusRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 集群ID
+        :param _InstanceId: <p>集群ID</p>
         :type InstanceId: str
         """
         self._InstanceId = None
 
     @property
     def InstanceId(self):
-        r"""集群ID
+        r"""<p>集群ID</p>
         :rtype: str
         """
         return self._InstanceId
@@ -14013,17 +14013,17 @@ class GetIpTraceStatusResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _OpenIpTrace: 是否开启IP溯源
+        :param _OpenIpTrace: <p>是否开启IP溯源</p>
         :type OpenIpTrace: bool
-        :param _DurationTime: IP溯源开启持续时间，单位：秒
+        :param _DurationTime: <p>IP溯源开启持续时间，单位：秒</p>
         :type DurationTime: int
-        :param _IpTraceConfig: IP溯源配置
+        :param _IpTraceConfig: <p>IP溯源配置</p>
         :type IpTraceConfig: :class:`tencentcloud.es.v20180416.models.IpTraceConfig`
-        :param _LastStartTime: 上次执行时间
+        :param _LastStartTime: <p>上次执行时间</p>
         :type LastStartTime: str
-        :param _LastEndTime: 上次关闭时间
+        :param _LastEndTime: <p>上次关闭时间</p>
         :type LastEndTime: str
-        :param _FilterKibanaIp: 是否过滤Kibana节点IP
+        :param _FilterKibanaIp: <p>是否过滤Kibana节点IP</p>
         :type FilterKibanaIp: bool
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -14038,7 +14038,7 @@ class GetIpTraceStatusResponse(AbstractModel):
 
     @property
     def OpenIpTrace(self):
-        r"""是否开启IP溯源
+        r"""<p>是否开启IP溯源</p>
         :rtype: bool
         """
         return self._OpenIpTrace
@@ -14049,7 +14049,7 @@ class GetIpTraceStatusResponse(AbstractModel):
 
     @property
     def DurationTime(self):
-        r"""IP溯源开启持续时间，单位：秒
+        r"""<p>IP溯源开启持续时间，单位：秒</p>
         :rtype: int
         """
         return self._DurationTime
@@ -14060,7 +14060,7 @@ class GetIpTraceStatusResponse(AbstractModel):
 
     @property
     def IpTraceConfig(self):
-        r"""IP溯源配置
+        r"""<p>IP溯源配置</p>
         :rtype: :class:`tencentcloud.es.v20180416.models.IpTraceConfig`
         """
         return self._IpTraceConfig
@@ -14071,7 +14071,7 @@ class GetIpTraceStatusResponse(AbstractModel):
 
     @property
     def LastStartTime(self):
-        r"""上次执行时间
+        r"""<p>上次执行时间</p>
         :rtype: str
         """
         return self._LastStartTime
@@ -14082,7 +14082,7 @@ class GetIpTraceStatusResponse(AbstractModel):
 
     @property
     def LastEndTime(self):
-        r"""上次关闭时间
+        r"""<p>上次关闭时间</p>
         :rtype: str
         """
         return self._LastEndTime
@@ -14093,7 +14093,7 @@ class GetIpTraceStatusResponse(AbstractModel):
 
     @property
     def FilterKibanaIp(self):
-        r"""是否过滤Kibana节点IP
+        r"""<p>是否过滤Kibana节点IP</p>
         :rtype: bool
         """
         return self._FilterKibanaIp
@@ -22986,29 +22986,29 @@ class QueryIpTraceLogRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: ES集群ID
+        :param _InstanceId: <p>ES集群ID</p>
         :type InstanceId: str
-        :param _StartTime: 开始时间
+        :param _StartTime: <p>开始时间</p>
         :type StartTime: str
-        :param _EndTime: 结束时间
+        :param _EndTime: <p>结束时间</p>
         :type EndTime: str
-        :param _Offset: 起始偏移量
+        :param _Offset: <p>起始偏移量</p>
         :type Offset: int
-        :param _Limit: 数据条数
+        :param _Limit: <p>数据条数</p>
         :type Limit: int
-        :param _RemoteIp: 访问IP
+        :param _RemoteIp: <p>访问IP</p>
         :type RemoteIp: list of str
-        :param _TraceType: Request/Response 请求/返回, 非必填
+        :param _TraceType: <p>Request/Response 请求/返回, 非必填</p>
         :type TraceType: list of str
-        :param _NetType: Public/Private 公网访问/内网访问, 非必填
+        :param _NetType: <p>Public/Private 公网访问/内网访问, 非必填</p>
         :type NetType: list of str
-        :param _ReqTypeOrRspStatus: POST/GET/PUT/DELETE/HEAD/OPTIONS/PATCH/CONNECT/TRACE/CONNECT等, 非必填
+        :param _ReqTypeOrRspStatus: <p>POST/GET/PUT/DELETE/HEAD/OPTIONS/PATCH/CONNECT/TRACE/CONNECT等, 非必填</p>
         :type ReqTypeOrRspStatus: list of str
-        :param _SearchKey: 关键字模糊查询，支持Lucene Query String
+        :param _SearchKey: <p>关键字模糊查询，支持Lucene Query String</p>
         :type SearchKey: str
-        :param _Uri: Uri搜索
+        :param _Uri: <p>Uri搜索</p>
         :type Uri: str
-        :param _NodeIp: 集群节点IP
+        :param _NodeIp: <p>集群节点IP</p>
         :type NodeIp: list of str
         """
         self._InstanceId = None
@@ -23026,7 +23026,7 @@ class QueryIpTraceLogRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""ES集群ID
+        r"""<p>ES集群ID</p>
         :rtype: str
         """
         return self._InstanceId
@@ -23037,7 +23037,7 @@ class QueryIpTraceLogRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        r"""开始时间
+        r"""<p>开始时间</p>
         :rtype: str
         """
         return self._StartTime
@@ -23048,7 +23048,7 @@ class QueryIpTraceLogRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        r"""结束时间
+        r"""<p>结束时间</p>
         :rtype: str
         """
         return self._EndTime
@@ -23059,7 +23059,7 @@ class QueryIpTraceLogRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""起始偏移量
+        r"""<p>起始偏移量</p>
         :rtype: int
         """
         return self._Offset
@@ -23070,7 +23070,7 @@ class QueryIpTraceLogRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""数据条数
+        r"""<p>数据条数</p>
         :rtype: int
         """
         return self._Limit
@@ -23081,7 +23081,7 @@ class QueryIpTraceLogRequest(AbstractModel):
 
     @property
     def RemoteIp(self):
-        r"""访问IP
+        r"""<p>访问IP</p>
         :rtype: list of str
         """
         return self._RemoteIp
@@ -23092,7 +23092,7 @@ class QueryIpTraceLogRequest(AbstractModel):
 
     @property
     def TraceType(self):
-        r"""Request/Response 请求/返回, 非必填
+        r"""<p>Request/Response 请求/返回, 非必填</p>
         :rtype: list of str
         """
         return self._TraceType
@@ -23103,7 +23103,7 @@ class QueryIpTraceLogRequest(AbstractModel):
 
     @property
     def NetType(self):
-        r"""Public/Private 公网访问/内网访问, 非必填
+        r"""<p>Public/Private 公网访问/内网访问, 非必填</p>
         :rtype: list of str
         """
         return self._NetType
@@ -23114,7 +23114,7 @@ class QueryIpTraceLogRequest(AbstractModel):
 
     @property
     def ReqTypeOrRspStatus(self):
-        r"""POST/GET/PUT/DELETE/HEAD/OPTIONS/PATCH/CONNECT/TRACE/CONNECT等, 非必填
+        r"""<p>POST/GET/PUT/DELETE/HEAD/OPTIONS/PATCH/CONNECT/TRACE/CONNECT等, 非必填</p>
         :rtype: list of str
         """
         return self._ReqTypeOrRspStatus
@@ -23125,7 +23125,7 @@ class QueryIpTraceLogRequest(AbstractModel):
 
     @property
     def SearchKey(self):
-        r"""关键字模糊查询，支持Lucene Query String
+        r"""<p>关键字模糊查询，支持Lucene Query String</p>
         :rtype: str
         """
         return self._SearchKey
@@ -23136,7 +23136,7 @@ class QueryIpTraceLogRequest(AbstractModel):
 
     @property
     def Uri(self):
-        r"""Uri搜索
+        r"""<p>Uri搜索</p>
         :rtype: str
         """
         return self._Uri
@@ -23147,7 +23147,7 @@ class QueryIpTraceLogRequest(AbstractModel):
 
     @property
     def NodeIp(self):
-        r"""集群节点IP
+        r"""<p>集群节点IP</p>
         :rtype: list of str
         """
         return self._NodeIp
@@ -23187,9 +23187,9 @@ class QueryIpTraceLogResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Total: 总数
+        :param _Total: <p>总数</p>
         :type Total: int
-        :param _IpTraceLogList: IP溯源日志列表
+        :param _IpTraceLogList: <p>IP溯源日志列表</p>
         :type IpTraceLogList: list of IpTraceLogEntry
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -23200,7 +23200,7 @@ class QueryIpTraceLogResponse(AbstractModel):
 
     @property
     def Total(self):
-        r"""总数
+        r"""<p>总数</p>
         :rtype: int
         """
         return self._Total
@@ -23211,7 +23211,7 @@ class QueryIpTraceLogResponse(AbstractModel):
 
     @property
     def IpTraceLogList(self):
-        r"""IP溯源日志列表
+        r"""<p>IP溯源日志列表</p>
         :rtype: list of IpTraceLogEntry
         """
         return self._IpTraceLogList
@@ -28706,15 +28706,15 @@ class UpdateIpTraceStatusRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 集群ID
+        :param _InstanceId: <p>集群ID。该字段为必填字段。</p>
         :type InstanceId: str
-        :param _OpenIpTrace: IP溯源配置开关
+        :param _OpenIpTrace: <p>IP溯源配置开关。该字段为必填字段。</p>
         :type OpenIpTrace: bool
-        :param _DurationTime: IP溯源开启持续时间，单位：秒
+        :param _DurationTime: <p>IP溯源开启持续时间，单位：秒。该字段为必填字段。</p>
         :type DurationTime: int
-        :param _IpTraceConfig: IP溯源配置
+        :param _IpTraceConfig: <p>IP溯源配置。该字段为必填字段。</p>
         :type IpTraceConfig: :class:`tencentcloud.es.v20180416.models.IpTraceConfig`
-        :param _FilterKibanaIp: 是否过滤kibana节点IP
+        :param _FilterKibanaIp: <p>是否过滤kibana节点IP。</p>
         :type FilterKibanaIp: bool
         """
         self._InstanceId = None
@@ -28725,7 +28725,7 @@ class UpdateIpTraceStatusRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""集群ID
+        r"""<p>集群ID。该字段为必填字段。</p>
         :rtype: str
         """
         return self._InstanceId
@@ -28736,7 +28736,7 @@ class UpdateIpTraceStatusRequest(AbstractModel):
 
     @property
     def OpenIpTrace(self):
-        r"""IP溯源配置开关
+        r"""<p>IP溯源配置开关。该字段为必填字段。</p>
         :rtype: bool
         """
         return self._OpenIpTrace
@@ -28747,7 +28747,7 @@ class UpdateIpTraceStatusRequest(AbstractModel):
 
     @property
     def DurationTime(self):
-        r"""IP溯源开启持续时间，单位：秒
+        r"""<p>IP溯源开启持续时间，单位：秒。该字段为必填字段。</p>
         :rtype: int
         """
         return self._DurationTime
@@ -28758,7 +28758,7 @@ class UpdateIpTraceStatusRequest(AbstractModel):
 
     @property
     def IpTraceConfig(self):
-        r"""IP溯源配置
+        r"""<p>IP溯源配置。该字段为必填字段。</p>
         :rtype: :class:`tencentcloud.es.v20180416.models.IpTraceConfig`
         """
         return self._IpTraceConfig
@@ -28769,7 +28769,7 @@ class UpdateIpTraceStatusRequest(AbstractModel):
 
     @property
     def FilterKibanaIp(self):
-        r"""是否过滤kibana节点IP
+        r"""<p>是否过滤kibana节点IP。</p>
         :rtype: bool
         """
         return self._FilterKibanaIp

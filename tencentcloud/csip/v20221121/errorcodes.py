@@ -35,6 +35,9 @@ FAILEDOPERATION_DASBINVALIDSECRETID = 'FailedOperation.DasbInvalidSecretId'
 # FailedOperation.DasbInvalidSecretKey
 FAILEDOPERATION_DASBINVALIDSECRETKEY = 'FailedOperation.DasbInvalidSecretKey'
 
+# FailedOperation.Export
+FAILEDOPERATION_EXPORT = 'FailedOperation.Export'
+
 # 内部错误。
 INTERNALERROR = 'InternalError'
 
@@ -70,6 +73,12 @@ INVALIDPARAMETER_RESOURCEID = 'InvalidParameter.ResourceId'
 
 # InvalidParameter.ReverShellKeyFieldAllEmpty
 INVALIDPARAMETER_REVERSHELLKEYFIELDALLEMPTY = 'InvalidParameter.ReverShellKeyFieldAllEmpty'
+
+# InvalidParameter.RuleHostDuplicateErr
+INVALIDPARAMETER_RULEHOSTDUPLICATEERR = 'InvalidParameter.RuleHostDuplicateErr'
+
+# InvalidParameter.RuleHostipErr
+INVALIDPARAMETER_RULEHOSTIPERR = 'InvalidParameter.RuleHostipErr'
 
 # 参数取值错误。
 INVALIDPARAMETERVALUE = 'InvalidParameterValue'

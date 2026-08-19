@@ -675,6 +675,107 @@ class Assignment(AbstractModel):
         
 
 
+class AssociateRoutesSecurityGroupRequest(AbstractModel):
+    r"""AssociateRoutesSecurityGroup请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceRoutes: 绑定路由的列表
+        :type InstanceRoutes: list of InstanceRoute
+        :param _SecurityGroupId: 安全组id
+        :type SecurityGroupId: str
+        """
+        self._InstanceRoutes = None
+        self._SecurityGroupId = None
+
+    @property
+    def InstanceRoutes(self):
+        r"""绑定路由的列表
+        :rtype: list of InstanceRoute
+        """
+        return self._InstanceRoutes
+
+    @InstanceRoutes.setter
+    def InstanceRoutes(self, InstanceRoutes):
+        self._InstanceRoutes = InstanceRoutes
+
+    @property
+    def SecurityGroupId(self):
+        r"""安全组id
+        :rtype: str
+        """
+        return self._SecurityGroupId
+
+    @SecurityGroupId.setter
+    def SecurityGroupId(self, SecurityGroupId):
+        self._SecurityGroupId = SecurityGroupId
+
+
+    def _deserialize(self, params):
+        if params.get("InstanceRoutes") is not None:
+            self._InstanceRoutes = []
+            for item in params.get("InstanceRoutes"):
+                obj = InstanceRoute()
+                obj._deserialize(item)
+                self._InstanceRoutes.append(obj)
+        self._SecurityGroupId = params.get("SecurityGroupId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AssociateRoutesSecurityGroupResponse(AbstractModel):
+    r"""AssociateRoutesSecurityGroup返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: 返回结果
+        :type Result: :class:`tencentcloud.ckafka.v20190819.models.SecurityGroupRouteOperateResp`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        r"""返回结果
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.SecurityGroupRouteOperateResp`
+        """
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self._Result = SecurityGroupRouteOperateResp()
+            self._Result._deserialize(params.get("Result"))
+        self._RequestId = params.get("RequestId")
+
+
 class AuthorizeTokenRequest(AbstractModel):
     r"""AuthorizeToken请求参数结构体
 
@@ -17363,6 +17464,107 @@ class DescribeUserResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DisassociateRoutesSecurityGroupRequest(AbstractModel):
+    r"""DisassociateRoutesSecurityGroup请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceRoutes: 解绑路由的列表
+        :type InstanceRoutes: list of InstanceRoute
+        :param _SecurityGroupId: 安全组id
+        :type SecurityGroupId: str
+        """
+        self._InstanceRoutes = None
+        self._SecurityGroupId = None
+
+    @property
+    def InstanceRoutes(self):
+        r"""解绑路由的列表
+        :rtype: list of InstanceRoute
+        """
+        return self._InstanceRoutes
+
+    @InstanceRoutes.setter
+    def InstanceRoutes(self, InstanceRoutes):
+        self._InstanceRoutes = InstanceRoutes
+
+    @property
+    def SecurityGroupId(self):
+        r"""安全组id
+        :rtype: str
+        """
+        return self._SecurityGroupId
+
+    @SecurityGroupId.setter
+    def SecurityGroupId(self, SecurityGroupId):
+        self._SecurityGroupId = SecurityGroupId
+
+
+    def _deserialize(self, params):
+        if params.get("InstanceRoutes") is not None:
+            self._InstanceRoutes = []
+            for item in params.get("InstanceRoutes"):
+                obj = InstanceRoute()
+                obj._deserialize(item)
+                self._InstanceRoutes.append(obj)
+        self._SecurityGroupId = params.get("SecurityGroupId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DisassociateRoutesSecurityGroupResponse(AbstractModel):
+    r"""DisassociateRoutesSecurityGroup返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: 返回结果
+        :type Result: :class:`tencentcloud.ckafka.v20190819.models.SecurityGroupRouteOperateResp`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        r"""返回结果
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.SecurityGroupRouteOperateResp`
+        """
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self._Result = SecurityGroupRouteOperateResp()
+            self._Result._deserialize(params.get("Result"))
+        self._RequestId = params.get("RequestId")
+
+
 class DorisConnectParam(AbstractModel):
     r"""Doris 连接源参数
 
@@ -27429,6 +27631,106 @@ class ModifyPasswordResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyRouteSecurityGroupsRequest(AbstractModel):
+    r"""ModifyRouteSecurityGroups请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceRoute: 实例路由
+        :type InstanceRoute: :class:`tencentcloud.ckafka.v20190819.models.InstanceRoute`
+        :param _SecurityGroupIds: 修改后的安全组有序列表。
+注意:不指定此参数或传空列表则代表解绑所有关联的安全组。
+        :type SecurityGroupIds: list of str
+        """
+        self._InstanceRoute = None
+        self._SecurityGroupIds = None
+
+    @property
+    def InstanceRoute(self):
+        r"""实例路由
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.InstanceRoute`
+        """
+        return self._InstanceRoute
+
+    @InstanceRoute.setter
+    def InstanceRoute(self, InstanceRoute):
+        self._InstanceRoute = InstanceRoute
+
+    @property
+    def SecurityGroupIds(self):
+        r"""修改后的安全组有序列表。
+注意:不指定此参数或传空列表则代表解绑所有关联的安全组。
+        :rtype: list of str
+        """
+        return self._SecurityGroupIds
+
+    @SecurityGroupIds.setter
+    def SecurityGroupIds(self, SecurityGroupIds):
+        self._SecurityGroupIds = SecurityGroupIds
+
+
+    def _deserialize(self, params):
+        if params.get("InstanceRoute") is not None:
+            self._InstanceRoute = InstanceRoute()
+            self._InstanceRoute._deserialize(params.get("InstanceRoute"))
+        self._SecurityGroupIds = params.get("SecurityGroupIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyRouteSecurityGroupsResponse(AbstractModel):
+    r"""ModifyRouteSecurityGroups返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: 	返回结果
+        :type Result: :class:`tencentcloud.ckafka.v20190819.models.SecurityGroupRouteOperateResp`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        r"""	返回结果
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.SecurityGroupRouteOperateResp`
+        """
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self._Result = SecurityGroupRouteOperateResp()
+            self._Result._deserialize(params.get("Result"))
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyRoutineMaintenanceTaskRequest(AbstractModel):
     r"""ModifyRoutineMaintenanceTask请求参数结构体
 
@@ -32814,6 +33116,61 @@ class SecurityGroupRoute(AbstractModel):
         self._InstanceName = params.get("InstanceName")
         self._VpcId = params.get("VpcId")
         self._Vip = params.get("Vip")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SecurityGroupRouteOperateResp(AbstractModel):
+    r"""安全组路由操作结果返回值
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ReturnCode: 操作返回的code，0为正常，非0为错误
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ReturnCode: str
+        :param _ReturnMessage: 操作返回的信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ReturnMessage: str
+        """
+        self._ReturnCode = None
+        self._ReturnMessage = None
+
+    @property
+    def ReturnCode(self):
+        r"""操作返回的code，0为正常，非0为错误
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ReturnCode
+
+    @ReturnCode.setter
+    def ReturnCode(self, ReturnCode):
+        self._ReturnCode = ReturnCode
+
+    @property
+    def ReturnMessage(self):
+        r"""操作返回的信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ReturnMessage
+
+    @ReturnMessage.setter
+    def ReturnMessage(self, ReturnMessage):
+        self._ReturnMessage = ReturnMessage
+
+
+    def _deserialize(self, params):
+        self._ReturnCode = params.get("ReturnCode")
+        self._ReturnMessage = params.get("ReturnMessage")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

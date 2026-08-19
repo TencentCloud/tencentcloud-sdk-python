@@ -3014,6 +3014,8 @@ class Device(AbstractModel):
         :type SignToken: str
         :param _TokenTime: <p>token生成时间戳，毫秒级。</p>
         :type TokenTime: str
+        :param _PrivacyBrowser: <p>隐私浏览器类型，当检测到隐私浏览器时返回，仅H5。</p>
+        :type PrivacyBrowser: str
         """
         self._DeviceId = None
         self._AppVersion = None
@@ -3027,6 +3029,7 @@ class Device(AbstractModel):
         self._SdkBuildVersion = None
         self._SignToken = None
         self._TokenTime = None
+        self._PrivacyBrowser = None
 
     @property
     def DeviceId(self):
@@ -3160,6 +3163,17 @@ class Device(AbstractModel):
     def TokenTime(self, TokenTime):
         self._TokenTime = TokenTime
 
+    @property
+    def PrivacyBrowser(self):
+        r"""<p>隐私浏览器类型，当检测到隐私浏览器时返回，仅H5。</p>
+        :rtype: str
+        """
+        return self._PrivacyBrowser
+
+    @PrivacyBrowser.setter
+    def PrivacyBrowser(self, PrivacyBrowser):
+        self._PrivacyBrowser = PrivacyBrowser
+
 
     def _deserialize(self, params):
         self._DeviceId = params.get("DeviceId")
@@ -3174,6 +3188,7 @@ class Device(AbstractModel):
         self._SdkBuildVersion = params.get("SdkBuildVersion")
         self._SignToken = params.get("SignToken")
         self._TokenTime = params.get("TokenTime")
+        self._PrivacyBrowser = params.get("PrivacyBrowser")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

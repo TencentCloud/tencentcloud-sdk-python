@@ -26,6 +26,29 @@ class CkafkaClient(AbstractClient):
     _service = 'ckafka'
 
 
+    def AssociateRoutesSecurityGroup(self, request):
+        r"""绑定路由安全组
+
+        :param request: Request instance for AssociateRoutesSecurityGroup.
+        :type request: :class:`tencentcloud.ckafka.v20190819.models.AssociateRoutesSecurityGroupRequest`
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.AssociateRoutesSecurityGroupResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("AssociateRoutesSecurityGroup", params, headers=headers)
+            response = json.loads(body)
+            model = models.AssociateRoutesSecurityGroupResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def AuthorizeToken(self, request):
         r"""给实例授权token
 
@@ -1775,6 +1798,29 @@ class CkafkaClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DisassociateRoutesSecurityGroup(self, request):
+        r"""解绑路由安全组
+
+        :param request: Request instance for DisassociateRoutesSecurityGroup.
+        :type request: :class:`tencentcloud.ckafka.v20190819.models.DisassociateRoutesSecurityGroupRequest`
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.DisassociateRoutesSecurityGroupResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DisassociateRoutesSecurityGroup", params, headers=headers)
+            response = json.loads(body)
+            model = models.DisassociateRoutesSecurityGroupResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def FetchDatahubMessageByOffset(self, request):
         r"""根据指定offset位置的消息
 
@@ -2157,6 +2203,29 @@ class CkafkaClient(AbstractClient):
             body = self.call("ModifyPassword", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyPasswordResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyRouteSecurityGroups(self, request):
+        r"""修改路由安全组关联
+
+        :param request: Request instance for ModifyRouteSecurityGroups.
+        :type request: :class:`tencentcloud.ckafka.v20190819.models.ModifyRouteSecurityGroupsRequest`
+        :rtype: :class:`tencentcloud.ckafka.v20190819.models.ModifyRouteSecurityGroupsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyRouteSecurityGroups", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyRouteSecurityGroupsResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

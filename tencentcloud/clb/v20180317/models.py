@@ -8506,28 +8506,29 @@ class CreateTopicRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TopicName: 日志主题的名称。
+        :param _TopicName: <p>日志主题的名称。</p>
         :type TopicName: str
-        :param _PartitionCount: 主题分区Partition的数量，不传参默认创建1个，最大创建允许10个，分裂/合并操作会改变分区数量，整体上限50个。
+        :param _PartitionCount: <p>主题分区Partition的数量，不传参默认创建1个，最大创建允许10个，分裂/合并操作会改变分区数量，整体上限50个。</p>
         :type PartitionCount: int
-        :param _TopicType: 日志类型，ACCESS：访问日志，HEALTH：健康检查日志，默认ACCESS。
+        :param _TopicType: <p>日志类型，ACCESS：访问日志，HEALTH：健康检查日志，默认ACCESS。</p>
         :type TopicType: str
-        :param _Period: 存储时间，单位天，默认为 30。
-- 日志接入标准存储时，支持1至3600天，值为3640时代表永久保存。
-- 日志接入低频存储时，支持7至3600天，值为3640时代表永久保存。
+        :param _Period: <p>存储时间，单位天，默认为 30。</p><ul><li>日志接入标准存储时，支持1至3600天，值为3640时代表永久保存。</li><li>日志接入低频存储时，支持7至3600天，值为3640时代表永久保存。</li></ul>
         :type Period: int
-        :param _StorageType: 日志主题的存储类型，可选值 HOT（标准存储），COLD（低频存储）；默认为HOT。
+        :param _StorageType: <p>日志主题的存储类型，可选值 HOT（标准存储），COLD（低频存储）；默认为HOT。</p>
         :type StorageType: str
+        :param _Tags: <p>标签</p><p>最多支持一次传入20个</p>
+        :type Tags: list of TagInfo
         """
         self._TopicName = None
         self._PartitionCount = None
         self._TopicType = None
         self._Period = None
         self._StorageType = None
+        self._Tags = None
 
     @property
     def TopicName(self):
-        r"""日志主题的名称。
+        r"""<p>日志主题的名称。</p>
         :rtype: str
         """
         return self._TopicName
@@ -8538,7 +8539,7 @@ class CreateTopicRequest(AbstractModel):
 
     @property
     def PartitionCount(self):
-        r"""主题分区Partition的数量，不传参默认创建1个，最大创建允许10个，分裂/合并操作会改变分区数量，整体上限50个。
+        r"""<p>主题分区Partition的数量，不传参默认创建1个，最大创建允许10个，分裂/合并操作会改变分区数量，整体上限50个。</p>
         :rtype: int
         """
         return self._PartitionCount
@@ -8549,7 +8550,7 @@ class CreateTopicRequest(AbstractModel):
 
     @property
     def TopicType(self):
-        r"""日志类型，ACCESS：访问日志，HEALTH：健康检查日志，默认ACCESS。
+        r"""<p>日志类型，ACCESS：访问日志，HEALTH：健康检查日志，默认ACCESS。</p>
         :rtype: str
         """
         return self._TopicType
@@ -8560,9 +8561,7 @@ class CreateTopicRequest(AbstractModel):
 
     @property
     def Period(self):
-        r"""存储时间，单位天，默认为 30。
-- 日志接入标准存储时，支持1至3600天，值为3640时代表永久保存。
-- 日志接入低频存储时，支持7至3600天，值为3640时代表永久保存。
+        r"""<p>存储时间，单位天，默认为 30。</p><ul><li>日志接入标准存储时，支持1至3600天，值为3640时代表永久保存。</li><li>日志接入低频存储时，支持7至3600天，值为3640时代表永久保存。</li></ul>
         :rtype: int
         """
         return self._Period
@@ -8573,7 +8572,7 @@ class CreateTopicRequest(AbstractModel):
 
     @property
     def StorageType(self):
-        r"""日志主题的存储类型，可选值 HOT（标准存储），COLD（低频存储）；默认为HOT。
+        r"""<p>日志主题的存储类型，可选值 HOT（标准存储），COLD（低频存储）；默认为HOT。</p>
         :rtype: str
         """
         return self._StorageType
@@ -8582,6 +8581,17 @@ class CreateTopicRequest(AbstractModel):
     def StorageType(self, StorageType):
         self._StorageType = StorageType
 
+    @property
+    def Tags(self):
+        r"""<p>标签</p><p>最多支持一次传入20个</p>
+        :rtype: list of TagInfo
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
 
     def _deserialize(self, params):
         self._TopicName = params.get("TopicName")
@@ -8589,6 +8599,12 @@ class CreateTopicRequest(AbstractModel):
         self._TopicType = params.get("TopicType")
         self._Period = params.get("Period")
         self._StorageType = params.get("StorageType")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = TagInfo()
+                obj._deserialize(item)
+                self._Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -8606,7 +8622,7 @@ class CreateTopicResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TopicId: 日志主题的 ID。
+        :param _TopicId: <p>日志主题的 ID。</p>
         :type TopicId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -8616,7 +8632,7 @@ class CreateTopicResponse(AbstractModel):
 
     @property
     def TopicId(self):
-        r"""日志主题的 ID。
+        r"""<p>日志主题的 ID。</p>
         :rtype: str
         """
         return self._TopicId

@@ -3157,6 +3157,36 @@ class DescribeModelQuotaRequest(AbstractModel):
 
     """
 
+    def __init__(self):
+        r"""
+        :param _ModelId: <p>模型 ID。可通过 DescribeModelList 获取。</p>
+        :type ModelId: str
+        """
+        self._ModelId = None
+
+    @property
+    def ModelId(self):
+        r"""<p>模型 ID。可通过 DescribeModelList 获取。</p>
+        :rtype: str
+        """
+        return self._ModelId
+
+    @ModelId.setter
+    def ModelId(self, ModelId):
+        self._ModelId = ModelId
+
+
+    def _deserialize(self, params):
+        self._ModelId = params.get("ModelId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
 
 class DescribeModelQuotaResponse(AbstractModel):
     r"""DescribeModelQuota返回参数结构体
@@ -3165,10 +3195,108 @@ class DescribeModelQuotaResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _ModelId: <p>模型 ID。</p>
+        :type ModelId: str
+        :param _TPMLimit: <p>TPM 限制（Tokens Per Minute）。模型无配额配置时不返回此字段。</p>
+        :type TPMLimit: int
+        :param _RPMLimit: <p>RPM 限制（Request Per Minute）。模型无配额配置时不返回此字段。</p>
+        :type RPMLimit: int
+        :param _TPMInputQuotaLimit: <p>TPM 保障包 input 配额</p>
+        :type TPMInputQuotaLimit: int
+        :param _TPMOutputQuotaLimit: <p>TPM 保障包 output 配额</p>
+        :type TPMOutputQuotaLimit: int
+        :param _TPMInputReserveLimit: <p>TPM 预留 input 配额</p>
+        :type TPMInputReserveLimit: int
+        :param _TPMOutputReserveLimit: <p>TPM 预留 output 配额</p>
+        :type TPMOutputReserveLimit: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._ModelId = None
+        self._TPMLimit = None
+        self._RPMLimit = None
+        self._TPMInputQuotaLimit = None
+        self._TPMOutputQuotaLimit = None
+        self._TPMInputReserveLimit = None
+        self._TPMOutputReserveLimit = None
         self._RequestId = None
+
+    @property
+    def ModelId(self):
+        r"""<p>模型 ID。</p>
+        :rtype: str
+        """
+        return self._ModelId
+
+    @ModelId.setter
+    def ModelId(self, ModelId):
+        self._ModelId = ModelId
+
+    @property
+    def TPMLimit(self):
+        r"""<p>TPM 限制（Tokens Per Minute）。模型无配额配置时不返回此字段。</p>
+        :rtype: int
+        """
+        return self._TPMLimit
+
+    @TPMLimit.setter
+    def TPMLimit(self, TPMLimit):
+        self._TPMLimit = TPMLimit
+
+    @property
+    def RPMLimit(self):
+        r"""<p>RPM 限制（Request Per Minute）。模型无配额配置时不返回此字段。</p>
+        :rtype: int
+        """
+        return self._RPMLimit
+
+    @RPMLimit.setter
+    def RPMLimit(self, RPMLimit):
+        self._RPMLimit = RPMLimit
+
+    @property
+    def TPMInputQuotaLimit(self):
+        r"""<p>TPM 保障包 input 配额</p>
+        :rtype: int
+        """
+        return self._TPMInputQuotaLimit
+
+    @TPMInputQuotaLimit.setter
+    def TPMInputQuotaLimit(self, TPMInputQuotaLimit):
+        self._TPMInputQuotaLimit = TPMInputQuotaLimit
+
+    @property
+    def TPMOutputQuotaLimit(self):
+        r"""<p>TPM 保障包 output 配额</p>
+        :rtype: int
+        """
+        return self._TPMOutputQuotaLimit
+
+    @TPMOutputQuotaLimit.setter
+    def TPMOutputQuotaLimit(self, TPMOutputQuotaLimit):
+        self._TPMOutputQuotaLimit = TPMOutputQuotaLimit
+
+    @property
+    def TPMInputReserveLimit(self):
+        r"""<p>TPM 预留 input 配额</p>
+        :rtype: int
+        """
+        return self._TPMInputReserveLimit
+
+    @TPMInputReserveLimit.setter
+    def TPMInputReserveLimit(self, TPMInputReserveLimit):
+        self._TPMInputReserveLimit = TPMInputReserveLimit
+
+    @property
+    def TPMOutputReserveLimit(self):
+        r"""<p>TPM 预留 output 配额</p>
+        :rtype: int
+        """
+        return self._TPMOutputReserveLimit
+
+    @TPMOutputReserveLimit.setter
+    def TPMOutputReserveLimit(self, TPMOutputReserveLimit):
+        self._TPMOutputReserveLimit = TPMOutputReserveLimit
 
     @property
     def RequestId(self):
@@ -3183,6 +3311,13 @@ class DescribeModelQuotaResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._ModelId = params.get("ModelId")
+        self._TPMLimit = params.get("TPMLimit")
+        self._RPMLimit = params.get("RPMLimit")
+        self._TPMInputQuotaLimit = params.get("TPMInputQuotaLimit")
+        self._TPMOutputQuotaLimit = params.get("TPMOutputQuotaLimit")
+        self._TPMInputReserveLimit = params.get("TPMInputReserveLimit")
+        self._TPMOutputReserveLimit = params.get("TPMOutputReserveLimit")
         self._RequestId = params.get("RequestId")
 
 
