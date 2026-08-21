@@ -32339,6 +32339,8 @@ class ExportInfo(AbstractModel):
         :type SyntaxRule: int
         :param _DerivedFields: <p>导出字段</p>
         :type DerivedFields: list of str
+        :param _CreateTimestamp: <p>日志导出创建时间，毫秒时间戳</p><p>单位：ms</p>
+        :type CreateTimestamp: int
         """
         self._TopicId = None
         self._ExportId = None
@@ -32355,6 +32357,7 @@ class ExportInfo(AbstractModel):
         self._CreateTime = None
         self._SyntaxRule = None
         self._DerivedFields = None
+        self._CreateTimestamp = None
 
     @property
     def TopicId(self):
@@ -32521,6 +32524,17 @@ class ExportInfo(AbstractModel):
     def DerivedFields(self, DerivedFields):
         self._DerivedFields = DerivedFields
 
+    @property
+    def CreateTimestamp(self):
+        r"""<p>日志导出创建时间，毫秒时间戳</p><p>单位：ms</p>
+        :rtype: int
+        """
+        return self._CreateTimestamp
+
+    @CreateTimestamp.setter
+    def CreateTimestamp(self, CreateTimestamp):
+        self._CreateTimestamp = CreateTimestamp
+
 
     def _deserialize(self, params):
         self._TopicId = params.get("TopicId")
@@ -32538,6 +32552,7 @@ class ExportInfo(AbstractModel):
         self._CreateTime = params.get("CreateTime")
         self._SyntaxRule = params.get("SyntaxRule")
         self._DerivedFields = params.get("DerivedFields")
+        self._CreateTimestamp = params.get("CreateTimestamp")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

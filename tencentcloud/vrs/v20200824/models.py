@@ -450,14 +450,14 @@ class DescribeVRSTaskStatusRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskId: 任务ID
+        :param _TaskId: <p>任务ID</p>
         :type TaskId: str
         """
         self._TaskId = None
 
     @property
     def TaskId(self):
-        r"""任务ID
+        r"""<p>任务ID</p>
         :rtype: str
         """
         return self._TaskId
@@ -626,7 +626,7 @@ class DescribeVRSTaskStatusResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Data: 声音复刻任务结果
+        :param _Data: <p>声音复刻任务结果</p>
         :type Data: :class:`tencentcloud.vrs.v20200824.models.DescribeVRSTaskStatusRespData`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -636,7 +636,7 @@ class DescribeVRSTaskStatusResponse(AbstractModel):
 
     @property
     def Data(self):
-        r"""声音复刻任务结果
+        r"""<p>声音复刻任务结果</p>
         :rtype: :class:`tencentcloud.vrs.v20200824.models.DescribeVRSTaskStatusRespData`
         """
         return self._Data
@@ -671,20 +671,17 @@ class DetectEnvAndSoundQualityRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TextId: 标注文本信息 ID
+        :param _TextId: <p>标注文本信息 ID</p>
         :type TextId: str
-        :param _AudioData: 语音数据 要使用base64编码(采用python语言时注意读取文件时需要转成base64字符串编码，例如：str(base64.b64encode(open("input.aac", mode="rb").read()), encoding='utf-8') )。
+        :param _AudioData: <p>语音数据 要使用base64编码(采用python语言时注意读取文件时需要转成base64字符串编码，例如：str(base64.b64encode(open(&quot;input.aac&quot;, mode=&quot;rb&quot;).read()), encoding=&#39;utf-8&#39;) )。</p>
         :type AudioData: str
-        :param _TypeId: 1:环境检测 2:音质检测
+        :param _TypeId: <p>1:环境检测 2:音质检测</p>
         :type TypeId: int
-        :param _Codec: 音频格式，音频类型(wav,mp3,aac,m4a)
+        :param _Codec: <p>音频格式，音频类型(wav,mp3,aac,m4a)</p>
         :type Codec: str
-        :param _SampleRate: 音频采样率。
-16000：16k（默认）；
-24000：24k（仅一句话声音复刻支持）；
-48000：48k（仅一句话声音复刻支持）。
+        :param _SampleRate: <p>音频采样率。<br>16000：16k（默认）；<br>24000：24k（仅一句话声音复刻支持）；<br>48000：48k（仅一句话声音复刻支持）。</p>
         :type SampleRate: int
-        :param _TaskType: 复刻类型。5 - 一句话声音复刻。
+        :param _TaskType: <p>复刻类型。5 - 一句话声音复刻。</p>
         :type TaskType: int
         """
         self._TextId = None
@@ -696,7 +693,7 @@ class DetectEnvAndSoundQualityRequest(AbstractModel):
 
     @property
     def TextId(self):
-        r"""标注文本信息 ID
+        r"""<p>标注文本信息 ID</p>
         :rtype: str
         """
         return self._TextId
@@ -707,7 +704,7 @@ class DetectEnvAndSoundQualityRequest(AbstractModel):
 
     @property
     def AudioData(self):
-        r"""语音数据 要使用base64编码(采用python语言时注意读取文件时需要转成base64字符串编码，例如：str(base64.b64encode(open("input.aac", mode="rb").read()), encoding='utf-8') )。
+        r"""<p>语音数据 要使用base64编码(采用python语言时注意读取文件时需要转成base64字符串编码，例如：str(base64.b64encode(open(&quot;input.aac&quot;, mode=&quot;rb&quot;).read()), encoding=&#39;utf-8&#39;) )。</p>
         :rtype: str
         """
         return self._AudioData
@@ -718,7 +715,7 @@ class DetectEnvAndSoundQualityRequest(AbstractModel):
 
     @property
     def TypeId(self):
-        r"""1:环境检测 2:音质检测
+        r"""<p>1:环境检测 2:音质检测</p>
         :rtype: int
         """
         return self._TypeId
@@ -729,7 +726,7 @@ class DetectEnvAndSoundQualityRequest(AbstractModel):
 
     @property
     def Codec(self):
-        r"""音频格式，音频类型(wav,mp3,aac,m4a)
+        r"""<p>音频格式，音频类型(wav,mp3,aac,m4a)</p>
         :rtype: str
         """
         return self._Codec
@@ -740,10 +737,7 @@ class DetectEnvAndSoundQualityRequest(AbstractModel):
 
     @property
     def SampleRate(self):
-        r"""音频采样率。
-16000：16k（默认）；
-24000：24k（仅一句话声音复刻支持）；
-48000：48k（仅一句话声音复刻支持）。
+        r"""<p>音频采样率。<br>16000：16k（默认）；<br>24000：24k（仅一句话声音复刻支持）；<br>48000：48k（仅一句话声音复刻支持）。</p>
         :rtype: int
         """
         return self._SampleRate
@@ -754,7 +748,7 @@ class DetectEnvAndSoundQualityRequest(AbstractModel):
 
     @property
     def TaskType(self):
-        r"""复刻类型。5 - 一句话声音复刻。
+        r"""<p>复刻类型。5 - 一句话声音复刻。</p>
         :rtype: int
         """
         return self._TaskType
@@ -788,7 +782,7 @@ class DetectEnvAndSoundQualityResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Data: 检测结果
+        :param _Data: <p>检测结果</p>
         :type Data: :class:`tencentcloud.vrs.v20200824.models.DetectionEnvAndSoundQualityRespData`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -798,7 +792,7 @@ class DetectEnvAndSoundQualityResponse(AbstractModel):
 
     @property
     def Data(self):
-        r"""检测结果
+        r"""<p>检测结果</p>
         :rtype: :class:`tencentcloud.vrs.v20200824.models.DetectionEnvAndSoundQualityRespData`
         """
         return self._Data
@@ -1128,17 +1122,11 @@ class GetTrainingTextRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskType: 复刻类型。
-5 - 一句话声音复刻。
+        :param _TaskType: <p>复刻类型。<br>5 - 一句话声音复刻。</p>
         :type TaskType: int
-        :param _Domain: 音色场景。（仅支持一句话声音复刻，其余复刻类型不生效） 
-0 - 通用场景（默认）； 
-1 - 聊天场景； 
-2 - 阅读场景； 
-3 - 资讯播报场景。
+        :param _Domain: <p>音色场景。（仅支持一句话声音复刻，其余复刻类型不生效）<br>0 - 通用场景（默认）；<br>1 - 聊天场景；<br>2 - 阅读场景；<br>3 - 资讯播报场景。</p>
         :type Domain: int
-        :param _TextLanguage: 文本语种。（仅支持一句话声音复刻，其余复刻类型不生效） 
-1 - 中文（默认）。
+        :param _TextLanguage: <p>文本语种。（仅支持一句话声音复刻，其余复刻类型不生效）<br>1 - 中文（默认）。</p>
         :type TextLanguage: int
         """
         self._TaskType = None
@@ -1147,8 +1135,7 @@ class GetTrainingTextRequest(AbstractModel):
 
     @property
     def TaskType(self):
-        r"""复刻类型。
-5 - 一句话声音复刻。
+        r"""<p>复刻类型。<br>5 - 一句话声音复刻。</p>
         :rtype: int
         """
         return self._TaskType
@@ -1159,11 +1146,7 @@ class GetTrainingTextRequest(AbstractModel):
 
     @property
     def Domain(self):
-        r"""音色场景。（仅支持一句话声音复刻，其余复刻类型不生效） 
-0 - 通用场景（默认）； 
-1 - 聊天场景； 
-2 - 阅读场景； 
-3 - 资讯播报场景。
+        r"""<p>音色场景。（仅支持一句话声音复刻，其余复刻类型不生效）<br>0 - 通用场景（默认）；<br>1 - 聊天场景；<br>2 - 阅读场景；<br>3 - 资讯播报场景。</p>
         :rtype: int
         """
         return self._Domain
@@ -1174,8 +1157,7 @@ class GetTrainingTextRequest(AbstractModel):
 
     @property
     def TextLanguage(self):
-        r"""文本语种。（仅支持一句话声音复刻，其余复刻类型不生效） 
-1 - 中文（默认）。
+        r"""<p>文本语种。（仅支持一句话声音复刻，其余复刻类型不生效）<br>1 - 中文（默认）。</p>
         :rtype: int
         """
         return self._TextLanguage
@@ -1206,7 +1188,7 @@ class GetTrainingTextResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Data: 文本列表
+        :param _Data: <p>文本列表</p>
         :type Data: :class:`tencentcloud.vrs.v20200824.models.TrainingTexts`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1216,7 +1198,7 @@ class GetTrainingTextResponse(AbstractModel):
 
     @property
     def Data(self):
-        r"""文本列表
+        r"""<p>文本列表</p>
         :rtype: :class:`tencentcloud.vrs.v20200824.models.TrainingTexts`
         """
         return self._Data

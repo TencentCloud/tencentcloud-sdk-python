@@ -389,6 +389,11 @@ def test_import_cloudmate_v20251030():
     from tencentcloud.cloudmate.v20251030 import models
 
 
+def test_import_cloudrc_v20240606():
+    from tencentcloud.cloudrc.v20240606 import cloudrc_client
+    from tencentcloud.cloudrc.v20240606 import models
+
+
 def test_import_cloudstudio_v20230508():
     from tencentcloud.cloudstudio.v20230508 import cloudstudio_client
     from tencentcloud.cloudstudio.v20230508 import models
@@ -982,6 +987,11 @@ def test_import_organization_v20210331():
 def test_import_partners_v20180321():
     from tencentcloud.partners.v20180321 import partners_client
     from tencentcloud.partners.v20180321 import models
+
+
+def test_import_portal_v20230413():
+    from tencentcloud.portal.v20230413 import portal_client
+    from tencentcloud.portal.v20230413 import models
 
 
 def test_import_postgres_v20170312():

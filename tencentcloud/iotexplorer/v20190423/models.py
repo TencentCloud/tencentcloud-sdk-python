@@ -11450,6 +11450,135 @@ class DeleteTWeSeeCallbackResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DeleteTWeSeeTasksByConditionRequest(AbstractModel):
+    r"""DeleteTWeSeeTasksByCondition请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProductId: <p>产品 ID</p>
+        :type ProductId: str
+        :param _DeviceName: <p>设备名称</p>
+        :type DeviceName: str
+        :param _ServiceCategory: <p>算法类目。</p><p>枚举值：</p><ul><li>COMPREHENSION： 视觉理解</li><li>HIGHLIGHT： 视频浓缩</li></ul>
+        :type ServiceCategory: str
+        :param _Conditions: <p>任务删除条件，至少传入一个条件。不同条件之间为 AND 关系，同一条件的 Values 之间为 OR 关系。</p>
+        :type Conditions: list of SeeDeleteTaskCondition
+        :param _ChannelId: <p>通道 ID</p><p>默认值：0</p>
+        :type ChannelId: int
+        """
+        self._ProductId = None
+        self._DeviceName = None
+        self._ServiceCategory = None
+        self._Conditions = None
+        self._ChannelId = None
+
+    @property
+    def ProductId(self):
+        r"""<p>产品 ID</p>
+        :rtype: str
+        """
+        return self._ProductId
+
+    @ProductId.setter
+    def ProductId(self, ProductId):
+        self._ProductId = ProductId
+
+    @property
+    def DeviceName(self):
+        r"""<p>设备名称</p>
+        :rtype: str
+        """
+        return self._DeviceName
+
+    @DeviceName.setter
+    def DeviceName(self, DeviceName):
+        self._DeviceName = DeviceName
+
+    @property
+    def ServiceCategory(self):
+        r"""<p>算法类目。</p><p>枚举值：</p><ul><li>COMPREHENSION： 视觉理解</li><li>HIGHLIGHT： 视频浓缩</li></ul>
+        :rtype: str
+        """
+        return self._ServiceCategory
+
+    @ServiceCategory.setter
+    def ServiceCategory(self, ServiceCategory):
+        self._ServiceCategory = ServiceCategory
+
+    @property
+    def Conditions(self):
+        r"""<p>任务删除条件，至少传入一个条件。不同条件之间为 AND 关系，同一条件的 Values 之间为 OR 关系。</p>
+        :rtype: list of SeeDeleteTaskCondition
+        """
+        return self._Conditions
+
+    @Conditions.setter
+    def Conditions(self, Conditions):
+        self._Conditions = Conditions
+
+    @property
+    def ChannelId(self):
+        r"""<p>通道 ID</p><p>默认值：0</p>
+        :rtype: int
+        """
+        return self._ChannelId
+
+    @ChannelId.setter
+    def ChannelId(self, ChannelId):
+        self._ChannelId = ChannelId
+
+
+    def _deserialize(self, params):
+        self._ProductId = params.get("ProductId")
+        self._DeviceName = params.get("DeviceName")
+        self._ServiceCategory = params.get("ServiceCategory")
+        if params.get("Conditions") is not None:
+            self._Conditions = []
+            for item in params.get("Conditions"):
+                obj = SeeDeleteTaskCondition()
+                obj._deserialize(item)
+                self._Conditions.append(obj)
+        self._ChannelId = params.get("ChannelId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteTWeSeeTasksByConditionResponse(AbstractModel):
+    r"""DeleteTWeSeeTasksByCondition返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class DeleteTWeTalkAIBotRequest(AbstractModel):
     r"""DeleteTWeTalkAIBot请求参数结构体
 
@@ -40998,6 +41127,57 @@ class SeeComprehensionResult(AbstractModel):
         self._ErrorCode = params.get("ErrorCode")
         self._ErrorMsg = params.get("ErrorMsg")
         self._Keywords = params.get("Keywords")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SeeDeleteTaskCondition(AbstractModel):
+    r"""TWeSee 任务删除条件
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Type: <p>条件类型。</p><p>枚举值：</p><ul><li>TaskId： 精确匹配任务 ID</li><li>TimeRange： 匹配任务时间范围与指定范围有重合的任务。值的格式为 <code>UnixTimestampStart,UnixTimestampEnd</code>，其中起止时间均为秒级 UNIX 时间戳，且结束时间不早于起始时间</li><li>CreateTimeBefore： 匹配在指定时间前创建的任务。值为秒级 UNIX 时间戳</li><li>COSURI： 精确匹配任务来源 COS URI，值必须以 <code>cos://</code> 开头</li><li>COSURIPrefix： 按前缀匹配任务来源 COS URI，值必须以 <code>cos://</code> 开头</li></ul>
+        :type Type: str
+        :param _Values: <p>条件值列表。同一条件内的多个值之间为 OR 关系，至少传入一个非空值。</p>
+        :type Values: list of str
+        """
+        self._Type = None
+        self._Values = None
+
+    @property
+    def Type(self):
+        r"""<p>条件类型。</p><p>枚举值：</p><ul><li>TaskId： 精确匹配任务 ID</li><li>TimeRange： 匹配任务时间范围与指定范围有重合的任务。值的格式为 <code>UnixTimestampStart,UnixTimestampEnd</code>，其中起止时间均为秒级 UNIX 时间戳，且结束时间不早于起始时间</li><li>CreateTimeBefore： 匹配在指定时间前创建的任务。值为秒级 UNIX 时间戳</li><li>COSURI： 精确匹配任务来源 COS URI，值必须以 <code>cos://</code> 开头</li><li>COSURIPrefix： 按前缀匹配任务来源 COS URI，值必须以 <code>cos://</code> 开头</li></ul>
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Values(self):
+        r"""<p>条件值列表。同一条件内的多个值之间为 OR 关系，至少传入一个非空值。</p>
+        :rtype: list of str
+        """
+        return self._Values
+
+    @Values.setter
+    def Values(self, Values):
+        self._Values = Values
+
+
+    def _deserialize(self, params):
+        self._Type = params.get("Type")
+        self._Values = params.get("Values")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -55137,7 +55137,7 @@ class VmGroup(AbstractModel):
         :type MicroserviceType: str
         :param _ApplicationType: <p>应用类型</p>
         :type ApplicationType: str
-        :param _GroupResourceType: <p>部署组资源类型</p>
+        :param _GroupResourceType: <p>部署组资源类型</p><p>枚举值：</p><ul><li>GW： 网关</li><li>DEF： 普通业务部署组</li><li>SVL： Serverless</li></ul>
         :type GroupResourceType: str
         :param _UpdatedTime: <p>部署组更新时间戳</p>
         :type UpdatedTime: int
@@ -55194,6 +55194,64 @@ class VmGroup(AbstractModel):
         :type RepositoryType: str
         :param _LivenessAutoRestart: <p>是否自动重启</p>
         :type LivenessAutoRestart: bool
+        :param _MeshSidecarVersion: <p>Mesh Sidecar 数据面版本通道</p><p>枚举值：</p><ul><li>stable： 稳定版</li><li>release： 最新版</li></ul>
+        :type MeshSidecarVersion: str
+        :param _BusinessLogConfigIdList: <p>业务日志配置 ID 列表</p>
+        :type BusinessLogConfigIdList: str
+        :param _BusinessLogDeliveryConfigIdList: <p>业务系统 ID</p>
+        :type BusinessLogDeliveryConfigIdList: str
+        :param _BusinessSystemId: <p>String型普通说明场景</p>
+        :type BusinessSystemId: str
+        :param _BusinessSystemName: <p>业务系统名称</p>
+        :type BusinessSystemName: str
+        :param _ClsMachineGroupId: <p>CLS 机器组 ID</p>
+        :type ClsMachineGroupId: str
+        :param _EnableGovernance: <p>是否开启服务治理</p>
+        :type EnableGovernance: bool
+        :param _EnableTelemetry: <p>是否开启可观测</p>
+        :type EnableTelemetry: bool
+        :param _EnableTelemetryAgent: <p>是否开启 OT Agent</p>
+        :type EnableTelemetryAgent: bool
+        :param _EnabledUnit: <p>是否开启单元化</p>
+        :type EnabledUnit: bool
+        :param _ExclusiveInstances: <p>独享注册中心/配置中心实例列表</p>
+        :type ExclusiveInstances: list of ExclusiveInstance
+        :param _FrameworkType: <p>框架接入类型</p>
+        :type FrameworkType: str
+        :param _GovernanceType: <p>服务治理实例模式</p>
+        :type GovernanceType: str
+        :param _InstanceIdList: <p>部署组关联实例 ID 列表</p>
+        :type InstanceIdList: list of str
+        :param _IsStop: <p>部署组是否处于停止状态</p>
+        :type IsStop: str
+        :param _K8sNamespaceName: <p>K8s 命名空间名称</p>
+        :type K8sNamespaceName: str
+        :param _Language: <p>请求语言</p>
+        :type Language: str
+        :param _MicroserviceSubType: <p>微服务子类型</p>
+        :type MicroserviceSubType: str
+        :param _NonInvasiveType: <p>非侵入接入子类型</p>
+        :type NonInvasiveType: str
+        :param _PreStopScript: <p>预停止脚本内容</p>
+        :type PreStopScript: str
+        :param _RealNamespaceName: <p>实际使用的 K8s 命名空间名称</p>
+        :type RealNamespaceName: str
+        :param _ServiceConfigList: <p>Mesh 服务端口与健康检查配置列表</p>
+        :type ServiceConfigList: list of ServiceConfig
+        :param _ServiceGovernanceConfig: <p>服务治理配置聚合对象</p>
+        :type ServiceGovernanceConfig: :class:`tencentcloud.tsf.v20180326.models.ServiceGovernanceConfig`
+        :param _Tags: <p>部署组标签列表</p>
+        :type Tags: list of Tag
+        :param _TapmOtAgentVersion: <p>Tapm OT Agent 版本</p>
+        :type TapmOtAgentVersion: str
+        :param _UnitEnvType: <p>单元环境类型</p>
+        :type UnitEnvType: str
+        :param _UnitId: <p>单元 ID</p>
+        :type UnitId: str
+        :param _UnitName: <p>单元类型</p>
+        :type UnitName: str
+        :param _UnitType: <p>部署组资源类型</p>
+        :type UnitType: str
         """
         self._GroupId = None
         self._GroupName = None
@@ -55241,6 +55299,35 @@ class VmGroup(AbstractModel):
         self._RepositoryName = None
         self._RepositoryType = None
         self._LivenessAutoRestart = None
+        self._MeshSidecarVersion = None
+        self._BusinessLogConfigIdList = None
+        self._BusinessLogDeliveryConfigIdList = None
+        self._BusinessSystemId = None
+        self._BusinessSystemName = None
+        self._ClsMachineGroupId = None
+        self._EnableGovernance = None
+        self._EnableTelemetry = None
+        self._EnableTelemetryAgent = None
+        self._EnabledUnit = None
+        self._ExclusiveInstances = None
+        self._FrameworkType = None
+        self._GovernanceType = None
+        self._InstanceIdList = None
+        self._IsStop = None
+        self._K8sNamespaceName = None
+        self._Language = None
+        self._MicroserviceSubType = None
+        self._NonInvasiveType = None
+        self._PreStopScript = None
+        self._RealNamespaceName = None
+        self._ServiceConfigList = None
+        self._ServiceGovernanceConfig = None
+        self._Tags = None
+        self._TapmOtAgentVersion = None
+        self._UnitEnvType = None
+        self._UnitId = None
+        self._UnitName = None
+        self._UnitType = None
 
     @property
     def GroupId(self):
@@ -55480,7 +55567,7 @@ class VmGroup(AbstractModel):
 
     @property
     def GroupResourceType(self):
-        r"""<p>部署组资源类型</p>
+        r"""<p>部署组资源类型</p><p>枚举值：</p><ul><li>GW： 网关</li><li>DEF： 普通业务部署组</li><li>SVL： Serverless</li></ul>
         :rtype: str
         """
         return self._GroupResourceType
@@ -55760,6 +55847,325 @@ class VmGroup(AbstractModel):
     def LivenessAutoRestart(self, LivenessAutoRestart):
         self._LivenessAutoRestart = LivenessAutoRestart
 
+    @property
+    def MeshSidecarVersion(self):
+        r"""<p>Mesh Sidecar 数据面版本通道</p><p>枚举值：</p><ul><li>stable： 稳定版</li><li>release： 最新版</li></ul>
+        :rtype: str
+        """
+        return self._MeshSidecarVersion
+
+    @MeshSidecarVersion.setter
+    def MeshSidecarVersion(self, MeshSidecarVersion):
+        self._MeshSidecarVersion = MeshSidecarVersion
+
+    @property
+    def BusinessLogConfigIdList(self):
+        r"""<p>业务日志配置 ID 列表</p>
+        :rtype: str
+        """
+        return self._BusinessLogConfigIdList
+
+    @BusinessLogConfigIdList.setter
+    def BusinessLogConfigIdList(self, BusinessLogConfigIdList):
+        self._BusinessLogConfigIdList = BusinessLogConfigIdList
+
+    @property
+    def BusinessLogDeliveryConfigIdList(self):
+        r"""<p>业务系统 ID</p>
+        :rtype: str
+        """
+        return self._BusinessLogDeliveryConfigIdList
+
+    @BusinessLogDeliveryConfigIdList.setter
+    def BusinessLogDeliveryConfigIdList(self, BusinessLogDeliveryConfigIdList):
+        self._BusinessLogDeliveryConfigIdList = BusinessLogDeliveryConfigIdList
+
+    @property
+    def BusinessSystemId(self):
+        r"""<p>String型普通说明场景</p>
+        :rtype: str
+        """
+        return self._BusinessSystemId
+
+    @BusinessSystemId.setter
+    def BusinessSystemId(self, BusinessSystemId):
+        self._BusinessSystemId = BusinessSystemId
+
+    @property
+    def BusinessSystemName(self):
+        r"""<p>业务系统名称</p>
+        :rtype: str
+        """
+        return self._BusinessSystemName
+
+    @BusinessSystemName.setter
+    def BusinessSystemName(self, BusinessSystemName):
+        self._BusinessSystemName = BusinessSystemName
+
+    @property
+    def ClsMachineGroupId(self):
+        r"""<p>CLS 机器组 ID</p>
+        :rtype: str
+        """
+        return self._ClsMachineGroupId
+
+    @ClsMachineGroupId.setter
+    def ClsMachineGroupId(self, ClsMachineGroupId):
+        self._ClsMachineGroupId = ClsMachineGroupId
+
+    @property
+    def EnableGovernance(self):
+        r"""<p>是否开启服务治理</p>
+        :rtype: bool
+        """
+        return self._EnableGovernance
+
+    @EnableGovernance.setter
+    def EnableGovernance(self, EnableGovernance):
+        self._EnableGovernance = EnableGovernance
+
+    @property
+    def EnableTelemetry(self):
+        r"""<p>是否开启可观测</p>
+        :rtype: bool
+        """
+        return self._EnableTelemetry
+
+    @EnableTelemetry.setter
+    def EnableTelemetry(self, EnableTelemetry):
+        self._EnableTelemetry = EnableTelemetry
+
+    @property
+    def EnableTelemetryAgent(self):
+        r"""<p>是否开启 OT Agent</p>
+        :rtype: bool
+        """
+        return self._EnableTelemetryAgent
+
+    @EnableTelemetryAgent.setter
+    def EnableTelemetryAgent(self, EnableTelemetryAgent):
+        self._EnableTelemetryAgent = EnableTelemetryAgent
+
+    @property
+    def EnabledUnit(self):
+        r"""<p>是否开启单元化</p>
+        :rtype: bool
+        """
+        return self._EnabledUnit
+
+    @EnabledUnit.setter
+    def EnabledUnit(self, EnabledUnit):
+        self._EnabledUnit = EnabledUnit
+
+    @property
+    def ExclusiveInstances(self):
+        r"""<p>独享注册中心/配置中心实例列表</p>
+        :rtype: list of ExclusiveInstance
+        """
+        return self._ExclusiveInstances
+
+    @ExclusiveInstances.setter
+    def ExclusiveInstances(self, ExclusiveInstances):
+        self._ExclusiveInstances = ExclusiveInstances
+
+    @property
+    def FrameworkType(self):
+        r"""<p>框架接入类型</p>
+        :rtype: str
+        """
+        return self._FrameworkType
+
+    @FrameworkType.setter
+    def FrameworkType(self, FrameworkType):
+        self._FrameworkType = FrameworkType
+
+    @property
+    def GovernanceType(self):
+        r"""<p>服务治理实例模式</p>
+        :rtype: str
+        """
+        return self._GovernanceType
+
+    @GovernanceType.setter
+    def GovernanceType(self, GovernanceType):
+        self._GovernanceType = GovernanceType
+
+    @property
+    def InstanceIdList(self):
+        r"""<p>部署组关联实例 ID 列表</p>
+        :rtype: list of str
+        """
+        return self._InstanceIdList
+
+    @InstanceIdList.setter
+    def InstanceIdList(self, InstanceIdList):
+        self._InstanceIdList = InstanceIdList
+
+    @property
+    def IsStop(self):
+        r"""<p>部署组是否处于停止状态</p>
+        :rtype: str
+        """
+        return self._IsStop
+
+    @IsStop.setter
+    def IsStop(self, IsStop):
+        self._IsStop = IsStop
+
+    @property
+    def K8sNamespaceName(self):
+        r"""<p>K8s 命名空间名称</p>
+        :rtype: str
+        """
+        return self._K8sNamespaceName
+
+    @K8sNamespaceName.setter
+    def K8sNamespaceName(self, K8sNamespaceName):
+        self._K8sNamespaceName = K8sNamespaceName
+
+    @property
+    def Language(self):
+        r"""<p>请求语言</p>
+        :rtype: str
+        """
+        return self._Language
+
+    @Language.setter
+    def Language(self, Language):
+        self._Language = Language
+
+    @property
+    def MicroserviceSubType(self):
+        r"""<p>微服务子类型</p>
+        :rtype: str
+        """
+        return self._MicroserviceSubType
+
+    @MicroserviceSubType.setter
+    def MicroserviceSubType(self, MicroserviceSubType):
+        self._MicroserviceSubType = MicroserviceSubType
+
+    @property
+    def NonInvasiveType(self):
+        r"""<p>非侵入接入子类型</p>
+        :rtype: str
+        """
+        return self._NonInvasiveType
+
+    @NonInvasiveType.setter
+    def NonInvasiveType(self, NonInvasiveType):
+        self._NonInvasiveType = NonInvasiveType
+
+    @property
+    def PreStopScript(self):
+        r"""<p>预停止脚本内容</p>
+        :rtype: str
+        """
+        return self._PreStopScript
+
+    @PreStopScript.setter
+    def PreStopScript(self, PreStopScript):
+        self._PreStopScript = PreStopScript
+
+    @property
+    def RealNamespaceName(self):
+        r"""<p>实际使用的 K8s 命名空间名称</p>
+        :rtype: str
+        """
+        return self._RealNamespaceName
+
+    @RealNamespaceName.setter
+    def RealNamespaceName(self, RealNamespaceName):
+        self._RealNamespaceName = RealNamespaceName
+
+    @property
+    def ServiceConfigList(self):
+        r"""<p>Mesh 服务端口与健康检查配置列表</p>
+        :rtype: list of ServiceConfig
+        """
+        return self._ServiceConfigList
+
+    @ServiceConfigList.setter
+    def ServiceConfigList(self, ServiceConfigList):
+        self._ServiceConfigList = ServiceConfigList
+
+    @property
+    def ServiceGovernanceConfig(self):
+        r"""<p>服务治理配置聚合对象</p>
+        :rtype: :class:`tencentcloud.tsf.v20180326.models.ServiceGovernanceConfig`
+        """
+        return self._ServiceGovernanceConfig
+
+    @ServiceGovernanceConfig.setter
+    def ServiceGovernanceConfig(self, ServiceGovernanceConfig):
+        self._ServiceGovernanceConfig = ServiceGovernanceConfig
+
+    @property
+    def Tags(self):
+        r"""<p>部署组标签列表</p>
+        :rtype: list of Tag
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def TapmOtAgentVersion(self):
+        r"""<p>Tapm OT Agent 版本</p>
+        :rtype: str
+        """
+        return self._TapmOtAgentVersion
+
+    @TapmOtAgentVersion.setter
+    def TapmOtAgentVersion(self, TapmOtAgentVersion):
+        self._TapmOtAgentVersion = TapmOtAgentVersion
+
+    @property
+    def UnitEnvType(self):
+        r"""<p>单元环境类型</p>
+        :rtype: str
+        """
+        return self._UnitEnvType
+
+    @UnitEnvType.setter
+    def UnitEnvType(self, UnitEnvType):
+        self._UnitEnvType = UnitEnvType
+
+    @property
+    def UnitId(self):
+        r"""<p>单元 ID</p>
+        :rtype: str
+        """
+        return self._UnitId
+
+    @UnitId.setter
+    def UnitId(self, UnitId):
+        self._UnitId = UnitId
+
+    @property
+    def UnitName(self):
+        r"""<p>单元类型</p>
+        :rtype: str
+        """
+        return self._UnitName
+
+    @UnitName.setter
+    def UnitName(self, UnitName):
+        self._UnitName = UnitName
+
+    @property
+    def UnitType(self):
+        r"""<p>部署组资源类型</p>
+        :rtype: str
+        """
+        return self._UnitType
+
+    @UnitType.setter
+    def UnitType(self, UnitType):
+        self._UnitType = UnitType
+
 
     def _deserialize(self, params):
         self._GroupId = params.get("GroupId")
@@ -55819,6 +56225,52 @@ class VmGroup(AbstractModel):
         self._RepositoryName = params.get("RepositoryName")
         self._RepositoryType = params.get("RepositoryType")
         self._LivenessAutoRestart = params.get("LivenessAutoRestart")
+        self._MeshSidecarVersion = params.get("MeshSidecarVersion")
+        self._BusinessLogConfigIdList = params.get("BusinessLogConfigIdList")
+        self._BusinessLogDeliveryConfigIdList = params.get("BusinessLogDeliveryConfigIdList")
+        self._BusinessSystemId = params.get("BusinessSystemId")
+        self._BusinessSystemName = params.get("BusinessSystemName")
+        self._ClsMachineGroupId = params.get("ClsMachineGroupId")
+        self._EnableGovernance = params.get("EnableGovernance")
+        self._EnableTelemetry = params.get("EnableTelemetry")
+        self._EnableTelemetryAgent = params.get("EnableTelemetryAgent")
+        self._EnabledUnit = params.get("EnabledUnit")
+        if params.get("ExclusiveInstances") is not None:
+            self._ExclusiveInstances = []
+            for item in params.get("ExclusiveInstances"):
+                obj = ExclusiveInstance()
+                obj._deserialize(item)
+                self._ExclusiveInstances.append(obj)
+        self._FrameworkType = params.get("FrameworkType")
+        self._GovernanceType = params.get("GovernanceType")
+        self._InstanceIdList = params.get("InstanceIdList")
+        self._IsStop = params.get("IsStop")
+        self._K8sNamespaceName = params.get("K8sNamespaceName")
+        self._Language = params.get("Language")
+        self._MicroserviceSubType = params.get("MicroserviceSubType")
+        self._NonInvasiveType = params.get("NonInvasiveType")
+        self._PreStopScript = params.get("PreStopScript")
+        self._RealNamespaceName = params.get("RealNamespaceName")
+        if params.get("ServiceConfigList") is not None:
+            self._ServiceConfigList = []
+            for item in params.get("ServiceConfigList"):
+                obj = ServiceConfig()
+                obj._deserialize(item)
+                self._ServiceConfigList.append(obj)
+        if params.get("ServiceGovernanceConfig") is not None:
+            self._ServiceGovernanceConfig = ServiceGovernanceConfig()
+            self._ServiceGovernanceConfig._deserialize(params.get("ServiceGovernanceConfig"))
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
+        self._TapmOtAgentVersion = params.get("TapmOtAgentVersion")
+        self._UnitEnvType = params.get("UnitEnvType")
+        self._UnitId = params.get("UnitId")
+        self._UnitName = params.get("UnitName")
+        self._UnitType = params.get("UnitType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -92080,9 +92080,12 @@ class UnderstandImageConfig(AbstractModel):
         :type Model: str
         :param _Prompt: <p>图片理解指令</p>
         :type Prompt: str
+        :param _Parameters: <p>图片理解模型参数，类型为 JSON 字符串。</p>
+        :type Parameters: str
         """
         self._Model = None
         self._Prompt = None
+        self._Parameters = None
 
     @property
     def Model(self):
@@ -92106,10 +92109,22 @@ class UnderstandImageConfig(AbstractModel):
     def Prompt(self, Prompt):
         self._Prompt = Prompt
 
+    @property
+    def Parameters(self):
+        r"""<p>图片理解模型参数，类型为 JSON 字符串。</p>
+        :rtype: str
+        """
+        return self._Parameters
+
+    @Parameters.setter
+    def Parameters(self, Parameters):
+        self._Parameters = Parameters
+
 
     def _deserialize(self, params):
         self._Model = params.get("Model")
         self._Prompt = params.get("Prompt")
+        self._Parameters = params.get("Parameters")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

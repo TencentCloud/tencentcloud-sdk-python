@@ -1833,6 +1833,29 @@ class MonitorClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeGrafanaVersions(self, request):
+        r"""列出 Grafana 版本
+
+        :param request: Request instance for DescribeGrafanaVersions.
+        :type request: :class:`tencentcloud.monitor.v20180724.models.DescribeGrafanaVersionsRequest`
+        :rtype: :class:`tencentcloud.monitor.v20180724.models.DescribeGrafanaVersionsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeGrafanaVersions", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeGrafanaVersionsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeGrafanaWhiteList(self, request):
         r"""列出 Grafana 白名单
 

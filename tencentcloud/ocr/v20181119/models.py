@@ -35350,48 +35350,52 @@ class VatElectronicItemInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Name: 项目名称
+        :param _Name: <p>项目名称</p>
         :type Name: str
-        :param _Quantity: 数量
+        :param _Quantity: <p>数量</p>
         :type Quantity: str
-        :param _Specification: 规格型号
+        :param _Specification: <p>规格型号</p>
         :type Specification: str
-        :param _Price: 单价
+        :param _Price: <p>单价</p>
         :type Price: str
-        :param _Total: 金额
+        :param _Total: <p>金额</p>
         :type Total: str
-        :param _TaxRate: 税率
+        :param _TaxRate: <p>税率</p>
         :type TaxRate: str
-        :param _Tax: 税额
+        :param _Tax: <p>税额</p>
         :type Tax: str
-        :param _Unit: 单位
+        :param _Unit: <p>单位</p>
         :type Unit: str
-        :param _VehicleType: 运输工具类型
+        :param _VehicleType: <p>运输工具类型</p>
         :type VehicleType: str
-        :param _VehicleBrand: 运输工具牌号
+        :param _VehicleBrand: <p>运输工具牌号</p>
         :type VehicleBrand: str
-        :param _DeparturePlace: 起始地
+        :param _DeparturePlace: <p>起始地</p>
         :type DeparturePlace: str
-        :param _ArrivalPlace: 到达地
+        :param _ArrivalPlace: <p>到达地</p>
         :type ArrivalPlace: str
-        :param _TransportItemsName: 运输货物名称，仅货物运输服务发票返回
+        :param _TransportItemsName: <p>运输货物名称，仅货物运输服务发票返回</p>
         :type TransportItemsName: str
-        :param _PlaceOfBuildingService: 建筑服务发生地，仅建筑发票返回
+        :param _PlaceOfBuildingService: <p>建筑服务发生地，仅建筑发票返回</p>
         :type PlaceOfBuildingService: str
-        :param _BuildingName: 建筑项目名称，仅建筑发票返回
+        :param _BuildingName: <p>建筑项目名称，仅建筑发票返回</p>
         :type BuildingName: str
-        :param _EstateNumber: 产权证书/不动产权证号，仅不动产经营租赁服务发票返回
+        :param _EstateNumber: <p>产权证书/不动产权证号，仅不动产经营租赁服务发票返回</p>
         :type EstateNumber: str
-        :param _AreaUnit: 面积单位，仅不动产经营租赁服务发票返回
+        :param _AreaUnit: <p>面积单位，仅不动产经营租赁服务发票返回</p>
         :type AreaUnit: str
-        :param _Traveler: 出行人，仅旅客运输服务发票返回
+        :param _Traveler: <p>出行人，仅旅客运输服务发票返回</p>
         :type Traveler: str
-        :param _TravelerID: 有效身份证件号，仅旅客运输服务发票返回
+        :param _TravelerID: <p>有效身份证件号，仅旅客运输服务发票返回</p>
         :type TravelerID: str
-        :param _TravelDate: 出行日期，仅旅客运输服务发票返回
+        :param _TravelDate: <p>出行日期，仅旅客运输服务发票返回</p>
         :type TravelDate: str
-        :param _TravelLevel: 等级，仅旅客运输服务发票返回
+        :param _TravelLevel: <p>等级，仅旅客运输服务发票返回</p>
         :type TravelLevel: str
+        :param _DateStart: <p>通行日期起</p>
+        :type DateStart: str
+        :param _DateEnd: <p>通行日期止</p>
+        :type DateEnd: str
         """
         self._Name = None
         self._Quantity = None
@@ -35414,10 +35418,12 @@ class VatElectronicItemInfo(AbstractModel):
         self._TravelerID = None
         self._TravelDate = None
         self._TravelLevel = None
+        self._DateStart = None
+        self._DateEnd = None
 
     @property
     def Name(self):
-        r"""项目名称
+        r"""<p>项目名称</p>
         :rtype: str
         """
         return self._Name
@@ -35428,7 +35434,7 @@ class VatElectronicItemInfo(AbstractModel):
 
     @property
     def Quantity(self):
-        r"""数量
+        r"""<p>数量</p>
         :rtype: str
         """
         return self._Quantity
@@ -35439,7 +35445,7 @@ class VatElectronicItemInfo(AbstractModel):
 
     @property
     def Specification(self):
-        r"""规格型号
+        r"""<p>规格型号</p>
         :rtype: str
         """
         return self._Specification
@@ -35450,7 +35456,7 @@ class VatElectronicItemInfo(AbstractModel):
 
     @property
     def Price(self):
-        r"""单价
+        r"""<p>单价</p>
         :rtype: str
         """
         return self._Price
@@ -35461,7 +35467,7 @@ class VatElectronicItemInfo(AbstractModel):
 
     @property
     def Total(self):
-        r"""金额
+        r"""<p>金额</p>
         :rtype: str
         """
         return self._Total
@@ -35472,7 +35478,7 @@ class VatElectronicItemInfo(AbstractModel):
 
     @property
     def TaxRate(self):
-        r"""税率
+        r"""<p>税率</p>
         :rtype: str
         """
         return self._TaxRate
@@ -35483,7 +35489,7 @@ class VatElectronicItemInfo(AbstractModel):
 
     @property
     def Tax(self):
-        r"""税额
+        r"""<p>税额</p>
         :rtype: str
         """
         return self._Tax
@@ -35494,7 +35500,7 @@ class VatElectronicItemInfo(AbstractModel):
 
     @property
     def Unit(self):
-        r"""单位
+        r"""<p>单位</p>
         :rtype: str
         """
         return self._Unit
@@ -35505,7 +35511,7 @@ class VatElectronicItemInfo(AbstractModel):
 
     @property
     def VehicleType(self):
-        r"""运输工具类型
+        r"""<p>运输工具类型</p>
         :rtype: str
         """
         return self._VehicleType
@@ -35516,7 +35522,7 @@ class VatElectronicItemInfo(AbstractModel):
 
     @property
     def VehicleBrand(self):
-        r"""运输工具牌号
+        r"""<p>运输工具牌号</p>
         :rtype: str
         """
         return self._VehicleBrand
@@ -35527,7 +35533,7 @@ class VatElectronicItemInfo(AbstractModel):
 
     @property
     def DeparturePlace(self):
-        r"""起始地
+        r"""<p>起始地</p>
         :rtype: str
         """
         return self._DeparturePlace
@@ -35538,7 +35544,7 @@ class VatElectronicItemInfo(AbstractModel):
 
     @property
     def ArrivalPlace(self):
-        r"""到达地
+        r"""<p>到达地</p>
         :rtype: str
         """
         return self._ArrivalPlace
@@ -35549,7 +35555,7 @@ class VatElectronicItemInfo(AbstractModel):
 
     @property
     def TransportItemsName(self):
-        r"""运输货物名称，仅货物运输服务发票返回
+        r"""<p>运输货物名称，仅货物运输服务发票返回</p>
         :rtype: str
         """
         return self._TransportItemsName
@@ -35560,7 +35566,7 @@ class VatElectronicItemInfo(AbstractModel):
 
     @property
     def PlaceOfBuildingService(self):
-        r"""建筑服务发生地，仅建筑发票返回
+        r"""<p>建筑服务发生地，仅建筑发票返回</p>
         :rtype: str
         """
         return self._PlaceOfBuildingService
@@ -35571,7 +35577,7 @@ class VatElectronicItemInfo(AbstractModel):
 
     @property
     def BuildingName(self):
-        r"""建筑项目名称，仅建筑发票返回
+        r"""<p>建筑项目名称，仅建筑发票返回</p>
         :rtype: str
         """
         return self._BuildingName
@@ -35582,7 +35588,7 @@ class VatElectronicItemInfo(AbstractModel):
 
     @property
     def EstateNumber(self):
-        r"""产权证书/不动产权证号，仅不动产经营租赁服务发票返回
+        r"""<p>产权证书/不动产权证号，仅不动产经营租赁服务发票返回</p>
         :rtype: str
         """
         return self._EstateNumber
@@ -35593,7 +35599,7 @@ class VatElectronicItemInfo(AbstractModel):
 
     @property
     def AreaUnit(self):
-        r"""面积单位，仅不动产经营租赁服务发票返回
+        r"""<p>面积单位，仅不动产经营租赁服务发票返回</p>
         :rtype: str
         """
         return self._AreaUnit
@@ -35604,7 +35610,7 @@ class VatElectronicItemInfo(AbstractModel):
 
     @property
     def Traveler(self):
-        r"""出行人，仅旅客运输服务发票返回
+        r"""<p>出行人，仅旅客运输服务发票返回</p>
         :rtype: str
         """
         return self._Traveler
@@ -35615,7 +35621,7 @@ class VatElectronicItemInfo(AbstractModel):
 
     @property
     def TravelerID(self):
-        r"""有效身份证件号，仅旅客运输服务发票返回
+        r"""<p>有效身份证件号，仅旅客运输服务发票返回</p>
         :rtype: str
         """
         return self._TravelerID
@@ -35626,7 +35632,7 @@ class VatElectronicItemInfo(AbstractModel):
 
     @property
     def TravelDate(self):
-        r"""出行日期，仅旅客运输服务发票返回
+        r"""<p>出行日期，仅旅客运输服务发票返回</p>
         :rtype: str
         """
         return self._TravelDate
@@ -35637,7 +35643,7 @@ class VatElectronicItemInfo(AbstractModel):
 
     @property
     def TravelLevel(self):
-        r"""等级，仅旅客运输服务发票返回
+        r"""<p>等级，仅旅客运输服务发票返回</p>
         :rtype: str
         """
         return self._TravelLevel
@@ -35645,6 +35651,28 @@ class VatElectronicItemInfo(AbstractModel):
     @TravelLevel.setter
     def TravelLevel(self, TravelLevel):
         self._TravelLevel = TravelLevel
+
+    @property
+    def DateStart(self):
+        r"""<p>通行日期起</p>
+        :rtype: str
+        """
+        return self._DateStart
+
+    @DateStart.setter
+    def DateStart(self, DateStart):
+        self._DateStart = DateStart
+
+    @property
+    def DateEnd(self):
+        r"""<p>通行日期止</p>
+        :rtype: str
+        """
+        return self._DateEnd
+
+    @DateEnd.setter
+    def DateEnd(self, DateEnd):
+        self._DateEnd = DateEnd
 
 
     def _deserialize(self, params):
@@ -35669,6 +35697,8 @@ class VatElectronicItemInfo(AbstractModel):
         self._TravelerID = params.get("TravelerID")
         self._TravelDate = params.get("TravelDate")
         self._TravelLevel = params.get("TravelLevel")
+        self._DateStart = params.get("DateStart")
+        self._DateEnd = params.get("DateEnd")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -40460,7 +40490,7 @@ class VerifyScenePhotoRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Scene: <p>场景类型参数，如果场景无法细分请选用该大类的第一个子类，目前支持以下类型：<br><strong>经营场所照</strong><br>0101 门头照<br>0102 店内照<br>0103 流动经营照</p>
+        :param _Scene: <p>场景类型参数，如果场景无法细分请选用该大类的第一个子类，目前支持以下类型：<br><strong>经营场所照</strong><br>0101 门头照<br>0102 店内照<br>0103 流动经营照    </p><p><strong>车牌业务照</strong><br>0201 车牌</p>
         :type Scene: str
         :param _ImageUrl: <p>图片的 Url 地址。要求图片经Base64编码后不超过 10M。</p>
         :type ImageUrl: str
@@ -40473,7 +40503,7 @@ class VerifyScenePhotoRequest(AbstractModel):
 
     @property
     def Scene(self):
-        r"""<p>场景类型参数，如果场景无法细分请选用该大类的第一个子类，目前支持以下类型：<br><strong>经营场所照</strong><br>0101 门头照<br>0102 店内照<br>0103 流动经营照</p>
+        r"""<p>场景类型参数，如果场景无法细分请选用该大类的第一个子类，目前支持以下类型：<br><strong>经营场所照</strong><br>0101 门头照<br>0102 店内照<br>0103 流动经营照    </p><p><strong>车牌业务照</strong><br>0201 车牌</p>
         :rtype: str
         """
         return self._Scene

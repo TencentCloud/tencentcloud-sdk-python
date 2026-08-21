@@ -1327,19 +1327,19 @@ class CreateCfsFileSystemRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Zone: <p>可用区名称，例如ap-beijing-1，请参考 <a href="https://cloud.tencent.com/document/product/582/13225">概览</a> 文档中的地域与可用区列表</p>
+        :param _Zone: <p>可用区名称</p><p>取值参考：<a href="https://cloud.tencent.com/document/product/213/15707?">查询可用区列表</a></p>
         :type Zone: str
-        :param _NetInterface: <p>网络类型，可选值为 VPC，CCN；其中 VPC 为私有网络， CCN 为云联网。通用标准型/性能型请选择VPC，Turbo标准型/性能型请选择CCN。</p>
+        :param _NetInterface: <p>网络类型</p><p>枚举值：</p><ul><li><p>VPC： 私有网络</p></li><li><p>CCN： 云联网</p></li><li><p>通用标准型/性能型（含增强型）、吞吐型请选择VPC</p></li><li><p>Turbo标准型/性能型可选VPC或CCN</p></li><li><p>当 Scenario=AgentSandbox 时，即创建 AgentCFS时无需传入，传入将被忽略。</p></li></ul>
         :type NetInterface: str
-        :param _PGroupId: <p>权限组 ID,pgroupbasic 是默认权限组，通过控制查询权限组列表接口获取<a href="https://cloud.tencent.com/document/product/582/38157">DescribeCfsPGroups</a></p>
+        :param _PGroupId: <p>权限组 ID。权限组规定了一组可来访白名单及操作权限。</p><p>取值参考：<a href="https://cloud.tencent.com/document/api/582/38157">DescribeCfsPGroups</a></p><ul><li>pgroupbasic 为【默认权限组】，【默认权限组】允许所有IP地址访问及读写权限。 </li><li>注意：当 Scenario=AgentSandbox 时，即创建 AgentCFS ，必须传入 pgroupbasic【默认权限组】，传其他值报错。</li></ul>
         :type PGroupId: str
-        :param _Protocol: <p>文件系统协议类型， 值为 NFS、CIFS、TURBO ; 若留空则默认为 NFS协议，turbo系列必须选择TURBO，不支持NFS、CIFS</p>
+        :param _Protocol: <p>文件系统协议类型</p><p>枚举值：</p><ul><li>NFS： 通用标准型（含增强型）、通用性能型（含增强型）支持创建此协议的实例</li><li>CIFS： 即SMB协议，仅部分可用区的通用标准型、吞吐型支持此协议。</li><li>TURBO： Turbo标准型/Turbo性能型/AgentCFS是支持创建此协议的实例</li></ul><p>默认值：NFS</p>
         :type Protocol: str
-        :param _StorageType: <p>文件系统存储类型，默认值为 SD ；其中 SD 为通用标准型存储， HP为通用性能型存储， TB为Turbo标准型， TP 为Turbo性能型。</p>
+        :param _StorageType: <p>文件系统存储类型其中 SD 为通用标准型存储， HP为通用性能型存储， TB为Turbo标准型， TP 为Turbo性能型。</p><p>枚举值：</p><ul><li>SD： 通用标准型（含增强型）。通用标准型 version = v1.5，通用标准型（增强型） version = v3.1。</li><li>HP： 通用性能型（含增强型）。通用性能型 version = v1.5，通用性能型（增强型） version = v3.1。</li><li>TB： Turbo标准型</li><li>TP： Turbo性能型</li><li>THP： 吞吐型</li></ul><p>默认值：SD</p>
         :type StorageType: str
-        :param _VpcId: <p>私有网络（VPC） ID，若网络类型选择的是VPC，该字段为必填.通过查询私有网络接口获取，<br><a href="https://cloud.tencent.com/document/product/215/15778">DescribeVpcs</a></p>
+        :param _VpcId: <p>私有网络（VPC） ID，若网络类型选择的是VPC，该字段为必填。</p><p>取值参考：<a href="https://cloud.tencent.com/document/product/215/15778">查询VPC列表</a></p><p>当 Scenario=AgentSandbox 时，即创建 AgentCFS 时无需传入，传入将被忽略。</p>
         :type VpcId: str
-        :param _SubnetId: <p>子网 ID，若网络类型选择的是VPC，该字段为必填。通过查询子网接口获取，<br><a href="https://cloud.tencent.com/document/product/215/15784">DescribeSubnets</a></p>
+        :param _SubnetId: <p>子网 ID，若网络类型选择的是VPC，该字段为必填。</p><p>取值参考：<a href="https://cloud.tencent.com/document/product/215/15784">查询子网列表</a></p><p>当 Scenario=AgentSandbox 时，即创建 AgentCFS 时无需传入，传入将被忽略。</p>
         :type SubnetId: str
         :param _MountIP: <p>指定IP地址，仅VPC网络支持；若不填写、将在该子网下随机分配 IP，Turbo系列当前不支持指定</p>
         :type MountIP: str
@@ -1351,22 +1351,24 @@ class CreateCfsFileSystemRequest(AbstractModel):
         :type ResourceTags: list of TagInfo
         :param _ClientToken: <p>用于保证请求幂等性的字符串。该字符串由客户生成，需保证不同请求之间唯一，最大值不超过64个ASCII字符。若不指定该参数，则无法保证请求的幂等性。用于保证请求幂等性的字符串失效时间为2小时。</p>
         :type ClientToken: str
-        :param _CcnId: <p>云联网ID， 若网络类型选择的是CCN，该字段为必填;通过查询云联网列表接口获取，通过接口<br><a href="https://cloud.tencent.com/document/product/215/19199">DescribeCcns</a></p>
+        :param _CcnId: <p>云联网ID， 若网络类型选择的是CCN，该字段为必填</p><p>取值参考：<a href="https://cloud.tencent.com/document/product/215/19199">查询CCN列表</a></p><p>当 Scenario=AgentSandbox 时，即创建 AgentCFS 时无需传入，传入将被忽略</p>
         :type CcnId: str
-        :param _CidrBlock: <p>云联网中CFS使用的网段， 若网络类型选择的是Ccn，该字段为必填，且不能和Ccn中已经绑定的网段冲突</p>
+        :param _CidrBlock: <p>云联网中CFS使用的网段， 若网络类型选择的是CCN，该字段为必填，且不能和Ccn中已经绑定的网段冲突</p><p>当 Scenario=AgentSandbox 时，即创建 AgentCFS 时无需传入，传入将被忽略</p>
         :type CidrBlock: str
-        :param _Capacity: <p>文件系统容量，turbo系列必填，单位为GiB。 turbo标准型单位GB，起售20TiB，即20480 GiB；扩容步长10TiB，即10240 GiB。turbo性能型起售10TiB，即10240 GiB；扩容步长10TiB，10240 GiB。</p>
+        :param _Capacity: <p>文件系统容量，turbo系列必填</p><p>单位：GiB</p><p>Turbo标准型起售20TiB，即20480 GiB，扩容步长10TiB，即10240 GiB。Turbo性能型起售10TiB，即10240 GiB，扩容步长10TiB，即10240 GiB。</p>
         :type Capacity: int
-        :param _SnapshotId: <p>文件系统快照ID，通过查询快照列表获取该参数，<br><a href="https://cloud.tencent.com/document/product/582/80206">DescribeCfsSnapshots</a></p>
+        :param _SnapshotId: <p>文件系统快照 ID</p><p>取值参考：<a href="https://cloud.tencent.com/document/api/582/80206">DescribeCfsSnapshots</a></p>
         :type SnapshotId: str
-        :param _AutoSnapshotPolicyId: <p>定期快照策略ID，通过查询快照策略信息获取,<br><a href="https://cloud.tencent.com/document/product/582/38157">DescribeAutoSnapshotPolicies</a></p>
+        :param _AutoSnapshotPolicyId: <p>定期快照策略 ID</p><p>取值参考：<a href="https://cloud.tencent.com/document/api/582/80208">DescribeAutoSnapshotPolicies</a></p>
         :type AutoSnapshotPolicyId: str
-        :param _EnableAutoScaleUp: <p>是否开启默认扩容，仅turbo类型文件存储支持</p>
+        :param _EnableAutoScaleUp: <p>是否开启自动扩容策略，仅turbo类型文件存储支持</p>
         :type EnableAutoScaleUp: bool
-        :param _CfsVersion: <p>v1.5：创建普通版的通用文件系统；<br>v3.1：创建增强版的通用文件系统<br>说明：增强版的通用系统需要开通白名单才能使用，如有需要请提交工单与我们联系。</p>
+        :param _CfsVersion: <p>文件系统版本号。</p><p>枚举值：</p><ul><li>v1.5： 创建通用标准型/通用性能型文件系统</li><li>v3.1： 创建通用标准型（增强型）/通用性能型（增强型）文件系统，如需创建增强型，此为必填项。</li><li>v4.0： 创建Turbo标准型、Turbo性能型、吞吐型文件系统，非必填项</li></ul><p>创建通用标准型（增强型）、通用性能型（增强型）须加白主账号，如需使用请联系我们。</p>
         :type CfsVersion: str
-        :param _MetaType: <p>turbo文件系统元数据属性<br>basic：创建标准型的元数据<br>enhanced：创建增强型的元数据</p>
+        :param _MetaType: <p>turbo文件系统元数据类型</p><p>枚举值：</p><ul><li>basic： 创建标准版元数据。</li><li>enhanced： 创建增强版元数据</li></ul><p>详情参见<a href="https://cloud.tencent.com/document/product/582/116836">Turbo 文件系统元数据类型</a></p>
         :type MetaType: str
+        :param _Scenario: <p>业务场景。</p><p>枚举值：</p><ul><li>AgentSandbox： 创建 AgentCFS 时必传</li></ul>
+        :type Scenario: str
         """
         self._Zone = None
         self._NetInterface = None
@@ -1388,10 +1390,11 @@ class CreateCfsFileSystemRequest(AbstractModel):
         self._EnableAutoScaleUp = None
         self._CfsVersion = None
         self._MetaType = None
+        self._Scenario = None
 
     @property
     def Zone(self):
-        r"""<p>可用区名称，例如ap-beijing-1，请参考 <a href="https://cloud.tencent.com/document/product/582/13225">概览</a> 文档中的地域与可用区列表</p>
+        r"""<p>可用区名称</p><p>取值参考：<a href="https://cloud.tencent.com/document/product/213/15707?">查询可用区列表</a></p>
         :rtype: str
         """
         return self._Zone
@@ -1402,7 +1405,7 @@ class CreateCfsFileSystemRequest(AbstractModel):
 
     @property
     def NetInterface(self):
-        r"""<p>网络类型，可选值为 VPC，CCN；其中 VPC 为私有网络， CCN 为云联网。通用标准型/性能型请选择VPC，Turbo标准型/性能型请选择CCN。</p>
+        r"""<p>网络类型</p><p>枚举值：</p><ul><li><p>VPC： 私有网络</p></li><li><p>CCN： 云联网</p></li><li><p>通用标准型/性能型（含增强型）、吞吐型请选择VPC</p></li><li><p>Turbo标准型/性能型可选VPC或CCN</p></li><li><p>当 Scenario=AgentSandbox 时，即创建 AgentCFS时无需传入，传入将被忽略。</p></li></ul>
         :rtype: str
         """
         return self._NetInterface
@@ -1413,7 +1416,7 @@ class CreateCfsFileSystemRequest(AbstractModel):
 
     @property
     def PGroupId(self):
-        r"""<p>权限组 ID,pgroupbasic 是默认权限组，通过控制查询权限组列表接口获取<a href="https://cloud.tencent.com/document/product/582/38157">DescribeCfsPGroups</a></p>
+        r"""<p>权限组 ID。权限组规定了一组可来访白名单及操作权限。</p><p>取值参考：<a href="https://cloud.tencent.com/document/api/582/38157">DescribeCfsPGroups</a></p><ul><li>pgroupbasic 为【默认权限组】，【默认权限组】允许所有IP地址访问及读写权限。 </li><li>注意：当 Scenario=AgentSandbox 时，即创建 AgentCFS ，必须传入 pgroupbasic【默认权限组】，传其他值报错。</li></ul>
         :rtype: str
         """
         return self._PGroupId
@@ -1424,7 +1427,7 @@ class CreateCfsFileSystemRequest(AbstractModel):
 
     @property
     def Protocol(self):
-        r"""<p>文件系统协议类型， 值为 NFS、CIFS、TURBO ; 若留空则默认为 NFS协议，turbo系列必须选择TURBO，不支持NFS、CIFS</p>
+        r"""<p>文件系统协议类型</p><p>枚举值：</p><ul><li>NFS： 通用标准型（含增强型）、通用性能型（含增强型）支持创建此协议的实例</li><li>CIFS： 即SMB协议，仅部分可用区的通用标准型、吞吐型支持此协议。</li><li>TURBO： Turbo标准型/Turbo性能型/AgentCFS是支持创建此协议的实例</li></ul><p>默认值：NFS</p>
         :rtype: str
         """
         return self._Protocol
@@ -1435,7 +1438,7 @@ class CreateCfsFileSystemRequest(AbstractModel):
 
     @property
     def StorageType(self):
-        r"""<p>文件系统存储类型，默认值为 SD ；其中 SD 为通用标准型存储， HP为通用性能型存储， TB为Turbo标准型， TP 为Turbo性能型。</p>
+        r"""<p>文件系统存储类型其中 SD 为通用标准型存储， HP为通用性能型存储， TB为Turbo标准型， TP 为Turbo性能型。</p><p>枚举值：</p><ul><li>SD： 通用标准型（含增强型）。通用标准型 version = v1.5，通用标准型（增强型） version = v3.1。</li><li>HP： 通用性能型（含增强型）。通用性能型 version = v1.5，通用性能型（增强型） version = v3.1。</li><li>TB： Turbo标准型</li><li>TP： Turbo性能型</li><li>THP： 吞吐型</li></ul><p>默认值：SD</p>
         :rtype: str
         """
         return self._StorageType
@@ -1446,7 +1449,7 @@ class CreateCfsFileSystemRequest(AbstractModel):
 
     @property
     def VpcId(self):
-        r"""<p>私有网络（VPC） ID，若网络类型选择的是VPC，该字段为必填.通过查询私有网络接口获取，<br><a href="https://cloud.tencent.com/document/product/215/15778">DescribeVpcs</a></p>
+        r"""<p>私有网络（VPC） ID，若网络类型选择的是VPC，该字段为必填。</p><p>取值参考：<a href="https://cloud.tencent.com/document/product/215/15778">查询VPC列表</a></p><p>当 Scenario=AgentSandbox 时，即创建 AgentCFS 时无需传入，传入将被忽略。</p>
         :rtype: str
         """
         return self._VpcId
@@ -1457,7 +1460,7 @@ class CreateCfsFileSystemRequest(AbstractModel):
 
     @property
     def SubnetId(self):
-        r"""<p>子网 ID，若网络类型选择的是VPC，该字段为必填。通过查询子网接口获取，<br><a href="https://cloud.tencent.com/document/product/215/15784">DescribeSubnets</a></p>
+        r"""<p>子网 ID，若网络类型选择的是VPC，该字段为必填。</p><p>取值参考：<a href="https://cloud.tencent.com/document/product/215/15784">查询子网列表</a></p><p>当 Scenario=AgentSandbox 时，即创建 AgentCFS 时无需传入，传入将被忽略。</p>
         :rtype: str
         """
         return self._SubnetId
@@ -1523,7 +1526,7 @@ class CreateCfsFileSystemRequest(AbstractModel):
 
     @property
     def CcnId(self):
-        r"""<p>云联网ID， 若网络类型选择的是CCN，该字段为必填;通过查询云联网列表接口获取，通过接口<br><a href="https://cloud.tencent.com/document/product/215/19199">DescribeCcns</a></p>
+        r"""<p>云联网ID， 若网络类型选择的是CCN，该字段为必填</p><p>取值参考：<a href="https://cloud.tencent.com/document/product/215/19199">查询CCN列表</a></p><p>当 Scenario=AgentSandbox 时，即创建 AgentCFS 时无需传入，传入将被忽略</p>
         :rtype: str
         """
         return self._CcnId
@@ -1534,7 +1537,7 @@ class CreateCfsFileSystemRequest(AbstractModel):
 
     @property
     def CidrBlock(self):
-        r"""<p>云联网中CFS使用的网段， 若网络类型选择的是Ccn，该字段为必填，且不能和Ccn中已经绑定的网段冲突</p>
+        r"""<p>云联网中CFS使用的网段， 若网络类型选择的是CCN，该字段为必填，且不能和Ccn中已经绑定的网段冲突</p><p>当 Scenario=AgentSandbox 时，即创建 AgentCFS 时无需传入，传入将被忽略</p>
         :rtype: str
         """
         return self._CidrBlock
@@ -1545,7 +1548,7 @@ class CreateCfsFileSystemRequest(AbstractModel):
 
     @property
     def Capacity(self):
-        r"""<p>文件系统容量，turbo系列必填，单位为GiB。 turbo标准型单位GB，起售20TiB，即20480 GiB；扩容步长10TiB，即10240 GiB。turbo性能型起售10TiB，即10240 GiB；扩容步长10TiB，10240 GiB。</p>
+        r"""<p>文件系统容量，turbo系列必填</p><p>单位：GiB</p><p>Turbo标准型起售20TiB，即20480 GiB，扩容步长10TiB，即10240 GiB。Turbo性能型起售10TiB，即10240 GiB，扩容步长10TiB，即10240 GiB。</p>
         :rtype: int
         """
         return self._Capacity
@@ -1556,7 +1559,7 @@ class CreateCfsFileSystemRequest(AbstractModel):
 
     @property
     def SnapshotId(self):
-        r"""<p>文件系统快照ID，通过查询快照列表获取该参数，<br><a href="https://cloud.tencent.com/document/product/582/80206">DescribeCfsSnapshots</a></p>
+        r"""<p>文件系统快照 ID</p><p>取值参考：<a href="https://cloud.tencent.com/document/api/582/80206">DescribeCfsSnapshots</a></p>
         :rtype: str
         """
         return self._SnapshotId
@@ -1567,7 +1570,7 @@ class CreateCfsFileSystemRequest(AbstractModel):
 
     @property
     def AutoSnapshotPolicyId(self):
-        r"""<p>定期快照策略ID，通过查询快照策略信息获取,<br><a href="https://cloud.tencent.com/document/product/582/38157">DescribeAutoSnapshotPolicies</a></p>
+        r"""<p>定期快照策略 ID</p><p>取值参考：<a href="https://cloud.tencent.com/document/api/582/80208">DescribeAutoSnapshotPolicies</a></p>
         :rtype: str
         """
         return self._AutoSnapshotPolicyId
@@ -1578,7 +1581,7 @@ class CreateCfsFileSystemRequest(AbstractModel):
 
     @property
     def EnableAutoScaleUp(self):
-        r"""<p>是否开启默认扩容，仅turbo类型文件存储支持</p>
+        r"""<p>是否开启自动扩容策略，仅turbo类型文件存储支持</p>
         :rtype: bool
         """
         return self._EnableAutoScaleUp
@@ -1589,7 +1592,7 @@ class CreateCfsFileSystemRequest(AbstractModel):
 
     @property
     def CfsVersion(self):
-        r"""<p>v1.5：创建普通版的通用文件系统；<br>v3.1：创建增强版的通用文件系统<br>说明：增强版的通用系统需要开通白名单才能使用，如有需要请提交工单与我们联系。</p>
+        r"""<p>文件系统版本号。</p><p>枚举值：</p><ul><li>v1.5： 创建通用标准型/通用性能型文件系统</li><li>v3.1： 创建通用标准型（增强型）/通用性能型（增强型）文件系统，如需创建增强型，此为必填项。</li><li>v4.0： 创建Turbo标准型、Turbo性能型、吞吐型文件系统，非必填项</li></ul><p>创建通用标准型（增强型）、通用性能型（增强型）须加白主账号，如需使用请联系我们。</p>
         :rtype: str
         """
         return self._CfsVersion
@@ -1600,7 +1603,7 @@ class CreateCfsFileSystemRequest(AbstractModel):
 
     @property
     def MetaType(self):
-        r"""<p>turbo文件系统元数据属性<br>basic：创建标准型的元数据<br>enhanced：创建增强型的元数据</p>
+        r"""<p>turbo文件系统元数据类型</p><p>枚举值：</p><ul><li>basic： 创建标准版元数据。</li><li>enhanced： 创建增强版元数据</li></ul><p>详情参见<a href="https://cloud.tencent.com/document/product/582/116836">Turbo 文件系统元数据类型</a></p>
         :rtype: str
         """
         return self._MetaType
@@ -1608,6 +1611,17 @@ class CreateCfsFileSystemRequest(AbstractModel):
     @MetaType.setter
     def MetaType(self, MetaType):
         self._MetaType = MetaType
+
+    @property
+    def Scenario(self):
+        r"""<p>业务场景。</p><p>枚举值：</p><ul><li>AgentSandbox： 创建 AgentCFS 时必传</li></ul>
+        :rtype: str
+        """
+        return self._Scenario
+
+    @Scenario.setter
+    def Scenario(self, Scenario):
+        self._Scenario = Scenario
 
 
     def _deserialize(self, params):
@@ -1636,6 +1650,7 @@ class CreateCfsFileSystemRequest(AbstractModel):
         self._EnableAutoScaleUp = params.get("EnableAutoScaleUp")
         self._CfsVersion = params.get("CfsVersion")
         self._MetaType = params.get("MetaType")
+        self._Scenario = params.get("Scenario")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7753,73 +7768,65 @@ class FileSystemInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _CreationTime: 创建时间
+        :param _CreationTime: <p>创建时间</p>
         :type CreationTime: str
-        :param _CreationToken: 用户自定义名称
+        :param _CreationToken: <p>用户自定义名称</p>
         :type CreationToken: str
-        :param _FileSystemId: 文件系统 ID
+        :param _FileSystemId: <p>文件系统 ID</p>
         :type FileSystemId: str
-        :param _LifeCycleState: 文件系统状态。取值范围：
-- creating:创建中
-- mounting:挂载中
-- create_failed:创建失败
-- available:可使用
-- unserviced:停服中
-- upgrading:升级中
+        :param _LifeCycleState: <p>文件系统状态。取值范围：</p><ul><li>creating:创建中</li><li>mounting:挂载中</li><li>create_failed:创建失败</li><li>available:可使用</li><li>unserviced:停服中</li><li>upgrading:升级中</li></ul>
         :type LifeCycleState: str
-        :param _SizeByte: 文件系统已使用容量。单位：Byte
+        :param _SizeByte: <p>文件系统已使用容量。单位：Byte</p>
         :type SizeByte: int
-        :param _SizeLimit: 文件系统空间限制。单位:GiB
+        :param _SizeLimit: <p>文件系统空间限制。单位:GiB</p>
         :type SizeLimit: int
-        :param _ZoneId: 区域 ID
+        :param _ZoneId: <p>区域 ID</p>
         :type ZoneId: int
-        :param _Zone: 区域名称
+        :param _Zone: <p>区域名称</p>
         :type Zone: str
-        :param _Protocol: 文件系统协议类型, 支持 NFS,CIFS,TURBO
+        :param _Protocol: <p>文件系统协议类型, 支持 NFS,CIFS,TURBO</p>
         :type Protocol: str
-        :param _StorageType: 存储类型，HP：通用性能型；SD：通用标准型；TP:turbo性能型；TB：turbo标准型；THP：吞吐型
+        :param _StorageType: <p>存储类型，HP：通用性能型；SD：通用标准型；TP:turbo性能型；TB：turbo标准型；THP：吞吐型</p>
         :type StorageType: str
-        :param _StorageResourcePkg: 文件系统绑定的预付费存储包
+        :param _StorageResourcePkg: <p>文件系统绑定的预付费存储包</p>
         :type StorageResourcePkg: str
-        :param _BandwidthResourcePkg: 文件系统绑定的预付费带宽包（暂未支持）
+        :param _BandwidthResourcePkg: <p>文件系统绑定的预付费带宽包（暂未支持）</p>
         :type BandwidthResourcePkg: str
-        :param _PGroup: 文件系统绑定权限组信息
+        :param _PGroup: <p>文件系统绑定权限组信息</p>
         :type PGroup: :class:`tencentcloud.cfs.v20190719.models.PGroup`
-        :param _FsName: 用户自定义名称
+        :param _FsName: <p>用户自定义名称</p>
         :type FsName: str
-        :param _Encrypted: 文件系统是否加密,true：代表加密，false：非加密
+        :param _Encrypted: <p>文件系统是否加密,true：代表加密，false：非加密</p>
         :type Encrypted: bool
-        :param _KmsKeyId: 加密所使用的密钥，可以为密钥的 ID 或者 ARN
+        :param _KmsKeyId: <p>加密所使用的密钥，可以为密钥的 ID 或者 ARN</p>
         :type KmsKeyId: str
-        :param _AppId: 应用ID
+        :param _AppId: <p>应用ID</p>
         :type AppId: int
-        :param _BandwidthLimit: 文件系统吞吐上限，吞吐上限是根据文件系统当前已使用存储量、绑定的存储资源包以及吞吐资源包一同确定. 单位MiB/s
+        :param _BandwidthLimit: <p>文件系统吞吐上限，吞吐上限是根据文件系统当前已使用存储量、绑定的存储资源包以及吞吐资源包一同确定. 单位MiB/s</p>
         :type BandwidthLimit: float
-        :param _AutoSnapshotPolicyId: 文件系统关联的快照策略
+        :param _AutoSnapshotPolicyId: <p>文件系统关联的快照策略</p>
         :type AutoSnapshotPolicyId: str
-        :param _SnapStatus: 文件系统处理快照状态,snapping：快照中，normal：正常状态
+        :param _SnapStatus: <p>文件系统处理快照状态,snapping：快照中，normal：正常状态</p>
         :type SnapStatus: str
-        :param _Capacity: 文件系统容量规格上限
-单位:GiB
+        :param _Capacity: <p>文件系统容量规格上限<br>单位:GiB</p>
         :type Capacity: int
-        :param _Tags: 文件系统标签列表
+        :param _Tags: <p>文件系统标签列表</p>
         :type Tags: list of TagInfo
-        :param _TieringState: 文件系统生命周期管理状态
-NotAvailable：不可用
-Available:可用
+        :param _TieringState: <p>文件系统生命周期管理状态<br>NotAvailable：不可用<br>Available:可用</p>
         :type TieringState: str
-        :param _TieringDetail: 分层存储详情
+        :param _TieringDetail: <p>分层存储详情</p>
         :type TieringDetail: :class:`tencentcloud.cfs.v20190719.models.TieringDetailInfo`
-        :param _AutoScaleUpRule: 文件系统自动扩容策略
+        :param _AutoScaleUpRule: <p>文件系统自动扩容策略</p>
         :type AutoScaleUpRule: :class:`tencentcloud.cfs.v20190719.models.AutoScaleUpRule`
-        :param _Version: 文件系统版本
+        :param _Version: <p>文件系统版本</p>
         :type Version: str
-        :param _ExstraPerformanceInfo: 额外性能信息
+        :param _ExstraPerformanceInfo: <p>额外性能信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ExstraPerformanceInfo: list of ExstraPerformanceInfo
-        :param _MetaType: basic：标准版元数据类型
-enhanced：增项版元数据类型
+        :param _MetaType: <p>basic：标准版元数据类型<br>enhanced：增项版元数据类型</p>
         :type MetaType: str
+        :param _Scenario: <p>业务场景。</p><p>枚举值：</p><ul><li>AgentSandbox： 创建 AgentCFS</li></ul>
+        :type Scenario: str
         """
         self._CreationTime = None
         self._CreationToken = None
@@ -7849,10 +7856,11 @@ enhanced：增项版元数据类型
         self._Version = None
         self._ExstraPerformanceInfo = None
         self._MetaType = None
+        self._Scenario = None
 
     @property
     def CreationTime(self):
-        r"""创建时间
+        r"""<p>创建时间</p>
         :rtype: str
         """
         return self._CreationTime
@@ -7863,7 +7871,7 @@ enhanced：增项版元数据类型
 
     @property
     def CreationToken(self):
-        r"""用户自定义名称
+        r"""<p>用户自定义名称</p>
         :rtype: str
         """
         return self._CreationToken
@@ -7874,7 +7882,7 @@ enhanced：增项版元数据类型
 
     @property
     def FileSystemId(self):
-        r"""文件系统 ID
+        r"""<p>文件系统 ID</p>
         :rtype: str
         """
         return self._FileSystemId
@@ -7885,13 +7893,7 @@ enhanced：增项版元数据类型
 
     @property
     def LifeCycleState(self):
-        r"""文件系统状态。取值范围：
-- creating:创建中
-- mounting:挂载中
-- create_failed:创建失败
-- available:可使用
-- unserviced:停服中
-- upgrading:升级中
+        r"""<p>文件系统状态。取值范围：</p><ul><li>creating:创建中</li><li>mounting:挂载中</li><li>create_failed:创建失败</li><li>available:可使用</li><li>unserviced:停服中</li><li>upgrading:升级中</li></ul>
         :rtype: str
         """
         return self._LifeCycleState
@@ -7902,7 +7904,7 @@ enhanced：增项版元数据类型
 
     @property
     def SizeByte(self):
-        r"""文件系统已使用容量。单位：Byte
+        r"""<p>文件系统已使用容量。单位：Byte</p>
         :rtype: int
         """
         return self._SizeByte
@@ -7913,7 +7915,7 @@ enhanced：增项版元数据类型
 
     @property
     def SizeLimit(self):
-        r"""文件系统空间限制。单位:GiB
+        r"""<p>文件系统空间限制。单位:GiB</p>
         :rtype: int
         """
         return self._SizeLimit
@@ -7924,7 +7926,7 @@ enhanced：增项版元数据类型
 
     @property
     def ZoneId(self):
-        r"""区域 ID
+        r"""<p>区域 ID</p>
         :rtype: int
         """
         return self._ZoneId
@@ -7935,7 +7937,7 @@ enhanced：增项版元数据类型
 
     @property
     def Zone(self):
-        r"""区域名称
+        r"""<p>区域名称</p>
         :rtype: str
         """
         return self._Zone
@@ -7946,7 +7948,7 @@ enhanced：增项版元数据类型
 
     @property
     def Protocol(self):
-        r"""文件系统协议类型, 支持 NFS,CIFS,TURBO
+        r"""<p>文件系统协议类型, 支持 NFS,CIFS,TURBO</p>
         :rtype: str
         """
         return self._Protocol
@@ -7957,7 +7959,7 @@ enhanced：增项版元数据类型
 
     @property
     def StorageType(self):
-        r"""存储类型，HP：通用性能型；SD：通用标准型；TP:turbo性能型；TB：turbo标准型；THP：吞吐型
+        r"""<p>存储类型，HP：通用性能型；SD：通用标准型；TP:turbo性能型；TB：turbo标准型；THP：吞吐型</p>
         :rtype: str
         """
         return self._StorageType
@@ -7968,7 +7970,7 @@ enhanced：增项版元数据类型
 
     @property
     def StorageResourcePkg(self):
-        r"""文件系统绑定的预付费存储包
+        r"""<p>文件系统绑定的预付费存储包</p>
         :rtype: str
         """
         return self._StorageResourcePkg
@@ -7979,7 +7981,7 @@ enhanced：增项版元数据类型
 
     @property
     def BandwidthResourcePkg(self):
-        r"""文件系统绑定的预付费带宽包（暂未支持）
+        r"""<p>文件系统绑定的预付费带宽包（暂未支持）</p>
         :rtype: str
         """
         return self._BandwidthResourcePkg
@@ -7990,7 +7992,7 @@ enhanced：增项版元数据类型
 
     @property
     def PGroup(self):
-        r"""文件系统绑定权限组信息
+        r"""<p>文件系统绑定权限组信息</p>
         :rtype: :class:`tencentcloud.cfs.v20190719.models.PGroup`
         """
         return self._PGroup
@@ -8001,7 +8003,7 @@ enhanced：增项版元数据类型
 
     @property
     def FsName(self):
-        r"""用户自定义名称
+        r"""<p>用户自定义名称</p>
         :rtype: str
         """
         return self._FsName
@@ -8012,7 +8014,7 @@ enhanced：增项版元数据类型
 
     @property
     def Encrypted(self):
-        r"""文件系统是否加密,true：代表加密，false：非加密
+        r"""<p>文件系统是否加密,true：代表加密，false：非加密</p>
         :rtype: bool
         """
         return self._Encrypted
@@ -8023,7 +8025,7 @@ enhanced：增项版元数据类型
 
     @property
     def KmsKeyId(self):
-        r"""加密所使用的密钥，可以为密钥的 ID 或者 ARN
+        r"""<p>加密所使用的密钥，可以为密钥的 ID 或者 ARN</p>
         :rtype: str
         """
         return self._KmsKeyId
@@ -8034,7 +8036,7 @@ enhanced：增项版元数据类型
 
     @property
     def AppId(self):
-        r"""应用ID
+        r"""<p>应用ID</p>
         :rtype: int
         """
         return self._AppId
@@ -8045,7 +8047,7 @@ enhanced：增项版元数据类型
 
     @property
     def BandwidthLimit(self):
-        r"""文件系统吞吐上限，吞吐上限是根据文件系统当前已使用存储量、绑定的存储资源包以及吞吐资源包一同确定. 单位MiB/s
+        r"""<p>文件系统吞吐上限，吞吐上限是根据文件系统当前已使用存储量、绑定的存储资源包以及吞吐资源包一同确定. 单位MiB/s</p>
         :rtype: float
         """
         return self._BandwidthLimit
@@ -8056,7 +8058,7 @@ enhanced：增项版元数据类型
 
     @property
     def AutoSnapshotPolicyId(self):
-        r"""文件系统关联的快照策略
+        r"""<p>文件系统关联的快照策略</p>
         :rtype: str
         """
         return self._AutoSnapshotPolicyId
@@ -8067,7 +8069,7 @@ enhanced：增项版元数据类型
 
     @property
     def SnapStatus(self):
-        r"""文件系统处理快照状态,snapping：快照中，normal：正常状态
+        r"""<p>文件系统处理快照状态,snapping：快照中，normal：正常状态</p>
         :rtype: str
         """
         return self._SnapStatus
@@ -8078,8 +8080,7 @@ enhanced：增项版元数据类型
 
     @property
     def Capacity(self):
-        r"""文件系统容量规格上限
-单位:GiB
+        r"""<p>文件系统容量规格上限<br>单位:GiB</p>
         :rtype: int
         """
         return self._Capacity
@@ -8090,7 +8091,7 @@ enhanced：增项版元数据类型
 
     @property
     def Tags(self):
-        r"""文件系统标签列表
+        r"""<p>文件系统标签列表</p>
         :rtype: list of TagInfo
         """
         return self._Tags
@@ -8101,9 +8102,7 @@ enhanced：增项版元数据类型
 
     @property
     def TieringState(self):
-        r"""文件系统生命周期管理状态
-NotAvailable：不可用
-Available:可用
+        r"""<p>文件系统生命周期管理状态<br>NotAvailable：不可用<br>Available:可用</p>
         :rtype: str
         """
         return self._TieringState
@@ -8114,7 +8113,7 @@ Available:可用
 
     @property
     def TieringDetail(self):
-        r"""分层存储详情
+        r"""<p>分层存储详情</p>
         :rtype: :class:`tencentcloud.cfs.v20190719.models.TieringDetailInfo`
         """
         return self._TieringDetail
@@ -8125,7 +8124,7 @@ Available:可用
 
     @property
     def AutoScaleUpRule(self):
-        r"""文件系统自动扩容策略
+        r"""<p>文件系统自动扩容策略</p>
         :rtype: :class:`tencentcloud.cfs.v20190719.models.AutoScaleUpRule`
         """
         return self._AutoScaleUpRule
@@ -8136,7 +8135,7 @@ Available:可用
 
     @property
     def Version(self):
-        r"""文件系统版本
+        r"""<p>文件系统版本</p>
         :rtype: str
         """
         return self._Version
@@ -8147,7 +8146,7 @@ Available:可用
 
     @property
     def ExstraPerformanceInfo(self):
-        r"""额外性能信息
+        r"""<p>额外性能信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ExstraPerformanceInfo
         """
@@ -8159,8 +8158,7 @@ Available:可用
 
     @property
     def MetaType(self):
-        r"""basic：标准版元数据类型
-enhanced：增项版元数据类型
+        r"""<p>basic：标准版元数据类型<br>enhanced：增项版元数据类型</p>
         :rtype: str
         """
         return self._MetaType
@@ -8168,6 +8166,17 @@ enhanced：增项版元数据类型
     @MetaType.setter
     def MetaType(self, MetaType):
         self._MetaType = MetaType
+
+    @property
+    def Scenario(self):
+        r"""<p>业务场景。</p><p>枚举值：</p><ul><li>AgentSandbox： 创建 AgentCFS</li></ul>
+        :rtype: str
+        """
+        return self._Scenario
+
+    @Scenario.setter
+    def Scenario(self, Scenario):
+        self._Scenario = Scenario
 
 
     def _deserialize(self, params):
@@ -8215,6 +8224,7 @@ enhanced：增项版元数据类型
                 obj._deserialize(item)
                 self._ExstraPerformanceInfo.append(obj)
         self._MetaType = params.get("MetaType")
+        self._Scenario = params.get("Scenario")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

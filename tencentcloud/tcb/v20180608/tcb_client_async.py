@@ -81,6 +81,26 @@ class TcbClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def BindCls(
+            self,
+            request: models.BindClsRequest,
+            opts: Dict = None,
+    ) -> models.BindClsResponse:
+        """
+        绑定自定义CLS日志主题
+
+        **绑定自定义 CLS 日志主题需调用腾讯云 CLS「[DescribeTopics](https://cloud.tencent.com/document/api/614/56454)」接口，按传入的 `Region` 拉取用户日志主题列表，仅筛选 `AssumerName` 为空的自有主题，并将其 `LogsetId`、`TopicId` 分别回填为绑定参数 `ClsLogsetId`、`ClsTopicId`（地域取请求参数 `Region` 作为 `ClsRegion`）。**
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "BindCls"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.BindClsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def BindStorageSource(
             self,
             request: models.BindStorageSourceRequest,

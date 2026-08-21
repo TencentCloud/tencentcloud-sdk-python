@@ -1197,6 +1197,24 @@ class IotexplorerClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DeleteTWeSeeTasksByCondition(
+            self,
+            request: models.DeleteTWeSeeTasksByConditionRequest,
+            opts: Dict = None,
+    ) -> models.DeleteTWeSeeTasksByConditionResponse:
+        """
+        按条件删除指定设备和算法类目下的 TWeSee 任务及其关联数据。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteTWeSeeTasksByCondition"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteTWeSeeTasksByConditionResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DeleteTWeTalkAIBot(
             self,
             request: models.DeleteTWeTalkAIBotRequest,

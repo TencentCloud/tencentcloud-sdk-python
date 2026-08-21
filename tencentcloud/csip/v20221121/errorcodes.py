@@ -23,6 +23,9 @@ DRYRUNOPERATION = 'DryRunOperation'
 # 操作失败。
 FAILEDOPERATION = 'FailedOperation'
 
+# FailedOperation.APIServerFail
+FAILEDOPERATION_APISERVERFAIL = 'FailedOperation.APIServerFail'
+
 # FailedOperation.DasbAmountNotEnough
 FAILEDOPERATION_DASBAMOUNTNOTENOUGH = 'FailedOperation.DasbAmountNotEnough'
 
@@ -53,8 +56,14 @@ INVALIDPARAMETER_DATERANGE = 'InvalidParameter.DateRange'
 # Decrypt error
 INVALIDPARAMETER_DECRYPTERROR = 'InvalidParameter.DecryptError'
 
+# InvalidParameter.DuplicateParameters
+INVALIDPARAMETER_DUPLICATEPARAMETERS = 'InvalidParameter.DuplicateParameters'
+
 # InvalidParameter.IllegalRequest
 INVALIDPARAMETER_ILLEGALREQUEST = 'InvalidParameter.IllegalRequest'
+
+# InvalidParameter.InstanceNotExist
+INVALIDPARAMETER_INSTANCENOTEXIST = 'InvalidParameter.InstanceNotExist'
 
 # InvalidParameter.InvalidFormat
 INVALIDPARAMETER_INVALIDFORMAT = 'InvalidParameter.InvalidFormat'
@@ -71,6 +80,9 @@ INVALIDPARAMETER_REGEXRULEERROR = 'InvalidParameter.RegexRuleError'
 # InvalidParameter.ResourceId
 INVALIDPARAMETER_RESOURCEID = 'InvalidParameter.ResourceId'
 
+# InvalidParameter.ResourceIdError
+INVALIDPARAMETER_RESOURCEIDERROR = 'InvalidParameter.ResourceIdError'
+
 # InvalidParameter.ReverShellKeyFieldAllEmpty
 INVALIDPARAMETER_REVERSHELLKEYFIELDALLEMPTY = 'InvalidParameter.ReverShellKeyFieldAllEmpty'
 
@@ -79,6 +91,12 @@ INVALIDPARAMETER_RULEHOSTDUPLICATEERR = 'InvalidParameter.RuleHostDuplicateErr'
 
 # InvalidParameter.RuleHostipErr
 INVALIDPARAMETER_RULEHOSTIPERR = 'InvalidParameter.RuleHostipErr'
+
+# InvalidParameter.TopicNotExist
+INVALIDPARAMETER_TOPICNOTEXIST = 'InvalidParameter.TopicNotExist'
+
+# 无效参数组合
+INVALIDPARAMETERCOMBINATION = 'InvalidParameterCombination'
 
 # 参数取值错误。
 INVALIDPARAMETERVALUE = 'InvalidParameterValue'

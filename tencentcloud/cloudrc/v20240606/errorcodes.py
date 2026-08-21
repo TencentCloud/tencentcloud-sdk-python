@@ -1,5 +1,5 @@
-# -*- coding: utf-8 -*-
-# Copyright 1999-2018 Tencent Ltd.
+# -*- coding: utf8 -*-
+# Copyright (c) 2017-2025 Tencent. All Rights Reserved.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -14,4 +14,11 @@
 # limitations under the License.
 
 
-__version__ = '3.1.162'
+# Api参数校验不通过
+INVALIDPARAMETER_APIPARAMERROR = 'InvalidParameter.ApiParamError'
+
+# 资源ID不存在
+RESOURCENOTFOUND_RESOURCEIDNOTFOUND = 'ResourceNotFound.ResourceIdNotFound'
+
+# 视图ID不存在
+RESOURCENOTFOUND_VIEWIDNOTFOUND = 'ResourceNotFound.ViewIdNotFound'

@@ -249,7 +249,7 @@ class VodClient(AbstractClient):
 
 
     def CreateAigcApiToken(self, request):
-        r"""创建AIGC调用API的Token。创建后数据同步有延时，约30秒后可查询或删除。
+        r"""创建 AIGC 调用 API 的 Token。创建后数据同步有延时，约30秒后可查询或删除。
 
         :param request: Request instance for CreateAigcApiToken.
         :type request: :class:`tencentcloud.vod.v20180717.models.CreateAigcApiTokenRequest`
@@ -295,7 +295,7 @@ class VodClient(AbstractClient):
 
 
     def CreateAigcAudioTask(self, request):
-        r"""调用该接口，用于创建AI生音频任务。
+        r"""调用该接口，用于创建 AI 生音频任务。
 
         :param request: Request instance for CreateAigcAudioTask.
         :type request: :class:`tencentcloud.vod.v20180717.models.CreateAigcAudioTaskRequest`
@@ -1392,7 +1392,7 @@ class VodClient(AbstractClient):
 
 
     def DeleteAigcApiToken(self, request):
-        r"""删除 AIGC API Token
+        r"""删除 AIGC API Token。与该 Token 关联的 AIGC 配额也会被删除。
 
         :param request: Request instance for DeleteAigcApiToken.
         :type request: :class:`tencentcloud.vod.v20180717.models.DeleteAigcApiTokenRequest`

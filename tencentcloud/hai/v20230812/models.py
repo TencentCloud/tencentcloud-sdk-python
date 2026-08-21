@@ -304,23 +304,23 @@ class ComputeDetail(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _BundleType: 算力套餐ID
+        :param _BundleType: <p>算力套餐ID</p>
         :type BundleType: str
-        :param _Count: 节点数量
+        :param _Count: <p>节点数量</p>
         :type Count: int
-        :param _GPUCount: 显卡数量
+        :param _GPUCount: <p>显卡数量</p>
         :type GPUCount: str
-        :param _GPUMemory: 显存
+        :param _GPUMemory: <p>显存</p>
         :type GPUMemory: str
-        :param _GPUPerformance: 算力
+        :param _GPUPerformance: <p>算力</p>
         :type GPUPerformance: str
-        :param _CPU: CPU核数
+        :param _CPU: <p>CPU核数</p>
         :type CPU: str
-        :param _Memory: 内存
+        :param _Memory: <p>内存</p>
         :type Memory: str
-        :param _PrepaidEnable: 该套餐是否支持包年包月
+        :param _PrepaidEnable: <p>该套餐是否支持包年包月</p>
         :type PrepaidEnable: bool
-        :param _PostpaidEnable: 该套餐是否支持按量计费
+        :param _PostpaidEnable: <p>该套餐是否支持按量计费</p>
         :type PostpaidEnable: bool
         """
         self._BundleType = None
@@ -335,7 +335,7 @@ class ComputeDetail(AbstractModel):
 
     @property
     def BundleType(self):
-        r"""算力套餐ID
+        r"""<p>算力套餐ID</p>
         :rtype: str
         """
         return self._BundleType
@@ -346,7 +346,7 @@ class ComputeDetail(AbstractModel):
 
     @property
     def Count(self):
-        r"""节点数量
+        r"""<p>节点数量</p>
         :rtype: int
         """
         return self._Count
@@ -357,7 +357,7 @@ class ComputeDetail(AbstractModel):
 
     @property
     def GPUCount(self):
-        r"""显卡数量
+        r"""<p>显卡数量</p>
         :rtype: str
         """
         return self._GPUCount
@@ -368,7 +368,7 @@ class ComputeDetail(AbstractModel):
 
     @property
     def GPUMemory(self):
-        r"""显存
+        r"""<p>显存</p>
         :rtype: str
         """
         return self._GPUMemory
@@ -379,7 +379,7 @@ class ComputeDetail(AbstractModel):
 
     @property
     def GPUPerformance(self):
-        r"""算力
+        r"""<p>算力</p>
         :rtype: str
         """
         return self._GPUPerformance
@@ -390,7 +390,7 @@ class ComputeDetail(AbstractModel):
 
     @property
     def CPU(self):
-        r"""CPU核数
+        r"""<p>CPU核数</p>
         :rtype: str
         """
         return self._CPU
@@ -401,7 +401,7 @@ class ComputeDetail(AbstractModel):
 
     @property
     def Memory(self):
-        r"""内存
+        r"""<p>内存</p>
         :rtype: str
         """
         return self._Memory
@@ -412,7 +412,7 @@ class ComputeDetail(AbstractModel):
 
     @property
     def PrepaidEnable(self):
-        r"""该套餐是否支持包年包月
+        r"""<p>该套餐是否支持包年包月</p>
         :rtype: bool
         """
         return self._PrepaidEnable
@@ -423,7 +423,7 @@ class ComputeDetail(AbstractModel):
 
     @property
     def PostpaidEnable(self):
-        r"""该套餐是否支持按量计费
+        r"""<p>该套餐是否支持按量计费</p>
         :rtype: bool
         """
         return self._PostpaidEnable
@@ -2601,10 +2601,13 @@ class DescribeServicesRequest(AbstractModel):
         :type Limit: int
         :param _Offset: <p>偏移量</p>
         :type Offset: int
+        :param _States: <p>实例状态</p><p>枚举值：</p><ul><li>RUNNING： 运行中</li><li>CREATING： 创建中</li><li>CREATE_FAILED： 部署失败</li><li>DELETING： 删除中</li><li>UPDATING： 更新中</li><li>RESTARTING： 重启中</li><li>ISOLATING： 隔离中</li><li>ARREARS： 欠费中</li><li>RESTORING： 冲正恢复中</li></ul>
+        :type States: list of str
         """
         self._ServiceIds = None
         self._Limit = None
         self._Offset = None
+        self._States = None
 
     @property
     def ServiceIds(self):
@@ -2639,11 +2642,23 @@ class DescribeServicesRequest(AbstractModel):
     def Offset(self, Offset):
         self._Offset = Offset
 
+    @property
+    def States(self):
+        r"""<p>实例状态</p><p>枚举值：</p><ul><li>RUNNING： 运行中</li><li>CREATING： 创建中</li><li>CREATE_FAILED： 部署失败</li><li>DELETING： 删除中</li><li>UPDATING： 更新中</li><li>RESTARTING： 重启中</li><li>ISOLATING： 隔离中</li><li>ARREARS： 欠费中</li><li>RESTORING： 冲正恢复中</li></ul>
+        :rtype: list of str
+        """
+        return self._States
+
+    @States.setter
+    def States(self, States):
+        self._States = States
+
 
     def _deserialize(self, params):
         self._ServiceIds = params.get("ServiceIds")
         self._Limit = params.get("Limit")
         self._Offset = params.get("Offset")
+        self._States = params.get("States")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

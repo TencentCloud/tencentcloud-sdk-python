@@ -133,6 +133,24 @@ class AdpClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateMsgRecordCategory(
+            self,
+            request: models.CreateMsgRecordCategoryRequest,
+            opts: Dict = None,
+    ) -> models.CreateMsgRecordCategoryResponse:
+        """
+        创建一条消息记录分类，支持指定分类名称与父分类（ParentId 为 0 时表示一级分类）
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateMsgRecordCategory"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateMsgRecordCategoryResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreatePlugin(
             self,
             request: models.CreatePluginRequest,
@@ -344,6 +362,24 @@ class AdpClient(AbstractClient):
         kwargs["action"] = "DeleteConversation"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DeleteConversationResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteMsgRecordCategory(
+            self,
+            request: models.DeleteMsgRecordCategoryRequest,
+            opts: Dict = None,
+    ) -> models.DeleteMsgRecordCategoryResponse:
+        """
+        删除指定的消息记录分类
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteMsgRecordCategory"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteMsgRecordCategoryResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -799,6 +835,42 @@ class AdpClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeMsgRecordCategoryList(
+            self,
+            request: models.DescribeMsgRecordCategoryListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeMsgRecordCategoryListResponse:
+        """
+        查询应用的消息记录分类树，返回分类及子分类、各分类下记录数量与操作权限
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeMsgRecordCategoryList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeMsgRecordCategoryListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeMsgRecordList(
+            self,
+            request: models.DescribeMsgRecordListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeMsgRecordListResponse:
+        """
+        查询应用的对话消息记录列表，支持按渠道类型、反馈类型、意图、调用结果等条件过滤，并支持游标分页与按创建时间排序
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeMsgRecordList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeMsgRecordListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribePlugin(
             self,
             request: models.DescribePluginRequest,
@@ -1154,6 +1226,24 @@ class AdpClient(AbstractClient):
         kwargs["action"] = "ModifyConversation"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ModifyConversationResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyMsgRecordCategory(
+            self,
+            request: models.ModifyMsgRecordCategoryRequest,
+            opts: Dict = None,
+    ) -> models.ModifyMsgRecordCategoryResponse:
+        """
+        修改指定消息记录分类的名称
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyMsgRecordCategory"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyMsgRecordCategoryResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

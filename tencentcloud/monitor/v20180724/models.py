@@ -6137,20 +6137,21 @@ class CreateGrafanaInstanceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceName: 实例名
+        :param _InstanceName: <p>实例名</p>
         :type InstanceName: str
-        :param _VpcId: VPC ID (私有网络 ID)
+        :param _VpcId: <p>VPC ID (私有网络 ID)</p>
         :type VpcId: str
-        :param _SubnetIds: 子网 ID 数组(VPC ID下的子网 ID，只取第一个)。
-注意：并不是所有可用区都可用（可通过 monitor:DescribePrometheusZones 接口获取可用区状态，选择 ZoneState 和ZoneResourceState 都为1的可用区）
+        :param _SubnetIds: <p>子网 ID 数组(VPC ID下的子网 ID，只取第一个)。<br>注意：并不是所有可用区都可用（可通过 monitor:DescribePrometheusZones 接口获取可用区状态，选择 ZoneState 和ZoneResourceState 都为1的可用区）</p>
         :type SubnetIds: list of str
-        :param _EnableInternet: 是否启用外网
+        :param _EnableInternet: <p>是否启用外网</p>
         :type EnableInternet: bool
-        :param _GrafanaInitPassword: Grafana 初始密码(国际站用户必填，国内站用户可不填，不填时会生成随机密码并给主账号发送通知)
+        :param _GrafanaInitPassword: <p>Grafana 初始密码(国际站用户必填，国内站用户可不填，不填时会生成随机密码并给主账号发送通知)</p>
         :type GrafanaInitPassword: str
-        :param _TagSpecification: 标签
+        :param _TagSpecification: <p>标签</p>
         :type TagSpecification: list of PrometheusTag
-        :param _AutoVoucher: 是否自动选择代金券，默认为 false
+        :param _DockerImage: <p>自定义版本，可用版本从 DescribeGrafanaVersions 接口获取</p>
+        :type DockerImage: str
+        :param _AutoVoucher: <p>是否自动选择代金券，默认为 false</p>
         :type AutoVoucher: bool
         """
         self._InstanceName = None
@@ -6159,11 +6160,12 @@ class CreateGrafanaInstanceRequest(AbstractModel):
         self._EnableInternet = None
         self._GrafanaInitPassword = None
         self._TagSpecification = None
+        self._DockerImage = None
         self._AutoVoucher = None
 
     @property
     def InstanceName(self):
-        r"""实例名
+        r"""<p>实例名</p>
         :rtype: str
         """
         return self._InstanceName
@@ -6174,7 +6176,7 @@ class CreateGrafanaInstanceRequest(AbstractModel):
 
     @property
     def VpcId(self):
-        r"""VPC ID (私有网络 ID)
+        r"""<p>VPC ID (私有网络 ID)</p>
         :rtype: str
         """
         return self._VpcId
@@ -6185,8 +6187,7 @@ class CreateGrafanaInstanceRequest(AbstractModel):
 
     @property
     def SubnetIds(self):
-        r"""子网 ID 数组(VPC ID下的子网 ID，只取第一个)。
-注意：并不是所有可用区都可用（可通过 monitor:DescribePrometheusZones 接口获取可用区状态，选择 ZoneState 和ZoneResourceState 都为1的可用区）
+        r"""<p>子网 ID 数组(VPC ID下的子网 ID，只取第一个)。<br>注意：并不是所有可用区都可用（可通过 monitor:DescribePrometheusZones 接口获取可用区状态，选择 ZoneState 和ZoneResourceState 都为1的可用区）</p>
         :rtype: list of str
         """
         return self._SubnetIds
@@ -6197,7 +6198,7 @@ class CreateGrafanaInstanceRequest(AbstractModel):
 
     @property
     def EnableInternet(self):
-        r"""是否启用外网
+        r"""<p>是否启用外网</p>
         :rtype: bool
         """
         return self._EnableInternet
@@ -6208,7 +6209,7 @@ class CreateGrafanaInstanceRequest(AbstractModel):
 
     @property
     def GrafanaInitPassword(self):
-        r"""Grafana 初始密码(国际站用户必填，国内站用户可不填，不填时会生成随机密码并给主账号发送通知)
+        r"""<p>Grafana 初始密码(国际站用户必填，国内站用户可不填，不填时会生成随机密码并给主账号发送通知)</p>
         :rtype: str
         """
         return self._GrafanaInitPassword
@@ -6219,7 +6220,7 @@ class CreateGrafanaInstanceRequest(AbstractModel):
 
     @property
     def TagSpecification(self):
-        r"""标签
+        r"""<p>标签</p>
         :rtype: list of PrometheusTag
         """
         return self._TagSpecification
@@ -6229,8 +6230,19 @@ class CreateGrafanaInstanceRequest(AbstractModel):
         self._TagSpecification = TagSpecification
 
     @property
+    def DockerImage(self):
+        r"""<p>自定义版本，可用版本从 DescribeGrafanaVersions 接口获取</p>
+        :rtype: str
+        """
+        return self._DockerImage
+
+    @DockerImage.setter
+    def DockerImage(self, DockerImage):
+        self._DockerImage = DockerImage
+
+    @property
     def AutoVoucher(self):
-        r"""是否自动选择代金券，默认为 false
+        r"""<p>是否自动选择代金券，默认为 false</p>
         :rtype: bool
         """
         return self._AutoVoucher
@@ -6252,6 +6264,7 @@ class CreateGrafanaInstanceRequest(AbstractModel):
                 obj = PrometheusTag()
                 obj._deserialize(item)
                 self._TagSpecification.append(obj)
+        self._DockerImage = params.get("DockerImage")
         self._AutoVoucher = params.get("AutoVoucher")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -6270,7 +6283,7 @@ class CreateGrafanaInstanceResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例名
+        :param _InstanceId: <p>实例名</p>
         :type InstanceId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -6280,7 +6293,7 @@ class CreateGrafanaInstanceResponse(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""实例名
+        r"""<p>实例名</p>
         :rtype: str
         """
         return self._InstanceId
@@ -16408,6 +16421,60 @@ class DescribeGrafanaNotificationChannelsResponse(AbstractModel):
                 obj = GrafanaNotificationChannel()
                 obj._deserialize(item)
                 self._NotificationChannelSet.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeGrafanaVersionsRequest(AbstractModel):
+    r"""DescribeGrafanaVersions请求参数结构体
+
+    """
+
+
+class DescribeGrafanaVersionsResponse(AbstractModel):
+    r"""DescribeGrafanaVersions返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Versions: 可选版本
+        :type Versions: list of GrafanaVersion
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Versions = None
+        self._RequestId = None
+
+    @property
+    def Versions(self):
+        r"""可选版本
+        :rtype: list of GrafanaVersion
+        """
+        return self._Versions
+
+    @Versions.setter
+    def Versions(self, Versions):
+        self._Versions = Versions
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Versions") is not None:
+            self._Versions = []
+            for item in params.get("Versions"):
+                obj = GrafanaVersion()
+                obj._deserialize(item)
+                self._Versions.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -28453,6 +28520,57 @@ class GrafanaPlugin(AbstractModel):
 
     def _deserialize(self, params):
         self._PluginId = params.get("PluginId")
+        self._Version = params.get("Version")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GrafanaVersion(AbstractModel):
+    r"""Grafana 版本
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Alias: 版本别名
+        :type Alias: str
+        :param _Version: 版本
+        :type Version: str
+        """
+        self._Alias = None
+        self._Version = None
+
+    @property
+    def Alias(self):
+        r"""版本别名
+        :rtype: str
+        """
+        return self._Alias
+
+    @Alias.setter
+    def Alias(self, Alias):
+        self._Alias = Alias
+
+    @property
+    def Version(self):
+        r"""版本
+        :rtype: str
+        """
+        return self._Version
+
+    @Version.setter
+    def Version(self, Version):
+        self._Version = Version
+
+
+    def _deserialize(self, params):
+        self._Alias = params.get("Alias")
         self._Version = params.get("Version")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():

@@ -1442,6 +1442,24 @@ class MonitorClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeGrafanaVersions(
+            self,
+            request: models.DescribeGrafanaVersionsRequest,
+            opts: Dict = None,
+    ) -> models.DescribeGrafanaVersionsResponse:
+        """
+        列出 Grafana 版本
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeGrafanaVersions"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeGrafanaVersionsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeGrafanaWhiteList(
             self,
             request: models.DescribeGrafanaWhiteListRequest,

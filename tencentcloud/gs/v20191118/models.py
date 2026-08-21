@@ -25,23 +25,23 @@ class AndroidApp(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AndroidAppId: 安卓应用 Id
+        :param _AndroidAppId: <p>安卓应用 Id</p>
         :type AndroidAppId: str
-        :param _Name: 安卓应用名称
+        :param _Name: <p>安卓应用名称</p>
         :type Name: str
-        :param _State: 安卓应用状态（上架、下架）
+        :param _State: <p>安卓应用状态（上架、下架）</p>
         :type State: str
-        :param _AndroidAppVersionInfo: 安卓应用版本列表
+        :param _AndroidAppVersionInfo: <p>安卓应用版本列表</p>
         :type AndroidAppVersionInfo: list of AndroidAppVersionInfo
-        :param _CreateTime: 安卓应用创建时间
+        :param _CreateTime: <p>安卓应用创建时间</p>
         :type CreateTime: str
-        :param _UserId: 用户 Id
+        :param _UserId: <p>用户 Id</p>
         :type UserId: str
-        :param _AppMode: 应用模式（NORMAL : 普通模式；ADVANCED : 高级模式）
+        :param _AppMode: <p>应用模式（NORMAL : 普通模式；ADVANCED : 高级模式）</p>
         :type AppMode: str
-        :param _UpdateState: 应用更新状态，取值：UPLOADING 上传中、CREATING 创建中、CREATE_FAIL 创建失败、CREATE_SUCCESS 创建成功、PACKAGE_NAME_MISMATCH 包名不匹配、VERSION_ALREADY_EXISTS 版本已存在、APP_PARSE_FAIL app 解析失败、APP_EXISTS_SECURITY_RISK app 存在安全风险、NORMAL 默认状态
+        :param _UpdateState: <p>应用更新状态，取值：UPLOADING 上传中、CREATING 创建中、CREATE_FAIL 创建失败、CREATE_SUCCESS 创建成功、PACKAGE_NAME_MISMATCH 包名不匹配、VERSION_ALREADY_EXISTS 版本已存在、APP_PARSE_FAIL app 解析失败、APP_EXISTS_SECURITY_RISK app 存在安全风险、NORMAL 默认状态</p>
         :type UpdateState: str
-        :param _PackageName: 安卓应用包名
+        :param _PackageName: <p>安卓应用包名</p>
         :type PackageName: str
         """
         self._AndroidAppId = None
@@ -56,7 +56,7 @@ class AndroidApp(AbstractModel):
 
     @property
     def AndroidAppId(self):
-        r"""安卓应用 Id
+        r"""<p>安卓应用 Id</p>
         :rtype: str
         """
         return self._AndroidAppId
@@ -67,7 +67,7 @@ class AndroidApp(AbstractModel):
 
     @property
     def Name(self):
-        r"""安卓应用名称
+        r"""<p>安卓应用名称</p>
         :rtype: str
         """
         return self._Name
@@ -78,7 +78,7 @@ class AndroidApp(AbstractModel):
 
     @property
     def State(self):
-        r"""安卓应用状态（上架、下架）
+        r"""<p>安卓应用状态（上架、下架）</p>
         :rtype: str
         """
         return self._State
@@ -89,7 +89,7 @@ class AndroidApp(AbstractModel):
 
     @property
     def AndroidAppVersionInfo(self):
-        r"""安卓应用版本列表
+        r"""<p>安卓应用版本列表</p>
         :rtype: list of AndroidAppVersionInfo
         """
         return self._AndroidAppVersionInfo
@@ -100,7 +100,7 @@ class AndroidApp(AbstractModel):
 
     @property
     def CreateTime(self):
-        r"""安卓应用创建时间
+        r"""<p>安卓应用创建时间</p>
         :rtype: str
         """
         return self._CreateTime
@@ -111,7 +111,7 @@ class AndroidApp(AbstractModel):
 
     @property
     def UserId(self):
-        r"""用户 Id
+        r"""<p>用户 Id</p>
         :rtype: str
         """
         return self._UserId
@@ -122,7 +122,7 @@ class AndroidApp(AbstractModel):
 
     @property
     def AppMode(self):
-        r"""应用模式（NORMAL : 普通模式；ADVANCED : 高级模式）
+        r"""<p>应用模式（NORMAL : 普通模式；ADVANCED : 高级模式）</p>
         :rtype: str
         """
         return self._AppMode
@@ -133,7 +133,7 @@ class AndroidApp(AbstractModel):
 
     @property
     def UpdateState(self):
-        r"""应用更新状态，取值：UPLOADING 上传中、CREATING 创建中、CREATE_FAIL 创建失败、CREATE_SUCCESS 创建成功、PACKAGE_NAME_MISMATCH 包名不匹配、VERSION_ALREADY_EXISTS 版本已存在、APP_PARSE_FAIL app 解析失败、APP_EXISTS_SECURITY_RISK app 存在安全风险、NORMAL 默认状态
+        r"""<p>应用更新状态，取值：UPLOADING 上传中、CREATING 创建中、CREATE_FAIL 创建失败、CREATE_SUCCESS 创建成功、PACKAGE_NAME_MISMATCH 包名不匹配、VERSION_ALREADY_EXISTS 版本已存在、APP_PARSE_FAIL app 解析失败、APP_EXISTS_SECURITY_RISK app 存在安全风险、NORMAL 默认状态</p>
         :rtype: str
         """
         return self._UpdateState
@@ -144,7 +144,7 @@ class AndroidApp(AbstractModel):
 
     @property
     def PackageName(self):
-        r"""安卓应用包名
+        r"""<p>安卓应用包名</p>
         :rtype: str
         """
         return self._PackageName
@@ -237,29 +237,29 @@ class AndroidAppVersionInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AndroidAppVersion: 安卓应用版本
+        :param _AndroidAppVersion: <p>安卓应用版本</p>
         :type AndroidAppVersion: str
-        :param _State: 安卓应用版本创建状态，取值：NORMAL：无（默认）、UPLOADING：上传中、CREATING： 创建中、CREATE_FAIL：创建失败、PACKAGE_NAME_MISMATCH：包名不匹配、VERSION_ALREADY_EXISTS：版本已存在、APP_PARSE_FAIL： app 解析失败、APP_EXISTS_SECURITY_RISK：app 存在安全风险、CREATE_SUCCESS：创建成功
+        :param _State: <p>安卓应用版本创建状态，取值：NORMAL：无（默认）、UPLOADING：上传中、CREATING： 创建中、CREATE_FAIL：创建失败、PACKAGE_NAME_MISMATCH：包名不匹配、VERSION_ALREADY_EXISTS：版本已存在、APP_PARSE_FAIL： app 解析失败、APP_EXISTS_SECURITY_RISK：app 存在安全风险、CREATE_SUCCESS：创建成功</p>
         :type State: str
-        :param _CreateTime: 安卓应用版本创建时间
+        :param _CreateTime: <p>安卓应用版本创建时间</p>
         :type CreateTime: str
-        :param _Command: shell 安装命令（支持多条命令执行，通过 && 组合；只在应用 AppMode 为 ADVANCED 高级模式下 才会生效）
+        :param _Command: <p>shell 安装命令（支持多条命令执行，通过 &amp;&amp; 组合；只在应用 AppMode 为 ADVANCED 高级模式下 才会生效）</p>
         :type Command: str
-        :param _UninstallCommand: shell 卸载命令（支持多条命令执行，通过 && 组合；只在应用 AppMode 为 ADVANCED 高级模式下 才会生效）
+        :param _UninstallCommand: <p>shell 卸载命令（支持多条命令执行，通过 &amp;&amp; 组合；只在应用 AppMode 为 ADVANCED 高级模式下 才会生效）</p>
         :type UninstallCommand: str
-        :param _CleanupMode: 应用资源清理模式（实例安装应用所用资源），取值：CLEANUP_ON_UNINSTALL（默认值），卸载 App 时清理；CLEANUP_AFTER_INSTALL，安装 App 后立即清理。普通应用只有 CLEANUP_AFTER_INSTALL 模式。
+        :param _CleanupMode: <p>应用资源清理模式（实例安装应用所用资源），取值：CLEANUP_ON_UNINSTALL（默认值），卸载 App 时清理；CLEANUP_AFTER_INSTALL，安装 App 后立即清理。普通应用只有 CLEANUP_AFTER_INSTALL 模式。</p>
         :type CleanupMode: str
-        :param _AndroidAppVersionName: 安卓应用版本名称（版本描述、备注）
+        :param _AndroidAppVersionName: <p>安卓应用版本名称（版本描述、备注）</p>
         :type AndroidAppVersionName: str
-        :param _Activity: 安卓应用启动页
+        :param _Activity: <p>安卓应用启动页</p>
         :type Activity: str
-        :param _VersionName: 应用版本号（Version Name）
+        :param _VersionName: <p>应用版本号（Version Name）</p>
         :type VersionName: str
-        :param _MD5: 应用包 MD5
+        :param _MD5: <p>应用包 MD5</p>
         :type MD5: str
-        :param _FileSize: 应用包文件大小（字节）
+        :param _FileSize: <p>应用包文件大小（字节）</p>
         :type FileSize: int
-        :param _PackageName: 安卓应用包名
+        :param _PackageName: <p>安卓应用包名</p>
         :type PackageName: str
         """
         self._AndroidAppVersion = None
@@ -277,7 +277,7 @@ class AndroidAppVersionInfo(AbstractModel):
 
     @property
     def AndroidAppVersion(self):
-        r"""安卓应用版本
+        r"""<p>安卓应用版本</p>
         :rtype: str
         """
         return self._AndroidAppVersion
@@ -288,7 +288,7 @@ class AndroidAppVersionInfo(AbstractModel):
 
     @property
     def State(self):
-        r"""安卓应用版本创建状态，取值：NORMAL：无（默认）、UPLOADING：上传中、CREATING： 创建中、CREATE_FAIL：创建失败、PACKAGE_NAME_MISMATCH：包名不匹配、VERSION_ALREADY_EXISTS：版本已存在、APP_PARSE_FAIL： app 解析失败、APP_EXISTS_SECURITY_RISK：app 存在安全风险、CREATE_SUCCESS：创建成功
+        r"""<p>安卓应用版本创建状态，取值：NORMAL：无（默认）、UPLOADING：上传中、CREATING： 创建中、CREATE_FAIL：创建失败、PACKAGE_NAME_MISMATCH：包名不匹配、VERSION_ALREADY_EXISTS：版本已存在、APP_PARSE_FAIL： app 解析失败、APP_EXISTS_SECURITY_RISK：app 存在安全风险、CREATE_SUCCESS：创建成功</p>
         :rtype: str
         """
         return self._State
@@ -299,7 +299,7 @@ class AndroidAppVersionInfo(AbstractModel):
 
     @property
     def CreateTime(self):
-        r"""安卓应用版本创建时间
+        r"""<p>安卓应用版本创建时间</p>
         :rtype: str
         """
         return self._CreateTime
@@ -310,7 +310,7 @@ class AndroidAppVersionInfo(AbstractModel):
 
     @property
     def Command(self):
-        r"""shell 安装命令（支持多条命令执行，通过 && 组合；只在应用 AppMode 为 ADVANCED 高级模式下 才会生效）
+        r"""<p>shell 安装命令（支持多条命令执行，通过 &amp;&amp; 组合；只在应用 AppMode 为 ADVANCED 高级模式下 才会生效）</p>
         :rtype: str
         """
         return self._Command
@@ -321,7 +321,7 @@ class AndroidAppVersionInfo(AbstractModel):
 
     @property
     def UninstallCommand(self):
-        r"""shell 卸载命令（支持多条命令执行，通过 && 组合；只在应用 AppMode 为 ADVANCED 高级模式下 才会生效）
+        r"""<p>shell 卸载命令（支持多条命令执行，通过 &amp;&amp; 组合；只在应用 AppMode 为 ADVANCED 高级模式下 才会生效）</p>
         :rtype: str
         """
         return self._UninstallCommand
@@ -332,7 +332,7 @@ class AndroidAppVersionInfo(AbstractModel):
 
     @property
     def CleanupMode(self):
-        r"""应用资源清理模式（实例安装应用所用资源），取值：CLEANUP_ON_UNINSTALL（默认值），卸载 App 时清理；CLEANUP_AFTER_INSTALL，安装 App 后立即清理。普通应用只有 CLEANUP_AFTER_INSTALL 模式。
+        r"""<p>应用资源清理模式（实例安装应用所用资源），取值：CLEANUP_ON_UNINSTALL（默认值），卸载 App 时清理；CLEANUP_AFTER_INSTALL，安装 App 后立即清理。普通应用只有 CLEANUP_AFTER_INSTALL 模式。</p>
         :rtype: str
         """
         return self._CleanupMode
@@ -343,7 +343,7 @@ class AndroidAppVersionInfo(AbstractModel):
 
     @property
     def AndroidAppVersionName(self):
-        r"""安卓应用版本名称（版本描述、备注）
+        r"""<p>安卓应用版本名称（版本描述、备注）</p>
         :rtype: str
         """
         return self._AndroidAppVersionName
@@ -354,7 +354,7 @@ class AndroidAppVersionInfo(AbstractModel):
 
     @property
     def Activity(self):
-        r"""安卓应用启动页
+        r"""<p>安卓应用启动页</p>
         :rtype: str
         """
         return self._Activity
@@ -365,7 +365,7 @@ class AndroidAppVersionInfo(AbstractModel):
 
     @property
     def VersionName(self):
-        r"""应用版本号（Version Name）
+        r"""<p>应用版本号（Version Name）</p>
         :rtype: str
         """
         return self._VersionName
@@ -376,7 +376,7 @@ class AndroidAppVersionInfo(AbstractModel):
 
     @property
     def MD5(self):
-        r"""应用包 MD5
+        r"""<p>应用包 MD5</p>
         :rtype: str
         """
         return self._MD5
@@ -387,7 +387,7 @@ class AndroidAppVersionInfo(AbstractModel):
 
     @property
     def FileSize(self):
-        r"""应用包文件大小（字节）
+        r"""<p>应用包文件大小（字节）</p>
         :rtype: int
         """
         return self._FileSize
@@ -398,7 +398,7 @@ class AndroidAppVersionInfo(AbstractModel):
 
     @property
     def PackageName(self):
-        r"""安卓应用包名
+        r"""<p>安卓应用包名</p>
         :rtype: str
         """
         return self._PackageName
@@ -4871,14 +4871,14 @@ class DeleteAndroidInstanceImagesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AndroidInstanceImageIds: 镜像 ID 列表
+        :param _AndroidInstanceImageIds: <p>镜像 ID 列表</p>
         :type AndroidInstanceImageIds: list of str
         """
         self._AndroidInstanceImageIds = None
 
     @property
     def AndroidInstanceImageIds(self):
-        r"""镜像 ID 列表
+        r"""<p>镜像 ID 列表</p>
         :rtype: list of str
         """
         return self._AndroidInstanceImageIds
@@ -5014,13 +5014,13 @@ class DescribeAndroidAppsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Offset: 分页偏移
+        :param _Offset: <p>分页偏移</p>
         :type Offset: int
-        :param _Limit: 每页数量
+        :param _Limit: <p>每页数量</p>
         :type Limit: int
-        :param _AndroidAppIds: 应用ID数组
+        :param _AndroidAppIds: <p>应用ID数组</p>
         :type AndroidAppIds: list of str
-        :param _Filters: 过滤条件，支持过滤的字段有：UserId、State、UpdateState、Name、AppMode 。其中 Name 为模糊匹配，其他参数为精确匹配。
+        :param _Filters: <p>过滤条件，支持过滤的字段有：UserId、State、UpdateState、Name、AppMode 。其中 Name 为模糊匹配，其他参数为精确匹配。</p>
         :type Filters: list of Filter
         """
         self._Offset = None
@@ -5030,7 +5030,7 @@ class DescribeAndroidAppsRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""分页偏移
+        r"""<p>分页偏移</p>
         :rtype: int
         """
         return self._Offset
@@ -5041,7 +5041,7 @@ class DescribeAndroidAppsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""每页数量
+        r"""<p>每页数量</p>
         :rtype: int
         """
         return self._Limit
@@ -5052,7 +5052,7 @@ class DescribeAndroidAppsRequest(AbstractModel):
 
     @property
     def AndroidAppIds(self):
-        r"""应用ID数组
+        r"""<p>应用ID数组</p>
         :rtype: list of str
         """
         return self._AndroidAppIds
@@ -5063,7 +5063,7 @@ class DescribeAndroidAppsRequest(AbstractModel):
 
     @property
     def Filters(self):
-        r"""过滤条件，支持过滤的字段有：UserId、State、UpdateState、Name、AppMode 。其中 Name 为模糊匹配，其他参数为精确匹配。
+        r"""<p>过滤条件，支持过滤的字段有：UserId、State、UpdateState、Name、AppMode 。其中 Name 为模糊匹配，其他参数为精确匹配。</p>
         :rtype: list of Filter
         """
         return self._Filters
@@ -5100,9 +5100,9 @@ class DescribeAndroidAppsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Apps: 安卓应用列表
+        :param _Apps: <p>安卓应用列表</p>
         :type Apps: list of AndroidApp
-        :param _TotalCount: 安卓应用列表长度
+        :param _TotalCount: <p>安卓应用列表长度</p>
         :type TotalCount: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -5113,7 +5113,7 @@ class DescribeAndroidAppsResponse(AbstractModel):
 
     @property
     def Apps(self):
-        r"""安卓应用列表
+        r"""<p>安卓应用列表</p>
         :rtype: list of AndroidApp
         """
         return self._Apps
@@ -5124,7 +5124,7 @@ class DescribeAndroidAppsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        r"""安卓应用列表长度
+        r"""<p>安卓应用列表长度</p>
         :rtype: int
         """
         return self._TotalCount
@@ -6482,14 +6482,14 @@ class DestroyAndroidInstancesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AndroidInstanceIds: 安卓实例 ID 列表
+        :param _AndroidInstanceIds: <p>安卓实例 ID 列表</p>
         :type AndroidInstanceIds: list of str
         """
         self._AndroidInstanceIds = None
 
     @property
     def AndroidInstanceIds(self):
-        r"""安卓实例 ID 列表
+        r"""<p>安卓实例 ID 列表</p>
         :rtype: list of str
         """
         return self._AndroidInstanceIds
@@ -9517,16 +9517,11 @@ class ResetAndroidInstancesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AndroidInstanceIds: 实例ID列表
+        :param _AndroidInstanceIds: <p>实例ID列表</p>
         :type AndroidInstanceIds: list of str
-        :param _AndroidInstanceImageId: 指定有效的镜像 ID。
-默认取值：默认使用当前镜像。
+        :param _AndroidInstanceImageId: <p>指定有效的镜像 ID。<br>默认取值：默认使用当前镜像。</p>
         :type AndroidInstanceImageId: str
-        :param _Mode: 重置模式。在 AndroidInstanceImageId 不为空时才生效。
-
-CleanData：默认选项，清理系统属性和用户数据
-KeepSystemProperties：只保留系统属性
-KeepData: 保留系统属性和用户数据
+        :param _Mode: <p>重置模式。在 AndroidInstanceImageId 不为空时才生效。</p><p>CleanData：默认选项，清理系统属性和用户数据<br>KeepSystemProperties：只保留系统属性<br>KeepData: 保留系统属性和用户数据</p>
         :type Mode: str
         """
         self._AndroidInstanceIds = None
@@ -9535,7 +9530,7 @@ KeepData: 保留系统属性和用户数据
 
     @property
     def AndroidInstanceIds(self):
-        r"""实例ID列表
+        r"""<p>实例ID列表</p>
         :rtype: list of str
         """
         return self._AndroidInstanceIds
@@ -9546,8 +9541,7 @@ KeepData: 保留系统属性和用户数据
 
     @property
     def AndroidInstanceImageId(self):
-        r"""指定有效的镜像 ID。
-默认取值：默认使用当前镜像。
+        r"""<p>指定有效的镜像 ID。<br>默认取值：默认使用当前镜像。</p>
         :rtype: str
         """
         return self._AndroidInstanceImageId
@@ -9558,11 +9552,7 @@ KeepData: 保留系统属性和用户数据
 
     @property
     def Mode(self):
-        r"""重置模式。在 AndroidInstanceImageId 不为空时才生效。
-
-CleanData：默认选项，清理系统属性和用户数据
-KeepSystemProperties：只保留系统属性
-KeepData: 保留系统属性和用户数据
+        r"""<p>重置模式。在 AndroidInstanceImageId 不为空时才生效。</p><p>CleanData：默认选项，清理系统属性和用户数据<br>KeepSystemProperties：只保留系统属性<br>KeepData: 保留系统属性和用户数据</p>
         :rtype: str
         """
         return self._Mode
@@ -9593,7 +9583,7 @@ class ResetAndroidInstancesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskSet: 任务集合
+        :param _TaskSet: <p>任务集合</p>
         :type TaskSet: list of AndroidInstanceTask
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -9603,7 +9593,7 @@ class ResetAndroidInstancesResponse(AbstractModel):
 
     @property
     def TaskSet(self):
-        r"""任务集合
+        r"""<p>任务集合</p>
         :rtype: list of AndroidInstanceTask
         """
         return self._TaskSet
@@ -11565,11 +11555,11 @@ class UninstallAndroidInstancesAppRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AndroidInstanceIds: 实例ID
+        :param _AndroidInstanceIds: <p>实例ID</p>
         :type AndroidInstanceIds: list of str
-        :param _AndroidAppId: 应用ID
+        :param _AndroidAppId: <p>应用ID</p>
         :type AndroidAppId: str
-        :param _PackageName: 包名
+        :param _PackageName: <p>包名</p>
         :type PackageName: str
         """
         self._AndroidInstanceIds = None
@@ -11578,7 +11568,7 @@ class UninstallAndroidInstancesAppRequest(AbstractModel):
 
     @property
     def AndroidInstanceIds(self):
-        r"""实例ID
+        r"""<p>实例ID</p>
         :rtype: list of str
         """
         return self._AndroidInstanceIds
@@ -11589,7 +11579,7 @@ class UninstallAndroidInstancesAppRequest(AbstractModel):
 
     @property
     def AndroidAppId(self):
-        r"""应用ID
+        r"""<p>应用ID</p>
         :rtype: str
         """
         return self._AndroidAppId
@@ -11600,7 +11590,7 @@ class UninstallAndroidInstancesAppRequest(AbstractModel):
 
     @property
     def PackageName(self):
-        r"""包名
+        r"""<p>包名</p>
         :rtype: str
         """
         return self._PackageName
@@ -11631,7 +11621,7 @@ class UninstallAndroidInstancesAppResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskSet: 任务集合
+        :param _TaskSet: <p>任务集合</p>
         :type TaskSet: list of AndroidInstanceTask
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -11641,7 +11631,7 @@ class UninstallAndroidInstancesAppResponse(AbstractModel):
 
     @property
     def TaskSet(self):
-        r"""任务集合
+        r"""<p>任务集合</p>
         :rtype: list of AndroidInstanceTask
         """
         return self._TaskSet

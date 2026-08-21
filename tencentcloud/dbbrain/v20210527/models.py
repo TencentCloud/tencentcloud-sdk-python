@@ -23045,7 +23045,7 @@ class TopSqlTpl(AbstractModel):
         :type CpuTimeMax: float
         :param _IoWaitTimeMin: <p>最小io等待时间，单位秒</p>
 注意：此字段可能返回 null，表示取不到有效值。
-        :type IoWaitTimeMin: int
+        :type IoWaitTimeMin: float
         :param _LatencyMax: <p>最大执行时间，单位秒</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type LatencyMax: float
@@ -23321,7 +23321,7 @@ class TopSqlTpl(AbstractModel):
     def IoWaitTimeMin(self):
         r"""<p>最小io等待时间，单位秒</p>
 注意：此字段可能返回 null，表示取不到有效值。
-        :rtype: int
+        :rtype: float
         """
         return self._IoWaitTimeMin
 

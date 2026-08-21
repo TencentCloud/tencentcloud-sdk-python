@@ -223,6 +223,24 @@ class CsipClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CopyBaselinePolicy(
+            self,
+            request: models.CopyBaselinePolicyRequest,
+            opts: Dict = None,
+    ) -> models.CopyBaselinePolicyResponse:
+        """
+        复制自定义基线策略
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CopyBaselinePolicy"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CopyBaselinePolicyResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateAISchedule(
             self,
             request: models.CreateAIScheduleRequest,
@@ -1577,6 +1595,24 @@ class CsipClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DeleteBaselineSelfDefinedPolicyList(
+            self,
+            request: models.DeleteBaselineSelfDefinedPolicyListRequest,
+            opts: Dict = None,
+    ) -> models.DeleteBaselineSelfDefinedPolicyListResponse:
+        """
+        批量删除自定义基线策略。仅支持删除 PolicyType=SELF 的策略；删除后历史风险记录保留，但不再产生新结果。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteBaselineSelfDefinedPolicyList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteBaselineSelfDefinedPolicyListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DeleteCSIPMalwareScanTask(
             self,
             request: models.DeleteCSIPMalwareScanTaskRequest,
@@ -2076,6 +2112,42 @@ class CsipClient(AbstractClient):
         kwargs["action"] = "DeleteVulWhitelist"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DeleteVulWhitelistResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteWebhookPolicies(
+            self,
+            request: models.DeleteWebhookPoliciesRequest,
+            opts: Dict = None,
+    ) -> models.DeleteWebhookPoliciesResponse:
+        """
+        批量删除通知策略。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteWebhookPolicies"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteWebhookPoliciesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteWebhookReceivers(
+            self,
+            request: models.DeleteWebhookReceiversRequest,
+            opts: Dict = None,
+    ) -> models.DeleteWebhookReceiversResponse:
+        """
+        批量删除接收机器人。删除前会自动从所有引用了这些机器人的策略中移除引用关系。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteWebhookReceivers"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteWebhookReceiversResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -2903,6 +2975,24 @@ class CsipClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeBaselineCalculatingStatisticsPolicyIDList(
+            self,
+            request: models.DescribeBaselineCalculatingStatisticsPolicyIDListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeBaselineCalculatingStatisticsPolicyIDListResponse:
+        """
+        查询当前处于“统计计算中”状态的策略 ID 列表，用于前端轮询判断扫描结果统计是否就绪。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeBaselineCalculatingStatisticsPolicyIDList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeBaselineCalculatingStatisticsPolicyIDListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeBaselineCategoryItemList(
             self,
             request: models.DescribeBaselineCategoryItemListRequest,
@@ -2916,6 +3006,24 @@ class CsipClient(AbstractClient):
         kwargs["action"] = "DescribeBaselineCategoryItemList"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeBaselineCategoryItemListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeBaselineFixRecordList(
+            self,
+            request: models.DescribeBaselineFixRecordListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeBaselineFixRecordListResponse:
+        """
+        获取基线风险修复历史记录列表，用于“修复记录”页展示已修复的检测项与对应资产。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeBaselineFixRecordList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeBaselineFixRecordListResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -2993,6 +3101,42 @@ class CsipClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeBaselinePolicyCategoryList(
+            self,
+            request: models.DescribeBaselinePolicyCategoryListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeBaselinePolicyCategoryListResponse:
+        """
+        获取系统内置基线分类树（父分类 → 子分类 → 内置检测项 ID 列表），用于策略详情展示。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeBaselinePolicyCategoryList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeBaselinePolicyCategoryListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeBaselinePolicyItemList(
+            self,
+            request: models.DescribeBaselinePolicyItemListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeBaselinePolicyItemListResponse:
+        """
+        获取策略配置的检测项列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeBaselinePolicyItemList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeBaselinePolicyItemListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeBaselinePolicyList(
             self,
             request: models.DescribeBaselinePolicyListRequest,
@@ -3006,6 +3150,42 @@ class CsipClient(AbstractClient):
         kwargs["action"] = "DescribeBaselinePolicyList"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeBaselinePolicyListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeBaselinePolicyNameExistAppidList(
+            self,
+            request: models.DescribeBaselinePolicyNameExistAppidListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeBaselinePolicyNameExistAppidListResponse:
+        """
+        获取基线策略名字存在的用户列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeBaselinePolicyNameExistAppidList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeBaselinePolicyNameExistAppidListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeBaselineSubTaskList(
+            self,
+            request: models.DescribeBaselineSubTaskListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeBaselineSubTaskListResponse:
+        """
+        获取扫描子任务列表，用于任务详情页“资产维度”展示每台主机/每个集群的扫描状态与失败原因。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeBaselineSubTaskList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeBaselineSubTaskListResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -3204,6 +3384,24 @@ class CsipClient(AbstractClient):
         kwargs["action"] = "DescribeCLSLogListV3"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeCLSLogListV3Response
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeCSIPLicenseBindSchedule(
+            self,
+            request: models.DescribeCSIPLicenseBindScheduleRequest,
+            opts: Dict = None,
+    ) -> models.DescribeCSIPLicenseBindScheduleResponse:
+        """
+        查询ModifyCSIPLicenseBinds返回的异步绑定任务进度。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeCSIPLicenseBindSchedule"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeCSIPLicenseBindScheduleResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -4662,6 +4860,24 @@ class CsipClient(AbstractClient):
         kwargs["action"] = "DescribeDbAssets"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeDbAssetsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeDefaultSecurityScoreRule(
+            self,
+            request: models.DescribeDefaultSecurityScoreRuleRequest,
+            opts: Dict = None,
+    ) -> models.DescribeDefaultSecurityScoreRuleResponse:
+        """
+        获取内置默认安全评分规则，用于重置自定义规则
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeDefaultSecurityScoreRule"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeDefaultSecurityScoreRuleResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -6431,6 +6647,24 @@ class CsipClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeLicenseStatus(
+            self,
+            request: models.DescribeLicenseStatusRequest,
+            opts: Dict = None,
+    ) -> models.DescribeLicenseStatusResponse:
+        """
+        查询当前账号下所有有效授权的汇总状态，按计费项分组返回总数、已用、剩余及到期时间，同时返回自动加购开关状态和合并剩余解绑次数。输出顺序固定为：旗舰版 → 专业版 → RASP → 其他。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeLicenseStatus"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeLicenseStatusResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeLighthouseFirewallRules(
             self,
             request: models.DescribeLighthouseFirewallRulesRequest,
@@ -6647,6 +6881,24 @@ class CsipClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeMultiCloudAssetCount(
+            self,
+            request: models.DescribeMultiCloudAssetCountRequest,
+            opts: Dict = None,
+    ) -> models.DescribeMultiCloudAssetCountResponse:
+        """
+        获取多云（腾讯云、阿里云、AWS、华为云、Azure 等）接入的资产总数及各云厂商资产数量明细
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeMultiCloudAssetCount"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeMultiCloudAssetCountResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeNFSScanConf(
             self,
             request: models.DescribeNFSScanConfRequest,
@@ -6732,6 +6984,24 @@ class CsipClient(AbstractClient):
         kwargs["action"] = "DescribeNetAttackSetting"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeNetAttackSettingResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeNotifyAgentOfflineDuration(
+            self,
+            request: models.DescribeNotifyAgentOfflineDurationRequest,
+            opts: Dict = None,
+    ) -> models.DescribeNotifyAgentOfflineDurationResponse:
+        """
+        查询客户端离线时长
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeNotifyAgentOfflineDuration"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeNotifyAgentOfflineDurationResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -6984,6 +7254,24 @@ class CsipClient(AbstractClient):
         kwargs["action"] = "DescribeProcessDaemonHost"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeProcessDaemonHostResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribePublicCloudAssets(
+            self,
+            request: models.DescribePublicCloudAssetsRequest,
+            opts: Dict = None,
+    ) -> models.DescribePublicCloudAssetsResponse:
+        """
+        公网资产
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribePublicCloudAssets"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribePublicCloudAssetsResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -7385,6 +7673,78 @@ class CsipClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeSCFAliasList(
+            self,
+            request: models.DescribeSCFAliasListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeSCFAliasListResponse:
+        """
+        查询指定 SCF 函数下的别名列表。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeSCFAliasList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeSCFAliasListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeSCFFunctionList(
+            self,
+            request: models.DescribeSCFFunctionListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeSCFFunctionListResponse:
+        """
+        查询指定命名空间下的 SCF 函数列表，仅返回 Event 触发器类型的函数。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeSCFFunctionList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeSCFFunctionListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeSCFFunctionVersionList(
+            self,
+            request: models.DescribeSCFFunctionVersionListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeSCFFunctionVersionListResponse:
+        """
+        查询指定 SCF 函数下的版本列表。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeSCFFunctionVersionList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeSCFFunctionVersionListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeSCFNamespaceList(
+            self,
+            request: models.DescribeSCFNamespaceListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeSCFNamespaceListResponse:
+        """
+        查询当前用户在指定地域下的 SCF（云函数）命名空间列表。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeSCFNamespaceList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeSCFNamespaceListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeScanReportList(
             self,
             request: models.DescribeScanReportListRequest,
@@ -7506,6 +7866,60 @@ class CsipClient(AbstractClient):
         kwargs["action"] = "DescribeSecurityGroupPolicy"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeSecurityGroupPolicyResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeSecurityRiskTrend(
+            self,
+            request: models.DescribeSecurityRiskTrendRequest,
+            opts: Dict = None,
+    ) -> models.DescribeSecurityRiskTrendResponse:
+        """
+        获取安全风险趋势，返回按维度分组的每日风险数量
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeSecurityRiskTrend"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeSecurityRiskTrendResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeSecurityScoreOverview(
+            self,
+            request: models.DescribeSecurityScoreOverviewRequest,
+            opts: Dict = None,
+    ) -> models.DescribeSecurityScoreOverviewResponse:
+        """
+        获取安全评分概览，实时计算各维度和子项扣分情况
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeSecurityScoreOverview"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeSecurityScoreOverviewResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeSecurityScoreRule(
+            self,
+            request: models.DescribeSecurityScoreRuleRequest,
+            opts: Dict = None,
+    ) -> models.DescribeSecurityScoreRuleResponse:
+        """
+        获取当前账号的安全评分规则，无自定义则返回内置默认规则
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeSecurityScoreRule"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeSecurityScoreRuleResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -8213,6 +8627,42 @@ class CsipClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeWebhookPolicyList(
+            self,
+            request: models.DescribeWebhookPolicyListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeWebhookPolicyListResponse:
+        """
+        分页查询当前租户下的通知策略列表，对应「通知中心 - 机器人通知 - 通知策略配置」Tab 的表格。返回的字段为「行展示」所需的精简信息。完整配置在编辑场景下使用 DescribeWebhookPolicy。每租户最多 100 个通知策略
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeWebhookPolicyList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeWebhookPolicyListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeWebhookReceiverList(
+            self,
+            request: models.DescribeWebhookReceiverListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeWebhookReceiverListResponse:
+        """
+        分页查询当前租户下的接收机器人列表，对应「通知中心 - 机器人通知 - 接收机器人管理」Tab 的表格。每租户最多 50 个机器人
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeWebhookReceiverList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeWebhookReceiverListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DisableAISchedule(
             self,
             request: models.DisableAIScheduleRequest,
@@ -8603,6 +9053,78 @@ class CsipClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def ModifyBaselinePolicyEnable(
+            self,
+            request: models.ModifyBaselinePolicyEnableRequest,
+            opts: Dict = None,
+    ) -> models.ModifyBaselinePolicyEnableResponse:
+        """
+        批量启用或停用基线策略。停用后的策略将不再参与扫描与统计。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyBaselinePolicyEnable"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyBaselinePolicyEnableResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyBaselineSyncConf(
+            self,
+            request: models.ModifyBaselineSyncConfRequest,
+            opts: Dict = None,
+    ) -> models.ModifyBaselineSyncConfResponse:
+        """
+        更新当前账号（管理员）的基线同步配置。AutoSync=true 时 TargetAppidList 不可为空，且元素不可为 0。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyBaselineSyncConf"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyBaselineSyncConfResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyBaselineUserOtherConf(
+            self,
+            request: models.ModifyBaselineUserOtherConfRequest,
+            opts: Dict = None,
+    ) -> models.ModifyBaselineUserOtherConfResponse:
+        """
+        更新当前账号的用户级基线配置（允许同步、离线清风险、Agent 扫描超时等）。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyBaselineUserOtherConf"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyBaselineUserOtherConfResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyBaselineUserWeakPasswordConf(
+            self,
+            request: models.ModifyBaselineUserWeakPasswordConfRequest,
+            opts: Dict = None,
+    ) -> models.ModifyBaselineUserWeakPasswordConfResponse:
+        """
+        更新当前账号的“用户弱口令”自定义字典。字典原文经服务端加密后存储；传空字符串视为清空。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyBaselineUserWeakPasswordConf"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyBaselineUserWeakPasswordConfResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ModifyBruteAttackBanStatus(
             self,
             request: models.ModifyBruteAttackBanStatusRequest,
@@ -8634,6 +9156,78 @@ class CsipClient(AbstractClient):
         kwargs["action"] = "ModifyBruteAttackRules"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ModifyBruteAttackRulesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyCSIPLicenseBinds(
+            self,
+            request: models.ModifyCSIPLicenseBindsRequest,
+            opts: Dict = None,
+    ) -> models.ModifyCSIPLicenseBindsResponse:
+        """
+        绑定主机授权或RASP授权到指定订单。异步执行，返回TaskId供查询进度。通过LicenseType指定授权版本（旗舰版/专业版/RASP）。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyCSIPLicenseBinds"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyCSIPLicenseBindsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyCSIPLicenseUnBinds(
+            self,
+            request: models.ModifyCSIPLicenseUnBindsRequest,
+            opts: Dict = None,
+    ) -> models.ModifyCSIPLicenseUnBindsResponse:
+        """
+        手动解绑主机授权。同步执行，直接返回结果。仅解绑主机授权（category=0，含专业版/旗舰版）。单订单模式下appid即可定位订单，无需传ResourceId。RASP解绑请用ModifyCSIPRaspLicenseUnBinds。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyCSIPLicenseUnBinds"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyCSIPLicenseUnBindsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyCSIPRaspLicenseBinds(
+            self,
+            request: models.ModifyCSIPRaspLicenseBindsRequest,
+            opts: Dict = None,
+    ) -> models.ModifyCSIPRaspLicenseBindsResponse:
+        """
+        绑定 RASP / 旗舰版授权到指定订单。异步执行，返回TaskId供查询进度。LicenseType=rasp 绑 RASP，LicenseType=enterprise_hp 绑旗舰版主机授权；AssetType 区分主机/容器节点/EKS。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyCSIPRaspLicenseBinds"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyCSIPRaspLicenseBindsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyCSIPRaspLicenseUnBinds(
+            self,
+            request: models.ModifyCSIPRaspLicenseUnBindsRequest,
+            opts: Dict = None,
+    ) -> models.ModifyCSIPRaspLicenseUnBindsResponse:
+        """
+        手动解绑RASP授权。同步执行，直接返回结果。仅解绑RASP授权（category=1），无解绑次数限制。单订单模式下appid即可定位订单，无需传ResourceId。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyCSIPRaspLicenseUnBinds"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyCSIPRaspLicenseUnBindsResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -9557,6 +10151,24 @@ class CsipClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def ModifyNotifyAgentOfflineDuration(
+            self,
+            request: models.ModifyNotifyAgentOfflineDurationRequest,
+            opts: Dict = None,
+    ) -> models.ModifyNotifyAgentOfflineDurationResponse:
+        """
+        修改客户端离线时长
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyNotifyAgentOfflineDuration"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyNotifyAgentOfflineDurationResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ModifyNotifyAssetConfig(
             self,
             request: models.ModifyNotifyAssetConfigRequest,
@@ -9624,6 +10236,33 @@ class CsipClient(AbstractClient):
         kwargs["action"] = "ModifyOrganizationAccountStatus"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ModifyOrganizationAccountStatusResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyPayConfig(
+            self,
+            request: models.ModifyPayConfigRequest,
+            opts: Dict = None,
+    ) -> models.ModifyPayConfigResponse:
+        """
+        修改自动扩容配置（多模块可扩展，本期仅主机安全模块）。
+
+        「自动扩容」为面向用户的对外概念，等价于底层自动加购(auto_repurchase)：当账号有新增资产时，自动加购所需授权。
+
+        补充说明：
+        1. 本期仅实现主机安全模块 HostConfig；后续可扩展容器安全、AI-Agent 安全等命名模块字段，各模块配置字段可异构；
+        2. 部分更新语义：模块对象为空表示该模块不修改，模块内字段为空表示该字段不修改；
+        3. HostConfig.Switch 联动映射 auto_repurchase_switch；auto_bind_switch（自动绑定）恒开，不由本接口改动；
+        4. 自动续费(renew_flag) 不由本接口改动；额度/用量请调用 DescribeLicenseStatus；
+        5. 顶部「自动扩容」总开关状态由前端按各模块开关聚合，后端不存储、不返回全局开关。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyPayConfig"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyPayConfigResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -9755,6 +10394,24 @@ class CsipClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def ModifySecurityScoreRule(
+            self,
+            request: models.ModifySecurityScoreRuleRequest,
+            opts: Dict = None,
+    ) -> models.ModifySecurityScoreRuleResponse:
+        """
+        修改安全评分规则，必须传入完整规则集
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifySecurityScoreRule"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifySecurityScoreRuleResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ModifyShareUserCSPM(
             self,
             request: models.ModifyShareUserCSPMRequest,
@@ -9840,6 +10497,60 @@ class CsipClient(AbstractClient):
         kwargs["action"] = "ModifyVulWhitelistSwitch"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ModifyVulWhitelistSwitchResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyWebhookPolicy(
+            self,
+            request: models.ModifyWebhookPolicyRequest,
+            opts: Dict = None,
+    ) -> models.ModifyWebhookPolicyResponse:
+        """
+        新增或修改一条通知策略。ID > 0 表示修改；ID = 0 或不传表示新增。MemberAppIds 配置为空时，策略仅作用于当前主账号事件；非空时同时作用于自身账号 + 所列成员账号。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyWebhookPolicy"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyWebhookPolicyResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyWebhookPolicyStatus(
+            self,
+            request: models.ModifyWebhookPolicyStatusRequest,
+            opts: Dict = None,
+    ) -> models.ModifyWebhookPolicyStatusResponse:
+        """
+        切换通知策略的启用状态。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyWebhookPolicyStatus"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyWebhookPolicyStatusResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyWebhookReceiver(
+            self,
+            request: models.ModifyWebhookReceiverRequest,
+            opts: Dict = None,
+    ) -> models.ModifyWebhookReceiverResponse:
+        """
+        新增或修改一个接收机器人。ID > 0 表示修改已有记录；ID = 0 或不传表示新增。机器人类型由 Type 字段决定，Type=WEBHOOK 时 WebhookAddr 必填，Type=SCF 时 SCFRegion/Namespace/FunctionName/FunctionVersion/Alias/MaxWaitSeconds 全部必填。修改时不允许变更 Type
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyWebhookReceiver"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyWebhookReceiverResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -9966,6 +10677,42 @@ class CsipClient(AbstractClient):
         kwargs["action"] = "ScanBaselineItemList"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ScanBaselineItemListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ScanBaselinePolicyList(
+            self,
+            request: models.ScanBaselinePolicyListRequest,
+            opts: Dict = None,
+    ) -> models.ScanBaselinePolicyListResponse:
+        """
+        对一批基线策略发起整体重新扫描（策略列表页“一键扫描”入口），按策略命中的资产范围全量重扫。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ScanBaselinePolicyList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ScanBaselinePolicyListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ScanBaselineRiskList(
+            self,
+            request: models.ScanBaselineRiskListRequest,
+            opts: Dict = None,
+    ) -> models.ScanBaselineRiskListResponse:
+        """
+        对一批风险记录发起重新扫描，常用于“风险列表”页批量勾选风险后的复扫场景。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ScanBaselineRiskList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ScanBaselineRiskListResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -10218,6 +10965,24 @@ class CsipClient(AbstractClient):
         kwargs["action"] = "SyncDspmUsers"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.SyncDspmUsersResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def TestWebhookReceiver(
+            self,
+            request: models.TestWebhookReceiverRequest,
+            opts: Dict = None,
+    ) -> models.TestWebhookReceiverResponse:
+        """
+        向指定的接收机器人发送一条测试消息，验证可达性与配置正确性。对应表格行内的「测试」按钮。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "TestWebhookReceiver"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.TestWebhookReceiverResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

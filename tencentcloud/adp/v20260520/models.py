@@ -7188,6 +7188,72 @@ class CamAuthConfig(AbstractModel):
         
 
 
+class CategoryPermission(AbstractModel):
+    r"""CategoryPermission
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CanAdd: <p>当前用户是否可新增子分类</p>
+        :type CanAdd: bool
+        :param _CanDelete: <p>当前用户是否可删除该分类</p>
+        :type CanDelete: bool
+        :param _CanEdit: <p>当前用户是否可编辑该分类</p>
+        :type CanEdit: bool
+        """
+        self._CanAdd = None
+        self._CanDelete = None
+        self._CanEdit = None
+
+    @property
+    def CanAdd(self):
+        r"""<p>当前用户是否可新增子分类</p>
+        :rtype: bool
+        """
+        return self._CanAdd
+
+    @CanAdd.setter
+    def CanAdd(self, CanAdd):
+        self._CanAdd = CanAdd
+
+    @property
+    def CanDelete(self):
+        r"""<p>当前用户是否可删除该分类</p>
+        :rtype: bool
+        """
+        return self._CanDelete
+
+    @CanDelete.setter
+    def CanDelete(self, CanDelete):
+        self._CanDelete = CanDelete
+
+    @property
+    def CanEdit(self):
+        r"""<p>当前用户是否可编辑该分类</p>
+        :rtype: bool
+        """
+        return self._CanEdit
+
+    @CanEdit.setter
+    def CanEdit(self, CanEdit):
+        self._CanEdit = CanEdit
+
+
+    def _deserialize(self, params):
+        self._CanAdd = params.get("CanAdd")
+        self._CanDelete = params.get("CanDelete")
+        self._CanEdit = params.get("CanEdit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ClawAgentAgentTeamConfig(AbstractModel):
     r"""ClawAgent Agent团队协作配置
 
@@ -10301,6 +10367,115 @@ class CreateConversationResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateMsgRecordCategoryRequest(AbstractModel):
+    r"""CreateMsgRecordCategory请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: <p>分类名称</p>
+        :type Name: str
+        :param _AppId: <p>应用 ID</p>
+        :type AppId: str
+        :param _ParentId: <p>父分类业务 ID，0 表示一级分类（未分类）</p>
+        :type ParentId: str
+        """
+        self._Name = None
+        self._AppId = None
+        self._ParentId = None
+
+    @property
+    def Name(self):
+        r"""<p>分类名称</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def AppId(self):
+        r"""<p>应用 ID</p>
+        :rtype: str
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def ParentId(self):
+        r"""<p>父分类业务 ID，0 表示一级分类（未分类）</p>
+        :rtype: str
+        """
+        return self._ParentId
+
+    @ParentId.setter
+    def ParentId(self, ParentId):
+        self._ParentId = ParentId
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._AppId = params.get("AppId")
+        self._ParentId = params.get("ParentId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateMsgRecordCategoryResponse(AbstractModel):
+    r"""CreateMsgRecordCategory返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CategoryId: <p>新建分类的业务 ID</p>
+        :type CategoryId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._CategoryId = None
+        self._RequestId = None
+
+    @property
+    def CategoryId(self):
+        r"""<p>新建分类的业务 ID</p>
+        :rtype: str
+        """
+        return self._CategoryId
+
+    @CategoryId.setter
+    def CategoryId(self, CategoryId):
+        self._CategoryId = CategoryId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._CategoryId = params.get("CategoryId")
+        self._RequestId = params.get("RequestId")
+
+
 class CreatePluginRequest(AbstractModel):
     r"""CreatePlugin请求参数结构体
 
@@ -12032,6 +12207,85 @@ class DeleteConversationRequest(AbstractModel):
 
 class DeleteConversationResponse(AbstractModel):
     r"""DeleteConversation返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteMsgRecordCategoryRequest(AbstractModel):
+    r"""DeleteMsgRecordCategory请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AppId: <p>应用 ID</p>
+        :type AppId: str
+        :param _CategoryId: <p>待删除的分类业务 ID</p>
+        :type CategoryId: str
+        """
+        self._AppId = None
+        self._CategoryId = None
+
+    @property
+    def AppId(self):
+        r"""<p>应用 ID</p>
+        :rtype: str
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def CategoryId(self):
+        r"""<p>待删除的分类业务 ID</p>
+        :rtype: str
+        """
+        return self._CategoryId
+
+    @CategoryId.setter
+    def CategoryId(self, CategoryId):
+        self._CategoryId = CategoryId
+
+
+    def _deserialize(self, params):
+        self._AppId = params.get("AppId")
+        self._CategoryId = params.get("CategoryId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteMsgRecordCategoryResponse(AbstractModel):
+    r"""DeleteMsgRecordCategory返回参数结构体
 
     """
 
@@ -15877,6 +16131,301 @@ class DescribeModelListResponse(AbstractModel):
                 obj = Model()
                 obj._deserialize(item)
                 self._ModelList.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeMsgRecordCategoryListRequest(AbstractModel):
+    r"""DescribeMsgRecordCategoryList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AppId: <p>应用 ID</p>
+        :type AppId: str
+        """
+        self._AppId = None
+
+    @property
+    def AppId(self):
+        r"""<p>应用 ID</p>
+        :rtype: str
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+
+    def _deserialize(self, params):
+        self._AppId = params.get("AppId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeMsgRecordCategoryListResponse(AbstractModel):
+    r"""DescribeMsgRecordCategoryList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CategoryList: <p>消息记录分类树列表</p>
+        :type CategoryList: list of MsgRecordCategory
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._CategoryList = None
+        self._RequestId = None
+
+    @property
+    def CategoryList(self):
+        r"""<p>消息记录分类树列表</p>
+        :rtype: list of MsgRecordCategory
+        """
+        return self._CategoryList
+
+    @CategoryList.setter
+    def CategoryList(self, CategoryList):
+        self._CategoryList = CategoryList
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("CategoryList") is not None:
+            self._CategoryList = []
+            for item in params.get("CategoryList"):
+                obj = MsgRecordCategory()
+                obj._deserialize(item)
+                self._CategoryList.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeMsgRecordListRequest(AbstractModel):
+    r"""DescribeMsgRecordList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AppId: <p>应用 ID</p>
+        :type AppId: str
+        :param _FilterList: <p>过滤条件列表，支持：ChannelType（渠道类型，0 全部）、FeedbackType（反馈类型，-1 为全部）、QueryType、Query、CategoryId、ReplyMethod、StartTime、EndTime（秒时间戳）、Cursor（游标信息，上一页取响应 PrevCursor，下一页取响应 NextCursor）、Direction（方向，next 下一页，prev 上一页）、CallResult（调用结果，默认 0 为全部，1 为成功，2 为失败）、FailReason、Intent</p>
+        :type FilterList: list of Filter
+        :param _PageNumber: <p>页码，从 0 开始；不传时按 0 处理</p>
+        :type PageNumber: int
+        :param _PageSize: <p>每页数量，最大 100；不传或传 0 时按默认分页大小处理</p>
+        :type PageSize: int
+        :param _Sort: <p>排序条件，只支持按 CreateTime 排序</p>
+        :type Sort: :class:`tencentcloud.adp.v20260520.models.Sort`
+        """
+        self._AppId = None
+        self._FilterList = None
+        self._PageNumber = None
+        self._PageSize = None
+        self._Sort = None
+
+    @property
+    def AppId(self):
+        r"""<p>应用 ID</p>
+        :rtype: str
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def FilterList(self):
+        r"""<p>过滤条件列表，支持：ChannelType（渠道类型，0 全部）、FeedbackType（反馈类型，-1 为全部）、QueryType、Query、CategoryId、ReplyMethod、StartTime、EndTime（秒时间戳）、Cursor（游标信息，上一页取响应 PrevCursor，下一页取响应 NextCursor）、Direction（方向，next 下一页，prev 上一页）、CallResult（调用结果，默认 0 为全部，1 为成功，2 为失败）、FailReason、Intent</p>
+        :rtype: list of Filter
+        """
+        return self._FilterList
+
+    @FilterList.setter
+    def FilterList(self, FilterList):
+        self._FilterList = FilterList
+
+    @property
+    def PageNumber(self):
+        r"""<p>页码，从 0 开始；不传时按 0 处理</p>
+        :rtype: int
+        """
+        return self._PageNumber
+
+    @PageNumber.setter
+    def PageNumber(self, PageNumber):
+        self._PageNumber = PageNumber
+
+    @property
+    def PageSize(self):
+        r"""<p>每页数量，最大 100；不传或传 0 时按默认分页大小处理</p>
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def Sort(self):
+        r"""<p>排序条件，只支持按 CreateTime 排序</p>
+        :rtype: :class:`tencentcloud.adp.v20260520.models.Sort`
+        """
+        return self._Sort
+
+    @Sort.setter
+    def Sort(self, Sort):
+        self._Sort = Sort
+
+
+    def _deserialize(self, params):
+        self._AppId = params.get("AppId")
+        if params.get("FilterList") is not None:
+            self._FilterList = []
+            for item in params.get("FilterList"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._FilterList.append(obj)
+        self._PageNumber = params.get("PageNumber")
+        self._PageSize = params.get("PageSize")
+        if params.get("Sort") is not None:
+            self._Sort = Sort()
+            self._Sort._deserialize(params.get("Sort"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeMsgRecordListResponse(AbstractModel):
+    r"""DescribeMsgRecordList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _HasMore: <p>是否有更多页</p>
+        :type HasMore: bool
+        :param _MsgRecordList: <p>消息记录列表</p>
+        :type MsgRecordList: list of MsgRecord
+        :param _NextCursor: <p>下一页游标信息</p>
+        :type NextCursor: str
+        :param _PrevCursor: <p>上一页游标信息</p>
+        :type PrevCursor: str
+        :param _TotalCount: <p>符合条件的总记录数，用于前端分页显示</p>
+        :type TotalCount: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._HasMore = None
+        self._MsgRecordList = None
+        self._NextCursor = None
+        self._PrevCursor = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def HasMore(self):
+        r"""<p>是否有更多页</p>
+        :rtype: bool
+        """
+        return self._HasMore
+
+    @HasMore.setter
+    def HasMore(self, HasMore):
+        self._HasMore = HasMore
+
+    @property
+    def MsgRecordList(self):
+        r"""<p>消息记录列表</p>
+        :rtype: list of MsgRecord
+        """
+        return self._MsgRecordList
+
+    @MsgRecordList.setter
+    def MsgRecordList(self, MsgRecordList):
+        self._MsgRecordList = MsgRecordList
+
+    @property
+    def NextCursor(self):
+        r"""<p>下一页游标信息</p>
+        :rtype: str
+        """
+        return self._NextCursor
+
+    @NextCursor.setter
+    def NextCursor(self, NextCursor):
+        self._NextCursor = NextCursor
+
+    @property
+    def PrevCursor(self):
+        r"""<p>上一页游标信息</p>
+        :rtype: str
+        """
+        return self._PrevCursor
+
+    @PrevCursor.setter
+    def PrevCursor(self, PrevCursor):
+        self._PrevCursor = PrevCursor
+
+    @property
+    def TotalCount(self):
+        r"""<p>符合条件的总记录数，用于前端分页显示</p>
+        :rtype: str
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._HasMore = params.get("HasMore")
+        if params.get("MsgRecordList") is not None:
+            self._MsgRecordList = []
+            for item in params.get("MsgRecordList"):
+                obj = MsgRecord()
+                obj._deserialize(item)
+                self._MsgRecordList.append(obj)
+        self._NextCursor = params.get("NextCursor")
+        self._PrevCursor = params.get("PrevCursor")
         self._TotalCount = params.get("TotalCount")
         self._RequestId = params.get("RequestId")
 
@@ -20998,6 +21547,100 @@ class ModifyConversationResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyMsgRecordCategoryRequest(AbstractModel):
+    r"""ModifyMsgRecordCategory请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AppId: <p>应用 ID</p>
+        :type AppId: str
+        :param _CategoryId: <p>待修改的分类业务 ID</p>
+        :type CategoryId: str
+        :param _Name: <p>修改后的分类名称</p>
+        :type Name: str
+        """
+        self._AppId = None
+        self._CategoryId = None
+        self._Name = None
+
+    @property
+    def AppId(self):
+        r"""<p>应用 ID</p>
+        :rtype: str
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def CategoryId(self):
+        r"""<p>待修改的分类业务 ID</p>
+        :rtype: str
+        """
+        return self._CategoryId
+
+    @CategoryId.setter
+    def CategoryId(self, CategoryId):
+        self._CategoryId = CategoryId
+
+    @property
+    def Name(self):
+        r"""<p>修改后的分类名称</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+
+    def _deserialize(self, params):
+        self._AppId = params.get("AppId")
+        self._CategoryId = params.get("CategoryId")
+        self._Name = params.get("Name")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyMsgRecordCategoryResponse(AbstractModel):
+    r"""ModifyMsgRecordCategory返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyPluginRequest(AbstractModel):
     r"""ModifyPlugin请求参数结构体
 
@@ -21537,6 +22180,611 @@ class ModifyVariableResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
+
+
+class MsgRecord(AbstractModel):
+    r"""MsgRecord
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Answer: 答案
+        :type Answer: str
+        :param _AppId: 应用ID
+        :type AppId: str
+        :param _CategoryId: 分类ID
+        :type CategoryId: str
+        :param _CreateTime: 创建时间
+        :type CreateTime: str
+        :param _Intent: 意图
+        :type Intent: str
+        :param _IntentCategory: 意图分类
+        :type IntentCategory: str
+        :param _IsSmart: 是否是智能分类
+        :type IsSmart: bool
+        :param _Question: 问题
+        :type Question: str
+        :param _RecordId: 记录ID
+        :type RecordId: str
+        :param _ReplyMethod: 表示消息的回复方式，枚举 ReplyMethod：0=未指定, 1=大模型直接回复, 2=保守回复, 3=拒答, 4=敏感回复, 5=问答对优先回复, 6=欢迎语, 7=并发超限, 8=全局干预知识, 9=任务流程过程回复, 10=任务流程答案, 11=搜索引擎, 12=知识润色, 13=图片理解, 14=实时文档, 15=澄清确认, 16=工作流回复, 17=工作流结束, 18=智能体回复, 19=多意图, 20=中断, 21=智能体计划预览, 22=智能体计划结果, 23=智能体结构化输出。
+        :type ReplyMethod: int
+        :param _Result: 返回结果
+        :type Result: :class:`tencentcloud.adp.v20260520.models.MsgRecordResult`
+        :param _Score: 分数
+        :type Score: int
+        :param _SessionId: 会话ID
+        :type SessionId: str
+        :param _Source: 来源
+        :type Source: :class:`tencentcloud.adp.v20260520.models.MsgRecordSource`
+        :param _TraceId: trace_id
+        :type TraceId: str
+        """
+        self._Answer = None
+        self._AppId = None
+        self._CategoryId = None
+        self._CreateTime = None
+        self._Intent = None
+        self._IntentCategory = None
+        self._IsSmart = None
+        self._Question = None
+        self._RecordId = None
+        self._ReplyMethod = None
+        self._Result = None
+        self._Score = None
+        self._SessionId = None
+        self._Source = None
+        self._TraceId = None
+
+    @property
+    def Answer(self):
+        r"""答案
+        :rtype: str
+        """
+        return self._Answer
+
+    @Answer.setter
+    def Answer(self, Answer):
+        self._Answer = Answer
+
+    @property
+    def AppId(self):
+        r"""应用ID
+        :rtype: str
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def CategoryId(self):
+        r"""分类ID
+        :rtype: str
+        """
+        return self._CategoryId
+
+    @CategoryId.setter
+    def CategoryId(self, CategoryId):
+        self._CategoryId = CategoryId
+
+    @property
+    def CreateTime(self):
+        r"""创建时间
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def Intent(self):
+        r"""意图
+        :rtype: str
+        """
+        return self._Intent
+
+    @Intent.setter
+    def Intent(self, Intent):
+        self._Intent = Intent
+
+    @property
+    def IntentCategory(self):
+        r"""意图分类
+        :rtype: str
+        """
+        return self._IntentCategory
+
+    @IntentCategory.setter
+    def IntentCategory(self, IntentCategory):
+        self._IntentCategory = IntentCategory
+
+    @property
+    def IsSmart(self):
+        r"""是否是智能分类
+        :rtype: bool
+        """
+        return self._IsSmart
+
+    @IsSmart.setter
+    def IsSmart(self, IsSmart):
+        self._IsSmart = IsSmart
+
+    @property
+    def Question(self):
+        r"""问题
+        :rtype: str
+        """
+        return self._Question
+
+    @Question.setter
+    def Question(self, Question):
+        self._Question = Question
+
+    @property
+    def RecordId(self):
+        r"""记录ID
+        :rtype: str
+        """
+        return self._RecordId
+
+    @RecordId.setter
+    def RecordId(self, RecordId):
+        self._RecordId = RecordId
+
+    @property
+    def ReplyMethod(self):
+        r"""表示消息的回复方式，枚举 ReplyMethod：0=未指定, 1=大模型直接回复, 2=保守回复, 3=拒答, 4=敏感回复, 5=问答对优先回复, 6=欢迎语, 7=并发超限, 8=全局干预知识, 9=任务流程过程回复, 10=任务流程答案, 11=搜索引擎, 12=知识润色, 13=图片理解, 14=实时文档, 15=澄清确认, 16=工作流回复, 17=工作流结束, 18=智能体回复, 19=多意图, 20=中断, 21=智能体计划预览, 22=智能体计划结果, 23=智能体结构化输出。
+        :rtype: int
+        """
+        return self._ReplyMethod
+
+    @ReplyMethod.setter
+    def ReplyMethod(self, ReplyMethod):
+        self._ReplyMethod = ReplyMethod
+
+    @property
+    def Result(self):
+        r"""返回结果
+        :rtype: :class:`tencentcloud.adp.v20260520.models.MsgRecordResult`
+        """
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def Score(self):
+        r"""分数
+        :rtype: int
+        """
+        return self._Score
+
+    @Score.setter
+    def Score(self, Score):
+        self._Score = Score
+
+    @property
+    def SessionId(self):
+        r"""会话ID
+        :rtype: str
+        """
+        return self._SessionId
+
+    @SessionId.setter
+    def SessionId(self, SessionId):
+        self._SessionId = SessionId
+
+    @property
+    def Source(self):
+        r"""来源
+        :rtype: :class:`tencentcloud.adp.v20260520.models.MsgRecordSource`
+        """
+        return self._Source
+
+    @Source.setter
+    def Source(self, Source):
+        self._Source = Source
+
+    @property
+    def TraceId(self):
+        r"""trace_id
+        :rtype: str
+        """
+        return self._TraceId
+
+    @TraceId.setter
+    def TraceId(self, TraceId):
+        self._TraceId = TraceId
+
+
+    def _deserialize(self, params):
+        self._Answer = params.get("Answer")
+        self._AppId = params.get("AppId")
+        self._CategoryId = params.get("CategoryId")
+        self._CreateTime = params.get("CreateTime")
+        self._Intent = params.get("Intent")
+        self._IntentCategory = params.get("IntentCategory")
+        self._IsSmart = params.get("IsSmart")
+        self._Question = params.get("Question")
+        self._RecordId = params.get("RecordId")
+        self._ReplyMethod = params.get("ReplyMethod")
+        if params.get("Result") is not None:
+            self._Result = MsgRecordResult()
+            self._Result._deserialize(params.get("Result"))
+        self._Score = params.get("Score")
+        self._SessionId = params.get("SessionId")
+        if params.get("Source") is not None:
+            self._Source = MsgRecordSource()
+            self._Source._deserialize(params.get("Source"))
+        self._TraceId = params.get("TraceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class MsgRecordCategory(AbstractModel):
+    r"""MsgRecordCategory
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CategoryId: <p>分类的业务 ID</p>
+        :type CategoryId: str
+        :param _Children: <p>子分类列表，树形嵌套</p>
+        :type Children: list of MsgRecordCategory
+        :param _Name: <p>分类名称</p>
+        :type Name: str
+        :param _Permission: <p>当前用户对该分类的操作权限</p>
+        :type Permission: :class:`tencentcloud.adp.v20260520.models.CategoryPermission`
+        :param _TotalCount: <p>该分类下消息记录的数量</p>
+        :type TotalCount: str
+        """
+        self._CategoryId = None
+        self._Children = None
+        self._Name = None
+        self._Permission = None
+        self._TotalCount = None
+
+    @property
+    def CategoryId(self):
+        r"""<p>分类的业务 ID</p>
+        :rtype: str
+        """
+        return self._CategoryId
+
+    @CategoryId.setter
+    def CategoryId(self, CategoryId):
+        self._CategoryId = CategoryId
+
+    @property
+    def Children(self):
+        r"""<p>子分类列表，树形嵌套</p>
+        :rtype: list of MsgRecordCategory
+        """
+        return self._Children
+
+    @Children.setter
+    def Children(self, Children):
+        self._Children = Children
+
+    @property
+    def Name(self):
+        r"""<p>分类名称</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Permission(self):
+        r"""<p>当前用户对该分类的操作权限</p>
+        :rtype: :class:`tencentcloud.adp.v20260520.models.CategoryPermission`
+        """
+        return self._Permission
+
+    @Permission.setter
+    def Permission(self, Permission):
+        self._Permission = Permission
+
+    @property
+    def TotalCount(self):
+        r"""<p>该分类下消息记录的数量</p>
+        :rtype: str
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+
+    def _deserialize(self, params):
+        self._CategoryId = params.get("CategoryId")
+        if params.get("Children") is not None:
+            self._Children = []
+            for item in params.get("Children"):
+                obj = MsgRecordCategory()
+                obj._deserialize(item)
+                self._Children.append(obj)
+        self._Name = params.get("Name")
+        if params.get("Permission") is not None:
+            self._Permission = CategoryPermission()
+            self._Permission._deserialize(params.get("Permission"))
+        self._TotalCount = params.get("TotalCount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class MsgRecordResult(AbstractModel):
+    r"""MsgRecordResult
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CallResult: 表示该条消息的调用结果：0=CALL_RESULT_UNKNOWN（全部/未知）, 1=CALL_RESULT_SUCCESS（成功）, 2=CALL_RESULT_FAILED（失败）；fail_reason（string）为调用失败时的失败原因描述。
+        :type CallResult: int
+        :param _CustomerVariable: 自定义变量，json字符串
+        :type CustomerVariable: str
+        :param _FailReason: 失败原因
+        :type FailReason: str
+        :param _FirstTokenLatency: 首token耗时
+        :type FirstTokenLatency: int
+        :param _InputToken: 输入token数
+        :type InputToken: int
+        :param _OutputToken: 输出token数
+        :type OutputToken: int
+        :param _TotalToken: 总token数
+        :type TotalToken: int
+        :param _TotalTokenLatency: 总token耗时
+        :type TotalTokenLatency: int
+        """
+        self._CallResult = None
+        self._CustomerVariable = None
+        self._FailReason = None
+        self._FirstTokenLatency = None
+        self._InputToken = None
+        self._OutputToken = None
+        self._TotalToken = None
+        self._TotalTokenLatency = None
+
+    @property
+    def CallResult(self):
+        r"""表示该条消息的调用结果：0=CALL_RESULT_UNKNOWN（全部/未知）, 1=CALL_RESULT_SUCCESS（成功）, 2=CALL_RESULT_FAILED（失败）；fail_reason（string）为调用失败时的失败原因描述。
+        :rtype: int
+        """
+        return self._CallResult
+
+    @CallResult.setter
+    def CallResult(self, CallResult):
+        self._CallResult = CallResult
+
+    @property
+    def CustomerVariable(self):
+        r"""自定义变量，json字符串
+        :rtype: str
+        """
+        return self._CustomerVariable
+
+    @CustomerVariable.setter
+    def CustomerVariable(self, CustomerVariable):
+        self._CustomerVariable = CustomerVariable
+
+    @property
+    def FailReason(self):
+        r"""失败原因
+        :rtype: str
+        """
+        return self._FailReason
+
+    @FailReason.setter
+    def FailReason(self, FailReason):
+        self._FailReason = FailReason
+
+    @property
+    def FirstTokenLatency(self):
+        r"""首token耗时
+        :rtype: int
+        """
+        return self._FirstTokenLatency
+
+    @FirstTokenLatency.setter
+    def FirstTokenLatency(self, FirstTokenLatency):
+        self._FirstTokenLatency = FirstTokenLatency
+
+    @property
+    def InputToken(self):
+        r"""输入token数
+        :rtype: int
+        """
+        return self._InputToken
+
+    @InputToken.setter
+    def InputToken(self, InputToken):
+        self._InputToken = InputToken
+
+    @property
+    def OutputToken(self):
+        r"""输出token数
+        :rtype: int
+        """
+        return self._OutputToken
+
+    @OutputToken.setter
+    def OutputToken(self, OutputToken):
+        self._OutputToken = OutputToken
+
+    @property
+    def TotalToken(self):
+        r"""总token数
+        :rtype: int
+        """
+        return self._TotalToken
+
+    @TotalToken.setter
+    def TotalToken(self, TotalToken):
+        self._TotalToken = TotalToken
+
+    @property
+    def TotalTokenLatency(self):
+        r"""总token耗时
+        :rtype: int
+        """
+        return self._TotalTokenLatency
+
+    @TotalTokenLatency.setter
+    def TotalTokenLatency(self, TotalTokenLatency):
+        self._TotalTokenLatency = TotalTokenLatency
+
+
+    def _deserialize(self, params):
+        self._CallResult = params.get("CallResult")
+        self._CustomerVariable = params.get("CustomerVariable")
+        self._FailReason = params.get("FailReason")
+        self._FirstTokenLatency = params.get("FirstTokenLatency")
+        self._InputToken = params.get("InputToken")
+        self._OutputToken = params.get("OutputToken")
+        self._TotalToken = params.get("TotalToken")
+        self._TotalTokenLatency = params.get("TotalTokenLatency")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class MsgRecordSource(AbstractModel):
+    r"""MsgRecordSource
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ChannelType: 对话消息的接入渠道类型：0=未指定, 1=坐席, 2=体验页面(腾讯云), 3=评测端对话, 4=体验页面(手机号), 5=对话端API接入, 6=评测任务对话, 10=工作流调试, 10000=微信公众号, 10001=微信服务号, 10002=企微应用, 10003=网页组件, 10004=微信客服, 10005=微信小程序, 10006=元器, 10007=应用宝, 10008=元宝, 10009=企微智能机器人, 10010=元器API, 10011=LINE, 10012=Telegram, 10100=电脑管家, 20001=荣耀智能体平台, 20002=小米应用商店；user_id（string）为该渠道下的访客唯一标识。
+        :type ChannelType: int
+        :param _FromId: 用户ID
+        :type FromId: str
+        :param _FromType: 消息发送者的用户来源类型：1=用户（访客/C端用户）, 2=机器人（AI回复）, 3=坐席（人工客服）；from_id（string）为该来源类型下的用户唯一标识 ID。
+        :type FromType: int
+        :param _UserAvatar: 用户头像
+        :type UserAvatar: str
+        :param _UserId: 访客ID
+        :type UserId: str
+        :param _UserNickname: 访客名称
+        :type UserNickname: str
+        """
+        self._ChannelType = None
+        self._FromId = None
+        self._FromType = None
+        self._UserAvatar = None
+        self._UserId = None
+        self._UserNickname = None
+
+    @property
+    def ChannelType(self):
+        r"""对话消息的接入渠道类型：0=未指定, 1=坐席, 2=体验页面(腾讯云), 3=评测端对话, 4=体验页面(手机号), 5=对话端API接入, 6=评测任务对话, 10=工作流调试, 10000=微信公众号, 10001=微信服务号, 10002=企微应用, 10003=网页组件, 10004=微信客服, 10005=微信小程序, 10006=元器, 10007=应用宝, 10008=元宝, 10009=企微智能机器人, 10010=元器API, 10011=LINE, 10012=Telegram, 10100=电脑管家, 20001=荣耀智能体平台, 20002=小米应用商店；user_id（string）为该渠道下的访客唯一标识。
+        :rtype: int
+        """
+        return self._ChannelType
+
+    @ChannelType.setter
+    def ChannelType(self, ChannelType):
+        self._ChannelType = ChannelType
+
+    @property
+    def FromId(self):
+        r"""用户ID
+        :rtype: str
+        """
+        return self._FromId
+
+    @FromId.setter
+    def FromId(self, FromId):
+        self._FromId = FromId
+
+    @property
+    def FromType(self):
+        r"""消息发送者的用户来源类型：1=用户（访客/C端用户）, 2=机器人（AI回复）, 3=坐席（人工客服）；from_id（string）为该来源类型下的用户唯一标识 ID。
+        :rtype: int
+        """
+        return self._FromType
+
+    @FromType.setter
+    def FromType(self, FromType):
+        self._FromType = FromType
+
+    @property
+    def UserAvatar(self):
+        r"""用户头像
+        :rtype: str
+        """
+        return self._UserAvatar
+
+    @UserAvatar.setter
+    def UserAvatar(self, UserAvatar):
+        self._UserAvatar = UserAvatar
+
+    @property
+    def UserId(self):
+        r"""访客ID
+        :rtype: str
+        """
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
+
+    @property
+    def UserNickname(self):
+        r"""访客名称
+        :rtype: str
+        """
+        return self._UserNickname
+
+    @UserNickname.setter
+    def UserNickname(self, UserNickname):
+        self._UserNickname = UserNickname
+
+
+    def _deserialize(self, params):
+        self._ChannelType = params.get("ChannelType")
+        self._FromId = params.get("FromId")
+        self._FromType = params.get("FromType")
+        self._UserAvatar = params.get("UserAvatar")
+        self._UserId = params.get("UserId")
+        self._UserNickname = params.get("UserNickname")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class MultiAgentConfig(AbstractModel):
@@ -25821,6 +27069,57 @@ class SkillVersion(AbstractModel):
         self._CreateTime = params.get("CreateTime")
         self._SkillMarkdownUrl = params.get("SkillMarkdownUrl")
         self._UpdateDesc = params.get("UpdateDesc")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class Sort(AbstractModel):
+    r"""<p>排序条件</p>
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: <p>排序字段名，如 create_time</p>
+        :type Name: str
+        :param _Direction: <p>排序方向，1 升序，2 降序</p><table><tbody><tr><td>枚举项</td><td>枚举值</td><td>描述</td></tr><tr><td>SORT_ORDER_INVALID</td><td>0</td><td>无效</td></tr><tr><td>SORT_ORDER_ASC</td><td>1</td><td>升序</td></tr><tr><td>SORT_ORDER_DESC</td><td>2</td><td>降序</td></tr></tbody></table>
+        :type Direction: int
+        """
+        self._Name = None
+        self._Direction = None
+
+    @property
+    def Name(self):
+        r"""<p>排序字段名，如 create_time</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Direction(self):
+        r"""<p>排序方向，1 升序，2 降序</p><table><tbody><tr><td>枚举项</td><td>枚举值</td><td>描述</td></tr><tr><td>SORT_ORDER_INVALID</td><td>0</td><td>无效</td></tr><tr><td>SORT_ORDER_ASC</td><td>1</td><td>升序</td></tr><tr><td>SORT_ORDER_DESC</td><td>2</td><td>降序</td></tr></tbody></table>
+        :rtype: int
+        """
+        return self._Direction
+
+    @Direction.setter
+    def Direction(self, Direction):
+        self._Direction = Direction
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Direction = params.get("Direction")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

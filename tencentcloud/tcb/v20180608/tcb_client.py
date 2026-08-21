@@ -97,6 +97,31 @@ class TcbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def BindCls(self, request):
+        r"""绑定自定义CLS日志主题
+
+        **绑定自定义 CLS 日志主题需调用腾讯云 CLS「[DescribeTopics](https://cloud.tencent.com/document/api/614/56454)」接口，按传入的 `Region` 拉取用户日志主题列表，仅筛选 `AssumerName` 为空的自有主题，并将其 `LogsetId`、`TopicId` 分别回填为绑定参数 `ClsLogsetId`、`ClsTopicId`（地域取请求参数 `Region` 作为 `ClsRegion`）。**
+
+        :param request: Request instance for BindCls.
+        :type request: :class:`tencentcloud.tcb.v20180608.models.BindClsRequest`
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.BindClsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("BindCls", params, headers=headers)
+            response = json.loads(body)
+            model = models.BindClsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def BindStorageSource(self, request):
         r"""为云存储绑定外部云存储源。
         将一个用户自有的 COS桶 作为外部存储源绑定到指定云开发环境的云存储。绑定后，该环境的云存储文件操作将指向此桶，通过 BasePath 路径前缀实现与其他环境的数据隔离。

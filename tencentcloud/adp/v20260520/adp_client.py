@@ -164,6 +164,29 @@ class AdpClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateMsgRecordCategory(self, request):
+        r"""创建一条消息记录分类，支持指定分类名称与父分类（ParentId 为 0 时表示一级分类）
+
+        :param request: Request instance for CreateMsgRecordCategory.
+        :type request: :class:`tencentcloud.adp.v20260520.models.CreateMsgRecordCategoryRequest`
+        :rtype: :class:`tencentcloud.adp.v20260520.models.CreateMsgRecordCategoryResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateMsgRecordCategory", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateMsgRecordCategoryResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreatePlugin(self, request):
         r"""获取插件详情
 
@@ -431,6 +454,29 @@ class AdpClient(AbstractClient):
             body = self.call("DeleteConversation", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteConversationResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteMsgRecordCategory(self, request):
+        r"""删除指定的消息记录分类
+
+        :param request: Request instance for DeleteMsgRecordCategory.
+        :type request: :class:`tencentcloud.adp.v20260520.models.DeleteMsgRecordCategoryRequest`
+        :rtype: :class:`tencentcloud.adp.v20260520.models.DeleteMsgRecordCategoryResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteMsgRecordCategory", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteMsgRecordCategoryResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1015,6 +1061,52 @@ class AdpClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeMsgRecordCategoryList(self, request):
+        r"""查询应用的消息记录分类树，返回分类及子分类、各分类下记录数量与操作权限
+
+        :param request: Request instance for DescribeMsgRecordCategoryList.
+        :type request: :class:`tencentcloud.adp.v20260520.models.DescribeMsgRecordCategoryListRequest`
+        :rtype: :class:`tencentcloud.adp.v20260520.models.DescribeMsgRecordCategoryListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeMsgRecordCategoryList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeMsgRecordCategoryListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeMsgRecordList(self, request):
+        r"""查询应用的对话消息记录列表，支持按渠道类型、反馈类型、意图、调用结果等条件过滤，并支持游标分页与按创建时间排序
+
+        :param request: Request instance for DescribeMsgRecordList.
+        :type request: :class:`tencentcloud.adp.v20260520.models.DescribeMsgRecordListRequest`
+        :rtype: :class:`tencentcloud.adp.v20260520.models.DescribeMsgRecordListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeMsgRecordList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeMsgRecordListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribePlugin(self, request):
         r"""获取插件详情
 
@@ -1466,6 +1558,29 @@ class AdpClient(AbstractClient):
             body = self.call("ModifyConversation", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyConversationResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyMsgRecordCategory(self, request):
+        r"""修改指定消息记录分类的名称
+
+        :param request: Request instance for ModifyMsgRecordCategory.
+        :type request: :class:`tencentcloud.adp.v20260520.models.ModifyMsgRecordCategoryRequest`
+        :rtype: :class:`tencentcloud.adp.v20260520.models.ModifyMsgRecordCategoryResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyMsgRecordCategory", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyMsgRecordCategoryResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

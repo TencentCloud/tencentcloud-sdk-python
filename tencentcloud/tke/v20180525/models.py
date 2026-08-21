@@ -23415,6 +23415,41 @@ class DescribeOSImagesRequest(AbstractModel):
 
     """
 
+    def __init__(self):
+        r"""
+        :param _Filters: <p>镜像拉取接口增加过滤字段</p>
+        :type Filters: list of Filter
+        """
+        self._Filters = None
+
+    @property
+    def Filters(self):
+        r"""<p>镜像拉取接口增加过滤字段</p>
+        :rtype: list of Filter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+
+    def _deserialize(self, params):
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
 
 class DescribeOSImagesResponse(AbstractModel):
     r"""DescribeOSImages返回参数结构体
@@ -23423,9 +23458,9 @@ class DescribeOSImagesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _OSImageSeriesSet: 镜像信息列表
+        :param _OSImageSeriesSet: <p>镜像信息列表</p>
         :type OSImageSeriesSet: list of OSImage
-        :param _TotalCount: 镜像数量
+        :param _TotalCount: <p>镜像数量</p>
         :type TotalCount: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -23436,7 +23471,7 @@ class DescribeOSImagesResponse(AbstractModel):
 
     @property
     def OSImageSeriesSet(self):
-        r"""镜像信息列表
+        r"""<p>镜像信息列表</p>
         :rtype: list of OSImage
         """
         return self._OSImageSeriesSet
@@ -23447,7 +23482,7 @@ class DescribeOSImagesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        r"""镜像数量
+        r"""<p>镜像数量</p>
         :rtype: int
         """
         return self._TotalCount
@@ -43481,18 +43516,20 @@ class OSImage(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SeriesName: os聚合名称
+        :param _SeriesName: <p>os聚合名称</p>
         :type SeriesName: str
-        :param _Alias: os别名
+        :param _Alias: <p>os别名</p>
         :type Alias: str
-        :param _OsName: os名称
+        :param _OsName: <p>os名称</p>
         :type OsName: str
-        :param _OsCustomizeType: 操作系统类型(分为定制和非定制，取值分别为:DOCKER_CUSTOMIZE、GENERAL)
+        :param _OsCustomizeType: <p>操作系统类型(分为定制和非定制，取值分别为:DOCKER_CUSTOMIZE、GENERAL)</p>
         :type OsCustomizeType: str
-        :param _Status: os是否下线(online表示在线,offline表示下线)
+        :param _Status: <p>os是否下线(online表示在线,offline表示下线)</p>
         :type Status: str
-        :param _ImageId: 镜像id
+        :param _ImageId: <p>镜像id</p>
         :type ImageId: str
+        :param _Arch: <p>架构</p>
+        :type Arch: str
         """
         self._SeriesName = None
         self._Alias = None
@@ -43500,10 +43537,11 @@ class OSImage(AbstractModel):
         self._OsCustomizeType = None
         self._Status = None
         self._ImageId = None
+        self._Arch = None
 
     @property
     def SeriesName(self):
-        r"""os聚合名称
+        r"""<p>os聚合名称</p>
         :rtype: str
         """
         return self._SeriesName
@@ -43514,7 +43552,7 @@ class OSImage(AbstractModel):
 
     @property
     def Alias(self):
-        r"""os别名
+        r"""<p>os别名</p>
         :rtype: str
         """
         return self._Alias
@@ -43525,7 +43563,7 @@ class OSImage(AbstractModel):
 
     @property
     def OsName(self):
-        r"""os名称
+        r"""<p>os名称</p>
         :rtype: str
         """
         return self._OsName
@@ -43536,7 +43574,7 @@ class OSImage(AbstractModel):
 
     @property
     def OsCustomizeType(self):
-        r"""操作系统类型(分为定制和非定制，取值分别为:DOCKER_CUSTOMIZE、GENERAL)
+        r"""<p>操作系统类型(分为定制和非定制，取值分别为:DOCKER_CUSTOMIZE、GENERAL)</p>
         :rtype: str
         """
         return self._OsCustomizeType
@@ -43547,7 +43585,7 @@ class OSImage(AbstractModel):
 
     @property
     def Status(self):
-        r"""os是否下线(online表示在线,offline表示下线)
+        r"""<p>os是否下线(online表示在线,offline表示下线)</p>
         :rtype: str
         """
         return self._Status
@@ -43558,7 +43596,7 @@ class OSImage(AbstractModel):
 
     @property
     def ImageId(self):
-        r"""镜像id
+        r"""<p>镜像id</p>
         :rtype: str
         """
         return self._ImageId
@@ -43566,6 +43604,17 @@ class OSImage(AbstractModel):
     @ImageId.setter
     def ImageId(self, ImageId):
         self._ImageId = ImageId
+
+    @property
+    def Arch(self):
+        r"""<p>架构</p>
+        :rtype: str
+        """
+        return self._Arch
+
+    @Arch.setter
+    def Arch(self, Arch):
+        self._Arch = Arch
 
 
     def _deserialize(self, params):
@@ -43575,6 +43624,7 @@ class OSImage(AbstractModel):
         self._OsCustomizeType = params.get("OsCustomizeType")
         self._Status = params.get("Status")
         self._ImageId = params.get("ImageId")
+        self._Arch = params.get("Arch")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

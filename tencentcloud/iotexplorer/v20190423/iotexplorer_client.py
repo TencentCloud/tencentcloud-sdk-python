@@ -1513,6 +1513,29 @@ class IotexplorerClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DeleteTWeSeeTasksByCondition(self, request):
+        r"""按条件删除指定设备和算法类目下的 TWeSee 任务及其关联数据。
+
+        :param request: Request instance for DeleteTWeSeeTasksByCondition.
+        :type request: :class:`tencentcloud.iotexplorer.v20190423.models.DeleteTWeSeeTasksByConditionRequest`
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.DeleteTWeSeeTasksByConditionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteTWeSeeTasksByCondition", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteTWeSeeTasksByConditionResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DeleteTWeTalkAIBot(self, request):
         r"""用于删除TWeTalk智能体。
 
