@@ -1755,6 +1755,24 @@ class RedisClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def ModifyInstancePasswordPolicy(
+            self,
+            request: models.ModifyInstancePasswordPolicyRequest,
+            opts: Dict = None,
+    ) -> models.ModifyInstancePasswordPolicyResponse:
+        """
+        本接口（ModifyInstancePasswordPolicy）用于修改实例密码复杂度。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyInstancePasswordPolicy"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyInstancePasswordPolicyResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ModifyInstanceReadOnly(
             self,
             request: models.ModifyInstanceReadOnlyRequest,

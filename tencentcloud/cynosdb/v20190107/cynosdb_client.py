@@ -1958,6 +1958,29 @@ class CynosdbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeClusterStorageAutoExpand(self, request):
+        r"""本接口（DescribeClusterStorageAutoExpand）用于查询自动库容配置。
+
+        :param request: Request instance for DescribeClusterStorageAutoExpand.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.DescribeClusterStorageAutoExpandRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.DescribeClusterStorageAutoExpandResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeClusterStorageAutoExpand", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeClusterStorageAutoExpandResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeClusterTransparentEncryptInfo(self, request):
         r"""查询集群透明加密信息
 

@@ -2236,6 +2236,29 @@ class RedisClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyInstancePasswordPolicy(self, request):
+        r"""本接口（ModifyInstancePasswordPolicy）用于修改实例密码复杂度。
+
+        :param request: Request instance for ModifyInstancePasswordPolicy.
+        :type request: :class:`tencentcloud.redis.v20180412.models.ModifyInstancePasswordPolicyRequest`
+        :rtype: :class:`tencentcloud.redis.v20180412.models.ModifyInstancePasswordPolicyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyInstancePasswordPolicy", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyInstancePasswordPolicyResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyInstanceReadOnly(self, request):
         r"""本接口（ModifyInstanceReadOnly）用于设置实例输入模式。
 

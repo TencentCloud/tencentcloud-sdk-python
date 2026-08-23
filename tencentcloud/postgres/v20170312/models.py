@@ -18416,12 +18416,33 @@ class ModifyDBProxyAddressRequest(AbstractModel):
         :type Description: str
         :param _ConnectionPool: <p>连接池开关</p><p>枚举值：</p><ul><li>true： 开启</li><li>false： 关闭</li></ul>
         :type ConnectionPool: bool
+        :param _WeightMode: <p>权重模式</p><p>枚举值：</p><ul><li>system： 系统自动分配权重</li><li>custom： 自定义权重，此模式下ProxyAllocation参数必传</li></ul><p>默认值：system</p>
+        :type WeightMode: str
+        :param _ProxyAllocation: <p>system</p><p>入参限制：路由权重列表。若 WeightMode 传的是system或不传 ，则传入的权重不生效，由系统分配默认权重。</p>
+        :type ProxyAllocation: list of ProxyRoute
+        :param _RoAutoAdd: <p>新增只读实例是否自动加入当前连接地址，仅后续新建实例生效</p>
+        :type RoAutoAdd: bool
+        :param _LatencyRemove: <p>延迟剔除开关</p>
+        :type LatencyRemove: bool
+        :param _LatencyRemoveTime: <p>延迟剔除阈值，仅在延迟剔除开关打开时有效</p><p>单位：秒</p>
+        :type LatencyRemoveTime: int
+        :param _MinRouteNum: <p>最小保留路由数。在延迟/故障剔除时，至少保留的路由数量，防止所有节点被剔除导致服务不可用。</p>
+        :type MinRouteNum: int
+        :param _LoadBalancePolicy: <p>负载均衡策略</p><p>枚举值：</p><ul><li>0： 按活跃连接数(默认)</li><li>1： 按请求数</li></ul>
+        :type LoadBalancePolicy: int
         """
         self._DBInstanceId = None
         self._AddressId = None
         self._ProxyGroupId = None
         self._Description = None
         self._ConnectionPool = None
+        self._WeightMode = None
+        self._ProxyAllocation = None
+        self._RoAutoAdd = None
+        self._LatencyRemove = None
+        self._LatencyRemoveTime = None
+        self._MinRouteNum = None
+        self._LoadBalancePolicy = None
 
     @property
     def DBInstanceId(self):
@@ -18478,6 +18499,83 @@ class ModifyDBProxyAddressRequest(AbstractModel):
     def ConnectionPool(self, ConnectionPool):
         self._ConnectionPool = ConnectionPool
 
+    @property
+    def WeightMode(self):
+        r"""<p>权重模式</p><p>枚举值：</p><ul><li>system： 系统自动分配权重</li><li>custom： 自定义权重，此模式下ProxyAllocation参数必传</li></ul><p>默认值：system</p>
+        :rtype: str
+        """
+        return self._WeightMode
+
+    @WeightMode.setter
+    def WeightMode(self, WeightMode):
+        self._WeightMode = WeightMode
+
+    @property
+    def ProxyAllocation(self):
+        r"""<p>system</p><p>入参限制：路由权重列表。若 WeightMode 传的是system或不传 ，则传入的权重不生效，由系统分配默认权重。</p>
+        :rtype: list of ProxyRoute
+        """
+        return self._ProxyAllocation
+
+    @ProxyAllocation.setter
+    def ProxyAllocation(self, ProxyAllocation):
+        self._ProxyAllocation = ProxyAllocation
+
+    @property
+    def RoAutoAdd(self):
+        r"""<p>新增只读实例是否自动加入当前连接地址，仅后续新建实例生效</p>
+        :rtype: bool
+        """
+        return self._RoAutoAdd
+
+    @RoAutoAdd.setter
+    def RoAutoAdd(self, RoAutoAdd):
+        self._RoAutoAdd = RoAutoAdd
+
+    @property
+    def LatencyRemove(self):
+        r"""<p>延迟剔除开关</p>
+        :rtype: bool
+        """
+        return self._LatencyRemove
+
+    @LatencyRemove.setter
+    def LatencyRemove(self, LatencyRemove):
+        self._LatencyRemove = LatencyRemove
+
+    @property
+    def LatencyRemoveTime(self):
+        r"""<p>延迟剔除阈值，仅在延迟剔除开关打开时有效</p><p>单位：秒</p>
+        :rtype: int
+        """
+        return self._LatencyRemoveTime
+
+    @LatencyRemoveTime.setter
+    def LatencyRemoveTime(self, LatencyRemoveTime):
+        self._LatencyRemoveTime = LatencyRemoveTime
+
+    @property
+    def MinRouteNum(self):
+        r"""<p>最小保留路由数。在延迟/故障剔除时，至少保留的路由数量，防止所有节点被剔除导致服务不可用。</p>
+        :rtype: int
+        """
+        return self._MinRouteNum
+
+    @MinRouteNum.setter
+    def MinRouteNum(self, MinRouteNum):
+        self._MinRouteNum = MinRouteNum
+
+    @property
+    def LoadBalancePolicy(self):
+        r"""<p>负载均衡策略</p><p>枚举值：</p><ul><li>0： 按活跃连接数(默认)</li><li>1： 按请求数</li></ul>
+        :rtype: int
+        """
+        return self._LoadBalancePolicy
+
+    @LoadBalancePolicy.setter
+    def LoadBalancePolicy(self, LoadBalancePolicy):
+        self._LoadBalancePolicy = LoadBalancePolicy
+
 
     def _deserialize(self, params):
         self._DBInstanceId = params.get("DBInstanceId")
@@ -18485,6 +18583,18 @@ class ModifyDBProxyAddressRequest(AbstractModel):
         self._ProxyGroupId = params.get("ProxyGroupId")
         self._Description = params.get("Description")
         self._ConnectionPool = params.get("ConnectionPool")
+        self._WeightMode = params.get("WeightMode")
+        if params.get("ProxyAllocation") is not None:
+            self._ProxyAllocation = []
+            for item in params.get("ProxyAllocation"):
+                obj = ProxyRoute()
+                obj._deserialize(item)
+                self._ProxyAllocation.append(obj)
+        self._RoAutoAdd = params.get("RoAutoAdd")
+        self._LatencyRemove = params.get("LatencyRemove")
+        self._LatencyRemoveTime = params.get("LatencyRemoveTime")
+        self._MinRouteNum = params.get("MinRouteNum")
+        self._LoadBalancePolicy = params.get("LoadBalancePolicy")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -18502,10 +18612,24 @@ class ModifyDBProxyAddressResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _TaskId: <p>异步任务 ID，用于 DescribeTasks 查询进度</p>
+        :type TaskId: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._TaskId = None
         self._RequestId = None
+
+    @property
+    def TaskId(self):
+        r"""<p>异步任务 ID，用于 DescribeTasks 查询进度</p>
+        :rtype: int
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
 
     @property
     def RequestId(self):
@@ -18520,6 +18644,7 @@ class ModifyDBProxyAddressResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
         self._RequestId = params.get("RequestId")
 
 
@@ -20887,6 +21012,22 @@ class ProxyAddress(AbstractModel):
         :type Routes: list of ProxyRoute
         :param _ConnectionPoolLimit: <p>连接池大小</p>
         :type ConnectionPoolLimit: int
+        :param _RwSplitEnable: <p>读写分离开关。启用后 proxy 将读请求分发到只读节点，写请求仍走主节点。</p>
+        :type RwSplitEnable: bool
+        :param _WeightMode: <p>权重模式</p><p>枚举值：</p><ul><li>system： 系统自动分配</li><li>custom： 用户自定义权重</li></ul>
+        :type WeightMode: str
+        :param _RoAutoAdd: <p>新增只读是否自动加入读写分离</p>
+        :type RoAutoAdd: bool
+        :param _LatencyRemove: <p>延迟剔除开关</p>
+        :type LatencyRemove: bool
+        :param _LatencyRemoveTime: <p>延迟剔除阈值</p><p>单位：秒</p>
+        :type LatencyRemoveTime: int
+        :param _MinRouteNum: <p>最小保留路由数。在延迟/故障剔除时，至少保留的路由数量，防止所有节点被剔除导致服务不可用。</p>
+        :type MinRouteNum: int
+        :param _FailOver: <p>只读全部异常时是否回切到主</p>
+        :type FailOver: bool
+        :param _LoadBalancePolicy: <p>负载均衡策略</p><p>枚举值：</p><ul><li>0： 按活跃连接数(默认)</li><li>1： 按请求数</li></ul>
+        :type LoadBalancePolicy: int
         """
         self._AddressId = None
         self._Vip = None
@@ -20897,6 +21038,14 @@ class ProxyAddress(AbstractModel):
         self._ConnectionPool = None
         self._Routes = None
         self._ConnectionPoolLimit = None
+        self._RwSplitEnable = None
+        self._WeightMode = None
+        self._RoAutoAdd = None
+        self._LatencyRemove = None
+        self._LatencyRemoveTime = None
+        self._MinRouteNum = None
+        self._FailOver = None
+        self._LoadBalancePolicy = None
 
     @property
     def AddressId(self):
@@ -20997,6 +21146,94 @@ class ProxyAddress(AbstractModel):
     def ConnectionPoolLimit(self, ConnectionPoolLimit):
         self._ConnectionPoolLimit = ConnectionPoolLimit
 
+    @property
+    def RwSplitEnable(self):
+        r"""<p>读写分离开关。启用后 proxy 将读请求分发到只读节点，写请求仍走主节点。</p>
+        :rtype: bool
+        """
+        return self._RwSplitEnable
+
+    @RwSplitEnable.setter
+    def RwSplitEnable(self, RwSplitEnable):
+        self._RwSplitEnable = RwSplitEnable
+
+    @property
+    def WeightMode(self):
+        r"""<p>权重模式</p><p>枚举值：</p><ul><li>system： 系统自动分配</li><li>custom： 用户自定义权重</li></ul>
+        :rtype: str
+        """
+        return self._WeightMode
+
+    @WeightMode.setter
+    def WeightMode(self, WeightMode):
+        self._WeightMode = WeightMode
+
+    @property
+    def RoAutoAdd(self):
+        r"""<p>新增只读是否自动加入读写分离</p>
+        :rtype: bool
+        """
+        return self._RoAutoAdd
+
+    @RoAutoAdd.setter
+    def RoAutoAdd(self, RoAutoAdd):
+        self._RoAutoAdd = RoAutoAdd
+
+    @property
+    def LatencyRemove(self):
+        r"""<p>延迟剔除开关</p>
+        :rtype: bool
+        """
+        return self._LatencyRemove
+
+    @LatencyRemove.setter
+    def LatencyRemove(self, LatencyRemove):
+        self._LatencyRemove = LatencyRemove
+
+    @property
+    def LatencyRemoveTime(self):
+        r"""<p>延迟剔除阈值</p><p>单位：秒</p>
+        :rtype: int
+        """
+        return self._LatencyRemoveTime
+
+    @LatencyRemoveTime.setter
+    def LatencyRemoveTime(self, LatencyRemoveTime):
+        self._LatencyRemoveTime = LatencyRemoveTime
+
+    @property
+    def MinRouteNum(self):
+        r"""<p>最小保留路由数。在延迟/故障剔除时，至少保留的路由数量，防止所有节点被剔除导致服务不可用。</p>
+        :rtype: int
+        """
+        return self._MinRouteNum
+
+    @MinRouteNum.setter
+    def MinRouteNum(self, MinRouteNum):
+        self._MinRouteNum = MinRouteNum
+
+    @property
+    def FailOver(self):
+        r"""<p>只读全部异常时是否回切到主</p>
+        :rtype: bool
+        """
+        return self._FailOver
+
+    @FailOver.setter
+    def FailOver(self, FailOver):
+        self._FailOver = FailOver
+
+    @property
+    def LoadBalancePolicy(self):
+        r"""<p>负载均衡策略</p><p>枚举值：</p><ul><li>0： 按活跃连接数(默认)</li><li>1： 按请求数</li></ul>
+        :rtype: int
+        """
+        return self._LoadBalancePolicy
+
+    @LoadBalancePolicy.setter
+    def LoadBalancePolicy(self, LoadBalancePolicy):
+        self._LoadBalancePolicy = LoadBalancePolicy
+
 
     def _deserialize(self, params):
         self._AddressId = params.get("AddressId")
@@ -21013,6 +21250,14 @@ class ProxyAddress(AbstractModel):
                 obj._deserialize(item)
                 self._Routes.append(obj)
         self._ConnectionPoolLimit = params.get("ConnectionPoolLimit")
+        self._RwSplitEnable = params.get("RwSplitEnable")
+        self._WeightMode = params.get("WeightMode")
+        self._RoAutoAdd = params.get("RoAutoAdd")
+        self._LatencyRemove = params.get("LatencyRemove")
+        self._LatencyRemoveTime = params.get("LatencyRemoveTime")
+        self._MinRouteNum = params.get("MinRouteNum")
+        self._FailOver = params.get("FailOver")
+        self._LoadBalancePolicy = params.get("LoadBalancePolicy")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -21394,7 +21639,7 @@ class ProxyRoute(AbstractModel):
         :type Role: str
         :param _Weight: <p>路由权重，取值范围 [0, 100]</p>
         :type Weight: int
-        :param _Status: <p>路由状态：available/unavailable</p>
+        :param _Status: <p>路由状态：online/offline</p><p>枚举值：</p><ul><li>online： 节点处于在线状态</li><li>offline： 节点处于下线状态</li></ul>
         :type Status: str
         """
         self._NodeId = None
@@ -21437,7 +21682,7 @@ class ProxyRoute(AbstractModel):
 
     @property
     def Status(self):
-        r"""<p>路由状态：available/unavailable</p>
+        r"""<p>路由状态：online/offline</p><p>枚举值：</p><ul><li>online： 节点处于在线状态</li><li>offline： 节点处于下线状态</li></ul>
         :rtype: str
         """
         return self._Status

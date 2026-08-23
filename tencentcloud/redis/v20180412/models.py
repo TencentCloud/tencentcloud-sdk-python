@@ -19828,6 +19828,87 @@ class ModifyInstanceParamsResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyInstancePasswordPolicyRequest(AbstractModel):
+    r"""ModifyInstancePasswordPolicy请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: <p>实例 ID。请登录 <a href="https://console.cloud.tencent.com/redis">Redis 控制台</a>在实例列表复制实例 ID。</p>
+        :type InstanceId: str
+        :param _PasswordPolicy: <p>实例的密码复杂度策略控制对象，包含密码长度及各类字符（字母/数字/特殊符号）最小数量的校验指标。</p>
+        :type PasswordPolicy: :class:`tencentcloud.redis.v20180412.models.PasswordPolicy`
+        """
+        self._InstanceId = None
+        self._PasswordPolicy = None
+
+    @property
+    def InstanceId(self):
+        r"""<p>实例 ID。请登录 <a href="https://console.cloud.tencent.com/redis">Redis 控制台</a>在实例列表复制实例 ID。</p>
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def PasswordPolicy(self):
+        r"""<p>实例的密码复杂度策略控制对象，包含密码长度及各类字符（字母/数字/特殊符号）最小数量的校验指标。</p>
+        :rtype: :class:`tencentcloud.redis.v20180412.models.PasswordPolicy`
+        """
+        return self._PasswordPolicy
+
+    @PasswordPolicy.setter
+    def PasswordPolicy(self, PasswordPolicy):
+        self._PasswordPolicy = PasswordPolicy
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        if params.get("PasswordPolicy") is not None:
+            self._PasswordPolicy = PasswordPolicy()
+            self._PasswordPolicy._deserialize(params.get("PasswordPolicy"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyInstancePasswordPolicyResponse(AbstractModel):
+    r"""ModifyInstancePasswordPolicy返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyInstancePasswordRequest(AbstractModel):
     r"""ModifyInstancePassword请求参数结构体
 

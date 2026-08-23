@@ -3678,6 +3678,8 @@ class BackupFileInfo(AbstractModel):
         :type SnapShotType: str
         :param _BackupName: <p>备份文件备注</p>
         :type BackupName: str
+        :param _ExistRegions: <p>备份文件所在地域</p>
+        :type ExistRegions: list of BackupRegionAndIds
         :param _CopyStatus: <p>投递状态</p>
         :type CopyStatus: str
         :param _EncryptKeyId: <p>秘钥id</p>
@@ -3701,6 +3703,7 @@ class BackupFileInfo(AbstractModel):
         self._BackupId = None
         self._SnapShotType = None
         self._BackupName = None
+        self._ExistRegions = None
         self._CopyStatus = None
         self._EncryptKeyId = None
         self._EncryptRegion = None
@@ -3840,6 +3843,17 @@ class BackupFileInfo(AbstractModel):
         self._BackupName = BackupName
 
     @property
+    def ExistRegions(self):
+        r"""<p>备份文件所在地域</p>
+        :rtype: list of BackupRegionAndIds
+        """
+        return self._ExistRegions
+
+    @ExistRegions.setter
+    def ExistRegions(self, ExistRegions):
+        self._ExistRegions = ExistRegions
+
+    @property
     def CopyStatus(self):
         r"""<p>投递状态</p>
         :rtype: str
@@ -3908,6 +3922,12 @@ class BackupFileInfo(AbstractModel):
         self._BackupId = params.get("BackupId")
         self._SnapShotType = params.get("SnapShotType")
         self._BackupName = params.get("BackupName")
+        if params.get("ExistRegions") is not None:
+            self._ExistRegions = []
+            for item in params.get("ExistRegions"):
+                obj = BackupRegionAndIds()
+                obj._deserialize(item)
+                self._ExistRegions.append(obj)
         self._CopyStatus = params.get("CopyStatus")
         self._EncryptKeyId = params.get("EncryptKeyId")
         self._EncryptRegion = params.get("EncryptRegion")
@@ -24023,6 +24043,130 @@ class DescribeClusterServerlessScalePlansResponse(AbstractModel):
                 obj = ClusterServerlessScalePlan()
                 obj._deserialize(item)
                 self._ServerlessScalePlans.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeClusterStorageAutoExpandRequest(AbstractModel):
+    r"""DescribeClusterStorageAutoExpand请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: <p>集群ID</p>
+        :type ClusterId: str
+        """
+        self._ClusterId = None
+
+    @property
+    def ClusterId(self):
+        r"""<p>集群ID</p>
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeClusterStorageAutoExpandResponse(AbstractModel):
+    r"""DescribeClusterStorageAutoExpand返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _StorageUsageThreshold: <p>存储使用率阈值</p>
+        :type StorageUsageThreshold: int
+        :param _ExpandStep: <p>扩容步长</p>
+        :type ExpandStep: int
+        :param _MaxStorageLimit: <p>最大存储上限</p>
+        :type MaxStorageLimit: int
+        :param _StorageAutoExpand: <p>是否开启：yes-开启，no-关闭</p>
+        :type StorageAutoExpand: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._StorageUsageThreshold = None
+        self._ExpandStep = None
+        self._MaxStorageLimit = None
+        self._StorageAutoExpand = None
+        self._RequestId = None
+
+    @property
+    def StorageUsageThreshold(self):
+        r"""<p>存储使用率阈值</p>
+        :rtype: int
+        """
+        return self._StorageUsageThreshold
+
+    @StorageUsageThreshold.setter
+    def StorageUsageThreshold(self, StorageUsageThreshold):
+        self._StorageUsageThreshold = StorageUsageThreshold
+
+    @property
+    def ExpandStep(self):
+        r"""<p>扩容步长</p>
+        :rtype: int
+        """
+        return self._ExpandStep
+
+    @ExpandStep.setter
+    def ExpandStep(self, ExpandStep):
+        self._ExpandStep = ExpandStep
+
+    @property
+    def MaxStorageLimit(self):
+        r"""<p>最大存储上限</p>
+        :rtype: int
+        """
+        return self._MaxStorageLimit
+
+    @MaxStorageLimit.setter
+    def MaxStorageLimit(self, MaxStorageLimit):
+        self._MaxStorageLimit = MaxStorageLimit
+
+    @property
+    def StorageAutoExpand(self):
+        r"""<p>是否开启：yes-开启，no-关闭</p>
+        :rtype: str
+        """
+        return self._StorageAutoExpand
+
+    @StorageAutoExpand.setter
+    def StorageAutoExpand(self, StorageAutoExpand):
+        self._StorageAutoExpand = StorageAutoExpand
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._StorageUsageThreshold = params.get("StorageUsageThreshold")
+        self._ExpandStep = params.get("ExpandStep")
+        self._MaxStorageLimit = params.get("MaxStorageLimit")
+        self._StorageAutoExpand = params.get("StorageAutoExpand")
         self._RequestId = params.get("RequestId")
 
 

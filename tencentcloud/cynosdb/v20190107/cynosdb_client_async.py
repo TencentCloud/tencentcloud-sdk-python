@@ -1537,6 +1537,24 @@ class CynosdbClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeClusterStorageAutoExpand(
+            self,
+            request: models.DescribeClusterStorageAutoExpandRequest,
+            opts: Dict = None,
+    ) -> models.DescribeClusterStorageAutoExpandResponse:
+        """
+        本接口（DescribeClusterStorageAutoExpand）用于查询自动库容配置。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeClusterStorageAutoExpand"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeClusterStorageAutoExpandResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeClusterTransparentEncryptInfo(
             self,
             request: models.DescribeClusterTransparentEncryptInfoRequest,

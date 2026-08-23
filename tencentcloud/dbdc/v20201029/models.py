@@ -8612,10 +8612,13 @@ class RemoveNodesFromDBCustomClusterRequest(AbstractModel):
         :type NodeIds: list of str
         :param _LoginSettings: <p>节点的登录参数</p>
         :type LoginSettings: :class:`tencentcloud.dbdc.v20201029.models.LoginSettings`
+        :param _Force: <p>当节点中还有业务 Pod 在运行，默认会拦截从集群中移除节点的操作。如果该参数为 true，表示强制执行此操作。</p><p>枚举值：</p><ul><li>true： 是</li><li>false： 否</li></ul><p>默认值：false</p>
+        :type Force: bool
         """
         self._ClusterId = None
         self._NodeIds = None
         self._LoginSettings = None
+        self._Force = None
 
     @property
     def ClusterId(self):
@@ -8650,6 +8653,17 @@ class RemoveNodesFromDBCustomClusterRequest(AbstractModel):
     def LoginSettings(self, LoginSettings):
         self._LoginSettings = LoginSettings
 
+    @property
+    def Force(self):
+        r"""<p>当节点中还有业务 Pod 在运行，默认会拦截从集群中移除节点的操作。如果该参数为 true，表示强制执行此操作。</p><p>枚举值：</p><ul><li>true： 是</li><li>false： 否</li></ul><p>默认值：false</p>
+        :rtype: bool
+        """
+        return self._Force
+
+    @Force.setter
+    def Force(self, Force):
+        self._Force = Force
+
 
     def _deserialize(self, params):
         self._ClusterId = params.get("ClusterId")
@@ -8657,6 +8671,7 @@ class RemoveNodesFromDBCustomClusterRequest(AbstractModel):
         if params.get("LoginSettings") is not None:
             self._LoginSettings = LoginSettings()
             self._LoginSettings._deserialize(params.get("LoginSettings"))
+        self._Force = params.get("Force")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

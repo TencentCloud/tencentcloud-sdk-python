@@ -460,6 +460,29 @@ class TkeClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DetachApplicationRole(self, request):
+        r"""解绑原生节点 Application Role
+
+        :param request: Request instance for DetachApplicationRole.
+        :type request: :class:`tencentcloud.tke.v20220501.models.DetachApplicationRoleRequest`
+        :rtype: :class:`tencentcloud.tke.v20220501.models.DetachApplicationRoleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DetachApplicationRole", params, headers=headers)
+            response = json.loads(body)
+            model = models.DetachApplicationRoleResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyClusterMachine(self, request):
         r"""修改原生节点
 

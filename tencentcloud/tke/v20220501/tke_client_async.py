@@ -384,6 +384,24 @@ class TkeClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DetachApplicationRole(
+            self,
+            request: models.DetachApplicationRoleRequest,
+            opts: Dict = None,
+    ) -> models.DetachApplicationRoleResponse:
+        """
+        解绑原生节点 Application Role
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DetachApplicationRole"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DetachApplicationRoleResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ModifyClusterMachine(
             self,
             request: models.ModifyClusterMachineRequest,

@@ -15446,25 +15446,28 @@ class ImageInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ImageType: 镜像类型：TCR为腾讯云TCR镜像; CCR为腾讯云TCR个人版镜像，PreSet为平台预置镜像，CUSTOM为第三方自定义镜像
+        :param _ImageType: <p>镜像类型：TCR为腾讯云TCR镜像; CCR为腾讯云TCR个人版镜像，PreSet为平台预置镜像，CUSTOM为第三方自定义镜像</p>
         :type ImageType: str
-        :param _ImageUrl: 镜像地址
+        :param _ImageUrl: <p>镜像地址</p>
         :type ImageUrl: str
-        :param _RegistryRegion: TCR镜像对应的地域
+        :param _RegistryRegion: <p>TCR镜像对应的地域</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type RegistryRegion: str
-        :param _RegistryId: TCR镜像对应的实例id
+        :param _RegistryId: <p>TCR镜像对应的实例id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type RegistryId: str
-        :param _AllowSaveAllContent: 是否允许导出全部内容
+        :param _AllowSaveAllContent: <p>是否允许导出全部内容</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type AllowSaveAllContent: bool
-        :param _ImageName: 镜像名称
+        :param _ImageName: <p>镜像名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ImageName: str
-        :param _SupportDataPipeline: 是否支持数据构建
+        :param _SupportDataPipeline: <p>是否支持数据构建</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type SupportDataPipeline: bool
+        :param _ImageSecret: <p>镜像仓库用户名密码信息(仅当ImageType为CUSTOM第三方镜像的时候需要)</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ImageSecret: :class:`tencentcloud.tione.v20211111.models.ImageSecret`
         """
         self._ImageType = None
         self._ImageUrl = None
@@ -15473,10 +15476,11 @@ class ImageInfo(AbstractModel):
         self._AllowSaveAllContent = None
         self._ImageName = None
         self._SupportDataPipeline = None
+        self._ImageSecret = None
 
     @property
     def ImageType(self):
-        r"""镜像类型：TCR为腾讯云TCR镜像; CCR为腾讯云TCR个人版镜像，PreSet为平台预置镜像，CUSTOM为第三方自定义镜像
+        r"""<p>镜像类型：TCR为腾讯云TCR镜像; CCR为腾讯云TCR个人版镜像，PreSet为平台预置镜像，CUSTOM为第三方自定义镜像</p>
         :rtype: str
         """
         return self._ImageType
@@ -15487,7 +15491,7 @@ class ImageInfo(AbstractModel):
 
     @property
     def ImageUrl(self):
-        r"""镜像地址
+        r"""<p>镜像地址</p>
         :rtype: str
         """
         return self._ImageUrl
@@ -15498,7 +15502,7 @@ class ImageInfo(AbstractModel):
 
     @property
     def RegistryRegion(self):
-        r"""TCR镜像对应的地域
+        r"""<p>TCR镜像对应的地域</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -15510,7 +15514,7 @@ class ImageInfo(AbstractModel):
 
     @property
     def RegistryId(self):
-        r"""TCR镜像对应的实例id
+        r"""<p>TCR镜像对应的实例id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -15522,7 +15526,7 @@ class ImageInfo(AbstractModel):
 
     @property
     def AllowSaveAllContent(self):
-        r"""是否允许导出全部内容
+        r"""<p>是否允许导出全部内容</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
@@ -15534,7 +15538,7 @@ class ImageInfo(AbstractModel):
 
     @property
     def ImageName(self):
-        r"""镜像名称
+        r"""<p>镜像名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -15546,7 +15550,7 @@ class ImageInfo(AbstractModel):
 
     @property
     def SupportDataPipeline(self):
-        r"""是否支持数据构建
+        r"""<p>是否支持数据构建</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
@@ -15555,6 +15559,18 @@ class ImageInfo(AbstractModel):
     @SupportDataPipeline.setter
     def SupportDataPipeline(self, SupportDataPipeline):
         self._SupportDataPipeline = SupportDataPipeline
+
+    @property
+    def ImageSecret(self):
+        r"""<p>镜像仓库用户名密码信息(仅当ImageType为CUSTOM第三方镜像的时候需要)</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.tione.v20211111.models.ImageSecret`
+        """
+        return self._ImageSecret
+
+    @ImageSecret.setter
+    def ImageSecret(self, ImageSecret):
+        self._ImageSecret = ImageSecret
 
 
     def _deserialize(self, params):
@@ -15565,6 +15581,98 @@ class ImageInfo(AbstractModel):
         self._AllowSaveAllContent = params.get("AllowSaveAllContent")
         self._ImageName = params.get("ImageName")
         self._SupportDataPipeline = params.get("SupportDataPipeline")
+        if params.get("ImageSecret") is not None:
+            self._ImageSecret = ImageSecret()
+            self._ImageSecret._deserialize(params.get("ImageSecret"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ImageSecret(AbstractModel):
+    r"""自定义镜像仓库凭据
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _KeyId: 用于加密密码的KMS公钥ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type KeyId: str
+        :param _Username: 用户名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Username: str
+        :param _Password: 密码,base64编码； 当keyId不为空时，密码是加密后的
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Password: str
+        :param _SecretId: 用户凭据ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SecretId: str
+        """
+        self._KeyId = None
+        self._Username = None
+        self._Password = None
+        self._SecretId = None
+
+    @property
+    def KeyId(self):
+        r"""用于加密密码的KMS公钥ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._KeyId
+
+    @KeyId.setter
+    def KeyId(self, KeyId):
+        self._KeyId = KeyId
+
+    @property
+    def Username(self):
+        r"""用户名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Username
+
+    @Username.setter
+    def Username(self, Username):
+        self._Username = Username
+
+    @property
+    def Password(self):
+        r"""密码,base64编码； 当keyId不为空时，密码是加密后的
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Password
+
+    @Password.setter
+    def Password(self, Password):
+        self._Password = Password
+
+    @property
+    def SecretId(self):
+        r"""用户凭据ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._SecretId
+
+    @SecretId.setter
+    def SecretId(self, SecretId):
+        self._SecretId = SecretId
+
+
+    def _deserialize(self, params):
+        self._KeyId = params.get("KeyId")
+        self._Username = params.get("Username")
+        self._Password = params.get("Password")
+        self._SecretId = params.get("SecretId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

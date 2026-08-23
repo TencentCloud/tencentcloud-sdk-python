@@ -61,6 +61,24 @@ class CsipClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def AddImageRegistry(
+            self,
+            request: models.AddImageRegistryRequest,
+            opts: Dict = None,
+    ) -> models.AddImageRegistryResponse:
+        """
+        添加镜像仓库信息
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "AddImageRegistry"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.AddImageRegistryResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def AddLoginWhiteLists(
             self,
             request: models.AddLoginWhiteListsRequest,
@@ -133,6 +151,78 @@ class CsipClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def BatchModifyImageRegistryTimedScanTaskConfig(
+            self,
+            request: models.BatchModifyImageRegistryTimedScanTaskConfigRequest,
+            opts: Dict = None,
+    ) -> models.BatchModifyImageRegistryTimedScanTaskConfigResponse:
+        """
+        批量修改镜像仓库定时扫描任务配置
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "BatchModifyImageRegistryTimedScanTaskConfig"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.BatchModifyImageRegistryTimedScanTaskConfigResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def BatchModifyImageSensitiveWhitelist(
+            self,
+            request: models.BatchModifyImageSensitiveWhitelistRequest,
+            opts: Dict = None,
+    ) -> models.BatchModifyImageSensitiveWhitelistResponse:
+        """
+        批量修改容器镜像敏感信息白名单
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "BatchModifyImageSensitiveWhitelist"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.BatchModifyImageSensitiveWhitelistResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def BatchModifyImageVirusWhitelist(
+            self,
+            request: models.BatchModifyImageVirusWhitelistRequest,
+            opts: Dict = None,
+    ) -> models.BatchModifyImageVirusWhitelistResponse:
+        """
+        批量修改镜像木马白名单
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "BatchModifyImageVirusWhitelist"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.BatchModifyImageVirusWhitelistResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def BatchModifyImageVulWhitelist(
+            self,
+            request: models.BatchModifyImageVulWhitelistRequest,
+            opts: Dict = None,
+    ) -> models.BatchModifyImageVulWhitelistResponse:
+        """
+        批量修改容器镜像漏洞白名单
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "BatchModifyImageVulWhitelist"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.BatchModifyImageVulWhitelistResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def BindClusterOwner(
             self,
             request: models.BindClusterOwnerRequest,
@@ -182,6 +272,24 @@ class CsipClient(AbstractClient):
         kwargs["action"] = "CheckCWPExposePathPermission"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.CheckCWPExposePathPermissionResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def CheckImageRegistryInstanceNameDuplicate(
+            self,
+            request: models.CheckImageRegistryInstanceNameDuplicateRequest,
+            opts: Dict = None,
+    ) -> models.CheckImageRegistryInstanceNameDuplicateResponse:
+        """
+        检查镜像仓库实例名是否重复
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CheckImageRegistryInstanceNameDuplicate"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CheckImageRegistryInstanceNameDuplicateResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -310,6 +418,42 @@ class CsipClient(AbstractClient):
         kwargs["action"] = "CreateAllAssetsExportJob"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.CreateAllAssetsExportJobResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def CreateAssetComponentListExportJob(
+            self,
+            request: models.CreateAssetComponentListExportJobRequest,
+            opts: Dict = None,
+    ) -> models.CreateAssetComponentListExportJobResponse:
+        """
+        创建镜像资产中组件列表导出任务
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateAssetComponentListExportJob"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateAssetComponentListExportJobResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def CreateAssetComponentRelatedImageListExportJob(
+            self,
+            request: models.CreateAssetComponentRelatedImageListExportJobRequest,
+            opts: Dict = None,
+    ) -> models.CreateAssetComponentRelatedImageListExportJobResponse:
+        """
+        创建镜像仓库组件关联镜像列表导出任务
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateAssetComponentRelatedImageListExportJob"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateAssetComponentRelatedImageListExportJobResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -1269,6 +1413,294 @@ class CsipClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateImageAssetListExportJob(
+            self,
+            request: models.CreateImageAssetListExportJobRequest,
+            opts: Dict = None,
+    ) -> models.CreateImageAssetListExportJobResponse:
+        """
+        创建镜像资产列表导出任务
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateImageAssetListExportJob"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateImageAssetListExportJobResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def CreateImageAssociatedContainerListExportJob(
+            self,
+            request: models.CreateImageAssociatedContainerListExportJobRequest,
+            opts: Dict = None,
+    ) -> models.CreateImageAssociatedContainerListExportJobResponse:
+        """
+        创建镜像关联容器资产导出任务
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateImageAssociatedContainerListExportJob"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateImageAssociatedContainerListExportJobResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def CreateImageAssociatedHostListExportJob(
+            self,
+            request: models.CreateImageAssociatedHostListExportJobRequest,
+            opts: Dict = None,
+    ) -> models.CreateImageAssociatedHostListExportJobResponse:
+        """
+        创建镜像关联主机资产列表导出任务
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateImageAssociatedHostListExportJob"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateImageAssociatedHostListExportJobResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def CreateImageComponentListExportJob(
+            self,
+            request: models.CreateImageComponentListExportJobRequest,
+            opts: Dict = None,
+    ) -> models.CreateImageComponentListExportJobResponse:
+        """
+        创建镜像组件列表导出任务
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateImageComponentListExportJob"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateImageComponentListExportJobResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def CreateImageLayerVulListExportJob(
+            self,
+            request: models.CreateImageLayerVulListExportJobRequest,
+            opts: Dict = None,
+    ) -> models.CreateImageLayerVulListExportJobResponse:
+        """
+        创建镜像层漏洞列表导出任务
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateImageLayerVulListExportJob"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateImageLayerVulListExportJobResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def CreateImageRegistryConnectivityTask(
+            self,
+            request: models.CreateImageRegistryConnectivityTaskRequest,
+            opts: Dict = None,
+    ) -> models.CreateImageRegistryConnectivityTaskResponse:
+        """
+        创建镜像仓库联通性检查任务
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateImageRegistryConnectivityTask"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateImageRegistryConnectivityTaskResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def CreateImageRegistryListExportJob(
+            self,
+            request: models.CreateImageRegistryListExportJobRequest,
+            opts: Dict = None,
+    ) -> models.CreateImageRegistryListExportJobResponse:
+        """
+        创建镜像仓库列表导出任务
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateImageRegistryListExportJob"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateImageRegistryListExportJobResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def CreateImageRegistryScanTask(
+            self,
+            request: models.CreateImageRegistryScanTaskRequest,
+            opts: Dict = None,
+    ) -> models.CreateImageRegistryScanTaskResponse:
+        """
+        创建镜像扫描任务
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateImageRegistryScanTask"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateImageRegistryScanTaskResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def CreateImageRegistryTimedScanTaskConfig(
+            self,
+            request: models.CreateImageRegistryTimedScanTaskConfigRequest,
+            opts: Dict = None,
+    ) -> models.CreateImageRegistryTimedScanTaskConfigResponse:
+        """
+        创建镜像仓库镜像扫描任务配置
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateImageRegistryTimedScanTaskConfig"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateImageRegistryTimedScanTaskConfigResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def CreateImageSensitiveInfoListExportJob(
+            self,
+            request: models.CreateImageSensitiveInfoListExportJobRequest,
+            opts: Dict = None,
+    ) -> models.CreateImageSensitiveInfoListExportJobResponse:
+        """
+        创建镜像敏感信息列表导出任务
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateImageSensitiveInfoListExportJob"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateImageSensitiveInfoListExportJobResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def CreateImageSensitiveWhitelist(
+            self,
+            request: models.CreateImageSensitiveWhitelistRequest,
+            opts: Dict = None,
+    ) -> models.CreateImageSensitiveWhitelistResponse:
+        """
+        创建容器镜像敏感信息白名单
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateImageSensitiveWhitelist"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateImageSensitiveWhitelistResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def CreateImageVirusListExportJob(
+            self,
+            request: models.CreateImageVirusListExportJobRequest,
+            opts: Dict = None,
+    ) -> models.CreateImageVirusListExportJobResponse:
+        """
+        创建镜像木马病毒列表导出任务
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateImageVirusListExportJob"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateImageVirusListExportJobResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def CreateImageVirusWhitelist(
+            self,
+            request: models.CreateImageVirusWhitelistRequest,
+            opts: Dict = None,
+    ) -> models.CreateImageVirusWhitelistResponse:
+        """
+        创建镜像木马白名单
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateImageVirusWhitelist"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateImageVirusWhitelistResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def CreateImageVulListExportJob(
+            self,
+            request: models.CreateImageVulListExportJobRequest,
+            opts: Dict = None,
+    ) -> models.CreateImageVulListExportJobResponse:
+        """
+        创建镜像漏洞列表导出任务
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateImageVulListExportJob"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateImageVulListExportJobResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def CreateImageVulSummaryListExportJob(
+            self,
+            request: models.CreateImageVulSummaryListExportJobRequest,
+            opts: Dict = None,
+    ) -> models.CreateImageVulSummaryListExportJobResponse:
+        """
+        创建镜像漏洞概览列表导出任务
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateImageVulSummaryListExportJob"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateImageVulSummaryListExportJobResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def CreateImageVulWhitelist(
+            self,
+            request: models.CreateImageVulWhitelistRequest,
+            opts: Dict = None,
+    ) -> models.CreateImageVulWhitelistResponse:
+        """
+        创建容器镜像漏洞白名单
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateImageVulWhitelist"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateImageVulWhitelistResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreatePodContainerListExportJob(
             self,
             request: models.CreatePodContainerListExportJobRequest,
@@ -2045,6 +2477,114 @@ class CsipClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DeleteImageRegistry(
+            self,
+            request: models.DeleteImageRegistryRequest,
+            opts: Dict = None,
+    ) -> models.DeleteImageRegistryResponse:
+        """
+        删除镜像仓库信息
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteImageRegistry"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteImageRegistryResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteImageRegistryScanTask(
+            self,
+            request: models.DeleteImageRegistryScanTaskRequest,
+            opts: Dict = None,
+    ) -> models.DeleteImageRegistryScanTaskResponse:
+        """
+        删除镜像仓库扫描任务
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteImageRegistryScanTask"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteImageRegistryScanTaskResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteImageRegistryTimedScanTaskConfig(
+            self,
+            request: models.DeleteImageRegistryTimedScanTaskConfigRequest,
+            opts: Dict = None,
+    ) -> models.DeleteImageRegistryTimedScanTaskConfigResponse:
+        """
+        删除镜像仓库定时扫描任务配置
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteImageRegistryTimedScanTaskConfig"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteImageRegistryTimedScanTaskConfigResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteImageSensitiveWhitelist(
+            self,
+            request: models.DeleteImageSensitiveWhitelistRequest,
+            opts: Dict = None,
+    ) -> models.DeleteImageSensitiveWhitelistResponse:
+        """
+        删除容器镜像敏感信息白名单
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteImageSensitiveWhitelist"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteImageSensitiveWhitelistResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteImageVirusWhitelist(
+            self,
+            request: models.DeleteImageVirusWhitelistRequest,
+            opts: Dict = None,
+    ) -> models.DeleteImageVirusWhitelistResponse:
+        """
+        删除镜像木马白名单
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteImageVirusWhitelist"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteImageVirusWhitelistResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteImageVulWhitelist(
+            self,
+            request: models.DeleteImageVulWhitelistRequest,
+            opts: Dict = None,
+    ) -> models.DeleteImageVulWhitelistResponse:
+        """
+        删除容器镜像漏洞白名单
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteImageVulWhitelist"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteImageVulWhitelistResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DeleteLoginWhiteList(
             self,
             request: models.DeleteLoginWhiteListRequest,
@@ -2094,6 +2634,24 @@ class CsipClient(AbstractClient):
         kwargs["action"] = "DeleteRiskScanTask"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DeleteRiskScanTaskResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteSandboxLLMAuditRule(
+            self,
+            request: models.DeleteSandboxLLMAuditRuleRequest,
+            opts: Dict = None,
+    ) -> models.DeleteSandboxLLMAuditRuleResponse:
+        """
+        批量删除 LLM 审计用户规则。任一 ID 不存在或属于其他租户时整体返回错误
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteSandboxLLMAuditRule"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteSandboxLLMAuditRuleResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -2166,6 +2724,60 @@ class CsipClient(AbstractClient):
         kwargs["action"] = "DescribeAIAgentAssetList"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeAIAgentAssetListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeAIAgentCredentialList(
+            self,
+            request: models.DescribeAIAgentCredentialListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeAIAgentCredentialListResponse:
+        """
+        获取 AIAgent 资产凭据扫描列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeAIAgentCredentialList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeAIAgentCredentialListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeAIAgentCredentialLocationList(
+            self,
+            request: models.DescribeAIAgentCredentialLocationListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeAIAgentCredentialLocationListResponse:
+        """
+        按凭据组行 ID 分页查询单个凭据的泄露位置列表。用于配合 DescribeAIAgentCredentialList 接口拆分后的展开场景，避免单接口在数据倾斜场景下一次拉取几十万行 location 导致性能问题。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeAIAgentCredentialLocationList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeAIAgentCredentialLocationListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeAIAgentSkillList(
+            self,
+            request: models.DescribeAIAgentSkillListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeAIAgentSkillListResponse:
+        """
+        获取 AI Agent skill 列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeAIAgentSkillList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeAIAgentSkillListResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -2633,6 +3245,42 @@ class CsipClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeAssetComponentList(
+            self,
+            request: models.DescribeAssetComponentListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeAssetComponentListResponse:
+        """
+        查询资产中组件列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeAssetComponentList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeAssetComponentListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeAssetComponentRelatedImageList(
+            self,
+            request: models.DescribeAssetComponentRelatedImageListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeAssetComponentRelatedImageListResponse:
+        """
+        查询镜像仓库组件关联的镜像列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeAssetComponentRelatedImageList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeAssetComponentRelatedImageListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeAssetDetail(
             self,
             request: models.DescribeAssetDetailRequest,
@@ -2898,6 +3546,24 @@ class CsipClient(AbstractClient):
         kwargs["action"] = "DescribeAssumeRole"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeAssumeRoleResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeBackendScanEngineRegionList(
+            self,
+            request: models.DescribeBackendScanEngineRegionListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeBackendScanEngineRegionListResponse:
+        """
+        查询后台扫描引擎地域列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeBackendScanEngineRegionList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeBackendScanEngineRegionListResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -3672,6 +4338,24 @@ class CsipClient(AbstractClient):
         kwargs["action"] = "DescribeCallRecord"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeCallRecordResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeCheckConnectivityHostList(
+            self,
+            request: models.DescribeCheckConnectivityHostListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeCheckConnectivityHostListResponse:
+        """
+        查询联通性检测主机列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeCheckConnectivityHostList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeCheckConnectivityHostListResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -6521,6 +7205,456 @@ class CsipClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeImageAssetDetail(
+            self,
+            request: models.DescribeImageAssetDetailRequest,
+            opts: Dict = None,
+    ) -> models.DescribeImageAssetDetailResponse:
+        """
+        查询镜像资产详情
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeImageAssetDetail"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeImageAssetDetailResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeImageAssetList(
+            self,
+            request: models.DescribeImageAssetListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeImageAssetListResponse:
+        """
+        查询镜像资产列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeImageAssetList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeImageAssetListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeImageAssociatedAssetCount(
+            self,
+            request: models.DescribeImageAssociatedAssetCountRequest,
+            opts: Dict = None,
+    ) -> models.DescribeImageAssociatedAssetCountResponse:
+        """
+        查询镜像关联资产数
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeImageAssociatedAssetCount"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeImageAssociatedAssetCountResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeImageAssociatedContainerList(
+            self,
+            request: models.DescribeImageAssociatedContainerListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeImageAssociatedContainerListResponse:
+        """
+        查询镜像关联容器资产
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeImageAssociatedContainerList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeImageAssociatedContainerListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeImageAssociatedHostList(
+            self,
+            request: models.DescribeImageAssociatedHostListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeImageAssociatedHostListResponse:
+        """
+        查询镜像关联主机资产列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeImageAssociatedHostList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeImageAssociatedHostListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeImageComponentList(
+            self,
+            request: models.DescribeImageComponentListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeImageComponentListResponse:
+        """
+        查询镜像组件列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeImageComponentList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeImageComponentListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeImageExportJobList(
+            self,
+            request: models.DescribeImageExportJobListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeImageExportJobListResponse:
+        """
+        查询镜像仓库导出任务列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeImageExportJobList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeImageExportJobListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeImageLayerList(
+            self,
+            request: models.DescribeImageLayerListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeImageLayerListResponse:
+        """
+        查询镜像层信息列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeImageLayerList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeImageLayerListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeImageLayerVulList(
+            self,
+            request: models.DescribeImageLayerVulListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeImageLayerVulListResponse:
+        """
+        查询镜像层漏洞列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeImageLayerVulList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeImageLayerVulListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeImageRegistryAssetOverview(
+            self,
+            request: models.DescribeImageRegistryAssetOverviewRequest,
+            opts: Dict = None,
+    ) -> models.DescribeImageRegistryAssetOverviewResponse:
+        """
+        查询镜像仓库资产总览
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeImageRegistryAssetOverview"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeImageRegistryAssetOverviewResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeImageRegistryConnectivityTaskResult(
+            self,
+            request: models.DescribeImageRegistryConnectivityTaskResultRequest,
+            opts: Dict = None,
+    ) -> models.DescribeImageRegistryConnectivityTaskResultResponse:
+        """
+        查询镜像仓库联通性检查任务结果
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeImageRegistryConnectivityTaskResult"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeImageRegistryConnectivityTaskResultResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeImageRegistryList(
+            self,
+            request: models.DescribeImageRegistryListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeImageRegistryListResponse:
+        """
+        查询镜像仓库列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeImageRegistryList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeImageRegistryListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeImageRegistryNamespaceList(
+            self,
+            request: models.DescribeImageRegistryNamespaceListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeImageRegistryNamespaceListResponse:
+        """
+        查询镜像仓库命名空间列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeImageRegistryNamespaceList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeImageRegistryNamespaceListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeImageRegistryScanSubTaskList(
+            self,
+            request: models.DescribeImageRegistryScanSubTaskListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeImageRegistryScanSubTaskListResponse:
+        """
+        查询镜像仓库扫描子任务信息
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeImageRegistryScanSubTaskList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeImageRegistryScanSubTaskListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeImageRegistryScanTaskList(
+            self,
+            request: models.DescribeImageRegistryScanTaskListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeImageRegistryScanTaskListResponse:
+        """
+        查询镜像仓库镜像扫描任务列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeImageRegistryScanTaskList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeImageRegistryScanTaskListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeImageRegistryTimedScanTaskConfig(
+            self,
+            request: models.DescribeImageRegistryTimedScanTaskConfigRequest,
+            opts: Dict = None,
+    ) -> models.DescribeImageRegistryTimedScanTaskConfigResponse:
+        """
+        查看镜像仓库定时扫描任务配置
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeImageRegistryTimedScanTaskConfig"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeImageRegistryTimedScanTaskConfigResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeImageRegistryTimedScanTaskPreview(
+            self,
+            request: models.DescribeImageRegistryTimedScanTaskPreviewRequest,
+            opts: Dict = None,
+    ) -> models.DescribeImageRegistryTimedScanTaskPreviewResponse:
+        """
+        查询镜像仓库定时扫描任务预览
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeImageRegistryTimedScanTaskPreview"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeImageRegistryTimedScanTaskPreviewResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeImageSensitiveInfoList(
+            self,
+            request: models.DescribeImageSensitiveInfoListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeImageSensitiveInfoListResponse:
+        """
+        查询镜像敏感信息列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeImageSensitiveInfoList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeImageSensitiveInfoListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeImageSensitiveWhitelist(
+            self,
+            request: models.DescribeImageSensitiveWhitelistRequest,
+            opts: Dict = None,
+    ) -> models.DescribeImageSensitiveWhitelistResponse:
+        """
+        查询容器镜像敏感信息白名单
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeImageSensitiveWhitelist"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeImageSensitiveWhitelistResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeImageVirusList(
+            self,
+            request: models.DescribeImageVirusListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeImageVirusListResponse:
+        """
+        查询镜像木马病毒列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeImageVirusList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeImageVirusListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeImageVirusWhitelist(
+            self,
+            request: models.DescribeImageVirusWhitelistRequest,
+            opts: Dict = None,
+    ) -> models.DescribeImageVirusWhitelistResponse:
+        """
+        查询镜像木马白名单
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeImageVirusWhitelist"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeImageVirusWhitelistResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeImageVirusWhitelistDetail(
+            self,
+            request: models.DescribeImageVirusWhitelistDetailRequest,
+            opts: Dict = None,
+    ) -> models.DescribeImageVirusWhitelistDetailResponse:
+        """
+        查询镜像木马白名单详情
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeImageVirusWhitelistDetail"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeImageVirusWhitelistDetailResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeImageVulList(
+            self,
+            request: models.DescribeImageVulListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeImageVulListResponse:
+        """
+        查询镜像漏洞列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeImageVulList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeImageVulListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeImageVulSummaryList(
+            self,
+            request: models.DescribeImageVulSummaryListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeImageVulSummaryListResponse:
+        """
+        查询镜像漏洞概览列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeImageVulSummaryList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeImageVulSummaryListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeImageVulWhitelist(
+            self,
+            request: models.DescribeImageVulWhitelistRequest,
+            opts: Dict = None,
+    ) -> models.DescribeImageVulWhitelistResponse:
+        """
+        查询容器镜像漏洞白名单
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeImageVulWhitelist"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeImageVulWhitelistResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeIpInvokeRecord(
             self,
             request: models.DescribeIpInvokeRecordRequest,
@@ -7043,6 +8177,24 @@ class CsipClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeNotifySettingAk(
+            self,
+            request: models.DescribeNotifySettingAkRequest,
+            opts: Dict = None,
+    ) -> models.DescribeNotifySettingAkResponse:
+        """
+        获取通知设置（云API风险治理）
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeNotifySettingAk"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeNotifySettingAkResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeNotifySettingAlert(
             self,
             request: models.DescribeNotifySettingAlertRequest,
@@ -7308,6 +8460,42 @@ class CsipClient(AbstractClient):
         kwargs["action"] = "DescribeRaspLicenseList"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeRaspLicenseListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeRegistryOverview(
+            self,
+            request: models.DescribeRegistryOverviewRequest,
+            opts: Dict = None,
+    ) -> models.DescribeRegistryOverviewResponse:
+        """
+        查询仓库总览
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeRegistryOverview"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeRegistryOverviewResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeRegistryRegionList(
+            self,
+            request: models.DescribeRegistryRegionListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeRegistryRegionListResponse:
+        """
+        查询镜像仓库地域列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeRegistryRegionList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeRegistryRegionListResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -7745,6 +8933,96 @@ class CsipClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeSandboxACLAlertList(
+            self,
+            request: models.DescribeSandboxACLAlertListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeSandboxACLAlertListResponse:
+        """
+        分页查询 ACL 访问控制告警日志列表。支持按 Filter.Name=ID 精确过滤单条告警用于详情页场景
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeSandboxACLAlertList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeSandboxACLAlertListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeSandboxACLRuleList(
+            self,
+            request: models.DescribeSandboxACLRuleListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeSandboxACLRuleListResponse:
+        """
+        查询当前租户的 ACL 用户访问控制规则列表。传入 Filter.Name=RuleID 可精确查询单条规则（用于详情页面场景）
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeSandboxACLRuleList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeSandboxACLRuleListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeSandboxACLSystemRuleList(
+            self,
+            request: models.DescribeSandboxACLSystemRuleListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeSandboxACLSystemRuleListResponse:
+        """
+        查询流量沙箱访问控制（ACL）系统规则列表，系统规则由 CSIP 平台内置，可被用户规则引用
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeSandboxACLSystemRuleList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeSandboxACLSystemRuleListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeSandboxDLPSystemRuleList(
+            self,
+            request: models.DescribeSandboxDLPSystemRuleListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeSandboxDLPSystemRuleListResponse:
+        """
+        查询流量沙箱数据泄露防护（DLP）系统规则列表，系统规则由 CSIP 平台内置，可被用户规则引用
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeSandboxDLPSystemRuleList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeSandboxDLPSystemRuleListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeSandboxFileRuleList(
+            self,
+            request: models.DescribeSandboxFileRuleListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeSandboxFileRuleListResponse:
+        """
+        获取命令沙箱文件规则列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeSandboxFileRuleList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeSandboxFileRuleListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeScanReportList(
             self,
             request: models.DescribeScanReportListRequest,
@@ -7925,6 +9203,42 @@ class CsipClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeSkillScanAlertDetail(
+            self,
+            request: models.DescribeSkillScanAlertDetailRequest,
+            opts: Dict = None,
+    ) -> models.DescribeSkillScanAlertDetailResponse:
+        """
+        查询 Skill 安全检测告警详情，包含本地告警信息和引擎实时检测数据
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeSkillScanAlertDetail"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeSkillScanAlertDetailResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeSkillScanAlertList(
+            self,
+            request: models.DescribeSkillScanAlertListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeSkillScanAlertListResponse:
+        """
+        查询 Skill 安全检测告警列表，支持分页、过滤和排序
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeSkillScanAlertList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeSkillScanAlertListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeSkillScanPayInfo(
             self,
             request: models.DescribeSkillScanPayInfoRequest,
@@ -8010,6 +9324,24 @@ class CsipClient(AbstractClient):
         kwargs["action"] = "DescribeSubnetAssets"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeSubnetAssetsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeTCRInstanceList(
+            self,
+            request: models.DescribeTCRInstanceListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeTCRInstanceListResponse:
+        """
+        获取TCR实例列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeTCRInstanceList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeTCRInstanceListResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -10007,6 +11339,96 @@ class CsipClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def ModifyImageRegistry(
+            self,
+            request: models.ModifyImageRegistryRequest,
+            opts: Dict = None,
+    ) -> models.ModifyImageRegistryResponse:
+        """
+        修改镜像仓库信息
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyImageRegistry"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyImageRegistryResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyImageRegistryTimedScanTaskConfig(
+            self,
+            request: models.ModifyImageRegistryTimedScanTaskConfigRequest,
+            opts: Dict = None,
+    ) -> models.ModifyImageRegistryTimedScanTaskConfigResponse:
+        """
+        修改镜像仓库定时扫描任务配置
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyImageRegistryTimedScanTaskConfig"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyImageRegistryTimedScanTaskConfigResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyImageSensitiveWhitelist(
+            self,
+            request: models.ModifyImageSensitiveWhitelistRequest,
+            opts: Dict = None,
+    ) -> models.ModifyImageSensitiveWhitelistResponse:
+        """
+        修改容器镜像敏感信息白名单
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyImageSensitiveWhitelist"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyImageSensitiveWhitelistResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyImageVirusWhitelist(
+            self,
+            request: models.ModifyImageVirusWhitelistRequest,
+            opts: Dict = None,
+    ) -> models.ModifyImageVirusWhitelistResponse:
+        """
+        查询资产数据库信息
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyImageVirusWhitelist"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyImageVirusWhitelistResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyImageVulWhitelist(
+            self,
+            request: models.ModifyImageVulWhitelistRequest,
+            opts: Dict = None,
+    ) -> models.ModifyImageVulWhitelistResponse:
+        """
+        修改容器镜像漏洞白名单
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyImageVulWhitelist"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyImageVulWhitelistResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ModifyLoginWhiteRecord(
             self,
             request: models.ModifyLoginWhiteRecordRequest,
@@ -10187,6 +11609,24 @@ class CsipClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def ModifyNotifyMember(
+            self,
+            request: models.ModifyNotifyMemberRequest,
+            opts: Dict = None,
+    ) -> models.ModifyNotifyMemberResponse:
+        """
+        修改通知成员账号
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyNotifyMember"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyNotifyMemberResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ModifyNotifySetting(
             self,
             request: models.ModifyNotifySettingRequest,
@@ -10200,6 +11640,24 @@ class CsipClient(AbstractClient):
         kwargs["action"] = "ModifyNotifySetting"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ModifyNotifySettingResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyNotifySettingAk(
+            self,
+            request: models.ModifyNotifySettingAkRequest,
+            opts: Dict = None,
+    ) -> models.ModifyNotifySettingAkResponse:
+        """
+        修改通知设置（云API风险治理）
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyNotifySettingAk"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyNotifySettingAkResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -10394,6 +11852,24 @@ class CsipClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def ModifySandboxLLMAuditRuleStatus(
+            self,
+            request: models.ModifySandboxLLMAuditRuleStatusRequest,
+            opts: Dict = None,
+    ) -> models.ModifySandboxLLMAuditRuleStatusResponse:
+        """
+        批量切换 LLM 审计用户规则的启禁用状态。任一规则不存在、属于其他租户或已删除时整体返回错误
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifySandboxLLMAuditRuleStatus"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifySandboxLLMAuditRuleStatusResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ModifySecurityScoreRule(
             self,
             request: models.ModifySecurityScoreRuleRequest,
@@ -10425,6 +11901,24 @@ class CsipClient(AbstractClient):
         kwargs["action"] = "ModifyShareUserCSPM"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ModifyShareUserCSPMResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifySkillScanAlertStatus(
+            self,
+            request: models.ModifySkillScanAlertStatusRequest,
+            opts: Dict = None,
+    ) -> models.ModifySkillScanAlertStatusResponse:
+        """
+        批量修改 Skill 安全检测告警的处理状态
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifySkillScanAlertStatus"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifySkillScanAlertStatusResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -10862,6 +12356,24 @@ class CsipClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def StopImageRegistryScanTask(
+            self,
+            request: models.StopImageRegistryScanTaskRequest,
+            opts: Dict = None,
+    ) -> models.StopImageRegistryScanTaskResponse:
+        """
+        停止镜像仓库镜像扫描任务
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "StopImageRegistryScanTask"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.StopImageRegistryScanTaskResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def StopPreventUninstall(
             self,
             request: models.StopPreventUninstallRequest,
@@ -10965,6 +12477,24 @@ class CsipClient(AbstractClient):
         kwargs["action"] = "SyncDspmUsers"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.SyncDspmUsersResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def SyncImageRegistry(
+            self,
+            request: models.SyncImageRegistryRequest,
+            opts: Dict = None,
+    ) -> models.SyncImageRegistryResponse:
+        """
+        镜像仓库同步
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "SyncImageRegistry"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.SyncImageRegistryResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
