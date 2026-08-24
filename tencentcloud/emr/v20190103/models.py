@@ -1349,43 +1349,45 @@ class AutoScaleResourceConf(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Id: 配置ID。
+        :param _Id: <p>配置ID。</p>
         :type Id: int
-        :param _ClusterId: 集群实例ID。
+        :param _ClusterId: <p>集群实例ID。</p>
         :type ClusterId: int
-        :param _ScaleLowerBound: 自动扩缩容保留最小实例数。
+        :param _ScaleLowerBound: <p>自动扩缩容保留最小实例数。</p>
         :type ScaleLowerBound: int
-        :param _ScaleUpperBound: 自动扩缩容最大实例数。
+        :param _ScaleUpperBound: <p>自动扩缩容最大实例数。</p>
         :type ScaleUpperBound: int
-        :param _StrategyType: 扩容规则类型，1为按负载指标扩容规则，2为按时间扩容规则
+        :param _StrategyType: <p>扩容规则类型，1为按负载指标扩容规则，2为按时间扩容规则</p>
         :type StrategyType: int
-        :param _NextTimeCanScale: 下次可扩容时间。
+        :param _NextTimeCanScale: <p>下次可扩容时间。</p>
         :type NextTimeCanScale: int
-        :param _GraceDownFlag: 优雅缩容开关
+        :param _GraceDownFlag: <p>优雅缩容开关</p>
         :type GraceDownFlag: bool
-        :param _HardwareType: "CVM"表示规格全部使用CVM相关类型，"POD"表示规格使用容器相关类型,默认为"CVM"。
+        :param _HardwareType: <p>&quot;CVM&quot;表示规格全部使用CVM相关类型，&quot;POD&quot;表示规格使用容器相关类型,默认为&quot;CVM&quot;。</p>
         :type HardwareType: str
-        :param _PayMode: "POSTPAY"表示只使用按量计费，"SPOT_FIRST"表示竞价实例优先，只有HardwareType为"HOST"时支持竞价实例优先，"POD"只支持纯按量计费。
+        :param _PayMode: <p>&quot;POSTPAY&quot;表示只使用按量计费，&quot;SPOT_FIRST&quot;表示竞价实例优先，只有HardwareType为&quot;HOST&quot;时支持竞价实例优先，&quot;POD&quot;只支持纯按量计费。</p>
         :type PayMode: str
-        :param _PostPayPercentMin: 竞价实例优先的场景下，按量计费资源数量的最低百分比，整数
+        :param _PostPayPercentMin: <p>竞价实例优先的场景下，按量计费资源数量的最低百分比，整数</p>
         :type PostPayPercentMin: int
-        :param _ChangeToPod: 预设资源类型为HOST时，支持勾选“资源不足时切换POD”；支持取消勾选；0表示默认不勾选（0），1表示勾选
+        :param _ChangeToPod: <p>预设资源类型为HOST时，支持勾选“资源不足时切换POD”；支持取消勾选；0表示默认不勾选（0），1表示勾选</p>
         :type ChangeToPod: int
-        :param _GroupName: 伸缩组名
+        :param _GroupName: <p>伸缩组名</p>
         :type GroupName: str
-        :param _YarnNodeLabel: 标签
+        :param _YarnNodeLabel: <p>标签</p>
         :type YarnNodeLabel: str
-        :param _WarehouseName: 对应的计算组
+        :param _WarehouseName: <p>对应的计算组</p>
         :type WarehouseName: str
-        :param _GroupStatus: 伸缩组状态
+        :param _GroupStatus: <p>伸缩组状态</p>
         :type GroupStatus: int
-        :param _Parallel: 并行伸缩 0关闭；1开启
+        :param _Parallel: <p>并行伸缩 0关闭；1开启</p>
         :type Parallel: int
-        :param _EnableMNode: 是否支持MNode
+        :param _EnableMNode: <p>是否支持MNode</p>
         :type EnableMNode: int
-        :param _ExtraAdvanceAttrs: 伸缩组更多设置
+        :param _ExtraAdvanceAttrs: <p>伸缩组更多设置</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ExtraAdvanceAttrs: :class:`tencentcloud.emr.v20190103.models.AutoScaleGroupAdvanceAttrs`
+        :param _CustomNodeName: <p>自定义主机名</p>
+        :type CustomNodeName: str
         """
         self._Id = None
         self._ClusterId = None
@@ -1405,10 +1407,11 @@ class AutoScaleResourceConf(AbstractModel):
         self._Parallel = None
         self._EnableMNode = None
         self._ExtraAdvanceAttrs = None
+        self._CustomNodeName = None
 
     @property
     def Id(self):
-        r"""配置ID。
+        r"""<p>配置ID。</p>
         :rtype: int
         """
         return self._Id
@@ -1419,7 +1422,7 @@ class AutoScaleResourceConf(AbstractModel):
 
     @property
     def ClusterId(self):
-        r"""集群实例ID。
+        r"""<p>集群实例ID。</p>
         :rtype: int
         """
         return self._ClusterId
@@ -1430,7 +1433,7 @@ class AutoScaleResourceConf(AbstractModel):
 
     @property
     def ScaleLowerBound(self):
-        r"""自动扩缩容保留最小实例数。
+        r"""<p>自动扩缩容保留最小实例数。</p>
         :rtype: int
         """
         return self._ScaleLowerBound
@@ -1441,7 +1444,7 @@ class AutoScaleResourceConf(AbstractModel):
 
     @property
     def ScaleUpperBound(self):
-        r"""自动扩缩容最大实例数。
+        r"""<p>自动扩缩容最大实例数。</p>
         :rtype: int
         """
         return self._ScaleUpperBound
@@ -1452,7 +1455,7 @@ class AutoScaleResourceConf(AbstractModel):
 
     @property
     def StrategyType(self):
-        r"""扩容规则类型，1为按负载指标扩容规则，2为按时间扩容规则
+        r"""<p>扩容规则类型，1为按负载指标扩容规则，2为按时间扩容规则</p>
         :rtype: int
         """
         return self._StrategyType
@@ -1463,7 +1466,7 @@ class AutoScaleResourceConf(AbstractModel):
 
     @property
     def NextTimeCanScale(self):
-        r"""下次可扩容时间。
+        r"""<p>下次可扩容时间。</p>
         :rtype: int
         """
         return self._NextTimeCanScale
@@ -1474,7 +1477,7 @@ class AutoScaleResourceConf(AbstractModel):
 
     @property
     def GraceDownFlag(self):
-        r"""优雅缩容开关
+        r"""<p>优雅缩容开关</p>
         :rtype: bool
         """
         return self._GraceDownFlag
@@ -1485,7 +1488,7 @@ class AutoScaleResourceConf(AbstractModel):
 
     @property
     def HardwareType(self):
-        r""""CVM"表示规格全部使用CVM相关类型，"POD"表示规格使用容器相关类型,默认为"CVM"。
+        r"""<p>&quot;CVM&quot;表示规格全部使用CVM相关类型，&quot;POD&quot;表示规格使用容器相关类型,默认为&quot;CVM&quot;。</p>
         :rtype: str
         """
         return self._HardwareType
@@ -1496,7 +1499,7 @@ class AutoScaleResourceConf(AbstractModel):
 
     @property
     def PayMode(self):
-        r""""POSTPAY"表示只使用按量计费，"SPOT_FIRST"表示竞价实例优先，只有HardwareType为"HOST"时支持竞价实例优先，"POD"只支持纯按量计费。
+        r"""<p>&quot;POSTPAY&quot;表示只使用按量计费，&quot;SPOT_FIRST&quot;表示竞价实例优先，只有HardwareType为&quot;HOST&quot;时支持竞价实例优先，&quot;POD&quot;只支持纯按量计费。</p>
         :rtype: str
         """
         return self._PayMode
@@ -1507,7 +1510,7 @@ class AutoScaleResourceConf(AbstractModel):
 
     @property
     def PostPayPercentMin(self):
-        r"""竞价实例优先的场景下，按量计费资源数量的最低百分比，整数
+        r"""<p>竞价实例优先的场景下，按量计费资源数量的最低百分比，整数</p>
         :rtype: int
         """
         return self._PostPayPercentMin
@@ -1518,7 +1521,7 @@ class AutoScaleResourceConf(AbstractModel):
 
     @property
     def ChangeToPod(self):
-        r"""预设资源类型为HOST时，支持勾选“资源不足时切换POD”；支持取消勾选；0表示默认不勾选（0），1表示勾选
+        r"""<p>预设资源类型为HOST时，支持勾选“资源不足时切换POD”；支持取消勾选；0表示默认不勾选（0），1表示勾选</p>
         :rtype: int
         """
         return self._ChangeToPod
@@ -1529,7 +1532,7 @@ class AutoScaleResourceConf(AbstractModel):
 
     @property
     def GroupName(self):
-        r"""伸缩组名
+        r"""<p>伸缩组名</p>
         :rtype: str
         """
         return self._GroupName
@@ -1540,7 +1543,7 @@ class AutoScaleResourceConf(AbstractModel):
 
     @property
     def YarnNodeLabel(self):
-        r"""标签
+        r"""<p>标签</p>
         :rtype: str
         """
         return self._YarnNodeLabel
@@ -1551,7 +1554,7 @@ class AutoScaleResourceConf(AbstractModel):
 
     @property
     def WarehouseName(self):
-        r"""对应的计算组
+        r"""<p>对应的计算组</p>
         :rtype: str
         """
         return self._WarehouseName
@@ -1562,7 +1565,7 @@ class AutoScaleResourceConf(AbstractModel):
 
     @property
     def GroupStatus(self):
-        r"""伸缩组状态
+        r"""<p>伸缩组状态</p>
         :rtype: int
         """
         return self._GroupStatus
@@ -1573,7 +1576,7 @@ class AutoScaleResourceConf(AbstractModel):
 
     @property
     def Parallel(self):
-        r"""并行伸缩 0关闭；1开启
+        r"""<p>并行伸缩 0关闭；1开启</p>
         :rtype: int
         """
         return self._Parallel
@@ -1584,7 +1587,7 @@ class AutoScaleResourceConf(AbstractModel):
 
     @property
     def EnableMNode(self):
-        r"""是否支持MNode
+        r"""<p>是否支持MNode</p>
         :rtype: int
         """
         return self._EnableMNode
@@ -1595,7 +1598,7 @@ class AutoScaleResourceConf(AbstractModel):
 
     @property
     def ExtraAdvanceAttrs(self):
-        r"""伸缩组更多设置
+        r"""<p>伸缩组更多设置</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.emr.v20190103.models.AutoScaleGroupAdvanceAttrs`
         """
@@ -1604,6 +1607,17 @@ class AutoScaleResourceConf(AbstractModel):
     @ExtraAdvanceAttrs.setter
     def ExtraAdvanceAttrs(self, ExtraAdvanceAttrs):
         self._ExtraAdvanceAttrs = ExtraAdvanceAttrs
+
+    @property
+    def CustomNodeName(self):
+        r"""<p>自定义主机名</p>
+        :rtype: str
+        """
+        return self._CustomNodeName
+
+    @CustomNodeName.setter
+    def CustomNodeName(self, CustomNodeName):
+        self._CustomNodeName = CustomNodeName
 
 
     def _deserialize(self, params):
@@ -1627,6 +1641,7 @@ class AutoScaleResourceConf(AbstractModel):
         if params.get("ExtraAdvanceAttrs") is not None:
             self._ExtraAdvanceAttrs = AutoScaleGroupAdvanceAttrs()
             self._ExtraAdvanceAttrs._deserialize(params.get("ExtraAdvanceAttrs"))
+        self._CustomNodeName = params.get("CustomNodeName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -32206,6 +32221,8 @@ class NodeResourceSpec(AbstractModel):
         :type LocalDataDisk: list of DiskSpecInfo
         :param _SoftwareConfig: <p>节点配置信息，目前仅提供给terraform平台校验参数使用</p>
         :type SoftwareConfig: list of ServiceDeploy
+        :param _CustomNodeName: <p>自定义主机名</p>
+        :type CustomNodeName: str
         """
         self._InstanceType = None
         self._SystemDisk = None
@@ -32213,6 +32230,7 @@ class NodeResourceSpec(AbstractModel):
         self._DataDisk = None
         self._LocalDataDisk = None
         self._SoftwareConfig = None
+        self._CustomNodeName = None
 
     @property
     def InstanceType(self):
@@ -32284,6 +32302,17 @@ class NodeResourceSpec(AbstractModel):
     def SoftwareConfig(self, SoftwareConfig):
         self._SoftwareConfig = SoftwareConfig
 
+    @property
+    def CustomNodeName(self):
+        r"""<p>自定义主机名</p>
+        :rtype: str
+        """
+        return self._CustomNodeName
+
+    @CustomNodeName.setter
+    def CustomNodeName(self, CustomNodeName):
+        self._CustomNodeName = CustomNodeName
+
 
     def _deserialize(self, params):
         self._InstanceType = params.get("InstanceType")
@@ -32317,6 +32346,7 @@ class NodeResourceSpec(AbstractModel):
                 obj = ServiceDeploy()
                 obj._deserialize(item)
                 self._SoftwareConfig.append(obj)
+        self._CustomNodeName = params.get("CustomNodeName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -33339,24 +33369,26 @@ class OperationLog(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: EMR实例ID
+        :param _InstanceId: <p>EMR实例ID</p>
         :type InstanceId: int
-        :param _Operation: 操作名称
+        :param _Operation: <p>操作名称</p>
         :type Operation: str
-        :param _OperationType: 操作类型
+        :param _OperationType: <p>操作类型</p>
         :type OperationType: int
-        :param _UserType: 用户类型
+        :param _UserType: <p>用户类型</p>
         :type UserType: int
-        :param _Operator: 操作者
+        :param _Operator: <p>操作者</p>
         :type Operator: str
-        :param _CreateTime: 操作时间
+        :param _CreateTime: <p>操作时间</p>
         :type CreateTime: str
-        :param _Operand: 操作对象
+        :param _Operand: <p>操作对象</p>
         :type Operand: str
-        :param _OperationDesc: 操作详情
+        :param _OperationDesc: <p>操作详情</p>
         :type OperationDesc: str
-        :param _SecurityLevel: 安全级别
+        :param _SecurityLevel: <p>安全级别</p>
         :type SecurityLevel: str
+        :param _OperatorName: <p>操作者名称</p>
+        :type OperatorName: str
         """
         self._InstanceId = None
         self._Operation = None
@@ -33367,10 +33399,11 @@ class OperationLog(AbstractModel):
         self._Operand = None
         self._OperationDesc = None
         self._SecurityLevel = None
+        self._OperatorName = None
 
     @property
     def InstanceId(self):
-        r"""EMR实例ID
+        r"""<p>EMR实例ID</p>
         :rtype: int
         """
         return self._InstanceId
@@ -33381,7 +33414,7 @@ class OperationLog(AbstractModel):
 
     @property
     def Operation(self):
-        r"""操作名称
+        r"""<p>操作名称</p>
         :rtype: str
         """
         return self._Operation
@@ -33392,7 +33425,7 @@ class OperationLog(AbstractModel):
 
     @property
     def OperationType(self):
-        r"""操作类型
+        r"""<p>操作类型</p>
         :rtype: int
         """
         return self._OperationType
@@ -33403,7 +33436,7 @@ class OperationLog(AbstractModel):
 
     @property
     def UserType(self):
-        r"""用户类型
+        r"""<p>用户类型</p>
         :rtype: int
         """
         return self._UserType
@@ -33414,7 +33447,7 @@ class OperationLog(AbstractModel):
 
     @property
     def Operator(self):
-        r"""操作者
+        r"""<p>操作者</p>
         :rtype: str
         """
         return self._Operator
@@ -33425,7 +33458,7 @@ class OperationLog(AbstractModel):
 
     @property
     def CreateTime(self):
-        r"""操作时间
+        r"""<p>操作时间</p>
         :rtype: str
         """
         return self._CreateTime
@@ -33436,7 +33469,7 @@ class OperationLog(AbstractModel):
 
     @property
     def Operand(self):
-        r"""操作对象
+        r"""<p>操作对象</p>
         :rtype: str
         """
         return self._Operand
@@ -33447,7 +33480,7 @@ class OperationLog(AbstractModel):
 
     @property
     def OperationDesc(self):
-        r"""操作详情
+        r"""<p>操作详情</p>
         :rtype: str
         """
         return self._OperationDesc
@@ -33458,7 +33491,7 @@ class OperationLog(AbstractModel):
 
     @property
     def SecurityLevel(self):
-        r"""安全级别
+        r"""<p>安全级别</p>
         :rtype: str
         """
         return self._SecurityLevel
@@ -33466,6 +33499,17 @@ class OperationLog(AbstractModel):
     @SecurityLevel.setter
     def SecurityLevel(self, SecurityLevel):
         self._SecurityLevel = SecurityLevel
+
+    @property
+    def OperatorName(self):
+        r"""<p>操作者名称</p>
+        :rtype: str
+        """
+        return self._OperatorName
+
+    @OperatorName.setter
+    def OperatorName(self, OperatorName):
+        self._OperatorName = OperatorName
 
 
     def _deserialize(self, params):
@@ -33478,6 +33522,7 @@ class OperationLog(AbstractModel):
         self._Operand = params.get("Operand")
         self._OperationDesc = params.get("OperationDesc")
         self._SecurityLevel = params.get("SecurityLevel")
+        self._OperatorName = params.get("OperatorName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

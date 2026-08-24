@@ -18,6 +18,278 @@ import warnings
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class AIGWAKSKCredentialConfig(AbstractModel):
+    r"""aksk类型密钥
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AccessKeyId: <p>AccessKeyId</p>
+        :type AccessKeyId: str
+        :param _SecretAccessKey: <p>SecretAccessKey</p>
+        :type SecretAccessKey: str
+        """
+        self._AccessKeyId = None
+        self._SecretAccessKey = None
+
+    @property
+    def AccessKeyId(self):
+        r"""<p>AccessKeyId</p>
+        :rtype: str
+        """
+        return self._AccessKeyId
+
+    @AccessKeyId.setter
+    def AccessKeyId(self, AccessKeyId):
+        self._AccessKeyId = AccessKeyId
+
+    @property
+    def SecretAccessKey(self):
+        r"""<p>SecretAccessKey</p>
+        :rtype: str
+        """
+        return self._SecretAccessKey
+
+    @SecretAccessKey.setter
+    def SecretAccessKey(self, SecretAccessKey):
+        self._SecretAccessKey = SecretAccessKey
+
+
+    def _deserialize(self, params):
+        self._AccessKeyId = params.get("AccessKeyId")
+        self._SecretAccessKey = params.get("SecretAccessKey")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AIGWAuthModelScopeItem(AbstractModel):
+    r"""AI网关授权模型访问范围
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PrincipalId: <p>授权主体 ID，如消费者组、消费者</p>
+        :type PrincipalId: str
+        :param _PrincipalName: <p>授权主体名称，如消费者组、消费者</p>
+        :type PrincipalName: str
+        :param _ModelScope: <p>模型范围原始配置</p>
+        :type ModelScope: :class:`tencentcloud.tse.v20201207.models.AIGWModelScope`
+        :param _EffectiveModelNames: <p>MAG 已展开、保序去重后的可用模型名称列表</p>
+        :type EffectiveModelNames: list of str
+        """
+        self._PrincipalId = None
+        self._PrincipalName = None
+        self._ModelScope = None
+        self._EffectiveModelNames = None
+
+    @property
+    def PrincipalId(self):
+        r"""<p>授权主体 ID，如消费者组、消费者</p>
+        :rtype: str
+        """
+        return self._PrincipalId
+
+    @PrincipalId.setter
+    def PrincipalId(self, PrincipalId):
+        self._PrincipalId = PrincipalId
+
+    @property
+    def PrincipalName(self):
+        r"""<p>授权主体名称，如消费者组、消费者</p>
+        :rtype: str
+        """
+        return self._PrincipalName
+
+    @PrincipalName.setter
+    def PrincipalName(self, PrincipalName):
+        self._PrincipalName = PrincipalName
+
+    @property
+    def ModelScope(self):
+        r"""<p>模型范围原始配置</p>
+        :rtype: :class:`tencentcloud.tse.v20201207.models.AIGWModelScope`
+        """
+        return self._ModelScope
+
+    @ModelScope.setter
+    def ModelScope(self, ModelScope):
+        self._ModelScope = ModelScope
+
+    @property
+    def EffectiveModelNames(self):
+        r"""<p>MAG 已展开、保序去重后的可用模型名称列表</p>
+        :rtype: list of str
+        """
+        return self._EffectiveModelNames
+
+    @EffectiveModelNames.setter
+    def EffectiveModelNames(self, EffectiveModelNames):
+        self._EffectiveModelNames = EffectiveModelNames
+
+
+    def _deserialize(self, params):
+        self._PrincipalId = params.get("PrincipalId")
+        self._PrincipalName = params.get("PrincipalName")
+        if params.get("ModelScope") is not None:
+            self._ModelScope = AIGWModelScope()
+            self._ModelScope._deserialize(params.get("ModelScope"))
+        self._EffectiveModelNames = params.get("EffectiveModelNames")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AIGWBasicCredentialConfig(AbstractModel):
+    r"""AI网关 Basic Auth 凭证物料配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Username: <p>用户名</p>
+        :type Username: str
+        :param _Password: <p>密码</p>
+        :type Password: str
+        """
+        self._Username = None
+        self._Password = None
+
+    @property
+    def Username(self):
+        r"""<p>用户名</p>
+        :rtype: str
+        """
+        return self._Username
+
+    @Username.setter
+    def Username(self, Username):
+        self._Username = Username
+
+    @property
+    def Password(self):
+        r"""<p>密码</p>
+        :rtype: str
+        """
+        return self._Password
+
+    @Password.setter
+    def Password(self, Password):
+        self._Password = Password
+
+
+    def _deserialize(self, params):
+        self._Username = params.get("Username")
+        self._Password = params.get("Password")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AIGWBearerTokenCredentialConfig(AbstractModel):
+    r"""AI网关 Bearer Token 凭证配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Token: <p>Token凭证</p>
+        :type Token: str
+        """
+        self._Token = None
+
+    @property
+    def Token(self):
+        r"""<p>Token凭证</p>
+        :rtype: str
+        """
+        return self._Token
+
+    @Token.setter
+    def Token(self, Token):
+        self._Token = Token
+
+
+    def _deserialize(self, params):
+        self._Token = params.get("Token")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AIGWCAMCredentialConfig(AbstractModel):
+    r"""CAM类型密钥
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SecretId: <p>SecretId</p>
+        :type SecretId: str
+        :param _SecretKey: <p>SecretKey</p>
+        :type SecretKey: str
+        """
+        self._SecretId = None
+        self._SecretKey = None
+
+    @property
+    def SecretId(self):
+        r"""<p>SecretId</p>
+        :rtype: str
+        """
+        return self._SecretId
+
+    @SecretId.setter
+    def SecretId(self, SecretId):
+        self._SecretId = SecretId
+
+    @property
+    def SecretKey(self):
+        r"""<p>SecretKey</p>
+        :rtype: str
+        """
+        return self._SecretKey
+
+    @SecretKey.setter
+    def SecretKey(self, SecretKey):
+        self._SecretKey = SecretKey
+
+
+    def _deserialize(self, params):
+        self._SecretId = params.get("SecretId")
+        self._SecretKey = params.get("SecretKey")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AIGWCacheAwareRouteCandidate(AbstractModel):
     r"""缓存感知路由候选模型服务
 
@@ -110,6 +382,57 @@ class AIGWCacheAwareRouteConfig(AbstractModel):
         
 
 
+class AIGWConsumerModelScope(AbstractModel):
+    r"""AI网关消费者模型范围
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ScopeType: <p>消费者模型生效范围类型</p><p>枚举值：</p><ul><li>INHERIT： 继承所在消费者组的生效模型范围</li><li>ALLOWLIST： 自定义白名单，必须 ⊆ 所在组针对该资源的生效模型集合</li></ul>
+        :type ScopeType: str
+        :param _AllowList: <p>模型授权白名单列表</p>
+        :type AllowList: list of str
+        """
+        self._ScopeType = None
+        self._AllowList = None
+
+    @property
+    def ScopeType(self):
+        r"""<p>消费者模型生效范围类型</p><p>枚举值：</p><ul><li>INHERIT： 继承所在消费者组的生效模型范围</li><li>ALLOWLIST： 自定义白名单，必须 ⊆ 所在组针对该资源的生效模型集合</li></ul>
+        :rtype: str
+        """
+        return self._ScopeType
+
+    @ScopeType.setter
+    def ScopeType(self, ScopeType):
+        self._ScopeType = ScopeType
+
+    @property
+    def AllowList(self):
+        r"""<p>模型授权白名单列表</p>
+        :rtype: list of str
+        """
+        return self._AllowList
+
+    @AllowList.setter
+    def AllowList(self, AllowList):
+        self._AllowList = AllowList
+
+
+    def _deserialize(self, params):
+        self._ScopeType = params.get("ScopeType")
+        self._AllowList = params.get("AllowList")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AIGWCrossServiceFallbackConfig(AbstractModel):
     r"""跨服务降级配置
 
@@ -184,19 +507,19 @@ class AIGWCrossServiceFallbackConfig(AbstractModel):
 
 
 class AIGWCustomDesensitizeRule(AbstractModel):
-    r"""AI 网关自定义脱敏规则（A 层 / B 层共用结构体，MaskFormat 含义随所属层不同）
+    r"""AI 网关自定义脱敏规则
 
     """
 
     def __init__(self):
         r"""
-        :param _Name: <p>自定义脱敏规则名称</p>
+        :param _Name: <p>规则名称，同一配置内唯一，最长 64</p>
         :type Name: str
-        :param _Pattern: <p>自定义脱敏规则匹配正则</p>
+        :param _Pattern: <p>RE2 兼容的正则表达式</p>
         :type Pattern: str
-        :param _MaskFormat: <p>自定义脱敏规则掩码</p>
+        :param _MaskFormat: <p>日志场景为掩码格式，转发场景为占位符；最长 64</p>
         :type MaskFormat: str
-        :param _Enabled: <p>自定义脱敏规则开关</p>
+        :param _Enabled: <p>单条自定义规则是否启用</p>
         :type Enabled: bool
         """
         self._Name = None
@@ -206,7 +529,7 @@ class AIGWCustomDesensitizeRule(AbstractModel):
 
     @property
     def Name(self):
-        r"""<p>自定义脱敏规则名称</p>
+        r"""<p>规则名称，同一配置内唯一，最长 64</p>
         :rtype: str
         """
         return self._Name
@@ -217,7 +540,7 @@ class AIGWCustomDesensitizeRule(AbstractModel):
 
     @property
     def Pattern(self):
-        r"""<p>自定义脱敏规则匹配正则</p>
+        r"""<p>RE2 兼容的正则表达式</p>
         :rtype: str
         """
         return self._Pattern
@@ -228,7 +551,7 @@ class AIGWCustomDesensitizeRule(AbstractModel):
 
     @property
     def MaskFormat(self):
-        r"""<p>自定义脱敏规则掩码</p>
+        r"""<p>日志场景为掩码格式，转发场景为占位符；最长 64</p>
         :rtype: str
         """
         return self._MaskFormat
@@ -239,7 +562,7 @@ class AIGWCustomDesensitizeRule(AbstractModel):
 
     @property
     def Enabled(self):
-        r"""<p>自定义脱敏规则开关</p>
+        r"""<p>单条自定义规则是否启用</p>
         :rtype: bool
         """
         return self._Enabled
@@ -254,6 +577,57 @@ class AIGWCustomDesensitizeRule(AbstractModel):
         self._Pattern = params.get("Pattern")
         self._MaskFormat = params.get("MaskFormat")
         self._Enabled = params.get("Enabled")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AIGWCustomHeaderCredentialConfig(AbstractModel):
+    r"""AI网关自定义 Header 凭证配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _HeaderName: <p>Header名</p>
+        :type HeaderName: str
+        :param _HeaderValue: <p>Header值</p>
+        :type HeaderValue: str
+        """
+        self._HeaderName = None
+        self._HeaderValue = None
+
+    @property
+    def HeaderName(self):
+        r"""<p>Header名</p>
+        :rtype: str
+        """
+        return self._HeaderName
+
+    @HeaderName.setter
+    def HeaderName(self, HeaderName):
+        self._HeaderName = HeaderName
+
+    @property
+    def HeaderValue(self):
+        r"""<p>Header值</p>
+        :rtype: str
+        """
+        return self._HeaderValue
+
+    @HeaderValue.setter
+    def HeaderValue(self, HeaderValue):
+        self._HeaderValue = HeaderValue
+
+
+    def _deserialize(self, params):
+        self._HeaderName = params.get("HeaderName")
+        self._HeaderValue = params.get("HeaderValue")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -316,21 +690,21 @@ class AIGWFallbackServiceItem(AbstractModel):
 
 
 class AIGWForwardDesensitizeConfig(AbstractModel):
-    r"""AI 网关 A 层转发脱敏配置（请求转发到 LLM 供应商前对 messages 替换为占位符）
+    r"""AI 网关转发脱敏配置
 
     """
 
     def __init__(self):
         r"""
-        :param _Enabled: <p>转发脱敏开关</p>
+        :param _Enabled: <p>转发脱敏配置总开关</p>
         :type Enabled: bool
-        :param _PredefinedRuleTypes: <p>预定义规则类型</p><p>枚举值：</p><ul><li>Phone： 电话号码</li><li>IdCard： 身份证号</li><li>BankCard： 银行卡号</li><li>Email： 电子邮箱地址</li><li>IP： IP地址</li><li>Name： 姓名</li></ul>
+        :param _PredefinedRuleTypes: <p>内置规则类型：Phone、IdCard、BankCard、Email、IP、Name</p>
         :type PredefinedRuleTypes: list of str
-        :param _CustomRules: <p>自定义脱敏规则</p>
+        :param _CustomRules: <p>自定义规则，最多 20 条</p>
         :type CustomRules: list of AIGWCustomDesensitizeRule
-        :param _PlaceholderFormat: <p>掩码</p>
+        :param _PlaceholderFormat: <p>内置规则占位符格式，最长 32；为空时默认 [{type}]</p>
         :type PlaceholderFormat: str
-        :param _OnFailure: <p>脱敏异常处理</p><p>枚举值：</p><ul><li>Reject： 拒绝请求</li><li>Skip： 跳过</li></ul>
+        :param _OnFailure: <p>脱敏失败处理：Reject（拒绝请求）或 Skip（跳过脱敏并转发）</p>
         :type OnFailure: str
         """
         self._Enabled = None
@@ -341,7 +715,7 @@ class AIGWForwardDesensitizeConfig(AbstractModel):
 
     @property
     def Enabled(self):
-        r"""<p>转发脱敏开关</p>
+        r"""<p>转发脱敏配置总开关</p>
         :rtype: bool
         """
         return self._Enabled
@@ -352,7 +726,7 @@ class AIGWForwardDesensitizeConfig(AbstractModel):
 
     @property
     def PredefinedRuleTypes(self):
-        r"""<p>预定义规则类型</p><p>枚举值：</p><ul><li>Phone： 电话号码</li><li>IdCard： 身份证号</li><li>BankCard： 银行卡号</li><li>Email： 电子邮箱地址</li><li>IP： IP地址</li><li>Name： 姓名</li></ul>
+        r"""<p>内置规则类型：Phone、IdCard、BankCard、Email、IP、Name</p>
         :rtype: list of str
         """
         return self._PredefinedRuleTypes
@@ -363,7 +737,7 @@ class AIGWForwardDesensitizeConfig(AbstractModel):
 
     @property
     def CustomRules(self):
-        r"""<p>自定义脱敏规则</p>
+        r"""<p>自定义规则，最多 20 条</p>
         :rtype: list of AIGWCustomDesensitizeRule
         """
         return self._CustomRules
@@ -374,7 +748,7 @@ class AIGWForwardDesensitizeConfig(AbstractModel):
 
     @property
     def PlaceholderFormat(self):
-        r"""<p>掩码</p>
+        r"""<p>内置规则占位符格式，最长 32；为空时默认 [{type}]</p>
         :rtype: str
         """
         return self._PlaceholderFormat
@@ -385,7 +759,7 @@ class AIGWForwardDesensitizeConfig(AbstractModel):
 
     @property
     def OnFailure(self):
-        r"""<p>脱敏异常处理</p><p>枚举值：</p><ul><li>Reject： 拒绝请求</li><li>Skip： 跳过</li></ul>
+        r"""<p>脱敏失败处理：Reject（拒绝请求）或 Skip（跳过脱敏并转发）</p>
         :rtype: str
         """
         return self._OnFailure
@@ -690,6 +1064,102 @@ class AIGWKVMatch(AbstractModel):
         self._Key = params.get("Key")
         self._Value = params.get("Value")
         self._Operator = params.get("Operator")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AIGWLLMHealthCheckSetting(AbstractModel):
+    r"""AI网关LLM健康检查配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _HealthCheckIntervalSecond: <p>检查间隔</p>
+        :type HealthCheckIntervalSecond: int
+        :param _HealthCheckTimeout: <p>检查超时时间</p>
+        :type HealthCheckTimeout: int
+        :param _HealthCheckFailThreshold: <p>检查失败阈值</p>
+        :type HealthCheckFailThreshold: int
+        :param _HealthCheckRecoverThreshold: <p>检查恢复阈值</p>
+        :type HealthCheckRecoverThreshold: int
+        :param _HealthCheckPath: <p>检查路径</p>
+        :type HealthCheckPath: str
+        """
+        self._HealthCheckIntervalSecond = None
+        self._HealthCheckTimeout = None
+        self._HealthCheckFailThreshold = None
+        self._HealthCheckRecoverThreshold = None
+        self._HealthCheckPath = None
+
+    @property
+    def HealthCheckIntervalSecond(self):
+        r"""<p>检查间隔</p>
+        :rtype: int
+        """
+        return self._HealthCheckIntervalSecond
+
+    @HealthCheckIntervalSecond.setter
+    def HealthCheckIntervalSecond(self, HealthCheckIntervalSecond):
+        self._HealthCheckIntervalSecond = HealthCheckIntervalSecond
+
+    @property
+    def HealthCheckTimeout(self):
+        r"""<p>检查超时时间</p>
+        :rtype: int
+        """
+        return self._HealthCheckTimeout
+
+    @HealthCheckTimeout.setter
+    def HealthCheckTimeout(self, HealthCheckTimeout):
+        self._HealthCheckTimeout = HealthCheckTimeout
+
+    @property
+    def HealthCheckFailThreshold(self):
+        r"""<p>检查失败阈值</p>
+        :rtype: int
+        """
+        return self._HealthCheckFailThreshold
+
+    @HealthCheckFailThreshold.setter
+    def HealthCheckFailThreshold(self, HealthCheckFailThreshold):
+        self._HealthCheckFailThreshold = HealthCheckFailThreshold
+
+    @property
+    def HealthCheckRecoverThreshold(self):
+        r"""<p>检查恢复阈值</p>
+        :rtype: int
+        """
+        return self._HealthCheckRecoverThreshold
+
+    @HealthCheckRecoverThreshold.setter
+    def HealthCheckRecoverThreshold(self, HealthCheckRecoverThreshold):
+        self._HealthCheckRecoverThreshold = HealthCheckRecoverThreshold
+
+    @property
+    def HealthCheckPath(self):
+        r"""<p>检查路径</p>
+        :rtype: str
+        """
+        return self._HealthCheckPath
+
+    @HealthCheckPath.setter
+    def HealthCheckPath(self, HealthCheckPath):
+        self._HealthCheckPath = HealthCheckPath
+
+
+    def _deserialize(self, params):
+        self._HealthCheckIntervalSecond = params.get("HealthCheckIntervalSecond")
+        self._HealthCheckTimeout = params.get("HealthCheckTimeout")
+        self._HealthCheckFailThreshold = params.get("HealthCheckFailThreshold")
+        self._HealthCheckRecoverThreshold = params.get("HealthCheckRecoverThreshold")
+        self._HealthCheckPath = params.get("HealthCheckPath")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1014,6 +1484,42 @@ class AIGWLatencyPriorityRouteRule(AbstractModel):
         
 
 
+class AIGWLoadBalanceConfig(AbstractModel):
+    r"""负载均衡配置，仅服务来源（ServiceSource，SourceId 非空）场景生效。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Algorithm: <p>负载均衡算法</p>
+        :type Algorithm: str
+        """
+        self._Algorithm = None
+
+    @property
+    def Algorithm(self):
+        r"""<p>负载均衡算法</p>
+        :rtype: str
+        """
+        return self._Algorithm
+
+    @Algorithm.setter
+    def Algorithm(self, Algorithm):
+        self._Algorithm = Algorithm
+
+
+    def _deserialize(self, params):
+        self._Algorithm = params.get("Algorithm")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AIGWLogConfig(AbstractModel):
     r"""AI 网关日志输出配置
 
@@ -1033,6 +1539,10 @@ class AIGWLogConfig(AbstractModel):
         :type RequestLogPayloadMode: str
         :param _ResponseLogPayloadMode: <p>上游原始 payload access log 输出模式</p><p>枚举值：</p><ul><li>raw： access log 中 body 记录客户端原始上游响应</li><li>processed： access log 中 body 记录 AI 网关协议适配、改写、归一化后的 OpenAI-compatible 内容</li></ul>
         :type ResponseLogPayloadMode: str
+        :param _RequestLogPayloadTruncationPolicy: <p>请求 Body 大小裁剪策略</p><p>枚举值：</p><ul><li>Bounded： 裁剪大小</li><li>UnBounded： 不裁剪大小</li></ul>
+        :type RequestLogPayloadTruncationPolicy: str
+        :param _ResponseLogPayloadTruncationPolicy: <p>响应 Body 大小裁剪策略</p><p>枚举值：</p><ul><li>Bounded： 裁剪大小</li><li>UnBounded： 不裁剪大小</li></ul>
+        :type ResponseLogPayloadTruncationPolicy: str
         """
         self._EnableRequestLogPayloads = None
         self._EnableResponseLogPayloads = None
@@ -1040,6 +1550,8 @@ class AIGWLogConfig(AbstractModel):
         self._ResponseLogPayloadMaxSize = None
         self._RequestLogPayloadMode = None
         self._ResponseLogPayloadMode = None
+        self._RequestLogPayloadTruncationPolicy = None
+        self._ResponseLogPayloadTruncationPolicy = None
 
     @property
     def EnableRequestLogPayloads(self):
@@ -1107,6 +1619,28 @@ class AIGWLogConfig(AbstractModel):
     def ResponseLogPayloadMode(self, ResponseLogPayloadMode):
         self._ResponseLogPayloadMode = ResponseLogPayloadMode
 
+    @property
+    def RequestLogPayloadTruncationPolicy(self):
+        r"""<p>请求 Body 大小裁剪策略</p><p>枚举值：</p><ul><li>Bounded： 裁剪大小</li><li>UnBounded： 不裁剪大小</li></ul>
+        :rtype: str
+        """
+        return self._RequestLogPayloadTruncationPolicy
+
+    @RequestLogPayloadTruncationPolicy.setter
+    def RequestLogPayloadTruncationPolicy(self, RequestLogPayloadTruncationPolicy):
+        self._RequestLogPayloadTruncationPolicy = RequestLogPayloadTruncationPolicy
+
+    @property
+    def ResponseLogPayloadTruncationPolicy(self):
+        r"""<p>响应 Body 大小裁剪策略</p><p>枚举值：</p><ul><li>Bounded： 裁剪大小</li><li>UnBounded： 不裁剪大小</li></ul>
+        :rtype: str
+        """
+        return self._ResponseLogPayloadTruncationPolicy
+
+    @ResponseLogPayloadTruncationPolicy.setter
+    def ResponseLogPayloadTruncationPolicy(self, ResponseLogPayloadTruncationPolicy):
+        self._ResponseLogPayloadTruncationPolicy = ResponseLogPayloadTruncationPolicy
+
 
     def _deserialize(self, params):
         self._EnableRequestLogPayloads = params.get("EnableRequestLogPayloads")
@@ -1115,6 +1649,8 @@ class AIGWLogConfig(AbstractModel):
         self._ResponseLogPayloadMaxSize = params.get("ResponseLogPayloadMaxSize")
         self._RequestLogPayloadMode = params.get("RequestLogPayloadMode")
         self._ResponseLogPayloadMode = params.get("ResponseLogPayloadMode")
+        self._RequestLogPayloadTruncationPolicy = params.get("RequestLogPayloadTruncationPolicy")
+        self._ResponseLogPayloadTruncationPolicy = params.get("ResponseLogPayloadTruncationPolicy")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1126,19 +1662,19 @@ class AIGWLogConfig(AbstractModel):
 
 
 class AIGWLogDesensitizeConfig(AbstractModel):
-    r"""AI 网关 B 层日志脱敏配置（写入 LLM Log 前对 payload 掩码）
+    r"""AI 网关日志脱敏配置
 
     """
 
     def __init__(self):
         r"""
-        :param _Enabled: <p>日志脱敏开关</p>
+        :param _Enabled: <p>日志脱敏配置总开关</p>
         :type Enabled: bool
-        :param _PredefinedRuleTypes: <p>预定义规则类型</p><p>枚举值：</p><ul><li>Phone： 电话号码</li><li>IdCard： 身份证号</li><li>BankCard： 银行卡号</li><li>Email： 邮箱地址</li><li>IP： IP地址</li><li>Name： 姓名</li></ul>
+        :param _PredefinedRuleTypes: <p>内置规则类型：Phone、IdCard、BankCard、Email、IP、Name</p>
         :type PredefinedRuleTypes: list of str
-        :param _CustomRules: <p>自定义脱敏规则</p>
+        :param _CustomRules: <p>自定义规则，最多 20 条</p>
         :type CustomRules: list of AIGWCustomDesensitizeRule
-        :param _Scope: <p>日志脱敏范围</p><p>枚举值：</p><ul><li>Request： 请求</li><li>Response： 响应</li></ul>
+        :param _Scope: <p>脱敏方向：Request、Response；为空时默认两者</p>
         :type Scope: list of str
         """
         self._Enabled = None
@@ -1148,7 +1684,7 @@ class AIGWLogDesensitizeConfig(AbstractModel):
 
     @property
     def Enabled(self):
-        r"""<p>日志脱敏开关</p>
+        r"""<p>日志脱敏配置总开关</p>
         :rtype: bool
         """
         return self._Enabled
@@ -1159,7 +1695,7 @@ class AIGWLogDesensitizeConfig(AbstractModel):
 
     @property
     def PredefinedRuleTypes(self):
-        r"""<p>预定义规则类型</p><p>枚举值：</p><ul><li>Phone： 电话号码</li><li>IdCard： 身份证号</li><li>BankCard： 银行卡号</li><li>Email： 邮箱地址</li><li>IP： IP地址</li><li>Name： 姓名</li></ul>
+        r"""<p>内置规则类型：Phone、IdCard、BankCard、Email、IP、Name</p>
         :rtype: list of str
         """
         return self._PredefinedRuleTypes
@@ -1170,7 +1706,7 @@ class AIGWLogDesensitizeConfig(AbstractModel):
 
     @property
     def CustomRules(self):
-        r"""<p>自定义脱敏规则</p>
+        r"""<p>自定义规则，最多 20 条</p>
         :rtype: list of AIGWCustomDesensitizeRule
         """
         return self._CustomRules
@@ -1181,7 +1717,7 @@ class AIGWLogDesensitizeConfig(AbstractModel):
 
     @property
     def Scope(self):
-        r"""<p>日志脱敏范围</p><p>枚举值：</p><ul><li>Request： 请求</li><li>Response： 响应</li></ul>
+        r"""<p>脱敏方向：Request、Response；为空时默认两者</p>
         :rtype: list of str
         """
         return self._Scope
@@ -1252,6 +1788,72 @@ class AIGWModelRewriteRule(AbstractModel):
     def _deserialize(self, params):
         self._SourceModel = params.get("SourceModel")
         self._TargetModel = params.get("TargetModel")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AIGWModelScope(AbstractModel):
+    r"""AI网关模型可用范围
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ScopeType: <p>范围类型</p><p>枚举值：</p><ul><li>ALL： 允许全部访问</li><li>ALLOWLIST： 允许访问的模型列表</li><li>MAG： 模型访问组</li></ul>
+        :type ScopeType: str
+        :param _AllowList: <p>允许访问的模型列表，ScopeType=ALLOWLIST时设置</p>
+        :type AllowList: list of str
+        :param _MagRefs: <p>模型访问组，ScopeType=MAG时设置</p>
+        :type MagRefs: list of str
+        """
+        self._ScopeType = None
+        self._AllowList = None
+        self._MagRefs = None
+
+    @property
+    def ScopeType(self):
+        r"""<p>范围类型</p><p>枚举值：</p><ul><li>ALL： 允许全部访问</li><li>ALLOWLIST： 允许访问的模型列表</li><li>MAG： 模型访问组</li></ul>
+        :rtype: str
+        """
+        return self._ScopeType
+
+    @ScopeType.setter
+    def ScopeType(self, ScopeType):
+        self._ScopeType = ScopeType
+
+    @property
+    def AllowList(self):
+        r"""<p>允许访问的模型列表，ScopeType=ALLOWLIST时设置</p>
+        :rtype: list of str
+        """
+        return self._AllowList
+
+    @AllowList.setter
+    def AllowList(self, AllowList):
+        self._AllowList = AllowList
+
+    @property
+    def MagRefs(self):
+        r"""<p>模型访问组，ScopeType=MAG时设置</p>
+        :rtype: list of str
+        """
+        return self._MagRefs
+
+    @MagRefs.setter
+    def MagRefs(self, MagRefs):
+        self._MagRefs = MagRefs
+
+
+    def _deserialize(self, params):
+        self._ScopeType = params.get("ScopeType")
+        self._AllowList = params.get("AllowList")
+        self._MagRefs = params.get("MagRefs")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1394,6 +1996,108 @@ class AIGWOIDCCredentialConfig(AbstractModel):
         
 
 
+class AIGWQueryParamCredentialConfig(AbstractModel):
+    r"""AI网关 Query Param 凭证物料配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ParamName: <p>参数名</p>
+        :type ParamName: str
+        :param _ParamValue: <p>参数值</p>
+        :type ParamValue: str
+        """
+        self._ParamName = None
+        self._ParamValue = None
+
+    @property
+    def ParamName(self):
+        r"""<p>参数名</p>
+        :rtype: str
+        """
+        return self._ParamName
+
+    @ParamName.setter
+    def ParamName(self, ParamName):
+        self._ParamName = ParamName
+
+    @property
+    def ParamValue(self):
+        r"""<p>参数值</p>
+        :rtype: str
+        """
+        return self._ParamValue
+
+    @ParamValue.setter
+    def ParamValue(self, ParamValue):
+        self._ParamValue = ParamValue
+
+
+    def _deserialize(self, params):
+        self._ParamName = params.get("ParamName")
+        self._ParamValue = params.get("ParamValue")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AIGWRerankMaxDocumentsConfig(AbstractModel):
+    r"""AI 网关Rerank场景最大文档数限制配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EnableMaxDocuments: <p>是否开启最大文档数限制</p><p>枚举值：</p><ul><li>true： 开启最大文档数限制</li><li>false： 关闭最大文档数限制</li></ul>
+        :type EnableMaxDocuments: bool
+        :param _MaxDocumentValue: <p>最大文档数限制</p><p>取值范围：[1, 5000]</p>
+        :type MaxDocumentValue: int
+        """
+        self._EnableMaxDocuments = None
+        self._MaxDocumentValue = None
+
+    @property
+    def EnableMaxDocuments(self):
+        r"""<p>是否开启最大文档数限制</p><p>枚举值：</p><ul><li>true： 开启最大文档数限制</li><li>false： 关闭最大文档数限制</li></ul>
+        :rtype: bool
+        """
+        return self._EnableMaxDocuments
+
+    @EnableMaxDocuments.setter
+    def EnableMaxDocuments(self, EnableMaxDocuments):
+        self._EnableMaxDocuments = EnableMaxDocuments
+
+    @property
+    def MaxDocumentValue(self):
+        r"""<p>最大文档数限制</p><p>取值范围：[1, 5000]</p>
+        :rtype: int
+        """
+        return self._MaxDocumentValue
+
+    @MaxDocumentValue.setter
+    def MaxDocumentValue(self, MaxDocumentValue):
+        self._MaxDocumentValue = MaxDocumentValue
+
+
+    def _deserialize(self, params):
+        self._EnableMaxDocuments = params.get("EnableMaxDocuments")
+        self._MaxDocumentValue = params.get("MaxDocumentValue")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AIGWRouteModelServiceConfig(AbstractModel):
     r"""AI 网关指定模型路由（暂时只用在Token长度路由时的子路由选择）
 
@@ -1420,6 +2124,127 @@ class AIGWRouteModelServiceConfig(AbstractModel):
 
     def _deserialize(self, params):
         self._ModelServiceName = params.get("ModelServiceName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AIGWSensitiveWordRoute(AbstractModel):
+    r"""AI GW Sensitive Word Route
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Enabled: <p>是否开启敏感词路由</p>
+        :type Enabled: bool
+        :param _ModelServiceRefs: <p>目标模型服务列表</p>
+        :type ModelServiceRefs: list of str
+        :param _ModelServiceNames: <p>目标模型服务名，查询的时候会填充</p>
+        :type ModelServiceNames: list of str
+        :param _SelectedTypes: <p>路由方法</p><p>枚举值：</p><ul><li>Weighted： 权重路由</li><li>ModelName： 按模型名称路由</li></ul>
+        :type SelectedTypes: list of str
+        :param _WeightedConfig: <p>权重路由配置</p>
+        :type WeightedConfig: list of CloudNativeAPIGatewayLLMModelServiceRouteWeightedStrategy
+        :param _ModelNameConfig: <p>模型名称路由权重</p>
+        :type ModelNameConfig: list of CloudNativeAPIGatewayLLMModelServiceRouteModelNameStrategy
+        """
+        self._Enabled = None
+        self._ModelServiceRefs = None
+        self._ModelServiceNames = None
+        self._SelectedTypes = None
+        self._WeightedConfig = None
+        self._ModelNameConfig = None
+
+    @property
+    def Enabled(self):
+        r"""<p>是否开启敏感词路由</p>
+        :rtype: bool
+        """
+        return self._Enabled
+
+    @Enabled.setter
+    def Enabled(self, Enabled):
+        self._Enabled = Enabled
+
+    @property
+    def ModelServiceRefs(self):
+        r"""<p>目标模型服务列表</p>
+        :rtype: list of str
+        """
+        return self._ModelServiceRefs
+
+    @ModelServiceRefs.setter
+    def ModelServiceRefs(self, ModelServiceRefs):
+        self._ModelServiceRefs = ModelServiceRefs
+
+    @property
+    def ModelServiceNames(self):
+        r"""<p>目标模型服务名，查询的时候会填充</p>
+        :rtype: list of str
+        """
+        return self._ModelServiceNames
+
+    @ModelServiceNames.setter
+    def ModelServiceNames(self, ModelServiceNames):
+        self._ModelServiceNames = ModelServiceNames
+
+    @property
+    def SelectedTypes(self):
+        r"""<p>路由方法</p><p>枚举值：</p><ul><li>Weighted： 权重路由</li><li>ModelName： 按模型名称路由</li></ul>
+        :rtype: list of str
+        """
+        return self._SelectedTypes
+
+    @SelectedTypes.setter
+    def SelectedTypes(self, SelectedTypes):
+        self._SelectedTypes = SelectedTypes
+
+    @property
+    def WeightedConfig(self):
+        r"""<p>权重路由配置</p>
+        :rtype: list of CloudNativeAPIGatewayLLMModelServiceRouteWeightedStrategy
+        """
+        return self._WeightedConfig
+
+    @WeightedConfig.setter
+    def WeightedConfig(self, WeightedConfig):
+        self._WeightedConfig = WeightedConfig
+
+    @property
+    def ModelNameConfig(self):
+        r"""<p>模型名称路由权重</p>
+        :rtype: list of CloudNativeAPIGatewayLLMModelServiceRouteModelNameStrategy
+        """
+        return self._ModelNameConfig
+
+    @ModelNameConfig.setter
+    def ModelNameConfig(self, ModelNameConfig):
+        self._ModelNameConfig = ModelNameConfig
+
+
+    def _deserialize(self, params):
+        self._Enabled = params.get("Enabled")
+        self._ModelServiceRefs = params.get("ModelServiceRefs")
+        self._ModelServiceNames = params.get("ModelServiceNames")
+        self._SelectedTypes = params.get("SelectedTypes")
+        if params.get("WeightedConfig") is not None:
+            self._WeightedConfig = []
+            for item in params.get("WeightedConfig"):
+                obj = CloudNativeAPIGatewayLLMModelServiceRouteWeightedStrategy()
+                obj._deserialize(item)
+                self._WeightedConfig.append(obj)
+        if params.get("ModelNameConfig") is not None:
+            self._ModelNameConfig = []
+            for item in params.get("ModelNameConfig"):
+                obj = CloudNativeAPIGatewayLLMModelServiceRouteModelNameStrategy()
+                obj._deserialize(item)
+                self._ModelNameConfig.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2751,19 +3576,31 @@ class CNAPIGwConsumer(AbstractModel):
         :type CreateTime: str
         :param _ModifyTime: <p>更新时间 yyyy-MM-dd hh:mm:ss</p>
         :type ModifyTime: str
+        :param _Priority: <p>消费者优先级</p><p>枚举值：</p><ul><li>Low： 低优先级</li><li>Medium： 中优先级</li><li>High： 高优先级</li></ul>
+        :type Priority: str
         :param _Description: <p>描述</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Description: str
         :param _ConsumerGroups: <p>消费者分组</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ConsumerGroups: list of CNAPIGwConsumerGroup
+        :param _SyncStatus: <p>同步状态</p><p>枚举值：</p><ul><li>Success： 成功</li><li>Fail： 失败</li></ul>
+        :type SyncStatus: str
+        :param _SourceType: <p>资源类型</p><p>枚举值：</p><ul><li>Public： 公共</li><li>Private： 私有</li><li>SourceDeleted： 已删除</li></ul>
+        :type SourceType: str
+        :param _SyncedVersion: <p>同步版本</p>
+        :type SyncedVersion: str
         """
         self._ConsumerId = None
         self._Name = None
         self._CreateTime = None
         self._ModifyTime = None
+        self._Priority = None
         self._Description = None
         self._ConsumerGroups = None
+        self._SyncStatus = None
+        self._SourceType = None
+        self._SyncedVersion = None
 
     @property
     def ConsumerId(self):
@@ -2810,6 +3647,17 @@ class CNAPIGwConsumer(AbstractModel):
         self._ModifyTime = ModifyTime
 
     @property
+    def Priority(self):
+        r"""<p>消费者优先级</p><p>枚举值：</p><ul><li>Low： 低优先级</li><li>Medium： 中优先级</li><li>High： 高优先级</li></ul>
+        :rtype: str
+        """
+        return self._Priority
+
+    @Priority.setter
+    def Priority(self, Priority):
+        self._Priority = Priority
+
+    @property
     def Description(self):
         r"""<p>描述</p>
 注意：此字段可能返回 null，表示取不到有效值。
@@ -2833,12 +3681,46 @@ class CNAPIGwConsumer(AbstractModel):
     def ConsumerGroups(self, ConsumerGroups):
         self._ConsumerGroups = ConsumerGroups
 
+    @property
+    def SyncStatus(self):
+        r"""<p>同步状态</p><p>枚举值：</p><ul><li>Success： 成功</li><li>Fail： 失败</li></ul>
+        :rtype: str
+        """
+        return self._SyncStatus
+
+    @SyncStatus.setter
+    def SyncStatus(self, SyncStatus):
+        self._SyncStatus = SyncStatus
+
+    @property
+    def SourceType(self):
+        r"""<p>资源类型</p><p>枚举值：</p><ul><li>Public： 公共</li><li>Private： 私有</li><li>SourceDeleted： 已删除</li></ul>
+        :rtype: str
+        """
+        return self._SourceType
+
+    @SourceType.setter
+    def SourceType(self, SourceType):
+        self._SourceType = SourceType
+
+    @property
+    def SyncedVersion(self):
+        r"""<p>同步版本</p>
+        :rtype: str
+        """
+        return self._SyncedVersion
+
+    @SyncedVersion.setter
+    def SyncedVersion(self, SyncedVersion):
+        self._SyncedVersion = SyncedVersion
+
 
     def _deserialize(self, params):
         self._ConsumerId = params.get("ConsumerId")
         self._Name = params.get("Name")
         self._CreateTime = params.get("CreateTime")
         self._ModifyTime = params.get("ModifyTime")
+        self._Priority = params.get("Priority")
         self._Description = params.get("Description")
         if params.get("ConsumerGroups") is not None:
             self._ConsumerGroups = []
@@ -2846,6 +3728,9 @@ class CNAPIGwConsumer(AbstractModel):
                 obj = CNAPIGwConsumerGroup()
                 obj._deserialize(item)
                 self._ConsumerGroups.append(obj)
+        self._SyncStatus = params.get("SyncStatus")
+        self._SourceType = params.get("SourceType")
+        self._SyncedVersion = params.get("SyncedVersion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2863,21 +3748,27 @@ class CNAPIGwConsumerGroup(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ConsumerGroupId: 分组id
+        :param _ConsumerGroupId: <p>分组id</p>
         :type ConsumerGroupId: str
-        :param _Name: 名字
+        :param _Name: <p>名字</p>
         :type Name: str
-        :param _Status: 状态Disable/Enable
+        :param _Status: <p>状态Disable/Enable</p>
         :type Status: str
-        :param _Description: 描述
+        :param _Description: <p>描述</p>
         :type Description: str
-        :param _CreateTime: 创建时间
+        :param _CreateTime: <p>创建时间</p>
         :type CreateTime: str
-        :param _ModifyTime: 更新时间 yyyy-MM-dd hh:mm:ss
+        :param _ModifyTime: <p>更新时间 yyyy-MM-dd hh:mm:ss</p>
         :type ModifyTime: str
-        :param _BindCount: 绑定的消费者数量
+        :param _BindCount: <p>绑定的消费者数量</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type BindCount: int
+        :param _SyncStatus: <p>同步状态</p><p>枚举值：</p><ul><li>Fail： 失败</li></ul>
+        :type SyncStatus: str
+        :param _SourceType: <p>资源类型</p><p>枚举值：</p><ul><li>Public： 公有</li></ul>
+        :type SourceType: str
+        :param _SyncedVersion: <p>同步版本</p>
+        :type SyncedVersion: str
         """
         self._ConsumerGroupId = None
         self._Name = None
@@ -2886,10 +3777,13 @@ class CNAPIGwConsumerGroup(AbstractModel):
         self._CreateTime = None
         self._ModifyTime = None
         self._BindCount = None
+        self._SyncStatus = None
+        self._SourceType = None
+        self._SyncedVersion = None
 
     @property
     def ConsumerGroupId(self):
-        r"""分组id
+        r"""<p>分组id</p>
         :rtype: str
         """
         return self._ConsumerGroupId
@@ -2900,7 +3794,7 @@ class CNAPIGwConsumerGroup(AbstractModel):
 
     @property
     def Name(self):
-        r"""名字
+        r"""<p>名字</p>
         :rtype: str
         """
         return self._Name
@@ -2911,7 +3805,7 @@ class CNAPIGwConsumerGroup(AbstractModel):
 
     @property
     def Status(self):
-        r"""状态Disable/Enable
+        r"""<p>状态Disable/Enable</p>
         :rtype: str
         """
         return self._Status
@@ -2922,7 +3816,7 @@ class CNAPIGwConsumerGroup(AbstractModel):
 
     @property
     def Description(self):
-        r"""描述
+        r"""<p>描述</p>
         :rtype: str
         """
         return self._Description
@@ -2933,7 +3827,7 @@ class CNAPIGwConsumerGroup(AbstractModel):
 
     @property
     def CreateTime(self):
-        r"""创建时间
+        r"""<p>创建时间</p>
         :rtype: str
         """
         return self._CreateTime
@@ -2944,7 +3838,7 @@ class CNAPIGwConsumerGroup(AbstractModel):
 
     @property
     def ModifyTime(self):
-        r"""更新时间 yyyy-MM-dd hh:mm:ss
+        r"""<p>更新时间 yyyy-MM-dd hh:mm:ss</p>
         :rtype: str
         """
         return self._ModifyTime
@@ -2955,7 +3849,7 @@ class CNAPIGwConsumerGroup(AbstractModel):
 
     @property
     def BindCount(self):
-        r"""绑定的消费者数量
+        r"""<p>绑定的消费者数量</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -2964,6 +3858,39 @@ class CNAPIGwConsumerGroup(AbstractModel):
     @BindCount.setter
     def BindCount(self, BindCount):
         self._BindCount = BindCount
+
+    @property
+    def SyncStatus(self):
+        r"""<p>同步状态</p><p>枚举值：</p><ul><li>Fail： 失败</li></ul>
+        :rtype: str
+        """
+        return self._SyncStatus
+
+    @SyncStatus.setter
+    def SyncStatus(self, SyncStatus):
+        self._SyncStatus = SyncStatus
+
+    @property
+    def SourceType(self):
+        r"""<p>资源类型</p><p>枚举值：</p><ul><li>Public： 公有</li></ul>
+        :rtype: str
+        """
+        return self._SourceType
+
+    @SourceType.setter
+    def SourceType(self, SourceType):
+        self._SourceType = SourceType
+
+    @property
+    def SyncedVersion(self):
+        r"""<p>同步版本</p>
+        :rtype: str
+        """
+        return self._SyncedVersion
+
+    @SyncedVersion.setter
+    def SyncedVersion(self, SyncedVersion):
+        self._SyncedVersion = SyncedVersion
 
 
     def _deserialize(self, params):
@@ -2974,6 +3901,9 @@ class CNAPIGwConsumerGroup(AbstractModel):
         self._CreateTime = params.get("CreateTime")
         self._ModifyTime = params.get("ModifyTime")
         self._BindCount = params.get("BindCount")
+        self._SyncStatus = params.get("SyncStatus")
+        self._SourceType = params.get("SourceType")
+        self._SyncedVersion = params.get("SyncedVersion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3196,6 +4126,24 @@ class CNAPIGwSecretKey(AbstractModel):
         :type OIDCCredentialConfig: :class:`tencentcloud.tse.v20201207.models.AIGWOIDCCredentialConfig`
         :param _Provider: <p>secret key provider方</p><p>枚举值：</p><ul><li>Dify： Dify</li></ul>
         :type Provider: str
+        :param _AKSKCredentialConfig: <p>AK/SK凭证配置</p>
+        :type AKSKCredentialConfig: :class:`tencentcloud.tse.v20201207.models.AIGWAKSKCredentialConfig`
+        :param _CAMCredentialConfig: <p>CAM凭证配置</p>
+        :type CAMCredentialConfig: :class:`tencentcloud.tse.v20201207.models.AIGWCAMCredentialConfig`
+        :param _BearerTokenCredentialConfig: <p>Bearer Token凭证配置</p>
+        :type BearerTokenCredentialConfig: :class:`tencentcloud.tse.v20201207.models.AIGWBearerTokenCredentialConfig`
+        :param _BasicCredentialConfig: <p>Basic Auth凭证配置</p>
+        :type BasicCredentialConfig: :class:`tencentcloud.tse.v20201207.models.AIGWBasicCredentialConfig`
+        :param _CustomHeaderCredentialConfig: <p>自定义Header凭证配置</p>
+        :type CustomHeaderCredentialConfig: :class:`tencentcloud.tse.v20201207.models.AIGWCustomHeaderCredentialConfig`
+        :param _QueryParamCredentialConfig: <p>自定义Query参数凭证配置</p>
+        :type QueryParamCredentialConfig: :class:`tencentcloud.tse.v20201207.models.AIGWQueryParamCredentialConfig`
+        :param _SyncStatus: <p>同步状态</p>
+        :type SyncStatus: str
+        :param _SourceType: <p>来源类型</p>
+        :type SourceType: str
+        :param _SyncedVersion: <p>已同步版本</p>
+        :type SyncedVersion: str
         """
         self._SecretKeyId = None
         self._Name = None
@@ -3215,6 +4163,15 @@ class CNAPIGwSecretKey(AbstractModel):
         self._OAuthCredentialConfig = None
         self._OIDCCredentialConfig = None
         self._Provider = None
+        self._AKSKCredentialConfig = None
+        self._CAMCredentialConfig = None
+        self._BearerTokenCredentialConfig = None
+        self._BasicCredentialConfig = None
+        self._CustomHeaderCredentialConfig = None
+        self._QueryParamCredentialConfig = None
+        self._SyncStatus = None
+        self._SourceType = None
+        self._SyncedVersion = None
 
     @property
     def SecretKeyId(self):
@@ -3418,6 +4375,105 @@ class CNAPIGwSecretKey(AbstractModel):
     def Provider(self, Provider):
         self._Provider = Provider
 
+    @property
+    def AKSKCredentialConfig(self):
+        r"""<p>AK/SK凭证配置</p>
+        :rtype: :class:`tencentcloud.tse.v20201207.models.AIGWAKSKCredentialConfig`
+        """
+        return self._AKSKCredentialConfig
+
+    @AKSKCredentialConfig.setter
+    def AKSKCredentialConfig(self, AKSKCredentialConfig):
+        self._AKSKCredentialConfig = AKSKCredentialConfig
+
+    @property
+    def CAMCredentialConfig(self):
+        r"""<p>CAM凭证配置</p>
+        :rtype: :class:`tencentcloud.tse.v20201207.models.AIGWCAMCredentialConfig`
+        """
+        return self._CAMCredentialConfig
+
+    @CAMCredentialConfig.setter
+    def CAMCredentialConfig(self, CAMCredentialConfig):
+        self._CAMCredentialConfig = CAMCredentialConfig
+
+    @property
+    def BearerTokenCredentialConfig(self):
+        r"""<p>Bearer Token凭证配置</p>
+        :rtype: :class:`tencentcloud.tse.v20201207.models.AIGWBearerTokenCredentialConfig`
+        """
+        return self._BearerTokenCredentialConfig
+
+    @BearerTokenCredentialConfig.setter
+    def BearerTokenCredentialConfig(self, BearerTokenCredentialConfig):
+        self._BearerTokenCredentialConfig = BearerTokenCredentialConfig
+
+    @property
+    def BasicCredentialConfig(self):
+        r"""<p>Basic Auth凭证配置</p>
+        :rtype: :class:`tencentcloud.tse.v20201207.models.AIGWBasicCredentialConfig`
+        """
+        return self._BasicCredentialConfig
+
+    @BasicCredentialConfig.setter
+    def BasicCredentialConfig(self, BasicCredentialConfig):
+        self._BasicCredentialConfig = BasicCredentialConfig
+
+    @property
+    def CustomHeaderCredentialConfig(self):
+        r"""<p>自定义Header凭证配置</p>
+        :rtype: :class:`tencentcloud.tse.v20201207.models.AIGWCustomHeaderCredentialConfig`
+        """
+        return self._CustomHeaderCredentialConfig
+
+    @CustomHeaderCredentialConfig.setter
+    def CustomHeaderCredentialConfig(self, CustomHeaderCredentialConfig):
+        self._CustomHeaderCredentialConfig = CustomHeaderCredentialConfig
+
+    @property
+    def QueryParamCredentialConfig(self):
+        r"""<p>自定义Query参数凭证配置</p>
+        :rtype: :class:`tencentcloud.tse.v20201207.models.AIGWQueryParamCredentialConfig`
+        """
+        return self._QueryParamCredentialConfig
+
+    @QueryParamCredentialConfig.setter
+    def QueryParamCredentialConfig(self, QueryParamCredentialConfig):
+        self._QueryParamCredentialConfig = QueryParamCredentialConfig
+
+    @property
+    def SyncStatus(self):
+        r"""<p>同步状态</p>
+        :rtype: str
+        """
+        return self._SyncStatus
+
+    @SyncStatus.setter
+    def SyncStatus(self, SyncStatus):
+        self._SyncStatus = SyncStatus
+
+    @property
+    def SourceType(self):
+        r"""<p>来源类型</p>
+        :rtype: str
+        """
+        return self._SourceType
+
+    @SourceType.setter
+    def SourceType(self, SourceType):
+        self._SourceType = SourceType
+
+    @property
+    def SyncedVersion(self):
+        r"""<p>已同步版本</p>
+        :rtype: str
+        """
+        return self._SyncedVersion
+
+    @SyncedVersion.setter
+    def SyncedVersion(self, SyncedVersion):
+        self._SyncedVersion = SyncedVersion
+
 
     def _deserialize(self, params):
         self._SecretKeyId = params.get("SecretKeyId")
@@ -3444,6 +4500,27 @@ class CNAPIGwSecretKey(AbstractModel):
             self._OIDCCredentialConfig = AIGWOIDCCredentialConfig()
             self._OIDCCredentialConfig._deserialize(params.get("OIDCCredentialConfig"))
         self._Provider = params.get("Provider")
+        if params.get("AKSKCredentialConfig") is not None:
+            self._AKSKCredentialConfig = AIGWAKSKCredentialConfig()
+            self._AKSKCredentialConfig._deserialize(params.get("AKSKCredentialConfig"))
+        if params.get("CAMCredentialConfig") is not None:
+            self._CAMCredentialConfig = AIGWCAMCredentialConfig()
+            self._CAMCredentialConfig._deserialize(params.get("CAMCredentialConfig"))
+        if params.get("BearerTokenCredentialConfig") is not None:
+            self._BearerTokenCredentialConfig = AIGWBearerTokenCredentialConfig()
+            self._BearerTokenCredentialConfig._deserialize(params.get("BearerTokenCredentialConfig"))
+        if params.get("BasicCredentialConfig") is not None:
+            self._BasicCredentialConfig = AIGWBasicCredentialConfig()
+            self._BasicCredentialConfig._deserialize(params.get("BasicCredentialConfig"))
+        if params.get("CustomHeaderCredentialConfig") is not None:
+            self._CustomHeaderCredentialConfig = AIGWCustomHeaderCredentialConfig()
+            self._CustomHeaderCredentialConfig._deserialize(params.get("CustomHeaderCredentialConfig"))
+        if params.get("QueryParamCredentialConfig") is not None:
+            self._QueryParamCredentialConfig = AIGWQueryParamCredentialConfig()
+            self._QueryParamCredentialConfig._deserialize(params.get("QueryParamCredentialConfig"))
+        self._SyncStatus = params.get("SyncStatus")
+        self._SourceType = params.get("SourceType")
+        self._SyncedVersion = params.get("SyncedVersion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4628,6 +5705,14 @@ class CloudNativeAPIGatewayLLMModelAPI(AbstractModel):
         :type LogDesensitizeConfig: :class:`tencentcloud.tse.v20201207.models.AIGWLogDesensitizeConfig`
         :param _ForwardDesensitizeConfig: <p>转发脱敏规则</p>
         :type ForwardDesensitizeConfig: :class:`tencentcloud.tse.v20201207.models.AIGWForwardDesensitizeConfig`
+        :param _MaxDocumentsConfig: <p>Rerank场景最大文档数限制配置</p>
+        :type MaxDocumentsConfig: :class:`tencentcloud.tse.v20201207.models.AIGWRerankMaxDocumentsConfig`
+        :param _SensitiveWordRoute: <p>敏感词路由配置</p>
+        :type SensitiveWordRoute: :class:`tencentcloud.tse.v20201207.models.AIGWSensitiveWordRoute`
+        :param _ConsumerGroupModelScopes: <p>消费者组的授权模型范围</p>
+        :type ConsumerGroupModelScopes: list of AIGWAuthModelScopeItem
+        :param _ConsumerInheritModelScope: <p>继承自消费者组的授权模型范围</p>
+        :type ConsumerInheritModelScope: :class:`tencentcloud.tse.v20201207.models.AIGWConsumerModelScope`
         """
         self._Id = None
         self._CreateTime = None
@@ -4650,6 +5735,10 @@ class CloudNativeAPIGatewayLLMModelAPI(AbstractModel):
         self._LogConfig = None
         self._LogDesensitizeConfig = None
         self._ForwardDesensitizeConfig = None
+        self._MaxDocumentsConfig = None
+        self._SensitiveWordRoute = None
+        self._ConsumerGroupModelScopes = None
+        self._ConsumerInheritModelScope = None
 
     @property
     def Id(self):
@@ -4882,6 +5971,50 @@ class CloudNativeAPIGatewayLLMModelAPI(AbstractModel):
     def ForwardDesensitizeConfig(self, ForwardDesensitizeConfig):
         self._ForwardDesensitizeConfig = ForwardDesensitizeConfig
 
+    @property
+    def MaxDocumentsConfig(self):
+        r"""<p>Rerank场景最大文档数限制配置</p>
+        :rtype: :class:`tencentcloud.tse.v20201207.models.AIGWRerankMaxDocumentsConfig`
+        """
+        return self._MaxDocumentsConfig
+
+    @MaxDocumentsConfig.setter
+    def MaxDocumentsConfig(self, MaxDocumentsConfig):
+        self._MaxDocumentsConfig = MaxDocumentsConfig
+
+    @property
+    def SensitiveWordRoute(self):
+        r"""<p>敏感词路由配置</p>
+        :rtype: :class:`tencentcloud.tse.v20201207.models.AIGWSensitiveWordRoute`
+        """
+        return self._SensitiveWordRoute
+
+    @SensitiveWordRoute.setter
+    def SensitiveWordRoute(self, SensitiveWordRoute):
+        self._SensitiveWordRoute = SensitiveWordRoute
+
+    @property
+    def ConsumerGroupModelScopes(self):
+        r"""<p>消费者组的授权模型范围</p>
+        :rtype: list of AIGWAuthModelScopeItem
+        """
+        return self._ConsumerGroupModelScopes
+
+    @ConsumerGroupModelScopes.setter
+    def ConsumerGroupModelScopes(self, ConsumerGroupModelScopes):
+        self._ConsumerGroupModelScopes = ConsumerGroupModelScopes
+
+    @property
+    def ConsumerInheritModelScope(self):
+        r"""<p>继承自消费者组的授权模型范围</p>
+        :rtype: :class:`tencentcloud.tse.v20201207.models.AIGWConsumerModelScope`
+        """
+        return self._ConsumerInheritModelScope
+
+    @ConsumerInheritModelScope.setter
+    def ConsumerInheritModelScope(self, ConsumerInheritModelScope):
+        self._ConsumerInheritModelScope = ConsumerInheritModelScope
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
@@ -4927,6 +6060,21 @@ class CloudNativeAPIGatewayLLMModelAPI(AbstractModel):
         if params.get("ForwardDesensitizeConfig") is not None:
             self._ForwardDesensitizeConfig = AIGWForwardDesensitizeConfig()
             self._ForwardDesensitizeConfig._deserialize(params.get("ForwardDesensitizeConfig"))
+        if params.get("MaxDocumentsConfig") is not None:
+            self._MaxDocumentsConfig = AIGWRerankMaxDocumentsConfig()
+            self._MaxDocumentsConfig._deserialize(params.get("MaxDocumentsConfig"))
+        if params.get("SensitiveWordRoute") is not None:
+            self._SensitiveWordRoute = AIGWSensitiveWordRoute()
+            self._SensitiveWordRoute._deserialize(params.get("SensitiveWordRoute"))
+        if params.get("ConsumerGroupModelScopes") is not None:
+            self._ConsumerGroupModelScopes = []
+            for item in params.get("ConsumerGroupModelScopes"):
+                obj = AIGWAuthModelScopeItem()
+                obj._deserialize(item)
+                self._ConsumerGroupModelScopes.append(obj)
+        if params.get("ConsumerInheritModelScope") is not None:
+            self._ConsumerInheritModelScope = AIGWConsumerModelScope()
+            self._ConsumerInheritModelScope._deserialize(params.get("ConsumerInheritModelScope"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5099,6 +6247,24 @@ class CloudNativeAPIGatewayLLMModelService(AbstractModel):
         :type KeyRotationPeriodDays: int
         :param _ExternalInstanceId: <p>外部服务来源ID</p>
         :type ExternalInstanceId: str
+        :param _LoadBalanceConfig: <p>负载均衡配置</p>
+        :type LoadBalanceConfig: :class:`tencentcloud.tse.v20201207.models.AIGWLoadBalanceConfig`
+        :param _PublishStatus: <p>模型服务是否发布到广场</p><p>枚举值：</p><ul><li>Published： 已发布</li><li>Unpublished： 未发布</li></ul>
+        :type PublishStatus: str
+        :param _CanPublish: <p>模型服务是否可以发布</p>
+        :type CanPublish: bool
+        :param _SyncStatus: <p>同步状态</p><p>枚举值：</p><ul><li>Fail： 失败</li><li>Success： 成功</li></ul>
+        :type SyncStatus: str
+        :param _SourceType: <p>资源类型</p><p>枚举值：</p><ul><li>Public： 公共</li><li>Private： 私有</li><li>SourceDelete： 资源删除</li></ul>
+        :type SourceType: str
+        :param _SyncedVersion: <p>同步版本</p>
+        :type SyncedVersion: str
+        :param _Status: <p>健康状态</p><p>枚举值：</p><ul><li>Error： 异常</li></ul>
+        :type Status: str
+        :param _EnableHealthCheck: <p>是否开启健康检查</p>
+        :type EnableHealthCheck: bool
+        :param _HealthCheck: <p>健康检查配置</p>
+        :type HealthCheck: :class:`tencentcloud.tse.v20201207.models.AIGWLLMHealthCheckSetting`
         """
         self._Id = None
         self._Name = None
@@ -5134,6 +6300,15 @@ class CloudNativeAPIGatewayLLMModelService(AbstractModel):
         self._KeyRotationEnabled = None
         self._KeyRotationPeriodDays = None
         self._ExternalInstanceId = None
+        self._LoadBalanceConfig = None
+        self._PublishStatus = None
+        self._CanPublish = None
+        self._SyncStatus = None
+        self._SourceType = None
+        self._SyncedVersion = None
+        self._Status = None
+        self._EnableHealthCheck = None
+        self._HealthCheck = None
 
     @property
     def Id(self):
@@ -5509,6 +6684,105 @@ class CloudNativeAPIGatewayLLMModelService(AbstractModel):
     def ExternalInstanceId(self, ExternalInstanceId):
         self._ExternalInstanceId = ExternalInstanceId
 
+    @property
+    def LoadBalanceConfig(self):
+        r"""<p>负载均衡配置</p>
+        :rtype: :class:`tencentcloud.tse.v20201207.models.AIGWLoadBalanceConfig`
+        """
+        return self._LoadBalanceConfig
+
+    @LoadBalanceConfig.setter
+    def LoadBalanceConfig(self, LoadBalanceConfig):
+        self._LoadBalanceConfig = LoadBalanceConfig
+
+    @property
+    def PublishStatus(self):
+        r"""<p>模型服务是否发布到广场</p><p>枚举值：</p><ul><li>Published： 已发布</li><li>Unpublished： 未发布</li></ul>
+        :rtype: str
+        """
+        return self._PublishStatus
+
+    @PublishStatus.setter
+    def PublishStatus(self, PublishStatus):
+        self._PublishStatus = PublishStatus
+
+    @property
+    def CanPublish(self):
+        r"""<p>模型服务是否可以发布</p>
+        :rtype: bool
+        """
+        return self._CanPublish
+
+    @CanPublish.setter
+    def CanPublish(self, CanPublish):
+        self._CanPublish = CanPublish
+
+    @property
+    def SyncStatus(self):
+        r"""<p>同步状态</p><p>枚举值：</p><ul><li>Fail： 失败</li><li>Success： 成功</li></ul>
+        :rtype: str
+        """
+        return self._SyncStatus
+
+    @SyncStatus.setter
+    def SyncStatus(self, SyncStatus):
+        self._SyncStatus = SyncStatus
+
+    @property
+    def SourceType(self):
+        r"""<p>资源类型</p><p>枚举值：</p><ul><li>Public： 公共</li><li>Private： 私有</li><li>SourceDelete： 资源删除</li></ul>
+        :rtype: str
+        """
+        return self._SourceType
+
+    @SourceType.setter
+    def SourceType(self, SourceType):
+        self._SourceType = SourceType
+
+    @property
+    def SyncedVersion(self):
+        r"""<p>同步版本</p>
+        :rtype: str
+        """
+        return self._SyncedVersion
+
+    @SyncedVersion.setter
+    def SyncedVersion(self, SyncedVersion):
+        self._SyncedVersion = SyncedVersion
+
+    @property
+    def Status(self):
+        r"""<p>健康状态</p><p>枚举值：</p><ul><li>Error： 异常</li></ul>
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def EnableHealthCheck(self):
+        r"""<p>是否开启健康检查</p>
+        :rtype: bool
+        """
+        return self._EnableHealthCheck
+
+    @EnableHealthCheck.setter
+    def EnableHealthCheck(self, EnableHealthCheck):
+        self._EnableHealthCheck = EnableHealthCheck
+
+    @property
+    def HealthCheck(self):
+        r"""<p>健康检查配置</p>
+        :rtype: :class:`tencentcloud.tse.v20201207.models.AIGWLLMHealthCheckSetting`
+        """
+        return self._HealthCheck
+
+    @HealthCheck.setter
+    def HealthCheck(self, HealthCheck):
+        self._HealthCheck = HealthCheck
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
@@ -5561,6 +6835,19 @@ class CloudNativeAPIGatewayLLMModelService(AbstractModel):
         self._KeyRotationEnabled = params.get("KeyRotationEnabled")
         self._KeyRotationPeriodDays = params.get("KeyRotationPeriodDays")
         self._ExternalInstanceId = params.get("ExternalInstanceId")
+        if params.get("LoadBalanceConfig") is not None:
+            self._LoadBalanceConfig = AIGWLoadBalanceConfig()
+            self._LoadBalanceConfig._deserialize(params.get("LoadBalanceConfig"))
+        self._PublishStatus = params.get("PublishStatus")
+        self._CanPublish = params.get("CanPublish")
+        self._SyncStatus = params.get("SyncStatus")
+        self._SourceType = params.get("SourceType")
+        self._SyncedVersion = params.get("SyncedVersion")
+        self._Status = params.get("Status")
+        self._EnableHealthCheck = params.get("EnableHealthCheck")
+        if params.get("HealthCheck") is not None:
+            self._HealthCheck = AIGWLLMHealthCheckSetting()
+            self._HealthCheck._deserialize(params.get("HealthCheck"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -9338,29 +10625,35 @@ class CreateCloudNativeAPIGatewayCertificateRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _GatewayId: 网关ID
+        :param _GatewayId: <p>网关ID</p>
         :type GatewayId: str
-        :param _BindDomains: 绑定的域名
-        :type BindDomains: list of str
-        :param _CertId: ssl平台证书 Id
+        :param _CertId: <p>ssl平台证书 Id</p>
         :type CertId: str
-        :param _Name: 证书名称
+        :param _BindDomains: <p>绑定的域名</p>
+        :type BindDomains: list of str
+        :param _Name: <p>证书名称</p>
         :type Name: str
-        :param _Key: 证书私钥
+        :param _CertType: <p>证书类型</p><p>枚举值：</p><ul><li>SVR： 服务证书</li><li>CA： CA证书</li></ul>
+        :type CertType: str
+        :param _CertUsage: <p>证书用途</p><p>枚举值：</p><ul><li>SERVER： 用作服务端证书</li><li>CLIENT： 用作客户端证书</li></ul>
+        :type CertUsage: str
+        :param _Key: <p>证书私钥</p>
         :type Key: str
-        :param _Crt: 证书pem格式
+        :param _Crt: <p>证书pem格式</p>
         :type Crt: str
         """
         self._GatewayId = None
-        self._BindDomains = None
         self._CertId = None
+        self._BindDomains = None
         self._Name = None
+        self._CertType = None
+        self._CertUsage = None
         self._Key = None
         self._Crt = None
 
     @property
     def GatewayId(self):
-        r"""网关ID
+        r"""<p>网关ID</p>
         :rtype: str
         """
         return self._GatewayId
@@ -9370,19 +10663,8 @@ class CreateCloudNativeAPIGatewayCertificateRequest(AbstractModel):
         self._GatewayId = GatewayId
 
     @property
-    def BindDomains(self):
-        r"""绑定的域名
-        :rtype: list of str
-        """
-        return self._BindDomains
-
-    @BindDomains.setter
-    def BindDomains(self, BindDomains):
-        self._BindDomains = BindDomains
-
-    @property
     def CertId(self):
-        r"""ssl平台证书 Id
+        r"""<p>ssl平台证书 Id</p>
         :rtype: str
         """
         return self._CertId
@@ -9392,8 +10674,19 @@ class CreateCloudNativeAPIGatewayCertificateRequest(AbstractModel):
         self._CertId = CertId
 
     @property
+    def BindDomains(self):
+        r"""<p>绑定的域名</p>
+        :rtype: list of str
+        """
+        return self._BindDomains
+
+    @BindDomains.setter
+    def BindDomains(self, BindDomains):
+        self._BindDomains = BindDomains
+
+    @property
     def Name(self):
-        r"""证书名称
+        r"""<p>证书名称</p>
         :rtype: str
         """
         return self._Name
@@ -9403,10 +10696,32 @@ class CreateCloudNativeAPIGatewayCertificateRequest(AbstractModel):
         self._Name = Name
 
     @property
+    def CertType(self):
+        r"""<p>证书类型</p><p>枚举值：</p><ul><li>SVR： 服务证书</li><li>CA： CA证书</li></ul>
+        :rtype: str
+        """
+        return self._CertType
+
+    @CertType.setter
+    def CertType(self, CertType):
+        self._CertType = CertType
+
+    @property
+    def CertUsage(self):
+        r"""<p>证书用途</p><p>枚举值：</p><ul><li>SERVER： 用作服务端证书</li><li>CLIENT： 用作客户端证书</li></ul>
+        :rtype: str
+        """
+        return self._CertUsage
+
+    @CertUsage.setter
+    def CertUsage(self, CertUsage):
+        self._CertUsage = CertUsage
+
+    @property
     def Key(self):
         warnings.warn("parameter `Key` is deprecated", DeprecationWarning) 
 
-        r"""证书私钥
+        r"""<p>证书私钥</p>
         :rtype: str
         """
         return self._Key
@@ -9421,7 +10736,7 @@ class CreateCloudNativeAPIGatewayCertificateRequest(AbstractModel):
     def Crt(self):
         warnings.warn("parameter `Crt` is deprecated", DeprecationWarning) 
 
-        r"""证书pem格式
+        r"""<p>证书pem格式</p>
         :rtype: str
         """
         return self._Crt
@@ -9435,9 +10750,11 @@ class CreateCloudNativeAPIGatewayCertificateRequest(AbstractModel):
 
     def _deserialize(self, params):
         self._GatewayId = params.get("GatewayId")
-        self._BindDomains = params.get("BindDomains")
         self._CertId = params.get("CertId")
+        self._BindDomains = params.get("BindDomains")
         self._Name = params.get("Name")
+        self._CertType = params.get("CertType")
+        self._CertUsage = params.get("CertUsage")
         self._Key = params.get("Key")
         self._Crt = params.get("Crt")
         memeber_set = set(params.keys())
@@ -9457,7 +10774,7 @@ class CreateCloudNativeAPIGatewayCertificateResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Result: 创建证书结果
+        :param _Result: <p>创建证书结果</p>
         :type Result: :class:`tencentcloud.tse.v20201207.models.CertificateInfo`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -9467,7 +10784,7 @@ class CreateCloudNativeAPIGatewayCertificateResponse(AbstractModel):
 
     @property
     def Result(self):
-        r"""创建证书结果
+        r"""<p>创建证书结果</p>
         :rtype: :class:`tencentcloud.tse.v20201207.models.CertificateInfo`
         """
         return self._Result
@@ -9628,20 +10945,23 @@ class CreateCloudNativeAPIGatewayConsumerRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _GatewayId: 网关实例id
+        :param _GatewayId: <p>网关实例id</p>
         :type GatewayId: str
         :param _Name: <p>消费者名称，最长 60 字符。同一网关下唯一。</p>
         :type Name: str
+        :param _Priority: <p>消费者优先级，默认medium</p><p>枚举值：</p><ul><li>Low： 低优先级</li><li>Medium： 中优先级</li><li>High： 高优先级</li></ul>
+        :type Priority: str
         :param _Description: <p>消费者描述。最长 200 字符。</p>
         :type Description: str
         """
         self._GatewayId = None
         self._Name = None
+        self._Priority = None
         self._Description = None
 
     @property
     def GatewayId(self):
-        r"""网关实例id
+        r"""<p>网关实例id</p>
         :rtype: str
         """
         return self._GatewayId
@@ -9662,6 +10982,17 @@ class CreateCloudNativeAPIGatewayConsumerRequest(AbstractModel):
         self._Name = Name
 
     @property
+    def Priority(self):
+        r"""<p>消费者优先级，默认medium</p><p>枚举值：</p><ul><li>Low： 低优先级</li><li>Medium： 中优先级</li><li>High： 高优先级</li></ul>
+        :rtype: str
+        """
+        return self._Priority
+
+    @Priority.setter
+    def Priority(self, Priority):
+        self._Priority = Priority
+
+    @property
     def Description(self):
         r"""<p>消费者描述。最长 200 字符。</p>
         :rtype: str
@@ -9676,6 +11007,7 @@ class CreateCloudNativeAPIGatewayConsumerRequest(AbstractModel):
     def _deserialize(self, params):
         self._GatewayId = params.get("GatewayId")
         self._Name = params.get("Name")
+        self._Priority = params.get("Priority")
         self._Description = params.get("Description")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -9741,32 +11073,36 @@ class CreateCloudNativeAPIGatewayLLMModelAPIRequest(AbstractModel):
         r"""
         :param _GatewayId: <p>网关 id。</p>
         :type GatewayId: str
-        :param _Name: <p>模型 API 名称，最长 60 字符。同一网关下唯一。</p>
+        :param _Name: <p>AI 网关 LLM 模型 API 的唯一标识名称，格式规则：2-50 字符，支持中英文大小写、数字及分隔符（“-”、“_”)，不能以数字和分隔符开头，不能以分隔符结尾。</p>
         :type Name: str
-        :param _SceneType: <p>业务场景。</p><p>枚举值：</p><ul><li>Chat：聊天</li><li>Image：图像（需要网关版本 ≥ 3.9.3）</li></ul>
+        :param _SceneType: <p>选择业务场景,  选项：Chat（聊天）。</p>
         :type SceneType: str
-        :param _RequestProtocol: <p>请求协议（小写）。当前仅支持：</p><ul><li>openai</li></ul>
+        :param _RequestProtocol: <p>业务场景对应的请求协议，选项：OpenAI（目前只支持 OpenAI）。</p>
         :type RequestProtocol: str
-        :param _ListModelServiceId: <p>关联的模型服务 ID 列表，长度 1-10。</p><p>注：字段名建议改为 ModelServiceIds，当前保留用于兼容。</p>
+        :param _ListModelServiceId: <p>初始化关联的模型服务列表。</p>
         :type ListModelServiceId: list of str
-        :param _RouteList: <p>路由列表，至少 1 条。每条包含 Methods/Paths/Hosts 等 Kong 路由属性。</p>
+        :param _RouteList: <p>路由列表</p>
         :type RouteList: list of DefaultKongRoute
-        :param _BasePath: <p>统一前缀路径（可选）。例如 /v1/openai。</p>
+        :param _BasePath: <p>为API设置统一的前缀，格式：以/开头，支持字母、数字、短横线。</p>
         :type BasePath: str
-        :param _Description: <p>模型 API 描述。最长 200 字符。</p>
+        :param _Description: <p>模型 API 的相关描述。</p>
         :type Description: str
-        :param _ModelServiceRoute: <p>多模型服务路由策略。ListModelServiceId 多于 1 项时必填。</p>
+        :param _ModelServiceRoute: <p>模型服务路由策略（是指如何路由到模型服务）</p>
         :type ModelServiceRoute: :class:`tencentcloud.tse.v20201207.models.CloudNativeAPIGatewayLLMModelServiceRoute`
-        :param _MatchHeaders: <p>Header 路由匹配规则。当前仅支持 Operator=exact。</p>
+        :param _MatchHeaders: <p>路由 Header 匹配规则</p>
         :type MatchHeaders: list of AIGWKVMatch
-        :param _EnableCrossServiceFallback: <p>是否启用跨服务 Fallback。开启后需提供 CrossServiceFallbackConfig。</p>
+        :param _EnableCrossServiceFallback: <p>跨服务 fallback 开关</p>
         :type EnableCrossServiceFallback: bool
-        :param _CrossServiceFallbackConfig: <p>跨服务 Fallback 配置。EnableCrossServiceFallback=true 时必填。</p>
+        :param _CrossServiceFallbackConfig: <p>跨服务 fallback 配置</p>
         :type CrossServiceFallbackConfig: :class:`tencentcloud.tse.v20201207.models.AIGWCrossServiceFallbackConfig`
-        :param _TagFilter: <p>标签过滤策略。需要网关版本 ≥ 3.9.4。</p>
+        :param _TagFilter: <p>标签</p>
         :type TagFilter: :class:`tencentcloud.tse.v20201207.models.AIGWTagFilter`
-        :param _LogConfig: <p>日志输出配置（请求/响应 payload 落 LLM Log）。需要网关版本 ≥ 3.9.4。</p>
+        :param _LogConfig: <p>模型 API 日志配置。未传时使用默认日志配置。</p>
         :type LogConfig: :class:`tencentcloud.tse.v20201207.models.AIGWLogConfig`
+        :param _MaxDocumentsConfig: <p>Rerank场景最大文档数限制</p>
+        :type MaxDocumentsConfig: :class:`tencentcloud.tse.v20201207.models.AIGWRerankMaxDocumentsConfig`
+        :param _SensitiveWordRoute: <p>敏感词路由配置</p>
+        :type SensitiveWordRoute: :class:`tencentcloud.tse.v20201207.models.AIGWSensitiveWordRoute`
         """
         self._GatewayId = None
         self._Name = None
@@ -9782,6 +11118,8 @@ class CreateCloudNativeAPIGatewayLLMModelAPIRequest(AbstractModel):
         self._CrossServiceFallbackConfig = None
         self._TagFilter = None
         self._LogConfig = None
+        self._MaxDocumentsConfig = None
+        self._SensitiveWordRoute = None
 
     @property
     def GatewayId(self):
@@ -9796,7 +11134,7 @@ class CreateCloudNativeAPIGatewayLLMModelAPIRequest(AbstractModel):
 
     @property
     def Name(self):
-        r"""<p>模型 API 名称，最长 60 字符。同一网关下唯一。</p>
+        r"""<p>AI 网关 LLM 模型 API 的唯一标识名称，格式规则：2-50 字符，支持中英文大小写、数字及分隔符（“-”、“_”)，不能以数字和分隔符开头，不能以分隔符结尾。</p>
         :rtype: str
         """
         return self._Name
@@ -9807,7 +11145,7 @@ class CreateCloudNativeAPIGatewayLLMModelAPIRequest(AbstractModel):
 
     @property
     def SceneType(self):
-        r"""<p>业务场景。</p><p>枚举值：</p><ul><li>Chat：聊天</li><li>Image：图像（需要网关版本 ≥ 3.9.3）</li></ul>
+        r"""<p>选择业务场景,  选项：Chat（聊天）。</p>
         :rtype: str
         """
         return self._SceneType
@@ -9818,7 +11156,7 @@ class CreateCloudNativeAPIGatewayLLMModelAPIRequest(AbstractModel):
 
     @property
     def RequestProtocol(self):
-        r"""<p>请求协议（小写）。当前仅支持：</p><ul><li>openai</li></ul>
+        r"""<p>业务场景对应的请求协议，选项：OpenAI（目前只支持 OpenAI）。</p>
         :rtype: str
         """
         return self._RequestProtocol
@@ -9829,7 +11167,7 @@ class CreateCloudNativeAPIGatewayLLMModelAPIRequest(AbstractModel):
 
     @property
     def ListModelServiceId(self):
-        r"""<p>关联的模型服务 ID 列表，长度 1-10。</p><p>注：字段名建议改为 ModelServiceIds，当前保留用于兼容。</p>
+        r"""<p>初始化关联的模型服务列表。</p>
         :rtype: list of str
         """
         return self._ListModelServiceId
@@ -9840,7 +11178,7 @@ class CreateCloudNativeAPIGatewayLLMModelAPIRequest(AbstractModel):
 
     @property
     def RouteList(self):
-        r"""<p>路由列表，至少 1 条。每条包含 Methods/Paths/Hosts 等 Kong 路由属性。</p>
+        r"""<p>路由列表</p>
         :rtype: list of DefaultKongRoute
         """
         return self._RouteList
@@ -9851,7 +11189,7 @@ class CreateCloudNativeAPIGatewayLLMModelAPIRequest(AbstractModel):
 
     @property
     def BasePath(self):
-        r"""<p>统一前缀路径（可选）。例如 /v1/openai。</p>
+        r"""<p>为API设置统一的前缀，格式：以/开头，支持字母、数字、短横线。</p>
         :rtype: str
         """
         return self._BasePath
@@ -9862,7 +11200,7 @@ class CreateCloudNativeAPIGatewayLLMModelAPIRequest(AbstractModel):
 
     @property
     def Description(self):
-        r"""<p>模型 API 描述。最长 200 字符。</p>
+        r"""<p>模型 API 的相关描述。</p>
         :rtype: str
         """
         return self._Description
@@ -9873,7 +11211,7 @@ class CreateCloudNativeAPIGatewayLLMModelAPIRequest(AbstractModel):
 
     @property
     def ModelServiceRoute(self):
-        r"""<p>多模型服务路由策略。ListModelServiceId 多于 1 项时必填。</p>
+        r"""<p>模型服务路由策略（是指如何路由到模型服务）</p>
         :rtype: :class:`tencentcloud.tse.v20201207.models.CloudNativeAPIGatewayLLMModelServiceRoute`
         """
         return self._ModelServiceRoute
@@ -9884,7 +11222,7 @@ class CreateCloudNativeAPIGatewayLLMModelAPIRequest(AbstractModel):
 
     @property
     def MatchHeaders(self):
-        r"""<p>Header 路由匹配规则。当前仅支持 Operator=exact。</p>
+        r"""<p>路由 Header 匹配规则</p>
         :rtype: list of AIGWKVMatch
         """
         return self._MatchHeaders
@@ -9895,7 +11233,7 @@ class CreateCloudNativeAPIGatewayLLMModelAPIRequest(AbstractModel):
 
     @property
     def EnableCrossServiceFallback(self):
-        r"""<p>是否启用跨服务 Fallback。开启后需提供 CrossServiceFallbackConfig。</p>
+        r"""<p>跨服务 fallback 开关</p>
         :rtype: bool
         """
         return self._EnableCrossServiceFallback
@@ -9906,7 +11244,7 @@ class CreateCloudNativeAPIGatewayLLMModelAPIRequest(AbstractModel):
 
     @property
     def CrossServiceFallbackConfig(self):
-        r"""<p>跨服务 Fallback 配置。EnableCrossServiceFallback=true 时必填。</p>
+        r"""<p>跨服务 fallback 配置</p>
         :rtype: :class:`tencentcloud.tse.v20201207.models.AIGWCrossServiceFallbackConfig`
         """
         return self._CrossServiceFallbackConfig
@@ -9917,7 +11255,7 @@ class CreateCloudNativeAPIGatewayLLMModelAPIRequest(AbstractModel):
 
     @property
     def TagFilter(self):
-        r"""<p>标签过滤策略。需要网关版本 ≥ 3.9.4。</p>
+        r"""<p>标签</p>
         :rtype: :class:`tencentcloud.tse.v20201207.models.AIGWTagFilter`
         """
         return self._TagFilter
@@ -9928,7 +11266,7 @@ class CreateCloudNativeAPIGatewayLLMModelAPIRequest(AbstractModel):
 
     @property
     def LogConfig(self):
-        r"""<p>日志输出配置（请求/响应 payload 落 LLM Log）。需要网关版本 ≥ 3.9.4。</p>
+        r"""<p>模型 API 日志配置。未传时使用默认日志配置。</p>
         :rtype: :class:`tencentcloud.tse.v20201207.models.AIGWLogConfig`
         """
         return self._LogConfig
@@ -9936,6 +11274,28 @@ class CreateCloudNativeAPIGatewayLLMModelAPIRequest(AbstractModel):
     @LogConfig.setter
     def LogConfig(self, LogConfig):
         self._LogConfig = LogConfig
+
+    @property
+    def MaxDocumentsConfig(self):
+        r"""<p>Rerank场景最大文档数限制</p>
+        :rtype: :class:`tencentcloud.tse.v20201207.models.AIGWRerankMaxDocumentsConfig`
+        """
+        return self._MaxDocumentsConfig
+
+    @MaxDocumentsConfig.setter
+    def MaxDocumentsConfig(self, MaxDocumentsConfig):
+        self._MaxDocumentsConfig = MaxDocumentsConfig
+
+    @property
+    def SensitiveWordRoute(self):
+        r"""<p>敏感词路由配置</p>
+        :rtype: :class:`tencentcloud.tse.v20201207.models.AIGWSensitiveWordRoute`
+        """
+        return self._SensitiveWordRoute
+
+    @SensitiveWordRoute.setter
+    def SensitiveWordRoute(self, SensitiveWordRoute):
+        self._SensitiveWordRoute = SensitiveWordRoute
 
 
     def _deserialize(self, params):
@@ -9971,6 +11331,12 @@ class CreateCloudNativeAPIGatewayLLMModelAPIRequest(AbstractModel):
         if params.get("LogConfig") is not None:
             self._LogConfig = AIGWLogConfig()
             self._LogConfig._deserialize(params.get("LogConfig"))
+        if params.get("MaxDocumentsConfig") is not None:
+            self._MaxDocumentsConfig = AIGWRerankMaxDocumentsConfig()
+            self._MaxDocumentsConfig._deserialize(params.get("MaxDocumentsConfig"))
+        if params.get("SensitiveWordRoute") is not None:
+            self._SensitiveWordRoute = AIGWSensitiveWordRoute()
+            self._SensitiveWordRoute._deserialize(params.get("SensitiveWordRoute"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -10110,6 +11476,8 @@ class CreateCloudNativeAPIGatewayLLMModelServiceRequest(AbstractModel):
         :type KeyRotationPeriodDays: int
         :param _ExternalInstanceId: <p>外部服务来源ID</p>
         :type ExternalInstanceId: str
+        :param _LoadBalanceConfig: <p>负载均衡配置</p>
+        :type LoadBalanceConfig: :class:`tencentcloud.tse.v20201207.models.AIGWLoadBalanceConfig`
         """
         self._GatewayId = None
         self._Name = None
@@ -10143,6 +11511,7 @@ class CreateCloudNativeAPIGatewayLLMModelServiceRequest(AbstractModel):
         self._KeyRotationEnabled = None
         self._KeyRotationPeriodDays = None
         self._ExternalInstanceId = None
+        self._LoadBalanceConfig = None
 
     @property
     def GatewayId(self):
@@ -10496,6 +11865,17 @@ class CreateCloudNativeAPIGatewayLLMModelServiceRequest(AbstractModel):
     def ExternalInstanceId(self, ExternalInstanceId):
         self._ExternalInstanceId = ExternalInstanceId
 
+    @property
+    def LoadBalanceConfig(self):
+        r"""<p>负载均衡配置</p>
+        :rtype: :class:`tencentcloud.tse.v20201207.models.AIGWLoadBalanceConfig`
+        """
+        return self._LoadBalanceConfig
+
+    @LoadBalanceConfig.setter
+    def LoadBalanceConfig(self, LoadBalanceConfig):
+        self._LoadBalanceConfig = LoadBalanceConfig
+
 
     def _deserialize(self, params):
         self._GatewayId = params.get("GatewayId")
@@ -10546,6 +11926,9 @@ class CreateCloudNativeAPIGatewayLLMModelServiceRequest(AbstractModel):
         self._KeyRotationEnabled = params.get("KeyRotationEnabled")
         self._KeyRotationPeriodDays = params.get("KeyRotationPeriodDays")
         self._ExternalInstanceId = params.get("ExternalInstanceId")
+        if params.get("LoadBalanceConfig") is not None:
+            self._LoadBalanceConfig = AIGWLoadBalanceConfig()
+            self._LoadBalanceConfig._deserialize(params.get("LoadBalanceConfig"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -11592,6 +12975,18 @@ class CreateCloudNativeAPIGatewaySecretKeyRequest(AbstractModel):
         :type OAuthCredentialConfig: :class:`tencentcloud.tse.v20201207.models.AIGWOAuthCredentialConfig`
         :param _OIDCCredentialConfig: <p>OIDC凭证配置</p>
         :type OIDCCredentialConfig: :class:`tencentcloud.tse.v20201207.models.AIGWOIDCCredentialConfig`
+        :param _AKSKCredentialConfig: <p>AK/SK凭证配置</p>
+        :type AKSKCredentialConfig: :class:`tencentcloud.tse.v20201207.models.AIGWAKSKCredentialConfig`
+        :param _CAMCredentialConfig: <p>CAM凭证配置</p>
+        :type CAMCredentialConfig: :class:`tencentcloud.tse.v20201207.models.AIGWCAMCredentialConfig`
+        :param _BearerTokenCredentialConfig: <p>Bearer Token凭证配置</p>
+        :type BearerTokenCredentialConfig: :class:`tencentcloud.tse.v20201207.models.AIGWBearerTokenCredentialConfig`
+        :param _CustomHeaderCredentialConfig: <p>自定义Header凭证配置</p>
+        :type CustomHeaderCredentialConfig: :class:`tencentcloud.tse.v20201207.models.AIGWCustomHeaderCredentialConfig`
+        :param _QueryParamCredentialConfig: <p>自定义Query参数凭证配置</p>
+        :type QueryParamCredentialConfig: :class:`tencentcloud.tse.v20201207.models.AIGWQueryParamCredentialConfig`
+        :param _BasicCredentialConfig: <p>Basic Auth凭证配置</p>
+        :type BasicCredentialConfig: :class:`tencentcloud.tse.v20201207.models.AIGWBasicCredentialConfig`
         :param _Provider: <p>第三方平台类型</p><p>枚举值：</p><ul><li>Dify： Dify平台</li></ul>
         :type Provider: str
         """
@@ -11607,6 +13002,12 @@ class CreateCloudNativeAPIGatewaySecretKeyRequest(AbstractModel):
         self._JWTCredentialConfig = None
         self._OAuthCredentialConfig = None
         self._OIDCCredentialConfig = None
+        self._AKSKCredentialConfig = None
+        self._CAMCredentialConfig = None
+        self._BearerTokenCredentialConfig = None
+        self._CustomHeaderCredentialConfig = None
+        self._QueryParamCredentialConfig = None
+        self._BasicCredentialConfig = None
         self._Provider = None
 
     @property
@@ -11742,6 +13143,72 @@ class CreateCloudNativeAPIGatewaySecretKeyRequest(AbstractModel):
         self._OIDCCredentialConfig = OIDCCredentialConfig
 
     @property
+    def AKSKCredentialConfig(self):
+        r"""<p>AK/SK凭证配置</p>
+        :rtype: :class:`tencentcloud.tse.v20201207.models.AIGWAKSKCredentialConfig`
+        """
+        return self._AKSKCredentialConfig
+
+    @AKSKCredentialConfig.setter
+    def AKSKCredentialConfig(self, AKSKCredentialConfig):
+        self._AKSKCredentialConfig = AKSKCredentialConfig
+
+    @property
+    def CAMCredentialConfig(self):
+        r"""<p>CAM凭证配置</p>
+        :rtype: :class:`tencentcloud.tse.v20201207.models.AIGWCAMCredentialConfig`
+        """
+        return self._CAMCredentialConfig
+
+    @CAMCredentialConfig.setter
+    def CAMCredentialConfig(self, CAMCredentialConfig):
+        self._CAMCredentialConfig = CAMCredentialConfig
+
+    @property
+    def BearerTokenCredentialConfig(self):
+        r"""<p>Bearer Token凭证配置</p>
+        :rtype: :class:`tencentcloud.tse.v20201207.models.AIGWBearerTokenCredentialConfig`
+        """
+        return self._BearerTokenCredentialConfig
+
+    @BearerTokenCredentialConfig.setter
+    def BearerTokenCredentialConfig(self, BearerTokenCredentialConfig):
+        self._BearerTokenCredentialConfig = BearerTokenCredentialConfig
+
+    @property
+    def CustomHeaderCredentialConfig(self):
+        r"""<p>自定义Header凭证配置</p>
+        :rtype: :class:`tencentcloud.tse.v20201207.models.AIGWCustomHeaderCredentialConfig`
+        """
+        return self._CustomHeaderCredentialConfig
+
+    @CustomHeaderCredentialConfig.setter
+    def CustomHeaderCredentialConfig(self, CustomHeaderCredentialConfig):
+        self._CustomHeaderCredentialConfig = CustomHeaderCredentialConfig
+
+    @property
+    def QueryParamCredentialConfig(self):
+        r"""<p>自定义Query参数凭证配置</p>
+        :rtype: :class:`tencentcloud.tse.v20201207.models.AIGWQueryParamCredentialConfig`
+        """
+        return self._QueryParamCredentialConfig
+
+    @QueryParamCredentialConfig.setter
+    def QueryParamCredentialConfig(self, QueryParamCredentialConfig):
+        self._QueryParamCredentialConfig = QueryParamCredentialConfig
+
+    @property
+    def BasicCredentialConfig(self):
+        r"""<p>Basic Auth凭证配置</p>
+        :rtype: :class:`tencentcloud.tse.v20201207.models.AIGWBasicCredentialConfig`
+        """
+        return self._BasicCredentialConfig
+
+    @BasicCredentialConfig.setter
+    def BasicCredentialConfig(self, BasicCredentialConfig):
+        self._BasicCredentialConfig = BasicCredentialConfig
+
+    @property
     def Provider(self):
         r"""<p>第三方平台类型</p><p>枚举值：</p><ul><li>Dify： Dify平台</li></ul>
         :rtype: str
@@ -11772,6 +13239,24 @@ class CreateCloudNativeAPIGatewaySecretKeyRequest(AbstractModel):
         if params.get("OIDCCredentialConfig") is not None:
             self._OIDCCredentialConfig = AIGWOIDCCredentialConfig()
             self._OIDCCredentialConfig._deserialize(params.get("OIDCCredentialConfig"))
+        if params.get("AKSKCredentialConfig") is not None:
+            self._AKSKCredentialConfig = AIGWAKSKCredentialConfig()
+            self._AKSKCredentialConfig._deserialize(params.get("AKSKCredentialConfig"))
+        if params.get("CAMCredentialConfig") is not None:
+            self._CAMCredentialConfig = AIGWCAMCredentialConfig()
+            self._CAMCredentialConfig._deserialize(params.get("CAMCredentialConfig"))
+        if params.get("BearerTokenCredentialConfig") is not None:
+            self._BearerTokenCredentialConfig = AIGWBearerTokenCredentialConfig()
+            self._BearerTokenCredentialConfig._deserialize(params.get("BearerTokenCredentialConfig"))
+        if params.get("CustomHeaderCredentialConfig") is not None:
+            self._CustomHeaderCredentialConfig = AIGWCustomHeaderCredentialConfig()
+            self._CustomHeaderCredentialConfig._deserialize(params.get("CustomHeaderCredentialConfig"))
+        if params.get("QueryParamCredentialConfig") is not None:
+            self._QueryParamCredentialConfig = AIGWQueryParamCredentialConfig()
+            self._QueryParamCredentialConfig._deserialize(params.get("QueryParamCredentialConfig"))
+        if params.get("BasicCredentialConfig") is not None:
+            self._BasicCredentialConfig = AIGWBasicCredentialConfig()
+            self._BasicCredentialConfig._deserialize(params.get("BasicCredentialConfig"))
         self._Provider = params.get("Provider")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -18525,23 +20010,29 @@ class DescribeCloudNativeAPIGatewayCertificatesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _GatewayId: 网关ID
+        :param _GatewayId: <p>网关ID</p>
         :type GatewayId: str
-        :param _Limit: 列表数量
+        :param _Limit: <p>列表数量</p>
         :type Limit: int
-        :param _Offset: 列表offset
+        :param _Offset: <p>列表offset</p>
         :type Offset: int
-        :param _Filters: 过滤条件，多个过滤条件之间是与的关系，支持BindDomain ，Name
+        :param _Filters: <p>过滤条件，多个过滤条件之间是与的关系，支持BindDomain ，Name</p>
         :type Filters: list of ListFilter
+        :param _CertType: <p>证书类型</p><p>枚举值：</p><ul><li>SVR： 服务证书</li><li>CA： CA证书</li></ul>
+        :type CertType: str
+        :param _CertUsage: <p>证书用途</p><p>枚举值：</p><ul><li>SERVER： 用作服务端证书</li><li>CLIENT： 用作客户端证书</li></ul>
+        :type CertUsage: str
         """
         self._GatewayId = None
         self._Limit = None
         self._Offset = None
         self._Filters = None
+        self._CertType = None
+        self._CertUsage = None
 
     @property
     def GatewayId(self):
-        r"""网关ID
+        r"""<p>网关ID</p>
         :rtype: str
         """
         return self._GatewayId
@@ -18552,7 +20043,7 @@ class DescribeCloudNativeAPIGatewayCertificatesRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""列表数量
+        r"""<p>列表数量</p>
         :rtype: int
         """
         return self._Limit
@@ -18563,7 +20054,7 @@ class DescribeCloudNativeAPIGatewayCertificatesRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""列表offset
+        r"""<p>列表offset</p>
         :rtype: int
         """
         return self._Offset
@@ -18574,7 +20065,7 @@ class DescribeCloudNativeAPIGatewayCertificatesRequest(AbstractModel):
 
     @property
     def Filters(self):
-        r"""过滤条件，多个过滤条件之间是与的关系，支持BindDomain ，Name
+        r"""<p>过滤条件，多个过滤条件之间是与的关系，支持BindDomain ，Name</p>
         :rtype: list of ListFilter
         """
         return self._Filters
@@ -18582,6 +20073,28 @@ class DescribeCloudNativeAPIGatewayCertificatesRequest(AbstractModel):
     @Filters.setter
     def Filters(self, Filters):
         self._Filters = Filters
+
+    @property
+    def CertType(self):
+        r"""<p>证书类型</p><p>枚举值：</p><ul><li>SVR： 服务证书</li><li>CA： CA证书</li></ul>
+        :rtype: str
+        """
+        return self._CertType
+
+    @CertType.setter
+    def CertType(self, CertType):
+        self._CertType = CertType
+
+    @property
+    def CertUsage(self):
+        r"""<p>证书用途</p><p>枚举值：</p><ul><li>SERVER： 用作服务端证书</li><li>CLIENT： 用作客户端证书</li></ul>
+        :rtype: str
+        """
+        return self._CertUsage
+
+    @CertUsage.setter
+    def CertUsage(self, CertUsage):
+        self._CertUsage = CertUsage
 
 
     def _deserialize(self, params):
@@ -18594,6 +20107,8 @@ class DescribeCloudNativeAPIGatewayCertificatesRequest(AbstractModel):
                 obj = ListFilter()
                 obj._deserialize(item)
                 self._Filters.append(obj)
+        self._CertType = params.get("CertType")
+        self._CertUsage = params.get("CertUsage")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -18611,7 +20126,7 @@ class DescribeCloudNativeAPIGatewayCertificatesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Result: 无
+        :param _Result: <p>无</p>
         :type Result: :class:`tencentcloud.tse.v20201207.models.KongCertificatesList`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -18621,7 +20136,7 @@ class DescribeCloudNativeAPIGatewayCertificatesResponse(AbstractModel):
 
     @property
     def Result(self):
-        r"""无
+        r"""<p>无</p>
         :rtype: :class:`tencentcloud.tse.v20201207.models.KongCertificatesList`
         """
         return self._Result
@@ -32141,30 +33656,34 @@ class KongCertificatesPreview(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Name: 证书名称
+        :param _Name: <p>证书名称</p>
         :type Name: str
-        :param _Id: Id
+        :param _Id: <p>Id</p>
         :type Id: str
-        :param _BindDomains: 绑定的域名
+        :param _BindDomains: <p>绑定的域名</p>
         :type BindDomains: list of str
-        :param _Status: 证书状态：expired(已过期)
-                   active(生效中)
+        :param _Status: <p>证书状态：expired(已过期)<br>                   active(生效中)</p>
         :type Status: str
-        :param _Crt: 证书pem格式
+        :param _Crt: <p>证书pem格式</p>
         :type Crt: str
-        :param _Key: 证书私钥
+        :param _Key: <p>证书私钥</p>
         :type Key: str
-        :param _ExpireTime: 证书过期时间
+        :param _ExpireTime: <p>证书过期时间</p>
         :type ExpireTime: str
-        :param _CreateTime: 证书上传时间
+        :param _CreateTime: <p>证书上传时间</p>
         :type CreateTime: str
-        :param _IssueTime: 证书签发时间
+        :param _IssueTime: <p>证书签发时间</p>
         :type IssueTime: str
-        :param _CertSource: 证书来源：native(kong自定义证书)
-                    ssl(ssl平台证书)
+        :param _CertSource: <p>证书来源：native(kong自定义证书)<br>                    ssl(ssl平台证书)</p>
         :type CertSource: str
-        :param _CertId: ssl平台证书Id
+        :param _CertId: <p>ssl平台证书Id</p>
         :type CertId: str
+        :param _CertType: <p>证书类型</p><p>枚举值：</p><ul><li>SVR： 服务证书</li><li>CA： CA证书</li></ul>
+        :type CertType: str
+        :param _CertUsage: <p>证书用途</p><p>枚举值：</p><ul><li>SERVER： 用作服务端证书</li><li>CLIENT： 用作客户端证书</li></ul>
+        :type CertUsage: str
+        :param _ReferCount: <p>证书被引用的次数</p>
+        :type ReferCount: int
         """
         self._Name = None
         self._Id = None
@@ -32177,10 +33696,13 @@ class KongCertificatesPreview(AbstractModel):
         self._IssueTime = None
         self._CertSource = None
         self._CertId = None
+        self._CertType = None
+        self._CertUsage = None
+        self._ReferCount = None
 
     @property
     def Name(self):
-        r"""证书名称
+        r"""<p>证书名称</p>
         :rtype: str
         """
         return self._Name
@@ -32191,7 +33713,7 @@ class KongCertificatesPreview(AbstractModel):
 
     @property
     def Id(self):
-        r"""Id
+        r"""<p>Id</p>
         :rtype: str
         """
         return self._Id
@@ -32202,7 +33724,7 @@ class KongCertificatesPreview(AbstractModel):
 
     @property
     def BindDomains(self):
-        r"""绑定的域名
+        r"""<p>绑定的域名</p>
         :rtype: list of str
         """
         return self._BindDomains
@@ -32213,8 +33735,7 @@ class KongCertificatesPreview(AbstractModel):
 
     @property
     def Status(self):
-        r"""证书状态：expired(已过期)
-                   active(生效中)
+        r"""<p>证书状态：expired(已过期)<br>                   active(生效中)</p>
         :rtype: str
         """
         return self._Status
@@ -32225,7 +33746,7 @@ class KongCertificatesPreview(AbstractModel):
 
     @property
     def Crt(self):
-        r"""证书pem格式
+        r"""<p>证书pem格式</p>
         :rtype: str
         """
         return self._Crt
@@ -32236,7 +33757,7 @@ class KongCertificatesPreview(AbstractModel):
 
     @property
     def Key(self):
-        r"""证书私钥
+        r"""<p>证书私钥</p>
         :rtype: str
         """
         return self._Key
@@ -32247,7 +33768,7 @@ class KongCertificatesPreview(AbstractModel):
 
     @property
     def ExpireTime(self):
-        r"""证书过期时间
+        r"""<p>证书过期时间</p>
         :rtype: str
         """
         return self._ExpireTime
@@ -32258,7 +33779,7 @@ class KongCertificatesPreview(AbstractModel):
 
     @property
     def CreateTime(self):
-        r"""证书上传时间
+        r"""<p>证书上传时间</p>
         :rtype: str
         """
         return self._CreateTime
@@ -32269,7 +33790,7 @@ class KongCertificatesPreview(AbstractModel):
 
     @property
     def IssueTime(self):
-        r"""证书签发时间
+        r"""<p>证书签发时间</p>
         :rtype: str
         """
         return self._IssueTime
@@ -32280,8 +33801,7 @@ class KongCertificatesPreview(AbstractModel):
 
     @property
     def CertSource(self):
-        r"""证书来源：native(kong自定义证书)
-                    ssl(ssl平台证书)
+        r"""<p>证书来源：native(kong自定义证书)<br>                    ssl(ssl平台证书)</p>
         :rtype: str
         """
         return self._CertSource
@@ -32292,7 +33812,7 @@ class KongCertificatesPreview(AbstractModel):
 
     @property
     def CertId(self):
-        r"""ssl平台证书Id
+        r"""<p>ssl平台证书Id</p>
         :rtype: str
         """
         return self._CertId
@@ -32300,6 +33820,39 @@ class KongCertificatesPreview(AbstractModel):
     @CertId.setter
     def CertId(self, CertId):
         self._CertId = CertId
+
+    @property
+    def CertType(self):
+        r"""<p>证书类型</p><p>枚举值：</p><ul><li>SVR： 服务证书</li><li>CA： CA证书</li></ul>
+        :rtype: str
+        """
+        return self._CertType
+
+    @CertType.setter
+    def CertType(self, CertType):
+        self._CertType = CertType
+
+    @property
+    def CertUsage(self):
+        r"""<p>证书用途</p><p>枚举值：</p><ul><li>SERVER： 用作服务端证书</li><li>CLIENT： 用作客户端证书</li></ul>
+        :rtype: str
+        """
+        return self._CertUsage
+
+    @CertUsage.setter
+    def CertUsage(self, CertUsage):
+        self._CertUsage = CertUsage
+
+    @property
+    def ReferCount(self):
+        r"""<p>证书被引用的次数</p>
+        :rtype: int
+        """
+        return self._ReferCount
+
+    @ReferCount.setter
+    def ReferCount(self, ReferCount):
+        self._ReferCount = ReferCount
 
 
     def _deserialize(self, params):
@@ -32314,6 +33867,9 @@ class KongCertificatesPreview(AbstractModel):
         self._IssueTime = params.get("IssueTime")
         self._CertSource = params.get("CertSource")
         self._CertId = params.get("CertId")
+        self._CertType = params.get("CertType")
+        self._CertUsage = params.get("CertUsage")
+        self._ReferCount = params.get("ReferCount")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -35439,23 +36995,26 @@ class ModifyCloudNativeAPIGatewayConsumerRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _GatewayId: 网关实例id
+        :param _GatewayId: <p>网关实例id</p>
         :type GatewayId: str
         :param _ConsumerId: <p>消费者 ID。</p>
         :type ConsumerId: str
         :param _Name: <p>消费者名称，最长 60 字符。</p>
         :type Name: str
+        :param _Priority: <p>优先级，默认Medium</p><p>枚举值：</p><ul><li>Low： 低优先级</li><li>Medium： 中优先级</li><li>High： 高优先级</li></ul>
+        :type Priority: str
         :param _Description: <p>消费者描述。最长 200 字符。</p>
         :type Description: str
         """
         self._GatewayId = None
         self._ConsumerId = None
         self._Name = None
+        self._Priority = None
         self._Description = None
 
     @property
     def GatewayId(self):
-        r"""网关实例id
+        r"""<p>网关实例id</p>
         :rtype: str
         """
         return self._GatewayId
@@ -35487,6 +37046,17 @@ class ModifyCloudNativeAPIGatewayConsumerRequest(AbstractModel):
         self._Name = Name
 
     @property
+    def Priority(self):
+        r"""<p>优先级，默认Medium</p><p>枚举值：</p><ul><li>Low： 低优先级</li><li>Medium： 中优先级</li><li>High： 高优先级</li></ul>
+        :rtype: str
+        """
+        return self._Priority
+
+    @Priority.setter
+    def Priority(self, Priority):
+        self._Priority = Priority
+
+    @property
     def Description(self):
         r"""<p>消费者描述。最长 200 字符。</p>
         :rtype: str
@@ -35502,6 +37072,7 @@ class ModifyCloudNativeAPIGatewayConsumerRequest(AbstractModel):
         self._GatewayId = params.get("GatewayId")
         self._ConsumerId = params.get("ConsumerId")
         self._Name = params.get("Name")
+        self._Priority = params.get("Priority")
         self._Description = params.get("Description")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -35552,26 +37123,30 @@ class ModifyCloudNativeAPIGatewayLLMModelAPIRequest(AbstractModel):
         :type GatewayId: str
         :param _ModelAPIId: <p>模型 API ID，全局唯一标识。</p>
         :type ModelAPIId: str
-        :param _Name: <p>模型 API 名称，最长 60 字符。</p>
+        :param _Name: <p>修改模型 API 名称</p>
         :type Name: str
-        :param _BasePath: <p>统一前缀路径（可选）。例如 /v1/openai。</p>
+        :param _BasePath: <p>为API设置统一的前缀，格式：以/开头，支持字母、数字、短横线。</p>
         :type BasePath: str
-        :param _Description: <p>模型 API 描述。最长 200 字符。</p>
+        :param _Description: <p>模型 API 的相关描述。</p>
         :type Description: str
-        :param _ListModelServiceId: <p>关联的模型服务 ID 列表，长度 1-10。</p>
+        :param _ListModelServiceId: <p>关联的模型服务列表（支持填多个模型服务）</p>
         :type ListModelServiceId: list of str
-        :param _ModelServiceRoute: <p>多模型服务路由策略。ListModelServiceId 多于 1 项时必填。</p>
+        :param _ModelServiceRoute: <p>模型服务路由策略（是指如何路由到模型服务）</p>
         :type ModelServiceRoute: :class:`tencentcloud.tse.v20201207.models.CloudNativeAPIGatewayLLMModelServiceRoute`
-        :param _MatchHeaders: <p>Header 路由匹配规则。当前仅支持 Operator=exact。</p>
+        :param _MatchHeaders: <p>headers 路由匹配</p>
         :type MatchHeaders: list of AIGWKVMatch
-        :param _EnableCrossServiceFallback: <p>是否启用跨服务 Fallback。</p>
+        :param _EnableCrossServiceFallback: <p>跨服务 fallback</p>
         :type EnableCrossServiceFallback: bool
-        :param _CrossServiceFallbackConfig: <p>跨服务 Fallback 配置。EnableCrossServiceFallback=true 时必填。</p>
+        :param _CrossServiceFallbackConfig: <p>跨服务 fallback 配置</p>
         :type CrossServiceFallbackConfig: :class:`tencentcloud.tse.v20201207.models.AIGWCrossServiceFallbackConfig`
-        :param _TagFilter: <p>标签过滤策略。需要网关版本 ≥ 3.9.4。</p>
+        :param _TagFilter: <p>标签</p>
         :type TagFilter: :class:`tencentcloud.tse.v20201207.models.AIGWTagFilter`
-        :param _LogConfig: <p>日志输出配置。需要网关版本 ≥ 3.9.4。</p>
+        :param _LogConfig: <p>模型 API 日志配置</p>
         :type LogConfig: :class:`tencentcloud.tse.v20201207.models.AIGWLogConfig`
+        :param _MaxDocumentsConfig: <p>Rerank场景最大文档数配置</p>
+        :type MaxDocumentsConfig: :class:`tencentcloud.tse.v20201207.models.AIGWRerankMaxDocumentsConfig`
+        :param _SensitiveWordRoute: <p>敏感词路由配置</p>
+        :type SensitiveWordRoute: :class:`tencentcloud.tse.v20201207.models.AIGWSensitiveWordRoute`
         """
         self._GatewayId = None
         self._ModelAPIId = None
@@ -35585,6 +37160,8 @@ class ModifyCloudNativeAPIGatewayLLMModelAPIRequest(AbstractModel):
         self._CrossServiceFallbackConfig = None
         self._TagFilter = None
         self._LogConfig = None
+        self._MaxDocumentsConfig = None
+        self._SensitiveWordRoute = None
 
     @property
     def GatewayId(self):
@@ -35610,7 +37187,7 @@ class ModifyCloudNativeAPIGatewayLLMModelAPIRequest(AbstractModel):
 
     @property
     def Name(self):
-        r"""<p>模型 API 名称，最长 60 字符。</p>
+        r"""<p>修改模型 API 名称</p>
         :rtype: str
         """
         return self._Name
@@ -35621,7 +37198,7 @@ class ModifyCloudNativeAPIGatewayLLMModelAPIRequest(AbstractModel):
 
     @property
     def BasePath(self):
-        r"""<p>统一前缀路径（可选）。例如 /v1/openai。</p>
+        r"""<p>为API设置统一的前缀，格式：以/开头，支持字母、数字、短横线。</p>
         :rtype: str
         """
         return self._BasePath
@@ -35632,7 +37209,7 @@ class ModifyCloudNativeAPIGatewayLLMModelAPIRequest(AbstractModel):
 
     @property
     def Description(self):
-        r"""<p>模型 API 描述。最长 200 字符。</p>
+        r"""<p>模型 API 的相关描述。</p>
         :rtype: str
         """
         return self._Description
@@ -35643,7 +37220,7 @@ class ModifyCloudNativeAPIGatewayLLMModelAPIRequest(AbstractModel):
 
     @property
     def ListModelServiceId(self):
-        r"""<p>关联的模型服务 ID 列表，长度 1-10。</p>
+        r"""<p>关联的模型服务列表（支持填多个模型服务）</p>
         :rtype: list of str
         """
         return self._ListModelServiceId
@@ -35654,7 +37231,7 @@ class ModifyCloudNativeAPIGatewayLLMModelAPIRequest(AbstractModel):
 
     @property
     def ModelServiceRoute(self):
-        r"""<p>多模型服务路由策略。ListModelServiceId 多于 1 项时必填。</p>
+        r"""<p>模型服务路由策略（是指如何路由到模型服务）</p>
         :rtype: :class:`tencentcloud.tse.v20201207.models.CloudNativeAPIGatewayLLMModelServiceRoute`
         """
         return self._ModelServiceRoute
@@ -35665,7 +37242,7 @@ class ModifyCloudNativeAPIGatewayLLMModelAPIRequest(AbstractModel):
 
     @property
     def MatchHeaders(self):
-        r"""<p>Header 路由匹配规则。当前仅支持 Operator=exact。</p>
+        r"""<p>headers 路由匹配</p>
         :rtype: list of AIGWKVMatch
         """
         return self._MatchHeaders
@@ -35676,7 +37253,7 @@ class ModifyCloudNativeAPIGatewayLLMModelAPIRequest(AbstractModel):
 
     @property
     def EnableCrossServiceFallback(self):
-        r"""<p>是否启用跨服务 Fallback。</p>
+        r"""<p>跨服务 fallback</p>
         :rtype: bool
         """
         return self._EnableCrossServiceFallback
@@ -35687,7 +37264,7 @@ class ModifyCloudNativeAPIGatewayLLMModelAPIRequest(AbstractModel):
 
     @property
     def CrossServiceFallbackConfig(self):
-        r"""<p>跨服务 Fallback 配置。EnableCrossServiceFallback=true 时必填。</p>
+        r"""<p>跨服务 fallback 配置</p>
         :rtype: :class:`tencentcloud.tse.v20201207.models.AIGWCrossServiceFallbackConfig`
         """
         return self._CrossServiceFallbackConfig
@@ -35698,7 +37275,7 @@ class ModifyCloudNativeAPIGatewayLLMModelAPIRequest(AbstractModel):
 
     @property
     def TagFilter(self):
-        r"""<p>标签过滤策略。需要网关版本 ≥ 3.9.4。</p>
+        r"""<p>标签</p>
         :rtype: :class:`tencentcloud.tse.v20201207.models.AIGWTagFilter`
         """
         return self._TagFilter
@@ -35709,7 +37286,7 @@ class ModifyCloudNativeAPIGatewayLLMModelAPIRequest(AbstractModel):
 
     @property
     def LogConfig(self):
-        r"""<p>日志输出配置。需要网关版本 ≥ 3.9.4。</p>
+        r"""<p>模型 API 日志配置</p>
         :rtype: :class:`tencentcloud.tse.v20201207.models.AIGWLogConfig`
         """
         return self._LogConfig
@@ -35717,6 +37294,28 @@ class ModifyCloudNativeAPIGatewayLLMModelAPIRequest(AbstractModel):
     @LogConfig.setter
     def LogConfig(self, LogConfig):
         self._LogConfig = LogConfig
+
+    @property
+    def MaxDocumentsConfig(self):
+        r"""<p>Rerank场景最大文档数配置</p>
+        :rtype: :class:`tencentcloud.tse.v20201207.models.AIGWRerankMaxDocumentsConfig`
+        """
+        return self._MaxDocumentsConfig
+
+    @MaxDocumentsConfig.setter
+    def MaxDocumentsConfig(self, MaxDocumentsConfig):
+        self._MaxDocumentsConfig = MaxDocumentsConfig
+
+    @property
+    def SensitiveWordRoute(self):
+        r"""<p>敏感词路由配置</p>
+        :rtype: :class:`tencentcloud.tse.v20201207.models.AIGWSensitiveWordRoute`
+        """
+        return self._SensitiveWordRoute
+
+    @SensitiveWordRoute.setter
+    def SensitiveWordRoute(self, SensitiveWordRoute):
+        self._SensitiveWordRoute = SensitiveWordRoute
 
 
     def _deserialize(self, params):
@@ -35745,6 +37344,12 @@ class ModifyCloudNativeAPIGatewayLLMModelAPIRequest(AbstractModel):
         if params.get("LogConfig") is not None:
             self._LogConfig = AIGWLogConfig()
             self._LogConfig._deserialize(params.get("LogConfig"))
+        if params.get("MaxDocumentsConfig") is not None:
+            self._MaxDocumentsConfig = AIGWRerankMaxDocumentsConfig()
+            self._MaxDocumentsConfig._deserialize(params.get("MaxDocumentsConfig"))
+        if params.get("SensitiveWordRoute") is not None:
+            self._SensitiveWordRoute = AIGWSensitiveWordRoute()
+            self._SensitiveWordRoute._deserialize(params.get("SensitiveWordRoute"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -35762,7 +37367,7 @@ class ModifyCloudNativeAPIGatewayLLMModelAPIResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Result: <p>是否成功。</p>
+        :param _Result: <p>是否成功</p>
         :type Result: bool
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -35772,7 +37377,7 @@ class ModifyCloudNativeAPIGatewayLLMModelAPIResponse(AbstractModel):
 
     @property
     def Result(self):
-        r"""<p>是否成功。</p>
+        r"""<p>是否成功</p>
         :rtype: bool
         """
         return self._Result
@@ -35861,6 +37466,10 @@ class ModifyCloudNativeAPIGatewayLLMModelServiceRequest(AbstractModel):
         :type KeyRotationPeriodDays: int
         :param _ExternalInstanceId: <p>外部服务来源ID</p>
         :type ExternalInstanceId: str
+        :param _CustomProviderName: <p>自定义供应商名称</p><p>仅当Provider值为&quot;custom&quot;时允许填写</p>
+        :type CustomProviderName: str
+        :param _LoadBalanceConfig: <p>负载均衡配置</p>
+        :type LoadBalanceConfig: :class:`tencentcloud.tse.v20201207.models.AIGWLoadBalanceConfig`
         """
         self._GatewayId = None
         self._ModelServiceId = None
@@ -35890,6 +37499,8 @@ class ModifyCloudNativeAPIGatewayLLMModelServiceRequest(AbstractModel):
         self._KeyRotationEnabled = None
         self._KeyRotationPeriodDays = None
         self._ExternalInstanceId = None
+        self._CustomProviderName = None
+        self._LoadBalanceConfig = None
 
     @property
     def GatewayId(self):
@@ -36199,6 +37810,28 @@ class ModifyCloudNativeAPIGatewayLLMModelServiceRequest(AbstractModel):
     def ExternalInstanceId(self, ExternalInstanceId):
         self._ExternalInstanceId = ExternalInstanceId
 
+    @property
+    def CustomProviderName(self):
+        r"""<p>自定义供应商名称</p><p>仅当Provider值为&quot;custom&quot;时允许填写</p>
+        :rtype: str
+        """
+        return self._CustomProviderName
+
+    @CustomProviderName.setter
+    def CustomProviderName(self, CustomProviderName):
+        self._CustomProviderName = CustomProviderName
+
+    @property
+    def LoadBalanceConfig(self):
+        r"""<p>负载均衡配置</p>
+        :rtype: :class:`tencentcloud.tse.v20201207.models.AIGWLoadBalanceConfig`
+        """
+        return self._LoadBalanceConfig
+
+    @LoadBalanceConfig.setter
+    def LoadBalanceConfig(self, LoadBalanceConfig):
+        self._LoadBalanceConfig = LoadBalanceConfig
+
 
     def _deserialize(self, params):
         self._GatewayId = params.get("GatewayId")
@@ -36245,6 +37878,10 @@ class ModifyCloudNativeAPIGatewayLLMModelServiceRequest(AbstractModel):
         self._KeyRotationEnabled = params.get("KeyRotationEnabled")
         self._KeyRotationPeriodDays = params.get("KeyRotationPeriodDays")
         self._ExternalInstanceId = params.get("ExternalInstanceId")
+        self._CustomProviderName = params.get("CustomProviderName")
+        if params.get("LoadBalanceConfig") is not None:
+            self._LoadBalanceConfig = AIGWLoadBalanceConfig()
+            self._LoadBalanceConfig._deserialize(params.get("LoadBalanceConfig"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

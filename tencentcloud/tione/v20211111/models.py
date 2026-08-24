@@ -2566,6 +2566,8 @@ class CreateModelServiceRequest(AbstractModel):
         :type GatewayConfig: :class:`tencentcloud.tione.v20211111.models.GatewayConfig`
         :param _ResourceSupplyAttribute: <p>资源供应属性(潮汐/竞价等供应模式);空表示常规按量后付费</p>
         :type ResourceSupplyAttribute: :class:`tencentcloud.tione.v20211111.models.ResourceSupplyAttribute`
+        :param _InferTemplateId: <p>推理模板 ID</p>
+        :type InferTemplateId: str
         """
         self._TiProjectId = None
         self._ServiceGroupId = None
@@ -2614,6 +2616,7 @@ class CreateModelServiceRequest(AbstractModel):
         self._GatewayLogConfig = None
         self._GatewayConfig = None
         self._ResourceSupplyAttribute = None
+        self._InferTemplateId = None
 
     @property
     def TiProjectId(self):
@@ -3132,6 +3135,17 @@ class CreateModelServiceRequest(AbstractModel):
     def ResourceSupplyAttribute(self, ResourceSupplyAttribute):
         self._ResourceSupplyAttribute = ResourceSupplyAttribute
 
+    @property
+    def InferTemplateId(self):
+        r"""<p>推理模板 ID</p>
+        :rtype: str
+        """
+        return self._InferTemplateId
+
+    @InferTemplateId.setter
+    def InferTemplateId(self, InferTemplateId):
+        self._InferTemplateId = InferTemplateId
+
 
     def _deserialize(self, params):
         self._TiProjectId = params.get("TiProjectId")
@@ -3231,6 +3245,7 @@ class CreateModelServiceRequest(AbstractModel):
         if params.get("ResourceSupplyAttribute") is not None:
             self._ResourceSupplyAttribute = ResourceSupplyAttribute()
             self._ResourceSupplyAttribute._deserialize(params.get("ResourceSupplyAttribute"))
+        self._InferTemplateId = params.get("InferTemplateId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -18868,6 +18883,8 @@ class ModifyModelServiceRequest(AbstractModel):
         :type SchedulingStrategy: str
         :param _TargetProjectId: <p>目标工作空间，不为0则进行迁移，源服务只允许在默认空间</p>
         :type TargetProjectId: int
+        :param _InferTemplateId: <p>推理模板 ID，在内置大模型场景下使用</p>
+        :type InferTemplateId: str
         """
         self._ServiceId = None
         self._TiProjectId = None
@@ -18906,6 +18923,7 @@ class ModifyModelServiceRequest(AbstractModel):
         self._VolumeMounts = None
         self._SchedulingStrategy = None
         self._TargetProjectId = None
+        self._InferTemplateId = None
 
     @property
     def ServiceId(self):
@@ -19314,6 +19332,17 @@ class ModifyModelServiceRequest(AbstractModel):
     def TargetProjectId(self, TargetProjectId):
         self._TargetProjectId = TargetProjectId
 
+    @property
+    def InferTemplateId(self):
+        r"""<p>推理模板 ID，在内置大模型场景下使用</p>
+        :rtype: str
+        """
+        return self._InferTemplateId
+
+    @InferTemplateId.setter
+    def InferTemplateId(self, InferTemplateId):
+        self._InferTemplateId = InferTemplateId
+
 
     def _deserialize(self, params):
         self._ServiceId = params.get("ServiceId")
@@ -19392,6 +19421,7 @@ class ModifyModelServiceRequest(AbstractModel):
                 self._VolumeMounts.append(obj)
         self._SchedulingStrategy = params.get("SchedulingStrategy")
         self._TargetProjectId = params.get("TargetProjectId")
+        self._InferTemplateId = params.get("InferTemplateId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -27535,6 +27565,8 @@ class ServiceInfo(AbstractModel):
         :type SchedulingStrategy: str
         :param _NodeCount: <p>服务实际运行的节点数</p>
         :type NodeCount: int
+        :param _InferTemplateId: <p>推理模板Id</p><p>参数格式：推理模板 ID</p>
+        :type InferTemplateId: str
         """
         self._Replicas = None
         self._ImageInfo = None
@@ -27577,6 +27609,7 @@ class ServiceInfo(AbstractModel):
         self._VolumeMounts = None
         self._SchedulingStrategy = None
         self._NodeCount = None
+        self._InferTemplateId = None
 
     @property
     def Replicas(self):
@@ -28062,6 +28095,17 @@ class ServiceInfo(AbstractModel):
     def NodeCount(self, NodeCount):
         self._NodeCount = NodeCount
 
+    @property
+    def InferTemplateId(self):
+        r"""<p>推理模板Id</p><p>参数格式：推理模板 ID</p>
+        :rtype: str
+        """
+        return self._InferTemplateId
+
+    @InferTemplateId.setter
+    def InferTemplateId(self, InferTemplateId):
+        self._InferTemplateId = InferTemplateId
+
 
     def _deserialize(self, params):
         self._Replicas = params.get("Replicas")
@@ -28155,6 +28199,7 @@ class ServiceInfo(AbstractModel):
                 self._VolumeMounts.append(obj)
         self._SchedulingStrategy = params.get("SchedulingStrategy")
         self._NodeCount = params.get("NodeCount")
+        self._InferTemplateId = params.get("InferTemplateId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

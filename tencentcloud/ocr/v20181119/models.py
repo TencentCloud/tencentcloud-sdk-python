@@ -4517,8 +4517,10 @@ class CropEnhanceImageOCRResponse(AbstractModel):
         :type CroppedWidth: int
         :param _CroppedHeight: <p>处理后图的高</p>
         :type CroppedHeight: int
-        :param _CroppedImage: <p>图像处理后的jpg图片，base64格式</p>
+        :param _CroppedImage: <p>图像处理后的jpg图片，base64格式</p><p><strong><p><code>该字段后续不返回内容，请使用CroppedImageUrl</code></p></strong></p>
         :type CroppedImage: str
+        :param _CroppedImageUrl: <p>图像处理后的jpg图片</p><p>参数格式：url格式</p>
+        :type CroppedImageUrl: str
         :param _Position: <p>切图区域的4个角点坐标, 是个长度为8的数组<br>[0,1,2,3,4,5,6,7]</p><p>(0,1) 左上角坐标<br>(2,3) 右上角坐标<br>(4,5) 右下角坐标<br>(6,7) 左下角坐标</p>
         :type Position: list of int
         :param _Angle: <p>图像角度，AdjustOrientation =1时生效, 返回值如下  -1: 失败  0、90、180、270</p>
@@ -4530,6 +4532,7 @@ class CropEnhanceImageOCRResponse(AbstractModel):
         self._CroppedWidth = None
         self._CroppedHeight = None
         self._CroppedImage = None
+        self._CroppedImageUrl = None
         self._Position = None
         self._Angle = None
         self._RequestId = None
@@ -4558,7 +4561,7 @@ class CropEnhanceImageOCRResponse(AbstractModel):
 
     @property
     def CroppedImage(self):
-        r"""<p>图像处理后的jpg图片，base64格式</p>
+        r"""<p>图像处理后的jpg图片，base64格式</p><p><strong><p><code>该字段后续不返回内容，请使用CroppedImageUrl</code></p></strong></p>
         :rtype: str
         """
         return self._CroppedImage
@@ -4566,6 +4569,17 @@ class CropEnhanceImageOCRResponse(AbstractModel):
     @CroppedImage.setter
     def CroppedImage(self, CroppedImage):
         self._CroppedImage = CroppedImage
+
+    @property
+    def CroppedImageUrl(self):
+        r"""<p>图像处理后的jpg图片</p><p>参数格式：url格式</p>
+        :rtype: str
+        """
+        return self._CroppedImageUrl
+
+    @CroppedImageUrl.setter
+    def CroppedImageUrl(self, CroppedImageUrl):
+        self._CroppedImageUrl = CroppedImageUrl
 
     @property
     def Position(self):
@@ -4606,6 +4620,7 @@ class CropEnhanceImageOCRResponse(AbstractModel):
         self._CroppedWidth = params.get("CroppedWidth")
         self._CroppedHeight = params.get("CroppedHeight")
         self._CroppedImage = params.get("CroppedImage")
+        self._CroppedImageUrl = params.get("CroppedImageUrl")
         self._Position = params.get("Position")
         self._Angle = params.get("Angle")
         self._RequestId = params.get("RequestId")

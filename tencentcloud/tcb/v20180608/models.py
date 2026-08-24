@@ -18510,20 +18510,23 @@ class MgoKeySchema(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _MgoIndexKeys: 索引字段
+        :param _MgoIndexKeys: <p>索引字段</p>
         :type MgoIndexKeys: list of MgoIndexKeys
-        :param _MgoIsUnique: 是否唯一索引
+        :param _MgoIsUnique: <p>是否唯一索引</p>
         :type MgoIsUnique: bool
-        :param _MgoIsSparse: 是否稀疏索引
+        :param _MgoIsSparse: <p>是否稀疏索引</p>
         :type MgoIsSparse: bool
+        :param _PartialFilterExpression: <p>稀疏索引表达式</p>
+        :type PartialFilterExpression: str
         """
         self._MgoIndexKeys = None
         self._MgoIsUnique = None
         self._MgoIsSparse = None
+        self._PartialFilterExpression = None
 
     @property
     def MgoIndexKeys(self):
-        r"""索引字段
+        r"""<p>索引字段</p>
         :rtype: list of MgoIndexKeys
         """
         return self._MgoIndexKeys
@@ -18534,7 +18537,7 @@ class MgoKeySchema(AbstractModel):
 
     @property
     def MgoIsUnique(self):
-        r"""是否唯一索引
+        r"""<p>是否唯一索引</p>
         :rtype: bool
         """
         return self._MgoIsUnique
@@ -18545,7 +18548,7 @@ class MgoKeySchema(AbstractModel):
 
     @property
     def MgoIsSparse(self):
-        r"""是否稀疏索引
+        r"""<p>是否稀疏索引</p>
         :rtype: bool
         """
         return self._MgoIsSparse
@@ -18553,6 +18556,17 @@ class MgoKeySchema(AbstractModel):
     @MgoIsSparse.setter
     def MgoIsSparse(self, MgoIsSparse):
         self._MgoIsSparse = MgoIsSparse
+
+    @property
+    def PartialFilterExpression(self):
+        r"""<p>稀疏索引表达式</p>
+        :rtype: str
+        """
+        return self._PartialFilterExpression
+
+    @PartialFilterExpression.setter
+    def PartialFilterExpression(self, PartialFilterExpression):
+        self._PartialFilterExpression = PartialFilterExpression
 
 
     def _deserialize(self, params):
@@ -18564,6 +18578,7 @@ class MgoKeySchema(AbstractModel):
                 self._MgoIndexKeys.append(obj)
         self._MgoIsUnique = params.get("MgoIsUnique")
         self._MgoIsSparse = params.get("MgoIsSparse")
+        self._PartialFilterExpression = params.get("PartialFilterExpression")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -23775,6 +23790,44 @@ class RunSqlResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class SMSCloudFunctionConfig(AbstractModel):
+    r"""云函数短信通道配置。适用于第三方短信服务商场景：用户在环境下部署名为 SendVerificationCode 的云函数，平台在发送验证码时调用该函数，函数体内由用户自行调用任意短信服务商 SDK 完成下发。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FunctionName: <p>发送验证码的云函数名，当前仅支持 SendVerificationCode。</p><p>函数入参：</p><ul><li>Mobile：字符串（手机号，连续 E.164 格式，如 +8613800000000）</li><li>VerificationCode：字符串（验证码，如 123456）</li></ul><p>函数返回值：</p><ul><li>ErrorCode：int（0 表示成功，非 0 表示失败）</li><li>ErrorMessage：字符串（ErrorCode 非 0 时返回错误信息）</li></ul>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FunctionName: str
+        """
+        self._FunctionName = None
+
+    @property
+    def FunctionName(self):
+        r"""<p>发送验证码的云函数名，当前仅支持 SendVerificationCode。</p><p>函数入参：</p><ul><li>Mobile：字符串（手机号，连续 E.164 格式，如 +8613800000000）</li><li>VerificationCode：字符串（验证码，如 123456）</li></ul><p>函数返回值：</p><ul><li>ErrorCode：int（0 表示成功，非 0 表示失败）</li><li>ErrorMessage：字符串（ErrorCode 非 0 时返回错误信息）</li></ul>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._FunctionName
+
+    @FunctionName.setter
+    def FunctionName(self, FunctionName):
+        self._FunctionName = FunctionName
+
+
+    def _deserialize(self, params):
+        self._FunctionName = params.get("FunctionName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class SMSProviderTemplateConfig(AbstractModel):
     r"""自定义短信服务商模板配置
 
@@ -23794,6 +23847,9 @@ class SMSProviderTemplateConfig(AbstractModel):
         :param _SignName: <p>短信服务商侧申请并审核通过的签名，按照服务商的文档和要求填写。</p><ul><li>腾讯云短信服务商，签名信息可前往 <a href="https://console.cloud.tencent.com/smsv2/csms-sign">国内短信</a> 或 <a href="https://console.cloud.tencent.com/smsv2/isms-sign">国际/港澳台短信</a> 的签名管理查看。<br> 注意：<ol><li>发送国内短信该参数必填，且需填写签名内容而非签名ID。</li><li>发送国际/港澳台短信该参数非必填。</li></ol></li></ul>
 注意：此字段可能返回 null，表示取不到有效值。
         :type SignName: str
+        :param _AuthType: <p>凭证获取方式，不传默认为 SMS_AUTH_SECRET_KEY。</p><p>枚举值：</p><ul><li>SMS_AUTH_SECRET_KEY： 密钥授权，适用于跨账号腾讯云短信 / 其它厂商短信，AK/SK 加密托管至云开发平台控制台—扩展功能—授权管理</li><li>SMS_AUTH_ASSUME_ROLE： 策略授权（角色扮演），适用于同账号腾讯云短信，需预先将短信预设策略 QcloudSMSFullAccess 授权给云开发服务角色，平台以临时凭证代发，不保存任何长期密钥。选择该方式时 SecretId / SecretKey / CredentialAuthKeyId 必须为空</li></ul><p>枚举值：</p><ul><li>SMS_AUTH_SECRET_KEY： 密钥授权，适用于跨账号腾讯云短信 / 其它厂商短信，AK/SK 加密托管至云开发平台控制台—扩展功能—授权管理</li><li>SMS_AUTH_ASSUME_ROLE： 策略授权（角色扮演），适用于同账号腾讯云短信，需预先将短信预设策略 QcloudSMSFullAccess 授权给云开发服务角色，平台以临时凭证代发，不保存任何长期密钥。选择该方式时 SecretId / SecretKey / CredentialAuthKeyId 必须为空</li></ul><p>默认值：SMS_AUTH_SECRET_KEY</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AuthType: str
         :param _SecretId: <p>调用短信服务商发送短信接口的调用秘钥对应的ID。</p><ul><li>调用api秘钥会保存在云开发平台控制台—扩展功能—授权管理中，如果对于短信调用的api秘钥有删除需求，可在此处进行删除，删除后，短信将无法正常发送。</li><li>腾讯云的调用api秘钥在腾讯云控制台获取，建议使用子账号的秘钥ID，并且按照最小权限配置。</li></ul>
 注意：此字段可能返回 null，表示取不到有效值。
         :type SecretId: str
@@ -23806,15 +23862,20 @@ class SMSProviderTemplateConfig(AbstractModel):
         :param _TemplateExtendParam: <p>当短信自定义模板含多个占位符时，平台只负责生成验证码值，其余占位符由调用方在此提供。</p><ul><li>无需提供验证码对应的占位的值，验证码由云开发平台侧生成。</li><li>如果是命名占位的服务商的短信模板，这里的参数按照需要对应的占位的key和value，会按照对应的key和value在发送短信时，填充到模板中。</li><li>如果是序号占位的服务商的短信模板，这里的参数不需要key, 只需要填写对应的value, 会按照填写的顺序依次填充到模板中。</li></ul>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TemplateExtendParam: list of SMSTemplateParams
+        :param _CredentialAuthKeyId: <p>授权管理中密钥的自定义标识（创建 / 引用二合一），与 SecretId / SecretKey 组合决定行为：</p><ul><li>非空 + 带 SecretId/SecretKey → 以该标识创建新密钥；标识已存在时报错（keyID already exists）</li><li>非空 + 不带 SecretId/SecretKey → 引用授权管理中已存在的密钥（需归属当前环境）</li><li>空 + 带 SecretId/SecretKey → 使用平台按服务商生成的固定标识，覆盖更新（存量兼容）</li><li>空 + 不带 SecretId/SecretKey → 不修改密钥，沿用既有配置</li></ul><p>AuthType 为 SMS_AUTH_ASSUME_ROLE 时此参数必须为空。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CredentialAuthKeyId: str
         """
         self._Vendor = None
         self._TemplateId = None
         self._SdkAppId = None
         self._SignName = None
+        self._AuthType = None
         self._SecretId = None
         self._SecretKey = None
         self._SenderId = None
         self._TemplateExtendParam = None
+        self._CredentialAuthKeyId = None
 
     @property
     def Vendor(self):
@@ -23865,6 +23926,18 @@ class SMSProviderTemplateConfig(AbstractModel):
         self._SignName = SignName
 
     @property
+    def AuthType(self):
+        r"""<p>凭证获取方式，不传默认为 SMS_AUTH_SECRET_KEY。</p><p>枚举值：</p><ul><li>SMS_AUTH_SECRET_KEY： 密钥授权，适用于跨账号腾讯云短信 / 其它厂商短信，AK/SK 加密托管至云开发平台控制台—扩展功能—授权管理</li><li>SMS_AUTH_ASSUME_ROLE： 策略授权（角色扮演），适用于同账号腾讯云短信，需预先将短信预设策略 QcloudSMSFullAccess 授权给云开发服务角色，平台以临时凭证代发，不保存任何长期密钥。选择该方式时 SecretId / SecretKey / CredentialAuthKeyId 必须为空</li></ul><p>枚举值：</p><ul><li>SMS_AUTH_SECRET_KEY： 密钥授权，适用于跨账号腾讯云短信 / 其它厂商短信，AK/SK 加密托管至云开发平台控制台—扩展功能—授权管理</li><li>SMS_AUTH_ASSUME_ROLE： 策略授权（角色扮演），适用于同账号腾讯云短信，需预先将短信预设策略 QcloudSMSFullAccess 授权给云开发服务角色，平台以临时凭证代发，不保存任何长期密钥。选择该方式时 SecretId / SecretKey / CredentialAuthKeyId 必须为空</li></ul><p>默认值：SMS_AUTH_SECRET_KEY</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._AuthType
+
+    @AuthType.setter
+    def AuthType(self, AuthType):
+        self._AuthType = AuthType
+
+    @property
     def SecretId(self):
         r"""<p>调用短信服务商发送短信接口的调用秘钥对应的ID。</p><ul><li>调用api秘钥会保存在云开发平台控制台—扩展功能—授权管理中，如果对于短信调用的api秘钥有删除需求，可在此处进行删除，删除后，短信将无法正常发送。</li><li>腾讯云的调用api秘钥在腾讯云控制台获取，建议使用子账号的秘钥ID，并且按照最小权限配置。</li></ul>
 注意：此字段可能返回 null，表示取不到有效值。
@@ -23912,12 +23985,25 @@ class SMSProviderTemplateConfig(AbstractModel):
     def TemplateExtendParam(self, TemplateExtendParam):
         self._TemplateExtendParam = TemplateExtendParam
 
+    @property
+    def CredentialAuthKeyId(self):
+        r"""<p>授权管理中密钥的自定义标识（创建 / 引用二合一），与 SecretId / SecretKey 组合决定行为：</p><ul><li>非空 + 带 SecretId/SecretKey → 以该标识创建新密钥；标识已存在时报错（keyID already exists）</li><li>非空 + 不带 SecretId/SecretKey → 引用授权管理中已存在的密钥（需归属当前环境）</li><li>空 + 带 SecretId/SecretKey → 使用平台按服务商生成的固定标识，覆盖更新（存量兼容）</li><li>空 + 不带 SecretId/SecretKey → 不修改密钥，沿用既有配置</li></ul><p>AuthType 为 SMS_AUTH_ASSUME_ROLE 时此参数必须为空。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CredentialAuthKeyId
+
+    @CredentialAuthKeyId.setter
+    def CredentialAuthKeyId(self, CredentialAuthKeyId):
+        self._CredentialAuthKeyId = CredentialAuthKeyId
+
 
     def _deserialize(self, params):
         self._Vendor = params.get("Vendor")
         self._TemplateId = params.get("TemplateId")
         self._SdkAppId = params.get("SdkAppId")
         self._SignName = params.get("SignName")
+        self._AuthType = params.get("AuthType")
         self._SecretId = params.get("SecretId")
         self._SecretKey = params.get("SecretKey")
         self._SenderId = params.get("SenderId")
@@ -23927,6 +24013,7 @@ class SMSProviderTemplateConfig(AbstractModel):
                 obj = SMSTemplateParams()
                 obj._deserialize(item)
                 self._TemplateExtendParam.append(obj)
+        self._CredentialAuthKeyId = params.get("CredentialAuthKeyId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -25339,17 +25426,17 @@ class UpdateTableRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TableName: 表名
+        :param _TableName: <p>表名</p>
         :type TableName: str
-        :param _Tag: FlexDB实例ID
+        :param _Tag: <p>FlexDB实例ID</p>
         :type Tag: str
-        :param _DropIndexes: 待删除索引信息
+        :param _DropIndexes: <p>待删除索引信息</p>
         :type DropIndexes: list of DropIndex
-        :param _CreateIndexes: 待创建索引信息
+        :param _CreateIndexes: <p>待创建索引信息</p>
         :type CreateIndexes: list of CreateIndex
-        :param _EnvId: 云开发环境ID
+        :param _EnvId: <p>云开发环境ID</p>
         :type EnvId: str
-        :param _MongoConnector: MongoDB连接器配置
+        :param _MongoConnector: <p>MongoDB连接器配置</p>
         :type MongoConnector: :class:`tencentcloud.tcb.v20180608.models.MongoConnector`
         """
         self._TableName = None
@@ -25361,7 +25448,7 @@ class UpdateTableRequest(AbstractModel):
 
     @property
     def TableName(self):
-        r"""表名
+        r"""<p>表名</p>
         :rtype: str
         """
         return self._TableName
@@ -25372,7 +25459,7 @@ class UpdateTableRequest(AbstractModel):
 
     @property
     def Tag(self):
-        r"""FlexDB实例ID
+        r"""<p>FlexDB实例ID</p>
         :rtype: str
         """
         return self._Tag
@@ -25383,7 +25470,7 @@ class UpdateTableRequest(AbstractModel):
 
     @property
     def DropIndexes(self):
-        r"""待删除索引信息
+        r"""<p>待删除索引信息</p>
         :rtype: list of DropIndex
         """
         return self._DropIndexes
@@ -25394,7 +25481,7 @@ class UpdateTableRequest(AbstractModel):
 
     @property
     def CreateIndexes(self):
-        r"""待创建索引信息
+        r"""<p>待创建索引信息</p>
         :rtype: list of CreateIndex
         """
         return self._CreateIndexes
@@ -25405,7 +25492,7 @@ class UpdateTableRequest(AbstractModel):
 
     @property
     def EnvId(self):
-        r"""云开发环境ID
+        r"""<p>云开发环境ID</p>
         :rtype: str
         """
         return self._EnvId
@@ -25416,7 +25503,7 @@ class UpdateTableRequest(AbstractModel):
 
     @property
     def MongoConnector(self):
-        r"""MongoDB连接器配置
+        r"""<p>MongoDB连接器配置</p>
         :rtype: :class:`tencentcloud.tcb.v20180608.models.MongoConnector`
         """
         return self._MongoConnector
@@ -26135,7 +26222,7 @@ class VerificationConfig(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Type: <p>短信验证码发送通道类型。</p><p>枚举值：</p><ul><li>default： 使用默认云开发短信包发送短信</li><li>apis： 使用云开发自定义 APIs 作为短信发送通道，需配合 Name 和 Method 参数使用。不传则不修改当前配置。</li><li>template： 自定义短信模板配置，需要配置TemplateProvider</li></ul>
+        :param _Type: <p>短信验证码发送通道类型。</p><p>枚举值：</p><ul><li>default： 使用默认云开发短信包发送短信</li><li>apis： 使用云开发自定义 APIs 作为短信发送通道，需配合 Name 和 Method 参数使用。不传则不修改当前配置。</li><li>template： 自定义短信模板配置，需要配置TemplateProvider</li><li>function： 云函数通道（第三方短信服务商），需要配置CloudFunction</li></ul>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Type: str
         :param _Name: <p>自定义 APIs 数据源唯一标识，当 Type 为 apis 时必填。用于定位微搭 APIs 中对应的数据源。</p>
@@ -26150,16 +26237,20 @@ class VerificationConfig(AbstractModel):
         :param _TemplateProvider: <p>自定义短信服务商模板配置</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TemplateProvider: :class:`tencentcloud.tcb.v20180608.models.SMSProviderTemplateConfig`
+        :param _CloudFunction: <p>云函数短信通道配置，当 Type 为 function 时必填</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CloudFunction: :class:`tencentcloud.tcb.v20180608.models.SMSCloudFunctionConfig`
         """
         self._Type = None
         self._Name = None
         self._Method = None
         self._SmsDayLimit = None
         self._TemplateProvider = None
+        self._CloudFunction = None
 
     @property
     def Type(self):
-        r"""<p>短信验证码发送通道类型。</p><p>枚举值：</p><ul><li>default： 使用默认云开发短信包发送短信</li><li>apis： 使用云开发自定义 APIs 作为短信发送通道，需配合 Name 和 Method 参数使用。不传则不修改当前配置。</li><li>template： 自定义短信模板配置，需要配置TemplateProvider</li></ul>
+        r"""<p>短信验证码发送通道类型。</p><p>枚举值：</p><ul><li>default： 使用默认云开发短信包发送短信</li><li>apis： 使用云开发自定义 APIs 作为短信发送通道，需配合 Name 和 Method 参数使用。不传则不修改当前配置。</li><li>template： 自定义短信模板配置，需要配置TemplateProvider</li><li>function： 云函数通道（第三方短信服务商），需要配置CloudFunction</li></ul>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -26217,6 +26308,18 @@ class VerificationConfig(AbstractModel):
     def TemplateProvider(self, TemplateProvider):
         self._TemplateProvider = TemplateProvider
 
+    @property
+    def CloudFunction(self):
+        r"""<p>云函数短信通道配置，当 Type 为 function 时必填</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.SMSCloudFunctionConfig`
+        """
+        return self._CloudFunction
+
+    @CloudFunction.setter
+    def CloudFunction(self, CloudFunction):
+        self._CloudFunction = CloudFunction
+
 
     def _deserialize(self, params):
         self._Type = params.get("Type")
@@ -26226,6 +26329,9 @@ class VerificationConfig(AbstractModel):
         if params.get("TemplateProvider") is not None:
             self._TemplateProvider = SMSProviderTemplateConfig()
             self._TemplateProvider._deserialize(params.get("TemplateProvider"))
+        if params.get("CloudFunction") is not None:
+            self._CloudFunction = SMSCloudFunctionConfig()
+            self._CloudFunction._deserialize(params.get("CloudFunction"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

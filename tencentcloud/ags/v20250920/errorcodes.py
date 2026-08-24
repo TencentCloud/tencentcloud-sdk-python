@@ -50,6 +50,33 @@ INTERNALERROR_VPCSERVICEUNAVAILABLE = 'InternalError.VPCServiceUnavailable'
 # 参数错误。
 INVALIDPARAMETER = 'InvalidParameter'
 
+# InvalidParameter.AffinityConfiguration
+INVALIDPARAMETER_AFFINITYCONFIGURATION = 'InvalidParameter.AffinityConfiguration'
+
+# InvalidParameter.DeploymentId
+INVALIDPARAMETER_DEPLOYMENTID = 'InvalidParameter.DeploymentId'
+
+# InvalidParameter.DeploymentName
+INVALIDPARAMETER_DEPLOYMENTNAME = 'InvalidParameter.DeploymentName'
+
+# InvalidParameter.Filters
+INVALIDPARAMETER_FILTERS = 'InvalidParameter.Filters'
+
+# InvalidParameter.LifecycleConfiguration
+INVALIDPARAMETER_LIFECYCLECONFIGURATION = 'InvalidParameter.LifecycleConfiguration'
+
+# InvalidParameter.Limit
+INVALIDPARAMETER_LIMIT = 'InvalidParameter.Limit'
+
+# InvalidParameter.Offset
+INVALIDPARAMETER_OFFSET = 'InvalidParameter.Offset'
+
+# InvalidParameter.ScalingConfiguration
+INVALIDPARAMETER_SCALINGCONFIGURATION = 'InvalidParameter.ScalingConfiguration'
+
+# InvalidParameter.ToolId
+INVALIDPARAMETER_TOOLID = 'InvalidParameter.ToolId'
+
 # 参数取值错误。
 INVALIDPARAMETERVALUE = 'InvalidParameterValue'
 
@@ -86,6 +113,9 @@ INVALIDPARAMETERVALUE_TOOLTYPE = 'InvalidParameterValue.ToolType'
 # 账号下 API 密钥数量达到上限
 LIMITEXCEEDED_APIKEYQUOTA = 'LimitExceeded.APIKeyQuota'
 
+# LimitExceeded.Deployment
+LIMITEXCEEDED_DEPLOYMENT = 'LimitExceeded.Deployment'
+
 # 沙箱实例配额超限
 LIMITEXCEEDED_SANDBOXINSTANCE = 'LimitExceeded.SandboxInstance'
 
@@ -101,11 +131,20 @@ MISSINGPARAMETER_VPCPARAMETERS = 'MissingParameter.VPCParameters'
 # 资源被占用。
 RESOURCEINUSE = 'ResourceInUse'
 
+# ResourceInUse.Deployment
+RESOURCEINUSE_DEPLOYMENT = 'ResourceInUse.Deployment'
+
+# ResourceInUse.DeploymentName
+RESOURCEINUSE_DEPLOYMENTNAME = 'ResourceInUse.DeploymentName'
+
 # 沙箱工具正在使用中
 RESOURCEINUSE_SANDBOXTOOL = 'ResourceInUse.SandboxTool'
 
 # 资源不存在。
 RESOURCENOTFOUND = 'ResourceNotFound'
+
+# ResourceNotFound.Deployment
+RESOURCENOTFOUND_DEPLOYMENT = 'ResourceNotFound.Deployment'
 
 # 沙箱实例不存在
 RESOURCENOTFOUND_SANDBOXINSTANCE = 'ResourceNotFound.SandboxInstance'
@@ -124,6 +163,9 @@ RESOURCENOTFOUND_SUBNET = 'ResourceNotFound.Subnet'
 
 # 资源不可用。
 RESOURCEUNAVAILABLE = 'ResourceUnavailable'
+
+# ResourceUnavailable.Deployment
+RESOURCEUNAVAILABLE_DEPLOYMENT = 'ResourceUnavailable.Deployment'
 
 # 沙箱工具不可用
 RESOURCEUNAVAILABLE_SANDBOXTOOL = 'ResourceUnavailable.SandboxTool'

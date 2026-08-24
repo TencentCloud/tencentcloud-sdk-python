@@ -999,6 +999,24 @@ class CsipClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateDspmAuditFilterStrategy(
+            self,
+            request: models.CreateDspmAuditFilterStrategyRequest,
+            opts: Dict = None,
+    ) -> models.CreateDspmAuditFilterStrategyResponse:
+        """
+        创建Dspm审计过滤策略
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateDspmAuditFilterStrategy"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateDspmAuditFilterStrategyResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateDspmExportTask(
             self,
             request: models.CreateDspmExportTaskRequest,
@@ -1179,6 +1197,24 @@ class CsipClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateDspmResource(
+            self,
+            request: models.CreateDspmResourceRequest,
+            opts: Dict = None,
+    ) -> models.CreateDspmResourceResponse:
+        """
+        创建Dspm实例
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateDspmResource"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateDspmResourceResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateDspmRiskExportJob(
             self,
             request: models.CreateDspmRiskExportJobRequest,
@@ -1192,6 +1228,24 @@ class CsipClient(AbstractClient):
         kwargs["action"] = "CreateDspmRiskExportJob"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.CreateDspmRiskExportJobResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def CreateDspmRiskStrategy(
+            self,
+            request: models.CreateDspmRiskStrategyRequest,
+            opts: Dict = None,
+    ) -> models.CreateDspmRiskStrategyResponse:
+        """
+        创建Dspm自定义风险策略
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateDspmRiskStrategy"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateDspmRiskStrategyResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -2171,6 +2225,24 @@ class CsipClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DeleteDspmAuditFilterStrategy(
+            self,
+            request: models.DeleteDspmAuditFilterStrategyRequest,
+            opts: Dict = None,
+    ) -> models.DeleteDspmAuditFilterStrategyResponse:
+        """
+        删除Dspm审计过滤策略
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteDspmAuditFilterStrategy"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteDspmAuditFilterStrategyResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DeleteDspmBackupLogList(
             self,
             request: models.DeleteDspmBackupLogListRequest,
@@ -2184,6 +2256,24 @@ class CsipClient(AbstractClient):
         kwargs["action"] = "DeleteDspmBackupLogList"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DeleteDspmBackupLogListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteDspmCkafkaConfig(
+            self,
+            request: models.DeleteDspmCkafkaConfigRequest,
+            opts: Dict = None,
+    ) -> models.DeleteDspmCkafkaConfigResponse:
+        """
+        取消日志投递配置
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteDspmCkafkaConfig"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteDspmCkafkaConfigResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -2346,6 +2436,42 @@ class CsipClient(AbstractClient):
         kwargs["action"] = "DeleteDspmRestoreLogList"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DeleteDspmRestoreLogListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteDspmRiskStrategy(
+            self,
+            request: models.DeleteDspmRiskStrategyRequest,
+            opts: Dict = None,
+    ) -> models.DeleteDspmRiskStrategyResponse:
+        """
+        删除Dspm自定义风险策略。仅支持删除自定义策略（rule_source=custom）；内置策略不可删除，请通过 ModifyDspmRiskStrategy 的 IsEnabled 禁用。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteDspmRiskStrategy"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteDspmRiskStrategyResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteDspmShareUserData(
+            self,
+            request: models.DeleteDspmShareUserDataRequest,
+            opts: Dict = None,
+    ) -> models.DeleteDspmShareUserDataResponse:
+        """
+        删除dspmg共享账号数据
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteDspmShareUserData"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteDspmShareUserDataResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -6017,6 +6143,24 @@ class CsipClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeDspmAuditFilterStrategy(
+            self,
+            request: models.DescribeDspmAuditFilterStrategyRequest,
+            opts: Dict = None,
+    ) -> models.DescribeDspmAuditFilterStrategyResponse:
+        """
+        查询dspm审计过滤策略
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeDspmAuditFilterStrategy"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeDspmAuditFilterStrategyResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeDspmBackupLogList(
             self,
             request: models.DescribeDspmBackupLogListRequest,
@@ -6048,6 +6192,42 @@ class CsipClient(AbstractClient):
         kwargs["action"] = "DescribeDspmBackupSetting"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeDspmBackupSettingResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeDspmCkafkaRouteList(
+            self,
+            request: models.DescribeDspmCkafkaRouteListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeDspmCkafkaRouteListResponse:
+        """
+        查询Ckafka实例的路由信息
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeDspmCkafkaRouteList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeDspmCkafkaRouteListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeDspmCkafkaTopicList(
+            self,
+            request: models.DescribeDspmCkafkaTopicListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeDspmCkafkaTopicListResponse:
+        """
+        查询实例的主题列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeDspmCkafkaTopicList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeDspmCkafkaTopicListResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -6305,6 +6485,24 @@ class CsipClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeDspmLogDeliveryType(
+            self,
+            request: models.DescribeDspmLogDeliveryTypeRequest,
+            opts: Dict = None,
+    ) -> models.DescribeDspmLogDeliveryTypeResponse:
+        """
+        查询日志投递的日志类型
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeDspmLogDeliveryType"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeDspmLogDeliveryTypeResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeDspmLogList(
             self,
             request: models.DescribeDspmLogListRequest,
@@ -6318,6 +6516,24 @@ class CsipClient(AbstractClient):
         kwargs["action"] = "DescribeDspmLogList"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeDspmLogListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeDspmLogTypeConfigList(
+            self,
+            request: models.DescribeDspmLogTypeConfigListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeDspmLogTypeConfigListResponse:
+        """
+        查询租户日志投递配置
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeDspmLogTypeConfigList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeDspmLogTypeConfigListResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -6372,6 +6588,24 @@ class CsipClient(AbstractClient):
         kwargs["action"] = "DescribeDspmPersonalIdentifyList"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeDspmPersonalIdentifyListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeDspmResource(
+            self,
+            request: models.DescribeDspmResourceRequest,
+            opts: Dict = None,
+    ) -> models.DescribeDspmResourceResponse:
+        """
+        查询Dspm实例
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeDspmResource"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeDspmResourceResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -6467,6 +6701,24 @@ class CsipClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeDspmSessionList(
+            self,
+            request: models.DescribeDspmSessionListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeDspmSessionListResponse:
+        """
+        查询审计会话列表信息
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeDspmSessionList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeDspmSessionListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeDspmStatistics(
             self,
             request: models.DescribeDspmStatisticsRequest,
@@ -6534,6 +6786,24 @@ class CsipClient(AbstractClient):
         kwargs["action"] = "DescribeDspmSyncUsersStatus"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeDspmSyncUsersStatusResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeDspmUserCkafkaInstanceList(
+            self,
+            request: models.DescribeDspmUserCkafkaInstanceListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeDspmUserCkafkaInstanceListResponse:
+        """
+        查询租户ckafka实例列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeDspmUserCkafkaInstanceList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeDspmUserCkafkaInstanceListResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -10835,6 +11105,24 @@ class CsipClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def ModifyDspmAuditFilterStrategy(
+            self,
+            request: models.ModifyDspmAuditFilterStrategyRequest,
+            opts: Dict = None,
+    ) -> models.ModifyDspmAuditFilterStrategyResponse:
+        """
+        修改Dspm审计过滤策略
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyDspmAuditFilterStrategy"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyDspmAuditFilterStrategyResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ModifyDspmBackupSetting(
             self,
             request: models.ModifyDspmBackupSettingRequest,
@@ -10848,6 +11136,60 @@ class CsipClient(AbstractClient):
         kwargs["action"] = "ModifyDspmBackupSetting"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ModifyDspmBackupSettingResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyDspmCkafkaSave(
+            self,
+            request: models.ModifyDspmCkafkaSaveRequest,
+            opts: Dict = None,
+    ) -> models.ModifyDspmCkafkaSaveResponse:
+        """
+        租户Ckafka配置保存
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyDspmCkafkaSave"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyDspmCkafkaSaveResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyDspmCkafkaStart(
+            self,
+            request: models.ModifyDspmCkafkaStartRequest,
+            opts: Dict = None,
+    ) -> models.ModifyDspmCkafkaStartResponse:
+        """
+        日志投递开启
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyDspmCkafkaStart"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyDspmCkafkaStartResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyDspmCkafkaStop(
+            self,
+            request: models.ModifyDspmCkafkaStopRequest,
+            opts: Dict = None,
+    ) -> models.ModifyDspmCkafkaStopResponse:
+        """
+        日志类型投递关闭
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyDspmCkafkaStop"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyDspmCkafkaStopResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -11028,6 +11370,24 @@ class CsipClient(AbstractClient):
         kwargs["action"] = "ModifyDspmIpInfo"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ModifyDspmIpInfoResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyDspmLogDeliveryType(
+            self,
+            request: models.ModifyDspmLogDeliveryTypeRequest,
+            opts: Dict = None,
+    ) -> models.ModifyDspmLogDeliveryTypeResponse:
+        """
+        修改日志投递配置信息
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyDspmLogDeliveryType"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyDspmLogDeliveryTypeResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -11906,6 +12266,24 @@ class CsipClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def ModifyShareUserDspm(
+            self,
+            request: models.ModifyShareUserDspmRequest,
+            opts: Dict = None,
+    ) -> models.ModifyShareUserDspmResponse:
+        """
+        编辑dspm监测账号
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyShareUserDspm"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyShareUserDspmResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ModifySkillScanAlertStatus(
             self,
             request: models.ModifySkillScanAlertStatusRequest,
@@ -12261,6 +12639,24 @@ class CsipClient(AbstractClient):
         kwargs["action"] = "SendDspmAssetLoginSmsCode"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.SendDspmAssetLoginSmsCodeResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def SendDspmCkafkaTest(
+            self,
+            request: models.SendDspmCkafkaTestRequest,
+            opts: Dict = None,
+    ) -> models.SendDspmCkafkaTestResponse:
+        """
+        租户Ckafka联通性测试
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "SendDspmCkafkaTest"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.SendDspmCkafkaTestResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

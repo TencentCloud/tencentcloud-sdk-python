@@ -16934,14 +16934,14 @@ class GetProjectRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ProjectId: 项目id。一般使用项目Id来查询，与projectName必须存在一个。
+        :param _ProjectId: <p>项目id。一般使用项目Id来查询，与projectName必须存在一个。</p>
         :type ProjectId: str
         """
         self._ProjectId = None
 
     @property
     def ProjectId(self):
-        r"""项目id。一般使用项目Id来查询，与projectName必须存在一个。
+        r"""<p>项目id。一般使用项目Id来查询，与projectName必须存在一个。</p>
         :rtype: str
         """
         return self._ProjectId
@@ -16970,7 +16970,7 @@ class GetProjectResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Data: 项目信息
+        :param _Data: <p>项目信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Data: :class:`tencentcloud.wedata.v20250806.models.Project`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -16981,7 +16981,7 @@ class GetProjectResponse(AbstractModel):
 
     @property
     def Data(self):
-        r"""项目信息
+        r"""<p>项目信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.wedata.v20250806.models.Project`
         """
@@ -37319,32 +37319,34 @@ class Project(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ProjectId: 项目id
+        :param _ProjectId: <p>项目id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ProjectId: str
-        :param _ProjectName: 项目标识，英文名
+        :param _ProjectName: <p>项目标识，英文名</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ProjectName: str
-        :param _DisplayName: 项目显示名称，可以为中文名
+        :param _DisplayName: <p>项目显示名称，可以为中文名</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type DisplayName: str
-        :param _Description: 备注
+        :param _Description: <p>备注</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Description: str
-        :param _CreateTime: 创建时间
+        :param _CreateTime: <p>创建时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type CreateTime: str
-        :param _CreatorUin: 项目创建人id
+        :param _CreatorUin: <p>项目创建人id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type CreatorUin: str
-        :param _ProjectOwnerUin: 项目责任人id
+        :param _ProjectOwnerUin: <p>项目责任人id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ProjectOwnerUin: str
-        :param _Status: 项目状态：0：禁用，1：启用，-3:禁用中，2：启用中
+        :param _Status: <p>项目状态：0：禁用，1：启用，-3:禁用中，2：启用中</p>
         :type Status: int
-        :param _ProjectModel: 项目模式，SIMPLE：简单模式 STANDARD：标准模式
+        :param _ProjectModel: <p>项目模式，SIMPLE：简单模式 STANDARD：标准模式</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ProjectModel: str
+        :param _WorkspaceExt: <p>项目的额外配置参数，{Key: &quot;scheduleMode&quot;, Value: &quot;task|workflow&quot;}</p>
+        :type WorkspaceExt: list of WorkspaceExt
         """
         self._ProjectId = None
         self._ProjectName = None
@@ -37355,10 +37357,11 @@ class Project(AbstractModel):
         self._ProjectOwnerUin = None
         self._Status = None
         self._ProjectModel = None
+        self._WorkspaceExt = None
 
     @property
     def ProjectId(self):
-        r"""项目id
+        r"""<p>项目id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -37370,7 +37373,7 @@ class Project(AbstractModel):
 
     @property
     def ProjectName(self):
-        r"""项目标识，英文名
+        r"""<p>项目标识，英文名</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -37382,7 +37385,7 @@ class Project(AbstractModel):
 
     @property
     def DisplayName(self):
-        r"""项目显示名称，可以为中文名
+        r"""<p>项目显示名称，可以为中文名</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -37394,7 +37397,7 @@ class Project(AbstractModel):
 
     @property
     def Description(self):
-        r"""备注
+        r"""<p>备注</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -37406,7 +37409,7 @@ class Project(AbstractModel):
 
     @property
     def CreateTime(self):
-        r"""创建时间
+        r"""<p>创建时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -37418,7 +37421,7 @@ class Project(AbstractModel):
 
     @property
     def CreatorUin(self):
-        r"""项目创建人id
+        r"""<p>项目创建人id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -37430,7 +37433,7 @@ class Project(AbstractModel):
 
     @property
     def ProjectOwnerUin(self):
-        r"""项目责任人id
+        r"""<p>项目责任人id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -37442,7 +37445,7 @@ class Project(AbstractModel):
 
     @property
     def Status(self):
-        r"""项目状态：0：禁用，1：启用，-3:禁用中，2：启用中
+        r"""<p>项目状态：0：禁用，1：启用，-3:禁用中，2：启用中</p>
         :rtype: int
         """
         return self._Status
@@ -37453,7 +37456,7 @@ class Project(AbstractModel):
 
     @property
     def ProjectModel(self):
-        r"""项目模式，SIMPLE：简单模式 STANDARD：标准模式
+        r"""<p>项目模式，SIMPLE：简单模式 STANDARD：标准模式</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -37462,6 +37465,17 @@ class Project(AbstractModel):
     @ProjectModel.setter
     def ProjectModel(self, ProjectModel):
         self._ProjectModel = ProjectModel
+
+    @property
+    def WorkspaceExt(self):
+        r"""<p>项目的额外配置参数，{Key: &quot;scheduleMode&quot;, Value: &quot;task|workflow&quot;}</p>
+        :rtype: list of WorkspaceExt
+        """
+        return self._WorkspaceExt
+
+    @WorkspaceExt.setter
+    def WorkspaceExt(self, WorkspaceExt):
+        self._WorkspaceExt = WorkspaceExt
 
 
     def _deserialize(self, params):
@@ -37474,6 +37488,12 @@ class Project(AbstractModel):
         self._ProjectOwnerUin = params.get("ProjectOwnerUin")
         self._Status = params.get("Status")
         self._ProjectModel = params.get("ProjectModel")
+        if params.get("WorkspaceExt") is not None:
+            self._WorkspaceExt = []
+            for item in params.get("WorkspaceExt"):
+                obj = WorkspaceExt()
+                obj._deserialize(item)
+                self._WorkspaceExt.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -37738,20 +37758,23 @@ class ProjectRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ProjectName: 项目标识，英文名，以字母开头，可包含字母、数字和下划线，不能超过32个字符
+        :param _ProjectName: <p>项目标识，英文名，以字母开头，可包含字母、数字和下划线，不能超过32个字符</p>
         :type ProjectName: str
-        :param _DisplayName: 项目显示名称，可以为中文名，以字母开头，可包含字母、数字和下划线，不能超过32个字符
+        :param _DisplayName: <p>项目显示名称，可以为中文名，以字母开头，可包含字母、数字和下划线，不能超过32个字符</p>
         :type DisplayName: str
-        :param _ProjectModel: 项目模式，SIMPLE（默认）：简单模式 STANDARD：标准模式
+        :param _ProjectModel: <p>项目模式，SIMPLE（默认）：简单模式 STANDARD：标准模式</p>
         :type ProjectModel: str
+        :param _ScheduleMode: <p>项目调度模式，task：任务模式 workflow：工作流模式</p>
+        :type ScheduleMode: str
         """
         self._ProjectName = None
         self._DisplayName = None
         self._ProjectModel = None
+        self._ScheduleMode = None
 
     @property
     def ProjectName(self):
-        r"""项目标识，英文名，以字母开头，可包含字母、数字和下划线，不能超过32个字符
+        r"""<p>项目标识，英文名，以字母开头，可包含字母、数字和下划线，不能超过32个字符</p>
         :rtype: str
         """
         return self._ProjectName
@@ -37762,7 +37785,7 @@ class ProjectRequest(AbstractModel):
 
     @property
     def DisplayName(self):
-        r"""项目显示名称，可以为中文名，以字母开头，可包含字母、数字和下划线，不能超过32个字符
+        r"""<p>项目显示名称，可以为中文名，以字母开头，可包含字母、数字和下划线，不能超过32个字符</p>
         :rtype: str
         """
         return self._DisplayName
@@ -37773,7 +37796,7 @@ class ProjectRequest(AbstractModel):
 
     @property
     def ProjectModel(self):
-        r"""项目模式，SIMPLE（默认）：简单模式 STANDARD：标准模式
+        r"""<p>项目模式，SIMPLE（默认）：简单模式 STANDARD：标准模式</p>
         :rtype: str
         """
         return self._ProjectModel
@@ -37782,11 +37805,23 @@ class ProjectRequest(AbstractModel):
     def ProjectModel(self, ProjectModel):
         self._ProjectModel = ProjectModel
 
+    @property
+    def ScheduleMode(self):
+        r"""<p>项目调度模式，task：任务模式 workflow：工作流模式</p>
+        :rtype: str
+        """
+        return self._ScheduleMode
+
+    @ScheduleMode.setter
+    def ScheduleMode(self, ScheduleMode):
+        self._ScheduleMode = ScheduleMode
+
 
     def _deserialize(self, params):
         self._ProjectName = params.get("ProjectName")
         self._DisplayName = params.get("DisplayName")
         self._ProjectModel = params.get("ProjectModel")
+        self._ScheduleMode = params.get("ScheduleMode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -54770,6 +54805,9 @@ class TriggerTaskBrief(AbstractModel):
         :param _ExecuteUserUin: <p>运行账号ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ExecuteUserUin: str
+        :param _CycleType: <p>周期类型</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CycleType: str
         """
         self._ProjectId = None
         self._ProjectName = None
@@ -54787,6 +54825,7 @@ class TriggerTaskBrief(AbstractModel):
         self._ExecutionStartTime = None
         self._DependencyTriggerPolicy = None
         self._ExecuteUserUin = None
+        self._CycleType = None
 
     @property
     def ProjectId(self):
@@ -54980,6 +55019,18 @@ class TriggerTaskBrief(AbstractModel):
     def ExecuteUserUin(self, ExecuteUserUin):
         self._ExecuteUserUin = ExecuteUserUin
 
+    @property
+    def CycleType(self):
+        r"""<p>周期类型</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CycleType
+
+    @CycleType.setter
+    def CycleType(self, CycleType):
+        self._CycleType = CycleType
+
 
     def _deserialize(self, params):
         self._ProjectId = params.get("ProjectId")
@@ -54998,6 +55049,7 @@ class TriggerTaskBrief(AbstractModel):
         self._ExecutionStartTime = params.get("ExecutionStartTime")
         self._DependencyTriggerPolicy = params.get("DependencyTriggerPolicy")
         self._ExecuteUserUin = params.get("ExecuteUserUin")
+        self._CycleType = params.get("CycleType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -65321,6 +65373,61 @@ class WorkflowTriggerConfig(AbstractModel):
         self._Recursive = params.get("Recursive")
         self._TriggerMinimumIntervalSecond = params.get("TriggerMinimumIntervalSecond")
         self._TriggerWaitTimeSecond = params.get("TriggerWaitTimeSecond")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class WorkspaceExt(AbstractModel):
+    r"""项目扩展信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Key: <p>参数名</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Key: str
+        :param _Value: <p>参数值</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Value: str
+        """
+        self._Key = None
+        self._Value = None
+
+    @property
+    def Key(self):
+        r"""<p>参数名</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Value(self):
+        r"""<p>参数值</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+
+    def _deserialize(self, params):
+        self._Key = params.get("Key")
+        self._Value = params.get("Value")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

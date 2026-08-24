@@ -15841,16 +15841,14 @@ class DescribeClusterInfoRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例 ID。可通过 [DescribeDBInstances](https://cloud.tencent.com/document/product/236/15872) 接口获取。
-说明：仅能输入实例架构为云盘版的实例 ID，对应控制台实例配置显示为“云盘版（云盘）”的实例。
+        :param _InstanceId: <p>实例 ID。可通过 <a href="https://cloud.tencent.com/document/product/236/15872">DescribeDBInstances</a> 接口获取。<br>说明：仅能输入实例架构为云盘版的实例 ID，对应控制台实例配置显示为“云盘版（云盘）”的实例。</p>
         :type InstanceId: str
         """
         self._InstanceId = None
 
     @property
     def InstanceId(self):
-        r"""实例 ID。可通过 [DescribeDBInstances](https://cloud.tencent.com/document/product/236/15872) 接口获取。
-说明：仅能输入实例架构为云盘版的实例 ID，对应控制台实例配置显示为“云盘版（云盘）”的实例。
+        r"""<p>实例 ID。可通过 <a href="https://cloud.tencent.com/document/product/236/15872">DescribeDBInstances</a> 接口获取。<br>说明：仅能输入实例架构为云盘版的实例 ID，对应控制台实例配置显示为“云盘版（云盘）”的实例。</p>
         :rtype: str
         """
         return self._InstanceId
@@ -15879,17 +15877,17 @@ class DescribeClusterInfoResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ClusterName: 实例名称。
+        :param _ClusterName: <p>实例名称。</p>
         :type ClusterName: str
-        :param _ReadWriteAddress: 云盘版实例的读写地址信息。
+        :param _ReadWriteAddress: <p>云盘版实例的读写地址信息。</p>
         :type ReadWriteAddress: :class:`tencentcloud.cdb.v20170320.models.AddressInfo`
-        :param _ReadOnlyAddress: 云盘版实例的只读地址信息。
+        :param _ReadOnlyAddress: <p>云盘版实例的只读地址信息。</p>
         :type ReadOnlyAddress: list of AddressInfo
-        :param _NodeList: 云盘版实例的节点列表信息。
+        :param _NodeList: <p>云盘版实例的节点列表信息。</p>
         :type NodeList: list of ClusterNodeInfo
-        :param _ReadonlyLimit: 只读空间保护阈值,单位GB
+        :param _ReadonlyLimit: <p>只读空间保护阈值,单位GB</p>
         :type ReadonlyLimit: int
-        :param _NodeCount: 实例节点数。
+        :param _NodeCount: <p>实例节点数。</p>
         :type NodeCount: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -15904,7 +15902,7 @@ class DescribeClusterInfoResponse(AbstractModel):
 
     @property
     def ClusterName(self):
-        r"""实例名称。
+        r"""<p>实例名称。</p>
         :rtype: str
         """
         return self._ClusterName
@@ -15915,7 +15913,7 @@ class DescribeClusterInfoResponse(AbstractModel):
 
     @property
     def ReadWriteAddress(self):
-        r"""云盘版实例的读写地址信息。
+        r"""<p>云盘版实例的读写地址信息。</p>
         :rtype: :class:`tencentcloud.cdb.v20170320.models.AddressInfo`
         """
         return self._ReadWriteAddress
@@ -15926,7 +15924,7 @@ class DescribeClusterInfoResponse(AbstractModel):
 
     @property
     def ReadOnlyAddress(self):
-        r"""云盘版实例的只读地址信息。
+        r"""<p>云盘版实例的只读地址信息。</p>
         :rtype: list of AddressInfo
         """
         return self._ReadOnlyAddress
@@ -15937,7 +15935,7 @@ class DescribeClusterInfoResponse(AbstractModel):
 
     @property
     def NodeList(self):
-        r"""云盘版实例的节点列表信息。
+        r"""<p>云盘版实例的节点列表信息。</p>
         :rtype: list of ClusterNodeInfo
         """
         return self._NodeList
@@ -15948,7 +15946,7 @@ class DescribeClusterInfoResponse(AbstractModel):
 
     @property
     def ReadonlyLimit(self):
-        r"""只读空间保护阈值,单位GB
+        r"""<p>只读空间保护阈值,单位GB</p>
         :rtype: int
         """
         return self._ReadonlyLimit
@@ -15959,7 +15957,7 @@ class DescribeClusterInfoResponse(AbstractModel):
 
     @property
     def NodeCount(self):
-        r"""实例节点数。
+        r"""<p>实例节点数。</p>
         :rtype: int
         """
         return self._NodeCount

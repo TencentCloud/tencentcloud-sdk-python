@@ -765,6 +765,24 @@ class IotexplorerClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateTWeSeePerson(
+            self,
+            request: models.CreateTWeSeePersonRequest,
+            opts: Dict = None,
+    ) -> models.CreateTWeSeePersonResponse:
+        """
+        创建一个 TWeSee 人员，可关联已导入的人脸。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateTWeSeePerson"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateTWeSeePersonResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateTWeSeePostPaidService(
             self,
             request: models.CreateTWeSeePostPaidServiceRequest,
@@ -1192,6 +1210,42 @@ class IotexplorerClient(AbstractClient):
         kwargs["action"] = "DeleteTWeSeeCallback"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DeleteTWeSeeCallbackResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteTWeSeeFace(
+            self,
+            request: models.DeleteTWeSeeFaceRequest,
+            opts: Dict = None,
+    ) -> models.DeleteTWeSeeFaceResponse:
+        """
+        删除指定 TWeSee 人脸。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteTWeSeeFace"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteTWeSeeFaceResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteTWeSeePerson(
+            self,
+            request: models.DeleteTWeSeePersonRequest,
+            opts: Dict = None,
+    ) -> models.DeleteTWeSeePersonResponse:
+        """
+        删除指定 TWeSee 人员，可选择同时删除其关联人脸。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteTWeSeePerson"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteTWeSeePersonResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -2349,6 +2403,42 @@ class IotexplorerClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeTWeSeeFace(
+            self,
+            request: models.DescribeTWeSeeFaceRequest,
+            opts: Dict = None,
+    ) -> models.DescribeTWeSeeFaceResponse:
+        """
+        查询指定 TWeSee 人脸详情。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeTWeSeeFace"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeTWeSeeFaceResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeTWeSeePerson(
+            self,
+            request: models.DescribeTWeSeePersonRequest,
+            opts: Dict = None,
+    ) -> models.DescribeTWeSeePersonResponse:
+        """
+        查询指定 TWeSee 人员详情及其代表人脸。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeTWeSeePerson"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeTWeSeePersonResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeTWeSeePostPaidService(
             self,
             request: models.DescribeTWeSeePostPaidServiceRequest,
@@ -3125,6 +3215,24 @@ class IotexplorerClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def ImportTWeSeeFaces(
+            self,
+            request: models.ImportTWeSeeFacesRequest,
+            opts: Dict = None,
+    ) -> models.ImportTWeSeeFacesResponse:
+        """
+        检测图片中的人脸，并返回可用于人员管理的人脸元数据。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ImportTWeSeeFaces"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ImportTWeSeeFacesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def InheritCloudStorageUser(
             self,
             request: models.InheritCloudStorageUserRequest,
@@ -3390,6 +3498,24 @@ class IotexplorerClient(AbstractClient):
         kwargs["action"] = "ListTWeSeeCallback"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ListTWeSeeCallbackResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ListTWeSeePersons(
+            self,
+            request: models.ListTWeSeePersonsRequest,
+            opts: Dict = None,
+    ) -> models.ListTWeSeePersonsResponse:
+        """
+        查询指定设备的 TWeSee 人员列表。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ListTWeSeePersons"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ListTWeSeePersonsResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -3714,6 +3840,42 @@ class IotexplorerClient(AbstractClient):
         kwargs["action"] = "ModifyTWeSeeConfig"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ModifyTWeSeeConfigResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyTWeSeeFace(
+            self,
+            request: models.ModifyTWeSeeFaceRequest,
+            opts: Dict = None,
+    ) -> models.ModifyTWeSeeFaceResponse:
+        """
+        将 TWeSee 人脸关联到指定人员，或修改其代表人脸状态。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyTWeSeeFace"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyTWeSeeFaceResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyTWeSeePerson(
+            self,
+            request: models.ModifyTWeSeePersonRequest,
+            opts: Dict = None,
+    ) -> models.ModifyTWeSeePersonResponse:
+        """
+        修改指定 TWeSee 人员的名称或记忆状态。Name、IsRemembered 至少传入一项，不支持取消持久记忆。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyTWeSeePerson"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyTWeSeePersonResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

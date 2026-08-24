@@ -25,6 +25,24 @@ class AgsClient(AbstractClient):
     _endpoint = 'ags.tencentcloudapi.com'
     _service = 'ags'
 
+    async def AcquireDeploymentToken(
+            self,
+            request: models.AcquireDeploymentTokenRequest,
+            opts: Dict = None,
+    ) -> models.AcquireDeploymentTokenResponse:
+        """
+        获取 Deployment 访问 Token
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "AcquireDeploymentToken"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.AcquireDeploymentTokenResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def AcquireSandboxInstanceToken(
             self,
             request: models.AcquireSandboxInstanceTokenRequest,
@@ -57,6 +75,24 @@ class AgsClient(AbstractClient):
         kwargs["action"] = "CreateAPIKey"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.CreateAPIKeyResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def CreateDeployment(
+            self,
+            request: models.CreateDeploymentRequest,
+            opts: Dict = None,
+    ) -> models.CreateDeploymentResponse:
+        """
+        创建 Deployment
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateDeployment"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateDeploymentResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -116,6 +152,24 @@ class AgsClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DeleteDeployment(
+            self,
+            request: models.DeleteDeploymentRequest,
+            opts: Dict = None,
+    ) -> models.DeleteDeploymentResponse:
+        """
+        删除 Deployment
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteDeployment"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteDeploymentResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DeleteSandboxTool(
             self,
             request: models.DeleteSandboxToolRequest,
@@ -147,6 +201,42 @@ class AgsClient(AbstractClient):
         kwargs["action"] = "DescribeAPIKeyList"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeAPIKeyListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeDeployment(
+            self,
+            request: models.DescribeDeploymentRequest,
+            opts: Dict = None,
+    ) -> models.DescribeDeploymentResponse:
+        """
+        查询 Deployment 信息
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeDeployment"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeDeploymentResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeDeploymentList(
+            self,
+            request: models.DescribeDeploymentListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeDeploymentListResponse:
+        """
+        查询 Deployment 列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeDeploymentList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeDeploymentListResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -201,6 +291,24 @@ class AgsClient(AbstractClient):
         kwargs["action"] = "DescribeSandboxToolList"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeSandboxToolListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyDeployment(
+            self,
+            request: models.ModifyDeploymentRequest,
+            opts: Dict = None,
+    ) -> models.ModifyDeploymentResponse:
+        """
+        修改 Deployment
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyDeployment"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyDeploymentResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

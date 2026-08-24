@@ -961,6 +961,29 @@ class IotexplorerClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateTWeSeePerson(self, request):
+        r"""创建一个 TWeSee 人员，可关联已导入的人脸。
+
+        :param request: Request instance for CreateTWeSeePerson.
+        :type request: :class:`tencentcloud.iotexplorer.v20190423.models.CreateTWeSeePersonRequest`
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.CreateTWeSeePersonResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateTWeSeePerson", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateTWeSeePersonResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateTWeSeePostPaidService(self, request):
         r"""开通 TWeSee 后付费服务
 
@@ -1504,6 +1527,52 @@ class IotexplorerClient(AbstractClient):
             body = self.call("DeleteTWeSeeCallback", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteTWeSeeCallbackResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteTWeSeeFace(self, request):
+        r"""删除指定 TWeSee 人脸。
+
+        :param request: Request instance for DeleteTWeSeeFace.
+        :type request: :class:`tencentcloud.iotexplorer.v20190423.models.DeleteTWeSeeFaceRequest`
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.DeleteTWeSeeFaceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteTWeSeeFace", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteTWeSeeFaceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteTWeSeePerson(self, request):
+        r"""删除指定 TWeSee 人员，可选择同时删除其关联人脸。
+
+        :param request: Request instance for DeleteTWeSeePerson.
+        :type request: :class:`tencentcloud.iotexplorer.v20190423.models.DeleteTWeSeePersonRequest`
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.DeleteTWeSeePersonResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteTWeSeePerson", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteTWeSeePersonResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -2985,6 +3054,52 @@ class IotexplorerClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeTWeSeeFace(self, request):
+        r"""查询指定 TWeSee 人脸详情。
+
+        :param request: Request instance for DescribeTWeSeeFace.
+        :type request: :class:`tencentcloud.iotexplorer.v20190423.models.DescribeTWeSeeFaceRequest`
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.DescribeTWeSeeFaceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeTWeSeeFace", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeTWeSeeFaceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeTWeSeePerson(self, request):
+        r"""查询指定 TWeSee 人员详情及其代表人脸。
+
+        :param request: Request instance for DescribeTWeSeePerson.
+        :type request: :class:`tencentcloud.iotexplorer.v20190423.models.DescribeTWeSeePersonRequest`
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.DescribeTWeSeePersonResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeTWeSeePerson", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeTWeSeePersonResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeTWeSeePostPaidService(self, request):
         r"""查询 TWeSee 后付费服务
 
@@ -3976,6 +4091,29 @@ class IotexplorerClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ImportTWeSeeFaces(self, request):
+        r"""检测图片中的人脸，并返回可用于人员管理的人脸元数据。
+
+        :param request: Request instance for ImportTWeSeeFaces.
+        :type request: :class:`tencentcloud.iotexplorer.v20190423.models.ImportTWeSeeFacesRequest`
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.ImportTWeSeeFacesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ImportTWeSeeFaces", params, headers=headers)
+            response = json.loads(body)
+            model = models.ImportTWeSeeFacesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def InheritCloudStorageUser(self, request):
         r"""继承云存用户
 
@@ -4312,6 +4450,29 @@ class IotexplorerClient(AbstractClient):
             body = self.call("ListTWeSeeCallback", params, headers=headers)
             response = json.loads(body)
             model = models.ListTWeSeeCallbackResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ListTWeSeePersons(self, request):
+        r"""查询指定设备的 TWeSee 人员列表。
+
+        :param request: Request instance for ListTWeSeePersons.
+        :type request: :class:`tencentcloud.iotexplorer.v20190423.models.ListTWeSeePersonsRequest`
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.ListTWeSeePersonsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ListTWeSeePersons", params, headers=headers)
+            response = json.loads(body)
+            model = models.ListTWeSeePersonsResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -4726,6 +4887,52 @@ class IotexplorerClient(AbstractClient):
             body = self.call("ModifyTWeSeeConfig", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyTWeSeeConfigResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyTWeSeeFace(self, request):
+        r"""将 TWeSee 人脸关联到指定人员，或修改其代表人脸状态。
+
+        :param request: Request instance for ModifyTWeSeeFace.
+        :type request: :class:`tencentcloud.iotexplorer.v20190423.models.ModifyTWeSeeFaceRequest`
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.ModifyTWeSeeFaceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyTWeSeeFace", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyTWeSeeFaceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyTWeSeePerson(self, request):
+        r"""修改指定 TWeSee 人员的名称或记忆状态。Name、IsRemembered 至少传入一项，不支持取消持久记忆。
+
+        :param request: Request instance for ModifyTWeSeePerson.
+        :type request: :class:`tencentcloud.iotexplorer.v20190423.models.ModifyTWeSeePersonRequest`
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.ModifyTWeSeePersonResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyTWeSeePerson", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyTWeSeePersonResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

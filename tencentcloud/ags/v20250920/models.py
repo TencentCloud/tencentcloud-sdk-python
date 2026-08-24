@@ -114,6 +114,100 @@ class APIKeyInfo(AbstractModel):
         
 
 
+class AcquireDeploymentTokenRequest(AbstractModel):
+    r"""AcquireDeploymentToken请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DeploymentId: <p>目标 ACTIVE Deployment 的稳定 ID。</p>
+        :type DeploymentId: str
+        """
+        self._DeploymentId = None
+
+    @property
+    def DeploymentId(self):
+        r"""<p>目标 ACTIVE Deployment 的稳定 ID。</p>
+        :rtype: str
+        """
+        return self._DeploymentId
+
+    @DeploymentId.setter
+    def DeploymentId(self, DeploymentId):
+        self._DeploymentId = DeploymentId
+
+
+    def _deserialize(self, params):
+        self._DeploymentId = params.get("DeploymentId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AcquireDeploymentTokenResponse(AbstractModel):
+    r"""AcquireDeploymentToken返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Token: <p>只用于目标 Deployment 数据面入口的短期 bearer Token，格式为 dpt_ 加非空、无 padding 的 Base64URL opaque 后缀。</p>
+        :type Token: str
+        :param _ExpiresAt: <p>Token 的绝对过期时间，UTC、秒精度 RFC3339 格式。</p>
+        :type ExpiresAt: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Token = None
+        self._ExpiresAt = None
+        self._RequestId = None
+
+    @property
+    def Token(self):
+        r"""<p>只用于目标 Deployment 数据面入口的短期 bearer Token，格式为 dpt_ 加非空、无 padding 的 Base64URL opaque 后缀。</p>
+        :rtype: str
+        """
+        return self._Token
+
+    @Token.setter
+    def Token(self, Token):
+        self._Token = Token
+
+    @property
+    def ExpiresAt(self):
+        r"""<p>Token 的绝对过期时间，UTC、秒精度 RFC3339 格式。</p>
+        :rtype: str
+        """
+        return self._ExpiresAt
+
+    @ExpiresAt.setter
+    def ExpiresAt(self, ExpiresAt):
+        self._ExpiresAt = ExpiresAt
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Token = params.get("Token")
+        self._ExpiresAt = params.get("ExpiresAt")
+        self._RequestId = params.get("RequestId")
+
+
 class AcquireSandboxInstanceTokenRequest(AbstractModel):
     r"""AcquireSandboxInstanceToken请求参数结构体
 
@@ -221,6 +315,57 @@ class AcquireSandboxInstanceTokenResponse(AbstractModel):
         self._ExpiresAt = params.get("ExpiresAt")
         self._TrafficToken = params.get("TrafficToken")
         self._RequestId = params.get("RequestId")
+
+
+class AffinityConfiguration(AbstractModel):
+    r"""Deployment 对 Sandbox Instance 的亲和配置。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Mode: <p>Affinity 模式。</p><p>枚举值：</p><ul><li>BEST_EFFORT：优先复用原 Instance，不可用时允许改选。</li><li>STRICT：只复用原 Instance，不可用时失败且不改选。</li><li>EXCLUSIVE：一个 Affinity ID 独占一个 Instance，不能迁移。</li></ul><p>缺失或空字符串表示关闭 Affinity。</p>
+        :type Mode: str
+        :param _HeaderName: <p>请求和响应使用的 Affinity Header 名称。必须符合 HTTP field-name token 语法，长度为 1..128 个 ASCII 字节，且不能使用平台保留 Header。</p>
+        :type HeaderName: str
+        """
+        self._Mode = None
+        self._HeaderName = None
+
+    @property
+    def Mode(self):
+        r"""<p>Affinity 模式。</p><p>枚举值：</p><ul><li>BEST_EFFORT：优先复用原 Instance，不可用时允许改选。</li><li>STRICT：只复用原 Instance，不可用时失败且不改选。</li><li>EXCLUSIVE：一个 Affinity ID 独占一个 Instance，不能迁移。</li></ul><p>缺失或空字符串表示关闭 Affinity。</p>
+        :rtype: str
+        """
+        return self._Mode
+
+    @Mode.setter
+    def Mode(self, Mode):
+        self._Mode = Mode
+
+    @property
+    def HeaderName(self):
+        r"""<p>请求和响应使用的 Affinity Header 名称。必须符合 HTTP field-name token 语法，长度为 1..128 个 ASCII 字节，且不能使用平台保留 Header。</p>
+        :rtype: str
+        """
+        return self._HeaderName
+
+    @HeaderName.setter
+    def HeaderName(self, HeaderName):
+        self._HeaderName = HeaderName
+
+
+    def _deserialize(self, params):
+        self._Mode = params.get("Mode")
+        self._HeaderName = params.get("HeaderName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class AgentBucketStorageSource(AbstractModel):
@@ -366,6 +511,44 @@ class CfsStorageSource(AbstractModel):
     def _deserialize(self, params):
         self._FileSystemId = params.get("FileSystemId")
         self._Path = params.get("Path")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ComputerConfiguration(AbstractModel):
+    r"""桌面电脑环境类沙箱配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _WAAConfiguration: <p>waa沙箱工具配置</p>
+        :type WAAConfiguration: :class:`tencentcloud.ags.v20250920.models.WAAConfiguration`
+        """
+        self._WAAConfiguration = None
+
+    @property
+    def WAAConfiguration(self):
+        r"""<p>waa沙箱工具配置</p>
+        :rtype: :class:`tencentcloud.ags.v20250920.models.WAAConfiguration`
+        """
+        return self._WAAConfiguration
+
+    @WAAConfiguration.setter
+    def WAAConfiguration(self, WAAConfiguration):
+        self._WAAConfiguration = WAAConfiguration
+
+
+    def _deserialize(self, params):
+        if params.get("WAAConfiguration") is not None:
+            self._WAAConfiguration = WAAConfiguration()
+            self._WAAConfiguration._deserialize(params.get("WAAConfiguration"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -548,6 +731,173 @@ class CreateAPIKeyResponse(AbstractModel):
         self._Name = params.get("Name")
         self._APIKey = params.get("APIKey")
         self._KeyId = params.get("KeyId")
+        self._RequestId = params.get("RequestId")
+
+
+class CreateDeploymentRequest(AbstractModel):
+    r"""CreateDeployment请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DeploymentName: <p>唯一的 Deployment 名称，必须符合 DNS-1123 命名规范，创建后不可修改。</p>
+        :type DeploymentName: str
+        :param _ToolId: <p>用于关联 Sandbox Tool 的标识，格式为 sdt- 加 8 位小写 base36 字符。</p>
+        :type ToolId: str
+        :param _ScalingConfiguration: <p>伸缩配置；省略的成员由服务端补全默认值。</p>
+        :type ScalingConfiguration: :class:`tencentcloud.ags.v20250920.models.ScalingConfiguration`
+        :param _LifecycleConfiguration: <p>空闲生命周期配置；省略的成员由服务端补全默认值。</p>
+        :type LifecycleConfiguration: :class:`tencentcloud.ags.v20250920.models.LifecycleConfiguration`
+        :param _AffinityConfiguration: <p>Affinity 配置；省略或空 Mode 表示不启用。</p>
+        :type AffinityConfiguration: :class:`tencentcloud.ags.v20250920.models.AffinityConfiguration`
+        :param _Tags: <p>标签</p>
+        :type Tags: list of Tag
+        """
+        self._DeploymentName = None
+        self._ToolId = None
+        self._ScalingConfiguration = None
+        self._LifecycleConfiguration = None
+        self._AffinityConfiguration = None
+        self._Tags = None
+
+    @property
+    def DeploymentName(self):
+        r"""<p>唯一的 Deployment 名称，必须符合 DNS-1123 命名规范，创建后不可修改。</p>
+        :rtype: str
+        """
+        return self._DeploymentName
+
+    @DeploymentName.setter
+    def DeploymentName(self, DeploymentName):
+        self._DeploymentName = DeploymentName
+
+    @property
+    def ToolId(self):
+        r"""<p>用于关联 Sandbox Tool 的标识，格式为 sdt- 加 8 位小写 base36 字符。</p>
+        :rtype: str
+        """
+        return self._ToolId
+
+    @ToolId.setter
+    def ToolId(self, ToolId):
+        self._ToolId = ToolId
+
+    @property
+    def ScalingConfiguration(self):
+        r"""<p>伸缩配置；省略的成员由服务端补全默认值。</p>
+        :rtype: :class:`tencentcloud.ags.v20250920.models.ScalingConfiguration`
+        """
+        return self._ScalingConfiguration
+
+    @ScalingConfiguration.setter
+    def ScalingConfiguration(self, ScalingConfiguration):
+        self._ScalingConfiguration = ScalingConfiguration
+
+    @property
+    def LifecycleConfiguration(self):
+        r"""<p>空闲生命周期配置；省略的成员由服务端补全默认值。</p>
+        :rtype: :class:`tencentcloud.ags.v20250920.models.LifecycleConfiguration`
+        """
+        return self._LifecycleConfiguration
+
+    @LifecycleConfiguration.setter
+    def LifecycleConfiguration(self, LifecycleConfiguration):
+        self._LifecycleConfiguration = LifecycleConfiguration
+
+    @property
+    def AffinityConfiguration(self):
+        r"""<p>Affinity 配置；省略或空 Mode 表示不启用。</p>
+        :rtype: :class:`tencentcloud.ags.v20250920.models.AffinityConfiguration`
+        """
+        return self._AffinityConfiguration
+
+    @AffinityConfiguration.setter
+    def AffinityConfiguration(self, AffinityConfiguration):
+        self._AffinityConfiguration = AffinityConfiguration
+
+    @property
+    def Tags(self):
+        r"""<p>标签</p>
+        :rtype: list of Tag
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+
+    def _deserialize(self, params):
+        self._DeploymentName = params.get("DeploymentName")
+        self._ToolId = params.get("ToolId")
+        if params.get("ScalingConfiguration") is not None:
+            self._ScalingConfiguration = ScalingConfiguration()
+            self._ScalingConfiguration._deserialize(params.get("ScalingConfiguration"))
+        if params.get("LifecycleConfiguration") is not None:
+            self._LifecycleConfiguration = LifecycleConfiguration()
+            self._LifecycleConfiguration._deserialize(params.get("LifecycleConfiguration"))
+        if params.get("AffinityConfiguration") is not None:
+            self._AffinityConfiguration = AffinityConfiguration()
+            self._AffinityConfiguration._deserialize(params.get("AffinityConfiguration"))
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateDeploymentResponse(AbstractModel):
+    r"""CreateDeployment返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Deployment: <p>已创建并完成默认值物化的 Deployment。</p>
+        :type Deployment: :class:`tencentcloud.ags.v20250920.models.Deployment`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Deployment = None
+        self._RequestId = None
+
+    @property
+    def Deployment(self):
+        r"""<p>已创建并完成默认值物化的 Deployment。</p>
+        :rtype: :class:`tencentcloud.ags.v20250920.models.Deployment`
+        """
+        return self._Deployment
+
+    @Deployment.setter
+    def Deployment(self, Deployment):
+        self._Deployment = Deployment
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Deployment") is not None:
+            self._Deployment = Deployment()
+            self._Deployment._deserialize(params.get("Deployment"))
         self._RequestId = params.get("RequestId")
 
 
@@ -1424,6 +1774,70 @@ class DeleteAPIKeyResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DeleteDeploymentRequest(AbstractModel):
+    r"""DeleteDeployment请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DeploymentId: <p>待删除的 Deployment ID。</p>
+        :type DeploymentId: str
+        """
+        self._DeploymentId = None
+
+    @property
+    def DeploymentId(self):
+        r"""<p>待删除的 Deployment ID。</p>
+        :rtype: str
+        """
+        return self._DeploymentId
+
+    @DeploymentId.setter
+    def DeploymentId(self, DeploymentId):
+        self._DeploymentId = DeploymentId
+
+
+    def _deserialize(self, params):
+        self._DeploymentId = params.get("DeploymentId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteDeploymentResponse(AbstractModel):
+    r"""DeleteDeployment返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class DeleteSandboxToolRequest(AbstractModel):
     r"""DeleteSandboxTool请求参数结构体
 
@@ -1486,6 +1900,203 @@ class DeleteSandboxToolResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
+
+
+class Deployment(AbstractModel):
+    r"""Deployment 稳定访问入口定义
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DeploymentId: <p>Deployment 稳定 ID，格式为 dpl- 加 8 位小写 base36 字符。</p>
+        :type DeploymentId: str
+        :param _DeploymentName: <p>唯一且创建后不可修改的名称，必须符合 DNS-1123 命名规范。</p>
+        :type DeploymentName: str
+        :param _ToolId: <p>用于关联 Sandbox Tool 的标识，格式为 sdt- 加 8 位小写 base36 字符。</p>
+        :type ToolId: str
+        :param _ScalingConfiguration: <p>完整的活跃容量配置。</p>
+        :type ScalingConfiguration: :class:`tencentcloud.ags.v20250920.models.ScalingConfiguration`
+        :param _LifecycleConfiguration: <p>完整的空闲生命周期配置。</p>
+        :type LifecycleConfiguration: :class:`tencentcloud.ags.v20250920.models.LifecycleConfiguration`
+        :param _AffinityConfiguration: <p>可选 Affinity 配置；未启用时省略。</p>
+        :type AffinityConfiguration: :class:`tencentcloud.ags.v20250920.models.AffinityConfiguration`
+        :param _Status: <p>Deployment 控制面状态。</p><p>枚举值：</p><ul><li>ACTIVE：入口可用。</li><li>DELETING：入口已关闭并正在异步删除。</li><li>DELETE_FAILED：最近一次异步删除失败，可再次调用 DeleteDeployment。</li></ul>
+        :type Status: str
+        :param _StatusReason: <p>DELETE_FAILED 状态下 1..1024 个 UTF-8 字节的安全失败摘要，格式为 {Code}[.{SubCode}]: {Message}；其他状态省略。</p>
+        :type StatusReason: str
+        :param _CreatedTime: <p>创建时间，UTC、秒精度 RFC3339 格式。</p>
+        :type CreatedTime: str
+        :param _UpdatedTime: <p>最近一次成功公共配置写入或 Deployment 状态迁移时间，UTC、秒精度 RFC3339 格式。</p>
+        :type UpdatedTime: str
+        :param _Tags: <p>标签</p>
+        :type Tags: list of Tag
+        """
+        self._DeploymentId = None
+        self._DeploymentName = None
+        self._ToolId = None
+        self._ScalingConfiguration = None
+        self._LifecycleConfiguration = None
+        self._AffinityConfiguration = None
+        self._Status = None
+        self._StatusReason = None
+        self._CreatedTime = None
+        self._UpdatedTime = None
+        self._Tags = None
+
+    @property
+    def DeploymentId(self):
+        r"""<p>Deployment 稳定 ID，格式为 dpl- 加 8 位小写 base36 字符。</p>
+        :rtype: str
+        """
+        return self._DeploymentId
+
+    @DeploymentId.setter
+    def DeploymentId(self, DeploymentId):
+        self._DeploymentId = DeploymentId
+
+    @property
+    def DeploymentName(self):
+        r"""<p>唯一且创建后不可修改的名称，必须符合 DNS-1123 命名规范。</p>
+        :rtype: str
+        """
+        return self._DeploymentName
+
+    @DeploymentName.setter
+    def DeploymentName(self, DeploymentName):
+        self._DeploymentName = DeploymentName
+
+    @property
+    def ToolId(self):
+        r"""<p>用于关联 Sandbox Tool 的标识，格式为 sdt- 加 8 位小写 base36 字符。</p>
+        :rtype: str
+        """
+        return self._ToolId
+
+    @ToolId.setter
+    def ToolId(self, ToolId):
+        self._ToolId = ToolId
+
+    @property
+    def ScalingConfiguration(self):
+        r"""<p>完整的活跃容量配置。</p>
+        :rtype: :class:`tencentcloud.ags.v20250920.models.ScalingConfiguration`
+        """
+        return self._ScalingConfiguration
+
+    @ScalingConfiguration.setter
+    def ScalingConfiguration(self, ScalingConfiguration):
+        self._ScalingConfiguration = ScalingConfiguration
+
+    @property
+    def LifecycleConfiguration(self):
+        r"""<p>完整的空闲生命周期配置。</p>
+        :rtype: :class:`tencentcloud.ags.v20250920.models.LifecycleConfiguration`
+        """
+        return self._LifecycleConfiguration
+
+    @LifecycleConfiguration.setter
+    def LifecycleConfiguration(self, LifecycleConfiguration):
+        self._LifecycleConfiguration = LifecycleConfiguration
+
+    @property
+    def AffinityConfiguration(self):
+        r"""<p>可选 Affinity 配置；未启用时省略。</p>
+        :rtype: :class:`tencentcloud.ags.v20250920.models.AffinityConfiguration`
+        """
+        return self._AffinityConfiguration
+
+    @AffinityConfiguration.setter
+    def AffinityConfiguration(self, AffinityConfiguration):
+        self._AffinityConfiguration = AffinityConfiguration
+
+    @property
+    def Status(self):
+        r"""<p>Deployment 控制面状态。</p><p>枚举值：</p><ul><li>ACTIVE：入口可用。</li><li>DELETING：入口已关闭并正在异步删除。</li><li>DELETE_FAILED：最近一次异步删除失败，可再次调用 DeleteDeployment。</li></ul>
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def StatusReason(self):
+        r"""<p>DELETE_FAILED 状态下 1..1024 个 UTF-8 字节的安全失败摘要，格式为 {Code}[.{SubCode}]: {Message}；其他状态省略。</p>
+        :rtype: str
+        """
+        return self._StatusReason
+
+    @StatusReason.setter
+    def StatusReason(self, StatusReason):
+        self._StatusReason = StatusReason
+
+    @property
+    def CreatedTime(self):
+        r"""<p>创建时间，UTC、秒精度 RFC3339 格式。</p>
+        :rtype: str
+        """
+        return self._CreatedTime
+
+    @CreatedTime.setter
+    def CreatedTime(self, CreatedTime):
+        self._CreatedTime = CreatedTime
+
+    @property
+    def UpdatedTime(self):
+        r"""<p>最近一次成功公共配置写入或 Deployment 状态迁移时间，UTC、秒精度 RFC3339 格式。</p>
+        :rtype: str
+        """
+        return self._UpdatedTime
+
+    @UpdatedTime.setter
+    def UpdatedTime(self, UpdatedTime):
+        self._UpdatedTime = UpdatedTime
+
+    @property
+    def Tags(self):
+        r"""<p>标签</p>
+        :rtype: list of Tag
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+
+    def _deserialize(self, params):
+        self._DeploymentId = params.get("DeploymentId")
+        self._DeploymentName = params.get("DeploymentName")
+        self._ToolId = params.get("ToolId")
+        if params.get("ScalingConfiguration") is not None:
+            self._ScalingConfiguration = ScalingConfiguration()
+            self._ScalingConfiguration._deserialize(params.get("ScalingConfiguration"))
+        if params.get("LifecycleConfiguration") is not None:
+            self._LifecycleConfiguration = LifecycleConfiguration()
+            self._LifecycleConfiguration._deserialize(params.get("LifecycleConfiguration"))
+        if params.get("AffinityConfiguration") is not None:
+            self._AffinityConfiguration = AffinityConfiguration()
+            self._AffinityConfiguration._deserialize(params.get("AffinityConfiguration"))
+        self._Status = params.get("Status")
+        self._StatusReason = params.get("StatusReason")
+        self._CreatedTime = params.get("CreatedTime")
+        self._UpdatedTime = params.get("UpdatedTime")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class DescribeAPIKeyListRequest(AbstractModel):
@@ -1554,6 +2165,221 @@ class DescribeAPIKeyListResponse(AbstractModel):
                 obj._deserialize(item)
                 self._APIKeySet.append(obj)
         self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeDeploymentListRequest(AbstractModel):
+    r"""DescribeDeploymentList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Offset: <p>分页偏移量，默认 0，必须大于等于 0。</p>
+        :type Offset: int
+        :param _Limit: <p>分页返回数量，默认 20，范围 1..200。</p>
+        :type Limit: int
+        :param _Filters: <p>查询过滤条件。</p><p>Filter.Name 枚举值：</p><ul><li>deployment-id：按 DeploymentId 精确匹配</li><li>deployment-name：按 DeploymentName 精确匹配</li><li>deployment-name-like：按 DeploymentName 进行普通文本包含匹配，%、_ 等字符没有通配语义</li><li>tool-id：按 ToolId 精确匹配</li><li>status：按 Deployment 状态精确匹配，支持 ACTIVE、DELETING、DELETE_FAILED</li></ul><p>所有匹配均区分大小写。不同 Filter 之间为 AND，同一 Filter 的 Values 之间为 OR。</p>
+        :type Filters: list of Filter
+        """
+        self._Offset = None
+        self._Limit = None
+        self._Filters = None
+
+    @property
+    def Offset(self):
+        r"""<p>分页偏移量，默认 0，必须大于等于 0。</p>
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        r"""<p>分页返回数量，默认 20，范围 1..200。</p>
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Filters(self):
+        r"""<p>查询过滤条件。</p><p>Filter.Name 枚举值：</p><ul><li>deployment-id：按 DeploymentId 精确匹配</li><li>deployment-name：按 DeploymentName 精确匹配</li><li>deployment-name-like：按 DeploymentName 进行普通文本包含匹配，%、_ 等字符没有通配语义</li><li>tool-id：按 ToolId 精确匹配</li><li>status：按 Deployment 状态精确匹配，支持 ACTIVE、DELETING、DELETE_FAILED</li></ul><p>所有匹配均区分大小写。不同 Filter 之间为 AND，同一 Filter 的 Values 之间为 OR。</p>
+        :rtype: list of Filter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+
+    def _deserialize(self, params):
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDeploymentListResponse(AbstractModel):
+    r"""DescribeDeploymentList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DeploymentSet: <p>当前页完整 Deployment；无匹配时为空数组。</p>
+        :type DeploymentSet: list of Deployment
+        :param _TotalCount: <p>应用 Filters 后、分页前的结果总数。</p>
+        :type TotalCount: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._DeploymentSet = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def DeploymentSet(self):
+        r"""<p>当前页完整 Deployment；无匹配时为空数组。</p>
+        :rtype: list of Deployment
+        """
+        return self._DeploymentSet
+
+    @DeploymentSet.setter
+    def DeploymentSet(self, DeploymentSet):
+        self._DeploymentSet = DeploymentSet
+
+    @property
+    def TotalCount(self):
+        r"""<p>应用 Filters 后、分页前的结果总数。</p>
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("DeploymentSet") is not None:
+            self._DeploymentSet = []
+            for item in params.get("DeploymentSet"):
+                obj = Deployment()
+                obj._deserialize(item)
+                self._DeploymentSet.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeDeploymentRequest(AbstractModel):
+    r"""DescribeDeployment请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DeploymentId: <p>待查询的 Deployment ID。</p>
+        :type DeploymentId: str
+        """
+        self._DeploymentId = None
+
+    @property
+    def DeploymentId(self):
+        r"""<p>待查询的 Deployment ID。</p>
+        :rtype: str
+        """
+        return self._DeploymentId
+
+    @DeploymentId.setter
+    def DeploymentId(self, DeploymentId):
+        self._DeploymentId = DeploymentId
+
+
+    def _deserialize(self, params):
+        self._DeploymentId = params.get("DeploymentId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDeploymentResponse(AbstractModel):
+    r"""DescribeDeployment返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Deployment: <p>完整 Deployment。</p>
+        :type Deployment: :class:`tencentcloud.ags.v20250920.models.Deployment`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Deployment = None
+        self._RequestId = None
+
+    @property
+    def Deployment(self):
+        r"""<p>完整 Deployment。</p>
+        :rtype: :class:`tencentcloud.ags.v20250920.models.Deployment`
+        """
+        return self._Deployment
+
+    @Deployment.setter
+    def Deployment(self, Deployment):
+        self._Deployment = Deployment
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Deployment") is not None:
+            self._Deployment = Deployment()
+            self._Deployment._deserialize(params.get("Deployment"))
         self._RequestId = params.get("RequestId")
 
 
@@ -2288,6 +3114,57 @@ class ImageStorageSource(AbstractModel):
         
 
 
+class LifecycleConfiguration(AbstractModel):
+    r"""Deployment 管理的 Sandbox Instance 的空闲生命周期配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _IdleTimeoutSeconds: <p>Sandbox Instance 没有活跃 Deployment 请求或连接后进入 IdleAction 的秒数，必须大于等于 30。</p>
+        :type IdleTimeoutSeconds: int
+        :param _IdleAction: <p>空闲处理动作。</p><p>枚举值：</p><ul><li>STOP：停止并释放 Sandbox Instance。</li><li>PAUSE：暂停并保留 Sandbox Instance 状态。</li></ul>
+        :type IdleAction: str
+        """
+        self._IdleTimeoutSeconds = None
+        self._IdleAction = None
+
+    @property
+    def IdleTimeoutSeconds(self):
+        r"""<p>Sandbox Instance 没有活跃 Deployment 请求或连接后进入 IdleAction 的秒数，必须大于等于 30。</p>
+        :rtype: int
+        """
+        return self._IdleTimeoutSeconds
+
+    @IdleTimeoutSeconds.setter
+    def IdleTimeoutSeconds(self, IdleTimeoutSeconds):
+        self._IdleTimeoutSeconds = IdleTimeoutSeconds
+
+    @property
+    def IdleAction(self):
+        r"""<p>空闲处理动作。</p><p>枚举值：</p><ul><li>STOP：停止并释放 Sandbox Instance。</li><li>PAUSE：暂停并保留 Sandbox Instance 状态。</li></ul>
+        :rtype: str
+        """
+        return self._IdleAction
+
+    @IdleAction.setter
+    def IdleAction(self, IdleAction):
+        self._IdleAction = IdleAction
+
+
+    def _deserialize(self, params):
+        self._IdleTimeoutSeconds = params.get("IdleTimeoutSeconds")
+        self._IdleAction = params.get("IdleAction")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class LogConfiguration(AbstractModel):
     r"""沙箱工具日志采集相关配置
 
@@ -2430,6 +3307,141 @@ class MetadataVar(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class ModifyDeploymentRequest(AbstractModel):
+    r"""ModifyDeployment请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DeploymentId: <p>待修改的 Deployment ID。</p>
+        :type DeploymentId: str
+        :param _ScalingConfiguration: <p>完整替换伸缩配置；提供时必须包含全部三个成员。</p>
+        :type ScalingConfiguration: :class:`tencentcloud.ags.v20250920.models.ScalingConfiguration`
+        :param _LifecycleConfiguration: <p>完整替换生命周期配置；提供时必须包含全部两个成员。</p>
+        :type LifecycleConfiguration: :class:`tencentcloud.ags.v20250920.models.LifecycleConfiguration`
+        :param _Tags: <p>标签</p>
+        :type Tags: list of Tag
+        """
+        self._DeploymentId = None
+        self._ScalingConfiguration = None
+        self._LifecycleConfiguration = None
+        self._Tags = None
+
+    @property
+    def DeploymentId(self):
+        r"""<p>待修改的 Deployment ID。</p>
+        :rtype: str
+        """
+        return self._DeploymentId
+
+    @DeploymentId.setter
+    def DeploymentId(self, DeploymentId):
+        self._DeploymentId = DeploymentId
+
+    @property
+    def ScalingConfiguration(self):
+        r"""<p>完整替换伸缩配置；提供时必须包含全部三个成员。</p>
+        :rtype: :class:`tencentcloud.ags.v20250920.models.ScalingConfiguration`
+        """
+        return self._ScalingConfiguration
+
+    @ScalingConfiguration.setter
+    def ScalingConfiguration(self, ScalingConfiguration):
+        self._ScalingConfiguration = ScalingConfiguration
+
+    @property
+    def LifecycleConfiguration(self):
+        r"""<p>完整替换生命周期配置；提供时必须包含全部两个成员。</p>
+        :rtype: :class:`tencentcloud.ags.v20250920.models.LifecycleConfiguration`
+        """
+        return self._LifecycleConfiguration
+
+    @LifecycleConfiguration.setter
+    def LifecycleConfiguration(self, LifecycleConfiguration):
+        self._LifecycleConfiguration = LifecycleConfiguration
+
+    @property
+    def Tags(self):
+        r"""<p>标签</p>
+        :rtype: list of Tag
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+
+    def _deserialize(self, params):
+        self._DeploymentId = params.get("DeploymentId")
+        if params.get("ScalingConfiguration") is not None:
+            self._ScalingConfiguration = ScalingConfiguration()
+            self._ScalingConfiguration._deserialize(params.get("ScalingConfiguration"))
+        if params.get("LifecycleConfiguration") is not None:
+            self._LifecycleConfiguration = LifecycleConfiguration()
+            self._LifecycleConfiguration._deserialize(params.get("LifecycleConfiguration"))
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyDeploymentResponse(AbstractModel):
+    r"""ModifyDeployment返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Deployment: <p>修改后的完整 Deployment。</p>
+        :type Deployment: :class:`tencentcloud.ags.v20250920.models.Deployment`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Deployment = None
+        self._RequestId = None
+
+    @property
+    def Deployment(self):
+        r"""<p>修改后的完整 Deployment。</p>
+        :rtype: :class:`tencentcloud.ags.v20250920.models.Deployment`
+        """
+        return self._Deployment
+
+    @Deployment.setter
+    def Deployment(self, Deployment):
+        self._Deployment = Deployment
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Deployment") is not None:
+            self._Deployment = Deployment()
+            self._Deployment._deserialize(params.get("Deployment"))
+        self._RequestId = params.get("RequestId")
 
 
 class MountOption(AbstractModel):
@@ -3017,6 +4029,8 @@ class SandboxInstance(AbstractModel):
         :type MountOptions: list of MountOption
         :param _CustomConfiguration: <p>沙箱实例自定义配置</p>
         :type CustomConfiguration: :class:`tencentcloud.ags.v20250920.models.CustomConfigurationDetail`
+        :param _ComputerConfiguration: <p>桌面电脑环境类沙箱配置</p>
+        :type ComputerConfiguration: :class:`tencentcloud.ags.v20250920.models.ComputerConfiguration`
         :param _NetworkMode: <p>网络模式</p><p>枚举值：</p><ul><li>PUBLIC： 公网访问</li><li>SANDBOX： 无网络</li><li>INTERNAL_SERVICE： 腾讯云内部公共服务</li></ul><p>可以覆盖工具级别的网络配置。但如果一个工具本身就不支持 VPC 网络，那么即便在实例设置里选了 VPC 模式，也是无效的</p>
         :type NetworkMode: str
         :param _Metadata: <p>沙箱实例元数据</p>
@@ -3036,6 +4050,7 @@ class SandboxInstance(AbstractModel):
         self._UpdateTime = None
         self._MountOptions = None
         self._CustomConfiguration = None
+        self._ComputerConfiguration = None
         self._NetworkMode = None
         self._Metadata = None
         self._AuthMode = None
@@ -3173,6 +4188,17 @@ class SandboxInstance(AbstractModel):
         self._CustomConfiguration = CustomConfiguration
 
     @property
+    def ComputerConfiguration(self):
+        r"""<p>桌面电脑环境类沙箱配置</p>
+        :rtype: :class:`tencentcloud.ags.v20250920.models.ComputerConfiguration`
+        """
+        return self._ComputerConfiguration
+
+    @ComputerConfiguration.setter
+    def ComputerConfiguration(self, ComputerConfiguration):
+        self._ComputerConfiguration = ComputerConfiguration
+
+    @property
     def NetworkMode(self):
         r"""<p>网络模式</p><p>枚举值：</p><ul><li>PUBLIC： 公网访问</li><li>SANDBOX： 无网络</li><li>INTERNAL_SERVICE： 腾讯云内部公共服务</li></ul><p>可以覆盖工具级别的网络配置。但如果一个工具本身就不支持 VPC 网络，那么即便在实例设置里选了 VPC 模式，也是无效的</p>
         :rtype: str
@@ -3226,6 +4252,9 @@ class SandboxInstance(AbstractModel):
         if params.get("CustomConfiguration") is not None:
             self._CustomConfiguration = CustomConfigurationDetail()
             self._CustomConfiguration._deserialize(params.get("CustomConfiguration"))
+        if params.get("ComputerConfiguration") is not None:
+            self._ComputerConfiguration = ComputerConfiguration()
+            self._ComputerConfiguration._deserialize(params.get("ComputerConfiguration"))
         self._NetworkMode = params.get("NetworkMode")
         if params.get("Metadata") is not None:
             self._Metadata = []
@@ -3281,6 +4310,8 @@ class SandboxTool(AbstractModel):
         :type CustomConfiguration: :class:`tencentcloud.ags.v20250920.models.CustomConfigurationDetail`
         :param _LogConfiguration: <p>沙箱工具日志推送相关配置</p>
         :type LogConfiguration: :class:`tencentcloud.ags.v20250920.models.LogConfiguration`
+        :param _ComputerConfiguration: <p>桌面电脑环境类沙箱配置</p>
+        :type ComputerConfiguration: :class:`tencentcloud.ags.v20250920.models.ComputerConfiguration`
         :param _StatusReason: <p>用于说明沙箱工具处于该状态的原因</p>
         :type StatusReason: str
         """
@@ -3299,6 +4330,7 @@ class SandboxTool(AbstractModel):
         self._StorageMounts = None
         self._CustomConfiguration = None
         self._LogConfiguration = None
+        self._ComputerConfiguration = None
         self._StatusReason = None
 
     @property
@@ -3467,6 +4499,17 @@ class SandboxTool(AbstractModel):
         self._LogConfiguration = LogConfiguration
 
     @property
+    def ComputerConfiguration(self):
+        r"""<p>桌面电脑环境类沙箱配置</p>
+        :rtype: :class:`tencentcloud.ags.v20250920.models.ComputerConfiguration`
+        """
+        return self._ComputerConfiguration
+
+    @ComputerConfiguration.setter
+    def ComputerConfiguration(self, ComputerConfiguration):
+        self._ComputerConfiguration = ComputerConfiguration
+
+    @property
     def StatusReason(self):
         r"""<p>用于说明沙箱工具处于该状态的原因</p>
         :rtype: str
@@ -3510,7 +4553,76 @@ class SandboxTool(AbstractModel):
         if params.get("LogConfiguration") is not None:
             self._LogConfiguration = LogConfiguration()
             self._LogConfiguration._deserialize(params.get("LogConfiguration"))
+        if params.get("ComputerConfiguration") is not None:
+            self._ComputerConfiguration = ComputerConfiguration()
+            self._ComputerConfiguration._deserialize(params.get("ComputerConfiguration"))
         self._StatusReason = params.get("StatusReason")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ScalingConfiguration(AbstractModel):
+    r"""Deployment 活跃容量配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MinInstanceCount: <p>活跃 Sandbox Instance 下限，必须大于等于 0。</p>
+        :type MinInstanceCount: int
+        :param _MaxInstanceCount: <p>活跃 Sandbox Instance 上限，必须大于等于 1，并且不小于 MinInstanceCount。</p>
+        :type MaxInstanceCount: int
+        :param _MaxInstanceRequestConcurrency: <p>每个活跃 Sandbox Instance 同时持有的 Deployment 请求或连接 Lease 上限，必须大于等于 1。</p>
+        :type MaxInstanceRequestConcurrency: int
+        """
+        self._MinInstanceCount = None
+        self._MaxInstanceCount = None
+        self._MaxInstanceRequestConcurrency = None
+
+    @property
+    def MinInstanceCount(self):
+        r"""<p>活跃 Sandbox Instance 下限，必须大于等于 0。</p>
+        :rtype: int
+        """
+        return self._MinInstanceCount
+
+    @MinInstanceCount.setter
+    def MinInstanceCount(self, MinInstanceCount):
+        self._MinInstanceCount = MinInstanceCount
+
+    @property
+    def MaxInstanceCount(self):
+        r"""<p>活跃 Sandbox Instance 上限，必须大于等于 1，并且不小于 MinInstanceCount。</p>
+        :rtype: int
+        """
+        return self._MaxInstanceCount
+
+    @MaxInstanceCount.setter
+    def MaxInstanceCount(self, MaxInstanceCount):
+        self._MaxInstanceCount = MaxInstanceCount
+
+    @property
+    def MaxInstanceRequestConcurrency(self):
+        r"""<p>每个活跃 Sandbox Instance 同时持有的 Deployment 请求或连接 Lease 上限，必须大于等于 1。</p>
+        :rtype: int
+        """
+        return self._MaxInstanceRequestConcurrency
+
+    @MaxInstanceRequestConcurrency.setter
+    def MaxInstanceRequestConcurrency(self, MaxInstanceRequestConcurrency):
+        self._MaxInstanceRequestConcurrency = MaxInstanceRequestConcurrency
+
+
+    def _deserialize(self, params):
+        self._MinInstanceCount = params.get("MinInstanceCount")
+        self._MaxInstanceCount = params.get("MaxInstanceCount")
+        self._MaxInstanceRequestConcurrency = params.get("MaxInstanceRequestConcurrency")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4281,6 +5393,42 @@ class VPCConfig(AbstractModel):
     def _deserialize(self, params):
         self._SubnetIds = params.get("SubnetIds")
         self._SecurityGroupIds = params.get("SecurityGroupIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class WAAConfiguration(AbstractModel):
+    r"""waa自定义配置项
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ImageId: <p>自定义waa镜像ID</p>
+        :type ImageId: str
+        """
+        self._ImageId = None
+
+    @property
+    def ImageId(self):
+        r"""<p>自定义waa镜像ID</p>
+        :rtype: str
+        """
+        return self._ImageId
+
+    @ImageId.setter
+    def ImageId(self, ImageId):
+        self._ImageId = ImageId
+
+
+    def _deserialize(self, params):
+        self._ImageId = params.get("ImageId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

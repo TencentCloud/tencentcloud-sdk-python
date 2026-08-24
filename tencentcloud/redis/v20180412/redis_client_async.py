@@ -871,6 +871,24 @@ class RedisClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeInstancePasswordPolicy(
+            self,
+            request: models.DescribeInstancePasswordPolicyRequest,
+            opts: Dict = None,
+    ) -> models.DescribeInstancePasswordPolicyResponse:
+        """
+        查询指定实例当前密码复杂度配置
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeInstancePasswordPolicy"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeInstancePasswordPolicyResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeInstanceSecurityGroup(
             self,
             request: models.DescribeInstanceSecurityGroupRequest,

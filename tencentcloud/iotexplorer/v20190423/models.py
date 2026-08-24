@@ -7906,6 +7906,147 @@ class CreateTWeSeeDirectUploadCredentialResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateTWeSeePersonRequest(AbstractModel):
+    r"""CreateTWeSeePerson请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProductId: 产品 ID
+        :type ProductId: str
+        :param _DeviceName: 设备名称
+        :type DeviceName: str
+        :param _Name: 人员名称，最多 64 个字符
+        :type Name: str
+        :param _FaceIds: 人脸 ID 列表，最多 5 个
+        :type FaceIds: list of str
+        :param _ChannelId: 通道 ID，默认值为 0
+        :type ChannelId: int
+        """
+        self._ProductId = None
+        self._DeviceName = None
+        self._Name = None
+        self._FaceIds = None
+        self._ChannelId = None
+
+    @property
+    def ProductId(self):
+        r"""产品 ID
+        :rtype: str
+        """
+        return self._ProductId
+
+    @ProductId.setter
+    def ProductId(self, ProductId):
+        self._ProductId = ProductId
+
+    @property
+    def DeviceName(self):
+        r"""设备名称
+        :rtype: str
+        """
+        return self._DeviceName
+
+    @DeviceName.setter
+    def DeviceName(self, DeviceName):
+        self._DeviceName = DeviceName
+
+    @property
+    def Name(self):
+        r"""人员名称，最多 64 个字符
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def FaceIds(self):
+        r"""人脸 ID 列表，最多 5 个
+        :rtype: list of str
+        """
+        return self._FaceIds
+
+    @FaceIds.setter
+    def FaceIds(self, FaceIds):
+        self._FaceIds = FaceIds
+
+    @property
+    def ChannelId(self):
+        r"""通道 ID，默认值为 0
+        :rtype: int
+        """
+        return self._ChannelId
+
+    @ChannelId.setter
+    def ChannelId(self, ChannelId):
+        self._ChannelId = ChannelId
+
+
+    def _deserialize(self, params):
+        self._ProductId = params.get("ProductId")
+        self._DeviceName = params.get("DeviceName")
+        self._Name = params.get("Name")
+        self._FaceIds = params.get("FaceIds")
+        self._ChannelId = params.get("ChannelId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateTWeSeePersonResponse(AbstractModel):
+    r"""CreateTWeSeePerson返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Person: 人员信息
+        :type Person: :class:`tencentcloud.iotexplorer.v20190423.models.SeePersonInfo`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Person = None
+        self._RequestId = None
+
+    @property
+    def Person(self):
+        r"""人员信息
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.SeePersonInfo`
+        """
+        return self._Person
+
+    @Person.setter
+    def Person(self, Person):
+        self._Person = Person
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Person") is not None:
+            self._Person = SeePersonInfo()
+            self._Person._deserialize(params.get("Person"))
+        self._RequestId = params.get("RequestId")
+
+
 class CreateTWeSeePostPaidServiceRequest(AbstractModel):
     r"""CreateTWeSeePostPaidService请求参数结构体
 
@@ -11424,6 +11565,239 @@ class DeleteTWeSeeCallbackRequest(AbstractModel):
 
 class DeleteTWeSeeCallbackResponse(AbstractModel):
     r"""DeleteTWeSeeCallback返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteTWeSeeFaceRequest(AbstractModel):
+    r"""DeleteTWeSeeFace请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProductId: 产品 ID
+        :type ProductId: str
+        :param _DeviceName: 设备名称
+        :type DeviceName: str
+        :param _FaceId: 人脸 ID
+        :type FaceId: str
+        :param _ChannelId: 通道 ID，默认值为 0
+        :type ChannelId: int
+        """
+        self._ProductId = None
+        self._DeviceName = None
+        self._FaceId = None
+        self._ChannelId = None
+
+    @property
+    def ProductId(self):
+        r"""产品 ID
+        :rtype: str
+        """
+        return self._ProductId
+
+    @ProductId.setter
+    def ProductId(self, ProductId):
+        self._ProductId = ProductId
+
+    @property
+    def DeviceName(self):
+        r"""设备名称
+        :rtype: str
+        """
+        return self._DeviceName
+
+    @DeviceName.setter
+    def DeviceName(self, DeviceName):
+        self._DeviceName = DeviceName
+
+    @property
+    def FaceId(self):
+        r"""人脸 ID
+        :rtype: str
+        """
+        return self._FaceId
+
+    @FaceId.setter
+    def FaceId(self, FaceId):
+        self._FaceId = FaceId
+
+    @property
+    def ChannelId(self):
+        r"""通道 ID，默认值为 0
+        :rtype: int
+        """
+        return self._ChannelId
+
+    @ChannelId.setter
+    def ChannelId(self, ChannelId):
+        self._ChannelId = ChannelId
+
+
+    def _deserialize(self, params):
+        self._ProductId = params.get("ProductId")
+        self._DeviceName = params.get("DeviceName")
+        self._FaceId = params.get("FaceId")
+        self._ChannelId = params.get("ChannelId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteTWeSeeFaceResponse(AbstractModel):
+    r"""DeleteTWeSeeFace返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteTWeSeePersonRequest(AbstractModel):
+    r"""DeleteTWeSeePerson请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProductId: 产品 ID
+        :type ProductId: str
+        :param _DeviceName: 设备名称
+        :type DeviceName: str
+        :param _PersonId: 人员 ID
+        :type PersonId: str
+        :param _ChannelId: 通道 ID，默认值为 0
+        :type ChannelId: int
+        :param _DeleteFaces: 是否同时删除关联人脸，默认值为 false。人员仍有关联人脸时可设为 true 同步删除
+        :type DeleteFaces: bool
+        """
+        self._ProductId = None
+        self._DeviceName = None
+        self._PersonId = None
+        self._ChannelId = None
+        self._DeleteFaces = None
+
+    @property
+    def ProductId(self):
+        r"""产品 ID
+        :rtype: str
+        """
+        return self._ProductId
+
+    @ProductId.setter
+    def ProductId(self, ProductId):
+        self._ProductId = ProductId
+
+    @property
+    def DeviceName(self):
+        r"""设备名称
+        :rtype: str
+        """
+        return self._DeviceName
+
+    @DeviceName.setter
+    def DeviceName(self, DeviceName):
+        self._DeviceName = DeviceName
+
+    @property
+    def PersonId(self):
+        r"""人员 ID
+        :rtype: str
+        """
+        return self._PersonId
+
+    @PersonId.setter
+    def PersonId(self, PersonId):
+        self._PersonId = PersonId
+
+    @property
+    def ChannelId(self):
+        r"""通道 ID，默认值为 0
+        :rtype: int
+        """
+        return self._ChannelId
+
+    @ChannelId.setter
+    def ChannelId(self, ChannelId):
+        self._ChannelId = ChannelId
+
+    @property
+    def DeleteFaces(self):
+        r"""是否同时删除关联人脸，默认值为 false。人员仍有关联人脸时可设为 true 同步删除
+        :rtype: bool
+        """
+        return self._DeleteFaces
+
+    @DeleteFaces.setter
+    def DeleteFaces(self, DeleteFaces):
+        self._DeleteFaces = DeleteFaces
+
+
+    def _deserialize(self, params):
+        self._ProductId = params.get("ProductId")
+        self._DeviceName = params.get("DeviceName")
+        self._PersonId = params.get("PersonId")
+        self._ChannelId = params.get("ChannelId")
+        self._DeleteFaces = params.get("DeleteFaces")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteTWeSeePersonResponse(AbstractModel):
+    r"""DeleteTWeSeePerson返回参数结构体
 
     """
 
@@ -20231,6 +20605,273 @@ class DescribeTWeSeeConfigResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeTWeSeeFaceRequest(AbstractModel):
+    r"""DescribeTWeSeeFace请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProductId: 产品 ID
+        :type ProductId: str
+        :param _DeviceName: 设备名称
+        :type DeviceName: str
+        :param _FaceId: 人脸 ID
+        :type FaceId: str
+        :param _ChannelId: 通道 ID，默认值为 0
+        :type ChannelId: int
+        """
+        self._ProductId = None
+        self._DeviceName = None
+        self._FaceId = None
+        self._ChannelId = None
+
+    @property
+    def ProductId(self):
+        r"""产品 ID
+        :rtype: str
+        """
+        return self._ProductId
+
+    @ProductId.setter
+    def ProductId(self, ProductId):
+        self._ProductId = ProductId
+
+    @property
+    def DeviceName(self):
+        r"""设备名称
+        :rtype: str
+        """
+        return self._DeviceName
+
+    @DeviceName.setter
+    def DeviceName(self, DeviceName):
+        self._DeviceName = DeviceName
+
+    @property
+    def FaceId(self):
+        r"""人脸 ID
+        :rtype: str
+        """
+        return self._FaceId
+
+    @FaceId.setter
+    def FaceId(self, FaceId):
+        self._FaceId = FaceId
+
+    @property
+    def ChannelId(self):
+        r"""通道 ID，默认值为 0
+        :rtype: int
+        """
+        return self._ChannelId
+
+    @ChannelId.setter
+    def ChannelId(self, ChannelId):
+        self._ChannelId = ChannelId
+
+
+    def _deserialize(self, params):
+        self._ProductId = params.get("ProductId")
+        self._DeviceName = params.get("DeviceName")
+        self._FaceId = params.get("FaceId")
+        self._ChannelId = params.get("ChannelId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeTWeSeeFaceResponse(AbstractModel):
+    r"""DescribeTWeSeeFace返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Face: 人脸元数据
+        :type Face: :class:`tencentcloud.iotexplorer.v20190423.models.SeeFaceInfo`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Face = None
+        self._RequestId = None
+
+    @property
+    def Face(self):
+        r"""人脸元数据
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.SeeFaceInfo`
+        """
+        return self._Face
+
+    @Face.setter
+    def Face(self, Face):
+        self._Face = Face
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Face") is not None:
+            self._Face = SeeFaceInfo()
+            self._Face._deserialize(params.get("Face"))
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeTWeSeePersonRequest(AbstractModel):
+    r"""DescribeTWeSeePerson请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DeviceName: 设备名称
+        :type DeviceName: str
+        :param _PersonId: 人员 ID
+        :type PersonId: str
+        :param _ProductId: 产品 ID
+        :type ProductId: str
+        :param _ChannelId: 通道 ID，默认值为 0
+        :type ChannelId: int
+        :param _FaceLimit: 返回的代表人脸数量，取值范围为 1 到 5，默认值为 1
+        :type FaceLimit: int
+        """
+        self._DeviceName = None
+        self._PersonId = None
+        self._ProductId = None
+        self._ChannelId = None
+        self._FaceLimit = None
+
+    @property
+    def DeviceName(self):
+        r"""设备名称
+        :rtype: str
+        """
+        return self._DeviceName
+
+    @DeviceName.setter
+    def DeviceName(self, DeviceName):
+        self._DeviceName = DeviceName
+
+    @property
+    def PersonId(self):
+        r"""人员 ID
+        :rtype: str
+        """
+        return self._PersonId
+
+    @PersonId.setter
+    def PersonId(self, PersonId):
+        self._PersonId = PersonId
+
+    @property
+    def ProductId(self):
+        r"""产品 ID
+        :rtype: str
+        """
+        return self._ProductId
+
+    @ProductId.setter
+    def ProductId(self, ProductId):
+        self._ProductId = ProductId
+
+    @property
+    def ChannelId(self):
+        r"""通道 ID，默认值为 0
+        :rtype: int
+        """
+        return self._ChannelId
+
+    @ChannelId.setter
+    def ChannelId(self, ChannelId):
+        self._ChannelId = ChannelId
+
+    @property
+    def FaceLimit(self):
+        r"""返回的代表人脸数量，取值范围为 1 到 5，默认值为 1
+        :rtype: int
+        """
+        return self._FaceLimit
+
+    @FaceLimit.setter
+    def FaceLimit(self, FaceLimit):
+        self._FaceLimit = FaceLimit
+
+
+    def _deserialize(self, params):
+        self._DeviceName = params.get("DeviceName")
+        self._PersonId = params.get("PersonId")
+        self._ProductId = params.get("ProductId")
+        self._ChannelId = params.get("ChannelId")
+        self._FaceLimit = params.get("FaceLimit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeTWeSeePersonResponse(AbstractModel):
+    r"""DescribeTWeSeePerson返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Person: 人员信息
+        :type Person: :class:`tencentcloud.iotexplorer.v20190423.models.SeePersonInfo`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Person = None
+        self._RequestId = None
+
+    @property
+    def Person(self):
+        r"""人员信息
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.SeePersonInfo`
+        """
+        return self._Person
+
+    @Person.setter
+    def Person(self, Person):
+        self._Person = Person
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Person") is not None:
+            self._Person = SeePersonInfo()
+            self._Person._deserialize(params.get("Person"))
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeTWeSeePostPaidServiceRequest(AbstractModel):
     r"""DescribeTWeSeePostPaidService请求参数结构体
 
@@ -28263,6 +28904,150 @@ class IdleResponseInfo(AbstractModel):
         
 
 
+class ImportTWeSeeFacesRequest(AbstractModel):
+    r"""ImportTWeSeeFaces请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProductId: 产品 ID
+        :type ProductId: str
+        :param _DeviceName: 设备名称
+        :type DeviceName: str
+        :param _ImageURL: 图片 URL，支持 HTTP(S) URL 或 JPG、PNG、BMP 格式的 data URL，图片大小不超过 5 MiB
+        :type ImageURL: str
+        :param _ChannelId: 通道 ID，默认值为 0
+        :type ChannelId: int
+        """
+        self._ProductId = None
+        self._DeviceName = None
+        self._ImageURL = None
+        self._ChannelId = None
+
+    @property
+    def ProductId(self):
+        r"""产品 ID
+        :rtype: str
+        """
+        return self._ProductId
+
+    @ProductId.setter
+    def ProductId(self, ProductId):
+        self._ProductId = ProductId
+
+    @property
+    def DeviceName(self):
+        r"""设备名称
+        :rtype: str
+        """
+        return self._DeviceName
+
+    @DeviceName.setter
+    def DeviceName(self, DeviceName):
+        self._DeviceName = DeviceName
+
+    @property
+    def ImageURL(self):
+        r"""图片 URL，支持 HTTP(S) URL 或 JPG、PNG、BMP 格式的 data URL，图片大小不超过 5 MiB
+        :rtype: str
+        """
+        return self._ImageURL
+
+    @ImageURL.setter
+    def ImageURL(self, ImageURL):
+        self._ImageURL = ImageURL
+
+    @property
+    def ChannelId(self):
+        r"""通道 ID，默认值为 0
+        :rtype: int
+        """
+        return self._ChannelId
+
+    @ChannelId.setter
+    def ChannelId(self, ChannelId):
+        self._ChannelId = ChannelId
+
+
+    def _deserialize(self, params):
+        self._ProductId = params.get("ProductId")
+        self._DeviceName = params.get("DeviceName")
+        self._ImageURL = params.get("ImageURL")
+        self._ChannelId = params.get("ChannelId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ImportTWeSeeFacesResponse(AbstractModel):
+    r"""ImportTWeSeeFaces返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Faces: 检测到的人脸列表
+        :type Faces: list of SeeFaceInfo
+        :param _TaskId: 本次人脸导入任务 ID
+        :type TaskId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Faces = None
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def Faces(self):
+        r"""检测到的人脸列表
+        :rtype: list of SeeFaceInfo
+        """
+        return self._Faces
+
+    @Faces.setter
+    def Faces(self, Faces):
+        self._Faces = Faces
+
+    @property
+    def TaskId(self):
+        r"""本次人脸导入任务 ID
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Faces") is not None:
+            self._Faces = []
+            for item in params.get("Faces"):
+                obj = SeeFaceInfo()
+                obj._deserialize(item)
+                self._Faces.append(obj)
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
+
+
 class InheritCloudStorageUserRequest(AbstractModel):
     r"""InheritCloudStorageUser请求参数结构体
 
@@ -29834,20 +30619,17 @@ class InvokeTWeSeeComprehensionRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InputURL: 输入视频 / 图片的 URL
+        :param _InputURL: <p>输入视频 / 图片的 URL</p>
         :type InputURL: str
-        :param _ServiceType: 算法类型。可选值：
-
-- `VID_COMP`：视频理解
-- `IMG_COMP`：图片理解
+        :param _ServiceType: <p>算法类型。可选值：</p><ul><li><code>VID_COMP</code>：视频理解</li><li><code>IMG_COMP</code>：图片理解</li></ul>
         :type ServiceType: str
-        :param _Metadata: 任务元数据
+        :param _Metadata: <p>任务元数据</p>
         :type Metadata: :class:`tencentcloud.iotexplorer.v20190423.models.SeeTaskMetadata`
-        :param _ComprehensionConfig: 视觉理解配置项
+        :param _ComprehensionConfig: <p>视觉理解配置项</p>
         :type ComprehensionConfig: :class:`tencentcloud.iotexplorer.v20190423.models.SeeComprehensionConfig`
-        :param _WaitResultTimeout: 等待结果的超时时间（单位：秒）。填 0 表示无需等待结果。最大超时时长 25 秒，默认超时时长 20 秒。
+        :param _WaitResultTimeout: <p>等待结果的超时时间（单位：秒）。填 0 表示无需等待结果。最大超时时长 25 秒，默认超时时长 20 秒。</p>
         :type WaitResultTimeout: int
-        :param _CallbackId: 回调目标 ID
+        :param _CallbackId: <p>回调目标 ID</p>
         :type CallbackId: str
         """
         self._InputURL = None
@@ -29859,7 +30641,7 @@ class InvokeTWeSeeComprehensionRequest(AbstractModel):
 
     @property
     def InputURL(self):
-        r"""输入视频 / 图片的 URL
+        r"""<p>输入视频 / 图片的 URL</p>
         :rtype: str
         """
         return self._InputURL
@@ -29870,10 +30652,7 @@ class InvokeTWeSeeComprehensionRequest(AbstractModel):
 
     @property
     def ServiceType(self):
-        r"""算法类型。可选值：
-
-- `VID_COMP`：视频理解
-- `IMG_COMP`：图片理解
+        r"""<p>算法类型。可选值：</p><ul><li><code>VID_COMP</code>：视频理解</li><li><code>IMG_COMP</code>：图片理解</li></ul>
         :rtype: str
         """
         return self._ServiceType
@@ -29884,7 +30663,7 @@ class InvokeTWeSeeComprehensionRequest(AbstractModel):
 
     @property
     def Metadata(self):
-        r"""任务元数据
+        r"""<p>任务元数据</p>
         :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.SeeTaskMetadata`
         """
         return self._Metadata
@@ -29895,7 +30674,7 @@ class InvokeTWeSeeComprehensionRequest(AbstractModel):
 
     @property
     def ComprehensionConfig(self):
-        r"""视觉理解配置项
+        r"""<p>视觉理解配置项</p>
         :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.SeeComprehensionConfig`
         """
         return self._ComprehensionConfig
@@ -29906,7 +30685,7 @@ class InvokeTWeSeeComprehensionRequest(AbstractModel):
 
     @property
     def WaitResultTimeout(self):
-        r"""等待结果的超时时间（单位：秒）。填 0 表示无需等待结果。最大超时时长 25 秒，默认超时时长 20 秒。
+        r"""<p>等待结果的超时时间（单位：秒）。填 0 表示无需等待结果。最大超时时长 25 秒，默认超时时长 20 秒。</p>
         :rtype: int
         """
         return self._WaitResultTimeout
@@ -29917,7 +30696,7 @@ class InvokeTWeSeeComprehensionRequest(AbstractModel):
 
     @property
     def CallbackId(self):
-        r"""回调目标 ID
+        r"""<p>回调目标 ID</p>
         :rtype: str
         """
         return self._CallbackId
@@ -29955,20 +30734,15 @@ class InvokeTWeSeeComprehensionResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskId: 任务 ID
+        :param _TaskId: <p>任务 ID</p>
         :type TaskId: str
-        :param _Status: 任务状态。可能取值：
-
-- `1`：失败
-- `2`：空结果
-- `3`：有效结果
-- `4`：处理中
+        :param _Status: <p>任务状态。可能取值：</p><ul><li><code>1</code>：失败</li><li><code>2</code>：空结果</li><li><code>3</code>：有效结果</li><li><code>4</code>：处理中</li></ul>
         :type Status: int
-        :param _ComprehensionResult: 视觉理解结果
+        :param _ComprehensionResult: <p>视觉理解结果</p>
         :type ComprehensionResult: :class:`tencentcloud.iotexplorer.v20190423.models.SeeComprehensionResult`
-        :param _CostBasic: 完成该任务所消耗的基础能力额度
+        :param _CostBasic: <p>完成该任务所消耗的基础能力额度</p>
         :type CostBasic: int
-        :param _CostAdvanced: 完成该任务所消耗的高级能力额度
+        :param _CostAdvanced: <p>完成该任务所消耗的高级能力额度</p>
         :type CostAdvanced: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -29982,7 +30756,7 @@ class InvokeTWeSeeComprehensionResponse(AbstractModel):
 
     @property
     def TaskId(self):
-        r"""任务 ID
+        r"""<p>任务 ID</p>
         :rtype: str
         """
         return self._TaskId
@@ -29993,12 +30767,7 @@ class InvokeTWeSeeComprehensionResponse(AbstractModel):
 
     @property
     def Status(self):
-        r"""任务状态。可能取值：
-
-- `1`：失败
-- `2`：空结果
-- `3`：有效结果
-- `4`：处理中
+        r"""<p>任务状态。可能取值：</p><ul><li><code>1</code>：失败</li><li><code>2</code>：空结果</li><li><code>3</code>：有效结果</li><li><code>4</code>：处理中</li></ul>
         :rtype: int
         """
         return self._Status
@@ -30009,7 +30778,7 @@ class InvokeTWeSeeComprehensionResponse(AbstractModel):
 
     @property
     def ComprehensionResult(self):
-        r"""视觉理解结果
+        r"""<p>视觉理解结果</p>
         :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.SeeComprehensionResult`
         """
         return self._ComprehensionResult
@@ -30020,7 +30789,7 @@ class InvokeTWeSeeComprehensionResponse(AbstractModel):
 
     @property
     def CostBasic(self):
-        r"""完成该任务所消耗的基础能力额度
+        r"""<p>完成该任务所消耗的基础能力额度</p>
         :rtype: int
         """
         return self._CostBasic
@@ -30031,7 +30800,7 @@ class InvokeTWeSeeComprehensionResponse(AbstractModel):
 
     @property
     def CostAdvanced(self):
-        r"""完成该任务所消耗的高级能力额度
+        r"""<p>完成该任务所消耗的高级能力额度</p>
         :rtype: int
         """
         return self._CostAdvanced
@@ -32308,6 +33077,225 @@ class ListTWeSeeCallbackResponse(AbstractModel):
                 obj._deserialize(item)
                 self._List.append(obj)
         self._Total = params.get("Total")
+        self._RequestId = params.get("RequestId")
+
+
+class ListTWeSeePersonsRequest(AbstractModel):
+    r"""ListTWeSeePersons请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProductId: 产品 ID
+        :type ProductId: str
+        :param _DeviceName: 设备名称
+        :type DeviceName: str
+        :param _Limit: 分页拉取数量，取值范围为 1 到 100
+        :type Limit: int
+        :param _Offset: 分页拉取偏移，默认值为 0
+        :type Offset: int
+        :param _ChannelId: 通道 ID，默认值为 0
+        :type ChannelId: int
+        :param _FaceLimit: 每个人员返回的代表人脸数量，取值范围为 1 到 5，默认值为 1
+        :type FaceLimit: int
+        :param _IsRemembered: 人员记忆状态。true：仅查询持久记忆人员；false：仅查询非持久记忆人员；不传时查询全部人员
+        :type IsRemembered: bool
+        """
+        self._ProductId = None
+        self._DeviceName = None
+        self._Limit = None
+        self._Offset = None
+        self._ChannelId = None
+        self._FaceLimit = None
+        self._IsRemembered = None
+
+    @property
+    def ProductId(self):
+        r"""产品 ID
+        :rtype: str
+        """
+        return self._ProductId
+
+    @ProductId.setter
+    def ProductId(self, ProductId):
+        self._ProductId = ProductId
+
+    @property
+    def DeviceName(self):
+        r"""设备名称
+        :rtype: str
+        """
+        return self._DeviceName
+
+    @DeviceName.setter
+    def DeviceName(self, DeviceName):
+        self._DeviceName = DeviceName
+
+    @property
+    def Limit(self):
+        r"""分页拉取数量，取值范围为 1 到 100
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        r"""分页拉取偏移，默认值为 0
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def ChannelId(self):
+        r"""通道 ID，默认值为 0
+        :rtype: int
+        """
+        return self._ChannelId
+
+    @ChannelId.setter
+    def ChannelId(self, ChannelId):
+        self._ChannelId = ChannelId
+
+    @property
+    def FaceLimit(self):
+        r"""每个人员返回的代表人脸数量，取值范围为 1 到 5，默认值为 1
+        :rtype: int
+        """
+        return self._FaceLimit
+
+    @FaceLimit.setter
+    def FaceLimit(self, FaceLimit):
+        self._FaceLimit = FaceLimit
+
+    @property
+    def IsRemembered(self):
+        r"""人员记忆状态。true：仅查询持久记忆人员；false：仅查询非持久记忆人员；不传时查询全部人员
+        :rtype: bool
+        """
+        return self._IsRemembered
+
+    @IsRemembered.setter
+    def IsRemembered(self, IsRemembered):
+        self._IsRemembered = IsRemembered
+
+
+    def _deserialize(self, params):
+        self._ProductId = params.get("ProductId")
+        self._DeviceName = params.get("DeviceName")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        self._ChannelId = params.get("ChannelId")
+        self._FaceLimit = params.get("FaceLimit")
+        self._IsRemembered = params.get("IsRemembered")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ListTWeSeePersonsResponse(AbstractModel):
+    r"""ListTWeSeePersons返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Limit: 本次请求的分页数量
+        :type Limit: int
+        :param _Offset: 本次请求的分页偏移
+        :type Offset: int
+        :param _Persons: 人员列表
+        :type Persons: list of SeePersonInfo
+        :param _TotalCount: 符合条件的人员总数
+        :type TotalCount: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Limit = None
+        self._Offset = None
+        self._Persons = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def Limit(self):
+        r"""本次请求的分页数量
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        r"""本次请求的分页偏移
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Persons(self):
+        r"""人员列表
+        :rtype: list of SeePersonInfo
+        """
+        return self._Persons
+
+    @Persons.setter
+    def Persons(self, Persons):
+        self._Persons = Persons
+
+    @property
+    def TotalCount(self):
+        r"""符合条件的人员总数
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        if params.get("Persons") is not None:
+            self._Persons = []
+            for item in params.get("Persons"):
+                obj = SeePersonInfo()
+                obj._deserialize(item)
+                self._Persons.append(obj)
+        self._TotalCount = params.get("TotalCount")
         self._RequestId = params.get("RequestId")
 
 
@@ -35243,6 +36231,301 @@ class ModifyTWeSeeConfigRequest(AbstractModel):
 
 class ModifyTWeSeeConfigResponse(AbstractModel):
     r"""ModifyTWeSeeConfig返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyTWeSeeFaceRequest(AbstractModel):
+    r"""ModifyTWeSeeFace请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProductId: 产品 ID
+        :type ProductId: str
+        :param _DeviceName: 设备名称
+        :type DeviceName: str
+        :param _PersonId: 人员 ID
+        :type PersonId: str
+        :param _FaceId: 人脸 ID
+        :type FaceId: str
+        :param _ChannelId: 通道 ID，默认值为 0
+        :type ChannelId: int
+        :param _IsPrototype: 是否设为代表人脸。关联未归属的人脸时，默认值为 true
+        :type IsPrototype: bool
+        """
+        self._ProductId = None
+        self._DeviceName = None
+        self._PersonId = None
+        self._FaceId = None
+        self._ChannelId = None
+        self._IsPrototype = None
+
+    @property
+    def ProductId(self):
+        r"""产品 ID
+        :rtype: str
+        """
+        return self._ProductId
+
+    @ProductId.setter
+    def ProductId(self, ProductId):
+        self._ProductId = ProductId
+
+    @property
+    def DeviceName(self):
+        r"""设备名称
+        :rtype: str
+        """
+        return self._DeviceName
+
+    @DeviceName.setter
+    def DeviceName(self, DeviceName):
+        self._DeviceName = DeviceName
+
+    @property
+    def PersonId(self):
+        r"""人员 ID
+        :rtype: str
+        """
+        return self._PersonId
+
+    @PersonId.setter
+    def PersonId(self, PersonId):
+        self._PersonId = PersonId
+
+    @property
+    def FaceId(self):
+        r"""人脸 ID
+        :rtype: str
+        """
+        return self._FaceId
+
+    @FaceId.setter
+    def FaceId(self, FaceId):
+        self._FaceId = FaceId
+
+    @property
+    def ChannelId(self):
+        r"""通道 ID，默认值为 0
+        :rtype: int
+        """
+        return self._ChannelId
+
+    @ChannelId.setter
+    def ChannelId(self, ChannelId):
+        self._ChannelId = ChannelId
+
+    @property
+    def IsPrototype(self):
+        r"""是否设为代表人脸。关联未归属的人脸时，默认值为 true
+        :rtype: bool
+        """
+        return self._IsPrototype
+
+    @IsPrototype.setter
+    def IsPrototype(self, IsPrototype):
+        self._IsPrototype = IsPrototype
+
+
+    def _deserialize(self, params):
+        self._ProductId = params.get("ProductId")
+        self._DeviceName = params.get("DeviceName")
+        self._PersonId = params.get("PersonId")
+        self._FaceId = params.get("FaceId")
+        self._ChannelId = params.get("ChannelId")
+        self._IsPrototype = params.get("IsPrototype")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyTWeSeeFaceResponse(AbstractModel):
+    r"""ModifyTWeSeeFace返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Face: 人脸元数据
+        :type Face: :class:`tencentcloud.iotexplorer.v20190423.models.SeeFaceInfo`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Face = None
+        self._RequestId = None
+
+    @property
+    def Face(self):
+        r"""人脸元数据
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.SeeFaceInfo`
+        """
+        return self._Face
+
+    @Face.setter
+    def Face(self, Face):
+        self._Face = Face
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Face") is not None:
+            self._Face = SeeFaceInfo()
+            self._Face._deserialize(params.get("Face"))
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyTWeSeePersonRequest(AbstractModel):
+    r"""ModifyTWeSeePerson请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProductId: 产品 ID
+        :type ProductId: str
+        :param _DeviceName: 设备名称
+        :type DeviceName: str
+        :param _PersonId: 人员 ID
+        :type PersonId: str
+        :param _ChannelId: 通道 ID，默认值为 0
+        :type ChannelId: int
+        :param _IsRemembered: 是否标记为持久记忆。
+        :type IsRemembered: bool
+        :param _Name: 人员名称，最多 64 个字符
+        :type Name: str
+        """
+        self._ProductId = None
+        self._DeviceName = None
+        self._PersonId = None
+        self._ChannelId = None
+        self._IsRemembered = None
+        self._Name = None
+
+    @property
+    def ProductId(self):
+        r"""产品 ID
+        :rtype: str
+        """
+        return self._ProductId
+
+    @ProductId.setter
+    def ProductId(self, ProductId):
+        self._ProductId = ProductId
+
+    @property
+    def DeviceName(self):
+        r"""设备名称
+        :rtype: str
+        """
+        return self._DeviceName
+
+    @DeviceName.setter
+    def DeviceName(self, DeviceName):
+        self._DeviceName = DeviceName
+
+    @property
+    def PersonId(self):
+        r"""人员 ID
+        :rtype: str
+        """
+        return self._PersonId
+
+    @PersonId.setter
+    def PersonId(self, PersonId):
+        self._PersonId = PersonId
+
+    @property
+    def ChannelId(self):
+        r"""通道 ID，默认值为 0
+        :rtype: int
+        """
+        return self._ChannelId
+
+    @ChannelId.setter
+    def ChannelId(self, ChannelId):
+        self._ChannelId = ChannelId
+
+    @property
+    def IsRemembered(self):
+        r"""是否标记为持久记忆。
+        :rtype: bool
+        """
+        return self._IsRemembered
+
+    @IsRemembered.setter
+    def IsRemembered(self, IsRemembered):
+        self._IsRemembered = IsRemembered
+
+    @property
+    def Name(self):
+        r"""人员名称，最多 64 个字符
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+
+    def _deserialize(self, params):
+        self._ProductId = params.get("ProductId")
+        self._DeviceName = params.get("DeviceName")
+        self._PersonId = params.get("PersonId")
+        self._ChannelId = params.get("ChannelId")
+        self._IsRemembered = params.get("IsRemembered")
+        self._Name = params.get("Name")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyTWeSeePersonResponse(AbstractModel):
+    r"""ModifyTWeSeePerson返回参数结构体
 
     """
 
@@ -40890,6 +42173,10 @@ class SeeComprehensionConfig(AbstractModel):
         :type EnableKeywords: bool
         :param _SummaryPrompt: <p>自定义摘要提示词</p>
         :type SummaryPrompt: str
+        :param _EnableFaceDetection: <p>是否开启人脸检测</p>
+        :type EnableFaceDetection: bool
+        :param _InputRotateDegree: <p>画面旋转角度</p><p>枚举值：</p><ul><li>0： 不旋转</li><li>90： 顺时针旋转90度</li><li>-90： 逆时针旋转90度</li><li>180： 旋转180度</li></ul><p>默认值：0</p>
+        :type InputRotateDegree: int
         """
         self._DetectTypes = None
         self._EnableSearch = None
@@ -40900,6 +42187,8 @@ class SeeComprehensionConfig(AbstractModel):
         self._MaxDuration = None
         self._EnableKeywords = None
         self._SummaryPrompt = None
+        self._EnableFaceDetection = None
+        self._InputRotateDegree = None
 
     @property
     def DetectTypes(self):
@@ -41000,6 +42289,28 @@ class SeeComprehensionConfig(AbstractModel):
     def SummaryPrompt(self, SummaryPrompt):
         self._SummaryPrompt = SummaryPrompt
 
+    @property
+    def EnableFaceDetection(self):
+        r"""<p>是否开启人脸检测</p>
+        :rtype: bool
+        """
+        return self._EnableFaceDetection
+
+    @EnableFaceDetection.setter
+    def EnableFaceDetection(self, EnableFaceDetection):
+        self._EnableFaceDetection = EnableFaceDetection
+
+    @property
+    def InputRotateDegree(self):
+        r"""<p>画面旋转角度</p><p>枚举值：</p><ul><li>0： 不旋转</li><li>90： 顺时针旋转90度</li><li>-90： 逆时针旋转90度</li><li>180： 旋转180度</li></ul><p>默认值：0</p>
+        :rtype: int
+        """
+        return self._InputRotateDegree
+
+    @InputRotateDegree.setter
+    def InputRotateDegree(self, InputRotateDegree):
+        self._InputRotateDegree = InputRotateDegree
+
 
     def _deserialize(self, params):
         self._DetectTypes = params.get("DetectTypes")
@@ -41016,6 +42327,8 @@ class SeeComprehensionConfig(AbstractModel):
         self._MaxDuration = params.get("MaxDuration")
         self._EnableKeywords = params.get("EnableKeywords")
         self._SummaryPrompt = params.get("SummaryPrompt")
+        self._EnableFaceDetection = params.get("EnableFaceDetection")
+        self._InputRotateDegree = params.get("InputRotateDegree")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -41358,6 +42671,274 @@ class SeeEventIdFilterConfig(AbstractModel):
         
 
 
+class SeeFaceInfo(AbstractModel):
+    r"""TWeSee 人脸元数据
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BoundingBox: 人脸框坐标，依次为左、上、右、下，取值范围为 0 到 1
+        :type BoundingBox: list of float
+        :param _FaceId: 人脸 ID
+        :type FaceId: str
+        :param _CropImageURL: 人脸裁剪图 URL
+        :type CropImageURL: str
+        :param _IsPrototype: 是否为代表人脸
+        :type IsPrototype: bool
+        :param _PersonId: 人员 ID
+        :type PersonId: str
+        :param _Source: 创建来源。0：自动识别；1：图片导入
+        :type Source: int
+        :param _TimestampMs: 人脸所在画面的毫秒级 UNIX 时间戳
+        :type TimestampMs: int
+        """
+        self._BoundingBox = None
+        self._FaceId = None
+        self._CropImageURL = None
+        self._IsPrototype = None
+        self._PersonId = None
+        self._Source = None
+        self._TimestampMs = None
+
+    @property
+    def BoundingBox(self):
+        r"""人脸框坐标，依次为左、上、右、下，取值范围为 0 到 1
+        :rtype: list of float
+        """
+        return self._BoundingBox
+
+    @BoundingBox.setter
+    def BoundingBox(self, BoundingBox):
+        self._BoundingBox = BoundingBox
+
+    @property
+    def FaceId(self):
+        r"""人脸 ID
+        :rtype: str
+        """
+        return self._FaceId
+
+    @FaceId.setter
+    def FaceId(self, FaceId):
+        self._FaceId = FaceId
+
+    @property
+    def CropImageURL(self):
+        r"""人脸裁剪图 URL
+        :rtype: str
+        """
+        return self._CropImageURL
+
+    @CropImageURL.setter
+    def CropImageURL(self, CropImageURL):
+        self._CropImageURL = CropImageURL
+
+    @property
+    def IsPrototype(self):
+        r"""是否为代表人脸
+        :rtype: bool
+        """
+        return self._IsPrototype
+
+    @IsPrototype.setter
+    def IsPrototype(self, IsPrototype):
+        self._IsPrototype = IsPrototype
+
+    @property
+    def PersonId(self):
+        r"""人员 ID
+        :rtype: str
+        """
+        return self._PersonId
+
+    @PersonId.setter
+    def PersonId(self, PersonId):
+        self._PersonId = PersonId
+
+    @property
+    def Source(self):
+        r"""创建来源。0：自动识别；1：图片导入
+        :rtype: int
+        """
+        return self._Source
+
+    @Source.setter
+    def Source(self, Source):
+        self._Source = Source
+
+    @property
+    def TimestampMs(self):
+        r"""人脸所在画面的毫秒级 UNIX 时间戳
+        :rtype: int
+        """
+        return self._TimestampMs
+
+    @TimestampMs.setter
+    def TimestampMs(self, TimestampMs):
+        self._TimestampMs = TimestampMs
+
+
+    def _deserialize(self, params):
+        self._BoundingBox = params.get("BoundingBox")
+        self._FaceId = params.get("FaceId")
+        self._CropImageURL = params.get("CropImageURL")
+        self._IsPrototype = params.get("IsPrototype")
+        self._PersonId = params.get("PersonId")
+        self._Source = params.get("Source")
+        self._TimestampMs = params.get("TimestampMs")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SeeFaceRecognitionResult(AbstractModel):
+    r"""TWeSee 人脸识别结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Persons: 识别到的人员列表
+        :type Persons: list of SeeTaskPersonInfo
+        """
+        self._Persons = None
+
+    @property
+    def Persons(self):
+        r"""识别到的人员列表
+        :rtype: list of SeeTaskPersonInfo
+        """
+        return self._Persons
+
+    @Persons.setter
+    def Persons(self, Persons):
+        self._Persons = Persons
+
+
+    def _deserialize(self, params):
+        if params.get("Persons") is not None:
+            self._Persons = []
+            for item in params.get("Persons"):
+                obj = SeeTaskPersonInfo()
+                obj._deserialize(item)
+                self._Persons.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SeePersonInfo(AbstractModel):
+    r"""TWeSee 人员信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Faces: 代表人脸列表
+        :type Faces: list of SeeFaceInfo
+        :param _IsRemembered: 是否已标记为持久记忆
+        :type IsRemembered: bool
+        :param _Name: 人员名称
+        :type Name: str
+        :param _PersonId: 人员 ID
+        :type PersonId: str
+        :param _Source: 创建来源。0：自动识别；1：用户创建
+        :type Source: int
+        """
+        self._Faces = None
+        self._IsRemembered = None
+        self._Name = None
+        self._PersonId = None
+        self._Source = None
+
+    @property
+    def Faces(self):
+        r"""代表人脸列表
+        :rtype: list of SeeFaceInfo
+        """
+        return self._Faces
+
+    @Faces.setter
+    def Faces(self, Faces):
+        self._Faces = Faces
+
+    @property
+    def IsRemembered(self):
+        r"""是否已标记为持久记忆
+        :rtype: bool
+        """
+        return self._IsRemembered
+
+    @IsRemembered.setter
+    def IsRemembered(self, IsRemembered):
+        self._IsRemembered = IsRemembered
+
+    @property
+    def Name(self):
+        r"""人员名称
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def PersonId(self):
+        r"""人员 ID
+        :rtype: str
+        """
+        return self._PersonId
+
+    @PersonId.setter
+    def PersonId(self, PersonId):
+        self._PersonId = PersonId
+
+    @property
+    def Source(self):
+        r"""创建来源。0：自动识别；1：用户创建
+        :rtype: int
+        """
+        return self._Source
+
+    @Source.setter
+    def Source(self, Source):
+        self._Source = Source
+
+
+    def _deserialize(self, params):
+        if params.get("Faces") is not None:
+            self._Faces = []
+            for item in params.get("Faces"):
+                obj = SeeFaceInfo()
+                obj._deserialize(item)
+                self._Faces.append(obj)
+        self._IsRemembered = params.get("IsRemembered")
+        self._Name = params.get("Name")
+        self._PersonId = params.get("PersonId")
+        self._Source = params.get("Source")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class SeeStatItem(AbstractModel):
     r"""TWeSee 统计数据点
 
@@ -41439,6 +43020,87 @@ class SeeStatItem(AbstractModel):
         
 
 
+class SeeTaskFaceInfo(AbstractModel):
+    r"""TWeSee 任务人脸元数据
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CropImageURL: 人脸裁剪图下载 URL，仅在请求 FileURLExpireTime 时返回
+        :type CropImageURL: str
+        :param _FaceId: 人脸 ID
+        :type FaceId: str
+        :param _PersonId: 人员 ID
+        :type PersonId: str
+        :param _TimestampMs: 人脸所在画面的毫秒级 UNIX 时间戳
+        :type TimestampMs: int
+        """
+        self._CropImageURL = None
+        self._FaceId = None
+        self._PersonId = None
+        self._TimestampMs = None
+
+    @property
+    def CropImageURL(self):
+        r"""人脸裁剪图下载 URL，仅在请求 FileURLExpireTime 时返回
+        :rtype: str
+        """
+        return self._CropImageURL
+
+    @CropImageURL.setter
+    def CropImageURL(self, CropImageURL):
+        self._CropImageURL = CropImageURL
+
+    @property
+    def FaceId(self):
+        r"""人脸 ID
+        :rtype: str
+        """
+        return self._FaceId
+
+    @FaceId.setter
+    def FaceId(self, FaceId):
+        self._FaceId = FaceId
+
+    @property
+    def PersonId(self):
+        r"""人员 ID
+        :rtype: str
+        """
+        return self._PersonId
+
+    @PersonId.setter
+    def PersonId(self, PersonId):
+        self._PersonId = PersonId
+
+    @property
+    def TimestampMs(self):
+        r"""人脸所在画面的毫秒级 UNIX 时间戳
+        :rtype: int
+        """
+        return self._TimestampMs
+
+    @TimestampMs.setter
+    def TimestampMs(self, TimestampMs):
+        self._TimestampMs = TimestampMs
+
+
+    def _deserialize(self, params):
+        self._CropImageURL = params.get("CropImageURL")
+        self._FaceId = params.get("FaceId")
+        self._PersonId = params.get("PersonId")
+        self._TimestampMs = params.get("TimestampMs")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class SeeTaskInfo(AbstractModel):
     r"""TWeSee 任务详情
 
@@ -41464,6 +43126,8 @@ class SeeTaskInfo(AbstractModel):
         :type CompHighlightResult: :class:`tencentcloud.iotexplorer.v20190423.models.SeeCompHighlightResult`
         :param _DetectContinuousResult: <p>标签持续检测结果</p>
         :type DetectContinuousResult: :class:`tencentcloud.iotexplorer.v20190423.models.SeeDetectContinuousResult`
+        :param _FaceRecognitionResult: <p>人脸检测结果</p>
+        :type FaceRecognitionResult: :class:`tencentcloud.iotexplorer.v20190423.models.SeeFaceRecognitionResult`
         :param _CostBasic: <p>完成该任务所消耗的基础能力额度</p>
         :type CostBasic: int
         :param _CostAdvanced: <p>完成该任务所消耗的高级能力额度</p>
@@ -41488,6 +43152,7 @@ class SeeTaskInfo(AbstractModel):
         self._ComprehensionResult = None
         self._CompHighlightResult = None
         self._DetectContinuousResult = None
+        self._FaceRecognitionResult = None
         self._CostBasic = None
         self._CostAdvanced = None
         self._Files = None
@@ -41596,6 +43261,17 @@ class SeeTaskInfo(AbstractModel):
         self._DetectContinuousResult = DetectContinuousResult
 
     @property
+    def FaceRecognitionResult(self):
+        r"""<p>人脸检测结果</p>
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.SeeFaceRecognitionResult`
+        """
+        return self._FaceRecognitionResult
+
+    @FaceRecognitionResult.setter
+    def FaceRecognitionResult(self, FaceRecognitionResult):
+        self._FaceRecognitionResult = FaceRecognitionResult
+
+    @property
     def CostBasic(self):
         r"""<p>完成该任务所消耗的基础能力额度</p>
         :rtype: int
@@ -41691,6 +43367,9 @@ class SeeTaskInfo(AbstractModel):
         if params.get("DetectContinuousResult") is not None:
             self._DetectContinuousResult = SeeDetectContinuousResult()
             self._DetectContinuousResult._deserialize(params.get("DetectContinuousResult"))
+        if params.get("FaceRecognitionResult") is not None:
+            self._FaceRecognitionResult = SeeFaceRecognitionResult()
+            self._FaceRecognitionResult._deserialize(params.get("FaceRecognitionResult"))
         self._CostBasic = params.get("CostBasic")
         self._CostAdvanced = params.get("CostAdvanced")
         self._Files = params.get("Files")
@@ -41814,6 +43493,107 @@ class SeeTaskMetadata(AbstractModel):
         self._StartTimeMs = params.get("StartTimeMs")
         self._EndTimeMs = params.get("EndTimeMs")
         self._CustomId = params.get("CustomId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SeeTaskPersonInfo(AbstractModel):
+    r"""TWeSee 任务人员信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Faces: 该人员在任务中的人脸列表
+        :type Faces: list of SeeTaskFaceInfo
+        :param _IsRemembered: 是否已标记为持久记忆
+        :type IsRemembered: bool
+        :param _Name: 人员名称
+        :type Name: str
+        :param _PersonId: 人员 ID
+        :type PersonId: str
+        :param _Source: 创建来源。0：自动识别；1：用户创建
+        :type Source: int
+        """
+        self._Faces = None
+        self._IsRemembered = None
+        self._Name = None
+        self._PersonId = None
+        self._Source = None
+
+    @property
+    def Faces(self):
+        r"""该人员在任务中的人脸列表
+        :rtype: list of SeeTaskFaceInfo
+        """
+        return self._Faces
+
+    @Faces.setter
+    def Faces(self, Faces):
+        self._Faces = Faces
+
+    @property
+    def IsRemembered(self):
+        r"""是否已标记为持久记忆
+        :rtype: bool
+        """
+        return self._IsRemembered
+
+    @IsRemembered.setter
+    def IsRemembered(self, IsRemembered):
+        self._IsRemembered = IsRemembered
+
+    @property
+    def Name(self):
+        r"""人员名称
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def PersonId(self):
+        r"""人员 ID
+        :rtype: str
+        """
+        return self._PersonId
+
+    @PersonId.setter
+    def PersonId(self, PersonId):
+        self._PersonId = PersonId
+
+    @property
+    def Source(self):
+        r"""创建来源。0：自动识别；1：用户创建
+        :rtype: int
+        """
+        return self._Source
+
+    @Source.setter
+    def Source(self, Source):
+        self._Source = Source
+
+
+    def _deserialize(self, params):
+        if params.get("Faces") is not None:
+            self._Faces = []
+            for item in params.get("Faces"):
+                obj = SeeTaskFaceInfo()
+                obj._deserialize(item)
+                self._Faces.append(obj)
+        self._IsRemembered = params.get("IsRemembered")
+        self._Name = params.get("Name")
+        self._PersonId = params.get("PersonId")
+        self._Source = params.get("Source")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

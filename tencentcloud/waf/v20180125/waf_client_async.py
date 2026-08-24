@@ -2493,6 +2493,24 @@ class WafClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def EnableClientMsg(
+            self,
+            request: models.EnableClientMsgRequest,
+            opts: Dict = None,
+    ) -> models.EnableClientMsgResponse:
+        """
+        开关开启后，会将客户端的ip和port透传到后端
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "EnableClientMsg"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.EnableClientMsgResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def EnableRateLimitsV2(
             self,
             request: models.EnableRateLimitsV2Request,
@@ -3785,6 +3803,24 @@ class WafClient(AbstractClient):
         kwargs["action"] = "QueryBypassAllStatus"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.QueryBypassAllStatusResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def QueryClientMsg(
+            self,
+            request: models.QueryClientMsgRequest,
+            opts: Dict = None,
+    ) -> models.QueryClientMsgResponse:
+        """
+        查询是否开启透传客户端信息
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "QueryClientMsg"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.QueryClientMsgResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

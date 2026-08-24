@@ -154,6 +154,11 @@ def test_import_bda_v20200324():
     from tencentcloud.bda.v20200324 import models
 
 
+def test_import_bdrc_v20260330():
+    from tencentcloud.bdrc.v20260330 import bdrc_client
+    from tencentcloud.bdrc.v20260330 import models
+
+
 def test_import_bh_v20230418():
     from tencentcloud.bh.v20230418 import bh_client
     from tencentcloud.bh.v20230418 import models

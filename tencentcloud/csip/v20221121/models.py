@@ -22308,6 +22308,72 @@ class CheckViewRiskItem(AbstractModel):
         
 
 
+class CkafkaInstance(AbstractModel):
+    r"""租户ckafka信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 实例id
+        :type InstanceId: str
+        :param _InstanceName: 实例名称
+        :type InstanceName: str
+        :param _RegionId: 实例地域
+        :type RegionId: str
+        """
+        self._InstanceId = None
+        self._InstanceName = None
+        self._RegionId = None
+
+    @property
+    def InstanceId(self):
+        r"""实例id
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def InstanceName(self):
+        r"""实例名称
+        :rtype: str
+        """
+        return self._InstanceName
+
+    @InstanceName.setter
+    def InstanceName(self, InstanceName):
+        self._InstanceName = InstanceName
+
+    @property
+    def RegionId(self):
+        r"""实例地域
+        :rtype: str
+        """
+        return self._RegionId
+
+    @RegionId.setter
+    def RegionId(self, RegionId):
+        self._RegionId = RegionId
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._InstanceName = params.get("InstanceName")
+        self._RegionId = params.get("RegionId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ClbListenerItem(AbstractModel):
     r"""CLB监听器
 
@@ -36803,6 +36869,160 @@ class CreateDspmAssetsExportJobResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateDspmAuditFilterStrategyRequest(AbstractModel):
+    r"""CreateDspmAuditFilterStrategy请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: <p>策略名</p>
+        :type Name: str
+        :param _Rule: <p>规则内容</p><p>参数格式：json</p>
+        :type Rule: str
+        :param _IsEnabled: <p>是否启用</p><p>枚举值：</p><ul><li>1： 启用</li><li>0： 禁用</li></ul>
+        :type IsEnabled: int
+        :param _Description: <p>策略描述</p>
+        :type Description: str
+        :param _Remark: <p>备注</p>
+        :type Remark: str
+        :param _MemberId: <p>集团账号的成员id</p>
+        :type MemberId: list of str
+        """
+        self._Name = None
+        self._Rule = None
+        self._IsEnabled = None
+        self._Description = None
+        self._Remark = None
+        self._MemberId = None
+
+    @property
+    def Name(self):
+        r"""<p>策略名</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Rule(self):
+        r"""<p>规则内容</p><p>参数格式：json</p>
+        :rtype: str
+        """
+        return self._Rule
+
+    @Rule.setter
+    def Rule(self, Rule):
+        self._Rule = Rule
+
+    @property
+    def IsEnabled(self):
+        r"""<p>是否启用</p><p>枚举值：</p><ul><li>1： 启用</li><li>0： 禁用</li></ul>
+        :rtype: int
+        """
+        return self._IsEnabled
+
+    @IsEnabled.setter
+    def IsEnabled(self, IsEnabled):
+        self._IsEnabled = IsEnabled
+
+    @property
+    def Description(self):
+        r"""<p>策略描述</p>
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def Remark(self):
+        r"""<p>备注</p>
+        :rtype: str
+        """
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+    @property
+    def MemberId(self):
+        r"""<p>集团账号的成员id</p>
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Rule = params.get("Rule")
+        self._IsEnabled = params.get("IsEnabled")
+        self._Description = params.get("Description")
+        self._Remark = params.get("Remark")
+        self._MemberId = params.get("MemberId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateDspmAuditFilterStrategyResponse(AbstractModel):
+    r"""CreateDspmAuditFilterStrategy返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AuditFilterStrategyId: <p>策略ID</p>
+        :type AuditFilterStrategyId: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._AuditFilterStrategyId = None
+        self._RequestId = None
+
+    @property
+    def AuditFilterStrategyId(self):
+        r"""<p>策略ID</p>
+        :rtype: int
+        """
+        return self._AuditFilterStrategyId
+
+    @AuditFilterStrategyId.setter
+    def AuditFilterStrategyId(self, AuditFilterStrategyId):
+        self._AuditFilterStrategyId = AuditFilterStrategyId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._AuditFilterStrategyId = params.get("AuditFilterStrategyId")
+        self._RequestId = params.get("RequestId")
+
+
 class CreateDspmExportTaskRequest(AbstractModel):
     r"""CreateDspmExportTask请求参数结构体
 
@@ -38400,6 +38620,55 @@ class CreateDspmPersonalIdentifyResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateDspmResourceRequest(AbstractModel):
+    r"""CreateDspmResource请求参数结构体
+
+    """
+
+
+class CreateDspmResourceResponse(AbstractModel):
+    r"""CreateDspmResource返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ResourceId: 资产id
+        :type ResourceId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ResourceId = None
+        self._RequestId = None
+
+    @property
+    def ResourceId(self):
+        r"""资产id
+        :rtype: str
+        """
+        return self._ResourceId
+
+    @ResourceId.setter
+    def ResourceId(self, ResourceId):
+        self._ResourceId = ResourceId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._ResourceId = params.get("ResourceId")
+        self._RequestId = params.get("RequestId")
+
+
 class CreateDspmRiskExportJobRequest(AbstractModel):
     r"""CreateDspmRiskExportJob请求参数结构体
 
@@ -38493,6 +38762,235 @@ class CreateDspmRiskExportJobResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._JobID = params.get("JobID")
+        self._RequestId = params.get("RequestId")
+
+
+class CreateDspmRiskStrategyRequest(AbstractModel):
+    r"""CreateDspmRiskStrategy请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: <p>策略名</p>
+        :type Name: str
+        :param _Rule: <p>策略规则，JSON 字符串</p>
+        :type Rule: str
+        :param _MemberId: <p>集团账号的成员id</p>
+        :type MemberId: list of str
+        :param _EnName: <p>英文策略名</p>
+        :type EnName: str
+        :param _Description: <p>策略描述</p>
+        :type Description: str
+        :param _EnDescription: <p>英文策略描述</p>
+        :type EnDescription: str
+        :param _RiskLevel: <p>风险等级，可选值：Info/Low/Medium/High。不传默认 Medium</p>
+        :type RiskLevel: str
+        :param _IsEnabled: <p>是否启用。0-禁用，1-启用，不传默认启用</p>
+        :type IsEnabled: int
+        :param _RiskType: <p>风险类型。当前仅支持 alarm，不传默认 alarm</p>
+        :type RiskType: str
+        :param _StrategyCategory: <p>策略类别。当前仅支持 SQLOperationAnomaly，不传默认 SQLOperationAnomaly</p>
+        :type StrategyCategory: str
+        """
+        self._Name = None
+        self._Rule = None
+        self._MemberId = None
+        self._EnName = None
+        self._Description = None
+        self._EnDescription = None
+        self._RiskLevel = None
+        self._IsEnabled = None
+        self._RiskType = None
+        self._StrategyCategory = None
+
+    @property
+    def Name(self):
+        r"""<p>策略名</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Rule(self):
+        r"""<p>策略规则，JSON 字符串</p>
+        :rtype: str
+        """
+        return self._Rule
+
+    @Rule.setter
+    def Rule(self, Rule):
+        self._Rule = Rule
+
+    @property
+    def MemberId(self):
+        r"""<p>集团账号的成员id</p>
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+    @property
+    def EnName(self):
+        r"""<p>英文策略名</p>
+        :rtype: str
+        """
+        return self._EnName
+
+    @EnName.setter
+    def EnName(self, EnName):
+        self._EnName = EnName
+
+    @property
+    def Description(self):
+        r"""<p>策略描述</p>
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def EnDescription(self):
+        r"""<p>英文策略描述</p>
+        :rtype: str
+        """
+        return self._EnDescription
+
+    @EnDescription.setter
+    def EnDescription(self, EnDescription):
+        self._EnDescription = EnDescription
+
+    @property
+    def RiskLevel(self):
+        r"""<p>风险等级，可选值：Info/Low/Medium/High。不传默认 Medium</p>
+        :rtype: str
+        """
+        return self._RiskLevel
+
+    @RiskLevel.setter
+    def RiskLevel(self, RiskLevel):
+        self._RiskLevel = RiskLevel
+
+    @property
+    def IsEnabled(self):
+        r"""<p>是否启用。0-禁用，1-启用，不传默认启用</p>
+        :rtype: int
+        """
+        return self._IsEnabled
+
+    @IsEnabled.setter
+    def IsEnabled(self, IsEnabled):
+        self._IsEnabled = IsEnabled
+
+    @property
+    def RiskType(self):
+        r"""<p>风险类型。当前仅支持 alarm，不传默认 alarm</p>
+        :rtype: str
+        """
+        return self._RiskType
+
+    @RiskType.setter
+    def RiskType(self, RiskType):
+        self._RiskType = RiskType
+
+    @property
+    def StrategyCategory(self):
+        r"""<p>策略类别。当前仅支持 SQLOperationAnomaly，不传默认 SQLOperationAnomaly</p>
+        :rtype: str
+        """
+        return self._StrategyCategory
+
+    @StrategyCategory.setter
+    def StrategyCategory(self, StrategyCategory):
+        self._StrategyCategory = StrategyCategory
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Rule = params.get("Rule")
+        self._MemberId = params.get("MemberId")
+        self._EnName = params.get("EnName")
+        self._Description = params.get("Description")
+        self._EnDescription = params.get("EnDescription")
+        self._RiskLevel = params.get("RiskLevel")
+        self._IsEnabled = params.get("IsEnabled")
+        self._RiskType = params.get("RiskType")
+        self._StrategyCategory = params.get("StrategyCategory")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateDspmRiskStrategyResponse(AbstractModel):
+    r"""CreateDspmRiskStrategy返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _StrategyId: <p>策略id</p>
+        :type StrategyId: int
+        :param _StrategyType: <p>策略类型</p>
+        :type StrategyType: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._StrategyId = None
+        self._StrategyType = None
+        self._RequestId = None
+
+    @property
+    def StrategyId(self):
+        r"""<p>策略id</p>
+        :rtype: int
+        """
+        return self._StrategyId
+
+    @StrategyId.setter
+    def StrategyId(self, StrategyId):
+        self._StrategyId = StrategyId
+
+    @property
+    def StrategyType(self):
+        r"""<p>策略类型</p>
+        :rtype: str
+        """
+        return self._StrategyType
+
+    @StrategyType.setter
+    def StrategyType(self, StrategyType):
+        self._StrategyType = StrategyType
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._StrategyId = params.get("StrategyId")
+        self._StrategyType = params.get("StrategyType")
         self._RequestId = params.get("RequestId")
 
 
@@ -47749,6 +48247,85 @@ class DeleteDspmAssetAccountResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DeleteDspmAuditFilterStrategyRequest(AbstractModel):
+    r"""DeleteDspmAuditFilterStrategy请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AuditFilterStrategyId: <p>策略ID</p>
+        :type AuditFilterStrategyId: list of int non-negative
+        :param _MemberId: <p>集团账号的成员id</p>
+        :type MemberId: list of str
+        """
+        self._AuditFilterStrategyId = None
+        self._MemberId = None
+
+    @property
+    def AuditFilterStrategyId(self):
+        r"""<p>策略ID</p>
+        :rtype: list of int non-negative
+        """
+        return self._AuditFilterStrategyId
+
+    @AuditFilterStrategyId.setter
+    def AuditFilterStrategyId(self, AuditFilterStrategyId):
+        self._AuditFilterStrategyId = AuditFilterStrategyId
+
+    @property
+    def MemberId(self):
+        r"""<p>集团账号的成员id</p>
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+
+    def _deserialize(self, params):
+        self._AuditFilterStrategyId = params.get("AuditFilterStrategyId")
+        self._MemberId = params.get("MemberId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteDspmAuditFilterStrategyResponse(AbstractModel):
+    r"""DeleteDspmAuditFilterStrategy返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class DeleteDspmBackupLogListRequest(AbstractModel):
     r"""DeleteDspmBackupLogList请求参数结构体
 
@@ -47802,6 +48379,70 @@ class DeleteDspmBackupLogListRequest(AbstractModel):
 
 class DeleteDspmBackupLogListResponse(AbstractModel):
     r"""DeleteDspmBackupLogList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteDspmCkafkaConfigRequest(AbstractModel):
+    r"""DeleteDspmCkafkaConfig请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MemberId: <p>集团账号的成员id</p>
+        :type MemberId: list of str
+        """
+        self._MemberId = None
+
+    @property
+    def MemberId(self):
+        r"""<p>集团账号的成员id</p>
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+
+    def _deserialize(self, params):
+        self._MemberId = params.get("MemberId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteDspmCkafkaConfigResponse(AbstractModel):
+    r"""DeleteDspmCkafkaConfig返回参数结构体
 
     """
 
@@ -48566,6 +49207,179 @@ class DeleteDspmRestoreLogListResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteDspmRiskStrategyRequest(AbstractModel):
+    r"""DeleteDspmRiskStrategy请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _StrategyId: <p>策略id，仅支持删除自定义策略（rule_source=custom）；内置策略请通过 ModifyDspmRiskStrategy 的 IsEnabled 禁用</p>
+        :type StrategyId: list of int non-negative
+        :param _MemberId: <p>集团账号的成员id</p>
+        :type MemberId: list of str
+        """
+        self._StrategyId = None
+        self._MemberId = None
+
+    @property
+    def StrategyId(self):
+        r"""<p>策略id，仅支持删除自定义策略（rule_source=custom）；内置策略请通过 ModifyDspmRiskStrategy 的 IsEnabled 禁用</p>
+        :rtype: list of int non-negative
+        """
+        return self._StrategyId
+
+    @StrategyId.setter
+    def StrategyId(self, StrategyId):
+        self._StrategyId = StrategyId
+
+    @property
+    def MemberId(self):
+        r"""<p>集团账号的成员id</p>
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+
+    def _deserialize(self, params):
+        self._StrategyId = params.get("StrategyId")
+        self._MemberId = params.get("MemberId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteDspmRiskStrategyResponse(AbstractModel):
+    r"""DeleteDspmRiskStrategy返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteDspmShareUserDataRequest(AbstractModel):
+    r"""DeleteDspmShareUserData请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DeleteDataAppId: 用户appid
+        :type DeleteDataAppId: int
+        """
+        self._DeleteDataAppId = None
+
+    @property
+    def DeleteDataAppId(self):
+        r"""用户appid
+        :rtype: int
+        """
+        return self._DeleteDataAppId
+
+    @DeleteDataAppId.setter
+    def DeleteDataAppId(self, DeleteDataAppId):
+        self._DeleteDataAppId = DeleteDataAppId
+
+
+    def _deserialize(self, params):
+        self._DeleteDataAppId = params.get("DeleteDataAppId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteDspmShareUserDataResponse(AbstractModel):
+    r"""DeleteDspmShareUserData返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: 0-成功，1-失败
+        :type Result: int
+        :param _Msg: 成功或失败信息
+        :type Msg: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Result = None
+        self._Msg = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        r"""0-成功，1-失败
+        :rtype: int
+        """
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def Msg(self):
+        r"""成功或失败信息
+        :rtype: str
+        """
+        return self._Msg
+
+    @Msg.setter
+    def Msg(self, Msg):
+        self._Msg = Msg
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Result = params.get("Result")
+        self._Msg = params.get("Msg")
         self._RequestId = params.get("RequestId")
 
 
@@ -77635,6 +78449,308 @@ class DescribeDspmAssetsResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeDspmAuditFilterStrategy(AbstractModel):
+    r"""过滤规则
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AuditFilterStrategyId: <p>策略ID</p>
+        :type AuditFilterStrategyId: int
+        :param _Name: <p>策略名</p>
+        :type Name: str
+        :param _Description: <p>策略描述</p>
+        :type Description: str
+        :param _Rule: <p>规则内容</p>
+        :type Rule: str
+        :param _IsEnabled: <p>是否启用</p><p>枚举值：</p><ul><li>0： 禁用</li><li>1： 启用</li></ul>
+        :type IsEnabled: int
+        :param _Remark: <p>备注</p>
+        :type Remark: str
+        :param _CreateTime: <p>创建时间</p><p>参数格式：2026-07-16T11:44:45+08</p>
+        :type CreateTime: str
+        :param _ModifyTime: <p>更新时间</p><p>参数格式：2026-07-16T11:44:45+08</p>
+        :type ModifyTime: str
+        :param _AppId: <p>云账号ID</p>
+        :type AppId: int
+        :param _Uin: <p>用户标识</p>
+        :type Uin: str
+        :param _NickName: <p>账号昵称</p>
+        :type NickName: str
+        """
+        self._AuditFilterStrategyId = None
+        self._Name = None
+        self._Description = None
+        self._Rule = None
+        self._IsEnabled = None
+        self._Remark = None
+        self._CreateTime = None
+        self._ModifyTime = None
+        self._AppId = None
+        self._Uin = None
+        self._NickName = None
+
+    @property
+    def AuditFilterStrategyId(self):
+        r"""<p>策略ID</p>
+        :rtype: int
+        """
+        return self._AuditFilterStrategyId
+
+    @AuditFilterStrategyId.setter
+    def AuditFilterStrategyId(self, AuditFilterStrategyId):
+        self._AuditFilterStrategyId = AuditFilterStrategyId
+
+    @property
+    def Name(self):
+        r"""<p>策略名</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Description(self):
+        r"""<p>策略描述</p>
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def Rule(self):
+        r"""<p>规则内容</p>
+        :rtype: str
+        """
+        return self._Rule
+
+    @Rule.setter
+    def Rule(self, Rule):
+        self._Rule = Rule
+
+    @property
+    def IsEnabled(self):
+        r"""<p>是否启用</p><p>枚举值：</p><ul><li>0： 禁用</li><li>1： 启用</li></ul>
+        :rtype: int
+        """
+        return self._IsEnabled
+
+    @IsEnabled.setter
+    def IsEnabled(self, IsEnabled):
+        self._IsEnabled = IsEnabled
+
+    @property
+    def Remark(self):
+        r"""<p>备注</p>
+        :rtype: str
+        """
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+    @property
+    def CreateTime(self):
+        r"""<p>创建时间</p><p>参数格式：2026-07-16T11:44:45+08</p>
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def ModifyTime(self):
+        r"""<p>更新时间</p><p>参数格式：2026-07-16T11:44:45+08</p>
+        :rtype: str
+        """
+        return self._ModifyTime
+
+    @ModifyTime.setter
+    def ModifyTime(self, ModifyTime):
+        self._ModifyTime = ModifyTime
+
+    @property
+    def AppId(self):
+        r"""<p>云账号ID</p>
+        :rtype: int
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def Uin(self):
+        r"""<p>用户标识</p>
+        :rtype: str
+        """
+        return self._Uin
+
+    @Uin.setter
+    def Uin(self, Uin):
+        self._Uin = Uin
+
+    @property
+    def NickName(self):
+        r"""<p>账号昵称</p>
+        :rtype: str
+        """
+        return self._NickName
+
+    @NickName.setter
+    def NickName(self, NickName):
+        self._NickName = NickName
+
+
+    def _deserialize(self, params):
+        self._AuditFilterStrategyId = params.get("AuditFilterStrategyId")
+        self._Name = params.get("Name")
+        self._Description = params.get("Description")
+        self._Rule = params.get("Rule")
+        self._IsEnabled = params.get("IsEnabled")
+        self._Remark = params.get("Remark")
+        self._CreateTime = params.get("CreateTime")
+        self._ModifyTime = params.get("ModifyTime")
+        self._AppId = params.get("AppId")
+        self._Uin = params.get("Uin")
+        self._NickName = params.get("NickName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDspmAuditFilterStrategyRequest(AbstractModel):
+    r"""DescribeDspmAuditFilterStrategy请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MemberId: <p>集团账号的成员id</p>
+        :type MemberId: list of str
+        :param _Filter: <p>过滤条件</p>
+        :type Filter: :class:`tencentcloud.csip.v20221121.models.Filter`
+        """
+        self._MemberId = None
+        self._Filter = None
+
+    @property
+    def MemberId(self):
+        r"""<p>集团账号的成员id</p>
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+    @property
+    def Filter(self):
+        r"""<p>过滤条件</p>
+        :rtype: :class:`tencentcloud.csip.v20221121.models.Filter`
+        """
+        return self._Filter
+
+    @Filter.setter
+    def Filter(self, Filter):
+        self._Filter = Filter
+
+
+    def _deserialize(self, params):
+        self._MemberId = params.get("MemberId")
+        if params.get("Filter") is not None:
+            self._Filter = Filter()
+            self._Filter._deserialize(params.get("Filter"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDspmAuditFilterStrategyResponse(AbstractModel):
+    r"""DescribeDspmAuditFilterStrategy返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _StrategySet: <p>策略内容</p>
+        :type StrategySet: list of DescribeDspmAuditFilterStrategy
+        :param _TotalCount: <p>策略总数</p>
+        :type TotalCount: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._StrategySet = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def StrategySet(self):
+        r"""<p>策略内容</p>
+        :rtype: list of DescribeDspmAuditFilterStrategy
+        """
+        return self._StrategySet
+
+    @StrategySet.setter
+    def StrategySet(self, StrategySet):
+        self._StrategySet = StrategySet
+
+    @property
+    def TotalCount(self):
+        r"""<p>策略总数</p>
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("StrategySet") is not None:
+            self._StrategySet = []
+            for item in params.get("StrategySet"):
+                obj = DescribeDspmAuditFilterStrategy()
+                obj._deserialize(item)
+                self._StrategySet.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeDspmBackupLogListRequest(AbstractModel):
     r"""DescribeDspmBackupLogList请求参数结构体
 
@@ -78020,6 +79136,324 @@ class DescribeDspmBackupSettingResponse(AbstractModel):
         self._LogMaxSaveTime = params.get("LogMaxSaveTime")
         self._OnlineLogMaxSaveTime = params.get("OnlineLogMaxSaveTime")
         self._MaxOnlineLogCount = params.get("MaxOnlineLogCount")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeDspmCkafkaRouteListRequest(AbstractModel):
+    r"""DescribeDspmCkafkaRouteList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VipType: Ckafka接入类型
+        :type VipType: int
+        :param _RegionId: Ckafka实例的地域
+        :type RegionId: str
+        :param _InstanceId: Ckafka实例的id
+        :type InstanceId: str
+        :param _MemberId: <p>集团账号的成员id</p>
+        :type MemberId: list of str
+        :param _InstanceName: Ckafka实例的名称
+        :type InstanceName: str
+        """
+        self._VipType = None
+        self._RegionId = None
+        self._InstanceId = None
+        self._MemberId = None
+        self._InstanceName = None
+
+    @property
+    def VipType(self):
+        r"""Ckafka接入类型
+        :rtype: int
+        """
+        return self._VipType
+
+    @VipType.setter
+    def VipType(self, VipType):
+        self._VipType = VipType
+
+    @property
+    def RegionId(self):
+        r"""Ckafka实例的地域
+        :rtype: str
+        """
+        return self._RegionId
+
+    @RegionId.setter
+    def RegionId(self, RegionId):
+        self._RegionId = RegionId
+
+    @property
+    def InstanceId(self):
+        r"""Ckafka实例的id
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def MemberId(self):
+        r"""<p>集团账号的成员id</p>
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+    @property
+    def InstanceName(self):
+        r"""Ckafka实例的名称
+        :rtype: str
+        """
+        return self._InstanceName
+
+    @InstanceName.setter
+    def InstanceName(self, InstanceName):
+        self._InstanceName = InstanceName
+
+
+    def _deserialize(self, params):
+        self._VipType = params.get("VipType")
+        self._RegionId = params.get("RegionId")
+        self._InstanceId = params.get("InstanceId")
+        self._MemberId = params.get("MemberId")
+        self._InstanceName = params.get("InstanceName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDspmCkafkaRouteListResponse(AbstractModel):
+    r"""DescribeDspmCkafkaRouteList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _List: Ckafka实例的路由列表
+        :type List: list of RouteInfo
+        :param _TotalCount: Ckafka实例的路由列表个数
+        :type TotalCount: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._List = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def List(self):
+        r"""Ckafka实例的路由列表
+        :rtype: list of RouteInfo
+        """
+        return self._List
+
+    @List.setter
+    def List(self, List):
+        self._List = List
+
+    @property
+    def TotalCount(self):
+        r"""Ckafka实例的路由列表个数
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("List") is not None:
+            self._List = []
+            for item in params.get("List"):
+                obj = RouteInfo()
+                obj._deserialize(item)
+                self._List.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeDspmCkafkaTopicListRequest(AbstractModel):
+    r"""DescribeDspmCkafkaTopicList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VipType: ckafka的实例接入类型
+        :type VipType: int
+        :param _RegionId: ckafka的实例地域
+        :type RegionId: str
+        :param _InstanceId: ckafka的实例id
+        :type InstanceId: str
+        :param _InstanceName: ckafka的实例名称
+        :type InstanceName: str
+        :param _MemberId: <p>集团账号的成员id</p>
+        :type MemberId: list of str
+        """
+        self._VipType = None
+        self._RegionId = None
+        self._InstanceId = None
+        self._InstanceName = None
+        self._MemberId = None
+
+    @property
+    def VipType(self):
+        r"""ckafka的实例接入类型
+        :rtype: int
+        """
+        return self._VipType
+
+    @VipType.setter
+    def VipType(self, VipType):
+        self._VipType = VipType
+
+    @property
+    def RegionId(self):
+        r"""ckafka的实例地域
+        :rtype: str
+        """
+        return self._RegionId
+
+    @RegionId.setter
+    def RegionId(self, RegionId):
+        self._RegionId = RegionId
+
+    @property
+    def InstanceId(self):
+        r"""ckafka的实例id
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def InstanceName(self):
+        r"""ckafka的实例名称
+        :rtype: str
+        """
+        return self._InstanceName
+
+    @InstanceName.setter
+    def InstanceName(self, InstanceName):
+        self._InstanceName = InstanceName
+
+    @property
+    def MemberId(self):
+        r"""<p>集团账号的成员id</p>
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+
+    def _deserialize(self, params):
+        self._VipType = params.get("VipType")
+        self._RegionId = params.get("RegionId")
+        self._InstanceId = params.get("InstanceId")
+        self._InstanceName = params.get("InstanceName")
+        self._MemberId = params.get("MemberId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDspmCkafkaTopicListResponse(AbstractModel):
+    r"""DescribeDspmCkafkaTopicList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _List: ckafka实例的主题列表
+        :type List: list of TopicInfo
+        :param _TotalCount: ckafka实例的主题列表的总数
+        :type TotalCount: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._List = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def List(self):
+        r"""ckafka实例的主题列表
+        :rtype: list of TopicInfo
+        """
+        return self._List
+
+    @List.setter
+    def List(self, List):
+        self._List = List
+
+    @property
+    def TotalCount(self):
+        r"""ckafka实例的主题列表的总数
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("List") is not None:
+            self._List = []
+            for item in params.get("List"):
+                obj = TopicInfo()
+                obj._deserialize(item)
+                self._List.append(obj)
+        self._TotalCount = params.get("TotalCount")
         self._RequestId = params.get("RequestId")
 
 
@@ -79997,6 +81431,105 @@ class DescribeDspmIdentifyRuleTestResultResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeDspmLogDeliveryTypeRequest(AbstractModel):
+    r"""DescribeDspmLogDeliveryType请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MemberId: <p>集团账号的成员id</p>
+        :type MemberId: list of str
+        """
+        self._MemberId = None
+
+    @property
+    def MemberId(self):
+        r"""<p>集团账号的成员id</p>
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+
+    def _deserialize(self, params):
+        self._MemberId = params.get("MemberId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDspmLogDeliveryTypeResponse(AbstractModel):
+    r"""DescribeDspmLogDeliveryType返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _List: 支持日志投递的类型列表
+        :type List: list of LogDeliveryType
+        :param _TotalCount: 支持日志投递类型的总数
+        :type TotalCount: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._List = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def List(self):
+        r"""支持日志投递的类型列表
+        :rtype: list of LogDeliveryType
+        """
+        return self._List
+
+    @List.setter
+    def List(self, List):
+        self._List = List
+
+    @property
+    def TotalCount(self):
+        r"""支持日志投递类型的总数
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("List") is not None:
+            self._List = []
+            for item in params.get("List"):
+                obj = LogDeliveryType()
+                obj._deserialize(item)
+                self._List.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeDspmLogListRequest(AbstractModel):
     r"""DescribeDspmLogList请求参数结构体
 
@@ -80603,6 +82136,105 @@ class DescribeDspmLogListResponse(AbstractModel):
                 obj = AuditLogInfo()
                 obj._deserialize(item)
                 self._List.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeDspmLogTypeConfigListRequest(AbstractModel):
+    r"""DescribeDspmLogTypeConfigList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MemberId: <p>集团账号的成员id</p>
+        :type MemberId: list of str
+        """
+        self._MemberId = None
+
+    @property
+    def MemberId(self):
+        r"""<p>集团账号的成员id</p>
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+
+    def _deserialize(self, params):
+        self._MemberId = params.get("MemberId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDspmLogTypeConfigListResponse(AbstractModel):
+    r"""DescribeDspmLogTypeConfigList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _List: 用户ckafka配置，以及日志投递配置
+        :type List: list of LogDeliveryCkafkaConfig
+        :param _TotalCount: 配置总数
+        :type TotalCount: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._List = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def List(self):
+        r"""用户ckafka配置，以及日志投递配置
+        :rtype: list of LogDeliveryCkafkaConfig
+        """
+        return self._List
+
+    @List.setter
+    def List(self, List):
+        self._List = List
+
+    @property
+    def TotalCount(self):
+        r"""配置总数
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("List") is not None:
+            self._List = []
+            for item in params.get("List"):
+                obj = LogDeliveryCkafkaConfig()
+                obj._deserialize(item)
+                self._List.append(obj)
+        self._TotalCount = params.get("TotalCount")
         self._RequestId = params.get("RequestId")
 
 
@@ -81249,6 +82881,70 @@ class DescribeDspmPersonalIdentifyListResponse(AbstractModel):
                 obj = DspmPersonIdentifyItem()
                 obj._deserialize(item)
                 self._InfoSet.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeDspmResourceRequest(AbstractModel):
+    r"""DescribeDspmResource请求参数结构体
+
+    """
+
+
+class DescribeDspmResourceResponse(AbstractModel):
+    r"""DescribeDspmResource返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ResourceId: 资产id
+        :type ResourceId: str
+        :param _Status: 资产状态: 0 未初始化，1 正常，2 隔离，3 销毁，4 初始化失败，5 初始化中
+        :type Status: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ResourceId = None
+        self._Status = None
+        self._RequestId = None
+
+    @property
+    def ResourceId(self):
+        r"""资产id
+        :rtype: str
+        """
+        return self._ResourceId
+
+    @ResourceId.setter
+    def ResourceId(self, ResourceId):
+        self._ResourceId = ResourceId
+
+    @property
+    def Status(self):
+        r"""资产状态: 0 未初始化，1 正常，2 隔离，3 销毁，4 初始化失败，5 初始化中
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._ResourceId = params.get("ResourceId")
+        self._Status = params.get("Status")
         self._RequestId = params.get("RequestId")
 
 
@@ -82204,6 +83900,315 @@ class DescribeDspmRiskTendencyResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeDspmSessionListRequest(AbstractModel):
+    r"""DescribeDspmSessionList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MemberId: <p>集团账号的成员id</p>
+        :type MemberId: list of str
+        :param _Limit: <p>限制数目</p>
+        :type Limit: int
+        :param _Offset: <p>偏移量</p>
+        :type Offset: int
+        :param _LoginType: <p>登陆状态(0 全部 1 成功 2 失败)</p>
+        :type LoginType: int
+        :param _DbName: <p>数据库端口</p>
+        :type DbName: str
+        :param _DbPort: <p>数据库名称</p>
+        :type DbPort: int
+        :param _DbIp: <p>数据库 IP</p>
+        :type DbIp: str
+        :param _AssetsId: <p>资产 ID</p>
+        :type AssetsId: int
+        :param _SessionId: <p>会话 ID</p>
+        :type SessionId: str
+        :param _ClientSideIp: <p>客户端 IP</p>
+        :type ClientSideIp: str
+        :param _UserName: <p>用户名</p>
+        :type UserName: str
+        :param _EndTime: <p>结束时间</p>
+        :type EndTime: int
+        :param _StartTime: <p>开始时间</p>
+        :type StartTime: int
+        :param _SourceTypes: <p>流量来源  取值 Agent/Proxy/空；传Agent会返回Agent的日志，传Proxy会返回Proxy日志，两者都传或不传则返回所有</p>
+        :type SourceTypes: list of str
+        :param _DbTypes: <p>[&quot;MySQL&quot;]</p>
+        :type DbTypes: list of str
+        """
+        self._MemberId = None
+        self._Limit = None
+        self._Offset = None
+        self._LoginType = None
+        self._DbName = None
+        self._DbPort = None
+        self._DbIp = None
+        self._AssetsId = None
+        self._SessionId = None
+        self._ClientSideIp = None
+        self._UserName = None
+        self._EndTime = None
+        self._StartTime = None
+        self._SourceTypes = None
+        self._DbTypes = None
+
+    @property
+    def MemberId(self):
+        r"""<p>集团账号的成员id</p>
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+    @property
+    def Limit(self):
+        r"""<p>限制数目</p>
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        r"""<p>偏移量</p>
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def LoginType(self):
+        r"""<p>登陆状态(0 全部 1 成功 2 失败)</p>
+        :rtype: int
+        """
+        return self._LoginType
+
+    @LoginType.setter
+    def LoginType(self, LoginType):
+        self._LoginType = LoginType
+
+    @property
+    def DbName(self):
+        r"""<p>数据库端口</p>
+        :rtype: str
+        """
+        return self._DbName
+
+    @DbName.setter
+    def DbName(self, DbName):
+        self._DbName = DbName
+
+    @property
+    def DbPort(self):
+        r"""<p>数据库名称</p>
+        :rtype: int
+        """
+        return self._DbPort
+
+    @DbPort.setter
+    def DbPort(self, DbPort):
+        self._DbPort = DbPort
+
+    @property
+    def DbIp(self):
+        r"""<p>数据库 IP</p>
+        :rtype: str
+        """
+        return self._DbIp
+
+    @DbIp.setter
+    def DbIp(self, DbIp):
+        self._DbIp = DbIp
+
+    @property
+    def AssetsId(self):
+        r"""<p>资产 ID</p>
+        :rtype: int
+        """
+        return self._AssetsId
+
+    @AssetsId.setter
+    def AssetsId(self, AssetsId):
+        self._AssetsId = AssetsId
+
+    @property
+    def SessionId(self):
+        r"""<p>会话 ID</p>
+        :rtype: str
+        """
+        return self._SessionId
+
+    @SessionId.setter
+    def SessionId(self, SessionId):
+        self._SessionId = SessionId
+
+    @property
+    def ClientSideIp(self):
+        r"""<p>客户端 IP</p>
+        :rtype: str
+        """
+        return self._ClientSideIp
+
+    @ClientSideIp.setter
+    def ClientSideIp(self, ClientSideIp):
+        self._ClientSideIp = ClientSideIp
+
+    @property
+    def UserName(self):
+        r"""<p>用户名</p>
+        :rtype: str
+        """
+        return self._UserName
+
+    @UserName.setter
+    def UserName(self, UserName):
+        self._UserName = UserName
+
+    @property
+    def EndTime(self):
+        r"""<p>结束时间</p>
+        :rtype: int
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def StartTime(self):
+        r"""<p>开始时间</p>
+        :rtype: int
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def SourceTypes(self):
+        r"""<p>流量来源  取值 Agent/Proxy/空；传Agent会返回Agent的日志，传Proxy会返回Proxy日志，两者都传或不传则返回所有</p>
+        :rtype: list of str
+        """
+        return self._SourceTypes
+
+    @SourceTypes.setter
+    def SourceTypes(self, SourceTypes):
+        self._SourceTypes = SourceTypes
+
+    @property
+    def DbTypes(self):
+        r"""<p>[&quot;MySQL&quot;]</p>
+        :rtype: list of str
+        """
+        return self._DbTypes
+
+    @DbTypes.setter
+    def DbTypes(self, DbTypes):
+        self._DbTypes = DbTypes
+
+
+    def _deserialize(self, params):
+        self._MemberId = params.get("MemberId")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        self._LoginType = params.get("LoginType")
+        self._DbName = params.get("DbName")
+        self._DbPort = params.get("DbPort")
+        self._DbIp = params.get("DbIp")
+        self._AssetsId = params.get("AssetsId")
+        self._SessionId = params.get("SessionId")
+        self._ClientSideIp = params.get("ClientSideIp")
+        self._UserName = params.get("UserName")
+        self._EndTime = params.get("EndTime")
+        self._StartTime = params.get("StartTime")
+        self._SourceTypes = params.get("SourceTypes")
+        self._DbTypes = params.get("DbTypes")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDspmSessionListResponse(AbstractModel):
+    r"""DescribeDspmSessionList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: <p>总数目</p>
+        :type TotalCount: int
+        :param _List: <p>审计会话列表信息</p>
+        :type List: list of DspmAuditSessionInfo
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._List = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        r"""<p>总数目</p>
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def List(self):
+        r"""<p>审计会话列表信息</p>
+        :rtype: list of DspmAuditSessionInfo
+        """
+        return self._List
+
+    @List.setter
+    def List(self, List):
+        self._List = List
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("List") is not None:
+            self._List = []
+            for item in params.get("List"):
+                obj = DspmAuditSessionInfo()
+                obj._deserialize(item)
+                self._List.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeDspmStatisticsRequest(AbstractModel):
     r"""DescribeDspmStatistics请求参数结构体
 
@@ -82547,6 +84552,105 @@ class DescribeDspmSyncUsersStatusResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._Status = params.get("Status")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeDspmUserCkafkaInstanceListRequest(AbstractModel):
+    r"""DescribeDspmUserCkafkaInstanceList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MemberId: <p>集团账号的成员id</p>
+        :type MemberId: list of str
+        """
+        self._MemberId = None
+
+    @property
+    def MemberId(self):
+        r"""<p>集团账号的成员id</p>
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+
+    def _deserialize(self, params):
+        self._MemberId = params.get("MemberId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDspmUserCkafkaInstanceListResponse(AbstractModel):
+    r"""DescribeDspmUserCkafkaInstanceList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _List: 租户ckafka列表
+        :type List: list of CkafkaInstance
+        :param _TotalCount: 返回租户ckafka数量
+        :type TotalCount: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._List = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def List(self):
+        r"""租户ckafka列表
+        :rtype: list of CkafkaInstance
+        """
+        return self._List
+
+    @List.setter
+    def List(self, List):
+        self._List = List
+
+    @property
+    def TotalCount(self):
+        r"""返回租户ckafka数量
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("List") is not None:
+            self._List = []
+            for item in params.get("List"):
+                obj = CkafkaInstance()
+                obj._deserialize(item)
+                self._List.append(obj)
+        self._TotalCount = params.get("TotalCount")
         self._RequestId = params.get("RequestId")
 
 
@@ -117303,6 +119407,372 @@ class DspmAssetTypeCount(AbstractModel):
         
 
 
+class DspmAuditSessionInfo(AbstractModel):
+    r"""审计会话列表信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SqlCount: <p>审计日志数</p>
+        :type SqlCount: int
+        :param _LogoutTime: <p>登出时间</p>
+        :type LogoutTime: int
+        :param _ClientIp: <p>客户端 IP</p>
+        :type ClientIp: str
+        :param _ClientPort: <p>客户端端口</p>
+        :type ClientPort: int
+        :param _DbIp: <p>数据库 IP</p>
+        :type DbIp: str
+        :param _DbName: <p>数据库名称</p>
+        :type DbName: str
+        :param _DbPort: <p>数据库端口</p>
+        :type DbPort: int
+        :param _DbUser: <p>数据库用户</p>
+        :type DbUser: str
+        :param _InstanceId: <p>审计单元 ID</p>
+        :type InstanceId: int
+        :param _OpTime: <p>操作时间(时间)</p>
+        :type OpTime: int
+        :param _RetNo: <p>返回码</p>
+        :type RetNo: int
+        :param _SessionId: <p>会话Id</p>
+        :type SessionId: str
+        :param _LoginTime: <p>登录时间</p>
+        :type LoginTime: int
+        :param _InstanceName: <p>数据资产名称</p>
+        :type InstanceName: str
+        :param _AssetName: <p>数据资产名称</p>
+        :type AssetName: str
+        :param _SourceType: <p>流量来源</p>
+        :type SourceType: str
+        :param _SourceTypeEn: <p>流量来源英文</p>
+        :type SourceTypeEn: str
+        :param _AppId: <p>资产所属账号app id</p>
+        :type AppId: int
+        :param _SourceTypeEnDisplayName: <p>流量来源</p>
+        :type SourceTypeEnDisplayName: str
+        :param _NickName: <p>昵称</p>
+        :type NickName: str
+        :param _Uin: <p>用户ID</p>
+        :type Uin: str
+        :param _DbType: <p>数据库类型</p><p>枚举值：</p><ul><li>MongoDB： mongodb</li></ul>
+        :type DbType: str
+        :param _AssetType: <p>资产类型</p><p>枚举值：</p><ul><li>cdb： mysql</li><li>mongodb： mongodb</li></ul>
+        :type AssetType: str
+        """
+        self._SqlCount = None
+        self._LogoutTime = None
+        self._ClientIp = None
+        self._ClientPort = None
+        self._DbIp = None
+        self._DbName = None
+        self._DbPort = None
+        self._DbUser = None
+        self._InstanceId = None
+        self._OpTime = None
+        self._RetNo = None
+        self._SessionId = None
+        self._LoginTime = None
+        self._InstanceName = None
+        self._AssetName = None
+        self._SourceType = None
+        self._SourceTypeEn = None
+        self._AppId = None
+        self._SourceTypeEnDisplayName = None
+        self._NickName = None
+        self._Uin = None
+        self._DbType = None
+        self._AssetType = None
+
+    @property
+    def SqlCount(self):
+        r"""<p>审计日志数</p>
+        :rtype: int
+        """
+        return self._SqlCount
+
+    @SqlCount.setter
+    def SqlCount(self, SqlCount):
+        self._SqlCount = SqlCount
+
+    @property
+    def LogoutTime(self):
+        r"""<p>登出时间</p>
+        :rtype: int
+        """
+        return self._LogoutTime
+
+    @LogoutTime.setter
+    def LogoutTime(self, LogoutTime):
+        self._LogoutTime = LogoutTime
+
+    @property
+    def ClientIp(self):
+        r"""<p>客户端 IP</p>
+        :rtype: str
+        """
+        return self._ClientIp
+
+    @ClientIp.setter
+    def ClientIp(self, ClientIp):
+        self._ClientIp = ClientIp
+
+    @property
+    def ClientPort(self):
+        r"""<p>客户端端口</p>
+        :rtype: int
+        """
+        return self._ClientPort
+
+    @ClientPort.setter
+    def ClientPort(self, ClientPort):
+        self._ClientPort = ClientPort
+
+    @property
+    def DbIp(self):
+        r"""<p>数据库 IP</p>
+        :rtype: str
+        """
+        return self._DbIp
+
+    @DbIp.setter
+    def DbIp(self, DbIp):
+        self._DbIp = DbIp
+
+    @property
+    def DbName(self):
+        r"""<p>数据库名称</p>
+        :rtype: str
+        """
+        return self._DbName
+
+    @DbName.setter
+    def DbName(self, DbName):
+        self._DbName = DbName
+
+    @property
+    def DbPort(self):
+        r"""<p>数据库端口</p>
+        :rtype: int
+        """
+        return self._DbPort
+
+    @DbPort.setter
+    def DbPort(self, DbPort):
+        self._DbPort = DbPort
+
+    @property
+    def DbUser(self):
+        r"""<p>数据库用户</p>
+        :rtype: str
+        """
+        return self._DbUser
+
+    @DbUser.setter
+    def DbUser(self, DbUser):
+        self._DbUser = DbUser
+
+    @property
+    def InstanceId(self):
+        r"""<p>审计单元 ID</p>
+        :rtype: int
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def OpTime(self):
+        r"""<p>操作时间(时间)</p>
+        :rtype: int
+        """
+        return self._OpTime
+
+    @OpTime.setter
+    def OpTime(self, OpTime):
+        self._OpTime = OpTime
+
+    @property
+    def RetNo(self):
+        r"""<p>返回码</p>
+        :rtype: int
+        """
+        return self._RetNo
+
+    @RetNo.setter
+    def RetNo(self, RetNo):
+        self._RetNo = RetNo
+
+    @property
+    def SessionId(self):
+        r"""<p>会话Id</p>
+        :rtype: str
+        """
+        return self._SessionId
+
+    @SessionId.setter
+    def SessionId(self, SessionId):
+        self._SessionId = SessionId
+
+    @property
+    def LoginTime(self):
+        r"""<p>登录时间</p>
+        :rtype: int
+        """
+        return self._LoginTime
+
+    @LoginTime.setter
+    def LoginTime(self, LoginTime):
+        self._LoginTime = LoginTime
+
+    @property
+    def InstanceName(self):
+        r"""<p>数据资产名称</p>
+        :rtype: str
+        """
+        return self._InstanceName
+
+    @InstanceName.setter
+    def InstanceName(self, InstanceName):
+        self._InstanceName = InstanceName
+
+    @property
+    def AssetName(self):
+        r"""<p>数据资产名称</p>
+        :rtype: str
+        """
+        return self._AssetName
+
+    @AssetName.setter
+    def AssetName(self, AssetName):
+        self._AssetName = AssetName
+
+    @property
+    def SourceType(self):
+        r"""<p>流量来源</p>
+        :rtype: str
+        """
+        return self._SourceType
+
+    @SourceType.setter
+    def SourceType(self, SourceType):
+        self._SourceType = SourceType
+
+    @property
+    def SourceTypeEn(self):
+        r"""<p>流量来源英文</p>
+        :rtype: str
+        """
+        return self._SourceTypeEn
+
+    @SourceTypeEn.setter
+    def SourceTypeEn(self, SourceTypeEn):
+        self._SourceTypeEn = SourceTypeEn
+
+    @property
+    def AppId(self):
+        r"""<p>资产所属账号app id</p>
+        :rtype: int
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def SourceTypeEnDisplayName(self):
+        r"""<p>流量来源</p>
+        :rtype: str
+        """
+        return self._SourceTypeEnDisplayName
+
+    @SourceTypeEnDisplayName.setter
+    def SourceTypeEnDisplayName(self, SourceTypeEnDisplayName):
+        self._SourceTypeEnDisplayName = SourceTypeEnDisplayName
+
+    @property
+    def NickName(self):
+        r"""<p>昵称</p>
+        :rtype: str
+        """
+        return self._NickName
+
+    @NickName.setter
+    def NickName(self, NickName):
+        self._NickName = NickName
+
+    @property
+    def Uin(self):
+        r"""<p>用户ID</p>
+        :rtype: str
+        """
+        return self._Uin
+
+    @Uin.setter
+    def Uin(self, Uin):
+        self._Uin = Uin
+
+    @property
+    def DbType(self):
+        r"""<p>数据库类型</p><p>枚举值：</p><ul><li>MongoDB： mongodb</li></ul>
+        :rtype: str
+        """
+        return self._DbType
+
+    @DbType.setter
+    def DbType(self, DbType):
+        self._DbType = DbType
+
+    @property
+    def AssetType(self):
+        r"""<p>资产类型</p><p>枚举值：</p><ul><li>cdb： mysql</li><li>mongodb： mongodb</li></ul>
+        :rtype: str
+        """
+        return self._AssetType
+
+    @AssetType.setter
+    def AssetType(self, AssetType):
+        self._AssetType = AssetType
+
+
+    def _deserialize(self, params):
+        self._SqlCount = params.get("SqlCount")
+        self._LogoutTime = params.get("LogoutTime")
+        self._ClientIp = params.get("ClientIp")
+        self._ClientPort = params.get("ClientPort")
+        self._DbIp = params.get("DbIp")
+        self._DbName = params.get("DbName")
+        self._DbPort = params.get("DbPort")
+        self._DbUser = params.get("DbUser")
+        self._InstanceId = params.get("InstanceId")
+        self._OpTime = params.get("OpTime")
+        self._RetNo = params.get("RetNo")
+        self._SessionId = params.get("SessionId")
+        self._LoginTime = params.get("LoginTime")
+        self._InstanceName = params.get("InstanceName")
+        self._AssetName = params.get("AssetName")
+        self._SourceType = params.get("SourceType")
+        self._SourceTypeEn = params.get("SourceTypeEn")
+        self._AppId = params.get("AppId")
+        self._SourceTypeEnDisplayName = params.get("SourceTypeEnDisplayName")
+        self._NickName = params.get("NickName")
+        self._Uin = params.get("Uin")
+        self._DbType = params.get("DbType")
+        self._AssetType = params.get("AssetType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DspmColumnPrivilege(AbstractModel):
     r"""列权限信息
 
@@ -139991,6 +142461,414 @@ class LogContextInfo(AbstractModel):
         
 
 
+class LogDeliveryCkafkaConfig(AbstractModel):
+    r"""日志投递信息配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VipType: <p>接入类型</p>
+        :type VipType: int
+        :param _InstanceId: <p>实例id</p>
+        :type InstanceId: str
+        :param _InstanceName: <p>实例名称</p>
+        :type InstanceName: str
+        :param _Vip: <p>虚拟ip  VipType 为7 有效</p>
+        :type Vip: str
+        :param _Vport: <p>虚拟端口 VipType 为7有效</p>
+        :type Vport: str
+        :param _Domain: <p>域名  VipType 为1有效</p>
+        :type Domain: str
+        :param _DomainPort: <p>域名端口 VipType 为1有效</p>
+        :type DomainPort: str
+        :param _RegionId: <p>实例地域</p>
+        :type RegionId: str
+        :param _VpcId: <p>实例vpc</p>
+        :type VpcId: str
+        :param _SubnetId: <p>实例子网</p>
+        :type SubnetId: str
+        :param _Healthy: <p>实例健康状态， 1：健康，2：告警，3：异常&#39;, 4: 实例不存在</p>
+        :type Healthy: int
+        :param _LogType: <p>日志类型</p>
+        :type LogType: int
+        :param _TopicId: <p>投递的topicid</p>
+        :type TopicId: str
+        :param _TopicName: <p>投递的topicname</p>
+        :type TopicName: str
+        :param _Status: <p>投递状态</p>
+        :type Status: int
+        :param _StatusMessages: <p>状态信息</p>
+        :type StatusMessages: str
+        :param _IsOpen: <p>开启or关闭，投递状态1为开启，0 关闭，默认开启，但是如果没有topic 则关闭</p>
+        :type IsOpen: int
+        """
+        self._VipType = None
+        self._InstanceId = None
+        self._InstanceName = None
+        self._Vip = None
+        self._Vport = None
+        self._Domain = None
+        self._DomainPort = None
+        self._RegionId = None
+        self._VpcId = None
+        self._SubnetId = None
+        self._Healthy = None
+        self._LogType = None
+        self._TopicId = None
+        self._TopicName = None
+        self._Status = None
+        self._StatusMessages = None
+        self._IsOpen = None
+
+    @property
+    def VipType(self):
+        r"""<p>接入类型</p>
+        :rtype: int
+        """
+        return self._VipType
+
+    @VipType.setter
+    def VipType(self, VipType):
+        self._VipType = VipType
+
+    @property
+    def InstanceId(self):
+        r"""<p>实例id</p>
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def InstanceName(self):
+        r"""<p>实例名称</p>
+        :rtype: str
+        """
+        return self._InstanceName
+
+    @InstanceName.setter
+    def InstanceName(self, InstanceName):
+        self._InstanceName = InstanceName
+
+    @property
+    def Vip(self):
+        r"""<p>虚拟ip  VipType 为7 有效</p>
+        :rtype: str
+        """
+        return self._Vip
+
+    @Vip.setter
+    def Vip(self, Vip):
+        self._Vip = Vip
+
+    @property
+    def Vport(self):
+        r"""<p>虚拟端口 VipType 为7有效</p>
+        :rtype: str
+        """
+        return self._Vport
+
+    @Vport.setter
+    def Vport(self, Vport):
+        self._Vport = Vport
+
+    @property
+    def Domain(self):
+        r"""<p>域名  VipType 为1有效</p>
+        :rtype: str
+        """
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def DomainPort(self):
+        r"""<p>域名端口 VipType 为1有效</p>
+        :rtype: str
+        """
+        return self._DomainPort
+
+    @DomainPort.setter
+    def DomainPort(self, DomainPort):
+        self._DomainPort = DomainPort
+
+    @property
+    def RegionId(self):
+        r"""<p>实例地域</p>
+        :rtype: str
+        """
+        return self._RegionId
+
+    @RegionId.setter
+    def RegionId(self, RegionId):
+        self._RegionId = RegionId
+
+    @property
+    def VpcId(self):
+        r"""<p>实例vpc</p>
+        :rtype: str
+        """
+        return self._VpcId
+
+    @VpcId.setter
+    def VpcId(self, VpcId):
+        self._VpcId = VpcId
+
+    @property
+    def SubnetId(self):
+        r"""<p>实例子网</p>
+        :rtype: str
+        """
+        return self._SubnetId
+
+    @SubnetId.setter
+    def SubnetId(self, SubnetId):
+        self._SubnetId = SubnetId
+
+    @property
+    def Healthy(self):
+        r"""<p>实例健康状态， 1：健康，2：告警，3：异常&#39;, 4: 实例不存在</p>
+        :rtype: int
+        """
+        return self._Healthy
+
+    @Healthy.setter
+    def Healthy(self, Healthy):
+        self._Healthy = Healthy
+
+    @property
+    def LogType(self):
+        r"""<p>日志类型</p>
+        :rtype: int
+        """
+        return self._LogType
+
+    @LogType.setter
+    def LogType(self, LogType):
+        self._LogType = LogType
+
+    @property
+    def TopicId(self):
+        r"""<p>投递的topicid</p>
+        :rtype: str
+        """
+        return self._TopicId
+
+    @TopicId.setter
+    def TopicId(self, TopicId):
+        self._TopicId = TopicId
+
+    @property
+    def TopicName(self):
+        r"""<p>投递的topicname</p>
+        :rtype: str
+        """
+        return self._TopicName
+
+    @TopicName.setter
+    def TopicName(self, TopicName):
+        self._TopicName = TopicName
+
+    @property
+    def Status(self):
+        r"""<p>投递状态</p>
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def StatusMessages(self):
+        r"""<p>状态信息</p>
+        :rtype: str
+        """
+        return self._StatusMessages
+
+    @StatusMessages.setter
+    def StatusMessages(self, StatusMessages):
+        self._StatusMessages = StatusMessages
+
+    @property
+    def IsOpen(self):
+        r"""<p>开启or关闭，投递状态1为开启，0 关闭，默认开启，但是如果没有topic 则关闭</p>
+        :rtype: int
+        """
+        return self._IsOpen
+
+    @IsOpen.setter
+    def IsOpen(self, IsOpen):
+        self._IsOpen = IsOpen
+
+
+    def _deserialize(self, params):
+        self._VipType = params.get("VipType")
+        self._InstanceId = params.get("InstanceId")
+        self._InstanceName = params.get("InstanceName")
+        self._Vip = params.get("Vip")
+        self._Vport = params.get("Vport")
+        self._Domain = params.get("Domain")
+        self._DomainPort = params.get("DomainPort")
+        self._RegionId = params.get("RegionId")
+        self._VpcId = params.get("VpcId")
+        self._SubnetId = params.get("SubnetId")
+        self._Healthy = params.get("Healthy")
+        self._LogType = params.get("LogType")
+        self._TopicId = params.get("TopicId")
+        self._TopicName = params.get("TopicName")
+        self._Status = params.get("Status")
+        self._StatusMessages = params.get("StatusMessages")
+        self._IsOpen = params.get("IsOpen")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class LogDeliveryInfo(AbstractModel):
+    r"""日志类型投递主题配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _LogType: 日志类型
+        :type LogType: int
+        :param _TopicId: 投递的topicid
+        :type TopicId: str
+        :param _TopicName: 投递的topicname
+        :type TopicName: str
+        """
+        self._LogType = None
+        self._TopicId = None
+        self._TopicName = None
+
+    @property
+    def LogType(self):
+        r"""日志类型
+        :rtype: int
+        """
+        return self._LogType
+
+    @LogType.setter
+    def LogType(self, LogType):
+        self._LogType = LogType
+
+    @property
+    def TopicId(self):
+        r"""投递的topicid
+        :rtype: str
+        """
+        return self._TopicId
+
+    @TopicId.setter
+    def TopicId(self, TopicId):
+        self._TopicId = TopicId
+
+    @property
+    def TopicName(self):
+        r"""投递的topicname
+        :rtype: str
+        """
+        return self._TopicName
+
+    @TopicName.setter
+    def TopicName(self, TopicName):
+        self._TopicName = TopicName
+
+
+    def _deserialize(self, params):
+        self._LogType = params.get("LogType")
+        self._TopicId = params.get("TopicId")
+        self._TopicName = params.get("TopicName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class LogDeliveryType(AbstractModel):
+    r"""日志投递日志类型
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _LogType: 日志投递类型
+        :type LogType: int
+        :param _LogTypeName: 投递日志类型的名称
+        :type LogTypeName: str
+        :param _LogTypeDesc: 投递日志类型的描述
+        :type LogTypeDesc: str
+        """
+        self._LogType = None
+        self._LogTypeName = None
+        self._LogTypeDesc = None
+
+    @property
+    def LogType(self):
+        r"""日志投递类型
+        :rtype: int
+        """
+        return self._LogType
+
+    @LogType.setter
+    def LogType(self, LogType):
+        self._LogType = LogType
+
+    @property
+    def LogTypeName(self):
+        r"""投递日志类型的名称
+        :rtype: str
+        """
+        return self._LogTypeName
+
+    @LogTypeName.setter
+    def LogTypeName(self, LogTypeName):
+        self._LogTypeName = LogTypeName
+
+    @property
+    def LogTypeDesc(self):
+        r"""投递日志类型的描述
+        :rtype: str
+        """
+        return self._LogTypeDesc
+
+    @LogTypeDesc.setter
+    def LogTypeDesc(self, LogTypeDesc):
+        self._LogTypeDesc = LogTypeDesc
+
+
+    def _deserialize(self, params):
+        self._LogType = params.get("LogType")
+        self._LogTypeName = params.get("LogTypeName")
+        self._LogTypeDesc = params.get("LogTypeDesc")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class LogDynamicIndex(AbstractModel):
     r"""日志动态索引信息
 
@@ -147732,6 +150610,160 @@ class ModifyDspmAssetSecurityAnalysisSwitchResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyDspmAuditFilterStrategyRequest(AbstractModel):
+    r"""ModifyDspmAuditFilterStrategy请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AuditFilterStrategyId: <p>策略ID</p>
+        :type AuditFilterStrategyId: int
+        :param _MemberId: <p>集团账号的成员id</p>
+        :type MemberId: list of str
+        :param _Name: <p>策略名称</p>
+        :type Name: str
+        :param _Description: <p>策略描述</p>
+        :type Description: str
+        :param _Rule: <p>策略规则内容</p>
+        :type Rule: str
+        :param _IsEnabled: <p>是否启用</p><p>枚举值：</p><ul><li>0： 不启用</li><li>1： 启用</li></ul>
+        :type IsEnabled: int
+        :param _Remark: <p>备注</p>
+        :type Remark: str
+        """
+        self._AuditFilterStrategyId = None
+        self._MemberId = None
+        self._Name = None
+        self._Description = None
+        self._Rule = None
+        self._IsEnabled = None
+        self._Remark = None
+
+    @property
+    def AuditFilterStrategyId(self):
+        r"""<p>策略ID</p>
+        :rtype: int
+        """
+        return self._AuditFilterStrategyId
+
+    @AuditFilterStrategyId.setter
+    def AuditFilterStrategyId(self, AuditFilterStrategyId):
+        self._AuditFilterStrategyId = AuditFilterStrategyId
+
+    @property
+    def MemberId(self):
+        r"""<p>集团账号的成员id</p>
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+    @property
+    def Name(self):
+        r"""<p>策略名称</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Description(self):
+        r"""<p>策略描述</p>
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def Rule(self):
+        r"""<p>策略规则内容</p>
+        :rtype: str
+        """
+        return self._Rule
+
+    @Rule.setter
+    def Rule(self, Rule):
+        self._Rule = Rule
+
+    @property
+    def IsEnabled(self):
+        r"""<p>是否启用</p><p>枚举值：</p><ul><li>0： 不启用</li><li>1： 启用</li></ul>
+        :rtype: int
+        """
+        return self._IsEnabled
+
+    @IsEnabled.setter
+    def IsEnabled(self, IsEnabled):
+        self._IsEnabled = IsEnabled
+
+    @property
+    def Remark(self):
+        r"""<p>备注</p>
+        :rtype: str
+        """
+        return self._Remark
+
+    @Remark.setter
+    def Remark(self, Remark):
+        self._Remark = Remark
+
+
+    def _deserialize(self, params):
+        self._AuditFilterStrategyId = params.get("AuditFilterStrategyId")
+        self._MemberId = params.get("MemberId")
+        self._Name = params.get("Name")
+        self._Description = params.get("Description")
+        self._Rule = params.get("Rule")
+        self._IsEnabled = params.get("IsEnabled")
+        self._Remark = params.get("Remark")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyDspmAuditFilterStrategyResponse(AbstractModel):
+    r"""ModifyDspmAuditFilterStrategy返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyDspmBackupSettingRequest(AbstractModel):
     r"""ModifyDspmBackupSetting请求参数结构体
 
@@ -147830,6 +150862,380 @@ class ModifyDspmBackupSettingRequest(AbstractModel):
 
 class ModifyDspmBackupSettingResponse(AbstractModel):
     r"""ModifyDspmBackupSetting返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyDspmCkafkaSaveRequest(AbstractModel):
+    r"""ModifyDspmCkafkaSave请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VipType: 接入类型，当前支持 1和7, 类型vip网络类型（1:外网TGW 2:基础网络 3:VPC网络 4:支撑网络(idc 环境) 5:SSL外网访问方式访问 6:黑石环境vpc 7:支撑网络(cvm 环境）
+        :type VipType: int
+        :param _RegionId: 实例的地域
+        :type RegionId: str
+        :param _InstanceId: 实例的id
+        :type InstanceId: str
+        :param _InstanceName: 实例名称
+        :type InstanceName: str
+        :param _RouteInfo: 实例的接入信息
+        :type RouteInfo: :class:`tencentcloud.csip.v20221121.models.RouteInfo`
+        :param _Username: 接入为域名的时候，有效
+        :type Username: str
+        :param _Password: 接入为域名的时候，有效
+        :type Password: str
+        :param _LogDeliveryInfo: 日志投递的主题配置
+        :type LogDeliveryInfo: list of LogDeliveryInfo
+        :param _IsOverwrite: 已存在配置时是否覆盖，默认 false（不覆盖，保持兼容）
+        :type IsOverwrite: bool
+        :param _MemberId: <p>集团账号的成员id</p>
+        :type MemberId: list of str
+        """
+        self._VipType = None
+        self._RegionId = None
+        self._InstanceId = None
+        self._InstanceName = None
+        self._RouteInfo = None
+        self._Username = None
+        self._Password = None
+        self._LogDeliveryInfo = None
+        self._IsOverwrite = None
+        self._MemberId = None
+
+    @property
+    def VipType(self):
+        r"""接入类型，当前支持 1和7, 类型vip网络类型（1:外网TGW 2:基础网络 3:VPC网络 4:支撑网络(idc 环境) 5:SSL外网访问方式访问 6:黑石环境vpc 7:支撑网络(cvm 环境）
+        :rtype: int
+        """
+        return self._VipType
+
+    @VipType.setter
+    def VipType(self, VipType):
+        self._VipType = VipType
+
+    @property
+    def RegionId(self):
+        r"""实例的地域
+        :rtype: str
+        """
+        return self._RegionId
+
+    @RegionId.setter
+    def RegionId(self, RegionId):
+        self._RegionId = RegionId
+
+    @property
+    def InstanceId(self):
+        r"""实例的id
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def InstanceName(self):
+        r"""实例名称
+        :rtype: str
+        """
+        return self._InstanceName
+
+    @InstanceName.setter
+    def InstanceName(self, InstanceName):
+        self._InstanceName = InstanceName
+
+    @property
+    def RouteInfo(self):
+        r"""实例的接入信息
+        :rtype: :class:`tencentcloud.csip.v20221121.models.RouteInfo`
+        """
+        return self._RouteInfo
+
+    @RouteInfo.setter
+    def RouteInfo(self, RouteInfo):
+        self._RouteInfo = RouteInfo
+
+    @property
+    def Username(self):
+        r"""接入为域名的时候，有效
+        :rtype: str
+        """
+        return self._Username
+
+    @Username.setter
+    def Username(self, Username):
+        self._Username = Username
+
+    @property
+    def Password(self):
+        r"""接入为域名的时候，有效
+        :rtype: str
+        """
+        return self._Password
+
+    @Password.setter
+    def Password(self, Password):
+        self._Password = Password
+
+    @property
+    def LogDeliveryInfo(self):
+        r"""日志投递的主题配置
+        :rtype: list of LogDeliveryInfo
+        """
+        return self._LogDeliveryInfo
+
+    @LogDeliveryInfo.setter
+    def LogDeliveryInfo(self, LogDeliveryInfo):
+        self._LogDeliveryInfo = LogDeliveryInfo
+
+    @property
+    def IsOverwrite(self):
+        r"""已存在配置时是否覆盖，默认 false（不覆盖，保持兼容）
+        :rtype: bool
+        """
+        return self._IsOverwrite
+
+    @IsOverwrite.setter
+    def IsOverwrite(self, IsOverwrite):
+        self._IsOverwrite = IsOverwrite
+
+    @property
+    def MemberId(self):
+        r"""<p>集团账号的成员id</p>
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+
+    def _deserialize(self, params):
+        self._VipType = params.get("VipType")
+        self._RegionId = params.get("RegionId")
+        self._InstanceId = params.get("InstanceId")
+        self._InstanceName = params.get("InstanceName")
+        if params.get("RouteInfo") is not None:
+            self._RouteInfo = RouteInfo()
+            self._RouteInfo._deserialize(params.get("RouteInfo"))
+        self._Username = params.get("Username")
+        self._Password = params.get("Password")
+        if params.get("LogDeliveryInfo") is not None:
+            self._LogDeliveryInfo = []
+            for item in params.get("LogDeliveryInfo"):
+                obj = LogDeliveryInfo()
+                obj._deserialize(item)
+                self._LogDeliveryInfo.append(obj)
+        self._IsOverwrite = params.get("IsOverwrite")
+        self._MemberId = params.get("MemberId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyDspmCkafkaSaveResponse(AbstractModel):
+    r"""ModifyDspmCkafkaSave返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyDspmCkafkaStartRequest(AbstractModel):
+    r"""ModifyDspmCkafkaStart请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _LogDeliveryInfo: 日志类型的主题投递
+        :type LogDeliveryInfo: list of LogDeliveryInfo
+        :param _MemberId: <p>集团账号的成员id</p>
+        :type MemberId: list of str
+        """
+        self._LogDeliveryInfo = None
+        self._MemberId = None
+
+    @property
+    def LogDeliveryInfo(self):
+        r"""日志类型的主题投递
+        :rtype: list of LogDeliveryInfo
+        """
+        return self._LogDeliveryInfo
+
+    @LogDeliveryInfo.setter
+    def LogDeliveryInfo(self, LogDeliveryInfo):
+        self._LogDeliveryInfo = LogDeliveryInfo
+
+    @property
+    def MemberId(self):
+        r"""<p>集团账号的成员id</p>
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+
+    def _deserialize(self, params):
+        if params.get("LogDeliveryInfo") is not None:
+            self._LogDeliveryInfo = []
+            for item in params.get("LogDeliveryInfo"):
+                obj = LogDeliveryInfo()
+                obj._deserialize(item)
+                self._LogDeliveryInfo.append(obj)
+        self._MemberId = params.get("MemberId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyDspmCkafkaStartResponse(AbstractModel):
+    r"""ModifyDspmCkafkaStart返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyDspmCkafkaStopRequest(AbstractModel):
+    r"""ModifyDspmCkafkaStop请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _LogDeliveryInfo: 日志投递类型的配置
+        :type LogDeliveryInfo: list of LogDeliveryInfo
+        :param _MemberId: <p>集团账号的成员id</p>
+        :type MemberId: list of str
+        """
+        self._LogDeliveryInfo = None
+        self._MemberId = None
+
+    @property
+    def LogDeliveryInfo(self):
+        r"""日志投递类型的配置
+        :rtype: list of LogDeliveryInfo
+        """
+        return self._LogDeliveryInfo
+
+    @LogDeliveryInfo.setter
+    def LogDeliveryInfo(self, LogDeliveryInfo):
+        self._LogDeliveryInfo = LogDeliveryInfo
+
+    @property
+    def MemberId(self):
+        r"""<p>集团账号的成员id</p>
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+
+    def _deserialize(self, params):
+        if params.get("LogDeliveryInfo") is not None:
+            self._LogDeliveryInfo = []
+            for item in params.get("LogDeliveryInfo"):
+                obj = LogDeliveryInfo()
+                obj._deserialize(item)
+                self._LogDeliveryInfo.append(obj)
+        self._MemberId = params.get("MemberId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyDspmCkafkaStopResponse(AbstractModel):
+    r"""ModifyDspmCkafkaStop返回参数结构体
 
     """
 
@@ -148910,6 +152316,115 @@ class ModifyDspmIpInfoRequest(AbstractModel):
 
 class ModifyDspmIpInfoResponse(AbstractModel):
     r"""ModifyDspmIpInfo返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyDspmLogDeliveryTypeRequest(AbstractModel):
+    r"""ModifyDspmLogDeliveryType请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _LogType: 日志类型
+        :type LogType: int
+        :param _TopicId: 投递的topicid
+        :type TopicId: str
+        :param _TopicName: 投递的topicname
+        :type TopicName: str
+        :param _MemberId: <p>集团账号的成员id</p>
+        :type MemberId: list of str
+        """
+        self._LogType = None
+        self._TopicId = None
+        self._TopicName = None
+        self._MemberId = None
+
+    @property
+    def LogType(self):
+        r"""日志类型
+        :rtype: int
+        """
+        return self._LogType
+
+    @LogType.setter
+    def LogType(self, LogType):
+        self._LogType = LogType
+
+    @property
+    def TopicId(self):
+        r"""投递的topicid
+        :rtype: str
+        """
+        return self._TopicId
+
+    @TopicId.setter
+    def TopicId(self, TopicId):
+        self._TopicId = TopicId
+
+    @property
+    def TopicName(self):
+        r"""投递的topicname
+        :rtype: str
+        """
+        return self._TopicName
+
+    @TopicName.setter
+    def TopicName(self, TopicName):
+        self._TopicName = TopicName
+
+    @property
+    def MemberId(self):
+        r"""<p>集团账号的成员id</p>
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+
+    def _deserialize(self, params):
+        self._LogType = params.get("LogType")
+        self._TopicId = params.get("TopicId")
+        self._TopicName = params.get("TopicName")
+        self._MemberId = params.get("MemberId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyDspmLogDeliveryTypeResponse(AbstractModel):
+    r"""ModifyDspmLogDeliveryType返回参数结构体
 
     """
 
@@ -156560,6 +160075,115 @@ class ModifyShareUserCSPMRequest(AbstractModel):
 
 class ModifyShareUserCSPMResponse(AbstractModel):
     r"""ModifyShareUserCSPM返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: 0-成功，1-失败
+        :type Result: int
+        :param _Msg: 成功或失败信息
+        :type Msg: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Result = None
+        self._Msg = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        r"""0-成功，1-失败
+        :rtype: int
+        """
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def Msg(self):
+        r"""成功或失败信息
+        :rtype: str
+        """
+        return self._Msg
+
+    @Msg.setter
+    def Msg(self, Msg):
+        self._Msg = Msg
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Result = params.get("Result")
+        self._Msg = params.get("Msg")
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyShareUserDspmRequest(AbstractModel):
+    r"""ModifyShareUserDspm请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MemberId: <p>集团账号的成员id</p>
+        :type MemberId: list of str
+        :param _SharedAppIDList: 增加监测账号
+        :type SharedAppIDList: list of int
+        """
+        self._MemberId = None
+        self._SharedAppIDList = None
+
+    @property
+    def MemberId(self):
+        r"""<p>集团账号的成员id</p>
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+    @property
+    def SharedAppIDList(self):
+        r"""增加监测账号
+        :rtype: list of int
+        """
+        return self._SharedAppIDList
+
+    @SharedAppIDList.setter
+    def SharedAppIDList(self, SharedAppIDList):
+        self._SharedAppIDList = SharedAppIDList
+
+
+    def _deserialize(self, params):
+        self._MemberId = params.get("MemberId")
+        self._SharedAppIDList = params.get("SharedAppIDList")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyShareUserDspmResponse(AbstractModel):
+    r"""ModifyShareUserDspm返回参数结构体
 
     """
 
@@ -165051,6 +168675,87 @@ class RoleInfo(AbstractModel):
         
 
 
+class RouteInfo(AbstractModel):
+    r"""路由信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Vip: 接入ip
+        :type Vip: str
+        :param _Vport: 接入端口
+        :type Vport: str
+        :param _Domain: 接入域名
+        :type Domain: str
+        :param _DomainPort: 接入域名端口
+        :type DomainPort: str
+        """
+        self._Vip = None
+        self._Vport = None
+        self._Domain = None
+        self._DomainPort = None
+
+    @property
+    def Vip(self):
+        r"""接入ip
+        :rtype: str
+        """
+        return self._Vip
+
+    @Vip.setter
+    def Vip(self, Vip):
+        self._Vip = Vip
+
+    @property
+    def Vport(self):
+        r"""接入端口
+        :rtype: str
+        """
+        return self._Vport
+
+    @Vport.setter
+    def Vport(self, Vport):
+        self._Vport = Vport
+
+    @property
+    def Domain(self):
+        r"""接入域名
+        :rtype: str
+        """
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def DomainPort(self):
+        r"""接入域名端口
+        :rtype: str
+        """
+        return self._DomainPort
+
+    @DomainPort.setter
+    def DomainPort(self, DomainPort):
+        self._DomainPort = DomainPort
+
+
+    def _deserialize(self, params):
+        self._Vip = params.get("Vip")
+        self._Vport = params.get("Vport")
+        self._Domain = params.get("Domain")
+        self._DomainPort = params.get("DomainPort")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class RuleContentCmdLine(AbstractModel):
     r"""EDR命令行规则
 
@@ -167888,6 +171593,190 @@ class SendDspmAssetLoginSmsCodeRequest(AbstractModel):
 
 class SendDspmAssetLoginSmsCodeResponse(AbstractModel):
     r"""SendDspmAssetLoginSmsCode返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class SendDspmCkafkaTestRequest(AbstractModel):
+    r"""SendDspmCkafkaTest请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VipType: 1为外网，7为支撑环境接入
+        :type VipType: int
+        :param _InstanceId: ckafka实例id
+        :type InstanceId: str
+        :param _MemberId: <p>集团账号的成员id</p>
+        :type MemberId: list of str
+        :param _Vip: 为7有效
+        :type Vip: str
+        :param _Vport: 为7有效
+        :type Vport: str
+        :param _Domain: 域名，VipType为1有效
+        :type Domain: str
+        :param _DomainPort: 域名端口，VipType为1有效
+        :type DomainPort: str
+        :param _Username: 用户名，VipType为1有效
+        :type Username: str
+        :param _Password: 用户密码，VipType为1有效
+        :type Password: str
+        """
+        self._VipType = None
+        self._InstanceId = None
+        self._MemberId = None
+        self._Vip = None
+        self._Vport = None
+        self._Domain = None
+        self._DomainPort = None
+        self._Username = None
+        self._Password = None
+
+    @property
+    def VipType(self):
+        r"""1为外网，7为支撑环境接入
+        :rtype: int
+        """
+        return self._VipType
+
+    @VipType.setter
+    def VipType(self, VipType):
+        self._VipType = VipType
+
+    @property
+    def InstanceId(self):
+        r"""ckafka实例id
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def MemberId(self):
+        r"""<p>集团账号的成员id</p>
+        :rtype: list of str
+        """
+        return self._MemberId
+
+    @MemberId.setter
+    def MemberId(self, MemberId):
+        self._MemberId = MemberId
+
+    @property
+    def Vip(self):
+        r"""为7有效
+        :rtype: str
+        """
+        return self._Vip
+
+    @Vip.setter
+    def Vip(self, Vip):
+        self._Vip = Vip
+
+    @property
+    def Vport(self):
+        r"""为7有效
+        :rtype: str
+        """
+        return self._Vport
+
+    @Vport.setter
+    def Vport(self, Vport):
+        self._Vport = Vport
+
+    @property
+    def Domain(self):
+        r"""域名，VipType为1有效
+        :rtype: str
+        """
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def DomainPort(self):
+        r"""域名端口，VipType为1有效
+        :rtype: str
+        """
+        return self._DomainPort
+
+    @DomainPort.setter
+    def DomainPort(self, DomainPort):
+        self._DomainPort = DomainPort
+
+    @property
+    def Username(self):
+        r"""用户名，VipType为1有效
+        :rtype: str
+        """
+        return self._Username
+
+    @Username.setter
+    def Username(self, Username):
+        self._Username = Username
+
+    @property
+    def Password(self):
+        r"""用户密码，VipType为1有效
+        :rtype: str
+        """
+        return self._Password
+
+    @Password.setter
+    def Password(self, Password):
+        self._Password = Password
+
+
+    def _deserialize(self, params):
+        self._VipType = params.get("VipType")
+        self._InstanceId = params.get("InstanceId")
+        self._MemberId = params.get("MemberId")
+        self._Vip = params.get("Vip")
+        self._Vport = params.get("Vport")
+        self._Domain = params.get("Domain")
+        self._DomainPort = params.get("DomainPort")
+        self._Username = params.get("Username")
+        self._Password = params.get("Password")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SendDspmCkafkaTestResponse(AbstractModel):
+    r"""SendDspmCkafkaTest返回参数结构体
 
     """
 
@@ -173585,6 +177474,57 @@ class TimedScanTaskPreviewInfo(AbstractModel):
         self._OwnerAppId = params.get("OwnerAppId")
         self._IsLatestImage = params.get("IsLatestImage")
         self._ImageRepoAddress = params.get("ImageRepoAddress")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TopicInfo(AbstractModel):
+    r"""ckafka实例的topic信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TopicId: ckafka主题id
+        :type TopicId: str
+        :param _TopicName: ckafka主题名称
+        :type TopicName: str
+        """
+        self._TopicId = None
+        self._TopicName = None
+
+    @property
+    def TopicId(self):
+        r"""ckafka主题id
+        :rtype: str
+        """
+        return self._TopicId
+
+    @TopicId.setter
+    def TopicId(self, TopicId):
+        self._TopicId = TopicId
+
+    @property
+    def TopicName(self):
+        r"""ckafka主题名称
+        :rtype: str
+        """
+        return self._TopicName
+
+    @TopicName.setter
+    def TopicName(self, TopicName):
+        self._TopicName = TopicName
+
+
+    def _deserialize(self, params):
+        self._TopicId = params.get("TopicId")
+        self._TopicName = params.get("TopicName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

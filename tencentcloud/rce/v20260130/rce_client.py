@@ -96,7 +96,7 @@ class RceClient(AbstractClient):
 
 
     def AssessRisk(self, request):
-        r"""事件风险评估
+        r"""事件风险评估。用于实时获取事件的风险信息，您可以在业务的关键事件中获取到我们根据设备风险、环境风险、账号风险、行为风险以及历史上报的事件信息评估出来的风险决策结果、风险评分和风险标签等。
 
         :param request: Request instance for AssessRisk.
         :type request: :class:`tencentcloud.rce.v20260130.models.AssessRiskRequest`
@@ -119,7 +119,7 @@ class RceClient(AbstractClient):
 
 
     def ReportEvent(self, request):
-        r"""事件信息上报
+        r"""事件信息上报。用于上报您业务中无需实时决策的事件，我们会通过引擎计算、机器学习挖掘风险特征用于实时事件风险评估。
 
         :param request: Request instance for ReportEvent.
         :type request: :class:`tencentcloud.rce.v20260130.models.ReportEventRequest`

@@ -3179,6 +3179,29 @@ class WafClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def EnableClientMsg(self, request):
+        r"""开关开启后，会将客户端的ip和port透传到后端
+
+        :param request: Request instance for EnableClientMsg.
+        :type request: :class:`tencentcloud.waf.v20180125.models.EnableClientMsgRequest`
+        :rtype: :class:`tencentcloud.waf.v20180125.models.EnableClientMsgResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("EnableClientMsg", params, headers=headers)
+            response = json.loads(body)
+            model = models.EnableClientMsgResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def EnableRateLimitsV2(self, request):
         r"""批量更改自研版限流规则开关
 
@@ -4822,6 +4845,29 @@ class WafClient(AbstractClient):
             body = self.call("QueryBypassAllStatus", params, headers=headers)
             response = json.loads(body)
             model = models.QueryBypassAllStatusResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def QueryClientMsg(self, request):
+        r"""查询是否开启透传客户端信息
+
+        :param request: Request instance for QueryClientMsg.
+        :type request: :class:`tencentcloud.waf.v20180125.models.QueryClientMsgRequest`
+        :rtype: :class:`tencentcloud.waf.v20180125.models.QueryClientMsgResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("QueryClientMsg", params, headers=headers)
+            response = json.loads(body)
+            model = models.QueryClientMsgResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

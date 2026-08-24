@@ -1182,34 +1182,34 @@ class DataDisk(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DiskType: 云盘类型
+        :param _DiskType: <p>云盘类型</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type DiskType: str
-        :param _FileSystem: 文件系统(ext3/ext4/xfs)
+        :param _FileSystem: <p>文件系统(ext3/ext4/xfs)</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type FileSystem: str
-        :param _DiskSize: 云盘大小(G）
+        :param _DiskSize: <p>云盘大小(G）</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type DiskSize: int
-        :param _AutoFormatAndMount: 是否自动化格式盘并挂载
+        :param _AutoFormatAndMount: <p>是否自动化格式盘并挂载</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type AutoFormatAndMount: bool
-        :param _DiskPartition: 挂载设备名或分区名
+        :param _DiskPartition: <p>挂载设备名或分区名</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type DiskPartition: str
-        :param _MountTarget: 挂载目录
+        :param _MountTarget: <p>挂载目录</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type MountTarget: str
-        :param _Encrypt: 传入该参数用于创建加密云盘，取值固定为ENCRYPT
+        :param _Encrypt: <p>传入该参数用于创建加密云盘，取值固定为ENCRYPT</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Encrypt: str
-        :param _KmsKeyId: 购买加密盘时自定义密钥，当传入该参数时, Encrypt入参不为空
+        :param _KmsKeyId: <p>购买加密盘时自定义密钥，当传入该参数时, Encrypt入参不为空</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type KmsKeyId: str
-        :param _SnapshotId: 快照ID，如果传入则根据此快照创建云硬盘，快照类型必须为数据盘快照
+        :param _SnapshotId: <p>快照ID，如果传入则根据此快照创建云硬盘，快照类型必须为数据盘快照</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type SnapshotId: str
-        :param _ThroughputPerformance: 云硬盘性能，单位：MB/s。使用此参数可给云硬盘购买额外的性能
+        :param _ThroughputPerformance: <p>云硬盘性能，单位：MB/s。使用此参数可给云硬盘购买额外的性能</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ThroughputPerformance: int
         """
@@ -1226,7 +1226,7 @@ class DataDisk(AbstractModel):
 
     @property
     def DiskType(self):
-        r"""云盘类型
+        r"""<p>云盘类型</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -1238,7 +1238,7 @@ class DataDisk(AbstractModel):
 
     @property
     def FileSystem(self):
-        r"""文件系统(ext3/ext4/xfs)
+        r"""<p>文件系统(ext3/ext4/xfs)</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -1250,7 +1250,7 @@ class DataDisk(AbstractModel):
 
     @property
     def DiskSize(self):
-        r"""云盘大小(G）
+        r"""<p>云盘大小(G）</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -1262,7 +1262,7 @@ class DataDisk(AbstractModel):
 
     @property
     def AutoFormatAndMount(self):
-        r"""是否自动化格式盘并挂载
+        r"""<p>是否自动化格式盘并挂载</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
@@ -1274,7 +1274,7 @@ class DataDisk(AbstractModel):
 
     @property
     def DiskPartition(self):
-        r"""挂载设备名或分区名
+        r"""<p>挂载设备名或分区名</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -1286,7 +1286,7 @@ class DataDisk(AbstractModel):
 
     @property
     def MountTarget(self):
-        r"""挂载目录
+        r"""<p>挂载目录</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -1298,7 +1298,7 @@ class DataDisk(AbstractModel):
 
     @property
     def Encrypt(self):
-        r"""传入该参数用于创建加密云盘，取值固定为ENCRYPT
+        r"""<p>传入该参数用于创建加密云盘，取值固定为ENCRYPT</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -1310,7 +1310,7 @@ class DataDisk(AbstractModel):
 
     @property
     def KmsKeyId(self):
-        r"""购买加密盘时自定义密钥，当传入该参数时, Encrypt入参不为空
+        r"""<p>购买加密盘时自定义密钥，当传入该参数时, Encrypt入参不为空</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -1322,7 +1322,7 @@ class DataDisk(AbstractModel):
 
     @property
     def SnapshotId(self):
-        r"""快照ID，如果传入则根据此快照创建云硬盘，快照类型必须为数据盘快照
+        r"""<p>快照ID，如果传入则根据此快照创建云硬盘，快照类型必须为数据盘快照</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -1334,7 +1334,7 @@ class DataDisk(AbstractModel):
 
     @property
     def ThroughputPerformance(self):
-        r"""云硬盘性能，单位：MB/s。使用此参数可给云硬盘购买额外的性能
+        r"""<p>云硬盘性能，单位：MB/s。使用此参数可给云硬盘购买额外的性能</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """

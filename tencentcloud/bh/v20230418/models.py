@@ -7085,15 +7085,15 @@ class DeployResourceRequest(AbstractModel):
         :type Zone: str
         :param _VpcId: <p>需要开通服务的VPC</p>
         :type VpcId: str
-        :param _SubnetId: <p>需要开通服务的子网ID</p>
+        :param _SubnetId: <p>需要开通服务的子网ID，此字段即将废除，请填写DeploySubnets包含的子网</p>
         :type SubnetId: str
-        :param _CidrBlock: <p>需要开通服务的子网网段</p>
+        :param _CidrBlock: <p>需要开通服务的子网网段，此字段即将废除，请填写DeploySubnets包含的子网</p>
         :type CidrBlock: str
         :param _VpcName: <p>需要开通服务的VPC名称</p>
         :type VpcName: str
         :param _VpcCidrBlock: <p>需要开通服务的VPC对应的网段</p>
         :type VpcCidrBlock: str
-        :param _SubnetName: <p>需要开通服务的子网名称</p>
+        :param _SubnetName: <p>需要开通服务的子网名称，此字段即将废除，请填写DeploySubnets包含的子网</p>
         :type SubnetName: str
         :param _CdcClusterId: <p>需要开通实例所属的CDC集群ID</p>
         :type CdcClusterId: str
@@ -7107,7 +7107,7 @@ class DeployResourceRequest(AbstractModel):
         :type IntranetAccess: int
         :param _ExternalAccess: <p>0-关闭公网访问堡垒机，1-开启公网访问堡垒机</p>
         :type ExternalAccess: int
-        :param _DeploySubnets: <p>开通堡垒机的子网信息</p>
+        :param _DeploySubnets: <p>开通堡垒机的子网信息，最多支持2个子网</p>
         :type DeploySubnets: list of ParamInitResourceSubnet
         :param _IntranetVpcId: <p>开通内网访问的VPC ID</p>
         :type IntranetVpcId: str
@@ -7115,7 +7115,7 @@ class DeployResourceRequest(AbstractModel):
         :type IntranetVpcCidrBlock: str
         :param _IntranetVpcName: <p>开通内网访问的VPC名称</p>
         :type IntranetVpcName: str
-        :param _IntranetSubnets: <p>开通内网访问的子网信息</p>
+        :param _IntranetSubnets: <p>开通内网访问的子网信息，最多支持2个子网</p>
         :type IntranetSubnets: list of ParamInitResourceSubnet
         """
         self._ResourceId = None
@@ -7185,7 +7185,7 @@ class DeployResourceRequest(AbstractModel):
 
     @property
     def SubnetId(self):
-        r"""<p>需要开通服务的子网ID</p>
+        r"""<p>需要开通服务的子网ID，此字段即将废除，请填写DeploySubnets包含的子网</p>
         :rtype: str
         """
         return self._SubnetId
@@ -7196,7 +7196,7 @@ class DeployResourceRequest(AbstractModel):
 
     @property
     def CidrBlock(self):
-        r"""<p>需要开通服务的子网网段</p>
+        r"""<p>需要开通服务的子网网段，此字段即将废除，请填写DeploySubnets包含的子网</p>
         :rtype: str
         """
         return self._CidrBlock
@@ -7229,7 +7229,7 @@ class DeployResourceRequest(AbstractModel):
 
     @property
     def SubnetName(self):
-        r"""<p>需要开通服务的子网名称</p>
+        r"""<p>需要开通服务的子网名称，此字段即将废除，请填写DeploySubnets包含的子网</p>
         :rtype: str
         """
         return self._SubnetName
@@ -7306,7 +7306,7 @@ class DeployResourceRequest(AbstractModel):
 
     @property
     def DeploySubnets(self):
-        r"""<p>开通堡垒机的子网信息</p>
+        r"""<p>开通堡垒机的子网信息，最多支持2个子网</p>
         :rtype: list of ParamInitResourceSubnet
         """
         return self._DeploySubnets
@@ -7350,7 +7350,7 @@ class DeployResourceRequest(AbstractModel):
 
     @property
     def IntranetSubnets(self):
-        r"""<p>开通内网访问的子网信息</p>
+        r"""<p>开通内网访问的子网信息，最多支持2个子网</p>
         :rtype: list of ParamInitResourceSubnet
         """
         return self._IntranetSubnets

@@ -16648,34 +16648,34 @@ class DDoSAttackEvent(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _EventId: 事件ID。
+        :param _EventId: <p>事件 ID。</p>
         :type EventId: str
-        :param _AttackType: 攻击类型(对应交互事件名称)。
+        :param _AttackType: <p>攻击类型。</p>
         :type AttackType: str
-        :param _AttackStatus: 攻击状态。
+        :param _AttackStatus: <p>攻击状态。</p><p>枚举值：</p><ul><li>0： 观察中</li><li>1： 攻击中</li><li>2： 攻击结束</li></ul>
         :type AttackStatus: int
-        :param _AttackMaxBandWidth: 攻击最大带宽，单位为 bps。
+        :param _AttackMaxBandWidth: <p>攻击最大带宽，单位为 bps。</p>
         :type AttackMaxBandWidth: int
-        :param _AttackPacketMaxRate: 攻击包速率峰值，单位为 pps。
+        :param _AttackPacketMaxRate: <p>攻击包速率峰值，单位为 pps。</p>
         :type AttackPacketMaxRate: int
-        :param _AttackStartTime: 攻击开始时间，单位为s。
+        :param _AttackStartTime: <p>攻击开始时间戳。</p><p>单位：秒</p>
         :type AttackStartTime: int
-        :param _AttackEndTime: 攻击结束时间，单位为s。
+        :param _AttackEndTime: <p>攻击结束时间戳。</p><p>单位：秒</p>
         :type AttackEndTime: int
-        :param _PolicyId: DDoS策略组ID。
+        :param _PolicyId: <p>DDoS 策略组 ID。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type PolicyId: int
-        :param _ZoneId: 站点ID。
+        :param _ZoneId: <p>站点 ID。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ZoneId: str
-        :param _Area: 攻击事件所属地区，取值有：
-<li>overseas：全球（除中国大陆地区）数据；</li>
-<li>mainland：中国大陆地区数据。</li>
+        :param _Area: <p>攻击事件所属地区。</p><p>枚举值：</p><ul><li>overseas： 全球（除中国大陆地区）数据；</li><li>mainland： 中国大陆地区数据。</li></ul>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Area: str
-        :param _DDoSBlockData: 封禁解封信息。
+        :param _DDoSBlockData: <p>封禁解封信息。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type DDoSBlockData: list of DDoSBlockData
+        :param _DDoSAttackDips: <p>被 DDoS 攻击的目的 IP 列表。</p>
+        :type DDoSAttackDips: list of str
         """
         self._EventId = None
         self._AttackType = None
@@ -16688,10 +16688,11 @@ class DDoSAttackEvent(AbstractModel):
         self._ZoneId = None
         self._Area = None
         self._DDoSBlockData = None
+        self._DDoSAttackDips = None
 
     @property
     def EventId(self):
-        r"""事件ID。
+        r"""<p>事件 ID。</p>
         :rtype: str
         """
         return self._EventId
@@ -16702,7 +16703,7 @@ class DDoSAttackEvent(AbstractModel):
 
     @property
     def AttackType(self):
-        r"""攻击类型(对应交互事件名称)。
+        r"""<p>攻击类型。</p>
         :rtype: str
         """
         return self._AttackType
@@ -16713,7 +16714,7 @@ class DDoSAttackEvent(AbstractModel):
 
     @property
     def AttackStatus(self):
-        r"""攻击状态。
+        r"""<p>攻击状态。</p><p>枚举值：</p><ul><li>0： 观察中</li><li>1： 攻击中</li><li>2： 攻击结束</li></ul>
         :rtype: int
         """
         return self._AttackStatus
@@ -16724,7 +16725,7 @@ class DDoSAttackEvent(AbstractModel):
 
     @property
     def AttackMaxBandWidth(self):
-        r"""攻击最大带宽，单位为 bps。
+        r"""<p>攻击最大带宽，单位为 bps。</p>
         :rtype: int
         """
         return self._AttackMaxBandWidth
@@ -16735,7 +16736,7 @@ class DDoSAttackEvent(AbstractModel):
 
     @property
     def AttackPacketMaxRate(self):
-        r"""攻击包速率峰值，单位为 pps。
+        r"""<p>攻击包速率峰值，单位为 pps。</p>
         :rtype: int
         """
         return self._AttackPacketMaxRate
@@ -16746,7 +16747,7 @@ class DDoSAttackEvent(AbstractModel):
 
     @property
     def AttackStartTime(self):
-        r"""攻击开始时间，单位为s。
+        r"""<p>攻击开始时间戳。</p><p>单位：秒</p>
         :rtype: int
         """
         return self._AttackStartTime
@@ -16757,7 +16758,7 @@ class DDoSAttackEvent(AbstractModel):
 
     @property
     def AttackEndTime(self):
-        r"""攻击结束时间，单位为s。
+        r"""<p>攻击结束时间戳。</p><p>单位：秒</p>
         :rtype: int
         """
         return self._AttackEndTime
@@ -16768,7 +16769,7 @@ class DDoSAttackEvent(AbstractModel):
 
     @property
     def PolicyId(self):
-        r"""DDoS策略组ID。
+        r"""<p>DDoS 策略组 ID。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -16780,7 +16781,7 @@ class DDoSAttackEvent(AbstractModel):
 
     @property
     def ZoneId(self):
-        r"""站点ID。
+        r"""<p>站点 ID。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -16792,9 +16793,7 @@ class DDoSAttackEvent(AbstractModel):
 
     @property
     def Area(self):
-        r"""攻击事件所属地区，取值有：
-<li>overseas：全球（除中国大陆地区）数据；</li>
-<li>mainland：中国大陆地区数据。</li>
+        r"""<p>攻击事件所属地区。</p><p>枚举值：</p><ul><li>overseas： 全球（除中国大陆地区）数据；</li><li>mainland： 中国大陆地区数据。</li></ul>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -16806,7 +16805,7 @@ class DDoSAttackEvent(AbstractModel):
 
     @property
     def DDoSBlockData(self):
-        r"""封禁解封信息。
+        r"""<p>封禁解封信息。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of DDoSBlockData
         """
@@ -16815,6 +16814,17 @@ class DDoSAttackEvent(AbstractModel):
     @DDoSBlockData.setter
     def DDoSBlockData(self, DDoSBlockData):
         self._DDoSBlockData = DDoSBlockData
+
+    @property
+    def DDoSAttackDips(self):
+        r"""<p>被 DDoS 攻击的目的 IP 列表。</p>
+        :rtype: list of str
+        """
+        return self._DDoSAttackDips
+
+    @DDoSAttackDips.setter
+    def DDoSAttackDips(self, DDoSAttackDips):
+        self._DDoSAttackDips = DDoSAttackDips
 
 
     def _deserialize(self, params):
@@ -16834,6 +16844,7 @@ class DDoSAttackEvent(AbstractModel):
                 obj = DDoSBlockData()
                 obj._deserialize(item)
                 self._DDoSBlockData.append(obj)
+        self._DDoSAttackDips = params.get("DDoSAttackDips")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -21676,31 +21687,22 @@ class DescribeDDoSAttackDataRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _StartTime: 开始时间。
+        :param _StartTime: <p>开始时间。时间为世界标准时间（UTC），遵循 ISO 8601 标准的日期和时间格式。</p>
         :type StartTime: str
-        :param _EndTime: 结束时间。查询时间范围（`EndTime` - `StartTime`）需小于等于 31 天。
+        :param _EndTime: <p>结束时间。时间为世界标准时间（UTC），遵循 ISO 8601 标准的日期和时间格式。查询时间范围（<code>EndTime</code> - <code>StartTime</code>）需小于等于 31 天。</p>
         :type EndTime: str
-        :param _MetricNames: 统计指标列表，取值有：
-<li>ddos_attackMaxBandwidth：攻击带宽峰值；</li>
-<li>ddos_attackMaxPackageRate：攻击包速率峰值 ；</li>
-<li>ddos_attackBandwidth：攻击带宽曲线；</li>
-<li>ddos_attackPackageRate：攻击包速率曲线。</li>
+        :param _MetricNames: <p>统计指标列表，至少填写 1 个，且不允许重复。</p><p>枚举值：</p><ul><li>ddos_attackMaxBandwidth： 攻击带宽峰值，单位 bps；</li><li>ddos_attackMaxPackageRate： 攻击包速率峰值，单位 pps；</li><li>ddos_attackBandwidth： 攻击带宽曲线，单位 bps；</li><li>ddos_attackPackageRate： 攻击包速率曲线，单位 pps。</li></ul>
         :type MetricNames: list of str
-        :param _ZoneIds: 站点 ID 集合，此参数将于2024年05月30日后由可选改为必填，详见公告：[【腾讯云 EdgeOne】云 API 变更通知](https://cloud.tencent.com/document/product/1552/104902)。最多传入 100 个站点 ID。若需查询腾讯云主账号下所有站点数据，请用 `*` 代替，查询账号级别数据需具备本接口全部站点资源权限。
+        :param _ZoneIds: <p>站点 ID 集合，此参数将于2024年05月30日后由可选改为必填，详见公告：<a href="https://cloud.tencent.com/document/product/1552/104902">【腾讯云 EdgeOne】云 API 变更通知</a>。最多传入 100 个站点 ID。若需查询腾讯云主账号下所有站点数据，请用 <code>*</code> 代替，查询账号级别数据需具备本接口全部站点资源权限。</p>
         :type ZoneIds: list of str
-        :param _PolicyIds: DDoS策略组ID列表，不填默认选择全部策略ID。
+        :param _PolicyIds: <p>DDoS 策略组 ID 列表，不填默认选择全部策略 ID。</p>
         :type PolicyIds: list of int
-        :param _Interval: 查询时间粒度，取值有：
-<li>min：1分钟；</li>
-<li>5min：5分钟；</li>
-<li>hour：1小时；</li>
-<li>day：1天。</li>不填将根据开始时间与结束时间的间隔自动推算粒度，具体为：1小时范围内以min粒度查询，2天范围内以5min粒度查询，7天范围内以hour粒度查询，超过7天以day粒度查询。
+        :param _Interval: <p>查询时间粒度，不填将根据开始时间与结束时间的间隔自动推算粒度，具体为：1 小时范围内以 min 粒度查询，2 天范围内以 5min 粒度查询，7 天范围内以 hour 粒度查询，超过 7 天以 day 粒度查询。</p><p>枚举值：</p><ul><li>min： 1 分钟；</li><li>5min： 5分钟；</li><li>hour： 1小时；</li><li>day： 1天。</li></ul>
         :type Interval: str
-        :param _Area: 数据归属地区，取值有：
-<li>overseas：全球（除中国大陆地区）数据；</li>
-<li>mainland：中国大陆地区数据；</li>
-<li>global：全球数据。</li>不填默认取值为global。
+        :param _Area: <p>数据归属地区。</p><p>枚举值：</p><ul><li>overseas： 全球（除中国大陆地区）数据；</li><li>mainland： 中国大陆地区数据；</li><li>global： 全球数据。</li></ul><p>默认值：global</p>
         :type Area: str
+        :param _Filters: <p>过滤条件，QueryCondition.Value 的集合数量上限为 20，详细的过滤条件 QueryCondition.Key 值如下：</p><li>ddos-attack-dip：按照 DDoS 攻击目的 IP 进行过滤，QueryCondition.Operator 仅支持 equals。</li>
+        :type Filters: list of QueryCondition
         """
         self._StartTime = None
         self._EndTime = None
@@ -21709,10 +21711,11 @@ class DescribeDDoSAttackDataRequest(AbstractModel):
         self._PolicyIds = None
         self._Interval = None
         self._Area = None
+        self._Filters = None
 
     @property
     def StartTime(self):
-        r"""开始时间。
+        r"""<p>开始时间。时间为世界标准时间（UTC），遵循 ISO 8601 标准的日期和时间格式。</p>
         :rtype: str
         """
         return self._StartTime
@@ -21723,7 +21726,7 @@ class DescribeDDoSAttackDataRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        r"""结束时间。查询时间范围（`EndTime` - `StartTime`）需小于等于 31 天。
+        r"""<p>结束时间。时间为世界标准时间（UTC），遵循 ISO 8601 标准的日期和时间格式。查询时间范围（<code>EndTime</code> - <code>StartTime</code>）需小于等于 31 天。</p>
         :rtype: str
         """
         return self._EndTime
@@ -21734,11 +21737,7 @@ class DescribeDDoSAttackDataRequest(AbstractModel):
 
     @property
     def MetricNames(self):
-        r"""统计指标列表，取值有：
-<li>ddos_attackMaxBandwidth：攻击带宽峰值；</li>
-<li>ddos_attackMaxPackageRate：攻击包速率峰值 ；</li>
-<li>ddos_attackBandwidth：攻击带宽曲线；</li>
-<li>ddos_attackPackageRate：攻击包速率曲线。</li>
+        r"""<p>统计指标列表，至少填写 1 个，且不允许重复。</p><p>枚举值：</p><ul><li>ddos_attackMaxBandwidth： 攻击带宽峰值，单位 bps；</li><li>ddos_attackMaxPackageRate： 攻击包速率峰值，单位 pps；</li><li>ddos_attackBandwidth： 攻击带宽曲线，单位 bps；</li><li>ddos_attackPackageRate： 攻击包速率曲线，单位 pps。</li></ul>
         :rtype: list of str
         """
         return self._MetricNames
@@ -21749,7 +21748,7 @@ class DescribeDDoSAttackDataRequest(AbstractModel):
 
     @property
     def ZoneIds(self):
-        r"""站点 ID 集合，此参数将于2024年05月30日后由可选改为必填，详见公告：[【腾讯云 EdgeOne】云 API 变更通知](https://cloud.tencent.com/document/product/1552/104902)。最多传入 100 个站点 ID。若需查询腾讯云主账号下所有站点数据，请用 `*` 代替，查询账号级别数据需具备本接口全部站点资源权限。
+        r"""<p>站点 ID 集合，此参数将于2024年05月30日后由可选改为必填，详见公告：<a href="https://cloud.tencent.com/document/product/1552/104902">【腾讯云 EdgeOne】云 API 变更通知</a>。最多传入 100 个站点 ID。若需查询腾讯云主账号下所有站点数据，请用 <code>*</code> 代替，查询账号级别数据需具备本接口全部站点资源权限。</p>
         :rtype: list of str
         """
         return self._ZoneIds
@@ -21760,7 +21759,7 @@ class DescribeDDoSAttackDataRequest(AbstractModel):
 
     @property
     def PolicyIds(self):
-        r"""DDoS策略组ID列表，不填默认选择全部策略ID。
+        r"""<p>DDoS 策略组 ID 列表，不填默认选择全部策略 ID。</p>
         :rtype: list of int
         """
         return self._PolicyIds
@@ -21771,11 +21770,7 @@ class DescribeDDoSAttackDataRequest(AbstractModel):
 
     @property
     def Interval(self):
-        r"""查询时间粒度，取值有：
-<li>min：1分钟；</li>
-<li>5min：5分钟；</li>
-<li>hour：1小时；</li>
-<li>day：1天。</li>不填将根据开始时间与结束时间的间隔自动推算粒度，具体为：1小时范围内以min粒度查询，2天范围内以5min粒度查询，7天范围内以hour粒度查询，超过7天以day粒度查询。
+        r"""<p>查询时间粒度，不填将根据开始时间与结束时间的间隔自动推算粒度，具体为：1 小时范围内以 min 粒度查询，2 天范围内以 5min 粒度查询，7 天范围内以 hour 粒度查询，超过 7 天以 day 粒度查询。</p><p>枚举值：</p><ul><li>min： 1 分钟；</li><li>5min： 5分钟；</li><li>hour： 1小时；</li><li>day： 1天。</li></ul>
         :rtype: str
         """
         return self._Interval
@@ -21786,10 +21781,7 @@ class DescribeDDoSAttackDataRequest(AbstractModel):
 
     @property
     def Area(self):
-        r"""数据归属地区，取值有：
-<li>overseas：全球（除中国大陆地区）数据；</li>
-<li>mainland：中国大陆地区数据；</li>
-<li>global：全球数据。</li>不填默认取值为global。
+        r"""<p>数据归属地区。</p><p>枚举值：</p><ul><li>overseas： 全球（除中国大陆地区）数据；</li><li>mainland： 中国大陆地区数据；</li><li>global： 全球数据。</li></ul><p>默认值：global</p>
         :rtype: str
         """
         return self._Area
@@ -21797,6 +21789,17 @@ class DescribeDDoSAttackDataRequest(AbstractModel):
     @Area.setter
     def Area(self, Area):
         self._Area = Area
+
+    @property
+    def Filters(self):
+        r"""<p>过滤条件，QueryCondition.Value 的集合数量上限为 20，详细的过滤条件 QueryCondition.Key 值如下：</p><li>ddos-attack-dip：按照 DDoS 攻击目的 IP 进行过滤，QueryCondition.Operator 仅支持 equals。</li>
+        :rtype: list of QueryCondition
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
 
 
     def _deserialize(self, params):
@@ -21807,6 +21810,12 @@ class DescribeDDoSAttackDataRequest(AbstractModel):
         self._PolicyIds = params.get("PolicyIds")
         self._Interval = params.get("Interval")
         self._Area = params.get("Area")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = QueryCondition()
+                obj._deserialize(item)
+                self._Filters.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -21824,9 +21833,9 @@ class DescribeDDoSAttackDataResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TotalCount: 查询结果的总条数。
+        :param _TotalCount: <p>查询结果的总条数。</p>
         :type TotalCount: int
-        :param _Data: DDoS攻击数据内容列表。
+        :param _Data: <p>DDoS 攻击数据内容列表。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Data: list of SecEntry
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -21838,7 +21847,7 @@ class DescribeDDoSAttackDataResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        r"""查询结果的总条数。
+        r"""<p>查询结果的总条数。</p>
         :rtype: int
         """
         return self._TotalCount
@@ -21849,7 +21858,7 @@ class DescribeDDoSAttackDataResponse(AbstractModel):
 
     @property
     def Data(self):
-        r"""DDoS攻击数据内容列表。
+        r"""<p>DDoS 攻击数据内容列表。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of SecEntry
         """

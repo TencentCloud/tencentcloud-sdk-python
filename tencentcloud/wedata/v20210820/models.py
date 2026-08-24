@@ -46645,6 +46645,8 @@ class DescribeTableContentPreviewRequest(AbstractModel):
         :type Sql: str
         :param _EngineId: <p>引擎名</p>
         :type EngineId: str
+        :param _EngineTypeDetail: <p>引擎类型详情</p><ul><li>SparkSQL：SparkSQL</li><li>PrestoSQL：Presto</li><li>SparkBatch：Spark作业</li><li>StandardPresto：Presto</li><li>StandardSpark：Spark</li></ul>
+        :type EngineTypeDetail: str
         """
         self._TableId = None
         self._TechnologyType = None
@@ -46659,6 +46661,7 @@ class DescribeTableContentPreviewRequest(AbstractModel):
         self._ResourceGroupId = None
         self._Sql = None
         self._EngineId = None
+        self._EngineTypeDetail = None
 
     @property
     def TableId(self):
@@ -46803,6 +46806,17 @@ class DescribeTableContentPreviewRequest(AbstractModel):
     def EngineId(self, EngineId):
         self._EngineId = EngineId
 
+    @property
+    def EngineTypeDetail(self):
+        r"""<p>引擎类型详情</p><ul><li>SparkSQL：SparkSQL</li><li>PrestoSQL：Presto</li><li>SparkBatch：Spark作业</li><li>StandardPresto：Presto</li><li>StandardSpark：Spark</li></ul>
+        :rtype: str
+        """
+        return self._EngineTypeDetail
+
+    @EngineTypeDetail.setter
+    def EngineTypeDetail(self, EngineTypeDetail):
+        self._EngineTypeDetail = EngineTypeDetail
+
 
     def _deserialize(self, params):
         self._TableId = params.get("TableId")
@@ -46818,6 +46832,7 @@ class DescribeTableContentPreviewRequest(AbstractModel):
         self._ResourceGroupId = params.get("ResourceGroupId")
         self._Sql = params.get("Sql")
         self._EngineId = params.get("EngineId")
+        self._EngineTypeDetail = params.get("EngineTypeDetail")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -1270,6 +1270,29 @@ class CsipClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateDspmAuditFilterStrategy(self, request):
+        r"""创建Dspm审计过滤策略
+
+        :param request: Request instance for CreateDspmAuditFilterStrategy.
+        :type request: :class:`tencentcloud.csip.v20221121.models.CreateDspmAuditFilterStrategyRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.CreateDspmAuditFilterStrategyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateDspmAuditFilterStrategy", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateDspmAuditFilterStrategyResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateDspmExportTask(self, request):
         r"""创建日志导出任务
 
@@ -1500,6 +1523,29 @@ class CsipClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateDspmResource(self, request):
+        r"""创建Dspm实例
+
+        :param request: Request instance for CreateDspmResource.
+        :type request: :class:`tencentcloud.csip.v20221121.models.CreateDspmResourceRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.CreateDspmResourceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateDspmResource", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateDspmResourceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateDspmRiskExportJob(self, request):
         r"""创建Dspm风险导出任务
 
@@ -1514,6 +1560,29 @@ class CsipClient(AbstractClient):
             body = self.call("CreateDspmRiskExportJob", params, headers=headers)
             response = json.loads(body)
             model = models.CreateDspmRiskExportJobResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CreateDspmRiskStrategy(self, request):
+        r"""创建Dspm自定义风险策略
+
+        :param request: Request instance for CreateDspmRiskStrategy.
+        :type request: :class:`tencentcloud.csip.v20221121.models.CreateDspmRiskStrategyRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.CreateDspmRiskStrategyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateDspmRiskStrategy", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateDspmRiskStrategyResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -2767,6 +2836,29 @@ class CsipClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DeleteDspmAuditFilterStrategy(self, request):
+        r"""删除Dspm审计过滤策略
+
+        :param request: Request instance for DeleteDspmAuditFilterStrategy.
+        :type request: :class:`tencentcloud.csip.v20221121.models.DeleteDspmAuditFilterStrategyRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.DeleteDspmAuditFilterStrategyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteDspmAuditFilterStrategy", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteDspmAuditFilterStrategyResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DeleteDspmBackupLogList(self, request):
         r"""删除备份日志
 
@@ -2781,6 +2873,29 @@ class CsipClient(AbstractClient):
             body = self.call("DeleteDspmBackupLogList", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteDspmBackupLogListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteDspmCkafkaConfig(self, request):
+        r"""取消日志投递配置
+
+        :param request: Request instance for DeleteDspmCkafkaConfig.
+        :type request: :class:`tencentcloud.csip.v20221121.models.DeleteDspmCkafkaConfigRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.DeleteDspmCkafkaConfigResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteDspmCkafkaConfig", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteDspmCkafkaConfigResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -2988,6 +3103,52 @@ class CsipClient(AbstractClient):
             body = self.call("DeleteDspmRestoreLogList", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteDspmRestoreLogListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteDspmRiskStrategy(self, request):
+        r"""删除Dspm自定义风险策略。仅支持删除自定义策略（rule_source=custom）；内置策略不可删除，请通过 ModifyDspmRiskStrategy 的 IsEnabled 禁用。
+
+        :param request: Request instance for DeleteDspmRiskStrategy.
+        :type request: :class:`tencentcloud.csip.v20221121.models.DeleteDspmRiskStrategyRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.DeleteDspmRiskStrategyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteDspmRiskStrategy", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteDspmRiskStrategyResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteDspmShareUserData(self, request):
+        r"""删除dspmg共享账号数据
+
+        :param request: Request instance for DeleteDspmShareUserData.
+        :type request: :class:`tencentcloud.csip.v20221121.models.DeleteDspmShareUserDataRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.DeleteDspmShareUserDataResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteDspmShareUserData", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteDspmShareUserDataResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -7678,6 +7839,29 @@ class CsipClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeDspmAuditFilterStrategy(self, request):
+        r"""查询dspm审计过滤策略
+
+        :param request: Request instance for DescribeDspmAuditFilterStrategy.
+        :type request: :class:`tencentcloud.csip.v20221121.models.DescribeDspmAuditFilterStrategyRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.DescribeDspmAuditFilterStrategyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDspmAuditFilterStrategy", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDspmAuditFilterStrategyResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeDspmBackupLogList(self, request):
         r"""查询备份日志列表
 
@@ -7715,6 +7899,52 @@ class CsipClient(AbstractClient):
             body = self.call("DescribeDspmBackupSetting", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeDspmBackupSettingResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeDspmCkafkaRouteList(self, request):
+        r"""查询Ckafka实例的路由信息
+
+        :param request: Request instance for DescribeDspmCkafkaRouteList.
+        :type request: :class:`tencentcloud.csip.v20221121.models.DescribeDspmCkafkaRouteListRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.DescribeDspmCkafkaRouteListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDspmCkafkaRouteList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDspmCkafkaRouteListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeDspmCkafkaTopicList(self, request):
+        r"""查询实例的主题列表
+
+        :param request: Request instance for DescribeDspmCkafkaTopicList.
+        :type request: :class:`tencentcloud.csip.v20221121.models.DescribeDspmCkafkaTopicListRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.DescribeDspmCkafkaTopicListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDspmCkafkaTopicList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDspmCkafkaTopicListResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -8046,6 +8276,29 @@ class CsipClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeDspmLogDeliveryType(self, request):
+        r"""查询日志投递的日志类型
+
+        :param request: Request instance for DescribeDspmLogDeliveryType.
+        :type request: :class:`tencentcloud.csip.v20221121.models.DescribeDspmLogDeliveryTypeRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.DescribeDspmLogDeliveryTypeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDspmLogDeliveryType", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDspmLogDeliveryTypeResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeDspmLogList(self, request):
         r"""查询日志列表信息
 
@@ -8060,6 +8313,29 @@ class CsipClient(AbstractClient):
             body = self.call("DescribeDspmLogList", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeDspmLogListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeDspmLogTypeConfigList(self, request):
+        r"""查询租户日志投递配置
+
+        :param request: Request instance for DescribeDspmLogTypeConfigList.
+        :type request: :class:`tencentcloud.csip.v20221121.models.DescribeDspmLogTypeConfigListRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.DescribeDspmLogTypeConfigListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDspmLogTypeConfigList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDspmLogTypeConfigListResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -8129,6 +8405,29 @@ class CsipClient(AbstractClient):
             body = self.call("DescribeDspmPersonalIdentifyList", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeDspmPersonalIdentifyListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeDspmResource(self, request):
+        r"""查询Dspm实例
+
+        :param request: Request instance for DescribeDspmResource.
+        :type request: :class:`tencentcloud.csip.v20221121.models.DescribeDspmResourceRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.DescribeDspmResourceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDspmResource", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDspmResourceResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -8253,6 +8552,29 @@ class CsipClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeDspmSessionList(self, request):
+        r"""查询审计会话列表信息
+
+        :param request: Request instance for DescribeDspmSessionList.
+        :type request: :class:`tencentcloud.csip.v20221121.models.DescribeDspmSessionListRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.DescribeDspmSessionListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDspmSessionList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDspmSessionListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeDspmStatistics(self, request):
         r"""查询Dspm统计信息
 
@@ -8336,6 +8658,29 @@ class CsipClient(AbstractClient):
             body = self.call("DescribeDspmSyncUsersStatus", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeDspmSyncUsersStatusResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeDspmUserCkafkaInstanceList(self, request):
+        r"""查询租户ckafka实例列表
+
+        :param request: Request instance for DescribeDspmUserCkafkaInstanceList.
+        :type request: :class:`tencentcloud.csip.v20221121.models.DescribeDspmUserCkafkaInstanceListRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.DescribeDspmUserCkafkaInstanceListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDspmUserCkafkaInstanceList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDspmUserCkafkaInstanceListResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -13831,6 +14176,29 @@ class CsipClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyDspmAuditFilterStrategy(self, request):
+        r"""修改Dspm审计过滤策略
+
+        :param request: Request instance for ModifyDspmAuditFilterStrategy.
+        :type request: :class:`tencentcloud.csip.v20221121.models.ModifyDspmAuditFilterStrategyRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.ModifyDspmAuditFilterStrategyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyDspmAuditFilterStrategy", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyDspmAuditFilterStrategyResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyDspmBackupSetting(self, request):
         r"""修改日志备份设置
 
@@ -13845,6 +14213,75 @@ class CsipClient(AbstractClient):
             body = self.call("ModifyDspmBackupSetting", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyDspmBackupSettingResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyDspmCkafkaSave(self, request):
+        r"""租户Ckafka配置保存
+
+        :param request: Request instance for ModifyDspmCkafkaSave.
+        :type request: :class:`tencentcloud.csip.v20221121.models.ModifyDspmCkafkaSaveRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.ModifyDspmCkafkaSaveResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyDspmCkafkaSave", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyDspmCkafkaSaveResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyDspmCkafkaStart(self, request):
+        r"""日志投递开启
+
+        :param request: Request instance for ModifyDspmCkafkaStart.
+        :type request: :class:`tencentcloud.csip.v20221121.models.ModifyDspmCkafkaStartRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.ModifyDspmCkafkaStartResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyDspmCkafkaStart", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyDspmCkafkaStartResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyDspmCkafkaStop(self, request):
+        r"""日志类型投递关闭
+
+        :param request: Request instance for ModifyDspmCkafkaStop.
+        :type request: :class:`tencentcloud.csip.v20221121.models.ModifyDspmCkafkaStopRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.ModifyDspmCkafkaStopResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyDspmCkafkaStop", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyDspmCkafkaStopResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -14075,6 +14512,29 @@ class CsipClient(AbstractClient):
             body = self.call("ModifyDspmIpInfo", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyDspmIpInfoResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyDspmLogDeliveryType(self, request):
+        r"""修改日志投递配置信息
+
+        :param request: Request instance for ModifyDspmLogDeliveryType.
+        :type request: :class:`tencentcloud.csip.v20221121.models.ModifyDspmLogDeliveryTypeRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.ModifyDspmLogDeliveryTypeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyDspmLogDeliveryType", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyDspmLogDeliveryTypeResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -15197,6 +15657,29 @@ class CsipClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyShareUserDspm(self, request):
+        r"""编辑dspm监测账号
+
+        :param request: Request instance for ModifyShareUserDspm.
+        :type request: :class:`tencentcloud.csip.v20221121.models.ModifyShareUserDspmRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.ModifyShareUserDspmResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyShareUserDspm", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyShareUserDspmResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifySkillScanAlertStatus(self, request):
         r"""批量修改 Skill 安全检测告警的处理状态
 
@@ -15648,6 +16131,29 @@ class CsipClient(AbstractClient):
             body = self.call("SendDspmAssetLoginSmsCode", params, headers=headers)
             response = json.loads(body)
             model = models.SendDspmAssetLoginSmsCodeResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def SendDspmCkafkaTest(self, request):
+        r"""租户Ckafka联通性测试
+
+        :param request: Request instance for SendDspmCkafkaTest.
+        :type request: :class:`tencentcloud.csip.v20221121.models.SendDspmCkafkaTestRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.SendDspmCkafkaTestResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("SendDspmCkafkaTest", params, headers=headers)
+            response = json.loads(body)
+            model = models.SendDspmCkafkaTestResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

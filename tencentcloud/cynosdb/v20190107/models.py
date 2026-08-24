@@ -14740,7 +14740,7 @@ class CynosdbInstance(AbstractModel):
         :type Region: str
         :param _Zone: <p>集群主可用区</p>
         :type Zone: str
-        :param _Status: <p>实例状态</p>
+        :param _Status: <p>实例状态</p><p>枚举值：</p><ul><li>creating： 创建中</li><li>running： 运行中</li><li>isolating： 隔离中</li><li>isolated： 已隔离</li><li>activating： 从回收站重新恢复</li><li>offlining： 下线中</li><li>offlined： 已下线</li><li>deleting： 删除中</li><li>deleted： 已删除</li></ul>
         :type Status: str
         :param _StatusDesc: <p>实例状态中文描述</p>
         :type StatusDesc: str
@@ -15008,7 +15008,7 @@ class CynosdbInstance(AbstractModel):
 
     @property
     def Status(self):
-        r"""<p>实例状态</p>
+        r"""<p>实例状态</p><p>枚举值：</p><ul><li>creating： 创建中</li><li>running： 运行中</li><li>isolating： 隔离中</li><li>isolated： 已隔离</li><li>activating： 从回收站重新恢复</li><li>offlining： 下线中</li><li>offlined： 已下线</li><li>deleting： 删除中</li><li>deleted： 已删除</li></ul>
         :rtype: str
         """
         return self._Status
@@ -60393,6 +60393,36 @@ class TransferClusterPrepayToPostpayRequest(AbstractModel):
 
     """
 
+    def __init__(self):
+        r"""
+        :param _ClusterId: <p>集群id</p>
+        :type ClusterId: str
+        """
+        self._ClusterId = None
+
+    @property
+    def ClusterId(self):
+        r"""<p>集群id</p>
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
 
 class TransferClusterPrepayToPostpayResponse(AbstractModel):
     r"""TransferClusterPrepayToPostpay返回参数结构体
@@ -60401,10 +60431,90 @@ class TransferClusterPrepayToPostpayResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _BigDealIds: <p>预付费总订单号</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BigDealIds: list of str
+        :param _TranId: <p>冻结流水</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TranId: str
+        :param _DealNames: <p>订单号</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DealNames: list of str
+        :param _ResourceIds: <p>资源id</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResourceIds: list of str
+        :param _ClusterIds: <p>集群id</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClusterIds: list of str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._BigDealIds = None
+        self._TranId = None
+        self._DealNames = None
+        self._ResourceIds = None
+        self._ClusterIds = None
         self._RequestId = None
+
+    @property
+    def BigDealIds(self):
+        r"""<p>预付费总订单号</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._BigDealIds
+
+    @BigDealIds.setter
+    def BigDealIds(self, BigDealIds):
+        self._BigDealIds = BigDealIds
+
+    @property
+    def TranId(self):
+        r"""<p>冻结流水</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TranId
+
+    @TranId.setter
+    def TranId(self, TranId):
+        self._TranId = TranId
+
+    @property
+    def DealNames(self):
+        r"""<p>订单号</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._DealNames
+
+    @DealNames.setter
+    def DealNames(self, DealNames):
+        self._DealNames = DealNames
+
+    @property
+    def ResourceIds(self):
+        r"""<p>资源id</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._ResourceIds
+
+    @ResourceIds.setter
+    def ResourceIds(self, ResourceIds):
+        self._ResourceIds = ResourceIds
+
+    @property
+    def ClusterIds(self):
+        r"""<p>集群id</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._ClusterIds
+
+    @ClusterIds.setter
+    def ClusterIds(self, ClusterIds):
+        self._ClusterIds = ClusterIds
 
     @property
     def RequestId(self):
@@ -60419,6 +60529,11 @@ class TransferClusterPrepayToPostpayResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._BigDealIds = params.get("BigDealIds")
+        self._TranId = params.get("TranId")
+        self._DealNames = params.get("DealNames")
+        self._ResourceIds = params.get("ResourceIds")
+        self._ClusterIds = params.get("ClusterIds")
         self._RequestId = params.get("RequestId")
 
 

@@ -15556,6 +15556,10 @@ class InstanceInfo(AbstractModel):
         :type OpenMTLS: int
         :param _ServerCertSource: <p>证书类型</p>
         :type ServerCertSource: str
+        :param _OldEsVip: <p>集群待迁移的VIP</p>
+        :type OldEsVip: str
+        :param _OldEsPrivateTcpUrl: <p>集群待迁移的TCP地址</p>
+        :type OldEsPrivateTcpUrl: str
         """
         self._InstanceId = None
         self._InstanceName = None
@@ -15662,6 +15666,8 @@ class InstanceInfo(AbstractModel):
         self._EnableAutoReplace = None
         self._OpenMTLS = None
         self._ServerCertSource = None
+        self._OldEsVip = None
+        self._OldEsPrivateTcpUrl = None
 
     @property
     def InstanceId(self):
@@ -16877,6 +16883,28 @@ class InstanceInfo(AbstractModel):
     def ServerCertSource(self, ServerCertSource):
         self._ServerCertSource = ServerCertSource
 
+    @property
+    def OldEsVip(self):
+        r"""<p>集群待迁移的VIP</p>
+        :rtype: str
+        """
+        return self._OldEsVip
+
+    @OldEsVip.setter
+    def OldEsVip(self, OldEsVip):
+        self._OldEsVip = OldEsVip
+
+    @property
+    def OldEsPrivateTcpUrl(self):
+        r"""<p>集群待迁移的TCP地址</p>
+        :rtype: str
+        """
+        return self._OldEsPrivateTcpUrl
+
+    @OldEsPrivateTcpUrl.setter
+    def OldEsPrivateTcpUrl(self, OldEsPrivateTcpUrl):
+        self._OldEsPrivateTcpUrl = OldEsPrivateTcpUrl
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -17032,6 +17060,8 @@ class InstanceInfo(AbstractModel):
         self._EnableAutoReplace = params.get("EnableAutoReplace")
         self._OpenMTLS = params.get("OpenMTLS")
         self._ServerCertSource = params.get("ServerCertSource")
+        self._OldEsVip = params.get("OldEsVip")
+        self._OldEsPrivateTcpUrl = params.get("OldEsPrivateTcpUrl")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

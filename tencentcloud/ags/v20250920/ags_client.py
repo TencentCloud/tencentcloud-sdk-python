@@ -26,6 +26,29 @@ class AgsClient(AbstractClient):
     _service = 'ags'
 
 
+    def AcquireDeploymentToken(self, request):
+        r"""获取 Deployment 访问 Token
+
+        :param request: Request instance for AcquireDeploymentToken.
+        :type request: :class:`tencentcloud.ags.v20250920.models.AcquireDeploymentTokenRequest`
+        :rtype: :class:`tencentcloud.ags.v20250920.models.AcquireDeploymentTokenResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("AcquireDeploymentToken", params, headers=headers)
+            response = json.loads(body)
+            model = models.AcquireDeploymentTokenResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def AcquireSandboxInstanceToken(self, request):
         r"""获取访问沙箱工具时所需要使用的访问Token，创建沙箱实例后需调用此接口获取沙箱实例访问Token。
         此Token可用于调用代码沙箱实例执行代码，或浏览器沙箱实例进行浏览器操作等。
@@ -64,6 +87,29 @@ class AgsClient(AbstractClient):
             body = self.call("CreateAPIKey", params, headers=headers)
             response = json.loads(body)
             model = models.CreateAPIKeyResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CreateDeployment(self, request):
+        r"""创建 Deployment
+
+        :param request: Request instance for CreateDeployment.
+        :type request: :class:`tencentcloud.ags.v20250920.models.CreateDeploymentRequest`
+        :rtype: :class:`tencentcloud.ags.v20250920.models.CreateDeploymentResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateDeployment", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateDeploymentResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -142,6 +188,29 @@ class AgsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DeleteDeployment(self, request):
+        r"""删除 Deployment
+
+        :param request: Request instance for DeleteDeployment.
+        :type request: :class:`tencentcloud.ags.v20250920.models.DeleteDeploymentRequest`
+        :rtype: :class:`tencentcloud.ags.v20250920.models.DeleteDeploymentResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteDeployment", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteDeploymentResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DeleteSandboxTool(self, request):
         r"""删除沙箱工具
 
@@ -179,6 +248,52 @@ class AgsClient(AbstractClient):
             body = self.call("DescribeAPIKeyList", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeAPIKeyListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeDeployment(self, request):
+        r"""查询 Deployment 信息
+
+        :param request: Request instance for DescribeDeployment.
+        :type request: :class:`tencentcloud.ags.v20250920.models.DescribeDeploymentRequest`
+        :rtype: :class:`tencentcloud.ags.v20250920.models.DescribeDeploymentResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDeployment", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDeploymentResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeDeploymentList(self, request):
+        r"""查询 Deployment 列表
+
+        :param request: Request instance for DescribeDeploymentList.
+        :type request: :class:`tencentcloud.ags.v20250920.models.DescribeDeploymentListRequest`
+        :rtype: :class:`tencentcloud.ags.v20250920.models.DescribeDeploymentListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDeploymentList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDeploymentListResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -248,6 +363,29 @@ class AgsClient(AbstractClient):
             body = self.call("DescribeSandboxToolList", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeSandboxToolListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyDeployment(self, request):
+        r"""修改 Deployment
+
+        :param request: Request instance for ModifyDeployment.
+        :type request: :class:`tencentcloud.ags.v20250920.models.ModifyDeploymentRequest`
+        :rtype: :class:`tencentcloud.ags.v20250920.models.ModifyDeploymentResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyDeployment", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyDeploymentResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

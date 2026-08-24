@@ -8637,7 +8637,7 @@ class CreateSSOAccountRequest(AbstractModel):
         r"""
         :param _InstanceId: <p>Grafana 实例 ID，例如：grafana-abcdefgh</p>
         :type InstanceId: str
-        :param _UserId: <p>用户账号 ID ，例如：10000000</p>
+        :param _UserId: <p>用户子账号 ID ，例如：10000000</p>
         :type UserId: str
         :param _Role: <p>权限(只取数组中的第一个，其中 Organization 暂未使用，可不填)</p>
         :type Role: list of GrafanaAccountRole
@@ -8662,7 +8662,7 @@ class CreateSSOAccountRequest(AbstractModel):
 
     @property
     def UserId(self):
-        r"""<p>用户账号 ID ，例如：10000000</p>
+        r"""<p>用户子账号 ID ，例如：10000000</p>
         :rtype: str
         """
         return self._UserId
@@ -8721,7 +8721,7 @@ class CreateSSOAccountResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _UserId: <p>已添加的用户 UIN</p>
+        :param _UserId: <p>已添加的子账号ID</p>
         :type UserId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -8731,7 +8731,7 @@ class CreateSSOAccountResponse(AbstractModel):
 
     @property
     def UserId(self):
-        r"""<p>已添加的用户 UIN</p>
+        r"""<p>已添加的子账号ID</p>
         :rtype: str
         """
         return self._UserId
@@ -15959,17 +15959,17 @@ class DescribeGrafanaInstancesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Offset: 查询偏移量
+        :param _Offset: <p>查询偏移量</p>
         :type Offset: int
-        :param _Limit: 查询数量
+        :param _Limit: <p>查询数量</p>
         :type Limit: int
-        :param _InstanceIds: Grafana 实例 ID 数组
+        :param _InstanceIds: <p>Grafana 实例 ID 数组</p>
         :type InstanceIds: list of str
-        :param _InstanceName: Grafana 实例名，支持前缀模糊搜索
+        :param _InstanceName: <p>Grafana 实例名，支持前缀模糊搜索</p>
         :type InstanceName: str
-        :param _InstanceStatus: 查询状态
+        :param _InstanceStatus: <p>查询状态</p>
         :type InstanceStatus: list of int
-        :param _TagFilters: 标签过滤数组
+        :param _TagFilters: <p>标签过滤数组</p>
         :type TagFilters: list of PrometheusTag
         """
         self._Offset = None
@@ -15981,7 +15981,7 @@ class DescribeGrafanaInstancesRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""查询偏移量
+        r"""<p>查询偏移量</p>
         :rtype: int
         """
         return self._Offset
@@ -15992,7 +15992,7 @@ class DescribeGrafanaInstancesRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""查询数量
+        r"""<p>查询数量</p>
         :rtype: int
         """
         return self._Limit
@@ -16003,7 +16003,7 @@ class DescribeGrafanaInstancesRequest(AbstractModel):
 
     @property
     def InstanceIds(self):
-        r"""Grafana 实例 ID 数组
+        r"""<p>Grafana 实例 ID 数组</p>
         :rtype: list of str
         """
         return self._InstanceIds
@@ -16014,7 +16014,7 @@ class DescribeGrafanaInstancesRequest(AbstractModel):
 
     @property
     def InstanceName(self):
-        r"""Grafana 实例名，支持前缀模糊搜索
+        r"""<p>Grafana 实例名，支持前缀模糊搜索</p>
         :rtype: str
         """
         return self._InstanceName
@@ -16025,7 +16025,7 @@ class DescribeGrafanaInstancesRequest(AbstractModel):
 
     @property
     def InstanceStatus(self):
-        r"""查询状态
+        r"""<p>查询状态</p>
         :rtype: list of int
         """
         return self._InstanceStatus
@@ -16036,7 +16036,7 @@ class DescribeGrafanaInstancesRequest(AbstractModel):
 
     @property
     def TagFilters(self):
-        r"""标签过滤数组
+        r"""<p>标签过滤数组</p>
         :rtype: list of PrometheusTag
         """
         return self._TagFilters
@@ -16075,11 +16075,11 @@ class DescribeGrafanaInstancesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceSet: 已废弃，请使用 Instances
+        :param _InstanceSet: <p>已废弃，请使用 Instances</p>
         :type InstanceSet: list of GrafanaInstanceInfo
-        :param _TotalCount: 符合查询条件的实例总数
+        :param _TotalCount: <p>符合查询条件的实例总数</p>
         :type TotalCount: int
-        :param _Instances: 实例列表
+        :param _Instances: <p>实例列表</p>
         :type Instances: list of GrafanaInstanceInfo
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -16091,7 +16091,7 @@ class DescribeGrafanaInstancesResponse(AbstractModel):
 
     @property
     def InstanceSet(self):
-        r"""已废弃，请使用 Instances
+        r"""<p>已废弃，请使用 Instances</p>
         :rtype: list of GrafanaInstanceInfo
         """
         return self._InstanceSet
@@ -16102,7 +16102,7 @@ class DescribeGrafanaInstancesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        r"""符合查询条件的实例总数
+        r"""<p>符合查询条件的实例总数</p>
         :rtype: int
         """
         return self._TotalCount
@@ -16113,7 +16113,7 @@ class DescribeGrafanaInstancesResponse(AbstractModel):
 
     @property
     def Instances(self):
-        r"""实例列表
+        r"""<p>实例列表</p>
         :rtype: list of GrafanaInstanceInfo
         """
         return self._Instances

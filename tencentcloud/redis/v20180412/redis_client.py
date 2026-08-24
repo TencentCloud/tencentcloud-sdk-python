@@ -1107,6 +1107,29 @@ class RedisClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeInstancePasswordPolicy(self, request):
+        r"""查询指定实例当前密码复杂度配置
+
+        :param request: Request instance for DescribeInstancePasswordPolicy.
+        :type request: :class:`tencentcloud.redis.v20180412.models.DescribeInstancePasswordPolicyRequest`
+        :rtype: :class:`tencentcloud.redis.v20180412.models.DescribeInstancePasswordPolicyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeInstancePasswordPolicy", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeInstancePasswordPolicyResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeInstanceSecurityGroup(self, request):
         r"""本接口（DescribeInstanceSecurityGroup）用于查询实例安全组信息。
 
