@@ -1776,6 +1776,29 @@ class CsipClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateHostImageListExportJob(self, request):
+        r"""创建本地镜像列表导出任务。导出字段包含镜像ID、镜像名、镜像版本、关联容器数、关联主机数、创建时间、所属账号昵称，以及扫描状态/漏洞/木马/敏感信息等风险字段。支持Filter过滤。导出通过异步任务实现，返回JobId后前端轮询查询导出任务状态。单账号模式下自动排除NickName字段。
+
+        :param request: Request instance for CreateHostImageListExportJob.
+        :type request: :class:`tencentcloud.csip.v20221121.models.CreateHostImageListExportJobRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.CreateHostImageListExportJobResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateHostImageListExportJob", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateHostImageListExportJobResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateHostVulExportJob(self, request):
         r"""创建主机列漏洞表导出任务
 
@@ -2342,6 +2365,98 @@ class CsipClient(AbstractClient):
             body = self.call("CreateRiskDetailExportJob", params, headers=headers)
             response = json.loads(body)
             model = models.CreateRiskDetailExportJobResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CreateSandboxACLRule(self, request):
+        r"""创建一条 ACL 用户访问控制规则。可选择引用若干条系统规则，亦可自定义规则，两者至少提供其一
+
+        :param request: Request instance for CreateSandboxACLRule.
+        :type request: :class:`tencentcloud.csip.v20221121.models.CreateSandboxACLRuleRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.CreateSandboxACLRuleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateSandboxACLRule", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateSandboxACLRuleResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CreateSandboxDLPRule(self, request):
+        r"""创建一条 DLP 用户规则。可引用若干系统规则（SystemRuleIDList），亦可自定义规则（UserRuleContent，名称 + 正则），两者至少提供其一；UserRuleInfo 为新增可选的结构化入参，与 UserRuleContent 同时传入时以 UserRuleInfo 为准
+
+        :param request: Request instance for CreateSandboxDLPRule.
+        :type request: :class:`tencentcloud.csip.v20221121.models.CreateSandboxDLPRuleRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.CreateSandboxDLPRuleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateSandboxDLPRule", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateSandboxDLPRuleResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CreateSandboxFileRule(self, request):
+        r"""创建命令沙箱文件访问规则
+
+        :param request: Request instance for CreateSandboxFileRule.
+        :type request: :class:`tencentcloud.csip.v20221121.models.CreateSandboxFileRuleRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.CreateSandboxFileRuleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateSandboxFileRule", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateSandboxFileRuleResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CreateSandboxLLMAuditRule(self, request):
+        r"""创建一条 LLM 审计用户规则。必须引用至少一条系统规则，不支持用户自定义规则内容
+
+        :param request: Request instance for CreateSandboxLLMAuditRule.
+        :type request: :class:`tencentcloud.csip.v20221121.models.CreateSandboxLLMAuditRuleRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.CreateSandboxLLMAuditRuleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateSandboxLLMAuditRule", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateSandboxLLMAuditRuleResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -3526,6 +3641,75 @@ class CsipClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DeleteSandboxACLRule(self, request):
+        r"""批量删除 ACL 用户规则。删除后规则不再返回到列表查询，并不再对流量生效。任一 ID 不存在或属于其他租户时整体返回错误
+
+        :param request: Request instance for DeleteSandboxACLRule.
+        :type request: :class:`tencentcloud.csip.v20221121.models.DeleteSandboxACLRuleRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.DeleteSandboxACLRuleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteSandboxACLRule", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteSandboxACLRuleResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteSandboxDLPRule(self, request):
+        r"""批量删除 DLP 用户规则。任一 ID 不存在或属于其他租户时整体返回错误
+
+        :param request: Request instance for DeleteSandboxDLPRule.
+        :type request: :class:`tencentcloud.csip.v20221121.models.DeleteSandboxDLPRuleRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.DeleteSandboxDLPRuleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteSandboxDLPRule", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteSandboxDLPRuleResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteSandboxFileRule(self, request):
+        r"""创建命令沙箱文件访问规则
+
+        :param request: Request instance for DeleteSandboxFileRule.
+        :type request: :class:`tencentcloud.csip.v20221121.models.DeleteSandboxFileRuleRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.DeleteSandboxFileRuleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteSandboxFileRule", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteSandboxFileRuleResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DeleteSandboxLLMAuditRule(self, request):
         r"""批量删除 LLM 审计用户规则。任一 ID 不存在或属于其他租户时整体返回错误
 
@@ -4196,6 +4380,29 @@ class CsipClient(AbstractClient):
             body = self.call("DescribeAccessKeyUserList", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeAccessKeyUserListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeAccessKeyWhiteList(self, request):
+        r"""访问密钥告警记录列表
+
+        :param request: Request instance for DescribeAccessKeyWhiteList.
+        :type request: :class:`tencentcloud.csip.v20221121.models.DescribeAccessKeyWhiteListRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.DescribeAccessKeyWhiteListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAccessKeyWhiteList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeAccessKeyWhiteListResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -5332,6 +5539,29 @@ class CsipClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeCSCPayInfo(self, request):
+        r"""查询当前账号的合并版计费信息，包括订单状态、付费模式以及配额等详细信息。
+
+        :param request: Request instance for DescribeCSCPayInfo.
+        :type request: :class:`tencentcloud.csip.v20221121.models.DescribeCSCPayInfoRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.DescribeCSCPayInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeCSCPayInfo", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeCSCPayInfoResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeCSIPLicenseBindSchedule(self, request):
         r"""查询ModifyCSIPLicenseBinds返回的异步绑定任务进度。
 
@@ -5415,6 +5645,29 @@ class CsipClient(AbstractClient):
             body = self.call("DescribeCSIPRiskStatistics", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeCSIPRiskStatisticsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeCSPMPayInfo(self, request):
+        r"""获取已购CSPM订单信息
+
+        :param request: Request instance for DescribeCSPMPayInfo.
+        :type request: :class:`tencentcloud.csip.v20221121.models.DescribeCSPMPayInfoRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.DescribeCSPMPayInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeCSPMPayInfo", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeCSPMPayInfoResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -11818,6 +12071,52 @@ class CsipClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeSandboxDLPAlertList(self, request):
+        r"""分页查询 DLP 数据泄露告警日志列表。支持按 Filter.Name=ID 精确过滤单条告警用于详情页场景
+
+        :param request: Request instance for DescribeSandboxDLPAlertList.
+        :type request: :class:`tencentcloud.csip.v20221121.models.DescribeSandboxDLPAlertListRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.DescribeSandboxDLPAlertListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeSandboxDLPAlertList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeSandboxDLPAlertListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeSandboxDLPRuleList(self, request):
+        r"""查询当前租户的 DLP 用户规则列表。传入 Filter.Name=RuleID 可精确查询单条规则（用于详情页面场景）
+
+        :param request: Request instance for DescribeSandboxDLPRuleList.
+        :type request: :class:`tencentcloud.csip.v20221121.models.DescribeSandboxDLPRuleListRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.DescribeSandboxDLPRuleListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeSandboxDLPRuleList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeSandboxDLPRuleListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeSandboxDLPSystemRuleList(self, request):
         r"""查询流量沙箱数据泄露防护（DLP）系统规则列表，系统规则由 CSIP 平台内置，可被用户规则引用
 
@@ -11855,6 +12154,75 @@ class CsipClient(AbstractClient):
             body = self.call("DescribeSandboxFileRuleList", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeSandboxFileRuleListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeSandboxLLMAuditAlertList(self, request):
+        r"""分页查询 LLM 审计告警日志列表。支持按 Filter.Name=ID 精确过滤单条告警用于详情页场景
+
+        :param request: Request instance for DescribeSandboxLLMAuditAlertList.
+        :type request: :class:`tencentcloud.csip.v20221121.models.DescribeSandboxLLMAuditAlertListRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.DescribeSandboxLLMAuditAlertListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeSandboxLLMAuditAlertList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeSandboxLLMAuditAlertListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeSandboxLLMAuditRuleList(self, request):
+        r"""查询当前租户的 LLM 审计用户规则列表。LLM 审计规则不支持用户自定义内容，只能引用系统规则组合。传入 Filter.Name=RuleID 可精确查询单条规则（用于详情页面场景）
+
+        :param request: Request instance for DescribeSandboxLLMAuditRuleList.
+        :type request: :class:`tencentcloud.csip.v20221121.models.DescribeSandboxLLMAuditRuleListRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.DescribeSandboxLLMAuditRuleListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeSandboxLLMAuditRuleList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeSandboxLLMAuditRuleListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeSandboxLLMAuditSystemRuleList(self, request):
+        r"""查询 LLM 审计系统规则列表，系统规则由 CSIP 平台内置（来源于 LLM 审计系统规则库），按 LLM 推理防护 / ToolCall 防护拆分为两个扁平规则数组返回，可被用户规则引用
+
+        :param request: Request instance for DescribeSandboxLLMAuditSystemRuleList.
+        :type request: :class:`tencentcloud.csip.v20221121.models.DescribeSandboxLLMAuditSystemRuleListRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.DescribeSandboxLLMAuditSystemRuleListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeSandboxLLMAuditSystemRuleList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeSandboxLLMAuditSystemRuleListResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -12209,6 +12577,29 @@ class CsipClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeSourceIPDetail(self, request):
+        r"""获取用户访问密钥资产列表（源IP视角）
+
+        :param request: Request instance for DescribeSourceIPDetail.
+        :type request: :class:`tencentcloud.csip.v20221121.models.DescribeSourceIPDetailRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.DescribeSourceIPDetailResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeSourceIPDetail", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeSourceIPDetailResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeSubUserInfo(self, request):
         r"""查询集团的子账号列表
 
@@ -12462,6 +12853,29 @@ class CsipClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeUserAKInfoList(self, request):
+        r"""获取账号AK信息
+
+        :param request: Request instance for DescribeUserAKInfoList.
+        :type request: :class:`tencentcloud.csip.v20221121.models.DescribeUserAKInfoListRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.DescribeUserAKInfoListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeUserAKInfoList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeUserAKInfoListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeUserCSPMInfoList(self, request):
         r"""获取账号CSPM信息
 
@@ -12637,6 +13051,29 @@ class CsipClient(AbstractClient):
             body = self.call("DescribeVdbAndPocInfo", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeVdbAndPocInfoResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeVoucherEligibility(self, request):
+        r"""检查当前用户是否有资格领取指定活动的代金券。
+
+        :param request: Request instance for DescribeVoucherEligibility.
+        :type request: :class:`tencentcloud.csip.v20221121.models.DescribeVoucherEligibilityRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.DescribeVoucherEligibilityResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeVoucherEligibility", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeVoucherEligibilityResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -13300,6 +13737,52 @@ class CsipClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def InstallKeySandboxSkill(self, request):
+        r"""在指定的机器实例上安装密钥沙箱SKILL。支持批量操作，一次可传入多个实例ID。安装后，目标机器上的AI Agent即可通过密钥沙箱代理访问凭据，无需接触明文密钥。已安装的实例重复调用不会报错（幂等），直接视为成功。
+
+        :param request: Request instance for InstallKeySandboxSkill.
+        :type request: :class:`tencentcloud.csip.v20221121.models.InstallKeySandboxSkillRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.InstallKeySandboxSkillResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("InstallKeySandboxSkill", params, headers=headers)
+            response = json.loads(body)
+            model = models.InstallKeySandboxSkillResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def InstallSandboxPlugin(self, request):
+        r"""触发将流量沙箱插件安装到指定范围内的 AI Agent 资产。通过 BelongAssetType 区分主机/容器维度，通过 EffectScope 指定安装目标（INCLUDE=仅安装到指定资产，EXCLUDE=全部资产减去指定资产）。接口仅触发下发动作，不等待完成
+
+        :param request: Request instance for InstallSandboxPlugin.
+        :type request: :class:`tencentcloud.csip.v20221121.models.InstallSandboxPluginRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.InstallSandboxPluginResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("InstallSandboxPlugin", params, headers=headers)
+            response = json.loads(body)
+            model = models.InstallSandboxPluginResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyAILinkSetting(self, request):
         r"""修改AI-Link智链引擎配置
 
@@ -13822,6 +14305,29 @@ class CsipClient(AbstractClient):
             body = self.call("ModifyCSIPRaspLicenseUnBinds", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyCSIPRaspLicenseUnBindsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyClusterDefendStatus(self, request):
+        r"""修改集群防护状态
+
+        :param request: Request instance for ModifyClusterDefendStatus.
+        :type request: :class:`tencentcloud.csip.v20221121.models.ModifyClusterDefendStatusRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.ModifyClusterDefendStatusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyClusterDefendStatus", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyClusterDefendStatusResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -15588,6 +16094,190 @@ class CsipClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifySandboxACLRule(self, request):
+        r"""修改已有的 ACL 用户规则。未传字段保持原值，支持部分字段更新
+
+        :param request: Request instance for ModifySandboxACLRule.
+        :type request: :class:`tencentcloud.csip.v20221121.models.ModifySandboxACLRuleRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.ModifySandboxACLRuleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifySandboxACLRule", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifySandboxACLRuleResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifySandboxACLRuleStatus(self, request):
+        r"""批量切换 ACL 用户规则的启禁用状态。任一规则不存在、属于其他租户或已删除时整体返回错误
+
+        :param request: Request instance for ModifySandboxACLRuleStatus.
+        :type request: :class:`tencentcloud.csip.v20221121.models.ModifySandboxACLRuleStatusRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.ModifySandboxACLRuleStatusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifySandboxACLRuleStatus", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifySandboxACLRuleStatusResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifySandboxAlertStatus(self, request):
+        r"""批量更新流量沙箱告警（覆盖 ACL / DLP / LLM 审计三类）。通过 AlertType + BelongAssetType 定位告警来源。Status 支持 HANDLED / IGNORE 修改状态，以及 DELETE 删除。任一告警 ID 不存在或属于其他租户时整体返回错误。注：加白（PASS）不经本接口，由 Create/Modify***Rule 通过 AlertID 回写触发
+
+        :param request: Request instance for ModifySandboxAlertStatus.
+        :type request: :class:`tencentcloud.csip.v20221121.models.ModifySandboxAlertStatusRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.ModifySandboxAlertStatusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifySandboxAlertStatus", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifySandboxAlertStatusResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifySandboxDLPRule(self, request):
+        r"""修改已存在的 DLP 用户规则。未传字段保持原值，支持部分字段更新；不支持修改 BelongAssetType
+
+        :param request: Request instance for ModifySandboxDLPRule.
+        :type request: :class:`tencentcloud.csip.v20221121.models.ModifySandboxDLPRuleRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.ModifySandboxDLPRuleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifySandboxDLPRule", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifySandboxDLPRuleResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifySandboxDLPRuleStatus(self, request):
+        r"""批量切换 DLP 用户规则的启禁用状态。任一规则不存在、属于其他租户或已删除时整体返回错误
+
+        :param request: Request instance for ModifySandboxDLPRuleStatus.
+        :type request: :class:`tencentcloud.csip.v20221121.models.ModifySandboxDLPRuleStatusRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.ModifySandboxDLPRuleStatusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifySandboxDLPRuleStatus", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifySandboxDLPRuleStatusResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifySandboxFileRule(self, request):
+        r"""修改命令沙箱文件访问规则
+
+        :param request: Request instance for ModifySandboxFileRule.
+        :type request: :class:`tencentcloud.csip.v20221121.models.ModifySandboxFileRuleRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.ModifySandboxFileRuleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifySandboxFileRule", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifySandboxFileRuleResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifySandboxFileRuleStatus(self, request):
+        r"""批量启用或禁用命令沙箱文件访问规则
+
+        :param request: Request instance for ModifySandboxFileRuleStatus.
+        :type request: :class:`tencentcloud.csip.v20221121.models.ModifySandboxFileRuleStatusRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.ModifySandboxFileRuleStatusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifySandboxFileRuleStatus", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifySandboxFileRuleStatusResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifySandboxLLMAuditRule(self, request):
+        r"""修改已有的 LLM 审计用户规则。未传字段保持原值，支持部分字段更新
+
+        :param request: Request instance for ModifySandboxLLMAuditRule.
+        :type request: :class:`tencentcloud.csip.v20221121.models.ModifySandboxLLMAuditRuleRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.ModifySandboxLLMAuditRuleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifySandboxLLMAuditRule", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifySandboxLLMAuditRuleResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifySandboxLLMAuditRuleStatus(self, request):
         r"""批量切换 LLM 审计用户规则的启禁用状态。任一规则不存在、属于其他租户或已删除时整体返回错误
 
@@ -15625,6 +16315,29 @@ class CsipClient(AbstractClient):
             body = self.call("ModifySecurityScoreRule", params, headers=headers)
             response = json.loads(body)
             model = models.ModifySecurityScoreRuleResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyShareUserAK(self, request):
+        r"""编辑ak监测账号
+
+        :param request: Request instance for ModifyShareUserAK.
+        :type request: :class:`tencentcloud.csip.v20221121.models.ModifyShareUserAKRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.ModifyShareUserAKResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyShareUserAK", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyShareUserAKResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -16499,6 +17212,29 @@ class CsipClient(AbstractClient):
             body = self.call("UninstallClusterAgent", params, headers=headers)
             response = json.loads(body)
             model = models.UninstallClusterAgentResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def UninstallKeySandboxSkill(self, request):
+        r"""从指定的机器实例上卸载密钥沙箱SKILL。支持批量操作，一次可传入多个实例ID。卸载后，目标机器上的AI Agent将无法再通过密钥沙箱代理访问凭据。未安装的实例重复调用不会报错（幂等），直接视为成功。
+
+        :param request: Request instance for UninstallKeySandboxSkill.
+        :type request: :class:`tencentcloud.csip.v20221121.models.UninstallKeySandboxSkillRequest`
+        :rtype: :class:`tencentcloud.csip.v20221121.models.UninstallKeySandboxSkillResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UninstallKeySandboxSkill", params, headers=headers)
+            response = json.loads(body)
+            model = models.UninstallKeySandboxSkillResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

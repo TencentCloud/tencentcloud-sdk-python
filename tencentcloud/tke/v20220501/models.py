@@ -8467,7 +8467,7 @@ class UpdateNativeNodePoolParam(AbstractModel):
         :type UpgradeSettings: :class:`tencentcloud.tke.v20220501.models.MachineUpgradeSettings`
         :param _AutoRepair: <p>是否开启自愈能力</p>
         :type AutoRepair: bool
-        :param _InstanceChargeType: <p>计费类型</p><p>枚举值：</p><ul><li>POSTPAID_BY_HOUR： 目标计费类型为按量计费</li><li>PREPAID： 目标计费类型为包年包月计费</li></ul>
+        :param _InstanceChargeType: <p>计费类型</p><p>枚举值：</p><ul><li>POSTPAID_BY_HOUR： 目标计费类型为按量计费</li><li>PREPAID： 目标计费类型为包年包月计费</li><li>UNDERWRITE： 目标计费类型为包销计费</li></ul>
         :type InstanceChargeType: str
         :param _InstanceChargePrepaid: <p>包年包月机型计费配置</p>
         :type InstanceChargePrepaid: :class:`tencentcloud.tke.v20220501.models.InstanceChargePrepaid`
@@ -8591,7 +8591,7 @@ class UpdateNativeNodePoolParam(AbstractModel):
 
     @property
     def InstanceChargeType(self):
-        r"""<p>计费类型</p><p>枚举值：</p><ul><li>POSTPAID_BY_HOUR： 目标计费类型为按量计费</li><li>PREPAID： 目标计费类型为包年包月计费</li></ul>
+        r"""<p>计费类型</p><p>枚举值：</p><ul><li>POSTPAID_BY_HOUR： 目标计费类型为按量计费</li><li>PREPAID： 目标计费类型为包年包月计费</li><li>UNDERWRITE： 目标计费类型为包销计费</li></ul>
         :rtype: str
         """
         return self._InstanceChargeType

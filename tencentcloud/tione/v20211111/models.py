@@ -24738,24 +24738,24 @@ class ResourceGroup(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ResourceGroupId: 资源组id
+        :param _ResourceGroupId: <p>资源组id</p>
         :type ResourceGroupId: str
-        :param _ResourceGroupName: 资源组名称
+        :param _ResourceGroupName: <p>资源组名称</p>
         :type ResourceGroupName: str
-        :param _FreeInstance: 可用节点个数(运行中的节点)
+        :param _FreeInstance: <p>可用节点个数(运行中的节点)</p>
         :type FreeInstance: int
-        :param _TotalInstance: 总节点个数(所有节点)
+        :param _TotalInstance: <p>总节点个数(所有节点)</p>
         :type TotalInstance: int
-        :param _UsedResource: 资源组已用的资源
+        :param _UsedResource: <p>资源组已用的资源</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type UsedResource: :class:`tencentcloud.tione.v20211111.models.GroupResource`
-        :param _TotalResource: 资源组总资源
+        :param _TotalResource: <p>资源组总资源</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TotalResource: :class:`tencentcloud.tione.v20211111.models.GroupResource`
-        :param _InstanceSet: 节点信息
+        :param _InstanceSet: <p>节点信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceSet: list of Instance
-        :param _TagSet: 标签列表
+        :param _TagSet: <p>标签列表</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TagSet: list of Tag
         """
@@ -24770,7 +24770,7 @@ class ResourceGroup(AbstractModel):
 
     @property
     def ResourceGroupId(self):
-        r"""资源组id
+        r"""<p>资源组id</p>
         :rtype: str
         """
         return self._ResourceGroupId
@@ -24781,7 +24781,7 @@ class ResourceGroup(AbstractModel):
 
     @property
     def ResourceGroupName(self):
-        r"""资源组名称
+        r"""<p>资源组名称</p>
         :rtype: str
         """
         return self._ResourceGroupName
@@ -24792,7 +24792,7 @@ class ResourceGroup(AbstractModel):
 
     @property
     def FreeInstance(self):
-        r"""可用节点个数(运行中的节点)
+        r"""<p>可用节点个数(运行中的节点)</p>
         :rtype: int
         """
         return self._FreeInstance
@@ -24803,7 +24803,7 @@ class ResourceGroup(AbstractModel):
 
     @property
     def TotalInstance(self):
-        r"""总节点个数(所有节点)
+        r"""<p>总节点个数(所有节点)</p>
         :rtype: int
         """
         return self._TotalInstance
@@ -24814,7 +24814,7 @@ class ResourceGroup(AbstractModel):
 
     @property
     def UsedResource(self):
-        r"""资源组已用的资源
+        r"""<p>资源组已用的资源</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tione.v20211111.models.GroupResource`
         """
@@ -24826,7 +24826,7 @@ class ResourceGroup(AbstractModel):
 
     @property
     def TotalResource(self):
-        r"""资源组总资源
+        r"""<p>资源组总资源</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.tione.v20211111.models.GroupResource`
         """
@@ -24838,7 +24838,7 @@ class ResourceGroup(AbstractModel):
 
     @property
     def InstanceSet(self):
-        r"""节点信息
+        r"""<p>节点信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Instance
         """
@@ -24850,7 +24850,7 @@ class ResourceGroup(AbstractModel):
 
     @property
     def TagSet(self):
-        r"""标签列表
+        r"""<p>标签列表</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Tag
         """

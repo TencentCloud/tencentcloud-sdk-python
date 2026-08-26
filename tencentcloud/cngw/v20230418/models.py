@@ -2301,6 +2301,10 @@ class AIGWLogConfig(AbstractModel):
         :type RequestLogPayloadMode: str
         :param _ResponseLogPayloadMode: <p>上游原始 payload access log 输出模式</p><p>枚举值：</p><ul><li>raw： access log 中 body 记录客户端原始上游响应</li><li>processed： access log 中 body 记录 AI 网关协议适配、改写、归一化后的 OpenAI-compatible 内容</li></ul>
         :type ResponseLogPayloadMode: str
+        :param _RequestLogPayloadTruncationPolicy: <p>请求 Body 大小裁剪策略</p><p>枚举值：</p><ul><li>Bounded： 裁剪大小</li><li>UnBounded： 不裁剪大小</li></ul>
+        :type RequestLogPayloadTruncationPolicy: str
+        :param _ResponseLogPayloadTruncationPolicy: <p>响应 Body 大小裁剪策略</p><p>枚举值：</p><ul><li>Bounded： 裁剪大小</li><li>UnBounded： 不裁剪大小</li></ul>
+        :type ResponseLogPayloadTruncationPolicy: str
         """
         self._EnableRequestLogPayloads = None
         self._EnableResponseLogPayloads = None
@@ -2308,6 +2312,8 @@ class AIGWLogConfig(AbstractModel):
         self._ResponseLogPayloadMaxSize = None
         self._RequestLogPayloadMode = None
         self._ResponseLogPayloadMode = None
+        self._RequestLogPayloadTruncationPolicy = None
+        self._ResponseLogPayloadTruncationPolicy = None
 
     @property
     def EnableRequestLogPayloads(self):
@@ -2375,6 +2381,28 @@ class AIGWLogConfig(AbstractModel):
     def ResponseLogPayloadMode(self, ResponseLogPayloadMode):
         self._ResponseLogPayloadMode = ResponseLogPayloadMode
 
+    @property
+    def RequestLogPayloadTruncationPolicy(self):
+        r"""<p>请求 Body 大小裁剪策略</p><p>枚举值：</p><ul><li>Bounded： 裁剪大小</li><li>UnBounded： 不裁剪大小</li></ul>
+        :rtype: str
+        """
+        return self._RequestLogPayloadTruncationPolicy
+
+    @RequestLogPayloadTruncationPolicy.setter
+    def RequestLogPayloadTruncationPolicy(self, RequestLogPayloadTruncationPolicy):
+        self._RequestLogPayloadTruncationPolicy = RequestLogPayloadTruncationPolicy
+
+    @property
+    def ResponseLogPayloadTruncationPolicy(self):
+        r"""<p>响应 Body 大小裁剪策略</p><p>枚举值：</p><ul><li>Bounded： 裁剪大小</li><li>UnBounded： 不裁剪大小</li></ul>
+        :rtype: str
+        """
+        return self._ResponseLogPayloadTruncationPolicy
+
+    @ResponseLogPayloadTruncationPolicy.setter
+    def ResponseLogPayloadTruncationPolicy(self, ResponseLogPayloadTruncationPolicy):
+        self._ResponseLogPayloadTruncationPolicy = ResponseLogPayloadTruncationPolicy
+
 
     def _deserialize(self, params):
         self._EnableRequestLogPayloads = params.get("EnableRequestLogPayloads")
@@ -2383,6 +2411,8 @@ class AIGWLogConfig(AbstractModel):
         self._ResponseLogPayloadMaxSize = params.get("ResponseLogPayloadMaxSize")
         self._RequestLogPayloadMode = params.get("RequestLogPayloadMode")
         self._ResponseLogPayloadMode = params.get("ResponseLogPayloadMode")
+        self._RequestLogPayloadTruncationPolicy = params.get("RequestLogPayloadTruncationPolicy")
+        self._ResponseLogPayloadTruncationPolicy = params.get("ResponseLogPayloadTruncationPolicy")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

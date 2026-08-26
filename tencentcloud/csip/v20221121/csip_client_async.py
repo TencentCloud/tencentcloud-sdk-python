@@ -1395,6 +1395,24 @@ class CsipClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateHostImageListExportJob(
+            self,
+            request: models.CreateHostImageListExportJobRequest,
+            opts: Dict = None,
+    ) -> models.CreateHostImageListExportJobResponse:
+        """
+        创建本地镜像列表导出任务。导出字段包含镜像ID、镜像名、镜像版本、关联容器数、关联主机数、创建时间、所属账号昵称，以及扫描状态/漏洞/木马/敏感信息等风险字段。支持Filter过滤。导出通过异步任务实现，返回JobId后前端轮询查询导出任务状态。单账号模式下自动排除NickName字段。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateHostImageListExportJob"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateHostImageListExportJobResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateHostVulExportJob(
             self,
             request: models.CreateHostVulExportJobRequest,
@@ -1840,6 +1858,78 @@ class CsipClient(AbstractClient):
         kwargs["action"] = "CreateRiskDetailExportJob"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.CreateRiskDetailExportJobResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def CreateSandboxACLRule(
+            self,
+            request: models.CreateSandboxACLRuleRequest,
+            opts: Dict = None,
+    ) -> models.CreateSandboxACLRuleResponse:
+        """
+        创建一条 ACL 用户访问控制规则。可选择引用若干条系统规则，亦可自定义规则，两者至少提供其一
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateSandboxACLRule"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateSandboxACLRuleResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def CreateSandboxDLPRule(
+            self,
+            request: models.CreateSandboxDLPRuleRequest,
+            opts: Dict = None,
+    ) -> models.CreateSandboxDLPRuleResponse:
+        """
+        创建一条 DLP 用户规则。可引用若干系统规则（SystemRuleIDList），亦可自定义规则（UserRuleContent，名称 + 正则），两者至少提供其一；UserRuleInfo 为新增可选的结构化入参，与 UserRuleContent 同时传入时以 UserRuleInfo 为准
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateSandboxDLPRule"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateSandboxDLPRuleResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def CreateSandboxFileRule(
+            self,
+            request: models.CreateSandboxFileRuleRequest,
+            opts: Dict = None,
+    ) -> models.CreateSandboxFileRuleResponse:
+        """
+        创建命令沙箱文件访问规则
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateSandboxFileRule"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateSandboxFileRuleResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def CreateSandboxLLMAuditRule(
+            self,
+            request: models.CreateSandboxLLMAuditRuleRequest,
+            opts: Dict = None,
+    ) -> models.CreateSandboxLLMAuditRuleResponse:
+        """
+        创建一条 LLM 审计用户规则。必须引用至少一条系统规则，不支持用户自定义规则内容
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateSandboxLLMAuditRule"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateSandboxLLMAuditRuleResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -2765,6 +2855,60 @@ class CsipClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DeleteSandboxACLRule(
+            self,
+            request: models.DeleteSandboxACLRuleRequest,
+            opts: Dict = None,
+    ) -> models.DeleteSandboxACLRuleResponse:
+        """
+        批量删除 ACL 用户规则。删除后规则不再返回到列表查询，并不再对流量生效。任一 ID 不存在或属于其他租户时整体返回错误
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteSandboxACLRule"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteSandboxACLRuleResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteSandboxDLPRule(
+            self,
+            request: models.DeleteSandboxDLPRuleRequest,
+            opts: Dict = None,
+    ) -> models.DeleteSandboxDLPRuleResponse:
+        """
+        批量删除 DLP 用户规则。任一 ID 不存在或属于其他租户时整体返回错误
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteSandboxDLPRule"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteSandboxDLPRuleResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteSandboxFileRule(
+            self,
+            request: models.DeleteSandboxFileRuleRequest,
+            opts: Dict = None,
+    ) -> models.DeleteSandboxFileRuleResponse:
+        """
+        创建命令沙箱文件访问规则
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteSandboxFileRule"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteSandboxFileRuleResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DeleteSandboxLLMAuditRule(
             self,
             request: models.DeleteSandboxLLMAuditRuleRequest,
@@ -3294,6 +3438,24 @@ class CsipClient(AbstractClient):
         kwargs["action"] = "DescribeAccessKeyUserList"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeAccessKeyUserListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeAccessKeyWhiteList(
+            self,
+            request: models.DescribeAccessKeyWhiteListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeAccessKeyWhiteListResponse:
+        """
+        访问密钥告警记录列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeAccessKeyWhiteList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeAccessKeyWhiteListResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -4181,6 +4343,24 @@ class CsipClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeCSCPayInfo(
+            self,
+            request: models.DescribeCSCPayInfoRequest,
+            opts: Dict = None,
+    ) -> models.DescribeCSCPayInfoResponse:
+        """
+        查询当前账号的合并版计费信息，包括订单状态、付费模式以及配额等详细信息。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeCSCPayInfo"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeCSCPayInfoResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeCSIPLicenseBindSchedule(
             self,
             request: models.DescribeCSIPLicenseBindScheduleRequest,
@@ -4248,6 +4428,24 @@ class CsipClient(AbstractClient):
         kwargs["action"] = "DescribeCSIPRiskStatistics"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeCSIPRiskStatisticsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeCSPMPayInfo(
+            self,
+            request: models.DescribeCSPMPayInfoRequest,
+            opts: Dict = None,
+    ) -> models.DescribeCSPMPayInfoResponse:
+        """
+        获取已购CSPM订单信息
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeCSPMPayInfo"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeCSPMPayInfoResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -9257,6 +9455,42 @@ class CsipClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeSandboxDLPAlertList(
+            self,
+            request: models.DescribeSandboxDLPAlertListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeSandboxDLPAlertListResponse:
+        """
+        分页查询 DLP 数据泄露告警日志列表。支持按 Filter.Name=ID 精确过滤单条告警用于详情页场景
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeSandboxDLPAlertList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeSandboxDLPAlertListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeSandboxDLPRuleList(
+            self,
+            request: models.DescribeSandboxDLPRuleListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeSandboxDLPRuleListResponse:
+        """
+        查询当前租户的 DLP 用户规则列表。传入 Filter.Name=RuleID 可精确查询单条规则（用于详情页面场景）
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeSandboxDLPRuleList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeSandboxDLPRuleListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeSandboxDLPSystemRuleList(
             self,
             request: models.DescribeSandboxDLPSystemRuleListRequest,
@@ -9288,6 +9522,60 @@ class CsipClient(AbstractClient):
         kwargs["action"] = "DescribeSandboxFileRuleList"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeSandboxFileRuleListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeSandboxLLMAuditAlertList(
+            self,
+            request: models.DescribeSandboxLLMAuditAlertListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeSandboxLLMAuditAlertListResponse:
+        """
+        分页查询 LLM 审计告警日志列表。支持按 Filter.Name=ID 精确过滤单条告警用于详情页场景
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeSandboxLLMAuditAlertList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeSandboxLLMAuditAlertListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeSandboxLLMAuditRuleList(
+            self,
+            request: models.DescribeSandboxLLMAuditRuleListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeSandboxLLMAuditRuleListResponse:
+        """
+        查询当前租户的 LLM 审计用户规则列表。LLM 审计规则不支持用户自定义内容，只能引用系统规则组合。传入 Filter.Name=RuleID 可精确查询单条规则（用于详情页面场景）
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeSandboxLLMAuditRuleList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeSandboxLLMAuditRuleListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeSandboxLLMAuditSystemRuleList(
+            self,
+            request: models.DescribeSandboxLLMAuditSystemRuleListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeSandboxLLMAuditSystemRuleListResponse:
+        """
+        查询 LLM 审计系统规则列表，系统规则由 CSIP 平台内置（来源于 LLM 审计系统规则库），按 LLM 推理防护 / ToolCall 防护拆分为两个扁平规则数组返回，可被用户规则引用
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeSandboxLLMAuditSystemRuleList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeSandboxLLMAuditSystemRuleListResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -9563,6 +9851,24 @@ class CsipClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeSourceIPDetail(
+            self,
+            request: models.DescribeSourceIPDetailRequest,
+            opts: Dict = None,
+    ) -> models.DescribeSourceIPDetailResponse:
+        """
+        获取用户访问密钥资产列表（源IP视角）
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeSourceIPDetail"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeSourceIPDetailResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeSubUserInfo(
             self,
             request: models.DescribeSubUserInfoRequest,
@@ -9761,6 +10067,24 @@ class CsipClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeUserAKInfoList(
+            self,
+            request: models.DescribeUserAKInfoListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeUserAKInfoListResponse:
+        """
+        获取账号AK信息
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeUserAKInfoList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeUserAKInfoListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeUserCSPMInfoList(
             self,
             request: models.DescribeUserCSPMInfoListRequest,
@@ -9900,6 +10224,24 @@ class CsipClient(AbstractClient):
         kwargs["action"] = "DescribeVdbAndPocInfo"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeVdbAndPocInfoResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeVoucherEligibility(
+            self,
+            request: models.DescribeVoucherEligibilityRequest,
+            opts: Dict = None,
+    ) -> models.DescribeVoucherEligibilityResponse:
+        """
+        检查当前用户是否有资格领取指定活动的代金券。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeVoucherEligibility"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeVoucherEligibilityResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -10419,6 +10761,42 @@ class CsipClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def InstallKeySandboxSkill(
+            self,
+            request: models.InstallKeySandboxSkillRequest,
+            opts: Dict = None,
+    ) -> models.InstallKeySandboxSkillResponse:
+        """
+        在指定的机器实例上安装密钥沙箱SKILL。支持批量操作，一次可传入多个实例ID。安装后，目标机器上的AI Agent即可通过密钥沙箱代理访问凭据，无需接触明文密钥。已安装的实例重复调用不会报错（幂等），直接视为成功。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "InstallKeySandboxSkill"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.InstallKeySandboxSkillResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def InstallSandboxPlugin(
+            self,
+            request: models.InstallSandboxPluginRequest,
+            opts: Dict = None,
+    ) -> models.InstallSandboxPluginResponse:
+        """
+        触发将流量沙箱插件安装到指定范围内的 AI Agent 资产。通过 BelongAssetType 区分主机/容器维度，通过 EffectScope 指定安装目标（INCLUDE=仅安装到指定资产，EXCLUDE=全部资产减去指定资产）。接口仅触发下发动作，不等待完成
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "InstallSandboxPlugin"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.InstallSandboxPluginResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ModifyAILinkSetting(
             self,
             request: models.ModifyAILinkSettingRequest,
@@ -10830,6 +11208,24 @@ class CsipClient(AbstractClient):
         kwargs["action"] = "ModifyCSIPRaspLicenseUnBinds"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ModifyCSIPRaspLicenseUnBindsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyClusterDefendStatus(
+            self,
+            request: models.ModifyClusterDefendStatusRequest,
+            opts: Dict = None,
+    ) -> models.ModifyClusterDefendStatusResponse:
+        """
+        修改集群防护状态
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyClusterDefendStatus"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyClusterDefendStatusResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -12212,6 +12608,150 @@ class CsipClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def ModifySandboxACLRule(
+            self,
+            request: models.ModifySandboxACLRuleRequest,
+            opts: Dict = None,
+    ) -> models.ModifySandboxACLRuleResponse:
+        """
+        修改已有的 ACL 用户规则。未传字段保持原值，支持部分字段更新
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifySandboxACLRule"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifySandboxACLRuleResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifySandboxACLRuleStatus(
+            self,
+            request: models.ModifySandboxACLRuleStatusRequest,
+            opts: Dict = None,
+    ) -> models.ModifySandboxACLRuleStatusResponse:
+        """
+        批量切换 ACL 用户规则的启禁用状态。任一规则不存在、属于其他租户或已删除时整体返回错误
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifySandboxACLRuleStatus"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifySandboxACLRuleStatusResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifySandboxAlertStatus(
+            self,
+            request: models.ModifySandboxAlertStatusRequest,
+            opts: Dict = None,
+    ) -> models.ModifySandboxAlertStatusResponse:
+        """
+        批量更新流量沙箱告警（覆盖 ACL / DLP / LLM 审计三类）。通过 AlertType + BelongAssetType 定位告警来源。Status 支持 HANDLED / IGNORE 修改状态，以及 DELETE 删除。任一告警 ID 不存在或属于其他租户时整体返回错误。注：加白（PASS）不经本接口，由 Create/Modify***Rule 通过 AlertID 回写触发
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifySandboxAlertStatus"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifySandboxAlertStatusResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifySandboxDLPRule(
+            self,
+            request: models.ModifySandboxDLPRuleRequest,
+            opts: Dict = None,
+    ) -> models.ModifySandboxDLPRuleResponse:
+        """
+        修改已存在的 DLP 用户规则。未传字段保持原值，支持部分字段更新；不支持修改 BelongAssetType
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifySandboxDLPRule"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifySandboxDLPRuleResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifySandboxDLPRuleStatus(
+            self,
+            request: models.ModifySandboxDLPRuleStatusRequest,
+            opts: Dict = None,
+    ) -> models.ModifySandboxDLPRuleStatusResponse:
+        """
+        批量切换 DLP 用户规则的启禁用状态。任一规则不存在、属于其他租户或已删除时整体返回错误
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifySandboxDLPRuleStatus"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifySandboxDLPRuleStatusResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifySandboxFileRule(
+            self,
+            request: models.ModifySandboxFileRuleRequest,
+            opts: Dict = None,
+    ) -> models.ModifySandboxFileRuleResponse:
+        """
+        修改命令沙箱文件访问规则
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifySandboxFileRule"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifySandboxFileRuleResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifySandboxFileRuleStatus(
+            self,
+            request: models.ModifySandboxFileRuleStatusRequest,
+            opts: Dict = None,
+    ) -> models.ModifySandboxFileRuleStatusResponse:
+        """
+        批量启用或禁用命令沙箱文件访问规则
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifySandboxFileRuleStatus"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifySandboxFileRuleStatusResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifySandboxLLMAuditRule(
+            self,
+            request: models.ModifySandboxLLMAuditRuleRequest,
+            opts: Dict = None,
+    ) -> models.ModifySandboxLLMAuditRuleResponse:
+        """
+        修改已有的 LLM 审计用户规则。未传字段保持原值，支持部分字段更新
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifySandboxLLMAuditRule"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifySandboxLLMAuditRuleResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ModifySandboxLLMAuditRuleStatus(
             self,
             request: models.ModifySandboxLLMAuditRuleStatusRequest,
@@ -12243,6 +12783,24 @@ class CsipClient(AbstractClient):
         kwargs["action"] = "ModifySecurityScoreRule"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ModifySecurityScoreRuleResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyShareUserAK(
+            self,
+            request: models.ModifyShareUserAKRequest,
+            opts: Dict = None,
+    ) -> models.ModifyShareUserAKResponse:
+        """
+        编辑ak监测账号
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyShareUserAK"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyShareUserAKResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -12927,6 +13485,24 @@ class CsipClient(AbstractClient):
         kwargs["action"] = "UninstallClusterAgent"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.UninstallClusterAgentResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def UninstallKeySandboxSkill(
+            self,
+            request: models.UninstallKeySandboxSkillRequest,
+            opts: Dict = None,
+    ) -> models.UninstallKeySandboxSkillResponse:
+        """
+        从指定的机器实例上卸载密钥沙箱SKILL。支持批量操作，一次可传入多个实例ID。卸载后，目标机器上的AI Agent将无法再通过密钥沙箱代理访问凭据。未安装的实例重复调用不会报错（幂等），直接视为成功。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "UninstallKeySandboxSkill"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.UninstallKeySandboxSkillResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

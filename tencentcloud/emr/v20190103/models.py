@@ -5306,6 +5306,10 @@ class CreateCloudInstanceRequest(AbstractModel):
         :type ContainerExtraConf: :class:`tencentcloud.emr.v20190103.models.ContainerExtraConf`
         :param _EnableSparkAppMonitorInfo: <p>spark监控</p>
         :type EnableSparkAppMonitorInfo: :class:`tencentcloud.emr.v20190103.models.EnableSparkAppMonitorInfo`
+        :param _ComputeResourceGroupIds: <p>已有EMR资源节点组Id列表</p>
+        :type ComputeResourceGroupIds: list of str
+        :param _TerminateProtection: <p>是否开启实例保护</p>
+        :type TerminateProtection: bool
         """
         self._InstanceName = None
         self._ClusterClass = None
@@ -5328,6 +5332,8 @@ class CreateCloudInstanceRequest(AbstractModel):
         self._SgIP = None
         self._ContainerExtraConf = None
         self._EnableSparkAppMonitorInfo = None
+        self._ComputeResourceGroupIds = None
+        self._TerminateProtection = None
 
     @property
     def InstanceName(self):
@@ -5560,6 +5566,28 @@ class CreateCloudInstanceRequest(AbstractModel):
     def EnableSparkAppMonitorInfo(self, EnableSparkAppMonitorInfo):
         self._EnableSparkAppMonitorInfo = EnableSparkAppMonitorInfo
 
+    @property
+    def ComputeResourceGroupIds(self):
+        r"""<p>已有EMR资源节点组Id列表</p>
+        :rtype: list of str
+        """
+        return self._ComputeResourceGroupIds
+
+    @ComputeResourceGroupIds.setter
+    def ComputeResourceGroupIds(self, ComputeResourceGroupIds):
+        self._ComputeResourceGroupIds = ComputeResourceGroupIds
+
+    @property
+    def TerminateProtection(self):
+        r"""<p>是否开启实例保护</p>
+        :rtype: bool
+        """
+        return self._TerminateProtection
+
+    @TerminateProtection.setter
+    def TerminateProtection(self, TerminateProtection):
+        self._TerminateProtection = TerminateProtection
+
 
     def _deserialize(self, params):
         self._InstanceName = params.get("InstanceName")
@@ -5608,6 +5636,8 @@ class CreateCloudInstanceRequest(AbstractModel):
         if params.get("EnableSparkAppMonitorInfo") is not None:
             self._EnableSparkAppMonitorInfo = EnableSparkAppMonitorInfo()
             self._EnableSparkAppMonitorInfo._deserialize(params.get("EnableSparkAppMonitorInfo"))
+        self._ComputeResourceGroupIds = params.get("ComputeResourceGroupIds")
+        self._TerminateProtection = params.get("TerminateProtection")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -18412,6 +18442,8 @@ class DynamicInstanceForm(AbstractModel):
         :type ImageInfoV2: :class:`tencentcloud.emr.v20190103.models.ImageInfoV2`
         :param _GooseFSVolumes: <p>GooseFS盘</p>
         :type GooseFSVolumes: list of GooseFSVolume
+        :param _EnableHistoryServer: <p>开启HistoryServer</p>
+        :type EnableHistoryServer: bool
         """
         self._DynamicInstanceName = None
         self._Namespace = None
@@ -18431,6 +18463,7 @@ class DynamicInstanceForm(AbstractModel):
         self._CFSTurboVolumes = None
         self._ImageInfoV2 = None
         self._GooseFSVolumes = None
+        self._EnableHistoryServer = None
 
     @property
     def DynamicInstanceName(self):
@@ -18647,6 +18680,17 @@ class DynamicInstanceForm(AbstractModel):
     def GooseFSVolumes(self, GooseFSVolumes):
         self._GooseFSVolumes = GooseFSVolumes
 
+    @property
+    def EnableHistoryServer(self):
+        r"""<p>开启HistoryServer</p>
+        :rtype: bool
+        """
+        return self._EnableHistoryServer
+
+    @EnableHistoryServer.setter
+    def EnableHistoryServer(self, EnableHistoryServer):
+        self._EnableHistoryServer = EnableHistoryServer
+
 
     def _deserialize(self, params):
         self._DynamicInstanceName = params.get("DynamicInstanceName")
@@ -18726,6 +18770,7 @@ class DynamicInstanceForm(AbstractModel):
                 obj = GooseFSVolume()
                 obj._deserialize(item)
                 self._GooseFSVolumes.append(obj)
+        self._EnableHistoryServer = params.get("EnableHistoryServer")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -21704,6 +21749,132 @@ class GooseFSVolume(AbstractModel):
         self._ClientVersion = params.get("ClientVersion")
         self._MountOptions = params.get("MountOptions")
         self._JvmOptions = params.get("JvmOptions")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GpuImageDriverSpec(AbstractModel):
+    r"""GPU机型镜像与驱动配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ImageId: <p>镜像ID</p>
+        :type ImageId: str
+        :param _DriverName: <p>驱动名称</p>
+        :type DriverName: str
+        :param _DriverVersion: <p>驱动版本</p>
+        :type DriverVersion: str
+        :param _CUDAName: <p>CUDA名称</p>
+        :type CUDAName: str
+        :param _CUDAVersion: <p>CUDA版本</p>
+        :type CUDAVersion: str
+        :param _CUDNNName: <p>CUDNN名称</p>
+        :type CUDNNName: str
+        :param _CUDNNVersion: <p>CUDNN版本</p>
+        :type CUDNNVersion: str
+        """
+        self._ImageId = None
+        self._DriverName = None
+        self._DriverVersion = None
+        self._CUDAName = None
+        self._CUDAVersion = None
+        self._CUDNNName = None
+        self._CUDNNVersion = None
+
+    @property
+    def ImageId(self):
+        r"""<p>镜像ID</p>
+        :rtype: str
+        """
+        return self._ImageId
+
+    @ImageId.setter
+    def ImageId(self, ImageId):
+        self._ImageId = ImageId
+
+    @property
+    def DriverName(self):
+        r"""<p>驱动名称</p>
+        :rtype: str
+        """
+        return self._DriverName
+
+    @DriverName.setter
+    def DriverName(self, DriverName):
+        self._DriverName = DriverName
+
+    @property
+    def DriverVersion(self):
+        r"""<p>驱动版本</p>
+        :rtype: str
+        """
+        return self._DriverVersion
+
+    @DriverVersion.setter
+    def DriverVersion(self, DriverVersion):
+        self._DriverVersion = DriverVersion
+
+    @property
+    def CUDAName(self):
+        r"""<p>CUDA名称</p>
+        :rtype: str
+        """
+        return self._CUDAName
+
+    @CUDAName.setter
+    def CUDAName(self, CUDAName):
+        self._CUDAName = CUDAName
+
+    @property
+    def CUDAVersion(self):
+        r"""<p>CUDA版本</p>
+        :rtype: str
+        """
+        return self._CUDAVersion
+
+    @CUDAVersion.setter
+    def CUDAVersion(self, CUDAVersion):
+        self._CUDAVersion = CUDAVersion
+
+    @property
+    def CUDNNName(self):
+        r"""<p>CUDNN名称</p>
+        :rtype: str
+        """
+        return self._CUDNNName
+
+    @CUDNNName.setter
+    def CUDNNName(self, CUDNNName):
+        self._CUDNNName = CUDNNName
+
+    @property
+    def CUDNNVersion(self):
+        r"""<p>CUDNN版本</p>
+        :rtype: str
+        """
+        return self._CUDNNVersion
+
+    @CUDNNVersion.setter
+    def CUDNNVersion(self, CUDNNVersion):
+        self._CUDNNVersion = CUDNNVersion
+
+
+    def _deserialize(self, params):
+        self._ImageId = params.get("ImageId")
+        self._DriverName = params.get("DriverName")
+        self._DriverVersion = params.get("DriverVersion")
+        self._CUDAName = params.get("CUDAName")
+        self._CUDAVersion = params.get("CUDAVersion")
+        self._CUDNNName = params.get("CUDNNName")
+        self._CUDNNVersion = params.get("CUDNNVersion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -37933,6 +38104,10 @@ class Resource(AbstractModel):
         :type PartitionNumber: int
         :param _HCCHpcClusterId: <p>高性能集群ID</p>
         :type HCCHpcClusterId: str
+        :param _CustomNodeName: <p>自定义主机名</p>
+        :type CustomNodeName: str
+        :param _GpuImageDriver: <p>GPU镜像驱动配置</p>
+        :type GpuImageDriver: :class:`tencentcloud.emr.v20190103.models.GpuImageDriverSpec`
         """
         self._Spec = None
         self._StorageType = None
@@ -37949,6 +38124,8 @@ class Resource(AbstractModel):
         self._GpuDesc = None
         self._PartitionNumber = None
         self._HCCHpcClusterId = None
+        self._CustomNodeName = None
+        self._GpuImageDriver = None
 
     @property
     def Spec(self):
@@ -38117,6 +38294,28 @@ class Resource(AbstractModel):
     def HCCHpcClusterId(self, HCCHpcClusterId):
         self._HCCHpcClusterId = HCCHpcClusterId
 
+    @property
+    def CustomNodeName(self):
+        r"""<p>自定义主机名</p>
+        :rtype: str
+        """
+        return self._CustomNodeName
+
+    @CustomNodeName.setter
+    def CustomNodeName(self, CustomNodeName):
+        self._CustomNodeName = CustomNodeName
+
+    @property
+    def GpuImageDriver(self):
+        r"""<p>GPU镜像驱动配置</p>
+        :rtype: :class:`tencentcloud.emr.v20190103.models.GpuImageDriverSpec`
+        """
+        return self._GpuImageDriver
+
+    @GpuImageDriver.setter
+    def GpuImageDriver(self, GpuImageDriver):
+        self._GpuImageDriver = GpuImageDriver
+
 
     def _deserialize(self, params):
         self._Spec = params.get("Spec")
@@ -38144,6 +38343,10 @@ class Resource(AbstractModel):
         self._GpuDesc = params.get("GpuDesc")
         self._PartitionNumber = params.get("PartitionNumber")
         self._HCCHpcClusterId = params.get("HCCHpcClusterId")
+        self._CustomNodeName = params.get("CustomNodeName")
+        if params.get("GpuImageDriver") is not None:
+            self._GpuImageDriver = GpuImageDriverSpec()
+            self._GpuImageDriver._deserialize(params.get("GpuImageDriver"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -46118,18 +46321,32 @@ class UserManagerUserBriefInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _UserName: 用户名
+        :param _UserName: <p>用户名</p>
         :type UserName: str
-        :param _UserGroup: 用户所属的组
+        :param _UserGroup: <p>用户所属的组</p>
         :type UserGroup: str
-        :param _UserType: Manager表示管理员、NormalUser表示普通用户
+        :param _UserType: <p>Manager表示管理员、NormalUser表示普通用户</p>
         :type UserType: str
-        :param _CreateTime: 用户创建时间
+        :param _CreateTime: <p>用户创建时间</p>
         :type CreateTime: str
-        :param _SupportDownLoadKeyTab: 是否可以下载用户对应的keytab文件，对开启kerberos的集群才有意义
+        :param _SupportDownLoadKeyTab: <p>是否可以下载用户对应的keytab文件，对开启kerberos的集群才有意义</p>
         :type SupportDownLoadKeyTab: bool
-        :param _DownLoadKeyTabUrl: keytab文件的下载地址
+        :param _DownLoadKeyTabUrl: <p>keytab文件的下载地址</p>
         :type DownLoadKeyTabUrl: str
+        :param _Groups: <p>用户组</p>
+        :type Groups: list of str
+        :param _Uin: <p>客户UIN</p>
+        :type Uin: str
+        :param _State: <p>用户状态</p>
+        :type State: int
+        :param _DisplayPasswdUpdateTime: <p>是否展示密码更新时间</p>
+        :type DisplayPasswdUpdateTime: bool
+        :param _PasswdUpdateTime: <p>密码最近更新时间</p>
+        :type PasswdUpdateTime: str
+        :param _PasswdUsedDay: <p>已经使用的天数</p><p>单位：天</p>
+        :type PasswdUsedDay: int
+        :param _PasswdUsedHour: <p>已经使用的小时数</p><p>单位：时</p>
+        :type PasswdUsedHour: int
         """
         self._UserName = None
         self._UserGroup = None
@@ -46137,10 +46354,17 @@ class UserManagerUserBriefInfo(AbstractModel):
         self._CreateTime = None
         self._SupportDownLoadKeyTab = None
         self._DownLoadKeyTabUrl = None
+        self._Groups = None
+        self._Uin = None
+        self._State = None
+        self._DisplayPasswdUpdateTime = None
+        self._PasswdUpdateTime = None
+        self._PasswdUsedDay = None
+        self._PasswdUsedHour = None
 
     @property
     def UserName(self):
-        r"""用户名
+        r"""<p>用户名</p>
         :rtype: str
         """
         return self._UserName
@@ -46151,7 +46375,7 @@ class UserManagerUserBriefInfo(AbstractModel):
 
     @property
     def UserGroup(self):
-        r"""用户所属的组
+        r"""<p>用户所属的组</p>
         :rtype: str
         """
         return self._UserGroup
@@ -46162,7 +46386,7 @@ class UserManagerUserBriefInfo(AbstractModel):
 
     @property
     def UserType(self):
-        r"""Manager表示管理员、NormalUser表示普通用户
+        r"""<p>Manager表示管理员、NormalUser表示普通用户</p>
         :rtype: str
         """
         return self._UserType
@@ -46173,7 +46397,7 @@ class UserManagerUserBriefInfo(AbstractModel):
 
     @property
     def CreateTime(self):
-        r"""用户创建时间
+        r"""<p>用户创建时间</p>
         :rtype: str
         """
         return self._CreateTime
@@ -46184,7 +46408,7 @@ class UserManagerUserBriefInfo(AbstractModel):
 
     @property
     def SupportDownLoadKeyTab(self):
-        r"""是否可以下载用户对应的keytab文件，对开启kerberos的集群才有意义
+        r"""<p>是否可以下载用户对应的keytab文件，对开启kerberos的集群才有意义</p>
         :rtype: bool
         """
         return self._SupportDownLoadKeyTab
@@ -46195,7 +46419,7 @@ class UserManagerUserBriefInfo(AbstractModel):
 
     @property
     def DownLoadKeyTabUrl(self):
-        r"""keytab文件的下载地址
+        r"""<p>keytab文件的下载地址</p>
         :rtype: str
         """
         return self._DownLoadKeyTabUrl
@@ -46203,6 +46427,83 @@ class UserManagerUserBriefInfo(AbstractModel):
     @DownLoadKeyTabUrl.setter
     def DownLoadKeyTabUrl(self, DownLoadKeyTabUrl):
         self._DownLoadKeyTabUrl = DownLoadKeyTabUrl
+
+    @property
+    def Groups(self):
+        r"""<p>用户组</p>
+        :rtype: list of str
+        """
+        return self._Groups
+
+    @Groups.setter
+    def Groups(self, Groups):
+        self._Groups = Groups
+
+    @property
+    def Uin(self):
+        r"""<p>客户UIN</p>
+        :rtype: str
+        """
+        return self._Uin
+
+    @Uin.setter
+    def Uin(self, Uin):
+        self._Uin = Uin
+
+    @property
+    def State(self):
+        r"""<p>用户状态</p>
+        :rtype: int
+        """
+        return self._State
+
+    @State.setter
+    def State(self, State):
+        self._State = State
+
+    @property
+    def DisplayPasswdUpdateTime(self):
+        r"""<p>是否展示密码更新时间</p>
+        :rtype: bool
+        """
+        return self._DisplayPasswdUpdateTime
+
+    @DisplayPasswdUpdateTime.setter
+    def DisplayPasswdUpdateTime(self, DisplayPasswdUpdateTime):
+        self._DisplayPasswdUpdateTime = DisplayPasswdUpdateTime
+
+    @property
+    def PasswdUpdateTime(self):
+        r"""<p>密码最近更新时间</p>
+        :rtype: str
+        """
+        return self._PasswdUpdateTime
+
+    @PasswdUpdateTime.setter
+    def PasswdUpdateTime(self, PasswdUpdateTime):
+        self._PasswdUpdateTime = PasswdUpdateTime
+
+    @property
+    def PasswdUsedDay(self):
+        r"""<p>已经使用的天数</p><p>单位：天</p>
+        :rtype: int
+        """
+        return self._PasswdUsedDay
+
+    @PasswdUsedDay.setter
+    def PasswdUsedDay(self, PasswdUsedDay):
+        self._PasswdUsedDay = PasswdUsedDay
+
+    @property
+    def PasswdUsedHour(self):
+        r"""<p>已经使用的小时数</p><p>单位：时</p>
+        :rtype: int
+        """
+        return self._PasswdUsedHour
+
+    @PasswdUsedHour.setter
+    def PasswdUsedHour(self, PasswdUsedHour):
+        self._PasswdUsedHour = PasswdUsedHour
 
 
     def _deserialize(self, params):
@@ -46212,6 +46513,13 @@ class UserManagerUserBriefInfo(AbstractModel):
         self._CreateTime = params.get("CreateTime")
         self._SupportDownLoadKeyTab = params.get("SupportDownLoadKeyTab")
         self._DownLoadKeyTabUrl = params.get("DownLoadKeyTabUrl")
+        self._Groups = params.get("Groups")
+        self._Uin = params.get("Uin")
+        self._State = params.get("State")
+        self._DisplayPasswdUpdateTime = params.get("DisplayPasswdUpdateTime")
+        self._PasswdUpdateTime = params.get("PasswdUpdateTime")
+        self._PasswdUsedDay = params.get("PasswdUsedDay")
+        self._PasswdUsedHour = params.get("PasswdUsedHour")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

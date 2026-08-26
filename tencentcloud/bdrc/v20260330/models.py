@@ -4582,23 +4582,26 @@ class CreateFileBackupPlanRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _PolicyId: 备份策略ID
+        :param _PolicyId: <p>备份策略ID</p>
         :type PolicyId: str
-        :param _BackupStorageId: 备份库ID
+        :param _BackupStorageId: <p>备份库ID</p>
         :type BackupStorageId: str
-        :param _PlanName: 计划名称
+        :param _PlanName: <p>计划名称</p>
         :type PlanName: str
-        :param _Resources: 实例配置列表，[1,20]
+        :param _Resources: <p>实例配置列表，[1,20]</p>
         :type Resources: list of ResourcePlan
+        :param _ResourceType: <p>资源类型</p><p>枚举值：</p><ul><li>CVM_AGENT： CVM文件备份</li><li>CFS_AGENT： 文件系统备份</li><li>COS_AGENT： COS备份</li></ul><p>默认值：CVM_AGENT</p>
+        :type ResourceType: str
         """
         self._PolicyId = None
         self._BackupStorageId = None
         self._PlanName = None
         self._Resources = None
+        self._ResourceType = None
 
     @property
     def PolicyId(self):
-        r"""备份策略ID
+        r"""<p>备份策略ID</p>
         :rtype: str
         """
         return self._PolicyId
@@ -4609,7 +4612,7 @@ class CreateFileBackupPlanRequest(AbstractModel):
 
     @property
     def BackupStorageId(self):
-        r"""备份库ID
+        r"""<p>备份库ID</p>
         :rtype: str
         """
         return self._BackupStorageId
@@ -4620,7 +4623,7 @@ class CreateFileBackupPlanRequest(AbstractModel):
 
     @property
     def PlanName(self):
-        r"""计划名称
+        r"""<p>计划名称</p>
         :rtype: str
         """
         return self._PlanName
@@ -4631,7 +4634,7 @@ class CreateFileBackupPlanRequest(AbstractModel):
 
     @property
     def Resources(self):
-        r"""实例配置列表，[1,20]
+        r"""<p>实例配置列表，[1,20]</p>
         :rtype: list of ResourcePlan
         """
         return self._Resources
@@ -4639,6 +4642,17 @@ class CreateFileBackupPlanRequest(AbstractModel):
     @Resources.setter
     def Resources(self, Resources):
         self._Resources = Resources
+
+    @property
+    def ResourceType(self):
+        r"""<p>资源类型</p><p>枚举值：</p><ul><li>CVM_AGENT： CVM文件备份</li><li>CFS_AGENT： 文件系统备份</li><li>COS_AGENT： COS备份</li></ul><p>默认值：CVM_AGENT</p>
+        :rtype: str
+        """
+        return self._ResourceType
+
+    @ResourceType.setter
+    def ResourceType(self, ResourceType):
+        self._ResourceType = ResourceType
 
 
     def _deserialize(self, params):
@@ -4651,6 +4665,7 @@ class CreateFileBackupPlanRequest(AbstractModel):
                 obj = ResourcePlan()
                 obj._deserialize(item)
                 self._Resources.append(obj)
+        self._ResourceType = params.get("ResourceType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4668,7 +4683,7 @@ class CreateFileBackupPlanResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _PlanIds: 备份计划 ID 列表
+        :param _PlanIds: <p>备份计划 ID 列表</p>
         :type PlanIds: list of str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -4678,7 +4693,7 @@ class CreateFileBackupPlanResponse(AbstractModel):
 
     @property
     def PlanIds(self):
-        r"""备份计划 ID 列表
+        r"""<p>备份计划 ID 列表</p>
         :rtype: list of str
         """
         return self._PlanIds

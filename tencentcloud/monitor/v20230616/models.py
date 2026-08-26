@@ -463,6 +463,207 @@ class AIWorkbenchSREDigitalTwinWorkLogList(AbstractModel):
         
 
 
+class AgentInfo(AbstractModel):
+    r"""Agent 信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AgentId: <p>Agent ID</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AgentId: str
+        :param _Name: <p>Agent 名称</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param _Description: <p>Agent 描述</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Description: str
+        :param _Category: <p>Agent 分类</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Category: str
+        :param _Status: <p>状态: draft/configured/running/standby/disabled</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: str
+        :param _SkillIds: <p>关联技能 ID 列表</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SkillIds: list of str
+        :param _ResourceMapId: <p>关联的资源地图 ID</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResourceMapId: str
+        :param _MCPIds: <p>关联的mcp id</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MCPIds: list of str
+        :param _CamTags: <p>资源标签</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CamTags: list of Tag
+        :param _EnvVars: <p>agent运行时所需环境变量</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EnvVars: list of EnvVar
+        """
+        self._AgentId = None
+        self._Name = None
+        self._Description = None
+        self._Category = None
+        self._Status = None
+        self._SkillIds = None
+        self._ResourceMapId = None
+        self._MCPIds = None
+        self._CamTags = None
+        self._EnvVars = None
+
+    @property
+    def AgentId(self):
+        r"""<p>Agent ID</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._AgentId
+
+    @AgentId.setter
+    def AgentId(self, AgentId):
+        self._AgentId = AgentId
+
+    @property
+    def Name(self):
+        r"""<p>Agent 名称</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Description(self):
+        r"""<p>Agent 描述</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def Category(self):
+        r"""<p>Agent 分类</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Category
+
+    @Category.setter
+    def Category(self, Category):
+        self._Category = Category
+
+    @property
+    def Status(self):
+        r"""<p>状态: draft/configured/running/standby/disabled</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def SkillIds(self):
+        r"""<p>关联技能 ID 列表</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._SkillIds
+
+    @SkillIds.setter
+    def SkillIds(self, SkillIds):
+        self._SkillIds = SkillIds
+
+    @property
+    def ResourceMapId(self):
+        r"""<p>关联的资源地图 ID</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ResourceMapId
+
+    @ResourceMapId.setter
+    def ResourceMapId(self, ResourceMapId):
+        self._ResourceMapId = ResourceMapId
+
+    @property
+    def MCPIds(self):
+        r"""<p>关联的mcp id</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._MCPIds
+
+    @MCPIds.setter
+    def MCPIds(self, MCPIds):
+        self._MCPIds = MCPIds
+
+    @property
+    def CamTags(self):
+        r"""<p>资源标签</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of Tag
+        """
+        return self._CamTags
+
+    @CamTags.setter
+    def CamTags(self, CamTags):
+        self._CamTags = CamTags
+
+    @property
+    def EnvVars(self):
+        r"""<p>agent运行时所需环境变量</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of EnvVar
+        """
+        return self._EnvVars
+
+    @EnvVars.setter
+    def EnvVars(self, EnvVars):
+        self._EnvVars = EnvVars
+
+
+    def _deserialize(self, params):
+        self._AgentId = params.get("AgentId")
+        self._Name = params.get("Name")
+        self._Description = params.get("Description")
+        self._Category = params.get("Category")
+        self._Status = params.get("Status")
+        self._SkillIds = params.get("SkillIds")
+        self._ResourceMapId = params.get("ResourceMapId")
+        self._MCPIds = params.get("MCPIds")
+        if params.get("CamTags") is not None:
+            self._CamTags = []
+            for item in params.get("CamTags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._CamTags.append(obj)
+        if params.get("EnvVars") is not None:
+            self._EnvVars = []
+            for item in params.get("EnvVars"):
+                obj = EnvVar()
+                obj._deserialize(item)
+                self._EnvVars.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AlarmLable(AbstractModel):
     r"""告警中的Label
 
@@ -807,6 +1008,261 @@ class AlarmNotifyHistory(AbstractModel):
         
 
 
+class ArtifactInfo(AbstractModel):
+    r"""产物实体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ArtifactId: <p>产物 ID</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ArtifactId: str
+        :param _Name: <p>产物名称</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param _MimeType: <p>物理类型</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MimeType: str
+        :param _SizeBytes: <p>文件大小(字节)</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SizeBytes: int
+        :param _IsGlobal: <p>是否公共</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsGlobal: bool
+        :param _CreatedAt: <p>创建时间 Unix 秒时间戳</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreatedAt: int
+        :param _UpdatedAt: <p>修改时间</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpdatedAt: int
+        :param _AgentId: <p>产生该制品的 Agent ID</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AgentId: str
+        :param _SkillId: <p>产生该制品的 Skill ID</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SkillId: str
+        :param _StoragePath: <p>用于解析调用下载接口</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StoragePath: str
+        """
+        self._ArtifactId = None
+        self._Name = None
+        self._MimeType = None
+        self._SizeBytes = None
+        self._IsGlobal = None
+        self._CreatedAt = None
+        self._UpdatedAt = None
+        self._AgentId = None
+        self._SkillId = None
+        self._StoragePath = None
+
+    @property
+    def ArtifactId(self):
+        r"""<p>产物 ID</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ArtifactId
+
+    @ArtifactId.setter
+    def ArtifactId(self, ArtifactId):
+        self._ArtifactId = ArtifactId
+
+    @property
+    def Name(self):
+        r"""<p>产物名称</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def MimeType(self):
+        r"""<p>物理类型</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._MimeType
+
+    @MimeType.setter
+    def MimeType(self, MimeType):
+        self._MimeType = MimeType
+
+    @property
+    def SizeBytes(self):
+        r"""<p>文件大小(字节)</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._SizeBytes
+
+    @SizeBytes.setter
+    def SizeBytes(self, SizeBytes):
+        self._SizeBytes = SizeBytes
+
+    @property
+    def IsGlobal(self):
+        r"""<p>是否公共</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._IsGlobal
+
+    @IsGlobal.setter
+    def IsGlobal(self, IsGlobal):
+        self._IsGlobal = IsGlobal
+
+    @property
+    def CreatedAt(self):
+        r"""<p>创建时间 Unix 秒时间戳</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._CreatedAt
+
+    @CreatedAt.setter
+    def CreatedAt(self, CreatedAt):
+        self._CreatedAt = CreatedAt
+
+    @property
+    def UpdatedAt(self):
+        r"""<p>修改时间</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._UpdatedAt
+
+    @UpdatedAt.setter
+    def UpdatedAt(self, UpdatedAt):
+        self._UpdatedAt = UpdatedAt
+
+    @property
+    def AgentId(self):
+        r"""<p>产生该制品的 Agent ID</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._AgentId
+
+    @AgentId.setter
+    def AgentId(self, AgentId):
+        self._AgentId = AgentId
+
+    @property
+    def SkillId(self):
+        r"""<p>产生该制品的 Skill ID</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._SkillId
+
+    @SkillId.setter
+    def SkillId(self, SkillId):
+        self._SkillId = SkillId
+
+    @property
+    def StoragePath(self):
+        r"""<p>用于解析调用下载接口</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._StoragePath
+
+    @StoragePath.setter
+    def StoragePath(self, StoragePath):
+        self._StoragePath = StoragePath
+
+
+    def _deserialize(self, params):
+        self._ArtifactId = params.get("ArtifactId")
+        self._Name = params.get("Name")
+        self._MimeType = params.get("MimeType")
+        self._SizeBytes = params.get("SizeBytes")
+        self._IsGlobal = params.get("IsGlobal")
+        self._CreatedAt = params.get("CreatedAt")
+        self._UpdatedAt = params.get("UpdatedAt")
+        self._AgentId = params.get("AgentId")
+        self._SkillId = params.get("SkillId")
+        self._StoragePath = params.get("StoragePath")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CancelAIWorkbenchChatRequest(AbstractModel):
+    r"""CancelAIWorkbenchChat请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SessionId: <p>会话id</p>
+        :type SessionId: str
+        """
+        self._SessionId = None
+
+    @property
+    def SessionId(self):
+        r"""<p>会话id</p>
+        :rtype: str
+        """
+        return self._SessionId
+
+    @SessionId.setter
+    def SessionId(self, SessionId):
+        self._SessionId = SessionId
+
+
+    def _deserialize(self, params):
+        self._SessionId = params.get("SessionId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CancelAIWorkbenchChatResponse(AbstractModel):
+    r"""CancelAIWorkbenchChat返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class ChannelsReceivers(AbstractModel):
     r"""接受人详情信息
 
@@ -877,6 +1333,576 @@ class ChannelsReceivers(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class ContentBlockInfo(AbstractModel):
+    r"""每个 ContentBlockInfo 对应下游 ContentBlock 转换而来的一个 AGUI 事件。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Type: <p>类型</p>
+        :type Type: str
+        :param _Data: <p>数据内容</p>
+        :type Data: str
+        """
+        self._Type = None
+        self._Data = None
+
+    @property
+    def Type(self):
+        r"""<p>类型</p>
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Data(self):
+        r"""<p>数据内容</p>
+        :rtype: str
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+
+    def _deserialize(self, params):
+        self._Type = params.get("Type")
+        self._Data = params.get("Data")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateAIWorkbenchAgentRequest(AbstractModel):
+    r"""CreateAIWorkbenchAgent请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: <p>Agent 名称</p>
+        :type Name: str
+        :param _Description: <p>Agent 描述</p>
+        :type Description: str
+        :param _Category: <p>Agent 分类</p>
+        :type Category: str
+        :param _Tags: <p>Agent 标签</p>
+        :type Tags: list of str
+        :param _Instruction: <p>Agent 提示词</p>
+        :type Instruction: :class:`tencentcloud.monitor.v20230616.models.InstructionConfig`
+        :param _SkillIds: <p>关联技能 ID 列表</p>
+        :type SkillIds: list of str
+        :param _Source: <p>来源: builtin / custom</p>
+        :type Source: str
+        :param _ResourceMapId: <p>关联的资源地图 ID</p>
+        :type ResourceMapId: str
+        :param _MCPIds: <p>关联的mcp工具</p>
+        :type MCPIds: list of str
+        :param _CamTags: <p>资源标签</p>
+        :type CamTags: list of Tag
+        :param _EnvVars: <p>agent运行时环境变量</p>
+        :type EnvVars: list of EnvVar
+        """
+        self._Name = None
+        self._Description = None
+        self._Category = None
+        self._Tags = None
+        self._Instruction = None
+        self._SkillIds = None
+        self._Source = None
+        self._ResourceMapId = None
+        self._MCPIds = None
+        self._CamTags = None
+        self._EnvVars = None
+
+    @property
+    def Name(self):
+        r"""<p>Agent 名称</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Description(self):
+        r"""<p>Agent 描述</p>
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def Category(self):
+        r"""<p>Agent 分类</p>
+        :rtype: str
+        """
+        return self._Category
+
+    @Category.setter
+    def Category(self, Category):
+        self._Category = Category
+
+    @property
+    def Tags(self):
+        r"""<p>Agent 标签</p>
+        :rtype: list of str
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def Instruction(self):
+        r"""<p>Agent 提示词</p>
+        :rtype: :class:`tencentcloud.monitor.v20230616.models.InstructionConfig`
+        """
+        return self._Instruction
+
+    @Instruction.setter
+    def Instruction(self, Instruction):
+        self._Instruction = Instruction
+
+    @property
+    def SkillIds(self):
+        r"""<p>关联技能 ID 列表</p>
+        :rtype: list of str
+        """
+        return self._SkillIds
+
+    @SkillIds.setter
+    def SkillIds(self, SkillIds):
+        self._SkillIds = SkillIds
+
+    @property
+    def Source(self):
+        r"""<p>来源: builtin / custom</p>
+        :rtype: str
+        """
+        return self._Source
+
+    @Source.setter
+    def Source(self, Source):
+        self._Source = Source
+
+    @property
+    def ResourceMapId(self):
+        r"""<p>关联的资源地图 ID</p>
+        :rtype: str
+        """
+        return self._ResourceMapId
+
+    @ResourceMapId.setter
+    def ResourceMapId(self, ResourceMapId):
+        self._ResourceMapId = ResourceMapId
+
+    @property
+    def MCPIds(self):
+        r"""<p>关联的mcp工具</p>
+        :rtype: list of str
+        """
+        return self._MCPIds
+
+    @MCPIds.setter
+    def MCPIds(self, MCPIds):
+        self._MCPIds = MCPIds
+
+    @property
+    def CamTags(self):
+        r"""<p>资源标签</p>
+        :rtype: list of Tag
+        """
+        return self._CamTags
+
+    @CamTags.setter
+    def CamTags(self, CamTags):
+        self._CamTags = CamTags
+
+    @property
+    def EnvVars(self):
+        r"""<p>agent运行时环境变量</p>
+        :rtype: list of EnvVar
+        """
+        return self._EnvVars
+
+    @EnvVars.setter
+    def EnvVars(self, EnvVars):
+        self._EnvVars = EnvVars
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Description = params.get("Description")
+        self._Category = params.get("Category")
+        self._Tags = params.get("Tags")
+        if params.get("Instruction") is not None:
+            self._Instruction = InstructionConfig()
+            self._Instruction._deserialize(params.get("Instruction"))
+        self._SkillIds = params.get("SkillIds")
+        self._Source = params.get("Source")
+        self._ResourceMapId = params.get("ResourceMapId")
+        self._MCPIds = params.get("MCPIds")
+        if params.get("CamTags") is not None:
+            self._CamTags = []
+            for item in params.get("CamTags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._CamTags.append(obj)
+        if params.get("EnvVars") is not None:
+            self._EnvVars = []
+            for item in params.get("EnvVars"):
+                obj = EnvVar()
+                obj._deserialize(item)
+                self._EnvVars.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateAIWorkbenchAgentResponse(AbstractModel):
+    r"""CreateAIWorkbenchAgent返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AgentId: <p>Agent ID</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AgentId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._AgentId = None
+        self._RequestId = None
+
+    @property
+    def AgentId(self):
+        r"""<p>Agent ID</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._AgentId
+
+    @AgentId.setter
+    def AgentId(self, AgentId):
+        self._AgentId = AgentId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._AgentId = params.get("AgentId")
+        self._RequestId = params.get("RequestId")
+
+
+class CreateAIWorkbenchTaskRequest(AbstractModel):
+    r"""CreateAIWorkbenchTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: <p>任务名称</p>
+        :type Name: str
+        :param _Description: <p>任务描述</p>
+        :type Description: str
+        :param _AgentId: <p>关联 Agent ID</p>
+        :type AgentId: str
+        :param _PromptTemplate: <p>提示词模板</p>
+        :type PromptTemplate: str
+        :param _OutputFormat: <p>输出格式: markdown / json</p>
+        :type OutputFormat: str
+        :param _TriggerType: <p>触发类型: manual / cron / webhook</p>
+        :type TriggerType: str
+        :param _CronExpr: <p>Cron 表达式</p>
+        :type CronExpr: str
+        :param _CronTimezone: <p>Cron 时区</p>
+        :type CronTimezone: str
+        :param _ResourceMapId: <p>关联资源地图 ID</p>
+        :type ResourceMapId: str
+        :param _SkillIds: <p>技能 ID 列表</p>
+        :type SkillIds: list of str
+        :param _McpEndpointIds: <p>MCP 端点 ID 列表</p>
+        :type McpEndpointIds: list of str
+        :param _TimeoutSec: <p>超时时间(秒)</p>
+        :type TimeoutSec: int
+        :param _RetryCount: <p>重试次数</p>
+        :type RetryCount: int
+        :param _Enabled: <p>是否启用</p>
+        :type Enabled: bool
+        """
+        self._Name = None
+        self._Description = None
+        self._AgentId = None
+        self._PromptTemplate = None
+        self._OutputFormat = None
+        self._TriggerType = None
+        self._CronExpr = None
+        self._CronTimezone = None
+        self._ResourceMapId = None
+        self._SkillIds = None
+        self._McpEndpointIds = None
+        self._TimeoutSec = None
+        self._RetryCount = None
+        self._Enabled = None
+
+    @property
+    def Name(self):
+        r"""<p>任务名称</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Description(self):
+        r"""<p>任务描述</p>
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def AgentId(self):
+        r"""<p>关联 Agent ID</p>
+        :rtype: str
+        """
+        return self._AgentId
+
+    @AgentId.setter
+    def AgentId(self, AgentId):
+        self._AgentId = AgentId
+
+    @property
+    def PromptTemplate(self):
+        r"""<p>提示词模板</p>
+        :rtype: str
+        """
+        return self._PromptTemplate
+
+    @PromptTemplate.setter
+    def PromptTemplate(self, PromptTemplate):
+        self._PromptTemplate = PromptTemplate
+
+    @property
+    def OutputFormat(self):
+        r"""<p>输出格式: markdown / json</p>
+        :rtype: str
+        """
+        return self._OutputFormat
+
+    @OutputFormat.setter
+    def OutputFormat(self, OutputFormat):
+        self._OutputFormat = OutputFormat
+
+    @property
+    def TriggerType(self):
+        r"""<p>触发类型: manual / cron / webhook</p>
+        :rtype: str
+        """
+        return self._TriggerType
+
+    @TriggerType.setter
+    def TriggerType(self, TriggerType):
+        self._TriggerType = TriggerType
+
+    @property
+    def CronExpr(self):
+        r"""<p>Cron 表达式</p>
+        :rtype: str
+        """
+        return self._CronExpr
+
+    @CronExpr.setter
+    def CronExpr(self, CronExpr):
+        self._CronExpr = CronExpr
+
+    @property
+    def CronTimezone(self):
+        r"""<p>Cron 时区</p>
+        :rtype: str
+        """
+        return self._CronTimezone
+
+    @CronTimezone.setter
+    def CronTimezone(self, CronTimezone):
+        self._CronTimezone = CronTimezone
+
+    @property
+    def ResourceMapId(self):
+        r"""<p>关联资源地图 ID</p>
+        :rtype: str
+        """
+        return self._ResourceMapId
+
+    @ResourceMapId.setter
+    def ResourceMapId(self, ResourceMapId):
+        self._ResourceMapId = ResourceMapId
+
+    @property
+    def SkillIds(self):
+        r"""<p>技能 ID 列表</p>
+        :rtype: list of str
+        """
+        return self._SkillIds
+
+    @SkillIds.setter
+    def SkillIds(self, SkillIds):
+        self._SkillIds = SkillIds
+
+    @property
+    def McpEndpointIds(self):
+        r"""<p>MCP 端点 ID 列表</p>
+        :rtype: list of str
+        """
+        return self._McpEndpointIds
+
+    @McpEndpointIds.setter
+    def McpEndpointIds(self, McpEndpointIds):
+        self._McpEndpointIds = McpEndpointIds
+
+    @property
+    def TimeoutSec(self):
+        r"""<p>超时时间(秒)</p>
+        :rtype: int
+        """
+        return self._TimeoutSec
+
+    @TimeoutSec.setter
+    def TimeoutSec(self, TimeoutSec):
+        self._TimeoutSec = TimeoutSec
+
+    @property
+    def RetryCount(self):
+        r"""<p>重试次数</p>
+        :rtype: int
+        """
+        return self._RetryCount
+
+    @RetryCount.setter
+    def RetryCount(self, RetryCount):
+        self._RetryCount = RetryCount
+
+    @property
+    def Enabled(self):
+        r"""<p>是否启用</p>
+        :rtype: bool
+        """
+        return self._Enabled
+
+    @Enabled.setter
+    def Enabled(self, Enabled):
+        self._Enabled = Enabled
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Description = params.get("Description")
+        self._AgentId = params.get("AgentId")
+        self._PromptTemplate = params.get("PromptTemplate")
+        self._OutputFormat = params.get("OutputFormat")
+        self._TriggerType = params.get("TriggerType")
+        self._CronExpr = params.get("CronExpr")
+        self._CronTimezone = params.get("CronTimezone")
+        self._ResourceMapId = params.get("ResourceMapId")
+        self._SkillIds = params.get("SkillIds")
+        self._McpEndpointIds = params.get("McpEndpointIds")
+        self._TimeoutSec = params.get("TimeoutSec")
+        self._RetryCount = params.get("RetryCount")
+        self._Enabled = params.get("Enabled")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateAIWorkbenchTaskResponse(AbstractModel):
+    r"""CreateAIWorkbenchTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: <p>任务 ID</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        r"""<p>任务 ID</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
 
 
 class CreateNoticeContentTmplRequest(AbstractModel):
@@ -1005,6 +2031,134 @@ class CreateNoticeContentTmplResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DeleteAIWorkbenchAgentRequest(AbstractModel):
+    r"""DeleteAIWorkbenchAgent请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AgentId: <p>Agent ID</p>
+        :type AgentId: str
+        """
+        self._AgentId = None
+
+    @property
+    def AgentId(self):
+        r"""<p>Agent ID</p>
+        :rtype: str
+        """
+        return self._AgentId
+
+    @AgentId.setter
+    def AgentId(self, AgentId):
+        self._AgentId = AgentId
+
+
+    def _deserialize(self, params):
+        self._AgentId = params.get("AgentId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteAIWorkbenchAgentResponse(AbstractModel):
+    r"""DeleteAIWorkbenchAgent返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteAIWorkbenchTaskRequest(AbstractModel):
+    r"""DeleteAIWorkbenchTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: <p>任务 ID</p>
+        :type TaskId: str
+        """
+        self._TaskId = None
+
+    @property
+    def TaskId(self):
+        r"""<p>任务 ID</p>
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteAIWorkbenchTaskResponse(AbstractModel):
+    r"""DeleteAIWorkbenchTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class DeleteNoticeContentTmplsRequest(AbstractModel):
     r"""DeleteNoticeContentTmpls请求参数结构体
 
@@ -1066,6 +2220,302 @@ class DeleteNoticeContentTmplsResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeAIWorkbenchAgentRequest(AbstractModel):
+    r"""DescribeAIWorkbenchAgent请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AgentId: <p>Agent ID</p>
+        :type AgentId: str
+        """
+        self._AgentId = None
+
+    @property
+    def AgentId(self):
+        r"""<p>Agent ID</p>
+        :rtype: str
+        """
+        return self._AgentId
+
+    @AgentId.setter
+    def AgentId(self, AgentId):
+        self._AgentId = AgentId
+
+
+    def _deserialize(self, params):
+        self._AgentId = params.get("AgentId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAIWorkbenchAgentResponse(AbstractModel):
+    r"""DescribeAIWorkbenchAgent返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Agent: <p>Agent 信息</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Agent: :class:`tencentcloud.monitor.v20230616.models.AgentInfo`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Agent = None
+        self._RequestId = None
+
+    @property
+    def Agent(self):
+        r"""<p>Agent 信息</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.monitor.v20230616.models.AgentInfo`
+        """
+        return self._Agent
+
+    @Agent.setter
+    def Agent(self, Agent):
+        self._Agent = Agent
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Agent") is not None:
+            self._Agent = AgentInfo()
+            self._Agent._deserialize(params.get("Agent"))
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeAIWorkbenchArtifactRequest(AbstractModel):
+    r"""DescribeAIWorkbenchArtifact请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ArtifactId: <p>产物 ID</p>
+        :type ArtifactId: str
+        :param _NeedDownloadURL: <p>是否需要下载 URL</p><p><code>1</code> = 需要，<code>0</code> 或不传 = 不需要</p>
+        :type NeedDownloadURL: int
+        """
+        self._ArtifactId = None
+        self._NeedDownloadURL = None
+
+    @property
+    def ArtifactId(self):
+        r"""<p>产物 ID</p>
+        :rtype: str
+        """
+        return self._ArtifactId
+
+    @ArtifactId.setter
+    def ArtifactId(self, ArtifactId):
+        self._ArtifactId = ArtifactId
+
+    @property
+    def NeedDownloadURL(self):
+        r"""<p>是否需要下载 URL</p><p><code>1</code> = 需要，<code>0</code> 或不传 = 不需要</p>
+        :rtype: int
+        """
+        return self._NeedDownloadURL
+
+    @NeedDownloadURL.setter
+    def NeedDownloadURL(self, NeedDownloadURL):
+        self._NeedDownloadURL = NeedDownloadURL
+
+
+    def _deserialize(self, params):
+        self._ArtifactId = params.get("ArtifactId")
+        self._NeedDownloadURL = params.get("NeedDownloadURL")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAIWorkbenchArtifactResponse(AbstractModel):
+    r"""DescribeAIWorkbenchArtifact返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Artifact: <p>产物信息</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Artifact: :class:`tencentcloud.monitor.v20230616.models.ArtifactInfo`
+        :param _DownloadURL: <p>COS 预签名下载 URL</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DownloadURL: str
+        :param _DownloadURLExpiredAt: <p>下载 URL 过期时间（RFC3339 格式）</p>
+        :type DownloadURLExpiredAt: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Artifact = None
+        self._DownloadURL = None
+        self._DownloadURLExpiredAt = None
+        self._RequestId = None
+
+    @property
+    def Artifact(self):
+        r"""<p>产物信息</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.monitor.v20230616.models.ArtifactInfo`
+        """
+        return self._Artifact
+
+    @Artifact.setter
+    def Artifact(self, Artifact):
+        self._Artifact = Artifact
+
+    @property
+    def DownloadURL(self):
+        r"""<p>COS 预签名下载 URL</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._DownloadURL
+
+    @DownloadURL.setter
+    def DownloadURL(self, DownloadURL):
+        self._DownloadURL = DownloadURL
+
+    @property
+    def DownloadURLExpiredAt(self):
+        r"""<p>下载 URL 过期时间（RFC3339 格式）</p>
+        :rtype: str
+        """
+        return self._DownloadURLExpiredAt
+
+    @DownloadURLExpiredAt.setter
+    def DownloadURLExpiredAt(self, DownloadURLExpiredAt):
+        self._DownloadURLExpiredAt = DownloadURLExpiredAt
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Artifact") is not None:
+            self._Artifact = ArtifactInfo()
+            self._Artifact._deserialize(params.get("Artifact"))
+        self._DownloadURL = params.get("DownloadURL")
+        self._DownloadURLExpiredAt = params.get("DownloadURLExpiredAt")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeAIWorkbenchExecutionRequest(AbstractModel):
+    r"""DescribeAIWorkbenchExecution请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ExecutionId: <p>执行 ID</p>
+        :type ExecutionId: str
+        """
+        self._ExecutionId = None
+
+    @property
+    def ExecutionId(self):
+        r"""<p>执行 ID</p>
+        :rtype: str
+        """
+        return self._ExecutionId
+
+    @ExecutionId.setter
+    def ExecutionId(self, ExecutionId):
+        self._ExecutionId = ExecutionId
+
+
+    def _deserialize(self, params):
+        self._ExecutionId = params.get("ExecutionId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAIWorkbenchExecutionResponse(AbstractModel):
+    r"""DescribeAIWorkbenchExecution返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Execution: <p>执行记录</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Execution: :class:`tencentcloud.monitor.v20230616.models.ExecutionInfo`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Execution = None
+        self._RequestId = None
+
+    @property
+    def Execution(self):
+        r"""<p>执行记录</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.monitor.v20230616.models.ExecutionInfo`
+        """
+        return self._Execution
+
+    @Execution.setter
+    def Execution(self, Execution):
+        self._Execution = Execution
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Execution") is not None:
+            self._Execution = ExecutionInfo()
+            self._Execution._deserialize(params.get("Execution"))
         self._RequestId = params.get("RequestId")
 
 
@@ -1414,6 +2864,172 @@ class DescribeAIWorkbenchSREDigitalTwinWorkLogListResponse(AbstractModel):
         if params.get("Data") is not None:
             self._Data = AIWorkbenchSREDigitalTwinWorkLogList()
             self._Data._deserialize(params.get("Data"))
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeAIWorkbenchSessionRequest(AbstractModel):
+    r"""DescribeAIWorkbenchSession请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SessionId: <p>会话 ID</p>
+        :type SessionId: str
+        """
+        self._SessionId = None
+
+    @property
+    def SessionId(self):
+        r"""<p>会话 ID</p>
+        :rtype: str
+        """
+        return self._SessionId
+
+    @SessionId.setter
+    def SessionId(self, SessionId):
+        self._SessionId = SessionId
+
+
+    def _deserialize(self, params):
+        self._SessionId = params.get("SessionId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAIWorkbenchSessionResponse(AbstractModel):
+    r"""DescribeAIWorkbenchSession返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Session: <p>会话信息</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Session: :class:`tencentcloud.monitor.v20230616.models.SessionInfo`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Session = None
+        self._RequestId = None
+
+    @property
+    def Session(self):
+        r"""<p>会话信息</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.monitor.v20230616.models.SessionInfo`
+        """
+        return self._Session
+
+    @Session.setter
+    def Session(self, Session):
+        self._Session = Session
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Session") is not None:
+            self._Session = SessionInfo()
+            self._Session._deserialize(params.get("Session"))
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeAIWorkbenchSkillRequest(AbstractModel):
+    r"""DescribeAIWorkbenchSkill请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SkillId: <p>技能 ID</p>
+        :type SkillId: str
+        """
+        self._SkillId = None
+
+    @property
+    def SkillId(self):
+        r"""<p>技能 ID</p>
+        :rtype: str
+        """
+        return self._SkillId
+
+    @SkillId.setter
+    def SkillId(self, SkillId):
+        self._SkillId = SkillId
+
+
+    def _deserialize(self, params):
+        self._SkillId = params.get("SkillId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAIWorkbenchSkillResponse(AbstractModel):
+    r"""DescribeAIWorkbenchSkill返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Skill: <p>技能信息</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Skill: :class:`tencentcloud.monitor.v20230616.models.SkillInfo`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Skill = None
+        self._RequestId = None
+
+    @property
+    def Skill(self):
+        r"""<p>技能信息</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.monitor.v20230616.models.SkillInfo`
+        """
+        return self._Skill
+
+    @Skill.setter
+    def Skill(self, Skill):
+        self._Skill = Skill
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Skill") is not None:
+            self._Skill = SkillInfo()
+            self._Skill._deserialize(params.get("Skill"))
         self._RequestId = params.get("RequestId")
 
 
@@ -1957,6 +3573,290 @@ Trigger 告警触发; Recovery 告警恢复
         
 
 
+class EnvEntry(AbstractModel):
+    r"""环境变量entry
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Value: <p>环境变量value</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Value: str
+        :param _Sensitive: <p>是否脱敏</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Sensitive: bool
+        """
+        self._Value = None
+        self._Sensitive = None
+
+    @property
+    def Value(self):
+        r"""<p>环境变量value</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+    @property
+    def Sensitive(self):
+        r"""<p>是否脱敏</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._Sensitive
+
+    @Sensitive.setter
+    def Sensitive(self, Sensitive):
+        self._Sensitive = Sensitive
+
+
+    def _deserialize(self, params):
+        self._Value = params.get("Value")
+        self._Sensitive = params.get("Sensitive")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class EnvVar(AbstractModel):
+    r"""agent运行时所需环境变量
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Key: <p>环境变量key</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Key: str
+        :param _Value: <p>环境变量value</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Value: :class:`tencentcloud.monitor.v20230616.models.EnvEntry`
+        """
+        self._Key = None
+        self._Value = None
+
+    @property
+    def Key(self):
+        r"""<p>环境变量key</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Value(self):
+        r"""<p>环境变量value</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.monitor.v20230616.models.EnvEntry`
+        """
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+
+    def _deserialize(self, params):
+        self._Key = params.get("Key")
+        if params.get("Value") is not None:
+            self._Value = EnvEntry()
+            self._Value._deserialize(params.get("Value"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ExecutionInfo(AbstractModel):
+    r"""执行记录实体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: <p>任务名</p>
+        :type Name: str
+        :param _TaskId: <p>任务 ID</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskId: str
+        :param _ExecutionId: <p>执行 ID</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExecutionId: str
+        :param _AgentId: <p>Agent ID</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AgentId: str
+        :param _SessionId: <p>会话 ID</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SessionId: str
+        :param _TriggerType: <p>触发类型: manual / cron / webhook</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TriggerType: str
+        :param _Status: <p>状态: pending/running/completed/failed/timeout/cancelled</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: str
+        :param _Summary: <p>执行摘要</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Summary: str
+        :param _DurationMs: <p>执行耗时(毫秒)</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DurationMs: int
+        """
+        self._Name = None
+        self._TaskId = None
+        self._ExecutionId = None
+        self._AgentId = None
+        self._SessionId = None
+        self._TriggerType = None
+        self._Status = None
+        self._Summary = None
+        self._DurationMs = None
+
+    @property
+    def Name(self):
+        r"""<p>任务名</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def TaskId(self):
+        r"""<p>任务 ID</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def ExecutionId(self):
+        r"""<p>执行 ID</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ExecutionId
+
+    @ExecutionId.setter
+    def ExecutionId(self, ExecutionId):
+        self._ExecutionId = ExecutionId
+
+    @property
+    def AgentId(self):
+        r"""<p>Agent ID</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._AgentId
+
+    @AgentId.setter
+    def AgentId(self, AgentId):
+        self._AgentId = AgentId
+
+    @property
+    def SessionId(self):
+        r"""<p>会话 ID</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._SessionId
+
+    @SessionId.setter
+    def SessionId(self, SessionId):
+        self._SessionId = SessionId
+
+    @property
+    def TriggerType(self):
+        r"""<p>触发类型: manual / cron / webhook</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TriggerType
+
+    @TriggerType.setter
+    def TriggerType(self, TriggerType):
+        self._TriggerType = TriggerType
+
+    @property
+    def Status(self):
+        r"""<p>状态: pending/running/completed/failed/timeout/cancelled</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Summary(self):
+        r"""<p>执行摘要</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Summary
+
+    @Summary.setter
+    def Summary(self, Summary):
+        self._Summary = Summary
+
+    @property
+    def DurationMs(self):
+        r"""<p>执行耗时(毫秒)</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._DurationMs
+
+    @DurationMs.setter
+    def DurationMs(self, DurationMs):
+        self._DurationMs = DurationMs
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._TaskId = params.get("TaskId")
+        self._ExecutionId = params.get("ExecutionId")
+        self._AgentId = params.get("AgentId")
+        self._SessionId = params.get("SessionId")
+        self._TriggerType = params.get("TriggerType")
+        self._Status = params.get("Status")
+        self._Summary = params.get("Summary")
+        self._DurationMs = params.get("DurationMs")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class FeiShuRobotNoticeTmpl(AbstractModel):
     r"""飞书机器人内容模板配置
 
@@ -2063,6 +3963,119 @@ Trigger 告警触发; Recovery 告警恢复
         
 
 
+class GetAIWorkbenchArtifactDownloadURLRequest(AbstractModel):
+    r"""GetAIWorkbenchArtifactDownloadURL请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SessionId: <p>会话ID</p>
+        :type SessionId: str
+        :param _ArtifactId: <p>制品ID</p>
+        :type ArtifactId: str
+        """
+        self._SessionId = None
+        self._ArtifactId = None
+
+    @property
+    def SessionId(self):
+        r"""<p>会话ID</p>
+        :rtype: str
+        """
+        return self._SessionId
+
+    @SessionId.setter
+    def SessionId(self, SessionId):
+        self._SessionId = SessionId
+
+    @property
+    def ArtifactId(self):
+        r"""<p>制品ID</p>
+        :rtype: str
+        """
+        return self._ArtifactId
+
+    @ArtifactId.setter
+    def ArtifactId(self, ArtifactId):
+        self._ArtifactId = ArtifactId
+
+
+    def _deserialize(self, params):
+        self._SessionId = params.get("SessionId")
+        self._ArtifactId = params.get("ArtifactId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetAIWorkbenchArtifactDownloadURLResponse(AbstractModel):
+    r"""GetAIWorkbenchArtifactDownloadURL返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DownloadURL: <p>COS 预签名 HTTPS 下载 URL</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DownloadURL: str
+        :param _ExpiredAt: <p>URL 过期时间（RFC3339 格式）</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExpiredAt: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._DownloadURL = None
+        self._ExpiredAt = None
+        self._RequestId = None
+
+    @property
+    def DownloadURL(self):
+        r"""<p>COS 预签名 HTTPS 下载 URL</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._DownloadURL
+
+    @DownloadURL.setter
+    def DownloadURL(self, DownloadURL):
+        self._DownloadURL = DownloadURL
+
+    @property
+    def ExpiredAt(self):
+        r"""<p>URL 过期时间（RFC3339 格式）</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ExpiredAt
+
+    @ExpiredAt.setter
+    def ExpiredAt(self, ExpiredAt):
+        self._ExpiredAt = ExpiredAt
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._DownloadURL = params.get("DownloadURL")
+        self._ExpiredAt = params.get("ExpiredAt")
+        self._RequestId = params.get("RequestId")
+
+
 class GoogleChatRobotNoticeTmpl(AbstractModel):
     r"""Google Chat 机器人内容模板配置
 
@@ -2144,6 +4157,2176 @@ Trigger 告警触发; Recovery 告警恢复
         if params.get("Template") is not None:
             self._Template = GoogleChatRobotNoticeTmpl()
             self._Template._deserialize(params.get("Template"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class InstructionConfig(AbstractModel):
+    r"""分身提示词配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RolePosition: <p>角色定义</p>
+        :type RolePosition: str
+        :param _CoreDuty: <p>核心职责</p>
+        :type CoreDuty: str
+        :param _CoreTruths: <p>核心原则</p>
+        :type CoreTruths: str
+        :param _Vibe: <p>风格约束</p>
+        :type Vibe: str
+        :param _Boundaries: <p>注意事项</p>
+        :type Boundaries: str
+        """
+        self._RolePosition = None
+        self._CoreDuty = None
+        self._CoreTruths = None
+        self._Vibe = None
+        self._Boundaries = None
+
+    @property
+    def RolePosition(self):
+        r"""<p>角色定义</p>
+        :rtype: str
+        """
+        return self._RolePosition
+
+    @RolePosition.setter
+    def RolePosition(self, RolePosition):
+        self._RolePosition = RolePosition
+
+    @property
+    def CoreDuty(self):
+        r"""<p>核心职责</p>
+        :rtype: str
+        """
+        return self._CoreDuty
+
+    @CoreDuty.setter
+    def CoreDuty(self, CoreDuty):
+        self._CoreDuty = CoreDuty
+
+    @property
+    def CoreTruths(self):
+        r"""<p>核心原则</p>
+        :rtype: str
+        """
+        return self._CoreTruths
+
+    @CoreTruths.setter
+    def CoreTruths(self, CoreTruths):
+        self._CoreTruths = CoreTruths
+
+    @property
+    def Vibe(self):
+        r"""<p>风格约束</p>
+        :rtype: str
+        """
+        return self._Vibe
+
+    @Vibe.setter
+    def Vibe(self, Vibe):
+        self._Vibe = Vibe
+
+    @property
+    def Boundaries(self):
+        r"""<p>注意事项</p>
+        :rtype: str
+        """
+        return self._Boundaries
+
+    @Boundaries.setter
+    def Boundaries(self, Boundaries):
+        self._Boundaries = Boundaries
+
+
+    def _deserialize(self, params):
+        self._RolePosition = params.get("RolePosition")
+        self._CoreDuty = params.get("CoreDuty")
+        self._CoreTruths = params.get("CoreTruths")
+        self._Vibe = params.get("Vibe")
+        self._Boundaries = params.get("Boundaries")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ListAIWorkbenchAgentsRequest(AbstractModel):
+    r"""ListAIWorkbenchAgents请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PerPage: <p>每页数量</p>
+        :type PerPage: int
+        :param _PageNo: <p>页码</p>
+        :type PageNo: int
+        :param _Status: <p>状态筛选</p>
+        :type Status: str
+        :param _Category: <p>分类筛选</p>
+        :type Category: str
+        :param _Keyword: <p>搜索关键词</p>
+        :type Keyword: str
+        :param _Source: <p>来源筛选</p>
+        :type Source: str
+        :param _AgentIds: <p>Agent ID 列表筛选</p>
+        :type AgentIds: list of str
+        """
+        self._PerPage = None
+        self._PageNo = None
+        self._Status = None
+        self._Category = None
+        self._Keyword = None
+        self._Source = None
+        self._AgentIds = None
+
+    @property
+    def PerPage(self):
+        r"""<p>每页数量</p>
+        :rtype: int
+        """
+        return self._PerPage
+
+    @PerPage.setter
+    def PerPage(self, PerPage):
+        self._PerPage = PerPage
+
+    @property
+    def PageNo(self):
+        r"""<p>页码</p>
+        :rtype: int
+        """
+        return self._PageNo
+
+    @PageNo.setter
+    def PageNo(self, PageNo):
+        self._PageNo = PageNo
+
+    @property
+    def Status(self):
+        r"""<p>状态筛选</p>
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Category(self):
+        r"""<p>分类筛选</p>
+        :rtype: str
+        """
+        return self._Category
+
+    @Category.setter
+    def Category(self, Category):
+        self._Category = Category
+
+    @property
+    def Keyword(self):
+        r"""<p>搜索关键词</p>
+        :rtype: str
+        """
+        return self._Keyword
+
+    @Keyword.setter
+    def Keyword(self, Keyword):
+        self._Keyword = Keyword
+
+    @property
+    def Source(self):
+        r"""<p>来源筛选</p>
+        :rtype: str
+        """
+        return self._Source
+
+    @Source.setter
+    def Source(self, Source):
+        self._Source = Source
+
+    @property
+    def AgentIds(self):
+        r"""<p>Agent ID 列表筛选</p>
+        :rtype: list of str
+        """
+        return self._AgentIds
+
+    @AgentIds.setter
+    def AgentIds(self, AgentIds):
+        self._AgentIds = AgentIds
+
+
+    def _deserialize(self, params):
+        self._PerPage = params.get("PerPage")
+        self._PageNo = params.get("PageNo")
+        self._Status = params.get("Status")
+        self._Category = params.get("Category")
+        self._Keyword = params.get("Keyword")
+        self._Source = params.get("Source")
+        self._AgentIds = params.get("AgentIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ListAIWorkbenchAgentsResponse(AbstractModel):
+    r"""ListAIWorkbenchAgents返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Agents: <p>Agent 列表</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Agents: list of AgentInfo
+        :param _PageResult: <p>分页结果</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PageResult: :class:`tencentcloud.monitor.v20230616.models.PageByNumResult`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Agents = None
+        self._PageResult = None
+        self._RequestId = None
+
+    @property
+    def Agents(self):
+        r"""<p>Agent 列表</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of AgentInfo
+        """
+        return self._Agents
+
+    @Agents.setter
+    def Agents(self, Agents):
+        self._Agents = Agents
+
+    @property
+    def PageResult(self):
+        r"""<p>分页结果</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.monitor.v20230616.models.PageByNumResult`
+        """
+        return self._PageResult
+
+    @PageResult.setter
+    def PageResult(self, PageResult):
+        self._PageResult = PageResult
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Agents") is not None:
+            self._Agents = []
+            for item in params.get("Agents"):
+                obj = AgentInfo()
+                obj._deserialize(item)
+                self._Agents.append(obj)
+        if params.get("PageResult") is not None:
+            self._PageResult = PageByNumResult()
+            self._PageResult._deserialize(params.get("PageResult"))
+        self._RequestId = params.get("RequestId")
+
+
+class ListAIWorkbenchArtifactsRequest(AbstractModel):
+    r"""ListAIWorkbenchArtifacts请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PerPage: <p>每页数量</p>
+        :type PerPage: int
+        :param _PageNo: <p>页码</p>
+        :type PageNo: int
+        :param _SessionIds: <p>会话ID</p>
+        :type SessionIds: list of str
+        :param _MimeTypes: <p>消息内容类型</p>
+        :type MimeTypes: list of str
+        :param _OrderDirection: <p>排序</p><p>枚举值：</p><ul><li>ASC： 正序</li><li>DESC： 倒序</li></ul>
+        :type OrderDirection: str
+        """
+        self._PerPage = None
+        self._PageNo = None
+        self._SessionIds = None
+        self._MimeTypes = None
+        self._OrderDirection = None
+
+    @property
+    def PerPage(self):
+        r"""<p>每页数量</p>
+        :rtype: int
+        """
+        return self._PerPage
+
+    @PerPage.setter
+    def PerPage(self, PerPage):
+        self._PerPage = PerPage
+
+    @property
+    def PageNo(self):
+        r"""<p>页码</p>
+        :rtype: int
+        """
+        return self._PageNo
+
+    @PageNo.setter
+    def PageNo(self, PageNo):
+        self._PageNo = PageNo
+
+    @property
+    def SessionIds(self):
+        r"""<p>会话ID</p>
+        :rtype: list of str
+        """
+        return self._SessionIds
+
+    @SessionIds.setter
+    def SessionIds(self, SessionIds):
+        self._SessionIds = SessionIds
+
+    @property
+    def MimeTypes(self):
+        r"""<p>消息内容类型</p>
+        :rtype: list of str
+        """
+        return self._MimeTypes
+
+    @MimeTypes.setter
+    def MimeTypes(self, MimeTypes):
+        self._MimeTypes = MimeTypes
+
+    @property
+    def OrderDirection(self):
+        r"""<p>排序</p><p>枚举值：</p><ul><li>ASC： 正序</li><li>DESC： 倒序</li></ul>
+        :rtype: str
+        """
+        return self._OrderDirection
+
+    @OrderDirection.setter
+    def OrderDirection(self, OrderDirection):
+        self._OrderDirection = OrderDirection
+
+
+    def _deserialize(self, params):
+        self._PerPage = params.get("PerPage")
+        self._PageNo = params.get("PageNo")
+        self._SessionIds = params.get("SessionIds")
+        self._MimeTypes = params.get("MimeTypes")
+        self._OrderDirection = params.get("OrderDirection")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ListAIWorkbenchArtifactsResponse(AbstractModel):
+    r"""ListAIWorkbenchArtifacts返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Artifacts: <p>产物列表</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Artifacts: list of ArtifactInfo
+        :param _PageResult: <p>分页结果</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PageResult: :class:`tencentcloud.monitor.v20230616.models.PageByNumResult`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Artifacts = None
+        self._PageResult = None
+        self._RequestId = None
+
+    @property
+    def Artifacts(self):
+        r"""<p>产物列表</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of ArtifactInfo
+        """
+        return self._Artifacts
+
+    @Artifacts.setter
+    def Artifacts(self, Artifacts):
+        self._Artifacts = Artifacts
+
+    @property
+    def PageResult(self):
+        r"""<p>分页结果</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.monitor.v20230616.models.PageByNumResult`
+        """
+        return self._PageResult
+
+    @PageResult.setter
+    def PageResult(self, PageResult):
+        self._PageResult = PageResult
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Artifacts") is not None:
+            self._Artifacts = []
+            for item in params.get("Artifacts"):
+                obj = ArtifactInfo()
+                obj._deserialize(item)
+                self._Artifacts.append(obj)
+        if params.get("PageResult") is not None:
+            self._PageResult = PageByNumResult()
+            self._PageResult._deserialize(params.get("PageResult"))
+        self._RequestId = params.get("RequestId")
+
+
+class ListAIWorkbenchExecutionsRequest(AbstractModel):
+    r"""ListAIWorkbenchExecutions请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PerPage: <p>每页数量</p>
+        :type PerPage: int
+        :param _PageNo: <p>页码</p>
+        :type PageNo: int
+        :param _AgentId: <p>按 Agent 筛选</p>
+        :type AgentId: str
+        :param _Status: <p>按状态筛选</p>
+        :type Status: str
+        :param _ExecutionIds: <p>执行 ID 列表筛选</p>
+        :type ExecutionIds: list of str
+        :param _TaskIds: <p>任务id</p>
+        :type TaskIds: list of str
+        :param _TriggerType: <p>触发方式</p>
+        :type TriggerType: str
+        :param _Keyword: <p>关键值</p>
+        :type Keyword: str
+        :param _Enabled: <p>是否启用</p>
+        :type Enabled: bool
+        """
+        self._PerPage = None
+        self._PageNo = None
+        self._AgentId = None
+        self._Status = None
+        self._ExecutionIds = None
+        self._TaskIds = None
+        self._TriggerType = None
+        self._Keyword = None
+        self._Enabled = None
+
+    @property
+    def PerPage(self):
+        r"""<p>每页数量</p>
+        :rtype: int
+        """
+        return self._PerPage
+
+    @PerPage.setter
+    def PerPage(self, PerPage):
+        self._PerPage = PerPage
+
+    @property
+    def PageNo(self):
+        r"""<p>页码</p>
+        :rtype: int
+        """
+        return self._PageNo
+
+    @PageNo.setter
+    def PageNo(self, PageNo):
+        self._PageNo = PageNo
+
+    @property
+    def AgentId(self):
+        r"""<p>按 Agent 筛选</p>
+        :rtype: str
+        """
+        return self._AgentId
+
+    @AgentId.setter
+    def AgentId(self, AgentId):
+        self._AgentId = AgentId
+
+    @property
+    def Status(self):
+        r"""<p>按状态筛选</p>
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def ExecutionIds(self):
+        r"""<p>执行 ID 列表筛选</p>
+        :rtype: list of str
+        """
+        return self._ExecutionIds
+
+    @ExecutionIds.setter
+    def ExecutionIds(self, ExecutionIds):
+        self._ExecutionIds = ExecutionIds
+
+    @property
+    def TaskIds(self):
+        r"""<p>任务id</p>
+        :rtype: list of str
+        """
+        return self._TaskIds
+
+    @TaskIds.setter
+    def TaskIds(self, TaskIds):
+        self._TaskIds = TaskIds
+
+    @property
+    def TriggerType(self):
+        r"""<p>触发方式</p>
+        :rtype: str
+        """
+        return self._TriggerType
+
+    @TriggerType.setter
+    def TriggerType(self, TriggerType):
+        self._TriggerType = TriggerType
+
+    @property
+    def Keyword(self):
+        r"""<p>关键值</p>
+        :rtype: str
+        """
+        return self._Keyword
+
+    @Keyword.setter
+    def Keyword(self, Keyword):
+        self._Keyword = Keyword
+
+    @property
+    def Enabled(self):
+        r"""<p>是否启用</p>
+        :rtype: bool
+        """
+        return self._Enabled
+
+    @Enabled.setter
+    def Enabled(self, Enabled):
+        self._Enabled = Enabled
+
+
+    def _deserialize(self, params):
+        self._PerPage = params.get("PerPage")
+        self._PageNo = params.get("PageNo")
+        self._AgentId = params.get("AgentId")
+        self._Status = params.get("Status")
+        self._ExecutionIds = params.get("ExecutionIds")
+        self._TaskIds = params.get("TaskIds")
+        self._TriggerType = params.get("TriggerType")
+        self._Keyword = params.get("Keyword")
+        self._Enabled = params.get("Enabled")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ListAIWorkbenchExecutionsResponse(AbstractModel):
+    r"""ListAIWorkbenchExecutions返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Executions: <p>执行列表</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Executions: list of ExecutionInfo
+        :param _PageResult: <p>分页结果</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PageResult: :class:`tencentcloud.monitor.v20230616.models.PageByNumResult`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Executions = None
+        self._PageResult = None
+        self._RequestId = None
+
+    @property
+    def Executions(self):
+        r"""<p>执行列表</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of ExecutionInfo
+        """
+        return self._Executions
+
+    @Executions.setter
+    def Executions(self, Executions):
+        self._Executions = Executions
+
+    @property
+    def PageResult(self):
+        r"""<p>分页结果</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.monitor.v20230616.models.PageByNumResult`
+        """
+        return self._PageResult
+
+    @PageResult.setter
+    def PageResult(self, PageResult):
+        self._PageResult = PageResult
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Executions") is not None:
+            self._Executions = []
+            for item in params.get("Executions"):
+                obj = ExecutionInfo()
+                obj._deserialize(item)
+                self._Executions.append(obj)
+        if params.get("PageResult") is not None:
+            self._PageResult = PageByNumResult()
+            self._PageResult._deserialize(params.get("PageResult"))
+        self._RequestId = params.get("RequestId")
+
+
+class ListAIWorkbenchMCPsRequest(AbstractModel):
+    r"""ListAIWorkbenchMCPs请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PerPage: <p>每页数量</p>
+        :type PerPage: int
+        :param _PageNo: <p>页码</p>
+        :type PageNo: int
+        :param _Transport: <p>按传输协议筛选</p>
+        :type Transport: str
+        :param _Keyword: <p>搜索关键词</p>
+        :type Keyword: str
+        :param _Enabled: <p>是否启用筛选</p>
+        :type Enabled: bool
+        :param _MCPIds: <p>关联的mcp</p>
+        :type MCPIds: list of str
+        :param _Type: <p>MCP类型（内置/私有）</p><p>枚举值：</p><ul><li>builtin： 平台内置</li><li>private： 用户自定义</li></ul>
+        :type Type: str
+        """
+        self._PerPage = None
+        self._PageNo = None
+        self._Transport = None
+        self._Keyword = None
+        self._Enabled = None
+        self._MCPIds = None
+        self._Type = None
+
+    @property
+    def PerPage(self):
+        r"""<p>每页数量</p>
+        :rtype: int
+        """
+        return self._PerPage
+
+    @PerPage.setter
+    def PerPage(self, PerPage):
+        self._PerPage = PerPage
+
+    @property
+    def PageNo(self):
+        r"""<p>页码</p>
+        :rtype: int
+        """
+        return self._PageNo
+
+    @PageNo.setter
+    def PageNo(self, PageNo):
+        self._PageNo = PageNo
+
+    @property
+    def Transport(self):
+        r"""<p>按传输协议筛选</p>
+        :rtype: str
+        """
+        return self._Transport
+
+    @Transport.setter
+    def Transport(self, Transport):
+        self._Transport = Transport
+
+    @property
+    def Keyword(self):
+        r"""<p>搜索关键词</p>
+        :rtype: str
+        """
+        return self._Keyword
+
+    @Keyword.setter
+    def Keyword(self, Keyword):
+        self._Keyword = Keyword
+
+    @property
+    def Enabled(self):
+        r"""<p>是否启用筛选</p>
+        :rtype: bool
+        """
+        return self._Enabled
+
+    @Enabled.setter
+    def Enabled(self, Enabled):
+        self._Enabled = Enabled
+
+    @property
+    def MCPIds(self):
+        r"""<p>关联的mcp</p>
+        :rtype: list of str
+        """
+        return self._MCPIds
+
+    @MCPIds.setter
+    def MCPIds(self, MCPIds):
+        self._MCPIds = MCPIds
+
+    @property
+    def Type(self):
+        r"""<p>MCP类型（内置/私有）</p><p>枚举值：</p><ul><li>builtin： 平台内置</li><li>private： 用户自定义</li></ul>
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+
+    def _deserialize(self, params):
+        self._PerPage = params.get("PerPage")
+        self._PageNo = params.get("PageNo")
+        self._Transport = params.get("Transport")
+        self._Keyword = params.get("Keyword")
+        self._Enabled = params.get("Enabled")
+        self._MCPIds = params.get("MCPIds")
+        self._Type = params.get("Type")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ListAIWorkbenchMCPsResponse(AbstractModel):
+    r"""ListAIWorkbenchMCPs返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MCPs: <p>MCP 列表</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MCPs: list of MCPInfo
+        :param _PageResult: <p>分页结果</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PageResult: :class:`tencentcloud.monitor.v20230616.models.PageByNumResult`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._MCPs = None
+        self._PageResult = None
+        self._RequestId = None
+
+    @property
+    def MCPs(self):
+        r"""<p>MCP 列表</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of MCPInfo
+        """
+        return self._MCPs
+
+    @MCPs.setter
+    def MCPs(self, MCPs):
+        self._MCPs = MCPs
+
+    @property
+    def PageResult(self):
+        r"""<p>分页结果</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.monitor.v20230616.models.PageByNumResult`
+        """
+        return self._PageResult
+
+    @PageResult.setter
+    def PageResult(self, PageResult):
+        self._PageResult = PageResult
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("MCPs") is not None:
+            self._MCPs = []
+            for item in params.get("MCPs"):
+                obj = MCPInfo()
+                obj._deserialize(item)
+                self._MCPs.append(obj)
+        if params.get("PageResult") is not None:
+            self._PageResult = PageByNumResult()
+            self._PageResult._deserialize(params.get("PageResult"))
+        self._RequestId = params.get("RequestId")
+
+
+class ListAIWorkbenchMessagesRequest(AbstractModel):
+    r"""ListAIWorkbenchMessages请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SessionId: <p>会话 ID</p>
+        :type SessionId: str
+        :param _Cursor: <p>游标分页的定位标记</p>
+        :type Cursor: str
+        :param _Limit: <p>窗口大小</p>
+        :type Limit: int
+        :param _Direction: <p>拉取顺序</p>
+        :type Direction: str
+        """
+        self._SessionId = None
+        self._Cursor = None
+        self._Limit = None
+        self._Direction = None
+
+    @property
+    def SessionId(self):
+        r"""<p>会话 ID</p>
+        :rtype: str
+        """
+        return self._SessionId
+
+    @SessionId.setter
+    def SessionId(self, SessionId):
+        self._SessionId = SessionId
+
+    @property
+    def Cursor(self):
+        r"""<p>游标分页的定位标记</p>
+        :rtype: str
+        """
+        return self._Cursor
+
+    @Cursor.setter
+    def Cursor(self, Cursor):
+        self._Cursor = Cursor
+
+    @property
+    def Limit(self):
+        r"""<p>窗口大小</p>
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Direction(self):
+        r"""<p>拉取顺序</p>
+        :rtype: str
+        """
+        return self._Direction
+
+    @Direction.setter
+    def Direction(self, Direction):
+        self._Direction = Direction
+
+
+    def _deserialize(self, params):
+        self._SessionId = params.get("SessionId")
+        self._Cursor = params.get("Cursor")
+        self._Limit = params.get("Limit")
+        self._Direction = params.get("Direction")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ListAIWorkbenchMessagesResponse(AbstractModel):
+    r"""ListAIWorkbenchMessages返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Messages: <p>消息列表</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Messages: list of MessageInfo
+        :param _NextCursor: <p>下一个游标</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NextCursor: str
+        :param _HasMore: <p>还有后续吗</p>
+        :type HasMore: bool
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Messages = None
+        self._NextCursor = None
+        self._HasMore = None
+        self._RequestId = None
+
+    @property
+    def Messages(self):
+        r"""<p>消息列表</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of MessageInfo
+        """
+        return self._Messages
+
+    @Messages.setter
+    def Messages(self, Messages):
+        self._Messages = Messages
+
+    @property
+    def NextCursor(self):
+        r"""<p>下一个游标</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._NextCursor
+
+    @NextCursor.setter
+    def NextCursor(self, NextCursor):
+        self._NextCursor = NextCursor
+
+    @property
+    def HasMore(self):
+        r"""<p>还有后续吗</p>
+        :rtype: bool
+        """
+        return self._HasMore
+
+    @HasMore.setter
+    def HasMore(self, HasMore):
+        self._HasMore = HasMore
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Messages") is not None:
+            self._Messages = []
+            for item in params.get("Messages"):
+                obj = MessageInfo()
+                obj._deserialize(item)
+                self._Messages.append(obj)
+        self._NextCursor = params.get("NextCursor")
+        self._HasMore = params.get("HasMore")
+        self._RequestId = params.get("RequestId")
+
+
+class ListAIWorkbenchResourceInstancesRequest(AbstractModel):
+    r"""ListAIWorkbenchResourceInstances请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ResourceMapId: <p>资源地图 ID</p>
+        :type ResourceMapId: str
+        :param _PageParams: <p>分页参数</p>
+        :type PageParams: :class:`tencentcloud.monitor.v20230616.models.PageByNumParams`
+        """
+        self._ResourceMapId = None
+        self._PageParams = None
+
+    @property
+    def ResourceMapId(self):
+        r"""<p>资源地图 ID</p>
+        :rtype: str
+        """
+        return self._ResourceMapId
+
+    @ResourceMapId.setter
+    def ResourceMapId(self, ResourceMapId):
+        self._ResourceMapId = ResourceMapId
+
+    @property
+    def PageParams(self):
+        r"""<p>分页参数</p>
+        :rtype: :class:`tencentcloud.monitor.v20230616.models.PageByNumParams`
+        """
+        return self._PageParams
+
+    @PageParams.setter
+    def PageParams(self, PageParams):
+        self._PageParams = PageParams
+
+
+    def _deserialize(self, params):
+        self._ResourceMapId = params.get("ResourceMapId")
+        if params.get("PageParams") is not None:
+            self._PageParams = PageByNumParams()
+            self._PageParams._deserialize(params.get("PageParams"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ListAIWorkbenchResourceInstancesResponse(AbstractModel):
+    r"""ListAIWorkbenchResourceInstances返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Instances: <p>资源实例列表</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Instances: list of ResourceInstance
+        :param _PageResult: <p>分页结果</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PageResult: :class:`tencentcloud.monitor.v20230616.models.PageByNumResult`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Instances = None
+        self._PageResult = None
+        self._RequestId = None
+
+    @property
+    def Instances(self):
+        r"""<p>资源实例列表</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of ResourceInstance
+        """
+        return self._Instances
+
+    @Instances.setter
+    def Instances(self, Instances):
+        self._Instances = Instances
+
+    @property
+    def PageResult(self):
+        r"""<p>分页结果</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.monitor.v20230616.models.PageByNumResult`
+        """
+        return self._PageResult
+
+    @PageResult.setter
+    def PageResult(self, PageResult):
+        self._PageResult = PageResult
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Instances") is not None:
+            self._Instances = []
+            for item in params.get("Instances"):
+                obj = ResourceInstance()
+                obj._deserialize(item)
+                self._Instances.append(obj)
+        if params.get("PageResult") is not None:
+            self._PageResult = PageByNumResult()
+            self._PageResult._deserialize(params.get("PageResult"))
+        self._RequestId = params.get("RequestId")
+
+
+class ListAIWorkbenchResourceMapsRequest(AbstractModel):
+    r"""ListAIWorkbenchResourceMaps请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PerPage: <p>每页数量</p>
+        :type PerPage: int
+        :param _PageNo: <p>页码</p>
+        :type PageNo: int
+        :param _Keyword: <p>按名称搜索</p>
+        :type Keyword: str
+        """
+        self._PerPage = None
+        self._PageNo = None
+        self._Keyword = None
+
+    @property
+    def PerPage(self):
+        r"""<p>每页数量</p>
+        :rtype: int
+        """
+        return self._PerPage
+
+    @PerPage.setter
+    def PerPage(self, PerPage):
+        self._PerPage = PerPage
+
+    @property
+    def PageNo(self):
+        r"""<p>页码</p>
+        :rtype: int
+        """
+        return self._PageNo
+
+    @PageNo.setter
+    def PageNo(self, PageNo):
+        self._PageNo = PageNo
+
+    @property
+    def Keyword(self):
+        r"""<p>按名称搜索</p>
+        :rtype: str
+        """
+        return self._Keyword
+
+    @Keyword.setter
+    def Keyword(self, Keyword):
+        self._Keyword = Keyword
+
+
+    def _deserialize(self, params):
+        self._PerPage = params.get("PerPage")
+        self._PageNo = params.get("PageNo")
+        self._Keyword = params.get("Keyword")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ListAIWorkbenchResourceMapsResponse(AbstractModel):
+    r"""ListAIWorkbenchResourceMaps返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ResourceMaps: <p>资源地图列表</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResourceMaps: list of ResourceMapInfo
+        :param _PageResult: <p>分页结果</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PageResult: :class:`tencentcloud.monitor.v20230616.models.PageByNumResult`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ResourceMaps = None
+        self._PageResult = None
+        self._RequestId = None
+
+    @property
+    def ResourceMaps(self):
+        r"""<p>资源地图列表</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of ResourceMapInfo
+        """
+        return self._ResourceMaps
+
+    @ResourceMaps.setter
+    def ResourceMaps(self, ResourceMaps):
+        self._ResourceMaps = ResourceMaps
+
+    @property
+    def PageResult(self):
+        r"""<p>分页结果</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.monitor.v20230616.models.PageByNumResult`
+        """
+        return self._PageResult
+
+    @PageResult.setter
+    def PageResult(self, PageResult):
+        self._PageResult = PageResult
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("ResourceMaps") is not None:
+            self._ResourceMaps = []
+            for item in params.get("ResourceMaps"):
+                obj = ResourceMapInfo()
+                obj._deserialize(item)
+                self._ResourceMaps.append(obj)
+        if params.get("PageResult") is not None:
+            self._PageResult = PageByNumResult()
+            self._PageResult._deserialize(params.get("PageResult"))
+        self._RequestId = params.get("RequestId")
+
+
+class ListAIWorkbenchSessionsRequest(AbstractModel):
+    r"""ListAIWorkbenchSessions请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PerPage: <p>每页数量</p>
+        :type PerPage: int
+        :param _PageNo: <p>页码</p>
+        :type PageNo: int
+        :param _AgentId: <p>按 Agent 筛选</p>
+        :type AgentId: str
+        :param _Keyword: <p>搜索关键词</p>
+        :type Keyword: str
+        :param _SessionIds: <p>会话 ID 列表筛选</p>
+        :type SessionIds: list of str
+        """
+        self._PerPage = None
+        self._PageNo = None
+        self._AgentId = None
+        self._Keyword = None
+        self._SessionIds = None
+
+    @property
+    def PerPage(self):
+        r"""<p>每页数量</p>
+        :rtype: int
+        """
+        return self._PerPage
+
+    @PerPage.setter
+    def PerPage(self, PerPage):
+        self._PerPage = PerPage
+
+    @property
+    def PageNo(self):
+        r"""<p>页码</p>
+        :rtype: int
+        """
+        return self._PageNo
+
+    @PageNo.setter
+    def PageNo(self, PageNo):
+        self._PageNo = PageNo
+
+    @property
+    def AgentId(self):
+        r"""<p>按 Agent 筛选</p>
+        :rtype: str
+        """
+        return self._AgentId
+
+    @AgentId.setter
+    def AgentId(self, AgentId):
+        self._AgentId = AgentId
+
+    @property
+    def Keyword(self):
+        r"""<p>搜索关键词</p>
+        :rtype: str
+        """
+        return self._Keyword
+
+    @Keyword.setter
+    def Keyword(self, Keyword):
+        self._Keyword = Keyword
+
+    @property
+    def SessionIds(self):
+        r"""<p>会话 ID 列表筛选</p>
+        :rtype: list of str
+        """
+        return self._SessionIds
+
+    @SessionIds.setter
+    def SessionIds(self, SessionIds):
+        self._SessionIds = SessionIds
+
+
+    def _deserialize(self, params):
+        self._PerPage = params.get("PerPage")
+        self._PageNo = params.get("PageNo")
+        self._AgentId = params.get("AgentId")
+        self._Keyword = params.get("Keyword")
+        self._SessionIds = params.get("SessionIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ListAIWorkbenchSessionsResponse(AbstractModel):
+    r"""ListAIWorkbenchSessions返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Sessions: <p>会话列表</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Sessions: list of SessionInfo
+        :param _PageResult: <p>分页结果</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PageResult: :class:`tencentcloud.monitor.v20230616.models.PageByNumResult`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Sessions = None
+        self._PageResult = None
+        self._RequestId = None
+
+    @property
+    def Sessions(self):
+        r"""<p>会话列表</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of SessionInfo
+        """
+        return self._Sessions
+
+    @Sessions.setter
+    def Sessions(self, Sessions):
+        self._Sessions = Sessions
+
+    @property
+    def PageResult(self):
+        r"""<p>分页结果</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.monitor.v20230616.models.PageByNumResult`
+        """
+        return self._PageResult
+
+    @PageResult.setter
+    def PageResult(self, PageResult):
+        self._PageResult = PageResult
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Sessions") is not None:
+            self._Sessions = []
+            for item in params.get("Sessions"):
+                obj = SessionInfo()
+                obj._deserialize(item)
+                self._Sessions.append(obj)
+        if params.get("PageResult") is not None:
+            self._PageResult = PageByNumResult()
+            self._PageResult._deserialize(params.get("PageResult"))
+        self._RequestId = params.get("RequestId")
+
+
+class ListAIWorkbenchSkillsRequest(AbstractModel):
+    r"""ListAIWorkbenchSkills请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PerPage: <p>每页数量</p>
+        :type PerPage: int
+        :param _PageNo: <p>页码</p>
+        :type PageNo: int
+        :param _Type: <p>按类型筛选</p>
+        :type Type: str
+        :param _Keyword: <p>搜索关键词</p>
+        :type Keyword: str
+        :param _Enabled: <p>是否启用筛选</p>
+        :type Enabled: bool
+        :param _SkillIds: <p>技能 ID 列表筛选</p>
+        :type SkillIds: list of str
+        """
+        self._PerPage = None
+        self._PageNo = None
+        self._Type = None
+        self._Keyword = None
+        self._Enabled = None
+        self._SkillIds = None
+
+    @property
+    def PerPage(self):
+        r"""<p>每页数量</p>
+        :rtype: int
+        """
+        return self._PerPage
+
+    @PerPage.setter
+    def PerPage(self, PerPage):
+        self._PerPage = PerPage
+
+    @property
+    def PageNo(self):
+        r"""<p>页码</p>
+        :rtype: int
+        """
+        return self._PageNo
+
+    @PageNo.setter
+    def PageNo(self, PageNo):
+        self._PageNo = PageNo
+
+    @property
+    def Type(self):
+        r"""<p>按类型筛选</p>
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Keyword(self):
+        r"""<p>搜索关键词</p>
+        :rtype: str
+        """
+        return self._Keyword
+
+    @Keyword.setter
+    def Keyword(self, Keyword):
+        self._Keyword = Keyword
+
+    @property
+    def Enabled(self):
+        r"""<p>是否启用筛选</p>
+        :rtype: bool
+        """
+        return self._Enabled
+
+    @Enabled.setter
+    def Enabled(self, Enabled):
+        self._Enabled = Enabled
+
+    @property
+    def SkillIds(self):
+        r"""<p>技能 ID 列表筛选</p>
+        :rtype: list of str
+        """
+        return self._SkillIds
+
+    @SkillIds.setter
+    def SkillIds(self, SkillIds):
+        self._SkillIds = SkillIds
+
+
+    def _deserialize(self, params):
+        self._PerPage = params.get("PerPage")
+        self._PageNo = params.get("PageNo")
+        self._Type = params.get("Type")
+        self._Keyword = params.get("Keyword")
+        self._Enabled = params.get("Enabled")
+        self._SkillIds = params.get("SkillIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ListAIWorkbenchSkillsResponse(AbstractModel):
+    r"""ListAIWorkbenchSkills返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Skills: <p>技能列表</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Skills: list of SkillInfo
+        :param _PageResult: <p>分页结果</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PageResult: :class:`tencentcloud.monitor.v20230616.models.PageByNumResult`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Skills = None
+        self._PageResult = None
+        self._RequestId = None
+
+    @property
+    def Skills(self):
+        r"""<p>技能列表</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of SkillInfo
+        """
+        return self._Skills
+
+    @Skills.setter
+    def Skills(self, Skills):
+        self._Skills = Skills
+
+    @property
+    def PageResult(self):
+        r"""<p>分页结果</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.monitor.v20230616.models.PageByNumResult`
+        """
+        return self._PageResult
+
+    @PageResult.setter
+    def PageResult(self, PageResult):
+        self._PageResult = PageResult
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Skills") is not None:
+            self._Skills = []
+            for item in params.get("Skills"):
+                obj = SkillInfo()
+                obj._deserialize(item)
+                self._Skills.append(obj)
+        if params.get("PageResult") is not None:
+            self._PageResult = PageByNumResult()
+            self._PageResult._deserialize(params.get("PageResult"))
+        self._RequestId = params.get("RequestId")
+
+
+class ListAIWorkbenchTasksRequest(AbstractModel):
+    r"""ListAIWorkbenchTasks请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PerPage: <p>每页数量</p>
+        :type PerPage: int
+        :param _PageNo: <p>页码</p>
+        :type PageNo: int
+        :param _AgentId: <p>按 Agent 筛选</p>
+        :type AgentId: str
+        :param _TriggerType: <p>按触发类型筛选</p>
+        :type TriggerType: str
+        :param _Keyword: <p>搜索关键词</p>
+        :type Keyword: str
+        :param _TaskIds: <p>任务 ID 列表筛选</p>
+        :type TaskIds: list of str
+        :param _Enabled: <p>是否启用筛选</p>
+        :type Enabled: bool
+        """
+        self._PerPage = None
+        self._PageNo = None
+        self._AgentId = None
+        self._TriggerType = None
+        self._Keyword = None
+        self._TaskIds = None
+        self._Enabled = None
+
+    @property
+    def PerPage(self):
+        r"""<p>每页数量</p>
+        :rtype: int
+        """
+        return self._PerPage
+
+    @PerPage.setter
+    def PerPage(self, PerPage):
+        self._PerPage = PerPage
+
+    @property
+    def PageNo(self):
+        r"""<p>页码</p>
+        :rtype: int
+        """
+        return self._PageNo
+
+    @PageNo.setter
+    def PageNo(self, PageNo):
+        self._PageNo = PageNo
+
+    @property
+    def AgentId(self):
+        r"""<p>按 Agent 筛选</p>
+        :rtype: str
+        """
+        return self._AgentId
+
+    @AgentId.setter
+    def AgentId(self, AgentId):
+        self._AgentId = AgentId
+
+    @property
+    def TriggerType(self):
+        r"""<p>按触发类型筛选</p>
+        :rtype: str
+        """
+        return self._TriggerType
+
+    @TriggerType.setter
+    def TriggerType(self, TriggerType):
+        self._TriggerType = TriggerType
+
+    @property
+    def Keyword(self):
+        r"""<p>搜索关键词</p>
+        :rtype: str
+        """
+        return self._Keyword
+
+    @Keyword.setter
+    def Keyword(self, Keyword):
+        self._Keyword = Keyword
+
+    @property
+    def TaskIds(self):
+        r"""<p>任务 ID 列表筛选</p>
+        :rtype: list of str
+        """
+        return self._TaskIds
+
+    @TaskIds.setter
+    def TaskIds(self, TaskIds):
+        self._TaskIds = TaskIds
+
+    @property
+    def Enabled(self):
+        r"""<p>是否启用筛选</p>
+        :rtype: bool
+        """
+        return self._Enabled
+
+    @Enabled.setter
+    def Enabled(self, Enabled):
+        self._Enabled = Enabled
+
+
+    def _deserialize(self, params):
+        self._PerPage = params.get("PerPage")
+        self._PageNo = params.get("PageNo")
+        self._AgentId = params.get("AgentId")
+        self._TriggerType = params.get("TriggerType")
+        self._Keyword = params.get("Keyword")
+        self._TaskIds = params.get("TaskIds")
+        self._Enabled = params.get("Enabled")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ListAIWorkbenchTasksResponse(AbstractModel):
+    r"""ListAIWorkbenchTasks返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Tasks: <p>任务列表</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tasks: list of TaskInfo
+        :param _PageResult: <p>分页结果</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PageResult: :class:`tencentcloud.monitor.v20230616.models.PageByNumResult`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Tasks = None
+        self._PageResult = None
+        self._RequestId = None
+
+    @property
+    def Tasks(self):
+        r"""<p>任务列表</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of TaskInfo
+        """
+        return self._Tasks
+
+    @Tasks.setter
+    def Tasks(self, Tasks):
+        self._Tasks = Tasks
+
+    @property
+    def PageResult(self):
+        r"""<p>分页结果</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.monitor.v20230616.models.PageByNumResult`
+        """
+        return self._PageResult
+
+    @PageResult.setter
+    def PageResult(self, PageResult):
+        self._PageResult = PageResult
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Tasks") is not None:
+            self._Tasks = []
+            for item in params.get("Tasks"):
+                obj = TaskInfo()
+                obj._deserialize(item)
+                self._Tasks.append(obj)
+        if params.get("PageResult") is not None:
+            self._PageResult = PageByNumResult()
+            self._PageResult._deserialize(params.get("PageResult"))
+        self._RequestId = params.get("RequestId")
+
+
+class MCPInfo(AbstractModel):
+    r"""MCP 实体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MCPId: <p>mcp的ID</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MCPId: str
+        :param _Name: <p>MCP 名称</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param _Description: <p>MCP 描述</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Description: str
+        :param _Url: <p>MCP URL</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Url: str
+        :param _Transport: <p>传输协议: sse / streamable_http / stdio</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Transport: str
+        :param _AuthType: <p>认证类型: none / bearer / basic / api_key</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AuthType: str
+        :param _AuthSecret: <p>认证密钥(响应时脱敏)</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AuthSecret: str
+        :param _Timeout: <p>超时时间(秒)</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Timeout: int
+        :param _RetryCount: <p>重试次数</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RetryCount: int
+        :param _Headers: <p>请求头 JSON</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Headers: str
+        :param _Enabled: <p>是否启用</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Enabled: bool
+        """
+        self._MCPId = None
+        self._Name = None
+        self._Description = None
+        self._Url = None
+        self._Transport = None
+        self._AuthType = None
+        self._AuthSecret = None
+        self._Timeout = None
+        self._RetryCount = None
+        self._Headers = None
+        self._Enabled = None
+
+    @property
+    def MCPId(self):
+        r"""<p>mcp的ID</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._MCPId
+
+    @MCPId.setter
+    def MCPId(self, MCPId):
+        self._MCPId = MCPId
+
+    @property
+    def Name(self):
+        r"""<p>MCP 名称</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Description(self):
+        r"""<p>MCP 描述</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def Url(self):
+        r"""<p>MCP URL</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Url
+
+    @Url.setter
+    def Url(self, Url):
+        self._Url = Url
+
+    @property
+    def Transport(self):
+        r"""<p>传输协议: sse / streamable_http / stdio</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Transport
+
+    @Transport.setter
+    def Transport(self, Transport):
+        self._Transport = Transport
+
+    @property
+    def AuthType(self):
+        r"""<p>认证类型: none / bearer / basic / api_key</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._AuthType
+
+    @AuthType.setter
+    def AuthType(self, AuthType):
+        self._AuthType = AuthType
+
+    @property
+    def AuthSecret(self):
+        r"""<p>认证密钥(响应时脱敏)</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._AuthSecret
+
+    @AuthSecret.setter
+    def AuthSecret(self, AuthSecret):
+        self._AuthSecret = AuthSecret
+
+    @property
+    def Timeout(self):
+        r"""<p>超时时间(秒)</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Timeout
+
+    @Timeout.setter
+    def Timeout(self, Timeout):
+        self._Timeout = Timeout
+
+    @property
+    def RetryCount(self):
+        r"""<p>重试次数</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._RetryCount
+
+    @RetryCount.setter
+    def RetryCount(self, RetryCount):
+        self._RetryCount = RetryCount
+
+    @property
+    def Headers(self):
+        r"""<p>请求头 JSON</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Headers
+
+    @Headers.setter
+    def Headers(self, Headers):
+        self._Headers = Headers
+
+    @property
+    def Enabled(self):
+        r"""<p>是否启用</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._Enabled
+
+    @Enabled.setter
+    def Enabled(self, Enabled):
+        self._Enabled = Enabled
+
+
+    def _deserialize(self, params):
+        self._MCPId = params.get("MCPId")
+        self._Name = params.get("Name")
+        self._Description = params.get("Description")
+        self._Url = params.get("Url")
+        self._Transport = params.get("Transport")
+        self._AuthType = params.get("AuthType")
+        self._AuthSecret = params.get("AuthSecret")
+        self._Timeout = params.get("Timeout")
+        self._RetryCount = params.get("RetryCount")
+        self._Headers = params.get("Headers")
+        self._Enabled = params.get("Enabled")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class MessageInfo(AbstractModel):
+    r"""消息实体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EntryId: <p>实体id</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EntryId: str
+        :param _SessionId: <p>会话 ID</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SessionId: str
+        :param _Role: <p>角色: user / assistant</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Role: str
+        :param _Content: <p>消息内容</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Content: str
+        :param _Status: <p>状态</p>
+        :type Status: str
+        :param _ContentBlocks: <p>块内容</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ContentBlocks: list of ContentBlockInfo
+        """
+        self._EntryId = None
+        self._SessionId = None
+        self._Role = None
+        self._Content = None
+        self._Status = None
+        self._ContentBlocks = None
+
+    @property
+    def EntryId(self):
+        r"""<p>实体id</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._EntryId
+
+    @EntryId.setter
+    def EntryId(self, EntryId):
+        self._EntryId = EntryId
+
+    @property
+    def SessionId(self):
+        r"""<p>会话 ID</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._SessionId
+
+    @SessionId.setter
+    def SessionId(self, SessionId):
+        self._SessionId = SessionId
+
+    @property
+    def Role(self):
+        r"""<p>角色: user / assistant</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Role
+
+    @Role.setter
+    def Role(self, Role):
+        self._Role = Role
+
+    @property
+    def Content(self):
+        r"""<p>消息内容</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Content
+
+    @Content.setter
+    def Content(self, Content):
+        self._Content = Content
+
+    @property
+    def Status(self):
+        r"""<p>状态</p>
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def ContentBlocks(self):
+        r"""<p>块内容</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of ContentBlockInfo
+        """
+        return self._ContentBlocks
+
+    @ContentBlocks.setter
+    def ContentBlocks(self, ContentBlocks):
+        self._ContentBlocks = ContentBlocks
+
+
+    def _deserialize(self, params):
+        self._EntryId = params.get("EntryId")
+        self._SessionId = params.get("SessionId")
+        self._Role = params.get("Role")
+        self._Content = params.get("Content")
+        self._Status = params.get("Status")
+        if params.get("ContentBlocks") is not None:
+            self._ContentBlocks = []
+            for item in params.get("ContentBlocks"):
+                obj = ContentBlockInfo()
+                obj._deserialize(item)
+                self._ContentBlocks.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2922,6 +7105,129 @@ class PageByNoResult(AbstractModel):
         
 
 
+class PageByNumParams(AbstractModel):
+    r"""按第几页进行分页的入参
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PerPage: <p>每个分页的数量</p>
+        :type PerPage: int
+        :param _PageNo: <p>第几个分页，从1开始</p>
+        :type PageNo: int
+        """
+        self._PerPage = None
+        self._PageNo = None
+
+    @property
+    def PerPage(self):
+        r"""<p>每个分页的数量</p>
+        :rtype: int
+        """
+        return self._PerPage
+
+    @PerPage.setter
+    def PerPage(self, PerPage):
+        self._PerPage = PerPage
+
+    @property
+    def PageNo(self):
+        r"""<p>第几个分页，从1开始</p>
+        :rtype: int
+        """
+        return self._PageNo
+
+    @PageNo.setter
+    def PageNo(self, PageNo):
+        self._PageNo = PageNo
+
+
+    def _deserialize(self, params):
+        self._PerPage = params.get("PerPage")
+        self._PageNo = params.get("PageNo")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PageByNumResult(AbstractModel):
+    r"""分页结果参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: <p>总共有多少数据</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
+        :param _TotalPage: <p>总共有多少个分页</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalPage: int
+        :param _CurrentPageNo: <p>当前的分页号</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CurrentPageNo: int
+        """
+        self._TotalCount = None
+        self._TotalPage = None
+        self._CurrentPageNo = None
+
+    @property
+    def TotalCount(self):
+        r"""<p>总共有多少数据</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def TotalPage(self):
+        r"""<p>总共有多少个分页</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._TotalPage
+
+    @TotalPage.setter
+    def TotalPage(self, TotalPage):
+        self._TotalPage = TotalPage
+
+    @property
+    def CurrentPageNo(self):
+        r"""<p>当前的分页号</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._CurrentPageNo
+
+    @CurrentPageNo.setter
+    def CurrentPageNo(self, CurrentPageNo):
+        self._CurrentPageNo = CurrentPageNo
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        self._TotalPage = params.get("TotalPage")
+        self._CurrentPageNo = params.get("CurrentPageNo")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class PagerDutyRobotNoticeTmpl(AbstractModel):
     r"""告警通知自定义PagerDutyRobot内容模板
 
@@ -3426,6 +7732,379 @@ class QCloudYeheWeChatNoticeTmplItem(AbstractModel):
         
 
 
+class ResourceInstance(AbstractModel):
+    r"""资源实例
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: <p>实例 ID</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Id: str
+        :param _Service: <p>服务名称</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Service: str
+        :param _Region: <p>地域</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Region: str
+        :param _IsReady: <p>是否就绪</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IsReady: bool
+        """
+        self._Id = None
+        self._Service = None
+        self._Region = None
+        self._IsReady = None
+
+    @property
+    def Id(self):
+        r"""<p>实例 ID</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Service(self):
+        r"""<p>服务名称</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Service
+
+    @Service.setter
+    def Service(self, Service):
+        self._Service = Service
+
+    @property
+    def Region(self):
+        r"""<p>地域</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def IsReady(self):
+        r"""<p>是否就绪</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._IsReady
+
+    @IsReady.setter
+    def IsReady(self, IsReady):
+        self._IsReady = IsReady
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._Service = params.get("Service")
+        self._Region = params.get("Region")
+        self._IsReady = params.get("IsReady")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ResourceMapInfo(AbstractModel):
+    r"""资源地图实体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ResourceMapId: <p>资源地图 ID</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResourceMapId: str
+        :param _Name: <p>资源地图名称</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param _Description: <p>资源地图描述</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Description: str
+        :param _InstanceCount: <p>总实例数</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceCount: int
+        """
+        self._ResourceMapId = None
+        self._Name = None
+        self._Description = None
+        self._InstanceCount = None
+
+    @property
+    def ResourceMapId(self):
+        r"""<p>资源地图 ID</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ResourceMapId
+
+    @ResourceMapId.setter
+    def ResourceMapId(self, ResourceMapId):
+        self._ResourceMapId = ResourceMapId
+
+    @property
+    def Name(self):
+        r"""<p>资源地图名称</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Description(self):
+        r"""<p>资源地图描述</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def InstanceCount(self):
+        r"""<p>总实例数</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._InstanceCount
+
+    @InstanceCount.setter
+    def InstanceCount(self, InstanceCount):
+        self._InstanceCount = InstanceCount
+
+
+    def _deserialize(self, params):
+        self._ResourceMapId = params.get("ResourceMapId")
+        self._Name = params.get("Name")
+        self._Description = params.get("Description")
+        self._InstanceCount = params.get("InstanceCount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SessionInfo(AbstractModel):
+    r"""会话实体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SessionId: <p>会话 ID</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SessionId: str
+        :param _AgentId: <p>Agent ID</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AgentId: str
+        :param _Title: <p>会话标题</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Title: str
+        :param _Status: <p>状态: active / archived / deleted</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: str
+        :param _TaskId: <p>如果该会话由任务触发，则携带触发其会话的任务ID</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskId: str
+        """
+        self._SessionId = None
+        self._AgentId = None
+        self._Title = None
+        self._Status = None
+        self._TaskId = None
+
+    @property
+    def SessionId(self):
+        r"""<p>会话 ID</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._SessionId
+
+    @SessionId.setter
+    def SessionId(self, SessionId):
+        self._SessionId = SessionId
+
+    @property
+    def AgentId(self):
+        r"""<p>Agent ID</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._AgentId
+
+    @AgentId.setter
+    def AgentId(self, AgentId):
+        self._AgentId = AgentId
+
+    @property
+    def Title(self):
+        r"""<p>会话标题</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Title
+
+    @Title.setter
+    def Title(self, Title):
+        self._Title = Title
+
+    @property
+    def Status(self):
+        r"""<p>状态: active / archived / deleted</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def TaskId(self):
+        r"""<p>如果该会话由任务触发，则携带触发其会话的任务ID</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+
+    def _deserialize(self, params):
+        self._SessionId = params.get("SessionId")
+        self._AgentId = params.get("AgentId")
+        self._Title = params.get("Title")
+        self._Status = params.get("Status")
+        self._TaskId = params.get("TaskId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SkillInfo(AbstractModel):
+    r"""技能实体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SkillId: <p>技能 ID</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SkillId: str
+        :param _Name: <p>技能名称</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param _Description: <p>技能描述</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Description: str
+        :param _Enabled: <p>是否启用</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Enabled: bool
+        """
+        self._SkillId = None
+        self._Name = None
+        self._Description = None
+        self._Enabled = None
+
+    @property
+    def SkillId(self):
+        r"""<p>技能 ID</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._SkillId
+
+    @SkillId.setter
+    def SkillId(self, SkillId):
+        self._SkillId = SkillId
+
+    @property
+    def Name(self):
+        r"""<p>技能名称</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Description(self):
+        r"""<p>技能描述</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def Enabled(self):
+        r"""<p>是否启用</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._Enabled
+
+    @Enabled.setter
+    def Enabled(self, Enabled):
+        self._Enabled = Enabled
+
+
+    def _deserialize(self, params):
+        self._SkillId = params.get("SkillId")
+        self._Name = params.get("Name")
+        self._Description = params.get("Description")
+        self._Enabled = params.get("Enabled")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class SlackRobotNoticeTmpl(AbstractModel):
     r"""企业微信机器人内容模板配置
 
@@ -3505,6 +8184,333 @@ class SlackRobotNoticeTmplMatcher(AbstractModel):
         if params.get("Template") is not None:
             self._Template = SlackRobotNoticeTmpl()
             self._Template._deserialize(params.get("Template"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class Tag(AbstractModel):
+    r"""标签
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Key: 标签key
+        :type Key: str
+        :param _Value: 标签value
+        :type Value: str
+        """
+        self._Key = None
+        self._Value = None
+
+    @property
+    def Key(self):
+        r"""标签key
+        :rtype: str
+        """
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Value(self):
+        r"""标签value
+        :rtype: str
+        """
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+
+    def _deserialize(self, params):
+        self._Key = params.get("Key")
+        self._Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TaskInfo(AbstractModel):
+    r"""任务实体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: <p>任务 ID</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskId: str
+        :param _Name: <p>任务名称</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Name: str
+        :param _Description: <p>任务描述</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Description: str
+        :param _AgentId: <p>关联 Agent ID</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AgentId: str
+        :param _PromptTemplate: <p>提示词模板</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PromptTemplate: str
+        :param _OutputFormat: <p>输出格式: markdown / json</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OutputFormat: str
+        :param _TriggerType: <p>触发类型: manual / cron / webhook</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TriggerType: str
+        :param _CronExpr: <p>Cron 表达式</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CronExpr: str
+        :param _CronTimezone: <p>Cron 时区</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CronTimezone: str
+        :param _SkillIds: <p>关联技能 ID 列表</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SkillIds: list of str
+        :param _McpEndpointIds: <p>关联 MCP 端点 ID 列表</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type McpEndpointIds: list of str
+        :param _TimeoutSec: <p>超时时间(秒)</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TimeoutSec: int
+        :param _RetryCount: <p>重试次数</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RetryCount: int
+        :param _NotifyIds: <p>通知id</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NotifyIds: list of str
+        :param _Enabled: <p>是否启用</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Enabled: bool
+        """
+        self._TaskId = None
+        self._Name = None
+        self._Description = None
+        self._AgentId = None
+        self._PromptTemplate = None
+        self._OutputFormat = None
+        self._TriggerType = None
+        self._CronExpr = None
+        self._CronTimezone = None
+        self._SkillIds = None
+        self._McpEndpointIds = None
+        self._TimeoutSec = None
+        self._RetryCount = None
+        self._NotifyIds = None
+        self._Enabled = None
+
+    @property
+    def TaskId(self):
+        r"""<p>任务 ID</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def Name(self):
+        r"""<p>任务名称</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Description(self):
+        r"""<p>任务描述</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def AgentId(self):
+        r"""<p>关联 Agent ID</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._AgentId
+
+    @AgentId.setter
+    def AgentId(self, AgentId):
+        self._AgentId = AgentId
+
+    @property
+    def PromptTemplate(self):
+        r"""<p>提示词模板</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._PromptTemplate
+
+    @PromptTemplate.setter
+    def PromptTemplate(self, PromptTemplate):
+        self._PromptTemplate = PromptTemplate
+
+    @property
+    def OutputFormat(self):
+        r"""<p>输出格式: markdown / json</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._OutputFormat
+
+    @OutputFormat.setter
+    def OutputFormat(self, OutputFormat):
+        self._OutputFormat = OutputFormat
+
+    @property
+    def TriggerType(self):
+        r"""<p>触发类型: manual / cron / webhook</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TriggerType
+
+    @TriggerType.setter
+    def TriggerType(self, TriggerType):
+        self._TriggerType = TriggerType
+
+    @property
+    def CronExpr(self):
+        r"""<p>Cron 表达式</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CronExpr
+
+    @CronExpr.setter
+    def CronExpr(self, CronExpr):
+        self._CronExpr = CronExpr
+
+    @property
+    def CronTimezone(self):
+        r"""<p>Cron 时区</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CronTimezone
+
+    @CronTimezone.setter
+    def CronTimezone(self, CronTimezone):
+        self._CronTimezone = CronTimezone
+
+    @property
+    def SkillIds(self):
+        r"""<p>关联技能 ID 列表</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._SkillIds
+
+    @SkillIds.setter
+    def SkillIds(self, SkillIds):
+        self._SkillIds = SkillIds
+
+    @property
+    def McpEndpointIds(self):
+        r"""<p>关联 MCP 端点 ID 列表</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._McpEndpointIds
+
+    @McpEndpointIds.setter
+    def McpEndpointIds(self, McpEndpointIds):
+        self._McpEndpointIds = McpEndpointIds
+
+    @property
+    def TimeoutSec(self):
+        r"""<p>超时时间(秒)</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._TimeoutSec
+
+    @TimeoutSec.setter
+    def TimeoutSec(self, TimeoutSec):
+        self._TimeoutSec = TimeoutSec
+
+    @property
+    def RetryCount(self):
+        r"""<p>重试次数</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._RetryCount
+
+    @RetryCount.setter
+    def RetryCount(self, RetryCount):
+        self._RetryCount = RetryCount
+
+    @property
+    def NotifyIds(self):
+        r"""<p>通知id</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._NotifyIds
+
+    @NotifyIds.setter
+    def NotifyIds(self, NotifyIds):
+        self._NotifyIds = NotifyIds
+
+    @property
+    def Enabled(self):
+        r"""<p>是否启用</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: bool
+        """
+        return self._Enabled
+
+    @Enabled.setter
+    def Enabled(self, Enabled):
+        self._Enabled = Enabled
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._Name = params.get("Name")
+        self._Description = params.get("Description")
+        self._AgentId = params.get("AgentId")
+        self._PromptTemplate = params.get("PromptTemplate")
+        self._OutputFormat = params.get("OutputFormat")
+        self._TriggerType = params.get("TriggerType")
+        self._CronExpr = params.get("CronExpr")
+        self._CronTimezone = params.get("CronTimezone")
+        self._SkillIds = params.get("SkillIds")
+        self._McpEndpointIds = params.get("McpEndpointIds")
+        self._TimeoutSec = params.get("TimeoutSec")
+        self._RetryCount = params.get("RetryCount")
+        self._NotifyIds = params.get("NotifyIds")
+        self._Enabled = params.get("Enabled")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3821,6 +8827,87 @@ class TriggerAIWorkbenchSREDigitalTwinTaskResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class TriggerAIWorkbenchTaskRequest(AbstractModel):
+    r"""TriggerAIWorkbenchTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: <p>任务 ID</p>
+        :type TaskId: str
+        """
+        self._TaskId = None
+
+    @property
+    def TaskId(self):
+        r"""<p>任务 ID</p>
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TriggerAIWorkbenchTaskResponse(AbstractModel):
+    r"""TriggerAIWorkbenchTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ExecutionId: <p>执行 ID</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExecutionId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ExecutionId = None
+        self._RequestId = None
+
+    @property
+    def ExecutionId(self):
+        r"""<p>执行 ID</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ExecutionId
+
+    @ExecutionId.setter
+    def ExecutionId(self, ExecutionId):
+        self._ExecutionId = ExecutionId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._ExecutionId = params.get("ExecutionId")
+        self._RequestId = params.get("RequestId")
+
+
 class TriggerDigitalTwinTaskResp(AbstractModel):
     r"""触发数字分身任务响应
 
@@ -3855,6 +8942,261 @@ class TriggerDigitalTwinTaskResp(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class UpdateAIWorkbenchAgentRequest(AbstractModel):
+    r"""UpdateAIWorkbenchAgent请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AgentId: <p>Agent ID</p>
+        :type AgentId: str
+        :param _Name: <p>Agent 名称</p>
+        :type Name: str
+        :param _Description: <p>Agent 描述</p>
+        :type Description: str
+        :param _Category: <p>Agent 分类</p>
+        :type Category: str
+        :param _Tags: <p>Agent 标签</p>
+        :type Tags: list of str
+        :param _Instruction: <p>Agent 提示词</p>
+        :type Instruction: :class:`tencentcloud.monitor.v20230616.models.InstructionConfig`
+        :param _SkillIds: <p>关联技能 ID 列表</p>
+        :type SkillIds: list of str
+        :param _Source: <p>来源</p>
+        :type Source: str
+        :param _Status: <p>状态</p>
+        :type Status: str
+        :param _ResourceMapId: <p>关联的资源地图 ID</p>
+        :type ResourceMapId: str
+        :param _MCPIds: <p>关联的mcp</p>
+        :type MCPIds: list of str
+        :param _EnvVars: <p>agent运行时环境变量</p>
+        :type EnvVars: list of EnvVar
+        """
+        self._AgentId = None
+        self._Name = None
+        self._Description = None
+        self._Category = None
+        self._Tags = None
+        self._Instruction = None
+        self._SkillIds = None
+        self._Source = None
+        self._Status = None
+        self._ResourceMapId = None
+        self._MCPIds = None
+        self._EnvVars = None
+
+    @property
+    def AgentId(self):
+        r"""<p>Agent ID</p>
+        :rtype: str
+        """
+        return self._AgentId
+
+    @AgentId.setter
+    def AgentId(self, AgentId):
+        self._AgentId = AgentId
+
+    @property
+    def Name(self):
+        r"""<p>Agent 名称</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Description(self):
+        r"""<p>Agent 描述</p>
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def Category(self):
+        r"""<p>Agent 分类</p>
+        :rtype: str
+        """
+        return self._Category
+
+    @Category.setter
+    def Category(self, Category):
+        self._Category = Category
+
+    @property
+    def Tags(self):
+        r"""<p>Agent 标签</p>
+        :rtype: list of str
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def Instruction(self):
+        r"""<p>Agent 提示词</p>
+        :rtype: :class:`tencentcloud.monitor.v20230616.models.InstructionConfig`
+        """
+        return self._Instruction
+
+    @Instruction.setter
+    def Instruction(self, Instruction):
+        self._Instruction = Instruction
+
+    @property
+    def SkillIds(self):
+        r"""<p>关联技能 ID 列表</p>
+        :rtype: list of str
+        """
+        return self._SkillIds
+
+    @SkillIds.setter
+    def SkillIds(self, SkillIds):
+        self._SkillIds = SkillIds
+
+    @property
+    def Source(self):
+        r"""<p>来源</p>
+        :rtype: str
+        """
+        return self._Source
+
+    @Source.setter
+    def Source(self, Source):
+        self._Source = Source
+
+    @property
+    def Status(self):
+        r"""<p>状态</p>
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def ResourceMapId(self):
+        r"""<p>关联的资源地图 ID</p>
+        :rtype: str
+        """
+        return self._ResourceMapId
+
+    @ResourceMapId.setter
+    def ResourceMapId(self, ResourceMapId):
+        self._ResourceMapId = ResourceMapId
+
+    @property
+    def MCPIds(self):
+        r"""<p>关联的mcp</p>
+        :rtype: list of str
+        """
+        return self._MCPIds
+
+    @MCPIds.setter
+    def MCPIds(self, MCPIds):
+        self._MCPIds = MCPIds
+
+    @property
+    def EnvVars(self):
+        r"""<p>agent运行时环境变量</p>
+        :rtype: list of EnvVar
+        """
+        return self._EnvVars
+
+    @EnvVars.setter
+    def EnvVars(self, EnvVars):
+        self._EnvVars = EnvVars
+
+
+    def _deserialize(self, params):
+        self._AgentId = params.get("AgentId")
+        self._Name = params.get("Name")
+        self._Description = params.get("Description")
+        self._Category = params.get("Category")
+        self._Tags = params.get("Tags")
+        if params.get("Instruction") is not None:
+            self._Instruction = InstructionConfig()
+            self._Instruction._deserialize(params.get("Instruction"))
+        self._SkillIds = params.get("SkillIds")
+        self._Source = params.get("Source")
+        self._Status = params.get("Status")
+        self._ResourceMapId = params.get("ResourceMapId")
+        self._MCPIds = params.get("MCPIds")
+        if params.get("EnvVars") is not None:
+            self._EnvVars = []
+            for item in params.get("EnvVars"):
+                obj = EnvVar()
+                obj._deserialize(item)
+                self._EnvVars.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateAIWorkbenchAgentResponse(AbstractModel):
+    r"""UpdateAIWorkbenchAgent返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Agent: <p>更新后的 Agent 信息</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Agent: :class:`tencentcloud.monitor.v20230616.models.AgentInfo`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Agent = None
+        self._RequestId = None
+
+    @property
+    def Agent(self):
+        r"""<p>更新后的 Agent 信息</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.monitor.v20230616.models.AgentInfo`
+        """
+        return self._Agent
+
+    @Agent.setter
+    def Agent(self, Agent):
+        self._Agent = Agent
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Agent") is not None:
+            self._Agent = AgentInfo()
+            self._Agent._deserialize(params.get("Agent"))
+        self._RequestId = params.get("RequestId")
 
 
 class WeWorkRobotNoticeTmpl(AbstractModel):

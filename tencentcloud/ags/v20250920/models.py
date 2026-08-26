@@ -1052,6 +1052,8 @@ class CreateSandboxToolRequest(AbstractModel):
         :type StorageMounts: list of StorageMount
         :param _CustomConfiguration: <p>沙箱工具自定义配置</p>
         :type CustomConfiguration: :class:`tencentcloud.ags.v20250920.models.CustomConfiguration`
+        :param _ComputerConfiguration: <p>桌面电脑环境类沙箱配置</p>
+        :type ComputerConfiguration: :class:`tencentcloud.ags.v20250920.models.ComputerConfiguration`
         :param _LogConfiguration: <p>沙箱工具日志推送相关配置</p>
         :type LogConfiguration: :class:`tencentcloud.ags.v20250920.models.LogConfiguration`
         :param _Persistent: <p>常驻沙箱标识</p>
@@ -1067,6 +1069,7 @@ class CreateSandboxToolRequest(AbstractModel):
         self._RoleArn = None
         self._StorageMounts = None
         self._CustomConfiguration = None
+        self._ComputerConfiguration = None
         self._LogConfiguration = None
         self._Persistent = None
 
@@ -1181,6 +1184,17 @@ class CreateSandboxToolRequest(AbstractModel):
         self._CustomConfiguration = CustomConfiguration
 
     @property
+    def ComputerConfiguration(self):
+        r"""<p>桌面电脑环境类沙箱配置</p>
+        :rtype: :class:`tencentcloud.ags.v20250920.models.ComputerConfiguration`
+        """
+        return self._ComputerConfiguration
+
+    @ComputerConfiguration.setter
+    def ComputerConfiguration(self, ComputerConfiguration):
+        self._ComputerConfiguration = ComputerConfiguration
+
+    @property
     def LogConfiguration(self):
         r"""<p>沙箱工具日志推送相关配置</p>
         :rtype: :class:`tencentcloud.ags.v20250920.models.LogConfiguration`
@@ -1228,6 +1242,9 @@ class CreateSandboxToolRequest(AbstractModel):
         if params.get("CustomConfiguration") is not None:
             self._CustomConfiguration = CustomConfiguration()
             self._CustomConfiguration._deserialize(params.get("CustomConfiguration"))
+        if params.get("ComputerConfiguration") is not None:
+            self._ComputerConfiguration = ComputerConfiguration()
+            self._ComputerConfiguration._deserialize(params.get("ComputerConfiguration"))
         if params.get("LogConfiguration") is not None:
             self._LogConfiguration = LogConfiguration()
             self._LogConfiguration._deserialize(params.get("LogConfiguration"))
@@ -5236,12 +5253,15 @@ class UpdateSandboxToolRequest(AbstractModel):
         :type Tags: list of Tag
         :param _CustomConfiguration: <p>沙箱工具自定义配置</p>
         :type CustomConfiguration: :class:`tencentcloud.ags.v20250920.models.CustomConfiguration`
+        :param _ComputerConfiguration: <p>桌面电脑环境类沙箱配置</p>
+        :type ComputerConfiguration: :class:`tencentcloud.ags.v20250920.models.ComputerConfiguration`
         """
         self._ToolId = None
         self._Description = None
         self._NetworkConfiguration = None
         self._Tags = None
         self._CustomConfiguration = None
+        self._ComputerConfiguration = None
 
     @property
     def ToolId(self):
@@ -5298,6 +5318,17 @@ class UpdateSandboxToolRequest(AbstractModel):
     def CustomConfiguration(self, CustomConfiguration):
         self._CustomConfiguration = CustomConfiguration
 
+    @property
+    def ComputerConfiguration(self):
+        r"""<p>桌面电脑环境类沙箱配置</p>
+        :rtype: :class:`tencentcloud.ags.v20250920.models.ComputerConfiguration`
+        """
+        return self._ComputerConfiguration
+
+    @ComputerConfiguration.setter
+    def ComputerConfiguration(self, ComputerConfiguration):
+        self._ComputerConfiguration = ComputerConfiguration
+
 
     def _deserialize(self, params):
         self._ToolId = params.get("ToolId")
@@ -5314,6 +5345,9 @@ class UpdateSandboxToolRequest(AbstractModel):
         if params.get("CustomConfiguration") is not None:
             self._CustomConfiguration = CustomConfiguration()
             self._CustomConfiguration._deserialize(params.get("CustomConfiguration"))
+        if params.get("ComputerConfiguration") is not None:
+            self._ComputerConfiguration = ComputerConfiguration()
+            self._ComputerConfiguration._deserialize(params.get("ComputerConfiguration"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

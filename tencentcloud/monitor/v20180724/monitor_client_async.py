@@ -115,6 +115,24 @@ class MonitorClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateAlarmHistoryShield(
+            self,
+            request: models.CreateAlarmHistoryShieldRequest,
+            opts: Dict = None,
+    ) -> models.CreateAlarmHistoryShieldResponse:
+        """
+        创建小程序告警屏蔽规则
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateAlarmHistoryShield"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateAlarmHistoryShieldResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateAlarmNotice(
             self,
             request: models.CreateAlarmNoticeRequest,
@@ -554,6 +572,24 @@ class MonitorClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DeleteAlarmHistoryShields(
+            self,
+            request: models.DeleteAlarmHistoryShieldsRequest,
+            opts: Dict = None,
+    ) -> models.DeleteAlarmHistoryShieldsResponse:
+        """
+        删除小程序告警屏蔽规则
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteAlarmHistoryShields"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteAlarmHistoryShieldsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DeleteAlarmNotices(
             self,
             request: models.DeleteAlarmNoticesRequest,
@@ -987,6 +1023,24 @@ class MonitorClient(AbstractClient):
         kwargs["action"] = "DescribeAlarmHistories"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeAlarmHistoriesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeAlarmHistoryShield(
+            self,
+            request: models.DescribeAlarmHistoryShieldRequest,
+            opts: Dict = None,
+    ) -> models.DescribeAlarmHistoryShieldResponse:
+        """
+        获取小程序告警屏蔽规则
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeAlarmHistoryShield"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeAlarmHistoryShieldResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -2458,6 +2512,24 @@ class MonitorClient(AbstractClient):
         kwargs["action"] = "InstallPlugins"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.InstallPluginsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyAlarmHistoryShield(
+            self,
+            request: models.ModifyAlarmHistoryShieldRequest,
+            opts: Dict = None,
+    ) -> models.ModifyAlarmHistoryShieldResponse:
+        """
+        修改小程序告警屏蔽规则
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyAlarmHistoryShield"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyAlarmHistoryShieldResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

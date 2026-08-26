@@ -45074,7 +45074,7 @@ class DescribeTextToSpeechAsyncTaskResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ErrorCode: <p>错误码，成功时返回0</p>
+        :param _ErrorCode: <p>错误码，成功时返回0，处理中返回100</p>
         :type ErrorCode: int
         :param _Msg: <p>错误信息，成功时返回success</p>
         :type Msg: str
@@ -45099,7 +45099,7 @@ class DescribeTextToSpeechAsyncTaskResponse(AbstractModel):
 
     @property
     def ErrorCode(self):
-        r"""<p>错误码，成功时返回0</p>
+        r"""<p>错误码，成功时返回0，处理中返回100</p>
         :rtype: int
         """
         return self._ErrorCode
@@ -63280,44 +63280,35 @@ class MediaTranscodeItem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _OutputStorage: 转码后文件的目标存储。
+        :param _OutputStorage: <p>转码后文件的目标存储。</p>
         :type OutputStorage: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
-        :param _Path: 转码后的视频文件路径。
+        :param _Path: <p>转码后的视频文件路径。</p>
         :type Path: str
-        :param _Definition: 转码规格 ID，参见[转码参数模板](https://cloud.tencent.com/document/product/862/37042)。
+        :param _Definition: <p>转码规格 ID，参见<a href="https://cloud.tencent.com/document/product/862/37042">转码参数模板</a>。</p>
         :type Definition: int
-        :param _Bitrate: 视频流码率平均值与音频流码率平均值之和， 单位：bps。
+        :param _Bitrate: <p>视频流码率平均值与音频流码率平均值之和， 单位：bps。</p>
         :type Bitrate: int
-        :param _Height: 视频流高度的最大值，单位：px。
+        :param _Height: <p>视频流高度的最大值，单位：px。</p>
         :type Height: int
-        :param _Width: 视频流宽度的最大值，单位：px。
+        :param _Width: <p>视频流宽度的最大值，单位：px。</p>
         :type Width: int
-        :param _Size: 媒体文件总大小（视频为 HLS 时，大小是 m3u8 和 ts 文件大小的总和），单位：字节。
+        :param _Size: <p>媒体文件总大小（视频为 HLS 时，大小是 m3u8 和 ts 文件大小的总和），单位：字节。</p>
         :type Size: int
-        :param _Duration: 视频时长，单位：秒。
+        :param _Duration: <p>视频时长，单位：秒。</p>
         :type Duration: float
-        :param _Container: 容器类型，例如 m4a，mp4 等。
+        :param _Container: <p>容器类型，例如 m4a，mp4 等。</p>
         :type Container: str
-        :param _Md5: 视频的 md5 值。
+        :param _Md5: <p>视频的 md5 值。</p>
         :type Md5: str
-        :param _AudioStreamSet: 音频流信息。
+        :param _AudioStreamSet: <p>音频流信息。</p>
         :type AudioStreamSet: list of MediaAudioStreamItem
-        :param _VideoStreamSet: 视频流信息。
+        :param _VideoStreamSet: <p>视频流信息。</p>
         :type VideoStreamSet: list of MediaVideoStreamItem
-        :param _CallBackExtInfo: 视频转码使用增强项说明，增强项解释
-<li>hdr：HDR配置</li>
-<li>wd_fps：插帧帧率配置</li>
-<li>video_super_resolution：	超分配置</li>
-<li>repair：综合增强配置</li>
-<li>denoise：视频降噪配置</li>
-<li>color_enhance：色彩增强配置</li>
-<li>scratch：去划痕配置</li>
-<li>artifact：去伪影（毛刺）配置</li>
-<li>sharp：细节增强配置</li>
-<li>low_light：低光照增强配置</li>
-<li>face_enhance：人脸增强配置</li>
+        :param _CallBackExtInfo: <p>视频转码使用增强项说明，增强项解释</p><li>hdr：HDR配置</li><li>wd_fps：插帧帧率配置</li><li>video_super_resolution：    超分配置</li><li>repair：综合增强配置</li><li>denoise：视频降噪配置</li><li>color_enhance：色彩增强配置</li><li>scratch：去划痕配置</li><li>artifact：去伪影（毛刺）配置</li><li>sharp：细节增强配置</li><li>low_light：低光照增强配置</li><li>face_enhance：人脸增强配置</li>
 注意：此字段可能返回 null，表示取不到有效值。
         :type CallBackExtInfo: str
+        :param _Usage: <p>MediaTranscodeItem</p>
+        :type Usage: :class:`tencentcloud.mps.v20190612.models.MediaUsageItem`
         """
         self._OutputStorage = None
         self._Path = None
@@ -63332,10 +63323,11 @@ class MediaTranscodeItem(AbstractModel):
         self._AudioStreamSet = None
         self._VideoStreamSet = None
         self._CallBackExtInfo = None
+        self._Usage = None
 
     @property
     def OutputStorage(self):
-        r"""转码后文件的目标存储。
+        r"""<p>转码后文件的目标存储。</p>
         :rtype: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
         """
         return self._OutputStorage
@@ -63346,7 +63338,7 @@ class MediaTranscodeItem(AbstractModel):
 
     @property
     def Path(self):
-        r"""转码后的视频文件路径。
+        r"""<p>转码后的视频文件路径。</p>
         :rtype: str
         """
         return self._Path
@@ -63357,7 +63349,7 @@ class MediaTranscodeItem(AbstractModel):
 
     @property
     def Definition(self):
-        r"""转码规格 ID，参见[转码参数模板](https://cloud.tencent.com/document/product/862/37042)。
+        r"""<p>转码规格 ID，参见<a href="https://cloud.tencent.com/document/product/862/37042">转码参数模板</a>。</p>
         :rtype: int
         """
         return self._Definition
@@ -63368,7 +63360,7 @@ class MediaTranscodeItem(AbstractModel):
 
     @property
     def Bitrate(self):
-        r"""视频流码率平均值与音频流码率平均值之和， 单位：bps。
+        r"""<p>视频流码率平均值与音频流码率平均值之和， 单位：bps。</p>
         :rtype: int
         """
         return self._Bitrate
@@ -63379,7 +63371,7 @@ class MediaTranscodeItem(AbstractModel):
 
     @property
     def Height(self):
-        r"""视频流高度的最大值，单位：px。
+        r"""<p>视频流高度的最大值，单位：px。</p>
         :rtype: int
         """
         return self._Height
@@ -63390,7 +63382,7 @@ class MediaTranscodeItem(AbstractModel):
 
     @property
     def Width(self):
-        r"""视频流宽度的最大值，单位：px。
+        r"""<p>视频流宽度的最大值，单位：px。</p>
         :rtype: int
         """
         return self._Width
@@ -63401,7 +63393,7 @@ class MediaTranscodeItem(AbstractModel):
 
     @property
     def Size(self):
-        r"""媒体文件总大小（视频为 HLS 时，大小是 m3u8 和 ts 文件大小的总和），单位：字节。
+        r"""<p>媒体文件总大小（视频为 HLS 时，大小是 m3u8 和 ts 文件大小的总和），单位：字节。</p>
         :rtype: int
         """
         return self._Size
@@ -63412,7 +63404,7 @@ class MediaTranscodeItem(AbstractModel):
 
     @property
     def Duration(self):
-        r"""视频时长，单位：秒。
+        r"""<p>视频时长，单位：秒。</p>
         :rtype: float
         """
         return self._Duration
@@ -63423,7 +63415,7 @@ class MediaTranscodeItem(AbstractModel):
 
     @property
     def Container(self):
-        r"""容器类型，例如 m4a，mp4 等。
+        r"""<p>容器类型，例如 m4a，mp4 等。</p>
         :rtype: str
         """
         return self._Container
@@ -63434,7 +63426,7 @@ class MediaTranscodeItem(AbstractModel):
 
     @property
     def Md5(self):
-        r"""视频的 md5 值。
+        r"""<p>视频的 md5 值。</p>
         :rtype: str
         """
         return self._Md5
@@ -63445,7 +63437,7 @@ class MediaTranscodeItem(AbstractModel):
 
     @property
     def AudioStreamSet(self):
-        r"""音频流信息。
+        r"""<p>音频流信息。</p>
         :rtype: list of MediaAudioStreamItem
         """
         return self._AudioStreamSet
@@ -63456,7 +63448,7 @@ class MediaTranscodeItem(AbstractModel):
 
     @property
     def VideoStreamSet(self):
-        r"""视频流信息。
+        r"""<p>视频流信息。</p>
         :rtype: list of MediaVideoStreamItem
         """
         return self._VideoStreamSet
@@ -63467,18 +63459,7 @@ class MediaTranscodeItem(AbstractModel):
 
     @property
     def CallBackExtInfo(self):
-        r"""视频转码使用增强项说明，增强项解释
-<li>hdr：HDR配置</li>
-<li>wd_fps：插帧帧率配置</li>
-<li>video_super_resolution：	超分配置</li>
-<li>repair：综合增强配置</li>
-<li>denoise：视频降噪配置</li>
-<li>color_enhance：色彩增强配置</li>
-<li>scratch：去划痕配置</li>
-<li>artifact：去伪影（毛刺）配置</li>
-<li>sharp：细节增强配置</li>
-<li>low_light：低光照增强配置</li>
-<li>face_enhance：人脸增强配置</li>
+        r"""<p>视频转码使用增强项说明，增强项解释</p><li>hdr：HDR配置</li><li>wd_fps：插帧帧率配置</li><li>video_super_resolution：    超分配置</li><li>repair：综合增强配置</li><li>denoise：视频降噪配置</li><li>color_enhance：色彩增强配置</li><li>scratch：去划痕配置</li><li>artifact：去伪影（毛刺）配置</li><li>sharp：细节增强配置</li><li>low_light：低光照增强配置</li><li>face_enhance：人脸增强配置</li>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -63487,6 +63468,17 @@ class MediaTranscodeItem(AbstractModel):
     @CallBackExtInfo.setter
     def CallBackExtInfo(self, CallBackExtInfo):
         self._CallBackExtInfo = CallBackExtInfo
+
+    @property
+    def Usage(self):
+        r"""<p>MediaTranscodeItem</p>
+        :rtype: :class:`tencentcloud.mps.v20190612.models.MediaUsageItem`
+        """
+        return self._Usage
+
+    @Usage.setter
+    def Usage(self, Usage):
+        self._Usage = Usage
 
 
     def _deserialize(self, params):
@@ -63515,6 +63507,90 @@ class MediaTranscodeItem(AbstractModel):
                 obj._deserialize(item)
                 self._VideoStreamSet.append(obj)
         self._CallBackExtInfo = params.get("CallBackExtInfo")
+        if params.get("Usage") is not None:
+            self._Usage = MediaUsageItem()
+            self._Usage._deserialize(params.get("Usage"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class MediaUsageItem(AbstractModel):
+    r"""AIGC用量数据展示
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InputImageCount: <p>输入图片数</p><p>单位：个数</p>
+        :type InputImageCount: int
+        :param _InputSeconds: <p>输入秒数</p><p>单位：秒</p>
+        :type InputSeconds: int
+        :param _OutputSeconds: <p>输出秒数</p><p>单位：秒</p>
+        :type OutputSeconds: int
+        :param _TotalSeconds: <p>总秒数</p><p>单位：秒</p>
+        :type TotalSeconds: int
+        """
+        self._InputImageCount = None
+        self._InputSeconds = None
+        self._OutputSeconds = None
+        self._TotalSeconds = None
+
+    @property
+    def InputImageCount(self):
+        r"""<p>输入图片数</p><p>单位：个数</p>
+        :rtype: int
+        """
+        return self._InputImageCount
+
+    @InputImageCount.setter
+    def InputImageCount(self, InputImageCount):
+        self._InputImageCount = InputImageCount
+
+    @property
+    def InputSeconds(self):
+        r"""<p>输入秒数</p><p>单位：秒</p>
+        :rtype: int
+        """
+        return self._InputSeconds
+
+    @InputSeconds.setter
+    def InputSeconds(self, InputSeconds):
+        self._InputSeconds = InputSeconds
+
+    @property
+    def OutputSeconds(self):
+        r"""<p>输出秒数</p><p>单位：秒</p>
+        :rtype: int
+        """
+        return self._OutputSeconds
+
+    @OutputSeconds.setter
+    def OutputSeconds(self, OutputSeconds):
+        self._OutputSeconds = OutputSeconds
+
+    @property
+    def TotalSeconds(self):
+        r"""<p>总秒数</p><p>单位：秒</p>
+        :rtype: int
+        """
+        return self._TotalSeconds
+
+    @TotalSeconds.setter
+    def TotalSeconds(self, TotalSeconds):
+        self._TotalSeconds = TotalSeconds
+
+
+    def _deserialize(self, params):
+        self._InputImageCount = params.get("InputImageCount")
+        self._InputSeconds = params.get("InputSeconds")
+        self._OutputSeconds = params.get("OutputSeconds")
+        self._TotalSeconds = params.get("TotalSeconds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

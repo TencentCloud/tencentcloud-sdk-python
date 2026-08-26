@@ -141,6 +141,29 @@ class MonitorClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateAlarmHistoryShield(self, request):
+        r"""创建小程序告警屏蔽规则
+
+        :param request: Request instance for CreateAlarmHistoryShield.
+        :type request: :class:`tencentcloud.monitor.v20180724.models.CreateAlarmHistoryShieldRequest`
+        :rtype: :class:`tencentcloud.monitor.v20180724.models.CreateAlarmHistoryShieldResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateAlarmHistoryShield", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateAlarmHistoryShieldResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateAlarmNotice(self, request):
         r"""创建通知模板
 
@@ -700,6 +723,29 @@ class MonitorClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DeleteAlarmHistoryShields(self, request):
+        r"""删除小程序告警屏蔽规则
+
+        :param request: Request instance for DeleteAlarmHistoryShields.
+        :type request: :class:`tencentcloud.monitor.v20180724.models.DeleteAlarmHistoryShieldsRequest`
+        :rtype: :class:`tencentcloud.monitor.v20180724.models.DeleteAlarmHistoryShieldsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteAlarmHistoryShields", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteAlarmHistoryShieldsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DeleteAlarmNotices(self, request):
         r"""删除告警通知模板
 
@@ -1249,6 +1295,29 @@ class MonitorClient(AbstractClient):
             body = self.call("DescribeAlarmHistories", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeAlarmHistoriesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeAlarmHistoryShield(self, request):
+        r"""获取小程序告警屏蔽规则
+
+        :param request: Request instance for DescribeAlarmHistoryShield.
+        :type request: :class:`tencentcloud.monitor.v20180724.models.DescribeAlarmHistoryShieldRequest`
+        :rtype: :class:`tencentcloud.monitor.v20180724.models.DescribeAlarmHistoryShieldResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAlarmHistoryShield", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeAlarmHistoryShieldResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -3120,6 +3189,29 @@ class MonitorClient(AbstractClient):
             body = self.call("InstallPlugins", params, headers=headers)
             response = json.loads(body)
             model = models.InstallPluginsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyAlarmHistoryShield(self, request):
+        r"""修改小程序告警屏蔽规则
+
+        :param request: Request instance for ModifyAlarmHistoryShield.
+        :type request: :class:`tencentcloud.monitor.v20180724.models.ModifyAlarmHistoryShieldRequest`
+        :rtype: :class:`tencentcloud.monitor.v20180724.models.ModifyAlarmHistoryShieldResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyAlarmHistoryShield", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyAlarmHistoryShieldResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

@@ -25,25 +25,25 @@ class ChatCompletionsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Messages: 会话内容，按对话时间从旧到新在数组中排列，长度受模型窗口大小限制。
+        :param _Messages: <p>会话内容，按对话时间从旧到新在数组中排列，长度受模型窗口大小限制。</p>
         :type Messages: list of Message
-        :param _ModelName: 模型名称，可选模型列表：hunyuan-turbo，hunyuan-large，hunyuan-large-longcontext，hunyuan-standard，hunyuan-standard-256K，deepseek-r1，deepseek-v3，deepseek-r1-distill-qwen-32b。
+        :param _ModelName: <p>模型名称，可选模型列表：hunyuan-turbo，hunyuan-large，hunyuan-large-longcontext，hunyuan-standard，hunyuan-standard-256K，deepseek-r1，deepseek-v3，deepseek-r1-distill-qwen-32b。</p>
         :type ModelName: str
-        :param _Stream: 是否以流式接口的形式返回数据，默认true。
+        :param _Stream: <p>是否以流式接口的形式返回数据，默认true。</p>
         :type Stream: bool
-        :param _TopP: 取值区间为[0.0, 1.0], 非必要不建议使用, 不合理的取值会影响效果 。
+        :param _TopP: <p>取值区间为[0.0, 1.0], 非必要不建议使用, 不合理的取值会影响效果 。</p>
         :type TopP: float
-        :param _Temperature: 取值区间为[0.0, 2.0], 非必要不建议使用, 不合理的取值会影响效果 。
+        :param _Temperature: <p>取值区间为[0.0, 2.0], 非必要不建议使用, 不合理的取值会影响效果 。</p>
         :type Temperature: float
-        :param _OnlineSearch: 是否开启联网搜索。默认为 false。
+        :param _OnlineSearch: <p>是否开启联网搜索。默认为 false。</p>
         :type OnlineSearch: bool
-        :param _OnlineSearchOptions: 当 OnlineSearch 为 true 时，指定的搜索引擎，默认为 bing。
+        :param _OnlineSearchOptions: <p>当 OnlineSearch 为 true 时，指定的搜索引擎，默认为 bing。</p>
         :type OnlineSearchOptions: :class:`tencentcloud.es.v20250101.models.OnlineSearchOptions`
-        :param _Tools: 可调用的工具列表，当前支持模型：hunyuan-turbo, deepseek-v3。
+        :param _Tools: <p>可调用的工具列表，当前支持模型：hunyuan-turbo, deepseek-v3。</p>
         :type Tools: list of Tool
-        :param _ToolChoice: 工具使用选项，可选值包括 none、auto、custom。说明：1. 仅对 hunyuan-turbo、deepseek-v3 模型生效。2. none：不调用工具；auto：模型自行选择生成回复或调用工具；custom：强制模型调用指定的工具。3. 未设置时，默认值为auto
+        :param _ToolChoice: <p>工具使用选项，可选值包括 none、auto、custom。说明：1. 仅对 hunyuan-turbo、deepseek-v3 模型生效。2. none：不调用工具；auto：模型自行选择生成回复或调用工具；custom：强制模型调用指定的工具。3. 未设置时，默认值为auto</p>
         :type ToolChoice: str
-        :param _CustomTool: 强制模型调用指定的工具，当参数ToolChoice为custom时，此参数为必填
+        :param _CustomTool: <p>强制模型调用指定的工具，当参数ToolChoice为custom时，此参数为必填</p>
         :type CustomTool: :class:`tencentcloud.es.v20250101.models.Tool`
         """
         self._Messages = None
@@ -59,7 +59,7 @@ class ChatCompletionsRequest(AbstractModel):
 
     @property
     def Messages(self):
-        r"""会话内容，按对话时间从旧到新在数组中排列，长度受模型窗口大小限制。
+        r"""<p>会话内容，按对话时间从旧到新在数组中排列，长度受模型窗口大小限制。</p>
         :rtype: list of Message
         """
         return self._Messages
@@ -70,7 +70,7 @@ class ChatCompletionsRequest(AbstractModel):
 
     @property
     def ModelName(self):
-        r"""模型名称，可选模型列表：hunyuan-turbo，hunyuan-large，hunyuan-large-longcontext，hunyuan-standard，hunyuan-standard-256K，deepseek-r1，deepseek-v3，deepseek-r1-distill-qwen-32b。
+        r"""<p>模型名称，可选模型列表：hunyuan-turbo，hunyuan-large，hunyuan-large-longcontext，hunyuan-standard，hunyuan-standard-256K，deepseek-r1，deepseek-v3，deepseek-r1-distill-qwen-32b。</p>
         :rtype: str
         """
         return self._ModelName
@@ -81,7 +81,7 @@ class ChatCompletionsRequest(AbstractModel):
 
     @property
     def Stream(self):
-        r"""是否以流式接口的形式返回数据，默认true。
+        r"""<p>是否以流式接口的形式返回数据，默认true。</p>
         :rtype: bool
         """
         return self._Stream
@@ -92,7 +92,7 @@ class ChatCompletionsRequest(AbstractModel):
 
     @property
     def TopP(self):
-        r"""取值区间为[0.0, 1.0], 非必要不建议使用, 不合理的取值会影响效果 。
+        r"""<p>取值区间为[0.0, 1.0], 非必要不建议使用, 不合理的取值会影响效果 。</p>
         :rtype: float
         """
         return self._TopP
@@ -103,7 +103,7 @@ class ChatCompletionsRequest(AbstractModel):
 
     @property
     def Temperature(self):
-        r"""取值区间为[0.0, 2.0], 非必要不建议使用, 不合理的取值会影响效果 。
+        r"""<p>取值区间为[0.0, 2.0], 非必要不建议使用, 不合理的取值会影响效果 。</p>
         :rtype: float
         """
         return self._Temperature
@@ -114,7 +114,7 @@ class ChatCompletionsRequest(AbstractModel):
 
     @property
     def OnlineSearch(self):
-        r"""是否开启联网搜索。默认为 false。
+        r"""<p>是否开启联网搜索。默认为 false。</p>
         :rtype: bool
         """
         return self._OnlineSearch
@@ -125,7 +125,7 @@ class ChatCompletionsRequest(AbstractModel):
 
     @property
     def OnlineSearchOptions(self):
-        r"""当 OnlineSearch 为 true 时，指定的搜索引擎，默认为 bing。
+        r"""<p>当 OnlineSearch 为 true 时，指定的搜索引擎，默认为 bing。</p>
         :rtype: :class:`tencentcloud.es.v20250101.models.OnlineSearchOptions`
         """
         return self._OnlineSearchOptions
@@ -136,7 +136,7 @@ class ChatCompletionsRequest(AbstractModel):
 
     @property
     def Tools(self):
-        r"""可调用的工具列表，当前支持模型：hunyuan-turbo, deepseek-v3。
+        r"""<p>可调用的工具列表，当前支持模型：hunyuan-turbo, deepseek-v3。</p>
         :rtype: list of Tool
         """
         return self._Tools
@@ -147,7 +147,7 @@ class ChatCompletionsRequest(AbstractModel):
 
     @property
     def ToolChoice(self):
-        r"""工具使用选项，可选值包括 none、auto、custom。说明：1. 仅对 hunyuan-turbo、deepseek-v3 模型生效。2. none：不调用工具；auto：模型自行选择生成回复或调用工具；custom：强制模型调用指定的工具。3. 未设置时，默认值为auto
+        r"""<p>工具使用选项，可选值包括 none、auto、custom。说明：1. 仅对 hunyuan-turbo、deepseek-v3 模型生效。2. none：不调用工具；auto：模型自行选择生成回复或调用工具；custom：强制模型调用指定的工具。3. 未设置时，默认值为auto</p>
         :rtype: str
         """
         return self._ToolChoice
@@ -158,7 +158,7 @@ class ChatCompletionsRequest(AbstractModel):
 
     @property
     def CustomTool(self):
-        r"""强制模型调用指定的工具，当参数ToolChoice为custom时，此参数为必填
+        r"""<p>强制模型调用指定的工具，当参数ToolChoice为custom时，此参数为必填</p>
         :rtype: :class:`tencentcloud.es.v20250101.models.Tool`
         """
         return self._CustomTool
@@ -210,13 +210,13 @@ class ChatCompletionsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Id: 此次请求的id
+        :param _Id: <p>此次请求的id</p>
         :type Id: str
-        :param _Choices: 回复内容
+        :param _Choices: <p>回复内容</p>
         :type Choices: list of Choice
-        :param _Usage: token使用量
+        :param _Usage: <p>token使用量</p>
         :type Usage: :class:`tencentcloud.es.v20250101.models.TokenUsage`
-        :param _OnlineSearchContent: 联网搜索结果。
+        :param _OnlineSearchContent: <p>联网搜索结果。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type OnlineSearchContent: list of WebContent
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。本接口为流式响应接口，当请求成功时，RequestId 会被放在 HTTP 响应的 Header "X-TC-RequestId" 中。
@@ -230,7 +230,7 @@ class ChatCompletionsResponse(AbstractModel):
 
     @property
     def Id(self):
-        r"""此次请求的id
+        r"""<p>此次请求的id</p>
         :rtype: str
         """
         return self._Id
@@ -241,7 +241,7 @@ class ChatCompletionsResponse(AbstractModel):
 
     @property
     def Choices(self):
-        r"""回复内容
+        r"""<p>回复内容</p>
         :rtype: list of Choice
         """
         return self._Choices
@@ -252,7 +252,7 @@ class ChatCompletionsResponse(AbstractModel):
 
     @property
     def Usage(self):
-        r"""token使用量
+        r"""<p>token使用量</p>
         :rtype: :class:`tencentcloud.es.v20250101.models.TokenUsage`
         """
         return self._Usage
@@ -263,7 +263,7 @@ class ChatCompletionsResponse(AbstractModel):
 
     @property
     def OnlineSearchContent(self):
-        r"""联网搜索结果。
+        r"""<p>联网搜索结果。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of WebContent
         """

@@ -3545,24 +3545,22 @@ class CreateAIAgentCallRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SdkAppId: 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+        :param _SdkAppId: <p>应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc</p>
         :type SdkAppId: int
-        :param _AIAgentId: AI智能体ID
+        :param _AIAgentId: <p>AI智能体ID</p>
         :type AIAgentId: int
-        :param _Callee: 被叫号码
+        :param _Callee: <p>被叫号码</p>
         :type Callee: str
-        :param _Callers: 主叫号码列表
+        :param _Callers: <p>主叫号码列表</p>
         :type Callers: list of str
-        :param _PromptVariables: 提示词变量
+        :param _PromptVariables: <p>提示词变量</p>
         :type PromptVariables: list of Variable
-        :param _Variables: 通用变量： <p>提示词变量</p> <p>欢迎语变量</p> <p> 欢迎语延迟播放(秒级)：welcome-message-delay</p>  <p> dify变量</p>  
-
-1. dify-inputs-xxx 为dify的inputs变量
-2.  dify-inputs-user 为dify的user值
-3.  dify-inputs-conversation_id 为dify的conversation_id值
+        :param _Variables: <p>通用变量： <p>提示词变量</p> <p>欢迎语变量</p> <p> 欢迎语延迟播放(秒级)：welcome-message-delay</p>  <p> dify变量</p>  </p><ol><li>dify-inputs-xxx 为dify的inputs变量</li><li>dify-inputs-user 为dify的user值</li><li>dify-inputs-conversation_id 为dify的conversation_id值</li></ol>
         :type Variables: list of Variable
-        :param _MaxRingTimeoutSecond: 最大振铃时长，达到时长阈值自动挂断。 仅自携号码支持当前参数
+        :param _MaxRingTimeoutSecond: <p>最大振铃时长，达到时长阈值自动挂断。 仅自携号码支持当前参数</p>
         :type MaxRingTimeoutSecond: int
+        :param _AcquireTimeoutSecond: <p>智能体并发不足时，排队等待超时时间，单位秒</p><p>取值范围：[0, 5]</p><p>默认值：5</p>
+        :type AcquireTimeoutSecond: int
         """
         self._SdkAppId = None
         self._AIAgentId = None
@@ -3571,10 +3569,11 @@ class CreateAIAgentCallRequest(AbstractModel):
         self._PromptVariables = None
         self._Variables = None
         self._MaxRingTimeoutSecond = None
+        self._AcquireTimeoutSecond = None
 
     @property
     def SdkAppId(self):
-        r"""应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+        r"""<p>应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc</p>
         :rtype: int
         """
         return self._SdkAppId
@@ -3585,7 +3584,7 @@ class CreateAIAgentCallRequest(AbstractModel):
 
     @property
     def AIAgentId(self):
-        r"""AI智能体ID
+        r"""<p>AI智能体ID</p>
         :rtype: int
         """
         return self._AIAgentId
@@ -3596,7 +3595,7 @@ class CreateAIAgentCallRequest(AbstractModel):
 
     @property
     def Callee(self):
-        r"""被叫号码
+        r"""<p>被叫号码</p>
         :rtype: str
         """
         return self._Callee
@@ -3607,7 +3606,7 @@ class CreateAIAgentCallRequest(AbstractModel):
 
     @property
     def Callers(self):
-        r"""主叫号码列表
+        r"""<p>主叫号码列表</p>
         :rtype: list of str
         """
         return self._Callers
@@ -3620,7 +3619,7 @@ class CreateAIAgentCallRequest(AbstractModel):
     def PromptVariables(self):
         warnings.warn("parameter `PromptVariables` is deprecated", DeprecationWarning) 
 
-        r"""提示词变量
+        r"""<p>提示词变量</p>
         :rtype: list of Variable
         """
         return self._PromptVariables
@@ -3633,11 +3632,7 @@ class CreateAIAgentCallRequest(AbstractModel):
 
     @property
     def Variables(self):
-        r"""通用变量： <p>提示词变量</p> <p>欢迎语变量</p> <p> 欢迎语延迟播放(秒级)：welcome-message-delay</p>  <p> dify变量</p>  
-
-1. dify-inputs-xxx 为dify的inputs变量
-2.  dify-inputs-user 为dify的user值
-3.  dify-inputs-conversation_id 为dify的conversation_id值
+        r"""<p>通用变量： <p>提示词变量</p> <p>欢迎语变量</p> <p> 欢迎语延迟播放(秒级)：welcome-message-delay</p>  <p> dify变量</p>  </p><ol><li>dify-inputs-xxx 为dify的inputs变量</li><li>dify-inputs-user 为dify的user值</li><li>dify-inputs-conversation_id 为dify的conversation_id值</li></ol>
         :rtype: list of Variable
         """
         return self._Variables
@@ -3648,7 +3643,7 @@ class CreateAIAgentCallRequest(AbstractModel):
 
     @property
     def MaxRingTimeoutSecond(self):
-        r"""最大振铃时长，达到时长阈值自动挂断。 仅自携号码支持当前参数
+        r"""<p>最大振铃时长，达到时长阈值自动挂断。 仅自携号码支持当前参数</p>
         :rtype: int
         """
         return self._MaxRingTimeoutSecond
@@ -3656,6 +3651,17 @@ class CreateAIAgentCallRequest(AbstractModel):
     @MaxRingTimeoutSecond.setter
     def MaxRingTimeoutSecond(self, MaxRingTimeoutSecond):
         self._MaxRingTimeoutSecond = MaxRingTimeoutSecond
+
+    @property
+    def AcquireTimeoutSecond(self):
+        r"""<p>智能体并发不足时，排队等待超时时间，单位秒</p><p>取值范围：[0, 5]</p><p>默认值：5</p>
+        :rtype: int
+        """
+        return self._AcquireTimeoutSecond
+
+    @AcquireTimeoutSecond.setter
+    def AcquireTimeoutSecond(self, AcquireTimeoutSecond):
+        self._AcquireTimeoutSecond = AcquireTimeoutSecond
 
 
     def _deserialize(self, params):
@@ -3676,6 +3682,7 @@ class CreateAIAgentCallRequest(AbstractModel):
                 obj._deserialize(item)
                 self._Variables.append(obj)
         self._MaxRingTimeoutSecond = params.get("MaxRingTimeoutSecond")
+        self._AcquireTimeoutSecond = params.get("AcquireTimeoutSecond")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3693,7 +3700,7 @@ class CreateAIAgentCallResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SessionId: 新创建的会话 ID
+        :param _SessionId: <p>新创建的会话 ID</p>
         :type SessionId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -3703,7 +3710,7 @@ class CreateAIAgentCallResponse(AbstractModel):
 
     @property
     def SessionId(self):
-        r"""新创建的会话 ID
+        r"""<p>新创建的会话 ID</p>
         :rtype: str
         """
         return self._SessionId

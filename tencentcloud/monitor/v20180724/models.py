@@ -4363,6 +4363,325 @@ class CoverStaffInfo(AbstractModel):
         
 
 
+class CreateAlarmHistoryShieldRequest(AbstractModel):
+    r"""CreateAlarmHistoryShield请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Module: 模块名，这里填“monitor”
+        :type Module: str
+        :param _Name: 屏蔽策略名称
+        :type Name: str
+        :param _MonitorType: 监控类型
+        :type MonitorType: str
+        :param _ShieldPolicyId: 屏蔽策略id
+        :type ShieldPolicyId: str
+        :param _ShieldTimeType: 屏蔽时间类型 FOREVER_SHIELD:永久屏蔽 PERIOD_SHIELD:绝对时间范围屏蔽 LOOP_SHIELD:相对时间范围屏蔽	
+        :type ShieldTimeType: str
+        :param _NameSpace: 命名空间即策略类型
+        :type NameSpace: str
+        :param _ShieldObject: 屏蔽对象
+        :type ShieldObject: list of str
+        :param _MetricName: 指标名称
+        :type MetricName: str
+        :param _ShieldMetric: 屏蔽指标 为空则为全部指标
+        :type ShieldMetric: list of str
+        :param _StartTime: 开始时间 相对时间范围:36000 绝对时间范围:1648742400 缺省:0	
+        :type StartTime: int
+        :param _EndTime: 结束时间 相对时间范围:72000 绝对时间范围:1649088000 缺省:0	
+        :type EndTime: int
+        :param _LoopStartDate: 循环开始日期 2022/04/01 缺省:0	
+        :type LoopStartDate: int
+        :param _LoopEndDate: 循环结束日期 2022/04/05 缺省:0	
+        :type LoopEndDate: int
+        :param _ShieldAlarmLevel: 需要屏蔽的告警等级，取值范围Warn,Remind,Serious	
+        :type ShieldAlarmLevel: str
+        :param _Description: 屏蔽规则的描述
+        :type Description: str
+        :param _TimeZone: 时区，东八区+8，西八区减8，以此类推	
+        :type TimeZone: float
+        :param _SessionId: 被屏蔽的告警会话ID(历史的alarmId)
+        :type SessionId: str
+        """
+        self._Module = None
+        self._Name = None
+        self._MonitorType = None
+        self._ShieldPolicyId = None
+        self._ShieldTimeType = None
+        self._NameSpace = None
+        self._ShieldObject = None
+        self._MetricName = None
+        self._ShieldMetric = None
+        self._StartTime = None
+        self._EndTime = None
+        self._LoopStartDate = None
+        self._LoopEndDate = None
+        self._ShieldAlarmLevel = None
+        self._Description = None
+        self._TimeZone = None
+        self._SessionId = None
+
+    @property
+    def Module(self):
+        r"""模块名，这里填“monitor”
+        :rtype: str
+        """
+        return self._Module
+
+    @Module.setter
+    def Module(self, Module):
+        self._Module = Module
+
+    @property
+    def Name(self):
+        r"""屏蔽策略名称
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def MonitorType(self):
+        r"""监控类型
+        :rtype: str
+        """
+        return self._MonitorType
+
+    @MonitorType.setter
+    def MonitorType(self, MonitorType):
+        self._MonitorType = MonitorType
+
+    @property
+    def ShieldPolicyId(self):
+        r"""屏蔽策略id
+        :rtype: str
+        """
+        return self._ShieldPolicyId
+
+    @ShieldPolicyId.setter
+    def ShieldPolicyId(self, ShieldPolicyId):
+        self._ShieldPolicyId = ShieldPolicyId
+
+    @property
+    def ShieldTimeType(self):
+        r"""屏蔽时间类型 FOREVER_SHIELD:永久屏蔽 PERIOD_SHIELD:绝对时间范围屏蔽 LOOP_SHIELD:相对时间范围屏蔽	
+        :rtype: str
+        """
+        return self._ShieldTimeType
+
+    @ShieldTimeType.setter
+    def ShieldTimeType(self, ShieldTimeType):
+        self._ShieldTimeType = ShieldTimeType
+
+    @property
+    def NameSpace(self):
+        r"""命名空间即策略类型
+        :rtype: str
+        """
+        return self._NameSpace
+
+    @NameSpace.setter
+    def NameSpace(self, NameSpace):
+        self._NameSpace = NameSpace
+
+    @property
+    def ShieldObject(self):
+        r"""屏蔽对象
+        :rtype: list of str
+        """
+        return self._ShieldObject
+
+    @ShieldObject.setter
+    def ShieldObject(self, ShieldObject):
+        self._ShieldObject = ShieldObject
+
+    @property
+    def MetricName(self):
+        r"""指标名称
+        :rtype: str
+        """
+        return self._MetricName
+
+    @MetricName.setter
+    def MetricName(self, MetricName):
+        self._MetricName = MetricName
+
+    @property
+    def ShieldMetric(self):
+        r"""屏蔽指标 为空则为全部指标
+        :rtype: list of str
+        """
+        return self._ShieldMetric
+
+    @ShieldMetric.setter
+    def ShieldMetric(self, ShieldMetric):
+        self._ShieldMetric = ShieldMetric
+
+    @property
+    def StartTime(self):
+        r"""开始时间 相对时间范围:36000 绝对时间范围:1648742400 缺省:0	
+        :rtype: int
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""结束时间 相对时间范围:72000 绝对时间范围:1649088000 缺省:0	
+        :rtype: int
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def LoopStartDate(self):
+        r"""循环开始日期 2022/04/01 缺省:0	
+        :rtype: int
+        """
+        return self._LoopStartDate
+
+    @LoopStartDate.setter
+    def LoopStartDate(self, LoopStartDate):
+        self._LoopStartDate = LoopStartDate
+
+    @property
+    def LoopEndDate(self):
+        r"""循环结束日期 2022/04/05 缺省:0	
+        :rtype: int
+        """
+        return self._LoopEndDate
+
+    @LoopEndDate.setter
+    def LoopEndDate(self, LoopEndDate):
+        self._LoopEndDate = LoopEndDate
+
+    @property
+    def ShieldAlarmLevel(self):
+        r"""需要屏蔽的告警等级，取值范围Warn,Remind,Serious	
+        :rtype: str
+        """
+        return self._ShieldAlarmLevel
+
+    @ShieldAlarmLevel.setter
+    def ShieldAlarmLevel(self, ShieldAlarmLevel):
+        self._ShieldAlarmLevel = ShieldAlarmLevel
+
+    @property
+    def Description(self):
+        r"""屏蔽规则的描述
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def TimeZone(self):
+        r"""时区，东八区+8，西八区减8，以此类推	
+        :rtype: float
+        """
+        return self._TimeZone
+
+    @TimeZone.setter
+    def TimeZone(self, TimeZone):
+        self._TimeZone = TimeZone
+
+    @property
+    def SessionId(self):
+        r"""被屏蔽的告警会话ID(历史的alarmId)
+        :rtype: str
+        """
+        return self._SessionId
+
+    @SessionId.setter
+    def SessionId(self, SessionId):
+        self._SessionId = SessionId
+
+
+    def _deserialize(self, params):
+        self._Module = params.get("Module")
+        self._Name = params.get("Name")
+        self._MonitorType = params.get("MonitorType")
+        self._ShieldPolicyId = params.get("ShieldPolicyId")
+        self._ShieldTimeType = params.get("ShieldTimeType")
+        self._NameSpace = params.get("NameSpace")
+        self._ShieldObject = params.get("ShieldObject")
+        self._MetricName = params.get("MetricName")
+        self._ShieldMetric = params.get("ShieldMetric")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._LoopStartDate = params.get("LoopStartDate")
+        self._LoopEndDate = params.get("LoopEndDate")
+        self._ShieldAlarmLevel = params.get("ShieldAlarmLevel")
+        self._Description = params.get("Description")
+        self._TimeZone = params.get("TimeZone")
+        self._SessionId = params.get("SessionId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateAlarmHistoryShieldResponse(AbstractModel):
+    r"""CreateAlarmHistoryShield返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ShieldId: 屏蔽规则的Id
+        :type ShieldId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ShieldId = None
+        self._RequestId = None
+
+    @property
+    def ShieldId(self):
+        r"""屏蔽规则的Id
+        :rtype: str
+        """
+        return self._ShieldId
+
+    @ShieldId.setter
+    def ShieldId(self, ShieldId):
+        self._ShieldId = ShieldId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._ShieldId = params.get("ShieldId")
+        self._RequestId = params.get("RequestId")
+
+
 class CreateAlarmNoticeRequest(AbstractModel):
     r"""CreateAlarmNotice请求参数结构体
 
@@ -8879,6 +9198,100 @@ class DataPoint(AbstractModel):
         
 
 
+class DeleteAlarmHistoryShieldsRequest(AbstractModel):
+    r"""DeleteAlarmHistoryShields请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Module: 模块名，这里填“monitor”
+        :type Module: str
+        :param _Shields: 屏蔽策略Id列表
+        :type Shields: list of str
+        :param _MonitorType: 监控类型
+        :type MonitorType: str
+        """
+        self._Module = None
+        self._Shields = None
+        self._MonitorType = None
+
+    @property
+    def Module(self):
+        r"""模块名，这里填“monitor”
+        :rtype: str
+        """
+        return self._Module
+
+    @Module.setter
+    def Module(self, Module):
+        self._Module = Module
+
+    @property
+    def Shields(self):
+        r"""屏蔽策略Id列表
+        :rtype: list of str
+        """
+        return self._Shields
+
+    @Shields.setter
+    def Shields(self, Shields):
+        self._Shields = Shields
+
+    @property
+    def MonitorType(self):
+        r"""监控类型
+        :rtype: str
+        """
+        return self._MonitorType
+
+    @MonitorType.setter
+    def MonitorType(self, MonitorType):
+        self._MonitorType = MonitorType
+
+
+    def _deserialize(self, params):
+        self._Module = params.get("Module")
+        self._Shields = params.get("Shields")
+        self._MonitorType = params.get("MonitorType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteAlarmHistoryShieldsResponse(AbstractModel):
+    r"""DeleteAlarmHistoryShields返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class DeleteAlarmNoticesRequest(AbstractModel):
     r"""DeleteAlarmNotices请求参数结构体
 
@@ -11732,6 +12145,515 @@ class DescribeAlarmHistoriesResponse(AbstractModel):
                 obj = AlarmHistory()
                 obj._deserialize(item)
                 self._Histories.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeAlarmHistoryShieldRequest(AbstractModel):
+    r"""DescribeAlarmHistoryShield请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Module: 模块名，这里填“monitor”
+        :type Module: str
+        :param _ShieldPolicyId: 策略id
+        :type ShieldPolicyId: str
+        :param _ShieldObject: 告警历史维度
+        :type ShieldObject: list of str
+        :param _MetricName: 指标名称
+        :type MetricName: str
+        :param _ShieldId: 屏蔽策略Id
+        :type ShieldId: str
+        :param _ShieldAlarmLevel: 告警等级
+        :type ShieldAlarmLevel: str
+        :param _SessionId: 告警历史会话ID
+        :type SessionId: str
+        :param _MonitorType: 监控类型
+        :type MonitorType: str
+        """
+        self._Module = None
+        self._ShieldPolicyId = None
+        self._ShieldObject = None
+        self._MetricName = None
+        self._ShieldId = None
+        self._ShieldAlarmLevel = None
+        self._SessionId = None
+        self._MonitorType = None
+
+    @property
+    def Module(self):
+        r"""模块名，这里填“monitor”
+        :rtype: str
+        """
+        return self._Module
+
+    @Module.setter
+    def Module(self, Module):
+        self._Module = Module
+
+    @property
+    def ShieldPolicyId(self):
+        r"""策略id
+        :rtype: str
+        """
+        return self._ShieldPolicyId
+
+    @ShieldPolicyId.setter
+    def ShieldPolicyId(self, ShieldPolicyId):
+        self._ShieldPolicyId = ShieldPolicyId
+
+    @property
+    def ShieldObject(self):
+        r"""告警历史维度
+        :rtype: list of str
+        """
+        return self._ShieldObject
+
+    @ShieldObject.setter
+    def ShieldObject(self, ShieldObject):
+        self._ShieldObject = ShieldObject
+
+    @property
+    def MetricName(self):
+        r"""指标名称
+        :rtype: str
+        """
+        return self._MetricName
+
+    @MetricName.setter
+    def MetricName(self, MetricName):
+        self._MetricName = MetricName
+
+    @property
+    def ShieldId(self):
+        r"""屏蔽策略Id
+        :rtype: str
+        """
+        return self._ShieldId
+
+    @ShieldId.setter
+    def ShieldId(self, ShieldId):
+        self._ShieldId = ShieldId
+
+    @property
+    def ShieldAlarmLevel(self):
+        r"""告警等级
+        :rtype: str
+        """
+        return self._ShieldAlarmLevel
+
+    @ShieldAlarmLevel.setter
+    def ShieldAlarmLevel(self, ShieldAlarmLevel):
+        self._ShieldAlarmLevel = ShieldAlarmLevel
+
+    @property
+    def SessionId(self):
+        r"""告警历史会话ID
+        :rtype: str
+        """
+        return self._SessionId
+
+    @SessionId.setter
+    def SessionId(self, SessionId):
+        self._SessionId = SessionId
+
+    @property
+    def MonitorType(self):
+        r"""监控类型
+        :rtype: str
+        """
+        return self._MonitorType
+
+    @MonitorType.setter
+    def MonitorType(self, MonitorType):
+        self._MonitorType = MonitorType
+
+
+    def _deserialize(self, params):
+        self._Module = params.get("Module")
+        self._ShieldPolicyId = params.get("ShieldPolicyId")
+        self._ShieldObject = params.get("ShieldObject")
+        self._MetricName = params.get("MetricName")
+        self._ShieldId = params.get("ShieldId")
+        self._ShieldAlarmLevel = params.get("ShieldAlarmLevel")
+        self._SessionId = params.get("SessionId")
+        self._MonitorType = params.get("MonitorType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAlarmHistoryShieldResponse(AbstractModel):
+    r"""DescribeAlarmHistoryShield返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ShieldId: 告警屏蔽规则的ID
+        :type ShieldId: str
+        :param _MonitorType: 监控类型
+        :type MonitorType: str
+        :param _Name: 屏蔽策略名称
+        :type Name: str
+        :param _Enable: 是否开启 1=开启 0=关闭
+        :type Enable: int
+        :param _MonitorTypeShowName: 监控类型展示名称
+        :type MonitorTypeShowName: str
+        :param _NameSpace: 命名空间即策略类型
+        :type NameSpace: str
+        :param _NameSpaceShowName: 策略类型展示名称
+        :type NameSpaceShowName: str
+        :param _ShieldObject: 屏蔽对象
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ShieldObject: list of str
+        :param _ShieldMetric: 屏蔽指标列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ShieldMetric: list of ShieldMetric
+        :param _ShieldTimeType: 屏蔽时间类型 FOREVER_SHIELD:永久屏蔽 PERIOD_SHIELD:绝对时间范围屏蔽 LOOP_SHIELD:相对时间范围屏蔽
+        :type ShieldTimeType: str
+        :param _StartTime: 开始时间 10:00
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StartTime: int
+        :param _EndTime: 结束时间 20:00
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EndTime: int
+        :param _LoopStartDate: 循环开始日期 2022/04/01
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LoopStartDate: int
+        :param _LoopEndDate: 循环结束日期 2022/04/05
+注意：此字段可能返回 null，表示取不到有效值。
+        :type LoopEndDate: int
+        :param _CurrentStatus: NOT_TRIGGERED:未生效 TRIGGERING:生效中 EXPIRED:已过期
+        :type CurrentStatus: str
+        :param _ShieldPolicyId: 需要屏蔽的策略ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ShieldPolicyId: str
+        :param _ShieldAlarmLevel: 需要屏蔽的告警等级
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ShieldAlarmLevel: list of str
+        :param _ShieldTag: 屏蔽类型，1为维度屏蔽，0为实例名称屏蔽
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ShieldTag: str
+        :param _MetricName: 指标名称
+        :type MetricName: str
+        :param _TimeZone: 时区
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TimeZone: float
+        :param _SessionId: 告警历史会话ID
+        :type SessionId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ShieldId = None
+        self._MonitorType = None
+        self._Name = None
+        self._Enable = None
+        self._MonitorTypeShowName = None
+        self._NameSpace = None
+        self._NameSpaceShowName = None
+        self._ShieldObject = None
+        self._ShieldMetric = None
+        self._ShieldTimeType = None
+        self._StartTime = None
+        self._EndTime = None
+        self._LoopStartDate = None
+        self._LoopEndDate = None
+        self._CurrentStatus = None
+        self._ShieldPolicyId = None
+        self._ShieldAlarmLevel = None
+        self._ShieldTag = None
+        self._MetricName = None
+        self._TimeZone = None
+        self._SessionId = None
+        self._RequestId = None
+
+    @property
+    def ShieldId(self):
+        r"""告警屏蔽规则的ID
+        :rtype: str
+        """
+        return self._ShieldId
+
+    @ShieldId.setter
+    def ShieldId(self, ShieldId):
+        self._ShieldId = ShieldId
+
+    @property
+    def MonitorType(self):
+        r"""监控类型
+        :rtype: str
+        """
+        return self._MonitorType
+
+    @MonitorType.setter
+    def MonitorType(self, MonitorType):
+        self._MonitorType = MonitorType
+
+    @property
+    def Name(self):
+        r"""屏蔽策略名称
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Enable(self):
+        r"""是否开启 1=开启 0=关闭
+        :rtype: int
+        """
+        return self._Enable
+
+    @Enable.setter
+    def Enable(self, Enable):
+        self._Enable = Enable
+
+    @property
+    def MonitorTypeShowName(self):
+        r"""监控类型展示名称
+        :rtype: str
+        """
+        return self._MonitorTypeShowName
+
+    @MonitorTypeShowName.setter
+    def MonitorTypeShowName(self, MonitorTypeShowName):
+        self._MonitorTypeShowName = MonitorTypeShowName
+
+    @property
+    def NameSpace(self):
+        r"""命名空间即策略类型
+        :rtype: str
+        """
+        return self._NameSpace
+
+    @NameSpace.setter
+    def NameSpace(self, NameSpace):
+        self._NameSpace = NameSpace
+
+    @property
+    def NameSpaceShowName(self):
+        r"""策略类型展示名称
+        :rtype: str
+        """
+        return self._NameSpaceShowName
+
+    @NameSpaceShowName.setter
+    def NameSpaceShowName(self, NameSpaceShowName):
+        self._NameSpaceShowName = NameSpaceShowName
+
+    @property
+    def ShieldObject(self):
+        r"""屏蔽对象
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._ShieldObject
+
+    @ShieldObject.setter
+    def ShieldObject(self, ShieldObject):
+        self._ShieldObject = ShieldObject
+
+    @property
+    def ShieldMetric(self):
+        r"""屏蔽指标列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of ShieldMetric
+        """
+        return self._ShieldMetric
+
+    @ShieldMetric.setter
+    def ShieldMetric(self, ShieldMetric):
+        self._ShieldMetric = ShieldMetric
+
+    @property
+    def ShieldTimeType(self):
+        r"""屏蔽时间类型 FOREVER_SHIELD:永久屏蔽 PERIOD_SHIELD:绝对时间范围屏蔽 LOOP_SHIELD:相对时间范围屏蔽
+        :rtype: str
+        """
+        return self._ShieldTimeType
+
+    @ShieldTimeType.setter
+    def ShieldTimeType(self, ShieldTimeType):
+        self._ShieldTimeType = ShieldTimeType
+
+    @property
+    def StartTime(self):
+        r"""开始时间 10:00
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""结束时间 20:00
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def LoopStartDate(self):
+        r"""循环开始日期 2022/04/01
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._LoopStartDate
+
+    @LoopStartDate.setter
+    def LoopStartDate(self, LoopStartDate):
+        self._LoopStartDate = LoopStartDate
+
+    @property
+    def LoopEndDate(self):
+        r"""循环结束日期 2022/04/05
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._LoopEndDate
+
+    @LoopEndDate.setter
+    def LoopEndDate(self, LoopEndDate):
+        self._LoopEndDate = LoopEndDate
+
+    @property
+    def CurrentStatus(self):
+        r"""NOT_TRIGGERED:未生效 TRIGGERING:生效中 EXPIRED:已过期
+        :rtype: str
+        """
+        return self._CurrentStatus
+
+    @CurrentStatus.setter
+    def CurrentStatus(self, CurrentStatus):
+        self._CurrentStatus = CurrentStatus
+
+    @property
+    def ShieldPolicyId(self):
+        r"""需要屏蔽的策略ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ShieldPolicyId
+
+    @ShieldPolicyId.setter
+    def ShieldPolicyId(self, ShieldPolicyId):
+        self._ShieldPolicyId = ShieldPolicyId
+
+    @property
+    def ShieldAlarmLevel(self):
+        r"""需要屏蔽的告警等级
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._ShieldAlarmLevel
+
+    @ShieldAlarmLevel.setter
+    def ShieldAlarmLevel(self, ShieldAlarmLevel):
+        self._ShieldAlarmLevel = ShieldAlarmLevel
+
+    @property
+    def ShieldTag(self):
+        r"""屏蔽类型，1为维度屏蔽，0为实例名称屏蔽
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ShieldTag
+
+    @ShieldTag.setter
+    def ShieldTag(self, ShieldTag):
+        self._ShieldTag = ShieldTag
+
+    @property
+    def MetricName(self):
+        r"""指标名称
+        :rtype: str
+        """
+        return self._MetricName
+
+    @MetricName.setter
+    def MetricName(self, MetricName):
+        self._MetricName = MetricName
+
+    @property
+    def TimeZone(self):
+        r"""时区
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
+        return self._TimeZone
+
+    @TimeZone.setter
+    def TimeZone(self, TimeZone):
+        self._TimeZone = TimeZone
+
+    @property
+    def SessionId(self):
+        r"""告警历史会话ID
+        :rtype: str
+        """
+        return self._SessionId
+
+    @SessionId.setter
+    def SessionId(self, SessionId):
+        self._SessionId = SessionId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._ShieldId = params.get("ShieldId")
+        self._MonitorType = params.get("MonitorType")
+        self._Name = params.get("Name")
+        self._Enable = params.get("Enable")
+        self._MonitorTypeShowName = params.get("MonitorTypeShowName")
+        self._NameSpace = params.get("NameSpace")
+        self._NameSpaceShowName = params.get("NameSpaceShowName")
+        self._ShieldObject = params.get("ShieldObject")
+        if params.get("ShieldMetric") is not None:
+            self._ShieldMetric = []
+            for item in params.get("ShieldMetric"):
+                obj = ShieldMetric()
+                obj._deserialize(item)
+                self._ShieldMetric.append(obj)
+        self._ShieldTimeType = params.get("ShieldTimeType")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._LoopStartDate = params.get("LoopStartDate")
+        self._LoopEndDate = params.get("LoopEndDate")
+        self._CurrentStatus = params.get("CurrentStatus")
+        self._ShieldPolicyId = params.get("ShieldPolicyId")
+        self._ShieldAlarmLevel = params.get("ShieldAlarmLevel")
+        self._ShieldTag = params.get("ShieldTag")
+        self._MetricName = params.get("MetricName")
+        self._TimeZone = params.get("TimeZone")
+        self._SessionId = params.get("SessionId")
         self._RequestId = params.get("RequestId")
 
 
@@ -30171,6 +31093,295 @@ class MidQueryCondition(AbstractModel):
         
 
 
+class ModifyAlarmHistoryShieldRequest(AbstractModel):
+    r"""ModifyAlarmHistoryShield请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Module: 模块名，这里填“monitor”
+        :type Module: str
+        :param _ShieldId: 屏蔽策略的Id
+        :type ShieldId: str
+        :param _Name: 屏蔽策略名称
+        :type Name: str
+        :param _MonitorType: 监控类型
+        :type MonitorType: str
+        :param _ShieldTimeType: 屏蔽时间类型 FOREVER_SHIELD:永久屏蔽 PERIOD_SHIELD:绝对时间范围屏蔽 LOOP_SHIELD:相对时间范围屏蔽
+        :type ShieldTimeType: str
+        :param _ShieldPolicyId: 需要屏蔽的策略ID
+        :type ShieldPolicyId: str
+        :param _NameSpace: 命名空间即策略类型
+        :type NameSpace: str
+        :param _ShieldObject: 屏蔽对象
+        :type ShieldObject: list of str
+        :param _MetricName: 指标名称
+        :type MetricName: str
+        :param _StartTime: 开始时间 相对时间范围:36000 绝对时间范围:1648742400 缺省:0
+        :type StartTime: int
+        :param _EndTime: 结束时间 相对时间范围:72000 绝对时间范围:1649088000 缺省:0
+        :type EndTime: int
+        :param _LoopStartDate: 循环开始日期 2022/04/01 缺省:0
+        :type LoopStartDate: int
+        :param _LoopEndDate: 循环结束日期 2022/04/05 缺省:0
+        :type LoopEndDate: int
+        :param _ShieldAlarmLevel: 需要屏蔽的告警等级
+        :type ShieldAlarmLevel: str
+        :param _TimeZone:  时区，东八区+8，西八区减8，以此类推
+        :type TimeZone: float
+        :param _SessionId: 告警历史会话ID
+        :type SessionId: str
+        """
+        self._Module = None
+        self._ShieldId = None
+        self._Name = None
+        self._MonitorType = None
+        self._ShieldTimeType = None
+        self._ShieldPolicyId = None
+        self._NameSpace = None
+        self._ShieldObject = None
+        self._MetricName = None
+        self._StartTime = None
+        self._EndTime = None
+        self._LoopStartDate = None
+        self._LoopEndDate = None
+        self._ShieldAlarmLevel = None
+        self._TimeZone = None
+        self._SessionId = None
+
+    @property
+    def Module(self):
+        r"""模块名，这里填“monitor”
+        :rtype: str
+        """
+        return self._Module
+
+    @Module.setter
+    def Module(self, Module):
+        self._Module = Module
+
+    @property
+    def ShieldId(self):
+        r"""屏蔽策略的Id
+        :rtype: str
+        """
+        return self._ShieldId
+
+    @ShieldId.setter
+    def ShieldId(self, ShieldId):
+        self._ShieldId = ShieldId
+
+    @property
+    def Name(self):
+        r"""屏蔽策略名称
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def MonitorType(self):
+        r"""监控类型
+        :rtype: str
+        """
+        return self._MonitorType
+
+    @MonitorType.setter
+    def MonitorType(self, MonitorType):
+        self._MonitorType = MonitorType
+
+    @property
+    def ShieldTimeType(self):
+        r"""屏蔽时间类型 FOREVER_SHIELD:永久屏蔽 PERIOD_SHIELD:绝对时间范围屏蔽 LOOP_SHIELD:相对时间范围屏蔽
+        :rtype: str
+        """
+        return self._ShieldTimeType
+
+    @ShieldTimeType.setter
+    def ShieldTimeType(self, ShieldTimeType):
+        self._ShieldTimeType = ShieldTimeType
+
+    @property
+    def ShieldPolicyId(self):
+        r"""需要屏蔽的策略ID
+        :rtype: str
+        """
+        return self._ShieldPolicyId
+
+    @ShieldPolicyId.setter
+    def ShieldPolicyId(self, ShieldPolicyId):
+        self._ShieldPolicyId = ShieldPolicyId
+
+    @property
+    def NameSpace(self):
+        r"""命名空间即策略类型
+        :rtype: str
+        """
+        return self._NameSpace
+
+    @NameSpace.setter
+    def NameSpace(self, NameSpace):
+        self._NameSpace = NameSpace
+
+    @property
+    def ShieldObject(self):
+        r"""屏蔽对象
+        :rtype: list of str
+        """
+        return self._ShieldObject
+
+    @ShieldObject.setter
+    def ShieldObject(self, ShieldObject):
+        self._ShieldObject = ShieldObject
+
+    @property
+    def MetricName(self):
+        r"""指标名称
+        :rtype: str
+        """
+        return self._MetricName
+
+    @MetricName.setter
+    def MetricName(self, MetricName):
+        self._MetricName = MetricName
+
+    @property
+    def StartTime(self):
+        r"""开始时间 相对时间范围:36000 绝对时间范围:1648742400 缺省:0
+        :rtype: int
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""结束时间 相对时间范围:72000 绝对时间范围:1649088000 缺省:0
+        :rtype: int
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def LoopStartDate(self):
+        r"""循环开始日期 2022/04/01 缺省:0
+        :rtype: int
+        """
+        return self._LoopStartDate
+
+    @LoopStartDate.setter
+    def LoopStartDate(self, LoopStartDate):
+        self._LoopStartDate = LoopStartDate
+
+    @property
+    def LoopEndDate(self):
+        r"""循环结束日期 2022/04/05 缺省:0
+        :rtype: int
+        """
+        return self._LoopEndDate
+
+    @LoopEndDate.setter
+    def LoopEndDate(self, LoopEndDate):
+        self._LoopEndDate = LoopEndDate
+
+    @property
+    def ShieldAlarmLevel(self):
+        r"""需要屏蔽的告警等级
+        :rtype: str
+        """
+        return self._ShieldAlarmLevel
+
+    @ShieldAlarmLevel.setter
+    def ShieldAlarmLevel(self, ShieldAlarmLevel):
+        self._ShieldAlarmLevel = ShieldAlarmLevel
+
+    @property
+    def TimeZone(self):
+        r""" 时区，东八区+8，西八区减8，以此类推
+        :rtype: float
+        """
+        return self._TimeZone
+
+    @TimeZone.setter
+    def TimeZone(self, TimeZone):
+        self._TimeZone = TimeZone
+
+    @property
+    def SessionId(self):
+        r"""告警历史会话ID
+        :rtype: str
+        """
+        return self._SessionId
+
+    @SessionId.setter
+    def SessionId(self, SessionId):
+        self._SessionId = SessionId
+
+
+    def _deserialize(self, params):
+        self._Module = params.get("Module")
+        self._ShieldId = params.get("ShieldId")
+        self._Name = params.get("Name")
+        self._MonitorType = params.get("MonitorType")
+        self._ShieldTimeType = params.get("ShieldTimeType")
+        self._ShieldPolicyId = params.get("ShieldPolicyId")
+        self._NameSpace = params.get("NameSpace")
+        self._ShieldObject = params.get("ShieldObject")
+        self._MetricName = params.get("MetricName")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._LoopStartDate = params.get("LoopStartDate")
+        self._LoopEndDate = params.get("LoopEndDate")
+        self._ShieldAlarmLevel = params.get("ShieldAlarmLevel")
+        self._TimeZone = params.get("TimeZone")
+        self._SessionId = params.get("SessionId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyAlarmHistoryShieldResponse(AbstractModel):
+    r"""ModifyAlarmHistoryShield返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyAlarmNoticeRequest(AbstractModel):
     r"""ModifyAlarmNotice请求参数结构体
 
@@ -35941,25 +37152,27 @@ class PrometheusClusterAgentBasic(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Region: 地域
+        :param _Region: <p>地域</p>
         :type Region: str
-        :param _ClusterType: 集群类型。可填入tke、eks、tkeedge、tdcc、external，分别代表标准集群、弹性集群、边缘集群、注册集群 和外部集群
+        :param _ClusterType: <p>集群类型。可填入tke、eks、tkeedge、tdcc、external，分别代表标准集群、弹性集群、边缘集群、注册集群 和外部集群</p>
         :type ClusterType: str
-        :param _ClusterId: 集群 ID
+        :param _ClusterId: <p>集群 ID</p>
         :type ClusterId: str
-        :param _EnableExternal: 是否开启公网 CLB
+        :param _EnableExternal: <p>是否开启公网 CLB</p>
         :type EnableExternal: bool
-        :param _InClusterPodConfig: 集群内部署组件的pod 配置
+        :param _InClusterPodConfig: <p>集群内部署组件的pod 配置</p>
         :type InClusterPodConfig: :class:`tencentcloud.monitor.v20180724.models.PrometheusClusterAgentPodConfig`
-        :param _ExternalLabels: 该集群采集的所有指标都会带上这些labels
+        :param _ExternalLabels: <p>该集群采集的所有指标都会带上这些labels</p>
         :type ExternalLabels: list of Label
-        :param _NotInstallBasicScrape: 是否安装默认采集 exporter 和采集配置
+        :param _NotInstallBasicScrape: <p>是否安装默认采集 exporter 和采集配置</p>
         :type NotInstallBasicScrape: bool
-        :param _NotScrape: 是否安装采集配置，true 只安装采集 exporter 不会安装采集配置，false 会同时安装采集配置
+        :param _NotScrape: <p>是否安装采集配置，true 只安装采集 exporter 不会安装采集配置，false 会同时安装采集配置</p>
         :type NotScrape: bool
-        :param _DropAll: 是否丢弃所有指标，true 代表丢弃所有指标，false 代表采集默认指标
+        :param _DropAll: <p>是否丢弃所有指标，true 代表丢弃所有指标，false 代表采集默认指标</p>
         :type DropAll: bool
-        :param _OpenDefaultRecord: 是否开启默认预聚合规则
+        :param _CollectAll: <p>是否采集全部指标</p><p>枚举值：</p><ul><li>false： 不采集</li><li>true： 采集</li></ul><p>默认值：false</p>
+        :type CollectAll: bool
+        :param _OpenDefaultRecord: <p>是否开启默认预聚合规则</p>
         :type OpenDefaultRecord: bool
         """
         self._Region = None
@@ -35971,11 +37184,12 @@ class PrometheusClusterAgentBasic(AbstractModel):
         self._NotInstallBasicScrape = None
         self._NotScrape = None
         self._DropAll = None
+        self._CollectAll = None
         self._OpenDefaultRecord = None
 
     @property
     def Region(self):
-        r"""地域
+        r"""<p>地域</p>
         :rtype: str
         """
         return self._Region
@@ -35986,7 +37200,7 @@ class PrometheusClusterAgentBasic(AbstractModel):
 
     @property
     def ClusterType(self):
-        r"""集群类型。可填入tke、eks、tkeedge、tdcc、external，分别代表标准集群、弹性集群、边缘集群、注册集群 和外部集群
+        r"""<p>集群类型。可填入tke、eks、tkeedge、tdcc、external，分别代表标准集群、弹性集群、边缘集群、注册集群 和外部集群</p>
         :rtype: str
         """
         return self._ClusterType
@@ -35997,7 +37211,7 @@ class PrometheusClusterAgentBasic(AbstractModel):
 
     @property
     def ClusterId(self):
-        r"""集群 ID
+        r"""<p>集群 ID</p>
         :rtype: str
         """
         return self._ClusterId
@@ -36008,7 +37222,7 @@ class PrometheusClusterAgentBasic(AbstractModel):
 
     @property
     def EnableExternal(self):
-        r"""是否开启公网 CLB
+        r"""<p>是否开启公网 CLB</p>
         :rtype: bool
         """
         return self._EnableExternal
@@ -36019,7 +37233,7 @@ class PrometheusClusterAgentBasic(AbstractModel):
 
     @property
     def InClusterPodConfig(self):
-        r"""集群内部署组件的pod 配置
+        r"""<p>集群内部署组件的pod 配置</p>
         :rtype: :class:`tencentcloud.monitor.v20180724.models.PrometheusClusterAgentPodConfig`
         """
         return self._InClusterPodConfig
@@ -36030,7 +37244,7 @@ class PrometheusClusterAgentBasic(AbstractModel):
 
     @property
     def ExternalLabels(self):
-        r"""该集群采集的所有指标都会带上这些labels
+        r"""<p>该集群采集的所有指标都会带上这些labels</p>
         :rtype: list of Label
         """
         return self._ExternalLabels
@@ -36041,7 +37255,7 @@ class PrometheusClusterAgentBasic(AbstractModel):
 
     @property
     def NotInstallBasicScrape(self):
-        r"""是否安装默认采集 exporter 和采集配置
+        r"""<p>是否安装默认采集 exporter 和采集配置</p>
         :rtype: bool
         """
         return self._NotInstallBasicScrape
@@ -36052,7 +37266,7 @@ class PrometheusClusterAgentBasic(AbstractModel):
 
     @property
     def NotScrape(self):
-        r"""是否安装采集配置，true 只安装采集 exporter 不会安装采集配置，false 会同时安装采集配置
+        r"""<p>是否安装采集配置，true 只安装采集 exporter 不会安装采集配置，false 会同时安装采集配置</p>
         :rtype: bool
         """
         return self._NotScrape
@@ -36063,7 +37277,7 @@ class PrometheusClusterAgentBasic(AbstractModel):
 
     @property
     def DropAll(self):
-        r"""是否丢弃所有指标，true 代表丢弃所有指标，false 代表采集默认指标
+        r"""<p>是否丢弃所有指标，true 代表丢弃所有指标，false 代表采集默认指标</p>
         :rtype: bool
         """
         return self._DropAll
@@ -36073,8 +37287,19 @@ class PrometheusClusterAgentBasic(AbstractModel):
         self._DropAll = DropAll
 
     @property
+    def CollectAll(self):
+        r"""<p>是否采集全部指标</p><p>枚举值：</p><ul><li>false： 不采集</li><li>true： 采集</li></ul><p>默认值：false</p>
+        :rtype: bool
+        """
+        return self._CollectAll
+
+    @CollectAll.setter
+    def CollectAll(self, CollectAll):
+        self._CollectAll = CollectAll
+
+    @property
     def OpenDefaultRecord(self):
-        r"""是否开启默认预聚合规则
+        r"""<p>是否开启默认预聚合规则</p>
         :rtype: bool
         """
         return self._OpenDefaultRecord
@@ -36101,6 +37326,7 @@ class PrometheusClusterAgentBasic(AbstractModel):
         self._NotInstallBasicScrape = params.get("NotInstallBasicScrape")
         self._NotScrape = params.get("NotScrape")
         self._DropAll = params.get("DropAll")
+        self._CollectAll = params.get("CollectAll")
         self._OpenDefaultRecord = params.get("OpenDefaultRecord")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -40889,6 +42115,57 @@ class SetDefaultAlarmPolicyResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
+
+
+class ShieldMetric(AbstractModel):
+    r"""告警屏蔽的指标
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Metric: 屏蔽指标
+        :type Metric: str
+        :param _MetricShowName: 屏蔽指标展示名称
+        :type MetricShowName: str
+        """
+        self._Metric = None
+        self._MetricShowName = None
+
+    @property
+    def Metric(self):
+        r"""屏蔽指标
+        :rtype: str
+        """
+        return self._Metric
+
+    @Metric.setter
+    def Metric(self, Metric):
+        self._Metric = Metric
+
+    @property
+    def MetricShowName(self):
+        r"""屏蔽指标展示名称
+        :rtype: str
+        """
+        return self._MetricShowName
+
+    @MetricShowName.setter
+    def MetricShowName(self, MetricShowName):
+        self._MetricShowName = MetricShowName
+
+
+    def _deserialize(self, params):
+        self._Metric = params.get("Metric")
+        self._MetricShowName = params.get("MetricShowName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class SingleOrderedDataPoint(AbstractModel):
