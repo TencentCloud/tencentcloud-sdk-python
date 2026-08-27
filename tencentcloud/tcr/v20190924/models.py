@@ -8854,6 +8854,167 @@ class DescribeRegionsResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeReplicationExecutionsRequest(AbstractModel):
+    r"""DescribeReplicationExecutions请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RegistryId: 实例ID
+        :type RegistryId: str
+        :param _PolicyId: 策略ID
+        :type PolicyId: int
+        :param _ReplicationInstanceId: 复制实例ID
+        :type ReplicationInstanceId: str
+        :param _Page: 页数，默认为1
+        :type Page: int
+        :param _PageSize: 每页展示个数，默认为100
+        :type PageSize: int
+        """
+        self._RegistryId = None
+        self._PolicyId = None
+        self._ReplicationInstanceId = None
+        self._Page = None
+        self._PageSize = None
+
+    @property
+    def RegistryId(self):
+        r"""实例ID
+        :rtype: str
+        """
+        return self._RegistryId
+
+    @RegistryId.setter
+    def RegistryId(self, RegistryId):
+        self._RegistryId = RegistryId
+
+    @property
+    def PolicyId(self):
+        r"""策略ID
+        :rtype: int
+        """
+        return self._PolicyId
+
+    @PolicyId.setter
+    def PolicyId(self, PolicyId):
+        self._PolicyId = PolicyId
+
+    @property
+    def ReplicationInstanceId(self):
+        r"""复制实例ID
+        :rtype: str
+        """
+        return self._ReplicationInstanceId
+
+    @ReplicationInstanceId.setter
+    def ReplicationInstanceId(self, ReplicationInstanceId):
+        self._ReplicationInstanceId = ReplicationInstanceId
+
+    @property
+    def Page(self):
+        r"""页数，默认为1
+        :rtype: int
+        """
+        return self._Page
+
+    @Page.setter
+    def Page(self, Page):
+        self._Page = Page
+
+    @property
+    def PageSize(self):
+        r"""每页展示个数，默认为100
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+
+    def _deserialize(self, params):
+        self._RegistryId = params.get("RegistryId")
+        self._PolicyId = params.get("PolicyId")
+        self._ReplicationInstanceId = params.get("ReplicationInstanceId")
+        self._Page = params.get("Page")
+        self._PageSize = params.get("PageSize")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeReplicationExecutionsResponse(AbstractModel):
+    r"""DescribeReplicationExecutions返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ReplicationExecutionList: 镜像分发执行记录列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ReplicationExecutionList: list of ReplicationExecution
+        :param _TotalCount: 执行记录总数
+        :type TotalCount: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ReplicationExecutionList = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def ReplicationExecutionList(self):
+        r"""镜像分发执行记录列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of ReplicationExecution
+        """
+        return self._ReplicationExecutionList
+
+    @ReplicationExecutionList.setter
+    def ReplicationExecutionList(self, ReplicationExecutionList):
+        self._ReplicationExecutionList = ReplicationExecutionList
+
+    @property
+    def TotalCount(self):
+        r"""执行记录总数
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("ReplicationExecutionList") is not None:
+            self._ReplicationExecutionList = []
+            for item in params.get("ReplicationExecutionList"):
+                obj = ReplicationExecution()
+                obj._deserialize(item)
+                self._ReplicationExecutionList.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeReplicationInstanceCreateTasksRequest(AbstractModel):
     r"""DescribeReplicationInstanceCreateTasks请求参数结构体
 
@@ -9416,6 +9577,152 @@ class DescribeReplicationPoliciesResponse(AbstractModel):
                 obj = ReplicationPolicyInfo()
                 obj._deserialize(item)
                 self._ReplicationPolicyInfoList.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeReplicationTasksRequest(AbstractModel):
+    r"""DescribeReplicationTasks请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RegistryId: 实例ID
+        :type RegistryId: str
+        :param _ExecutionId: 执行记录ID
+        :type ExecutionId: int
+        :param _Page: 页数，默认为1
+        :type Page: int
+        :param _PageSize: 每页展示个数，默认为100
+        :type PageSize: int
+        """
+        self._RegistryId = None
+        self._ExecutionId = None
+        self._Page = None
+        self._PageSize = None
+
+    @property
+    def RegistryId(self):
+        r"""实例ID
+        :rtype: str
+        """
+        return self._RegistryId
+
+    @RegistryId.setter
+    def RegistryId(self, RegistryId):
+        self._RegistryId = RegistryId
+
+    @property
+    def ExecutionId(self):
+        r"""执行记录ID
+        :rtype: int
+        """
+        return self._ExecutionId
+
+    @ExecutionId.setter
+    def ExecutionId(self, ExecutionId):
+        self._ExecutionId = ExecutionId
+
+    @property
+    def Page(self):
+        r"""页数，默认为1
+        :rtype: int
+        """
+        return self._Page
+
+    @Page.setter
+    def Page(self, Page):
+        self._Page = Page
+
+    @property
+    def PageSize(self):
+        r"""每页展示个数，默认为100
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+
+    def _deserialize(self, params):
+        self._RegistryId = params.get("RegistryId")
+        self._ExecutionId = params.get("ExecutionId")
+        self._Page = params.get("Page")
+        self._PageSize = params.get("PageSize")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeReplicationTasksResponse(AbstractModel):
+    r"""DescribeReplicationTasks返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ReplicationTaskList: 任务列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ReplicationTaskList: list of ReplicationTask
+        :param _TotalCount: 任务列表总数
+        :type TotalCount: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ReplicationTaskList = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def ReplicationTaskList(self):
+        r"""任务列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of ReplicationTask
+        """
+        return self._ReplicationTaskList
+
+    @ReplicationTaskList.setter
+    def ReplicationTaskList(self, ReplicationTaskList):
+        self._ReplicationTaskList = ReplicationTaskList
+
+    @property
+    def TotalCount(self):
+        r"""任务列表总数
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("ReplicationTaskList") is not None:
+            self._ReplicationTaskList = []
+            for item in params.get("ReplicationTaskList"):
+                obj = ReplicationTask()
+                obj._deserialize(item)
+                self._ReplicationTaskList.append(obj)
         self._TotalCount = params.get("TotalCount")
         self._RequestId = params.get("RequestId")
 
@@ -17108,6 +17415,146 @@ class RenewInstanceResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ReplicationExecution(AbstractModel):
+    r"""策略执行记录
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ExecutionID: 执行记录ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExecutionID: int
+        :param _PolicyID: 策略ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PolicyID: int
+        :param _Status: 执行状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: str
+        :param _Total: 执行任务总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Total: int
+        :param _Succeed: 执行任务成功数
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Succeed: int
+        :param _StartTime: 开始时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StartTime: str
+        :param _EndTime: 结束时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EndTime: str
+        """
+        self._ExecutionID = None
+        self._PolicyID = None
+        self._Status = None
+        self._Total = None
+        self._Succeed = None
+        self._StartTime = None
+        self._EndTime = None
+
+    @property
+    def ExecutionID(self):
+        r"""执行记录ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._ExecutionID
+
+    @ExecutionID.setter
+    def ExecutionID(self, ExecutionID):
+        self._ExecutionID = ExecutionID
+
+    @property
+    def PolicyID(self):
+        r"""策略ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._PolicyID
+
+    @PolicyID.setter
+    def PolicyID(self, PolicyID):
+        self._PolicyID = PolicyID
+
+    @property
+    def Status(self):
+        r"""执行状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Total(self):
+        r"""执行任务总数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def Succeed(self):
+        r"""执行任务成功数
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Succeed
+
+    @Succeed.setter
+    def Succeed(self, Succeed):
+        self._Succeed = Succeed
+
+    @property
+    def StartTime(self):
+        r"""开始时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""结束时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+
+    def _deserialize(self, params):
+        self._ExecutionID = params.get("ExecutionID")
+        self._PolicyID = params.get("PolicyID")
+        self._Status = params.get("Status")
+        self._Total = params.get("Total")
+        self._Succeed = params.get("Succeed")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ReplicationFilter(AbstractModel):
     r"""同步规则过滤器
 
@@ -17668,6 +18115,146 @@ class ReplicationRule(AbstractModel):
                 obj._deserialize(item)
                 self._Filters.append(obj)
         self._Deletion = params.get("Deletion")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ReplicationTask(AbstractModel):
+    r"""实例同步/实例复制任务列表
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ResourceType: 资源类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResourceType: str
+        :param _SrcResource: 源资源
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SrcResource: str
+        :param _DstResource: 目的资源
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DstResource: str
+        :param _JobID: Job任务ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :type JobID: str
+        :param _Status: 任务执行状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Status: str
+        :param _StartTime: 开始时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StartTime: str
+        :param _EndTime: 结束时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EndTime: str
+        """
+        self._ResourceType = None
+        self._SrcResource = None
+        self._DstResource = None
+        self._JobID = None
+        self._Status = None
+        self._StartTime = None
+        self._EndTime = None
+
+    @property
+    def ResourceType(self):
+        r"""资源类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ResourceType
+
+    @ResourceType.setter
+    def ResourceType(self, ResourceType):
+        self._ResourceType = ResourceType
+
+    @property
+    def SrcResource(self):
+        r"""源资源
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._SrcResource
+
+    @SrcResource.setter
+    def SrcResource(self, SrcResource):
+        self._SrcResource = SrcResource
+
+    @property
+    def DstResource(self):
+        r"""目的资源
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._DstResource
+
+    @DstResource.setter
+    def DstResource(self, DstResource):
+        self._DstResource = DstResource
+
+    @property
+    def JobID(self):
+        r"""Job任务ID
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._JobID
+
+    @JobID.setter
+    def JobID(self, JobID):
+        self._JobID = JobID
+
+    @property
+    def Status(self):
+        r"""任务执行状态
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def StartTime(self):
+        r"""开始时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""结束时间
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+
+    def _deserialize(self, params):
+        self._ResourceType = params.get("ResourceType")
+        self._SrcResource = params.get("SrcResource")
+        self._DstResource = params.get("DstResource")
+        self._JobID = params.get("JobID")
+        self._Status = params.get("Status")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

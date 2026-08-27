@@ -79,6 +79,24 @@ class MonitorClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateDispenseExternalRule(
+            self,
+            request: models.CreateDispenseExternalRuleRequest,
+            opts: Dict = None,
+    ) -> models.CreateDispenseExternalRuleResponse:
+        """
+        转发接口：创建转发规则
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateDispenseExternalRule"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateDispenseExternalRuleResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateNoticeContentTmpl(
             self,
             request: models.CreateNoticeContentTmplRequest,
@@ -128,6 +146,24 @@ class MonitorClient(AbstractClient):
         kwargs["action"] = "DeleteAIWorkbenchTask"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DeleteAIWorkbenchTaskResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteDispenseExternalRule(
+            self,
+            request: models.DeleteDispenseExternalRuleRequest,
+            opts: Dict = None,
+    ) -> models.DeleteDispenseExternalRuleResponse:
+        """
+        规则删除接口
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteDispenseExternalRule"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteDispenseExternalRuleResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -308,6 +344,114 @@ class MonitorClient(AbstractClient):
         kwargs["action"] = "DescribeAlarmNotifyHistories"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeAlarmNotifyHistoriesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeDispenseExternalRule(
+            self,
+            request: models.DescribeDispenseExternalRuleRequest,
+            opts: Dict = None,
+    ) -> models.DescribeDispenseExternalRuleResponse:
+        """
+        转发规则查询接口
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeDispenseExternalRule"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeDispenseExternalRuleResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeDispenseExternalRuleList(
+            self,
+            request: models.DescribeDispenseExternalRuleListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeDispenseExternalRuleListResponse:
+        """
+        查询所有列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeDispenseExternalRuleList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeDispenseExternalRuleListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeDispenseRegion(
+            self,
+            request: models.DescribeDispenseRegionRequest,
+            opts: Dict = None,
+    ) -> models.DescribeDispenseRegionResponse:
+        """
+        转发地域列表查询接口
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeDispenseRegion"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeDispenseRegionResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeExtMetric(
+            self,
+            request: models.DescribeExtMetricRequest,
+            opts: Dict = None,
+    ) -> models.DescribeExtMetricResponse:
+        """
+        查询对外指标
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeExtMetric"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeExtMetricResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeExtNamespace(
+            self,
+            request: models.DescribeExtNamespaceRequest,
+            opts: Dict = None,
+    ) -> models.DescribeExtNamespaceResponse:
+        """
+        转发查询对外命名空间接口
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeExtNamespace"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeExtNamespaceResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeKafka(
+            self,
+            request: models.DescribeKafkaRequest,
+            opts: Dict = None,
+    ) -> models.DescribeKafkaResponse:
+        """
+        转发kafka连通性测试
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeKafka"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeKafkaResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -524,6 +668,42 @@ class MonitorClient(AbstractClient):
         kwargs["action"] = "ListAIWorkbenchTasks"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ListAIWorkbenchTasksResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyDispenseExternalRule(
+            self,
+            request: models.ModifyDispenseExternalRuleRequest,
+            opts: Dict = None,
+    ) -> models.ModifyDispenseExternalRuleResponse:
+        """
+        转发规则更新接口
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyDispenseExternalRule"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyDispenseExternalRuleResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyDispenseExternalRuleStatus(
+            self,
+            request: models.ModifyDispenseExternalRuleStatusRequest,
+            opts: Dict = None,
+    ) -> models.ModifyDispenseExternalRuleStatusResponse:
+        """
+        新增规则开启关闭接口
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyDispenseExternalRuleStatus"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyDispenseExternalRuleStatusResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

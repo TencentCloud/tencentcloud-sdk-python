@@ -6912,27 +6912,27 @@ class CreateOnCallFormRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Module: 固定值，为"monitor"
+        :param _Module: <p>固定值，为&quot;monitor&quot;</p>
         :type Module: str
-        :param _OnCallFormName: 值班表名称
+        :param _OnCallFormName: <p>值班表名称</p>
         :type OnCallFormName: str
-        :param _StaffInfos: 值班人员id组
+        :param _StaffInfos: <p>值班人员id组</p>
         :type StaffInfos: list of StaffInfo
-        :param _RotationType: 轮转类型
+        :param _RotationType: <p>轮转类型</p>
         :type RotationType: str
-        :param _ShiftTime: 换班时间
+        :param _ShiftTime: <p>换班时间</p>
         :type ShiftTime: str
-        :param _EffectiveStartTime: 有效期开始时间，单位s
+        :param _EffectiveStartTime: <p>有效期开始时间，单位s</p>
         :type EffectiveStartTime: int
-        :param _EffectiveEndTime: 有效期结束时间，单位s
+        :param _EffectiveEndTime: <p>有效期结束时间，单位s</p>
         :type EffectiveEndTime: int
-        :param _TimeZone: 时区(-12 - 12)
+        :param _TimeZone: <p>时区(-12 - 12)</p>
         :type TimeZone: float
-        :param _OnCallFormDesc: 值班表描述
+        :param _OnCallFormDesc: <p>值班表描述</p>
         :type OnCallFormDesc: str
-        :param _CoverStaffInfos: 轮班信息
+        :param _CoverStaffInfos: <p>轮班信息</p>
         :type CoverStaffInfos: list of CoverStaffInfo
-        :param _Tags: 模板绑定的标签
+        :param _Tags: <p>模板绑定的标签</p>
         :type Tags: list of Tag
         """
         self._Module = None
@@ -6949,7 +6949,7 @@ class CreateOnCallFormRequest(AbstractModel):
 
     @property
     def Module(self):
-        r"""固定值，为"monitor"
+        r"""<p>固定值，为&quot;monitor&quot;</p>
         :rtype: str
         """
         return self._Module
@@ -6960,7 +6960,7 @@ class CreateOnCallFormRequest(AbstractModel):
 
     @property
     def OnCallFormName(self):
-        r"""值班表名称
+        r"""<p>值班表名称</p>
         :rtype: str
         """
         return self._OnCallFormName
@@ -6971,7 +6971,7 @@ class CreateOnCallFormRequest(AbstractModel):
 
     @property
     def StaffInfos(self):
-        r"""值班人员id组
+        r"""<p>值班人员id组</p>
         :rtype: list of StaffInfo
         """
         return self._StaffInfos
@@ -6982,7 +6982,7 @@ class CreateOnCallFormRequest(AbstractModel):
 
     @property
     def RotationType(self):
-        r"""轮转类型
+        r"""<p>轮转类型</p>
         :rtype: str
         """
         return self._RotationType
@@ -6993,7 +6993,7 @@ class CreateOnCallFormRequest(AbstractModel):
 
     @property
     def ShiftTime(self):
-        r"""换班时间
+        r"""<p>换班时间</p>
         :rtype: str
         """
         return self._ShiftTime
@@ -7004,7 +7004,7 @@ class CreateOnCallFormRequest(AbstractModel):
 
     @property
     def EffectiveStartTime(self):
-        r"""有效期开始时间，单位s
+        r"""<p>有效期开始时间，单位s</p>
         :rtype: int
         """
         return self._EffectiveStartTime
@@ -7015,7 +7015,7 @@ class CreateOnCallFormRequest(AbstractModel):
 
     @property
     def EffectiveEndTime(self):
-        r"""有效期结束时间，单位s
+        r"""<p>有效期结束时间，单位s</p>
         :rtype: int
         """
         return self._EffectiveEndTime
@@ -7026,7 +7026,7 @@ class CreateOnCallFormRequest(AbstractModel):
 
     @property
     def TimeZone(self):
-        r"""时区(-12 - 12)
+        r"""<p>时区(-12 - 12)</p>
         :rtype: float
         """
         return self._TimeZone
@@ -7037,7 +7037,7 @@ class CreateOnCallFormRequest(AbstractModel):
 
     @property
     def OnCallFormDesc(self):
-        r"""值班表描述
+        r"""<p>值班表描述</p>
         :rtype: str
         """
         return self._OnCallFormDesc
@@ -7048,7 +7048,7 @@ class CreateOnCallFormRequest(AbstractModel):
 
     @property
     def CoverStaffInfos(self):
-        r"""轮班信息
+        r"""<p>轮班信息</p>
         :rtype: list of CoverStaffInfo
         """
         return self._CoverStaffInfos
@@ -7059,7 +7059,7 @@ class CreateOnCallFormRequest(AbstractModel):
 
     @property
     def Tags(self):
-        r"""模板绑定的标签
+        r"""<p>模板绑定的标签</p>
         :rtype: list of Tag
         """
         return self._Tags
@@ -7113,7 +7113,7 @@ class CreateOnCallFormResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _OnCallFormID: 值班表id
+        :param _OnCallFormID: <p>值班表id</p>
         :type OnCallFormID: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -7123,7 +7123,7 @@ class CreateOnCallFormResponse(AbstractModel):
 
     @property
     def OnCallFormID(self):
-        r"""值班表id
+        r"""<p>值班表id</p>
         :rtype: str
         """
         return self._OnCallFormID
@@ -9996,9 +9996,9 @@ class DeleteOnCallFormsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Module: 固定值，为"monitor"
+        :param _Module: <p>固定值，为&quot;monitor&quot;</p>
         :type Module: str
-        :param _OnCallFormIDs: 要删除的值班表id
+        :param _OnCallFormIDs: <p>要删除的值班表id</p>
         :type OnCallFormIDs: list of str
         """
         self._Module = None
@@ -10006,7 +10006,7 @@ class DeleteOnCallFormsRequest(AbstractModel):
 
     @property
     def Module(self):
-        r"""固定值，为"monitor"
+        r"""<p>固定值，为&quot;monitor&quot;</p>
         :rtype: str
         """
         return self._Module
@@ -10017,7 +10017,7 @@ class DeleteOnCallFormsRequest(AbstractModel):
 
     @property
     def OnCallFormIDs(self):
-        r"""要删除的值班表id
+        r"""<p>要删除的值班表id</p>
         :rtype: list of str
         """
         return self._OnCallFormIDs
@@ -10047,9 +10047,9 @@ class DeleteOnCallFormsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _FailedOnCallFormIDs: 失败删除的排班id
+        :param _FailedOnCallFormIDs: <p>失败删除的排班id</p>
         :type FailedOnCallFormIDs: list of str
-        :param _SuccessOnCallFormIDs: 成功删除的排班id
+        :param _SuccessOnCallFormIDs: <p>成功删除的排班id</p>
         :type SuccessOnCallFormIDs: list of str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -10060,7 +10060,7 @@ class DeleteOnCallFormsResponse(AbstractModel):
 
     @property
     def FailedOnCallFormIDs(self):
-        r"""失败删除的排班id
+        r"""<p>失败删除的排班id</p>
         :rtype: list of str
         """
         return self._FailedOnCallFormIDs
@@ -10071,7 +10071,7 @@ class DeleteOnCallFormsResponse(AbstractModel):
 
     @property
     def SuccessOnCallFormIDs(self):
-        r"""成功删除的排班id
+        r"""<p>成功删除的排班id</p>
         :rtype: list of str
         """
         return self._SuccessOnCallFormIDs
@@ -17861,9 +17861,9 @@ class DescribeOnCallFormRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Module: 固定值，为"monitor"
+        :param _Module: <p>固定值，为&quot;monitor&quot;</p>
         :type Module: str
-        :param _OnCallFormID: 值班id
+        :param _OnCallFormID: <p>值班id</p>
         :type OnCallFormID: str
         """
         self._Module = None
@@ -17871,7 +17871,7 @@ class DescribeOnCallFormRequest(AbstractModel):
 
     @property
     def Module(self):
-        r"""固定值，为"monitor"
+        r"""<p>固定值，为&quot;monitor&quot;</p>
         :rtype: str
         """
         return self._Module
@@ -17882,7 +17882,7 @@ class DescribeOnCallFormRequest(AbstractModel):
 
     @property
     def OnCallFormID(self):
-        r"""值班id
+        r"""<p>值班id</p>
         :rtype: str
         """
         return self._OnCallFormID
@@ -17912,7 +17912,7 @@ class DescribeOnCallFormResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _OnCallForm: 值班详情
+        :param _OnCallForm: <p>值班详情</p>
         :type OnCallForm: :class:`tencentcloud.monitor.v20180724.models.OneOnCallForm`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -17922,7 +17922,7 @@ class DescribeOnCallFormResponse(AbstractModel):
 
     @property
     def OnCallForm(self):
-        r"""值班详情
+        r"""<p>值班详情</p>
         :rtype: :class:`tencentcloud.monitor.v20180724.models.OneOnCallForm`
         """
         return self._OnCallForm
@@ -17957,19 +17957,19 @@ class DescribeOnCallFormsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Module: 固定值，为"monitor"
+        :param _Module: <p>固定值，为&quot;monitor&quot;</p>
         :type Module: str
-        :param _Offset: 分页查询起始位
+        :param _Offset: <p>分页查询起始位</p>
         :type Offset: int
-        :param _Limit: 分页查询页数
+        :param _Limit: <p>分页查询页数</p>
         :type Limit: int
-        :param _OnCallFormStaffIDs: 支持userId进行检索
+        :param _OnCallFormStaffIDs: <p>支持userId进行检索</p>
         :type OnCallFormStaffIDs: list of str
-        :param _RotationType: 值班类型
+        :param _RotationType: <p>值班类型</p>
         :type RotationType: str
-        :param _Order: 排序方式
+        :param _Order: <p>排序方式</p>
         :type Order: str
-        :param _OnCallFormName: 支持id、name进行检索
+        :param _OnCallFormName: <p>支持id、name进行检索</p>
         :type OnCallFormName: str
         """
         self._Module = None
@@ -17982,7 +17982,7 @@ class DescribeOnCallFormsRequest(AbstractModel):
 
     @property
     def Module(self):
-        r"""固定值，为"monitor"
+        r"""<p>固定值，为&quot;monitor&quot;</p>
         :rtype: str
         """
         return self._Module
@@ -17993,7 +17993,7 @@ class DescribeOnCallFormsRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""分页查询起始位
+        r"""<p>分页查询起始位</p>
         :rtype: int
         """
         return self._Offset
@@ -18004,7 +18004,7 @@ class DescribeOnCallFormsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""分页查询页数
+        r"""<p>分页查询页数</p>
         :rtype: int
         """
         return self._Limit
@@ -18015,7 +18015,7 @@ class DescribeOnCallFormsRequest(AbstractModel):
 
     @property
     def OnCallFormStaffIDs(self):
-        r"""支持userId进行检索
+        r"""<p>支持userId进行检索</p>
         :rtype: list of str
         """
         return self._OnCallFormStaffIDs
@@ -18026,7 +18026,7 @@ class DescribeOnCallFormsRequest(AbstractModel):
 
     @property
     def RotationType(self):
-        r"""值班类型
+        r"""<p>值班类型</p>
         :rtype: str
         """
         return self._RotationType
@@ -18037,7 +18037,7 @@ class DescribeOnCallFormsRequest(AbstractModel):
 
     @property
     def Order(self):
-        r"""排序方式
+        r"""<p>排序方式</p>
         :rtype: str
         """
         return self._Order
@@ -18048,7 +18048,7 @@ class DescribeOnCallFormsRequest(AbstractModel):
 
     @property
     def OnCallFormName(self):
-        r"""支持id、name进行检索
+        r"""<p>支持id、name进行检索</p>
         :rtype: str
         """
         return self._OnCallFormName
@@ -18083,9 +18083,9 @@ class DescribeOnCallFormsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _OnCallForms: 排班信息
+        :param _OnCallForms: <p>排班信息</p>
         :type OnCallForms: list of OnCallForm
-        :param _TotalCount: 总数
+        :param _TotalCount: <p>总数</p>
         :type TotalCount: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -18096,7 +18096,7 @@ class DescribeOnCallFormsResponse(AbstractModel):
 
     @property
     def OnCallForms(self):
-        r"""排班信息
+        r"""<p>排班信息</p>
         :rtype: list of OnCallForm
         """
         return self._OnCallForms
@@ -18107,7 +18107,7 @@ class DescribeOnCallFormsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        r"""总数
+        r"""<p>总数</p>
         :rtype: int
         """
         return self._TotalCount
@@ -44856,27 +44856,27 @@ class UpdateOnCallFormRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Module: 固定值，为"monitor"
+        :param _Module: <p>固定值，为&quot;monitor&quot;</p>
         :type Module: str
-        :param _OnCallFormID: 值班表id
+        :param _OnCallFormID: <p>值班表id</p>
         :type OnCallFormID: str
-        :param _OnCallFormName: 值班表名称
+        :param _OnCallFormName: <p>值班表名称</p>
         :type OnCallFormName: str
-        :param _StaffInfos: 值班人员id组
+        :param _StaffInfos: <p>值班人员id组</p>
         :type StaffInfos: list of StaffInfo
-        :param _RotationType: 轮转类型
+        :param _RotationType: <p>轮转类型</p>
         :type RotationType: str
-        :param _ShiftTime: 换班时间
+        :param _ShiftTime: <p>换班时间</p>
         :type ShiftTime: str
-        :param _EffectiveStartTime: 有效期开始时间，单位s
+        :param _EffectiveStartTime: <p>有效期开始时间，单位s</p>
         :type EffectiveStartTime: int
-        :param _EffectiveEndTime: 有效期结束时间，单位s
+        :param _EffectiveEndTime: <p>有效期结束时间，单位s</p>
         :type EffectiveEndTime: int
-        :param _TimeZone: 时区(-12 - 12)
+        :param _TimeZone: <p>时区(-12 - 12)</p>
         :type TimeZone: float
-        :param _OnCallFormDesc: 值班表描述
+        :param _OnCallFormDesc: <p>值班表描述</p>
         :type OnCallFormDesc: str
-        :param _CoverStaffInfos: 轮班信息
+        :param _CoverStaffInfos: <p>轮班信息</p>
         :type CoverStaffInfos: list of CoverStaffInfo
         """
         self._Module = None
@@ -44893,7 +44893,7 @@ class UpdateOnCallFormRequest(AbstractModel):
 
     @property
     def Module(self):
-        r"""固定值，为"monitor"
+        r"""<p>固定值，为&quot;monitor&quot;</p>
         :rtype: str
         """
         return self._Module
@@ -44904,7 +44904,7 @@ class UpdateOnCallFormRequest(AbstractModel):
 
     @property
     def OnCallFormID(self):
-        r"""值班表id
+        r"""<p>值班表id</p>
         :rtype: str
         """
         return self._OnCallFormID
@@ -44915,7 +44915,7 @@ class UpdateOnCallFormRequest(AbstractModel):
 
     @property
     def OnCallFormName(self):
-        r"""值班表名称
+        r"""<p>值班表名称</p>
         :rtype: str
         """
         return self._OnCallFormName
@@ -44926,7 +44926,7 @@ class UpdateOnCallFormRequest(AbstractModel):
 
     @property
     def StaffInfos(self):
-        r"""值班人员id组
+        r"""<p>值班人员id组</p>
         :rtype: list of StaffInfo
         """
         return self._StaffInfos
@@ -44937,7 +44937,7 @@ class UpdateOnCallFormRequest(AbstractModel):
 
     @property
     def RotationType(self):
-        r"""轮转类型
+        r"""<p>轮转类型</p>
         :rtype: str
         """
         return self._RotationType
@@ -44948,7 +44948,7 @@ class UpdateOnCallFormRequest(AbstractModel):
 
     @property
     def ShiftTime(self):
-        r"""换班时间
+        r"""<p>换班时间</p>
         :rtype: str
         """
         return self._ShiftTime
@@ -44959,7 +44959,7 @@ class UpdateOnCallFormRequest(AbstractModel):
 
     @property
     def EffectiveStartTime(self):
-        r"""有效期开始时间，单位s
+        r"""<p>有效期开始时间，单位s</p>
         :rtype: int
         """
         return self._EffectiveStartTime
@@ -44970,7 +44970,7 @@ class UpdateOnCallFormRequest(AbstractModel):
 
     @property
     def EffectiveEndTime(self):
-        r"""有效期结束时间，单位s
+        r"""<p>有效期结束时间，单位s</p>
         :rtype: int
         """
         return self._EffectiveEndTime
@@ -44981,7 +44981,7 @@ class UpdateOnCallFormRequest(AbstractModel):
 
     @property
     def TimeZone(self):
-        r"""时区(-12 - 12)
+        r"""<p>时区(-12 - 12)</p>
         :rtype: float
         """
         return self._TimeZone
@@ -44992,7 +44992,7 @@ class UpdateOnCallFormRequest(AbstractModel):
 
     @property
     def OnCallFormDesc(self):
-        r"""值班表描述
+        r"""<p>值班表描述</p>
         :rtype: str
         """
         return self._OnCallFormDesc
@@ -45003,7 +45003,7 @@ class UpdateOnCallFormRequest(AbstractModel):
 
     @property
     def CoverStaffInfos(self):
-        r"""轮班信息
+        r"""<p>轮班信息</p>
         :rtype: list of CoverStaffInfo
         """
         return self._CoverStaffInfos
@@ -45052,7 +45052,7 @@ class UpdateOnCallFormResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _OnCallFormID: 值班表id
+        :param _OnCallFormID: <p>值班表id</p>
         :type OnCallFormID: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -45062,7 +45062,7 @@ class UpdateOnCallFormResponse(AbstractModel):
 
     @property
     def OnCallFormID(self):
-        r"""值班表id
+        r"""<p>值班表id</p>
         :rtype: str
         """
         return self._OnCallFormID

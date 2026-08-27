@@ -109,21 +109,23 @@ class AlarmGroup(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AlarmEscalationRecipientIds: 告警升级人ID列表
-若告警接收人或上级升级人未在告警间隔时间内确认告警，则会发送告警给下一级升级人。
+        :param _AlarmEscalationRecipientIds: <p>告警升级人ID列表<br>若告警接收人或上级升级人未在告警间隔时间内确认告警，则会发送告警给下一级升级人。</p>
         :type AlarmEscalationRecipientIds: list of str
-        :param _AlarmEscalationInterval: 告警升级间隔
+        :param _AlarmEscalationInterval: <p>告警升级间隔</p>
         :type AlarmEscalationInterval: int
-        :param _NotificationFatigue: 告警通知疲劳配置
+        :param _NotificationFatigue: <p>告警通知疲劳配置</p>
         :type NotificationFatigue: :class:`tencentcloud.wedata.v20250806.models.NotificationFatigue`
-        :param _AlarmWays: 告警渠道 1.邮件，2.短信，3.微信，4.语音，5.企业微信，6.Http，7.企业微信群 8 飞书群 9 钉钉群 10 Slack群 11 Teams群（默认1.邮件） 7.企业微信群 8 飞书群 9 钉钉群 10 Slack群 11 Teams群 只能选择一个渠道
+        :param _AlarmWays: <p>告警渠道 1.邮件，2.短信，3.微信，4.语音，5.企业微信，6.Http，7.企业微信群 8 飞书群 9 钉钉群 10 Slack群 11 Teams群（默认1.邮件） 7.企业微信群 8 飞书群 9 钉钉群 10 Slack群 11 Teams群 只能选择一个渠道</p>
         :type AlarmWays: list of str
-        :param _WebHooks: 企业微信群/飞书群/钉钉群 /Slack群/Teams群的webhook地址列表
+        :param _WebHooks: <p>企业微信群/飞书群/钉钉群 /Slack群/Teams群的webhook地址列表</p>
         :type WebHooks: list of AlarmWayWebHook
-        :param _AlarmRecipientType: 告警接收人类型：1.指定人员，2.任务责任人，3.值班表（默认1.指定人员）
+        :param _AlarmRecipientType: <p>告警接收人类型：1.指定人员，2.任务责任人，3.值班表（默认1.指定人员）</p>
         :type AlarmRecipientType: int
-        :param _AlarmRecipientIds: 根据AlarmRecipientType的类型该列表具有不同的业务id 1（指定人员）: 告警接收人id列表 2（任务责任人）：无需配置 3（值班表）：值班表id列表
+        :param _AlarmRecipientIds: <p>根据AlarmRecipientType的类型该列表具有不同的业务id 1（指定人员）: 告警接收人id列表 2（任务责任人）：无需配置 3（值班表）：值班表id列表</p>
         :type AlarmRecipientIds: list of str
+        :param _CustomEmails: <p>自定义邮箱列表</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CustomEmails: list of str
         """
         self._AlarmEscalationRecipientIds = None
         self._AlarmEscalationInterval = None
@@ -132,11 +134,11 @@ class AlarmGroup(AbstractModel):
         self._WebHooks = None
         self._AlarmRecipientType = None
         self._AlarmRecipientIds = None
+        self._CustomEmails = None
 
     @property
     def AlarmEscalationRecipientIds(self):
-        r"""告警升级人ID列表
-若告警接收人或上级升级人未在告警间隔时间内确认告警，则会发送告警给下一级升级人。
+        r"""<p>告警升级人ID列表<br>若告警接收人或上级升级人未在告警间隔时间内确认告警，则会发送告警给下一级升级人。</p>
         :rtype: list of str
         """
         return self._AlarmEscalationRecipientIds
@@ -147,7 +149,7 @@ class AlarmGroup(AbstractModel):
 
     @property
     def AlarmEscalationInterval(self):
-        r"""告警升级间隔
+        r"""<p>告警升级间隔</p>
         :rtype: int
         """
         return self._AlarmEscalationInterval
@@ -158,7 +160,7 @@ class AlarmGroup(AbstractModel):
 
     @property
     def NotificationFatigue(self):
-        r"""告警通知疲劳配置
+        r"""<p>告警通知疲劳配置</p>
         :rtype: :class:`tencentcloud.wedata.v20250806.models.NotificationFatigue`
         """
         return self._NotificationFatigue
@@ -169,7 +171,7 @@ class AlarmGroup(AbstractModel):
 
     @property
     def AlarmWays(self):
-        r"""告警渠道 1.邮件，2.短信，3.微信，4.语音，5.企业微信，6.Http，7.企业微信群 8 飞书群 9 钉钉群 10 Slack群 11 Teams群（默认1.邮件） 7.企业微信群 8 飞书群 9 钉钉群 10 Slack群 11 Teams群 只能选择一个渠道
+        r"""<p>告警渠道 1.邮件，2.短信，3.微信，4.语音，5.企业微信，6.Http，7.企业微信群 8 飞书群 9 钉钉群 10 Slack群 11 Teams群（默认1.邮件） 7.企业微信群 8 飞书群 9 钉钉群 10 Slack群 11 Teams群 只能选择一个渠道</p>
         :rtype: list of str
         """
         return self._AlarmWays
@@ -180,7 +182,7 @@ class AlarmGroup(AbstractModel):
 
     @property
     def WebHooks(self):
-        r"""企业微信群/飞书群/钉钉群 /Slack群/Teams群的webhook地址列表
+        r"""<p>企业微信群/飞书群/钉钉群 /Slack群/Teams群的webhook地址列表</p>
         :rtype: list of AlarmWayWebHook
         """
         return self._WebHooks
@@ -191,7 +193,7 @@ class AlarmGroup(AbstractModel):
 
     @property
     def AlarmRecipientType(self):
-        r"""告警接收人类型：1.指定人员，2.任务责任人，3.值班表（默认1.指定人员）
+        r"""<p>告警接收人类型：1.指定人员，2.任务责任人，3.值班表（默认1.指定人员）</p>
         :rtype: int
         """
         return self._AlarmRecipientType
@@ -202,7 +204,7 @@ class AlarmGroup(AbstractModel):
 
     @property
     def AlarmRecipientIds(self):
-        r"""根据AlarmRecipientType的类型该列表具有不同的业务id 1（指定人员）: 告警接收人id列表 2（任务责任人）：无需配置 3（值班表）：值班表id列表
+        r"""<p>根据AlarmRecipientType的类型该列表具有不同的业务id 1（指定人员）: 告警接收人id列表 2（任务责任人）：无需配置 3（值班表）：值班表id列表</p>
         :rtype: list of str
         """
         return self._AlarmRecipientIds
@@ -210,6 +212,18 @@ class AlarmGroup(AbstractModel):
     @AlarmRecipientIds.setter
     def AlarmRecipientIds(self, AlarmRecipientIds):
         self._AlarmRecipientIds = AlarmRecipientIds
+
+    @property
+    def CustomEmails(self):
+        r"""<p>自定义邮箱列表</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._CustomEmails
+
+    @CustomEmails.setter
+    def CustomEmails(self, CustomEmails):
+        self._CustomEmails = CustomEmails
 
 
     def _deserialize(self, params):
@@ -227,6 +241,7 @@ class AlarmGroup(AbstractModel):
                 self._WebHooks.append(obj)
         self._AlarmRecipientType = params.get("AlarmRecipientType")
         self._AlarmRecipientIds = params.get("AlarmRecipientIds")
+        self._CustomEmails = params.get("CustomEmails")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -244,26 +259,29 @@ class AlarmMessage(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AlarmMessageId: 告警消息Id
+        :param _AlarmMessageId: <p>告警消息Id</p>
         :type AlarmMessageId: int
-        :param _AlarmTime: 告警时间，同一条告警可能发送多次，只显示最新的告警时间
+        :param _AlarmTime: <p>告警时间，同一条告警可能发送多次，只显示最新的告警时间</p>
         :type AlarmTime: str
-        :param _TaskName: 任务名称
+        :param _TaskName: <p>任务名称</p>
         :type TaskName: str
-        :param _TaskId: 任务Id
+        :param _TaskId: <p>任务Id</p>
         :type TaskId: str
-        :param _CurRunDate: 任务的实例数据时间
+        :param _CurRunDate: <p>任务的实例数据时间</p>
         :type CurRunDate: str
-        :param _AlarmReason: 告警原因
+        :param _AlarmReason: <p>告警原因</p>
         :type AlarmReason: str
-        :param _AlarmLevel: 告警级别，1.普通， 2.重要，3.紧急
+        :param _AlarmLevel: <p>告警级别，1.普通， 2.重要，3.紧急</p>
         :type AlarmLevel: int
-        :param _AlarmRuleId: 告警规则Id
+        :param _AlarmRuleId: <p>告警规则Id</p>
         :type AlarmRuleId: str
-        :param _AlarmWays: 告警渠道 1.邮件，2.短信，3.微信，4.语音，5.企业微信，6.Http，7.企业微信群， 8.飞书群，9.钉钉群，10.Slack群,11.Teams群（默认1.邮件），7.企业微信群，8.飞书群，9.钉钉群，10.Slack群，11.Teams群 
+        :param _AlarmWays: <p>告警渠道 1.邮件，2.短信，3.微信，4.语音，5.企业微信，6.Http，7.企业微信群， 8.飞书群，9.钉钉群，10.Slack群,11.Teams群（默认1.邮件），7.企业微信群，8.飞书群，9.钉钉群，10.Slack群，11.Teams群</p>
         :type AlarmWays: list of str
-        :param _AlarmRecipients: 告警接收人
+        :param _AlarmRecipients: <p>告警接收人</p>
         :type AlarmRecipients: list of str
+        :param _CustomEmails: <p>自定义邮箱列表</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CustomEmails: list of str
         """
         self._AlarmMessageId = None
         self._AlarmTime = None
@@ -275,10 +293,11 @@ class AlarmMessage(AbstractModel):
         self._AlarmRuleId = None
         self._AlarmWays = None
         self._AlarmRecipients = None
+        self._CustomEmails = None
 
     @property
     def AlarmMessageId(self):
-        r"""告警消息Id
+        r"""<p>告警消息Id</p>
         :rtype: int
         """
         return self._AlarmMessageId
@@ -289,7 +308,7 @@ class AlarmMessage(AbstractModel):
 
     @property
     def AlarmTime(self):
-        r"""告警时间，同一条告警可能发送多次，只显示最新的告警时间
+        r"""<p>告警时间，同一条告警可能发送多次，只显示最新的告警时间</p>
         :rtype: str
         """
         return self._AlarmTime
@@ -300,7 +319,7 @@ class AlarmMessage(AbstractModel):
 
     @property
     def TaskName(self):
-        r"""任务名称
+        r"""<p>任务名称</p>
         :rtype: str
         """
         return self._TaskName
@@ -311,7 +330,7 @@ class AlarmMessage(AbstractModel):
 
     @property
     def TaskId(self):
-        r"""任务Id
+        r"""<p>任务Id</p>
         :rtype: str
         """
         return self._TaskId
@@ -322,7 +341,7 @@ class AlarmMessage(AbstractModel):
 
     @property
     def CurRunDate(self):
-        r"""任务的实例数据时间
+        r"""<p>任务的实例数据时间</p>
         :rtype: str
         """
         return self._CurRunDate
@@ -333,7 +352,7 @@ class AlarmMessage(AbstractModel):
 
     @property
     def AlarmReason(self):
-        r"""告警原因
+        r"""<p>告警原因</p>
         :rtype: str
         """
         return self._AlarmReason
@@ -344,7 +363,7 @@ class AlarmMessage(AbstractModel):
 
     @property
     def AlarmLevel(self):
-        r"""告警级别，1.普通， 2.重要，3.紧急
+        r"""<p>告警级别，1.普通， 2.重要，3.紧急</p>
         :rtype: int
         """
         return self._AlarmLevel
@@ -355,7 +374,7 @@ class AlarmMessage(AbstractModel):
 
     @property
     def AlarmRuleId(self):
-        r"""告警规则Id
+        r"""<p>告警规则Id</p>
         :rtype: str
         """
         return self._AlarmRuleId
@@ -366,7 +385,7 @@ class AlarmMessage(AbstractModel):
 
     @property
     def AlarmWays(self):
-        r"""告警渠道 1.邮件，2.短信，3.微信，4.语音，5.企业微信，6.Http，7.企业微信群， 8.飞书群，9.钉钉群，10.Slack群,11.Teams群（默认1.邮件），7.企业微信群，8.飞书群，9.钉钉群，10.Slack群，11.Teams群 
+        r"""<p>告警渠道 1.邮件，2.短信，3.微信，4.语音，5.企业微信，6.Http，7.企业微信群， 8.飞书群，9.钉钉群，10.Slack群,11.Teams群（默认1.邮件），7.企业微信群，8.飞书群，9.钉钉群，10.Slack群，11.Teams群</p>
         :rtype: list of str
         """
         return self._AlarmWays
@@ -377,7 +396,7 @@ class AlarmMessage(AbstractModel):
 
     @property
     def AlarmRecipients(self):
-        r"""告警接收人
+        r"""<p>告警接收人</p>
         :rtype: list of str
         """
         return self._AlarmRecipients
@@ -385,6 +404,18 @@ class AlarmMessage(AbstractModel):
     @AlarmRecipients.setter
     def AlarmRecipients(self, AlarmRecipients):
         self._AlarmRecipients = AlarmRecipients
+
+    @property
+    def CustomEmails(self):
+        r"""<p>自定义邮箱列表</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._CustomEmails
+
+    @CustomEmails.setter
+    def CustomEmails(self, CustomEmails):
+        self._CustomEmails = CustomEmails
 
 
     def _deserialize(self, params):
@@ -398,6 +429,7 @@ class AlarmMessage(AbstractModel):
         self._AlarmRuleId = params.get("AlarmRuleId")
         self._AlarmWays = params.get("AlarmWays")
         self._AlarmRecipients = params.get("AlarmRecipients")
+        self._CustomEmails = params.get("CustomEmails")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -55960,6 +55992,9 @@ class TriggerTaskRunBrief(AbstractModel):
         :param _ScheduleRunType: <p>调度执行类型</p><p>枚举值：</p><ul><li>0： 正常调度</li><li>1： 空跑调度</li><li>2： 用户驱动，手动触发</li></ul>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ScheduleRunType: str
+        :param _Privilege: <p>权限</p><p>枚举值：</p><ul><li>CAN_MANAGE： 可管理</li><li>CAN_VIEW： 可见</li><li>NO_PERMISSION： 无权限</li></ul>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Privilege: str
         """
         self._ExecutionId = None
         self._ExecutionState = None
@@ -56020,6 +56055,7 @@ class TriggerTaskRunBrief(AbstractModel):
         self._DependencyTriggerPolicy = None
         self._AssociatedEntityExist = None
         self._ScheduleRunType = None
+        self._Privilege = None
 
     @property
     def ExecutionId(self):
@@ -56729,6 +56765,18 @@ class TriggerTaskRunBrief(AbstractModel):
     def ScheduleRunType(self, ScheduleRunType):
         self._ScheduleRunType = ScheduleRunType
 
+    @property
+    def Privilege(self):
+        r"""<p>权限</p><p>枚举值：</p><ul><li>CAN_MANAGE： 可管理</li><li>CAN_VIEW： 可见</li><li>NO_PERMISSION： 无权限</li></ul>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Privilege
+
+    @Privilege.setter
+    def Privilege(self, Privilege):
+        self._Privilege = Privilege
+
 
     def _deserialize(self, params):
         self._ExecutionId = params.get("ExecutionId")
@@ -56790,6 +56838,7 @@ class TriggerTaskRunBrief(AbstractModel):
         self._DependencyTriggerPolicy = params.get("DependencyTriggerPolicy")
         self._AssociatedEntityExist = params.get("AssociatedEntityExist")
         self._ScheduleRunType = params.get("ScheduleRunType")
+        self._Privilege = params.get("Privilege")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -58296,6 +58345,9 @@ class TriggerWorkflowRunBrief(AbstractModel):
         :param _ParentTaskExecutionName: <p>父任务运行名称 【由嵌套工作流触发独有】</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ParentTaskExecutionName: str
+        :param _Privilege: <p>权限</p><p>枚举值：</p><ul><li>CAN_MANAGE： 可管理</li><li>CAN_VIEW： 可见</li><li>NO_PERMISSION： 无权限</li></ul>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Privilege: str
         """
         self._AppId = None
         self._ProjectId = None
@@ -58333,6 +58385,7 @@ class TriggerWorkflowRunBrief(AbstractModel):
         self._ParentWorkflowExecutionId = None
         self._ParentTaskExecutionId = None
         self._ParentTaskExecutionName = None
+        self._Privilege = None
 
     @property
     def AppId(self):
@@ -58766,6 +58819,18 @@ class TriggerWorkflowRunBrief(AbstractModel):
     def ParentTaskExecutionName(self, ParentTaskExecutionName):
         self._ParentTaskExecutionName = ParentTaskExecutionName
 
+    @property
+    def Privilege(self):
+        r"""<p>权限</p><p>枚举值：</p><ul><li>CAN_MANAGE： 可管理</li><li>CAN_VIEW： 可见</li><li>NO_PERMISSION： 无权限</li></ul>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Privilege
+
+    @Privilege.setter
+    def Privilege(self, Privilege):
+        self._Privilege = Privilege
+
 
     def _deserialize(self, params):
         self._AppId = params.get("AppId")
@@ -58804,6 +58869,7 @@ class TriggerWorkflowRunBrief(AbstractModel):
         self._ParentWorkflowExecutionId = params.get("ParentWorkflowExecutionId")
         self._ParentTaskExecutionId = params.get("ParentTaskExecutionId")
         self._ParentTaskExecutionName = params.get("ParentTaskExecutionName")
+        self._Privilege = params.get("Privilege")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -65153,10 +65219,16 @@ class WorkflowTriggerConfig(AbstractModel):
         :param _Recursive: <p>文件到达模式下 是否递归检测子目录</p><p>取值范围：[0, 1]</p><p>默认值：1</p><p>默认 1（开启） 0 （关闭）</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Recursive: int
-        :param _TriggerMinimumIntervalSecond: <p>文件到达模式下    触发最短间隔时间</p><p>单位：秒</p>
+        :param _TriggerMinimumInterval: <p>文件到达模式下 最小触发间隔</p><p>取值范围：[1, 1440]</p><p>单位：分钟</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TriggerMinimumInterval: int
+        :param _TriggerWaitTime: <p>文件到达模式下 文件批次等待时间</p><p>取值范围：[1, 60]</p><p>单位：分钟</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TriggerWaitTime: int
+        :param _TriggerMinimumIntervalSecond: <p>文件到达模式下    触发最短间隔时间</p><p>单位：秒</p><p>后续废弃 勿用</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TriggerMinimumIntervalSecond: int
-        :param _TriggerWaitTimeSecond: <p>文件到达模式下    触发等待时间</p><p>单位：秒</p>
+        :param _TriggerWaitTimeSecond: <p>文件到达模式下    触发等待时间</p><p>单位：秒</p><p>后续废弃 勿用</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TriggerWaitTimeSecond: int
         """
@@ -65173,6 +65245,8 @@ class WorkflowTriggerConfig(AbstractModel):
         self._SchedulerStatus = None
         self._FileNamePattern = None
         self._Recursive = None
+        self._TriggerMinimumInterval = None
+        self._TriggerWaitTime = None
         self._TriggerMinimumIntervalSecond = None
         self._TriggerWaitTimeSecond = None
 
@@ -65333,8 +65407,32 @@ class WorkflowTriggerConfig(AbstractModel):
         self._Recursive = Recursive
 
     @property
+    def TriggerMinimumInterval(self):
+        r"""<p>文件到达模式下 最小触发间隔</p><p>取值范围：[1, 1440]</p><p>单位：分钟</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._TriggerMinimumInterval
+
+    @TriggerMinimumInterval.setter
+    def TriggerMinimumInterval(self, TriggerMinimumInterval):
+        self._TriggerMinimumInterval = TriggerMinimumInterval
+
+    @property
+    def TriggerWaitTime(self):
+        r"""<p>文件到达模式下 文件批次等待时间</p><p>取值范围：[1, 60]</p><p>单位：分钟</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._TriggerWaitTime
+
+    @TriggerWaitTime.setter
+    def TriggerWaitTime(self, TriggerWaitTime):
+        self._TriggerWaitTime = TriggerWaitTime
+
+    @property
     def TriggerMinimumIntervalSecond(self):
-        r"""<p>文件到达模式下    触发最短间隔时间</p><p>单位：秒</p>
+        r"""<p>文件到达模式下    触发最短间隔时间</p><p>单位：秒</p><p>后续废弃 勿用</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -65346,7 +65444,7 @@ class WorkflowTriggerConfig(AbstractModel):
 
     @property
     def TriggerWaitTimeSecond(self):
-        r"""<p>文件到达模式下    触发等待时间</p><p>单位：秒</p>
+        r"""<p>文件到达模式下    触发等待时间</p><p>单位：秒</p><p>后续废弃 勿用</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -65371,6 +65469,8 @@ class WorkflowTriggerConfig(AbstractModel):
         self._SchedulerStatus = params.get("SchedulerStatus")
         self._FileNamePattern = params.get("FileNamePattern")
         self._Recursive = params.get("Recursive")
+        self._TriggerMinimumInterval = params.get("TriggerMinimumInterval")
+        self._TriggerWaitTime = params.get("TriggerWaitTime")
         self._TriggerMinimumIntervalSecond = params.get("TriggerMinimumIntervalSecond")
         self._TriggerWaitTimeSecond = params.get("TriggerWaitTimeSecond")
         memeber_set = set(params.keys())

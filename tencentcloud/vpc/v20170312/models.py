@@ -29925,16 +29925,13 @@ class DescribeHaVipsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _HaVipIds: `HAVIP`唯一`ID`，形如：`havip-9o233uri`。
+        :param _HaVipIds: <p><code>HAVIP</code>唯一<code>ID</code>，形如：<code>havip-9o233uri</code>。</p>
         :type HaVipIds: list of str
-        :param _Filters: 过滤条件，参数不支持同时指定`HaVipIds`和`Filters`。<li>havip-id - String - `HAVIP`唯一`ID`，形如：`havip-9o233uri`。</li><li>havip-name - String - `HAVIP`名称。</li><li>vpc-id - String - `HAVIP`所在私有网络`ID`。</li><li>subnet-id - String - `HAVIP`所在子网`ID`。</li><li>vip - String - `HAVIP`的地址`VIP`。</li><li>address-ip - String - `HAVIP`绑定的弹性公网`IP`。</li><li>havip-association.instance-id - String - `HAVIP`绑定的子机或网卡。</li><li>havip-association.instance-type - String - `HAVIP`绑定的类型，取值:CVM, ENI。</li><li>check-associate - Bool - 是否开启HaVip飘移时校验绑定的子机或网卡。</li><li>cdc-id - String - CDC实例ID。</li>
-<li>type- String - HAVIP类型。取值: NORMAL(普通); GWLB(网关负载均衡); OPTIMIZATION(优化模式)。</li>
+        :param _Filters: <p>过滤条件，参数不支持同时指定<code>HaVipIds</code>和<code>Filters</code>。Filter 数量限制为10个，以及单Filter 的value值限制为5个。<li>havip-id - String - <code>HAVIP</code>唯一<code>ID</code>，形如：<code>havip-9o233uri</code>。</li><li>havip-name - String - <code>HAVIP</code>名称。</li><li>vpc-id - String - <code>HAVIP</code>所在私有网络<code>ID</code>。</li><li>subnet-id - String - <code>HAVIP</code>所在子网<code>ID</code>。</li><li>vip - String - <code>HAVIP</code>的地址<code>VIP</code>。</li><li>address-ip - String - <code>HAVIP</code>绑定的弹性公网<code>IP</code>。</li><li>havip-association.instance-id - String - <code>HAVIP</code>绑定的子机或网卡。</li><li>havip-association.instance-type - String - <code>HAVIP</code>绑定的类型，取值:CVM, ENI。</li><li>check-associate - Bool - 是否开启HaVip飘移时校验绑定的子机或网卡。</li><li>cdc-id - String - CDC实例ID。</li></p><li>type - String - HAVIP类型。取值: NORMAL(普通); GWLB(网关负载均衡); OPTIMIZATION(优化模式)。</li><li>termination-protection - String - 删除保护。取值: true; false。</li><li>traffic-protection - String - 流量保护。取值: true; false。</li>
         :type Filters: list of Filter
-        :param _Offset: 偏移量，默认为0。
-
+        :param _Offset: <p>偏移量，默认为0。</p>
         :type Offset: int
-        :param _Limit: 返回数量，默认为20，最大值为100。
-
+        :param _Limit: <p>返回数量，默认为20，最大值为100。</p>
         :type Limit: int
         """
         self._HaVipIds = None
@@ -29944,7 +29941,7 @@ class DescribeHaVipsRequest(AbstractModel):
 
     @property
     def HaVipIds(self):
-        r"""`HAVIP`唯一`ID`，形如：`havip-9o233uri`。
+        r"""<p><code>HAVIP</code>唯一<code>ID</code>，形如：<code>havip-9o233uri</code>。</p>
         :rtype: list of str
         """
         return self._HaVipIds
@@ -29955,8 +29952,7 @@ class DescribeHaVipsRequest(AbstractModel):
 
     @property
     def Filters(self):
-        r"""过滤条件，参数不支持同时指定`HaVipIds`和`Filters`。<li>havip-id - String - `HAVIP`唯一`ID`，形如：`havip-9o233uri`。</li><li>havip-name - String - `HAVIP`名称。</li><li>vpc-id - String - `HAVIP`所在私有网络`ID`。</li><li>subnet-id - String - `HAVIP`所在子网`ID`。</li><li>vip - String - `HAVIP`的地址`VIP`。</li><li>address-ip - String - `HAVIP`绑定的弹性公网`IP`。</li><li>havip-association.instance-id - String - `HAVIP`绑定的子机或网卡。</li><li>havip-association.instance-type - String - `HAVIP`绑定的类型，取值:CVM, ENI。</li><li>check-associate - Bool - 是否开启HaVip飘移时校验绑定的子机或网卡。</li><li>cdc-id - String - CDC实例ID。</li>
-<li>type- String - HAVIP类型。取值: NORMAL(普通); GWLB(网关负载均衡); OPTIMIZATION(优化模式)。</li>
+        r"""<p>过滤条件，参数不支持同时指定<code>HaVipIds</code>和<code>Filters</code>。Filter 数量限制为10个，以及单Filter 的value值限制为5个。<li>havip-id - String - <code>HAVIP</code>唯一<code>ID</code>，形如：<code>havip-9o233uri</code>。</li><li>havip-name - String - <code>HAVIP</code>名称。</li><li>vpc-id - String - <code>HAVIP</code>所在私有网络<code>ID</code>。</li><li>subnet-id - String - <code>HAVIP</code>所在子网<code>ID</code>。</li><li>vip - String - <code>HAVIP</code>的地址<code>VIP</code>。</li><li>address-ip - String - <code>HAVIP</code>绑定的弹性公网<code>IP</code>。</li><li>havip-association.instance-id - String - <code>HAVIP</code>绑定的子机或网卡。</li><li>havip-association.instance-type - String - <code>HAVIP</code>绑定的类型，取值:CVM, ENI。</li><li>check-associate - Bool - 是否开启HaVip飘移时校验绑定的子机或网卡。</li><li>cdc-id - String - CDC实例ID。</li></p><li>type - String - HAVIP类型。取值: NORMAL(普通); GWLB(网关负载均衡); OPTIMIZATION(优化模式)。</li><li>termination-protection - String - 删除保护。取值: true; false。</li><li>traffic-protection - String - 流量保护。取值: true; false。</li>
         :rtype: list of Filter
         """
         return self._Filters
@@ -29967,8 +29963,7 @@ class DescribeHaVipsRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""偏移量，默认为0。
-
+        r"""<p>偏移量，默认为0。</p>
         :rtype: int
         """
         return self._Offset
@@ -29979,8 +29974,7 @@ class DescribeHaVipsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""返回数量，默认为20，最大值为100。
-
+        r"""<p>返回数量，默认为20，最大值为100。</p>
         :rtype: int
         """
         return self._Limit
@@ -30017,9 +30011,9 @@ class DescribeHaVipsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TotalCount: 符合条件的对象数。
+        :param _TotalCount: <p>符合条件的对象数。</p>
         :type TotalCount: int
-        :param _HaVipSet: `HAVIP`对象数组。
+        :param _HaVipSet: <p><code>HAVIP</code>对象数组。</p>
         :type HaVipSet: list of HaVip
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -30030,7 +30024,7 @@ class DescribeHaVipsResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        r"""符合条件的对象数。
+        r"""<p>符合条件的对象数。</p>
         :rtype: int
         """
         return self._TotalCount
@@ -30041,7 +30035,7 @@ class DescribeHaVipsResponse(AbstractModel):
 
     @property
     def HaVipSet(self):
-        r"""`HAVIP`对象数组。
+        r"""<p><code>HAVIP</code>对象数组。</p>
         :rtype: list of HaVip
         """
         return self._HaVipSet
@@ -46966,39 +46960,37 @@ class HaVip(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _HaVipId: `HAVIP`的`ID`，是`HAVIP`的唯一标识。
+        :param _HaVipId: <p><code>HAVIP</code>的<code>ID</code>，是<code>HAVIP</code>的唯一标识。</p>
         :type HaVipId: str
-        :param _HaVipName: `HAVIP`名称。
+        :param _HaVipName: <p><code>HAVIP</code>名称。</p>
         :type HaVipName: str
-        :param _Vip: 虚拟IP地址。
+        :param _Vip: <p>虚拟IP地址。</p>
         :type Vip: str
-        :param _VpcId: `HAVIP`所在私有网络`ID`。
+        :param _VpcId: <p><code>HAVIP</code>所在私有网络<code>ID</code>。</p>
         :type VpcId: str
-        :param _SubnetId: `HAVIP`所在子网`ID`。
+        :param _SubnetId: <p><code>HAVIP</code>所在子网<code>ID</code>。</p>
         :type SubnetId: str
-        :param _NetworkInterfaceId: `HAVIP`关联弹性网卡`ID`。
+        :param _NetworkInterfaceId: <p><code>HAVIP</code>关联弹性网卡<code>ID</code>。</p>
         :type NetworkInterfaceId: str
-        :param _InstanceId: 被绑定的实例`ID`。
+        :param _InstanceId: <p>被绑定的实例<code>ID</code>。</p>
         :type InstanceId: str
-        :param _AddressIp: 绑定`EIP`。
+        :param _AddressIp: <p>绑定<code>EIP</code>。</p>
         :type AddressIp: str
-        :param _State: 状态：
-<li>`AVAILABLE`：运行中</li>
-<li>`UNBIND`：未绑定</li>
+        :param _State: <p>状态：</p><li><code>AVAILABLE</code>：运行中</li><li><code>UNBIND</code>：未绑定</li>
         :type State: str
-        :param _CreatedTime: 创建时间。
+        :param _CreatedTime: <p>创建时间。</p>
         :type CreatedTime: str
-        :param _Business: 使用havip的业务标识。
+        :param _Business: <p>使用havip的业务标识。</p>
         :type Business: str
-        :param _HaVipAssociationSet: `HAVIP`的飘移范围。
+        :param _HaVipAssociationSet: <p><code>HAVIP</code>的飘移范围。</p>
         :type HaVipAssociationSet: list of HaVipAssociation
-        :param _CheckAssociate: 是否开启`HAVIP`的漂移范围校验。
+        :param _CheckAssociate: <p>是否开启<code>HAVIP</code>的漂移范围校验。</p>
         :type CheckAssociate: bool
-        :param _CdcId: CDC实例ID。
+        :param _CdcId: <p>CDC实例ID。</p>
         :type CdcId: str
-        :param _FlushedTime: HAVIP 刷新时间。该参数只作为出参数。以下场景会触发FlushedTime 被刷新：1）子机发出免费 ARP 触发 HAVIP 漂移；2）手动HAVIP解绑网卡; 没有更新时默认值：0000-00-00 00:00:00
+        :param _FlushedTime: <p>HAVIP 刷新时间。该参数只作为出参数。以下场景会触发FlushedTime 被刷新：1）子机发出免费 ARP 触发 HAVIP 漂移；2）手动HAVIP解绑网卡; 没有更新时默认值：0000-00-00 00:00:00</p>
         :type FlushedTime: str
-        :param _TagSet: 标签键值对。	
+        :param _TagSet: <p>标签键值对。</p>
         :type TagSet: list of Tag
         """
         self._HaVipId = None
@@ -47020,7 +47012,7 @@ class HaVip(AbstractModel):
 
     @property
     def HaVipId(self):
-        r"""`HAVIP`的`ID`，是`HAVIP`的唯一标识。
+        r"""<p><code>HAVIP</code>的<code>ID</code>，是<code>HAVIP</code>的唯一标识。</p>
         :rtype: str
         """
         return self._HaVipId
@@ -47031,7 +47023,7 @@ class HaVip(AbstractModel):
 
     @property
     def HaVipName(self):
-        r"""`HAVIP`名称。
+        r"""<p><code>HAVIP</code>名称。</p>
         :rtype: str
         """
         return self._HaVipName
@@ -47042,7 +47034,7 @@ class HaVip(AbstractModel):
 
     @property
     def Vip(self):
-        r"""虚拟IP地址。
+        r"""<p>虚拟IP地址。</p>
         :rtype: str
         """
         return self._Vip
@@ -47053,7 +47045,7 @@ class HaVip(AbstractModel):
 
     @property
     def VpcId(self):
-        r"""`HAVIP`所在私有网络`ID`。
+        r"""<p><code>HAVIP</code>所在私有网络<code>ID</code>。</p>
         :rtype: str
         """
         return self._VpcId
@@ -47064,7 +47056,7 @@ class HaVip(AbstractModel):
 
     @property
     def SubnetId(self):
-        r"""`HAVIP`所在子网`ID`。
+        r"""<p><code>HAVIP</code>所在子网<code>ID</code>。</p>
         :rtype: str
         """
         return self._SubnetId
@@ -47075,7 +47067,7 @@ class HaVip(AbstractModel):
 
     @property
     def NetworkInterfaceId(self):
-        r"""`HAVIP`关联弹性网卡`ID`。
+        r"""<p><code>HAVIP</code>关联弹性网卡<code>ID</code>。</p>
         :rtype: str
         """
         return self._NetworkInterfaceId
@@ -47086,7 +47078,7 @@ class HaVip(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""被绑定的实例`ID`。
+        r"""<p>被绑定的实例<code>ID</code>。</p>
         :rtype: str
         """
         return self._InstanceId
@@ -47097,7 +47089,7 @@ class HaVip(AbstractModel):
 
     @property
     def AddressIp(self):
-        r"""绑定`EIP`。
+        r"""<p>绑定<code>EIP</code>。</p>
         :rtype: str
         """
         return self._AddressIp
@@ -47108,9 +47100,7 @@ class HaVip(AbstractModel):
 
     @property
     def State(self):
-        r"""状态：
-<li>`AVAILABLE`：运行中</li>
-<li>`UNBIND`：未绑定</li>
+        r"""<p>状态：</p><li><code>AVAILABLE</code>：运行中</li><li><code>UNBIND</code>：未绑定</li>
         :rtype: str
         """
         return self._State
@@ -47121,7 +47111,7 @@ class HaVip(AbstractModel):
 
     @property
     def CreatedTime(self):
-        r"""创建时间。
+        r"""<p>创建时间。</p>
         :rtype: str
         """
         return self._CreatedTime
@@ -47132,7 +47122,7 @@ class HaVip(AbstractModel):
 
     @property
     def Business(self):
-        r"""使用havip的业务标识。
+        r"""<p>使用havip的业务标识。</p>
         :rtype: str
         """
         return self._Business
@@ -47143,7 +47133,7 @@ class HaVip(AbstractModel):
 
     @property
     def HaVipAssociationSet(self):
-        r"""`HAVIP`的飘移范围。
+        r"""<p><code>HAVIP</code>的飘移范围。</p>
         :rtype: list of HaVipAssociation
         """
         return self._HaVipAssociationSet
@@ -47154,7 +47144,7 @@ class HaVip(AbstractModel):
 
     @property
     def CheckAssociate(self):
-        r"""是否开启`HAVIP`的漂移范围校验。
+        r"""<p>是否开启<code>HAVIP</code>的漂移范围校验。</p>
         :rtype: bool
         """
         return self._CheckAssociate
@@ -47165,7 +47155,7 @@ class HaVip(AbstractModel):
 
     @property
     def CdcId(self):
-        r"""CDC实例ID。
+        r"""<p>CDC实例ID。</p>
         :rtype: str
         """
         return self._CdcId
@@ -47176,7 +47166,7 @@ class HaVip(AbstractModel):
 
     @property
     def FlushedTime(self):
-        r"""HAVIP 刷新时间。该参数只作为出参数。以下场景会触发FlushedTime 被刷新：1）子机发出免费 ARP 触发 HAVIP 漂移；2）手动HAVIP解绑网卡; 没有更新时默认值：0000-00-00 00:00:00
+        r"""<p>HAVIP 刷新时间。该参数只作为出参数。以下场景会触发FlushedTime 被刷新：1）子机发出免费 ARP 触发 HAVIP 漂移；2）手动HAVIP解绑网卡; 没有更新时默认值：0000-00-00 00:00:00</p>
         :rtype: str
         """
         return self._FlushedTime
@@ -47187,7 +47177,7 @@ class HaVip(AbstractModel):
 
     @property
     def TagSet(self):
-        r"""标签键值对。	
+        r"""<p>标签键值对。</p>
         :rtype: list of Tag
         """
         return self._TagSet

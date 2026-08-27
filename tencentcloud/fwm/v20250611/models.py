@@ -1343,13 +1343,13 @@ class CommonFilter(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Name: <p>筛选字段名。支持：SecurityGroupId、FwGroupId、IP（IP地址模糊搜索）、InstanceName（实例名称模糊搜索）、VpcId（VPC ID精确搜索）</p>
+        :param _Name: 筛选字段名
 注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
-        :param _Values: <p>筛选值列表</p>
+        :param _Values: 筛选值列表
 注意：此字段可能返回 null，表示取不到有效值。
         :type Values: list of str
-        :param _OperatorType: <p>操作类型。1=等于，7=in，9=模糊匹配</p>
+        :param _OperatorType: 操作类型：1-精确匹配 9-模糊匹配
 注意：此字段可能返回 null，表示取不到有效值。
         :type OperatorType: int
         """
@@ -1359,7 +1359,7 @@ class CommonFilter(AbstractModel):
 
     @property
     def Name(self):
-        r"""<p>筛选字段名。支持：SecurityGroupId、FwGroupId、IP（IP地址模糊搜索）、InstanceName（实例名称模糊搜索）、VpcId（VPC ID精确搜索）</p>
+        r"""筛选字段名
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -1371,7 +1371,7 @@ class CommonFilter(AbstractModel):
 
     @property
     def Values(self):
-        r"""<p>筛选值列表</p>
+        r"""筛选值列表
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -1383,7 +1383,7 @@ class CommonFilter(AbstractModel):
 
     @property
     def OperatorType(self):
-        r"""<p>操作类型。1=等于，7=in，9=模糊匹配</p>
+        r"""操作类型：1-精确匹配 9-模糊匹配
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -1509,11 +1509,11 @@ class CreateEdgeAclRuleGroupRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _GroupName: 规则组名称，长度1-50字符
+        :param _GroupName: <p>规则组名称，长度1-50字符</p>
         :type GroupName: str
-        :param _Product: 产品类型，固定为 cfw_edge_acl
+        :param _Product: <p>产品类型，固定为 cfw_edge_acl</p>
         :type Product: str
-        :param _Rules: 规则列表
+        :param _Rules: <p>规则列表</p>
         :type Rules: list of EdgeAclRuleInfo
         """
         self._GroupName = None
@@ -1522,7 +1522,7 @@ class CreateEdgeAclRuleGroupRequest(AbstractModel):
 
     @property
     def GroupName(self):
-        r"""规则组名称，长度1-50字符
+        r"""<p>规则组名称，长度1-50字符</p>
         :rtype: str
         """
         return self._GroupName
@@ -1533,7 +1533,7 @@ class CreateEdgeAclRuleGroupRequest(AbstractModel):
 
     @property
     def Product(self):
-        r"""产品类型，固定为 cfw_edge_acl
+        r"""<p>产品类型，固定为 cfw_edge_acl</p>
         :rtype: str
         """
         return self._Product
@@ -1544,7 +1544,7 @@ class CreateEdgeAclRuleGroupRequest(AbstractModel):
 
     @property
     def Rules(self):
-        r"""规则列表
+        r"""<p>规则列表</p>
         :rtype: list of EdgeAclRuleInfo
         """
         return self._Rules
@@ -1580,7 +1580,7 @@ class CreateEdgeAclRuleGroupResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _GroupId: 创建的规则组ID
+        :param _GroupId: <p>创建的规则组ID</p>
         :type GroupId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -1590,7 +1590,7 @@ class CreateEdgeAclRuleGroupResponse(AbstractModel):
 
     @property
     def GroupId(self):
-        r"""创建的规则组ID
+        r"""<p>创建的规则组ID</p>
         :rtype: str
         """
         return self._GroupId
@@ -6105,23 +6105,26 @@ class MemberInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AppId: 成员AppId
+        :param _AppId: <p>成员AppId</p>
         :type AppId: str
-        :param _Uin: 成员Uin
+        :param _Uin: <p>成员Uin</p>
         :type Uin: str
-        :param _Nickname: 成员昵称
+        :param _Nickname: <p>成员昵称</p>
         :type Nickname: str
-        :param _MemberId: 成员Id
+        :param _MemberId: <p>成员Id</p>
         :type MemberId: str
+        :param _NodeName: <p>所属部门</p>
+        :type NodeName: str
         """
         self._AppId = None
         self._Uin = None
         self._Nickname = None
         self._MemberId = None
+        self._NodeName = None
 
     @property
     def AppId(self):
-        r"""成员AppId
+        r"""<p>成员AppId</p>
         :rtype: str
         """
         return self._AppId
@@ -6132,7 +6135,7 @@ class MemberInfo(AbstractModel):
 
     @property
     def Uin(self):
-        r"""成员Uin
+        r"""<p>成员Uin</p>
         :rtype: str
         """
         return self._Uin
@@ -6143,7 +6146,7 @@ class MemberInfo(AbstractModel):
 
     @property
     def Nickname(self):
-        r"""成员昵称
+        r"""<p>成员昵称</p>
         :rtype: str
         """
         return self._Nickname
@@ -6154,7 +6157,7 @@ class MemberInfo(AbstractModel):
 
     @property
     def MemberId(self):
-        r"""成员Id
+        r"""<p>成员Id</p>
         :rtype: str
         """
         return self._MemberId
@@ -6163,12 +6166,24 @@ class MemberInfo(AbstractModel):
     def MemberId(self, MemberId):
         self._MemberId = MemberId
 
+    @property
+    def NodeName(self):
+        r"""<p>所属部门</p>
+        :rtype: str
+        """
+        return self._NodeName
+
+    @NodeName.setter
+    def NodeName(self, NodeName):
+        self._NodeName = NodeName
+
 
     def _deserialize(self, params):
         self._AppId = params.get("AppId")
         self._Uin = params.get("Uin")
         self._Nickname = params.get("Nickname")
         self._MemberId = params.get("MemberId")
+        self._NodeName = params.get("NodeName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7880,55 +7895,63 @@ class OrganMemberItem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _MemberId: 成员 ID
+        :param _MemberId: <p>成员 ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type MemberId: str
-        :param _AppId: 成员账号 AppId
+        :param _AppId: <p>成员账号 AppId</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type AppId: str
-        :param _Uin: 账号Uin
+        :param _Uin: <p>账号Uin</p>
         :type Uin: str
-        :param _Nickname: 账号名称
+        :param _Nickname: <p>账号名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Nickname: str
-        :param _SubAccountCount: 子账号数量
+        :param _SubAccountCount: <p>子账号数量</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type SubAccountCount: int
-        :param _NodeName: 所属组织架构节点名称
+        :param _NodeName: <p>所属组织架构节点名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type NodeName: str
-        :param _Role: 成员身份：admin-管理员，delegatedAdmin-委派管理员，member-普通成员
+        :param _Role: <p>成员身份：admin-管理员，delegatedAdmin-委派管理员，member-普通成员</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Role: str
-        :param _RoleDisplay: 成员身份显示名称（前端展示用）
+        :param _RoleDisplay: <p>成员身份显示名称（前端展示用）</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type RoleDisplay: str
-        :param _AccountGroup: 所属账户组 
+        :param _AccountGroup: <p>所属账户组</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type AccountGroup: :class:`tencentcloud.fwm.v20250611.models.AccountGroupInfo`
-        :param _CfwManaged: 云防火墙纳管状态：0-未纳管，1-已纳管
+        :param _CfwManaged: <p>云防火墙纳管状态：0-未纳管，1-已纳管</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type CfwManaged: int
-        :param _CfwShareRole: 云防火墙共享角色：sharer-共享者，user-使用者，none-未设置
+        :param _CfwShareRole: <p>云防火墙共享角色：sharer-共享者，user-使用者，none-未设置</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type CfwShareRole: str
-        :param _CfwShareRoleDisplay: 云防火墙共享角色显示名称（前端展示用）
+        :param _CfwShareRoleDisplay: <p>云防火墙共享角色显示名称（前端展示用）</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type CfwShareRoleDisplay: str
-        :param _CfwSharerAppId: 云防火墙共享者 AppId，成员角色为使用者时有值
+        :param _CfwSharerAppId: <p>云防火墙共享者 AppId，成员角色为使用者时有值</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type CfwSharerAppId: str
-        :param _CfwInstanceId: 云防火墙计费实例 ID，非空表示已购买云防火墙
+        :param _CfwInstanceId: <p>云防火墙计费实例 ID，非空表示已购买云防火墙</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type CfwInstanceId: str
-        :param _PolicyAnalysisEnabled: 策略分析权限：0-关闭，1-开启
+        :param _PolicyAnalysisEnabled: <p>策略分析权限：0-关闭，1-开启</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type PolicyAnalysisEnabled: int
-        :param _MemberCreateTime: 成员加入集团时间
+        :param _MemberCreateTime: <p>成员加入集团时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type MemberCreateTime: str
-        :param _JoinType: 账号加入方式
+        :param _JoinType: <p>账号加入方式</p>
         :type JoinType: str
+        :param _CfwPayStatus: <p>云防火墙套餐状态</p><p>枚举值：</p><ul><li>0： 未购买</li><li>2： 已购买</li><li>3： 试用中</li><li>4： 已过期</li></ul>
+        :type CfwPayStatus: int
+        :param _CfwCapable: <p>是否具备云防火墙使用能力</p>
+        :type CfwCapable: int
+        :param _SgManaged: <p>私有安全组纳管开关， 0:未纳管，1:已纳管</p>
+        :type SgManaged: int
+        :param _IsCfwPostPay: <p>是否是后付费云防版本</p><p>枚举值：</p><ul><li>1： 后付费</li><li>0： 非后付费</li><li>-1： 未知</li></ul>
+        :type IsCfwPostPay: int
         """
         self._MemberId = None
         self._AppId = None
@@ -7947,10 +7970,14 @@ class OrganMemberItem(AbstractModel):
         self._PolicyAnalysisEnabled = None
         self._MemberCreateTime = None
         self._JoinType = None
+        self._CfwPayStatus = None
+        self._CfwCapable = None
+        self._SgManaged = None
+        self._IsCfwPostPay = None
 
     @property
     def MemberId(self):
-        r"""成员 ID
+        r"""<p>成员 ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -7962,7 +7989,7 @@ class OrganMemberItem(AbstractModel):
 
     @property
     def AppId(self):
-        r"""成员账号 AppId
+        r"""<p>成员账号 AppId</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -7974,7 +8001,7 @@ class OrganMemberItem(AbstractModel):
 
     @property
     def Uin(self):
-        r"""账号Uin
+        r"""<p>账号Uin</p>
         :rtype: str
         """
         return self._Uin
@@ -7985,7 +8012,7 @@ class OrganMemberItem(AbstractModel):
 
     @property
     def Nickname(self):
-        r"""账号名称
+        r"""<p>账号名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -7997,7 +8024,7 @@ class OrganMemberItem(AbstractModel):
 
     @property
     def SubAccountCount(self):
-        r"""子账号数量
+        r"""<p>子账号数量</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -8009,7 +8036,7 @@ class OrganMemberItem(AbstractModel):
 
     @property
     def NodeName(self):
-        r"""所属组织架构节点名称
+        r"""<p>所属组织架构节点名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -8021,7 +8048,7 @@ class OrganMemberItem(AbstractModel):
 
     @property
     def Role(self):
-        r"""成员身份：admin-管理员，delegatedAdmin-委派管理员，member-普通成员
+        r"""<p>成员身份：admin-管理员，delegatedAdmin-委派管理员，member-普通成员</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -8033,7 +8060,7 @@ class OrganMemberItem(AbstractModel):
 
     @property
     def RoleDisplay(self):
-        r"""成员身份显示名称（前端展示用）
+        r"""<p>成员身份显示名称（前端展示用）</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -8045,7 +8072,7 @@ class OrganMemberItem(AbstractModel):
 
     @property
     def AccountGroup(self):
-        r"""所属账户组 
+        r"""<p>所属账户组</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.fwm.v20250611.models.AccountGroupInfo`
         """
@@ -8057,7 +8084,7 @@ class OrganMemberItem(AbstractModel):
 
     @property
     def CfwManaged(self):
-        r"""云防火墙纳管状态：0-未纳管，1-已纳管
+        r"""<p>云防火墙纳管状态：0-未纳管，1-已纳管</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -8069,7 +8096,7 @@ class OrganMemberItem(AbstractModel):
 
     @property
     def CfwShareRole(self):
-        r"""云防火墙共享角色：sharer-共享者，user-使用者，none-未设置
+        r"""<p>云防火墙共享角色：sharer-共享者，user-使用者，none-未设置</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -8081,7 +8108,7 @@ class OrganMemberItem(AbstractModel):
 
     @property
     def CfwShareRoleDisplay(self):
-        r"""云防火墙共享角色显示名称（前端展示用）
+        r"""<p>云防火墙共享角色显示名称（前端展示用）</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -8093,7 +8120,7 @@ class OrganMemberItem(AbstractModel):
 
     @property
     def CfwSharerAppId(self):
-        r"""云防火墙共享者 AppId，成员角色为使用者时有值
+        r"""<p>云防火墙共享者 AppId，成员角色为使用者时有值</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -8105,7 +8132,7 @@ class OrganMemberItem(AbstractModel):
 
     @property
     def CfwInstanceId(self):
-        r"""云防火墙计费实例 ID，非空表示已购买云防火墙
+        r"""<p>云防火墙计费实例 ID，非空表示已购买云防火墙</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -8117,7 +8144,7 @@ class OrganMemberItem(AbstractModel):
 
     @property
     def PolicyAnalysisEnabled(self):
-        r"""策略分析权限：0-关闭，1-开启
+        r"""<p>策略分析权限：0-关闭，1-开启</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -8129,7 +8156,7 @@ class OrganMemberItem(AbstractModel):
 
     @property
     def MemberCreateTime(self):
-        r"""成员加入集团时间
+        r"""<p>成员加入集团时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -8141,7 +8168,7 @@ class OrganMemberItem(AbstractModel):
 
     @property
     def JoinType(self):
-        r"""账号加入方式
+        r"""<p>账号加入方式</p>
         :rtype: str
         """
         return self._JoinType
@@ -8149,6 +8176,50 @@ class OrganMemberItem(AbstractModel):
     @JoinType.setter
     def JoinType(self, JoinType):
         self._JoinType = JoinType
+
+    @property
+    def CfwPayStatus(self):
+        r"""<p>云防火墙套餐状态</p><p>枚举值：</p><ul><li>0： 未购买</li><li>2： 已购买</li><li>3： 试用中</li><li>4： 已过期</li></ul>
+        :rtype: int
+        """
+        return self._CfwPayStatus
+
+    @CfwPayStatus.setter
+    def CfwPayStatus(self, CfwPayStatus):
+        self._CfwPayStatus = CfwPayStatus
+
+    @property
+    def CfwCapable(self):
+        r"""<p>是否具备云防火墙使用能力</p>
+        :rtype: int
+        """
+        return self._CfwCapable
+
+    @CfwCapable.setter
+    def CfwCapable(self, CfwCapable):
+        self._CfwCapable = CfwCapable
+
+    @property
+    def SgManaged(self):
+        r"""<p>私有安全组纳管开关， 0:未纳管，1:已纳管</p>
+        :rtype: int
+        """
+        return self._SgManaged
+
+    @SgManaged.setter
+    def SgManaged(self, SgManaged):
+        self._SgManaged = SgManaged
+
+    @property
+    def IsCfwPostPay(self):
+        r"""<p>是否是后付费云防版本</p><p>枚举值：</p><ul><li>1： 后付费</li><li>0： 非后付费</li><li>-1： 未知</li></ul>
+        :rtype: int
+        """
+        return self._IsCfwPostPay
+
+    @IsCfwPostPay.setter
+    def IsCfwPostPay(self, IsCfwPostPay):
+        self._IsCfwPostPay = IsCfwPostPay
 
 
     def _deserialize(self, params):
@@ -8171,6 +8242,10 @@ class OrganMemberItem(AbstractModel):
         self._PolicyAnalysisEnabled = params.get("PolicyAnalysisEnabled")
         self._MemberCreateTime = params.get("MemberCreateTime")
         self._JoinType = params.get("JoinType")
+        self._CfwPayStatus = params.get("CfwPayStatus")
+        self._CfwCapable = params.get("CfwCapable")
+        self._SgManaged = params.get("SgManaged")
+        self._IsCfwPostPay = params.get("IsCfwPostPay")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

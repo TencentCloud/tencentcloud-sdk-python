@@ -838,6 +838,24 @@ class EmrClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeMetaDBInfo(
+            self,
+            request: models.DescribeMetaDBInfoRequest,
+            opts: Dict = None,
+    ) -> models.DescribeMetaDBInfoResponse:
+        """
+        集群metadb数据
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeMetaDBInfo"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeMetaDBInfoResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeNodeDataDisks(
             self,
             request: models.DescribeNodeDataDisksRequest,

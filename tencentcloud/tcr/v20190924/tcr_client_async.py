@@ -1395,6 +1395,24 @@ class TcrClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeReplicationExecutions(
+            self,
+            request: models.DescribeReplicationExecutionsRequest,
+            opts: Dict = None,
+    ) -> models.DescribeReplicationExecutionsResponse:
+        """
+        实例同步/实例复制策略执行记录列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeReplicationExecutions"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeReplicationExecutionsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeReplicationInstanceCreateTasks(
             self,
             request: models.DescribeReplicationInstanceCreateTasksRequest,
@@ -1462,6 +1480,24 @@ class TcrClient(AbstractClient):
         kwargs["action"] = "DescribeReplicationPolicies"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeReplicationPoliciesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeReplicationTasks(
+            self,
+            request: models.DescribeReplicationTasksRequest,
+            opts: Dict = None,
+    ) -> models.DescribeReplicationTasksResponse:
+        """
+        实例同步/实例复制执行任务列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeReplicationTasks"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeReplicationTasksResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

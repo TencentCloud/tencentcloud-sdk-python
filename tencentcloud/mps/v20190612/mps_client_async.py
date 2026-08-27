@@ -134,6 +134,24 @@ class MpsClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def ChangeVoice(
+            self,
+            request: models.ChangeVoiceRequest,
+            opts: Dict = None,
+    ) -> models.ChangeVoiceResponse:
+        """
+        同步音色转换，根据输入音频和指定音色将输入音频转换为指定音色
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ChangeVoice"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ChangeVoiceResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CloneViral(
             self,
             request: models.CloneViralRequest,

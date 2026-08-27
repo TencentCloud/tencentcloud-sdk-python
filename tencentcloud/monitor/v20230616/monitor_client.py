@@ -95,6 +95,29 @@ class MonitorClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateDispenseExternalRule(self, request):
+        r"""转发接口：创建转发规则
+
+        :param request: Request instance for CreateDispenseExternalRule.
+        :type request: :class:`tencentcloud.monitor.v20230616.models.CreateDispenseExternalRuleRequest`
+        :rtype: :class:`tencentcloud.monitor.v20230616.models.CreateDispenseExternalRuleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateDispenseExternalRule", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateDispenseExternalRuleResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateNoticeContentTmpl(self, request):
         r"""创建自定义通知内容模板
 
@@ -155,6 +178,29 @@ class MonitorClient(AbstractClient):
             body = self.call("DeleteAIWorkbenchTask", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteAIWorkbenchTaskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteDispenseExternalRule(self, request):
+        r"""规则删除接口
+
+        :param request: Request instance for DeleteDispenseExternalRule.
+        :type request: :class:`tencentcloud.monitor.v20230616.models.DeleteDispenseExternalRuleRequest`
+        :rtype: :class:`tencentcloud.monitor.v20230616.models.DeleteDispenseExternalRuleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteDispenseExternalRule", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteDispenseExternalRuleResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -385,6 +431,144 @@ class MonitorClient(AbstractClient):
             body = self.call("DescribeAlarmNotifyHistories", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeAlarmNotifyHistoriesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeDispenseExternalRule(self, request):
+        r"""转发规则查询接口
+
+        :param request: Request instance for DescribeDispenseExternalRule.
+        :type request: :class:`tencentcloud.monitor.v20230616.models.DescribeDispenseExternalRuleRequest`
+        :rtype: :class:`tencentcloud.monitor.v20230616.models.DescribeDispenseExternalRuleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDispenseExternalRule", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDispenseExternalRuleResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeDispenseExternalRuleList(self, request):
+        r"""查询所有列表
+
+        :param request: Request instance for DescribeDispenseExternalRuleList.
+        :type request: :class:`tencentcloud.monitor.v20230616.models.DescribeDispenseExternalRuleListRequest`
+        :rtype: :class:`tencentcloud.monitor.v20230616.models.DescribeDispenseExternalRuleListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDispenseExternalRuleList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDispenseExternalRuleListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeDispenseRegion(self, request):
+        r"""转发地域列表查询接口
+
+        :param request: Request instance for DescribeDispenseRegion.
+        :type request: :class:`tencentcloud.monitor.v20230616.models.DescribeDispenseRegionRequest`
+        :rtype: :class:`tencentcloud.monitor.v20230616.models.DescribeDispenseRegionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDispenseRegion", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDispenseRegionResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeExtMetric(self, request):
+        r"""查询对外指标
+
+        :param request: Request instance for DescribeExtMetric.
+        :type request: :class:`tencentcloud.monitor.v20230616.models.DescribeExtMetricRequest`
+        :rtype: :class:`tencentcloud.monitor.v20230616.models.DescribeExtMetricResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeExtMetric", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeExtMetricResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeExtNamespace(self, request):
+        r"""转发查询对外命名空间接口
+
+        :param request: Request instance for DescribeExtNamespace.
+        :type request: :class:`tencentcloud.monitor.v20230616.models.DescribeExtNamespaceRequest`
+        :rtype: :class:`tencentcloud.monitor.v20230616.models.DescribeExtNamespaceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeExtNamespace", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeExtNamespaceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeKafka(self, request):
+        r"""转发kafka连通性测试
+
+        :param request: Request instance for DescribeKafka.
+        :type request: :class:`tencentcloud.monitor.v20230616.models.DescribeKafkaRequest`
+        :rtype: :class:`tencentcloud.monitor.v20230616.models.DescribeKafkaResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeKafka", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeKafkaResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -661,6 +845,52 @@ class MonitorClient(AbstractClient):
             body = self.call("ListAIWorkbenchTasks", params, headers=headers)
             response = json.loads(body)
             model = models.ListAIWorkbenchTasksResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyDispenseExternalRule(self, request):
+        r"""转发规则更新接口
+
+        :param request: Request instance for ModifyDispenseExternalRule.
+        :type request: :class:`tencentcloud.monitor.v20230616.models.ModifyDispenseExternalRuleRequest`
+        :rtype: :class:`tencentcloud.monitor.v20230616.models.ModifyDispenseExternalRuleResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyDispenseExternalRule", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyDispenseExternalRuleResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyDispenseExternalRuleStatus(self, request):
+        r"""新增规则开启关闭接口
+
+        :param request: Request instance for ModifyDispenseExternalRuleStatus.
+        :type request: :class:`tencentcloud.monitor.v20230616.models.ModifyDispenseExternalRuleStatusRequest`
+        :rtype: :class:`tencentcloud.monitor.v20230616.models.ModifyDispenseExternalRuleStatusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyDispenseExternalRuleStatus", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyDispenseExternalRuleStatusResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

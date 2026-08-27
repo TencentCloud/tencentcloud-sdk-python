@@ -353,6 +353,8 @@ class AgentDetail(AbstractModel):
         :type SkillList: list of AgentSkill
         :param _AdvancedConfig: <p>高级配置</p>
         :type AdvancedConfig: :class:`tencentcloud.adp.v20260520.models.AgentAdvancedConfig`
+        :param _ExternalToolList: <p>调用方执行的 Function Tool 列表</p><p>入参限制：仅在 C 端用户态 Agent 场景可用，B 端配置态 Agent 忽略该字段与</p>
+        :type ExternalToolList: list of AgentExternalToolConfig
         """
         self._AgentId = None
         self._Profile = None
@@ -362,6 +364,7 @@ class AgentDetail(AbstractModel):
         self._PluginList = None
         self._SkillList = None
         self._AdvancedConfig = None
+        self._ExternalToolList = None
 
     @property
     def AgentId(self):
@@ -451,6 +454,17 @@ class AgentDetail(AbstractModel):
     def AdvancedConfig(self, AdvancedConfig):
         self._AdvancedConfig = AdvancedConfig
 
+    @property
+    def ExternalToolList(self):
+        r"""<p>调用方执行的 Function Tool 列表</p><p>入参限制：仅在 C 端用户态 Agent 场景可用，B 端配置态 Agent 忽略该字段与</p>
+        :rtype: list of AgentExternalToolConfig
+        """
+        return self._ExternalToolList
+
+    @ExternalToolList.setter
+    def ExternalToolList(self, ExternalToolList):
+        self._ExternalToolList = ExternalToolList
+
 
     def _deserialize(self, params):
         self._AgentId = params.get("AgentId")
@@ -482,6 +496,98 @@ class AgentDetail(AbstractModel):
         if params.get("AdvancedConfig") is not None:
             self._AdvancedConfig = AgentAdvancedConfig()
             self._AdvancedConfig._deserialize(params.get("AdvancedConfig"))
+        if params.get("ExternalToolList") is not None:
+            self._ExternalToolList = []
+            for item in params.get("ExternalToolList"):
+                obj = AgentExternalToolConfig()
+                obj._deserialize(item)
+                self._ExternalToolList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AgentExternalToolConfig(AbstractModel):
+    r"""调用方执行的 Function Tool 配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Type: <p>工具类型</p><p>入参限制：目前仅支持 &quot;function&quot;</p>
+        :type Type: str
+        :param _Name: <p>工具名称</p>
+        :type Name: str
+        :param _Description: <p>工具描述</p>
+        :type Description: str
+        :param _Parameters: <p>工具入参定义</p>
+        :type Parameters: list of RequestParam
+        """
+        self._Type = None
+        self._Name = None
+        self._Description = None
+        self._Parameters = None
+
+    @property
+    def Type(self):
+        r"""<p>工具类型</p><p>入参限制：目前仅支持 &quot;function&quot;</p>
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Name(self):
+        r"""<p>工具名称</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Description(self):
+        r"""<p>工具描述</p>
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def Parameters(self):
+        r"""<p>工具入参定义</p>
+        :rtype: list of RequestParam
+        """
+        return self._Parameters
+
+    @Parameters.setter
+    def Parameters(self, Parameters):
+        self._Parameters = Parameters
+
+
+    def _deserialize(self, params):
+        self._Type = params.get("Type")
+        self._Name = params.get("Name")
+        self._Description = params.get("Description")
+        if params.get("Parameters") is not None:
+            self._Parameters = []
+            for item in params.get("Parameters"):
+                obj = RequestParam()
+                obj._deserialize(item)
+                self._Parameters.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1552,9 +1658,9 @@ class AgentSpec(AbstractModel):
         r"""
         :param _Profile: <p>Agent基本配置</p>
         :type Profile: :class:`tencentcloud.adp.v20260520.models.AgentProfile`
-        :param _Instructions: 系统提示词
+        :param _Instructions: <p>系统提示词</p>
         :type Instructions: str
-        :param _Model: 主模型配置
+        :param _Model: <p>主模型配置</p>
         :type Model: :class:`tencentcloud.adp.v20260520.models.AgentModelConfig`
         :param _ToolList: <p>工具信息</p>
         :type ToolList: list of AgentToolConfig
@@ -1562,8 +1668,10 @@ class AgentSpec(AbstractModel):
         :type PluginList: list of AgentPluginConfig
         :param _SkillList: <p>技能信息</p>
         :type SkillList: list of AgentSkillConfig
-        :param _AdvancedConfig: 高级设置
+        :param _AdvancedConfig: <p>高级设置</p>
         :type AdvancedConfig: :class:`tencentcloud.adp.v20260520.models.AgentAdvancedConfig`
+        :param _ExternalToolList: <p>调用方执行的 Function Tool 列表</p><p>入参限制：仅在 C 端用户态 Agent 场景可用，B 端配置态 Agent  忽略该字段与</p>
+        :type ExternalToolList: list of AgentExternalToolConfig
         """
         self._Profile = None
         self._Instructions = None
@@ -1572,6 +1680,7 @@ class AgentSpec(AbstractModel):
         self._PluginList = None
         self._SkillList = None
         self._AdvancedConfig = None
+        self._ExternalToolList = None
 
     @property
     def Profile(self):
@@ -1586,7 +1695,7 @@ class AgentSpec(AbstractModel):
 
     @property
     def Instructions(self):
-        r"""系统提示词
+        r"""<p>系统提示词</p>
         :rtype: str
         """
         return self._Instructions
@@ -1597,7 +1706,7 @@ class AgentSpec(AbstractModel):
 
     @property
     def Model(self):
-        r"""主模型配置
+        r"""<p>主模型配置</p>
         :rtype: :class:`tencentcloud.adp.v20260520.models.AgentModelConfig`
         """
         return self._Model
@@ -1641,7 +1750,7 @@ class AgentSpec(AbstractModel):
 
     @property
     def AdvancedConfig(self):
-        r"""高级设置
+        r"""<p>高级设置</p>
         :rtype: :class:`tencentcloud.adp.v20260520.models.AgentAdvancedConfig`
         """
         return self._AdvancedConfig
@@ -1649,6 +1758,17 @@ class AgentSpec(AbstractModel):
     @AdvancedConfig.setter
     def AdvancedConfig(self, AdvancedConfig):
         self._AdvancedConfig = AdvancedConfig
+
+    @property
+    def ExternalToolList(self):
+        r"""<p>调用方执行的 Function Tool 列表</p><p>入参限制：仅在 C 端用户态 Agent 场景可用，B 端配置态 Agent  忽略该字段与</p>
+        :rtype: list of AgentExternalToolConfig
+        """
+        return self._ExternalToolList
+
+    @ExternalToolList.setter
+    def ExternalToolList(self, ExternalToolList):
+        self._ExternalToolList = ExternalToolList
 
 
     def _deserialize(self, params):
@@ -1680,6 +1800,12 @@ class AgentSpec(AbstractModel):
         if params.get("AdvancedConfig") is not None:
             self._AdvancedConfig = AgentAdvancedConfig()
             self._AdvancedConfig._deserialize(params.get("AdvancedConfig"))
+        if params.get("ExternalToolList") is not None:
+            self._ExternalToolList = []
+            for item in params.get("ExternalToolList"):
+                obj = AgentExternalToolConfig()
+                obj._deserialize(item)
+                self._ExternalToolList.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

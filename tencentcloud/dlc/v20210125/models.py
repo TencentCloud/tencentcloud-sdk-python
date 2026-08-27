@@ -12210,21 +12210,21 @@ class CreatePartitionRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ActionType: <p>交易类型：purchase-新购，renew-续费，modify-变配</p>
+        :param _ActionType: <p>交易类型：purchase-新购</p>
         :type ActionType: str
-        :param _PayMode: <p>付费模式：0-后付费，1-预付费</p>
+        :param _PayMode: <p>付费模式：1-预付费</p>
         :type PayMode: int
         :param _ResourceQuotaList: <p>资源配额列表（计费项+数量）</p>
         :type ResourceQuotaList: list of ResourceQuota
-        :param _TimeSpan: <p>时间大小，预付费时为购买月数，后付费时为3600</p>
+        :param _TimeSpan: <p>时间大小，预付费时为购买月数</p>
         :type TimeSpan: int
-        :param _TimeUnit: <p>时间单位，预付费为m（月），后付费为s（秒）</p>
+        :param _TimeUnit: <p>时间单位，预付费为m（月）</p>
         :type TimeUnit: str
         :param _AutoRenewFlag: <p>自动续费标志：0-默认，1-自动续费，2-不自动续费（仅预付费有效）</p>
         :type AutoRenewFlag: int
         :param _Name: <p>弹性资源池名称，用于订单页展示</p>
         :type Name: str
-        :param _Description: <p>队列描述</p>
+        :param _Description: <p>资源包描述</p>
         :type Description: str
         """
         self._ActionType = None
@@ -12238,7 +12238,7 @@ class CreatePartitionRequest(AbstractModel):
 
     @property
     def ActionType(self):
-        r"""<p>交易类型：purchase-新购，renew-续费，modify-变配</p>
+        r"""<p>交易类型：purchase-新购</p>
         :rtype: str
         """
         return self._ActionType
@@ -12249,7 +12249,7 @@ class CreatePartitionRequest(AbstractModel):
 
     @property
     def PayMode(self):
-        r"""<p>付费模式：0-后付费，1-预付费</p>
+        r"""<p>付费模式：1-预付费</p>
         :rtype: int
         """
         return self._PayMode
@@ -12271,7 +12271,7 @@ class CreatePartitionRequest(AbstractModel):
 
     @property
     def TimeSpan(self):
-        r"""<p>时间大小，预付费时为购买月数，后付费时为3600</p>
+        r"""<p>时间大小，预付费时为购买月数</p>
         :rtype: int
         """
         return self._TimeSpan
@@ -12282,7 +12282,7 @@ class CreatePartitionRequest(AbstractModel):
 
     @property
     def TimeUnit(self):
-        r"""<p>时间单位，预付费为m（月），后付费为s（秒）</p>
+        r"""<p>时间单位，预付费为m（月）</p>
         :rtype: str
         """
         return self._TimeUnit
@@ -12315,7 +12315,7 @@ class CreatePartitionRequest(AbstractModel):
 
     @property
     def Description(self):
-        r"""<p>队列描述</p>
+        r"""<p>资源包描述</p>
         :rtype: str
         """
         return self._Description

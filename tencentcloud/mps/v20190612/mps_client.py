@@ -165,6 +165,29 @@ class MpsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ChangeVoice(self, request):
+        r"""同步音色转换，根据输入音频和指定音色将输入音频转换为指定音色
+
+        :param request: Request instance for ChangeVoice.
+        :type request: :class:`tencentcloud.mps.v20190612.models.ChangeVoiceRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.ChangeVoiceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ChangeVoice", params, headers=headers)
+            response = json.loads(body)
+            model = models.ChangeVoiceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CloneViral(self, request):
         r"""爆款复刻。输入爆款参考视频+商品图，生成风格/节奏对齐的视频
 

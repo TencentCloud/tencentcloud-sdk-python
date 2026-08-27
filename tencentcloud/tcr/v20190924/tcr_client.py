@@ -1776,6 +1776,29 @@ class TcrClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeReplicationExecutions(self, request):
+        r"""实例同步/实例复制策略执行记录列表
+
+        :param request: Request instance for DescribeReplicationExecutions.
+        :type request: :class:`tencentcloud.tcr.v20190924.models.DescribeReplicationExecutionsRequest`
+        :rtype: :class:`tencentcloud.tcr.v20190924.models.DescribeReplicationExecutionsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeReplicationExecutions", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeReplicationExecutionsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeReplicationInstanceCreateTasks(self, request):
         r"""查询创建从实例任务状态
 
@@ -1859,6 +1882,29 @@ class TcrClient(AbstractClient):
             body = self.call("DescribeReplicationPolicies", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeReplicationPoliciesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeReplicationTasks(self, request):
+        r"""实例同步/实例复制执行任务列表
+
+        :param request: Request instance for DescribeReplicationTasks.
+        :type request: :class:`tencentcloud.tcr.v20190924.models.DescribeReplicationTasksRequest`
+        :rtype: :class:`tencentcloud.tcr.v20190924.models.DescribeReplicationTasksResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeReplicationTasks", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeReplicationTasksResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

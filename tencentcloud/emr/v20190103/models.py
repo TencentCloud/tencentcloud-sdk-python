@@ -5756,6 +5756,8 @@ class CreateClusterRequest(AbstractModel):
         :type WebUiVersion: int
         :param _EnableCbsSysEncryptFlag: <p>系统盘是否加密</p>
         :type EnableCbsSysEncryptFlag: bool
+        :param _MetaDBGroupInfo: <p>自定义metadb数据</p>
+        :type MetaDBGroupInfo: list of CustomMetaDBInfo
         """
         self._ProductVersion = None
         self._EnableSupportHAFlag = None
@@ -5786,6 +5788,7 @@ class CreateClusterRequest(AbstractModel):
         self._PartitionNumber = None
         self._WebUiVersion = None
         self._EnableCbsSysEncryptFlag = None
+        self._MetaDBGroupInfo = None
 
     @property
     def ProductVersion(self):
@@ -6106,6 +6109,17 @@ class CreateClusterRequest(AbstractModel):
     def EnableCbsSysEncryptFlag(self, EnableCbsSysEncryptFlag):
         self._EnableCbsSysEncryptFlag = EnableCbsSysEncryptFlag
 
+    @property
+    def MetaDBGroupInfo(self):
+        r"""<p>自定义metadb数据</p>
+        :rtype: list of CustomMetaDBInfo
+        """
+        return self._MetaDBGroupInfo
+
+    @MetaDBGroupInfo.setter
+    def MetaDBGroupInfo(self, MetaDBGroupInfo):
+        self._MetaDBGroupInfo = MetaDBGroupInfo
+
 
     def _deserialize(self, params):
         self._ProductVersion = params.get("ProductVersion")
@@ -6170,6 +6184,12 @@ class CreateClusterRequest(AbstractModel):
         self._PartitionNumber = params.get("PartitionNumber")
         self._WebUiVersion = params.get("WebUiVersion")
         self._EnableCbsSysEncryptFlag = params.get("EnableCbsSysEncryptFlag")
+        if params.get("MetaDBGroupInfo") is not None:
+            self._MetaDBGroupInfo = []
+            for item in params.get("MetaDBGroupInfo"):
+                obj = CustomMetaDBInfo()
+                obj._deserialize(item)
+                self._MetaDBGroupInfo.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -14066,6 +14086,90 @@ class DescribeKyuubiQueryInfoResponse(AbstractModel):
                 obj = KyuubiQueryInfo()
                 obj._deserialize(item)
                 self._KyuubiQueryInfoList.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeMetaDBInfoRequest(AbstractModel):
+    r"""DescribeMetaDBInfo请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: <p>集群id</p>
+        :type InstanceId: str
+        """
+        self._InstanceId = None
+
+    @property
+    def InstanceId(self):
+        r"""<p>集群id</p>
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeMetaDBInfoResponse(AbstractModel):
+    r"""DescribeMetaDBInfo返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MetaDBGroupInfo: <p>自定义db数据</p>
+        :type MetaDBGroupInfo: list of CustomMetaDBInfo
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._MetaDBGroupInfo = None
+        self._RequestId = None
+
+    @property
+    def MetaDBGroupInfo(self):
+        r"""<p>自定义db数据</p>
+        :rtype: list of CustomMetaDBInfo
+        """
+        return self._MetaDBGroupInfo
+
+    @MetaDBGroupInfo.setter
+    def MetaDBGroupInfo(self, MetaDBGroupInfo):
+        self._MetaDBGroupInfo = MetaDBGroupInfo
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("MetaDBGroupInfo") is not None:
+            self._MetaDBGroupInfo = []
+            for item in params.get("MetaDBGroupInfo"):
+                obj = CustomMetaDBInfo()
+                obj._deserialize(item)
+                self._MetaDBGroupInfo.append(obj)
         self._RequestId = params.get("RequestId")
 
 

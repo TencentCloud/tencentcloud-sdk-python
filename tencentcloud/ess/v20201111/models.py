@@ -18507,6 +18507,160 @@ class CreateReleaseFlowResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateRequestWithEncryptionRequest(AbstractModel):
+    r"""CreateRequestWithEncryption请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestAction: <p>操作的接口名称。取值参考接口文档输入参数章节关于公共参数 Action 的说明。</p>
+        :type RequestAction: str
+        :param _IV: <p>加密算法使用的初始化向量。固定为 16 字节，将 IV 原始字节使用标准 Base64 编码后传入。</p>
+        :type IV: str
+        :param _EncryptedData: <p>使用 AES-CBC 或 SM4-CBC 加密请求内容得到的密文。加密前请求内容采用 PKCS#7 Padding；将密文原始字节使用标准 Base64 编码后传入。</p>
+        :type EncryptedData: str
+        :param _EncryptionSignature: <p>用于校验请求数据完整性。对 IV 原始字节和密文原始字节直接拼接（不加拼接符）后计算 HMAC-SHA256，再将计算结果使用标准 Base64 编码后传入。</p>
+        :type EncryptionSignature: str
+        """
+        self._RequestAction = None
+        self._IV = None
+        self._EncryptedData = None
+        self._EncryptionSignature = None
+
+    @property
+    def RequestAction(self):
+        r"""<p>操作的接口名称。取值参考接口文档输入参数章节关于公共参数 Action 的说明。</p>
+        :rtype: str
+        """
+        return self._RequestAction
+
+    @RequestAction.setter
+    def RequestAction(self, RequestAction):
+        self._RequestAction = RequestAction
+
+    @property
+    def IV(self):
+        r"""<p>加密算法使用的初始化向量。固定为 16 字节，将 IV 原始字节使用标准 Base64 编码后传入。</p>
+        :rtype: str
+        """
+        return self._IV
+
+    @IV.setter
+    def IV(self, IV):
+        self._IV = IV
+
+    @property
+    def EncryptedData(self):
+        r"""<p>使用 AES-CBC 或 SM4-CBC 加密请求内容得到的密文。加密前请求内容采用 PKCS#7 Padding；将密文原始字节使用标准 Base64 编码后传入。</p>
+        :rtype: str
+        """
+        return self._EncryptedData
+
+    @EncryptedData.setter
+    def EncryptedData(self, EncryptedData):
+        self._EncryptedData = EncryptedData
+
+    @property
+    def EncryptionSignature(self):
+        r"""<p>用于校验请求数据完整性。对 IV 原始字节和密文原始字节直接拼接（不加拼接符）后计算 HMAC-SHA256，再将计算结果使用标准 Base64 编码后传入。</p>
+        :rtype: str
+        """
+        return self._EncryptionSignature
+
+    @EncryptionSignature.setter
+    def EncryptionSignature(self, EncryptionSignature):
+        self._EncryptionSignature = EncryptionSignature
+
+
+    def _deserialize(self, params):
+        self._RequestAction = params.get("RequestAction")
+        self._IV = params.get("IV")
+        self._EncryptedData = params.get("EncryptedData")
+        self._EncryptionSignature = params.get("EncryptionSignature")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateRequestWithEncryptionResponse(AbstractModel):
+    r"""CreateRequestWithEncryption返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _IV: <p>加密算法使用的初始化向量。固定为 16 字节，将 IV 原始字节使用标准 Base64 编码后传入。</p>
+        :type IV: str
+        :param _EncryptedData: <p>使用 AES-CBC 或 SM4-CBC 加密返回内容得到的密文。加密前返回内容采用 PKCS#7 Padding；将密文原始字节使用标准 Base64 编码后传入。</p>
+        :type EncryptedData: str
+        :param _EncryptionSignature: <p>用于校验请求数据完整性。对 IV 原始字节和密文原始字节直接拼接（不加拼接符）后计算 HMAC-SHA256，再将计算结果使用标准 Base64 编码后传入。</p>
+        :type EncryptionSignature: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._IV = None
+        self._EncryptedData = None
+        self._EncryptionSignature = None
+        self._RequestId = None
+
+    @property
+    def IV(self):
+        r"""<p>加密算法使用的初始化向量。固定为 16 字节，将 IV 原始字节使用标准 Base64 编码后传入。</p>
+        :rtype: str
+        """
+        return self._IV
+
+    @IV.setter
+    def IV(self, IV):
+        self._IV = IV
+
+    @property
+    def EncryptedData(self):
+        r"""<p>使用 AES-CBC 或 SM4-CBC 加密返回内容得到的密文。加密前返回内容采用 PKCS#7 Padding；将密文原始字节使用标准 Base64 编码后传入。</p>
+        :rtype: str
+        """
+        return self._EncryptedData
+
+    @EncryptedData.setter
+    def EncryptedData(self, EncryptedData):
+        self._EncryptedData = EncryptedData
+
+    @property
+    def EncryptionSignature(self):
+        r"""<p>用于校验请求数据完整性。对 IV 原始字节和密文原始字节直接拼接（不加拼接符）后计算 HMAC-SHA256，再将计算结果使用标准 Base64 编码后传入。</p>
+        :rtype: str
+        """
+        return self._EncryptionSignature
+
+    @EncryptionSignature.setter
+    def EncryptionSignature(self, EncryptionSignature):
+        self._EncryptionSignature = EncryptionSignature
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._IV = params.get("IV")
+        self._EncryptedData = params.get("EncryptedData")
+        self._EncryptionSignature = params.get("EncryptionSignature")
+        self._RequestId = params.get("RequestId")
+
+
 class CreateResultPageConfig(AbstractModel):
     r"""发起流程的可嵌入页面操作结果页配置
 

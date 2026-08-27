@@ -9874,60 +9874,63 @@ class CodeTemplateDetail(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ProjectId: 项目id
+        :param _ProjectId: <p>项目id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ProjectId: str
-        :param _CodeTemplateName: 模版名称
+        :param _CodeTemplateName: <p>模版名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type CodeTemplateName: str
-        :param _TaskType: 任务类型
+        :param _TaskType: <p>任务类型</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TaskType: int
-        :param _CodeTemplateDesc: 代码模版描述
+        :param _CodeTemplateDesc: <p>代码模版描述</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type CodeTemplateDesc: str
-        :param _FolderId: 文件夹id
+        :param _FolderId: <p>文件夹id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type FolderId: str
-        :param _FolderName: 文件夹名称
+        :param _FolderName: <p>文件夹名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type FolderName: str
-        :param _InCharge: 责任人名称
+        :param _InCharge: <p>责任人名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type InCharge: str
-        :param _InChargeId: 责任人id
+        :param _InChargeId: <p>责任人id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type InChargeId: str
-        :param _Ext: 扩展信息
+        :param _Ext: <p>扩展信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Ext: :class:`tencentcloud.wedata.v20210820.models.TaskExtDsVO`
-        :param _CodeTemplateId: 模版id
+        :param _CodeTemplateId: <p>模版id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type CodeTemplateId: str
-        :param _LastUpdateTime: 最后更新时间
+        :param _LastUpdateTime: <p>最后更新时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type LastUpdateTime: str
-        :param _UpdateUser: 更新人名称
+        :param _UpdateUser: <p>更新人名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type UpdateUser: str
-        :param _UpdateUserId: 更新人id
+        :param _UpdateUserId: <p>更新人id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type UpdateUserId: str
-        :param _BrokerIp: 执行ip
+        :param _BrokerIp: <p>执行ip</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type BrokerIp: str
-        :param _ResourceGroup: 资源组id
+        :param _ResourceGroup: <p>资源组id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ResourceGroup: str
-        :param _Submit: 是否提交
+        :param _Submit: <p>是否提交</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Submit: bool
-        :param _ScriptChange: 模版脚本是否发生变化
+        :param _ScriptChange: <p>模版脚本是否发生变化</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ScriptChange: bool
-        :param _Content: 代码模版脚本，base64编码返回
+        :param _Content: <p>代码模版脚本，base64编码返回</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Content: str
+        :param _Privilege: <p>用户对该资源的最高权限</p><p>枚举值：</p><ul><li>NO_PERMISSIONS： 无权限</li><li>CAN_VIEW： 只读权限</li><li>CAN_MANAGE： 管理权限</li></ul>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Privilege: str
         """
         self._ProjectId = None
         self._CodeTemplateName = None
@@ -9947,10 +9950,11 @@ class CodeTemplateDetail(AbstractModel):
         self._Submit = None
         self._ScriptChange = None
         self._Content = None
+        self._Privilege = None
 
     @property
     def ProjectId(self):
-        r"""项目id
+        r"""<p>项目id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -9962,7 +9966,7 @@ class CodeTemplateDetail(AbstractModel):
 
     @property
     def CodeTemplateName(self):
-        r"""模版名称
+        r"""<p>模版名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -9974,7 +9978,7 @@ class CodeTemplateDetail(AbstractModel):
 
     @property
     def TaskType(self):
-        r"""任务类型
+        r"""<p>任务类型</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -9986,7 +9990,7 @@ class CodeTemplateDetail(AbstractModel):
 
     @property
     def CodeTemplateDesc(self):
-        r"""代码模版描述
+        r"""<p>代码模版描述</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -9998,7 +10002,7 @@ class CodeTemplateDetail(AbstractModel):
 
     @property
     def FolderId(self):
-        r"""文件夹id
+        r"""<p>文件夹id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -10010,7 +10014,7 @@ class CodeTemplateDetail(AbstractModel):
 
     @property
     def FolderName(self):
-        r"""文件夹名称
+        r"""<p>文件夹名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -10022,7 +10026,7 @@ class CodeTemplateDetail(AbstractModel):
 
     @property
     def InCharge(self):
-        r"""责任人名称
+        r"""<p>责任人名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -10034,7 +10038,7 @@ class CodeTemplateDetail(AbstractModel):
 
     @property
     def InChargeId(self):
-        r"""责任人id
+        r"""<p>责任人id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -10046,7 +10050,7 @@ class CodeTemplateDetail(AbstractModel):
 
     @property
     def Ext(self):
-        r"""扩展信息
+        r"""<p>扩展信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.wedata.v20210820.models.TaskExtDsVO`
         """
@@ -10058,7 +10062,7 @@ class CodeTemplateDetail(AbstractModel):
 
     @property
     def CodeTemplateId(self):
-        r"""模版id
+        r"""<p>模版id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -10070,7 +10074,7 @@ class CodeTemplateDetail(AbstractModel):
 
     @property
     def LastUpdateTime(self):
-        r"""最后更新时间
+        r"""<p>最后更新时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -10082,7 +10086,7 @@ class CodeTemplateDetail(AbstractModel):
 
     @property
     def UpdateUser(self):
-        r"""更新人名称
+        r"""<p>更新人名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -10094,7 +10098,7 @@ class CodeTemplateDetail(AbstractModel):
 
     @property
     def UpdateUserId(self):
-        r"""更新人id
+        r"""<p>更新人id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -10106,7 +10110,7 @@ class CodeTemplateDetail(AbstractModel):
 
     @property
     def BrokerIp(self):
-        r"""执行ip
+        r"""<p>执行ip</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -10118,7 +10122,7 @@ class CodeTemplateDetail(AbstractModel):
 
     @property
     def ResourceGroup(self):
-        r"""资源组id
+        r"""<p>资源组id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -10130,7 +10134,7 @@ class CodeTemplateDetail(AbstractModel):
 
     @property
     def Submit(self):
-        r"""是否提交
+        r"""<p>是否提交</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
@@ -10142,7 +10146,7 @@ class CodeTemplateDetail(AbstractModel):
 
     @property
     def ScriptChange(self):
-        r"""模版脚本是否发生变化
+        r"""<p>模版脚本是否发生变化</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
@@ -10154,7 +10158,7 @@ class CodeTemplateDetail(AbstractModel):
 
     @property
     def Content(self):
-        r"""代码模版脚本，base64编码返回
+        r"""<p>代码模版脚本，base64编码返回</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -10163,6 +10167,18 @@ class CodeTemplateDetail(AbstractModel):
     @Content.setter
     def Content(self, Content):
         self._Content = Content
+
+    @property
+    def Privilege(self):
+        r"""<p>用户对该资源的最高权限</p><p>枚举值：</p><ul><li>NO_PERMISSIONS： 无权限</li><li>CAN_VIEW： 只读权限</li><li>CAN_MANAGE： 管理权限</li></ul>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Privilege
+
+    @Privilege.setter
+    def Privilege(self, Privilege):
+        self._Privilege = Privilege
 
 
     def _deserialize(self, params):
@@ -10186,6 +10202,7 @@ class CodeTemplateDetail(AbstractModel):
         self._Submit = params.get("Submit")
         self._ScriptChange = params.get("ScriptChange")
         self._Content = params.get("Content")
+        self._Privilege = params.get("Privilege")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -27413,78 +27430,72 @@ class DescribeBatchOperateTaskDTO(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskId: 任务ID
+        :param _TaskId: <p>任务ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TaskId: str
-        :param _TaskName: 任务名
+        :param _TaskName: <p>任务名</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TaskName: str
-        :param _WorkflowId: 工作流Id
+        :param _WorkflowId: <p>工作流Id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type WorkflowId: str
-        :param _WorkflowName: 工作流名
+        :param _WorkflowName: <p>工作流名</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type WorkflowName: str
-        :param _Status: 状态
+        :param _Status: <p>状态</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Status: str
-        :param _TaskTypeId: 任务ID
+        :param _TaskTypeId: <p>任务ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TaskTypeId: int
-        :param _TaskTypeDesc: 任务类型
+        :param _TaskTypeDesc: <p>任务类型</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TaskTypeDesc: str
-        :param _FolderName: 文件夹名
+        :param _FolderName: <p>文件夹名</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type FolderName: str
-        :param _FolderId: 文件夹ID
+        :param _FolderId: <p>文件夹ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type FolderId: str
-        :param _InCharge: 负责人
+        :param _InCharge: <p>负责人</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type InCharge: str
-        :param _Submit: 是否提交
+        :param _Submit: <p>是否提交</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Submit: int
-        :param _DataEngine: 引擎：
-presto\SparkJob\SparkSql
+        :param _DataEngine: <p>引擎：<br>presto\SparkJob\SparkSql</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type DataEngine: str
-        :param _UpdateTime: 更新时间
+        :param _UpdateTime: <p>更新时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type UpdateTime: str
-        :param _CreateTime: 创造时间
+        :param _CreateTime: <p>创造时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type CreateTime: str
-        :param _CycleUnit: 周期类型D天周期
-H小时
-Ccrontab类型
-I分钟
-O一次性
-Y年
-R用户驱动
-W周
-M月
+        :param _CycleUnit: <p>周期类型D天周期<br>H小时<br>Ccrontab类型<br>I分钟<br>O一次性<br>Y年<br>R用户驱动<br>W周<br>M月</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type CycleUnit: str
-        :param _ScheduleDesc: 调度计划
+        :param _ScheduleDesc: <p>调度计划</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ScheduleDesc: str
-        :param _DatasourceId: 数据源ID
+        :param _DatasourceId: <p>数据源ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type DatasourceId: str
-        :param _DatasourceType: 数据源类型
+        :param _DatasourceType: <p>数据源类型</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type DatasourceType: str
-        :param _ComputeResource: 引擎名称
+        :param _ComputeResource: <p>引擎名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ComputeResource: str
-        :param _DlcRegion: dlc地域
+        :param _DlcRegion: <p>dlc地域</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type DlcRegion: str
-        :param _IsInherit: 资源组或自定义
+        :param _IsInherit: <p>资源组或自定义</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type IsInherit: str
+        :param _Privilege: <p>用户对该资源的最高权限</p><p>枚举值：</p><ul><li>NO_PERMISSIONS： 无权限</li><li>CAN_VIEW： 只读权限</li><li>CAN_MANAGE： 管理权限</li></ul>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Privilege: str
         """
         self._TaskId = None
         self._TaskName = None
@@ -27507,10 +27518,11 @@ M月
         self._ComputeResource = None
         self._DlcRegion = None
         self._IsInherit = None
+        self._Privilege = None
 
     @property
     def TaskId(self):
-        r"""任务ID
+        r"""<p>任务ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -27522,7 +27534,7 @@ M月
 
     @property
     def TaskName(self):
-        r"""任务名
+        r"""<p>任务名</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -27534,7 +27546,7 @@ M月
 
     @property
     def WorkflowId(self):
-        r"""工作流Id
+        r"""<p>工作流Id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -27546,7 +27558,7 @@ M月
 
     @property
     def WorkflowName(self):
-        r"""工作流名
+        r"""<p>工作流名</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -27558,7 +27570,7 @@ M月
 
     @property
     def Status(self):
-        r"""状态
+        r"""<p>状态</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -27570,7 +27582,7 @@ M月
 
     @property
     def TaskTypeId(self):
-        r"""任务ID
+        r"""<p>任务ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -27582,7 +27594,7 @@ M月
 
     @property
     def TaskTypeDesc(self):
-        r"""任务类型
+        r"""<p>任务类型</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -27594,7 +27606,7 @@ M月
 
     @property
     def FolderName(self):
-        r"""文件夹名
+        r"""<p>文件夹名</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -27606,7 +27618,7 @@ M月
 
     @property
     def FolderId(self):
-        r"""文件夹ID
+        r"""<p>文件夹ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -27618,7 +27630,7 @@ M月
 
     @property
     def InCharge(self):
-        r"""负责人
+        r"""<p>负责人</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -27630,7 +27642,7 @@ M月
 
     @property
     def Submit(self):
-        r"""是否提交
+        r"""<p>是否提交</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -27642,8 +27654,7 @@ M月
 
     @property
     def DataEngine(self):
-        r"""引擎：
-presto\SparkJob\SparkSql
+        r"""<p>引擎：<br>presto\SparkJob\SparkSql</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -27655,7 +27666,7 @@ presto\SparkJob\SparkSql
 
     @property
     def UpdateTime(self):
-        r"""更新时间
+        r"""<p>更新时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -27667,7 +27678,7 @@ presto\SparkJob\SparkSql
 
     @property
     def CreateTime(self):
-        r"""创造时间
+        r"""<p>创造时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -27679,15 +27690,7 @@ presto\SparkJob\SparkSql
 
     @property
     def CycleUnit(self):
-        r"""周期类型D天周期
-H小时
-Ccrontab类型
-I分钟
-O一次性
-Y年
-R用户驱动
-W周
-M月
+        r"""<p>周期类型D天周期<br>H小时<br>Ccrontab类型<br>I分钟<br>O一次性<br>Y年<br>R用户驱动<br>W周<br>M月</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -27699,7 +27702,7 @@ M月
 
     @property
     def ScheduleDesc(self):
-        r"""调度计划
+        r"""<p>调度计划</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -27711,7 +27714,7 @@ M月
 
     @property
     def DatasourceId(self):
-        r"""数据源ID
+        r"""<p>数据源ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -27723,7 +27726,7 @@ M月
 
     @property
     def DatasourceType(self):
-        r"""数据源类型
+        r"""<p>数据源类型</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -27735,7 +27738,7 @@ M月
 
     @property
     def ComputeResource(self):
-        r"""引擎名称
+        r"""<p>引擎名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -27747,7 +27750,7 @@ M月
 
     @property
     def DlcRegion(self):
-        r"""dlc地域
+        r"""<p>dlc地域</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -27759,7 +27762,7 @@ M月
 
     @property
     def IsInherit(self):
-        r"""资源组或自定义
+        r"""<p>资源组或自定义</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -27768,6 +27771,18 @@ M月
     @IsInherit.setter
     def IsInherit(self, IsInherit):
         self._IsInherit = IsInherit
+
+    @property
+    def Privilege(self):
+        r"""<p>用户对该资源的最高权限</p><p>枚举值：</p><ul><li>NO_PERMISSIONS： 无权限</li><li>CAN_VIEW： 只读权限</li><li>CAN_MANAGE： 管理权限</li></ul>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Privilege
+
+    @Privilege.setter
+    def Privilege(self, Privilege):
+        self._Privilege = Privilege
 
 
     def _deserialize(self, params):
@@ -27792,6 +27807,7 @@ M月
         self._ComputeResource = params.get("ComputeResource")
         self._DlcRegion = params.get("DlcRegion")
         self._IsInherit = params.get("IsInherit")
+        self._Privilege = params.get("Privilege")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -39493,61 +39509,36 @@ class DescribePendingSubmitTaskInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskId: 任务编号
+        :param _TaskId: <p>任务编号</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TaskId: str
-        :param _TaskName: 任务名称
+        :param _TaskName: <p>任务名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TaskName: str
-        :param _ModifyType: 修改类型
+        :param _ModifyType: <p>修改类型</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ModifyType: str
-        :param _TaskStatus: 任务状态
+        :param _TaskStatus: <p>任务状态</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TaskStatus: str
-        :param _SubmitPreCheck: 提交预检查（Y/N）
+        :param _SubmitPreCheck: <p>提交预检查（Y/N）</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type SubmitPreCheck: str
-        :param _SubmitPreCheckDetailList: 提交预检查提交可能会失败的原因
+        :param _SubmitPreCheckDetailList: <p>提交预检查提交可能会失败的原因</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type SubmitPreCheckDetailList: list of TaskSubmitPreCheckDetailInfo
-        :param _ExecutorGroupId: 资源组编号
+        :param _ExecutorGroupId: <p>资源组编号</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ExecutorGroupId: str
-        :param _ExecutorGroupName: 资源组名称
+        :param _ExecutorGroupName: <p>资源组名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ExecutorGroupName: str
-        :param _TaskTypeId: <p>任务类型id，取值范围：</p>
-<ul>
-<li>26 离线集成任务</li>
-<li>30 Python任务</li>
-<li>31 PySpark任务</li>
-<li>34 HiveSQL任务</li>
-<li>35 Shell任务</li>
-<li>36 SparkSQL任务</li>
-<li>21 JdbcSQL任务</li>
-<li>23 TDSQL-PostgreSQL任务</li>
-<li>32 DLCSQL任务</li>
-<li>33 Impala任务</li>
-<li>41 Kettle任务</li>
-<li>42 Tchouse-X任务</li>
-<li>43 TCHouse-X SQL任务</li>
-<li>46 DLCSpark任务</li>
-<li>50 DLC-PySpark任务</li>
-<li>47 TiOne任务</li>
-<li>48 Trino任务</li>
-<li>39 Spark任务</li>
-<li>92 MapReduce任务</li>
-<li>38 Shell表单模式任务</li>
-<li>130 BranchNode任务</li>
-<li>131 MergeNode任务</li>
-<li>132 Notebook任务</li>
-<li>133 SSH任务</li>
-<li>134 StarRocks任务</li>
-<li>137 For-each任务</li>
-</ul>
+        :param _TaskTypeId: <p>任务类型id，取值范围：</p><ul><li>26 离线集成任务</li><li>30 Python任务</li><li>31 PySpark任务</li><li>34 HiveSQL任务</li><li>35 Shell任务</li><li>36 SparkSQL任务</li><li>21 JdbcSQL任务</li><li>23 TDSQL-PostgreSQL任务</li><li>32 DLCSQL任务</li><li>33 Impala任务</li><li>41 Kettle任务</li><li>42 Tchouse-X任务</li><li>43 TCHouse-X SQL任务</li><li>46 DLCSpark任务</li><li>50 DLC-PySpark任务</li><li>47 TiOne任务</li><li>48 Trino任务</li><li>39 Spark任务</li><li>92 MapReduce任务</li><li>38 Shell表单模式任务</li><li>130 BranchNode任务</li><li>131 MergeNode任务</li><li>132 Notebook任务</li><li>133 SSH任务</li><li>134 StarRocks任务</li><li>137 For-each任务</li></ul>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TaskTypeId: int
+        :param _Privilege: <p>用户对该资源的最高权限</p><p>枚举值：</p><ul><li>NO_PERMISSIONS： 无权限</li><li>CAN_VIEW： 只读权限</li><li>CAN_MANAGE： 管理权限</li></ul>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Privilege: str
         """
         self._TaskId = None
         self._TaskName = None
@@ -39558,10 +39549,11 @@ class DescribePendingSubmitTaskInfo(AbstractModel):
         self._ExecutorGroupId = None
         self._ExecutorGroupName = None
         self._TaskTypeId = None
+        self._Privilege = None
 
     @property
     def TaskId(self):
-        r"""任务编号
+        r"""<p>任务编号</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -39573,7 +39565,7 @@ class DescribePendingSubmitTaskInfo(AbstractModel):
 
     @property
     def TaskName(self):
-        r"""任务名称
+        r"""<p>任务名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -39585,7 +39577,7 @@ class DescribePendingSubmitTaskInfo(AbstractModel):
 
     @property
     def ModifyType(self):
-        r"""修改类型
+        r"""<p>修改类型</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -39597,7 +39589,7 @@ class DescribePendingSubmitTaskInfo(AbstractModel):
 
     @property
     def TaskStatus(self):
-        r"""任务状态
+        r"""<p>任务状态</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -39609,7 +39601,7 @@ class DescribePendingSubmitTaskInfo(AbstractModel):
 
     @property
     def SubmitPreCheck(self):
-        r"""提交预检查（Y/N）
+        r"""<p>提交预检查（Y/N）</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -39621,7 +39613,7 @@ class DescribePendingSubmitTaskInfo(AbstractModel):
 
     @property
     def SubmitPreCheckDetailList(self):
-        r"""提交预检查提交可能会失败的原因
+        r"""<p>提交预检查提交可能会失败的原因</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of TaskSubmitPreCheckDetailInfo
         """
@@ -39633,7 +39625,7 @@ class DescribePendingSubmitTaskInfo(AbstractModel):
 
     @property
     def ExecutorGroupId(self):
-        r"""资源组编号
+        r"""<p>资源组编号</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -39645,7 +39637,7 @@ class DescribePendingSubmitTaskInfo(AbstractModel):
 
     @property
     def ExecutorGroupName(self):
-        r"""资源组名称
+        r"""<p>资源组名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -39657,35 +39649,7 @@ class DescribePendingSubmitTaskInfo(AbstractModel):
 
     @property
     def TaskTypeId(self):
-        r"""<p>任务类型id，取值范围：</p>
-<ul>
-<li>26 离线集成任务</li>
-<li>30 Python任务</li>
-<li>31 PySpark任务</li>
-<li>34 HiveSQL任务</li>
-<li>35 Shell任务</li>
-<li>36 SparkSQL任务</li>
-<li>21 JdbcSQL任务</li>
-<li>23 TDSQL-PostgreSQL任务</li>
-<li>32 DLCSQL任务</li>
-<li>33 Impala任务</li>
-<li>41 Kettle任务</li>
-<li>42 Tchouse-X任务</li>
-<li>43 TCHouse-X SQL任务</li>
-<li>46 DLCSpark任务</li>
-<li>50 DLC-PySpark任务</li>
-<li>47 TiOne任务</li>
-<li>48 Trino任务</li>
-<li>39 Spark任务</li>
-<li>92 MapReduce任务</li>
-<li>38 Shell表单模式任务</li>
-<li>130 BranchNode任务</li>
-<li>131 MergeNode任务</li>
-<li>132 Notebook任务</li>
-<li>133 SSH任务</li>
-<li>134 StarRocks任务</li>
-<li>137 For-each任务</li>
-</ul>
+        r"""<p>任务类型id，取值范围：</p><ul><li>26 离线集成任务</li><li>30 Python任务</li><li>31 PySpark任务</li><li>34 HiveSQL任务</li><li>35 Shell任务</li><li>36 SparkSQL任务</li><li>21 JdbcSQL任务</li><li>23 TDSQL-PostgreSQL任务</li><li>32 DLCSQL任务</li><li>33 Impala任务</li><li>41 Kettle任务</li><li>42 Tchouse-X任务</li><li>43 TCHouse-X SQL任务</li><li>46 DLCSpark任务</li><li>50 DLC-PySpark任务</li><li>47 TiOne任务</li><li>48 Trino任务</li><li>39 Spark任务</li><li>92 MapReduce任务</li><li>38 Shell表单模式任务</li><li>130 BranchNode任务</li><li>131 MergeNode任务</li><li>132 Notebook任务</li><li>133 SSH任务</li><li>134 StarRocks任务</li><li>137 For-each任务</li></ul>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -39694,6 +39658,18 @@ class DescribePendingSubmitTaskInfo(AbstractModel):
     @TaskTypeId.setter
     def TaskTypeId(self, TaskTypeId):
         self._TaskTypeId = TaskTypeId
+
+    @property
+    def Privilege(self):
+        r"""<p>用户对该资源的最高权限</p><p>枚举值：</p><ul><li>NO_PERMISSIONS： 无权限</li><li>CAN_VIEW： 只读权限</li><li>CAN_MANAGE： 管理权限</li></ul>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Privilege
+
+    @Privilege.setter
+    def Privilege(self, Privilege):
+        self._Privilege = Privilege
 
 
     def _deserialize(self, params):
@@ -39711,6 +39687,7 @@ class DescribePendingSubmitTaskInfo(AbstractModel):
         self._ExecutorGroupId = params.get("ExecutorGroupId")
         self._ExecutorGroupName = params.get("ExecutorGroupName")
         self._TaskTypeId = params.get("TaskTypeId")
+        self._Privilege = params.get("Privilege")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -59752,39 +59729,42 @@ class FolderDsDto(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Id: 文件夹id
+        :param _Id: <p>文件夹id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Id: str
-        :param _CreateTime: 创建时间
+        :param _CreateTime: <p>创建时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type CreateTime: str
-        :param _Name: 文件夹名称
+        :param _Name: <p>文件夹名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
-        :param _ProjectId: 所属项目id
+        :param _ProjectId: <p>所属项目id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ProjectId: str
-        :param _UpdateTime: 更新时间
+        :param _UpdateTime: <p>更新时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type UpdateTime: str
-        :param _ParentsFolderId: 父文件夹id
+        :param _ParentsFolderId: <p>父文件夹id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ParentsFolderId: str
-        :param _Total: 工作流总数
+        :param _Total: <p>工作流总数</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Total: int
-        :param _Workflows: 工作流列表
+        :param _Workflows: <p>工作流列表</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Workflows: list of WorkflowCanvasOpsDto
-        :param _TotalFolders: 子文件夹总数
+        :param _TotalFolders: <p>子文件夹总数</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TotalFolders: int
-        :param _Folders: 子文件夹列表
+        :param _Folders: <p>子文件夹列表</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Folders: list of FolderDsDto
-        :param _FindType: 搜索类型
+        :param _FindType: <p>搜索类型</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type FindType: str
+        :param _Privilege: <p>用户对该资源的最高权限</p><p>枚举值：</p><ul><li>NO_PERMISSIONS： 无权限</li><li>CAN_VIEW： 只读权限</li><li>CAN_MANAGE： 管理权限</li></ul>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Privilege: str
         """
         self._Id = None
         self._CreateTime = None
@@ -59797,10 +59777,11 @@ class FolderDsDto(AbstractModel):
         self._TotalFolders = None
         self._Folders = None
         self._FindType = None
+        self._Privilege = None
 
     @property
     def Id(self):
-        r"""文件夹id
+        r"""<p>文件夹id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -59812,7 +59793,7 @@ class FolderDsDto(AbstractModel):
 
     @property
     def CreateTime(self):
-        r"""创建时间
+        r"""<p>创建时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -59824,7 +59805,7 @@ class FolderDsDto(AbstractModel):
 
     @property
     def Name(self):
-        r"""文件夹名称
+        r"""<p>文件夹名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -59836,7 +59817,7 @@ class FolderDsDto(AbstractModel):
 
     @property
     def ProjectId(self):
-        r"""所属项目id
+        r"""<p>所属项目id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -59848,7 +59829,7 @@ class FolderDsDto(AbstractModel):
 
     @property
     def UpdateTime(self):
-        r"""更新时间
+        r"""<p>更新时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -59860,7 +59841,7 @@ class FolderDsDto(AbstractModel):
 
     @property
     def ParentsFolderId(self):
-        r"""父文件夹id
+        r"""<p>父文件夹id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -59872,7 +59853,7 @@ class FolderDsDto(AbstractModel):
 
     @property
     def Total(self):
-        r"""工作流总数
+        r"""<p>工作流总数</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -59884,7 +59865,7 @@ class FolderDsDto(AbstractModel):
 
     @property
     def Workflows(self):
-        r"""工作流列表
+        r"""<p>工作流列表</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of WorkflowCanvasOpsDto
         """
@@ -59896,7 +59877,7 @@ class FolderDsDto(AbstractModel):
 
     @property
     def TotalFolders(self):
-        r"""子文件夹总数
+        r"""<p>子文件夹总数</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -59908,7 +59889,7 @@ class FolderDsDto(AbstractModel):
 
     @property
     def Folders(self):
-        r"""子文件夹列表
+        r"""<p>子文件夹列表</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of FolderDsDto
         """
@@ -59920,7 +59901,7 @@ class FolderDsDto(AbstractModel):
 
     @property
     def FindType(self):
-        r"""搜索类型
+        r"""<p>搜索类型</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -59929,6 +59910,18 @@ class FolderDsDto(AbstractModel):
     @FindType.setter
     def FindType(self, FindType):
         self._FindType = FindType
+
+    @property
+    def Privilege(self):
+        r"""<p>用户对该资源的最高权限</p><p>枚举值：</p><ul><li>NO_PERMISSIONS： 无权限</li><li>CAN_VIEW： 只读权限</li><li>CAN_MANAGE： 管理权限</li></ul>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Privilege
+
+    @Privilege.setter
+    def Privilege(self, Privilege):
+        self._Privilege = Privilege
 
 
     def _deserialize(self, params):
@@ -59953,6 +59946,7 @@ class FolderDsDto(AbstractModel):
                 obj._deserialize(item)
                 self._Folders.append(obj)
         self._FindType = params.get("FindType")
+        self._Privilege = params.get("Privilege")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -67688,6 +67682,9 @@ class InstanceOpsDto(AbstractModel):
         :param _ProxyTaskType: <p>代理任务类型（仅 嵌套场景使用，非 嵌套 场景为 null）</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ProxyTaskType: :class:`tencentcloud.wedata.v20210820.models.TaskTypeOpsDto`
+        :param _Privilege: <p>权限</p><p>枚举值：</p><ul><li>CAN_MANAGE： 可管理</li><li>CAN_VIEW： 可见</li><li>NO_PERMISSIONS： 无权限</li></ul>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Privilege: str
         """
         self._TaskId = None
         self._TaskName = None
@@ -67765,6 +67762,7 @@ class InstanceOpsDto(AbstractModel):
         self._ProxyTaskId = None
         self._WorkflowRunName = None
         self._ProxyTaskType = None
+        self._Privilege = None
 
     @property
     def TaskId(self):
@@ -68674,6 +68672,18 @@ class InstanceOpsDto(AbstractModel):
     def ProxyTaskType(self, ProxyTaskType):
         self._ProxyTaskType = ProxyTaskType
 
+    @property
+    def Privilege(self):
+        r"""<p>权限</p><p>枚举值：</p><ul><li>CAN_MANAGE： 可管理</li><li>CAN_VIEW： 可见</li><li>NO_PERMISSIONS： 无权限</li></ul>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Privilege
+
+    @Privilege.setter
+    def Privilege(self, Privilege):
+        self._Privilege = Privilege
+
 
     def _deserialize(self, params):
         self._TaskId = params.get("TaskId")
@@ -68775,6 +68785,7 @@ class InstanceOpsDto(AbstractModel):
         if params.get("ProxyTaskType") is not None:
             self._ProxyTaskType = TaskTypeOpsDto()
             self._ProxyTaskType._deserialize(params.get("ProxyTaskType"))
+        self._Privilege = params.get("Privilege")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -75627,6 +75638,9 @@ class MakePlanOpsDto(AbstractModel):
         :param _RunScheduleRangeWeekDays: <p>指定时间段补录生效日，星期一到星期日，1-7</p><p>枚举值：</p><ul><li>星期一： 1</li><li>星期二： 2</li></ul>
 注意：此字段可能返回 null，表示取不到有效值。
         :type RunScheduleRangeWeekDays: list of int
+        :param _Privilege: <p>资源权限</p><p>枚举值：</p><ul><li>NO_PERMISSIONS： 无权限</li><li>CAN_VIEW： 可见</li><li>CAN_MANAGE： 可管理</li></ul>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Privilege: str
         """
         self._PlanId = None
         self._MakeName = None
@@ -75670,6 +75684,7 @@ class MakePlanOpsDto(AbstractModel):
         self._RunScheduleRangeStartTime = None
         self._RunScheduleRangeEndTime = None
         self._RunScheduleRangeWeekDays = None
+        self._Privilege = None
 
     @property
     def PlanId(self):
@@ -76169,6 +76184,18 @@ class MakePlanOpsDto(AbstractModel):
     def RunScheduleRangeWeekDays(self, RunScheduleRangeWeekDays):
         self._RunScheduleRangeWeekDays = RunScheduleRangeWeekDays
 
+    @property
+    def Privilege(self):
+        r"""<p>资源权限</p><p>枚举值：</p><ul><li>NO_PERMISSIONS： 无权限</li><li>CAN_VIEW： 可见</li><li>CAN_MANAGE： 可管理</li></ul>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Privilege
+
+    @Privilege.setter
+    def Privilege(self, Privilege):
+        self._Privilege = Privilege
+
 
     def _deserialize(self, params):
         self._PlanId = params.get("PlanId")
@@ -76230,6 +76257,7 @@ class MakePlanOpsDto(AbstractModel):
         self._RunScheduleRangeStartTime = params.get("RunScheduleRangeStartTime")
         self._RunScheduleRangeEndTime = params.get("RunScheduleRangeEndTime")
         self._RunScheduleRangeWeekDays = params.get("RunScheduleRangeWeekDays")
+        self._Privilege = params.get("Privilege")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -76699,6 +76727,9 @@ class ManualTriggerRecordOpsDto(AbstractModel):
         :param _ScheduleTimeList: <p>数据时间列表</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ScheduleTimeList: list of str
+        :param _Privilege: <p>对象权限</p><p>枚举值：</p><ul><li>CAN_VIEW： 只读权限</li><li>CAN_MANAGE： 管理权限</li><li>NO_PERMISSIONS： 无权限</li></ul>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Privilege: str
         """
         self._TriggerId = None
         self._TriggerName = None
@@ -76724,6 +76755,7 @@ class ManualTriggerRecordOpsDto(AbstractModel):
         self._ParentSpInstanceName = None
         self._ParentSpInstanceDataTime = None
         self._ScheduleTimeList = None
+        self._Privilege = None
 
     @property
     def TriggerId(self):
@@ -77012,6 +77044,18 @@ class ManualTriggerRecordOpsDto(AbstractModel):
     def ScheduleTimeList(self, ScheduleTimeList):
         self._ScheduleTimeList = ScheduleTimeList
 
+    @property
+    def Privilege(self):
+        r"""<p>对象权限</p><p>枚举值：</p><ul><li>CAN_VIEW： 只读权限</li><li>CAN_MANAGE： 管理权限</li><li>NO_PERMISSIONS： 无权限</li></ul>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Privilege
+
+    @Privilege.setter
+    def Privilege(self, Privilege):
+        self._Privilege = Privilege
+
 
     def _deserialize(self, params):
         self._TriggerId = params.get("TriggerId")
@@ -77038,6 +77082,7 @@ class ManualTriggerRecordOpsDto(AbstractModel):
         self._ParentSpInstanceName = params.get("ParentSpInstanceName")
         self._ParentSpInstanceDataTime = params.get("ParentSpInstanceDataTime")
         self._ScheduleTimeList = params.get("ScheduleTimeList")
+        self._Privilege = params.get("Privilege")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -110729,6 +110774,9 @@ class TaskDsDTO(AbstractModel):
         :param _LastUpdateTimestamp: <p>任务最后更新时间戳</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type LastUpdateTimestamp: int
+        :param _Privilege: <p>用户对该资源的最高权限</p><p>枚举值：</p><ul><li>NO_PERMISSIONS： 无权限</li><li>CAN_VIEW： 只读权限</li><li>CAN_MANAGE： 管理权限</li></ul>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Privilege: str
         """
         self._TaskId = None
         self._VirtualTaskId = None
@@ -110836,6 +110884,7 @@ class TaskDsDTO(AbstractModel):
         self._AllowDownstreamDependency = None
         self._DependencyTriggerPolicy = None
         self._LastUpdateTimestamp = None
+        self._Privilege = None
 
     @property
     def TaskId(self):
@@ -112109,6 +112158,18 @@ class TaskDsDTO(AbstractModel):
     def LastUpdateTimestamp(self, LastUpdateTimestamp):
         self._LastUpdateTimestamp = LastUpdateTimestamp
 
+    @property
+    def Privilege(self):
+        r"""<p>用户对该资源的最高权限</p><p>枚举值：</p><ul><li>NO_PERMISSIONS： 无权限</li><li>CAN_VIEW： 只读权限</li><li>CAN_MANAGE： 管理权限</li></ul>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Privilege
+
+    @Privilege.setter
+    def Privilege(self, Privilege):
+        self._Privilege = Privilege
+
 
     def _deserialize(self, params):
         self._TaskId = params.get("TaskId")
@@ -112266,6 +112327,7 @@ class TaskDsDTO(AbstractModel):
         self._AllowDownstreamDependency = params.get("AllowDownstreamDependency")
         self._DependencyTriggerPolicy = params.get("DependencyTriggerPolicy")
         self._LastUpdateTimestamp = params.get("LastUpdateTimestamp")
+        self._Privilege = params.get("Privilege")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -114721,6 +114783,9 @@ class TaskOpsDto(AbstractModel):
         :param _ProxyTaskTypeId: <p>代理任务类型ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ProxyTaskTypeId: int
+        :param _Privilege: <p>对象权限</p><p>枚举值：</p><ul><li>CAN_MANAGE： 管理权限</li><li>CAN_VIEW： 只读权限</li><li>NO_PERMISSIONS： 无权限</li></ul>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Privilege: str
         """
         self._TaskId = None
         self._VirtualTaskId = None
@@ -114822,6 +114887,7 @@ class TaskOpsDto(AbstractModel):
         self._ScheduleTimeZone = None
         self._ProxyTaskId = None
         self._ProxyTaskTypeId = None
+        self._Privilege = None
 
     @property
     def TaskId(self):
@@ -116021,6 +116087,18 @@ class TaskOpsDto(AbstractModel):
     def ProxyTaskTypeId(self, ProxyTaskTypeId):
         self._ProxyTaskTypeId = ProxyTaskTypeId
 
+    @property
+    def Privilege(self):
+        r"""<p>对象权限</p><p>枚举值：</p><ul><li>CAN_MANAGE： 管理权限</li><li>CAN_VIEW： 只读权限</li><li>NO_PERMISSIONS： 无权限</li></ul>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Privilege
+
+    @Privilege.setter
+    def Privilege(self, Privilege):
+        self._Privilege = Privilege
+
 
     def _deserialize(self, params):
         self._TaskId = params.get("TaskId")
@@ -116147,6 +116225,7 @@ class TaskOpsDto(AbstractModel):
         self._ScheduleTimeZone = params.get("ScheduleTimeZone")
         self._ProxyTaskId = params.get("ProxyTaskId")
         self._ProxyTaskTypeId = params.get("ProxyTaskTypeId")
+        self._Privilege = params.get("Privilege")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -122898,51 +122977,54 @@ class WorkflowCanvasOpsDto(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _WorkflowId: 工作流id
+        :param _WorkflowId: <p>工作流id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type WorkflowId: str
-        :param _WorkflowDesc: 工作流详情描述
+        :param _WorkflowDesc: <p>工作流详情描述</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type WorkflowDesc: str
-        :param _WorkflowName: 工作流名称
+        :param _WorkflowName: <p>工作流名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type WorkflowName: str
-        :param _FolderId: 所属文件夹id
+        :param _FolderId: <p>所属文件夹id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type FolderId: str
-        :param _FolderIds: 所属文件夹ids
+        :param _FolderIds: <p>所属文件夹ids</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type FolderIds: list of str
-        :param _Tasks: 任务列表
+        :param _Tasks: <p>任务列表</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Tasks: list of TaskOpsDto
-        :param _Links: 任务依赖边列表
+        :param _Links: <p>任务依赖边列表</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Links: list of LinkOpsDto
-        :param _UserGroupId: 工作流所属用户分组id,若有多个分号隔开: a;b;c
+        :param _UserGroupId: <p>工作流所属用户分组id,若有多个分号隔开: a;b;c</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type UserGroupId: str
-        :param _UserGroupName: 工作流所属用户分组名称,若有多个分号隔开: a;b;c
+        :param _UserGroupName: <p>工作流所属用户分组名称,若有多个分号隔开: a;b;c</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type UserGroupName: str
-        :param _ProjectId: 项目id
+        :param _ProjectId: <p>项目id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ProjectId: str
-        :param _ProjectIdent: 项目标识
+        :param _ProjectIdent: <p>项目标识</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ProjectIdent: str
-        :param _ProjectName: 项目名称
+        :param _ProjectName: <p>项目名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ProjectName: str
-        :param _Owner: 责任人
+        :param _Owner: <p>责任人</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Owner: str
-        :param _OwnerId: 责任人UserId
+        :param _OwnerId: <p>责任人UserId</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type OwnerId: str
-        :param _WorkflowType: 工作流类型，周期cycle，手动manual
+        :param _WorkflowType: <p>工作流类型，周期cycle，手动manual</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type WorkflowType: str
+        :param _Privilege: <p>用户对该资源的最高权限</p><p>枚举值：</p><ul><li>NO_PERMISSIONS： 无权限</li><li>CAN_VIEW： 只读权限</li><li>CAN_MANAGE： 管理权限</li></ul>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Privilege: str
         """
         self._WorkflowId = None
         self._WorkflowDesc = None
@@ -122959,10 +123041,11 @@ class WorkflowCanvasOpsDto(AbstractModel):
         self._Owner = None
         self._OwnerId = None
         self._WorkflowType = None
+        self._Privilege = None
 
     @property
     def WorkflowId(self):
-        r"""工作流id
+        r"""<p>工作流id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -122974,7 +123057,7 @@ class WorkflowCanvasOpsDto(AbstractModel):
 
     @property
     def WorkflowDesc(self):
-        r"""工作流详情描述
+        r"""<p>工作流详情描述</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -122986,7 +123069,7 @@ class WorkflowCanvasOpsDto(AbstractModel):
 
     @property
     def WorkflowName(self):
-        r"""工作流名称
+        r"""<p>工作流名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -122998,7 +123081,7 @@ class WorkflowCanvasOpsDto(AbstractModel):
 
     @property
     def FolderId(self):
-        r"""所属文件夹id
+        r"""<p>所属文件夹id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -123010,7 +123093,7 @@ class WorkflowCanvasOpsDto(AbstractModel):
 
     @property
     def FolderIds(self):
-        r"""所属文件夹ids
+        r"""<p>所属文件夹ids</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -123022,7 +123105,7 @@ class WorkflowCanvasOpsDto(AbstractModel):
 
     @property
     def Tasks(self):
-        r"""任务列表
+        r"""<p>任务列表</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of TaskOpsDto
         """
@@ -123034,7 +123117,7 @@ class WorkflowCanvasOpsDto(AbstractModel):
 
     @property
     def Links(self):
-        r"""任务依赖边列表
+        r"""<p>任务依赖边列表</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of LinkOpsDto
         """
@@ -123046,7 +123129,7 @@ class WorkflowCanvasOpsDto(AbstractModel):
 
     @property
     def UserGroupId(self):
-        r"""工作流所属用户分组id,若有多个分号隔开: a;b;c
+        r"""<p>工作流所属用户分组id,若有多个分号隔开: a;b;c</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -123058,7 +123141,7 @@ class WorkflowCanvasOpsDto(AbstractModel):
 
     @property
     def UserGroupName(self):
-        r"""工作流所属用户分组名称,若有多个分号隔开: a;b;c
+        r"""<p>工作流所属用户分组名称,若有多个分号隔开: a;b;c</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -123070,7 +123153,7 @@ class WorkflowCanvasOpsDto(AbstractModel):
 
     @property
     def ProjectId(self):
-        r"""项目id
+        r"""<p>项目id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -123082,7 +123165,7 @@ class WorkflowCanvasOpsDto(AbstractModel):
 
     @property
     def ProjectIdent(self):
-        r"""项目标识
+        r"""<p>项目标识</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -123094,7 +123177,7 @@ class WorkflowCanvasOpsDto(AbstractModel):
 
     @property
     def ProjectName(self):
-        r"""项目名称
+        r"""<p>项目名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -123106,7 +123189,7 @@ class WorkflowCanvasOpsDto(AbstractModel):
 
     @property
     def Owner(self):
-        r"""责任人
+        r"""<p>责任人</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -123118,7 +123201,7 @@ class WorkflowCanvasOpsDto(AbstractModel):
 
     @property
     def OwnerId(self):
-        r"""责任人UserId
+        r"""<p>责任人UserId</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -123130,7 +123213,7 @@ class WorkflowCanvasOpsDto(AbstractModel):
 
     @property
     def WorkflowType(self):
-        r"""工作流类型，周期cycle，手动manual
+        r"""<p>工作流类型，周期cycle，手动manual</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -123139,6 +123222,18 @@ class WorkflowCanvasOpsDto(AbstractModel):
     @WorkflowType.setter
     def WorkflowType(self, WorkflowType):
         self._WorkflowType = WorkflowType
+
+    @property
+    def Privilege(self):
+        r"""<p>用户对该资源的最高权限</p><p>枚举值：</p><ul><li>NO_PERMISSIONS： 无权限</li><li>CAN_VIEW： 只读权限</li><li>CAN_MANAGE： 管理权限</li></ul>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Privilege
+
+    @Privilege.setter
+    def Privilege(self, Privilege):
+        self._Privilege = Privilege
 
 
     def _deserialize(self, params):
@@ -123167,6 +123262,7 @@ class WorkflowCanvasOpsDto(AbstractModel):
         self._Owner = params.get("Owner")
         self._OwnerId = params.get("OwnerId")
         self._WorkflowType = params.get("WorkflowType")
+        self._Privilege = params.get("Privilege")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -123244,6 +123340,9 @@ class WorkflowDsDTO(AbstractModel):
         :param _ExecuteUserName: <p>运行账号名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ExecuteUserName: str
+        :param _Privilege: <p>用户对该资源的最高权限</p><p>枚举值：</p><ul><li>NO_PERMISSIONS： 无权限</li><li>CAN_VIEW： 只读权限</li><li>CAN_MANAGE： 管理权限</li></ul>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Privilege: str
         """
         self._WorkflowId = None
         self._Owner = None
@@ -123265,6 +123364,7 @@ class WorkflowDsDTO(AbstractModel):
         self._BundleInfo = None
         self._ExecuteUserUin = None
         self._ExecuteUserName = None
+        self._Privilege = None
 
     @property
     def WorkflowId(self):
@@ -123506,6 +123606,18 @@ class WorkflowDsDTO(AbstractModel):
     def ExecuteUserName(self, ExecuteUserName):
         self._ExecuteUserName = ExecuteUserName
 
+    @property
+    def Privilege(self):
+        r"""<p>用户对该资源的最高权限</p><p>枚举值：</p><ul><li>NO_PERMISSIONS： 无权限</li><li>CAN_VIEW： 只读权限</li><li>CAN_MANAGE： 管理权限</li></ul>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Privilege
+
+    @Privilege.setter
+    def Privilege(self, Privilege):
+        self._Privilege = Privilege
+
 
     def _deserialize(self, params):
         self._WorkflowId = params.get("WorkflowId")
@@ -123543,6 +123655,7 @@ class WorkflowDsDTO(AbstractModel):
         self._BundleInfo = params.get("BundleInfo")
         self._ExecuteUserUin = params.get("ExecuteUserUin")
         self._ExecuteUserName = params.get("ExecuteUserName")
+        self._Privilege = params.get("Privilege")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -123615,6 +123728,9 @@ class WorkflowExtOpsDto(AbstractModel):
         :param _NestedBySpTaskIds: <p>引用该手动工作流的嵌套工作流任务ID列表</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type NestedBySpTaskIds: list of str
+        :param _Privilege: <p>权限</p><p>枚举值：</p><ul><li>CAN_MANAGE： 可管理</li><li>CAN_VIEW： 可见</li><li>NO_PERMISSION： 无权限</li></ul>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Privilege: str
         """
         self._TaskCount = None
         self._FolderName = None
@@ -123635,6 +123751,7 @@ class WorkflowExtOpsDto(AbstractModel):
         self._BundleId = None
         self._BundleInfo = None
         self._NestedBySpTaskIds = None
+        self._Privilege = None
 
     @property
     def TaskCount(self):
@@ -123862,6 +123979,18 @@ class WorkflowExtOpsDto(AbstractModel):
     def NestedBySpTaskIds(self, NestedBySpTaskIds):
         self._NestedBySpTaskIds = NestedBySpTaskIds
 
+    @property
+    def Privilege(self):
+        r"""<p>权限</p><p>枚举值：</p><ul><li>CAN_MANAGE： 可管理</li><li>CAN_VIEW： 可见</li><li>NO_PERMISSION： 无权限</li></ul>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Privilege
+
+    @Privilege.setter
+    def Privilege(self, Privilege):
+        self._Privilege = Privilege
+
 
     def _deserialize(self, params):
         self._TaskCount = params.get("TaskCount")
@@ -123883,6 +124012,7 @@ class WorkflowExtOpsDto(AbstractModel):
         self._BundleId = params.get("BundleId")
         self._BundleInfo = params.get("BundleInfo")
         self._NestedBySpTaskIds = params.get("NestedBySpTaskIds")
+        self._Privilege = params.get("Privilege")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -123960,81 +124090,84 @@ class WorkflowScheduleDtoDs(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ProjectId: 项目ID
+        :param _ProjectId: <p>项目ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ProjectId: str
-        :param _WorkflowId: 工作流ID
+        :param _WorkflowId: <p>工作流ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type WorkflowId: str
-        :param _CreateTime: 创建时间
+        :param _CreateTime: <p>创建时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type CreateTime: str
-        :param _Creater: 创建人
+        :param _Creater: <p>创建人</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Creater: str
-        :param _ModifyTime: 修改时间
+        :param _ModifyTime: <p>修改时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ModifyTime: str
-        :param _DelayTime: 延迟时间
+        :param _DelayTime: <p>延迟时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type DelayTime: int
-        :param _StartupTime: 启动时间
+        :param _StartupTime: <p>启动时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type StartupTime: int
-        :param _SelfDepend: 任务依赖
+        :param _SelfDepend: <p>任务依赖</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type SelfDepend: str
-        :param _StartTime: 开始时间
+        :param _StartTime: <p>开始时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type StartTime: str
-        :param _EndTime: 结束时间
+        :param _EndTime: <p>结束时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type EndTime: str
-        :param _TaskAction: 指定运行时间
+        :param _TaskAction: <p>指定运行时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TaskAction: str
-        :param _CycleType: 调度周期时间单位
+        :param _CycleType: <p>调度周期时间单位</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type CycleType: str
-        :param _CycleStep: 调度周期
+        :param _CycleStep: <p>调度周期</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type CycleStep: int
-        :param _CrontabExpression: Cron表达式
+        :param _CrontabExpression: <p>Cron表达式</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type CrontabExpression: str
-        :param _ExecutionStartTime: 执行时间左闭区间
+        :param _ExecutionStartTime: <p>执行时间左闭区间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ExecutionStartTime: str
-        :param _ExecutionEndTime: 执行时间右闭区间
+        :param _ExecutionEndTime: <p>执行时间右闭区间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ExecutionEndTime: str
-        :param _InstanceInitStrategy: 实例初始化策略
+        :param _InstanceInitStrategy: <p>实例初始化策略</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceInitStrategy: str
-        :param _DependencyWorkflow: 工作流依赖
+        :param _DependencyWorkflow: <p>工作流依赖</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type DependencyWorkflow: str
-        :param _SchedulerDesc: 调度计划
+        :param _SchedulerDesc: <p>调度计划</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type SchedulerDesc: str
-        :param _FirstSubmitTime: 工作流首次提交时间
+        :param _FirstSubmitTime: <p>工作流首次提交时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type FirstSubmitTime: str
-        :param _LatestSubmitTime: 工作流最近提交时间
+        :param _LatestSubmitTime: <p>工作流最近提交时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type LatestSubmitTime: str
-        :param _CalendarOpen: 日历调度是否开启
+        :param _CalendarOpen: <p>日历调度是否开启</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type CalendarOpen: str
-        :param _CalendarName: 日历调度名称
+        :param _CalendarName: <p>日历调度名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type CalendarName: str
-        :param _CalendarId: 日历调度id
+        :param _CalendarId: <p>日历调度id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type CalendarId: str
-        :param _ScheduleTimeZone: 时区配置
+        :param _ScheduleTimeZone: <p>时区配置</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ScheduleTimeZone: str
+        :param _Privilege: <p>用户对该资源的最高权限</p><p>枚举值：</p><ul><li>NO_PERMISSIONS： 无权限</li><li>CAN_VIEW： 只读权限</li><li>CAN_MANAGE： 管理权限</li></ul>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Privilege: str
         """
         self._ProjectId = None
         self._WorkflowId = None
@@ -124061,10 +124194,11 @@ class WorkflowScheduleDtoDs(AbstractModel):
         self._CalendarName = None
         self._CalendarId = None
         self._ScheduleTimeZone = None
+        self._Privilege = None
 
     @property
     def ProjectId(self):
-        r"""项目ID
+        r"""<p>项目ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -124076,7 +124210,7 @@ class WorkflowScheduleDtoDs(AbstractModel):
 
     @property
     def WorkflowId(self):
-        r"""工作流ID
+        r"""<p>工作流ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -124088,7 +124222,7 @@ class WorkflowScheduleDtoDs(AbstractModel):
 
     @property
     def CreateTime(self):
-        r"""创建时间
+        r"""<p>创建时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -124100,7 +124234,7 @@ class WorkflowScheduleDtoDs(AbstractModel):
 
     @property
     def Creater(self):
-        r"""创建人
+        r"""<p>创建人</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -124112,7 +124246,7 @@ class WorkflowScheduleDtoDs(AbstractModel):
 
     @property
     def ModifyTime(self):
-        r"""修改时间
+        r"""<p>修改时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -124124,7 +124258,7 @@ class WorkflowScheduleDtoDs(AbstractModel):
 
     @property
     def DelayTime(self):
-        r"""延迟时间
+        r"""<p>延迟时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -124136,7 +124270,7 @@ class WorkflowScheduleDtoDs(AbstractModel):
 
     @property
     def StartupTime(self):
-        r"""启动时间
+        r"""<p>启动时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -124148,7 +124282,7 @@ class WorkflowScheduleDtoDs(AbstractModel):
 
     @property
     def SelfDepend(self):
-        r"""任务依赖
+        r"""<p>任务依赖</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -124160,7 +124294,7 @@ class WorkflowScheduleDtoDs(AbstractModel):
 
     @property
     def StartTime(self):
-        r"""开始时间
+        r"""<p>开始时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -124172,7 +124306,7 @@ class WorkflowScheduleDtoDs(AbstractModel):
 
     @property
     def EndTime(self):
-        r"""结束时间
+        r"""<p>结束时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -124184,7 +124318,7 @@ class WorkflowScheduleDtoDs(AbstractModel):
 
     @property
     def TaskAction(self):
-        r"""指定运行时间
+        r"""<p>指定运行时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -124196,7 +124330,7 @@ class WorkflowScheduleDtoDs(AbstractModel):
 
     @property
     def CycleType(self):
-        r"""调度周期时间单位
+        r"""<p>调度周期时间单位</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -124208,7 +124342,7 @@ class WorkflowScheduleDtoDs(AbstractModel):
 
     @property
     def CycleStep(self):
-        r"""调度周期
+        r"""<p>调度周期</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -124220,7 +124354,7 @@ class WorkflowScheduleDtoDs(AbstractModel):
 
     @property
     def CrontabExpression(self):
-        r"""Cron表达式
+        r"""<p>Cron表达式</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -124232,7 +124366,7 @@ class WorkflowScheduleDtoDs(AbstractModel):
 
     @property
     def ExecutionStartTime(self):
-        r"""执行时间左闭区间
+        r"""<p>执行时间左闭区间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -124244,7 +124378,7 @@ class WorkflowScheduleDtoDs(AbstractModel):
 
     @property
     def ExecutionEndTime(self):
-        r"""执行时间右闭区间
+        r"""<p>执行时间右闭区间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -124256,7 +124390,7 @@ class WorkflowScheduleDtoDs(AbstractModel):
 
     @property
     def InstanceInitStrategy(self):
-        r"""实例初始化策略
+        r"""<p>实例初始化策略</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -124268,7 +124402,7 @@ class WorkflowScheduleDtoDs(AbstractModel):
 
     @property
     def DependencyWorkflow(self):
-        r"""工作流依赖
+        r"""<p>工作流依赖</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -124280,7 +124414,7 @@ class WorkflowScheduleDtoDs(AbstractModel):
 
     @property
     def SchedulerDesc(self):
-        r"""调度计划
+        r"""<p>调度计划</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -124292,7 +124426,7 @@ class WorkflowScheduleDtoDs(AbstractModel):
 
     @property
     def FirstSubmitTime(self):
-        r"""工作流首次提交时间
+        r"""<p>工作流首次提交时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -124304,7 +124438,7 @@ class WorkflowScheduleDtoDs(AbstractModel):
 
     @property
     def LatestSubmitTime(self):
-        r"""工作流最近提交时间
+        r"""<p>工作流最近提交时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -124316,7 +124450,7 @@ class WorkflowScheduleDtoDs(AbstractModel):
 
     @property
     def CalendarOpen(self):
-        r"""日历调度是否开启
+        r"""<p>日历调度是否开启</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -124328,7 +124462,7 @@ class WorkflowScheduleDtoDs(AbstractModel):
 
     @property
     def CalendarName(self):
-        r"""日历调度名称
+        r"""<p>日历调度名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -124340,7 +124474,7 @@ class WorkflowScheduleDtoDs(AbstractModel):
 
     @property
     def CalendarId(self):
-        r"""日历调度id
+        r"""<p>日历调度id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -124352,7 +124486,7 @@ class WorkflowScheduleDtoDs(AbstractModel):
 
     @property
     def ScheduleTimeZone(self):
-        r"""时区配置
+        r"""<p>时区配置</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -124361,6 +124495,18 @@ class WorkflowScheduleDtoDs(AbstractModel):
     @ScheduleTimeZone.setter
     def ScheduleTimeZone(self, ScheduleTimeZone):
         self._ScheduleTimeZone = ScheduleTimeZone
+
+    @property
+    def Privilege(self):
+        r"""<p>用户对该资源的最高权限</p><p>枚举值：</p><ul><li>NO_PERMISSIONS： 无权限</li><li>CAN_VIEW： 只读权限</li><li>CAN_MANAGE： 管理权限</li></ul>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Privilege
+
+    @Privilege.setter
+    def Privilege(self, Privilege):
+        self._Privilege = Privilege
 
 
     def _deserialize(self, params):
@@ -124389,6 +124535,7 @@ class WorkflowScheduleDtoDs(AbstractModel):
         self._CalendarName = params.get("CalendarName")
         self._CalendarId = params.get("CalendarId")
         self._ScheduleTimeZone = params.get("ScheduleTimeZone")
+        self._Privilege = params.get("Privilege")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

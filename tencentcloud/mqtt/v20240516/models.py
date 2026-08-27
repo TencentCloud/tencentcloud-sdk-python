@@ -10841,20 +10841,24 @@ class MQTTEndpointItem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Type: 类型
+        :param _Type: <p>类型</p>
         :type Type: str
-        :param _Url: 接入点
+        :param _Url: <p>接入点</p>
         :type Url: str
-        :param _VpcId: vpc信息
+        :param _VpcId: <p>vpc信息</p>
         :type VpcId: str
-        :param _SubnetId: 子网信息
+        :param _SubnetId: <p>子网信息</p>
         :type SubnetId: str
-        :param _Host: 主机
+        :param _Host: <p>主机</p>
         :type Host: str
-        :param _Port: 端口
+        :param _Port: <p>端口</p>
         :type Port: int
-        :param _Ip: 接入点ip
+        :param _Ip: <p>接入点ip</p>
         :type Ip: str
+        :param _PortEnable: <p>端口是否打开</p>
+        :type PortEnable: bool
+        :param _VpcEndpointId: <p>vpce唯一id</p>
+        :type VpcEndpointId: str
         """
         self._Type = None
         self._Url = None
@@ -10863,10 +10867,12 @@ class MQTTEndpointItem(AbstractModel):
         self._Host = None
         self._Port = None
         self._Ip = None
+        self._PortEnable = None
+        self._VpcEndpointId = None
 
     @property
     def Type(self):
-        r"""类型
+        r"""<p>类型</p>
         :rtype: str
         """
         return self._Type
@@ -10877,7 +10883,7 @@ class MQTTEndpointItem(AbstractModel):
 
     @property
     def Url(self):
-        r"""接入点
+        r"""<p>接入点</p>
         :rtype: str
         """
         return self._Url
@@ -10888,7 +10894,7 @@ class MQTTEndpointItem(AbstractModel):
 
     @property
     def VpcId(self):
-        r"""vpc信息
+        r"""<p>vpc信息</p>
         :rtype: str
         """
         return self._VpcId
@@ -10899,7 +10905,7 @@ class MQTTEndpointItem(AbstractModel):
 
     @property
     def SubnetId(self):
-        r"""子网信息
+        r"""<p>子网信息</p>
         :rtype: str
         """
         return self._SubnetId
@@ -10910,7 +10916,7 @@ class MQTTEndpointItem(AbstractModel):
 
     @property
     def Host(self):
-        r"""主机
+        r"""<p>主机</p>
         :rtype: str
         """
         return self._Host
@@ -10921,7 +10927,7 @@ class MQTTEndpointItem(AbstractModel):
 
     @property
     def Port(self):
-        r"""端口
+        r"""<p>端口</p>
         :rtype: int
         """
         return self._Port
@@ -10932,7 +10938,7 @@ class MQTTEndpointItem(AbstractModel):
 
     @property
     def Ip(self):
-        r"""接入点ip
+        r"""<p>接入点ip</p>
         :rtype: str
         """
         return self._Ip
@@ -10940,6 +10946,28 @@ class MQTTEndpointItem(AbstractModel):
     @Ip.setter
     def Ip(self, Ip):
         self._Ip = Ip
+
+    @property
+    def PortEnable(self):
+        r"""<p>端口是否打开</p>
+        :rtype: bool
+        """
+        return self._PortEnable
+
+    @PortEnable.setter
+    def PortEnable(self, PortEnable):
+        self._PortEnable = PortEnable
+
+    @property
+    def VpcEndpointId(self):
+        r"""<p>vpce唯一id</p>
+        :rtype: str
+        """
+        return self._VpcEndpointId
+
+    @VpcEndpointId.setter
+    def VpcEndpointId(self, VpcEndpointId):
+        self._VpcEndpointId = VpcEndpointId
 
 
     def _deserialize(self, params):
@@ -10950,6 +10978,8 @@ class MQTTEndpointItem(AbstractModel):
         self._Host = params.get("Host")
         self._Port = params.get("Port")
         self._Ip = params.get("Ip")
+        self._PortEnable = params.get("PortEnable")
+        self._VpcEndpointId = params.get("VpcEndpointId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

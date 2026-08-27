@@ -10298,22 +10298,24 @@ class DescribeAddressTemplateListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Offset: 偏移量，分页用
+        :param _Offset: <p>偏移量，分页用</p>
         :type Offset: int
-        :param _Limit: 条数，分页用
+        :param _Limit: <p>条数，分页用</p>
         :type Limit: int
-        :param _By: 排序字段，取值：UpdateTime最近更新时间，RulesNum关联规则数
+        :param _By: <p>排序字段，取值：UpdateTime最近更新时间，RulesNum关联规则数</p>
         :type By: str
-        :param _Order: 排序，取值 ：asc正序，desc逆序
+        :param _Order: <p>排序，取值 ：asc正序，desc逆序</p>
         :type Order: str
-        :param _SearchValue: 搜索值
+        :param _SearchValue: <p>搜索值</p>
         :type SearchValue: str
-        :param _Uuid: 检索地址模板唯一id
+        :param _Uuid: <p>检索地址模板唯一id</p>
         :type Uuid: str
-        :param _TemplateType: 模板类型，取值：1：ip模板，5：域名模板，6：协议端口模板
+        :param _TemplateType: <p>模板类型，取值：1：ip模板，5：域名模板，6：协议端口模板</p>
         :type TemplateType: str
-        :param _TemplateId: 模板Id
+        :param _TemplateId: <p>模板Id</p>
         :type TemplateId: str
+        :param _SourceType: <p>模板来源</p>
+        :type SourceType: str
         """
         self._Offset = None
         self._Limit = None
@@ -10323,10 +10325,11 @@ class DescribeAddressTemplateListRequest(AbstractModel):
         self._Uuid = None
         self._TemplateType = None
         self._TemplateId = None
+        self._SourceType = None
 
     @property
     def Offset(self):
-        r"""偏移量，分页用
+        r"""<p>偏移量，分页用</p>
         :rtype: int
         """
         return self._Offset
@@ -10337,7 +10340,7 @@ class DescribeAddressTemplateListRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""条数，分页用
+        r"""<p>条数，分页用</p>
         :rtype: int
         """
         return self._Limit
@@ -10348,7 +10351,7 @@ class DescribeAddressTemplateListRequest(AbstractModel):
 
     @property
     def By(self):
-        r"""排序字段，取值：UpdateTime最近更新时间，RulesNum关联规则数
+        r"""<p>排序字段，取值：UpdateTime最近更新时间，RulesNum关联规则数</p>
         :rtype: str
         """
         return self._By
@@ -10359,7 +10362,7 @@ class DescribeAddressTemplateListRequest(AbstractModel):
 
     @property
     def Order(self):
-        r"""排序，取值 ：asc正序，desc逆序
+        r"""<p>排序，取值 ：asc正序，desc逆序</p>
         :rtype: str
         """
         return self._Order
@@ -10370,7 +10373,7 @@ class DescribeAddressTemplateListRequest(AbstractModel):
 
     @property
     def SearchValue(self):
-        r"""搜索值
+        r"""<p>搜索值</p>
         :rtype: str
         """
         return self._SearchValue
@@ -10381,7 +10384,7 @@ class DescribeAddressTemplateListRequest(AbstractModel):
 
     @property
     def Uuid(self):
-        r"""检索地址模板唯一id
+        r"""<p>检索地址模板唯一id</p>
         :rtype: str
         """
         return self._Uuid
@@ -10392,7 +10395,7 @@ class DescribeAddressTemplateListRequest(AbstractModel):
 
     @property
     def TemplateType(self):
-        r"""模板类型，取值：1：ip模板，5：域名模板，6：协议端口模板
+        r"""<p>模板类型，取值：1：ip模板，5：域名模板，6：协议端口模板</p>
         :rtype: str
         """
         return self._TemplateType
@@ -10403,7 +10406,7 @@ class DescribeAddressTemplateListRequest(AbstractModel):
 
     @property
     def TemplateId(self):
-        r"""模板Id
+        r"""<p>模板Id</p>
         :rtype: str
         """
         return self._TemplateId
@@ -10411,6 +10414,17 @@ class DescribeAddressTemplateListRequest(AbstractModel):
     @TemplateId.setter
     def TemplateId(self, TemplateId):
         self._TemplateId = TemplateId
+
+    @property
+    def SourceType(self):
+        r"""<p>模板来源</p>
+        :rtype: str
+        """
+        return self._SourceType
+
+    @SourceType.setter
+    def SourceType(self, SourceType):
+        self._SourceType = SourceType
 
 
     def _deserialize(self, params):
@@ -10422,6 +10436,7 @@ class DescribeAddressTemplateListRequest(AbstractModel):
         self._Uuid = params.get("Uuid")
         self._TemplateType = params.get("TemplateType")
         self._TemplateId = params.get("TemplateId")
+        self._SourceType = params.get("SourceType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -10439,22 +10454,24 @@ class DescribeAddressTemplateListResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Total: 模板总数
+        :param _Total: <p>模板总数</p>
         :type Total: int
-        :param _Data: 模板列表数据
+        :param _Data: <p>模板列表数据</p>
         :type Data: list of TemplateListInfo
-        :param _NameList: 模板名称列表
+        :param _NameList: <p>模板名称列表</p>
         :type NameList: list of str
-        :param _IpTemplateCount: Ip地址模板数量
+        :param _IpTemplateCount: <p>Ip地址模板数量</p>
         :type IpTemplateCount: int
-        :param _DomainTemplateCount: 域名地址模板数量
+        :param _DomainTemplateCount: <p>域名地址模板数量</p>
         :type DomainTemplateCount: int
-        :param _PortTemplateCount: 协议端口模板数量
+        :param _PortTemplateCount: <p>协议端口模板数量</p>
         :type PortTemplateCount: int
-        :param _UsedTemplateCount: 已使用的地址模板数
+        :param _UsedTemplateCount: <p>已使用的地址模板数</p>
         :type UsedTemplateCount: int
-        :param _TemplateQuotaCount: 地址模板配额数量
+        :param _TemplateQuotaCount: <p>地址模板配额数量</p>
         :type TemplateQuotaCount: int
+        :param _TkeTemplateCount: <p>容器服务地址模板数量</p>
+        :type TkeTemplateCount: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -10466,11 +10483,12 @@ class DescribeAddressTemplateListResponse(AbstractModel):
         self._PortTemplateCount = None
         self._UsedTemplateCount = None
         self._TemplateQuotaCount = None
+        self._TkeTemplateCount = None
         self._RequestId = None
 
     @property
     def Total(self):
-        r"""模板总数
+        r"""<p>模板总数</p>
         :rtype: int
         """
         return self._Total
@@ -10481,7 +10499,7 @@ class DescribeAddressTemplateListResponse(AbstractModel):
 
     @property
     def Data(self):
-        r"""模板列表数据
+        r"""<p>模板列表数据</p>
         :rtype: list of TemplateListInfo
         """
         return self._Data
@@ -10492,7 +10510,7 @@ class DescribeAddressTemplateListResponse(AbstractModel):
 
     @property
     def NameList(self):
-        r"""模板名称列表
+        r"""<p>模板名称列表</p>
         :rtype: list of str
         """
         return self._NameList
@@ -10503,7 +10521,7 @@ class DescribeAddressTemplateListResponse(AbstractModel):
 
     @property
     def IpTemplateCount(self):
-        r"""Ip地址模板数量
+        r"""<p>Ip地址模板数量</p>
         :rtype: int
         """
         return self._IpTemplateCount
@@ -10514,7 +10532,7 @@ class DescribeAddressTemplateListResponse(AbstractModel):
 
     @property
     def DomainTemplateCount(self):
-        r"""域名地址模板数量
+        r"""<p>域名地址模板数量</p>
         :rtype: int
         """
         return self._DomainTemplateCount
@@ -10525,7 +10543,7 @@ class DescribeAddressTemplateListResponse(AbstractModel):
 
     @property
     def PortTemplateCount(self):
-        r"""协议端口模板数量
+        r"""<p>协议端口模板数量</p>
         :rtype: int
         """
         return self._PortTemplateCount
@@ -10536,7 +10554,7 @@ class DescribeAddressTemplateListResponse(AbstractModel):
 
     @property
     def UsedTemplateCount(self):
-        r"""已使用的地址模板数
+        r"""<p>已使用的地址模板数</p>
         :rtype: int
         """
         return self._UsedTemplateCount
@@ -10547,7 +10565,7 @@ class DescribeAddressTemplateListResponse(AbstractModel):
 
     @property
     def TemplateQuotaCount(self):
-        r"""地址模板配额数量
+        r"""<p>地址模板配额数量</p>
         :rtype: int
         """
         return self._TemplateQuotaCount
@@ -10555,6 +10573,17 @@ class DescribeAddressTemplateListResponse(AbstractModel):
     @TemplateQuotaCount.setter
     def TemplateQuotaCount(self, TemplateQuotaCount):
         self._TemplateQuotaCount = TemplateQuotaCount
+
+    @property
+    def TkeTemplateCount(self):
+        r"""<p>容器服务地址模板数量</p>
+        :rtype: int
+        """
+        return self._TkeTemplateCount
+
+    @TkeTemplateCount.setter
+    def TkeTemplateCount(self, TkeTemplateCount):
+        self._TkeTemplateCount = TkeTemplateCount
 
     @property
     def RequestId(self):
@@ -10582,6 +10611,7 @@ class DescribeAddressTemplateListResponse(AbstractModel):
         self._PortTemplateCount = params.get("PortTemplateCount")
         self._UsedTemplateCount = params.get("UsedTemplateCount")
         self._TemplateQuotaCount = params.get("TemplateQuotaCount")
+        self._TkeTemplateCount = params.get("TkeTemplateCount")
         self._RequestId = params.get("RequestId")
 
 
@@ -16345,17 +16375,17 @@ class DescribeIpsRuleListNewRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Limit: 每页条数
+        :param _Limit: <p>每页条数</p>
         :type Limit: int
-        :param _Offset: 偏移值
+        :param _Offset: <p>偏移值</p>
         :type Offset: int
-        :param _Index: 需要查询的索引，特定场景使用，可不填
+        :param _Index: <p>需要查询的索引，特定场景使用，可不填</p>
         :type Index: str
-        :param _Filters: 过滤条件组合
+        :param _Filters: <p>过滤条件组合</p>
         :type Filters: list of CommonFilter
-        :param _Order: desc：降序；asc：升序。根据By字段的值进行排序，这里传参的话则By也必须有值
+        :param _Order: <p>desc：降序；asc：升序。根据By字段的值进行排序，这里传参的话则By也必须有值</p>
         :type Order: str
-        :param _By: 排序所用到的字段
+        :param _By: <p>排序所用到的字段</p>
         :type By: str
         """
         self._Limit = None
@@ -16367,7 +16397,7 @@ class DescribeIpsRuleListNewRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""每页条数
+        r"""<p>每页条数</p>
         :rtype: int
         """
         return self._Limit
@@ -16378,7 +16408,7 @@ class DescribeIpsRuleListNewRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""偏移值
+        r"""<p>偏移值</p>
         :rtype: int
         """
         return self._Offset
@@ -16389,7 +16419,7 @@ class DescribeIpsRuleListNewRequest(AbstractModel):
 
     @property
     def Index(self):
-        r"""需要查询的索引，特定场景使用，可不填
+        r"""<p>需要查询的索引，特定场景使用，可不填</p>
         :rtype: str
         """
         return self._Index
@@ -16400,7 +16430,7 @@ class DescribeIpsRuleListNewRequest(AbstractModel):
 
     @property
     def Filters(self):
-        r"""过滤条件组合
+        r"""<p>过滤条件组合</p>
         :rtype: list of CommonFilter
         """
         return self._Filters
@@ -16411,7 +16441,7 @@ class DescribeIpsRuleListNewRequest(AbstractModel):
 
     @property
     def Order(self):
-        r"""desc：降序；asc：升序。根据By字段的值进行排序，这里传参的话则By也必须有值
+        r"""<p>desc：降序；asc：升序。根据By字段的值进行排序，这里传参的话则By也必须有值</p>
         :rtype: str
         """
         return self._Order
@@ -16422,7 +16452,7 @@ class DescribeIpsRuleListNewRequest(AbstractModel):
 
     @property
     def By(self):
-        r"""排序所用到的字段
+        r"""<p>排序所用到的字段</p>
         :rtype: str
         """
         return self._By
@@ -16461,15 +16491,15 @@ class DescribeIpsRuleListNewResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Total: 总条数
+        :param _Total: <p>总条数</p>
         :type Total: int
-        :param _Data: 规则详情
+        :param _Data: <p>规则详情</p>
         :type Data: list of IpsRuleDetailNew
-        :param _ReturnCode: 返回状态码 0 成功 非0不成功
+        :param _ReturnCode: <p>返回状态码 0 成功 非0不成功</p>
         :type ReturnCode: int
-        :param _ReturnMsg: 返回信息  success 成功 其他 不成功
+        :param _ReturnMsg: <p>返回信息  success 成功 其他 不成功</p>
         :type ReturnMsg: str
-        :param _Category: 字段类型
+        :param _Category: <p>字段类型</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Category: list of str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -16484,7 +16514,7 @@ class DescribeIpsRuleListNewResponse(AbstractModel):
 
     @property
     def Total(self):
-        r"""总条数
+        r"""<p>总条数</p>
         :rtype: int
         """
         return self._Total
@@ -16495,7 +16525,7 @@ class DescribeIpsRuleListNewResponse(AbstractModel):
 
     @property
     def Data(self):
-        r"""规则详情
+        r"""<p>规则详情</p>
         :rtype: list of IpsRuleDetailNew
         """
         return self._Data
@@ -16506,7 +16536,7 @@ class DescribeIpsRuleListNewResponse(AbstractModel):
 
     @property
     def ReturnCode(self):
-        r"""返回状态码 0 成功 非0不成功
+        r"""<p>返回状态码 0 成功 非0不成功</p>
         :rtype: int
         """
         return self._ReturnCode
@@ -16517,7 +16547,7 @@ class DescribeIpsRuleListNewResponse(AbstractModel):
 
     @property
     def ReturnMsg(self):
-        r"""返回信息  success 成功 其他 不成功
+        r"""<p>返回信息  success 成功 其他 不成功</p>
         :rtype: str
         """
         return self._ReturnMsg
@@ -16528,7 +16558,7 @@ class DescribeIpsRuleListNewResponse(AbstractModel):
 
     @property
     def Category(self):
-        r"""字段类型
+        r"""<p>字段类型</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -25868,6 +25898,233 @@ class IpsRuleDetailNew(AbstractModel):
     r"""IPS规则展示字段相关结构
 
     """
+
+    def __init__(self):
+        r"""
+        :param _RuleID: <p>规则ID</p>
+        :type RuleID: str
+        :param _EventName: <p>规则名称</p>
+        :type EventName: str
+        :param _EventNameDesc: <p>规则描述</p>
+        :type EventNameDesc: str
+        :param _Category: <p>规则类型</p>
+        :type Category: str
+        :param _Confidence: <p>置信度</p>
+        :type Confidence: str
+        :param _Id: <p>自增id</p>
+        :type Id: int
+        :param _VulTarget: <p>漏洞对象</p>
+        :type VulTarget: str
+        :param _Cve: <p>漏洞编号</p>
+        :type Cve: str
+        :param _Status: <p>状态 0 关闭 1打开</p>
+        :type Status: int
+        :param _Action: <p>0观察, 1阻断</p>
+        :type Action: int
+        :param _DefaultAction: <p>默认策略</p>
+        :type DefaultAction: int
+        :param _RuleType: <p>基础防御/虚拟补丁</p>
+        :type RuleType: int
+        :param _Level: <p>危险等级</p>
+        :type Level: str
+        :param _FwType: <p>FwType字段 1 border 2 nat 4 vpc</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FwType: int
+        """
+        self._RuleID = None
+        self._EventName = None
+        self._EventNameDesc = None
+        self._Category = None
+        self._Confidence = None
+        self._Id = None
+        self._VulTarget = None
+        self._Cve = None
+        self._Status = None
+        self._Action = None
+        self._DefaultAction = None
+        self._RuleType = None
+        self._Level = None
+        self._FwType = None
+
+    @property
+    def RuleID(self):
+        r"""<p>规则ID</p>
+        :rtype: str
+        """
+        return self._RuleID
+
+    @RuleID.setter
+    def RuleID(self, RuleID):
+        self._RuleID = RuleID
+
+    @property
+    def EventName(self):
+        r"""<p>规则名称</p>
+        :rtype: str
+        """
+        return self._EventName
+
+    @EventName.setter
+    def EventName(self, EventName):
+        self._EventName = EventName
+
+    @property
+    def EventNameDesc(self):
+        r"""<p>规则描述</p>
+        :rtype: str
+        """
+        return self._EventNameDesc
+
+    @EventNameDesc.setter
+    def EventNameDesc(self, EventNameDesc):
+        self._EventNameDesc = EventNameDesc
+
+    @property
+    def Category(self):
+        r"""<p>规则类型</p>
+        :rtype: str
+        """
+        return self._Category
+
+    @Category.setter
+    def Category(self, Category):
+        self._Category = Category
+
+    @property
+    def Confidence(self):
+        r"""<p>置信度</p>
+        :rtype: str
+        """
+        return self._Confidence
+
+    @Confidence.setter
+    def Confidence(self, Confidence):
+        self._Confidence = Confidence
+
+    @property
+    def Id(self):
+        r"""<p>自增id</p>
+        :rtype: int
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def VulTarget(self):
+        r"""<p>漏洞对象</p>
+        :rtype: str
+        """
+        return self._VulTarget
+
+    @VulTarget.setter
+    def VulTarget(self, VulTarget):
+        self._VulTarget = VulTarget
+
+    @property
+    def Cve(self):
+        r"""<p>漏洞编号</p>
+        :rtype: str
+        """
+        return self._Cve
+
+    @Cve.setter
+    def Cve(self, Cve):
+        self._Cve = Cve
+
+    @property
+    def Status(self):
+        r"""<p>状态 0 关闭 1打开</p>
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Action(self):
+        r"""<p>0观察, 1阻断</p>
+        :rtype: int
+        """
+        return self._Action
+
+    @Action.setter
+    def Action(self, Action):
+        self._Action = Action
+
+    @property
+    def DefaultAction(self):
+        r"""<p>默认策略</p>
+        :rtype: int
+        """
+        return self._DefaultAction
+
+    @DefaultAction.setter
+    def DefaultAction(self, DefaultAction):
+        self._DefaultAction = DefaultAction
+
+    @property
+    def RuleType(self):
+        r"""<p>基础防御/虚拟补丁</p>
+        :rtype: int
+        """
+        return self._RuleType
+
+    @RuleType.setter
+    def RuleType(self, RuleType):
+        self._RuleType = RuleType
+
+    @property
+    def Level(self):
+        r"""<p>危险等级</p>
+        :rtype: str
+        """
+        return self._Level
+
+    @Level.setter
+    def Level(self, Level):
+        self._Level = Level
+
+    @property
+    def FwType(self):
+        r"""<p>FwType字段 1 border 2 nat 4 vpc</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._FwType
+
+    @FwType.setter
+    def FwType(self, FwType):
+        self._FwType = FwType
+
+
+    def _deserialize(self, params):
+        self._RuleID = params.get("RuleID")
+        self._EventName = params.get("EventName")
+        self._EventNameDesc = params.get("EventNameDesc")
+        self._Category = params.get("Category")
+        self._Confidence = params.get("Confidence")
+        self._Id = params.get("Id")
+        self._VulTarget = params.get("VulTarget")
+        self._Cve = params.get("Cve")
+        self._Status = params.get("Status")
+        self._Action = params.get("Action")
+        self._DefaultAction = params.get("DefaultAction")
+        self._RuleType = params.get("RuleType")
+        self._Level = params.get("Level")
+        self._FwType = params.get("FwType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class LogInfo(AbstractModel):
@@ -38274,29 +38531,29 @@ class TemplateListInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Uuid: 模板ID
+        :param _Uuid: <p>模板ID</p>
         :type Uuid: str
-        :param _Name: 模板名称
+        :param _Name: <p>模板名称</p>
         :type Name: str
-        :param _Detail: 描述
+        :param _Detail: <p>描述</p>
         :type Detail: str
-        :param _IpString: IP模板
+        :param _IpString: <p>IP模板</p>
         :type IpString: str
-        :param _InsertTime: 插入时间
+        :param _InsertTime: <p>插入时间</p>
         :type InsertTime: str
-        :param _UpdateTime: 修改时间
+        :param _UpdateTime: <p>修改时间</p>
         :type UpdateTime: str
-        :param _Type: 模板类型
+        :param _Type: <p>模板类型</p>
         :type Type: int
-        :param _RulesNum: 关联规则条数
+        :param _RulesNum: <p>关联规则条数</p>
         :type RulesNum: int
-        :param _TemplateId: 模板Id
+        :param _TemplateId: <p>模板Id</p>
         :type TemplateId: str
-        :param _ProtocolType: 协议端口模板，协议类型，4:4层协议，7:7层协议
+        :param _ProtocolType: <p>协议端口模板，协议类型，4:4层协议，7:7层协议</p>
         :type ProtocolType: str
-        :param _IPNum: 模板包含地址数量
+        :param _IPNum: <p>模板包含地址数量</p>
         :type IPNum: int
-        :param _IpVersion: IP版本,0,IPv4;1,IPv6
+        :param _IpVersion: <p>IP版本,0,IPv4;1,IPv6</p>
         :type IpVersion: int
         """
         self._Uuid = None
@@ -38314,7 +38571,7 @@ class TemplateListInfo(AbstractModel):
 
     @property
     def Uuid(self):
-        r"""模板ID
+        r"""<p>模板ID</p>
         :rtype: str
         """
         return self._Uuid
@@ -38325,7 +38582,7 @@ class TemplateListInfo(AbstractModel):
 
     @property
     def Name(self):
-        r"""模板名称
+        r"""<p>模板名称</p>
         :rtype: str
         """
         return self._Name
@@ -38336,7 +38593,7 @@ class TemplateListInfo(AbstractModel):
 
     @property
     def Detail(self):
-        r"""描述
+        r"""<p>描述</p>
         :rtype: str
         """
         return self._Detail
@@ -38347,7 +38604,7 @@ class TemplateListInfo(AbstractModel):
 
     @property
     def IpString(self):
-        r"""IP模板
+        r"""<p>IP模板</p>
         :rtype: str
         """
         return self._IpString
@@ -38358,7 +38615,7 @@ class TemplateListInfo(AbstractModel):
 
     @property
     def InsertTime(self):
-        r"""插入时间
+        r"""<p>插入时间</p>
         :rtype: str
         """
         return self._InsertTime
@@ -38369,7 +38626,7 @@ class TemplateListInfo(AbstractModel):
 
     @property
     def UpdateTime(self):
-        r"""修改时间
+        r"""<p>修改时间</p>
         :rtype: str
         """
         return self._UpdateTime
@@ -38380,7 +38637,7 @@ class TemplateListInfo(AbstractModel):
 
     @property
     def Type(self):
-        r"""模板类型
+        r"""<p>模板类型</p>
         :rtype: int
         """
         return self._Type
@@ -38391,7 +38648,7 @@ class TemplateListInfo(AbstractModel):
 
     @property
     def RulesNum(self):
-        r"""关联规则条数
+        r"""<p>关联规则条数</p>
         :rtype: int
         """
         return self._RulesNum
@@ -38402,7 +38659,7 @@ class TemplateListInfo(AbstractModel):
 
     @property
     def TemplateId(self):
-        r"""模板Id
+        r"""<p>模板Id</p>
         :rtype: str
         """
         return self._TemplateId
@@ -38413,7 +38670,7 @@ class TemplateListInfo(AbstractModel):
 
     @property
     def ProtocolType(self):
-        r"""协议端口模板，协议类型，4:4层协议，7:7层协议
+        r"""<p>协议端口模板，协议类型，4:4层协议，7:7层协议</p>
         :rtype: str
         """
         return self._ProtocolType
@@ -38424,7 +38681,7 @@ class TemplateListInfo(AbstractModel):
 
     @property
     def IPNum(self):
-        r"""模板包含地址数量
+        r"""<p>模板包含地址数量</p>
         :rtype: int
         """
         return self._IPNum
@@ -38435,7 +38692,7 @@ class TemplateListInfo(AbstractModel):
 
     @property
     def IpVersion(self):
-        r"""IP版本,0,IPv4;1,IPv6
+        r"""<p>IP版本,0,IPv4;1,IPv6</p>
         :rtype: int
         """
         return self._IpVersion

@@ -1064,6 +1064,29 @@ class EmrClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeMetaDBInfo(self, request):
+        r"""集群metadb数据
+
+        :param request: Request instance for DescribeMetaDBInfo.
+        :type request: :class:`tencentcloud.emr.v20190103.models.DescribeMetaDBInfoRequest`
+        :rtype: :class:`tencentcloud.emr.v20190103.models.DescribeMetaDBInfoResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeMetaDBInfo", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeMetaDBInfoResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeNodeDataDisks(self, request):
         r"""查询节点数据盘信息
 

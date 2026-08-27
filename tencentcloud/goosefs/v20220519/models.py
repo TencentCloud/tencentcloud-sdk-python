@@ -415,11 +415,11 @@ class BuildClientNodeMountCommandRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _FileSystemId: 文件系统ID
+        :param _FileSystemId: <p>文件系统ID</p>
         :type FileSystemId: str
-        :param _CustomMountDir: 自定义挂载目录的绝对路径, 如果未指定, 则会使用默认值, 格式/goosefsx/${fs_id}-proxy. 比如/goosefsx/x-c60-a2b3d4-proxy
+        :param _CustomMountDir: <p>自定义挂载目录的绝对路径, 如果未指定, 则会使用默认值, 格式/goosefsx/${fs_id}-proxy. 比如/goosefsx/x-c60-a2b3d4-proxy</p>
         :type CustomMountDir: str
-        :param _ClusterId: 客户端集群ID
+        :param _ClusterId: <p>客户端集群ID</p>
         :type ClusterId: str
         """
         self._FileSystemId = None
@@ -428,7 +428,7 @@ class BuildClientNodeMountCommandRequest(AbstractModel):
 
     @property
     def FileSystemId(self):
-        r"""文件系统ID
+        r"""<p>文件系统ID</p>
         :rtype: str
         """
         return self._FileSystemId
@@ -439,7 +439,7 @@ class BuildClientNodeMountCommandRequest(AbstractModel):
 
     @property
     def CustomMountDir(self):
-        r"""自定义挂载目录的绝对路径, 如果未指定, 则会使用默认值, 格式/goosefsx/${fs_id}-proxy. 比如/goosefsx/x-c60-a2b3d4-proxy
+        r"""<p>自定义挂载目录的绝对路径, 如果未指定, 则会使用默认值, 格式/goosefsx/${fs_id}-proxy. 比如/goosefsx/x-c60-a2b3d4-proxy</p>
         :rtype: str
         """
         return self._CustomMountDir
@@ -450,7 +450,7 @@ class BuildClientNodeMountCommandRequest(AbstractModel):
 
     @property
     def ClusterId(self):
-        r"""客户端集群ID
+        r"""<p>客户端集群ID</p>
         :rtype: str
         """
         return self._ClusterId
@@ -481,7 +481,7 @@ class BuildClientNodeMountCommandResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Command: 挂载命令
+        :param _Command: <p>挂载命令</p>
         :type Command: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -491,7 +491,7 @@ class BuildClientNodeMountCommandResponse(AbstractModel):
 
     @property
     def Command(self):
-        r"""挂载命令
+        r"""<p>挂载命令</p>
         :rtype: str
         """
         return self._Command
@@ -1231,6 +1231,14 @@ class CreateDataRepositoryTaskRequest(AbstractModel):
         :type EnableCustomDestPath: bool
         :param _CustomDestPath: <p>自定义目的路径（预热任务表示本地路径，沉降任务表示COS桶前缀）</p>
         :type CustomDestPath: str
+        :param _OutputBucket: <p>输出的COS桶，用于存放任务执行的相关结果（当前用于存放任务失败时的失败文件列表）</p>
+        :type OutputBucket: str
+        :param _OutputPrefix: <p>输出的COS桶的前缀，用于存放任务执行的相关结果（当前用于存放任务失败时的失败文件列表）</p>
+        :type OutputPrefix: str
+        :param _EnableCustomSrcPath: <p>是否支持自定义数据源路径(暂时仅支持清单过滤使用)</p>
+        :type EnableCustomSrcPath: bool
+        :param _CustomSrcPath: <p>自定义数据源路径(暂时仅支持清单过滤使用)</p>
+        :type CustomSrcPath: str
         """
         self._TaskType = None
         self._Bucket = None
@@ -1244,6 +1252,10 @@ class CreateDataRepositoryTaskRequest(AbstractModel):
         self._DataFlowSubPath = None
         self._EnableCustomDestPath = None
         self._CustomDestPath = None
+        self._OutputBucket = None
+        self._OutputPrefix = None
+        self._EnableCustomSrcPath = None
+        self._CustomSrcPath = None
 
     @property
     def TaskType(self):
@@ -1385,6 +1397,50 @@ class CreateDataRepositoryTaskRequest(AbstractModel):
     def CustomDestPath(self, CustomDestPath):
         self._CustomDestPath = CustomDestPath
 
+    @property
+    def OutputBucket(self):
+        r"""<p>输出的COS桶，用于存放任务执行的相关结果（当前用于存放任务失败时的失败文件列表）</p>
+        :rtype: str
+        """
+        return self._OutputBucket
+
+    @OutputBucket.setter
+    def OutputBucket(self, OutputBucket):
+        self._OutputBucket = OutputBucket
+
+    @property
+    def OutputPrefix(self):
+        r"""<p>输出的COS桶的前缀，用于存放任务执行的相关结果（当前用于存放任务失败时的失败文件列表）</p>
+        :rtype: str
+        """
+        return self._OutputPrefix
+
+    @OutputPrefix.setter
+    def OutputPrefix(self, OutputPrefix):
+        self._OutputPrefix = OutputPrefix
+
+    @property
+    def EnableCustomSrcPath(self):
+        r"""<p>是否支持自定义数据源路径(暂时仅支持清单过滤使用)</p>
+        :rtype: bool
+        """
+        return self._EnableCustomSrcPath
+
+    @EnableCustomSrcPath.setter
+    def EnableCustomSrcPath(self, EnableCustomSrcPath):
+        self._EnableCustomSrcPath = EnableCustomSrcPath
+
+    @property
+    def CustomSrcPath(self):
+        r"""<p>自定义数据源路径(暂时仅支持清单过滤使用)</p>
+        :rtype: str
+        """
+        return self._CustomSrcPath
+
+    @CustomSrcPath.setter
+    def CustomSrcPath(self, CustomSrcPath):
+        self._CustomSrcPath = CustomSrcPath
+
 
     def _deserialize(self, params):
         self._TaskType = params.get("TaskType")
@@ -1399,6 +1455,10 @@ class CreateDataRepositoryTaskRequest(AbstractModel):
         self._DataFlowSubPath = params.get("DataFlowSubPath")
         self._EnableCustomDestPath = params.get("EnableCustomDestPath")
         self._CustomDestPath = params.get("CustomDestPath")
+        self._OutputBucket = params.get("OutputBucket")
+        self._OutputPrefix = params.get("OutputPrefix")
+        self._EnableCustomSrcPath = params.get("EnableCustomSrcPath")
+        self._CustomSrcPath = params.get("CustomSrcPath")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -17640,6 +17640,192 @@ class BlindWatermarkTemplate(AbstractModel):
         
 
 
+class ChangeVoiceRequest(AbstractModel):
+    r"""ChangeVoice请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AudioData: <p>待转换音频base64编码</p>
+        :type AudioData: str
+        :param _AudioUrl: <p>待转换音频Url，AudioData为空时有效</p>
+        :type AudioUrl: str
+        :param _VoiceId: <p>音色ID</p>
+        :type VoiceId: str
+        :param _Output: <p>输出相关参数</p>
+        :type Output: :class:`tencentcloud.mps.v20190612.models.SyncDubbingOutputOption`
+        :param _ExtParam: <p>扩展参数，json字符串</p>
+        :type ExtParam: str
+        """
+        self._AudioData = None
+        self._AudioUrl = None
+        self._VoiceId = None
+        self._Output = None
+        self._ExtParam = None
+
+    @property
+    def AudioData(self):
+        r"""<p>待转换音频base64编码</p>
+        :rtype: str
+        """
+        return self._AudioData
+
+    @AudioData.setter
+    def AudioData(self, AudioData):
+        self._AudioData = AudioData
+
+    @property
+    def AudioUrl(self):
+        r"""<p>待转换音频Url，AudioData为空时有效</p>
+        :rtype: str
+        """
+        return self._AudioUrl
+
+    @AudioUrl.setter
+    def AudioUrl(self, AudioUrl):
+        self._AudioUrl = AudioUrl
+
+    @property
+    def VoiceId(self):
+        r"""<p>音色ID</p>
+        :rtype: str
+        """
+        return self._VoiceId
+
+    @VoiceId.setter
+    def VoiceId(self, VoiceId):
+        self._VoiceId = VoiceId
+
+    @property
+    def Output(self):
+        r"""<p>输出相关参数</p>
+        :rtype: :class:`tencentcloud.mps.v20190612.models.SyncDubbingOutputOption`
+        """
+        return self._Output
+
+    @Output.setter
+    def Output(self, Output):
+        self._Output = Output
+
+    @property
+    def ExtParam(self):
+        r"""<p>扩展参数，json字符串</p>
+        :rtype: str
+        """
+        return self._ExtParam
+
+    @ExtParam.setter
+    def ExtParam(self, ExtParam):
+        self._ExtParam = ExtParam
+
+
+    def _deserialize(self, params):
+        self._AudioData = params.get("AudioData")
+        self._AudioUrl = params.get("AudioUrl")
+        self._VoiceId = params.get("VoiceId")
+        if params.get("Output") is not None:
+            self._Output = SyncDubbingOutputOption()
+            self._Output._deserialize(params.get("Output"))
+        self._ExtParam = params.get("ExtParam")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ChangeVoiceResponse(AbstractModel):
+    r"""ChangeVoice返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ErrorCode: <p>错误码，成功时返回0</p>
+        :type ErrorCode: int
+        :param _Msg: <p>错误信息，成功时返回success</p>
+        :type Msg: str
+        :param _AudioData: <p>结果音频的base64编码，默认mp3格式</p>
+        :type AudioData: str
+        :param _AudioUrl: <p>结果音频url，有效期24小时</p>
+        :type AudioUrl: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ErrorCode = None
+        self._Msg = None
+        self._AudioData = None
+        self._AudioUrl = None
+        self._RequestId = None
+
+    @property
+    def ErrorCode(self):
+        r"""<p>错误码，成功时返回0</p>
+        :rtype: int
+        """
+        return self._ErrorCode
+
+    @ErrorCode.setter
+    def ErrorCode(self, ErrorCode):
+        self._ErrorCode = ErrorCode
+
+    @property
+    def Msg(self):
+        r"""<p>错误信息，成功时返回success</p>
+        :rtype: str
+        """
+        return self._Msg
+
+    @Msg.setter
+    def Msg(self, Msg):
+        self._Msg = Msg
+
+    @property
+    def AudioData(self):
+        r"""<p>结果音频的base64编码，默认mp3格式</p>
+        :rtype: str
+        """
+        return self._AudioData
+
+    @AudioData.setter
+    def AudioData(self, AudioData):
+        self._AudioData = AudioData
+
+    @property
+    def AudioUrl(self):
+        r"""<p>结果音频url，有效期24小时</p>
+        :rtype: str
+        """
+        return self._AudioUrl
+
+    @AudioUrl.setter
+    def AudioUrl(self, AudioUrl):
+        self._AudioUrl = AudioUrl
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._ErrorCode = params.get("ErrorCode")
+        self._Msg = params.get("Msg")
+        self._AudioData = params.get("AudioData")
+        self._AudioUrl = params.get("AudioUrl")
+        self._RequestId = params.get("RequestId")
+
+
 class ChannelAlertResp(AbstractModel):
     r"""线性组装频道告警返回信息。
 

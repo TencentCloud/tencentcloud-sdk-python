@@ -1905,6 +1905,182 @@ class CreateAIWorkbenchTaskResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateDispenseExternalRuleRequest(AbstractModel):
+    r"""CreateDispenseExternalRule请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: 规则名称
+        :type Name: str
+        :param _ExtNamespace: 云监控对外命名空间
+        :type ExtNamespace: str
+        :param _Producer: 转发目标消信息
+        :type Producer: :class:`tencentcloud.monitor.v20230616.models.Producer`
+        :param _DispenseRegions: 转发部署地域列表
+        :type DispenseRegions: list of str
+        :param _ExtMetrics: 云监控对外指标
+        :type ExtMetrics: list of str
+        :param _Period: 指标统计周期
+        :type Period: list of int
+        :param _DispenseConditions: 转发过滤条件信息
+        :type DispenseConditions: list of DispenseCondition
+        """
+        self._Name = None
+        self._ExtNamespace = None
+        self._Producer = None
+        self._DispenseRegions = None
+        self._ExtMetrics = None
+        self._Period = None
+        self._DispenseConditions = None
+
+    @property
+    def Name(self):
+        r"""规则名称
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def ExtNamespace(self):
+        r"""云监控对外命名空间
+        :rtype: str
+        """
+        return self._ExtNamespace
+
+    @ExtNamespace.setter
+    def ExtNamespace(self, ExtNamespace):
+        self._ExtNamespace = ExtNamespace
+
+    @property
+    def Producer(self):
+        r"""转发目标消信息
+        :rtype: :class:`tencentcloud.monitor.v20230616.models.Producer`
+        """
+        return self._Producer
+
+    @Producer.setter
+    def Producer(self, Producer):
+        self._Producer = Producer
+
+    @property
+    def DispenseRegions(self):
+        r"""转发部署地域列表
+        :rtype: list of str
+        """
+        return self._DispenseRegions
+
+    @DispenseRegions.setter
+    def DispenseRegions(self, DispenseRegions):
+        self._DispenseRegions = DispenseRegions
+
+    @property
+    def ExtMetrics(self):
+        r"""云监控对外指标
+        :rtype: list of str
+        """
+        return self._ExtMetrics
+
+    @ExtMetrics.setter
+    def ExtMetrics(self, ExtMetrics):
+        self._ExtMetrics = ExtMetrics
+
+    @property
+    def Period(self):
+        r"""指标统计周期
+        :rtype: list of int
+        """
+        return self._Period
+
+    @Period.setter
+    def Period(self, Period):
+        self._Period = Period
+
+    @property
+    def DispenseConditions(self):
+        r"""转发过滤条件信息
+        :rtype: list of DispenseCondition
+        """
+        return self._DispenseConditions
+
+    @DispenseConditions.setter
+    def DispenseConditions(self, DispenseConditions):
+        self._DispenseConditions = DispenseConditions
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._ExtNamespace = params.get("ExtNamespace")
+        if params.get("Producer") is not None:
+            self._Producer = Producer()
+            self._Producer._deserialize(params.get("Producer"))
+        self._DispenseRegions = params.get("DispenseRegions")
+        self._ExtMetrics = params.get("ExtMetrics")
+        self._Period = params.get("Period")
+        if params.get("DispenseConditions") is not None:
+            self._DispenseConditions = []
+            for item in params.get("DispenseConditions"):
+                obj = DispenseCondition()
+                obj._deserialize(item)
+                self._DispenseConditions.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateDispenseExternalRuleResponse(AbstractModel):
+    r"""CreateDispenseExternalRule返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RuleId: 转发规则Id
+        :type RuleId: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RuleId = None
+        self._RequestId = None
+
+    @property
+    def RuleId(self):
+        r"""转发规则Id
+        :rtype: int
+        """
+        return self._RuleId
+
+    @RuleId.setter
+    def RuleId(self, RuleId):
+        self._RuleId = RuleId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RuleId = params.get("RuleId")
+        self._RequestId = params.get("RequestId")
+
+
 class CreateNoticeContentTmplRequest(AbstractModel):
     r"""CreateNoticeContentTmpl请求参数结构体
 
@@ -2133,6 +2309,70 @@ class DeleteAIWorkbenchTaskRequest(AbstractModel):
 
 class DeleteAIWorkbenchTaskResponse(AbstractModel):
     r"""DeleteAIWorkbenchTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteDispenseExternalRuleRequest(AbstractModel):
+    r"""DeleteDispenseExternalRule请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RuleIdList: 需要删除的规则Id
+        :type RuleIdList: list of int
+        """
+        self._RuleIdList = None
+
+    @property
+    def RuleIdList(self):
+        r"""需要删除的规则Id
+        :rtype: list of int
+        """
+        return self._RuleIdList
+
+    @RuleIdList.setter
+    def RuleIdList(self, RuleIdList):
+        self._RuleIdList = RuleIdList
+
+
+    def _deserialize(self, params):
+        self._RuleIdList = params.get("RuleIdList")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteDispenseExternalRuleResponse(AbstractModel):
+    r"""DeleteDispenseExternalRule返回参数结构体
 
     """
 
@@ -3226,6 +3466,521 @@ class DescribeAlarmNotifyHistoriesResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeDispenseExternalRuleListRequest(AbstractModel):
+    r"""DescribeDispenseExternalRuleList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Page: 页数
+        :type Page: int
+        :param _PageSize: 页面大小
+        :type PageSize: int
+        :param _DispenseRegions: 转发部署地域
+        :type DispenseRegions: list of str
+        :param _Keyword: 关键字搜索规则名
+        :type Keyword: str
+        """
+        self._Page = None
+        self._PageSize = None
+        self._DispenseRegions = None
+        self._Keyword = None
+
+    @property
+    def Page(self):
+        r"""页数
+        :rtype: int
+        """
+        return self._Page
+
+    @Page.setter
+    def Page(self, Page):
+        self._Page = Page
+
+    @property
+    def PageSize(self):
+        r"""页面大小
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+    @property
+    def DispenseRegions(self):
+        r"""转发部署地域
+        :rtype: list of str
+        """
+        return self._DispenseRegions
+
+    @DispenseRegions.setter
+    def DispenseRegions(self, DispenseRegions):
+        self._DispenseRegions = DispenseRegions
+
+    @property
+    def Keyword(self):
+        r"""关键字搜索规则名
+        :rtype: str
+        """
+        return self._Keyword
+
+    @Keyword.setter
+    def Keyword(self, Keyword):
+        self._Keyword = Keyword
+
+
+    def _deserialize(self, params):
+        self._Page = params.get("Page")
+        self._PageSize = params.get("PageSize")
+        self._DispenseRegions = params.get("DispenseRegions")
+        self._Keyword = params.get("Keyword")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDispenseExternalRuleListResponse(AbstractModel):
+    r"""DescribeDispenseExternalRuleList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RuleList: 指标列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RuleList: list of Rule
+        :param _TotalCount: 列表大小
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TotalCount: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RuleList = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def RuleList(self):
+        r"""指标列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of Rule
+        """
+        return self._RuleList
+
+    @RuleList.setter
+    def RuleList(self, RuleList):
+        self._RuleList = RuleList
+
+    @property
+    def TotalCount(self):
+        r"""列表大小
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("RuleList") is not None:
+            self._RuleList = []
+            for item in params.get("RuleList"):
+                obj = Rule()
+                obj._deserialize(item)
+                self._RuleList.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeDispenseExternalRuleRequest(AbstractModel):
+    r"""DescribeDispenseExternalRule请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RuleId: 规则id
+        :type RuleId: int
+        """
+        self._RuleId = None
+
+    @property
+    def RuleId(self):
+        r"""规则id
+        :rtype: int
+        """
+        return self._RuleId
+
+    @RuleId.setter
+    def RuleId(self, RuleId):
+        self._RuleId = RuleId
+
+
+    def _deserialize(self, params):
+        self._RuleId = params.get("RuleId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDispenseExternalRuleResponse(AbstractModel):
+    r"""DescribeDispenseExternalRule返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Rule: 规则
+        :type Rule: :class:`tencentcloud.monitor.v20230616.models.Rule`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Rule = None
+        self._RequestId = None
+
+    @property
+    def Rule(self):
+        r"""规则
+        :rtype: :class:`tencentcloud.monitor.v20230616.models.Rule`
+        """
+        return self._Rule
+
+    @Rule.setter
+    def Rule(self, Rule):
+        self._Rule = Rule
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Rule") is not None:
+            self._Rule = Rule()
+            self._Rule._deserialize(params.get("Rule"))
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeDispenseRegionRequest(AbstractModel):
+    r"""DescribeDispenseRegion请求参数结构体
+
+    """
+
+
+class DescribeDispenseRegionResponse(AbstractModel):
+    r"""DescribeDispenseRegion返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RegionList: 转发地域列表
+        :type RegionList: list of DispenseRegion
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RegionList = None
+        self._RequestId = None
+
+    @property
+    def RegionList(self):
+        r"""转发地域列表
+        :rtype: list of DispenseRegion
+        """
+        return self._RegionList
+
+    @RegionList.setter
+    def RegionList(self, RegionList):
+        self._RegionList = RegionList
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("RegionList") is not None:
+            self._RegionList = []
+            for item in params.get("RegionList"):
+                obj = DispenseRegion()
+                obj._deserialize(item)
+                self._RegionList.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeExtMetricRequest(AbstractModel):
+    r"""DescribeExtMetric请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ExtNamespace: 对外命名空间
+        :type ExtNamespace: str
+        """
+        self._ExtNamespace = None
+
+    @property
+    def ExtNamespace(self):
+        r"""对外命名空间
+        :rtype: str
+        """
+        return self._ExtNamespace
+
+    @ExtNamespace.setter
+    def ExtNamespace(self, ExtNamespace):
+        self._ExtNamespace = ExtNamespace
+
+
+    def _deserialize(self, params):
+        self._ExtNamespace = params.get("ExtNamespace")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeExtMetricResponse(AbstractModel):
+    r"""DescribeExtMetric返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ExtMetricList: 对外指标
+        :type ExtMetricList: list of ExtMetric
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ExtMetricList = None
+        self._RequestId = None
+
+    @property
+    def ExtMetricList(self):
+        r"""对外指标
+        :rtype: list of ExtMetric
+        """
+        return self._ExtMetricList
+
+    @ExtMetricList.setter
+    def ExtMetricList(self, ExtMetricList):
+        self._ExtMetricList = ExtMetricList
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("ExtMetricList") is not None:
+            self._ExtMetricList = []
+            for item in params.get("ExtMetricList"):
+                obj = ExtMetric()
+                obj._deserialize(item)
+                self._ExtMetricList.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeExtNamespaceRequest(AbstractModel):
+    r"""DescribeExtNamespace请求参数结构体
+
+    """
+
+
+class DescribeExtNamespaceResponse(AbstractModel):
+    r"""DescribeExtNamespace返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ExtNamespaceList: 对外命名空间列表
+        :type ExtNamespaceList: list of str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ExtNamespaceList = None
+        self._RequestId = None
+
+    @property
+    def ExtNamespaceList(self):
+        r"""对外命名空间列表
+        :rtype: list of str
+        """
+        return self._ExtNamespaceList
+
+    @ExtNamespaceList.setter
+    def ExtNamespaceList(self, ExtNamespaceList):
+        self._ExtNamespaceList = ExtNamespaceList
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._ExtNamespaceList = params.get("ExtNamespaceList")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeKafkaRequest(AbstractModel):
+    r"""DescribeKafka请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Brokers: kafka地址
+        :type Brokers: str
+        :param _DispenseRegions: 转发部署地域列表
+        :type DispenseRegions: list of str
+        """
+        self._Brokers = None
+        self._DispenseRegions = None
+
+    @property
+    def Brokers(self):
+        r"""kafka地址
+        :rtype: str
+        """
+        return self._Brokers
+
+    @Brokers.setter
+    def Brokers(self, Brokers):
+        self._Brokers = Brokers
+
+    @property
+    def DispenseRegions(self):
+        r"""转发部署地域列表
+        :rtype: list of str
+        """
+        return self._DispenseRegions
+
+    @DispenseRegions.setter
+    def DispenseRegions(self, DispenseRegions):
+        self._DispenseRegions = DispenseRegions
+
+
+    def _deserialize(self, params):
+        self._Brokers = params.get("Brokers")
+        self._DispenseRegions = params.get("DispenseRegions")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeKafkaResponse(AbstractModel):
+    r"""DescribeKafka返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _KafkaConnectivityList: 连通性列表
+        :type KafkaConnectivityList: list of KafkaConnectivity
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._KafkaConnectivityList = None
+        self._RequestId = None
+
+    @property
+    def KafkaConnectivityList(self):
+        r"""连通性列表
+        :rtype: list of KafkaConnectivity
+        """
+        return self._KafkaConnectivityList
+
+    @KafkaConnectivityList.setter
+    def KafkaConnectivityList(self, KafkaConnectivityList):
+        self._KafkaConnectivityList = KafkaConnectivityList
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("KafkaConnectivityList") is not None:
+            self._KafkaConnectivityList = []
+            for item in params.get("KafkaConnectivityList"):
+                obj = KafkaConnectivity()
+                obj._deserialize(item)
+                self._KafkaConnectivityList.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeNoticeContentTmplRequest(AbstractModel):
     r"""DescribeNoticeContentTmpl请求参数结构体
 
@@ -3573,6 +4328,275 @@ Trigger 告警触发; Recovery 告警恢复
         
 
 
+class DispenseCondition(AbstractModel):
+    r"""转发过滤条件信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ExtMetric: 对外指标名
+        :type ExtMetric: str
+        :param _DispenseFilters: 过滤条件表
+        :type DispenseFilters: list of DispenseFilter
+        :param _ConditionId: 过滤条件id
+        :type ConditionId: int
+        """
+        self._ExtMetric = None
+        self._DispenseFilters = None
+        self._ConditionId = None
+
+    @property
+    def ExtMetric(self):
+        r"""对外指标名
+        :rtype: str
+        """
+        return self._ExtMetric
+
+    @ExtMetric.setter
+    def ExtMetric(self, ExtMetric):
+        self._ExtMetric = ExtMetric
+
+    @property
+    def DispenseFilters(self):
+        r"""过滤条件表
+        :rtype: list of DispenseFilter
+        """
+        return self._DispenseFilters
+
+    @DispenseFilters.setter
+    def DispenseFilters(self, DispenseFilters):
+        self._DispenseFilters = DispenseFilters
+
+    @property
+    def ConditionId(self):
+        r"""过滤条件id
+        :rtype: int
+        """
+        return self._ConditionId
+
+    @ConditionId.setter
+    def ConditionId(self, ConditionId):
+        self._ConditionId = ConditionId
+
+
+    def _deserialize(self, params):
+        self._ExtMetric = params.get("ExtMetric")
+        if params.get("DispenseFilters") is not None:
+            self._DispenseFilters = []
+            for item in params.get("DispenseFilters"):
+                obj = DispenseFilter()
+                obj._deserialize(item)
+                self._DispenseFilters.append(obj)
+        self._ConditionId = params.get("ConditionId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DispenseFilter(AbstractModel):
+    r"""过滤表
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Key: 维度名称
+        :type Key: str
+        :param _Values: 维度值列表
+        :type Values: list of str
+        :param _Expression: 表示式
+        :type Expression: str
+        """
+        self._Key = None
+        self._Values = None
+        self._Expression = None
+
+    @property
+    def Key(self):
+        r"""维度名称
+        :rtype: str
+        """
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Values(self):
+        r"""维度值列表
+        :rtype: list of str
+        """
+        return self._Values
+
+    @Values.setter
+    def Values(self, Values):
+        self._Values = Values
+
+    @property
+    def Expression(self):
+        r"""表示式
+        :rtype: str
+        """
+        return self._Expression
+
+    @Expression.setter
+    def Expression(self, Expression):
+        self._Expression = Expression
+
+
+    def _deserialize(self, params):
+        self._Key = params.get("Key")
+        self._Values = params.get("Values")
+        self._Expression = params.get("Expression")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DispenseGlobalTag(AbstractModel):
+    r"""全局维度
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Key: 维度key
+        :type Key: str
+        :param _Value: 维度值
+        :type Value: str
+        """
+        self._Key = None
+        self._Value = None
+
+    @property
+    def Key(self):
+        r"""维度key
+        :rtype: str
+        """
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Value(self):
+        r"""维度值
+        :rtype: str
+        """
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+
+    def _deserialize(self, params):
+        self._Key = params.get("Key")
+        self._Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DispenseRegion(AbstractModel):
+    r"""转发地域信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Region: 地域缩写
+        :type Region: str
+        :param _RegionCnName: 地域中文名
+        :type RegionCnName: str
+        :param _RegionEnName: 地域英文名
+        :type RegionEnName: str
+        :param _RuleNumber: 规则数量
+        :type RuleNumber: int
+        """
+        self._Region = None
+        self._RegionCnName = None
+        self._RegionEnName = None
+        self._RuleNumber = None
+
+    @property
+    def Region(self):
+        r"""地域缩写
+        :rtype: str
+        """
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def RegionCnName(self):
+        r"""地域中文名
+        :rtype: str
+        """
+        return self._RegionCnName
+
+    @RegionCnName.setter
+    def RegionCnName(self, RegionCnName):
+        self._RegionCnName = RegionCnName
+
+    @property
+    def RegionEnName(self):
+        r"""地域英文名
+        :rtype: str
+        """
+        return self._RegionEnName
+
+    @RegionEnName.setter
+    def RegionEnName(self, RegionEnName):
+        self._RegionEnName = RegionEnName
+
+    @property
+    def RuleNumber(self):
+        r"""规则数量
+        :rtype: int
+        """
+        return self._RuleNumber
+
+    @RuleNumber.setter
+    def RuleNumber(self, RuleNumber):
+        self._RuleNumber = RuleNumber
+
+
+    def _deserialize(self, params):
+        self._Region = params.get("Region")
+        self._RegionCnName = params.get("RegionCnName")
+        self._RegionEnName = params.get("RegionEnName")
+        self._RuleNumber = params.get("RuleNumber")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class EnvEntry(AbstractModel):
     r"""环境变量entry
 
@@ -3847,6 +4871,127 @@ class ExecutionInfo(AbstractModel):
         self._Status = params.get("Status")
         self._Summary = params.get("Summary")
         self._DurationMs = params.get("DurationMs")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ExtMetric(AbstractModel):
+    r"""对外指标
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MetricName: 指标名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MetricName: str
+        :param _MetricCName: 中文指标名
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MetricCName: str
+        :param _CNMeaning: 中文含义
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CNMeaning: str
+        :param _EnMeaning: 英文含义
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EnMeaning: str
+        :param _Unit: 单位
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Unit: str
+        :param _DimensionFlag: 是否配置对外维度
+        :type DimensionFlag: bool
+        """
+        self._MetricName = None
+        self._MetricCName = None
+        self._CNMeaning = None
+        self._EnMeaning = None
+        self._Unit = None
+        self._DimensionFlag = None
+
+    @property
+    def MetricName(self):
+        r"""指标名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._MetricName
+
+    @MetricName.setter
+    def MetricName(self, MetricName):
+        self._MetricName = MetricName
+
+    @property
+    def MetricCName(self):
+        r"""中文指标名
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._MetricCName
+
+    @MetricCName.setter
+    def MetricCName(self, MetricCName):
+        self._MetricCName = MetricCName
+
+    @property
+    def CNMeaning(self):
+        r"""中文含义
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CNMeaning
+
+    @CNMeaning.setter
+    def CNMeaning(self, CNMeaning):
+        self._CNMeaning = CNMeaning
+
+    @property
+    def EnMeaning(self):
+        r"""英文含义
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._EnMeaning
+
+    @EnMeaning.setter
+    def EnMeaning(self, EnMeaning):
+        self._EnMeaning = EnMeaning
+
+    @property
+    def Unit(self):
+        r"""单位
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Unit
+
+    @Unit.setter
+    def Unit(self, Unit):
+        self._Unit = Unit
+
+    @property
+    def DimensionFlag(self):
+        r"""是否配置对外维度
+        :rtype: bool
+        """
+        return self._DimensionFlag
+
+    @DimensionFlag.setter
+    def DimensionFlag(self, DimensionFlag):
+        self._DimensionFlag = DimensionFlag
+
+
+    def _deserialize(self, params):
+        self._MetricName = params.get("MetricName")
+        self._MetricCName = params.get("MetricCName")
+        self._CNMeaning = params.get("CNMeaning")
+        self._EnMeaning = params.get("EnMeaning")
+        self._Unit = params.get("Unit")
+        self._DimensionFlag = params.get("DimensionFlag")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4253,6 +5398,57 @@ class InstructionConfig(AbstractModel):
         self._CoreTruths = params.get("CoreTruths")
         self._Vibe = params.get("Vibe")
         self._Boundaries = params.get("Boundaries")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class KafkaConnectivity(AbstractModel):
+    r"""kafka连通性
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Region: 地域
+        :type Region: str
+        :param _Result: 连通
+        :type Result: bool
+        """
+        self._Region = None
+        self._Result = None
+
+    @property
+    def Region(self):
+        r"""地域
+        :rtype: str
+        """
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def Result(self):
+        r"""连通
+        :rtype: bool
+        """
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+
+    def _deserialize(self, params):
+        self._Region = params.get("Region")
+        self._Result = params.get("Result")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -6337,6 +7533,261 @@ class MessageInfo(AbstractModel):
         
 
 
+class ModifyDispenseExternalRuleRequest(AbstractModel):
+    r"""ModifyDispenseExternalRule请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: 规则名称
+        :type Name: str
+        :param _ExtNamespace: 云监控对外命名空间
+        :type ExtNamespace: str
+        :param _Producer: 转发目标消信息
+        :type Producer: :class:`tencentcloud.monitor.v20230616.models.Producer`
+        :param _RuleId: 规则ID
+        :type RuleId: int
+        :param _DispenseRegions: 转发部署地域列表
+        :type DispenseRegions: list of str
+        :param _ExtMetrics: 云监控对外指标
+        :type ExtMetrics: list of str
+        :param _Period: 指标统计周期
+        :type Period: list of int
+        :param _DispenseConditions: 转发过滤信息
+        :type DispenseConditions: list of DispenseCondition
+        """
+        self._Name = None
+        self._ExtNamespace = None
+        self._Producer = None
+        self._RuleId = None
+        self._DispenseRegions = None
+        self._ExtMetrics = None
+        self._Period = None
+        self._DispenseConditions = None
+
+    @property
+    def Name(self):
+        r"""规则名称
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def ExtNamespace(self):
+        r"""云监控对外命名空间
+        :rtype: str
+        """
+        return self._ExtNamespace
+
+    @ExtNamespace.setter
+    def ExtNamespace(self, ExtNamespace):
+        self._ExtNamespace = ExtNamespace
+
+    @property
+    def Producer(self):
+        r"""转发目标消信息
+        :rtype: :class:`tencentcloud.monitor.v20230616.models.Producer`
+        """
+        return self._Producer
+
+    @Producer.setter
+    def Producer(self, Producer):
+        self._Producer = Producer
+
+    @property
+    def RuleId(self):
+        r"""规则ID
+        :rtype: int
+        """
+        return self._RuleId
+
+    @RuleId.setter
+    def RuleId(self, RuleId):
+        self._RuleId = RuleId
+
+    @property
+    def DispenseRegions(self):
+        r"""转发部署地域列表
+        :rtype: list of str
+        """
+        return self._DispenseRegions
+
+    @DispenseRegions.setter
+    def DispenseRegions(self, DispenseRegions):
+        self._DispenseRegions = DispenseRegions
+
+    @property
+    def ExtMetrics(self):
+        r"""云监控对外指标
+        :rtype: list of str
+        """
+        return self._ExtMetrics
+
+    @ExtMetrics.setter
+    def ExtMetrics(self, ExtMetrics):
+        self._ExtMetrics = ExtMetrics
+
+    @property
+    def Period(self):
+        r"""指标统计周期
+        :rtype: list of int
+        """
+        return self._Period
+
+    @Period.setter
+    def Period(self, Period):
+        self._Period = Period
+
+    @property
+    def DispenseConditions(self):
+        r"""转发过滤信息
+        :rtype: list of DispenseCondition
+        """
+        return self._DispenseConditions
+
+    @DispenseConditions.setter
+    def DispenseConditions(self, DispenseConditions):
+        self._DispenseConditions = DispenseConditions
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._ExtNamespace = params.get("ExtNamespace")
+        if params.get("Producer") is not None:
+            self._Producer = Producer()
+            self._Producer._deserialize(params.get("Producer"))
+        self._RuleId = params.get("RuleId")
+        self._DispenseRegions = params.get("DispenseRegions")
+        self._ExtMetrics = params.get("ExtMetrics")
+        self._Period = params.get("Period")
+        if params.get("DispenseConditions") is not None:
+            self._DispenseConditions = []
+            for item in params.get("DispenseConditions"):
+                obj = DispenseCondition()
+                obj._deserialize(item)
+                self._DispenseConditions.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyDispenseExternalRuleResponse(AbstractModel):
+    r"""ModifyDispenseExternalRule返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyDispenseExternalRuleStatusRequest(AbstractModel):
+    r"""ModifyDispenseExternalRuleStatus请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RuleIdList: 规则id列表
+        :type RuleIdList: list of int
+        :param _Status: 状态
+        :type Status: int
+        """
+        self._RuleIdList = None
+        self._Status = None
+
+    @property
+    def RuleIdList(self):
+        r"""规则id列表
+        :rtype: list of int
+        """
+        return self._RuleIdList
+
+    @RuleIdList.setter
+    def RuleIdList(self, RuleIdList):
+        self._RuleIdList = RuleIdList
+
+    @property
+    def Status(self):
+        r"""状态
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+
+    def _deserialize(self, params):
+        self._RuleIdList = params.get("RuleIdList")
+        self._Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyDispenseExternalRuleStatusResponse(AbstractModel):
+    r"""ModifyDispenseExternalRuleStatus返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyNoticeContentTmplRequest(AbstractModel):
     r"""ModifyNoticeContentTmpl请求参数结构体
 
@@ -7405,6 +8856,175 @@ class PagerDutyRobotNoticeTmplMatcher(AbstractModel):
         
 
 
+class Producer(AbstractModel):
+    r"""转发目标对象信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProtocolType: 转发协议类型，0-stormRetPb, 1-tcbDispensePb, 2-stormRetJson, 3-ADPPb(废弃)，4-中台pb
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ProtocolType: int
+        :param _Type: 目标类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Type: str
+        :param _Brokers: 转发kafka地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Brokers: str
+        :param _Topic: 转发kafka topic
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Topic: str
+        :param _Merge: 是否合并指标,默认是1，合并
+        :type Merge: int
+        :param _GlobalTags: 全局维度组
+        :type GlobalTags: list of DispenseGlobalTag
+        :param _DefaultTags: 默认维度组，只提供维度即可
+        :type DefaultTags: list of str
+        :param _Username: Kafka用户名
+        :type Username: str
+        :param _Password: Kafka密码
+        :type Password: str
+        """
+        self._ProtocolType = None
+        self._Type = None
+        self._Brokers = None
+        self._Topic = None
+        self._Merge = None
+        self._GlobalTags = None
+        self._DefaultTags = None
+        self._Username = None
+        self._Password = None
+
+    @property
+    def ProtocolType(self):
+        r"""转发协议类型，0-stormRetPb, 1-tcbDispensePb, 2-stormRetJson, 3-ADPPb(废弃)，4-中台pb
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._ProtocolType
+
+    @ProtocolType.setter
+    def ProtocolType(self, ProtocolType):
+        self._ProtocolType = ProtocolType
+
+    @property
+    def Type(self):
+        r"""目标类型
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Brokers(self):
+        r"""转发kafka地址
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Brokers
+
+    @Brokers.setter
+    def Brokers(self, Brokers):
+        self._Brokers = Brokers
+
+    @property
+    def Topic(self):
+        r"""转发kafka topic
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Topic
+
+    @Topic.setter
+    def Topic(self, Topic):
+        self._Topic = Topic
+
+    @property
+    def Merge(self):
+        r"""是否合并指标,默认是1，合并
+        :rtype: int
+        """
+        return self._Merge
+
+    @Merge.setter
+    def Merge(self, Merge):
+        self._Merge = Merge
+
+    @property
+    def GlobalTags(self):
+        r"""全局维度组
+        :rtype: list of DispenseGlobalTag
+        """
+        return self._GlobalTags
+
+    @GlobalTags.setter
+    def GlobalTags(self, GlobalTags):
+        self._GlobalTags = GlobalTags
+
+    @property
+    def DefaultTags(self):
+        r"""默认维度组，只提供维度即可
+        :rtype: list of str
+        """
+        return self._DefaultTags
+
+    @DefaultTags.setter
+    def DefaultTags(self, DefaultTags):
+        self._DefaultTags = DefaultTags
+
+    @property
+    def Username(self):
+        r"""Kafka用户名
+        :rtype: str
+        """
+        return self._Username
+
+    @Username.setter
+    def Username(self, Username):
+        self._Username = Username
+
+    @property
+    def Password(self):
+        r"""Kafka密码
+        :rtype: str
+        """
+        return self._Password
+
+    @Password.setter
+    def Password(self, Password):
+        self._Password = Password
+
+
+    def _deserialize(self, params):
+        self._ProtocolType = params.get("ProtocolType")
+        self._Type = params.get("Type")
+        self._Brokers = params.get("Brokers")
+        self._Topic = params.get("Topic")
+        self._Merge = params.get("Merge")
+        if params.get("GlobalTags") is not None:
+            self._GlobalTags = []
+            for item in params.get("GlobalTags"):
+                obj = DispenseGlobalTag()
+                obj._deserialize(item)
+                self._GlobalTags.append(obj)
+        self._DefaultTags = params.get("DefaultTags")
+        self._Username = params.get("Username")
+        self._Password = params.get("Password")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class QCloudYeheNoticeTmpl(AbstractModel):
     r"""官网通知内容模板
 
@@ -7900,6 +9520,193 @@ class ResourceMapInfo(AbstractModel):
         self._Name = params.get("Name")
         self._Description = params.get("Description")
         self._InstanceCount = params.get("InstanceCount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class Rule(AbstractModel):
+    r"""转发规则
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RuleId: 规则Id
+        :type RuleId: int
+        :param _Name: 规则名称
+        :type Name: str
+        :param _ExtNamespace: 对外namespace
+        :type ExtNamespace: str
+        :param _ExtMetric: 对外指标列表
+        :type ExtMetric: list of ExtMetric
+        :param _Producer: 输出信息
+        :type Producer: :class:`tencentcloud.monitor.v20230616.models.Producer`
+        :param _UpdateTime: 更新时间
+        :type UpdateTime: int
+        :param _Status: 规则触发状态
+        :type Status: int
+        :param _Period: 指标粒度周期
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Period: list of int
+        :param _DispenseConditions: 转发过滤条件
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DispenseConditions: list of DispenseCondition
+        :param _DispenseRegions: 转发地域列表
+        :type DispenseRegions: list of str
+        """
+        self._RuleId = None
+        self._Name = None
+        self._ExtNamespace = None
+        self._ExtMetric = None
+        self._Producer = None
+        self._UpdateTime = None
+        self._Status = None
+        self._Period = None
+        self._DispenseConditions = None
+        self._DispenseRegions = None
+
+    @property
+    def RuleId(self):
+        r"""规则Id
+        :rtype: int
+        """
+        return self._RuleId
+
+    @RuleId.setter
+    def RuleId(self, RuleId):
+        self._RuleId = RuleId
+
+    @property
+    def Name(self):
+        r"""规则名称
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def ExtNamespace(self):
+        r"""对外namespace
+        :rtype: str
+        """
+        return self._ExtNamespace
+
+    @ExtNamespace.setter
+    def ExtNamespace(self, ExtNamespace):
+        self._ExtNamespace = ExtNamespace
+
+    @property
+    def ExtMetric(self):
+        r"""对外指标列表
+        :rtype: list of ExtMetric
+        """
+        return self._ExtMetric
+
+    @ExtMetric.setter
+    def ExtMetric(self, ExtMetric):
+        self._ExtMetric = ExtMetric
+
+    @property
+    def Producer(self):
+        r"""输出信息
+        :rtype: :class:`tencentcloud.monitor.v20230616.models.Producer`
+        """
+        return self._Producer
+
+    @Producer.setter
+    def Producer(self, Producer):
+        self._Producer = Producer
+
+    @property
+    def UpdateTime(self):
+        r"""更新时间
+        :rtype: int
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def Status(self):
+        r"""规则触发状态
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Period(self):
+        r"""指标粒度周期
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of int
+        """
+        return self._Period
+
+    @Period.setter
+    def Period(self, Period):
+        self._Period = Period
+
+    @property
+    def DispenseConditions(self):
+        r"""转发过滤条件
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of DispenseCondition
+        """
+        return self._DispenseConditions
+
+    @DispenseConditions.setter
+    def DispenseConditions(self, DispenseConditions):
+        self._DispenseConditions = DispenseConditions
+
+    @property
+    def DispenseRegions(self):
+        r"""转发地域列表
+        :rtype: list of str
+        """
+        return self._DispenseRegions
+
+    @DispenseRegions.setter
+    def DispenseRegions(self, DispenseRegions):
+        self._DispenseRegions = DispenseRegions
+
+
+    def _deserialize(self, params):
+        self._RuleId = params.get("RuleId")
+        self._Name = params.get("Name")
+        self._ExtNamespace = params.get("ExtNamespace")
+        if params.get("ExtMetric") is not None:
+            self._ExtMetric = []
+            for item in params.get("ExtMetric"):
+                obj = ExtMetric()
+                obj._deserialize(item)
+                self._ExtMetric.append(obj)
+        if params.get("Producer") is not None:
+            self._Producer = Producer()
+            self._Producer._deserialize(params.get("Producer"))
+        self._UpdateTime = params.get("UpdateTime")
+        self._Status = params.get("Status")
+        self._Period = params.get("Period")
+        if params.get("DispenseConditions") is not None:
+            self._DispenseConditions = []
+            for item in params.get("DispenseConditions"):
+                obj = DispenseCondition()
+                obj._deserialize(item)
+                self._DispenseConditions.append(obj)
+        self._DispenseRegions = params.get("DispenseRegions")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

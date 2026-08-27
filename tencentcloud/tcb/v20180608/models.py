@@ -15302,6 +15302,375 @@ class GetProvidersResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class HTTPServiceCacheAction(AbstractModel):
+    r"""HTTPService缓存动作（Type + 具体子字段的标签联合，Type 与被设置的子字段必须一一对应）
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Type: <p>HTTPService 缓存动作类型</p><p>枚举值：</p><ul><li>Cache： 节点缓存 + 浏览器缓存统一动作（节点秒数 CacheTime、浏览器秒数 MaxAgeTime）</li><li>CacheKey： 仅开启EO边缘加速通道下发</li></ul>
+        :type Type: str
+        :param _Cache: <p>节点缓存配置。Type=Cache 时必填</p>
+        :type Cache: :class:`tencentcloud.tcb.v20180608.models.HTTPServiceCacheParams`
+        :param _CacheKey: <p>自定义缓存键。Type=CacheKey 时必填</p>
+        :type CacheKey: :class:`tencentcloud.tcb.v20180608.models.HTTPServiceCacheKeyParams`
+        """
+        self._Type = None
+        self._Cache = None
+        self._CacheKey = None
+
+    @property
+    def Type(self):
+        r"""<p>HTTPService 缓存动作类型</p><p>枚举值：</p><ul><li>Cache： 节点缓存 + 浏览器缓存统一动作（节点秒数 CacheTime、浏览器秒数 MaxAgeTime）</li><li>CacheKey： 仅开启EO边缘加速通道下发</li></ul>
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Cache(self):
+        r"""<p>节点缓存配置。Type=Cache 时必填</p>
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.HTTPServiceCacheParams`
+        """
+        return self._Cache
+
+    @Cache.setter
+    def Cache(self, Cache):
+        self._Cache = Cache
+
+    @property
+    def CacheKey(self):
+        r"""<p>自定义缓存键。Type=CacheKey 时必填</p>
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.HTTPServiceCacheKeyParams`
+        """
+        return self._CacheKey
+
+    @CacheKey.setter
+    def CacheKey(self, CacheKey):
+        self._CacheKey = CacheKey
+
+
+    def _deserialize(self, params):
+        self._Type = params.get("Type")
+        if params.get("Cache") is not None:
+            self._Cache = HTTPServiceCacheParams()
+            self._Cache._deserialize(params.get("Cache"))
+        if params.get("CacheKey") is not None:
+            self._CacheKey = HTTPServiceCacheKeyParams()
+            self._CacheKey._deserialize(params.get("CacheKey"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class HTTPServiceCacheKeyParams(AbstractModel):
+    r"""自定义缓存键参数。约束：FullURLCache=on 与 QueryStringSwitch=on 互斥
+    使用示例：
+    - 整 URL 参与缓存键：{FullURLCache: "on", QueryStringSwitch: "off"}
+    - URL 路径 + 仅保留 x/y：{FullURLCache: "off", QueryStringSwitch: "on", QueryStringAction: "includeCustom", QueryStringValues: ["x", "y"]}
+    - URL 路径 + 忽略 debug：{FullURLCache: "off", QueryStringSwitch: "on", QueryStringAction: "excludeCustom", QueryStringValues: ["debug"]}
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FullURLCache: <p>全 URL 缓存开关</p><p>枚举值：</p><ul><li>on： 开启</li><li>off： 关闭</li></ul>
+        :type FullURLCache: str
+        :param _QueryStringSwitch: <p>查询参数是否参与缓存键</p><p>枚举值：</p><ul><li>on： 开启</li><li>off： 关闭</li></ul>
+        :type QueryStringSwitch: str
+        :param _QueryStringAction: <p>QueryStringSwitch=on 时必填</p><p>枚举值：</p><ul><li>includeCustom： 白名单</li><li>excludeCustom： 黑名单</li></ul>
+        :type QueryStringAction: str
+        :param _QueryStringValues: <p>参数名列表</p><p>入参限制：最多 100 项，单项 1~128 字节</p>
+        :type QueryStringValues: list of str
+        """
+        self._FullURLCache = None
+        self._QueryStringSwitch = None
+        self._QueryStringAction = None
+        self._QueryStringValues = None
+
+    @property
+    def FullURLCache(self):
+        r"""<p>全 URL 缓存开关</p><p>枚举值：</p><ul><li>on： 开启</li><li>off： 关闭</li></ul>
+        :rtype: str
+        """
+        return self._FullURLCache
+
+    @FullURLCache.setter
+    def FullURLCache(self, FullURLCache):
+        self._FullURLCache = FullURLCache
+
+    @property
+    def QueryStringSwitch(self):
+        r"""<p>查询参数是否参与缓存键</p><p>枚举值：</p><ul><li>on： 开启</li><li>off： 关闭</li></ul>
+        :rtype: str
+        """
+        return self._QueryStringSwitch
+
+    @QueryStringSwitch.setter
+    def QueryStringSwitch(self, QueryStringSwitch):
+        self._QueryStringSwitch = QueryStringSwitch
+
+    @property
+    def QueryStringAction(self):
+        r"""<p>QueryStringSwitch=on 时必填</p><p>枚举值：</p><ul><li>includeCustom： 白名单</li><li>excludeCustom： 黑名单</li></ul>
+        :rtype: str
+        """
+        return self._QueryStringAction
+
+    @QueryStringAction.setter
+    def QueryStringAction(self, QueryStringAction):
+        self._QueryStringAction = QueryStringAction
+
+    @property
+    def QueryStringValues(self):
+        r"""<p>参数名列表</p><p>入参限制：最多 100 项，单项 1~128 字节</p>
+        :rtype: list of str
+        """
+        return self._QueryStringValues
+
+    @QueryStringValues.setter
+    def QueryStringValues(self, QueryStringValues):
+        self._QueryStringValues = QueryStringValues
+
+
+    def _deserialize(self, params):
+        self._FullURLCache = params.get("FullURLCache")
+        self._QueryStringSwitch = params.get("QueryStringSwitch")
+        self._QueryStringAction = params.get("QueryStringAction")
+        self._QueryStringValues = params.get("QueryStringValues")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class HTTPServiceCacheParams(AbstractModel):
+    r"""HTTPService 缓存参数（节点缓存 + 浏览器缓存共用行为模式）。
+    FollowOrigin / NoCache / (CacheTime||MaxAgeTime) 三者互斥，必须开启其一：
+    - FollowOrigin=true：节点与浏览器缓存均遵循源站；
+    - NoCache=true：节点与浏览器缓存均不缓存（Cache-Control: no-cache）；
+    - CacheTime>0 或 MaxAgeTime>0：至少设置其一，分别控制节点、浏览器缓存秒数，可独立设置。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FollowOrigin: <p>遵循源站</p>
+        :type FollowOrigin: bool
+        :param _NoCache: <p>不缓存</p>
+        :type NoCache: bool
+        :param _CacheTime: <p>自定义缓存时间（秒）</p><p>取值范围：[0, 31536000]</p><p>单位：秒</p>
+        :type CacheTime: int
+        :param _MaxAgeTime: <p>浏览器缓存秒数（对应 max-age）</p><p>取值范围：[0, 31536000]</p><p>单位：秒</p>
+        :type MaxAgeTime: int
+        """
+        self._FollowOrigin = None
+        self._NoCache = None
+        self._CacheTime = None
+        self._MaxAgeTime = None
+
+    @property
+    def FollowOrigin(self):
+        r"""<p>遵循源站</p>
+        :rtype: bool
+        """
+        return self._FollowOrigin
+
+    @FollowOrigin.setter
+    def FollowOrigin(self, FollowOrigin):
+        self._FollowOrigin = FollowOrigin
+
+    @property
+    def NoCache(self):
+        r"""<p>不缓存</p>
+        :rtype: bool
+        """
+        return self._NoCache
+
+    @NoCache.setter
+    def NoCache(self, NoCache):
+        self._NoCache = NoCache
+
+    @property
+    def CacheTime(self):
+        r"""<p>自定义缓存时间（秒）</p><p>取值范围：[0, 31536000]</p><p>单位：秒</p>
+        :rtype: int
+        """
+        return self._CacheTime
+
+    @CacheTime.setter
+    def CacheTime(self, CacheTime):
+        self._CacheTime = CacheTime
+
+    @property
+    def MaxAgeTime(self):
+        r"""<p>浏览器缓存秒数（对应 max-age）</p><p>取值范围：[0, 31536000]</p><p>单位：秒</p>
+        :rtype: int
+        """
+        return self._MaxAgeTime
+
+    @MaxAgeTime.setter
+    def MaxAgeTime(self, MaxAgeTime):
+        self._MaxAgeTime = MaxAgeTime
+
+
+    def _deserialize(self, params):
+        self._FollowOrigin = params.get("FollowOrigin")
+        self._NoCache = params.get("NoCache")
+        self._CacheTime = params.get("CacheTime")
+        self._MaxAgeTime = params.get("MaxAgeTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class HTTPServiceCacheRule(AbstractModel):
+    r"""HTTPService 缓存规则条目
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Description: <p>自定义描述，最多 128 字节</p>
+        :type Description: str
+        :param _Enable: <p>规则开关：nil/true 启用，false 禁用</p>
+        :type Enable: bool
+        :param _Condition: <p>HTTPService 规则匹配条件（必填）</p>
+        :type Condition: :class:`tencentcloud.tcb.v20180608.models.HTTPServiceRuleCondition`
+        :param _Actions: <p>HTTPService 缓存动作列表，同一规则内相同 Type 至多一个</p>
+        :type Actions: list of HTTPServiceCacheAction
+        """
+        self._Description = None
+        self._Enable = None
+        self._Condition = None
+        self._Actions = None
+
+    @property
+    def Description(self):
+        r"""<p>自定义描述，最多 128 字节</p>
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def Enable(self):
+        r"""<p>规则开关：nil/true 启用，false 禁用</p>
+        :rtype: bool
+        """
+        return self._Enable
+
+    @Enable.setter
+    def Enable(self, Enable):
+        self._Enable = Enable
+
+    @property
+    def Condition(self):
+        r"""<p>HTTPService 规则匹配条件（必填）</p>
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.HTTPServiceRuleCondition`
+        """
+        return self._Condition
+
+    @Condition.setter
+    def Condition(self, Condition):
+        self._Condition = Condition
+
+    @property
+    def Actions(self):
+        r"""<p>HTTPService 缓存动作列表，同一规则内相同 Type 至多一个</p>
+        :rtype: list of HTTPServiceCacheAction
+        """
+        return self._Actions
+
+    @Actions.setter
+    def Actions(self, Actions):
+        self._Actions = Actions
+
+
+    def _deserialize(self, params):
+        self._Description = params.get("Description")
+        self._Enable = params.get("Enable")
+        if params.get("Condition") is not None:
+            self._Condition = HTTPServiceRuleCondition()
+            self._Condition._deserialize(params.get("Condition"))
+        if params.get("Actions") is not None:
+            self._Actions = []
+            for item in params.get("Actions"):
+                obj = HTTPServiceCacheAction()
+                obj._deserialize(item)
+                self._Actions.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class HTTPServiceCacheSet(AbstractModel):
+    r"""HTTPService 缓存配置（域名维度）
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Rules: <p>HTTPService 缓存配置列表。Rules 按数组顺序为优先级顺序，Rules[n-1] 优先级最高</p>
+        :type Rules: list of HTTPServiceCacheRule
+        """
+        self._Rules = None
+
+    @property
+    def Rules(self):
+        r"""<p>HTTPService 缓存配置列表。Rules 按数组顺序为优先级顺序，Rules[n-1] 优先级最高</p>
+        :rtype: list of HTTPServiceCacheRule
+        """
+        return self._Rules
+
+    @Rules.setter
+    def Rules(self, Rules):
+        self._Rules = Rules
+
+
+    def _deserialize(self, params):
+        if params.get("Rules") is not None:
+            self._Rules = []
+            for item in params.get("Rules"):
+                obj = HTTPServiceCacheRule()
+                obj._deserialize(item)
+                self._Rules.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class HTTPServiceDomain(AbstractModel):
     r"""查询HTTP访问服务输出的域名信息，每个域名内包含所有路由信息
 
@@ -15704,20 +16073,23 @@ class HTTPServiceDomainParam(AbstractModel):
 
 
 class HTTPServiceExtension(AbstractModel):
-    r"""HTTP访问服务路由扩展字段
+    r"""HTTPService 路由扩展字段
 
     """
 
     def __init__(self):
         r"""
-        :param _HeadersHandler: 添加请求头列表
+        :param _HeadersHandler: <p>添加请求头列表</p>
         :type HeadersHandler: :class:`tencentcloud.tcb.v20180608.models.HTTPServiceHeadersHandler`
+        :param _Cache: <p>HTTPService 缓存配置，包含Cache 节点缓存 / MaxAge 浏览器缓存 / CacheKey 自定义缓存键</p>
+        :type Cache: :class:`tencentcloud.tcb.v20180608.models.HTTPServiceCacheSet`
         """
         self._HeadersHandler = None
+        self._Cache = None
 
     @property
     def HeadersHandler(self):
-        r"""添加请求头列表
+        r"""<p>添加请求头列表</p>
         :rtype: :class:`tencentcloud.tcb.v20180608.models.HTTPServiceHeadersHandler`
         """
         return self._HeadersHandler
@@ -15726,11 +16098,25 @@ class HTTPServiceExtension(AbstractModel):
     def HeadersHandler(self, HeadersHandler):
         self._HeadersHandler = HeadersHandler
 
+    @property
+    def Cache(self):
+        r"""<p>HTTPService 缓存配置，包含Cache 节点缓存 / MaxAge 浏览器缓存 / CacheKey 自定义缓存键</p>
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.HTTPServiceCacheSet`
+        """
+        return self._Cache
+
+    @Cache.setter
+    def Cache(self, Cache):
+        self._Cache = Cache
+
 
     def _deserialize(self, params):
         if params.get("HeadersHandler") is not None:
             self._HeadersHandler = HTTPServiceHeadersHandler()
             self._HeadersHandler._deserialize(params.get("HeadersHandler"))
+        if params.get("Cache") is not None:
+            self._Cache = HTTPServiceCacheSet()
+            self._Cache._deserialize(params.get("Cache"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -16412,6 +16798,72 @@ class HTTPServiceRouteQPSPolicy(AbstractModel):
         if params.get("QPSPerClient") is not None:
             self._QPSPerClient = HTTPServiceQPSPerClient()
             self._QPSPerClient._deserialize(params.get("QPSPerClient"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class HTTPServiceRuleCondition(AbstractModel):
+    r"""HTTPService缓存规则匹配条件（必填）
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Target: <p>Target 匹配对象</p><p>枚举值：</p><ul><li>url_path： 请求 URI 路径（不含查询串），例：/static/logo.jpg</li><li>file_extension： 请求文件扩展名（EO 从 path 中解析），例：jpg</li><li>full_uri： 完整 URI（路径 + 查询串），例：/download?type=hd</li></ul>
+        :type Target: str
+        :param _MatchType: <p>MatchType 字符串匹配类型</p><p>枚举值：</p><ul><li>prefix：  前缀匹配</li><li>suffix： 后缀匹配</li><li>contains： 包含匹配</li><li>exact： 精确匹配</li></ul>
+        :type MatchType: str
+        :param _Values: <p>Values 匹配值集合，Values 内任一命中即认为条件成立（OR 语义）</p><p>入参限制：单项 1~1024 字节，最多 100 条</p>
+        :type Values: list of str
+        """
+        self._Target = None
+        self._MatchType = None
+        self._Values = None
+
+    @property
+    def Target(self):
+        r"""<p>Target 匹配对象</p><p>枚举值：</p><ul><li>url_path： 请求 URI 路径（不含查询串），例：/static/logo.jpg</li><li>file_extension： 请求文件扩展名（EO 从 path 中解析），例：jpg</li><li>full_uri： 完整 URI（路径 + 查询串），例：/download?type=hd</li></ul>
+        :rtype: str
+        """
+        return self._Target
+
+    @Target.setter
+    def Target(self, Target):
+        self._Target = Target
+
+    @property
+    def MatchType(self):
+        r"""<p>MatchType 字符串匹配类型</p><p>枚举值：</p><ul><li>prefix：  前缀匹配</li><li>suffix： 后缀匹配</li><li>contains： 包含匹配</li><li>exact： 精确匹配</li></ul>
+        :rtype: str
+        """
+        return self._MatchType
+
+    @MatchType.setter
+    def MatchType(self, MatchType):
+        self._MatchType = MatchType
+
+    @property
+    def Values(self):
+        r"""<p>Values 匹配值集合，Values 内任一命中即认为条件成立（OR 语义）</p><p>入参限制：单项 1~1024 字节，最多 100 条</p>
+        :rtype: list of str
+        """
+        return self._Values
+
+    @Values.setter
+    def Values(self, Values):
+        self._Values = Values
+
+
+    def _deserialize(self, params):
+        self._Target = params.get("Target")
+        self._MatchType = params.get("MatchType")
+        self._Values = params.get("Values")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -17,6 +17,9 @@
 # 操作失败。
 FAILEDOPERATION = 'FailedOperation'
 
+# FailedOperation.Db
+FAILEDOPERATION_DB = 'FailedOperation.Db'
+
 # 内部错误。
 INTERNALERROR = 'InternalError'
 
@@ -28,6 +31,9 @@ INVALIDPARAMETER_PARAM = 'InvalidParameter.Param'
 
 # 缺少参数错误。
 MISSINGPARAMETER = 'MissingParameter'
+
+# 资源不存在。
+RESOURCENOTFOUND = 'ResourceNotFound'
 
 # 未授权操作。
 UNAUTHORIZEDOPERATION = 'UnauthorizedOperation'
