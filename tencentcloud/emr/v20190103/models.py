@@ -29753,23 +29753,26 @@ class ModifySLInstanceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例唯一标识符（字符串表示）。
+        :param _InstanceId: <p>实例唯一标识符（字符串表示）。</p>
         :type InstanceId: str
-        :param _Zone: 需要变更的区域名称。
+        :param _Zone: <p>需要变更的区域名称。</p>
         :type Zone: str
-        :param _NodeNum: 该区域变配后的目标节点数量，所有区域节点总数应大于等于3，小于等于50。
+        :param _NodeNum: <p>该区域变配后的目标节点数量，所有区域节点总数应大于等于3，小于等于50。</p>
         :type NodeNum: int
-        :param _ClientToken: 唯一随机标识，时效性为5分钟，需要调用者指定 防止客户端重复创建资源，例如 a9a90aa6-****-****-****-fae360632808	
+        :param _ClientToken: <p>唯一随机标识，时效性为5分钟，需要调用者指定 防止客户端重复创建资源，例如 a9a90aa6-<strong><strong>-</strong></strong>-****-fae360632808</p>
         :type ClientToken: str
+        :param _DiskSize: <p>存储空间大小，需要是100的倍数，且不允许比当前存储空间小（只允许扩容）</p><p>单位：GB</p>
+        :type DiskSize: int
         """
         self._InstanceId = None
         self._Zone = None
         self._NodeNum = None
         self._ClientToken = None
+        self._DiskSize = None
 
     @property
     def InstanceId(self):
-        r"""实例唯一标识符（字符串表示）。
+        r"""<p>实例唯一标识符（字符串表示）。</p>
         :rtype: str
         """
         return self._InstanceId
@@ -29780,7 +29783,7 @@ class ModifySLInstanceRequest(AbstractModel):
 
     @property
     def Zone(self):
-        r"""需要变更的区域名称。
+        r"""<p>需要变更的区域名称。</p>
         :rtype: str
         """
         return self._Zone
@@ -29791,7 +29794,7 @@ class ModifySLInstanceRequest(AbstractModel):
 
     @property
     def NodeNum(self):
-        r"""该区域变配后的目标节点数量，所有区域节点总数应大于等于3，小于等于50。
+        r"""<p>该区域变配后的目标节点数量，所有区域节点总数应大于等于3，小于等于50。</p>
         :rtype: int
         """
         return self._NodeNum
@@ -29802,7 +29805,7 @@ class ModifySLInstanceRequest(AbstractModel):
 
     @property
     def ClientToken(self):
-        r"""唯一随机标识，时效性为5分钟，需要调用者指定 防止客户端重复创建资源，例如 a9a90aa6-****-****-****-fae360632808	
+        r"""<p>唯一随机标识，时效性为5分钟，需要调用者指定 防止客户端重复创建资源，例如 a9a90aa6-<strong><strong>-</strong></strong>-****-fae360632808</p>
         :rtype: str
         """
         return self._ClientToken
@@ -29811,12 +29814,24 @@ class ModifySLInstanceRequest(AbstractModel):
     def ClientToken(self, ClientToken):
         self._ClientToken = ClientToken
 
+    @property
+    def DiskSize(self):
+        r"""<p>存储空间大小，需要是100的倍数，且不允许比当前存储空间小（只允许扩容）</p><p>单位：GB</p>
+        :rtype: int
+        """
+        return self._DiskSize
+
+    @DiskSize.setter
+    def DiskSize(self, DiskSize):
+        self._DiskSize = DiskSize
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
         self._Zone = params.get("Zone")
         self._NodeNum = params.get("NodeNum")
         self._ClientToken = params.get("ClientToken")
+        self._DiskSize = params.get("DiskSize")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

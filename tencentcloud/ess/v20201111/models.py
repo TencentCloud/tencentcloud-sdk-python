@@ -231,13 +231,13 @@ class Agent(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AppId: 代理机构的应用编号,32位字符串，一般不用传
+        :param _AppId: <p>CA-API应用编号，用于同平台企业下标识不同的CA-API应用</p>
         :type AppId: str
-        :param _ProxyAppId: 被代理机构的应用号，一般不用传
+        :param _ProxyAppId: <p>被代理机构的应用号，一般不用传</p>
         :type ProxyAppId: str
-        :param _ProxyOrganizationId: 被代理机构在电子签平台的机构编号，集团代理下场景必传
+        :param _ProxyOrganizationId: <p>被代理机构在电子签平台的机构编号，集团代理下场景必传</p>
         :type ProxyOrganizationId: str
-        :param _ProxyOperator: 被代理机构的经办人，一般不用传
+        :param _ProxyOperator: <p>被代理机构的经办人，一般不用传</p>
         :type ProxyOperator: str
         """
         self._AppId = None
@@ -249,7 +249,7 @@ class Agent(AbstractModel):
     def AppId(self):
         warnings.warn("parameter `AppId` is deprecated", DeprecationWarning) 
 
-        r"""代理机构的应用编号,32位字符串，一般不用传
+        r"""<p>CA-API应用编号，用于同平台企业下标识不同的CA-API应用</p>
         :rtype: str
         """
         return self._AppId
@@ -264,7 +264,7 @@ class Agent(AbstractModel):
     def ProxyAppId(self):
         warnings.warn("parameter `ProxyAppId` is deprecated", DeprecationWarning) 
 
-        r"""被代理机构的应用号，一般不用传
+        r"""<p>被代理机构的应用号，一般不用传</p>
         :rtype: str
         """
         return self._ProxyAppId
@@ -277,7 +277,7 @@ class Agent(AbstractModel):
 
     @property
     def ProxyOrganizationId(self):
-        r"""被代理机构在电子签平台的机构编号，集团代理下场景必传
+        r"""<p>被代理机构在电子签平台的机构编号，集团代理下场景必传</p>
         :rtype: str
         """
         return self._ProxyOrganizationId
@@ -290,7 +290,7 @@ class Agent(AbstractModel):
     def ProxyOperator(self):
         warnings.warn("parameter `ProxyOperator` is deprecated", DeprecationWarning) 
 
-        r"""被代理机构的经办人，一般不用传
+        r"""<p>被代理机构的经办人，一般不用传</p>
         :rtype: str
         """
         return self._ProxyOperator
@@ -1838,50 +1838,21 @@ class AutoSignConfig(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _UserInfo: 自动签开通个人用户信息, 包括名字,身份证等
+        :param _UserInfo: <p>自动签开通个人用户信息, 包括名字,身份证等</p>
         :type UserInfo: :class:`tencentcloud.ess.v20201111.models.UserThreeFactor`
-        :param _CertInfoCallback: 是否回调证书信息:
-<ul><li>**false**: 不需要(默认)</li>
-<li>**true**:需要</li></ul>
-
-注：`该字段已经失效，请勿设置此参数。`
+        :param _CertInfoCallback: <p>是否回调证书信息:</p><ul><li>**false**: 不需要(默认)</li><li>**true**:需要</li></ul><p>注：<code>该字段已经失效，请勿设置此参数。</code></p>
         :type CertInfoCallback: bool
-        :param _UserDefineSeal: 是否支持用户自定义签名印章:
-<ul><li>**false**: 不能自己定义(默认)</li>
-<li>**true**: 可以自己定义</li></ul>
+        :param _UserDefineSeal: <p>是否支持用户自定义签名印章:</p><ul><li>**false**: 不能自己定义(默认)</li><li>**true**: 可以自己定义</li></ul>
         :type UserDefineSeal: bool
-        :param _SealImgCallback: 回调中是否需要自动签将要使用的印章(签名) 图片的 base64:
-<ul><li>**false**: 不需要(默认)</li>
-<li>**true**: 需要</li></ul>
+        :param _SealImgCallback: <p>回调中是否需要自动签将要使用的印章(签名) 图片的 base64:</p><ul><li>**false**: 不需要(默认)</li><li>**true**: 需要</li></ul>
         :type SealImgCallback: bool
-        :param _CallbackUrl: 执行结果的回调URL，该URL仅支持HTTP或HTTPS协议，建议采用HTTPS协议以保证数据传输的安全性。
-腾讯电子签服务器将通过POST方式，application/json格式通知执行结果，请确保外网可以正常访问该URL。
-回调的相关说明可参考开发者中心的<a href="https://qian.tencent.com/developers/company/callback_types_v2" target="_blank">回调通知</a>模块。
+        :param _CallbackUrl: <p>执行结果的回调URL，该URL仅支持HTTP或HTTPS协议，建议采用HTTPS协议以保证数据传输的安全性。<br>腾讯电子签服务器将通过POST方式，application/json格式通知执行结果，请确保外网可以正常访问该URL。<br>回调的相关说明可参考开发者中心的<a href="https://qian.tencent.com/developers/company/callback_types_v2" target="_blank">回调通知</a>模块。</p>
         :type CallbackUrl: str
-        :param _VerifyChannels: 开通时候的身份验证方式, 取值为：
-<ul><li>**WEIXINAPP** : 微信人脸识别</li>
-<li>**INSIGHT** : 慧眼人脸识别</li>
-<li>**TELECOM** : 运营商三要素验证</li></ul>
-注：
-<ul><li>如果是小程序开通链接，仅支持 WEIXINAPP 。为空默认 WEIXINAPP</li>
-<li>如果是 H5 开通链接，支持传 INSIGHT / TELECOM。为空默认 INSIGHT </li></ul>
+        :param _VerifyChannels: <p>开通时候的身份验证方式, 取值为：</p><ul><li>**WEIXINAPP** : 微信人脸识别</li><li>**INSIGHT** : 慧眼人脸识别</li><li>**TELECOM** : 运营商三要素验证</li></ul>注：<ul><li>如果是小程序开通链接，仅支持 WEIXINAPP 。为空默认 WEIXINAPP</li><li>如果是 H5 开通链接，支持传 INSIGHT / TELECOM。为空默认 INSIGHT </li></ul>
         :type VerifyChannels: list of str
-        :param _LicenseType: 设置用户自动签合同的扣费方式。
-
-<ul><li><b>1</b>: (默认)使用合同份额进行扣减</li></ul>
-
-注：`该字段已经失效，请勿设置此参数。`
+        :param _LicenseType: <p>设置用户自动签合同的扣费方式。</p><ul><li><b>1</b>: (默认)使用合同份额进行扣减</li></ul><p>注：<code>该字段已经失效，请勿设置此参数。</code></p>
         :type LicenseType: int
-        :param _JumpUrl: 开通成功后前端页面跳转的url，此字段的用法场景请联系客户经理确认。
-
-注：`仅支持H5开通场景`, `跳转链接仅支持 https:// , qianapp:// 开头`
-
-跳转场景：
-<ul><li>**贵方H5 -> 腾讯电子签H5 -> 贵方H5** : JumpUrl格式: https://YOUR_CUSTOM_URL/xxxx，只需满足 https:// 开头的正确且合规的网址即可。</li>
-<li>**贵方原生App -> 腾讯电子签H5 -> 贵方原生App** : JumpUrl格式: qianapp://YOUR_CUSTOM_URL，只需满足 qianapp:// 开头的URL即可。`APP实现方，需要拦截Webview地址跳转，发现url是qianapp:// 开头时跳转到原生页面。`APP拦截地址跳转可参考：<a href='https://stackoverflow.com/questions/41693263/android-webview-err-unknown-url-scheme'>Android</a>，<a href='https://razorpay.com/docs/payments/payment-gateway/web-integration/standard/webview/upi-intent-ios/'>IOS</a> </li></ul>
-
-成功结果返回：
-若贵方需要在跳转回时通过链接query参数提示开通成功，JumpUrl中的query应携带如下参数：`appendResult=qian`。这样腾讯电子签H5会在跳转回的url后面会添加query参数提示贵方签署成功，例如： qianapp://YOUR_CUSTOM_URL?action=sign&result=success&from=tencent_ess
+        :param _JumpUrl: <p>开通成功后前端页面跳转的url，此字段的用法场景请联系客户经理确认。</p><p>注：<code>仅支持H5开通场景</code>, <code>跳转链接仅支持 https:// , qianapp:// 开头</code></p><p>跳转场景：</p><ul><li>**贵方H5 -&gt; 腾讯电子签H5 -&gt; 贵方H5** : JumpUrl格式: https://YOUR_CUSTOM_URL/xxxx，只需满足 https:// 开头的正确且合规的网址即可。</li><li>**贵方原生App -&gt; 腾讯电子签H5 -&gt; 贵方原生App** : JumpUrl格式: qianapp://YOUR_CUSTOM_URL，只需满足 qianapp:// 开头的URL即可。<code>APP实现方，需要拦截Webview地址跳转，发现url是qianapp:// 开头时跳转到原生页面。</code>APP拦截地址跳转可参考：<a href="https://qian.tencent.com/developers/company/openqianh5/#3-%E8%BF%94%E5%9B%9E%E5%BA%94%E7%94%A8jumpurl%E6%A0%BC%E5%BC%8F">返回应用JumpUrl格式</a></li></ul><p>成功结果返回：<br>若贵方需要在跳转回时通过链接query参数提示开通成功，JumpUrl中的query应携带如下参数：<code>appendResult=qian</code>。这样腾讯电子签H5会在跳转回的url后面会添加query参数提示贵方签署成功，例如： qianapp://YOUR_CUSTOM_URL?action=sign&amp;result=success&amp;from=tencent_ess</p>
         :type JumpUrl: str
         """
         self._UserInfo = None
@@ -1895,7 +1866,7 @@ class AutoSignConfig(AbstractModel):
 
     @property
     def UserInfo(self):
-        r"""自动签开通个人用户信息, 包括名字,身份证等
+        r"""<p>自动签开通个人用户信息, 包括名字,身份证等</p>
         :rtype: :class:`tencentcloud.ess.v20201111.models.UserThreeFactor`
         """
         return self._UserInfo
@@ -1906,11 +1877,7 @@ class AutoSignConfig(AbstractModel):
 
     @property
     def CertInfoCallback(self):
-        r"""是否回调证书信息:
-<ul><li>**false**: 不需要(默认)</li>
-<li>**true**:需要</li></ul>
-
-注：`该字段已经失效，请勿设置此参数。`
+        r"""<p>是否回调证书信息:</p><ul><li>**false**: 不需要(默认)</li><li>**true**:需要</li></ul><p>注：<code>该字段已经失效，请勿设置此参数。</code></p>
         :rtype: bool
         """
         return self._CertInfoCallback
@@ -1921,9 +1888,7 @@ class AutoSignConfig(AbstractModel):
 
     @property
     def UserDefineSeal(self):
-        r"""是否支持用户自定义签名印章:
-<ul><li>**false**: 不能自己定义(默认)</li>
-<li>**true**: 可以自己定义</li></ul>
+        r"""<p>是否支持用户自定义签名印章:</p><ul><li>**false**: 不能自己定义(默认)</li><li>**true**: 可以自己定义</li></ul>
         :rtype: bool
         """
         return self._UserDefineSeal
@@ -1934,9 +1899,7 @@ class AutoSignConfig(AbstractModel):
 
     @property
     def SealImgCallback(self):
-        r"""回调中是否需要自动签将要使用的印章(签名) 图片的 base64:
-<ul><li>**false**: 不需要(默认)</li>
-<li>**true**: 需要</li></ul>
+        r"""<p>回调中是否需要自动签将要使用的印章(签名) 图片的 base64:</p><ul><li>**false**: 不需要(默认)</li><li>**true**: 需要</li></ul>
         :rtype: bool
         """
         return self._SealImgCallback
@@ -1949,9 +1912,7 @@ class AutoSignConfig(AbstractModel):
     def CallbackUrl(self):
         warnings.warn("parameter `CallbackUrl` is deprecated", DeprecationWarning) 
 
-        r"""执行结果的回调URL，该URL仅支持HTTP或HTTPS协议，建议采用HTTPS协议以保证数据传输的安全性。
-腾讯电子签服务器将通过POST方式，application/json格式通知执行结果，请确保外网可以正常访问该URL。
-回调的相关说明可参考开发者中心的<a href="https://qian.tencent.com/developers/company/callback_types_v2" target="_blank">回调通知</a>模块。
+        r"""<p>执行结果的回调URL，该URL仅支持HTTP或HTTPS协议，建议采用HTTPS协议以保证数据传输的安全性。<br>腾讯电子签服务器将通过POST方式，application/json格式通知执行结果，请确保外网可以正常访问该URL。<br>回调的相关说明可参考开发者中心的<a href="https://qian.tencent.com/developers/company/callback_types_v2" target="_blank">回调通知</a>模块。</p>
         :rtype: str
         """
         return self._CallbackUrl
@@ -1964,13 +1925,7 @@ class AutoSignConfig(AbstractModel):
 
     @property
     def VerifyChannels(self):
-        r"""开通时候的身份验证方式, 取值为：
-<ul><li>**WEIXINAPP** : 微信人脸识别</li>
-<li>**INSIGHT** : 慧眼人脸识别</li>
-<li>**TELECOM** : 运营商三要素验证</li></ul>
-注：
-<ul><li>如果是小程序开通链接，仅支持 WEIXINAPP 。为空默认 WEIXINAPP</li>
-<li>如果是 H5 开通链接，支持传 INSIGHT / TELECOM。为空默认 INSIGHT </li></ul>
+        r"""<p>开通时候的身份验证方式, 取值为：</p><ul><li>**WEIXINAPP** : 微信人脸识别</li><li>**INSIGHT** : 慧眼人脸识别</li><li>**TELECOM** : 运营商三要素验证</li></ul>注：<ul><li>如果是小程序开通链接，仅支持 WEIXINAPP 。为空默认 WEIXINAPP</li><li>如果是 H5 开通链接，支持传 INSIGHT / TELECOM。为空默认 INSIGHT </li></ul>
         :rtype: list of str
         """
         return self._VerifyChannels
@@ -1981,11 +1936,7 @@ class AutoSignConfig(AbstractModel):
 
     @property
     def LicenseType(self):
-        r"""设置用户自动签合同的扣费方式。
-
-<ul><li><b>1</b>: (默认)使用合同份额进行扣减</li></ul>
-
-注：`该字段已经失效，请勿设置此参数。`
+        r"""<p>设置用户自动签合同的扣费方式。</p><ul><li><b>1</b>: (默认)使用合同份额进行扣减</li></ul><p>注：<code>该字段已经失效，请勿设置此参数。</code></p>
         :rtype: int
         """
         return self._LicenseType
@@ -1996,16 +1947,7 @@ class AutoSignConfig(AbstractModel):
 
     @property
     def JumpUrl(self):
-        r"""开通成功后前端页面跳转的url，此字段的用法场景请联系客户经理确认。
-
-注：`仅支持H5开通场景`, `跳转链接仅支持 https:// , qianapp:// 开头`
-
-跳转场景：
-<ul><li>**贵方H5 -> 腾讯电子签H5 -> 贵方H5** : JumpUrl格式: https://YOUR_CUSTOM_URL/xxxx，只需满足 https:// 开头的正确且合规的网址即可。</li>
-<li>**贵方原生App -> 腾讯电子签H5 -> 贵方原生App** : JumpUrl格式: qianapp://YOUR_CUSTOM_URL，只需满足 qianapp:// 开头的URL即可。`APP实现方，需要拦截Webview地址跳转，发现url是qianapp:// 开头时跳转到原生页面。`APP拦截地址跳转可参考：<a href='https://stackoverflow.com/questions/41693263/android-webview-err-unknown-url-scheme'>Android</a>，<a href='https://razorpay.com/docs/payments/payment-gateway/web-integration/standard/webview/upi-intent-ios/'>IOS</a> </li></ul>
-
-成功结果返回：
-若贵方需要在跳转回时通过链接query参数提示开通成功，JumpUrl中的query应携带如下参数：`appendResult=qian`。这样腾讯电子签H5会在跳转回的url后面会添加query参数提示贵方签署成功，例如： qianapp://YOUR_CUSTOM_URL?action=sign&result=success&from=tencent_ess
+        r"""<p>开通成功后前端页面跳转的url，此字段的用法场景请联系客户经理确认。</p><p>注：<code>仅支持H5开通场景</code>, <code>跳转链接仅支持 https:// , qianapp:// 开头</code></p><p>跳转场景：</p><ul><li>**贵方H5 -&gt; 腾讯电子签H5 -&gt; 贵方H5** : JumpUrl格式: https://YOUR_CUSTOM_URL/xxxx，只需满足 https:// 开头的正确且合规的网址即可。</li><li>**贵方原生App -&gt; 腾讯电子签H5 -&gt; 贵方原生App** : JumpUrl格式: qianapp://YOUR_CUSTOM_URL，只需满足 qianapp:// 开头的URL即可。<code>APP实现方，需要拦截Webview地址跳转，发现url是qianapp:// 开头时跳转到原生页面。</code>APP拦截地址跳转可参考：<a href="https://qian.tencent.com/developers/company/openqianh5/#3-%E8%BF%94%E5%9B%9E%E5%BA%94%E7%94%A8jumpurl%E6%A0%BC%E5%BC%8F">返回应用JumpUrl格式</a></li></ul><p>成功结果返回：<br>若贵方需要在跳转回时通过链接query参数提示开通成功，JumpUrl中的query应携带如下参数：<code>appendResult=qian</code>。这样腾讯电子签H5会在跳转回的url后面会添加query参数提示贵方签署成功，例如： qianapp://YOUR_CUSTOM_URL?action=sign&amp;result=success&amp;from=tencent_ess</p>
         :rtype: str
         """
         return self._JumpUrl
@@ -13007,7 +12949,7 @@ class CreateFlowSignUrlRequest(AbstractModel):
         :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
         :param _Agent: <p>代理企业和员工的信息。<br>在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。</p>
         :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
-        :param _FlowApproverInfos: <p>流程签署人列表中，结构体的ApproverName、ApproverMobile和ApproverType为必传字段。如果是企业签署人，还需传递OrganizationName。</p><p>此结构体和CreateFlow发起接口参与方结构体复用，除了上述参数外，可传递的参数有：</p><ol><li>RecipientId: 发起合同会返回，可以直接用于指定需要生成链接的签署方。</li><li>ApproverSignTypes: 指定签署方签署时候的认证方式，仅此链接生效。</li><li>SignTypeSelector: 可以指定签署方签署合同的认证校验方式的选择模式。</li><li>Intention: 指定H5签署视频核身的意图配置，仅视频签署需要使用。</li></ol><p>注：</p><ol><li>签署人<b>只能使用手写签名、时间类型、印章类型、签批类型的签署控件和内容填写控件</b>，其他类型的签署控件暂时不支持。</li><li>生成发起方预览链接时，该字段（FlowApproverInfos）可以传空或者不传。</li></ol>
+        :param _FlowApproverInfos: <p>流程签署人列表中，结构体的ApproverName、ApproverMobile和ApproverType为必传字段。如果是企业签署人，还需传递OrganizationName。</p><p>此结构体和CreateFlow发起接口参与方结构体复用，除了上述参数外，可传递的参数有：</p><ol><li>RecipientId: 发起合同会返回，可以直接用于指定需要生成链接的签署方。</li><li>ApproverSignTypes: 指定签署方签署时候的认证方式，仅此链接生效。</li><li>SignTypeSelector: 可以指定签署方签署合同的认证校验方式的选择模式。</li><li>Intention: 指定H5签署视频核身的意图配置，仅视频签署需要使用。</li></ol><p>注：</p><ol><li>签署人<b>只能使用签名类型、时间类型、印章类型、签批类型的签署控件和内容填写控件</b>，其他类型的签署控件暂时不支持。</li><li>对于签名控件类型，支持手写签名、系统签名、个人印章等类型的签名方式，取决于合同发起时的设定。另外，签署的时候不支持拉取个人签署方已有签名图片资产，且创建的签名图片为一次性使用，不会保存为签署方个人资产。</li><li>生成发起方预览链接时，该字段（FlowApproverInfos）可以传空或者不传。</li></ol>
         :type FlowApproverInfos: list of FlowCreateApprover
         :param _VideoVerifyTimesLimit: <p>用于指定进入视频签署的限制次数，次数取值范围：1 - 10，不设置则默认为5次，仅视频签署时生效。</p>
         :type VideoVerifyTimesLimit: int
@@ -13065,7 +13007,7 @@ class CreateFlowSignUrlRequest(AbstractModel):
 
     @property
     def FlowApproverInfos(self):
-        r"""<p>流程签署人列表中，结构体的ApproverName、ApproverMobile和ApproverType为必传字段。如果是企业签署人，还需传递OrganizationName。</p><p>此结构体和CreateFlow发起接口参与方结构体复用，除了上述参数外，可传递的参数有：</p><ol><li>RecipientId: 发起合同会返回，可以直接用于指定需要生成链接的签署方。</li><li>ApproverSignTypes: 指定签署方签署时候的认证方式，仅此链接生效。</li><li>SignTypeSelector: 可以指定签署方签署合同的认证校验方式的选择模式。</li><li>Intention: 指定H5签署视频核身的意图配置，仅视频签署需要使用。</li></ol><p>注：</p><ol><li>签署人<b>只能使用手写签名、时间类型、印章类型、签批类型的签署控件和内容填写控件</b>，其他类型的签署控件暂时不支持。</li><li>生成发起方预览链接时，该字段（FlowApproverInfos）可以传空或者不传。</li></ol>
+        r"""<p>流程签署人列表中，结构体的ApproverName、ApproverMobile和ApproverType为必传字段。如果是企业签署人，还需传递OrganizationName。</p><p>此结构体和CreateFlow发起接口参与方结构体复用，除了上述参数外，可传递的参数有：</p><ol><li>RecipientId: 发起合同会返回，可以直接用于指定需要生成链接的签署方。</li><li>ApproverSignTypes: 指定签署方签署时候的认证方式，仅此链接生效。</li><li>SignTypeSelector: 可以指定签署方签署合同的认证校验方式的选择模式。</li><li>Intention: 指定H5签署视频核身的意图配置，仅视频签署需要使用。</li></ol><p>注：</p><ol><li>签署人<b>只能使用签名类型、时间类型、印章类型、签批类型的签署控件和内容填写控件</b>，其他类型的签署控件暂时不支持。</li><li>对于签名控件类型，支持手写签名、系统签名、个人印章等类型的签名方式，取决于合同发起时的设定。另外，签署的时候不支持拉取个人签署方已有签名图片资产，且创建的签名图片为一次性使用，不会保存为签署方个人资产。</li><li>生成发起方预览链接时，该字段（FlowApproverInfos）可以传空或者不传。</li></ol>
         :rtype: list of FlowCreateApprover
         """
         return self._FlowApproverInfos

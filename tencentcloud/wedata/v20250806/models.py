@@ -4429,7 +4429,7 @@ class CreateDataSourceRequest(AbstractModel):
         :type Name: str
         :param _Type: <p>数据源类型:枚举值- MYSQL- TENCENT_MYSQL- POSTGRE- ORACLE- SQLSERVER- FTP- HIVE- HUDI- HDFS- ICEBERG- KAFKA- DTS_KAFKA- HBASE- SPARK- TBASE- DB2- DM- GAUSSDB- GBASE- IMPALA- ES- TENCENT_ES- GREENPLUM- SAP_HANA- SFTP- OCEANBASE- CLICKHOUSE- KUDU- VERTICA- REDIS- COS- DLC- DORIS- CKAFKA- S3_DATAINSIGHT- TDSQL- TDSQL_MYSQL- MONGODB- TENCENT_MONGODB- REST_API- TiDB- StarRocks- Trino- Kyuubi- TCHOUSE_X- TCHOUSE_P- TCHOUSE_C- TCHOUSE_D- INFLUXDB- BIG_QUERY- SSH- BLOB- TDSQL_POSTGRE- GDB- TDENGINE- TDSQLC- FileSystem- TCLake- TDSQL_BOUNDLESS</p>
         :type Type: str
-        :param _ProdConProperties: <p>数据源的配置信息，以JSON KV存储，根据每个数据源类型不同，而KV存储信息不同</p><blockquote><p>deployType:<br>CONNSTR_PUBLICDB(公网实例)<br>CONNSTR_CVMDB(自建实例)<br>INSTANCE(云实例)</p></blockquote><p><pre><code>mysql: 自建实例{    &quot;deployType&quot;: &quot;CONNSTR_CVMDB&quot;,    &quot;url&quot;: &quot;jdbc:mysql://1.1.1.1:1111/example#test#123456&quot;,    &quot;username&quot;: &quot;root&quot;,    &quot;password&quot;: &quot;example#test#123456&quot;,    &quot;region&quot;: &quot;ap-shanghai&quot;,    &quot;vpcId&quot;: &quot;vpc-kprq42yo&quot;,    &quot;type&quot;: &quot;MYSQL&quot;}mysql: 云实例{    &quot;instanceid&quot;: &quot;cdb-12uxdo5e&quot;,    &quot;db&quot;: &quot;db&quot;,    &quot;region&quot;: &quot;ap-shanghai&quot;,    &quot;username&quot;: &quot;msyql&quot;,    &quot;password&quot;: &quot;example#test#123456&quot;,    &quot;deployType&quot;: &quot;INSTANCE&quot;,    &quot;type&quot;: &quot;TENCENT_MYSQL&quot;}sql_server: {    &quot;deployType&quot;: &quot;CONNSTR_PUBLICDB&quot;,    &quot;url&quot;: &quot;jdbc:sqlserver://1.1.1.1:223;example#test#123456&quot;,    &quot;username&quot;: &quot;user_1&quot;,    &quot;password&quot;: &quot;example#test#123456&quot;,    &quot;type&quot;: &quot;SQLSERVER&quot;}redis:    redisType:    -NO_ACCOUT(免账号)    -SELF_ACCOUNT(自定义账号){    &quot;deployType&quot;: &quot;CONNSTR_PUBLICDB&quot;,    &quot;username&quot;:&quot;&quot;    &quot;password&quot;: &quot;example#test#123456&quot;,    &quot;ip&quot;: &quot;1.1.1.1&quot;,    &quot;port&quot;: &quot;6379&quot;,    &quot;redisType&quot;: &quot;NO_ACCOUT&quot;,    &quot;type&quot;: &quot;REDIS&quot;}oracle: {    &quot;deployType&quot;: &quot;CONNSTR_CVMDB&quot;,    &quot;url&quot;: &quot;jdbc:oracle:thin:@1.1.1.1:1521:example#test#123456&quot;,    &quot;username&quot;: &quot;oracle&quot;,    &quot;password&quot;: &quot;example#test#123456&quot;,    &quot;region&quot;: &quot;ap-shanghai&quot;,    &quot;vpcId&quot;: &quot;vpc-kprq42yo&quot;,    &quot;type&quot;: &quot;ORACLE&quot;}mongodb:    advanceParams(自定义参数，会拼接至url后){    &quot;advanceParams&quot;: [        {            &quot;key&quot;: &quot;authSource&quot;,            &quot;value&quot;: &quot;auth&quot;        }    ],    &quot;db&quot;: &quot;admin&quot;,    &quot;deployType&quot;: &quot;CONNSTR_PUBLICDB&quot;,    &quot;username&quot;: &quot;user&quot;,    &quot;password&quot;: &quot;example#test#123456&quot;,    &quot;type&quot;: &quot;MONGODB&quot;,    &quot;host&quot;: &quot;1.1.1.1:9200&quot;}postgresql:{    &quot;deployType&quot;: &quot;CONNSTR_PUBLICDB&quot;,    &quot;url&quot;: &quot;jdbc:postgresql://1.1.1.1:1921/example#test#123456&quot;,    &quot;username&quot;: &quot;user&quot;,    &quot;password&quot;: &quot;example#test#123456&quot;,    &quot;type&quot;: &quot;POSTGRE&quot;}kafka:    authType:        - sasl        - jaas        - sasl_plaintext        - sasl_ssl        - GSSAPI    ssl:        -PLAIN        -GSSAPI{    &quot;deployType&quot;: &quot;CONNSTR_PUBLICDB&quot;,    &quot;host&quot;: &quot;1.1.1.1:9092&quot;,    &quot;ssl&quot;: &quot;GSSAPI&quot;,    &quot;authType&quot;: &quot;sasl&quot;,    &quot;type&quot;: &quot;KAFKA&quot;,    &quot;principal&quot;: &quot;aaaa&quot;,    &quot;serviceName&quot;: &quot;kafka&quot;}cos:{    &quot;region&quot;: &quot;ap-shanghai&quot;,    &quot;deployType&quot;: &quot;INSTANCE&quot;,    &quot;secretId&quot;: &quot;aaaaa&quot;,    &quot;secretKey&quot;: &quot;example#test#123456&quot;,    &quot;bucket&quot;: &quot;aaa&quot;,    &quot;type&quot;: &quot;COS&quot;}</code></pre></p>
+        :param _ProdConProperties: <p>数据源的配置信息，以JSON KV存储，根据每个数据源类型不同，而KV存储信息不同</p><blockquote><p>deployType:<br>CONNSTR_PUBLICDB(公网实例)<br>CONNSTR_CVMDB(自建实例)<br>INSTANCE(云实例)</p></blockquote><p><pre><code>mysql: 自建实例{    &quot;deployType&quot;: &quot;CONNSTR_CVMDB&quot;,    &quot;url&quot;: &quot;jdbc:mysql://&lt;host&gt;:&lt;port&gt;/&lt;database&gt;&quot;,    &quot;username&quot;: &quot;&lt;username&gt;&quot;,    &quot;password&quot;: &quot;&lt;password&gt;&quot;,    &quot;region&quot;: &quot;ap-shanghai&quot;,    &quot;vpcId&quot;: &quot;&lt;vpcId&gt;&quot;,    &quot;type&quot;: &quot;MYSQL&quot;}mysql: 云实例{    &quot;instanceid&quot;: &quot;&lt;instanceId&gt;&quot;,    &quot;db&quot;: &quot;&lt;database&gt;&quot;,    &quot;region&quot;: &quot;ap-shanghai&quot;,    &quot;username&quot;: &quot;&lt;username&gt;&quot;,    &quot;password&quot;: &quot;&lt;password&gt;&quot;,    &quot;deployType&quot;: &quot;INSTANCE&quot;,    &quot;type&quot;: &quot;TENCENT_MYSQL&quot;}sql_server:{    &quot;deployType&quot;: &quot;CONNSTR_PUBLICDB&quot;,    &quot;url&quot;: &quot;jdbc:sqlserver://&lt;host&gt;:&lt;port&gt;;DatabaseName=&lt;database&gt;&quot;,    &quot;username&quot;: &quot;&lt;username&gt;&quot;,    &quot;password&quot;: &quot;&lt;password&gt;&quot;,    &quot;type&quot;: &quot;SQLSERVER&quot;}redis:    redisType:    -NO_ACCOUT(免账号)    -SELF_ACCOUNT(自定义账号){    &quot;deployType&quot;: &quot;CONNSTR_PUBLICDB&quot;,    &quot;username&quot;: &quot;&lt;username&gt;&quot;,    &quot;password&quot;: &quot;&lt;password&gt;&quot;,    &quot;ip&quot;: &quot;&lt;host&gt;&quot;,    &quot;port&quot;: &quot;&lt;port&gt;&quot;,    &quot;redisType&quot;: &quot;NO_ACCOUT&quot;,    &quot;type&quot;: &quot;REDIS&quot;}oracle:{    &quot;deployType&quot;: &quot;CONNSTR_CVMDB&quot;,    &quot;url&quot;: &quot;jdbc:oracle:thin:@&lt;host&gt;:&lt;port&gt;:&lt;sid&gt;&quot;,    &quot;username&quot;: &quot;&lt;username&gt;&quot;,    &quot;password&quot;: &quot;&lt;password&gt;&quot;,    &quot;region&quot;: &quot;ap-shanghai&quot;,    &quot;vpcId&quot;: &quot;&lt;vpcId&gt;&quot;,    &quot;type&quot;: &quot;ORACLE&quot;}mongodb:    advanceParams(自定义参数，会拼接至url后){    &quot;advanceParams&quot;: [        {            &quot;key&quot;: &quot;authSource&quot;,            &quot;value&quot;: &quot;admin&quot;        }    ],    &quot;db&quot;: &quot;&lt;database&gt;&quot;,    &quot;deployType&quot;: &quot;CONNSTR_PUBLICDB&quot;,    &quot;username&quot;: &quot;&lt;username&gt;&quot;,    &quot;password&quot;: &quot;&lt;password&gt;&quot;,    &quot;type&quot;: &quot;MONGODB&quot;,    &quot;host&quot;: &quot;&lt;host&gt;:&lt;port&gt;&quot;}postgresql:{    &quot;deployType&quot;: &quot;CONNSTR_PUBLICDB&quot;,    &quot;url&quot;: &quot;jdbc:postgresql://&lt;host&gt;:&lt;port&gt;/&lt;database&gt;&quot;,    &quot;username&quot;: &quot;&lt;username&gt;&quot;,    &quot;password&quot;: &quot;&lt;password&gt;&quot;,    &quot;type&quot;: &quot;POSTGRE&quot;}kafka:    authType:    - sasl    - jaas    - sasl_plaintext    - sasl_ssl    - GSSAPI    ssl:    -PLAIN    -GSSAPI{    &quot;deployType&quot;: &quot;CONNSTR_PUBLICDB&quot;,    &quot;host&quot;: &quot;&lt;host&gt;:&lt;port&gt;&quot;,    &quot;ssl&quot;: &quot;GSSAPI&quot;,    &quot;authType&quot;: &quot;sasl&quot;,    &quot;type&quot;: &quot;KAFKA&quot;,    &quot;principal&quot;: &quot;&lt;principal&gt;&quot;,    &quot;serviceName&quot;: &quot;kafka&quot;}cos:{    &quot;region&quot;: &quot;ap-shanghai&quot;,    &quot;deployType&quot;: &quot;INSTANCE&quot;,    &quot;secretId&quot;: &quot;&lt;secretId&gt;&quot;,    &quot;secretKey&quot;: &quot;&lt;secretKey&gt;&quot;,    &quot;bucket&quot;: &quot;&lt;bucket&gt;&quot;,    &quot;type&quot;: &quot;COS&quot;}</code></pre></p>
         :type ProdConProperties: str
         :param _DevConProperties: <p>开发环境数据源配置信息，若项目为标准模式，则此字段必填</p>
         :type DevConProperties: str
@@ -4487,7 +4487,7 @@ class CreateDataSourceRequest(AbstractModel):
 
     @property
     def ProdConProperties(self):
-        r"""<p>数据源的配置信息，以JSON KV存储，根据每个数据源类型不同，而KV存储信息不同</p><blockquote><p>deployType:<br>CONNSTR_PUBLICDB(公网实例)<br>CONNSTR_CVMDB(自建实例)<br>INSTANCE(云实例)</p></blockquote><p><pre><code>mysql: 自建实例{    &quot;deployType&quot;: &quot;CONNSTR_CVMDB&quot;,    &quot;url&quot;: &quot;jdbc:mysql://1.1.1.1:1111/example#test#123456&quot;,    &quot;username&quot;: &quot;root&quot;,    &quot;password&quot;: &quot;example#test#123456&quot;,    &quot;region&quot;: &quot;ap-shanghai&quot;,    &quot;vpcId&quot;: &quot;vpc-kprq42yo&quot;,    &quot;type&quot;: &quot;MYSQL&quot;}mysql: 云实例{    &quot;instanceid&quot;: &quot;cdb-12uxdo5e&quot;,    &quot;db&quot;: &quot;db&quot;,    &quot;region&quot;: &quot;ap-shanghai&quot;,    &quot;username&quot;: &quot;msyql&quot;,    &quot;password&quot;: &quot;example#test#123456&quot;,    &quot;deployType&quot;: &quot;INSTANCE&quot;,    &quot;type&quot;: &quot;TENCENT_MYSQL&quot;}sql_server: {    &quot;deployType&quot;: &quot;CONNSTR_PUBLICDB&quot;,    &quot;url&quot;: &quot;jdbc:sqlserver://1.1.1.1:223;example#test#123456&quot;,    &quot;username&quot;: &quot;user_1&quot;,    &quot;password&quot;: &quot;example#test#123456&quot;,    &quot;type&quot;: &quot;SQLSERVER&quot;}redis:    redisType:    -NO_ACCOUT(免账号)    -SELF_ACCOUNT(自定义账号){    &quot;deployType&quot;: &quot;CONNSTR_PUBLICDB&quot;,    &quot;username&quot;:&quot;&quot;    &quot;password&quot;: &quot;example#test#123456&quot;,    &quot;ip&quot;: &quot;1.1.1.1&quot;,    &quot;port&quot;: &quot;6379&quot;,    &quot;redisType&quot;: &quot;NO_ACCOUT&quot;,    &quot;type&quot;: &quot;REDIS&quot;}oracle: {    &quot;deployType&quot;: &quot;CONNSTR_CVMDB&quot;,    &quot;url&quot;: &quot;jdbc:oracle:thin:@1.1.1.1:1521:example#test#123456&quot;,    &quot;username&quot;: &quot;oracle&quot;,    &quot;password&quot;: &quot;example#test#123456&quot;,    &quot;region&quot;: &quot;ap-shanghai&quot;,    &quot;vpcId&quot;: &quot;vpc-kprq42yo&quot;,    &quot;type&quot;: &quot;ORACLE&quot;}mongodb:    advanceParams(自定义参数，会拼接至url后){    &quot;advanceParams&quot;: [        {            &quot;key&quot;: &quot;authSource&quot;,            &quot;value&quot;: &quot;auth&quot;        }    ],    &quot;db&quot;: &quot;admin&quot;,    &quot;deployType&quot;: &quot;CONNSTR_PUBLICDB&quot;,    &quot;username&quot;: &quot;user&quot;,    &quot;password&quot;: &quot;example#test#123456&quot;,    &quot;type&quot;: &quot;MONGODB&quot;,    &quot;host&quot;: &quot;1.1.1.1:9200&quot;}postgresql:{    &quot;deployType&quot;: &quot;CONNSTR_PUBLICDB&quot;,    &quot;url&quot;: &quot;jdbc:postgresql://1.1.1.1:1921/example#test#123456&quot;,    &quot;username&quot;: &quot;user&quot;,    &quot;password&quot;: &quot;example#test#123456&quot;,    &quot;type&quot;: &quot;POSTGRE&quot;}kafka:    authType:        - sasl        - jaas        - sasl_plaintext        - sasl_ssl        - GSSAPI    ssl:        -PLAIN        -GSSAPI{    &quot;deployType&quot;: &quot;CONNSTR_PUBLICDB&quot;,    &quot;host&quot;: &quot;1.1.1.1:9092&quot;,    &quot;ssl&quot;: &quot;GSSAPI&quot;,    &quot;authType&quot;: &quot;sasl&quot;,    &quot;type&quot;: &quot;KAFKA&quot;,    &quot;principal&quot;: &quot;aaaa&quot;,    &quot;serviceName&quot;: &quot;kafka&quot;}cos:{    &quot;region&quot;: &quot;ap-shanghai&quot;,    &quot;deployType&quot;: &quot;INSTANCE&quot;,    &quot;secretId&quot;: &quot;aaaaa&quot;,    &quot;secretKey&quot;: &quot;example#test#123456&quot;,    &quot;bucket&quot;: &quot;aaa&quot;,    &quot;type&quot;: &quot;COS&quot;}</code></pre></p>
+        r"""<p>数据源的配置信息，以JSON KV存储，根据每个数据源类型不同，而KV存储信息不同</p><blockquote><p>deployType:<br>CONNSTR_PUBLICDB(公网实例)<br>CONNSTR_CVMDB(自建实例)<br>INSTANCE(云实例)</p></blockquote><p><pre><code>mysql: 自建实例{    &quot;deployType&quot;: &quot;CONNSTR_CVMDB&quot;,    &quot;url&quot;: &quot;jdbc:mysql://&lt;host&gt;:&lt;port&gt;/&lt;database&gt;&quot;,    &quot;username&quot;: &quot;&lt;username&gt;&quot;,    &quot;password&quot;: &quot;&lt;password&gt;&quot;,    &quot;region&quot;: &quot;ap-shanghai&quot;,    &quot;vpcId&quot;: &quot;&lt;vpcId&gt;&quot;,    &quot;type&quot;: &quot;MYSQL&quot;}mysql: 云实例{    &quot;instanceid&quot;: &quot;&lt;instanceId&gt;&quot;,    &quot;db&quot;: &quot;&lt;database&gt;&quot;,    &quot;region&quot;: &quot;ap-shanghai&quot;,    &quot;username&quot;: &quot;&lt;username&gt;&quot;,    &quot;password&quot;: &quot;&lt;password&gt;&quot;,    &quot;deployType&quot;: &quot;INSTANCE&quot;,    &quot;type&quot;: &quot;TENCENT_MYSQL&quot;}sql_server:{    &quot;deployType&quot;: &quot;CONNSTR_PUBLICDB&quot;,    &quot;url&quot;: &quot;jdbc:sqlserver://&lt;host&gt;:&lt;port&gt;;DatabaseName=&lt;database&gt;&quot;,    &quot;username&quot;: &quot;&lt;username&gt;&quot;,    &quot;password&quot;: &quot;&lt;password&gt;&quot;,    &quot;type&quot;: &quot;SQLSERVER&quot;}redis:    redisType:    -NO_ACCOUT(免账号)    -SELF_ACCOUNT(自定义账号){    &quot;deployType&quot;: &quot;CONNSTR_PUBLICDB&quot;,    &quot;username&quot;: &quot;&lt;username&gt;&quot;,    &quot;password&quot;: &quot;&lt;password&gt;&quot;,    &quot;ip&quot;: &quot;&lt;host&gt;&quot;,    &quot;port&quot;: &quot;&lt;port&gt;&quot;,    &quot;redisType&quot;: &quot;NO_ACCOUT&quot;,    &quot;type&quot;: &quot;REDIS&quot;}oracle:{    &quot;deployType&quot;: &quot;CONNSTR_CVMDB&quot;,    &quot;url&quot;: &quot;jdbc:oracle:thin:@&lt;host&gt;:&lt;port&gt;:&lt;sid&gt;&quot;,    &quot;username&quot;: &quot;&lt;username&gt;&quot;,    &quot;password&quot;: &quot;&lt;password&gt;&quot;,    &quot;region&quot;: &quot;ap-shanghai&quot;,    &quot;vpcId&quot;: &quot;&lt;vpcId&gt;&quot;,    &quot;type&quot;: &quot;ORACLE&quot;}mongodb:    advanceParams(自定义参数，会拼接至url后){    &quot;advanceParams&quot;: [        {            &quot;key&quot;: &quot;authSource&quot;,            &quot;value&quot;: &quot;admin&quot;        }    ],    &quot;db&quot;: &quot;&lt;database&gt;&quot;,    &quot;deployType&quot;: &quot;CONNSTR_PUBLICDB&quot;,    &quot;username&quot;: &quot;&lt;username&gt;&quot;,    &quot;password&quot;: &quot;&lt;password&gt;&quot;,    &quot;type&quot;: &quot;MONGODB&quot;,    &quot;host&quot;: &quot;&lt;host&gt;:&lt;port&gt;&quot;}postgresql:{    &quot;deployType&quot;: &quot;CONNSTR_PUBLICDB&quot;,    &quot;url&quot;: &quot;jdbc:postgresql://&lt;host&gt;:&lt;port&gt;/&lt;database&gt;&quot;,    &quot;username&quot;: &quot;&lt;username&gt;&quot;,    &quot;password&quot;: &quot;&lt;password&gt;&quot;,    &quot;type&quot;: &quot;POSTGRE&quot;}kafka:    authType:    - sasl    - jaas    - sasl_plaintext    - sasl_ssl    - GSSAPI    ssl:    -PLAIN    -GSSAPI{    &quot;deployType&quot;: &quot;CONNSTR_PUBLICDB&quot;,    &quot;host&quot;: &quot;&lt;host&gt;:&lt;port&gt;&quot;,    &quot;ssl&quot;: &quot;GSSAPI&quot;,    &quot;authType&quot;: &quot;sasl&quot;,    &quot;type&quot;: &quot;KAFKA&quot;,    &quot;principal&quot;: &quot;&lt;principal&gt;&quot;,    &quot;serviceName&quot;: &quot;kafka&quot;}cos:{    &quot;region&quot;: &quot;ap-shanghai&quot;,    &quot;deployType&quot;: &quot;INSTANCE&quot;,    &quot;secretId&quot;: &quot;&lt;secretId&gt;&quot;,    &quot;secretKey&quot;: &quot;&lt;secretKey&gt;&quot;,    &quot;bucket&quot;: &quot;&lt;bucket&gt;&quot;,    &quot;type&quot;: &quot;COS&quot;}</code></pre></p>
         :rtype: str
         """
         return self._ProdConProperties
@@ -25062,37 +25062,31 @@ class ListOpsWorkflowsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ProjectId: 项目Id
+        :param _ProjectId: <p>项目Id</p>
         :type ProjectId: str
-        :param _PageNumber: 分页页码
+        :param _PageNumber: <p>分页页码</p>
         :type PageNumber: int
-        :param _PageSize: 分页大小
+        :param _PageSize: <p>分页大小</p>
         :type PageSize: int
-        :param _FolderId: 文件Id
+        :param _FolderId: <p>文件Id</p>
         :type FolderId: str
-        :param _Status: 工作流状态筛选
-* ALL_RUNNING : 全部调度中
-* ALL_FREEZED : 全部已暂停
-* ALL_STOPPTED : 全部已下线
-* PART_RUNNING : 部分调度中
-* ALL_NO_RUNNING : 全部未调度
-* ALL_INVALID : 全部已失效
+        :param _Status: <p>工作流状态筛选</p><ul><li>ALL_RUNNING : 全部调度中</li><li>ALL_FREEZED : 全部已暂停</li><li>ALL_STOPPTED : 全部已下线</li><li>PART_RUNNING : 部分调度中</li><li>ALL_NO_RUNNING : 全部未调度</li><li>ALL_INVALID : 全部已失效</li></ul>
         :type Status: str
-        :param _OwnerUin: 负责人Id
+        :param _OwnerUin: <p>负责人Id</p>
         :type OwnerUin: str
-        :param _WorkflowType: 工作流类型筛选, 支持值 Cycle或Manual. 默认只查询 Cycle
+        :param _WorkflowType: <p>工作流类型筛选, 支持值 Cycle或Manual. 默认只查询 Cycle</p>
         :type WorkflowType: str
-        :param _KeyWord: 工作流关键词过滤，支持工作流 Id/name 模糊匹配
+        :param _KeyWord: <p>工作流关键词过滤，支持工作流 Id/name 模糊匹配</p>
         :type KeyWord: str
-        :param _SortItem: 排序项，可选CreateTime、TaskCount
+        :param _SortItem: <p>排序项，可选CreateTime、TaskCount</p>
         :type SortItem: str
-        :param _SortType: 排序方式，DESC或ASC, 大写
+        :param _SortType: <p>排序方式，DESC或ASC, 大写</p>
         :type SortType: str
-        :param _CreateUserUin: 创建人Id
+        :param _CreateUserUin: <p>创建人Id</p>
         :type CreateUserUin: str
-        :param _ModifyTime: 更新时间，格式yyyy-MM-dd HH:mm:ss
+        :param _ModifyTime: <p>更新时间，格式yyyy-MM-dd HH:mm:ss</p>
         :type ModifyTime: str
-        :param _CreateTime: 创建时间，格式yyyy-MM-dd HH:mm:ss
+        :param _CreateTime: <p>创建时间，格式yyyy-MM-dd HH:mm:ss</p>
         :type CreateTime: str
         """
         self._ProjectId = None
@@ -25111,7 +25105,7 @@ class ListOpsWorkflowsRequest(AbstractModel):
 
     @property
     def ProjectId(self):
-        r"""项目Id
+        r"""<p>项目Id</p>
         :rtype: str
         """
         return self._ProjectId
@@ -25122,7 +25116,7 @@ class ListOpsWorkflowsRequest(AbstractModel):
 
     @property
     def PageNumber(self):
-        r"""分页页码
+        r"""<p>分页页码</p>
         :rtype: int
         """
         return self._PageNumber
@@ -25133,7 +25127,7 @@ class ListOpsWorkflowsRequest(AbstractModel):
 
     @property
     def PageSize(self):
-        r"""分页大小
+        r"""<p>分页大小</p>
         :rtype: int
         """
         return self._PageSize
@@ -25144,7 +25138,7 @@ class ListOpsWorkflowsRequest(AbstractModel):
 
     @property
     def FolderId(self):
-        r"""文件Id
+        r"""<p>文件Id</p>
         :rtype: str
         """
         return self._FolderId
@@ -25155,13 +25149,7 @@ class ListOpsWorkflowsRequest(AbstractModel):
 
     @property
     def Status(self):
-        r"""工作流状态筛选
-* ALL_RUNNING : 全部调度中
-* ALL_FREEZED : 全部已暂停
-* ALL_STOPPTED : 全部已下线
-* PART_RUNNING : 部分调度中
-* ALL_NO_RUNNING : 全部未调度
-* ALL_INVALID : 全部已失效
+        r"""<p>工作流状态筛选</p><ul><li>ALL_RUNNING : 全部调度中</li><li>ALL_FREEZED : 全部已暂停</li><li>ALL_STOPPTED : 全部已下线</li><li>PART_RUNNING : 部分调度中</li><li>ALL_NO_RUNNING : 全部未调度</li><li>ALL_INVALID : 全部已失效</li></ul>
         :rtype: str
         """
         return self._Status
@@ -25172,7 +25160,7 @@ class ListOpsWorkflowsRequest(AbstractModel):
 
     @property
     def OwnerUin(self):
-        r"""负责人Id
+        r"""<p>负责人Id</p>
         :rtype: str
         """
         return self._OwnerUin
@@ -25183,7 +25171,7 @@ class ListOpsWorkflowsRequest(AbstractModel):
 
     @property
     def WorkflowType(self):
-        r"""工作流类型筛选, 支持值 Cycle或Manual. 默认只查询 Cycle
+        r"""<p>工作流类型筛选, 支持值 Cycle或Manual. 默认只查询 Cycle</p>
         :rtype: str
         """
         return self._WorkflowType
@@ -25194,7 +25182,7 @@ class ListOpsWorkflowsRequest(AbstractModel):
 
     @property
     def KeyWord(self):
-        r"""工作流关键词过滤，支持工作流 Id/name 模糊匹配
+        r"""<p>工作流关键词过滤，支持工作流 Id/name 模糊匹配</p>
         :rtype: str
         """
         return self._KeyWord
@@ -25205,7 +25193,7 @@ class ListOpsWorkflowsRequest(AbstractModel):
 
     @property
     def SortItem(self):
-        r"""排序项，可选CreateTime、TaskCount
+        r"""<p>排序项，可选CreateTime、TaskCount</p>
         :rtype: str
         """
         return self._SortItem
@@ -25216,7 +25204,7 @@ class ListOpsWorkflowsRequest(AbstractModel):
 
     @property
     def SortType(self):
-        r"""排序方式，DESC或ASC, 大写
+        r"""<p>排序方式，DESC或ASC, 大写</p>
         :rtype: str
         """
         return self._SortType
@@ -25227,7 +25215,7 @@ class ListOpsWorkflowsRequest(AbstractModel):
 
     @property
     def CreateUserUin(self):
-        r"""创建人Id
+        r"""<p>创建人Id</p>
         :rtype: str
         """
         return self._CreateUserUin
@@ -25238,7 +25226,7 @@ class ListOpsWorkflowsRequest(AbstractModel):
 
     @property
     def ModifyTime(self):
-        r"""更新时间，格式yyyy-MM-dd HH:mm:ss
+        r"""<p>更新时间，格式yyyy-MM-dd HH:mm:ss</p>
         :rtype: str
         """
         return self._ModifyTime
@@ -25249,7 +25237,7 @@ class ListOpsWorkflowsRequest(AbstractModel):
 
     @property
     def CreateTime(self):
-        r"""创建时间，格式yyyy-MM-dd HH:mm:ss
+        r"""<p>创建时间，格式yyyy-MM-dd HH:mm:ss</p>
         :rtype: str
         """
         return self._CreateTime
@@ -25290,7 +25278,7 @@ class ListOpsWorkflowsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Data: 工作流列表
+        :param _Data: <p>工作流列表</p>
         :type Data: :class:`tencentcloud.wedata.v20250806.models.OpsWorkflows`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -25300,7 +25288,7 @@ class ListOpsWorkflowsResponse(AbstractModel):
 
     @property
     def Data(self):
-        r"""工作流列表
+        r"""<p>工作流列表</p>
         :rtype: :class:`tencentcloud.wedata.v20250806.models.OpsWorkflows`
         """
         return self._Data
@@ -59330,134 +59318,21 @@ class UpdateDataSourceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Id: 数据源id
+        :param _Id: <p>数据源id</p>
         :type Id: int
-        :param _ProjectId: 项目id
+        :param _ProjectId: <p>项目id</p>
         :type ProjectId: str
-        :param _ProdConProperties: 数据源的配置信息，以JSON KV存储，根据每个数据源类型不同，而KV存储信息不同
-
-> deployType: 
-CONNSTR_PUBLICDB(公网实例) 
-CONNSTR_CVMDB(自建实例)
-INSTANCE(云实例)
-
-```
-mysql: 自建实例
-{
-    "deployType": "CONNSTR_CVMDB",
-    "url": "jdbc:mysql://1.1.1.1:1111/example#test#123456",
-    "username": "root",
-    "password": "example#test#123456",
-    "region": "ap-shanghai",
-    "vpcId": "vpc-kprq42yo",
-    "type": "MYSQL"
-}
-mysql: 云实例
-{
-    "instanceid": "cdb-12uxdo5e",
-    "db": "db",
-    "region": "ap-shanghai",
-    "username": "msyql",
-    "password": "example#test#123456",
-    "deployType": "INSTANCE",
-    "type": "TENCENT_MYSQL"
-}
-sql_server: 
-{
-    "deployType": "CONNSTR_PUBLICDB",
-    "url": "jdbc:sqlserver://1.1.1.1:223;example#test#123456",
-    "username": "user_1",
-    "password": "example#test#123456",
-    "type": "SQLSERVER"
-}
-redis:
-    redisType:
-    -NO_ACCOUT(免账号)
-    -SELF_ACCOUNT(自定义账号)
-{
-    "deployType": "CONNSTR_PUBLICDB",
-    "username":""
-    "password": "example#test#123456",
-    "ip": "1.1.1.1",
-    "port": "6379",
-    "redisType": "NO_ACCOUT",
-    "type": "REDIS"
-}
-oracle: 
-{
-    "deployType": "CONNSTR_CVMDB",
-    "url": "jdbc:oracle:thin:@1.1.1.1:1521:example#test#123456",
-    "username": "oracle",
-    "password": "example#test#123456",
-    "region": "ap-shanghai",
-    "vpcId": "vpc-kprq42yo",
-    "type": "ORACLE"
-}
-mongodb:
-    advanceParams(自定义参数，会拼接至url后)
-{
-    "advanceParams": [
-        {
-            "key": "authSource",
-            "value": "auth"
-        }
-    ],
-    "db": "admin",
-    "deployType": "CONNSTR_PUBLICDB",
-    "username": "user",
-    "password": "example#test#123456",
-    "type": "MONGODB",
-    "host": "1.1.1.1:9200"
-}
-postgresql:
-{
-    "deployType": "CONNSTR_PUBLICDB",
-    "url": "jdbc:postgresql://1.1.1.1:1921/example#test#123456",
-    "username": "user",
-    "password": "example#test#123456",
-    "type": "POSTGRE"
-}
-kafka:
-    authType:
-        - sasl
-        - jaas
-        - sasl_plaintext
-        - sasl_ssl
-        - GSSAPI
-    ssl:
-        -PLAIN
-        -GSSAPI
-{
-    "deployType": "CONNSTR_PUBLICDB",
-    "host": "1.1.1.1:9092",
-    "ssl": "GSSAPI",
-    "authType": "sasl",
-    "type": "KAFKA",
-    "principal": "aaaa",
-    "serviceName": "kafka"
-}
-
-cos:
-{
-    "region": "ap-shanghai",
-    "deployType": "INSTANCE",
-    "secretId": "aaaaa",
-    "secretKey": "example#test#123456",
-    "bucket": "aaa",
-    "type": "COS"
-}
-
-```
+        :param _ProdConProperties: <p>数据源的配置信息，以JSON KV存储，根据每个数据源类型不同，而KV存储信息不同</p><blockquote><p>deployType:<br>CONNSTR_PUBLICDB(公网实例)<br>CONNSTR_CVMDB(自建实例)<br>INSTANCE(云实例)</p></blockquote><p><pre><code>mysql: 自建实例{    &quot;deployType&quot;: &quot;CONNSTR_CVMDB&quot;,    &quot;url&quot;: &quot;jdbc:mysql://&lt;host&gt;:&lt;port&gt;/&lt;database&gt;&quot;,    &quot;username&quot;: &quot;&lt;username&gt;&quot;,    &quot;password&quot;: &quot;&lt;password&gt;&quot;,    &quot;region&quot;: &quot;ap-shanghai&quot;,    &quot;vpcId&quot;: &quot;&lt;vpcId&gt;&quot;,    &quot;type&quot;: &quot;MYSQL&quot;}mysql: 云实例{    &quot;instanceid&quot;: &quot;&lt;instanceId&gt;&quot;,    &quot;db&quot;: &quot;&lt;database&gt;&quot;,    &quot;region&quot;: &quot;ap-shanghai&quot;,    &quot;username&quot;: &quot;&lt;username&gt;&quot;,    &quot;password&quot;: &quot;&lt;password&gt;&quot;,    &quot;deployType&quot;: &quot;INSTANCE&quot;,    &quot;type&quot;: &quot;TENCENT_MYSQL&quot;}sql_server:{    &quot;deployType&quot;: &quot;CONNSTR_PUBLICDB&quot;,    &quot;url&quot;: &quot;jdbc:sqlserver://&lt;host&gt;:&lt;port&gt;;DatabaseName=&lt;database&gt;&quot;,    &quot;username&quot;: &quot;&lt;username&gt;&quot;,    &quot;password&quot;: &quot;&lt;password&gt;&quot;,    &quot;type&quot;: &quot;SQLSERVER&quot;}redis:    redisType:    -NO_ACCOUT(免账号)    -SELF_ACCOUNT(自定义账号){    &quot;deployType&quot;: &quot;CONNSTR_PUBLICDB&quot;,    &quot;username&quot;: &quot;&lt;username&gt;&quot;,    &quot;password&quot;: &quot;&lt;password&gt;&quot;,    &quot;ip&quot;: &quot;&lt;host&gt;&quot;,    &quot;port&quot;: &quot;&lt;port&gt;&quot;,    &quot;redisType&quot;: &quot;NO_ACCOUT&quot;,    &quot;type&quot;: &quot;REDIS&quot;}oracle:{    &quot;deployType&quot;: &quot;CONNSTR_CVMDB&quot;,    &quot;url&quot;: &quot;jdbc:oracle:thin:@&lt;host&gt;:&lt;port&gt;:&lt;sid&gt;&quot;,    &quot;username&quot;: &quot;&lt;username&gt;&quot;,    &quot;password&quot;: &quot;&lt;password&gt;&quot;,    &quot;region&quot;: &quot;ap-shanghai&quot;,    &quot;vpcId&quot;: &quot;&lt;vpcId&gt;&quot;,    &quot;type&quot;: &quot;ORACLE&quot;}mongodb:    advanceParams(自定义参数，会拼接至url后){    &quot;advanceParams&quot;: [        {            &quot;key&quot;: &quot;authSource&quot;,            &quot;value&quot;: &quot;admin&quot;        }    ],    &quot;db&quot;: &quot;&lt;database&gt;&quot;,    &quot;deployType&quot;: &quot;CONNSTR_PUBLICDB&quot;,    &quot;username&quot;: &quot;&lt;username&gt;&quot;,    &quot;password&quot;: &quot;&lt;password&gt;&quot;,    &quot;type&quot;: &quot;MONGODB&quot;,    &quot;host&quot;: &quot;&lt;host&gt;:&lt;port&gt;&quot;}postgresql:{    &quot;deployType&quot;: &quot;CONNSTR_PUBLICDB&quot;,    &quot;url&quot;: &quot;jdbc:postgresql://&lt;host&gt;:&lt;port&gt;/&lt;database&gt;&quot;,    &quot;username&quot;: &quot;&lt;username&gt;&quot;,    &quot;password&quot;: &quot;&lt;password&gt;&quot;,    &quot;type&quot;: &quot;POSTGRE&quot;}kafka:    authType:    - sasl    - jaas    - sasl_plaintext    - sasl_ssl    - GSSAPI    ssl:    -PLAIN    -GSSAPI{    &quot;deployType&quot;: &quot;CONNSTR_PUBLICDB&quot;,    &quot;host&quot;: &quot;&lt;host&gt;:&lt;port&gt;&quot;,    &quot;ssl&quot;: &quot;GSSAPI&quot;,    &quot;authType&quot;: &quot;sasl&quot;,    &quot;type&quot;: &quot;KAFKA&quot;,    &quot;principal&quot;: &quot;&lt;principal&gt;&quot;,    &quot;serviceName&quot;: &quot;kafka&quot;}cos:{    &quot;region&quot;: &quot;ap-shanghai&quot;,    &quot;deployType&quot;: &quot;INSTANCE&quot;,    &quot;secretId&quot;: &quot;&lt;secretId&gt;&quot;,    &quot;secretKey&quot;: &quot;&lt;secretKey&gt;&quot;,    &quot;bucket&quot;: &quot;&lt;bucket&gt;&quot;,    &quot;type&quot;: &quot;COS&quot;}</code></pre></p>
         :type ProdConProperties: str
-        :param _DevConProperties: 若项目为标准模式，则此字段必填
+        :param _DevConProperties: <p>若项目为标准模式，则此字段必填</p>
         :type DevConProperties: str
-        :param _ProdFileUpload: 生产环境数据源文件上传
+        :param _ProdFileUpload: <p>生产环境数据源文件上传</p>
         :type ProdFileUpload: :class:`tencentcloud.wedata.v20250806.models.DataSourceFileUpload`
-        :param _DevFileUpload: 开发环境数据源文件上传
+        :param _DevFileUpload: <p>开发环境数据源文件上传</p>
         :type DevFileUpload: :class:`tencentcloud.wedata.v20250806.models.DataSourceFileUpload`
-        :param _DisplayName: 数据源展示名，为了可视化查看
+        :param _DisplayName: <p>数据源展示名，为了可视化查看</p>
         :type DisplayName: str
-        :param _Description: 数据源描述信息
+        :param _Description: <p>数据源描述信息</p>
         :type Description: str
         """
         self._Id = None
@@ -59471,7 +59346,7 @@ cos:
 
     @property
     def Id(self):
-        r"""数据源id
+        r"""<p>数据源id</p>
         :rtype: int
         """
         return self._Id
@@ -59482,7 +59357,7 @@ cos:
 
     @property
     def ProjectId(self):
-        r"""项目id
+        r"""<p>项目id</p>
         :rtype: str
         """
         return self._ProjectId
@@ -59493,120 +59368,7 @@ cos:
 
     @property
     def ProdConProperties(self):
-        r"""数据源的配置信息，以JSON KV存储，根据每个数据源类型不同，而KV存储信息不同
-
-> deployType: 
-CONNSTR_PUBLICDB(公网实例) 
-CONNSTR_CVMDB(自建实例)
-INSTANCE(云实例)
-
-```
-mysql: 自建实例
-{
-    "deployType": "CONNSTR_CVMDB",
-    "url": "jdbc:mysql://1.1.1.1:1111/example#test#123456",
-    "username": "root",
-    "password": "example#test#123456",
-    "region": "ap-shanghai",
-    "vpcId": "vpc-kprq42yo",
-    "type": "MYSQL"
-}
-mysql: 云实例
-{
-    "instanceid": "cdb-12uxdo5e",
-    "db": "db",
-    "region": "ap-shanghai",
-    "username": "msyql",
-    "password": "example#test#123456",
-    "deployType": "INSTANCE",
-    "type": "TENCENT_MYSQL"
-}
-sql_server: 
-{
-    "deployType": "CONNSTR_PUBLICDB",
-    "url": "jdbc:sqlserver://1.1.1.1:223;example#test#123456",
-    "username": "user_1",
-    "password": "example#test#123456",
-    "type": "SQLSERVER"
-}
-redis:
-    redisType:
-    -NO_ACCOUT(免账号)
-    -SELF_ACCOUNT(自定义账号)
-{
-    "deployType": "CONNSTR_PUBLICDB",
-    "username":""
-    "password": "example#test#123456",
-    "ip": "1.1.1.1",
-    "port": "6379",
-    "redisType": "NO_ACCOUT",
-    "type": "REDIS"
-}
-oracle: 
-{
-    "deployType": "CONNSTR_CVMDB",
-    "url": "jdbc:oracle:thin:@1.1.1.1:1521:example#test#123456",
-    "username": "oracle",
-    "password": "example#test#123456",
-    "region": "ap-shanghai",
-    "vpcId": "vpc-kprq42yo",
-    "type": "ORACLE"
-}
-mongodb:
-    advanceParams(自定义参数，会拼接至url后)
-{
-    "advanceParams": [
-        {
-            "key": "authSource",
-            "value": "auth"
-        }
-    ],
-    "db": "admin",
-    "deployType": "CONNSTR_PUBLICDB",
-    "username": "user",
-    "password": "example#test#123456",
-    "type": "MONGODB",
-    "host": "1.1.1.1:9200"
-}
-postgresql:
-{
-    "deployType": "CONNSTR_PUBLICDB",
-    "url": "jdbc:postgresql://1.1.1.1:1921/example#test#123456",
-    "username": "user",
-    "password": "example#test#123456",
-    "type": "POSTGRE"
-}
-kafka:
-    authType:
-        - sasl
-        - jaas
-        - sasl_plaintext
-        - sasl_ssl
-        - GSSAPI
-    ssl:
-        -PLAIN
-        -GSSAPI
-{
-    "deployType": "CONNSTR_PUBLICDB",
-    "host": "1.1.1.1:9092",
-    "ssl": "GSSAPI",
-    "authType": "sasl",
-    "type": "KAFKA",
-    "principal": "aaaa",
-    "serviceName": "kafka"
-}
-
-cos:
-{
-    "region": "ap-shanghai",
-    "deployType": "INSTANCE",
-    "secretId": "aaaaa",
-    "secretKey": "example#test#123456",
-    "bucket": "aaa",
-    "type": "COS"
-}
-
-```
+        r"""<p>数据源的配置信息，以JSON KV存储，根据每个数据源类型不同，而KV存储信息不同</p><blockquote><p>deployType:<br>CONNSTR_PUBLICDB(公网实例)<br>CONNSTR_CVMDB(自建实例)<br>INSTANCE(云实例)</p></blockquote><p><pre><code>mysql: 自建实例{    &quot;deployType&quot;: &quot;CONNSTR_CVMDB&quot;,    &quot;url&quot;: &quot;jdbc:mysql://&lt;host&gt;:&lt;port&gt;/&lt;database&gt;&quot;,    &quot;username&quot;: &quot;&lt;username&gt;&quot;,    &quot;password&quot;: &quot;&lt;password&gt;&quot;,    &quot;region&quot;: &quot;ap-shanghai&quot;,    &quot;vpcId&quot;: &quot;&lt;vpcId&gt;&quot;,    &quot;type&quot;: &quot;MYSQL&quot;}mysql: 云实例{    &quot;instanceid&quot;: &quot;&lt;instanceId&gt;&quot;,    &quot;db&quot;: &quot;&lt;database&gt;&quot;,    &quot;region&quot;: &quot;ap-shanghai&quot;,    &quot;username&quot;: &quot;&lt;username&gt;&quot;,    &quot;password&quot;: &quot;&lt;password&gt;&quot;,    &quot;deployType&quot;: &quot;INSTANCE&quot;,    &quot;type&quot;: &quot;TENCENT_MYSQL&quot;}sql_server:{    &quot;deployType&quot;: &quot;CONNSTR_PUBLICDB&quot;,    &quot;url&quot;: &quot;jdbc:sqlserver://&lt;host&gt;:&lt;port&gt;;DatabaseName=&lt;database&gt;&quot;,    &quot;username&quot;: &quot;&lt;username&gt;&quot;,    &quot;password&quot;: &quot;&lt;password&gt;&quot;,    &quot;type&quot;: &quot;SQLSERVER&quot;}redis:    redisType:    -NO_ACCOUT(免账号)    -SELF_ACCOUNT(自定义账号){    &quot;deployType&quot;: &quot;CONNSTR_PUBLICDB&quot;,    &quot;username&quot;: &quot;&lt;username&gt;&quot;,    &quot;password&quot;: &quot;&lt;password&gt;&quot;,    &quot;ip&quot;: &quot;&lt;host&gt;&quot;,    &quot;port&quot;: &quot;&lt;port&gt;&quot;,    &quot;redisType&quot;: &quot;NO_ACCOUT&quot;,    &quot;type&quot;: &quot;REDIS&quot;}oracle:{    &quot;deployType&quot;: &quot;CONNSTR_CVMDB&quot;,    &quot;url&quot;: &quot;jdbc:oracle:thin:@&lt;host&gt;:&lt;port&gt;:&lt;sid&gt;&quot;,    &quot;username&quot;: &quot;&lt;username&gt;&quot;,    &quot;password&quot;: &quot;&lt;password&gt;&quot;,    &quot;region&quot;: &quot;ap-shanghai&quot;,    &quot;vpcId&quot;: &quot;&lt;vpcId&gt;&quot;,    &quot;type&quot;: &quot;ORACLE&quot;}mongodb:    advanceParams(自定义参数，会拼接至url后){    &quot;advanceParams&quot;: [        {            &quot;key&quot;: &quot;authSource&quot;,            &quot;value&quot;: &quot;admin&quot;        }    ],    &quot;db&quot;: &quot;&lt;database&gt;&quot;,    &quot;deployType&quot;: &quot;CONNSTR_PUBLICDB&quot;,    &quot;username&quot;: &quot;&lt;username&gt;&quot;,    &quot;password&quot;: &quot;&lt;password&gt;&quot;,    &quot;type&quot;: &quot;MONGODB&quot;,    &quot;host&quot;: &quot;&lt;host&gt;:&lt;port&gt;&quot;}postgresql:{    &quot;deployType&quot;: &quot;CONNSTR_PUBLICDB&quot;,    &quot;url&quot;: &quot;jdbc:postgresql://&lt;host&gt;:&lt;port&gt;/&lt;database&gt;&quot;,    &quot;username&quot;: &quot;&lt;username&gt;&quot;,    &quot;password&quot;: &quot;&lt;password&gt;&quot;,    &quot;type&quot;: &quot;POSTGRE&quot;}kafka:    authType:    - sasl    - jaas    - sasl_plaintext    - sasl_ssl    - GSSAPI    ssl:    -PLAIN    -GSSAPI{    &quot;deployType&quot;: &quot;CONNSTR_PUBLICDB&quot;,    &quot;host&quot;: &quot;&lt;host&gt;:&lt;port&gt;&quot;,    &quot;ssl&quot;: &quot;GSSAPI&quot;,    &quot;authType&quot;: &quot;sasl&quot;,    &quot;type&quot;: &quot;KAFKA&quot;,    &quot;principal&quot;: &quot;&lt;principal&gt;&quot;,    &quot;serviceName&quot;: &quot;kafka&quot;}cos:{    &quot;region&quot;: &quot;ap-shanghai&quot;,    &quot;deployType&quot;: &quot;INSTANCE&quot;,    &quot;secretId&quot;: &quot;&lt;secretId&gt;&quot;,    &quot;secretKey&quot;: &quot;&lt;secretKey&gt;&quot;,    &quot;bucket&quot;: &quot;&lt;bucket&gt;&quot;,    &quot;type&quot;: &quot;COS&quot;}</code></pre></p>
         :rtype: str
         """
         return self._ProdConProperties
@@ -59617,7 +59379,7 @@ cos:
 
     @property
     def DevConProperties(self):
-        r"""若项目为标准模式，则此字段必填
+        r"""<p>若项目为标准模式，则此字段必填</p>
         :rtype: str
         """
         return self._DevConProperties
@@ -59628,7 +59390,7 @@ cos:
 
     @property
     def ProdFileUpload(self):
-        r"""生产环境数据源文件上传
+        r"""<p>生产环境数据源文件上传</p>
         :rtype: :class:`tencentcloud.wedata.v20250806.models.DataSourceFileUpload`
         """
         return self._ProdFileUpload
@@ -59639,7 +59401,7 @@ cos:
 
     @property
     def DevFileUpload(self):
-        r"""开发环境数据源文件上传
+        r"""<p>开发环境数据源文件上传</p>
         :rtype: :class:`tencentcloud.wedata.v20250806.models.DataSourceFileUpload`
         """
         return self._DevFileUpload
@@ -59650,7 +59412,7 @@ cos:
 
     @property
     def DisplayName(self):
-        r"""数据源展示名，为了可视化查看
+        r"""<p>数据源展示名，为了可视化查看</p>
         :rtype: str
         """
         return self._DisplayName
@@ -59661,7 +59423,7 @@ cos:
 
     @property
     def Description(self):
-        r"""数据源描述信息
+        r"""<p>数据源描述信息</p>
         :rtype: str
         """
         return self._Description
@@ -59701,7 +59463,7 @@ class UpdateDataSourceResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Data: 操作是否成功
+        :param _Data: <p>操作是否成功</p>
         :type Data: :class:`tencentcloud.wedata.v20250806.models.DataSourceStatus`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -59711,7 +59473,7 @@ class UpdateDataSourceResponse(AbstractModel):
 
     @property
     def Data(self):
-        r"""操作是否成功
+        r"""<p>操作是否成功</p>
         :rtype: :class:`tencentcloud.wedata.v20250806.models.DataSourceStatus`
         """
         return self._Data

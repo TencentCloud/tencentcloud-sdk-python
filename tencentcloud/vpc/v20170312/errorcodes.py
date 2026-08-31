@@ -944,6 +944,9 @@ UNSUPPORTEDOPERATION_CCNNOTENABLEBROADCASTPOLICY = 'UnsupportedOperation.CcnNotE
 # 添加 community 时，vpg 需要开通传播 community 白名单
 UNSUPPORTEDOPERATION_CCNNOTENABLECOMMUNITY = 'UnsupportedOperation.CcnNotEnableCommunity'
 
+# 未开启云联网AsPath策略值功能
+UNSUPPORTEDOPERATION_CCNNOTENABLEPOLICYASPATHFLAG = 'UnsupportedOperation.CcnNotEnablePolicyAsPathFlag'
+
 # 云联网未开启策略路由开关
 UNSUPPORTEDOPERATION_CCNNOTENABLEPOLICYBASEDROUTINGFLAG = 'UnsupportedOperation.CcnNotEnablePolicyBasedRoutingFlag'
 
@@ -1276,6 +1279,9 @@ UNSUPPORTEDOPERATION_NOTSUPPORTATTACHEDGEANDCROSSBORDERINSTANCE = 'UnsupportedOp
 
 # 没有开启多路由表特性，不能创建用户路由表。
 UNSUPPORTEDOPERATION_NOTSUPPORTCREATECCNROUTETABLE = 'UnsupportedOperation.NotSupportCreateCcnRouteTable'
+
+# 不支持创建跨域对等连接
+UNSUPPORTEDOPERATION_NOTSUPPORTCREATECROSSREGIONVPCPEER = 'UnsupportedOperation.NotSupportCreateCrossRegionVpcPeer'
 
 # 当前操作不支持创建Ipv6类型VPN网关。
 UNSUPPORTEDOPERATION_NOTSUPPORTCREATEIPV6VPNGATEWAY = 'UnsupportedOperation.NotSupportCreateIpv6VpnGateway'

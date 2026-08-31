@@ -119,6 +119,24 @@ class ThpcClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateScheduledAction(
+            self,
+            request: models.CreateScheduledActionRequest,
+            opts: Dict = None,
+    ) -> models.CreateScheduledActionResponse:
+        """
+        为指定集群队列创建定时伸缩任务，按计划时间自动调整队列的节点数量。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateScheduledAction"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateScheduledActionResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateWorkspaces(
             self,
             request: models.CreateWorkspacesRequest,
@@ -230,6 +248,24 @@ class ThpcClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DeleteScheduledAction(
+            self,
+            request: models.DeleteScheduledActionRequest,
+            opts: Dict = None,
+    ) -> models.DeleteScheduledActionResponse:
+        """
+        删除指定的定时伸缩任务。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteScheduledAction"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteScheduledActionResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeAutoScalingConfiguration(
             self,
             request: models.DescribeAutoScalingConfigurationRequest,
@@ -320,6 +356,24 @@ class ThpcClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeInstanceFamilies(
+            self,
+            request: models.DescribeInstanceFamiliesRequest,
+            opts: Dict = None,
+    ) -> models.DescribeInstanceFamiliesResponse:
+        """
+        查询指定集群可用的机型族列表，用于弹性伸缩配置时选择机型族。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeInstanceFamilies"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeInstanceFamiliesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeJobSubmitInfo(
             self,
             request: models.DescribeJobSubmitInfoRequest,
@@ -392,6 +446,42 @@ class ThpcClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeQueueAutoScaling(
+            self,
+            request: models.DescribeQueueAutoScalingRequest,
+            opts: Dict = None,
+    ) -> models.DescribeQueueAutoScalingResponse:
+        """
+        查询指定集群的队列弹性伸缩配置信息。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeQueueAutoScaling"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeQueueAutoScalingResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeQueueAutoScalingOverview(
+            self,
+            request: models.DescribeQueueAutoScalingOverviewRequest,
+            opts: Dict = None,
+    ) -> models.DescribeQueueAutoScalingOverviewResponse:
+        """
+        查询指定集群的队列弹性伸缩概览信息，包括期望容量、当前容量、当前动态节点数、有效定时任务数等。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeQueueAutoScalingOverview"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeQueueAutoScalingOverviewResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeQueues(
             self,
             request: models.DescribeQueuesRequest,
@@ -405,6 +495,24 @@ class ThpcClient(AbstractClient):
         kwargs["action"] = "DescribeQueues"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeQueuesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeScheduledActions(
+            self,
+            request: models.DescribeScheduledActionsRequest,
+            opts: Dict = None,
+    ) -> models.DescribeScheduledActionsResponse:
+        """
+        查询指定集群队列的定时伸缩任务列表。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeScheduledActions"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeScheduledActionsResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -441,6 +549,24 @@ class ThpcClient(AbstractClient):
         kwargs["action"] = "DetachNodes"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DetachNodesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def InquirePriceCreateWorkspaces(
+            self,
+            request: models.InquirePriceCreateWorkspacesRequest,
+            opts: Dict = None,
+    ) -> models.InquirePriceCreateWorkspacesResponse:
+        """
+        本接口(InquirePriceCreateWorkspaces)用于创建实例询价。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "InquirePriceCreateWorkspaces"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.InquirePriceCreateWorkspacesResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -518,6 +644,24 @@ class ThpcClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def ModifyScheduledAction(
+            self,
+            request: models.ModifyScheduledActionRequest,
+            opts: Dict = None,
+    ) -> models.ModifyScheduledActionResponse:
+        """
+        修改指定的定时伸缩任务配置。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyScheduledAction"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyScheduledActionResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ModifyWorkspacesAttribute(
             self,
             request: models.ModifyWorkspacesAttributeRequest,
@@ -585,6 +729,24 @@ class ThpcClient(AbstractClient):
         kwargs["action"] = "SetAutoScalingConfiguration"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.SetAutoScalingConfigurationResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def SetQueueAutoScaling(
+            self,
+            request: models.SetQueueAutoScalingRequest,
+            opts: Dict = None,
+    ) -> models.SetQueueAutoScalingResponse:
+        """
+        为指定集群的队列配置弹性伸缩策略，包括伸缩容量、扩容方式等。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "SetQueueAutoScaling"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.SetQueueAutoScalingResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

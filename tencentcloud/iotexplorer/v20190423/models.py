@@ -11835,7 +11835,7 @@ class DeleteTWeSeeTasksByConditionRequest(AbstractModel):
         :type ProductId: str
         :param _DeviceName: <p>设备名称</p>
         :type DeviceName: str
-        :param _ServiceCategory: <p>算法类目。</p><p>枚举值：</p><ul><li>COMPREHENSION： 视觉理解</li><li>HIGHLIGHT： 视频浓缩</li></ul>
+        :param _ServiceCategory: <p>算法类目。</p><p>枚举值：</p><ul><li>COMPREHENSION： 视觉理解</li><li>HIGHLIGHT： 视频浓缩</li><li>SUMMARIZATION： 每日/每周总结</li></ul>
         :type ServiceCategory: str
         :param _Conditions: <p>任务删除条件，至少传入一个条件。不同条件之间为 AND 关系，同一条件的 Values 之间为 OR 关系。</p>
         :type Conditions: list of SeeDeleteTaskCondition
@@ -11872,7 +11872,7 @@ class DeleteTWeSeeTasksByConditionRequest(AbstractModel):
 
     @property
     def ServiceCategory(self):
-        r"""<p>算法类目。</p><p>枚举值：</p><ul><li>COMPREHENSION： 视觉理解</li><li>HIGHLIGHT： 视频浓缩</li></ul>
+        r"""<p>算法类目。</p><p>枚举值：</p><ul><li>COMPREHENSION： 视觉理解</li><li>HIGHLIGHT： 视频浓缩</li><li>SUMMARIZATION： 每日/每周总结</li></ul>
         :rtype: str
         """
         return self._ServiceCategory
@@ -21083,15 +21083,13 @@ class DescribeTWeSeeSubscriptionRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ProductId: 产品 ID
+        :param _ProductId: <p>产品 ID</p>
         :type ProductId: str
-        :param _DeviceName: 设备名称
+        :param _DeviceName: <p>设备名称</p>
         :type DeviceName: str
-        :param _ServiceType: 算法类型。可选值：
-
-- `VID_COMP`：视频理解
+        :param _ServiceType: <p>算法类型。可选值：</p><ul><li><code>VID_COMP</code>：视频理解</li></ul>
         :type ServiceType: str
-        :param _ChannelId: 通道 ID
+        :param _ChannelId: <p>通道 ID</p>
         :type ChannelId: int
         """
         self._ProductId = None
@@ -21101,7 +21099,7 @@ class DescribeTWeSeeSubscriptionRequest(AbstractModel):
 
     @property
     def ProductId(self):
-        r"""产品 ID
+        r"""<p>产品 ID</p>
         :rtype: str
         """
         return self._ProductId
@@ -21112,7 +21110,7 @@ class DescribeTWeSeeSubscriptionRequest(AbstractModel):
 
     @property
     def DeviceName(self):
-        r"""设备名称
+        r"""<p>设备名称</p>
         :rtype: str
         """
         return self._DeviceName
@@ -21123,9 +21121,7 @@ class DescribeTWeSeeSubscriptionRequest(AbstractModel):
 
     @property
     def ServiceType(self):
-        r"""算法类型。可选值：
-
-- `VID_COMP`：视频理解
+        r"""<p>算法类型。可选值：</p><ul><li><code>VID_COMP</code>：视频理解</li></ul>
         :rtype: str
         """
         return self._ServiceType
@@ -21136,7 +21132,7 @@ class DescribeTWeSeeSubscriptionRequest(AbstractModel):
 
     @property
     def ChannelId(self):
-        r"""通道 ID
+        r"""<p>通道 ID</p>
         :rtype: int
         """
         return self._ChannelId
@@ -21168,36 +21164,33 @@ class DescribeTWeSeeSubscriptionResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ResourceId: 资源 ID
+        :param _ResourceId: <p>资源 ID</p>
         :type ResourceId: str
-        :param _ServiceTier: 套餐规格。可能取值：
-
-- `BASIC`：包年包月基础版（适用于视频理解）
+        :param _ServiceTier: <p>套餐规格。可能取值：</p><ul><li><code>BASIC</code>：包年包月基础版（适用于视频理解）</li></ul>
         :type ServiceTier: str
-        :param _ExpireTime: 到期时间，秒级时间戳
+        :param _ExpireTime: <p>到期时间，秒级时间戳</p>
         :type ExpireTime: int
-        :param _Enabled: 启用状态，`true` 为开启，`false` 为关闭
+        :param _Enabled: <p>启用状态，<code>true</code> 为开启，<code>false</code> 为关闭</p>
         :type Enabled: bool
-        :param _Status: 订阅状态。可能取值：
-
-- `NORMAL`：正常
-- `ISOLATED`：隔离
+        :param _Status: <p>订阅状态。可能取值：</p><ul><li><code>NORMAL</code>：正常</li><li><code>ISOLATED</code>：隔离</li></ul>
         :type Status: str
-        :param _ComprehensionConfig: 视觉理解配置（适用于视频理解、图片理解）
+        :param _ComprehensionConfig: <p>视觉理解配置（适用于视频理解、图片理解）</p>
         :type ComprehensionConfig: :class:`tencentcloud.iotexplorer.v20190423.models.SeeComprehensionConfig`
-        :param _CompHighlightConfig: 视频语义浓缩配置（适用于视频语义浓缩）
+        :param _CompHighlightConfig: <p>视频语义浓缩配置（适用于视频语义浓缩）</p>
         :type CompHighlightConfig: :class:`tencentcloud.iotexplorer.v20190423.models.SeeCompHighlightConfig`
-        :param _EventIdFilterConfig: 云存事件 ID 过滤规则配置项
+        :param _EventIdFilterConfig: <p>云存事件 ID 过滤规则配置项</p>
         :type EventIdFilterConfig: :class:`tencentcloud.iotexplorer.v20190423.models.SeeEventIdFilterConfig`
-        :param _QuotaBasic: 当前周期基础能力总额度
+        :param _SummarizeConfig: <p>每日与每周总结配置</p>
+        :type SummarizeConfig: :class:`tencentcloud.iotexplorer.v20190423.models.SeeSummarizeConfig`
+        :param _QuotaBasic: <p>当前周期基础能力总额度</p>
         :type QuotaBasic: int
-        :param _QuotaUsedBasic: 当前周期基础能力已用额度
+        :param _QuotaUsedBasic: <p>当前周期基础能力已用额度</p>
         :type QuotaUsedBasic: int
-        :param _QuotaAdvanced: 当前周期高级能力总额度
+        :param _QuotaAdvanced: <p>当前周期高级能力总额度</p>
         :type QuotaAdvanced: int
-        :param _QuotaUsedAdvanced: 当前周期高级能力已用额度
+        :param _QuotaUsedAdvanced: <p>当前周期高级能力已用额度</p>
         :type QuotaUsedAdvanced: int
-        :param _QuotaRefreshTime: 额度刷新时间
+        :param _QuotaRefreshTime: <p>额度刷新时间</p>
         :type QuotaRefreshTime: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -21210,6 +21203,7 @@ class DescribeTWeSeeSubscriptionResponse(AbstractModel):
         self._ComprehensionConfig = None
         self._CompHighlightConfig = None
         self._EventIdFilterConfig = None
+        self._SummarizeConfig = None
         self._QuotaBasic = None
         self._QuotaUsedBasic = None
         self._QuotaAdvanced = None
@@ -21219,7 +21213,7 @@ class DescribeTWeSeeSubscriptionResponse(AbstractModel):
 
     @property
     def ResourceId(self):
-        r"""资源 ID
+        r"""<p>资源 ID</p>
         :rtype: str
         """
         return self._ResourceId
@@ -21230,9 +21224,7 @@ class DescribeTWeSeeSubscriptionResponse(AbstractModel):
 
     @property
     def ServiceTier(self):
-        r"""套餐规格。可能取值：
-
-- `BASIC`：包年包月基础版（适用于视频理解）
+        r"""<p>套餐规格。可能取值：</p><ul><li><code>BASIC</code>：包年包月基础版（适用于视频理解）</li></ul>
         :rtype: str
         """
         return self._ServiceTier
@@ -21243,7 +21235,7 @@ class DescribeTWeSeeSubscriptionResponse(AbstractModel):
 
     @property
     def ExpireTime(self):
-        r"""到期时间，秒级时间戳
+        r"""<p>到期时间，秒级时间戳</p>
         :rtype: int
         """
         return self._ExpireTime
@@ -21254,7 +21246,7 @@ class DescribeTWeSeeSubscriptionResponse(AbstractModel):
 
     @property
     def Enabled(self):
-        r"""启用状态，`true` 为开启，`false` 为关闭
+        r"""<p>启用状态，<code>true</code> 为开启，<code>false</code> 为关闭</p>
         :rtype: bool
         """
         return self._Enabled
@@ -21265,10 +21257,7 @@ class DescribeTWeSeeSubscriptionResponse(AbstractModel):
 
     @property
     def Status(self):
-        r"""订阅状态。可能取值：
-
-- `NORMAL`：正常
-- `ISOLATED`：隔离
+        r"""<p>订阅状态。可能取值：</p><ul><li><code>NORMAL</code>：正常</li><li><code>ISOLATED</code>：隔离</li></ul>
         :rtype: str
         """
         return self._Status
@@ -21279,7 +21268,7 @@ class DescribeTWeSeeSubscriptionResponse(AbstractModel):
 
     @property
     def ComprehensionConfig(self):
-        r"""视觉理解配置（适用于视频理解、图片理解）
+        r"""<p>视觉理解配置（适用于视频理解、图片理解）</p>
         :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.SeeComprehensionConfig`
         """
         return self._ComprehensionConfig
@@ -21290,7 +21279,7 @@ class DescribeTWeSeeSubscriptionResponse(AbstractModel):
 
     @property
     def CompHighlightConfig(self):
-        r"""视频语义浓缩配置（适用于视频语义浓缩）
+        r"""<p>视频语义浓缩配置（适用于视频语义浓缩）</p>
         :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.SeeCompHighlightConfig`
         """
         return self._CompHighlightConfig
@@ -21301,7 +21290,7 @@ class DescribeTWeSeeSubscriptionResponse(AbstractModel):
 
     @property
     def EventIdFilterConfig(self):
-        r"""云存事件 ID 过滤规则配置项
+        r"""<p>云存事件 ID 过滤规则配置项</p>
         :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.SeeEventIdFilterConfig`
         """
         return self._EventIdFilterConfig
@@ -21311,8 +21300,19 @@ class DescribeTWeSeeSubscriptionResponse(AbstractModel):
         self._EventIdFilterConfig = EventIdFilterConfig
 
     @property
+    def SummarizeConfig(self):
+        r"""<p>每日与每周总结配置</p>
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.SeeSummarizeConfig`
+        """
+        return self._SummarizeConfig
+
+    @SummarizeConfig.setter
+    def SummarizeConfig(self, SummarizeConfig):
+        self._SummarizeConfig = SummarizeConfig
+
+    @property
     def QuotaBasic(self):
-        r"""当前周期基础能力总额度
+        r"""<p>当前周期基础能力总额度</p>
         :rtype: int
         """
         return self._QuotaBasic
@@ -21323,7 +21323,7 @@ class DescribeTWeSeeSubscriptionResponse(AbstractModel):
 
     @property
     def QuotaUsedBasic(self):
-        r"""当前周期基础能力已用额度
+        r"""<p>当前周期基础能力已用额度</p>
         :rtype: int
         """
         return self._QuotaUsedBasic
@@ -21334,7 +21334,7 @@ class DescribeTWeSeeSubscriptionResponse(AbstractModel):
 
     @property
     def QuotaAdvanced(self):
-        r"""当前周期高级能力总额度
+        r"""<p>当前周期高级能力总额度</p>
         :rtype: int
         """
         return self._QuotaAdvanced
@@ -21345,7 +21345,7 @@ class DescribeTWeSeeSubscriptionResponse(AbstractModel):
 
     @property
     def QuotaUsedAdvanced(self):
-        r"""当前周期高级能力已用额度
+        r"""<p>当前周期高级能力已用额度</p>
         :rtype: int
         """
         return self._QuotaUsedAdvanced
@@ -21356,7 +21356,7 @@ class DescribeTWeSeeSubscriptionResponse(AbstractModel):
 
     @property
     def QuotaRefreshTime(self):
-        r"""额度刷新时间
+        r"""<p>额度刷新时间</p>
         :rtype: int
         """
         return self._QuotaRefreshTime
@@ -21392,6 +21392,9 @@ class DescribeTWeSeeSubscriptionResponse(AbstractModel):
         if params.get("EventIdFilterConfig") is not None:
             self._EventIdFilterConfig = SeeEventIdFilterConfig()
             self._EventIdFilterConfig._deserialize(params.get("EventIdFilterConfig"))
+        if params.get("SummarizeConfig") is not None:
+            self._SummarizeConfig = SeeSummarizeConfig()
+            self._SummarizeConfig._deserialize(params.get("SummarizeConfig"))
         self._QuotaBasic = params.get("QuotaBasic")
         self._QuotaUsedBasic = params.get("QuotaUsedBasic")
         self._QuotaAdvanced = params.get("QuotaAdvanced")
@@ -21407,14 +21410,17 @@ class DescribeTWeSeeTaskRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskId: 任务 ID
+        :param _TaskId: <p>任务 ID</p>
         :type TaskId: str
+        :param _FileURLExpireTime: <p>下载 URL 的过期时间（秒级 UNIX 时间戳）。若传入该参数，则响应中将包含所有文件的下载 URL</p><p>单位：秒</p>
+        :type FileURLExpireTime: int
         """
         self._TaskId = None
+        self._FileURLExpireTime = None
 
     @property
     def TaskId(self):
-        r"""任务 ID
+        r"""<p>任务 ID</p>
         :rtype: str
         """
         return self._TaskId
@@ -21423,9 +21429,21 @@ class DescribeTWeSeeTaskRequest(AbstractModel):
     def TaskId(self, TaskId):
         self._TaskId = TaskId
 
+    @property
+    def FileURLExpireTime(self):
+        r"""<p>下载 URL 的过期时间（秒级 UNIX 时间戳）。若传入该参数，则响应中将包含所有文件的下载 URL</p><p>单位：秒</p>
+        :rtype: int
+        """
+        return self._FileURLExpireTime
+
+    @FileURLExpireTime.setter
+    def FileURLExpireTime(self, FileURLExpireTime):
+        self._FileURLExpireTime = FileURLExpireTime
+
 
     def _deserialize(self, params):
         self._TaskId = params.get("TaskId")
+        self._FileURLExpireTime = params.get("FileURLExpireTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -21443,7 +21461,7 @@ class DescribeTWeSeeTaskResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskInfo: 任务信息
+        :param _TaskInfo: <p>任务信息</p>
         :type TaskInfo: :class:`tencentcloud.iotexplorer.v20190423.models.SeeTaskInfo`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -21453,7 +21471,7 @@ class DescribeTWeSeeTaskResponse(AbstractModel):
 
     @property
     def TaskInfo(self):
-        r"""任务信息
+        r"""<p>任务信息</p>
         :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.SeeTaskInfo`
         """
         return self._TaskInfo
@@ -33306,54 +33324,43 @@ class ListTWeSeeTasksRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ProductId: <p>产品 ID</p>
-        :type ProductId: str
         :param _DeviceName: <p>设备名称</p>
         :type DeviceName: str
-        :param _ServiceCategory: <p>算法类目。可选值：</p><ul><li><code>COMPREHENSION</code>：视觉理解</li><li><code>HIGHLIGHT</code>：视频浓缩</li></ul>
-        :type ServiceCategory: str
         :param _Limit: <p>分页拉取数量</p>
         :type Limit: int
-        :param _Offset: <p>分页拉取偏移</p>
-        :type Offset: int
-        :param _ServiceTypes: <p>算法类型。</p><p>当 ServiceCategory 为 <code>COMPREHENSION</code> 时，可选值包括：</p><ul><li><code>VID_COMP</code>：视频理解</li><li><code>IMG_COMP</code>：图片理解</li><li><code>CONT_PERSON_MOTIONLESS</code>：静姿检测</li></ul><p>当 ServiceCategory 为 <code>HIGHLIGHT</code> 时，可选值包括：</p><ul><li><code>COMP_HIGHLIGHT</code>：视频浓缩</li></ul>
-        :type ServiceTypes: list of str
+        :param _ProductId: <p>产品 ID</p>
+        :type ProductId: str
+        :param _ServiceCategory: <p>算法类目。可选值：</p><ul><li><code>COMPREHENSION</code>：视觉理解</li><li><code>HIGHLIGHT</code>：视频浓缩</li><li><code>SUMMARIZATION</code>：每日/每周总结</li></ul>
+        :type ServiceCategory: str
         :param _ChannelId: <p>通道 ID</p>
         :type ChannelId: int
-        :param _StartTimeMs: <p>查询任务时间范围的起始时间（毫秒级 UNIX 时间戳）。不传则不生效时间范围条件。</p>
-        :type StartTimeMs: int
         :param _EndTimeMs: <p>查询任务时间范围的结束时间（毫秒级 UNIX 时间戳）。不传则不生效时间范围条件。</p>
         :type EndTimeMs: int
-        :param _Status: <p>要查询的任务的状态条件。不传则不按照状态过滤，可选值：</p><ul><li><code>1</code>：失败</li><li><code>2</code>：空结果</li><li><code>3</code>：有效结果</li></ul>
-        :type Status: int
         :param _FileURLExpireTime: <p>下载 URL 的过期时间（秒级 UNIX 时间戳）。若传入该参数，则响应中将包含所有文件的下载 URL</p>
         :type FileURLExpireTime: int
         :param _Filters: <p>任务结果过滤条件</p>
         :type Filters: list of VisionRecognitionTaskFilter
+        :param _Offset: <p>分页拉取偏移</p>
+        :type Offset: int
+        :param _ServiceTypes: <p>算法类型。</p><p>当 ServiceCategory 为 <code>COMPREHENSION</code> 时，可选值包括：</p><ul><li><code>VID_COMP</code>：视频理解</li><li><code>IMG_COMP</code>：图片理解</li><li><code>CONT_PERSON_MOTIONLESS</code>：静姿检测</li></ul><p>当 ServiceCategory 为 <code>HIGHLIGHT</code> 时，可选值包括：</p><ul><li><code>COMP_HIGHLIGHT</code>：视频浓缩</li></ul><p>当 ServiceCategory 为 <code>SUMMARIZATION</code> 时，可选值包括：</p><ul><li><code>DAILY_SUM</code>：每日总结</li><li><code>WEEKLY_SUM</code>：每周总结</li></ul>
+        :type ServiceTypes: list of str
+        :param _StartTimeMs: <p>查询任务时间范围的起始时间（毫秒级 UNIX 时间戳）。不传则不生效时间范围条件。</p>
+        :type StartTimeMs: int
+        :param _Status: <p>要查询的任务的状态条件。不传则不按照状态过滤，可选值：</p><ul><li><code>1</code>：失败</li><li><code>2</code>：空结果</li><li><code>3</code>：有效结果</li></ul>
+        :type Status: int
         """
-        self._ProductId = None
         self._DeviceName = None
-        self._ServiceCategory = None
         self._Limit = None
-        self._Offset = None
-        self._ServiceTypes = None
+        self._ProductId = None
+        self._ServiceCategory = None
         self._ChannelId = None
-        self._StartTimeMs = None
         self._EndTimeMs = None
-        self._Status = None
         self._FileURLExpireTime = None
         self._Filters = None
-
-    @property
-    def ProductId(self):
-        r"""<p>产品 ID</p>
-        :rtype: str
-        """
-        return self._ProductId
-
-    @ProductId.setter
-    def ProductId(self, ProductId):
-        self._ProductId = ProductId
+        self._Offset = None
+        self._ServiceTypes = None
+        self._StartTimeMs = None
+        self._Status = None
 
     @property
     def DeviceName(self):
@@ -33367,17 +33374,6 @@ class ListTWeSeeTasksRequest(AbstractModel):
         self._DeviceName = DeviceName
 
     @property
-    def ServiceCategory(self):
-        r"""<p>算法类目。可选值：</p><ul><li><code>COMPREHENSION</code>：视觉理解</li><li><code>HIGHLIGHT</code>：视频浓缩</li></ul>
-        :rtype: str
-        """
-        return self._ServiceCategory
-
-    @ServiceCategory.setter
-    def ServiceCategory(self, ServiceCategory):
-        self._ServiceCategory = ServiceCategory
-
-    @property
     def Limit(self):
         r"""<p>分页拉取数量</p>
         :rtype: int
@@ -33389,26 +33385,26 @@ class ListTWeSeeTasksRequest(AbstractModel):
         self._Limit = Limit
 
     @property
-    def Offset(self):
-        r"""<p>分页拉取偏移</p>
-        :rtype: int
+    def ProductId(self):
+        r"""<p>产品 ID</p>
+        :rtype: str
         """
-        return self._Offset
+        return self._ProductId
 
-    @Offset.setter
-    def Offset(self, Offset):
-        self._Offset = Offset
+    @ProductId.setter
+    def ProductId(self, ProductId):
+        self._ProductId = ProductId
 
     @property
-    def ServiceTypes(self):
-        r"""<p>算法类型。</p><p>当 ServiceCategory 为 <code>COMPREHENSION</code> 时，可选值包括：</p><ul><li><code>VID_COMP</code>：视频理解</li><li><code>IMG_COMP</code>：图片理解</li><li><code>CONT_PERSON_MOTIONLESS</code>：静姿检测</li></ul><p>当 ServiceCategory 为 <code>HIGHLIGHT</code> 时，可选值包括：</p><ul><li><code>COMP_HIGHLIGHT</code>：视频浓缩</li></ul>
-        :rtype: list of str
+    def ServiceCategory(self):
+        r"""<p>算法类目。可选值：</p><ul><li><code>COMPREHENSION</code>：视觉理解</li><li><code>HIGHLIGHT</code>：视频浓缩</li><li><code>SUMMARIZATION</code>：每日/每周总结</li></ul>
+        :rtype: str
         """
-        return self._ServiceTypes
+        return self._ServiceCategory
 
-    @ServiceTypes.setter
-    def ServiceTypes(self, ServiceTypes):
-        self._ServiceTypes = ServiceTypes
+    @ServiceCategory.setter
+    def ServiceCategory(self, ServiceCategory):
+        self._ServiceCategory = ServiceCategory
 
     @property
     def ChannelId(self):
@@ -33422,17 +33418,6 @@ class ListTWeSeeTasksRequest(AbstractModel):
         self._ChannelId = ChannelId
 
     @property
-    def StartTimeMs(self):
-        r"""<p>查询任务时间范围的起始时间（毫秒级 UNIX 时间戳）。不传则不生效时间范围条件。</p>
-        :rtype: int
-        """
-        return self._StartTimeMs
-
-    @StartTimeMs.setter
-    def StartTimeMs(self, StartTimeMs):
-        self._StartTimeMs = StartTimeMs
-
-    @property
     def EndTimeMs(self):
         r"""<p>查询任务时间范围的结束时间（毫秒级 UNIX 时间戳）。不传则不生效时间范围条件。</p>
         :rtype: int
@@ -33442,17 +33427,6 @@ class ListTWeSeeTasksRequest(AbstractModel):
     @EndTimeMs.setter
     def EndTimeMs(self, EndTimeMs):
         self._EndTimeMs = EndTimeMs
-
-    @property
-    def Status(self):
-        r"""<p>要查询的任务的状态条件。不传则不按照状态过滤，可选值：</p><ul><li><code>1</code>：失败</li><li><code>2</code>：空结果</li><li><code>3</code>：有效结果</li></ul>
-        :rtype: int
-        """
-        return self._Status
-
-    @Status.setter
-    def Status(self, Status):
-        self._Status = Status
 
     @property
     def FileURLExpireTime(self):
@@ -33476,18 +33450,58 @@ class ListTWeSeeTasksRequest(AbstractModel):
     def Filters(self, Filters):
         self._Filters = Filters
 
+    @property
+    def Offset(self):
+        r"""<p>分页拉取偏移</p>
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def ServiceTypes(self):
+        r"""<p>算法类型。</p><p>当 ServiceCategory 为 <code>COMPREHENSION</code> 时，可选值包括：</p><ul><li><code>VID_COMP</code>：视频理解</li><li><code>IMG_COMP</code>：图片理解</li><li><code>CONT_PERSON_MOTIONLESS</code>：静姿检测</li></ul><p>当 ServiceCategory 为 <code>HIGHLIGHT</code> 时，可选值包括：</p><ul><li><code>COMP_HIGHLIGHT</code>：视频浓缩</li></ul><p>当 ServiceCategory 为 <code>SUMMARIZATION</code> 时，可选值包括：</p><ul><li><code>DAILY_SUM</code>：每日总结</li><li><code>WEEKLY_SUM</code>：每周总结</li></ul>
+        :rtype: list of str
+        """
+        return self._ServiceTypes
+
+    @ServiceTypes.setter
+    def ServiceTypes(self, ServiceTypes):
+        self._ServiceTypes = ServiceTypes
+
+    @property
+    def StartTimeMs(self):
+        r"""<p>查询任务时间范围的起始时间（毫秒级 UNIX 时间戳）。不传则不生效时间范围条件。</p>
+        :rtype: int
+        """
+        return self._StartTimeMs
+
+    @StartTimeMs.setter
+    def StartTimeMs(self, StartTimeMs):
+        self._StartTimeMs = StartTimeMs
+
+    @property
+    def Status(self):
+        r"""<p>要查询的任务的状态条件。不传则不按照状态过滤，可选值：</p><ul><li><code>1</code>：失败</li><li><code>2</code>：空结果</li><li><code>3</code>：有效结果</li></ul>
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
 
     def _deserialize(self, params):
-        self._ProductId = params.get("ProductId")
         self._DeviceName = params.get("DeviceName")
-        self._ServiceCategory = params.get("ServiceCategory")
         self._Limit = params.get("Limit")
-        self._Offset = params.get("Offset")
-        self._ServiceTypes = params.get("ServiceTypes")
+        self._ProductId = params.get("ProductId")
+        self._ServiceCategory = params.get("ServiceCategory")
         self._ChannelId = params.get("ChannelId")
-        self._StartTimeMs = params.get("StartTimeMs")
         self._EndTimeMs = params.get("EndTimeMs")
-        self._Status = params.get("Status")
         self._FileURLExpireTime = params.get("FileURLExpireTime")
         if params.get("Filters") is not None:
             self._Filters = []
@@ -33495,6 +33509,10 @@ class ListTWeSeeTasksRequest(AbstractModel):
                 obj = VisionRecognitionTaskFilter()
                 obj._deserialize(item)
                 self._Filters.append(obj)
+        self._Offset = params.get("Offset")
+        self._ServiceTypes = params.get("ServiceTypes")
+        self._StartTimeMs = params.get("StartTimeMs")
+        self._Status = params.get("Status")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -36693,44 +36711,36 @@ class ModifyTWeSeeSubscriptionRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ProductId: 产品 ID
-        :type ProductId: str
         :param _DeviceName: 设备名称
         :type DeviceName: str
+        :param _ProductId: 产品 ID
+        :type ProductId: str
         :param _ServiceType: 算法类型。可选值：
 
 - `VID_COMP`：视频理解
         :type ServiceType: str
         :param _ChannelId: 通道 ID
         :type ChannelId: int
-        :param _Enabled: 功能开关。`true` 为开启，`false` 为关闭；不传表示不修改
-        :type Enabled: bool
-        :param _ComprehensionConfig: 视觉理解配置（适用于视频理解、图片理解），不传则不修改
-        :type ComprehensionConfig: :class:`tencentcloud.iotexplorer.v20190423.models.SeeComprehensionConfig`
         :param _CompHighlightConfig: 视频语义浓缩配置（适用于视频语义浓缩），不传则不修改
         :type CompHighlightConfig: :class:`tencentcloud.iotexplorer.v20190423.models.SeeCompHighlightConfig`
+        :param _ComprehensionConfig: 视觉理解配置（适用于视频理解、图片理解），不传则不修改
+        :type ComprehensionConfig: :class:`tencentcloud.iotexplorer.v20190423.models.SeeComprehensionConfig`
+        :param _Enabled: 功能开关。`true` 为开启，`false` 为关闭；不传表示不修改
+        :type Enabled: bool
         :param _EventIdFilterConfig: 云存事件 ID 过滤规则配置，不传则不修改
         :type EventIdFilterConfig: :class:`tencentcloud.iotexplorer.v20190423.models.SeeEventIdFilterConfig`
+        :param _SummarizeConfig: 每日与每周总结配置，不传则不修改
+        :type SummarizeConfig: :class:`tencentcloud.iotexplorer.v20190423.models.SeeSummarizeConfig`
         """
-        self._ProductId = None
         self._DeviceName = None
+        self._ProductId = None
         self._ServiceType = None
         self._ChannelId = None
-        self._Enabled = None
-        self._ComprehensionConfig = None
         self._CompHighlightConfig = None
+        self._ComprehensionConfig = None
+        self._Enabled = None
         self._EventIdFilterConfig = None
-
-    @property
-    def ProductId(self):
-        r"""产品 ID
-        :rtype: str
-        """
-        return self._ProductId
-
-    @ProductId.setter
-    def ProductId(self, ProductId):
-        self._ProductId = ProductId
+        self._SummarizeConfig = None
 
     @property
     def DeviceName(self):
@@ -36742,6 +36752,17 @@ class ModifyTWeSeeSubscriptionRequest(AbstractModel):
     @DeviceName.setter
     def DeviceName(self, DeviceName):
         self._DeviceName = DeviceName
+
+    @property
+    def ProductId(self):
+        r"""产品 ID
+        :rtype: str
+        """
+        return self._ProductId
+
+    @ProductId.setter
+    def ProductId(self, ProductId):
+        self._ProductId = ProductId
 
     @property
     def ServiceType(self):
@@ -36768,15 +36789,15 @@ class ModifyTWeSeeSubscriptionRequest(AbstractModel):
         self._ChannelId = ChannelId
 
     @property
-    def Enabled(self):
-        r"""功能开关。`true` 为开启，`false` 为关闭；不传表示不修改
-        :rtype: bool
+    def CompHighlightConfig(self):
+        r"""视频语义浓缩配置（适用于视频语义浓缩），不传则不修改
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.SeeCompHighlightConfig`
         """
-        return self._Enabled
+        return self._CompHighlightConfig
 
-    @Enabled.setter
-    def Enabled(self, Enabled):
-        self._Enabled = Enabled
+    @CompHighlightConfig.setter
+    def CompHighlightConfig(self, CompHighlightConfig):
+        self._CompHighlightConfig = CompHighlightConfig
 
     @property
     def ComprehensionConfig(self):
@@ -36790,15 +36811,15 @@ class ModifyTWeSeeSubscriptionRequest(AbstractModel):
         self._ComprehensionConfig = ComprehensionConfig
 
     @property
-    def CompHighlightConfig(self):
-        r"""视频语义浓缩配置（适用于视频语义浓缩），不传则不修改
-        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.SeeCompHighlightConfig`
+    def Enabled(self):
+        r"""功能开关。`true` 为开启，`false` 为关闭；不传表示不修改
+        :rtype: bool
         """
-        return self._CompHighlightConfig
+        return self._Enabled
 
-    @CompHighlightConfig.setter
-    def CompHighlightConfig(self, CompHighlightConfig):
-        self._CompHighlightConfig = CompHighlightConfig
+    @Enabled.setter
+    def Enabled(self, Enabled):
+        self._Enabled = Enabled
 
     @property
     def EventIdFilterConfig(self):
@@ -36811,22 +36832,36 @@ class ModifyTWeSeeSubscriptionRequest(AbstractModel):
     def EventIdFilterConfig(self, EventIdFilterConfig):
         self._EventIdFilterConfig = EventIdFilterConfig
 
+    @property
+    def SummarizeConfig(self):
+        r"""每日与每周总结配置，不传则不修改
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.SeeSummarizeConfig`
+        """
+        return self._SummarizeConfig
+
+    @SummarizeConfig.setter
+    def SummarizeConfig(self, SummarizeConfig):
+        self._SummarizeConfig = SummarizeConfig
+
 
     def _deserialize(self, params):
-        self._ProductId = params.get("ProductId")
         self._DeviceName = params.get("DeviceName")
+        self._ProductId = params.get("ProductId")
         self._ServiceType = params.get("ServiceType")
         self._ChannelId = params.get("ChannelId")
-        self._Enabled = params.get("Enabled")
-        if params.get("ComprehensionConfig") is not None:
-            self._ComprehensionConfig = SeeComprehensionConfig()
-            self._ComprehensionConfig._deserialize(params.get("ComprehensionConfig"))
         if params.get("CompHighlightConfig") is not None:
             self._CompHighlightConfig = SeeCompHighlightConfig()
             self._CompHighlightConfig._deserialize(params.get("CompHighlightConfig"))
+        if params.get("ComprehensionConfig") is not None:
+            self._ComprehensionConfig = SeeComprehensionConfig()
+            self._ComprehensionConfig._deserialize(params.get("ComprehensionConfig"))
+        self._Enabled = params.get("Enabled")
         if params.get("EventIdFilterConfig") is not None:
             self._EventIdFilterConfig = SeeEventIdFilterConfig()
             self._EventIdFilterConfig._deserialize(params.get("EventIdFilterConfig"))
+        if params.get("SummarizeConfig") is not None:
+            self._SummarizeConfig = SeeSummarizeConfig()
+            self._SummarizeConfig._deserialize(params.get("SummarizeConfig"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -43020,6 +43055,108 @@ class SeeStatItem(AbstractModel):
         
 
 
+class SeeSummarizeConfig(AbstractModel):
+    r"""TWeSee 每日与每周总结配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EnableDailySummary: 是否开启每日总结
+        :type EnableDailySummary: bool
+        :param _EnableWeeklySummary: 是否开启每周总结
+        :type EnableWeeklySummary: bool
+        :param _SummaryVerbosity: <p>生成总结的详细程度</p><p>枚举值：</p><ul><li>low： 精简</li><li>medium： 概要（默认值）</li></ul>
+        :type SummaryVerbosity: str
+        """
+        self._EnableDailySummary = None
+        self._EnableWeeklySummary = None
+        self._SummaryVerbosity = None
+
+    @property
+    def EnableDailySummary(self):
+        r"""是否开启每日总结
+        :rtype: bool
+        """
+        return self._EnableDailySummary
+
+    @EnableDailySummary.setter
+    def EnableDailySummary(self, EnableDailySummary):
+        self._EnableDailySummary = EnableDailySummary
+
+    @property
+    def EnableWeeklySummary(self):
+        r"""是否开启每周总结
+        :rtype: bool
+        """
+        return self._EnableWeeklySummary
+
+    @EnableWeeklySummary.setter
+    def EnableWeeklySummary(self, EnableWeeklySummary):
+        self._EnableWeeklySummary = EnableWeeklySummary
+
+    @property
+    def SummaryVerbosity(self):
+        r"""<p>生成总结的详细程度</p><p>枚举值：</p><ul><li>low： 精简</li><li>medium： 概要（默认值）</li></ul>
+        :rtype: str
+        """
+        return self._SummaryVerbosity
+
+    @SummaryVerbosity.setter
+    def SummaryVerbosity(self, SummaryVerbosity):
+        self._SummaryVerbosity = SummaryVerbosity
+
+
+    def _deserialize(self, params):
+        self._EnableDailySummary = params.get("EnableDailySummary")
+        self._EnableWeeklySummary = params.get("EnableWeeklySummary")
+        self._SummaryVerbosity = params.get("SummaryVerbosity")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SeeSummarizeResult(AbstractModel):
+    r"""TWeSee 每日或每周总结结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Summary: 总结文本
+        :type Summary: str
+        """
+        self._Summary = None
+
+    @property
+    def Summary(self):
+        r"""总结文本
+        :rtype: str
+        """
+        return self._Summary
+
+    @Summary.setter
+    def Summary(self, Summary):
+        self._Summary = Summary
+
+
+    def _deserialize(self, params):
+        self._Summary = params.get("Summary")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class SeeTaskFaceInfo(AbstractModel):
     r"""TWeSee 任务人脸元数据
 
@@ -43114,9 +43251,9 @@ class SeeTaskInfo(AbstractModel):
         :type Status: int
         :param _Metadata: <p>任务元数据</p>
         :type Metadata: :class:`tencentcloud.iotexplorer.v20190423.models.SeeTaskMetadata`
-        :param _ServiceCategory: <p>算法类目。可能取值：</p><ul><li><code>COMPREHENSION</code>：视觉理解</li><li><code>HIGHLIGHT</code>：视频浓缩</li></ul>
+        :param _ServiceCategory: <p>算法类目。</p><p>枚举值：</p><ul><li>COMPREHENSION： 视觉理解</li><li>HIGHLIGHT： 视频浓缩</li><li>SUMMARIZATION： 每日/每周总结</li></ul>
         :type ServiceCategory: str
-        :param _ServiceType: <p>算法类型。可能取值：</p><ul><li><code>VID_COMP</code>：视频理解</li><li><code>IMG_COMP</code>：图片理解</li><li><code>COMP_HIGHLIGHT</code>：视频浓缩</li></ul>
+        :param _ServiceType: <p>算法类型。</p><p>枚举值：</p><ul><li>VID_COMP： 视频理解</li><li>IMG_COMP： 图片理解</li><li>COMP_HIGHLIGHT： 视频浓缩</li><li>DAILY_SUM： 每日总结</li><li>WEEKLY_SUM： 每周总结</li></ul>
         :type ServiceType: str
         :param _ServiceTier: <p>套餐规格。可能取值：</p><ul><li><code>POSTPAID</code>：后付费（适用于视频理解、图片理解）</li><li><code>BASIC</code>：包年包月基础版（适用于视频理解）</li></ul>
         :type ServiceTier: str
@@ -43128,6 +43265,8 @@ class SeeTaskInfo(AbstractModel):
         :type DetectContinuousResult: :class:`tencentcloud.iotexplorer.v20190423.models.SeeDetectContinuousResult`
         :param _FaceRecognitionResult: <p>人脸检测结果</p>
         :type FaceRecognitionResult: :class:`tencentcloud.iotexplorer.v20190423.models.SeeFaceRecognitionResult`
+        :param _SummarizeResult: <p>每日或每周总结结果</p>
+        :type SummarizeResult: :class:`tencentcloud.iotexplorer.v20190423.models.SeeSummarizeResult`
         :param _CostBasic: <p>完成该任务所消耗的基础能力额度</p>
         :type CostBasic: int
         :param _CostAdvanced: <p>完成该任务所消耗的高级能力额度</p>
@@ -43153,6 +43292,7 @@ class SeeTaskInfo(AbstractModel):
         self._CompHighlightResult = None
         self._DetectContinuousResult = None
         self._FaceRecognitionResult = None
+        self._SummarizeResult = None
         self._CostBasic = None
         self._CostAdvanced = None
         self._Files = None
@@ -43196,7 +43336,7 @@ class SeeTaskInfo(AbstractModel):
 
     @property
     def ServiceCategory(self):
-        r"""<p>算法类目。可能取值：</p><ul><li><code>COMPREHENSION</code>：视觉理解</li><li><code>HIGHLIGHT</code>：视频浓缩</li></ul>
+        r"""<p>算法类目。</p><p>枚举值：</p><ul><li>COMPREHENSION： 视觉理解</li><li>HIGHLIGHT： 视频浓缩</li><li>SUMMARIZATION： 每日/每周总结</li></ul>
         :rtype: str
         """
         return self._ServiceCategory
@@ -43207,7 +43347,7 @@ class SeeTaskInfo(AbstractModel):
 
     @property
     def ServiceType(self):
-        r"""<p>算法类型。可能取值：</p><ul><li><code>VID_COMP</code>：视频理解</li><li><code>IMG_COMP</code>：图片理解</li><li><code>COMP_HIGHLIGHT</code>：视频浓缩</li></ul>
+        r"""<p>算法类型。</p><p>枚举值：</p><ul><li>VID_COMP： 视频理解</li><li>IMG_COMP： 图片理解</li><li>COMP_HIGHLIGHT： 视频浓缩</li><li>DAILY_SUM： 每日总结</li><li>WEEKLY_SUM： 每周总结</li></ul>
         :rtype: str
         """
         return self._ServiceType
@@ -43270,6 +43410,17 @@ class SeeTaskInfo(AbstractModel):
     @FaceRecognitionResult.setter
     def FaceRecognitionResult(self, FaceRecognitionResult):
         self._FaceRecognitionResult = FaceRecognitionResult
+
+    @property
+    def SummarizeResult(self):
+        r"""<p>每日或每周总结结果</p>
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.SeeSummarizeResult`
+        """
+        return self._SummarizeResult
+
+    @SummarizeResult.setter
+    def SummarizeResult(self, SummarizeResult):
+        self._SummarizeResult = SummarizeResult
 
     @property
     def CostBasic(self):
@@ -43370,6 +43521,9 @@ class SeeTaskInfo(AbstractModel):
         if params.get("FaceRecognitionResult") is not None:
             self._FaceRecognitionResult = SeeFaceRecognitionResult()
             self._FaceRecognitionResult._deserialize(params.get("FaceRecognitionResult"))
+        if params.get("SummarizeResult") is not None:
+            self._SummarizeResult = SeeSummarizeResult()
+            self._SummarizeResult._deserialize(params.get("SummarizeResult"))
         self._CostBasic = params.get("CostBasic")
         self._CostAdvanced = params.get("CostAdvanced")
         self._Files = params.get("Files")

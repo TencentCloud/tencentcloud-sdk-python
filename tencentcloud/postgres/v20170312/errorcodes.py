@@ -257,6 +257,9 @@ INTERNALERROR_CNSERROR = 'InternalError.CnsError'
 # 后台DB执行错误。
 INTERNALERROR_DBERROR = 'InternalError.DBError'
 
+# 数据库访问异常，请检查连接后重试
+INTERNALERROR_DATABASEACCESSERROR = 'InternalError.DatabaseAccessError'
+
 # DFW相关错误。
 INTERNALERROR_DFWERROR = 'InternalError.DfwError'
 

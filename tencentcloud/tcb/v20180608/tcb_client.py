@@ -2050,6 +2050,29 @@ class TcbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyEnvExtra(self, request):
+        r"""修改环境额外配置
+
+        :param request: Request instance for ModifyEnvExtra.
+        :type request: :class:`tencentcloud.tcb.v20180608.models.ModifyEnvExtraRequest`
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.ModifyEnvExtraResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyEnvExtra", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyEnvExtraResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyEnvPlan(self, request):
         r"""本接口用于变更云开发环境套餐。
         该接口会自动下单并支付，会在腾讯云账户中扣除余额（余额不足会下单失败）。

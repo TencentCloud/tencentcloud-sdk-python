@@ -210,6 +210,29 @@ class IoaClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DeleteAccountGroupResources(self, request):
+        r"""删除账户组资源授权，私有化调用path为：capi/NGN/DeleteAccountGroupResources
+
+        :param request: Request instance for DeleteAccountGroupResources.
+        :type request: :class:`tencentcloud.ioa.v20220601.models.DeleteAccountGroupResourcesRequest`
+        :rtype: :class:`tencentcloud.ioa.v20220601.models.DeleteAccountGroupResourcesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteAccountGroupResources", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteAccountGroupResourcesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DeleteDeviceVirtualGroup(self, request):
         r"""删除终端自定义分组，私有化调用path为：/capi/Assets/Device/DeleteDeviceVirtualGroup
 

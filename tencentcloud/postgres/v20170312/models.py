@@ -2714,6 +2714,115 @@ class CloseDBExtranetAccessResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CloseDBProxyAddressRequest(AbstractModel):
+    r"""CloseDBProxyAddress请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DBInstanceId: <p>实例 ID，指定要关闭代理地址的目标实例</p>
+        :type DBInstanceId: str
+        :param _AddressId: <p>代理地址 ID，指定要关闭（删除）的代理地址</p>
+        :type AddressId: str
+        :param _ProxyGroupId: <p>代理组 ID。不传则按实例自动查找其默认代理组</p>
+        :type ProxyGroupId: str
+        """
+        self._DBInstanceId = None
+        self._AddressId = None
+        self._ProxyGroupId = None
+
+    @property
+    def DBInstanceId(self):
+        r"""<p>实例 ID，指定要关闭代理地址的目标实例</p>
+        :rtype: str
+        """
+        return self._DBInstanceId
+
+    @DBInstanceId.setter
+    def DBInstanceId(self, DBInstanceId):
+        self._DBInstanceId = DBInstanceId
+
+    @property
+    def AddressId(self):
+        r"""<p>代理地址 ID，指定要关闭（删除）的代理地址</p>
+        :rtype: str
+        """
+        return self._AddressId
+
+    @AddressId.setter
+    def AddressId(self, AddressId):
+        self._AddressId = AddressId
+
+    @property
+    def ProxyGroupId(self):
+        r"""<p>代理组 ID。不传则按实例自动查找其默认代理组</p>
+        :rtype: str
+        """
+        return self._ProxyGroupId
+
+    @ProxyGroupId.setter
+    def ProxyGroupId(self, ProxyGroupId):
+        self._ProxyGroupId = ProxyGroupId
+
+
+    def _deserialize(self, params):
+        self._DBInstanceId = params.get("DBInstanceId")
+        self._AddressId = params.get("AddressId")
+        self._ProxyGroupId = params.get("ProxyGroupId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CloseDBProxyAddressResponse(AbstractModel):
+    r"""CloseDBProxyAddress返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: <p>异步任务 ID，可通过 DescribeFlow 查询任务进度</p>
+        :type TaskId: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        r"""<p>异步任务 ID，可通过 DescribeFlow 查询任务进度</p>
+        :rtype: int
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
+
+
 class CreateAccountRequest(AbstractModel):
     r"""CreateAccount请求参数结构体
 
@@ -3412,6 +3521,285 @@ class CreateDBInstanceNetworkAccessResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._FlowId = params.get("FlowId")
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
+
+
+class CreateDBProxyAddressRequest(AbstractModel):
+    r"""CreateDBProxyAddress请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DBInstanceId: <p>实例 ID，指定要创建代理地址的目标实例</p>
+        :type DBInstanceId: str
+        :param _VpcId: <p>VPC ID，代理地址所属的私有网络</p>
+        :type VpcId: str
+        :param _SubnetId: <p>子网 ID，代理地址所属的子网</p>
+        :type SubnetId: str
+        :param _ProxyGroupId: <p>代理组 ID。不传则按实例自动查找其默认代理组</p>
+        :type ProxyGroupId: str
+        :param _SecurityGroup: <p>安全组 ID 列表，用于代理地址的网络安全控制</p>
+        :type SecurityGroup: list of str
+        :param _Description: <p>代理地址备注信息，最长 256 个字符</p>
+        :type Description: str
+        :param _ConnectionPool: <p>连接池开关。true：开启连接池；false：关闭连接池</p>
+        :type ConnectionPool: bool
+        :param _WeightMode: <p>权重模式。取值：<ul><li>system：系统自动分配权重</li><li>custom：手动指定权重，需配合 ProxyAllocation 参数使用</li></ul></p>
+        :type WeightMode: str
+        :param _ProxyAllocation: <p>路由权重列表。WeightMode 为 custom 时必填。若WeightMode传system或不传 ，则传入的权重不生效，由系统分配默认权重。</p>
+        :type ProxyAllocation: list of ProxyRoute
+        :param _RoAutoAdd: <p>是否自动将新增的只读实例加入读写分离。true：自动加入；false：不自动加入</p>
+        :type RoAutoAdd: bool
+        :param _LatencyRemove: <p>延迟剔除开关。true：开启延迟剔除，当只读实例延迟超过阈值时自动剔除路由；false：关闭延迟剔除。开启时 LatencyRemoveTime 必填</p>
+        :type LatencyRemove: bool
+        :param _LatencyRemoveTime: <p>延迟剔除阈值，单位秒，取值范围 [1, 10000]。LatencyRemove 为 true 时必填</p>
+        :type LatencyRemoveTime: int
+        :param _MinRouteNum: <p>最小路由节点数，取值范围 [0, 256]。用于防止延迟剔除将所有节点剔除后的兜底策略</p>
+        :type MinRouteNum: int
+        :param _LoadBalancePolicy: <p>负载均衡策略</p><p>枚举值：</p><ul><li>0： 按活跃连接数(默认)</li><li>1： 按请求数</li></ul>
+        :type LoadBalancePolicy: int
+        """
+        self._DBInstanceId = None
+        self._VpcId = None
+        self._SubnetId = None
+        self._ProxyGroupId = None
+        self._SecurityGroup = None
+        self._Description = None
+        self._ConnectionPool = None
+        self._WeightMode = None
+        self._ProxyAllocation = None
+        self._RoAutoAdd = None
+        self._LatencyRemove = None
+        self._LatencyRemoveTime = None
+        self._MinRouteNum = None
+        self._LoadBalancePolicy = None
+
+    @property
+    def DBInstanceId(self):
+        r"""<p>实例 ID，指定要创建代理地址的目标实例</p>
+        :rtype: str
+        """
+        return self._DBInstanceId
+
+    @DBInstanceId.setter
+    def DBInstanceId(self, DBInstanceId):
+        self._DBInstanceId = DBInstanceId
+
+    @property
+    def VpcId(self):
+        r"""<p>VPC ID，代理地址所属的私有网络</p>
+        :rtype: str
+        """
+        return self._VpcId
+
+    @VpcId.setter
+    def VpcId(self, VpcId):
+        self._VpcId = VpcId
+
+    @property
+    def SubnetId(self):
+        r"""<p>子网 ID，代理地址所属的子网</p>
+        :rtype: str
+        """
+        return self._SubnetId
+
+    @SubnetId.setter
+    def SubnetId(self, SubnetId):
+        self._SubnetId = SubnetId
+
+    @property
+    def ProxyGroupId(self):
+        r"""<p>代理组 ID。不传则按实例自动查找其默认代理组</p>
+        :rtype: str
+        """
+        return self._ProxyGroupId
+
+    @ProxyGroupId.setter
+    def ProxyGroupId(self, ProxyGroupId):
+        self._ProxyGroupId = ProxyGroupId
+
+    @property
+    def SecurityGroup(self):
+        r"""<p>安全组 ID 列表，用于代理地址的网络安全控制</p>
+        :rtype: list of str
+        """
+        return self._SecurityGroup
+
+    @SecurityGroup.setter
+    def SecurityGroup(self, SecurityGroup):
+        self._SecurityGroup = SecurityGroup
+
+    @property
+    def Description(self):
+        r"""<p>代理地址备注信息，最长 256 个字符</p>
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def ConnectionPool(self):
+        r"""<p>连接池开关。true：开启连接池；false：关闭连接池</p>
+        :rtype: bool
+        """
+        return self._ConnectionPool
+
+    @ConnectionPool.setter
+    def ConnectionPool(self, ConnectionPool):
+        self._ConnectionPool = ConnectionPool
+
+    @property
+    def WeightMode(self):
+        r"""<p>权重模式。取值：<ul><li>system：系统自动分配权重</li><li>custom：手动指定权重，需配合 ProxyAllocation 参数使用</li></ul></p>
+        :rtype: str
+        """
+        return self._WeightMode
+
+    @WeightMode.setter
+    def WeightMode(self, WeightMode):
+        self._WeightMode = WeightMode
+
+    @property
+    def ProxyAllocation(self):
+        r"""<p>路由权重列表。WeightMode 为 custom 时必填。若WeightMode传system或不传 ，则传入的权重不生效，由系统分配默认权重。</p>
+        :rtype: list of ProxyRoute
+        """
+        return self._ProxyAllocation
+
+    @ProxyAllocation.setter
+    def ProxyAllocation(self, ProxyAllocation):
+        self._ProxyAllocation = ProxyAllocation
+
+    @property
+    def RoAutoAdd(self):
+        r"""<p>是否自动将新增的只读实例加入读写分离。true：自动加入；false：不自动加入</p>
+        :rtype: bool
+        """
+        return self._RoAutoAdd
+
+    @RoAutoAdd.setter
+    def RoAutoAdd(self, RoAutoAdd):
+        self._RoAutoAdd = RoAutoAdd
+
+    @property
+    def LatencyRemove(self):
+        r"""<p>延迟剔除开关。true：开启延迟剔除，当只读实例延迟超过阈值时自动剔除路由；false：关闭延迟剔除。开启时 LatencyRemoveTime 必填</p>
+        :rtype: bool
+        """
+        return self._LatencyRemove
+
+    @LatencyRemove.setter
+    def LatencyRemove(self, LatencyRemove):
+        self._LatencyRemove = LatencyRemove
+
+    @property
+    def LatencyRemoveTime(self):
+        r"""<p>延迟剔除阈值，单位秒，取值范围 [1, 10000]。LatencyRemove 为 true 时必填</p>
+        :rtype: int
+        """
+        return self._LatencyRemoveTime
+
+    @LatencyRemoveTime.setter
+    def LatencyRemoveTime(self, LatencyRemoveTime):
+        self._LatencyRemoveTime = LatencyRemoveTime
+
+    @property
+    def MinRouteNum(self):
+        r"""<p>最小路由节点数，取值范围 [0, 256]。用于防止延迟剔除将所有节点剔除后的兜底策略</p>
+        :rtype: int
+        """
+        return self._MinRouteNum
+
+    @MinRouteNum.setter
+    def MinRouteNum(self, MinRouteNum):
+        self._MinRouteNum = MinRouteNum
+
+    @property
+    def LoadBalancePolicy(self):
+        r"""<p>负载均衡策略</p><p>枚举值：</p><ul><li>0： 按活跃连接数(默认)</li><li>1： 按请求数</li></ul>
+        :rtype: int
+        """
+        return self._LoadBalancePolicy
+
+    @LoadBalancePolicy.setter
+    def LoadBalancePolicy(self, LoadBalancePolicy):
+        self._LoadBalancePolicy = LoadBalancePolicy
+
+
+    def _deserialize(self, params):
+        self._DBInstanceId = params.get("DBInstanceId")
+        self._VpcId = params.get("VpcId")
+        self._SubnetId = params.get("SubnetId")
+        self._ProxyGroupId = params.get("ProxyGroupId")
+        self._SecurityGroup = params.get("SecurityGroup")
+        self._Description = params.get("Description")
+        self._ConnectionPool = params.get("ConnectionPool")
+        self._WeightMode = params.get("WeightMode")
+        if params.get("ProxyAllocation") is not None:
+            self._ProxyAllocation = []
+            for item in params.get("ProxyAllocation"):
+                obj = ProxyRoute()
+                obj._deserialize(item)
+                self._ProxyAllocation.append(obj)
+        self._RoAutoAdd = params.get("RoAutoAdd")
+        self._LatencyRemove = params.get("LatencyRemove")
+        self._LatencyRemoveTime = params.get("LatencyRemoveTime")
+        self._MinRouteNum = params.get("MinRouteNum")
+        self._LoadBalancePolicy = params.get("LoadBalancePolicy")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateDBProxyAddressResponse(AbstractModel):
+    r"""CreateDBProxyAddress返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: <p>异步任务 ID。可通过 DescribeTasks 接口查询任务执行进度</p>
+        :type TaskId: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        r"""<p>异步任务 ID。可通过 DescribeTasks 接口查询任务执行进度</p>
+        :rtype: int
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
         self._TaskId = params.get("TaskId")
         self._RequestId = params.get("RequestId")
 
@@ -11272,6 +11660,145 @@ class DescribeDBProxyResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeDBProxySSLConfigRequest(AbstractModel):
+    r"""DescribeDBProxySSLConfig请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DBInstanceId: <p>实例 ID。</p>
+        :type DBInstanceId: str
+        :param _ProxyGroupId: <p>代理组 ID。</p>
+        :type ProxyGroupId: str
+        :param _ProxyAddressId: <p>代理连接地址 ID。</p>
+        :type ProxyAddressId: str
+        """
+        self._DBInstanceId = None
+        self._ProxyGroupId = None
+        self._ProxyAddressId = None
+
+    @property
+    def DBInstanceId(self):
+        r"""<p>实例 ID。</p>
+        :rtype: str
+        """
+        return self._DBInstanceId
+
+    @DBInstanceId.setter
+    def DBInstanceId(self, DBInstanceId):
+        self._DBInstanceId = DBInstanceId
+
+    @property
+    def ProxyGroupId(self):
+        r"""<p>代理组 ID。</p>
+        :rtype: str
+        """
+        return self._ProxyGroupId
+
+    @ProxyGroupId.setter
+    def ProxyGroupId(self, ProxyGroupId):
+        self._ProxyGroupId = ProxyGroupId
+
+    @property
+    def ProxyAddressId(self):
+        r"""<p>代理连接地址 ID。</p>
+        :rtype: str
+        """
+        return self._ProxyAddressId
+
+    @ProxyAddressId.setter
+    def ProxyAddressId(self, ProxyAddressId):
+        self._ProxyAddressId = ProxyAddressId
+
+
+    def _deserialize(self, params):
+        self._DBInstanceId = params.get("DBInstanceId")
+        self._ProxyGroupId = params.get("ProxyGroupId")
+        self._ProxyAddressId = params.get("ProxyAddressId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDBProxySSLConfigResponse(AbstractModel):
+    r"""DescribeDBProxySSLConfig返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SSLEnabled: <p>SSL 是否开启。true 表示已开启，false 表示未开启。</p>
+        :type SSLEnabled: bool
+        :param _ConnectAddress: <p>SSL 连接的地址（VIP 或域名）。</p>
+        :type ConnectAddress: str
+        :param _CAUrl: <p>CA 证书下载地址。仅在 SSL 开启时有值。</p>
+        :type CAUrl: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._SSLEnabled = None
+        self._ConnectAddress = None
+        self._CAUrl = None
+        self._RequestId = None
+
+    @property
+    def SSLEnabled(self):
+        r"""<p>SSL 是否开启。true 表示已开启，false 表示未开启。</p>
+        :rtype: bool
+        """
+        return self._SSLEnabled
+
+    @SSLEnabled.setter
+    def SSLEnabled(self, SSLEnabled):
+        self._SSLEnabled = SSLEnabled
+
+    @property
+    def ConnectAddress(self):
+        r"""<p>SSL 连接的地址（VIP 或域名）。</p>
+        :rtype: str
+        """
+        return self._ConnectAddress
+
+    @ConnectAddress.setter
+    def ConnectAddress(self, ConnectAddress):
+        self._ConnectAddress = ConnectAddress
+
+    @property
+    def CAUrl(self):
+        r"""<p>CA 证书下载地址。仅在 SSL 开启时有值。</p>
+        :rtype: str
+        """
+        return self._CAUrl
+
+    @CAUrl.setter
+    def CAUrl(self, CAUrl):
+        self._CAUrl = CAUrl
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._SSLEnabled = params.get("SSLEnabled")
+        self._ConnectAddress = params.get("ConnectAddress")
+        self._CAUrl = params.get("CAUrl")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeDBProxySpecsRequest(AbstractModel):
     r"""DescribeDBProxySpecs请求参数结构体
 
@@ -18834,6 +19361,145 @@ class ModifyDBProxyResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._DealName = params.get("DealName")
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyDBProxySSLConfigRequest(AbstractModel):
+    r"""ModifyDBProxySSLConfig请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DBInstanceId: 实例 ID，指定要修改 SSL 配置的数据库代理所属的目标实例
+        :type DBInstanceId: str
+        :param _ProxyGroupId: 代理组 ID，指定要修改 SSL 配置的代理组
+        :type ProxyGroupId: str
+        :param _ProxyAddressId: 代理地址 ID，指定要修改 SSL 配置的代理连接地址
+        :type ProxyAddressId: str
+        :param _SSLEnabled: SSL 开关。true：开启 SSL；false：关闭 SSL
+        :type SSLEnabled: bool
+        :param _ConnectAddress: 连接地址。SSLEnabled 为 true 时必填，需与代理地址的 Vip 保持一致，用于 SSL 证书校验
+        :type ConnectAddress: str
+        """
+        self._DBInstanceId = None
+        self._ProxyGroupId = None
+        self._ProxyAddressId = None
+        self._SSLEnabled = None
+        self._ConnectAddress = None
+
+    @property
+    def DBInstanceId(self):
+        r"""实例 ID，指定要修改 SSL 配置的数据库代理所属的目标实例
+        :rtype: str
+        """
+        return self._DBInstanceId
+
+    @DBInstanceId.setter
+    def DBInstanceId(self, DBInstanceId):
+        self._DBInstanceId = DBInstanceId
+
+    @property
+    def ProxyGroupId(self):
+        r"""代理组 ID，指定要修改 SSL 配置的代理组
+        :rtype: str
+        """
+        return self._ProxyGroupId
+
+    @ProxyGroupId.setter
+    def ProxyGroupId(self, ProxyGroupId):
+        self._ProxyGroupId = ProxyGroupId
+
+    @property
+    def ProxyAddressId(self):
+        r"""代理地址 ID，指定要修改 SSL 配置的代理连接地址
+        :rtype: str
+        """
+        return self._ProxyAddressId
+
+    @ProxyAddressId.setter
+    def ProxyAddressId(self, ProxyAddressId):
+        self._ProxyAddressId = ProxyAddressId
+
+    @property
+    def SSLEnabled(self):
+        r"""SSL 开关。true：开启 SSL；false：关闭 SSL
+        :rtype: bool
+        """
+        return self._SSLEnabled
+
+    @SSLEnabled.setter
+    def SSLEnabled(self, SSLEnabled):
+        self._SSLEnabled = SSLEnabled
+
+    @property
+    def ConnectAddress(self):
+        r"""连接地址。SSLEnabled 为 true 时必填，需与代理地址的 Vip 保持一致，用于 SSL 证书校验
+        :rtype: str
+        """
+        return self._ConnectAddress
+
+    @ConnectAddress.setter
+    def ConnectAddress(self, ConnectAddress):
+        self._ConnectAddress = ConnectAddress
+
+
+    def _deserialize(self, params):
+        self._DBInstanceId = params.get("DBInstanceId")
+        self._ProxyGroupId = params.get("ProxyGroupId")
+        self._ProxyAddressId = params.get("ProxyAddressId")
+        self._SSLEnabled = params.get("SSLEnabled")
+        self._ConnectAddress = params.get("ConnectAddress")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyDBProxySSLConfigResponse(AbstractModel):
+    r"""ModifyDBProxySSLConfig返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: 异步任务 ID。可通过 DescribeTasks 接口查询任务执行进度。当 SSL 状态无变更时返回 0，无需等待任务
+        :type TaskId: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        r"""异步任务 ID。可通过 DescribeTasks 接口查询任务执行进度。当 SSL 状态无变更时返回 0，无需等待任务
+        :rtype: int
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
         self._RequestId = params.get("RequestId")
 
 

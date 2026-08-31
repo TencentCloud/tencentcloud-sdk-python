@@ -74,6 +74,29 @@ class VodClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CloneVoiceAsync(self, request):
+        r"""音色设计，根据prompt生成音色ID。克隆/设计音色数量上限默认100
+
+        :param request: Request instance for CloneVoiceAsync.
+        :type request: :class:`tencentcloud.vod.v20180717.models.CloneVoiceAsyncRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.CloneVoiceAsyncResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CloneVoiceAsync", params, headers=headers)
+            response = json.loads(body)
+            model = models.CloneVoiceAsyncResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CommitUpload(self, request):
         r"""该接口用于确认媒体文件（和封面文件）上传到腾讯云点播的结果，并存储媒体信息，返回文件的播放地址和文件 ID。
 
@@ -2052,6 +2075,29 @@ class VodClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DeleteVoice(self, request):
+        r"""音色设计，根据prompt生成音色ID。克隆/设计音色数量上限默认100
+
+        :param request: Request instance for DeleteVoice.
+        :type request: :class:`tencentcloud.vod.v20180717.models.DeleteVoiceRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.DeleteVoiceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteVoice", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteVoiceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DeleteWatermarkTemplate(self, request):
         r"""删除用户自定义水印模板。
 
@@ -3637,6 +3683,29 @@ class VodClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeVoices(self, request):
+        r"""音色设计，根据prompt生成音色ID。克隆/设计音色数量上限默认100
+
+        :param request: Request instance for DescribeVoices.
+        :type request: :class:`tencentcloud.vod.v20180717.models.DescribeVoicesRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.DescribeVoicesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeVoices", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeVoicesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeWatermarkTemplates(self, request):
         r"""查询用户自定义水印模板，支持根据条件，分页查询。
 
@@ -3674,6 +3743,29 @@ class VodClient(AbstractClient):
             body = self.call("DescribeWordSamples", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeWordSamplesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DesignVoiceAsync(self, request):
+        r"""音色设计，根据prompt生成音色ID。克隆/设计音色数量上限默认100
+
+        :param request: Request instance for DesignVoiceAsync.
+        :type request: :class:`tencentcloud.vod.v20180717.models.DesignVoiceAsyncRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.DesignVoiceAsyncResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DesignVoiceAsync", params, headers=headers)
+            response = json.loads(body)
+            model = models.DesignVoiceAsyncResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -5630,6 +5722,29 @@ class VodClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def TextToSpeechAsync(self, request):
+        r"""音色设计，根据prompt生成音色ID。克隆/设计音色数量上限默认100
+
+        :param request: Request instance for TextToSpeechAsync.
+        :type request: :class:`tencentcloud.vod.v20180717.models.TextToSpeechAsyncRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.TextToSpeechAsyncResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("TextToSpeechAsync", params, headers=headers)
+            response = json.loads(body)
+            model = models.TextToSpeechAsyncResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def UpdateAigcApiToken(self, request):
         r"""创建AIGC调用API的Token。创建后数据同步有延时，约30秒后可查询或删除。
 
@@ -5644,6 +5759,29 @@ class VodClient(AbstractClient):
             body = self.call("UpdateAigcApiToken", params, headers=headers)
             response = json.loads(body)
             model = models.UpdateAigcApiTokenResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def UpdateVoice(self, request):
+        r"""音色设计，根据prompt生成音色ID。克隆/设计音色数量上限默认100
+
+        :param request: Request instance for UpdateVoice.
+        :type request: :class:`tencentcloud.vod.v20180717.models.UpdateVoiceRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.UpdateVoiceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UpdateVoice", params, headers=headers)
+            response = json.loads(body)
+            model = models.UpdateVoiceResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

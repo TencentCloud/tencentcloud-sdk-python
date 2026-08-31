@@ -211,7 +211,7 @@ class TdmqClient(AbstractClient):
 
 
     def CreateProCluster(self, request):
-        r"""创建专业集群——预付费，仅通过api调用
+        r"""创建Pulsar标准版或专业版实例——预付费，仅通过api调用
 
         :param request: Request instance for CreateProCluster.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.CreateProClusterRequest`
@@ -1655,7 +1655,7 @@ class TdmqClient(AbstractClient):
 
 
     def DescribePulsarProInstanceDetail(self, request):
-        r"""获取Pulsar专业版集群实例信息
+        r"""获取Pulsar标准版或专业版实例信息
 
         :param request: Request instance for DescribePulsarProInstanceDetail.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.DescribePulsarProInstanceDetailRequest`
@@ -1678,7 +1678,7 @@ class TdmqClient(AbstractClient):
 
 
     def DescribePulsarProInstances(self, request):
-        r"""查询用户已购的Pulsar专业版实例列表
+        r"""查询用户已购的Pulsar实例列表
 
         :param request: Request instance for DescribePulsarProInstances.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.DescribePulsarProInstancesRequest`
@@ -2767,7 +2767,7 @@ class TdmqClient(AbstractClient):
 
 
     def ModifyCluster(self, request):
-        r"""更新集群信息
+        r"""更新虚拟集群信息
 
         :param request: Request instance for ModifyCluster.
         :type request: :class:`tencentcloud.tdmq.v20200217.models.ModifyClusterRequest`

@@ -18872,11 +18872,11 @@ class DescribeAccountPrivilegesRequest(AbstractModel):
         :type AccountName: str
         :param _Host: 主机
         :type Host: str
-        :param _Db: 数据库名，为*时，忽略Type/TableName, 表示修改用户全局权限；
+        :param _Db: 数据库名。为*时，忽略Type/TableName，表示查询用户全局权限；不传时默认为*。
         :type Db: str
-        :param _Type: 指定数据库下的对象类型，可选"table"，"*"
+        :param _Type: 指定数据库下的对象类型，可选"table"、"*"。不传时默认为*；Type为table时，必须指定TableName。
         :type Type: str
-        :param _TableName: 当Type="table"时，用来指定表名
+        :param _TableName: 当Type="table"时，用来指定表名；Type为table时必填。
         :type TableName: str
         """
         self._ClusterId = None
@@ -18921,7 +18921,7 @@ class DescribeAccountPrivilegesRequest(AbstractModel):
 
     @property
     def Db(self):
-        r"""数据库名，为*时，忽略Type/TableName, 表示修改用户全局权限；
+        r"""数据库名。为*时，忽略Type/TableName，表示查询用户全局权限；不传时默认为*。
         :rtype: str
         """
         return self._Db
@@ -18932,7 +18932,7 @@ class DescribeAccountPrivilegesRequest(AbstractModel):
 
     @property
     def Type(self):
-        r"""指定数据库下的对象类型，可选"table"，"*"
+        r"""指定数据库下的对象类型，可选"table"、"*"。不传时默认为*；Type为table时，必须指定TableName。
         :rtype: str
         """
         return self._Type
@@ -18943,7 +18943,7 @@ class DescribeAccountPrivilegesRequest(AbstractModel):
 
     @property
     def TableName(self):
-        r"""当Type="table"时，用来指定表名
+        r"""当Type="table"时，用来指定表名；Type为table时必填。
         :rtype: str
         """
         return self._TableName
@@ -42918,6 +42918,100 @@ class ModifyClusterGlobalEncryptionResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyClusterLevelRequest(AbstractModel):
+    r"""ModifyClusterLevel请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: <p>集群ID</p>
+        :type ClusterId: str
+        :param _ClusterLevel: <p>集群级别</p>
+        :type ClusterLevel: str
+        """
+        self._ClusterId = None
+        self._ClusterLevel = None
+
+    @property
+    def ClusterId(self):
+        r"""<p>集群ID</p>
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def ClusterLevel(self):
+        r"""<p>集群级别</p>
+        :rtype: str
+        """
+        return self._ClusterLevel
+
+    @ClusterLevel.setter
+    def ClusterLevel(self, ClusterLevel):
+        self._ClusterLevel = ClusterLevel
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        self._ClusterLevel = params.get("ClusterLevel")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyClusterLevelResponse(AbstractModel):
+    r"""ModifyClusterLevel返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: <p>任务ID</p>
+        :type TaskId: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        r"""<p>任务ID</p>
+        :rtype: int
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyClusterNameRequest(AbstractModel):
     r"""ModifyClusterName请求参数结构体
 
@@ -49396,6 +49490,9 @@ class Package(AbstractModel):
         :param _PackageType: 资源包类型
 CCU-计算资源包，DISK-存储资源包
         :type PackageType: str
+        :param _PackageVersion: 资源包套餐版本
+base-基础，common-通用，enterprise-企业
+        :type PackageVersion: str
         :param _PackageRegion: 资源包使用地域
 china-中国内地通用，overseas-港澳台及海外通用
         :type PackageRegion: str
@@ -49426,6 +49523,7 @@ refund-已退费。
         self._PackageId = None
         self._PackageName = None
         self._PackageType = None
+        self._PackageVersion = None
         self._PackageRegion = None
         self._Status = None
         self._PackageTotalSpec = None
@@ -49480,6 +49578,18 @@ CCU-计算资源包，DISK-存储资源包
     @PackageType.setter
     def PackageType(self, PackageType):
         self._PackageType = PackageType
+
+    @property
+    def PackageVersion(self):
+        r"""资源包套餐版本
+base-基础，common-通用，enterprise-企业
+        :rtype: str
+        """
+        return self._PackageVersion
+
+    @PackageVersion.setter
+    def PackageVersion(self, PackageVersion):
+        self._PackageVersion = PackageVersion
 
     @property
     def PackageRegion(self):
@@ -49593,6 +49703,7 @@ refund-已退费。
         self._PackageId = params.get("PackageId")
         self._PackageName = params.get("PackageName")
         self._PackageType = params.get("PackageType")
+        self._PackageVersion = params.get("PackageVersion")
         self._PackageRegion = params.get("PackageRegion")
         self._Status = params.get("Status")
         self._PackageTotalSpec = params.get("PackageTotalSpec")

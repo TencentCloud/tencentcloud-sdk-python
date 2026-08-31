@@ -2394,6 +2394,8 @@ class ClbClient(AbstractClient):
         限制条件：
         - 共享型升级为性能容量型实例后，不支持再回退到共享型实例。
         - 传统型负载均衡实例不支持升级为性能容量型实例。
+
+        本接口为异步接口，本接口返回成功后需以返回的RequestID为入参，调用 [DescribeTaskStatus](https://cloud.tencent.com/document/product/214/30683) 接口查询本次任务是否成功。
         """
         
         kwargs = {}

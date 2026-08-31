@@ -5009,17 +5009,20 @@ class FeiShuRobotNoticeTmpl(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ContentTmpl: 内容模板
+        :param _ContentTmpl: <p>内容模板</p>
         :type ContentTmpl: str
-        :param _TitleTmpl: 标题模板
+        :param _TitleTmpl: <p>标题模板</p>
         :type TitleTmpl: str
+        :param _TitleColor: <p>通知内容模版标题自定义颜色</p>
+        :type TitleColor: :class:`tencentcloud.monitor.v20230616.models.RobotNoticeTitleColor`
         """
         self._ContentTmpl = None
         self._TitleTmpl = None
+        self._TitleColor = None
 
     @property
     def ContentTmpl(self):
-        r"""内容模板
+        r"""<p>内容模板</p>
         :rtype: str
         """
         return self._ContentTmpl
@@ -5030,7 +5033,7 @@ class FeiShuRobotNoticeTmpl(AbstractModel):
 
     @property
     def TitleTmpl(self):
-        r"""标题模板
+        r"""<p>标题模板</p>
         :rtype: str
         """
         return self._TitleTmpl
@@ -5039,10 +5042,24 @@ class FeiShuRobotNoticeTmpl(AbstractModel):
     def TitleTmpl(self, TitleTmpl):
         self._TitleTmpl = TitleTmpl
 
+    @property
+    def TitleColor(self):
+        r"""<p>通知内容模版标题自定义颜色</p>
+        :rtype: :class:`tencentcloud.monitor.v20230616.models.RobotNoticeTitleColor`
+        """
+        return self._TitleColor
+
+    @TitleColor.setter
+    def TitleColor(self, TitleColor):
+        self._TitleColor = TitleColor
+
 
     def _deserialize(self, params):
         self._ContentTmpl = params.get("ContentTmpl")
         self._TitleTmpl = params.get("TitleTmpl")
+        if params.get("TitleColor") is not None:
+            self._TitleColor = RobotNoticeTitleColor()
+            self._TitleColor._deserialize(params.get("TitleColor"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -9520,6 +9537,128 @@ class ResourceMapInfo(AbstractModel):
         self._Name = params.get("Name")
         self._Description = params.get("Description")
         self._InstanceCount = params.get("InstanceCount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RobotNoticeTitleColor(AbstractModel):
+    r"""告警通知内容模版自定义标题颜色
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Default: <p>通知内容模版自定义标题颜色默认颜色</p>
+        :type Default: str
+        :param _Rules: <p>通知内容模版自定义标题颜色规则，label 匹配设置颜色</p>
+        :type Rules: list of RobotNoticeTitleColorRules
+        """
+        self._Default = None
+        self._Rules = None
+
+    @property
+    def Default(self):
+        r"""<p>通知内容模版自定义标题颜色默认颜色</p>
+        :rtype: str
+        """
+        return self._Default
+
+    @Default.setter
+    def Default(self, Default):
+        self._Default = Default
+
+    @property
+    def Rules(self):
+        r"""<p>通知内容模版自定义标题颜色规则，label 匹配设置颜色</p>
+        :rtype: list of RobotNoticeTitleColorRules
+        """
+        return self._Rules
+
+    @Rules.setter
+    def Rules(self, Rules):
+        self._Rules = Rules
+
+
+    def _deserialize(self, params):
+        self._Default = params.get("Default")
+        if params.get("Rules") is not None:
+            self._Rules = []
+            for item in params.get("Rules"):
+                obj = RobotNoticeTitleColorRules()
+                obj._deserialize(item)
+                self._Rules.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RobotNoticeTitleColorRules(AbstractModel):
+    r"""告警通知内容模版自定义标题颜色 key-value 匹配规则
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Key: <p>通知内容模版自定义颜色 Label 匹配的 Key</p>
+        :type Key: str
+        :param _Value: <p>通知内容模版自定义颜色 Label 匹配的 Value</p>
+        :type Value: str
+        :param _Color: <p>通知内容模版自定义颜色</p>
+        :type Color: str
+        """
+        self._Key = None
+        self._Value = None
+        self._Color = None
+
+    @property
+    def Key(self):
+        r"""<p>通知内容模版自定义颜色 Label 匹配的 Key</p>
+        :rtype: str
+        """
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Value(self):
+        r"""<p>通知内容模版自定义颜色 Label 匹配的 Value</p>
+        :rtype: str
+        """
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+    @property
+    def Color(self):
+        r"""<p>通知内容模版自定义颜色</p>
+        :rtype: str
+        """
+        return self._Color
+
+    @Color.setter
+    def Color(self, Color):
+        self._Color = Color
+
+
+    def _deserialize(self, params):
+        self._Key = params.get("Key")
+        self._Value = params.get("Value")
+        self._Color = params.get("Color")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

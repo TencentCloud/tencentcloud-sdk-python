@@ -211,6 +211,57 @@ class AddModelRewriteResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ApiBaseItem(AbstractModel):
+    r"""多协议 ApiBase 单条目。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Protocol: <p>后端转发协议</p>
+        :type Protocol: str
+        :param _ApiBase: <p>Api Base URL</p>
+        :type ApiBase: str
+        """
+        self._Protocol = None
+        self._ApiBase = None
+
+    @property
+    def Protocol(self):
+        r"""<p>后端转发协议</p>
+        :rtype: str
+        """
+        return self._Protocol
+
+    @Protocol.setter
+    def Protocol(self, Protocol):
+        self._Protocol = Protocol
+
+    @property
+    def ApiBase(self):
+        r"""<p>Api Base URL</p>
+        :rtype: str
+        """
+        return self._ApiBase
+
+    @ApiBase.setter
+    def ApiBase(self, ApiBase):
+        self._ApiBase = ApiBase
+
+
+    def _deserialize(self, params):
+        self._Protocol = params.get("Protocol")
+        self._ApiBase = params.get("ApiBase")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AssociateBudgetRequest(AbstractModel):
     r"""AssociateBudget请求参数结构体
 
@@ -7345,6 +7396,8 @@ class CreateModelRequest(AbstractModel):
         :type Protocol: str
         :param _ApiBase: <p>API Base URL</p>
         :type ApiBase: str
+        :param _ApiBases: <p>多协议 Api Base URL</p>
+        :type ApiBases: list of ApiBaseItem
         :param _VpcId: <p>VPC ID</p>
         :type VpcId: str
         :param _SubnetId: <p>子网 ID</p>
@@ -7357,6 +7410,10 @@ class CreateModelRequest(AbstractModel):
         :type VerifySSL: bool
         :param _HealthCheckConfig: <p>健康检查配置</p>
         :type HealthCheckConfig: :class:`tencentcloud.clb.v20180317.models.ServiceProviderHealthCheckConfigInput`
+        :param _CMRPrivateNetworkTunnelId: <p>私网管道 ID</p>
+        :type CMRPrivateNetworkTunnelId: str
+        :param _HealthCheckConfigs: <p>健康检查配置</p>
+        :type HealthCheckConfigs: list of ServiceProviderHealthCheckConfigItemInput
         """
         self._AccessType = None
         self._ModelProvider = None
@@ -7366,12 +7423,15 @@ class CreateModelRequest(AbstractModel):
         self._ServiceProviderName = None
         self._Protocol = None
         self._ApiBase = None
+        self._ApiBases = None
         self._VpcId = None
         self._SubnetId = None
         self._HostHeader = None
         self._Tags = None
         self._VerifySSL = None
         self._HealthCheckConfig = None
+        self._CMRPrivateNetworkTunnelId = None
+        self._HealthCheckConfigs = None
 
     @property
     def AccessType(self):
@@ -7462,6 +7522,17 @@ class CreateModelRequest(AbstractModel):
         self._ApiBase = ApiBase
 
     @property
+    def ApiBases(self):
+        r"""<p>多协议 Api Base URL</p>
+        :rtype: list of ApiBaseItem
+        """
+        return self._ApiBases
+
+    @ApiBases.setter
+    def ApiBases(self, ApiBases):
+        self._ApiBases = ApiBases
+
+    @property
     def VpcId(self):
         r"""<p>VPC ID</p>
         :rtype: str
@@ -7527,6 +7598,28 @@ class CreateModelRequest(AbstractModel):
     def HealthCheckConfig(self, HealthCheckConfig):
         self._HealthCheckConfig = HealthCheckConfig
 
+    @property
+    def CMRPrivateNetworkTunnelId(self):
+        r"""<p>私网管道 ID</p>
+        :rtype: str
+        """
+        return self._CMRPrivateNetworkTunnelId
+
+    @CMRPrivateNetworkTunnelId.setter
+    def CMRPrivateNetworkTunnelId(self, CMRPrivateNetworkTunnelId):
+        self._CMRPrivateNetworkTunnelId = CMRPrivateNetworkTunnelId
+
+    @property
+    def HealthCheckConfigs(self):
+        r"""<p>健康检查配置</p>
+        :rtype: list of ServiceProviderHealthCheckConfigItemInput
+        """
+        return self._HealthCheckConfigs
+
+    @HealthCheckConfigs.setter
+    def HealthCheckConfigs(self, HealthCheckConfigs):
+        self._HealthCheckConfigs = HealthCheckConfigs
+
 
     def _deserialize(self, params):
         self._AccessType = params.get("AccessType")
@@ -7547,6 +7640,12 @@ class CreateModelRequest(AbstractModel):
         self._ServiceProviderName = params.get("ServiceProviderName")
         self._Protocol = params.get("Protocol")
         self._ApiBase = params.get("ApiBase")
+        if params.get("ApiBases") is not None:
+            self._ApiBases = []
+            for item in params.get("ApiBases"):
+                obj = ApiBaseItem()
+                obj._deserialize(item)
+                self._ApiBases.append(obj)
         self._VpcId = params.get("VpcId")
         self._SubnetId = params.get("SubnetId")
         self._HostHeader = params.get("HostHeader")
@@ -7560,6 +7659,13 @@ class CreateModelRequest(AbstractModel):
         if params.get("HealthCheckConfig") is not None:
             self._HealthCheckConfig = ServiceProviderHealthCheckConfigInput()
             self._HealthCheckConfig._deserialize(params.get("HealthCheckConfig"))
+        self._CMRPrivateNetworkTunnelId = params.get("CMRPrivateNetworkTunnelId")
+        if params.get("HealthCheckConfigs") is not None:
+            self._HealthCheckConfigs = []
+            for item in params.get("HealthCheckConfigs"):
+                obj = ServiceProviderHealthCheckConfigItemInput()
+                obj._deserialize(item)
+                self._HealthCheckConfigs.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -17797,8 +17903,10 @@ class DescribeUpperModelsRequest(AbstractModel):
         :type ModelProtocol: str
         :param _ModelProvider: <p>模型提供商</p>
         :type ModelProvider: str
-        :param _ServiceProviderId: <p>BYOK 业务 ID，可选</p><p>格式：byok-xxxxxxxx</p>
+        :param _ServiceProviderId: <p>BYOK 业务 ID，可选</p><p>格式：byok-xxxxxxxx，预留参数</p>
         :type ServiceProviderId: str
+        :param _CMRPrivateNetworkTunnelId: <p>    CMR 私网管道ID </p>
+        :type CMRPrivateNetworkTunnelId: str
         """
         self._AccessType = None
         self._ApiBase = None
@@ -17809,6 +17917,7 @@ class DescribeUpperModelsRequest(AbstractModel):
         self._ModelProtocol = None
         self._ModelProvider = None
         self._ServiceProviderId = None
+        self._CMRPrivateNetworkTunnelId = None
 
     @property
     def AccessType(self):
@@ -17900,7 +18009,7 @@ class DescribeUpperModelsRequest(AbstractModel):
 
     @property
     def ServiceProviderId(self):
-        r"""<p>BYOK 业务 ID，可选</p><p>格式：byok-xxxxxxxx</p>
+        r"""<p>BYOK 业务 ID，可选</p><p>格式：byok-xxxxxxxx，预留参数</p>
         :rtype: str
         """
         return self._ServiceProviderId
@@ -17908,6 +18017,17 @@ class DescribeUpperModelsRequest(AbstractModel):
     @ServiceProviderId.setter
     def ServiceProviderId(self, ServiceProviderId):
         self._ServiceProviderId = ServiceProviderId
+
+    @property
+    def CMRPrivateNetworkTunnelId(self):
+        r"""<p>    CMR 私网管道ID </p>
+        :rtype: str
+        """
+        return self._CMRPrivateNetworkTunnelId
+
+    @CMRPrivateNetworkTunnelId.setter
+    def CMRPrivateNetworkTunnelId(self, CMRPrivateNetworkTunnelId):
+        self._CMRPrivateNetworkTunnelId = CMRPrivateNetworkTunnelId
 
 
     def _deserialize(self, params):
@@ -17920,6 +18040,7 @@ class DescribeUpperModelsRequest(AbstractModel):
         self._ModelProtocol = params.get("ModelProtocol")
         self._ModelProvider = params.get("ModelProvider")
         self._ServiceProviderId = params.get("ServiceProviderId")
+        self._CMRPrivateNetworkTunnelId = params.get("CMRPrivateNetworkTunnelId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -24945,6 +25066,9 @@ class ModelKeyInfoItem(AbstractModel):
         :param _ApiBase: <p>API Base URL</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ApiBase: str
+        :param _ApiBases: <p>多协议 API Base URL</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ApiBases: list of ApiBaseItem
         :param _CreatedAt: <p>模型创建时间（ISO 8601）</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type CreatedAt: str
@@ -24982,9 +25106,18 @@ class ModelKeyInfoItem(AbstractModel):
         :type VpcId: str
         :param _HealthCheckConfig: <p>健康检查配置</p>
         :type HealthCheckConfig: :class:`tencentcloud.clb.v20180317.models.ServiceProviderHealthCheckConfigOutput`
+        :param _CMRPrivateNetworkTunnelId: <p>私网管道 ID</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CMRPrivateNetworkTunnelId: str
+        :param _CMRPrivateNetworkTunnelName: <p>私网管道名称</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CMRPrivateNetworkTunnelName: str
+        :param _HealthCheckConfigs: <p>健康检查配置</p>
+        :type HealthCheckConfigs: list of ServiceProviderHealthCheckConfigItemOutput
         """
         self._AccessType = None
         self._ApiBase = None
+        self._ApiBases = None
         self._CreatedAt = None
         self._HostHeader = None
         self._KeyCount = None
@@ -25001,6 +25134,9 @@ class ModelKeyInfoItem(AbstractModel):
         self._VerifySSL = None
         self._VpcId = None
         self._HealthCheckConfig = None
+        self._CMRPrivateNetworkTunnelId = None
+        self._CMRPrivateNetworkTunnelName = None
+        self._HealthCheckConfigs = None
 
     @property
     def AccessType(self):
@@ -25024,6 +25160,18 @@ class ModelKeyInfoItem(AbstractModel):
     @ApiBase.setter
     def ApiBase(self, ApiBase):
         self._ApiBase = ApiBase
+
+    @property
+    def ApiBases(self):
+        r"""<p>多协议 API Base URL</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of ApiBaseItem
+        """
+        return self._ApiBases
+
+    @ApiBases.setter
+    def ApiBases(self, ApiBases):
+        self._ApiBases = ApiBases
 
     @property
     def CreatedAt(self):
@@ -25206,10 +25354,51 @@ class ModelKeyInfoItem(AbstractModel):
     def HealthCheckConfig(self, HealthCheckConfig):
         self._HealthCheckConfig = HealthCheckConfig
 
+    @property
+    def CMRPrivateNetworkTunnelId(self):
+        r"""<p>私网管道 ID</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CMRPrivateNetworkTunnelId
+
+    @CMRPrivateNetworkTunnelId.setter
+    def CMRPrivateNetworkTunnelId(self, CMRPrivateNetworkTunnelId):
+        self._CMRPrivateNetworkTunnelId = CMRPrivateNetworkTunnelId
+
+    @property
+    def CMRPrivateNetworkTunnelName(self):
+        r"""<p>私网管道名称</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CMRPrivateNetworkTunnelName
+
+    @CMRPrivateNetworkTunnelName.setter
+    def CMRPrivateNetworkTunnelName(self, CMRPrivateNetworkTunnelName):
+        self._CMRPrivateNetworkTunnelName = CMRPrivateNetworkTunnelName
+
+    @property
+    def HealthCheckConfigs(self):
+        r"""<p>健康检查配置</p>
+        :rtype: list of ServiceProviderHealthCheckConfigItemOutput
+        """
+        return self._HealthCheckConfigs
+
+    @HealthCheckConfigs.setter
+    def HealthCheckConfigs(self, HealthCheckConfigs):
+        self._HealthCheckConfigs = HealthCheckConfigs
+
 
     def _deserialize(self, params):
         self._AccessType = params.get("AccessType")
         self._ApiBase = params.get("ApiBase")
+        if params.get("ApiBases") is not None:
+            self._ApiBases = []
+            for item in params.get("ApiBases"):
+                obj = ApiBaseItem()
+                obj._deserialize(item)
+                self._ApiBases.append(obj)
         self._CreatedAt = params.get("CreatedAt")
         self._HostHeader = params.get("HostHeader")
         self._KeyCount = params.get("KeyCount")
@@ -25243,6 +25432,14 @@ class ModelKeyInfoItem(AbstractModel):
         if params.get("HealthCheckConfig") is not None:
             self._HealthCheckConfig = ServiceProviderHealthCheckConfigOutput()
             self._HealthCheckConfig._deserialize(params.get("HealthCheckConfig"))
+        self._CMRPrivateNetworkTunnelId = params.get("CMRPrivateNetworkTunnelId")
+        self._CMRPrivateNetworkTunnelName = params.get("CMRPrivateNetworkTunnelName")
+        if params.get("HealthCheckConfigs") is not None:
+            self._HealthCheckConfigs = []
+            for item in params.get("HealthCheckConfigs"):
+                obj = ServiceProviderHealthCheckConfigItemOutput()
+                obj._deserialize(item)
+                self._HealthCheckConfigs.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -25517,6 +25714,7 @@ class ModelRouterDetail(AbstractModel):
         :param _VpcId: <p>模型路由实例所属VPC的ID</p>
         :type VpcId: str
         :param _Bandwidth: <p>带宽</p><p>单位：Mbps</p>
+注意：此字段可能返回 null，表示取不到有效值。
         :type Bandwidth: int
         :param _EipAddressId: <p>弹性公网IP的ID</p>
         :type EipAddressId: str
@@ -25797,6 +25995,7 @@ class ModelRouterDetail(AbstractModel):
     @property
     def Bandwidth(self):
         r"""<p>带宽</p><p>单位：Mbps</p>
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
         return self._Bandwidth
@@ -34908,6 +35107,200 @@ class ServiceProviderHealthCheckConfigInput(AbstractModel):
         
 
 
+class ServiceProviderHealthCheckConfigItemInput(AbstractModel):
+    r"""健康检查配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _HealthCheckEnabled: <p>是否开启健康检查</p><p>枚举值：</p><ul><li>true： 是</li><li>false： 否</li></ul>
+        :type HealthCheckEnabled: bool
+        :param _HealthCheckInterval: <p>健康检查间隔。支持以300s为步长配置。</p><p>取值范围：[300, 14400]</p><p>单位：s</p><p>默认值：300</p>
+        :type HealthCheckInterval: int
+        :param _HealthCheckUnhealthyThreshold: <p>不健康阈值。表示当模型连续多少次不健康时认为该模型不健康。</p><p>取值范围：[1, 10]</p>
+        :type HealthCheckUnhealthyThreshold: int
+        :param _HealthCheckMaxTokens: <p>健康检查使用的最大Token数量。部分模型如gpt系列可能仅支持大于等于16。</p><p>取值范围：[1, 1024]</p><p>默认值：1</p>
+        :type HealthCheckMaxTokens: int
+        :param _HealthCheckProtocol: <p>健康检查协议</p><p>枚举值：</p><ul><li>chat： 表示/chat/completion协议</li><li>messages： 表示/v1/messages协议</li><li>responses： 表示/v1/messages协议</li></ul>
+        :type HealthCheckProtocol: str
+        """
+        self._HealthCheckEnabled = None
+        self._HealthCheckInterval = None
+        self._HealthCheckUnhealthyThreshold = None
+        self._HealthCheckMaxTokens = None
+        self._HealthCheckProtocol = None
+
+    @property
+    def HealthCheckEnabled(self):
+        r"""<p>是否开启健康检查</p><p>枚举值：</p><ul><li>true： 是</li><li>false： 否</li></ul>
+        :rtype: bool
+        """
+        return self._HealthCheckEnabled
+
+    @HealthCheckEnabled.setter
+    def HealthCheckEnabled(self, HealthCheckEnabled):
+        self._HealthCheckEnabled = HealthCheckEnabled
+
+    @property
+    def HealthCheckInterval(self):
+        r"""<p>健康检查间隔。支持以300s为步长配置。</p><p>取值范围：[300, 14400]</p><p>单位：s</p><p>默认值：300</p>
+        :rtype: int
+        """
+        return self._HealthCheckInterval
+
+    @HealthCheckInterval.setter
+    def HealthCheckInterval(self, HealthCheckInterval):
+        self._HealthCheckInterval = HealthCheckInterval
+
+    @property
+    def HealthCheckUnhealthyThreshold(self):
+        r"""<p>不健康阈值。表示当模型连续多少次不健康时认为该模型不健康。</p><p>取值范围：[1, 10]</p>
+        :rtype: int
+        """
+        return self._HealthCheckUnhealthyThreshold
+
+    @HealthCheckUnhealthyThreshold.setter
+    def HealthCheckUnhealthyThreshold(self, HealthCheckUnhealthyThreshold):
+        self._HealthCheckUnhealthyThreshold = HealthCheckUnhealthyThreshold
+
+    @property
+    def HealthCheckMaxTokens(self):
+        r"""<p>健康检查使用的最大Token数量。部分模型如gpt系列可能仅支持大于等于16。</p><p>取值范围：[1, 1024]</p><p>默认值：1</p>
+        :rtype: int
+        """
+        return self._HealthCheckMaxTokens
+
+    @HealthCheckMaxTokens.setter
+    def HealthCheckMaxTokens(self, HealthCheckMaxTokens):
+        self._HealthCheckMaxTokens = HealthCheckMaxTokens
+
+    @property
+    def HealthCheckProtocol(self):
+        r"""<p>健康检查协议</p><p>枚举值：</p><ul><li>chat： 表示/chat/completion协议</li><li>messages： 表示/v1/messages协议</li><li>responses： 表示/v1/messages协议</li></ul>
+        :rtype: str
+        """
+        return self._HealthCheckProtocol
+
+    @HealthCheckProtocol.setter
+    def HealthCheckProtocol(self, HealthCheckProtocol):
+        self._HealthCheckProtocol = HealthCheckProtocol
+
+
+    def _deserialize(self, params):
+        self._HealthCheckEnabled = params.get("HealthCheckEnabled")
+        self._HealthCheckInterval = params.get("HealthCheckInterval")
+        self._HealthCheckUnhealthyThreshold = params.get("HealthCheckUnhealthyThreshold")
+        self._HealthCheckMaxTokens = params.get("HealthCheckMaxTokens")
+        self._HealthCheckProtocol = params.get("HealthCheckProtocol")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ServiceProviderHealthCheckConfigItemOutput(AbstractModel):
+    r"""健康检查配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _HealthCheckEnabled: <p>是否开启健康检查</p><p>枚举值：</p><ul><li>true： 是</li><li>false： 否</li></ul>
+        :type HealthCheckEnabled: bool
+        :param _HealthCheckInterval: <p>健康检查间隔。支持以300s为步长配置。</p><p>单位：s</p><p>默认值：300</p>
+        :type HealthCheckInterval: int
+        :param _HealthCheckUnhealthyThreshold: <p>不健康阈值。表示当模型连续多少次不健康时认为该模型不健康。</p><p>取值范围：[1, 10]</p><p>默认值：1</p>
+        :type HealthCheckUnhealthyThreshold: int
+        :param _HealthCheckMaxTokens: <p>健康检查使用的最大Token数量。部分模型如gpt系列可能仅支持大于等于16。</p><p>默认值：1</p>
+        :type HealthCheckMaxTokens: int
+        :param _HealthCheckProtocol: <p>健康检查协议</p><p>枚举值：</p><ul><li>chat： 表示/chat/completion协议</li><li>messages： 表示/v1/messages协议</li><li>responses： 表示/v1/messages协议</li></ul>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HealthCheckProtocol: str
+        """
+        self._HealthCheckEnabled = None
+        self._HealthCheckInterval = None
+        self._HealthCheckUnhealthyThreshold = None
+        self._HealthCheckMaxTokens = None
+        self._HealthCheckProtocol = None
+
+    @property
+    def HealthCheckEnabled(self):
+        r"""<p>是否开启健康检查</p><p>枚举值：</p><ul><li>true： 是</li><li>false： 否</li></ul>
+        :rtype: bool
+        """
+        return self._HealthCheckEnabled
+
+    @HealthCheckEnabled.setter
+    def HealthCheckEnabled(self, HealthCheckEnabled):
+        self._HealthCheckEnabled = HealthCheckEnabled
+
+    @property
+    def HealthCheckInterval(self):
+        r"""<p>健康检查间隔。支持以300s为步长配置。</p><p>单位：s</p><p>默认值：300</p>
+        :rtype: int
+        """
+        return self._HealthCheckInterval
+
+    @HealthCheckInterval.setter
+    def HealthCheckInterval(self, HealthCheckInterval):
+        self._HealthCheckInterval = HealthCheckInterval
+
+    @property
+    def HealthCheckUnhealthyThreshold(self):
+        r"""<p>不健康阈值。表示当模型连续多少次不健康时认为该模型不健康。</p><p>取值范围：[1, 10]</p><p>默认值：1</p>
+        :rtype: int
+        """
+        return self._HealthCheckUnhealthyThreshold
+
+    @HealthCheckUnhealthyThreshold.setter
+    def HealthCheckUnhealthyThreshold(self, HealthCheckUnhealthyThreshold):
+        self._HealthCheckUnhealthyThreshold = HealthCheckUnhealthyThreshold
+
+    @property
+    def HealthCheckMaxTokens(self):
+        r"""<p>健康检查使用的最大Token数量。部分模型如gpt系列可能仅支持大于等于16。</p><p>默认值：1</p>
+        :rtype: int
+        """
+        return self._HealthCheckMaxTokens
+
+    @HealthCheckMaxTokens.setter
+    def HealthCheckMaxTokens(self, HealthCheckMaxTokens):
+        self._HealthCheckMaxTokens = HealthCheckMaxTokens
+
+    @property
+    def HealthCheckProtocol(self):
+        r"""<p>健康检查协议</p><p>枚举值：</p><ul><li>chat： 表示/chat/completion协议</li><li>messages： 表示/v1/messages协议</li><li>responses： 表示/v1/messages协议</li></ul>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._HealthCheckProtocol
+
+    @HealthCheckProtocol.setter
+    def HealthCheckProtocol(self, HealthCheckProtocol):
+        self._HealthCheckProtocol = HealthCheckProtocol
+
+
+    def _deserialize(self, params):
+        self._HealthCheckEnabled = params.get("HealthCheckEnabled")
+        self._HealthCheckInterval = params.get("HealthCheckInterval")
+        self._HealthCheckUnhealthyThreshold = params.get("HealthCheckUnhealthyThreshold")
+        self._HealthCheckMaxTokens = params.get("HealthCheckMaxTokens")
+        self._HealthCheckProtocol = params.get("HealthCheckProtocol")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ServiceProviderHealthCheckConfigOutput(AbstractModel):
     r"""健康检查配置
 
@@ -37549,6 +37942,10 @@ class TestModelInputModalitiesRequest(AbstractModel):
         :type ServiceProviderId: str
         :param _VerifySSL: <p>是否校验服务提供商的SSL证书</p><p>PublicBYOK时为True且禁止传入；若传入VerifySSL，则优先同步入参逻辑；若传入了ServiceProviderId则同步已创建的Byok实例该Model的逻辑；否则PublicCustom模式下为True，PrivateCustom模式下为False。</p>
         :type VerifySSL: bool
+        :param _HealthCheckProtocol: <p>健康检查协议</p><p>枚举值：</p><ul><li>chat： 表示/chat/completion协议</li><li>messages： 表示/v1/messages协议</li><li>responses： 表示/responses协议</li></ul>
+        :type HealthCheckProtocol: str
+        :param _CMRPrivateNetworkTunnelId: <p>CMR私网管道ID</p>
+        :type CMRPrivateNetworkTunnelId: str
         """
         self._Model = None
         self._ProviderKey = None
@@ -37560,6 +37957,8 @@ class TestModelInputModalitiesRequest(AbstractModel):
         self._HostHeader = None
         self._ServiceProviderId = None
         self._VerifySSL = None
+        self._HealthCheckProtocol = None
+        self._CMRPrivateNetworkTunnelId = None
 
     @property
     def Model(self):
@@ -37671,6 +38070,28 @@ class TestModelInputModalitiesRequest(AbstractModel):
     def VerifySSL(self, VerifySSL):
         self._VerifySSL = VerifySSL
 
+    @property
+    def HealthCheckProtocol(self):
+        r"""<p>健康检查协议</p><p>枚举值：</p><ul><li>chat： 表示/chat/completion协议</li><li>messages： 表示/v1/messages协议</li><li>responses： 表示/responses协议</li></ul>
+        :rtype: str
+        """
+        return self._HealthCheckProtocol
+
+    @HealthCheckProtocol.setter
+    def HealthCheckProtocol(self, HealthCheckProtocol):
+        self._HealthCheckProtocol = HealthCheckProtocol
+
+    @property
+    def CMRPrivateNetworkTunnelId(self):
+        r"""<p>CMR私网管道ID</p>
+        :rtype: str
+        """
+        return self._CMRPrivateNetworkTunnelId
+
+    @CMRPrivateNetworkTunnelId.setter
+    def CMRPrivateNetworkTunnelId(self, CMRPrivateNetworkTunnelId):
+        self._CMRPrivateNetworkTunnelId = CMRPrivateNetworkTunnelId
+
 
     def _deserialize(self, params):
         self._Model = params.get("Model")
@@ -37683,6 +38104,8 @@ class TestModelInputModalitiesRequest(AbstractModel):
         self._HostHeader = params.get("HostHeader")
         self._ServiceProviderId = params.get("ServiceProviderId")
         self._VerifySSL = params.get("VerifySSL")
+        self._HealthCheckProtocol = params.get("HealthCheckProtocol")
+        self._CMRPrivateNetworkTunnelId = params.get("CMRPrivateNetworkTunnelId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -37798,6 +38221,10 @@ class TestServiceProviderConnectionRequest(AbstractModel):
         :type ServiceProviderId: str
         :param _VerifySSL: <p>是否校验服务提供商的SSL证书</p><p>默认值：AccessType取值为：</p><ul><li>PublicBYOK时，该参数无效；</li><li>PublicCustom时，该参数默认为true；</li><li>PrivateCustom时，该参数默认为false；</li></ul>
         :type VerifySSL: bool
+        :param _HealthCheckProtocol: <p>健康检查协议</p><p>枚举值：</p><ul><li>chat： 表示/chat/completion协议</li><li>messages： 表示/v1/messages协议</li><li>responses： 表示/responses协议</li></ul>
+        :type HealthCheckProtocol: str
+        :param _CMRPrivateNetworkTunnelId: <p>    CMR 私网管道ID </p>
+        :type CMRPrivateNetworkTunnelId: str
         """
         self._Models = None
         self._ProviderKey = None
@@ -37809,6 +38236,8 @@ class TestServiceProviderConnectionRequest(AbstractModel):
         self._HostHeader = None
         self._ServiceProviderId = None
         self._VerifySSL = None
+        self._HealthCheckProtocol = None
+        self._CMRPrivateNetworkTunnelId = None
 
     @property
     def Models(self):
@@ -37920,6 +38349,28 @@ class TestServiceProviderConnectionRequest(AbstractModel):
     def VerifySSL(self, VerifySSL):
         self._VerifySSL = VerifySSL
 
+    @property
+    def HealthCheckProtocol(self):
+        r"""<p>健康检查协议</p><p>枚举值：</p><ul><li>chat： 表示/chat/completion协议</li><li>messages： 表示/v1/messages协议</li><li>responses： 表示/responses协议</li></ul>
+        :rtype: str
+        """
+        return self._HealthCheckProtocol
+
+    @HealthCheckProtocol.setter
+    def HealthCheckProtocol(self, HealthCheckProtocol):
+        self._HealthCheckProtocol = HealthCheckProtocol
+
+    @property
+    def CMRPrivateNetworkTunnelId(self):
+        r"""<p>    CMR 私网管道ID </p>
+        :rtype: str
+        """
+        return self._CMRPrivateNetworkTunnelId
+
+    @CMRPrivateNetworkTunnelId.setter
+    def CMRPrivateNetworkTunnelId(self, CMRPrivateNetworkTunnelId):
+        self._CMRPrivateNetworkTunnelId = CMRPrivateNetworkTunnelId
+
 
     def _deserialize(self, params):
         self._Models = params.get("Models")
@@ -37932,6 +38383,8 @@ class TestServiceProviderConnectionRequest(AbstractModel):
         self._HostHeader = params.get("HostHeader")
         self._ServiceProviderId = params.get("ServiceProviderId")
         self._VerifySSL = params.get("VerifySSL")
+        self._HealthCheckProtocol = params.get("HealthCheckProtocol")
+        self._CMRPrivateNetworkTunnelId = params.get("CMRPrivateNetworkTunnelId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

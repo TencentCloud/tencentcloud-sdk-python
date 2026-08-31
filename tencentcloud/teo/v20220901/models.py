@@ -20749,6 +20749,185 @@ class DescribeApplicationProxiesResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeAvailableCustomActionsForRuleEngineRequest(AbstractModel):
+    r"""DescribeAvailableCustomActionsForRuleEngine请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZoneId: <p>站点 ID。</p>
+        :type ZoneId: str
+        :param _Filters: <p>过滤条件，多个条件为且关系，Filters.Values 的上限为 20。该参数不填写时，返回当前站点下所有可用的规则引擎定制配置。详细的过滤条件如下：</p><li>action-id：按照定制配置唯一标识 ID 进行过滤；</li><li>name：按照定制配置名称进行过滤。</li>模糊查询时仅支持过滤字段名为 <code>name</code>。<p></p>
+        :type Filters: list of AdvancedFilter
+        :param _Limit: <p>分页查询限制数目。</p><p>取值范围：[0, 1000]</p><p>默认值：20</p>
+        :type Limit: int
+        :param _Offset: <p>分页偏移量。</p><p>默认值：0</p>
+        :type Offset: int
+        :param _SortBy: <p>排序字段，取值有：</p><li>action-id：按照定制配置唯一标识 ID 排序；</li><li>create-time：按照定制配置创建时间排序。</li>默认值：<code>action-id</code>。<p></p>
+        :type SortBy: str
+        :param _SortOrder: <p>排序方式，取值有：</p><li>asc：升序排序；</li><li>desc：降序排序。</li>默认值：desc。<p></p>
+        :type SortOrder: str
+        """
+        self._ZoneId = None
+        self._Filters = None
+        self._Limit = None
+        self._Offset = None
+        self._SortBy = None
+        self._SortOrder = None
+
+    @property
+    def ZoneId(self):
+        r"""<p>站点 ID。</p>
+        :rtype: str
+        """
+        return self._ZoneId
+
+    @ZoneId.setter
+    def ZoneId(self, ZoneId):
+        self._ZoneId = ZoneId
+
+    @property
+    def Filters(self):
+        r"""<p>过滤条件，多个条件为且关系，Filters.Values 的上限为 20。该参数不填写时，返回当前站点下所有可用的规则引擎定制配置。详细的过滤条件如下：</p><li>action-id：按照定制配置唯一标识 ID 进行过滤；</li><li>name：按照定制配置名称进行过滤。</li>模糊查询时仅支持过滤字段名为 <code>name</code>。<p></p>
+        :rtype: list of AdvancedFilter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Limit(self):
+        r"""<p>分页查询限制数目。</p><p>取值范围：[0, 1000]</p><p>默认值：20</p>
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        r"""<p>分页偏移量。</p><p>默认值：0</p>
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def SortBy(self):
+        r"""<p>排序字段，取值有：</p><li>action-id：按照定制配置唯一标识 ID 排序；</li><li>create-time：按照定制配置创建时间排序。</li>默认值：<code>action-id</code>。<p></p>
+        :rtype: str
+        """
+        return self._SortBy
+
+    @SortBy.setter
+    def SortBy(self, SortBy):
+        self._SortBy = SortBy
+
+    @property
+    def SortOrder(self):
+        r"""<p>排序方式，取值有：</p><li>asc：升序排序；</li><li>desc：降序排序。</li>默认值：desc。<p></p>
+        :rtype: str
+        """
+        return self._SortOrder
+
+    @SortOrder.setter
+    def SortOrder(self, SortOrder):
+        self._SortOrder = SortOrder
+
+
+    def _deserialize(self, params):
+        self._ZoneId = params.get("ZoneId")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = AdvancedFilter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        self._SortBy = params.get("SortBy")
+        self._SortOrder = params.get("SortOrder")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAvailableCustomActionsForRuleEngineResponse(AbstractModel):
+    r"""DescribeAvailableCustomActionsForRuleEngine返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: <p>符合条件的规则引擎定制配置的总数。</p>
+        :type TotalCount: int
+        :param _CustomActionSet: <p>符合条件的规则引擎定制配置的列表。</p>
+        :type CustomActionSet: list of RuleEngineCustomAction
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._CustomActionSet = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        r"""<p>符合条件的规则引擎定制配置的总数。</p>
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def CustomActionSet(self):
+        r"""<p>符合条件的规则引擎定制配置的列表。</p>
+        :rtype: list of RuleEngineCustomAction
+        """
+        return self._CustomActionSet
+
+    @CustomActionSet.setter
+    def CustomActionSet(self, CustomActionSet):
+        self._CustomActionSet = CustomActionSet
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("CustomActionSet") is not None:
+            self._CustomActionSet = []
+            for item in params.get("CustomActionSet"):
+                obj = RuleEngineCustomAction()
+                obj._deserialize(item)
+                self._CustomActionSet.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeAvailablePlansRequest(AbstractModel):
     r"""DescribeAvailablePlans请求参数结构体
 
@@ -60266,6 +60445,368 @@ class RuleEngineAction(AbstractModel):
         if params.get("CustomActionParameters") is not None:
             self._CustomActionParameters = CustomActionParameters()
             self._CustomActionParameters._deserialize(params.get("CustomActionParameters"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RuleEngineCustomAction(AbstractModel):
+    r"""规则引擎操作定制配置。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ActionId: <p>定制配置唯一 ID。</p>
+        :type ActionId: str
+        :param _Name: <p>定制配置名称。</p>
+        :type Name: str
+        :param _Description: <p>定制配置描述。</p>
+        :type Description: str
+        :param _Parameters: <p>定制配置参数定义列表。</p>
+        :type Parameters: list of RuleEngineCustomActionParameterSchema
+        :param _SupportedConditions: <p>定制配置支持的匹配条件。</p><p>支持匹配条件参考官方文档 <a href="https://cloud.tencent.com/document/product/1552/125344">通用参考-配置语法-变量</a>。</p>
+        :type SupportedConditions: list of str
+        """
+        self._ActionId = None
+        self._Name = None
+        self._Description = None
+        self._Parameters = None
+        self._SupportedConditions = None
+
+    @property
+    def ActionId(self):
+        r"""<p>定制配置唯一 ID。</p>
+        :rtype: str
+        """
+        return self._ActionId
+
+    @ActionId.setter
+    def ActionId(self, ActionId):
+        self._ActionId = ActionId
+
+    @property
+    def Name(self):
+        r"""<p>定制配置名称。</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Description(self):
+        r"""<p>定制配置描述。</p>
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def Parameters(self):
+        r"""<p>定制配置参数定义列表。</p>
+        :rtype: list of RuleEngineCustomActionParameterSchema
+        """
+        return self._Parameters
+
+    @Parameters.setter
+    def Parameters(self, Parameters):
+        self._Parameters = Parameters
+
+    @property
+    def SupportedConditions(self):
+        r"""<p>定制配置支持的匹配条件。</p><p>支持匹配条件参考官方文档 <a href="https://cloud.tencent.com/document/product/1552/125344">通用参考-配置语法-变量</a>。</p>
+        :rtype: list of str
+        """
+        return self._SupportedConditions
+
+    @SupportedConditions.setter
+    def SupportedConditions(self, SupportedConditions):
+        self._SupportedConditions = SupportedConditions
+
+
+    def _deserialize(self, params):
+        self._ActionId = params.get("ActionId")
+        self._Name = params.get("Name")
+        self._Description = params.get("Description")
+        if params.get("Parameters") is not None:
+            self._Parameters = []
+            for item in params.get("Parameters"):
+                obj = RuleEngineCustomActionParameterSchema()
+                obj._deserialize(item)
+                self._Parameters.append(obj)
+        self._SupportedConditions = params.get("SupportedConditions")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RuleEngineCustomActionParameterSchema(AbstractModel):
+    r"""规则引擎操作定制配置参数结构定义。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: <p>参数字段名称。</p>
+        :type Name: str
+        :param _ValueType: <p>参数字段类型，取值有：<li>Boolean：布尔；</li><li>Integer：整型；</li><li>Float：浮点型；</li><li>String：字符串；</li><li>ArrayOfInteger：整型数组；</li><li>ArrayOfFloat：浮点型数组；</li><li>ArrayOfString：字符串数组。</li></p>
+        :type ValueType: str
+        :param _Description: <p>参数字段描述。</p>
+        :type Description: str
+        :param _Default: <p>参数字段默认值。</p>
+        :type Default: str
+        :param _Unit: <p>参数字段单位。</p>
+        :type Unit: str
+        :param _Required: <p>参数字段是否必填。</p><p>默认值：false</p><p>若填充，则适用于所有参数字段类型校验；若不填充则不校验。</p>
+        :type Required: bool
+        :param _MinValue: <p>参数字段最小值。</p><p>若填充，适用于整数、浮点数、整数数组、浮点数数组类型参数的数值校验；若不填充则不校验。</p>
+        :type MinValue: float
+        :param _MaxValue: <p>参数字段最大值。</p><p>若填充，适用于整数、浮点数、整数数组、浮点数数组类型参数的数值校验；若不填充则不校验。</p>
+        :type MaxValue: float
+        :param _MinLength: <p>参数字段最小长度。</p><p>若填充，适用于字符串、字符串数组类型参数的数值校验；若不填充则不校验。</p>
+        :type MinLength: int
+        :param _MaxLength: <p>参数字段最大长度。</p><p>若填充，适用于字符串、字符串数组类型参数的数值校验；若不填充则不校验。</p>
+        :type MaxLength: int
+        :param _MinItems: <p>参数字段最小项数。</p><p>若填充，适用于各类数组类型参数的数值校验；若不填充则不校验。</p>
+        :type MinItems: int
+        :param _MaxItems: <p>参数字段最大项数。</p><p>若填充，适用于各类数组类型参数的数值校验；若不填充则不校验。</p>
+        :type MaxItems: int
+        :param _UniqueItems: <p>参数字段项是否唯一。</p><p>默认值：false</p><p>若填充，适用于各类数组类型参数的数值校验；若不填充则不校验。</p>
+        :type UniqueItems: bool
+        :param _AllowedPattern: <p>参数字段允许的格式。</p><p>若填充，需要校验字符串或者字符串数组内容合适；若不填充则不校验。</p>
+        :type AllowedPattern: str
+        :param _AllowedValues: <p>参数字段允许的取值，若为空则不校验。</p><p>若本参数填充，则说明对应参数为枚举类型，仅允许填充本参数数组中的值；若不填充则不校验。</p>
+        :type AllowedValues: list of str
+        :param _MultipleOf: <p>参数字段最小步长。若填充，适用于浮点型和浮点型数组类型参数的数值校验；若不填充则不校验。</p>
+        :type MultipleOf: str
+        """
+        self._Name = None
+        self._ValueType = None
+        self._Description = None
+        self._Default = None
+        self._Unit = None
+        self._Required = None
+        self._MinValue = None
+        self._MaxValue = None
+        self._MinLength = None
+        self._MaxLength = None
+        self._MinItems = None
+        self._MaxItems = None
+        self._UniqueItems = None
+        self._AllowedPattern = None
+        self._AllowedValues = None
+        self._MultipleOf = None
+
+    @property
+    def Name(self):
+        r"""<p>参数字段名称。</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def ValueType(self):
+        r"""<p>参数字段类型，取值有：<li>Boolean：布尔；</li><li>Integer：整型；</li><li>Float：浮点型；</li><li>String：字符串；</li><li>ArrayOfInteger：整型数组；</li><li>ArrayOfFloat：浮点型数组；</li><li>ArrayOfString：字符串数组。</li></p>
+        :rtype: str
+        """
+        return self._ValueType
+
+    @ValueType.setter
+    def ValueType(self, ValueType):
+        self._ValueType = ValueType
+
+    @property
+    def Description(self):
+        r"""<p>参数字段描述。</p>
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def Default(self):
+        r"""<p>参数字段默认值。</p>
+        :rtype: str
+        """
+        return self._Default
+
+    @Default.setter
+    def Default(self, Default):
+        self._Default = Default
+
+    @property
+    def Unit(self):
+        r"""<p>参数字段单位。</p>
+        :rtype: str
+        """
+        return self._Unit
+
+    @Unit.setter
+    def Unit(self, Unit):
+        self._Unit = Unit
+
+    @property
+    def Required(self):
+        r"""<p>参数字段是否必填。</p><p>默认值：false</p><p>若填充，则适用于所有参数字段类型校验；若不填充则不校验。</p>
+        :rtype: bool
+        """
+        return self._Required
+
+    @Required.setter
+    def Required(self, Required):
+        self._Required = Required
+
+    @property
+    def MinValue(self):
+        r"""<p>参数字段最小值。</p><p>若填充，适用于整数、浮点数、整数数组、浮点数数组类型参数的数值校验；若不填充则不校验。</p>
+        :rtype: float
+        """
+        return self._MinValue
+
+    @MinValue.setter
+    def MinValue(self, MinValue):
+        self._MinValue = MinValue
+
+    @property
+    def MaxValue(self):
+        r"""<p>参数字段最大值。</p><p>若填充，适用于整数、浮点数、整数数组、浮点数数组类型参数的数值校验；若不填充则不校验。</p>
+        :rtype: float
+        """
+        return self._MaxValue
+
+    @MaxValue.setter
+    def MaxValue(self, MaxValue):
+        self._MaxValue = MaxValue
+
+    @property
+    def MinLength(self):
+        r"""<p>参数字段最小长度。</p><p>若填充，适用于字符串、字符串数组类型参数的数值校验；若不填充则不校验。</p>
+        :rtype: int
+        """
+        return self._MinLength
+
+    @MinLength.setter
+    def MinLength(self, MinLength):
+        self._MinLength = MinLength
+
+    @property
+    def MaxLength(self):
+        r"""<p>参数字段最大长度。</p><p>若填充，适用于字符串、字符串数组类型参数的数值校验；若不填充则不校验。</p>
+        :rtype: int
+        """
+        return self._MaxLength
+
+    @MaxLength.setter
+    def MaxLength(self, MaxLength):
+        self._MaxLength = MaxLength
+
+    @property
+    def MinItems(self):
+        r"""<p>参数字段最小项数。</p><p>若填充，适用于各类数组类型参数的数值校验；若不填充则不校验。</p>
+        :rtype: int
+        """
+        return self._MinItems
+
+    @MinItems.setter
+    def MinItems(self, MinItems):
+        self._MinItems = MinItems
+
+    @property
+    def MaxItems(self):
+        r"""<p>参数字段最大项数。</p><p>若填充，适用于各类数组类型参数的数值校验；若不填充则不校验。</p>
+        :rtype: int
+        """
+        return self._MaxItems
+
+    @MaxItems.setter
+    def MaxItems(self, MaxItems):
+        self._MaxItems = MaxItems
+
+    @property
+    def UniqueItems(self):
+        r"""<p>参数字段项是否唯一。</p><p>默认值：false</p><p>若填充，适用于各类数组类型参数的数值校验；若不填充则不校验。</p>
+        :rtype: bool
+        """
+        return self._UniqueItems
+
+    @UniqueItems.setter
+    def UniqueItems(self, UniqueItems):
+        self._UniqueItems = UniqueItems
+
+    @property
+    def AllowedPattern(self):
+        r"""<p>参数字段允许的格式。</p><p>若填充，需要校验字符串或者字符串数组内容合适；若不填充则不校验。</p>
+        :rtype: str
+        """
+        return self._AllowedPattern
+
+    @AllowedPattern.setter
+    def AllowedPattern(self, AllowedPattern):
+        self._AllowedPattern = AllowedPattern
+
+    @property
+    def AllowedValues(self):
+        r"""<p>参数字段允许的取值，若为空则不校验。</p><p>若本参数填充，则说明对应参数为枚举类型，仅允许填充本参数数组中的值；若不填充则不校验。</p>
+        :rtype: list of str
+        """
+        return self._AllowedValues
+
+    @AllowedValues.setter
+    def AllowedValues(self, AllowedValues):
+        self._AllowedValues = AllowedValues
+
+    @property
+    def MultipleOf(self):
+        r"""<p>参数字段最小步长。若填充，适用于浮点型和浮点型数组类型参数的数值校验；若不填充则不校验。</p>
+        :rtype: str
+        """
+        return self._MultipleOf
+
+    @MultipleOf.setter
+    def MultipleOf(self, MultipleOf):
+        self._MultipleOf = MultipleOf
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._ValueType = params.get("ValueType")
+        self._Description = params.get("Description")
+        self._Default = params.get("Default")
+        self._Unit = params.get("Unit")
+        self._Required = params.get("Required")
+        self._MinValue = params.get("MinValue")
+        self._MaxValue = params.get("MaxValue")
+        self._MinLength = params.get("MinLength")
+        self._MaxLength = params.get("MaxLength")
+        self._MinItems = params.get("MinItems")
+        self._MaxItems = params.get("MaxItems")
+        self._UniqueItems = params.get("UniqueItems")
+        self._AllowedPattern = params.get("AllowedPattern")
+        self._AllowedValues = params.get("AllowedValues")
+        self._MultipleOf = params.get("MultipleOf")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

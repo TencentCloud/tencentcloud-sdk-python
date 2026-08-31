@@ -431,7 +431,9 @@ class ArchiveLogModel(AbstractModel):
 
 
 class AutoScalingConfig(AbstractModel):
-    r"""serverless实例的ccu范围
+    r"""serverless实例的资源范围
+    ResourceType 为 cpu 时表示 ccu
+    为 nodecount 时表示节点数范围
 
     """
 
@@ -443,9 +445,12 @@ class AutoScalingConfig(AbstractModel):
         :param _RangeMax: <p>ccu最大值</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type RangeMax: float
+        :param _ResourceType: <p>返回的 range 参数对应的资源类型</p><p>枚举值：</p><ul><li>cpu： 返回的是 cpu 调整返回限制，当不存在mem限制时代表 ccu</li><li>nodecount： 返回的是水平扩缩容的节点数限制范围</li></ul>
+        :type ResourceType: str
         """
         self._RangeMin = None
         self._RangeMax = None
+        self._ResourceType = None
 
     @property
     def RangeMin(self):
@@ -471,10 +476,22 @@ class AutoScalingConfig(AbstractModel):
     def RangeMax(self, RangeMax):
         self._RangeMax = RangeMax
 
+    @property
+    def ResourceType(self):
+        r"""<p>返回的 range 参数对应的资源类型</p><p>枚举值：</p><ul><li>cpu： 返回的是 cpu 调整返回限制，当不存在mem限制时代表 ccu</li><li>nodecount： 返回的是水平扩缩容的节点数限制范围</li></ul>
+        :rtype: str
+        """
+        return self._ResourceType
+
+    @ResourceType.setter
+    def ResourceType(self, ResourceType):
+        self._ResourceType = ResourceType
+
 
     def _deserialize(self, params):
         self._RangeMin = params.get("RangeMin")
         self._RangeMax = params.get("RangeMax")
+        self._ResourceType = params.get("ResourceType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2574,7 +2591,7 @@ class CreateDBInstancesRequest(AbstractModel):
         :type TemplateId: str
         :param _SQLMode: <p>兼容模式，enum:MySQL,HBase</p>
         :type SQLMode: str
-        :param _AutoScaleConfig: <p>svls实例的ccu变配配置</p>
+        :param _AutoScaleConfig: <p>SVLS 实例的ccu变配配置</p><p>入参限制：同时传入 AutoScaleConfigs 时此参数不再生效</p>
         :type AutoScaleConfig: :class:`tencentcloud.tdmysql.v20211122.models.AutoScalingConfig`
         :param _SecurityGroupIds: <p>绑定安全组列表</p>
         :type SecurityGroupIds: list of str
@@ -2584,6 +2601,8 @@ class CreateDBInstancesRequest(AbstractModel):
         :type Password: str
         :param _EncryptionEnable: <p>是否开启透明加密，0：不开启，1：开启</p>
         :type EncryptionEnable: int
+        :param _AutoScaleConfigs: <p>SVLS 实例的自动变配相关限制</p><p>入参限制：传入时 AutoScaleConfig 参数不再生效</p>
+        :type AutoScaleConfigs: list of AutoScalingConfig
         """
         self._Zone = None
         self._VpcId = None
@@ -2619,6 +2638,7 @@ class CreateDBInstancesRequest(AbstractModel):
         self._UserName = None
         self._Password = None
         self._EncryptionEnable = None
+        self._AutoScaleConfigs = None
 
     @property
     def Zone(self):
@@ -2941,7 +2961,7 @@ class CreateDBInstancesRequest(AbstractModel):
 
     @property
     def AutoScaleConfig(self):
-        r"""<p>svls实例的ccu变配配置</p>
+        r"""<p>SVLS 实例的ccu变配配置</p><p>入参限制：同时传入 AutoScaleConfigs 时此参数不再生效</p>
         :rtype: :class:`tencentcloud.tdmysql.v20211122.models.AutoScalingConfig`
         """
         return self._AutoScaleConfig
@@ -2994,6 +3014,17 @@ class CreateDBInstancesRequest(AbstractModel):
     def EncryptionEnable(self, EncryptionEnable):
         self._EncryptionEnable = EncryptionEnable
 
+    @property
+    def AutoScaleConfigs(self):
+        r"""<p>SVLS 实例的自动变配相关限制</p><p>入参限制：传入时 AutoScaleConfig 参数不再生效</p>
+        :rtype: list of AutoScalingConfig
+        """
+        return self._AutoScaleConfigs
+
+    @AutoScaleConfigs.setter
+    def AutoScaleConfigs(self, AutoScaleConfigs):
+        self._AutoScaleConfigs = AutoScaleConfigs
+
 
     def _deserialize(self, params):
         self._Zone = params.get("Zone")
@@ -3042,6 +3073,12 @@ class CreateDBInstancesRequest(AbstractModel):
         self._UserName = params.get("UserName")
         self._Password = params.get("Password")
         self._EncryptionEnable = params.get("EncryptionEnable")
+        if params.get("AutoScaleConfigs") is not None:
+            self._AutoScaleConfigs = []
+            for item in params.get("AutoScaleConfigs"):
+                obj = AutoScalingConfig()
+                obj._deserialize(item)
+                self._AutoScaleConfigs.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4443,6 +4480,8 @@ class DescribeDBInstanceDetailResponse(AbstractModel):
         :type EncryptionEnable: int
         :param _EncryptionKmsRegion: <p>真实使用的kms地域，用于后续调用kms服务</p>
         :type EncryptionKmsRegion: str
+        :param _AutoScaleConfigs: <p>serverless自动变配配置</p>
+        :type AutoScaleConfigs: list of AutoScalingConfig
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -4507,6 +4546,7 @@ class DescribeDBInstanceDetailResponse(AbstractModel):
         self._MaintenanceWindow = None
         self._EncryptionEnable = None
         self._EncryptionKmsRegion = None
+        self._AutoScaleConfigs = None
         self._RequestId = None
 
     @property
@@ -5186,6 +5226,17 @@ class DescribeDBInstanceDetailResponse(AbstractModel):
         self._EncryptionKmsRegion = EncryptionKmsRegion
 
     @property
+    def AutoScaleConfigs(self):
+        r"""<p>serverless自动变配配置</p>
+        :rtype: list of AutoScalingConfig
+        """
+        return self._AutoScaleConfigs
+
+    @AutoScaleConfigs.setter
+    def AutoScaleConfigs(self, AutoScaleConfigs):
+        self._AutoScaleConfigs = AutoScaleConfigs
+
+    @property
     def RequestId(self):
         r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -5285,6 +5336,12 @@ class DescribeDBInstanceDetailResponse(AbstractModel):
             self._MaintenanceWindow._deserialize(params.get("MaintenanceWindow"))
         self._EncryptionEnable = params.get("EncryptionEnable")
         self._EncryptionKmsRegion = params.get("EncryptionKmsRegion")
+        if params.get("AutoScaleConfigs") is not None:
+            self._AutoScaleConfigs = []
+            for item in params.get("AutoScaleConfigs"):
+                obj = AutoScalingConfig()
+                obj._deserialize(item)
+                self._AutoScaleConfigs.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -5303,11 +5360,17 @@ class DescribeDBInstancesRequest(AbstractModel):
         :type Offset: int
         :param _EngineType: <p>指定查询引擎类型</p><p>枚举值：</p><ul><li>libra： 列存引擎</li></ul>
         :type EngineType: str
+        :param _OrderBy: <p>查询Order By字段，支持 StorageNodeNum/CreateTime/CreateVersion</p>
+        :type OrderBy: str
+        :param _OrderDirection: <p>排序方向</p><p>枚举值：</p><ul><li>ASC： 升序</li><li>DESC： 降序</li></ul><p>默认值：DESC</p>
+        :type OrderDirection: str
         """
         self._Filters = None
         self._Limit = None
         self._Offset = None
         self._EngineType = None
+        self._OrderBy = None
+        self._OrderDirection = None
 
     @property
     def Filters(self):
@@ -5353,6 +5416,28 @@ class DescribeDBInstancesRequest(AbstractModel):
     def EngineType(self, EngineType):
         self._EngineType = EngineType
 
+    @property
+    def OrderBy(self):
+        r"""<p>查询Order By字段，支持 StorageNodeNum/CreateTime/CreateVersion</p>
+        :rtype: str
+        """
+        return self._OrderBy
+
+    @OrderBy.setter
+    def OrderBy(self, OrderBy):
+        self._OrderBy = OrderBy
+
+    @property
+    def OrderDirection(self):
+        r"""<p>排序方向</p><p>枚举值：</p><ul><li>ASC： 升序</li><li>DESC： 降序</li></ul><p>默认值：DESC</p>
+        :rtype: str
+        """
+        return self._OrderDirection
+
+    @OrderDirection.setter
+    def OrderDirection(self, OrderDirection):
+        self._OrderDirection = OrderDirection
+
 
     def _deserialize(self, params):
         if params.get("Filters") is not None:
@@ -5364,6 +5449,8 @@ class DescribeDBInstancesRequest(AbstractModel):
         self._Limit = params.get("Limit")
         self._Offset = params.get("Offset")
         self._EngineType = params.get("EngineType")
+        self._OrderBy = params.get("OrderBy")
+        self._OrderDirection = params.get("OrderDirection")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -8298,11 +8385,14 @@ class DescribeSpecsResponse(AbstractModel):
         :type HybridNodeSpecs: list of StorageNodeSpec
         :param _ServerlessCcuSpec: <p>svls节点售卖规格列表</p>
         :type ServerlessCcuSpec: list of ServerlessCcu
+        :param _ServerlessNodeNumSpec: <p>serverless节点数量配置</p>
+        :type ServerlessNodeNumSpec: :class:`tencentcloud.tdmysql.v20211122.models.ServerlessNodeNumSpec`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._HybridNodeSpecs = None
         self._ServerlessCcuSpec = None
+        self._ServerlessNodeNumSpec = None
         self._RequestId = None
 
     @property
@@ -8329,6 +8419,17 @@ class DescribeSpecsResponse(AbstractModel):
         self._ServerlessCcuSpec = ServerlessCcuSpec
 
     @property
+    def ServerlessNodeNumSpec(self):
+        r"""<p>serverless节点数量配置</p>
+        :rtype: :class:`tencentcloud.tdmysql.v20211122.models.ServerlessNodeNumSpec`
+        """
+        return self._ServerlessNodeNumSpec
+
+    @ServerlessNodeNumSpec.setter
+    def ServerlessNodeNumSpec(self, ServerlessNodeNumSpec):
+        self._ServerlessNodeNumSpec = ServerlessNodeNumSpec
+
+    @property
     def RequestId(self):
         r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -8353,6 +8454,9 @@ class DescribeSpecsResponse(AbstractModel):
                 obj = ServerlessCcu()
                 obj._deserialize(item)
                 self._ServerlessCcuSpec.append(obj)
+        if params.get("ServerlessNodeNumSpec") is not None:
+            self._ServerlessNodeNumSpec = ServerlessNodeNumSpec()
+            self._ServerlessNodeNumSpec._deserialize(params.get("ServerlessNodeNumSpec"))
         self._RequestId = params.get("RequestId")
 
 
@@ -9296,6 +9400,8 @@ class InstanceInfo(AbstractModel):
         :type AnalysisRelationInfos: list of AnalysisRelationInfo
         :param _AnalysisInstanceInfo: <p>分析引擎实例信息</p>
         :type AnalysisInstanceInfo: :class:`tencentcloud.tdmysql.v20211122.models.AnalysisInstanceInfo`
+        :param _AutoScaleConfigs: <p>有关该实例的多个自动变配相关配置，ccu、nodecount 值</p>
+        :type AutoScaleConfigs: list of AutoScalingConfig
         """
         self._ComputeNodeNum = None
         self._Zone = None
@@ -9360,6 +9466,7 @@ class InstanceInfo(AbstractModel):
         self._AnalysisMode = None
         self._AnalysisRelationInfos = None
         self._AnalysisInstanceInfo = None
+        self._AutoScaleConfigs = None
 
     @property
     def ComputeNodeNum(self):
@@ -10130,6 +10237,17 @@ class InstanceInfo(AbstractModel):
     def AnalysisInstanceInfo(self, AnalysisInstanceInfo):
         self._AnalysisInstanceInfo = AnalysisInstanceInfo
 
+    @property
+    def AutoScaleConfigs(self):
+        r"""<p>有关该实例的多个自动变配相关配置，ccu、nodecount 值</p>
+        :rtype: list of AutoScalingConfig
+        """
+        return self._AutoScaleConfigs
+
+    @AutoScaleConfigs.setter
+    def AutoScaleConfigs(self, AutoScaleConfigs):
+        self._AutoScaleConfigs = AutoScaleConfigs
+
 
     def _deserialize(self, params):
         self._ComputeNodeNum = params.get("ComputeNodeNum")
@@ -10219,6 +10337,12 @@ class InstanceInfo(AbstractModel):
         if params.get("AnalysisInstanceInfo") is not None:
             self._AnalysisInstanceInfo = AnalysisInstanceInfo()
             self._AnalysisInstanceInfo._deserialize(params.get("AnalysisInstanceInfo"))
+        if params.get("AutoScaleConfigs") is not None:
+            self._AutoScaleConfigs = []
+            for item in params.get("AutoScaleConfigs"):
+                obj = AutoScalingConfig()
+                obj._deserialize(item)
+                self._AutoScaleConfigs.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -13217,9 +13341,9 @@ class ServerlessCcu(AbstractModel):
     def __init__(self):
         r"""
         :param _MinCcu: <p>ccu最小值</p>
-        :type MinCcu: int
+        :type MinCcu: float
         :param _MaxCcu: <p>ccu最大值范围</p>
-        :type MaxCcu: list of int
+        :type MaxCcu: list of float
         """
         self._MinCcu = None
         self._MaxCcu = None
@@ -13227,7 +13351,7 @@ class ServerlessCcu(AbstractModel):
     @property
     def MinCcu(self):
         r"""<p>ccu最小值</p>
-        :rtype: int
+        :rtype: float
         """
         return self._MinCcu
 
@@ -13238,7 +13362,7 @@ class ServerlessCcu(AbstractModel):
     @property
     def MaxCcu(self):
         r"""<p>ccu最大值范围</p>
-        :rtype: list of int
+        :rtype: list of float
         """
         return self._MaxCcu
 
@@ -13250,6 +13374,57 @@ class ServerlessCcu(AbstractModel):
     def _deserialize(self, params):
         self._MinCcu = params.get("MinCcu")
         self._MaxCcu = params.get("MaxCcu")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ServerlessNodeNumSpec(AbstractModel):
+    r"""Serverless 实例允许调整的 hybrid 节点数量上下限
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MinNodeNum: <p>最小节点数</p>
+        :type MinNodeNum: int
+        :param _MaxNodeNum: <p>最大节点数</p>
+        :type MaxNodeNum: int
+        """
+        self._MinNodeNum = None
+        self._MaxNodeNum = None
+
+    @property
+    def MinNodeNum(self):
+        r"""<p>最小节点数</p>
+        :rtype: int
+        """
+        return self._MinNodeNum
+
+    @MinNodeNum.setter
+    def MinNodeNum(self, MinNodeNum):
+        self._MinNodeNum = MinNodeNum
+
+    @property
+    def MaxNodeNum(self):
+        r"""<p>最大节点数</p>
+        :rtype: int
+        """
+        return self._MaxNodeNum
+
+    @MaxNodeNum.setter
+    def MaxNodeNum(self, MaxNodeNum):
+        self._MaxNodeNum = MaxNodeNum
+
+
+    def _deserialize(self, params):
+        self._MinNodeNum = params.get("MinNodeNum")
+        self._MaxNodeNum = params.get("MaxNodeNum")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

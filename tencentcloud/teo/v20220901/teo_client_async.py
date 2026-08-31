@@ -1522,6 +1522,24 @@ class TeoClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeAvailableCustomActionsForRuleEngine(
+            self,
+            request: models.DescribeAvailableCustomActionsForRuleEngineRequest,
+            opts: Dict = None,
+    ) -> models.DescribeAvailableCustomActionsForRuleEngineResponse:
+        """
+        查询站点规则引擎操作可用的定制配置列表。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeAvailableCustomActionsForRuleEngine"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeAvailableCustomActionsForRuleEngineResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeAvailablePlans(
             self,
             request: models.DescribeAvailablePlansRequest,

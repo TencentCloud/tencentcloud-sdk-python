@@ -3467,6 +3467,8 @@ class CreateCloudAppRequest(AbstractModel):
         :type CustomSteps: list of BuildStep
         :param _Secrets: <p>敏感凭证（AES 加密落库），构建容器中以 $SECRET_NAME 引用</p>
         :type Secrets: list of BuildSecret
+        :param _NodeJsVersion: <p>选择 NodeRuntime 版本: 16,18,20,22,24 等</p>
+        :type NodeJsVersion: str
         """
         self._EnvId = None
         self._ServiceName = None
@@ -3478,6 +3480,7 @@ class CreateCloudAppRequest(AbstractModel):
         self._Env = None
         self._CustomSteps = None
         self._Secrets = None
+        self._NodeJsVersion = None
 
     @property
     def EnvId(self):
@@ -3589,6 +3592,17 @@ class CreateCloudAppRequest(AbstractModel):
     def Secrets(self, Secrets):
         self._Secrets = Secrets
 
+    @property
+    def NodeJsVersion(self):
+        r"""<p>选择 NodeRuntime 版本: 16,18,20,22,24 等</p>
+        :rtype: str
+        """
+        return self._NodeJsVersion
+
+    @NodeJsVersion.setter
+    def NodeJsVersion(self, NodeJsVersion):
+        self._NodeJsVersion = NodeJsVersion
+
 
     def _deserialize(self, params):
         self._EnvId = params.get("EnvId")
@@ -3622,6 +3636,7 @@ class CreateCloudAppRequest(AbstractModel):
                 obj = BuildSecret()
                 obj._deserialize(item)
                 self._Secrets.append(obj)
+        self._NodeJsVersion = params.get("NodeJsVersion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -19749,6 +19764,85 @@ class ModifyDatabaseACLRequest(AbstractModel):
 
 class ModifyDatabaseACLResponse(AbstractModel):
     r"""ModifyDatabaseACL返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyEnvExtraRequest(AbstractModel):
+    r"""ModifyEnvExtra请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EnvId: <p>环境ID</p>
+        :type EnvId: str
+        :param _EnableOverrun: <p>开启或关闭 <code>超限转按量</code>。<br>可取值： TRUE/FALSE （字符串类型）<br>非法制、不传、为空 则不变更该字段。</p>
+        :type EnableOverrun: str
+        """
+        self._EnvId = None
+        self._EnableOverrun = None
+
+    @property
+    def EnvId(self):
+        r"""<p>环境ID</p>
+        :rtype: str
+        """
+        return self._EnvId
+
+    @EnvId.setter
+    def EnvId(self, EnvId):
+        self._EnvId = EnvId
+
+    @property
+    def EnableOverrun(self):
+        r"""<p>开启或关闭 <code>超限转按量</code>。<br>可取值： TRUE/FALSE （字符串类型）<br>非法制、不传、为空 则不变更该字段。</p>
+        :rtype: str
+        """
+        return self._EnableOverrun
+
+    @EnableOverrun.setter
+    def EnableOverrun(self, EnableOverrun):
+        self._EnableOverrun = EnableOverrun
+
+
+    def _deserialize(self, params):
+        self._EnvId = params.get("EnvId")
+        self._EnableOverrun = params.get("EnableOverrun")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyEnvExtraResponse(AbstractModel):
+    r"""ModifyEnvExtra返回参数结构体
 
     """
 

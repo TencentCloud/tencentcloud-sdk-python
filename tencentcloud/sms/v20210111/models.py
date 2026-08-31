@@ -1091,6 +1091,180 @@ class DescribePhoneNumberInfoResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeSendRecordListRequest(AbstractModel):
+    r"""DescribeSendRecordList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PhoneNumber: <p>下发的手机号码，依据 E.164 标准为：+[国家（或地区）码][手机号] ，示例如：+8613601238015， 其中前面有一个+号 ，86为国家码，13601238015为手机号。</p>
+        :type PhoneNumber: str
+        :param _SmsSdkAppId: <p>短信 SdkAppId 在 <a href="https://console.cloud.tencent.com/smsv2/app-manage">短信控制台</a>  添加应用后生成的实际 SdkAppId。</p>
+        :type SmsSdkAppId: str
+        :param _BeginTime: <p>查询起始时间，以短信发送时间为准，UNIX 时间戳（单位：秒）。注：最早可查询当前时间前 72 小时的数据。</p><p>单位：秒</p>
+        :type BeginTime: int
+        :param _EndTime: <p>查询截止时间，以短信发送时间为准，UNIX 时间戳（时间：秒）。注：不可以超过当前时间。</p><p>单位：秒</p><p>默认值：腾讯云服务当前时间</p>
+        :type EndTime: int
+        :param _Limit: <p>单次查询最大条数。</p><p>取值范围：[1, 50]</p><p>默认值：20</p>
+        :type Limit: int
+        :param _Offset: <p>偏移量。 </p><p>取值范围：[0, 1000]</p><p>默认值：0</p><p>注：查询范围内超过 1000 条记录将被截断，最大查询 1000 条，查询记录按发送时间降序。</p>
+        :type Offset: int
+        """
+        self._PhoneNumber = None
+        self._SmsSdkAppId = None
+        self._BeginTime = None
+        self._EndTime = None
+        self._Limit = None
+        self._Offset = None
+
+    @property
+    def PhoneNumber(self):
+        r"""<p>下发的手机号码，依据 E.164 标准为：+[国家（或地区）码][手机号] ，示例如：+8613601238015， 其中前面有一个+号 ，86为国家码，13601238015为手机号。</p>
+        :rtype: str
+        """
+        return self._PhoneNumber
+
+    @PhoneNumber.setter
+    def PhoneNumber(self, PhoneNumber):
+        self._PhoneNumber = PhoneNumber
+
+    @property
+    def SmsSdkAppId(self):
+        r"""<p>短信 SdkAppId 在 <a href="https://console.cloud.tencent.com/smsv2/app-manage">短信控制台</a>  添加应用后生成的实际 SdkAppId。</p>
+        :rtype: str
+        """
+        return self._SmsSdkAppId
+
+    @SmsSdkAppId.setter
+    def SmsSdkAppId(self, SmsSdkAppId):
+        self._SmsSdkAppId = SmsSdkAppId
+
+    @property
+    def BeginTime(self):
+        r"""<p>查询起始时间，以短信发送时间为准，UNIX 时间戳（单位：秒）。注：最早可查询当前时间前 72 小时的数据。</p><p>单位：秒</p>
+        :rtype: int
+        """
+        return self._BeginTime
+
+    @BeginTime.setter
+    def BeginTime(self, BeginTime):
+        self._BeginTime = BeginTime
+
+    @property
+    def EndTime(self):
+        r"""<p>查询截止时间，以短信发送时间为准，UNIX 时间戳（时间：秒）。注：不可以超过当前时间。</p><p>单位：秒</p><p>默认值：腾讯云服务当前时间</p>
+        :rtype: int
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def Limit(self):
+        r"""<p>单次查询最大条数。</p><p>取值范围：[1, 50]</p><p>默认值：20</p>
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        r"""<p>偏移量。 </p><p>取值范围：[0, 1000]</p><p>默认值：0</p><p>注：查询范围内超过 1000 条记录将被截断，最大查询 1000 条，查询记录按发送时间降序。</p>
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+
+    def _deserialize(self, params):
+        self._PhoneNumber = params.get("PhoneNumber")
+        self._SmsSdkAppId = params.get("SmsSdkAppId")
+        self._BeginTime = params.get("BeginTime")
+        self._EndTime = params.get("EndTime")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeSendRecordListResponse(AbstractModel):
+    r"""DescribeSendRecordList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SendRecordSet: <p>短信下发记录集合。</p>
+        :type SendRecordSet: list of SendRecord
+        :param _TotalCount: <p>查询时间范围内的下发记录总数，注：最大支持查询单个下发手机号码 72 小时内的 1000 条记录。</p>
+        :type TotalCount: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._SendRecordSet = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def SendRecordSet(self):
+        r"""<p>短信下发记录集合。</p>
+        :rtype: list of SendRecord
+        """
+        return self._SendRecordSet
+
+    @SendRecordSet.setter
+    def SendRecordSet(self, SendRecordSet):
+        self._SendRecordSet = SendRecordSet
+
+    @property
+    def TotalCount(self):
+        r"""<p>查询时间范围内的下发记录总数，注：最大支持查询单个下发手机号码 72 小时内的 1000 条记录。</p>
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("SendRecordSet") is not None:
+            self._SendRecordSet = []
+            for item in params.get("SendRecordSet"):
+                obj = SendRecord()
+                obj._deserialize(item)
+                self._SendRecordSet.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeSignListStatus(AbstractModel):
     r"""获取短信签名信息响应
 
@@ -3500,6 +3674,162 @@ class SendMultiStatus(AbstractModel):
         self._Code = params.get("Code")
         self._Message = params.get("Message")
         self._IsoCode = params.get("IsoCode")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SendRecord(AbstractModel):
+    r"""短信发送记录信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PhoneNumber: <p>下发的手机号码，依据 E.164 标准为：+[国家（或地区）码][手机号] ，示例如：+8613601238015， 其中前面有一个+号 ，86为国家码，13601238015为手机号。</p>
+        :type PhoneNumber: str
+        :param _SerialNo: <p>发送流水号，与短信发送接口返回的发送流水号一致。</p>
+        :type SerialNo: str
+        :param _SendStatus: <p>发送状态。</p><p>枚举值：</p><ul><li>1： 提交失败</li><li>2： 提交成功，送达成功</li><li>3： 提交成功，发送中</li><li>4： 提交成功，送达失败</li></ul>
+        :type SendStatus: int
+        :param _RequestCode: <p>请求状态码，可参考 <a href="https://cloud.tencent.com/document/api/382/59177#.E7.9F.AD.E4.BF.A1-API-3.0-.E5.8F.91.E9.80.81.E9.94.99.E8.AF.AF.E7.A0.81">短信 API 3.0 发送错误码</a>。</p>
+        :type RequestCode: str
+        :param _StatusCode: <p>回执状态码，仅发送状态为 2（提交成功，送达成功）和 4（提交成功，送达失败）时有值，其余状态为空字符串，可参考 <a href="https://cloud.tencent.com/document/product/382/59177#.E5.9B.9E.E6.89.A7.E7.8A.B6.E6.80.81.E9.94.99.E8.AF.AF.E7.A0.81">回执状态错误码</a>。</p>
+        :type StatusCode: str
+        :param _IsoCode: <p>国家码或地区码，例如 CN、US 等，对于未识别出国家码或者地区码，默认返回 DEF，具体支持列表请参考 <a href="https://cloud.tencent.com/document/product/382/18051#402a55da-83ac-4e79-a604-b9de0c507756">国际/港澳台短信价格总览</a>。</p>
+        :type IsoCode: str
+        :param _Content: <p>短信下发内容，为保证信息安全，短信中的部分入参信息会脱敏存储，对应发送记录查询结果中包含的打码内容，用户实际接收到的短信内容为正常完整内容。有疑问可咨询 <a href="https://cloud.tencent.com/document/product/382/3773#.E6.8A.80.E6.9C.AF.E4.BA.A4.E6.B5.81">腾讯云小助手</a> 。</p>
+        :type Content: str
+        :param _SendTime: <p>发送时间，UNIX 时间戳（秒）。</p><p>单位：秒</p>
+        :type SendTime: int
+        :param _UserReceiveTime: <p>用户实际收到短信的时间，UNIX 时间戳（秒），仅发送状态为2（提交成功，送达成功）时有值 ，其余状态默认为 0 。</p><p>单位：秒</p>
+        :type UserReceiveTime: int
+        """
+        self._PhoneNumber = None
+        self._SerialNo = None
+        self._SendStatus = None
+        self._RequestCode = None
+        self._StatusCode = None
+        self._IsoCode = None
+        self._Content = None
+        self._SendTime = None
+        self._UserReceiveTime = None
+
+    @property
+    def PhoneNumber(self):
+        r"""<p>下发的手机号码，依据 E.164 标准为：+[国家（或地区）码][手机号] ，示例如：+8613601238015， 其中前面有一个+号 ，86为国家码，13601238015为手机号。</p>
+        :rtype: str
+        """
+        return self._PhoneNumber
+
+    @PhoneNumber.setter
+    def PhoneNumber(self, PhoneNumber):
+        self._PhoneNumber = PhoneNumber
+
+    @property
+    def SerialNo(self):
+        r"""<p>发送流水号，与短信发送接口返回的发送流水号一致。</p>
+        :rtype: str
+        """
+        return self._SerialNo
+
+    @SerialNo.setter
+    def SerialNo(self, SerialNo):
+        self._SerialNo = SerialNo
+
+    @property
+    def SendStatus(self):
+        r"""<p>发送状态。</p><p>枚举值：</p><ul><li>1： 提交失败</li><li>2： 提交成功，送达成功</li><li>3： 提交成功，发送中</li><li>4： 提交成功，送达失败</li></ul>
+        :rtype: int
+        """
+        return self._SendStatus
+
+    @SendStatus.setter
+    def SendStatus(self, SendStatus):
+        self._SendStatus = SendStatus
+
+    @property
+    def RequestCode(self):
+        r"""<p>请求状态码，可参考 <a href="https://cloud.tencent.com/document/api/382/59177#.E7.9F.AD.E4.BF.A1-API-3.0-.E5.8F.91.E9.80.81.E9.94.99.E8.AF.AF.E7.A0.81">短信 API 3.0 发送错误码</a>。</p>
+        :rtype: str
+        """
+        return self._RequestCode
+
+    @RequestCode.setter
+    def RequestCode(self, RequestCode):
+        self._RequestCode = RequestCode
+
+    @property
+    def StatusCode(self):
+        r"""<p>回执状态码，仅发送状态为 2（提交成功，送达成功）和 4（提交成功，送达失败）时有值，其余状态为空字符串，可参考 <a href="https://cloud.tencent.com/document/product/382/59177#.E5.9B.9E.E6.89.A7.E7.8A.B6.E6.80.81.E9.94.99.E8.AF.AF.E7.A0.81">回执状态错误码</a>。</p>
+        :rtype: str
+        """
+        return self._StatusCode
+
+    @StatusCode.setter
+    def StatusCode(self, StatusCode):
+        self._StatusCode = StatusCode
+
+    @property
+    def IsoCode(self):
+        r"""<p>国家码或地区码，例如 CN、US 等，对于未识别出国家码或者地区码，默认返回 DEF，具体支持列表请参考 <a href="https://cloud.tencent.com/document/product/382/18051#402a55da-83ac-4e79-a604-b9de0c507756">国际/港澳台短信价格总览</a>。</p>
+        :rtype: str
+        """
+        return self._IsoCode
+
+    @IsoCode.setter
+    def IsoCode(self, IsoCode):
+        self._IsoCode = IsoCode
+
+    @property
+    def Content(self):
+        r"""<p>短信下发内容，为保证信息安全，短信中的部分入参信息会脱敏存储，对应发送记录查询结果中包含的打码内容，用户实际接收到的短信内容为正常完整内容。有疑问可咨询 <a href="https://cloud.tencent.com/document/product/382/3773#.E6.8A.80.E6.9C.AF.E4.BA.A4.E6.B5.81">腾讯云小助手</a> 。</p>
+        :rtype: str
+        """
+        return self._Content
+
+    @Content.setter
+    def Content(self, Content):
+        self._Content = Content
+
+    @property
+    def SendTime(self):
+        r"""<p>发送时间，UNIX 时间戳（秒）。</p><p>单位：秒</p>
+        :rtype: int
+        """
+        return self._SendTime
+
+    @SendTime.setter
+    def SendTime(self, SendTime):
+        self._SendTime = SendTime
+
+    @property
+    def UserReceiveTime(self):
+        r"""<p>用户实际收到短信的时间，UNIX 时间戳（秒），仅发送状态为2（提交成功，送达成功）时有值 ，其余状态默认为 0 。</p><p>单位：秒</p>
+        :rtype: int
+        """
+        return self._UserReceiveTime
+
+    @UserReceiveTime.setter
+    def UserReceiveTime(self, UserReceiveTime):
+        self._UserReceiveTime = UserReceiveTime
+
+
+    def _deserialize(self, params):
+        self._PhoneNumber = params.get("PhoneNumber")
+        self._SerialNo = params.get("SerialNo")
+        self._SendStatus = params.get("SendStatus")
+        self._RequestCode = params.get("RequestCode")
+        self._StatusCode = params.get("StatusCode")
+        self._IsoCode = params.get("IsoCode")
+        self._Content = params.get("Content")
+        self._SendTime = params.get("SendTime")
+        self._UserReceiveTime = params.get("UserReceiveTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

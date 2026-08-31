@@ -1634,6 +1634,24 @@ class TcbClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def ModifyEnvExtra(
+            self,
+            request: models.ModifyEnvExtraRequest,
+            opts: Dict = None,
+    ) -> models.ModifyEnvExtraResponse:
+        """
+        修改环境额外配置
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyEnvExtra"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyEnvExtraResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ModifyEnvPlan(
             self,
             request: models.ModifyEnvPlanRequest,

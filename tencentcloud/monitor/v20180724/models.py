@@ -4923,47 +4923,49 @@ class CreateAlarmPolicyRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Module: 固定值，为"monitor"
+        :param _Module: <p>固定值，为&quot;monitor&quot;</p>
         :type Module: str
-        :param _PolicyName: 策略名称，不超过60字符
+        :param _PolicyName: <p>策略名称，不超过60字符</p>
         :type PolicyName: str
-        :param _MonitorType: 监控类型 MT_QCE=云产品监控
+        :param _MonitorType: <p>监控类型 MT_QCE=云产品监控</p>
         :type MonitorType: str
-        :param _Namespace: 告警策略类型，由 [DescribeAllNamespaces](https://cloud.tencent.com/document/product/248/48683) 获得。对于云产品监控，取接口出参的 QceNamespacesNew.N.Id，例如 cvm_device
+        :param _Namespace: <p>告警策略类型，由 <a href="https://cloud.tencent.com/document/product/248/48683">DescribeAllNamespaces</a> 获得。对于云产品监控，取接口出参的 QceNamespacesNew.N.Id，例如 cvm_device</p>
         :type Namespace: str
-        :param _Remark: 备注，不超过100字符，仅支持中英文、数字、下划线、-
+        :param _Remark: <p>备注，不超过100字符，仅支持中英文、数字、下划线、-</p>
         :type Remark: str
-        :param _Enable: 是否启用 0=停用 1=启用，可不传 默认为1
+        :param _Enable: <p>是否启用 0=停用 1=启用，可不传 默认为1</p>
         :type Enable: int
-        :param _ProjectId: 项目 Id，对于区分项目的产品必须传入非 -1 的值。 -1=无项目 0=默认项目，如不传 默认为 -1。支持的项目 Id 可以在控制台 [账号中心-项目管理](https://console.cloud.tencent.com/project) 中查看。
+        :param _ProjectId: <p>项目 Id，对于区分项目的产品必须传入非 -1 的值。 -1=无项目 0=默认项目，如不传 默认为 -1。支持的项目 Id 可以在控制台 <a href="https://console.cloud.tencent.com/project">账号中心-项目管理</a> 中查看。</p>
         :type ProjectId: int
-        :param _ConditionTemplateId: 触发条件模板 Id，该参数与 Condition 参数二选一。如果策略绑定触发条件模板，则传该参数；否则不传该参数，而是传 Condition 参数。触发条件模板 Id 可以从 [DescribeConditionsTemplateList](https://cloud.tencent.com/document/api/248/70250) 接口获取。
+        :param _ConditionTemplateId: <p>触发条件模板 Id，该参数与 Condition 参数二选一。如果策略绑定触发条件模板，则传该参数；否则不传该参数，而是传 Condition 参数。触发条件模板 Id 可以从 <a href="https://cloud.tencent.com/document/api/248/70250">DescribeConditionsTemplateList</a> 接口获取。</p>
         :type ConditionTemplateId: int
-        :param _Condition: 指标触发条件，支持的指标可以从 [DescribeAlarmMetrics](https://cloud.tencent.com/document/product/248/51283) 查询。
+        :param _Condition: <p>指标触发条件，支持的指标可以从 <a href="https://cloud.tencent.com/document/product/248/51283">DescribeAlarmMetrics</a> 查询。</p>
         :type Condition: :class:`tencentcloud.monitor.v20180724.models.AlarmPolicyCondition`
-        :param _EventCondition: 事件触发条件，支持的事件可以从 [DescribeAlarmEvents](https://cloud.tencent.com/document/product/248/51284) 查询。
+        :param _EventCondition: <p>事件触发条件，支持的事件可以从 <a href="https://cloud.tencent.com/document/product/248/51284">DescribeAlarmEvents</a> 查询。</p>
         :type EventCondition: :class:`tencentcloud.monitor.v20180724.models.AlarmPolicyEventCondition`
-        :param _NoticeIds: 通知规则 Id 列表，由 [DescribeAlarmNotices](https://cloud.tencent.com/document/product/248/51280) 获得
+        :param _NoticeIds: <p>通知规则 Id 列表，由 <a href="https://cloud.tencent.com/document/product/248/51280">DescribeAlarmNotices</a> 获得</p>
         :type NoticeIds: list of str
-        :param _TriggerTasks: 触发任务列表
+        :param _TriggerTasks: <p>触发任务列表</p>
         :type TriggerTasks: list of AlarmPolicyTriggerTask
-        :param _Filter: 全局过滤条件
+        :param _Filter: <p>全局过滤条件</p>
         :type Filter: :class:`tencentcloud.monitor.v20180724.models.AlarmPolicyFilter`
-        :param _GroupBy: 聚合维度列表，指定按哪些维度 key 来做 group by
+        :param _GroupBy: <p>聚合维度列表，指定按哪些维度 key 来做 group by</p>
         :type GroupBy: list of str
-        :param _Tags: 模板绑定的标签
+        :param _IsBindAll: <p>是否绑定全部对象。如果是的话，不需要再传filter或者调用BindPolicyObject，0=否，1=是，默认为否</p><p>取值范围：[0, 1]</p><p>默认值：0</p><p>不是所有策略类型都支持绑定全部对象</p>
+        :type IsBindAll: int
+        :param _Tags: <p>模板绑定的标签</p>
         :type Tags: list of Tag
-        :param _LogAlarmReqInfo: 日志告警信息
+        :param _LogAlarmReqInfo: <p>日志告警信息</p>
         :type LogAlarmReqInfo: :class:`tencentcloud.monitor.v20180724.models.LogAlarmReq`
-        :param _HierarchicalNotices: 告警分级通知规则配置
+        :param _HierarchicalNotices: <p>告警分级通知规则配置</p>
         :type HierarchicalNotices: list of AlarmHierarchicalNotice
-        :param _MigrateFlag: 迁移策略专用字段，0-走鉴权逻辑，1-跳过鉴权逻辑
+        :param _MigrateFlag: <p>迁移策略专用字段，0-走鉴权逻辑，1-跳过鉴权逻辑</p>
         :type MigrateFlag: int
-        :param _EbSubject: 事件配置的告警
+        :param _EbSubject: <p>事件配置的告警</p>
         :type EbSubject: str
-        :param _AdditionalAlarmContent: 附加告警内容
+        :param _AdditionalAlarmContent: <p>附加告警内容</p>
         :type AdditionalAlarmContent: str
-        :param _NoticeContentTmplBindInfos: 通知模板绑定信息
+        :param _NoticeContentTmplBindInfos: <p>通知模板绑定信息</p>
         :type NoticeContentTmplBindInfos: list of NoticeContentTmplBindInfo
         """
         self._Module = None
@@ -4980,6 +4982,7 @@ class CreateAlarmPolicyRequest(AbstractModel):
         self._TriggerTasks = None
         self._Filter = None
         self._GroupBy = None
+        self._IsBindAll = None
         self._Tags = None
         self._LogAlarmReqInfo = None
         self._HierarchicalNotices = None
@@ -4990,7 +4993,7 @@ class CreateAlarmPolicyRequest(AbstractModel):
 
     @property
     def Module(self):
-        r"""固定值，为"monitor"
+        r"""<p>固定值，为&quot;monitor&quot;</p>
         :rtype: str
         """
         return self._Module
@@ -5001,7 +5004,7 @@ class CreateAlarmPolicyRequest(AbstractModel):
 
     @property
     def PolicyName(self):
-        r"""策略名称，不超过60字符
+        r"""<p>策略名称，不超过60字符</p>
         :rtype: str
         """
         return self._PolicyName
@@ -5012,7 +5015,7 @@ class CreateAlarmPolicyRequest(AbstractModel):
 
     @property
     def MonitorType(self):
-        r"""监控类型 MT_QCE=云产品监控
+        r"""<p>监控类型 MT_QCE=云产品监控</p>
         :rtype: str
         """
         return self._MonitorType
@@ -5023,7 +5026,7 @@ class CreateAlarmPolicyRequest(AbstractModel):
 
     @property
     def Namespace(self):
-        r"""告警策略类型，由 [DescribeAllNamespaces](https://cloud.tencent.com/document/product/248/48683) 获得。对于云产品监控，取接口出参的 QceNamespacesNew.N.Id，例如 cvm_device
+        r"""<p>告警策略类型，由 <a href="https://cloud.tencent.com/document/product/248/48683">DescribeAllNamespaces</a> 获得。对于云产品监控，取接口出参的 QceNamespacesNew.N.Id，例如 cvm_device</p>
         :rtype: str
         """
         return self._Namespace
@@ -5034,7 +5037,7 @@ class CreateAlarmPolicyRequest(AbstractModel):
 
     @property
     def Remark(self):
-        r"""备注，不超过100字符，仅支持中英文、数字、下划线、-
+        r"""<p>备注，不超过100字符，仅支持中英文、数字、下划线、-</p>
         :rtype: str
         """
         return self._Remark
@@ -5045,7 +5048,7 @@ class CreateAlarmPolicyRequest(AbstractModel):
 
     @property
     def Enable(self):
-        r"""是否启用 0=停用 1=启用，可不传 默认为1
+        r"""<p>是否启用 0=停用 1=启用，可不传 默认为1</p>
         :rtype: int
         """
         return self._Enable
@@ -5056,7 +5059,7 @@ class CreateAlarmPolicyRequest(AbstractModel):
 
     @property
     def ProjectId(self):
-        r"""项目 Id，对于区分项目的产品必须传入非 -1 的值。 -1=无项目 0=默认项目，如不传 默认为 -1。支持的项目 Id 可以在控制台 [账号中心-项目管理](https://console.cloud.tencent.com/project) 中查看。
+        r"""<p>项目 Id，对于区分项目的产品必须传入非 -1 的值。 -1=无项目 0=默认项目，如不传 默认为 -1。支持的项目 Id 可以在控制台 <a href="https://console.cloud.tencent.com/project">账号中心-项目管理</a> 中查看。</p>
         :rtype: int
         """
         return self._ProjectId
@@ -5067,7 +5070,7 @@ class CreateAlarmPolicyRequest(AbstractModel):
 
     @property
     def ConditionTemplateId(self):
-        r"""触发条件模板 Id，该参数与 Condition 参数二选一。如果策略绑定触发条件模板，则传该参数；否则不传该参数，而是传 Condition 参数。触发条件模板 Id 可以从 [DescribeConditionsTemplateList](https://cloud.tencent.com/document/api/248/70250) 接口获取。
+        r"""<p>触发条件模板 Id，该参数与 Condition 参数二选一。如果策略绑定触发条件模板，则传该参数；否则不传该参数，而是传 Condition 参数。触发条件模板 Id 可以从 <a href="https://cloud.tencent.com/document/api/248/70250">DescribeConditionsTemplateList</a> 接口获取。</p>
         :rtype: int
         """
         return self._ConditionTemplateId
@@ -5078,7 +5081,7 @@ class CreateAlarmPolicyRequest(AbstractModel):
 
     @property
     def Condition(self):
-        r"""指标触发条件，支持的指标可以从 [DescribeAlarmMetrics](https://cloud.tencent.com/document/product/248/51283) 查询。
+        r"""<p>指标触发条件，支持的指标可以从 <a href="https://cloud.tencent.com/document/product/248/51283">DescribeAlarmMetrics</a> 查询。</p>
         :rtype: :class:`tencentcloud.monitor.v20180724.models.AlarmPolicyCondition`
         """
         return self._Condition
@@ -5089,7 +5092,7 @@ class CreateAlarmPolicyRequest(AbstractModel):
 
     @property
     def EventCondition(self):
-        r"""事件触发条件，支持的事件可以从 [DescribeAlarmEvents](https://cloud.tencent.com/document/product/248/51284) 查询。
+        r"""<p>事件触发条件，支持的事件可以从 <a href="https://cloud.tencent.com/document/product/248/51284">DescribeAlarmEvents</a> 查询。</p>
         :rtype: :class:`tencentcloud.monitor.v20180724.models.AlarmPolicyEventCondition`
         """
         return self._EventCondition
@@ -5100,7 +5103,7 @@ class CreateAlarmPolicyRequest(AbstractModel):
 
     @property
     def NoticeIds(self):
-        r"""通知规则 Id 列表，由 [DescribeAlarmNotices](https://cloud.tencent.com/document/product/248/51280) 获得
+        r"""<p>通知规则 Id 列表，由 <a href="https://cloud.tencent.com/document/product/248/51280">DescribeAlarmNotices</a> 获得</p>
         :rtype: list of str
         """
         return self._NoticeIds
@@ -5111,7 +5114,7 @@ class CreateAlarmPolicyRequest(AbstractModel):
 
     @property
     def TriggerTasks(self):
-        r"""触发任务列表
+        r"""<p>触发任务列表</p>
         :rtype: list of AlarmPolicyTriggerTask
         """
         return self._TriggerTasks
@@ -5122,7 +5125,7 @@ class CreateAlarmPolicyRequest(AbstractModel):
 
     @property
     def Filter(self):
-        r"""全局过滤条件
+        r"""<p>全局过滤条件</p>
         :rtype: :class:`tencentcloud.monitor.v20180724.models.AlarmPolicyFilter`
         """
         return self._Filter
@@ -5133,7 +5136,7 @@ class CreateAlarmPolicyRequest(AbstractModel):
 
     @property
     def GroupBy(self):
-        r"""聚合维度列表，指定按哪些维度 key 来做 group by
+        r"""<p>聚合维度列表，指定按哪些维度 key 来做 group by</p>
         :rtype: list of str
         """
         return self._GroupBy
@@ -5143,8 +5146,19 @@ class CreateAlarmPolicyRequest(AbstractModel):
         self._GroupBy = GroupBy
 
     @property
+    def IsBindAll(self):
+        r"""<p>是否绑定全部对象。如果是的话，不需要再传filter或者调用BindPolicyObject，0=否，1=是，默认为否</p><p>取值范围：[0, 1]</p><p>默认值：0</p><p>不是所有策略类型都支持绑定全部对象</p>
+        :rtype: int
+        """
+        return self._IsBindAll
+
+    @IsBindAll.setter
+    def IsBindAll(self, IsBindAll):
+        self._IsBindAll = IsBindAll
+
+    @property
     def Tags(self):
-        r"""模板绑定的标签
+        r"""<p>模板绑定的标签</p>
         :rtype: list of Tag
         """
         return self._Tags
@@ -5155,7 +5169,7 @@ class CreateAlarmPolicyRequest(AbstractModel):
 
     @property
     def LogAlarmReqInfo(self):
-        r"""日志告警信息
+        r"""<p>日志告警信息</p>
         :rtype: :class:`tencentcloud.monitor.v20180724.models.LogAlarmReq`
         """
         return self._LogAlarmReqInfo
@@ -5166,7 +5180,7 @@ class CreateAlarmPolicyRequest(AbstractModel):
 
     @property
     def HierarchicalNotices(self):
-        r"""告警分级通知规则配置
+        r"""<p>告警分级通知规则配置</p>
         :rtype: list of AlarmHierarchicalNotice
         """
         return self._HierarchicalNotices
@@ -5177,7 +5191,7 @@ class CreateAlarmPolicyRequest(AbstractModel):
 
     @property
     def MigrateFlag(self):
-        r"""迁移策略专用字段，0-走鉴权逻辑，1-跳过鉴权逻辑
+        r"""<p>迁移策略专用字段，0-走鉴权逻辑，1-跳过鉴权逻辑</p>
         :rtype: int
         """
         return self._MigrateFlag
@@ -5188,7 +5202,7 @@ class CreateAlarmPolicyRequest(AbstractModel):
 
     @property
     def EbSubject(self):
-        r"""事件配置的告警
+        r"""<p>事件配置的告警</p>
         :rtype: str
         """
         return self._EbSubject
@@ -5199,7 +5213,7 @@ class CreateAlarmPolicyRequest(AbstractModel):
 
     @property
     def AdditionalAlarmContent(self):
-        r"""附加告警内容
+        r"""<p>附加告警内容</p>
         :rtype: str
         """
         return self._AdditionalAlarmContent
@@ -5210,7 +5224,7 @@ class CreateAlarmPolicyRequest(AbstractModel):
 
     @property
     def NoticeContentTmplBindInfos(self):
-        r"""通知模板绑定信息
+        r"""<p>通知模板绑定信息</p>
         :rtype: list of NoticeContentTmplBindInfo
         """
         return self._NoticeContentTmplBindInfos
@@ -5246,6 +5260,7 @@ class CreateAlarmPolicyRequest(AbstractModel):
             self._Filter = AlarmPolicyFilter()
             self._Filter._deserialize(params.get("Filter"))
         self._GroupBy = params.get("GroupBy")
+        self._IsBindAll = params.get("IsBindAll")
         if params.get("Tags") is not None:
             self._Tags = []
             for item in params.get("Tags"):
@@ -5287,9 +5302,9 @@ class CreateAlarmPolicyResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _PolicyId: 告警策略 ID
+        :param _PolicyId: <p>告警策略 ID</p>
         :type PolicyId: str
-        :param _OriginId: 可用于实例、实例组的绑定和解绑接口（[BindingPolicyObject](https://cloud.tencent.com/document/product/248/40421)、[UnBindingAllPolicyObject](https://cloud.tencent.com/document/product/248/40568)、[UnBindingPolicyObject](https://cloud.tencent.com/document/product/248/40567)）的策略 ID
+        :param _OriginId: <p>可用于实例、实例组的绑定和解绑接口（<a href="https://cloud.tencent.com/document/product/248/40421">BindingPolicyObject</a>、<a href="https://cloud.tencent.com/document/product/248/40568">UnBindingAllPolicyObject</a>、<a href="https://cloud.tencent.com/document/product/248/40567">UnBindingPolicyObject</a>）的策略 ID</p>
         :type OriginId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -5300,7 +5315,7 @@ class CreateAlarmPolicyResponse(AbstractModel):
 
     @property
     def PolicyId(self):
-        r"""告警策略 ID
+        r"""<p>告警策略 ID</p>
         :rtype: str
         """
         return self._PolicyId
@@ -5311,7 +5326,7 @@ class CreateAlarmPolicyResponse(AbstractModel):
 
     @property
     def OriginId(self):
-        r"""可用于实例、实例组的绑定和解绑接口（[BindingPolicyObject](https://cloud.tencent.com/document/product/248/40421)、[UnBindingAllPolicyObject](https://cloud.tencent.com/document/product/248/40568)、[UnBindingPolicyObject](https://cloud.tencent.com/document/product/248/40567)）的策略 ID
+        r"""<p>可用于实例、实例组的绑定和解绑接口（<a href="https://cloud.tencent.com/document/product/248/40421">BindingPolicyObject</a>、<a href="https://cloud.tencent.com/document/product/248/40568">UnBindingAllPolicyObject</a>、<a href="https://cloud.tencent.com/document/product/248/40567">UnBindingPolicyObject</a>）的策略 ID</p>
         :rtype: str
         """
         return self._OriginId

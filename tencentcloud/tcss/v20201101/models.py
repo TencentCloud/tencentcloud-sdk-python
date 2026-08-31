@@ -52137,18 +52137,14 @@ class DescribeVirusMonitorConfigResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _EnableScan: 是否开启实时监控
+        :param _EnableScan: <p>是否开启实时监控</p>
         :type EnableScan: bool
-        :param _IsIncludePath: true:包含路径 false:排除路径
+        :param _IsIncludePath: <p>true:包含路径 false:排除路径</p>
         :type IsIncludePath: bool
-        :param _ScanPath: 自选排除或扫描的地址
+        :param _ScanPath: <p>自选排除或扫描的地址</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ScanPath: list of str
-        :param _ScanPathMode: 扫描路径模式：
-SCAN_PATH_ALL：全部路径
-SCAN_PATH_DEFAULT：默认路径
-SCAN_PATH_USER_DEFINE：用户自定义路径
-
+        :param _ScanPathMode: <p>扫描路径模式：<br>SCAN_PATH_ALL：全部路径<br>SCAN_PATH_DEFAULT：默认路径<br>SCAN_PATH_USER_DEFINE：用户自定义路径</p>
         :type ScanPathMode: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -52161,7 +52157,7 @@ SCAN_PATH_USER_DEFINE：用户自定义路径
 
     @property
     def EnableScan(self):
-        r"""是否开启实时监控
+        r"""<p>是否开启实时监控</p>
         :rtype: bool
         """
         return self._EnableScan
@@ -52172,7 +52168,7 @@ SCAN_PATH_USER_DEFINE：用户自定义路径
 
     @property
     def IsIncludePath(self):
-        r"""true:包含路径 false:排除路径
+        r"""<p>true:包含路径 false:排除路径</p>
         :rtype: bool
         """
         return self._IsIncludePath
@@ -52183,7 +52179,7 @@ SCAN_PATH_USER_DEFINE：用户自定义路径
 
     @property
     def ScanPath(self):
-        r"""自选排除或扫描的地址
+        r"""<p>自选排除或扫描的地址</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -52195,11 +52191,7 @@ SCAN_PATH_USER_DEFINE：用户自定义路径
 
     @property
     def ScanPathMode(self):
-        r"""扫描路径模式：
-SCAN_PATH_ALL：全部路径
-SCAN_PATH_DEFAULT：默认路径
-SCAN_PATH_USER_DEFINE：用户自定义路径
-
+        r"""<p>扫描路径模式：<br>SCAN_PATH_ALL：全部路径<br>SCAN_PATH_DEFAULT：默认路径<br>SCAN_PATH_USER_DEFINE：用户自定义路径</p>
         :rtype: str
         """
         return self._ScanPathMode
@@ -52437,29 +52429,23 @@ class DescribeVirusScanConfigResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _EnableScan: 是否开启定期扫描
+        :param _EnableScan: <p>是否开启定期扫描</p>
         :type EnableScan: bool
-        :param _Cycle: 检测周期每隔多少天
+        :param _Cycle: <p>检测周期每隔多少天</p>
         :type Cycle: int
-        :param _BeginScanAt: 扫描开始时间
+        :param _BeginScanAt: <p>扫描开始时间</p>
         :type BeginScanAt: str
-        :param _Timeout: 超时时长，单位小时
+        :param _Timeout: <p>超时时长，单位小时</p>
         :type Timeout: int
-        :param _ScanRangeType: SCAN_NODE:扫描节点
-SCAN_CONTAINER:扫描容器
+        :param _ScanRangeType: <p>SCAN_NODE:扫描节点<br>SCAN_CONTAINER:扫描容器</p>
         :type ScanRangeType: str
-        :param _ScanIDs: 自选扫描范围的容器id或者节点id 
+        :param _ScanIDs: <p>自选扫描范围的容器id或者节点id</p>
         :type ScanIDs: list of ScanRangeInfo
-        :param _ScanPath: 自选排除或扫描的地址
+        :param _ScanPath: <p>自选排除或扫描的地址</p>
         :type ScanPath: list of str
-        :param _ScanPathMode: 扫描路径模式：
-SCAN_PATH_ALL：全部路径
-SCAN_PATH_DEFAULT：默认路径
-SCAN_PATH_USER_DEFINE：用户自定义路径
-
+        :param _ScanPathMode: <p>扫描路径模式：<br>SCAN_PATH_ALL：全部路径<br>SCAN_PATH_DEFAULT：默认路径<br>SCAN_PATH_USER_DEFINE：用户自定义路径</p>
         :type ScanPathMode: str
-        :param _IsIncludePath: true:包含路径
-false:排除路径
+        :param _IsIncludePath: <p>true:包含路径<br>false:排除路径</p>
         :type IsIncludePath: bool
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -52477,7 +52463,7 @@ false:排除路径
 
     @property
     def EnableScan(self):
-        r"""是否开启定期扫描
+        r"""<p>是否开启定期扫描</p>
         :rtype: bool
         """
         return self._EnableScan
@@ -52488,7 +52474,7 @@ false:排除路径
 
     @property
     def Cycle(self):
-        r"""检测周期每隔多少天
+        r"""<p>检测周期每隔多少天</p>
         :rtype: int
         """
         return self._Cycle
@@ -52499,7 +52485,7 @@ false:排除路径
 
     @property
     def BeginScanAt(self):
-        r"""扫描开始时间
+        r"""<p>扫描开始时间</p>
         :rtype: str
         """
         return self._BeginScanAt
@@ -52510,7 +52496,7 @@ false:排除路径
 
     @property
     def Timeout(self):
-        r"""超时时长，单位小时
+        r"""<p>超时时长，单位小时</p>
         :rtype: int
         """
         return self._Timeout
@@ -52521,8 +52507,7 @@ false:排除路径
 
     @property
     def ScanRangeType(self):
-        r"""SCAN_NODE:扫描节点
-SCAN_CONTAINER:扫描容器
+        r"""<p>SCAN_NODE:扫描节点<br>SCAN_CONTAINER:扫描容器</p>
         :rtype: str
         """
         return self._ScanRangeType
@@ -52533,7 +52518,7 @@ SCAN_CONTAINER:扫描容器
 
     @property
     def ScanIDs(self):
-        r"""自选扫描范围的容器id或者节点id 
+        r"""<p>自选扫描范围的容器id或者节点id</p>
         :rtype: list of ScanRangeInfo
         """
         return self._ScanIDs
@@ -52544,7 +52529,7 @@ SCAN_CONTAINER:扫描容器
 
     @property
     def ScanPath(self):
-        r"""自选排除或扫描的地址
+        r"""<p>自选排除或扫描的地址</p>
         :rtype: list of str
         """
         return self._ScanPath
@@ -52555,11 +52540,7 @@ SCAN_CONTAINER:扫描容器
 
     @property
     def ScanPathMode(self):
-        r"""扫描路径模式：
-SCAN_PATH_ALL：全部路径
-SCAN_PATH_DEFAULT：默认路径
-SCAN_PATH_USER_DEFINE：用户自定义路径
-
+        r"""<p>扫描路径模式：<br>SCAN_PATH_ALL：全部路径<br>SCAN_PATH_DEFAULT：默认路径<br>SCAN_PATH_USER_DEFINE：用户自定义路径</p>
         :rtype: str
         """
         return self._ScanPathMode
@@ -52570,8 +52551,7 @@ SCAN_PATH_USER_DEFINE：用户自定义路径
 
     @property
     def IsIncludePath(self):
-        r"""true:包含路径
-false:排除路径
+        r"""<p>true:包含路径<br>false:排除路径</p>
         :rtype: bool
         """
         return self._IsIncludePath

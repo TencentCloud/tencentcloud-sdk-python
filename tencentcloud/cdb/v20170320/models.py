@@ -19,15 +19,15 @@ from tencentcloud.common.abstract_model import AbstractModel
 
 
 class Account(AbstractModel):
-    r"""数据库账号信息
+    r"""账号信息
 
     """
 
     def __init__(self):
         r"""
-        :param _User: <p>账号名，可输入1 - 32个字符。</p>
+        :param _User: 账号名称
         :type User: str
-        :param _Host: <p>账号的主机。</p><p>IP 形式，支持填入%。</p>
+        :param _Host: 账号的主机地址
         :type Host: str
         """
         self._User = None
@@ -35,7 +35,7 @@ class Account(AbstractModel):
 
     @property
     def User(self):
-        r"""<p>账号名，可输入1 - 32个字符。</p>
+        r"""账号名称
         :rtype: str
         """
         return self._User
@@ -46,7 +46,7 @@ class Account(AbstractModel):
 
     @property
     def Host(self):
-        r"""<p>账号的主机。</p><p>IP 形式，支持填入%。</p>
+        r"""账号的主机地址
         :rtype: str
         """
         return self._Host
@@ -12100,11 +12100,11 @@ class DescribeAccountPrivilegesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例 ID，格式如：cdb-c1nl9rpv，与云数据库控制台页面中显示的实例 ID 相同。
+        :param _InstanceId: <p>实例 ID，格式如：cdb-c1nl9rpv，与云数据库控制台页面中显示的实例 ID 相同。</p>
         :type InstanceId: str
-        :param _User: 数据库的账号名称。可通过 [DescribeAccounts](https://cloud.tencent.com/document/api/236/17499) 接口获取。
+        :param _User: <p>数据库的账号名称。可通过 <a href="https://cloud.tencent.com/document/api/236/17499">DescribeAccounts</a> 接口获取。</p>
         :type User: str
-        :param _Host: 数据库的账号域名。可通过 [DescribeAccounts](https://cloud.tencent.com/document/api/236/17499) 接口获取。
+        :param _Host: <p>数据库的账号域名。可通过 <a href="https://cloud.tencent.com/document/api/236/17499">DescribeAccounts</a> 接口获取。</p>
         :type Host: str
         """
         self._InstanceId = None
@@ -12113,7 +12113,7 @@ class DescribeAccountPrivilegesRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""实例 ID，格式如：cdb-c1nl9rpv，与云数据库控制台页面中显示的实例 ID 相同。
+        r"""<p>实例 ID，格式如：cdb-c1nl9rpv，与云数据库控制台页面中显示的实例 ID 相同。</p>
         :rtype: str
         """
         return self._InstanceId
@@ -12124,7 +12124,7 @@ class DescribeAccountPrivilegesRequest(AbstractModel):
 
     @property
     def User(self):
-        r"""数据库的账号名称。可通过 [DescribeAccounts](https://cloud.tencent.com/document/api/236/17499) 接口获取。
+        r"""<p>数据库的账号名称。可通过 <a href="https://cloud.tencent.com/document/api/236/17499">DescribeAccounts</a> 接口获取。</p>
         :rtype: str
         """
         return self._User
@@ -12135,7 +12135,7 @@ class DescribeAccountPrivilegesRequest(AbstractModel):
 
     @property
     def Host(self):
-        r"""数据库的账号域名。可通过 [DescribeAccounts](https://cloud.tencent.com/document/api/236/17499) 接口获取。
+        r"""<p>数据库的账号域名。可通过 <a href="https://cloud.tencent.com/document/api/236/17499">DescribeAccounts</a> 接口获取。</p>
         :rtype: str
         """
         return self._Host
@@ -12166,13 +12166,13 @@ class DescribeAccountPrivilegesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _GlobalPrivileges: 全局权限数组。
+        :param _GlobalPrivileges: <p>全局权限数组。</p>
         :type GlobalPrivileges: list of str
-        :param _DatabasePrivileges: 数据库权限数组。
+        :param _DatabasePrivileges: <p>数据库权限数组。</p>
         :type DatabasePrivileges: list of DatabasePrivilege
-        :param _TablePrivileges: 数据库中的表权限数组。
+        :param _TablePrivileges: <p>数据库中的表权限数组。</p>
         :type TablePrivileges: list of TablePrivilege
-        :param _ColumnPrivileges: 数据库表中的列权限数组。
+        :param _ColumnPrivileges: <p>数据库表中的列权限数组。</p>
         :type ColumnPrivileges: list of ColumnPrivilege
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -12185,7 +12185,7 @@ class DescribeAccountPrivilegesResponse(AbstractModel):
 
     @property
     def GlobalPrivileges(self):
-        r"""全局权限数组。
+        r"""<p>全局权限数组。</p>
         :rtype: list of str
         """
         return self._GlobalPrivileges
@@ -12196,7 +12196,7 @@ class DescribeAccountPrivilegesResponse(AbstractModel):
 
     @property
     def DatabasePrivileges(self):
-        r"""数据库权限数组。
+        r"""<p>数据库权限数组。</p>
         :rtype: list of DatabasePrivilege
         """
         return self._DatabasePrivileges
@@ -12207,7 +12207,7 @@ class DescribeAccountPrivilegesResponse(AbstractModel):
 
     @property
     def TablePrivileges(self):
-        r"""数据库中的表权限数组。
+        r"""<p>数据库中的表权限数组。</p>
         :rtype: list of TablePrivilege
         """
         return self._TablePrivileges
@@ -12218,7 +12218,7 @@ class DescribeAccountPrivilegesResponse(AbstractModel):
 
     @property
     def ColumnPrivileges(self):
-        r"""数据库表中的列权限数组。
+        r"""<p>数据库表中的列权限数组。</p>
         :rtype: list of ColumnPrivilege
         """
         return self._ColumnPrivileges
@@ -27673,13 +27673,13 @@ class ModifyAccountPasswordRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例 ID，格式如：cdb-c1nl9rpv，与云数据库控制台页面中显示的实例 ID 相同。
+        :param _InstanceId: <p>实例 ID，格式如：cdb-c1nl9rpv，与云数据库控制台页面中显示的实例 ID 相同。</p>
         :type InstanceId: str
-        :param _NewPassword: 数据库账号的新密码。密码应至少包含字母、数字和字符（_+-&=!@#$%^*()）中的两种，长度为8-64个字符。
+        :param _NewPassword: <p>数据库账号的新密码。密码应至少包含字母、数字和字符（_+-&amp;=!@#$%^*()）中的两种，长度为8-64个字符。</p>
         :type NewPassword: str
-        :param _Accounts: 云数据库账号。可通过 [DescribeAccounts](https://cloud.tencent.com/document/api/236/17499) 接口获取。
+        :param _Accounts: <p>云数据库账号。可通过 <a href="https://cloud.tencent.com/document/api/236/17499">DescribeAccounts</a> 接口获取。</p>
         :type Accounts: list of Account
-        :param _SkipValidatePassword: 该字段已废弃。
+        :param _SkipValidatePassword: <p>该字段已废弃。</p>
         :type SkipValidatePassword: bool
         """
         self._InstanceId = None
@@ -27689,7 +27689,7 @@ class ModifyAccountPasswordRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""实例 ID，格式如：cdb-c1nl9rpv，与云数据库控制台页面中显示的实例 ID 相同。
+        r"""<p>实例 ID，格式如：cdb-c1nl9rpv，与云数据库控制台页面中显示的实例 ID 相同。</p>
         :rtype: str
         """
         return self._InstanceId
@@ -27700,7 +27700,7 @@ class ModifyAccountPasswordRequest(AbstractModel):
 
     @property
     def NewPassword(self):
-        r"""数据库账号的新密码。密码应至少包含字母、数字和字符（_+-&=!@#$%^*()）中的两种，长度为8-64个字符。
+        r"""<p>数据库账号的新密码。密码应至少包含字母、数字和字符（_+-&amp;=!@#$%^*()）中的两种，长度为8-64个字符。</p>
         :rtype: str
         """
         return self._NewPassword
@@ -27711,7 +27711,7 @@ class ModifyAccountPasswordRequest(AbstractModel):
 
     @property
     def Accounts(self):
-        r"""云数据库账号。可通过 [DescribeAccounts](https://cloud.tencent.com/document/api/236/17499) 接口获取。
+        r"""<p>云数据库账号。可通过 <a href="https://cloud.tencent.com/document/api/236/17499">DescribeAccounts</a> 接口获取。</p>
         :rtype: list of Account
         """
         return self._Accounts
@@ -27724,7 +27724,7 @@ class ModifyAccountPasswordRequest(AbstractModel):
     def SkipValidatePassword(self):
         warnings.warn("parameter `SkipValidatePassword` is deprecated", DeprecationWarning) 
 
-        r"""该字段已废弃。
+        r"""<p>该字段已废弃。</p>
         :rtype: bool
         """
         return self._SkipValidatePassword
@@ -27763,7 +27763,7 @@ class ModifyAccountPasswordResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AsyncRequestId: 异步任务的请求 ID，可使用此 ID 查询异步任务的执行结果。
+        :param _AsyncRequestId: <p>异步任务的请求 ID，可使用此 ID 查询异步任务的执行结果。</p>
         :type AsyncRequestId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -27773,7 +27773,7 @@ class ModifyAccountPasswordResponse(AbstractModel):
 
     @property
     def AsyncRequestId(self):
-        r"""异步任务的请求 ID，可使用此 ID 查询异步任务的执行结果。
+        r"""<p>异步任务的请求 ID，可使用此 ID 查询异步任务的执行结果。</p>
         :rtype: str
         """
         return self._AsyncRequestId
@@ -27806,23 +27806,19 @@ class ModifyAccountPrivilegesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例 ID，格式如：cdb-c1nl9rpv，与云数据库控制台页面中显示的实例 ID 相同。
+        :param _InstanceId: <p>实例 ID，格式如：cdb-c1nl9rpv，与云数据库控制台页面中显示的实例 ID 相同。</p>
         :type InstanceId: str
-        :param _Accounts: 数据库的账号，包括用户名和域名。可通过 [DescribeAccounts](https://cloud.tencent.com/document/api/236/17499) 接口获取。
+        :param _Accounts: <p>数据库的账号，包括用户名和域名。可通过 <a href="https://cloud.tencent.com/document/api/236/17499">DescribeAccounts</a> 接口获取。</p>
         :type Accounts: list of Account
-        :param _GlobalPrivileges: 全局权限。其中，GlobalPrivileges 中权限的可选值为："SELECT","INSERT","UPDATE","DELETE","CREATE", "PROCESS", "DROP","REFERENCES","INDEX","ALTER","SHOW DATABASES","CREATE TEMPORARY TABLES","LOCK TABLES","EXECUTE","CREATE VIEW","SHOW VIEW","CREATE ROUTINE","ALTER ROUTINE","EVENT","TRIGGER","CREATE USER","RELOAD","REPLICATION CLIENT","REPLICATION SLAVE"。
-注意，ModifyAction为空时，不传该参数表示清除该权限。
+        :param _GlobalPrivileges: <p>全局权限。其中，GlobalPrivileges 中权限的可选值为：&quot;SELECT&quot;,&quot;INSERT&quot;,&quot;UPDATE&quot;,&quot;DELETE&quot;,&quot;CREATE&quot;, &quot;PROCESS&quot;, &quot;DROP&quot;,&quot;REFERENCES&quot;,&quot;INDEX&quot;,&quot;ALTER&quot;,&quot;SHOW DATABASES&quot;,&quot;CREATE TEMPORARY TABLES&quot;,&quot;LOCK TABLES&quot;,&quot;EXECUTE&quot;,&quot;CREATE VIEW&quot;,&quot;SHOW VIEW&quot;,&quot;CREATE ROUTINE&quot;,&quot;ALTER ROUTINE&quot;,&quot;EVENT&quot;,&quot;TRIGGER&quot;,&quot;CREATE USER&quot;,&quot;RELOAD&quot;,&quot;REPLICATION CLIENT&quot;,&quot;REPLICATION SLAVE&quot;。<br>注意，ModifyAction为空时，不传该参数表示清除该权限。</p>
         :type GlobalPrivileges: list of str
-        :param _DatabasePrivileges: 数据库的权限。Privileges 权限的可选值为："SELECT","INSERT","UPDATE","DELETE","CREATE",	"DROP","REFERENCES","INDEX","ALTER","CREATE TEMPORARY TABLES","LOCK TABLES","EXECUTE","CREATE VIEW","SHOW VIEW","CREATE ROUTINE","ALTER ROUTINE","EVENT","TRIGGER"。
-注意，ModifyAction为空时，不传该参数表示清除该权限。
+        :param _DatabasePrivileges: <p>数据库的权限。Privileges 权限的可选值为：&quot;SELECT&quot;,&quot;INSERT&quot;,&quot;UPDATE&quot;,&quot;DELETE&quot;,&quot;CREATE&quot;,    &quot;DROP&quot;,&quot;REFERENCES&quot;,&quot;INDEX&quot;,&quot;ALTER&quot;,&quot;CREATE TEMPORARY TABLES&quot;,&quot;LOCK TABLES&quot;,&quot;EXECUTE&quot;,&quot;CREATE VIEW&quot;,&quot;SHOW VIEW&quot;,&quot;CREATE ROUTINE&quot;,&quot;ALTER ROUTINE&quot;,&quot;EVENT&quot;,&quot;TRIGGER&quot;。<br>注意，ModifyAction为空时，不传该参数表示清除该权限。</p>
         :type DatabasePrivileges: list of DatabasePrivilege
-        :param _TablePrivileges: 数据库中表的权限。Privileges 权限的可选值为：权限的可选值为："SELECT","INSERT","UPDATE","DELETE","CREATE",	"DROP","REFERENCES","INDEX","ALTER","CREATE VIEW","SHOW VIEW", "TRIGGER"。
-注意，ModifyAction为空时，不传该参数表示清除该权限。
+        :param _TablePrivileges: <p>数据库中表的权限。Privileges 权限的可选值为：权限的可选值为：&quot;SELECT&quot;,&quot;INSERT&quot;,&quot;UPDATE&quot;,&quot;DELETE&quot;,&quot;CREATE&quot;,    &quot;DROP&quot;,&quot;REFERENCES&quot;,&quot;INDEX&quot;,&quot;ALTER&quot;,&quot;CREATE VIEW&quot;,&quot;SHOW VIEW&quot;, &quot;TRIGGER&quot;。<br>注意，ModifyAction为空时，不传该参数表示清除该权限。</p>
         :type TablePrivileges: list of TablePrivilege
-        :param _ColumnPrivileges: 数据库表中列的权限。Privileges 权限的可选值为："SELECT","INSERT","UPDATE","REFERENCES"。
-注意，ModifyAction为空时，不传该参数表示清除该权限。
+        :param _ColumnPrivileges: <p>数据库表中列的权限。Privileges 权限的可选值为：&quot;SELECT&quot;,&quot;INSERT&quot;,&quot;UPDATE&quot;,&quot;REFERENCES&quot;。<br>注意，ModifyAction为空时，不传该参数表示清除该权限。</p>
         :type ColumnPrivileges: list of ColumnPrivilege
-        :param _ModifyAction: 该参数不为空时，为批量修改权限。可选值为：grant - 授予权限，revoke - 回收权限。
+        :param _ModifyAction: <p>该参数不为空时，为批量修改权限。可选值为：grant - 授予权限，revoke - 回收权限。</p>
         :type ModifyAction: str
         """
         self._InstanceId = None
@@ -27835,7 +27831,7 @@ class ModifyAccountPrivilegesRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""实例 ID，格式如：cdb-c1nl9rpv，与云数据库控制台页面中显示的实例 ID 相同。
+        r"""<p>实例 ID，格式如：cdb-c1nl9rpv，与云数据库控制台页面中显示的实例 ID 相同。</p>
         :rtype: str
         """
         return self._InstanceId
@@ -27846,7 +27842,7 @@ class ModifyAccountPrivilegesRequest(AbstractModel):
 
     @property
     def Accounts(self):
-        r"""数据库的账号，包括用户名和域名。可通过 [DescribeAccounts](https://cloud.tencent.com/document/api/236/17499) 接口获取。
+        r"""<p>数据库的账号，包括用户名和域名。可通过 <a href="https://cloud.tencent.com/document/api/236/17499">DescribeAccounts</a> 接口获取。</p>
         :rtype: list of Account
         """
         return self._Accounts
@@ -27857,8 +27853,7 @@ class ModifyAccountPrivilegesRequest(AbstractModel):
 
     @property
     def GlobalPrivileges(self):
-        r"""全局权限。其中，GlobalPrivileges 中权限的可选值为："SELECT","INSERT","UPDATE","DELETE","CREATE", "PROCESS", "DROP","REFERENCES","INDEX","ALTER","SHOW DATABASES","CREATE TEMPORARY TABLES","LOCK TABLES","EXECUTE","CREATE VIEW","SHOW VIEW","CREATE ROUTINE","ALTER ROUTINE","EVENT","TRIGGER","CREATE USER","RELOAD","REPLICATION CLIENT","REPLICATION SLAVE"。
-注意，ModifyAction为空时，不传该参数表示清除该权限。
+        r"""<p>全局权限。其中，GlobalPrivileges 中权限的可选值为：&quot;SELECT&quot;,&quot;INSERT&quot;,&quot;UPDATE&quot;,&quot;DELETE&quot;,&quot;CREATE&quot;, &quot;PROCESS&quot;, &quot;DROP&quot;,&quot;REFERENCES&quot;,&quot;INDEX&quot;,&quot;ALTER&quot;,&quot;SHOW DATABASES&quot;,&quot;CREATE TEMPORARY TABLES&quot;,&quot;LOCK TABLES&quot;,&quot;EXECUTE&quot;,&quot;CREATE VIEW&quot;,&quot;SHOW VIEW&quot;,&quot;CREATE ROUTINE&quot;,&quot;ALTER ROUTINE&quot;,&quot;EVENT&quot;,&quot;TRIGGER&quot;,&quot;CREATE USER&quot;,&quot;RELOAD&quot;,&quot;REPLICATION CLIENT&quot;,&quot;REPLICATION SLAVE&quot;。<br>注意，ModifyAction为空时，不传该参数表示清除该权限。</p>
         :rtype: list of str
         """
         return self._GlobalPrivileges
@@ -27869,8 +27864,7 @@ class ModifyAccountPrivilegesRequest(AbstractModel):
 
     @property
     def DatabasePrivileges(self):
-        r"""数据库的权限。Privileges 权限的可选值为："SELECT","INSERT","UPDATE","DELETE","CREATE",	"DROP","REFERENCES","INDEX","ALTER","CREATE TEMPORARY TABLES","LOCK TABLES","EXECUTE","CREATE VIEW","SHOW VIEW","CREATE ROUTINE","ALTER ROUTINE","EVENT","TRIGGER"。
-注意，ModifyAction为空时，不传该参数表示清除该权限。
+        r"""<p>数据库的权限。Privileges 权限的可选值为：&quot;SELECT&quot;,&quot;INSERT&quot;,&quot;UPDATE&quot;,&quot;DELETE&quot;,&quot;CREATE&quot;,    &quot;DROP&quot;,&quot;REFERENCES&quot;,&quot;INDEX&quot;,&quot;ALTER&quot;,&quot;CREATE TEMPORARY TABLES&quot;,&quot;LOCK TABLES&quot;,&quot;EXECUTE&quot;,&quot;CREATE VIEW&quot;,&quot;SHOW VIEW&quot;,&quot;CREATE ROUTINE&quot;,&quot;ALTER ROUTINE&quot;,&quot;EVENT&quot;,&quot;TRIGGER&quot;。<br>注意，ModifyAction为空时，不传该参数表示清除该权限。</p>
         :rtype: list of DatabasePrivilege
         """
         return self._DatabasePrivileges
@@ -27881,8 +27875,7 @@ class ModifyAccountPrivilegesRequest(AbstractModel):
 
     @property
     def TablePrivileges(self):
-        r"""数据库中表的权限。Privileges 权限的可选值为：权限的可选值为："SELECT","INSERT","UPDATE","DELETE","CREATE",	"DROP","REFERENCES","INDEX","ALTER","CREATE VIEW","SHOW VIEW", "TRIGGER"。
-注意，ModifyAction为空时，不传该参数表示清除该权限。
+        r"""<p>数据库中表的权限。Privileges 权限的可选值为：权限的可选值为：&quot;SELECT&quot;,&quot;INSERT&quot;,&quot;UPDATE&quot;,&quot;DELETE&quot;,&quot;CREATE&quot;,    &quot;DROP&quot;,&quot;REFERENCES&quot;,&quot;INDEX&quot;,&quot;ALTER&quot;,&quot;CREATE VIEW&quot;,&quot;SHOW VIEW&quot;, &quot;TRIGGER&quot;。<br>注意，ModifyAction为空时，不传该参数表示清除该权限。</p>
         :rtype: list of TablePrivilege
         """
         return self._TablePrivileges
@@ -27893,8 +27886,7 @@ class ModifyAccountPrivilegesRequest(AbstractModel):
 
     @property
     def ColumnPrivileges(self):
-        r"""数据库表中列的权限。Privileges 权限的可选值为："SELECT","INSERT","UPDATE","REFERENCES"。
-注意，ModifyAction为空时，不传该参数表示清除该权限。
+        r"""<p>数据库表中列的权限。Privileges 权限的可选值为：&quot;SELECT&quot;,&quot;INSERT&quot;,&quot;UPDATE&quot;,&quot;REFERENCES&quot;。<br>注意，ModifyAction为空时，不传该参数表示清除该权限。</p>
         :rtype: list of ColumnPrivilege
         """
         return self._ColumnPrivileges
@@ -27905,7 +27897,7 @@ class ModifyAccountPrivilegesRequest(AbstractModel):
 
     @property
     def ModifyAction(self):
-        r"""该参数不为空时，为批量修改权限。可选值为：grant - 授予权限，revoke - 回收权限。
+        r"""<p>该参数不为空时，为批量修改权限。可选值为：grant - 授予权限，revoke - 回收权限。</p>
         :rtype: str
         """
         return self._ModifyAction
@@ -27960,7 +27952,7 @@ class ModifyAccountPrivilegesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AsyncRequestId: 异步任务的请求 ID，可使用此 ID 查询异步任务的执行结果。
+        :param _AsyncRequestId: <p>异步任务的请求 ID，可使用此 ID 查询异步任务的执行结果。</p>
         :type AsyncRequestId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -27970,7 +27962,7 @@ class ModifyAccountPrivilegesResponse(AbstractModel):
 
     @property
     def AsyncRequestId(self):
-        r"""异步任务的请求 ID，可使用此 ID 查询异步任务的执行结果。
+        r"""<p>异步任务的请求 ID，可使用此 ID 查询异步任务的执行结果。</p>
         :rtype: str
         """
         return self._AsyncRequestId

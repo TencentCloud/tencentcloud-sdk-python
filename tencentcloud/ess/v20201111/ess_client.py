@@ -1224,43 +1224,26 @@ class EssClient(AbstractClient):
         r"""此接口（CreateFlowByFiles）用来通过上传后的pdf资源编号来创建待签署的合同流程。<br/>
         适用场景：适用非制式的合同文件签署。一般开发者自己有完整的签署文件，可以通过该接口传入完整的PDF文件及流程信息生成待签署的合同流程。<br/>
 
-        <table>
-        	<thead>
-        		<tr>
-        			<th>签署人类别</th>
-        			<th>需要提前准备的信息</th>
-        		</tr>
-        	</thead>
-        	<tbody>
-        		<tr>
-        			<td>自己企业的员工签署（未认证加入或已认证加入）</td>
-        			<td>签署企业的名字、员工的真实名字、员工的触达手机号、员工的证件号（证件号非必传）</td>
-        		</tr>
-        		<tr>
-        			<td>自己企业的员工签署（已认证加入）</td>
-        			<td>签署企业的名字、员工在电子签平台的ID（UserId）</td>
-        		</tr>
-        		<tr>
-        			<td>其他企业的员工签署</td>
-        			<td>签署企业的名字、员工的真实名字、员工的触达手机号、员工的证件号（证件号非必传）</td>
-        		</tr>
-        		<tr>
-        			<td>个人（自然人）签署</td>
-        			<td>个人的真实名字、个人的触达手机号、个人的身份证（证件号非必传）</td>
-        		</tr>
-        	</tbody>
-        </table>
+        ## 传参方式指引
+
+        | 签署方类型 | ApproverType | 需要提前准备的信息 | 对应 Approvers 关键字段 |
+        |------|------|------|------|
+        | 本企业员工（未认证加入） | 0 | 签署企业名、员工真实姓名、员工触达手机号、证件号（非必传） | OrganizationName + ApproverName + ApproverMobile |
+        | 本企业员工（已认证加入） | 0 | 签署企业名、员工在电子签平台的 ID（UserId） | OrganizationName + UserId |
+        | 他方企业员工 | 0 | 签署企业名、员工真实姓名、员工触达手机号、证件号（非必传） | OrganizationName + ApproverName + ApproverMobile |
+        | 个人（自然人） | 1 | 个人真实姓名、个人触达手机号、身份证号（非必传） | ApproverName + ApproverMobile |
 
 
+        该接口需要依赖[上传文件](https://qian.tencent.com/developers/companyApis/templatesAndFiles/UploadFiles)接口生成pdf资源编号（FileIds）进行使用。（如果非pdf文件需要调用[创建文件转换任务](https://qian.tencent.com/developers/companyApis/templatesAndFiles/DescribeFileConvertTask)接口转换成pdf资源）<br/>
 
-        该接口需要依赖[上传文件](https://qian.tencent.com/developers/companyApis/templatesAndFiles/UploadFiles)接口生成pdf资源编号（FileIds）进行使用。（如果非pdf文件需要调用[创建文件转换任务](https://qian.tencent.com/developers/companyApis/templatesAndFiles/CreateConvertTaskApi)接口转换成pdf资源）<br/>
-
-
-        ![image](https://qcloudimg.tencent-cloud.cn/raw/f097a74b289e3e1acd740936bdfe9843.png)
+        ## 整体流程图
+        ![image](https://qcloudimg.tencent-cloud.cn/raw/9577ac334c083ecfe0014a187d64b485.svg)
 
         注：
-        -  合同**发起后就会扣减合同的额度**, 只有撤销没有参与方签署过或只有自动签署签署过的合同，才会返还合同额度。（**过期，拒签，签署完成，解除完成等状态不会返还额度**）
-        - **静默（自动）签署不支持合同签署方存在填写**功能
+        -  合同<font color="red">发起后就会扣减合同的额度</font> , 只有撤销没有参与方签署过或只有自动签署签署过的合同，且<font color="red">有撤销合同额度</font>的情形下，才会返还合同额度。（**过期，拒签，签署完成，解除完成等状态不会返还额度**）。具体可以参考[合同撤销返还额度说明](https://qian.tencent.com/developers/company/contract_cancel_quota)。
+        - 支持的证件类型可以参考[支持的证件类型](https://qian.tencent.com/developers/company/id_card_support)。
+        - 合同发起方需要【组织管理】->【角色管理】中拥有<font color="red">接口发起合同</font>的权限
+        ![image](https://qcloudimg.tencent-cloud.cn/raw/c8553d1823ca1323e82c11f01c86e8cd.png)
 
 
         <font color="red">相关视频指引</font> <br>
@@ -2440,7 +2423,7 @@ class EssClient(AbstractClient):
             ciphertext = SymmetricEncrypt(ALGO, AESKey, iv, plaintext)
             # 4. 计算完整性签名：HMAC(Key, IV || Ciphertext)
             signature = HMAC(HMACKey, concat(iv, ciphertext))
-            # 5. 组装外层请求参数（三段均为标准 Base64）
+            # 5. 组装外层请求参数
             encReq = {
                 RequestAction:       bizAction,
                 IV:                  Base64(iv),
@@ -2478,6 +2461,7 @@ class EssClient(AbstractClient):
         ```
 
         **AES-CBC 示例**
+
         以下示例参数及结果可用于验证 AES-CBC 加密和 HMAC-SHA256 签名算法的实现是否正确。
 
         加密密钥：AES-CBC-Key-1234
@@ -2496,6 +2480,7 @@ class EssClient(AbstractClient):
         ```
 
         **SM4-CBC 示例**
+
         以下示例参数及结果可用于验证 SM4-CBC 加密和 HMAC-SM4 签名算法的实现是否正确。
 
         加密密钥：SM4-CBC-Key-1234

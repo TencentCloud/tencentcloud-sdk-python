@@ -5698,31 +5698,23 @@ class CloudEffectInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Id: 云端特效 ID。
+        :param _Id: <p>云端特效 ID。</p>
         :type Id: str
-        :param _Prompt: 云端特效描述词。
+        :param _Prompt: <p>云端特效描述词。</p>
         :type Prompt: str
-        :param _Flag: 云端特效标签。
+        :param _Flag: <p>云端特效标签。</p>
         :type Flag: str
-        :param _Status: 云端特效生成状态。
-生成中 - GENERATING。
-处理中 - PROCESSING。
-生成失败 - FAILED。
-已完成 - FINISH。
-
+        :param _Status: <p>云端特效生成状态。<br>生成中 - GENERATING。<br>处理中 - PROCESSING。<br>生成失败 - FAILED。<br>已完成 - FINISH。</p>
         :type Status: str
-        :param _Message: 特效信息，生成失败时，此处返回失败原因。
+        :param _Message: <p>特效信息，生成失败时，此处返回失败原因。</p>
         :type Message: str
-        :param _PreviewImageUrl: 云端特效预览图片。
+        :param _PreviewImageUrl: <p>云端特效预览图片。</p>
         :type PreviewImageUrl: str
-        :param _Type: 云端特效类型。
-PGC : 官方精品特效。
-AIGC : AI生成的特效。
-UGC : 用户上传特效。
+        :param _Type: <p>云端特效类型。<br>PGC : 官方精品特效。<br>AIGC : AI生成的特效。<br>UGC : 用户上传特效。</p>
         :type Type: str
-        :param _CreateTime: 云端特效创建时间。
+        :param _CreateTime: <p>云端特效创建时间。</p>
         :type CreateTime: str
-        :param _UpdateTime: 云端特效更新时间。
+        :param _UpdateTime: <p>云端特效更新时间。</p>
         :type UpdateTime: str
         """
         self._Id = None
@@ -5737,7 +5729,7 @@ UGC : 用户上传特效。
 
     @property
     def Id(self):
-        r"""云端特效 ID。
+        r"""<p>云端特效 ID。</p>
         :rtype: str
         """
         return self._Id
@@ -5748,7 +5740,7 @@ UGC : 用户上传特效。
 
     @property
     def Prompt(self):
-        r"""云端特效描述词。
+        r"""<p>云端特效描述词。</p>
         :rtype: str
         """
         return self._Prompt
@@ -5759,7 +5751,7 @@ UGC : 用户上传特效。
 
     @property
     def Flag(self):
-        r"""云端特效标签。
+        r"""<p>云端特效标签。</p>
         :rtype: str
         """
         return self._Flag
@@ -5770,12 +5762,7 @@ UGC : 用户上传特效。
 
     @property
     def Status(self):
-        r"""云端特效生成状态。
-生成中 - GENERATING。
-处理中 - PROCESSING。
-生成失败 - FAILED。
-已完成 - FINISH。
-
+        r"""<p>云端特效生成状态。<br>生成中 - GENERATING。<br>处理中 - PROCESSING。<br>生成失败 - FAILED。<br>已完成 - FINISH。</p>
         :rtype: str
         """
         return self._Status
@@ -5786,7 +5773,7 @@ UGC : 用户上传特效。
 
     @property
     def Message(self):
-        r"""特效信息，生成失败时，此处返回失败原因。
+        r"""<p>特效信息，生成失败时，此处返回失败原因。</p>
         :rtype: str
         """
         return self._Message
@@ -5797,7 +5784,7 @@ UGC : 用户上传特效。
 
     @property
     def PreviewImageUrl(self):
-        r"""云端特效预览图片。
+        r"""<p>云端特效预览图片。</p>
         :rtype: str
         """
         return self._PreviewImageUrl
@@ -5808,10 +5795,7 @@ UGC : 用户上传特效。
 
     @property
     def Type(self):
-        r"""云端特效类型。
-PGC : 官方精品特效。
-AIGC : AI生成的特效。
-UGC : 用户上传特效。
+        r"""<p>云端特效类型。<br>PGC : 官方精品特效。<br>AIGC : AI生成的特效。<br>UGC : 用户上传特效。</p>
         :rtype: str
         """
         return self._Type
@@ -5822,7 +5806,7 @@ UGC : 用户上传特效。
 
     @property
     def CreateTime(self):
-        r"""云端特效创建时间。
+        r"""<p>云端特效创建时间。</p>
         :rtype: str
         """
         return self._CreateTime
@@ -5833,7 +5817,7 @@ UGC : 用户上传特效。
 
     @property
     def UpdateTime(self):
-        r"""云端特效更新时间。
+        r"""<p>云端特效更新时间。</p>
         :rtype: str
         """
         return self._UpdateTime
@@ -19485,10 +19469,13 @@ class DescribeLiveCloudEffectConfigResponse(AbstractModel):
         r"""
         :param _EffectTemplateList: <p>模板生礼物的模板信息列表。</p>
         :type EffectTemplateList: list of CloudEffectTemplateInfo
+        :param _PunishmentEffectTemplateList: <p>惩罚特效模板信息列表。</p>
+        :type PunishmentEffectTemplateList: list of CloudEffectTemplateInfo
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._EffectTemplateList = None
+        self._PunishmentEffectTemplateList = None
         self._RequestId = None
 
     @property
@@ -19501,6 +19488,17 @@ class DescribeLiveCloudEffectConfigResponse(AbstractModel):
     @EffectTemplateList.setter
     def EffectTemplateList(self, EffectTemplateList):
         self._EffectTemplateList = EffectTemplateList
+
+    @property
+    def PunishmentEffectTemplateList(self):
+        r"""<p>惩罚特效模板信息列表。</p>
+        :rtype: list of CloudEffectTemplateInfo
+        """
+        return self._PunishmentEffectTemplateList
+
+    @PunishmentEffectTemplateList.setter
+    def PunishmentEffectTemplateList(self, PunishmentEffectTemplateList):
+        self._PunishmentEffectTemplateList = PunishmentEffectTemplateList
 
     @property
     def RequestId(self):
@@ -19521,6 +19519,12 @@ class DescribeLiveCloudEffectConfigResponse(AbstractModel):
                 obj = CloudEffectTemplateInfo()
                 obj._deserialize(item)
                 self._EffectTemplateList.append(obj)
+        if params.get("PunishmentEffectTemplateList") is not None:
+            self._PunishmentEffectTemplateList = []
+            for item in params.get("PunishmentEffectTemplateList"):
+                obj = CloudEffectTemplateInfo()
+                obj._deserialize(item)
+                self._PunishmentEffectTemplateList.append(obj)
         self._RequestId = params.get("RequestId")
 
 

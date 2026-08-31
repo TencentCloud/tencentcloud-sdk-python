@@ -242,6 +242,24 @@ class MpsClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateAgentRecordTask(
+            self,
+            request: models.CreateAgentRecordTaskRequest,
+            opts: Dict = None,
+    ) -> models.CreateAgentRecordTaskResponse:
+        """
+        调用该接口，用于创建Agent录制任务。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateAgentRecordTask"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateAgentRecordTaskResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateAiDramaTask(
             self,
             request: models.CreateAiDramaTaskRequest,
@@ -1691,6 +1709,24 @@ class MpsClient(AbstractClient):
         kwargs["action"] = "DescribeAdaptiveDynamicStreamingTemplates"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeAdaptiveDynamicStreamingTemplatesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeAgentRecordTask(
+            self,
+            request: models.DescribeAgentRecordTaskRequest,
+            opts: Dict = None,
+    ) -> models.DescribeAgentRecordTaskResponse:
+        """
+        调用该接口，用于查询Agent录制任务的进度以及获取生成结果。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeAgentRecordTask"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeAgentRecordTaskResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -3883,6 +3919,24 @@ class MpsClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def QueryHunyuan3DTask(
+            self,
+            request: models.QueryHunyuan3DTaskRequest,
+            opts: Dict = None,
+    ) -> models.QueryHunyuan3DTaskResponse:
+        """
+        查询混元3D任务对应的结果
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "QueryHunyuan3DTask"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.QueryHunyuan3DTaskResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def QueryProject(
             self,
             request: models.QueryProjectRequest,
@@ -4022,6 +4076,24 @@ class MpsClient(AbstractClient):
         kwargs["action"] = "StopStreamPackageLinearAssemblyChannel"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.StopStreamPackageLinearAssemblyChannelResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def SubmitHunyuan3DTask(
+            self,
+            request: models.SubmitHunyuan3DTaskRequest,
+            opts: Dict = None,
+    ) -> models.SubmitHunyuan3DTaskResponse:
+        """
+        提交创建混元3D的任务
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "SubmitHunyuan3DTask"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.SubmitHunyuan3DTaskResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

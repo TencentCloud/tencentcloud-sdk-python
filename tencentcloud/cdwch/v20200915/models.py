@@ -2929,12 +2929,15 @@ class DescribeCkSqlApisRequest(AbstractModel):
         :type UserName: str
         :param _UserType: <p>账户的类型</p>
         :type UserType: str
+        :param _InstanceType: <p>实例类型</p><p>枚举值：</p><ul><li>SSC： 弹性版实例</li><li>Standard： 标准版实例</li></ul>
+        :type InstanceType: str
         """
         self._InstanceId = None
         self._ApiType = None
         self._Cluster = None
         self._UserName = None
         self._UserType = None
+        self._InstanceType = None
 
     @property
     def InstanceId(self):
@@ -2991,6 +2994,17 @@ class DescribeCkSqlApisRequest(AbstractModel):
     def UserType(self, UserType):
         self._UserType = UserType
 
+    @property
+    def InstanceType(self):
+        r"""<p>实例类型</p><p>枚举值：</p><ul><li>SSC： 弹性版实例</li><li>Standard： 标准版实例</li></ul>
+        :rtype: str
+        """
+        return self._InstanceType
+
+    @InstanceType.setter
+    def InstanceType(self, InstanceType):
+        self._InstanceType = InstanceType
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -2998,6 +3012,7 @@ class DescribeCkSqlApisRequest(AbstractModel):
         self._Cluster = params.get("Cluster")
         self._UserName = params.get("UserName")
         self._UserType = params.get("UserType")
+        self._InstanceType = params.get("InstanceType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7242,6 +7257,8 @@ class ModifyUserNewPrivilegeRequest(AbstractModel):
         :type GlobalPrivileges: list of str
         :param _DatabasePrivilegeList: <p>数据库表权限</p>
         :type DatabasePrivilegeList: list of DatabasePrivilegeInfo
+        :param _InstanceType: <p>实例类型</p><p>枚举值：</p><ul><li>SSC： 弹性版实例</li><li>Standard： 标准版实例</li></ul>
+        :type InstanceType: str
         """
         self._InstanceId = None
         self._Cluster = None
@@ -7249,6 +7266,7 @@ class ModifyUserNewPrivilegeRequest(AbstractModel):
         self._AllDatabase = None
         self._GlobalPrivileges = None
         self._DatabasePrivilegeList = None
+        self._InstanceType = None
 
     @property
     def InstanceId(self):
@@ -7316,6 +7334,17 @@ class ModifyUserNewPrivilegeRequest(AbstractModel):
     def DatabasePrivilegeList(self, DatabasePrivilegeList):
         self._DatabasePrivilegeList = DatabasePrivilegeList
 
+    @property
+    def InstanceType(self):
+        r"""<p>实例类型</p><p>枚举值：</p><ul><li>SSC： 弹性版实例</li><li>Standard： 标准版实例</li></ul>
+        :rtype: str
+        """
+        return self._InstanceType
+
+    @InstanceType.setter
+    def InstanceType(self, InstanceType):
+        self._InstanceType = InstanceType
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -7329,6 +7358,7 @@ class ModifyUserNewPrivilegeRequest(AbstractModel):
                 obj = DatabasePrivilegeInfo()
                 obj._deserialize(item)
                 self._DatabasePrivilegeList.append(obj)
+        self._InstanceType = params.get("InstanceType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

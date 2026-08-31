@@ -5401,58 +5401,60 @@ class CCN(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _CcnId: 云联网唯一ID
+        :param _CcnId: <p>云联网唯一ID</p>
         :type CcnId: str
-        :param _CcnName: 云联网名称
+        :param _CcnName: <p>云联网名称</p>
         :type CcnName: str
-        :param _CcnDescription: 云联网描述信息
+        :param _CcnDescription: <p>云联网描述信息</p>
         :type CcnDescription: str
-        :param _InstanceCount: 关联实例数量
+        :param _InstanceCount: <p>关联实例数量</p>
         :type InstanceCount: int
-        :param _CreateTime: 创建时间
+        :param _CreateTime: <p>创建时间</p>
         :type CreateTime: str
-        :param _State: 实例状态， 'ISOLATED': 隔离中（欠费停服），'AVAILABLE'：运行中。
+        :param _State: <p>实例状态， &#39;ISOLATED&#39;: 隔离中（欠费停服），&#39;AVAILABLE&#39;：运行中。</p>
         :type State: str
-        :param _QosLevel: 实例服务质量，’PT’：白金，'AU'：金，'AG'：银。
+        :param _QosLevel: <p>实例服务质量，’PT’：白金，&#39;AU&#39;：金，&#39;AG&#39;：银。</p>
         :type QosLevel: str
-        :param _InstanceChargeType: 付费类型，PREPAID为预付费，POSTPAID为后付费。
+        :param _InstanceChargeType: <p>付费类型，PREPAID为预付费，POSTPAID为后付费。</p>
         :type InstanceChargeType: str
-        :param _InstanceMeteringType: 计量类型
+        :param _InstanceMeteringType: <p>计量类型</p>
         :type InstanceMeteringType: str
-        :param _BandwidthLimitType: 限速类型，`INTER_REGION_LIMIT` 为地域间限速；`OUTER_REGION_LIMIT` 为地域出口限速。
+        :param _BandwidthLimitType: <p>限速类型，<code>INTER_REGION_LIMIT</code> 为地域间限速；<code>OUTER_REGION_LIMIT</code> 为地域出口限速。</p>
         :type BandwidthLimitType: str
-        :param _TagSet: 标签键值对。
+        :param _TagSet: <p>标签键值对。</p>
         :type TagSet: list of Tag
-        :param _RoutePriorityFlag: 是否支持云联网路由优先级的功能。`False`：不支持，`True`：支持。
+        :param _RoutePriorityFlag: <p>是否支持云联网路由优先级的功能。<code>False</code>：不支持，<code>True</code>：支持。</p>
         :type RoutePriorityFlag: bool
-        :param _RouteTableCount: 实例关联的路由表个数。
+        :param _RouteTableCount: <p>实例关联的路由表个数。</p>
         :type RouteTableCount: int
-        :param _RouteTableFlag: 是否开启云联网多路由表特性。`False`：未开启，`True`：开启。
+        :param _RouteTableFlag: <p>是否开启云联网多路由表特性。<code>False</code>：未开启，<code>True</code>：开启。</p>
         :type RouteTableFlag: bool
-        :param _IsSecurityLock: `true`：实例已被封禁，流量不通，`false`:解封禁。
+        :param _IsSecurityLock: <p><code>true</code>：实例已被封禁，流量不通，<code>false</code>:解封禁。</p>
         :type IsSecurityLock: bool
-        :param _RouteBroadcastPolicyFlag: 是否开启云联网路由传播策略。`False` 未开启，`True` 开启。
+        :param _RouteBroadcastPolicyFlag: <p>是否开启云联网路由传播策略。<code>False</code> 未开启，<code>True</code> 开启。</p>
         :type RouteBroadcastPolicyFlag: bool
-        :param _RouteECMPFlag: 是否开启等价路由功能。`False` 未开启，`True` 开启。
+        :param _RouteECMPFlag: <p>是否开启等价路由功能。<code>False</code> 未开启，<code>True</code> 开启。</p>
         :type RouteECMPFlag: bool
-        :param _RouteOverlapFlag: 是否开启路由重叠功能。`False` 未开启，`True` 开启。
+        :param _RouteOverlapFlag: <p>是否开启路由重叠功能。<code>False</code> 未开启，<code>True</code> 开启。</p>
         :type RouteOverlapFlag: bool
-        :param _TrafficMarkingPolicyFlag: 是否开启QOS。
+        :param _TrafficMarkingPolicyFlag: <p>是否开启QOS。</p>
         :type TrafficMarkingPolicyFlag: bool
-        :param _RouteSelectPolicyFlag: 是否开启路由表选择策略。
+        :param _RouteSelectPolicyFlag: <p>是否开启路由表选择策略。</p>
         :type RouteSelectPolicyFlag: bool
-        :param _DirectConnectAccelerateChannelFlag: 是否开启二层云联网通道。
+        :param _DirectConnectAccelerateChannelFlag: <p>是否开启二层云联网通道。</p>
         :type DirectConnectAccelerateChannelFlag: bool
-        :param _Ipv6Flag: 是否支持ipv6路由表
+        :param _Ipv6Flag: <p>是否支持ipv6路由表</p>
         :type Ipv6Flag: bool
-        :param _MrtbAggregatePolicyFlag: 是否支持路由表聚合策略
+        :param _MrtbAggregatePolicyFlag: <p>是否支持路由表聚合策略</p>
         :type MrtbAggregatePolicyFlag: bool
-        :param _MrtbPolicyValueFlag: 是否支持AsPath策略值
+        :param _MrtbPolicyValueFlag: <p>是否支持AsPath策略值</p>
         :type MrtbPolicyValueFlag: bool
-        :param _RouteTablePolicyValueCommunityFlag: 是否支持Community策略值
+        :param _RouteTablePolicyValueCommunityFlag: <p>是否支持Community策略值</p>
         :type RouteTablePolicyValueCommunityFlag: bool
-        :param _PolicyBasedRoutingFlag: 是否支持策略路由
+        :param _PolicyBasedRoutingFlag: <p>是否支持策略路由</p>
         :type PolicyBasedRoutingFlag: bool
+        :param _ServiceLevelMode: <p>服务等级模式</p><p>枚举值：</p><ul><li>0： 云联网模式</li><li>1： 地域间模式</li></ul>
+        :type ServiceLevelMode: int
         """
         self._CcnId = None
         self._CcnName = None
@@ -5480,10 +5482,11 @@ class CCN(AbstractModel):
         self._MrtbPolicyValueFlag = None
         self._RouteTablePolicyValueCommunityFlag = None
         self._PolicyBasedRoutingFlag = None
+        self._ServiceLevelMode = None
 
     @property
     def CcnId(self):
-        r"""云联网唯一ID
+        r"""<p>云联网唯一ID</p>
         :rtype: str
         """
         return self._CcnId
@@ -5494,7 +5497,7 @@ class CCN(AbstractModel):
 
     @property
     def CcnName(self):
-        r"""云联网名称
+        r"""<p>云联网名称</p>
         :rtype: str
         """
         return self._CcnName
@@ -5505,7 +5508,7 @@ class CCN(AbstractModel):
 
     @property
     def CcnDescription(self):
-        r"""云联网描述信息
+        r"""<p>云联网描述信息</p>
         :rtype: str
         """
         return self._CcnDescription
@@ -5516,7 +5519,7 @@ class CCN(AbstractModel):
 
     @property
     def InstanceCount(self):
-        r"""关联实例数量
+        r"""<p>关联实例数量</p>
         :rtype: int
         """
         return self._InstanceCount
@@ -5527,7 +5530,7 @@ class CCN(AbstractModel):
 
     @property
     def CreateTime(self):
-        r"""创建时间
+        r"""<p>创建时间</p>
         :rtype: str
         """
         return self._CreateTime
@@ -5538,7 +5541,7 @@ class CCN(AbstractModel):
 
     @property
     def State(self):
-        r"""实例状态， 'ISOLATED': 隔离中（欠费停服），'AVAILABLE'：运行中。
+        r"""<p>实例状态， &#39;ISOLATED&#39;: 隔离中（欠费停服），&#39;AVAILABLE&#39;：运行中。</p>
         :rtype: str
         """
         return self._State
@@ -5549,7 +5552,7 @@ class CCN(AbstractModel):
 
     @property
     def QosLevel(self):
-        r"""实例服务质量，’PT’：白金，'AU'：金，'AG'：银。
+        r"""<p>实例服务质量，’PT’：白金，&#39;AU&#39;：金，&#39;AG&#39;：银。</p>
         :rtype: str
         """
         return self._QosLevel
@@ -5560,7 +5563,7 @@ class CCN(AbstractModel):
 
     @property
     def InstanceChargeType(self):
-        r"""付费类型，PREPAID为预付费，POSTPAID为后付费。
+        r"""<p>付费类型，PREPAID为预付费，POSTPAID为后付费。</p>
         :rtype: str
         """
         return self._InstanceChargeType
@@ -5571,7 +5574,7 @@ class CCN(AbstractModel):
 
     @property
     def InstanceMeteringType(self):
-        r"""计量类型
+        r"""<p>计量类型</p>
         :rtype: str
         """
         return self._InstanceMeteringType
@@ -5582,7 +5585,7 @@ class CCN(AbstractModel):
 
     @property
     def BandwidthLimitType(self):
-        r"""限速类型，`INTER_REGION_LIMIT` 为地域间限速；`OUTER_REGION_LIMIT` 为地域出口限速。
+        r"""<p>限速类型，<code>INTER_REGION_LIMIT</code> 为地域间限速；<code>OUTER_REGION_LIMIT</code> 为地域出口限速。</p>
         :rtype: str
         """
         return self._BandwidthLimitType
@@ -5593,7 +5596,7 @@ class CCN(AbstractModel):
 
     @property
     def TagSet(self):
-        r"""标签键值对。
+        r"""<p>标签键值对。</p>
         :rtype: list of Tag
         """
         return self._TagSet
@@ -5604,7 +5607,7 @@ class CCN(AbstractModel):
 
     @property
     def RoutePriorityFlag(self):
-        r"""是否支持云联网路由优先级的功能。`False`：不支持，`True`：支持。
+        r"""<p>是否支持云联网路由优先级的功能。<code>False</code>：不支持，<code>True</code>：支持。</p>
         :rtype: bool
         """
         return self._RoutePriorityFlag
@@ -5615,7 +5618,7 @@ class CCN(AbstractModel):
 
     @property
     def RouteTableCount(self):
-        r"""实例关联的路由表个数。
+        r"""<p>实例关联的路由表个数。</p>
         :rtype: int
         """
         return self._RouteTableCount
@@ -5626,7 +5629,7 @@ class CCN(AbstractModel):
 
     @property
     def RouteTableFlag(self):
-        r"""是否开启云联网多路由表特性。`False`：未开启，`True`：开启。
+        r"""<p>是否开启云联网多路由表特性。<code>False</code>：未开启，<code>True</code>：开启。</p>
         :rtype: bool
         """
         return self._RouteTableFlag
@@ -5637,7 +5640,7 @@ class CCN(AbstractModel):
 
     @property
     def IsSecurityLock(self):
-        r"""`true`：实例已被封禁，流量不通，`false`:解封禁。
+        r"""<p><code>true</code>：实例已被封禁，流量不通，<code>false</code>:解封禁。</p>
         :rtype: bool
         """
         return self._IsSecurityLock
@@ -5648,7 +5651,7 @@ class CCN(AbstractModel):
 
     @property
     def RouteBroadcastPolicyFlag(self):
-        r"""是否开启云联网路由传播策略。`False` 未开启，`True` 开启。
+        r"""<p>是否开启云联网路由传播策略。<code>False</code> 未开启，<code>True</code> 开启。</p>
         :rtype: bool
         """
         return self._RouteBroadcastPolicyFlag
@@ -5659,7 +5662,7 @@ class CCN(AbstractModel):
 
     @property
     def RouteECMPFlag(self):
-        r"""是否开启等价路由功能。`False` 未开启，`True` 开启。
+        r"""<p>是否开启等价路由功能。<code>False</code> 未开启，<code>True</code> 开启。</p>
         :rtype: bool
         """
         return self._RouteECMPFlag
@@ -5670,7 +5673,7 @@ class CCN(AbstractModel):
 
     @property
     def RouteOverlapFlag(self):
-        r"""是否开启路由重叠功能。`False` 未开启，`True` 开启。
+        r"""<p>是否开启路由重叠功能。<code>False</code> 未开启，<code>True</code> 开启。</p>
         :rtype: bool
         """
         return self._RouteOverlapFlag
@@ -5681,7 +5684,7 @@ class CCN(AbstractModel):
 
     @property
     def TrafficMarkingPolicyFlag(self):
-        r"""是否开启QOS。
+        r"""<p>是否开启QOS。</p>
         :rtype: bool
         """
         return self._TrafficMarkingPolicyFlag
@@ -5692,7 +5695,7 @@ class CCN(AbstractModel):
 
     @property
     def RouteSelectPolicyFlag(self):
-        r"""是否开启路由表选择策略。
+        r"""<p>是否开启路由表选择策略。</p>
         :rtype: bool
         """
         return self._RouteSelectPolicyFlag
@@ -5703,7 +5706,7 @@ class CCN(AbstractModel):
 
     @property
     def DirectConnectAccelerateChannelFlag(self):
-        r"""是否开启二层云联网通道。
+        r"""<p>是否开启二层云联网通道。</p>
         :rtype: bool
         """
         return self._DirectConnectAccelerateChannelFlag
@@ -5714,7 +5717,7 @@ class CCN(AbstractModel):
 
     @property
     def Ipv6Flag(self):
-        r"""是否支持ipv6路由表
+        r"""<p>是否支持ipv6路由表</p>
         :rtype: bool
         """
         return self._Ipv6Flag
@@ -5725,7 +5728,7 @@ class CCN(AbstractModel):
 
     @property
     def MrtbAggregatePolicyFlag(self):
-        r"""是否支持路由表聚合策略
+        r"""<p>是否支持路由表聚合策略</p>
         :rtype: bool
         """
         return self._MrtbAggregatePolicyFlag
@@ -5736,7 +5739,7 @@ class CCN(AbstractModel):
 
     @property
     def MrtbPolicyValueFlag(self):
-        r"""是否支持AsPath策略值
+        r"""<p>是否支持AsPath策略值</p>
         :rtype: bool
         """
         return self._MrtbPolicyValueFlag
@@ -5747,7 +5750,7 @@ class CCN(AbstractModel):
 
     @property
     def RouteTablePolicyValueCommunityFlag(self):
-        r"""是否支持Community策略值
+        r"""<p>是否支持Community策略值</p>
         :rtype: bool
         """
         return self._RouteTablePolicyValueCommunityFlag
@@ -5758,7 +5761,7 @@ class CCN(AbstractModel):
 
     @property
     def PolicyBasedRoutingFlag(self):
-        r"""是否支持策略路由
+        r"""<p>是否支持策略路由</p>
         :rtype: bool
         """
         return self._PolicyBasedRoutingFlag
@@ -5766,6 +5769,17 @@ class CCN(AbstractModel):
     @PolicyBasedRoutingFlag.setter
     def PolicyBasedRoutingFlag(self, PolicyBasedRoutingFlag):
         self._PolicyBasedRoutingFlag = PolicyBasedRoutingFlag
+
+    @property
+    def ServiceLevelMode(self):
+        r"""<p>服务等级模式</p><p>枚举值：</p><ul><li>0： 云联网模式</li><li>1： 地域间模式</li></ul>
+        :rtype: int
+        """
+        return self._ServiceLevelMode
+
+    @ServiceLevelMode.setter
+    def ServiceLevelMode(self, ServiceLevelMode):
+        self._ServiceLevelMode = ServiceLevelMode
 
 
     def _deserialize(self, params):
@@ -5800,6 +5814,7 @@ class CCN(AbstractModel):
         self._MrtbPolicyValueFlag = params.get("MrtbPolicyValueFlag")
         self._RouteTablePolicyValueCommunityFlag = params.get("RouteTablePolicyValueCommunityFlag")
         self._PolicyBasedRoutingFlag = params.get("PolicyBasedRoutingFlag")
+        self._ServiceLevelMode = params.get("ServiceLevelMode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5817,46 +5832,38 @@ class CcnAttachedInstance(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _CcnId: 云联网实例ID。
+        :param _CcnId: <p>云联网实例ID。</p>
         :type CcnId: str
-        :param _InstanceType: 关联实例类型：
-<li>`VPC`：私有网络</li>
-<li>`DIRECTCONNECT`：专线网关</li>
-<li>`BMVPC`：黑石私有网络</li>
+        :param _InstanceType: <p>关联实例类型：</p><li><code>VPC</code>：私有网络</li><li><code>DIRECTCONNECT</code>：专线网关</li><li><code>BMVPC</code>：黑石私有网络</li>
         :type InstanceType: str
-        :param _InstanceId: 关联实例ID。
+        :param _InstanceId: <p>关联实例ID。</p>
         :type InstanceId: str
-        :param _InstanceName: 关联实例名称。
+        :param _InstanceName: <p>关联实例名称。</p>
         :type InstanceName: str
-        :param _InstanceRegion: 关联实例所属大区，例如：ap-guangzhou。
+        :param _InstanceRegion: <p>关联实例所属大区，例如：ap-guangzhou。</p>
         :type InstanceRegion: str
-        :param _InstanceUin: 关联实例所属UIN（根账号）。
+        :param _InstanceUin: <p>关联实例所属UIN（根账号）。</p>
         :type InstanceUin: str
-        :param _CidrBlock: 关联实例CIDR。
+        :param _CidrBlock: <p>关联实例CIDR。</p>
         :type CidrBlock: list of str
-        :param _State: 关联实例状态：
-<li>`PENDING`：申请中</li>
-<li>`ACTIVE`：已连接</li>
-<li>`EXPIRED`：已过期</li>
-<li>`REJECTED`：已拒绝</li>
-<li>`DELETED`：已删除</li>
-<li>`FAILED`：失败的（2小时后将异步强制解关联）</li>
-<li>`ATTACHING`：关联中</li>
-<li>`DETACHING`：解关联中</li>
-<li>`DETACHFAILED`：解关联失败（2小时后将异步强制解关联）</li>
+        :param _State: <p>关联实例状态：</p><li><code>PENDING</code>：申请中</li><li><code>ACTIVE</code>：已连接</li><li><code>EXPIRED</code>：已过期</li><li><code>REJECTED</code>：已拒绝</li><li><code>DELETED</code>：已删除</li><li><code>FAILED</code>：失败的（2小时后将异步强制解关联）</li><li><code>ATTACHING</code>：关联中</li><li><code>DETACHING</code>：解关联中</li><li><code>DETACHFAILED</code>：解关联失败（2小时后将异步强制解关联）</li>
         :type State: str
-        :param _AttachedTime: 关联时间。
+        :param _AttachedTime: <p>关联时间。</p>
         :type AttachedTime: str
-        :param _CcnUin: 云联网所属UIN（根账号）。
+        :param _CcnUin: <p>云联网所属UIN（根账号）。</p>
         :type CcnUin: str
-        :param _InstanceArea: 关联实例所属的大地域，如: CHINA_MAINLAND
+        :param _InstanceArea: <p>关联实例所属的大地域，如: CHINA_MAINLAND</p>
         :type InstanceArea: str
-        :param _Description: 备注
+        :param _Description: <p>备注</p>
         :type Description: str
-        :param _RouteTableId: 路由表ID
+        :param _RouteTableId: <p>路由表ID</p>
         :type RouteTableId: str
-        :param _RouteTableName: 路由表名称
+        :param _RouteTableName: <p>路由表名称</p>
         :type RouteTableName: str
+        :param _AliasType: <p>别名类型</p>
+        :type AliasType: str
+        :param _AliasInstanceId: <p>别名ID</p>
+        :type AliasInstanceId: str
         """
         self._CcnId = None
         self._InstanceType = None
@@ -5872,10 +5879,12 @@ class CcnAttachedInstance(AbstractModel):
         self._Description = None
         self._RouteTableId = None
         self._RouteTableName = None
+        self._AliasType = None
+        self._AliasInstanceId = None
 
     @property
     def CcnId(self):
-        r"""云联网实例ID。
+        r"""<p>云联网实例ID。</p>
         :rtype: str
         """
         return self._CcnId
@@ -5886,10 +5895,7 @@ class CcnAttachedInstance(AbstractModel):
 
     @property
     def InstanceType(self):
-        r"""关联实例类型：
-<li>`VPC`：私有网络</li>
-<li>`DIRECTCONNECT`：专线网关</li>
-<li>`BMVPC`：黑石私有网络</li>
+        r"""<p>关联实例类型：</p><li><code>VPC</code>：私有网络</li><li><code>DIRECTCONNECT</code>：专线网关</li><li><code>BMVPC</code>：黑石私有网络</li>
         :rtype: str
         """
         return self._InstanceType
@@ -5900,7 +5906,7 @@ class CcnAttachedInstance(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""关联实例ID。
+        r"""<p>关联实例ID。</p>
         :rtype: str
         """
         return self._InstanceId
@@ -5911,7 +5917,7 @@ class CcnAttachedInstance(AbstractModel):
 
     @property
     def InstanceName(self):
-        r"""关联实例名称。
+        r"""<p>关联实例名称。</p>
         :rtype: str
         """
         return self._InstanceName
@@ -5922,7 +5928,7 @@ class CcnAttachedInstance(AbstractModel):
 
     @property
     def InstanceRegion(self):
-        r"""关联实例所属大区，例如：ap-guangzhou。
+        r"""<p>关联实例所属大区，例如：ap-guangzhou。</p>
         :rtype: str
         """
         return self._InstanceRegion
@@ -5933,7 +5939,7 @@ class CcnAttachedInstance(AbstractModel):
 
     @property
     def InstanceUin(self):
-        r"""关联实例所属UIN（根账号）。
+        r"""<p>关联实例所属UIN（根账号）。</p>
         :rtype: str
         """
         return self._InstanceUin
@@ -5944,7 +5950,7 @@ class CcnAttachedInstance(AbstractModel):
 
     @property
     def CidrBlock(self):
-        r"""关联实例CIDR。
+        r"""<p>关联实例CIDR。</p>
         :rtype: list of str
         """
         return self._CidrBlock
@@ -5955,16 +5961,7 @@ class CcnAttachedInstance(AbstractModel):
 
     @property
     def State(self):
-        r"""关联实例状态：
-<li>`PENDING`：申请中</li>
-<li>`ACTIVE`：已连接</li>
-<li>`EXPIRED`：已过期</li>
-<li>`REJECTED`：已拒绝</li>
-<li>`DELETED`：已删除</li>
-<li>`FAILED`：失败的（2小时后将异步强制解关联）</li>
-<li>`ATTACHING`：关联中</li>
-<li>`DETACHING`：解关联中</li>
-<li>`DETACHFAILED`：解关联失败（2小时后将异步强制解关联）</li>
+        r"""<p>关联实例状态：</p><li><code>PENDING</code>：申请中</li><li><code>ACTIVE</code>：已连接</li><li><code>EXPIRED</code>：已过期</li><li><code>REJECTED</code>：已拒绝</li><li><code>DELETED</code>：已删除</li><li><code>FAILED</code>：失败的（2小时后将异步强制解关联）</li><li><code>ATTACHING</code>：关联中</li><li><code>DETACHING</code>：解关联中</li><li><code>DETACHFAILED</code>：解关联失败（2小时后将异步强制解关联）</li>
         :rtype: str
         """
         return self._State
@@ -5975,7 +5972,7 @@ class CcnAttachedInstance(AbstractModel):
 
     @property
     def AttachedTime(self):
-        r"""关联时间。
+        r"""<p>关联时间。</p>
         :rtype: str
         """
         return self._AttachedTime
@@ -5986,7 +5983,7 @@ class CcnAttachedInstance(AbstractModel):
 
     @property
     def CcnUin(self):
-        r"""云联网所属UIN（根账号）。
+        r"""<p>云联网所属UIN（根账号）。</p>
         :rtype: str
         """
         return self._CcnUin
@@ -5997,7 +5994,7 @@ class CcnAttachedInstance(AbstractModel):
 
     @property
     def InstanceArea(self):
-        r"""关联实例所属的大地域，如: CHINA_MAINLAND
+        r"""<p>关联实例所属的大地域，如: CHINA_MAINLAND</p>
         :rtype: str
         """
         return self._InstanceArea
@@ -6008,7 +6005,7 @@ class CcnAttachedInstance(AbstractModel):
 
     @property
     def Description(self):
-        r"""备注
+        r"""<p>备注</p>
         :rtype: str
         """
         return self._Description
@@ -6019,7 +6016,7 @@ class CcnAttachedInstance(AbstractModel):
 
     @property
     def RouteTableId(self):
-        r"""路由表ID
+        r"""<p>路由表ID</p>
         :rtype: str
         """
         return self._RouteTableId
@@ -6030,7 +6027,7 @@ class CcnAttachedInstance(AbstractModel):
 
     @property
     def RouteTableName(self):
-        r"""路由表名称
+        r"""<p>路由表名称</p>
         :rtype: str
         """
         return self._RouteTableName
@@ -6038,6 +6035,28 @@ class CcnAttachedInstance(AbstractModel):
     @RouteTableName.setter
     def RouteTableName(self, RouteTableName):
         self._RouteTableName = RouteTableName
+
+    @property
+    def AliasType(self):
+        r"""<p>别名类型</p>
+        :rtype: str
+        """
+        return self._AliasType
+
+    @AliasType.setter
+    def AliasType(self, AliasType):
+        self._AliasType = AliasType
+
+    @property
+    def AliasInstanceId(self):
+        r"""<p>别名ID</p>
+        :rtype: str
+        """
+        return self._AliasInstanceId
+
+    @AliasInstanceId.setter
+    def AliasInstanceId(self, AliasInstanceId):
+        self._AliasInstanceId = AliasInstanceId
 
 
     def _deserialize(self, params):
@@ -6055,6 +6074,8 @@ class CcnAttachedInstance(AbstractModel):
         self._Description = params.get("Description")
         self._RouteTableId = params.get("RouteTableId")
         self._RouteTableName = params.get("RouteTableName")
+        self._AliasType = params.get("AliasType")
+        self._AliasInstanceId = params.get("AliasInstanceId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7331,36 +7352,40 @@ class CcnRoute(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RouteId: 路由策略ID
+        :param _RouteId: <p>路由策略ID</p>
         :type RouteId: str
-        :param _DestinationCidrBlock: 目的端
+        :param _DestinationCidrBlock: <p>目的端</p>
         :type DestinationCidrBlock: str
-        :param _InstanceType: 下一跳类型（关联实例类型），所有类型：VPC、DIRECTCONNECT
+        :param _InstanceType: <p>下一跳类型（关联实例类型），所有类型：VPC、DIRECTCONNECT</p>
         :type InstanceType: str
-        :param _InstanceId: 下一跳（关联实例）
+        :param _InstanceId: <p>下一跳（关联实例）</p>
         :type InstanceId: str
-        :param _InstanceName: 下一跳名称（关联实例名称）
+        :param _InstanceName: <p>下一跳名称（关联实例名称）</p>
         :type InstanceName: str
-        :param _InstanceRegion: 下一跳所属地域（关联实例所属地域）
+        :param _InstanceRegion: <p>下一跳所属地域（关联实例所属地域）</p>
         :type InstanceRegion: str
-        :param _UpdateTime: 更新时间
+        :param _UpdateTime: <p>更新时间</p>
         :type UpdateTime: str
-        :param _Enabled: 路由是否启用
+        :param _Enabled: <p>路由是否启用</p>
         :type Enabled: bool
-        :param _InstanceUin: 关联实例所属UIN（根账号）
+        :param _InstanceUin: <p>关联实例所属UIN（根账号）</p>
         :type InstanceUin: str
-        :param _ExtraState: 路由的扩展状态
+        :param _ExtraState: <p>路由的扩展状态</p>
         :type ExtraState: str
-        :param _IsBgp: 是否动态路由
+        :param _IsBgp: <p>是否动态路由</p>
         :type IsBgp: bool
-        :param _RoutePriority: 路由优先级
+        :param _RoutePriority: <p>路由优先级</p>
         :type RoutePriority: int
-        :param _InstanceExtraName: 下一跳扩展名称（关联实例的扩展名称）
+        :param _InstanceExtraName: <p>下一跳扩展名称（关联实例的扩展名称）</p>
         :type InstanceExtraName: str
-        :param _AliasType: 实例类型
+        :param _AliasType: <p>实例类型</p>
         :type AliasType: str
-        :param _AliasInstanceId: 实例id
+        :param _AliasInstanceId: <p>实例id</p>
         :type AliasInstanceId: str
+        :param _RouteTableId: <p>路由表ID</p>
+        :type RouteTableId: str
+        :param _AsPath: <p>AS-PATH</p>
+        :type AsPath: str
         """
         self._RouteId = None
         self._DestinationCidrBlock = None
@@ -7377,10 +7402,12 @@ class CcnRoute(AbstractModel):
         self._InstanceExtraName = None
         self._AliasType = None
         self._AliasInstanceId = None
+        self._RouteTableId = None
+        self._AsPath = None
 
     @property
     def RouteId(self):
-        r"""路由策略ID
+        r"""<p>路由策略ID</p>
         :rtype: str
         """
         return self._RouteId
@@ -7391,7 +7418,7 @@ class CcnRoute(AbstractModel):
 
     @property
     def DestinationCidrBlock(self):
-        r"""目的端
+        r"""<p>目的端</p>
         :rtype: str
         """
         return self._DestinationCidrBlock
@@ -7402,7 +7429,7 @@ class CcnRoute(AbstractModel):
 
     @property
     def InstanceType(self):
-        r"""下一跳类型（关联实例类型），所有类型：VPC、DIRECTCONNECT
+        r"""<p>下一跳类型（关联实例类型），所有类型：VPC、DIRECTCONNECT</p>
         :rtype: str
         """
         return self._InstanceType
@@ -7413,7 +7440,7 @@ class CcnRoute(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""下一跳（关联实例）
+        r"""<p>下一跳（关联实例）</p>
         :rtype: str
         """
         return self._InstanceId
@@ -7424,7 +7451,7 @@ class CcnRoute(AbstractModel):
 
     @property
     def InstanceName(self):
-        r"""下一跳名称（关联实例名称）
+        r"""<p>下一跳名称（关联实例名称）</p>
         :rtype: str
         """
         return self._InstanceName
@@ -7435,7 +7462,7 @@ class CcnRoute(AbstractModel):
 
     @property
     def InstanceRegion(self):
-        r"""下一跳所属地域（关联实例所属地域）
+        r"""<p>下一跳所属地域（关联实例所属地域）</p>
         :rtype: str
         """
         return self._InstanceRegion
@@ -7446,7 +7473,7 @@ class CcnRoute(AbstractModel):
 
     @property
     def UpdateTime(self):
-        r"""更新时间
+        r"""<p>更新时间</p>
         :rtype: str
         """
         return self._UpdateTime
@@ -7457,7 +7484,7 @@ class CcnRoute(AbstractModel):
 
     @property
     def Enabled(self):
-        r"""路由是否启用
+        r"""<p>路由是否启用</p>
         :rtype: bool
         """
         return self._Enabled
@@ -7468,7 +7495,7 @@ class CcnRoute(AbstractModel):
 
     @property
     def InstanceUin(self):
-        r"""关联实例所属UIN（根账号）
+        r"""<p>关联实例所属UIN（根账号）</p>
         :rtype: str
         """
         return self._InstanceUin
@@ -7479,7 +7506,7 @@ class CcnRoute(AbstractModel):
 
     @property
     def ExtraState(self):
-        r"""路由的扩展状态
+        r"""<p>路由的扩展状态</p>
         :rtype: str
         """
         return self._ExtraState
@@ -7490,7 +7517,7 @@ class CcnRoute(AbstractModel):
 
     @property
     def IsBgp(self):
-        r"""是否动态路由
+        r"""<p>是否动态路由</p>
         :rtype: bool
         """
         return self._IsBgp
@@ -7501,7 +7528,7 @@ class CcnRoute(AbstractModel):
 
     @property
     def RoutePriority(self):
-        r"""路由优先级
+        r"""<p>路由优先级</p>
         :rtype: int
         """
         return self._RoutePriority
@@ -7512,7 +7539,7 @@ class CcnRoute(AbstractModel):
 
     @property
     def InstanceExtraName(self):
-        r"""下一跳扩展名称（关联实例的扩展名称）
+        r"""<p>下一跳扩展名称（关联实例的扩展名称）</p>
         :rtype: str
         """
         return self._InstanceExtraName
@@ -7523,7 +7550,7 @@ class CcnRoute(AbstractModel):
 
     @property
     def AliasType(self):
-        r"""实例类型
+        r"""<p>实例类型</p>
         :rtype: str
         """
         return self._AliasType
@@ -7534,7 +7561,7 @@ class CcnRoute(AbstractModel):
 
     @property
     def AliasInstanceId(self):
-        r"""实例id
+        r"""<p>实例id</p>
         :rtype: str
         """
         return self._AliasInstanceId
@@ -7542,6 +7569,28 @@ class CcnRoute(AbstractModel):
     @AliasInstanceId.setter
     def AliasInstanceId(self, AliasInstanceId):
         self._AliasInstanceId = AliasInstanceId
+
+    @property
+    def RouteTableId(self):
+        r"""<p>路由表ID</p>
+        :rtype: str
+        """
+        return self._RouteTableId
+
+    @RouteTableId.setter
+    def RouteTableId(self, RouteTableId):
+        self._RouteTableId = RouteTableId
+
+    @property
+    def AsPath(self):
+        r"""<p>AS-PATH</p>
+        :rtype: str
+        """
+        return self._AsPath
+
+    @AsPath.setter
+    def AsPath(self, AsPath):
+        self._AsPath = AsPath
 
 
     def _deserialize(self, params):
@@ -7560,6 +7609,8 @@ class CcnRoute(AbstractModel):
         self._InstanceExtraName = params.get("InstanceExtraName")
         self._AliasType = params.get("AliasType")
         self._AliasInstanceId = params.get("AliasInstanceId")
+        self._RouteTableId = params.get("RouteTableId")
+        self._AsPath = params.get("AsPath")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7754,21 +7805,21 @@ class CcnRouteTableBroadcastPolicy(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RouteConditions: 路由条件
+        :param _RouteConditions: <p>路由条件</p>
         :type RouteConditions: list of CcnRouteBroadcastPolicyRouteCondition
-        :param _BroadcastConditions: 传播条件
+        :param _BroadcastConditions: <p>传播条件</p>
         :type BroadcastConditions: list of CcnRouteBroadcastPolicyRouteCondition
-        :param _Action: 路由行为，`accept` 允许，`drop` 拒绝
+        :param _Action: <p>路由行为，<code>accept</code> 允许，<code>drop</code> 拒绝</p>
         :type Action: str
-        :param _Description: 策略描述
+        :param _Description: <p>策略描述</p>
         :type Description: str
-        :param _OperateAsPath: as-path操作
+        :param _OperateAsPath: <p>as-path操作</p>
         :type OperateAsPath: str
-        :param _AsPathOperateMode: as-path操作模式
+        :param _AsPathOperateMode: <p>as-path操作模式</p>
         :type AsPathOperateMode: str
-        :param _OperateCommunitySet: community操作
+        :param _OperateCommunitySet: <p>community操作</p>
         :type OperateCommunitySet: list of str
-        :param _CommunityOperateMode: community操作模式
+        :param _CommunityOperateMode: <p>community操作模式</p>
         :type CommunityOperateMode: str
         """
         self._RouteConditions = None
@@ -7782,7 +7833,7 @@ class CcnRouteTableBroadcastPolicy(AbstractModel):
 
     @property
     def RouteConditions(self):
-        r"""路由条件
+        r"""<p>路由条件</p>
         :rtype: list of CcnRouteBroadcastPolicyRouteCondition
         """
         return self._RouteConditions
@@ -7793,7 +7844,7 @@ class CcnRouteTableBroadcastPolicy(AbstractModel):
 
     @property
     def BroadcastConditions(self):
-        r"""传播条件
+        r"""<p>传播条件</p>
         :rtype: list of CcnRouteBroadcastPolicyRouteCondition
         """
         return self._BroadcastConditions
@@ -7804,7 +7855,7 @@ class CcnRouteTableBroadcastPolicy(AbstractModel):
 
     @property
     def Action(self):
-        r"""路由行为，`accept` 允许，`drop` 拒绝
+        r"""<p>路由行为，<code>accept</code> 允许，<code>drop</code> 拒绝</p>
         :rtype: str
         """
         return self._Action
@@ -7815,7 +7866,7 @@ class CcnRouteTableBroadcastPolicy(AbstractModel):
 
     @property
     def Description(self):
-        r"""策略描述
+        r"""<p>策略描述</p>
         :rtype: str
         """
         return self._Description
@@ -7826,7 +7877,7 @@ class CcnRouteTableBroadcastPolicy(AbstractModel):
 
     @property
     def OperateAsPath(self):
-        r"""as-path操作
+        r"""<p>as-path操作</p>
         :rtype: str
         """
         return self._OperateAsPath
@@ -7837,7 +7888,7 @@ class CcnRouteTableBroadcastPolicy(AbstractModel):
 
     @property
     def AsPathOperateMode(self):
-        r"""as-path操作模式
+        r"""<p>as-path操作模式</p>
         :rtype: str
         """
         return self._AsPathOperateMode
@@ -7848,7 +7899,7 @@ class CcnRouteTableBroadcastPolicy(AbstractModel):
 
     @property
     def OperateCommunitySet(self):
-        r"""community操作
+        r"""<p>community操作</p>
         :rtype: list of str
         """
         return self._OperateCommunitySet
@@ -7859,7 +7910,7 @@ class CcnRouteTableBroadcastPolicy(AbstractModel):
 
     @property
     def CommunityOperateMode(self):
-        r"""community操作模式
+        r"""<p>community操作模式</p>
         :rtype: str
         """
         return self._CommunityOperateMode
@@ -49021,33 +49072,28 @@ class InstanceBind(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _CcnId: 云联网ID。
+        :param _CcnId: <p>云联网ID。</p>
         :type CcnId: str
-        :param _InstanceType: 实例类型：VPC，DIRECTCONNECT，BMVPC，EDGE，EDGE_TUNNEL，EDGE_VPNGW，VPNGW。
+        :param _InstanceType: <p>实例类型：VPC，DIRECTCONNECT，BMVPC，EDGE，EDGE_TUNNEL，EDGE_VPNGW，VPNGW。</p>
         :type InstanceType: str
-        :param _InstanceId: 实例ID。
+        :param _InstanceId: <p>实例ID。</p>
         :type InstanceId: str
-        :param _InstanceBindTime: 实例绑定路由表的时间。
+        :param _InstanceBindTime: <p>实例绑定路由表的时间。</p>
         :type InstanceBindTime: str
-        :param _RouteTableId: 路由表ID。
+        :param _RouteTableId: <p>路由表ID。</p>
         :type RouteTableId: str
-        :param _InstanceName: 实例名称。
+        :param _InstanceName: <p>实例名称。</p>
         :type InstanceName: str
-        :param _InstanceRegion: 实例所在地域。
+        :param _InstanceRegion: <p>实例所在地域。</p>
         :type InstanceRegion: str
-        :param _InstanceUin: 实例所属的账户uin。
+        :param _InstanceUin: <p>实例所属的账户uin。</p>
         :type InstanceUin: str
-        :param _State: 关联实例状态：
-<li>`PENDING`：申请中</li>
-<li>`ACTIVE`：已连接</li>
-<li>`EXPIRED`：已过期</li>
-<li>`REJECTED`：已拒绝</li>
-<li>`DELETED`：已删除</li>
-<li>`FAILED`：失败的（2小时后将异步强制解关联）</li>
-<li>`ATTACHING`：关联中</li>
-<li>`DETACHING`：解关联中</li>
-<li>`DETACHFAILED`：解关联失败（2小时后将异步强制解关联）</li>
+        :param _State: <p>关联实例状态：</p><li><code>PENDING</code>：申请中</li><li><code>ACTIVE</code>：已连接</li><li><code>EXPIRED</code>：已过期</li><li><code>REJECTED</code>：已拒绝</li><li><code>DELETED</code>：已删除</li><li><code>FAILED</code>：失败的（2小时后将异步强制解关联）</li><li><code>ATTACHING</code>：关联中</li><li><code>DETACHING</code>：解关联中</li><li><code>DETACHFAILED</code>：解关联失败（2小时后将异步强制解关联）</li>
         :type State: str
+        :param _AliasType: <p>别名类型</p>
+        :type AliasType: str
+        :param _AliasInstanceId: <p>别名实例ID</p>
+        :type AliasInstanceId: str
         """
         self._CcnId = None
         self._InstanceType = None
@@ -49058,10 +49104,12 @@ class InstanceBind(AbstractModel):
         self._InstanceRegion = None
         self._InstanceUin = None
         self._State = None
+        self._AliasType = None
+        self._AliasInstanceId = None
 
     @property
     def CcnId(self):
-        r"""云联网ID。
+        r"""<p>云联网ID。</p>
         :rtype: str
         """
         return self._CcnId
@@ -49072,7 +49120,7 @@ class InstanceBind(AbstractModel):
 
     @property
     def InstanceType(self):
-        r"""实例类型：VPC，DIRECTCONNECT，BMVPC，EDGE，EDGE_TUNNEL，EDGE_VPNGW，VPNGW。
+        r"""<p>实例类型：VPC，DIRECTCONNECT，BMVPC，EDGE，EDGE_TUNNEL，EDGE_VPNGW，VPNGW。</p>
         :rtype: str
         """
         return self._InstanceType
@@ -49083,7 +49131,7 @@ class InstanceBind(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""实例ID。
+        r"""<p>实例ID。</p>
         :rtype: str
         """
         return self._InstanceId
@@ -49094,7 +49142,7 @@ class InstanceBind(AbstractModel):
 
     @property
     def InstanceBindTime(self):
-        r"""实例绑定路由表的时间。
+        r"""<p>实例绑定路由表的时间。</p>
         :rtype: str
         """
         return self._InstanceBindTime
@@ -49105,7 +49153,7 @@ class InstanceBind(AbstractModel):
 
     @property
     def RouteTableId(self):
-        r"""路由表ID。
+        r"""<p>路由表ID。</p>
         :rtype: str
         """
         return self._RouteTableId
@@ -49116,7 +49164,7 @@ class InstanceBind(AbstractModel):
 
     @property
     def InstanceName(self):
-        r"""实例名称。
+        r"""<p>实例名称。</p>
         :rtype: str
         """
         return self._InstanceName
@@ -49127,7 +49175,7 @@ class InstanceBind(AbstractModel):
 
     @property
     def InstanceRegion(self):
-        r"""实例所在地域。
+        r"""<p>实例所在地域。</p>
         :rtype: str
         """
         return self._InstanceRegion
@@ -49138,7 +49186,7 @@ class InstanceBind(AbstractModel):
 
     @property
     def InstanceUin(self):
-        r"""实例所属的账户uin。
+        r"""<p>实例所属的账户uin。</p>
         :rtype: str
         """
         return self._InstanceUin
@@ -49149,16 +49197,7 @@ class InstanceBind(AbstractModel):
 
     @property
     def State(self):
-        r"""关联实例状态：
-<li>`PENDING`：申请中</li>
-<li>`ACTIVE`：已连接</li>
-<li>`EXPIRED`：已过期</li>
-<li>`REJECTED`：已拒绝</li>
-<li>`DELETED`：已删除</li>
-<li>`FAILED`：失败的（2小时后将异步强制解关联）</li>
-<li>`ATTACHING`：关联中</li>
-<li>`DETACHING`：解关联中</li>
-<li>`DETACHFAILED`：解关联失败（2小时后将异步强制解关联）</li>
+        r"""<p>关联实例状态：</p><li><code>PENDING</code>：申请中</li><li><code>ACTIVE</code>：已连接</li><li><code>EXPIRED</code>：已过期</li><li><code>REJECTED</code>：已拒绝</li><li><code>DELETED</code>：已删除</li><li><code>FAILED</code>：失败的（2小时后将异步强制解关联）</li><li><code>ATTACHING</code>：关联中</li><li><code>DETACHING</code>：解关联中</li><li><code>DETACHFAILED</code>：解关联失败（2小时后将异步强制解关联）</li>
         :rtype: str
         """
         return self._State
@@ -49166,6 +49205,28 @@ class InstanceBind(AbstractModel):
     @State.setter
     def State(self, State):
         self._State = State
+
+    @property
+    def AliasType(self):
+        r"""<p>别名类型</p>
+        :rtype: str
+        """
+        return self._AliasType
+
+    @AliasType.setter
+    def AliasType(self, AliasType):
+        self._AliasType = AliasType
+
+    @property
+    def AliasInstanceId(self):
+        r"""<p>别名实例ID</p>
+        :rtype: str
+        """
+        return self._AliasInstanceId
+
+    @AliasInstanceId.setter
+    def AliasInstanceId(self, AliasInstanceId):
+        self._AliasInstanceId = AliasInstanceId
 
 
     def _deserialize(self, params):
@@ -49178,6 +49239,8 @@ class InstanceBind(AbstractModel):
         self._InstanceRegion = params.get("InstanceRegion")
         self._InstanceUin = params.get("InstanceUin")
         self._State = params.get("State")
+        self._AliasType = params.get("AliasType")
+        self._AliasInstanceId = params.get("AliasInstanceId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

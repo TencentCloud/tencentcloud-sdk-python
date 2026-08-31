@@ -175,7 +175,7 @@ class TdmqClient(AbstractClient):
             opts: Dict = None,
     ) -> models.CreateProClusterResponse:
         """
-        创建专业集群——预付费，仅通过api调用
+        创建Pulsar标准版或专业版实例——预付费，仅通过api调用
         """
         
         kwargs = {}
@@ -1309,7 +1309,7 @@ class TdmqClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribePulsarProInstanceDetailResponse:
         """
-        获取Pulsar专业版集群实例信息
+        获取Pulsar标准版或专业版实例信息
         """
         
         kwargs = {}
@@ -1327,7 +1327,7 @@ class TdmqClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribePulsarProInstancesResponse:
         """
-        查询用户已购的Pulsar专业版实例列表
+        查询用户已购的Pulsar实例列表
         """
         
         kwargs = {}
@@ -2186,7 +2186,7 @@ class TdmqClient(AbstractClient):
             opts: Dict = None,
     ) -> models.ModifyClusterResponse:
         """
-        更新集群信息
+        更新虚拟集群信息
         """
         
         kwargs = {}

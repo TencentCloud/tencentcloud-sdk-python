@@ -9830,20 +9830,22 @@ class DescribeUserRoleListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _PageNo: 页码
+        :param _PageNo: <p>页码</p>
         :type PageNo: int
-        :param _PageSize: 页数
+        :param _PageSize: <p>页数</p>
         :type PageSize: int
-        :param _AllPage: 全部页码
+        :param _AllPage: <p>全部页码</p>
         :type AllPage: bool
-        :param _UserType: 0 企业用户 1 访客 不填表示所有用户
+        :param _UserType: <p>0 企业用户 1 访客 不填表示所有用户</p>
         :type UserType: str
-        :param _Keyword: 模糊搜索的关键字
+        :param _Keyword: <p>模糊搜索的关键字</p>
         :type Keyword: str
-        :param _ProjectId: 项目id
+        :param _ProjectId: <p>项目id</p>
         :type ProjectId: str
-        :param _IsOnlyBindAppUser: 是否只获取绑定企微应用的
+        :param _IsOnlyBindAppUser: <p>是否只获取绑定企微应用的</p>
         :type IsOnlyBindAppUser: bool
+        :param _IdentityType: <p>用户类型</p>
+        :type IdentityType: str
         """
         self._PageNo = None
         self._PageSize = None
@@ -9852,10 +9854,11 @@ class DescribeUserRoleListRequest(AbstractModel):
         self._Keyword = None
         self._ProjectId = None
         self._IsOnlyBindAppUser = None
+        self._IdentityType = None
 
     @property
     def PageNo(self):
-        r"""页码
+        r"""<p>页码</p>
         :rtype: int
         """
         return self._PageNo
@@ -9866,7 +9869,7 @@ class DescribeUserRoleListRequest(AbstractModel):
 
     @property
     def PageSize(self):
-        r"""页数
+        r"""<p>页数</p>
         :rtype: int
         """
         return self._PageSize
@@ -9877,7 +9880,7 @@ class DescribeUserRoleListRequest(AbstractModel):
 
     @property
     def AllPage(self):
-        r"""全部页码
+        r"""<p>全部页码</p>
         :rtype: bool
         """
         return self._AllPage
@@ -9888,7 +9891,7 @@ class DescribeUserRoleListRequest(AbstractModel):
 
     @property
     def UserType(self):
-        r"""0 企业用户 1 访客 不填表示所有用户
+        r"""<p>0 企业用户 1 访客 不填表示所有用户</p>
         :rtype: str
         """
         return self._UserType
@@ -9899,7 +9902,7 @@ class DescribeUserRoleListRequest(AbstractModel):
 
     @property
     def Keyword(self):
-        r"""模糊搜索的关键字
+        r"""<p>模糊搜索的关键字</p>
         :rtype: str
         """
         return self._Keyword
@@ -9910,7 +9913,7 @@ class DescribeUserRoleListRequest(AbstractModel):
 
     @property
     def ProjectId(self):
-        r"""项目id
+        r"""<p>项目id</p>
         :rtype: str
         """
         return self._ProjectId
@@ -9921,7 +9924,7 @@ class DescribeUserRoleListRequest(AbstractModel):
 
     @property
     def IsOnlyBindAppUser(self):
-        r"""是否只获取绑定企微应用的
+        r"""<p>是否只获取绑定企微应用的</p>
         :rtype: bool
         """
         return self._IsOnlyBindAppUser
@@ -9929,6 +9932,17 @@ class DescribeUserRoleListRequest(AbstractModel):
     @IsOnlyBindAppUser.setter
     def IsOnlyBindAppUser(self, IsOnlyBindAppUser):
         self._IsOnlyBindAppUser = IsOnlyBindAppUser
+
+    @property
+    def IdentityType(self):
+        r"""<p>用户类型</p>
+        :rtype: str
+        """
+        return self._IdentityType
+
+    @IdentityType.setter
+    def IdentityType(self, IdentityType):
+        self._IdentityType = IdentityType
 
 
     def _deserialize(self, params):
@@ -9939,6 +9953,7 @@ class DescribeUserRoleListRequest(AbstractModel):
         self._Keyword = params.get("Keyword")
         self._ProjectId = params.get("ProjectId")
         self._IsOnlyBindAppUser = params.get("IsOnlyBindAppUser")
+        self._IdentityType = params.get("IdentityType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -9959,13 +9974,13 @@ class DescribeUserRoleListResponse(AbstractModel):
         :param _ErrorInfo: 自定义错误信息对象
 注意：此字段可能返回 null，表示取不到有效值。
         :type ErrorInfo: :class:`tencentcloud.bi.v20220105.models.ErrorInfo`
-        :param _Extra: 扩展描述信息(提供更多异常信息,用于辅助判断)
+        :param _Extra: <p>扩展描述信息(提供更多异常信息,用于辅助判断)</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Extra: str
-        :param _Data: 数据
+        :param _Data: <p>数据</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Data: :class:`tencentcloud.bi.v20220105.models.UserRoleListData`
-        :param _Msg: 消息
+        :param _Msg: <p>消息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Msg: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -9991,7 +10006,7 @@ class DescribeUserRoleListResponse(AbstractModel):
 
     @property
     def Extra(self):
-        r"""扩展描述信息(提供更多异常信息,用于辅助判断)
+        r"""<p>扩展描述信息(提供更多异常信息,用于辅助判断)</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -10003,7 +10018,7 @@ class DescribeUserRoleListResponse(AbstractModel):
 
     @property
     def Data(self):
-        r"""数据
+        r"""<p>数据</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.bi.v20220105.models.UserRoleListData`
         """
@@ -10015,7 +10030,7 @@ class DescribeUserRoleListResponse(AbstractModel):
 
     @property
     def Msg(self):
-        r"""消息
+        r"""<p>消息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -20076,6 +20091,9 @@ class UserInfo(AbstractModel):
         :param _LarkOpenId: <p>飞书OpenId</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type LarkOpenId: str
+        :param _IdentityType: <p>用户类型</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IdentityType: str
         """
         self._UserId = None
         self._UserName = None
@@ -20085,6 +20103,7 @@ class UserInfo(AbstractModel):
         self._AppUserId = None
         self._AppUserName = None
         self._LarkOpenId = None
+        self._IdentityType = None
 
     @property
     def UserId(self):
@@ -20180,6 +20199,18 @@ class UserInfo(AbstractModel):
     def LarkOpenId(self, LarkOpenId):
         self._LarkOpenId = LarkOpenId
 
+    @property
+    def IdentityType(self):
+        r"""<p>用户类型</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._IdentityType
+
+    @IdentityType.setter
+    def IdentityType(self, IdentityType):
+        self._IdentityType = IdentityType
+
 
     def _deserialize(self, params):
         self._UserId = params.get("UserId")
@@ -20190,6 +20221,7 @@ class UserInfo(AbstractModel):
         self._AppUserId = params.get("AppUserId")
         self._AppUserName = params.get("AppUserName")
         self._LarkOpenId = params.get("LarkOpenId")
+        self._IdentityType = params.get("IdentityType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -20501,74 +20533,77 @@ class UserRoleListDataUserRoleInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Id: 业务ID
+        :param _Id: <p>业务ID</p>
         :type Id: int
-        :param _RoleList: 角色列表
+        :param _RoleList: <p>角色列表</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type RoleList: list of UserRoleListDataRoleInfo
-        :param _RoleIdList: 角色ID列表
+        :param _RoleIdList: <p>角色ID列表</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type RoleIdList: list of int non-negative
-        :param _UserId: 用户ID
+        :param _UserId: <p>用户ID</p>
         :type UserId: str
-        :param _UserName: 用户名
+        :param _UserName: <p>用户名</p>
         :type UserName: str
-        :param _CorpId: 企业ID
+        :param _CorpId: <p>企业ID</p>
         :type CorpId: str
-        :param _Email: 邮箱
+        :param _Email: <p>邮箱</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Email: str
-        :param _CreatedUser: 创建人
+        :param _CreatedUser: <p>创建人</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type CreatedUser: str
-        :param _CreatedAt: 创建时间
+        :param _CreatedAt: <p>创建时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type CreatedAt: str
-        :param _UpdatedUser: 更新人
+        :param _UpdatedUser: <p>更新人</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type UpdatedUser: str
-        :param _UpdatedAt: 更新时间
+        :param _UpdatedAt: <p>更新时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type UpdatedAt: str
-        :param _LastLogin: 最后一次登录时间
+        :param _LastLogin: <p>最后一次登录时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type LastLogin: str
-        :param _Status: 账号状态
+        :param _Status: <p>账号状态</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Status: int
-        :param _PhoneNumber: 手机号码
+        :param _PhoneNumber: <p>手机号码</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type PhoneNumber: str
-        :param _AreaCode: 手机号区号
+        :param _AreaCode: <p>手机号区号</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type AreaCode: str
-        :param _RootAccount: 是否为主账号
+        :param _RootAccount: <p>是否为主账号</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type RootAccount: bool
-        :param _CorpAdmin: 是否为企业管理员
+        :param _CorpAdmin: <p>是否为企业管理员</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type CorpAdmin: bool
-        :param _AppUserId: 企微用户id
+        :param _AppUserId: <p>企微用户id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type AppUserId: str
-        :param _AppUserAliasName: 昵称
+        :param _AppUserAliasName: <p>昵称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type AppUserAliasName: str
-        :param _AppUserName: 应用用户名
+        :param _AppUserName: <p>应用用户名</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type AppUserName: str
-        :param _InValidateAppRange: 是否在可见范围内
+        :param _InValidateAppRange: <p>是否在可见范围内</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type InValidateAppRange: bool
-        :param _AppOpenUserId: 用户openid
+        :param _AppOpenUserId: <p>用户openid</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type AppOpenUserId: str
-        :param _EmailActivationStatus: 邮箱激活状态
+        :param _EmailActivationStatus: <p>邮箱激活状态</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type EmailActivationStatus: int
-        :param _UserGroupList: 用户组信息
+        :param _UserGroupList: <p>用户组信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type UserGroupList: list of UserGroupDTO
+        :param _IdentityType: <p>用户类型</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IdentityType: str
         """
         self._Id = None
         self._RoleList = None
@@ -20594,10 +20629,11 @@ class UserRoleListDataUserRoleInfo(AbstractModel):
         self._AppOpenUserId = None
         self._EmailActivationStatus = None
         self._UserGroupList = None
+        self._IdentityType = None
 
     @property
     def Id(self):
-        r"""业务ID
+        r"""<p>业务ID</p>
         :rtype: int
         """
         return self._Id
@@ -20608,7 +20644,7 @@ class UserRoleListDataUserRoleInfo(AbstractModel):
 
     @property
     def RoleList(self):
-        r"""角色列表
+        r"""<p>角色列表</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of UserRoleListDataRoleInfo
         """
@@ -20620,7 +20656,7 @@ class UserRoleListDataUserRoleInfo(AbstractModel):
 
     @property
     def RoleIdList(self):
-        r"""角色ID列表
+        r"""<p>角色ID列表</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of int non-negative
         """
@@ -20632,7 +20668,7 @@ class UserRoleListDataUserRoleInfo(AbstractModel):
 
     @property
     def UserId(self):
-        r"""用户ID
+        r"""<p>用户ID</p>
         :rtype: str
         """
         return self._UserId
@@ -20643,7 +20679,7 @@ class UserRoleListDataUserRoleInfo(AbstractModel):
 
     @property
     def UserName(self):
-        r"""用户名
+        r"""<p>用户名</p>
         :rtype: str
         """
         return self._UserName
@@ -20654,7 +20690,7 @@ class UserRoleListDataUserRoleInfo(AbstractModel):
 
     @property
     def CorpId(self):
-        r"""企业ID
+        r"""<p>企业ID</p>
         :rtype: str
         """
         return self._CorpId
@@ -20665,7 +20701,7 @@ class UserRoleListDataUserRoleInfo(AbstractModel):
 
     @property
     def Email(self):
-        r"""邮箱
+        r"""<p>邮箱</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -20677,7 +20713,7 @@ class UserRoleListDataUserRoleInfo(AbstractModel):
 
     @property
     def CreatedUser(self):
-        r"""创建人
+        r"""<p>创建人</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -20689,7 +20725,7 @@ class UserRoleListDataUserRoleInfo(AbstractModel):
 
     @property
     def CreatedAt(self):
-        r"""创建时间
+        r"""<p>创建时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -20701,7 +20737,7 @@ class UserRoleListDataUserRoleInfo(AbstractModel):
 
     @property
     def UpdatedUser(self):
-        r"""更新人
+        r"""<p>更新人</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -20713,7 +20749,7 @@ class UserRoleListDataUserRoleInfo(AbstractModel):
 
     @property
     def UpdatedAt(self):
-        r"""更新时间
+        r"""<p>更新时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -20725,7 +20761,7 @@ class UserRoleListDataUserRoleInfo(AbstractModel):
 
     @property
     def LastLogin(self):
-        r"""最后一次登录时间
+        r"""<p>最后一次登录时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -20737,7 +20773,7 @@ class UserRoleListDataUserRoleInfo(AbstractModel):
 
     @property
     def Status(self):
-        r"""账号状态
+        r"""<p>账号状态</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -20749,7 +20785,7 @@ class UserRoleListDataUserRoleInfo(AbstractModel):
 
     @property
     def PhoneNumber(self):
-        r"""手机号码
+        r"""<p>手机号码</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -20761,7 +20797,7 @@ class UserRoleListDataUserRoleInfo(AbstractModel):
 
     @property
     def AreaCode(self):
-        r"""手机号区号
+        r"""<p>手机号区号</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -20773,7 +20809,7 @@ class UserRoleListDataUserRoleInfo(AbstractModel):
 
     @property
     def RootAccount(self):
-        r"""是否为主账号
+        r"""<p>是否为主账号</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
@@ -20785,7 +20821,7 @@ class UserRoleListDataUserRoleInfo(AbstractModel):
 
     @property
     def CorpAdmin(self):
-        r"""是否为企业管理员
+        r"""<p>是否为企业管理员</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
@@ -20797,7 +20833,7 @@ class UserRoleListDataUserRoleInfo(AbstractModel):
 
     @property
     def AppUserId(self):
-        r"""企微用户id
+        r"""<p>企微用户id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -20809,7 +20845,7 @@ class UserRoleListDataUserRoleInfo(AbstractModel):
 
     @property
     def AppUserAliasName(self):
-        r"""昵称
+        r"""<p>昵称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -20821,7 +20857,7 @@ class UserRoleListDataUserRoleInfo(AbstractModel):
 
     @property
     def AppUserName(self):
-        r"""应用用户名
+        r"""<p>应用用户名</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -20833,7 +20869,7 @@ class UserRoleListDataUserRoleInfo(AbstractModel):
 
     @property
     def InValidateAppRange(self):
-        r"""是否在可见范围内
+        r"""<p>是否在可见范围内</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
@@ -20845,7 +20881,7 @@ class UserRoleListDataUserRoleInfo(AbstractModel):
 
     @property
     def AppOpenUserId(self):
-        r"""用户openid
+        r"""<p>用户openid</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -20857,7 +20893,7 @@ class UserRoleListDataUserRoleInfo(AbstractModel):
 
     @property
     def EmailActivationStatus(self):
-        r"""邮箱激活状态
+        r"""<p>邮箱激活状态</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -20869,7 +20905,7 @@ class UserRoleListDataUserRoleInfo(AbstractModel):
 
     @property
     def UserGroupList(self):
-        r"""用户组信息
+        r"""<p>用户组信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of UserGroupDTO
         """
@@ -20878,6 +20914,18 @@ class UserRoleListDataUserRoleInfo(AbstractModel):
     @UserGroupList.setter
     def UserGroupList(self, UserGroupList):
         self._UserGroupList = UserGroupList
+
+    @property
+    def IdentityType(self):
+        r"""<p>用户类型</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._IdentityType
+
+    @IdentityType.setter
+    def IdentityType(self, IdentityType):
+        self._IdentityType = IdentityType
 
 
     def _deserialize(self, params):
@@ -20915,6 +20963,7 @@ class UserRoleListDataUserRoleInfo(AbstractModel):
                 obj = UserGroupDTO()
                 obj._deserialize(item)
                 self._UserGroupList.append(obj)
+        self._IdentityType = params.get("IdentityType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

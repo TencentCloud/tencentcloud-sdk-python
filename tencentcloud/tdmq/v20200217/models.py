@@ -4354,7 +4354,7 @@ class CreateProClusterRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ZoneIds: <p>多可用区部署选择三个可用区，示例[200002,200003,200004]<br>单可用区部署选择一个可用区，示例[200002]</p><p>当选择PULSAR.P2.MINI1 时只支持两个可用区，其他支持三个可用区</p>
+        :param _ZoneIds: <p>多可用区部署选择三个可用区，示例[200002,200003,200004]<br>单可用区部署选择一个可用区，示例[200002]</p><p>专业版：当选择PULSAR.P2.MINI1时只支持两个可用区，其他规格支持三个可用区<br>标准版（PULSAR.S2系列）：只支持两个可用区</p>
         :type ZoneIds: list of int
         :param _ProductName: <p>集群规格代号<br>参考 <a href="https://cloud.tencent.com/document/product/1179/83705">专业集群规格</a></p>
         :type ProductName: str
@@ -4374,6 +4374,10 @@ class CreateProClusterRequest(AbstractModel):
         :type Tags: list of Tag
         :param _InstanceVersion: <p>集群版本信息</p>
         :type InstanceVersion: str
+        :param _UserTenant: <p>用户自定义租户名，可选。<br>不能为空，支持数字、字母以及符号 “-_=:.”，长度不超过 64 个字符。<br>未传时使用默认规则（实例 ID 作为租户名）。</p>
+        :type UserTenant: str
+        :param _ElasticTpsEnabled: <p>是否开启弹性TPS（1：开启，0：关闭），仅专业版P1固定存储集群支持</p>
+        :type ElasticTpsEnabled: int
         """
         self._ZoneIds = None
         self._ProductName = None
@@ -4385,10 +4389,12 @@ class CreateProClusterRequest(AbstractModel):
         self._Vpc = None
         self._Tags = None
         self._InstanceVersion = None
+        self._UserTenant = None
+        self._ElasticTpsEnabled = None
 
     @property
     def ZoneIds(self):
-        r"""<p>多可用区部署选择三个可用区，示例[200002,200003,200004]<br>单可用区部署选择一个可用区，示例[200002]</p><p>当选择PULSAR.P2.MINI1 时只支持两个可用区，其他支持三个可用区</p>
+        r"""<p>多可用区部署选择三个可用区，示例[200002,200003,200004]<br>单可用区部署选择一个可用区，示例[200002]</p><p>专业版：当选择PULSAR.P2.MINI1时只支持两个可用区，其他规格支持三个可用区<br>标准版（PULSAR.S2系列）：只支持两个可用区</p>
         :rtype: list of int
         """
         return self._ZoneIds
@@ -4496,6 +4502,28 @@ class CreateProClusterRequest(AbstractModel):
     def InstanceVersion(self, InstanceVersion):
         self._InstanceVersion = InstanceVersion
 
+    @property
+    def UserTenant(self):
+        r"""<p>用户自定义租户名，可选。<br>不能为空，支持数字、字母以及符号 “-_=:.”，长度不超过 64 个字符。<br>未传时使用默认规则（实例 ID 作为租户名）。</p>
+        :rtype: str
+        """
+        return self._UserTenant
+
+    @UserTenant.setter
+    def UserTenant(self, UserTenant):
+        self._UserTenant = UserTenant
+
+    @property
+    def ElasticTpsEnabled(self):
+        r"""<p>是否开启弹性TPS（1：开启，0：关闭），仅专业版P1固定存储集群支持</p>
+        :rtype: int
+        """
+        return self._ElasticTpsEnabled
+
+    @ElasticTpsEnabled.setter
+    def ElasticTpsEnabled(self, ElasticTpsEnabled):
+        self._ElasticTpsEnabled = ElasticTpsEnabled
+
 
     def _deserialize(self, params):
         self._ZoneIds = params.get("ZoneIds")
@@ -4515,6 +4543,8 @@ class CreateProClusterRequest(AbstractModel):
                 obj._deserialize(item)
                 self._Tags.append(obj)
         self._InstanceVersion = params.get("InstanceVersion")
+        self._UserTenant = params.get("UserTenant")
+        self._ElasticTpsEnabled = params.get("ElasticTpsEnabled")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -13547,11 +13577,11 @@ class DescribePulsarProInstancesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Filters: 查询条件过滤器
+        :param _Filters: <p>查询条件过滤器</p>
         :type Filters: list of Filter
-        :param _Limit: 查询数目上限，默认20
+        :param _Limit: <p>查询数目上限，默认20</p>
         :type Limit: int
-        :param _Offset: 查询起始位置
+        :param _Offset: <p>查询起始位置</p>
         :type Offset: int
         """
         self._Filters = None
@@ -13560,7 +13590,7 @@ class DescribePulsarProInstancesRequest(AbstractModel):
 
     @property
     def Filters(self):
-        r"""查询条件过滤器
+        r"""<p>查询条件过滤器</p>
         :rtype: list of Filter
         """
         return self._Filters
@@ -13571,7 +13601,7 @@ class DescribePulsarProInstancesRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""查询数目上限，默认20
+        r"""<p>查询数目上限，默认20</p>
         :rtype: int
         """
         return self._Limit
@@ -13582,7 +13612,7 @@ class DescribePulsarProInstancesRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""查询起始位置
+        r"""<p>查询起始位置</p>
         :rtype: int
         """
         return self._Offset
@@ -13618,9 +13648,9 @@ class DescribePulsarProInstancesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TotalCount: 未分页的总数目
+        :param _TotalCount: <p>未分页的总数目</p>
         :type TotalCount: int
-        :param _Instances: 实例信息列表
+        :param _Instances: <p>实例信息列表</p>
         :type Instances: list of PulsarProInstance
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -13631,7 +13661,7 @@ class DescribePulsarProInstancesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        r"""未分页的总数目
+        r"""<p>未分页的总数目</p>
         :rtype: int
         """
         return self._TotalCount
@@ -13642,7 +13672,7 @@ class DescribePulsarProInstancesResponse(AbstractModel):
 
     @property
     def Instances(self):
-        r"""实例信息列表
+        r"""<p>实例信息列表</p>
         :rtype: list of PulsarProInstance
         """
         return self._Instances
@@ -28408,7 +28438,7 @@ class PulsarNetworkAccessPointInfo(AbstractModel):
 
 
 class PulsarProClusterInfo(AbstractModel):
-    r"""Pulsar专业版集群信息
+    r"""Pulsar标准版或专业版集群信息
 
     """
 
@@ -28434,7 +28464,7 @@ class PulsarProClusterInfo(AbstractModel):
         :param _CanEditRoute: <p>是否可以修改路由</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type CanEditRoute: bool
-        :param _BillingLabelVersion: <p>代表是专业版和小规格专业版的不同计费规格PULSAR.P1固定存储PULSAR.P2弹性存储</p>
+        :param _BillingLabelVersion: <p>代表是专业版和标准版的不同计费规格<br>PULSAR.P1固定存储<br>PULSAR.P2弹性存储<br>PULSAR.S2标准版</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type BillingLabelVersion: str
         :param _ExpireTime: <p>实例到期时间戳，毫秒级精度。</p>
@@ -28446,7 +28476,7 @@ class PulsarProClusterInfo(AbstractModel):
         :param _DefaultPartitionNumber: <p>自动创建主题的默认分区数，如果没开启就是0</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type DefaultPartitionNumber: int
-        :param _Tenant: <p>用户自定义的租户别名，如果没有，会复用专业集群 ID</p>
+        :param _Tenant: <p>用户自定义的租户别名，如果没有，会复用集群 ID</p>
         :type Tenant: str
         :param _DeleteProtection: <p>删除保护开关标识</p>
         :type DeleteProtection: int
@@ -28454,6 +28484,8 @@ class PulsarProClusterInfo(AbstractModel):
         :type ElasticTpsEnabled: int
         :param _EncryptionStatus: <p>是否开启数据加密</p><p>枚举值：</p><ul><li>0： 关闭数据加密</li><li>1： 开启数据加密</li></ul>
         :type EncryptionStatus: int
+        :param _AutoExpansionEnabled: <p>是否开启磁盘自动扩容。枚举值：0-关闭，1-开启</p>
+        :type AutoExpansionEnabled: int
         """
         self._ClusterId = None
         self._ClusterName = None
@@ -28472,6 +28504,7 @@ class PulsarProClusterInfo(AbstractModel):
         self._DeleteProtection = None
         self._ElasticTpsEnabled = None
         self._EncryptionStatus = None
+        self._AutoExpansionEnabled = None
 
     @property
     def ClusterId(self):
@@ -28576,7 +28609,7 @@ class PulsarProClusterInfo(AbstractModel):
 
     @property
     def BillingLabelVersion(self):
-        r"""<p>代表是专业版和小规格专业版的不同计费规格PULSAR.P1固定存储PULSAR.P2弹性存储</p>
+        r"""<p>代表是专业版和标准版的不同计费规格<br>PULSAR.P1固定存储<br>PULSAR.P2弹性存储<br>PULSAR.S2标准版</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -28624,7 +28657,7 @@ class PulsarProClusterInfo(AbstractModel):
 
     @property
     def Tenant(self):
-        r"""<p>用户自定义的租户别名，如果没有，会复用专业集群 ID</p>
+        r"""<p>用户自定义的租户别名，如果没有，会复用集群 ID</p>
         :rtype: str
         """
         return self._Tenant
@@ -28666,6 +28699,17 @@ class PulsarProClusterInfo(AbstractModel):
     def EncryptionStatus(self, EncryptionStatus):
         self._EncryptionStatus = EncryptionStatus
 
+    @property
+    def AutoExpansionEnabled(self):
+        r"""<p>是否开启磁盘自动扩容。枚举值：0-关闭，1-开启</p>
+        :rtype: int
+        """
+        return self._AutoExpansionEnabled
+
+    @AutoExpansionEnabled.setter
+    def AutoExpansionEnabled(self, AutoExpansionEnabled):
+        self._AutoExpansionEnabled = AutoExpansionEnabled
+
 
     def _deserialize(self, params):
         self._ClusterId = params.get("ClusterId")
@@ -28690,6 +28734,7 @@ class PulsarProClusterInfo(AbstractModel):
         self._DeleteProtection = params.get("DeleteProtection")
         self._ElasticTpsEnabled = params.get("ElasticTpsEnabled")
         self._EncryptionStatus = params.get("EncryptionStatus")
+        self._AutoExpansionEnabled = params.get("AutoExpansionEnabled")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -28701,7 +28746,7 @@ class PulsarProClusterInfo(AbstractModel):
 
 
 class PulsarProClusterSpecInfo(AbstractModel):
-    r"""Pulsar专业版集群规格信息
+    r"""Pulsar标准版或专业版集群规格信息
 
     """
 
@@ -28921,60 +28966,60 @@ class PulsarProClusterSpecInfo(AbstractModel):
 
 
 class PulsarProInstance(AbstractModel):
-    r"""Pulsar专业版实例信息
+    r"""Pulsar标准版或专业版实例信息
 
     """
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例id
+        :param _InstanceId: <p>实例id</p>
         :type InstanceId: str
-        :param _InstanceName: 实例名称
+        :param _InstanceName: <p>实例名称</p>
         :type InstanceName: str
-        :param _InstanceVersion: 实例版本
+        :param _InstanceVersion: <p>实例版本</p>
         :type InstanceVersion: str
-        :param _Status: 实例状态，0-创建中，1-正常，2-隔离中，3-已销毁，4 - 异常, 5 - 发货失败，6-变配中，7-变配失败
+        :param _Status: <p>实例状态，0-创建中，1-正常，2-隔离中，3-已销毁，4 - 异常, 5 - 发货失败，6-变配中，7-变配失败</p>
         :type Status: int
-        :param _ConfigDisplay: 实例配置规格名称
+        :param _ConfigDisplay: <p>实例配置规格名称</p>
         :type ConfigDisplay: str
-        :param _MaxTps: 峰值TPS
+        :param _MaxTps: <p>峰值TPS</p>
         :type MaxTps: int
-        :param _MaxStorage: 存储容量，GB为单位
+        :param _MaxStorage: <p>存储容量，GB为单位</p>
         :type MaxStorage: int
-        :param _ExpireTime: 实例到期时间，毫秒为单位
+        :param _ExpireTime: <p>实例到期时间，毫秒为单位</p>
         :type ExpireTime: int
-        :param _AutoRenewFlag: 自动续费标记，0表示默认状态(用户未设置，即初始状态即手动续费)， 1表示自动续费，2表示明确不自动续费(用户设置)
+        :param _AutoRenewFlag: <p>自动续费标记，0表示默认状态(用户未设置，即初始状态即手动续费)， 1表示自动续费，2表示明确不自动续费(用户设置)</p>
         :type AutoRenewFlag: int
-        :param _PayMode: 0-后付费，1-预付费
+        :param _PayMode: <p>0-后付费，1-预付费</p>
         :type PayMode: int
-        :param _Remark: 备注信息
+        :param _Remark: <p>备注信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Remark: str
-        :param _SpecName: 实例配置ID
+        :param _SpecName: <p>实例配置ID</p>
         :type SpecName: str
-        :param _ScalableTps: 规格外弹性TPS
+        :param _ScalableTps: <p>规格外弹性TPS</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ScalableTps: int
-        :param _VpcId: VPC的id
+        :param _VpcId: <p>VPC的id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type VpcId: str
-        :param _SubnetId: 子网id
+        :param _SubnetId: <p>子网id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type SubnetId: str
-        :param _MaxBandWidth: 峰值带宽。单位：mbps
+        :param _MaxBandWidth: <p>峰值带宽。单位：mbps</p>
         :type MaxBandWidth: int
-        :param _Tags: 集群的标签列表
+        :param _Tags: <p>集群的标签列表</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Tags: list of Tag
-        :param _CreateTime: 集群创建时间
+        :param _CreateTime: <p>集群创建时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type CreateTime: str
-        :param _BillingLabelVersion: 代表是专业版和小规格专业版的不同计费规格PULSAR.P1固定存储PULSAR.P2弹性存储
+        :param _BillingLabelVersion: <p>代表是专业版和标准版的不同计费规格<br>PULSAR.P1固定存储<br>PULSAR.P2弹性存储<br>PULSAR.S2标准版</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type BillingLabelVersion: str
-        :param _Tenant: 自定义租户
+        :param _Tenant: <p>自定义租户</p>
         :type Tenant: str
-        :param _CertificateList: 集群的证书列表
+        :param _CertificateList: <p>集群的证书列表</p>
         :type CertificateList: list of CertificateInfo
         """
         self._InstanceId = None
@@ -29001,7 +29046,7 @@ class PulsarProInstance(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""实例id
+        r"""<p>实例id</p>
         :rtype: str
         """
         return self._InstanceId
@@ -29012,7 +29057,7 @@ class PulsarProInstance(AbstractModel):
 
     @property
     def InstanceName(self):
-        r"""实例名称
+        r"""<p>实例名称</p>
         :rtype: str
         """
         return self._InstanceName
@@ -29023,7 +29068,7 @@ class PulsarProInstance(AbstractModel):
 
     @property
     def InstanceVersion(self):
-        r"""实例版本
+        r"""<p>实例版本</p>
         :rtype: str
         """
         return self._InstanceVersion
@@ -29034,7 +29079,7 @@ class PulsarProInstance(AbstractModel):
 
     @property
     def Status(self):
-        r"""实例状态，0-创建中，1-正常，2-隔离中，3-已销毁，4 - 异常, 5 - 发货失败，6-变配中，7-变配失败
+        r"""<p>实例状态，0-创建中，1-正常，2-隔离中，3-已销毁，4 - 异常, 5 - 发货失败，6-变配中，7-变配失败</p>
         :rtype: int
         """
         return self._Status
@@ -29045,7 +29090,7 @@ class PulsarProInstance(AbstractModel):
 
     @property
     def ConfigDisplay(self):
-        r"""实例配置规格名称
+        r"""<p>实例配置规格名称</p>
         :rtype: str
         """
         return self._ConfigDisplay
@@ -29056,7 +29101,7 @@ class PulsarProInstance(AbstractModel):
 
     @property
     def MaxTps(self):
-        r"""峰值TPS
+        r"""<p>峰值TPS</p>
         :rtype: int
         """
         return self._MaxTps
@@ -29067,7 +29112,7 @@ class PulsarProInstance(AbstractModel):
 
     @property
     def MaxStorage(self):
-        r"""存储容量，GB为单位
+        r"""<p>存储容量，GB为单位</p>
         :rtype: int
         """
         return self._MaxStorage
@@ -29078,7 +29123,7 @@ class PulsarProInstance(AbstractModel):
 
     @property
     def ExpireTime(self):
-        r"""实例到期时间，毫秒为单位
+        r"""<p>实例到期时间，毫秒为单位</p>
         :rtype: int
         """
         return self._ExpireTime
@@ -29089,7 +29134,7 @@ class PulsarProInstance(AbstractModel):
 
     @property
     def AutoRenewFlag(self):
-        r"""自动续费标记，0表示默认状态(用户未设置，即初始状态即手动续费)， 1表示自动续费，2表示明确不自动续费(用户设置)
+        r"""<p>自动续费标记，0表示默认状态(用户未设置，即初始状态即手动续费)， 1表示自动续费，2表示明确不自动续费(用户设置)</p>
         :rtype: int
         """
         return self._AutoRenewFlag
@@ -29100,7 +29145,7 @@ class PulsarProInstance(AbstractModel):
 
     @property
     def PayMode(self):
-        r"""0-后付费，1-预付费
+        r"""<p>0-后付费，1-预付费</p>
         :rtype: int
         """
         return self._PayMode
@@ -29111,7 +29156,7 @@ class PulsarProInstance(AbstractModel):
 
     @property
     def Remark(self):
-        r"""备注信息
+        r"""<p>备注信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -29123,7 +29168,7 @@ class PulsarProInstance(AbstractModel):
 
     @property
     def SpecName(self):
-        r"""实例配置ID
+        r"""<p>实例配置ID</p>
         :rtype: str
         """
         return self._SpecName
@@ -29134,7 +29179,7 @@ class PulsarProInstance(AbstractModel):
 
     @property
     def ScalableTps(self):
-        r"""规格外弹性TPS
+        r"""<p>规格外弹性TPS</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -29146,7 +29191,7 @@ class PulsarProInstance(AbstractModel):
 
     @property
     def VpcId(self):
-        r"""VPC的id
+        r"""<p>VPC的id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -29158,7 +29203,7 @@ class PulsarProInstance(AbstractModel):
 
     @property
     def SubnetId(self):
-        r"""子网id
+        r"""<p>子网id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -29170,7 +29215,7 @@ class PulsarProInstance(AbstractModel):
 
     @property
     def MaxBandWidth(self):
-        r"""峰值带宽。单位：mbps
+        r"""<p>峰值带宽。单位：mbps</p>
         :rtype: int
         """
         return self._MaxBandWidth
@@ -29181,7 +29226,7 @@ class PulsarProInstance(AbstractModel):
 
     @property
     def Tags(self):
-        r"""集群的标签列表
+        r"""<p>集群的标签列表</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Tag
         """
@@ -29193,7 +29238,7 @@ class PulsarProInstance(AbstractModel):
 
     @property
     def CreateTime(self):
-        r"""集群创建时间
+        r"""<p>集群创建时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -29205,7 +29250,7 @@ class PulsarProInstance(AbstractModel):
 
     @property
     def BillingLabelVersion(self):
-        r"""代表是专业版和小规格专业版的不同计费规格PULSAR.P1固定存储PULSAR.P2弹性存储
+        r"""<p>代表是专业版和标准版的不同计费规格<br>PULSAR.P1固定存储<br>PULSAR.P2弹性存储<br>PULSAR.S2标准版</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -29217,7 +29262,7 @@ class PulsarProInstance(AbstractModel):
 
     @property
     def Tenant(self):
-        r"""自定义租户
+        r"""<p>自定义租户</p>
         :rtype: str
         """
         return self._Tenant
@@ -29228,7 +29273,7 @@ class PulsarProInstance(AbstractModel):
 
     @property
     def CertificateList(self):
-        r"""集群的证书列表
+        r"""<p>集群的证书列表</p>
         :rtype: list of CertificateInfo
         """
         return self._CertificateList

@@ -303,6 +303,29 @@ class MpsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateAgentRecordTask(self, request):
+        r"""调用该接口，用于创建Agent录制任务。
+
+        :param request: Request instance for CreateAgentRecordTask.
+        :type request: :class:`tencentcloud.mps.v20190612.models.CreateAgentRecordTaskRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.CreateAgentRecordTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateAgentRecordTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateAgentRecordTaskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateAiDramaTask(self, request):
         r"""Ai漫剧工作流，输入剧本，自动拆分分镜，生成Ai漫剧
 
@@ -2143,6 +2166,29 @@ class MpsClient(AbstractClient):
             body = self.call("DescribeAdaptiveDynamicStreamingTemplates", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeAdaptiveDynamicStreamingTemplatesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeAgentRecordTask(self, request):
+        r"""调用该接口，用于查询Agent录制任务的进度以及获取生成结果。
+
+        :param request: Request instance for DescribeAgentRecordTask.
+        :type request: :class:`tencentcloud.mps.v20190612.models.DescribeAgentRecordTaskRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.DescribeAgentRecordTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAgentRecordTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeAgentRecordTaskResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -4934,6 +4980,29 @@ class MpsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def QueryHunyuan3DTask(self, request):
+        r"""查询混元3D任务对应的结果
+
+        :param request: Request instance for QueryHunyuan3DTask.
+        :type request: :class:`tencentcloud.mps.v20190612.models.QueryHunyuan3DTaskRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.QueryHunyuan3DTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("QueryHunyuan3DTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.QueryHunyuan3DTaskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def QueryProject(self, request):
         r"""剧集项目查询
 
@@ -5109,6 +5178,29 @@ class MpsClient(AbstractClient):
             body = self.call("StopStreamPackageLinearAssemblyChannel", params, headers=headers)
             response = json.loads(body)
             model = models.StopStreamPackageLinearAssemblyChannelResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def SubmitHunyuan3DTask(self, request):
+        r"""提交创建混元3D的任务
+
+        :param request: Request instance for SubmitHunyuan3DTask.
+        :type request: :class:`tencentcloud.mps.v20190612.models.SubmitHunyuan3DTaskRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.SubmitHunyuan3DTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("SubmitHunyuan3DTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.SubmitHunyuan3DTaskResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

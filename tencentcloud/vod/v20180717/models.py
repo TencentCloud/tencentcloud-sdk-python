@@ -11624,7 +11624,7 @@ class AigcAudioTaskOutputFileInfo(AbstractModel):
         :type FileUrl: str
         :param _FileId: <p>媒体文件 ID。当 StorageMode 为 Permanent 时有效。</p>
         :type FileId: str
-        :param _MetaData: <p>输出视频的元信息。当 StorageMode 为 Permanent 时有效。</p>
+        :param _MetaData: <p>输出音频的元信息。</p>
         :type MetaData: :class:`tencentcloud.vod.v20180717.models.MediaMetaData`
         :param _Duration: <p>时长</p><p>单位：秒</p>
         :type Duration: float
@@ -11718,7 +11718,7 @@ class AigcAudioTaskOutputFileInfo(AbstractModel):
 
     @property
     def MetaData(self):
-        r"""<p>输出视频的元信息。当 StorageMode 为 Permanent 时有效。</p>
+        r"""<p>输出音频的元信息。</p>
         :rtype: :class:`tencentcloud.vod.v20180717.models.MediaMetaData`
         """
         return self._MetaData
@@ -11954,6 +11954,785 @@ class AigcFaceInputFileInfo(AbstractModel):
         self._Type = params.get("Type")
         self._FileId = params.get("FileId")
         self._Url = params.get("Url")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AigcHunyuan3DMeshInfo(AbstractModel):
+    r"""用于生成混元 3D 模型的已有模型信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Type: <p>输入的文件类型。取值有： <li>File：点播文件；</li> <li>Url：可访问的 Url；</li></p>
+        :type Type: str
+        :param _FileId: <p>文件 ID，即该文件在云点播上的全局唯一标识符，在上传成功后由云点播后台分配。可以在 <a href="/document/product/266/7830">视频上传完成事件通知</a> 或 <a href="https://console.cloud.tencent.com/vod/media">云点播控制台</a> 获取该字段。当 Type 取值为 File 时，本参数有效。说明：图片格式的取值为：支持 glb、obj。</p>
+        :type FileId: str
+        :param _Url: <p>可访问的文件 URL。当 Type 取值为 Url 时，本参数有效。说明：文件格式的取值为：支持 glb、obj。</p>
+        :type Url: str
+        """
+        self._Type = None
+        self._FileId = None
+        self._Url = None
+
+    @property
+    def Type(self):
+        r"""<p>输入的文件类型。取值有： <li>File：点播文件；</li> <li>Url：可访问的 Url；</li></p>
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def FileId(self):
+        r"""<p>文件 ID，即该文件在云点播上的全局唯一标识符，在上传成功后由云点播后台分配。可以在 <a href="/document/product/266/7830">视频上传完成事件通知</a> 或 <a href="https://console.cloud.tencent.com/vod/media">云点播控制台</a> 获取该字段。当 Type 取值为 File 时，本参数有效。说明：图片格式的取值为：支持 glb、obj。</p>
+        :rtype: str
+        """
+        return self._FileId
+
+    @FileId.setter
+    def FileId(self, FileId):
+        self._FileId = FileId
+
+    @property
+    def Url(self):
+        r"""<p>可访问的文件 URL。当 Type 取值为 Url 时，本参数有效。说明：文件格式的取值为：支持 glb、obj。</p>
+        :rtype: str
+        """
+        return self._Url
+
+    @Url.setter
+    def Url(self, Url):
+        self._Url = Url
+
+
+    def _deserialize(self, params):
+        self._Type = params.get("Type")
+        self._FileId = params.get("FileId")
+        self._Url = params.get("Url")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AigcHunyuan3DMultiViewImageInfo(AbstractModel):
+    r"""AIGC 混元 3D 的多视角图信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Type: <p>输入的文件类型。取值有： <li>File：点播媒体文件；</li> <li>Url：可访问的 Url；</li></p>
+        :type Type: str
+        :param _FileId: <p>文件 ID，即该文件在云点播上的全局唯一标识符，在上传成功后由云点播后台分配。可以在 <a href="/document/product/266/7830">视频上传完成事件通知</a> 或 <a href="https://console.cloud.tencent.com/vod/media">云点播控制台</a> 获取该字段。当 Type 取值为 File 时，本参数有效。说明：图片格式的取值为：支持 jpg、jpeg、png、bmp、webp。</p>
+        :type FileId: str
+        :param _Url: <p>可访问的文件 URL。当 Type 取值为 Url 时，本参数有效。说明：图片格式的取值为：支持 jpg、jpeg、png、bmp、webp。</p>
+        :type Url: str
+        :param _ViewType: <p>视角图片类型。</p><p>枚举值：</p><ul><li><p>front： 正视图 （必填）</p></li><li><p>back： 背视图</p></li><li><p>left： 左视图</p></li><li><p>right： 右视图</p></li><li><p>top： 顶视图</p></li><li><p>bottom： 底视图</p></li><li><p>left_front： 左前 45°</p></li><li><p>right_front： 右前 45°</p></li><li><p>必须包含 front 视角；</p></li><li><p>同一 ViewType 不允许重复。</p></li></ul>
+        :type ViewType: str
+        """
+        self._Type = None
+        self._FileId = None
+        self._Url = None
+        self._ViewType = None
+
+    @property
+    def Type(self):
+        r"""<p>输入的文件类型。取值有： <li>File：点播媒体文件；</li> <li>Url：可访问的 Url；</li></p>
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def FileId(self):
+        r"""<p>文件 ID，即该文件在云点播上的全局唯一标识符，在上传成功后由云点播后台分配。可以在 <a href="/document/product/266/7830">视频上传完成事件通知</a> 或 <a href="https://console.cloud.tencent.com/vod/media">云点播控制台</a> 获取该字段。当 Type 取值为 File 时，本参数有效。说明：图片格式的取值为：支持 jpg、jpeg、png、bmp、webp。</p>
+        :rtype: str
+        """
+        return self._FileId
+
+    @FileId.setter
+    def FileId(self, FileId):
+        self._FileId = FileId
+
+    @property
+    def Url(self):
+        r"""<p>可访问的文件 URL。当 Type 取值为 Url 时，本参数有效。说明：图片格式的取值为：支持 jpg、jpeg、png、bmp、webp。</p>
+        :rtype: str
+        """
+        return self._Url
+
+    @Url.setter
+    def Url(self, Url):
+        self._Url = Url
+
+    @property
+    def ViewType(self):
+        r"""<p>视角图片类型。</p><p>枚举值：</p><ul><li><p>front： 正视图 （必填）</p></li><li><p>back： 背视图</p></li><li><p>left： 左视图</p></li><li><p>right： 右视图</p></li><li><p>top： 顶视图</p></li><li><p>bottom： 底视图</p></li><li><p>left_front： 左前 45°</p></li><li><p>right_front： 右前 45°</p></li><li><p>必须包含 front 视角；</p></li><li><p>同一 ViewType 不允许重复。</p></li></ul>
+        :rtype: str
+        """
+        return self._ViewType
+
+    @ViewType.setter
+    def ViewType(self, ViewType):
+        self._ViewType = ViewType
+
+
+    def _deserialize(self, params):
+        self._Type = params.get("Type")
+        self._FileId = params.get("FileId")
+        self._Url = params.get("Url")
+        self._ViewType = params.get("ViewType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AigcHunyuan3DOutputConfig(AbstractModel):
+    r"""AIGC 混元 3D 任务的输出媒体文件配置。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _StorageMode: <p>存储模式。取值有： <li>Temporary：临时存储；</li>默认值：Temporary</p>
+        :type StorageMode: str
+        """
+        self._StorageMode = None
+
+    @property
+    def StorageMode(self):
+        r"""<p>存储模式。取值有： <li>Temporary：临时存储；</li>默认值：Temporary</p>
+        :rtype: str
+        """
+        return self._StorageMode
+
+    @StorageMode.setter
+    def StorageMode(self, StorageMode):
+        self._StorageMode = StorageMode
+
+
+    def _deserialize(self, params):
+        self._StorageMode = params.get("StorageMode")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AigcHunyuan3DReferenceImageInfo(AbstractModel):
+    r"""AIGC 混元 3D 的参考图片信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Type: <p>输入的文件类型。取值有： <li>File：点播文件；</li> <li>Url：可访问的 Url；</li></p>
+        :type Type: str
+        :param _FileId: <p>文件 ID，即该文件在云点播上的全局唯一标识符，在上传成功后由云点播后台分配。可以在 <a href="/document/product/266/7830">视频上传完成事件通知</a> 或 <a href="https://console.cloud.tencent.com/vod/media">云点播控制台</a> 获取该字段。当 Type 取值为 File 时，本参数有效。说明：图片格式的取值为：支持 jpg、jpeg、png、bmp、webp。</p>
+        :type FileId: str
+        :param _Url: <p>可访问的文件 URL。当 Type 取值为 Url 时，本参数有效。说明：图片格式的取值为：支持 jpg、jpeg、png、bmp、webp。</p>
+        :type Url: str
+        """
+        self._Type = None
+        self._FileId = None
+        self._Url = None
+
+    @property
+    def Type(self):
+        r"""<p>输入的文件类型。取值有： <li>File：点播文件；</li> <li>Url：可访问的 Url；</li></p>
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def FileId(self):
+        r"""<p>文件 ID，即该文件在云点播上的全局唯一标识符，在上传成功后由云点播后台分配。可以在 <a href="/document/product/266/7830">视频上传完成事件通知</a> 或 <a href="https://console.cloud.tencent.com/vod/media">云点播控制台</a> 获取该字段。当 Type 取值为 File 时，本参数有效。说明：图片格式的取值为：支持 jpg、jpeg、png、bmp、webp。</p>
+        :rtype: str
+        """
+        return self._FileId
+
+    @FileId.setter
+    def FileId(self, FileId):
+        self._FileId = FileId
+
+    @property
+    def Url(self):
+        r"""<p>可访问的文件 URL。当 Type 取值为 Url 时，本参数有效。说明：图片格式的取值为：支持 jpg、jpeg、png、bmp、webp。</p>
+        :rtype: str
+        """
+        return self._Url
+
+    @Url.setter
+    def Url(self, Url):
+        self._Url = Url
+
+
+    def _deserialize(self, params):
+        self._Type = params.get("Type")
+        self._FileId = params.get("FileId")
+        self._Url = params.get("Url")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AigcHunyuan3DTask(AbstractModel):
+    r"""AIGC 混元 3D 任务信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: <p>任务 ID。</p>
+        :type TaskId: str
+        :param _Status: <p>任务状态，取值：<li>PROCESSING：处理中；</li><li>FINISH：已完成。</li></p>
+        :type Status: str
+        :param _ErrCode: <p>错误码。源异常时返回非0错误码，返回0时请使用各个具体任务的 ErrCode。</p>
+        :type ErrCode: int
+        :param _ErrCodeExt: <p>扩展错误码。</p>
+        :type ErrCodeExt: str
+        :param _Message: <p>错误信息。</p>
+        :type Message: str
+        :param _Progress: <p>任务进度，取值范围 [0-100] 。</p>
+        :type Progress: int
+        :param _Input: <p>AIGC 混元 3D 任务的输入信息。</p>
+        :type Input: :class:`tencentcloud.vod.v20180717.models.AigcHunyuan3DTaskInput`
+        :param _Output: <p>AIGC 混元 3D 任务的输出信息。</p>
+        :type Output: :class:`tencentcloud.vod.v20180717.models.AigcHunyuan3DTaskOutput`
+        :param _SessionId: <p>用于去重的识别码，如果七天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。</p>
+        :type SessionId: str
+        :param _SessionContext: <p>来源上下文，用于透传用户请求信息，任务流状态变更回调将返回该字段值，最长 1000 个字符。</p>
+        :type SessionContext: str
+        """
+        self._TaskId = None
+        self._Status = None
+        self._ErrCode = None
+        self._ErrCodeExt = None
+        self._Message = None
+        self._Progress = None
+        self._Input = None
+        self._Output = None
+        self._SessionId = None
+        self._SessionContext = None
+
+    @property
+    def TaskId(self):
+        r"""<p>任务 ID。</p>
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def Status(self):
+        r"""<p>任务状态，取值：<li>PROCESSING：处理中；</li><li>FINISH：已完成。</li></p>
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def ErrCode(self):
+        r"""<p>错误码。源异常时返回非0错误码，返回0时请使用各个具体任务的 ErrCode。</p>
+        :rtype: int
+        """
+        return self._ErrCode
+
+    @ErrCode.setter
+    def ErrCode(self, ErrCode):
+        self._ErrCode = ErrCode
+
+    @property
+    def ErrCodeExt(self):
+        r"""<p>扩展错误码。</p>
+        :rtype: str
+        """
+        return self._ErrCodeExt
+
+    @ErrCodeExt.setter
+    def ErrCodeExt(self, ErrCodeExt):
+        self._ErrCodeExt = ErrCodeExt
+
+    @property
+    def Message(self):
+        r"""<p>错误信息。</p>
+        :rtype: str
+        """
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+    @property
+    def Progress(self):
+        r"""<p>任务进度，取值范围 [0-100] 。</p>
+        :rtype: int
+        """
+        return self._Progress
+
+    @Progress.setter
+    def Progress(self, Progress):
+        self._Progress = Progress
+
+    @property
+    def Input(self):
+        r"""<p>AIGC 混元 3D 任务的输入信息。</p>
+        :rtype: :class:`tencentcloud.vod.v20180717.models.AigcHunyuan3DTaskInput`
+        """
+        return self._Input
+
+    @Input.setter
+    def Input(self, Input):
+        self._Input = Input
+
+    @property
+    def Output(self):
+        r"""<p>AIGC 混元 3D 任务的输出信息。</p>
+        :rtype: :class:`tencentcloud.vod.v20180717.models.AigcHunyuan3DTaskOutput`
+        """
+        return self._Output
+
+    @Output.setter
+    def Output(self, Output):
+        self._Output = Output
+
+    @property
+    def SessionId(self):
+        r"""<p>用于去重的识别码，如果七天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。</p>
+        :rtype: str
+        """
+        return self._SessionId
+
+    @SessionId.setter
+    def SessionId(self, SessionId):
+        self._SessionId = SessionId
+
+    @property
+    def SessionContext(self):
+        r"""<p>来源上下文，用于透传用户请求信息，任务流状态变更回调将返回该字段值，最长 1000 个字符。</p>
+        :rtype: str
+        """
+        return self._SessionContext
+
+    @SessionContext.setter
+    def SessionContext(self, SessionContext):
+        self._SessionContext = SessionContext
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._Status = params.get("Status")
+        self._ErrCode = params.get("ErrCode")
+        self._ErrCodeExt = params.get("ErrCodeExt")
+        self._Message = params.get("Message")
+        self._Progress = params.get("Progress")
+        if params.get("Input") is not None:
+            self._Input = AigcHunyuan3DTaskInput()
+            self._Input._deserialize(params.get("Input"))
+        if params.get("Output") is not None:
+            self._Output = AigcHunyuan3DTaskOutput()
+            self._Output._deserialize(params.get("Output"))
+        self._SessionId = params.get("SessionId")
+        self._SessionContext = params.get("SessionContext")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AigcHunyuan3DTaskInput(AbstractModel):
+    r"""AIGC 混元 3D 任务的输入。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ImageInfos: <p>生成 3D 的参考图片信息。</p>
+        :type ImageInfos: list of AigcHunyuan3DReferenceImageInfo
+        :param _MultiViewImageInfos: <p>用于生成 3D 模型的多视角图片信息。</p><p>数组长度必须在2-8之间，且必须包含 front 视角。</p>
+        :type MultiViewImageInfos: list of AigcHunyuan3DMultiViewImageInfo
+        :param _Prompt: <p>生成 3D 模型的提示词。</p>
+        :type Prompt: str
+        :param _GenerateType: <p>生成类型。</p><p>枚举值：</p><ul><li>Normal： 生成完整 3D 资产（几何 + 纹理）；</li><li>Geometry： 只生成几何体（无纹理，输出速度更快）；</li><li>Texture： 只生成纹理（需要填写 MeshInfos）</li></ul>
+        :type GenerateType: str
+        :param _MeshInfos: <p>用于生成 3D 模型的参考 3D 模型。</p>
+        :type MeshInfos: list of AigcHunyuan3DMeshInfo
+        :param _EnablePBR: <p>是否开启输出 PBR 材质。</p><p>枚举值：</p><ul><li>Enabled： 开启；</li><li>Disabled： 关闭。</li></ul>
+        :type EnablePBR: str
+        :param _FaceCount: <p>面片数。仅 GenerateType 取值为 Normal  和 Geometry 时生效。</p>
+        :type FaceCount: int
+        :param _KeepUV: <p>是否保留 UV 展开。</p><p>枚举值：</p><ul><li>Enabled： 保留；</li><li>Disabled： 不保留。</li></ul>
+        :type KeepUV: str
+        :param _ResultFormat: <p>结果格式。除默认返回的 obj 和 glb 外，附加输出的一种格式。</p><p>枚举值：</p><ul><li>FBX： FBX 格式文件。</li></ul>
+        :type ResultFormat: str
+        :param _Seed: <p>随机种子，同一 Seed 输入下结果可复现。</p>
+        :type Seed: int
+        :param _Style: <p>风格控制词。</p>
+        :type Style: str
+        :param _OutputConfig: <p>任务的输出媒体文件配置。</p>
+        :type OutputConfig: :class:`tencentcloud.vod.v20180717.models.AigcHunyuan3DOutputConfig`
+        """
+        self._ImageInfos = None
+        self._MultiViewImageInfos = None
+        self._Prompt = None
+        self._GenerateType = None
+        self._MeshInfos = None
+        self._EnablePBR = None
+        self._FaceCount = None
+        self._KeepUV = None
+        self._ResultFormat = None
+        self._Seed = None
+        self._Style = None
+        self._OutputConfig = None
+
+    @property
+    def ImageInfos(self):
+        r"""<p>生成 3D 的参考图片信息。</p>
+        :rtype: list of AigcHunyuan3DReferenceImageInfo
+        """
+        return self._ImageInfos
+
+    @ImageInfos.setter
+    def ImageInfos(self, ImageInfos):
+        self._ImageInfos = ImageInfos
+
+    @property
+    def MultiViewImageInfos(self):
+        r"""<p>用于生成 3D 模型的多视角图片信息。</p><p>数组长度必须在2-8之间，且必须包含 front 视角。</p>
+        :rtype: list of AigcHunyuan3DMultiViewImageInfo
+        """
+        return self._MultiViewImageInfos
+
+    @MultiViewImageInfos.setter
+    def MultiViewImageInfos(self, MultiViewImageInfos):
+        self._MultiViewImageInfos = MultiViewImageInfos
+
+    @property
+    def Prompt(self):
+        r"""<p>生成 3D 模型的提示词。</p>
+        :rtype: str
+        """
+        return self._Prompt
+
+    @Prompt.setter
+    def Prompt(self, Prompt):
+        self._Prompt = Prompt
+
+    @property
+    def GenerateType(self):
+        r"""<p>生成类型。</p><p>枚举值：</p><ul><li>Normal： 生成完整 3D 资产（几何 + 纹理）；</li><li>Geometry： 只生成几何体（无纹理，输出速度更快）；</li><li>Texture： 只生成纹理（需要填写 MeshInfos）</li></ul>
+        :rtype: str
+        """
+        return self._GenerateType
+
+    @GenerateType.setter
+    def GenerateType(self, GenerateType):
+        self._GenerateType = GenerateType
+
+    @property
+    def MeshInfos(self):
+        r"""<p>用于生成 3D 模型的参考 3D 模型。</p>
+        :rtype: list of AigcHunyuan3DMeshInfo
+        """
+        return self._MeshInfos
+
+    @MeshInfos.setter
+    def MeshInfos(self, MeshInfos):
+        self._MeshInfos = MeshInfos
+
+    @property
+    def EnablePBR(self):
+        r"""<p>是否开启输出 PBR 材质。</p><p>枚举值：</p><ul><li>Enabled： 开启；</li><li>Disabled： 关闭。</li></ul>
+        :rtype: str
+        """
+        return self._EnablePBR
+
+    @EnablePBR.setter
+    def EnablePBR(self, EnablePBR):
+        self._EnablePBR = EnablePBR
+
+    @property
+    def FaceCount(self):
+        r"""<p>面片数。仅 GenerateType 取值为 Normal  和 Geometry 时生效。</p>
+        :rtype: int
+        """
+        return self._FaceCount
+
+    @FaceCount.setter
+    def FaceCount(self, FaceCount):
+        self._FaceCount = FaceCount
+
+    @property
+    def KeepUV(self):
+        r"""<p>是否保留 UV 展开。</p><p>枚举值：</p><ul><li>Enabled： 保留；</li><li>Disabled： 不保留。</li></ul>
+        :rtype: str
+        """
+        return self._KeepUV
+
+    @KeepUV.setter
+    def KeepUV(self, KeepUV):
+        self._KeepUV = KeepUV
+
+    @property
+    def ResultFormat(self):
+        r"""<p>结果格式。除默认返回的 obj 和 glb 外，附加输出的一种格式。</p><p>枚举值：</p><ul><li>FBX： FBX 格式文件。</li></ul>
+        :rtype: str
+        """
+        return self._ResultFormat
+
+    @ResultFormat.setter
+    def ResultFormat(self, ResultFormat):
+        self._ResultFormat = ResultFormat
+
+    @property
+    def Seed(self):
+        r"""<p>随机种子，同一 Seed 输入下结果可复现。</p>
+        :rtype: int
+        """
+        return self._Seed
+
+    @Seed.setter
+    def Seed(self, Seed):
+        self._Seed = Seed
+
+    @property
+    def Style(self):
+        r"""<p>风格控制词。</p>
+        :rtype: str
+        """
+        return self._Style
+
+    @Style.setter
+    def Style(self, Style):
+        self._Style = Style
+
+    @property
+    def OutputConfig(self):
+        r"""<p>任务的输出媒体文件配置。</p>
+        :rtype: :class:`tencentcloud.vod.v20180717.models.AigcHunyuan3DOutputConfig`
+        """
+        return self._OutputConfig
+
+    @OutputConfig.setter
+    def OutputConfig(self, OutputConfig):
+        self._OutputConfig = OutputConfig
+
+
+    def _deserialize(self, params):
+        if params.get("ImageInfos") is not None:
+            self._ImageInfos = []
+            for item in params.get("ImageInfos"):
+                obj = AigcHunyuan3DReferenceImageInfo()
+                obj._deserialize(item)
+                self._ImageInfos.append(obj)
+        if params.get("MultiViewImageInfos") is not None:
+            self._MultiViewImageInfos = []
+            for item in params.get("MultiViewImageInfos"):
+                obj = AigcHunyuan3DMultiViewImageInfo()
+                obj._deserialize(item)
+                self._MultiViewImageInfos.append(obj)
+        self._Prompt = params.get("Prompt")
+        self._GenerateType = params.get("GenerateType")
+        if params.get("MeshInfos") is not None:
+            self._MeshInfos = []
+            for item in params.get("MeshInfos"):
+                obj = AigcHunyuan3DMeshInfo()
+                obj._deserialize(item)
+                self._MeshInfos.append(obj)
+        self._EnablePBR = params.get("EnablePBR")
+        self._FaceCount = params.get("FaceCount")
+        self._KeepUV = params.get("KeepUV")
+        self._ResultFormat = params.get("ResultFormat")
+        self._Seed = params.get("Seed")
+        self._Style = params.get("Style")
+        if params.get("OutputConfig") is not None:
+            self._OutputConfig = AigcHunyuan3DOutputConfig()
+            self._OutputConfig._deserialize(params.get("OutputConfig"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AigcHunyuan3DTaskOutput(AbstractModel):
+    r"""AIGC 混元 3D 任务的输出信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FileInfos: <p>AIGC 混元 3D 任务的输出文件信息。</p>
+        :type FileInfos: list of AigcHunyuan3DTaskOutputFileInfo
+        """
+        self._FileInfos = None
+
+    @property
+    def FileInfos(self):
+        r"""<p>AIGC 混元 3D 任务的输出文件信息。</p>
+        :rtype: list of AigcHunyuan3DTaskOutputFileInfo
+        """
+        return self._FileInfos
+
+    @FileInfos.setter
+    def FileInfos(self, FileInfos):
+        self._FileInfos = FileInfos
+
+
+    def _deserialize(self, params):
+        if params.get("FileInfos") is not None:
+            self._FileInfos = []
+            for item in params.get("FileInfos"):
+                obj = AigcHunyuan3DTaskOutputFileInfo()
+                obj._deserialize(item)
+                self._FileInfos.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AigcHunyuan3DTaskOutputFileInfo(AbstractModel):
+    r"""AIGC 混元 3D 任务的输出文件信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _StorageMode: <p>存储模式。取值有： <li>Permanent：永久存储；</li> <li>Temporary：临时存储；</li> 默认值：Temporary</p>
+        :type StorageMode: str
+        :param _ExpireTime: <p>输出文件的过期时间，超过该时间文件将被删除，默认为永久不过期，格式按照 ISO 8601标准表示，详见 <a href="https://cloud.tencent.com/document/product/266/11732#I">ISO 日期格式说明</a>。</p>
+        :type ExpireTime: str
+        :param _FileType: <p>文件类型，例如 OBJ、GLB、FBX 等。</p>
+        :type FileType: str
+        :param _FileUrl: <p>输出文件地址。</p>
+        :type FileUrl: str
+        :param _PreviewFileUrl: <p>输出文件预览地址。</p><p>无文件预览地址时为空。</p>
+        :type PreviewFileUrl: str
+        """
+        self._StorageMode = None
+        self._ExpireTime = None
+        self._FileType = None
+        self._FileUrl = None
+        self._PreviewFileUrl = None
+
+    @property
+    def StorageMode(self):
+        r"""<p>存储模式。取值有： <li>Permanent：永久存储；</li> <li>Temporary：临时存储；</li> 默认值：Temporary</p>
+        :rtype: str
+        """
+        return self._StorageMode
+
+    @StorageMode.setter
+    def StorageMode(self, StorageMode):
+        self._StorageMode = StorageMode
+
+    @property
+    def ExpireTime(self):
+        r"""<p>输出文件的过期时间，超过该时间文件将被删除，默认为永久不过期，格式按照 ISO 8601标准表示，详见 <a href="https://cloud.tencent.com/document/product/266/11732#I">ISO 日期格式说明</a>。</p>
+        :rtype: str
+        """
+        return self._ExpireTime
+
+    @ExpireTime.setter
+    def ExpireTime(self, ExpireTime):
+        self._ExpireTime = ExpireTime
+
+    @property
+    def FileType(self):
+        r"""<p>文件类型，例如 OBJ、GLB、FBX 等。</p>
+        :rtype: str
+        """
+        return self._FileType
+
+    @FileType.setter
+    def FileType(self, FileType):
+        self._FileType = FileType
+
+    @property
+    def FileUrl(self):
+        r"""<p>输出文件地址。</p>
+        :rtype: str
+        """
+        return self._FileUrl
+
+    @FileUrl.setter
+    def FileUrl(self, FileUrl):
+        self._FileUrl = FileUrl
+
+    @property
+    def PreviewFileUrl(self):
+        r"""<p>输出文件预览地址。</p><p>无文件预览地址时为空。</p>
+        :rtype: str
+        """
+        return self._PreviewFileUrl
+
+    @PreviewFileUrl.setter
+    def PreviewFileUrl(self, PreviewFileUrl):
+        self._PreviewFileUrl = PreviewFileUrl
+
+
+    def _deserialize(self, params):
+        self._StorageMode = params.get("StorageMode")
+        self._ExpireTime = params.get("ExpireTime")
+        self._FileType = params.get("FileType")
+        self._FileUrl = params.get("FileUrl")
+        self._PreviewFileUrl = params.get("PreviewFileUrl")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -12778,7 +13557,7 @@ class AigcImageTaskOutputFileInfo(AbstractModel):
         :type FileUrl: str
         :param _FileId: <p>媒体文件 ID。当 StorageMode 为 Permanent 时有效。</p>
         :type FileId: str
-        :param _MetaData: <p>输出图片的元信息。当 StorageMode 为 Permanent 时有效。</p>
+        :param _MetaData: <p>输出图片的元信息。</p>
         :type MetaData: :class:`tencentcloud.vod.v20180717.models.MediaMetaData`
         """
         self._StorageMode = None
@@ -12869,7 +13648,7 @@ class AigcImageTaskOutputFileInfo(AbstractModel):
 
     @property
     def MetaData(self):
-        r"""<p>输出图片的元信息。当 StorageMode 为 Permanent 时有效。</p>
+        r"""<p>输出图片的元信息。</p>
         :rtype: :class:`tencentcloud.vod.v20180717.models.MediaMetaData`
         """
         return self._MetaData
@@ -15092,7 +15871,7 @@ class AigcVideoTaskOutputFileInfo(AbstractModel):
         :type FileContent: str
         :param _FileId: <p>媒体文件 ID。当 StorageMode 为 Permanent 时有效。</p>
         :type FileId: str
-        :param _MetaData: <p>输出视频的元信息。当 StorageMode 为 Permanent 时有效。</p>
+        :param _MetaData: <p>输出视频的元信息。</p>
         :type MetaData: :class:`tencentcloud.vod.v20180717.models.MediaMetaData`
         :param _UsageType: <p>文件的用途类型。</p><p>枚举值：</p><ul><li>scene_url： 3D 场景文件，FileUrl 字段有返回值。</li><li>point_url： 点云文件，FileUrl 字段有返回值。</li><li>mesh_url： 原始网格模型文，FileUrl 字段有返回值。</li><li>mesh_simplified_url： 简化后的网格模型文件，FileUrl 字段有返回值。</li><li>position_info： 场景空间位置信息，FileContent 字段有返回值。</li><li>image_url： 生成的图片，FileUrl 字段有返回值。</li></ul>
         :type UsageType: str
@@ -15198,7 +15977,7 @@ class AigcVideoTaskOutputFileInfo(AbstractModel):
 
     @property
     def MetaData(self):
-        r"""<p>输出视频的元信息。当 StorageMode 为 Permanent 时有效。</p>
+        r"""<p>输出视频的元信息。</p>
         :rtype: :class:`tencentcloud.vod.v20180717.models.MediaMetaData`
         """
         return self._MetaData
@@ -19138,6 +19917,512 @@ class ClipTask2017(AbstractModel):
         if params.get("FileInfo") is not None:
             self._FileInfo = ClipFileInfo2017()
             self._FileInfo._deserialize(params.get("FileInfo"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CloneVoiceAsyncInput(AbstractModel):
+    r"""音色克隆任务输入。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AudioUrl: <p>克隆音频Url，AudioData为空时有效</p>
+        :type AudioUrl: str
+        :param _AudioFileId: <p>输入音频fileId</p>
+        :type AudioFileId: str
+        :param _LanguageBoost: <p>音频语言</p>
+        :type LanguageBoost: str
+        :param _ExtParam: <p>扩展参数，json字符串</p>
+        :type ExtParam: str
+        """
+        self._AudioUrl = None
+        self._AudioFileId = None
+        self._LanguageBoost = None
+        self._ExtParam = None
+
+    @property
+    def AudioUrl(self):
+        r"""<p>克隆音频Url，AudioData为空时有效</p>
+        :rtype: str
+        """
+        return self._AudioUrl
+
+    @AudioUrl.setter
+    def AudioUrl(self, AudioUrl):
+        self._AudioUrl = AudioUrl
+
+    @property
+    def AudioFileId(self):
+        r"""<p>输入音频fileId</p>
+        :rtype: str
+        """
+        return self._AudioFileId
+
+    @AudioFileId.setter
+    def AudioFileId(self, AudioFileId):
+        self._AudioFileId = AudioFileId
+
+    @property
+    def LanguageBoost(self):
+        r"""<p>音频语言</p>
+        :rtype: str
+        """
+        return self._LanguageBoost
+
+    @LanguageBoost.setter
+    def LanguageBoost(self, LanguageBoost):
+        self._LanguageBoost = LanguageBoost
+
+    @property
+    def ExtParam(self):
+        r"""<p>扩展参数，json字符串</p>
+        :rtype: str
+        """
+        return self._ExtParam
+
+    @ExtParam.setter
+    def ExtParam(self, ExtParam):
+        self._ExtParam = ExtParam
+
+
+    def _deserialize(self, params):
+        self._AudioUrl = params.get("AudioUrl")
+        self._AudioFileId = params.get("AudioFileId")
+        self._LanguageBoost = params.get("LanguageBoost")
+        self._ExtParam = params.get("ExtParam")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CloneVoiceAsyncOutput(AbstractModel):
+    r"""音色克隆任务输出。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VoiceId: <p>音色ID</p>
+        :type VoiceId: str
+        :param _DemoAudio: <p>试听音频</p>
+        :type DemoAudio: str
+        :param _ExtInfo: <p>扩展信息</p>
+        :type ExtInfo: str
+        """
+        self._VoiceId = None
+        self._DemoAudio = None
+        self._ExtInfo = None
+
+    @property
+    def VoiceId(self):
+        r"""<p>音色ID</p>
+        :rtype: str
+        """
+        return self._VoiceId
+
+    @VoiceId.setter
+    def VoiceId(self, VoiceId):
+        self._VoiceId = VoiceId
+
+    @property
+    def DemoAudio(self):
+        r"""<p>试听音频</p>
+        :rtype: str
+        """
+        return self._DemoAudio
+
+    @DemoAudio.setter
+    def DemoAudio(self, DemoAudio):
+        self._DemoAudio = DemoAudio
+
+    @property
+    def ExtInfo(self):
+        r"""<p>扩展信息</p>
+        :rtype: str
+        """
+        return self._ExtInfo
+
+    @ExtInfo.setter
+    def ExtInfo(self, ExtInfo):
+        self._ExtInfo = ExtInfo
+
+
+    def _deserialize(self, params):
+        self._VoiceId = params.get("VoiceId")
+        self._DemoAudio = params.get("DemoAudio")
+        self._ExtInfo = params.get("ExtInfo")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CloneVoiceAsyncRequest(AbstractModel):
+    r"""CloneVoiceAsync请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SubAppId: <p>点播应用 ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</p>
+        :type SubAppId: str
+        :param _AudioData: <p>克隆音频base64编码。</p>
+        :type AudioData: str
+        :param _AudioUrl: <p>克隆音频Url，AudioData为空时有效</p>
+        :type AudioUrl: str
+        :param _AudioFileId: <p>克隆文件FileID，AudioData及AudioUrl为空时有效</p>
+        :type AudioFileId: str
+        :param _LanguageBoost: <p>语言增强，如 "zh" "en" "auto"，默认 "auto"</p>
+        :type LanguageBoost: str
+        :param _ExtParam: <p>音色克隆拓展参数。<code>ExtParam</code> 支持的字段： </p><ul><li><code>text</code> (string)：试听合成文本，最大 1000 字符；为空或不传时不返回试听音频。</li></ul>
+        :type ExtParam: str
+        :param _SessionContext: <p>标识来源上下文，用于透传用户请求信息，在回调和任务流状态变更回调将返回该字段值，最长 1000 个字符。</p>
+        :type SessionContext: str
+        :param _SessionId: <p>用于任务去重的识别码，如果三天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。</p>
+        :type SessionId: str
+        """
+        self._SubAppId = None
+        self._AudioData = None
+        self._AudioUrl = None
+        self._AudioFileId = None
+        self._LanguageBoost = None
+        self._ExtParam = None
+        self._SessionContext = None
+        self._SessionId = None
+
+    @property
+    def SubAppId(self):
+        r"""<p>点播应用 ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</p>
+        :rtype: str
+        """
+        return self._SubAppId
+
+    @SubAppId.setter
+    def SubAppId(self, SubAppId):
+        self._SubAppId = SubAppId
+
+    @property
+    def AudioData(self):
+        r"""<p>克隆音频base64编码。</p>
+        :rtype: str
+        """
+        return self._AudioData
+
+    @AudioData.setter
+    def AudioData(self, AudioData):
+        self._AudioData = AudioData
+
+    @property
+    def AudioUrl(self):
+        r"""<p>克隆音频Url，AudioData为空时有效</p>
+        :rtype: str
+        """
+        return self._AudioUrl
+
+    @AudioUrl.setter
+    def AudioUrl(self, AudioUrl):
+        self._AudioUrl = AudioUrl
+
+    @property
+    def AudioFileId(self):
+        r"""<p>克隆文件FileID，AudioData及AudioUrl为空时有效</p>
+        :rtype: str
+        """
+        return self._AudioFileId
+
+    @AudioFileId.setter
+    def AudioFileId(self, AudioFileId):
+        self._AudioFileId = AudioFileId
+
+    @property
+    def LanguageBoost(self):
+        r"""<p>语言增强，如 "zh" "en" "auto"，默认 "auto"</p>
+        :rtype: str
+        """
+        return self._LanguageBoost
+
+    @LanguageBoost.setter
+    def LanguageBoost(self, LanguageBoost):
+        self._LanguageBoost = LanguageBoost
+
+    @property
+    def ExtParam(self):
+        r"""<p>音色克隆拓展参数。<code>ExtParam</code> 支持的字段： </p><ul><li><code>text</code> (string)：试听合成文本，最大 1000 字符；为空或不传时不返回试听音频。</li></ul>
+        :rtype: str
+        """
+        return self._ExtParam
+
+    @ExtParam.setter
+    def ExtParam(self, ExtParam):
+        self._ExtParam = ExtParam
+
+    @property
+    def SessionContext(self):
+        r"""<p>标识来源上下文，用于透传用户请求信息，在回调和任务流状态变更回调将返回该字段值，最长 1000 个字符。</p>
+        :rtype: str
+        """
+        return self._SessionContext
+
+    @SessionContext.setter
+    def SessionContext(self, SessionContext):
+        self._SessionContext = SessionContext
+
+    @property
+    def SessionId(self):
+        r"""<p>用于任务去重的识别码，如果三天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。</p>
+        :rtype: str
+        """
+        return self._SessionId
+
+    @SessionId.setter
+    def SessionId(self, SessionId):
+        self._SessionId = SessionId
+
+
+    def _deserialize(self, params):
+        self._SubAppId = params.get("SubAppId")
+        self._AudioData = params.get("AudioData")
+        self._AudioUrl = params.get("AudioUrl")
+        self._AudioFileId = params.get("AudioFileId")
+        self._LanguageBoost = params.get("LanguageBoost")
+        self._ExtParam = params.get("ExtParam")
+        self._SessionContext = params.get("SessionContext")
+        self._SessionId = params.get("SessionId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CloneVoiceAsyncResponse(AbstractModel):
+    r"""CloneVoiceAsync返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: <p>任务ID，使用该ID查询结果</p>
+        :type TaskId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        r"""<p>任务ID，使用该ID查询结果</p>
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
+
+
+class CloneVoiceAsyncTask(AbstractModel):
+    r"""语音克隆任务。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: <p>任务 ID。</p>
+        :type TaskId: str
+        :param _Status: <p>任务状态，取值：</p><li>PROCESSING：处理中；</li><li>FINISH：已完成。</li>
+        :type Status: str
+        :param _ErrCode: <p>错误码，0 表示成功，其他值表示失败：</p><li>40000：输入参数不合法，请检查输入参数；</li><li>60000：源文件错误（如视频数据损坏），请确认源文件是否正常；</li><li>70000：内部服务错误，建议重试。</li>
+        :type ErrCode: int
+        :param _Message: <p>错误信息。</p>
+        :type Message: str
+        :param _ErrCodeExt: <p>错误码，空字符串表示成功，其他值表示失败，取值请参考 <a href="https://cloud.tencent.com/document/product/266/50368#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81">视频处理类错误码</a> 列表。</p>
+        :type ErrCodeExt: str
+        :param _Input: <p>音色克隆任务输入信息。</p>
+        :type Input: :class:`tencentcloud.vod.v20180717.models.CloneVoiceAsyncInput`
+        :param _Output: <p>音色克隆任务输出信息。</p>
+        :type Output: :class:`tencentcloud.vod.v20180717.models.CloneVoiceAsyncOutput`
+        :param _SessionId: <p>用于去重的识别码，如果七天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。</p>
+        :type SessionId: str
+        :param _SessionContext: <p>来源上下文，用于透传用户请求信息，任务流状态变更回调将返回该字段值，最长 1000 个字符。</p>
+        :type SessionContext: str
+        :param _Progress: <p>拉取上传进度，取值范围 [0-100] 。</p>
+        :type Progress: int
+        """
+        self._TaskId = None
+        self._Status = None
+        self._ErrCode = None
+        self._Message = None
+        self._ErrCodeExt = None
+        self._Input = None
+        self._Output = None
+        self._SessionId = None
+        self._SessionContext = None
+        self._Progress = None
+
+    @property
+    def TaskId(self):
+        r"""<p>任务 ID。</p>
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def Status(self):
+        r"""<p>任务状态，取值：</p><li>PROCESSING：处理中；</li><li>FINISH：已完成。</li>
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def ErrCode(self):
+        r"""<p>错误码，0 表示成功，其他值表示失败：</p><li>40000：输入参数不合法，请检查输入参数；</li><li>60000：源文件错误（如视频数据损坏），请确认源文件是否正常；</li><li>70000：内部服务错误，建议重试。</li>
+        :rtype: int
+        """
+        return self._ErrCode
+
+    @ErrCode.setter
+    def ErrCode(self, ErrCode):
+        self._ErrCode = ErrCode
+
+    @property
+    def Message(self):
+        r"""<p>错误信息。</p>
+        :rtype: str
+        """
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+    @property
+    def ErrCodeExt(self):
+        r"""<p>错误码，空字符串表示成功，其他值表示失败，取值请参考 <a href="https://cloud.tencent.com/document/product/266/50368#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81">视频处理类错误码</a> 列表。</p>
+        :rtype: str
+        """
+        return self._ErrCodeExt
+
+    @ErrCodeExt.setter
+    def ErrCodeExt(self, ErrCodeExt):
+        self._ErrCodeExt = ErrCodeExt
+
+    @property
+    def Input(self):
+        r"""<p>音色克隆任务输入信息。</p>
+        :rtype: :class:`tencentcloud.vod.v20180717.models.CloneVoiceAsyncInput`
+        """
+        return self._Input
+
+    @Input.setter
+    def Input(self, Input):
+        self._Input = Input
+
+    @property
+    def Output(self):
+        r"""<p>音色克隆任务输出信息。</p>
+        :rtype: :class:`tencentcloud.vod.v20180717.models.CloneVoiceAsyncOutput`
+        """
+        return self._Output
+
+    @Output.setter
+    def Output(self, Output):
+        self._Output = Output
+
+    @property
+    def SessionId(self):
+        r"""<p>用于去重的识别码，如果七天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。</p>
+        :rtype: str
+        """
+        return self._SessionId
+
+    @SessionId.setter
+    def SessionId(self, SessionId):
+        self._SessionId = SessionId
+
+    @property
+    def SessionContext(self):
+        r"""<p>来源上下文，用于透传用户请求信息，任务流状态变更回调将返回该字段值，最长 1000 个字符。</p>
+        :rtype: str
+        """
+        return self._SessionContext
+
+    @SessionContext.setter
+    def SessionContext(self, SessionContext):
+        self._SessionContext = SessionContext
+
+    @property
+    def Progress(self):
+        r"""<p>拉取上传进度，取值范围 [0-100] 。</p>
+        :rtype: int
+        """
+        return self._Progress
+
+    @Progress.setter
+    def Progress(self, Progress):
+        self._Progress = Progress
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._Status = params.get("Status")
+        self._ErrCode = params.get("ErrCode")
+        self._Message = params.get("Message")
+        self._ErrCodeExt = params.get("ErrCodeExt")
+        if params.get("Input") is not None:
+            self._Input = CloneVoiceAsyncInput()
+            self._Input._deserialize(params.get("Input"))
+        if params.get("Output") is not None:
+            self._Output = CloneVoiceAsyncOutput()
+            self._Output._deserialize(params.get("Output"))
+        self._SessionId = params.get("SessionId")
+        self._SessionContext = params.get("SessionContext")
+        self._Progress = params.get("Progress")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -34886,6 +36171,85 @@ class DeleteVodDomainResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DeleteVoiceRequest(AbstractModel):
+    r"""DeleteVoice请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VoiceId: <p>音色Id</p>
+        :type VoiceId: str
+        :param _SubAppId: <p>点播应用 ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</p>
+        :type SubAppId: str
+        """
+        self._VoiceId = None
+        self._SubAppId = None
+
+    @property
+    def VoiceId(self):
+        r"""<p>音色Id</p>
+        :rtype: str
+        """
+        return self._VoiceId
+
+    @VoiceId.setter
+    def VoiceId(self, VoiceId):
+        self._VoiceId = VoiceId
+
+    @property
+    def SubAppId(self):
+        r"""<p>点播应用 ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</p>
+        :rtype: str
+        """
+        return self._SubAppId
+
+    @SubAppId.setter
+    def SubAppId(self, SubAppId):
+        self._SubAppId = SubAppId
+
+
+    def _deserialize(self, params):
+        self._VoiceId = params.get("VoiceId")
+        self._SubAppId = params.get("SubAppId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteVoiceResponse(AbstractModel):
+    r"""DeleteVoice返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class DeleteWatermarkTemplateRequest(AbstractModel):
     r"""DeleteWatermarkTemplate请求参数结构体
 
@@ -44306,7 +45670,7 @@ class DescribeTaskDetailResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskType: <p>任务类型，取值：<li>Procedure：视频处理任务；</li><li>EditMedia：视频编辑任务；</li><li>SplitMedia：视频拆条任务；</li><li>ComposeMedia：制作媒体文件任务；</li><li>WechatPublish：微信发布任务；</li><li>WechatMiniProgramPublish：微信小程序视频发布任务；</li><li>PullUpload：拉取上传媒体文件任务；</li><li>FastClipMedia：快速剪辑任务；</li><li>RemoveWatermarkTask：智能去除水印任务；</li><li>DescribeFileAttributesTask：获取文件属性任务；</li><li>RebuildMedia：音画质重生任务（不推荐使用）；</li><li>ReviewAudioVideo：音视频审核任务；</li><li>ExtractTraceWatermark：提取溯源水印任务；</li><li>ExtractCopyRightWatermark：提取版权水印任务；</li><li>QualityInspect：音画质检测任务；</li><li>QualityEnhance：音画质重生任务；</li><li>ComplexAdaptiveDynamicStreaming：复杂自适应码流任务；</li><li>ProcessMediaByMPS：MPS 视频处理任务；</li><li>AigcImageTask：AIGC 生图任务；</li><li>SceneAigcImageTask：场景化 AIGC 生图任务；</li><li>AigcVideoTask：AIGC 生视频任务；</li><li>ImportMediaKnowledge：导入媒体知识任务。</li><li>SceneAigcVideoTask：场景化 AIGC 生视频任务；</li><li> ExtractBlindWatermark：提取数字水印任务。</li><li> ExtractBlindWatermark：提取数字水印任务。</li><li> CreateAigcAdvancedCustomElement：创建自定义主体任务</li><li>CreateAigcCustomVoice：创建自定义音色任务</li><li>CreateAigcSubject：创建主体任务</li><li>AigcVideoRedrawTask：AIGC 视频转绘任务</li><li>CreateAigcAudioClone：AIGC 声音复刻任务</li><li>DescribeAigcFaceInfoAsync：异步获取 AIGC 人脸信息任务</li><li>WandAsrTask：WAND 语音识别</li></p>
+        :param _TaskType: <p>任务类型，取值：<li>Procedure：视频处理任务；</li><li>EditMedia：视频编辑任务；</li><li>SplitMedia：视频拆条任务；</li><li>ComposeMedia：制作媒体文件任务；</li><li>WechatPublish：微信发布任务；</li><li>WechatMiniProgramPublish：微信小程序视频发布任务；</li><li>PullUpload：拉取上传媒体文件任务；</li><li>FastClipMedia：快速剪辑任务；</li><li>RemoveWatermarkTask：智能去除水印任务；</li><li>DescribeFileAttributesTask：获取文件属性任务；</li><li>RebuildMedia：音画质重生任务（不推荐使用）；</li><li>ReviewAudioVideo：音视频审核任务；</li><li>ExtractTraceWatermark：提取溯源水印任务；</li><li>ExtractCopyRightWatermark：提取版权水印任务；</li><li>QualityInspect：音画质检测任务；</li><li>QualityEnhance：音画质重生任务；</li><li>ComplexAdaptiveDynamicStreaming：复杂自适应码流任务；</li><li>ProcessMediaByMPS：MPS 视频处理任务；</li><li>AigcImageTask：AIGC 生图任务；</li><li>SceneAigcImageTask：场景化 AIGC 生图任务；</li><li>AigcVideoTask：AIGC 生视频任务；</li><li>ImportMediaKnowledge：导入媒体知识任务。</li><li>SceneAigcVideoTask：场景化 AIGC 生视频任务；</li><li> ExtractBlindWatermark：提取数字水印任务。</li><li> ExtractBlindWatermark：提取数字水印任务。</li><li> CreateAigcAdvancedCustomElement：创建自定义主体任务</li><li>CreateAigcCustomVoice：创建自定义音色任务</li><li>CreateAigcSubject：创建主体任务</li><li>AigcVideoRedrawTask：AIGC 视频转绘任务</li><li>CreateAigcAudioClone：AIGC 声音复刻任务</li><li>DescribeAigcFaceInfoAsync：异步获取 AIGC 人脸信息任务</li><li>WandAsrTask：WAND 语音识别</li><li>AigcHunyuan3DTask：AIGC 混元 3D 任务</li><li>DesignVoiceAsync：音色设计</li><li>CloneVoiceAsync：音色克隆</li><li>TextToSpeechAsync：语音生成</li><li>VideoDubbingAsync：视频翻译配音</li></p>
         :type TaskType: str
         :param _Status: <p>任务状态，取值：</p><li>WAITING：等待中；</li><li>PROCESSING：处理中；</li><li>FINISH：已完成；</li><li>ABORTED：已终止。</li>
         :type Status: str
@@ -44412,6 +45776,16 @@ class DescribeTaskDetailResponse(AbstractModel):
         :type CreateAigcAudioCloneTask: :class:`tencentcloud.vod.v20180717.models.CreateAigcAudioCloneTask`
         :param _DescribeAigcFaceInfoAsyncTask: <p>异步获取 AIGC 人脸信息，仅当 TaskType 为 DescribeAigcFaceInfoAsync，该字段有值。</p>
         :type DescribeAigcFaceInfoAsyncTask: :class:`tencentcloud.vod.v20180717.models.DescribeAigcFaceInfoAsyncTask`
+        :param _AigcHunyuan3DTask: <p>混元 3D 任务，仅当 TaskType 为 AigcHunyuan3DTask，该字段有值。</p>
+        :type AigcHunyuan3DTask: :class:`tencentcloud.vod.v20180717.models.AigcHunyuan3DTask`
+        :param _DesignVoiceAsyncTask: <p>音色设计，仅当 TaskType 为 DesignVoiceAsync，该字段有值。</p>
+        :type DesignVoiceAsyncTask: :class:`tencentcloud.vod.v20180717.models.DesignVoiceAsyncTask`
+        :param _CloneVoiceAsyncTask: <p>音色克隆，仅当 TaskType 为 CloneVoiceAsync，该字段有值。</p>
+        :type CloneVoiceAsyncTask: :class:`tencentcloud.vod.v20180717.models.CloneVoiceAsyncTask`
+        :param _TextToSpeechAsyncTask: <p>语音合成，仅当 TaskType 为 TextToSpeechAsync，该字段有值。</p>
+        :type TextToSpeechAsyncTask: :class:`tencentcloud.vod.v20180717.models.TextToSpeechAsyncTask`
+        :param _VideoDubbingAsyncTask: <p>视频翻译配音，仅当 TaskType 为VideoDubbingAsync，该字段有值。</p>
+        :type VideoDubbingAsyncTask: :class:`tencentcloud.vod.v20180717.models.VideoDubbingAsyncTask`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -44457,11 +45831,16 @@ class DescribeTaskDetailResponse(AbstractModel):
         self._AigcAudioTask = None
         self._CreateAigcAudioCloneTask = None
         self._DescribeAigcFaceInfoAsyncTask = None
+        self._AigcHunyuan3DTask = None
+        self._DesignVoiceAsyncTask = None
+        self._CloneVoiceAsyncTask = None
+        self._TextToSpeechAsyncTask = None
+        self._VideoDubbingAsyncTask = None
         self._RequestId = None
 
     @property
     def TaskType(self):
-        r"""<p>任务类型，取值：<li>Procedure：视频处理任务；</li><li>EditMedia：视频编辑任务；</li><li>SplitMedia：视频拆条任务；</li><li>ComposeMedia：制作媒体文件任务；</li><li>WechatPublish：微信发布任务；</li><li>WechatMiniProgramPublish：微信小程序视频发布任务；</li><li>PullUpload：拉取上传媒体文件任务；</li><li>FastClipMedia：快速剪辑任务；</li><li>RemoveWatermarkTask：智能去除水印任务；</li><li>DescribeFileAttributesTask：获取文件属性任务；</li><li>RebuildMedia：音画质重生任务（不推荐使用）；</li><li>ReviewAudioVideo：音视频审核任务；</li><li>ExtractTraceWatermark：提取溯源水印任务；</li><li>ExtractCopyRightWatermark：提取版权水印任务；</li><li>QualityInspect：音画质检测任务；</li><li>QualityEnhance：音画质重生任务；</li><li>ComplexAdaptiveDynamicStreaming：复杂自适应码流任务；</li><li>ProcessMediaByMPS：MPS 视频处理任务；</li><li>AigcImageTask：AIGC 生图任务；</li><li>SceneAigcImageTask：场景化 AIGC 生图任务；</li><li>AigcVideoTask：AIGC 生视频任务；</li><li>ImportMediaKnowledge：导入媒体知识任务。</li><li>SceneAigcVideoTask：场景化 AIGC 生视频任务；</li><li> ExtractBlindWatermark：提取数字水印任务。</li><li> ExtractBlindWatermark：提取数字水印任务。</li><li> CreateAigcAdvancedCustomElement：创建自定义主体任务</li><li>CreateAigcCustomVoice：创建自定义音色任务</li><li>CreateAigcSubject：创建主体任务</li><li>AigcVideoRedrawTask：AIGC 视频转绘任务</li><li>CreateAigcAudioClone：AIGC 声音复刻任务</li><li>DescribeAigcFaceInfoAsync：异步获取 AIGC 人脸信息任务</li><li>WandAsrTask：WAND 语音识别</li></p>
+        r"""<p>任务类型，取值：<li>Procedure：视频处理任务；</li><li>EditMedia：视频编辑任务；</li><li>SplitMedia：视频拆条任务；</li><li>ComposeMedia：制作媒体文件任务；</li><li>WechatPublish：微信发布任务；</li><li>WechatMiniProgramPublish：微信小程序视频发布任务；</li><li>PullUpload：拉取上传媒体文件任务；</li><li>FastClipMedia：快速剪辑任务；</li><li>RemoveWatermarkTask：智能去除水印任务；</li><li>DescribeFileAttributesTask：获取文件属性任务；</li><li>RebuildMedia：音画质重生任务（不推荐使用）；</li><li>ReviewAudioVideo：音视频审核任务；</li><li>ExtractTraceWatermark：提取溯源水印任务；</li><li>ExtractCopyRightWatermark：提取版权水印任务；</li><li>QualityInspect：音画质检测任务；</li><li>QualityEnhance：音画质重生任务；</li><li>ComplexAdaptiveDynamicStreaming：复杂自适应码流任务；</li><li>ProcessMediaByMPS：MPS 视频处理任务；</li><li>AigcImageTask：AIGC 生图任务；</li><li>SceneAigcImageTask：场景化 AIGC 生图任务；</li><li>AigcVideoTask：AIGC 生视频任务；</li><li>ImportMediaKnowledge：导入媒体知识任务。</li><li>SceneAigcVideoTask：场景化 AIGC 生视频任务；</li><li> ExtractBlindWatermark：提取数字水印任务。</li><li> ExtractBlindWatermark：提取数字水印任务。</li><li> CreateAigcAdvancedCustomElement：创建自定义主体任务</li><li>CreateAigcCustomVoice：创建自定义音色任务</li><li>CreateAigcSubject：创建主体任务</li><li>AigcVideoRedrawTask：AIGC 视频转绘任务</li><li>CreateAigcAudioClone：AIGC 声音复刻任务</li><li>DescribeAigcFaceInfoAsync：异步获取 AIGC 人脸信息任务</li><li>WandAsrTask：WAND 语音识别</li><li>AigcHunyuan3DTask：AIGC 混元 3D 任务</li><li>DesignVoiceAsync：音色设计</li><li>CloneVoiceAsync：音色克隆</li><li>TextToSpeechAsync：语音生成</li><li>VideoDubbingAsync：视频翻译配音</li></p>
         :rtype: str
         """
         return self._TaskType
@@ -44944,6 +46323,61 @@ class DescribeTaskDetailResponse(AbstractModel):
         self._DescribeAigcFaceInfoAsyncTask = DescribeAigcFaceInfoAsyncTask
 
     @property
+    def AigcHunyuan3DTask(self):
+        r"""<p>混元 3D 任务，仅当 TaskType 为 AigcHunyuan3DTask，该字段有值。</p>
+        :rtype: :class:`tencentcloud.vod.v20180717.models.AigcHunyuan3DTask`
+        """
+        return self._AigcHunyuan3DTask
+
+    @AigcHunyuan3DTask.setter
+    def AigcHunyuan3DTask(self, AigcHunyuan3DTask):
+        self._AigcHunyuan3DTask = AigcHunyuan3DTask
+
+    @property
+    def DesignVoiceAsyncTask(self):
+        r"""<p>音色设计，仅当 TaskType 为 DesignVoiceAsync，该字段有值。</p>
+        :rtype: :class:`tencentcloud.vod.v20180717.models.DesignVoiceAsyncTask`
+        """
+        return self._DesignVoiceAsyncTask
+
+    @DesignVoiceAsyncTask.setter
+    def DesignVoiceAsyncTask(self, DesignVoiceAsyncTask):
+        self._DesignVoiceAsyncTask = DesignVoiceAsyncTask
+
+    @property
+    def CloneVoiceAsyncTask(self):
+        r"""<p>音色克隆，仅当 TaskType 为 CloneVoiceAsync，该字段有值。</p>
+        :rtype: :class:`tencentcloud.vod.v20180717.models.CloneVoiceAsyncTask`
+        """
+        return self._CloneVoiceAsyncTask
+
+    @CloneVoiceAsyncTask.setter
+    def CloneVoiceAsyncTask(self, CloneVoiceAsyncTask):
+        self._CloneVoiceAsyncTask = CloneVoiceAsyncTask
+
+    @property
+    def TextToSpeechAsyncTask(self):
+        r"""<p>语音合成，仅当 TaskType 为 TextToSpeechAsync，该字段有值。</p>
+        :rtype: :class:`tencentcloud.vod.v20180717.models.TextToSpeechAsyncTask`
+        """
+        return self._TextToSpeechAsyncTask
+
+    @TextToSpeechAsyncTask.setter
+    def TextToSpeechAsyncTask(self, TextToSpeechAsyncTask):
+        self._TextToSpeechAsyncTask = TextToSpeechAsyncTask
+
+    @property
+    def VideoDubbingAsyncTask(self):
+        r"""<p>视频翻译配音，仅当 TaskType 为VideoDubbingAsync，该字段有值。</p>
+        :rtype: :class:`tencentcloud.vod.v20180717.models.VideoDubbingAsyncTask`
+        """
+        return self._VideoDubbingAsyncTask
+
+    @VideoDubbingAsyncTask.setter
+    def VideoDubbingAsyncTask(self, VideoDubbingAsyncTask):
+        self._VideoDubbingAsyncTask = VideoDubbingAsyncTask
+
+    @property
     def RequestId(self):
         r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -45072,6 +46506,21 @@ class DescribeTaskDetailResponse(AbstractModel):
         if params.get("DescribeAigcFaceInfoAsyncTask") is not None:
             self._DescribeAigcFaceInfoAsyncTask = DescribeAigcFaceInfoAsyncTask()
             self._DescribeAigcFaceInfoAsyncTask._deserialize(params.get("DescribeAigcFaceInfoAsyncTask"))
+        if params.get("AigcHunyuan3DTask") is not None:
+            self._AigcHunyuan3DTask = AigcHunyuan3DTask()
+            self._AigcHunyuan3DTask._deserialize(params.get("AigcHunyuan3DTask"))
+        if params.get("DesignVoiceAsyncTask") is not None:
+            self._DesignVoiceAsyncTask = DesignVoiceAsyncTask()
+            self._DesignVoiceAsyncTask._deserialize(params.get("DesignVoiceAsyncTask"))
+        if params.get("CloneVoiceAsyncTask") is not None:
+            self._CloneVoiceAsyncTask = CloneVoiceAsyncTask()
+            self._CloneVoiceAsyncTask._deserialize(params.get("CloneVoiceAsyncTask"))
+        if params.get("TextToSpeechAsyncTask") is not None:
+            self._TextToSpeechAsyncTask = TextToSpeechAsyncTask()
+            self._TextToSpeechAsyncTask._deserialize(params.get("TextToSpeechAsyncTask"))
+        if params.get("VideoDubbingAsyncTask") is not None:
+            self._VideoDubbingAsyncTask = VideoDubbingAsyncTask()
+            self._VideoDubbingAsyncTask._deserialize(params.get("VideoDubbingAsyncTask"))
         self._RequestId = params.get("RequestId")
 
 
@@ -45676,6 +47125,255 @@ class DescribeVodDomainsResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeVoicesRequest(AbstractModel):
+    r"""DescribeVoices请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SubAppId: <p>点播应用 ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</p>
+        :type SubAppId: str
+        :param _VoiceId: <p>音色ID</p>
+        :type VoiceId: str
+        :param _VoiceType: <p>音色类别</p><p>枚举值：</p><ul><li>system： 系统音色</li><li>clone： 克隆音色</li><li>design： 设计音色</li><li>all： 所有音色（默认）</li></ul>
+        :type VoiceType: str
+        :param _VoiceName: <p>音色名</p>
+        :type VoiceName: str
+        :param _Description: <p>音色描述</p>
+        :type Description: str
+        :param _Gender: <p>性别</p><p>枚举值：</p><ul><li>male： 男</li><li>female： 女</li><li>unknown： 未知</li></ul>
+        :type Gender: str
+        :param _Age: <p>年龄</p><p>枚举值：</p><ul><li>child： 儿童</li><li>teenager： 少年</li><li>youth： 青年</li><li>middle_aged： 中年</li><li>senior： 老年</li><li>unknown： 未知</li></ul>
+        :type Age: str
+        :param _Languages: <p>语言</p>
+        :type Languages: list of str
+        :param _Labels: <p>标签</p>
+        :type Labels: list of str
+        :param _Scenes: <p>场景</p>
+        :type Scenes: list of str
+        :param _ExtParam: <p>扩展参数，json字符串</p><p>其他筛选条件voiceName String 音色名，模糊匹配labels Array of String 标签，匹配包含这些标签的音色</p>
+        :type ExtParam: str
+        """
+        self._SubAppId = None
+        self._VoiceId = None
+        self._VoiceType = None
+        self._VoiceName = None
+        self._Description = None
+        self._Gender = None
+        self._Age = None
+        self._Languages = None
+        self._Labels = None
+        self._Scenes = None
+        self._ExtParam = None
+
+    @property
+    def SubAppId(self):
+        r"""<p>点播应用 ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</p>
+        :rtype: str
+        """
+        return self._SubAppId
+
+    @SubAppId.setter
+    def SubAppId(self, SubAppId):
+        self._SubAppId = SubAppId
+
+    @property
+    def VoiceId(self):
+        r"""<p>音色ID</p>
+        :rtype: str
+        """
+        return self._VoiceId
+
+    @VoiceId.setter
+    def VoiceId(self, VoiceId):
+        self._VoiceId = VoiceId
+
+    @property
+    def VoiceType(self):
+        r"""<p>音色类别</p><p>枚举值：</p><ul><li>system： 系统音色</li><li>clone： 克隆音色</li><li>design： 设计音色</li><li>all： 所有音色（默认）</li></ul>
+        :rtype: str
+        """
+        return self._VoiceType
+
+    @VoiceType.setter
+    def VoiceType(self, VoiceType):
+        self._VoiceType = VoiceType
+
+    @property
+    def VoiceName(self):
+        r"""<p>音色名</p>
+        :rtype: str
+        """
+        return self._VoiceName
+
+    @VoiceName.setter
+    def VoiceName(self, VoiceName):
+        self._VoiceName = VoiceName
+
+    @property
+    def Description(self):
+        r"""<p>音色描述</p>
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def Gender(self):
+        r"""<p>性别</p><p>枚举值：</p><ul><li>male： 男</li><li>female： 女</li><li>unknown： 未知</li></ul>
+        :rtype: str
+        """
+        return self._Gender
+
+    @Gender.setter
+    def Gender(self, Gender):
+        self._Gender = Gender
+
+    @property
+    def Age(self):
+        r"""<p>年龄</p><p>枚举值：</p><ul><li>child： 儿童</li><li>teenager： 少年</li><li>youth： 青年</li><li>middle_aged： 中年</li><li>senior： 老年</li><li>unknown： 未知</li></ul>
+        :rtype: str
+        """
+        return self._Age
+
+    @Age.setter
+    def Age(self, Age):
+        self._Age = Age
+
+    @property
+    def Languages(self):
+        r"""<p>语言</p>
+        :rtype: list of str
+        """
+        return self._Languages
+
+    @Languages.setter
+    def Languages(self, Languages):
+        self._Languages = Languages
+
+    @property
+    def Labels(self):
+        r"""<p>标签</p>
+        :rtype: list of str
+        """
+        return self._Labels
+
+    @Labels.setter
+    def Labels(self, Labels):
+        self._Labels = Labels
+
+    @property
+    def Scenes(self):
+        r"""<p>场景</p>
+        :rtype: list of str
+        """
+        return self._Scenes
+
+    @Scenes.setter
+    def Scenes(self, Scenes):
+        self._Scenes = Scenes
+
+    @property
+    def ExtParam(self):
+        r"""<p>扩展参数，json字符串</p><p>其他筛选条件voiceName String 音色名，模糊匹配labels Array of String 标签，匹配包含这些标签的音色</p>
+        :rtype: str
+        """
+        return self._ExtParam
+
+    @ExtParam.setter
+    def ExtParam(self, ExtParam):
+        self._ExtParam = ExtParam
+
+
+    def _deserialize(self, params):
+        self._SubAppId = params.get("SubAppId")
+        self._VoiceId = params.get("VoiceId")
+        self._VoiceType = params.get("VoiceType")
+        self._VoiceName = params.get("VoiceName")
+        self._Description = params.get("Description")
+        self._Gender = params.get("Gender")
+        self._Age = params.get("Age")
+        self._Languages = params.get("Languages")
+        self._Labels = params.get("Labels")
+        self._Scenes = params.get("Scenes")
+        self._ExtParam = params.get("ExtParam")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeVoicesResponse(AbstractModel):
+    r"""DescribeVoices返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Voices: <p>可用音色列表</p>
+        :type Voices: list of VoiceInfo
+        :param _TotalCount: <p>可用音色总数</p>
+        :type TotalCount: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Voices = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def Voices(self):
+        r"""<p>可用音色列表</p>
+        :rtype: list of VoiceInfo
+        """
+        return self._Voices
+
+    @Voices.setter
+    def Voices(self, Voices):
+        self._Voices = Voices
+
+    @property
+    def TotalCount(self):
+        r"""<p>可用音色总数</p>
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Voices") is not None:
+            self._Voices = []
+            for item in params.get("Voices"):
+                obj = VoiceInfo()
+                obj._deserialize(item)
+                self._Voices.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeWatermarkTemplatesRequest(AbstractModel):
     r"""DescribeWatermarkTemplates请求参数结构体
 
@@ -46033,6 +47731,486 @@ class DescribeWordSamplesResponse(AbstractModel):
                 obj._deserialize(item)
                 self._WordSet.append(obj)
         self._RequestId = params.get("RequestId")
+
+
+class DesignVoiceAsyncInput(AbstractModel):
+    r"""音色设计任务输入。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Prompt: <p>音色描述</p>
+        :type Prompt: str
+        :param _VoiceSettings: <p>音色信息</p>
+        :type VoiceSettings: :class:`tencentcloud.vod.v20180717.models.VoiceSettings`
+        :param _PreviewText: <p>试听文本</p>
+        :type PreviewText: str
+        :param _ExtParam: <p>扩展参数，json字符串</p>
+        :type ExtParam: str
+        """
+        self._Prompt = None
+        self._VoiceSettings = None
+        self._PreviewText = None
+        self._ExtParam = None
+
+    @property
+    def Prompt(self):
+        r"""<p>音色描述</p>
+        :rtype: str
+        """
+        return self._Prompt
+
+    @Prompt.setter
+    def Prompt(self, Prompt):
+        self._Prompt = Prompt
+
+    @property
+    def VoiceSettings(self):
+        r"""<p>音色信息</p>
+        :rtype: :class:`tencentcloud.vod.v20180717.models.VoiceSettings`
+        """
+        return self._VoiceSettings
+
+    @VoiceSettings.setter
+    def VoiceSettings(self, VoiceSettings):
+        self._VoiceSettings = VoiceSettings
+
+    @property
+    def PreviewText(self):
+        r"""<p>试听文本</p>
+        :rtype: str
+        """
+        return self._PreviewText
+
+    @PreviewText.setter
+    def PreviewText(self, PreviewText):
+        self._PreviewText = PreviewText
+
+    @property
+    def ExtParam(self):
+        r"""<p>扩展参数，json字符串</p>
+        :rtype: str
+        """
+        return self._ExtParam
+
+    @ExtParam.setter
+    def ExtParam(self, ExtParam):
+        self._ExtParam = ExtParam
+
+
+    def _deserialize(self, params):
+        self._Prompt = params.get("Prompt")
+        if params.get("VoiceSettings") is not None:
+            self._VoiceSettings = VoiceSettings()
+            self._VoiceSettings._deserialize(params.get("VoiceSettings"))
+        self._PreviewText = params.get("PreviewText")
+        self._ExtParam = params.get("ExtParam")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DesignVoiceAsyncOutput(AbstractModel):
+    r"""音色设计任务输出。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VoiceId: <p>音色ID</p>
+        :type VoiceId: str
+        :param _TrialAudio: <p>试听音频</p>
+        :type TrialAudio: str
+        """
+        self._VoiceId = None
+        self._TrialAudio = None
+
+    @property
+    def VoiceId(self):
+        r"""<p>音色ID</p>
+        :rtype: str
+        """
+        return self._VoiceId
+
+    @VoiceId.setter
+    def VoiceId(self, VoiceId):
+        self._VoiceId = VoiceId
+
+    @property
+    def TrialAudio(self):
+        r"""<p>试听音频</p>
+        :rtype: str
+        """
+        return self._TrialAudio
+
+    @TrialAudio.setter
+    def TrialAudio(self, TrialAudio):
+        self._TrialAudio = TrialAudio
+
+
+    def _deserialize(self, params):
+        self._VoiceId = params.get("VoiceId")
+        self._TrialAudio = params.get("TrialAudio")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DesignVoiceAsyncRequest(AbstractModel):
+    r"""DesignVoiceAsync请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Prompt: <p>音色描述</p>
+        :type Prompt: str
+        :param _SubAppId: <p>点播应用 ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</p>
+        :type SubAppId: str
+        :param _VoiceSettings: <p>音色设置</p>
+        :type VoiceSettings: :class:`tencentcloud.vod.v20180717.models.VoiceSettings`
+        :param _PreviewText: <p>试听合成文本，最大 500 字符</p>
+        :type PreviewText: str
+        :param _ExtParam: <p>扩展参数，json字符串</p>
+        :type ExtParam: str
+        :param _SessionContext: <p>标识来源上下文，用于透传用户请求信息，在回调和任务流状态变更回调将返回该字段值，最长 1000 个字符。</p>
+        :type SessionContext: str
+        :param _SessionId: <p>用于任务去重的识别码，如果三天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。</p>
+        :type SessionId: str
+        """
+        self._Prompt = None
+        self._SubAppId = None
+        self._VoiceSettings = None
+        self._PreviewText = None
+        self._ExtParam = None
+        self._SessionContext = None
+        self._SessionId = None
+
+    @property
+    def Prompt(self):
+        r"""<p>音色描述</p>
+        :rtype: str
+        """
+        return self._Prompt
+
+    @Prompt.setter
+    def Prompt(self, Prompt):
+        self._Prompt = Prompt
+
+    @property
+    def SubAppId(self):
+        r"""<p>点播应用 ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</p>
+        :rtype: str
+        """
+        return self._SubAppId
+
+    @SubAppId.setter
+    def SubAppId(self, SubAppId):
+        self._SubAppId = SubAppId
+
+    @property
+    def VoiceSettings(self):
+        r"""<p>音色设置</p>
+        :rtype: :class:`tencentcloud.vod.v20180717.models.VoiceSettings`
+        """
+        return self._VoiceSettings
+
+    @VoiceSettings.setter
+    def VoiceSettings(self, VoiceSettings):
+        self._VoiceSettings = VoiceSettings
+
+    @property
+    def PreviewText(self):
+        r"""<p>试听合成文本，最大 500 字符</p>
+        :rtype: str
+        """
+        return self._PreviewText
+
+    @PreviewText.setter
+    def PreviewText(self, PreviewText):
+        self._PreviewText = PreviewText
+
+    @property
+    def ExtParam(self):
+        r"""<p>扩展参数，json字符串</p>
+        :rtype: str
+        """
+        return self._ExtParam
+
+    @ExtParam.setter
+    def ExtParam(self, ExtParam):
+        self._ExtParam = ExtParam
+
+    @property
+    def SessionContext(self):
+        r"""<p>标识来源上下文，用于透传用户请求信息，在回调和任务流状态变更回调将返回该字段值，最长 1000 个字符。</p>
+        :rtype: str
+        """
+        return self._SessionContext
+
+    @SessionContext.setter
+    def SessionContext(self, SessionContext):
+        self._SessionContext = SessionContext
+
+    @property
+    def SessionId(self):
+        r"""<p>用于任务去重的识别码，如果三天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。</p>
+        :rtype: str
+        """
+        return self._SessionId
+
+    @SessionId.setter
+    def SessionId(self, SessionId):
+        self._SessionId = SessionId
+
+
+    def _deserialize(self, params):
+        self._Prompt = params.get("Prompt")
+        self._SubAppId = params.get("SubAppId")
+        if params.get("VoiceSettings") is not None:
+            self._VoiceSettings = VoiceSettings()
+            self._VoiceSettings._deserialize(params.get("VoiceSettings"))
+        self._PreviewText = params.get("PreviewText")
+        self._ExtParam = params.get("ExtParam")
+        self._SessionContext = params.get("SessionContext")
+        self._SessionId = params.get("SessionId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DesignVoiceAsyncResponse(AbstractModel):
+    r"""DesignVoiceAsync返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: <p>任务id，查询任务时使用</p>
+        :type TaskId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        r"""<p>任务id，查询任务时使用</p>
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
+
+
+class DesignVoiceAsyncTask(AbstractModel):
+    r"""音色设计任务。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: <p>任务 ID。</p>
+        :type TaskId: str
+        :param _Status: <p>任务状态，取值：</p><li>PROCESSING：处理中；</li><li>FINISH：已完成。</li>
+        :type Status: str
+        :param _ErrCode: <p>错误码，0 表示成功，其他值表示失败：</p><li>40000：输入参数不合法，请检查输入参数；</li><li>60000：源文件错误（如视频数据损坏），请确认源文件是否正常；</li><li>70000：内部服务错误，建议重试。</li>
+        :type ErrCode: int
+        :param _Message: <p>错误信息。</p>
+        :type Message: str
+        :param _ErrCodeExt: <p>错误码，空字符串表示成功，其他值表示失败，取值请参考 <a href="https://cloud.tencent.com/document/product/266/50368#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81">视频处理类错误码</a> 列表。</p>
+        :type ErrCodeExt: str
+        :param _Input: <p>音色设计任务输入信息。</p>
+        :type Input: :class:`tencentcloud.vod.v20180717.models.DesignVoiceAsyncInput`
+        :param _Output: <p>音色设计任务输出信息。</p>
+        :type Output: :class:`tencentcloud.vod.v20180717.models.DesignVoiceAsyncOutput`
+        :param _SessionId: <p>用于去重的识别码，如果七天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。</p>
+        :type SessionId: str
+        :param _SessionContext: <p>来源上下文，用于透传用户请求信息，任务流状态变更回调将返回该字段值，最长 1000 个字符。</p>
+        :type SessionContext: str
+        :param _Progress: <p>拉取上传进度，取值范围 [0-100] 。</p>
+        :type Progress: int
+        """
+        self._TaskId = None
+        self._Status = None
+        self._ErrCode = None
+        self._Message = None
+        self._ErrCodeExt = None
+        self._Input = None
+        self._Output = None
+        self._SessionId = None
+        self._SessionContext = None
+        self._Progress = None
+
+    @property
+    def TaskId(self):
+        r"""<p>任务 ID。</p>
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def Status(self):
+        r"""<p>任务状态，取值：</p><li>PROCESSING：处理中；</li><li>FINISH：已完成。</li>
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def ErrCode(self):
+        r"""<p>错误码，0 表示成功，其他值表示失败：</p><li>40000：输入参数不合法，请检查输入参数；</li><li>60000：源文件错误（如视频数据损坏），请确认源文件是否正常；</li><li>70000：内部服务错误，建议重试。</li>
+        :rtype: int
+        """
+        return self._ErrCode
+
+    @ErrCode.setter
+    def ErrCode(self, ErrCode):
+        self._ErrCode = ErrCode
+
+    @property
+    def Message(self):
+        r"""<p>错误信息。</p>
+        :rtype: str
+        """
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+    @property
+    def ErrCodeExt(self):
+        r"""<p>错误码，空字符串表示成功，其他值表示失败，取值请参考 <a href="https://cloud.tencent.com/document/product/266/50368#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81">视频处理类错误码</a> 列表。</p>
+        :rtype: str
+        """
+        return self._ErrCodeExt
+
+    @ErrCodeExt.setter
+    def ErrCodeExt(self, ErrCodeExt):
+        self._ErrCodeExt = ErrCodeExt
+
+    @property
+    def Input(self):
+        r"""<p>音色设计任务输入信息。</p>
+        :rtype: :class:`tencentcloud.vod.v20180717.models.DesignVoiceAsyncInput`
+        """
+        return self._Input
+
+    @Input.setter
+    def Input(self, Input):
+        self._Input = Input
+
+    @property
+    def Output(self):
+        r"""<p>音色设计任务输出信息。</p>
+        :rtype: :class:`tencentcloud.vod.v20180717.models.DesignVoiceAsyncOutput`
+        """
+        return self._Output
+
+    @Output.setter
+    def Output(self, Output):
+        self._Output = Output
+
+    @property
+    def SessionId(self):
+        r"""<p>用于去重的识别码，如果七天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。</p>
+        :rtype: str
+        """
+        return self._SessionId
+
+    @SessionId.setter
+    def SessionId(self, SessionId):
+        self._SessionId = SessionId
+
+    @property
+    def SessionContext(self):
+        r"""<p>来源上下文，用于透传用户请求信息，任务流状态变更回调将返回该字段值，最长 1000 个字符。</p>
+        :rtype: str
+        """
+        return self._SessionContext
+
+    @SessionContext.setter
+    def SessionContext(self, SessionContext):
+        self._SessionContext = SessionContext
+
+    @property
+    def Progress(self):
+        r"""<p>拉取上传进度，取值范围 [0-100] 。</p>
+        :rtype: int
+        """
+        return self._Progress
+
+    @Progress.setter
+    def Progress(self, Progress):
+        self._Progress = Progress
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._Status = params.get("Status")
+        self._ErrCode = params.get("ErrCode")
+        self._Message = params.get("Message")
+        self._ErrCodeExt = params.get("ErrCodeExt")
+        if params.get("Input") is not None:
+            self._Input = DesignVoiceAsyncInput()
+            self._Input._deserialize(params.get("Input"))
+        if params.get("Output") is not None:
+            self._Output = DesignVoiceAsyncOutput()
+            self._Output._deserialize(params.get("Output"))
+        self._SessionId = params.get("SessionId")
+        self._SessionContext = params.get("SessionContext")
+        self._Progress = params.get("Progress")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class DiffusionEnhanceInfo(AbstractModel):
@@ -48434,7 +50612,7 @@ class EventContent(AbstractModel):
         r"""
         :param _EventHandle: <p>事件句柄，调用方必须调用 ConfirmEvents 来确认消息已经收到，确认有效时间 30 秒。失效后，事件可重新被获取。</p>
         :type EventHandle: str
-        :param _EventType: <p><b>支持事件类型：</b></p><li>NewFileUpload：视频上传完成；</li><li>ProcedureStateChanged：任务流状态变更；</li><li>FileDeleted：视频删除完成；</li><li>RestoreMediaComplete：视频取回完成；</li><li>PullComplete：视频转拉完成；</li><li>EditMediaComplete：视频编辑完成；</li><li>SplitMediaComplete：视频拆分完成；</li><li>ComposeMediaComplete：制作媒体文件完成；</li><li>WechatMiniProgramPublishComplete：微信小程序发布完成。</li><li>RemoveWatermark：智能去除水印完成。</li><li>RebuildMediaComplete：音画质重生完成事件（不推荐使用）。</li><li>ReviewAudioVideoComplete：音视频审核完成；</li><li>ExtractTraceWatermarkComplete：提取溯源水印完成；</li><li>ExtractCopyRightWatermarkComplete：提取版权水印完成；</li><li>DescribeFileAttributesComplete：获取文件属性完成；</li><li>QualityInspectComplete：音画质检测完成；</li><li>QualityEnhanceComplete：音画质重生任务完成；</li><li>PersistenceComplete：剪辑固化完成；</li><li>ComplexAdaptiveDynamicStreamingComplete：复杂自适应码流任务完成。</li><li>ProcessMediaByMPSComplete：MPS视频处理完成。</li><li>AigcImageTaskComplete：AIGC 生图任务完成。</li><li>AigcVideoTaskComplete：AIGC 生视频任务完成。</li><li>DescribeAigcFaceInfoAsyncComplete：异步获取 AIGC 人脸信息任务完成。</li><b>兼容 2017 版的事件类型：</b><li>TranscodeComplete：视频转码完成；</li><li>ConcatComplete：视频拼接完成；</li><li>ClipComplete：视频剪辑完成；</li><li>CreateImageSpriteComplete：视频截取雪碧图完成；</li><li>CreateSnapshotByTimeOffsetComplete：视频按时间点截图完成。</li>
+        :param _EventType: <p><b>支持事件类型：</b></p><li>NewFileUpload：视频上传完成；</li><li>ProcedureStateChanged：任务流状态变更；</li><li>FileDeleted：视频删除完成；</li><li>RestoreMediaComplete：视频取回完成；</li><li>PullComplete：视频转拉完成；</li><li>EditMediaComplete：视频编辑完成；</li><li>SplitMediaComplete：视频拆分完成；</li><li>ComposeMediaComplete：制作媒体文件完成；</li><li>WechatMiniProgramPublishComplete：微信小程序发布完成。</li><li>RemoveWatermark：智能去除水印完成。</li><li>RebuildMediaComplete：音画质重生完成事件（不推荐使用）。</li><li>ReviewAudioVideoComplete：音视频审核完成；</li><li>ExtractTraceWatermarkComplete：提取溯源水印完成；</li><li>ExtractCopyRightWatermarkComplete：提取版权水印完成；</li><li>DescribeFileAttributesComplete：获取文件属性完成；</li><li>QualityInspectComplete：音画质检测完成；</li><li>QualityEnhanceComplete：音画质重生任务完成；</li><li>PersistenceComplete：剪辑固化完成；</li><li>ComplexAdaptiveDynamicStreamingComplete：复杂自适应码流任务完成。</li><li>ProcessMediaByMPSComplete：MPS视频处理完成。</li><li>AigcImageTaskComplete：AIGC 生图任务完成。</li><li>AigcVideoTaskComplete：AIGC 生视频任务完成。</li><li>AigcHunyuan3DTaskComplete：AIGC 混元 3D 任务完成。</li><li>DescribeAigcFaceInfoAsyncComplete：异步获取 AIGC 人脸信息任务完成。</li><b>兼容 2017 版的事件类型：</b><li>TranscodeComplete：视频转码完成；</li><li>ConcatComplete：视频拼接完成；</li><li>ClipComplete：视频剪辑完成；</li><li>CreateImageSpriteComplete：视频截取雪碧图完成；</li><li>CreateSnapshotByTimeOffsetComplete：视频按时间点截图完成。</li>
         :type EventType: str
         :param _FileUploadEvent: <p>视频上传完成事件，当事件类型为 NewFileUpload 时有效。</p>
 注意：此字段可能返回 null，表示取不到有效值。
@@ -48535,6 +50713,8 @@ class EventContent(AbstractModel):
         :type CreateAigcCustomVoiceCompleteEvent: :class:`tencentcloud.vod.v20180717.models.CreateAigcCustomVoiceTask`
         :param _DescribeAigcFaceInfoAsyncCompleteEvent: <p>异步获取 AIGC 人脸信息，仅当 EventType 为 DescribeAigcFaceInfoAsyncComplete，该字段有值。</p>
         :type DescribeAigcFaceInfoAsyncCompleteEvent: :class:`tencentcloud.vod.v20180717.models.DescribeAigcFaceInfoAsyncTask`
+        :param _AigcHunyuan3DCompleteEvent: <p>AIGC 混元 3D 任务信息，仅当 EventType 为 AigcHunyuan3DTaskComplete，该字段有值。</p>
+        :type AigcHunyuan3DCompleteEvent: :class:`tencentcloud.vod.v20180717.models.AigcHunyuan3DTask`
         """
         self._EventHandle = None
         self._EventType = None
@@ -48574,6 +50754,7 @@ class EventContent(AbstractModel):
         self._CreateAigcAdvancedCustomElementCompleteEvent = None
         self._CreateAigcCustomVoiceCompleteEvent = None
         self._DescribeAigcFaceInfoAsyncCompleteEvent = None
+        self._AigcHunyuan3DCompleteEvent = None
 
     @property
     def EventHandle(self):
@@ -48588,7 +50769,7 @@ class EventContent(AbstractModel):
 
     @property
     def EventType(self):
-        r"""<p><b>支持事件类型：</b></p><li>NewFileUpload：视频上传完成；</li><li>ProcedureStateChanged：任务流状态变更；</li><li>FileDeleted：视频删除完成；</li><li>RestoreMediaComplete：视频取回完成；</li><li>PullComplete：视频转拉完成；</li><li>EditMediaComplete：视频编辑完成；</li><li>SplitMediaComplete：视频拆分完成；</li><li>ComposeMediaComplete：制作媒体文件完成；</li><li>WechatMiniProgramPublishComplete：微信小程序发布完成。</li><li>RemoveWatermark：智能去除水印完成。</li><li>RebuildMediaComplete：音画质重生完成事件（不推荐使用）。</li><li>ReviewAudioVideoComplete：音视频审核完成；</li><li>ExtractTraceWatermarkComplete：提取溯源水印完成；</li><li>ExtractCopyRightWatermarkComplete：提取版权水印完成；</li><li>DescribeFileAttributesComplete：获取文件属性完成；</li><li>QualityInspectComplete：音画质检测完成；</li><li>QualityEnhanceComplete：音画质重生任务完成；</li><li>PersistenceComplete：剪辑固化完成；</li><li>ComplexAdaptiveDynamicStreamingComplete：复杂自适应码流任务完成。</li><li>ProcessMediaByMPSComplete：MPS视频处理完成。</li><li>AigcImageTaskComplete：AIGC 生图任务完成。</li><li>AigcVideoTaskComplete：AIGC 生视频任务完成。</li><li>DescribeAigcFaceInfoAsyncComplete：异步获取 AIGC 人脸信息任务完成。</li><b>兼容 2017 版的事件类型：</b><li>TranscodeComplete：视频转码完成；</li><li>ConcatComplete：视频拼接完成；</li><li>ClipComplete：视频剪辑完成；</li><li>CreateImageSpriteComplete：视频截取雪碧图完成；</li><li>CreateSnapshotByTimeOffsetComplete：视频按时间点截图完成。</li>
+        r"""<p><b>支持事件类型：</b></p><li>NewFileUpload：视频上传完成；</li><li>ProcedureStateChanged：任务流状态变更；</li><li>FileDeleted：视频删除完成；</li><li>RestoreMediaComplete：视频取回完成；</li><li>PullComplete：视频转拉完成；</li><li>EditMediaComplete：视频编辑完成；</li><li>SplitMediaComplete：视频拆分完成；</li><li>ComposeMediaComplete：制作媒体文件完成；</li><li>WechatMiniProgramPublishComplete：微信小程序发布完成。</li><li>RemoveWatermark：智能去除水印完成。</li><li>RebuildMediaComplete：音画质重生完成事件（不推荐使用）。</li><li>ReviewAudioVideoComplete：音视频审核完成；</li><li>ExtractTraceWatermarkComplete：提取溯源水印完成；</li><li>ExtractCopyRightWatermarkComplete：提取版权水印完成；</li><li>DescribeFileAttributesComplete：获取文件属性完成；</li><li>QualityInspectComplete：音画质检测完成；</li><li>QualityEnhanceComplete：音画质重生任务完成；</li><li>PersistenceComplete：剪辑固化完成；</li><li>ComplexAdaptiveDynamicStreamingComplete：复杂自适应码流任务完成。</li><li>ProcessMediaByMPSComplete：MPS视频处理完成。</li><li>AigcImageTaskComplete：AIGC 生图任务完成。</li><li>AigcVideoTaskComplete：AIGC 生视频任务完成。</li><li>AigcHunyuan3DTaskComplete：AIGC 混元 3D 任务完成。</li><li>DescribeAigcFaceInfoAsyncComplete：异步获取 AIGC 人脸信息任务完成。</li><b>兼容 2017 版的事件类型：</b><li>TranscodeComplete：视频转码完成；</li><li>ConcatComplete：视频拼接完成；</li><li>ClipComplete：视频剪辑完成；</li><li>CreateImageSpriteComplete：视频截取雪碧图完成；</li><li>CreateSnapshotByTimeOffsetComplete：视频按时间点截图完成。</li>
         :rtype: str
         """
         return self._EventType
@@ -49020,6 +51201,17 @@ class EventContent(AbstractModel):
     def DescribeAigcFaceInfoAsyncCompleteEvent(self, DescribeAigcFaceInfoAsyncCompleteEvent):
         self._DescribeAigcFaceInfoAsyncCompleteEvent = DescribeAigcFaceInfoAsyncCompleteEvent
 
+    @property
+    def AigcHunyuan3DCompleteEvent(self):
+        r"""<p>AIGC 混元 3D 任务信息，仅当 EventType 为 AigcHunyuan3DTaskComplete，该字段有值。</p>
+        :rtype: :class:`tencentcloud.vod.v20180717.models.AigcHunyuan3DTask`
+        """
+        return self._AigcHunyuan3DCompleteEvent
+
+    @AigcHunyuan3DCompleteEvent.setter
+    def AigcHunyuan3DCompleteEvent(self, AigcHunyuan3DCompleteEvent):
+        self._AigcHunyuan3DCompleteEvent = AigcHunyuan3DCompleteEvent
+
 
     def _deserialize(self, params):
         self._EventHandle = params.get("EventHandle")
@@ -49132,6 +51324,9 @@ class EventContent(AbstractModel):
         if params.get("DescribeAigcFaceInfoAsyncCompleteEvent") is not None:
             self._DescribeAigcFaceInfoAsyncCompleteEvent = DescribeAigcFaceInfoAsyncTask()
             self._DescribeAigcFaceInfoAsyncCompleteEvent._deserialize(params.get("DescribeAigcFaceInfoAsyncCompleteEvent"))
+        if params.get("AigcHunyuan3DCompleteEvent") is not None:
+            self._AigcHunyuan3DCompleteEvent = AigcHunyuan3DTask()
+            self._AigcHunyuan3DCompleteEvent._deserialize(params.get("AigcHunyuan3DCompleteEvent"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -63175,17 +65370,9 @@ class MediaDeleteItem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Type: 所指定的删除部分。如果未填写该字段则参数无效。可选值有：
-<li>OriginalFiles（删除原文件，删除后无法发起转码、微信发布等任何视频处理操作）；</li>
-<li>TranscodeFiles（删除转码文件）；</li>
-<li>AdaptiveDynamicStreamingFiles（删除转自适应码流文件）；</li>
-<li>WechatPublishFiles（删除微信发布文件）；</li>
-<li>WechatMiniProgramPublishFiles（删除微信小程序发布文件）。</li>
-<font color=red>注意：</font> <li>取值为OriginalFiles时，文件上传时携带的封面文件会被删除；</li>
-<li>取值为TranscodeFiles时，媒体处理产生的封面文件会被删除。</li>
+        :param _Type: <p>所指定的删除部分。如果未填写该字段则参数无效。可选值有：</p><li>OriginalFiles（删除原文件，删除后无法发起转码、微信发布等任何视频处理操作）；</li><li>TranscodeFiles（删除转码文件）；</li><li>AdaptiveDynamicStreamingFiles（删除转自适应码流文件）；</li><li>WechatPublishFiles（删除微信发布文件）；</li><li>WechatMiniProgramPublishFiles（删除微信小程序发布文件）。</li><li>MpsAiMediaAiAnalysisFiles（删除ProcessMediaByMPS产生的智能分析产物）。</li><li>MpsAiMediaSmartEraseFiles（删除ProcessMediaByMPS产生的智能擦除产物）。</li><li>MpsAiMediaSmartSubtitleFiles（删除ProcessMediaByMPS产生的智能字幕产物）。</li><font color="red">注意：</font> <li>取值为OriginalFiles时，文件上传时携带的封面文件会被删除；</li><li>取值为TranscodeFiles时，媒体处理产生的封面文件会被删除。</li>
         :type Type: str
-        :param _Definition: 删除由Type参数指定的种类下的视频模板号，模板定义参见[转码模板](https://cloud.tencent.com/document/product/266/33478#.3Cspan-id-.3D-.22zm.22-.3E.3C.2Fspan.3E.E8.BD.AC.E7.A0.81.E6.A8.A1.E6.9D.BF)。
-默认值为0，表示删除参数Type指定种类下所有的视频。
+        :param _Definition: <p>删除由Type参数指定的种类下的视频模板号，模板定义参见<a href="https://cloud.tencent.com/document/product/266/33478#.3Cspan-id-.3D-.22zm.22-.3E.3C.2Fspan.3E.E8.BD.AC.E7.A0.81.E6.A8.A1.E6.9D.BF">转码模板</a>。<br>默认值为0，表示删除参数Type指定种类下所有的视频。</p>
         :type Definition: int
         """
         self._Type = None
@@ -63193,14 +65380,7 @@ class MediaDeleteItem(AbstractModel):
 
     @property
     def Type(self):
-        r"""所指定的删除部分。如果未填写该字段则参数无效。可选值有：
-<li>OriginalFiles（删除原文件，删除后无法发起转码、微信发布等任何视频处理操作）；</li>
-<li>TranscodeFiles（删除转码文件）；</li>
-<li>AdaptiveDynamicStreamingFiles（删除转自适应码流文件）；</li>
-<li>WechatPublishFiles（删除微信发布文件）；</li>
-<li>WechatMiniProgramPublishFiles（删除微信小程序发布文件）。</li>
-<font color=red>注意：</font> <li>取值为OriginalFiles时，文件上传时携带的封面文件会被删除；</li>
-<li>取值为TranscodeFiles时，媒体处理产生的封面文件会被删除。</li>
+        r"""<p>所指定的删除部分。如果未填写该字段则参数无效。可选值有：</p><li>OriginalFiles（删除原文件，删除后无法发起转码、微信发布等任何视频处理操作）；</li><li>TranscodeFiles（删除转码文件）；</li><li>AdaptiveDynamicStreamingFiles（删除转自适应码流文件）；</li><li>WechatPublishFiles（删除微信发布文件）；</li><li>WechatMiniProgramPublishFiles（删除微信小程序发布文件）。</li><li>MpsAiMediaAiAnalysisFiles（删除ProcessMediaByMPS产生的智能分析产物）。</li><li>MpsAiMediaSmartEraseFiles（删除ProcessMediaByMPS产生的智能擦除产物）。</li><li>MpsAiMediaSmartSubtitleFiles（删除ProcessMediaByMPS产生的智能字幕产物）。</li><font color="red">注意：</font> <li>取值为OriginalFiles时，文件上传时携带的封面文件会被删除；</li><li>取值为TranscodeFiles时，媒体处理产生的封面文件会被删除。</li>
         :rtype: str
         """
         return self._Type
@@ -63211,8 +65391,7 @@ class MediaDeleteItem(AbstractModel):
 
     @property
     def Definition(self):
-        r"""删除由Type参数指定的种类下的视频模板号，模板定义参见[转码模板](https://cloud.tencent.com/document/product/266/33478#.3Cspan-id-.3D-.22zm.22-.3E.3C.2Fspan.3E.E8.BD.AC.E7.A0.81.E6.A8.A1.E6.9D.BF)。
-默认值为0，表示删除参数Type指定种类下所有的视频。
+        r"""<p>删除由Type参数指定的种类下的视频模板号，模板定义参见<a href="https://cloud.tencent.com/document/product/266/33478#.3Cspan-id-.3D-.22zm.22-.3E.3C.2Fspan.3E.E8.BD.AC.E7.A0.81.E6.A8.A1.E6.9D.BF">转码模板</a>。<br>默认值为0，表示删除参数Type指定种类下所有的视频。</p>
         :rtype: int
         """
         return self._Definition
@@ -96600,6 +98779,565 @@ class TerrorismOcrReviewTemplateInfoForUpdate(AbstractModel):
         
 
 
+class TextToSpeechAsyncInput(AbstractModel):
+    r"""语音合成任务输入。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VoiceId: <p>音色ID</p>
+        :type VoiceId: str
+        :param _Text: <p>语音合成文本</p>
+        :type Text: str
+        :param _LanguageBoost: <p>语音合成语言</p>
+        :type LanguageBoost: str
+        :param _ExtParam: <p>扩展参数，json字符串</p>
+        :type ExtParam: str
+        """
+        self._VoiceId = None
+        self._Text = None
+        self._LanguageBoost = None
+        self._ExtParam = None
+
+    @property
+    def VoiceId(self):
+        r"""<p>音色ID</p>
+        :rtype: str
+        """
+        return self._VoiceId
+
+    @VoiceId.setter
+    def VoiceId(self, VoiceId):
+        self._VoiceId = VoiceId
+
+    @property
+    def Text(self):
+        r"""<p>语音合成文本</p>
+        :rtype: str
+        """
+        return self._Text
+
+    @Text.setter
+    def Text(self, Text):
+        self._Text = Text
+
+    @property
+    def LanguageBoost(self):
+        r"""<p>语音合成语言</p>
+        :rtype: str
+        """
+        return self._LanguageBoost
+
+    @LanguageBoost.setter
+    def LanguageBoost(self, LanguageBoost):
+        self._LanguageBoost = LanguageBoost
+
+    @property
+    def ExtParam(self):
+        r"""<p>扩展参数，json字符串</p>
+        :rtype: str
+        """
+        return self._ExtParam
+
+    @ExtParam.setter
+    def ExtParam(self, ExtParam):
+        self._ExtParam = ExtParam
+
+
+    def _deserialize(self, params):
+        self._VoiceId = params.get("VoiceId")
+        self._Text = params.get("Text")
+        self._LanguageBoost = params.get("LanguageBoost")
+        self._ExtParam = params.get("ExtParam")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TextToSpeechAsyncOutput(AbstractModel):
+    r"""语音合成任务输出。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AudioUrl: <p>合成音频结果URL</p>
+        :type AudioUrl: str
+        :param _VoiceId: <p>使用的音色ID</p>
+        :type VoiceId: str
+        :param _ExtInfo: <p>扩展信息</p>
+        :type ExtInfo: str
+        :param _FileId: <p>合成音频结果FileId</p>
+        :type FileId: str
+        """
+        self._AudioUrl = None
+        self._VoiceId = None
+        self._ExtInfo = None
+        self._FileId = None
+
+    @property
+    def AudioUrl(self):
+        r"""<p>合成音频结果URL</p>
+        :rtype: str
+        """
+        return self._AudioUrl
+
+    @AudioUrl.setter
+    def AudioUrl(self, AudioUrl):
+        self._AudioUrl = AudioUrl
+
+    @property
+    def VoiceId(self):
+        r"""<p>使用的音色ID</p>
+        :rtype: str
+        """
+        return self._VoiceId
+
+    @VoiceId.setter
+    def VoiceId(self, VoiceId):
+        self._VoiceId = VoiceId
+
+    @property
+    def ExtInfo(self):
+        r"""<p>扩展信息</p>
+        :rtype: str
+        """
+        return self._ExtInfo
+
+    @ExtInfo.setter
+    def ExtInfo(self, ExtInfo):
+        self._ExtInfo = ExtInfo
+
+    @property
+    def FileId(self):
+        r"""<p>合成音频结果FileId</p>
+        :rtype: str
+        """
+        return self._FileId
+
+    @FileId.setter
+    def FileId(self, FileId):
+        self._FileId = FileId
+
+
+    def _deserialize(self, params):
+        self._AudioUrl = params.get("AudioUrl")
+        self._VoiceId = params.get("VoiceId")
+        self._ExtInfo = params.get("ExtInfo")
+        self._FileId = params.get("FileId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TextToSpeechAsyncOutputOption(AbstractModel):
+    r"""异步配音输出参数设置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Type: <p>合成结果输出类型</p><p>枚举值：</p><ul><li>fileId：生成新的点播fileId</li><li>url：音频url，有效期24小时</li></ul>
+        :type Type: str
+        """
+        self._Type = None
+
+    @property
+    def Type(self):
+        r"""<p>合成结果输出类型</p><p>枚举值：</p><ul><li>fileId：生成新的点播fileId</li><li>url：音频url，有效期24小时</li></ul>
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+
+    def _deserialize(self, params):
+        self._Type = params.get("Type")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TextToSpeechAsyncRequest(AbstractModel):
+    r"""TextToSpeechAsync请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Text: <p>语音合成文本</p>
+        :type Text: str
+        :param _VoiceId: <p>音色ID</p>
+        :type VoiceId: str
+        :param _SubAppId: <p>点播应用 ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</p>
+        :type SubAppId: str
+        :param _LanguageBoost: <p>语言增强，如 "zh" "en" "auto"，默认 "auto"</p>
+        :type LanguageBoost: str
+        :param _ExtParam: <p>文本合成语音（异步）拓展参数。ExtParam 支持的字段：</p><ul><li>model (string)：合成模型，可选 minimax-speech-2.8-hd、minimax-speech-2.8-turbo、minimax-speech-2.6-hd、minimax-speech-2.6-turbo、minimax-speech-02-hd、minimax-speech-02-turbo；默认 minimax-speech-2.8-hd。</li><li>text_lang (string)：文本语言，如 zh / en；与入参 LanguageBoost 同义，同时传入时以 ExtParam 为准。</li><li>audio_setting (object)：音频输出与音色微调参数（注意：异步接口的语速、音量、音调、情绪均在 audio_setting 下，与同步接口的 voice_setting 不同），可选字段：<ul><li>speed (float)：语速，[0.5, 2.0]，默认 1.0。</li><li>vol (float)：音量，(0, 10]，默认 1.0。</li><li>pitch (int)：音调，[-12, 12]，默认 0。</li><li>emotion (string)：情绪，可选 happy / sad / angry / fearful / disgusted / surprised / calm / fluent / whisper。</li><li>sample_rate (int)：采样率，可选 8000 / 16000 / 22050 / 24000 / 32000 / 44100，默认 16000。</li><li>format (string)：音频格式，可选 mp3 / wav，默认 wav。</li><li>duration (float)：目标时长（秒）。</li><li>cut_silence (bool)：是否裁剪静音段。</li></ul></li></ul>
+        :type ExtParam: str
+        :param _Output: <p>输出相关参数</p><p>可以指定输出形式等。默认输出音频url。</p>
+        :type Output: :class:`tencentcloud.vod.v20180717.models.TextToSpeechAsyncOutputOption`
+        :param _SessionContext: <p>标识来源上下文，用于透传用户请求信息，在回调和任务流状态变更回调将返回该字段值，最长 1000 个字符。</p>
+        :type SessionContext: str
+        :param _SessionId: <p>用于任务去重的识别码，如果三天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。</p>
+        :type SessionId: str
+        """
+        self._Text = None
+        self._VoiceId = None
+        self._SubAppId = None
+        self._LanguageBoost = None
+        self._ExtParam = None
+        self._Output = None
+        self._SessionContext = None
+        self._SessionId = None
+
+    @property
+    def Text(self):
+        r"""<p>语音合成文本</p>
+        :rtype: str
+        """
+        return self._Text
+
+    @Text.setter
+    def Text(self, Text):
+        self._Text = Text
+
+    @property
+    def VoiceId(self):
+        r"""<p>音色ID</p>
+        :rtype: str
+        """
+        return self._VoiceId
+
+    @VoiceId.setter
+    def VoiceId(self, VoiceId):
+        self._VoiceId = VoiceId
+
+    @property
+    def SubAppId(self):
+        r"""<p>点播应用 ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</p>
+        :rtype: str
+        """
+        return self._SubAppId
+
+    @SubAppId.setter
+    def SubAppId(self, SubAppId):
+        self._SubAppId = SubAppId
+
+    @property
+    def LanguageBoost(self):
+        r"""<p>语言增强，如 "zh" "en" "auto"，默认 "auto"</p>
+        :rtype: str
+        """
+        return self._LanguageBoost
+
+    @LanguageBoost.setter
+    def LanguageBoost(self, LanguageBoost):
+        self._LanguageBoost = LanguageBoost
+
+    @property
+    def ExtParam(self):
+        r"""<p>文本合成语音（异步）拓展参数。ExtParam 支持的字段：</p><ul><li>model (string)：合成模型，可选 minimax-speech-2.8-hd、minimax-speech-2.8-turbo、minimax-speech-2.6-hd、minimax-speech-2.6-turbo、minimax-speech-02-hd、minimax-speech-02-turbo；默认 minimax-speech-2.8-hd。</li><li>text_lang (string)：文本语言，如 zh / en；与入参 LanguageBoost 同义，同时传入时以 ExtParam 为准。</li><li>audio_setting (object)：音频输出与音色微调参数（注意：异步接口的语速、音量、音调、情绪均在 audio_setting 下，与同步接口的 voice_setting 不同），可选字段：<ul><li>speed (float)：语速，[0.5, 2.0]，默认 1.0。</li><li>vol (float)：音量，(0, 10]，默认 1.0。</li><li>pitch (int)：音调，[-12, 12]，默认 0。</li><li>emotion (string)：情绪，可选 happy / sad / angry / fearful / disgusted / surprised / calm / fluent / whisper。</li><li>sample_rate (int)：采样率，可选 8000 / 16000 / 22050 / 24000 / 32000 / 44100，默认 16000。</li><li>format (string)：音频格式，可选 mp3 / wav，默认 wav。</li><li>duration (float)：目标时长（秒）。</li><li>cut_silence (bool)：是否裁剪静音段。</li></ul></li></ul>
+        :rtype: str
+        """
+        return self._ExtParam
+
+    @ExtParam.setter
+    def ExtParam(self, ExtParam):
+        self._ExtParam = ExtParam
+
+    @property
+    def Output(self):
+        r"""<p>输出相关参数</p><p>可以指定输出形式等。默认输出音频url。</p>
+        :rtype: :class:`tencentcloud.vod.v20180717.models.TextToSpeechAsyncOutputOption`
+        """
+        return self._Output
+
+    @Output.setter
+    def Output(self, Output):
+        self._Output = Output
+
+    @property
+    def SessionContext(self):
+        r"""<p>标识来源上下文，用于透传用户请求信息，在回调和任务流状态变更回调将返回该字段值，最长 1000 个字符。</p>
+        :rtype: str
+        """
+        return self._SessionContext
+
+    @SessionContext.setter
+    def SessionContext(self, SessionContext):
+        self._SessionContext = SessionContext
+
+    @property
+    def SessionId(self):
+        r"""<p>用于任务去重的识别码，如果三天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。</p>
+        :rtype: str
+        """
+        return self._SessionId
+
+    @SessionId.setter
+    def SessionId(self, SessionId):
+        self._SessionId = SessionId
+
+
+    def _deserialize(self, params):
+        self._Text = params.get("Text")
+        self._VoiceId = params.get("VoiceId")
+        self._SubAppId = params.get("SubAppId")
+        self._LanguageBoost = params.get("LanguageBoost")
+        self._ExtParam = params.get("ExtParam")
+        if params.get("Output") is not None:
+            self._Output = TextToSpeechAsyncOutputOption()
+            self._Output._deserialize(params.get("Output"))
+        self._SessionContext = params.get("SessionContext")
+        self._SessionId = params.get("SessionId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TextToSpeechAsyncResponse(AbstractModel):
+    r"""TextToSpeechAsync返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: <p>任务ID，使用该ID查询结果</p>
+        :type TaskId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        r"""<p>任务ID，使用该ID查询结果</p>
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
+
+
+class TextToSpeechAsyncTask(AbstractModel):
+    r"""语音合成任务。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: <p>任务 ID。</p>
+        :type TaskId: str
+        :param _Status: <p>任务状态，取值：</p><li>PROCESSING：处理中；</li><li>FINISH：已完成。</li>
+        :type Status: str
+        :param _ErrCode: <p>错误码，0 表示成功，其他值表示失败：</p><li>40000：输入参数不合法，请检查输入参数；</li><li>60000：源文件错误（如视频数据损坏），请确认源文件是否正常；</li><li>70000：内部服务错误，建议重试。</li>
+        :type ErrCode: int
+        :param _Message: <p>错误信息。</p>
+        :type Message: str
+        :param _ErrCodeExt: <p>错误码，空字符串表示成功，其他值表示失败，取值请参考 <a href="https://cloud.tencent.com/document/product/266/50368#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81">视频处理类错误码</a> 列表。</p>
+        :type ErrCodeExt: str
+        :param _Input: <p>语音合成任务输入信息。</p>
+        :type Input: :class:`tencentcloud.vod.v20180717.models.TextToSpeechAsyncInput`
+        :param _Output: <p>语音合成任务输出信息。</p>
+        :type Output: :class:`tencentcloud.vod.v20180717.models.TextToSpeechAsyncOutput`
+        :param _SessionId: <p>用于去重的识别码，如果七天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。</p>
+        :type SessionId: str
+        :param _SessionContext: <p>来源上下文，用于透传用户请求信息，任务流状态变更回调将返回该字段值，最长 1000 个字符。</p>
+        :type SessionContext: str
+        :param _Progress: <p>拉取上传进度，取值范围 [0-100] 。</p>
+        :type Progress: int
+        """
+        self._TaskId = None
+        self._Status = None
+        self._ErrCode = None
+        self._Message = None
+        self._ErrCodeExt = None
+        self._Input = None
+        self._Output = None
+        self._SessionId = None
+        self._SessionContext = None
+        self._Progress = None
+
+    @property
+    def TaskId(self):
+        r"""<p>任务 ID。</p>
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def Status(self):
+        r"""<p>任务状态，取值：</p><li>PROCESSING：处理中；</li><li>FINISH：已完成。</li>
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def ErrCode(self):
+        r"""<p>错误码，0 表示成功，其他值表示失败：</p><li>40000：输入参数不合法，请检查输入参数；</li><li>60000：源文件错误（如视频数据损坏），请确认源文件是否正常；</li><li>70000：内部服务错误，建议重试。</li>
+        :rtype: int
+        """
+        return self._ErrCode
+
+    @ErrCode.setter
+    def ErrCode(self, ErrCode):
+        self._ErrCode = ErrCode
+
+    @property
+    def Message(self):
+        r"""<p>错误信息。</p>
+        :rtype: str
+        """
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+    @property
+    def ErrCodeExt(self):
+        r"""<p>错误码，空字符串表示成功，其他值表示失败，取值请参考 <a href="https://cloud.tencent.com/document/product/266/50368#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81">视频处理类错误码</a> 列表。</p>
+        :rtype: str
+        """
+        return self._ErrCodeExt
+
+    @ErrCodeExt.setter
+    def ErrCodeExt(self, ErrCodeExt):
+        self._ErrCodeExt = ErrCodeExt
+
+    @property
+    def Input(self):
+        r"""<p>语音合成任务输入信息。</p>
+        :rtype: :class:`tencentcloud.vod.v20180717.models.TextToSpeechAsyncInput`
+        """
+        return self._Input
+
+    @Input.setter
+    def Input(self, Input):
+        self._Input = Input
+
+    @property
+    def Output(self):
+        r"""<p>语音合成任务输出信息。</p>
+        :rtype: :class:`tencentcloud.vod.v20180717.models.TextToSpeechAsyncOutput`
+        """
+        return self._Output
+
+    @Output.setter
+    def Output(self, Output):
+        self._Output = Output
+
+    @property
+    def SessionId(self):
+        r"""<p>用于去重的识别码，如果七天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。</p>
+        :rtype: str
+        """
+        return self._SessionId
+
+    @SessionId.setter
+    def SessionId(self, SessionId):
+        self._SessionId = SessionId
+
+    @property
+    def SessionContext(self):
+        r"""<p>来源上下文，用于透传用户请求信息，任务流状态变更回调将返回该字段值，最长 1000 个字符。</p>
+        :rtype: str
+        """
+        return self._SessionContext
+
+    @SessionContext.setter
+    def SessionContext(self, SessionContext):
+        self._SessionContext = SessionContext
+
+    @property
+    def Progress(self):
+        r"""<p>拉取上传进度，取值范围 [0-100] 。</p>
+        :rtype: int
+        """
+        return self._Progress
+
+    @Progress.setter
+    def Progress(self, Progress):
+        self._Progress = Progress
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._Status = params.get("Status")
+        self._ErrCode = params.get("ErrCode")
+        self._Message = params.get("Message")
+        self._ErrCodeExt = params.get("ErrCodeExt")
+        if params.get("Input") is not None:
+            self._Input = TextToSpeechAsyncInput()
+            self._Input._deserialize(params.get("Input"))
+        if params.get("Output") is not None:
+            self._Output = TextToSpeechAsyncOutput()
+            self._Output._deserialize(params.get("Output"))
+        self._SessionId = params.get("SessionId")
+        self._SessionContext = params.get("SessionContext")
+        self._Progress = params.get("Progress")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class TextWatermarkTemplateInput(AbstractModel):
     r"""文字水印模板
 
@@ -98126,6 +100864,134 @@ class UpdateAigcApiTokenResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class UpdateVoiceRequest(AbstractModel):
+    r"""UpdateVoice请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VoiceId: <p>音色Id</p>
+        :type VoiceId: str
+        :param _VoiceFields: <p>更新音色字段</p>
+        :type VoiceFields: :class:`tencentcloud.vod.v20180717.models.VoiceUpdateFields`
+        :param _SubAppId: <p>点播应用 ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</p>
+        :type SubAppId: str
+        :param _ExtParam: <p>扩展参数，json字符串</p>
+        :type ExtParam: str
+        """
+        self._VoiceId = None
+        self._VoiceFields = None
+        self._SubAppId = None
+        self._ExtParam = None
+
+    @property
+    def VoiceId(self):
+        r"""<p>音色Id</p>
+        :rtype: str
+        """
+        return self._VoiceId
+
+    @VoiceId.setter
+    def VoiceId(self, VoiceId):
+        self._VoiceId = VoiceId
+
+    @property
+    def VoiceFields(self):
+        r"""<p>更新音色字段</p>
+        :rtype: :class:`tencentcloud.vod.v20180717.models.VoiceUpdateFields`
+        """
+        return self._VoiceFields
+
+    @VoiceFields.setter
+    def VoiceFields(self, VoiceFields):
+        self._VoiceFields = VoiceFields
+
+    @property
+    def SubAppId(self):
+        r"""<p>点播应用 ID。从2023年12月25日起开通点播的客户，如访问点播应用中的资源（无论是默认应用还是新创建的应用），必须将该字段填写为应用 ID。</p>
+        :rtype: str
+        """
+        return self._SubAppId
+
+    @SubAppId.setter
+    def SubAppId(self, SubAppId):
+        self._SubAppId = SubAppId
+
+    @property
+    def ExtParam(self):
+        r"""<p>扩展参数，json字符串</p>
+        :rtype: str
+        """
+        return self._ExtParam
+
+    @ExtParam.setter
+    def ExtParam(self, ExtParam):
+        self._ExtParam = ExtParam
+
+
+    def _deserialize(self, params):
+        self._VoiceId = params.get("VoiceId")
+        if params.get("VoiceFields") is not None:
+            self._VoiceFields = VoiceUpdateFields()
+            self._VoiceFields._deserialize(params.get("VoiceFields"))
+        self._SubAppId = params.get("SubAppId")
+        self._ExtParam = params.get("ExtParam")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateVoiceResponse(AbstractModel):
+    r"""UpdateVoice返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Voice: <p>更新后的音色信息</p>
+        :type Voice: :class:`tencentcloud.vod.v20180717.models.VoiceInfo`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Voice = None
+        self._RequestId = None
+
+    @property
+    def Voice(self):
+        r"""<p>更新后的音色信息</p>
+        :rtype: :class:`tencentcloud.vod.v20180717.models.VoiceInfo`
+        """
+        return self._Voice
+
+    @Voice.setter
+    def Voice(self, Voice):
+        self._Voice = Voice
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Voice") is not None:
+            self._Voice = VoiceInfo()
+            self._Voice._deserialize(params.get("Voice"))
+        self._RequestId = params.get("RequestId")
+
+
 class UrlSignatureAuthPolicy(AbstractModel):
     r"""基于签名的 Key 防盗链信息
 
@@ -99247,6 +102113,328 @@ class VideoDenoiseInfo(AbstractModel):
     def _deserialize(self, params):
         self._Switch = params.get("Switch")
         self._Type = params.get("Type")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VideoDubbingAsyncInput(AbstractModel):
+    r"""视频配音任务输入。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InputUrl: <p>输入视频Url</p>
+        :type InputUrl: str
+        :param _InputFileId: <p>输入视频FileId</p>
+        :type InputFileId: str
+        :param _SrcLanguage: <p>视频源语言，默认zh</p>
+        :type SrcLanguage: str
+        :param _DstLanguage: <p>视频目标语言，默认en</p>
+        :type DstLanguage: str
+        :param _Model: <p>配音模型</p>
+        :type Model: str
+        """
+        self._InputUrl = None
+        self._InputFileId = None
+        self._SrcLanguage = None
+        self._DstLanguage = None
+        self._Model = None
+
+    @property
+    def InputUrl(self):
+        r"""<p>输入视频Url</p>
+        :rtype: str
+        """
+        return self._InputUrl
+
+    @InputUrl.setter
+    def InputUrl(self, InputUrl):
+        self._InputUrl = InputUrl
+
+    @property
+    def InputFileId(self):
+        r"""<p>输入视频FileId</p>
+        :rtype: str
+        """
+        return self._InputFileId
+
+    @InputFileId.setter
+    def InputFileId(self, InputFileId):
+        self._InputFileId = InputFileId
+
+    @property
+    def SrcLanguage(self):
+        r"""<p>视频源语言，默认zh</p>
+        :rtype: str
+        """
+        return self._SrcLanguage
+
+    @SrcLanguage.setter
+    def SrcLanguage(self, SrcLanguage):
+        self._SrcLanguage = SrcLanguage
+
+    @property
+    def DstLanguage(self):
+        r"""<p>视频目标语言，默认en</p>
+        :rtype: str
+        """
+        return self._DstLanguage
+
+    @DstLanguage.setter
+    def DstLanguage(self, DstLanguage):
+        self._DstLanguage = DstLanguage
+
+    @property
+    def Model(self):
+        r"""<p>配音模型</p>
+        :rtype: str
+        """
+        return self._Model
+
+    @Model.setter
+    def Model(self, Model):
+        self._Model = Model
+
+
+    def _deserialize(self, params):
+        self._InputUrl = params.get("InputUrl")
+        self._InputFileId = params.get("InputFileId")
+        self._SrcLanguage = params.get("SrcLanguage")
+        self._DstLanguage = params.get("DstLanguage")
+        self._Model = params.get("Model")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VideoDubbingAsyncOutput(AbstractModel):
+    r"""视频配音任务输出。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ResultUrl: <p>配音结果Url</p>
+        :type ResultUrl: str
+        :param _FileId: <p>配音结果FileId</p>
+        :type FileId: str
+        """
+        self._ResultUrl = None
+        self._FileId = None
+
+    @property
+    def ResultUrl(self):
+        r"""<p>配音结果Url</p>
+        :rtype: str
+        """
+        return self._ResultUrl
+
+    @ResultUrl.setter
+    def ResultUrl(self, ResultUrl):
+        self._ResultUrl = ResultUrl
+
+    @property
+    def FileId(self):
+        r"""<p>配音结果FileId</p>
+        :rtype: str
+        """
+        return self._FileId
+
+    @FileId.setter
+    def FileId(self, FileId):
+        self._FileId = FileId
+
+
+    def _deserialize(self, params):
+        self._ResultUrl = params.get("ResultUrl")
+        self._FileId = params.get("FileId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VideoDubbingAsyncTask(AbstractModel):
+    r"""音色设计任务。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: <p>任务 ID。</p>
+        :type TaskId: str
+        :param _Status: <p>任务状态，取值：</p><li>PROCESSING：处理中；</li><li>FINISH：已完成。</li>
+        :type Status: str
+        :param _ErrCode: <p>错误码，0 表示成功，其他值表示失败：</p><li>40000：输入参数不合法，请检查输入参数；</li><li>60000：源文件错误（如视频数据损坏），请确认源文件是否正常；</li><li>70000：内部服务错误，建议重试。</li>
+        :type ErrCode: int
+        :param _Message: <p>错误信息。</p>
+        :type Message: str
+        :param _ErrCodeExt: <p>错误码，空字符串表示成功，其他值表示失败，取值请参考 <a href="https://cloud.tencent.com/document/product/266/50368#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81">视频处理类错误码</a> 列表。</p>
+        :type ErrCodeExt: str
+        :param _Input: <p>视频配音任务输入信息。</p>
+        :type Input: :class:`tencentcloud.vod.v20180717.models.VideoDubbingAsyncInput`
+        :param _Output: <p>视频配音任务输出信息。</p>
+        :type Output: :class:`tencentcloud.vod.v20180717.models.VideoDubbingAsyncOutput`
+        :param _SessionId: <p>用于去重的识别码，如果七天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。</p>
+        :type SessionId: str
+        :param _SessionContext: <p>来源上下文，用于透传用户请求信息，任务流状态变更回调将返回该字段值，最长 1000 个字符。</p>
+        :type SessionContext: str
+        :param _Progress: <p>拉取上传进度，取值范围 [0-100] 。</p>
+        :type Progress: int
+        """
+        self._TaskId = None
+        self._Status = None
+        self._ErrCode = None
+        self._Message = None
+        self._ErrCodeExt = None
+        self._Input = None
+        self._Output = None
+        self._SessionId = None
+        self._SessionContext = None
+        self._Progress = None
+
+    @property
+    def TaskId(self):
+        r"""<p>任务 ID。</p>
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def Status(self):
+        r"""<p>任务状态，取值：</p><li>PROCESSING：处理中；</li><li>FINISH：已完成。</li>
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def ErrCode(self):
+        r"""<p>错误码，0 表示成功，其他值表示失败：</p><li>40000：输入参数不合法，请检查输入参数；</li><li>60000：源文件错误（如视频数据损坏），请确认源文件是否正常；</li><li>70000：内部服务错误，建议重试。</li>
+        :rtype: int
+        """
+        return self._ErrCode
+
+    @ErrCode.setter
+    def ErrCode(self, ErrCode):
+        self._ErrCode = ErrCode
+
+    @property
+    def Message(self):
+        r"""<p>错误信息。</p>
+        :rtype: str
+        """
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+    @property
+    def ErrCodeExt(self):
+        r"""<p>错误码，空字符串表示成功，其他值表示失败，取值请参考 <a href="https://cloud.tencent.com/document/product/266/50368#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81">视频处理类错误码</a> 列表。</p>
+        :rtype: str
+        """
+        return self._ErrCodeExt
+
+    @ErrCodeExt.setter
+    def ErrCodeExt(self, ErrCodeExt):
+        self._ErrCodeExt = ErrCodeExt
+
+    @property
+    def Input(self):
+        r"""<p>视频配音任务输入信息。</p>
+        :rtype: :class:`tencentcloud.vod.v20180717.models.VideoDubbingAsyncInput`
+        """
+        return self._Input
+
+    @Input.setter
+    def Input(self, Input):
+        self._Input = Input
+
+    @property
+    def Output(self):
+        r"""<p>视频配音任务输出信息。</p>
+        :rtype: :class:`tencentcloud.vod.v20180717.models.VideoDubbingAsyncOutput`
+        """
+        return self._Output
+
+    @Output.setter
+    def Output(self, Output):
+        self._Output = Output
+
+    @property
+    def SessionId(self):
+        r"""<p>用于去重的识别码，如果七天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。</p>
+        :rtype: str
+        """
+        return self._SessionId
+
+    @SessionId.setter
+    def SessionId(self, SessionId):
+        self._SessionId = SessionId
+
+    @property
+    def SessionContext(self):
+        r"""<p>来源上下文，用于透传用户请求信息，任务流状态变更回调将返回该字段值，最长 1000 个字符。</p>
+        :rtype: str
+        """
+        return self._SessionContext
+
+    @SessionContext.setter
+    def SessionContext(self, SessionContext):
+        self._SessionContext = SessionContext
+
+    @property
+    def Progress(self):
+        r"""<p>拉取上传进度，取值范围 [0-100] 。</p>
+        :rtype: int
+        """
+        return self._Progress
+
+    @Progress.setter
+    def Progress(self, Progress):
+        self._Progress = Progress
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._Status = params.get("Status")
+        self._ErrCode = params.get("ErrCode")
+        self._Message = params.get("Message")
+        self._ErrCodeExt = params.get("ErrCodeExt")
+        if params.get("Input") is not None:
+            self._Input = VideoDubbingAsyncInput()
+            self._Input._deserialize(params.get("Input"))
+        if params.get("Output") is not None:
+            self._Output = VideoDubbingAsyncOutput()
+            self._Output._deserialize(params.get("Output"))
+        self._SessionId = params.get("SessionId")
+        self._SessionContext = params.get("SessionContext")
+        self._Progress = params.get("Progress")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -100390,6 +103578,444 @@ class VoiceConfigureInfoForUpdate(AbstractModel):
 
     def _deserialize(self, params):
         self._Switch = params.get("Switch")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VoiceInfo(AbstractModel):
+    r"""音色信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VoiceId: <p>音色ID</p>
+        :type VoiceId: str
+        :param _Name: <p>音色名</p>
+        :type Name: str
+        :param _Description: <p>音色描述信息</p>
+        :type Description: str
+        :param _Category: <p>音色类别</p><p>枚举值：</p><ul><li>system：系统音色</li><li>clone：克隆音色</li><li>design：设计音色</li></ul>
+        :type Category: str
+        :param _Gender: <p>性别</p><p>枚举值：</p><ul><li>male： 男</li><li>famale： 女</li></ul>
+        :type Gender: str
+        :param _Age: <p>年龄</p><p>枚举值：</p><ul><li>child： 儿童</li><li>teenager： 少年</li><li>youth： 青年</li><li>middle_aged： 中年</li><li>senior： 老年</li><li>unknown： 未知</li></ul>
+        :type Age: str
+        :param _Languages: <p>支持语种列表</p><p>如：en</p>
+        :type Languages: list of str
+        :param _AudioUrl: <p>试听音频URL</p>
+        :type AudioUrl: str
+        :param _Labels: <p>标签列表</p><p>如：温柔</p>
+        :type Labels: list of str
+        :param _Scenes: <p>推荐场景</p><p>如：教育</p>
+        :type Scenes: list of str
+        """
+        self._VoiceId = None
+        self._Name = None
+        self._Description = None
+        self._Category = None
+        self._Gender = None
+        self._Age = None
+        self._Languages = None
+        self._AudioUrl = None
+        self._Labels = None
+        self._Scenes = None
+
+    @property
+    def VoiceId(self):
+        r"""<p>音色ID</p>
+        :rtype: str
+        """
+        return self._VoiceId
+
+    @VoiceId.setter
+    def VoiceId(self, VoiceId):
+        self._VoiceId = VoiceId
+
+    @property
+    def Name(self):
+        r"""<p>音色名</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Description(self):
+        r"""<p>音色描述信息</p>
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def Category(self):
+        r"""<p>音色类别</p><p>枚举值：</p><ul><li>system：系统音色</li><li>clone：克隆音色</li><li>design：设计音色</li></ul>
+        :rtype: str
+        """
+        return self._Category
+
+    @Category.setter
+    def Category(self, Category):
+        self._Category = Category
+
+    @property
+    def Gender(self):
+        r"""<p>性别</p><p>枚举值：</p><ul><li>male： 男</li><li>famale： 女</li></ul>
+        :rtype: str
+        """
+        return self._Gender
+
+    @Gender.setter
+    def Gender(self, Gender):
+        self._Gender = Gender
+
+    @property
+    def Age(self):
+        r"""<p>年龄</p><p>枚举值：</p><ul><li>child： 儿童</li><li>teenager： 少年</li><li>youth： 青年</li><li>middle_aged： 中年</li><li>senior： 老年</li><li>unknown： 未知</li></ul>
+        :rtype: str
+        """
+        return self._Age
+
+    @Age.setter
+    def Age(self, Age):
+        self._Age = Age
+
+    @property
+    def Languages(self):
+        r"""<p>支持语种列表</p><p>如：en</p>
+        :rtype: list of str
+        """
+        return self._Languages
+
+    @Languages.setter
+    def Languages(self, Languages):
+        self._Languages = Languages
+
+    @property
+    def AudioUrl(self):
+        r"""<p>试听音频URL</p>
+        :rtype: str
+        """
+        return self._AudioUrl
+
+    @AudioUrl.setter
+    def AudioUrl(self, AudioUrl):
+        self._AudioUrl = AudioUrl
+
+    @property
+    def Labels(self):
+        r"""<p>标签列表</p><p>如：温柔</p>
+        :rtype: list of str
+        """
+        return self._Labels
+
+    @Labels.setter
+    def Labels(self, Labels):
+        self._Labels = Labels
+
+    @property
+    def Scenes(self):
+        r"""<p>推荐场景</p><p>如：教育</p>
+        :rtype: list of str
+        """
+        return self._Scenes
+
+    @Scenes.setter
+    def Scenes(self, Scenes):
+        self._Scenes = Scenes
+
+
+    def _deserialize(self, params):
+        self._VoiceId = params.get("VoiceId")
+        self._Name = params.get("Name")
+        self._Description = params.get("Description")
+        self._Category = params.get("Category")
+        self._Gender = params.get("Gender")
+        self._Age = params.get("Age")
+        self._Languages = params.get("Languages")
+        self._AudioUrl = params.get("AudioUrl")
+        self._Labels = params.get("Labels")
+        self._Scenes = params.get("Scenes")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VoiceSettings(AbstractModel):
+    r"""音色属性
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: <p>音色名</p>
+        :type Name: str
+        :param _Description: <p>音色描述</p>
+        :type Description: str
+        :param _Gender: <p>性别</p><p>枚举值：</p><ul><li>male： 男性</li><li>female： 女性</li><li>unknown： 未知</li></ul>
+        :type Gender: str
+        :param _Age: <p>年龄</p><p>枚举值：</p><ul><li>child： 儿童</li><li>teenager： 少年</li><li>youth： 青年</li><li>middle_aged： 中年</li><li>senior： 老年</li><li>unknown： 未知</li></ul>
+        :type Age: str
+        :param _Languages: <p>语言，当前支持：<br>zh 中文 (Chinese)<br>en 英语 (English)<br>ja 日语 (Japanese)<br>de 德语 (German)<br>fr 法语 (French)<br>ko 韩语 (Korean)<br>ru 俄语 (Russian)<br>uk 乌克兰语 (Ukrainian)<br>pt 葡萄牙语 (Portuguese)<br>it 意大利语 (Italian)<br>es 西班牙语 (Spanish)<br>id 印度尼西亚语 (Indonesian)<br>nl 荷兰语 (Dutch)<br>tr 土耳其语 (Turkish)<br>fil 菲律宾语 (Filipino)<br>ms 马来语 (Malay)<br>el 希腊语 (Greek)<br>fi 芬兰语 (Finnish)<br>hr 克罗地亚语 (Croatian)<br>sk 斯洛伐克语 (Slovak)<br>pl 波兰语 (Polish)<br>sv 瑞典语 (Swedish)<br>hi 印地语 (Hindi)<br>bg 保加利亚语 (Bulgarian)<br>ro 罗马尼亚语 (Romanian)<br>ar 阿拉伯语 (Arabic)<br>cs 捷克语 (Czech)<br>da 丹麦语 (Danish)<br>ta 泰米尔语 (Tamil)<br>hun 匈牙利语（Hungarian）<br>vi 越南语（Vietnamese）<br>no 挪威语（Norwegian）<br>yue 粤语（Cantonese）<br>th 泰语（Thai）<br>he 希伯来语（Hebrew）<br>ca 加泰罗尼亚语（Catalan）<br>nn 尼诺斯克语（Nynorsk）<br>af 阿非利卡语（Afrikaans）<br>fa 波斯语（Persian）<br>sl 斯洛文尼亚语（Slovenian）</p>
+        :type Languages: list of str
+        :param _Labels: <p>标签</p>
+        :type Labels: list of str
+        :param _Scenes: <p>使用场景</p>
+        :type Scenes: list of str
+        """
+        self._Name = None
+        self._Description = None
+        self._Gender = None
+        self._Age = None
+        self._Languages = None
+        self._Labels = None
+        self._Scenes = None
+
+    @property
+    def Name(self):
+        r"""<p>音色名</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Description(self):
+        r"""<p>音色描述</p>
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def Gender(self):
+        r"""<p>性别</p><p>枚举值：</p><ul><li>male： 男性</li><li>female： 女性</li><li>unknown： 未知</li></ul>
+        :rtype: str
+        """
+        return self._Gender
+
+    @Gender.setter
+    def Gender(self, Gender):
+        self._Gender = Gender
+
+    @property
+    def Age(self):
+        r"""<p>年龄</p><p>枚举值：</p><ul><li>child： 儿童</li><li>teenager： 少年</li><li>youth： 青年</li><li>middle_aged： 中年</li><li>senior： 老年</li><li>unknown： 未知</li></ul>
+        :rtype: str
+        """
+        return self._Age
+
+    @Age.setter
+    def Age(self, Age):
+        self._Age = Age
+
+    @property
+    def Languages(self):
+        r"""<p>语言，当前支持：<br>zh 中文 (Chinese)<br>en 英语 (English)<br>ja 日语 (Japanese)<br>de 德语 (German)<br>fr 法语 (French)<br>ko 韩语 (Korean)<br>ru 俄语 (Russian)<br>uk 乌克兰语 (Ukrainian)<br>pt 葡萄牙语 (Portuguese)<br>it 意大利语 (Italian)<br>es 西班牙语 (Spanish)<br>id 印度尼西亚语 (Indonesian)<br>nl 荷兰语 (Dutch)<br>tr 土耳其语 (Turkish)<br>fil 菲律宾语 (Filipino)<br>ms 马来语 (Malay)<br>el 希腊语 (Greek)<br>fi 芬兰语 (Finnish)<br>hr 克罗地亚语 (Croatian)<br>sk 斯洛伐克语 (Slovak)<br>pl 波兰语 (Polish)<br>sv 瑞典语 (Swedish)<br>hi 印地语 (Hindi)<br>bg 保加利亚语 (Bulgarian)<br>ro 罗马尼亚语 (Romanian)<br>ar 阿拉伯语 (Arabic)<br>cs 捷克语 (Czech)<br>da 丹麦语 (Danish)<br>ta 泰米尔语 (Tamil)<br>hun 匈牙利语（Hungarian）<br>vi 越南语（Vietnamese）<br>no 挪威语（Norwegian）<br>yue 粤语（Cantonese）<br>th 泰语（Thai）<br>he 希伯来语（Hebrew）<br>ca 加泰罗尼亚语（Catalan）<br>nn 尼诺斯克语（Nynorsk）<br>af 阿非利卡语（Afrikaans）<br>fa 波斯语（Persian）<br>sl 斯洛文尼亚语（Slovenian）</p>
+        :rtype: list of str
+        """
+        return self._Languages
+
+    @Languages.setter
+    def Languages(self, Languages):
+        self._Languages = Languages
+
+    @property
+    def Labels(self):
+        r"""<p>标签</p>
+        :rtype: list of str
+        """
+        return self._Labels
+
+    @Labels.setter
+    def Labels(self, Labels):
+        self._Labels = Labels
+
+    @property
+    def Scenes(self):
+        r"""<p>使用场景</p>
+        :rtype: list of str
+        """
+        return self._Scenes
+
+    @Scenes.setter
+    def Scenes(self, Scenes):
+        self._Scenes = Scenes
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Description = params.get("Description")
+        self._Gender = params.get("Gender")
+        self._Age = params.get("Age")
+        self._Languages = params.get("Languages")
+        self._Labels = params.get("Labels")
+        self._Scenes = params.get("Scenes")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class VoiceUpdateFields(AbstractModel):
+    r"""音色更新字段
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: <p>音色名</p>
+        :type Name: str
+        :param _Description: <p>音色描述</p>
+        :type Description: str
+        :param _Gender: <p>性别</p><p>枚举值：</p><ul><li>male： 男</li><li>female： 女</li><li>unknown： 未知</li></ul>
+        :type Gender: str
+        :param _Age: <p>年龄</p><p>枚举值：</p><ul><li>child： 儿童</li><li>teenager： 少年</li><li>youth： 青年</li><li>middle_aged： 中年</li><li>senior： 老年</li><li>unknown： 未知</li></ul>
+        :type Age: str
+        :param _Languages: <p>语言</p>
+        :type Languages: list of str
+        :param _Labels: <p>标签</p>
+        :type Labels: list of str
+        :param _Scenes: <p>场景</p>
+        :type Scenes: list of str
+        :param _AudioUrl: <p>试听音频</p>
+        :type AudioUrl: str
+        """
+        self._Name = None
+        self._Description = None
+        self._Gender = None
+        self._Age = None
+        self._Languages = None
+        self._Labels = None
+        self._Scenes = None
+        self._AudioUrl = None
+
+    @property
+    def Name(self):
+        r"""<p>音色名</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Description(self):
+        r"""<p>音色描述</p>
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def Gender(self):
+        r"""<p>性别</p><p>枚举值：</p><ul><li>male： 男</li><li>female： 女</li><li>unknown： 未知</li></ul>
+        :rtype: str
+        """
+        return self._Gender
+
+    @Gender.setter
+    def Gender(self, Gender):
+        self._Gender = Gender
+
+    @property
+    def Age(self):
+        r"""<p>年龄</p><p>枚举值：</p><ul><li>child： 儿童</li><li>teenager： 少年</li><li>youth： 青年</li><li>middle_aged： 中年</li><li>senior： 老年</li><li>unknown： 未知</li></ul>
+        :rtype: str
+        """
+        return self._Age
+
+    @Age.setter
+    def Age(self, Age):
+        self._Age = Age
+
+    @property
+    def Languages(self):
+        r"""<p>语言</p>
+        :rtype: list of str
+        """
+        return self._Languages
+
+    @Languages.setter
+    def Languages(self, Languages):
+        self._Languages = Languages
+
+    @property
+    def Labels(self):
+        r"""<p>标签</p>
+        :rtype: list of str
+        """
+        return self._Labels
+
+    @Labels.setter
+    def Labels(self, Labels):
+        self._Labels = Labels
+
+    @property
+    def Scenes(self):
+        r"""<p>场景</p>
+        :rtype: list of str
+        """
+        return self._Scenes
+
+    @Scenes.setter
+    def Scenes(self, Scenes):
+        self._Scenes = Scenes
+
+    @property
+    def AudioUrl(self):
+        r"""<p>试听音频</p>
+        :rtype: str
+        """
+        return self._AudioUrl
+
+    @AudioUrl.setter
+    def AudioUrl(self, AudioUrl):
+        self._AudioUrl = AudioUrl
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Description = params.get("Description")
+        self._Gender = params.get("Gender")
+        self._Age = params.get("Age")
+        self._Languages = params.get("Languages")
+        self._Labels = params.get("Labels")
+        self._Scenes = params.get("Scenes")
+        self._AudioUrl = params.get("AudioUrl")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

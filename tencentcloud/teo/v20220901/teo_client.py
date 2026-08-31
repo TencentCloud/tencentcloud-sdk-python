@@ -1928,6 +1928,29 @@ class TeoClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeAvailableCustomActionsForRuleEngine(self, request):
+        r"""查询站点规则引擎操作可用的定制配置列表。
+
+        :param request: Request instance for DescribeAvailableCustomActionsForRuleEngine.
+        :type request: :class:`tencentcloud.teo.v20220901.models.DescribeAvailableCustomActionsForRuleEngineRequest`
+        :rtype: :class:`tencentcloud.teo.v20220901.models.DescribeAvailableCustomActionsForRuleEngineResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAvailableCustomActionsForRuleEngine", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeAvailableCustomActionsForRuleEngineResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeAvailablePlans(self, request):
         r"""查询当前账户可用套餐信息列表
 

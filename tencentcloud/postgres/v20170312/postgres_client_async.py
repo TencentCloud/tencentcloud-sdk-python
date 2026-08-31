@@ -115,6 +115,24 @@ class PostgresClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CloseDBProxyAddress(
+            self,
+            request: models.CloseDBProxyAddressRequest,
+            opts: Dict = None,
+    ) -> models.CloseDBProxyAddressResponse:
+        """
+        本接口用于关闭（删除）数据库代理的指定地址。接口为异步操作，返回 TaskId 供调用方通过 DescribeTasks 查询任务执行进度。约束：代理组至少保留一个地址，不允许删除最后一个地址。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CloseDBProxyAddress"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CloseDBProxyAddressResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateAccount(
             self,
             request: models.CreateAccountRequest,
@@ -218,6 +236,24 @@ class PostgresClient(AbstractClient):
         kwargs["action"] = "CreateDBProxy"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.CreateDBProxyResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def CreateDBProxyAddress(
+            self,
+            request: models.CreateDBProxyAddressRequest,
+            opts: Dict = None,
+    ) -> models.CreateDBProxyAddressResponse:
+        """
+        本接口（CreateDBProxyAddress）用于为指定实例的数据库代理创建连接地址。该接口为异步接口，调用成功后返回 TaskId，可通过 DescribeTasks 接口查询任务执行进度。<p>支持同时配置读写分离策略，包括权重模式、路由分配、延迟剔除、故障转移等高级功能。</p>
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateDBProxyAddress"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateDBProxyAddressResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -937,6 +973,24 @@ class PostgresClient(AbstractClient):
         kwargs["action"] = "DescribeDBProxy"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeDBProxyResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeDBProxySSLConfig(
+            self,
+            request: models.DescribeDBProxySSLConfigRequest,
+            opts: Dict = None,
+    ) -> models.DescribeDBProxySSLConfigResponse:
+        """
+        本接口用于查询指定代理连接地址的 SSL 配置信息，包括 SSL 是否开启、连接地址和 CA 证书下载地址。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeDBProxySSLConfig"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeDBProxySSLConfigResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -1804,6 +1858,24 @@ class PostgresClient(AbstractClient):
         kwargs["action"] = "ModifyDBProxyAddress"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ModifyDBProxyAddressResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyDBProxySSLConfig(
+            self,
+            request: models.ModifyDBProxySSLConfigRequest,
+            opts: Dict = None,
+    ) -> models.ModifyDBProxySSLConfigResponse:
+        """
+        本接口（ModifyDBProxySSLConfig）用于修改数据库代理连接地址的 SSL 配置。该接口为异步接口，调用成功后返回 TaskId，可通过 DescribeTasks 接口查询任务执行进度。<p>当前仅支持物理机（local）存储类型的代理开启 SSL。SSL 开启时需提供 ConnectAddress，且必须与代理地址的 Vip 保持一致。</p><p>当 SSL 状态与当前配置一致时，接口直接返回成功，TaskId 为 0，无需等待任务。</p>
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyDBProxySSLConfig"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyDBProxySSLConfigResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

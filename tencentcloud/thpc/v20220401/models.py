@@ -920,6 +920,9 @@ class ClusterActivity(AbstractModel):
         :type ResultDetail: str
         :param _Cause: 集群活动起因。
         :type Cause: str
+        :param _QueueName: 队列名称。集群级活动（如创建/删除集群）此字段为空，队列级活动（如扩容/缩容）为对应队列名。
+注意：此字段可能返回 null，表示取不到有效值。
+        :type QueueName: str
         :param _Description: 集群活动描述。
         :type Description: str
         :param _RelatedNodeActivitySet: 集群活动相关节点活动集合。
@@ -936,6 +939,7 @@ class ClusterActivity(AbstractModel):
         self._ActivityStatusCode = None
         self._ResultDetail = None
         self._Cause = None
+        self._QueueName = None
         self._Description = None
         self._RelatedNodeActivitySet = None
         self._StartTime = None
@@ -1020,6 +1024,18 @@ class ClusterActivity(AbstractModel):
         self._Cause = Cause
 
     @property
+    def QueueName(self):
+        r"""队列名称。集群级活动（如创建/删除集群）此字段为空，队列级活动（如扩容/缩容）为对应队列名。
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._QueueName
+
+    @QueueName.setter
+    def QueueName(self, QueueName):
+        self._QueueName = QueueName
+
+    @property
     def Description(self):
         r"""集群活动描述。
         :rtype: str
@@ -1072,6 +1088,7 @@ class ClusterActivity(AbstractModel):
         self._ActivityStatusCode = params.get("ActivityStatusCode")
         self._ResultDetail = params.get("ResultDetail")
         self._Cause = params.get("Cause")
+        self._QueueName = params.get("QueueName")
         self._Description = params.get("Description")
         if params.get("RelatedNodeActivitySet") is not None:
             self._RelatedNodeActivitySet = []

@@ -3867,6 +3867,29 @@ class CynosdbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyClusterLevel(self, request):
+        r"""修改集群级别
+
+        :param request: Request instance for ModifyClusterLevel.
+        :type request: :class:`tencentcloud.cynosdb.v20190107.models.ModifyClusterLevelRequest`
+        :rtype: :class:`tencentcloud.cynosdb.v20190107.models.ModifyClusterLevelResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyClusterLevel", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyClusterLevelResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyClusterName(self, request):
         r"""本接口（ModifyClusterName）用于修改集群名称。
 

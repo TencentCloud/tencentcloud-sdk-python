@@ -138,6 +138,24 @@ class SmsClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeSendRecordList(
+            self,
+            request: models.DescribeSendRecordListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeSendRecordListResponse:
+        """
+        本接口 (DescribeSendRecordList) 用于查询单个手机号在指定时间范围内的短信下发记录。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeSendRecordList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeSendRecordListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeSmsSignList(
             self,
             request: models.DescribeSmsSignListRequest,

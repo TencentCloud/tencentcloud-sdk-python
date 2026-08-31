@@ -35,12 +35,15 @@ class CreateLibraryRequest(AbstractModel):
         :type BucketRegion: str
         :param _LibraryExtension: <p>媒体库配置项，部分参数新建后不可更改</p>
         :type LibraryExtension: :class:`tencentcloud.smh.v20210712.models.LibraryExtension`
+        :param _Tags: <p>媒体库标签列表。</p>
+        :type Tags: list of ResourceTag
         """
         self._Name = None
         self._Remark = None
         self._BucketName = None
         self._BucketRegion = None
         self._LibraryExtension = None
+        self._Tags = None
 
     @property
     def Name(self):
@@ -97,6 +100,17 @@ class CreateLibraryRequest(AbstractModel):
     def LibraryExtension(self, LibraryExtension):
         self._LibraryExtension = LibraryExtension
 
+    @property
+    def Tags(self):
+        r"""<p>媒体库标签列表。</p>
+        :rtype: list of ResourceTag
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -106,6 +120,12 @@ class CreateLibraryRequest(AbstractModel):
         if params.get("LibraryExtension") is not None:
             self._LibraryExtension = LibraryExtension()
             self._LibraryExtension._deserialize(params.get("LibraryExtension"))
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = ResourceTag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -255,12 +275,15 @@ class DescribeLibrariesRequest(AbstractModel):
         :type Offset: int
         :param _Limit: 单次列出的数量限制，不超过100.
         :type Limit: int
+        :param _TagFilters: 
+        :type TagFilters: list of TagFilter
         """
         self._LibraryIds = None
         self._PageNumber = None
         self._PageSize = None
         self._Offset = None
         self._Limit = None
+        self._TagFilters = None
 
     @property
     def LibraryIds(self):
@@ -317,6 +340,17 @@ class DescribeLibrariesRequest(AbstractModel):
     def Limit(self, Limit):
         self._Limit = Limit
 
+    @property
+    def TagFilters(self):
+        r"""
+        :rtype: list of TagFilter
+        """
+        return self._TagFilters
+
+    @TagFilters.setter
+    def TagFilters(self, TagFilters):
+        self._TagFilters = TagFilters
+
 
     def _deserialize(self, params):
         self._LibraryIds = params.get("LibraryIds")
@@ -324,6 +358,12 @@ class DescribeLibrariesRequest(AbstractModel):
         self._PageSize = params.get("PageSize")
         self._Offset = params.get("Offset")
         self._Limit = params.get("Limit")
+        if params.get("TagFilters") is not None:
+            self._TagFilters = []
+            for item in params.get("TagFilters"):
+                obj = TagFilter()
+                obj._deserialize(item)
+                self._TagFilters.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1185,28 +1225,30 @@ class Library(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _LibraryId: 媒体库 ID
+        :param _LibraryId: <p>媒体库 ID</p>
         :type LibraryId: str
-        :param _Name: 媒体库友好名称
+        :param _Name: <p>媒体库友好名称</p>
         :type Name: str
-        :param _Remark: 备注
+        :param _Remark: <p>备注</p>
         :type Remark: str
-        :param _BucketName: 媒体库绑定的 COS 存储桶
+        :param _BucketName: <p>媒体库绑定的 COS 存储桶</p>
         :type BucketName: str
-        :param _BucketRegion: 媒体库绑定的 COS 存储桶所在的地域
+        :param _BucketRegion: <p>媒体库绑定的 COS 存储桶所在的地域</p>
         :type BucketRegion: str
-        :param _AccessDomain: 该媒体库的业务 API 访问域名
+        :param _AccessDomain: <p>该媒体库的业务 API 访问域名</p>
         :type AccessDomain: str
-        :param _CreationTime: 媒体库创建时间
+        :param _CreationTime: <p>媒体库创建时间</p>
         :type CreationTime: str
-        :param _LibraryExtension: 媒体库配置项
+        :param _LibraryExtension: <p>媒体库配置项</p>
         :type LibraryExtension: :class:`tencentcloud.smh.v20210712.models.LibraryExtension`
-        :param _Size: 媒体库用量，单位为 Bytes，由于数字类型精度限制，该字段为 String 类型。
+        :param _Size: <p>媒体库用量，单位为 Bytes，由于数字类型精度限制，该字段为 String 类型。</p>
         :type Size: str
-        :param _DirNum: 媒体库目录数，由于数字类型精度限制，该字段为 String 类型。
+        :param _DirNum: <p>媒体库目录数，由于数字类型精度限制，该字段为 String 类型。</p>
         :type DirNum: str
-        :param _FileNum: 媒体库文件数，由于数字类型精度限制，该字段为 String 类型。
+        :param _FileNum: <p>媒体库文件数，由于数字类型精度限制，该字段为 String 类型。</p>
         :type FileNum: str
+        :param _Tags: <p>媒体库关联的标签列表。</p>
+        :type Tags: list of ResourceTag
         """
         self._LibraryId = None
         self._Name = None
@@ -1219,10 +1261,11 @@ class Library(AbstractModel):
         self._Size = None
         self._DirNum = None
         self._FileNum = None
+        self._Tags = None
 
     @property
     def LibraryId(self):
-        r"""媒体库 ID
+        r"""<p>媒体库 ID</p>
         :rtype: str
         """
         return self._LibraryId
@@ -1233,7 +1276,7 @@ class Library(AbstractModel):
 
     @property
     def Name(self):
-        r"""媒体库友好名称
+        r"""<p>媒体库友好名称</p>
         :rtype: str
         """
         return self._Name
@@ -1244,7 +1287,7 @@ class Library(AbstractModel):
 
     @property
     def Remark(self):
-        r"""备注
+        r"""<p>备注</p>
         :rtype: str
         """
         return self._Remark
@@ -1255,7 +1298,7 @@ class Library(AbstractModel):
 
     @property
     def BucketName(self):
-        r"""媒体库绑定的 COS 存储桶
+        r"""<p>媒体库绑定的 COS 存储桶</p>
         :rtype: str
         """
         return self._BucketName
@@ -1266,7 +1309,7 @@ class Library(AbstractModel):
 
     @property
     def BucketRegion(self):
-        r"""媒体库绑定的 COS 存储桶所在的地域
+        r"""<p>媒体库绑定的 COS 存储桶所在的地域</p>
         :rtype: str
         """
         return self._BucketRegion
@@ -1277,7 +1320,7 @@ class Library(AbstractModel):
 
     @property
     def AccessDomain(self):
-        r"""该媒体库的业务 API 访问域名
+        r"""<p>该媒体库的业务 API 访问域名</p>
         :rtype: str
         """
         return self._AccessDomain
@@ -1288,7 +1331,7 @@ class Library(AbstractModel):
 
     @property
     def CreationTime(self):
-        r"""媒体库创建时间
+        r"""<p>媒体库创建时间</p>
         :rtype: str
         """
         return self._CreationTime
@@ -1299,7 +1342,7 @@ class Library(AbstractModel):
 
     @property
     def LibraryExtension(self):
-        r"""媒体库配置项
+        r"""<p>媒体库配置项</p>
         :rtype: :class:`tencentcloud.smh.v20210712.models.LibraryExtension`
         """
         return self._LibraryExtension
@@ -1310,7 +1353,7 @@ class Library(AbstractModel):
 
     @property
     def Size(self):
-        r"""媒体库用量，单位为 Bytes，由于数字类型精度限制，该字段为 String 类型。
+        r"""<p>媒体库用量，单位为 Bytes，由于数字类型精度限制，该字段为 String 类型。</p>
         :rtype: str
         """
         return self._Size
@@ -1321,7 +1364,7 @@ class Library(AbstractModel):
 
     @property
     def DirNum(self):
-        r"""媒体库目录数，由于数字类型精度限制，该字段为 String 类型。
+        r"""<p>媒体库目录数，由于数字类型精度限制，该字段为 String 类型。</p>
         :rtype: str
         """
         return self._DirNum
@@ -1332,7 +1375,7 @@ class Library(AbstractModel):
 
     @property
     def FileNum(self):
-        r"""媒体库文件数，由于数字类型精度限制，该字段为 String 类型。
+        r"""<p>媒体库文件数，由于数字类型精度限制，该字段为 String 类型。</p>
         :rtype: str
         """
         return self._FileNum
@@ -1340,6 +1383,17 @@ class Library(AbstractModel):
     @FileNum.setter
     def FileNum(self, FileNum):
         self._FileNum = FileNum
+
+    @property
+    def Tags(self):
+        r"""<p>媒体库关联的标签列表。</p>
+        :rtype: list of ResourceTag
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
 
 
     def _deserialize(self, params):
@@ -1356,6 +1410,12 @@ class Library(AbstractModel):
         self._Size = params.get("Size")
         self._DirNum = params.get("DirNum")
         self._FileNum = params.get("FileNum")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = ResourceTag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1741,11 +1801,14 @@ class ModifyLibraryRequest(AbstractModel):
         :type Remark: str
         :param _LibraryExtension: <p>媒体库配置项，部分参数在新建后不可更改，且仅修改传入的参数。如不传该参数则不修改任何配置项。</p>
         :type LibraryExtension: :class:`tencentcloud.smh.v20210712.models.LibraryExtension`
+        :param _Tags: <p>媒体库标签列表。</p>
+        :type Tags: list of ResourceTag
         """
         self._LibraryId = None
         self._Name = None
         self._Remark = None
         self._LibraryExtension = None
+        self._Tags = None
 
     @property
     def LibraryId(self):
@@ -1791,6 +1854,17 @@ class ModifyLibraryRequest(AbstractModel):
     def LibraryExtension(self, LibraryExtension):
         self._LibraryExtension = LibraryExtension
 
+    @property
+    def Tags(self):
+        r"""<p>媒体库标签列表。</p>
+        :rtype: list of ResourceTag
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
 
     def _deserialize(self, params):
         self._LibraryId = params.get("LibraryId")
@@ -1799,6 +1873,12 @@ class ModifyLibraryRequest(AbstractModel):
         if params.get("LibraryExtension") is not None:
             self._LibraryExtension = LibraryExtension()
             self._LibraryExtension._deserialize(params.get("LibraryExtension"))
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = ResourceTag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1835,6 +1915,57 @@ class ModifyLibraryResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
+
+
+class ResourceTag(AbstractModel):
+    r"""资源标签的键和值
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TagKey: <p>标签键。</p>
+        :type TagKey: str
+        :param _TagValue: <p>标签值。</p>
+        :type TagValue: str
+        """
+        self._TagKey = None
+        self._TagValue = None
+
+    @property
+    def TagKey(self):
+        r"""<p>标签键。</p>
+        :rtype: str
+        """
+        return self._TagKey
+
+    @TagKey.setter
+    def TagKey(self, TagKey):
+        self._TagKey = TagKey
+
+    @property
+    def TagValue(self):
+        r"""<p>标签值。</p>
+        :rtype: str
+        """
+        return self._TagValue
+
+    @TagValue.setter
+    def TagValue(self, TagValue):
+        self._TagValue = TagValue
+
+
+    def _deserialize(self, params):
+        self._TagKey = params.get("TagKey")
+        self._TagValue = params.get("TagValue")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class SendSmsCodeRequest(AbstractModel):
@@ -1944,6 +2075,57 @@ class SendSmsCodeResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
+
+
+class TagFilter(AbstractModel):
+    r"""标签过滤条件
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TagKey: <p>用于筛选媒体库的标签键。</p>
+        :type TagKey: str
+        :param _TagValue: <p>用于筛选媒体库的标签值列表。</p>
+        :type TagValue: list of str
+        """
+        self._TagKey = None
+        self._TagValue = None
+
+    @property
+    def TagKey(self):
+        r"""<p>用于筛选媒体库的标签键。</p>
+        :rtype: str
+        """
+        return self._TagKey
+
+    @TagKey.setter
+    def TagKey(self, TagKey):
+        self._TagKey = TagKey
+
+    @property
+    def TagValue(self):
+        r"""<p>用于筛选媒体库的标签值列表。</p>
+        :rtype: list of str
+        """
+        return self._TagValue
+
+    @TagValue.setter
+    def TagValue(self, TagValue):
+        self._TagValue = TagValue
+
+
+    def _deserialize(self, params):
+        self._TagKey = params.get("TagKey")
+        self._TagValue = params.get("TagValue")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class TrafficPackage(AbstractModel):

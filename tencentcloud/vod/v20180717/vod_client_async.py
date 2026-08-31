@@ -63,6 +63,24 @@ class VodClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CloneVoiceAsync(
+            self,
+            request: models.CloneVoiceAsyncRequest,
+            opts: Dict = None,
+    ) -> models.CloneVoiceAsyncResponse:
+        """
+        音色设计，根据prompt生成音色ID。克隆/设计音色数量上限默认100
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CloneVoiceAsync"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CloneVoiceAsyncResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CommitUpload(
             self,
             request: models.CommitUploadRequest,
@@ -1626,6 +1644,24 @@ class VodClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DeleteVoice(
+            self,
+            request: models.DeleteVoiceRequest,
+            opts: Dict = None,
+    ) -> models.DeleteVoiceResponse:
+        """
+        音色设计，根据prompt生成音色ID。克隆/设计音色数量上限默认100
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteVoice"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteVoiceResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DeleteWatermarkTemplate(
             self,
             request: models.DeleteWatermarkTemplateRequest,
@@ -2886,6 +2922,24 @@ class VodClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeVoices(
+            self,
+            request: models.DescribeVoicesRequest,
+            opts: Dict = None,
+    ) -> models.DescribeVoicesResponse:
+        """
+        音色设计，根据prompt生成音色ID。克隆/设计音色数量上限默认100
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeVoices"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeVoicesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeWatermarkTemplates(
             self,
             request: models.DescribeWatermarkTemplatesRequest,
@@ -2917,6 +2971,24 @@ class VodClient(AbstractClient):
         kwargs["action"] = "DescribeWordSamples"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeWordSamplesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DesignVoiceAsync(
+            self,
+            request: models.DesignVoiceAsyncRequest,
+            opts: Dict = None,
+    ) -> models.DesignVoiceAsyncResponse:
+        """
+        音色设计，根据prompt生成音色ID。克隆/设计音色数量上限默认100
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DesignVoiceAsync"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DesignVoiceAsyncResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -4489,6 +4561,24 @@ class VodClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def TextToSpeechAsync(
+            self,
+            request: models.TextToSpeechAsyncRequest,
+            opts: Dict = None,
+    ) -> models.TextToSpeechAsyncResponse:
+        """
+        音色设计，根据prompt生成音色ID。克隆/设计音色数量上限默认100
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "TextToSpeechAsync"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.TextToSpeechAsyncResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def UpdateAigcApiToken(
             self,
             request: models.UpdateAigcApiTokenRequest,
@@ -4502,6 +4592,24 @@ class VodClient(AbstractClient):
         kwargs["action"] = "UpdateAigcApiToken"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.UpdateAigcApiTokenResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def UpdateVoice(
+            self,
+            request: models.UpdateVoiceRequest,
+            opts: Dict = None,
+    ) -> models.UpdateVoiceResponse:
+        """
+        音色设计，根据prompt生成音色ID。克隆/设计音色数量上限默认100
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "UpdateVoice"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.UpdateVoiceResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

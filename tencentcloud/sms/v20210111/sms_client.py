@@ -169,6 +169,29 @@ class SmsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeSendRecordList(self, request):
+        r"""本接口 (DescribeSendRecordList) 用于查询单个手机号在指定时间范围内的短信下发记录。
+
+        :param request: Request instance for DescribeSendRecordList.
+        :type request: :class:`tencentcloud.sms.v20210111.models.DescribeSendRecordListRequest`
+        :rtype: :class:`tencentcloud.sms.v20210111.models.DescribeSendRecordListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeSendRecordList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeSendRecordListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeSmsSignList(self, request):
         r"""本接口 (DescribeSmsSignList) 用于查询短信签名状态。
         <blockquote class="d-mod-explain"><div class="d-mod-title d-explain-title" style="line-height: normal;"><i class="d-icon-explain"></i>说明：</div><p></p><ul><li>个人认证用户不支持使用 API 查询短信签名，请参阅了解 <a href="https://cloud.tencent.com/document/product/378/3629">实名认证基本介绍</a>，如果为个人认证请登录 <a href="https://console.cloud.tencent.com/smsv2">控制台</a> 查询短信签名。</li></ul></blockquote>

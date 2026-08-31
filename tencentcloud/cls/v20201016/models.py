@@ -51885,9 +51885,9 @@ class SearchLogRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _From: <p>要检索分析的日志的起始时间，<strong>Unix时间戳（毫秒）</strong></p>
+        :param _From: <p>要检索分析的日志的起始时间，<strong>Unix时间戳（毫秒）</strong></p><p>时间范围为左闭右开区间 [From, To)，包含 From 时刻</p>
         :type From: int
-        :param _To: <p>要检索分析的日志的结束时间，<strong>Unix时间戳（毫秒）</strong></p>
+        :param _To: <p>要检索分析的日志的结束时间，<strong>Unix时间戳（毫秒）</strong></p><p>时间范围为左闭右开区间 [From, To)，不包含 To 时刻</p>
         :type To: int
         :param _QueryString: <p>检索分析语句，最大长度为12KB<br>语句由 <a href="https://cloud.tencent.com/document/product/614/47044" target="_blank">[检索条件]</a> | <a href="https://cloud.tencent.com/document/product/614/44061" target="_blank">[SQL语句]</a>构成，无需对日志进行统计分析时，可省略其中的管道符<code> | </code>及SQL语句<br>使用*或空字符串可查询所有日志</p><p>默认值：空字符串</p>
         :type QueryString: str
@@ -51934,7 +51934,7 @@ class SearchLogRequest(AbstractModel):
 
     @property
     def From(self):
-        r"""<p>要检索分析的日志的起始时间，<strong>Unix时间戳（毫秒）</strong></p>
+        r"""<p>要检索分析的日志的起始时间，<strong>Unix时间戳（毫秒）</strong></p><p>时间范围为左闭右开区间 [From, To)，包含 From 时刻</p>
         :rtype: int
         """
         return self._From
@@ -51945,7 +51945,7 @@ class SearchLogRequest(AbstractModel):
 
     @property
     def To(self):
-        r"""<p>要检索分析的日志的结束时间，<strong>Unix时间戳（毫秒）</strong></p>
+        r"""<p>要检索分析的日志的结束时间，<strong>Unix时间戳（毫秒）</strong></p><p>时间范围为左闭右开区间 [From, To)，不包含 To 时刻</p>
         :rtype: int
         """
         return self._To

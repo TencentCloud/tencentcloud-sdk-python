@@ -2168,6 +2168,90 @@ class CreatePrivilegeCodeRspData(AbstractModel):
         
 
 
+class DeleteAccountGroupResourcesRequest(AbstractModel):
+    r"""DeleteAccountGroupResources请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ResourceList: 资源集
+        :type ResourceList: list of DeleteResourceData
+        :param _AccountGroupId: 账户组Id(只支持32位)
+        :type AccountGroupId: int
+        """
+        self._ResourceList = None
+        self._AccountGroupId = None
+
+    @property
+    def ResourceList(self):
+        r"""资源集
+        :rtype: list of DeleteResourceData
+        """
+        return self._ResourceList
+
+    @ResourceList.setter
+    def ResourceList(self, ResourceList):
+        self._ResourceList = ResourceList
+
+    @property
+    def AccountGroupId(self):
+        r"""账户组Id(只支持32位)
+        :rtype: int
+        """
+        return self._AccountGroupId
+
+    @AccountGroupId.setter
+    def AccountGroupId(self, AccountGroupId):
+        self._AccountGroupId = AccountGroupId
+
+
+    def _deserialize(self, params):
+        if params.get("ResourceList") is not None:
+            self._ResourceList = []
+            for item in params.get("ResourceList"):
+                obj = DeleteResourceData()
+                obj._deserialize(item)
+                self._ResourceList.append(obj)
+        self._AccountGroupId = params.get("AccountGroupId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteAccountGroupResourcesResponse(AbstractModel):
+    r"""DeleteAccountGroupResources返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class DeleteDeviceVirtualGroupRequest(AbstractModel):
     r"""DeleteDeviceVirtualGroup请求参数结构体
 
@@ -2260,6 +2344,61 @@ class DeleteDeviceVirtualGroupResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
+
+
+class DeleteResourceData(AbstractModel):
+    r"""资源集
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ResourceType: 资源类型 ,1:资源 2:资源组(只支持32位)
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResourceType: int
+        :param _ResourceId: 资源或资源组Id(只支持32位)
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResourceId: int
+        """
+        self._ResourceType = None
+        self._ResourceId = None
+
+    @property
+    def ResourceType(self):
+        r"""资源类型 ,1:资源 2:资源组(只支持32位)
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._ResourceType
+
+    @ResourceType.setter
+    def ResourceType(self, ResourceType):
+        self._ResourceType = ResourceType
+
+    @property
+    def ResourceId(self):
+        r"""资源或资源组Id(只支持32位)
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._ResourceId
+
+    @ResourceId.setter
+    def ResourceId(self, ResourceId):
+        self._ResourceId = ResourceId
+
+
+    def _deserialize(self, params):
+        self._ResourceType = params.get("ResourceType")
+        self._ResourceId = params.get("ResourceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class DescribeAccountGroupsData(AbstractModel):
@@ -6636,6 +6775,18 @@ class DescribeDeviceHardwareInfoItem(AbstractModel):
         :type RemarkName: str
         :param _BiosUuid: <p>BiosUUID（启动盘标识符）</p>
         :type BiosUuid: str
+        :param _NetworkCards: <p>多网卡数据</p>
+        :type NetworkCards: list of DeviceNetworkCardBrief
+        :param _VideoCards: <p>多显卡数据</p>
+        :type VideoCards: list of DeviceVideoCardBrief
+        :param _MainBoard: <p>主板型号</p>
+        :type MainBoard: str
+        :param _BaseBoardSn: <p>主板序列号</p>
+        :type BaseBoardSn: str
+        :param _BaseBoardManufacturer: <p>主板制造商</p>
+        :type BaseBoardManufacturer: str
+        :param _AudioCard: <p>声卡</p>
+        :type AudioCard: str
         """
         self._Id = None
         self._Mid = None
@@ -6655,6 +6806,12 @@ class DescribeDeviceHardwareInfoItem(AbstractModel):
         self._Monitor = None
         self._RemarkName = None
         self._BiosUuid = None
+        self._NetworkCards = None
+        self._VideoCards = None
+        self._MainBoard = None
+        self._BaseBoardSn = None
+        self._BaseBoardManufacturer = None
+        self._AudioCard = None
 
     @property
     def Id(self):
@@ -6854,6 +7011,72 @@ class DescribeDeviceHardwareInfoItem(AbstractModel):
     def BiosUuid(self, BiosUuid):
         self._BiosUuid = BiosUuid
 
+    @property
+    def NetworkCards(self):
+        r"""<p>多网卡数据</p>
+        :rtype: list of DeviceNetworkCardBrief
+        """
+        return self._NetworkCards
+
+    @NetworkCards.setter
+    def NetworkCards(self, NetworkCards):
+        self._NetworkCards = NetworkCards
+
+    @property
+    def VideoCards(self):
+        r"""<p>多显卡数据</p>
+        :rtype: list of DeviceVideoCardBrief
+        """
+        return self._VideoCards
+
+    @VideoCards.setter
+    def VideoCards(self, VideoCards):
+        self._VideoCards = VideoCards
+
+    @property
+    def MainBoard(self):
+        r"""<p>主板型号</p>
+        :rtype: str
+        """
+        return self._MainBoard
+
+    @MainBoard.setter
+    def MainBoard(self, MainBoard):
+        self._MainBoard = MainBoard
+
+    @property
+    def BaseBoardSn(self):
+        r"""<p>主板序列号</p>
+        :rtype: str
+        """
+        return self._BaseBoardSn
+
+    @BaseBoardSn.setter
+    def BaseBoardSn(self, BaseBoardSn):
+        self._BaseBoardSn = BaseBoardSn
+
+    @property
+    def BaseBoardManufacturer(self):
+        r"""<p>主板制造商</p>
+        :rtype: str
+        """
+        return self._BaseBoardManufacturer
+
+    @BaseBoardManufacturer.setter
+    def BaseBoardManufacturer(self, BaseBoardManufacturer):
+        self._BaseBoardManufacturer = BaseBoardManufacturer
+
+    @property
+    def AudioCard(self):
+        r"""<p>声卡</p>
+        :rtype: str
+        """
+        return self._AudioCard
+
+    @AudioCard.setter
+    def AudioCard(self, AudioCard):
+        self._AudioCard = AudioCard
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
@@ -6874,6 +7097,22 @@ class DescribeDeviceHardwareInfoItem(AbstractModel):
         self._Monitor = params.get("Monitor")
         self._RemarkName = params.get("RemarkName")
         self._BiosUuid = params.get("BiosUuid")
+        if params.get("NetworkCards") is not None:
+            self._NetworkCards = []
+            for item in params.get("NetworkCards"):
+                obj = DeviceNetworkCardBrief()
+                obj._deserialize(item)
+                self._NetworkCards.append(obj)
+        if params.get("VideoCards") is not None:
+            self._VideoCards = []
+            for item in params.get("VideoCards"):
+                obj = DeviceVideoCardBrief()
+                obj._deserialize(item)
+                self._VideoCards.append(obj)
+        self._MainBoard = params.get("MainBoard")
+        self._BaseBoardSn = params.get("BaseBoardSn")
+        self._BaseBoardManufacturer = params.get("BaseBoardManufacturer")
+        self._AudioCard = params.get("AudioCard")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -10826,6 +11065,117 @@ class DeviceGroupDetail(AbstractModel):
         
 
 
+class DeviceNetworkCardBrief(AbstractModel):
+    r"""多网卡MAC地址等列表数据
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MacAddress: <p>MAC地址</p>
+        :type MacAddress: str
+        :param _NetworkCardName: <p>网卡名称</p>
+        :type NetworkCardName: str
+        :param _NetworkCardType: <p>网卡类型</p><p>枚举值：</p><ul><li>1： 物理网卡</li><li>2： 虚拟网卡</li></ul>
+        :type NetworkCardType: int
+        :param _NetworkCardStatus: <p>网卡状态</p><p>枚举值：</p><ul><li>1： 启用中</li><li>2： 未启用</li></ul>
+        :type NetworkCardStatus: int
+        :param _Ipv4Address: <p>IPv4地址</p>
+        :type Ipv4Address: str
+        :param _Ipv6Address: <p>IPv6地址</p>
+        :type Ipv6Address: str
+        """
+        self._MacAddress = None
+        self._NetworkCardName = None
+        self._NetworkCardType = None
+        self._NetworkCardStatus = None
+        self._Ipv4Address = None
+        self._Ipv6Address = None
+
+    @property
+    def MacAddress(self):
+        r"""<p>MAC地址</p>
+        :rtype: str
+        """
+        return self._MacAddress
+
+    @MacAddress.setter
+    def MacAddress(self, MacAddress):
+        self._MacAddress = MacAddress
+
+    @property
+    def NetworkCardName(self):
+        r"""<p>网卡名称</p>
+        :rtype: str
+        """
+        return self._NetworkCardName
+
+    @NetworkCardName.setter
+    def NetworkCardName(self, NetworkCardName):
+        self._NetworkCardName = NetworkCardName
+
+    @property
+    def NetworkCardType(self):
+        r"""<p>网卡类型</p><p>枚举值：</p><ul><li>1： 物理网卡</li><li>2： 虚拟网卡</li></ul>
+        :rtype: int
+        """
+        return self._NetworkCardType
+
+    @NetworkCardType.setter
+    def NetworkCardType(self, NetworkCardType):
+        self._NetworkCardType = NetworkCardType
+
+    @property
+    def NetworkCardStatus(self):
+        r"""<p>网卡状态</p><p>枚举值：</p><ul><li>1： 启用中</li><li>2： 未启用</li></ul>
+        :rtype: int
+        """
+        return self._NetworkCardStatus
+
+    @NetworkCardStatus.setter
+    def NetworkCardStatus(self, NetworkCardStatus):
+        self._NetworkCardStatus = NetworkCardStatus
+
+    @property
+    def Ipv4Address(self):
+        r"""<p>IPv4地址</p>
+        :rtype: str
+        """
+        return self._Ipv4Address
+
+    @Ipv4Address.setter
+    def Ipv4Address(self, Ipv4Address):
+        self._Ipv4Address = Ipv4Address
+
+    @property
+    def Ipv6Address(self):
+        r"""<p>IPv6地址</p>
+        :rtype: str
+        """
+        return self._Ipv6Address
+
+    @Ipv6Address.setter
+    def Ipv6Address(self, Ipv6Address):
+        self._Ipv6Address = Ipv6Address
+
+
+    def _deserialize(self, params):
+        self._MacAddress = params.get("MacAddress")
+        self._NetworkCardName = params.get("NetworkCardName")
+        self._NetworkCardType = params.get("NetworkCardType")
+        self._NetworkCardStatus = params.get("NetworkCardStatus")
+        self._Ipv4Address = params.get("Ipv4Address")
+        self._Ipv6Address = params.get("Ipv6Address")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DeviceNetworkInfo(AbstractModel):
     r"""分页的具体数据对象
 
@@ -11236,6 +11586,42 @@ class DeviceServiceInfo(AbstractModel):
         self._StartType = params.get("StartType")
         self._State = params.get("State")
         self._User = params.get("User")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeviceVideoCardBrief(AbstractModel):
+    r"""设备显卡简要信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VideoCardName: <p>显卡名称</p>
+        :type VideoCardName: str
+        """
+        self._VideoCardName = None
+
+    @property
+    def VideoCardName(self):
+        r"""<p>显卡名称</p>
+        :rtype: str
+        """
+        return self._VideoCardName
+
+    @VideoCardName.setter
+    def VideoCardName(self, VideoCardName):
+        self._VideoCardName = VideoCardName
+
+
+    def _deserialize(self, params):
+        self._VideoCardName = params.get("VideoCardName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

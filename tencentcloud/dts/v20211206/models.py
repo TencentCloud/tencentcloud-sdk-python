@@ -1922,30 +1922,27 @@ class ConfigureSubscribeJobRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SubscribeId: 数据订阅实例的 ID，可通过[DescribeSyncJobs](https://cloud.tencent.com/document/product/571/82103)接口获取。
+        :param _SubscribeId: <p>数据订阅实例的 ID，可通过<a href="https://cloud.tencent.com/document/product/571/82103">DescribeSyncJobs</a>接口获取。</p>
         :type SubscribeId: str
-        :param _SubscribeMode: 数据订阅的类型，当 DatabaseType 不为 mongodb 时，枚举值为：all-全实例更新；dml-数据更新；ddl-结构更新；dmlAndDdl-数据更新+结构更新。当 DatabaseType 为 mongodb 时，枚举值为 all-全实例更新；database-订阅单库；collection-订阅单集合
+        :param _SubscribeMode: <p>数据订阅的类型，当 DatabaseType 不为 mongodb 时，枚举值为：all-全实例更新；dml-数据更新；ddl-结构更新；dmlAndDdl-数据更新+结构更新。当 DatabaseType 为 mongodb 时，枚举值为 all-全实例更新；database-订阅单库；collection-订阅单集合</p>
         :type SubscribeMode: str
-        :param _AccessType: 源数据库接入类型，如：extranet(公网)、vpncloud(vpn接入)、dcg(专线接入)、ccn(云联网)、cdb(云数据库)、cvm(云服务器自建)、intranet(自研上云)、vpc(私有网络vpc)。注意具体可选值依赖当前链路支持能力
+        :param _AccessType: <p>源数据库接入类型，如：extranet(公网)、vpncloud(vpn接入)、dcg(专线接入)、ccn(云联网)、cdb(云数据库)、cvm(云服务器自建)、intranet(自研上云)、vpc(私有网络vpc)。注意具体可选值依赖当前链路支持能力</p>
         :type AccessType: str
-        :param _Endpoints: 数据库节点信息
+        :param _Endpoints: <p>数据库节点信息</p>
         :type Endpoints: list of EndpointItem
-        :param _KafkaConfig: Kafka配置
+        :param _KafkaConfig: <p>Kafka配置</p>
         :type KafkaConfig: :class:`tencentcloud.dts.v20211206.models.SubscribeKafkaConfig`
-        :param _SubscribeObjects: 订阅的数据库表信息，当 SubscribeMode 不为 all和ddl 时，SubscribeObjects 为必选参数
+        :param _SubscribeObjects: <p>订阅的数据库表信息，当 SubscribeMode 不为 all和ddl 时，SubscribeObjects 为必选参数</p>
         :type SubscribeObjects: list of SubscribeObject
-        :param _Protocol: 订阅数据格式，如：protobuf、json、avro。注意具体可选值依赖当前链路支持能力，数据格式详情参考官网的消费demo文档
+        :param _Protocol: <p>订阅数据格式，如：protobuf、json、avro。注意具体可选值依赖当前链路支持能力，数据格式详情参考官网的消费demo文档</p>
         :type Protocol: str
-        :param _PipelineInfo: mongo选填参数：输出聚合设置。
+        :param _PipelineInfo: <p>mongo选填参数：输出聚合设置。</p>
         :type PipelineInfo: list of PipelineInfo
-        :param _ExtraAttr: 为业务添加的额外信息。参数名作key，参数值作value。
-mysql选填参数：ProcessXA-是否处理XA事务，填true处理，不填或填其他值不处理。
-mongo选填参数：SubscribeType-订阅类型，目前只支持changeStream，不填也是默认changeStream。
-其他业务暂没有可选参数。
+        :param _ExtraAttr: <p>为业务添加的额外信息。参数名作key，参数值作value。<br>mysql选填参数：ProcessXA-是否处理XA事务，填true处理，不填或填其他值不处理。<br>mongo选填参数：SubscribeType-订阅类型，目前只支持changeStream，不填也是默认changeStream。<br>其他业务暂没有可选参数。</p>
         :type ExtraAttr: list of KeyValuePairOption
-        :param _ConsumerVpcId: vpc id
+        :param _ConsumerVpcId: <p>vpc id</p>
         :type ConsumerVpcId: str
-        :param _ConsumerSubnetId: subnet id
+        :param _ConsumerSubnetId: <p>subnet id</p>
         :type ConsumerSubnetId: str
         """
         self._SubscribeId = None
@@ -1962,7 +1959,7 @@ mongo选填参数：SubscribeType-订阅类型，目前只支持changeStream，�
 
     @property
     def SubscribeId(self):
-        r"""数据订阅实例的 ID，可通过[DescribeSyncJobs](https://cloud.tencent.com/document/product/571/82103)接口获取。
+        r"""<p>数据订阅实例的 ID，可通过<a href="https://cloud.tencent.com/document/product/571/82103">DescribeSyncJobs</a>接口获取。</p>
         :rtype: str
         """
         return self._SubscribeId
@@ -1973,7 +1970,7 @@ mongo选填参数：SubscribeType-订阅类型，目前只支持changeStream，�
 
     @property
     def SubscribeMode(self):
-        r"""数据订阅的类型，当 DatabaseType 不为 mongodb 时，枚举值为：all-全实例更新；dml-数据更新；ddl-结构更新；dmlAndDdl-数据更新+结构更新。当 DatabaseType 为 mongodb 时，枚举值为 all-全实例更新；database-订阅单库；collection-订阅单集合
+        r"""<p>数据订阅的类型，当 DatabaseType 不为 mongodb 时，枚举值为：all-全实例更新；dml-数据更新；ddl-结构更新；dmlAndDdl-数据更新+结构更新。当 DatabaseType 为 mongodb 时，枚举值为 all-全实例更新；database-订阅单库；collection-订阅单集合</p>
         :rtype: str
         """
         return self._SubscribeMode
@@ -1984,7 +1981,7 @@ mongo选填参数：SubscribeType-订阅类型，目前只支持changeStream，�
 
     @property
     def AccessType(self):
-        r"""源数据库接入类型，如：extranet(公网)、vpncloud(vpn接入)、dcg(专线接入)、ccn(云联网)、cdb(云数据库)、cvm(云服务器自建)、intranet(自研上云)、vpc(私有网络vpc)。注意具体可选值依赖当前链路支持能力
+        r"""<p>源数据库接入类型，如：extranet(公网)、vpncloud(vpn接入)、dcg(专线接入)、ccn(云联网)、cdb(云数据库)、cvm(云服务器自建)、intranet(自研上云)、vpc(私有网络vpc)。注意具体可选值依赖当前链路支持能力</p>
         :rtype: str
         """
         return self._AccessType
@@ -1995,7 +1992,7 @@ mongo选填参数：SubscribeType-订阅类型，目前只支持changeStream，�
 
     @property
     def Endpoints(self):
-        r"""数据库节点信息
+        r"""<p>数据库节点信息</p>
         :rtype: list of EndpointItem
         """
         return self._Endpoints
@@ -2006,7 +2003,7 @@ mongo选填参数：SubscribeType-订阅类型，目前只支持changeStream，�
 
     @property
     def KafkaConfig(self):
-        r"""Kafka配置
+        r"""<p>Kafka配置</p>
         :rtype: :class:`tencentcloud.dts.v20211206.models.SubscribeKafkaConfig`
         """
         return self._KafkaConfig
@@ -2017,7 +2014,7 @@ mongo选填参数：SubscribeType-订阅类型，目前只支持changeStream，�
 
     @property
     def SubscribeObjects(self):
-        r"""订阅的数据库表信息，当 SubscribeMode 不为 all和ddl 时，SubscribeObjects 为必选参数
+        r"""<p>订阅的数据库表信息，当 SubscribeMode 不为 all和ddl 时，SubscribeObjects 为必选参数</p>
         :rtype: list of SubscribeObject
         """
         return self._SubscribeObjects
@@ -2028,7 +2025,7 @@ mongo选填参数：SubscribeType-订阅类型，目前只支持changeStream，�
 
     @property
     def Protocol(self):
-        r"""订阅数据格式，如：protobuf、json、avro。注意具体可选值依赖当前链路支持能力，数据格式详情参考官网的消费demo文档
+        r"""<p>订阅数据格式，如：protobuf、json、avro。注意具体可选值依赖当前链路支持能力，数据格式详情参考官网的消费demo文档</p>
         :rtype: str
         """
         return self._Protocol
@@ -2039,7 +2036,7 @@ mongo选填参数：SubscribeType-订阅类型，目前只支持changeStream，�
 
     @property
     def PipelineInfo(self):
-        r"""mongo选填参数：输出聚合设置。
+        r"""<p>mongo选填参数：输出聚合设置。</p>
         :rtype: list of PipelineInfo
         """
         return self._PipelineInfo
@@ -2050,10 +2047,7 @@ mongo选填参数：SubscribeType-订阅类型，目前只支持changeStream，�
 
     @property
     def ExtraAttr(self):
-        r"""为业务添加的额外信息。参数名作key，参数值作value。
-mysql选填参数：ProcessXA-是否处理XA事务，填true处理，不填或填其他值不处理。
-mongo选填参数：SubscribeType-订阅类型，目前只支持changeStream，不填也是默认changeStream。
-其他业务暂没有可选参数。
+        r"""<p>为业务添加的额外信息。参数名作key，参数值作value。<br>mysql选填参数：ProcessXA-是否处理XA事务，填true处理，不填或填其他值不处理。<br>mongo选填参数：SubscribeType-订阅类型，目前只支持changeStream，不填也是默认changeStream。<br>其他业务暂没有可选参数。</p>
         :rtype: list of KeyValuePairOption
         """
         return self._ExtraAttr
@@ -2064,7 +2058,7 @@ mongo选填参数：SubscribeType-订阅类型，目前只支持changeStream，�
 
     @property
     def ConsumerVpcId(self):
-        r"""vpc id
+        r"""<p>vpc id</p>
         :rtype: str
         """
         return self._ConsumerVpcId
@@ -2075,7 +2069,7 @@ mongo选填参数：SubscribeType-订阅类型，目前只支持changeStream，�
 
     @property
     def ConsumerSubnetId(self):
-        r"""subnet id
+        r"""<p>subnet id</p>
         :rtype: str
         """
         return self._ConsumerSubnetId
@@ -15591,19 +15585,17 @@ class ModifySubscribeObjectsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SubscribeId: 数据订阅实例的ID，可通过[DescribeSubscribeJobs](https://cloud.tencent.com/document/product/571/102943)接口获取。
+        :param _SubscribeId: <p>数据订阅实例的ID，可通过<a href="https://cloud.tencent.com/document/product/571/102943">DescribeSubscribeJobs</a>接口获取。</p>
         :type SubscribeId: str
-        :param _SubscribeObjectType: 数据订阅的类型，非mongo任务的枚举值：0-全实例更新；1-数据更新；2-结构更新；3-数据更新+结构更新。mongo任务的枚举值：0-全实例更新；4-订阅单库；5-订阅单集合
+        :param _SubscribeObjectType: <p>数据订阅的类型，非mongo任务的枚举值：0-全实例更新；1-数据更新；2-结构更新；3-数据更新+结构更新。mongo任务的枚举值：0-全实例更新；4-订阅单库；5-订阅单集合</p>
         :type SubscribeObjectType: int
-        :param _Objects: 修改后的订阅数据库表信息。会覆盖原来的订阅对象，所以除非 SubscribeObjectType = 0或2，否则该字段必填。
+        :param _Objects: <p>修改后的订阅数据库表信息。会覆盖原来的订阅对象，所以除非 SubscribeObjectType = 0或2，否则该字段必填。</p>
         :type Objects: list of ModifiedSubscribeObject
-        :param _DistributeRules: kafka分区策略。如果不填，默认不修改。如果填了，会覆盖原来的策略。
+        :param _DistributeRules: <p>kafka分区策略。如果不填，默认不修改。如果填了，会覆盖原来的策略。</p>
         :type DistributeRules: list of DistributeRule
-        :param _DefaultRuleType: 默认分区策略。不满足DistributeRules中正则表达式的数据，将按照默认分区策略计算分区。
-非mongo产品支持的默认策略: table-按表名分区，pk-按表名+主键分区。mongo的默认策略仅支持：collection-按集合名分区。
-该字段与DistributeRules搭配使用。如果配置了DistributeRules，该字段也必填。如果配置了该字段，视为配置了一条DistributeRules，原来的分区策略也会被覆盖。
+        :param _DefaultRuleType: <p>默认分区策略。不满足DistributeRules中正则表达式的数据，将按照默认分区策略计算分区。<br>非mongo产品支持的默认策略: table-按表名分区，pk-按表名+主键分区。mongo的默认策略仅支持：collection-按集合名分区。<br>该字段与DistributeRules搭配使用。如果配置了DistributeRules，该字段也必填。如果配置了该字段，视为配置了一条DistributeRules，原来的分区策略也会被覆盖。</p>
         :type DefaultRuleType: str
-        :param _PipelineInfo: mongo输出聚合设置，mongo任务可选。如果不填，默认不修改。
+        :param _PipelineInfo: <p>mongo输出聚合设置，mongo任务可选。如果不填，默认不修改。</p>
         :type PipelineInfo: list of PipelineInfo
         """
         self._SubscribeId = None
@@ -15615,7 +15607,7 @@ class ModifySubscribeObjectsRequest(AbstractModel):
 
     @property
     def SubscribeId(self):
-        r"""数据订阅实例的ID，可通过[DescribeSubscribeJobs](https://cloud.tencent.com/document/product/571/102943)接口获取。
+        r"""<p>数据订阅实例的ID，可通过<a href="https://cloud.tencent.com/document/product/571/102943">DescribeSubscribeJobs</a>接口获取。</p>
         :rtype: str
         """
         return self._SubscribeId
@@ -15626,7 +15618,7 @@ class ModifySubscribeObjectsRequest(AbstractModel):
 
     @property
     def SubscribeObjectType(self):
-        r"""数据订阅的类型，非mongo任务的枚举值：0-全实例更新；1-数据更新；2-结构更新；3-数据更新+结构更新。mongo任务的枚举值：0-全实例更新；4-订阅单库；5-订阅单集合
+        r"""<p>数据订阅的类型，非mongo任务的枚举值：0-全实例更新；1-数据更新；2-结构更新；3-数据更新+结构更新。mongo任务的枚举值：0-全实例更新；4-订阅单库；5-订阅单集合</p>
         :rtype: int
         """
         return self._SubscribeObjectType
@@ -15637,7 +15629,7 @@ class ModifySubscribeObjectsRequest(AbstractModel):
 
     @property
     def Objects(self):
-        r"""修改后的订阅数据库表信息。会覆盖原来的订阅对象，所以除非 SubscribeObjectType = 0或2，否则该字段必填。
+        r"""<p>修改后的订阅数据库表信息。会覆盖原来的订阅对象，所以除非 SubscribeObjectType = 0或2，否则该字段必填。</p>
         :rtype: list of ModifiedSubscribeObject
         """
         return self._Objects
@@ -15648,7 +15640,7 @@ class ModifySubscribeObjectsRequest(AbstractModel):
 
     @property
     def DistributeRules(self):
-        r"""kafka分区策略。如果不填，默认不修改。如果填了，会覆盖原来的策略。
+        r"""<p>kafka分区策略。如果不填，默认不修改。如果填了，会覆盖原来的策略。</p>
         :rtype: list of DistributeRule
         """
         return self._DistributeRules
@@ -15659,9 +15651,7 @@ class ModifySubscribeObjectsRequest(AbstractModel):
 
     @property
     def DefaultRuleType(self):
-        r"""默认分区策略。不满足DistributeRules中正则表达式的数据，将按照默认分区策略计算分区。
-非mongo产品支持的默认策略: table-按表名分区，pk-按表名+主键分区。mongo的默认策略仅支持：collection-按集合名分区。
-该字段与DistributeRules搭配使用。如果配置了DistributeRules，该字段也必填。如果配置了该字段，视为配置了一条DistributeRules，原来的分区策略也会被覆盖。
+        r"""<p>默认分区策略。不满足DistributeRules中正则表达式的数据，将按照默认分区策略计算分区。<br>非mongo产品支持的默认策略: table-按表名分区，pk-按表名+主键分区。mongo的默认策略仅支持：collection-按集合名分区。<br>该字段与DistributeRules搭配使用。如果配置了DistributeRules，该字段也必填。如果配置了该字段，视为配置了一条DistributeRules，原来的分区策略也会被覆盖。</p>
         :rtype: str
         """
         return self._DefaultRuleType
@@ -15672,7 +15662,7 @@ class ModifySubscribeObjectsRequest(AbstractModel):
 
     @property
     def PipelineInfo(self):
-        r"""mongo输出聚合设置，mongo任务可选。如果不填，默认不修改。
+        r"""<p>mongo输出聚合设置，mongo任务可选。如果不填，默认不修改。</p>
         :rtype: list of PipelineInfo
         """
         return self._PipelineInfo
