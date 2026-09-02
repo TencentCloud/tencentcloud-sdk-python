@@ -19015,56 +19015,58 @@ class NonTaxIncomeBill(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Title: 发票名称
+        :param _Title: <p>发票名称</p>
         :type Title: str
-        :param _Number: 发票号码
+        :param _Number: <p>发票号码</p>
         :type Number: str
-        :param _Code: 发票代码
+        :param _Code: <p>发票代码</p>
         :type Code: str
-        :param _CheckCode: 校验码
+        :param _CheckCode: <p>校验码</p>
         :type CheckCode: str
-        :param _Date: 开票日期
+        :param _Date: <p>开票日期</p>
         :type Date: str
-        :param _Total: 价税合计（小写）
+        :param _Total: <p>价税合计（小写）</p>
         :type Total: str
-        :param _TotalCn: 价税合计（大写）
+        :param _TotalCn: <p>价税合计（大写）</p>
         :type TotalCn: str
-        :param _Buyer: 交款人名称
+        :param _Buyer: <p>交款人名称</p>
         :type Buyer: str
-        :param _BuyerTaxID: 交款人纳税人识别号
+        :param _BuyerTaxID: <p>交款人纳税人识别号</p>
         :type BuyerTaxID: str
-        :param _Seller: 收款人名称
+        :param _Seller: <p>收款人名称</p>
         :type Seller: str
-        :param _SellerCompany: 收款单位名称
+        :param _SellerCompany: <p>收款单位名称</p>
         :type SellerCompany: str
-        :param _Remark: 备注
+        :param _Remark: <p>备注</p>
         :type Remark: str
-        :param _CurrencyCode: 币种
+        :param _CurrencyCode: <p>币种</p>
         :type CurrencyCode: str
-        :param _Reviewer: 复核人
+        :param _Reviewer: <p>复核人</p>
         :type Reviewer: str
-        :param _QRCodeMark: 是否存在二维码（1：有，0：无）
+        :param _QRCodeMark: <p>是否存在二维码（1：有，0：无）</p>
         :type QRCodeMark: int
-        :param _OtherInfo: 其他信息
+        :param _OtherInfo: <p>其他信息</p>
         :type OtherInfo: str
-        :param _PaymentCode: 缴款码
+        :param _PaymentCode: <p>缴款码</p>
         :type PaymentCode: str
-        :param _ReceiveUnitCode: 执收单位编码
+        :param _ReceiveUnitCode: <p>执收单位编码</p>
         :type ReceiveUnitCode: str
-        :param _Receiver: 执收单位名称
+        :param _Receiver: <p>执收单位名称</p>
         :type Receiver: str
-        :param _Operator: 经办人
+        :param _Operator: <p>经办人</p>
         :type Operator: str
-        :param _PayerAccount: 付款人账号
+        :param _PayerAccount: <p>付款人账号</p>
         :type PayerAccount: str
-        :param _PayerBank: 付款人开户银行
+        :param _PayerBank: <p>付款人开户银行</p>
         :type PayerBank: str
-        :param _ReceiverAccount: 收款人账号
+        :param _ReceiverAccount: <p>收款人账号</p>
         :type ReceiverAccount: str
-        :param _ReceiverBank: 收款人开户银行
+        :param _ReceiverBank: <p>收款人开户银行</p>
         :type ReceiverBank: str
-        :param _NonTaxItems: 条目
+        :param _NonTaxItems: <p>条目</p>
         :type NonTaxItems: list of NonTaxItem
+        :param _BillName: <p>票据名称</p>
+        :type BillName: str
         """
         self._Title = None
         self._Number = None
@@ -19091,10 +19093,11 @@ class NonTaxIncomeBill(AbstractModel):
         self._ReceiverAccount = None
         self._ReceiverBank = None
         self._NonTaxItems = None
+        self._BillName = None
 
     @property
     def Title(self):
-        r"""发票名称
+        r"""<p>发票名称</p>
         :rtype: str
         """
         return self._Title
@@ -19105,7 +19108,7 @@ class NonTaxIncomeBill(AbstractModel):
 
     @property
     def Number(self):
-        r"""发票号码
+        r"""<p>发票号码</p>
         :rtype: str
         """
         return self._Number
@@ -19116,7 +19119,7 @@ class NonTaxIncomeBill(AbstractModel):
 
     @property
     def Code(self):
-        r"""发票代码
+        r"""<p>发票代码</p>
         :rtype: str
         """
         return self._Code
@@ -19127,7 +19130,7 @@ class NonTaxIncomeBill(AbstractModel):
 
     @property
     def CheckCode(self):
-        r"""校验码
+        r"""<p>校验码</p>
         :rtype: str
         """
         return self._CheckCode
@@ -19138,7 +19141,7 @@ class NonTaxIncomeBill(AbstractModel):
 
     @property
     def Date(self):
-        r"""开票日期
+        r"""<p>开票日期</p>
         :rtype: str
         """
         return self._Date
@@ -19149,7 +19152,7 @@ class NonTaxIncomeBill(AbstractModel):
 
     @property
     def Total(self):
-        r"""价税合计（小写）
+        r"""<p>价税合计（小写）</p>
         :rtype: str
         """
         return self._Total
@@ -19160,7 +19163,7 @@ class NonTaxIncomeBill(AbstractModel):
 
     @property
     def TotalCn(self):
-        r"""价税合计（大写）
+        r"""<p>价税合计（大写）</p>
         :rtype: str
         """
         return self._TotalCn
@@ -19171,7 +19174,7 @@ class NonTaxIncomeBill(AbstractModel):
 
     @property
     def Buyer(self):
-        r"""交款人名称
+        r"""<p>交款人名称</p>
         :rtype: str
         """
         return self._Buyer
@@ -19182,7 +19185,7 @@ class NonTaxIncomeBill(AbstractModel):
 
     @property
     def BuyerTaxID(self):
-        r"""交款人纳税人识别号
+        r"""<p>交款人纳税人识别号</p>
         :rtype: str
         """
         return self._BuyerTaxID
@@ -19193,7 +19196,7 @@ class NonTaxIncomeBill(AbstractModel):
 
     @property
     def Seller(self):
-        r"""收款人名称
+        r"""<p>收款人名称</p>
         :rtype: str
         """
         return self._Seller
@@ -19204,7 +19207,7 @@ class NonTaxIncomeBill(AbstractModel):
 
     @property
     def SellerCompany(self):
-        r"""收款单位名称
+        r"""<p>收款单位名称</p>
         :rtype: str
         """
         return self._SellerCompany
@@ -19215,7 +19218,7 @@ class NonTaxIncomeBill(AbstractModel):
 
     @property
     def Remark(self):
-        r"""备注
+        r"""<p>备注</p>
         :rtype: str
         """
         return self._Remark
@@ -19226,7 +19229,7 @@ class NonTaxIncomeBill(AbstractModel):
 
     @property
     def CurrencyCode(self):
-        r"""币种
+        r"""<p>币种</p>
         :rtype: str
         """
         return self._CurrencyCode
@@ -19237,7 +19240,7 @@ class NonTaxIncomeBill(AbstractModel):
 
     @property
     def Reviewer(self):
-        r"""复核人
+        r"""<p>复核人</p>
         :rtype: str
         """
         return self._Reviewer
@@ -19248,7 +19251,7 @@ class NonTaxIncomeBill(AbstractModel):
 
     @property
     def QRCodeMark(self):
-        r"""是否存在二维码（1：有，0：无）
+        r"""<p>是否存在二维码（1：有，0：无）</p>
         :rtype: int
         """
         return self._QRCodeMark
@@ -19259,7 +19262,7 @@ class NonTaxIncomeBill(AbstractModel):
 
     @property
     def OtherInfo(self):
-        r"""其他信息
+        r"""<p>其他信息</p>
         :rtype: str
         """
         return self._OtherInfo
@@ -19270,7 +19273,7 @@ class NonTaxIncomeBill(AbstractModel):
 
     @property
     def PaymentCode(self):
-        r"""缴款码
+        r"""<p>缴款码</p>
         :rtype: str
         """
         return self._PaymentCode
@@ -19281,7 +19284,7 @@ class NonTaxIncomeBill(AbstractModel):
 
     @property
     def ReceiveUnitCode(self):
-        r"""执收单位编码
+        r"""<p>执收单位编码</p>
         :rtype: str
         """
         return self._ReceiveUnitCode
@@ -19292,7 +19295,7 @@ class NonTaxIncomeBill(AbstractModel):
 
     @property
     def Receiver(self):
-        r"""执收单位名称
+        r"""<p>执收单位名称</p>
         :rtype: str
         """
         return self._Receiver
@@ -19303,7 +19306,7 @@ class NonTaxIncomeBill(AbstractModel):
 
     @property
     def Operator(self):
-        r"""经办人
+        r"""<p>经办人</p>
         :rtype: str
         """
         return self._Operator
@@ -19314,7 +19317,7 @@ class NonTaxIncomeBill(AbstractModel):
 
     @property
     def PayerAccount(self):
-        r"""付款人账号
+        r"""<p>付款人账号</p>
         :rtype: str
         """
         return self._PayerAccount
@@ -19325,7 +19328,7 @@ class NonTaxIncomeBill(AbstractModel):
 
     @property
     def PayerBank(self):
-        r"""付款人开户银行
+        r"""<p>付款人开户银行</p>
         :rtype: str
         """
         return self._PayerBank
@@ -19336,7 +19339,7 @@ class NonTaxIncomeBill(AbstractModel):
 
     @property
     def ReceiverAccount(self):
-        r"""收款人账号
+        r"""<p>收款人账号</p>
         :rtype: str
         """
         return self._ReceiverAccount
@@ -19347,7 +19350,7 @@ class NonTaxIncomeBill(AbstractModel):
 
     @property
     def ReceiverBank(self):
-        r"""收款人开户银行
+        r"""<p>收款人开户银行</p>
         :rtype: str
         """
         return self._ReceiverBank
@@ -19358,7 +19361,7 @@ class NonTaxIncomeBill(AbstractModel):
 
     @property
     def NonTaxItems(self):
-        r"""条目
+        r"""<p>条目</p>
         :rtype: list of NonTaxItem
         """
         return self._NonTaxItems
@@ -19366,6 +19369,17 @@ class NonTaxIncomeBill(AbstractModel):
     @NonTaxItems.setter
     def NonTaxItems(self, NonTaxItems):
         self._NonTaxItems = NonTaxItems
+
+    @property
+    def BillName(self):
+        r"""<p>票据名称</p>
+        :rtype: str
+        """
+        return self._BillName
+
+    @BillName.setter
+    def BillName(self, BillName):
+        self._BillName = BillName
 
 
     def _deserialize(self, params):
@@ -19399,6 +19413,7 @@ class NonTaxIncomeBill(AbstractModel):
                 obj = NonTaxItem()
                 obj._deserialize(item)
                 self._NonTaxItems.append(obj)
+        self._BillName = params.get("BillName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -35411,6 +35426,8 @@ class VatElectronicItemInfo(AbstractModel):
         :type DateStart: str
         :param _DateEnd: <p>通行日期止</p>
         :type DateEnd: str
+        :param _VinNo: <p>车架号</p>
+        :type VinNo: str
         """
         self._Name = None
         self._Quantity = None
@@ -35435,6 +35452,7 @@ class VatElectronicItemInfo(AbstractModel):
         self._TravelLevel = None
         self._DateStart = None
         self._DateEnd = None
+        self._VinNo = None
 
     @property
     def Name(self):
@@ -35689,6 +35707,17 @@ class VatElectronicItemInfo(AbstractModel):
     def DateEnd(self, DateEnd):
         self._DateEnd = DateEnd
 
+    @property
+    def VinNo(self):
+        r"""<p>车架号</p>
+        :rtype: str
+        """
+        return self._VinNo
+
+    @VinNo.setter
+    def VinNo(self, VinNo):
+        self._VinNo = VinNo
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
@@ -35714,6 +35743,7 @@ class VatElectronicItemInfo(AbstractModel):
         self._TravelLevel = params.get("TravelLevel")
         self._DateStart = params.get("DateStart")
         self._DateEnd = params.get("DateEnd")
+        self._VinNo = params.get("VinNo")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

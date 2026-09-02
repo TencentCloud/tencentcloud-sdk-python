@@ -3085,10 +3085,24 @@ class CreateAuditLogFileResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _FileName: <p>文件名称</p>
+        :type FileName: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._FileName = None
         self._RequestId = None
+
+    @property
+    def FileName(self):
+        r"""<p>文件名称</p>
+        :rtype: str
+        """
+        return self._FileName
+
+    @FileName.setter
+    def FileName(self, FileName):
+        self._FileName = FileName
 
     @property
     def RequestId(self):
@@ -3103,6 +3117,7 @@ class CreateAuditLogFileResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._FileName = params.get("FileName")
         self._RequestId = params.get("RequestId")
 
 

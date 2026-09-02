@@ -10954,7 +10954,7 @@ class SetUserQuotaRequest(AbstractModel):
         :type UserId: str
         :param _CapacityHardLimit: <p>容量硬限制，单位GiB。设置范围10-10000000。</p>
         :type CapacityHardLimit: int
-        :param _FileHardLimit: <p>文件硬限制，单位个。设置范围1000-100000000</p>
+        :param _FileHardLimit: <p>文件硬限制</p><p>取值范围：[1000, 1000000000]</p><p>单位：个</p><p>默认值：无默认值</p>
         :type FileHardLimit: int
         :param _DirectoryPath: <p>需设置配额的目录路径，必须以 /cfs/ 开头，代表文件存储实例内部的逻辑路径，而非本地挂载点路径。不同目录之间不可存在包含关系。<br>示例：</p><ul><li>若挂载的是CFS根目录 /，需对挂载路径下的 test1/test2 设置配额，则入参值为 /cfs/test1/test2</li><li>若挂载的是CFS子目录 /subdir，需对挂载路径下的 test1/test2 设置配额，则入参值为 /cfs/subdir/test1/test2</li></ul>
         :type DirectoryPath: str
@@ -11012,7 +11012,7 @@ class SetUserQuotaRequest(AbstractModel):
 
     @property
     def FileHardLimit(self):
-        r"""<p>文件硬限制，单位个。设置范围1000-100000000</p>
+        r"""<p>文件硬限制</p><p>取值范围：[1000, 1000000000]</p><p>单位：个</p><p>默认值：无默认值</p>
         :rtype: int
         """
         return self._FileHardLimit

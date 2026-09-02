@@ -232,6 +232,37 @@ class TrtcClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateRecognizeVocabV3(self, request):
+        r"""接口说明：
+        用户通过本接口进行热词表的创建。
+
+        • 默认最多可创建30个热词表。
+        • 每个热词表最多可添加1000个词，每个词最长10个汉字或30个英文字符，不能超出限制。
+        • 热词表可以通过数组或者本地文件形式上传。
+        • 本地文件必须为UTF-8编码格式，每行仅添加一个热词且不能包含标点和特殊字符。
+        • 热词权重取值范围为[1,11]之间的整数或者100，权重越大代表该词被识别出来的概率越大。
+        • 注意: 热词权重设置为11时，当前热词将升级为超级热词，建议仅将重要且必须生效的热词设置到11，设置过多权重为11的热词将影响整体字准率。
+
+        :param request: Request instance for CreateRecognizeVocabV3.
+        :type request: :class:`tencentcloud.trtc.v20190722.models.CreateRecognizeVocabV3Request`
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.CreateRecognizeVocabV3Response`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateRecognizeVocabV3", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateRecognizeVocabV3Response()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DeleteCloudModeration(self, request):
         r"""成功开启AI 内容理解任务后，可以使用此接口来停止进行内容识别。
 
@@ -361,6 +392,30 @@ class TrtcClient(AbstractClient):
             body = self.call("DeletePicture", params, headers=headers)
             response = json.loads(body)
             model = models.DeletePictureResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteRecognizeVocabV3(self, request):
+        r"""接口说明：
+        用户通过本接口进行热词表的删除。
+
+        :param request: Request instance for DeleteRecognizeVocabV3.
+        :type request: :class:`tencentcloud.trtc.v20190722.models.DeleteRecognizeVocabV3Request`
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.DeleteRecognizeVocabV3Response`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteRecognizeVocabV3", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteRecognizeVocabV3Response()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1291,6 +1346,78 @@ class TrtcClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DownloadRecognizeVocabV3(self, request):
+        r"""接口说明：
+        用户通过本接口进行热词表的下载，获得词表权重文件形式的 base64 值，文件形式为通过 “|” 分割的词和权重，即 word|weight 的形式。
+
+        :param request: Request instance for DownloadRecognizeVocabV3.
+        :type request: :class:`tencentcloud.trtc.v20190722.models.DownloadRecognizeVocabV3Request`
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.DownloadRecognizeVocabV3Response`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DownloadRecognizeVocabV3", params, headers=headers)
+            response = json.loads(body)
+            model = models.DownloadRecognizeVocabV3Response()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def GetRecognizeVocabListV3(self, request):
+        r"""接口说明：
+        用户通过本接口分页列举所有的热词表。
+
+        :param request: Request instance for GetRecognizeVocabListV3.
+        :type request: :class:`tencentcloud.trtc.v20190722.models.GetRecognizeVocabListV3Request`
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.GetRecognizeVocabListV3Response`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("GetRecognizeVocabListV3", params, headers=headers)
+            response = json.loads(body)
+            model = models.GetRecognizeVocabListV3Response()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def GetRecognizeVocabV3(self, request):
+        r"""接口说明：
+        用户根据词表的ID可以获取对应的热词表信息
+
+        :param request: Request instance for GetRecognizeVocabV3.
+        :type request: :class:`tencentcloud.trtc.v20190722.models.GetRecognizeVocabV3Request`
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.GetRecognizeVocabV3Response`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("GetRecognizeVocabV3", params, headers=headers)
+            response = json.loads(body)
+            model = models.GetRecognizeVocabV3Response()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyCloudModeration(self, request):
         r"""成功开启AI 内容理解任务后，可以使用此接口来更新订阅黑白名单。
 
@@ -1443,6 +1570,30 @@ class TrtcClient(AbstractClient):
             body = self.call("RemoveUserByStrRoomId", params, headers=headers)
             response = json.loads(body)
             model = models.RemoveUserByStrRoomIdResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def SetVocabStateV3(self, request):
+        r"""接口说明：
+        用户通过该接口可以设置热词表的默认状态。初始状态为0，用户可设置状态为1，即为默认状态。默认状态表示用户在请求识别时，如不设置热词表ID，则默认使用状态为1的热词表。
+
+        :param request: Request instance for SetVocabStateV3.
+        :type request: :class:`tencentcloud.trtc.v20190722.models.SetVocabStateV3Request`
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.SetVocabStateV3Response`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("SetVocabStateV3", params, headers=headers)
+            response = json.loads(body)
+            model = models.SetVocabStateV3Response()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1916,6 +2067,30 @@ class TrtcClient(AbstractClient):
             body = self.call("UpdatePublishCdnStream", params, headers=headers)
             response = json.loads(body)
             model = models.UpdatePublishCdnStreamResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def UpdateRecognizeVocabV3(self, request):
+        r"""接口说明：
+        用户通过本接口进行热词表的更新。
+
+        :param request: Request instance for UpdateRecognizeVocabV3.
+        :type request: :class:`tencentcloud.trtc.v20190722.models.UpdateRecognizeVocabV3Request`
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.UpdateRecognizeVocabV3Response`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UpdateRecognizeVocabV3", params, headers=headers)
+            response = json.loads(body)
+            model = models.UpdateRecognizeVocabV3Response()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

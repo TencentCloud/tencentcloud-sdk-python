@@ -69,7 +69,7 @@ class VodClient(AbstractClient):
             opts: Dict = None,
     ) -> models.CloneVoiceAsyncResponse:
         """
-        音色设计，根据prompt生成音色ID。克隆/设计音色数量上限默认100
+        发起音色克隆任务，基于参考音频克隆生成专属音色，生成的音色可供后续语音合成使用。音色克隆为异步任务，音色 ID 及试听音频在任务完成后产出。
         """
         
         kwargs = {}
@@ -1650,7 +1650,9 @@ class VodClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DeleteVoiceResponse:
         """
-        音色设计，根据prompt生成音色ID。克隆/设计音色数量上限默认100
+        按音色 ID 删除指定音色，删除后不可恢复、不可再用于后续接口。仅支持删除本账号下的音色，系统预置音色不支持删除。
+
+        注意：新设计、克隆的音色未被激活前无法被删除（查询不到即不可操作），需首次使用该新建音色执行一次 TTS 后才被激活。
         """
         
         kwargs = {}
@@ -2928,7 +2930,9 @@ class VodClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DescribeVoicesResponse:
         """
-        音色设计，根据prompt生成音色ID。克隆/设计音色数量上限默认100
+        查询当前账号下可用音色列表，支持按音色 ID、类型、名称、性别、年龄、语言、标签、场景等可选条件过滤。
+
+        注意：新设计、克隆的音色未被激活前无法被查询到，需首次使用该新建音色执行一次TTS后才被激活。
         """
         
         kwargs = {}
@@ -2982,7 +2986,7 @@ class VodClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DesignVoiceAsyncResponse:
         """
-        音色设计，根据prompt生成音色ID。克隆/设计音色数量上限默认100
+        发起音色设计任务，根据自然语言描述文本生成自定义音色，可同时指定音色画像（名称、性别、年龄、语言、标签、场景等）；提交时若附带试听文本，则任务完成后同时产出试听音频。音色设计为异步任务，音色 ID 在任务完成后产出。
         """
         
         kwargs = {}
@@ -4567,7 +4571,7 @@ class VodClient(AbstractClient):
             opts: Dict = None,
     ) -> models.TextToSpeechAsyncResponse:
         """
-        音色设计，根据prompt生成音色ID。克隆/设计音色数量上限默认100
+        发起语音合成任务，将文本合成为语音，面向长文本场景（最大 200000 字符），支持指定音色及语速、音量、音调、采样率、输出格式等合成参数。语音合成为异步任务，完成后产出音频结果。
         """
         
         kwargs = {}
@@ -4603,7 +4607,9 @@ class VodClient(AbstractClient):
             opts: Dict = None,
     ) -> models.UpdateVoiceResponse:
         """
-        音色设计，根据prompt生成音色ID。克隆/设计音色数量上限默认100
+        按音色 ID 更新音色的画像信息（名称、描述、性别、年龄、语言、标签、场景等），返回更新后的完整音色信息。仅支持更新本账号下的音色，系统预置音色不支持更新。
+
+        注意：新设计、克隆的音色未被激活前无法被更新，需首次使用该新建音色执行一次 TTS 后才被激活。
         """
         
         kwargs = {}

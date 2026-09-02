@@ -4242,18 +4242,15 @@ class SendStatusStatisticsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _BeginTime: 起始时间，格式为yyyymmddhh，精确到小时，例如2024050113，表示2024年5月1号13时。
+        :param _BeginTime: <p>起始时间，格式为yyyymmddhh，精确到小时，例如2024050113，表示2024年5月1号13时。注：统计范围包含当前小时。</p><p>参数格式：yyyymmddhh</p>
         :type BeginTime: str
-        :param _EndTime: 结束时间，格式为yyyymmddhh，精确到小时，例如2024050118，表示2024年5月1号18时。
-注：EndTime 必须大于等于 BeginTime。
+        :param _EndTime: <p>结束时间，格式为yyyymmddhh，精确到小时，例如2024050118，表示2024年5月1号18时。注：EndTime 必须大于等于 BeginTime，统计范围包含当前小时。</p><p>参数格式：yyyymmddhh</p>
         :type EndTime: str
-        :param _SmsSdkAppId: 短信 SdkAppId 在 [短信控制台](https://console.cloud.tencent.com/smsv2/app-manage)  添加应用后生成的实际 SdkAppId，示例如1400006666。
+        :param _SmsSdkAppId: <p>短信 SdkAppId 在 <a href="https://console.cloud.tencent.com/smsv2/app-manage">短信控制台</a>  添加应用后生成的实际 SdkAppId，示例如1400006666。</p>
         :type SmsSdkAppId: str
-        :param _Limit: 最大上限。
-注：目前固定设置为0。
+        :param _Limit: <p>最大上限。<br>注：目前固定设置为0。</p>
         :type Limit: int
-        :param _Offset: 偏移量。
-注：目前固定设置为0。
+        :param _Offset: <p>偏移量。<br>注：目前固定设置为0。</p>
         :type Offset: int
         """
         self._BeginTime = None
@@ -4264,7 +4261,7 @@ class SendStatusStatisticsRequest(AbstractModel):
 
     @property
     def BeginTime(self):
-        r"""起始时间，格式为yyyymmddhh，精确到小时，例如2024050113，表示2024年5月1号13时。
+        r"""<p>起始时间，格式为yyyymmddhh，精确到小时，例如2024050113，表示2024年5月1号13时。注：统计范围包含当前小时。</p><p>参数格式：yyyymmddhh</p>
         :rtype: str
         """
         return self._BeginTime
@@ -4275,8 +4272,7 @@ class SendStatusStatisticsRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        r"""结束时间，格式为yyyymmddhh，精确到小时，例如2024050118，表示2024年5月1号18时。
-注：EndTime 必须大于等于 BeginTime。
+        r"""<p>结束时间，格式为yyyymmddhh，精确到小时，例如2024050118，表示2024年5月1号18时。注：EndTime 必须大于等于 BeginTime，统计范围包含当前小时。</p><p>参数格式：yyyymmddhh</p>
         :rtype: str
         """
         return self._EndTime
@@ -4287,7 +4283,7 @@ class SendStatusStatisticsRequest(AbstractModel):
 
     @property
     def SmsSdkAppId(self):
-        r"""短信 SdkAppId 在 [短信控制台](https://console.cloud.tencent.com/smsv2/app-manage)  添加应用后生成的实际 SdkAppId，示例如1400006666。
+        r"""<p>短信 SdkAppId 在 <a href="https://console.cloud.tencent.com/smsv2/app-manage">短信控制台</a>  添加应用后生成的实际 SdkAppId，示例如1400006666。</p>
         :rtype: str
         """
         return self._SmsSdkAppId
@@ -4298,8 +4294,7 @@ class SendStatusStatisticsRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""最大上限。
-注：目前固定设置为0。
+        r"""<p>最大上限。<br>注：目前固定设置为0。</p>
         :rtype: int
         """
         return self._Limit
@@ -4310,8 +4305,7 @@ class SendStatusStatisticsRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""偏移量。
-注：目前固定设置为0。
+        r"""<p>偏移量。<br>注：目前固定设置为0。</p>
         :rtype: int
         """
         return self._Offset
@@ -4344,7 +4338,7 @@ class SendStatusStatisticsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SendStatusStatistics: 发送数据统计响应包体。
+        :param _SendStatusStatistics: <p>发送数据统计响应包体。</p>
         :type SendStatusStatistics: :class:`tencentcloud.sms.v20210111.models.SendStatusStatistics`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -4354,7 +4348,7 @@ class SendStatusStatisticsResponse(AbstractModel):
 
     @property
     def SendStatusStatistics(self):
-        r"""发送数据统计响应包体。
+        r"""<p>发送数据统计响应包体。</p>
         :rtype: :class:`tencentcloud.sms.v20210111.models.SendStatusStatistics`
         """
         return self._SendStatusStatistics

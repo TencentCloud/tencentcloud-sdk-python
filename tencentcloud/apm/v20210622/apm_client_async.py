@@ -442,6 +442,24 @@ class ApmClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeRelatedServicesOnTrace(
+            self,
+            request: models.DescribeRelatedServicesOnTraceRequest,
+            opts: Dict = None,
+    ) -> models.DescribeRelatedServicesOnTraceResponse:
+        """
+        根据链路查询目标服务的上下游相关服务
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeRelatedServicesOnTrace"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeRelatedServicesOnTraceResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeServiceOverview(
             self,
             request: models.DescribeServiceOverviewRequest,

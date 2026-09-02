@@ -14764,6 +14764,9 @@ class ExecutePGSqlResponse(AbstractModel):
         :param _Columns: <p>字段名列表</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Columns: list of str
+        :param _ColumnTypes: <p>字段类型名</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ColumnTypes: list of str
         :param _Rows: <p>数据行。每一行数据都是一个JSON串，将JSON进行反序列化将得到了每列的值。值可能是 null 或者 字符串，如果是 null 说明该列的值为 &lt;null&gt;，如果是字符串则为该列的值的字符串表示形式。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Rows: list of str
@@ -14774,6 +14777,7 @@ class ExecutePGSqlResponse(AbstractModel):
         """
         self._AffectedRows = None
         self._Columns = None
+        self._ColumnTypes = None
         self._Rows = None
         self._ExecutionTimeMs = None
         self._RequestId = None
@@ -14800,6 +14804,18 @@ class ExecutePGSqlResponse(AbstractModel):
     @Columns.setter
     def Columns(self, Columns):
         self._Columns = Columns
+
+    @property
+    def ColumnTypes(self):
+        r"""<p>字段类型名</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._ColumnTypes
+
+    @ColumnTypes.setter
+    def ColumnTypes(self, ColumnTypes):
+        self._ColumnTypes = ColumnTypes
 
     @property
     def Rows(self):
@@ -14839,6 +14855,7 @@ class ExecutePGSqlResponse(AbstractModel):
     def _deserialize(self, params):
         self._AffectedRows = params.get("AffectedRows")
         self._Columns = params.get("Columns")
+        self._ColumnTypes = params.get("ColumnTypes")
         self._Rows = params.get("Rows")
         self._ExecutionTimeMs = params.get("ExecutionTimeMs")
         self._RequestId = params.get("RequestId")

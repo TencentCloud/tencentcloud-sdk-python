@@ -191,6 +191,32 @@ class TrtcClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateRecognizeVocabV3(
+            self,
+            request: models.CreateRecognizeVocabV3Request,
+            opts: Dict = None,
+    ) -> models.CreateRecognizeVocabV3Response:
+        """
+        接口说明：
+        用户通过本接口进行热词表的创建。
+
+        • 默认最多可创建30个热词表。
+        • 每个热词表最多可添加1000个词，每个词最长10个汉字或30个英文字符，不能超出限制。
+        • 热词表可以通过数组或者本地文件形式上传。
+        • 本地文件必须为UTF-8编码格式，每行仅添加一个热词且不能包含标点和特殊字符。
+        • 热词权重取值范围为[1,11]之间的整数或者100，权重越大代表该词被识别出来的概率越大。
+        • 注意: 热词权重设置为11时，当前热词将升级为超级热词，建议仅将重要且必须生效的热词设置到11，设置过多权重为11的热词将影响整体字准率。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateRecognizeVocabV3"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateRecognizeVocabV3Response
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DeleteCloudModeration(
             self,
             request: models.DeleteCloudModerationRequest,
@@ -294,6 +320,25 @@ class TrtcClient(AbstractClient):
         kwargs["action"] = "DeletePicture"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DeletePictureResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteRecognizeVocabV3(
+            self,
+            request: models.DeleteRecognizeVocabV3Request,
+            opts: Dict = None,
+    ) -> models.DeleteRecognizeVocabV3Response:
+        """
+        接口说明：
+        用户通过本接口进行热词表的删除。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteRecognizeVocabV3"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteRecognizeVocabV3Response
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -1040,6 +1085,63 @@ class TrtcClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DownloadRecognizeVocabV3(
+            self,
+            request: models.DownloadRecognizeVocabV3Request,
+            opts: Dict = None,
+    ) -> models.DownloadRecognizeVocabV3Response:
+        """
+        接口说明：
+        用户通过本接口进行热词表的下载，获得词表权重文件形式的 base64 值，文件形式为通过 “|” 分割的词和权重，即 word|weight 的形式。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DownloadRecognizeVocabV3"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DownloadRecognizeVocabV3Response
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def GetRecognizeVocabListV3(
+            self,
+            request: models.GetRecognizeVocabListV3Request,
+            opts: Dict = None,
+    ) -> models.GetRecognizeVocabListV3Response:
+        """
+        接口说明：
+        用户通过本接口分页列举所有的热词表。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "GetRecognizeVocabListV3"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.GetRecognizeVocabListV3Response
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def GetRecognizeVocabV3(
+            self,
+            request: models.GetRecognizeVocabV3Request,
+            opts: Dict = None,
+    ) -> models.GetRecognizeVocabV3Response:
+        """
+        接口说明：
+        用户根据词表的ID可以获取对应的热词表信息
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "GetRecognizeVocabV3"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.GetRecognizeVocabV3Response
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ModifyCloudModeration(
             self,
             request: models.ModifyCloudModerationRequest,
@@ -1161,6 +1263,25 @@ class TrtcClient(AbstractClient):
         kwargs["action"] = "RemoveUserByStrRoomId"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.RemoveUserByStrRoomIdResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def SetVocabStateV3(
+            self,
+            request: models.SetVocabStateV3Request,
+            opts: Dict = None,
+    ) -> models.SetVocabStateV3Response:
+        """
+        接口说明：
+        用户通过该接口可以设置热词表的默认状态。初始状态为0，用户可设置状态为1，即为默认状态。默认状态表示用户在请求识别时，如不设置热词表ID，则默认使用状态为1的热词表。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "SetVocabStateV3"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.SetVocabStateV3Response
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -1549,6 +1670,25 @@ class TrtcClient(AbstractClient):
         kwargs["action"] = "UpdatePublishCdnStream"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.UpdatePublishCdnStreamResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def UpdateRecognizeVocabV3(
+            self,
+            request: models.UpdateRecognizeVocabV3Request,
+            opts: Dict = None,
+    ) -> models.UpdateRecognizeVocabV3Response:
+        """
+        接口说明：
+        用户通过本接口进行热词表的更新。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "UpdateRecognizeVocabV3"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.UpdateRecognizeVocabV3Response
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

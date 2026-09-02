@@ -116,6 +116,9 @@ INTERNALERROR_DBERROR = 'InternalError.DBError'
 # ES查询异常。
 INTERNALERROR_ESQUERYERROR = 'InternalError.EsQueryError'
 
+# 访问数据库失败。
+INTERNALERROR_FAILACCESSDATABASE = 'InternalError.FailAccessDatabase'
+
 # 查询房间失败。
 INTERNALERROR_GETROOMCACHEIPERROR = 'InternalError.GetRoomCacheIpError'
 
@@ -178,6 +181,9 @@ INVALIDPARAMETER_INVALIDAUDIOINPUT = 'InvalidParameter.InvalidAudioInput'
 
 # invalid sdkAppId
 INVALIDPARAMETER_INVALIDSDKAPPID = 'InvalidParameter.InvalidSdkAppId'
+
+# 非法的词表状态。
+INVALIDPARAMETER_INVALIDVOCABSTATE = 'InvalidParameter.InvalidVocabState'
 
 # VoicePrintIdList 不能为空，也不能过长。
 INVALIDPARAMETER_INVALIDVOICEPRINTIDLIST = 'InvalidParameter.InvalidVoicePrintIdList'
@@ -314,11 +320,26 @@ INVALIDPARAMETER_VOICENAME = 'InvalidParameter.VoiceName'
 # 无效的音量
 INVALIDPARAMETER_VOLUME = 'InvalidParameter.Volume'
 
+# AppId无效。
+INVALIDPARAMETERVALUE_ERRORINVALIDAPPID = 'InvalidParameterValue.ErrorInvalidAppid'
+
+# 非法的VocabId。
+INVALIDPARAMETERVALUE_INVALIDVOCABID = 'InvalidParameterValue.InvalidVocabId'
+
+# 热词weight参数无效
+INVALIDPARAMETERVALUE_INVALIDWORDWEIGHT = 'InvalidParameterValue.InvalidWordWeight'
+
+# 非法的WordWeightStr。
+INVALIDPARAMETERVALUE_INVALIDWORDWEIGHTSTR = 'InvalidParameterValue.InvalidWordWeightStr'
+
 # RoomId值错误。
 INVALIDPARAMETERVALUE_ROOMID = 'InvalidParameterValue.RoomId'
 
 # 并发数量受限
 LIMITEXCEEDED_CONCURRENCYLIMIT = 'LimitExceeded.ConcurrencyLimit'
+
+# 热词表数量已到账号限制。
+LIMITEXCEEDED_VOCABFULL = 'LimitExceeded.VocabFull'
 
 # 克隆超过最大数量
 LIMITEXCEEDED_VOICECLONEMAXNUMLIMIT = 'LimitExceeded.VoiceCloneMaxNumLimit'

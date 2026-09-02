@@ -2306,6 +2306,7 @@ class VpcClient(AbstractClient):
         """
         本接口（DeleteNatGateway）用于删除NAT网关。
         删除 NAT 网关后，系统会自动删除路由表中包含此 NAT 网关的路由项，同时也会解绑弹性公网IP（EIP）。
+        删除 NAT 网关时需解绑关联 EIP，因此调用方需要具备 vpc:DisassociateAddress 和 vpc:ModifyAddressesBandwidth 的 CAM 权限。
         """
         
         kwargs = {}

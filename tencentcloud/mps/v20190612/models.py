@@ -38357,14 +38357,17 @@ class DescribeMediaMetaDataRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InputInfo: 需要获取元信息的文件输入信息。
+        :param _InputInfo: <p>需要获取元信息的文件输入信息。</p>
         :type InputInfo: :class:`tencentcloud.mps.v20190612.models.MediaInputInfo`
+        :param _Mode: <p>指定为slow时，增加接口超时时间</p><p>枚举值：</p><ul><li>slow： 增加接口超时时间</li></ul>
+        :type Mode: str
         """
         self._InputInfo = None
+        self._Mode = None
 
     @property
     def InputInfo(self):
-        r"""需要获取元信息的文件输入信息。
+        r"""<p>需要获取元信息的文件输入信息。</p>
         :rtype: :class:`tencentcloud.mps.v20190612.models.MediaInputInfo`
         """
         return self._InputInfo
@@ -38373,11 +38376,23 @@ class DescribeMediaMetaDataRequest(AbstractModel):
     def InputInfo(self, InputInfo):
         self._InputInfo = InputInfo
 
+    @property
+    def Mode(self):
+        r"""<p>指定为slow时，增加接口超时时间</p><p>枚举值：</p><ul><li>slow： 增加接口超时时间</li></ul>
+        :rtype: str
+        """
+        return self._Mode
+
+    @Mode.setter
+    def Mode(self, Mode):
+        self._Mode = Mode
+
 
     def _deserialize(self, params):
         if params.get("InputInfo") is not None:
             self._InputInfo = MediaInputInfo()
             self._InputInfo._deserialize(params.get("InputInfo"))
+        self._Mode = params.get("Mode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -38395,7 +38410,7 @@ class DescribeMediaMetaDataResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _MetaData: 媒体元信息。
+        :param _MetaData: <p>媒体元信息。</p>
         :type MetaData: :class:`tencentcloud.mps.v20190612.models.MediaMetaData`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -38405,7 +38420,7 @@ class DescribeMediaMetaDataResponse(AbstractModel):
 
     @property
     def MetaData(self):
-        r"""媒体元信息。
+        r"""<p>媒体元信息。</p>
         :rtype: :class:`tencentcloud.mps.v20190612.models.MediaMetaData`
         """
         return self._MetaData

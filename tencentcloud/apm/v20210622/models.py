@@ -8087,6 +8087,197 @@ class DescribeOPRAllVulCountResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeRelatedServicesOnTraceRequest(AbstractModel):
+    r"""DescribeRelatedServicesOnTrace请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 业务系统 ID
+        :type InstanceId: str
+        :param _StartTime: 查询开始时间
+        :type StartTime: int
+        :param _EndTime: 查询结束时间
+        :type EndTime: int
+        :param _ServiceName: 应用名
+        :type ServiceName: str
+        :param _IsServiceTopology: 是否为应用拓扑查询
+        :type IsServiceTopology: bool
+        """
+        self._InstanceId = None
+        self._StartTime = None
+        self._EndTime = None
+        self._ServiceName = None
+        self._IsServiceTopology = None
+
+    @property
+    def InstanceId(self):
+        r"""业务系统 ID
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def StartTime(self):
+        r"""查询开始时间
+        :rtype: int
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""查询结束时间
+        :rtype: int
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def ServiceName(self):
+        r"""应用名
+        :rtype: str
+        """
+        return self._ServiceName
+
+    @ServiceName.setter
+    def ServiceName(self, ServiceName):
+        self._ServiceName = ServiceName
+
+    @property
+    def IsServiceTopology(self):
+        r"""是否为应用拓扑查询
+        :rtype: bool
+        """
+        return self._IsServiceTopology
+
+    @IsServiceTopology.setter
+    def IsServiceTopology(self, IsServiceTopology):
+        self._IsServiceTopology = IsServiceTopology
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._ServiceName = params.get("ServiceName")
+        self._IsServiceTopology = params.get("IsServiceTopology")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeRelatedServicesOnTraceResponse(AbstractModel):
+    r"""DescribeRelatedServicesOnTrace返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalTraces: 查询的总链路数
+        :type TotalTraces: int
+        :param _TotalServices: 查询到的应用的数量
+        :type TotalServices: int
+        :param _SelectedTraces: 挑选的链路数量
+        :type SelectedTraces: int
+        :param _ServiceRelations: 相关的服务/应用名列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ServiceRelations: list of ServiceRelation
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalTraces = None
+        self._TotalServices = None
+        self._SelectedTraces = None
+        self._ServiceRelations = None
+        self._RequestId = None
+
+    @property
+    def TotalTraces(self):
+        r"""查询的总链路数
+        :rtype: int
+        """
+        return self._TotalTraces
+
+    @TotalTraces.setter
+    def TotalTraces(self, TotalTraces):
+        self._TotalTraces = TotalTraces
+
+    @property
+    def TotalServices(self):
+        r"""查询到的应用的数量
+        :rtype: int
+        """
+        return self._TotalServices
+
+    @TotalServices.setter
+    def TotalServices(self, TotalServices):
+        self._TotalServices = TotalServices
+
+    @property
+    def SelectedTraces(self):
+        r"""挑选的链路数量
+        :rtype: int
+        """
+        return self._SelectedTraces
+
+    @SelectedTraces.setter
+    def SelectedTraces(self, SelectedTraces):
+        self._SelectedTraces = SelectedTraces
+
+    @property
+    def ServiceRelations(self):
+        r"""相关的服务/应用名列表
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of ServiceRelation
+        """
+        return self._ServiceRelations
+
+    @ServiceRelations.setter
+    def ServiceRelations(self, ServiceRelations):
+        self._ServiceRelations = ServiceRelations
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalTraces = params.get("TotalTraces")
+        self._TotalServices = params.get("TotalServices")
+        self._SelectedTraces = params.get("SelectedTraces")
+        if params.get("ServiceRelations") is not None:
+            self._ServiceRelations = []
+            for item in params.get("ServiceRelations"):
+                obj = ServiceRelation()
+                obj._deserialize(item)
+                self._ServiceRelations.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeServiceOverviewRequest(AbstractModel):
     r"""DescribeServiceOverview请求参数结构体
 
@@ -12406,6 +12597,72 @@ class ServiceDetail(AbstractModel):
         self._EnableThresholdConfig = params.get("EnableThresholdConfig")
         self._ErrRateThreshold = params.get("ErrRateThreshold")
         self._ResponseDurationWarningThreshold = params.get("ResponseDurationWarningThreshold")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ServiceRelation(AbstractModel):
+    r"""应用对应的链路上下游应用集合
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ServiceName: 应用名
+        :type ServiceName: str
+        :param _UpstreamServices: 上游应用集合
+        :type UpstreamServices: list of str
+        :param _DownstreamServices: 下游应用集合
+        :type DownstreamServices: list of str
+        """
+        self._ServiceName = None
+        self._UpstreamServices = None
+        self._DownstreamServices = None
+
+    @property
+    def ServiceName(self):
+        r"""应用名
+        :rtype: str
+        """
+        return self._ServiceName
+
+    @ServiceName.setter
+    def ServiceName(self, ServiceName):
+        self._ServiceName = ServiceName
+
+    @property
+    def UpstreamServices(self):
+        r"""上游应用集合
+        :rtype: list of str
+        """
+        return self._UpstreamServices
+
+    @UpstreamServices.setter
+    def UpstreamServices(self, UpstreamServices):
+        self._UpstreamServices = UpstreamServices
+
+    @property
+    def DownstreamServices(self):
+        r"""下游应用集合
+        :rtype: list of str
+        """
+        return self._DownstreamServices
+
+    @DownstreamServices.setter
+    def DownstreamServices(self, DownstreamServices):
+        self._DownstreamServices = DownstreamServices
+
+
+    def _deserialize(self, params):
+        self._ServiceName = params.get("ServiceName")
+        self._UpstreamServices = params.get("UpstreamServices")
+        self._DownstreamServices = params.get("DownstreamServices")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
