@@ -1607,27 +1607,22 @@ class ClearLaunchConfigurationAttributesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _LaunchConfigurationId: 启动配置ID。可通过如下方式获取：
-<li>通过登录 [控制台](https://console.cloud.tencent.com/autoscaling/config) 查询启动配置ID。</li>
-<li>通过调用接口 [DescribeLaunchConfigurations](https://cloud.tencent.com/document/api/377/20445) ，取返回信息中的 LaunchConfigurationId 获取启动配置ID。</li>
+        :param _LaunchConfigurationId: <p>启动配置ID。可通过如下方式获取：</p><li>通过登录 [控制台](https://console.cloud.tencent.com/autoscaling/config) 查询启动配置ID。</li><li>通过调用接口 [DescribeLaunchConfigurations](https://cloud.tencent.com/document/api/377/20445) ，取返回信息中的 LaunchConfigurationId 获取启动配置ID。</li>
         :type LaunchConfigurationId: str
-        :param _ClearDataDisks: 是否清空数据盘信息，非必填，默认为 false。
-填 true 代表清空“数据盘”信息，清空后基于此新创建的云主机将不含有任何数据盘。
+        :param _ClearDataDisks: <p>是否清空数据盘信息，非必填，默认为 false。<br>填 true 代表清空“数据盘”信息，清空后基于此新创建的云主机将不含有任何数据盘。</p>
         :type ClearDataDisks: bool
-        :param _ClearHostNameSettings: 是否清空云服务器主机名相关设置信息，非必填，默认为 false。
-填 true 代表清空主机名设置信息，清空后基于此新创建的云主机将不设置主机名。
+        :param _ClearHostNameSettings: <p>是否清空云服务器主机名相关设置信息，非必填，默认为 false。<br>填 true 代表清空主机名设置信息，清空后基于此新创建的云主机将不设置主机名。</p>
         :type ClearHostNameSettings: bool
-        :param _ClearInstanceNameSettings: 是否清空云服务器实例名相关设置信息，非必填，默认为 false。
-填 true 代表清空主机名设置信息，清空后基于此新创建的云主机将按照“as-{{ 伸缩组AutoScalingGroupName }}”进行设置。
+        :param _ClearInstanceNameSettings: <p>是否清空云服务器实例名相关设置信息，非必填，默认为 false。<br>填 true 代表清空主机名设置信息，清空后基于此新创建的云主机将按照“as-{{ 伸缩组AutoScalingGroupName }}”进行设置。</p>
         :type ClearInstanceNameSettings: bool
-        :param _ClearDisasterRecoverGroupIds: 是否清空置放群组信息，非必填，默认为 false。
-填 true 代表清空置放群组信息，清空后基于此新创建的云主机将不指定任何置放群组。
+        :param _ClearDisasterRecoverGroupIds: <p>是否清空置放群组信息，非必填，默认为 false。<br>填 true 代表清空置放群组信息，清空后基于此新创建的云主机将不指定任何置放群组。</p>
         :type ClearDisasterRecoverGroupIds: bool
-        :param _ClearInstanceTags: 是否清空实例标签列表，非必填，默认为 false。
-填 true 代表清空实例标签列表，清空后基于此新创建的云主机将不会绑定列表中的标签。
+        :param _ClearInstanceTags: <p>是否清空实例标签列表，非必填，默认为 false。<br>填 true 代表清空实例标签列表，清空后基于此新创建的云主机将不会绑定列表中的标签。</p>
         :type ClearInstanceTags: bool
-        :param _ClearMetadata: 是否清空 MetaData，非必填，默认为 false。填 true 代表清空 MetaData，清空后基于此新创建的云主机将不会关联自定义的 Metadata。
+        :param _ClearMetadata: <p>是否清空 MetaData，非必填，默认为 false。填 true 代表清空 MetaData，清空后基于此新创建的云主机将不会关联自定义的 Metadata。</p>
         :type ClearMetadata: bool
+        :param _ClearNetworkInterfaces: <p>是否清除启动配置中的 NetworkInterfaces。取值 TRUE 时清除；未传或 FALSE 时不处理该字段。</p>
+        :type ClearNetworkInterfaces: bool
         """
         self._LaunchConfigurationId = None
         self._ClearDataDisks = None
@@ -1636,12 +1631,11 @@ class ClearLaunchConfigurationAttributesRequest(AbstractModel):
         self._ClearDisasterRecoverGroupIds = None
         self._ClearInstanceTags = None
         self._ClearMetadata = None
+        self._ClearNetworkInterfaces = None
 
     @property
     def LaunchConfigurationId(self):
-        r"""启动配置ID。可通过如下方式获取：
-<li>通过登录 [控制台](https://console.cloud.tencent.com/autoscaling/config) 查询启动配置ID。</li>
-<li>通过调用接口 [DescribeLaunchConfigurations](https://cloud.tencent.com/document/api/377/20445) ，取返回信息中的 LaunchConfigurationId 获取启动配置ID。</li>
+        r"""<p>启动配置ID。可通过如下方式获取：</p><li>通过登录 [控制台](https://console.cloud.tencent.com/autoscaling/config) 查询启动配置ID。</li><li>通过调用接口 [DescribeLaunchConfigurations](https://cloud.tencent.com/document/api/377/20445) ，取返回信息中的 LaunchConfigurationId 获取启动配置ID。</li>
         :rtype: str
         """
         return self._LaunchConfigurationId
@@ -1652,8 +1646,7 @@ class ClearLaunchConfigurationAttributesRequest(AbstractModel):
 
     @property
     def ClearDataDisks(self):
-        r"""是否清空数据盘信息，非必填，默认为 false。
-填 true 代表清空“数据盘”信息，清空后基于此新创建的云主机将不含有任何数据盘。
+        r"""<p>是否清空数据盘信息，非必填，默认为 false。<br>填 true 代表清空“数据盘”信息，清空后基于此新创建的云主机将不含有任何数据盘。</p>
         :rtype: bool
         """
         return self._ClearDataDisks
@@ -1664,8 +1657,7 @@ class ClearLaunchConfigurationAttributesRequest(AbstractModel):
 
     @property
     def ClearHostNameSettings(self):
-        r"""是否清空云服务器主机名相关设置信息，非必填，默认为 false。
-填 true 代表清空主机名设置信息，清空后基于此新创建的云主机将不设置主机名。
+        r"""<p>是否清空云服务器主机名相关设置信息，非必填，默认为 false。<br>填 true 代表清空主机名设置信息，清空后基于此新创建的云主机将不设置主机名。</p>
         :rtype: bool
         """
         return self._ClearHostNameSettings
@@ -1676,8 +1668,7 @@ class ClearLaunchConfigurationAttributesRequest(AbstractModel):
 
     @property
     def ClearInstanceNameSettings(self):
-        r"""是否清空云服务器实例名相关设置信息，非必填，默认为 false。
-填 true 代表清空主机名设置信息，清空后基于此新创建的云主机将按照“as-{{ 伸缩组AutoScalingGroupName }}”进行设置。
+        r"""<p>是否清空云服务器实例名相关设置信息，非必填，默认为 false。<br>填 true 代表清空主机名设置信息，清空后基于此新创建的云主机将按照“as-{{ 伸缩组AutoScalingGroupName }}”进行设置。</p>
         :rtype: bool
         """
         return self._ClearInstanceNameSettings
@@ -1688,8 +1679,7 @@ class ClearLaunchConfigurationAttributesRequest(AbstractModel):
 
     @property
     def ClearDisasterRecoverGroupIds(self):
-        r"""是否清空置放群组信息，非必填，默认为 false。
-填 true 代表清空置放群组信息，清空后基于此新创建的云主机将不指定任何置放群组。
+        r"""<p>是否清空置放群组信息，非必填，默认为 false。<br>填 true 代表清空置放群组信息，清空后基于此新创建的云主机将不指定任何置放群组。</p>
         :rtype: bool
         """
         return self._ClearDisasterRecoverGroupIds
@@ -1700,8 +1690,7 @@ class ClearLaunchConfigurationAttributesRequest(AbstractModel):
 
     @property
     def ClearInstanceTags(self):
-        r"""是否清空实例标签列表，非必填，默认为 false。
-填 true 代表清空实例标签列表，清空后基于此新创建的云主机将不会绑定列表中的标签。
+        r"""<p>是否清空实例标签列表，非必填，默认为 false。<br>填 true 代表清空实例标签列表，清空后基于此新创建的云主机将不会绑定列表中的标签。</p>
         :rtype: bool
         """
         return self._ClearInstanceTags
@@ -1712,7 +1701,7 @@ class ClearLaunchConfigurationAttributesRequest(AbstractModel):
 
     @property
     def ClearMetadata(self):
-        r"""是否清空 MetaData，非必填，默认为 false。填 true 代表清空 MetaData，清空后基于此新创建的云主机将不会关联自定义的 Metadata。
+        r"""<p>是否清空 MetaData，非必填，默认为 false。填 true 代表清空 MetaData，清空后基于此新创建的云主机将不会关联自定义的 Metadata。</p>
         :rtype: bool
         """
         return self._ClearMetadata
@@ -1720,6 +1709,17 @@ class ClearLaunchConfigurationAttributesRequest(AbstractModel):
     @ClearMetadata.setter
     def ClearMetadata(self, ClearMetadata):
         self._ClearMetadata = ClearMetadata
+
+    @property
+    def ClearNetworkInterfaces(self):
+        r"""<p>是否清除启动配置中的 NetworkInterfaces。取值 TRUE 时清除；未传或 FALSE 时不处理该字段。</p>
+        :rtype: bool
+        """
+        return self._ClearNetworkInterfaces
+
+    @ClearNetworkInterfaces.setter
+    def ClearNetworkInterfaces(self, ClearNetworkInterfaces):
+        self._ClearNetworkInterfaces = ClearNetworkInterfaces
 
 
     def _deserialize(self, params):
@@ -1730,6 +1730,7 @@ class ClearLaunchConfigurationAttributesRequest(AbstractModel):
         self._ClearDisasterRecoverGroupIds = params.get("ClearDisasterRecoverGroupIds")
         self._ClearInstanceTags = params.get("ClearInstanceTags")
         self._ClearMetadata = params.get("ClearMetadata")
+        self._ClearNetworkInterfaces = params.get("ClearNetworkInterfaces")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2583,13 +2584,13 @@ class CreateLaunchConfigurationRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _LaunchConfigurationName: <p>启动配置显示名称。名称仅支持中文、英文、数字、下划线、分隔符"-"、小数点，最大长度不能超60个字节。</p>
+        :param _LaunchConfigurationName: <p>启动配置显示名称。名称仅支持中文、英文、数字、下划线、分隔符&quot;-&quot;、小数点，最大长度不能超60个字节。</p>
         :type LaunchConfigurationName: str
-        :param _ImageId: <p>指定有效的<a href="https://cloud.tencent.com/document/product/213/4940">镜像</a>ID，格式形如<code>img-8toqc6s3</code>。镜像Id与镜像族名称，二者必填一个且只能填写一个。镜像类型分为四种：<br/><li>公共镜像</li><li>自定义镜像</li><li>共享镜像</li><li>服务市场镜像</li><br/>可通过以下方式获取可用的镜像ID：<br/><li><code>公共镜像</code>、<code>自定义镜像</code>、<code>共享镜像</code>的镜像ID可通过登录<a href="https://console.cloud.tencent.com/cvm/image?rid=1&amp;imageType=PUBLIC_IMAGE">控制台</a>查询；<code>服务镜像市场</code>的镜像ID可通过<a href="https://market.cloud.tencent.com/list">云市场</a>查询。</li><li>通过调用接口 <a href="https://cloud.tencent.com/document/api/213/15715">DescribeImages</a> ，取返回信息中的<code>ImageId</code>字段。</li></p>
+        :param _ImageId: <p>指定有效的<a href="https://cloud.tencent.com/document/product/213/4940">镜像</a>ID，格式形如<code>img-8toqc6s3</code>。镜像Id与镜像族名称，二者必填一个且只能填写一个。镜像类型分为四种：<br><li>公共镜像</li><li>自定义镜像</li><li>共享镜像</li><li>服务市场镜像</li><br>可通过以下方式获取可用的镜像ID：<br><li><code>公共镜像</code>、<code>自定义镜像</code>、<code>共享镜像</code>的镜像ID可通过登录<a href="https://console.cloud.tencent.com/cvm/image?rid=1&amp;imageType=PUBLIC_IMAGE">控制台</a>查询；<code>服务镜像市场</code>的镜像ID可通过<a href="https://market.cloud.tencent.com/list">云市场</a>查询。</li><li>通过调用接口 <a href="https://cloud.tencent.com/document/api/213/15715">DescribeImages</a> ，取返回信息中的<code>ImageId</code>字段。</li></p>
         :type ImageId: str
-        :param _ProjectId: <p>启动配置所属项目ID。默认值为0，表示使用默认项目。该参数可以通过调用 <a href="https://cloud.tencent.com/document/api/651/78725">DescribeProject</a> 的返回值中的 projectId 字段来获取。注意：伸缩组内实例所属项目ID取伸缩组项目ID，与这里取值无关。</p>
+        :param _ProjectId: <p>启动配置所属项目ID。默认值为0，表示使用默认项目。该参数可以通过调用 <a href="https://cloud.tencent.com/document/api/651/78725">DescribeProject</a> 的返回值中的 projectId 字段来获取。<br>注意：伸缩组内实例所属项目ID取伸缩组项目ID，与这里取值无关。</p>
         :type ProjectId: int
-        :param _InstanceType: <p>实例机型。不同实例机型指定了不同的资源规格，具体取值可通过调用接口 <a href="https://cloud.tencent.com/document/api/213/15749">DescribeInstanceTypeConfigs</a> 来获得最新的规格表或参见<a href="https://cloud.tencent.com/document/product/213/11518">实例类型</a>描述。<code>InstanceType</code>和<code>InstanceTypes</code>参数互斥，二者必填一个且只能填写一个。</p>
+        :param _InstanceType: <p>实例机型。不同实例机型指定了不同的资源规格，具体取值可通过调用接口 <a href="https://cloud.tencent.com/document/api/213/15749">DescribeInstanceTypeConfigs</a> 来获得最新的规格表或参见<a href="https://cloud.tencent.com/document/product/213/11518">实例类型</a>描述。<br><code>InstanceType</code>和<code>InstanceTypes</code>参数互斥，二者必填一个且只能填写一个。</p>
         :type InstanceType: str
         :param _SystemDisk: <p>实例系统盘配置信息。若不指定该参数，则按照系统默认值进行分配。</p>
         :type SystemDisk: :class:`tencentcloud.autoscaling.v20180419.models.SystemDisk`
@@ -2605,29 +2606,29 @@ class CreateLaunchConfigurationRequest(AbstractModel):
         :type EnhancedService: :class:`tencentcloud.autoscaling.v20180419.models.EnhancedService`
         :param _UserData: <p>经过 Base64 编码后的自定义数据，最大长度不超过16KB。</p>
         :type UserData: str
-        :param _InstanceChargeType: <p>实例计费类型，CVM默认值按照POSTPAID_BY_HOUR处理。<li>POSTPAID_BY_HOUR：按小时后付费</li><li>SPOTPAID：竞价付费</li><li>PREPAID：预付费，即包年包月</li><li>CDCPAID：专用集群付费</li></p>
+        :param _InstanceChargeType: <p>实例计费类型，CVM默认值按照POSTPAID_BY_HOUR处理。</p><li>POSTPAID_BY_HOUR：按小时后付费</li><li>SPOTPAID：竞价付费</li><li>PREPAID：预付费，即包年包月</li><li>CDCPAID：专用集群付费</li>
         :type InstanceChargeType: str
         :param _InstanceMarketOptions: <p>实例的市场相关选项，如竞价实例相关参数，若指定实例的付费模式为竞价付费则该参数必传。</p>
         :type InstanceMarketOptions: :class:`tencentcloud.autoscaling.v20180419.models.InstanceMarketOptionsRequest`
-        :param _InstanceTypes: <p>实例机型列表，不同实例机型指定了不同的资源规格，最多支持10种实例机型。<code>InstanceType</code>和<code>InstanceTypes</code>参数互斥，二者必填一个且只能填写一个。具体取值可通过调用接口<a href="https://cloud.tencent.com/document/api/213/15749">DescribeInstanceTypeConfigs</a>来获得最新的规格表或参见<a href="https://cloud.tencent.com/document/product/213/11518">实例规格描述</a>。</p>
+        :param _InstanceTypes: <p>实例机型列表，不同实例机型指定了不同的资源规格，最多支持10种实例机型。<br><code>InstanceType</code>和<code>InstanceTypes</code>参数互斥，二者必填一个且只能填写一个。具体取值可通过调用接口<a href="https://cloud.tencent.com/document/api/213/15749">DescribeInstanceTypeConfigs</a>来获得最新的规格表或参见<a href="https://cloud.tencent.com/document/product/213/11518">实例规格描述</a>。</p>
         :type InstanceTypes: list of str
         :param _CamRoleName: <p>CAM角色名称。可通过<a href="https://cloud.tencent.com/document/product/598/36223">DescribeRoleList</a>接口返回值中的roleName获取。</p>
         :type CamRoleName: str
-        :param _InstanceTypesCheckPolicy: <p>实例类型校验策略，取值包括 ALL 和 ANY，默认取值为ANY。该参数仅在 InstanceTypes 入参包含多个机型时生效。<li> ALL，所有实例类型（InstanceType）都可用则通过校验，否则校验报错。</li><li> ANY，存在任何一个实例类型（InstanceType）可用则通过校验，否则校验报错。</li></p><p>实例类型不可用的常见原因包括该实例类型售罄、对应云盘售罄等。如果 InstanceTypes 中一款机型不存在或者已下线，则无论 InstanceTypesCheckPolicy 采用何种取值，都会校验报错。</p>
+        :param _InstanceTypesCheckPolicy: <p>实例类型校验策略，取值包括 ALL 和 ANY，默认取值为ANY。该参数仅在 InstanceTypes 入参包含多个机型时生效。</p><li> ALL，所有实例类型（InstanceType）都可用则通过校验，否则校验报错。</li><li> ANY，存在任何一个实例类型（InstanceType）可用则通过校验，否则校验报错。</li><p>实例类型不可用的常见原因包括该实例类型售罄、对应云盘售罄等。<br>如果 InstanceTypes 中一款机型不存在或者已下线，则无论 InstanceTypesCheckPolicy 采用何种取值，都会校验报错。</p>
         :type InstanceTypesCheckPolicy: str
         :param _InstanceTags: <p>标签列表。通过指定该参数，可以为扩容的实例绑定标签。最多支持指定10个标签。</p>
         :type InstanceTags: list of InstanceTag
         :param _Tags: <p>标签描述列表。通过指定该参数可以支持绑定标签到启动配置。每个启动配置最多支持30个标签。</p>
         :type Tags: list of Tag
-        :param _HostNameSettings: <p>云服务器主机名（HostName）的相关设置。不支持windows实例设置主机名。 新增该属性时，必须传递云服务器的主机名，其它未传递字段会设置为默认值。会校验主机名(如果存在后缀则加上后缀)是否超过最大位数46。</p>
+        :param _HostNameSettings: <p>云服务器主机名（HostName）的相关设置。<br>不支持windows实例设置主机名。<br>新增该属性时，必须传递云服务器的主机名，其它未传递字段会设置为默认值。<br>会校验主机名(如果存在后缀则加上后缀)是否超过最大位数46。</p>
         :type HostNameSettings: :class:`tencentcloud.autoscaling.v20180419.models.HostNameSettings`
-        :param _InstanceNameSettings: <p>云服务器实例名（InstanceName）的相关设置。如果用户在启动配置中设置此字段，则伸缩组创建出的实例 InstanceName 参照此字段进行设置，并传递给 CVM；如果用户未在启动配置中设置此字段，则伸缩组创建出的实例 InstanceName 按照“as-{{ 伸缩组AutoScalingGroupName }}”进行设置，并传递给 CVM。新增该属性时，必须传递云服务器的实例名称，其它未传递字段会设置为默认值。会校验实例名称(如果存在后缀则加上后缀)是否超过最大位数108。</p>
+        :param _InstanceNameSettings: <p>云服务器实例名（InstanceName）的相关设置。<br>如果用户在启动配置中设置此字段，则伸缩组创建出的实例 InstanceName 参照此字段进行设置，并传递给 CVM；如果用户未在启动配置中设置此字段，则伸缩组创建出的实例 InstanceName 按照“as-{{ 伸缩组AutoScalingGroupName }}”进行设置，并传递给 CVM。<br>新增该属性时，必须传递云服务器的实例名称，其它未传递字段会设置为默认值。<br>会校验实例名称(如果存在后缀则加上后缀)是否超过最大位数108。</p>
         :type InstanceNameSettings: :class:`tencentcloud.autoscaling.v20180419.models.InstanceNameSettings`
         :param _InstanceChargePrepaid: <p>预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月实例的购买时长、是否设置自动续费等属性。若指定实例的付费模式为预付费则该参数必传。</p>
         :type InstanceChargePrepaid: :class:`tencentcloud.autoscaling.v20180419.models.InstanceChargePrepaid`
-        :param _DiskTypePolicy: <p>云盘类型选择策略，默认取值 ORIGINAL，取值范围：<li>ORIGINAL：使用设置的云盘类型</li><li>AUTOMATIC：自动选择当前可用的云盘类型</li></p>
+        :param _DiskTypePolicy: <p>云盘类型选择策略，默认取值 ORIGINAL，取值范围：</p><li>ORIGINAL：使用设置的云盘类型</li><li>AUTOMATIC：自动选择当前可用的云盘类型</li>
         :type DiskTypePolicy: str
-        :param _HpcClusterId: <p>高性能计算集群ID。可通过调用<a href="https://cloud.tencent.com/document/product/213/83220">DescribeHpcClusters</a>接口获取该参数。注意：此字段默认为空。</p>
+        :param _HpcClusterId: <p>高性能计算集群ID。可通过调用<a href="https://cloud.tencent.com/document/product/213/83220">DescribeHpcClusters</a>接口获取该参数。<br>注意：此字段默认为空。</p>
         :type HpcClusterId: str
         :param _IPv6InternetAccessible: <p>IPv6公网带宽相关信息设置。若新建实例包含IPv6地址，该参数可为新建实例的IPv6地址分配公网带宽。关联启动配置的伸缩组Ipv6AddressCount参数为0时，该参数不会生效。</p>
         :type IPv6InternetAccessible: :class:`tencentcloud.autoscaling.v20180419.models.IPv6InternetAccessible`
@@ -2639,6 +2640,8 @@ class CreateLaunchConfigurationRequest(AbstractModel):
         :type DedicatedClusterId: str
         :param _Metadata: <p>自定义metadata。</p>
         :type Metadata: :class:`tencentcloud.autoscaling.v20180419.models.Metadata`
+        :param _NetworkInterfaces: <p>扩容实例的弹性网卡配置。</p><p>入参限制：最多 17 项。配置该参数时必须显式包含且只能包含一个 PRIMARY，AS 不自动补齐主网卡；显式空数组非法；竞价实例不支持此参数。</p><p>VPC 和子网由伸缩组按当前候选子网自动注入；不配置时不传给 CVM。启动配置中的 SecurityGroupIds 参数仍保留。</p>
+        :type NetworkInterfaces: list of NetworkInterface
         """
         self._LaunchConfigurationName = None
         self._ImageId = None
@@ -2668,10 +2671,11 @@ class CreateLaunchConfigurationRequest(AbstractModel):
         self._ImageFamily = None
         self._DedicatedClusterId = None
         self._Metadata = None
+        self._NetworkInterfaces = None
 
     @property
     def LaunchConfigurationName(self):
-        r"""<p>启动配置显示名称。名称仅支持中文、英文、数字、下划线、分隔符"-"、小数点，最大长度不能超60个字节。</p>
+        r"""<p>启动配置显示名称。名称仅支持中文、英文、数字、下划线、分隔符&quot;-&quot;、小数点，最大长度不能超60个字节。</p>
         :rtype: str
         """
         return self._LaunchConfigurationName
@@ -2682,7 +2686,7 @@ class CreateLaunchConfigurationRequest(AbstractModel):
 
     @property
     def ImageId(self):
-        r"""<p>指定有效的<a href="https://cloud.tencent.com/document/product/213/4940">镜像</a>ID，格式形如<code>img-8toqc6s3</code>。镜像Id与镜像族名称，二者必填一个且只能填写一个。镜像类型分为四种：<br/><li>公共镜像</li><li>自定义镜像</li><li>共享镜像</li><li>服务市场镜像</li><br/>可通过以下方式获取可用的镜像ID：<br/><li><code>公共镜像</code>、<code>自定义镜像</code>、<code>共享镜像</code>的镜像ID可通过登录<a href="https://console.cloud.tencent.com/cvm/image?rid=1&amp;imageType=PUBLIC_IMAGE">控制台</a>查询；<code>服务镜像市场</code>的镜像ID可通过<a href="https://market.cloud.tencent.com/list">云市场</a>查询。</li><li>通过调用接口 <a href="https://cloud.tencent.com/document/api/213/15715">DescribeImages</a> ，取返回信息中的<code>ImageId</code>字段。</li></p>
+        r"""<p>指定有效的<a href="https://cloud.tencent.com/document/product/213/4940">镜像</a>ID，格式形如<code>img-8toqc6s3</code>。镜像Id与镜像族名称，二者必填一个且只能填写一个。镜像类型分为四种：<br><li>公共镜像</li><li>自定义镜像</li><li>共享镜像</li><li>服务市场镜像</li><br>可通过以下方式获取可用的镜像ID：<br><li><code>公共镜像</code>、<code>自定义镜像</code>、<code>共享镜像</code>的镜像ID可通过登录<a href="https://console.cloud.tencent.com/cvm/image?rid=1&amp;imageType=PUBLIC_IMAGE">控制台</a>查询；<code>服务镜像市场</code>的镜像ID可通过<a href="https://market.cloud.tencent.com/list">云市场</a>查询。</li><li>通过调用接口 <a href="https://cloud.tencent.com/document/api/213/15715">DescribeImages</a> ，取返回信息中的<code>ImageId</code>字段。</li></p>
         :rtype: str
         """
         return self._ImageId
@@ -2693,7 +2697,7 @@ class CreateLaunchConfigurationRequest(AbstractModel):
 
     @property
     def ProjectId(self):
-        r"""<p>启动配置所属项目ID。默认值为0，表示使用默认项目。该参数可以通过调用 <a href="https://cloud.tencent.com/document/api/651/78725">DescribeProject</a> 的返回值中的 projectId 字段来获取。注意：伸缩组内实例所属项目ID取伸缩组项目ID，与这里取值无关。</p>
+        r"""<p>启动配置所属项目ID。默认值为0，表示使用默认项目。该参数可以通过调用 <a href="https://cloud.tencent.com/document/api/651/78725">DescribeProject</a> 的返回值中的 projectId 字段来获取。<br>注意：伸缩组内实例所属项目ID取伸缩组项目ID，与这里取值无关。</p>
         :rtype: int
         """
         return self._ProjectId
@@ -2704,7 +2708,7 @@ class CreateLaunchConfigurationRequest(AbstractModel):
 
     @property
     def InstanceType(self):
-        r"""<p>实例机型。不同实例机型指定了不同的资源规格，具体取值可通过调用接口 <a href="https://cloud.tencent.com/document/api/213/15749">DescribeInstanceTypeConfigs</a> 来获得最新的规格表或参见<a href="https://cloud.tencent.com/document/product/213/11518">实例类型</a>描述。<code>InstanceType</code>和<code>InstanceTypes</code>参数互斥，二者必填一个且只能填写一个。</p>
+        r"""<p>实例机型。不同实例机型指定了不同的资源规格，具体取值可通过调用接口 <a href="https://cloud.tencent.com/document/api/213/15749">DescribeInstanceTypeConfigs</a> 来获得最新的规格表或参见<a href="https://cloud.tencent.com/document/product/213/11518">实例类型</a>描述。<br><code>InstanceType</code>和<code>InstanceTypes</code>参数互斥，二者必填一个且只能填写一个。</p>
         :rtype: str
         """
         return self._InstanceType
@@ -2792,7 +2796,7 @@ class CreateLaunchConfigurationRequest(AbstractModel):
 
     @property
     def InstanceChargeType(self):
-        r"""<p>实例计费类型，CVM默认值按照POSTPAID_BY_HOUR处理。<li>POSTPAID_BY_HOUR：按小时后付费</li><li>SPOTPAID：竞价付费</li><li>PREPAID：预付费，即包年包月</li><li>CDCPAID：专用集群付费</li></p>
+        r"""<p>实例计费类型，CVM默认值按照POSTPAID_BY_HOUR处理。</p><li>POSTPAID_BY_HOUR：按小时后付费</li><li>SPOTPAID：竞价付费</li><li>PREPAID：预付费，即包年包月</li><li>CDCPAID：专用集群付费</li>
         :rtype: str
         """
         return self._InstanceChargeType
@@ -2814,7 +2818,7 @@ class CreateLaunchConfigurationRequest(AbstractModel):
 
     @property
     def InstanceTypes(self):
-        r"""<p>实例机型列表，不同实例机型指定了不同的资源规格，最多支持10种实例机型。<code>InstanceType</code>和<code>InstanceTypes</code>参数互斥，二者必填一个且只能填写一个。具体取值可通过调用接口<a href="https://cloud.tencent.com/document/api/213/15749">DescribeInstanceTypeConfigs</a>来获得最新的规格表或参见<a href="https://cloud.tencent.com/document/product/213/11518">实例规格描述</a>。</p>
+        r"""<p>实例机型列表，不同实例机型指定了不同的资源规格，最多支持10种实例机型。<br><code>InstanceType</code>和<code>InstanceTypes</code>参数互斥，二者必填一个且只能填写一个。具体取值可通过调用接口<a href="https://cloud.tencent.com/document/api/213/15749">DescribeInstanceTypeConfigs</a>来获得最新的规格表或参见<a href="https://cloud.tencent.com/document/product/213/11518">实例规格描述</a>。</p>
         :rtype: list of str
         """
         return self._InstanceTypes
@@ -2836,7 +2840,7 @@ class CreateLaunchConfigurationRequest(AbstractModel):
 
     @property
     def InstanceTypesCheckPolicy(self):
-        r"""<p>实例类型校验策略，取值包括 ALL 和 ANY，默认取值为ANY。该参数仅在 InstanceTypes 入参包含多个机型时生效。<li> ALL，所有实例类型（InstanceType）都可用则通过校验，否则校验报错。</li><li> ANY，存在任何一个实例类型（InstanceType）可用则通过校验，否则校验报错。</li></p><p>实例类型不可用的常见原因包括该实例类型售罄、对应云盘售罄等。如果 InstanceTypes 中一款机型不存在或者已下线，则无论 InstanceTypesCheckPolicy 采用何种取值，都会校验报错。</p>
+        r"""<p>实例类型校验策略，取值包括 ALL 和 ANY，默认取值为ANY。该参数仅在 InstanceTypes 入参包含多个机型时生效。</p><li> ALL，所有实例类型（InstanceType）都可用则通过校验，否则校验报错。</li><li> ANY，存在任何一个实例类型（InstanceType）可用则通过校验，否则校验报错。</li><p>实例类型不可用的常见原因包括该实例类型售罄、对应云盘售罄等。<br>如果 InstanceTypes 中一款机型不存在或者已下线，则无论 InstanceTypesCheckPolicy 采用何种取值，都会校验报错。</p>
         :rtype: str
         """
         return self._InstanceTypesCheckPolicy
@@ -2869,7 +2873,7 @@ class CreateLaunchConfigurationRequest(AbstractModel):
 
     @property
     def HostNameSettings(self):
-        r"""<p>云服务器主机名（HostName）的相关设置。不支持windows实例设置主机名。 新增该属性时，必须传递云服务器的主机名，其它未传递字段会设置为默认值。会校验主机名(如果存在后缀则加上后缀)是否超过最大位数46。</p>
+        r"""<p>云服务器主机名（HostName）的相关设置。<br>不支持windows实例设置主机名。<br>新增该属性时，必须传递云服务器的主机名，其它未传递字段会设置为默认值。<br>会校验主机名(如果存在后缀则加上后缀)是否超过最大位数46。</p>
         :rtype: :class:`tencentcloud.autoscaling.v20180419.models.HostNameSettings`
         """
         return self._HostNameSettings
@@ -2880,7 +2884,7 @@ class CreateLaunchConfigurationRequest(AbstractModel):
 
     @property
     def InstanceNameSettings(self):
-        r"""<p>云服务器实例名（InstanceName）的相关设置。如果用户在启动配置中设置此字段，则伸缩组创建出的实例 InstanceName 参照此字段进行设置，并传递给 CVM；如果用户未在启动配置中设置此字段，则伸缩组创建出的实例 InstanceName 按照“as-{{ 伸缩组AutoScalingGroupName }}”进行设置，并传递给 CVM。新增该属性时，必须传递云服务器的实例名称，其它未传递字段会设置为默认值。会校验实例名称(如果存在后缀则加上后缀)是否超过最大位数108。</p>
+        r"""<p>云服务器实例名（InstanceName）的相关设置。<br>如果用户在启动配置中设置此字段，则伸缩组创建出的实例 InstanceName 参照此字段进行设置，并传递给 CVM；如果用户未在启动配置中设置此字段，则伸缩组创建出的实例 InstanceName 按照“as-{{ 伸缩组AutoScalingGroupName }}”进行设置，并传递给 CVM。<br>新增该属性时，必须传递云服务器的实例名称，其它未传递字段会设置为默认值。<br>会校验实例名称(如果存在后缀则加上后缀)是否超过最大位数108。</p>
         :rtype: :class:`tencentcloud.autoscaling.v20180419.models.InstanceNameSettings`
         """
         return self._InstanceNameSettings
@@ -2902,7 +2906,7 @@ class CreateLaunchConfigurationRequest(AbstractModel):
 
     @property
     def DiskTypePolicy(self):
-        r"""<p>云盘类型选择策略，默认取值 ORIGINAL，取值范围：<li>ORIGINAL：使用设置的云盘类型</li><li>AUTOMATIC：自动选择当前可用的云盘类型</li></p>
+        r"""<p>云盘类型选择策略，默认取值 ORIGINAL，取值范围：</p><li>ORIGINAL：使用设置的云盘类型</li><li>AUTOMATIC：自动选择当前可用的云盘类型</li>
         :rtype: str
         """
         return self._DiskTypePolicy
@@ -2913,7 +2917,7 @@ class CreateLaunchConfigurationRequest(AbstractModel):
 
     @property
     def HpcClusterId(self):
-        r"""<p>高性能计算集群ID。可通过调用<a href="https://cloud.tencent.com/document/product/213/83220">DescribeHpcClusters</a>接口获取该参数。注意：此字段默认为空。</p>
+        r"""<p>高性能计算集群ID。可通过调用<a href="https://cloud.tencent.com/document/product/213/83220">DescribeHpcClusters</a>接口获取该参数。<br>注意：此字段默认为空。</p>
         :rtype: str
         """
         return self._HpcClusterId
@@ -2976,6 +2980,17 @@ class CreateLaunchConfigurationRequest(AbstractModel):
     @Metadata.setter
     def Metadata(self, Metadata):
         self._Metadata = Metadata
+
+    @property
+    def NetworkInterfaces(self):
+        r"""<p>扩容实例的弹性网卡配置。</p><p>入参限制：最多 17 项。配置该参数时必须显式包含且只能包含一个 PRIMARY，AS 不自动补齐主网卡；显式空数组非法；竞价实例不支持此参数。</p><p>VPC 和子网由伸缩组按当前候选子网自动注入；不配置时不传给 CVM。启动配置中的 SecurityGroupIds 参数仍保留。</p>
+        :rtype: list of NetworkInterface
+        """
+        return self._NetworkInterfaces
+
+    @NetworkInterfaces.setter
+    def NetworkInterfaces(self, NetworkInterfaces):
+        self._NetworkInterfaces = NetworkInterfaces
 
 
     def _deserialize(self, params):
@@ -3042,6 +3057,12 @@ class CreateLaunchConfigurationRequest(AbstractModel):
         if params.get("Metadata") is not None:
             self._Metadata = Metadata()
             self._Metadata._deserialize(params.get("Metadata"))
+        if params.get("NetworkInterfaces") is not None:
+            self._NetworkInterfaces = []
+            for item in params.get("NetworkInterfaces"):
+                obj = NetworkInterface()
+                obj._deserialize(item)
+                self._NetworkInterfaces.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4002,40 +4023,27 @@ class DataDisk(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DiskType: 数据盘类型。数据盘类型限制详见[云硬盘类型](https://cloud.tencent.com/document/product/362/2353)。取值范围：
-<li>LOCAL_BASIC：本地硬盘</li>
-<li>LOCAL_SSD：本地SSD硬盘</li>
-<li>CLOUD_BASIC：普通云硬盘</li>
-<li>CLOUD_PREMIUM：高性能云硬盘</li>
-<li>CLOUD_SSD：SSD云硬盘</li>
-<li>CLOUD_HSSD：增强型SSD云硬盘</li>
-<li>CLOUD_TSSD：极速型SSD云硬盘</li>
-<li>CLOUD_BSSD：通用型SSD云硬盘</li>
-默认取值与系统盘类型（SystemDisk.DiskType）保持一致。
+        :param _DiskType: <p>数据盘类型。数据盘类型限制详见<a href="https://cloud.tencent.com/document/product/362/2353">云硬盘类型</a>。取值范围：</p><li>LOCAL_BASIC：本地硬盘</li><li>LOCAL_SSD：本地SSD硬盘</li><li>CLOUD_BASIC：普通云硬盘</li><li>CLOUD_PREMIUM：高性能云硬盘</li><li>CLOUD_SSD：SSD云硬盘</li><li>CLOUD_HSSD：增强型SSD云硬盘</li><li>CLOUD_TSSD：极速型SSD云硬盘</li><li>CLOUD_BSSD：通用型SSD云硬盘</li>默认取值与系统盘类型（SystemDisk.DiskType）保持一致。
         :type DiskType: str
-        :param _DiskSize: 数据盘大小，单位：GB。不同数据盘类型取值范围不同，具体限制详见：[CVM实例配置](https://cloud.tencent.com/document/product/213/2177)。默认值为0，表示不购买数据盘。更多限制详见[产品文档](https://cloud.tencent.com/document/product/362/5145)。
+        :param _DiskSize: <p>数据盘大小，单位：GB。不同数据盘类型取值范围不同，具体限制详见：<a href="https://cloud.tencent.com/document/product/213/2177">CVM实例配置</a>。默认值为0，表示不购买数据盘。更多限制详见<a href="https://cloud.tencent.com/document/product/362/5145">产品文档</a>。</p>
         :type DiskSize: int
-        :param _SnapshotId: 数据盘快照 ID，可通过 [DescribeSnapshots](https://cloud.tencent.com/document/product/362/15647) 接口获取该参数。
+        :param _SnapshotId: <p>数据盘快照 ID，可通过 <a href="https://cloud.tencent.com/document/product/362/15647">DescribeSnapshots</a> 接口获取该参数。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type SnapshotId: str
-        :param _DeleteWithInstance: 数据盘是否随子机销毁。取值范围：
-<li>TRUE：子机销毁时，销毁数据盘，只支持按小时后付费云盘</li>
-<li>FALSE：子机销毁时，保留数据盘</li>
+        :param _DeleteWithInstance: <p>数据盘是否随子机销毁。取值范围：</p><li>TRUE：子机销毁时，销毁数据盘，只支持按小时后付费云盘</li><li>FALSE：子机销毁时，保留数据盘</li>
 注意：此字段可能返回 null，表示取不到有效值。
         :type DeleteWithInstance: bool
-        :param _Encrypt: 数据盘是否加密。取值范围：
-<li>TRUE：加密</li>
-<li>FALSE：不加密</li>
+        :param _Encrypt: <p>是否加密数据盘。TRUE 表示加密，FALSE 表示不加密；具体盘型、地域及 KMS 规则由 CVM 校验。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Encrypt: bool
-        :param _ThroughputPerformance: 云硬盘性能，单位：MB/s。使用此参数可给云硬盘购买额外的性能，功能介绍和类型限制详见：[增强型 SSD 云硬盘额外性能说明](https://cloud.tencent.com/document/product/362/51896#.E5.A2.9E.E5.BC.BA.E5.9E.8B-ssd-.E4.BA.91.E7.A1.AC.E7.9B.98.E9.A2.9D.E5.A4.96.E6.80.A7.E8.83.BD)。
-当前仅支持极速型云盘（CLOUD_TSSD）和增强型SSD云硬盘（CLOUD_HSSD）且 需容量 > 460GB。
+        :param _ThroughputPerformance: <p>云硬盘性能，单位：MB/s。使用此参数可给云硬盘购买额外的性能，功能介绍和类型限制详见：<a href="https://cloud.tencent.com/document/product/362/51896#.E5.A2.9E.E5.BC.BA.E5.9E.8B-ssd-.E4.BA.91.E7.A1.AC.E7.9B.98.E9.A2.9D.E5.A4.96.E6.80.A7.E8.83.BD">增强型 SSD 云硬盘额外性能说明</a>。<br>当前仅支持极速型云盘（CLOUD_TSSD）和增强型SSD云硬盘（CLOUD_HSSD）且 需容量 &gt; 460GB。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ThroughputPerformance: int
-        :param _BurstPerformance: 突发性能。是否开启突发性能，默认取值为 false。当前该参数仅支持极速型云盘（CLOUD_TSSD）和增强型SSD云硬盘（CLOUD_HSSD）且需容量 > 460GB。
-注：内测中，需提单申请后使用。
+        :param _BurstPerformance: <p>突发性能。是否开启突发性能，默认取值为 false。当前该参数仅支持极速型云盘（CLOUD_TSSD）和增强型SSD云硬盘（CLOUD_HSSD）且需容量 &gt; 460GB。<br>注：内测中，需提单申请后使用。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type BurstPerformance: bool
+        :param _KmsKeyId: <p>数据盘加密使用的 KMS 密钥 ID。密钥有效性、权限以及与盘型和地域的适配性由 CVM 校验。</p>
+        :type KmsKeyId: str
         """
         self._DiskType = None
         self._DiskSize = None
@@ -4044,19 +4052,11 @@ class DataDisk(AbstractModel):
         self._Encrypt = None
         self._ThroughputPerformance = None
         self._BurstPerformance = None
+        self._KmsKeyId = None
 
     @property
     def DiskType(self):
-        r"""数据盘类型。数据盘类型限制详见[云硬盘类型](https://cloud.tencent.com/document/product/362/2353)。取值范围：
-<li>LOCAL_BASIC：本地硬盘</li>
-<li>LOCAL_SSD：本地SSD硬盘</li>
-<li>CLOUD_BASIC：普通云硬盘</li>
-<li>CLOUD_PREMIUM：高性能云硬盘</li>
-<li>CLOUD_SSD：SSD云硬盘</li>
-<li>CLOUD_HSSD：增强型SSD云硬盘</li>
-<li>CLOUD_TSSD：极速型SSD云硬盘</li>
-<li>CLOUD_BSSD：通用型SSD云硬盘</li>
-默认取值与系统盘类型（SystemDisk.DiskType）保持一致。
+        r"""<p>数据盘类型。数据盘类型限制详见<a href="https://cloud.tencent.com/document/product/362/2353">云硬盘类型</a>。取值范围：</p><li>LOCAL_BASIC：本地硬盘</li><li>LOCAL_SSD：本地SSD硬盘</li><li>CLOUD_BASIC：普通云硬盘</li><li>CLOUD_PREMIUM：高性能云硬盘</li><li>CLOUD_SSD：SSD云硬盘</li><li>CLOUD_HSSD：增强型SSD云硬盘</li><li>CLOUD_TSSD：极速型SSD云硬盘</li><li>CLOUD_BSSD：通用型SSD云硬盘</li>默认取值与系统盘类型（SystemDisk.DiskType）保持一致。
         :rtype: str
         """
         return self._DiskType
@@ -4067,7 +4067,7 @@ class DataDisk(AbstractModel):
 
     @property
     def DiskSize(self):
-        r"""数据盘大小，单位：GB。不同数据盘类型取值范围不同，具体限制详见：[CVM实例配置](https://cloud.tencent.com/document/product/213/2177)。默认值为0，表示不购买数据盘。更多限制详见[产品文档](https://cloud.tencent.com/document/product/362/5145)。
+        r"""<p>数据盘大小，单位：GB。不同数据盘类型取值范围不同，具体限制详见：<a href="https://cloud.tencent.com/document/product/213/2177">CVM实例配置</a>。默认值为0，表示不购买数据盘。更多限制详见<a href="https://cloud.tencent.com/document/product/362/5145">产品文档</a>。</p>
         :rtype: int
         """
         return self._DiskSize
@@ -4078,7 +4078,7 @@ class DataDisk(AbstractModel):
 
     @property
     def SnapshotId(self):
-        r"""数据盘快照 ID，可通过 [DescribeSnapshots](https://cloud.tencent.com/document/product/362/15647) 接口获取该参数。
+        r"""<p>数据盘快照 ID，可通过 <a href="https://cloud.tencent.com/document/product/362/15647">DescribeSnapshots</a> 接口获取该参数。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -4090,9 +4090,7 @@ class DataDisk(AbstractModel):
 
     @property
     def DeleteWithInstance(self):
-        r"""数据盘是否随子机销毁。取值范围：
-<li>TRUE：子机销毁时，销毁数据盘，只支持按小时后付费云盘</li>
-<li>FALSE：子机销毁时，保留数据盘</li>
+        r"""<p>数据盘是否随子机销毁。取值范围：</p><li>TRUE：子机销毁时，销毁数据盘，只支持按小时后付费云盘</li><li>FALSE：子机销毁时，保留数据盘</li>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
@@ -4104,9 +4102,7 @@ class DataDisk(AbstractModel):
 
     @property
     def Encrypt(self):
-        r"""数据盘是否加密。取值范围：
-<li>TRUE：加密</li>
-<li>FALSE：不加密</li>
+        r"""<p>是否加密数据盘。TRUE 表示加密，FALSE 表示不加密；具体盘型、地域及 KMS 规则由 CVM 校验。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
@@ -4118,8 +4114,7 @@ class DataDisk(AbstractModel):
 
     @property
     def ThroughputPerformance(self):
-        r"""云硬盘性能，单位：MB/s。使用此参数可给云硬盘购买额外的性能，功能介绍和类型限制详见：[增强型 SSD 云硬盘额外性能说明](https://cloud.tencent.com/document/product/362/51896#.E5.A2.9E.E5.BC.BA.E5.9E.8B-ssd-.E4.BA.91.E7.A1.AC.E7.9B.98.E9.A2.9D.E5.A4.96.E6.80.A7.E8.83.BD)。
-当前仅支持极速型云盘（CLOUD_TSSD）和增强型SSD云硬盘（CLOUD_HSSD）且 需容量 > 460GB。
+        r"""<p>云硬盘性能，单位：MB/s。使用此参数可给云硬盘购买额外的性能，功能介绍和类型限制详见：<a href="https://cloud.tencent.com/document/product/362/51896#.E5.A2.9E.E5.BC.BA.E5.9E.8B-ssd-.E4.BA.91.E7.A1.AC.E7.9B.98.E9.A2.9D.E5.A4.96.E6.80.A7.E8.83.BD">增强型 SSD 云硬盘额外性能说明</a>。<br>当前仅支持极速型云盘（CLOUD_TSSD）和增强型SSD云硬盘（CLOUD_HSSD）且 需容量 &gt; 460GB。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -4131,8 +4126,7 @@ class DataDisk(AbstractModel):
 
     @property
     def BurstPerformance(self):
-        r"""突发性能。是否开启突发性能，默认取值为 false。当前该参数仅支持极速型云盘（CLOUD_TSSD）和增强型SSD云硬盘（CLOUD_HSSD）且需容量 > 460GB。
-注：内测中，需提单申请后使用。
+        r"""<p>突发性能。是否开启突发性能，默认取值为 false。当前该参数仅支持极速型云盘（CLOUD_TSSD）和增强型SSD云硬盘（CLOUD_HSSD）且需容量 &gt; 460GB。<br>注：内测中，需提单申请后使用。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
@@ -4141,6 +4135,17 @@ class DataDisk(AbstractModel):
     @BurstPerformance.setter
     def BurstPerformance(self, BurstPerformance):
         self._BurstPerformance = BurstPerformance
+
+    @property
+    def KmsKeyId(self):
+        r"""<p>数据盘加密使用的 KMS 密钥 ID。密钥有效性、权限以及与盘型和地域的适配性由 CVM 校验。</p>
+        :rtype: str
+        """
+        return self._KmsKeyId
+
+    @KmsKeyId.setter
+    def KmsKeyId(self, KmsKeyId):
+        self._KmsKeyId = KmsKeyId
 
 
     def _deserialize(self, params):
@@ -4151,6 +4156,7 @@ class DataDisk(AbstractModel):
         self._Encrypt = params.get("Encrypt")
         self._ThroughputPerformance = params.get("ThroughputPerformance")
         self._BurstPerformance = params.get("BurstPerformance")
+        self._KmsKeyId = params.get("KmsKeyId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -8596,79 +8602,76 @@ class LaunchConfiguration(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ProjectId: 实例所属项目ID。
+        :param _ProjectId: <p>实例所属项目ID。</p>
         :type ProjectId: int
-        :param _LaunchConfigurationId: 启动配置ID。
+        :param _LaunchConfigurationId: <p>启动配置ID。</p>
         :type LaunchConfigurationId: str
-        :param _LaunchConfigurationName: 启动配置名称。
+        :param _LaunchConfigurationName: <p>启动配置名称。</p>
         :type LaunchConfigurationName: str
-        :param _InstanceType: 实例机型。
+        :param _InstanceType: <p>实例机型。</p>
         :type InstanceType: str
-        :param _SystemDisk: 实例系统盘配置信息。
+        :param _SystemDisk: <p>实例系统盘配置信息。</p>
         :type SystemDisk: :class:`tencentcloud.autoscaling.v20180419.models.SystemDisk`
-        :param _DataDisks: 实例数据盘配置信息。
+        :param _DataDisks: <p>实例数据盘配置信息。</p>
         :type DataDisks: list of DataDisk
-        :param _LoginSettings: 实例登录设置。
+        :param _LoginSettings: <p>实例登录设置。</p>
         :type LoginSettings: :class:`tencentcloud.autoscaling.v20180419.models.LimitedLoginSettings`
-        :param _InternetAccessible: 公网带宽相关信息设置。
+        :param _InternetAccessible: <p>公网带宽相关信息设置。</p>
         :type InternetAccessible: :class:`tencentcloud.autoscaling.v20180419.models.InternetAccessible`
-        :param _SecurityGroupIds: 实例所属安全组。
+        :param _SecurityGroupIds: <p>实例所属安全组。</p>
         :type SecurityGroupIds: list of str
-        :param _AutoScalingGroupAbstractSet: 启动配置关联的伸缩组。
+        :param _AutoScalingGroupAbstractSet: <p>启动配置关联的伸缩组。</p>
         :type AutoScalingGroupAbstractSet: list of AutoScalingGroupAbstract
-        :param _UserData: 自定义数据。
+        :param _UserData: <p>自定义数据。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type UserData: str
-        :param _CreatedTime: 启动配置创建时间，为标准`UTC`时间。
+        :param _CreatedTime: <p>启动配置创建时间，为标准<code>UTC</code>时间。</p>
         :type CreatedTime: str
-        :param _EnhancedService: 实例的增强服务启用情况与其设置。
+        :param _EnhancedService: <p>实例的增强服务启用情况与其设置。</p>
         :type EnhancedService: :class:`tencentcloud.autoscaling.v20180419.models.EnhancedService`
-        :param _ImageId: 镜像ID。
+        :param _ImageId: <p>镜像ID。</p>
         :type ImageId: str
-        :param _LaunchConfigurationStatus: 启动配置当前状态。取值范围：<li>NORMAL：正常</li><li>IMAGE_ABNORMAL：启动配置镜像异常</li><li>CBS_SNAP_ABNORMAL：启动配置数据盘快照异常</li><li>SECURITY_GROUP_ABNORMAL：启动配置安全组异常</li>
+        :param _LaunchConfigurationStatus: <p>启动配置当前状态。取值范围：<li>NORMAL：正常</li><li>IMAGE_ABNORMAL：启动配置镜像异常</li><li>CBS_SNAP_ABNORMAL：启动配置数据盘快照异常</li><li>SECURITY_GROUP_ABNORMAL：启动配置安全组异常</li></p>
         :type LaunchConfigurationStatus: str
-        :param _InstanceChargeType: 实例计费类型，取值范围如下：
-<li>POSTPAID_BY_HOUR：按小时后付费</li>
-<li>SPOTPAID：竞价付费</li>
-<li>PREPAID：预付费，即包年包月</li>
-<li>CDCPAID：专用集群付费</li>
+        :param _InstanceChargeType: <p>实例计费类型，取值范围如下：</p><li>POSTPAID_BY_HOUR：按小时后付费</li><li>SPOTPAID：竞价付费</li><li>PREPAID：预付费，即包年包月</li><li>CDCPAID：专用集群付费</li>
         :type InstanceChargeType: str
-        :param _InstanceMarketOptions: 实例的市场相关选项，如竞价实例相关参数，若指定实例的付费模式为竞价付费则该参数必传。
+        :param _InstanceMarketOptions: <p>实例的市场相关选项，如竞价实例相关参数，若指定实例的付费模式为竞价付费则该参数必传。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type InstanceMarketOptions: :class:`tencentcloud.autoscaling.v20180419.models.InstanceMarketOptionsRequest`
-        :param _InstanceTypes: 实例机型列表。
+        :param _InstanceTypes: <p>实例机型列表。</p>
         :type InstanceTypes: list of str
-        :param _InstanceTags: 实例标签列表。扩容出来的实例会自动带上标签，最多支持10个标签。
+        :param _InstanceTags: <p>实例标签列表。扩容出来的实例会自动带上标签，最多支持10个标签。</p>
         :type InstanceTags: list of InstanceTag
-        :param _Tags: 标签列表，该参数内的标签仅用于绑定启动配置，不会传递给基于该启动配置扩容的 CVM 实例。
+        :param _Tags: <p>标签列表，该参数内的标签仅用于绑定启动配置，不会传递给基于该启动配置扩容的 CVM 实例。</p>
         :type Tags: list of Tag
-        :param _VersionNumber: 版本号。
+        :param _VersionNumber: <p>版本号。</p>
         :type VersionNumber: int
-        :param _UpdatedTime: 更新时间，为标准`UTC`时间。
+        :param _UpdatedTime: <p>更新时间，为标准<code>UTC</code>时间。</p>
         :type UpdatedTime: str
-        :param _CamRoleName: CAM角色名称。可通过[DescribeRoleList](https://cloud.tencent.com/document/product/598/36223)接口返回值中的roleName获取。
+        :param _CamRoleName: <p>CAM角色名称。可通过<a href="https://cloud.tencent.com/document/product/598/36223">DescribeRoleList</a>接口返回值中的roleName获取。</p>
         :type CamRoleName: str
-        :param _LastOperationInstanceTypesCheckPolicy: 上次操作时，InstanceTypesCheckPolicy 取值。
+        :param _LastOperationInstanceTypesCheckPolicy: <p>上次操作时，InstanceTypesCheckPolicy 取值。</p>
         :type LastOperationInstanceTypesCheckPolicy: str
-        :param _HostNameSettings: 云服务器主机名（HostName）的相关设置。
+        :param _HostNameSettings: <p>云服务器主机名（HostName）的相关设置。</p>
         :type HostNameSettings: :class:`tencentcloud.autoscaling.v20180419.models.HostNameSettings`
-        :param _InstanceNameSettings: 云服务器实例名（InstanceName）的相关设置。
+        :param _InstanceNameSettings: <p>云服务器实例名（InstanceName）的相关设置。</p>
         :type InstanceNameSettings: :class:`tencentcloud.autoscaling.v20180419.models.InstanceNameSettings`
-        :param _InstanceChargePrepaid: 预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月实例的购买时长、是否设置自动续费等属性。若指定实例的付费模式为预付费则该参数必传。
+        :param _InstanceChargePrepaid: <p>预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月实例的购买时长、是否设置自动续费等属性。若指定实例的付费模式为预付费则该参数必传。</p>
         :type InstanceChargePrepaid: :class:`tencentcloud.autoscaling.v20180419.models.InstanceChargePrepaid`
-        :param _DiskTypePolicy: 云盘类型选择策略。取值范围：<li>ORIGINAL：使用设置的云盘类型</li><li>AUTOMATIC：自动选择当前可用区下可用的云盘类型</li>
+        :param _DiskTypePolicy: <p>云盘类型选择策略。取值范围：<li>ORIGINAL：使用设置的云盘类型</li><li>AUTOMATIC：自动选择当前可用区下可用的云盘类型</li></p>
         :type DiskTypePolicy: str
-        :param _HpcClusterId: 高性能计算集群ID。<br>
-注意：此字段默认为空。
+        :param _HpcClusterId: <p>高性能计算集群ID。<br><br>注意：此字段默认为空。</p>
         :type HpcClusterId: str
-        :param _IPv6InternetAccessible: IPv6公网带宽相关信息设置。
+        :param _IPv6InternetAccessible: <p>IPv6公网带宽相关信息设置。</p>
         :type IPv6InternetAccessible: :class:`tencentcloud.autoscaling.v20180419.models.IPv6InternetAccessible`
-        :param _DisasterRecoverGroupIds: 置放群组id，仅支持指定一个。
+        :param _DisasterRecoverGroupIds: <p>置放群组id，仅支持指定一个。</p>
         :type DisasterRecoverGroupIds: list of str
-        :param _ImageFamily: 镜像族名称。
+        :param _ImageFamily: <p>镜像族名称。</p>
         :type ImageFamily: str
-        :param _DedicatedClusterId: 本地专用集群 ID。
+        :param _DedicatedClusterId: <p>本地专用集群 ID。</p>
         :type DedicatedClusterId: str
+        :param _NetworkInterfaces: <p>启动配置的弹性网卡配置。</p>
+        :type NetworkInterfaces: list of NetworkInterface
         """
         self._ProjectId = None
         self._LaunchConfigurationId = None
@@ -8703,10 +8706,11 @@ class LaunchConfiguration(AbstractModel):
         self._DisasterRecoverGroupIds = None
         self._ImageFamily = None
         self._DedicatedClusterId = None
+        self._NetworkInterfaces = None
 
     @property
     def ProjectId(self):
-        r"""实例所属项目ID。
+        r"""<p>实例所属项目ID。</p>
         :rtype: int
         """
         return self._ProjectId
@@ -8717,7 +8721,7 @@ class LaunchConfiguration(AbstractModel):
 
     @property
     def LaunchConfigurationId(self):
-        r"""启动配置ID。
+        r"""<p>启动配置ID。</p>
         :rtype: str
         """
         return self._LaunchConfigurationId
@@ -8728,7 +8732,7 @@ class LaunchConfiguration(AbstractModel):
 
     @property
     def LaunchConfigurationName(self):
-        r"""启动配置名称。
+        r"""<p>启动配置名称。</p>
         :rtype: str
         """
         return self._LaunchConfigurationName
@@ -8739,7 +8743,7 @@ class LaunchConfiguration(AbstractModel):
 
     @property
     def InstanceType(self):
-        r"""实例机型。
+        r"""<p>实例机型。</p>
         :rtype: str
         """
         return self._InstanceType
@@ -8750,7 +8754,7 @@ class LaunchConfiguration(AbstractModel):
 
     @property
     def SystemDisk(self):
-        r"""实例系统盘配置信息。
+        r"""<p>实例系统盘配置信息。</p>
         :rtype: :class:`tencentcloud.autoscaling.v20180419.models.SystemDisk`
         """
         return self._SystemDisk
@@ -8761,7 +8765,7 @@ class LaunchConfiguration(AbstractModel):
 
     @property
     def DataDisks(self):
-        r"""实例数据盘配置信息。
+        r"""<p>实例数据盘配置信息。</p>
         :rtype: list of DataDisk
         """
         return self._DataDisks
@@ -8772,7 +8776,7 @@ class LaunchConfiguration(AbstractModel):
 
     @property
     def LoginSettings(self):
-        r"""实例登录设置。
+        r"""<p>实例登录设置。</p>
         :rtype: :class:`tencentcloud.autoscaling.v20180419.models.LimitedLoginSettings`
         """
         return self._LoginSettings
@@ -8783,7 +8787,7 @@ class LaunchConfiguration(AbstractModel):
 
     @property
     def InternetAccessible(self):
-        r"""公网带宽相关信息设置。
+        r"""<p>公网带宽相关信息设置。</p>
         :rtype: :class:`tencentcloud.autoscaling.v20180419.models.InternetAccessible`
         """
         return self._InternetAccessible
@@ -8794,7 +8798,7 @@ class LaunchConfiguration(AbstractModel):
 
     @property
     def SecurityGroupIds(self):
-        r"""实例所属安全组。
+        r"""<p>实例所属安全组。</p>
         :rtype: list of str
         """
         return self._SecurityGroupIds
@@ -8805,7 +8809,7 @@ class LaunchConfiguration(AbstractModel):
 
     @property
     def AutoScalingGroupAbstractSet(self):
-        r"""启动配置关联的伸缩组。
+        r"""<p>启动配置关联的伸缩组。</p>
         :rtype: list of AutoScalingGroupAbstract
         """
         return self._AutoScalingGroupAbstractSet
@@ -8816,7 +8820,7 @@ class LaunchConfiguration(AbstractModel):
 
     @property
     def UserData(self):
-        r"""自定义数据。
+        r"""<p>自定义数据。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -8828,7 +8832,7 @@ class LaunchConfiguration(AbstractModel):
 
     @property
     def CreatedTime(self):
-        r"""启动配置创建时间，为标准`UTC`时间。
+        r"""<p>启动配置创建时间，为标准<code>UTC</code>时间。</p>
         :rtype: str
         """
         return self._CreatedTime
@@ -8839,7 +8843,7 @@ class LaunchConfiguration(AbstractModel):
 
     @property
     def EnhancedService(self):
-        r"""实例的增强服务启用情况与其设置。
+        r"""<p>实例的增强服务启用情况与其设置。</p>
         :rtype: :class:`tencentcloud.autoscaling.v20180419.models.EnhancedService`
         """
         return self._EnhancedService
@@ -8850,7 +8854,7 @@ class LaunchConfiguration(AbstractModel):
 
     @property
     def ImageId(self):
-        r"""镜像ID。
+        r"""<p>镜像ID。</p>
         :rtype: str
         """
         return self._ImageId
@@ -8861,7 +8865,7 @@ class LaunchConfiguration(AbstractModel):
 
     @property
     def LaunchConfigurationStatus(self):
-        r"""启动配置当前状态。取值范围：<li>NORMAL：正常</li><li>IMAGE_ABNORMAL：启动配置镜像异常</li><li>CBS_SNAP_ABNORMAL：启动配置数据盘快照异常</li><li>SECURITY_GROUP_ABNORMAL：启动配置安全组异常</li>
+        r"""<p>启动配置当前状态。取值范围：<li>NORMAL：正常</li><li>IMAGE_ABNORMAL：启动配置镜像异常</li><li>CBS_SNAP_ABNORMAL：启动配置数据盘快照异常</li><li>SECURITY_GROUP_ABNORMAL：启动配置安全组异常</li></p>
         :rtype: str
         """
         return self._LaunchConfigurationStatus
@@ -8872,11 +8876,7 @@ class LaunchConfiguration(AbstractModel):
 
     @property
     def InstanceChargeType(self):
-        r"""实例计费类型，取值范围如下：
-<li>POSTPAID_BY_HOUR：按小时后付费</li>
-<li>SPOTPAID：竞价付费</li>
-<li>PREPAID：预付费，即包年包月</li>
-<li>CDCPAID：专用集群付费</li>
+        r"""<p>实例计费类型，取值范围如下：</p><li>POSTPAID_BY_HOUR：按小时后付费</li><li>SPOTPAID：竞价付费</li><li>PREPAID：预付费，即包年包月</li><li>CDCPAID：专用集群付费</li>
         :rtype: str
         """
         return self._InstanceChargeType
@@ -8887,7 +8887,7 @@ class LaunchConfiguration(AbstractModel):
 
     @property
     def InstanceMarketOptions(self):
-        r"""实例的市场相关选项，如竞价实例相关参数，若指定实例的付费模式为竞价付费则该参数必传。
+        r"""<p>实例的市场相关选项，如竞价实例相关参数，若指定实例的付费模式为竞价付费则该参数必传。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.autoscaling.v20180419.models.InstanceMarketOptionsRequest`
         """
@@ -8899,7 +8899,7 @@ class LaunchConfiguration(AbstractModel):
 
     @property
     def InstanceTypes(self):
-        r"""实例机型列表。
+        r"""<p>实例机型列表。</p>
         :rtype: list of str
         """
         return self._InstanceTypes
@@ -8910,7 +8910,7 @@ class LaunchConfiguration(AbstractModel):
 
     @property
     def InstanceTags(self):
-        r"""实例标签列表。扩容出来的实例会自动带上标签，最多支持10个标签。
+        r"""<p>实例标签列表。扩容出来的实例会自动带上标签，最多支持10个标签。</p>
         :rtype: list of InstanceTag
         """
         return self._InstanceTags
@@ -8921,7 +8921,7 @@ class LaunchConfiguration(AbstractModel):
 
     @property
     def Tags(self):
-        r"""标签列表，该参数内的标签仅用于绑定启动配置，不会传递给基于该启动配置扩容的 CVM 实例。
+        r"""<p>标签列表，该参数内的标签仅用于绑定启动配置，不会传递给基于该启动配置扩容的 CVM 实例。</p>
         :rtype: list of Tag
         """
         return self._Tags
@@ -8932,7 +8932,7 @@ class LaunchConfiguration(AbstractModel):
 
     @property
     def VersionNumber(self):
-        r"""版本号。
+        r"""<p>版本号。</p>
         :rtype: int
         """
         return self._VersionNumber
@@ -8943,7 +8943,7 @@ class LaunchConfiguration(AbstractModel):
 
     @property
     def UpdatedTime(self):
-        r"""更新时间，为标准`UTC`时间。
+        r"""<p>更新时间，为标准<code>UTC</code>时间。</p>
         :rtype: str
         """
         return self._UpdatedTime
@@ -8954,7 +8954,7 @@ class LaunchConfiguration(AbstractModel):
 
     @property
     def CamRoleName(self):
-        r"""CAM角色名称。可通过[DescribeRoleList](https://cloud.tencent.com/document/product/598/36223)接口返回值中的roleName获取。
+        r"""<p>CAM角色名称。可通过<a href="https://cloud.tencent.com/document/product/598/36223">DescribeRoleList</a>接口返回值中的roleName获取。</p>
         :rtype: str
         """
         return self._CamRoleName
@@ -8965,7 +8965,7 @@ class LaunchConfiguration(AbstractModel):
 
     @property
     def LastOperationInstanceTypesCheckPolicy(self):
-        r"""上次操作时，InstanceTypesCheckPolicy 取值。
+        r"""<p>上次操作时，InstanceTypesCheckPolicy 取值。</p>
         :rtype: str
         """
         return self._LastOperationInstanceTypesCheckPolicy
@@ -8976,7 +8976,7 @@ class LaunchConfiguration(AbstractModel):
 
     @property
     def HostNameSettings(self):
-        r"""云服务器主机名（HostName）的相关设置。
+        r"""<p>云服务器主机名（HostName）的相关设置。</p>
         :rtype: :class:`tencentcloud.autoscaling.v20180419.models.HostNameSettings`
         """
         return self._HostNameSettings
@@ -8987,7 +8987,7 @@ class LaunchConfiguration(AbstractModel):
 
     @property
     def InstanceNameSettings(self):
-        r"""云服务器实例名（InstanceName）的相关设置。
+        r"""<p>云服务器实例名（InstanceName）的相关设置。</p>
         :rtype: :class:`tencentcloud.autoscaling.v20180419.models.InstanceNameSettings`
         """
         return self._InstanceNameSettings
@@ -8998,7 +8998,7 @@ class LaunchConfiguration(AbstractModel):
 
     @property
     def InstanceChargePrepaid(self):
-        r"""预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月实例的购买时长、是否设置自动续费等属性。若指定实例的付费模式为预付费则该参数必传。
+        r"""<p>预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月实例的购买时长、是否设置自动续费等属性。若指定实例的付费模式为预付费则该参数必传。</p>
         :rtype: :class:`tencentcloud.autoscaling.v20180419.models.InstanceChargePrepaid`
         """
         return self._InstanceChargePrepaid
@@ -9009,7 +9009,7 @@ class LaunchConfiguration(AbstractModel):
 
     @property
     def DiskTypePolicy(self):
-        r"""云盘类型选择策略。取值范围：<li>ORIGINAL：使用设置的云盘类型</li><li>AUTOMATIC：自动选择当前可用区下可用的云盘类型</li>
+        r"""<p>云盘类型选择策略。取值范围：<li>ORIGINAL：使用设置的云盘类型</li><li>AUTOMATIC：自动选择当前可用区下可用的云盘类型</li></p>
         :rtype: str
         """
         return self._DiskTypePolicy
@@ -9020,8 +9020,7 @@ class LaunchConfiguration(AbstractModel):
 
     @property
     def HpcClusterId(self):
-        r"""高性能计算集群ID。<br>
-注意：此字段默认为空。
+        r"""<p>高性能计算集群ID。<br><br>注意：此字段默认为空。</p>
         :rtype: str
         """
         return self._HpcClusterId
@@ -9032,7 +9031,7 @@ class LaunchConfiguration(AbstractModel):
 
     @property
     def IPv6InternetAccessible(self):
-        r"""IPv6公网带宽相关信息设置。
+        r"""<p>IPv6公网带宽相关信息设置。</p>
         :rtype: :class:`tencentcloud.autoscaling.v20180419.models.IPv6InternetAccessible`
         """
         return self._IPv6InternetAccessible
@@ -9043,7 +9042,7 @@ class LaunchConfiguration(AbstractModel):
 
     @property
     def DisasterRecoverGroupIds(self):
-        r"""置放群组id，仅支持指定一个。
+        r"""<p>置放群组id，仅支持指定一个。</p>
         :rtype: list of str
         """
         return self._DisasterRecoverGroupIds
@@ -9054,7 +9053,7 @@ class LaunchConfiguration(AbstractModel):
 
     @property
     def ImageFamily(self):
-        r"""镜像族名称。
+        r"""<p>镜像族名称。</p>
         :rtype: str
         """
         return self._ImageFamily
@@ -9065,7 +9064,7 @@ class LaunchConfiguration(AbstractModel):
 
     @property
     def DedicatedClusterId(self):
-        r"""本地专用集群 ID。
+        r"""<p>本地专用集群 ID。</p>
         :rtype: str
         """
         return self._DedicatedClusterId
@@ -9073,6 +9072,17 @@ class LaunchConfiguration(AbstractModel):
     @DedicatedClusterId.setter
     def DedicatedClusterId(self, DedicatedClusterId):
         self._DedicatedClusterId = DedicatedClusterId
+
+    @property
+    def NetworkInterfaces(self):
+        r"""<p>启动配置的弹性网卡配置。</p>
+        :rtype: list of NetworkInterface
+        """
+        return self._NetworkInterfaces
+
+    @NetworkInterfaces.setter
+    def NetworkInterfaces(self, NetworkInterfaces):
+        self._NetworkInterfaces = NetworkInterfaces
 
 
     def _deserialize(self, params):
@@ -9147,6 +9157,12 @@ class LaunchConfiguration(AbstractModel):
         self._DisasterRecoverGroupIds = params.get("DisasterRecoverGroupIds")
         self._ImageFamily = params.get("ImageFamily")
         self._DedicatedClusterId = params.get("DedicatedClusterId")
+        if params.get("NetworkInterfaces") is not None:
+            self._NetworkInterfaces = []
+            for item in params.get("NetworkInterfaces"):
+                obj = NetworkInterface()
+                obj._deserialize(item)
+                self._NetworkInterfaces.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -9917,7 +9933,7 @@ class ModifyAutoScalingGroupRequest(AbstractModel):
         :type DesiredCapacity: int
         :param _LaunchConfigurationId: <p>启动配置ID。可以通过如下方式获取可用的启动配置ID:</p><li>通过登录 [控制台](https://console.cloud.tencent.com/autoscaling/config) 查询启动配置ID。</li><li>通过调用接口 [DescribeLaunchConfigurations](https://cloud.tencent.com/document/api/377/20445) ，取返回信息中的 LaunchConfigurationId 获取启动配置ID。</li>
         :type LaunchConfigurationId: str
-        :param _MaxSize: <p>最大实例数，取值范围为 [0,2000]。需满足最大值大于等于期望值，期望值大于等于最小值。</p>
+        :param _MaxSize: <p>最大实例数，取值范围为 [0,2000]。需满足最大值大于等于期望值，期望值大于等于最小值。</p><p>取值范围：[0, 2000]</p>
         :type MaxSize: int
         :param _MinSize: <p>最小实例数，取值范围为 [0,2000]。需满足最大值大于等于期望值，期望值大于等于最小值。</p>
         :type MinSize: int
@@ -10041,7 +10057,7 @@ class ModifyAutoScalingGroupRequest(AbstractModel):
 
     @property
     def MaxSize(self):
-        r"""<p>最大实例数，取值范围为 [0,2000]。需满足最大值大于等于期望值，期望值大于等于最小值。</p>
+        r"""<p>最大实例数，取值范围为 [0,2000]。需满足最大值大于等于期望值，期望值大于等于最小值。</p><p>取值范围：[0, 2000]</p>
         :rtype: int
         """
         return self._MaxSize
@@ -10448,87 +10464,60 @@ class ModifyLaunchConfigurationAttributesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _LaunchConfigurationId: 启动配置ID。可通过登录 [控制台](https://console.cloud.tencent.com/autoscaling/config) 或调用接口 [DescribeLaunchConfigurations](https://cloud.tencent.com/document/api/377/20445) ，取返回信息中的 LaunchConfigurationId 获取启动配置ID。
+        :param _LaunchConfigurationId: <p>启动配置ID。可通过登录 <a href="https://console.cloud.tencent.com/autoscaling/config">控制台</a> 或调用接口 <a href="https://cloud.tencent.com/document/api/377/20445">DescribeLaunchConfigurations</a> ，取返回信息中的 LaunchConfigurationId 获取启动配置ID。</p>
         :type LaunchConfigurationId: str
-        :param _ImageId: 指定有效的[镜像](https://cloud.tencent.com/document/product/213/4940)ID，格式形如`img-8toqc6s3`。镜像类型分为四种：<br/><li>公共镜像</li><li>自定义镜像</li><li>共享镜像</li><li>服务市场镜像</li><br/>可通过以下方式获取可用的镜像ID：<br/><li>`公共镜像`、`自定义镜像`、`共享镜像`的镜像ID可通过登录[控制台](https://console.cloud.tencent.com/cvm/image?rid=1&imageType=PUBLIC_IMAGE)查询；`服务镜像市场`的镜像ID可通过[云市场](https://market.cloud.tencent.com/list)查询。</li><li>通过调用接口 [DescribeImages](https://cloud.tencent.com/document/api/213/15715) ，取返回信息中的`ImageId`字段。</li>
+        :param _ImageId: <p>指定有效的<a href="https://cloud.tencent.com/document/product/213/4940">镜像</a>ID，格式形如<code>img-8toqc6s3</code>。镜像类型分为四种：<br><li>公共镜像</li><li>自定义镜像</li><li>共享镜像</li><li>服务市场镜像</li><br>可通过以下方式获取可用的镜像ID：<br><li><code>公共镜像</code>、<code>自定义镜像</code>、<code>共享镜像</code>的镜像ID可通过登录<a href="https://console.cloud.tencent.com/cvm/image?rid=1&amp;imageType=PUBLIC_IMAGE">控制台</a>查询；<code>服务镜像市场</code>的镜像ID可通过<a href="https://market.cloud.tencent.com/list">云市场</a>查询。</li><li>通过调用接口 <a href="https://cloud.tencent.com/document/api/213/15715">DescribeImages</a> ，取返回信息中的<code>ImageId</code>字段。</li></p>
         :type ImageId: str
-        :param _InstanceTypes: 实例类型列表，不同实例机型指定了不同的资源规格，最多支持10种实例机型。
-InstanceType 指定单一实例类型，通过设置 InstanceTypes可以指定多实例类型，并使原有的InstanceType失效。具体取值可通过调用接口[DescribeInstanceTypeConfigs](https://cloud.tencent.com/document/api/213/15749)来获得最新的规格表或参见[实例规格描述](https://cloud.tencent.com/document/product/213/11518)。
+        :param _InstanceTypes: <p>实例类型列表，不同实例机型指定了不同的资源规格，最多支持10种实例机型。<br>InstanceType 指定单一实例类型，通过设置 InstanceTypes可以指定多实例类型，并使原有的InstanceType失效。具体取值可通过调用接口<a href="https://cloud.tencent.com/document/api/213/15749">DescribeInstanceTypeConfigs</a>来获得最新的规格表或参见<a href="https://cloud.tencent.com/document/product/213/11518">实例规格描述</a>。</p>
         :type InstanceTypes: list of str
-        :param _InstanceTypesCheckPolicy: 实例类型校验策略，在实际修改 InstanceTypes 时发挥作用，取值包括 ALL 和 ANY，默认取值为ANY。
-<li> ALL，所有实例类型（InstanceType）都可用则通过校验，否则校验报错。</li> 
-<li> ANY，存在任何一个实例类型（InstanceType）可用则通过校验，否则校验报错。</li> 
-实例类型不可用的常见原因包括该实例类型售罄、对应云盘售罄等。
-如果 InstanceTypes 中一款机型不存在或者已下线，则无论 InstanceTypesCheckPolicy 采用何种取值，都会校验报错。
+        :param _InstanceTypesCheckPolicy: <p>实例类型校验策略，在实际修改 InstanceTypes 时发挥作用，取值包括 ALL 和 ANY，默认取值为ANY。</p><li> ALL，所有实例类型（InstanceType）都可用则通过校验，否则校验报错。</li> <li> ANY，存在任何一个实例类型（InstanceType）可用则通过校验，否则校验报错。</li> 实例类型不可用的常见原因包括该实例类型售罄、对应云盘售罄等。如果 InstanceTypes 中一款机型不存在或者已下线，则无论 InstanceTypesCheckPolicy 采用何种取值，都会校验报错。
         :type InstanceTypesCheckPolicy: str
-        :param _LaunchConfigurationName: 启动配置显示名称。名称仅支持中文、英文、数字、下划线、分隔符"-"、小数点，最大长度不能超60个字节。
+        :param _LaunchConfigurationName: <p>启动配置显示名称。名称仅支持中文、英文、数字、下划线、分隔符&quot;-&quot;、小数点，最大长度不能超60个字节。</p>
         :type LaunchConfigurationName: str
-        :param _UserData: 经过 Base64 编码后的自定义数据，最大长度不超过16KB。如果要清空UserData，则指定其为空字符串。
+        :param _UserData: <p>经过 Base64 编码后的自定义数据，最大长度不超过16KB。如果要清空UserData，则指定其为空字符串。</p>
         :type UserData: str
-        :param _SecurityGroupIds: 实例所属安全组。该参数可以通过调用 [DescribeSecurityGroups](https://cloud.tencent.com/document/api/215/15808) 的返回值中的`SecurityGroupId`字段来获取。
-若指定该参数，请至少提供一个安全组，列表顺序有先后。
+        :param _SecurityGroupIds: <p>实例所属安全组。该参数可以通过调用 <a href="https://cloud.tencent.com/document/api/215/15808">DescribeSecurityGroups</a> 的返回值中的<code>SecurityGroupId</code>字段来获取。<br>若指定该参数，请至少提供一个安全组，列表顺序有先后。</p>
         :type SecurityGroupIds: list of str
-        :param _InternetAccessible: 公网带宽相关信息设置。
-当公网出带宽上限为0Mbps时，不支持修改为开通分配公网IP；相应的，当前为开通分配公网IP时，修改的公网出带宽上限值必须大于0Mbps。
+        :param _InternetAccessible: <p>公网带宽相关信息设置。<br>当公网出带宽上限为0Mbps时，不支持修改为开通分配公网IP；相应的，当前为开通分配公网IP时，修改的公网出带宽上限值必须大于0Mbps。</p>
         :type InternetAccessible: :class:`tencentcloud.autoscaling.v20180419.models.InternetAccessible`
-        :param _InstanceChargeType: 实例计费类型。具体取值范围如下：
-<li>POSTPAID_BY_HOUR：按小时后付费</li>
-<li>SPOTPAID：竞价付费</li>
-<li>PREPAID：预付费，即包年包月</li>
-<li>CDCPAID：专用集群付费</li>
+        :param _InstanceChargeType: <p>实例计费类型。具体取值范围如下：</p><li>POSTPAID_BY_HOUR：按小时后付费</li><li>SPOTPAID：竞价付费</li><li>PREPAID：预付费，即包年包月</li><li>CDCPAID：专用集群付费</li>
         :type InstanceChargeType: str
-        :param _InstanceChargePrepaid: 预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月实例的购买时长、是否设置自动续费等属性。
-若修改实例的付费模式为预付费，则该参数必传；从预付费修改为其他付费模式时，本字段原信息会自动丢弃。
-当新增该字段时，必须传递购买实例的时长，其它未传递字段会设置为默认值。
-当修改本字段时，当前付费模式必须为预付费。
+        :param _InstanceChargePrepaid: <p>预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月实例的购买时长、是否设置自动续费等属性。<br>若修改实例的付费模式为预付费，则该参数必传；从预付费修改为其他付费模式时，本字段原信息会自动丢弃。<br>当新增该字段时，必须传递购买实例的时长，其它未传递字段会设置为默认值。<br>当修改本字段时，当前付费模式必须为预付费。</p>
         :type InstanceChargePrepaid: :class:`tencentcloud.autoscaling.v20180419.models.InstanceChargePrepaid`
-        :param _InstanceMarketOptions: 实例的市场相关选项，如竞价实例相关参数。
-若修改实例的付费模式为竞价付费，则该参数必传；从竞价付费修改为其他付费模式时，本字段原信息会自动丢弃。
-当新增该字段时，必须传递竞价相关选项下的竞价出价，其它未传递字段会设置为默认值。
-当修改本字段时，当前付费模式必须为竞价付费。
+        :param _InstanceMarketOptions: <p>实例的市场相关选项，如竞价实例相关参数。<br>若修改实例的付费模式为竞价付费，则该参数必传；从竞价付费修改为其他付费模式时，本字段原信息会自动丢弃。<br>当新增该字段时，必须传递竞价相关选项下的竞价出价，其它未传递字段会设置为默认值。<br>当修改本字段时，当前付费模式必须为竞价付费。</p>
         :type InstanceMarketOptions: :class:`tencentcloud.autoscaling.v20180419.models.InstanceMarketOptionsRequest`
-        :param _DiskTypePolicy: 云盘类型选择策略，取值范围：
-<li>ORIGINAL：使用设置的云盘类型。</li>
-<li>AUTOMATIC：自动选择当前可用的云盘类型。</li>
+        :param _DiskTypePolicy: <p>云盘类型选择策略，取值范围：</p><li>ORIGINAL：使用设置的云盘类型。</li><li>AUTOMATIC：自动选择当前可用的云盘类型。</li>
         :type DiskTypePolicy: str
-        :param _SystemDisk: 实例系统盘配置信息。
+        :param _SystemDisk: <p>实例系统盘配置信息。</p>
         :type SystemDisk: :class:`tencentcloud.autoscaling.v20180419.models.SystemDisk`
-        :param _DataDisks: 实例数据盘配置信息。
-最多支持指定11块数据盘。采取整体修改，因此请提供修改后的全部值。
-数据盘类型默认与系统盘类型保持一致。
+        :param _DataDisks: <p>实例数据盘配置信息。<br>最多支持指定11块数据盘。采取整体修改，因此请提供修改后的全部值。<br>数据盘类型默认与系统盘类型保持一致。</p>
         :type DataDisks: list of DataDisk
-        :param _HostNameSettings: 云服务器主机名（HostName）的相关设置。
-不支持windows实例设置主机名。
-新增该属性时，必须传递云服务器的主机名，其它未传递字段会设置为默认值。
-会校验主机名(如果存在后缀则加上后缀)是否超过最大位数46。
+        :param _HostNameSettings: <p>云服务器主机名（HostName）的相关设置。<br>不支持windows实例设置主机名。<br>新增该属性时，必须传递云服务器的主机名，其它未传递字段会设置为默认值。<br>会校验主机名(如果存在后缀则加上后缀)是否超过最大位数46。</p>
         :type HostNameSettings: :class:`tencentcloud.autoscaling.v20180419.models.HostNameSettings`
-        :param _InstanceNameSettings: 云服务器（InstanceName）实例名的相关设置。 
-如果用户在启动配置中设置此字段，则伸缩组创建出的实例 InstanceName 参照此字段进行设置，并传递给 CVM；如果用户未在启动配置中设置此字段，则伸缩组创建出的实例 InstanceName 按照“as-{{ 伸缩组AutoScalingGroupName }}”进行设置，并传递给 CVM。
-新增该属性时，必须传递云服务器的实例名称，其它未传递字段会设置为默认值。
-会校验实例名(如果存在后缀则加上后缀)是否超过最大位数108。
+        :param _InstanceNameSettings: <p>云服务器（InstanceName）实例名的相关设置。<br>如果用户在启动配置中设置此字段，则伸缩组创建出的实例 InstanceName 参照此字段进行设置，并传递给 CVM；如果用户未在启动配置中设置此字段，则伸缩组创建出的实例 InstanceName 按照“as-{{ 伸缩组AutoScalingGroupName }}”进行设置，并传递给 CVM。<br>新增该属性时，必须传递云服务器的实例名称，其它未传递字段会设置为默认值。<br>会校验实例名(如果存在后缀则加上后缀)是否超过最大位数108。</p>
         :type InstanceNameSettings: :class:`tencentcloud.autoscaling.v20180419.models.InstanceNameSettings`
-        :param _EnhancedService: 增强服务。通过该参数可以指定是否开启云安全、云监控等服务。
+        :param _EnhancedService: <p>增强服务。通过该参数可以指定是否开启云安全、云监控等服务。</p>
         :type EnhancedService: :class:`tencentcloud.autoscaling.v20180419.models.EnhancedService`
-        :param _CamRoleName: CAM角色名称。可通过[DescribeRoleList](https://cloud.tencent.com/document/product/598/36223)接口返回值中的roleName获取。
+        :param _CamRoleName: <p>CAM角色名称。可通过<a href="https://cloud.tencent.com/document/product/598/36223">DescribeRoleList</a>接口返回值中的roleName获取。</p>
         :type CamRoleName: str
-        :param _HpcClusterId: 高性能计算集群ID。可通过调用[DescribeHpcClusters](https://cloud.tencent.com/document/product/213/83220)接口获取该参数。
-注意：此字段默认为空。
+        :param _HpcClusterId: <p>高性能计算集群ID。可通过调用<a href="https://cloud.tencent.com/document/product/213/83220">DescribeHpcClusters</a>接口获取该参数。<br>注意：此字段默认为空。</p>
         :type HpcClusterId: str
-        :param _IPv6InternetAccessible: IPv6公网带宽相关信息设置。若新建实例包含IPv6地址，该参数可为新建实例的IPv6地址分配公网带宽。关联启动配置的伸缩组Ipv6AddressCount参数为0时，该参数不会生效。
+        :param _IPv6InternetAccessible: <p>IPv6公网带宽相关信息设置。若新建实例包含IPv6地址，该参数可为新建实例的IPv6地址分配公网带宽。关联启动配置的伸缩组Ipv6AddressCount参数为0时，该参数不会生效。</p>
         :type IPv6InternetAccessible: :class:`tencentcloud.autoscaling.v20180419.models.IPv6InternetAccessible`
-        :param _DisasterRecoverGroupIds: 置放群组id，仅支持指定一个。可通过调用[DescribeDisasterRecoverGroups](https://cloud.tencent.com/document/product/213/17810)接口获取该参数。
+        :param _DisasterRecoverGroupIds: <p>置放群组id，仅支持指定一个。可通过调用<a href="https://cloud.tencent.com/document/product/213/17810">DescribeDisasterRecoverGroups</a>接口获取该参数。</p>
         :type DisasterRecoverGroupIds: list of str
-        :param _LoginSettings: 实例登录设置，包括密码、密钥或保持镜像的原始登录设置。<br>请注意，指定新的登录设置会覆盖原有登录设置。例如，如果您之前使用密码登录，使用该参数将登录设置修改为密钥，则原有密码被清除。
+        :param _LoginSettings: <p>实例登录设置，包括密码、密钥或保持镜像的原始登录设置。<br>请注意，指定新的登录设置会覆盖原有登录设置。例如，如果您之前使用密码登录，使用该参数将登录设置修改为密钥，则原有密码被清除。</p>
         :type LoginSettings: :class:`tencentcloud.autoscaling.v20180419.models.LoginSettings`
-        :param _InstanceTags: 实例标签列表。通过指定该参数，可以为扩容的实例绑定标签。最多支持指定10个标签。
-该参数会覆盖原有的实例标签列表，如需新增标签，需将新标签和原有标签一并传入。
+        :param _InstanceTags: <p>实例标签列表。通过指定该参数，可以为扩容的实例绑定标签。最多支持指定10个标签。<br>该参数会覆盖原有的实例标签列表，如需新增标签，需将新标签和原有标签一并传入。</p>
         :type InstanceTags: list of InstanceTag
-        :param _ImageFamily: 镜像族名称。可通过调用[DescribeImages](https://cloud.tencent.com/document/product/213/15715)接口获取该参数。
+        :param _ImageFamily: <p>镜像族名称。可通过调用<a href="https://cloud.tencent.com/document/product/213/15715">DescribeImages</a>接口获取该参数。</p>
         :type ImageFamily: str
-        :param _DedicatedClusterId: 本地专用集群ID。
+        :param _DedicatedClusterId: <p>本地专用集群ID。</p>
         :type DedicatedClusterId: str
-        :param _Metadata: 自定义metadata。
+        :param _Metadata: <p>自定义metadata。</p>
         :type Metadata: :class:`tencentcloud.autoscaling.v20180419.models.Metadata`
+        :param _NetworkInterfaces: <p>替换启动配置中的弹性网卡配置。</p><p>入参限制：最多 17 项；必须显式包含且只能包含一个 PRIMARY，AS 不自动补齐主网卡；显式空数组非法。</p><p>字段规则与 CreateLaunchConfiguration 一致。清除请调用 ClearLaunchConfigurationAttributes 并传 ClearNetworkInterfaces=true。</p>
+        :type NetworkInterfaces: list of NetworkInterface
         """
         self._LaunchConfigurationId = None
         self._ImageId = None
@@ -10556,10 +10545,11 @@ InstanceType 指定单一实例类型，通过设置 InstanceTypes可以指定�
         self._ImageFamily = None
         self._DedicatedClusterId = None
         self._Metadata = None
+        self._NetworkInterfaces = None
 
     @property
     def LaunchConfigurationId(self):
-        r"""启动配置ID。可通过登录 [控制台](https://console.cloud.tencent.com/autoscaling/config) 或调用接口 [DescribeLaunchConfigurations](https://cloud.tencent.com/document/api/377/20445) ，取返回信息中的 LaunchConfigurationId 获取启动配置ID。
+        r"""<p>启动配置ID。可通过登录 <a href="https://console.cloud.tencent.com/autoscaling/config">控制台</a> 或调用接口 <a href="https://cloud.tencent.com/document/api/377/20445">DescribeLaunchConfigurations</a> ，取返回信息中的 LaunchConfigurationId 获取启动配置ID。</p>
         :rtype: str
         """
         return self._LaunchConfigurationId
@@ -10570,7 +10560,7 @@ InstanceType 指定单一实例类型，通过设置 InstanceTypes可以指定�
 
     @property
     def ImageId(self):
-        r"""指定有效的[镜像](https://cloud.tencent.com/document/product/213/4940)ID，格式形如`img-8toqc6s3`。镜像类型分为四种：<br/><li>公共镜像</li><li>自定义镜像</li><li>共享镜像</li><li>服务市场镜像</li><br/>可通过以下方式获取可用的镜像ID：<br/><li>`公共镜像`、`自定义镜像`、`共享镜像`的镜像ID可通过登录[控制台](https://console.cloud.tencent.com/cvm/image?rid=1&imageType=PUBLIC_IMAGE)查询；`服务镜像市场`的镜像ID可通过[云市场](https://market.cloud.tencent.com/list)查询。</li><li>通过调用接口 [DescribeImages](https://cloud.tencent.com/document/api/213/15715) ，取返回信息中的`ImageId`字段。</li>
+        r"""<p>指定有效的<a href="https://cloud.tencent.com/document/product/213/4940">镜像</a>ID，格式形如<code>img-8toqc6s3</code>。镜像类型分为四种：<br><li>公共镜像</li><li>自定义镜像</li><li>共享镜像</li><li>服务市场镜像</li><br>可通过以下方式获取可用的镜像ID：<br><li><code>公共镜像</code>、<code>自定义镜像</code>、<code>共享镜像</code>的镜像ID可通过登录<a href="https://console.cloud.tencent.com/cvm/image?rid=1&amp;imageType=PUBLIC_IMAGE">控制台</a>查询；<code>服务镜像市场</code>的镜像ID可通过<a href="https://market.cloud.tencent.com/list">云市场</a>查询。</li><li>通过调用接口 <a href="https://cloud.tencent.com/document/api/213/15715">DescribeImages</a> ，取返回信息中的<code>ImageId</code>字段。</li></p>
         :rtype: str
         """
         return self._ImageId
@@ -10581,8 +10571,7 @@ InstanceType 指定单一实例类型，通过设置 InstanceTypes可以指定�
 
     @property
     def InstanceTypes(self):
-        r"""实例类型列表，不同实例机型指定了不同的资源规格，最多支持10种实例机型。
-InstanceType 指定单一实例类型，通过设置 InstanceTypes可以指定多实例类型，并使原有的InstanceType失效。具体取值可通过调用接口[DescribeInstanceTypeConfigs](https://cloud.tencent.com/document/api/213/15749)来获得最新的规格表或参见[实例规格描述](https://cloud.tencent.com/document/product/213/11518)。
+        r"""<p>实例类型列表，不同实例机型指定了不同的资源规格，最多支持10种实例机型。<br>InstanceType 指定单一实例类型，通过设置 InstanceTypes可以指定多实例类型，并使原有的InstanceType失效。具体取值可通过调用接口<a href="https://cloud.tencent.com/document/api/213/15749">DescribeInstanceTypeConfigs</a>来获得最新的规格表或参见<a href="https://cloud.tencent.com/document/product/213/11518">实例规格描述</a>。</p>
         :rtype: list of str
         """
         return self._InstanceTypes
@@ -10593,11 +10582,7 @@ InstanceType 指定单一实例类型，通过设置 InstanceTypes可以指定�
 
     @property
     def InstanceTypesCheckPolicy(self):
-        r"""实例类型校验策略，在实际修改 InstanceTypes 时发挥作用，取值包括 ALL 和 ANY，默认取值为ANY。
-<li> ALL，所有实例类型（InstanceType）都可用则通过校验，否则校验报错。</li> 
-<li> ANY，存在任何一个实例类型（InstanceType）可用则通过校验，否则校验报错。</li> 
-实例类型不可用的常见原因包括该实例类型售罄、对应云盘售罄等。
-如果 InstanceTypes 中一款机型不存在或者已下线，则无论 InstanceTypesCheckPolicy 采用何种取值，都会校验报错。
+        r"""<p>实例类型校验策略，在实际修改 InstanceTypes 时发挥作用，取值包括 ALL 和 ANY，默认取值为ANY。</p><li> ALL，所有实例类型（InstanceType）都可用则通过校验，否则校验报错。</li> <li> ANY，存在任何一个实例类型（InstanceType）可用则通过校验，否则校验报错。</li> 实例类型不可用的常见原因包括该实例类型售罄、对应云盘售罄等。如果 InstanceTypes 中一款机型不存在或者已下线，则无论 InstanceTypesCheckPolicy 采用何种取值，都会校验报错。
         :rtype: str
         """
         return self._InstanceTypesCheckPolicy
@@ -10608,7 +10593,7 @@ InstanceType 指定单一实例类型，通过设置 InstanceTypes可以指定�
 
     @property
     def LaunchConfigurationName(self):
-        r"""启动配置显示名称。名称仅支持中文、英文、数字、下划线、分隔符"-"、小数点，最大长度不能超60个字节。
+        r"""<p>启动配置显示名称。名称仅支持中文、英文、数字、下划线、分隔符&quot;-&quot;、小数点，最大长度不能超60个字节。</p>
         :rtype: str
         """
         return self._LaunchConfigurationName
@@ -10619,7 +10604,7 @@ InstanceType 指定单一实例类型，通过设置 InstanceTypes可以指定�
 
     @property
     def UserData(self):
-        r"""经过 Base64 编码后的自定义数据，最大长度不超过16KB。如果要清空UserData，则指定其为空字符串。
+        r"""<p>经过 Base64 编码后的自定义数据，最大长度不超过16KB。如果要清空UserData，则指定其为空字符串。</p>
         :rtype: str
         """
         return self._UserData
@@ -10630,8 +10615,7 @@ InstanceType 指定单一实例类型，通过设置 InstanceTypes可以指定�
 
     @property
     def SecurityGroupIds(self):
-        r"""实例所属安全组。该参数可以通过调用 [DescribeSecurityGroups](https://cloud.tencent.com/document/api/215/15808) 的返回值中的`SecurityGroupId`字段来获取。
-若指定该参数，请至少提供一个安全组，列表顺序有先后。
+        r"""<p>实例所属安全组。该参数可以通过调用 <a href="https://cloud.tencent.com/document/api/215/15808">DescribeSecurityGroups</a> 的返回值中的<code>SecurityGroupId</code>字段来获取。<br>若指定该参数，请至少提供一个安全组，列表顺序有先后。</p>
         :rtype: list of str
         """
         return self._SecurityGroupIds
@@ -10642,8 +10626,7 @@ InstanceType 指定单一实例类型，通过设置 InstanceTypes可以指定�
 
     @property
     def InternetAccessible(self):
-        r"""公网带宽相关信息设置。
-当公网出带宽上限为0Mbps时，不支持修改为开通分配公网IP；相应的，当前为开通分配公网IP时，修改的公网出带宽上限值必须大于0Mbps。
+        r"""<p>公网带宽相关信息设置。<br>当公网出带宽上限为0Mbps时，不支持修改为开通分配公网IP；相应的，当前为开通分配公网IP时，修改的公网出带宽上限值必须大于0Mbps。</p>
         :rtype: :class:`tencentcloud.autoscaling.v20180419.models.InternetAccessible`
         """
         return self._InternetAccessible
@@ -10654,11 +10637,7 @@ InstanceType 指定单一实例类型，通过设置 InstanceTypes可以指定�
 
     @property
     def InstanceChargeType(self):
-        r"""实例计费类型。具体取值范围如下：
-<li>POSTPAID_BY_HOUR：按小时后付费</li>
-<li>SPOTPAID：竞价付费</li>
-<li>PREPAID：预付费，即包年包月</li>
-<li>CDCPAID：专用集群付费</li>
+        r"""<p>实例计费类型。具体取值范围如下：</p><li>POSTPAID_BY_HOUR：按小时后付费</li><li>SPOTPAID：竞价付费</li><li>PREPAID：预付费，即包年包月</li><li>CDCPAID：专用集群付费</li>
         :rtype: str
         """
         return self._InstanceChargeType
@@ -10669,10 +10648,7 @@ InstanceType 指定单一实例类型，通过设置 InstanceTypes可以指定�
 
     @property
     def InstanceChargePrepaid(self):
-        r"""预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月实例的购买时长、是否设置自动续费等属性。
-若修改实例的付费模式为预付费，则该参数必传；从预付费修改为其他付费模式时，本字段原信息会自动丢弃。
-当新增该字段时，必须传递购买实例的时长，其它未传递字段会设置为默认值。
-当修改本字段时，当前付费模式必须为预付费。
+        r"""<p>预付费模式，即包年包月相关参数设置。通过该参数可以指定包年包月实例的购买时长、是否设置自动续费等属性。<br>若修改实例的付费模式为预付费，则该参数必传；从预付费修改为其他付费模式时，本字段原信息会自动丢弃。<br>当新增该字段时，必须传递购买实例的时长，其它未传递字段会设置为默认值。<br>当修改本字段时，当前付费模式必须为预付费。</p>
         :rtype: :class:`tencentcloud.autoscaling.v20180419.models.InstanceChargePrepaid`
         """
         return self._InstanceChargePrepaid
@@ -10683,10 +10659,7 @@ InstanceType 指定单一实例类型，通过设置 InstanceTypes可以指定�
 
     @property
     def InstanceMarketOptions(self):
-        r"""实例的市场相关选项，如竞价实例相关参数。
-若修改实例的付费模式为竞价付费，则该参数必传；从竞价付费修改为其他付费模式时，本字段原信息会自动丢弃。
-当新增该字段时，必须传递竞价相关选项下的竞价出价，其它未传递字段会设置为默认值。
-当修改本字段时，当前付费模式必须为竞价付费。
+        r"""<p>实例的市场相关选项，如竞价实例相关参数。<br>若修改实例的付费模式为竞价付费，则该参数必传；从竞价付费修改为其他付费模式时，本字段原信息会自动丢弃。<br>当新增该字段时，必须传递竞价相关选项下的竞价出价，其它未传递字段会设置为默认值。<br>当修改本字段时，当前付费模式必须为竞价付费。</p>
         :rtype: :class:`tencentcloud.autoscaling.v20180419.models.InstanceMarketOptionsRequest`
         """
         return self._InstanceMarketOptions
@@ -10697,9 +10670,7 @@ InstanceType 指定单一实例类型，通过设置 InstanceTypes可以指定�
 
     @property
     def DiskTypePolicy(self):
-        r"""云盘类型选择策略，取值范围：
-<li>ORIGINAL：使用设置的云盘类型。</li>
-<li>AUTOMATIC：自动选择当前可用的云盘类型。</li>
+        r"""<p>云盘类型选择策略，取值范围：</p><li>ORIGINAL：使用设置的云盘类型。</li><li>AUTOMATIC：自动选择当前可用的云盘类型。</li>
         :rtype: str
         """
         return self._DiskTypePolicy
@@ -10710,7 +10681,7 @@ InstanceType 指定单一实例类型，通过设置 InstanceTypes可以指定�
 
     @property
     def SystemDisk(self):
-        r"""实例系统盘配置信息。
+        r"""<p>实例系统盘配置信息。</p>
         :rtype: :class:`tencentcloud.autoscaling.v20180419.models.SystemDisk`
         """
         return self._SystemDisk
@@ -10721,9 +10692,7 @@ InstanceType 指定单一实例类型，通过设置 InstanceTypes可以指定�
 
     @property
     def DataDisks(self):
-        r"""实例数据盘配置信息。
-最多支持指定11块数据盘。采取整体修改，因此请提供修改后的全部值。
-数据盘类型默认与系统盘类型保持一致。
+        r"""<p>实例数据盘配置信息。<br>最多支持指定11块数据盘。采取整体修改，因此请提供修改后的全部值。<br>数据盘类型默认与系统盘类型保持一致。</p>
         :rtype: list of DataDisk
         """
         return self._DataDisks
@@ -10734,10 +10703,7 @@ InstanceType 指定单一实例类型，通过设置 InstanceTypes可以指定�
 
     @property
     def HostNameSettings(self):
-        r"""云服务器主机名（HostName）的相关设置。
-不支持windows实例设置主机名。
-新增该属性时，必须传递云服务器的主机名，其它未传递字段会设置为默认值。
-会校验主机名(如果存在后缀则加上后缀)是否超过最大位数46。
+        r"""<p>云服务器主机名（HostName）的相关设置。<br>不支持windows实例设置主机名。<br>新增该属性时，必须传递云服务器的主机名，其它未传递字段会设置为默认值。<br>会校验主机名(如果存在后缀则加上后缀)是否超过最大位数46。</p>
         :rtype: :class:`tencentcloud.autoscaling.v20180419.models.HostNameSettings`
         """
         return self._HostNameSettings
@@ -10748,10 +10714,7 @@ InstanceType 指定单一实例类型，通过设置 InstanceTypes可以指定�
 
     @property
     def InstanceNameSettings(self):
-        r"""云服务器（InstanceName）实例名的相关设置。 
-如果用户在启动配置中设置此字段，则伸缩组创建出的实例 InstanceName 参照此字段进行设置，并传递给 CVM；如果用户未在启动配置中设置此字段，则伸缩组创建出的实例 InstanceName 按照“as-{{ 伸缩组AutoScalingGroupName }}”进行设置，并传递给 CVM。
-新增该属性时，必须传递云服务器的实例名称，其它未传递字段会设置为默认值。
-会校验实例名(如果存在后缀则加上后缀)是否超过最大位数108。
+        r"""<p>云服务器（InstanceName）实例名的相关设置。<br>如果用户在启动配置中设置此字段，则伸缩组创建出的实例 InstanceName 参照此字段进行设置，并传递给 CVM；如果用户未在启动配置中设置此字段，则伸缩组创建出的实例 InstanceName 按照“as-{{ 伸缩组AutoScalingGroupName }}”进行设置，并传递给 CVM。<br>新增该属性时，必须传递云服务器的实例名称，其它未传递字段会设置为默认值。<br>会校验实例名(如果存在后缀则加上后缀)是否超过最大位数108。</p>
         :rtype: :class:`tencentcloud.autoscaling.v20180419.models.InstanceNameSettings`
         """
         return self._InstanceNameSettings
@@ -10762,7 +10725,7 @@ InstanceType 指定单一实例类型，通过设置 InstanceTypes可以指定�
 
     @property
     def EnhancedService(self):
-        r"""增强服务。通过该参数可以指定是否开启云安全、云监控等服务。
+        r"""<p>增强服务。通过该参数可以指定是否开启云安全、云监控等服务。</p>
         :rtype: :class:`tencentcloud.autoscaling.v20180419.models.EnhancedService`
         """
         return self._EnhancedService
@@ -10773,7 +10736,7 @@ InstanceType 指定单一实例类型，通过设置 InstanceTypes可以指定�
 
     @property
     def CamRoleName(self):
-        r"""CAM角色名称。可通过[DescribeRoleList](https://cloud.tencent.com/document/product/598/36223)接口返回值中的roleName获取。
+        r"""<p>CAM角色名称。可通过<a href="https://cloud.tencent.com/document/product/598/36223">DescribeRoleList</a>接口返回值中的roleName获取。</p>
         :rtype: str
         """
         return self._CamRoleName
@@ -10784,8 +10747,7 @@ InstanceType 指定单一实例类型，通过设置 InstanceTypes可以指定�
 
     @property
     def HpcClusterId(self):
-        r"""高性能计算集群ID。可通过调用[DescribeHpcClusters](https://cloud.tencent.com/document/product/213/83220)接口获取该参数。
-注意：此字段默认为空。
+        r"""<p>高性能计算集群ID。可通过调用<a href="https://cloud.tencent.com/document/product/213/83220">DescribeHpcClusters</a>接口获取该参数。<br>注意：此字段默认为空。</p>
         :rtype: str
         """
         return self._HpcClusterId
@@ -10796,7 +10758,7 @@ InstanceType 指定单一实例类型，通过设置 InstanceTypes可以指定�
 
     @property
     def IPv6InternetAccessible(self):
-        r"""IPv6公网带宽相关信息设置。若新建实例包含IPv6地址，该参数可为新建实例的IPv6地址分配公网带宽。关联启动配置的伸缩组Ipv6AddressCount参数为0时，该参数不会生效。
+        r"""<p>IPv6公网带宽相关信息设置。若新建实例包含IPv6地址，该参数可为新建实例的IPv6地址分配公网带宽。关联启动配置的伸缩组Ipv6AddressCount参数为0时，该参数不会生效。</p>
         :rtype: :class:`tencentcloud.autoscaling.v20180419.models.IPv6InternetAccessible`
         """
         return self._IPv6InternetAccessible
@@ -10807,7 +10769,7 @@ InstanceType 指定单一实例类型，通过设置 InstanceTypes可以指定�
 
     @property
     def DisasterRecoverGroupIds(self):
-        r"""置放群组id，仅支持指定一个。可通过调用[DescribeDisasterRecoverGroups](https://cloud.tencent.com/document/product/213/17810)接口获取该参数。
+        r"""<p>置放群组id，仅支持指定一个。可通过调用<a href="https://cloud.tencent.com/document/product/213/17810">DescribeDisasterRecoverGroups</a>接口获取该参数。</p>
         :rtype: list of str
         """
         return self._DisasterRecoverGroupIds
@@ -10818,7 +10780,7 @@ InstanceType 指定单一实例类型，通过设置 InstanceTypes可以指定�
 
     @property
     def LoginSettings(self):
-        r"""实例登录设置，包括密码、密钥或保持镜像的原始登录设置。<br>请注意，指定新的登录设置会覆盖原有登录设置。例如，如果您之前使用密码登录，使用该参数将登录设置修改为密钥，则原有密码被清除。
+        r"""<p>实例登录设置，包括密码、密钥或保持镜像的原始登录设置。<br>请注意，指定新的登录设置会覆盖原有登录设置。例如，如果您之前使用密码登录，使用该参数将登录设置修改为密钥，则原有密码被清除。</p>
         :rtype: :class:`tencentcloud.autoscaling.v20180419.models.LoginSettings`
         """
         return self._LoginSettings
@@ -10829,8 +10791,7 @@ InstanceType 指定单一实例类型，通过设置 InstanceTypes可以指定�
 
     @property
     def InstanceTags(self):
-        r"""实例标签列表。通过指定该参数，可以为扩容的实例绑定标签。最多支持指定10个标签。
-该参数会覆盖原有的实例标签列表，如需新增标签，需将新标签和原有标签一并传入。
+        r"""<p>实例标签列表。通过指定该参数，可以为扩容的实例绑定标签。最多支持指定10个标签。<br>该参数会覆盖原有的实例标签列表，如需新增标签，需将新标签和原有标签一并传入。</p>
         :rtype: list of InstanceTag
         """
         return self._InstanceTags
@@ -10841,7 +10802,7 @@ InstanceType 指定单一实例类型，通过设置 InstanceTypes可以指定�
 
     @property
     def ImageFamily(self):
-        r"""镜像族名称。可通过调用[DescribeImages](https://cloud.tencent.com/document/product/213/15715)接口获取该参数。
+        r"""<p>镜像族名称。可通过调用<a href="https://cloud.tencent.com/document/product/213/15715">DescribeImages</a>接口获取该参数。</p>
         :rtype: str
         """
         return self._ImageFamily
@@ -10852,7 +10813,7 @@ InstanceType 指定单一实例类型，通过设置 InstanceTypes可以指定�
 
     @property
     def DedicatedClusterId(self):
-        r"""本地专用集群ID。
+        r"""<p>本地专用集群ID。</p>
         :rtype: str
         """
         return self._DedicatedClusterId
@@ -10863,7 +10824,7 @@ InstanceType 指定单一实例类型，通过设置 InstanceTypes可以指定�
 
     @property
     def Metadata(self):
-        r"""自定义metadata。
+        r"""<p>自定义metadata。</p>
         :rtype: :class:`tencentcloud.autoscaling.v20180419.models.Metadata`
         """
         return self._Metadata
@@ -10871,6 +10832,17 @@ InstanceType 指定单一实例类型，通过设置 InstanceTypes可以指定�
     @Metadata.setter
     def Metadata(self, Metadata):
         self._Metadata = Metadata
+
+    @property
+    def NetworkInterfaces(self):
+        r"""<p>替换启动配置中的弹性网卡配置。</p><p>入参限制：最多 17 项；必须显式包含且只能包含一个 PRIMARY，AS 不自动补齐主网卡；显式空数组非法。</p><p>字段规则与 CreateLaunchConfiguration 一致。清除请调用 ClearLaunchConfigurationAttributes 并传 ClearNetworkInterfaces=true。</p>
+        :rtype: list of NetworkInterface
+        """
+        return self._NetworkInterfaces
+
+    @NetworkInterfaces.setter
+    def NetworkInterfaces(self, NetworkInterfaces):
+        self._NetworkInterfaces = NetworkInterfaces
 
 
     def _deserialize(self, params):
@@ -10930,6 +10902,12 @@ InstanceType 指定单一实例类型，通过设置 InstanceTypes可以指定�
         if params.get("Metadata") is not None:
             self._Metadata = Metadata()
             self._Metadata._deserialize(params.get("Metadata"))
+        if params.get("NetworkInterfaces") is not None:
+            self._NetworkInterfaces = []
+            for item in params.get("NetworkInterfaces"):
+                obj = NetworkInterface()
+                obj._deserialize(item)
+                self._NetworkInterfaces.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -11942,6 +11920,87 @@ class ModifyScheduledActionResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
+
+
+class NetworkInterface(AbstractModel):
+    r"""启动配置中的弹性网卡配置。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InterfaceType: <p>网卡类型。本字段在每个网卡项的请求中必填。</p><p>枚举值：</p><ul><li>PRIMARY： 主网卡</li><li>SECONDARY： 辅助网卡</li></ul><p>配置上层 NetworkInterfaces 时，数组必须显式包含且只能包含一个 PRIMARY，AS 不自动补齐主网卡。</p>
+        :type InterfaceType: str
+        :param _PrivateIpv4AddressCount: <p>网卡请求分配的内网 IPv4 地址总数，包含主 IP。</p><p>取值范围：[1, 40]</p><p>SECONDARY 网卡请求时必填；PRIMARY 网卡请求时可选，未填写时仅在实际扩容构造 CVM 请求副本时按 1 处理，不写回启动配置。显式传入的值由 AS 透传给 CVM，最终由 CVM/VPC 校验。</p>
+        :type PrivateIpv4AddressCount: int
+        :param _SecurityGroupIds: <p>弹性网卡绑定的安全组 ID 列表。</p><p>入参限制：最多 10 个。</p><p>对于 PRIMARY，网卡中显式配置的非空列表优先于启动配置中的 SecurityGroupIds 参数；网卡中未配置时使用启动配置中的 SecurityGroupIds 参数，两处均未配置时 AS 不指定安全组，继续按 CVM 缺省规则处理。对于 SECONDARY，仅透传网卡中显式配置的非空列表，不继承启动配置中的 SecurityGroupIds 参数。</p>
+        :type SecurityGroupIds: list of str
+        :param _IsKeepENI: <p>实例销毁时是否保留辅助网卡，仅对 SECONDARY 有效。</p><p>枚举值：</p><ul><li>false： 不保留辅助网卡，辅助网卡随实例销毁</li><li>true： 保留辅助网卡</li></ul><p>默认值：false</p><p>PRIMARY 不允许配置 true。</p>
+        :type IsKeepENI: bool
+        """
+        self._InterfaceType = None
+        self._PrivateIpv4AddressCount = None
+        self._SecurityGroupIds = None
+        self._IsKeepENI = None
+
+    @property
+    def InterfaceType(self):
+        r"""<p>网卡类型。本字段在每个网卡项的请求中必填。</p><p>枚举值：</p><ul><li>PRIMARY： 主网卡</li><li>SECONDARY： 辅助网卡</li></ul><p>配置上层 NetworkInterfaces 时，数组必须显式包含且只能包含一个 PRIMARY，AS 不自动补齐主网卡。</p>
+        :rtype: str
+        """
+        return self._InterfaceType
+
+    @InterfaceType.setter
+    def InterfaceType(self, InterfaceType):
+        self._InterfaceType = InterfaceType
+
+    @property
+    def PrivateIpv4AddressCount(self):
+        r"""<p>网卡请求分配的内网 IPv4 地址总数，包含主 IP。</p><p>取值范围：[1, 40]</p><p>SECONDARY 网卡请求时必填；PRIMARY 网卡请求时可选，未填写时仅在实际扩容构造 CVM 请求副本时按 1 处理，不写回启动配置。显式传入的值由 AS 透传给 CVM，最终由 CVM/VPC 校验。</p>
+        :rtype: int
+        """
+        return self._PrivateIpv4AddressCount
+
+    @PrivateIpv4AddressCount.setter
+    def PrivateIpv4AddressCount(self, PrivateIpv4AddressCount):
+        self._PrivateIpv4AddressCount = PrivateIpv4AddressCount
+
+    @property
+    def SecurityGroupIds(self):
+        r"""<p>弹性网卡绑定的安全组 ID 列表。</p><p>入参限制：最多 10 个。</p><p>对于 PRIMARY，网卡中显式配置的非空列表优先于启动配置中的 SecurityGroupIds 参数；网卡中未配置时使用启动配置中的 SecurityGroupIds 参数，两处均未配置时 AS 不指定安全组，继续按 CVM 缺省规则处理。对于 SECONDARY，仅透传网卡中显式配置的非空列表，不继承启动配置中的 SecurityGroupIds 参数。</p>
+        :rtype: list of str
+        """
+        return self._SecurityGroupIds
+
+    @SecurityGroupIds.setter
+    def SecurityGroupIds(self, SecurityGroupIds):
+        self._SecurityGroupIds = SecurityGroupIds
+
+    @property
+    def IsKeepENI(self):
+        r"""<p>实例销毁时是否保留辅助网卡，仅对 SECONDARY 有效。</p><p>枚举值：</p><ul><li>false： 不保留辅助网卡，辅助网卡随实例销毁</li><li>true： 保留辅助网卡</li></ul><p>默认值：false</p><p>PRIMARY 不允许配置 true。</p>
+        :rtype: bool
+        """
+        return self._IsKeepENI
+
+    @IsKeepENI.setter
+    def IsKeepENI(self, IsKeepENI):
+        self._IsKeepENI = IsKeepENI
+
+
+    def _deserialize(self, params):
+        self._InterfaceType = params.get("InterfaceType")
+        self._PrivateIpv4AddressCount = params.get("PrivateIpv4AddressCount")
+        self._SecurityGroupIds = params.get("SecurityGroupIds")
+        self._IsKeepENI = params.get("IsKeepENI")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class NotificationTarget(AbstractModel):
@@ -14581,35 +14640,23 @@ class SystemDisk(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DiskType: 系统盘类型。系统盘类型限制详见[云硬盘类型](https://cloud.tencent.com/document/product/362/2353)。取值范围
-<li>LOCAL_BASIC：本地硬盘</li>
-<li>LOCAL_SSD：本地SSD硬盘</li>
-<li>CLOUD_BASIC：普通云硬盘</li>
-<li>CLOUD_PREMIUM：高性能云硬盘</li>
-<li>CLOUD_SSD：SSD云硬盘</li>
-<li>CLOUD_BSSD：通用型SSD云硬盘</li>
-<li>CLOUD_HSSD：增强型SSD云硬盘</li>
-<li>CLOUD_TSSD：极速型SSD云硬盘</li>
-<li>默认取值：CLOUD_PREMIUM。</li>
+        :param _DiskType: <p>系统盘类型。系统盘类型限制详见<a href="https://cloud.tencent.com/document/product/362/2353">云硬盘类型</a>。取值范围</p><li>LOCAL_BASIC：本地硬盘</li><li>LOCAL_SSD：本地SSD硬盘</li><li>CLOUD_BASIC：普通云硬盘</li><li>CLOUD_PREMIUM：高性能云硬盘</li><li>CLOUD_SSD：SSD云硬盘</li><li>CLOUD_BSSD：通用型SSD云硬盘</li><li>CLOUD_HSSD：增强型SSD云硬盘</li><li>CLOUD_TSSD：极速型SSD云硬盘</li><li>默认取值：CLOUD_PREMIUM。</li>
         :type DiskType: str
-        :param _DiskSize: 系统盘大小，单位：GB。默认值为 50
+        :param _DiskSize: <p>系统盘大小，单位：GB。默认值为 50</p>
         :type DiskSize: int
+        :param _Encrypt: <p>是否加密系统盘。TRUE 表示加密，FALSE 表示不加密；具体盘型、地域及 KMS 规则由 CVM 校验。</p>
+        :type Encrypt: bool
+        :param _KmsKeyId: <p>系统盘加密使用的 KMS 密钥 ID。密钥有效性、权限以及与盘型和地域的适配性由 CVM 校验。</p>
+        :type KmsKeyId: str
         """
         self._DiskType = None
         self._DiskSize = None
+        self._Encrypt = None
+        self._KmsKeyId = None
 
     @property
     def DiskType(self):
-        r"""系统盘类型。系统盘类型限制详见[云硬盘类型](https://cloud.tencent.com/document/product/362/2353)。取值范围
-<li>LOCAL_BASIC：本地硬盘</li>
-<li>LOCAL_SSD：本地SSD硬盘</li>
-<li>CLOUD_BASIC：普通云硬盘</li>
-<li>CLOUD_PREMIUM：高性能云硬盘</li>
-<li>CLOUD_SSD：SSD云硬盘</li>
-<li>CLOUD_BSSD：通用型SSD云硬盘</li>
-<li>CLOUD_HSSD：增强型SSD云硬盘</li>
-<li>CLOUD_TSSD：极速型SSD云硬盘</li>
-<li>默认取值：CLOUD_PREMIUM。</li>
+        r"""<p>系统盘类型。系统盘类型限制详见<a href="https://cloud.tencent.com/document/product/362/2353">云硬盘类型</a>。取值范围</p><li>LOCAL_BASIC：本地硬盘</li><li>LOCAL_SSD：本地SSD硬盘</li><li>CLOUD_BASIC：普通云硬盘</li><li>CLOUD_PREMIUM：高性能云硬盘</li><li>CLOUD_SSD：SSD云硬盘</li><li>CLOUD_BSSD：通用型SSD云硬盘</li><li>CLOUD_HSSD：增强型SSD云硬盘</li><li>CLOUD_TSSD：极速型SSD云硬盘</li><li>默认取值：CLOUD_PREMIUM。</li>
         :rtype: str
         """
         return self._DiskType
@@ -14620,7 +14667,7 @@ class SystemDisk(AbstractModel):
 
     @property
     def DiskSize(self):
-        r"""系统盘大小，单位：GB。默认值为 50
+        r"""<p>系统盘大小，单位：GB。默认值为 50</p>
         :rtype: int
         """
         return self._DiskSize
@@ -14629,10 +14676,34 @@ class SystemDisk(AbstractModel):
     def DiskSize(self, DiskSize):
         self._DiskSize = DiskSize
 
+    @property
+    def Encrypt(self):
+        r"""<p>是否加密系统盘。TRUE 表示加密，FALSE 表示不加密；具体盘型、地域及 KMS 规则由 CVM 校验。</p>
+        :rtype: bool
+        """
+        return self._Encrypt
+
+    @Encrypt.setter
+    def Encrypt(self, Encrypt):
+        self._Encrypt = Encrypt
+
+    @property
+    def KmsKeyId(self):
+        r"""<p>系统盘加密使用的 KMS 密钥 ID。密钥有效性、权限以及与盘型和地域的适配性由 CVM 校验。</p>
+        :rtype: str
+        """
+        return self._KmsKeyId
+
+    @KmsKeyId.setter
+    def KmsKeyId(self, KmsKeyId):
+        self._KmsKeyId = KmsKeyId
+
 
     def _deserialize(self, params):
         self._DiskType = params.get("DiskType")
         self._DiskSize = params.get("DiskSize")
+        self._Encrypt = params.get("Encrypt")
+        self._KmsKeyId = params.get("KmsKeyId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

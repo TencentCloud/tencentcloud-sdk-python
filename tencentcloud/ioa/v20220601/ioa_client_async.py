@@ -169,6 +169,24 @@ class IoaClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DeleteAccountGroup(
+            self,
+            request: models.DeleteAccountGroupRequest,
+            opts: Dict = None,
+    ) -> models.DeleteAccountGroupResponse:
+        """
+        管理员在目录管理页面删除一个分组，私有化调用path为：capi/Assets/DeleteAccountGroup
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteAccountGroup"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteAccountGroupResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DeleteAccountGroupResources(
             self,
             request: models.DeleteAccountGroupResourcesRequest,

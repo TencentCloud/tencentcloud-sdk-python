@@ -26,6 +26,29 @@ class TdmysqlClient(AbstractClient):
     _service = 'tdmysql'
 
 
+    def BreakStandbyDBInstanceRelation(self, request):
+        r"""本接口（BreakStandbyDBInstanceRelation）用于提供断开灾备实例主备连接功能
+
+        :param request: Request instance for BreakStandbyDBInstanceRelation.
+        :type request: :class:`tencentcloud.tdmysql.v20211122.models.BreakStandbyDBInstanceRelationRequest`
+        :rtype: :class:`tencentcloud.tdmysql.v20211122.models.BreakStandbyDBInstanceRelationResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("BreakStandbyDBInstanceRelation", params, headers=headers)
+            response = json.loads(body)
+            model = models.BreakStandbyDBInstanceRelationResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CancelIsolateDBInstances(self, request):
         r"""本接口（CancelIsolateDBInstances）提供批量解除隔离实例功能
 
@@ -109,6 +132,29 @@ class TdmysqlClient(AbstractClient):
             body = self.call("CreateDBSBackup", params, headers=headers)
             response = json.loads(body)
             model = models.CreateDBSBackupResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CreateStandbyDBInstance(self, request):
+        r"""本接口（CreateStandbyDBInstances）提供批量创建灾备实例功能
+
+        :param request: Request instance for CreateStandbyDBInstance.
+        :type request: :class:`tencentcloud.tdmysql.v20211122.models.CreateStandbyDBInstanceRequest`
+        :rtype: :class:`tencentcloud.tdmysql.v20211122.models.CreateStandbyDBInstanceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateStandbyDBInstance", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateStandbyDBInstanceResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -638,6 +684,29 @@ class TdmysqlClient(AbstractClient):
             body = self.call("DescribeSpecs", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeSpecsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeStandbyDBInstanceRelationDetail(self, request):
+        r"""本接口（DescribeStandbyDBinstanceRelations）用于查询实例灾备连接关系
+
+        :param request: Request instance for DescribeStandbyDBInstanceRelationDetail.
+        :type request: :class:`tencentcloud.tdmysql.v20211122.models.DescribeStandbyDBInstanceRelationDetailRequest`
+        :rtype: :class:`tencentcloud.tdmysql.v20211122.models.DescribeStandbyDBInstanceRelationDetailResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeStandbyDBInstanceRelationDetail", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeStandbyDBInstanceRelationDetailResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

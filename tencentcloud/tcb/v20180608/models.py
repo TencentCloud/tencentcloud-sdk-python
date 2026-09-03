@@ -20332,6 +20332,205 @@ class ModifyLoginConfigResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyPGInstanceSpecRequest(AbstractModel):
+    r"""ModifyPGInstanceSpec请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EnvId: <p>环境 id</p>
+        :type EnvId: str
+        :param _Cpu: <p>cpu 核数</p><p>单位：核数</p>
+        :type Cpu: int
+        :param _Memory: <p>内存容量</p><p>单位：GB</p>
+        :type Memory: int
+        :param _Storage: <p>磁盘容量</p><p>单位：GB</p>
+        :type Storage: int
+        :param _SwitchTag: <p>类型</p><p>枚举值：</p><ul><li>0： 立即执行</li><li>1： 指定时间执行</li><li>2： 维护时间执行</li></ul>
+        :type SwitchTag: int
+        :param _SwitchStartTime: <p>SwitchTag=1 时，启动时间</p><p>参数格式：YYYY-MM-dd HH:mm:ss</p>
+        :type SwitchStartTime: str
+        :param _SwitchEndTime: <p>SwitchTag=1 时结束时间</p><p>参数格式：YYYY-MM-dd HH:mm:ss</p>
+        :type SwitchEndTime: str
+        :param _DryRun: <p>预检</p>
+        :type DryRun: bool
+        """
+        self._EnvId = None
+        self._Cpu = None
+        self._Memory = None
+        self._Storage = None
+        self._SwitchTag = None
+        self._SwitchStartTime = None
+        self._SwitchEndTime = None
+        self._DryRun = None
+
+    @property
+    def EnvId(self):
+        r"""<p>环境 id</p>
+        :rtype: str
+        """
+        return self._EnvId
+
+    @EnvId.setter
+    def EnvId(self, EnvId):
+        self._EnvId = EnvId
+
+    @property
+    def Cpu(self):
+        r"""<p>cpu 核数</p><p>单位：核数</p>
+        :rtype: int
+        """
+        return self._Cpu
+
+    @Cpu.setter
+    def Cpu(self, Cpu):
+        self._Cpu = Cpu
+
+    @property
+    def Memory(self):
+        r"""<p>内存容量</p><p>单位：GB</p>
+        :rtype: int
+        """
+        return self._Memory
+
+    @Memory.setter
+    def Memory(self, Memory):
+        self._Memory = Memory
+
+    @property
+    def Storage(self):
+        r"""<p>磁盘容量</p><p>单位：GB</p>
+        :rtype: int
+        """
+        return self._Storage
+
+    @Storage.setter
+    def Storage(self, Storage):
+        self._Storage = Storage
+
+    @property
+    def SwitchTag(self):
+        r"""<p>类型</p><p>枚举值：</p><ul><li>0： 立即执行</li><li>1： 指定时间执行</li><li>2： 维护时间执行</li></ul>
+        :rtype: int
+        """
+        return self._SwitchTag
+
+    @SwitchTag.setter
+    def SwitchTag(self, SwitchTag):
+        self._SwitchTag = SwitchTag
+
+    @property
+    def SwitchStartTime(self):
+        r"""<p>SwitchTag=1 时，启动时间</p><p>参数格式：YYYY-MM-dd HH:mm:ss</p>
+        :rtype: str
+        """
+        return self._SwitchStartTime
+
+    @SwitchStartTime.setter
+    def SwitchStartTime(self, SwitchStartTime):
+        self._SwitchStartTime = SwitchStartTime
+
+    @property
+    def SwitchEndTime(self):
+        r"""<p>SwitchTag=1 时结束时间</p><p>参数格式：YYYY-MM-dd HH:mm:ss</p>
+        :rtype: str
+        """
+        return self._SwitchEndTime
+
+    @SwitchEndTime.setter
+    def SwitchEndTime(self, SwitchEndTime):
+        self._SwitchEndTime = SwitchEndTime
+
+    @property
+    def DryRun(self):
+        r"""<p>预检</p>
+        :rtype: bool
+        """
+        return self._DryRun
+
+    @DryRun.setter
+    def DryRun(self, DryRun):
+        self._DryRun = DryRun
+
+
+    def _deserialize(self, params):
+        self._EnvId = params.get("EnvId")
+        self._Cpu = params.get("Cpu")
+        self._Memory = params.get("Memory")
+        self._Storage = params.get("Storage")
+        self._SwitchTag = params.get("SwitchTag")
+        self._SwitchStartTime = params.get("SwitchStartTime")
+        self._SwitchEndTime = params.get("SwitchEndTime")
+        self._DryRun = params.get("DryRun")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyPGInstanceSpecResponse(AbstractModel):
+    r"""ModifyPGInstanceSpec返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DealName: <p>账单名</p>
+        :type DealName: str
+        :param _BillId: <p>账单标识</p>
+        :type BillId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._DealName = None
+        self._BillId = None
+        self._RequestId = None
+
+    @property
+    def DealName(self):
+        r"""<p>账单名</p>
+        :rtype: str
+        """
+        return self._DealName
+
+    @DealName.setter
+    def DealName(self, DealName):
+        self._DealName = DealName
+
+    @property
+    def BillId(self):
+        r"""<p>账单标识</p>
+        :rtype: str
+        """
+        return self._BillId
+
+    @BillId.setter
+    def BillId(self, BillId):
+        self._BillId = BillId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._DealName = params.get("DealName")
+        self._BillId = params.get("BillId")
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyProviderRequest(AbstractModel):
     r"""ModifyProvider请求参数结构体
 

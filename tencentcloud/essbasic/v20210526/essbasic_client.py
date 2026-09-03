@@ -520,15 +520,15 @@ class EssbasicClient(AbstractClient):
         <table>     <thead>     <tr>         <th>场景编号</th>         <th>发起方</th>         <th>签署方</th>         <th>补充</th>     </tr>     </thead>     <tbody>     <tr>         <td>场景一</td>         <td>子企业A的员工</td>         <td>子企业A的员工</td>         <td>子企业是通过<a href="https://qian.tencent.com/developers/partnerApis/accounts/CreateConsoleLoginUrl" target="_blank">CreateConsoleLoginUrl</a>生成子客登录链接注册的企业</td>     </tr>     <tr>         <td>场景二</td>         <td>子企业A的员工</td>         <td>子企业B(不指定经办人走领取逻辑)</td>         <td>领取的逻辑可以参考文档<a href="https://qian.tencent.com/developers/partner/dynamic_signer" target="_blank">动态签署方</a> </td>     </tr>     <tr>         <td>场景三</td>         <td>子企业A的员工</td>         <td>子企业B的员工</td>         <td>-</td>     </tr>     <tr>         <td>场景四</td>         <td>子企业A的员工</td>         <td>个人</td>         <td>就是自然人，不是企业员工</td>     </tr>     <tr>         <td>场景五</td>         <td>子企业A的员工</td>         <td>SaaS平台企业员工</td>         <td>SaaS平台企业是通过<a href="https://qian.tencent.cn/console/company-register" target="_blank">https://qian.tencent.cn/console/company-register</a>链接注册的企业</td>     </tr>     </tbody> </table>
 
 
-         <font color="red">发起方（第三方子企业 A 的企业与员工）必须完成实名</font>；作为**签署方**的第三方子企业 A 员工 / 个人自然人 / SaaS 平台企业员工 / 第三方子企业 B 员工等，其企业和个人可以未实名。
+         <font color="red">发起方（第三方子企业 A 的企业与员工）必须完成实名</font>；作为 **签署方** 的第三方子企业 A 员工 / 个人自然人 / SaaS 平台企业员工 / 第三方子企业 B 员工等，其企业和个人可以未实名。
 
         ### 1.3 注意事项
-        -  合同<font color="red">发起后就会扣减合同的额度</font> , 只有撤销没有参与方签署过或只有自动签署签署过的合同，且<font color="red">有撤销合同额度</font>的情形下，才会返还合同额度。（**过期，拒签，签署完成，解除完成等状态不会返还额度**）。具体可以参考[合同撤销返还额度说明](https://qian.tencent.com/developers/partner/contract_cancel_quota)。
-        - <font color="red">支持的证件类型</font>可以参考[支持的证件类型](https://qian.tencent.com/developers/partner/id_card_support)。
-        - <font color="red">不同类型的签署方传参不同</font>，各类型签署方的信息传递方式详见 [【签署方入参指引】](https://qian.tencent.com/developers/partner/flow_approver)。
-        - 如果合同正式发起前如需<font color="red">预览</font>效果，可参考 [【使用文件发起的预览】](https://qian.tencent.com/developers/partner/preview_guide#%E4%B8%80%E4%BD%BF%E7%94%A8%E6%96%87%E4%BB%B6%E5%8F%91%E8%B5%B7%E7%9A%84%E9%A2%84%E8%A7%88)
-        - 关于填写方与签署方的<font color="red">填写、签署先后顺序</font>设置，详见 [【填写与签署顺序说明】](https://qian.tencent.com/developers/partner/fill_sign_order)。
-        - 关于<font color="red">本企业自动签署与其他企业自动签署</font>的配置与使用，详见 [【自动签署】](https://qian.tencent.com/developers/partner/autosign_guide)。
+        -  合同<font color="red">发起后就会扣减合同的额度</font> , 只有撤销没有参与方签署过或只有自动签署签署过的合同，且<font color="red">有撤销合同额度</font>的情形下，才会返还合同额度。（**过期，拒签，签署完成，解除完成等状态不会返还额度**）。具体可以参考 [合同撤销返还额度说明](https://qian.tencent.com/developers/partner/contract_cancel_quota) 。
+        - <font color="red">支持的证件类型</font>可以参考 [支持的证件类型](https://qian.tencent.com/developers/partner/id_card_support) 。
+        - <font color="red">不同类型的签署方传参不同</font>，各类型签署方的信息传递方式详见  [签署方入参指引](https://qian.tencent.com/developers/partner/flow_approver) 。
+        - 如果合同正式发起前如需<font color="red">预览</font>效果，可参考 [使用文件发起的预览](https://qian.tencent.com/developers/partner/preview_guide#%E4%B8%80%E4%BD%BF%E7%94%A8%E6%96%87%E4%BB%B6%E5%8F%91%E8%B5%B7%E7%9A%84%E9%A2%84%E8%A7%88)
+        - 关于填写方与签署方的<font color="red">填写、签署先后顺序</font>设置，详见 [填写与签署顺序说明](https://qian.tencent.com/developers/partner/fill_sign_order)。
+        - 关于<font color="red">本企业自动签署与其他企业自动签署</font>的配置与使用，详见 [自动签署](https://qian.tencent.com/developers/partner/autosign_guide)。
 
         ### 1.4 视频教程
         1. <a href="https://dyn.ess.tencent.cn/guide/apivideo/essbasic-UploadFiles.mp4" target="_blank">【上传文件代码】编写示例</a>
@@ -2283,70 +2283,54 @@ class EssbasicClient(AbstractClient):
 
 
     def CreateFlowsByTemplates(self, request):
-        r"""接口（CreateFlowsByTemplates）用于使用模板批量创建签署流程。当前可批量发起合同（签署流程）数量为1-20个。
-        如若在模板中配置了动态表格, 上传的附件必须为A4大小
-        合同发起人必须在电子签已经进行实名。
+        r"""本接口（CreateFlowsByTemplates）用于**使用模板批量创建签署流程**，当前单次可批量发起合同（签署流程）数量为 1~20 个。
 
-        ### 一. 整体的逻辑如下
 
-        ![image](https://qcloudimg.tencent-cloud.cn/raw/e193519d4383fa74782a9e19147ef01a/CreateFlowsByTemplates.png)
+        ### 1.1 整体逻辑如下
 
-        ###  二. 可以作为发起方和签署方的角色列表
+        ![image](https://qcloudimg.tencent-cloud.cn/raw/66f74308ca92590f5d96d9c4fed25563.svg)
+
+        ### 1.2 发起方和签署方
 
         <table>     <thead>     <tr>         <th>场景编号</th>         <th>发起方</th>         <th>签署方</th>         <th>补充</th>     </tr>     </thead>     <tbody>     <tr>         <td>场景一</td>         <td>子企业A的员工</td>         <td>子企业A的员工</td>         <td>子企业是通过<a href="https://qian.tencent.com/developers/partnerApis/accounts/CreateConsoleLoginUrl" target="_blank">CreateConsoleLoginUrl</a>生成子客登录链接注册的企业</td>     </tr>     <tr>         <td>场景二</td>         <td>子企业A的员工</td>         <td>子企业B(不指定经办人走领取逻辑)</td>         <td>领取的逻辑可以参考文档<a href="https://qian.tencent.com/developers/partner/dynamic_signer" target="_blank">动态签署方</a> </td>     </tr>     <tr>         <td>场景三</td>         <td>子企业A的员工</td>         <td>子企业B的员工</td>         <td>-</td>     </tr>     <tr>         <td>场景四</td>         <td>子企业A的员工</td>         <td>个人</td>         <td>就是自然人，不是企业员工</td>     </tr>     <tr>         <td>场景五</td>         <td>子企业A的员工</td>         <td>SaaS平台企业员工</td>         <td>SaaS平台企业是通过<a href="https://qian.tencent.cn/console/company-register" target="_blank">https://qian.tencent.cn/console/company-register</a>链接注册的企业</td>     </tr>     </tbody> </table>
 
+        <font color="red">发起方（第三方子企业 A 的企业与员工）必须完成实名</font>；作为 **签署方** 的第三方子企业 A 员工 / 个人自然人 / SaaS 平台企业员工 / 第三方子企业 B 员工等，其企业和个人可以未实名。
 
 
+        ### 1.3 填充模板中定义的发起人填写控件
 
-        ### 三. 填充模板中定义的填写控件
-        模板中配置的<font color="red">发起人填充控件</font>可以通过本接口的**FormFields数组**字段填充
+        模板中配置的 **发起人填充控件** 可以通过本接口的 **FormFields 数组** 字段填充。<font color="red">只能填充分配给发起方的填写控件，不能填充分配给签署方的签署控件</font> ，分配给签署方的签署控件需要签署方在签署环节填充。
 
         ![image](https://qcloudimg.tencent-cloud.cn/raw/37457e0e450fc221effddfcb8b1bad55.png)
         填充的传参示例如下
 
         ```
-            request.FormFields = [{
-                    "ComponentName": "项目的名字",
-                    "ComponentValue": "休闲山庄"
-                }, {
-                    "ComponentName": "项目的地址",
-                    "ComponentValue": "凤凰山北侧",
-                }, {
-                    "ComponentName": "范围",
-                    "ComponentValue": "凤凰山至107国道",
-                }, {
-                    "ComponentName": "面积",
-                    "ComponentValue": "100亩",
-                }, {
-                    "ComponentName": "基本情况",
-                    "ComponentValue": "完好",
-                }, , {
-                    "ComponentName": "用途",
-                    "ComponentValue": "经营农家乐",
-                }
-            ]
+            request.FormFields = [
+            { "ComponentName": "项目的名字", "ComponentValue": "休闲山庄" },
+            { "ComponentName": "项目的地址", "ComponentValue": "凤凰山北侧" },
+            { "ComponentName": "范围", "ComponentValue": "凤凰山至107国道" },
+            { "ComponentName": "面积", "ComponentValue": "100亩" },
+            { "ComponentName": "基本情况", "ComponentValue": "完好" },
+            { "ComponentName": "用途", "ComponentValue": "经营农家乐" }
+        ]
         ```
-        合成后合同样子示例
+        合成后合同样子
 
         ![image](https://qcloudimg.tencent-cloud.cn/raw/140a2fb771ac66a185d0a000d37485f6.png)
 
+        ### 1.4 注意事项
+        -  合同<font color="red">发起后就会扣减合同的额度</font> , 只有撤销没有参与方签署过或只有自动签署签署过的合同，且<font color="red">有撤销合同额度</font>的情形下，才会返还合同额度。（**过期，拒签，签署完成，解除完成等状态不会返还额度**）。具体可以参考 [合同撤销返还额度说明](https://qian.tencent.com/developers/partner/contract_cancel_quota) 。
+        - <font color="red">支持的证件类型</font>可以参考 [支持的证件类型](https://qian.tencent.com/developers/partner/id_card_support) 。
+        - <font color="red">不同类型的签署方传参不同</font>，各类型签署方的信息传递方式详见  [签署方入参指引](https://qian.tencent.com/developers/partner/flow_approver) 。
+        - 如果合同正式发起前如需<font color="red">预览</font>效果，可参考 [使用模板发起的预览](https://qian.tencent.com/developers/partner/preview_guide/#%E4%BA%8C%E4%BD%BF%E7%94%A8%E6%A8%A1%E6%9D%BF%E5%8F%91%E8%B5%B7%E7%9A%84%E9%A2%84%E8%A7%88)
+        - 关于填写方与签署方的<font color="red">填写、签署先后顺序</font>设置，详见 [填写与签署顺序说明](https://qian.tencent.com/developers/partner/fill_sign_order)。
+        - 关于<font color="red">本企业自动签署与其他企业自动签署</font>的配置与使用，详见 [自动签署](https://qian.tencent.com/developers/partner/autosign_guide)。
+        - 如若在模板中配置了[动态表格](https://qian.tencent.com/developers/partner/dynamic_table), 如果模板中配有附件控件，上传的附件必须为A4尺寸的PDF。
 
+        ### 1.5 视频教程
 
-        ### 四. 注意
-        1. 发起合同时候,  作为<font color="red">发起方的第三方子企业A员工的企业和员工必须经过实名</font>, 而作为签署方的第三方子企业A员工/个人/自然人/SaaS平台企业员工/第三方子企业B员工企业中的企业和个人/员工可以未实名
-
-        2. 不同类型的签署方传参不同, 可以参考开发者中心的FlowApproverInfo结构体说明
-
-        3. <font color="red">调用接口发起合同成功就会扣减合同的额度</font>, 只有撤销没有参与方签署过或只有自动签署签署过的合同，才会返还合同额度。（过期，拒签，签署完成，解除完成等状态不会返还额度）
-
-        4. <font color="red">静默（自动）签署不支持合同签署方存在填写</font>
-
-        5.  <font color="red">在下一步创建签署链接前，建议等待DocumentFill </font> <a href="https://qian.tencent.com/developers/partner/callback_types_file_resources">PDF合成完成的回调</a>或者睡眠几秒，尤其是当模板中存在动态表格等复杂填写控件时，因为合成过程可能会耗费秒级别的时间。
-
-
-        <font color="red">相关视频指引</font> <br>
-        1. <a href="https://dyn.ess.tencent.cn/guide/apivideo/essbasic-CreateTemplates.mp4" target="_blank">创建模板&设置成本企业自动签署</a><br>
-        2. <a href="https://dyn.ess.tencent.cn/guide/apivideo/essbasic-CreateFlowsByTemplates.mp4" target="_blank">【用模板创建签署流程】编写示例视频教程</a><br>
+        1. <a href="https://dyn.ess.tencent.cn/guide/apivideo/essbasic-CreateTemplates.mp4" target="_blank">创建模板 & 设置成本企业自动签署</a>
+        2. <a href="https://dyn.ess.tencent.cn/guide/apivideo/essbasic-CreateFlowsByTemplates.mp4" target="_blank">【用模板创建签署流程】编写示例视频教程</a>
 
         :param request: Request instance for CreateFlowsByTemplates.
         :type request: :class:`tencentcloud.essbasic.v20210526.models.CreateFlowsByTemplatesRequest`

@@ -918,6 +918,8 @@ class ApproverOption(AbstractModel):
         :type ApproverMobileMode: str
         :param _ForbidModifySealInfos: <p>在嵌入式文件发起下,若合同是通过文件,当签署人控件指定了印章类型（或印章Id）,在嵌入页面上是否能修改</p>
         :type ForbidModifySealInfos: bool
+        :param _AddSignComponentUseSealSize: <p>【仅 SignBeanTag=1 时有效】 签署方自行添加签署印章类控件（SIGN_SEAL、SIGN_PAGING_SEAL、SIGN_LEGAL_PERSON_SEAL）时，「盖章区适配签署方印章尺寸」开关的控制策略</p><p>枚举值：</p><ul><li>0： 默认关闭，可开启。与现网一致</li><li>1： 关闭且置灰——按控件默认的4.2cm尺寸盖章，签署方无法开启开关 </li><li>2： 默认开启且可修改——默认按印章实际尺寸盖章，签署方可手动关闭</li><li>3： 开启且置灰——强制按印章实际尺寸盖章，签署方不可修改。</li></ul><p>默认值：0</p>
+        :type AddSignComponentUseSealSize: int
         """
         self._NoRefuse = None
         self._NoTransfer = None
@@ -927,6 +929,7 @@ class ApproverOption(AbstractModel):
         self._ForbidAddSignDate = None
         self._ApproverMobileMode = None
         self._ForbidModifySealInfos = None
+        self._AddSignComponentUseSealSize = None
 
     @property
     def NoRefuse(self):
@@ -1016,6 +1019,17 @@ class ApproverOption(AbstractModel):
     def ForbidModifySealInfos(self, ForbidModifySealInfos):
         self._ForbidModifySealInfos = ForbidModifySealInfos
 
+    @property
+    def AddSignComponentUseSealSize(self):
+        r"""<p>【仅 SignBeanTag=1 时有效】 签署方自行添加签署印章类控件（SIGN_SEAL、SIGN_PAGING_SEAL、SIGN_LEGAL_PERSON_SEAL）时，「盖章区适配签署方印章尺寸」开关的控制策略</p><p>枚举值：</p><ul><li>0： 默认关闭，可开启。与现网一致</li><li>1： 关闭且置灰——按控件默认的4.2cm尺寸盖章，签署方无法开启开关 </li><li>2： 默认开启且可修改——默认按印章实际尺寸盖章，签署方可手动关闭</li><li>3： 开启且置灰——强制按印章实际尺寸盖章，签署方不可修改。</li></ul><p>默认值：0</p>
+        :rtype: int
+        """
+        return self._AddSignComponentUseSealSize
+
+    @AddSignComponentUseSealSize.setter
+    def AddSignComponentUseSealSize(self, AddSignComponentUseSealSize):
+        self._AddSignComponentUseSealSize = AddSignComponentUseSealSize
+
 
     def _deserialize(self, params):
         self._NoRefuse = params.get("NoRefuse")
@@ -1026,6 +1040,7 @@ class ApproverOption(AbstractModel):
         self._ForbidAddSignDate = params.get("ForbidAddSignDate")
         self._ApproverMobileMode = params.get("ApproverMobileMode")
         self._ForbidModifySealInfos = params.get("ForbidModifySealInfos")
+        self._AddSignComponentUseSealSize = params.get("AddSignComponentUseSealSize")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

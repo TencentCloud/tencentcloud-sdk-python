@@ -2145,6 +2145,29 @@ class TcbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyPGInstanceSpec(self, request):
+        r"""对 PG 独享实例变配
+
+        :param request: Request instance for ModifyPGInstanceSpec.
+        :type request: :class:`tencentcloud.tcb.v20180608.models.ModifyPGInstanceSpecRequest`
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.ModifyPGInstanceSpecResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyPGInstanceSpec", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyPGInstanceSpecResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyProvider(self, request):
         r"""修改身份认证源。更新指定云开发环境下已有身份认证源的配置信息，支持修改基本信息（名称、图标、描述）、协议连接配置（ClientId、ClientSecret、端点地址等）、登录行为控制（透传模式、自动注册、邮箱/手机号自动关联）以及启用状态。
         对于 OIDC 类型身份源，修改 Issuer 后将自动通过 OpenID Connect Discovery 重新获取端点配置。

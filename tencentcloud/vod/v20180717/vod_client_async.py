@@ -81,6 +81,24 @@ class VodClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CloneVoiceSync(
+            self,
+            request: models.CloneVoiceSyncRequest,
+            opts: Dict = None,
+    ) -> models.CloneVoiceSyncResponse:
+        """
+        发起音色克隆任务，基于参考音频克隆生成专属音色，生成的音色可供后续语音合成使用。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CloneVoiceSync"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CloneVoiceSyncResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CommitUpload(
             self,
             request: models.CommitUploadRequest,
@@ -4578,6 +4596,24 @@ class VodClient(AbstractClient):
         kwargs["action"] = "TextToSpeechAsync"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.TextToSpeechAsyncResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def TextToSpeechSync(
+            self,
+            request: models.TextToSpeechSyncRequest,
+            opts: Dict = None,
+    ) -> models.TextToSpeechSyncResponse:
+        """
+        发起语音合成任务，将文本合成为语音。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "TextToSpeechSync"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.TextToSpeechSyncResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

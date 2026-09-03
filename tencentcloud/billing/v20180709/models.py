@@ -17021,6 +17021,74 @@ class DescribeAccountBalanceResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeAccountWarningRequest(AbstractModel):
+    r"""DescribeAccountWarning请求参数结构体
+
+    """
+
+
+class DescribeAccountWarningResponse(AbstractModel):
+    r"""DescribeAccountWarning返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Threshold: 余额阈值（单位：国内分、国际美分）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Threshold: str
+        :param _Open: 是否开启余额告警 1 开启 0 关闭
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Open: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Threshold = None
+        self._Open = None
+        self._RequestId = None
+
+    @property
+    def Threshold(self):
+        r"""余额阈值（单位：国内分、国际美分）
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Threshold
+
+    @Threshold.setter
+    def Threshold(self, Threshold):
+        self._Threshold = Threshold
+
+    @property
+    def Open(self):
+        r"""是否开启余额告警 1 开启 0 关闭
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Open
+
+    @Open.setter
+    def Open(self, Open):
+        self._Open = Open
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Threshold = params.get("Threshold")
+        self._Open = params.get("Open")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeAllocateConditionsRequest(AbstractModel):
     r"""DescribeAllocateConditions请求参数结构体
 
@@ -22228,60 +22296,29 @@ class DescribeBillResourceSummaryRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Offset: 分页偏移量，Offset=0表示第一页，如果Limit=100，则Offset=100表示第二页，Offset=200表示第三页，依次类推
+        :param _Offset: <p>分页偏移量，Offset=0表示第一页，如果Limit=100，则Offset=100表示第二页，Offset=200表示第三页，依次类推</p>
         :type Offset: int
-        :param _Limit: 数量，最大值为1000
+        :param _Limit: <p>数量，最大值为1000</p>
         :type Limit: int
-        :param _Month: 月份，格式为yyyy-mm。不能早于开通账单2.0的月份
+        :param _Month: <p>月份，格式为yyyy-mm。不能早于开通账单2.0的月份</p>
         :type Month: str
-        :param _PeriodType: 周期类型，byUsedTime按计费周期/byPayTime按扣费周期。需要与费用中心该月份账单的周期保持一致。您可前往[账单概览](https://console.cloud.tencent.com/expense/bill/overview)页面顶部查看确认您的账单统计周期类型。
+        :param _PeriodType: <p>周期类型，byUsedTime按计费周期/byPayTime按扣费周期。需要与费用中心该月份账单的周期保持一致。您可前往<a href="https://console.cloud.tencent.com/expense/bill/overview">账单概览</a>页面顶部查看确认您的账单统计周期类型。</p>
         :type PeriodType: str
-        :param _NeedRecordNum: 是否需要访问列表的总记录数，用于前端分页
-1-表示需要， 0-表示不需要
+        :param _NeedRecordNum: <p>是否需要访问列表的总记录数，用于前端分页<br>1-表示需要， 0-表示不需要</p>
         :type NeedRecordNum: int
-        :param _ActionType: 查询交易类型（请使用交易类型名称入参），入参示例枚举如下：
-包年包月新购
-包年包月续费
-包年包月配置变更
-包年包月退款 
-按量计费扣费 
-线下项目扣费 
-线下产品扣费 
-调账扣费 
-调账补偿 
-按量计费小时结 
-按量计费日结 
-按量计费月结 
-竞价实例小时结 
-线下项目调账补偿 
-线下产品调账补偿 
-优惠扣费 
-优惠补偿 
-按量计费迁入资源 
-按量计费迁出资源 
-包年包月迁入资源 
-包年包月迁出资源 
-预付费用 
-小时费用 
-预留实例退款 
-按量计费冲正 
-包年包月转按量 
-保底扣款 
-节省计划小时费用
+        :param _ActionType: <p>查询交易类型（请使用交易类型名称入参），入参示例枚举如下：<br>包年包月新购<br>包年包月续费<br>包年包月配置变更<br>包年包月退款<br>按量计费扣费<br>线下项目扣费<br>线下产品扣费<br>调账扣费<br>调账补偿<br>按量计费小时结<br>按量计费日结<br>按量计费月结<br>竞价实例小时结<br>线下项目调账补偿<br>线下产品调账补偿<br>优惠扣费<br>优惠补偿<br>按量计费迁入资源<br>按量计费迁出资源<br>包年包月迁入资源<br>包年包月迁出资源<br>预付费用<br>小时费用<br>预留实例退款<br>按量计费冲正<br>包年包月转按量<br>保底扣款<br>节省计划小时费用</p>
         :type ActionType: str
-        :param _ResourceId: 查询指定资源信息
+        :param _ResourceId: <p>查询指定资源信息</p>
         :type ResourceId: str
-        :param _PayMode: 付费模式 prePay/postPay
+        :param _PayMode: <p>付费模式 prePay/postPay</p>
         :type PayMode: str
-        :param _BusinessCode: 产品名称代码
-备注：如需获取当月使用过的BusinessCode，请调用API：<a href="https://cloud.tencent.com/document/product/555/35761">获取产品汇总费用分布</a>
+        :param _BusinessCode: <p>产品名称代码<br>备注：如需获取当月使用过的BusinessCode，请调用API：<a href="https://cloud.tencent.com/document/product/555/35761">获取产品汇总费用分布</a></p>
         :type BusinessCode: str
-        :param _PayerUin: 支付者的账号 ID（账号 ID 是用户在腾讯云的唯一账号标识），默认查询本账号账单，如集团管理账号需查询成员账号自付的账单，该字段需入参成员账号UIN
+        :param _PayerUin: <p>支付者的账号 ID（账号 ID 是用户在腾讯云的唯一账号标识），默认查询本账号账单，如集团管理账号需查询成员账号自付的账单，该字段需入参成员账号UIN</p>
         :type PayerUin: str
-        :param _TagKey: 分账标签键，用户自定义（支持2021-01以后账单查询）
+        :param _TagKey: <p>分账标签键，用户自定义（支持2021-01以后账单查询）</p>
         :type TagKey: str
-        :param _TagValue: 分账标签值，该参数为空表示该标签键下未设置标签值的记录
-（支持2021-01以后账单查询）
+        :param _TagValue: <p>分账标签值，该参数为空表示该标签键下未设置标签值的记录<br>（支持2021-01以后账单查询）</p>
         :type TagValue: str
         """
         self._Offset = None
@@ -22299,7 +22336,7 @@ class DescribeBillResourceSummaryRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""分页偏移量，Offset=0表示第一页，如果Limit=100，则Offset=100表示第二页，Offset=200表示第三页，依次类推
+        r"""<p>分页偏移量，Offset=0表示第一页，如果Limit=100，则Offset=100表示第二页，Offset=200表示第三页，依次类推</p>
         :rtype: int
         """
         return self._Offset
@@ -22310,7 +22347,7 @@ class DescribeBillResourceSummaryRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""数量，最大值为1000
+        r"""<p>数量，最大值为1000</p>
         :rtype: int
         """
         return self._Limit
@@ -22321,7 +22358,7 @@ class DescribeBillResourceSummaryRequest(AbstractModel):
 
     @property
     def Month(self):
-        r"""月份，格式为yyyy-mm。不能早于开通账单2.0的月份
+        r"""<p>月份，格式为yyyy-mm。不能早于开通账单2.0的月份</p>
         :rtype: str
         """
         return self._Month
@@ -22334,7 +22371,7 @@ class DescribeBillResourceSummaryRequest(AbstractModel):
     def PeriodType(self):
         warnings.warn("parameter `PeriodType` is deprecated", DeprecationWarning) 
 
-        r"""周期类型，byUsedTime按计费周期/byPayTime按扣费周期。需要与费用中心该月份账单的周期保持一致。您可前往[账单概览](https://console.cloud.tencent.com/expense/bill/overview)页面顶部查看确认您的账单统计周期类型。
+        r"""<p>周期类型，byUsedTime按计费周期/byPayTime按扣费周期。需要与费用中心该月份账单的周期保持一致。您可前往<a href="https://console.cloud.tencent.com/expense/bill/overview">账单概览</a>页面顶部查看确认您的账单统计周期类型。</p>
         :rtype: str
         """
         return self._PeriodType
@@ -22347,8 +22384,7 @@ class DescribeBillResourceSummaryRequest(AbstractModel):
 
     @property
     def NeedRecordNum(self):
-        r"""是否需要访问列表的总记录数，用于前端分页
-1-表示需要， 0-表示不需要
+        r"""<p>是否需要访问列表的总记录数，用于前端分页<br>1-表示需要， 0-表示不需要</p>
         :rtype: int
         """
         return self._NeedRecordNum
@@ -22359,35 +22395,7 @@ class DescribeBillResourceSummaryRequest(AbstractModel):
 
     @property
     def ActionType(self):
-        r"""查询交易类型（请使用交易类型名称入参），入参示例枚举如下：
-包年包月新购
-包年包月续费
-包年包月配置变更
-包年包月退款 
-按量计费扣费 
-线下项目扣费 
-线下产品扣费 
-调账扣费 
-调账补偿 
-按量计费小时结 
-按量计费日结 
-按量计费月结 
-竞价实例小时结 
-线下项目调账补偿 
-线下产品调账补偿 
-优惠扣费 
-优惠补偿 
-按量计费迁入资源 
-按量计费迁出资源 
-包年包月迁入资源 
-包年包月迁出资源 
-预付费用 
-小时费用 
-预留实例退款 
-按量计费冲正 
-包年包月转按量 
-保底扣款 
-节省计划小时费用
+        r"""<p>查询交易类型（请使用交易类型名称入参），入参示例枚举如下：<br>包年包月新购<br>包年包月续费<br>包年包月配置变更<br>包年包月退款<br>按量计费扣费<br>线下项目扣费<br>线下产品扣费<br>调账扣费<br>调账补偿<br>按量计费小时结<br>按量计费日结<br>按量计费月结<br>竞价实例小时结<br>线下项目调账补偿<br>线下产品调账补偿<br>优惠扣费<br>优惠补偿<br>按量计费迁入资源<br>按量计费迁出资源<br>包年包月迁入资源<br>包年包月迁出资源<br>预付费用<br>小时费用<br>预留实例退款<br>按量计费冲正<br>包年包月转按量<br>保底扣款<br>节省计划小时费用</p>
         :rtype: str
         """
         return self._ActionType
@@ -22398,7 +22406,7 @@ class DescribeBillResourceSummaryRequest(AbstractModel):
 
     @property
     def ResourceId(self):
-        r"""查询指定资源信息
+        r"""<p>查询指定资源信息</p>
         :rtype: str
         """
         return self._ResourceId
@@ -22409,7 +22417,7 @@ class DescribeBillResourceSummaryRequest(AbstractModel):
 
     @property
     def PayMode(self):
-        r"""付费模式 prePay/postPay
+        r"""<p>付费模式 prePay/postPay</p>
         :rtype: str
         """
         return self._PayMode
@@ -22420,8 +22428,7 @@ class DescribeBillResourceSummaryRequest(AbstractModel):
 
     @property
     def BusinessCode(self):
-        r"""产品名称代码
-备注：如需获取当月使用过的BusinessCode，请调用API：<a href="https://cloud.tencent.com/document/product/555/35761">获取产品汇总费用分布</a>
+        r"""<p>产品名称代码<br>备注：如需获取当月使用过的BusinessCode，请调用API：<a href="https://cloud.tencent.com/document/product/555/35761">获取产品汇总费用分布</a></p>
         :rtype: str
         """
         return self._BusinessCode
@@ -22432,7 +22439,7 @@ class DescribeBillResourceSummaryRequest(AbstractModel):
 
     @property
     def PayerUin(self):
-        r"""支付者的账号 ID（账号 ID 是用户在腾讯云的唯一账号标识），默认查询本账号账单，如集团管理账号需查询成员账号自付的账单，该字段需入参成员账号UIN
+        r"""<p>支付者的账号 ID（账号 ID 是用户在腾讯云的唯一账号标识），默认查询本账号账单，如集团管理账号需查询成员账号自付的账单，该字段需入参成员账号UIN</p>
         :rtype: str
         """
         return self._PayerUin
@@ -22443,7 +22450,7 @@ class DescribeBillResourceSummaryRequest(AbstractModel):
 
     @property
     def TagKey(self):
-        r"""分账标签键，用户自定义（支持2021-01以后账单查询）
+        r"""<p>分账标签键，用户自定义（支持2021-01以后账单查询）</p>
         :rtype: str
         """
         return self._TagKey
@@ -22454,8 +22461,7 @@ class DescribeBillResourceSummaryRequest(AbstractModel):
 
     @property
     def TagValue(self):
-        r"""分账标签值，该参数为空表示该标签键下未设置标签值的记录
-（支持2021-01以后账单查询）
+        r"""<p>分账标签值，该参数为空表示该标签键下未设置标签值的记录<br>（支持2021-01以后账单查询）</p>
         :rtype: str
         """
         return self._TagValue
@@ -22495,9 +22501,9 @@ class DescribeBillResourceSummaryResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ResourceSummarySet: 资源汇总列表
+        :param _ResourceSummarySet: <p>资源汇总列表</p>
         :type ResourceSummarySet: list of BillResourceSummary
-        :param _Total: 资源汇总列表总数，入参NeedRecordNum为0时不返回
+        :param _Total: <p>资源汇总列表总数，入参NeedRecordNum为0时不返回</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Total: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -22509,7 +22515,7 @@ class DescribeBillResourceSummaryResponse(AbstractModel):
 
     @property
     def ResourceSummarySet(self):
-        r"""资源汇总列表
+        r"""<p>资源汇总列表</p>
         :rtype: list of BillResourceSummary
         """
         return self._ResourceSummarySet
@@ -22520,7 +22526,7 @@ class DescribeBillResourceSummaryResponse(AbstractModel):
 
     @property
     def Total(self):
-        r"""资源汇总列表总数，入参NeedRecordNum为0时不返回
+        r"""<p>资源汇总列表总数，入参NeedRecordNum为0时不返回</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -30098,6 +30104,119 @@ class JsonObject(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class ModifyAccountWarningRequest(AbstractModel):
+    r"""ModifyAccountWarning请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Threshold: 余额阈值（单位：国内分、国际美分）
+        :type Threshold: int
+        :param _Open: 是否开启余额告警 1 开启 0 关闭
+        :type Open: int
+        """
+        self._Threshold = None
+        self._Open = None
+
+    @property
+    def Threshold(self):
+        r"""余额阈值（单位：国内分、国际美分）
+        :rtype: int
+        """
+        return self._Threshold
+
+    @Threshold.setter
+    def Threshold(self, Threshold):
+        self._Threshold = Threshold
+
+    @property
+    def Open(self):
+        r"""是否开启余额告警 1 开启 0 关闭
+        :rtype: int
+        """
+        return self._Open
+
+    @Open.setter
+    def Open(self, Open):
+        self._Open = Open
+
+
+    def _deserialize(self, params):
+        self._Threshold = params.get("Threshold")
+        self._Open = params.get("Open")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyAccountWarningResponse(AbstractModel):
+    r"""ModifyAccountWarning返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Threshold: 余额阈值（单位：国内分、国际美分）
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Threshold: str
+        :param _Open: 是否开启余额告警 1 开启 0 关闭
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Open: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Threshold = None
+        self._Open = None
+        self._RequestId = None
+
+    @property
+    def Threshold(self):
+        r"""余额阈值（单位：国内分、国际美分）
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Threshold
+
+    @Threshold.setter
+    def Threshold(self, Threshold):
+        self._Threshold = Threshold
+
+    @property
+    def Open(self):
+        r"""是否开启余额告警 1 开启 0 关闭
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Open
+
+    @Open.setter
+    def Open(self, Open):
+        self._Open = Open
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Threshold = params.get("Threshold")
+        self._Open = params.get("Open")
+        self._RequestId = params.get("RequestId")
 
 
 class ModifyAllocationRuleRequest(AbstractModel):

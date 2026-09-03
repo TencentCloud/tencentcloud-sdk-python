@@ -29592,11 +29592,14 @@ class ModifyModelAttributesRequest(AbstractModel):
         r"""
         :param _ServiceProviderId: <p>BYOK的ID</p><p>参数格式：byok-kot39u7j</p>
         :type ServiceProviderId: str
-        :param _ServiceProviderName: <p>BYOK的自定义名字</p><p>入参限制：1～256个字符</p>
+        :param _ServiceProviderName: <p>BYOK的自定义名字</p><p>入参限制：1～255个字符</p>
         :type ServiceProviderName: str
+        :param _ApiBases: <p>多协议 Api Base URL</p>
+        :type ApiBases: list of ApiBaseItem
         """
         self._ServiceProviderId = None
         self._ServiceProviderName = None
+        self._ApiBases = None
 
     @property
     def ServiceProviderId(self):
@@ -29611,7 +29614,7 @@ class ModifyModelAttributesRequest(AbstractModel):
 
     @property
     def ServiceProviderName(self):
-        r"""<p>BYOK的自定义名字</p><p>入参限制：1～256个字符</p>
+        r"""<p>BYOK的自定义名字</p><p>入参限制：1～255个字符</p>
         :rtype: str
         """
         return self._ServiceProviderName
@@ -29620,10 +29623,27 @@ class ModifyModelAttributesRequest(AbstractModel):
     def ServiceProviderName(self, ServiceProviderName):
         self._ServiceProviderName = ServiceProviderName
 
+    @property
+    def ApiBases(self):
+        r"""<p>多协议 Api Base URL</p>
+        :rtype: list of ApiBaseItem
+        """
+        return self._ApiBases
+
+    @ApiBases.setter
+    def ApiBases(self, ApiBases):
+        self._ApiBases = ApiBases
+
 
     def _deserialize(self, params):
         self._ServiceProviderId = params.get("ServiceProviderId")
         self._ServiceProviderName = params.get("ServiceProviderName")
+        if params.get("ApiBases") is not None:
+            self._ApiBases = []
+            for item in params.get("ApiBases"):
+                obj = ApiBaseItem()
+                obj._deserialize(item)
+                self._ApiBases.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

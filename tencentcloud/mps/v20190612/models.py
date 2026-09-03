@@ -2772,65 +2772,56 @@ class AiAnalysisResult(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Type: 任务的类型，可以取的值有：
-<li>Classification：智能分类</li>
-<li>Cover：智能封面</li>
-<li>Tag：智能标签</li>
-<li>FrameTag：智能按帧标签</li>
-<li>Highlight：智能精彩集锦</li>
-<li>DeLogo：智能擦除</li>
-<li>Description：大模型摘要</li>
-<li>Dubbing：智能译制</li>
-<li>VideoRemake: 视频去重</li>
-<li>VideoComprehension: 视频（音频）理解</li>
-<li>Cutout：视频抠图</li>
-<li>Reel：智能成片</li>
+        :param _Type: <p>任务的类型，可以取的值有：</p><li>Classification：智能分类</li><li>Cover：智能封面</li><li>Tag：智能标签</li><li>FrameTag：智能按帧标签</li><li>Highlight：智能精彩集锦</li><li>DeLogo：智能擦除</li><li>Description：大模型摘要</li><li>Dubbing：智能译制</li><li>VideoRemake: 视频去重</li><li>VideoComprehension: 视频（音频）理解</li><li>Cutout：视频抠图</li><li>Reel：智能成片</li>
         :type Type: str
-        :param _ClassificationTask: 视频内容分析智能分类任务的查询结果，当任务类型为 Classification 时有效。
+        :param _ClassificationTask: <p>视频内容分析智能分类任务的查询结果，当任务类型为 Classification 时有效。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ClassificationTask: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskClassificationResult`
-        :param _CoverTask: 视频内容分析智能封面任务的查询结果，当任务类型为 Cover 时有效。
+        :param _CoverTask: <p>视频内容分析智能封面任务的查询结果，当任务类型为 Cover 时有效。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type CoverTask: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskCoverResult`
-        :param _TagTask: 视频内容分析智能标签任务的查询结果，当任务类型为 Tag 时有效。
+        :param _TagTask: <p>视频内容分析智能标签任务的查询结果，当任务类型为 Tag 时有效。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TagTask: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskTagResult`
-        :param _FrameTagTask: 视频内容分析智能按帧标签任务的查询结果，当任务类型为 FrameTag 时有效。
+        :param _FrameTagTask: <p>视频内容分析智能按帧标签任务的查询结果，当任务类型为 FrameTag 时有效。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type FrameTagTask: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskFrameTagResult`
-        :param _HighlightTask: 视频内容分析集锦任务的查询结果，当任务类型为 Highlight时有效。
+        :param _HighlightTask: <p>视频内容分析集锦任务的查询结果，当任务类型为 Highlight时有效。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type HighlightTask: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskHighlightResult`
-        :param _DeLogoTask: 视频内容分析智能擦除任务的查询结果，当任务类型为 DeLogo 时有效。
+        :param _DeLogoTask: <p>视频内容分析智能擦除任务的查询结果，当任务类型为 DeLogo 时有效。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type DeLogoTask: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskDelLogoResult`
-        :param _SegmentTask: 视频内容分析拆条任务的查询结果，当任务类型为 SegmentRecognition 时有效。
+        :param _SegmentTask: <p>视频内容分析拆条任务的查询结果，当任务类型为 SegmentRecognition 时有效。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type SegmentTask: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskSegmentResult`
-        :param _HeadTailTask: 视频内容分析片头片尾任务的查询结果，当任务类型为 HeadTailRecognition 时有效。
+        :param _HeadTailTask: <p>视频内容分析片头片尾任务的查询结果，当任务类型为 HeadTailRecognition 时有效。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type HeadTailTask: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskHeadTailResult`
-        :param _DescriptionTask: 视频内容分析摘要任务的查询结果，当任务类型为 Description 时有效。
+        :param _DescriptionTask: <p>视频内容分析摘要任务的查询结果，当任务类型为 Description 时有效。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type DescriptionTask: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskDescriptionResult`
-        :param _HorizontalToVerticalTask: 视频内容分析横转竖任务的查询结果，当任务类型为 HorizontalToVertical 时有效。
+        :param _HorizontalToVerticalTask: <p>视频内容分析横转竖任务的查询结果，当任务类型为 HorizontalToVertical 时有效。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type HorizontalToVerticalTask: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskHorizontalToVerticalResult`
-        :param _DubbingTask: 视频内容分析译制任务的查询结果，当任务类型为 Dubbing 时有效。
+        :param _DubbingTask: <p>视频内容分析译制任务的查询结果，当任务类型为 Dubbing 时有效。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type DubbingTask: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskDubbingResult`
-        :param _VideoRemakeTask: 视频内容分析去重任务的查询结果，当任务类型为 VideoRemake 时有效。
+        :param _VideoRemakeTask: <p>视频内容分析去重任务的查询结果，当任务类型为 VideoRemake 时有效。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type VideoRemakeTask: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskVideoRemakeResult`
-        :param _VideoComprehensionTask: 视频（音频）理解任务的查询结果，当任务类型为 VideoComprehension 时有效。
+        :param _VideoComprehensionTask: <p>视频（音频）理解任务的查询结果，当任务类型为 VideoComprehension 时有效。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type VideoComprehensionTask: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskVideoComprehensionResult`
-        :param _CutoutTask: 视频内容分析智能抠图任务的查询结果，当任务类型为Cutout时有效。
+        :param _CutoutTask: <p>视频内容分析智能抠图任务的查询结果，当任务类型为Cutout时有效。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type CutoutTask: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskCutoutResult`
-        :param _ReelTask: 视频内容分析AI解说二创任务的查询结果，当任务类型为Reel时有效。
+        :param _ReelTask: <p>视频内容分析AI解说二创任务的查询结果，当任务类型为Reel时有效。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ReelTask: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskReelResult`
+        :param _GenericTask: <p>智能分析通用任务的查询结果，当任务类型为Generic时有效。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type GenericTask: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskGenericResult`
         """
         self._Type = None
         self._ClassificationTask = None
@@ -2848,22 +2839,11 @@ class AiAnalysisResult(AbstractModel):
         self._VideoComprehensionTask = None
         self._CutoutTask = None
         self._ReelTask = None
+        self._GenericTask = None
 
     @property
     def Type(self):
-        r"""任务的类型，可以取的值有：
-<li>Classification：智能分类</li>
-<li>Cover：智能封面</li>
-<li>Tag：智能标签</li>
-<li>FrameTag：智能按帧标签</li>
-<li>Highlight：智能精彩集锦</li>
-<li>DeLogo：智能擦除</li>
-<li>Description：大模型摘要</li>
-<li>Dubbing：智能译制</li>
-<li>VideoRemake: 视频去重</li>
-<li>VideoComprehension: 视频（音频）理解</li>
-<li>Cutout：视频抠图</li>
-<li>Reel：智能成片</li>
+        r"""<p>任务的类型，可以取的值有：</p><li>Classification：智能分类</li><li>Cover：智能封面</li><li>Tag：智能标签</li><li>FrameTag：智能按帧标签</li><li>Highlight：智能精彩集锦</li><li>DeLogo：智能擦除</li><li>Description：大模型摘要</li><li>Dubbing：智能译制</li><li>VideoRemake: 视频去重</li><li>VideoComprehension: 视频（音频）理解</li><li>Cutout：视频抠图</li><li>Reel：智能成片</li>
         :rtype: str
         """
         return self._Type
@@ -2874,7 +2854,7 @@ class AiAnalysisResult(AbstractModel):
 
     @property
     def ClassificationTask(self):
-        r"""视频内容分析智能分类任务的查询结果，当任务类型为 Classification 时有效。
+        r"""<p>视频内容分析智能分类任务的查询结果，当任务类型为 Classification 时有效。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskClassificationResult`
         """
@@ -2886,7 +2866,7 @@ class AiAnalysisResult(AbstractModel):
 
     @property
     def CoverTask(self):
-        r"""视频内容分析智能封面任务的查询结果，当任务类型为 Cover 时有效。
+        r"""<p>视频内容分析智能封面任务的查询结果，当任务类型为 Cover 时有效。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskCoverResult`
         """
@@ -2898,7 +2878,7 @@ class AiAnalysisResult(AbstractModel):
 
     @property
     def TagTask(self):
-        r"""视频内容分析智能标签任务的查询结果，当任务类型为 Tag 时有效。
+        r"""<p>视频内容分析智能标签任务的查询结果，当任务类型为 Tag 时有效。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskTagResult`
         """
@@ -2910,7 +2890,7 @@ class AiAnalysisResult(AbstractModel):
 
     @property
     def FrameTagTask(self):
-        r"""视频内容分析智能按帧标签任务的查询结果，当任务类型为 FrameTag 时有效。
+        r"""<p>视频内容分析智能按帧标签任务的查询结果，当任务类型为 FrameTag 时有效。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskFrameTagResult`
         """
@@ -2922,7 +2902,7 @@ class AiAnalysisResult(AbstractModel):
 
     @property
     def HighlightTask(self):
-        r"""视频内容分析集锦任务的查询结果，当任务类型为 Highlight时有效。
+        r"""<p>视频内容分析集锦任务的查询结果，当任务类型为 Highlight时有效。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskHighlightResult`
         """
@@ -2934,7 +2914,7 @@ class AiAnalysisResult(AbstractModel):
 
     @property
     def DeLogoTask(self):
-        r"""视频内容分析智能擦除任务的查询结果，当任务类型为 DeLogo 时有效。
+        r"""<p>视频内容分析智能擦除任务的查询结果，当任务类型为 DeLogo 时有效。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskDelLogoResult`
         """
@@ -2946,7 +2926,7 @@ class AiAnalysisResult(AbstractModel):
 
     @property
     def SegmentTask(self):
-        r"""视频内容分析拆条任务的查询结果，当任务类型为 SegmentRecognition 时有效。
+        r"""<p>视频内容分析拆条任务的查询结果，当任务类型为 SegmentRecognition 时有效。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskSegmentResult`
         """
@@ -2958,7 +2938,7 @@ class AiAnalysisResult(AbstractModel):
 
     @property
     def HeadTailTask(self):
-        r"""视频内容分析片头片尾任务的查询结果，当任务类型为 HeadTailRecognition 时有效。
+        r"""<p>视频内容分析片头片尾任务的查询结果，当任务类型为 HeadTailRecognition 时有效。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskHeadTailResult`
         """
@@ -2970,7 +2950,7 @@ class AiAnalysisResult(AbstractModel):
 
     @property
     def DescriptionTask(self):
-        r"""视频内容分析摘要任务的查询结果，当任务类型为 Description 时有效。
+        r"""<p>视频内容分析摘要任务的查询结果，当任务类型为 Description 时有效。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskDescriptionResult`
         """
@@ -2982,7 +2962,7 @@ class AiAnalysisResult(AbstractModel):
 
     @property
     def HorizontalToVerticalTask(self):
-        r"""视频内容分析横转竖任务的查询结果，当任务类型为 HorizontalToVertical 时有效。
+        r"""<p>视频内容分析横转竖任务的查询结果，当任务类型为 HorizontalToVertical 时有效。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskHorizontalToVerticalResult`
         """
@@ -2994,7 +2974,7 @@ class AiAnalysisResult(AbstractModel):
 
     @property
     def DubbingTask(self):
-        r"""视频内容分析译制任务的查询结果，当任务类型为 Dubbing 时有效。
+        r"""<p>视频内容分析译制任务的查询结果，当任务类型为 Dubbing 时有效。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskDubbingResult`
         """
@@ -3006,7 +2986,7 @@ class AiAnalysisResult(AbstractModel):
 
     @property
     def VideoRemakeTask(self):
-        r"""视频内容分析去重任务的查询结果，当任务类型为 VideoRemake 时有效。
+        r"""<p>视频内容分析去重任务的查询结果，当任务类型为 VideoRemake 时有效。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskVideoRemakeResult`
         """
@@ -3018,7 +2998,7 @@ class AiAnalysisResult(AbstractModel):
 
     @property
     def VideoComprehensionTask(self):
-        r"""视频（音频）理解任务的查询结果，当任务类型为 VideoComprehension 时有效。
+        r"""<p>视频（音频）理解任务的查询结果，当任务类型为 VideoComprehension 时有效。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskVideoComprehensionResult`
         """
@@ -3030,7 +3010,7 @@ class AiAnalysisResult(AbstractModel):
 
     @property
     def CutoutTask(self):
-        r"""视频内容分析智能抠图任务的查询结果，当任务类型为Cutout时有效。
+        r"""<p>视频内容分析智能抠图任务的查询结果，当任务类型为Cutout时有效。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskCutoutResult`
         """
@@ -3042,7 +3022,7 @@ class AiAnalysisResult(AbstractModel):
 
     @property
     def ReelTask(self):
-        r"""视频内容分析AI解说二创任务的查询结果，当任务类型为Reel时有效。
+        r"""<p>视频内容分析AI解说二创任务的查询结果，当任务类型为Reel时有效。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskReelResult`
         """
@@ -3051,6 +3031,18 @@ class AiAnalysisResult(AbstractModel):
     @ReelTask.setter
     def ReelTask(self, ReelTask):
         self._ReelTask = ReelTask
+
+    @property
+    def GenericTask(self):
+        r"""<p>智能分析通用任务的查询结果，当任务类型为Generic时有效。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskGenericResult`
+        """
+        return self._GenericTask
+
+    @GenericTask.setter
+    def GenericTask(self, GenericTask):
+        self._GenericTask = GenericTask
 
 
     def _deserialize(self, params):
@@ -3100,6 +3092,9 @@ class AiAnalysisResult(AbstractModel):
         if params.get("ReelTask") is not None:
             self._ReelTask = AiAnalysisTaskReelResult()
             self._ReelTask._deserialize(params.get("ReelTask"))
+        if params.get("GenericTask") is not None:
+            self._GenericTask = AiAnalysisTaskGenericResult()
+            self._GenericTask._deserialize(params.get("GenericTask"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4833,6 +4828,212 @@ class AiAnalysisTaskFrameTagResult(AbstractModel):
             self._Input._deserialize(params.get("Input"))
         if params.get("Output") is not None:
             self._Output = AiAnalysisTaskFrameTagOutput()
+            self._Output._deserialize(params.get("Output"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AiAnalysisTaskGenericInput(AbstractModel):
+    r"""智能分析通用任务输入类型
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Definition: <p>智能分析模板 ID。</p>
+        :type Definition: int
+        :param _ExtendedParameter: <p>扩展参数。</p>
+        :type ExtendedParameter: str
+        """
+        self._Definition = None
+        self._ExtendedParameter = None
+
+    @property
+    def Definition(self):
+        r"""<p>智能分析模板 ID。</p>
+        :rtype: int
+        """
+        return self._Definition
+
+    @Definition.setter
+    def Definition(self, Definition):
+        self._Definition = Definition
+
+    @property
+    def ExtendedParameter(self):
+        r"""<p>扩展参数。</p>
+        :rtype: str
+        """
+        return self._ExtendedParameter
+
+    @ExtendedParameter.setter
+    def ExtendedParameter(self, ExtendedParameter):
+        self._ExtendedParameter = ExtendedParameter
+
+
+    def _deserialize(self, params):
+        self._Definition = params.get("Definition")
+        self._ExtendedParameter = params.get("ExtendedParameter")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AiAnalysisTaskGenericOutput(AbstractModel):
+    r"""智能分析通用结果信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _OutputStorage: <p>存储位置。</p>
+        :type OutputStorage: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
+        :param _Result: <p>任务结果。</p>
+        :type Result: str
+        """
+        self._OutputStorage = None
+        self._Result = None
+
+    @property
+    def OutputStorage(self):
+        r"""<p>存储位置。</p>
+        :rtype: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
+        """
+        return self._OutputStorage
+
+    @OutputStorage.setter
+    def OutputStorage(self, OutputStorage):
+        self._OutputStorage = OutputStorage
+
+    @property
+    def Result(self):
+        r"""<p>任务结果。</p>
+        :rtype: str
+        """
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+
+    def _deserialize(self, params):
+        if params.get("OutputStorage") is not None:
+            self._OutputStorage = TaskOutputStorage()
+            self._OutputStorage._deserialize(params.get("OutputStorage"))
+        self._Result = params.get("Result")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AiAnalysisTaskGenericResult(AbstractModel):
+    r"""智能分析通用结果类型
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Status: <p>任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。</p><p>枚举值：</p><ul><li>PROCESSING： 处理中</li><li>SUCCESS： 成功</li><li>FAIL： 失败</li></ul>
+        :type Status: str
+        :param _ErrCode: <p>错误码，0：成功，其他值：失败。</p>
+        :type ErrCode: int
+        :param _Message: <p>错误信息。</p>
+        :type Message: str
+        :param _Input: <p>智能分析任务输入。</p>
+        :type Input: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskGenericInput`
+        :param _Output: <p>智能分析任务输出。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Output: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskGenericOutput`
+        """
+        self._Status = None
+        self._ErrCode = None
+        self._Message = None
+        self._Input = None
+        self._Output = None
+
+    @property
+    def Status(self):
+        r"""<p>任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。</p><p>枚举值：</p><ul><li>PROCESSING： 处理中</li><li>SUCCESS： 成功</li><li>FAIL： 失败</li></ul>
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def ErrCode(self):
+        r"""<p>错误码，0：成功，其他值：失败。</p>
+        :rtype: int
+        """
+        return self._ErrCode
+
+    @ErrCode.setter
+    def ErrCode(self, ErrCode):
+        self._ErrCode = ErrCode
+
+    @property
+    def Message(self):
+        r"""<p>错误信息。</p>
+        :rtype: str
+        """
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+    @property
+    def Input(self):
+        r"""<p>智能分析任务输入。</p>
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskGenericInput`
+        """
+        return self._Input
+
+    @Input.setter
+    def Input(self, Input):
+        self._Input = Input
+
+    @property
+    def Output(self):
+        r"""<p>智能分析任务输出。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskGenericOutput`
+        """
+        return self._Output
+
+    @Output.setter
+    def Output(self, Output):
+        self._Output = Output
+
+
+    def _deserialize(self, params):
+        self._Status = params.get("Status")
+        self._ErrCode = params.get("ErrCode")
+        self._Message = params.get("Message")
+        if params.get("Input") is not None:
+            self._Input = AiAnalysisTaskGenericInput()
+            self._Input._deserialize(params.get("Input"))
+        if params.get("Output") is not None:
+            self._Output = AiAnalysisTaskGenericOutput()
             self._Output._deserialize(params.get("Output"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -14380,6 +14581,108 @@ class AigcVideoReferenceImageInfo(AbstractModel):
         
 
 
+class AigcVideoReferenceSubjectInfo(AbstractModel):
+    r"""参考主体信息。
+    对于Vidu模型：
+    Id -> server_id， 通过主体创建接口获取的主体ID。
+    name -> 主体ID， 后续通过@主体ID方式使用。
+
+    对于Kling模型:
+    id -> element_id， 主体ID, 通过主体创建接口获取的主体ID。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: <p>参考主体的 ID。</p>
+        :type Id: str
+        :param _Name: <p>主体名称。</p>
+        :type Name: str
+        :param _VoiceId: <p>主体音色ID。</p>
+        :type VoiceId: str
+        :param _ImageUrls: <p>主体图片列表。</p>
+        :type ImageUrls: list of str
+        :param _VideoUrls: <p>主体视频列表。</p>
+        :type VideoUrls: list of str
+        """
+        self._Id = None
+        self._Name = None
+        self._VoiceId = None
+        self._ImageUrls = None
+        self._VideoUrls = None
+
+    @property
+    def Id(self):
+        r"""<p>参考主体的 ID。</p>
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def Name(self):
+        r"""<p>主体名称。</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def VoiceId(self):
+        r"""<p>主体音色ID。</p>
+        :rtype: str
+        """
+        return self._VoiceId
+
+    @VoiceId.setter
+    def VoiceId(self, VoiceId):
+        self._VoiceId = VoiceId
+
+    @property
+    def ImageUrls(self):
+        r"""<p>主体图片列表。</p>
+        :rtype: list of str
+        """
+        return self._ImageUrls
+
+    @ImageUrls.setter
+    def ImageUrls(self, ImageUrls):
+        self._ImageUrls = ImageUrls
+
+    @property
+    def VideoUrls(self):
+        r"""<p>主体视频列表。</p>
+        :rtype: list of str
+        """
+        return self._VideoUrls
+
+    @VideoUrls.setter
+    def VideoUrls(self, VideoUrls):
+        self._VideoUrls = VideoUrls
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._Name = params.get("Name")
+        self._VoiceId = params.get("VoiceId")
+        self._ImageUrls = params.get("ImageUrls")
+        self._VideoUrls = params.get("VideoUrls")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AigcVideoReferenceVideoInfo(AbstractModel):
     r"""用于AIGC视频生成的参考视频素材。
 
@@ -22672,25 +22975,23 @@ class CreateAigcAudioTaskRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ModelName: <p>模型名称。生音乐当前支持的模型: GL、MiniMaxMusic。</p>
+        :param _ModelName: <p>模型名称。生音乐当前支持的模型: GL、MiniMaxMusic、EL、Mureka。</p>
         :type ModelName: str
-        :param _ModelVersion: <p>指定模型特定版本号。默认使用系统当前所支持的模型稳定版本。<br>模型GL支持的版本号：3.0-clip、3.0-pro。<br>模型MiniMaxMusic支持的版本号：2.0、2.5、2.6。</p>
+        :param _ModelVersion: <p>指定模型特定版本号。默认使用系统当前所支持的模型稳定版本。模型GL支持的版本号：3.0-clip、3.0-pro。模型MiniMaxMusic支持的版本号：2.0、2.5、2.6， 3.0。模型EL支持的版本号: compose_v2、sound_t2s_v2。模型Mureka支持的版本号: song_8、song_9、song_9.5、instrumental_8、instrumental_9、instrumental_9.5。</p>
         :type ModelVersion: str
         :param _SceneType: <p>指定场景生音频。音乐: music。</p>
         :type SceneType: str
-        :param _Prompt: <p>生成视频的描述。(注：最大支持2000字符)。当未传入图片时，此参数必填。</p>
+        :param _Prompt: <p>生成音乐的描述。(注：最大支持2000字符)。</p>
         :type Prompt: str
-        :param _VideoInfos: <p>参考视频信息。仅部分模型支持。</p>
+        :param _VideoInfos: <p>参考视频信息。仅部分模型支持。</p><ol><li>Kling的视频生音效。</li><li>EL的视频配背景音乐。</li></ol>
         :type VideoInfos: list of AigcAudioReferenceVideoInfo
-        :param _AudioInfos: <p>传入参考音频信息。</p><p>比如传入音频生成音乐时需要传入。</p>
+        :param _AudioInfos: <p>传入参考音频信息。</p><ol><li>MiniMaxMusic的翻唱功能使用。</li></ol><p>比如传入音频生成音乐时需要传入。</p>
         :type AudioInfos: list of AigcAudioReferenceAudioInfo
-        :param _OutputAudioFormat: <p>输出音频格式，默认不填。mp3、wav。</p>
-        :type OutputAudioFormat: str
         :param _StoreCosParam: <p>文件结果指定存储Cos桶信息。 注意：需开通Cos，创建并授权MPS_QcsRole角色。</p>
         :type StoreCosParam: :class:`tencentcloud.mps.v20190612.models.AigcStoreCosParam`
         :param _ExtraParameters: <p>用于传入要求的额外参数。</p>
         :type ExtraParameters: :class:`tencentcloud.mps.v20190612.models.AigcAudioExtraParam`
-        :param _AdditionalParameters: <p>用于传入一些模型需要的特殊场景参数，Json格式序列化成字符串。<br>示例MinimaxMusic模型传入歌词时：<br>{"lyric":{"小马在快乐奔跑，花儿在开放"}}</p><ol><li>MiniMaxMusic生纯音乐参数使用示例: &quot;AdditionalParameters&quot;:&quot;{"is_instrumental":true}&quot;</li></ol>
+        :param _AdditionalParameters: <p>用于传入一些模型需要的特殊场景参数，Json格式序列化成字符串。<br>示例MinimaxMusic模型传入歌词时：<br>{"lyric":{"小马在快乐奔跑，花儿在开放"}}</p><ol><li>MiniMaxMusic生纯音乐参数使用示例: &quot;AdditionalParameters&quot;:&quot;{"is_instrumental":true}&quot;。<br>支持的透传参数有: lyrics，is_instrumental，aigc_watermark，sample_rate，bitrate。</li><li>EL生音乐支持透传的参数有:<br>PromptInfluence，WithTimestamps，CompositionPlan，ForceInstrumental等参数。</li></ol>
         :type AdditionalParameters: str
         :param _Operator: <p>接口操作者名称。</p>
         :type Operator: str
@@ -22701,7 +23002,6 @@ class CreateAigcAudioTaskRequest(AbstractModel):
         self._Prompt = None
         self._VideoInfos = None
         self._AudioInfos = None
-        self._OutputAudioFormat = None
         self._StoreCosParam = None
         self._ExtraParameters = None
         self._AdditionalParameters = None
@@ -22709,7 +23009,7 @@ class CreateAigcAudioTaskRequest(AbstractModel):
 
     @property
     def ModelName(self):
-        r"""<p>模型名称。生音乐当前支持的模型: GL、MiniMaxMusic。</p>
+        r"""<p>模型名称。生音乐当前支持的模型: GL、MiniMaxMusic、EL、Mureka。</p>
         :rtype: str
         """
         return self._ModelName
@@ -22720,7 +23020,7 @@ class CreateAigcAudioTaskRequest(AbstractModel):
 
     @property
     def ModelVersion(self):
-        r"""<p>指定模型特定版本号。默认使用系统当前所支持的模型稳定版本。<br>模型GL支持的版本号：3.0-clip、3.0-pro。<br>模型MiniMaxMusic支持的版本号：2.0、2.5、2.6。</p>
+        r"""<p>指定模型特定版本号。默认使用系统当前所支持的模型稳定版本。模型GL支持的版本号：3.0-clip、3.0-pro。模型MiniMaxMusic支持的版本号：2.0、2.5、2.6， 3.0。模型EL支持的版本号: compose_v2、sound_t2s_v2。模型Mureka支持的版本号: song_8、song_9、song_9.5、instrumental_8、instrumental_9、instrumental_9.5。</p>
         :rtype: str
         """
         return self._ModelVersion
@@ -22742,7 +23042,7 @@ class CreateAigcAudioTaskRequest(AbstractModel):
 
     @property
     def Prompt(self):
-        r"""<p>生成视频的描述。(注：最大支持2000字符)。当未传入图片时，此参数必填。</p>
+        r"""<p>生成音乐的描述。(注：最大支持2000字符)。</p>
         :rtype: str
         """
         return self._Prompt
@@ -22753,7 +23053,7 @@ class CreateAigcAudioTaskRequest(AbstractModel):
 
     @property
     def VideoInfos(self):
-        r"""<p>参考视频信息。仅部分模型支持。</p>
+        r"""<p>参考视频信息。仅部分模型支持。</p><ol><li>Kling的视频生音效。</li><li>EL的视频配背景音乐。</li></ol>
         :rtype: list of AigcAudioReferenceVideoInfo
         """
         return self._VideoInfos
@@ -22764,7 +23064,7 @@ class CreateAigcAudioTaskRequest(AbstractModel):
 
     @property
     def AudioInfos(self):
-        r"""<p>传入参考音频信息。</p><p>比如传入音频生成音乐时需要传入。</p>
+        r"""<p>传入参考音频信息。</p><ol><li>MiniMaxMusic的翻唱功能使用。</li></ol><p>比如传入音频生成音乐时需要传入。</p>
         :rtype: list of AigcAudioReferenceAudioInfo
         """
         return self._AudioInfos
@@ -22772,17 +23072,6 @@ class CreateAigcAudioTaskRequest(AbstractModel):
     @AudioInfos.setter
     def AudioInfos(self, AudioInfos):
         self._AudioInfos = AudioInfos
-
-    @property
-    def OutputAudioFormat(self):
-        r"""<p>输出音频格式，默认不填。mp3、wav。</p>
-        :rtype: str
-        """
-        return self._OutputAudioFormat
-
-    @OutputAudioFormat.setter
-    def OutputAudioFormat(self, OutputAudioFormat):
-        self._OutputAudioFormat = OutputAudioFormat
 
     @property
     def StoreCosParam(self):
@@ -22808,7 +23097,7 @@ class CreateAigcAudioTaskRequest(AbstractModel):
 
     @property
     def AdditionalParameters(self):
-        r"""<p>用于传入一些模型需要的特殊场景参数，Json格式序列化成字符串。<br>示例MinimaxMusic模型传入歌词时：<br>{"lyric":{"小马在快乐奔跑，花儿在开放"}}</p><ol><li>MiniMaxMusic生纯音乐参数使用示例: &quot;AdditionalParameters&quot;:&quot;{"is_instrumental":true}&quot;</li></ol>
+        r"""<p>用于传入一些模型需要的特殊场景参数，Json格式序列化成字符串。<br>示例MinimaxMusic模型传入歌词时：<br>{"lyric":{"小马在快乐奔跑，花儿在开放"}}</p><ol><li>MiniMaxMusic生纯音乐参数使用示例: &quot;AdditionalParameters&quot;:&quot;{"is_instrumental":true}&quot;。<br>支持的透传参数有: lyrics，is_instrumental，aigc_watermark，sample_rate，bitrate。</li><li>EL生音乐支持透传的参数有:<br>PromptInfluence，WithTimestamps，CompositionPlan，ForceInstrumental等参数。</li></ol>
         :rtype: str
         """
         return self._AdditionalParameters
@@ -22846,7 +23135,6 @@ class CreateAigcAudioTaskRequest(AbstractModel):
                 obj = AigcAudioReferenceAudioInfo()
                 obj._deserialize(item)
                 self._AudioInfos.append(obj)
-        self._OutputAudioFormat = params.get("OutputAudioFormat")
         if params.get("StoreCosParam") is not None:
             self._StoreCosParam = AigcStoreCosParam()
             self._StoreCosParam._deserialize(params.get("StoreCosParam"))
@@ -23190,6 +23478,8 @@ class CreateAigcVideoTaskRequest(AbstractModel):
         :type VideoInfos: list of AigcVideoReferenceVideoInfo
         :param _AudioInfos: <p>部分模型支持参考音频传入，使用URL传入。</p>
         :type AudioInfos: list of AigcVideoReferenceAudioInfo
+        :param _SubjectInfos: <p>主体信息。</p>
+        :type SubjectInfos: list of AigcVideoReferenceSubjectInfo
         :param _Duration: <p>生成视频的时长。<br>注意：</p><ol><li>Kling，默认：5 秒。<ul><li>O1 支持 3-10 秒。</li><li>3.0-Omni 支持 3-15 秒，当使用视频参考时只支持 3-10 秒。</li><li>3.0 支持 3-15 秒。</li><li>其他版本支持 5、10 秒。</li></ul></li><li>Hailuo 的 std 模式可支持 6、10 秒，其他仅 6 秒。默认：6 秒。</li><li>Vidu，默认：5 秒。<ul><li>q3-pro、q3-turbo、q3、q3-mix 支持 3-16 秒。</li><li>q2-pro、q2-turbo、q2 支持 1-10 秒。 </li></ul></li><li>PixVerse，默认：5 秒。<ul><li>v5.6 支持 5、8、10 秒。</li><li>v6、c1 支持 1-15 秒。</li></ul></li><li>H2，支持 3-15 秒，默认 ：5 秒。</li></ol>
         :type Duration: int
         :param _ExtraParameters: <p>用于传入要求的额外参数。</p>
@@ -23212,6 +23502,7 @@ class CreateAigcVideoTaskRequest(AbstractModel):
         self._ImageInfos = None
         self._VideoInfos = None
         self._AudioInfos = None
+        self._SubjectInfos = None
         self._Duration = None
         self._ExtraParameters = None
         self._StoreCosParam = None
@@ -23340,6 +23631,17 @@ class CreateAigcVideoTaskRequest(AbstractModel):
         self._AudioInfos = AudioInfos
 
     @property
+    def SubjectInfos(self):
+        r"""<p>主体信息。</p>
+        :rtype: list of AigcVideoReferenceSubjectInfo
+        """
+        return self._SubjectInfos
+
+    @SubjectInfos.setter
+    def SubjectInfos(self, SubjectInfos):
+        self._SubjectInfos = SubjectInfos
+
+    @property
     def Duration(self):
         r"""<p>生成视频的时长。<br>注意：</p><ol><li>Kling，默认：5 秒。<ul><li>O1 支持 3-10 秒。</li><li>3.0-Omni 支持 3-15 秒，当使用视频参考时只支持 3-10 秒。</li><li>3.0 支持 3-15 秒。</li><li>其他版本支持 5、10 秒。</li></ul></li><li>Hailuo 的 std 模式可支持 6、10 秒，其他仅 6 秒。默认：6 秒。</li><li>Vidu，默认：5 秒。<ul><li>q3-pro、q3-turbo、q3、q3-mix 支持 3-16 秒。</li><li>q2-pro、q2-turbo、q2 支持 1-10 秒。 </li></ul></li><li>PixVerse，默认：5 秒。<ul><li>v5.6 支持 5、8、10 秒。</li><li>v6、c1 支持 1-15 秒。</li></ul></li><li>H2，支持 3-15 秒，默认 ：5 秒。</li></ol>
         :rtype: int
@@ -23422,6 +23724,12 @@ class CreateAigcVideoTaskRequest(AbstractModel):
                 obj = AigcVideoReferenceAudioInfo()
                 obj._deserialize(item)
                 self._AudioInfos.append(obj)
+        if params.get("SubjectInfos") is not None:
+            self._SubjectInfos = []
+            for item in params.get("SubjectInfos"):
+                obj = AigcVideoReferenceSubjectInfo()
+                obj._deserialize(item)
+                self._SubjectInfos.append(obj)
         self._Duration = params.get("Duration")
         if params.get("ExtraParameters") is not None:
             self._ExtraParameters = AigcVideoExtraParam()
@@ -25490,21 +25798,21 @@ class CreateMediaEvaluationRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InputInfo: 评测的原文件输入信息。目前输入对象的类型有 COS 和 URL。
+        :param _InputInfo: <p>评测的原文件输入信息。目前输入对象的类型有 COS 和 URL。</p>
         :type InputInfo: :class:`tencentcloud.mps.v20190612.models.MediaInputInfo`
-        :param _EvaluationTask: 评测任务参数。
+        :param _EvaluationTask: <p>评测任务参数。</p>
         :type EvaluationTask: :class:`tencentcloud.mps.v20190612.models.EvaluationTaskInput`
-        :param _OutputStorage: 评测的输出文件的目标存储。不填则继承 InputInfo 中的存储位置。目前输出对象存储位置的类型有COS。
+        :param _OutputStorage: <p>评测的输出文件的目标存储。不填则继承 InputInfo 中的存储位置。目前输出对象存储位置的类型有COS。</p>
         :type OutputStorage: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
-        :param _OutputDir: 评测生成文件的输出目录，必选以 / 开头和结尾，如/movie/201907/。 如果不填，表示与 InputInfo 中文件所在的目录一致。
+        :param _OutputDir: <p>评测生成文件的输出目录，必选以 / 开头和结尾，如/movie/201907/。 如果不填，表示与 InputInfo 中文件所在的目录一致。</p>
         :type OutputDir: str
-        :param _TaskNotifyConfig: 任务的事件通知信息，不填代表不获取事件通知。
+        :param _TaskNotifyConfig: <p>任务的事件通知信息，不填代表不获取事件通知。</p>
         :type TaskNotifyConfig: :class:`tencentcloud.mps.v20190612.models.TaskNotifyConfig`
-        :param _TasksPriority: 任务优先级，数值越大优先级越高，取值范围是-10到 10，不填代表0。
+        :param _TasksPriority: <p>任务优先级，数值越大优先级越高，取值范围是-10到 10，不填代表0。</p>
         :type TasksPriority: int
-        :param _SessionId: 用于去重的识别码，如果三天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。
+        :param _SessionId: <p>用于去重的识别码，如果三天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。</p>
         :type SessionId: str
-        :param _SessionContext: 来源上下文，用于透传用户请求信息，任务流状态变更回调将返回该字段值，最长 1000 个字符。
+        :param _SessionContext: <p>来源上下文，用于透传用户请求信息，任务流状态变更回调将返回该字段值，最长 1000 个字符。</p>
         :type SessionContext: str
         """
         self._InputInfo = None
@@ -25518,7 +25826,7 @@ class CreateMediaEvaluationRequest(AbstractModel):
 
     @property
     def InputInfo(self):
-        r"""评测的原文件输入信息。目前输入对象的类型有 COS 和 URL。
+        r"""<p>评测的原文件输入信息。目前输入对象的类型有 COS 和 URL。</p>
         :rtype: :class:`tencentcloud.mps.v20190612.models.MediaInputInfo`
         """
         return self._InputInfo
@@ -25529,7 +25837,7 @@ class CreateMediaEvaluationRequest(AbstractModel):
 
     @property
     def EvaluationTask(self):
-        r"""评测任务参数。
+        r"""<p>评测任务参数。</p>
         :rtype: :class:`tencentcloud.mps.v20190612.models.EvaluationTaskInput`
         """
         return self._EvaluationTask
@@ -25540,7 +25848,7 @@ class CreateMediaEvaluationRequest(AbstractModel):
 
     @property
     def OutputStorage(self):
-        r"""评测的输出文件的目标存储。不填则继承 InputInfo 中的存储位置。目前输出对象存储位置的类型有COS。
+        r"""<p>评测的输出文件的目标存储。不填则继承 InputInfo 中的存储位置。目前输出对象存储位置的类型有COS。</p>
         :rtype: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
         """
         return self._OutputStorage
@@ -25551,7 +25859,7 @@ class CreateMediaEvaluationRequest(AbstractModel):
 
     @property
     def OutputDir(self):
-        r"""评测生成文件的输出目录，必选以 / 开头和结尾，如/movie/201907/。 如果不填，表示与 InputInfo 中文件所在的目录一致。
+        r"""<p>评测生成文件的输出目录，必选以 / 开头和结尾，如/movie/201907/。 如果不填，表示与 InputInfo 中文件所在的目录一致。</p>
         :rtype: str
         """
         return self._OutputDir
@@ -25562,7 +25870,7 @@ class CreateMediaEvaluationRequest(AbstractModel):
 
     @property
     def TaskNotifyConfig(self):
-        r"""任务的事件通知信息，不填代表不获取事件通知。
+        r"""<p>任务的事件通知信息，不填代表不获取事件通知。</p>
         :rtype: :class:`tencentcloud.mps.v20190612.models.TaskNotifyConfig`
         """
         return self._TaskNotifyConfig
@@ -25573,7 +25881,7 @@ class CreateMediaEvaluationRequest(AbstractModel):
 
     @property
     def TasksPriority(self):
-        r"""任务优先级，数值越大优先级越高，取值范围是-10到 10，不填代表0。
+        r"""<p>任务优先级，数值越大优先级越高，取值范围是-10到 10，不填代表0。</p>
         :rtype: int
         """
         return self._TasksPriority
@@ -25584,7 +25892,7 @@ class CreateMediaEvaluationRequest(AbstractModel):
 
     @property
     def SessionId(self):
-        r"""用于去重的识别码，如果三天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。
+        r"""<p>用于去重的识别码，如果三天内曾有过相同的识别码的请求，则本次的请求会返回错误。最长 50 个字符，不带或者带空字符串表示不做去重。</p>
         :rtype: str
         """
         return self._SessionId
@@ -25595,7 +25903,7 @@ class CreateMediaEvaluationRequest(AbstractModel):
 
     @property
     def SessionContext(self):
-        r"""来源上下文，用于透传用户请求信息，任务流状态变更回调将返回该字段值，最长 1000 个字符。
+        r"""<p>来源上下文，用于透传用户请求信息，任务流状态变更回调将返回该字段值，最长 1000 个字符。</p>
         :rtype: str
         """
         return self._SessionContext
@@ -25639,7 +25947,7 @@ class CreateMediaEvaluationResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskId: 任务 ID。
+        :param _TaskId: <p>任务 ID。</p>
         :type TaskId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -25649,7 +25957,7 @@ class CreateMediaEvaluationResponse(AbstractModel):
 
     @property
     def TaskId(self):
-        r"""任务 ID。
+        r"""<p>任务 ID。</p>
         :rtype: str
         """
         return self._TaskId
@@ -33820,12 +34128,15 @@ class DescribeAgentRecordTaskResponse(AbstractModel):
         :type ErrorMessage: str
         :param _RecordUrls: <p>当任务状态为 SUCCESS 时，返回录制文件Url列表。</p>
         :type RecordUrls: list of str
+        :param _LiveStatus: <p>直播状态</p><p>枚举值：</p><ul><li>LIVE： 直播中</li><li>PAUSED： 直播暂停</li><li>ENDED： 直播结束</li></ul>
+        :type LiveStatus: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Status = None
         self._ErrorMessage = None
         self._RecordUrls = None
+        self._LiveStatus = None
         self._RequestId = None
 
     @property
@@ -33862,6 +34173,17 @@ class DescribeAgentRecordTaskResponse(AbstractModel):
         self._RecordUrls = RecordUrls
 
     @property
+    def LiveStatus(self):
+        r"""<p>直播状态</p><p>枚举值：</p><ul><li>LIVE： 直播中</li><li>PAUSED： 直播暂停</li><li>ENDED： 直播结束</li></ul>
+        :rtype: str
+        """
+        return self._LiveStatus
+
+    @LiveStatus.setter
+    def LiveStatus(self, LiveStatus):
+        self._LiveStatus = LiveStatus
+
+    @property
     def RequestId(self):
         r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -33877,6 +34199,7 @@ class DescribeAgentRecordTaskResponse(AbstractModel):
         self._Status = params.get("Status")
         self._ErrorMessage = params.get("ErrorMessage")
         self._RecordUrls = params.get("RecordUrls")
+        self._LiveStatus = params.get("LiveStatus")
         self._RequestId = params.get("RequestId")
 
 
@@ -38455,62 +38778,63 @@ class DescribeOutput(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _OutputId: 输出Id。
+        :param _OutputId: <p>输出Id。</p>
         :type OutputId: str
-        :param _OutputName: 输出名称。
+        :param _OutputName: <p>输出名称。</p>
         :type OutputName: str
-        :param _OutputType: 输出类型。
+        :param _OutputType: <p>输出类型。</p>
         :type OutputType: str
-        :param _OutputKind: 输出模块类型，包括Pinpoint（单点输出，最多支持四路并发输出）；MultiMesh（多路输出，支持大于四路的并发输出，目前可以达到200路）。默认类型为 Pinpoint 输出。对于单个 Flow 一个区域最多只能有一个 MultiMesh 输出。
+        :param _OutputKind: <p>输出模块类型，包括Pinpoint（单点输出，最多支持四路并发输出）；MultiMesh（多路输出，支持大于四路的并发输出，目前可以达到200路）。默认类型为 Pinpoint 输出。对于单个 Flow 一个区域最多只能有一个 MultiMesh 输出。</p>
         :type OutputKind: str
-        :param _Description: 输出描述。
+        :param _Description: <p>输出描述。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Description: str
-        :param _Protocol: 输出协议。
+        :param _Protocol: <p>输出协议。</p>
         :type Protocol: str
-        :param _OutputAddressList: 输出的出口地址信息列表。
+        :param _OutputAddressList: <p>输出的出口地址信息列表。</p>
         :type OutputAddressList: list of OutputAddress
-        :param _OutputRegion: 输出的地区。
+        :param _OutputRegion: <p>输出的地区。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type OutputRegion: str
-        :param _SRTSettings: 输出的SRT配置信息。
+        :param _SRTSettings: <p>输出的SRT配置信息。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type SRTSettings: :class:`tencentcloud.mps.v20190612.models.DescribeOutputSRTSettings`
-        :param _RTPSettings: 输出的RTP配置信息。
+        :param _RTPSettings: <p>输出的RTP配置信息。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type RTPSettings: :class:`tencentcloud.mps.v20190612.models.DescribeOutputRTPSettings`
-        :param _RTMPSettings: 输出的RTMP配置信息。
+        :param _RTMPSettings: <p>输出的RTMP配置信息。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type RTMPSettings: :class:`tencentcloud.mps.v20190612.models.DescribeOutputRTMPSettings`
-        :param _RTMPPullSettings: 输出的RTMP拉流配置信息。
+        :param _RTMPPullSettings: <p>输出的RTMP拉流配置信息。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type RTMPPullSettings: :class:`tencentcloud.mps.v20190612.models.DescribeOutputRTMPPullSettings`
-        :param _AllowIpList: CIDR白名单列表。
-当Protocol为RTMP_PULL有效，为空代表不限制客户端IP。
+        :param _AllowIpList: <p>CIDR白名单列表。<br>当Protocol为RTMP_PULL有效，为空代表不限制客户端IP。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type AllowIpList: list of str
-        :param _RTSPPullSettings: 输出的RTSP拉流配置信息。
+        :param _RTSPPullSettings: <p>输出的RTSP拉流配置信息。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type RTSPPullSettings: :class:`tencentcloud.mps.v20190612.models.DescribeOutputRTSPPullSettings`
-        :param _HLSPullSettings: 输出的HLS拉流配置信息。
+        :param _HLSPullSettings: <p>输出的HLS拉流配置信息。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type HLSPullSettings: :class:`tencentcloud.mps.v20190612.models.DescribeOutputHLSPullSettings`
-        :param _MaxConcurrent: 最大拉流并发数，最大为4，默认4。
+        :param _MaxConcurrent: <p>最大拉流并发数，最大为4，默认4。</p>
         :type MaxConcurrent: int
-        :param _SecurityGroupIds: 绑定的安全组 ID。
+        :param _SecurityGroupIds: <p>绑定的安全组 ID。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type SecurityGroupIds: list of str
-        :param _Zones: 可用区，output目前最多只支持一个。	
+        :param _Zones: <p>可用区，output目前最多只支持一个。</p>
         :type Zones: list of str
-        :param _RISTSettings: 输出的RIST配置信息。
+        :param _RISTSettings: <p>输出的RIST配置信息。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type RISTSettings: :class:`tencentcloud.mps.v20190612.models.DescribeOutputRISTSettings`
-        :param _PidSelector: 对于含有多个音/视频轨的流，可以指定需要使用的轨道
+        :param _PidSelector: <p>对于含有多个音/视频轨的流，可以指定需要使用的轨道</p>
         :type PidSelector: :class:`tencentcloud.mps.v20190612.models.PidSelector`
-        :param _StreamUrls: 输出模块配置，相关的URL，包括提供的拉流地址，或者配置的输出到第三方的转推地址
+        :param _StreamUrls: <p>输出模块配置，相关的URL，包括提供的拉流地址，或者配置的输出到第三方的转推地址</p>
         :type StreamUrls: list of StreamUrlDetail
-        :param _StreamSelector: 对于含有多个音/视频轨的流，可以指定需要使用的轨道
+        :param _StreamSelector: <p>对于含有多个音/视频轨的流，可以指定需要使用的轨道</p>
         :type StreamSelector: :class:`tencentcloud.mps.v20190612.models.StreamSelector`
+        :param _State: <p>启用或者禁用输出</p><p>枚举值：</p><ul><li>DISABLED： 禁用</li><li>ENABLED： 启用</li></ul>
+        :type State: str
         """
         self._OutputId = None
         self._OutputName = None
@@ -38534,10 +38858,11 @@ class DescribeOutput(AbstractModel):
         self._PidSelector = None
         self._StreamUrls = None
         self._StreamSelector = None
+        self._State = None
 
     @property
     def OutputId(self):
-        r"""输出Id。
+        r"""<p>输出Id。</p>
         :rtype: str
         """
         return self._OutputId
@@ -38548,7 +38873,7 @@ class DescribeOutput(AbstractModel):
 
     @property
     def OutputName(self):
-        r"""输出名称。
+        r"""<p>输出名称。</p>
         :rtype: str
         """
         return self._OutputName
@@ -38559,7 +38884,7 @@ class DescribeOutput(AbstractModel):
 
     @property
     def OutputType(self):
-        r"""输出类型。
+        r"""<p>输出类型。</p>
         :rtype: str
         """
         return self._OutputType
@@ -38570,7 +38895,7 @@ class DescribeOutput(AbstractModel):
 
     @property
     def OutputKind(self):
-        r"""输出模块类型，包括Pinpoint（单点输出，最多支持四路并发输出）；MultiMesh（多路输出，支持大于四路的并发输出，目前可以达到200路）。默认类型为 Pinpoint 输出。对于单个 Flow 一个区域最多只能有一个 MultiMesh 输出。
+        r"""<p>输出模块类型，包括Pinpoint（单点输出，最多支持四路并发输出）；MultiMesh（多路输出，支持大于四路的并发输出，目前可以达到200路）。默认类型为 Pinpoint 输出。对于单个 Flow 一个区域最多只能有一个 MultiMesh 输出。</p>
         :rtype: str
         """
         return self._OutputKind
@@ -38581,7 +38906,7 @@ class DescribeOutput(AbstractModel):
 
     @property
     def Description(self):
-        r"""输出描述。
+        r"""<p>输出描述。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -38593,7 +38918,7 @@ class DescribeOutput(AbstractModel):
 
     @property
     def Protocol(self):
-        r"""输出协议。
+        r"""<p>输出协议。</p>
         :rtype: str
         """
         return self._Protocol
@@ -38604,7 +38929,7 @@ class DescribeOutput(AbstractModel):
 
     @property
     def OutputAddressList(self):
-        r"""输出的出口地址信息列表。
+        r"""<p>输出的出口地址信息列表。</p>
         :rtype: list of OutputAddress
         """
         return self._OutputAddressList
@@ -38615,7 +38940,7 @@ class DescribeOutput(AbstractModel):
 
     @property
     def OutputRegion(self):
-        r"""输出的地区。
+        r"""<p>输出的地区。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -38627,7 +38952,7 @@ class DescribeOutput(AbstractModel):
 
     @property
     def SRTSettings(self):
-        r"""输出的SRT配置信息。
+        r"""<p>输出的SRT配置信息。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mps.v20190612.models.DescribeOutputSRTSettings`
         """
@@ -38639,7 +38964,7 @@ class DescribeOutput(AbstractModel):
 
     @property
     def RTPSettings(self):
-        r"""输出的RTP配置信息。
+        r"""<p>输出的RTP配置信息。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mps.v20190612.models.DescribeOutputRTPSettings`
         """
@@ -38651,7 +38976,7 @@ class DescribeOutput(AbstractModel):
 
     @property
     def RTMPSettings(self):
-        r"""输出的RTMP配置信息。
+        r"""<p>输出的RTMP配置信息。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mps.v20190612.models.DescribeOutputRTMPSettings`
         """
@@ -38663,7 +38988,7 @@ class DescribeOutput(AbstractModel):
 
     @property
     def RTMPPullSettings(self):
-        r"""输出的RTMP拉流配置信息。
+        r"""<p>输出的RTMP拉流配置信息。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mps.v20190612.models.DescribeOutputRTMPPullSettings`
         """
@@ -38675,8 +39000,7 @@ class DescribeOutput(AbstractModel):
 
     @property
     def AllowIpList(self):
-        r"""CIDR白名单列表。
-当Protocol为RTMP_PULL有效，为空代表不限制客户端IP。
+        r"""<p>CIDR白名单列表。<br>当Protocol为RTMP_PULL有效，为空代表不限制客户端IP。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -38688,7 +39012,7 @@ class DescribeOutput(AbstractModel):
 
     @property
     def RTSPPullSettings(self):
-        r"""输出的RTSP拉流配置信息。
+        r"""<p>输出的RTSP拉流配置信息。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mps.v20190612.models.DescribeOutputRTSPPullSettings`
         """
@@ -38700,7 +39024,7 @@ class DescribeOutput(AbstractModel):
 
     @property
     def HLSPullSettings(self):
-        r"""输出的HLS拉流配置信息。
+        r"""<p>输出的HLS拉流配置信息。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mps.v20190612.models.DescribeOutputHLSPullSettings`
         """
@@ -38712,7 +39036,7 @@ class DescribeOutput(AbstractModel):
 
     @property
     def MaxConcurrent(self):
-        r"""最大拉流并发数，最大为4，默认4。
+        r"""<p>最大拉流并发数，最大为4，默认4。</p>
         :rtype: int
         """
         return self._MaxConcurrent
@@ -38723,7 +39047,7 @@ class DescribeOutput(AbstractModel):
 
     @property
     def SecurityGroupIds(self):
-        r"""绑定的安全组 ID。
+        r"""<p>绑定的安全组 ID。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -38735,7 +39059,7 @@ class DescribeOutput(AbstractModel):
 
     @property
     def Zones(self):
-        r"""可用区，output目前最多只支持一个。	
+        r"""<p>可用区，output目前最多只支持一个。</p>
         :rtype: list of str
         """
         return self._Zones
@@ -38746,7 +39070,7 @@ class DescribeOutput(AbstractModel):
 
     @property
     def RISTSettings(self):
-        r"""输出的RIST配置信息。
+        r"""<p>输出的RIST配置信息。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mps.v20190612.models.DescribeOutputRISTSettings`
         """
@@ -38760,7 +39084,7 @@ class DescribeOutput(AbstractModel):
     def PidSelector(self):
         warnings.warn("parameter `PidSelector` is deprecated", DeprecationWarning) 
 
-        r"""对于含有多个音/视频轨的流，可以指定需要使用的轨道
+        r"""<p>对于含有多个音/视频轨的流，可以指定需要使用的轨道</p>
         :rtype: :class:`tencentcloud.mps.v20190612.models.PidSelector`
         """
         return self._PidSelector
@@ -38773,7 +39097,7 @@ class DescribeOutput(AbstractModel):
 
     @property
     def StreamUrls(self):
-        r"""输出模块配置，相关的URL，包括提供的拉流地址，或者配置的输出到第三方的转推地址
+        r"""<p>输出模块配置，相关的URL，包括提供的拉流地址，或者配置的输出到第三方的转推地址</p>
         :rtype: list of StreamUrlDetail
         """
         return self._StreamUrls
@@ -38784,7 +39108,7 @@ class DescribeOutput(AbstractModel):
 
     @property
     def StreamSelector(self):
-        r"""对于含有多个音/视频轨的流，可以指定需要使用的轨道
+        r"""<p>对于含有多个音/视频轨的流，可以指定需要使用的轨道</p>
         :rtype: :class:`tencentcloud.mps.v20190612.models.StreamSelector`
         """
         return self._StreamSelector
@@ -38792,6 +39116,17 @@ class DescribeOutput(AbstractModel):
     @StreamSelector.setter
     def StreamSelector(self, StreamSelector):
         self._StreamSelector = StreamSelector
+
+    @property
+    def State(self):
+        r"""<p>启用或者禁用输出</p><p>枚举值：</p><ul><li>DISABLED： 禁用</li><li>ENABLED： 启用</li></ul>
+        :rtype: str
+        """
+        return self._State
+
+    @State.setter
+    def State(self, State):
+        self._State = State
 
 
     def _deserialize(self, params):
@@ -38845,6 +39180,7 @@ class DescribeOutput(AbstractModel):
         if params.get("StreamSelector") is not None:
             self._StreamSelector = StreamSelector()
             self._StreamSelector._deserialize(params.get("StreamSelector"))
+        self._State = params.get("State")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -5184,77 +5184,58 @@ class ChildTemplateInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TemplateId: 自适应码率转码模板，子模板Id。
-入参时候，填写此字段，表示更新子模板，否则是新增子模板。
+        :param _TemplateId: <p>自适应码率转码模板，子模板Id。<br>入参时候，填写此字段，表示更新子模板，否则是新增子模板。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TemplateId: int
-        :param _TemplateName: 子模板名称。
+        :param _TemplateName: <p>子模板名称。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TemplateName: str
-        :param _Vcodec: 视频编码：h264/h265/origin，默认origin。
-
-origin: 保持原始编码格式。
+        :param _Vcodec: <p>视频编码：h264/h265/origin，默认origin。</p><p>origin: 保持原始编码格式。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Vcodec: str
-        :param _VideoBitrate: 视频码率。范围：0kbps - 8000kbps。
-0为保持原始码率。
-注: 转码模板有码率唯一要求，最终保存的码率可能与输入码率有所差别。
+        :param _VideoBitrate: <p>视频码率。范围：0kbps - 8000kbps。<br>0为保持原始码率。<br>注: 转码模板有码率唯一要求，最终保存的码率可能与输入码率有所差别。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type VideoBitrate: int
-        :param _Width: 宽，默认0。
-范围[0-3000]。
-数值必须是2的倍数，0是原始宽度。
+        :param _Width: <p>宽，默认0。<br>范围[0-3000]。<br>数值必须是2的倍数，0是原始宽度。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Width: int
-        :param _Height: 高，默认0。
-范围[0-3000]
-数值必须是2的倍数，0是原始高度。
+        :param _Height: <p>高，默认0。<br>范围[0-3000]<br>数值必须是2的倍数，0是原始高度。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Height: int
-        :param _Fps: 帧率，默认0。
-范围0-60fps。
+        :param _Fps: <p>帧率，默认0。<br>范围0-60fps。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Fps: int
-        :param _Gop: 关键帧间隔，单位：秒。
-默认原始的间隔。
-范围2-6。
-同一个父模板下面的所有子模板，gop必须相等且存在。
+        :param _Gop: <p>关键帧间隔，单位：秒。<br>默认原始的间隔。<br>范围2-6。<br>同一个父模板下面的所有子模板，gop必须相等且存在。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Gop: int
-        :param _NeedVideo: 是否保留视频，0：否，1：是。默认1。
+        :param _NeedVideo: <p>是否保留视频，0：否，1：是。默认1。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type NeedVideo: int
-        :param _NeedAudio: 是否保留音频，0：否，1：是。默认1。
+        :param _NeedAudio: <p>是否保留音频，0：否，1：是。默认1。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type NeedAudio: int
-        :param _BitrateToOrig: 当设置的码率>原始码率时，是否以原始码率为准。
-0：否， 1：是
-默认 0。
+        :param _BitrateToOrig: <p>当设置的码率&gt;原始码率时，是否以原始码率为准。<br>0：否， 1：是<br>默认 0。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type BitrateToOrig: int
-        :param _HeightToOrig: 当设置的高度>原始高度时，是否以原始高度为准。
-0：否， 1：是
-默认 0。
+        :param _HeightToOrig: <p>当设置的高度&gt;原始高度时，是否以原始高度为准。<br>0：否， 1：是<br>默认 0。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type HeightToOrig: int
-        :param _FpsToOrig: 当设置的帧率>原始帧率时，是否以原始帧率为准。
-0：否， 1：是
-默认 0。
+        :param _FpsToOrig: <p>当设置的帧率&gt;原始帧率时，是否以原始帧率为准。<br>0：否， 1：是<br>默认 0。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type FpsToOrig: int
-        :param _ShortEdgeAsHeight: 是否以短边作为高度，0：否，1：是。默认0。
+        :param _ShortEdgeAsHeight: <p>是否以短边作为高度，0：否，1：是。默认0。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ShortEdgeAsHeight: int
-        :param _HlsContainerFormat: HLS 分片类型。
-可选值：ts、fmp4。
-注：编码方式为 H.265 时生效。
+        :param _HlsContainerFormat: <p>HLS 分片类型。<br>可选值：ts、fmp4。<br>注：编码方式为 H.265 时生效。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type HlsContainerFormat: str
-        :param _HlsMp4VideoCodecTag: 编码标签。
-可选值：hvc1、hev1。
-注：HLS 分片类型选择 fmp4 时生效。
+        :param _HlsMp4VideoCodecTag: <p>编码标签。<br>可选值：hvc1、hev1。<br>注：HLS 分片类型选择 fmp4 时生效。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type HlsMp4VideoCodecTag: str
+        :param _Acodec: <p>子流音频编码类型。默认为&quot;自动适配&quot;</p>
+        :type Acodec: str
+        :param _AudioBitrate: <p>子流音频码率</p><p>单位：Kbps</p>
+        :type AudioBitrate: int
         """
         self._TemplateId = None
         self._TemplateName = None
@@ -5272,11 +5253,12 @@ origin: 保持原始编码格式。
         self._ShortEdgeAsHeight = None
         self._HlsContainerFormat = None
         self._HlsMp4VideoCodecTag = None
+        self._Acodec = None
+        self._AudioBitrate = None
 
     @property
     def TemplateId(self):
-        r"""自适应码率转码模板，子模板Id。
-入参时候，填写此字段，表示更新子模板，否则是新增子模板。
+        r"""<p>自适应码率转码模板，子模板Id。<br>入参时候，填写此字段，表示更新子模板，否则是新增子模板。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -5288,7 +5270,7 @@ origin: 保持原始编码格式。
 
     @property
     def TemplateName(self):
-        r"""子模板名称。
+        r"""<p>子模板名称。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -5300,9 +5282,7 @@ origin: 保持原始编码格式。
 
     @property
     def Vcodec(self):
-        r"""视频编码：h264/h265/origin，默认origin。
-
-origin: 保持原始编码格式。
+        r"""<p>视频编码：h264/h265/origin，默认origin。</p><p>origin: 保持原始编码格式。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -5314,9 +5294,7 @@ origin: 保持原始编码格式。
 
     @property
     def VideoBitrate(self):
-        r"""视频码率。范围：0kbps - 8000kbps。
-0为保持原始码率。
-注: 转码模板有码率唯一要求，最终保存的码率可能与输入码率有所差别。
+        r"""<p>视频码率。范围：0kbps - 8000kbps。<br>0为保持原始码率。<br>注: 转码模板有码率唯一要求，最终保存的码率可能与输入码率有所差别。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -5328,9 +5306,7 @@ origin: 保持原始编码格式。
 
     @property
     def Width(self):
-        r"""宽，默认0。
-范围[0-3000]。
-数值必须是2的倍数，0是原始宽度。
+        r"""<p>宽，默认0。<br>范围[0-3000]。<br>数值必须是2的倍数，0是原始宽度。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -5342,9 +5318,7 @@ origin: 保持原始编码格式。
 
     @property
     def Height(self):
-        r"""高，默认0。
-范围[0-3000]
-数值必须是2的倍数，0是原始高度。
+        r"""<p>高，默认0。<br>范围[0-3000]<br>数值必须是2的倍数，0是原始高度。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -5356,8 +5330,7 @@ origin: 保持原始编码格式。
 
     @property
     def Fps(self):
-        r"""帧率，默认0。
-范围0-60fps。
+        r"""<p>帧率，默认0。<br>范围0-60fps。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -5369,10 +5342,7 @@ origin: 保持原始编码格式。
 
     @property
     def Gop(self):
-        r"""关键帧间隔，单位：秒。
-默认原始的间隔。
-范围2-6。
-同一个父模板下面的所有子模板，gop必须相等且存在。
+        r"""<p>关键帧间隔，单位：秒。<br>默认原始的间隔。<br>范围2-6。<br>同一个父模板下面的所有子模板，gop必须相等且存在。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -5384,7 +5354,7 @@ origin: 保持原始编码格式。
 
     @property
     def NeedVideo(self):
-        r"""是否保留视频，0：否，1：是。默认1。
+        r"""<p>是否保留视频，0：否，1：是。默认1。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -5396,7 +5366,7 @@ origin: 保持原始编码格式。
 
     @property
     def NeedAudio(self):
-        r"""是否保留音频，0：否，1：是。默认1。
+        r"""<p>是否保留音频，0：否，1：是。默认1。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -5408,9 +5378,7 @@ origin: 保持原始编码格式。
 
     @property
     def BitrateToOrig(self):
-        r"""当设置的码率>原始码率时，是否以原始码率为准。
-0：否， 1：是
-默认 0。
+        r"""<p>当设置的码率&gt;原始码率时，是否以原始码率为准。<br>0：否， 1：是<br>默认 0。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -5422,9 +5390,7 @@ origin: 保持原始编码格式。
 
     @property
     def HeightToOrig(self):
-        r"""当设置的高度>原始高度时，是否以原始高度为准。
-0：否， 1：是
-默认 0。
+        r"""<p>当设置的高度&gt;原始高度时，是否以原始高度为准。<br>0：否， 1：是<br>默认 0。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -5436,9 +5402,7 @@ origin: 保持原始编码格式。
 
     @property
     def FpsToOrig(self):
-        r"""当设置的帧率>原始帧率时，是否以原始帧率为准。
-0：否， 1：是
-默认 0。
+        r"""<p>当设置的帧率&gt;原始帧率时，是否以原始帧率为准。<br>0：否， 1：是<br>默认 0。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -5450,7 +5414,7 @@ origin: 保持原始编码格式。
 
     @property
     def ShortEdgeAsHeight(self):
-        r"""是否以短边作为高度，0：否，1：是。默认0。
+        r"""<p>是否以短边作为高度，0：否，1：是。默认0。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -5462,9 +5426,7 @@ origin: 保持原始编码格式。
 
     @property
     def HlsContainerFormat(self):
-        r"""HLS 分片类型。
-可选值：ts、fmp4。
-注：编码方式为 H.265 时生效。
+        r"""<p>HLS 分片类型。<br>可选值：ts、fmp4。<br>注：编码方式为 H.265 时生效。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -5476,9 +5438,7 @@ origin: 保持原始编码格式。
 
     @property
     def HlsMp4VideoCodecTag(self):
-        r"""编码标签。
-可选值：hvc1、hev1。
-注：HLS 分片类型选择 fmp4 时生效。
+        r"""<p>编码标签。<br>可选值：hvc1、hev1。<br>注：HLS 分片类型选择 fmp4 时生效。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -5487,6 +5447,28 @@ origin: 保持原始编码格式。
     @HlsMp4VideoCodecTag.setter
     def HlsMp4VideoCodecTag(self, HlsMp4VideoCodecTag):
         self._HlsMp4VideoCodecTag = HlsMp4VideoCodecTag
+
+    @property
+    def Acodec(self):
+        r"""<p>子流音频编码类型。默认为&quot;自动适配&quot;</p>
+        :rtype: str
+        """
+        return self._Acodec
+
+    @Acodec.setter
+    def Acodec(self, Acodec):
+        self._Acodec = Acodec
+
+    @property
+    def AudioBitrate(self):
+        r"""<p>子流音频码率</p><p>单位：Kbps</p>
+        :rtype: int
+        """
+        return self._AudioBitrate
+
+    @AudioBitrate.setter
+    def AudioBitrate(self, AudioBitrate):
+        self._AudioBitrate = AudioBitrate
 
 
     def _deserialize(self, params):
@@ -5506,6 +5488,8 @@ origin: 保持原始编码格式。
         self._ShortEdgeAsHeight = params.get("ShortEdgeAsHeight")
         self._HlsContainerFormat = params.get("HlsContainerFormat")
         self._HlsMp4VideoCodecTag = params.get("HlsMp4VideoCodecTag")
+        self._Acodec = params.get("Acodec")
+        self._AudioBitrate = params.get("AudioBitrate")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -11384,7 +11368,7 @@ class CreateLiveTranscodeTemplateRequest(AbstractModel):
         :type TemplateName: str
         :param _VideoBitrate: <p>视频码率。范围：0kbps - 8000kbps。<br>0为保持原始码率。<br>注: 转码模板有码率唯一要求，最终保存的码率可能与输入码率有所差别。</p>
         :type VideoBitrate: int
-        :param _Acodec: <p>音频编码：aac，默认aac。<br>注意：当前该参数未生效，待后续支持！</p>
+        :param _Acodec: <p>音频编码。默认为自动适配</p>
         :type Acodec: str
         :param _AudioBitrate: <p>音频码率，默认0。<br>范围：0-500。</p>
         :type AudioBitrate: int
@@ -11484,7 +11468,7 @@ class CreateLiveTranscodeTemplateRequest(AbstractModel):
 
     @property
     def Acodec(self):
-        r"""<p>音频编码：aac，默认aac。<br>注意：当前该参数未生效，待后续支持！</p>
+        r"""<p>音频编码。默认为自动适配</p>
         :rtype: str
         """
         return self._Acodec
@@ -36771,7 +36755,7 @@ class ModifyLiveTranscodeTemplateRequest(AbstractModel):
         :type TemplateId: int
         :param _Vcodec: <p>视频编码：h264/h265/origin，默认origin。</p><p>origin: 保持原始编码格式</p>
         :type Vcodec: str
-        :param _Acodec: <p>音频编码：aac，默认aac。<br>注意：当前该参数未生效，待后续支持！</p>
+        :param _Acodec: <p>音频编码。默认为自动适配</p>
         :type Acodec: str
         :param _AudioBitrate: <p>音频码率，默认0。<br>范围：0-500。</p>
         :type AudioBitrate: int
@@ -36868,7 +36852,7 @@ class ModifyLiveTranscodeTemplateRequest(AbstractModel):
 
     @property
     def Acodec(self):
-        r"""<p>音频编码：aac，默认aac。<br>注意：当前该参数未生效，待后续支持！</p>
+        r"""<p>音频编码。默认为自动适配</p>
         :rtype: str
         """
         return self._Acodec
@@ -44867,7 +44851,7 @@ class TemplateInfo(AbstractModel):
         :type Vcodec: str
         :param _VideoBitrate: <p>视频码率。范围：0kbps - 8000kbps。<br>0为保持原始码率。<br>注: 转码模板有码率唯一要求，最终保存的码率可能与输入码率有所差别。</p>
         :type VideoBitrate: int
-        :param _Acodec: <p>音频编码：aac，默认aac。<br>注意：当前该参数未生效，待后续支持！</p>
+        :param _Acodec: <p>音频编码。默认为自动适配</p>
         :type Acodec: str
         :param _AudioBitrate: <p>音频码率。取值范围：0kbps - 500kbps。<br>默认0。</p>
         :type AudioBitrate: int
@@ -44975,7 +44959,7 @@ class TemplateInfo(AbstractModel):
 
     @property
     def Acodec(self):
-        r"""<p>音频编码：aac，默认aac。<br>注意：当前该参数未生效，待后续支持！</p>
+        r"""<p>音频编码。默认为自动适配</p>
         :rtype: str
         """
         return self._Acodec

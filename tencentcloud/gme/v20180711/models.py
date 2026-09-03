@@ -3305,18 +3305,20 @@ class DescribeApplicationListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ProjectId: 项目ID，0表示默认项目，-1表示所有项目，如果需要查找具体项目下的应用列表，请填入具体项目ID，项目ID在项目管理中查看 https://console.cloud.tencent.com/project
+        :param _ProjectId: <p>项目ID，0表示默认项目，-1表示所有项目，如果需要查找具体项目下的应用列表，请填入具体项目ID，项目ID在项目管理中查看 https://console.cloud.tencent.com/project</p>
         :type ProjectId: int
-        :param _PageNo: 页码ID，0表示第一页，以此后推。默认填0
+        :param _PageNo: <p>页码ID，0表示第一页，以此后推。默认填0</p>
         :type PageNo: int
-        :param _PageSize: 每页展示应用数量。默认填200
+        :param _PageSize: <p>每页展示应用数量。默认填200</p>
         :type PageSize: int
-        :param _SearchText: 所查找应用名称的关键字，支持模糊匹配查找。空串表示查询所有应用
+        :param _SearchText: <p>所查找应用名称的关键字，支持模糊匹配查找。空串表示查询所有应用</p>
         :type SearchText: str
-        :param _TagSet: 标签列表
+        :param _TagSet: <p>标签列表</p>
         :type TagSet: list of Tag
-        :param _Filters: 查找过滤关键字列表
+        :param _Filters: <p>查找过滤关键字列表</p>
         :type Filters: list of Filter
+        :param _NewVersion: <p>是否查询GME3.0应用</p><p>取值范围：[0, 1]</p><p>默认值：0</p>
+        :type NewVersion: int
         """
         self._ProjectId = None
         self._PageNo = None
@@ -3324,10 +3326,11 @@ class DescribeApplicationListRequest(AbstractModel):
         self._SearchText = None
         self._TagSet = None
         self._Filters = None
+        self._NewVersion = None
 
     @property
     def ProjectId(self):
-        r"""项目ID，0表示默认项目，-1表示所有项目，如果需要查找具体项目下的应用列表，请填入具体项目ID，项目ID在项目管理中查看 https://console.cloud.tencent.com/project
+        r"""<p>项目ID，0表示默认项目，-1表示所有项目，如果需要查找具体项目下的应用列表，请填入具体项目ID，项目ID在项目管理中查看 https://console.cloud.tencent.com/project</p>
         :rtype: int
         """
         return self._ProjectId
@@ -3338,7 +3341,7 @@ class DescribeApplicationListRequest(AbstractModel):
 
     @property
     def PageNo(self):
-        r"""页码ID，0表示第一页，以此后推。默认填0
+        r"""<p>页码ID，0表示第一页，以此后推。默认填0</p>
         :rtype: int
         """
         return self._PageNo
@@ -3349,7 +3352,7 @@ class DescribeApplicationListRequest(AbstractModel):
 
     @property
     def PageSize(self):
-        r"""每页展示应用数量。默认填200
+        r"""<p>每页展示应用数量。默认填200</p>
         :rtype: int
         """
         return self._PageSize
@@ -3360,7 +3363,7 @@ class DescribeApplicationListRequest(AbstractModel):
 
     @property
     def SearchText(self):
-        r"""所查找应用名称的关键字，支持模糊匹配查找。空串表示查询所有应用
+        r"""<p>所查找应用名称的关键字，支持模糊匹配查找。空串表示查询所有应用</p>
         :rtype: str
         """
         return self._SearchText
@@ -3371,7 +3374,7 @@ class DescribeApplicationListRequest(AbstractModel):
 
     @property
     def TagSet(self):
-        r"""标签列表
+        r"""<p>标签列表</p>
         :rtype: list of Tag
         """
         return self._TagSet
@@ -3382,7 +3385,7 @@ class DescribeApplicationListRequest(AbstractModel):
 
     @property
     def Filters(self):
-        r"""查找过滤关键字列表
+        r"""<p>查找过滤关键字列表</p>
         :rtype: list of Filter
         """
         return self._Filters
@@ -3390,6 +3393,17 @@ class DescribeApplicationListRequest(AbstractModel):
     @Filters.setter
     def Filters(self, Filters):
         self._Filters = Filters
+
+    @property
+    def NewVersion(self):
+        r"""<p>是否查询GME3.0应用</p><p>取值范围：[0, 1]</p><p>默认值：0</p>
+        :rtype: int
+        """
+        return self._NewVersion
+
+    @NewVersion.setter
+    def NewVersion(self, NewVersion):
+        self._NewVersion = NewVersion
 
 
     def _deserialize(self, params):
@@ -3409,6 +3423,7 @@ class DescribeApplicationListRequest(AbstractModel):
                 obj = Filter()
                 obj._deserialize(item)
                 self._Filters.append(obj)
+        self._NewVersion = params.get("NewVersion")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3426,9 +3441,9 @@ class DescribeApplicationListResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ApplicationList: 获取应用列表返回
+        :param _ApplicationList: <p>获取应用列表返回</p>
         :type ApplicationList: list of ApplicationList
-        :param _Total: 应用总数
+        :param _Total: <p>应用总数</p>
         :type Total: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -3439,7 +3454,7 @@ class DescribeApplicationListResponse(AbstractModel):
 
     @property
     def ApplicationList(self):
-        r"""获取应用列表返回
+        r"""<p>获取应用列表返回</p>
         :rtype: list of ApplicationList
         """
         return self._ApplicationList
@@ -3450,7 +3465,7 @@ class DescribeApplicationListResponse(AbstractModel):
 
     @property
     def Total(self):
-        r"""应用总数
+        r"""<p>应用总数</p>
         :rtype: int
         """
         return self._Total

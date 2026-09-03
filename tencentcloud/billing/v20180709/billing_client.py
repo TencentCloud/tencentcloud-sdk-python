@@ -302,6 +302,29 @@ class BillingClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeAccountWarning(self, request):
+        r"""云api查余额告警阈值接口，支持传入uin
+
+        :param request: Request instance for DescribeAccountWarning.
+        :type request: :class:`tencentcloud.billing.v20180709.models.DescribeAccountWarningRequest`
+        :rtype: :class:`tencentcloud.billing.v20180709.models.DescribeAccountWarningResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAccountWarning", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeAccountWarningResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeAllocateConditions(self, request):
         r"""查询资源目录筛选条件
 
@@ -1429,6 +1452,29 @@ class BillingClient(AbstractClient):
             body = self.call("DescribeVoucherUsageDetails", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeVoucherUsageDetailsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyAccountWarning(self, request):
+        r"""云api设置余额告警阈值接口
+
+        :param request: Request instance for ModifyAccountWarning.
+        :type request: :class:`tencentcloud.billing.v20180709.models.ModifyAccountWarningRequest`
+        :rtype: :class:`tencentcloud.billing.v20180709.models.ModifyAccountWarningResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyAccountWarning", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyAccountWarningResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

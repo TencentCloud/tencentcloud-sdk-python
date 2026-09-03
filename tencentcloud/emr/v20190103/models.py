@@ -768,6 +768,87 @@ class ApplicationStatics(AbstractModel):
         
 
 
+class ArchitectureInfo(AbstractModel):
+    r"""架构信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Architecture: <p>架构类型</p>
+        :type Architecture: str
+        :param _ArchitectureName: <p>架构类型名称</p>
+        :type ArchitectureName: str
+        :param _Order: <p>架构类型展示顺序</p>
+        :type Order: int
+        :param _InstanceFamilies: <p>架构包含的机型族</p>
+        :type InstanceFamilies: list of str
+        """
+        self._Architecture = None
+        self._ArchitectureName = None
+        self._Order = None
+        self._InstanceFamilies = None
+
+    @property
+    def Architecture(self):
+        r"""<p>架构类型</p>
+        :rtype: str
+        """
+        return self._Architecture
+
+    @Architecture.setter
+    def Architecture(self, Architecture):
+        self._Architecture = Architecture
+
+    @property
+    def ArchitectureName(self):
+        r"""<p>架构类型名称</p>
+        :rtype: str
+        """
+        return self._ArchitectureName
+
+    @ArchitectureName.setter
+    def ArchitectureName(self, ArchitectureName):
+        self._ArchitectureName = ArchitectureName
+
+    @property
+    def Order(self):
+        r"""<p>架构类型展示顺序</p>
+        :rtype: int
+        """
+        return self._Order
+
+    @Order.setter
+    def Order(self, Order):
+        self._Order = Order
+
+    @property
+    def InstanceFamilies(self):
+        r"""<p>架构包含的机型族</p>
+        :rtype: list of str
+        """
+        return self._InstanceFamilies
+
+    @InstanceFamilies.setter
+    def InstanceFamilies(self, InstanceFamilies):
+        self._InstanceFamilies = InstanceFamilies
+
+
+    def _deserialize(self, params):
+        self._Architecture = params.get("Architecture")
+        self._ArchitectureName = params.get("ArchitectureName")
+        self._Order = params.get("Order")
+        self._InstanceFamilies = params.get("InstanceFamilies")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Arg(AbstractModel):
     r"""通用的参数
 
@@ -10150,6 +10231,10 @@ class DescribeDynamicInstanceDetailResponse(AbstractModel):
         :type RayClusterYaml: str
         :param _ImageInfoV2: <p>镜像信息</p>
         :type ImageInfoV2: :class:`tencentcloud.emr.v20190103.models.ImageInfoV2`
+        :param _EnableHistoryServer: <p>是否开启日志收集</p>
+        :type EnableHistoryServer: bool
+        :param _TensorBoardUrl: <p>tensorboard 链接</p>
+        :type TensorBoardUrl: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -10176,6 +10261,8 @@ class DescribeDynamicInstanceDetailResponse(AbstractModel):
         self._PersistentVolume = None
         self._RayClusterYaml = None
         self._ImageInfoV2 = None
+        self._EnableHistoryServer = None
+        self._TensorBoardUrl = None
         self._RequestId = None
 
     @property
@@ -10432,6 +10519,28 @@ class DescribeDynamicInstanceDetailResponse(AbstractModel):
         self._ImageInfoV2 = ImageInfoV2
 
     @property
+    def EnableHistoryServer(self):
+        r"""<p>是否开启日志收集</p>
+        :rtype: bool
+        """
+        return self._EnableHistoryServer
+
+    @EnableHistoryServer.setter
+    def EnableHistoryServer(self, EnableHistoryServer):
+        self._EnableHistoryServer = EnableHistoryServer
+
+    @property
+    def TensorBoardUrl(self):
+        r"""<p>tensorboard 链接</p>
+        :rtype: str
+        """
+        return self._TensorBoardUrl
+
+    @TensorBoardUrl.setter
+    def TensorBoardUrl(self, TensorBoardUrl):
+        self._TensorBoardUrl = TensorBoardUrl
+
+    @property
     def RequestId(self):
         r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -10497,6 +10606,8 @@ class DescribeDynamicInstanceDetailResponse(AbstractModel):
         if params.get("ImageInfoV2") is not None:
             self._ImageInfoV2 = ImageInfoV2()
             self._ImageInfoV2._deserialize(params.get("ImageInfoV2"))
+        self._EnableHistoryServer = params.get("EnableHistoryServer")
+        self._TensorBoardUrl = params.get("TensorBoardUrl")
         self._RequestId = params.get("RequestId")
 
 
@@ -14677,77 +14788,21 @@ class DescribeNodeSpecRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ZoneId: 可用区Id，可以通过https://document.capi.woa.com/document/api/1605/76892查询相关信息
+        :param _ZoneId: <p>可用区Id，可以通过https://document.capi.woa.com/document/api/1605/76892查询相关信息</p>
         :type ZoneId: int
-        :param _CvmPayMode: 0,按量，1包年包月，99按量+包年包月，错填将不会展示费用信息
+        :param _CvmPayMode: <p>0,按量，1包年包月，99按量+包年包月，错填将不会展示费用信息</p>
         :type CvmPayMode: int
-        :param _NodeType: 节点类型,Master,Core,Task,Router,All
+        :param _NodeType: <p>节点类型,Master,Core,Task,Router,All</p>
         :type NodeType: str
-        :param _TradeType: 0:旧计费页面,1:新计费页面。 错填，默认为旧计费
+        :param _TradeType: <p>0:旧计费页面,1:新计费页面。 错填，默认为旧计费</p>
         :type TradeType: int
-        :param _ProductId: 产品Id，不填为0，则表示所有productId，前台使用必填
-
-44	EMR	V3.5.0
-43	EMR	V3.4.0.tlinux
-42	EMR	V2.7.0.tlinux
-41	DRUID	V1.1.0
-67	STARROCKS	V2.2.0
-45	DRUID	V1.1.0.tlinux
-40	EMRCLOUD	v3.2.0
-47	EMR	V4.0.0
-48	STARROCKS	V1.2.0
-49	STARROCKS	V1.3.0
-50	KAFKA	V2.0.0
-51	STARROCKS	V1.4.0
-52	EMR-TKE	V1.0.0
-53	EMR	V3.6.0
-54	STARROCKS	V2.0.0
-55	EMR-TKE	V1.0.1
-56	EMR-TKE	DLCV1.0.0
-57	EMR	V2.8.0
-58	EMR	V3.6.1
-59	SERVERLESS	V1.0.0
-60	EMR-TKE	V1.1.0
-62	STARROCKS	V2.1.1
-63	STARROCKS	V2.1.1.tlinux
-64	EMR-TKE	TCCV1.0.0
-65	EMR-TKE-AI	V1.0.0
-66	RSS	V1.0.0
-24	EMR	TianQiong-V1.0.0
-3	EMR	V2.0.1.tlinux
-4	EMR	V2.1.0
-7	EMR	V3.0.0
-8	EMR	V3.0.0.tlinux
-9	EMR	V2.2.0
-11	CLICKHOUSE	V1.0.0
-12	CLICKHOUSE	V1.0.0.tlinux
-16	EMR	V2.3.0
-17	CLICKHOUSE	V1.1.0
-18	CLICKHOUSE	V1.1.0.tlinux
-19	EMR	V2.4.0
-20	EMR	V2.5.0
-21	USERCUSTOM	V1.0.0
-22	CLICKHOUSE	V1.2.0
-39	STARROCKS	V1.1.0
-25	EMR	V3.1.0
-26	DORIS	V1.0.0
-27	KAFKA	V1.0.0
-28	EMR	V3.2.0
-29	EMR	V2.5.1
-30	EMR	V2.6.0
-32	DORIS	V1.1.0
-33	EMR	V3.2.1
-34	EMR	V3.3.0
-35	DORIS	V1.2.0
-36	STARROCKS	V1.0.0
-37	EMR	V3.4.0
-38	EMR	V2.7.0
+        :param _ProductId: <p>产品Id，不填为0，则表示所有productId，前台使用必填</p><p>44    EMR    V3.5.0<br>43    EMR    V3.4.0.tlinux<br>42    EMR    V2.7.0.tlinux<br>41    DRUID    V1.1.0<br>67    STARROCKS    V2.2.0<br>45    DRUID    V1.1.0.tlinux<br>40    EMRCLOUD    v3.2.0<br>47    EMR    V4.0.0<br>48    STARROCKS    V1.2.0<br>49    STARROCKS    V1.3.0<br>50    KAFKA    V2.0.0<br>51    STARROCKS    V1.4.0<br>52    EMR-TKE    V1.0.0<br>53    EMR    V3.6.0<br>54    STARROCKS    V2.0.0<br>55    EMR-TKE    V1.0.1<br>56    EMR-TKE    DLCV1.0.0<br>57    EMR    V2.8.0<br>58    EMR    V3.6.1<br>59    SERVERLESS    V1.0.0<br>60    EMR-TKE    V1.1.0<br>62    STARROCKS    V2.1.1<br>63    STARROCKS    V2.1.1.tlinux<br>64    EMR-TKE    TCCV1.0.0<br>65    EMR-TKE-AI    V1.0.0<br>66    RSS    V1.0.0<br>24    EMR    TianQiong-V1.0.0<br>3    EMR    V2.0.1.tlinux<br>4    EMR    V2.1.0<br>7    EMR    V3.0.0<br>8    EMR    V3.0.0.tlinux<br>9    EMR    V2.2.0<br>11    CLICKHOUSE    V1.0.0<br>12    CLICKHOUSE    V1.0.0.tlinux<br>16    EMR    V2.3.0<br>17    CLICKHOUSE    V1.1.0<br>18    CLICKHOUSE    V1.1.0.tlinux<br>19    EMR    V2.4.0<br>20    EMR    V2.5.0<br>21    USERCUSTOM    V1.0.0<br>22    CLICKHOUSE    V1.2.0<br>39    STARROCKS    V1.1.0<br>25    EMR    V3.1.0<br>26    DORIS    V1.0.0<br>27    KAFKA    V1.0.0<br>28    EMR    V3.2.0<br>29    EMR    V2.5.1<br>30    EMR    V2.6.0<br>32    DORIS    V1.1.0<br>33    EMR    V3.2.1<br>34    EMR    V3.3.0<br>35    DORIS    V1.2.0<br>36    STARROCKS    V1.0.0<br>37    EMR    V3.4.0<br>38    EMR    V2.7.0</p>
         :type ProductId: int
-        :param _SceneName: 场景名
+        :param _SceneName: <p>场景名</p>
         :type SceneName: str
-        :param _ResourceBaseType: 类型为ComputeResource和EMR以及默认，默认为EMR
+        :param _ResourceBaseType: <p>类型为ComputeResource和EMR以及默认，默认为EMR</p>
         :type ResourceBaseType: str
-        :param _ComputeResourceId: 计算资源id
+        :param _ComputeResourceId: <p>计算资源id</p>
         :type ComputeResourceId: str
         """
         self._ZoneId = None
@@ -14761,7 +14816,7 @@ class DescribeNodeSpecRequest(AbstractModel):
 
     @property
     def ZoneId(self):
-        r"""可用区Id，可以通过https://document.capi.woa.com/document/api/1605/76892查询相关信息
+        r"""<p>可用区Id，可以通过https://document.capi.woa.com/document/api/1605/76892查询相关信息</p>
         :rtype: int
         """
         return self._ZoneId
@@ -14772,7 +14827,7 @@ class DescribeNodeSpecRequest(AbstractModel):
 
     @property
     def CvmPayMode(self):
-        r"""0,按量，1包年包月，99按量+包年包月，错填将不会展示费用信息
+        r"""<p>0,按量，1包年包月，99按量+包年包月，错填将不会展示费用信息</p>
         :rtype: int
         """
         return self._CvmPayMode
@@ -14783,7 +14838,7 @@ class DescribeNodeSpecRequest(AbstractModel):
 
     @property
     def NodeType(self):
-        r"""节点类型,Master,Core,Task,Router,All
+        r"""<p>节点类型,Master,Core,Task,Router,All</p>
         :rtype: str
         """
         return self._NodeType
@@ -14794,7 +14849,7 @@ class DescribeNodeSpecRequest(AbstractModel):
 
     @property
     def TradeType(self):
-        r"""0:旧计费页面,1:新计费页面。 错填，默认为旧计费
+        r"""<p>0:旧计费页面,1:新计费页面。 错填，默认为旧计费</p>
         :rtype: int
         """
         return self._TradeType
@@ -14805,63 +14860,7 @@ class DescribeNodeSpecRequest(AbstractModel):
 
     @property
     def ProductId(self):
-        r"""产品Id，不填为0，则表示所有productId，前台使用必填
-
-44	EMR	V3.5.0
-43	EMR	V3.4.0.tlinux
-42	EMR	V2.7.0.tlinux
-41	DRUID	V1.1.0
-67	STARROCKS	V2.2.0
-45	DRUID	V1.1.0.tlinux
-40	EMRCLOUD	v3.2.0
-47	EMR	V4.0.0
-48	STARROCKS	V1.2.0
-49	STARROCKS	V1.3.0
-50	KAFKA	V2.0.0
-51	STARROCKS	V1.4.0
-52	EMR-TKE	V1.0.0
-53	EMR	V3.6.0
-54	STARROCKS	V2.0.0
-55	EMR-TKE	V1.0.1
-56	EMR-TKE	DLCV1.0.0
-57	EMR	V2.8.0
-58	EMR	V3.6.1
-59	SERVERLESS	V1.0.0
-60	EMR-TKE	V1.1.0
-62	STARROCKS	V2.1.1
-63	STARROCKS	V2.1.1.tlinux
-64	EMR-TKE	TCCV1.0.0
-65	EMR-TKE-AI	V1.0.0
-66	RSS	V1.0.0
-24	EMR	TianQiong-V1.0.0
-3	EMR	V2.0.1.tlinux
-4	EMR	V2.1.0
-7	EMR	V3.0.0
-8	EMR	V3.0.0.tlinux
-9	EMR	V2.2.0
-11	CLICKHOUSE	V1.0.0
-12	CLICKHOUSE	V1.0.0.tlinux
-16	EMR	V2.3.0
-17	CLICKHOUSE	V1.1.0
-18	CLICKHOUSE	V1.1.0.tlinux
-19	EMR	V2.4.0
-20	EMR	V2.5.0
-21	USERCUSTOM	V1.0.0
-22	CLICKHOUSE	V1.2.0
-39	STARROCKS	V1.1.0
-25	EMR	V3.1.0
-26	DORIS	V1.0.0
-27	KAFKA	V1.0.0
-28	EMR	V3.2.0
-29	EMR	V2.5.1
-30	EMR	V2.6.0
-32	DORIS	V1.1.0
-33	EMR	V3.2.1
-34	EMR	V3.3.0
-35	DORIS	V1.2.0
-36	STARROCKS	V1.0.0
-37	EMR	V3.4.0
-38	EMR	V2.7.0
+        r"""<p>产品Id，不填为0，则表示所有productId，前台使用必填</p><p>44    EMR    V3.5.0<br>43    EMR    V3.4.0.tlinux<br>42    EMR    V2.7.0.tlinux<br>41    DRUID    V1.1.0<br>67    STARROCKS    V2.2.0<br>45    DRUID    V1.1.0.tlinux<br>40    EMRCLOUD    v3.2.0<br>47    EMR    V4.0.0<br>48    STARROCKS    V1.2.0<br>49    STARROCKS    V1.3.0<br>50    KAFKA    V2.0.0<br>51    STARROCKS    V1.4.0<br>52    EMR-TKE    V1.0.0<br>53    EMR    V3.6.0<br>54    STARROCKS    V2.0.0<br>55    EMR-TKE    V1.0.1<br>56    EMR-TKE    DLCV1.0.0<br>57    EMR    V2.8.0<br>58    EMR    V3.6.1<br>59    SERVERLESS    V1.0.0<br>60    EMR-TKE    V1.1.0<br>62    STARROCKS    V2.1.1<br>63    STARROCKS    V2.1.1.tlinux<br>64    EMR-TKE    TCCV1.0.0<br>65    EMR-TKE-AI    V1.0.0<br>66    RSS    V1.0.0<br>24    EMR    TianQiong-V1.0.0<br>3    EMR    V2.0.1.tlinux<br>4    EMR    V2.1.0<br>7    EMR    V3.0.0<br>8    EMR    V3.0.0.tlinux<br>9    EMR    V2.2.0<br>11    CLICKHOUSE    V1.0.0<br>12    CLICKHOUSE    V1.0.0.tlinux<br>16    EMR    V2.3.0<br>17    CLICKHOUSE    V1.1.0<br>18    CLICKHOUSE    V1.1.0.tlinux<br>19    EMR    V2.4.0<br>20    EMR    V2.5.0<br>21    USERCUSTOM    V1.0.0<br>22    CLICKHOUSE    V1.2.0<br>39    STARROCKS    V1.1.0<br>25    EMR    V3.1.0<br>26    DORIS    V1.0.0<br>27    KAFKA    V1.0.0<br>28    EMR    V3.2.0<br>29    EMR    V2.5.1<br>30    EMR    V2.6.0<br>32    DORIS    V1.1.0<br>33    EMR    V3.2.1<br>34    EMR    V3.3.0<br>35    DORIS    V1.2.0<br>36    STARROCKS    V1.0.0<br>37    EMR    V3.4.0<br>38    EMR    V2.7.0</p>
         :rtype: int
         """
         return self._ProductId
@@ -14872,7 +14871,7 @@ class DescribeNodeSpecRequest(AbstractModel):
 
     @property
     def SceneName(self):
-        r"""场景名
+        r"""<p>场景名</p>
         :rtype: str
         """
         return self._SceneName
@@ -14883,7 +14882,7 @@ class DescribeNodeSpecRequest(AbstractModel):
 
     @property
     def ResourceBaseType(self):
-        r"""类型为ComputeResource和EMR以及默认，默认为EMR
+        r"""<p>类型为ComputeResource和EMR以及默认，默认为EMR</p>
         :rtype: str
         """
         return self._ResourceBaseType
@@ -14894,7 +14893,7 @@ class DescribeNodeSpecRequest(AbstractModel):
 
     @property
     def ComputeResourceId(self):
-        r"""计算资源id
+        r"""<p>计算资源id</p>
         :rtype: str
         """
         return self._ComputeResourceId
@@ -14930,17 +14929,20 @@ class DescribeNodeSpecResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _NodeSpecs: 节点规格类型
+        :param _NodeSpecs: <p>节点规格类型</p>
         :type NodeSpecs: list of DescribeNodeSpec
+        :param _Architectures: <p>机型架构信息</p>
+        :type Architectures: list of ArchitectureInfo
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._NodeSpecs = None
+        self._Architectures = None
         self._RequestId = None
 
     @property
     def NodeSpecs(self):
-        r"""节点规格类型
+        r"""<p>节点规格类型</p>
         :rtype: list of DescribeNodeSpec
         """
         return self._NodeSpecs
@@ -14948,6 +14950,17 @@ class DescribeNodeSpecResponse(AbstractModel):
     @NodeSpecs.setter
     def NodeSpecs(self, NodeSpecs):
         self._NodeSpecs = NodeSpecs
+
+    @property
+    def Architectures(self):
+        r"""<p>机型架构信息</p>
+        :rtype: list of ArchitectureInfo
+        """
+        return self._Architectures
+
+    @Architectures.setter
+    def Architectures(self, Architectures):
+        self._Architectures = Architectures
 
     @property
     def RequestId(self):
@@ -14968,6 +14981,12 @@ class DescribeNodeSpecResponse(AbstractModel):
                 obj = DescribeNodeSpec()
                 obj._deserialize(item)
                 self._NodeSpecs.append(obj)
+        if params.get("Architectures") is not None:
+            self._Architectures = []
+            for item in params.get("Architectures"):
+                obj = ArchitectureInfo()
+                obj._deserialize(item)
+                self._Architectures.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -24463,39 +24482,34 @@ class InquiryPriceScaleOutInstanceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TimeUnit: 扩容的时间单位。取值范围：
-<li>s：表示秒。PayMode取值为0时，TimeUnit只能取值为s。</li>
-<li>m：表示月份。PayMode取值为1时，TimeUnit只能取值为m。</li>
+        :param _TimeUnit: <p>扩容的时间单位。取值范围：</p><li>s：表示秒。PayMode取值为0时，TimeUnit只能取值为s。</li><li>m：表示月份。PayMode取值为1时，TimeUnit只能取值为m。</li>
         :type TimeUnit: str
-        :param _TimeSpan: 扩容的时长。结合TimeUnit一起使用。
-<li>TimeUnit为s时，该参数只能填写3600，表示按量计费实例。</li>
-<li>TimeUnit为m时，该参数填写的数字表示包年包月实例的购买时长，如1表示购买一个月</li>
+        :param _TimeSpan: <p>扩容的时长。结合TimeUnit一起使用。</p><li>TimeUnit为s时，该参数只能填写3600，表示按量计费实例。</li><li>TimeUnit为m时，该参数填写的数字表示包年包月实例的购买时长，如1表示购买一个月</li>
         :type TimeSpan: int
-        :param _ZoneId: 实例所属的可用区ID，例如100003。该参数可以通过调用 [DescribeZones](https://cloud.tencent.com/document/api/213/15707) 的返回值中的ZoneId字段来获取。
+        :param _ZoneId: <p>实例所属的可用区ID，例如100003。该参数可以通过调用 <a href="https://cloud.tencent.com/document/api/213/15707">DescribeZones</a> 的返回值中的ZoneId字段来获取。</p>
         :type ZoneId: int
-        :param _PayMode: 实例计费模式。取值范围：
-<li>0：表示按量计费。</li>
-<li>1：表示包年包月。</li>
+        :param _PayMode: <p>实例计费模式。取值范围：</p><li>0：表示按量计费。</li><li>1：表示包年包月。</li>
         :type PayMode: int
-        :param _InstanceId: 实例ID。
+        :param _InstanceId: <p>实例ID。</p>
         :type InstanceId: str
-        :param _CoreCount: 扩容的Core节点数量。
+        :param _CoreCount: <p>扩容的Core节点数量。</p>
         :type CoreCount: int
-        :param _TaskCount: 扩容的Task节点数量。
+        :param _TaskCount: <p>扩容的Task节点数量。</p>
         :type TaskCount: int
-        :param _Currency: 货币种类。取值范围：
-<li>CNY：表示人民币。</li>
+        :param _Currency: <p>货币种类。取值范围：</p><li>CNY：表示人民币。</li>
         :type Currency: str
-        :param _RouterCount: 扩容的Router节点数量。
+        :param _RouterCount: <p>扩容的Router节点数量。</p>
         :type RouterCount: int
-        :param _MasterCount: 扩容的Master节点数量。
+        :param _MasterCount: <p>扩容的Master节点数量。</p>
         :type MasterCount: int
-        :param _ResourceBaseType: 类型为ComputeResource和EMR以及默认，默认为EMR
+        :param _ResourceBaseType: <p>类型为ComputeResource和EMR以及默认，默认为EMR</p>
         :type ResourceBaseType: str
-        :param _ComputeResourceId: 计算资源id
+        :param _ComputeResourceId: <p>计算资源id</p>
         :type ComputeResourceId: str
-        :param _HardwareResourceType: 扩容资源类型
+        :param _HardwareResourceType: <p>扩容资源类型</p>
         :type HardwareResourceType: str
+        :param _NodeGroupId: <p>节点组ID</p>
+        :type NodeGroupId: str
         """
         self._TimeUnit = None
         self._TimeSpan = None
@@ -24510,12 +24524,11 @@ class InquiryPriceScaleOutInstanceRequest(AbstractModel):
         self._ResourceBaseType = None
         self._ComputeResourceId = None
         self._HardwareResourceType = None
+        self._NodeGroupId = None
 
     @property
     def TimeUnit(self):
-        r"""扩容的时间单位。取值范围：
-<li>s：表示秒。PayMode取值为0时，TimeUnit只能取值为s。</li>
-<li>m：表示月份。PayMode取值为1时，TimeUnit只能取值为m。</li>
+        r"""<p>扩容的时间单位。取值范围：</p><li>s：表示秒。PayMode取值为0时，TimeUnit只能取值为s。</li><li>m：表示月份。PayMode取值为1时，TimeUnit只能取值为m。</li>
         :rtype: str
         """
         return self._TimeUnit
@@ -24526,9 +24539,7 @@ class InquiryPriceScaleOutInstanceRequest(AbstractModel):
 
     @property
     def TimeSpan(self):
-        r"""扩容的时长。结合TimeUnit一起使用。
-<li>TimeUnit为s时，该参数只能填写3600，表示按量计费实例。</li>
-<li>TimeUnit为m时，该参数填写的数字表示包年包月实例的购买时长，如1表示购买一个月</li>
+        r"""<p>扩容的时长。结合TimeUnit一起使用。</p><li>TimeUnit为s时，该参数只能填写3600，表示按量计费实例。</li><li>TimeUnit为m时，该参数填写的数字表示包年包月实例的购买时长，如1表示购买一个月</li>
         :rtype: int
         """
         return self._TimeSpan
@@ -24539,7 +24550,7 @@ class InquiryPriceScaleOutInstanceRequest(AbstractModel):
 
     @property
     def ZoneId(self):
-        r"""实例所属的可用区ID，例如100003。该参数可以通过调用 [DescribeZones](https://cloud.tencent.com/document/api/213/15707) 的返回值中的ZoneId字段来获取。
+        r"""<p>实例所属的可用区ID，例如100003。该参数可以通过调用 <a href="https://cloud.tencent.com/document/api/213/15707">DescribeZones</a> 的返回值中的ZoneId字段来获取。</p>
         :rtype: int
         """
         return self._ZoneId
@@ -24550,9 +24561,7 @@ class InquiryPriceScaleOutInstanceRequest(AbstractModel):
 
     @property
     def PayMode(self):
-        r"""实例计费模式。取值范围：
-<li>0：表示按量计费。</li>
-<li>1：表示包年包月。</li>
+        r"""<p>实例计费模式。取值范围：</p><li>0：表示按量计费。</li><li>1：表示包年包月。</li>
         :rtype: int
         """
         return self._PayMode
@@ -24563,7 +24572,7 @@ class InquiryPriceScaleOutInstanceRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""实例ID。
+        r"""<p>实例ID。</p>
         :rtype: str
         """
         return self._InstanceId
@@ -24574,7 +24583,7 @@ class InquiryPriceScaleOutInstanceRequest(AbstractModel):
 
     @property
     def CoreCount(self):
-        r"""扩容的Core节点数量。
+        r"""<p>扩容的Core节点数量。</p>
         :rtype: int
         """
         return self._CoreCount
@@ -24585,7 +24594,7 @@ class InquiryPriceScaleOutInstanceRequest(AbstractModel):
 
     @property
     def TaskCount(self):
-        r"""扩容的Task节点数量。
+        r"""<p>扩容的Task节点数量。</p>
         :rtype: int
         """
         return self._TaskCount
@@ -24596,8 +24605,7 @@ class InquiryPriceScaleOutInstanceRequest(AbstractModel):
 
     @property
     def Currency(self):
-        r"""货币种类。取值范围：
-<li>CNY：表示人民币。</li>
+        r"""<p>货币种类。取值范围：</p><li>CNY：表示人民币。</li>
         :rtype: str
         """
         return self._Currency
@@ -24608,7 +24616,7 @@ class InquiryPriceScaleOutInstanceRequest(AbstractModel):
 
     @property
     def RouterCount(self):
-        r"""扩容的Router节点数量。
+        r"""<p>扩容的Router节点数量。</p>
         :rtype: int
         """
         return self._RouterCount
@@ -24619,7 +24627,7 @@ class InquiryPriceScaleOutInstanceRequest(AbstractModel):
 
     @property
     def MasterCount(self):
-        r"""扩容的Master节点数量。
+        r"""<p>扩容的Master节点数量。</p>
         :rtype: int
         """
         return self._MasterCount
@@ -24630,7 +24638,7 @@ class InquiryPriceScaleOutInstanceRequest(AbstractModel):
 
     @property
     def ResourceBaseType(self):
-        r"""类型为ComputeResource和EMR以及默认，默认为EMR
+        r"""<p>类型为ComputeResource和EMR以及默认，默认为EMR</p>
         :rtype: str
         """
         return self._ResourceBaseType
@@ -24641,7 +24649,7 @@ class InquiryPriceScaleOutInstanceRequest(AbstractModel):
 
     @property
     def ComputeResourceId(self):
-        r"""计算资源id
+        r"""<p>计算资源id</p>
         :rtype: str
         """
         return self._ComputeResourceId
@@ -24652,7 +24660,7 @@ class InquiryPriceScaleOutInstanceRequest(AbstractModel):
 
     @property
     def HardwareResourceType(self):
-        r"""扩容资源类型
+        r"""<p>扩容资源类型</p>
         :rtype: str
         """
         return self._HardwareResourceType
@@ -24660,6 +24668,17 @@ class InquiryPriceScaleOutInstanceRequest(AbstractModel):
     @HardwareResourceType.setter
     def HardwareResourceType(self, HardwareResourceType):
         self._HardwareResourceType = HardwareResourceType
+
+    @property
+    def NodeGroupId(self):
+        r"""<p>节点组ID</p>
+        :rtype: str
+        """
+        return self._NodeGroupId
+
+    @NodeGroupId.setter
+    def NodeGroupId(self, NodeGroupId):
+        self._NodeGroupId = NodeGroupId
 
 
     def _deserialize(self, params):
@@ -24676,6 +24695,7 @@ class InquiryPriceScaleOutInstanceRequest(AbstractModel):
         self._ResourceBaseType = params.get("ResourceBaseType")
         self._ComputeResourceId = params.get("ComputeResourceId")
         self._HardwareResourceType = params.get("HardwareResourceType")
+        self._NodeGroupId = params.get("NodeGroupId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -24693,18 +24713,16 @@ class InquiryPriceScaleOutInstanceResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _OriginalCost: 原价，单位为元。
+        :param _OriginalCost: <p>原价，单位为元。</p>
         :type OriginalCost: str
-        :param _DiscountCost: 折扣价，单位为元。
+        :param _DiscountCost: <p>折扣价，单位为元。</p>
         :type DiscountCost: str
-        :param _Unit: 扩容的时间单位。取值范围：
-<li>s：表示秒。</li>
-<li>m：表示月份。</li>
+        :param _Unit: <p>扩容的时间单位。取值范围：</p><li>s：表示秒。</li><li>m：表示月份。</li>
         :type Unit: str
-        :param _PriceSpec: 询价的节点规格。
+        :param _PriceSpec: <p>询价的节点规格。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type PriceSpec: :class:`tencentcloud.emr.v20190103.models.PriceResource`
-        :param _MultipleEmrPrice: 对应入参MultipleResources中多个规格的询价结果，其它出参返回的是第一个规格的询价结果
+        :param _MultipleEmrPrice: <p>对应入参MultipleResources中多个规格的询价结果，其它出参返回的是第一个规格的询价结果</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type MultipleEmrPrice: list of EmrPrice
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -24719,7 +24737,7 @@ class InquiryPriceScaleOutInstanceResponse(AbstractModel):
 
     @property
     def OriginalCost(self):
-        r"""原价，单位为元。
+        r"""<p>原价，单位为元。</p>
         :rtype: str
         """
         return self._OriginalCost
@@ -24730,7 +24748,7 @@ class InquiryPriceScaleOutInstanceResponse(AbstractModel):
 
     @property
     def DiscountCost(self):
-        r"""折扣价，单位为元。
+        r"""<p>折扣价，单位为元。</p>
         :rtype: str
         """
         return self._DiscountCost
@@ -24741,9 +24759,7 @@ class InquiryPriceScaleOutInstanceResponse(AbstractModel):
 
     @property
     def Unit(self):
-        r"""扩容的时间单位。取值范围：
-<li>s：表示秒。</li>
-<li>m：表示月份。</li>
+        r"""<p>扩容的时间单位。取值范围：</p><li>s：表示秒。</li><li>m：表示月份。</li>
         :rtype: str
         """
         return self._Unit
@@ -24754,7 +24770,7 @@ class InquiryPriceScaleOutInstanceResponse(AbstractModel):
 
     @property
     def PriceSpec(self):
-        r"""询价的节点规格。
+        r"""<p>询价的节点规格。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.emr.v20190103.models.PriceResource`
         """
@@ -24766,7 +24782,7 @@ class InquiryPriceScaleOutInstanceResponse(AbstractModel):
 
     @property
     def MultipleEmrPrice(self):
-        r"""对应入参MultipleResources中多个规格的询价结果，其它出参返回的是第一个规格的询价结果
+        r"""<p>对应入参MultipleResources中多个规格的询价结果，其它出参返回的是第一个规格的询价结果</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of EmrPrice
         """
@@ -27808,6 +27824,8 @@ class ModifyDynamicInstanceForm(AbstractModel):
         :type ImageInfoV2: :class:`tencentcloud.emr.v20190103.models.ImageInfoV2`
         :param _GooseFSVolumes: <p>GooseFS盘</p>
         :type GooseFSVolumes: list of GooseFSVolume
+        :param _EnableHistoryServer: <p>是否开启日志收集</p>
+        :type EnableHistoryServer: bool
         """
         self._ModifyScope = None
         self._AddDynamicInstanceGroup = None
@@ -27826,6 +27844,7 @@ class ModifyDynamicInstanceForm(AbstractModel):
         self._CustomImage = None
         self._ImageInfoV2 = None
         self._GooseFSVolumes = None
+        self._EnableHistoryServer = None
 
     @property
     def ModifyScope(self):
@@ -28014,6 +28033,17 @@ class ModifyDynamicInstanceForm(AbstractModel):
     def GooseFSVolumes(self, GooseFSVolumes):
         self._GooseFSVolumes = GooseFSVolumes
 
+    @property
+    def EnableHistoryServer(self):
+        r"""<p>是否开启日志收集</p>
+        :rtype: bool
+        """
+        return self._EnableHistoryServer
+
+    @EnableHistoryServer.setter
+    def EnableHistoryServer(self, EnableHistoryServer):
+        self._EnableHistoryServer = EnableHistoryServer
+
 
     def _deserialize(self, params):
         self._ModifyScope = params.get("ModifyScope")
@@ -28091,6 +28121,7 @@ class ModifyDynamicInstanceForm(AbstractModel):
                 obj = GooseFSVolume()
                 obj._deserialize(item)
                 self._GooseFSVolumes.append(obj)
+        self._EnableHistoryServer = params.get("EnableHistoryServer")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -33127,6 +33158,10 @@ class NodeSpecInstanceType(AbstractModel):
         :type NeedHpcClusterId: bool
         :param _IsGpuInstance: <p>是否是GPU机型</p>
         :type IsGpuInstance: bool
+        :param _GpuResourceKey: <p>K8S场景GPU资源定义</p>
+        :type GpuResourceKey: str
+        :param _GpuNum: <p>GPU卡数</p>
+        :type GpuNum: int
         """
         self._InstanceType = None
         self._Cpu = None
@@ -33153,6 +33188,8 @@ class NodeSpecInstanceType(AbstractModel):
         self._QuotaUnit = None
         self._NeedHpcClusterId = None
         self._IsGpuInstance = None
+        self._GpuResourceKey = None
+        self._GpuNum = None
 
     @property
     def InstanceType(self):
@@ -33433,6 +33470,28 @@ class NodeSpecInstanceType(AbstractModel):
     def IsGpuInstance(self, IsGpuInstance):
         self._IsGpuInstance = IsGpuInstance
 
+    @property
+    def GpuResourceKey(self):
+        r"""<p>K8S场景GPU资源定义</p>
+        :rtype: str
+        """
+        return self._GpuResourceKey
+
+    @GpuResourceKey.setter
+    def GpuResourceKey(self, GpuResourceKey):
+        self._GpuResourceKey = GpuResourceKey
+
+    @property
+    def GpuNum(self):
+        r"""<p>GPU卡数</p>
+        :rtype: int
+        """
+        return self._GpuNum
+
+    @GpuNum.setter
+    def GpuNum(self, GpuNum):
+        self._GpuNum = GpuNum
+
 
     def _deserialize(self, params):
         self._InstanceType = params.get("InstanceType")
@@ -33475,6 +33534,8 @@ class NodeSpecInstanceType(AbstractModel):
         self._QuotaUnit = params.get("QuotaUnit")
         self._NeedHpcClusterId = params.get("NeedHpcClusterId")
         self._IsGpuInstance = params.get("IsGpuInstance")
+        self._GpuResourceKey = params.get("GpuResourceKey")
+        self._GpuNum = params.get("GpuNum")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -37326,6 +37387,8 @@ class RayCluster(AbstractModel):
         :type DashboardUrl: str
         :param _Namespace: <p>命名空间</p>
         :type Namespace: str
+        :param _StorageCount: <p>raycluster挂载的volume数量</p>
+        :type StorageCount: int
         """
         self._RayClusterName = None
         self._RayClusterId = None
@@ -37335,6 +37398,7 @@ class RayCluster(AbstractModel):
         self._SubmitType = None
         self._DashboardUrl = None
         self._Namespace = None
+        self._StorageCount = None
 
     @property
     def RayClusterName(self):
@@ -37424,6 +37488,17 @@ class RayCluster(AbstractModel):
     def Namespace(self, Namespace):
         self._Namespace = Namespace
 
+    @property
+    def StorageCount(self):
+        r"""<p>raycluster挂载的volume数量</p>
+        :rtype: int
+        """
+        return self._StorageCount
+
+    @StorageCount.setter
+    def StorageCount(self, StorageCount):
+        self._StorageCount = StorageCount
+
 
     def _deserialize(self, params):
         self._RayClusterName = params.get("RayClusterName")
@@ -37434,6 +37509,7 @@ class RayCluster(AbstractModel):
         self._SubmitType = params.get("SubmitType")
         self._DashboardUrl = params.get("DashboardUrl")
         self._Namespace = params.get("Namespace")
+        self._StorageCount = params.get("StorageCount")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

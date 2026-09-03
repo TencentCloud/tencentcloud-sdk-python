@@ -25,18 +25,18 @@ class AgentAppMcpServerDTO(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ID: mcp server id
+        :param _ID: <p>mcp server id</p>
         :type ID: str
-        :param _NeedAuth: 是否需要鉴权
+        :param _NeedAuth: <p>是否需要鉴权（已废弃，请勿使用）</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type NeedAuth: bool
-        :param _AgentCredentialID: 凭据代填的ID
+        :param _AgentCredentialID: <p>凭据代填的ID（已废弃，请勿使用）</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type AgentCredentialID: str
-        :param _SSEResourceIdentifier: 应用为OAuth2认证时，sse模式请求mcp时的资源标识
+        :param _SSEResourceIdentifier: <p>应用为OAuth2认证时，sse模式请求mcp时的资源标识</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type SSEResourceIdentifier: str
-        :param _StreamableResourceIdentifier: 应用为OAuth2认证时，streamable模式请求mcp时的资源标识
+        :param _StreamableResourceIdentifier: <p>应用为OAuth2认证时，streamable模式请求mcp时的资源标识</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type StreamableResourceIdentifier: str
         """
@@ -48,7 +48,7 @@ class AgentAppMcpServerDTO(AbstractModel):
 
     @property
     def ID(self):
-        r"""mcp server id
+        r"""<p>mcp server id</p>
         :rtype: str
         """
         return self._ID
@@ -59,7 +59,9 @@ class AgentAppMcpServerDTO(AbstractModel):
 
     @property
     def NeedAuth(self):
-        r"""是否需要鉴权
+        warnings.warn("parameter `NeedAuth` is deprecated", DeprecationWarning) 
+
+        r"""<p>是否需要鉴权（已废弃，请勿使用）</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
@@ -67,11 +69,15 @@ class AgentAppMcpServerDTO(AbstractModel):
 
     @NeedAuth.setter
     def NeedAuth(self, NeedAuth):
+        warnings.warn("parameter `NeedAuth` is deprecated", DeprecationWarning) 
+
         self._NeedAuth = NeedAuth
 
     @property
     def AgentCredentialID(self):
-        r"""凭据代填的ID
+        warnings.warn("parameter `AgentCredentialID` is deprecated", DeprecationWarning) 
+
+        r"""<p>凭据代填的ID（已废弃，请勿使用）</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -79,11 +85,13 @@ class AgentAppMcpServerDTO(AbstractModel):
 
     @AgentCredentialID.setter
     def AgentCredentialID(self, AgentCredentialID):
+        warnings.warn("parameter `AgentCredentialID` is deprecated", DeprecationWarning) 
+
         self._AgentCredentialID = AgentCredentialID
 
     @property
     def SSEResourceIdentifier(self):
-        r"""应用为OAuth2认证时，sse模式请求mcp时的资源标识
+        r"""<p>应用为OAuth2认证时，sse模式请求mcp时的资源标识</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -95,7 +103,7 @@ class AgentAppMcpServerDTO(AbstractModel):
 
     @property
     def StreamableResourceIdentifier(self):
-        r"""应用为OAuth2认证时，streamable模式请求mcp时的资源标识
+        r"""<p>应用为OAuth2认证时，streamable模式请求mcp时的资源标识</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -469,9 +477,9 @@ class AgentAppServiceDTO(AbstractModel):
         :type InvokeLimitConfigStatus: bool
         :param _InvokeLimitConfig: <p>限流配置</p>
         :type InvokeLimitConfig: :class:`tencentcloud.apis.v20240801.models.InvokeLimitConfigDTO`
-        :param _NeedAuth: <p>是否要认证</p>
+        :param _NeedAuth: <p>是否要认证（已废弃，请勿使用）</p>
         :type NeedAuth: bool
-        :param _AgentCredentialID: <p>凭据ID</p>
+        :param _AgentCredentialID: <p>凭据ID（已废弃，请勿使用）</p>
         :type AgentCredentialID: str
         """
         self._ID = None
@@ -515,24 +523,32 @@ class AgentAppServiceDTO(AbstractModel):
 
     @property
     def NeedAuth(self):
-        r"""<p>是否要认证</p>
+        warnings.warn("parameter `NeedAuth` is deprecated", DeprecationWarning) 
+
+        r"""<p>是否要认证（已废弃，请勿使用）</p>
         :rtype: bool
         """
         return self._NeedAuth
 
     @NeedAuth.setter
     def NeedAuth(self, NeedAuth):
+        warnings.warn("parameter `NeedAuth` is deprecated", DeprecationWarning) 
+
         self._NeedAuth = NeedAuth
 
     @property
     def AgentCredentialID(self):
-        r"""<p>凭据ID</p>
+        warnings.warn("parameter `AgentCredentialID` is deprecated", DeprecationWarning) 
+
+        r"""<p>凭据ID（已废弃，请勿使用）</p>
         :rtype: str
         """
         return self._AgentCredentialID
 
     @AgentCredentialID.setter
     def AgentCredentialID(self, AgentCredentialID):
+        warnings.warn("parameter `AgentCredentialID` is deprecated", DeprecationWarning) 
+
         self._AgentCredentialID = AgentCredentialID
 
 
@@ -1888,6 +1904,12 @@ class CreateMcpServerRequest(AbstractModel):
         :type PluginConfigs: list of PluginConfigDTO
         :param _IgnoreHealthCheck: <p>是否忽略健康检查</p>
         :type IgnoreHealthCheck: bool
+        :param _CredentialID: <p>凭据ID</p>
+        :type CredentialID: str
+        :param _Domain: <p>访问域名</p>
+        :type Domain: str
+        :param _RequestProtocolType: <p>访问协议</p><p>枚举值：</p><ul><li>http： http</li><li>https： https</li></ul>
+        :type RequestProtocolType: str
         """
         self._Mode = None
         self._McpVersion = None
@@ -1914,6 +1936,9 @@ class CreateMcpServerRequest(AbstractModel):
         self._WrapPaasID = None
         self._PluginConfigs = None
         self._IgnoreHealthCheck = None
+        self._CredentialID = None
+        self._Domain = None
+        self._RequestProtocolType = None
 
     @property
     def Mode(self):
@@ -2190,6 +2215,39 @@ class CreateMcpServerRequest(AbstractModel):
     def IgnoreHealthCheck(self, IgnoreHealthCheck):
         self._IgnoreHealthCheck = IgnoreHealthCheck
 
+    @property
+    def CredentialID(self):
+        r"""<p>凭据ID</p>
+        :rtype: str
+        """
+        return self._CredentialID
+
+    @CredentialID.setter
+    def CredentialID(self, CredentialID):
+        self._CredentialID = CredentialID
+
+    @property
+    def Domain(self):
+        r"""<p>访问域名</p>
+        :rtype: str
+        """
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def RequestProtocolType(self):
+        r"""<p>访问协议</p><p>枚举值：</p><ul><li>http： http</li><li>https： https</li></ul>
+        :rtype: str
+        """
+        return self._RequestProtocolType
+
+    @RequestProtocolType.setter
+    def RequestProtocolType(self, RequestProtocolType):
+        self._RequestProtocolType = RequestProtocolType
+
 
     def _deserialize(self, params):
         self._Mode = params.get("Mode")
@@ -2243,6 +2301,9 @@ class CreateMcpServerRequest(AbstractModel):
                 obj._deserialize(item)
                 self._PluginConfigs.append(obj)
         self._IgnoreHealthCheck = params.get("IgnoreHealthCheck")
+        self._CredentialID = params.get("CredentialID")
+        self._Domain = params.get("Domain")
+        self._RequestProtocolType = params.get("RequestProtocolType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2588,6 +2649,10 @@ class CreateModelServiceRequest(AbstractModel):
         :type TokenLengthRoute: list of TokenLengthRouteDTO
         :param _TaskComplexityRoute: <p>任务复杂度路由策略</p>
         :type TaskComplexityRoute: :class:`tencentcloud.apis.v20240801.models.TaskComplexityRouteDTO`
+        :param _Domain: <p>访问域名</p>
+        :type Domain: str
+        :param _RequestProtocolType: <p>访问协议</p>
+        :type RequestProtocolType: str
         """
         self._InstanceID = None
         self._Name = None
@@ -2620,6 +2685,8 @@ class CreateModelServiceRequest(AbstractModel):
         self._RouteStrategy = None
         self._TokenLengthRoute = None
         self._TaskComplexityRoute = None
+        self._Domain = None
+        self._RequestProtocolType = None
 
     @property
     def InstanceID(self):
@@ -2962,6 +3029,28 @@ class CreateModelServiceRequest(AbstractModel):
     def TaskComplexityRoute(self, TaskComplexityRoute):
         self._TaskComplexityRoute = TaskComplexityRoute
 
+    @property
+    def Domain(self):
+        r"""<p>访问域名</p>
+        :rtype: str
+        """
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def RequestProtocolType(self):
+        r"""<p>访问协议</p>
+        :rtype: str
+        """
+        return self._RequestProtocolType
+
+    @RequestProtocolType.setter
+    def RequestProtocolType(self, RequestProtocolType):
+        self._RequestProtocolType = RequestProtocolType
+
 
     def _deserialize(self, params):
         self._InstanceID = params.get("InstanceID")
@@ -3027,6 +3116,8 @@ class CreateModelServiceRequest(AbstractModel):
         if params.get("TaskComplexityRoute") is not None:
             self._TaskComplexityRoute = TaskComplexityRouteDTO()
             self._TaskComplexityRoute._deserialize(params.get("TaskComplexityRoute"))
+        self._Domain = params.get("Domain")
+        self._RequestProtocolType = params.get("RequestProtocolType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5787,6 +5878,16 @@ class DescribeMcpServerResponseVO(AbstractModel):
         :type PluginConfigs: list of PluginConfigDTO
         :param _IgnoreHealthCheck: <p>是否忽略健康检查</p>
         :type IgnoreHealthCheck: bool
+        :param _CredentialID: <p>凭据ID</p>
+        :type CredentialID: str
+        :param _CredentialName: <p>凭据名称</p>
+        :type CredentialName: str
+        :param _Domain: <p>访问域名</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Domain: str
+        :param _RequestProtocolType: <p>访问协议</p><p>枚举值：</p><ul><li>http： http</li><li>https： https</li></ul>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RequestProtocolType: str
         """
         self._InstanceID = None
         self._Name = None
@@ -5830,6 +5931,10 @@ class DescribeMcpServerResponseVO(AbstractModel):
         self._RelateAgentAppNum = None
         self._PluginConfigs = None
         self._IgnoreHealthCheck = None
+        self._CredentialID = None
+        self._CredentialName = None
+        self._Domain = None
+        self._RequestProtocolType = None
 
     @property
     def InstanceID(self):
@@ -6325,6 +6430,52 @@ class DescribeMcpServerResponseVO(AbstractModel):
     def IgnoreHealthCheck(self, IgnoreHealthCheck):
         self._IgnoreHealthCheck = IgnoreHealthCheck
 
+    @property
+    def CredentialID(self):
+        r"""<p>凭据ID</p>
+        :rtype: str
+        """
+        return self._CredentialID
+
+    @CredentialID.setter
+    def CredentialID(self, CredentialID):
+        self._CredentialID = CredentialID
+
+    @property
+    def CredentialName(self):
+        r"""<p>凭据名称</p>
+        :rtype: str
+        """
+        return self._CredentialName
+
+    @CredentialName.setter
+    def CredentialName(self, CredentialName):
+        self._CredentialName = CredentialName
+
+    @property
+    def Domain(self):
+        r"""<p>访问域名</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def RequestProtocolType(self):
+        r"""<p>访问协议</p><p>枚举值：</p><ul><li>http： http</li><li>https： https</li></ul>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._RequestProtocolType
+
+    @RequestProtocolType.setter
+    def RequestProtocolType(self, RequestProtocolType):
+        self._RequestProtocolType = RequestProtocolType
+
 
     def _deserialize(self, params):
         self._InstanceID = params.get("InstanceID")
@@ -6414,6 +6565,10 @@ class DescribeMcpServerResponseVO(AbstractModel):
                 obj._deserialize(item)
                 self._PluginConfigs.append(obj)
         self._IgnoreHealthCheck = params.get("IgnoreHealthCheck")
+        self._CredentialID = params.get("CredentialID")
+        self._CredentialName = params.get("CredentialName")
+        self._Domain = params.get("Domain")
+        self._RequestProtocolType = params.get("RequestProtocolType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7280,6 +7435,12 @@ class DescribeModelServiceResponseVO(AbstractModel):
         :param _TaskComplexityRoute: <p>任务复杂度路由配置</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TaskComplexityRoute: :class:`tencentcloud.apis.v20240801.models.TaskComplexityRouteDTO`
+        :param _Domain: <p>访问域名</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Domain: str
+        :param _RequestProtocolType: <p>访问协议</p><p>枚举值：</p><ul><li>http： http</li><li>https： https</li></ul>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RequestProtocolType: str
         """
         self._AppID = None
         self._Uin = None
@@ -7322,6 +7483,8 @@ class DescribeModelServiceResponseVO(AbstractModel):
         self._RouteStrategy = None
         self._TokenLengthRoute = None
         self._TaskComplexityRoute = None
+        self._Domain = None
+        self._RequestProtocolType = None
 
     @property
     def AppID(self):
@@ -7792,6 +7955,30 @@ class DescribeModelServiceResponseVO(AbstractModel):
     def TaskComplexityRoute(self, TaskComplexityRoute):
         self._TaskComplexityRoute = TaskComplexityRoute
 
+    @property
+    def Domain(self):
+        r"""<p>访问域名</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def RequestProtocolType(self):
+        r"""<p>访问协议</p><p>枚举值：</p><ul><li>http： http</li><li>https： https</li></ul>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._RequestProtocolType
+
+    @RequestProtocolType.setter
+    def RequestProtocolType(self, RequestProtocolType):
+        self._RequestProtocolType = RequestProtocolType
+
 
     def _deserialize(self, params):
         self._AppID = params.get("AppID")
@@ -7867,6 +8054,8 @@ class DescribeModelServiceResponseVO(AbstractModel):
         if params.get("TaskComplexityRoute") is not None:
             self._TaskComplexityRoute = TaskComplexityRouteDTO()
             self._TaskComplexityRoute._deserialize(params.get("TaskComplexityRoute"))
+        self._Domain = params.get("Domain")
+        self._RequestProtocolType = params.get("RequestProtocolType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -9238,19 +9427,27 @@ class LimitWindowsDTO(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Interval: 时间窗口，分钟
+        :param _Interval: <p>时间窗口，分钟</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Interval: int
-        :param _Limit: 累计上限，k
+        :param _Limit: <p>累计上限，k</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Limit: int
+        :param _Type: <p>限流类型</p><p>枚举值：</p><ul><li>minute： 时间窗口</li><li>day： 自然日</li><li>month： 自然月</li><li>timeRange： 时间范围</li></ul>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Type: str
+        :param _TimeRange: <p>时间区间配置</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TimeRange: :class:`tencentcloud.apis.v20240801.models.TimeRange`
         """
         self._Interval = None
         self._Limit = None
+        self._Type = None
+        self._TimeRange = None
 
     @property
     def Interval(self):
-        r"""时间窗口，分钟
+        r"""<p>时间窗口，分钟</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -9262,7 +9459,7 @@ class LimitWindowsDTO(AbstractModel):
 
     @property
     def Limit(self):
-        r"""累计上限，k
+        r"""<p>累计上限，k</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -9272,10 +9469,38 @@ class LimitWindowsDTO(AbstractModel):
     def Limit(self, Limit):
         self._Limit = Limit
 
+    @property
+    def Type(self):
+        r"""<p>限流类型</p><p>枚举值：</p><ul><li>minute： 时间窗口</li><li>day： 自然日</li><li>month： 自然月</li><li>timeRange： 时间范围</li></ul>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def TimeRange(self):
+        r"""<p>时间区间配置</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.apis.v20240801.models.TimeRange`
+        """
+        return self._TimeRange
+
+    @TimeRange.setter
+    def TimeRange(self, TimeRange):
+        self._TimeRange = TimeRange
+
 
     def _deserialize(self, params):
         self._Interval = params.get("Interval")
         self._Limit = params.get("Limit")
+        self._Type = params.get("Type")
+        if params.get("TimeRange") is not None:
+            self._TimeRange = TimeRange()
+            self._TimeRange._deserialize(params.get("TimeRange"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -10263,6 +10488,12 @@ class ModifyMcpServerRequest(AbstractModel):
         :type PluginConfigs: list of PluginConfigDTO
         :param _IgnoreHealthCheck: <p>是否忽略健康检查</p>
         :type IgnoreHealthCheck: bool
+        :param _CredentialID: <p>凭据ID</p>
+        :type CredentialID: str
+        :param _Domain: <p>访问域名</p>
+        :type Domain: str
+        :param _RequestProtocolType: <p>访问协议</p><p>枚举值：</p><ul><li>http： http</li><li>https： https</li></ul>
+        :type RequestProtocolType: str
         """
         self._ID = None
         self._Mode = None
@@ -10291,6 +10522,9 @@ class ModifyMcpServerRequest(AbstractModel):
         self._WrapPaasID = None
         self._PluginConfigs = None
         self._IgnoreHealthCheck = None
+        self._CredentialID = None
+        self._Domain = None
+        self._RequestProtocolType = None
 
     @property
     def ID(self):
@@ -10589,6 +10823,39 @@ class ModifyMcpServerRequest(AbstractModel):
     def IgnoreHealthCheck(self, IgnoreHealthCheck):
         self._IgnoreHealthCheck = IgnoreHealthCheck
 
+    @property
+    def CredentialID(self):
+        r"""<p>凭据ID</p>
+        :rtype: str
+        """
+        return self._CredentialID
+
+    @CredentialID.setter
+    def CredentialID(self, CredentialID):
+        self._CredentialID = CredentialID
+
+    @property
+    def Domain(self):
+        r"""<p>访问域名</p>
+        :rtype: str
+        """
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def RequestProtocolType(self):
+        r"""<p>访问协议</p><p>枚举值：</p><ul><li>http： http</li><li>https： https</li></ul>
+        :rtype: str
+        """
+        return self._RequestProtocolType
+
+    @RequestProtocolType.setter
+    def RequestProtocolType(self, RequestProtocolType):
+        self._RequestProtocolType = RequestProtocolType
+
 
     def _deserialize(self, params):
         self._ID = params.get("ID")
@@ -10644,6 +10911,9 @@ class ModifyMcpServerRequest(AbstractModel):
                 obj._deserialize(item)
                 self._PluginConfigs.append(obj)
         self._IgnoreHealthCheck = params.get("IgnoreHealthCheck")
+        self._CredentialID = params.get("CredentialID")
+        self._Domain = params.get("Domain")
+        self._RequestProtocolType = params.get("RequestProtocolType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -11004,6 +11274,10 @@ class ModifyModelServiceRequest(AbstractModel):
         :type TokenLengthRoute: list of TokenLengthRouteDTO
         :param _TaskComplexityRoute: <p>任务复杂度路由策略</p>
         :type TaskComplexityRoute: :class:`tencentcloud.apis.v20240801.models.TaskComplexityRouteDTO`
+        :param _Domain: <p>访问域名</p>
+        :type Domain: str
+        :param _RequestProtocolType: <p>访问协议</p>
+        :type RequestProtocolType: str
         """
         self._InstanceID = None
         self._ID = None
@@ -11036,6 +11310,8 @@ class ModifyModelServiceRequest(AbstractModel):
         self._RouteStrategy = None
         self._TokenLengthRoute = None
         self._TaskComplexityRoute = None
+        self._Domain = None
+        self._RequestProtocolType = None
 
     @property
     def InstanceID(self):
@@ -11378,6 +11654,28 @@ class ModifyModelServiceRequest(AbstractModel):
     def TaskComplexityRoute(self, TaskComplexityRoute):
         self._TaskComplexityRoute = TaskComplexityRoute
 
+    @property
+    def Domain(self):
+        r"""<p>访问域名</p>
+        :rtype: str
+        """
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def RequestProtocolType(self):
+        r"""<p>访问协议</p>
+        :rtype: str
+        """
+        return self._RequestProtocolType
+
+    @RequestProtocolType.setter
+    def RequestProtocolType(self, RequestProtocolType):
+        self._RequestProtocolType = RequestProtocolType
+
 
     def _deserialize(self, params):
         self._InstanceID = params.get("InstanceID")
@@ -11443,6 +11741,8 @@ class ModifyModelServiceRequest(AbstractModel):
         if params.get("TaskComplexityRoute") is not None:
             self._TaskComplexityRoute = TaskComplexityRouteDTO()
             self._TaskComplexityRoute._deserialize(params.get("TaskComplexityRoute"))
+        self._Domain = params.get("Domain")
+        self._RequestProtocolType = params.get("RequestProtocolType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -12918,6 +13218,13 @@ class ServiceVO(AbstractModel):
         :param _McpServerNum: <p>绑定的mcp server数量</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type McpServerNum: int
+        :param _CredentialID: <p>凭据ID</p>
+        :type CredentialID: str
+        :param _CredentialName: <p>凭据名称</p>
+        :type CredentialName: str
+        :param _RequestProtocolType: <p>访问协议</p><p>枚举值：</p><ul><li>http： http</li><li>https： https</li></ul>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RequestProtocolType: str
         """
         self._InstanceID = None
         self._Name = None
@@ -12986,6 +13293,9 @@ class ServiceVO(AbstractModel):
         self._CustomMatch = None
         self._Timeout = None
         self._McpServerNum = None
+        self._CredentialID = None
+        self._CredentialName = None
+        self._RequestProtocolType = None
 
     @property
     def InstanceID(self):
@@ -13827,6 +14137,40 @@ class ServiceVO(AbstractModel):
     def McpServerNum(self, McpServerNum):
         self._McpServerNum = McpServerNum
 
+    @property
+    def CredentialID(self):
+        r"""<p>凭据ID</p>
+        :rtype: str
+        """
+        return self._CredentialID
+
+    @CredentialID.setter
+    def CredentialID(self, CredentialID):
+        self._CredentialID = CredentialID
+
+    @property
+    def CredentialName(self):
+        r"""<p>凭据名称</p>
+        :rtype: str
+        """
+        return self._CredentialName
+
+    @CredentialName.setter
+    def CredentialName(self, CredentialName):
+        self._CredentialName = CredentialName
+
+    @property
+    def RequestProtocolType(self):
+        r"""<p>访问协议</p><p>枚举值：</p><ul><li>http： http</li><li>https： https</li></ul>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._RequestProtocolType
+
+    @RequestProtocolType.setter
+    def RequestProtocolType(self, RequestProtocolType):
+        self._RequestProtocolType = RequestProtocolType
+
 
     def _deserialize(self, params):
         self._InstanceID = params.get("InstanceID")
@@ -13949,6 +14293,9 @@ class ServiceVO(AbstractModel):
             self._CustomMatch._deserialize(params.get("CustomMatch"))
         self._Timeout = params.get("Timeout")
         self._McpServerNum = params.get("McpServerNum")
+        self._CredentialID = params.get("CredentialID")
+        self._CredentialName = params.get("CredentialName")
+        self._RequestProtocolType = params.get("RequestProtocolType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -14605,6 +14952,57 @@ class TaskComplexityRouteDTO(AbstractModel):
         
 
 
+class TimeRange(AbstractModel):
+    r"""时间区间配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Start: <p>起始时间</p><p>参数格式：格式：09:00:00</p>
+        :type Start: str
+        :param _End: <p>结束时间</p><p>参数格式：格式：12:00:00</p>
+        :type End: str
+        """
+        self._Start = None
+        self._End = None
+
+    @property
+    def Start(self):
+        r"""<p>起始时间</p><p>参数格式：格式：09:00:00</p>
+        :rtype: str
+        """
+        return self._Start
+
+    @Start.setter
+    def Start(self, Start):
+        self._Start = Start
+
+    @property
+    def End(self):
+        r"""<p>结束时间</p><p>参数格式：格式：12:00:00</p>
+        :rtype: str
+        """
+        return self._End
+
+    @End.setter
+    def End(self, End):
+        self._End = End
+
+
+    def _deserialize(self, params):
+        self._Start = params.get("Start")
+        self._End = params.get("End")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class TmsConfigDTO(AbstractModel):
     r"""内容安全配置
 
@@ -14845,6 +15243,8 @@ class TokenLimitConfigDTO(AbstractModel):
 
     @property
     def Type(self):
+        warnings.warn("parameter `Type` is deprecated", DeprecationWarning) 
+
         r"""<p>限流类型</p><p>枚举值：</p><ul><li>minute： 时间窗口</li><li>day： 自然日</li><li>month： 自然月</li></ul>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
@@ -14853,6 +15253,8 @@ class TokenLimitConfigDTO(AbstractModel):
 
     @Type.setter
     def Type(self, Type):
+        warnings.warn("parameter `Type` is deprecated", DeprecationWarning) 
+
         self._Type = Type
 
     @property

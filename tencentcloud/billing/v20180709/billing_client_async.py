@@ -241,6 +241,24 @@ class BillingClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeAccountWarning(
+            self,
+            request: models.DescribeAccountWarningRequest,
+            opts: Dict = None,
+    ) -> models.DescribeAccountWarningResponse:
+        """
+        云api查余额告警阈值接口，支持传入uin
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeAccountWarning"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeAccountWarningResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeAllocateConditions(
             self,
             request: models.DescribeAllocateConditionsRequest,
@@ -1127,6 +1145,24 @@ class BillingClient(AbstractClient):
         kwargs["action"] = "DescribeVoucherUsageDetails"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeVoucherUsageDetailsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyAccountWarning(
+            self,
+            request: models.ModifyAccountWarningRequest,
+            opts: Dict = None,
+    ) -> models.ModifyAccountWarningResponse:
+        """
+        云api设置余额告警阈值接口
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyAccountWarning"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyAccountWarningResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

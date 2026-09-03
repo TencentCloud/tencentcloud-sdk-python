@@ -282,6 +282,24 @@ class OcrClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeQuestionSplitJob(
+            self,
+            request: models.DescribeQuestionSplitJobRequest,
+            opts: Dict = None,
+    ) -> models.DescribeQuestionSplitJobResponse:
+        """
+        异步试卷切题识别可将整页练习册、试卷或教辅中的题目进行自动切题，并识别出其中的文字内容和坐标位置，是试卷切题的接口补充。主要解决试卷录题这类多页场景、单题跨页场景。需要 SubmitQuestionSplitOCRJob（提交任务）、DescribeQuestionSplitOCRJob（查询任务）两个接口配套使用，计费发生在提交任务后。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeQuestionSplitJob"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeQuestionSplitJobResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DriverLicenseOCR(
             self,
             request: models.DriverLicenseOCRRequest,
@@ -1783,6 +1801,24 @@ class OcrClient(AbstractClient):
         kwargs["action"] = "SubmitQuestionMarkAgentJob"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.SubmitQuestionMarkAgentJobResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def SubmitQuestionSplitJob(
+            self,
+            request: models.SubmitQuestionSplitJobRequest,
+            opts: Dict = None,
+    ) -> models.SubmitQuestionSplitJobResponse:
+        """
+        异步试卷切题识别可将整页练习册、试卷或教辅中的题目进行自动切题，并识别出其中的文字内容和坐标位置，是试卷切题的接口补充。主要解决试卷录题这类多页场景、单题跨页场景。需要 SubmitQuestionSplitOCRJob（提交任务）、DescribeQuestionSplitOCRJob（查询任务）两个接口配套使用，计费发生在提交任务后。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "SubmitQuestionSplitJob"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.SubmitQuestionSplitJobResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

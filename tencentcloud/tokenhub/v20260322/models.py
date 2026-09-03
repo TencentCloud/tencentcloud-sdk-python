@@ -4850,6 +4850,8 @@ class EndpointDetail(AbstractModel):
         :type AutoAdjustQuota: int
         :param _RPM: <p>RPM（每分钟请求数限流）。当推理服务未单独设置时，回退为关联模型的默认 RPM 值。</p>
         :type RPM: int
+        :param _ModelStatus: <p>模型状态</p><p>枚举值：</p><ul><li>online： 在线</li><li>pre-offline： 预下线</li><li>discontinued： 停止新购</li><li>maintenance： 维护</li><li>offline： 下线</li></ul>
+        :type ModelStatus: str
         """
         self._EndpointId = None
         self._EndpointName = None
@@ -4864,6 +4866,7 @@ class EndpointDetail(AbstractModel):
         self._TPM = None
         self._AutoAdjustQuota = None
         self._RPM = None
+        self._ModelStatus = None
 
     @property
     def EndpointId(self):
@@ -5008,6 +5011,17 @@ class EndpointDetail(AbstractModel):
     def RPM(self, RPM):
         self._RPM = RPM
 
+    @property
+    def ModelStatus(self):
+        r"""<p>模型状态</p><p>枚举值：</p><ul><li>online： 在线</li><li>pre-offline： 预下线</li><li>discontinued： 停止新购</li><li>maintenance： 维护</li><li>offline： 下线</li></ul>
+        :rtype: str
+        """
+        return self._ModelStatus
+
+    @ModelStatus.setter
+    def ModelStatus(self, ModelStatus):
+        self._ModelStatus = ModelStatus
+
 
     def _deserialize(self, params):
         self._EndpointId = params.get("EndpointId")
@@ -5023,6 +5037,7 @@ class EndpointDetail(AbstractModel):
         self._TPM = params.get("TPM")
         self._AutoAdjustQuota = params.get("AutoAdjustQuota")
         self._RPM = params.get("RPM")
+        self._ModelStatus = params.get("ModelStatus")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

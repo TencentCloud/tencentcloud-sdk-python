@@ -15549,6 +15549,72 @@ class CKafkaTopicInfo(AbstractModel):
         
 
 
+class CWPTags(AbstractModel):
+    r"""主机标签
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Rid: <p>记录ID</p>
+        :type Rid: int
+        :param _Name: <p>标签名</p>
+        :type Name: str
+        :param _TagId: <p>标签ID</p>
+        :type TagId: int
+        """
+        self._Rid = None
+        self._Name = None
+        self._TagId = None
+
+    @property
+    def Rid(self):
+        r"""<p>记录ID</p>
+        :rtype: int
+        """
+        return self._Rid
+
+    @Rid.setter
+    def Rid(self, Rid):
+        self._Rid = Rid
+
+    @property
+    def Name(self):
+        r"""<p>标签名</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def TagId(self):
+        r"""<p>标签ID</p>
+        :rtype: int
+        """
+        return self._TagId
+
+    @TagId.setter
+    def TagId(self, TagId):
+        self._TagId = TagId
+
+
+    def _deserialize(self, params):
+        self._Rid = params.get("Rid")
+        self._Name = params.get("Name")
+        self._TagId = params.get("TagId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CanFixVulInfo(AbstractModel):
     r"""批量修复漏洞二次弹窗 漏洞主机信息
 
@@ -51754,6 +51820,7 @@ class DescribeRaspLicenseListRequest(AbstractModel):
 - NodeName 容器节点名称
 - ClusterID 容器集群ID
 - ClusterName 容器集群名称
+- CWPTags 主机标签(值为标签ID,多个取并集,仅AssetType=CWP/TCSS_HOST生效)
         :type Filters: list of Filters
         :param _Limit: 限制条数,默认10
         :type Limit: int
@@ -51785,6 +51852,7 @@ class DescribeRaspLicenseListRequest(AbstractModel):
 - NodeName 容器节点名称
 - ClusterID 容器集群ID
 - ClusterName 容器集群名称
+- CWPTags 主机标签(值为标签ID,多个取并集,仅AssetType=CWP/TCSS_HOST生效)
         :rtype: list of Filters
         """
         return self._Filters
@@ -52835,7 +52903,17 @@ class DescribeReverseShellEventsRequest(AbstractModel):
         :param _Offset: 偏移量，默认为0。
         :type Offset: int
         :param _Filters: 过滤条件。
-<li>Keywords - String - 是否必填：否 - 关键字(主机内网IP|进程名)</li>
+<li>ProcName - String - 是否必填：否 - 进程名(模糊匹配进程名或父进程名)</li>
+<li>MachineName - String - 是否必填：否 - 主机名称(模糊匹配)</li>
+<li>InstanceID - String - 是否必填：否 - 实例ID(模糊匹配)</li>
+<li>IP - String - 是否必填：否 - 主机IP(内网IP或公网IP,模糊匹配)</li>
+<li>Quuid - String - 是否必填：否 - 主机QUUID(支持多个)</li>
+<li>Uuid - String - 是否必填：否 - 主机UUID</li>
+<li>Status - String - 是否必填：否 - 处理状态(0:待处理 2:已加入白名单 3:已处理 4:已忽略)</li>
+<li>DetectBy - String - 是否必填：否 - 检测方式(0:行为分析 1:命令特征检测)</li>
+<li>ID - String - 是否必填：否 - 事件ID(支持多个)</li>
+<li>CreateBeginTime - String - 是否必填：否 - 发生开始时间</li>
+<li>CreateEndTime - String - 是否必填：否 - 发生结束时间</li>
         :type Filters: list of Filter
         :param _Order: 排序方式：根据请求次数排序：asc-升序/desc-降序
         :type Order: str
@@ -52873,7 +52951,17 @@ class DescribeReverseShellEventsRequest(AbstractModel):
     @property
     def Filters(self):
         r"""过滤条件。
-<li>Keywords - String - 是否必填：否 - 关键字(主机内网IP|进程名)</li>
+<li>ProcName - String - 是否必填：否 - 进程名(模糊匹配进程名或父进程名)</li>
+<li>MachineName - String - 是否必填：否 - 主机名称(模糊匹配)</li>
+<li>InstanceID - String - 是否必填：否 - 实例ID(模糊匹配)</li>
+<li>IP - String - 是否必填：否 - 主机IP(内网IP或公网IP,模糊匹配)</li>
+<li>Quuid - String - 是否必填：否 - 主机QUUID(支持多个)</li>
+<li>Uuid - String - 是否必填：否 - 主机UUID</li>
+<li>Status - String - 是否必填：否 - 处理状态(0:待处理 2:已加入白名单 3:已处理 4:已忽略)</li>
+<li>DetectBy - String - 是否必填：否 - 检测方式(0:行为分析 1:命令特征检测)</li>
+<li>ID - String - 是否必填：否 - 事件ID(支持多个)</li>
+<li>CreateBeginTime - String - 是否必填：否 - 发生开始时间</li>
+<li>CreateEndTime - String - 是否必填：否 - 发生结束时间</li>
         :rtype: list of Filter
         """
         return self._Filters
@@ -76174,7 +76262,7 @@ class FileTamperRuleInfo(AbstractModel):
 
 
 class Filter(AbstractModel):
-    r"""描述键值对过滤器，用于条件过滤查询。例如过滤ID、名称、状态等
+    r"""描述键值对过滤器，用于条件过滤查询。例如过滤ID、名称、状态、时间等
 
     若存在多个Filter时，Filter间的关系为逻辑与（AND）关系。
     若同一个Filter存在多个Values，同一Filter下Values间的关系为逻辑或（OR）关系。
@@ -92047,23 +92135,23 @@ class OrderDetail(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ResourceID: 资源ID
+        :param _ResourceID: <p>资源ID</p>
         :type ResourceID: str
-        :param _InquireKey: 计费项
+        :param _InquireKey: <p>计费项</p>
         :type InquireKey: str
-        :param _Status: 订单状态
-- 1 正常
-- 2 隔离期
-- 3 已销毁
+        :param _Status: <p>订单状态</p><ul><li>1 正常</li><li>2 隔离期</li><li>3 已销毁</li></ul>
         :type Status: int
+        :param _SourceType: <p>源类型</p>
+        :type SourceType: int
         """
         self._ResourceID = None
         self._InquireKey = None
         self._Status = None
+        self._SourceType = None
 
     @property
     def ResourceID(self):
-        r"""资源ID
+        r"""<p>资源ID</p>
         :rtype: str
         """
         return self._ResourceID
@@ -92074,7 +92162,7 @@ class OrderDetail(AbstractModel):
 
     @property
     def InquireKey(self):
-        r"""计费项
+        r"""<p>计费项</p>
         :rtype: str
         """
         return self._InquireKey
@@ -92085,10 +92173,7 @@ class OrderDetail(AbstractModel):
 
     @property
     def Status(self):
-        r"""订单状态
-- 1 正常
-- 2 隔离期
-- 3 已销毁
+        r"""<p>订单状态</p><ul><li>1 正常</li><li>2 隔离期</li><li>3 已销毁</li></ul>
         :rtype: int
         """
         return self._Status
@@ -92097,11 +92182,23 @@ class OrderDetail(AbstractModel):
     def Status(self, Status):
         self._Status = Status
 
+    @property
+    def SourceType(self):
+        r"""<p>源类型</p>
+        :rtype: int
+        """
+        return self._SourceType
+
+    @SourceType.setter
+    def SourceType(self, SourceType):
+        self._SourceType = SourceType
+
 
     def _deserialize(self, params):
         self._ResourceID = params.get("ResourceID")
         self._InquireKey = params.get("InquireKey")
         self._Status = params.get("Status")
+        self._SourceType = params.get("SourceType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -98497,79 +98594,59 @@ class RaspLicenseList(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _QUUID: 机器唯一ID
+        :param _QUUID: <p>机器唯一ID</p>
         :type QUUID: str
-        :param _InstanceName: 实例名称
+        :param _InstanceName: <p>实例名称</p>
         :type InstanceName: str
-        :param _InstanceId: 实例ID
+        :param _InstanceId: <p>实例ID</p>
         :type InstanceId: str
-        :param _PublicIP: 公网IP
+        :param _PublicIP: <p>公网IP</p>
         :type PublicIP: str
-        :param _PrivateIP: 内网IP
+        :param _PrivateIP: <p>内网IP</p>
         :type PrivateIP: str
-        :param _Tags: 云标签信息
+        :param _Tags: <p>云标签信息</p>
         :type Tags: list of Tags
-        :param _ProtectionVersion: 防护版本信息
-- CriticalProtection 重保防护包
-- Pro 容器安全-专业版
-- Ultimate 主机安全-旗舰版
+        :param _CWPTags: <p>主机标签信息(仅AssetType=CWP/TCSS_HOST有值)</p>
+        :type CWPTags: list of CWPTags
+        :param _ProtectionVersion: <p>防护版本信息</p><ul><li>CriticalProtection 重保防护包</li><li>Pro 容器安全-专业版</li><li>Ultimate 主机安全-旗舰版</li></ul>
         :type ProtectionVersion: list of str
-        :param _ConfigurationSetting: 防护设置
-- 0 未配置
-- 1 已配置
+        :param _ConfigurationSetting: <p>防护设置</p><ul><li>0 未配置</li><li>1 已配置</li></ul>
         :type ConfigurationSetting: int
-        :param _Enable: 总开关
-- 0 未开启
-- 1已开启
+        :param _Enable: <p>总开关</p><ul><li>0 未开启</li><li>1已开启</li></ul>
         :type Enable: int
-        :param _VulDefEnable: 漏洞防御开关
-- 0 未开启
-- 1 开启
+        :param _VulDefEnable: <p>漏洞防御开关</p><ul><li>0 未开启</li><li>1 开启</li></ul>
         :type VulDefEnable: int
-        :param _VulDefMode: 漏洞防御模式
-- 0 标准
-- 1 重保
+        :param _VulDefMode: <p>漏洞防御模式</p><ul><li>0 标准</li><li>1 重保</li></ul>
         :type VulDefMode: int
-        :param _VulDefAction: 漏洞防御动作
-- 0 仅检测
-- 1 检测+防御
+        :param _VulDefAction: <p>漏洞防御动作</p><ul><li>0 仅检测</li><li>1 检测+防御</li></ul>
         :type VulDefAction: int
-        :param _MemShellDefEnable: 内存马防御开关
-- 0 未开启
-- 1 开启
+        :param _MemShellDefEnable: <p>内存马防御开关</p><ul><li>0 未开启</li><li>1 开启</li></ul>
         :type MemShellDefEnable: int
-        :param _SafeInject: 更多防护
-- 0 不注入会重启的进程 
-- 1 注入会重启的进程
+        :param _SafeInject: <p>更多防护</p><ul><li>0 不注入会重启的进程 </li><li>1 注入会重启的进程</li></ul>
         :type SafeInject: int
-        :param _PerformanceLimit: 性能阈值配置开关
-- 0 未开启
-- 1 开启
+        :param _PerformanceLimit: <p>性能阈值配置开关</p><ul><li>0 未开启</li><li>1 开启</li></ul>
         :type PerformanceLimit: int
-        :param _PerformanceLimitCpu: CPU阈值,取值1-99
+        :param _PerformanceLimitCpu: <p>CPU阈值,取值1-99</p>
         :type PerformanceLimitCpu: int
-        :param _PerformanceLimitMem: 内存阈值,取值1-99
+        :param _PerformanceLimitMem: <p>内存阈值,取值1-99</p>
         :type PerformanceLimitMem: int
-        :param _PerformanceLimitMemAmount: 内存剩余阈值
+        :param _PerformanceLimitMemAmount: <p>内存剩余阈值</p>
         :type PerformanceLimitMemAmount: int
-        :param _RaspException: 插件状态
-- 0 使用正常
-- 1 存在异常
-- 2 未使用
+        :param _RaspException: <p>插件状态</p><ul><li>0 使用正常</li><li>1 存在异常</li><li>2 未使用</li></ul>
         :type RaspException: int
-        :param _LatestUpdateTime: 最近更新时间
+        :param _LatestUpdateTime: <p>最近更新时间</p>
         :type LatestUpdateTime: str
-        :param _ClusterName: 集群ID,仅容器资产有值
+        :param _ClusterName: <p>集群ID,仅容器资产有值</p>
         :type ClusterName: str
-        :param _ClusterId: 集群名称,仅容器资产有值
+        :param _ClusterId: <p>集群名称,仅容器资产有值</p>
         :type ClusterId: str
-        :param _OrderDetail: 订单信息
+        :param _OrderDetail: <p>订单信息</p>
         :type OrderDetail: :class:`tencentcloud.cwp.v20180228.models.OrderDetail`
-        :param _IsUnBind: 是否允许解绑,fasle 不允许 true 允许
+        :param _IsUnBind: <p>是否允许解绑,fasle 不允许 true 允许</p>
         :type IsUnBind: bool
-        :param _UUID: uuid 机器唯一ID,仅AssetType = CWP 时有值
+        :param _UUID: <p>uuid 机器唯一ID,仅AssetType = CWP 时有值</p>
         :type UUID: str
-        :param _Reason: 无注入/注入失败原因
+        :param _Reason: <p>无注入/注入失败原因</p>
         :type Reason: str
         """
         self._QUUID = None
@@ -98578,6 +98655,7 @@ class RaspLicenseList(AbstractModel):
         self._PublicIP = None
         self._PrivateIP = None
         self._Tags = None
+        self._CWPTags = None
         self._ProtectionVersion = None
         self._ConfigurationSetting = None
         self._Enable = None
@@ -98601,7 +98679,7 @@ class RaspLicenseList(AbstractModel):
 
     @property
     def QUUID(self):
-        r"""机器唯一ID
+        r"""<p>机器唯一ID</p>
         :rtype: str
         """
         return self._QUUID
@@ -98612,7 +98690,7 @@ class RaspLicenseList(AbstractModel):
 
     @property
     def InstanceName(self):
-        r"""实例名称
+        r"""<p>实例名称</p>
         :rtype: str
         """
         return self._InstanceName
@@ -98623,7 +98701,7 @@ class RaspLicenseList(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""实例ID
+        r"""<p>实例ID</p>
         :rtype: str
         """
         return self._InstanceId
@@ -98634,7 +98712,7 @@ class RaspLicenseList(AbstractModel):
 
     @property
     def PublicIP(self):
-        r"""公网IP
+        r"""<p>公网IP</p>
         :rtype: str
         """
         return self._PublicIP
@@ -98645,7 +98723,7 @@ class RaspLicenseList(AbstractModel):
 
     @property
     def PrivateIP(self):
-        r"""内网IP
+        r"""<p>内网IP</p>
         :rtype: str
         """
         return self._PrivateIP
@@ -98656,7 +98734,7 @@ class RaspLicenseList(AbstractModel):
 
     @property
     def Tags(self):
-        r"""云标签信息
+        r"""<p>云标签信息</p>
         :rtype: list of Tags
         """
         return self._Tags
@@ -98666,11 +98744,19 @@ class RaspLicenseList(AbstractModel):
         self._Tags = Tags
 
     @property
+    def CWPTags(self):
+        r"""<p>主机标签信息(仅AssetType=CWP/TCSS_HOST有值)</p>
+        :rtype: list of CWPTags
+        """
+        return self._CWPTags
+
+    @CWPTags.setter
+    def CWPTags(self, CWPTags):
+        self._CWPTags = CWPTags
+
+    @property
     def ProtectionVersion(self):
-        r"""防护版本信息
-- CriticalProtection 重保防护包
-- Pro 容器安全-专业版
-- Ultimate 主机安全-旗舰版
+        r"""<p>防护版本信息</p><ul><li>CriticalProtection 重保防护包</li><li>Pro 容器安全-专业版</li><li>Ultimate 主机安全-旗舰版</li></ul>
         :rtype: list of str
         """
         return self._ProtectionVersion
@@ -98681,9 +98767,7 @@ class RaspLicenseList(AbstractModel):
 
     @property
     def ConfigurationSetting(self):
-        r"""防护设置
-- 0 未配置
-- 1 已配置
+        r"""<p>防护设置</p><ul><li>0 未配置</li><li>1 已配置</li></ul>
         :rtype: int
         """
         return self._ConfigurationSetting
@@ -98694,9 +98778,7 @@ class RaspLicenseList(AbstractModel):
 
     @property
     def Enable(self):
-        r"""总开关
-- 0 未开启
-- 1已开启
+        r"""<p>总开关</p><ul><li>0 未开启</li><li>1已开启</li></ul>
         :rtype: int
         """
         return self._Enable
@@ -98707,9 +98789,7 @@ class RaspLicenseList(AbstractModel):
 
     @property
     def VulDefEnable(self):
-        r"""漏洞防御开关
-- 0 未开启
-- 1 开启
+        r"""<p>漏洞防御开关</p><ul><li>0 未开启</li><li>1 开启</li></ul>
         :rtype: int
         """
         return self._VulDefEnable
@@ -98720,9 +98800,7 @@ class RaspLicenseList(AbstractModel):
 
     @property
     def VulDefMode(self):
-        r"""漏洞防御模式
-- 0 标准
-- 1 重保
+        r"""<p>漏洞防御模式</p><ul><li>0 标准</li><li>1 重保</li></ul>
         :rtype: int
         """
         return self._VulDefMode
@@ -98733,9 +98811,7 @@ class RaspLicenseList(AbstractModel):
 
     @property
     def VulDefAction(self):
-        r"""漏洞防御动作
-- 0 仅检测
-- 1 检测+防御
+        r"""<p>漏洞防御动作</p><ul><li>0 仅检测</li><li>1 检测+防御</li></ul>
         :rtype: int
         """
         return self._VulDefAction
@@ -98746,9 +98822,7 @@ class RaspLicenseList(AbstractModel):
 
     @property
     def MemShellDefEnable(self):
-        r"""内存马防御开关
-- 0 未开启
-- 1 开启
+        r"""<p>内存马防御开关</p><ul><li>0 未开启</li><li>1 开启</li></ul>
         :rtype: int
         """
         return self._MemShellDefEnable
@@ -98759,9 +98833,7 @@ class RaspLicenseList(AbstractModel):
 
     @property
     def SafeInject(self):
-        r"""更多防护
-- 0 不注入会重启的进程 
-- 1 注入会重启的进程
+        r"""<p>更多防护</p><ul><li>0 不注入会重启的进程 </li><li>1 注入会重启的进程</li></ul>
         :rtype: int
         """
         return self._SafeInject
@@ -98772,9 +98844,7 @@ class RaspLicenseList(AbstractModel):
 
     @property
     def PerformanceLimit(self):
-        r"""性能阈值配置开关
-- 0 未开启
-- 1 开启
+        r"""<p>性能阈值配置开关</p><ul><li>0 未开启</li><li>1 开启</li></ul>
         :rtype: int
         """
         return self._PerformanceLimit
@@ -98785,7 +98855,7 @@ class RaspLicenseList(AbstractModel):
 
     @property
     def PerformanceLimitCpu(self):
-        r"""CPU阈值,取值1-99
+        r"""<p>CPU阈值,取值1-99</p>
         :rtype: int
         """
         return self._PerformanceLimitCpu
@@ -98796,7 +98866,7 @@ class RaspLicenseList(AbstractModel):
 
     @property
     def PerformanceLimitMem(self):
-        r"""内存阈值,取值1-99
+        r"""<p>内存阈值,取值1-99</p>
         :rtype: int
         """
         return self._PerformanceLimitMem
@@ -98807,7 +98877,7 @@ class RaspLicenseList(AbstractModel):
 
     @property
     def PerformanceLimitMemAmount(self):
-        r"""内存剩余阈值
+        r"""<p>内存剩余阈值</p>
         :rtype: int
         """
         return self._PerformanceLimitMemAmount
@@ -98818,10 +98888,7 @@ class RaspLicenseList(AbstractModel):
 
     @property
     def RaspException(self):
-        r"""插件状态
-- 0 使用正常
-- 1 存在异常
-- 2 未使用
+        r"""<p>插件状态</p><ul><li>0 使用正常</li><li>1 存在异常</li><li>2 未使用</li></ul>
         :rtype: int
         """
         return self._RaspException
@@ -98832,7 +98899,7 @@ class RaspLicenseList(AbstractModel):
 
     @property
     def LatestUpdateTime(self):
-        r"""最近更新时间
+        r"""<p>最近更新时间</p>
         :rtype: str
         """
         return self._LatestUpdateTime
@@ -98843,7 +98910,7 @@ class RaspLicenseList(AbstractModel):
 
     @property
     def ClusterName(self):
-        r"""集群ID,仅容器资产有值
+        r"""<p>集群ID,仅容器资产有值</p>
         :rtype: str
         """
         return self._ClusterName
@@ -98854,7 +98921,7 @@ class RaspLicenseList(AbstractModel):
 
     @property
     def ClusterId(self):
-        r"""集群名称,仅容器资产有值
+        r"""<p>集群名称,仅容器资产有值</p>
         :rtype: str
         """
         return self._ClusterId
@@ -98865,7 +98932,7 @@ class RaspLicenseList(AbstractModel):
 
     @property
     def OrderDetail(self):
-        r"""订单信息
+        r"""<p>订单信息</p>
         :rtype: :class:`tencentcloud.cwp.v20180228.models.OrderDetail`
         """
         return self._OrderDetail
@@ -98876,7 +98943,7 @@ class RaspLicenseList(AbstractModel):
 
     @property
     def IsUnBind(self):
-        r"""是否允许解绑,fasle 不允许 true 允许
+        r"""<p>是否允许解绑,fasle 不允许 true 允许</p>
         :rtype: bool
         """
         return self._IsUnBind
@@ -98887,7 +98954,7 @@ class RaspLicenseList(AbstractModel):
 
     @property
     def UUID(self):
-        r"""uuid 机器唯一ID,仅AssetType = CWP 时有值
+        r"""<p>uuid 机器唯一ID,仅AssetType = CWP 时有值</p>
         :rtype: str
         """
         return self._UUID
@@ -98898,7 +98965,7 @@ class RaspLicenseList(AbstractModel):
 
     @property
     def Reason(self):
-        r"""无注入/注入失败原因
+        r"""<p>无注入/注入失败原因</p>
         :rtype: str
         """
         return self._Reason
@@ -98920,6 +98987,12 @@ class RaspLicenseList(AbstractModel):
                 obj = Tags()
                 obj._deserialize(item)
                 self._Tags.append(obj)
+        if params.get("CWPTags") is not None:
+            self._CWPTags = []
+            for item in params.get("CWPTags"):
+                obj = CWPTags()
+                obj._deserialize(item)
+                self._CWPTags.append(obj)
         self._ProtectionVersion = params.get("ProtectionVersion")
         self._ConfigurationSetting = params.get("ConfigurationSetting")
         self._Enable = params.get("Enable")
@@ -109372,9 +109445,9 @@ class Tags(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TagKey: 标签键
+        :param _TagKey: <p>标签键</p>
         :type TagKey: str
-        :param _TagValue: 标签值
+        :param _TagValue: <p>标签值</p>
         :type TagValue: str
         """
         self._TagKey = None
@@ -109382,7 +109455,7 @@ class Tags(AbstractModel):
 
     @property
     def TagKey(self):
-        r"""标签键
+        r"""<p>标签键</p>
         :rtype: str
         """
         return self._TagKey
@@ -109393,7 +109466,7 @@ class Tags(AbstractModel):
 
     @property
     def TagValue(self):
-        r"""标签值
+        r"""<p>标签值</p>
         :rtype: str
         """
         return self._TagValue

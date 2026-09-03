@@ -348,6 +348,29 @@ class OcrClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeQuestionSplitJob(self, request):
+        r"""异步试卷切题识别可将整页练习册、试卷或教辅中的题目进行自动切题，并识别出其中的文字内容和坐标位置，是试卷切题的接口补充。主要解决试卷录题这类多页场景、单题跨页场景。需要 SubmitQuestionSplitOCRJob（提交任务）、DescribeQuestionSplitOCRJob（查询任务）两个接口配套使用，计费发生在提交任务后。
+
+        :param request: Request instance for DescribeQuestionSplitJob.
+        :type request: :class:`tencentcloud.ocr.v20181119.models.DescribeQuestionSplitJobRequest`
+        :rtype: :class:`tencentcloud.ocr.v20181119.models.DescribeQuestionSplitJobResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeQuestionSplitJob", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeQuestionSplitJobResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DriverLicenseOCR(self, request):
         r"""本接口支持驾驶证主页和副页所有字段的自动定位与识别，重点字段的识别准确度达到99%以上。
 
@@ -2100,6 +2123,29 @@ class OcrClient(AbstractClient):
             body = self.call("SubmitQuestionMarkAgentJob", params, headers=headers)
             response = json.loads(body)
             model = models.SubmitQuestionMarkAgentJobResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def SubmitQuestionSplitJob(self, request):
+        r"""异步试卷切题识别可将整页练习册、试卷或教辅中的题目进行自动切题，并识别出其中的文字内容和坐标位置，是试卷切题的接口补充。主要解决试卷录题这类多页场景、单题跨页场景。需要 SubmitQuestionSplitOCRJob（提交任务）、DescribeQuestionSplitOCRJob（查询任务）两个接口配套使用，计费发生在提交任务后。
+
+        :param request: Request instance for SubmitQuestionSplitJob.
+        :type request: :class:`tencentcloud.ocr.v20181119.models.SubmitQuestionSplitJobRequest`
+        :rtype: :class:`tencentcloud.ocr.v20181119.models.SubmitQuestionSplitJobResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("SubmitQuestionSplitJob", params, headers=headers)
+            response = json.loads(body)
+            model = models.SubmitQuestionSplitJobResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

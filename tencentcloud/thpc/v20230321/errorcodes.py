@@ -23,6 +23,9 @@ DRYRUNOPERATION = 'DryRunOperation'
 # 操作失败。
 FAILEDOPERATION = 'FailedOperation'
 
+# FailedOperation.ProxyNotReady
+FAILEDOPERATION_PROXYNOTREADY = 'FailedOperation.ProxyNotReady'
+
 # 内部错误。
 INTERNALERROR = 'InternalError'
 
@@ -40,6 +43,15 @@ INTERNALERROR_CALLCLOUDSDKEXCEPTION = 'InternalError.CallCloudSdkException'
 
 # cvm调用失败。
 INTERNALERROR_CALLCVM = 'InternalError.CallCvm'
+
+# InternalError.CreateEndpointFailed
+INTERNALERROR_CREATEENDPOINTFAILED = 'InternalError.CreateEndpointFailed'
+
+# InternalError.DeleteEndpointFailed
+INTERNALERROR_DELETEENDPOINTFAILED = 'InternalError.DeleteEndpointFailed'
+
+# InternalError.EndpointServiceWhitelistFailed
+INTERNALERROR_ENDPOINTSERVICEWHITELISTFAILED = 'InternalError.EndpointServiceWhitelistFailed'
 
 # 参数错误。
 INVALIDPARAMETER = 'InvalidParameter'
@@ -140,6 +152,9 @@ RESOURCEINSUFFICIENT = 'ResourceInsufficient'
 # 资源不存在。
 RESOURCENOTFOUND = 'ResourceNotFound'
 
+# ResourceNotFound.Cluster
+RESOURCENOTFOUND_CLUSTER = 'ResourceNotFound.Cluster'
+
 # 集群不存在。
 RESOURCENOTFOUND_CLUSTERID = 'ResourceNotFound.ClusterId'
 
@@ -157,6 +172,9 @@ RESOURCENOTFOUND_NODEID = 'ResourceNotFound.NodeId'
 
 # 无法找到指定队列。
 RESOURCENOTFOUND_QUEUE = 'ResourceNotFound.Queue'
+
+# ResourceNotFound.VpcResource
+RESOURCENOTFOUND_VPCRESOURCE = 'ResourceNotFound.VpcResource'
 
 # 未授权操作。
 UNAUTHORIZEDOPERATION = 'UnauthorizedOperation'
@@ -179,6 +197,9 @@ UNSUPPORTEDOPERATION_CLUSTERACCEPTOTHERREQUEST = 'UnsupportedOperation.ClusterAc
 # 该集群当前状态不支持该操作。
 UNSUPPORTEDOPERATION_CLUSTERSTATUSNOTSUPPORT = 'UnsupportedOperation.ClusterStatusNotSupport'
 
+# UnsupportedOperation.HasManagedNodes
+UNSUPPORTEDOPERATION_HASMANAGEDNODES = 'UnsupportedOperation.HasManagedNodes'
+
 # 类型节点不支持当前操作。
 UNSUPPORTEDOPERATION_INVALIDNODEROLE = 'UnsupportedOperation.InvalidNodeRole'
 
@@ -194,11 +215,26 @@ UNSUPPORTEDOPERATION_PARAMETERTOOLARGE = 'UnsupportedOperation.ParameterTooLarge
 # 参数值过小，不支持此操作。
 UNSUPPORTEDOPERATION_PARAMETERTOOSMALL = 'UnsupportedOperation.ParameterTooSmall'
 
+# UnsupportedOperation.ProxyEnabled
+UNSUPPORTEDOPERATION_PROXYENABLED = 'UnsupportedOperation.ProxyEnabled'
+
+# UnsupportedOperation.ProxyNotEnabled
+UNSUPPORTEDOPERATION_PROXYNOTENABLED = 'UnsupportedOperation.ProxyNotEnabled'
+
 # 队列内存在节点，不支持此操作。
 UNSUPPORTEDOPERATION_QUEUENOTEMPTY = 'UnsupportedOperation.QueueNotEmpty'
 
+# UnsupportedOperation.RegionDedicatedProxyDisabled
+UNSUPPORTEDOPERATION_REGIONDEDICATEDPROXYDISABLED = 'UnsupportedOperation.RegionDedicatedProxyDisabled'
+
+# UnsupportedOperation.RegionNotSupportDedicatedProxy
+UNSUPPORTEDOPERATION_REGIONNOTSUPPORTDEDICATEDPROXY = 'UnsupportedOperation.RegionNotSupportDedicatedProxy'
+
 # 实例的付费模式不支持当前操作。
 UNSUPPORTEDOPERATION_SPACECHARGETYPE = 'UnsupportedOperation.SpaceChargeType'
+
+# UnsupportedOperation.VpcAlreadyBound
+UNSUPPORTEDOPERATION_VPCALREADYBOUND = 'UnsupportedOperation.VpcAlreadyBound'
 
 # vpc冲突，不支持当前操作。
 UNSUPPORTEDOPERATION_VPCIDCONFLICT = 'UnsupportedOperation.VpcIdConflict'

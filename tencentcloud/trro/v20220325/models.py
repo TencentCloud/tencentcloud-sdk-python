@@ -18,6 +18,72 @@ import warnings
 from tencentcloud.common.abstract_model import AbstractModel
 
 
+class AnnotationContext(AbstractModel):
+    r"""标注上下文
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskGoal: <p>任务目标（整段视频的总目标）</p>
+        :type TaskGoal: str
+        :param _KeyObjects: <p>关键物体列表</p>
+        :type KeyObjects: list of str
+        :param _AtomicVerbs: <p>原子动词参考列表</p>
+        :type AtomicVerbs: list of str
+        """
+        self._TaskGoal = None
+        self._KeyObjects = None
+        self._AtomicVerbs = None
+
+    @property
+    def TaskGoal(self):
+        r"""<p>任务目标（整段视频的总目标）</p>
+        :rtype: str
+        """
+        return self._TaskGoal
+
+    @TaskGoal.setter
+    def TaskGoal(self, TaskGoal):
+        self._TaskGoal = TaskGoal
+
+    @property
+    def KeyObjects(self):
+        r"""<p>关键物体列表</p>
+        :rtype: list of str
+        """
+        return self._KeyObjects
+
+    @KeyObjects.setter
+    def KeyObjects(self, KeyObjects):
+        self._KeyObjects = KeyObjects
+
+    @property
+    def AtomicVerbs(self):
+        r"""<p>原子动词参考列表</p>
+        :rtype: list of str
+        """
+        return self._AtomicVerbs
+
+    @AtomicVerbs.setter
+    def AtomicVerbs(self, AtomicVerbs):
+        self._AtomicVerbs = AtomicVerbs
+
+
+    def _deserialize(self, params):
+        self._TaskGoal = params.get("TaskGoal")
+        self._KeyObjects = params.get("KeyObjects")
+        self._AtomicVerbs = params.get("AtomicVerbs")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class BatchDeleteDevicesRequest(AbstractModel):
     r"""BatchDeleteDevices请求参数结构体
 
@@ -221,6 +287,134 @@ class BatchDeletePolicyResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class BatchS3SourceInfo(AbstractModel):
+    r"""批量输入源
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Bucket: <p>存储桶名称</p>
+        :type Bucket: str
+        :param _Endpoint: <p>存储服务地址</p>
+        :type Endpoint: str
+        :param _Region: <p>存储区域</p>
+        :type Region: str
+        :param _Prefix: <p>视频目录前缀，如 video/，仅列举视频文件</p>
+        :type Prefix: str
+        :param _Secret: <p>访问凭证，需对该桶有读取权限</p>
+        :type Secret: :class:`tencentcloud.trro.v20220325.models.SecretInfo`
+        :param _Filter: <p>文件名正则过滤规则，仅文件名匹配的文件会处理，不传不过滤</p>
+        :type Filter: str
+        :param _IsCos: <p>是否腾讯云 COS：1 是，0 否。使用腾讯云 COS 时必须传 1</p><p>取值范围：[0, 1]</p>
+        :type IsCos: int
+        """
+        self._Bucket = None
+        self._Endpoint = None
+        self._Region = None
+        self._Prefix = None
+        self._Secret = None
+        self._Filter = None
+        self._IsCos = None
+
+    @property
+    def Bucket(self):
+        r"""<p>存储桶名称</p>
+        :rtype: str
+        """
+        return self._Bucket
+
+    @Bucket.setter
+    def Bucket(self, Bucket):
+        self._Bucket = Bucket
+
+    @property
+    def Endpoint(self):
+        r"""<p>存储服务地址</p>
+        :rtype: str
+        """
+        return self._Endpoint
+
+    @Endpoint.setter
+    def Endpoint(self, Endpoint):
+        self._Endpoint = Endpoint
+
+    @property
+    def Region(self):
+        r"""<p>存储区域</p>
+        :rtype: str
+        """
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def Prefix(self):
+        r"""<p>视频目录前缀，如 video/，仅列举视频文件</p>
+        :rtype: str
+        """
+        return self._Prefix
+
+    @Prefix.setter
+    def Prefix(self, Prefix):
+        self._Prefix = Prefix
+
+    @property
+    def Secret(self):
+        r"""<p>访问凭证，需对该桶有读取权限</p>
+        :rtype: :class:`tencentcloud.trro.v20220325.models.SecretInfo`
+        """
+        return self._Secret
+
+    @Secret.setter
+    def Secret(self, Secret):
+        self._Secret = Secret
+
+    @property
+    def Filter(self):
+        r"""<p>文件名正则过滤规则，仅文件名匹配的文件会处理，不传不过滤</p>
+        :rtype: str
+        """
+        return self._Filter
+
+    @Filter.setter
+    def Filter(self, Filter):
+        self._Filter = Filter
+
+    @property
+    def IsCos(self):
+        r"""<p>是否腾讯云 COS：1 是，0 否。使用腾讯云 COS 时必须传 1</p><p>取值范围：[0, 1]</p>
+        :rtype: int
+        """
+        return self._IsCos
+
+    @IsCos.setter
+    def IsCos(self, IsCos):
+        self._IsCos = IsCos
+
+
+    def _deserialize(self, params):
+        self._Bucket = params.get("Bucket")
+        self._Endpoint = params.get("Endpoint")
+        self._Region = params.get("Region")
+        self._Prefix = params.get("Prefix")
+        if params.get("Secret") is not None:
+            self._Secret = SecretInfo()
+            self._Secret._deserialize(params.get("Secret"))
+        self._Filter = params.get("Filter")
+        self._IsCos = params.get("IsCos")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class BoundLicensesRequest(AbstractModel):
     r"""BoundLicenses请求参数结构体
 
@@ -313,6 +507,57 @@ class BoundLicensesResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
+
+
+class CallbackInfo(AbstractModel):
+    r"""回调配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Url: <p>回调地址</p>
+        :type Url: str
+        :param _Secret: <p>回调签名密钥，用于回调请求的签名校验</p>
+        :type Secret: str
+        """
+        self._Url = None
+        self._Secret = None
+
+    @property
+    def Url(self):
+        r"""<p>回调地址</p>
+        :rtype: str
+        """
+        return self._Url
+
+    @Url.setter
+    def Url(self, Url):
+        self._Url = Url
+
+    @property
+    def Secret(self):
+        r"""<p>回调签名密钥，用于回调请求的签名校验</p>
+        :rtype: str
+        """
+        return self._Secret
+
+    @Secret.setter
+    def Secret(self, Secret):
+        self._Secret = Secret
+
+
+    def _deserialize(self, params):
+        self._Url = params.get("Url")
+        self._Secret = params.get("Secret")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class CloudStorage(AbstractModel):
@@ -444,6 +689,170 @@ AWS S3[地域信息]（https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class CreateBatchVideoAnnotationJobRequest(AbstractModel):
+    r"""CreateBatchVideoAnnotationJob请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InputStorage: <p>批量输入源信息（目录前缀）</p>
+        :type InputStorage: :class:`tencentcloud.trro.v20220325.models.BatchS3SourceInfo`
+        :param _AnnotationType: <p>标注模式（当前仅开放精标注）</p><p>枚举值：</p><ul><li>3： 精标注</li></ul>
+        :type AnnotationType: int
+        :param _AnnotationContext: <p>标注上下文信息</p>
+        :type AnnotationContext: :class:`tencentcloud.trro.v20220325.models.AnnotationContext`
+        :param _ProcessParams: <p>标注处理参数，预留字段，当前无效</p>
+        :type ProcessParams: :class:`tencentcloud.trro.v20220325.models.ProcessParams`
+        :param _OutputStorage: <p>批量结果输出存储信息，不传则不投递</p>
+        :type OutputStorage: :class:`tencentcloud.trro.v20220325.models.OutputStorage`
+        :param _CallbackInfo: <p>回调信息，配置后当任务下子处理项状态从处理中变为其他状态时，服务端会向回调地址发送请求（退避重试三次，不保证回调一定送达，需保证目标地址接收服务有效），建议接收方做好幂等处理。回调请求格式如下：<br><strong>请求头</strong></p><table><thead><tr><th>名称</th><th>值</th></tr></thead><tbody><tr><td>X-Annotation-Signature</td><td>hex(HMAC-SHA256(请求体原始字节, CallbackInfo.Secret))</td></tr></tbody></table><p><strong>请求体</strong>（application/json）</p><table><thead><tr><th>参数名</th><th>类型</th><th>必选</th><th>描述</th></tr></thead><tbody><tr><td>JobId</td><td>string</td><td>是</td><td>任务 ID</td></tr><tr><td>TaskId</td><td>string</td><td>是</td><td>处理项 ID</td></tr><tr><td>FileName</td><td>string</td><td>是</td><td>视频文件名</td></tr><tr><td>Status</td><td>int</td><td>是</td><td>触发本次回调的处理项状态：3 超时，4 异常，5 待确认，6 成功</td></tr><tr><td>StatusChangedAt</td><td>int</td><td>是</td><td>状态变更时间，Unix 时间戳（秒）</td></tr><tr><td>RawResult</td><td>string</td><td>否</td><td>当前生效的结果 JSON 原文：成功=标注产物；待确认=原始标注；确认后=确认版内容。超时/异常无内容</td></tr></tbody></table>
+        :type CallbackInfo: :class:`tencentcloud.trro.v20220325.models.CallbackInfo`
+        """
+        self._InputStorage = None
+        self._AnnotationType = None
+        self._AnnotationContext = None
+        self._ProcessParams = None
+        self._OutputStorage = None
+        self._CallbackInfo = None
+
+    @property
+    def InputStorage(self):
+        r"""<p>批量输入源信息（目录前缀）</p>
+        :rtype: :class:`tencentcloud.trro.v20220325.models.BatchS3SourceInfo`
+        """
+        return self._InputStorage
+
+    @InputStorage.setter
+    def InputStorage(self, InputStorage):
+        self._InputStorage = InputStorage
+
+    @property
+    def AnnotationType(self):
+        r"""<p>标注模式（当前仅开放精标注）</p><p>枚举值：</p><ul><li>3： 精标注</li></ul>
+        :rtype: int
+        """
+        return self._AnnotationType
+
+    @AnnotationType.setter
+    def AnnotationType(self, AnnotationType):
+        self._AnnotationType = AnnotationType
+
+    @property
+    def AnnotationContext(self):
+        r"""<p>标注上下文信息</p>
+        :rtype: :class:`tencentcloud.trro.v20220325.models.AnnotationContext`
+        """
+        return self._AnnotationContext
+
+    @AnnotationContext.setter
+    def AnnotationContext(self, AnnotationContext):
+        self._AnnotationContext = AnnotationContext
+
+    @property
+    def ProcessParams(self):
+        r"""<p>标注处理参数，预留字段，当前无效</p>
+        :rtype: :class:`tencentcloud.trro.v20220325.models.ProcessParams`
+        """
+        return self._ProcessParams
+
+    @ProcessParams.setter
+    def ProcessParams(self, ProcessParams):
+        self._ProcessParams = ProcessParams
+
+    @property
+    def OutputStorage(self):
+        r"""<p>批量结果输出存储信息，不传则不投递</p>
+        :rtype: :class:`tencentcloud.trro.v20220325.models.OutputStorage`
+        """
+        return self._OutputStorage
+
+    @OutputStorage.setter
+    def OutputStorage(self, OutputStorage):
+        self._OutputStorage = OutputStorage
+
+    @property
+    def CallbackInfo(self):
+        r"""<p>回调信息，配置后当任务下子处理项状态从处理中变为其他状态时，服务端会向回调地址发送请求（退避重试三次，不保证回调一定送达，需保证目标地址接收服务有效），建议接收方做好幂等处理。回调请求格式如下：<br><strong>请求头</strong></p><table><thead><tr><th>名称</th><th>值</th></tr></thead><tbody><tr><td>X-Annotation-Signature</td><td>hex(HMAC-SHA256(请求体原始字节, CallbackInfo.Secret))</td></tr></tbody></table><p><strong>请求体</strong>（application/json）</p><table><thead><tr><th>参数名</th><th>类型</th><th>必选</th><th>描述</th></tr></thead><tbody><tr><td>JobId</td><td>string</td><td>是</td><td>任务 ID</td></tr><tr><td>TaskId</td><td>string</td><td>是</td><td>处理项 ID</td></tr><tr><td>FileName</td><td>string</td><td>是</td><td>视频文件名</td></tr><tr><td>Status</td><td>int</td><td>是</td><td>触发本次回调的处理项状态：3 超时，4 异常，5 待确认，6 成功</td></tr><tr><td>StatusChangedAt</td><td>int</td><td>是</td><td>状态变更时间，Unix 时间戳（秒）</td></tr><tr><td>RawResult</td><td>string</td><td>否</td><td>当前生效的结果 JSON 原文：成功=标注产物；待确认=原始标注；确认后=确认版内容。超时/异常无内容</td></tr></tbody></table>
+        :rtype: :class:`tencentcloud.trro.v20220325.models.CallbackInfo`
+        """
+        return self._CallbackInfo
+
+    @CallbackInfo.setter
+    def CallbackInfo(self, CallbackInfo):
+        self._CallbackInfo = CallbackInfo
+
+
+    def _deserialize(self, params):
+        if params.get("InputStorage") is not None:
+            self._InputStorage = BatchS3SourceInfo()
+            self._InputStorage._deserialize(params.get("InputStorage"))
+        self._AnnotationType = params.get("AnnotationType")
+        if params.get("AnnotationContext") is not None:
+            self._AnnotationContext = AnnotationContext()
+            self._AnnotationContext._deserialize(params.get("AnnotationContext"))
+        if params.get("ProcessParams") is not None:
+            self._ProcessParams = ProcessParams()
+            self._ProcessParams._deserialize(params.get("ProcessParams"))
+        if params.get("OutputStorage") is not None:
+            self._OutputStorage = OutputStorage()
+            self._OutputStorage._deserialize(params.get("OutputStorage"))
+        if params.get("CallbackInfo") is not None:
+            self._CallbackInfo = CallbackInfo()
+            self._CallbackInfo._deserialize(params.get("CallbackInfo"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateBatchVideoAnnotationJobResponse(AbstractModel):
+    r"""CreateBatchVideoAnnotationJob返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _JobId: <p>任务 ID</p>
+        :type JobId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._JobId = None
+        self._RequestId = None
+
+    @property
+    def JobId(self):
+        r"""<p>任务 ID</p>
+        :rtype: str
+        """
+        return self._JobId
+
+    @JobId.setter
+    def JobId(self, JobId):
+        self._JobId = JobId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._JobId = params.get("JobId")
+        self._RequestId = params.get("RequestId")
 
 
 class CreateCloudRecordingRequest(AbstractModel):
@@ -850,6 +1259,328 @@ class CreateProjectResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateVideoAnnotationJobRequest(AbstractModel):
+    r"""CreateVideoAnnotationJob请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InputType: <p>输入源类型：1 S3 兼容存储，2 HTTP URL</p><p>枚举值：</p><ul><li>1： S3 兼容存储</li><li>2： HTTP URL</li></ul>
+        :type InputType: int
+        :param _AnnotationType: <p>标注模式（当前仅开放精标注）</p><p>枚举值：</p><ul><li>3： 精标注</li></ul>
+        :type AnnotationType: int
+        :param _S3SourceInfo: <p>S3 存储输入源信息，InputType=1 时必填</p>
+        :type S3SourceInfo: :class:`tencentcloud.trro.v20220325.models.S3SourceInfo`
+        :param _HttpUrl: <p>视频 HTTP URL。InputType=2 时必填。格式如 https://example.com/video.mp4</p>
+        :type HttpUrl: str
+        :param _AnnotationContext: <p>标注上下文信息</p>
+        :type AnnotationContext: :class:`tencentcloud.trro.v20220325.models.AnnotationContext`
+        :param _ProcessParams: <p>标注处理参数，预留字段，当前无效</p>
+        :type ProcessParams: :class:`tencentcloud.trro.v20220325.models.ProcessParams`
+        :param _OutputInfo: <p>结果输出信息</p>
+        :type OutputInfo: :class:`tencentcloud.trro.v20220325.models.OutputInfo`
+        :param _CallbackInfo: <p>回调信息，配置后当处理项状态从处理中变为其他状态时，服务端会向回调地址发送请求（退避重试三次，不保证回调一定送达，需保证目标地址接收服务有效），建议接收方做好幂等处理。回调请求格式如下：<br><strong>请求头</strong></p><table><thead><tr><th>名称</th><th>值</th></tr></thead><tbody><tr><td>X-Annotation-Signature</td><td>hex(HMAC-SHA256(请求体原始字节, CallbackInfo.Secret))</td></tr></tbody></table><p><strong>请求体</strong>（application/json）</p><table><thead><tr><th>参数名</th><th>类型</th><th>必选</th><th>描述</th></tr></thead><tbody><tr><td>JobId</td><td>string</td><td>是</td><td>任务 ID</td></tr><tr><td>TaskId</td><td>string</td><td>是</td><td>处理项 ID</td></tr><tr><td>FileName</td><td>string</td><td>是</td><td>视频文件名</td></tr><tr><td>Status</td><td>int</td><td>是</td><td>触发本次回调的处理项状态：3 超时，4 异常，5 待确认，6 成功</td></tr><tr><td>StatusChangedAt</td><td>int</td><td>是</td><td>状态变更时间，Unix 时间戳（秒）</td></tr><tr><td>RawResult</td><td>string</td><td>否</td><td>当前生效的结果 JSON 原文：成功=标注产物；待确认=原始标注；确认后=确认版内容。超时/异常无内容</td></tr></tbody></table>
+        :type CallbackInfo: :class:`tencentcloud.trro.v20220325.models.CallbackInfo`
+        """
+        self._InputType = None
+        self._AnnotationType = None
+        self._S3SourceInfo = None
+        self._HttpUrl = None
+        self._AnnotationContext = None
+        self._ProcessParams = None
+        self._OutputInfo = None
+        self._CallbackInfo = None
+
+    @property
+    def InputType(self):
+        r"""<p>输入源类型：1 S3 兼容存储，2 HTTP URL</p><p>枚举值：</p><ul><li>1： S3 兼容存储</li><li>2： HTTP URL</li></ul>
+        :rtype: int
+        """
+        return self._InputType
+
+    @InputType.setter
+    def InputType(self, InputType):
+        self._InputType = InputType
+
+    @property
+    def AnnotationType(self):
+        r"""<p>标注模式（当前仅开放精标注）</p><p>枚举值：</p><ul><li>3： 精标注</li></ul>
+        :rtype: int
+        """
+        return self._AnnotationType
+
+    @AnnotationType.setter
+    def AnnotationType(self, AnnotationType):
+        self._AnnotationType = AnnotationType
+
+    @property
+    def S3SourceInfo(self):
+        r"""<p>S3 存储输入源信息，InputType=1 时必填</p>
+        :rtype: :class:`tencentcloud.trro.v20220325.models.S3SourceInfo`
+        """
+        return self._S3SourceInfo
+
+    @S3SourceInfo.setter
+    def S3SourceInfo(self, S3SourceInfo):
+        self._S3SourceInfo = S3SourceInfo
+
+    @property
+    def HttpUrl(self):
+        r"""<p>视频 HTTP URL。InputType=2 时必填。格式如 https://example.com/video.mp4</p>
+        :rtype: str
+        """
+        return self._HttpUrl
+
+    @HttpUrl.setter
+    def HttpUrl(self, HttpUrl):
+        self._HttpUrl = HttpUrl
+
+    @property
+    def AnnotationContext(self):
+        r"""<p>标注上下文信息</p>
+        :rtype: :class:`tencentcloud.trro.v20220325.models.AnnotationContext`
+        """
+        return self._AnnotationContext
+
+    @AnnotationContext.setter
+    def AnnotationContext(self, AnnotationContext):
+        self._AnnotationContext = AnnotationContext
+
+    @property
+    def ProcessParams(self):
+        r"""<p>标注处理参数，预留字段，当前无效</p>
+        :rtype: :class:`tencentcloud.trro.v20220325.models.ProcessParams`
+        """
+        return self._ProcessParams
+
+    @ProcessParams.setter
+    def ProcessParams(self, ProcessParams):
+        self._ProcessParams = ProcessParams
+
+    @property
+    def OutputInfo(self):
+        r"""<p>结果输出信息</p>
+        :rtype: :class:`tencentcloud.trro.v20220325.models.OutputInfo`
+        """
+        return self._OutputInfo
+
+    @OutputInfo.setter
+    def OutputInfo(self, OutputInfo):
+        self._OutputInfo = OutputInfo
+
+    @property
+    def CallbackInfo(self):
+        r"""<p>回调信息，配置后当处理项状态从处理中变为其他状态时，服务端会向回调地址发送请求（退避重试三次，不保证回调一定送达，需保证目标地址接收服务有效），建议接收方做好幂等处理。回调请求格式如下：<br><strong>请求头</strong></p><table><thead><tr><th>名称</th><th>值</th></tr></thead><tbody><tr><td>X-Annotation-Signature</td><td>hex(HMAC-SHA256(请求体原始字节, CallbackInfo.Secret))</td></tr></tbody></table><p><strong>请求体</strong>（application/json）</p><table><thead><tr><th>参数名</th><th>类型</th><th>必选</th><th>描述</th></tr></thead><tbody><tr><td>JobId</td><td>string</td><td>是</td><td>任务 ID</td></tr><tr><td>TaskId</td><td>string</td><td>是</td><td>处理项 ID</td></tr><tr><td>FileName</td><td>string</td><td>是</td><td>视频文件名</td></tr><tr><td>Status</td><td>int</td><td>是</td><td>触发本次回调的处理项状态：3 超时，4 异常，5 待确认，6 成功</td></tr><tr><td>StatusChangedAt</td><td>int</td><td>是</td><td>状态变更时间，Unix 时间戳（秒）</td></tr><tr><td>RawResult</td><td>string</td><td>否</td><td>当前生效的结果 JSON 原文：成功=标注产物；待确认=原始标注；确认后=确认版内容。超时/异常无内容</td></tr></tbody></table>
+        :rtype: :class:`tencentcloud.trro.v20220325.models.CallbackInfo`
+        """
+        return self._CallbackInfo
+
+    @CallbackInfo.setter
+    def CallbackInfo(self, CallbackInfo):
+        self._CallbackInfo = CallbackInfo
+
+
+    def _deserialize(self, params):
+        self._InputType = params.get("InputType")
+        self._AnnotationType = params.get("AnnotationType")
+        if params.get("S3SourceInfo") is not None:
+            self._S3SourceInfo = S3SourceInfo()
+            self._S3SourceInfo._deserialize(params.get("S3SourceInfo"))
+        self._HttpUrl = params.get("HttpUrl")
+        if params.get("AnnotationContext") is not None:
+            self._AnnotationContext = AnnotationContext()
+            self._AnnotationContext._deserialize(params.get("AnnotationContext"))
+        if params.get("ProcessParams") is not None:
+            self._ProcessParams = ProcessParams()
+            self._ProcessParams._deserialize(params.get("ProcessParams"))
+        if params.get("OutputInfo") is not None:
+            self._OutputInfo = OutputInfo()
+            self._OutputInfo._deserialize(params.get("OutputInfo"))
+        if params.get("CallbackInfo") is not None:
+            self._CallbackInfo = CallbackInfo()
+            self._CallbackInfo._deserialize(params.get("CallbackInfo"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateVideoAnnotationJobResponse(AbstractModel):
+    r"""CreateVideoAnnotationJob返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _JobId: <p>任务 ID</p>
+        :type JobId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._JobId = None
+        self._RequestId = None
+
+    @property
+    def JobId(self):
+        r"""<p>任务 ID</p>
+        :rtype: str
+        """
+        return self._JobId
+
+    @JobId.setter
+    def JobId(self, JobId):
+        self._JobId = JobId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._JobId = params.get("JobId")
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteAnnotationJobRequest(AbstractModel):
+    r"""DeleteAnnotationJob请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _JobId: <p>任务 ID</p>
+        :type JobId: str
+        """
+        self._JobId = None
+
+    @property
+    def JobId(self):
+        r"""<p>任务 ID</p>
+        :rtype: str
+        """
+        return self._JobId
+
+    @JobId.setter
+    def JobId(self, JobId):
+        self._JobId = JobId
+
+
+    def _deserialize(self, params):
+        self._JobId = params.get("JobId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteAnnotationJobResponse(AbstractModel):
+    r"""DeleteAnnotationJob返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteAnnotationTaskRequest(AbstractModel):
+    r"""DeleteAnnotationTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: <p>处理项 ID</p>
+        :type TaskId: str
+        """
+        self._TaskId = None
+
+    @property
+    def TaskId(self):
+        r"""<p>处理项 ID</p>
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteAnnotationTaskResponse(AbstractModel):
+    r"""DeleteAnnotationTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class DeleteCloudRecordingRequest(AbstractModel):
     r"""DeleteCloudRecording请求参数结构体
 
@@ -975,6 +1706,568 @@ class DeleteProjectResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeAnnotationJobsRequest(AbstractModel):
+    r"""DescribeAnnotationJobs请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Offset: <p>分页偏移，默认 0</p>
+        :type Offset: int
+        :param _Limit: <p>每页数量，默认 20，最大 100</p><p>取值范围：[10, 100]</p>
+        :type Limit: int
+        :param _Status: <p>按任务状态过滤：1 处理中，2 异常，3 成功。不传查全部</p><p>枚举值：</p><ul><li>1： 处理中</li><li>2： 异常</li><li>3： 成功</li></ul>
+        :type Status: int
+        :param _InputPath: <p>按输入路径前缀过滤，不传不过滤</p>
+        :type InputPath: str
+        """
+        self._Offset = None
+        self._Limit = None
+        self._Status = None
+        self._InputPath = None
+
+    @property
+    def Offset(self):
+        r"""<p>分页偏移，默认 0</p>
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        r"""<p>每页数量，默认 20，最大 100</p><p>取值范围：[10, 100]</p>
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Status(self):
+        r"""<p>按任务状态过滤：1 处理中，2 异常，3 成功。不传查全部</p><p>枚举值：</p><ul><li>1： 处理中</li><li>2： 异常</li><li>3： 成功</li></ul>
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def InputPath(self):
+        r"""<p>按输入路径前缀过滤，不传不过滤</p>
+        :rtype: str
+        """
+        return self._InputPath
+
+    @InputPath.setter
+    def InputPath(self, InputPath):
+        self._InputPath = InputPath
+
+
+    def _deserialize(self, params):
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._Status = params.get("Status")
+        self._InputPath = params.get("InputPath")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAnnotationJobsResponse(AbstractModel):
+    r"""DescribeAnnotationJobs返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: <p>符合条件的任务总数</p>
+        :type TotalCount: int
+        :param _Offset: <p>分页偏移</p>
+        :type Offset: int
+        :param _Limit: <p>每页数量</p>
+        :type Limit: int
+        :param _Jobs: <p>任务列表</p>
+        :type Jobs: list of Job
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._Offset = None
+        self._Limit = None
+        self._Jobs = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        r"""<p>符合条件的任务总数</p>
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def Offset(self):
+        r"""<p>分页偏移</p>
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        r"""<p>每页数量</p>
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Jobs(self):
+        r"""<p>任务列表</p>
+        :rtype: list of Job
+        """
+        return self._Jobs
+
+    @Jobs.setter
+    def Jobs(self, Jobs):
+        self._Jobs = Jobs
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        if params.get("Jobs") is not None:
+            self._Jobs = []
+            for item in params.get("Jobs"):
+                obj = Job()
+                obj._deserialize(item)
+                self._Jobs.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeAnnotationResultsRequest(AbstractModel):
+    r"""DescribeAnnotationResults请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: <p>处理项 ID</p>
+        :type TaskId: str
+        """
+        self._TaskId = None
+
+    @property
+    def TaskId(self):
+        r"""<p>处理项 ID</p>
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAnnotationResultsResponse(AbstractModel):
+    r"""DescribeAnnotationResults返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: <p>处理项 ID</p>
+        :type TaskId: str
+        :param _FileName: <p>视频文件名</p>
+        :type FileName: str
+        :param _Status: <p>处理项状态：1 未处理，2 处理中，3 超时，4 异常，5待确认，6 成功</p><p>枚举值：</p><ul><li>1： 未处理</li><li>2： 处理中</li><li>3： 超时</li><li>4： 异常</li><li>5： 待确认</li><li>6： 成功</li></ul>
+        :type Status: int
+        :param _ErrorMsg: <p>失败原因，成功为空</p>
+        :type ErrorMsg: str
+        :param _Result: <p>标注结果 JSON 原文，非成功状态为空</p>
+        :type Result: str
+        :param _ResultSize: <p>标注结果字节数</p>
+        :type ResultSize: int
+        :param _CreateTime: <p>创建时间，Unix 时间戳（秒）</p>
+        :type CreateTime: str
+        :param _FinishTime: <p>完成时间，Unix 时间戳（秒），进行中为 0</p>
+        :type FinishTime: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._FileName = None
+        self._Status = None
+        self._ErrorMsg = None
+        self._Result = None
+        self._ResultSize = None
+        self._CreateTime = None
+        self._FinishTime = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        r"""<p>处理项 ID</p>
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def FileName(self):
+        r"""<p>视频文件名</p>
+        :rtype: str
+        """
+        return self._FileName
+
+    @FileName.setter
+    def FileName(self, FileName):
+        self._FileName = FileName
+
+    @property
+    def Status(self):
+        r"""<p>处理项状态：1 未处理，2 处理中，3 超时，4 异常，5待确认，6 成功</p><p>枚举值：</p><ul><li>1： 未处理</li><li>2： 处理中</li><li>3： 超时</li><li>4： 异常</li><li>5： 待确认</li><li>6： 成功</li></ul>
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def ErrorMsg(self):
+        r"""<p>失败原因，成功为空</p>
+        :rtype: str
+        """
+        return self._ErrorMsg
+
+    @ErrorMsg.setter
+    def ErrorMsg(self, ErrorMsg):
+        self._ErrorMsg = ErrorMsg
+
+    @property
+    def Result(self):
+        r"""<p>标注结果 JSON 原文，非成功状态为空</p>
+        :rtype: str
+        """
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def ResultSize(self):
+        r"""<p>标注结果字节数</p>
+        :rtype: int
+        """
+        return self._ResultSize
+
+    @ResultSize.setter
+    def ResultSize(self, ResultSize):
+        self._ResultSize = ResultSize
+
+    @property
+    def CreateTime(self):
+        r"""<p>创建时间，Unix 时间戳（秒）</p>
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def FinishTime(self):
+        r"""<p>完成时间，Unix 时间戳（秒），进行中为 0</p>
+        :rtype: str
+        """
+        return self._FinishTime
+
+    @FinishTime.setter
+    def FinishTime(self, FinishTime):
+        self._FinishTime = FinishTime
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._FileName = params.get("FileName")
+        self._Status = params.get("Status")
+        self._ErrorMsg = params.get("ErrorMsg")
+        self._Result = params.get("Result")
+        self._ResultSize = params.get("ResultSize")
+        self._CreateTime = params.get("CreateTime")
+        self._FinishTime = params.get("FinishTime")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeAnnotationTasksRequest(AbstractModel):
+    r"""DescribeAnnotationTasks请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _JobId: <p>任务 ID</p>
+        :type JobId: str
+        :param _Offset: <p>分页偏移，默认 0</p>
+        :type Offset: int
+        :param _Limit: <p>每页数量，默认 20，最大 100</p><p>取值范围：[10, 100]</p>
+        :type Limit: int
+        :param _FileName: <p>按文件名前缀过滤，不传不过滤</p>
+        :type FileName: str
+        :param _Status: <p>按处理项状态过滤：1 未处理，2 处理中，3 超时，4 异常，5待确认，6 成功。不传查全部</p><p>枚举值：</p><ul><li>1： 未处理</li><li>2： 处理中</li><li>3： 超时</li><li>4： 异常</li><li>5： 待确认</li><li>6： 成功</li></ul>
+        :type Status: int
+        """
+        self._JobId = None
+        self._Offset = None
+        self._Limit = None
+        self._FileName = None
+        self._Status = None
+
+    @property
+    def JobId(self):
+        r"""<p>任务 ID</p>
+        :rtype: str
+        """
+        return self._JobId
+
+    @JobId.setter
+    def JobId(self, JobId):
+        self._JobId = JobId
+
+    @property
+    def Offset(self):
+        r"""<p>分页偏移，默认 0</p>
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        r"""<p>每页数量，默认 20，最大 100</p><p>取值范围：[10, 100]</p>
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def FileName(self):
+        r"""<p>按文件名前缀过滤，不传不过滤</p>
+        :rtype: str
+        """
+        return self._FileName
+
+    @FileName.setter
+    def FileName(self, FileName):
+        self._FileName = FileName
+
+    @property
+    def Status(self):
+        r"""<p>按处理项状态过滤：1 未处理，2 处理中，3 超时，4 异常，5待确认，6 成功。不传查全部</p><p>枚举值：</p><ul><li>1： 未处理</li><li>2： 处理中</li><li>3： 超时</li><li>4： 异常</li><li>5： 待确认</li><li>6： 成功</li></ul>
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+
+    def _deserialize(self, params):
+        self._JobId = params.get("JobId")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._FileName = params.get("FileName")
+        self._Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeAnnotationTasksResponse(AbstractModel):
+    r"""DescribeAnnotationTasks返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _JobId: <p>任务 ID</p>
+        :type JobId: str
+        :param _TotalCount: <p>处理项总数</p>
+        :type TotalCount: int
+        :param _Offset: <p>分页偏移</p>
+        :type Offset: int
+        :param _Limit: <p>每页数量</p>
+        :type Limit: int
+        :param _Tasks: <p>处理项列表</p>
+        :type Tasks: list of Task
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._JobId = None
+        self._TotalCount = None
+        self._Offset = None
+        self._Limit = None
+        self._Tasks = None
+        self._RequestId = None
+
+    @property
+    def JobId(self):
+        r"""<p>任务 ID</p>
+        :rtype: str
+        """
+        return self._JobId
+
+    @JobId.setter
+    def JobId(self, JobId):
+        self._JobId = JobId
+
+    @property
+    def TotalCount(self):
+        r"""<p>处理项总数</p>
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def Offset(self):
+        r"""<p>分页偏移</p>
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        r"""<p>每页数量</p>
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Tasks(self):
+        r"""<p>处理项列表</p>
+        :rtype: list of Task
+        """
+        return self._Tasks
+
+    @Tasks.setter
+    def Tasks(self, Tasks):
+        self._Tasks = Tasks
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._JobId = params.get("JobId")
+        self._TotalCount = params.get("TotalCount")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        if params.get("Tasks") is not None:
+            self._Tasks = []
+            for item in params.get("Tasks"):
+                obj = Task()
+                obj._deserialize(item)
+                self._Tasks.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -4155,6 +5448,162 @@ class GetTotalDurationResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class Job(AbstractModel):
+    r"""任务信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _JobId: <p>任务 ID</p>
+        :type JobId: str
+        :param _JobType: <p>任务类型：1 单视频，2 批量</p><p>枚举值：</p><ul><li>1： 单视频</li><li>2： 批量</li></ul>
+        :type JobType: int
+        :param _AnnotationType: <p>标注模式：3 精标注</p><p>枚举值：</p><ul><li>3： 精标注</li></ul>
+        :type AnnotationType: int
+        :param _Status: <p>任务状态：1 处理中，2 异常，3 成功</p><p>枚举值：</p><ul><li>1： 处理中</li><li>2： 异常</li><li>3： 成功</li></ul>
+        :type Status: int
+        :param _IngestStatus: <p>文件列举状态：0 列举中，1 全部加载，2 超过数量上限截断（仅批量任务）</p><p>枚举值：</p><ul><li>0： 列举中</li><li>1： 全部加载</li><li>2： 超过数量上限截断（仅批量任务）</li></ul>
+        :type IngestStatus: int
+        :param _InputPath: <p>输入路径（S3源为桶名/对象路径：批量任务为目录前缀，单文件为文件完整路径；HTTP源为完整URL）</p>
+        :type InputPath: str
+        :param _TotalNumber: <p>处理项总数</p>
+        :type TotalNumber: int
+        :param _CreateTime: <p>创建时间，Unix 时间戳（秒）</p>
+        :type CreateTime: str
+        :param _FinishTime: <p>完成时间，Unix 时间戳（秒），未完成为 0</p>
+        :type FinishTime: str
+        """
+        self._JobId = None
+        self._JobType = None
+        self._AnnotationType = None
+        self._Status = None
+        self._IngestStatus = None
+        self._InputPath = None
+        self._TotalNumber = None
+        self._CreateTime = None
+        self._FinishTime = None
+
+    @property
+    def JobId(self):
+        r"""<p>任务 ID</p>
+        :rtype: str
+        """
+        return self._JobId
+
+    @JobId.setter
+    def JobId(self, JobId):
+        self._JobId = JobId
+
+    @property
+    def JobType(self):
+        r"""<p>任务类型：1 单视频，2 批量</p><p>枚举值：</p><ul><li>1： 单视频</li><li>2： 批量</li></ul>
+        :rtype: int
+        """
+        return self._JobType
+
+    @JobType.setter
+    def JobType(self, JobType):
+        self._JobType = JobType
+
+    @property
+    def AnnotationType(self):
+        r"""<p>标注模式：3 精标注</p><p>枚举值：</p><ul><li>3： 精标注</li></ul>
+        :rtype: int
+        """
+        return self._AnnotationType
+
+    @AnnotationType.setter
+    def AnnotationType(self, AnnotationType):
+        self._AnnotationType = AnnotationType
+
+    @property
+    def Status(self):
+        r"""<p>任务状态：1 处理中，2 异常，3 成功</p><p>枚举值：</p><ul><li>1： 处理中</li><li>2： 异常</li><li>3： 成功</li></ul>
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def IngestStatus(self):
+        r"""<p>文件列举状态：0 列举中，1 全部加载，2 超过数量上限截断（仅批量任务）</p><p>枚举值：</p><ul><li>0： 列举中</li><li>1： 全部加载</li><li>2： 超过数量上限截断（仅批量任务）</li></ul>
+        :rtype: int
+        """
+        return self._IngestStatus
+
+    @IngestStatus.setter
+    def IngestStatus(self, IngestStatus):
+        self._IngestStatus = IngestStatus
+
+    @property
+    def InputPath(self):
+        r"""<p>输入路径（S3源为桶名/对象路径：批量任务为目录前缀，单文件为文件完整路径；HTTP源为完整URL）</p>
+        :rtype: str
+        """
+        return self._InputPath
+
+    @InputPath.setter
+    def InputPath(self, InputPath):
+        self._InputPath = InputPath
+
+    @property
+    def TotalNumber(self):
+        r"""<p>处理项总数</p>
+        :rtype: int
+        """
+        return self._TotalNumber
+
+    @TotalNumber.setter
+    def TotalNumber(self, TotalNumber):
+        self._TotalNumber = TotalNumber
+
+    @property
+    def CreateTime(self):
+        r"""<p>创建时间，Unix 时间戳（秒）</p>
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def FinishTime(self):
+        r"""<p>完成时间，Unix 时间戳（秒），未完成为 0</p>
+        :rtype: str
+        """
+        return self._FinishTime
+
+    @FinishTime.setter
+    def FinishTime(self, FinishTime):
+        self._FinishTime = FinishTime
+
+
+    def _deserialize(self, params):
+        self._JobId = params.get("JobId")
+        self._JobType = params.get("JobType")
+        self._AnnotationType = params.get("AnnotationType")
+        self._Status = params.get("Status")
+        self._IngestStatus = params.get("IngestStatus")
+        self._InputPath = params.get("InputPath")
+        self._TotalNumber = params.get("TotalNumber")
+        self._CreateTime = params.get("CreateTime")
+        self._FinishTime = params.get("FinishTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class License(AbstractModel):
     r"""按授权查看的license列表
 
@@ -5013,6 +6462,217 @@ class MultiNet(AbstractModel):
         
 
 
+class OutputInfo(AbstractModel):
+    r"""单文件结果投递
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Bucket: <p>存储桶名称</p>
+        :type Bucket: str
+        :param _Endpoint: <p>存储服务地址</p>
+        :type Endpoint: str
+        :param _Region: <p>存储区域</p>
+        :type Region: str
+        :param _Key: <p>输出文件路径，如 output/result.json</p>
+        :type Key: str
+        :param _Secret: <p>访问凭证，需对该桶有写入权限</p>
+        :type Secret: :class:`tencentcloud.trro.v20220325.models.SecretInfo`
+        """
+        self._Bucket = None
+        self._Endpoint = None
+        self._Region = None
+        self._Key = None
+        self._Secret = None
+
+    @property
+    def Bucket(self):
+        r"""<p>存储桶名称</p>
+        :rtype: str
+        """
+        return self._Bucket
+
+    @Bucket.setter
+    def Bucket(self, Bucket):
+        self._Bucket = Bucket
+
+    @property
+    def Endpoint(self):
+        r"""<p>存储服务地址</p>
+        :rtype: str
+        """
+        return self._Endpoint
+
+    @Endpoint.setter
+    def Endpoint(self, Endpoint):
+        self._Endpoint = Endpoint
+
+    @property
+    def Region(self):
+        r"""<p>存储区域</p>
+        :rtype: str
+        """
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def Key(self):
+        r"""<p>输出文件路径，如 output/result.json</p>
+        :rtype: str
+        """
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Secret(self):
+        r"""<p>访问凭证，需对该桶有写入权限</p>
+        :rtype: :class:`tencentcloud.trro.v20220325.models.SecretInfo`
+        """
+        return self._Secret
+
+    @Secret.setter
+    def Secret(self, Secret):
+        self._Secret = Secret
+
+
+    def _deserialize(self, params):
+        self._Bucket = params.get("Bucket")
+        self._Endpoint = params.get("Endpoint")
+        self._Region = params.get("Region")
+        self._Key = params.get("Key")
+        if params.get("Secret") is not None:
+            self._Secret = SecretInfo()
+            self._Secret._deserialize(params.get("Secret"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class OutputStorage(AbstractModel):
+    r"""批量结果投递
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Bucket: <p>存储桶名称</p>
+        :type Bucket: str
+        :param _Endpoint: <p>存储服务地址</p>
+        :type Endpoint: str
+        :param _Region: <p>存储区域</p>
+        :type Region: str
+        :param _Secret: <p>访问凭证，需对该桶有写权限</p>
+        :type Secret: :class:`tencentcloud.trro.v20220325.models.SecretInfo`
+        :param _Prefix: <p>输出目录前缀，不传写入桶根目录</p>
+        :type Prefix: str
+        :param _NameRule: <p>输出文件名规则，支持变量 $FileName、$FileType、$TaskId、$YYYY、$mm、$dd、$HH、$MM、$SS，须至少含一个变量，默认 $FileName_$TaskId.json</p>
+        :type NameRule: str
+        """
+        self._Bucket = None
+        self._Endpoint = None
+        self._Region = None
+        self._Secret = None
+        self._Prefix = None
+        self._NameRule = None
+
+    @property
+    def Bucket(self):
+        r"""<p>存储桶名称</p>
+        :rtype: str
+        """
+        return self._Bucket
+
+    @Bucket.setter
+    def Bucket(self, Bucket):
+        self._Bucket = Bucket
+
+    @property
+    def Endpoint(self):
+        r"""<p>存储服务地址</p>
+        :rtype: str
+        """
+        return self._Endpoint
+
+    @Endpoint.setter
+    def Endpoint(self, Endpoint):
+        self._Endpoint = Endpoint
+
+    @property
+    def Region(self):
+        r"""<p>存储区域</p>
+        :rtype: str
+        """
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def Secret(self):
+        r"""<p>访问凭证，需对该桶有写权限</p>
+        :rtype: :class:`tencentcloud.trro.v20220325.models.SecretInfo`
+        """
+        return self._Secret
+
+    @Secret.setter
+    def Secret(self, Secret):
+        self._Secret = Secret
+
+    @property
+    def Prefix(self):
+        r"""<p>输出目录前缀，不传写入桶根目录</p>
+        :rtype: str
+        """
+        return self._Prefix
+
+    @Prefix.setter
+    def Prefix(self, Prefix):
+        self._Prefix = Prefix
+
+    @property
+    def NameRule(self):
+        r"""<p>输出文件名规则，支持变量 $FileName、$FileType、$TaskId、$YYYY、$mm、$dd、$HH、$MM、$SS，须至少含一个变量，默认 $FileName_$TaskId.json</p>
+        :rtype: str
+        """
+        return self._NameRule
+
+    @NameRule.setter
+    def NameRule(self, NameRule):
+        self._NameRule = NameRule
+
+
+    def _deserialize(self, params):
+        self._Bucket = params.get("Bucket")
+        self._Endpoint = params.get("Endpoint")
+        self._Region = params.get("Region")
+        if params.get("Secret") is not None:
+            self._Secret = SecretInfo()
+            self._Secret._deserialize(params.get("Secret"))
+        self._Prefix = params.get("Prefix")
+        self._NameRule = params.get("NameRule")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class PolicyInfo(AbstractModel):
     r"""权限信息
 
@@ -5069,6 +6729,42 @@ class PolicyInfo(AbstractModel):
         self._RemoteDeviceId = params.get("RemoteDeviceId")
         self._FieldDeviceIds = params.get("FieldDeviceIds")
         self._ModifyTime = params.get("ModifyTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ProcessParams(AbstractModel):
+    r"""标注处理参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Mode: <p>标注处理模式，预留字段</p>
+        :type Mode: str
+        """
+        self._Mode = None
+
+    @property
+    def Mode(self):
+        r"""<p>标注处理模式，预留字段</p>
+        :rtype: str
+        """
+        return self._Mode
+
+    @Mode.setter
+    def Mode(self, Mode):
+        self._Mode = Mode
+
+
+    def _deserialize(self, params):
+        self._Mode = params.get("Mode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -5327,6 +7023,234 @@ class RecentSessionInfo(AbstractModel):
         self._Resolution = params.get("Resolution")
         self._StartTime = params.get("StartTime")
         self._LatestUpdateTime = params.get("LatestUpdateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RetryAnnotationTaskRequest(AbstractModel):
+    r"""RetryAnnotationTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: <p>处理项 ID，仅超时（3）或异常（4）状态可重试</p>
+        :type TaskId: str
+        """
+        self._TaskId = None
+
+    @property
+    def TaskId(self):
+        r"""<p>处理项 ID，仅超时（3）或异常（4）状态可重试</p>
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RetryAnnotationTaskResponse(AbstractModel):
+    r"""RetryAnnotationTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class S3SourceInfo(AbstractModel):
+    r"""单文件 COS 输入源
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Bucket: <p>存储桶名称</p>
+        :type Bucket: str
+        :param _Endpoint: <p>存储服务地址</p>
+        :type Endpoint: str
+        :param _Region: <p>存储区域</p>
+        :type Region: str
+        :param _Key: <p>视频文件路径</p>
+        :type Key: str
+        :param _Secret: <p>访问凭证，需对该桶有读取权限</p>
+        :type Secret: :class:`tencentcloud.trro.v20220325.models.SecretInfo`
+        :param _IsCos: <p>是否腾讯云 COS：1 是，0 否。使用腾讯云 COS 时必须传 1</p><p>取值范围：[0, 1]</p>
+        :type IsCos: int
+        """
+        self._Bucket = None
+        self._Endpoint = None
+        self._Region = None
+        self._Key = None
+        self._Secret = None
+        self._IsCos = None
+
+    @property
+    def Bucket(self):
+        r"""<p>存储桶名称</p>
+        :rtype: str
+        """
+        return self._Bucket
+
+    @Bucket.setter
+    def Bucket(self, Bucket):
+        self._Bucket = Bucket
+
+    @property
+    def Endpoint(self):
+        r"""<p>存储服务地址</p>
+        :rtype: str
+        """
+        return self._Endpoint
+
+    @Endpoint.setter
+    def Endpoint(self, Endpoint):
+        self._Endpoint = Endpoint
+
+    @property
+    def Region(self):
+        r"""<p>存储区域</p>
+        :rtype: str
+        """
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def Key(self):
+        r"""<p>视频文件路径</p>
+        :rtype: str
+        """
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def Secret(self):
+        r"""<p>访问凭证，需对该桶有读取权限</p>
+        :rtype: :class:`tencentcloud.trro.v20220325.models.SecretInfo`
+        """
+        return self._Secret
+
+    @Secret.setter
+    def Secret(self, Secret):
+        self._Secret = Secret
+
+    @property
+    def IsCos(self):
+        r"""<p>是否腾讯云 COS：1 是，0 否。使用腾讯云 COS 时必须传 1</p><p>取值范围：[0, 1]</p>
+        :rtype: int
+        """
+        return self._IsCos
+
+    @IsCos.setter
+    def IsCos(self, IsCos):
+        self._IsCos = IsCos
+
+
+    def _deserialize(self, params):
+        self._Bucket = params.get("Bucket")
+        self._Endpoint = params.get("Endpoint")
+        self._Region = params.get("Region")
+        self._Key = params.get("Key")
+        if params.get("Secret") is not None:
+            self._Secret = SecretInfo()
+            self._Secret._deserialize(params.get("Secret"))
+        self._IsCos = params.get("IsCos")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SecretInfo(AbstractModel):
+    r"""访问凭证
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SecretId: <p>密钥 ID</p>
+        :type SecretId: str
+        :param _SecretKey: <p>密钥 Key</p>
+        :type SecretKey: str
+        """
+        self._SecretId = None
+        self._SecretKey = None
+
+    @property
+    def SecretId(self):
+        r"""<p>密钥 ID</p>
+        :rtype: str
+        """
+        return self._SecretId
+
+    @SecretId.setter
+    def SecretId(self, SecretId):
+        self._SecretId = SecretId
+
+    @property
+    def SecretKey(self):
+        r"""<p>密钥 Key</p>
+        :rtype: str
+        """
+        return self._SecretKey
+
+    @SecretKey.setter
+    def SecretKey(self, SecretKey):
+        self._SecretKey = SecretKey
+
+
+    def _deserialize(self, params):
+        self._SecretId = params.get("SecretId")
+        self._SecretKey = params.get("SecretKey")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -6369,6 +8293,132 @@ class StopPublishLiveStreamResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
+
+
+class Task(AbstractModel):
+    r"""处理项信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: <p>处理项 ID</p>
+        :type TaskId: str
+        :param _FileName: <p>视频文件名</p>
+        :type FileName: str
+        :param _Status: <p>处理项状态：1 未处理，2 处理中，3 超时，4 异常，5待确认，6 成功</p><p>枚举值：</p><ul><li>1： 未处理</li><li>2： 处理中</li><li>3： 超时</li><li>4： 异常</li><li>5： 待确认</li><li>6： 成功</li></ul>
+        :type Status: int
+        :param _InputPath: <p>视频完整路径（S3源为桶名/文件key；HTTP源为完整URL）</p>
+        :type InputPath: str
+        :param _ErrorMsg: <p>失败原因，成功为空</p>
+        :type ErrorMsg: str
+        :param _CreateTime: <p>创建时间，Unix 时间戳（秒）</p>
+        :type CreateTime: str
+        :param _FinishTime: <p>完成时间，Unix 时间戳（秒），进行中为 0</p>
+        :type FinishTime: str
+        """
+        self._TaskId = None
+        self._FileName = None
+        self._Status = None
+        self._InputPath = None
+        self._ErrorMsg = None
+        self._CreateTime = None
+        self._FinishTime = None
+
+    @property
+    def TaskId(self):
+        r"""<p>处理项 ID</p>
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def FileName(self):
+        r"""<p>视频文件名</p>
+        :rtype: str
+        """
+        return self._FileName
+
+    @FileName.setter
+    def FileName(self, FileName):
+        self._FileName = FileName
+
+    @property
+    def Status(self):
+        r"""<p>处理项状态：1 未处理，2 处理中，3 超时，4 异常，5待确认，6 成功</p><p>枚举值：</p><ul><li>1： 未处理</li><li>2： 处理中</li><li>3： 超时</li><li>4： 异常</li><li>5： 待确认</li><li>6： 成功</li></ul>
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def InputPath(self):
+        r"""<p>视频完整路径（S3源为桶名/文件key；HTTP源为完整URL）</p>
+        :rtype: str
+        """
+        return self._InputPath
+
+    @InputPath.setter
+    def InputPath(self, InputPath):
+        self._InputPath = InputPath
+
+    @property
+    def ErrorMsg(self):
+        r"""<p>失败原因，成功为空</p>
+        :rtype: str
+        """
+        return self._ErrorMsg
+
+    @ErrorMsg.setter
+    def ErrorMsg(self, ErrorMsg):
+        self._ErrorMsg = ErrorMsg
+
+    @property
+    def CreateTime(self):
+        r"""<p>创建时间，Unix 时间戳（秒）</p>
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def FinishTime(self):
+        r"""<p>完成时间，Unix 时间戳（秒），进行中为 0</p>
+        :rtype: str
+        """
+        return self._FinishTime
+
+    @FinishTime.setter
+    def FinishTime(self, FinishTime):
+        self._FinishTime = FinishTime
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._FileName = params.get("FileName")
+        self._Status = params.get("Status")
+        self._InputPath = params.get("InputPath")
+        self._ErrorMsg = params.get("ErrorMsg")
+        self._CreateTime = params.get("CreateTime")
+        self._FinishTime = params.get("FinishTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class VideoList(AbstractModel):

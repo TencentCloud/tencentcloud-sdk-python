@@ -4669,6 +4669,102 @@ class ListLoadTasksResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class LoadDataAttrs(AbstractModel):
+    r"""数据预热任务参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _LoadType: <p>预热类型，枚举值 LoadByPath｜LoadByList</p>
+        :type LoadType: str
+        :param _SkipIfExists: <p>是否跳过相同文件，默认为 true</p>
+        :type SkipIfExists: bool
+        :param _LoadByPath: <p>预热路径，入参单条挂载路径。入参数LoadType为LoadByPath，该参数不应为空</p>
+        :type LoadByPath: str
+        :param _LoadByList: <p>通过文件列表批量预热，入参为 cos://bucket-appid/ 开头的 COS 路径，且仅支持 txt 格式文件，长度不能超过255个字符。入参数LoadType为LoadByList，该参数不应为空</p>
+        :type LoadByList: str
+        :param _Replica: <p>副本数配置，枚举值，可选值 SingleReplica（单副本，默认）｜MaxReplica（最大副本）</p>
+        :type Replica: str
+        """
+        self._LoadType = None
+        self._SkipIfExists = None
+        self._LoadByPath = None
+        self._LoadByList = None
+        self._Replica = None
+
+    @property
+    def LoadType(self):
+        r"""<p>预热类型，枚举值 LoadByPath｜LoadByList</p>
+        :rtype: str
+        """
+        return self._LoadType
+
+    @LoadType.setter
+    def LoadType(self, LoadType):
+        self._LoadType = LoadType
+
+    @property
+    def SkipIfExists(self):
+        r"""<p>是否跳过相同文件，默认为 true</p>
+        :rtype: bool
+        """
+        return self._SkipIfExists
+
+    @SkipIfExists.setter
+    def SkipIfExists(self, SkipIfExists):
+        self._SkipIfExists = SkipIfExists
+
+    @property
+    def LoadByPath(self):
+        r"""<p>预热路径，入参单条挂载路径。入参数LoadType为LoadByPath，该参数不应为空</p>
+        :rtype: str
+        """
+        return self._LoadByPath
+
+    @LoadByPath.setter
+    def LoadByPath(self, LoadByPath):
+        self._LoadByPath = LoadByPath
+
+    @property
+    def LoadByList(self):
+        r"""<p>通过文件列表批量预热，入参为 cos://bucket-appid/ 开头的 COS 路径，且仅支持 txt 格式文件，长度不能超过255个字符。入参数LoadType为LoadByList，该参数不应为空</p>
+        :rtype: str
+        """
+        return self._LoadByList
+
+    @LoadByList.setter
+    def LoadByList(self, LoadByList):
+        self._LoadByList = LoadByList
+
+    @property
+    def Replica(self):
+        r"""<p>副本数配置，枚举值，可选值 SingleReplica（单副本，默认）｜MaxReplica（最大副本）</p>
+        :rtype: str
+        """
+        return self._Replica
+
+    @Replica.setter
+    def Replica(self, Replica):
+        self._Replica = Replica
+
+
+    def _deserialize(self, params):
+        self._LoadType = params.get("LoadType")
+        self._SkipIfExists = params.get("SkipIfExists")
+        self._LoadByPath = params.get("LoadByPath")
+        self._LoadByList = params.get("LoadByList")
+        self._Replica = params.get("Replica")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class LoadTaskAttrs(AbstractModel):
     r"""预热任务参数
 
@@ -4676,29 +4772,31 @@ class LoadTaskAttrs(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskId: 预热任务 ID
+        :param _TaskId: <p>预热任务 ID</p>
         :type TaskId: str
-        :param _TaskType: 预热任务类型，枚举值，MetadataLoad｜DistributedLoad
+        :param _TaskType: <p>预热任务类型，枚举值，MetadataLoad｜DistributedLoad</p>
         :type TaskType: str
-        :param _Description: 任务描述，支持中文
+        :param _Description: <p>任务描述，支持中文</p>
         :type Description: str
-        :param _Priority: 任务优先级，数值越高代表优先级越高，边界值 1-9999，默认值为 1
+        :param _Priority: <p>任务优先级，数值越高代表优先级越高，边界值 1-9999，默认值为 1</p>
         :type Priority: int
-        :param _MetadataLoadAttrs: 元数据预热任务参数，用于仅预热元数据时入参。入参数TaskType为MetadataLoad时，该参数不应为空。
+        :param _MetadataLoadAttrs: <p>元数据预热任务参数，用于仅预热元数据时入参。入参数TaskType为MetadataLoad时，该参数不应为空。</p>
         :type MetadataLoadAttrs: :class:`tencentcloud.goosefs.v20220519.models.MetadataLoadAttrs`
-        :param _DistributedLoadAttrs: 数据预热任务参数。入参数TaskType为DistributedLoad时，该参数不应为空。
+        :param _DistributedLoadAttrs: <p>数据预热任务参数。入参数TaskType为DistributedLoad时，该参数不应为空。</p>
         :type DistributedLoadAttrs: :class:`tencentcloud.goosefs.v20220519.models.DistributedLoadAttrs`
-        :param _ReportPath: 将任务执行报告写入 COS 的路径，如果不需要报告则入参空
+        :param _LoadDataAttrs: <p>仅预热数据参数。入参数TaskType为LoadData时，该参数不应为空。</p>
+        :type LoadDataAttrs: :class:`tencentcloud.goosefs.v20220519.models.LoadDataAttrs`
+        :param _ReportPath: <p>将任务执行报告写入 COS 的路径，如果不需要报告则入参空</p>
         :type ReportPath: str
-        :param _State: 枚举，Completed，Running，Waiting，Cancelled
+        :param _State: <p>枚举，Completed，Running，Waiting，Cancelled</p>
         :type State: str
-        :param _TaskMessage: 任务执行信息，打印预热文件成功个数，失败个数，预热耗时信息 
+        :param _TaskMessage: <p>任务执行信息，打印预热文件成功个数，失败个数，预热耗时信息</p>
         :type TaskMessage: str
-        :param _CreateTime: 预热任务创建时间
+        :param _CreateTime: <p>预热任务创建时间</p>
         :type CreateTime: str
-        :param _ModifyTime: 预热任务变更时间
+        :param _ModifyTime: <p>预热任务变更时间</p>
         :type ModifyTime: str
-        :param _Requester: 任务提交账号，子账号或服务角色 ID
+        :param _Requester: <p>任务提交账号，子账号或服务角色 ID</p>
         :type Requester: str
         """
         self._TaskId = None
@@ -4707,6 +4805,7 @@ class LoadTaskAttrs(AbstractModel):
         self._Priority = None
         self._MetadataLoadAttrs = None
         self._DistributedLoadAttrs = None
+        self._LoadDataAttrs = None
         self._ReportPath = None
         self._State = None
         self._TaskMessage = None
@@ -4716,7 +4815,7 @@ class LoadTaskAttrs(AbstractModel):
 
     @property
     def TaskId(self):
-        r"""预热任务 ID
+        r"""<p>预热任务 ID</p>
         :rtype: str
         """
         return self._TaskId
@@ -4727,7 +4826,7 @@ class LoadTaskAttrs(AbstractModel):
 
     @property
     def TaskType(self):
-        r"""预热任务类型，枚举值，MetadataLoad｜DistributedLoad
+        r"""<p>预热任务类型，枚举值，MetadataLoad｜DistributedLoad</p>
         :rtype: str
         """
         return self._TaskType
@@ -4738,7 +4837,7 @@ class LoadTaskAttrs(AbstractModel):
 
     @property
     def Description(self):
-        r"""任务描述，支持中文
+        r"""<p>任务描述，支持中文</p>
         :rtype: str
         """
         return self._Description
@@ -4749,7 +4848,7 @@ class LoadTaskAttrs(AbstractModel):
 
     @property
     def Priority(self):
-        r"""任务优先级，数值越高代表优先级越高，边界值 1-9999，默认值为 1
+        r"""<p>任务优先级，数值越高代表优先级越高，边界值 1-9999，默认值为 1</p>
         :rtype: int
         """
         return self._Priority
@@ -4760,7 +4859,7 @@ class LoadTaskAttrs(AbstractModel):
 
     @property
     def MetadataLoadAttrs(self):
-        r"""元数据预热任务参数，用于仅预热元数据时入参。入参数TaskType为MetadataLoad时，该参数不应为空。
+        r"""<p>元数据预热任务参数，用于仅预热元数据时入参。入参数TaskType为MetadataLoad时，该参数不应为空。</p>
         :rtype: :class:`tencentcloud.goosefs.v20220519.models.MetadataLoadAttrs`
         """
         return self._MetadataLoadAttrs
@@ -4771,7 +4870,7 @@ class LoadTaskAttrs(AbstractModel):
 
     @property
     def DistributedLoadAttrs(self):
-        r"""数据预热任务参数。入参数TaskType为DistributedLoad时，该参数不应为空。
+        r"""<p>数据预热任务参数。入参数TaskType为DistributedLoad时，该参数不应为空。</p>
         :rtype: :class:`tencentcloud.goosefs.v20220519.models.DistributedLoadAttrs`
         """
         return self._DistributedLoadAttrs
@@ -4781,8 +4880,19 @@ class LoadTaskAttrs(AbstractModel):
         self._DistributedLoadAttrs = DistributedLoadAttrs
 
     @property
+    def LoadDataAttrs(self):
+        r"""<p>仅预热数据参数。入参数TaskType为LoadData时，该参数不应为空。</p>
+        :rtype: :class:`tencentcloud.goosefs.v20220519.models.LoadDataAttrs`
+        """
+        return self._LoadDataAttrs
+
+    @LoadDataAttrs.setter
+    def LoadDataAttrs(self, LoadDataAttrs):
+        self._LoadDataAttrs = LoadDataAttrs
+
+    @property
     def ReportPath(self):
-        r"""将任务执行报告写入 COS 的路径，如果不需要报告则入参空
+        r"""<p>将任务执行报告写入 COS 的路径，如果不需要报告则入参空</p>
         :rtype: str
         """
         return self._ReportPath
@@ -4793,7 +4903,7 @@ class LoadTaskAttrs(AbstractModel):
 
     @property
     def State(self):
-        r"""枚举，Completed，Running，Waiting，Cancelled
+        r"""<p>枚举，Completed，Running，Waiting，Cancelled</p>
         :rtype: str
         """
         return self._State
@@ -4804,7 +4914,7 @@ class LoadTaskAttrs(AbstractModel):
 
     @property
     def TaskMessage(self):
-        r"""任务执行信息，打印预热文件成功个数，失败个数，预热耗时信息 
+        r"""<p>任务执行信息，打印预热文件成功个数，失败个数，预热耗时信息</p>
         :rtype: str
         """
         return self._TaskMessage
@@ -4815,7 +4925,7 @@ class LoadTaskAttrs(AbstractModel):
 
     @property
     def CreateTime(self):
-        r"""预热任务创建时间
+        r"""<p>预热任务创建时间</p>
         :rtype: str
         """
         return self._CreateTime
@@ -4826,7 +4936,7 @@ class LoadTaskAttrs(AbstractModel):
 
     @property
     def ModifyTime(self):
-        r"""预热任务变更时间
+        r"""<p>预热任务变更时间</p>
         :rtype: str
         """
         return self._ModifyTime
@@ -4837,7 +4947,7 @@ class LoadTaskAttrs(AbstractModel):
 
     @property
     def Requester(self):
-        r"""任务提交账号，子账号或服务角色 ID
+        r"""<p>任务提交账号，子账号或服务角色 ID</p>
         :rtype: str
         """
         return self._Requester
@@ -4858,6 +4968,9 @@ class LoadTaskAttrs(AbstractModel):
         if params.get("DistributedLoadAttrs") is not None:
             self._DistributedLoadAttrs = DistributedLoadAttrs()
             self._DistributedLoadAttrs._deserialize(params.get("DistributedLoadAttrs"))
+        if params.get("LoadDataAttrs") is not None:
+            self._LoadDataAttrs = LoadDataAttrs()
+            self._LoadDataAttrs._deserialize(params.get("LoadDataAttrs"))
         self._ReportPath = params.get("ReportPath")
         self._State = params.get("State")
         self._TaskMessage = params.get("TaskMessage")
@@ -4881,18 +4994,20 @@ class LoadTaskCreationAttrs(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskType: 预热任务类型，枚举值，MetadataLoad｜DistributedLoad。
+        :param _TaskType: <p>预热任务类型，枚举值，MetadataLoad｜DistributedLoad。</p>
         :type TaskType: str
-        :param _Priority: 任务优先级，数值越高代表优先级越高，边界值 1-9999，默认值为 1
+        :param _Priority: <p>任务优先级，数值越高代表优先级越高，边界值 1-9999，默认值为 1</p>
         :type Priority: int
-        :param _Description: 任务描述，支持中文
+        :param _Description: <p>任务描述，支持中文</p>
         :type Description: str
-        :param _MetadataLoadAttrs: 元数据预热任务参数，用于仅预热元数据时入参。入参数TaskType为MetadataLoad时，该参数不应为空。
+        :param _MetadataLoadAttrs: <p>元数据预热任务参数，用于仅预热元数据时入参。入参数TaskType为MetadataLoad时，该参数不应为空。</p>
         :type MetadataLoadAttrs: :class:`tencentcloud.goosefs.v20220519.models.MetadataLoadAttrs`
-        :param _DistributedLoadAttrs: 数据预热任务参数。入参数TaskType为DistributedLoad时，该参数不应为空。
+        :param _DistributedLoadAttrs: <p>数据预热任务参数。入参数TaskType为DistributedLoad时，该参数不应为空。</p>
         :type DistributedLoadAttrs: :class:`tencentcloud.goosefs.v20220519.models.DistributedLoadAttrs`
-        :param _ReportPath: 将任务执行报告写入 COS 的路径，如果不需要报告则入参空
+        :param _ReportPath: <p>将任务执行报告写入 COS 的路径，如果不需要报告则入参空</p>
         :type ReportPath: str
+        :param _LoadDataAttrs: <p>仅预热数据任务参数。入参数TaskType为LoadData时，该参数不应为空。</p>
+        :type LoadDataAttrs: :class:`tencentcloud.goosefs.v20220519.models.LoadDataAttrs`
         """
         self._TaskType = None
         self._Priority = None
@@ -4900,10 +5015,11 @@ class LoadTaskCreationAttrs(AbstractModel):
         self._MetadataLoadAttrs = None
         self._DistributedLoadAttrs = None
         self._ReportPath = None
+        self._LoadDataAttrs = None
 
     @property
     def TaskType(self):
-        r"""预热任务类型，枚举值，MetadataLoad｜DistributedLoad。
+        r"""<p>预热任务类型，枚举值，MetadataLoad｜DistributedLoad。</p>
         :rtype: str
         """
         return self._TaskType
@@ -4914,7 +5030,7 @@ class LoadTaskCreationAttrs(AbstractModel):
 
     @property
     def Priority(self):
-        r"""任务优先级，数值越高代表优先级越高，边界值 1-9999，默认值为 1
+        r"""<p>任务优先级，数值越高代表优先级越高，边界值 1-9999，默认值为 1</p>
         :rtype: int
         """
         return self._Priority
@@ -4925,7 +5041,7 @@ class LoadTaskCreationAttrs(AbstractModel):
 
     @property
     def Description(self):
-        r"""任务描述，支持中文
+        r"""<p>任务描述，支持中文</p>
         :rtype: str
         """
         return self._Description
@@ -4936,7 +5052,7 @@ class LoadTaskCreationAttrs(AbstractModel):
 
     @property
     def MetadataLoadAttrs(self):
-        r"""元数据预热任务参数，用于仅预热元数据时入参。入参数TaskType为MetadataLoad时，该参数不应为空。
+        r"""<p>元数据预热任务参数，用于仅预热元数据时入参。入参数TaskType为MetadataLoad时，该参数不应为空。</p>
         :rtype: :class:`tencentcloud.goosefs.v20220519.models.MetadataLoadAttrs`
         """
         return self._MetadataLoadAttrs
@@ -4947,7 +5063,7 @@ class LoadTaskCreationAttrs(AbstractModel):
 
     @property
     def DistributedLoadAttrs(self):
-        r"""数据预热任务参数。入参数TaskType为DistributedLoad时，该参数不应为空。
+        r"""<p>数据预热任务参数。入参数TaskType为DistributedLoad时，该参数不应为空。</p>
         :rtype: :class:`tencentcloud.goosefs.v20220519.models.DistributedLoadAttrs`
         """
         return self._DistributedLoadAttrs
@@ -4958,7 +5074,7 @@ class LoadTaskCreationAttrs(AbstractModel):
 
     @property
     def ReportPath(self):
-        r"""将任务执行报告写入 COS 的路径，如果不需要报告则入参空
+        r"""<p>将任务执行报告写入 COS 的路径，如果不需要报告则入参空</p>
         :rtype: str
         """
         return self._ReportPath
@@ -4966,6 +5082,17 @@ class LoadTaskCreationAttrs(AbstractModel):
     @ReportPath.setter
     def ReportPath(self, ReportPath):
         self._ReportPath = ReportPath
+
+    @property
+    def LoadDataAttrs(self):
+        r"""<p>仅预热数据任务参数。入参数TaskType为LoadData时，该参数不应为空。</p>
+        :rtype: :class:`tencentcloud.goosefs.v20220519.models.LoadDataAttrs`
+        """
+        return self._LoadDataAttrs
+
+    @LoadDataAttrs.setter
+    def LoadDataAttrs(self, LoadDataAttrs):
+        self._LoadDataAttrs = LoadDataAttrs
 
 
     def _deserialize(self, params):
@@ -4979,6 +5106,9 @@ class LoadTaskCreationAttrs(AbstractModel):
             self._DistributedLoadAttrs = DistributedLoadAttrs()
             self._DistributedLoadAttrs._deserialize(params.get("DistributedLoadAttrs"))
         self._ReportPath = params.get("ReportPath")
+        if params.get("LoadDataAttrs") is not None:
+            self._LoadDataAttrs = LoadDataAttrs()
+            self._LoadDataAttrs._deserialize(params.get("LoadDataAttrs"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

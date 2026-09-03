@@ -2952,9 +2952,9 @@ class CancelRebuildIndexTaskRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TopicId: 日志主题ID
+        :param _TopicId: <p>日志主题ID</p><p>取值参考：<a href="https://cloud.tencent.com/document/api/614/56454">DescribeTopics</a></p>
         :type TopicId: str
-        :param _TaskId: 索引重建任务ID
+        :param _TaskId: <p>索引重建任务ID</p><p>取值参考：<a href="https://cloud.tencent.com/document/api/614/127535">DescribeRebuildIndexTasks</a></p>
         :type TaskId: str
         """
         self._TopicId = None
@@ -2962,7 +2962,7 @@ class CancelRebuildIndexTaskRequest(AbstractModel):
 
     @property
     def TopicId(self):
-        r"""日志主题ID
+        r"""<p>日志主题ID</p><p>取值参考：<a href="https://cloud.tencent.com/document/api/614/56454">DescribeTopics</a></p>
         :rtype: str
         """
         return self._TopicId
@@ -2973,7 +2973,7 @@ class CancelRebuildIndexTaskRequest(AbstractModel):
 
     @property
     def TaskId(self):
-        r"""索引重建任务ID
+        r"""<p>索引重建任务ID</p><p>取值参考：<a href="https://cloud.tencent.com/document/api/614/127535">DescribeRebuildIndexTasks</a></p>
         :rtype: str
         """
         return self._TaskId
@@ -13754,29 +13754,28 @@ class CreateRemoteWriteTaskRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TopicId: 日志主题 ID
+        :param _TopicId: <p>日志主题 ID</p>
         :type TopicId: str
-        :param _Name: 任务名称
+        :param _Name: <p>任务名称</p>
         :type Name: str
-        :param _Target: 目标服务名称
+        :param _Target: <p>目标服务名称</p>
         :type Target: str
-        :param _RemoteWriteURL: 目标地址
+        :param _RemoteWriteURL: <p>目标地址</p>
         :type RemoteWriteURL: str
-        :param _AuthType: 鉴权类型
-0: 无鉴权
-1: basic_auth 
-2: token
+        :param _AuthType: <p>鉴权类型<br>0: 无鉴权<br>1: basic_auth<br>2: token</p>
         :type AuthType: int
-        :param _NetType: 网络类型： 1 内网 2外网
+        :param _NetType: <p>网络类型： 1 内网 2外网</p>
         :type NetType: int
-        :param _VpcId: 私有网络id
+        :param _VpcId: <p>私有网络id</p>
         :type VpcId: str
-        :param _AuthInfo: 鉴权信息
+        :param _AuthInfo: <p>鉴权信息</p>
         :type AuthInfo: :class:`tencentcloud.cls.v20201016.models.RemoteWriteAuthInfo`
-        :param _VirtualGatewayType: 后端服务类型
-0 CVM
-1025 CLB
+        :param _VirtualGatewayType: <p>后端服务类型<br>0 CVM<br>1025 CLB</p>
         :type VirtualGatewayType: int
+        :param _InstanceId: <p>云时序数据库实例ID</p>
+        :type InstanceId: str
+        :param _HasServicesLog: <p>是否开启投递服务日志。1：关闭，2：开启。 默认值：2</p>
+        :type HasServicesLog: int
         """
         self._TopicId = None
         self._Name = None
@@ -13787,10 +13786,12 @@ class CreateRemoteWriteTaskRequest(AbstractModel):
         self._VpcId = None
         self._AuthInfo = None
         self._VirtualGatewayType = None
+        self._InstanceId = None
+        self._HasServicesLog = None
 
     @property
     def TopicId(self):
-        r"""日志主题 ID
+        r"""<p>日志主题 ID</p>
         :rtype: str
         """
         return self._TopicId
@@ -13801,7 +13802,7 @@ class CreateRemoteWriteTaskRequest(AbstractModel):
 
     @property
     def Name(self):
-        r"""任务名称
+        r"""<p>任务名称</p>
         :rtype: str
         """
         return self._Name
@@ -13812,7 +13813,7 @@ class CreateRemoteWriteTaskRequest(AbstractModel):
 
     @property
     def Target(self):
-        r"""目标服务名称
+        r"""<p>目标服务名称</p>
         :rtype: str
         """
         return self._Target
@@ -13823,7 +13824,7 @@ class CreateRemoteWriteTaskRequest(AbstractModel):
 
     @property
     def RemoteWriteURL(self):
-        r"""目标地址
+        r"""<p>目标地址</p>
         :rtype: str
         """
         return self._RemoteWriteURL
@@ -13834,10 +13835,7 @@ class CreateRemoteWriteTaskRequest(AbstractModel):
 
     @property
     def AuthType(self):
-        r"""鉴权类型
-0: 无鉴权
-1: basic_auth 
-2: token
+        r"""<p>鉴权类型<br>0: 无鉴权<br>1: basic_auth<br>2: token</p>
         :rtype: int
         """
         return self._AuthType
@@ -13848,7 +13846,7 @@ class CreateRemoteWriteTaskRequest(AbstractModel):
 
     @property
     def NetType(self):
-        r"""网络类型： 1 内网 2外网
+        r"""<p>网络类型： 1 内网 2外网</p>
         :rtype: int
         """
         return self._NetType
@@ -13859,7 +13857,7 @@ class CreateRemoteWriteTaskRequest(AbstractModel):
 
     @property
     def VpcId(self):
-        r"""私有网络id
+        r"""<p>私有网络id</p>
         :rtype: str
         """
         return self._VpcId
@@ -13870,7 +13868,7 @@ class CreateRemoteWriteTaskRequest(AbstractModel):
 
     @property
     def AuthInfo(self):
-        r"""鉴权信息
+        r"""<p>鉴权信息</p>
         :rtype: :class:`tencentcloud.cls.v20201016.models.RemoteWriteAuthInfo`
         """
         return self._AuthInfo
@@ -13881,9 +13879,7 @@ class CreateRemoteWriteTaskRequest(AbstractModel):
 
     @property
     def VirtualGatewayType(self):
-        r"""后端服务类型
-0 CVM
-1025 CLB
+        r"""<p>后端服务类型<br>0 CVM<br>1025 CLB</p>
         :rtype: int
         """
         return self._VirtualGatewayType
@@ -13891,6 +13887,28 @@ class CreateRemoteWriteTaskRequest(AbstractModel):
     @VirtualGatewayType.setter
     def VirtualGatewayType(self, VirtualGatewayType):
         self._VirtualGatewayType = VirtualGatewayType
+
+    @property
+    def InstanceId(self):
+        r"""<p>云时序数据库实例ID</p>
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def HasServicesLog(self):
+        r"""<p>是否开启投递服务日志。1：关闭，2：开启。 默认值：2</p>
+        :rtype: int
+        """
+        return self._HasServicesLog
+
+    @HasServicesLog.setter
+    def HasServicesLog(self, HasServicesLog):
+        self._HasServicesLog = HasServicesLog
 
 
     def _deserialize(self, params):
@@ -13905,6 +13923,8 @@ class CreateRemoteWriteTaskRequest(AbstractModel):
             self._AuthInfo = RemoteWriteAuthInfo()
             self._AuthInfo._deserialize(params.get("AuthInfo"))
         self._VirtualGatewayType = params.get("VirtualGatewayType")
+        self._InstanceId = params.get("InstanceId")
+        self._HasServicesLog = params.get("HasServicesLog")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -13922,7 +13942,7 @@ class CreateRemoteWriteTaskResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskId: remoteWrite任务id
+        :param _TaskId: <p>remoteWrite任务id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TaskId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -13933,7 +13953,7 @@ class CreateRemoteWriteTaskResponse(AbstractModel):
 
     @property
     def TaskId(self):
-        r"""remoteWrite任务id
+        r"""<p>remoteWrite任务id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -26023,34 +26043,23 @@ class DescribeLogContextRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TopicId: 要查询的日志主题Id。
-- 通过 [获取日志主题列表](https://cloud.tencent.com/document/product/614/56454) 获取日志主题Id。
-- 通过 [创建日志主题](https://cloud.tencent.com/document/product/614/56456) 获取日志主题Id。
+        :param _TopicId: <p>要查询的日志主题Id。</p><ul><li>通过 <a href="https://cloud.tencent.com/document/product/614/56454">获取日志主题列表</a> 获取日志主题Id。</li><li>通过 <a href="https://cloud.tencent.com/document/product/614/56456">创建日志主题</a> 获取日志主题Id。</li></ul>
         :type TopicId: str
-        :param _BTime: 日志时间,  即 [检索分析日志](https://cloud.tencent.com/document/product/614/56447) 接口返回信息中Results结构体中的Time，需按照 UTC+8 时区将该毫秒级Unix时间戳转换为 YYYY-mm-dd HH:MM:SS.FFF 格式的字符串。
+        :param _BTime: <p>日志时间,  即 <a href="https://cloud.tencent.com/document/product/614/56447">检索分析日志</a> 接口返回信息中Results结构体中的Time，需按照 UTC+8 时区将该毫秒级Unix时间戳转换为 YYYY-mm-dd HH:MM:SS.FFF 格式的字符串。</p>
         :type BTime: str
-        :param _PkgId: 日志包序号，即 [检索分析日志](https://cloud.tencent.com/document/product/614/56447) 接口返回信息中Results结构体中的PkgId。
+        :param _PkgId: <p>日志包序号，即 <a href="https://cloud.tencent.com/document/product/614/56447">检索分析日志</a> 接口返回信息中Results结构体中的PkgId。</p>
         :type PkgId: str
-        :param _PkgLogId: 日志包内一条日志的序号，即 [检索分析日志](https://cloud.tencent.com/document/product/614/56447) 接口返回信息中Results结构中的PkgLogId。
+        :param _PkgLogId: <p>日志包内一条日志的序号，即 <a href="https://cloud.tencent.com/document/product/614/56447">检索分析日志</a> 接口返回信息中Results结构中的PkgLogId。</p>
         :type PkgLogId: int
-        :param _PrevLogs: 前${PrevLogs}条日志，默认值10。
+        :param _PrevLogs: <p>前${PrevLogs}条日志，默认值10，最大100。</p>
         :type PrevLogs: int
-        :param _NextLogs: 后${NextLogs}条日志，默认值10。
+        :param _NextLogs: <p>后${NextLogs}条日志，默认值10，最大100。</p>
         :type NextLogs: int
-        :param _Query: 检索语句，对日志上下文进行过滤，最大长度为12KB
-语句由 <a href="https://cloud.tencent.com/document/product/614/47044" target="_blank">[检索条件]</a>构成，不支持SQL语句
+        :param _Query: <p>检索语句，对日志上下文进行过滤，最大长度为12KB<br>语句由 <a href="https://cloud.tencent.com/document/product/614/47044" target="_blank">[检索条件]</a>构成，不支持SQL语句</p>
         :type Query: str
-        :param _From: 上下文检索的开始时间，单位：毫秒级时间戳
-注意：
-- From为空时，表示上下文检索的开始时间不做限制
-- From和To非空时，From < To
-- 暂时仅支持上海 / 弗吉尼亚/ 新加坡地域
+        :param _From: <p>上下文检索的开始时间，单位：毫秒级时间戳<br>注意：</p><ul><li>From为空时，表示上下文检索的开始时间不做限制</li><li>From和To非空时，From &lt; To</li></ul>
         :type From: int
-        :param _To: 上下文检索的结束时间，单位：毫秒级时间戳。
-注意：
-- To为空时，表示上下文检索的结束时间不做限制
-- From和To非空时，From < To
-- 暂时仅支持上海 / 弗吉尼亚/ 新加坡地域
+        :param _To: <p>上下文检索的结束时间，单位：毫秒级时间戳。<br>注意：</p><ul><li>To为空时，表示上下文检索的结束时间不做限制</li><li>From和To非空时，From &lt; To</li></ul>
         :type To: int
         """
         self._TopicId = None
@@ -26065,9 +26074,7 @@ class DescribeLogContextRequest(AbstractModel):
 
     @property
     def TopicId(self):
-        r"""要查询的日志主题Id。
-- 通过 [获取日志主题列表](https://cloud.tencent.com/document/product/614/56454) 获取日志主题Id。
-- 通过 [创建日志主题](https://cloud.tencent.com/document/product/614/56456) 获取日志主题Id。
+        r"""<p>要查询的日志主题Id。</p><ul><li>通过 <a href="https://cloud.tencent.com/document/product/614/56454">获取日志主题列表</a> 获取日志主题Id。</li><li>通过 <a href="https://cloud.tencent.com/document/product/614/56456">创建日志主题</a> 获取日志主题Id。</li></ul>
         :rtype: str
         """
         return self._TopicId
@@ -26078,7 +26085,7 @@ class DescribeLogContextRequest(AbstractModel):
 
     @property
     def BTime(self):
-        r"""日志时间,  即 [检索分析日志](https://cloud.tencent.com/document/product/614/56447) 接口返回信息中Results结构体中的Time，需按照 UTC+8 时区将该毫秒级Unix时间戳转换为 YYYY-mm-dd HH:MM:SS.FFF 格式的字符串。
+        r"""<p>日志时间,  即 <a href="https://cloud.tencent.com/document/product/614/56447">检索分析日志</a> 接口返回信息中Results结构体中的Time，需按照 UTC+8 时区将该毫秒级Unix时间戳转换为 YYYY-mm-dd HH:MM:SS.FFF 格式的字符串。</p>
         :rtype: str
         """
         return self._BTime
@@ -26089,7 +26096,7 @@ class DescribeLogContextRequest(AbstractModel):
 
     @property
     def PkgId(self):
-        r"""日志包序号，即 [检索分析日志](https://cloud.tencent.com/document/product/614/56447) 接口返回信息中Results结构体中的PkgId。
+        r"""<p>日志包序号，即 <a href="https://cloud.tencent.com/document/product/614/56447">检索分析日志</a> 接口返回信息中Results结构体中的PkgId。</p>
         :rtype: str
         """
         return self._PkgId
@@ -26100,7 +26107,7 @@ class DescribeLogContextRequest(AbstractModel):
 
     @property
     def PkgLogId(self):
-        r"""日志包内一条日志的序号，即 [检索分析日志](https://cloud.tencent.com/document/product/614/56447) 接口返回信息中Results结构中的PkgLogId。
+        r"""<p>日志包内一条日志的序号，即 <a href="https://cloud.tencent.com/document/product/614/56447">检索分析日志</a> 接口返回信息中Results结构中的PkgLogId。</p>
         :rtype: int
         """
         return self._PkgLogId
@@ -26111,7 +26118,7 @@ class DescribeLogContextRequest(AbstractModel):
 
     @property
     def PrevLogs(self):
-        r"""前${PrevLogs}条日志，默认值10。
+        r"""<p>前${PrevLogs}条日志，默认值10，最大100。</p>
         :rtype: int
         """
         return self._PrevLogs
@@ -26122,7 +26129,7 @@ class DescribeLogContextRequest(AbstractModel):
 
     @property
     def NextLogs(self):
-        r"""后${NextLogs}条日志，默认值10。
+        r"""<p>后${NextLogs}条日志，默认值10，最大100。</p>
         :rtype: int
         """
         return self._NextLogs
@@ -26133,8 +26140,7 @@ class DescribeLogContextRequest(AbstractModel):
 
     @property
     def Query(self):
-        r"""检索语句，对日志上下文进行过滤，最大长度为12KB
-语句由 <a href="https://cloud.tencent.com/document/product/614/47044" target="_blank">[检索条件]</a>构成，不支持SQL语句
+        r"""<p>检索语句，对日志上下文进行过滤，最大长度为12KB<br>语句由 <a href="https://cloud.tencent.com/document/product/614/47044" target="_blank">[检索条件]</a>构成，不支持SQL语句</p>
         :rtype: str
         """
         return self._Query
@@ -26145,11 +26151,7 @@ class DescribeLogContextRequest(AbstractModel):
 
     @property
     def From(self):
-        r"""上下文检索的开始时间，单位：毫秒级时间戳
-注意：
-- From为空时，表示上下文检索的开始时间不做限制
-- From和To非空时，From < To
-- 暂时仅支持上海 / 弗吉尼亚/ 新加坡地域
+        r"""<p>上下文检索的开始时间，单位：毫秒级时间戳<br>注意：</p><ul><li>From为空时，表示上下文检索的开始时间不做限制</li><li>From和To非空时，From &lt; To</li></ul>
         :rtype: int
         """
         return self._From
@@ -26160,11 +26162,7 @@ class DescribeLogContextRequest(AbstractModel):
 
     @property
     def To(self):
-        r"""上下文检索的结束时间，单位：毫秒级时间戳。
-注意：
-- To为空时，表示上下文检索的结束时间不做限制
-- From和To非空时，From < To
-- 暂时仅支持上海 / 弗吉尼亚/ 新加坡地域
+        r"""<p>上下文检索的结束时间，单位：毫秒级时间戳。<br>注意：</p><ul><li>To为空时，表示上下文检索的结束时间不做限制</li><li>From和To非空时，From &lt; To</li></ul>
         :rtype: int
         """
         return self._To
@@ -26201,11 +26199,11 @@ class DescribeLogContextResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _LogContextInfos: 日志上下文信息集合
+        :param _LogContextInfos: <p>日志上下文信息集合</p>
         :type LogContextInfos: list of LogContextInfo
-        :param _PrevOver: 上文日志是否已经返回完成（当PrevOver为false，表示有上文日志还未全部返回）。
+        :param _PrevOver: <p>上文日志是否已经返回完成（当PrevOver为false，表示有上文日志还未全部返回）。</p>
         :type PrevOver: bool
-        :param _NextOver: 下文日志是否已经返回完成（当NextOver为false，表示有下文日志还未全部返回）。
+        :param _NextOver: <p>下文日志是否已经返回完成（当NextOver为false，表示有下文日志还未全部返回）。</p>
         :type NextOver: bool
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -26217,7 +26215,7 @@ class DescribeLogContextResponse(AbstractModel):
 
     @property
     def LogContextInfos(self):
-        r"""日志上下文信息集合
+        r"""<p>日志上下文信息集合</p>
         :rtype: list of LogContextInfo
         """
         return self._LogContextInfos
@@ -26228,7 +26226,7 @@ class DescribeLogContextResponse(AbstractModel):
 
     @property
     def PrevOver(self):
-        r"""上文日志是否已经返回完成（当PrevOver为false，表示有上文日志还未全部返回）。
+        r"""<p>上文日志是否已经返回完成（当PrevOver为false，表示有上文日志还未全部返回）。</p>
         :rtype: bool
         """
         return self._PrevOver
@@ -26239,7 +26237,7 @@ class DescribeLogContextResponse(AbstractModel):
 
     @property
     def NextOver(self):
-        r"""下文日志是否已经返回完成（当NextOver为false，表示有下文日志还未全部返回）。
+        r"""<p>下文日志是否已经返回完成（当NextOver为false，表示有下文日志还未全部返回）。</p>
         :rtype: bool
         """
         return self._NextOver
@@ -44251,32 +44249,32 @@ class ModifyRemoteWriteTaskRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskId: 任务id
+        :param _TaskId: <p>任务id</p>
         :type TaskId: str
-        :param _TopicId: 日志主题id
+        :param _TopicId: <p>日志主题id</p>
         :type TopicId: str
-        :param _Enable: 任务状态
-0 关闭 1 开启
+        :param _Enable: <p>任务状态<br>0 关闭 1 开启</p>
         :type Enable: int
-        :param _Name: RemoteWrite任务名称
+        :param _Name: <p>RemoteWrite任务名称</p>
         :type Name: str
-        :param _NetType: 1 内网 2外网
+        :param _NetType: <p>1 内网 2外网</p>
         :type NetType: int
-        :param _VpcId: 私有网络id
+        :param _VpcId: <p>私有网络id</p>
         :type VpcId: str
-        :param _Target: 目标服务名称
+        :param _Target: <p>目标服务名称</p>
         :type Target: str
-        :param _RemoteWriteURL: 目标地址
+        :param _RemoteWriteURL: <p>目标地址</p>
         :type RemoteWriteURL: str
-        :param _AuthType: 0: 无鉴权 1: basic_auth 2: token	
+        :param _AuthType: <p>0: 无鉴权 1: basic_auth 2: token</p>
         :type AuthType: int
-        :param _AuthInfo: 鉴权信息
+        :param _AuthInfo: <p>鉴权信息</p>
         :type AuthInfo: :class:`tencentcloud.cls.v20201016.models.RemoteWriteAuthInfo`
-        :param _VirtualGatewayType: 后端服务类型
--1 没有
-0 CVM
-1025 CLB
+        :param _VirtualGatewayType: <p>后端服务类型<br>-1 没有<br>0 CVM<br>1025 CLB</p>
         :type VirtualGatewayType: int
+        :param _InstanceId: <p>云时序数据库实例ID</p>
+        :type InstanceId: str
+        :param _HasServicesLog: <p>是否开启投递服务日志。1：关闭，2：开启。</p>
+        :type HasServicesLog: int
         """
         self._TaskId = None
         self._TopicId = None
@@ -44289,10 +44287,12 @@ class ModifyRemoteWriteTaskRequest(AbstractModel):
         self._AuthType = None
         self._AuthInfo = None
         self._VirtualGatewayType = None
+        self._InstanceId = None
+        self._HasServicesLog = None
 
     @property
     def TaskId(self):
-        r"""任务id
+        r"""<p>任务id</p>
         :rtype: str
         """
         return self._TaskId
@@ -44303,7 +44303,7 @@ class ModifyRemoteWriteTaskRequest(AbstractModel):
 
     @property
     def TopicId(self):
-        r"""日志主题id
+        r"""<p>日志主题id</p>
         :rtype: str
         """
         return self._TopicId
@@ -44314,8 +44314,7 @@ class ModifyRemoteWriteTaskRequest(AbstractModel):
 
     @property
     def Enable(self):
-        r"""任务状态
-0 关闭 1 开启
+        r"""<p>任务状态<br>0 关闭 1 开启</p>
         :rtype: int
         """
         return self._Enable
@@ -44326,7 +44325,7 @@ class ModifyRemoteWriteTaskRequest(AbstractModel):
 
     @property
     def Name(self):
-        r"""RemoteWrite任务名称
+        r"""<p>RemoteWrite任务名称</p>
         :rtype: str
         """
         return self._Name
@@ -44337,7 +44336,7 @@ class ModifyRemoteWriteTaskRequest(AbstractModel):
 
     @property
     def NetType(self):
-        r"""1 内网 2外网
+        r"""<p>1 内网 2外网</p>
         :rtype: int
         """
         return self._NetType
@@ -44348,7 +44347,7 @@ class ModifyRemoteWriteTaskRequest(AbstractModel):
 
     @property
     def VpcId(self):
-        r"""私有网络id
+        r"""<p>私有网络id</p>
         :rtype: str
         """
         return self._VpcId
@@ -44359,7 +44358,7 @@ class ModifyRemoteWriteTaskRequest(AbstractModel):
 
     @property
     def Target(self):
-        r"""目标服务名称
+        r"""<p>目标服务名称</p>
         :rtype: str
         """
         return self._Target
@@ -44370,7 +44369,7 @@ class ModifyRemoteWriteTaskRequest(AbstractModel):
 
     @property
     def RemoteWriteURL(self):
-        r"""目标地址
+        r"""<p>目标地址</p>
         :rtype: str
         """
         return self._RemoteWriteURL
@@ -44381,7 +44380,7 @@ class ModifyRemoteWriteTaskRequest(AbstractModel):
 
     @property
     def AuthType(self):
-        r"""0: 无鉴权 1: basic_auth 2: token	
+        r"""<p>0: 无鉴权 1: basic_auth 2: token</p>
         :rtype: int
         """
         return self._AuthType
@@ -44392,7 +44391,7 @@ class ModifyRemoteWriteTaskRequest(AbstractModel):
 
     @property
     def AuthInfo(self):
-        r"""鉴权信息
+        r"""<p>鉴权信息</p>
         :rtype: :class:`tencentcloud.cls.v20201016.models.RemoteWriteAuthInfo`
         """
         return self._AuthInfo
@@ -44403,10 +44402,7 @@ class ModifyRemoteWriteTaskRequest(AbstractModel):
 
     @property
     def VirtualGatewayType(self):
-        r"""后端服务类型
--1 没有
-0 CVM
-1025 CLB
+        r"""<p>后端服务类型<br>-1 没有<br>0 CVM<br>1025 CLB</p>
         :rtype: int
         """
         return self._VirtualGatewayType
@@ -44414,6 +44410,28 @@ class ModifyRemoteWriteTaskRequest(AbstractModel):
     @VirtualGatewayType.setter
     def VirtualGatewayType(self, VirtualGatewayType):
         self._VirtualGatewayType = VirtualGatewayType
+
+    @property
+    def InstanceId(self):
+        r"""<p>云时序数据库实例ID</p>
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def HasServicesLog(self):
+        r"""<p>是否开启投递服务日志。1：关闭，2：开启。</p>
+        :rtype: int
+        """
+        return self._HasServicesLog
+
+    @HasServicesLog.setter
+    def HasServicesLog(self, HasServicesLog):
+        self._HasServicesLog = HasServicesLog
 
 
     def _deserialize(self, params):
@@ -44430,6 +44448,8 @@ class ModifyRemoteWriteTaskRequest(AbstractModel):
             self._AuthInfo = RemoteWriteAuthInfo()
             self._AuthInfo._deserialize(params.get("AuthInfo"))
         self._VirtualGatewayType = params.get("VirtualGatewayType")
+        self._InstanceId = params.get("InstanceId")
+        self._HasServicesLog = params.get("HasServicesLog")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -50001,57 +50021,57 @@ class RemoteWriteInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskId: 任务id
+        :param _TaskId: <p>任务id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TaskId: str
-        :param _TopicId: 日志主题ID
+        :param _TopicId: <p>日志主题ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TopicId: str
-        :param _Name: Remote Write任务名称
+        :param _Name: <p>Remote Write任务名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
-        :param _NetType: 网络类型
-1: 内网
-2:外网
+        :param _NetType: <p>网络类型<br>1: 内网<br>2:外网</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type NetType: int
-        :param _VpcId: 私有网络id
+        :param _VpcId: <p>私有网络id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type VpcId: str
-        :param _Status: 任务运行状态
-1: 运行中
-2:暂停
-3: 失败
+        :param _Status: <p>任务运行状态<br>1: 运行中<br>2:暂停<br>3: 失败</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Status: int
-        :param _CreateTime: 创建时间
+        :param _CreateTime: <p>创建时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type CreateTime: str
-        :param _UpdateTime: 更新时间
+        :param _UpdateTime: <p>更新时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type UpdateTime: str
-        :param _Target: 目标服务名称
+        :param _Target: <p>目标服务名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Target: str
-        :param _RemoteWriteURL: 目标地址
+        :param _RemoteWriteURL: <p>目标地址</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type RemoteWriteURL: str
-        :param _AuthType: 鉴权类型
-0: 无鉴权 1: basic_auth 2: token
+        :param _AuthType: <p>鉴权类型<br>0: 无鉴权 1: basic_auth 2: token</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type AuthType: int
-        :param _AuthInfo: 鉴权信息
+        :param _AuthInfo: <p>鉴权信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type AuthInfo: :class:`tencentcloud.cls.v20201016.models.RemoteWriteAuthInfo`
-        :param _LogsetId: 日志集
+        :param _LogsetId: <p>日志集</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type LogsetId: str
-        :param _Enable: 任务状态
+        :param _Enable: <p>任务状态</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Enable: int
-        :param _VirtualGatewayType: 后端服务类型
+        :param _VirtualGatewayType: <p>后端服务类型</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type VirtualGatewayType: int
+        :param _InstanceId: <p>云时序数据库实例ID</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InstanceId: str
+        :param _HasServicesLog: <p>是否开启投递服务日志。1：关闭，2：开启。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type HasServicesLog: int
         """
         self._TaskId = None
         self._TopicId = None
@@ -50068,10 +50088,12 @@ class RemoteWriteInfo(AbstractModel):
         self._LogsetId = None
         self._Enable = None
         self._VirtualGatewayType = None
+        self._InstanceId = None
+        self._HasServicesLog = None
 
     @property
     def TaskId(self):
-        r"""任务id
+        r"""<p>任务id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -50083,7 +50105,7 @@ class RemoteWriteInfo(AbstractModel):
 
     @property
     def TopicId(self):
-        r"""日志主题ID
+        r"""<p>日志主题ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -50095,7 +50117,7 @@ class RemoteWriteInfo(AbstractModel):
 
     @property
     def Name(self):
-        r"""Remote Write任务名称
+        r"""<p>Remote Write任务名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -50107,9 +50129,7 @@ class RemoteWriteInfo(AbstractModel):
 
     @property
     def NetType(self):
-        r"""网络类型
-1: 内网
-2:外网
+        r"""<p>网络类型<br>1: 内网<br>2:外网</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -50121,7 +50141,7 @@ class RemoteWriteInfo(AbstractModel):
 
     @property
     def VpcId(self):
-        r"""私有网络id
+        r"""<p>私有网络id</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -50133,10 +50153,7 @@ class RemoteWriteInfo(AbstractModel):
 
     @property
     def Status(self):
-        r"""任务运行状态
-1: 运行中
-2:暂停
-3: 失败
+        r"""<p>任务运行状态<br>1: 运行中<br>2:暂停<br>3: 失败</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -50148,7 +50165,7 @@ class RemoteWriteInfo(AbstractModel):
 
     @property
     def CreateTime(self):
-        r"""创建时间
+        r"""<p>创建时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -50160,7 +50177,7 @@ class RemoteWriteInfo(AbstractModel):
 
     @property
     def UpdateTime(self):
-        r"""更新时间
+        r"""<p>更新时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -50172,7 +50189,7 @@ class RemoteWriteInfo(AbstractModel):
 
     @property
     def Target(self):
-        r"""目标服务名称
+        r"""<p>目标服务名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -50184,7 +50201,7 @@ class RemoteWriteInfo(AbstractModel):
 
     @property
     def RemoteWriteURL(self):
-        r"""目标地址
+        r"""<p>目标地址</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -50196,8 +50213,7 @@ class RemoteWriteInfo(AbstractModel):
 
     @property
     def AuthType(self):
-        r"""鉴权类型
-0: 无鉴权 1: basic_auth 2: token
+        r"""<p>鉴权类型<br>0: 无鉴权 1: basic_auth 2: token</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -50209,7 +50225,7 @@ class RemoteWriteInfo(AbstractModel):
 
     @property
     def AuthInfo(self):
-        r"""鉴权信息
+        r"""<p>鉴权信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cls.v20201016.models.RemoteWriteAuthInfo`
         """
@@ -50221,7 +50237,7 @@ class RemoteWriteInfo(AbstractModel):
 
     @property
     def LogsetId(self):
-        r"""日志集
+        r"""<p>日志集</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -50233,7 +50249,7 @@ class RemoteWriteInfo(AbstractModel):
 
     @property
     def Enable(self):
-        r"""任务状态
+        r"""<p>任务状态</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -50245,7 +50261,7 @@ class RemoteWriteInfo(AbstractModel):
 
     @property
     def VirtualGatewayType(self):
-        r"""后端服务类型
+        r"""<p>后端服务类型</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -50254,6 +50270,30 @@ class RemoteWriteInfo(AbstractModel):
     @VirtualGatewayType.setter
     def VirtualGatewayType(self, VirtualGatewayType):
         self._VirtualGatewayType = VirtualGatewayType
+
+    @property
+    def InstanceId(self):
+        r"""<p>云时序数据库实例ID</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def HasServicesLog(self):
+        r"""<p>是否开启投递服务日志。1：关闭，2：开启。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._HasServicesLog
+
+    @HasServicesLog.setter
+    def HasServicesLog(self, HasServicesLog):
+        self._HasServicesLog = HasServicesLog
 
 
     def _deserialize(self, params):
@@ -50274,6 +50314,8 @@ class RemoteWriteInfo(AbstractModel):
         self._LogsetId = params.get("LogsetId")
         self._Enable = params.get("Enable")
         self._VirtualGatewayType = params.get("VirtualGatewayType")
+        self._InstanceId = params.get("InstanceId")
+        self._HasServicesLog = params.get("HasServicesLog")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

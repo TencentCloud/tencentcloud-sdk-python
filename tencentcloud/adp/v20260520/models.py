@@ -8359,6 +8359,9 @@ class ConversationContent(AbstractModel):
         :param _WorkflowInput: <p>工作流输入参数</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type WorkflowInput: str
+        :param _McpApp: <p>MCP-APP调用信息</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type McpApp: :class:`tencentcloud.adp.v20260520.models.ConversationMcpApp`
         """
         self._Text = None
         self._Type = None
@@ -8377,6 +8380,7 @@ class ConversationContent(AbstractModel):
         self._TaskList = None
         self._Tasks = None
         self._WorkflowInput = None
+        self._McpApp = None
 
     @property
     def Text(self):
@@ -8570,6 +8574,18 @@ class ConversationContent(AbstractModel):
     def WorkflowInput(self, WorkflowInput):
         self._WorkflowInput = WorkflowInput
 
+    @property
+    def McpApp(self):
+        r"""<p>MCP-APP调用信息</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.adp.v20260520.models.ConversationMcpApp`
+        """
+        return self._McpApp
+
+    @McpApp.setter
+    def McpApp(self, McpApp):
+        self._McpApp = McpApp
+
 
     def _deserialize(self, params):
         self._Text = params.get("Text")
@@ -8619,6 +8635,9 @@ class ConversationContent(AbstractModel):
                 obj._deserialize(item)
                 self._Tasks.append(obj)
         self._WorkflowInput = params.get("WorkflowInput")
+        if params.get("McpApp") is not None:
+            self._McpApp = ConversationMcpApp()
+            self._McpApp._deserialize(params.get("McpApp"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -8787,6 +8806,89 @@ class ConversationExperience(AbstractModel):
             self._InputBoxConfig._deserialize(params.get("InputBoxConfig"))
         self._Method = params.get("Method")
         self._RecommendPromptMode = params.get("RecommendPromptMode")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ConversationMcpApp(AbstractModel):
+    r"""MCP App 内容，供历史会话重建可交互 App
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PluginId: <p>能力边界：一次请求只能读该 plugin 的资源</p>
+        :type PluginId: str
+        :param _ResourceUri: <p>ui:// 资源，前端据此调 ReadMCPResource 拉 HTML</p>
+        :type ResourceUri: str
+        :param _ThreadId: <p>agent-exec 侧 thread</p>
+        :type ThreadId: str
+        :param _ToolResult: <p>JSON：完整 CallToolResult 原文，供历史会话重建时重放</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ToolResult: str
+        """
+        self._PluginId = None
+        self._ResourceUri = None
+        self._ThreadId = None
+        self._ToolResult = None
+
+    @property
+    def PluginId(self):
+        r"""<p>能力边界：一次请求只能读该 plugin 的资源</p>
+        :rtype: str
+        """
+        return self._PluginId
+
+    @PluginId.setter
+    def PluginId(self, PluginId):
+        self._PluginId = PluginId
+
+    @property
+    def ResourceUri(self):
+        r"""<p>ui:// 资源，前端据此调 ReadMCPResource 拉 HTML</p>
+        :rtype: str
+        """
+        return self._ResourceUri
+
+    @ResourceUri.setter
+    def ResourceUri(self, ResourceUri):
+        self._ResourceUri = ResourceUri
+
+    @property
+    def ThreadId(self):
+        r"""<p>agent-exec 侧 thread</p>
+        :rtype: str
+        """
+        return self._ThreadId
+
+    @ThreadId.setter
+    def ThreadId(self, ThreadId):
+        self._ThreadId = ThreadId
+
+    @property
+    def ToolResult(self):
+        r"""<p>JSON：完整 CallToolResult 原文，供历史会话重建时重放</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ToolResult
+
+    @ToolResult.setter
+    def ToolResult(self, ToolResult):
+        self._ToolResult = ToolResult
+
+
+    def _deserialize(self, params):
+        self._PluginId = params.get("PluginId")
+        self._ResourceUri = params.get("ResourceUri")
+        self._ThreadId = params.get("ThreadId")
+        self._ToolResult = params.get("ToolResult")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -15401,12 +15503,12 @@ class DescribeConversationMessageListResponse(AbstractModel):
         :type MessageList: list of ConversationMessage
         :param _Messages: <p>消息列表</p>
         :type Messages: list of ConversationMessage
-        :param _ResetInfo: <p>最近一次重置信息</p>
-注意：此字段可能返回 null，表示取不到有效值。
-        :type ResetInfo: :class:`tencentcloud.adp.v20260520.models.ConversationResetInfo`
         :param _RecordSummaryList: <p>单次对话记录统计列表，与 message_list 通过 record_id / related_record_id 关联</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type RecordSummaryList: list of ConversationRecordSummary
+        :param _ResetInfo: <p>最近一次重置信息</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResetInfo: :class:`tencentcloud.adp.v20260520.models.ConversationResetInfo`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -15416,8 +15518,8 @@ class DescribeConversationMessageListResponse(AbstractModel):
         self._LastRecordId = None
         self._MessageList = None
         self._Messages = None
-        self._ResetInfo = None
         self._RecordSummaryList = None
+        self._ResetInfo = None
         self._RequestId = None
 
     @property
@@ -15491,18 +15593,6 @@ class DescribeConversationMessageListResponse(AbstractModel):
         self._Messages = Messages
 
     @property
-    def ResetInfo(self):
-        r"""<p>最近一次重置信息</p>
-注意：此字段可能返回 null，表示取不到有效值。
-        :rtype: :class:`tencentcloud.adp.v20260520.models.ConversationResetInfo`
-        """
-        return self._ResetInfo
-
-    @ResetInfo.setter
-    def ResetInfo(self, ResetInfo):
-        self._ResetInfo = ResetInfo
-
-    @property
     def RecordSummaryList(self):
         r"""<p>单次对话记录统计列表，与 message_list 通过 record_id / related_record_id 关联</p>
 注意：此字段可能返回 null，表示取不到有效值。
@@ -15513,6 +15603,18 @@ class DescribeConversationMessageListResponse(AbstractModel):
     @RecordSummaryList.setter
     def RecordSummaryList(self, RecordSummaryList):
         self._RecordSummaryList = RecordSummaryList
+
+    @property
+    def ResetInfo(self):
+        r"""<p>最近一次重置信息</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.adp.v20260520.models.ConversationResetInfo`
+        """
+        return self._ResetInfo
+
+    @ResetInfo.setter
+    def ResetInfo(self, ResetInfo):
+        self._ResetInfo = ResetInfo
 
     @property
     def RequestId(self):
@@ -15543,15 +15645,15 @@ class DescribeConversationMessageListResponse(AbstractModel):
                 obj = ConversationMessage()
                 obj._deserialize(item)
                 self._Messages.append(obj)
-        if params.get("ResetInfo") is not None:
-            self._ResetInfo = ConversationResetInfo()
-            self._ResetInfo._deserialize(params.get("ResetInfo"))
         if params.get("RecordSummaryList") is not None:
             self._RecordSummaryList = []
             for item in params.get("RecordSummaryList"):
                 obj = ConversationRecordSummary()
                 obj._deserialize(item)
                 self._RecordSummaryList.append(obj)
+        if params.get("ResetInfo") is not None:
+            self._ResetInfo = ConversationResetInfo()
+            self._ResetInfo._deserialize(params.get("ResetInfo"))
         self._RequestId = params.get("RequestId")
 
 
@@ -19458,6 +19560,8 @@ class MCPPluginConfig(AbstractModel):
         :type Timeout: int
         :param _AuthConfig: <p>授权信息</p>
         :type AuthConfig: :class:`tencentcloud.adp.v20260520.models.AuthConfig`
+        :param _SupportsApps: <p>是否支持交互界面（MCP Apps），插件级标签，默认false</p>
+        :type SupportsApps: bool
         """
         self._ExternalMCPServerUrl = None
         self._MCPServerUrl = None
@@ -19467,6 +19571,7 @@ class MCPPluginConfig(AbstractModel):
         self._SSEReadTimeout = None
         self._Timeout = None
         self._AuthConfig = None
+        self._SupportsApps = None
 
     @property
     def ExternalMCPServerUrl(self):
@@ -19556,6 +19661,17 @@ class MCPPluginConfig(AbstractModel):
     def AuthConfig(self, AuthConfig):
         self._AuthConfig = AuthConfig
 
+    @property
+    def SupportsApps(self):
+        r"""<p>是否支持交互界面（MCP Apps），插件级标签，默认false</p>
+        :rtype: bool
+        """
+        return self._SupportsApps
+
+    @SupportsApps.setter
+    def SupportsApps(self, SupportsApps):
+        self._SupportsApps = SupportsApps
+
 
     def _deserialize(self, params):
         self._ExternalMCPServerUrl = params.get("ExternalMCPServerUrl")
@@ -19578,6 +19694,7 @@ class MCPPluginConfig(AbstractModel):
         if params.get("AuthConfig") is not None:
             self._AuthConfig = AuthConfig()
             self._AuthConfig._deserialize(params.get("AuthConfig"))
+        self._SupportsApps = params.get("SupportsApps")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -19599,9 +19716,16 @@ class MCPToolConfig(AbstractModel):
         :type Inputs: list of RequestParam
         :param _Outputs: <p>输出参数</p>
         :type Outputs: list of ResponseParam
+        :param _Meta: <p>工具meta信息</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Meta: :class:`tencentcloud.adp.v20260520.models.MCPToolMeta`
+        :param _SupportsApps: <p>是否支持交互界面（MCP Apps），插件级标签  默认值：false</p>
+        :type SupportsApps: bool
         """
         self._Inputs = None
         self._Outputs = None
+        self._Meta = None
+        self._SupportsApps = None
 
     @property
     def Inputs(self):
@@ -19625,6 +19749,29 @@ class MCPToolConfig(AbstractModel):
     def Outputs(self, Outputs):
         self._Outputs = Outputs
 
+    @property
+    def Meta(self):
+        r"""<p>工具meta信息</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.adp.v20260520.models.MCPToolMeta`
+        """
+        return self._Meta
+
+    @Meta.setter
+    def Meta(self, Meta):
+        self._Meta = Meta
+
+    @property
+    def SupportsApps(self):
+        r"""<p>是否支持交互界面（MCP Apps），插件级标签  默认值：false</p>
+        :rtype: bool
+        """
+        return self._SupportsApps
+
+    @SupportsApps.setter
+    def SupportsApps(self, SupportsApps):
+        self._SupportsApps = SupportsApps
+
 
     def _deserialize(self, params):
         if params.get("Inputs") is not None:
@@ -19639,6 +19786,99 @@ class MCPToolConfig(AbstractModel):
                 obj = ResponseParam()
                 obj._deserialize(item)
                 self._Outputs.append(obj)
+        if params.get("Meta") is not None:
+            self._Meta = MCPToolMeta()
+            self._Meta._deserialize(params.get("Meta"))
+        self._SupportsApps = params.get("SupportsApps")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class MCPToolMeta(AbstractModel):
+    r"""对应 MCP 协议工具 _meta，承载 MCP Apps 工具的 UI 元信息（本期仅消费 resourceUri）
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Ui: <p>工具的 UI 扩展元信息，对应 MCP 协议的 _meta.ui，声明工具关联的交互式界面资源（ResourceUri）及调用方可见性（Visibility）。仅当工具支持 MCP Apps 或声明了可见性时返回；纯文本工具该字段为空。详见 MCPToolUIMeta 结构定义。</p>
+        :type Ui: :class:`tencentcloud.adp.v20260520.models.MCPToolUIMeta`
+        """
+        self._Ui = None
+
+    @property
+    def Ui(self):
+        r"""<p>工具的 UI 扩展元信息，对应 MCP 协议的 _meta.ui，声明工具关联的交互式界面资源（ResourceUri）及调用方可见性（Visibility）。仅当工具支持 MCP Apps 或声明了可见性时返回；纯文本工具该字段为空。详见 MCPToolUIMeta 结构定义。</p>
+        :rtype: :class:`tencentcloud.adp.v20260520.models.MCPToolUIMeta`
+        """
+        return self._Ui
+
+    @Ui.setter
+    def Ui(self, Ui):
+        self._Ui = Ui
+
+
+    def _deserialize(self, params):
+        if params.get("Ui") is not None:
+            self._Ui = MCPToolUIMeta()
+            self._Ui._deserialize(params.get("Ui"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class MCPToolUIMeta(AbstractModel):
+    r"""对应 MCP 协议 _meta.ui，定义 MCP Apps 工具的交互界面元信息（本期仅消费 resourceUri，visibility）
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ResourceUri: <p>关联的 UI 资源 URI，ui:// scheme，格式为 ui://&lt;插件标识&gt;/&lt;资源名&gt;-&lt;版本&gt;。该字段是 MCP Apps 交互式界面的入口，非空时表示工具支持 Apps（&quot;文本 + 交互式界面&quot;展示），为空则为纯文本工具。由工具同步结果自动识别填充，不支持手工编辑。</p>
+        :type ResourceUri: str
+        :param _Visibility: <p>工具的调用方可见性声明，取值范围：model（模型可调用）、app（应用界面可调用），可多选，如 [&quot;model&quot;,&quot;app&quot;]。与 ResourceUri 相互独立（SEP-1865），可单独存在，例如纯后端 app-only 工具为 [&quot;app&quot;]。当 ResourceUri 非空且本字段缺省时，按规范归一化为 [&quot;model&quot;,&quot;app&quot;]；存量非 Apps 工具保持为空。</p><p>枚举值：</p><ul><li>model： 支持model</li><li>app： 支持app</li></ul>
+        :type Visibility: list of str
+        """
+        self._ResourceUri = None
+        self._Visibility = None
+
+    @property
+    def ResourceUri(self):
+        r"""<p>关联的 UI 资源 URI，ui:// scheme，格式为 ui://&lt;插件标识&gt;/&lt;资源名&gt;-&lt;版本&gt;。该字段是 MCP Apps 交互式界面的入口，非空时表示工具支持 Apps（&quot;文本 + 交互式界面&quot;展示），为空则为纯文本工具。由工具同步结果自动识别填充，不支持手工编辑。</p>
+        :rtype: str
+        """
+        return self._ResourceUri
+
+    @ResourceUri.setter
+    def ResourceUri(self, ResourceUri):
+        self._ResourceUri = ResourceUri
+
+    @property
+    def Visibility(self):
+        r"""<p>工具的调用方可见性声明，取值范围：model（模型可调用）、app（应用界面可调用），可多选，如 [&quot;model&quot;,&quot;app&quot;]。与 ResourceUri 相互独立（SEP-1865），可单独存在，例如纯后端 app-only 工具为 [&quot;app&quot;]。当 ResourceUri 非空且本字段缺省时，按规范归一化为 [&quot;model&quot;,&quot;app&quot;]；存量非 Apps 工具保持为空。</p><p>枚举值：</p><ul><li>model： 支持model</li><li>app： 支持app</li></ul>
+        :rtype: list of str
+        """
+        return self._Visibility
+
+    @Visibility.setter
+    def Visibility(self, Visibility):
+        self._Visibility = Visibility
+
+
+    def _deserialize(self, params):
+        self._ResourceUri = params.get("ResourceUri")
+        self._Visibility = params.get("Visibility")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

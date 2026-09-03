@@ -25,6 +25,24 @@ class TdmysqlClient(AbstractClient):
     _endpoint = 'tdmysql.tencentcloudapi.com'
     _service = 'tdmysql'
 
+    async def BreakStandbyDBInstanceRelation(
+            self,
+            request: models.BreakStandbyDBInstanceRelationRequest,
+            opts: Dict = None,
+    ) -> models.BreakStandbyDBInstanceRelationResponse:
+        """
+        本接口（BreakStandbyDBInstanceRelation）用于提供断开灾备实例主备连接功能
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "BreakStandbyDBInstanceRelation"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.BreakStandbyDBInstanceRelationResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CancelIsolateDBInstances(
             self,
             request: models.CancelIsolateDBInstancesRequest,
@@ -92,6 +110,24 @@ class TdmysqlClient(AbstractClient):
         kwargs["action"] = "CreateDBSBackup"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.CreateDBSBackupResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def CreateStandbyDBInstance(
+            self,
+            request: models.CreateStandbyDBInstanceRequest,
+            opts: Dict = None,
+    ) -> models.CreateStandbyDBInstanceResponse:
+        """
+        本接口（CreateStandbyDBInstances）提供批量创建灾备实例功能
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateStandbyDBInstance"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateStandbyDBInstanceResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -506,6 +542,24 @@ class TdmysqlClient(AbstractClient):
         kwargs["action"] = "DescribeSpecs"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeSpecsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeStandbyDBInstanceRelationDetail(
+            self,
+            request: models.DescribeStandbyDBInstanceRelationDetailRequest,
+            opts: Dict = None,
+    ) -> models.DescribeStandbyDBInstanceRelationDetailResponse:
+        """
+        本接口（DescribeStandbyDBinstanceRelations）用于查询实例灾备连接关系
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeStandbyDBInstanceRelationDetail"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeStandbyDBInstanceRelationDetailResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

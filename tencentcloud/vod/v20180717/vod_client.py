@@ -97,6 +97,29 @@ class VodClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CloneVoiceSync(self, request):
+        r"""发起音色克隆任务，基于参考音频克隆生成专属音色，生成的音色可供后续语音合成使用。
+
+        :param request: Request instance for CloneVoiceSync.
+        :type request: :class:`tencentcloud.vod.v20180717.models.CloneVoiceSyncRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.CloneVoiceSyncResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CloneVoiceSync", params, headers=headers)
+            response = json.loads(body)
+            model = models.CloneVoiceSyncResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CommitUpload(self, request):
         r"""该接口用于确认媒体文件（和封面文件）上传到腾讯云点播的结果，并存储媒体信息，返回文件的播放地址和文件 ID。
 
@@ -5740,6 +5763,29 @@ class VodClient(AbstractClient):
             body = self.call("TextToSpeechAsync", params, headers=headers)
             response = json.loads(body)
             model = models.TextToSpeechAsyncResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def TextToSpeechSync(self, request):
+        r"""发起语音合成任务，将文本合成为语音。
+
+        :param request: Request instance for TextToSpeechSync.
+        :type request: :class:`tencentcloud.vod.v20180717.models.TextToSpeechSyncRequest`
+        :rtype: :class:`tencentcloud.vod.v20180717.models.TextToSpeechSyncResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("TextToSpeechSync", params, headers=headers)
+            response = json.loads(body)
+            model = models.TextToSpeechSyncResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

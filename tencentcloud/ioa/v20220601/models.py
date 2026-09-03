@@ -263,62 +263,62 @@ class AggrSoftDeviceRow(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DeviceName: 终端名
+        :param _DeviceName: <p>终端名</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type DeviceName: str
-        :param _LastLoginAccount: 最近登录账号
+        :param _LastLoginAccount: <p>最近登录账号</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type LastLoginAccount: str
-        :param _DeviceUserName: 终端用户名
+        :param _DeviceUserName: <p>终端用户名</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type DeviceUserName: str
-        :param _Version: 软件版本
+        :param _Version: <p>软件版本</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Version: str
-        :param _PiracyRisk: 是否盗版
+        :param _PiracyRisk: <p>是否盗版</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type PiracyRisk: int
-        :param _PiracyReason: 盗版原因
+        :param _PiracyReason: <p>盗版原因</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type PiracyReason: str
-        :param _InstallTime: 安装时间
+        :param _InstallTime: <p>安装时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type InstallTime: str
-        :param _UserPath: 用户目录
+        :param _UserPath: <p>用户目录</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type UserPath: str
-        :param _UserGroup: 所在分组
+        :param _UserGroup: <p>所在分组</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type UserGroup: str
-        :param _IP: IP
+        :param _IP: <p>IP</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type IP: str
-        :param _MAC: MAC
+        :param _MAC: <p>MAC</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type MAC: str
-        :param _UseTime: 使用时长
+        :param _UseTime: <p>使用时长</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type UseTime: int
-        :param _DeviceId: 设备ID
+        :param _DeviceId: <p>设备ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type DeviceId: int
-        :param _FullSoftName: 软件全名
+        :param _FullSoftName: <p>软件全名</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type FullSoftName: str
-        :param _Id: 数据ID（唯一）
+        :param _Id: <p>数据ID（唯一）</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Id: int
-        :param _NewVersion: 该终端此款软件可升级到的目标版本号
+        :param _NewVersion: <p>该终端此款软件可升级到的目标版本号</p>
         :type NewVersion: str
-        :param _UpgradeSoftId: 该软件对应运营配置的可升级id
+        :param _UpgradeSoftId: <p>该软件对应运营配置的可升级id</p>
         :type UpgradeSoftId: int
-        :param _RemarkName: 终端备注名
+        :param _RemarkName: <p>终端备注名</p>
         :type RemarkName: str
-        :param _SoftwareId: 软件id
+        :param _SoftwareId: <p>软件id</p>
         :type SoftwareId: int
-        :param _OsType: 0:win 2:mac
+        :param _OsType: <p>0:win 2:mac</p>
         :type OsType: int
-        :param _AssetType: 所有权
+        :param _AssetType: <p>所有权</p>
         :type AssetType: str
         """
         self._DeviceName = None
@@ -345,7 +345,7 @@ class AggrSoftDeviceRow(AbstractModel):
 
     @property
     def DeviceName(self):
-        r"""终端名
+        r"""<p>终端名</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -357,7 +357,7 @@ class AggrSoftDeviceRow(AbstractModel):
 
     @property
     def LastLoginAccount(self):
-        r"""最近登录账号
+        r"""<p>最近登录账号</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -369,7 +369,7 @@ class AggrSoftDeviceRow(AbstractModel):
 
     @property
     def DeviceUserName(self):
-        r"""终端用户名
+        r"""<p>终端用户名</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -381,7 +381,7 @@ class AggrSoftDeviceRow(AbstractModel):
 
     @property
     def Version(self):
-        r"""软件版本
+        r"""<p>软件版本</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -393,7 +393,7 @@ class AggrSoftDeviceRow(AbstractModel):
 
     @property
     def PiracyRisk(self):
-        r"""是否盗版
+        r"""<p>是否盗版</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -405,7 +405,7 @@ class AggrSoftDeviceRow(AbstractModel):
 
     @property
     def PiracyReason(self):
-        r"""盗版原因
+        r"""<p>盗版原因</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -417,7 +417,7 @@ class AggrSoftDeviceRow(AbstractModel):
 
     @property
     def InstallTime(self):
-        r"""安装时间
+        r"""<p>安装时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -429,7 +429,7 @@ class AggrSoftDeviceRow(AbstractModel):
 
     @property
     def UserPath(self):
-        r"""用户目录
+        r"""<p>用户目录</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -441,7 +441,7 @@ class AggrSoftDeviceRow(AbstractModel):
 
     @property
     def UserGroup(self):
-        r"""所在分组
+        r"""<p>所在分组</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -453,7 +453,7 @@ class AggrSoftDeviceRow(AbstractModel):
 
     @property
     def IP(self):
-        r"""IP
+        r"""<p>IP</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -465,7 +465,7 @@ class AggrSoftDeviceRow(AbstractModel):
 
     @property
     def MAC(self):
-        r"""MAC
+        r"""<p>MAC</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -477,7 +477,7 @@ class AggrSoftDeviceRow(AbstractModel):
 
     @property
     def UseTime(self):
-        r"""使用时长
+        r"""<p>使用时长</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -489,7 +489,7 @@ class AggrSoftDeviceRow(AbstractModel):
 
     @property
     def DeviceId(self):
-        r"""设备ID
+        r"""<p>设备ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -501,7 +501,7 @@ class AggrSoftDeviceRow(AbstractModel):
 
     @property
     def FullSoftName(self):
-        r"""软件全名
+        r"""<p>软件全名</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -513,7 +513,7 @@ class AggrSoftDeviceRow(AbstractModel):
 
     @property
     def Id(self):
-        r"""数据ID（唯一）
+        r"""<p>数据ID（唯一）</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -525,7 +525,7 @@ class AggrSoftDeviceRow(AbstractModel):
 
     @property
     def NewVersion(self):
-        r"""该终端此款软件可升级到的目标版本号
+        r"""<p>该终端此款软件可升级到的目标版本号</p>
         :rtype: str
         """
         return self._NewVersion
@@ -536,7 +536,7 @@ class AggrSoftDeviceRow(AbstractModel):
 
     @property
     def UpgradeSoftId(self):
-        r"""该软件对应运营配置的可升级id
+        r"""<p>该软件对应运营配置的可升级id</p>
         :rtype: int
         """
         return self._UpgradeSoftId
@@ -547,7 +547,7 @@ class AggrSoftDeviceRow(AbstractModel):
 
     @property
     def RemarkName(self):
-        r"""终端备注名
+        r"""<p>终端备注名</p>
         :rtype: str
         """
         return self._RemarkName
@@ -558,7 +558,7 @@ class AggrSoftDeviceRow(AbstractModel):
 
     @property
     def SoftwareId(self):
-        r"""软件id
+        r"""<p>软件id</p>
         :rtype: int
         """
         return self._SoftwareId
@@ -569,7 +569,7 @@ class AggrSoftDeviceRow(AbstractModel):
 
     @property
     def OsType(self):
-        r"""0:win 2:mac
+        r"""<p>0:win 2:mac</p>
         :rtype: int
         """
         return self._OsType
@@ -580,7 +580,7 @@ class AggrSoftDeviceRow(AbstractModel):
 
     @property
     def AssetType(self):
-        r"""所有权
+        r"""<p>所有权</p>
         :rtype: str
         """
         return self._AssetType
@@ -1154,6 +1154,8 @@ class CreateCompanyDirectoryConfigRequest(AbstractModel):
         :type Description: str
         :param _Scene: <p>使用场景：API 创建，快速上手，普通配置等</p>
         :type Scene: str
+        :param _NameI18n: <p>名称多语言</p>
+        :type NameI18n: list of I18nString
         """
         self._Type = None
         self._Name = None
@@ -1165,6 +1167,7 @@ class CreateCompanyDirectoryConfigRequest(AbstractModel):
         self._DisplayOnLoginPage = None
         self._Description = None
         self._Scene = None
+        self._NameI18n = None
 
     @property
     def Type(self):
@@ -1276,6 +1279,17 @@ class CreateCompanyDirectoryConfigRequest(AbstractModel):
     def Scene(self, Scene):
         self._Scene = Scene
 
+    @property
+    def NameI18n(self):
+        r"""<p>名称多语言</p>
+        :rtype: list of I18nString
+        """
+        return self._NameI18n
+
+    @NameI18n.setter
+    def NameI18n(self, NameI18n):
+        self._NameI18n = NameI18n
+
 
     def _deserialize(self, params):
         self._Type = params.get("Type")
@@ -1288,6 +1302,12 @@ class CreateCompanyDirectoryConfigRequest(AbstractModel):
         self._DisplayOnLoginPage = params.get("DisplayOnLoginPage")
         self._Description = params.get("Description")
         self._Scene = params.get("Scene")
+        if params.get("NameI18n") is not None:
+            self._NameI18n = []
+            for item in params.get("NameI18n"):
+                obj = I18nString()
+                obj._deserialize(item)
+                self._NameI18n.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2168,6 +2188,57 @@ class CreatePrivilegeCodeRspData(AbstractModel):
         
 
 
+class DeleteAccountGroupRequest(AbstractModel):
+    r"""DeleteAccountGroup请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DomainInstanceId: 管理域实例ID，用于CAM管理域权限分配。若企业未进行管理域的划分，可直接传入根域"1"，此时表示针对当前企业的全部设备和账号进行接口CRUD，具体CRUD的影响范围限制于相应接口的入参。
+        :type DomainInstanceId: str
+        :param _AccountGroupId: <p>分组或者目录id(只支持32位)</p>
+        :type AccountGroupId: int
+        """
+        self._DomainInstanceId = None
+        self._AccountGroupId = None
+
+    @property
+    def DomainInstanceId(self):
+        r"""管理域实例ID，用于CAM管理域权限分配。若企业未进行管理域的划分，可直接传入根域"1"，此时表示针对当前企业的全部设备和账号进行接口CRUD，具体CRUD的影响范围限制于相应接口的入参。
+        :rtype: str
+        """
+        return self._DomainInstanceId
+
+    @DomainInstanceId.setter
+    def DomainInstanceId(self, DomainInstanceId):
+        self._DomainInstanceId = DomainInstanceId
+
+    @property
+    def AccountGroupId(self):
+        r"""<p>分组或者目录id(只支持32位)</p>
+        :rtype: int
+        """
+        return self._AccountGroupId
+
+    @AccountGroupId.setter
+    def AccountGroupId(self, AccountGroupId):
+        self._AccountGroupId = AccountGroupId
+
+
+    def _deserialize(self, params):
+        self._DomainInstanceId = params.get("DomainInstanceId")
+        self._AccountGroupId = params.get("AccountGroupId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DeleteAccountGroupResourcesRequest(AbstractModel):
     r"""DeleteAccountGroupResources请求参数结构体
 
@@ -2226,6 +2297,34 @@ class DeleteAccountGroupResourcesRequest(AbstractModel):
 
 class DeleteAccountGroupResourcesResponse(AbstractModel):
     r"""DeleteAccountGroupResources返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteAccountGroupResponse(AbstractModel):
+    r"""DeleteAccountGroup返回参数结构体
 
     """
 
@@ -2408,47 +2507,47 @@ class DescribeAccountGroupsData(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _NamePath: 账号分组名全路径，点分格式
+        :param _NamePath: <p>账号分组名全路径，点分格式</p>
         :type NamePath: str
-        :param _IdPathArr: 账号分组ID全路径，数组格式
+        :param _IdPathArr: <p>账号分组ID全路径，数组格式</p>
         :type IdPathArr: list of int
-        :param _ExtraInfo: 扩展信息
+        :param _ExtraInfo: <p>扩展信息</p>
         :type ExtraInfo: str
-        :param _Utime: 最后更新时间
+        :param _Utime: <p>最后更新时间</p>
         :type Utime: str
-        :param _ParentId: 父分组ID
+        :param _ParentId: <p>父分组ID</p>
         :type ParentId: int
-        :param _OrgId: 源账号组织ID。使用第三方导入用户源时，记录该分组在源组织架构下的分组ID
+        :param _OrgId: <p>源账号组织ID。使用第三方导入用户源时，记录该分组在源组织架构下的分组ID</p>
         :type OrgId: str
-        :param _Name: 分组名称
+        :param _Name: <p>分组名称</p>
         :type Name: str
-        :param _Id: 分组ID
+        :param _Id: <p>分组ID</p>
         :type Id: int
-        :param _Description: 分组描述
+        :param _Description: <p>分组描述</p>
         :type Description: str
-        :param _Source: 同步数据源
+        :param _Source: <p>同步数据源</p>
         :type Source: int
-        :param _IdPath: 账号分组ID全路径，点分格式
+        :param _IdPath: <p>账号分组ID全路径，点分格式</p>
         :type IdPath: str
-        :param _Itime: 创建时间
+        :param _Itime: <p>创建时间</p>
         :type Itime: str
-        :param _ParentOrgId: 父源账号组织ID。使用第三方导入用户源时，记录该分组在源组织架构下的分组ID
+        :param _ParentOrgId: <p>父源账号组织ID。使用第三方导入用户源时，记录该分组在源组织架构下的分组ID</p>
         :type ParentOrgId: str
-        :param _ImportType: 导入类型
+        :param _ImportType: <p>导入类型</p>
         :type ImportType: str
-        :param _MiniIamId: miniIAM id
+        :param _MiniIamId: <p>miniIAM id</p>
         :type MiniIamId: str
-        :param _UserTotal: 该分组下含子组的所有用户总数
+        :param _UserTotal: <p>该分组下含子组的所有用户总数</p>
         :type UserTotal: int
-        :param _IsLeaf: 是否叶子节点
+        :param _IsLeaf: <p>是否叶子节点</p>
         :type IsLeaf: bool
-        :param _ReadOnly: 是否该账户的直接权限
+        :param _ReadOnly: <p>是否该账户的直接权限</p>
         :type ReadOnly: bool
-        :param _LatestSyncResult: 最新一次同步任务的结果
+        :param _LatestSyncResult: <p>最新一次同步任务的结果</p>
         :type LatestSyncResult: str
-        :param _LatestSyncTime: 最新一次同步任务的结束时间
+        :param _LatestSyncTime: <p>最新一次同步任务的结束时间</p>
         :type LatestSyncTime: str
-        :param _NamePathArr: 分组名称数组
+        :param _NamePathArr: <p>分组名称数组</p>
         :type NamePathArr: list of str
         """
         self._NamePath = None
@@ -2475,7 +2574,7 @@ class DescribeAccountGroupsData(AbstractModel):
 
     @property
     def NamePath(self):
-        r"""账号分组名全路径，点分格式
+        r"""<p>账号分组名全路径，点分格式</p>
         :rtype: str
         """
         return self._NamePath
@@ -2486,7 +2585,7 @@ class DescribeAccountGroupsData(AbstractModel):
 
     @property
     def IdPathArr(self):
-        r"""账号分组ID全路径，数组格式
+        r"""<p>账号分组ID全路径，数组格式</p>
         :rtype: list of int
         """
         return self._IdPathArr
@@ -2497,7 +2596,7 @@ class DescribeAccountGroupsData(AbstractModel):
 
     @property
     def ExtraInfo(self):
-        r"""扩展信息
+        r"""<p>扩展信息</p>
         :rtype: str
         """
         return self._ExtraInfo
@@ -2508,7 +2607,7 @@ class DescribeAccountGroupsData(AbstractModel):
 
     @property
     def Utime(self):
-        r"""最后更新时间
+        r"""<p>最后更新时间</p>
         :rtype: str
         """
         return self._Utime
@@ -2519,7 +2618,7 @@ class DescribeAccountGroupsData(AbstractModel):
 
     @property
     def ParentId(self):
-        r"""父分组ID
+        r"""<p>父分组ID</p>
         :rtype: int
         """
         return self._ParentId
@@ -2530,7 +2629,7 @@ class DescribeAccountGroupsData(AbstractModel):
 
     @property
     def OrgId(self):
-        r"""源账号组织ID。使用第三方导入用户源时，记录该分组在源组织架构下的分组ID
+        r"""<p>源账号组织ID。使用第三方导入用户源时，记录该分组在源组织架构下的分组ID</p>
         :rtype: str
         """
         return self._OrgId
@@ -2541,7 +2640,7 @@ class DescribeAccountGroupsData(AbstractModel):
 
     @property
     def Name(self):
-        r"""分组名称
+        r"""<p>分组名称</p>
         :rtype: str
         """
         return self._Name
@@ -2552,7 +2651,7 @@ class DescribeAccountGroupsData(AbstractModel):
 
     @property
     def Id(self):
-        r"""分组ID
+        r"""<p>分组ID</p>
         :rtype: int
         """
         return self._Id
@@ -2563,7 +2662,7 @@ class DescribeAccountGroupsData(AbstractModel):
 
     @property
     def Description(self):
-        r"""分组描述
+        r"""<p>分组描述</p>
         :rtype: str
         """
         return self._Description
@@ -2574,7 +2673,7 @@ class DescribeAccountGroupsData(AbstractModel):
 
     @property
     def Source(self):
-        r"""同步数据源
+        r"""<p>同步数据源</p>
         :rtype: int
         """
         return self._Source
@@ -2585,7 +2684,7 @@ class DescribeAccountGroupsData(AbstractModel):
 
     @property
     def IdPath(self):
-        r"""账号分组ID全路径，点分格式
+        r"""<p>账号分组ID全路径，点分格式</p>
         :rtype: str
         """
         return self._IdPath
@@ -2596,7 +2695,7 @@ class DescribeAccountGroupsData(AbstractModel):
 
     @property
     def Itime(self):
-        r"""创建时间
+        r"""<p>创建时间</p>
         :rtype: str
         """
         return self._Itime
@@ -2607,7 +2706,7 @@ class DescribeAccountGroupsData(AbstractModel):
 
     @property
     def ParentOrgId(self):
-        r"""父源账号组织ID。使用第三方导入用户源时，记录该分组在源组织架构下的分组ID
+        r"""<p>父源账号组织ID。使用第三方导入用户源时，记录该分组在源组织架构下的分组ID</p>
         :rtype: str
         """
         return self._ParentOrgId
@@ -2618,7 +2717,7 @@ class DescribeAccountGroupsData(AbstractModel):
 
     @property
     def ImportType(self):
-        r"""导入类型
+        r"""<p>导入类型</p>
         :rtype: str
         """
         return self._ImportType
@@ -2629,7 +2728,7 @@ class DescribeAccountGroupsData(AbstractModel):
 
     @property
     def MiniIamId(self):
-        r"""miniIAM id
+        r"""<p>miniIAM id</p>
         :rtype: str
         """
         return self._MiniIamId
@@ -2640,7 +2739,7 @@ class DescribeAccountGroupsData(AbstractModel):
 
     @property
     def UserTotal(self):
-        r"""该分组下含子组的所有用户总数
+        r"""<p>该分组下含子组的所有用户总数</p>
         :rtype: int
         """
         return self._UserTotal
@@ -2651,7 +2750,7 @@ class DescribeAccountGroupsData(AbstractModel):
 
     @property
     def IsLeaf(self):
-        r"""是否叶子节点
+        r"""<p>是否叶子节点</p>
         :rtype: bool
         """
         return self._IsLeaf
@@ -2662,7 +2761,7 @@ class DescribeAccountGroupsData(AbstractModel):
 
     @property
     def ReadOnly(self):
-        r"""是否该账户的直接权限
+        r"""<p>是否该账户的直接权限</p>
         :rtype: bool
         """
         return self._ReadOnly
@@ -2673,7 +2772,7 @@ class DescribeAccountGroupsData(AbstractModel):
 
     @property
     def LatestSyncResult(self):
-        r"""最新一次同步任务的结果
+        r"""<p>最新一次同步任务的结果</p>
         :rtype: str
         """
         return self._LatestSyncResult
@@ -2684,7 +2783,7 @@ class DescribeAccountGroupsData(AbstractModel):
 
     @property
     def LatestSyncTime(self):
-        r"""最新一次同步任务的结束时间
+        r"""<p>最新一次同步任务的结束时间</p>
         :rtype: str
         """
         return self._LatestSyncTime
@@ -2695,7 +2794,7 @@ class DescribeAccountGroupsData(AbstractModel):
 
     @property
     def NamePathArr(self):
-        r"""分组名称数组
+        r"""<p>分组名称数组</p>
         :rtype: list of str
         """
         return self._NamePathArr
@@ -2802,7 +2901,9 @@ class DescribeAccountGroupsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Deepin: 搜索范围：0-仅当前分组的直接子组，1-当前分组的所有子组。默认为0。
+        :param _DomainInstanceId: 管理域实例ID，用于CAM管理域权限分配。若企业未进行管理域的划分，可直接传入根域"1"，此时表示针对当前企业的全部设备和账号进行接口CRUD，具体CRUD的影响范围限制于相应接口的入参。
+        :type DomainInstanceId: str
+        :param _Deepin: （仅SaaS版本适用）搜索范围：0-仅当前分组的直接子组，1-当前分组的所有子组。默认为0。
         :type Deepin: int
         :param _Condition: 查询条件
 
@@ -2820,13 +2921,25 @@ class DescribeAccountGroupsRequest(AbstractModel):
         :param _ParentId: 父分组ID，获取该分组下的子组信息。默认查询全网根分组下子组信息。
         :type ParentId: int
         """
+        self._DomainInstanceId = None
         self._Deepin = None
         self._Condition = None
         self._ParentId = None
 
     @property
+    def DomainInstanceId(self):
+        r"""管理域实例ID，用于CAM管理域权限分配。若企业未进行管理域的划分，可直接传入根域"1"，此时表示针对当前企业的全部设备和账号进行接口CRUD，具体CRUD的影响范围限制于相应接口的入参。
+        :rtype: str
+        """
+        return self._DomainInstanceId
+
+    @DomainInstanceId.setter
+    def DomainInstanceId(self, DomainInstanceId):
+        self._DomainInstanceId = DomainInstanceId
+
+    @property
     def Deepin(self):
-        r"""搜索范围：0-仅当前分组的直接子组，1-当前分组的所有子组。默认为0。
+        r"""（仅SaaS版本适用）搜索范围：0-仅当前分组的直接子组，1-当前分组的所有子组。默认为0。
         :rtype: int
         """
         return self._Deepin
@@ -2870,6 +2983,7 @@ class DescribeAccountGroupsRequest(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._DomainInstanceId = params.get("DomainInstanceId")
         self._Deepin = params.get("Deepin")
         if params.get("Condition") is not None:
             self._Condition = Condition()
@@ -5208,23 +5322,26 @@ class DescribeDLPEdgeNodeGroupsRspItem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Id: 自增id，数据库中唯一
+        :param _Id: <p>自增id，数据库中唯一</p>
         :type Id: int
-        :param _GroupName: 节点分组名称
+        :param _GroupName: <p>节点分组名称</p>
         :type GroupName: str
-        :param _GroupId: 节点分组id
+        :param _GroupId: <p>节点分组id</p>
         :type GroupId: str
-        :param _EdgeCount: 包含边缘节点数量
+        :param _EdgeCount: <p>包含边缘节点数量</p>
         :type EdgeCount: int
+        :param _GroupNameI18n: <p>分组中英文</p>
+        :type GroupNameI18n: list of I18nString
         """
         self._Id = None
         self._GroupName = None
         self._GroupId = None
         self._EdgeCount = None
+        self._GroupNameI18n = None
 
     @property
     def Id(self):
-        r"""自增id，数据库中唯一
+        r"""<p>自增id，数据库中唯一</p>
         :rtype: int
         """
         return self._Id
@@ -5235,7 +5352,7 @@ class DescribeDLPEdgeNodeGroupsRspItem(AbstractModel):
 
     @property
     def GroupName(self):
-        r"""节点分组名称
+        r"""<p>节点分组名称</p>
         :rtype: str
         """
         return self._GroupName
@@ -5246,7 +5363,7 @@ class DescribeDLPEdgeNodeGroupsRspItem(AbstractModel):
 
     @property
     def GroupId(self):
-        r"""节点分组id
+        r"""<p>节点分组id</p>
         :rtype: str
         """
         return self._GroupId
@@ -5257,7 +5374,7 @@ class DescribeDLPEdgeNodeGroupsRspItem(AbstractModel):
 
     @property
     def EdgeCount(self):
-        r"""包含边缘节点数量
+        r"""<p>包含边缘节点数量</p>
         :rtype: int
         """
         return self._EdgeCount
@@ -5266,12 +5383,29 @@ class DescribeDLPEdgeNodeGroupsRspItem(AbstractModel):
     def EdgeCount(self, EdgeCount):
         self._EdgeCount = EdgeCount
 
+    @property
+    def GroupNameI18n(self):
+        r"""<p>分组中英文</p>
+        :rtype: list of I18nString
+        """
+        return self._GroupNameI18n
+
+    @GroupNameI18n.setter
+    def GroupNameI18n(self, GroupNameI18n):
+        self._GroupNameI18n = GroupNameI18n
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
         self._GroupName = params.get("GroupName")
         self._GroupId = params.get("GroupId")
         self._EdgeCount = params.get("EdgeCount")
+        if params.get("GroupNameI18n") is not None:
+            self._GroupNameI18n = []
+            for item in params.get("GroupNameI18n"):
+                obj = I18nString()
+                obj._deserialize(item)
+                self._GroupNameI18n.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -6250,55 +6384,55 @@ class DescribeDeviceDetailListData(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _UserName: 账号名
+        :param _UserName: <p>账号名</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type UserName: str
-        :param _ComputerName: 计算机名
+        :param _ComputerName: <p>计算机名</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ComputerName: str
-        :param _Name: 名称
+        :param _Name: <p>名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
-        :param _AccountGroupIdPath: 用户组IdPath
+        :param _AccountGroupIdPath: <p>用户组IdPath</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type AccountGroupIdPath: str
-        :param _AccountGroupId: 用户组id(只支持32位)
+        :param _AccountGroupId: <p>用户组id(只支持32位)</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type AccountGroupId: int
-        :param _GroupNamePath: 终端组名path
+        :param _GroupNamePath: <p>终端组名path</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type GroupNamePath: str
-        :param _Ip: Ip地址
+        :param _Ip: <p>Ip地址</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Ip: str
-        :param _AccountGroupName: 用户组名
+        :param _AccountGroupName: <p>用户组名</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type AccountGroupName: str
-        :param _GroupIdPath: 终端组IdPath
+        :param _GroupIdPath: <p>终端组IdPath</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type GroupIdPath: str
-        :param _Mid: 唯一标识Mid
+        :param _Mid: <p>唯一标识Mid</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Mid: str
-        :param _IoaUserName: IOA账号名
+        :param _IoaUserName: <p>IOA账号名</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type IoaUserName: str
-        :param _GroupId: 所在分组Id(只支持32位)
+        :param _GroupId: <p>所在分组Id(只支持32位)</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type GroupId: int
-        :param _GroupName: 所在分组Name
+        :param _GroupName: <p>所在分组Name</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type GroupName: str
-        :param _Mac: Mac地址
+        :param _Mac: <p>Mac地址</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Mac: str
-        :param _Version: 软件版本
+        :param _Version: <p>软件版本</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Version: str
-        :param _AccountGroupNamePath: 用户组名Path
+        :param _AccountGroupNamePath: <p>用户组名Path</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type AccountGroupNamePath: str
-        :param _Id: 列表Id(只支持32位)
+        :param _Id: <p>列表Id(只支持32位)</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Id: int
         """
@@ -6322,7 +6456,7 @@ class DescribeDeviceDetailListData(AbstractModel):
 
     @property
     def UserName(self):
-        r"""账号名
+        r"""<p>账号名</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -6334,7 +6468,7 @@ class DescribeDeviceDetailListData(AbstractModel):
 
     @property
     def ComputerName(self):
-        r"""计算机名
+        r"""<p>计算机名</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -6346,7 +6480,7 @@ class DescribeDeviceDetailListData(AbstractModel):
 
     @property
     def Name(self):
-        r"""名称
+        r"""<p>名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -6358,7 +6492,7 @@ class DescribeDeviceDetailListData(AbstractModel):
 
     @property
     def AccountGroupIdPath(self):
-        r"""用户组IdPath
+        r"""<p>用户组IdPath</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -6370,7 +6504,7 @@ class DescribeDeviceDetailListData(AbstractModel):
 
     @property
     def AccountGroupId(self):
-        r"""用户组id(只支持32位)
+        r"""<p>用户组id(只支持32位)</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -6382,7 +6516,7 @@ class DescribeDeviceDetailListData(AbstractModel):
 
     @property
     def GroupNamePath(self):
-        r"""终端组名path
+        r"""<p>终端组名path</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -6394,7 +6528,7 @@ class DescribeDeviceDetailListData(AbstractModel):
 
     @property
     def Ip(self):
-        r"""Ip地址
+        r"""<p>Ip地址</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -6406,7 +6540,7 @@ class DescribeDeviceDetailListData(AbstractModel):
 
     @property
     def AccountGroupName(self):
-        r"""用户组名
+        r"""<p>用户组名</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -6418,7 +6552,7 @@ class DescribeDeviceDetailListData(AbstractModel):
 
     @property
     def GroupIdPath(self):
-        r"""终端组IdPath
+        r"""<p>终端组IdPath</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -6430,7 +6564,7 @@ class DescribeDeviceDetailListData(AbstractModel):
 
     @property
     def Mid(self):
-        r"""唯一标识Mid
+        r"""<p>唯一标识Mid</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -6442,7 +6576,7 @@ class DescribeDeviceDetailListData(AbstractModel):
 
     @property
     def IoaUserName(self):
-        r"""IOA账号名
+        r"""<p>IOA账号名</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -6454,7 +6588,7 @@ class DescribeDeviceDetailListData(AbstractModel):
 
     @property
     def GroupId(self):
-        r"""所在分组Id(只支持32位)
+        r"""<p>所在分组Id(只支持32位)</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -6466,7 +6600,7 @@ class DescribeDeviceDetailListData(AbstractModel):
 
     @property
     def GroupName(self):
-        r"""所在分组Name
+        r"""<p>所在分组Name</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -6478,7 +6612,7 @@ class DescribeDeviceDetailListData(AbstractModel):
 
     @property
     def Mac(self):
-        r"""Mac地址
+        r"""<p>Mac地址</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -6490,7 +6624,7 @@ class DescribeDeviceDetailListData(AbstractModel):
 
     @property
     def Version(self):
-        r"""软件版本
+        r"""<p>软件版本</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -6502,7 +6636,7 @@ class DescribeDeviceDetailListData(AbstractModel):
 
     @property
     def AccountGroupNamePath(self):
-        r"""用户组名Path
+        r"""<p>用户组名Path</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -6514,7 +6648,7 @@ class DescribeDeviceDetailListData(AbstractModel):
 
     @property
     def Id(self):
-        r"""列表Id(只支持32位)
+        r"""<p>列表Id(只支持32位)</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -8083,14 +8217,14 @@ class DescribeLocalAccountAccountGroupsData(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AccountGroupId: 组Id(只支持32位)
+        :param _AccountGroupId: <p>组Id(只支持32位)</p>
         :type AccountGroupId: int
         """
         self._AccountGroupId = None
 
     @property
     def AccountGroupId(self):
-        r"""组Id(只支持32位)
+        r"""<p>组Id(只支持32位)</p>
         :rtype: int
         """
         return self._AccountGroupId
@@ -8119,45 +8253,45 @@ class DescribeLocalAccountsData(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Id: uid，数据库中唯一
+        :param _Id: <p>uid，数据库中唯一</p>
         :type Id: int
-        :param _UserId: 账号，登录账号
+        :param _UserId: <p>账号，登录账号</p>
         :type UserId: str
-        :param _UserName: 用户名
+        :param _UserName: <p>用户名</p>
         :type UserName: str
-        :param _AccountId: 账号id，同Id字段
+        :param _AccountId: <p>账号id，同Id字段</p>
         :type AccountId: int
-        :param _GroupId: 账号所在的分组id
+        :param _GroupId: <p>账号所在的分组id</p>
         :type GroupId: int
-        :param _GroupName: 账号所在的分组名称
+        :param _GroupName: <p>账号所在的分组名称</p>
         :type GroupName: str
-        :param _NamePath: 账号所在的分组名称路径，用英文.分割
+        :param _NamePath: <p>账号所在的分组名称路径，用英文.分割</p>
         :type NamePath: str
-        :param _Source: 账号来源,0表示本地账号(只支持32位)
+        :param _Source: <p>账号来源,0表示本地账号(只支持32位)</p>
         :type Source: int
-        :param _Status: 账号状态,0禁用，1启用(只支持32位)
+        :param _Status: <p>账号状态,0禁用，1启用(只支持32位)</p>
         :type Status: int
-        :param _Itime: 账号的创建时间
+        :param _Itime: <p>账号的创建时间</p>
         :type Itime: str
-        :param _Utime: 账号的最后更新时间
+        :param _Utime: <p>账号的最后更新时间</p>
         :type Utime: str
-        :param _ExtraInfo: 账号的扩展信息，包含邮箱、手机号、身份证、职位等信息
+        :param _ExtraInfo: <p>账号的扩展信息，包含邮箱、手机号、身份证、职位等信息</p>
         :type ExtraInfo: str
-        :param _RiskLevel: 用户风险等级，枚举：none, low, middle, high
+        :param _RiskLevel: <p>用户风险等级，枚举：none, low, middle, high</p>
         :type RiskLevel: str
-        :param _AccountGroups: 所属组
+        :param _AccountGroups: <p>所属组</p>
         :type AccountGroups: list of DescribeLocalAccountAccountGroupsData
-        :param _MobileBindNum: 绑定手机端设备数
+        :param _MobileBindNum: <p>绑定手机端设备数</p>
         :type MobileBindNum: int
-        :param _PcBindNum: 绑定Pc端设备数
+        :param _PcBindNum: <p>绑定Pc端设备数</p>
         :type PcBindNum: int
-        :param _OnlineStatus: 账号在线状态 1：在线 2：离线
+        :param _OnlineStatus: <p>账号在线状态 1：在线 2：离线</p>
         :type OnlineStatus: int
-        :param _ActiveStatus: 账号活跃状态 1：活跃 2：非活跃
+        :param _ActiveStatus: <p>账号活跃状态 1：活跃 2：非活跃</p>
         :type ActiveStatus: int
-        :param _LoginTime: 账号登录时间
+        :param _LoginTime: <p>账号登录时间</p>
         :type LoginTime: str
-        :param _LogoutTime: 账号登出时间
+        :param _LogoutTime: <p>账号登出时间</p>
         :type LogoutTime: str
         """
         self._Id = None
@@ -8183,7 +8317,7 @@ class DescribeLocalAccountsData(AbstractModel):
 
     @property
     def Id(self):
-        r"""uid，数据库中唯一
+        r"""<p>uid，数据库中唯一</p>
         :rtype: int
         """
         return self._Id
@@ -8194,7 +8328,7 @@ class DescribeLocalAccountsData(AbstractModel):
 
     @property
     def UserId(self):
-        r"""账号，登录账号
+        r"""<p>账号，登录账号</p>
         :rtype: str
         """
         return self._UserId
@@ -8205,7 +8339,7 @@ class DescribeLocalAccountsData(AbstractModel):
 
     @property
     def UserName(self):
-        r"""用户名
+        r"""<p>用户名</p>
         :rtype: str
         """
         return self._UserName
@@ -8216,7 +8350,7 @@ class DescribeLocalAccountsData(AbstractModel):
 
     @property
     def AccountId(self):
-        r"""账号id，同Id字段
+        r"""<p>账号id，同Id字段</p>
         :rtype: int
         """
         return self._AccountId
@@ -8227,7 +8361,7 @@ class DescribeLocalAccountsData(AbstractModel):
 
     @property
     def GroupId(self):
-        r"""账号所在的分组id
+        r"""<p>账号所在的分组id</p>
         :rtype: int
         """
         return self._GroupId
@@ -8238,7 +8372,7 @@ class DescribeLocalAccountsData(AbstractModel):
 
     @property
     def GroupName(self):
-        r"""账号所在的分组名称
+        r"""<p>账号所在的分组名称</p>
         :rtype: str
         """
         return self._GroupName
@@ -8249,7 +8383,7 @@ class DescribeLocalAccountsData(AbstractModel):
 
     @property
     def NamePath(self):
-        r"""账号所在的分组名称路径，用英文.分割
+        r"""<p>账号所在的分组名称路径，用英文.分割</p>
         :rtype: str
         """
         return self._NamePath
@@ -8260,7 +8394,7 @@ class DescribeLocalAccountsData(AbstractModel):
 
     @property
     def Source(self):
-        r"""账号来源,0表示本地账号(只支持32位)
+        r"""<p>账号来源,0表示本地账号(只支持32位)</p>
         :rtype: int
         """
         return self._Source
@@ -8271,7 +8405,7 @@ class DescribeLocalAccountsData(AbstractModel):
 
     @property
     def Status(self):
-        r"""账号状态,0禁用，1启用(只支持32位)
+        r"""<p>账号状态,0禁用，1启用(只支持32位)</p>
         :rtype: int
         """
         return self._Status
@@ -8282,7 +8416,7 @@ class DescribeLocalAccountsData(AbstractModel):
 
     @property
     def Itime(self):
-        r"""账号的创建时间
+        r"""<p>账号的创建时间</p>
         :rtype: str
         """
         return self._Itime
@@ -8293,7 +8427,7 @@ class DescribeLocalAccountsData(AbstractModel):
 
     @property
     def Utime(self):
-        r"""账号的最后更新时间
+        r"""<p>账号的最后更新时间</p>
         :rtype: str
         """
         return self._Utime
@@ -8304,7 +8438,7 @@ class DescribeLocalAccountsData(AbstractModel):
 
     @property
     def ExtraInfo(self):
-        r"""账号的扩展信息，包含邮箱、手机号、身份证、职位等信息
+        r"""<p>账号的扩展信息，包含邮箱、手机号、身份证、职位等信息</p>
         :rtype: str
         """
         return self._ExtraInfo
@@ -8315,7 +8449,7 @@ class DescribeLocalAccountsData(AbstractModel):
 
     @property
     def RiskLevel(self):
-        r"""用户风险等级，枚举：none, low, middle, high
+        r"""<p>用户风险等级，枚举：none, low, middle, high</p>
         :rtype: str
         """
         return self._RiskLevel
@@ -8326,7 +8460,7 @@ class DescribeLocalAccountsData(AbstractModel):
 
     @property
     def AccountGroups(self):
-        r"""所属组
+        r"""<p>所属组</p>
         :rtype: list of DescribeLocalAccountAccountGroupsData
         """
         return self._AccountGroups
@@ -8337,7 +8471,7 @@ class DescribeLocalAccountsData(AbstractModel):
 
     @property
     def MobileBindNum(self):
-        r"""绑定手机端设备数
+        r"""<p>绑定手机端设备数</p>
         :rtype: int
         """
         return self._MobileBindNum
@@ -8348,7 +8482,7 @@ class DescribeLocalAccountsData(AbstractModel):
 
     @property
     def PcBindNum(self):
-        r"""绑定Pc端设备数
+        r"""<p>绑定Pc端设备数</p>
         :rtype: int
         """
         return self._PcBindNum
@@ -8359,7 +8493,7 @@ class DescribeLocalAccountsData(AbstractModel):
 
     @property
     def OnlineStatus(self):
-        r"""账号在线状态 1：在线 2：离线
+        r"""<p>账号在线状态 1：在线 2：离线</p>
         :rtype: int
         """
         return self._OnlineStatus
@@ -8370,7 +8504,7 @@ class DescribeLocalAccountsData(AbstractModel):
 
     @property
     def ActiveStatus(self):
-        r"""账号活跃状态 1：活跃 2：非活跃
+        r"""<p>账号活跃状态 1：活跃 2：非活跃</p>
         :rtype: int
         """
         return self._ActiveStatus
@@ -8381,7 +8515,7 @@ class DescribeLocalAccountsData(AbstractModel):
 
     @property
     def LoginTime(self):
-        r"""账号登录时间
+        r"""<p>账号登录时间</p>
         :rtype: str
         """
         return self._LoginTime
@@ -8392,7 +8526,7 @@ class DescribeLocalAccountsData(AbstractModel):
 
     @property
     def LogoutTime(self):
-        r"""账号登出时间
+        r"""<p>账号登出时间</p>
         :rtype: str
         """
         return self._LogoutTime
@@ -9112,43 +9246,43 @@ class DescribeSoftCensusListByDeviceData(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _UserName: 终端用户名
+        :param _UserName: <p>终端用户名</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type UserName: str
-        :param _MacAddr: mac地址
+        :param _MacAddr: <p>mac地址</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type MacAddr: str
-        :param _Name: 终端计算机名称
+        :param _Name: <p>终端计算机名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Name: str
-        :param _GroupNamePath: 终端组路径名
+        :param _GroupNamePath: <p>终端组路径名</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type GroupNamePath: str
-        :param _Ip: IP地址
+        :param _Ip: <p>IP地址</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Ip: str
-        :param _Mid: 唯一标识Mid
+        :param _Mid: <p>唯一标识Mid</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Mid: str
-        :param _IoaUserName: 企业账户名
+        :param _IoaUserName: <p>企业账户名</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type IoaUserName: str
-        :param _GroupId: 终端分组Id(只支持32位)
+        :param _GroupId: <p>终端分组Id(只支持32位)</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type GroupId: int
-        :param _GroupName: 终端组名
+        :param _GroupName: <p>终端组名</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type GroupName: str
-        :param _Id: 终端列表Id(只支持32位)
+        :param _Id: <p>终端列表Id(只支持32位)</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Id: int
-        :param _SoftNum: 软件数量(只支持32位)
+        :param _SoftNum: <p>软件数量(只支持32位)</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type SoftNum: int
-        :param _PiracyRisk: 盗版风险（1=风险;2=未知）
+        :param _PiracyRisk: <p>盗版风险（1=风险;2=未知）</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type PiracyRisk: int
-        :param _RemarkName: 终端备注名
+        :param _RemarkName: <p>终端备注名</p>
         :type RemarkName: str
         """
         self._UserName = None
@@ -9167,7 +9301,7 @@ class DescribeSoftCensusListByDeviceData(AbstractModel):
 
     @property
     def UserName(self):
-        r"""终端用户名
+        r"""<p>终端用户名</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -9179,7 +9313,7 @@ class DescribeSoftCensusListByDeviceData(AbstractModel):
 
     @property
     def MacAddr(self):
-        r"""mac地址
+        r"""<p>mac地址</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -9191,7 +9325,7 @@ class DescribeSoftCensusListByDeviceData(AbstractModel):
 
     @property
     def Name(self):
-        r"""终端计算机名称
+        r"""<p>终端计算机名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -9203,7 +9337,7 @@ class DescribeSoftCensusListByDeviceData(AbstractModel):
 
     @property
     def GroupNamePath(self):
-        r"""终端组路径名
+        r"""<p>终端组路径名</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -9215,7 +9349,7 @@ class DescribeSoftCensusListByDeviceData(AbstractModel):
 
     @property
     def Ip(self):
-        r"""IP地址
+        r"""<p>IP地址</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -9227,7 +9361,7 @@ class DescribeSoftCensusListByDeviceData(AbstractModel):
 
     @property
     def Mid(self):
-        r"""唯一标识Mid
+        r"""<p>唯一标识Mid</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -9239,7 +9373,7 @@ class DescribeSoftCensusListByDeviceData(AbstractModel):
 
     @property
     def IoaUserName(self):
-        r"""企业账户名
+        r"""<p>企业账户名</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -9251,7 +9385,7 @@ class DescribeSoftCensusListByDeviceData(AbstractModel):
 
     @property
     def GroupId(self):
-        r"""终端分组Id(只支持32位)
+        r"""<p>终端分组Id(只支持32位)</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -9263,7 +9397,7 @@ class DescribeSoftCensusListByDeviceData(AbstractModel):
 
     @property
     def GroupName(self):
-        r"""终端组名
+        r"""<p>终端组名</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -9275,7 +9409,7 @@ class DescribeSoftCensusListByDeviceData(AbstractModel):
 
     @property
     def Id(self):
-        r"""终端列表Id(只支持32位)
+        r"""<p>终端列表Id(只支持32位)</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -9287,7 +9421,7 @@ class DescribeSoftCensusListByDeviceData(AbstractModel):
 
     @property
     def SoftNum(self):
-        r"""软件数量(只支持32位)
+        r"""<p>软件数量(只支持32位)</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -9299,7 +9433,7 @@ class DescribeSoftCensusListByDeviceData(AbstractModel):
 
     @property
     def PiracyRisk(self):
-        r"""盗版风险（1=风险;2=未知）
+        r"""<p>盗版风险（1=风险;2=未知）</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -9311,7 +9445,7 @@ class DescribeSoftCensusListByDeviceData(AbstractModel):
 
     @property
     def RemarkName(self):
-        r"""终端备注名
+        r"""<p>终端备注名</p>
         :rtype: str
         """
         return self._RemarkName
@@ -10781,41 +10915,41 @@ class DeviceGroupDetail(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Id: 设备组id
+        :param _Id: <p>设备组id</p>
         :type Id: int
-        :param _Name: 设备组名称
+        :param _Name: <p>设备组名称</p>
         :type Name: str
-        :param _Description: 设备组描述
+        :param _Description: <p>设备组描述</p>
         :type Description: str
-        :param _ParentId: 父节点id
+        :param _ParentId: <p>父节点id</p>
         :type ParentId: int
-        :param _IdPath: 基于id的节点路径
+        :param _IdPath: <p>基于id的节点路径</p>
         :type IdPath: str
-        :param _NamePath: 基于名称的节点路径
+        :param _NamePath: <p>基于名称的节点路径</p>
         :type NamePath: str
-        :param _Locked: 分组锁定状态
+        :param _Locked: <p>分组锁定状态</p>
         :type Locked: int
-        :param _OsType: 系统类型（0: win，1：linux，2: mac，4：android，5：ios   ）
+        :param _OsType: <p>系统类型（0: win，1：linux，2: mac，4：android，5：ios   ）</p>
         :type OsType: int
-        :param _Sort: 排序
+        :param _Sort: <p>排序</p>
         :type Sort: int
-        :param _FromAuto: 是否自动调整
+        :param _FromAuto: <p>是否自动调整</p>
         :type FromAuto: int
-        :param _Count: 子节点数量
+        :param _Count: <p>子节点数量</p>
         :type Count: int
-        :param _Icon: 图标
+        :param _Icon: <p>图标</p>
         :type Icon: str
-        :param _WithIp: 是否有ip
+        :param _WithIp: <p>是否有ip</p>
         :type WithIp: int
-        :param _HasIp: 是否有组ip
+        :param _HasIp: <p>是否有组ip</p>
         :type HasIp: bool
-        :param _IsLeaf: 是否是叶子节点
+        :param _IsLeaf: <p>是否是叶子节点</p>
         :type IsLeaf: bool
-        :param _ReadOnly: 是否只读
+        :param _ReadOnly: <p>是否只读</p>
         :type ReadOnly: bool
-        :param _BindAccount: 对应绑定的账号id
+        :param _BindAccount: <p>对应绑定的账号id</p>
         :type BindAccount: int
-        :param _BindAccountName: 绑定账号的用户名
+        :param _BindAccountName: <p>绑定账号的用户名</p>
         :type BindAccountName: str
         """
         self._Id = None
@@ -10839,7 +10973,7 @@ class DeviceGroupDetail(AbstractModel):
 
     @property
     def Id(self):
-        r"""设备组id
+        r"""<p>设备组id</p>
         :rtype: int
         """
         return self._Id
@@ -10850,7 +10984,7 @@ class DeviceGroupDetail(AbstractModel):
 
     @property
     def Name(self):
-        r"""设备组名称
+        r"""<p>设备组名称</p>
         :rtype: str
         """
         return self._Name
@@ -10861,7 +10995,7 @@ class DeviceGroupDetail(AbstractModel):
 
     @property
     def Description(self):
-        r"""设备组描述
+        r"""<p>设备组描述</p>
         :rtype: str
         """
         return self._Description
@@ -10872,7 +11006,7 @@ class DeviceGroupDetail(AbstractModel):
 
     @property
     def ParentId(self):
-        r"""父节点id
+        r"""<p>父节点id</p>
         :rtype: int
         """
         return self._ParentId
@@ -10883,7 +11017,7 @@ class DeviceGroupDetail(AbstractModel):
 
     @property
     def IdPath(self):
-        r"""基于id的节点路径
+        r"""<p>基于id的节点路径</p>
         :rtype: str
         """
         return self._IdPath
@@ -10894,7 +11028,7 @@ class DeviceGroupDetail(AbstractModel):
 
     @property
     def NamePath(self):
-        r"""基于名称的节点路径
+        r"""<p>基于名称的节点路径</p>
         :rtype: str
         """
         return self._NamePath
@@ -10905,7 +11039,7 @@ class DeviceGroupDetail(AbstractModel):
 
     @property
     def Locked(self):
-        r"""分组锁定状态
+        r"""<p>分组锁定状态</p>
         :rtype: int
         """
         return self._Locked
@@ -10916,7 +11050,7 @@ class DeviceGroupDetail(AbstractModel):
 
     @property
     def OsType(self):
-        r"""系统类型（0: win，1：linux，2: mac，4：android，5：ios   ）
+        r"""<p>系统类型（0: win，1：linux，2: mac，4：android，5：ios   ）</p>
         :rtype: int
         """
         return self._OsType
@@ -10927,7 +11061,7 @@ class DeviceGroupDetail(AbstractModel):
 
     @property
     def Sort(self):
-        r"""排序
+        r"""<p>排序</p>
         :rtype: int
         """
         return self._Sort
@@ -10938,7 +11072,7 @@ class DeviceGroupDetail(AbstractModel):
 
     @property
     def FromAuto(self):
-        r"""是否自动调整
+        r"""<p>是否自动调整</p>
         :rtype: int
         """
         return self._FromAuto
@@ -10949,7 +11083,7 @@ class DeviceGroupDetail(AbstractModel):
 
     @property
     def Count(self):
-        r"""子节点数量
+        r"""<p>子节点数量</p>
         :rtype: int
         """
         return self._Count
@@ -10960,7 +11094,7 @@ class DeviceGroupDetail(AbstractModel):
 
     @property
     def Icon(self):
-        r"""图标
+        r"""<p>图标</p>
         :rtype: str
         """
         return self._Icon
@@ -10971,7 +11105,7 @@ class DeviceGroupDetail(AbstractModel):
 
     @property
     def WithIp(self):
-        r"""是否有ip
+        r"""<p>是否有ip</p>
         :rtype: int
         """
         return self._WithIp
@@ -10982,7 +11116,7 @@ class DeviceGroupDetail(AbstractModel):
 
     @property
     def HasIp(self):
-        r"""是否有组ip
+        r"""<p>是否有组ip</p>
         :rtype: bool
         """
         return self._HasIp
@@ -10993,7 +11127,7 @@ class DeviceGroupDetail(AbstractModel):
 
     @property
     def IsLeaf(self):
-        r"""是否是叶子节点
+        r"""<p>是否是叶子节点</p>
         :rtype: bool
         """
         return self._IsLeaf
@@ -11004,7 +11138,7 @@ class DeviceGroupDetail(AbstractModel):
 
     @property
     def ReadOnly(self):
-        r"""是否只读
+        r"""<p>是否只读</p>
         :rtype: bool
         """
         return self._ReadOnly
@@ -11015,7 +11149,7 @@ class DeviceGroupDetail(AbstractModel):
 
     @property
     def BindAccount(self):
-        r"""对应绑定的账号id
+        r"""<p>对应绑定的账号id</p>
         :rtype: int
         """
         return self._BindAccount
@@ -11026,7 +11160,7 @@ class DeviceGroupDetail(AbstractModel):
 
     @property
     def BindAccountName(self):
-        r"""绑定账号的用户名
+        r"""<p>绑定账号的用户名</p>
         :rtype: str
         """
         return self._BindAccountName
@@ -11639,17 +11773,17 @@ class DeviceVirtualDeviceGroupsDetail(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Id: 终端自定义分组id
+        :param _Id: <p>终端自定义分组id</p>
         :type Id: int
-        :param _DeviceVirtualGroupName: 自定义分组名称
+        :param _DeviceVirtualGroupName: <p>自定义分组名称</p>
         :type DeviceVirtualGroupName: str
-        :param _DeviceCount: 设备数
+        :param _DeviceCount: <p>设备数</p>
         :type DeviceCount: int
-        :param _OsType: 系统类型（0: win，1：linux，2: mac，4：android，5：ios  ）
+        :param _OsType: <p>系统类型（0: win，1：linux，2: mac，4：android，5：ios  ）</p>
         :type OsType: int
-        :param _Itime: 创建时间
+        :param _Itime: <p>创建时间</p>
         :type Itime: str
-        :param _Utime: 更新时间
+        :param _Utime: <p>更新时间</p>
         :type Utime: str
         """
         self._Id = None
@@ -11661,7 +11795,7 @@ class DeviceVirtualDeviceGroupsDetail(AbstractModel):
 
     @property
     def Id(self):
-        r"""终端自定义分组id
+        r"""<p>终端自定义分组id</p>
         :rtype: int
         """
         return self._Id
@@ -11672,7 +11806,7 @@ class DeviceVirtualDeviceGroupsDetail(AbstractModel):
 
     @property
     def DeviceVirtualGroupName(self):
-        r"""自定义分组名称
+        r"""<p>自定义分组名称</p>
         :rtype: str
         """
         return self._DeviceVirtualGroupName
@@ -11683,7 +11817,7 @@ class DeviceVirtualDeviceGroupsDetail(AbstractModel):
 
     @property
     def DeviceCount(self):
-        r"""设备数
+        r"""<p>设备数</p>
         :rtype: int
         """
         return self._DeviceCount
@@ -11694,7 +11828,7 @@ class DeviceVirtualDeviceGroupsDetail(AbstractModel):
 
     @property
     def OsType(self):
-        r"""系统类型（0: win，1：linux，2: mac，4：android，5：ios  ）
+        r"""<p>系统类型（0: win，1：linux，2: mac，4：android，5：ios  ）</p>
         :rtype: int
         """
         return self._OsType
@@ -11705,7 +11839,7 @@ class DeviceVirtualDeviceGroupsDetail(AbstractModel):
 
     @property
     def Itime(self):
-        r"""创建时间
+        r"""<p>创建时间</p>
         :rtype: str
         """
         return self._Itime
@@ -11716,7 +11850,7 @@ class DeviceVirtualDeviceGroupsDetail(AbstractModel):
 
     @property
     def Utime(self):
-        r"""更新时间
+        r"""<p>更新时间</p>
         :rtype: str
         """
         return self._Utime
@@ -11772,6 +11906,8 @@ class DirectoryConfigData(AbstractModel):
         :type SourceId: str
         :param _DisplayOnLoginPage: <p>是否在登录页展示</p>
         :type DisplayOnLoginPage: bool
+        :param _NameI18n: <p>名称多语言</p>
+        :type NameI18n: list of I18nString
         """
         self._Id = None
         self._Type = None
@@ -11784,6 +11920,7 @@ class DirectoryConfigData(AbstractModel):
         self._Description = None
         self._SourceId = None
         self._DisplayOnLoginPage = None
+        self._NameI18n = None
 
     @property
     def Id(self):
@@ -11906,6 +12043,17 @@ class DirectoryConfigData(AbstractModel):
     def DisplayOnLoginPage(self, DisplayOnLoginPage):
         self._DisplayOnLoginPage = DisplayOnLoginPage
 
+    @property
+    def NameI18n(self):
+        r"""<p>名称多语言</p>
+        :rtype: list of I18nString
+        """
+        return self._NameI18n
+
+    @NameI18n.setter
+    def NameI18n(self, NameI18n):
+        self._NameI18n = NameI18n
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
@@ -11919,6 +12067,12 @@ class DirectoryConfigData(AbstractModel):
         self._Description = params.get("Description")
         self._SourceId = params.get("SourceId")
         self._DisplayOnLoginPage = params.get("DisplayOnLoginPage")
+        if params.get("NameI18n") is not None:
+            self._NameI18n = []
+            for item in params.get("NameI18n"):
+                obj = I18nString()
+                obj._deserialize(item)
+                self._NameI18n.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -11954,6 +12108,8 @@ class DirectoryConfigResultData(AbstractModel):
         :type AuthSupportPlatforms: list of str
         :param _AuthMethods: <p>认证方式，授权认证/扫码认证 等</p>
         :type AuthMethods: list of str
+        :param _NameI18n: <p>名称多语言支持</p>
+        :type NameI18n: list of I18nString
         """
         self._Id = None
         self._Name = None
@@ -11964,6 +12120,7 @@ class DirectoryConfigResultData(AbstractModel):
         self._AuthPolicyId = None
         self._AuthSupportPlatforms = None
         self._AuthMethods = None
+        self._NameI18n = None
 
     @property
     def Id(self):
@@ -12064,6 +12221,17 @@ class DirectoryConfigResultData(AbstractModel):
     def AuthMethods(self, AuthMethods):
         self._AuthMethods = AuthMethods
 
+    @property
+    def NameI18n(self):
+        r"""<p>名称多语言支持</p>
+        :rtype: list of I18nString
+        """
+        return self._NameI18n
+
+    @NameI18n.setter
+    def NameI18n(self, NameI18n):
+        self._NameI18n = NameI18n
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
@@ -12075,6 +12243,12 @@ class DirectoryConfigResultData(AbstractModel):
         self._AuthPolicyId = params.get("AuthPolicyId")
         self._AuthSupportPlatforms = params.get("AuthSupportPlatforms")
         self._AuthMethods = params.get("AuthMethods")
+        if params.get("NameI18n") is not None:
+            self._NameI18n = []
+            for item in params.get("NameI18n"):
+                obj = I18nString()
+                obj._deserialize(item)
+                self._NameI18n.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -12540,39 +12714,39 @@ class GetAccountGroupData(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _NamePath: 分组名称全路径，点分格式
+        :param _NamePath: <p>分组名称全路径，点分格式</p>
         :type NamePath: str
-        :param _IdPathArr: 分组ID全路径，数组格式
+        :param _IdPathArr: <p>分组ID全路径，数组格式</p>
         :type IdPathArr: list of int
-        :param _ExtraInfo: 分组扩展信息
+        :param _ExtraInfo: <p>分组扩展信息</p>
         :type ExtraInfo: str
-        :param _Utime: 最后更新时间
+        :param _Utime: <p>最后更新时间</p>
         :type Utime: str
-        :param _ParentId: 当前分组的父分组ID
+        :param _ParentId: <p>当前分组的父分组ID</p>
         :type ParentId: int
-        :param _OrgId: 源账号组ID，该字段仅适用于第三方同步的组织架构，通过OrgId-Id构成源组织架构分组ID-现组织架构分组ID映射关系
+        :param _OrgId: <p>源账号组ID，该字段仅适用于第三方同步的组织架构，通过OrgId-Id构成源组织架构分组ID-现组织架构分组ID映射关系</p>
         :type OrgId: str
-        :param _Name: 分组名称
+        :param _Name: <p>分组名称</p>
         :type Name: str
-        :param _Id: 分组ID
+        :param _Id: <p>分组ID</p>
         :type Id: int
-        :param _Description: 分组描述
+        :param _Description: <p>分组描述</p>
         :type Description: str
-        :param _Source: 分组导入源(只支持32位)
+        :param _Source: <p>分组导入源(只支持32位)</p>
         :type Source: int
-        :param _IdPath: 分组ID全路径，点分格式
+        :param _IdPath: <p>分组ID全路径，点分格式</p>
         :type IdPath: str
-        :param _Itime: 创建时间
+        :param _Itime: <p>创建时间</p>
         :type Itime: str
-        :param _ParentOrgId: 父源账号组ID，该字段仅适用于第三方同步的组织架构
+        :param _ParentOrgId: <p>父源账号组ID，该字段仅适用于第三方同步的组织架构</p>
         :type ParentOrgId: str
-        :param _Import: 导入信息,json格式
+        :param _Import: <p>导入信息,json格式</p>
         :type Import: str
-        :param _ImportEnable: 是否开启导入架构
+        :param _ImportEnable: <p>是否开启导入架构</p>
         :type ImportEnable: bool
-        :param _ImportType: 导入类型
+        :param _ImportType: <p>导入类型</p>
         :type ImportType: str
-        :param _MiniIamId: miniIAMId，MiniIAM源才有
+        :param _MiniIamId: <p>miniIAMId，MiniIAM源才有</p>
         :type MiniIamId: str
         """
         self._NamePath = None
@@ -12595,7 +12769,7 @@ class GetAccountGroupData(AbstractModel):
 
     @property
     def NamePath(self):
-        r"""分组名称全路径，点分格式
+        r"""<p>分组名称全路径，点分格式</p>
         :rtype: str
         """
         return self._NamePath
@@ -12606,7 +12780,7 @@ class GetAccountGroupData(AbstractModel):
 
     @property
     def IdPathArr(self):
-        r"""分组ID全路径，数组格式
+        r"""<p>分组ID全路径，数组格式</p>
         :rtype: list of int
         """
         return self._IdPathArr
@@ -12617,7 +12791,7 @@ class GetAccountGroupData(AbstractModel):
 
     @property
     def ExtraInfo(self):
-        r"""分组扩展信息
+        r"""<p>分组扩展信息</p>
         :rtype: str
         """
         return self._ExtraInfo
@@ -12628,7 +12802,7 @@ class GetAccountGroupData(AbstractModel):
 
     @property
     def Utime(self):
-        r"""最后更新时间
+        r"""<p>最后更新时间</p>
         :rtype: str
         """
         return self._Utime
@@ -12639,7 +12813,7 @@ class GetAccountGroupData(AbstractModel):
 
     @property
     def ParentId(self):
-        r"""当前分组的父分组ID
+        r"""<p>当前分组的父分组ID</p>
         :rtype: int
         """
         return self._ParentId
@@ -12650,7 +12824,7 @@ class GetAccountGroupData(AbstractModel):
 
     @property
     def OrgId(self):
-        r"""源账号组ID，该字段仅适用于第三方同步的组织架构，通过OrgId-Id构成源组织架构分组ID-现组织架构分组ID映射关系
+        r"""<p>源账号组ID，该字段仅适用于第三方同步的组织架构，通过OrgId-Id构成源组织架构分组ID-现组织架构分组ID映射关系</p>
         :rtype: str
         """
         return self._OrgId
@@ -12661,7 +12835,7 @@ class GetAccountGroupData(AbstractModel):
 
     @property
     def Name(self):
-        r"""分组名称
+        r"""<p>分组名称</p>
         :rtype: str
         """
         return self._Name
@@ -12672,7 +12846,7 @@ class GetAccountGroupData(AbstractModel):
 
     @property
     def Id(self):
-        r"""分组ID
+        r"""<p>分组ID</p>
         :rtype: int
         """
         return self._Id
@@ -12683,7 +12857,7 @@ class GetAccountGroupData(AbstractModel):
 
     @property
     def Description(self):
-        r"""分组描述
+        r"""<p>分组描述</p>
         :rtype: str
         """
         return self._Description
@@ -12694,7 +12868,7 @@ class GetAccountGroupData(AbstractModel):
 
     @property
     def Source(self):
-        r"""分组导入源(只支持32位)
+        r"""<p>分组导入源(只支持32位)</p>
         :rtype: int
         """
         return self._Source
@@ -12705,7 +12879,7 @@ class GetAccountGroupData(AbstractModel):
 
     @property
     def IdPath(self):
-        r"""分组ID全路径，点分格式
+        r"""<p>分组ID全路径，点分格式</p>
         :rtype: str
         """
         return self._IdPath
@@ -12716,7 +12890,7 @@ class GetAccountGroupData(AbstractModel):
 
     @property
     def Itime(self):
-        r"""创建时间
+        r"""<p>创建时间</p>
         :rtype: str
         """
         return self._Itime
@@ -12727,7 +12901,7 @@ class GetAccountGroupData(AbstractModel):
 
     @property
     def ParentOrgId(self):
-        r"""父源账号组ID，该字段仅适用于第三方同步的组织架构
+        r"""<p>父源账号组ID，该字段仅适用于第三方同步的组织架构</p>
         :rtype: str
         """
         return self._ParentOrgId
@@ -12738,7 +12912,7 @@ class GetAccountGroupData(AbstractModel):
 
     @property
     def Import(self):
-        r"""导入信息,json格式
+        r"""<p>导入信息,json格式</p>
         :rtype: str
         """
         return self._Import
@@ -12749,7 +12923,7 @@ class GetAccountGroupData(AbstractModel):
 
     @property
     def ImportEnable(self):
-        r"""是否开启导入架构
+        r"""<p>是否开启导入架构</p>
         :rtype: bool
         """
         return self._ImportEnable
@@ -12760,7 +12934,7 @@ class GetAccountGroupData(AbstractModel):
 
     @property
     def ImportType(self):
-        r"""导入类型
+        r"""<p>导入类型</p>
         :rtype: str
         """
         return self._ImportType
@@ -12771,7 +12945,7 @@ class GetAccountGroupData(AbstractModel):
 
     @property
     def MiniIamId(self):
-        r"""miniIAMId，MiniIAM源才有
+        r"""<p>miniIAMId，MiniIAM源才有</p>
         :rtype: str
         """
         return self._MiniIamId
@@ -13320,25 +13494,25 @@ class GrantResourcesByVirtualGroupsResponse(AbstractModel):
 
 
 class GrantedAccountGroupItem(AbstractModel):
-    r"""GrantedAccountItem
+    r"""账号分组授权信息
 
     """
 
     def __init__(self):
         r"""
-        :param _AccountGroupId: 账户组Id
+        :param _AccountGroupId: <p>账户组Id</p>
         :type AccountGroupId: int
-        :param _Name: 分组名称
+        :param _Name: <p>分组名称</p>
         :type Name: str
-        :param _IdPathArray: 所属分组Id
+        :param _IdPathArray: <p>所属分组Id</p>
         :type IdPathArray: list of int non-negative
-        :param _NamePathArray: 所属分组NamePathArray
+        :param _NamePathArray: <p>所属分组NamePathArray</p>
         :type NamePathArray: list of str
-        :param _AccountCount: 目录id
+        :param _AccountCount: <p>目录id</p>
         :type AccountCount: int
-        :param _ExpireTime: 过期时间
+        :param _ExpireTime: <p>过期时间</p>
         :type ExpireTime: int
-        :param _RelationId: 关联id
+        :param _RelationId: <p>关联id</p>
         :type RelationId: int
         """
         self._AccountGroupId = None
@@ -13351,7 +13525,7 @@ class GrantedAccountGroupItem(AbstractModel):
 
     @property
     def AccountGroupId(self):
-        r"""账户组Id
+        r"""<p>账户组Id</p>
         :rtype: int
         """
         return self._AccountGroupId
@@ -13362,7 +13536,7 @@ class GrantedAccountGroupItem(AbstractModel):
 
     @property
     def Name(self):
-        r"""分组名称
+        r"""<p>分组名称</p>
         :rtype: str
         """
         return self._Name
@@ -13373,7 +13547,7 @@ class GrantedAccountGroupItem(AbstractModel):
 
     @property
     def IdPathArray(self):
-        r"""所属分组Id
+        r"""<p>所属分组Id</p>
         :rtype: list of int non-negative
         """
         return self._IdPathArray
@@ -13384,7 +13558,7 @@ class GrantedAccountGroupItem(AbstractModel):
 
     @property
     def NamePathArray(self):
-        r"""所属分组NamePathArray
+        r"""<p>所属分组NamePathArray</p>
         :rtype: list of str
         """
         return self._NamePathArray
@@ -13395,7 +13569,7 @@ class GrantedAccountGroupItem(AbstractModel):
 
     @property
     def AccountCount(self):
-        r"""目录id
+        r"""<p>目录id</p>
         :rtype: int
         """
         return self._AccountCount
@@ -13406,7 +13580,7 @@ class GrantedAccountGroupItem(AbstractModel):
 
     @property
     def ExpireTime(self):
-        r"""过期时间
+        r"""<p>过期时间</p>
         :rtype: int
         """
         return self._ExpireTime
@@ -13417,7 +13591,7 @@ class GrantedAccountGroupItem(AbstractModel):
 
     @property
     def RelationId(self):
-        r"""关联id
+        r"""<p>关联id</p>
         :rtype: int
         """
         return self._RelationId
@@ -13712,6 +13886,57 @@ class GrantedVirtualGroupItem(AbstractModel):
         
 
 
+class I18nString(AbstractModel):
+    r"""I18nString 国际化字符串（对齐云API平台已注册数据结构 ID:131745，用途：入参/出参） 使用方式：通常以 repeated I18nString 数组承载多语言，一条元素装一种语言。 出参示例：[{"Lang":"zh-CN","Value":"策略名"},{"Lang":"en-US","Value":"Policy Name"}] 入参约定：客户端至少提供 zh-CN 一条；后端建议在业务层调用 i18n.MustZhCn 校验。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Lang: <p>语言枚举</p><p>枚举值：</p><ul><li>zh-CN： 简体中文</li><li>en-US： 英文</li></ul>
+        :type Lang: str
+        :param _Value: <p>这是一段业务字符串</p>
+        :type Value: str
+        """
+        self._Lang = None
+        self._Value = None
+
+    @property
+    def Lang(self):
+        r"""<p>语言枚举</p><p>枚举值：</p><ul><li>zh-CN： 简体中文</li><li>en-US： 英文</li></ul>
+        :rtype: str
+        """
+        return self._Lang
+
+    @Lang.setter
+    def Lang(self, Lang):
+        self._Lang = Lang
+
+    @property
+    def Value(self):
+        r"""<p>这是一段业务字符串</p>
+        :rtype: str
+        """
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+
+    def _deserialize(self, params):
+        self._Lang = params.get("Lang")
+        self._Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ModifyBusinessResourceRequest(AbstractModel):
     r"""ModifyBusinessResource请求参数结构体
 
@@ -13923,6 +14148,8 @@ class ModifyCompanyDirectoryConfigRequest(AbstractModel):
         :type Id: int
         :param _Description: <p>描述</p>
         :type Description: str
+        :param _NameI18n: <p>名称多语言</p>
+        :type NameI18n: list of I18nString
         """
         self._Type = None
         self._Name = None
@@ -13934,6 +14161,7 @@ class ModifyCompanyDirectoryConfigRequest(AbstractModel):
         self._DisplayOnLoginPage = None
         self._Id = None
         self._Description = None
+        self._NameI18n = None
 
     @property
     def Type(self):
@@ -14045,6 +14273,17 @@ class ModifyCompanyDirectoryConfigRequest(AbstractModel):
     def Description(self, Description):
         self._Description = Description
 
+    @property
+    def NameI18n(self):
+        r"""<p>名称多语言</p>
+        :rtype: list of I18nString
+        """
+        return self._NameI18n
+
+    @NameI18n.setter
+    def NameI18n(self, NameI18n):
+        self._NameI18n = NameI18n
+
 
     def _deserialize(self, params):
         self._Type = params.get("Type")
@@ -14057,6 +14296,12 @@ class ModifyCompanyDirectoryConfigRequest(AbstractModel):
         self._DisplayOnLoginPage = params.get("DisplayOnLoginPage")
         self._Id = params.get("Id")
         self._Description = params.get("Description")
+        if params.get("NameI18n") is not None:
+            self._NameI18n = []
+            for item in params.get("NameI18n"):
+                obj = I18nString()
+                obj._deserialize(item)
+                self._NameI18n.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

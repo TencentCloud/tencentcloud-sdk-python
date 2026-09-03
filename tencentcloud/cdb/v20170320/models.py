@@ -4566,17 +4566,11 @@ class CdbSellType(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TypeName: 售卖实例名称。
-Z3：是高可用类型，对应规格中的 DeviceType，包含 UNIVERSAL，EXCLUSIVE。
-CVM：是基础版类型，对应规格中的 DeviceType 是 BASIC（已下线）。
-TKE：是基础版v2类型，对应规格中的 DeviceType 是 BASIC_V2。
-CLOUD_NATIVE_CLUSTER：表示云盘版标准型。
-CLOUD_NATIVE_CLUSTER_EXCLUSIVE：表示云盘版加强型。
-ECONOMICAL：表示经济型。
+        :param _TypeName: <p>售卖实例名称。<br>Z3：是高可用类型，对应规格中的 DeviceType，包含 UNIVERSAL，EXCLUSIVE。<br>CVM：是基础版类型，对应规格中的 DeviceType 是 BASIC（已下线）。<br>TKE：是基础版v2类型，对应规格中的 DeviceType 是 BASIC_V2。<br>CLOUD_NATIVE_CLUSTER：表示云盘版标准型。<br>CLOUD_NATIVE_CLUSTER_EXCLUSIVE：表示云盘版加强型。<br>CLOUD_NATIVE_CLUSTER_ULTRA：表示云盘版旗舰型。<br>CLOUD_NATIVE_SINGLE_NODE：表示云盘版单节点<br>ECONOMICAL：表示经济型。</p>
         :type TypeName: str
-        :param _EngineVersion: 引擎版本号
+        :param _EngineVersion: <p>引擎版本号</p>
         :type EngineVersion: list of str
-        :param _ConfigIds: 售卖规格Id
+        :param _ConfigIds: <p>售卖规格Id</p>
         :type ConfigIds: list of int
         """
         self._TypeName = None
@@ -4585,13 +4579,7 @@ ECONOMICAL：表示经济型。
 
     @property
     def TypeName(self):
-        r"""售卖实例名称。
-Z3：是高可用类型，对应规格中的 DeviceType，包含 UNIVERSAL，EXCLUSIVE。
-CVM：是基础版类型，对应规格中的 DeviceType 是 BASIC（已下线）。
-TKE：是基础版v2类型，对应规格中的 DeviceType 是 BASIC_V2。
-CLOUD_NATIVE_CLUSTER：表示云盘版标准型。
-CLOUD_NATIVE_CLUSTER_EXCLUSIVE：表示云盘版加强型。
-ECONOMICAL：表示经济型。
+        r"""<p>售卖实例名称。<br>Z3：是高可用类型，对应规格中的 DeviceType，包含 UNIVERSAL，EXCLUSIVE。<br>CVM：是基础版类型，对应规格中的 DeviceType 是 BASIC（已下线）。<br>TKE：是基础版v2类型，对应规格中的 DeviceType 是 BASIC_V2。<br>CLOUD_NATIVE_CLUSTER：表示云盘版标准型。<br>CLOUD_NATIVE_CLUSTER_EXCLUSIVE：表示云盘版加强型。<br>CLOUD_NATIVE_CLUSTER_ULTRA：表示云盘版旗舰型。<br>CLOUD_NATIVE_SINGLE_NODE：表示云盘版单节点<br>ECONOMICAL：表示经济型。</p>
         :rtype: str
         """
         return self._TypeName
@@ -4602,7 +4590,7 @@ ECONOMICAL：表示经济型。
 
     @property
     def EngineVersion(self):
-        r"""引擎版本号
+        r"""<p>引擎版本号</p>
         :rtype: list of str
         """
         return self._EngineVersion
@@ -4613,7 +4601,7 @@ ECONOMICAL：表示经济型。
 
     @property
     def ConfigIds(self):
-        r"""售卖规格Id
+        r"""<p>售卖规格Id</p>
         :rtype: list of int
         """
         return self._ConfigIds
@@ -30100,9 +30088,9 @@ class ModifyDBInstanceReadOnlyStatusRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例ID，格式如：cdb-c1nl9rpv，与云数据库控制台页面中显示的实例ID相同，可使用[查询实例列表](https://cloud.tencent.com/document/api/236/15872) 接口获取，其值为输出参数中字段 InstanceId 的值。
+        :param _InstanceId: <p>实例ID，格式如：cdb-c1nl9rpv，与云数据库控制台页面中显示的实例ID相同，可使用<a href="https://cloud.tencent.com/document/api/236/15872">查询实例列表</a> 接口获取，其值为输出参数中字段 InstanceId 的值。此接口不支持设置云盘版实例为只读。</p>
         :type InstanceId: str
-        :param _ReadOnly: 是否设置为只读。其中：1表示设置实例为只读，0表示解除只读状态
+        :param _ReadOnly: <p>是否设置为只读。其中：1表示设置实例为只读，0表示解除只读状态</p>
         :type ReadOnly: int
         """
         self._InstanceId = None
@@ -30110,7 +30098,7 @@ class ModifyDBInstanceReadOnlyStatusRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""实例ID，格式如：cdb-c1nl9rpv，与云数据库控制台页面中显示的实例ID相同，可使用[查询实例列表](https://cloud.tencent.com/document/api/236/15872) 接口获取，其值为输出参数中字段 InstanceId 的值。
+        r"""<p>实例ID，格式如：cdb-c1nl9rpv，与云数据库控制台页面中显示的实例ID相同，可使用<a href="https://cloud.tencent.com/document/api/236/15872">查询实例列表</a> 接口获取，其值为输出参数中字段 InstanceId 的值。此接口不支持设置云盘版实例为只读。</p>
         :rtype: str
         """
         return self._InstanceId
@@ -30121,7 +30109,7 @@ class ModifyDBInstanceReadOnlyStatusRequest(AbstractModel):
 
     @property
     def ReadOnly(self):
-        r"""是否设置为只读。其中：1表示设置实例为只读，0表示解除只读状态
+        r"""<p>是否设置为只读。其中：1表示设置实例为只读，0表示解除只读状态</p>
         :rtype: int
         """
         return self._ReadOnly

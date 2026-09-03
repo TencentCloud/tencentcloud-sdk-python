@@ -1719,6 +1719,115 @@ class BinlogInfo(AbstractModel):
         
 
 
+class BreakStandbyDBInstanceRelationRequest(AbstractModel):
+    r"""BreakStandbyDBInstanceRelation请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: 备实例 ID
+        :type InstanceId: str
+        :param _IsForce: 是否强制断开
+        :type IsForce: bool
+        :param _SyncDelay:  时延，单位是秒,0不检查
+        :type SyncDelay: int
+        """
+        self._InstanceId = None
+        self._IsForce = None
+        self._SyncDelay = None
+
+    @property
+    def InstanceId(self):
+        r"""备实例 ID
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def IsForce(self):
+        r"""是否强制断开
+        :rtype: bool
+        """
+        return self._IsForce
+
+    @IsForce.setter
+    def IsForce(self, IsForce):
+        self._IsForce = IsForce
+
+    @property
+    def SyncDelay(self):
+        r""" 时延，单位是秒,0不检查
+        :rtype: int
+        """
+        return self._SyncDelay
+
+    @SyncDelay.setter
+    def SyncDelay(self, SyncDelay):
+        self._SyncDelay = SyncDelay
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._IsForce = params.get("IsForce")
+        self._SyncDelay = params.get("SyncDelay")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BreakStandbyDBInstanceRelationResponse(AbstractModel):
+    r"""BreakStandbyDBInstanceRelation返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FlowId: 任务 ID
+        :type FlowId: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._FlowId = None
+        self._RequestId = None
+
+    @property
+    def FlowId(self):
+        r"""任务 ID
+        :rtype: int
+        """
+        return self._FlowId
+
+    @FlowId.setter
+    def FlowId(self, FlowId):
+        self._FlowId = FlowId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._FlowId = params.get("FlowId")
+        self._RequestId = params.get("RequestId")
+
+
 class CancelIsolateDBInstancesRequest(AbstractModel):
     r"""CancelIsolateDBInstances请求参数结构体
 
@@ -3283,6 +3392,480 @@ class CreateDBSBackupResponse(AbstractModel):
     def _deserialize(self, params):
         self._BackupSetId = params.get("BackupSetId")
         self._IsSuccess = params.get("IsSuccess")
+        self._RequestId = params.get("RequestId")
+
+
+class CreateStandbyDBInstanceRequest(AbstractModel):
+    r"""CreateStandbyDBInstance请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PrimaryInstanceId: <p>主实例 id</p>
+        :type PrimaryInstanceId: str
+        :param _Zone: <p>创建实例区域</p>
+        :type Zone: str
+        :param _VpcId: <p>字符型vpcid</p>
+        :type VpcId: str
+        :param _SubnetId: <p>字符型subnetid</p>
+        :type SubnetId: str
+        :param _SpecCode: <p>购买规格</p>
+        :type SpecCode: str
+        :param _Disk: <p>存储节点磁盘容量，单位GB</p>
+        :type Disk: int
+        :param _StorageNodeNum: <p>存储节点数量</p>
+        :type StorageNodeNum: int
+        :param _Replications: <p>存储节点副本数量，最大为5，要求为奇数</p>
+        :type Replications: int
+        :param _FullReplications: <p>全能型副本数</p>
+        :type FullReplications: int
+        :param _InstanceName: <p>实例名称，要求长度1-60，允许包含中文、英文大小写、数字、-、_</p>
+        :type InstanceName: str
+        :param _TimeUnit: <p>时间单位，y：年，m：月，d：日</p>
+        :type TimeUnit: str
+        :param _TimeSpan: <p>商品的时间大小</p>
+        :type TimeSpan: int
+        :param _StorageNodeCpu: <p>存储节点CPU核数</p>
+        :type StorageNodeCpu: int
+        :param _StorageNodeMem: <p>存储节点内存大小</p>
+        :type StorageNodeMem: int
+        :param _PayMode: <p>付费模式，0表示按需计费/后付费，1表示预付费</p>
+        :type PayMode: str
+        :param _Vport: <p>自定义端口</p>
+        :type Vport: int
+        :param _Zones: <p>多AZ可用区列表</p>
+        :type Zones: list of str
+        :param _AutoVoucher: <p>是否使用优惠卷</p>
+        :type AutoVoucher: bool
+        :param _VoucherIds: <p>优惠卷列表</p>
+        :type VoucherIds: list of str
+        :param _InstanceType: <p>实例架构类型，19.0.0 起支持 &quot;hybrid&quot;&quot;</p>
+        :type InstanceType: str
+        :param _StorageType: <p>磁盘类型,CLOUD_HSSD增强型SSD,CLOUD_TCS本地SSD盘</p>
+        :type StorageType: str
+        :param _ResourceTags: <p>标签键值对数组</p>
+        :type ResourceTags: list of ResourceTag
+        :param _PrimaryInstanceRegion: <p>主实例地域</p>
+        :type PrimaryInstanceRegion: str
+        :param _InstanceMode: <p>实例模式，normal:标准型；enhanced:加强型</p>
+        :type InstanceMode: str
+        :param _Password: <p>dbaadmin密码</p>
+        :type Password: str
+        :param _SecurityGroupIds: <p>绑定安全组id列表</p>
+        :type SecurityGroupIds: list of str
+        """
+        self._PrimaryInstanceId = None
+        self._Zone = None
+        self._VpcId = None
+        self._SubnetId = None
+        self._SpecCode = None
+        self._Disk = None
+        self._StorageNodeNum = None
+        self._Replications = None
+        self._FullReplications = None
+        self._InstanceName = None
+        self._TimeUnit = None
+        self._TimeSpan = None
+        self._StorageNodeCpu = None
+        self._StorageNodeMem = None
+        self._PayMode = None
+        self._Vport = None
+        self._Zones = None
+        self._AutoVoucher = None
+        self._VoucherIds = None
+        self._InstanceType = None
+        self._StorageType = None
+        self._ResourceTags = None
+        self._PrimaryInstanceRegion = None
+        self._InstanceMode = None
+        self._Password = None
+        self._SecurityGroupIds = None
+
+    @property
+    def PrimaryInstanceId(self):
+        r"""<p>主实例 id</p>
+        :rtype: str
+        """
+        return self._PrimaryInstanceId
+
+    @PrimaryInstanceId.setter
+    def PrimaryInstanceId(self, PrimaryInstanceId):
+        self._PrimaryInstanceId = PrimaryInstanceId
+
+    @property
+    def Zone(self):
+        r"""<p>创建实例区域</p>
+        :rtype: str
+        """
+        return self._Zone
+
+    @Zone.setter
+    def Zone(self, Zone):
+        self._Zone = Zone
+
+    @property
+    def VpcId(self):
+        r"""<p>字符型vpcid</p>
+        :rtype: str
+        """
+        return self._VpcId
+
+    @VpcId.setter
+    def VpcId(self, VpcId):
+        self._VpcId = VpcId
+
+    @property
+    def SubnetId(self):
+        r"""<p>字符型subnetid</p>
+        :rtype: str
+        """
+        return self._SubnetId
+
+    @SubnetId.setter
+    def SubnetId(self, SubnetId):
+        self._SubnetId = SubnetId
+
+    @property
+    def SpecCode(self):
+        r"""<p>购买规格</p>
+        :rtype: str
+        """
+        return self._SpecCode
+
+    @SpecCode.setter
+    def SpecCode(self, SpecCode):
+        self._SpecCode = SpecCode
+
+    @property
+    def Disk(self):
+        r"""<p>存储节点磁盘容量，单位GB</p>
+        :rtype: int
+        """
+        return self._Disk
+
+    @Disk.setter
+    def Disk(self, Disk):
+        self._Disk = Disk
+
+    @property
+    def StorageNodeNum(self):
+        r"""<p>存储节点数量</p>
+        :rtype: int
+        """
+        return self._StorageNodeNum
+
+    @StorageNodeNum.setter
+    def StorageNodeNum(self, StorageNodeNum):
+        self._StorageNodeNum = StorageNodeNum
+
+    @property
+    def Replications(self):
+        r"""<p>存储节点副本数量，最大为5，要求为奇数</p>
+        :rtype: int
+        """
+        return self._Replications
+
+    @Replications.setter
+    def Replications(self, Replications):
+        self._Replications = Replications
+
+    @property
+    def FullReplications(self):
+        r"""<p>全能型副本数</p>
+        :rtype: int
+        """
+        return self._FullReplications
+
+    @FullReplications.setter
+    def FullReplications(self, FullReplications):
+        self._FullReplications = FullReplications
+
+    @property
+    def InstanceName(self):
+        r"""<p>实例名称，要求长度1-60，允许包含中文、英文大小写、数字、-、_</p>
+        :rtype: str
+        """
+        return self._InstanceName
+
+    @InstanceName.setter
+    def InstanceName(self, InstanceName):
+        self._InstanceName = InstanceName
+
+    @property
+    def TimeUnit(self):
+        r"""<p>时间单位，y：年，m：月，d：日</p>
+        :rtype: str
+        """
+        return self._TimeUnit
+
+    @TimeUnit.setter
+    def TimeUnit(self, TimeUnit):
+        self._TimeUnit = TimeUnit
+
+    @property
+    def TimeSpan(self):
+        r"""<p>商品的时间大小</p>
+        :rtype: int
+        """
+        return self._TimeSpan
+
+    @TimeSpan.setter
+    def TimeSpan(self, TimeSpan):
+        self._TimeSpan = TimeSpan
+
+    @property
+    def StorageNodeCpu(self):
+        r"""<p>存储节点CPU核数</p>
+        :rtype: int
+        """
+        return self._StorageNodeCpu
+
+    @StorageNodeCpu.setter
+    def StorageNodeCpu(self, StorageNodeCpu):
+        self._StorageNodeCpu = StorageNodeCpu
+
+    @property
+    def StorageNodeMem(self):
+        r"""<p>存储节点内存大小</p>
+        :rtype: int
+        """
+        return self._StorageNodeMem
+
+    @StorageNodeMem.setter
+    def StorageNodeMem(self, StorageNodeMem):
+        self._StorageNodeMem = StorageNodeMem
+
+    @property
+    def PayMode(self):
+        r"""<p>付费模式，0表示按需计费/后付费，1表示预付费</p>
+        :rtype: str
+        """
+        return self._PayMode
+
+    @PayMode.setter
+    def PayMode(self, PayMode):
+        self._PayMode = PayMode
+
+    @property
+    def Vport(self):
+        r"""<p>自定义端口</p>
+        :rtype: int
+        """
+        return self._Vport
+
+    @Vport.setter
+    def Vport(self, Vport):
+        self._Vport = Vport
+
+    @property
+    def Zones(self):
+        r"""<p>多AZ可用区列表</p>
+        :rtype: list of str
+        """
+        return self._Zones
+
+    @Zones.setter
+    def Zones(self, Zones):
+        self._Zones = Zones
+
+    @property
+    def AutoVoucher(self):
+        r"""<p>是否使用优惠卷</p>
+        :rtype: bool
+        """
+        return self._AutoVoucher
+
+    @AutoVoucher.setter
+    def AutoVoucher(self, AutoVoucher):
+        self._AutoVoucher = AutoVoucher
+
+    @property
+    def VoucherIds(self):
+        r"""<p>优惠卷列表</p>
+        :rtype: list of str
+        """
+        return self._VoucherIds
+
+    @VoucherIds.setter
+    def VoucherIds(self, VoucherIds):
+        self._VoucherIds = VoucherIds
+
+    @property
+    def InstanceType(self):
+        r"""<p>实例架构类型，19.0.0 起支持 &quot;hybrid&quot;&quot;</p>
+        :rtype: str
+        """
+        return self._InstanceType
+
+    @InstanceType.setter
+    def InstanceType(self, InstanceType):
+        self._InstanceType = InstanceType
+
+    @property
+    def StorageType(self):
+        r"""<p>磁盘类型,CLOUD_HSSD增强型SSD,CLOUD_TCS本地SSD盘</p>
+        :rtype: str
+        """
+        return self._StorageType
+
+    @StorageType.setter
+    def StorageType(self, StorageType):
+        self._StorageType = StorageType
+
+    @property
+    def ResourceTags(self):
+        r"""<p>标签键值对数组</p>
+        :rtype: list of ResourceTag
+        """
+        return self._ResourceTags
+
+    @ResourceTags.setter
+    def ResourceTags(self, ResourceTags):
+        self._ResourceTags = ResourceTags
+
+    @property
+    def PrimaryInstanceRegion(self):
+        r"""<p>主实例地域</p>
+        :rtype: str
+        """
+        return self._PrimaryInstanceRegion
+
+    @PrimaryInstanceRegion.setter
+    def PrimaryInstanceRegion(self, PrimaryInstanceRegion):
+        self._PrimaryInstanceRegion = PrimaryInstanceRegion
+
+    @property
+    def InstanceMode(self):
+        r"""<p>实例模式，normal:标准型；enhanced:加强型</p>
+        :rtype: str
+        """
+        return self._InstanceMode
+
+    @InstanceMode.setter
+    def InstanceMode(self, InstanceMode):
+        self._InstanceMode = InstanceMode
+
+    @property
+    def Password(self):
+        r"""<p>dbaadmin密码</p>
+        :rtype: str
+        """
+        return self._Password
+
+    @Password.setter
+    def Password(self, Password):
+        self._Password = Password
+
+    @property
+    def SecurityGroupIds(self):
+        r"""<p>绑定安全组id列表</p>
+        :rtype: list of str
+        """
+        return self._SecurityGroupIds
+
+    @SecurityGroupIds.setter
+    def SecurityGroupIds(self, SecurityGroupIds):
+        self._SecurityGroupIds = SecurityGroupIds
+
+
+    def _deserialize(self, params):
+        self._PrimaryInstanceId = params.get("PrimaryInstanceId")
+        self._Zone = params.get("Zone")
+        self._VpcId = params.get("VpcId")
+        self._SubnetId = params.get("SubnetId")
+        self._SpecCode = params.get("SpecCode")
+        self._Disk = params.get("Disk")
+        self._StorageNodeNum = params.get("StorageNodeNum")
+        self._Replications = params.get("Replications")
+        self._FullReplications = params.get("FullReplications")
+        self._InstanceName = params.get("InstanceName")
+        self._TimeUnit = params.get("TimeUnit")
+        self._TimeSpan = params.get("TimeSpan")
+        self._StorageNodeCpu = params.get("StorageNodeCpu")
+        self._StorageNodeMem = params.get("StorageNodeMem")
+        self._PayMode = params.get("PayMode")
+        self._Vport = params.get("Vport")
+        self._Zones = params.get("Zones")
+        self._AutoVoucher = params.get("AutoVoucher")
+        self._VoucherIds = params.get("VoucherIds")
+        self._InstanceType = params.get("InstanceType")
+        self._StorageType = params.get("StorageType")
+        if params.get("ResourceTags") is not None:
+            self._ResourceTags = []
+            for item in params.get("ResourceTags"):
+                obj = ResourceTag()
+                obj._deserialize(item)
+                self._ResourceTags.append(obj)
+        self._PrimaryInstanceRegion = params.get("PrimaryInstanceRegion")
+        self._InstanceMode = params.get("InstanceMode")
+        self._Password = params.get("Password")
+        self._SecurityGroupIds = params.get("SecurityGroupIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateStandbyDBInstanceResponse(AbstractModel):
+    r"""CreateStandbyDBInstance返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: <p>实例 ID</p>
+        :type InstanceId: str
+        :param _FlowId: <p>任务ID</p>
+        :type FlowId: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._InstanceId = None
+        self._FlowId = None
+        self._RequestId = None
+
+    @property
+    def InstanceId(self):
+        r"""<p>实例 ID</p>
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def FlowId(self):
+        r"""<p>任务ID</p>
+        :rtype: int
+        """
+        return self._FlowId
+
+    @FlowId.setter
+    def FlowId(self, FlowId):
+        self._FlowId = FlowId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._FlowId = params.get("FlowId")
         self._RequestId = params.get("RequestId")
 
 
@@ -8457,6 +9040,92 @@ class DescribeSpecsResponse(AbstractModel):
         if params.get("ServerlessNodeNumSpec") is not None:
             self._ServerlessNodeNumSpec = ServerlessNodeNumSpec()
             self._ServerlessNodeNumSpec._deserialize(params.get("ServerlessNodeNumSpec"))
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeStandbyDBInstanceRelationDetailRequest(AbstractModel):
+    r"""DescribeStandbyDBInstanceRelationDetail请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceIds: 实例 ID
+        :type InstanceIds: list of str
+        """
+        self._InstanceIds = None
+
+    @property
+    def InstanceIds(self):
+        r"""实例 ID
+        :rtype: list of str
+        """
+        return self._InstanceIds
+
+    @InstanceIds.setter
+    def InstanceIds(self, InstanceIds):
+        self._InstanceIds = InstanceIds
+
+
+    def _deserialize(self, params):
+        self._InstanceIds = params.get("InstanceIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeStandbyDBInstanceRelationDetailResponse(AbstractModel):
+    r"""DescribeStandbyDBInstanceRelationDetail返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RelationInfos: 灾备关系
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RelationInfos: list of StandbyDBInstanceRelation
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RelationInfos = None
+        self._RequestId = None
+
+    @property
+    def RelationInfos(self):
+        r"""灾备关系
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of StandbyDBInstanceRelation
+        """
+        return self._RelationInfos
+
+    @RelationInfos.setter
+    def RelationInfos(self, RelationInfos):
+        self._RelationInfos = RelationInfos
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("RelationInfos") is not None:
+            self._RelationInfos = []
+            for item in params.get("RelationInfos"):
+                obj = StandbyDBInstanceRelation()
+                obj._deserialize(item)
+                self._RelationInfos.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -13757,6 +14426,365 @@ class SlowLogData(AbstractModel):
                 obj = Explain()
                 obj._deserialize(item)
                 self._Explain.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class StandbyDBInstanceRelation(AbstractModel):
+    r"""灾备实例关系
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PrimaryInstanceId: 主实例 ID
+        :type PrimaryInstanceId: str
+        :param _PrimaryInstanceName: 主实例名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PrimaryInstanceName: str
+        :param _PrimaryRegion: 主实例地域
+        :type PrimaryRegion: str
+        :param _PrimaryVip: 主实例子网 IP
+        :type PrimaryVip: str
+        :param _PrimaryVport: 主实例子网端口
+        :type PrimaryVport: int
+        :param _PrimaryZones: 主实例可用区
+        :type PrimaryZones: list of str
+        :param _PrimaryStatus: 主实例运行状态
+        :type PrimaryStatus: str
+        :param _SecondaryInstanceId: 备实例 ID
+        :type SecondaryInstanceId: str
+        :param _SecondaryInstanceName: 备实例名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SecondaryInstanceName: str
+        :param _SecondaryRegion: 备实例地域
+        :type SecondaryRegion: str
+        :param _SecondaryVip: 备实例子网 IP
+        :type SecondaryVip: str
+        :param _SecondaryVport: 备实例子网端口
+        :type SecondaryVport: int
+        :param _SecondaryZones: 备实例可用区
+        :type SecondaryZones: list of str
+        :param _SecondaryStatus: 备实例运行状态
+        :type SecondaryStatus: str
+        :param _ConnType: 连接类型，log_service 或 raft
+        :type ConnType: str
+        :param _SyncMode: 同步类型，sync 或 async
+        :type SyncMode: str
+        :param _SyncStatus: 同步状态，1: 正在同步；2: 同步异常
+        :type SyncStatus: int
+        :param _SyncStatusDesc: 同步状态描述，同步状态异常时的错误信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SyncStatusDesc: str
+        :param _StandbyStatus: 灾备状态描述，"creating" "running" "modifying"，无灾备关系时为空
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StandbyStatus: str
+        :param _PrimaryCreateVersion: 主实例版本
+        :type PrimaryCreateVersion: str
+        :param _SecondaryCreateVersion: 备实例版本
+        :type SecondaryCreateVersion: str
+        :param _SyncDelay: 时延 单位为秒
+        :type SyncDelay: int
+        """
+        self._PrimaryInstanceId = None
+        self._PrimaryInstanceName = None
+        self._PrimaryRegion = None
+        self._PrimaryVip = None
+        self._PrimaryVport = None
+        self._PrimaryZones = None
+        self._PrimaryStatus = None
+        self._SecondaryInstanceId = None
+        self._SecondaryInstanceName = None
+        self._SecondaryRegion = None
+        self._SecondaryVip = None
+        self._SecondaryVport = None
+        self._SecondaryZones = None
+        self._SecondaryStatus = None
+        self._ConnType = None
+        self._SyncMode = None
+        self._SyncStatus = None
+        self._SyncStatusDesc = None
+        self._StandbyStatus = None
+        self._PrimaryCreateVersion = None
+        self._SecondaryCreateVersion = None
+        self._SyncDelay = None
+
+    @property
+    def PrimaryInstanceId(self):
+        r"""主实例 ID
+        :rtype: str
+        """
+        return self._PrimaryInstanceId
+
+    @PrimaryInstanceId.setter
+    def PrimaryInstanceId(self, PrimaryInstanceId):
+        self._PrimaryInstanceId = PrimaryInstanceId
+
+    @property
+    def PrimaryInstanceName(self):
+        r"""主实例名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._PrimaryInstanceName
+
+    @PrimaryInstanceName.setter
+    def PrimaryInstanceName(self, PrimaryInstanceName):
+        self._PrimaryInstanceName = PrimaryInstanceName
+
+    @property
+    def PrimaryRegion(self):
+        r"""主实例地域
+        :rtype: str
+        """
+        return self._PrimaryRegion
+
+    @PrimaryRegion.setter
+    def PrimaryRegion(self, PrimaryRegion):
+        self._PrimaryRegion = PrimaryRegion
+
+    @property
+    def PrimaryVip(self):
+        r"""主实例子网 IP
+        :rtype: str
+        """
+        return self._PrimaryVip
+
+    @PrimaryVip.setter
+    def PrimaryVip(self, PrimaryVip):
+        self._PrimaryVip = PrimaryVip
+
+    @property
+    def PrimaryVport(self):
+        r"""主实例子网端口
+        :rtype: int
+        """
+        return self._PrimaryVport
+
+    @PrimaryVport.setter
+    def PrimaryVport(self, PrimaryVport):
+        self._PrimaryVport = PrimaryVport
+
+    @property
+    def PrimaryZones(self):
+        r"""主实例可用区
+        :rtype: list of str
+        """
+        return self._PrimaryZones
+
+    @PrimaryZones.setter
+    def PrimaryZones(self, PrimaryZones):
+        self._PrimaryZones = PrimaryZones
+
+    @property
+    def PrimaryStatus(self):
+        r"""主实例运行状态
+        :rtype: str
+        """
+        return self._PrimaryStatus
+
+    @PrimaryStatus.setter
+    def PrimaryStatus(self, PrimaryStatus):
+        self._PrimaryStatus = PrimaryStatus
+
+    @property
+    def SecondaryInstanceId(self):
+        r"""备实例 ID
+        :rtype: str
+        """
+        return self._SecondaryInstanceId
+
+    @SecondaryInstanceId.setter
+    def SecondaryInstanceId(self, SecondaryInstanceId):
+        self._SecondaryInstanceId = SecondaryInstanceId
+
+    @property
+    def SecondaryInstanceName(self):
+        r"""备实例名称
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._SecondaryInstanceName
+
+    @SecondaryInstanceName.setter
+    def SecondaryInstanceName(self, SecondaryInstanceName):
+        self._SecondaryInstanceName = SecondaryInstanceName
+
+    @property
+    def SecondaryRegion(self):
+        r"""备实例地域
+        :rtype: str
+        """
+        return self._SecondaryRegion
+
+    @SecondaryRegion.setter
+    def SecondaryRegion(self, SecondaryRegion):
+        self._SecondaryRegion = SecondaryRegion
+
+    @property
+    def SecondaryVip(self):
+        r"""备实例子网 IP
+        :rtype: str
+        """
+        return self._SecondaryVip
+
+    @SecondaryVip.setter
+    def SecondaryVip(self, SecondaryVip):
+        self._SecondaryVip = SecondaryVip
+
+    @property
+    def SecondaryVport(self):
+        r"""备实例子网端口
+        :rtype: int
+        """
+        return self._SecondaryVport
+
+    @SecondaryVport.setter
+    def SecondaryVport(self, SecondaryVport):
+        self._SecondaryVport = SecondaryVport
+
+    @property
+    def SecondaryZones(self):
+        r"""备实例可用区
+        :rtype: list of str
+        """
+        return self._SecondaryZones
+
+    @SecondaryZones.setter
+    def SecondaryZones(self, SecondaryZones):
+        self._SecondaryZones = SecondaryZones
+
+    @property
+    def SecondaryStatus(self):
+        r"""备实例运行状态
+        :rtype: str
+        """
+        return self._SecondaryStatus
+
+    @SecondaryStatus.setter
+    def SecondaryStatus(self, SecondaryStatus):
+        self._SecondaryStatus = SecondaryStatus
+
+    @property
+    def ConnType(self):
+        r"""连接类型，log_service 或 raft
+        :rtype: str
+        """
+        return self._ConnType
+
+    @ConnType.setter
+    def ConnType(self, ConnType):
+        self._ConnType = ConnType
+
+    @property
+    def SyncMode(self):
+        r"""同步类型，sync 或 async
+        :rtype: str
+        """
+        return self._SyncMode
+
+    @SyncMode.setter
+    def SyncMode(self, SyncMode):
+        self._SyncMode = SyncMode
+
+    @property
+    def SyncStatus(self):
+        r"""同步状态，1: 正在同步；2: 同步异常
+        :rtype: int
+        """
+        return self._SyncStatus
+
+    @SyncStatus.setter
+    def SyncStatus(self, SyncStatus):
+        self._SyncStatus = SyncStatus
+
+    @property
+    def SyncStatusDesc(self):
+        r"""同步状态描述，同步状态异常时的错误信息
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._SyncStatusDesc
+
+    @SyncStatusDesc.setter
+    def SyncStatusDesc(self, SyncStatusDesc):
+        self._SyncStatusDesc = SyncStatusDesc
+
+    @property
+    def StandbyStatus(self):
+        r"""灾备状态描述，"creating" "running" "modifying"，无灾备关系时为空
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._StandbyStatus
+
+    @StandbyStatus.setter
+    def StandbyStatus(self, StandbyStatus):
+        self._StandbyStatus = StandbyStatus
+
+    @property
+    def PrimaryCreateVersion(self):
+        r"""主实例版本
+        :rtype: str
+        """
+        return self._PrimaryCreateVersion
+
+    @PrimaryCreateVersion.setter
+    def PrimaryCreateVersion(self, PrimaryCreateVersion):
+        self._PrimaryCreateVersion = PrimaryCreateVersion
+
+    @property
+    def SecondaryCreateVersion(self):
+        r"""备实例版本
+        :rtype: str
+        """
+        return self._SecondaryCreateVersion
+
+    @SecondaryCreateVersion.setter
+    def SecondaryCreateVersion(self, SecondaryCreateVersion):
+        self._SecondaryCreateVersion = SecondaryCreateVersion
+
+    @property
+    def SyncDelay(self):
+        r"""时延 单位为秒
+        :rtype: int
+        """
+        return self._SyncDelay
+
+    @SyncDelay.setter
+    def SyncDelay(self, SyncDelay):
+        self._SyncDelay = SyncDelay
+
+
+    def _deserialize(self, params):
+        self._PrimaryInstanceId = params.get("PrimaryInstanceId")
+        self._PrimaryInstanceName = params.get("PrimaryInstanceName")
+        self._PrimaryRegion = params.get("PrimaryRegion")
+        self._PrimaryVip = params.get("PrimaryVip")
+        self._PrimaryVport = params.get("PrimaryVport")
+        self._PrimaryZones = params.get("PrimaryZones")
+        self._PrimaryStatus = params.get("PrimaryStatus")
+        self._SecondaryInstanceId = params.get("SecondaryInstanceId")
+        self._SecondaryInstanceName = params.get("SecondaryInstanceName")
+        self._SecondaryRegion = params.get("SecondaryRegion")
+        self._SecondaryVip = params.get("SecondaryVip")
+        self._SecondaryVport = params.get("SecondaryVport")
+        self._SecondaryZones = params.get("SecondaryZones")
+        self._SecondaryStatus = params.get("SecondaryStatus")
+        self._ConnType = params.get("ConnType")
+        self._SyncMode = params.get("SyncMode")
+        self._SyncStatus = params.get("SyncStatus")
+        self._SyncStatusDesc = params.get("SyncStatusDesc")
+        self._StandbyStatus = params.get("StandbyStatus")
+        self._PrimaryCreateVersion = params.get("PrimaryCreateVersion")
+        self._SecondaryCreateVersion = params.get("SecondaryCreateVersion")
+        self._SyncDelay = params.get("SyncDelay")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

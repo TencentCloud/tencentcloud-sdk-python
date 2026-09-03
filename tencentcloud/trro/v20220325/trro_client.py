@@ -95,6 +95,29 @@ class TrroClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateBatchVideoAnnotationJob(self, request):
+        r"""提交S3兼容存储桶数据源的目录前缀创建批量标注任务。创建后，服务端异步列举前缀下全部视频逐个建立处理项（受配额上限控制，超限截断）。
+
+        :param request: Request instance for CreateBatchVideoAnnotationJob.
+        :type request: :class:`tencentcloud.trro.v20220325.models.CreateBatchVideoAnnotationJobRequest`
+        :rtype: :class:`tencentcloud.trro.v20220325.models.CreateBatchVideoAnnotationJobResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateBatchVideoAnnotationJob", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateBatchVideoAnnotationJobResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateCloudRecording(self, request):
         r"""启动云端录制功能，完成房间内的音视频录制，并上传到指定的云存储。
 
@@ -164,6 +187,75 @@ class TrroClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateVideoAnnotationJob(self, request):
+        r"""提交单个视频创建标注任务。支持 S3兼容 存储与 HTTP URL 两种输入源；通过后任务异步执行。
+
+        :param request: Request instance for CreateVideoAnnotationJob.
+        :type request: :class:`tencentcloud.trro.v20220325.models.CreateVideoAnnotationJobRequest`
+        :rtype: :class:`tencentcloud.trro.v20220325.models.CreateVideoAnnotationJobResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateVideoAnnotationJob", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateVideoAnnotationJobResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteAnnotationJob(self, request):
+        r"""删除整个任务并级联删除其全部处理项。
+
+        :param request: Request instance for DeleteAnnotationJob.
+        :type request: :class:`tencentcloud.trro.v20220325.models.DeleteAnnotationJobRequest`
+        :rtype: :class:`tencentcloud.trro.v20220325.models.DeleteAnnotationJobResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteAnnotationJob", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteAnnotationJobResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteAnnotationTask(self, request):
+        r"""删除任务下的单个处理项。
+
+        :param request: Request instance for DeleteAnnotationTask.
+        :type request: :class:`tencentcloud.trro.v20220325.models.DeleteAnnotationTaskRequest`
+        :rtype: :class:`tencentcloud.trro.v20220325.models.DeleteAnnotationTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteAnnotationTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteAnnotationTaskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DeleteCloudRecording(self, request):
         r"""成功开启录制后，可以使用此接口来停止录制任务。停止录制成功后不代表文件全部传输完成，如果未完成后台将会继续上传文件，成功后通过事件回调通知客户文件全部传输完成状态。
 
@@ -201,6 +293,75 @@ class TrroClient(AbstractClient):
             body = self.call("DeleteProject", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteProjectResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeAnnotationJobs(self, request):
+        r"""分页查询当前用户的任务列表，支持按状态、输入路径前缀过滤。注意任务的聚合状态由后台周期刷新，处理项全部完成后任务状态有短暂延迟。
+
+        :param request: Request instance for DescribeAnnotationJobs.
+        :type request: :class:`tencentcloud.trro.v20220325.models.DescribeAnnotationJobsRequest`
+        :rtype: :class:`tencentcloud.trro.v20220325.models.DescribeAnnotationJobsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAnnotationJobs", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeAnnotationJobsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeAnnotationResults(self, request):
+        r"""查询单个处理项的标注结果详情，返回结果的完整 JSON 原文。仅处理成功（或需确认场景）返回内容。
+
+        :param request: Request instance for DescribeAnnotationResults.
+        :type request: :class:`tencentcloud.trro.v20220325.models.DescribeAnnotationResultsRequest`
+        :rtype: :class:`tencentcloud.trro.v20220325.models.DescribeAnnotationResultsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAnnotationResults", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeAnnotationResultsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeAnnotationTasks(self, request):
+        r"""分页查询某任务下的处理项列表（每个视频一项），支持按文件名前缀、状态过滤。
+
+        :param request: Request instance for DescribeAnnotationTasks.
+        :type request: :class:`tencentcloud.trro.v20220325.models.DescribeAnnotationTasksRequest`
+        :rtype: :class:`tencentcloud.trro.v20220325.models.DescribeAnnotationTasksResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeAnnotationTasks", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeAnnotationTasksResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -688,6 +849,29 @@ class TrroClient(AbstractClient):
             body = self.call("ModifyProjectSecMode", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyProjectSecModeResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def RetryAnnotationTask(self, request):
+        r"""重跑超时或异常的处理项：重置回未处理状态重新等待执行，所属任务若为异常态自动恢复为处理中。其余状态不可重试。
+
+        :param request: Request instance for RetryAnnotationTask.
+        :type request: :class:`tencentcloud.trro.v20220325.models.RetryAnnotationTaskRequest`
+        :rtype: :class:`tencentcloud.trro.v20220325.models.RetryAnnotationTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("RetryAnnotationTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.RetryAnnotationTaskResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

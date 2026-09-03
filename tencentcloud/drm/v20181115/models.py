@@ -1958,9 +1958,12 @@ class PlaybackPolicy(AbstractModel):
         :type LicenseDurationSeconds: int
         :param _PlaybackDurationSeconds: <p>开始播放后，允许最长播放时间</p><p>单位：秒</p>
         :type PlaybackDurationSeconds: int
+        :param _CanPersistent: <p>是否允许下发离线license</p><p>默认值：false</p><p>widevine方案，<br>当CanPersistent为true时，根据license request中请求的是online还是offline license自动匹配下发。<br>当CanPersistent为false时，只下发online license。</p><p>fairplay方案。<br>当CanPersistent为true时，只下发offline license。<br>当CanPersistent为false时，只下发online license。</p>
+        :type CanPersistent: bool
         """
         self._LicenseDurationSeconds = None
         self._PlaybackDurationSeconds = None
+        self._CanPersistent = None
 
     @property
     def LicenseDurationSeconds(self):
@@ -1984,10 +1987,22 @@ class PlaybackPolicy(AbstractModel):
     def PlaybackDurationSeconds(self, PlaybackDurationSeconds):
         self._PlaybackDurationSeconds = PlaybackDurationSeconds
 
+    @property
+    def CanPersistent(self):
+        r"""<p>是否允许下发离线license</p><p>默认值：false</p><p>widevine方案，<br>当CanPersistent为true时，根据license request中请求的是online还是offline license自动匹配下发。<br>当CanPersistent为false时，只下发online license。</p><p>fairplay方案。<br>当CanPersistent为true时，只下发offline license。<br>当CanPersistent为false时，只下发online license。</p>
+        :rtype: bool
+        """
+        return self._CanPersistent
+
+    @CanPersistent.setter
+    def CanPersistent(self, CanPersistent):
+        self._CanPersistent = CanPersistent
+
 
     def _deserialize(self, params):
         self._LicenseDurationSeconds = params.get("LicenseDurationSeconds")
         self._PlaybackDurationSeconds = params.get("PlaybackDurationSeconds")
+        self._CanPersistent = params.get("CanPersistent")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -79,6 +79,24 @@ class TrroClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateBatchVideoAnnotationJob(
+            self,
+            request: models.CreateBatchVideoAnnotationJobRequest,
+            opts: Dict = None,
+    ) -> models.CreateBatchVideoAnnotationJobResponse:
+        """
+        提交S3兼容存储桶数据源的目录前缀创建批量标注任务。创建后，服务端异步列举前缀下全部视频逐个建立处理项（受配额上限控制，超限截断）。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateBatchVideoAnnotationJob"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateBatchVideoAnnotationJobResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateCloudRecording(
             self,
             request: models.CreateCloudRecordingRequest,
@@ -133,6 +151,60 @@ class TrroClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateVideoAnnotationJob(
+            self,
+            request: models.CreateVideoAnnotationJobRequest,
+            opts: Dict = None,
+    ) -> models.CreateVideoAnnotationJobResponse:
+        """
+        提交单个视频创建标注任务。支持 S3兼容 存储与 HTTP URL 两种输入源；通过后任务异步执行。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateVideoAnnotationJob"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateVideoAnnotationJobResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteAnnotationJob(
+            self,
+            request: models.DeleteAnnotationJobRequest,
+            opts: Dict = None,
+    ) -> models.DeleteAnnotationJobResponse:
+        """
+        删除整个任务并级联删除其全部处理项。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteAnnotationJob"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteAnnotationJobResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteAnnotationTask(
+            self,
+            request: models.DeleteAnnotationTaskRequest,
+            opts: Dict = None,
+    ) -> models.DeleteAnnotationTaskResponse:
+        """
+        删除任务下的单个处理项。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteAnnotationTask"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteAnnotationTaskResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DeleteCloudRecording(
             self,
             request: models.DeleteCloudRecordingRequest,
@@ -164,6 +236,60 @@ class TrroClient(AbstractClient):
         kwargs["action"] = "DeleteProject"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DeleteProjectResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeAnnotationJobs(
+            self,
+            request: models.DescribeAnnotationJobsRequest,
+            opts: Dict = None,
+    ) -> models.DescribeAnnotationJobsResponse:
+        """
+        分页查询当前用户的任务列表，支持按状态、输入路径前缀过滤。注意任务的聚合状态由后台周期刷新，处理项全部完成后任务状态有短暂延迟。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeAnnotationJobs"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeAnnotationJobsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeAnnotationResults(
+            self,
+            request: models.DescribeAnnotationResultsRequest,
+            opts: Dict = None,
+    ) -> models.DescribeAnnotationResultsResponse:
+        """
+        查询单个处理项的标注结果详情，返回结果的完整 JSON 原文。仅处理成功（或需确认场景）返回内容。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeAnnotationResults"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeAnnotationResultsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeAnnotationTasks(
+            self,
+            request: models.DescribeAnnotationTasksRequest,
+            opts: Dict = None,
+    ) -> models.DescribeAnnotationTasksResponse:
+        """
+        分页查询某任务下的处理项列表（每个视频一项），支持按文件名前缀、状态过滤。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeAnnotationTasks"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeAnnotationTasksResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -546,6 +672,24 @@ class TrroClient(AbstractClient):
         kwargs["action"] = "ModifyProjectSecMode"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ModifyProjectSecModeResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def RetryAnnotationTask(
+            self,
+            request: models.RetryAnnotationTaskRequest,
+            opts: Dict = None,
+    ) -> models.RetryAnnotationTaskResponse:
+        """
+        重跑超时或异常的处理项：重置回未处理状态重新等待执行，所属任务若为异常态自动恢复为处理中。其余状态不可重试。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "RetryAnnotationTask"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.RetryAnnotationTaskResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

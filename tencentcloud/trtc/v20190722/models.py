@@ -3155,10 +3155,33 @@ class CreateRecognizeVocabV3Request(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _Name: <p>词表名称（同 SdkAppId 下唯一）</p>
+        :type Name: str
         :param _SdkAppId: <p>客户维度唯一标识</p>
         :type SdkAppId: int
+        :param _Description: <p>描述</p>
+        :type Description: str
+        :param _WordWeights: <p>热词+权重数组</p>
+        :type WordWeights: list of HotWord
+        :param _WordWeightStr: <p>文本形式热词</p>
+        :type WordWeightStr: str
         """
+        self._Name = None
         self._SdkAppId = None
+        self._Description = None
+        self._WordWeights = None
+        self._WordWeightStr = None
+
+    @property
+    def Name(self):
+        r"""<p>词表名称（同 SdkAppId 下唯一）</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
 
     @property
     def SdkAppId(self):
@@ -3171,9 +3194,51 @@ class CreateRecognizeVocabV3Request(AbstractModel):
     def SdkAppId(self, SdkAppId):
         self._SdkAppId = SdkAppId
 
+    @property
+    def Description(self):
+        r"""<p>描述</p>
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def WordWeights(self):
+        r"""<p>热词+权重数组</p>
+        :rtype: list of HotWord
+        """
+        return self._WordWeights
+
+    @WordWeights.setter
+    def WordWeights(self, WordWeights):
+        self._WordWeights = WordWeights
+
+    @property
+    def WordWeightStr(self):
+        r"""<p>文本形式热词</p>
+        :rtype: str
+        """
+        return self._WordWeightStr
+
+    @WordWeightStr.setter
+    def WordWeightStr(self, WordWeightStr):
+        self._WordWeightStr = WordWeightStr
+
 
     def _deserialize(self, params):
+        self._Name = params.get("Name")
         self._SdkAppId = params.get("SdkAppId")
+        self._Description = params.get("Description")
+        if params.get("WordWeights") is not None:
+            self._WordWeights = []
+            for item in params.get("WordWeights"):
+                obj = HotWord()
+                obj._deserialize(item)
+                self._WordWeights.append(obj)
+        self._WordWeightStr = params.get("WordWeightStr")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3191,10 +3256,24 @@ class CreateRecognizeVocabV3Response(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _VocabId: <p>词表 id</p>
+        :type VocabId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._VocabId = None
         self._RequestId = None
+
+    @property
+    def VocabId(self):
+        r"""<p>词表 id</p>
+        :rtype: str
+        """
+        return self._VocabId
+
+    @VocabId.setter
+    def VocabId(self, VocabId):
+        self._VocabId = VocabId
 
     @property
     def RequestId(self):
@@ -3209,6 +3288,7 @@ class CreateRecognizeVocabV3Response(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._VocabId = params.get("VocabId")
         self._RequestId = params.get("RequestId")
 
 
@@ -3765,6 +3845,51 @@ class DeleteRecognizeVocabV3Request(AbstractModel):
     r"""DeleteRecognizeVocabV3请求参数结构体
 
     """
+
+    def __init__(self):
+        r"""
+        :param _VocabId: <p>词表 id</p>
+        :type VocabId: str
+        :param _SdkAppId: <p>客户维度唯一标识</p>
+        :type SdkAppId: int
+        """
+        self._VocabId = None
+        self._SdkAppId = None
+
+    @property
+    def VocabId(self):
+        r"""<p>词表 id</p>
+        :rtype: str
+        """
+        return self._VocabId
+
+    @VocabId.setter
+    def VocabId(self, VocabId):
+        self._VocabId = VocabId
+
+    @property
+    def SdkAppId(self):
+        r"""<p>客户维度唯一标识</p>
+        :rtype: int
+        """
+        return self._SdkAppId
+
+    @SdkAppId.setter
+    def SdkAppId(self, SdkAppId):
+        self._SdkAppId = SdkAppId
+
+
+    def _deserialize(self, params):
+        self._VocabId = params.get("VocabId")
+        self._SdkAppId = params.get("SdkAppId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class DeleteRecognizeVocabV3Response(AbstractModel):
@@ -8759,6 +8884,51 @@ class DownloadRecognizeVocabV3Request(AbstractModel):
 
     """
 
+    def __init__(self):
+        r"""
+        :param _VocabId: <p>词表 id</p>
+        :type VocabId: str
+        :param _SdkAppId: <p>客户维度唯一标识</p>
+        :type SdkAppId: int
+        """
+        self._VocabId = None
+        self._SdkAppId = None
+
+    @property
+    def VocabId(self):
+        r"""<p>词表 id</p>
+        :rtype: str
+        """
+        return self._VocabId
+
+    @VocabId.setter
+    def VocabId(self, VocabId):
+        self._VocabId = VocabId
+
+    @property
+    def SdkAppId(self):
+        r"""<p>客户维度唯一标识</p>
+        :rtype: int
+        """
+        return self._SdkAppId
+
+    @SdkAppId.setter
+    def SdkAppId(self, SdkAppId):
+        self._SdkAppId = SdkAppId
+
+
+    def _deserialize(self, params):
+        self._VocabId = params.get("VocabId")
+        self._SdkAppId = params.get("SdkAppId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
 
 class DownloadRecognizeVocabV3Response(AbstractModel):
     r"""DownloadRecognizeVocabV3返回参数结构体
@@ -8767,10 +8937,38 @@ class DownloadRecognizeVocabV3Response(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _VocabId: <p>词表 id</p>
+        :type VocabId: str
+        :param _WordWeightStr: <p>文本形式热词</p>
+        :type WordWeightStr: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._VocabId = None
+        self._WordWeightStr = None
         self._RequestId = None
+
+    @property
+    def VocabId(self):
+        r"""<p>词表 id</p>
+        :rtype: str
+        """
+        return self._VocabId
+
+    @VocabId.setter
+    def VocabId(self, VocabId):
+        self._VocabId = VocabId
+
+    @property
+    def WordWeightStr(self):
+        r"""<p>文本形式热词</p>
+        :rtype: str
+        """
+        return self._WordWeightStr
+
+    @WordWeightStr.setter
+    def WordWeightStr(self, WordWeightStr):
+        self._WordWeightStr = WordWeightStr
 
     @property
     def RequestId(self):
@@ -8785,6 +8983,8 @@ class DownloadRecognizeVocabV3Response(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._VocabId = params.get("VocabId")
+        self._WordWeightStr = params.get("WordWeightStr")
         self._RequestId = params.get("RequestId")
 
 
@@ -9227,6 +9427,66 @@ class GetRecognizeVocabListV3Request(AbstractModel):
 
     """
 
+    def __init__(self):
+        r"""
+        :param _SdkAppId: <p>客户维度唯一标识</p>
+        :type SdkAppId: int
+        :param _Offset: <p>分页偏移</p>
+        :type Offset: int
+        :param _Limit: <p>分页大小</p>
+        :type Limit: int
+        """
+        self._SdkAppId = None
+        self._Offset = None
+        self._Limit = None
+
+    @property
+    def SdkAppId(self):
+        r"""<p>客户维度唯一标识</p>
+        :rtype: int
+        """
+        return self._SdkAppId
+
+    @SdkAppId.setter
+    def SdkAppId(self, SdkAppId):
+        self._SdkAppId = SdkAppId
+
+    @property
+    def Offset(self):
+        r"""<p>分页偏移</p>
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        r"""<p>分页大小</p>
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+
+    def _deserialize(self, params):
+        self._SdkAppId = params.get("SdkAppId")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
 
 class GetRecognizeVocabListV3Response(AbstractModel):
     r"""GetRecognizeVocabListV3返回参数结构体
@@ -9235,10 +9495,38 @@ class GetRecognizeVocabListV3Response(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _VocabList: <p>词表列表</p>
+        :type VocabList: list of Vocab
+        :param _TotalCount: <p>词表个数</p><p>单位：个</p>
+        :type TotalCount: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._VocabList = None
+        self._TotalCount = None
         self._RequestId = None
+
+    @property
+    def VocabList(self):
+        r"""<p>词表列表</p>
+        :rtype: list of Vocab
+        """
+        return self._VocabList
+
+    @VocabList.setter
+    def VocabList(self, VocabList):
+        self._VocabList = VocabList
+
+    @property
+    def TotalCount(self):
+        r"""<p>词表个数</p><p>单位：个</p>
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
 
     @property
     def RequestId(self):
@@ -9253,6 +9541,13 @@ class GetRecognizeVocabListV3Response(AbstractModel):
 
 
     def _deserialize(self, params):
+        if params.get("VocabList") is not None:
+            self._VocabList = []
+            for item in params.get("VocabList"):
+                obj = Vocab()
+                obj._deserialize(item)
+                self._VocabList.append(obj)
+        self._TotalCount = params.get("TotalCount")
         self._RequestId = params.get("RequestId")
 
 
@@ -9260,6 +9555,51 @@ class GetRecognizeVocabV3Request(AbstractModel):
     r"""GetRecognizeVocabV3请求参数结构体
 
     """
+
+    def __init__(self):
+        r"""
+        :param _VocabId: <p>词表 id</p>
+        :type VocabId: str
+        :param _SdkAppId: <p>客户维度唯一标识</p>
+        :type SdkAppId: int
+        """
+        self._VocabId = None
+        self._SdkAppId = None
+
+    @property
+    def VocabId(self):
+        r"""<p>词表 id</p>
+        :rtype: str
+        """
+        return self._VocabId
+
+    @VocabId.setter
+    def VocabId(self, VocabId):
+        self._VocabId = VocabId
+
+    @property
+    def SdkAppId(self):
+        r"""<p>客户维度唯一标识</p>
+        :rtype: int
+        """
+        return self._SdkAppId
+
+    @SdkAppId.setter
+    def SdkAppId(self, SdkAppId):
+        self._SdkAppId = SdkAppId
+
+
+    def _deserialize(self, params):
+        self._VocabId = params.get("VocabId")
+        self._SdkAppId = params.get("SdkAppId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class GetRecognizeVocabV3Response(AbstractModel):
@@ -9269,10 +9609,108 @@ class GetRecognizeVocabV3Response(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _Name: <p>词表名称</p>
+        :type Name: str
+        :param _Description: <p>描述</p>
+        :type Description: str
+        :param _VocabId: <p>词表 id</p>
+        :type VocabId: str
+        :param _WordWeights: <p>热词+权重数组</p>
+        :type WordWeights: list of HotWord
+        :param _CreateTime: <p>创建时间</p>
+        :type CreateTime: str
+        :param _UpdateTime: <p>更新时间</p>
+        :type UpdateTime: str
+        :param _State: <p>是否设置默认词表</p><p>枚举值：</p><ul><li>0： 否</li><li>1： 是</li></ul>
+        :type State: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._Name = None
+        self._Description = None
+        self._VocabId = None
+        self._WordWeights = None
+        self._CreateTime = None
+        self._UpdateTime = None
+        self._State = None
         self._RequestId = None
+
+    @property
+    def Name(self):
+        r"""<p>词表名称</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Description(self):
+        r"""<p>描述</p>
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def VocabId(self):
+        r"""<p>词表 id</p>
+        :rtype: str
+        """
+        return self._VocabId
+
+    @VocabId.setter
+    def VocabId(self, VocabId):
+        self._VocabId = VocabId
+
+    @property
+    def WordWeights(self):
+        r"""<p>热词+权重数组</p>
+        :rtype: list of HotWord
+        """
+        return self._WordWeights
+
+    @WordWeights.setter
+    def WordWeights(self, WordWeights):
+        self._WordWeights = WordWeights
+
+    @property
+    def CreateTime(self):
+        r"""<p>创建时间</p>
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        r"""<p>更新时间</p>
+        :rtype: str
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def State(self):
+        r"""<p>是否设置默认词表</p><p>枚举值：</p><ul><li>0： 否</li><li>1： 是</li></ul>
+        :rtype: int
+        """
+        return self._State
+
+    @State.setter
+    def State(self, State):
+        self._State = State
 
     @property
     def RequestId(self):
@@ -9287,7 +9725,70 @@ class GetRecognizeVocabV3Response(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Description = params.get("Description")
+        self._VocabId = params.get("VocabId")
+        if params.get("WordWeights") is not None:
+            self._WordWeights = []
+            for item in params.get("WordWeights"):
+                obj = HotWord()
+                obj._deserialize(item)
+                self._WordWeights.append(obj)
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
+        self._State = params.get("State")
         self._RequestId = params.get("RequestId")
+
+
+class HotWord(AbstractModel):
+    r"""热词的词和权重
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Word: <p>热词</p>
+        :type Word: str
+        :param _Weight: <p>权重</p>
+        :type Weight: int
+        """
+        self._Word = None
+        self._Weight = None
+
+    @property
+    def Word(self):
+        r"""<p>热词</p>
+        :rtype: str
+        """
+        return self._Word
+
+    @Word.setter
+    def Word(self, Word):
+        self._Word = Word
+
+    @property
+    def Weight(self):
+        r"""<p>权重</p>
+        :rtype: int
+        """
+        return self._Weight
+
+    @Weight.setter
+    def Weight(self, Weight):
+        self._Weight = Weight
+
+
+    def _deserialize(self, params):
+        self._Word = params.get("Word")
+        self._Weight = params.get("Weight")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class Input(AbstractModel):
@@ -10772,7 +11273,8 @@ class McuRecordParams(AbstractModel):
 2: 开启录制（使用控制台自动录制模板参数，参考：[跳转文档](https://cloud.tencent.com/document/product/647/111748#.E5.BD.95.E5.88.B6.E6.8E.A7.E5.88.B6.E6.96.B9.E6.A1.88)）；
 3: 开启录制（使用API指定参数）。
         :type UniRecord: int
-        :param _RecordKey: 录制任务 key，标识一个录制任务；您可以通过该参数，将多个转推任务录制成一个文件。不指定该参数时，只录制当前转推任务。
+        :param _RecordKey: 录制任务标识 key，显式关联多个转推任务到一个录制任务；一般不需设置，默认录制本次转推内容。
+如果有特殊需求，比如将多段转推内容分时录制到同一个文件，可以通过设置此参数来控制。举例: 时间点10:00 发起转推任务:A + RecorderKey:abc，10:05分发起转推任务B+ RecorderKey:abc，那么录制文件会包含，转推A(10:00~10:05分的内容)+转推B的内容。
 【限制长度为128字节，只允许包含大小写英文字母（a-zA-Z）、数字（0-9）及下划线(_)和连词符(-)】
         :type RecordKey: str
         :param _RecordWaitTime: 【仅当UniRecord=3时此参数有效】
@@ -10821,7 +11323,8 @@ class McuRecordParams(AbstractModel):
 
     @property
     def RecordKey(self):
-        r"""录制任务 key，标识一个录制任务；您可以通过该参数，将多个转推任务录制成一个文件。不指定该参数时，只录制当前转推任务。
+        r"""录制任务标识 key，显式关联多个转推任务到一个录制任务；一般不需设置，默认录制本次转推内容。
+如果有特殊需求，比如将多段转推内容分时录制到同一个文件，可以通过设置此参数来控制。举例: 时间点10:00 发起转推任务:A + RecorderKey:abc，10:05分发起转推任务B+ RecorderKey:abc，那么录制文件会包含，转推A(10:00~10:05分的内容)+转推B的内容。
 【限制长度为128字节，只允许包含大小写英文字母（a-zA-Z）、数字（0-9）及下划线(_)和连词符(-)】
         :rtype: str
         """
@@ -15393,6 +15896,66 @@ class SetVocabStateV3Request(AbstractModel):
 
     """
 
+    def __init__(self):
+        r"""
+        :param _VocabId: <p>词表 id</p>
+        :type VocabId: str
+        :param _State: <p>是否设置为默认词表</p>
+        :type State: int
+        :param _SdkAppId: <p>客户维度唯一标识</p>
+        :type SdkAppId: int
+        """
+        self._VocabId = None
+        self._State = None
+        self._SdkAppId = None
+
+    @property
+    def VocabId(self):
+        r"""<p>词表 id</p>
+        :rtype: str
+        """
+        return self._VocabId
+
+    @VocabId.setter
+    def VocabId(self, VocabId):
+        self._VocabId = VocabId
+
+    @property
+    def State(self):
+        r"""<p>是否设置为默认词表</p>
+        :rtype: int
+        """
+        return self._State
+
+    @State.setter
+    def State(self, State):
+        self._State = State
+
+    @property
+    def SdkAppId(self):
+        r"""<p>客户维度唯一标识</p>
+        :rtype: int
+        """
+        return self._SdkAppId
+
+    @SdkAppId.setter
+    def SdkAppId(self, SdkAppId):
+        self._SdkAppId = SdkAppId
+
+
+    def _deserialize(self, params):
+        self._VocabId = params.get("VocabId")
+        self._State = params.get("State")
+        self._SdkAppId = params.get("SdkAppId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
 
 class SetVocabStateV3Response(AbstractModel):
     r"""SetVocabStateV3返回参数结构体
@@ -15401,10 +15964,24 @@ class SetVocabStateV3Response(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _VocabId: <p>词表 id</p>
+        :type VocabId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._VocabId = None
         self._RequestId = None
+
+    @property
+    def VocabId(self):
+        r"""<p>词表 id</p>
+        :rtype: str
+        """
+        return self._VocabId
+
+    @VocabId.setter
+    def VocabId(self, VocabId):
+        self._VocabId = VocabId
 
     @property
     def RequestId(self):
@@ -15419,6 +15996,7 @@ class SetVocabStateV3Response(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._VocabId = params.get("VocabId")
         self._RequestId = params.get("RequestId")
 
 
@@ -16539,33 +17117,29 @@ class StartPublishCdnStreamRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SdkAppId: TRTC的[SdkAppId](https://cloud.tencent.com/document/product/647/46351#sdkappid)，和转推的房间所对应的SdkAppId相同。
+        :param _SdkAppId: <p>TRTC的<a href="https://cloud.tencent.com/document/product/647/46351#sdkappid">SdkAppId</a>，和转推的房间所对应的SdkAppId相同。</p>
         :type SdkAppId: int
-        :param _RoomId: 主房间信息RoomId，转推的TRTC房间所对应的RoomId。
+        :param _RoomId: <p>主房间信息RoomId，转推的TRTC房间所对应的RoomId。</p>
         :type RoomId: str
-        :param _RoomIdType: 主房间信息RoomType，必须和转推的房间所对应的RoomId类型相同，0为整型房间号，1为字符串房间号。
+        :param _RoomIdType: <p>主房间信息RoomType，必须和转推的房间所对应的RoomId类型相同，0为整型房间号，1为字符串房间号。</p>
         :type RoomIdType: int
-        :param _AgentParams: 转推服务加入TRTC房间的机器人参数。
+        :param _AgentParams: <p>转推服务加入TRTC房间的机器人参数。</p>
         :type AgentParams: :class:`tencentcloud.trtc.v20190722.models.AgentParams`
-        :param _WithTranscoding: 是否转码，0表示无需转码，1表示需要转码。
-WithTranscoding为0，表示旁路转推，默认不转码；WithTranscoding为1，表示混流转推，此时一定会转码，并收取转码费用。
-注：
-1，混流是必须转码的，这个参数需设置为1。
-2，WithTranscoding=0时，视频输出Codec默认跟随上行视频Codec，如果上行视频Codec发生变化，CDN会断流重推。
+        :param _WithTranscoding: <p>是否转码，0表示无需转码，1表示需要转码。<br>WithTranscoding为0，表示旁路转推，默认不转码；WithTranscoding为1，表示混流转推，此时一定会转码，并收取转码费用。<br>注：<br>1，混流是必须转码的，这个参数需设置为1。<br>2，WithTranscoding=0时，视频输出Codec默认跟随上行视频Codec，如果上行视频Codec发生变化，CDN会断流重推。</p>
         :type WithTranscoding: int
-        :param _AudioParams: 转推流的音频编码参数。由于音频是必转码的（不会收取转码费用），所以启动任务的时候，必须填写。
+        :param _AudioParams: <p>转推流的音频编码参数。由于音频是必转码的（不会收取转码费用），所以启动任务的时候，必须填写。</p>
         :type AudioParams: :class:`tencentcloud.trtc.v20190722.models.McuAudioParams`
-        :param _VideoParams: 转推流的视频编码参数，不填表示纯音频转推。
+        :param _VideoParams: <p>转推流的视频编码参数，不填表示纯音频转推。</p>
         :type VideoParams: :class:`tencentcloud.trtc.v20190722.models.McuVideoParams`
-        :param _SingleSubscribeParams: 需要单流旁路转推的用户上行参数，单流旁路转推时，WithTranscoding需要设置为0。
+        :param _SingleSubscribeParams: <p>需要单流旁路转推的用户上行参数，单流旁路转推时，WithTranscoding需要设置为0。</p>
         :type SingleSubscribeParams: :class:`tencentcloud.trtc.v20190722.models.SingleSubscribeParams`
-        :param _PublishCdnParams: 转推的CDN参数，一个任务最多支持10个推流URL。和回推房间参数必须要有一个。
+        :param _PublishCdnParams: <p>转推的CDN参数，一个任务最多支持10个推流URL。和回推房间参数必须要有一个。</p>
         :type PublishCdnParams: list of McuPublishCdnParam
-        :param _SeiParams: 混流SEI参数
+        :param _SeiParams: <p>混流SEI参数</p>
         :type SeiParams: :class:`tencentcloud.trtc.v20190722.models.McuSeiParams`
-        :param _FeedBackRoomParams: 回推房间信息，一个任务最多支持回推10个房间，和转推CDN参数必须要有一个。注：回推房间需使用10.4及以上SDK版本，如您有需求，请联系腾讯云技术支持。
+        :param _FeedBackRoomParams: <p>回推房间信息，一个任务最多支持回推10个房间，和转推CDN参数必须要有一个。注：回推房间需使用10.4及以上SDK版本，如您有需求，请联系腾讯云技术支持。</p>
         :type FeedBackRoomParams: list of McuFeedBackRoomParams
-        :param _RecordParams: 转推录制参数，[参考文档](https://cloud.tencent.com/document/product/647/111748)。
+        :param _RecordParams: <p>转推录制参数，<a href="https://cloud.tencent.com/document/product/647/111748">参考文档</a>。</p>
         :type RecordParams: :class:`tencentcloud.trtc.v20190722.models.McuRecordParams`
         """
         self._SdkAppId = None
@@ -16583,7 +17157,7 @@ WithTranscoding为0，表示旁路转推，默认不转码；WithTranscoding为1
 
     @property
     def SdkAppId(self):
-        r"""TRTC的[SdkAppId](https://cloud.tencent.com/document/product/647/46351#sdkappid)，和转推的房间所对应的SdkAppId相同。
+        r"""<p>TRTC的<a href="https://cloud.tencent.com/document/product/647/46351#sdkappid">SdkAppId</a>，和转推的房间所对应的SdkAppId相同。</p>
         :rtype: int
         """
         return self._SdkAppId
@@ -16594,7 +17168,7 @@ WithTranscoding为0，表示旁路转推，默认不转码；WithTranscoding为1
 
     @property
     def RoomId(self):
-        r"""主房间信息RoomId，转推的TRTC房间所对应的RoomId。
+        r"""<p>主房间信息RoomId，转推的TRTC房间所对应的RoomId。</p>
         :rtype: str
         """
         return self._RoomId
@@ -16605,7 +17179,7 @@ WithTranscoding为0，表示旁路转推，默认不转码；WithTranscoding为1
 
     @property
     def RoomIdType(self):
-        r"""主房间信息RoomType，必须和转推的房间所对应的RoomId类型相同，0为整型房间号，1为字符串房间号。
+        r"""<p>主房间信息RoomType，必须和转推的房间所对应的RoomId类型相同，0为整型房间号，1为字符串房间号。</p>
         :rtype: int
         """
         return self._RoomIdType
@@ -16616,7 +17190,7 @@ WithTranscoding为0，表示旁路转推，默认不转码；WithTranscoding为1
 
     @property
     def AgentParams(self):
-        r"""转推服务加入TRTC房间的机器人参数。
+        r"""<p>转推服务加入TRTC房间的机器人参数。</p>
         :rtype: :class:`tencentcloud.trtc.v20190722.models.AgentParams`
         """
         return self._AgentParams
@@ -16627,11 +17201,7 @@ WithTranscoding为0，表示旁路转推，默认不转码；WithTranscoding为1
 
     @property
     def WithTranscoding(self):
-        r"""是否转码，0表示无需转码，1表示需要转码。
-WithTranscoding为0，表示旁路转推，默认不转码；WithTranscoding为1，表示混流转推，此时一定会转码，并收取转码费用。
-注：
-1，混流是必须转码的，这个参数需设置为1。
-2，WithTranscoding=0时，视频输出Codec默认跟随上行视频Codec，如果上行视频Codec发生变化，CDN会断流重推。
+        r"""<p>是否转码，0表示无需转码，1表示需要转码。<br>WithTranscoding为0，表示旁路转推，默认不转码；WithTranscoding为1，表示混流转推，此时一定会转码，并收取转码费用。<br>注：<br>1，混流是必须转码的，这个参数需设置为1。<br>2，WithTranscoding=0时，视频输出Codec默认跟随上行视频Codec，如果上行视频Codec发生变化，CDN会断流重推。</p>
         :rtype: int
         """
         return self._WithTranscoding
@@ -16642,7 +17212,7 @@ WithTranscoding为0，表示旁路转推，默认不转码；WithTranscoding为1
 
     @property
     def AudioParams(self):
-        r"""转推流的音频编码参数。由于音频是必转码的（不会收取转码费用），所以启动任务的时候，必须填写。
+        r"""<p>转推流的音频编码参数。由于音频是必转码的（不会收取转码费用），所以启动任务的时候，必须填写。</p>
         :rtype: :class:`tencentcloud.trtc.v20190722.models.McuAudioParams`
         """
         return self._AudioParams
@@ -16653,7 +17223,7 @@ WithTranscoding为0，表示旁路转推，默认不转码；WithTranscoding为1
 
     @property
     def VideoParams(self):
-        r"""转推流的视频编码参数，不填表示纯音频转推。
+        r"""<p>转推流的视频编码参数，不填表示纯音频转推。</p>
         :rtype: :class:`tencentcloud.trtc.v20190722.models.McuVideoParams`
         """
         return self._VideoParams
@@ -16664,7 +17234,7 @@ WithTranscoding为0，表示旁路转推，默认不转码；WithTranscoding为1
 
     @property
     def SingleSubscribeParams(self):
-        r"""需要单流旁路转推的用户上行参数，单流旁路转推时，WithTranscoding需要设置为0。
+        r"""<p>需要单流旁路转推的用户上行参数，单流旁路转推时，WithTranscoding需要设置为0。</p>
         :rtype: :class:`tencentcloud.trtc.v20190722.models.SingleSubscribeParams`
         """
         return self._SingleSubscribeParams
@@ -16675,7 +17245,7 @@ WithTranscoding为0，表示旁路转推，默认不转码；WithTranscoding为1
 
     @property
     def PublishCdnParams(self):
-        r"""转推的CDN参数，一个任务最多支持10个推流URL。和回推房间参数必须要有一个。
+        r"""<p>转推的CDN参数，一个任务最多支持10个推流URL。和回推房间参数必须要有一个。</p>
         :rtype: list of McuPublishCdnParam
         """
         return self._PublishCdnParams
@@ -16686,7 +17256,7 @@ WithTranscoding为0，表示旁路转推，默认不转码；WithTranscoding为1
 
     @property
     def SeiParams(self):
-        r"""混流SEI参数
+        r"""<p>混流SEI参数</p>
         :rtype: :class:`tencentcloud.trtc.v20190722.models.McuSeiParams`
         """
         return self._SeiParams
@@ -16697,7 +17267,7 @@ WithTranscoding为0，表示旁路转推，默认不转码；WithTranscoding为1
 
     @property
     def FeedBackRoomParams(self):
-        r"""回推房间信息，一个任务最多支持回推10个房间，和转推CDN参数必须要有一个。注：回推房间需使用10.4及以上SDK版本，如您有需求，请联系腾讯云技术支持。
+        r"""<p>回推房间信息，一个任务最多支持回推10个房间，和转推CDN参数必须要有一个。注：回推房间需使用10.4及以上SDK版本，如您有需求，请联系腾讯云技术支持。</p>
         :rtype: list of McuFeedBackRoomParams
         """
         return self._FeedBackRoomParams
@@ -16708,7 +17278,7 @@ WithTranscoding为0，表示旁路转推，默认不转码；WithTranscoding为1
 
     @property
     def RecordParams(self):
-        r"""转推录制参数，[参考文档](https://cloud.tencent.com/document/product/647/111748)。
+        r"""<p>转推录制参数，<a href="https://cloud.tencent.com/document/product/647/111748">参考文档</a>。</p>
         :rtype: :class:`tencentcloud.trtc.v20190722.models.McuRecordParams`
         """
         return self._RecordParams
@@ -16770,7 +17340,7 @@ class StartPublishCdnStreamResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskId: 用于唯一标识转推任务，由腾讯云服务端生成，后续更新和停止请求都需要携带TaskID参数。
+        :param _TaskId: <p>用于唯一标识转推任务，由腾讯云服务端生成，后续更新和停止请求都需要携带TaskID参数。</p>
         :type TaskId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -16780,7 +17350,7 @@ class StartPublishCdnStreamResponse(AbstractModel):
 
     @property
     def TaskId(self):
-        r"""用于唯一标识转推任务，由腾讯云服务端生成，后续更新和停止请求都需要携带TaskID参数。
+        r"""<p>用于唯一标识转推任务，由腾讯云服务端生成，后续更新和停止请求都需要携带TaskID参数。</p>
         :rtype: str
         """
         return self._TaskId
@@ -20271,25 +20841,25 @@ class UpdatePublishCdnStreamRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SdkAppId: TRTC的[SdkAppId](https://cloud.tencent.com/document/product/647/46351#sdkappid)，和转推的房间所对应的SdkAppId相同。
+        :param _SdkAppId: <p>TRTC的<a href="https://cloud.tencent.com/document/product/647/46351#sdkappid">SdkAppId</a>，和转推的房间所对应的SdkAppId相同。</p>
         :type SdkAppId: int
-        :param _TaskId: 唯一标识转推任务。
+        :param _TaskId: <p>唯一标识转推任务。</p>
         :type TaskId: str
-        :param _SequenceNumber: 客户保证同一个任务，每次更新请求中的SequenceNumber递增，防止请求乱序。
+        :param _SequenceNumber: <p>客户保证同一个任务，每次更新请求中的SequenceNumber递增，防止请求乱序。</p>
         :type SequenceNumber: int
-        :param _WithTranscoding: 是否转码，0表示无需转码，1表示需要转码。 WithTranscoding为0，表示旁路转推，默认不转码；WithTranscoding为1，表示混流转推，此时一定会转码，并收取转码费用。 注： 1，混流是必须转码的，这个参数需设置为1。 2，WithTranscoding=0时，视频输出Codec默认跟随上行视频Codec，如果上行视频Codec发生变化，CDN会断流重推。
+        :param _WithTranscoding: <p>是否转码，0表示无需转码，1表示需要转码。 WithTranscoding为0，表示旁路转推，默认不转码；WithTranscoding为1，表示混流转推，此时一定会转码，并收取转码费用。 注： 1，混流是必须转码的，这个参数需设置为1。 2，WithTranscoding=0时，视频输出Codec默认跟随上行视频Codec，如果上行视频Codec发生变化，CDN会断流重推。</p>
         :type WithTranscoding: int
-        :param _AudioParams: 更新相关参数，只支持更新参与混音的主播列表参数，不支持更新Codec、采样率、码率和声道数。不填表示不更新此参数。
+        :param _AudioParams: <p>更新相关参数，只支持更新参与混音的主播列表参数，不支持更新Codec、采样率、码率和声道数。不填表示不更新此参数。</p>
         :type AudioParams: :class:`tencentcloud.trtc.v20190722.models.McuAudioParams`
-        :param _VideoParams: 更新视频相关参数，转码时支持更新除编码类型之外的编码参数，视频布局参数，背景图片和背景颜色参数，水印参数。不填表示不更新此参数。
+        :param _VideoParams: <p>更新视频相关参数，转码时支持更新除编码类型之外的编码参数，视频布局参数，背景图片和背景颜色参数，水印参数。不填表示不更新此参数。</p>
         :type VideoParams: :class:`tencentcloud.trtc.v20190722.models.McuVideoParams`
-        :param _SingleSubscribeParams: 更新单流转推的用户上行参数，仅在非转码时有效。不填表示不更新此参数。
+        :param _SingleSubscribeParams: <p>更新单流转推的用户上行参数，仅在非转码时有效。不填表示不更新此参数。</p>
         :type SingleSubscribeParams: :class:`tencentcloud.trtc.v20190722.models.SingleSubscribeParams`
-        :param _PublishCdnParams: 更新转推的CDN参数。不填表示不更新此参数。
+        :param _PublishCdnParams: <p>更新转推的CDN参数。不填表示不更新此参数。</p>
         :type PublishCdnParams: list of McuPublishCdnParam
-        :param _SeiParams: 混流SEI参数
+        :param _SeiParams: <p>混流SEI参数</p>
         :type SeiParams: :class:`tencentcloud.trtc.v20190722.models.McuSeiParams`
-        :param _FeedBackRoomParams: 回推房间信息
+        :param _FeedBackRoomParams: <p>回推房间信息</p>
         :type FeedBackRoomParams: list of McuFeedBackRoomParams
         """
         self._SdkAppId = None
@@ -20305,7 +20875,7 @@ class UpdatePublishCdnStreamRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
-        r"""TRTC的[SdkAppId](https://cloud.tencent.com/document/product/647/46351#sdkappid)，和转推的房间所对应的SdkAppId相同。
+        r"""<p>TRTC的<a href="https://cloud.tencent.com/document/product/647/46351#sdkappid">SdkAppId</a>，和转推的房间所对应的SdkAppId相同。</p>
         :rtype: int
         """
         return self._SdkAppId
@@ -20316,7 +20886,7 @@ class UpdatePublishCdnStreamRequest(AbstractModel):
 
     @property
     def TaskId(self):
-        r"""唯一标识转推任务。
+        r"""<p>唯一标识转推任务。</p>
         :rtype: str
         """
         return self._TaskId
@@ -20327,7 +20897,7 @@ class UpdatePublishCdnStreamRequest(AbstractModel):
 
     @property
     def SequenceNumber(self):
-        r"""客户保证同一个任务，每次更新请求中的SequenceNumber递增，防止请求乱序。
+        r"""<p>客户保证同一个任务，每次更新请求中的SequenceNumber递增，防止请求乱序。</p>
         :rtype: int
         """
         return self._SequenceNumber
@@ -20338,7 +20908,7 @@ class UpdatePublishCdnStreamRequest(AbstractModel):
 
     @property
     def WithTranscoding(self):
-        r"""是否转码，0表示无需转码，1表示需要转码。 WithTranscoding为0，表示旁路转推，默认不转码；WithTranscoding为1，表示混流转推，此时一定会转码，并收取转码费用。 注： 1，混流是必须转码的，这个参数需设置为1。 2，WithTranscoding=0时，视频输出Codec默认跟随上行视频Codec，如果上行视频Codec发生变化，CDN会断流重推。
+        r"""<p>是否转码，0表示无需转码，1表示需要转码。 WithTranscoding为0，表示旁路转推，默认不转码；WithTranscoding为1，表示混流转推，此时一定会转码，并收取转码费用。 注： 1，混流是必须转码的，这个参数需设置为1。 2，WithTranscoding=0时，视频输出Codec默认跟随上行视频Codec，如果上行视频Codec发生变化，CDN会断流重推。</p>
         :rtype: int
         """
         return self._WithTranscoding
@@ -20349,7 +20919,7 @@ class UpdatePublishCdnStreamRequest(AbstractModel):
 
     @property
     def AudioParams(self):
-        r"""更新相关参数，只支持更新参与混音的主播列表参数，不支持更新Codec、采样率、码率和声道数。不填表示不更新此参数。
+        r"""<p>更新相关参数，只支持更新参与混音的主播列表参数，不支持更新Codec、采样率、码率和声道数。不填表示不更新此参数。</p>
         :rtype: :class:`tencentcloud.trtc.v20190722.models.McuAudioParams`
         """
         return self._AudioParams
@@ -20360,7 +20930,7 @@ class UpdatePublishCdnStreamRequest(AbstractModel):
 
     @property
     def VideoParams(self):
-        r"""更新视频相关参数，转码时支持更新除编码类型之外的编码参数，视频布局参数，背景图片和背景颜色参数，水印参数。不填表示不更新此参数。
+        r"""<p>更新视频相关参数，转码时支持更新除编码类型之外的编码参数，视频布局参数，背景图片和背景颜色参数，水印参数。不填表示不更新此参数。</p>
         :rtype: :class:`tencentcloud.trtc.v20190722.models.McuVideoParams`
         """
         return self._VideoParams
@@ -20371,7 +20941,7 @@ class UpdatePublishCdnStreamRequest(AbstractModel):
 
     @property
     def SingleSubscribeParams(self):
-        r"""更新单流转推的用户上行参数，仅在非转码时有效。不填表示不更新此参数。
+        r"""<p>更新单流转推的用户上行参数，仅在非转码时有效。不填表示不更新此参数。</p>
         :rtype: :class:`tencentcloud.trtc.v20190722.models.SingleSubscribeParams`
         """
         return self._SingleSubscribeParams
@@ -20382,7 +20952,7 @@ class UpdatePublishCdnStreamRequest(AbstractModel):
 
     @property
     def PublishCdnParams(self):
-        r"""更新转推的CDN参数。不填表示不更新此参数。
+        r"""<p>更新转推的CDN参数。不填表示不更新此参数。</p>
         :rtype: list of McuPublishCdnParam
         """
         return self._PublishCdnParams
@@ -20393,7 +20963,7 @@ class UpdatePublishCdnStreamRequest(AbstractModel):
 
     @property
     def SeiParams(self):
-        r"""混流SEI参数
+        r"""<p>混流SEI参数</p>
         :rtype: :class:`tencentcloud.trtc.v20190722.models.McuSeiParams`
         """
         return self._SeiParams
@@ -20404,7 +20974,7 @@ class UpdatePublishCdnStreamRequest(AbstractModel):
 
     @property
     def FeedBackRoomParams(self):
-        r"""回推房间信息
+        r"""<p>回推房间信息</p>
         :rtype: list of McuFeedBackRoomParams
         """
         return self._FeedBackRoomParams
@@ -20460,7 +21030,7 @@ class UpdatePublishCdnStreamResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskId: 转推任务唯一的String Id
+        :param _TaskId: <p>转推任务唯一的String Id</p>
         :type TaskId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -20470,7 +21040,7 @@ class UpdatePublishCdnStreamResponse(AbstractModel):
 
     @property
     def TaskId(self):
-        r"""转推任务唯一的String Id
+        r"""<p>转推任务唯一的String Id</p>
         :rtype: str
         """
         return self._TaskId
@@ -20501,6 +21071,116 @@ class UpdateRecognizeVocabV3Request(AbstractModel):
 
     """
 
+    def __init__(self):
+        r"""
+        :param _VocabId: <p>词表 id</p>
+        :type VocabId: str
+        :param _SdkAppId: <p>客户维度唯一标识</p>
+        :type SdkAppId: int
+        :param _Name: <p>词表名称</p>
+        :type Name: str
+        :param _Description: <p>词表描述</p>
+        :type Description: str
+        :param _WordWeights: <p>热词数组</p>
+        :type WordWeights: list of HotWord
+        :param _WordWeightStr: <p>base64 编码的词表文本</p>
+        :type WordWeightStr: str
+        """
+        self._VocabId = None
+        self._SdkAppId = None
+        self._Name = None
+        self._Description = None
+        self._WordWeights = None
+        self._WordWeightStr = None
+
+    @property
+    def VocabId(self):
+        r"""<p>词表 id</p>
+        :rtype: str
+        """
+        return self._VocabId
+
+    @VocabId.setter
+    def VocabId(self, VocabId):
+        self._VocabId = VocabId
+
+    @property
+    def SdkAppId(self):
+        r"""<p>客户维度唯一标识</p>
+        :rtype: int
+        """
+        return self._SdkAppId
+
+    @SdkAppId.setter
+    def SdkAppId(self, SdkAppId):
+        self._SdkAppId = SdkAppId
+
+    @property
+    def Name(self):
+        r"""<p>词表名称</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Description(self):
+        r"""<p>词表描述</p>
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def WordWeights(self):
+        r"""<p>热词数组</p>
+        :rtype: list of HotWord
+        """
+        return self._WordWeights
+
+    @WordWeights.setter
+    def WordWeights(self, WordWeights):
+        self._WordWeights = WordWeights
+
+    @property
+    def WordWeightStr(self):
+        r"""<p>base64 编码的词表文本</p>
+        :rtype: str
+        """
+        return self._WordWeightStr
+
+    @WordWeightStr.setter
+    def WordWeightStr(self, WordWeightStr):
+        self._WordWeightStr = WordWeightStr
+
+
+    def _deserialize(self, params):
+        self._VocabId = params.get("VocabId")
+        self._SdkAppId = params.get("SdkAppId")
+        self._Name = params.get("Name")
+        self._Description = params.get("Description")
+        if params.get("WordWeights") is not None:
+            self._WordWeights = []
+            for item in params.get("WordWeights"):
+                obj = HotWord()
+                obj._deserialize(item)
+                self._WordWeights.append(obj)
+        self._WordWeightStr = params.get("WordWeightStr")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
 
 class UpdateRecognizeVocabV3Response(AbstractModel):
     r"""UpdateRecognizeVocabV3返回参数结构体
@@ -20509,10 +21189,24 @@ class UpdateRecognizeVocabV3Response(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _VocabId: <p>词表 id</p>
+        :type VocabId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._VocabId = None
         self._RequestId = None
+
+    @property
+    def VocabId(self):
+        r"""<p>词表 id</p>
+        :rtype: str
+        """
+        return self._VocabId
+
+    @VocabId.setter
+    def VocabId(self, VocabId):
+        self._VocabId = VocabId
 
     @property
     def RequestId(self):
@@ -20527,6 +21221,7 @@ class UpdateRecognizeVocabV3Response(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._VocabId = params.get("VocabId")
         self._RequestId = params.get("RequestId")
 
 
@@ -21346,6 +22041,137 @@ class VideoParams(AbstractModel):
         self._Fps = params.get("Fps")
         self._BitRate = params.get("BitRate")
         self._Gop = params.get("Gop")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class Vocab(AbstractModel):
+    r"""词表内容
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: <p>热词表名称</p>
+        :type Name: str
+        :param _Description: <p>热词表描述</p>
+        :type Description: str
+        :param _VocabId: <p>热词表ID</p>
+        :type VocabId: str
+        :param _WordWeights: <p>词权重列表</p>
+        :type WordWeights: list of HotWord
+        :param _CreateTime: <p>词表创建时间</p>
+        :type CreateTime: str
+        :param _UpdateTime: <p>词表更新时间</p>
+        :type UpdateTime: str
+        :param _State: <p>热词表状态，1为默认状态即在识别时默认加载该热词表进行识别，0为初始状态</p>
+        :type State: int
+        """
+        self._Name = None
+        self._Description = None
+        self._VocabId = None
+        self._WordWeights = None
+        self._CreateTime = None
+        self._UpdateTime = None
+        self._State = None
+
+    @property
+    def Name(self):
+        r"""<p>热词表名称</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Description(self):
+        r"""<p>热词表描述</p>
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def VocabId(self):
+        r"""<p>热词表ID</p>
+        :rtype: str
+        """
+        return self._VocabId
+
+    @VocabId.setter
+    def VocabId(self, VocabId):
+        self._VocabId = VocabId
+
+    @property
+    def WordWeights(self):
+        r"""<p>词权重列表</p>
+        :rtype: list of HotWord
+        """
+        return self._WordWeights
+
+    @WordWeights.setter
+    def WordWeights(self, WordWeights):
+        self._WordWeights = WordWeights
+
+    @property
+    def CreateTime(self):
+        r"""<p>词表创建时间</p>
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        r"""<p>词表更新时间</p>
+        :rtype: str
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def State(self):
+        r"""<p>热词表状态，1为默认状态即在识别时默认加载该热词表进行识别，0为初始状态</p>
+        :rtype: int
+        """
+        return self._State
+
+    @State.setter
+    def State(self, State):
+        self._State = State
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Description = params.get("Description")
+        self._VocabId = params.get("VocabId")
+        if params.get("WordWeights") is not None:
+            self._WordWeights = []
+            for item in params.get("WordWeights"):
+                obj = HotWord()
+                obj._deserialize(item)
+                self._WordWeights.append(obj)
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
+        self._State = params.get("State")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

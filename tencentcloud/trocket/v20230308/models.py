@@ -2699,7 +2699,7 @@ class DescribeConsumerClientRequest(AbstractModel):
         r"""
         :param _InstanceId: 腾讯云 RocketMQ 实例 ID，从 [DescribeFusionInstanceList](https://cloud.tencent.com/document/api/1493/106745) 接口或控制台获得。
         :type InstanceId: str
-        :param _ClientId: 客户端ID，从 [DescribeConsumerClientList](https://cloud.tencent.com/document/api/1493/120140) 接口中的 [ConsumerClient](https://cloud.tencent.com/document/api/1493/96031#ConsumerClient) 出参中获得。
+        :param _ClientId: <p>客户端ID，从 <a href="https://cloud.tencent.com/document/api/1493/120140">DescribeConsumerClientList</a> 接口中的 <a href="https://cloud.tencent.com/document/api/1493/96031#ConsumerClient">ConsumerClient</a> 出参中获得。</p>
         :type ClientId: str
         :param _Filters: 过滤查询条件列表，请在引用此参数的API说明中了解使用方法。
         :type Filters: list of Filter
@@ -2730,7 +2730,7 @@ class DescribeConsumerClientRequest(AbstractModel):
 
     @property
     def ClientId(self):
-        r"""客户端ID，从 [DescribeConsumerClientList](https://cloud.tencent.com/document/api/1493/120140) 接口中的 [ConsumerClient](https://cloud.tencent.com/document/api/1493/96031#ConsumerClient) 出参中获得。
+        r"""<p>客户端ID，从 <a href="https://cloud.tencent.com/document/api/1493/120140">DescribeConsumerClientList</a> 接口中的 <a href="https://cloud.tencent.com/document/api/1493/96031#ConsumerClient">ConsumerClient</a> 出参中获得。</p>
         :rtype: str
         """
         return self._ClientId
@@ -2813,22 +2813,25 @@ class DescribeConsumerClientResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Client: 客户端详情
+        :param _Client: <p>客户端详情</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Client: :class:`tencentcloud.trocket.v20230308.models.ConsumerClient`
-        :param _TopicList: 主题消费信息
+        :param _TopicList: <p>主题消费信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TopicList: list of TopicConsumeStats
+        :param _TopicTotalCount: <p>订阅主题总数</p>
+        :type TopicTotalCount: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Client = None
         self._TopicList = None
+        self._TopicTotalCount = None
         self._RequestId = None
 
     @property
     def Client(self):
-        r"""客户端详情
+        r"""<p>客户端详情</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.trocket.v20230308.models.ConsumerClient`
         """
@@ -2840,7 +2843,7 @@ class DescribeConsumerClientResponse(AbstractModel):
 
     @property
     def TopicList(self):
-        r"""主题消费信息
+        r"""<p>主题消费信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of TopicConsumeStats
         """
@@ -2849,6 +2852,17 @@ class DescribeConsumerClientResponse(AbstractModel):
     @TopicList.setter
     def TopicList(self, TopicList):
         self._TopicList = TopicList
+
+    @property
+    def TopicTotalCount(self):
+        r"""<p>订阅主题总数</p>
+        :rtype: int
+        """
+        return self._TopicTotalCount
+
+    @TopicTotalCount.setter
+    def TopicTotalCount(self, TopicTotalCount):
+        self._TopicTotalCount = TopicTotalCount
 
     @property
     def RequestId(self):
@@ -2872,6 +2886,7 @@ class DescribeConsumerClientResponse(AbstractModel):
                 obj = TopicConsumeStats()
                 obj._deserialize(item)
                 self._TopicList.append(obj)
+        self._TopicTotalCount = params.get("TopicTotalCount")
         self._RequestId = params.get("RequestId")
 
 
@@ -5398,6 +5413,9 @@ class DescribeMessageResponse(AbstractModel):
         :param _MessageTracksCount: <p>消息消费情况列表总条数</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type MessageTracksCount: int
+        :param _DelayMessageStatus: <p>5.x 时间轮定时消息状态，仅在查询定时消息（命中 RMQ_SYS_WHEEL_TIMER）时返回。枚举值：PENDING（未到期）、DELIVERED（已到期投递）、RECALLED（已撤回）、NOT_FOUND（消息不存在）、UNSUPPORTED（该消息类型不支持状态查询，如 4.x DelayLevel 延迟消息）。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DelayMessageStatus: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -5410,6 +5428,7 @@ class DescribeMessageResponse(AbstractModel):
         self._ShowTopicName = None
         self._LiteTopic = None
         self._MessageTracksCount = None
+        self._DelayMessageStatus = None
         self._RequestId = None
 
     @property
@@ -5515,6 +5534,18 @@ class DescribeMessageResponse(AbstractModel):
         self._MessageTracksCount = MessageTracksCount
 
     @property
+    def DelayMessageStatus(self):
+        r"""<p>5.x 时间轮定时消息状态，仅在查询定时消息（命中 RMQ_SYS_WHEEL_TIMER）时返回。枚举值：PENDING（未到期）、DELIVERED（已到期投递）、RECALLED（已撤回）、NOT_FOUND（消息不存在）、UNSUPPORTED（该消息类型不支持状态查询，如 4.x DelayLevel 延迟消息）。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._DelayMessageStatus
+
+    @DelayMessageStatus.setter
+    def DelayMessageStatus(self, DelayMessageStatus):
+        self._DelayMessageStatus = DelayMessageStatus
+
+    @property
     def RequestId(self):
         r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -5541,6 +5572,7 @@ class DescribeMessageResponse(AbstractModel):
         self._ShowTopicName = params.get("ShowTopicName")
         self._LiteTopic = params.get("LiteTopic")
         self._MessageTracksCount = params.get("MessageTracksCount")
+        self._DelayMessageStatus = params.get("DelayMessageStatus")
         self._RequestId = params.get("RequestId")
 
 

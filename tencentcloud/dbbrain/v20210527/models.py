@@ -3696,24 +3696,26 @@ class CreateRedisBigKeyAnalysisTaskRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例 ID。可通过 [DescribeDiagDBInstances](https://cloud.tencent.com/document/api/1130/57798) 接口获取。
+        :param _InstanceId: <p>实例 ID。可通过 <a href="https://cloud.tencent.com/document/api/1130/57798">DescribeDiagDBInstances</a> 接口获取。</p>
         :type InstanceId: str
-        :param _Product: 服务产品类型，支持值包括 "redis" - 云数据库 Redis。
+        :param _Product: <p>服务产品类型，支持值包括 &quot;redis&quot; - 云数据库 Redis。</p>
         :type Product: str
-        :param _ShardIds: 分片节点序号列表。当列表为空时，选择所有分片节点。
+        :param _ShardIds: <p>分片节点序号列表。当列表为空时，选择所有分片节点。</p>
         :type ShardIds: list of int
-        :param _KeyDelimiterList: Top Key前缀的分隔符列表。
-目前仅支持以下分割符：[",", ";", ":", "_", "-", "+", "@", "=", "|", "#", "."]，当列表为空时，默认选择所有分隔符。
+        :param _KeyDelimiterList: <p>Top Key前缀的分隔符列表。<br>目前仅支持以下分割符：[&quot;,&quot;, &quot;;&quot;, &quot;:&quot;, &quot;_&quot;, &quot;-&quot;, &quot;+&quot;, &quot;@&quot;, &quot;=&quot;, &quot;|&quot;, &quot;#&quot;, &quot;.&quot;]，当列表为空时，默认选择所有分隔符。</p>
         :type KeyDelimiterList: list of str
+        :param _BackupId: <p>历史备份文件ID</p>
+        :type BackupId: str
         """
         self._InstanceId = None
         self._Product = None
         self._ShardIds = None
         self._KeyDelimiterList = None
+        self._BackupId = None
 
     @property
     def InstanceId(self):
-        r"""实例 ID。可通过 [DescribeDiagDBInstances](https://cloud.tencent.com/document/api/1130/57798) 接口获取。
+        r"""<p>实例 ID。可通过 <a href="https://cloud.tencent.com/document/api/1130/57798">DescribeDiagDBInstances</a> 接口获取。</p>
         :rtype: str
         """
         return self._InstanceId
@@ -3724,7 +3726,7 @@ class CreateRedisBigKeyAnalysisTaskRequest(AbstractModel):
 
     @property
     def Product(self):
-        r"""服务产品类型，支持值包括 "redis" - 云数据库 Redis。
+        r"""<p>服务产品类型，支持值包括 &quot;redis&quot; - 云数据库 Redis。</p>
         :rtype: str
         """
         return self._Product
@@ -3735,7 +3737,7 @@ class CreateRedisBigKeyAnalysisTaskRequest(AbstractModel):
 
     @property
     def ShardIds(self):
-        r"""分片节点序号列表。当列表为空时，选择所有分片节点。
+        r"""<p>分片节点序号列表。当列表为空时，选择所有分片节点。</p>
         :rtype: list of int
         """
         return self._ShardIds
@@ -3746,8 +3748,7 @@ class CreateRedisBigKeyAnalysisTaskRequest(AbstractModel):
 
     @property
     def KeyDelimiterList(self):
-        r"""Top Key前缀的分隔符列表。
-目前仅支持以下分割符：[",", ";", ":", "_", "-", "+", "@", "=", "|", "#", "."]，当列表为空时，默认选择所有分隔符。
+        r"""<p>Top Key前缀的分隔符列表。<br>目前仅支持以下分割符：[&quot;,&quot;, &quot;;&quot;, &quot;:&quot;, &quot;_&quot;, &quot;-&quot;, &quot;+&quot;, &quot;@&quot;, &quot;=&quot;, &quot;|&quot;, &quot;#&quot;, &quot;.&quot;]，当列表为空时，默认选择所有分隔符。</p>
         :rtype: list of str
         """
         return self._KeyDelimiterList
@@ -3756,12 +3757,24 @@ class CreateRedisBigKeyAnalysisTaskRequest(AbstractModel):
     def KeyDelimiterList(self, KeyDelimiterList):
         self._KeyDelimiterList = KeyDelimiterList
 
+    @property
+    def BackupId(self):
+        r"""<p>历史备份文件ID</p>
+        :rtype: str
+        """
+        return self._BackupId
+
+    @BackupId.setter
+    def BackupId(self, BackupId):
+        self._BackupId = BackupId
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
         self._Product = params.get("Product")
         self._ShardIds = params.get("ShardIds")
         self._KeyDelimiterList = params.get("KeyDelimiterList")
+        self._BackupId = params.get("BackupId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3779,7 +3792,7 @@ class CreateRedisBigKeyAnalysisTaskResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AsyncRequestId: 异步任务ID。
+        :param _AsyncRequestId: <p>异步任务ID。</p>
         :type AsyncRequestId: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -3789,7 +3802,7 @@ class CreateRedisBigKeyAnalysisTaskResponse(AbstractModel):
 
     @property
     def AsyncRequestId(self):
-        r"""异步任务ID。
+        r"""<p>异步任务ID。</p>
         :rtype: int
         """
         return self._AsyncRequestId

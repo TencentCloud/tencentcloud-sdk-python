@@ -3282,9 +3282,9 @@ class MetadataVar(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Name: <p>沙箱元数据名</p>
+        :param _Name: <p>元数据名</p>
         :type Name: str
-        :param _Value: <p>沙箱元数据值</p>
+        :param _Value: <p>元数据值</p>
         :type Value: str
         """
         self._Name = None
@@ -3292,7 +3292,7 @@ class MetadataVar(AbstractModel):
 
     @property
     def Name(self):
-        r"""<p>沙箱元数据名</p>
+        r"""<p>元数据名</p>
         :rtype: str
         """
         return self._Name
@@ -3303,7 +3303,7 @@ class MetadataVar(AbstractModel):
 
     @property
     def Value(self):
-        r"""<p>沙箱元数据值</p>
+        r"""<p>元数据值</p>
         :rtype: str
         """
         return self._Value
