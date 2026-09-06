@@ -7414,6 +7414,10 @@ class CreateModelRequest(AbstractModel):
         :type CMRPrivateNetworkTunnelId: str
         :param _HealthCheckConfigs: <p>健康检查配置</p>
         :type HealthCheckConfigs: list of ServiceProviderHealthCheckConfigItemInput
+        :param _Capability: <p>模型输出模态</p>
+        :type Capability: str
+        :param _EndpointPath: <p>请求后缀</p>
+        :type EndpointPath: str
         """
         self._AccessType = None
         self._ModelProvider = None
@@ -7432,6 +7436,8 @@ class CreateModelRequest(AbstractModel):
         self._HealthCheckConfig = None
         self._CMRPrivateNetworkTunnelId = None
         self._HealthCheckConfigs = None
+        self._Capability = None
+        self._EndpointPath = None
 
     @property
     def AccessType(self):
@@ -7620,6 +7626,28 @@ class CreateModelRequest(AbstractModel):
     def HealthCheckConfigs(self, HealthCheckConfigs):
         self._HealthCheckConfigs = HealthCheckConfigs
 
+    @property
+    def Capability(self):
+        r"""<p>模型输出模态</p>
+        :rtype: str
+        """
+        return self._Capability
+
+    @Capability.setter
+    def Capability(self, Capability):
+        self._Capability = Capability
+
+    @property
+    def EndpointPath(self):
+        r"""<p>请求后缀</p>
+        :rtype: str
+        """
+        return self._EndpointPath
+
+    @EndpointPath.setter
+    def EndpointPath(self, EndpointPath):
+        self._EndpointPath = EndpointPath
+
 
     def _deserialize(self, params):
         self._AccessType = params.get("AccessType")
@@ -7666,6 +7694,8 @@ class CreateModelRequest(AbstractModel):
                 obj = ServiceProviderHealthCheckConfigItemInput()
                 obj._deserialize(item)
                 self._HealthCheckConfigs.append(obj)
+        self._Capability = params.get("Capability")
+        self._EndpointPath = params.get("EndpointPath")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7775,6 +7805,8 @@ class CreateModelRouterRequest(AbstractModel):
         :type EipAddressId: str
         :param _Bandwidth: <p>单位</p><p>取值范围：[1, 2048]</p><p>单位：Mbps</p>
         :type Bandwidth: int
+        :param _EmbeddingConfig: <p>Embedding 配置</p>
+        :type EmbeddingConfig: :class:`tencentcloud.clb.v20180317.models.EmbeddingConfig`
         """
         self._ModelRouterType = None
         self._BudgetId = None
@@ -7793,6 +7825,7 @@ class CreateModelRouterRequest(AbstractModel):
         self._ClientToken = None
         self._EipAddressId = None
         self._Bandwidth = None
+        self._EmbeddingConfig = None
 
     @property
     def ModelRouterType(self):
@@ -7981,6 +8014,17 @@ class CreateModelRouterRequest(AbstractModel):
     def Bandwidth(self, Bandwidth):
         self._Bandwidth = Bandwidth
 
+    @property
+    def EmbeddingConfig(self):
+        r"""<p>Embedding 配置</p>
+        :rtype: :class:`tencentcloud.clb.v20180317.models.EmbeddingConfig`
+        """
+        return self._EmbeddingConfig
+
+    @EmbeddingConfig.setter
+    def EmbeddingConfig(self, EmbeddingConfig):
+        self._EmbeddingConfig = EmbeddingConfig
+
 
     def _deserialize(self, params):
         self._ModelRouterType = params.get("ModelRouterType")
@@ -8013,6 +8057,9 @@ class CreateModelRouterRequest(AbstractModel):
         self._ClientToken = params.get("ClientToken")
         self._EipAddressId = params.get("EipAddressId")
         self._Bandwidth = params.get("Bandwidth")
+        if params.get("EmbeddingConfig") is not None:
+            self._EmbeddingConfig = EmbeddingConfig()
+            self._EmbeddingConfig._deserialize(params.get("EmbeddingConfig"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -14849,10 +14896,13 @@ class DescribeModelAssociationsRequest(AbstractModel):
         :type Limit: int
         :param _Offset: <p>翻页偏移量</p><p>默认值：0</p>
         :type Offset: int
+        :param _Capability: <p>模型输出模态</p>
+        :type Capability: str
         """
         self._ModelRouterId = None
         self._Limit = None
         self._Offset = None
+        self._Capability = None
 
     @property
     def ModelRouterId(self):
@@ -14887,11 +14937,23 @@ class DescribeModelAssociationsRequest(AbstractModel):
     def Offset(self, Offset):
         self._Offset = Offset
 
+    @property
+    def Capability(self):
+        r"""<p>模型输出模态</p>
+        :rtype: str
+        """
+        return self._Capability
+
+    @Capability.setter
+    def Capability(self, Capability):
+        self._Capability = Capability
+
 
     def _deserialize(self, params):
         self._ModelRouterId = params.get("ModelRouterId")
         self._Limit = params.get("Limit")
         self._Offset = params.get("Offset")
+        self._Capability = params.get("Capability")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -18697,6 +18759,80 @@ class DisassociateTargetGroupsResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
+
+
+class EmbeddingConfig(AbstractModel):
+    r"""embedding配置。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RoutingStrategy: <p>模型内路由策略</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RoutingStrategy: str
+        :param _RoutingStrategyArgs: <p>路由参数</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RoutingStrategyArgs: :class:`tencentcloud.clb.v20180317.models.RoutingStrategyArgs`
+        :param _NumRetries: <p>同一模型请求重试次数</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type NumRetries: int
+        """
+        self._RoutingStrategy = None
+        self._RoutingStrategyArgs = None
+        self._NumRetries = None
+
+    @property
+    def RoutingStrategy(self):
+        r"""<p>模型内路由策略</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._RoutingStrategy
+
+    @RoutingStrategy.setter
+    def RoutingStrategy(self, RoutingStrategy):
+        self._RoutingStrategy = RoutingStrategy
+
+    @property
+    def RoutingStrategyArgs(self):
+        r"""<p>路由参数</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.clb.v20180317.models.RoutingStrategyArgs`
+        """
+        return self._RoutingStrategyArgs
+
+    @RoutingStrategyArgs.setter
+    def RoutingStrategyArgs(self, RoutingStrategyArgs):
+        self._RoutingStrategyArgs = RoutingStrategyArgs
+
+    @property
+    def NumRetries(self):
+        r"""<p>同一模型请求重试次数</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._NumRetries
+
+    @NumRetries.setter
+    def NumRetries(self, NumRetries):
+        self._NumRetries = NumRetries
+
+
+    def _deserialize(self, params):
+        self._RoutingStrategy = params.get("RoutingStrategy")
+        if params.get("RoutingStrategyArgs") is not None:
+            self._RoutingStrategyArgs = RoutingStrategyArgs()
+            self._RoutingStrategyArgs._deserialize(params.get("RoutingStrategyArgs"))
+        self._NumRetries = params.get("NumRetries")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class ExclusiveCluster(AbstractModel):
@@ -24674,7 +24810,7 @@ class ModelAlias(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Coefficient: <p>模型积分系数配置，包含 <code>InputCoefficient</code>、<code>InputCachedCoefficient</code> 和 <code>OutputCoefficient</code>。</p><p>未配置时输入系数默认为 25，缓存命中输入系数默认为 3，输出系数默认为 100。</p>
+        :param _Coefficient: <p>模型积分系数配置，包含 <code>InputCoefficient</code> 和 <code>OutputCoefficient</code>。</p><p>未配置时输入系数和输出系数均返回 1。</p>
         :type Coefficient: :class:`tencentcloud.clb.v20180317.models.Coefficient`
         :param _ModelAliasName: <p>模型别名名称。</p><p>若用户配置了模型别名，则为该别名；未配置时为原始模型名称。</p>
         :type ModelAliasName: str
@@ -24684,16 +24820,19 @@ class ModelAlias(AbstractModel):
         :type Source: str
         :param _Status: <p>状态</p><p>枚举值：</p><ul><li>Active： 正常可用</li><li>Configuring： 变配中</li><li>ConfigureFailed： 变配失败</li></ul>
         :type Status: str
+        :param _Capability: <p>模型能力</p>
+        :type Capability: str
         """
         self._Coefficient = None
         self._ModelAliasName = None
         self._ServiceProviderCoefficientSet = None
         self._Source = None
         self._Status = None
+        self._Capability = None
 
     @property
     def Coefficient(self):
-        r"""<p>模型积分系数配置，包含 <code>InputCoefficient</code>、<code>InputCachedCoefficient</code> 和 <code>OutputCoefficient</code>。</p><p>未配置时输入系数默认为 25，缓存命中输入系数默认为 3，输出系数默认为 100。</p>
+        r"""<p>模型积分系数配置，包含 <code>InputCoefficient</code> 和 <code>OutputCoefficient</code>。</p><p>未配置时输入系数和输出系数均返回 1。</p>
         :rtype: :class:`tencentcloud.clb.v20180317.models.Coefficient`
         """
         return self._Coefficient
@@ -24746,6 +24885,17 @@ class ModelAlias(AbstractModel):
     def Status(self, Status):
         self._Status = Status
 
+    @property
+    def Capability(self):
+        r"""<p>模型能力</p>
+        :rtype: str
+        """
+        return self._Capability
+
+    @Capability.setter
+    def Capability(self, Capability):
+        self._Capability = Capability
+
 
     def _deserialize(self, params):
         if params.get("Coefficient") is not None:
@@ -24760,6 +24910,7 @@ class ModelAlias(AbstractModel):
                 self._ServiceProviderCoefficientSet.append(obj)
         self._Source = params.get("Source")
         self._Status = params.get("Status")
+        self._Capability = params.get("Capability")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -24785,11 +24936,14 @@ class ModelAssociation(AbstractModel):
         :type ServiceProviders: list of ServiceProvider
         :param _Type: <p>模型类型</p>
         :type Type: str
+        :param _Capability: <p>输出模态</p>
+        :type Capability: str
         """
         self._InputModalitiesUnion = None
         self._ModelName = None
         self._ServiceProviders = None
         self._Type = None
+        self._Capability = None
 
     @property
     def InputModalitiesUnion(self):
@@ -24835,6 +24989,17 @@ class ModelAssociation(AbstractModel):
     def Type(self, Type):
         self._Type = Type
 
+    @property
+    def Capability(self):
+        r"""<p>输出模态</p>
+        :rtype: str
+        """
+        return self._Capability
+
+    @Capability.setter
+    def Capability(self, Capability):
+        self._Capability = Capability
+
 
     def _deserialize(self, params):
         self._InputModalitiesUnion = params.get("InputModalitiesUnion")
@@ -24846,6 +25011,7 @@ class ModelAssociation(AbstractModel):
                 obj._deserialize(item)
                 self._ServiceProviders.append(obj)
         self._Type = params.get("Type")
+        self._Capability = params.get("Capability")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -25114,6 +25280,12 @@ class ModelKeyInfoItem(AbstractModel):
         :type CMRPrivateNetworkTunnelName: str
         :param _HealthCheckConfigs: <p>健康检查配置</p>
         :type HealthCheckConfigs: list of ServiceProviderHealthCheckConfigItemOutput
+        :param _Capability: <p>模型输出模态</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Capability: str
+        :param _EndpointPath: <p>请求后缀</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EndpointPath: str
         """
         self._AccessType = None
         self._ApiBase = None
@@ -25137,6 +25309,8 @@ class ModelKeyInfoItem(AbstractModel):
         self._CMRPrivateNetworkTunnelId = None
         self._CMRPrivateNetworkTunnelName = None
         self._HealthCheckConfigs = None
+        self._Capability = None
+        self._EndpointPath = None
 
     @property
     def AccessType(self):
@@ -25389,6 +25563,30 @@ class ModelKeyInfoItem(AbstractModel):
     def HealthCheckConfigs(self, HealthCheckConfigs):
         self._HealthCheckConfigs = HealthCheckConfigs
 
+    @property
+    def Capability(self):
+        r"""<p>模型输出模态</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Capability
+
+    @Capability.setter
+    def Capability(self, Capability):
+        self._Capability = Capability
+
+    @property
+    def EndpointPath(self):
+        r"""<p>请求后缀</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._EndpointPath
+
+    @EndpointPath.setter
+    def EndpointPath(self, EndpointPath):
+        self._EndpointPath = EndpointPath
+
 
     def _deserialize(self, params):
         self._AccessType = params.get("AccessType")
@@ -25440,6 +25638,8 @@ class ModelKeyInfoItem(AbstractModel):
                 obj = ServiceProviderHealthCheckConfigItemOutput()
                 obj._deserialize(item)
                 self._HealthCheckConfigs.append(obj)
+        self._Capability = params.get("Capability")
+        self._EndpointPath = params.get("EndpointPath")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -25720,6 +25920,8 @@ class ModelRouterDetail(AbstractModel):
         :type EipAddressId: str
         :param _BillingConfig: <p>计费信息</p>
         :type BillingConfig: :class:`tencentcloud.clb.v20180317.models.ModelRouterBillingConfigOutput`
+        :param _EmbeddingConfig: <p>Embedding配置</p>
+        :type EmbeddingConfig: :class:`tencentcloud.clb.v20180317.models.EmbeddingConfig`
         """
         self._BudgetId = None
         self._BudgetName = None
@@ -25746,6 +25948,7 @@ class ModelRouterDetail(AbstractModel):
         self._Bandwidth = None
         self._EipAddressId = None
         self._BillingConfig = None
+        self._EmbeddingConfig = None
 
     @property
     def BudgetId(self):
@@ -26026,6 +26229,17 @@ class ModelRouterDetail(AbstractModel):
     def BillingConfig(self, BillingConfig):
         self._BillingConfig = BillingConfig
 
+    @property
+    def EmbeddingConfig(self):
+        r"""<p>Embedding配置</p>
+        :rtype: :class:`tencentcloud.clb.v20180317.models.EmbeddingConfig`
+        """
+        return self._EmbeddingConfig
+
+    @EmbeddingConfig.setter
+    def EmbeddingConfig(self, EmbeddingConfig):
+        self._EmbeddingConfig = EmbeddingConfig
+
 
     def _deserialize(self, params):
         self._BudgetId = params.get("BudgetId")
@@ -26076,6 +26290,9 @@ class ModelRouterDetail(AbstractModel):
         if params.get("BillingConfig") is not None:
             self._BillingConfig = ModelRouterBillingConfigOutput()
             self._BillingConfig._deserialize(params.get("BillingConfig"))
+        if params.get("EmbeddingConfig") is not None:
+            self._EmbeddingConfig = EmbeddingConfig()
+            self._EmbeddingConfig._deserialize(params.get("EmbeddingConfig"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -29494,20 +29711,23 @@ class ModifyModelAliasAttributesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Coefficient: <p>模型积分系数配置。</p><p>必填，至少包含 <code>InputCoefficient</code>、<code>InputCachedCoefficient</code>、<code>OutputCoefficient</code> 中的一个字段，未传字段保持原值。</p><p><code>InputCoefficient</code> 为非缓存命中输入积分系数。</p><p><code>InputCachedCoefficient</code> 为缓存命中输入积分系数，用于 provider prompt cache 命中的输入 token。</p><p><code>OutputCoefficient</code> 为输出积分系数。</p><p>各字段取值范围：[0, 5000]，仅支持整数，0 表示该类 token 不计积分。</p>
+        :param _Coefficient: <p>模型积分系数配置。</p><p>必填，包含 <code>InputCoefficient</code> 和 <code>OutputCoefficient</code>。</p><p><code>InputCoefficient</code> 为输入积分系数。</p><p><code>OutputCoefficient</code> 为输出积分系数。</p><p>取值范围：[1, 200]，最多支持 1 位小数。</p>
         :type Coefficient: :class:`tencentcloud.clb.v20180317.models.Coefficient`
-        :param _ModelAliasNames: <p>模型别名列表。</p><p>不传 <code>ServiceProviderIds</code>（按 ModelAlias 账号维度修改）时支持数组批量，同一份 Coefficient 应用到多个别名。</p><p>传入 <code>ServiceProviderIds</code>（按 ServiceProvider 维度修改）时只能传 1 个别名，锁定唯一 model 别名；去重后不等于 1 个将返回 InvalidParameter。</p>
+        :param _ModelAliasNames: <p>模型别名</p>
         :type ModelAliasNames: list of str
         :param _ServiceProviderIds: <p>BYOK 实例（ServiceProvider）ID 列表。</p><p>可选，数组。传入时按 ServiceProvider 维度修改：把同一份 Coefficient 批量应用到数组内每一个实例（覆盖配置，仅作用于这些实例），此时 <code>ModelAliasNames</code> 只能传 1 个别名（即 1 别名 × N ServiceProvider）；数组需去重、非空、上限 100，任一实例不归属/不存在/该实例下无该别名将整批返回错误。不传时按 ModelAlias（账号）维度修改，作用于该别名下未单独配置覆盖的全部实例。</p>
         :type ServiceProviderIds: list of str
+        :param _Capability: <p>模型能力</p>
+        :type Capability: str
         """
         self._Coefficient = None
         self._ModelAliasNames = None
         self._ServiceProviderIds = None
+        self._Capability = None
 
     @property
     def Coefficient(self):
-        r"""<p>模型积分系数配置。</p><p>必填，至少包含 <code>InputCoefficient</code>、<code>InputCachedCoefficient</code>、<code>OutputCoefficient</code> 中的一个字段，未传字段保持原值。</p><p><code>InputCoefficient</code> 为非缓存命中输入积分系数。</p><p><code>InputCachedCoefficient</code> 为缓存命中输入积分系数，用于 provider prompt cache 命中的输入 token。</p><p><code>OutputCoefficient</code> 为输出积分系数。</p><p>各字段取值范围：[0, 5000]，仅支持整数，0 表示该类 token 不计积分。</p>
+        r"""<p>模型积分系数配置。</p><p>必填，包含 <code>InputCoefficient</code> 和 <code>OutputCoefficient</code>。</p><p><code>InputCoefficient</code> 为输入积分系数。</p><p><code>OutputCoefficient</code> 为输出积分系数。</p><p>取值范围：[1, 200]，最多支持 1 位小数。</p>
         :rtype: :class:`tencentcloud.clb.v20180317.models.Coefficient`
         """
         return self._Coefficient
@@ -29518,7 +29738,7 @@ class ModifyModelAliasAttributesRequest(AbstractModel):
 
     @property
     def ModelAliasNames(self):
-        r"""<p>模型别名列表。</p><p>不传 <code>ServiceProviderIds</code>（按 ModelAlias 账号维度修改）时支持数组批量，同一份 Coefficient 应用到多个别名。</p><p>传入 <code>ServiceProviderIds</code>（按 ServiceProvider 维度修改）时只能传 1 个别名，锁定唯一 model 别名；去重后不等于 1 个将返回 InvalidParameter。</p>
+        r"""<p>模型别名</p>
         :rtype: list of str
         """
         return self._ModelAliasNames
@@ -29538,6 +29758,17 @@ class ModifyModelAliasAttributesRequest(AbstractModel):
     def ServiceProviderIds(self, ServiceProviderIds):
         self._ServiceProviderIds = ServiceProviderIds
 
+    @property
+    def Capability(self):
+        r"""<p>模型能力</p>
+        :rtype: str
+        """
+        return self._Capability
+
+    @Capability.setter
+    def Capability(self, Capability):
+        self._Capability = Capability
+
 
     def _deserialize(self, params):
         if params.get("Coefficient") is not None:
@@ -29545,6 +29776,7 @@ class ModifyModelAliasAttributesRequest(AbstractModel):
             self._Coefficient._deserialize(params.get("Coefficient"))
         self._ModelAliasNames = params.get("ModelAliasNames")
         self._ServiceProviderIds = params.get("ServiceProviderIds")
+        self._Capability = params.get("Capability")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -29596,10 +29828,16 @@ class ModifyModelAttributesRequest(AbstractModel):
         :type ServiceProviderName: str
         :param _ApiBases: <p>多协议 Api Base URL</p>
         :type ApiBases: list of ApiBaseItem
+        :param _ApiBase: <p>非chat输出模态的Api Base URL</p>
+        :type ApiBase: str
+        :param _EndpointPath: <p>非chat输出模态的请求后缀</p>
+        :type EndpointPath: str
         """
         self._ServiceProviderId = None
         self._ServiceProviderName = None
         self._ApiBases = None
+        self._ApiBase = None
+        self._EndpointPath = None
 
     @property
     def ServiceProviderId(self):
@@ -29634,6 +29872,28 @@ class ModifyModelAttributesRequest(AbstractModel):
     def ApiBases(self, ApiBases):
         self._ApiBases = ApiBases
 
+    @property
+    def ApiBase(self):
+        r"""<p>非chat输出模态的Api Base URL</p>
+        :rtype: str
+        """
+        return self._ApiBase
+
+    @ApiBase.setter
+    def ApiBase(self, ApiBase):
+        self._ApiBase = ApiBase
+
+    @property
+    def EndpointPath(self):
+        r"""<p>非chat输出模态的请求后缀</p>
+        :rtype: str
+        """
+        return self._EndpointPath
+
+    @EndpointPath.setter
+    def EndpointPath(self, EndpointPath):
+        self._EndpointPath = EndpointPath
+
 
     def _deserialize(self, params):
         self._ServiceProviderId = params.get("ServiceProviderId")
@@ -29644,6 +29904,8 @@ class ModifyModelAttributesRequest(AbstractModel):
                 obj = ApiBaseItem()
                 obj._deserialize(item)
                 self._ApiBases.append(obj)
+        self._ApiBase = params.get("ApiBase")
+        self._EndpointPath = params.get("EndpointPath")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -29701,6 +29963,10 @@ class ModifyModelRouterAttributesRequest(AbstractModel):
         :type RouterSetting: :class:`tencentcloud.clb.v20180317.models.RouterSettingWithFallBack`
         :param _Bandwidth: <p>带宽</p><p>取值范围：[1, 2048]</p><p>单位：Mbps</p>
         :type Bandwidth: int
+        :param _Capability: <p>模型输出模态</p>
+        :type Capability: str
+        :param _EmbeddingConfig: <p>embedding 模态配置</p>
+        :type EmbeddingConfig: :class:`tencentcloud.clb.v20180317.models.EmbeddingConfig`
         """
         self._ModelRouterId = None
         self._CertId = None
@@ -29708,6 +29974,8 @@ class ModifyModelRouterAttributesRequest(AbstractModel):
         self._RateLimitConfig = None
         self._RouterSetting = None
         self._Bandwidth = None
+        self._Capability = None
+        self._EmbeddingConfig = None
 
     @property
     def ModelRouterId(self):
@@ -29775,6 +30043,28 @@ class ModifyModelRouterAttributesRequest(AbstractModel):
     def Bandwidth(self, Bandwidth):
         self._Bandwidth = Bandwidth
 
+    @property
+    def Capability(self):
+        r"""<p>模型输出模态</p>
+        :rtype: str
+        """
+        return self._Capability
+
+    @Capability.setter
+    def Capability(self, Capability):
+        self._Capability = Capability
+
+    @property
+    def EmbeddingConfig(self):
+        r"""<p>embedding 模态配置</p>
+        :rtype: :class:`tencentcloud.clb.v20180317.models.EmbeddingConfig`
+        """
+        return self._EmbeddingConfig
+
+    @EmbeddingConfig.setter
+    def EmbeddingConfig(self, EmbeddingConfig):
+        self._EmbeddingConfig = EmbeddingConfig
+
 
     def _deserialize(self, params):
         self._ModelRouterId = params.get("ModelRouterId")
@@ -29787,6 +30077,10 @@ class ModifyModelRouterAttributesRequest(AbstractModel):
             self._RouterSetting = RouterSettingWithFallBack()
             self._RouterSetting._deserialize(params.get("RouterSetting"))
         self._Bandwidth = params.get("Bandwidth")
+        self._Capability = params.get("Capability")
+        if params.get("EmbeddingConfig") is not None:
+            self._EmbeddingConfig = EmbeddingConfig()
+            self._EmbeddingConfig._deserialize(params.get("EmbeddingConfig"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -38245,6 +38539,8 @@ class TestServiceProviderConnectionRequest(AbstractModel):
         :type HealthCheckProtocol: str
         :param _CMRPrivateNetworkTunnelId: <p>    CMR 私网管道ID </p>
         :type CMRPrivateNetworkTunnelId: str
+        :param _Capability: <p>对应模型的能力</p><p>枚举值：</p><ul><li>chat： 生文能力</li><li>embedding： 向量能力</li></ul>
+        :type Capability: str
         """
         self._Models = None
         self._ProviderKey = None
@@ -38258,6 +38554,7 @@ class TestServiceProviderConnectionRequest(AbstractModel):
         self._VerifySSL = None
         self._HealthCheckProtocol = None
         self._CMRPrivateNetworkTunnelId = None
+        self._Capability = None
 
     @property
     def Models(self):
@@ -38391,6 +38688,17 @@ class TestServiceProviderConnectionRequest(AbstractModel):
     def CMRPrivateNetworkTunnelId(self, CMRPrivateNetworkTunnelId):
         self._CMRPrivateNetworkTunnelId = CMRPrivateNetworkTunnelId
 
+    @property
+    def Capability(self):
+        r"""<p>对应模型的能力</p><p>枚举值：</p><ul><li>chat： 生文能力</li><li>embedding： 向量能力</li></ul>
+        :rtype: str
+        """
+        return self._Capability
+
+    @Capability.setter
+    def Capability(self, Capability):
+        self._Capability = Capability
+
 
     def _deserialize(self, params):
         self._Models = params.get("Models")
@@ -38405,6 +38713,7 @@ class TestServiceProviderConnectionRequest(AbstractModel):
         self._VerifySSL = params.get("VerifySSL")
         self._HealthCheckProtocol = params.get("HealthCheckProtocol")
         self._CMRPrivateNetworkTunnelId = params.get("CMRPrivateNetworkTunnelId")
+        self._Capability = params.get("Capability")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

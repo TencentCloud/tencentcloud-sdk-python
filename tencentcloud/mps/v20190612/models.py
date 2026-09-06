@@ -14206,6 +14206,12 @@ class AigcTaskListItem(AbstractModel):
         :param _RequestBody: <p>任务请求包</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type RequestBody: str
+        :param _TaskInfo: <p>任务其他信息</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskInfo: str
+        :param _Stage: <p>任务子状态</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Stage: str
         """
         self._TaskId = None
         self._TaskType = None
@@ -14219,6 +14225,8 @@ class AigcTaskListItem(AbstractModel):
         self._Resolution = None
         self._Ratio = None
         self._RequestBody = None
+        self._TaskInfo = None
+        self._Stage = None
 
     @property
     def TaskId(self):
@@ -14355,6 +14363,30 @@ class AigcTaskListItem(AbstractModel):
     def RequestBody(self, RequestBody):
         self._RequestBody = RequestBody
 
+    @property
+    def TaskInfo(self):
+        r"""<p>任务其他信息</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TaskInfo
+
+    @TaskInfo.setter
+    def TaskInfo(self, TaskInfo):
+        self._TaskInfo = TaskInfo
+
+    @property
+    def Stage(self):
+        r"""<p>任务子状态</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Stage
+
+    @Stage.setter
+    def Stage(self, Stage):
+        self._Stage = Stage
+
 
     def _deserialize(self, params):
         self._TaskId = params.get("TaskId")
@@ -14369,6 +14401,8 @@ class AigcTaskListItem(AbstractModel):
         self._Resolution = params.get("Resolution")
         self._Ratio = params.get("Ratio")
         self._RequestBody = params.get("RequestBody")
+        self._TaskInfo = params.get("TaskInfo")
+        self._Stage = params.get("Stage")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -18408,7 +18442,7 @@ class CloneViralAIGC(AbstractModel):
         r"""
         :param _Duration: <p>视频时长</p><p>取值范围：[4, 15]</p>
         :type Duration: int
-        :param _AspectRatio: <p>宽高比。可选 16:9/4:3/1:1/3:4/9:16/21:9/adaptive</p>
+        :param _AspectRatio: <p>宽高比。旗舰版支持 16:9/4:3/1:1/3:4/9:16/21:9/adaptive，标准版支持16:9/1:1/9:16</p>
         :type AspectRatio: str
         :param _Resolution: <p>分辨率。支持720p（默认）/1080p/2k/4k</p>
         :type Resolution: str
@@ -18433,7 +18467,7 @@ class CloneViralAIGC(AbstractModel):
 
     @property
     def AspectRatio(self):
-        r"""<p>宽高比。可选 16:9/4:3/1:1/3:4/9:16/21:9/adaptive</p>
+        r"""<p>宽高比。旗舰版支持 16:9/4:3/1:1/3:4/9:16/21:9/adaptive，标准版支持16:9/1:1/9:16</p>
         :rtype: str
         """
         return self._AspectRatio
@@ -18551,6 +18585,125 @@ class CloneViralContent(AbstractModel):
         self._Language = params.get("Language")
         self._Market = params.get("Market")
         self._FissionLevel = params.get("FissionLevel")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CloneViralCosInfo(AbstractModel):
+    r"""爆款复刻输出COS信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Region: <p>区域</p>
+        :type Region: str
+        :param _Bucket: <p>COS桶</p>
+        :type Bucket: str
+        :param _Dir: <p>目录。空时默认根目录</p>
+        :type Dir: str
+        """
+        self._Region = None
+        self._Bucket = None
+        self._Dir = None
+
+    @property
+    def Region(self):
+        r"""<p>区域</p>
+        :rtype: str
+        """
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def Bucket(self):
+        r"""<p>COS桶</p>
+        :rtype: str
+        """
+        return self._Bucket
+
+    @Bucket.setter
+    def Bucket(self, Bucket):
+        self._Bucket = Bucket
+
+    @property
+    def Dir(self):
+        r"""<p>目录。空时默认根目录</p>
+        :rtype: str
+        """
+        return self._Dir
+
+    @Dir.setter
+    def Dir(self, Dir):
+        self._Dir = Dir
+
+
+    def _deserialize(self, params):
+        self._Region = params.get("Region")
+        self._Bucket = params.get("Bucket")
+        self._Dir = params.get("Dir")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CloneViralOutputOption(AbstractModel):
+    r"""爆款复刻输出配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Type: <p>输出类型。默认url</p><p>枚举值：</p><ul><li>url： 临时链接，有效期24小时</li><li>cos： 指定cos桶和路径</li></ul>
+        :type Type: str
+        :param _CosInfo: <p>自定义cos信息</p>
+        :type CosInfo: :class:`tencentcloud.mps.v20190612.models.CloneViralCosInfo`
+        """
+        self._Type = None
+        self._CosInfo = None
+
+    @property
+    def Type(self):
+        r"""<p>输出类型。默认url</p><p>枚举值：</p><ul><li>url： 临时链接，有效期24小时</li><li>cos： 指定cos桶和路径</li></ul>
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def CosInfo(self):
+        r"""<p>自定义cos信息</p>
+        :rtype: :class:`tencentcloud.mps.v20190612.models.CloneViralCosInfo`
+        """
+        return self._CosInfo
+
+    @CosInfo.setter
+    def CosInfo(self, CosInfo):
+        self._CosInfo = CosInfo
+
+
+    def _deserialize(self, params):
+        self._Type = params.get("Type")
+        if params.get("CosInfo") is not None:
+            self._CosInfo = CloneViralCosInfo()
+            self._CosInfo._deserialize(params.get("CosInfo"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -18725,12 +18878,15 @@ class CloneViralRequest(AbstractModel):
         :type ContentParam: :class:`tencentcloud.mps.v20190612.models.CloneViralContent`
         :param _Persona: <p>模特形象</p>
         :type Persona: :class:`tencentcloud.mps.v20190612.models.CloneViralPersona`
+        :param _Output: <p>输出相关参数</p>
+        :type Output: :class:`tencentcloud.mps.v20190612.models.CloneViralOutputOption`
         """
         self._VideoUrl = None
         self._Product = None
         self._AIGCParam = None
         self._ContentParam = None
         self._Persona = None
+        self._Output = None
 
     @property
     def VideoUrl(self):
@@ -18787,6 +18943,17 @@ class CloneViralRequest(AbstractModel):
     def Persona(self, Persona):
         self._Persona = Persona
 
+    @property
+    def Output(self):
+        r"""<p>输出相关参数</p>
+        :rtype: :class:`tencentcloud.mps.v20190612.models.CloneViralOutputOption`
+        """
+        return self._Output
+
+    @Output.setter
+    def Output(self, Output):
+        self._Output = Output
+
 
     def _deserialize(self, params):
         self._VideoUrl = params.get("VideoUrl")
@@ -18802,6 +18969,9 @@ class CloneViralRequest(AbstractModel):
         if params.get("Persona") is not None:
             self._Persona = CloneViralPersona()
             self._Persona._deserialize(params.get("Persona"))
+        if params.get("Output") is not None:
+            self._Output = CloneViralOutputOption()
+            self._Output._deserialize(params.get("Output"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -34671,6 +34841,12 @@ class DescribeAigcTaskStatusResponse(AbstractModel):
         :type RequestBody: str
         :param _TaskType: <p>任务类型</p>
         :type TaskType: str
+        :param _TaskInfo: <p>任务其他信息</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskInfo: str
+        :param _Stage: <p>任务子状态</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Stage: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -34684,6 +34860,8 @@ class DescribeAigcTaskStatusResponse(AbstractModel):
         self._TaskResultMsg = None
         self._RequestBody = None
         self._TaskType = None
+        self._TaskInfo = None
+        self._Stage = None
         self._RequestId = None
 
     @property
@@ -34798,6 +34976,30 @@ class DescribeAigcTaskStatusResponse(AbstractModel):
         self._TaskType = TaskType
 
     @property
+    def TaskInfo(self):
+        r"""<p>任务其他信息</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TaskInfo
+
+    @TaskInfo.setter
+    def TaskInfo(self, TaskInfo):
+        self._TaskInfo = TaskInfo
+
+    @property
+    def Stage(self):
+        r"""<p>任务子状态</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Stage
+
+    @Stage.setter
+    def Stage(self, Stage):
+        self._Stage = Stage
+
+    @property
     def RequestId(self):
         r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -34820,6 +35022,8 @@ class DescribeAigcTaskStatusResponse(AbstractModel):
         self._TaskResultMsg = params.get("TaskResultMsg")
         self._RequestBody = params.get("RequestBody")
         self._TaskType = params.get("TaskType")
+        self._TaskInfo = params.get("TaskInfo")
+        self._Stage = params.get("Stage")
         self._RequestId = params.get("RequestId")
 
 
@@ -36165,12 +36369,15 @@ class DescribeCloneViralTaskResponse(AbstractModel):
         :type Message: str
         :param _VideoUrls: <p>当任务状态为 DONE时，返回视频Url列表，视频存储24小时</p>
         :type VideoUrls: list of str
+        :param _RequestBody: <p>任务请求体</p>
+        :type RequestBody: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._Status = None
         self._Message = None
         self._VideoUrls = None
+        self._RequestBody = None
         self._RequestId = None
 
     @property
@@ -36207,6 +36414,17 @@ class DescribeCloneViralTaskResponse(AbstractModel):
         self._VideoUrls = VideoUrls
 
     @property
+    def RequestBody(self):
+        r"""<p>任务请求体</p>
+        :rtype: str
+        """
+        return self._RequestBody
+
+    @RequestBody.setter
+    def RequestBody(self, RequestBody):
+        self._RequestBody = RequestBody
+
+    @property
     def RequestId(self):
         r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -36222,6 +36440,7 @@ class DescribeCloneViralTaskResponse(AbstractModel):
         self._Status = params.get("Status")
         self._Message = params.get("Message")
         self._VideoUrls = params.get("VideoUrls")
+        self._RequestBody = params.get("RequestBody")
         self._RequestId = params.get("RequestId")
 
 
@@ -48460,6 +48679,42 @@ class DisassociateSecurityGroupResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DocToVideoBackgroundInfo(AbstractModel):
+    r"""AIGC 文档生成视频背景图片信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ImageUrl: <p>用于生成视频的背景图片 URL。</p>
+        :type ImageUrl: str
+        """
+        self._ImageUrl = None
+
+    @property
+    def ImageUrl(self):
+        r"""<p>用于生成视频的背景图片 URL。</p>
+        :rtype: str
+        """
+        return self._ImageUrl
+
+    @ImageUrl.setter
+    def ImageUrl(self, ImageUrl):
+        self._ImageUrl = ImageUrl
+
+
+    def _deserialize(self, params):
+        self._ImageUrl = params.get("ImageUrl")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DocToVideoCosInfo(AbstractModel):
     r"""cos信息，存储用户请求时填写的cos信息，用于存放结果
 
@@ -48551,6 +48806,16 @@ class DocToVideoInput(AbstractModel):
         :type EnableTTS: bool
         :param _VoiceId: <p>音色ID。仅开启AI配音功能时有效。</p>
         :type VoiceId: str
+        :param _PPTXFidelity: <p>是否开启 PPTX 保真复刻模式。</p><p>开启状态下，会尽可能复刻输入 PPTX 文档的内容，无法完美复刻。<br>暂时无法复刻动画效果，</p><p>开启状态下，需保证输入文档中至少有一个 PPTX 文档。<br>如果有多个 PPTX 文档，则只会对首个文档进行保真复刻。</p><p>默认值：false</p>
+        :type PPTXFidelity: bool
+        :param _Mode: <p>生成视频的模式。</p><p>枚举值：</p><ul><li>stage： 确认后生成模式</li><li>auto： 端到端直接生成模式</li></ul>
+        :type Mode: str
+        :param _Background: <p>用于生成视频的背景图片信息。</p><p>仅在 PreserveLayout 为 false 时起作用。</p>
+        :type Background: :class:`tencentcloud.mps.v20190612.models.DocToVideoBackgroundInfo`
+        :param _Watermark: <p>用于生成视频的水印图片信息。</p><p>仅在 PreserveLayout 为 false 时起作用。</p>
+        :type Watermark: :class:`tencentcloud.mps.v20190612.models.DocToVideoWatermarkInfo`
+        :param _EnableCaption: <p>是否开启字幕生成。</p><p>默认值：false</p>
+        :type EnableCaption: bool
         """
         self._FileUrl = None
         self._Prompt = None
@@ -48561,6 +48826,11 @@ class DocToVideoInput(AbstractModel):
         self._ReferenceDuration = None
         self._EnableTTS = None
         self._VoiceId = None
+        self._PPTXFidelity = None
+        self._Mode = None
+        self._Background = None
+        self._Watermark = None
+        self._EnableCaption = None
 
     @property
     def FileUrl(self):
@@ -48661,6 +48931,61 @@ class DocToVideoInput(AbstractModel):
     def VoiceId(self, VoiceId):
         self._VoiceId = VoiceId
 
+    @property
+    def PPTXFidelity(self):
+        r"""<p>是否开启 PPTX 保真复刻模式。</p><p>开启状态下，会尽可能复刻输入 PPTX 文档的内容，无法完美复刻。<br>暂时无法复刻动画效果，</p><p>开启状态下，需保证输入文档中至少有一个 PPTX 文档。<br>如果有多个 PPTX 文档，则只会对首个文档进行保真复刻。</p><p>默认值：false</p>
+        :rtype: bool
+        """
+        return self._PPTXFidelity
+
+    @PPTXFidelity.setter
+    def PPTXFidelity(self, PPTXFidelity):
+        self._PPTXFidelity = PPTXFidelity
+
+    @property
+    def Mode(self):
+        r"""<p>生成视频的模式。</p><p>枚举值：</p><ul><li>stage： 确认后生成模式</li><li>auto： 端到端直接生成模式</li></ul>
+        :rtype: str
+        """
+        return self._Mode
+
+    @Mode.setter
+    def Mode(self, Mode):
+        self._Mode = Mode
+
+    @property
+    def Background(self):
+        r"""<p>用于生成视频的背景图片信息。</p><p>仅在 PreserveLayout 为 false 时起作用。</p>
+        :rtype: :class:`tencentcloud.mps.v20190612.models.DocToVideoBackgroundInfo`
+        """
+        return self._Background
+
+    @Background.setter
+    def Background(self, Background):
+        self._Background = Background
+
+    @property
+    def Watermark(self):
+        r"""<p>用于生成视频的水印图片信息。</p><p>仅在 PreserveLayout 为 false 时起作用。</p>
+        :rtype: :class:`tencentcloud.mps.v20190612.models.DocToVideoWatermarkInfo`
+        """
+        return self._Watermark
+
+    @Watermark.setter
+    def Watermark(self, Watermark):
+        self._Watermark = Watermark
+
+    @property
+    def EnableCaption(self):
+        r"""<p>是否开启字幕生成。</p><p>默认值：false</p>
+        :rtype: bool
+        """
+        return self._EnableCaption
+
+    @EnableCaption.setter
+    def EnableCaption(self, EnableCaption):
+        self._EnableCaption = EnableCaption
+
 
     def _deserialize(self, params):
         self._FileUrl = params.get("FileUrl")
@@ -48672,6 +48997,66 @@ class DocToVideoInput(AbstractModel):
         self._ReferenceDuration = params.get("ReferenceDuration")
         self._EnableTTS = params.get("EnableTTS")
         self._VoiceId = params.get("VoiceId")
+        self._PPTXFidelity = params.get("PPTXFidelity")
+        self._Mode = params.get("Mode")
+        if params.get("Background") is not None:
+            self._Background = DocToVideoBackgroundInfo()
+            self._Background._deserialize(params.get("Background"))
+        if params.get("Watermark") is not None:
+            self._Watermark = DocToVideoWatermarkInfo()
+            self._Watermark._deserialize(params.get("Watermark"))
+        self._EnableCaption = params.get("EnableCaption")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DocToVideoWatermarkInfo(AbstractModel):
+    r"""AIGC 文档生成视频水印图片信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ImageUrl: <p>用于生成视频的水印图片 URL。</p>
+        :type ImageUrl: str
+        :param _Position: <p>水印图片位置。</p><p>枚举值：</p><ul><li>top-left： 左上角</li><li>top-right： 右上角</li><li>bottom-left： 左下角</li><li>bottom-right： 右下角</li></ul>
+        :type Position: str
+        """
+        self._ImageUrl = None
+        self._Position = None
+
+    @property
+    def ImageUrl(self):
+        r"""<p>用于生成视频的水印图片 URL。</p>
+        :rtype: str
+        """
+        return self._ImageUrl
+
+    @ImageUrl.setter
+    def ImageUrl(self, ImageUrl):
+        self._ImageUrl = ImageUrl
+
+    @property
+    def Position(self):
+        r"""<p>水印图片位置。</p><p>枚举值：</p><ul><li>top-left： 左上角</li><li>top-right： 右上角</li><li>bottom-left： 左下角</li><li>bottom-right： 右下角</li></ul>
+        :rtype: str
+        """
+        return self._Position
+
+    @Position.setter
+    def Position(self, Position):
+        self._Position = Position
+
+
+    def _deserialize(self, params):
+        self._ImageUrl = params.get("ImageUrl")
+        self._Position = params.get("Position")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -76793,7 +77178,7 @@ class QueryTaskFilter(AbstractModel):
         r"""
         :param _TaskId: <p>任务ID</p>
         :type TaskId: str
-        :param _TaskType: <p>任务类型</p>
+        :param _TaskType: <p>任务类型</p><p>枚举值：</p><ul><li>RedrawVideo： 视频重绘</li><li>AIDrama： AI漫剧</li><li>DocGenVideo： 文档生视频</li><li>FissionVideo： 视频裂变</li></ul>
         :type TaskType: str
         :param _TaskStatus: <p>任务状态</p>
         :type TaskStatus: str
@@ -76801,12 +77186,21 @@ class QueryTaskFilter(AbstractModel):
         :type Resolution: str
         :param _Ratio: <p>宽高比</p>
         :type Ratio: str
+        :param _ExecuteMode: <p>任务执行模式</p><p>枚举值：</p><ul><li>auto： 直接生成</li><li>phased： 确认后再生成</li></ul>
+        :type ExecuteMode: str
+        :param _VideoType: <p>裂变任务视频类型过滤: ugc、talk、display、unboxing、reaction</p><p>枚举值：</p><ul><li>ugc： UGC种草</li><li>talk： 产品口播</li><li>display： 产品展示</li><li>unboxing： 开箱分享</li><li>reaction： 反应展示</li></ul>
+        :type VideoType: str
+        :param _ModelTier: <p>模型类型</p><p>枚举值：</p><ul><li>standard： 标准版</li><li>flagship： 高级版</li></ul>
+        :type ModelTier: str
         """
         self._TaskId = None
         self._TaskType = None
         self._TaskStatus = None
         self._Resolution = None
         self._Ratio = None
+        self._ExecuteMode = None
+        self._VideoType = None
+        self._ModelTier = None
 
     @property
     def TaskId(self):
@@ -76821,7 +77215,7 @@ class QueryTaskFilter(AbstractModel):
 
     @property
     def TaskType(self):
-        r"""<p>任务类型</p>
+        r"""<p>任务类型</p><p>枚举值：</p><ul><li>RedrawVideo： 视频重绘</li><li>AIDrama： AI漫剧</li><li>DocGenVideo： 文档生视频</li><li>FissionVideo： 视频裂变</li></ul>
         :rtype: str
         """
         return self._TaskType
@@ -76863,6 +77257,39 @@ class QueryTaskFilter(AbstractModel):
     def Ratio(self, Ratio):
         self._Ratio = Ratio
 
+    @property
+    def ExecuteMode(self):
+        r"""<p>任务执行模式</p><p>枚举值：</p><ul><li>auto： 直接生成</li><li>phased： 确认后再生成</li></ul>
+        :rtype: str
+        """
+        return self._ExecuteMode
+
+    @ExecuteMode.setter
+    def ExecuteMode(self, ExecuteMode):
+        self._ExecuteMode = ExecuteMode
+
+    @property
+    def VideoType(self):
+        r"""<p>裂变任务视频类型过滤: ugc、talk、display、unboxing、reaction</p><p>枚举值：</p><ul><li>ugc： UGC种草</li><li>talk： 产品口播</li><li>display： 产品展示</li><li>unboxing： 开箱分享</li><li>reaction： 反应展示</li></ul>
+        :rtype: str
+        """
+        return self._VideoType
+
+    @VideoType.setter
+    def VideoType(self, VideoType):
+        self._VideoType = VideoType
+
+    @property
+    def ModelTier(self):
+        r"""<p>模型类型</p><p>枚举值：</p><ul><li>standard： 标准版</li><li>flagship： 高级版</li></ul>
+        :rtype: str
+        """
+        return self._ModelTier
+
+    @ModelTier.setter
+    def ModelTier(self, ModelTier):
+        self._ModelTier = ModelTier
+
 
     def _deserialize(self, params):
         self._TaskId = params.get("TaskId")
@@ -76870,6 +77297,9 @@ class QueryTaskFilter(AbstractModel):
         self._TaskStatus = params.get("TaskStatus")
         self._Resolution = params.get("Resolution")
         self._Ratio = params.get("Ratio")
+        self._ExecuteMode = params.get("ExecuteMode")
+        self._VideoType = params.get("VideoType")
+        self._ModelTier = params.get("ModelTier")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

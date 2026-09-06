@@ -79,6 +79,24 @@ class DbdcClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateDBCustomDisasterRecoverGroup(
+            self,
+            request: models.CreateDBCustomDisasterRecoverGroupRequest,
+            opts: Dict = None,
+    ) -> models.CreateDBCustomDisasterRecoverGroupResponse:
+        """
+        该接口（CreateDBCustomDisasterRecoverGroup）用于创建 DB Custom 置放群组。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateDBCustomDisasterRecoverGroup"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateDBCustomDisasterRecoverGroupResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateDBCustomNodes(
             self,
             request: models.CreateDBCustomNodesRequest,
@@ -92,6 +110,42 @@ class DbdcClient(AbstractClient):
         kwargs["action"] = "CreateDBCustomNodes"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.CreateDBCustomNodesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteDBCustomDisasterRecoverGroups(
+            self,
+            request: models.DeleteDBCustomDisasterRecoverGroupsRequest,
+            opts: Dict = None,
+    ) -> models.DeleteDBCustomDisasterRecoverGroupsResponse:
+        """
+        该接口（DeleteDBCustomDisasterRecoverGroups）用于删除 DB Custom 置放群组。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteDBCustomDisasterRecoverGroups"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteDBCustomDisasterRecoverGroupsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteDBCustomNodesDisasterRecoverGroup(
+            self,
+            request: models.DeleteDBCustomNodesDisasterRecoverGroupRequest,
+            opts: Dict = None,
+    ) -> models.DeleteDBCustomNodesDisasterRecoverGroupResponse:
+        """
+        该接口（DeleteDBCustomNodesDisasterRecoverGroup）用于移除 DB Custom 节点的置放群组。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteDBCustomNodesDisasterRecoverGroup"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteDBCustomNodesDisasterRecoverGroupResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -218,6 +272,42 @@ class DbdcClient(AbstractClient):
         kwargs["action"] = "DescribeDBCustomClusters"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeDBCustomClustersResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeDBCustomDisasterRecoverGroupQuota(
+            self,
+            request: models.DescribeDBCustomDisasterRecoverGroupQuotaRequest,
+            opts: Dict = None,
+    ) -> models.DescribeDBCustomDisasterRecoverGroupQuotaResponse:
+        """
+        该接口（DescribeDBCustomDisasterRecoverGroupQuota）用于查询 DB Custom 置放群组配额。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeDBCustomDisasterRecoverGroupQuota"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeDBCustomDisasterRecoverGroupQuotaResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeDBCustomDisasterRecoverGroups(
+            self,
+            request: models.DescribeDBCustomDisasterRecoverGroupsRequest,
+            opts: Dict = None,
+    ) -> models.DescribeDBCustomDisasterRecoverGroupsResponse:
+        """
+        该接口（DescribeDBCustomDisasterRecoverGroups）用于查询 DB Custom 置放群组列表。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeDBCustomDisasterRecoverGroups"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeDBCustomDisasterRecoverGroupsResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -547,6 +637,42 @@ class DbdcClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def ModifyDBCustomDisasterRecoverGroupAttribute(
+            self,
+            request: models.ModifyDBCustomDisasterRecoverGroupAttributeRequest,
+            opts: Dict = None,
+    ) -> models.ModifyDBCustomDisasterRecoverGroupAttributeResponse:
+        """
+        该接口（ModifyDBCustomDisasterRecoverGroupAttribute）用于修改 DB Custom 置放群组的属性。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyDBCustomDisasterRecoverGroupAttribute"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyDBCustomDisasterRecoverGroupAttributeResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyDBCustomDisasterRecoverGroupTags(
+            self,
+            request: models.ModifyDBCustomDisasterRecoverGroupTagsRequest,
+            opts: Dict = None,
+    ) -> models.ModifyDBCustomDisasterRecoverGroupTagsResponse:
+        """
+        该接口（ModifyDBCustomDisasterRecoverGroupTags）用于修改 DB Custom 置放群组绑定的标签。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyDBCustomDisasterRecoverGroupTags"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyDBCustomDisasterRecoverGroupTagsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ModifyDBCustomNodeAttributes(
             self,
             request: models.ModifyDBCustomNodeAttributesRequest,
@@ -596,6 +722,24 @@ class DbdcClient(AbstractClient):
         kwargs["action"] = "ModifyDBCustomNodeTags"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ModifyDBCustomNodeTagsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyDBCustomNodesDisasterRecoverGroup(
+            self,
+            request: models.ModifyDBCustomNodesDisasterRecoverGroupRequest,
+            opts: Dict = None,
+    ) -> models.ModifyDBCustomNodesDisasterRecoverGroupResponse:
+        """
+        该接口（ModifyDBCustomNodesDisasterRecoverGroup）用于修改 DB Custom 节点的置放群组。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyDBCustomNodesDisasterRecoverGroup"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyDBCustomNodesDisasterRecoverGroupResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

@@ -633,6 +633,270 @@ class CreateDBCustomClusterResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateDBCustomDisasterRecoverGroupRequest(AbstractModel):
+    r"""CreateDBCustomDisasterRecoverGroup请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: <p>置放群组名称</p><p>入参限制：长度1-60个字符，支持中、英文</p>
+        :type Name: str
+        :param _Type: <p>置放群组类型</p><p>枚举值：</p><ul><li>HOST： 物理机</li></ul><p>默认值：HOST</p><p>当前仅支持物理机类型</p>
+        :type Type: str
+        :param _Strategy: <p>置放群组策略</p><p>入参限制：当前仅支持分散置放群组</p><p>枚举值：</p><ul><li>SPREAD： 分散置放群组</li></ul><p>默认值：SPREAD</p>
+        :type Strategy: str
+        :param _Affinity: <p>置放群组的亲和度，在置放群组的实例会按该亲和度分布</p><p>取值范围：[1, 10]</p><p>默认值：1</p>
+        :type Affinity: int
+        :param _Tags: <p>标签</p>
+        :type Tags: list of Tag
+        :param _ClientToken: <p>用于保证请求幂等性的字符串。该字符串由客户生成，需保证不同请求之间唯一，最大值不超过64个ASCII字符。若不指定该参数，则无法保证请求的幂等性。</p>
+        :type ClientToken: str
+        """
+        self._Name = None
+        self._Type = None
+        self._Strategy = None
+        self._Affinity = None
+        self._Tags = None
+        self._ClientToken = None
+
+    @property
+    def Name(self):
+        r"""<p>置放群组名称</p><p>入参限制：长度1-60个字符，支持中、英文</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Type(self):
+        r"""<p>置放群组类型</p><p>枚举值：</p><ul><li>HOST： 物理机</li></ul><p>默认值：HOST</p><p>当前仅支持物理机类型</p>
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Strategy(self):
+        r"""<p>置放群组策略</p><p>入参限制：当前仅支持分散置放群组</p><p>枚举值：</p><ul><li>SPREAD： 分散置放群组</li></ul><p>默认值：SPREAD</p>
+        :rtype: str
+        """
+        return self._Strategy
+
+    @Strategy.setter
+    def Strategy(self, Strategy):
+        self._Strategy = Strategy
+
+    @property
+    def Affinity(self):
+        r"""<p>置放群组的亲和度，在置放群组的实例会按该亲和度分布</p><p>取值范围：[1, 10]</p><p>默认值：1</p>
+        :rtype: int
+        """
+        return self._Affinity
+
+    @Affinity.setter
+    def Affinity(self, Affinity):
+        self._Affinity = Affinity
+
+    @property
+    def Tags(self):
+        r"""<p>标签</p>
+        :rtype: list of Tag
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def ClientToken(self):
+        r"""<p>用于保证请求幂等性的字符串。该字符串由客户生成，需保证不同请求之间唯一，最大值不超过64个ASCII字符。若不指定该参数，则无法保证请求的幂等性。</p>
+        :rtype: str
+        """
+        return self._ClientToken
+
+    @ClientToken.setter
+    def ClientToken(self, ClientToken):
+        self._ClientToken = ClientToken
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Type = params.get("Type")
+        self._Strategy = params.get("Strategy")
+        self._Affinity = params.get("Affinity")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
+        self._ClientToken = params.get("ClientToken")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateDBCustomDisasterRecoverGroupResponse(AbstractModel):
+    r"""CreateDBCustomDisasterRecoverGroup返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DisasterRecoverGroupId: <p>置放群组ID</p>
+        :type DisasterRecoverGroupId: str
+        :param _Name: <p>置放群组名称</p>
+        :type Name: str
+        :param _Type: <p>置放群组类型</p><p>枚举值：</p><ul><li>HOST： 物理机</li></ul>
+        :type Type: str
+        :param _Status: <p>状态</p><p>枚举值：</p><ul><li>Creating： 创建中</li></ul>
+        :type Status: str
+        :param _NodeQuotaTotal: <p>置放群组内可容纳的节点数量</p>
+        :type NodeQuotaTotal: int
+        :param _CurrentNum: <p>置放群组内已有节点数量</p>
+        :type CurrentNum: int
+        :param _CreatedTime: <p>创建时间</p>
+        :type CreatedTime: str
+        :param _Strategy: <p>置放群组策略</p><p>枚举值：</p><ul><li>SPREAD： 分散置放群组</li></ul>
+        :type Strategy: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._DisasterRecoverGroupId = None
+        self._Name = None
+        self._Type = None
+        self._Status = None
+        self._NodeQuotaTotal = None
+        self._CurrentNum = None
+        self._CreatedTime = None
+        self._Strategy = None
+        self._RequestId = None
+
+    @property
+    def DisasterRecoverGroupId(self):
+        r"""<p>置放群组ID</p>
+        :rtype: str
+        """
+        return self._DisasterRecoverGroupId
+
+    @DisasterRecoverGroupId.setter
+    def DisasterRecoverGroupId(self, DisasterRecoverGroupId):
+        self._DisasterRecoverGroupId = DisasterRecoverGroupId
+
+    @property
+    def Name(self):
+        r"""<p>置放群组名称</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Type(self):
+        r"""<p>置放群组类型</p><p>枚举值：</p><ul><li>HOST： 物理机</li></ul>
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Status(self):
+        r"""<p>状态</p><p>枚举值：</p><ul><li>Creating： 创建中</li></ul>
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def NodeQuotaTotal(self):
+        r"""<p>置放群组内可容纳的节点数量</p>
+        :rtype: int
+        """
+        return self._NodeQuotaTotal
+
+    @NodeQuotaTotal.setter
+    def NodeQuotaTotal(self, NodeQuotaTotal):
+        self._NodeQuotaTotal = NodeQuotaTotal
+
+    @property
+    def CurrentNum(self):
+        r"""<p>置放群组内已有节点数量</p>
+        :rtype: int
+        """
+        return self._CurrentNum
+
+    @CurrentNum.setter
+    def CurrentNum(self, CurrentNum):
+        self._CurrentNum = CurrentNum
+
+    @property
+    def CreatedTime(self):
+        r"""<p>创建时间</p>
+        :rtype: str
+        """
+        return self._CreatedTime
+
+    @CreatedTime.setter
+    def CreatedTime(self, CreatedTime):
+        self._CreatedTime = CreatedTime
+
+    @property
+    def Strategy(self):
+        r"""<p>置放群组策略</p><p>枚举值：</p><ul><li>SPREAD： 分散置放群组</li></ul>
+        :rtype: str
+        """
+        return self._Strategy
+
+    @Strategy.setter
+    def Strategy(self, Strategy):
+        self._Strategy = Strategy
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._DisasterRecoverGroupId = params.get("DisasterRecoverGroupId")
+        self._Name = params.get("Name")
+        self._Type = params.get("Type")
+        self._Status = params.get("Status")
+        self._NodeQuotaTotal = params.get("NodeQuotaTotal")
+        self._CurrentNum = params.get("CurrentNum")
+        self._CreatedTime = params.get("CreatedTime")
+        self._Strategy = params.get("Strategy")
+        self._RequestId = params.get("RequestId")
+
+
 class CreateDBCustomNodesRequest(AbstractModel):
     r"""CreateDBCustomNodes请求参数结构体
 
@@ -682,6 +946,8 @@ class CreateDBCustomNodesRequest(AbstractModel):
         :type DryRun: bool
         :param _SecurityGroupIds: <p>设置节点安全组</p><p>参数格式：设置需要与节点绑定的多个安全组ID，以数组形式配置。</p>
         :type SecurityGroupIds: list of str
+        :param _DisasterRecoverGroupIds: <p>置放群组ID</p><p>入参限制：仅支持指定一个</p>
+        :type DisasterRecoverGroupIds: list of str
         """
         self._Zone = None
         self._ImageId = None
@@ -704,6 +970,7 @@ class CreateDBCustomNodesRequest(AbstractModel):
         self._HostName = None
         self._DryRun = None
         self._SecurityGroupIds = None
+        self._DisasterRecoverGroupIds = None
 
     @property
     def Zone(self):
@@ -936,6 +1203,17 @@ class CreateDBCustomNodesRequest(AbstractModel):
     def SecurityGroupIds(self, SecurityGroupIds):
         self._SecurityGroupIds = SecurityGroupIds
 
+    @property
+    def DisasterRecoverGroupIds(self):
+        r"""<p>置放群组ID</p><p>入参限制：仅支持指定一个</p>
+        :rtype: list of str
+        """
+        return self._DisasterRecoverGroupIds
+
+    @DisasterRecoverGroupIds.setter
+    def DisasterRecoverGroupIds(self, DisasterRecoverGroupIds):
+        self._DisasterRecoverGroupIds = DisasterRecoverGroupIds
+
 
     def _deserialize(self, params):
         self._Zone = params.get("Zone")
@@ -973,6 +1251,7 @@ class CreateDBCustomNodesRequest(AbstractModel):
         self._HostName = params.get("HostName")
         self._DryRun = params.get("DryRun")
         self._SecurityGroupIds = params.get("SecurityGroupIds")
+        self._DisasterRecoverGroupIds = params.get("DisasterRecoverGroupIds")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1785,6 +2064,8 @@ class DBCustomNode(AbstractModel):
         :param _SecurityGroupIds: <p>节点绑定的安全组</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type SecurityGroupIds: list of str
+        :param _DisasterRecoverGroupId: <p>置放群组ID</p>
+        :type DisasterRecoverGroupId: str
         """
         self._NodeId = None
         self._NodeName = None
@@ -1814,6 +2095,7 @@ class DBCustomNode(AbstractModel):
         self._NetworkMode = None
         self._EniIP = None
         self._SecurityGroupIds = None
+        self._DisasterRecoverGroupId = None
 
     @property
     def NodeId(self):
@@ -2127,6 +2409,17 @@ class DBCustomNode(AbstractModel):
     def SecurityGroupIds(self, SecurityGroupIds):
         self._SecurityGroupIds = SecurityGroupIds
 
+    @property
+    def DisasterRecoverGroupId(self):
+        r"""<p>置放群组ID</p>
+        :rtype: str
+        """
+        return self._DisasterRecoverGroupId
+
+    @DisasterRecoverGroupId.setter
+    def DisasterRecoverGroupId(self, DisasterRecoverGroupId):
+        self._DisasterRecoverGroupId = DisasterRecoverGroupId
+
 
     def _deserialize(self, params):
         self._NodeId = params.get("NodeId")
@@ -2169,6 +2462,7 @@ class DBCustomNode(AbstractModel):
         self._NetworkMode = params.get("NetworkMode")
         self._EniIP = params.get("EniIP")
         self._SecurityGroupIds = params.get("SecurityGroupIds")
+        self._DisasterRecoverGroupId = params.get("DisasterRecoverGroupId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2735,6 +3029,183 @@ class DataDisk(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class DeleteDBCustomDisasterRecoverGroupsRequest(AbstractModel):
+    r"""DeleteDBCustomDisasterRecoverGroups请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DisasterRecoverGroupIds: <p>置放群组ID</p><p>入参限制：数量上限为10。若置放群组内有节点，需要先移除。</p>
+        :type DisasterRecoverGroupIds: list of str
+        """
+        self._DisasterRecoverGroupIds = None
+
+    @property
+    def DisasterRecoverGroupIds(self):
+        r"""<p>置放群组ID</p><p>入参限制：数量上限为10。若置放群组内有节点，需要先移除。</p>
+        :rtype: list of str
+        """
+        return self._DisasterRecoverGroupIds
+
+    @DisasterRecoverGroupIds.setter
+    def DisasterRecoverGroupIds(self, DisasterRecoverGroupIds):
+        self._DisasterRecoverGroupIds = DisasterRecoverGroupIds
+
+
+    def _deserialize(self, params):
+        self._DisasterRecoverGroupIds = params.get("DisasterRecoverGroupIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteDBCustomDisasterRecoverGroupsResponse(AbstractModel):
+    r"""DeleteDBCustomDisasterRecoverGroups返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: <p>任务ID</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskId: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        r"""<p>任务ID</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteDBCustomNodesDisasterRecoverGroupRequest(AbstractModel):
+    r"""DeleteDBCustomNodesDisasterRecoverGroup请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _NodeIds: <p>节点ID</p><p>入参限制：单次数量上限为100</p>
+        :type NodeIds: list of str
+        :param _DisasterRecoverGroupIds: <p>置放群组ID</p><p>入参限制：只支持传一个ID</p>
+        :type DisasterRecoverGroupIds: list of str
+        """
+        self._NodeIds = None
+        self._DisasterRecoverGroupIds = None
+
+    @property
+    def NodeIds(self):
+        r"""<p>节点ID</p><p>入参限制：单次数量上限为100</p>
+        :rtype: list of str
+        """
+        return self._NodeIds
+
+    @NodeIds.setter
+    def NodeIds(self, NodeIds):
+        self._NodeIds = NodeIds
+
+    @property
+    def DisasterRecoverGroupIds(self):
+        r"""<p>置放群组ID</p><p>入参限制：只支持传一个ID</p>
+        :rtype: list of str
+        """
+        return self._DisasterRecoverGroupIds
+
+    @DisasterRecoverGroupIds.setter
+    def DisasterRecoverGroupIds(self, DisasterRecoverGroupIds):
+        self._DisasterRecoverGroupIds = DisasterRecoverGroupIds
+
+
+    def _deserialize(self, params):
+        self._NodeIds = params.get("NodeIds")
+        self._DisasterRecoverGroupIds = params.get("DisasterRecoverGroupIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteDBCustomNodesDisasterRecoverGroupResponse(AbstractModel):
+    r"""DeleteDBCustomNodesDisasterRecoverGroup返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: <p>任务ID</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskId: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        r"""<p>任务ID</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
 
 
 class DescribeDBCustomClusterDetailRequest(AbstractModel):
@@ -3769,6 +4240,256 @@ class DescribeDBCustomClustersResponse(AbstractModel):
                 obj = DBCustomCluster()
                 obj._deserialize(item)
                 self._ClusterSet.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeDBCustomDisasterRecoverGroupQuotaRequest(AbstractModel):
+    r"""DescribeDBCustomDisasterRecoverGroupQuota请求参数结构体
+
+    """
+
+
+class DescribeDBCustomDisasterRecoverGroupQuotaResponse(AbstractModel):
+    r"""DescribeDBCustomDisasterRecoverGroupQuota返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GroupQuota: <p>可创建置放群组数量的上限</p>
+        :type GroupQuota: int
+        :param _CurrentNum: <p>已经创建的置放群组数量</p>
+        :type CurrentNum: int
+        :param _NodeInHostGroupQuota: <p>物理机类型置放群组内节点的配额数</p>
+        :type NodeInHostGroupQuota: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._GroupQuota = None
+        self._CurrentNum = None
+        self._NodeInHostGroupQuota = None
+        self._RequestId = None
+
+    @property
+    def GroupQuota(self):
+        r"""<p>可创建置放群组数量的上限</p>
+        :rtype: int
+        """
+        return self._GroupQuota
+
+    @GroupQuota.setter
+    def GroupQuota(self, GroupQuota):
+        self._GroupQuota = GroupQuota
+
+    @property
+    def CurrentNum(self):
+        r"""<p>已经创建的置放群组数量</p>
+        :rtype: int
+        """
+        return self._CurrentNum
+
+    @CurrentNum.setter
+    def CurrentNum(self, CurrentNum):
+        self._CurrentNum = CurrentNum
+
+    @property
+    def NodeInHostGroupQuota(self):
+        r"""<p>物理机类型置放群组内节点的配额数</p>
+        :rtype: int
+        """
+        return self._NodeInHostGroupQuota
+
+    @NodeInHostGroupQuota.setter
+    def NodeInHostGroupQuota(self, NodeInHostGroupQuota):
+        self._NodeInHostGroupQuota = NodeInHostGroupQuota
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._GroupQuota = params.get("GroupQuota")
+        self._CurrentNum = params.get("CurrentNum")
+        self._NodeInHostGroupQuota = params.get("NodeInHostGroupQuota")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeDBCustomDisasterRecoverGroupsRequest(AbstractModel):
+    r"""DescribeDBCustomDisasterRecoverGroups请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DisasterRecoverGroupIds: <p>置放群组ID</p><p>入参限制：单次数量上限是10</p>
+        :type DisasterRecoverGroupIds: list of str
+        :param _Filters: <p>查询筛选条件。支持的筛选条件包括：</p><ul><li>tag-key：按标签键进行过滤。</li><li>tag-value：按标签值进行过滤。</li></ul><p>入参限制：数量上限为5</p>
+        :type Filters: list of Filter
+        :param _Tags: <p>根据标签键和标签值筛选 DB Custom 置放群组</p><p>入参限制：数量上限为5</p>
+        :type Tags: list of Tag
+        :param _Offset: <p>分页偏移量</p>
+        :type Offset: int
+        :param _Limit: <p>返回数量</p><p>取值范围：[1, 100]</p><p>默认值：20</p>
+        :type Limit: int
+        """
+        self._DisasterRecoverGroupIds = None
+        self._Filters = None
+        self._Tags = None
+        self._Offset = None
+        self._Limit = None
+
+    @property
+    def DisasterRecoverGroupIds(self):
+        r"""<p>置放群组ID</p><p>入参限制：单次数量上限是10</p>
+        :rtype: list of str
+        """
+        return self._DisasterRecoverGroupIds
+
+    @DisasterRecoverGroupIds.setter
+    def DisasterRecoverGroupIds(self, DisasterRecoverGroupIds):
+        self._DisasterRecoverGroupIds = DisasterRecoverGroupIds
+
+    @property
+    def Filters(self):
+        r"""<p>查询筛选条件。支持的筛选条件包括：</p><ul><li>tag-key：按标签键进行过滤。</li><li>tag-value：按标签值进行过滤。</li></ul><p>入参限制：数量上限为5</p>
+        :rtype: list of Filter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Tags(self):
+        r"""<p>根据标签键和标签值筛选 DB Custom 置放群组</p><p>入参限制：数量上限为5</p>
+        :rtype: list of Tag
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def Offset(self):
+        r"""<p>分页偏移量</p>
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        r"""<p>返回数量</p><p>取值范围：[1, 100]</p><p>默认值：20</p>
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+
+    def _deserialize(self, params):
+        self._DisasterRecoverGroupIds = params.get("DisasterRecoverGroupIds")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeDBCustomDisasterRecoverGroupsResponse(AbstractModel):
+    r"""DescribeDBCustomDisasterRecoverGroups返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: <p>总数</p>
+        :type TotalCount: int
+        :param _DisasterRecoverGroupSet: <p>置放群组列表</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DisasterRecoverGroupSet: list of DisasterRecoverGroup
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TotalCount = None
+        self._DisasterRecoverGroupSet = None
+        self._RequestId = None
+
+    @property
+    def TotalCount(self):
+        r"""<p>总数</p>
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def DisasterRecoverGroupSet(self):
+        r"""<p>置放群组列表</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of DisasterRecoverGroup
+        """
+        return self._DisasterRecoverGroupSet
+
+    @DisasterRecoverGroupSet.setter
+    def DisasterRecoverGroupSet(self, DisasterRecoverGroupSet):
+        self._DisasterRecoverGroupSet = DisasterRecoverGroupSet
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("DisasterRecoverGroupSet") is not None:
+            self._DisasterRecoverGroupSet = []
+            for item in params.get("DisasterRecoverGroupSet"):
+                obj = DisasterRecoverGroup()
+                obj._deserialize(item)
+                self._DisasterRecoverGroupSet.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -6493,6 +7214,199 @@ class DeviceInfo(AbstractModel):
         
 
 
+class DisasterRecoverGroup(AbstractModel):
+    r"""DB Custom 置放群组信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DisasterRecoverGroupId: <p>置放群组ID</p>
+        :type DisasterRecoverGroupId: str
+        :param _Name: <p>置放群组名称</p>
+        :type Name: str
+        :param _Type: <p>置放群组类型</p><p>枚举值：</p><ul><li>HOST： 物理机</li></ul>
+        :type Type: str
+        :param _Status: <p>置放群组状态</p><p>枚举值：</p><ul><li>Creating： 创建中</li><li>Available： 正常可使用</li><li>CreateFailed： 创建失败</li><li>Deleting： 删除中</li><li>Modifying： 变更中</li></ul>
+        :type Status: str
+        :param _NodeQuotaTotal: <p>置放群组内最大容纳节点数</p>
+        :type NodeQuotaTotal: int
+        :param _CurrentNum: <p>置放群组内当前节点数</p>
+        :type CurrentNum: int
+        :param _Affinity: <p>亲和度</p><p>取值范围：[1, 10]</p>
+        :type Affinity: int
+        :param _Strategy: <p>置放群组策略</p><p>枚举值：</p><ul><li>SPREAD： 分散置放群组</li></ul>
+        :type Strategy: str
+        :param _CreatedTime: <p>创建时间</p>
+        :type CreatedTime: str
+        :param _Tags: <p>标签信息</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tags: list of Tag
+        :param _NodeIds: <p>置放群组内 DB Custom 节点数量</p>
+        :type NodeIds: list of str
+        """
+        self._DisasterRecoverGroupId = None
+        self._Name = None
+        self._Type = None
+        self._Status = None
+        self._NodeQuotaTotal = None
+        self._CurrentNum = None
+        self._Affinity = None
+        self._Strategy = None
+        self._CreatedTime = None
+        self._Tags = None
+        self._NodeIds = None
+
+    @property
+    def DisasterRecoverGroupId(self):
+        r"""<p>置放群组ID</p>
+        :rtype: str
+        """
+        return self._DisasterRecoverGroupId
+
+    @DisasterRecoverGroupId.setter
+    def DisasterRecoverGroupId(self, DisasterRecoverGroupId):
+        self._DisasterRecoverGroupId = DisasterRecoverGroupId
+
+    @property
+    def Name(self):
+        r"""<p>置放群组名称</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Type(self):
+        r"""<p>置放群组类型</p><p>枚举值：</p><ul><li>HOST： 物理机</li></ul>
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def Status(self):
+        r"""<p>置放群组状态</p><p>枚举值：</p><ul><li>Creating： 创建中</li><li>Available： 正常可使用</li><li>CreateFailed： 创建失败</li><li>Deleting： 删除中</li><li>Modifying： 变更中</li></ul>
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def NodeQuotaTotal(self):
+        r"""<p>置放群组内最大容纳节点数</p>
+        :rtype: int
+        """
+        return self._NodeQuotaTotal
+
+    @NodeQuotaTotal.setter
+    def NodeQuotaTotal(self, NodeQuotaTotal):
+        self._NodeQuotaTotal = NodeQuotaTotal
+
+    @property
+    def CurrentNum(self):
+        r"""<p>置放群组内当前节点数</p>
+        :rtype: int
+        """
+        return self._CurrentNum
+
+    @CurrentNum.setter
+    def CurrentNum(self, CurrentNum):
+        self._CurrentNum = CurrentNum
+
+    @property
+    def Affinity(self):
+        r"""<p>亲和度</p><p>取值范围：[1, 10]</p>
+        :rtype: int
+        """
+        return self._Affinity
+
+    @Affinity.setter
+    def Affinity(self, Affinity):
+        self._Affinity = Affinity
+
+    @property
+    def Strategy(self):
+        r"""<p>置放群组策略</p><p>枚举值：</p><ul><li>SPREAD： 分散置放群组</li></ul>
+        :rtype: str
+        """
+        return self._Strategy
+
+    @Strategy.setter
+    def Strategy(self, Strategy):
+        self._Strategy = Strategy
+
+    @property
+    def CreatedTime(self):
+        r"""<p>创建时间</p>
+        :rtype: str
+        """
+        return self._CreatedTime
+
+    @CreatedTime.setter
+    def CreatedTime(self, CreatedTime):
+        self._CreatedTime = CreatedTime
+
+    @property
+    def Tags(self):
+        r"""<p>标签信息</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of Tag
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def NodeIds(self):
+        r"""<p>置放群组内 DB Custom 节点数量</p>
+        :rtype: list of str
+        """
+        return self._NodeIds
+
+    @NodeIds.setter
+    def NodeIds(self, NodeIds):
+        self._NodeIds = NodeIds
+
+
+    def _deserialize(self, params):
+        self._DisasterRecoverGroupId = params.get("DisasterRecoverGroupId")
+        self._Name = params.get("Name")
+        self._Type = params.get("Type")
+        self._Status = params.get("Status")
+        self._NodeQuotaTotal = params.get("NodeQuotaTotal")
+        self._CurrentNum = params.get("CurrentNum")
+        self._Affinity = params.get("Affinity")
+        self._Strategy = params.get("Strategy")
+        self._CreatedTime = params.get("CreatedTime")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
+        self._NodeIds = params.get("NodeIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Filter(AbstractModel):
     r"""描述键值对过滤器，用于条件过滤查询。
 
@@ -7934,9 +8848,9 @@ class ModifyDBCustomClusterTagsRequest(AbstractModel):
         r"""
         :param _ClusterId: <p>DB Custom 集群ID</p><p>参数格式：dbcc-xxxxxxxx</p>
         :type ClusterId: str
-        :param _AddTags: <p>为 DB Custom 集群绑定的标签信息</p><p>入参限制：参考标签平台的限制策略</p>
+        :param _AddTags: <p>为 DB Custom 集群绑定的标签信息</p><p>入参限制：参考标签平台的限制策略</p><p>如果集群未关联输入的标签键，则增加关联；若已关联，则将该集群关联的键对应的标签值修改为输入值。本接口中 AddTags 和 DeleteTagKeys 二者必须存在其一，且二者不能包含相同的标签键。</p>
         :type AddTags: list of Tag
-        :param _DeleteTagKeys: <p>为 DB Custom 集群删除的标签Key</p>
+        :param _DeleteTagKeys: <p>为 DB Custom 集群解关联的标签Key</p><p>本接口中 AddTags 和 DeleteTagKeys 二者必须存在其一，且二者不能包含相同的标签键。</p>
         :type DeleteTagKeys: list of str
         """
         self._ClusterId = None
@@ -7956,7 +8870,7 @@ class ModifyDBCustomClusterTagsRequest(AbstractModel):
 
     @property
     def AddTags(self):
-        r"""<p>为 DB Custom 集群绑定的标签信息</p><p>入参限制：参考标签平台的限制策略</p>
+        r"""<p>为 DB Custom 集群绑定的标签信息</p><p>入参限制：参考标签平台的限制策略</p><p>如果集群未关联输入的标签键，则增加关联；若已关联，则将该集群关联的键对应的标签值修改为输入值。本接口中 AddTags 和 DeleteTagKeys 二者必须存在其一，且二者不能包含相同的标签键。</p>
         :rtype: list of Tag
         """
         return self._AddTags
@@ -7967,7 +8881,7 @@ class ModifyDBCustomClusterTagsRequest(AbstractModel):
 
     @property
     def DeleteTagKeys(self):
-        r"""<p>为 DB Custom 集群删除的标签Key</p>
+        r"""<p>为 DB Custom 集群解关联的标签Key</p><p>本接口中 AddTags 和 DeleteTagKeys 二者必须存在其一，且二者不能包含相同的标签键。</p>
         :rtype: list of str
         """
         return self._DeleteTagKeys
@@ -7998,6 +8912,214 @@ class ModifyDBCustomClusterTagsRequest(AbstractModel):
 
 class ModifyDBCustomClusterTagsResponse(AbstractModel):
     r"""ModifyDBCustomClusterTags返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyDBCustomDisasterRecoverGroupAttributeRequest(AbstractModel):
+    r"""ModifyDBCustomDisasterRecoverGroupAttribute请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DisasterRecoverGroupId: <p>置放群组ID</p>
+        :type DisasterRecoverGroupId: str
+        :param _Name: <p>置放群组名称</p><p>入参限制：长度1-60个字符，支持中、英文</p>
+        :type Name: str
+        :param _Affinity: <p>置放群组的亲和度，在置放群组的节点会按该亲和度分布</p><p>取值范围：[1, 10]</p>
+        :type Affinity: int
+        """
+        self._DisasterRecoverGroupId = None
+        self._Name = None
+        self._Affinity = None
+
+    @property
+    def DisasterRecoverGroupId(self):
+        r"""<p>置放群组ID</p>
+        :rtype: str
+        """
+        return self._DisasterRecoverGroupId
+
+    @DisasterRecoverGroupId.setter
+    def DisasterRecoverGroupId(self, DisasterRecoverGroupId):
+        self._DisasterRecoverGroupId = DisasterRecoverGroupId
+
+    @property
+    def Name(self):
+        r"""<p>置放群组名称</p><p>入参限制：长度1-60个字符，支持中、英文</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Affinity(self):
+        r"""<p>置放群组的亲和度，在置放群组的节点会按该亲和度分布</p><p>取值范围：[1, 10]</p>
+        :rtype: int
+        """
+        return self._Affinity
+
+    @Affinity.setter
+    def Affinity(self, Affinity):
+        self._Affinity = Affinity
+
+
+    def _deserialize(self, params):
+        self._DisasterRecoverGroupId = params.get("DisasterRecoverGroupId")
+        self._Name = params.get("Name")
+        self._Affinity = params.get("Affinity")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyDBCustomDisasterRecoverGroupAttributeResponse(AbstractModel):
+    r"""ModifyDBCustomDisasterRecoverGroupAttribute返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: <p>任务ID</p>
+        :type TaskId: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        r"""<p>任务ID</p>
+        :rtype: int
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyDBCustomDisasterRecoverGroupTagsRequest(AbstractModel):
+    r"""ModifyDBCustomDisasterRecoverGroupTags请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DisasterRecoverGroupId: <p>置放群组ID</p>
+        :type DisasterRecoverGroupId: str
+        :param _AddTags: <p>为 DB Custom 置放群组绑定的标签信息</p><p>入参限制：参考标签侧的限制</p><p>如果置放群组未关联输入的标签键，则增加关联；若已关联，则将该置放群组关联的键对应的标签值修改为输入值。本接口中 AddTags 和 DeleteTagKeys 二者必须存在其一，且二者不能包含相同的标签键。</p>
+        :type AddTags: list of Tag
+        :param _DeleteTagKeys: <p>需要解关联的标签Key</p><p>本接口中 AddTags 和 DeleteTagKeys 二者必须存在其一，且二者不能包含相同的标签键。</p>
+        :type DeleteTagKeys: list of str
+        """
+        self._DisasterRecoverGroupId = None
+        self._AddTags = None
+        self._DeleteTagKeys = None
+
+    @property
+    def DisasterRecoverGroupId(self):
+        r"""<p>置放群组ID</p>
+        :rtype: str
+        """
+        return self._DisasterRecoverGroupId
+
+    @DisasterRecoverGroupId.setter
+    def DisasterRecoverGroupId(self, DisasterRecoverGroupId):
+        self._DisasterRecoverGroupId = DisasterRecoverGroupId
+
+    @property
+    def AddTags(self):
+        r"""<p>为 DB Custom 置放群组绑定的标签信息</p><p>入参限制：参考标签侧的限制</p><p>如果置放群组未关联输入的标签键，则增加关联；若已关联，则将该置放群组关联的键对应的标签值修改为输入值。本接口中 AddTags 和 DeleteTagKeys 二者必须存在其一，且二者不能包含相同的标签键。</p>
+        :rtype: list of Tag
+        """
+        return self._AddTags
+
+    @AddTags.setter
+    def AddTags(self, AddTags):
+        self._AddTags = AddTags
+
+    @property
+    def DeleteTagKeys(self):
+        r"""<p>需要解关联的标签Key</p><p>本接口中 AddTags 和 DeleteTagKeys 二者必须存在其一，且二者不能包含相同的标签键。</p>
+        :rtype: list of str
+        """
+        return self._DeleteTagKeys
+
+    @DeleteTagKeys.setter
+    def DeleteTagKeys(self, DeleteTagKeys):
+        self._DeleteTagKeys = DeleteTagKeys
+
+
+    def _deserialize(self, params):
+        self._DisasterRecoverGroupId = params.get("DisasterRecoverGroupId")
+        if params.get("AddTags") is not None:
+            self._AddTags = []
+            for item in params.get("AddTags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._AddTags.append(obj)
+        self._DeleteTagKeys = params.get("DeleteTagKeys")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyDBCustomDisasterRecoverGroupTagsResponse(AbstractModel):
+    r"""ModifyDBCustomDisasterRecoverGroupTags返回参数结构体
 
     """
 
@@ -8238,9 +9360,9 @@ class ModifyDBCustomNodeTagsRequest(AbstractModel):
         r"""
         :param _NodeId: <p>DB Custom 节点ID</p><p>参数格式：dbcn-0zan5xxk</p>
         :type NodeId: str
-        :param _AddTags: <p>为节点绑定的标签信息</p><p>入参限制：参考标签侧的限制</p>
+        :param _AddTags: <p>为节点绑定的标签信息</p><p>入参限制：参考标签侧的限制</p><p>如果节点未关联输入的标签键，则增加关联；若已关联，则将该节点关联的键对应的标签值修改为输入值。本接口中 AddTags 和 DeleteTagKeys 二者必须存在其一，且二者不能包含相同的标签键。</p>
         :type AddTags: list of Tag
-        :param _DeleteTagKeys: <p>需要删除的标签Key</p>
+        :param _DeleteTagKeys: <p>需要解关联的标签Key</p><p>本接口中 AddTags 和 DeleteTagKeys 二者必须存在其一，且二者不能包含相同的标签键。</p>
         :type DeleteTagKeys: list of str
         """
         self._NodeId = None
@@ -8260,7 +9382,7 @@ class ModifyDBCustomNodeTagsRequest(AbstractModel):
 
     @property
     def AddTags(self):
-        r"""<p>为节点绑定的标签信息</p><p>入参限制：参考标签侧的限制</p>
+        r"""<p>为节点绑定的标签信息</p><p>入参限制：参考标签侧的限制</p><p>如果节点未关联输入的标签键，则增加关联；若已关联，则将该节点关联的键对应的标签值修改为输入值。本接口中 AddTags 和 DeleteTagKeys 二者必须存在其一，且二者不能包含相同的标签键。</p>
         :rtype: list of Tag
         """
         return self._AddTags
@@ -8271,7 +9393,7 @@ class ModifyDBCustomNodeTagsRequest(AbstractModel):
 
     @property
     def DeleteTagKeys(self):
-        r"""<p>需要删除的标签Key</p>
+        r"""<p>需要解关联的标签Key</p><p>本接口中 AddTags 和 DeleteTagKeys 二者必须存在其一，且二者不能包含相同的标签键。</p>
         :rtype: list of str
         """
         return self._DeleteTagKeys
@@ -8325,6 +9447,117 @@ class ModifyDBCustomNodeTagsResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyDBCustomNodesDisasterRecoverGroupRequest(AbstractModel):
+    r"""ModifyDBCustomNodesDisasterRecoverGroup请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _NodeIds: <p>节点ID</p><p>入参限制：单次数量上限为100</p>
+        :type NodeIds: list of str
+        :param _DisasterRecoverGroupIds: <p>置放群组ID</p><p>入参限制：支持传一个ID</p>
+        :type DisasterRecoverGroupIds: list of str
+        :param _Force: <p>是否强制更换节点宿主机</p><p>枚举值：</p><ul><li>true： 表示允许节点更换宿主机，允许重启。本地盘节点不支持指定此参数。</li><li>false： 不允许节点更换宿主机，只在当前宿主机上加入置放群组。这可能导致更换置放群组失败。</li></ul><p>默认值：false</p>
+        :type Force: bool
+        """
+        self._NodeIds = None
+        self._DisasterRecoverGroupIds = None
+        self._Force = None
+
+    @property
+    def NodeIds(self):
+        r"""<p>节点ID</p><p>入参限制：单次数量上限为100</p>
+        :rtype: list of str
+        """
+        return self._NodeIds
+
+    @NodeIds.setter
+    def NodeIds(self, NodeIds):
+        self._NodeIds = NodeIds
+
+    @property
+    def DisasterRecoverGroupIds(self):
+        r"""<p>置放群组ID</p><p>入参限制：支持传一个ID</p>
+        :rtype: list of str
+        """
+        return self._DisasterRecoverGroupIds
+
+    @DisasterRecoverGroupIds.setter
+    def DisasterRecoverGroupIds(self, DisasterRecoverGroupIds):
+        self._DisasterRecoverGroupIds = DisasterRecoverGroupIds
+
+    @property
+    def Force(self):
+        r"""<p>是否强制更换节点宿主机</p><p>枚举值：</p><ul><li>true： 表示允许节点更换宿主机，允许重启。本地盘节点不支持指定此参数。</li><li>false： 不允许节点更换宿主机，只在当前宿主机上加入置放群组。这可能导致更换置放群组失败。</li></ul><p>默认值：false</p>
+        :rtype: bool
+        """
+        return self._Force
+
+    @Force.setter
+    def Force(self, Force):
+        self._Force = Force
+
+
+    def _deserialize(self, params):
+        self._NodeIds = params.get("NodeIds")
+        self._DisasterRecoverGroupIds = params.get("DisasterRecoverGroupIds")
+        self._Force = params.get("Force")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyDBCustomNodesDisasterRecoverGroupResponse(AbstractModel):
+    r"""ModifyDBCustomNodesDisasterRecoverGroup返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: <p>任务ID</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskId: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        r"""<p>任务ID</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
         self._RequestId = params.get("RequestId")
 
 

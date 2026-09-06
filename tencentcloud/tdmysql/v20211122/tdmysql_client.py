@@ -233,6 +233,29 @@ class TdmysqlClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeDBCharsets(self, request):
+        r"""本接口（DescribeDBCharsets）提供查询支持字符集功能
+
+        :param request: Request instance for DescribeDBCharsets.
+        :type request: :class:`tencentcloud.tdmysql.v20211122.models.DescribeDBCharsetsRequest`
+        :rtype: :class:`tencentcloud.tdmysql.v20211122.models.DescribeDBCharsetsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDBCharsets", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDBCharsetsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeDBEngines(self, request):
         r"""本接口（DescribeDBEngines）用于获取DB引擎版本列表
 
@@ -569,6 +592,52 @@ class TdmysqlClient(AbstractClient):
             body = self.call("DescribeFlow", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeFlowResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeFlowTypes(self, request):
+        r"""本接口（DescribeFlowTypes）用于获取所有任务类型
+
+        :param request: Request instance for DescribeFlowTypes.
+        :type request: :class:`tencentcloud.tdmysql.v20211122.models.DescribeFlowTypesRequest`
+        :rtype: :class:`tencentcloud.tdmysql.v20211122.models.DescribeFlowTypesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeFlowTypes", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeFlowTypesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeInstanceDataReservedSpace(self, request):
+        r"""本接口（DescribeInstanceDataReservedSpace）提供查询实例数据保留空间
+
+        :param request: Request instance for DescribeInstanceDataReservedSpace.
+        :type request: :class:`tencentcloud.tdmysql.v20211122.models.DescribeInstanceDataReservedSpaceRequest`
+        :rtype: :class:`tencentcloud.tdmysql.v20211122.models.DescribeInstanceDataReservedSpaceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeInstanceDataReservedSpace", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeInstanceDataReservedSpaceResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -969,6 +1038,29 @@ class TdmysqlClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyInstanceDataReservedSpace(self, request):
+        r"""本接口（ModifyInstanceDataReservedSpace）提供修改实例数据保留空间
+
+        :param request: Request instance for ModifyInstanceDataReservedSpace.
+        :type request: :class:`tencentcloud.tdmysql.v20211122.models.ModifyInstanceDataReservedSpaceRequest`
+        :rtype: :class:`tencentcloud.tdmysql.v20211122.models.ModifyInstanceDataReservedSpaceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyInstanceDataReservedSpace", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyInstanceDataReservedSpaceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyInstanceName(self, request):
         r"""本接口（ModifyInstanceName）提供修改实例名称功能
 
@@ -1075,6 +1167,29 @@ class TdmysqlClient(AbstractClient):
             body = self.call("ModifyUserPrivileges", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyUserPrivilegesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ResetDbaAdminPrivileges(self, request):
+        r"""重置dbaadmin账号权限
+
+        :param request: Request instance for ResetDbaAdminPrivileges.
+        :type request: :class:`tencentcloud.tdmysql.v20211122.models.ResetDbaAdminPrivilegesRequest`
+        :rtype: :class:`tencentcloud.tdmysql.v20211122.models.ResetDbaAdminPrivilegesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ResetDbaAdminPrivileges", params, headers=headers)
+            response = json.loads(body)
+            model = models.ResetDbaAdminPrivilegesResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

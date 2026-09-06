@@ -53436,26 +53436,23 @@ class ModifyGatewayFlowQosRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _GatewayId: 网关实例ID，目前我们支持的网关实例类型有，
-专线网关实例ID，形如，`dcg-ltjahce6`；
-Nat网关实例ID，形如，`nat-ltjahce6`；
-VPN网关实例ID，形如，`vpn-ltjahce6`。
+        :param _GatewayId: <p>网关实例ID，目前我们支持的网关实例类型有，<br>专线网关实例ID，形如，<code>dcg-ltjahce6</code>；<br>Nat网关实例ID，形如，<code>nat-ltjahce6</code>；<br>VPN网关实例ID，形如，<code>vpn-ltjahce6</code>。</p>
         :type GatewayId: str
-        :param _Bandwidth: 流控带宽值。取值大于0，表示限流到指定的Mbps；取值等于0，表示完全限流；取值为-1，不限流。
+        :param _Bandwidth: <p>流控带宽值。取值大于0，表示限流到指定的Mbps；取值等于0，表示完全限流；取值为-1，不限流。</p>
         :type Bandwidth: int
-        :param _IpAddresses: 限流的云服务器内网IP。
+        :param _IpAddresses: <p>限流的云服务器内网IP。</p><p>参数格式：10.0.0.2</p>
         :type IpAddresses: list of str
+        :param _Direction: <p>限流方向，取值为In代表入向，Out代表出向。当前仅标准型Nat实例网关流控带宽方向可设置入向限流。</p>
+        :type Direction: str
         """
         self._GatewayId = None
         self._Bandwidth = None
         self._IpAddresses = None
+        self._Direction = None
 
     @property
     def GatewayId(self):
-        r"""网关实例ID，目前我们支持的网关实例类型有，
-专线网关实例ID，形如，`dcg-ltjahce6`；
-Nat网关实例ID，形如，`nat-ltjahce6`；
-VPN网关实例ID，形如，`vpn-ltjahce6`。
+        r"""<p>网关实例ID，目前我们支持的网关实例类型有，<br>专线网关实例ID，形如，<code>dcg-ltjahce6</code>；<br>Nat网关实例ID，形如，<code>nat-ltjahce6</code>；<br>VPN网关实例ID，形如，<code>vpn-ltjahce6</code>。</p>
         :rtype: str
         """
         return self._GatewayId
@@ -53466,7 +53463,7 @@ VPN网关实例ID，形如，`vpn-ltjahce6`。
 
     @property
     def Bandwidth(self):
-        r"""流控带宽值。取值大于0，表示限流到指定的Mbps；取值等于0，表示完全限流；取值为-1，不限流。
+        r"""<p>流控带宽值。取值大于0，表示限流到指定的Mbps；取值等于0，表示完全限流；取值为-1，不限流。</p>
         :rtype: int
         """
         return self._Bandwidth
@@ -53477,7 +53474,7 @@ VPN网关实例ID，形如，`vpn-ltjahce6`。
 
     @property
     def IpAddresses(self):
-        r"""限流的云服务器内网IP。
+        r"""<p>限流的云服务器内网IP。</p><p>参数格式：10.0.0.2</p>
         :rtype: list of str
         """
         return self._IpAddresses
@@ -53486,11 +53483,23 @@ VPN网关实例ID，形如，`vpn-ltjahce6`。
     def IpAddresses(self, IpAddresses):
         self._IpAddresses = IpAddresses
 
+    @property
+    def Direction(self):
+        r"""<p>限流方向，取值为In代表入向，Out代表出向。当前仅标准型Nat实例网关流控带宽方向可设置入向限流。</p>
+        :rtype: str
+        """
+        return self._Direction
+
+    @Direction.setter
+    def Direction(self, Direction):
+        self._Direction = Direction
+
 
     def _deserialize(self, params):
         self._GatewayId = params.get("GatewayId")
         self._Bandwidth = params.get("Bandwidth")
         self._IpAddresses = params.get("IpAddresses")
+        self._Direction = params.get("Direction")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

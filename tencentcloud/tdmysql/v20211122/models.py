@@ -4824,6 +4824,40 @@ class DeleteUsersResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeDBCharsetsRequest(AbstractModel):
+    r"""DescribeDBCharsets请求参数结构体
+
+    """
+
+
+class DescribeDBCharsetsResponse(AbstractModel):
+    r"""DescribeDBCharsets返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeDBEnginesRequest(AbstractModel):
     r"""DescribeDBEngines请求参数结构体
 
@@ -8009,6 +8043,199 @@ class DescribeFlowResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeFlowTypesRequest(AbstractModel):
+    r"""DescribeFlowTypes请求参数结构体
+
+    """
+
+
+class DescribeFlowTypesResponse(AbstractModel):
+    r"""DescribeFlowTypes返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FlowTypes: <p>任务类型信息，供前端下拉筛选使用</p>
+        :type FlowTypes: list of FlowType
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._FlowTypes = None
+        self._RequestId = None
+
+    @property
+    def FlowTypes(self):
+        r"""<p>任务类型信息，供前端下拉筛选使用</p>
+        :rtype: list of FlowType
+        """
+        return self._FlowTypes
+
+    @FlowTypes.setter
+    def FlowTypes(self, FlowTypes):
+        self._FlowTypes = FlowTypes
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("FlowTypes") is not None:
+            self._FlowTypes = []
+            for item in params.get("FlowTypes"):
+                obj = FlowType()
+                obj._deserialize(item)
+                self._FlowTypes.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeInstanceDataReservedSpaceRequest(AbstractModel):
+    r"""DescribeInstanceDataReservedSpace请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: <p>实例ID</p>
+        :type InstanceId: str
+        """
+        self._InstanceId = None
+
+    @property
+    def InstanceId(self):
+        r"""<p>实例ID</p>
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeInstanceDataReservedSpaceResponse(AbstractModel):
+    r"""DescribeInstanceDataReservedSpace返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ReservedRate: <p>实际保留比例（%，单节点）</p>
+        :type ReservedRate: float
+        :param _ReservedSpaceGB: <p>实际保留空间 GB（单节点）</p><p>单位：GB</p>
+        :type ReservedSpaceGB: float
+        :param _UsableSpaceGB: <p>用户可用空间 GB（单节点）</p><p>单位：GB</p>
+        :type UsableSpaceGB: float
+        :param _IsLegacy: <p>true=旧版本（&lt;21.6.4.0），值取自老参数 tdstore_enter_readonly_threshold；false=新版本</p>
+        :type IsLegacy: bool
+        :param _KernelVersion: <p>内核版本号</p>
+        :type KernelVersion: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ReservedRate = None
+        self._ReservedSpaceGB = None
+        self._UsableSpaceGB = None
+        self._IsLegacy = None
+        self._KernelVersion = None
+        self._RequestId = None
+
+    @property
+    def ReservedRate(self):
+        r"""<p>实际保留比例（%，单节点）</p>
+        :rtype: float
+        """
+        return self._ReservedRate
+
+    @ReservedRate.setter
+    def ReservedRate(self, ReservedRate):
+        self._ReservedRate = ReservedRate
+
+    @property
+    def ReservedSpaceGB(self):
+        r"""<p>实际保留空间 GB（单节点）</p><p>单位：GB</p>
+        :rtype: float
+        """
+        return self._ReservedSpaceGB
+
+    @ReservedSpaceGB.setter
+    def ReservedSpaceGB(self, ReservedSpaceGB):
+        self._ReservedSpaceGB = ReservedSpaceGB
+
+    @property
+    def UsableSpaceGB(self):
+        r"""<p>用户可用空间 GB（单节点）</p><p>单位：GB</p>
+        :rtype: float
+        """
+        return self._UsableSpaceGB
+
+    @UsableSpaceGB.setter
+    def UsableSpaceGB(self, UsableSpaceGB):
+        self._UsableSpaceGB = UsableSpaceGB
+
+    @property
+    def IsLegacy(self):
+        r"""<p>true=旧版本（&lt;21.6.4.0），值取自老参数 tdstore_enter_readonly_threshold；false=新版本</p>
+        :rtype: bool
+        """
+        return self._IsLegacy
+
+    @IsLegacy.setter
+    def IsLegacy(self, IsLegacy):
+        self._IsLegacy = IsLegacy
+
+    @property
+    def KernelVersion(self):
+        r"""<p>内核版本号</p>
+        :rtype: str
+        """
+        return self._KernelVersion
+
+    @KernelVersion.setter
+    def KernelVersion(self, KernelVersion):
+        self._KernelVersion = KernelVersion
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._ReservedRate = params.get("ReservedRate")
+        self._ReservedSpaceGB = params.get("ReservedSpaceGB")
+        self._UsableSpaceGB = params.get("UsableSpaceGB")
+        self._IsLegacy = params.get("IsLegacy")
+        self._KernelVersion = params.get("KernelVersion")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeInstanceSSLStatusRequest(AbstractModel):
     r"""DescribeInstanceSSLStatus请求参数结构体
 
@@ -9847,6 +10074,61 @@ class Explain(AbstractModel):
         self._Rows = params.get("Rows")
         self._Filtered = params.get("Filtered")
         self._Extra = params.get("Extra")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class FlowType(AbstractModel):
+    r"""任务类型信息，供前端下拉筛选使用
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FlowName: <p>任务类型名称，后续可以对 DescribeFlows 出参中的 FlowName 进行筛选</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FlowName: str
+        :param _FlowDesc: <p>任务类型中文描述</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FlowDesc: str
+        """
+        self._FlowName = None
+        self._FlowDesc = None
+
+    @property
+    def FlowName(self):
+        r"""<p>任务类型名称，后续可以对 DescribeFlows 出参中的 FlowName 进行筛选</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._FlowName
+
+    @FlowName.setter
+    def FlowName(self, FlowName):
+        self._FlowName = FlowName
+
+    @property
+    def FlowDesc(self):
+        r"""<p>任务类型中文描述</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._FlowDesc
+
+    @FlowDesc.setter
+    def FlowDesc(self, FlowDesc):
+        self._FlowDesc = FlowDesc
+
+
+    def _deserialize(self, params):
+        self._FlowName = params.get("FlowName")
+        self._FlowDesc = params.get("FlowDesc")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -12489,6 +12771,100 @@ class ModifyDBSBackupSetCommentResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class ModifyInstanceDataReservedSpaceRequest(AbstractModel):
+    r"""ModifyInstanceDataReservedSpace请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: <p>实例ID</p>
+        :type InstanceId: str
+        :param _ReservedSpaceGB: <p>拟修改的目标保留空间大小</p><p>单位：GB</p>
+        :type ReservedSpaceGB: float
+        """
+        self._InstanceId = None
+        self._ReservedSpaceGB = None
+
+    @property
+    def InstanceId(self):
+        r"""<p>实例ID</p>
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def ReservedSpaceGB(self):
+        r"""<p>拟修改的目标保留空间大小</p><p>单位：GB</p>
+        :rtype: float
+        """
+        return self._ReservedSpaceGB
+
+    @ReservedSpaceGB.setter
+    def ReservedSpaceGB(self, ReservedSpaceGB):
+        self._ReservedSpaceGB = ReservedSpaceGB
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        self._ReservedSpaceGB = params.get("ReservedSpaceGB")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyInstanceDataReservedSpaceResponse(AbstractModel):
+    r"""ModifyInstanceDataReservedSpace返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: <p>参数下发 flow 任务 ID（复用 ModifyDBParameters 链路，异步 flow 但秒级生效）</p>
+        :type TaskId: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        r"""<p>参数下发 flow 任务 ID（复用 ModifyDBParameters 链路，异步 flow 但秒级生效）</p>
+        :rtype: int
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyInstanceNameRequest(AbstractModel):
     r"""ModifyInstanceName请求参数结构体
 
@@ -13458,6 +13834,70 @@ class ParamDesc(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class ResetDbaAdminPrivilegesRequest(AbstractModel):
+    r"""ResetDbaAdminPrivileges请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: <p>实例id</p>
+        :type InstanceId: str
+        """
+        self._InstanceId = None
+
+    @property
+    def InstanceId(self):
+        r"""<p>实例id</p>
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ResetDbaAdminPrivilegesResponse(AbstractModel):
+    r"""ResetDbaAdminPrivileges返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
 
 
 class ResetUserPasswordInfo(AbstractModel):

@@ -187,6 +187,24 @@ class TdmysqlClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeDBCharsets(
+            self,
+            request: models.DescribeDBCharsetsRequest,
+            opts: Dict = None,
+    ) -> models.DescribeDBCharsetsResponse:
+        """
+        本接口（DescribeDBCharsets）提供查询支持字符集功能
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeDBCharsets"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeDBCharsetsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeDBEngines(
             self,
             request: models.DescribeDBEnginesRequest,
@@ -452,6 +470,42 @@ class TdmysqlClient(AbstractClient):
         kwargs["action"] = "DescribeFlow"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeFlowResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeFlowTypes(
+            self,
+            request: models.DescribeFlowTypesRequest,
+            opts: Dict = None,
+    ) -> models.DescribeFlowTypesResponse:
+        """
+        本接口（DescribeFlowTypes）用于获取所有任务类型
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeFlowTypes"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeFlowTypesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeInstanceDataReservedSpace(
+            self,
+            request: models.DescribeInstanceDataReservedSpaceRequest,
+            opts: Dict = None,
+    ) -> models.DescribeInstanceDataReservedSpaceResponse:
+        """
+        本接口（DescribeInstanceDataReservedSpace）提供查询实例数据保留空间
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeInstanceDataReservedSpace"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeInstanceDataReservedSpaceResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -763,6 +817,24 @@ class TdmysqlClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def ModifyInstanceDataReservedSpace(
+            self,
+            request: models.ModifyInstanceDataReservedSpaceRequest,
+            opts: Dict = None,
+    ) -> models.ModifyInstanceDataReservedSpaceResponse:
+        """
+        本接口（ModifyInstanceDataReservedSpace）提供修改实例数据保留空间
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyInstanceDataReservedSpace"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyInstanceDataReservedSpaceResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ModifyInstanceName(
             self,
             request: models.ModifyInstanceNameRequest,
@@ -848,6 +920,24 @@ class TdmysqlClient(AbstractClient):
         kwargs["action"] = "ModifyUserPrivileges"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ModifyUserPrivilegesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ResetDbaAdminPrivileges(
+            self,
+            request: models.ResetDbaAdminPrivilegesRequest,
+            opts: Dict = None,
+    ) -> models.ResetDbaAdminPrivilegesResponse:
+        """
+        重置dbaadmin账号权限
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ResetDbaAdminPrivileges"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ResetDbaAdminPrivilegesResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

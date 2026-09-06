@@ -14203,26 +14203,34 @@ class RecordTaskItem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RecordTaskId: 录像任务ID
+        :param _RecordTaskId: <p>录像任务ID</p>
         :type RecordTaskId: str
-        :param _RecordPlanId: 录制计划ID
+        :param _RecordPlanId: <p>录制计划ID</p>
         :type RecordPlanId: str
-        :param _StartTime: 本录制片段开始时间
+        :param _StartTime: <p>本录制片段开始时间</p>
         :type StartTime: int
-        :param _EndTime: 本录制片段结束时间
+        :param _EndTime: <p>本录制片段结束时间</p>
         :type EndTime: int
-        :param _EventId: 录制模式
+        :param _EventId: <p>录制模式</p>
         :type EventId: int
-        :param _VideoUrl: 本录制片段对应的录制文件URL
+        :param _VideoUrl: <p>本录制片段对应的录制文件URL</p>
         :type VideoUrl: str
-        :param _RecordStatus: 本录制片段当前的录制状态
+        :param _RecordStatus: <p>本录制片段当前的录制状态</p>
         :type RecordStatus: int
-        :param _SceneId: 场景ID
+        :param _SceneId: <p>场景ID</p>
         :type SceneId: int
-        :param _WarnId: 告警ID
+        :param _WarnId: <p>告警ID</p>
         :type WarnId: int
-        :param _RecordId: 录制id，NVR下属设备有效
+        :param _RecordId: <p>录制id，NVR下属设备有效</p>
         :type RecordId: str
+        :param _InitID: <p>视频自增ID</p>
+        :type InitID: int
+        :param _ExpectDeleteTime: <p>过期时间</p>
+        :type ExpectDeleteTime: int
+        :param _RecordTimeLen: <p>录制时长</p>
+        :type RecordTimeLen: int
+        :param _FileSize: <p>文件大小</p>
+        :type FileSize: int
         """
         self._RecordTaskId = None
         self._RecordPlanId = None
@@ -14234,10 +14242,14 @@ class RecordTaskItem(AbstractModel):
         self._SceneId = None
         self._WarnId = None
         self._RecordId = None
+        self._InitID = None
+        self._ExpectDeleteTime = None
+        self._RecordTimeLen = None
+        self._FileSize = None
 
     @property
     def RecordTaskId(self):
-        r"""录像任务ID
+        r"""<p>录像任务ID</p>
         :rtype: str
         """
         return self._RecordTaskId
@@ -14248,7 +14260,7 @@ class RecordTaskItem(AbstractModel):
 
     @property
     def RecordPlanId(self):
-        r"""录制计划ID
+        r"""<p>录制计划ID</p>
         :rtype: str
         """
         return self._RecordPlanId
@@ -14259,7 +14271,7 @@ class RecordTaskItem(AbstractModel):
 
     @property
     def StartTime(self):
-        r"""本录制片段开始时间
+        r"""<p>本录制片段开始时间</p>
         :rtype: int
         """
         return self._StartTime
@@ -14270,7 +14282,7 @@ class RecordTaskItem(AbstractModel):
 
     @property
     def EndTime(self):
-        r"""本录制片段结束时间
+        r"""<p>本录制片段结束时间</p>
         :rtype: int
         """
         return self._EndTime
@@ -14281,7 +14293,7 @@ class RecordTaskItem(AbstractModel):
 
     @property
     def EventId(self):
-        r"""录制模式
+        r"""<p>录制模式</p>
         :rtype: int
         """
         return self._EventId
@@ -14292,7 +14304,7 @@ class RecordTaskItem(AbstractModel):
 
     @property
     def VideoUrl(self):
-        r"""本录制片段对应的录制文件URL
+        r"""<p>本录制片段对应的录制文件URL</p>
         :rtype: str
         """
         return self._VideoUrl
@@ -14303,7 +14315,7 @@ class RecordTaskItem(AbstractModel):
 
     @property
     def RecordStatus(self):
-        r"""本录制片段当前的录制状态
+        r"""<p>本录制片段当前的录制状态</p>
         :rtype: int
         """
         return self._RecordStatus
@@ -14314,7 +14326,7 @@ class RecordTaskItem(AbstractModel):
 
     @property
     def SceneId(self):
-        r"""场景ID
+        r"""<p>场景ID</p>
         :rtype: int
         """
         return self._SceneId
@@ -14325,7 +14337,7 @@ class RecordTaskItem(AbstractModel):
 
     @property
     def WarnId(self):
-        r"""告警ID
+        r"""<p>告警ID</p>
         :rtype: int
         """
         return self._WarnId
@@ -14336,7 +14348,7 @@ class RecordTaskItem(AbstractModel):
 
     @property
     def RecordId(self):
-        r"""录制id，NVR下属设备有效
+        r"""<p>录制id，NVR下属设备有效</p>
         :rtype: str
         """
         return self._RecordId
@@ -14344,6 +14356,50 @@ class RecordTaskItem(AbstractModel):
     @RecordId.setter
     def RecordId(self, RecordId):
         self._RecordId = RecordId
+
+    @property
+    def InitID(self):
+        r"""<p>视频自增ID</p>
+        :rtype: int
+        """
+        return self._InitID
+
+    @InitID.setter
+    def InitID(self, InitID):
+        self._InitID = InitID
+
+    @property
+    def ExpectDeleteTime(self):
+        r"""<p>过期时间</p>
+        :rtype: int
+        """
+        return self._ExpectDeleteTime
+
+    @ExpectDeleteTime.setter
+    def ExpectDeleteTime(self, ExpectDeleteTime):
+        self._ExpectDeleteTime = ExpectDeleteTime
+
+    @property
+    def RecordTimeLen(self):
+        r"""<p>录制时长</p>
+        :rtype: int
+        """
+        return self._RecordTimeLen
+
+    @RecordTimeLen.setter
+    def RecordTimeLen(self, RecordTimeLen):
+        self._RecordTimeLen = RecordTimeLen
+
+    @property
+    def FileSize(self):
+        r"""<p>文件大小</p>
+        :rtype: int
+        """
+        return self._FileSize
+
+    @FileSize.setter
+    def FileSize(self, FileSize):
+        self._FileSize = FileSize
 
 
     def _deserialize(self, params):
@@ -14357,6 +14413,10 @@ class RecordTaskItem(AbstractModel):
         self._SceneId = params.get("SceneId")
         self._WarnId = params.get("WarnId")
         self._RecordId = params.get("RecordId")
+        self._InitID = params.get("InitID")
+        self._ExpectDeleteTime = params.get("ExpectDeleteTime")
+        self._RecordTimeLen = params.get("RecordTimeLen")
+        self._FileSize = params.get("FileSize")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

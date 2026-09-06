@@ -95,6 +95,29 @@ class DbdcClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateDBCustomDisasterRecoverGroup(self, request):
+        r"""该接口（CreateDBCustomDisasterRecoverGroup）用于创建 DB Custom 置放群组。
+
+        :param request: Request instance for CreateDBCustomDisasterRecoverGroup.
+        :type request: :class:`tencentcloud.dbdc.v20201029.models.CreateDBCustomDisasterRecoverGroupRequest`
+        :rtype: :class:`tencentcloud.dbdc.v20201029.models.CreateDBCustomDisasterRecoverGroupResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateDBCustomDisasterRecoverGroup", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateDBCustomDisasterRecoverGroupResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateDBCustomNodes(self, request):
         r"""该接口（CreateDBCustomNodes）用于创建 DB Custom 节点(需支付)。
 
@@ -109,6 +132,52 @@ class DbdcClient(AbstractClient):
             body = self.call("CreateDBCustomNodes", params, headers=headers)
             response = json.loads(body)
             model = models.CreateDBCustomNodesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteDBCustomDisasterRecoverGroups(self, request):
+        r"""该接口（DeleteDBCustomDisasterRecoverGroups）用于删除 DB Custom 置放群组。
+
+        :param request: Request instance for DeleteDBCustomDisasterRecoverGroups.
+        :type request: :class:`tencentcloud.dbdc.v20201029.models.DeleteDBCustomDisasterRecoverGroupsRequest`
+        :rtype: :class:`tencentcloud.dbdc.v20201029.models.DeleteDBCustomDisasterRecoverGroupsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteDBCustomDisasterRecoverGroups", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteDBCustomDisasterRecoverGroupsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteDBCustomNodesDisasterRecoverGroup(self, request):
+        r"""该接口（DeleteDBCustomNodesDisasterRecoverGroup）用于移除 DB Custom 节点的置放群组。
+
+        :param request: Request instance for DeleteDBCustomNodesDisasterRecoverGroup.
+        :type request: :class:`tencentcloud.dbdc.v20201029.models.DeleteDBCustomNodesDisasterRecoverGroupRequest`
+        :rtype: :class:`tencentcloud.dbdc.v20201029.models.DeleteDBCustomNodesDisasterRecoverGroupResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteDBCustomNodesDisasterRecoverGroup", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteDBCustomNodesDisasterRecoverGroupResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -270,6 +339,52 @@ class DbdcClient(AbstractClient):
             body = self.call("DescribeDBCustomClusters", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeDBCustomClustersResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeDBCustomDisasterRecoverGroupQuota(self, request):
+        r"""该接口（DescribeDBCustomDisasterRecoverGroupQuota）用于查询 DB Custom 置放群组配额。
+
+        :param request: Request instance for DescribeDBCustomDisasterRecoverGroupQuota.
+        :type request: :class:`tencentcloud.dbdc.v20201029.models.DescribeDBCustomDisasterRecoverGroupQuotaRequest`
+        :rtype: :class:`tencentcloud.dbdc.v20201029.models.DescribeDBCustomDisasterRecoverGroupQuotaResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDBCustomDisasterRecoverGroupQuota", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDBCustomDisasterRecoverGroupQuotaResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeDBCustomDisasterRecoverGroups(self, request):
+        r"""该接口（DescribeDBCustomDisasterRecoverGroups）用于查询 DB Custom 置放群组列表。
+
+        :param request: Request instance for DescribeDBCustomDisasterRecoverGroups.
+        :type request: :class:`tencentcloud.dbdc.v20201029.models.DescribeDBCustomDisasterRecoverGroupsRequest`
+        :rtype: :class:`tencentcloud.dbdc.v20201029.models.DescribeDBCustomDisasterRecoverGroupsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeDBCustomDisasterRecoverGroups", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeDBCustomDisasterRecoverGroupsResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -693,6 +808,52 @@ class DbdcClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyDBCustomDisasterRecoverGroupAttribute(self, request):
+        r"""该接口（ModifyDBCustomDisasterRecoverGroupAttribute）用于修改 DB Custom 置放群组的属性。
+
+        :param request: Request instance for ModifyDBCustomDisasterRecoverGroupAttribute.
+        :type request: :class:`tencentcloud.dbdc.v20201029.models.ModifyDBCustomDisasterRecoverGroupAttributeRequest`
+        :rtype: :class:`tencentcloud.dbdc.v20201029.models.ModifyDBCustomDisasterRecoverGroupAttributeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyDBCustomDisasterRecoverGroupAttribute", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyDBCustomDisasterRecoverGroupAttributeResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyDBCustomDisasterRecoverGroupTags(self, request):
+        r"""该接口（ModifyDBCustomDisasterRecoverGroupTags）用于修改 DB Custom 置放群组绑定的标签。
+
+        :param request: Request instance for ModifyDBCustomDisasterRecoverGroupTags.
+        :type request: :class:`tencentcloud.dbdc.v20201029.models.ModifyDBCustomDisasterRecoverGroupTagsRequest`
+        :rtype: :class:`tencentcloud.dbdc.v20201029.models.ModifyDBCustomDisasterRecoverGroupTagsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyDBCustomDisasterRecoverGroupTags", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyDBCustomDisasterRecoverGroupTagsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyDBCustomNodeAttributes(self, request):
         r"""该接口（ModifyDBCustomNodeAttributes）用于修改 DB Custom 节点的属性。
 
@@ -753,6 +914,29 @@ class DbdcClient(AbstractClient):
             body = self.call("ModifyDBCustomNodeTags", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyDBCustomNodeTagsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyDBCustomNodesDisasterRecoverGroup(self, request):
+        r"""该接口（ModifyDBCustomNodesDisasterRecoverGroup）用于修改 DB Custom 节点的置放群组。
+
+        :param request: Request instance for ModifyDBCustomNodesDisasterRecoverGroup.
+        :type request: :class:`tencentcloud.dbdc.v20201029.models.ModifyDBCustomNodesDisasterRecoverGroupRequest`
+        :rtype: :class:`tencentcloud.dbdc.v20201029.models.ModifyDBCustomNodesDisasterRecoverGroupResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyDBCustomNodesDisasterRecoverGroup", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyDBCustomNodesDisasterRecoverGroupResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

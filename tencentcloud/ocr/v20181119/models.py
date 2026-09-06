@@ -6058,63 +6058,61 @@ class ElectronicAirTransport(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Code: 发票代码
+        :param _Code: <p>发票代码</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Code: str
-        :param _Number: 发票号码
+        :param _Number: <p>发票号码</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Number: str
-        :param _Date: 开票日期
+        :param _Date: <p>开票日期</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Date: str
-        :param _Amount: 金额
+        :param _Amount: <p>金额</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Amount: str
-        :param _CheckCode: 校验码
+        :param _CheckCode: <p>校验码</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type CheckCode: str
-        :param _Total: 价税合计
+        :param _Total: <p>价税合计</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Total: str
-        :param _DeductionMark: 抵扣标志
+        :param _DeductionMark: <p>抵扣标志</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type DeductionMark: str
-        :param _StateCode: 发票状态代码，0正常 1 未更新  2作废 3已红冲
+        :param _StateCode: <p>发票状态代码，0正常 1 未更新  2作废 3已红冲</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type StateCode: str
-        :param _BuyerTaxCode: 购方识别号
+        :param _BuyerTaxCode: <p>购方识别号</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type BuyerTaxCode: str
-        :param _BuyerName: 购方名称
+        :param _BuyerName: <p>购方名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type BuyerName: str
-        :param _Tax: 合计税额
+        :param _Tax: <p>合计税额</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Tax: str
-        :param _DomesticInternationalMark: 国内国际标识
+        :param _DomesticInternationalMark: <p>国内国际标识</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type DomesticInternationalMark: str
-        :param _PassengerName: 旅客姓名
+        :param _PassengerName: <p>旅客姓名</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type PassengerName: str
-        :param _PassengerNo: 有效身份证件号码
+        :param _PassengerNo: <p>有效身份证件号码</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type PassengerNo: str
-        :param _ElectronicNumber: 电子客票号码
+        :param _ElectronicNumber: <p>电子客票号码</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ElectronicNumber: str
-        :param _ElectronicAirTransportDetails: 全电发票（航空运输电子客票行程单）详细信息
-
-
+        :param _ElectronicAirTransportDetails: <p>全电发票（航空运输电子客票行程单）详细信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ElectronicAirTransportDetails: list of ElectronicAirTransportDetail
-        :param _Fare: 票价
+        :param _Fare: <p>票价</p>
         :type Fare: str
-        :param _FuelSurcharge: 燃油附加费
+        :param _FuelSurcharge: <p>燃油附加费</p>
         :type FuelSurcharge: str
-        :param _TaxAmount: 增值税税额
+        :param _TaxAmount: <p>增值税税额</p>
         :type TaxAmount: str
-        :param _DevelopmentFund: 民航发展基金
+        :param _DevelopmentFund: <p>民航发展基金</p>
         :type DevelopmentFund: str
         """
         self._Code = None
@@ -6140,7 +6138,7 @@ class ElectronicAirTransport(AbstractModel):
 
     @property
     def Code(self):
-        r"""发票代码
+        r"""<p>发票代码</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -6152,7 +6150,7 @@ class ElectronicAirTransport(AbstractModel):
 
     @property
     def Number(self):
-        r"""发票号码
+        r"""<p>发票号码</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -6164,7 +6162,7 @@ class ElectronicAirTransport(AbstractModel):
 
     @property
     def Date(self):
-        r"""开票日期
+        r"""<p>开票日期</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -6176,7 +6174,7 @@ class ElectronicAirTransport(AbstractModel):
 
     @property
     def Amount(self):
-        r"""金额
+        r"""<p>金额</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -6188,7 +6186,7 @@ class ElectronicAirTransport(AbstractModel):
 
     @property
     def CheckCode(self):
-        r"""校验码
+        r"""<p>校验码</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -6200,7 +6198,7 @@ class ElectronicAirTransport(AbstractModel):
 
     @property
     def Total(self):
-        r"""价税合计
+        r"""<p>价税合计</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -6212,7 +6210,7 @@ class ElectronicAirTransport(AbstractModel):
 
     @property
     def DeductionMark(self):
-        r"""抵扣标志
+        r"""<p>抵扣标志</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -6224,7 +6222,7 @@ class ElectronicAirTransport(AbstractModel):
 
     @property
     def StateCode(self):
-        r"""发票状态代码，0正常 1 未更新  2作废 3已红冲
+        r"""<p>发票状态代码，0正常 1 未更新  2作废 3已红冲</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -6236,7 +6234,7 @@ class ElectronicAirTransport(AbstractModel):
 
     @property
     def BuyerTaxCode(self):
-        r"""购方识别号
+        r"""<p>购方识别号</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -6248,7 +6246,7 @@ class ElectronicAirTransport(AbstractModel):
 
     @property
     def BuyerName(self):
-        r"""购方名称
+        r"""<p>购方名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -6260,7 +6258,7 @@ class ElectronicAirTransport(AbstractModel):
 
     @property
     def Tax(self):
-        r"""合计税额
+        r"""<p>合计税额</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -6272,7 +6270,7 @@ class ElectronicAirTransport(AbstractModel):
 
     @property
     def DomesticInternationalMark(self):
-        r"""国内国际标识
+        r"""<p>国内国际标识</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -6284,7 +6282,7 @@ class ElectronicAirTransport(AbstractModel):
 
     @property
     def PassengerName(self):
-        r"""旅客姓名
+        r"""<p>旅客姓名</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -6296,7 +6294,7 @@ class ElectronicAirTransport(AbstractModel):
 
     @property
     def PassengerNo(self):
-        r"""有效身份证件号码
+        r"""<p>有效身份证件号码</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -6308,7 +6306,7 @@ class ElectronicAirTransport(AbstractModel):
 
     @property
     def ElectronicNumber(self):
-        r"""电子客票号码
+        r"""<p>电子客票号码</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -6320,9 +6318,7 @@ class ElectronicAirTransport(AbstractModel):
 
     @property
     def ElectronicAirTransportDetails(self):
-        r"""全电发票（航空运输电子客票行程单）详细信息
-
-
+        r"""<p>全电发票（航空运输电子客票行程单）详细信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of ElectronicAirTransportDetail
         """
@@ -6334,7 +6330,7 @@ class ElectronicAirTransport(AbstractModel):
 
     @property
     def Fare(self):
-        r"""票价
+        r"""<p>票价</p>
         :rtype: str
         """
         return self._Fare
@@ -6345,7 +6341,7 @@ class ElectronicAirTransport(AbstractModel):
 
     @property
     def FuelSurcharge(self):
-        r"""燃油附加费
+        r"""<p>燃油附加费</p>
         :rtype: str
         """
         return self._FuelSurcharge
@@ -6356,7 +6352,7 @@ class ElectronicAirTransport(AbstractModel):
 
     @property
     def TaxAmount(self):
-        r"""增值税税额
+        r"""<p>增值税税额</p>
         :rtype: str
         """
         return self._TaxAmount
@@ -6367,7 +6363,7 @@ class ElectronicAirTransport(AbstractModel):
 
     @property
     def DevelopmentFund(self):
-        r"""民航发展基金
+        r"""<p>民航发展基金</p>
         :rtype: str
         """
         return self._DevelopmentFund
@@ -6420,31 +6416,31 @@ class ElectronicAirTransportDetail(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _FlightSegment: 航段序号
+        :param _FlightSegment: <p>航段序号</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type FlightSegment: str
-        :param _StationGetOn: 始发站
+        :param _StationGetOn: <p>始发站</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type StationGetOn: str
-        :param _StationGetOff: 目的站
+        :param _StationGetOff: <p>目的站</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type StationGetOff: str
-        :param _Carrier: 承运人
+        :param _Carrier: <p>承运人</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Carrier: str
-        :param _FlightNumber: 航班号
+        :param _FlightNumber: <p>航班号</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type FlightNumber: str
-        :param _SeatLevel: 座位等级
+        :param _SeatLevel: <p>座位等级</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type SeatLevel: str
-        :param _FlightDate: 承运日期
+        :param _FlightDate: <p>承运日期</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type FlightDate: str
-        :param _DepartureTime: 起飞时间
+        :param _DepartureTime: <p>起飞时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type DepartureTime: str
-        :param _FareBasis: 客票级别/客票类别
+        :param _FareBasis: <p>客票级别/客票类别</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type FareBasis: str
         """
@@ -6460,7 +6456,7 @@ class ElectronicAirTransportDetail(AbstractModel):
 
     @property
     def FlightSegment(self):
-        r"""航段序号
+        r"""<p>航段序号</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -6472,7 +6468,7 @@ class ElectronicAirTransportDetail(AbstractModel):
 
     @property
     def StationGetOn(self):
-        r"""始发站
+        r"""<p>始发站</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -6484,7 +6480,7 @@ class ElectronicAirTransportDetail(AbstractModel):
 
     @property
     def StationGetOff(self):
-        r"""目的站
+        r"""<p>目的站</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -6496,7 +6492,7 @@ class ElectronicAirTransportDetail(AbstractModel):
 
     @property
     def Carrier(self):
-        r"""承运人
+        r"""<p>承运人</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -6508,7 +6504,7 @@ class ElectronicAirTransportDetail(AbstractModel):
 
     @property
     def FlightNumber(self):
-        r"""航班号
+        r"""<p>航班号</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -6520,7 +6516,7 @@ class ElectronicAirTransportDetail(AbstractModel):
 
     @property
     def SeatLevel(self):
-        r"""座位等级
+        r"""<p>座位等级</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -6532,7 +6528,7 @@ class ElectronicAirTransportDetail(AbstractModel):
 
     @property
     def FlightDate(self):
-        r"""承运日期
+        r"""<p>承运日期</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -6544,7 +6540,7 @@ class ElectronicAirTransportDetail(AbstractModel):
 
     @property
     def DepartureTime(self):
-        r"""起飞时间
+        r"""<p>起飞时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -6556,7 +6552,7 @@ class ElectronicAirTransportDetail(AbstractModel):
 
     @property
     def FareBasis(self):
-        r"""客票级别/客票类别
+        r"""<p>客票级别/客票类别</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -7193,78 +7189,92 @@ class ElectronicTrainTicket(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _BuyerName: 购方名称
+        :param _BuyerName: <p>购方名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type BuyerName: str
-        :param _BuyerTaxCode: 购方识别号
+        :param _BuyerTaxCode: <p>购方识别号</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type BuyerTaxCode: str
-        :param _Number: 发票号码
+        :param _Number: <p>发票号码</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Number: str
-        :param _Date: 开票日期
+        :param _Date: <p>开票日期</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Date: str
-        :param _TotalCN: 价税合计（中文大写）
+        :param _TotalCN: <p>价税合计（中文大写）</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TotalCN: str
-        :param _Tax: 税额
+        :param _Tax: <p>税额</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Tax: str
-        :param _ServiceType: 业务类型，0：退票，1:售票
+        :param _ServiceType: <p>业务类型，0：退票，1:售票</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ServiceType: str
-        :param _TimeGetOn: 出发时间
+        :param _TimeGetOn: <p>出发时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TimeGetOn: str
-        :param _TrainNumber: 车次
+        :param _TrainNumber: <p>车次</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TrainNumber: str
-        :param _Code: 发票代码
+        :param _Code: <p>发票代码</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Code: str
-        :param _SeatType: 席别
+        :param _SeatType: <p>席别</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type SeatType: str
-        :param _DateGetOn: 乘车日期
+        :param _DateGetOn: <p>乘车日期</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type DateGetOn: str
-        :param _TrainCabin: 车厢
+        :param _TrainCabin: <p>车厢</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TrainCabin: str
-        :param _StationGetOn: 出发站
+        :param _StationGetOn: <p>出发站</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type StationGetOn: str
-        :param _ElectronicNumber: 电子客票号
+        :param _ElectronicNumber: <p>电子客票号</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ElectronicNumber: str
-        :param _PassengerName: 姓名
+        :param _PassengerName: <p>姓名</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type PassengerName: str
-        :param _PassengerNo: 证件号
+        :param _PassengerNo: <p>证件号</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type PassengerNo: str
-        :param _Amount: 金额
+        :param _Amount: <p>金额</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Amount: str
-        :param _StationGetOff: 到达站
+        :param _StationGetOff: <p>到达站</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type StationGetOff: str
-        :param _TaxRate: 税率
+        :param _TaxRate: <p>税率</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TaxRate: str
-        :param _Seat: 席位
+        :param _Seat: <p>席位</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Seat: str
-        :param _Total: 价税合计
+        :param _Total: <p>价税合计</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Total: str
-        :param _CheckCode: 校验码
+        :param _CheckCode: <p>校验码</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type CheckCode: str
-        :param _StateCode: 发票状态代码，0正常 1 未更新  2作废 3已红冲
+        :param _StateCode: <p>发票状态代码，0正常 1 未更新  2作废 3已红冲</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type StateCode: str
+        :param _Type: <p>发票类型</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Type: str
+        :param _AirConditionerFeature: <p>空调特征</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AirConditionerFeature: str
+        :param _TicketType: <p>票种，不替代 VatInvoice.Type。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TicketType: str
+        :param _OriginalTaxRate: <p>原始税率</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OriginalTaxRate: str
+        :param _FullElectronicNumber: <p>全电发票号码，映射源字段 qdfphm。</p>
+        :type FullElectronicNumber: str
         """
         self._BuyerName = None
         self._BuyerTaxCode = None
@@ -7290,10 +7300,15 @@ class ElectronicTrainTicket(AbstractModel):
         self._Total = None
         self._CheckCode = None
         self._StateCode = None
+        self._Type = None
+        self._AirConditionerFeature = None
+        self._TicketType = None
+        self._OriginalTaxRate = None
+        self._FullElectronicNumber = None
 
     @property
     def BuyerName(self):
-        r"""购方名称
+        r"""<p>购方名称</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -7305,7 +7320,7 @@ class ElectronicTrainTicket(AbstractModel):
 
     @property
     def BuyerTaxCode(self):
-        r"""购方识别号
+        r"""<p>购方识别号</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -7317,7 +7332,7 @@ class ElectronicTrainTicket(AbstractModel):
 
     @property
     def Number(self):
-        r"""发票号码
+        r"""<p>发票号码</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -7329,7 +7344,7 @@ class ElectronicTrainTicket(AbstractModel):
 
     @property
     def Date(self):
-        r"""开票日期
+        r"""<p>开票日期</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -7341,7 +7356,7 @@ class ElectronicTrainTicket(AbstractModel):
 
     @property
     def TotalCN(self):
-        r"""价税合计（中文大写）
+        r"""<p>价税合计（中文大写）</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -7353,7 +7368,7 @@ class ElectronicTrainTicket(AbstractModel):
 
     @property
     def Tax(self):
-        r"""税额
+        r"""<p>税额</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -7365,7 +7380,7 @@ class ElectronicTrainTicket(AbstractModel):
 
     @property
     def ServiceType(self):
-        r"""业务类型，0：退票，1:售票
+        r"""<p>业务类型，0：退票，1:售票</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -7377,7 +7392,7 @@ class ElectronicTrainTicket(AbstractModel):
 
     @property
     def TimeGetOn(self):
-        r"""出发时间
+        r"""<p>出发时间</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -7389,7 +7404,7 @@ class ElectronicTrainTicket(AbstractModel):
 
     @property
     def TrainNumber(self):
-        r"""车次
+        r"""<p>车次</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -7401,7 +7416,7 @@ class ElectronicTrainTicket(AbstractModel):
 
     @property
     def Code(self):
-        r"""发票代码
+        r"""<p>发票代码</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -7413,7 +7428,7 @@ class ElectronicTrainTicket(AbstractModel):
 
     @property
     def SeatType(self):
-        r"""席别
+        r"""<p>席别</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -7425,7 +7440,7 @@ class ElectronicTrainTicket(AbstractModel):
 
     @property
     def DateGetOn(self):
-        r"""乘车日期
+        r"""<p>乘车日期</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -7437,7 +7452,7 @@ class ElectronicTrainTicket(AbstractModel):
 
     @property
     def TrainCabin(self):
-        r"""车厢
+        r"""<p>车厢</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -7449,7 +7464,7 @@ class ElectronicTrainTicket(AbstractModel):
 
     @property
     def StationGetOn(self):
-        r"""出发站
+        r"""<p>出发站</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -7461,7 +7476,7 @@ class ElectronicTrainTicket(AbstractModel):
 
     @property
     def ElectronicNumber(self):
-        r"""电子客票号
+        r"""<p>电子客票号</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -7473,7 +7488,7 @@ class ElectronicTrainTicket(AbstractModel):
 
     @property
     def PassengerName(self):
-        r"""姓名
+        r"""<p>姓名</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -7485,7 +7500,7 @@ class ElectronicTrainTicket(AbstractModel):
 
     @property
     def PassengerNo(self):
-        r"""证件号
+        r"""<p>证件号</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -7497,7 +7512,7 @@ class ElectronicTrainTicket(AbstractModel):
 
     @property
     def Amount(self):
-        r"""金额
+        r"""<p>金额</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -7509,7 +7524,7 @@ class ElectronicTrainTicket(AbstractModel):
 
     @property
     def StationGetOff(self):
-        r"""到达站
+        r"""<p>到达站</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -7521,7 +7536,7 @@ class ElectronicTrainTicket(AbstractModel):
 
     @property
     def TaxRate(self):
-        r"""税率
+        r"""<p>税率</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -7533,7 +7548,7 @@ class ElectronicTrainTicket(AbstractModel):
 
     @property
     def Seat(self):
-        r"""席位
+        r"""<p>席位</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -7545,7 +7560,7 @@ class ElectronicTrainTicket(AbstractModel):
 
     @property
     def Total(self):
-        r"""价税合计
+        r"""<p>价税合计</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -7557,7 +7572,7 @@ class ElectronicTrainTicket(AbstractModel):
 
     @property
     def CheckCode(self):
-        r"""校验码
+        r"""<p>校验码</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -7569,7 +7584,7 @@ class ElectronicTrainTicket(AbstractModel):
 
     @property
     def StateCode(self):
-        r"""发票状态代码，0正常 1 未更新  2作废 3已红冲
+        r"""<p>发票状态代码，0正常 1 未更新  2作废 3已红冲</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -7578,6 +7593,65 @@ class ElectronicTrainTicket(AbstractModel):
     @StateCode.setter
     def StateCode(self, StateCode):
         self._StateCode = StateCode
+
+    @property
+    def Type(self):
+        r"""<p>发票类型</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def AirConditionerFeature(self):
+        r"""<p>空调特征</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._AirConditionerFeature
+
+    @AirConditionerFeature.setter
+    def AirConditionerFeature(self, AirConditionerFeature):
+        self._AirConditionerFeature = AirConditionerFeature
+
+    @property
+    def TicketType(self):
+        r"""<p>票种，不替代 VatInvoice.Type。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TicketType
+
+    @TicketType.setter
+    def TicketType(self, TicketType):
+        self._TicketType = TicketType
+
+    @property
+    def OriginalTaxRate(self):
+        r"""<p>原始税率</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._OriginalTaxRate
+
+    @OriginalTaxRate.setter
+    def OriginalTaxRate(self, OriginalTaxRate):
+        self._OriginalTaxRate = OriginalTaxRate
+
+    @property
+    def FullElectronicNumber(self):
+        r"""<p>全电发票号码，映射源字段 qdfphm。</p>
+        :rtype: str
+        """
+        return self._FullElectronicNumber
+
+    @FullElectronicNumber.setter
+    def FullElectronicNumber(self, FullElectronicNumber):
+        self._FullElectronicNumber = FullElectronicNumber
 
 
     def _deserialize(self, params):
@@ -7605,6 +7679,11 @@ class ElectronicTrainTicket(AbstractModel):
         self._Total = params.get("Total")
         self._CheckCode = params.get("CheckCode")
         self._StateCode = params.get("StateCode")
+        self._Type = params.get("Type")
+        self._AirConditionerFeature = params.get("AirConditionerFeature")
+        self._TicketType = params.get("TicketType")
+        self._OriginalTaxRate = params.get("OriginalTaxRate")
+        self._FullElectronicNumber = params.get("FullElectronicNumber")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -20104,26 +20183,32 @@ class PassInvoiceInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _NumberPlate: 通行费车牌号
+        :param _NumberPlate: <p>通行费车牌号；数电通行费源字段 cph 写入该字段。</p>
         :type NumberPlate: str
-        :param _Type: 通行费类型
+        :param _Type: <p>通行费类型；数电通行费源字段 cllx 写入该字</p>
         :type Type: str
-        :param _PassDateBegin: 通行日期起
+        :param _PassDateBegin: <p>通行日期起</p>
         :type PassDateBegin: str
-        :param _PassDateEnd: 通行日期止
+        :param _PassDateEnd: <p>通行日期止</p>
         :type PassDateEnd: str
-        :param _TaxClassifyCode: 税收分类编码
+        :param _TaxClassifyCode: <p>税收分类编码</p>
         :type TaxClassifyCode: str
+        :param _CarType: <p>通行费车牌号</p>
+        :type CarType: str
+        :param _PlateNumber: <p>通行费车辆类型</p>
+        :type PlateNumber: str
         """
         self._NumberPlate = None
         self._Type = None
         self._PassDateBegin = None
         self._PassDateEnd = None
         self._TaxClassifyCode = None
+        self._CarType = None
+        self._PlateNumber = None
 
     @property
     def NumberPlate(self):
-        r"""通行费车牌号
+        r"""<p>通行费车牌号；数电通行费源字段 cph 写入该字段。</p>
         :rtype: str
         """
         return self._NumberPlate
@@ -20134,7 +20219,7 @@ class PassInvoiceInfo(AbstractModel):
 
     @property
     def Type(self):
-        r"""通行费类型
+        r"""<p>通行费类型；数电通行费源字段 cllx 写入该字</p>
         :rtype: str
         """
         return self._Type
@@ -20145,7 +20230,7 @@ class PassInvoiceInfo(AbstractModel):
 
     @property
     def PassDateBegin(self):
-        r"""通行日期起
+        r"""<p>通行日期起</p>
         :rtype: str
         """
         return self._PassDateBegin
@@ -20156,7 +20241,7 @@ class PassInvoiceInfo(AbstractModel):
 
     @property
     def PassDateEnd(self):
-        r"""通行日期止
+        r"""<p>通行日期止</p>
         :rtype: str
         """
         return self._PassDateEnd
@@ -20167,7 +20252,7 @@ class PassInvoiceInfo(AbstractModel):
 
     @property
     def TaxClassifyCode(self):
-        r"""税收分类编码
+        r"""<p>税收分类编码</p>
         :rtype: str
         """
         return self._TaxClassifyCode
@@ -20176,6 +20261,28 @@ class PassInvoiceInfo(AbstractModel):
     def TaxClassifyCode(self, TaxClassifyCode):
         self._TaxClassifyCode = TaxClassifyCode
 
+    @property
+    def CarType(self):
+        r"""<p>通行费车牌号</p>
+        :rtype: str
+        """
+        return self._CarType
+
+    @CarType.setter
+    def CarType(self, CarType):
+        self._CarType = CarType
+
+    @property
+    def PlateNumber(self):
+        r"""<p>通行费车辆类型</p>
+        :rtype: str
+        """
+        return self._PlateNumber
+
+    @PlateNumber.setter
+    def PlateNumber(self, PlateNumber):
+        self._PlateNumber = PlateNumber
+
 
     def _deserialize(self, params):
         self._NumberPlate = params.get("NumberPlate")
@@ -20183,6 +20290,8 @@ class PassInvoiceInfo(AbstractModel):
         self._PassDateBegin = params.get("PassDateBegin")
         self._PassDateEnd = params.get("PassDateEnd")
         self._TaxClassifyCode = params.get("TaxClassifyCode")
+        self._CarType = params.get("CarType")
+        self._PlateNumber = params.get("PlateNumber")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -25954,6 +26063,95 @@ class Rect(AbstractModel):
         self._Y = params.get("Y")
         self._Width = params.get("Width")
         self._Height = params.get("Height")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RedLetterInvoiceItem(AbstractModel):
+    r"""红字发票信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Code: <p>红字发票代码</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Code: str
+        :param _Number: <p>红字发票号码</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Number: str
+        :param _Date: <p>红字开票日期</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Date: str
+        :param _State: <p>红字发票状态</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type State: str
+        """
+        self._Code = None
+        self._Number = None
+        self._Date = None
+        self._State = None
+
+    @property
+    def Code(self):
+        r"""<p>红字发票代码</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Code
+
+    @Code.setter
+    def Code(self, Code):
+        self._Code = Code
+
+    @property
+    def Number(self):
+        r"""<p>红字发票号码</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Number
+
+    @Number.setter
+    def Number(self, Number):
+        self._Number = Number
+
+    @property
+    def Date(self):
+        r"""<p>红字开票日期</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Date
+
+    @Date.setter
+    def Date(self, Date):
+        self._Date = Date
+
+    @property
+    def State(self):
+        r"""<p>红字发票状态</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._State
+
+    @State.setter
+    def State(self, State):
+        self._State = State
+
+
+    def _deserialize(self, params):
+        self._Code = params.get("Code")
+        self._Number = params.get("Number")
+        self._Date = params.get("Date")
+        self._State = params.get("State")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -34839,54 +35037,85 @@ class UsedVehicleInvoiceInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaxBureau: 所属税局
+        :param _TaxBureau: <p>所属税局</p>
         :type TaxBureau: str
-        :param _Buyer: 买方单位/个人
+        :param _Buyer: <p>买方单位/个人</p>
         :type Buyer: str
-        :param _BuyerNo: 买方单位代码/身份证号码
+        :param _BuyerNo: <p>买方单位代码/身份证号码</p>
         :type BuyerNo: str
-        :param _BuyerAddress: 买方单位/个人地址
+        :param _BuyerAddress: <p>买方单位/个人地址</p>
         :type BuyerAddress: str
-        :param _BuyerTel: 买方单位电话
+        :param _BuyerTel: <p>买方单位电话</p>
         :type BuyerTel: str
-        :param _Seller: 卖方单位/个人
+        :param _Seller: <p>卖方单位/个人</p>
         :type Seller: str
-        :param _SellerNo: 卖方单位代码/身份证号码
+        :param _SellerNo: <p>卖方单位代码/身份证号码</p>
         :type SellerNo: str
-        :param _SellerAddress: 卖方单位/个人地址
+        :param _SellerAddress: <p>卖方单位/个人地址</p>
         :type SellerAddress: str
-        :param _SellerTel: 卖方单位电话
+        :param _SellerTel: <p>卖方单位电话</p>
         :type SellerTel: str
-        :param _VehicleLicenseNo: 车牌照号
+        :param _VehicleLicenseNo: <p>车牌照号</p>
         :type VehicleLicenseNo: str
-        :param _RegisterNo: 登记证号
+        :param _RegisterNo: <p>登记证号</p>
         :type RegisterNo: str
-        :param _VehicleIdentifyNo: 车架号/车辆识别代码
+        :param _VehicleIdentifyNo: <p>车架号/车辆识别代码</p>
         :type VehicleIdentifyNo: str
-        :param _ManagementOffice: 转入地车辆管理所名称
+        :param _ManagementOffice: <p>转入地车辆管理所名称</p>
         :type ManagementOffice: str
-        :param _VehicleTotalPrice: 车价合计
+        :param _VehicleTotalPrice: <p>车价合计</p>
         :type VehicleTotalPrice: str
-        :param _Auctioneer: 经营、拍卖单位
+        :param _Auctioneer: <p>经营、拍卖单位</p>
         :type Auctioneer: str
-        :param _AuctioneerAddress: 经营、拍卖单位地址
+        :param _AuctioneerAddress: <p>经营、拍卖单位地址</p>
         :type AuctioneerAddress: str
-        :param _AuctioneerTaxpayerNum: 经营、拍卖单位纳税人识别号
+        :param _AuctioneerTaxpayerNum: <p>经营、拍卖单位纳税人识别号</p>
         :type AuctioneerTaxpayerNum: str
-        :param _AuctioneerBankAccount: 经营、拍卖单位开户银行、账号
+        :param _AuctioneerBankAccount: <p>经营、拍卖单位开户银行、账号</p>
         :type AuctioneerBankAccount: str
-        :param _AuctioneerTel: 经营、拍卖单位电话
+        :param _AuctioneerTel: <p>经营、拍卖单位电话</p>
         :type AuctioneerTel: str
-        :param _Market: 二手车市场
+        :param _Market: <p>二手车市场</p>
         :type Market: str
-        :param _MarketTaxpayerNum: 二手车市场纳税人识别号
+        :param _MarketTaxpayerNum: <p>二手车市场纳税人识别号</p>
         :type MarketTaxpayerNum: str
-        :param _MarketAddress: 二手车市场地址
+        :param _MarketAddress: <p>二手车市场地址</p>
         :type MarketAddress: str
-        :param _MarketBankAccount: 二手车市场开户银行账号
+        :param _MarketBankAccount: <p>二手车市场开户银行账号</p>
         :type MarketBankAccount: str
-        :param _MarketTel: 二手车市场电话
+        :param _MarketTel: <p>二手车市场电话</p>
         :type MarketTel: str
+        :param _VehicleTotalPriceCN: <p>车价合计中文大写</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VehicleTotalPriceCN: str
+        :param _InvoiceRiskLevel: <p>发票风险等级</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type InvoiceRiskLevel: str
+        :param _CarType: <p>车辆类型</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CarType: str
+        :param _PlateModel: <p>厂牌型号</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PlateModel: str
+        :param _AbandonerName: <p>作废人</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AbandonerName: str
+        :param _AbandonDate: <p>作废日期</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AbandonDate: str
+        :param _IssuerType: <p>开票方类型：1 经营单位，2 拍卖单位，03 二手车市场。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IssuerType: str
+        :param _IssuerTaxCode: <p>开票方纳税人识别号</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IssuerTaxCode: str
+        :param _CustomCode: <p>自行编码</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CustomCode: str
+        :param _TaxClassifyCode: <p>商品编码</p>
+        :type TaxClassifyCode: str
+        :param _ZeroTaxRateMark: <p>零税率标识：空：非零税率，0：出口零税，1：免税，2：不征税，3 普通零税率</p>
+        :type ZeroTaxRateMark: str
         """
         self._TaxBureau = None
         self._Buyer = None
@@ -34912,10 +35141,21 @@ class UsedVehicleInvoiceInfo(AbstractModel):
         self._MarketAddress = None
         self._MarketBankAccount = None
         self._MarketTel = None
+        self._VehicleTotalPriceCN = None
+        self._InvoiceRiskLevel = None
+        self._CarType = None
+        self._PlateModel = None
+        self._AbandonerName = None
+        self._AbandonDate = None
+        self._IssuerType = None
+        self._IssuerTaxCode = None
+        self._CustomCode = None
+        self._TaxClassifyCode = None
+        self._ZeroTaxRateMark = None
 
     @property
     def TaxBureau(self):
-        r"""所属税局
+        r"""<p>所属税局</p>
         :rtype: str
         """
         return self._TaxBureau
@@ -34926,7 +35166,7 @@ class UsedVehicleInvoiceInfo(AbstractModel):
 
     @property
     def Buyer(self):
-        r"""买方单位/个人
+        r"""<p>买方单位/个人</p>
         :rtype: str
         """
         return self._Buyer
@@ -34937,7 +35177,7 @@ class UsedVehicleInvoiceInfo(AbstractModel):
 
     @property
     def BuyerNo(self):
-        r"""买方单位代码/身份证号码
+        r"""<p>买方单位代码/身份证号码</p>
         :rtype: str
         """
         return self._BuyerNo
@@ -34948,7 +35188,7 @@ class UsedVehicleInvoiceInfo(AbstractModel):
 
     @property
     def BuyerAddress(self):
-        r"""买方单位/个人地址
+        r"""<p>买方单位/个人地址</p>
         :rtype: str
         """
         return self._BuyerAddress
@@ -34959,7 +35199,7 @@ class UsedVehicleInvoiceInfo(AbstractModel):
 
     @property
     def BuyerTel(self):
-        r"""买方单位电话
+        r"""<p>买方单位电话</p>
         :rtype: str
         """
         return self._BuyerTel
@@ -34970,7 +35210,7 @@ class UsedVehicleInvoiceInfo(AbstractModel):
 
     @property
     def Seller(self):
-        r"""卖方单位/个人
+        r"""<p>卖方单位/个人</p>
         :rtype: str
         """
         return self._Seller
@@ -34981,7 +35221,7 @@ class UsedVehicleInvoiceInfo(AbstractModel):
 
     @property
     def SellerNo(self):
-        r"""卖方单位代码/身份证号码
+        r"""<p>卖方单位代码/身份证号码</p>
         :rtype: str
         """
         return self._SellerNo
@@ -34992,7 +35232,7 @@ class UsedVehicleInvoiceInfo(AbstractModel):
 
     @property
     def SellerAddress(self):
-        r"""卖方单位/个人地址
+        r"""<p>卖方单位/个人地址</p>
         :rtype: str
         """
         return self._SellerAddress
@@ -35003,7 +35243,7 @@ class UsedVehicleInvoiceInfo(AbstractModel):
 
     @property
     def SellerTel(self):
-        r"""卖方单位电话
+        r"""<p>卖方单位电话</p>
         :rtype: str
         """
         return self._SellerTel
@@ -35014,7 +35254,7 @@ class UsedVehicleInvoiceInfo(AbstractModel):
 
     @property
     def VehicleLicenseNo(self):
-        r"""车牌照号
+        r"""<p>车牌照号</p>
         :rtype: str
         """
         return self._VehicleLicenseNo
@@ -35025,7 +35265,7 @@ class UsedVehicleInvoiceInfo(AbstractModel):
 
     @property
     def RegisterNo(self):
-        r"""登记证号
+        r"""<p>登记证号</p>
         :rtype: str
         """
         return self._RegisterNo
@@ -35036,7 +35276,7 @@ class UsedVehicleInvoiceInfo(AbstractModel):
 
     @property
     def VehicleIdentifyNo(self):
-        r"""车架号/车辆识别代码
+        r"""<p>车架号/车辆识别代码</p>
         :rtype: str
         """
         return self._VehicleIdentifyNo
@@ -35047,7 +35287,7 @@ class UsedVehicleInvoiceInfo(AbstractModel):
 
     @property
     def ManagementOffice(self):
-        r"""转入地车辆管理所名称
+        r"""<p>转入地车辆管理所名称</p>
         :rtype: str
         """
         return self._ManagementOffice
@@ -35058,7 +35298,7 @@ class UsedVehicleInvoiceInfo(AbstractModel):
 
     @property
     def VehicleTotalPrice(self):
-        r"""车价合计
+        r"""<p>车价合计</p>
         :rtype: str
         """
         return self._VehicleTotalPrice
@@ -35069,7 +35309,7 @@ class UsedVehicleInvoiceInfo(AbstractModel):
 
     @property
     def Auctioneer(self):
-        r"""经营、拍卖单位
+        r"""<p>经营、拍卖单位</p>
         :rtype: str
         """
         return self._Auctioneer
@@ -35080,7 +35320,7 @@ class UsedVehicleInvoiceInfo(AbstractModel):
 
     @property
     def AuctioneerAddress(self):
-        r"""经营、拍卖单位地址
+        r"""<p>经营、拍卖单位地址</p>
         :rtype: str
         """
         return self._AuctioneerAddress
@@ -35091,7 +35331,7 @@ class UsedVehicleInvoiceInfo(AbstractModel):
 
     @property
     def AuctioneerTaxpayerNum(self):
-        r"""经营、拍卖单位纳税人识别号
+        r"""<p>经营、拍卖单位纳税人识别号</p>
         :rtype: str
         """
         return self._AuctioneerTaxpayerNum
@@ -35102,7 +35342,7 @@ class UsedVehicleInvoiceInfo(AbstractModel):
 
     @property
     def AuctioneerBankAccount(self):
-        r"""经营、拍卖单位开户银行、账号
+        r"""<p>经营、拍卖单位开户银行、账号</p>
         :rtype: str
         """
         return self._AuctioneerBankAccount
@@ -35113,7 +35353,7 @@ class UsedVehicleInvoiceInfo(AbstractModel):
 
     @property
     def AuctioneerTel(self):
-        r"""经营、拍卖单位电话
+        r"""<p>经营、拍卖单位电话</p>
         :rtype: str
         """
         return self._AuctioneerTel
@@ -35124,7 +35364,7 @@ class UsedVehicleInvoiceInfo(AbstractModel):
 
     @property
     def Market(self):
-        r"""二手车市场
+        r"""<p>二手车市场</p>
         :rtype: str
         """
         return self._Market
@@ -35135,7 +35375,7 @@ class UsedVehicleInvoiceInfo(AbstractModel):
 
     @property
     def MarketTaxpayerNum(self):
-        r"""二手车市场纳税人识别号
+        r"""<p>二手车市场纳税人识别号</p>
         :rtype: str
         """
         return self._MarketTaxpayerNum
@@ -35146,7 +35386,7 @@ class UsedVehicleInvoiceInfo(AbstractModel):
 
     @property
     def MarketAddress(self):
-        r"""二手车市场地址
+        r"""<p>二手车市场地址</p>
         :rtype: str
         """
         return self._MarketAddress
@@ -35157,7 +35397,7 @@ class UsedVehicleInvoiceInfo(AbstractModel):
 
     @property
     def MarketBankAccount(self):
-        r"""二手车市场开户银行账号
+        r"""<p>二手车市场开户银行账号</p>
         :rtype: str
         """
         return self._MarketBankAccount
@@ -35168,7 +35408,7 @@ class UsedVehicleInvoiceInfo(AbstractModel):
 
     @property
     def MarketTel(self):
-        r"""二手车市场电话
+        r"""<p>二手车市场电话</p>
         :rtype: str
         """
         return self._MarketTel
@@ -35176,6 +35416,136 @@ class UsedVehicleInvoiceInfo(AbstractModel):
     @MarketTel.setter
     def MarketTel(self, MarketTel):
         self._MarketTel = MarketTel
+
+    @property
+    def VehicleTotalPriceCN(self):
+        r"""<p>车价合计中文大写</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._VehicleTotalPriceCN
+
+    @VehicleTotalPriceCN.setter
+    def VehicleTotalPriceCN(self, VehicleTotalPriceCN):
+        self._VehicleTotalPriceCN = VehicleTotalPriceCN
+
+    @property
+    def InvoiceRiskLevel(self):
+        r"""<p>发票风险等级</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._InvoiceRiskLevel
+
+    @InvoiceRiskLevel.setter
+    def InvoiceRiskLevel(self, InvoiceRiskLevel):
+        self._InvoiceRiskLevel = InvoiceRiskLevel
+
+    @property
+    def CarType(self):
+        r"""<p>车辆类型</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CarType
+
+    @CarType.setter
+    def CarType(self, CarType):
+        self._CarType = CarType
+
+    @property
+    def PlateModel(self):
+        r"""<p>厂牌型号</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._PlateModel
+
+    @PlateModel.setter
+    def PlateModel(self, PlateModel):
+        self._PlateModel = PlateModel
+
+    @property
+    def AbandonerName(self):
+        r"""<p>作废人</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._AbandonerName
+
+    @AbandonerName.setter
+    def AbandonerName(self, AbandonerName):
+        self._AbandonerName = AbandonerName
+
+    @property
+    def AbandonDate(self):
+        r"""<p>作废日期</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._AbandonDate
+
+    @AbandonDate.setter
+    def AbandonDate(self, AbandonDate):
+        self._AbandonDate = AbandonDate
+
+    @property
+    def IssuerType(self):
+        r"""<p>开票方类型：1 经营单位，2 拍卖单位，03 二手车市场。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._IssuerType
+
+    @IssuerType.setter
+    def IssuerType(self, IssuerType):
+        self._IssuerType = IssuerType
+
+    @property
+    def IssuerTaxCode(self):
+        r"""<p>开票方纳税人识别号</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._IssuerTaxCode
+
+    @IssuerTaxCode.setter
+    def IssuerTaxCode(self, IssuerTaxCode):
+        self._IssuerTaxCode = IssuerTaxCode
+
+    @property
+    def CustomCode(self):
+        r"""<p>自行编码</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CustomCode
+
+    @CustomCode.setter
+    def CustomCode(self, CustomCode):
+        self._CustomCode = CustomCode
+
+    @property
+    def TaxClassifyCode(self):
+        r"""<p>商品编码</p>
+        :rtype: str
+        """
+        return self._TaxClassifyCode
+
+    @TaxClassifyCode.setter
+    def TaxClassifyCode(self, TaxClassifyCode):
+        self._TaxClassifyCode = TaxClassifyCode
+
+    @property
+    def ZeroTaxRateMark(self):
+        r"""<p>零税率标识：空：非零税率，0：出口零税，1：免税，2：不征税，3 普通零税率</p>
+        :rtype: str
+        """
+        return self._ZeroTaxRateMark
+
+    @ZeroTaxRateMark.setter
+    def ZeroTaxRateMark(self, ZeroTaxRateMark):
+        self._ZeroTaxRateMark = ZeroTaxRateMark
 
 
     def _deserialize(self, params):
@@ -35203,6 +35573,17 @@ class UsedVehicleInvoiceInfo(AbstractModel):
         self._MarketAddress = params.get("MarketAddress")
         self._MarketBankAccount = params.get("MarketBankAccount")
         self._MarketTel = params.get("MarketTel")
+        self._VehicleTotalPriceCN = params.get("VehicleTotalPriceCN")
+        self._InvoiceRiskLevel = params.get("InvoiceRiskLevel")
+        self._CarType = params.get("CarType")
+        self._PlateModel = params.get("PlateModel")
+        self._AbandonerName = params.get("AbandonerName")
+        self._AbandonDate = params.get("AbandonDate")
+        self._IssuerType = params.get("IssuerType")
+        self._IssuerTaxCode = params.get("IssuerTaxCode")
+        self._CustomCode = params.get("CustomCode")
+        self._TaxClassifyCode = params.get("TaxClassifyCode")
+        self._ZeroTaxRateMark = params.get("ZeroTaxRateMark")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -36044,105 +36425,111 @@ class VatInvoice(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Code: 发票代码
+        :param _Code: <p>发票代码</p>
         :type Code: str
-        :param _Number: 发票号码
+        :param _Number: <p>发票号码</p>
         :type Number: str
-        :param _Date: 开票日期
+        :param _Date: <p>开票日期</p>
         :type Date: str
-        :param _BuyerName: 购方抬头
-通用机打发票类型时不返回
+        :param _BuyerName: <p>购方抬头<br>通用机打发票类型时不返回</p>
         :type BuyerName: str
-        :param _BuyerTaxCode: 购方税号
-通用机打发票类型时不返回
+        :param _BuyerTaxCode: <p>购方税号<br>通用机打发票类型时不返回</p>
         :type BuyerTaxCode: str
-        :param _BuyerAddressPhone: 购方地址电话
-通用机打发票类型做不返回
+        :param _BuyerAddressPhone: <p>购方地址电话<br>通用机打发票类型做不返回</p>
         :type BuyerAddressPhone: str
-        :param _BuyerBankAccount: 购方银行账号
-通用机打发票类型时不返回
+        :param _BuyerBankAccount: <p>购方银行账号<br>通用机打发票类型时不返回</p>
         :type BuyerBankAccount: str
-        :param _SellerName: 销方名称
+        :param _SellerName: <p>销方名称</p>
         :type SellerName: str
-        :param _SellerTaxCode: 销方税号
+        :param _SellerTaxCode: <p>销方税号</p>
         :type SellerTaxCode: str
-        :param _SellerAddressPhone: 销方地址电话
+        :param _SellerAddressPhone: <p>销方地址电话</p>
         :type SellerAddressPhone: str
-        :param _SellerBankAccount: 销方银行账号
+        :param _SellerBankAccount: <p>销方银行账号</p>
         :type SellerBankAccount: str
-        :param _Remark: 备注
+        :param _Remark: <p>备注</p>
         :type Remark: str
-        :param _MachineNo: 机器编码
+        :param _MachineNo: <p>机器编码</p>
         :type MachineNo: str
-        :param _Type: 票种类型
-01：增值税专用发票，
-02：货运运输业增值税专用发票，
-03：机动车销售统一发票，
-04：增值税普通发票，
-08：增值税电子专用发票（含全电，全电仅新版接口支持），
-09：全电发票，
-0901：全电纸质发票(增值税专用发票)，
-0903：全电纸质(机动车销售统一发票)，
-0904：全电纸质发票(增值税普通发票)，
-0910：电子发票(普通发票)，
-0915：全电纸质(二手车销售统一发票)，
-0920：电子发票(增值税专用发票)，
-0930：电子发票(机动车销售统一发票)，
-0940：电子发票(二手车销售统一发票)，
-10：增值税电子普通发票（含全电，全电仅新版接口支持），
-11：增值税普通发票（卷式），
-14：增值税电子（通行费）发票，
-15：二手车销售统一发票，
-32：深圳区块链发票，
-61：电子发票（航空运输电子客票行程单），
-8208：电子发票(通行费发票)，
-83：电子发票(铁路电子客票)，
-100：区块链发票，
-101：财政票据，
-102：通用电子发票，
-103：车辆通行费
-
-
-
-
+        :param _Type: <p>票种类型<br>01：增值税专用发票，<br>02：货运运输业增值税专用发票，<br>03：机动车销售统一发票，<br>04：增值税普通发票，<br>08：增值税电子专用发票（含全电，全电仅新版接口支持），<br>09：全电发票，<br>0901：全电纸质发票(增值税专用发票)，<br>0903：全电纸质(机动车销售统一发票)，<br>0904：全电纸质发票(增值税普通发票)，<br>0910：电子发票(普通发票)，<br>0915：全电纸质(二手车销售统一发票)，<br>0920：电子发票(增值税专用发票)，<br>0930：电子发票(机动车销售统一发票)，<br>0940：电子发票(二手车销售统一发票)，<br>10：增值税电子普通发票（含全电，全电仅新版接口支持），<br>11：增值税普通发票（卷式），<br>14：增值税电子（通行费）发票，<br>15：二手车销售统一发票，<br>32：深圳区块链发票，<br>61：电子发票（航空运输电子客票行程单），<br>8208：电子发票(通行费发票)，<br>83：电子发票(铁路电子客票)，<br>100：区块链发票，<br>101：财政票据，<br>102：通用电子发票，<br>103：车辆通行费</p>
         :type Type: str
-        :param _ElectronicType: 具体的全电发票类型：01: 全电专用发票；02：全电普通发票；03：全电火车票；04：全电机票行程单
+        :param _ElectronicType: <p>具体的全电发票类型：01: 全电专用发票；02：全电普通发票；03：全电火车票；04：全电机票行程单</p>
         :type ElectronicType: str
-        :param _CheckCode: 检验码
+        :param _CheckCode: <p>检验码</p>
         :type CheckCode: str
-        :param _IsAbandoned: 是否作废（红冲）是否作废（红冲）
-Y：已作废，N：未作废，H：红冲，HP：部分红冲，HF：全额红冲
+        :param _IsAbandoned: <p>是否作废（红冲）是否作废（红冲）<br>Y：已作废，N：未作废，H：红冲，HP：部分红冲，HF：全额红冲</p>
         :type IsAbandoned: str
-        :param _HasSellerList: 是否有销货清单 
-Y: 有清单 N：无清单 
-卷票无
+        :param _HasSellerList: <p>是否有销货清单<br>Y: 有清单 N：无清单<br>卷票无</p>
         :type HasSellerList: str
-        :param _SellerListTitle: 销货清单标题
+        :param _SellerListTitle: <p>销货清单标题</p>
         :type SellerListTitle: str
-        :param _SellerListTax: 销货清单税额
+        :param _SellerListTax: <p>销货清单税额</p>
         :type SellerListTax: str
-        :param _AmountWithoutTax: 不含税金额
+        :param _AmountWithoutTax: <p>不含税金额</p>
         :type AmountWithoutTax: str
-        :param _TaxAmount: 税额
+        :param _TaxAmount: <p>税额</p>
         :type TaxAmount: str
-        :param _AmountWithTax: 含税金额
+        :param _AmountWithTax: <p>含税金额</p>
         :type AmountWithTax: str
-        :param _Items: 项目明细
+        :param _Items: <p>项目明细</p>
         :type Items: list of VatInvoiceItem
-        :param _TaxBureau: 所属税局
+        :param _TaxBureau: <p>所属税局</p>
         :type TaxBureau: str
-        :param _TrafficFreeFlag: 通行费标志:Y、是;N、否
+        :param _TrafficFreeFlag: <p>通行费标志:Y、是;N、否</p>
         :type TrafficFreeFlag: str
-        :param _RedLetterInvoiceMark: 是否为红票
+        :param _RedLetterInvoiceMark: <p>是否为红票</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type RedLetterInvoiceMark: bool
-        :param _IssuingTypeMark: 开具类型标识（0: 委托代开，1：自开，2：代开，3：代办退税
+        :param _IssuingTypeMark: <p>开具类型标识（0: 委托代开，1：自开，2：代开，3：代办退税</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type IssuingTypeMark: int
-        :param _SellerAgentName: 代开销售方名称
+        :param _SellerAgentName: <p>代开销售方名称</p>
         :type SellerAgentName: str
-        :param _SellerAgentTaxID: 代开销售方税号
+        :param _SellerAgentTaxID: <p>代开销售方税号</p>
         :type SellerAgentTaxID: str
+        :param _RegionCode: <p>地区代码</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RegionCode: str
+        :param _ReviewerName: <p>复核人</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ReviewerName: str
+        :param _IssuerName: <p>开票人</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type IssuerName: str
+        :param _PayeeName: <p>收款人</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PayeeName: str
+        :param _MachineCode: <p>开票机号</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type MachineCode: str
+        :param _TaxControlCode: <p>税控码/密码区</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaxControlCode: str
+        :param _AmountWithTaxCN: <p>价税合计（中文大写）</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type AmountWithTaxCN: str
+        :param _TaxRate: <p>税率</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaxRate: str
+        :param _SpecialTicketCode: <p>特殊票种代码</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SpecialTicketCode: str
+        :param _RedLetterInvoices: <p>红字发票信息列表</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type RedLetterInvoices: list of RedLetterInvoiceItem
+        :param _FullElectronicType: <p>全电类型</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FullElectronicType: str
+        :param _OfdUrl: <p>OFD版式文件下载链接</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OfdUrl: str
+        :param _PdfUrl: <p>PDF版式文件下载链接</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PdfUrl: str
+        :param _OriginalCode: <p>原发票代码，对应蓝字发票代码。</p>
+        :type OriginalCode: str
+        :param _OriginalNumber: <p>原发票号码，对应蓝字发票号码。</p>
+        :type OriginalNumber: str
         """
         self._Code = None
         self._Number = None
@@ -36174,10 +36561,25 @@ Y: 有清单 N：无清单
         self._IssuingTypeMark = None
         self._SellerAgentName = None
         self._SellerAgentTaxID = None
+        self._RegionCode = None
+        self._ReviewerName = None
+        self._IssuerName = None
+        self._PayeeName = None
+        self._MachineCode = None
+        self._TaxControlCode = None
+        self._AmountWithTaxCN = None
+        self._TaxRate = None
+        self._SpecialTicketCode = None
+        self._RedLetterInvoices = None
+        self._FullElectronicType = None
+        self._OfdUrl = None
+        self._PdfUrl = None
+        self._OriginalCode = None
+        self._OriginalNumber = None
 
     @property
     def Code(self):
-        r"""发票代码
+        r"""<p>发票代码</p>
         :rtype: str
         """
         return self._Code
@@ -36188,7 +36590,7 @@ Y: 有清单 N：无清单
 
     @property
     def Number(self):
-        r"""发票号码
+        r"""<p>发票号码</p>
         :rtype: str
         """
         return self._Number
@@ -36199,7 +36601,7 @@ Y: 有清单 N：无清单
 
     @property
     def Date(self):
-        r"""开票日期
+        r"""<p>开票日期</p>
         :rtype: str
         """
         return self._Date
@@ -36210,8 +36612,7 @@ Y: 有清单 N：无清单
 
     @property
     def BuyerName(self):
-        r"""购方抬头
-通用机打发票类型时不返回
+        r"""<p>购方抬头<br>通用机打发票类型时不返回</p>
         :rtype: str
         """
         return self._BuyerName
@@ -36222,8 +36623,7 @@ Y: 有清单 N：无清单
 
     @property
     def BuyerTaxCode(self):
-        r"""购方税号
-通用机打发票类型时不返回
+        r"""<p>购方税号<br>通用机打发票类型时不返回</p>
         :rtype: str
         """
         return self._BuyerTaxCode
@@ -36234,8 +36634,7 @@ Y: 有清单 N：无清单
 
     @property
     def BuyerAddressPhone(self):
-        r"""购方地址电话
-通用机打发票类型做不返回
+        r"""<p>购方地址电话<br>通用机打发票类型做不返回</p>
         :rtype: str
         """
         return self._BuyerAddressPhone
@@ -36246,8 +36645,7 @@ Y: 有清单 N：无清单
 
     @property
     def BuyerBankAccount(self):
-        r"""购方银行账号
-通用机打发票类型时不返回
+        r"""<p>购方银行账号<br>通用机打发票类型时不返回</p>
         :rtype: str
         """
         return self._BuyerBankAccount
@@ -36258,7 +36656,7 @@ Y: 有清单 N：无清单
 
     @property
     def SellerName(self):
-        r"""销方名称
+        r"""<p>销方名称</p>
         :rtype: str
         """
         return self._SellerName
@@ -36269,7 +36667,7 @@ Y: 有清单 N：无清单
 
     @property
     def SellerTaxCode(self):
-        r"""销方税号
+        r"""<p>销方税号</p>
         :rtype: str
         """
         return self._SellerTaxCode
@@ -36280,7 +36678,7 @@ Y: 有清单 N：无清单
 
     @property
     def SellerAddressPhone(self):
-        r"""销方地址电话
+        r"""<p>销方地址电话</p>
         :rtype: str
         """
         return self._SellerAddressPhone
@@ -36291,7 +36689,7 @@ Y: 有清单 N：无清单
 
     @property
     def SellerBankAccount(self):
-        r"""销方银行账号
+        r"""<p>销方银行账号</p>
         :rtype: str
         """
         return self._SellerBankAccount
@@ -36302,7 +36700,7 @@ Y: 有清单 N：无清单
 
     @property
     def Remark(self):
-        r"""备注
+        r"""<p>备注</p>
         :rtype: str
         """
         return self._Remark
@@ -36313,7 +36711,7 @@ Y: 有清单 N：无清单
 
     @property
     def MachineNo(self):
-        r"""机器编码
+        r"""<p>机器编码</p>
         :rtype: str
         """
         return self._MachineNo
@@ -36324,37 +36722,7 @@ Y: 有清单 N：无清单
 
     @property
     def Type(self):
-        r"""票种类型
-01：增值税专用发票，
-02：货运运输业增值税专用发票，
-03：机动车销售统一发票，
-04：增值税普通发票，
-08：增值税电子专用发票（含全电，全电仅新版接口支持），
-09：全电发票，
-0901：全电纸质发票(增值税专用发票)，
-0903：全电纸质(机动车销售统一发票)，
-0904：全电纸质发票(增值税普通发票)，
-0910：电子发票(普通发票)，
-0915：全电纸质(二手车销售统一发票)，
-0920：电子发票(增值税专用发票)，
-0930：电子发票(机动车销售统一发票)，
-0940：电子发票(二手车销售统一发票)，
-10：增值税电子普通发票（含全电，全电仅新版接口支持），
-11：增值税普通发票（卷式），
-14：增值税电子（通行费）发票，
-15：二手车销售统一发票，
-32：深圳区块链发票，
-61：电子发票（航空运输电子客票行程单），
-8208：电子发票(通行费发票)，
-83：电子发票(铁路电子客票)，
-100：区块链发票，
-101：财政票据，
-102：通用电子发票，
-103：车辆通行费
-
-
-
-
+        r"""<p>票种类型<br>01：增值税专用发票，<br>02：货运运输业增值税专用发票，<br>03：机动车销售统一发票，<br>04：增值税普通发票，<br>08：增值税电子专用发票（含全电，全电仅新版接口支持），<br>09：全电发票，<br>0901：全电纸质发票(增值税专用发票)，<br>0903：全电纸质(机动车销售统一发票)，<br>0904：全电纸质发票(增值税普通发票)，<br>0910：电子发票(普通发票)，<br>0915：全电纸质(二手车销售统一发票)，<br>0920：电子发票(增值税专用发票)，<br>0930：电子发票(机动车销售统一发票)，<br>0940：电子发票(二手车销售统一发票)，<br>10：增值税电子普通发票（含全电，全电仅新版接口支持），<br>11：增值税普通发票（卷式），<br>14：增值税电子（通行费）发票，<br>15：二手车销售统一发票，<br>32：深圳区块链发票，<br>61：电子发票（航空运输电子客票行程单），<br>8208：电子发票(通行费发票)，<br>83：电子发票(铁路电子客票)，<br>100：区块链发票，<br>101：财政票据，<br>102：通用电子发票，<br>103：车辆通行费</p>
         :rtype: str
         """
         return self._Type
@@ -36365,7 +36733,7 @@ Y: 有清单 N：无清单
 
     @property
     def ElectronicType(self):
-        r"""具体的全电发票类型：01: 全电专用发票；02：全电普通发票；03：全电火车票；04：全电机票行程单
+        r"""<p>具体的全电发票类型：01: 全电专用发票；02：全电普通发票；03：全电火车票；04：全电机票行程单</p>
         :rtype: str
         """
         return self._ElectronicType
@@ -36376,7 +36744,7 @@ Y: 有清单 N：无清单
 
     @property
     def CheckCode(self):
-        r"""检验码
+        r"""<p>检验码</p>
         :rtype: str
         """
         return self._CheckCode
@@ -36387,8 +36755,7 @@ Y: 有清单 N：无清单
 
     @property
     def IsAbandoned(self):
-        r"""是否作废（红冲）是否作废（红冲）
-Y：已作废，N：未作废，H：红冲，HP：部分红冲，HF：全额红冲
+        r"""<p>是否作废（红冲）是否作废（红冲）<br>Y：已作废，N：未作废，H：红冲，HP：部分红冲，HF：全额红冲</p>
         :rtype: str
         """
         return self._IsAbandoned
@@ -36399,9 +36766,7 @@ Y：已作废，N：未作废，H：红冲，HP：部分红冲，HF：全额红�
 
     @property
     def HasSellerList(self):
-        r"""是否有销货清单 
-Y: 有清单 N：无清单 
-卷票无
+        r"""<p>是否有销货清单<br>Y: 有清单 N：无清单<br>卷票无</p>
         :rtype: str
         """
         return self._HasSellerList
@@ -36412,7 +36777,7 @@ Y: 有清单 N：无清单
 
     @property
     def SellerListTitle(self):
-        r"""销货清单标题
+        r"""<p>销货清单标题</p>
         :rtype: str
         """
         return self._SellerListTitle
@@ -36423,7 +36788,7 @@ Y: 有清单 N：无清单
 
     @property
     def SellerListTax(self):
-        r"""销货清单税额
+        r"""<p>销货清单税额</p>
         :rtype: str
         """
         return self._SellerListTax
@@ -36434,7 +36799,7 @@ Y: 有清单 N：无清单
 
     @property
     def AmountWithoutTax(self):
-        r"""不含税金额
+        r"""<p>不含税金额</p>
         :rtype: str
         """
         return self._AmountWithoutTax
@@ -36445,7 +36810,7 @@ Y: 有清单 N：无清单
 
     @property
     def TaxAmount(self):
-        r"""税额
+        r"""<p>税额</p>
         :rtype: str
         """
         return self._TaxAmount
@@ -36456,7 +36821,7 @@ Y: 有清单 N：无清单
 
     @property
     def AmountWithTax(self):
-        r"""含税金额
+        r"""<p>含税金额</p>
         :rtype: str
         """
         return self._AmountWithTax
@@ -36467,7 +36832,7 @@ Y: 有清单 N：无清单
 
     @property
     def Items(self):
-        r"""项目明细
+        r"""<p>项目明细</p>
         :rtype: list of VatInvoiceItem
         """
         return self._Items
@@ -36478,7 +36843,7 @@ Y: 有清单 N：无清单
 
     @property
     def TaxBureau(self):
-        r"""所属税局
+        r"""<p>所属税局</p>
         :rtype: str
         """
         return self._TaxBureau
@@ -36489,7 +36854,7 @@ Y: 有清单 N：无清单
 
     @property
     def TrafficFreeFlag(self):
-        r"""通行费标志:Y、是;N、否
+        r"""<p>通行费标志:Y、是;N、否</p>
         :rtype: str
         """
         return self._TrafficFreeFlag
@@ -36500,7 +36865,7 @@ Y: 有清单 N：无清单
 
     @property
     def RedLetterInvoiceMark(self):
-        r"""是否为红票
+        r"""<p>是否为红票</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
@@ -36512,7 +36877,7 @@ Y: 有清单 N：无清单
 
     @property
     def IssuingTypeMark(self):
-        r"""开具类型标识（0: 委托代开，1：自开，2：代开，3：代办退税
+        r"""<p>开具类型标识（0: 委托代开，1：自开，2：代开，3：代办退税</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -36524,7 +36889,7 @@ Y: 有清单 N：无清单
 
     @property
     def SellerAgentName(self):
-        r"""代开销售方名称
+        r"""<p>代开销售方名称</p>
         :rtype: str
         """
         return self._SellerAgentName
@@ -36535,7 +36900,7 @@ Y: 有清单 N：无清单
 
     @property
     def SellerAgentTaxID(self):
-        r"""代开销售方税号
+        r"""<p>代开销售方税号</p>
         :rtype: str
         """
         return self._SellerAgentTaxID
@@ -36543,6 +36908,184 @@ Y: 有清单 N：无清单
     @SellerAgentTaxID.setter
     def SellerAgentTaxID(self, SellerAgentTaxID):
         self._SellerAgentTaxID = SellerAgentTaxID
+
+    @property
+    def RegionCode(self):
+        r"""<p>地区代码</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._RegionCode
+
+    @RegionCode.setter
+    def RegionCode(self, RegionCode):
+        self._RegionCode = RegionCode
+
+    @property
+    def ReviewerName(self):
+        r"""<p>复核人</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ReviewerName
+
+    @ReviewerName.setter
+    def ReviewerName(self, ReviewerName):
+        self._ReviewerName = ReviewerName
+
+    @property
+    def IssuerName(self):
+        r"""<p>开票人</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._IssuerName
+
+    @IssuerName.setter
+    def IssuerName(self, IssuerName):
+        self._IssuerName = IssuerName
+
+    @property
+    def PayeeName(self):
+        r"""<p>收款人</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._PayeeName
+
+    @PayeeName.setter
+    def PayeeName(self, PayeeName):
+        self._PayeeName = PayeeName
+
+    @property
+    def MachineCode(self):
+        r"""<p>开票机号</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._MachineCode
+
+    @MachineCode.setter
+    def MachineCode(self, MachineCode):
+        self._MachineCode = MachineCode
+
+    @property
+    def TaxControlCode(self):
+        r"""<p>税控码/密码区</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TaxControlCode
+
+    @TaxControlCode.setter
+    def TaxControlCode(self, TaxControlCode):
+        self._TaxControlCode = TaxControlCode
+
+    @property
+    def AmountWithTaxCN(self):
+        r"""<p>价税合计（中文大写）</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._AmountWithTaxCN
+
+    @AmountWithTaxCN.setter
+    def AmountWithTaxCN(self, AmountWithTaxCN):
+        self._AmountWithTaxCN = AmountWithTaxCN
+
+    @property
+    def TaxRate(self):
+        r"""<p>税率</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TaxRate
+
+    @TaxRate.setter
+    def TaxRate(self, TaxRate):
+        self._TaxRate = TaxRate
+
+    @property
+    def SpecialTicketCode(self):
+        r"""<p>特殊票种代码</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._SpecialTicketCode
+
+    @SpecialTicketCode.setter
+    def SpecialTicketCode(self, SpecialTicketCode):
+        self._SpecialTicketCode = SpecialTicketCode
+
+    @property
+    def RedLetterInvoices(self):
+        r"""<p>红字发票信息列表</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of RedLetterInvoiceItem
+        """
+        return self._RedLetterInvoices
+
+    @RedLetterInvoices.setter
+    def RedLetterInvoices(self, RedLetterInvoices):
+        self._RedLetterInvoices = RedLetterInvoices
+
+    @property
+    def FullElectronicType(self):
+        r"""<p>全电类型</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._FullElectronicType
+
+    @FullElectronicType.setter
+    def FullElectronicType(self, FullElectronicType):
+        self._FullElectronicType = FullElectronicType
+
+    @property
+    def OfdUrl(self):
+        r"""<p>OFD版式文件下载链接</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._OfdUrl
+
+    @OfdUrl.setter
+    def OfdUrl(self, OfdUrl):
+        self._OfdUrl = OfdUrl
+
+    @property
+    def PdfUrl(self):
+        r"""<p>PDF版式文件下载链接</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._PdfUrl
+
+    @PdfUrl.setter
+    def PdfUrl(self, PdfUrl):
+        self._PdfUrl = PdfUrl
+
+    @property
+    def OriginalCode(self):
+        r"""<p>原发票代码，对应蓝字发票代码。</p>
+        :rtype: str
+        """
+        return self._OriginalCode
+
+    @OriginalCode.setter
+    def OriginalCode(self, OriginalCode):
+        self._OriginalCode = OriginalCode
+
+    @property
+    def OriginalNumber(self):
+        r"""<p>原发票号码，对应蓝字发票号码。</p>
+        :rtype: str
+        """
+        return self._OriginalNumber
+
+    @OriginalNumber.setter
+    def OriginalNumber(self, OriginalNumber):
+        self._OriginalNumber = OriginalNumber
 
 
     def _deserialize(self, params):
@@ -36581,6 +37124,26 @@ Y: 有清单 N：无清单
         self._IssuingTypeMark = params.get("IssuingTypeMark")
         self._SellerAgentName = params.get("SellerAgentName")
         self._SellerAgentTaxID = params.get("SellerAgentTaxID")
+        self._RegionCode = params.get("RegionCode")
+        self._ReviewerName = params.get("ReviewerName")
+        self._IssuerName = params.get("IssuerName")
+        self._PayeeName = params.get("PayeeName")
+        self._MachineCode = params.get("MachineCode")
+        self._TaxControlCode = params.get("TaxControlCode")
+        self._AmountWithTaxCN = params.get("AmountWithTaxCN")
+        self._TaxRate = params.get("TaxRate")
+        self._SpecialTicketCode = params.get("SpecialTicketCode")
+        if params.get("RedLetterInvoices") is not None:
+            self._RedLetterInvoices = []
+            for item in params.get("RedLetterInvoices"):
+                obj = RedLetterInvoiceItem()
+                obj._deserialize(item)
+                self._RedLetterInvoices.append(obj)
+        self._FullElectronicType = params.get("FullElectronicType")
+        self._OfdUrl = params.get("OfdUrl")
+        self._PdfUrl = params.get("PdfUrl")
+        self._OriginalCode = params.get("OriginalCode")
+        self._OriginalNumber = params.get("OriginalNumber")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -37455,40 +38018,55 @@ class VatInvoiceItem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _LineNo: 行号
+        :param _LineNo: <p>行号</p>
         :type LineNo: str
-        :param _Name: 名称
+        :param _Name: <p>名称</p>
         :type Name: str
-        :param _Spec: 规格
+        :param _Spec: <p>规格</p>
         :type Spec: str
-        :param _Unit: 单位
+        :param _Unit: <p>单位</p>
         :type Unit: str
-        :param _Quantity: 数量
+        :param _Quantity: <p>数量</p>
         :type Quantity: str
-        :param _UnitPrice: 单价
+        :param _UnitPrice: <p>单价</p>
         :type UnitPrice: str
-        :param _AmountWithoutTax: 不含税金额
+        :param _AmountWithoutTax: <p>不含税金额</p>
         :type AmountWithoutTax: str
-        :param _TaxRate: 税率
+        :param _TaxRate: <p>税率</p>
         :type TaxRate: str
-        :param _TaxAmount: 税额
+        :param _TaxAmount: <p>税额</p>
         :type TaxAmount: str
-        :param _TaxClassifyCode: 税收分类编码
+        :param _TaxClassifyCode: <p>税收分类编码</p>
         :type TaxClassifyCode: str
-        :param _VehicleType: 运输工具类型
+        :param _VehicleType: <p>运输工具类型</p>
         :type VehicleType: str
-        :param _VehicleBrand: 运输工具牌号
+        :param _VehicleBrand: <p>运输工具牌号</p>
         :type VehicleBrand: str
-        :param _DeparturePlace: 起始地
+        :param _DeparturePlace: <p>起始地</p>
         :type DeparturePlace: str
-        :param _ArrivalPlace: 到达地
+        :param _ArrivalPlace: <p>到达地</p>
         :type ArrivalPlace: str
-        :param _TransportItemsName: 运输货物名称
+        :param _TransportItemsName: <p>运输货物名称</p>
         :type TransportItemsName: str
-        :param _ConstructionPlace: 建筑服务发生地
+        :param _ConstructionPlace: <p>建筑服务发生地</p>
         :type ConstructionPlace: str
-        :param _ConstructionName: 建筑项目名称
+        :param _ConstructionName: <p>建筑项目名称</p>
         :type ConstructionName: str
+        :param _OriginalTaxRate: <p>原始税率</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OriginalTaxRate: str
+        :param _OriginalTaxAmount: <p>原始税额</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type OriginalTaxAmount: str
+        :param _ZeroTaxRateMark: <p>零税率标识</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ZeroTaxRateMark: str
+        :param _TaxIncludedUnitPrice: <p>含税单价</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaxIncludedUnitPrice: str
+        :param _TaxIncludedAmount: <p>含税金额</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaxIncludedAmount: float
         """
         self._LineNo = None
         self._Name = None
@@ -37507,10 +38085,15 @@ class VatInvoiceItem(AbstractModel):
         self._TransportItemsName = None
         self._ConstructionPlace = None
         self._ConstructionName = None
+        self._OriginalTaxRate = None
+        self._OriginalTaxAmount = None
+        self._ZeroTaxRateMark = None
+        self._TaxIncludedUnitPrice = None
+        self._TaxIncludedAmount = None
 
     @property
     def LineNo(self):
-        r"""行号
+        r"""<p>行号</p>
         :rtype: str
         """
         return self._LineNo
@@ -37521,7 +38104,7 @@ class VatInvoiceItem(AbstractModel):
 
     @property
     def Name(self):
-        r"""名称
+        r"""<p>名称</p>
         :rtype: str
         """
         return self._Name
@@ -37532,7 +38115,7 @@ class VatInvoiceItem(AbstractModel):
 
     @property
     def Spec(self):
-        r"""规格
+        r"""<p>规格</p>
         :rtype: str
         """
         return self._Spec
@@ -37543,7 +38126,7 @@ class VatInvoiceItem(AbstractModel):
 
     @property
     def Unit(self):
-        r"""单位
+        r"""<p>单位</p>
         :rtype: str
         """
         return self._Unit
@@ -37554,7 +38137,7 @@ class VatInvoiceItem(AbstractModel):
 
     @property
     def Quantity(self):
-        r"""数量
+        r"""<p>数量</p>
         :rtype: str
         """
         return self._Quantity
@@ -37565,7 +38148,7 @@ class VatInvoiceItem(AbstractModel):
 
     @property
     def UnitPrice(self):
-        r"""单价
+        r"""<p>单价</p>
         :rtype: str
         """
         return self._UnitPrice
@@ -37576,7 +38159,7 @@ class VatInvoiceItem(AbstractModel):
 
     @property
     def AmountWithoutTax(self):
-        r"""不含税金额
+        r"""<p>不含税金额</p>
         :rtype: str
         """
         return self._AmountWithoutTax
@@ -37587,7 +38170,7 @@ class VatInvoiceItem(AbstractModel):
 
     @property
     def TaxRate(self):
-        r"""税率
+        r"""<p>税率</p>
         :rtype: str
         """
         return self._TaxRate
@@ -37598,7 +38181,7 @@ class VatInvoiceItem(AbstractModel):
 
     @property
     def TaxAmount(self):
-        r"""税额
+        r"""<p>税额</p>
         :rtype: str
         """
         return self._TaxAmount
@@ -37609,7 +38192,7 @@ class VatInvoiceItem(AbstractModel):
 
     @property
     def TaxClassifyCode(self):
-        r"""税收分类编码
+        r"""<p>税收分类编码</p>
         :rtype: str
         """
         return self._TaxClassifyCode
@@ -37620,7 +38203,7 @@ class VatInvoiceItem(AbstractModel):
 
     @property
     def VehicleType(self):
-        r"""运输工具类型
+        r"""<p>运输工具类型</p>
         :rtype: str
         """
         return self._VehicleType
@@ -37631,7 +38214,7 @@ class VatInvoiceItem(AbstractModel):
 
     @property
     def VehicleBrand(self):
-        r"""运输工具牌号
+        r"""<p>运输工具牌号</p>
         :rtype: str
         """
         return self._VehicleBrand
@@ -37642,7 +38225,7 @@ class VatInvoiceItem(AbstractModel):
 
     @property
     def DeparturePlace(self):
-        r"""起始地
+        r"""<p>起始地</p>
         :rtype: str
         """
         return self._DeparturePlace
@@ -37653,7 +38236,7 @@ class VatInvoiceItem(AbstractModel):
 
     @property
     def ArrivalPlace(self):
-        r"""到达地
+        r"""<p>到达地</p>
         :rtype: str
         """
         return self._ArrivalPlace
@@ -37664,7 +38247,7 @@ class VatInvoiceItem(AbstractModel):
 
     @property
     def TransportItemsName(self):
-        r"""运输货物名称
+        r"""<p>运输货物名称</p>
         :rtype: str
         """
         return self._TransportItemsName
@@ -37675,7 +38258,7 @@ class VatInvoiceItem(AbstractModel):
 
     @property
     def ConstructionPlace(self):
-        r"""建筑服务发生地
+        r"""<p>建筑服务发生地</p>
         :rtype: str
         """
         return self._ConstructionPlace
@@ -37686,7 +38269,7 @@ class VatInvoiceItem(AbstractModel):
 
     @property
     def ConstructionName(self):
-        r"""建筑项目名称
+        r"""<p>建筑项目名称</p>
         :rtype: str
         """
         return self._ConstructionName
@@ -37694,6 +38277,66 @@ class VatInvoiceItem(AbstractModel):
     @ConstructionName.setter
     def ConstructionName(self, ConstructionName):
         self._ConstructionName = ConstructionName
+
+    @property
+    def OriginalTaxRate(self):
+        r"""<p>原始税率</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._OriginalTaxRate
+
+    @OriginalTaxRate.setter
+    def OriginalTaxRate(self, OriginalTaxRate):
+        self._OriginalTaxRate = OriginalTaxRate
+
+    @property
+    def OriginalTaxAmount(self):
+        r"""<p>原始税额</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._OriginalTaxAmount
+
+    @OriginalTaxAmount.setter
+    def OriginalTaxAmount(self, OriginalTaxAmount):
+        self._OriginalTaxAmount = OriginalTaxAmount
+
+    @property
+    def ZeroTaxRateMark(self):
+        r"""<p>零税率标识</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ZeroTaxRateMark
+
+    @ZeroTaxRateMark.setter
+    def ZeroTaxRateMark(self, ZeroTaxRateMark):
+        self._ZeroTaxRateMark = ZeroTaxRateMark
+
+    @property
+    def TaxIncludedUnitPrice(self):
+        r"""<p>含税单价</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TaxIncludedUnitPrice
+
+    @TaxIncludedUnitPrice.setter
+    def TaxIncludedUnitPrice(self, TaxIncludedUnitPrice):
+        self._TaxIncludedUnitPrice = TaxIncludedUnitPrice
+
+    @property
+    def TaxIncludedAmount(self):
+        r"""<p>含税金额</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: float
+        """
+        return self._TaxIncludedAmount
+
+    @TaxIncludedAmount.setter
+    def TaxIncludedAmount(self, TaxIncludedAmount):
+        self._TaxIncludedAmount = TaxIncludedAmount
 
 
     def _deserialize(self, params):
@@ -37714,6 +38357,11 @@ class VatInvoiceItem(AbstractModel):
         self._TransportItemsName = params.get("TransportItemsName")
         self._ConstructionPlace = params.get("ConstructionPlace")
         self._ConstructionName = params.get("ConstructionName")
+        self._OriginalTaxRate = params.get("OriginalTaxRate")
+        self._OriginalTaxAmount = params.get("OriginalTaxAmount")
+        self._ZeroTaxRateMark = params.get("ZeroTaxRateMark")
+        self._TaxIncludedUnitPrice = params.get("TaxIncludedUnitPrice")
+        self._TaxIncludedAmount = params.get("TaxIncludedAmount")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -38971,43 +39619,43 @@ class VehicleInvoiceInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _CarType: 车辆类型
+        :param _CarType: <p>车辆类型</p>
         :type CarType: str
-        :param _PlateModel: 厂牌型号
+        :param _PlateModel: <p>厂牌型号</p>
         :type PlateModel: str
-        :param _ProduceAddress: 产地
+        :param _ProduceAddress: <p>产地</p>
         :type ProduceAddress: str
-        :param _CertificateNo: 合格证号
+        :param _CertificateNo: <p>合格证号</p>
         :type CertificateNo: str
-        :param _ImportNo: 进口证明书号
+        :param _ImportNo: <p>进口证明书号</p>
         :type ImportNo: str
-        :param _VinNo: LSVCA2NP9HN0xxxxx
+        :param _VinNo: <p>LSVCA2NP9HN0xxxxx</p>
         :type VinNo: str
-        :param _PayTaxesNo: 完税证书号
+        :param _PayTaxesNo: <p>完税证书号</p>
         :type PayTaxesNo: str
-        :param _Tonnage: 吨位
+        :param _Tonnage: <p>吨位</p>
         :type Tonnage: str
-        :param _LimitCount: 限乘人数
+        :param _LimitCount: <p>限乘人数</p>
         :type LimitCount: str
-        :param _EngineNo: 发动机号码
+        :param _EngineNo: <p>发动机号码</p>
         :type EngineNo: str
-        :param _BizCheckFormNo: 商检单号
+        :param _BizCheckFormNo: <p>商检单号</p>
         :type BizCheckFormNo: str
-        :param _TaxtationOrgCode: 主管税务机关代码
+        :param _TaxtationOrgCode: <p>主管税务机关代码</p>
         :type TaxtationOrgCode: str
-        :param _TaxtationOrgName: 主管税务机关名称
+        :param _TaxtationOrgName: <p>主管税务机关名称</p>
         :type TaxtationOrgName: str
-        :param _MotorTaxRate: 税率
+        :param _MotorTaxRate: <p>税率</p>
         :type MotorTaxRate: str
-        :param _MotorBankName: 银行账号
+        :param _MotorBankName: <p>银行账号</p>
         :type MotorBankName: str
-        :param _MotorBankAccount: 开户行
+        :param _MotorBankAccount: <p>开户行</p>
         :type MotorBankAccount: str
-        :param _SellerAddress: 销售地址
+        :param _SellerAddress: <p>销售地址</p>
         :type SellerAddress: str
-        :param _SellerTel: 销售电话
+        :param _SellerTel: <p>销售电话</p>
         :type SellerTel: str
-        :param _BuyerNo: 购方身份证
+        :param _BuyerNo: <p>购方身份证</p>
         :type BuyerNo: str
         """
         self._CarType = None
@@ -39032,7 +39680,7 @@ class VehicleInvoiceInfo(AbstractModel):
 
     @property
     def CarType(self):
-        r"""车辆类型
+        r"""<p>车辆类型</p>
         :rtype: str
         """
         return self._CarType
@@ -39043,7 +39691,7 @@ class VehicleInvoiceInfo(AbstractModel):
 
     @property
     def PlateModel(self):
-        r"""厂牌型号
+        r"""<p>厂牌型号</p>
         :rtype: str
         """
         return self._PlateModel
@@ -39054,7 +39702,7 @@ class VehicleInvoiceInfo(AbstractModel):
 
     @property
     def ProduceAddress(self):
-        r"""产地
+        r"""<p>产地</p>
         :rtype: str
         """
         return self._ProduceAddress
@@ -39065,7 +39713,7 @@ class VehicleInvoiceInfo(AbstractModel):
 
     @property
     def CertificateNo(self):
-        r"""合格证号
+        r"""<p>合格证号</p>
         :rtype: str
         """
         return self._CertificateNo
@@ -39076,7 +39724,7 @@ class VehicleInvoiceInfo(AbstractModel):
 
     @property
     def ImportNo(self):
-        r"""进口证明书号
+        r"""<p>进口证明书号</p>
         :rtype: str
         """
         return self._ImportNo
@@ -39087,7 +39735,7 @@ class VehicleInvoiceInfo(AbstractModel):
 
     @property
     def VinNo(self):
-        r"""LSVCA2NP9HN0xxxxx
+        r"""<p>LSVCA2NP9HN0xxxxx</p>
         :rtype: str
         """
         return self._VinNo
@@ -39098,7 +39746,7 @@ class VehicleInvoiceInfo(AbstractModel):
 
     @property
     def PayTaxesNo(self):
-        r"""完税证书号
+        r"""<p>完税证书号</p>
         :rtype: str
         """
         return self._PayTaxesNo
@@ -39109,7 +39757,7 @@ class VehicleInvoiceInfo(AbstractModel):
 
     @property
     def Tonnage(self):
-        r"""吨位
+        r"""<p>吨位</p>
         :rtype: str
         """
         return self._Tonnage
@@ -39120,7 +39768,7 @@ class VehicleInvoiceInfo(AbstractModel):
 
     @property
     def LimitCount(self):
-        r"""限乘人数
+        r"""<p>限乘人数</p>
         :rtype: str
         """
         return self._LimitCount
@@ -39131,7 +39779,7 @@ class VehicleInvoiceInfo(AbstractModel):
 
     @property
     def EngineNo(self):
-        r"""发动机号码
+        r"""<p>发动机号码</p>
         :rtype: str
         """
         return self._EngineNo
@@ -39142,7 +39790,7 @@ class VehicleInvoiceInfo(AbstractModel):
 
     @property
     def BizCheckFormNo(self):
-        r"""商检单号
+        r"""<p>商检单号</p>
         :rtype: str
         """
         return self._BizCheckFormNo
@@ -39153,7 +39801,7 @@ class VehicleInvoiceInfo(AbstractModel):
 
     @property
     def TaxtationOrgCode(self):
-        r"""主管税务机关代码
+        r"""<p>主管税务机关代码</p>
         :rtype: str
         """
         return self._TaxtationOrgCode
@@ -39164,7 +39812,7 @@ class VehicleInvoiceInfo(AbstractModel):
 
     @property
     def TaxtationOrgName(self):
-        r"""主管税务机关名称
+        r"""<p>主管税务机关名称</p>
         :rtype: str
         """
         return self._TaxtationOrgName
@@ -39175,7 +39823,7 @@ class VehicleInvoiceInfo(AbstractModel):
 
     @property
     def MotorTaxRate(self):
-        r"""税率
+        r"""<p>税率</p>
         :rtype: str
         """
         return self._MotorTaxRate
@@ -39186,7 +39834,7 @@ class VehicleInvoiceInfo(AbstractModel):
 
     @property
     def MotorBankName(self):
-        r"""银行账号
+        r"""<p>银行账号</p>
         :rtype: str
         """
         return self._MotorBankName
@@ -39197,7 +39845,7 @@ class VehicleInvoiceInfo(AbstractModel):
 
     @property
     def MotorBankAccount(self):
-        r"""开户行
+        r"""<p>开户行</p>
         :rtype: str
         """
         return self._MotorBankAccount
@@ -39208,7 +39856,7 @@ class VehicleInvoiceInfo(AbstractModel):
 
     @property
     def SellerAddress(self):
-        r"""销售地址
+        r"""<p>销售地址</p>
         :rtype: str
         """
         return self._SellerAddress
@@ -39219,7 +39867,7 @@ class VehicleInvoiceInfo(AbstractModel):
 
     @property
     def SellerTel(self):
-        r"""销售电话
+        r"""<p>销售电话</p>
         :rtype: str
         """
         return self._SellerTel
@@ -39230,7 +39878,7 @@ class VehicleInvoiceInfo(AbstractModel):
 
     @property
     def BuyerNo(self):
-        r"""购方身份证
+        r"""<p>购方身份证</p>
         :rtype: str
         """
         return self._BuyerNo

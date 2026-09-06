@@ -23,6 +23,9 @@ AUTHFAILURE_INVALIDAUTHORIZATION = 'AuthFailure.InvalidAuthorization'
 # 子账号无权限。
 AUTHFAILURE_SUBACCOUNTDENIED = 'AuthFailure.SubAccountDenied'
 
+# 鉴权失败，没有权限操作。
+AUTHFAILURE_UNAUTHORIZEDOPERATION = 'AuthFailure.UnauthorizedOperation'
+
 # 后端错误或者流程错误。
 CDBERROR = 'CdbError'
 

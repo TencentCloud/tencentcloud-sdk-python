@@ -31315,6 +31315,10 @@ class NodeHardwareInfo(AbstractModel):
         :type GpuDesc: str
         :param _DiskHealthIssues: <p>磁盘问题描述</p>
         :type DiskHealthIssues: list of DiskHealthIssue
+        :param _NodeGroupId: <p>所在节点组ID</p>
+        :type NodeGroupId: str
+        :param _NodeGroupName: <p>所在节点组名称</p>
+        :type NodeGroupName: str
         """
         self._AppId = None
         self._SerialNo = None
@@ -31377,6 +31381,8 @@ class NodeHardwareInfo(AbstractModel):
         self._UnderwriteSetAutoRenew = None
         self._GpuDesc = None
         self._DiskHealthIssues = None
+        self._NodeGroupId = None
+        self._NodeGroupName = None
 
     @property
     def AppId(self):
@@ -32053,6 +32059,28 @@ class NodeHardwareInfo(AbstractModel):
     def DiskHealthIssues(self, DiskHealthIssues):
         self._DiskHealthIssues = DiskHealthIssues
 
+    @property
+    def NodeGroupId(self):
+        r"""<p>所在节点组ID</p>
+        :rtype: str
+        """
+        return self._NodeGroupId
+
+    @NodeGroupId.setter
+    def NodeGroupId(self, NodeGroupId):
+        self._NodeGroupId = NodeGroupId
+
+    @property
+    def NodeGroupName(self):
+        r"""<p>所在节点组名称</p>
+        :rtype: str
+        """
+        return self._NodeGroupName
+
+    @NodeGroupName.setter
+    def NodeGroupName(self, NodeGroupName):
+        self._NodeGroupName = NodeGroupName
+
 
     def _deserialize(self, params):
         self._AppId = params.get("AppId")
@@ -32135,6 +32163,8 @@ class NodeHardwareInfo(AbstractModel):
                 obj = DiskHealthIssue()
                 obj._deserialize(item)
                 self._DiskHealthIssues.append(obj)
+        self._NodeGroupId = params.get("NodeGroupId")
+        self._NodeGroupName = params.get("NodeGroupName")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

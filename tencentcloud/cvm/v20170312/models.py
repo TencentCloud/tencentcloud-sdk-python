@@ -18351,7 +18351,7 @@ class ModifyLaunchTemplateDefaultVersionResponse(AbstractModel):
 
 
 class NetworkInterfaces(AbstractModel):
-    r"""创建实例时的网卡配置信息，包含主网卡和辅助网卡的VPC、子网、IP分配等网络参数。
+    r"""创建实例时的网卡配置信息，包含主网卡和辅助网卡的VPC、子网、IP分配等网络参数。请注意此参数与VirtualPrivateCloud互斥，即使用NetworkInterfaces后请勿再填充VirtualPrivateCloud结构体。
 
     此功能仅部分地区灰度开放，如需使用[请提交工单咨询](https://console.cloud.tencent.com/workorder/category)
 

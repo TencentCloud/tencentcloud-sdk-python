@@ -33362,38 +33362,27 @@ class GetAlarmLogRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _From: 要查询的执行详情的起始时间，Unix时间戳，单位ms。
+        :param _From: <p>要查询的执行详情的起始时间，Unix时间戳，单位ms。</p>
         :type From: int
-        :param _To: 要查询的执行详情的结束时间，Unix时间戳，单位ms。
+        :param _To: <p>要查询的执行详情的结束时间，Unix时间戳，单位ms。</p>
         :type To: int
-        :param _Query: 查询过滤条件，例如：
-- 按告警策略ID查询：`alert_id:"alarm-0745ec00-e605-xxxx-b50b-54afe61fc971"`
-   - 通过[获取告警策略列表](https://cloud.tencent.com/document/api/614/56461)获取告警策略ID
-- 按监控对象ID查询：`monitored_object:"823d8bfa-76a7-xxxx-8399-8cda74d4009b" `
-  - 通过[获取告警策略列表](https://cloud.tencent.com/document/api/614/56461)获取监控对象ID
-- 按告警策略ID及监控对象ID查询：`alert_id:"alarm-0745ec00-e605-xxxx-b50b-54afe61fc971" AND monitored_object:"823d8bfa-76a7-xxxx-8399-8cda74d4009b"`
-- 按告警策略ID及监控对象ID查询支持SQL语句：`(alert_id:"alarm-5ce45495-09e8-4d58-xxxx-768134bf330c") AND (monitored_object:"3c514e84-6f1f-46ec-xxxx-05de6163f7fe") AND NOT condition_evaluate_result: "Skip" AND condition_evaluate_result:[* TO *] | SELECT count(*) as top50StatisticsTotalCount, count_if(condition_evaluate_result='ProcessError') as top50StatisticsFailureCount, count_if(notification_send_result!='NotSend') as top50NoticeTotalCount, count_if(notification_send_result='SendPartFail' or notification_send_result='SendFail') as top50NoticeFailureCount, alert_id, alert_name, monitored_object, topic_type, happen_threshold, alert_threshold, notify_template group by alert_id, alert_name, monitored_object,topic_type, happen_threshold, alert_threshold, notify_template order by top50StatisticsTotalCount desc limit 1`
+        :param _Query: <p>查询过滤条件，例如：</p><ul><li>按告警策略ID查询：<code>alert_id:&quot;alarm-0745ec00-e605-xxxx-b50b-54afe61fc971&quot;</code><ul><li>通过<a href="https://cloud.tencent.com/document/api/614/56461">获取告警策略列表</a>获取告警策略ID</li></ul></li><li>按监控对象ID查询：<code>monitored_object:&quot;823d8bfa-76a7-xxxx-8399-8cda74d4009b&quot;</code><ul><li>通过<a href="https://cloud.tencent.com/document/api/614/56461">获取告警策略列表</a>获取监控对象ID</li></ul></li><li>按告警策略ID及监控对象ID查询：<code>alert_id:&quot;alarm-0745ec00-e605-xxxx-b50b-54afe61fc971&quot; AND monitored_object:&quot;823d8bfa-76a7-xxxx-8399-8cda74d4009b&quot;</code></li><li>按告警策略ID及监控对象ID查询支持SQL语句：<code>(alert_id:&quot;alarm-5ce45495-0918-4d58-xxxx-768134bf330c&quot;) AND (monitored_object:&quot;3c514e84-6f1f-46ec-xxxx-05de6163f7fe&quot;) AND NOT condition_evaluate_result: &quot;Skip&quot; AND condition_evaluate_result:[* TO *] | SELECT count(*) as top50StatisticsTotalCount, count_if(condition_evaluate_result=&#39;ProcessError&#39;) as top50StatisticsFailureCount, count_if(notification_send_result!=&#39;NotSend&#39;) as top50NoticeTotalCount, count_if(notification_send_result=&#39;SendPartFail&#39; or notification_send_result=&#39;SendFail&#39;) as top50NoticeFailureCount, alert_id, alert_name, monitored_object, topic_type, happen_threshold, alert_threshold, notify_template group by alert_id, alert_name, monitored_object,topic_type, happen_threshold, alert_threshold, notify_template order by top50StatisticsTotalCount desc limit 1</code></li></ul><p>该查询语句走Lucene语法（已废弃）</p>
         :type Query: str
-        :param _Limit: 单次查询返回的执行详情条数，最大值为1000
+        :param _QueryString: <p>查询过滤条件，例如：- 按告警策略ID查询：<code>alert_id:&quot;alarm-0745ec00-e605-xxxx-b50b-54afe61fc971&quot;</code>   - 通过<a href="https://cloud.tencent.com/document/api/614/56461">获取告警策略列表</a>获取告警策略ID- 按监控对象ID查询：<code>monitored_object:&quot;823d8bfa-76a7-xxxx-8399-8cda74d4009b&quot;</code>  - 通过<a href="https://cloud.tencent.com/document/api/614/56461">获取告警策略列表</a>获取监控对象ID- 按告警策略ID及监控对象ID查询：<code>alert_id:&quot;alarm-0745ec00-e605-xxxx-b50b-54afe61fc971&quot; AND monitored_object:&quot;823d8bfa-76a7-xxxx-8399-8cda74d4009b&quot;</code>- 按告警策略ID及监控对象ID查询支持SQL语句：<code>(alert_id:&quot;alarm-5ce45495-0918-4d58-xxxx-768134bf330c&quot;) AND (monitored_object:&quot;3c514e84-6f1f-46ec-xxxx-05de6163f7fe&quot;) AND NOT condition_evaluate_result: &quot;Skip&quot; AND condition_evaluate_result:[* TO *] | SELECT count(*) as top50StatisticsTotalCount, count_if(condition_evaluate_result=&#39;ProcessError&#39;) as top50StatisticsFailureCount, count_if(notification_send_result!=&#39;NotSend&#39;) as top50NoticeTotalCount, count_if(notification_send_result=&#39;SendPartFail&#39; or notification_send_result=&#39;SendFail&#39;) as top50NoticeFailureCount, alert_id, alert_name, monitored_object, topic_type, happen_threshold, alert_threshold, notify_template group by alert_id, alert_name, monitored_object,topic_type, happen_threshold, alert_threshold, notify_template order by top50StatisticsTotalCount desc limit 1</code></p><p>该查询语句走CQL语法</p>
+        :type QueryString: str
+        :param _Limit: <p>单次查询返回的执行详情条数，最大值为1000</p>
         :type Limit: int
-        :param _Context: 透传上次接口返回的Context值，可获取后续更多日志，总计最多可获取1万条原始日志，过期时间1小时。
-注意：
-* 透传该参数时，请勿修改除该参数外的其它参数
-* 仅当检索分析语句(Query)不包含SQL时有效，SQL获取后续结果参考<a href="https://cloud.tencent.com/document/product/614/58977" target="_blank">SQL LIMIT语法</a>
+        :param _Context: <p>透传上次接口返回的Context值，可获取后续更多日志，总计最多可获取1万条原始日志，过期时间1小时。<br>注意：</p><ul><li>透传该参数时，请勿修改除该参数外的其它参数</li><li>仅当检索分析语句(Query)不包含SQL时有效，SQL获取后续结果参考<a href="https://cloud.tencent.com/document/product/614/58977" target="_blank">SQL LIMIT语法</a></li></ul>
         :type Context: str
-        :param _Sort: 原始日志是否按时间排序返回；可选值：asc(升序)、desc(降序)，默认为 desc
-注意：
-* 仅当检索分析语句(Query)不包含SQL时有效
-* SQL结果排序方式参考<a href="https://cloud.tencent.com/document/product/614/58978" target="_blank">SQL ORDER BY语法</a>
+        :param _Sort: <p>原始日志是否按时间排序返回；可选值：asc(升序)、desc(降序)，默认为 desc<br>注意：</p><ul><li>仅当检索分析语句(Query)不包含SQL时有效</li><li>SQL结果排序方式参考<a href="https://cloud.tencent.com/document/product/614/58978" target="_blank">SQL ORDER BY语法</a></li></ul>
         :type Sort: str
-        :param _UseNewAnalysis: true：代表使用新的检索结果返回方式，输出参数AnalysisRecords和Columns有效；
-false：代表使用老的检索结果返回方式，输出AnalysisResults和ColNames有效；
-两种返回方式在编码格式上有少量区别，建议使用true。
+        :param _UseNewAnalysis: <p>true：代表使用新的检索结果返回方式，输出参数AnalysisRecords和Columns有效；<br>false：代表使用老的检索结果返回方式，输出AnalysisResults和ColNames有效；<br>两种返回方式在编码格式上有少量区别，建议使用true。</p>
         :type UseNewAnalysis: bool
         """
         self._From = None
         self._To = None
         self._Query = None
+        self._QueryString = None
         self._Limit = None
         self._Context = None
         self._Sort = None
@@ -33401,7 +33390,7 @@ false：代表使用老的检索结果返回方式，输出AnalysisResults和Col
 
     @property
     def From(self):
-        r"""要查询的执行详情的起始时间，Unix时间戳，单位ms。
+        r"""<p>要查询的执行详情的起始时间，Unix时间戳，单位ms。</p>
         :rtype: int
         """
         return self._From
@@ -33412,7 +33401,7 @@ false：代表使用老的检索结果返回方式，输出AnalysisResults和Col
 
     @property
     def To(self):
-        r"""要查询的执行详情的结束时间，Unix时间戳，单位ms。
+        r"""<p>要查询的执行详情的结束时间，Unix时间戳，单位ms。</p>
         :rtype: int
         """
         return self._To
@@ -33423,24 +33412,33 @@ false：代表使用老的检索结果返回方式，输出AnalysisResults和Col
 
     @property
     def Query(self):
-        r"""查询过滤条件，例如：
-- 按告警策略ID查询：`alert_id:"alarm-0745ec00-e605-xxxx-b50b-54afe61fc971"`
-   - 通过[获取告警策略列表](https://cloud.tencent.com/document/api/614/56461)获取告警策略ID
-- 按监控对象ID查询：`monitored_object:"823d8bfa-76a7-xxxx-8399-8cda74d4009b" `
-  - 通过[获取告警策略列表](https://cloud.tencent.com/document/api/614/56461)获取监控对象ID
-- 按告警策略ID及监控对象ID查询：`alert_id:"alarm-0745ec00-e605-xxxx-b50b-54afe61fc971" AND monitored_object:"823d8bfa-76a7-xxxx-8399-8cda74d4009b"`
-- 按告警策略ID及监控对象ID查询支持SQL语句：`(alert_id:"alarm-5ce45495-09e8-4d58-xxxx-768134bf330c") AND (monitored_object:"3c514e84-6f1f-46ec-xxxx-05de6163f7fe") AND NOT condition_evaluate_result: "Skip" AND condition_evaluate_result:[* TO *] | SELECT count(*) as top50StatisticsTotalCount, count_if(condition_evaluate_result='ProcessError') as top50StatisticsFailureCount, count_if(notification_send_result!='NotSend') as top50NoticeTotalCount, count_if(notification_send_result='SendPartFail' or notification_send_result='SendFail') as top50NoticeFailureCount, alert_id, alert_name, monitored_object, topic_type, happen_threshold, alert_threshold, notify_template group by alert_id, alert_name, monitored_object,topic_type, happen_threshold, alert_threshold, notify_template order by top50StatisticsTotalCount desc limit 1`
+        warnings.warn("parameter `Query` is deprecated", DeprecationWarning) 
+
+        r"""<p>查询过滤条件，例如：</p><ul><li>按告警策略ID查询：<code>alert_id:&quot;alarm-0745ec00-e605-xxxx-b50b-54afe61fc971&quot;</code><ul><li>通过<a href="https://cloud.tencent.com/document/api/614/56461">获取告警策略列表</a>获取告警策略ID</li></ul></li><li>按监控对象ID查询：<code>monitored_object:&quot;823d8bfa-76a7-xxxx-8399-8cda74d4009b&quot;</code><ul><li>通过<a href="https://cloud.tencent.com/document/api/614/56461">获取告警策略列表</a>获取监控对象ID</li></ul></li><li>按告警策略ID及监控对象ID查询：<code>alert_id:&quot;alarm-0745ec00-e605-xxxx-b50b-54afe61fc971&quot; AND monitored_object:&quot;823d8bfa-76a7-xxxx-8399-8cda74d4009b&quot;</code></li><li>按告警策略ID及监控对象ID查询支持SQL语句：<code>(alert_id:&quot;alarm-5ce45495-0918-4d58-xxxx-768134bf330c&quot;) AND (monitored_object:&quot;3c514e84-6f1f-46ec-xxxx-05de6163f7fe&quot;) AND NOT condition_evaluate_result: &quot;Skip&quot; AND condition_evaluate_result:[* TO *] | SELECT count(*) as top50StatisticsTotalCount, count_if(condition_evaluate_result=&#39;ProcessError&#39;) as top50StatisticsFailureCount, count_if(notification_send_result!=&#39;NotSend&#39;) as top50NoticeTotalCount, count_if(notification_send_result=&#39;SendPartFail&#39; or notification_send_result=&#39;SendFail&#39;) as top50NoticeFailureCount, alert_id, alert_name, monitored_object, topic_type, happen_threshold, alert_threshold, notify_template group by alert_id, alert_name, monitored_object,topic_type, happen_threshold, alert_threshold, notify_template order by top50StatisticsTotalCount desc limit 1</code></li></ul><p>该查询语句走Lucene语法（已废弃）</p>
         :rtype: str
         """
         return self._Query
 
     @Query.setter
     def Query(self, Query):
+        warnings.warn("parameter `Query` is deprecated", DeprecationWarning) 
+
         self._Query = Query
 
     @property
+    def QueryString(self):
+        r"""<p>查询过滤条件，例如：- 按告警策略ID查询：<code>alert_id:&quot;alarm-0745ec00-e605-xxxx-b50b-54afe61fc971&quot;</code>   - 通过<a href="https://cloud.tencent.com/document/api/614/56461">获取告警策略列表</a>获取告警策略ID- 按监控对象ID查询：<code>monitored_object:&quot;823d8bfa-76a7-xxxx-8399-8cda74d4009b&quot;</code>  - 通过<a href="https://cloud.tencent.com/document/api/614/56461">获取告警策略列表</a>获取监控对象ID- 按告警策略ID及监控对象ID查询：<code>alert_id:&quot;alarm-0745ec00-e605-xxxx-b50b-54afe61fc971&quot; AND monitored_object:&quot;823d8bfa-76a7-xxxx-8399-8cda74d4009b&quot;</code>- 按告警策略ID及监控对象ID查询支持SQL语句：<code>(alert_id:&quot;alarm-5ce45495-0918-4d58-xxxx-768134bf330c&quot;) AND (monitored_object:&quot;3c514e84-6f1f-46ec-xxxx-05de6163f7fe&quot;) AND NOT condition_evaluate_result: &quot;Skip&quot; AND condition_evaluate_result:[* TO *] | SELECT count(*) as top50StatisticsTotalCount, count_if(condition_evaluate_result=&#39;ProcessError&#39;) as top50StatisticsFailureCount, count_if(notification_send_result!=&#39;NotSend&#39;) as top50NoticeTotalCount, count_if(notification_send_result=&#39;SendPartFail&#39; or notification_send_result=&#39;SendFail&#39;) as top50NoticeFailureCount, alert_id, alert_name, monitored_object, topic_type, happen_threshold, alert_threshold, notify_template group by alert_id, alert_name, monitored_object,topic_type, happen_threshold, alert_threshold, notify_template order by top50StatisticsTotalCount desc limit 1</code></p><p>该查询语句走CQL语法</p>
+        :rtype: str
+        """
+        return self._QueryString
+
+    @QueryString.setter
+    def QueryString(self, QueryString):
+        self._QueryString = QueryString
+
+    @property
     def Limit(self):
-        r"""单次查询返回的执行详情条数，最大值为1000
+        r"""<p>单次查询返回的执行详情条数，最大值为1000</p>
         :rtype: int
         """
         return self._Limit
@@ -33451,10 +33449,7 @@ false：代表使用老的检索结果返回方式，输出AnalysisResults和Col
 
     @property
     def Context(self):
-        r"""透传上次接口返回的Context值，可获取后续更多日志，总计最多可获取1万条原始日志，过期时间1小时。
-注意：
-* 透传该参数时，请勿修改除该参数外的其它参数
-* 仅当检索分析语句(Query)不包含SQL时有效，SQL获取后续结果参考<a href="https://cloud.tencent.com/document/product/614/58977" target="_blank">SQL LIMIT语法</a>
+        r"""<p>透传上次接口返回的Context值，可获取后续更多日志，总计最多可获取1万条原始日志，过期时间1小时。<br>注意：</p><ul><li>透传该参数时，请勿修改除该参数外的其它参数</li><li>仅当检索分析语句(Query)不包含SQL时有效，SQL获取后续结果参考<a href="https://cloud.tencent.com/document/product/614/58977" target="_blank">SQL LIMIT语法</a></li></ul>
         :rtype: str
         """
         return self._Context
@@ -33465,10 +33460,7 @@ false：代表使用老的检索结果返回方式，输出AnalysisResults和Col
 
     @property
     def Sort(self):
-        r"""原始日志是否按时间排序返回；可选值：asc(升序)、desc(降序)，默认为 desc
-注意：
-* 仅当检索分析语句(Query)不包含SQL时有效
-* SQL结果排序方式参考<a href="https://cloud.tencent.com/document/product/614/58978" target="_blank">SQL ORDER BY语法</a>
+        r"""<p>原始日志是否按时间排序返回；可选值：asc(升序)、desc(降序)，默认为 desc<br>注意：</p><ul><li>仅当检索分析语句(Query)不包含SQL时有效</li><li>SQL结果排序方式参考<a href="https://cloud.tencent.com/document/product/614/58978" target="_blank">SQL ORDER BY语法</a></li></ul>
         :rtype: str
         """
         return self._Sort
@@ -33479,9 +33471,7 @@ false：代表使用老的检索结果返回方式，输出AnalysisResults和Col
 
     @property
     def UseNewAnalysis(self):
-        r"""true：代表使用新的检索结果返回方式，输出参数AnalysisRecords和Columns有效；
-false：代表使用老的检索结果返回方式，输出AnalysisResults和ColNames有效；
-两种返回方式在编码格式上有少量区别，建议使用true。
+        r"""<p>true：代表使用新的检索结果返回方式，输出参数AnalysisRecords和Columns有效；<br>false：代表使用老的检索结果返回方式，输出AnalysisResults和ColNames有效；<br>两种返回方式在编码格式上有少量区别，建议使用true。</p>
         :rtype: bool
         """
         return self._UseNewAnalysis
@@ -33495,6 +33485,7 @@ false：代表使用老的检索结果返回方式，输出AnalysisResults和Col
         self._From = params.get("From")
         self._To = params.get("To")
         self._Query = params.get("Query")
+        self._QueryString = params.get("QueryString")
         self._Limit = params.get("Limit")
         self._Context = params.get("Context")
         self._Sort = params.get("Sort")
@@ -33516,29 +33507,25 @@ class GetAlarmLogResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Context: 加载后续详情的Context
+        :param _Context: <p>加载后续详情的Context</p>
         :type Context: str
-        :param _ListOver: 指定时间范围内的告警执行详情是否完整返回
+        :param _ListOver: <p>指定时间范围内的告警执行详情是否完整返回</p>
         :type ListOver: bool
-        :param _Analysis: 返回的结果是否为SQL分析结果
+        :param _Analysis: <p>返回的结果是否为SQL分析结果</p>
         :type Analysis: bool
-        :param _ColNames: 分析结果的列名，如果Query语句有SQL查询，则返回查询字段的列名；
-否则为空。
+        :param _ColNames: <p>分析结果的列名，如果Query语句有SQL查询，则返回查询字段的列名；<br>否则为空。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ColNames: list of str
-        :param _Results: 执行详情查询结果。
-当Query字段无SQL语句时，返回查询结果。
-当Query字段有SQL语句时，可能返回null。
+        :param _Results: <p>执行详情查询结果。<br>当Query字段无SQL语句时，返回查询结果。<br>当Query字段有SQL语句时，可能返回null。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Results: list of LogInfo
-        :param _AnalysisResults: 执行详情统计分析结果。当Query字段有SQL语句时，返回SQL统计结果，否则可能返回null。
-
+        :param _AnalysisResults: <p>执行详情统计分析结果。当Query字段有SQL语句时，返回SQL统计结果，否则可能返回null。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type AnalysisResults: list of LogItems
-        :param _AnalysisRecords: 执行详情统计分析结果；UseNewAnalysis为true有效。
+        :param _AnalysisRecords: <p>执行详情统计分析结果；UseNewAnalysis为true有效。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type AnalysisRecords: list of str
-        :param _Columns: 分析结果的列名， UseNewAnalysis为true有效
+        :param _Columns: <p>分析结果的列名， UseNewAnalysis为true有效</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Columns: list of Column
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -33556,7 +33543,7 @@ class GetAlarmLogResponse(AbstractModel):
 
     @property
     def Context(self):
-        r"""加载后续详情的Context
+        r"""<p>加载后续详情的Context</p>
         :rtype: str
         """
         return self._Context
@@ -33567,7 +33554,7 @@ class GetAlarmLogResponse(AbstractModel):
 
     @property
     def ListOver(self):
-        r"""指定时间范围内的告警执行详情是否完整返回
+        r"""<p>指定时间范围内的告警执行详情是否完整返回</p>
         :rtype: bool
         """
         return self._ListOver
@@ -33578,7 +33565,7 @@ class GetAlarmLogResponse(AbstractModel):
 
     @property
     def Analysis(self):
-        r"""返回的结果是否为SQL分析结果
+        r"""<p>返回的结果是否为SQL分析结果</p>
         :rtype: bool
         """
         return self._Analysis
@@ -33589,8 +33576,7 @@ class GetAlarmLogResponse(AbstractModel):
 
     @property
     def ColNames(self):
-        r"""分析结果的列名，如果Query语句有SQL查询，则返回查询字段的列名；
-否则为空。
+        r"""<p>分析结果的列名，如果Query语句有SQL查询，则返回查询字段的列名；<br>否则为空。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -33602,9 +33588,7 @@ class GetAlarmLogResponse(AbstractModel):
 
     @property
     def Results(self):
-        r"""执行详情查询结果。
-当Query字段无SQL语句时，返回查询结果。
-当Query字段有SQL语句时，可能返回null。
+        r"""<p>执行详情查询结果。<br>当Query字段无SQL语句时，返回查询结果。<br>当Query字段有SQL语句时，可能返回null。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of LogInfo
         """
@@ -33616,8 +33600,7 @@ class GetAlarmLogResponse(AbstractModel):
 
     @property
     def AnalysisResults(self):
-        r"""执行详情统计分析结果。当Query字段有SQL语句时，返回SQL统计结果，否则可能返回null。
-
+        r"""<p>执行详情统计分析结果。当Query字段有SQL语句时，返回SQL统计结果，否则可能返回null。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of LogItems
         """
@@ -33629,7 +33612,7 @@ class GetAlarmLogResponse(AbstractModel):
 
     @property
     def AnalysisRecords(self):
-        r"""执行详情统计分析结果；UseNewAnalysis为true有效。
+        r"""<p>执行详情统计分析结果；UseNewAnalysis为true有效。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of str
         """
@@ -33641,7 +33624,7 @@ class GetAlarmLogResponse(AbstractModel):
 
     @property
     def Columns(self):
-        r"""分析结果的列名， UseNewAnalysis为true有效
+        r"""<p>分析结果的列名， UseNewAnalysis为true有效</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of Column
         """

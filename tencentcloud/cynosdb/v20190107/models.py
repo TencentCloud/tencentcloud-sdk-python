@@ -908,7 +908,7 @@ class AddInstancesRequest(AbstractModel):
         :type ReadOnlyCount: int
         :param _DeviceType: <p>实例机器类型，支持值如下：</p><ul><li>common：表示通用型</li><li>exclusive：表示独享型</li></ul>
         :type DeviceType: str
-        :param _InstanceGrpId: <p>实例组ID，在已有RO组中新增实例时使用，不传则新增RO组。当前版本不建议传输该值。</p>
+        :param _InstanceGrpId: <p>当前字段已废弃。当前版本不再传输该值。</p>
         :type InstanceGrpId: str
         :param _VpcId: <p>所属VPC网络ID。</p>
         :type VpcId: str
@@ -1013,7 +1013,7 @@ class AddInstancesRequest(AbstractModel):
     def InstanceGrpId(self):
         warnings.warn("parameter `InstanceGrpId` is deprecated", DeprecationWarning) 
 
-        r"""<p>实例组ID，在已有RO组中新增实例时使用，不传则新增RO组。当前版本不建议传输该值。</p>
+        r"""<p>当前字段已废弃。当前版本不再传输该值。</p>
         :rtype: str
         """
         return self._InstanceGrpId
@@ -22686,13 +22686,13 @@ class DescribeClusterDetailDatabasesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ClusterId: 集群ID
+        :param _ClusterId: <p>集群ID</p>
         :type ClusterId: str
-        :param _Offset: 偏移量，默认0
+        :param _Offset: <p>偏移量，默认0</p>
         :type Offset: int
-        :param _Limit: 返回数量，默认20,最大100
+        :param _Limit: <p>返回数量，默认20,最大100</p>
         :type Limit: int
-        :param _DbName: 数据库名称
+        :param _DbName: <p>数据库名称，通过该字段进行子串匹配</p>
         :type DbName: str
         """
         self._ClusterId = None
@@ -22702,7 +22702,7 @@ class DescribeClusterDetailDatabasesRequest(AbstractModel):
 
     @property
     def ClusterId(self):
-        r"""集群ID
+        r"""<p>集群ID</p>
         :rtype: str
         """
         return self._ClusterId
@@ -22713,7 +22713,7 @@ class DescribeClusterDetailDatabasesRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""偏移量，默认0
+        r"""<p>偏移量，默认0</p>
         :rtype: int
         """
         return self._Offset
@@ -22724,7 +22724,7 @@ class DescribeClusterDetailDatabasesRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""返回数量，默认20,最大100
+        r"""<p>返回数量，默认20,最大100</p>
         :rtype: int
         """
         return self._Limit
@@ -22735,7 +22735,7 @@ class DescribeClusterDetailDatabasesRequest(AbstractModel):
 
     @property
     def DbName(self):
-        r"""数据库名称
+        r"""<p>数据库名称，通过该字段进行子串匹配</p>
         :rtype: str
         """
         return self._DbName
@@ -22767,9 +22767,9 @@ class DescribeClusterDetailDatabasesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DbInfos: 数据库信息
+        :param _DbInfos: <p>数据库信息</p>
         :type DbInfos: list of DbInfo
-        :param _TotalCount: 总数
+        :param _TotalCount: <p>总数</p>
         :type TotalCount: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -22780,7 +22780,7 @@ class DescribeClusterDetailDatabasesResponse(AbstractModel):
 
     @property
     def DbInfos(self):
-        r"""数据库信息
+        r"""<p>数据库信息</p>
         :rtype: list of DbInfo
         """
         return self._DbInfos
@@ -22791,7 +22791,7 @@ class DescribeClusterDetailDatabasesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        r"""总数
+        r"""<p>总数</p>
         :rtype: int
         """
         return self._TotalCount
@@ -25622,7 +25622,7 @@ class DescribeInstanceSpecsRequest(AbstractModel):
         :type IncludeZoneStocks: bool
         :param _DeviceType: <p>实例机器类型</p>
         :type DeviceType: str
-        :param _ClusterLevel: <p>集群级别，可空。例如 P0, P1</p>
+        :param _ClusterLevel: <p>集群级别。例如 P0, P1。若未指定可用区，针对于不支持亲和性的可用区将降级查询非亲和性资源。</p>
         :type ClusterLevel: str
         """
         self._DbType = None
@@ -25665,7 +25665,7 @@ class DescribeInstanceSpecsRequest(AbstractModel):
 
     @property
     def ClusterLevel(self):
-        r"""<p>集群级别，可空。例如 P0, P1</p>
+        r"""<p>集群级别。例如 P0, P1。若未指定可用区，针对于不支持亲和性的可用区将降级查询非亲和性资源。</p>
         :rtype: str
         """
         return self._ClusterLevel
@@ -60827,6 +60827,36 @@ class TransferStoragePrepayToPostpayRequest(AbstractModel):
 
     """
 
+    def __init__(self):
+        r"""
+        :param _ClusterId: <p>集群id</p>
+        :type ClusterId: str
+        """
+        self._ClusterId = None
+
+    @property
+    def ClusterId(self):
+        r"""<p>集群id</p>
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
 
 class TransferStoragePrepayToPostpayResponse(AbstractModel):
     r"""TransferStoragePrepayToPostpay返回参数结构体
@@ -60835,10 +60865,74 @@ class TransferStoragePrepayToPostpayResponse(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _BigDealIds: <p>预付费总订单号</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type BigDealIds: list of str
+        :param _DealNames: <p>订单号</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DealNames: list of str
+        :param _ResourceIds: <p>资源id</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ResourceIds: list of str
+        :param _ClusterIds: <p>集群id</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ClusterIds: list of str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
+        self._BigDealIds = None
+        self._DealNames = None
+        self._ResourceIds = None
+        self._ClusterIds = None
         self._RequestId = None
+
+    @property
+    def BigDealIds(self):
+        r"""<p>预付费总订单号</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._BigDealIds
+
+    @BigDealIds.setter
+    def BigDealIds(self, BigDealIds):
+        self._BigDealIds = BigDealIds
+
+    @property
+    def DealNames(self):
+        r"""<p>订单号</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._DealNames
+
+    @DealNames.setter
+    def DealNames(self, DealNames):
+        self._DealNames = DealNames
+
+    @property
+    def ResourceIds(self):
+        r"""<p>资源id</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._ResourceIds
+
+    @ResourceIds.setter
+    def ResourceIds(self, ResourceIds):
+        self._ResourceIds = ResourceIds
+
+    @property
+    def ClusterIds(self):
+        r"""<p>集群id</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of str
+        """
+        return self._ClusterIds
+
+    @ClusterIds.setter
+    def ClusterIds(self, ClusterIds):
+        self._ClusterIds = ClusterIds
 
     @property
     def RequestId(self):
@@ -60853,6 +60947,10 @@ class TransferStoragePrepayToPostpayResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._BigDealIds = params.get("BigDealIds")
+        self._DealNames = params.get("DealNames")
+        self._ResourceIds = params.get("ResourceIds")
+        self._ClusterIds = params.get("ClusterIds")
         self._RequestId = params.get("RequestId")
 
 
