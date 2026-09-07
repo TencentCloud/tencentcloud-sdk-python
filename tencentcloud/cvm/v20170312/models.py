@@ -23441,7 +23441,7 @@ class TerminateResourcePoolPacksResponse(AbstractModel):
 
 
 class VirtualPrivateCloud(AbstractModel):
-    r"""描述了VPC相关信息，包括子网，IP信息等
+    r"""描述了主网卡VPC相关信息，包括子网，IP信息等
 
     """
 

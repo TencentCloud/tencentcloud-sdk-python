@@ -514,6 +514,29 @@ class LiveClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateLiveAvatarCloneFigure(self, request):
+        r"""调用该接口，用于创建数字人直播间/AIGC直播间话术。
+
+        :param request: Request instance for CreateLiveAvatarCloneFigure.
+        :type request: :class:`tencentcloud.live.v20180801.models.CreateLiveAvatarCloneFigureRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.CreateLiveAvatarCloneFigureResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateLiveAvatarCloneFigure", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateLiveAvatarCloneFigureResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateLiveAvatarRoom(self, request):
         r"""调用该接口，用于创建数字人直播间。
 
@@ -1275,6 +1298,29 @@ class LiveClient(AbstractClient):
             body = self.call("DeleteCasterOutputInfo", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteCasterOutputInfoResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteLiveAvatarCloneFigure(self, request):
+        r"""调用该接口，用于删除已有的数字人直播间里面的话术。
+
+        :param request: Request instance for DeleteLiveAvatarCloneFigure.
+        :type request: :class:`tencentcloud.live.v20180801.models.DeleteLiveAvatarCloneFigureRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.DeleteLiveAvatarCloneFigureResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteLiveAvatarCloneFigure", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteLiveAvatarCloneFigureResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -2392,6 +2438,29 @@ class LiveClient(AbstractClient):
             body = self.call("DescribeLiveAvatarBackgroundList", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeLiveAvatarBackgroundListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeLiveAvatarCloneFigureList(self, request):
+        r"""调用该接口，查询数字人直播间信息列表。
+
+        :param request: Request instance for DescribeLiveAvatarCloneFigureList.
+        :type request: :class:`tencentcloud.live.v20180801.models.DescribeLiveAvatarCloneFigureListRequest`
+        :rtype: :class:`tencentcloud.live.v20180801.models.DescribeLiveAvatarCloneFigureListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeLiveAvatarCloneFigureList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeLiveAvatarCloneFigureListResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

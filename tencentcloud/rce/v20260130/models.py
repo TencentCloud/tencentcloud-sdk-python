@@ -4571,12 +4571,18 @@ class LoginEvent(AbstractModel):
         :type UserLoginName: str
         :param _LoginResult: <p>登录结果</p>
         :type LoginResult: :class:`tencentcloud.rce.v20260130.models.Result`
+        :param _RegisterTime: <p>用户注册时间。</p><p>参数格式：要求符合ISO 8601标准的带时区的毫秒级时间，格式&quot;YYYY-MM-DDTHH:mm:ss.sssZ&quot; ，例如&quot;2025-10-19T09:11:10.145+08:00&quot;</p>
+        :type RegisterTime: str
+        :param _IsPaidUser: <p>是否付费用户。</p><p>枚举值：</p><ul><li>true： 付费用户</li><li>false： 非付费用户</li></ul>
+        :type IsPaidUser: bool
         :param _Cust: <p>与RCE约定的定制化信息，为K:V 格式的对象数组，示例：[{&quot;Key&quot;: &quot;ApproverName&quot;, &quot;Value&quot;: &quot;bob&quot;},{&quot;Key&quot;:&quot;ApproverPhone&quot;,&quot;Value&quot;: &quot;+86131****5678&quot;}]</p>
         :type Cust: list of Cust
         """
         self._UserInfo = None
         self._UserLoginName = None
         self._LoginResult = None
+        self._RegisterTime = None
+        self._IsPaidUser = None
         self._Cust = None
 
     @property
@@ -4613,6 +4619,28 @@ class LoginEvent(AbstractModel):
         self._LoginResult = LoginResult
 
     @property
+    def RegisterTime(self):
+        r"""<p>用户注册时间。</p><p>参数格式：要求符合ISO 8601标准的带时区的毫秒级时间，格式&quot;YYYY-MM-DDTHH:mm:ss.sssZ&quot; ，例如&quot;2025-10-19T09:11:10.145+08:00&quot;</p>
+        :rtype: str
+        """
+        return self._RegisterTime
+
+    @RegisterTime.setter
+    def RegisterTime(self, RegisterTime):
+        self._RegisterTime = RegisterTime
+
+    @property
+    def IsPaidUser(self):
+        r"""<p>是否付费用户。</p><p>枚举值：</p><ul><li>true： 付费用户</li><li>false： 非付费用户</li></ul>
+        :rtype: bool
+        """
+        return self._IsPaidUser
+
+    @IsPaidUser.setter
+    def IsPaidUser(self, IsPaidUser):
+        self._IsPaidUser = IsPaidUser
+
+    @property
     def Cust(self):
         r"""<p>与RCE约定的定制化信息，为K:V 格式的对象数组，示例：[{&quot;Key&quot;: &quot;ApproverName&quot;, &quot;Value&quot;: &quot;bob&quot;},{&quot;Key&quot;:&quot;ApproverPhone&quot;,&quot;Value&quot;: &quot;+86131****5678&quot;}]</p>
         :rtype: list of Cust
@@ -4632,6 +4660,8 @@ class LoginEvent(AbstractModel):
         if params.get("LoginResult") is not None:
             self._LoginResult = Result()
             self._LoginResult._deserialize(params.get("LoginResult"))
+        self._RegisterTime = params.get("RegisterTime")
+        self._IsPaidUser = params.get("IsPaidUser")
         if params.get("Cust") is not None:
             self._Cust = []
             for item in params.get("Cust"):

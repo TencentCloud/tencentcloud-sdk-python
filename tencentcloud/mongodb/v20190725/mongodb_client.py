@@ -1849,6 +1849,52 @@ class MongodbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ScaleDownDBInstanceCpu(self, request):
+        r"""ScaleDownDBInstanceCpu
+
+        :param request: Request instance for ScaleDownDBInstanceCpu.
+        :type request: :class:`tencentcloud.mongodb.v20190725.models.ScaleDownDBInstanceCpuRequest`
+        :rtype: :class:`tencentcloud.mongodb.v20190725.models.ScaleDownDBInstanceCpuResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ScaleDownDBInstanceCpu", params, headers=headers)
+            response = json.loads(body)
+            model = models.ScaleDownDBInstanceCpuResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ScaleUpDBInstanceCpu(self, request):
+        r"""手动开启cpu弹性扩容
+
+        :param request: Request instance for ScaleUpDBInstanceCpu.
+        :type request: :class:`tencentcloud.mongodb.v20190725.models.ScaleUpDBInstanceCpuRequest`
+        :rtype: :class:`tencentcloud.mongodb.v20190725.models.ScaleUpDBInstanceCpuResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ScaleUpDBInstanceCpu", params, headers=headers)
+            response = json.loads(body)
+            model = models.ScaleUpDBInstanceCpuResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def SetAccountUserPrivilege(self, request):
         r"""本接口（SetAccountUserPrivilege）用于设置实例的账号权限。
 

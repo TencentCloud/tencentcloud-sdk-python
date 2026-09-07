@@ -408,6 +408,24 @@ class LiveClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateLiveAvatarCloneFigure(
+            self,
+            request: models.CreateLiveAvatarCloneFigureRequest,
+            opts: Dict = None,
+    ) -> models.CreateLiveAvatarCloneFigureResponse:
+        """
+        调用该接口，用于创建数字人直播间/AIGC直播间话术。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateLiveAvatarCloneFigure"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateLiveAvatarCloneFigureResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateLiveAvatarRoom(
             self,
             request: models.CreateLiveAvatarRoomRequest,
@@ -1018,6 +1036,24 @@ class LiveClient(AbstractClient):
         kwargs["action"] = "DeleteCasterOutputInfo"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DeleteCasterOutputInfoResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteLiveAvatarCloneFigure(
+            self,
+            request: models.DeleteLiveAvatarCloneFigureRequest,
+            opts: Dict = None,
+    ) -> models.DeleteLiveAvatarCloneFigureResponse:
+        """
+        调用该接口，用于删除已有的数字人直播间里面的话术。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteLiveAvatarCloneFigure"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteLiveAvatarCloneFigureResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -1895,6 +1931,24 @@ class LiveClient(AbstractClient):
         kwargs["action"] = "DescribeLiveAvatarBackgroundList"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeLiveAvatarBackgroundListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeLiveAvatarCloneFigureList(
+            self,
+            request: models.DescribeLiveAvatarCloneFigureListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeLiveAvatarCloneFigureListResponse:
+        """
+        调用该接口，查询数字人直播间信息列表。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeLiveAvatarCloneFigureList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeLiveAvatarCloneFigureListResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

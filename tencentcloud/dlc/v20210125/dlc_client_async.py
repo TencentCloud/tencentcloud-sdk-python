@@ -4440,24 +4440,6 @@ class DlcClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
-    async def GetRayJobEventLog(
-            self,
-            request: models.GetRayJobEventLogRequest,
-            opts: Dict = None,
-    ) -> models.GetRayJobEventLogResponse:
-        """
-        获取作业事件日志
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "GetRayJobEventLog"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.GetRayJobEventLogResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
     async def GetRayJobHistory(
             self,
             request: models.GetRayJobHistoryRequest,

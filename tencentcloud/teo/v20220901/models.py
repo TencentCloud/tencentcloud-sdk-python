@@ -425,6 +425,8 @@ class AccelerationDomain(AbstractModel):
         :type CreatedOn: str
         :param _ModifiedOn: <p>修改时间。</p>
         :type ModifiedOn: str
+        :param _ComplianceRestrictions: <p>域名因合规问题产生的地区访问限制列表。</p>
+        :type ComplianceRestrictions: list of ComplianceRestriction
         """
         self._ZoneId = None
         self._DomainName = None
@@ -440,6 +442,7 @@ class AccelerationDomain(AbstractModel):
         self._Certificate = None
         self._CreatedOn = None
         self._ModifiedOn = None
+        self._ComplianceRestrictions = None
 
     @property
     def ZoneId(self):
@@ -603,6 +606,17 @@ class AccelerationDomain(AbstractModel):
     def ModifiedOn(self, ModifiedOn):
         self._ModifiedOn = ModifiedOn
 
+    @property
+    def ComplianceRestrictions(self):
+        r"""<p>域名因合规问题产生的地区访问限制列表。</p>
+        :rtype: list of ComplianceRestriction
+        """
+        return self._ComplianceRestrictions
+
+    @ComplianceRestrictions.setter
+    def ComplianceRestrictions(self, ComplianceRestrictions):
+        self._ComplianceRestrictions = ComplianceRestrictions
+
 
     def _deserialize(self, params):
         self._ZoneId = params.get("ZoneId")
@@ -625,6 +639,12 @@ class AccelerationDomain(AbstractModel):
             self._Certificate._deserialize(params.get("Certificate"))
         self._CreatedOn = params.get("CreatedOn")
         self._ModifiedOn = params.get("ModifiedOn")
+        if params.get("ComplianceRestrictions") is not None:
+            self._ComplianceRestrictions = []
+            for item in params.get("ComplianceRestrictions"):
+                obj = ComplianceRestriction()
+                obj._deserialize(item)
+                self._ComplianceRestrictions.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -8479,6 +8499,57 @@ class CodeAction(AbstractModel):
                 obj = RuleCodeActionParams()
                 obj._deserialize(item)
                 self._Parameters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ComplianceRestriction(AbstractModel):
+    r"""因政府法律法规、用户协议等规定，对资源进行地区访问限制信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Reason: <p>下发访问限制的原因。</p><p>枚举值：</p><ul><li>ICP_RECORD_REQUIRED： 未备案；</li><li>GOVERNMENT_ORDER： 政府指令。</li></ul>
+        :type Reason: str
+        :param _Region: <p>限制访问地区的具体国家/地区码，使用“ISO 3166 国家/地区代码标准”。</p><p>参数格式：查看链接：https://www.iso.org/iso-3166-country-codes.html。</p>
+        :type Region: str
+        """
+        self._Reason = None
+        self._Region = None
+
+    @property
+    def Reason(self):
+        r"""<p>下发访问限制的原因。</p><p>枚举值：</p><ul><li>ICP_RECORD_REQUIRED： 未备案；</li><li>GOVERNMENT_ORDER： 政府指令。</li></ul>
+        :rtype: str
+        """
+        return self._Reason
+
+    @Reason.setter
+    def Reason(self, Reason):
+        self._Reason = Reason
+
+    @property
+    def Region(self):
+        r"""<p>限制访问地区的具体国家/地区码，使用“ISO 3166 国家/地区代码标准”。</p><p>参数格式：查看链接：https://www.iso.org/iso-3166-country-codes.html。</p>
+        :rtype: str
+        """
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+
+    def _deserialize(self, params):
+        self._Reason = params.get("Reason")
+        self._Region = params.get("Region")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -37104,21 +37175,23 @@ class Function(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _FunctionId: 函数 ID。
+        :param _FunctionId: <p>函数 ID。</p>
         :type FunctionId: str
-        :param _ZoneId: 站点 ID。
+        :param _ZoneId: <p>站点 ID。</p>
         :type ZoneId: str
-        :param _Name: 函数名字。
+        :param _Name: <p>函数名字。</p>
         :type Name: str
-        :param _Remark: 函数描述。
+        :param _Remark: <p>函数描述。</p>
         :type Remark: str
-        :param _Content: 函数内容。
+        :param _Content: <p>函数内容。</p>
         :type Content: str
-        :param _Domain: 函数默认域名。
+        :param _Domain: <p>函数默认域名。</p>
         :type Domain: str
-        :param _CreateTime: 创建时间。时间为世界标准时间（UTC）， 遵循 ISO 8601 标准的日期和时间格式。
+        :param _DomainComplianceRestrictions: <p>边缘函数默认域名因合规问题产生的地区访问限制列表。</p>
+        :type DomainComplianceRestrictions: list of ComplianceRestriction
+        :param _CreateTime: <p>创建时间。时间为世界标准时间（UTC）， 遵循 ISO 8601 标准的日期和时间格式。</p>
         :type CreateTime: str
-        :param _UpdateTime: 修改时间。时间为世界标准时间（UTC）， 遵循 ISO 8601 标准的日期和时间格式。
+        :param _UpdateTime: <p>修改时间。时间为世界标准时间（UTC）， 遵循 ISO 8601 标准的日期和时间格式。</p>
         :type UpdateTime: str
         """
         self._FunctionId = None
@@ -37127,12 +37200,13 @@ class Function(AbstractModel):
         self._Remark = None
         self._Content = None
         self._Domain = None
+        self._DomainComplianceRestrictions = None
         self._CreateTime = None
         self._UpdateTime = None
 
     @property
     def FunctionId(self):
-        r"""函数 ID。
+        r"""<p>函数 ID。</p>
         :rtype: str
         """
         return self._FunctionId
@@ -37143,7 +37217,7 @@ class Function(AbstractModel):
 
     @property
     def ZoneId(self):
-        r"""站点 ID。
+        r"""<p>站点 ID。</p>
         :rtype: str
         """
         return self._ZoneId
@@ -37154,7 +37228,7 @@ class Function(AbstractModel):
 
     @property
     def Name(self):
-        r"""函数名字。
+        r"""<p>函数名字。</p>
         :rtype: str
         """
         return self._Name
@@ -37165,7 +37239,7 @@ class Function(AbstractModel):
 
     @property
     def Remark(self):
-        r"""函数描述。
+        r"""<p>函数描述。</p>
         :rtype: str
         """
         return self._Remark
@@ -37176,7 +37250,7 @@ class Function(AbstractModel):
 
     @property
     def Content(self):
-        r"""函数内容。
+        r"""<p>函数内容。</p>
         :rtype: str
         """
         return self._Content
@@ -37187,7 +37261,7 @@ class Function(AbstractModel):
 
     @property
     def Domain(self):
-        r"""函数默认域名。
+        r"""<p>函数默认域名。</p>
         :rtype: str
         """
         return self._Domain
@@ -37197,8 +37271,19 @@ class Function(AbstractModel):
         self._Domain = Domain
 
     @property
+    def DomainComplianceRestrictions(self):
+        r"""<p>边缘函数默认域名因合规问题产生的地区访问限制列表。</p>
+        :rtype: list of ComplianceRestriction
+        """
+        return self._DomainComplianceRestrictions
+
+    @DomainComplianceRestrictions.setter
+    def DomainComplianceRestrictions(self, DomainComplianceRestrictions):
+        self._DomainComplianceRestrictions = DomainComplianceRestrictions
+
+    @property
     def CreateTime(self):
-        r"""创建时间。时间为世界标准时间（UTC）， 遵循 ISO 8601 标准的日期和时间格式。
+        r"""<p>创建时间。时间为世界标准时间（UTC）， 遵循 ISO 8601 标准的日期和时间格式。</p>
         :rtype: str
         """
         return self._CreateTime
@@ -37209,7 +37294,7 @@ class Function(AbstractModel):
 
     @property
     def UpdateTime(self):
-        r"""修改时间。时间为世界标准时间（UTC）， 遵循 ISO 8601 标准的日期和时间格式。
+        r"""<p>修改时间。时间为世界标准时间（UTC）， 遵循 ISO 8601 标准的日期和时间格式。</p>
         :rtype: str
         """
         return self._UpdateTime
@@ -37226,6 +37311,12 @@ class Function(AbstractModel):
         self._Remark = params.get("Remark")
         self._Content = params.get("Content")
         self._Domain = params.get("Domain")
+        if params.get("DomainComplianceRestrictions") is not None:
+            self._DomainComplianceRestrictions = []
+            for item in params.get("DomainComplianceRestrictions"):
+                obj = ComplianceRestriction()
+                obj._deserialize(item)
+                self._DomainComplianceRestrictions.append(obj)
         self._CreateTime = params.get("CreateTime")
         self._UpdateTime = params.get("UpdateTime")
         memeber_set = set(params.keys())

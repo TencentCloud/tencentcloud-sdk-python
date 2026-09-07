@@ -1544,6 +1544,8 @@ class AppAsset(AbstractModel):
         :type ClientAppPath: str
         :param _ClientAppKind: <p>客户端工具类型</p>
         :type ClientAppKind: str
+        :param _ClientAppArgs: <p>客户端工具启动参数</p>
+        :type ClientAppArgs: list of str
         :param _Url: <p>应用资产url</p>
         :type Url: str
         :param _BindStatus: <p>托管状态</p><p>枚举值：</p><ul><li>0： 未托管</li><li>1： 已托管</li></ul>
@@ -1593,6 +1595,7 @@ class AppAsset(AbstractModel):
         self._Kind = None
         self._ClientAppPath = None
         self._ClientAppKind = None
+        self._ClientAppArgs = None
         self._Url = None
         self._BindStatus = None
         self._DeviceInstanceId = None
@@ -1701,6 +1704,17 @@ class AppAsset(AbstractModel):
     @ClientAppKind.setter
     def ClientAppKind(self, ClientAppKind):
         self._ClientAppKind = ClientAppKind
+
+    @property
+    def ClientAppArgs(self):
+        r"""<p>客户端工具启动参数</p>
+        :rtype: list of str
+        """
+        return self._ClientAppArgs
+
+    @ClientAppArgs.setter
+    def ClientAppArgs(self, ClientAppArgs):
+        self._ClientAppArgs = ClientAppArgs
 
     @property
     def Url(self):
@@ -1932,6 +1946,7 @@ class AppAsset(AbstractModel):
         self._Kind = params.get("Kind")
         self._ClientAppPath = params.get("ClientAppPath")
         self._ClientAppKind = params.get("ClientAppKind")
+        self._ClientAppArgs = params.get("ClientAppArgs")
         self._Url = params.get("Url")
         self._BindStatus = params.get("BindStatus")
         self._DeviceInstanceId = params.get("DeviceInstanceId")
@@ -18573,14 +18588,17 @@ class ResetUserRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _IdSet: 用户ID集合
+        :param _IdSet: <p>用户ID集合</p>
         :type IdSet: list of int non-negative
+        :param _ResetType: <p>重置类型</p><p>枚举值：</p><ul><li>0： 同时重置本地认证密码、OTP验证码</li><li>1： 仅重置本地认证密码</li><li>2： 仅重置OTP验证码</li></ul><p>默认值：0</p>
+        :type ResetType: int
         """
         self._IdSet = None
+        self._ResetType = None
 
     @property
     def IdSet(self):
-        r"""用户ID集合
+        r"""<p>用户ID集合</p>
         :rtype: list of int non-negative
         """
         return self._IdSet
@@ -18589,9 +18607,21 @@ class ResetUserRequest(AbstractModel):
     def IdSet(self, IdSet):
         self._IdSet = IdSet
 
+    @property
+    def ResetType(self):
+        r"""<p>重置类型</p><p>枚举值：</p><ul><li>0： 同时重置本地认证密码、OTP验证码</li><li>1： 仅重置本地认证密码</li><li>2： 仅重置OTP验证码</li></ul><p>默认值：0</p>
+        :rtype: int
+        """
+        return self._ResetType
+
+    @ResetType.setter
+    def ResetType(self, ResetType):
+        self._ResetType = ResetType
+
 
     def _deserialize(self, params):
         self._IdSet = params.get("IdSet")
+        self._ResetType = params.get("ResetType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

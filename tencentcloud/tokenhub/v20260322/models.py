@@ -3209,6 +3209,10 @@ class DescribeModelQuotaResponse(AbstractModel):
         :type TPMInputReserveLimit: int
         :param _TPMOutputReserveLimit: <p>TPM 预留 output 配额</p>
         :type TPMOutputReserveLimit: int
+        :param _TPMInputReservePostPaidLimit: <p>TPM 预留后付费 input 配额</p>
+        :type TPMInputReservePostPaidLimit: int
+        :param _TPMOutputReservePostPaidLimit: <p>TPM 预留后付费 output 配额</p>
+        :type TPMOutputReservePostPaidLimit: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -3219,6 +3223,8 @@ class DescribeModelQuotaResponse(AbstractModel):
         self._TPMOutputQuotaLimit = None
         self._TPMInputReserveLimit = None
         self._TPMOutputReserveLimit = None
+        self._TPMInputReservePostPaidLimit = None
+        self._TPMOutputReservePostPaidLimit = None
         self._RequestId = None
 
     @property
@@ -3299,6 +3305,28 @@ class DescribeModelQuotaResponse(AbstractModel):
         self._TPMOutputReserveLimit = TPMOutputReserveLimit
 
     @property
+    def TPMInputReservePostPaidLimit(self):
+        r"""<p>TPM 预留后付费 input 配额</p>
+        :rtype: int
+        """
+        return self._TPMInputReservePostPaidLimit
+
+    @TPMInputReservePostPaidLimit.setter
+    def TPMInputReservePostPaidLimit(self, TPMInputReservePostPaidLimit):
+        self._TPMInputReservePostPaidLimit = TPMInputReservePostPaidLimit
+
+    @property
+    def TPMOutputReservePostPaidLimit(self):
+        r"""<p>TPM 预留后付费 output 配额</p>
+        :rtype: int
+        """
+        return self._TPMOutputReservePostPaidLimit
+
+    @TPMOutputReservePostPaidLimit.setter
+    def TPMOutputReservePostPaidLimit(self, TPMOutputReservePostPaidLimit):
+        self._TPMOutputReservePostPaidLimit = TPMOutputReservePostPaidLimit
+
+    @property
     def RequestId(self):
         r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -3318,6 +3346,8 @@ class DescribeModelQuotaResponse(AbstractModel):
         self._TPMOutputQuotaLimit = params.get("TPMOutputQuotaLimit")
         self._TPMInputReserveLimit = params.get("TPMInputReserveLimit")
         self._TPMOutputReserveLimit = params.get("TPMOutputReserveLimit")
+        self._TPMInputReservePostPaidLimit = params.get("TPMInputReservePostPaidLimit")
+        self._TPMOutputReservePostPaidLimit = params.get("TPMOutputReservePostPaidLimit")
         self._RequestId = params.get("RequestId")
 
 

@@ -5666,29 +5666,6 @@ class DlcClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def GetRayJobEventLog(self, request):
-        r"""获取作业事件日志
-
-        :param request: Request instance for GetRayJobEventLog.
-        :type request: :class:`tencentcloud.dlc.v20210125.models.GetRayJobEventLogRequest`
-        :rtype: :class:`tencentcloud.dlc.v20210125.models.GetRayJobEventLogResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("GetRayJobEventLog", params, headers=headers)
-            response = json.loads(body)
-            model = models.GetRayJobEventLogResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def GetRayJobHistory(self, request):
         r"""根据任务ID获取Ray任务的历史执行记录
 

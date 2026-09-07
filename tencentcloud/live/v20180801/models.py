@@ -7975,6 +7975,190 @@ class CreateCommonMixStreamResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateLiveAvatarCloneFigureRequest(AbstractModel):
+    r"""CreateLiveAvatarCloneFigure请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SceneType: <p>形象克隆场景类型</p><p>枚举值：</p><ul><li>PHOTO： 图生数字人</li><li>GREEN_SCREEN： 绿幕数字人</li><li>REAL_SHOT： 实景数字人</li></ul>
+        :type SceneType: str
+        :param _FigureName: <p>克隆的形象的名字</p>
+        :type FigureName: str
+        :param _MaterialUrl: <p>克隆的形象的url</p>
+        :type MaterialUrl: str
+        :param _Gender: <p>克隆的形象的性别</p><p>枚举值：</p><ul><li>MALE： 男</li><li>FEMALE： 女</li><li>UNHNOWN： 不知道</li></ul>
+        :type Gender: str
+        :param _IdentityWrittenUrl: <p>授权pdf</p>
+        :type IdentityWrittenUrl: str
+        :param _IdentityVideoUrl: <p>授权视频</p>
+        :type IdentityVideoUrl: str
+        :param _PhotoVersion: <p>图生视频时，动作训练幅度大小</p><p>枚举值：</p><ul><li>0： 只有头部轻微动</li><li>1： 头部跟身体均动</li></ul>
+        :type PhotoVersion: int
+        """
+        self._SceneType = None
+        self._FigureName = None
+        self._MaterialUrl = None
+        self._Gender = None
+        self._IdentityWrittenUrl = None
+        self._IdentityVideoUrl = None
+        self._PhotoVersion = None
+
+    @property
+    def SceneType(self):
+        r"""<p>形象克隆场景类型</p><p>枚举值：</p><ul><li>PHOTO： 图生数字人</li><li>GREEN_SCREEN： 绿幕数字人</li><li>REAL_SHOT： 实景数字人</li></ul>
+        :rtype: str
+        """
+        return self._SceneType
+
+    @SceneType.setter
+    def SceneType(self, SceneType):
+        self._SceneType = SceneType
+
+    @property
+    def FigureName(self):
+        r"""<p>克隆的形象的名字</p>
+        :rtype: str
+        """
+        return self._FigureName
+
+    @FigureName.setter
+    def FigureName(self, FigureName):
+        self._FigureName = FigureName
+
+    @property
+    def MaterialUrl(self):
+        r"""<p>克隆的形象的url</p>
+        :rtype: str
+        """
+        return self._MaterialUrl
+
+    @MaterialUrl.setter
+    def MaterialUrl(self, MaterialUrl):
+        self._MaterialUrl = MaterialUrl
+
+    @property
+    def Gender(self):
+        r"""<p>克隆的形象的性别</p><p>枚举值：</p><ul><li>MALE： 男</li><li>FEMALE： 女</li><li>UNHNOWN： 不知道</li></ul>
+        :rtype: str
+        """
+        return self._Gender
+
+    @Gender.setter
+    def Gender(self, Gender):
+        self._Gender = Gender
+
+    @property
+    def IdentityWrittenUrl(self):
+        r"""<p>授权pdf</p>
+        :rtype: str
+        """
+        return self._IdentityWrittenUrl
+
+    @IdentityWrittenUrl.setter
+    def IdentityWrittenUrl(self, IdentityWrittenUrl):
+        self._IdentityWrittenUrl = IdentityWrittenUrl
+
+    @property
+    def IdentityVideoUrl(self):
+        r"""<p>授权视频</p>
+        :rtype: str
+        """
+        return self._IdentityVideoUrl
+
+    @IdentityVideoUrl.setter
+    def IdentityVideoUrl(self, IdentityVideoUrl):
+        self._IdentityVideoUrl = IdentityVideoUrl
+
+    @property
+    def PhotoVersion(self):
+        r"""<p>图生视频时，动作训练幅度大小</p><p>枚举值：</p><ul><li>0： 只有头部轻微动</li><li>1： 头部跟身体均动</li></ul>
+        :rtype: int
+        """
+        return self._PhotoVersion
+
+    @PhotoVersion.setter
+    def PhotoVersion(self, PhotoVersion):
+        self._PhotoVersion = PhotoVersion
+
+
+    def _deserialize(self, params):
+        self._SceneType = params.get("SceneType")
+        self._FigureName = params.get("FigureName")
+        self._MaterialUrl = params.get("MaterialUrl")
+        self._Gender = params.get("Gender")
+        self._IdentityWrittenUrl = params.get("IdentityWrittenUrl")
+        self._IdentityVideoUrl = params.get("IdentityVideoUrl")
+        self._PhotoVersion = params.get("PhotoVersion")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateLiveAvatarCloneFigureResponse(AbstractModel):
+    r"""CreateLiveAvatarCloneFigure返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: <p>该图克隆形象生成的任务id</p>
+        :type TaskId: str
+        :param _Status: <p>该克隆形象返回的状态</p><p>枚举值：</p><ul><li>SUBMITTING： 已受理</li><li>CHECKING： 检查中</li><li>QUEUE： 排队中</li><li>MAKING： 训练中</li><li>CONFIRMING： 效果确认</li><li>SUCCESS： 成功</li><li>FAIL： 失败</li></ul>
+        :type Status: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._Status = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        r"""<p>该图克隆形象生成的任务id</p>
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def Status(self):
+        r"""<p>该克隆形象返回的状态</p><p>枚举值：</p><ul><li>SUBMITTING： 已受理</li><li>CHECKING： 检查中</li><li>QUEUE： 排队中</li><li>MAKING： 训练中</li><li>CONFIRMING： 效果确认</li><li>SUCCESS： 成功</li><li>FAIL： 失败</li></ul>
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._Status = params.get("Status")
+        self._RequestId = params.get("RequestId")
+
+
 class CreateLiveAvatarRoomRequest(AbstractModel):
     r"""CreateLiveAvatarRoom请求参数结构体
 
@@ -7982,17 +8166,26 @@ class CreateLiveAvatarRoomRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Name: 直播间名称。
+        :param _Name: <p>直播间名称。</p>
         :type Name: str
-        :param _Operator: 操作者。
+        :param _Operator: <p>操作者。</p>
         :type Operator: str
+        :param _AvatarKey: <p>形象ID</p>
+        :type AvatarKey: str
+        :param _TimbreKey: <p>音色ID</p>
+        :type TimbreKey: str
+        :param _LiveMode: <p>房间模式</p><p>枚举值：</p><ul><li>INTERACT： 交互模式</li><li>FREE： 自由模式</li><li>NORMAL： 普通模式</li></ul>
+        :type LiveMode: str
         """
         self._Name = None
         self._Operator = None
+        self._AvatarKey = None
+        self._TimbreKey = None
+        self._LiveMode = None
 
     @property
     def Name(self):
-        r"""直播间名称。
+        r"""<p>直播间名称。</p>
         :rtype: str
         """
         return self._Name
@@ -8003,7 +8196,7 @@ class CreateLiveAvatarRoomRequest(AbstractModel):
 
     @property
     def Operator(self):
-        r"""操作者。
+        r"""<p>操作者。</p>
         :rtype: str
         """
         return self._Operator
@@ -8012,10 +8205,46 @@ class CreateLiveAvatarRoomRequest(AbstractModel):
     def Operator(self, Operator):
         self._Operator = Operator
 
+    @property
+    def AvatarKey(self):
+        r"""<p>形象ID</p>
+        :rtype: str
+        """
+        return self._AvatarKey
+
+    @AvatarKey.setter
+    def AvatarKey(self, AvatarKey):
+        self._AvatarKey = AvatarKey
+
+    @property
+    def TimbreKey(self):
+        r"""<p>音色ID</p>
+        :rtype: str
+        """
+        return self._TimbreKey
+
+    @TimbreKey.setter
+    def TimbreKey(self, TimbreKey):
+        self._TimbreKey = TimbreKey
+
+    @property
+    def LiveMode(self):
+        r"""<p>房间模式</p><p>枚举值：</p><ul><li>INTERACT： 交互模式</li><li>FREE： 自由模式</li><li>NORMAL： 普通模式</li></ul>
+        :rtype: str
+        """
+        return self._LiveMode
+
+    @LiveMode.setter
+    def LiveMode(self, LiveMode):
+        self._LiveMode = LiveMode
+
 
     def _deserialize(self, params):
         self._Name = params.get("Name")
         self._Operator = params.get("Operator")
+        self._AvatarKey = params.get("AvatarKey")
+        self._TimbreKey = params.get("TimbreKey")
+        self._LiveMode = params.get("LiveMode")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -8033,7 +8262,7 @@ class CreateLiveAvatarRoomResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RoomId: 数字人直播间 ID。
+        :param _RoomId: <p>数字人直播间 ID。</p>
         :type RoomId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -8043,7 +8272,7 @@ class CreateLiveAvatarRoomResponse(AbstractModel):
 
     @property
     def RoomId(self):
-        r"""数字人直播间 ID。
+        r"""<p>数字人直播间 ID。</p>
         :rtype: str
         """
         return self._RoomId
@@ -13708,6 +13937,70 @@ class DeleteCasterResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DeleteLiveAvatarCloneFigureRequest(AbstractModel):
+    r"""DeleteLiveAvatarCloneFigure请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: <p>待查的克隆形象的TaskId</p>
+        :type TaskId: str
+        """
+        self._TaskId = None
+
+    @property
+    def TaskId(self):
+        r"""<p>待查的克隆形象的TaskId</p>
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteLiveAvatarCloneFigureResponse(AbstractModel):
+    r"""DeleteLiveAvatarCloneFigure返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class DeleteLiveAvatarRoomRequest(AbstractModel):
     r"""DeleteLiveAvatarRoom请求参数结构体
 
@@ -18548,6 +18841,150 @@ class DescribeLiveAvatarBackgroundListResponse(AbstractModel):
                 obj = AvatarBackgroundInfo()
                 obj._deserialize(item)
                 self._InfoList.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeLiveAvatarCloneFigureListRequest(AbstractModel):
+    r"""DescribeLiveAvatarCloneFigureList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: <p>待查询的克隆形象的TaskId</p>
+        :type TaskId: str
+        :param _Status: <p>根据状态查询克隆形象</p><p>枚举值：</p><ul><li>SUBMITTING： 已受理</li><li>CHECKING： 检查中</li><li>QUEUE： 排队中</li><li>MAKING： 训练中</li><li>CONFIRMING： 效果确认</li><li>SUCCESS： 成功</li><li>FAIL： 失败</li></ul>
+        :type Status: str
+        :param _Limit: <p>期望返回克隆形象的个数（最多20个）</p>
+        :type Limit: str
+        :param _Offset: <p>期望返回克隆形象的起始偏移位置（默认为0）</p>
+        :type Offset: str
+        """
+        self._TaskId = None
+        self._Status = None
+        self._Limit = None
+        self._Offset = None
+
+    @property
+    def TaskId(self):
+        r"""<p>待查询的克隆形象的TaskId</p>
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def Status(self):
+        r"""<p>根据状态查询克隆形象</p><p>枚举值：</p><ul><li>SUBMITTING： 已受理</li><li>CHECKING： 检查中</li><li>QUEUE： 排队中</li><li>MAKING： 训练中</li><li>CONFIRMING： 效果确认</li><li>SUCCESS： 成功</li><li>FAIL： 失败</li></ul>
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Limit(self):
+        r"""<p>期望返回克隆形象的个数（最多20个）</p>
+        :rtype: str
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        r"""<p>期望返回克隆形象的起始偏移位置（默认为0）</p>
+        :rtype: str
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._Status = params.get("Status")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeLiveAvatarCloneFigureListResponse(AbstractModel):
+    r"""DescribeLiveAvatarCloneFigureList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CloneFigureList: <p>克隆形象列表</p>
+        :type CloneFigureList: list of LiveAvatarCloneFigureInfo
+        :param _TotalCount: <p>克隆形象总个数</p><p>单位：个</p>
+        :type TotalCount: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._CloneFigureList = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def CloneFigureList(self):
+        r"""<p>克隆形象列表</p>
+        :rtype: list of LiveAvatarCloneFigureInfo
+        """
+        return self._CloneFigureList
+
+    @CloneFigureList.setter
+    def CloneFigureList(self, CloneFigureList):
+        self._CloneFigureList = CloneFigureList
+
+    @property
+    def TotalCount(self):
+        r"""<p>克隆形象总个数</p><p>单位：个</p>
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("CloneFigureList") is not None:
+            self._CloneFigureList = []
+            for item in params.get("CloneFigureList"):
+                obj = LiveAvatarCloneFigureInfo()
+                obj._deserialize(item)
+                self._CloneFigureList.append(obj)
+        self._TotalCount = params.get("TotalCount")
         self._RequestId = params.get("RequestId")
 
 
@@ -31766,6 +32203,312 @@ class InsertTaskTemporaryFilesResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class LiveAvatarCloneFigureInfo(AbstractModel):
+    r"""数字人直播间克隆形象信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: <p>克隆形象任务ID</p>
+        :type TaskId: str
+        :param _SceneType: <p>场景模式</p><p>枚举值：</p><ul><li>PHOTO： 图生形象</li><li>GREEN_SCREEN： 绿幕形象</li><li>REAL_SHOT： 实景形象</li></ul>
+        :type SceneType: str
+        :param _FigureName: <p>形象名称</p>
+        :type FigureName: str
+        :param _Gender: <p>性别：男或者女</p>
+        :type Gender: str
+        :param _Status: <p>状态</p><p>枚举值：</p><ul><li>SUCCESS： 成功</li><li>FAILED： 失败</li><li>PROCESSING： 生成中</li></ul>
+        :type Status: str
+        :param _Progress: <p>进度条</p>
+        :type Progress: int
+        :param _AvatarKey: <p>克隆好的形象在系统的key</p>
+        :type AvatarKey: str
+        :param _FigureImg: <p>形象的图像</p>
+        :type FigureImg: str
+        :param _FailReason: <p>失败原因，成功时，该字段没值</p>
+        :type FailReason: str
+        :param _MaterialUrl: <p>训练视频</p>
+        :type MaterialUrl: str
+        :param _CreateTime: <p>该克隆音色创建的时间</p><p>参数格式：YYYY-MM-DD</p>
+        :type CreateTime: str
+        :param _UpdateTime: <p>更新时间</p><p>参数格式：YYYY-MM</p>
+        :type UpdateTime: str
+        :param _RenewStatus: <p>是否有续期</p>
+        :type RenewStatus: str
+        :param _IsExpired: <p>是否过期</p>
+        :type IsExpired: bool
+        :param _ExpireTime: <p>有效期时间</p><p>参数格式：YYYY-MM</p>
+        :type ExpireTime: str
+        :param _NeedPlayback: <p>是否循环播放(实景克隆形象能使用)</p>
+        :type NeedPlayback: int
+        :param _PhotoVersion: <p>训练幅度，0：表示只有有头部动；1表示头部和手势都有训练</p><p>单位：1</p>
+        :type PhotoVersion: int
+        :param _ConfirmDemoUrls: <p>待确认视频</p>
+        :type ConfirmDemoUrls: str
+        :param _EstimatedCompleteTime: <p>形象克隆完成时间</p><p>参数格式：YYYY-MM</p>
+        :type EstimatedCompleteTime: str
+        """
+        self._TaskId = None
+        self._SceneType = None
+        self._FigureName = None
+        self._Gender = None
+        self._Status = None
+        self._Progress = None
+        self._AvatarKey = None
+        self._FigureImg = None
+        self._FailReason = None
+        self._MaterialUrl = None
+        self._CreateTime = None
+        self._UpdateTime = None
+        self._RenewStatus = None
+        self._IsExpired = None
+        self._ExpireTime = None
+        self._NeedPlayback = None
+        self._PhotoVersion = None
+        self._ConfirmDemoUrls = None
+        self._EstimatedCompleteTime = None
+
+    @property
+    def TaskId(self):
+        r"""<p>克隆形象任务ID</p>
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def SceneType(self):
+        r"""<p>场景模式</p><p>枚举值：</p><ul><li>PHOTO： 图生形象</li><li>GREEN_SCREEN： 绿幕形象</li><li>REAL_SHOT： 实景形象</li></ul>
+        :rtype: str
+        """
+        return self._SceneType
+
+    @SceneType.setter
+    def SceneType(self, SceneType):
+        self._SceneType = SceneType
+
+    @property
+    def FigureName(self):
+        r"""<p>形象名称</p>
+        :rtype: str
+        """
+        return self._FigureName
+
+    @FigureName.setter
+    def FigureName(self, FigureName):
+        self._FigureName = FigureName
+
+    @property
+    def Gender(self):
+        r"""<p>性别：男或者女</p>
+        :rtype: str
+        """
+        return self._Gender
+
+    @Gender.setter
+    def Gender(self, Gender):
+        self._Gender = Gender
+
+    @property
+    def Status(self):
+        r"""<p>状态</p><p>枚举值：</p><ul><li>SUCCESS： 成功</li><li>FAILED： 失败</li><li>PROCESSING： 生成中</li></ul>
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Progress(self):
+        r"""<p>进度条</p>
+        :rtype: int
+        """
+        return self._Progress
+
+    @Progress.setter
+    def Progress(self, Progress):
+        self._Progress = Progress
+
+    @property
+    def AvatarKey(self):
+        r"""<p>克隆好的形象在系统的key</p>
+        :rtype: str
+        """
+        return self._AvatarKey
+
+    @AvatarKey.setter
+    def AvatarKey(self, AvatarKey):
+        self._AvatarKey = AvatarKey
+
+    @property
+    def FigureImg(self):
+        r"""<p>形象的图像</p>
+        :rtype: str
+        """
+        return self._FigureImg
+
+    @FigureImg.setter
+    def FigureImg(self, FigureImg):
+        self._FigureImg = FigureImg
+
+    @property
+    def FailReason(self):
+        r"""<p>失败原因，成功时，该字段没值</p>
+        :rtype: str
+        """
+        return self._FailReason
+
+    @FailReason.setter
+    def FailReason(self, FailReason):
+        self._FailReason = FailReason
+
+    @property
+    def MaterialUrl(self):
+        r"""<p>训练视频</p>
+        :rtype: str
+        """
+        return self._MaterialUrl
+
+    @MaterialUrl.setter
+    def MaterialUrl(self, MaterialUrl):
+        self._MaterialUrl = MaterialUrl
+
+    @property
+    def CreateTime(self):
+        r"""<p>该克隆音色创建的时间</p><p>参数格式：YYYY-MM-DD</p>
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        r"""<p>更新时间</p><p>参数格式：YYYY-MM</p>
+        :rtype: str
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def RenewStatus(self):
+        r"""<p>是否有续期</p>
+        :rtype: str
+        """
+        return self._RenewStatus
+
+    @RenewStatus.setter
+    def RenewStatus(self, RenewStatus):
+        self._RenewStatus = RenewStatus
+
+    @property
+    def IsExpired(self):
+        r"""<p>是否过期</p>
+        :rtype: bool
+        """
+        return self._IsExpired
+
+    @IsExpired.setter
+    def IsExpired(self, IsExpired):
+        self._IsExpired = IsExpired
+
+    @property
+    def ExpireTime(self):
+        r"""<p>有效期时间</p><p>参数格式：YYYY-MM</p>
+        :rtype: str
+        """
+        return self._ExpireTime
+
+    @ExpireTime.setter
+    def ExpireTime(self, ExpireTime):
+        self._ExpireTime = ExpireTime
+
+    @property
+    def NeedPlayback(self):
+        r"""<p>是否循环播放(实景克隆形象能使用)</p>
+        :rtype: int
+        """
+        return self._NeedPlayback
+
+    @NeedPlayback.setter
+    def NeedPlayback(self, NeedPlayback):
+        self._NeedPlayback = NeedPlayback
+
+    @property
+    def PhotoVersion(self):
+        r"""<p>训练幅度，0：表示只有有头部动；1表示头部和手势都有训练</p><p>单位：1</p>
+        :rtype: int
+        """
+        return self._PhotoVersion
+
+    @PhotoVersion.setter
+    def PhotoVersion(self, PhotoVersion):
+        self._PhotoVersion = PhotoVersion
+
+    @property
+    def ConfirmDemoUrls(self):
+        r"""<p>待确认视频</p>
+        :rtype: str
+        """
+        return self._ConfirmDemoUrls
+
+    @ConfirmDemoUrls.setter
+    def ConfirmDemoUrls(self, ConfirmDemoUrls):
+        self._ConfirmDemoUrls = ConfirmDemoUrls
+
+    @property
+    def EstimatedCompleteTime(self):
+        r"""<p>形象克隆完成时间</p><p>参数格式：YYYY-MM</p>
+        :rtype: str
+        """
+        return self._EstimatedCompleteTime
+
+    @EstimatedCompleteTime.setter
+    def EstimatedCompleteTime(self, EstimatedCompleteTime):
+        self._EstimatedCompleteTime = EstimatedCompleteTime
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._SceneType = params.get("SceneType")
+        self._FigureName = params.get("FigureName")
+        self._Gender = params.get("Gender")
+        self._Status = params.get("Status")
+        self._Progress = params.get("Progress")
+        self._AvatarKey = params.get("AvatarKey")
+        self._FigureImg = params.get("FigureImg")
+        self._FailReason = params.get("FailReason")
+        self._MaterialUrl = params.get("MaterialUrl")
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
+        self._RenewStatus = params.get("RenewStatus")
+        self._IsExpired = params.get("IsExpired")
+        self._ExpireTime = params.get("ExpireTime")
+        self._NeedPlayback = params.get("NeedPlayback")
+        self._PhotoVersion = params.get("PhotoVersion")
+        self._ConfirmDemoUrls = params.get("ConfirmDemoUrls")
+        self._EstimatedCompleteTime = params.get("EstimatedCompleteTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class LiveCertDomainInfo(AbstractModel):
     r"""用作批量绑定域名和证书。
 
@@ -43124,12 +43867,24 @@ class StartLiveAvatarRoomRequest(AbstractModel):
         :type Operator: str
         :param _RoomType: <p>房间类型。AIGC：AIGC形象房间；PRESET：预设形象房间</p><p>枚举值：</p><ul><li>AIGC： AIGC形象房间</li><li>PRESET： 预设形象房间</li></ul>
         :type RoomType: str
+        :param _SessionProtocol: <p>交互模式下的协议，支持rtmp和trtc，默认是rtmp</p>
+        :type SessionProtocol: str
+        :param _TrtcSdkAppId: <p>使用trtc协议时，在trtc的appid</p>
+        :type TrtcSdkAppId: str
+        :param _TrtcUserSig: <p>进入房间时需要用UserSign来校验权限</p>
+        :type TrtcUserSig: str
+        :param _TrtcRoomId: <p>要进入的房间</p>
+        :type TrtcRoomId: str
         """
         self._RoomId = None
         self._Comment = None
         self._ToUrl = None
         self._Operator = None
         self._RoomType = None
+        self._SessionProtocol = None
+        self._TrtcSdkAppId = None
+        self._TrtcUserSig = None
+        self._TrtcRoomId = None
 
     @property
     def RoomId(self):
@@ -43186,6 +43941,50 @@ class StartLiveAvatarRoomRequest(AbstractModel):
     def RoomType(self, RoomType):
         self._RoomType = RoomType
 
+    @property
+    def SessionProtocol(self):
+        r"""<p>交互模式下的协议，支持rtmp和trtc，默认是rtmp</p>
+        :rtype: str
+        """
+        return self._SessionProtocol
+
+    @SessionProtocol.setter
+    def SessionProtocol(self, SessionProtocol):
+        self._SessionProtocol = SessionProtocol
+
+    @property
+    def TrtcSdkAppId(self):
+        r"""<p>使用trtc协议时，在trtc的appid</p>
+        :rtype: str
+        """
+        return self._TrtcSdkAppId
+
+    @TrtcSdkAppId.setter
+    def TrtcSdkAppId(self, TrtcSdkAppId):
+        self._TrtcSdkAppId = TrtcSdkAppId
+
+    @property
+    def TrtcUserSig(self):
+        r"""<p>进入房间时需要用UserSign来校验权限</p>
+        :rtype: str
+        """
+        return self._TrtcUserSig
+
+    @TrtcUserSig.setter
+    def TrtcUserSig(self, TrtcUserSig):
+        self._TrtcUserSig = TrtcUserSig
+
+    @property
+    def TrtcRoomId(self):
+        r"""<p>要进入的房间</p>
+        :rtype: str
+        """
+        return self._TrtcRoomId
+
+    @TrtcRoomId.setter
+    def TrtcRoomId(self, TrtcRoomId):
+        self._TrtcRoomId = TrtcRoomId
+
 
     def _deserialize(self, params):
         self._RoomId = params.get("RoomId")
@@ -43193,6 +43992,10 @@ class StartLiveAvatarRoomRequest(AbstractModel):
         self._ToUrl = params.get("ToUrl")
         self._Operator = params.get("Operator")
         self._RoomType = params.get("RoomType")
+        self._SessionProtocol = params.get("SessionProtocol")
+        self._TrtcSdkAppId = params.get("TrtcSdkAppId")
+        self._TrtcUserSig = params.get("TrtcUserSig")
+        self._TrtcRoomId = params.get("TrtcRoomId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

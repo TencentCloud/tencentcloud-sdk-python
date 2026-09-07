@@ -49016,6 +49016,72 @@ class DocToVideoInput(AbstractModel):
         
 
 
+class DocToVideoRegenerateInput(AbstractModel):
+    r"""AIGC 文档生视频任务重新生成的输入信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Scope: <p>重新生成的范围。</p><p>枚举值：</p><ul><li>full： 该阶段全量重新生成（例如：修改整体的场景数量）</li><li>scenes： 按场景局部重新生成（例如：修改某场景的具体内容）</li></ul>
+        :type Scope: str
+        :param _Prompt: <p>重新生成时的提示词。</p>
+        :type Prompt: str
+        :param _SceneIds: <p>按页局部重新生成时的目标页 ID 数组。仅 Scope=scenes 时必填。不可重复，单次重新生成最多 5 页。</p>
+        :type SceneIds: list of str
+        """
+        self._Scope = None
+        self._Prompt = None
+        self._SceneIds = None
+
+    @property
+    def Scope(self):
+        r"""<p>重新生成的范围。</p><p>枚举值：</p><ul><li>full： 该阶段全量重新生成（例如：修改整体的场景数量）</li><li>scenes： 按场景局部重新生成（例如：修改某场景的具体内容）</li></ul>
+        :rtype: str
+        """
+        return self._Scope
+
+    @Scope.setter
+    def Scope(self, Scope):
+        self._Scope = Scope
+
+    @property
+    def Prompt(self):
+        r"""<p>重新生成时的提示词。</p>
+        :rtype: str
+        """
+        return self._Prompt
+
+    @Prompt.setter
+    def Prompt(self, Prompt):
+        self._Prompt = Prompt
+
+    @property
+    def SceneIds(self):
+        r"""<p>按页局部重新生成时的目标页 ID 数组。仅 Scope=scenes 时必填。不可重复，单次重新生成最多 5 页。</p>
+        :rtype: list of str
+        """
+        return self._SceneIds
+
+    @SceneIds.setter
+    def SceneIds(self, SceneIds):
+        self._SceneIds = SceneIds
+
+
+    def _deserialize(self, params):
+        self._Scope = params.get("Scope")
+        self._Prompt = params.get("Prompt")
+        self._SceneIds = params.get("SceneIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DocToVideoWatermarkInfo(AbstractModel):
     r"""AIGC 文档生成视频水印图片信息
 
@@ -66376,6 +66442,170 @@ class ModifyContentReviewTemplateResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyDocToVideoTaskStatusInput(AbstractModel):
+    r"""修改 AIGC 文档生视频任务状态输入
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Action: <p>修改动作类型。</p><p>枚举值：</p><ul><li>confirm： 确认已完成阶段并推进下一阶段</li><li>regenerate： 重新生成指定阶段</li></ul>
+        :type Action: str
+        :param _Stage: <p>修改目标阶段。</p><p>枚举值：</p><ul><li>STAGE_1：<br>Action=confirm 时：确认大纲、继续生成后续配音、动画效果、字幕；<br>Action=regenerate 时：重新生成大纲。</li></ul><ul><li>STAGE_2：<br>Action=confirm 时：确认生成的配音、动画效果、字幕，生成最终成片；<br>Action=regenerate 时：重新生成配音、动画效果、字幕。</li></ul>
+        :type Stage: str
+        :param _SourceTaskId: <p>需要进行修改的目标任务 ID。</p>
+        :type SourceTaskId: str
+        :param _Regenerate: <p>重新生成参数。</p><p>仅 Action=regenerate 时必填。</p>
+        :type Regenerate: :class:`tencentcloud.mps.v20190612.models.DocToVideoRegenerateInput`
+        """
+        self._Action = None
+        self._Stage = None
+        self._SourceTaskId = None
+        self._Regenerate = None
+
+    @property
+    def Action(self):
+        r"""<p>修改动作类型。</p><p>枚举值：</p><ul><li>confirm： 确认已完成阶段并推进下一阶段</li><li>regenerate： 重新生成指定阶段</li></ul>
+        :rtype: str
+        """
+        return self._Action
+
+    @Action.setter
+    def Action(self, Action):
+        self._Action = Action
+
+    @property
+    def Stage(self):
+        r"""<p>修改目标阶段。</p><p>枚举值：</p><ul><li>STAGE_1：<br>Action=confirm 时：确认大纲、继续生成后续配音、动画效果、字幕；<br>Action=regenerate 时：重新生成大纲。</li></ul><ul><li>STAGE_2：<br>Action=confirm 时：确认生成的配音、动画效果、字幕，生成最终成片；<br>Action=regenerate 时：重新生成配音、动画效果、字幕。</li></ul>
+        :rtype: str
+        """
+        return self._Stage
+
+    @Stage.setter
+    def Stage(self, Stage):
+        self._Stage = Stage
+
+    @property
+    def SourceTaskId(self):
+        r"""<p>需要进行修改的目标任务 ID。</p>
+        :rtype: str
+        """
+        return self._SourceTaskId
+
+    @SourceTaskId.setter
+    def SourceTaskId(self, SourceTaskId):
+        self._SourceTaskId = SourceTaskId
+
+    @property
+    def Regenerate(self):
+        r"""<p>重新生成参数。</p><p>仅 Action=regenerate 时必填。</p>
+        :rtype: :class:`tencentcloud.mps.v20190612.models.DocToVideoRegenerateInput`
+        """
+        return self._Regenerate
+
+    @Regenerate.setter
+    def Regenerate(self, Regenerate):
+        self._Regenerate = Regenerate
+
+
+    def _deserialize(self, params):
+        self._Action = params.get("Action")
+        self._Stage = params.get("Stage")
+        self._SourceTaskId = params.get("SourceTaskId")
+        if params.get("Regenerate") is not None:
+            self._Regenerate = DocToVideoRegenerateInput()
+            self._Regenerate._deserialize(params.get("Regenerate"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyDocToVideoTaskStatusRequest(AbstractModel):
+    r"""ModifyDocToVideoTaskStatus请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Input: <p>修改AIGC文档生视频任务状态的输入</p>
+        :type Input: :class:`tencentcloud.mps.v20190612.models.ModifyDocToVideoTaskStatusInput`
+        """
+        self._Input = None
+
+    @property
+    def Input(self):
+        r"""<p>修改AIGC文档生视频任务状态的输入</p>
+        :rtype: :class:`tencentcloud.mps.v20190612.models.ModifyDocToVideoTaskStatusInput`
+        """
+        return self._Input
+
+    @Input.setter
+    def Input(self, Input):
+        self._Input = Input
+
+
+    def _deserialize(self, params):
+        if params.get("Input") is not None:
+            self._Input = ModifyDocToVideoTaskStatusInput()
+            self._Input._deserialize(params.get("Input"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyDocToVideoTaskStatusResponse(AbstractModel):
+    r"""ModifyDocToVideoTaskStatus返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: <p>任务ID</p>
+        :type TaskId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        r"""<p>任务ID</p>
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
         self._RequestId = params.get("RequestId")
 
 

@@ -1043,7 +1043,7 @@ class EssClient(AbstractClient):
         | 个人（自然人） | 1 | 个人真实姓名、个人触达手机号、身份证号（非必传） | ApproverName + ApproverMobile |
 
 
-        该接口需要依赖[上传文件](https://qian.tencent.com/developers/companyApis/templatesAndFiles/UploadFiles)接口生成pdf资源编号（FileIds）进行使用。（如果非pdf文件需要调用[创建文件转换任务](https://qian.tencent.com/developers/companyApis/templatesAndFiles/DescribeFileConvertTask)接口转换成pdf资源）<br/>
+        该接口需要依赖[上传文件](https://qian.tencent.com/developers/companyApis/templatesAndFiles/UploadFiles)接口生成pdf资源编号（FileIds）进行使用。（如果非pdf文件需要调用[创建文件转换任务](https://qian.tencent.com/developers/companyApis/templatesAndFiles/CreateFileConvertTask)接口转换成pdf资源）<br/>
 
         ## 整体流程图
         ![image](https://qcloudimg.tencent-cloud.cn/raw/9bf547fe0bc738f9a97b4b619dea0633.svg)
@@ -4064,7 +4064,7 @@ class EssClient(AbstractClient):
 
         适用场景：用于合同，印章的文件上传。文件上传以后，
         如果是PDF格式文件可配合<a href="https://qian.tencent.com/developers/companyApis/startFlows/CreateFlowByFiles" target="_blank">用PDF文件创建签署流程</a>接口进行合同流程的发起
-        如果是其他类型可以配合<a href="https://qian.tencent.com/developers/companyApis/templatesAndFiles/CreateConvertTaskApi" target="_blank">创建文件转换任务</a>接口转换成PDF文件
+        如果是其他类型可以配合<a href="https://qian.tencent.com/developers/companyApis/templatesAndFiles/CreateFileConvertTask" target="_blank">创建文件转换任务</a>接口转换成PDF文件
 
         注:
         1. 图片类型(png/jpg/jpeg)限制大小为5M以下, PDF/word/excel等其他格式限制大小为60M以下

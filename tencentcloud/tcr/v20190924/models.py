@@ -16231,11 +16231,11 @@ class ModifyWebhookTriggerRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RegistryId: 实例Id
+        :param _RegistryId: <p>实例Id</p>
         :type RegistryId: str
-        :param _Trigger: 触发器参数
+        :param _Trigger: <p>触发器参数</p>
         :type Trigger: :class:`tencentcloud.tcr.v20190924.models.WebhookTrigger`
-        :param _Namespace: 命名空间
+        :param _Namespace: <p>命名空间</p>
         :type Namespace: str
         """
         self._RegistryId = None
@@ -16244,7 +16244,7 @@ class ModifyWebhookTriggerRequest(AbstractModel):
 
     @property
     def RegistryId(self):
-        r"""实例Id
+        r"""<p>实例Id</p>
         :rtype: str
         """
         return self._RegistryId
@@ -16255,7 +16255,7 @@ class ModifyWebhookTriggerRequest(AbstractModel):
 
     @property
     def Trigger(self):
-        r"""触发器参数
+        r"""<p>触发器参数</p>
         :rtype: :class:`tencentcloud.tcr.v20190924.models.WebhookTrigger`
         """
         return self._Trigger
@@ -16266,7 +16266,7 @@ class ModifyWebhookTriggerRequest(AbstractModel):
 
     @property
     def Namespace(self):
-        r"""命名空间
+        r"""<p>命名空间</p>
         :rtype: str
         """
         return self._Namespace
@@ -22170,23 +22170,24 @@ class WebhookTrigger(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Name: 触发器名称
+        :param _Name: <p>触发器名称</p>
         :type Name: str
-        :param _Targets: 触发器目标
+        :param _Targets: <p>触发器目标</p>
         :type Targets: list of WebhookTarget
-        :param _EventTypes: 触发动作
+        :param _EventTypes: <p>触发动作</p>
         :type EventTypes: list of str
-        :param _Condition: 触发规则
+        :param _Condition: <p>触发规则</p>
         :type Condition: str
-        :param _Enabled: 启用触发器
+        :param _Enabled: <p>启用触发器</p>
         :type Enabled: bool
-        :param _Id: 触发器Id
+        :param _Id: <p>触发器Id</p>
         :type Id: int
-        :param _Description: 触发器描述
+        :param _Description: <p>触发器描述</p>
         :type Description: str
-        :param _NamespaceId: 触发器所属命名空间 Id
+        :param _NamespaceId: <p>触发器所属命名空间 Id</p>
         :type NamespaceId: int
-        :param _NamespaceName: 触发器所属命名空间名称
+        :param _NamespaceName: <p>触发器所属命名空间名称</p>
+注意：此字段可能返回 null，表示取不到有效值。
         :type NamespaceName: str
         """
         self._Name = None
@@ -22201,7 +22202,7 @@ class WebhookTrigger(AbstractModel):
 
     @property
     def Name(self):
-        r"""触发器名称
+        r"""<p>触发器名称</p>
         :rtype: str
         """
         return self._Name
@@ -22212,7 +22213,7 @@ class WebhookTrigger(AbstractModel):
 
     @property
     def Targets(self):
-        r"""触发器目标
+        r"""<p>触发器目标</p>
         :rtype: list of WebhookTarget
         """
         return self._Targets
@@ -22223,7 +22224,7 @@ class WebhookTrigger(AbstractModel):
 
     @property
     def EventTypes(self):
-        r"""触发动作
+        r"""<p>触发动作</p>
         :rtype: list of str
         """
         return self._EventTypes
@@ -22234,7 +22235,7 @@ class WebhookTrigger(AbstractModel):
 
     @property
     def Condition(self):
-        r"""触发规则
+        r"""<p>触发规则</p>
         :rtype: str
         """
         return self._Condition
@@ -22245,7 +22246,7 @@ class WebhookTrigger(AbstractModel):
 
     @property
     def Enabled(self):
-        r"""启用触发器
+        r"""<p>启用触发器</p>
         :rtype: bool
         """
         return self._Enabled
@@ -22256,7 +22257,7 @@ class WebhookTrigger(AbstractModel):
 
     @property
     def Id(self):
-        r"""触发器Id
+        r"""<p>触发器Id</p>
         :rtype: int
         """
         return self._Id
@@ -22267,7 +22268,7 @@ class WebhookTrigger(AbstractModel):
 
     @property
     def Description(self):
-        r"""触发器描述
+        r"""<p>触发器描述</p>
         :rtype: str
         """
         return self._Description
@@ -22278,7 +22279,7 @@ class WebhookTrigger(AbstractModel):
 
     @property
     def NamespaceId(self):
-        r"""触发器所属命名空间 Id
+        r"""<p>触发器所属命名空间 Id</p>
         :rtype: int
         """
         return self._NamespaceId
@@ -22289,7 +22290,8 @@ class WebhookTrigger(AbstractModel):
 
     @property
     def NamespaceName(self):
-        r"""触发器所属命名空间名称
+        r"""<p>触发器所属命名空间名称</p>
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
         return self._NamespaceName

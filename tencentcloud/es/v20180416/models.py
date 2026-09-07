@@ -1221,36 +1221,38 @@ class CollectorOutputInstance(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Type: 采集器输出的实例类型（支持elasticsearch、logstash）
+        :param _Type: <p>采集器输出的实例类型（支持elasticsearch、logstash）</p>
         :type Type: str
-        :param _InstanceId: 采集器输出的实例ID
+        :param _InstanceId: <p>采集器输出的实例ID</p>
         :type InstanceId: str
-        :param _ESUserName: 采集器输出到的ES实例的用户名
+        :param _ESUserName: <p>采集器输出到的ES实例的用户名</p>
         :type ESUserName: str
-        :param _ESUserPasswd: 采集器输出到的ES实例的密码
+        :param _ESUserPasswd: <p>采集器输出到的ES实例的密码</p>
         :type ESUserPasswd: str
-        :param _EnableMonitoring: 采集器输出到ES实例时，是否开启监控（1为开启，0为不开启，默认为0）
+        :param _EnableMonitoring: <p>采集器输出到ES实例时，是否开启监控（1为开启，0为不开启，默认为0）</p>
         :type EnableMonitoring: int
-        :param _EnableDashboard: 采集器输出到ES实例时，是否开启自动在kibana中生成Dashboard（1为开启，0为不开启，默认为0）
+        :param _EnableDashboard: <p>采集器输出到ES实例时，是否开启自动在kibana中生成Dashboard（1为开启，0为不开启，默认为0）</p>
         :type EnableDashboard: int
-        :param _KafkaEndpoint: Ckafka实例的vip
+        :param _KafkaEndpoint: <p>Ckafka实例的vip</p>
         :type KafkaEndpoint: str
-        :param _KafkaTopic: Ckafka实例中的Topic
+        :param _KafkaTopic: <p>Ckafka实例中的Topic</p>
         :type KafkaTopic: str
-        :param _KafkaVersion: Ckafka实例的版本号
+        :param _KafkaVersion: <p>Ckafka实例的版本号</p>
         :type KafkaVersion: str
-        :param _SesTopicId: topic id
+        :param _SesTopicId: <p>topic id</p>
         :type SesTopicId: str
-        :param _SesTopicName: topic name
+        :param _SesTopicName: <p>topic name</p>
         :type SesTopicName: str
-        :param _SesTopicAddress: topic address
+        :param _SesTopicAddress: <p>topic address</p>
         :type SesTopicAddress: str
-        :param _SesTopicUserName: /
+        :param _SesTopicUserName: <p>/</p>
         :type SesTopicUserName: str
-        :param _SesTopicPasswd: /
+        :param _SesTopicPasswd: <p>/</p>
         :type SesTopicPasswd: str
-        :param _LogstashListenPort: /
+        :param _LogstashListenPort: <p>/</p>
         :type LogstashListenPort: int
+        :param _SesSpaceId: <p>serverless 的 spaceid</p>
+        :type SesSpaceId: str
         """
         self._Type = None
         self._InstanceId = None
@@ -1267,10 +1269,11 @@ class CollectorOutputInstance(AbstractModel):
         self._SesTopicUserName = None
         self._SesTopicPasswd = None
         self._LogstashListenPort = None
+        self._SesSpaceId = None
 
     @property
     def Type(self):
-        r"""采集器输出的实例类型（支持elasticsearch、logstash）
+        r"""<p>采集器输出的实例类型（支持elasticsearch、logstash）</p>
         :rtype: str
         """
         return self._Type
@@ -1281,7 +1284,7 @@ class CollectorOutputInstance(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""采集器输出的实例ID
+        r"""<p>采集器输出的实例ID</p>
         :rtype: str
         """
         return self._InstanceId
@@ -1292,7 +1295,7 @@ class CollectorOutputInstance(AbstractModel):
 
     @property
     def ESUserName(self):
-        r"""采集器输出到的ES实例的用户名
+        r"""<p>采集器输出到的ES实例的用户名</p>
         :rtype: str
         """
         return self._ESUserName
@@ -1303,7 +1306,7 @@ class CollectorOutputInstance(AbstractModel):
 
     @property
     def ESUserPasswd(self):
-        r"""采集器输出到的ES实例的密码
+        r"""<p>采集器输出到的ES实例的密码</p>
         :rtype: str
         """
         return self._ESUserPasswd
@@ -1314,7 +1317,7 @@ class CollectorOutputInstance(AbstractModel):
 
     @property
     def EnableMonitoring(self):
-        r"""采集器输出到ES实例时，是否开启监控（1为开启，0为不开启，默认为0）
+        r"""<p>采集器输出到ES实例时，是否开启监控（1为开启，0为不开启，默认为0）</p>
         :rtype: int
         """
         return self._EnableMonitoring
@@ -1325,7 +1328,7 @@ class CollectorOutputInstance(AbstractModel):
 
     @property
     def EnableDashboard(self):
-        r"""采集器输出到ES实例时，是否开启自动在kibana中生成Dashboard（1为开启，0为不开启，默认为0）
+        r"""<p>采集器输出到ES实例时，是否开启自动在kibana中生成Dashboard（1为开启，0为不开启，默认为0）</p>
         :rtype: int
         """
         return self._EnableDashboard
@@ -1336,7 +1339,7 @@ class CollectorOutputInstance(AbstractModel):
 
     @property
     def KafkaEndpoint(self):
-        r"""Ckafka实例的vip
+        r"""<p>Ckafka实例的vip</p>
         :rtype: str
         """
         return self._KafkaEndpoint
@@ -1347,7 +1350,7 @@ class CollectorOutputInstance(AbstractModel):
 
     @property
     def KafkaTopic(self):
-        r"""Ckafka实例中的Topic
+        r"""<p>Ckafka实例中的Topic</p>
         :rtype: str
         """
         return self._KafkaTopic
@@ -1358,7 +1361,7 @@ class CollectorOutputInstance(AbstractModel):
 
     @property
     def KafkaVersion(self):
-        r"""Ckafka实例的版本号
+        r"""<p>Ckafka实例的版本号</p>
         :rtype: str
         """
         return self._KafkaVersion
@@ -1369,7 +1372,7 @@ class CollectorOutputInstance(AbstractModel):
 
     @property
     def SesTopicId(self):
-        r"""topic id
+        r"""<p>topic id</p>
         :rtype: str
         """
         return self._SesTopicId
@@ -1380,7 +1383,7 @@ class CollectorOutputInstance(AbstractModel):
 
     @property
     def SesTopicName(self):
-        r"""topic name
+        r"""<p>topic name</p>
         :rtype: str
         """
         return self._SesTopicName
@@ -1391,7 +1394,7 @@ class CollectorOutputInstance(AbstractModel):
 
     @property
     def SesTopicAddress(self):
-        r"""topic address
+        r"""<p>topic address</p>
         :rtype: str
         """
         return self._SesTopicAddress
@@ -1402,7 +1405,7 @@ class CollectorOutputInstance(AbstractModel):
 
     @property
     def SesTopicUserName(self):
-        r"""/
+        r"""<p>/</p>
         :rtype: str
         """
         return self._SesTopicUserName
@@ -1413,7 +1416,7 @@ class CollectorOutputInstance(AbstractModel):
 
     @property
     def SesTopicPasswd(self):
-        r"""/
+        r"""<p>/</p>
         :rtype: str
         """
         return self._SesTopicPasswd
@@ -1424,7 +1427,7 @@ class CollectorOutputInstance(AbstractModel):
 
     @property
     def LogstashListenPort(self):
-        r"""/
+        r"""<p>/</p>
         :rtype: int
         """
         return self._LogstashListenPort
@@ -1432,6 +1435,17 @@ class CollectorOutputInstance(AbstractModel):
     @LogstashListenPort.setter
     def LogstashListenPort(self, LogstashListenPort):
         self._LogstashListenPort = LogstashListenPort
+
+    @property
+    def SesSpaceId(self):
+        r"""<p>serverless 的 spaceid</p>
+        :rtype: str
+        """
+        return self._SesSpaceId
+
+    @SesSpaceId.setter
+    def SesSpaceId(self, SesSpaceId):
+        self._SesSpaceId = SesSpaceId
 
 
     def _deserialize(self, params):
@@ -1450,6 +1464,7 @@ class CollectorOutputInstance(AbstractModel):
         self._SesTopicUserName = params.get("SesTopicUserName")
         self._SesTopicPasswd = params.get("SesTopicPasswd")
         self._LogstashListenPort = params.get("LogstashListenPort")
+        self._SesSpaceId = params.get("SesSpaceId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

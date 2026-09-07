@@ -1453,6 +1453,42 @@ class MongodbClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def ScaleDownDBInstanceCpu(
+            self,
+            request: models.ScaleDownDBInstanceCpuRequest,
+            opts: Dict = None,
+    ) -> models.ScaleDownDBInstanceCpuResponse:
+        """
+        ScaleDownDBInstanceCpu
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ScaleDownDBInstanceCpu"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ScaleDownDBInstanceCpuResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ScaleUpDBInstanceCpu(
+            self,
+            request: models.ScaleUpDBInstanceCpuRequest,
+            opts: Dict = None,
+    ) -> models.ScaleUpDBInstanceCpuResponse:
+        """
+        手动开启cpu弹性扩容
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ScaleUpDBInstanceCpu"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ScaleUpDBInstanceCpuResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def SetAccountUserPrivilege(
             self,
             request: models.SetAccountUserPrivilegeRequest,

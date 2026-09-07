@@ -3370,6 +3370,26 @@ class MpsClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def ModifyDocToVideoTaskStatus(
+            self,
+            request: models.ModifyDocToVideoTaskStatusRequest,
+            opts: Dict = None,
+    ) -> models.ModifyDocToVideoTaskStatusResponse:
+        """
+        修改 AIGC 文档生视频任务状态。
+
+        包含 confirm（确认当前阶段）和 regenerate（重新生成当前阶段）两种动作含义。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyDocToVideoTaskStatus"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyDocToVideoTaskStatusResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ModifyImageSpriteTemplate(
             self,
             request: models.ModifyImageSpriteTemplateRequest,

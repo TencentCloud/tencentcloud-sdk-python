@@ -8665,6 +8665,8 @@ class CreateDBInstanceHourRequest(AbstractModel):
         :type DestroyProtect: str
         :param _FourthZone: <p>备库 3 的可用区信息，默认为空，购买四节点主实例时可指定该参数。</p>
         :type FourthZone: str
+        :param _AutoStrategy: <p>弹性扩容参数（如果不传，则不开启）</p>
+        :type AutoStrategy: :class:`tencentcloud.cdb.v20170320.models.AutoStrategy`
         """
         self._GoodsNum = None
         self._Memory = None
@@ -8711,6 +8713,7 @@ class CreateDBInstanceHourRequest(AbstractModel):
         self._DiskEncryption = None
         self._DestroyProtect = None
         self._FourthZone = None
+        self._AutoStrategy = None
 
     @property
     def GoodsNum(self):
@@ -9207,6 +9210,17 @@ class CreateDBInstanceHourRequest(AbstractModel):
     def FourthZone(self, FourthZone):
         self._FourthZone = FourthZone
 
+    @property
+    def AutoStrategy(self):
+        r"""<p>弹性扩容参数（如果不传，则不开启）</p>
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.AutoStrategy`
+        """
+        return self._AutoStrategy
+
+    @AutoStrategy.setter
+    def AutoStrategy(self, AutoStrategy):
+        self._AutoStrategy = AutoStrategy
+
 
     def _deserialize(self, params):
         self._GoodsNum = params.get("GoodsNum")
@@ -9268,6 +9282,9 @@ class CreateDBInstanceHourRequest(AbstractModel):
         self._DiskEncryption = params.get("DiskEncryption")
         self._DestroyProtect = params.get("DestroyProtect")
         self._FourthZone = params.get("FourthZone")
+        if params.get("AutoStrategy") is not None:
+            self._AutoStrategy = AutoStrategy()
+            self._AutoStrategy._deserialize(params.get("AutoStrategy"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -9431,6 +9448,8 @@ class CreateDBInstanceRequest(AbstractModel):
         :type DestroyProtect: str
         :param _FourthZone: <p>备库 3 的可用区信息，默认为空，购买四节点主实例时可指定该参数。</p>
         :type FourthZone: str
+        :param _AutoStrategy: <p>弹性扩容参数（如果不传，则不开启）</p>
+        :type AutoStrategy: :class:`tencentcloud.cdb.v20170320.models.AutoStrategy`
         """
         self._Memory = None
         self._Volume = None
@@ -9476,6 +9495,7 @@ class CreateDBInstanceRequest(AbstractModel):
         self._DiskEncryption = None
         self._DestroyProtect = None
         self._FourthZone = None
+        self._AutoStrategy = None
 
     @property
     def Memory(self):
@@ -9961,6 +9981,17 @@ class CreateDBInstanceRequest(AbstractModel):
     def FourthZone(self, FourthZone):
         self._FourthZone = FourthZone
 
+    @property
+    def AutoStrategy(self):
+        r"""<p>弹性扩容参数（如果不传，则不开启）</p>
+        :rtype: :class:`tencentcloud.cdb.v20170320.models.AutoStrategy`
+        """
+        return self._AutoStrategy
+
+    @AutoStrategy.setter
+    def AutoStrategy(self, AutoStrategy):
+        self._AutoStrategy = AutoStrategy
+
 
     def _deserialize(self, params):
         self._Memory = params.get("Memory")
@@ -10021,6 +10052,9 @@ class CreateDBInstanceRequest(AbstractModel):
         self._DiskEncryption = params.get("DiskEncryption")
         self._DestroyProtect = params.get("DestroyProtect")
         self._FourthZone = params.get("FourthZone")
+        if params.get("AutoStrategy") is not None:
+            self._AutoStrategy = AutoStrategy()
+            self._AutoStrategy._deserialize(params.get("AutoStrategy"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

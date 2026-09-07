@@ -4286,6 +4286,31 @@ class MpsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyDocToVideoTaskStatus(self, request):
+        r"""修改 AIGC 文档生视频任务状态。
+
+        包含 confirm（确认当前阶段）和 regenerate（重新生成当前阶段）两种动作含义。
+
+        :param request: Request instance for ModifyDocToVideoTaskStatus.
+        :type request: :class:`tencentcloud.mps.v20190612.models.ModifyDocToVideoTaskStatusRequest`
+        :rtype: :class:`tencentcloud.mps.v20190612.models.ModifyDocToVideoTaskStatusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyDocToVideoTaskStatus", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyDocToVideoTaskStatusResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyImageSpriteTemplate(self, request):
         r"""修改用户自定义雪碧图模板。
 

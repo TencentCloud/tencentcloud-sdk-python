@@ -8901,7 +8901,7 @@ class CreateEmbedWebUrlRequest(AbstractModel):
         :type Operator: :class:`tencentcloud.ess.v20201111.models.UserInfo`
         :param _EmbedType: <p>WEB嵌入资源类型，支持以下类型</p><p>枚举值：</p><ul><li><p>CREATE_SEAL： 生成创建印章的嵌入页面</p></li><li><p>CREATE_TEMPLATE： 生成创建模板的嵌入页面</p></li><li><p>MODIFY_TEMPLATE： 生成编辑模板的嵌入页面</p></li><li><p>CREATE_CONTRACT_DRAFT_COOPEDIT： 生成创建起草合同的嵌入页面</p></li><li><p>PREVIEW_TEMPLATE： 生成预览模板的嵌入页面</p></li><li><p>PREVIEW_SEAL_LIST： 生成预览印章列表的嵌入页面</p></li><li><p>PREVIEW_SEAL_DETAIL： 生成预览印章详情的嵌入页面</p></li><li><p>EXTEND_SERVICE： 生成高级签署能力的嵌入页面</p></li><li><p>PREVIEW_FLOW： 生成预览合同的嵌入页面（支持移动端）</p></li><li><p>PREVIEW_FLOW_DETAIL： 生成查看合同详情的嵌入页面（仅支持PC端）</p></li><li><p>CHANNEL_TEMPLATE： 生成应用模板库管理的嵌入页面（仅支持PC端）</p></li><li><p>CHANNEL_COMPONENT： 生成应用模板控件管理的嵌入页面（仅支持PC端）</p><p>注意： 不同的嵌入类型，操作人需要的权限项不同（权限配置可参考<a href="https://qian.tencent.com/document/61355">权限配置</a>）。 <table border="1"> <thead> <tr><th>EmbedType</th><th>权限</th></tr> </thead>      <tbody>  <tr><th>CREATE_SEAL</th><th>印章管理-添加印章</th></tr> <tr><th>CREATE_TEMPLATE</th><th>模板管理-创建模板</th></tr> <tr><th>MODIFY_TEMPLATE</th><th>模板管理-编辑模板</th></tr> <tr><th>CREATE_CONTRACT_DRAFT_COOPEDIT</th><th>合同管理-起草合同</th></tr> <tr><th>PREVIEW_TEMPLATE</th><th>拥有下面三种权限的一种就行<br> 模板管理-查询模板（本企业全部模板）<br> 模板管理-查询模板（本部门全部模板）<br> 模板管理-查询模板（本人创建模板）</th></tr> <tr><th>PREVIEW_SEAL_LIST</th><th>印章管理</th></tr> <tr><th>PREVIEW_SEAL_DETAIL</th><th>印章管理</th></tr> <tr><th>EXTEND_SERVICE</th><th>无要求</th></tr> <tr><th>PREVIEW_FLOW</th><th>是否是当前合同的参与方，或者发起方企业的法人、超管、合同管理员</th></tr> <tr><th>PREVIEW_FLOW_DETAIL</th><th>是否是当前合同的参与方，或者发起方企业的法人、超管、合同管理员</th></tr> <tr><th>CHANNEL_TEMPLATE</th><th>开发者中心-应用模板库管理</th></tr> <tr><th>CHANNEL_COMPONENT</th><th>开发者中心-应用模板控件管理</th></tr> </tbody>  </table></p></li></ul>
         :type EmbedType: str
-        :param _BusinessId: <p>WEB嵌入的业务资源ID</p><p>当EmbedType取值</p><ul><li>为PREVIEW_SEAL_DETAIL，必填，取值为印章id。</li><li>为CREATE_TEMPLATE，非必填，取值为资源id。*资源Id获取可使用接口[上传文件](https://qian.tencent.com/developers/companyApis/templatesAndFiles/UploadFiles)*</li><li>为MODIFY_TEMPLATE，PREVIEW_TEMPLATE，必填，取值为模板id。</li><li>为CREATE_CONTRACT_DRAFT_COOPEDIT，非必填，取值为资源 id。*资源Id获取可使用接口[上传文件](https://qian.tencent.com/developers/companyApis/templatesAndFiles/UploadFiles)*</li><li>为PREVIEW_FLOW，PREVIEW_FLOW_DETAIL，必填，取值为合同id。</li></ul><p>注意：</p><ol><li>CREATE_TEMPLATE中的BusinessId仅支持PDF文件类型， 如果您的文件不是PDF， 请使用接口<a href="https://qian.tencent.com/developers/companyApis/templatesAndFiles/CreateConvertTaskApi">创建文件转换任务</a> 和<a href="https://qian.tencent.com/developers/companyApis/templatesAndFiles/GetTaskResultApi">查询转换任务状态</a> 来进行转换成PDF资源。</li><li>CREATE_CONTRACT_DRAFT_COOPEDIT中的BusinessId仅支持DOC 和 DOCX 的文件，并且大小不能超过 10M。</li></ol>
+        :param _BusinessId: <p>WEB嵌入的业务资源ID</p><p>当EmbedType取值</p><ul><li>为PREVIEW_SEAL_DETAIL，必填，取值为印章id。</li><li>为CREATE_TEMPLATE，非必填，取值为资源id。*资源Id获取可使用接口[上传文件](https://qian.tencent.com/developers/companyApis/templatesAndFiles/UploadFiles)*</li><li>为MODIFY_TEMPLATE，PREVIEW_TEMPLATE，必填，取值为模板id。</li><li>为CREATE_CONTRACT_DRAFT_COOPEDIT，非必填，取值为资源 id。*资源Id获取可使用接口[上传文件](https://qian.tencent.com/developers/companyApis/templatesAndFiles/UploadFiles)*</li><li>为PREVIEW_FLOW，PREVIEW_FLOW_DETAIL，必填，取值为合同id。</li></ul><p>注意：</p><ol><li>CREATE_TEMPLATE中的BusinessId仅支持PDF文件类型， 如果您的文件不是PDF， 请使用接口<a href="https://qian.tencent.com/developers/companyApis/templatesAndFiles/CreateFileConvertTask">创建文件转换任务</a> 和<a href="https://qian.tencent.com/developers/companyApis/templatesAndFiles/DescribeFileConvertTask">查询转换任务状态</a> 来进行转换成PDF资源。</li><li>CREATE_CONTRACT_DRAFT_COOPEDIT中的BusinessId仅支持DOC 和 DOCX 的文件，并且大小不能超过 10M。</li></ol>
         :type BusinessId: str
         :param _Agent: <p>代理企业和员工的信息。<br><br>在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。</p>
         :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
@@ -8947,7 +8947,7 @@ class CreateEmbedWebUrlRequest(AbstractModel):
 
     @property
     def BusinessId(self):
-        r"""<p>WEB嵌入的业务资源ID</p><p>当EmbedType取值</p><ul><li>为PREVIEW_SEAL_DETAIL，必填，取值为印章id。</li><li>为CREATE_TEMPLATE，非必填，取值为资源id。*资源Id获取可使用接口[上传文件](https://qian.tencent.com/developers/companyApis/templatesAndFiles/UploadFiles)*</li><li>为MODIFY_TEMPLATE，PREVIEW_TEMPLATE，必填，取值为模板id。</li><li>为CREATE_CONTRACT_DRAFT_COOPEDIT，非必填，取值为资源 id。*资源Id获取可使用接口[上传文件](https://qian.tencent.com/developers/companyApis/templatesAndFiles/UploadFiles)*</li><li>为PREVIEW_FLOW，PREVIEW_FLOW_DETAIL，必填，取值为合同id。</li></ul><p>注意：</p><ol><li>CREATE_TEMPLATE中的BusinessId仅支持PDF文件类型， 如果您的文件不是PDF， 请使用接口<a href="https://qian.tencent.com/developers/companyApis/templatesAndFiles/CreateConvertTaskApi">创建文件转换任务</a> 和<a href="https://qian.tencent.com/developers/companyApis/templatesAndFiles/GetTaskResultApi">查询转换任务状态</a> 来进行转换成PDF资源。</li><li>CREATE_CONTRACT_DRAFT_COOPEDIT中的BusinessId仅支持DOC 和 DOCX 的文件，并且大小不能超过 10M。</li></ol>
+        r"""<p>WEB嵌入的业务资源ID</p><p>当EmbedType取值</p><ul><li>为PREVIEW_SEAL_DETAIL，必填，取值为印章id。</li><li>为CREATE_TEMPLATE，非必填，取值为资源id。*资源Id获取可使用接口[上传文件](https://qian.tencent.com/developers/companyApis/templatesAndFiles/UploadFiles)*</li><li>为MODIFY_TEMPLATE，PREVIEW_TEMPLATE，必填，取值为模板id。</li><li>为CREATE_CONTRACT_DRAFT_COOPEDIT，非必填，取值为资源 id。*资源Id获取可使用接口[上传文件](https://qian.tencent.com/developers/companyApis/templatesAndFiles/UploadFiles)*</li><li>为PREVIEW_FLOW，PREVIEW_FLOW_DETAIL，必填，取值为合同id。</li></ul><p>注意：</p><ol><li>CREATE_TEMPLATE中的BusinessId仅支持PDF文件类型， 如果您的文件不是PDF， 请使用接口<a href="https://qian.tencent.com/developers/companyApis/templatesAndFiles/CreateFileConvertTask">创建文件转换任务</a> 和<a href="https://qian.tencent.com/developers/companyApis/templatesAndFiles/DescribeFileConvertTask">查询转换任务状态</a> 来进行转换成PDF资源。</li><li>CREATE_CONTRACT_DRAFT_COOPEDIT中的BusinessId仅支持DOC 和 DOCX 的文件，并且大小不能超过 10M。</li></ol>
         :rtype: str
         """
         return self._BusinessId
@@ -44162,22 +44162,17 @@ class SignComponentConfig(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _HideDate: 签署控件默认属性配置，是否默认展示签署日期， 在页面中可以进行修改。
-
-- false 展示签署日期（默认）
-- true 不展示签署日期 
-![image](https://qcloudimg.tencent-cloud.cn/raw/448514412e2f69f6129425beda4ff568.png)。
+        :param _HideDate: <p>签署控件默认属性配置，是否默认展示签署日期， 在页面中可以进行修改。</p><ul><li>false 展示签署日期（默认）</li><li>true 不展示签署日期<br><img src="https://qcloudimg.tencent-cloud.cn/raw/448514412e2f69f6129425beda4ff568.png" alt="image">。</li></ul>
         :type HideDate: bool
+        :param _AddSignComponentUseSealSize: <p>【仅 SignBeanTag=1 时有效】 签署方自行添加签署印章类控件（SIGN_SEAL、SIGN_PAGING_SEAL、SIGN_LEGAL_PERSON_SEAL）时，「盖章区适配签署方印章尺寸」开关的控制策略</p><p>枚举值：</p><ul><li>0： 默认关闭，可开启。与现网一致</li><li>1： 关闭且置灰——按控件默认的4.2cm尺寸盖章，签署方无法开启开关</li><li>2： 默认开启且可修改——默认按印章实际尺寸盖章，签署方可手动关闭</li><li>3： 开启且置灰——强制按印章实际尺寸盖章，签署方不可修改</li></ul>
+        :type AddSignComponentUseSealSize: int
         """
         self._HideDate = None
+        self._AddSignComponentUseSealSize = None
 
     @property
     def HideDate(self):
-        r"""签署控件默认属性配置，是否默认展示签署日期， 在页面中可以进行修改。
-
-- false 展示签署日期（默认）
-- true 不展示签署日期 
-![image](https://qcloudimg.tencent-cloud.cn/raw/448514412e2f69f6129425beda4ff568.png)。
+        r"""<p>签署控件默认属性配置，是否默认展示签署日期， 在页面中可以进行修改。</p><ul><li>false 展示签署日期（默认）</li><li>true 不展示签署日期<br><img src="https://qcloudimg.tencent-cloud.cn/raw/448514412e2f69f6129425beda4ff568.png" alt="image">。</li></ul>
         :rtype: bool
         """
         return self._HideDate
@@ -44186,9 +44181,21 @@ class SignComponentConfig(AbstractModel):
     def HideDate(self, HideDate):
         self._HideDate = HideDate
 
+    @property
+    def AddSignComponentUseSealSize(self):
+        r"""<p>【仅 SignBeanTag=1 时有效】 签署方自行添加签署印章类控件（SIGN_SEAL、SIGN_PAGING_SEAL、SIGN_LEGAL_PERSON_SEAL）时，「盖章区适配签署方印章尺寸」开关的控制策略</p><p>枚举值：</p><ul><li>0： 默认关闭，可开启。与现网一致</li><li>1： 关闭且置灰——按控件默认的4.2cm尺寸盖章，签署方无法开启开关</li><li>2： 默认开启且可修改——默认按印章实际尺寸盖章，签署方可手动关闭</li><li>3： 开启且置灰——强制按印章实际尺寸盖章，签署方不可修改</li></ul>
+        :rtype: int
+        """
+        return self._AddSignComponentUseSealSize
+
+    @AddSignComponentUseSealSize.setter
+    def AddSignComponentUseSealSize(self, AddSignComponentUseSealSize):
+        self._AddSignComponentUseSealSize = AddSignComponentUseSealSize
+
 
     def _deserialize(self, params):
         self._HideDate = params.get("HideDate")
+        self._AddSignComponentUseSealSize = params.get("AddSignComponentUseSealSize")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -46508,7 +46515,7 @@ class UploadFilesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _BusinessType: <p>文件对应业务类型,可以选择的类型如下</p><p>枚举值：</p><ul><li>TEMPLATE： 此上传的文件用户生成合同模板，文件类型支持.pdf/.doc/.docx/.html格式，如果非pdf文件需要通过<a href="https://qian.tencent.com/developers/companyApis/templatesAndFiles/CreateConvertTaskApi" target="_blank">创建文件转换任务</a>转换后才能使用</li><li>DOCUMENT： 此文件用来发起合同流程，文件类型支持.pdf/.doc/.docx/.jpg/.png/.xls.xlsx/.html。如果上传的是非pdf文件，用来发起流程，还需要通过<a href="https://qian.tencent.com/developers/companyApis/templatesAndFiles/CreateConvertTaskApi" target="_blank">创建文件转换任务</a>转换后得到的pdf文件才能用于发起合同接口。如果上传的文件不是用来发起合同，直接上传后使用返回的文件资源Id即可</li><li>SEAL： 此文件用于印章的生成，文件类型支持.jpg/.jpeg/.png</li><li>ARCHIVE： 此文件用于归档文件夹，文件类型支持.pdf/.zip格式</li><li>BUSINESSLICENSE： 此文件用于上传营业执照，用于后续<a href="https://qian.tencent.com/developers/companyApis/organizations/CreateOrganizationAuthUrl" target="_blank">创建企业认证链接</a>认证企业的时候提供营业执照，文件类型支持.jpg/.jpeg/.png，限制8M以内</li></ul>
+        :param _BusinessType: <p>文件对应业务类型,可以选择的类型如下</p><p>枚举值：</p><ul><li>TEMPLATE： 此上传的文件用户生成合同模板，文件类型支持.pdf/.doc/.docx/.html格式，如果非pdf文件需要通过<a href="https://qian.tencent.com/developers/companyApis/templatesAndFiles/CreateConvertTaskApi" target="_blank">创建文件转换任务</a>转换后才能使用</li><li>DOCUMENT： 此文件用来发起合同流程，文件类型支持.pdf/.doc/.docx/.jpg/.png/.xls.xlsx/.html。如果上传的是非pdf文件，用来发起流程，还需要通过<a href="https://qian.tencent.com/developers/companyApis/templatesAndFiles/CreateFileConvertTask" target="_blank">创建文件转换任务</a>转换后得到的pdf文件才能用于发起合同接口。如果上传的文件不是用来发起合同，直接上传后使用返回的文件资源Id即可</li><li>SEAL： 此文件用于印章的生成，文件类型支持.jpg/.jpeg/.png</li><li>ARCHIVE： 此文件用于归档文件夹，文件类型支持.pdf/.zip格式</li><li>BUSINESSLICENSE： 此文件用于上传营业执照，用于后续<a href="https://qian.tencent.com/developers/companyApis/organizations/CreateOrganizationAuthUrl" target="_blank">创建企业认证链接</a>认证企业的时候提供营业执照，文件类型支持.jpg/.jpeg/.png，限制8M以内</li></ul>
         :type BusinessType: str
         :param _Caller: <p>执行本接口操作的员工信息。其中OperatorId为必填字段，即用户的UserId。<br>注: <code>在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。</code></p>
         :type Caller: :class:`tencentcloud.ess.v20201111.models.Caller`
@@ -46539,7 +46546,7 @@ class UploadFilesRequest(AbstractModel):
 
     @property
     def BusinessType(self):
-        r"""<p>文件对应业务类型,可以选择的类型如下</p><p>枚举值：</p><ul><li>TEMPLATE： 此上传的文件用户生成合同模板，文件类型支持.pdf/.doc/.docx/.html格式，如果非pdf文件需要通过<a href="https://qian.tencent.com/developers/companyApis/templatesAndFiles/CreateConvertTaskApi" target="_blank">创建文件转换任务</a>转换后才能使用</li><li>DOCUMENT： 此文件用来发起合同流程，文件类型支持.pdf/.doc/.docx/.jpg/.png/.xls.xlsx/.html。如果上传的是非pdf文件，用来发起流程，还需要通过<a href="https://qian.tencent.com/developers/companyApis/templatesAndFiles/CreateConvertTaskApi" target="_blank">创建文件转换任务</a>转换后得到的pdf文件才能用于发起合同接口。如果上传的文件不是用来发起合同，直接上传后使用返回的文件资源Id即可</li><li>SEAL： 此文件用于印章的生成，文件类型支持.jpg/.jpeg/.png</li><li>ARCHIVE： 此文件用于归档文件夹，文件类型支持.pdf/.zip格式</li><li>BUSINESSLICENSE： 此文件用于上传营业执照，用于后续<a href="https://qian.tencent.com/developers/companyApis/organizations/CreateOrganizationAuthUrl" target="_blank">创建企业认证链接</a>认证企业的时候提供营业执照，文件类型支持.jpg/.jpeg/.png，限制8M以内</li></ul>
+        r"""<p>文件对应业务类型,可以选择的类型如下</p><p>枚举值：</p><ul><li>TEMPLATE： 此上传的文件用户生成合同模板，文件类型支持.pdf/.doc/.docx/.html格式，如果非pdf文件需要通过<a href="https://qian.tencent.com/developers/companyApis/templatesAndFiles/CreateConvertTaskApi" target="_blank">创建文件转换任务</a>转换后才能使用</li><li>DOCUMENT： 此文件用来发起合同流程，文件类型支持.pdf/.doc/.docx/.jpg/.png/.xls.xlsx/.html。如果上传的是非pdf文件，用来发起流程，还需要通过<a href="https://qian.tencent.com/developers/companyApis/templatesAndFiles/CreateFileConvertTask" target="_blank">创建文件转换任务</a>转换后得到的pdf文件才能用于发起合同接口。如果上传的文件不是用来发起合同，直接上传后使用返回的文件资源Id即可</li><li>SEAL： 此文件用于印章的生成，文件类型支持.jpg/.jpeg/.png</li><li>ARCHIVE： 此文件用于归档文件夹，文件类型支持.pdf/.zip格式</li><li>BUSINESSLICENSE： 此文件用于上传营业执照，用于后续<a href="https://qian.tencent.com/developers/companyApis/organizations/CreateOrganizationAuthUrl" target="_blank">创建企业认证链接</a>认证企业的时候提供营业执照，文件类型支持.jpg/.jpeg/.png，限制8M以内</li></ul>
         :rtype: str
         """
         return self._BusinessType

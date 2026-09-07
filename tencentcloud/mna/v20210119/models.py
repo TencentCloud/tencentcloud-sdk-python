@@ -4743,27 +4743,32 @@ class GetFlowPackagesRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _PageNumber: 页码，从1开始
+        :param _PageNumber: <p>页码，从1开始</p>
         :type PageNumber: int
-        :param _PageSize: 每页个数
+        :param _PageSize: <p>每页个数</p>
         :type PageSize: int
-        :param _ResourceId: 流量包的唯一资源ID
+        :param _ResourceId: <p>流量包的唯一资源ID</p>
         :type ResourceId: str
-        :param _DeviceId: 流量包绑定的设备ID
+        :param _DeviceId: <p>流量包绑定的设备ID</p>
         :type DeviceId: str
-        :param _Status: 流量包状态，0：未生效，1：有效期内，2：已过期
-
+        :param _Status: <p>流量包状态，0：未生效，1：有效期内，2：已过期</p>
         :type Status: int
+        :param _ActiveTimeStart: <p>生效时间在此时间之后</p>
+        :type ActiveTimeStart: str
+        :param _ActiveTimeEnd: <p>生效时间在此时间之前</p>
+        :type ActiveTimeEnd: str
         """
         self._PageNumber = None
         self._PageSize = None
         self._ResourceId = None
         self._DeviceId = None
         self._Status = None
+        self._ActiveTimeStart = None
+        self._ActiveTimeEnd = None
 
     @property
     def PageNumber(self):
-        r"""页码，从1开始
+        r"""<p>页码，从1开始</p>
         :rtype: int
         """
         return self._PageNumber
@@ -4774,7 +4779,7 @@ class GetFlowPackagesRequest(AbstractModel):
 
     @property
     def PageSize(self):
-        r"""每页个数
+        r"""<p>每页个数</p>
         :rtype: int
         """
         return self._PageSize
@@ -4785,7 +4790,7 @@ class GetFlowPackagesRequest(AbstractModel):
 
     @property
     def ResourceId(self):
-        r"""流量包的唯一资源ID
+        r"""<p>流量包的唯一资源ID</p>
         :rtype: str
         """
         return self._ResourceId
@@ -4796,7 +4801,7 @@ class GetFlowPackagesRequest(AbstractModel):
 
     @property
     def DeviceId(self):
-        r"""流量包绑定的设备ID
+        r"""<p>流量包绑定的设备ID</p>
         :rtype: str
         """
         return self._DeviceId
@@ -4807,8 +4812,7 @@ class GetFlowPackagesRequest(AbstractModel):
 
     @property
     def Status(self):
-        r"""流量包状态，0：未生效，1：有效期内，2：已过期
-
+        r"""<p>流量包状态，0：未生效，1：有效期内，2：已过期</p>
         :rtype: int
         """
         return self._Status
@@ -4817,6 +4821,28 @@ class GetFlowPackagesRequest(AbstractModel):
     def Status(self, Status):
         self._Status = Status
 
+    @property
+    def ActiveTimeStart(self):
+        r"""<p>生效时间在此时间之后</p>
+        :rtype: str
+        """
+        return self._ActiveTimeStart
+
+    @ActiveTimeStart.setter
+    def ActiveTimeStart(self, ActiveTimeStart):
+        self._ActiveTimeStart = ActiveTimeStart
+
+    @property
+    def ActiveTimeEnd(self):
+        r"""<p>生效时间在此时间之前</p>
+        :rtype: str
+        """
+        return self._ActiveTimeEnd
+
+    @ActiveTimeEnd.setter
+    def ActiveTimeEnd(self, ActiveTimeEnd):
+        self._ActiveTimeEnd = ActiveTimeEnd
+
 
     def _deserialize(self, params):
         self._PageNumber = params.get("PageNumber")
@@ -4824,6 +4850,8 @@ class GetFlowPackagesRequest(AbstractModel):
         self._ResourceId = params.get("ResourceId")
         self._DeviceId = params.get("DeviceId")
         self._Status = params.get("Status")
+        self._ActiveTimeStart = params.get("ActiveTimeStart")
+        self._ActiveTimeEnd = params.get("ActiveTimeEnd")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4841,9 +4869,9 @@ class GetFlowPackagesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _PackageList: 流量包列表
+        :param _PackageList: <p>流量包列表</p>
         :type PackageList: list of FlowPackageInfo
-        :param _Total: 总数
+        :param _Total: <p>总数</p>
         :type Total: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -4854,7 +4882,7 @@ class GetFlowPackagesResponse(AbstractModel):
 
     @property
     def PackageList(self):
-        r"""流量包列表
+        r"""<p>流量包列表</p>
         :rtype: list of FlowPackageInfo
         """
         return self._PackageList
@@ -4865,7 +4893,7 @@ class GetFlowPackagesResponse(AbstractModel):
 
     @property
     def Total(self):
-        r"""总数
+        r"""<p>总数</p>
         :rtype: int
         """
         return self._Total
