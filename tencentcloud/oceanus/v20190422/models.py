@@ -6865,6 +6865,115 @@ class DescribeJobConfigsResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeJobDetailRequest(AbstractModel):
+    r"""DescribeJobDetail请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Path: flink rest api 路径
+        :type Path: str
+        :param _JobSerialId: 作业id
+        :type JobSerialId: str
+        :param _Method: 请求rest api 方法
+        :type Method: str
+        """
+        self._Path = None
+        self._JobSerialId = None
+        self._Method = None
+
+    @property
+    def Path(self):
+        r"""flink rest api 路径
+        :rtype: str
+        """
+        return self._Path
+
+    @Path.setter
+    def Path(self, Path):
+        self._Path = Path
+
+    @property
+    def JobSerialId(self):
+        r"""作业id
+        :rtype: str
+        """
+        return self._JobSerialId
+
+    @JobSerialId.setter
+    def JobSerialId(self, JobSerialId):
+        self._JobSerialId = JobSerialId
+
+    @property
+    def Method(self):
+        r"""请求rest api 方法
+        :rtype: str
+        """
+        return self._Method
+
+    @Method.setter
+    def Method(self, Method):
+        self._Method = Method
+
+
+    def _deserialize(self, params):
+        self._Path = params.get("Path")
+        self._JobSerialId = params.get("JobSerialId")
+        self._Method = params.get("Method")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeJobDetailResponse(AbstractModel):
+    r"""DescribeJobDetail返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: flink rest api 响应
+        :type Data: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Data = None
+        self._RequestId = None
+
+    @property
+    def Data(self):
+        r"""flink rest api 响应
+        :rtype: str
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Data = params.get("Data")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeJobEventsRequest(AbstractModel):
     r"""DescribeJobEvents请求参数结构体
 

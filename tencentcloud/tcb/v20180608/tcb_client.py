@@ -537,30 +537,6 @@ class TcbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def CreateVmInstance(self, request):
-        r"""创建虚拟服务器
-        创建流程为先调用[DescribeVmSpec](https://cloud.tencent.com/document/product/876/129360)获取可购买的规格，同时调用[DescribeBlueprints](https://cloud.tencent.com/document/product/1207/47689)拉取镜像列表，选中一个规格和一个镜像后，调用[InquireVmPrice](https://cloud.tencent.com/document/product/876/129759)询价，如果价格可接受，调用此接口创建实例
-
-        :param request: Request instance for CreateVmInstance.
-        :type request: :class:`tencentcloud.tcb.v20180608.models.CreateVmInstanceRequest`
-        :rtype: :class:`tencentcloud.tcb.v20180608.models.CreateVmInstanceResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("CreateVmInstance", params, headers=headers)
-            response = json.loads(body)
-            model = models.CreateVmInstanceResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def DeleteAIModel(self, request):
         r"""删除 AI 模型配置分组，支持批量删除。内置分组无法删除。分组删除后，该分组下的所有模型配置将同步移除，针对该分组模型的请求将会失败，请在删除前确认业务侧已停止对该分组的调用。
 
@@ -771,29 +747,6 @@ class TcbClient(AbstractClient):
             body = self.call("DeleteUsers", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteUsersResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def DeleteVmInstance(self, request):
-        r"""销毁云服务器实例
-
-        :param request: Request instance for DeleteVmInstance.
-        :type request: :class:`tencentcloud.tcb.v20180608.models.DeleteVmInstanceRequest`
-        :rtype: :class:`tencentcloud.tcb.v20180608.models.DeleteVmInstanceResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DeleteVmInstance", params, headers=headers)
-            response = json.loads(body)
-            model = models.DeleteVmInstanceResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1379,6 +1332,29 @@ class TcbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeHTTPServiceCachePurgeTask(self, request):
+        r"""本接口DescribeHTTPServiceCachePurgeTask为只读查询，不修改任何缓存或环境资源，仅返回指定环境下域名缓存刷新任务的状态与时间等信息。通过PurgeHTTPServiceCache清除域名缓存后，可通过此接口传入任务id可查询清除任务状态、时间、缓存类型等信息。也可通过此接口查询历史任务记录。
+
+        :param request: Request instance for DescribeHTTPServiceCachePurgeTask.
+        :type request: :class:`tencentcloud.tcb.v20180608.models.DescribeHTTPServiceCachePurgeTaskRequest`
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.DescribeHTTPServiceCachePurgeTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeHTTPServiceCachePurgeTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeHTTPServiceCachePurgeTaskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeHTTPServiceRoute(self, request):
         r"""本接口DescribeHTTPServiceRoute用于查询环境下HTTP访问服务路由信息。可通过Filters过滤。如果不存在不会返回错误。HTTP访问服务提供了默认域名，通过本接口可直接获取默认域名。前置需已开通 HTTP 访问服务；调用CreateHTTPServiceRoute或者ModifyHTTPServiceRoute后可使用本接口查询创建或者修改结果
 
@@ -1714,52 +1690,6 @@ class TcbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def DescribeVmInstances(self, request):
-        r"""查询环境下的云服务器列表
-
-        :param request: Request instance for DescribeVmInstances.
-        :type request: :class:`tencentcloud.tcb.v20180608.models.DescribeVmInstancesRequest`
-        :rtype: :class:`tencentcloud.tcb.v20180608.models.DescribeVmInstancesResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeVmInstances", params, headers=headers)
-            response = json.loads(body)
-            model = models.DescribeVmInstancesResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def DescribeVmSpec(self, request):
-        r"""云服务器规格list
-
-        :param request: Request instance for DescribeVmSpec.
-        :type request: :class:`tencentcloud.tcb.v20180608.models.DescribeVmSpecRequest`
-        :rtype: :class:`tencentcloud.tcb.v20180608.models.DescribeVmSpecResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("DescribeVmSpec", params, headers=headers)
-            response = json.loads(body)
-            model = models.DescribeVmSpecResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def DestroyEnv(self, request):
         r"""本接口用于销毁云开发环境。
         云开发环境遵循腾讯云包年包月预付费产品生命周期，因此环境销毁需要分两步：
@@ -1877,29 +1807,6 @@ class TcbClient(AbstractClient):
             body = self.call("GetProviders", params, headers=headers)
             response = json.loads(body)
             model = models.GetProvidersResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
-    def InquireVmPrice(self, request):
-        r"""查询服务器价格
-
-        :param request: Request instance for InquireVmPrice.
-        :type request: :class:`tencentcloud.tcb.v20180608.models.InquireVmPriceRequest`
-        :rtype: :class:`tencentcloud.tcb.v20180608.models.InquireVmPriceResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("InquireVmPrice", params, headers=headers)
-            response = json.loads(body)
-            model = models.InquireVmPriceResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -2306,6 +2213,29 @@ class TcbClient(AbstractClient):
             body = self.call("PreviewPGUserMigrations", params, headers=headers)
             response = json.loads(body)
             model = models.PreviewPGUserMigrationsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def PurgeHTTPServiceCache(self, request):
+        r"""本接口PurgeHTTPServiceCache为异步操作，清除指定环境下 HTTPService 域名的缓存，操作不可逆，仅影响指定 Domain 的缓存命中，不影响源站数据。用于清除HTTP访问服务域名缓存。支持刷新CDN和EO两种类型。清除缓存后会生成任务id，通过DescribeHTTPServiceCachePurgeTask传入任务id可查询任务进度和详细信息。
+
+        :param request: Request instance for PurgeHTTPServiceCache.
+        :type request: :class:`tencentcloud.tcb.v20180608.models.PurgeHTTPServiceCacheRequest`
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.PurgeHTTPServiceCacheResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("PurgeHTTPServiceCache", params, headers=headers)
+            response = json.loads(body)
+            model = models.PurgeHTTPServiceCacheResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

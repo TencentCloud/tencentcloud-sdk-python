@@ -431,6 +431,29 @@ class ThpcClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeClusterMonitorStatus(self, request):
+        r"""本接口 (ModifyInitNodeScripts) 用于修改节点初始化脚本。
+
+        :param request: Request instance for DescribeClusterMonitorStatus.
+        :type request: :class:`tencentcloud.thpc.v20230321.models.DescribeClusterMonitorStatusRequest`
+        :rtype: :class:`tencentcloud.thpc.v20230321.models.DescribeClusterMonitorStatusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeClusterMonitorStatus", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeClusterMonitorStatusResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeClusterStorageOption(self, request):
         r"""本接口 (DescribeClusterStorageOption) 用于查询集群存储选项信息。
 
@@ -780,6 +803,29 @@ class ThpcClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DisableClusterMonitor(self, request):
+        r"""本接口 (ModifyInitNodeScripts) 用于修改节点初始化脚本。
+
+        :param request: Request instance for DisableClusterMonitor.
+        :type request: :class:`tencentcloud.thpc.v20230321.models.DisableClusterMonitorRequest`
+        :rtype: :class:`tencentcloud.thpc.v20230321.models.DisableClusterMonitorResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DisableClusterMonitor", params, headers=headers)
+            response = json.loads(body)
+            model = models.DisableClusterMonitorResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def EnableClusterDedicatedProxy(self, request):
         r"""本接口 (EnableClusterDedicatedProxy) 用于开启IDC集群的专线/VPN代理。
 
@@ -798,6 +844,29 @@ class ThpcClient(AbstractClient):
             body = self.call("EnableClusterDedicatedProxy", params, headers=headers)
             response = json.loads(body)
             model = models.EnableClusterDedicatedProxyResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def EnableClusterMonitor(self, request):
+        r"""本接口 (ModifyInitNodeScripts) 用于修改节点初始化脚本。
+
+        :param request: Request instance for EnableClusterMonitor.
+        :type request: :class:`tencentcloud.thpc.v20230321.models.EnableClusterMonitorRequest`
+        :rtype: :class:`tencentcloud.thpc.v20230321.models.EnableClusterMonitorResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("EnableClusterMonitor", params, headers=headers)
+            response = json.loads(body)
+            model = models.EnableClusterMonitorResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

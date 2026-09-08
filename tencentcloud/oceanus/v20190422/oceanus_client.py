@@ -601,6 +601,29 @@ class OceanusClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeJobDetail(self, request):
+        r"""显示flink作业的Dag图，以及算子、subtask等信息
+
+        :param request: Request instance for DescribeJobDetail.
+        :type request: :class:`tencentcloud.oceanus.v20190422.models.DescribeJobDetailRequest`
+        :rtype: :class:`tencentcloud.oceanus.v20190422.models.DescribeJobDetailResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeJobDetail", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeJobDetailResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeJobEvents(self, request):
         r"""请求参数不包含 "RunningOrderIds"时，接口获取指定作业的事件，包括作业启动停止、运行失败、快照失败、作业异常等各种事件类型;请求参数不包含 "RunningOrderIds"时，接口为查询作业实例ID接口,获取作业实例
 

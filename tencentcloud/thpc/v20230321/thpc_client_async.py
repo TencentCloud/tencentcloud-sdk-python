@@ -345,6 +345,24 @@ class ThpcClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeClusterMonitorStatus(
+            self,
+            request: models.DescribeClusterMonitorStatusRequest,
+            opts: Dict = None,
+    ) -> models.DescribeClusterMonitorStatusResponse:
+        """
+        本接口 (ModifyInitNodeScripts) 用于修改节点初始化脚本。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeClusterMonitorStatus"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeClusterMonitorStatusResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeClusterStorageOption(
             self,
             request: models.DescribeClusterStorageOptionRequest,
@@ -619,6 +637,24 @@ class ThpcClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DisableClusterMonitor(
+            self,
+            request: models.DisableClusterMonitorRequest,
+            opts: Dict = None,
+    ) -> models.DisableClusterMonitorResponse:
+        """
+        本接口 (ModifyInitNodeScripts) 用于修改节点初始化脚本。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DisableClusterMonitor"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DisableClusterMonitorResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def EnableClusterDedicatedProxy(
             self,
             request: models.EnableClusterDedicatedProxyRequest,
@@ -636,6 +672,24 @@ class ThpcClient(AbstractClient):
         kwargs["action"] = "EnableClusterDedicatedProxy"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.EnableClusterDedicatedProxyResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def EnableClusterMonitor(
+            self,
+            request: models.EnableClusterMonitorRequest,
+            opts: Dict = None,
+    ) -> models.EnableClusterMonitorResponse:
+        """
+        本接口 (ModifyInitNodeScripts) 用于修改节点初始化脚本。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "EnableClusterMonitor"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.EnableClusterMonitorResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

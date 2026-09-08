@@ -2570,15 +2570,11 @@ class SubmitReduceFaceJobRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _File3D: 源3D模型文件。其中参数 Type 和 Url 必填，参数 PreviewImageUrl 无意义，可忽略。
-Type可选值：OBJ，GLB
-
+        :param _File3D: <p>源3D模型文件。其中参数 Type 和 Url 必填，参数 PreviewImageUrl 无意义，可忽略。Type可选值：OBJ，GLB，FBX</p>
         :type File3D: :class:`tencentcloud.ai3d.v20250513.models.File3D`
-        :param _PolygonType: 多边形类型，表示模型的表面由几边形网格构成，默认为triangle,参考值:
-triangle:三角形面。
-quadrilateral：四边形面。
+        :param _PolygonType: <p>多边形类型，表示模型的表面由几边形网格构成，默认为triangle,参考值:<br>triangle:三角形面。<br>quadrilateral：四边形面。</p>
         :type PolygonType: str
-        :param _FaceLevel: 减面后面数档位类型，可选值：high，medium, low。
+        :param _FaceLevel: <p>减面后面数档位类型，可选值：high，medium, low。</p>
         :type FaceLevel: str
         """
         self._File3D = None
@@ -2587,9 +2583,7 @@ quadrilateral：四边形面。
 
     @property
     def File3D(self):
-        r"""源3D模型文件。其中参数 Type 和 Url 必填，参数 PreviewImageUrl 无意义，可忽略。
-Type可选值：OBJ，GLB
-
+        r"""<p>源3D模型文件。其中参数 Type 和 Url 必填，参数 PreviewImageUrl 无意义，可忽略。Type可选值：OBJ，GLB，FBX</p>
         :rtype: :class:`tencentcloud.ai3d.v20250513.models.File3D`
         """
         return self._File3D
@@ -2600,9 +2594,7 @@ Type可选值：OBJ，GLB
 
     @property
     def PolygonType(self):
-        r"""多边形类型，表示模型的表面由几边形网格构成，默认为triangle,参考值:
-triangle:三角形面。
-quadrilateral：四边形面。
+        r"""<p>多边形类型，表示模型的表面由几边形网格构成，默认为triangle,参考值:<br>triangle:三角形面。<br>quadrilateral：四边形面。</p>
         :rtype: str
         """
         return self._PolygonType
@@ -2613,7 +2605,7 @@ quadrilateral：四边形面。
 
     @property
     def FaceLevel(self):
-        r"""减面后面数档位类型，可选值：high，medium, low。
+        r"""<p>减面后面数档位类型，可选值：high，medium, low。</p>
         :rtype: str
         """
         return self._FaceLevel
@@ -2646,7 +2638,7 @@ class SubmitReduceFaceJobResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _JobId: 任务ID（有效期24小时）
+        :param _JobId: <p>任务ID（有效期24小时）</p>
         :type JobId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -2656,7 +2648,7 @@ class SubmitReduceFaceJobResponse(AbstractModel):
 
     @property
     def JobId(self):
-        r"""任务ID（有效期24小时）
+        r"""<p>任务ID（有效期24小时）</p>
         :rtype: str
         """
         return self._JobId

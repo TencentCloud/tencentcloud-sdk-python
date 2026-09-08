@@ -956,6 +956,52 @@ class ClsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateResourceGraph(self, request):
+        r"""创建工作区。
+
+        :param request: Request instance for CreateResourceGraph.
+        :type request: :class:`tencentcloud.cls.v20201016.models.CreateResourceGraphRequest`
+        :rtype: :class:`tencentcloud.cls.v20201016.models.CreateResourceGraphResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateResourceGraph", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateResourceGraphResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CreateResourceGraphProductIngestTask(self, request):
+        r"""接入指定云产品。EBPF 类产品需提供 EBPFCollectRule，API 类产品仅需 Product。
+
+        :param request: Request instance for CreateResourceGraphProductIngestTask.
+        :type request: :class:`tencentcloud.cls.v20201016.models.CreateResourceGraphProductIngestTaskRequest`
+        :rtype: :class:`tencentcloud.cls.v20201016.models.CreateResourceGraphProductIngestTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateResourceGraphProductIngestTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateResourceGraphProductIngestTaskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateS3Recharge(self, request):
         r"""本接口用于创建aws导入任务
 
@@ -1867,6 +1913,52 @@ class ClsClient(AbstractClient):
             body = self.call("DeleteRemoteWriteTask", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteRemoteWriteTaskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteResourceGraph(self, request):
+        r"""删除工作区。删除前需确认是否级联清理已接入的云产品（待产品确认）。
+
+        :param request: Request instance for DeleteResourceGraph.
+        :type request: :class:`tencentcloud.cls.v20201016.models.DeleteResourceGraphRequest`
+        :rtype: :class:`tencentcloud.cls.v20201016.models.DeleteResourceGraphResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteResourceGraph", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteResourceGraphResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteResourceGraphProductIngestTask(self, request):
+        r"""删除产品接入任务
+
+        :param request: Request instance for DeleteResourceGraphProductIngestTask.
+        :type request: :class:`tencentcloud.cls.v20201016.models.DeleteResourceGraphProductIngestTaskRequest`
+        :rtype: :class:`tencentcloud.cls.v20201016.models.DeleteResourceGraphProductIngestTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteResourceGraphProductIngestTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteResourceGraphProductIngestTaskResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -3234,6 +3326,236 @@ class ClsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeResourceGraphDetail(self, request):
+        r"""查询单个云产品接入的详情，包含基本信息、实例选择、eBPF 采集规则和关联的日志主题。
+
+        :param request: Request instance for DescribeResourceGraphDetail.
+        :type request: :class:`tencentcloud.cls.v20201016.models.DescribeResourceGraphDetailRequest`
+        :rtype: :class:`tencentcloud.cls.v20201016.models.DescribeResourceGraphDetailResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeResourceGraphDetail", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeResourceGraphDetailResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeResourceGraphEntities(self, request):
+        r"""分页查询资源图谱实体列表。Filters 支持  Product / EntityClassName / Keyword 过滤；TagFilter 由于结构特殊（key 单选 + values 多选）独立成字段。
+
+        :param request: Request instance for DescribeResourceGraphEntities.
+        :type request: :class:`tencentcloud.cls.v20201016.models.DescribeResourceGraphEntitiesRequest`
+        :rtype: :class:`tencentcloud.cls.v20201016.models.DescribeResourceGraphEntitiesResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeResourceGraphEntities", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeResourceGraphEntitiesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeResourceGraphEntityDependency(self, request):
+        r"""以指定实体为中心，按 Direction（上/下游/全部）+ Hop（跳数）查询依赖拓扑，同时返回拓扑图（节点+边）、4 张卡片汇总、列表区数据、产品 tag 汇总。
+
+        :param request: Request instance for DescribeResourceGraphEntityDependency.
+        :type request: :class:`tencentcloud.cls.v20201016.models.DescribeResourceGraphEntityDependencyRequest`
+        :rtype: :class:`tencentcloud.cls.v20201016.models.DescribeResourceGraphEntityDependencyResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeResourceGraphEntityDependency", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeResourceGraphEntityDependencyResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeResourceGraphEntityDetail(self, request):
+        r"""查询单个实体的完整详情，包含基本信息、动态属性、标签、关联主题。
+
+        :param request: Request instance for DescribeResourceGraphEntityDetail.
+        :type request: :class:`tencentcloud.cls.v20201016.models.DescribeResourceGraphEntityDetailRequest`
+        :rtype: :class:`tencentcloud.cls.v20201016.models.DescribeResourceGraphEntityDetailResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeResourceGraphEntityDetail", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeResourceGraphEntityDetailResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeResourceGraphFailureDetail(self, request):
+        r"""查询资源图谱失败详情
+
+        :param request: Request instance for DescribeResourceGraphFailureDetail.
+        :type request: :class:`tencentcloud.cls.v20201016.models.DescribeResourceGraphFailureDetailRequest`
+        :rtype: :class:`tencentcloud.cls.v20201016.models.DescribeResourceGraphFailureDetailResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeResourceGraphFailureDetail", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeResourceGraphFailureDetailResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeResourceGraphIngestTaskFailureDetail(self, request):
+        r"""查询资源图谱失败详情
+
+        :param request: Request instance for DescribeResourceGraphIngestTaskFailureDetail.
+        :type request: :class:`tencentcloud.cls.v20201016.models.DescribeResourceGraphIngestTaskFailureDetailRequest`
+        :rtype: :class:`tencentcloud.cls.v20201016.models.DescribeResourceGraphIngestTaskFailureDetailResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeResourceGraphIngestTaskFailureDetail", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeResourceGraphIngestTaskFailureDetailResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeResourceGraphProductIngestTaskDetail(self, request):
+        r"""查询单个云产品接入的详情，包含基本信息、实例选择、eBPF 采集规则和关联的日志主题。
+
+        :param request: Request instance for DescribeResourceGraphProductIngestTaskDetail.
+        :type request: :class:`tencentcloud.cls.v20201016.models.DescribeResourceGraphProductIngestTaskDetailRequest`
+        :rtype: :class:`tencentcloud.cls.v20201016.models.DescribeResourceGraphProductIngestTaskDetailResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeResourceGraphProductIngestTaskDetail", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeResourceGraphProductIngestTaskDetailResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeResourceGraphProductIngestTaskList(self, request):
+        r"""分页查询云产品接入列表，返回顶部 4 张卡片汇总 + 列表行。支持按 Status / CollectMethod / Product / Name 过滤。
+
+        :param request: Request instance for DescribeResourceGraphProductIngestTaskList.
+        :type request: :class:`tencentcloud.cls.v20201016.models.DescribeResourceGraphProductIngestTaskListRequest`
+        :rtype: :class:`tencentcloud.cls.v20201016.models.DescribeResourceGraphProductIngestTaskListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeResourceGraphProductIngestTaskList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeResourceGraphProductIngestTaskListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeResourceGraphTkeClusterStatus(self, request):
+        r"""资源图谱tke集群接入状态
+
+        :param request: Request instance for DescribeResourceGraphTkeClusterStatus.
+        :type request: :class:`tencentcloud.cls.v20201016.models.DescribeResourceGraphTkeClusterStatusRequest`
+        :rtype: :class:`tencentcloud.cls.v20201016.models.DescribeResourceGraphTkeClusterStatusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeResourceGraphTkeClusterStatus", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeResourceGraphTkeClusterStatusResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeResourceGraphs(self, request):
+        r"""分页查询工作区列表，支持按 WorkAreaId / Name / Region 过滤。
+
+        :param request: Request instance for DescribeResourceGraphs.
+        :type request: :class:`tencentcloud.cls.v20201016.models.DescribeResourceGraphsRequest`
+        :rtype: :class:`tencentcloud.cls.v20201016.models.DescribeResourceGraphsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeResourceGraphs", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeResourceGraphsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeS3Recharges(self, request):
         r"""本接口用于获取cos导入配置
 
@@ -4340,6 +4662,75 @@ class ClsClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def ModifyResourceGraph(self, request):
+        r"""编辑工作区基本信息。支持改名（仍需保持租户内唯一）和修改描述，主题地域 Region 不可修改。
+
+        :param request: Request instance for ModifyResourceGraph.
+        :type request: :class:`tencentcloud.cls.v20201016.models.ModifyResourceGraphRequest`
+        :rtype: :class:`tencentcloud.cls.v20201016.models.ModifyResourceGraphResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyResourceGraph", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyResourceGraphResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyResourceGraphEntityTopicsRelation(self, request):
+        r"""修改资源图谱实体与日志主题关系
+
+        :param request: Request instance for ModifyResourceGraphEntityTopicsRelation.
+        :type request: :class:`tencentcloud.cls.v20201016.models.ModifyResourceGraphEntityTopicsRelationRequest`
+        :rtype: :class:`tencentcloud.cls.v20201016.models.ModifyResourceGraphEntityTopicsRelationResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyResourceGraphEntityTopicsRelation", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyResourceGraphEntityTopicsRelationResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyResourceGraphProductIngestTask(self, request):
+        r"""编辑已接入云产品的实例选择、eBPF 规则、日志主题配置。
+
+        :param request: Request instance for ModifyResourceGraphProductIngestTask.
+        :type request: :class:`tencentcloud.cls.v20201016.models.ModifyResourceGraphProductIngestTaskRequest`
+        :rtype: :class:`tencentcloud.cls.v20201016.models.ModifyResourceGraphProductIngestTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyResourceGraphProductIngestTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyResourceGraphProductIngestTaskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ModifyS3Recharge(self, request):
         r"""本接口用于修改aws导入任务
 
@@ -4632,6 +5023,52 @@ class ClsClient(AbstractClient):
             body = self.call("QueryRangeMetric", params, headers=headers)
             response = json.loads(body)
             model = models.QueryRangeMetricResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def RetryResourceGraph(self, request):
+        r"""重试资源图谱
+
+        :param request: Request instance for RetryResourceGraph.
+        :type request: :class:`tencentcloud.cls.v20201016.models.RetryResourceGraphRequest`
+        :rtype: :class:`tencentcloud.cls.v20201016.models.RetryResourceGraphResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("RetryResourceGraph", params, headers=headers)
+            response = json.loads(body)
+            model = models.RetryResourceGraphResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def RetryResourceGraphProductIngestTask(self, request):
+        r"""重试初始化资源图谱工作区
+
+        :param request: Request instance for RetryResourceGraphProductIngestTask.
+        :type request: :class:`tencentcloud.cls.v20201016.models.RetryResourceGraphProductIngestTaskRequest`
+        :rtype: :class:`tencentcloud.cls.v20201016.models.RetryResourceGraphProductIngestTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("RetryResourceGraphProductIngestTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.RetryResourceGraphProductIngestTaskResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

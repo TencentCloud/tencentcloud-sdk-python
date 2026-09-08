@@ -133,6 +133,42 @@ class PostgresClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CloseMem0Service(
+            self,
+            request: models.CloseMem0ServiceRequest,
+            opts: Dict = None,
+    ) -> models.CloseMem0ServiceResponse:
+        """
+        本接口（CloseMem0Service）用于关闭实例的Mem0服务
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CloseMem0Service"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CloseMem0ServiceResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ClosePostgRESTService(
+            self,
+            request: models.ClosePostgRESTServiceRequest,
+            opts: Dict = None,
+    ) -> models.ClosePostgRESTServiceResponse:
+        """
+        本接口（ClosePostgRestService）用于关闭实例的PostgREST服务
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ClosePostgRESTService"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ClosePostgRESTServiceResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateAccount(
             self,
             request: models.CreateAccountRequest,
@@ -1176,6 +1212,24 @@ class PostgresClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeMem0Service(
+            self,
+            request: models.DescribeMem0ServiceRequest,
+            opts: Dict = None,
+    ) -> models.DescribeMem0ServiceResponse:
+        """
+        本接口（DescribeMem0Service）用于查询某个实例的Mem0服务信息
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeMem0Service"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeMem0ServiceResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeOrders(
             self,
             request: models.DescribeOrdersRequest,
@@ -1243,6 +1297,24 @@ class PostgresClient(AbstractClient):
         kwargs["action"] = "DescribeParamsEvent"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeParamsEventResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribePostgRESTService(
+            self,
+            request: models.DescribePostgRESTServiceRequest,
+            opts: Dict = None,
+    ) -> models.DescribePostgRESTServiceResponse:
+        """
+        本接口（DescribePostgRestService）用于查询某个实例的PostgREST服务信息
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribePostgRESTService"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribePostgRESTServiceResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -2038,6 +2110,42 @@ class PostgresClient(AbstractClient):
         kwargs["action"] = "OpenDBExtranetAccess"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.OpenDBExtranetAccessResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def OpenMem0Service(
+            self,
+            request: models.OpenMem0ServiceRequest,
+            opts: Dict = None,
+    ) -> models.OpenMem0ServiceResponse:
+        """
+        本接口（OpenMem0Service）用于开启实例Mem0服务
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "OpenMem0Service"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.OpenMem0ServiceResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def OpenPostgRESTService(
+            self,
+            request: models.OpenPostgRESTServiceRequest,
+            opts: Dict = None,
+    ) -> models.OpenPostgRESTServiceResponse:
+        """
+        本接口（OpenPostgRestService）用于开启实例PostgREST服务
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "OpenPostgRESTService"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.OpenPostgRESTServiceResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

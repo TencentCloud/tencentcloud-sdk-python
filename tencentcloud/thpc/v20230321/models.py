@@ -4159,6 +4159,100 @@ class DescribeClusterDedicatedProxyResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeClusterMonitorStatusRequest(AbstractModel):
+    r"""DescribeClusterMonitorStatus请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: <p>集群ID。</p>
+        :type ClusterId: str
+        """
+        self._ClusterId = None
+
+    @property
+    def ClusterId(self):
+        r"""<p>集群ID。</p>
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeClusterMonitorStatusResponse(AbstractModel):
+    r"""DescribeClusterMonitorStatus返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MonitorStatus: <p>集群监控状态</p>
+        :type MonitorStatus: str
+        :param _PrometheusId: <p>集群关联的prometheus实例ID</p>
+        :type PrometheusId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._MonitorStatus = None
+        self._PrometheusId = None
+        self._RequestId = None
+
+    @property
+    def MonitorStatus(self):
+        r"""<p>集群监控状态</p>
+        :rtype: str
+        """
+        return self._MonitorStatus
+
+    @MonitorStatus.setter
+    def MonitorStatus(self, MonitorStatus):
+        self._MonitorStatus = MonitorStatus
+
+    @property
+    def PrometheusId(self):
+        r"""<p>集群关联的prometheus实例ID</p>
+        :rtype: str
+        """
+        return self._PrometheusId
+
+    @PrometheusId.setter
+    def PrometheusId(self, PrometheusId):
+        self._PrometheusId = PrometheusId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._MonitorStatus = params.get("MonitorStatus")
+        self._PrometheusId = params.get("PrometheusId")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeClusterStorageOptionRequest(AbstractModel):
     r"""DescribeClusterStorageOption请求参数结构体
 
@@ -5772,6 +5866,70 @@ class DisableClusterDedicatedProxyResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DisableClusterMonitorRequest(AbstractModel):
+    r"""DisableClusterMonitor请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: <p>集群ID。</p>
+        :type ClusterId: str
+        """
+        self._ClusterId = None
+
+    @property
+    def ClusterId(self):
+        r"""<p>集群ID。</p>
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DisableClusterMonitorResponse(AbstractModel):
+    r"""DisableClusterMonitor返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class Docker(AbstractModel):
     r"""容器配置信息。
 
@@ -6004,6 +6162,85 @@ class EnableClusterDedicatedProxyResponse(AbstractModel):
         self._EndPointStatus = params.get("EndPointStatus")
         self._VpcId = params.get("VpcId")
         self._SubnetId = params.get("SubnetId")
+        self._RequestId = params.get("RequestId")
+
+
+class EnableClusterMonitorRequest(AbstractModel):
+    r"""EnableClusterMonitor请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: <p>集群ID。</p>
+        :type ClusterId: str
+        :param _PrometheusId: <p>Prometheus实例ID</p>
+        :type PrometheusId: str
+        """
+        self._ClusterId = None
+        self._PrometheusId = None
+
+    @property
+    def ClusterId(self):
+        r"""<p>集群ID。</p>
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def PrometheusId(self):
+        r"""<p>Prometheus实例ID</p>
+        :rtype: str
+        """
+        return self._PrometheusId
+
+    @PrometheusId.setter
+    def PrometheusId(self, PrometheusId):
+        self._PrometheusId = PrometheusId
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        self._PrometheusId = params.get("PrometheusId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class EnableClusterMonitorResponse(AbstractModel):
+    r"""EnableClusterMonitor返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
 
 

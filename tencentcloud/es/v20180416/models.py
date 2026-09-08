@@ -15575,6 +15575,8 @@ class InstanceInfo(AbstractModel):
         :type OldEsVip: str
         :param _OldEsPrivateTcpUrl: <p>集群待迁移的TCP地址</p>
         :type OldEsPrivateTcpUrl: str
+        :param _NeedOfflineOldNodesNotify: <p>是否需要从VIP下线旧节点</p>
+        :type NeedOfflineOldNodesNotify: bool
         """
         self._InstanceId = None
         self._InstanceName = None
@@ -15683,6 +15685,7 @@ class InstanceInfo(AbstractModel):
         self._ServerCertSource = None
         self._OldEsVip = None
         self._OldEsPrivateTcpUrl = None
+        self._NeedOfflineOldNodesNotify = None
 
     @property
     def InstanceId(self):
@@ -16920,6 +16923,17 @@ class InstanceInfo(AbstractModel):
     def OldEsPrivateTcpUrl(self, OldEsPrivateTcpUrl):
         self._OldEsPrivateTcpUrl = OldEsPrivateTcpUrl
 
+    @property
+    def NeedOfflineOldNodesNotify(self):
+        r"""<p>是否需要从VIP下线旧节点</p>
+        :rtype: bool
+        """
+        return self._NeedOfflineOldNodesNotify
+
+    @NeedOfflineOldNodesNotify.setter
+    def NeedOfflineOldNodesNotify(self, NeedOfflineOldNodesNotify):
+        self._NeedOfflineOldNodesNotify = NeedOfflineOldNodesNotify
+
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
@@ -17077,6 +17091,7 @@ class InstanceInfo(AbstractModel):
         self._ServerCertSource = params.get("ServerCertSource")
         self._OldEsVip = params.get("OldEsVip")
         self._OldEsPrivateTcpUrl = params.get("OldEsPrivateTcpUrl")
+        self._NeedOfflineOldNodesNotify = params.get("NeedOfflineOldNodesNotify")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

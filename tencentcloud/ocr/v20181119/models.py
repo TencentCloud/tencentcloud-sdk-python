@@ -21503,10 +21503,10 @@ class PortraitImageInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _PortraitImage: 头像
+        :param _PortraitImage: <p>头像</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type PortraitImage: str
-        :param _ImageCoordinates: 头像坐标
+        :param _ImageCoordinates: <p>头像坐标</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ImageCoordinates: :class:`tencentcloud.ocr.v20181119.models.ImageCoordinates`
         """
@@ -21515,7 +21515,7 @@ class PortraitImageInfo(AbstractModel):
 
     @property
     def PortraitImage(self):
-        r"""头像
+        r"""<p>头像</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -21527,7 +21527,7 @@ class PortraitImageInfo(AbstractModel):
 
     @property
     def ImageCoordinates(self):
-        r"""头像坐标
+        r"""<p>头像坐标</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.ocr.v20181119.models.ImageCoordinates`
         """

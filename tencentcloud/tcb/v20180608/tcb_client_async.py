@@ -436,25 +436,6 @@ class TcbClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
-    async def CreateVmInstance(
-            self,
-            request: models.CreateVmInstanceRequest,
-            opts: Dict = None,
-    ) -> models.CreateVmInstanceResponse:
-        """
-        创建虚拟服务器
-        创建流程为先调用[DescribeVmSpec](https://cloud.tencent.com/document/product/876/129360)获取可购买的规格，同时调用[DescribeBlueprints](https://cloud.tencent.com/document/product/1207/47689)拉取镜像列表，选中一个规格和一个镜像后，调用[InquireVmPrice](https://cloud.tencent.com/document/product/876/129759)询价，如果价格可接受，调用此接口创建实例
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "CreateVmInstance"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.CreateVmInstanceResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
     async def DeleteAIModel(
             self,
             request: models.DeleteAIModelRequest,
@@ -624,24 +605,6 @@ class TcbClient(AbstractClient):
         kwargs["action"] = "DeleteUsers"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DeleteUsersResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
-    async def DeleteVmInstance(
-            self,
-            request: models.DeleteVmInstanceRequest,
-            opts: Dict = None,
-    ) -> models.DeleteVmInstanceResponse:
-        """
-        销毁云服务器实例
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "DeleteVmInstance"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.DeleteVmInstanceResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -1103,6 +1066,24 @@ class TcbClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeHTTPServiceCachePurgeTask(
+            self,
+            request: models.DescribeHTTPServiceCachePurgeTaskRequest,
+            opts: Dict = None,
+    ) -> models.DescribeHTTPServiceCachePurgeTaskResponse:
+        """
+        本接口DescribeHTTPServiceCachePurgeTask为只读查询，不修改任何缓存或环境资源，仅返回指定环境下域名缓存刷新任务的状态与时间等信息。通过PurgeHTTPServiceCache清除域名缓存后，可通过此接口传入任务id可查询清除任务状态、时间、缓存类型等信息。也可通过此接口查询历史任务记录。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeHTTPServiceCachePurgeTask"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeHTTPServiceCachePurgeTaskResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeHTTPServiceRoute(
             self,
             request: models.DescribeHTTPServiceRouteRequest,
@@ -1368,42 +1349,6 @@ class TcbClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
-    async def DescribeVmInstances(
-            self,
-            request: models.DescribeVmInstancesRequest,
-            opts: Dict = None,
-    ) -> models.DescribeVmInstancesResponse:
-        """
-        查询环境下的云服务器列表
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "DescribeVmInstances"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.DescribeVmInstancesResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
-    async def DescribeVmSpec(
-            self,
-            request: models.DescribeVmSpecRequest,
-            opts: Dict = None,
-    ) -> models.DescribeVmSpecResponse:
-        """
-        云服务器规格list
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "DescribeVmSpec"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.DescribeVmSpecResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
     async def DestroyEnv(
             self,
             request: models.DestroyEnvRequest,
@@ -1500,24 +1445,6 @@ class TcbClient(AbstractClient):
         kwargs["action"] = "GetProviders"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.GetProvidersResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
-    async def InquireVmPrice(
-            self,
-            request: models.InquireVmPriceRequest,
-            opts: Dict = None,
-    ) -> models.InquireVmPriceResponse:
-        """
-        查询服务器价格
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "InquireVmPrice"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.InquireVmPriceResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -1839,6 +1766,24 @@ class TcbClient(AbstractClient):
         kwargs["action"] = "PreviewPGUserMigrations"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.PreviewPGUserMigrationsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def PurgeHTTPServiceCache(
+            self,
+            request: models.PurgeHTTPServiceCacheRequest,
+            opts: Dict = None,
+    ) -> models.PurgeHTTPServiceCacheResponse:
+        """
+        本接口PurgeHTTPServiceCache为异步操作，清除指定环境下 HTTPService 域名的缓存，操作不可逆，仅影响指定 Domain 的缓存命中，不影响源站数据。用于清除HTTP访问服务域名缓存。支持刷新CDN和EO两种类型。清除缓存后会生成任务id，通过DescribeHTTPServiceCachePurgeTask传入任务id可查询任务进度和详细信息。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "PurgeHTTPServiceCache"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.PurgeHTTPServiceCacheResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

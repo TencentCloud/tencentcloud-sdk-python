@@ -1856,10 +1856,9 @@ class DescribeTaskDetailRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskId: 该字段表示创建音频审核任务后返回的任务ID（在Results参数中），用于标识需要查询任务详情的审核任务。
-<br>备注：查询接口单次最大查询量为**20条每次**。
+        :param _TaskId: <p>该字段表示创建音频审核任务后返回的任务ID（在Results参数中），用于标识需要查询任务详情的审核任务。<br><br>备注：查询接口单次最大查询量为<strong>20条每次</strong>。</p>
         :type TaskId: str
-        :param _ShowAllSegments: 该布尔字段表示是否展示全部的音频片段，取值：True(展示全部的音频分片)、False(只展示命中审核规则的音频分片)；默认值为False。
+        :param _ShowAllSegments: <p>该布尔字段表示是否展示全部的音频片段，取值：True(展示全部的音频分片)、False(只展示命中审核规则的音频分片)；默认值为False。</p>
         :type ShowAllSegments: bool
         """
         self._TaskId = None
@@ -1867,8 +1866,7 @@ class DescribeTaskDetailRequest(AbstractModel):
 
     @property
     def TaskId(self):
-        r"""该字段表示创建音频审核任务后返回的任务ID（在Results参数中），用于标识需要查询任务详情的审核任务。
-<br>备注：查询接口单次最大查询量为**20条每次**。
+        r"""<p>该字段表示创建音频审核任务后返回的任务ID（在Results参数中），用于标识需要查询任务详情的审核任务。<br><br>备注：查询接口单次最大查询量为<strong>20条每次</strong>。</p>
         :rtype: str
         """
         return self._TaskId
@@ -1879,7 +1877,7 @@ class DescribeTaskDetailRequest(AbstractModel):
 
     @property
     def ShowAllSegments(self):
-        r"""该布尔字段表示是否展示全部的音频片段，取值：True(展示全部的音频分片)、False(只展示命中审核规则的音频分片)；默认值为False。
+        r"""<p>该布尔字段表示是否展示全部的音频片段，取值：True(展示全部的音频分片)、False(只展示命中审核规则的音频分片)；默认值为False。</p>
         :rtype: bool
         """
         return self._ShowAllSegments
@@ -1909,41 +1907,42 @@ class DescribeTaskDetailResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskId: 该字段用于返回创建音频审核任务后返回的任务ID（在Results参数中），用于标识需要查询任务详情的审核任务。
+        :param _TaskId: <p>该字段用于返回创建音频审核任务后返回的任务ID（在Results参数中），用于标识需要查询任务详情的审核任务。</p>
         :type TaskId: str
-        :param _DataId: 该字段用于返回调用音频审核接口时在Tasks参数内传入的数据ID参数，方便数据的辨别和管理。
+        :param _DataId: <p>该字段用于返回调用音频审核接口时在Tasks参数内传入的数据ID参数，方便数据的辨别和管理。</p>
         :type DataId: str
-        :param _BizType: 该字段用于返回调用音频审核接口时传入的BizType参数，方便数据的辨别和管理。
+        :param _BizType: <p>该字段用于返回调用音频审核接口时传入的BizType参数，方便数据的辨别和管理。</p>
         :type BizType: str
-        :param _Name: 该字段用于返回调用音频审核接口时传入的TaskInput参数中的任务名称，方便任务的识别与管理。
+        :param _Name: <p>该字段用于返回调用音频审核接口时传入的TaskInput参数中的任务名称，方便任务的识别与管理。</p>
         :type Name: str
-        :param _Status: 该字段用于返回所查询内容的任务状态。
-<br>取值：**FINISH**（任务已完成）、**PENDING** （任务等待中）、**RUNNING** （任务进行中）、**ERROR** （任务出错）、**CANCELLED** （任务已取消）。
+        :param _Status: <p>该字段用于返回所查询内容的任务状态。<br><br>取值：<strong>FINISH</strong>（任务已完成）、<strong>PENDING</strong> （任务等待中）、<strong>RUNNING</strong> （任务进行中）、<strong>ERROR</strong> （任务出错）、<strong>CANCELLED</strong> （任务已取消）。</p>
         :type Status: str
-        :param _Type: 该字段用于返回调用音频审核接口时输入的音频审核类型，取值为：**AUDIO**（点播音频）和**LIVE_AUDIO**（直播音频），默认值为AUDIO。
+        :param _Type: <p>该字段用于返回调用音频审核接口时输入的音频审核类型，取值为：<strong>AUDIO</strong>（点播音频）和<strong>LIVE_AUDIO</strong>（直播音频），默认值为AUDIO。</p>
         :type Type: str
-        :param _Suggestion: 该字段用于返回基于恶意标签的后续操作建议。当您获取到判定结果后，返回值表示系统推荐的后续操作；建议您按照业务所需，对不同违规类型与建议值进行处理。<br>返回值：**Block**：建议屏蔽，**Review** ：建议人工复审，**Pass**：建议通过
+        :param _Suggestion: <p>该字段用于返回基于恶意标签的后续操作建议。当您获取到判定结果后，返回值表示系统推荐的后续操作；建议您按照业务所需，对不同违规类型与建议值进行处理。<br>返回值：<strong>Block</strong>：建议屏蔽，<strong>Review</strong> ：建议人工复审，<strong>Pass</strong>：建议通过</p>
         :type Suggestion: str
-        :param _Labels: 该字段用于返回检测结果所对应的恶意标签。<br>返回值：**Porn**：色情，**Abuse**：谩骂，**Ad**：广告，**Custom**：自定义违规；以及其他令人反感、不安全或不适宜的内容类型。
+        :param _Labels: <p>该字段用于返回检测结果所对应的恶意标签。<br>返回值：<strong>Porn</strong>：色情，<strong>Abuse</strong>：谩骂，<strong>Ad</strong>：广告，<strong>Custom</strong>：自定义违规；以及其他令人反感、不安全或不适宜的内容类型。</p>
         :type Labels: list of TaskLabel
-        :param _InputInfo: 该字段用于返回审核服务的媒体内容信息，主要包括传入文件类型和访问地址。
+        :param _InputInfo: <p>该字段用于返回审核服务的媒体内容信息，主要包括传入文件类型和访问地址。</p>
         :type InputInfo: :class:`tencentcloud.ams.v20201229.models.InputInfo`
-        :param _AudioText: 该字段用于返回音频文件识别出的对应文本内容，最大支持**前1000个字符**。
+        :param _AudioText: <p>该字段用于返回音频文件识别出的对应文本内容，最大支持<strong>前1000个字符</strong>。</p>
         :type AudioText: str
-        :param _AudioSegments: 该字段用于返回音频片段的审核结果，主要包括开始时间和音频审核的相应结果。<br>具体输出内容请参见AudioSegments及AudioResult数据结构的详细描述。
+        :param _AudioSegments: <p>该字段用于返回音频片段的审核结果，主要包括开始时间和音频审核的相应结果。<br>具体输出内容请参见AudioSegments及AudioResult数据结构的详细描述。</p>
         :type AudioSegments: list of AudioSegments
-        :param _ErrorType: 当任务状态为Error时，该字段用于返回对应错误的类型；任务状态非Error时，默认返回为空。
+        :param _ErrorType: <p>当任务状态为Error时，该字段用于返回对应错误的类型；任务状态非Error时，默认返回为空。</p>
         :type ErrorType: str
-        :param _ErrorDescription: 当任务状态为Error时，该字段用于返回对应错误的详细描述，任务状态非Error时默认返回为空。
+        :param _ErrorDescription: <p>当任务状态为Error时，该字段用于返回对应错误的详细描述，任务状态非Error时默认返回为空。</p>
         :type ErrorDescription: str
-        :param _CreatedAt: 该字段用于返回被查询任务创建的时间，格式采用 ISO 8601标准。
+        :param _CreatedAt: <p>该字段用于返回被查询任务创建的时间，格式采用 ISO 8601标准。</p>
         :type CreatedAt: str
-        :param _UpdatedAt: 该字段用于返回被查询任务最后更新时间，格式采用 ISO 8601标准。
+        :param _UpdatedAt: <p>该字段用于返回被查询任务最后更新时间，格式采用 ISO 8601标准。</p>
         :type UpdatedAt: str
-        :param _Label: 该字段用于返回检测结果所对应的标签。如果未命中恶意，返回Normal，如果命中恶意，则返回Labels中优先级最高的标签
+        :param _Label: <p>该字段用于返回检测结果所对应的标签。如果未命中恶意，返回Normal，如果命中恶意，则返回Labels中优先级最高的标签</p>
         :type Label: str
-        :param _MediaInfo: 媒体信息
+        :param _MediaInfo: <p>媒体信息</p>
         :type MediaInfo: :class:`tencentcloud.ams.v20201229.models.MediaInfo`
+        :param _HitSnippetInfos: <p>命中信息</p>
+        :type HitSnippetInfos: list of HitSnippetInfos
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1964,11 +1963,12 @@ class DescribeTaskDetailResponse(AbstractModel):
         self._UpdatedAt = None
         self._Label = None
         self._MediaInfo = None
+        self._HitSnippetInfos = None
         self._RequestId = None
 
     @property
     def TaskId(self):
-        r"""该字段用于返回创建音频审核任务后返回的任务ID（在Results参数中），用于标识需要查询任务详情的审核任务。
+        r"""<p>该字段用于返回创建音频审核任务后返回的任务ID（在Results参数中），用于标识需要查询任务详情的审核任务。</p>
         :rtype: str
         """
         return self._TaskId
@@ -1979,7 +1979,7 @@ class DescribeTaskDetailResponse(AbstractModel):
 
     @property
     def DataId(self):
-        r"""该字段用于返回调用音频审核接口时在Tasks参数内传入的数据ID参数，方便数据的辨别和管理。
+        r"""<p>该字段用于返回调用音频审核接口时在Tasks参数内传入的数据ID参数，方便数据的辨别和管理。</p>
         :rtype: str
         """
         return self._DataId
@@ -1990,7 +1990,7 @@ class DescribeTaskDetailResponse(AbstractModel):
 
     @property
     def BizType(self):
-        r"""该字段用于返回调用音频审核接口时传入的BizType参数，方便数据的辨别和管理。
+        r"""<p>该字段用于返回调用音频审核接口时传入的BizType参数，方便数据的辨别和管理。</p>
         :rtype: str
         """
         return self._BizType
@@ -2001,7 +2001,7 @@ class DescribeTaskDetailResponse(AbstractModel):
 
     @property
     def Name(self):
-        r"""该字段用于返回调用音频审核接口时传入的TaskInput参数中的任务名称，方便任务的识别与管理。
+        r"""<p>该字段用于返回调用音频审核接口时传入的TaskInput参数中的任务名称，方便任务的识别与管理。</p>
         :rtype: str
         """
         return self._Name
@@ -2012,8 +2012,7 @@ class DescribeTaskDetailResponse(AbstractModel):
 
     @property
     def Status(self):
-        r"""该字段用于返回所查询内容的任务状态。
-<br>取值：**FINISH**（任务已完成）、**PENDING** （任务等待中）、**RUNNING** （任务进行中）、**ERROR** （任务出错）、**CANCELLED** （任务已取消）。
+        r"""<p>该字段用于返回所查询内容的任务状态。<br><br>取值：<strong>FINISH</strong>（任务已完成）、<strong>PENDING</strong> （任务等待中）、<strong>RUNNING</strong> （任务进行中）、<strong>ERROR</strong> （任务出错）、<strong>CANCELLED</strong> （任务已取消）。</p>
         :rtype: str
         """
         return self._Status
@@ -2024,7 +2023,7 @@ class DescribeTaskDetailResponse(AbstractModel):
 
     @property
     def Type(self):
-        r"""该字段用于返回调用音频审核接口时输入的音频审核类型，取值为：**AUDIO**（点播音频）和**LIVE_AUDIO**（直播音频），默认值为AUDIO。
+        r"""<p>该字段用于返回调用音频审核接口时输入的音频审核类型，取值为：<strong>AUDIO</strong>（点播音频）和<strong>LIVE_AUDIO</strong>（直播音频），默认值为AUDIO。</p>
         :rtype: str
         """
         return self._Type
@@ -2035,7 +2034,7 @@ class DescribeTaskDetailResponse(AbstractModel):
 
     @property
     def Suggestion(self):
-        r"""该字段用于返回基于恶意标签的后续操作建议。当您获取到判定结果后，返回值表示系统推荐的后续操作；建议您按照业务所需，对不同违规类型与建议值进行处理。<br>返回值：**Block**：建议屏蔽，**Review** ：建议人工复审，**Pass**：建议通过
+        r"""<p>该字段用于返回基于恶意标签的后续操作建议。当您获取到判定结果后，返回值表示系统推荐的后续操作；建议您按照业务所需，对不同违规类型与建议值进行处理。<br>返回值：<strong>Block</strong>：建议屏蔽，<strong>Review</strong> ：建议人工复审，<strong>Pass</strong>：建议通过</p>
         :rtype: str
         """
         return self._Suggestion
@@ -2046,7 +2045,7 @@ class DescribeTaskDetailResponse(AbstractModel):
 
     @property
     def Labels(self):
-        r"""该字段用于返回检测结果所对应的恶意标签。<br>返回值：**Porn**：色情，**Abuse**：谩骂，**Ad**：广告，**Custom**：自定义违规；以及其他令人反感、不安全或不适宜的内容类型。
+        r"""<p>该字段用于返回检测结果所对应的恶意标签。<br>返回值：<strong>Porn</strong>：色情，<strong>Abuse</strong>：谩骂，<strong>Ad</strong>：广告，<strong>Custom</strong>：自定义违规；以及其他令人反感、不安全或不适宜的内容类型。</p>
         :rtype: list of TaskLabel
         """
         return self._Labels
@@ -2057,7 +2056,7 @@ class DescribeTaskDetailResponse(AbstractModel):
 
     @property
     def InputInfo(self):
-        r"""该字段用于返回审核服务的媒体内容信息，主要包括传入文件类型和访问地址。
+        r"""<p>该字段用于返回审核服务的媒体内容信息，主要包括传入文件类型和访问地址。</p>
         :rtype: :class:`tencentcloud.ams.v20201229.models.InputInfo`
         """
         return self._InputInfo
@@ -2068,7 +2067,7 @@ class DescribeTaskDetailResponse(AbstractModel):
 
     @property
     def AudioText(self):
-        r"""该字段用于返回音频文件识别出的对应文本内容，最大支持**前1000个字符**。
+        r"""<p>该字段用于返回音频文件识别出的对应文本内容，最大支持<strong>前1000个字符</strong>。</p>
         :rtype: str
         """
         return self._AudioText
@@ -2079,7 +2078,7 @@ class DescribeTaskDetailResponse(AbstractModel):
 
     @property
     def AudioSegments(self):
-        r"""该字段用于返回音频片段的审核结果，主要包括开始时间和音频审核的相应结果。<br>具体输出内容请参见AudioSegments及AudioResult数据结构的详细描述。
+        r"""<p>该字段用于返回音频片段的审核结果，主要包括开始时间和音频审核的相应结果。<br>具体输出内容请参见AudioSegments及AudioResult数据结构的详细描述。</p>
         :rtype: list of AudioSegments
         """
         return self._AudioSegments
@@ -2090,7 +2089,7 @@ class DescribeTaskDetailResponse(AbstractModel):
 
     @property
     def ErrorType(self):
-        r"""当任务状态为Error时，该字段用于返回对应错误的类型；任务状态非Error时，默认返回为空。
+        r"""<p>当任务状态为Error时，该字段用于返回对应错误的类型；任务状态非Error时，默认返回为空。</p>
         :rtype: str
         """
         return self._ErrorType
@@ -2101,7 +2100,7 @@ class DescribeTaskDetailResponse(AbstractModel):
 
     @property
     def ErrorDescription(self):
-        r"""当任务状态为Error时，该字段用于返回对应错误的详细描述，任务状态非Error时默认返回为空。
+        r"""<p>当任务状态为Error时，该字段用于返回对应错误的详细描述，任务状态非Error时默认返回为空。</p>
         :rtype: str
         """
         return self._ErrorDescription
@@ -2112,7 +2111,7 @@ class DescribeTaskDetailResponse(AbstractModel):
 
     @property
     def CreatedAt(self):
-        r"""该字段用于返回被查询任务创建的时间，格式采用 ISO 8601标准。
+        r"""<p>该字段用于返回被查询任务创建的时间，格式采用 ISO 8601标准。</p>
         :rtype: str
         """
         return self._CreatedAt
@@ -2123,7 +2122,7 @@ class DescribeTaskDetailResponse(AbstractModel):
 
     @property
     def UpdatedAt(self):
-        r"""该字段用于返回被查询任务最后更新时间，格式采用 ISO 8601标准。
+        r"""<p>该字段用于返回被查询任务最后更新时间，格式采用 ISO 8601标准。</p>
         :rtype: str
         """
         return self._UpdatedAt
@@ -2134,7 +2133,7 @@ class DescribeTaskDetailResponse(AbstractModel):
 
     @property
     def Label(self):
-        r"""该字段用于返回检测结果所对应的标签。如果未命中恶意，返回Normal，如果命中恶意，则返回Labels中优先级最高的标签
+        r"""<p>该字段用于返回检测结果所对应的标签。如果未命中恶意，返回Normal，如果命中恶意，则返回Labels中优先级最高的标签</p>
         :rtype: str
         """
         return self._Label
@@ -2145,7 +2144,7 @@ class DescribeTaskDetailResponse(AbstractModel):
 
     @property
     def MediaInfo(self):
-        r"""媒体信息
+        r"""<p>媒体信息</p>
         :rtype: :class:`tencentcloud.ams.v20201229.models.MediaInfo`
         """
         return self._MediaInfo
@@ -2153,6 +2152,17 @@ class DescribeTaskDetailResponse(AbstractModel):
     @MediaInfo.setter
     def MediaInfo(self, MediaInfo):
         self._MediaInfo = MediaInfo
+
+    @property
+    def HitSnippetInfos(self):
+        r"""<p>命中信息</p>
+        :rtype: list of HitSnippetInfos
+        """
+        return self._HitSnippetInfos
+
+    @HitSnippetInfos.setter
+    def HitSnippetInfos(self, HitSnippetInfos):
+        self._HitSnippetInfos = HitSnippetInfos
 
     @property
     def RequestId(self):
@@ -2198,6 +2208,12 @@ class DescribeTaskDetailResponse(AbstractModel):
         if params.get("MediaInfo") is not None:
             self._MediaInfo = MediaInfo()
             self._MediaInfo._deserialize(params.get("MediaInfo"))
+        if params.get("HitSnippetInfos") is not None:
+            self._HitSnippetInfos = []
+            for item in params.get("HitSnippetInfos"):
+                obj = HitSnippetInfos()
+                obj._deserialize(item)
+                self._HitSnippetInfos.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -2377,6 +2393,57 @@ class DescribeTasksResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class Duration(AbstractModel):
+    r"""命中音频时间位置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Start: <p>开始时间</p><p>单位：秒</p>
+        :type Start: float
+        :param _End: <p>结束时间</p><p>单位：秒</p>
+        :type End: float
+        """
+        self._Start = None
+        self._End = None
+
+    @property
+    def Start(self):
+        r"""<p>开始时间</p><p>单位：秒</p>
+        :rtype: float
+        """
+        return self._Start
+
+    @Start.setter
+    def Start(self, Start):
+        self._Start = Start
+
+    @property
+    def End(self):
+        r"""<p>结束时间</p><p>单位：秒</p>
+        :rtype: float
+        """
+        return self._End
+
+    @End.setter
+    def End(self, End):
+        self._End = End
+
+
+    def _deserialize(self, params):
+        self._Start = params.get("Start")
+        self._End = params.get("End")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class HitInfo(AbstractModel):
     r"""关键词命中位置信息
 
@@ -2463,6 +2530,214 @@ class HitInfo(AbstractModel):
         
 
 
+class HitSnippetInfos(AbstractModel):
+    r"""机审命中信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Target: <p>命中内容</p>
+        :type Target: str
+        :param _Snippet: <p>文本命中的文本块</p>
+        :type Snippet: str
+        :param _Scene: <p>命中场景</p>
+        :type Scene: str
+        :param _AtomicCategory: <p>命中类型</p>
+        :type AtomicCategory: str
+        :param _AtomicName: <p>命中类型库/模型名称</p>
+        :type AtomicName: str
+        :param _AtomicId: <p>命中原子能力</p>
+        :type AtomicId: str
+        :param _UnitId: <p>命中单位</p>
+        :type UnitId: str
+        :param _UnitName: <p>命中单位名称</p>
+        :type UnitName: str
+        :param _ParticleId: <p>命中颗粒ID</p>
+        :type ParticleId: str
+        :param _Positions: <p>命中文本在原文起始位置</p>
+        :type Positions: list of Position
+        :param _Duration: <p>命中音时间位置</p>
+        :type Duration: :class:`tencentcloud.ams.v20201229.models.Duration`
+        :param _Score: <p>分数</p>
+        :type Score: int
+        """
+        self._Target = None
+        self._Snippet = None
+        self._Scene = None
+        self._AtomicCategory = None
+        self._AtomicName = None
+        self._AtomicId = None
+        self._UnitId = None
+        self._UnitName = None
+        self._ParticleId = None
+        self._Positions = None
+        self._Duration = None
+        self._Score = None
+
+    @property
+    def Target(self):
+        r"""<p>命中内容</p>
+        :rtype: str
+        """
+        return self._Target
+
+    @Target.setter
+    def Target(self, Target):
+        self._Target = Target
+
+    @property
+    def Snippet(self):
+        r"""<p>文本命中的文本块</p>
+        :rtype: str
+        """
+        return self._Snippet
+
+    @Snippet.setter
+    def Snippet(self, Snippet):
+        self._Snippet = Snippet
+
+    @property
+    def Scene(self):
+        r"""<p>命中场景</p>
+        :rtype: str
+        """
+        return self._Scene
+
+    @Scene.setter
+    def Scene(self, Scene):
+        self._Scene = Scene
+
+    @property
+    def AtomicCategory(self):
+        r"""<p>命中类型</p>
+        :rtype: str
+        """
+        return self._AtomicCategory
+
+    @AtomicCategory.setter
+    def AtomicCategory(self, AtomicCategory):
+        self._AtomicCategory = AtomicCategory
+
+    @property
+    def AtomicName(self):
+        r"""<p>命中类型库/模型名称</p>
+        :rtype: str
+        """
+        return self._AtomicName
+
+    @AtomicName.setter
+    def AtomicName(self, AtomicName):
+        self._AtomicName = AtomicName
+
+    @property
+    def AtomicId(self):
+        r"""<p>命中原子能力</p>
+        :rtype: str
+        """
+        return self._AtomicId
+
+    @AtomicId.setter
+    def AtomicId(self, AtomicId):
+        self._AtomicId = AtomicId
+
+    @property
+    def UnitId(self):
+        r"""<p>命中单位</p>
+        :rtype: str
+        """
+        return self._UnitId
+
+    @UnitId.setter
+    def UnitId(self, UnitId):
+        self._UnitId = UnitId
+
+    @property
+    def UnitName(self):
+        r"""<p>命中单位名称</p>
+        :rtype: str
+        """
+        return self._UnitName
+
+    @UnitName.setter
+    def UnitName(self, UnitName):
+        self._UnitName = UnitName
+
+    @property
+    def ParticleId(self):
+        r"""<p>命中颗粒ID</p>
+        :rtype: str
+        """
+        return self._ParticleId
+
+    @ParticleId.setter
+    def ParticleId(self, ParticleId):
+        self._ParticleId = ParticleId
+
+    @property
+    def Positions(self):
+        r"""<p>命中文本在原文起始位置</p>
+        :rtype: list of Position
+        """
+        return self._Positions
+
+    @Positions.setter
+    def Positions(self, Positions):
+        self._Positions = Positions
+
+    @property
+    def Duration(self):
+        r"""<p>命中音时间位置</p>
+        :rtype: :class:`tencentcloud.ams.v20201229.models.Duration`
+        """
+        return self._Duration
+
+    @Duration.setter
+    def Duration(self, Duration):
+        self._Duration = Duration
+
+    @property
+    def Score(self):
+        r"""<p>分数</p>
+        :rtype: int
+        """
+        return self._Score
+
+    @Score.setter
+    def Score(self, Score):
+        self._Score = Score
+
+
+    def _deserialize(self, params):
+        self._Target = params.get("Target")
+        self._Snippet = params.get("Snippet")
+        self._Scene = params.get("Scene")
+        self._AtomicCategory = params.get("AtomicCategory")
+        self._AtomicName = params.get("AtomicName")
+        self._AtomicId = params.get("AtomicId")
+        self._UnitId = params.get("UnitId")
+        self._UnitName = params.get("UnitName")
+        self._ParticleId = params.get("ParticleId")
+        if params.get("Positions") is not None:
+            self._Positions = []
+            for item in params.get("Positions"):
+                obj = Position()
+                obj._deserialize(item)
+                self._Positions.append(obj)
+        if params.get("Duration") is not None:
+            self._Duration = Duration()
+            self._Duration._deserialize(params.get("Duration"))
+        self._Score = params.get("Score")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class InputInfo(AbstractModel):
     r"""输入信息详情
 
@@ -2481,12 +2756,18 @@ class InputInfo(AbstractModel):
         :type ImageUrlList: list of str
         :param _TextContent: <p>大模型审核场景下，base64编码的审核要求内容</p>
         :type TextContent: str
+        :param _Title: <p>标题</p>
+        :type Title: str
+        :param _Extra: <p>其他信息</p>
+        :type Extra: str
         """
         self._Type = None
         self._Url = None
         self._BucketInfo = None
         self._ImageUrlList = None
         self._TextContent = None
+        self._Title = None
+        self._Extra = None
 
     @property
     def Type(self):
@@ -2544,6 +2825,28 @@ class InputInfo(AbstractModel):
     def TextContent(self, TextContent):
         self._TextContent = TextContent
 
+    @property
+    def Title(self):
+        r"""<p>标题</p>
+        :rtype: str
+        """
+        return self._Title
+
+    @Title.setter
+    def Title(self, Title):
+        self._Title = Title
+
+    @property
+    def Extra(self):
+        r"""<p>其他信息</p>
+        :rtype: str
+        """
+        return self._Extra
+
+    @Extra.setter
+    def Extra(self, Extra):
+        self._Extra = Extra
+
 
     def _deserialize(self, params):
         self._Type = params.get("Type")
@@ -2553,6 +2856,8 @@ class InputInfo(AbstractModel):
             self._BucketInfo._deserialize(params.get("BucketInfo"))
         self._ImageUrlList = params.get("ImageUrlList")
         self._TextContent = params.get("TextContent")
+        self._Title = params.get("Title")
+        self._Extra = params.get("Extra")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3080,14 +3385,14 @@ class SpeakerResults(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Label: 标签
+        :param _Label: <p>标签</p>
         :type Label: str
-        :param _Score: 得分
+        :param _Score: <p>得分</p>
         :type Score: int
-        :param _StartTime: 开始时间
+        :param _StartTime: <p>开始时间</p>
         :type StartTime: float
-        :param _EndTime: 结束时间
-        :type EndTime: str
+        :param _EndTime: <p>结束时间</p>
+        :type EndTime: float
         """
         self._Label = None
         self._Score = None
@@ -3096,7 +3401,7 @@ class SpeakerResults(AbstractModel):
 
     @property
     def Label(self):
-        r"""标签
+        r"""<p>标签</p>
         :rtype: str
         """
         return self._Label
@@ -3107,7 +3412,7 @@ class SpeakerResults(AbstractModel):
 
     @property
     def Score(self):
-        r"""得分
+        r"""<p>得分</p>
         :rtype: int
         """
         return self._Score
@@ -3118,7 +3423,7 @@ class SpeakerResults(AbstractModel):
 
     @property
     def StartTime(self):
-        r"""开始时间
+        r"""<p>开始时间</p>
         :rtype: float
         """
         return self._StartTime
@@ -3129,8 +3434,8 @@ class SpeakerResults(AbstractModel):
 
     @property
     def EndTime(self):
-        r"""结束时间
-        :rtype: str
+        r"""<p>结束时间</p>
+        :rtype: float
         """
         return self._EndTime
 

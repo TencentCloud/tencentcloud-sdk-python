@@ -23130,36 +23130,17 @@ class DescribeBillUsageDetailRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _StartTime: 查询开始时间字符串，格式为yyyymmdd,时间跨度不能大于31天
+        :param _StartTime: <p>查询开始时间字符串，格式为yyyyMMdd，时间跨度不能大于31天。<span style="color: red;">注意：从 2026年10月10日起，开始日期和结束日期必须在同一个自然月内，不支持跨月查询。</span></p><ul><li><p>正确示例：StartTime=20260901，EndTime=20260930。开始和结束日期都在 2026年9月，可以查询。</p></li><li><p>错误示例：StartTime=20260815，EndTime=20260915。开始日期在8月，结束日期在9月，属于跨月查询，不支持。</p></li></ul><p>参数格式：yyyyMMdd</p>
         :type StartTime: str
-        :param _EndTime: 查询结束时间字符串，格式为yyyymmdd,时间跨度不能大于31天
+        :param _EndTime: <p>查询结束时间字符串，格式为yyyyMMdd，时间跨度不能大于31天。<span style="color: red;">注意：从 2026年10月10日起，开始日期和结束日期必须在同一个自然月内，不支持跨月查询。</span></p><ul><li><p>正确示例：StartTime=20260901，EndTime=20260930。开始和结束日期都在 2026年9月，可以查询。</p></li><li><p>错误示例：StartTime=20260815，EndTime=20260915。开始日期在8月，结束日期在9月，属于跨月查询，不支持。</p></li></ul><p>参数格式：yyyyMMdd</p>
         :type EndTime: str
-        :param _Offset: 指定分页返回第几页的数据，如果不传默认返回第一页，页码从 0 开始，即首页为 0
+        :param _Offset: <p>指定分页返回第几页的数据，如果不传默认返回第一页，页码从 0 开始，即首页为 0</p>
         :type Offset: int
-        :param _Limit: 指定分页每页返回的数据条数，如果不传默认为 50，单页最大支持 50。
+        :param _Limit: <p>指定分页每页返回的数据条数，如果不传默认为 100，单页最大支持 100。</p>
         :type Limit: int
-        :param _QuotaType: 查询的套餐类型 （选填 ）不传则查询所有套餐；
-目前支持:
-<ul>
-<li>**CloudEnterprise**: 企业版合同</li>
-<li>**SingleSignature**: 单方签章</li>
-<li>**CloudProve**: 签署报告</li>
-<li>**CloudOnlineSign**: 腾讯会议在线签约</li>
-<li>**ChannelWeCard**: 微工卡</li>
-<li>**SignFlow**: 合同套餐</li>
-<li>**SignFace**: 签署意愿（人脸识别）</li>
-<li>**SignPassword**: 签署意愿（密码）</li>
-<li>**SignSMS**: 签署意愿（短信）</li>
-<li>**PersonalEssAuth**: 签署人实名（腾讯电子签认证）</li>
-<li>**PersonalThirdAuth**: 签署人实名（信任第三方认证）</li>
-<li>**OrgEssAuth**: 签署企业实名</li>
-<li>**FlowNotify**: 短信通知</li>
-<li>**AuthService**: 企业工商信息查询</li>
-<li>**NoAuthSign**: 形式签</li>
-</ul>
+        :param _QuotaType: <p>查询的套餐类型 （选填 ）不传则查询所有套餐；<br>目前支持:</p><ul><li>**CloudEnterprise**: 企业版合同</li><li>**SingleSignature**: 单方签章</li><li>**CloudProve**: 签署报告</li><li>**CloudOnlineSign**: 腾讯会议在线签约</li><li>**ChannelWeCard**: 微工卡</li><li>**SignFlow**: 合同套餐</li><li>**SignFace**: 签署意愿（人脸识别）</li><li>**SignPassword**: 签署意愿（密码）</li><li>**SignSMS**: 签署意愿（短信）</li><li>**PersonalEssAuth**: 签署人实名（腾讯电子签认证）</li><li>**PersonalThirdAuth**: 签署人实名（信任第三方认证）</li><li>**OrgEssAuth**: 签署企业实名</li><li>**FlowNotify**: 短信通知</li><li>**AuthService**: 企业工商信息查询</li><li>**NoAuthSign**: 形式签</li></ul>
         :type QuotaType: str
-        :param _Agent: 代理企业和员工的信息。
-在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
+        :param _Agent: <p>代理企业和员工的信息。<br>在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。</p>
         :type Agent: :class:`tencentcloud.ess.v20201111.models.Agent`
         """
         self._StartTime = None
@@ -23171,7 +23152,7 @@ class DescribeBillUsageDetailRequest(AbstractModel):
 
     @property
     def StartTime(self):
-        r"""查询开始时间字符串，格式为yyyymmdd,时间跨度不能大于31天
+        r"""<p>查询开始时间字符串，格式为yyyyMMdd，时间跨度不能大于31天。<span style="color: red;">注意：从 2026年10月10日起，开始日期和结束日期必须在同一个自然月内，不支持跨月查询。</span></p><ul><li><p>正确示例：StartTime=20260901，EndTime=20260930。开始和结束日期都在 2026年9月，可以查询。</p></li><li><p>错误示例：StartTime=20260815，EndTime=20260915。开始日期在8月，结束日期在9月，属于跨月查询，不支持。</p></li></ul><p>参数格式：yyyyMMdd</p>
         :rtype: str
         """
         return self._StartTime
@@ -23182,7 +23163,7 @@ class DescribeBillUsageDetailRequest(AbstractModel):
 
     @property
     def EndTime(self):
-        r"""查询结束时间字符串，格式为yyyymmdd,时间跨度不能大于31天
+        r"""<p>查询结束时间字符串，格式为yyyyMMdd，时间跨度不能大于31天。<span style="color: red;">注意：从 2026年10月10日起，开始日期和结束日期必须在同一个自然月内，不支持跨月查询。</span></p><ul><li><p>正确示例：StartTime=20260901，EndTime=20260930。开始和结束日期都在 2026年9月，可以查询。</p></li><li><p>错误示例：StartTime=20260815，EndTime=20260915。开始日期在8月，结束日期在9月，属于跨月查询，不支持。</p></li></ul><p>参数格式：yyyyMMdd</p>
         :rtype: str
         """
         return self._EndTime
@@ -23193,7 +23174,7 @@ class DescribeBillUsageDetailRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""指定分页返回第几页的数据，如果不传默认返回第一页，页码从 0 开始，即首页为 0
+        r"""<p>指定分页返回第几页的数据，如果不传默认返回第一页，页码从 0 开始，即首页为 0</p>
         :rtype: int
         """
         return self._Offset
@@ -23204,7 +23185,7 @@ class DescribeBillUsageDetailRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""指定分页每页返回的数据条数，如果不传默认为 50，单页最大支持 50。
+        r"""<p>指定分页每页返回的数据条数，如果不传默认为 100，单页最大支持 100。</p>
         :rtype: int
         """
         return self._Limit
@@ -23215,25 +23196,7 @@ class DescribeBillUsageDetailRequest(AbstractModel):
 
     @property
     def QuotaType(self):
-        r"""查询的套餐类型 （选填 ）不传则查询所有套餐；
-目前支持:
-<ul>
-<li>**CloudEnterprise**: 企业版合同</li>
-<li>**SingleSignature**: 单方签章</li>
-<li>**CloudProve**: 签署报告</li>
-<li>**CloudOnlineSign**: 腾讯会议在线签约</li>
-<li>**ChannelWeCard**: 微工卡</li>
-<li>**SignFlow**: 合同套餐</li>
-<li>**SignFace**: 签署意愿（人脸识别）</li>
-<li>**SignPassword**: 签署意愿（密码）</li>
-<li>**SignSMS**: 签署意愿（短信）</li>
-<li>**PersonalEssAuth**: 签署人实名（腾讯电子签认证）</li>
-<li>**PersonalThirdAuth**: 签署人实名（信任第三方认证）</li>
-<li>**OrgEssAuth**: 签署企业实名</li>
-<li>**FlowNotify**: 短信通知</li>
-<li>**AuthService**: 企业工商信息查询</li>
-<li>**NoAuthSign**: 形式签</li>
-</ul>
+        r"""<p>查询的套餐类型 （选填 ）不传则查询所有套餐；<br>目前支持:</p><ul><li>**CloudEnterprise**: 企业版合同</li><li>**SingleSignature**: 单方签章</li><li>**CloudProve**: 签署报告</li><li>**CloudOnlineSign**: 腾讯会议在线签约</li><li>**ChannelWeCard**: 微工卡</li><li>**SignFlow**: 合同套餐</li><li>**SignFace**: 签署意愿（人脸识别）</li><li>**SignPassword**: 签署意愿（密码）</li><li>**SignSMS**: 签署意愿（短信）</li><li>**PersonalEssAuth**: 签署人实名（腾讯电子签认证）</li><li>**PersonalThirdAuth**: 签署人实名（信任第三方认证）</li><li>**OrgEssAuth**: 签署企业实名</li><li>**FlowNotify**: 短信通知</li><li>**AuthService**: 企业工商信息查询</li><li>**NoAuthSign**: 形式签</li></ul>
         :rtype: str
         """
         return self._QuotaType
@@ -23244,8 +23207,7 @@ class DescribeBillUsageDetailRequest(AbstractModel):
 
     @property
     def Agent(self):
-        r"""代理企业和员工的信息。
-在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。
+        r"""<p>代理企业和员工的信息。<br>在集团企业代理子企业操作的场景中，需设置此参数。在此情境下，ProxyOrganizationId（子企业的组织ID）为必填项。</p>
         :rtype: :class:`tencentcloud.ess.v20201111.models.Agent`
         """
         return self._Agent
@@ -23281,9 +23243,9 @@ class DescribeBillUsageDetailResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Total: 总数
+        :param _Total: <p>总数</p>
         :type Total: int
-        :param _Details: 消耗详情
+        :param _Details: <p>消耗详情</p>
         :type Details: list of BillUsageDetail
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -23294,7 +23256,7 @@ class DescribeBillUsageDetailResponse(AbstractModel):
 
     @property
     def Total(self):
-        r"""总数
+        r"""<p>总数</p>
         :rtype: int
         """
         return self._Total
@@ -23305,7 +23267,7 @@ class DescribeBillUsageDetailResponse(AbstractModel):
 
     @property
     def Details(self):
-        r"""消耗详情
+        r"""<p>消耗详情</p>
         :rtype: list of BillUsageDetail
         """
         return self._Details

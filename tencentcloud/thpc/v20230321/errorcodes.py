@@ -170,6 +170,9 @@ RESOURCENOTFOUND_LOCALPATH = 'ResourceNotFound.LocalPath'
 # 无法找到ID对应节点。
 RESOURCENOTFOUND_NODEID = 'ResourceNotFound.NodeId'
 
+# 指定的 prometheus 实例不存在
+RESOURCENOTFOUND_PROMETHEUSID = 'ResourceNotFound.PrometheusId'
+
 # 无法找到指定队列。
 RESOURCENOTFOUND_QUEUE = 'ResourceNotFound.Queue'
 

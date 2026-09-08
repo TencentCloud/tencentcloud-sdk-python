@@ -11115,9 +11115,9 @@ class DescribeSourceTypesResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TotalCount: 认证源总数
+        :param _TotalCount: <p>认证源总数</p>
         :type TotalCount: int
-        :param _SourceTypeSet: 认证源信息
+        :param _SourceTypeSet: <p>认证源信息</p>
         :type SourceTypeSet: list of SourceType
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -11128,7 +11128,7 @@ class DescribeSourceTypesResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        r"""认证源总数
+        r"""<p>认证源总数</p>
         :rtype: int
         """
         return self._TotalCount
@@ -11139,7 +11139,7 @@ class DescribeSourceTypesResponse(AbstractModel):
 
     @property
     def SourceTypeSet(self):
-        r"""认证源信息
+        r"""<p>认证源信息</p>
         :rtype: list of SourceType
         """
         return self._SourceTypeSet
@@ -17459,27 +17459,25 @@ class ModifyUserRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Id: 用户ID
+        :param _Id: <p>用户ID</p>
         :type Id: int
-        :param _RealName: 用户姓名，最大长度20个字符，不能包含空格
+        :param _RealName: <p>用户姓名，最大长度20个字符，不能包含空格</p>
         :type RealName: str
-        :param _Phone: 按照"国家地区代码|手机号"的格式输入。如: "+86|xxxxxxxx"
+        :param _Phone: <p>按照&quot;国家地区代码|手机号&quot;的格式输入。如: &quot;+86|xxxxxxxx&quot;</p>
         :type Phone: str
-        :param _Email: 电子邮件
+        :param _Email: <p>电子邮件</p>
         :type Email: str
-        :param _ValidateFrom: 用户生效时间，如:"2021-09-22T00:00:00+00:00"
-生效、失效时间不填则用户长期有效
+        :param _ValidateFrom: <p>用户生效时间，如:&quot;2021-09-22T00:00:00+00:00&quot;<br>生效、失效时间不填则用户长期有效</p>
         :type ValidateFrom: str
-        :param _ValidateTo: 用户失效时间，如:"2021-09-23T00:00:00+00:00"
-生效、失效时间不填则用户长期有效
+        :param _ValidateTo: <p>用户失效时间，如:&quot;2021-09-23T00:00:00+00:00&quot;<br>生效、失效时间不填则用户长期有效</p>
         :type ValidateTo: str
-        :param _GroupIdSet: 所属用户组ID集合
+        :param _GroupIdSet: <p>所属用户组ID集合</p>
         :type GroupIdSet: list of int non-negative
-        :param _AuthType: 认证方式，0 - 本地，1 - LDAP，2 - OAuth 不传则默认为0
+        :param _AuthType: <p>认证方式，0 - 本地，1 - LDAP，2 - OAuth 不传则默认为0</p>
         :type AuthType: int
-        :param _ValidateTime: 访问时间段限制， 由0、1组成的字符串，长度168(7 × 24)，代表该用户在一周中允许访问的时间段。字符串中第N个字符代表在一周中的第N个小时， 0 - 代表不允许访问，1 - 代表允许访问
+        :param _ValidateTime: <p>访问时间段限制， 由0、1组成的字符串，长度168(7 × 24)，代表该用户在一周中允许访问的时间段。字符串中第N个字符代表在一周中的第N个小时， 0 - 代表不允许访问，1 - 代表允许访问</p>
         :type ValidateTime: str
-        :param _DepartmentId: 用户所属部门的ID，如1.2.3
+        :param _DepartmentId: <p>用户所属部门的ID，如1.2.3</p>
         :type DepartmentId: str
         """
         self._Id = None
@@ -17495,7 +17493,7 @@ class ModifyUserRequest(AbstractModel):
 
     @property
     def Id(self):
-        r"""用户ID
+        r"""<p>用户ID</p>
         :rtype: int
         """
         return self._Id
@@ -17506,7 +17504,7 @@ class ModifyUserRequest(AbstractModel):
 
     @property
     def RealName(self):
-        r"""用户姓名，最大长度20个字符，不能包含空格
+        r"""<p>用户姓名，最大长度20个字符，不能包含空格</p>
         :rtype: str
         """
         return self._RealName
@@ -17517,7 +17515,7 @@ class ModifyUserRequest(AbstractModel):
 
     @property
     def Phone(self):
-        r"""按照"国家地区代码|手机号"的格式输入。如: "+86|xxxxxxxx"
+        r"""<p>按照&quot;国家地区代码|手机号&quot;的格式输入。如: &quot;+86|xxxxxxxx&quot;</p>
         :rtype: str
         """
         return self._Phone
@@ -17528,7 +17526,7 @@ class ModifyUserRequest(AbstractModel):
 
     @property
     def Email(self):
-        r"""电子邮件
+        r"""<p>电子邮件</p>
         :rtype: str
         """
         return self._Email
@@ -17539,8 +17537,7 @@ class ModifyUserRequest(AbstractModel):
 
     @property
     def ValidateFrom(self):
-        r"""用户生效时间，如:"2021-09-22T00:00:00+00:00"
-生效、失效时间不填则用户长期有效
+        r"""<p>用户生效时间，如:&quot;2021-09-22T00:00:00+00:00&quot;<br>生效、失效时间不填则用户长期有效</p>
         :rtype: str
         """
         return self._ValidateFrom
@@ -17551,8 +17548,7 @@ class ModifyUserRequest(AbstractModel):
 
     @property
     def ValidateTo(self):
-        r"""用户失效时间，如:"2021-09-23T00:00:00+00:00"
-生效、失效时间不填则用户长期有效
+        r"""<p>用户失效时间，如:&quot;2021-09-23T00:00:00+00:00&quot;<br>生效、失效时间不填则用户长期有效</p>
         :rtype: str
         """
         return self._ValidateTo
@@ -17563,7 +17559,7 @@ class ModifyUserRequest(AbstractModel):
 
     @property
     def GroupIdSet(self):
-        r"""所属用户组ID集合
+        r"""<p>所属用户组ID集合</p>
         :rtype: list of int non-negative
         """
         return self._GroupIdSet
@@ -17574,7 +17570,7 @@ class ModifyUserRequest(AbstractModel):
 
     @property
     def AuthType(self):
-        r"""认证方式，0 - 本地，1 - LDAP，2 - OAuth 不传则默认为0
+        r"""<p>认证方式，0 - 本地，1 - LDAP，2 - OAuth 不传则默认为0</p>
         :rtype: int
         """
         return self._AuthType
@@ -17585,7 +17581,7 @@ class ModifyUserRequest(AbstractModel):
 
     @property
     def ValidateTime(self):
-        r"""访问时间段限制， 由0、1组成的字符串，长度168(7 × 24)，代表该用户在一周中允许访问的时间段。字符串中第N个字符代表在一周中的第N个小时， 0 - 代表不允许访问，1 - 代表允许访问
+        r"""<p>访问时间段限制， 由0、1组成的字符串，长度168(7 × 24)，代表该用户在一周中允许访问的时间段。字符串中第N个字符代表在一周中的第N个小时， 0 - 代表不允许访问，1 - 代表允许访问</p>
         :rtype: str
         """
         return self._ValidateTime
@@ -17596,7 +17592,7 @@ class ModifyUserRequest(AbstractModel):
 
     @property
     def DepartmentId(self):
-        r"""用户所属部门的ID，如1.2.3
+        r"""<p>用户所属部门的ID，如1.2.3</p>
         :rtype: str
         """
         return self._DepartmentId

@@ -183,13 +183,13 @@ class AddClientSubscriptionRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例ID
+        :param _InstanceId: <p>实例ID</p>
         :type InstanceId: str
-        :param _ClientId: 客户端id
+        :param _ClientId: <p>客户端id</p>
         :type ClientId: str
-        :param _TopicFilter: 订阅
+        :param _TopicFilter: <p>订阅</p>
         :type TopicFilter: str
-        :param _Qos: 服务质量:0,1,2
+        :param _Qos: <p>服务质量:0,1,2</p>
         :type Qos: str
         """
         self._InstanceId = None
@@ -199,7 +199,7 @@ class AddClientSubscriptionRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""实例ID
+        r"""<p>实例ID</p>
         :rtype: str
         """
         return self._InstanceId
@@ -210,7 +210,7 @@ class AddClientSubscriptionRequest(AbstractModel):
 
     @property
     def ClientId(self):
-        r"""客户端id
+        r"""<p>客户端id</p>
         :rtype: str
         """
         return self._ClientId
@@ -221,7 +221,7 @@ class AddClientSubscriptionRequest(AbstractModel):
 
     @property
     def TopicFilter(self):
-        r"""订阅
+        r"""<p>订阅</p>
         :rtype: str
         """
         return self._TopicFilter
@@ -232,7 +232,7 @@ class AddClientSubscriptionRequest(AbstractModel):
 
     @property
     def Qos(self):
-        r"""服务质量:0,1,2
+        r"""<p>服务质量:0,1,2</p>
         :rtype: str
         """
         return self._Qos
@@ -2034,11 +2034,11 @@ class CreateInsPublicEndpointRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
+        :param _InstanceId: <p>腾讯云MQTT实例ID，从 <a href="https://cloud.tencent.com/document/api/1778/111029">DescribeInstanceList</a>接口或控制台获得。</p>
         :type InstanceId: str
-        :param _Bandwidth: 带宽,单位Mbps
+        :param _Bandwidth: <p>带宽,单位Mbps</p>
         :type Bandwidth: int
-        :param _Rules: 公网访问规则
+        :param _Rules: <p>公网访问规则</p>
         :type Rules: list of PublicAccessRule
         """
         self._InstanceId = None
@@ -2047,7 +2047,7 @@ class CreateInsPublicEndpointRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
+        r"""<p>腾讯云MQTT实例ID，从 <a href="https://cloud.tencent.com/document/api/1778/111029">DescribeInstanceList</a>接口或控制台获得。</p>
         :rtype: str
         """
         return self._InstanceId
@@ -2058,7 +2058,7 @@ class CreateInsPublicEndpointRequest(AbstractModel):
 
     @property
     def Bandwidth(self):
-        r"""带宽,单位Mbps
+        r"""<p>带宽,单位Mbps</p>
         :rtype: int
         """
         return self._Bandwidth
@@ -2069,7 +2069,7 @@ class CreateInsPublicEndpointRequest(AbstractModel):
 
     @property
     def Rules(self):
-        r"""公网访问规则
+        r"""<p>公网访问规则</p>
         :rtype: list of PublicAccessRule
         """
         return self._Rules
@@ -2133,33 +2133,29 @@ class CreateInstanceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceType: 实例类型，需要和SkuCode保持对应关系，可参考 [获取MQTT产品售卖规格](https://cloud.tencent.com/document/api/1778/116232) 接口获取。
-BASIC 基础版
-PRO  专业版
-PLATINUM 铂金版
-
+        :param _InstanceType: <p>实例类型，需要和SkuCode保持对应关系，可参考 <a href="https://cloud.tencent.com/document/api/1778/116232">获取MQTT产品售卖规格</a> 接口获取。<br>BASIC 基础版<br>PRO  专业版<br>PLATINUM 铂金版</p>
         :type InstanceType: str
-        :param _Name: 集群名称不能为空, 3-64个字符，只能包含数字、字母、“-”和“_”。
+        :param _Name: <p>集群名称不能为空, 3-64个字符，只能包含数字、字母、“-”和“_”。</p>
         :type Name: str
-        :param _SkuCode: 商品规格，需要和InstanceType保持对应关系，可参考 [获取MQTT产品售卖规格](https://cloud.tencent.com/document/api/1778/116232) 接口获取。
+        :param _SkuCode: <p>商品规格，需要和InstanceType保持对应关系，可参考 <a href="https://cloud.tencent.com/document/api/1778/116232">获取MQTT产品售卖规格</a> 接口获取。</p>
         :type SkuCode: str
-        :param _Remark: 备注信息，最长 128 字符
+        :param _Remark: <p>备注信息，最长 128 字符</p>
         :type Remark: str
-        :param _TagList: 标签列表
+        :param _TagList: <p>标签列表</p>
         :type TagList: list of Tag
-        :param _VpcList: 实例绑定的VPC信息，需要传当前用户下可用的VPC和SUBNET
+        :param _VpcList: <p>实例绑定的VPC信息，需要传当前用户下可用的VPC和SUBNET</p>
         :type VpcList: list of VpcInfo
-        :param _EnablePublic: 是否开启公网，默认false（关闭）
+        :param _EnablePublic: <p>是否开启公网，默认false（关闭）</p>
         :type EnablePublic: bool
-        :param _Bandwidth: 公网带宽（单位：Mbps），EnablePublic 为True时，该字段必须填写且大于0.
+        :param _Bandwidth: <p>公网带宽（单位：Mbps），EnablePublic 为True时，该字段必须填写且大于0.</p>
         :type Bandwidth: int
-        :param _IpRules: 公网访问白名单，不传表示拒绝所有IP网络访问。
+        :param _IpRules: <p>公网访问白名单，不传表示拒绝所有IP网络访问。</p>
         :type IpRules: list of IpRule
-        :param _RenewFlag: 是否自动续费（0: 不自动续费；1: 自动续费），仅购买预付费集群时生效。默认1:自动续费
+        :param _RenewFlag: <p>是否自动续费（0: 不自动续费；1: 自动续费），仅购买预付费集群时生效。默认1:自动续费</p>
         :type RenewFlag: int
-        :param _TimeSpan: 购买时长（单位：月），购买预付费集群时生效，默认1m（月）。可选范围：1~12、24、36、48、60；
+        :param _TimeSpan: <p>购买时长（单位：月），购买预付费集群时生效，默认1m（月）。可选范围：1~12、24、36、48、60；</p>
         :type TimeSpan: int
-        :param _PayMode: 付费模式（0: 后付费；1: 预付费），默认0（后付费）。
+        :param _PayMode: <p>付费模式（0: 后付费；1: 预付费），默认0（后付费）。</p>
         :type PayMode: int
         """
         self._InstanceType = None
@@ -2177,11 +2173,7 @@ PLATINUM 铂金版
 
     @property
     def InstanceType(self):
-        r"""实例类型，需要和SkuCode保持对应关系，可参考 [获取MQTT产品售卖规格](https://cloud.tencent.com/document/api/1778/116232) 接口获取。
-BASIC 基础版
-PRO  专业版
-PLATINUM 铂金版
-
+        r"""<p>实例类型，需要和SkuCode保持对应关系，可参考 <a href="https://cloud.tencent.com/document/api/1778/116232">获取MQTT产品售卖规格</a> 接口获取。<br>BASIC 基础版<br>PRO  专业版<br>PLATINUM 铂金版</p>
         :rtype: str
         """
         return self._InstanceType
@@ -2192,7 +2184,7 @@ PLATINUM 铂金版
 
     @property
     def Name(self):
-        r"""集群名称不能为空, 3-64个字符，只能包含数字、字母、“-”和“_”。
+        r"""<p>集群名称不能为空, 3-64个字符，只能包含数字、字母、“-”和“_”。</p>
         :rtype: str
         """
         return self._Name
@@ -2203,7 +2195,7 @@ PLATINUM 铂金版
 
     @property
     def SkuCode(self):
-        r"""商品规格，需要和InstanceType保持对应关系，可参考 [获取MQTT产品售卖规格](https://cloud.tencent.com/document/api/1778/116232) 接口获取。
+        r"""<p>商品规格，需要和InstanceType保持对应关系，可参考 <a href="https://cloud.tencent.com/document/api/1778/116232">获取MQTT产品售卖规格</a> 接口获取。</p>
         :rtype: str
         """
         return self._SkuCode
@@ -2214,7 +2206,7 @@ PLATINUM 铂金版
 
     @property
     def Remark(self):
-        r"""备注信息，最长 128 字符
+        r"""<p>备注信息，最长 128 字符</p>
         :rtype: str
         """
         return self._Remark
@@ -2225,7 +2217,7 @@ PLATINUM 铂金版
 
     @property
     def TagList(self):
-        r"""标签列表
+        r"""<p>标签列表</p>
         :rtype: list of Tag
         """
         return self._TagList
@@ -2236,7 +2228,7 @@ PLATINUM 铂金版
 
     @property
     def VpcList(self):
-        r"""实例绑定的VPC信息，需要传当前用户下可用的VPC和SUBNET
+        r"""<p>实例绑定的VPC信息，需要传当前用户下可用的VPC和SUBNET</p>
         :rtype: list of VpcInfo
         """
         return self._VpcList
@@ -2247,7 +2239,7 @@ PLATINUM 铂金版
 
     @property
     def EnablePublic(self):
-        r"""是否开启公网，默认false（关闭）
+        r"""<p>是否开启公网，默认false（关闭）</p>
         :rtype: bool
         """
         return self._EnablePublic
@@ -2258,7 +2250,7 @@ PLATINUM 铂金版
 
     @property
     def Bandwidth(self):
-        r"""公网带宽（单位：Mbps），EnablePublic 为True时，该字段必须填写且大于0.
+        r"""<p>公网带宽（单位：Mbps），EnablePublic 为True时，该字段必须填写且大于0.</p>
         :rtype: int
         """
         return self._Bandwidth
@@ -2269,7 +2261,7 @@ PLATINUM 铂金版
 
     @property
     def IpRules(self):
-        r"""公网访问白名单，不传表示拒绝所有IP网络访问。
+        r"""<p>公网访问白名单，不传表示拒绝所有IP网络访问。</p>
         :rtype: list of IpRule
         """
         return self._IpRules
@@ -2280,7 +2272,7 @@ PLATINUM 铂金版
 
     @property
     def RenewFlag(self):
-        r"""是否自动续费（0: 不自动续费；1: 自动续费），仅购买预付费集群时生效。默认1:自动续费
+        r"""<p>是否自动续费（0: 不自动续费；1: 自动续费），仅购买预付费集群时生效。默认1:自动续费</p>
         :rtype: int
         """
         return self._RenewFlag
@@ -2291,7 +2283,7 @@ PLATINUM 铂金版
 
     @property
     def TimeSpan(self):
-        r"""购买时长（单位：月），购买预付费集群时生效，默认1m（月）。可选范围：1~12、24、36、48、60；
+        r"""<p>购买时长（单位：月），购买预付费集群时生效，默认1m（月）。可选范围：1~12、24、36、48、60；</p>
         :rtype: int
         """
         return self._TimeSpan
@@ -2302,7 +2294,7 @@ PLATINUM 铂金版
 
     @property
     def PayMode(self):
-        r"""付费模式（0: 后付费；1: 预付费），默认0（后付费）。
+        r"""<p>付费模式（0: 后付费；1: 预付费），默认0（后付费）。</p>
         :rtype: int
         """
         return self._PayMode
@@ -2357,7 +2349,7 @@ class CreateInstanceResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例ID
+        :param _InstanceId: <p>实例ID</p>
         :type InstanceId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -2367,7 +2359,7 @@ class CreateInstanceResponse(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""实例ID
+        r"""<p>实例ID</p>
         :rtype: str
         """
         return self._InstanceId
@@ -2400,23 +2392,19 @@ class CreateJWKSAuthenticatorRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
+        :param _InstanceId: <p>腾讯云MQTT实例ID，从 <a href="https://cloud.tencent.com/document/api/1778/111029">DescribeInstanceList</a>接口或控制台获得。</p>
         :type InstanceId: str
-        :param _Endpoint: JWKS服务地址，（Text字段和Endpoint字段必须选择一个填写）
+        :param _Endpoint: <p>JWKS服务地址，（Text字段和Endpoint字段必须选择一个填写）</p>
         :type Endpoint: str
-        :param _RefreshInterval: 认证文本刷新间隔时间，单位：秒，最小值60，默认值60，最大值1000。填写认证服务器地址（Endpoint）时生效。
+        :param _RefreshInterval: <p>认证文本刷新间隔时间，单位：秒，最小值60，默认值60，最大值1000。填写认证服务器地址（Endpoint）时生效。</p>
         :type RefreshInterval: int
-        :param _Text: jwks文本，（Text字段和Endpoint字段必须选择一个填写）
+        :param _Text: <p>jwks文本，（Text字段和Endpoint字段必须选择一个填写）</p>
         :type Text: str
-        :param _Status: 认证器是否开启：open-启用；close-关闭，默认open-启用
+        :param _Status: <p>认证器是否开启：open-启用；close-关闭，默认open-启用</p>
         :type Status: str
-        :param _Remark: 说明，不能超过 128 个字符
+        :param _Remark: <p>说明，不能超过 128 个字符</p>
         :type Remark: str
-        :param _From: 认证字段；
-username-对应 MQTT CONNECT Packet 中 username 字段，
-password-对应 MQTT CONNECT Packet 中 password 字段。
-
-默认username
+        :param _From: <p>认证字段；<br>username-对应 MQTT CONNECT Packet 中 username 字段，<br>password-对应 MQTT CONNECT Packet 中 password 字段。</p><p>默认username</p>
         :type From: str
         """
         self._InstanceId = None
@@ -2429,7 +2417,7 @@ password-对应 MQTT CONNECT Packet 中 password 字段。
 
     @property
     def InstanceId(self):
-        r"""腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
+        r"""<p>腾讯云MQTT实例ID，从 <a href="https://cloud.tencent.com/document/api/1778/111029">DescribeInstanceList</a>接口或控制台获得。</p>
         :rtype: str
         """
         return self._InstanceId
@@ -2440,7 +2428,7 @@ password-对应 MQTT CONNECT Packet 中 password 字段。
 
     @property
     def Endpoint(self):
-        r"""JWKS服务地址，（Text字段和Endpoint字段必须选择一个填写）
+        r"""<p>JWKS服务地址，（Text字段和Endpoint字段必须选择一个填写）</p>
         :rtype: str
         """
         return self._Endpoint
@@ -2451,7 +2439,7 @@ password-对应 MQTT CONNECT Packet 中 password 字段。
 
     @property
     def RefreshInterval(self):
-        r"""认证文本刷新间隔时间，单位：秒，最小值60，默认值60，最大值1000。填写认证服务器地址（Endpoint）时生效。
+        r"""<p>认证文本刷新间隔时间，单位：秒，最小值60，默认值60，最大值1000。填写认证服务器地址（Endpoint）时生效。</p>
         :rtype: int
         """
         return self._RefreshInterval
@@ -2462,7 +2450,7 @@ password-对应 MQTT CONNECT Packet 中 password 字段。
 
     @property
     def Text(self):
-        r"""jwks文本，（Text字段和Endpoint字段必须选择一个填写）
+        r"""<p>jwks文本，（Text字段和Endpoint字段必须选择一个填写）</p>
         :rtype: str
         """
         return self._Text
@@ -2473,7 +2461,7 @@ password-对应 MQTT CONNECT Packet 中 password 字段。
 
     @property
     def Status(self):
-        r"""认证器是否开启：open-启用；close-关闭，默认open-启用
+        r"""<p>认证器是否开启：open-启用；close-关闭，默认open-启用</p>
         :rtype: str
         """
         return self._Status
@@ -2484,7 +2472,7 @@ password-对应 MQTT CONNECT Packet 中 password 字段。
 
     @property
     def Remark(self):
-        r"""说明，不能超过 128 个字符
+        r"""<p>说明，不能超过 128 个字符</p>
         :rtype: str
         """
         return self._Remark
@@ -2495,11 +2483,7 @@ password-对应 MQTT CONNECT Packet 中 password 字段。
 
     @property
     def From(self):
-        r"""认证字段；
-username-对应 MQTT CONNECT Packet 中 username 字段，
-password-对应 MQTT CONNECT Packet 中 password 字段。
-
-默认username
+        r"""<p>认证字段；<br>username-对应 MQTT CONNECT Packet 中 username 字段，<br>password-对应 MQTT CONNECT Packet 中 password 字段。</p><p>默认username</p>
         :rtype: str
         """
         return self._From
@@ -2924,11 +2908,11 @@ class CreateTopicRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
+        :param _InstanceId: <p>腾讯云MQTT实例ID，从 <a href="https://cloud.tencent.com/document/api/1778/111029">DescribeInstanceList</a>接口或控制台获得。</p>
         :type InstanceId: str
-        :param _Topic: 主题，不能为空，只能包含字母、数字、“-”及“_”，3-100 字符。
+        :param _Topic: <p>主题，不能为空，只能包含字母、数字、“-”及“_”，3-100 字符。</p>
         :type Topic: str
-        :param _Remark: 备注，最长 128 字符
+        :param _Remark: <p>备注，最长 128 字符</p>
         :type Remark: str
         """
         self._InstanceId = None
@@ -2937,7 +2921,7 @@ class CreateTopicRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
+        r"""<p>腾讯云MQTT实例ID，从 <a href="https://cloud.tencent.com/document/api/1778/111029">DescribeInstanceList</a>接口或控制台获得。</p>
         :rtype: str
         """
         return self._InstanceId
@@ -2948,7 +2932,7 @@ class CreateTopicRequest(AbstractModel):
 
     @property
     def Topic(self):
-        r"""主题，不能为空，只能包含字母、数字、“-”及“_”，3-100 字符。
+        r"""<p>主题，不能为空，只能包含字母、数字、“-”及“_”，3-100 字符。</p>
         :rtype: str
         """
         return self._Topic
@@ -2959,7 +2943,7 @@ class CreateTopicRequest(AbstractModel):
 
     @property
     def Remark(self):
-        r"""备注，最长 128 字符
+        r"""<p>备注，最长 128 字符</p>
         :rtype: str
         """
         return self._Remark
@@ -2990,9 +2974,9 @@ class CreateTopicResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例ID
+        :param _InstanceId: <p>实例ID</p>
         :type InstanceId: str
-        :param _Topic: 主题
+        :param _Topic: <p>主题</p>
         :type Topic: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -3003,7 +2987,7 @@ class CreateTopicResponse(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""实例ID
+        r"""<p>实例ID</p>
         :rtype: str
         """
         return self._InstanceId
@@ -3014,7 +2998,7 @@ class CreateTopicResponse(AbstractModel):
 
     @property
     def Topic(self):
-        r"""主题
+        r"""<p>主题</p>
         :rtype: str
         """
         return self._Topic
@@ -3315,12 +3299,9 @@ class DeleteAuthenticatorRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
+        :param _InstanceId: <p>腾讯云MQTT实例ID，从 <a href="https://cloud.tencent.com/document/api/1778/111029">DescribeInstanceList</a>接口或控制台获得。</p>
         :type InstanceId: str
-        :param _Type: 认证器类型:
-JWT：JWT认证器
-JWKS：JWKS认证器
-HTTP：HTTP认证器
+        :param _Type: <p>认证器类型:<br>JWT：JWT认证器<br>JWKS：JWKS认证器<br>HTTP：HTTP认证器</p>
         :type Type: str
         """
         self._InstanceId = None
@@ -3328,7 +3309,7 @@ HTTP：HTTP认证器
 
     @property
     def InstanceId(self):
-        r"""腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
+        r"""<p>腾讯云MQTT实例ID，从 <a href="https://cloud.tencent.com/document/api/1778/111029">DescribeInstanceList</a>接口或控制台获得。</p>
         :rtype: str
         """
         return self._InstanceId
@@ -3339,10 +3320,7 @@ HTTP：HTTP认证器
 
     @property
     def Type(self):
-        r"""认证器类型:
-JWT：JWT认证器
-JWKS：JWKS认证器
-HTTP：HTTP认证器
+        r"""<p>认证器类型:<br>JWT：JWT认证器<br>JWKS：JWKS认证器<br>HTTP：HTTP认证器</p>
         :rtype: str
         """
         return self._Type
@@ -3637,11 +3615,11 @@ class DeleteClientSubscriptionRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例ID
+        :param _InstanceId: <p>实例ID</p>
         :type InstanceId: str
-        :param _ClientId: 客户端id
+        :param _ClientId: <p>客户端id</p>
         :type ClientId: str
-        :param _TopicFilter: 订阅
+        :param _TopicFilter: <p>订阅</p>
         :type TopicFilter: str
         """
         self._InstanceId = None
@@ -3650,7 +3628,7 @@ class DeleteClientSubscriptionRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""实例ID
+        r"""<p>实例ID</p>
         :rtype: str
         """
         return self._InstanceId
@@ -3661,7 +3639,7 @@ class DeleteClientSubscriptionRequest(AbstractModel):
 
     @property
     def ClientId(self):
-        r"""客户端id
+        r"""<p>客户端id</p>
         :rtype: str
         """
         return self._ClientId
@@ -3672,7 +3650,7 @@ class DeleteClientSubscriptionRequest(AbstractModel):
 
     @property
     def TopicFilter(self):
-        r"""订阅
+        r"""<p>订阅</p>
         :rtype: str
         """
         return self._TopicFilter
@@ -3889,14 +3867,14 @@ class DeleteInsPublicEndpointRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
+        :param _InstanceId: <p>腾讯云MQTT实例ID，从 <a href="https://cloud.tencent.com/document/api/1778/111029">DescribeInstanceList</a>接口或控制台获得。</p>
         :type InstanceId: str
         """
         self._InstanceId = None
 
     @property
     def InstanceId(self):
-        r"""腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
+        r"""<p>腾讯云MQTT实例ID，从 <a href="https://cloud.tencent.com/document/api/1778/111029">DescribeInstanceList</a>接口或控制台获得。</p>
         :rtype: str
         """
         return self._InstanceId
@@ -3953,14 +3931,14 @@ class DeleteInstanceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
+        :param _InstanceId: <p>腾讯云MQTT实例ID，从 <a href="https://cloud.tencent.com/document/api/1778/111029">DescribeInstanceList</a>接口或控制台获得。</p>
         :type InstanceId: str
         """
         self._InstanceId = None
 
     @property
     def InstanceId(self):
-        r"""腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
+        r"""<p>腾讯云MQTT实例ID，从 <a href="https://cloud.tencent.com/document/api/1778/111029">DescribeInstanceList</a>接口或控制台获得。</p>
         :rtype: str
         """
         return self._InstanceId
@@ -4096,9 +4074,9 @@ class DeleteTopicRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例ID
+        :param _InstanceId: <p>实例ID</p>
         :type InstanceId: str
-        :param _Topic: 主题
+        :param _Topic: <p>主题</p>
         :type Topic: str
         """
         self._InstanceId = None
@@ -4106,7 +4084,7 @@ class DeleteTopicRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""实例ID
+        r"""<p>实例ID</p>
         :rtype: str
         """
         return self._InstanceId
@@ -4117,7 +4095,7 @@ class DeleteTopicRequest(AbstractModel):
 
     @property
     def Topic(self):
-        r"""主题
+        r"""<p>主题</p>
         :rtype: str
         """
         return self._Topic
@@ -4175,9 +4153,9 @@ class DeleteUserRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例ID
+        :param _InstanceId: <p>实例ID</p>
         :type InstanceId: str
-        :param _Username: 用户名
+        :param _Username: <p>用户名</p>
         :type Username: str
         """
         self._InstanceId = None
@@ -4185,7 +4163,7 @@ class DeleteUserRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""实例ID
+        r"""<p>实例ID</p>
         :rtype: str
         """
         return self._InstanceId
@@ -4196,7 +4174,7 @@ class DeleteUserRequest(AbstractModel):
 
     @property
     def Username(self):
-        r"""用户名
+        r"""<p>用户名</p>
         :rtype: str
         """
         return self._Username
@@ -4891,18 +4869,15 @@ class DescribeClientListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
+        :param _InstanceId: <p>腾讯云MQTT实例ID，从 <a href="https://cloud.tencent.com/document/api/1778/111029">DescribeInstanceList</a>接口或控制台获得。</p>
         :type InstanceId: str
-        :param _ClientId: 客户端ID
+        :param _ClientId: <p>客户端ID</p>
         :type ClientId: str
-        :param _Number: 客户端数量限制,最大1024，默认1024
+        :param _Number: <p>客户端数量限制,最大1024，默认1024</p>
         :type Number: str
-        :param _OnlineStatus: 0:查询在线和离线客户端（默认值）
-1:查询在线客户端
-2:查询离线客户端
+        :param _OnlineStatus: <p>0:查询在线和离线客户端（默认值）<br>1:查询在线客户端<br>2:查询离线客户端</p>
         :type OnlineStatus: int
-        :param _MaxTimestamp: 在线连接：表示最后的连接时间
-离线连接：表示最后的断开连接时间
+        :param _MaxTimestamp: <p>在线连接：表示最后的连接时间<br>离线连接：表示最后的断开连接时间</p>
         :type MaxTimestamp: int
         """
         self._InstanceId = None
@@ -4913,7 +4888,7 @@ class DescribeClientListRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
+        r"""<p>腾讯云MQTT实例ID，从 <a href="https://cloud.tencent.com/document/api/1778/111029">DescribeInstanceList</a>接口或控制台获得。</p>
         :rtype: str
         """
         return self._InstanceId
@@ -4924,7 +4899,7 @@ class DescribeClientListRequest(AbstractModel):
 
     @property
     def ClientId(self):
-        r"""客户端ID
+        r"""<p>客户端ID</p>
         :rtype: str
         """
         return self._ClientId
@@ -4935,7 +4910,7 @@ class DescribeClientListRequest(AbstractModel):
 
     @property
     def Number(self):
-        r"""客户端数量限制,最大1024，默认1024
+        r"""<p>客户端数量限制,最大1024，默认1024</p>
         :rtype: str
         """
         return self._Number
@@ -4946,9 +4921,7 @@ class DescribeClientListRequest(AbstractModel):
 
     @property
     def OnlineStatus(self):
-        r"""0:查询在线和离线客户端（默认值）
-1:查询在线客户端
-2:查询离线客户端
+        r"""<p>0:查询在线和离线客户端（默认值）<br>1:查询在线客户端<br>2:查询离线客户端</p>
         :rtype: int
         """
         return self._OnlineStatus
@@ -4959,8 +4932,7 @@ class DescribeClientListRequest(AbstractModel):
 
     @property
     def MaxTimestamp(self):
-        r"""在线连接：表示最后的连接时间
-离线连接：表示最后的断开连接时间
+        r"""<p>在线连接：表示最后的连接时间<br>离线连接：表示最后的断开连接时间</p>
         :rtype: int
         """
         return self._MaxTimestamp
@@ -4993,7 +4965,7 @@ class DescribeClientListResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Clients: 客户端列表
+        :param _Clients: <p>客户端列表</p>
         :type Clients: list of MQTTClientInfo
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -5003,7 +4975,7 @@ class DescribeClientListResponse(AbstractModel):
 
     @property
     def Clients(self):
-        r"""客户端列表
+        r"""<p>客户端列表</p>
         :rtype: list of MQTTClientInfo
         """
         return self._Clients
@@ -6185,14 +6157,14 @@ class DescribeInsPublicEndpointsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
+        :param _InstanceId: <p>腾讯云MQTT实例ID，从 <a href="https://cloud.tencent.com/document/api/1778/111029">DescribeInstanceList</a>接口或控制台获得。</p>
         :type InstanceId: str
         """
         self._InstanceId = None
 
     @property
     def InstanceId(self):
-        r"""腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
+        r"""<p>腾讯云MQTT实例ID，从 <a href="https://cloud.tencent.com/document/api/1778/111029">DescribeInstanceList</a>接口或控制台获得。</p>
         :rtype: str
         """
         return self._InstanceId
@@ -6221,20 +6193,15 @@ class DescribeInsPublicEndpointsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Endpoints: 接入点
+        :param _Endpoints: <p>接入点</p>
         :type Endpoints: list of MQTTEndpointItem
-        :param _InstanceId: 实例id
+        :param _InstanceId: <p>实例id</p>
         :type InstanceId: str
-        :param _Bandwidth: 带宽，单位Mbps
+        :param _Bandwidth: <p>带宽，单位Mbps</p>
         :type Bandwidth: int
-        :param _Rules: 公网访问规则
+        :param _Rules: <p>公网访问规则</p>
         :type Rules: list of PublicAccessRule
-        :param _Status: 公网状态：
-    NORMAL-正常
-    CLOSING-关闭中
-    MODIFYING-修改中
-    CREATING-开启中
-    CLOSE-关闭
+        :param _Status: <p>公网状态：<br>    NORMAL-正常<br>    CLOSING-关闭中<br>    MODIFYING-修改中<br>    CREATING-开启中<br>    CLOSE-关闭</p>
         :type Status: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -6248,7 +6215,7 @@ class DescribeInsPublicEndpointsResponse(AbstractModel):
 
     @property
     def Endpoints(self):
-        r"""接入点
+        r"""<p>接入点</p>
         :rtype: list of MQTTEndpointItem
         """
         return self._Endpoints
@@ -6259,7 +6226,7 @@ class DescribeInsPublicEndpointsResponse(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""实例id
+        r"""<p>实例id</p>
         :rtype: str
         """
         return self._InstanceId
@@ -6270,7 +6237,7 @@ class DescribeInsPublicEndpointsResponse(AbstractModel):
 
     @property
     def Bandwidth(self):
-        r"""带宽，单位Mbps
+        r"""<p>带宽，单位Mbps</p>
         :rtype: int
         """
         return self._Bandwidth
@@ -6281,7 +6248,7 @@ class DescribeInsPublicEndpointsResponse(AbstractModel):
 
     @property
     def Rules(self):
-        r"""公网访问规则
+        r"""<p>公网访问规则</p>
         :rtype: list of PublicAccessRule
         """
         return self._Rules
@@ -6292,12 +6259,7 @@ class DescribeInsPublicEndpointsResponse(AbstractModel):
 
     @property
     def Status(self):
-        r"""公网状态：
-    NORMAL-正常
-    CLOSING-关闭中
-    MODIFYING-修改中
-    CREATING-开启中
-    CLOSE-关闭
+        r"""<p>公网状态：<br>    NORMAL-正常<br>    CLOSING-关闭中<br>    MODIFYING-修改中<br>    CREATING-开启中<br>    CLOSE-关闭</p>
         :rtype: str
         """
         return self._Status
@@ -6344,14 +6306,14 @@ class DescribeInsVPCEndpointsRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
+        :param _InstanceId: <p>腾讯云MQTT实例ID，从 <a href="https://cloud.tencent.com/document/api/1778/111029">DescribeInstanceList</a>接口或控制台获得。</p>
         :type InstanceId: str
         """
         self._InstanceId = None
 
     @property
     def InstanceId(self):
-        r"""腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
+        r"""<p>腾讯云MQTT实例ID，从 <a href="https://cloud.tencent.com/document/api/1778/111029">DescribeInstanceList</a>接口或控制台获得。</p>
         :rtype: str
         """
         return self._InstanceId
@@ -6380,7 +6342,7 @@ class DescribeInsVPCEndpointsResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Endpoints: 接入点
+        :param _Endpoints: <p>接入点</p>
         :type Endpoints: list of MQTTEndpointItem
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -6390,7 +6352,7 @@ class DescribeInsVPCEndpointsResponse(AbstractModel):
 
     @property
     def Endpoints(self):
-        r"""接入点
+        r"""<p>接入点</p>
         :rtype: list of MQTTEndpointItem
         """
         return self._Endpoints
@@ -8610,14 +8572,13 @@ class DescribeTopicListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
+        :param _InstanceId: <p>腾讯云MQTT实例ID，从 <a href="https://cloud.tencent.com/document/api/1778/111029">DescribeInstanceList</a>接口或控制台获得。</p>
         :type InstanceId: str
-        :param _Filters: 查询条件列表:
-支持TopicName模糊查询
+        :param _Filters: <p>查询条件列表:<br>支持TopicName模糊查询</p>
         :type Filters: list of Filter
-        :param _Offset: 查询起始位置，默认0。
+        :param _Offset: <p>查询起始位置，默认0。</p>
         :type Offset: int
-        :param _Limit: 查询结果限制数量，默认20，最大20
+        :param _Limit: <p>查询结果限制数量，默认20，最大20</p>
         :type Limit: int
         """
         self._InstanceId = None
@@ -8627,7 +8588,7 @@ class DescribeTopicListRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
+        r"""<p>腾讯云MQTT实例ID，从 <a href="https://cloud.tencent.com/document/api/1778/111029">DescribeInstanceList</a>接口或控制台获得。</p>
         :rtype: str
         """
         return self._InstanceId
@@ -8638,8 +8599,7 @@ class DescribeTopicListRequest(AbstractModel):
 
     @property
     def Filters(self):
-        r"""查询条件列表:
-支持TopicName模糊查询
+        r"""<p>查询条件列表:<br>支持TopicName模糊查询</p>
         :rtype: list of Filter
         """
         return self._Filters
@@ -8650,7 +8610,7 @@ class DescribeTopicListRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""查询起始位置，默认0。
+        r"""<p>查询起始位置，默认0。</p>
         :rtype: int
         """
         return self._Offset
@@ -8661,7 +8621,7 @@ class DescribeTopicListRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""查询结果限制数量，默认20，最大20
+        r"""<p>查询结果限制数量，默认20，最大20</p>
         :rtype: int
         """
         return self._Limit
@@ -8698,9 +8658,9 @@ class DescribeTopicListResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TotalCount: 查询总数
+        :param _TotalCount: <p>查询总数</p>
         :type TotalCount: int
-        :param _Data: 主题列表
+        :param _Data: <p>主题列表</p>
         :type Data: list of MQTTTopicItem
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -8711,7 +8671,7 @@ class DescribeTopicListResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        r"""查询总数
+        r"""<p>查询总数</p>
         :rtype: int
         """
         return self._TotalCount
@@ -8722,7 +8682,7 @@ class DescribeTopicListResponse(AbstractModel):
 
     @property
     def Data(self):
-        r"""主题列表
+        r"""<p>主题列表</p>
         :rtype: list of MQTTTopicItem
         """
         return self._Data
@@ -8761,9 +8721,9 @@ class DescribeTopicRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例ID
+        :param _InstanceId: <p>实例ID</p>
         :type InstanceId: str
-        :param _Topic: 主题
+        :param _Topic: <p>主题</p>
         :type Topic: str
         """
         self._InstanceId = None
@@ -8771,7 +8731,7 @@ class DescribeTopicRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""实例ID
+        r"""<p>实例ID</p>
         :rtype: str
         """
         return self._InstanceId
@@ -8782,7 +8742,7 @@ class DescribeTopicRequest(AbstractModel):
 
     @property
     def Topic(self):
-        r"""主题
+        r"""<p>主题</p>
         :rtype: str
         """
         return self._Topic
@@ -8812,13 +8772,13 @@ class DescribeTopicResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例ID
+        :param _InstanceId: <p>实例ID</p>
         :type InstanceId: str
-        :param _Topic: 主题名称
+        :param _Topic: <p>主题名称</p>
         :type Topic: str
-        :param _Remark: 备注
+        :param _Remark: <p>备注</p>
         :type Remark: str
-        :param _CreatedTime: 创建时间，秒为单位
+        :param _CreatedTime: <p>创建时间，秒为单位</p>
         :type CreatedTime: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -8831,7 +8791,7 @@ class DescribeTopicResponse(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""实例ID
+        r"""<p>实例ID</p>
         :rtype: str
         """
         return self._InstanceId
@@ -8842,7 +8802,7 @@ class DescribeTopicResponse(AbstractModel):
 
     @property
     def Topic(self):
-        r"""主题名称
+        r"""<p>主题名称</p>
         :rtype: str
         """
         return self._Topic
@@ -8853,7 +8813,7 @@ class DescribeTopicResponse(AbstractModel):
 
     @property
     def Remark(self):
-        r"""备注
+        r"""<p>备注</p>
         :rtype: str
         """
         return self._Remark
@@ -8864,7 +8824,7 @@ class DescribeTopicResponse(AbstractModel):
 
     @property
     def CreatedTime(self):
-        r"""创建时间，秒为单位
+        r"""<p>创建时间，秒为单位</p>
         :rtype: int
         """
         return self._CreatedTime
@@ -12883,11 +12843,11 @@ class ModifyInsPublicEndpointRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
+        :param _InstanceId: <p>腾讯云MQTT实例ID，从 <a href="https://cloud.tencent.com/document/api/1778/111029">DescribeInstanceList</a>接口或控制台获得。</p>
         :type InstanceId: str
-        :param _Bandwidth: 带宽，单位：Mbps
+        :param _Bandwidth: <p>带宽，单位：Mbps</p>
         :type Bandwidth: int
-        :param _Rules: 公网访问规则
+        :param _Rules: <p>公网访问规则</p>
         :type Rules: list of PublicAccessRule
         """
         self._InstanceId = None
@@ -12896,7 +12856,7 @@ class ModifyInsPublicEndpointRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
+        r"""<p>腾讯云MQTT实例ID，从 <a href="https://cloud.tencent.com/document/api/1778/111029">DescribeInstanceList</a>接口或控制台获得。</p>
         :rtype: str
         """
         return self._InstanceId
@@ -12907,7 +12867,7 @@ class ModifyInsPublicEndpointRequest(AbstractModel):
 
     @property
     def Bandwidth(self):
-        r"""带宽，单位：Mbps
+        r"""<p>带宽，单位：Mbps</p>
         :rtype: int
         """
         return self._Bandwidth
@@ -12918,7 +12878,7 @@ class ModifyInsPublicEndpointRequest(AbstractModel):
 
     @property
     def Rules(self):
-        r"""公网访问规则
+        r"""<p>公网访问规则</p>
         :rtype: list of PublicAccessRule
         """
         return self._Rules
@@ -13133,30 +13093,25 @@ class ModifyInstanceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
+        :param _InstanceId: <p>腾讯云MQTT实例ID，从 <a href="https://cloud.tencent.com/document/api/1778/111029">DescribeInstanceList</a>接口或控制台获得。</p>
         :type InstanceId: str
-        :param _Name: 要修改实例名称，不能为空, 3-64个字符，只能包含数字、字母、“-”和“_”。
+        :param _Name: <p>要修改实例名称，不能为空, 3-64个字符，只能包含数字、字母、“-”和“_”。</p>
         :type Name: str
-        :param _Remark: 要修改的备注信息，最多128个字符。
+        :param _Remark: <p>要修改的备注信息，最多128个字符。</p>
         :type Remark: str
-        :param _SkuCode: 需要变更的配置规格
-基础版和专业版集群不能升配到铂金版规格，铂金版集群不能降配至基础版和增强版规格。
+        :param _SkuCode: <p>需要变更的配置规格<br>基础版和专业版集群不能升配到铂金版规格，铂金版集群不能降配至基础版和增强版规格。</p>
         :type SkuCode: str
-        :param _DeviceCertificateProvisionType: 客户端证书注册方式：
-JITP：自动注册
-API：手动通过API注册
+        :param _DeviceCertificateProvisionType: <p>客户端证书注册方式：<br>JITP：自动注册<br>API：手动通过API注册</p>
         :type DeviceCertificateProvisionType: str
-        :param _AutomaticActivation: 自动注册证书是否自动激活
+        :param _AutomaticActivation: <p>自动注册证书是否自动激活</p>
         :type AutomaticActivation: bool
-        :param _AuthorizationPolicy: 授权策略开关
+        :param _AuthorizationPolicy: <p>授权策略开关</p>
         :type AuthorizationPolicy: bool
-        :param _UseDefaultServerCert: 是否使用默认的服务端证书
+        :param _UseDefaultServerCert: <p>是否使用默认的服务端证书</p>
         :type UseDefaultServerCert: bool
-        :param _X509Mode: TLS：单向认证
-mTLS；双向认证
-BYOC：一机一证
+        :param _X509Mode: <p>TLS：单向认证<br>mTLS；双向认证<br>BYOC：一机一证</p>
         :type X509Mode: str
-        :param _MessageRate: 单客户端消息收发限速单位 条/秒
+        :param _MessageRate: <p>单客户端消息收发限速单位 条/秒</p>
         :type MessageRate: int
         """
         self._InstanceId = None
@@ -13172,7 +13127,7 @@ BYOC：一机一证
 
     @property
     def InstanceId(self):
-        r"""腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
+        r"""<p>腾讯云MQTT实例ID，从 <a href="https://cloud.tencent.com/document/api/1778/111029">DescribeInstanceList</a>接口或控制台获得。</p>
         :rtype: str
         """
         return self._InstanceId
@@ -13183,7 +13138,7 @@ BYOC：一机一证
 
     @property
     def Name(self):
-        r"""要修改实例名称，不能为空, 3-64个字符，只能包含数字、字母、“-”和“_”。
+        r"""<p>要修改实例名称，不能为空, 3-64个字符，只能包含数字、字母、“-”和“_”。</p>
         :rtype: str
         """
         return self._Name
@@ -13194,7 +13149,7 @@ BYOC：一机一证
 
     @property
     def Remark(self):
-        r"""要修改的备注信息，最多128个字符。
+        r"""<p>要修改的备注信息，最多128个字符。</p>
         :rtype: str
         """
         return self._Remark
@@ -13205,8 +13160,7 @@ BYOC：一机一证
 
     @property
     def SkuCode(self):
-        r"""需要变更的配置规格
-基础版和专业版集群不能升配到铂金版规格，铂金版集群不能降配至基础版和增强版规格。
+        r"""<p>需要变更的配置规格<br>基础版和专业版集群不能升配到铂金版规格，铂金版集群不能降配至基础版和增强版规格。</p>
         :rtype: str
         """
         return self._SkuCode
@@ -13217,9 +13171,7 @@ BYOC：一机一证
 
     @property
     def DeviceCertificateProvisionType(self):
-        r"""客户端证书注册方式：
-JITP：自动注册
-API：手动通过API注册
+        r"""<p>客户端证书注册方式：<br>JITP：自动注册<br>API：手动通过API注册</p>
         :rtype: str
         """
         return self._DeviceCertificateProvisionType
@@ -13230,7 +13182,7 @@ API：手动通过API注册
 
     @property
     def AutomaticActivation(self):
-        r"""自动注册证书是否自动激活
+        r"""<p>自动注册证书是否自动激活</p>
         :rtype: bool
         """
         return self._AutomaticActivation
@@ -13241,7 +13193,7 @@ API：手动通过API注册
 
     @property
     def AuthorizationPolicy(self):
-        r"""授权策略开关
+        r"""<p>授权策略开关</p>
         :rtype: bool
         """
         return self._AuthorizationPolicy
@@ -13252,7 +13204,7 @@ API：手动通过API注册
 
     @property
     def UseDefaultServerCert(self):
-        r"""是否使用默认的服务端证书
+        r"""<p>是否使用默认的服务端证书</p>
         :rtype: bool
         """
         return self._UseDefaultServerCert
@@ -13263,9 +13215,7 @@ API：手动通过API注册
 
     @property
     def X509Mode(self):
-        r"""TLS：单向认证
-mTLS；双向认证
-BYOC：一机一证
+        r"""<p>TLS：单向认证<br>mTLS；双向认证<br>BYOC：一机一证</p>
         :rtype: str
         """
         return self._X509Mode
@@ -13276,7 +13226,7 @@ BYOC：一机一证
 
     @property
     def MessageRate(self):
-        r"""单客户端消息收发限速单位 条/秒
+        r"""<p>单客户端消息收发限速单位 条/秒</p>
         :rtype: int
         """
         return self._MessageRate
@@ -13342,21 +13292,19 @@ class ModifyJWKSAuthenticatorRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
+        :param _InstanceId: <p>腾讯云MQTT实例ID，从 <a href="https://cloud.tencent.com/document/api/1778/111029">DescribeInstanceList</a>接口或控制台获得。</p>
         :type InstanceId: str
-        :param _Endpoint: JWKS服务器地址，（Text字段和Endpoint字段必须选择一个填写）
+        :param _Endpoint: <p>JWKS服务器地址，（Text字段和Endpoint字段必须选择一个填写）</p>
         :type Endpoint: str
-        :param _Status: 认证器状态：open-启用（默认）；close-关闭
+        :param _Status: <p>认证器状态：open-启用（默认）；close-关闭</p>
         :type Status: str
-        :param _RefreshInterval: 认证文本刷新间隔时间，单位：秒，最小值60，默认值60，最大值1000。填写认证服务器地址时生效。
+        :param _RefreshInterval: <p>认证文本刷新间隔时间，单位：秒，最小值60，默认值60，最大值1000。填写认证服务器地址时生效。</p>
         :type RefreshInterval: int
-        :param _Text: JWKS文本，认证服务器地址为空时生效。（Text字段和Endpoint字段必须选择一个填写）
+        :param _Text: <p>JWKS文本，认证服务器地址为空时生效。（Text字段和Endpoint字段必须选择一个填写）</p>
         :type Text: str
-        :param _From: 认证字段；
-username-对应 MQTT CONNECT Packet 中 username 字段， 
-password-对应 MQTT CONNECT Packet 中 password 字段。默认username
+        :param _From: <p>认证字段；<br>username-对应 MQTT CONNECT Packet 中 username 字段，<br>password-对应 MQTT CONNECT Packet 中 password 字段。默认username</p>
         :type From: str
-        :param _Remark: 说明，不能超过 128 个字符
+        :param _Remark: <p>说明，不能超过 128 个字符</p>
         :type Remark: str
         """
         self._InstanceId = None
@@ -13369,7 +13317,7 @@ password-对应 MQTT CONNECT Packet 中 password 字段。默认username
 
     @property
     def InstanceId(self):
-        r"""腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
+        r"""<p>腾讯云MQTT实例ID，从 <a href="https://cloud.tencent.com/document/api/1778/111029">DescribeInstanceList</a>接口或控制台获得。</p>
         :rtype: str
         """
         return self._InstanceId
@@ -13380,7 +13328,7 @@ password-对应 MQTT CONNECT Packet 中 password 字段。默认username
 
     @property
     def Endpoint(self):
-        r"""JWKS服务器地址，（Text字段和Endpoint字段必须选择一个填写）
+        r"""<p>JWKS服务器地址，（Text字段和Endpoint字段必须选择一个填写）</p>
         :rtype: str
         """
         return self._Endpoint
@@ -13391,7 +13339,7 @@ password-对应 MQTT CONNECT Packet 中 password 字段。默认username
 
     @property
     def Status(self):
-        r"""认证器状态：open-启用（默认）；close-关闭
+        r"""<p>认证器状态：open-启用（默认）；close-关闭</p>
         :rtype: str
         """
         return self._Status
@@ -13402,7 +13350,7 @@ password-对应 MQTT CONNECT Packet 中 password 字段。默认username
 
     @property
     def RefreshInterval(self):
-        r"""认证文本刷新间隔时间，单位：秒，最小值60，默认值60，最大值1000。填写认证服务器地址时生效。
+        r"""<p>认证文本刷新间隔时间，单位：秒，最小值60，默认值60，最大值1000。填写认证服务器地址时生效。</p>
         :rtype: int
         """
         return self._RefreshInterval
@@ -13413,7 +13361,7 @@ password-对应 MQTT CONNECT Packet 中 password 字段。默认username
 
     @property
     def Text(self):
-        r"""JWKS文本，认证服务器地址为空时生效。（Text字段和Endpoint字段必须选择一个填写）
+        r"""<p>JWKS文本，认证服务器地址为空时生效。（Text字段和Endpoint字段必须选择一个填写）</p>
         :rtype: str
         """
         return self._Text
@@ -13424,9 +13372,7 @@ password-对应 MQTT CONNECT Packet 中 password 字段。默认username
 
     @property
     def From(self):
-        r"""认证字段；
-username-对应 MQTT CONNECT Packet 中 username 字段， 
-password-对应 MQTT CONNECT Packet 中 password 字段。默认username
+        r"""<p>认证字段；<br>username-对应 MQTT CONNECT Packet 中 username 字段，<br>password-对应 MQTT CONNECT Packet 中 password 字段。默认username</p>
         :rtype: str
         """
         return self._From
@@ -13437,7 +13383,7 @@ password-对应 MQTT CONNECT Packet 中 password 字段。默认username
 
     @property
     def Remark(self):
-        r"""说明，不能超过 128 个字符
+        r"""<p>说明，不能超过 128 个字符</p>
         :rtype: str
         """
         return self._Remark
@@ -13862,11 +13808,11 @@ class ModifyTopicRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
+        :param _InstanceId: <p>腾讯云MQTT实例ID，从 <a href="https://cloud.tencent.com/document/api/1778/111029">DescribeInstanceList</a>接口或控制台获得。</p>
         :type InstanceId: str
-        :param _Topic: 主题，不能为空，只能包含字母、数字、“-”及“_”，3-100 字符。
+        :param _Topic: <p>主题，不能为空，只能包含字母、数字、“-”及“_”，3-100 字符。</p>
         :type Topic: str
-        :param _Remark: 备注信息，最长 128 字符
+        :param _Remark: <p>备注信息，最长 128 字符</p>
         :type Remark: str
         """
         self._InstanceId = None
@@ -13875,7 +13821,7 @@ class ModifyTopicRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
+        r"""<p>腾讯云MQTT实例ID，从 <a href="https://cloud.tencent.com/document/api/1778/111029">DescribeInstanceList</a>接口或控制台获得。</p>
         :rtype: str
         """
         return self._InstanceId
@@ -13886,7 +13832,7 @@ class ModifyTopicRequest(AbstractModel):
 
     @property
     def Topic(self):
-        r"""主题，不能为空，只能包含字母、数字、“-”及“_”，3-100 字符。
+        r"""<p>主题，不能为空，只能包含字母、数字、“-”及“_”，3-100 字符。</p>
         :rtype: str
         """
         return self._Topic
@@ -13897,7 +13843,7 @@ class ModifyTopicRequest(AbstractModel):
 
     @property
     def Remark(self):
-        r"""备注信息，最长 128 字符
+        r"""<p>备注信息，最长 128 字符</p>
         :rtype: str
         """
         return self._Remark
@@ -13956,11 +13902,11 @@ class ModifyUserRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
+        :param _InstanceId: <p>实例ID，从 <a href="https://cloud.tencent.com/document/api/1778/111029">DescribeInstanceList</a>接口或控制台获得。</p>
         :type InstanceId: str
-        :param _Username: 用户名
+        :param _Username: <p>用户名</p>
         :type Username: str
-        :param _Remark: 备注，长度不超过128个字符。
+        :param _Remark: <p>备注，长度不超过128个字符。</p>
         :type Remark: str
         """
         self._InstanceId = None
@@ -13969,7 +13915,7 @@ class ModifyUserRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
+        r"""<p>实例ID，从 <a href="https://cloud.tencent.com/document/api/1778/111029">DescribeInstanceList</a>接口或控制台获得。</p>
         :rtype: str
         """
         return self._InstanceId
@@ -13980,7 +13926,7 @@ class ModifyUserRequest(AbstractModel):
 
     @property
     def Username(self):
-        r"""用户名
+        r"""<p>用户名</p>
         :rtype: str
         """
         return self._Username
@@ -13991,7 +13937,7 @@ class ModifyUserRequest(AbstractModel):
 
     @property
     def Remark(self):
-        r"""备注，长度不超过128个字符。
+        r"""<p>备注，长度不超过128个字符。</p>
         :rtype: str
         """
         return self._Remark
@@ -14530,22 +14476,19 @@ class PublishMessageRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
+        :param _InstanceId: <p>腾讯云MQTT实例ID，从 <a href="https://cloud.tencent.com/document/api/1778/111029">DescribeInstanceList</a>接口或控制台获得。</p>
         :type InstanceId: str
-        :param _Payload: 消息负载 Payload，是消息的实际内容，需要按 encoding 指定的编码方式进行编码
+        :param _Payload: <p>消息负载 Payload，是消息的实际内容，需要按 encoding 指定的编码方式进行编码</p>
         :type Payload: str
-        :param _TargetTopic: 消息目的主题，该参数与 TargetClientId 二选一
+        :param _TargetTopic: <p>消息目的主题，该参数与 TargetClientId 二选一</p>
         :type TargetTopic: str
-        :param _TargetClientId: 消息目的客户端 ID，该参数与 TargetTopic 二选一
+        :param _TargetClientId: <p>消息目的客户端 ID，该参数与 TargetTopic 二选一</p>
         :type TargetClientId: str
-        :param _Encoding: 消息 payload 编码，可选 plain 或 base64，默认为 plain（即不编码）
+        :param _Encoding: <p>消息 payload 编码，可选 plain 或 base64，默认为 plain（即不编码）</p>
         :type Encoding: str
-        :param _Qos: 消息的服务质量等级，默认为 1
-QoS 0（至多一次）消息发送后，不保证接收方一定收到，也不要求接收方确认。
-QoS 1（至少一次）消息至少被接收方成功接收一次，但可能重复。
-QoS 2（恰好一次）消息确保被接收方接收且仅接收一次，无重复。
+        :param _Qos: <p>消息的服务质量等级，默认为 1<br>QoS 0（至多一次）消息发送后，不保证接收方一定收到，也不要求接收方确认。<br>QoS 1（至少一次）消息至少被接收方成功接收一次，但可能重复。<br>QoS 2（恰好一次）消息确保被接收方接收且仅接收一次，无重复。</p>
         :type Qos: int
-        :param _Retain: 是否为保留消息，默认为 false，且仅支持发布到主题的消息设置为 true
+        :param _Retain: <p>是否为保留消息，默认为 false，且仅支持发布到主题的消息设置为 true</p>
         :type Retain: bool
         """
         self._InstanceId = None
@@ -14558,7 +14501,7 @@ QoS 2（恰好一次）消息确保被接收方接收且仅接收一次，无重
 
     @property
     def InstanceId(self):
-        r"""腾讯云MQTT实例ID，从 [DescribeInstanceList](https://cloud.tencent.com/document/api/1778/111029)接口或控制台获得。
+        r"""<p>腾讯云MQTT实例ID，从 <a href="https://cloud.tencent.com/document/api/1778/111029">DescribeInstanceList</a>接口或控制台获得。</p>
         :rtype: str
         """
         return self._InstanceId
@@ -14569,7 +14512,7 @@ QoS 2（恰好一次）消息确保被接收方接收且仅接收一次，无重
 
     @property
     def Payload(self):
-        r"""消息负载 Payload，是消息的实际内容，需要按 encoding 指定的编码方式进行编码
+        r"""<p>消息负载 Payload，是消息的实际内容，需要按 encoding 指定的编码方式进行编码</p>
         :rtype: str
         """
         return self._Payload
@@ -14580,7 +14523,7 @@ QoS 2（恰好一次）消息确保被接收方接收且仅接收一次，无重
 
     @property
     def TargetTopic(self):
-        r"""消息目的主题，该参数与 TargetClientId 二选一
+        r"""<p>消息目的主题，该参数与 TargetClientId 二选一</p>
         :rtype: str
         """
         return self._TargetTopic
@@ -14591,7 +14534,7 @@ QoS 2（恰好一次）消息确保被接收方接收且仅接收一次，无重
 
     @property
     def TargetClientId(self):
-        r"""消息目的客户端 ID，该参数与 TargetTopic 二选一
+        r"""<p>消息目的客户端 ID，该参数与 TargetTopic 二选一</p>
         :rtype: str
         """
         return self._TargetClientId
@@ -14602,7 +14545,7 @@ QoS 2（恰好一次）消息确保被接收方接收且仅接收一次，无重
 
     @property
     def Encoding(self):
-        r"""消息 payload 编码，可选 plain 或 base64，默认为 plain（即不编码）
+        r"""<p>消息 payload 编码，可选 plain 或 base64，默认为 plain（即不编码）</p>
         :rtype: str
         """
         return self._Encoding
@@ -14613,10 +14556,7 @@ QoS 2（恰好一次）消息确保被接收方接收且仅接收一次，无重
 
     @property
     def Qos(self):
-        r"""消息的服务质量等级，默认为 1
-QoS 0（至多一次）消息发送后，不保证接收方一定收到，也不要求接收方确认。
-QoS 1（至少一次）消息至少被接收方成功接收一次，但可能重复。
-QoS 2（恰好一次）消息确保被接收方接收且仅接收一次，无重复。
+        r"""<p>消息的服务质量等级，默认为 1<br>QoS 0（至多一次）消息发送后，不保证接收方一定收到，也不要求接收方确认。<br>QoS 1（至少一次）消息至少被接收方成功接收一次，但可能重复。<br>QoS 2（恰好一次）消息确保被接收方接收且仅接收一次，无重复。</p>
         :rtype: int
         """
         return self._Qos
@@ -14627,7 +14567,7 @@ QoS 2（恰好一次）消息确保被接收方接收且仅接收一次，无重
 
     @property
     def Retain(self):
-        r"""是否为保留消息，默认为 false，且仅支持发布到主题的消息设置为 true
+        r"""<p>是否为保留消息，默认为 false，且仅支持发布到主题的消息设置为 true</p>
         :rtype: bool
         """
         return self._Retain

@@ -25,49 +25,50 @@ class AudioResult(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _HitFlag: 该字段用于返回审核内容是否命中审核模型；取值：0（**未命中**）、1（**命中**）。
+        :param _HitFlag: <p>该字段用于返回审核内容是否命中审核模型；取值：0（<strong>未命中</strong>）、1（<strong>命中</strong>）。</p>
         :type HitFlag: int
-        :param _Label: 该字段用于返回检测结果所对应的恶意标签。<br>返回值：**Normal**：正常，**Porn**：色情，**Abuse**：谩骂，**Ad**：广告，**Custom**：自定义违规；以及其他令人反感、不安全或不适宜的内容类型。
+        :param _Label: <p>该字段用于返回检测结果所对应的恶意标签。<br>返回值：<strong>Normal</strong>：正常，<strong>Porn</strong>：色情，<strong>Abuse</strong>：谩骂，<strong>Ad</strong>：广告，<strong>Custom</strong>：自定义违规；以及其他令人反感、不安全或不适宜的内容类型。</p>
         :type Label: str
-        :param _Suggestion: 该字段用于返回后续操作建议。当您获取到判定结果后，返回值表示具体的后续建议操作。<br>
-返回值：**Block**：建议屏蔽，**Review** ：建议人工复审，**Pass**：建议通过
+        :param _Suggestion: <p>该字段用于返回后续操作建议。当您获取到判定结果后，返回值表示具体的后续建议操作。<br><br>返回值：<strong>Block</strong>：建议屏蔽，<strong>Review</strong> ：建议人工复审，<strong>Pass</strong>：建议通过</p>
         :type Suggestion: str
-        :param _Score: 该字段用于返回当前标签下的置信度，取值范围：0（**置信度最低**）-100（**置信度最高** ），越高代表文本越有可能属于当前返回的标签；如：*色情 99*，则表明该文本非常有可能属于色情内容。
+        :param _Score: <p>该字段用于返回当前标签下的置信度，取值范围：0（<strong>置信度最低</strong>）-100（<strong>置信度最高</strong> ），越高代表文本越有可能属于当前返回的标签；如：<em>色情 99</em>，则表明该文本非常有可能属于色情内容。</p>
         :type Score: int
-        :param _Text: 该字段用于返回音频文件经ASR识别后的文本信息。最长可识别**5小时**的音频文件，若超出时长限制，接口将会报错。
+        :param _Text: <p>该字段用于返回音频文件经ASR识别后的文本信息。最长可识别<strong>5小时</strong>的音频文件，若超出时长限制，接口将会报错。</p>
         :type Text: str
-        :param _Url: 该字段用于返回审核结果的访问链接（URL）。<br>备注：链接默认有效期为12小时。如果您需要更长时效的链接，请使用[COS预签名](https://cloud.tencent.com/document/product/1265/104001)功能更新签名时效。
+        :param _Url: <p>该字段用于返回审核结果的访问链接（URL）。<br>备注：链接默认有效期为12小时。如果您需要更长时效的链接，请使用<a href="https://cloud.tencent.com/document/product/1265/104001">COS预签名</a>功能更新签名时效。</p>
         :type Url: str
-        :param _Duration: 该字段用于返回音频文件的时长，单位为毫秒。
+        :param _Duration: <p>该字段用于返回音频文件的时长，单位为毫秒。</p>
         :type Duration: str
-        :param _Extra: 该字段用于返回输入参数中的额外附加信息（Extra），如未配置则默认返回值为空。<br>备注：不同客户或Biztype下返回信息不同，如需配置该字段请提交工单咨询或联系售后专员处理。
+        :param _Extra: <p>该字段用于返回输入参数中的额外附加信息（Extra），如未配置则默认返回值为空。<br>备注：不同客户或Biztype下返回信息不同，如需配置该字段请提交工单咨询或联系售后专员处理。</p>
         :type Extra: str
-        :param _TextResults: 该字段用于返回音频文件经ASR识别后产生的文本的详细审核结果。具体结果内容请参见AudioResultDetailLanguageResult数据结构的细节描述。
+        :param _TextResults: <p>该字段用于返回音频文件经ASR识别后产生的文本的详细审核结果。具体结果内容请参见AudioResultDetailLanguageResult数据结构的细节描述。</p>
         :type TextResults: list of AudioResultDetailTextResult
-        :param _MoanResults: 该字段用于返回音频文件呻吟检测的详细审核结果。具体结果内容请参见AudioResultDetailMoanResult数据结构的细节描述。
+        :param _MoanResults: <p>该字段用于返回音频文件呻吟检测的详细审核结果。具体结果内容请参见AudioResultDetailMoanResult数据结构的细节描述。</p>
         :type MoanResults: list of AudioResultDetailMoanResult
-        :param _LanguageResults: 该字段用于返回音频小语种检测的详细审核结果。具体结果内容请参见AudioResultDetailLanguageResult数据结构的细节描述。
+        :param _LanguageResults: <p>该字段用于返回音频小语种检测的详细审核结果。具体结果内容请参见AudioResultDetailLanguageResult数据结构的细节描述。</p>
         :type LanguageResults: list of AudioResultDetailLanguageResult
-        :param _SubLabel: 该字段用于返回当前标签（Lable）下的二级标签。
+        :param _SubLabel: <p>该字段用于返回当前标签（Lable）下的二级标签。</p>
         :type SubLabel: str
-        :param _RecognitionResults: 识别类标签结果信息列表
+        :param _RecognitionResults: <p>识别类标签结果信息列表</p>
         :type RecognitionResults: list of RecognitionResult
-        :param _SpeakerResults: 该字段用于返回音频文件说话人检测的详细审核结果
+        :param _SpeakerResults: <p>该字段用于返回音频文件说话人检测的详细审核结果</p>
         :type SpeakerResults: list of SpeakerResult
-        :param _TravelResults: 该字段用于返回音频文件出行检测的详细审核结果
+        :param _TravelResults: <p>该字段用于返回音频文件出行检测的详细审核结果</p>
         :type TravelResults: list of TravelResult
-        :param _SubTag: 该字段用于返回音频文件的三级标签
+        :param _SubTag: <p>该字段用于返回音频文件的三级标签</p>
         :type SubTag: str
-        :param _SubTagCode: 该字段用于返回音频文件的三级标签码
+        :param _SubTagCode: <p>该字段用于返回音频文件的三级标签码</p>
         :type SubTagCode: str
-        :param _LabelResults: 该字段用于返回音频文件歌曲识别的详细审核结果
+        :param _LabelResults: <p>该字段用于返回音频文件歌曲识别的详细审核结果</p>
         :type LabelResults: list of LabelResult
-        :param _HitType: 审核命中类型
+        :param _HitType: <p>审核命中类型</p>
         :type HitType: str
-        :param _Sentences: ASR句子的起止时间
+        :param _Sentences: <p>ASR句子的起止时间</p>
         :type Sentences: list of Sentence
-        :param _RequestId: 切片请求ID
+        :param _RequestId: <p>切片请求ID</p>
         :type RequestId: str
+        :param _HitSnippetInfos: <p>命中信息</p>
+        :type HitSnippetInfos: list of HitSnippetInfo
         """
         self._HitFlag = None
         self._Label = None
@@ -90,10 +91,11 @@ class AudioResult(AbstractModel):
         self._HitType = None
         self._Sentences = None
         self._RequestId = None
+        self._HitSnippetInfos = None
 
     @property
     def HitFlag(self):
-        r"""该字段用于返回审核内容是否命中审核模型；取值：0（**未命中**）、1（**命中**）。
+        r"""<p>该字段用于返回审核内容是否命中审核模型；取值：0（<strong>未命中</strong>）、1（<strong>命中</strong>）。</p>
         :rtype: int
         """
         return self._HitFlag
@@ -104,7 +106,7 @@ class AudioResult(AbstractModel):
 
     @property
     def Label(self):
-        r"""该字段用于返回检测结果所对应的恶意标签。<br>返回值：**Normal**：正常，**Porn**：色情，**Abuse**：谩骂，**Ad**：广告，**Custom**：自定义违规；以及其他令人反感、不安全或不适宜的内容类型。
+        r"""<p>该字段用于返回检测结果所对应的恶意标签。<br>返回值：<strong>Normal</strong>：正常，<strong>Porn</strong>：色情，<strong>Abuse</strong>：谩骂，<strong>Ad</strong>：广告，<strong>Custom</strong>：自定义违规；以及其他令人反感、不安全或不适宜的内容类型。</p>
         :rtype: str
         """
         return self._Label
@@ -115,8 +117,7 @@ class AudioResult(AbstractModel):
 
     @property
     def Suggestion(self):
-        r"""该字段用于返回后续操作建议。当您获取到判定结果后，返回值表示具体的后续建议操作。<br>
-返回值：**Block**：建议屏蔽，**Review** ：建议人工复审，**Pass**：建议通过
+        r"""<p>该字段用于返回后续操作建议。当您获取到判定结果后，返回值表示具体的后续建议操作。<br><br>返回值：<strong>Block</strong>：建议屏蔽，<strong>Review</strong> ：建议人工复审，<strong>Pass</strong>：建议通过</p>
         :rtype: str
         """
         return self._Suggestion
@@ -127,7 +128,7 @@ class AudioResult(AbstractModel):
 
     @property
     def Score(self):
-        r"""该字段用于返回当前标签下的置信度，取值范围：0（**置信度最低**）-100（**置信度最高** ），越高代表文本越有可能属于当前返回的标签；如：*色情 99*，则表明该文本非常有可能属于色情内容。
+        r"""<p>该字段用于返回当前标签下的置信度，取值范围：0（<strong>置信度最低</strong>）-100（<strong>置信度最高</strong> ），越高代表文本越有可能属于当前返回的标签；如：<em>色情 99</em>，则表明该文本非常有可能属于色情内容。</p>
         :rtype: int
         """
         return self._Score
@@ -138,7 +139,7 @@ class AudioResult(AbstractModel):
 
     @property
     def Text(self):
-        r"""该字段用于返回音频文件经ASR识别后的文本信息。最长可识别**5小时**的音频文件，若超出时长限制，接口将会报错。
+        r"""<p>该字段用于返回音频文件经ASR识别后的文本信息。最长可识别<strong>5小时</strong>的音频文件，若超出时长限制，接口将会报错。</p>
         :rtype: str
         """
         return self._Text
@@ -149,7 +150,7 @@ class AudioResult(AbstractModel):
 
     @property
     def Url(self):
-        r"""该字段用于返回审核结果的访问链接（URL）。<br>备注：链接默认有效期为12小时。如果您需要更长时效的链接，请使用[COS预签名](https://cloud.tencent.com/document/product/1265/104001)功能更新签名时效。
+        r"""<p>该字段用于返回审核结果的访问链接（URL）。<br>备注：链接默认有效期为12小时。如果您需要更长时效的链接，请使用<a href="https://cloud.tencent.com/document/product/1265/104001">COS预签名</a>功能更新签名时效。</p>
         :rtype: str
         """
         return self._Url
@@ -160,7 +161,7 @@ class AudioResult(AbstractModel):
 
     @property
     def Duration(self):
-        r"""该字段用于返回音频文件的时长，单位为毫秒。
+        r"""<p>该字段用于返回音频文件的时长，单位为毫秒。</p>
         :rtype: str
         """
         return self._Duration
@@ -171,7 +172,7 @@ class AudioResult(AbstractModel):
 
     @property
     def Extra(self):
-        r"""该字段用于返回输入参数中的额外附加信息（Extra），如未配置则默认返回值为空。<br>备注：不同客户或Biztype下返回信息不同，如需配置该字段请提交工单咨询或联系售后专员处理。
+        r"""<p>该字段用于返回输入参数中的额外附加信息（Extra），如未配置则默认返回值为空。<br>备注：不同客户或Biztype下返回信息不同，如需配置该字段请提交工单咨询或联系售后专员处理。</p>
         :rtype: str
         """
         return self._Extra
@@ -182,7 +183,7 @@ class AudioResult(AbstractModel):
 
     @property
     def TextResults(self):
-        r"""该字段用于返回音频文件经ASR识别后产生的文本的详细审核结果。具体结果内容请参见AudioResultDetailLanguageResult数据结构的细节描述。
+        r"""<p>该字段用于返回音频文件经ASR识别后产生的文本的详细审核结果。具体结果内容请参见AudioResultDetailLanguageResult数据结构的细节描述。</p>
         :rtype: list of AudioResultDetailTextResult
         """
         return self._TextResults
@@ -193,7 +194,7 @@ class AudioResult(AbstractModel):
 
     @property
     def MoanResults(self):
-        r"""该字段用于返回音频文件呻吟检测的详细审核结果。具体结果内容请参见AudioResultDetailMoanResult数据结构的细节描述。
+        r"""<p>该字段用于返回音频文件呻吟检测的详细审核结果。具体结果内容请参见AudioResultDetailMoanResult数据结构的细节描述。</p>
         :rtype: list of AudioResultDetailMoanResult
         """
         return self._MoanResults
@@ -204,7 +205,7 @@ class AudioResult(AbstractModel):
 
     @property
     def LanguageResults(self):
-        r"""该字段用于返回音频小语种检测的详细审核结果。具体结果内容请参见AudioResultDetailLanguageResult数据结构的细节描述。
+        r"""<p>该字段用于返回音频小语种检测的详细审核结果。具体结果内容请参见AudioResultDetailLanguageResult数据结构的细节描述。</p>
         :rtype: list of AudioResultDetailLanguageResult
         """
         return self._LanguageResults
@@ -215,7 +216,7 @@ class AudioResult(AbstractModel):
 
     @property
     def SubLabel(self):
-        r"""该字段用于返回当前标签（Lable）下的二级标签。
+        r"""<p>该字段用于返回当前标签（Lable）下的二级标签。</p>
         :rtype: str
         """
         return self._SubLabel
@@ -226,7 +227,7 @@ class AudioResult(AbstractModel):
 
     @property
     def RecognitionResults(self):
-        r"""识别类标签结果信息列表
+        r"""<p>识别类标签结果信息列表</p>
         :rtype: list of RecognitionResult
         """
         return self._RecognitionResults
@@ -237,7 +238,7 @@ class AudioResult(AbstractModel):
 
     @property
     def SpeakerResults(self):
-        r"""该字段用于返回音频文件说话人检测的详细审核结果
+        r"""<p>该字段用于返回音频文件说话人检测的详细审核结果</p>
         :rtype: list of SpeakerResult
         """
         return self._SpeakerResults
@@ -248,7 +249,7 @@ class AudioResult(AbstractModel):
 
     @property
     def TravelResults(self):
-        r"""该字段用于返回音频文件出行检测的详细审核结果
+        r"""<p>该字段用于返回音频文件出行检测的详细审核结果</p>
         :rtype: list of TravelResult
         """
         return self._TravelResults
@@ -259,7 +260,7 @@ class AudioResult(AbstractModel):
 
     @property
     def SubTag(self):
-        r"""该字段用于返回音频文件的三级标签
+        r"""<p>该字段用于返回音频文件的三级标签</p>
         :rtype: str
         """
         return self._SubTag
@@ -270,7 +271,7 @@ class AudioResult(AbstractModel):
 
     @property
     def SubTagCode(self):
-        r"""该字段用于返回音频文件的三级标签码
+        r"""<p>该字段用于返回音频文件的三级标签码</p>
         :rtype: str
         """
         return self._SubTagCode
@@ -281,7 +282,7 @@ class AudioResult(AbstractModel):
 
     @property
     def LabelResults(self):
-        r"""该字段用于返回音频文件歌曲识别的详细审核结果
+        r"""<p>该字段用于返回音频文件歌曲识别的详细审核结果</p>
         :rtype: list of LabelResult
         """
         return self._LabelResults
@@ -292,7 +293,7 @@ class AudioResult(AbstractModel):
 
     @property
     def HitType(self):
-        r"""审核命中类型
+        r"""<p>审核命中类型</p>
         :rtype: str
         """
         return self._HitType
@@ -303,7 +304,7 @@ class AudioResult(AbstractModel):
 
     @property
     def Sentences(self):
-        r"""ASR句子的起止时间
+        r"""<p>ASR句子的起止时间</p>
         :rtype: list of Sentence
         """
         return self._Sentences
@@ -314,7 +315,7 @@ class AudioResult(AbstractModel):
 
     @property
     def RequestId(self):
-        r"""切片请求ID
+        r"""<p>切片请求ID</p>
         :rtype: str
         """
         return self._RequestId
@@ -322,6 +323,17 @@ class AudioResult(AbstractModel):
     @RequestId.setter
     def RequestId(self, RequestId):
         self._RequestId = RequestId
+
+    @property
+    def HitSnippetInfos(self):
+        r"""<p>命中信息</p>
+        :rtype: list of HitSnippetInfo
+        """
+        return self._HitSnippetInfos
+
+    @HitSnippetInfos.setter
+    def HitSnippetInfos(self, HitSnippetInfos):
+        self._HitSnippetInfos = HitSnippetInfos
 
 
     def _deserialize(self, params):
@@ -386,6 +398,12 @@ class AudioResult(AbstractModel):
                 obj._deserialize(item)
                 self._Sentences.append(obj)
         self._RequestId = params.get("RequestId")
+        if params.get("HitSnippetInfos") is not None:
+            self._HitSnippetInfos = []
+            for item in params.get("HitSnippetInfos"):
+                obj = HitSnippetInfo()
+                obj._deserialize(item)
+                self._HitSnippetInfos.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1303,6 +1321,8 @@ class DescribeTaskDetailResponse(AbstractModel):
         :type SegmentCosUrlList: :class:`tencentcloud.vm.v20210922.models.SegmentCosUrlList`
         :param _VideoSegments: <p>该字段用于返回视频中视频切片审核的结果</p>
         :type VideoSegments: list of VideoSegment
+        :param _HitSnippetInfos: <p>命中信息</p>
+        :type HitSnippetInfos: list of HitSnippetInfo
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -1328,6 +1348,7 @@ class DescribeTaskDetailResponse(AbstractModel):
         self._Asrs = None
         self._SegmentCosUrlList = None
         self._VideoSegments = None
+        self._HitSnippetInfos = None
         self._RequestId = None
 
     @property
@@ -1573,6 +1594,17 @@ class DescribeTaskDetailResponse(AbstractModel):
         self._VideoSegments = VideoSegments
 
     @property
+    def HitSnippetInfos(self):
+        r"""<p>命中信息</p>
+        :rtype: list of HitSnippetInfo
+        """
+        return self._HitSnippetInfos
+
+    @HitSnippetInfos.setter
+    def HitSnippetInfos(self, HitSnippetInfos):
+        self._HitSnippetInfos = HitSnippetInfos
+
+    @property
     def RequestId(self):
         r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -1638,6 +1670,12 @@ class DescribeTaskDetailResponse(AbstractModel):
                 obj = VideoSegment()
                 obj._deserialize(item)
                 self._VideoSegments.append(obj)
+        if params.get("HitSnippetInfos") is not None:
+            self._HitSnippetInfos = []
+            for item in params.get("HitSnippetInfos"):
+                obj = HitSnippetInfo()
+                obj._deserialize(item)
+                self._HitSnippetInfos.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -1817,6 +1855,282 @@ class DescribeTasksResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class Duration(AbstractModel):
+    r"""命中音时间位置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Start: <p>音频开始偏移</p><p>单位：s</p>
+        :type Start: float
+        :param _End: <p>音频结束偏移</p><p>单位：s</p>
+        :type End: float
+        """
+        self._Start = None
+        self._End = None
+
+    @property
+    def Start(self):
+        r"""<p>音频开始偏移</p><p>单位：s</p>
+        :rtype: float
+        """
+        return self._Start
+
+    @Start.setter
+    def Start(self, Start):
+        self._Start = Start
+
+    @property
+    def End(self):
+        r"""<p>音频结束偏移</p><p>单位：s</p>
+        :rtype: float
+        """
+        return self._End
+
+    @End.setter
+    def End(self, End):
+        self._End = End
+
+
+    def _deserialize(self, params):
+        self._Start = params.get("Start")
+        self._End = params.get("End")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class HitSnippetInfo(AbstractModel):
+    r"""命中信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Target: <p>命中内容</p>
+        :type Target: str
+        :param _Snippet: <p>文本命中的文本块</p>
+        :type Snippet: str
+        :param _Scene: <p>命中场景</p>
+        :type Scene: str
+        :param _AtomicCategory: <p>命中类型</p>
+        :type AtomicCategory: str
+        :param _AtomicName: <p>命中类型库/模型名称</p>
+        :type AtomicName: str
+        :param _AtomicId: <p>命中原子能力</p>
+        :type AtomicId: str
+        :param _UnitId: <p>命中单位</p>
+        :type UnitId: str
+        :param _UnitName: <p>命中单位名称</p>
+        :type UnitName: str
+        :param _ParticleId: <p>命中颗粒ID</p>
+        :type ParticleId: str
+        :param _Positions: <p>命中文本在原文起始位置</p>
+        :type Positions: list of Position
+        :param _Rect: <p>命中图片框位置</p>
+        :type Rect: :class:`tencentcloud.vm.v20210922.models.Rect`
+        :param _Duration: <p>命中音时间位置</p>
+        :type Duration: :class:`tencentcloud.vm.v20210922.models.Duration`
+        :param _Score: <p>分数</p>
+        :type Score: int
+        """
+        self._Target = None
+        self._Snippet = None
+        self._Scene = None
+        self._AtomicCategory = None
+        self._AtomicName = None
+        self._AtomicId = None
+        self._UnitId = None
+        self._UnitName = None
+        self._ParticleId = None
+        self._Positions = None
+        self._Rect = None
+        self._Duration = None
+        self._Score = None
+
+    @property
+    def Target(self):
+        r"""<p>命中内容</p>
+        :rtype: str
+        """
+        return self._Target
+
+    @Target.setter
+    def Target(self, Target):
+        self._Target = Target
+
+    @property
+    def Snippet(self):
+        r"""<p>文本命中的文本块</p>
+        :rtype: str
+        """
+        return self._Snippet
+
+    @Snippet.setter
+    def Snippet(self, Snippet):
+        self._Snippet = Snippet
+
+    @property
+    def Scene(self):
+        r"""<p>命中场景</p>
+        :rtype: str
+        """
+        return self._Scene
+
+    @Scene.setter
+    def Scene(self, Scene):
+        self._Scene = Scene
+
+    @property
+    def AtomicCategory(self):
+        r"""<p>命中类型</p>
+        :rtype: str
+        """
+        return self._AtomicCategory
+
+    @AtomicCategory.setter
+    def AtomicCategory(self, AtomicCategory):
+        self._AtomicCategory = AtomicCategory
+
+    @property
+    def AtomicName(self):
+        r"""<p>命中类型库/模型名称</p>
+        :rtype: str
+        """
+        return self._AtomicName
+
+    @AtomicName.setter
+    def AtomicName(self, AtomicName):
+        self._AtomicName = AtomicName
+
+    @property
+    def AtomicId(self):
+        r"""<p>命中原子能力</p>
+        :rtype: str
+        """
+        return self._AtomicId
+
+    @AtomicId.setter
+    def AtomicId(self, AtomicId):
+        self._AtomicId = AtomicId
+
+    @property
+    def UnitId(self):
+        r"""<p>命中单位</p>
+        :rtype: str
+        """
+        return self._UnitId
+
+    @UnitId.setter
+    def UnitId(self, UnitId):
+        self._UnitId = UnitId
+
+    @property
+    def UnitName(self):
+        r"""<p>命中单位名称</p>
+        :rtype: str
+        """
+        return self._UnitName
+
+    @UnitName.setter
+    def UnitName(self, UnitName):
+        self._UnitName = UnitName
+
+    @property
+    def ParticleId(self):
+        r"""<p>命中颗粒ID</p>
+        :rtype: str
+        """
+        return self._ParticleId
+
+    @ParticleId.setter
+    def ParticleId(self, ParticleId):
+        self._ParticleId = ParticleId
+
+    @property
+    def Positions(self):
+        r"""<p>命中文本在原文起始位置</p>
+        :rtype: list of Position
+        """
+        return self._Positions
+
+    @Positions.setter
+    def Positions(self, Positions):
+        self._Positions = Positions
+
+    @property
+    def Rect(self):
+        r"""<p>命中图片框位置</p>
+        :rtype: :class:`tencentcloud.vm.v20210922.models.Rect`
+        """
+        return self._Rect
+
+    @Rect.setter
+    def Rect(self, Rect):
+        self._Rect = Rect
+
+    @property
+    def Duration(self):
+        r"""<p>命中音时间位置</p>
+        :rtype: :class:`tencentcloud.vm.v20210922.models.Duration`
+        """
+        return self._Duration
+
+    @Duration.setter
+    def Duration(self, Duration):
+        self._Duration = Duration
+
+    @property
+    def Score(self):
+        r"""<p>分数</p>
+        :rtype: int
+        """
+        return self._Score
+
+    @Score.setter
+    def Score(self, Score):
+        self._Score = Score
+
+
+    def _deserialize(self, params):
+        self._Target = params.get("Target")
+        self._Snippet = params.get("Snippet")
+        self._Scene = params.get("Scene")
+        self._AtomicCategory = params.get("AtomicCategory")
+        self._AtomicName = params.get("AtomicName")
+        self._AtomicId = params.get("AtomicId")
+        self._UnitId = params.get("UnitId")
+        self._UnitName = params.get("UnitName")
+        self._ParticleId = params.get("ParticleId")
+        if params.get("Positions") is not None:
+            self._Positions = []
+            for item in params.get("Positions"):
+                obj = Position()
+                obj._deserialize(item)
+                self._Positions.append(obj)
+        if params.get("Rect") is not None:
+            self._Rect = Rect()
+            self._Rect._deserialize(params.get("Rect"))
+        if params.get("Duration") is not None:
+            self._Duration = Duration()
+            self._Duration._deserialize(params.get("Duration"))
+        self._Score = params.get("Score")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ImageResult(AbstractModel):
     r"""Result结果详情
 
@@ -1824,40 +2138,30 @@ class ImageResult(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _HitFlag: 违规标志
-0 未命中
-1 命中
+        :param _HitFlag: <p>违规标志<br>0 未命中<br>1 命中</p>
         :type HitFlag: int
-        :param _Label: 命中的标签
-Porn 色情
-Sexy 性感
-Polity 政治
-Illegal 违法
-Abuse 谩骂
-Terror 暴恐
-Ad 广告
+        :param _Label: <p>命中的标签<br>Porn 色情<br>Sexy 性感<br>Polity 政治<br>Illegal 违法<br>Abuse 谩骂<br>Terror 暴恐<br>Ad 广告</p>
         :type Label: str
-        :param _Suggestion: 审核建议，可选值：
-Pass 通过，
-Review 建议人审，
-Block 确认违规
+        :param _Suggestion: <p>审核建议，可选值：<br>Pass 通过，<br>Review 建议人审，<br>Block 确认违规</p>
         :type Suggestion: str
-        :param _Score: 得分
+        :param _Score: <p>得分</p>
         :type Score: int
-        :param _Results: 画面截帧图片结果集
+        :param _Results: <p>画面截帧图片结果集</p>
         :type Results: list of ImageResultResult
-        :param _Url: 该字段用于返回审核结果的访问链接（URL）。<br>备注：链接默认有效期为12小时。如果您需要更长时效的链接，请使用[COS预签名](https://cloud.tencent.com/document/product/1265/104001)功能更新签名时效。
+        :param _Url: <p>该字段用于返回审核结果的访问链接（URL）。<br>备注：链接默认有效期为12小时。如果您需要更长时效的链接，请使用<a href="https://cloud.tencent.com/document/product/1265/104001">COS预签名</a>功能更新签名时效。</p>
         :type Url: str
-        :param _Extra: 附加字段
+        :param _Extra: <p>附加字段</p>
         :type Extra: str
-        :param _SubLabel: 二级标签
+        :param _SubLabel: <p>二级标签</p>
         :type SubLabel: str
-        :param _RecognitionResults: 场景结果
+        :param _RecognitionResults: <p>场景结果</p>
         :type RecognitionResults: list of RecognitionResult
-        :param _HitType: 审核命中类型
+        :param _HitType: <p>审核命中类型</p>
         :type HitType: str
-        :param _RequestId: 截帧请求ID
+        :param _RequestId: <p>截帧请求ID</p>
         :type RequestId: str
+        :param _HitSnippetInfos: <p>命中信息</p>
+        :type HitSnippetInfos: list of HitSnippetInfo
         """
         self._HitFlag = None
         self._Label = None
@@ -1870,12 +2174,11 @@ Block 确认违规
         self._RecognitionResults = None
         self._HitType = None
         self._RequestId = None
+        self._HitSnippetInfos = None
 
     @property
     def HitFlag(self):
-        r"""违规标志
-0 未命中
-1 命中
+        r"""<p>违规标志<br>0 未命中<br>1 命中</p>
         :rtype: int
         """
         return self._HitFlag
@@ -1886,14 +2189,7 @@ Block 确认违规
 
     @property
     def Label(self):
-        r"""命中的标签
-Porn 色情
-Sexy 性感
-Polity 政治
-Illegal 违法
-Abuse 谩骂
-Terror 暴恐
-Ad 广告
+        r"""<p>命中的标签<br>Porn 色情<br>Sexy 性感<br>Polity 政治<br>Illegal 违法<br>Abuse 谩骂<br>Terror 暴恐<br>Ad 广告</p>
         :rtype: str
         """
         return self._Label
@@ -1904,10 +2200,7 @@ Ad 广告
 
     @property
     def Suggestion(self):
-        r"""审核建议，可选值：
-Pass 通过，
-Review 建议人审，
-Block 确认违规
+        r"""<p>审核建议，可选值：<br>Pass 通过，<br>Review 建议人审，<br>Block 确认违规</p>
         :rtype: str
         """
         return self._Suggestion
@@ -1918,7 +2211,7 @@ Block 确认违规
 
     @property
     def Score(self):
-        r"""得分
+        r"""<p>得分</p>
         :rtype: int
         """
         return self._Score
@@ -1929,7 +2222,7 @@ Block 确认违规
 
     @property
     def Results(self):
-        r"""画面截帧图片结果集
+        r"""<p>画面截帧图片结果集</p>
         :rtype: list of ImageResultResult
         """
         return self._Results
@@ -1940,7 +2233,7 @@ Block 确认违规
 
     @property
     def Url(self):
-        r"""该字段用于返回审核结果的访问链接（URL）。<br>备注：链接默认有效期为12小时。如果您需要更长时效的链接，请使用[COS预签名](https://cloud.tencent.com/document/product/1265/104001)功能更新签名时效。
+        r"""<p>该字段用于返回审核结果的访问链接（URL）。<br>备注：链接默认有效期为12小时。如果您需要更长时效的链接，请使用<a href="https://cloud.tencent.com/document/product/1265/104001">COS预签名</a>功能更新签名时效。</p>
         :rtype: str
         """
         return self._Url
@@ -1951,7 +2244,7 @@ Block 确认违规
 
     @property
     def Extra(self):
-        r"""附加字段
+        r"""<p>附加字段</p>
         :rtype: str
         """
         return self._Extra
@@ -1962,7 +2255,7 @@ Block 确认违规
 
     @property
     def SubLabel(self):
-        r"""二级标签
+        r"""<p>二级标签</p>
         :rtype: str
         """
         return self._SubLabel
@@ -1973,7 +2266,7 @@ Block 确认违规
 
     @property
     def RecognitionResults(self):
-        r"""场景结果
+        r"""<p>场景结果</p>
         :rtype: list of RecognitionResult
         """
         return self._RecognitionResults
@@ -1984,7 +2277,7 @@ Block 确认违规
 
     @property
     def HitType(self):
-        r"""审核命中类型
+        r"""<p>审核命中类型</p>
         :rtype: str
         """
         return self._HitType
@@ -1995,7 +2288,7 @@ Block 确认违规
 
     @property
     def RequestId(self):
-        r"""截帧请求ID
+        r"""<p>截帧请求ID</p>
         :rtype: str
         """
         return self._RequestId
@@ -2003,6 +2296,17 @@ Block 确认违规
     @RequestId.setter
     def RequestId(self, RequestId):
         self._RequestId = RequestId
+
+    @property
+    def HitSnippetInfos(self):
+        r"""<p>命中信息</p>
+        :rtype: list of HitSnippetInfo
+        """
+        return self._HitSnippetInfos
+
+    @HitSnippetInfos.setter
+    def HitSnippetInfos(self, HitSnippetInfos):
+        self._HitSnippetInfos = HitSnippetInfos
 
 
     def _deserialize(self, params):
@@ -2027,6 +2331,12 @@ Block 确认违规
                 self._RecognitionResults.append(obj)
         self._HitType = params.get("HitType")
         self._RequestId = params.get("RequestId")
+        if params.get("HitSnippetInfos") is not None:
+            self._HitSnippetInfos = []
+            for item in params.get("HitSnippetInfos"):
+                obj = HitSnippetInfo()
+                obj._deserialize(item)
+                self._HitSnippetInfos.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2648,6 +2958,8 @@ class InputInfo(AbstractModel):
         :type TextContent: str
         :param _Title: <p>文章标题</p>
         :type Title: str
+        :param _Extra: <p>其他信息</p>
+        :type Extra: str
         """
         self._Type = None
         self._Url = None
@@ -2655,6 +2967,7 @@ class InputInfo(AbstractModel):
         self._ImageUrlList = None
         self._TextContent = None
         self._Title = None
+        self._Extra = None
 
     @property
     def Type(self):
@@ -2723,6 +3036,17 @@ class InputInfo(AbstractModel):
     def Title(self, Title):
         self._Title = Title
 
+    @property
+    def Extra(self):
+        r"""<p>其他信息</p>
+        :rtype: str
+        """
+        return self._Extra
+
+    @Extra.setter
+    def Extra(self, Extra):
+        self._Extra = Extra
+
 
     def _deserialize(self, params):
         self._Type = params.get("Type")
@@ -2731,6 +3055,7 @@ class InputInfo(AbstractModel):
         self._ImageUrlList = params.get("ImageUrlList")
         self._TextContent = params.get("TextContent")
         self._Title = params.get("Title")
+        self._Extra = params.get("Extra")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3051,6 +3376,57 @@ class OcrHitInfo(AbstractModel):
         
 
 
+class Position(AbstractModel):
+    r"""命中文本偏移信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Start: <p>起始偏移</p>
+        :type Start: int
+        :param _End: <p>结束偏移</p>
+        :type End: int
+        """
+        self._Start = None
+        self._End = None
+
+    @property
+    def Start(self):
+        r"""<p>起始偏移</p>
+        :rtype: int
+        """
+        return self._Start
+
+    @Start.setter
+    def Start(self, Start):
+        self._Start = Start
+
+    @property
+    def End(self):
+        r"""<p>结束偏移</p>
+        :rtype: int
+        """
+        return self._End
+
+    @End.setter
+    def End(self, End):
+        self._End = End
+
+
+    def _deserialize(self, params):
+        self._Start = params.get("Start")
+        self._End = params.get("End")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class RcbAsr(AbstractModel):
     r"""审核切片asr文本信息
 
@@ -3148,6 +3524,102 @@ class RecognitionResult(AbstractModel):
                 obj = Tag()
                 obj._deserialize(item)
                 self._Tags.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class Rect(AbstractModel):
+    r"""位置信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _X: <p>X坐标</p>
+        :type X: int
+        :param _Y: <p>Y坐标</p>
+        :type Y: int
+        :param _Width: <p>宽</p>
+        :type Width: int
+        :param _Height: <p>高</p>
+        :type Height: int
+        :param _Rotate: <p>旋转角度</p>
+        :type Rotate: int
+        """
+        self._X = None
+        self._Y = None
+        self._Width = None
+        self._Height = None
+        self._Rotate = None
+
+    @property
+    def X(self):
+        r"""<p>X坐标</p>
+        :rtype: int
+        """
+        return self._X
+
+    @X.setter
+    def X(self, X):
+        self._X = X
+
+    @property
+    def Y(self):
+        r"""<p>Y坐标</p>
+        :rtype: int
+        """
+        return self._Y
+
+    @Y.setter
+    def Y(self, Y):
+        self._Y = Y
+
+    @property
+    def Width(self):
+        r"""<p>宽</p>
+        :rtype: int
+        """
+        return self._Width
+
+    @Width.setter
+    def Width(self, Width):
+        self._Width = Width
+
+    @property
+    def Height(self):
+        r"""<p>高</p>
+        :rtype: int
+        """
+        return self._Height
+
+    @Height.setter
+    def Height(self, Height):
+        self._Height = Height
+
+    @property
+    def Rotate(self):
+        r"""<p>旋转角度</p>
+        :rtype: int
+        """
+        return self._Rotate
+
+    @Rotate.setter
+    def Rotate(self, Rotate):
+        self._Rotate = Rotate
+
+
+    def _deserialize(self, params):
+        self._X = params.get("X")
+        self._Y = params.get("Y")
+        self._Width = params.get("Width")
+        self._Height = params.get("Height")
+        self._Rotate = params.get("Rotate")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3420,6 +3892,8 @@ class StorageInfo(AbstractModel):
         :type TextContent: str
         :param _Title: <p>文章标题</p>
         :type Title: str
+        :param _Extra: <p>额外信息</p>
+        :type Extra: str
         """
         self._Type = None
         self._Url = None
@@ -3427,6 +3901,7 @@ class StorageInfo(AbstractModel):
         self._ImageUrlList = None
         self._TextContent = None
         self._Title = None
+        self._Extra = None
 
     @property
     def Type(self):
@@ -3494,6 +3969,17 @@ class StorageInfo(AbstractModel):
     def Title(self, Title):
         self._Title = Title
 
+    @property
+    def Extra(self):
+        r"""<p>额外信息</p>
+        :rtype: str
+        """
+        return self._Extra
+
+    @Extra.setter
+    def Extra(self, Extra):
+        self._Extra = Extra
+
 
     def _deserialize(self, params):
         self._Type = params.get("Type")
@@ -3504,6 +3990,7 @@ class StorageInfo(AbstractModel):
         self._ImageUrlList = params.get("ImageUrlList")
         self._TextContent = params.get("TextContent")
         self._Title = params.get("Title")
+        self._Extra = params.get("Extra")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4570,11 +5057,14 @@ class VideoLLMDetail(AbstractModel):
         :type TargetText: list of str
         :param _Suggestion: <p>违规建议</p>
         :type Suggestion: str
+        :param _Extra: <p>其他信息</p>
+        :type Extra: str
         """
         self._LabelName = None
         self._Reason = None
         self._TargetText = None
         self._Suggestion = None
+        self._Extra = None
 
     @property
     def LabelName(self):
@@ -4620,12 +5110,24 @@ class VideoLLMDetail(AbstractModel):
     def Suggestion(self, Suggestion):
         self._Suggestion = Suggestion
 
+    @property
+    def Extra(self):
+        r"""<p>其他信息</p>
+        :rtype: str
+        """
+        return self._Extra
+
+    @Extra.setter
+    def Extra(self, Extra):
+        self._Extra = Extra
+
 
     def _deserialize(self, params):
         self._LabelName = params.get("LabelName")
         self._Reason = params.get("Reason")
         self._TargetText = params.get("TargetText")
         self._Suggestion = params.get("Suggestion")
+        self._Extra = params.get("Extra")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

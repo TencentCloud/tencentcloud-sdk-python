@@ -17478,29 +17478,26 @@ class ModifyInstancesAttributeRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceIds: 一个或多个待操作的实例ID。可通过[DescribeInstances](https://cloud.tencent.com/document/api/213/15728) API返回值中的`InstanceId`获取。每次请求允许操作的实例数量上限是100。
+        :param _InstanceIds: <p>一个或多个待操作的实例ID。可通过<a href="https://cloud.tencent.com/document/api/213/15728">DescribeInstances</a> API返回值中的<code>InstanceId</code>获取。每次请求允许操作的实例数量上限是100。</p>
         :type InstanceIds: list of str
-        :param _InstanceName: 修改后实例名称。可任意命名，但不得超过60个字符。
+        :param _InstanceName: <p>修改后实例名称。可任意命名，但不得超过60个字符。</p>
         :type InstanceName: str
-        :param _UserData: 提供给实例使用的用户数据，需要以 base64 方式编码，支持的最大数据大小为 16 KB。关于获取此参数的详细介绍，请参阅 [Windows](https://cloud.tencent.com/document/product/213/17526) 和 [Linux](https://cloud.tencent.com/document/product/213/17525) 启动时运行命令。
+        :param _UserData: <p>提供给实例使用的用户数据，需要以 base64 方式编码，支持的最大数据大小为 16 KB。关于获取此参数的详细介绍，请参阅 <a href="https://cloud.tencent.com/document/product/213/17526">Windows</a> 和 <a href="https://cloud.tencent.com/document/product/213/17525">Linux</a> 启动时运行命令。</p>
         :type UserData: str
-        :param _SecurityGroups: 指定实例的修改后的安全组Id列表，子机将重新关联指定列表的安全组，原本关联的安全组会被解绑。
+        :param _SecurityGroups: <p>指定实例的修改后的安全组Id列表，子机将重新关联指定列表的安全组，原本关联的安全组会被解绑。</p>
         :type SecurityGroups: list of str
-        :param _CamRoleName: 给实例绑定用户角色，传空值为解绑操作
+        :param _CamRoleName: <p>给实例绑定用户角色，传空值为解绑操作</p>
         :type CamRoleName: str
-        :param _HostName: 修改后实例的主机名。<li>点号（.）和短横线（-）不能作为 HostName 的首尾字符，不能连续使用。</li><li>Windows 实例：主机名字符长度为[2, 15]，允许字母（不限制大小写）、数字和短横线（-）组成，不支持点号（.），不能全是数字。</li><li>其他类型（Linux 等）实例：主机名字符长度为[2, 60]，允许支持多个点号，点之间为一段，每段允许字母（不限制大小写）、数字和短横线（-）组成。</li>注意点：修改主机名后实例会立即重启，重启后新的主机名生效。
+        :param _HostName: <p>修改后实例的主机名。<li>点号（.）和短横线（-）不能作为 HostName 的首尾字符，不能连续使用。</li><li>Windows 实例：主机名字符长度为[2, 15]，允许字母（不限制大小写）、数字和短横线（-）组成，不支持点号（.），不能全是数字。</li><li>其他类型（Linux 等）实例：主机名字符长度为[2, 60]，允许支持多个点号，点之间为一段，每段允许字母（不限制大小写）、数字和短横线（-）组成。</li>注意点：修改主机名后实例会立即重启，重启后新的主机名生效。</p>
         :type HostName: str
-        :param _DisableApiTermination: 实例销毁保护标志，表示是否允许通过api接口删除实例。取值范围：<li>true：表示开启实例保护，不允许通过api接口删除实例</li><li>false：表示关闭实例保护，允许通过api接口删除实例</li>默认取值：false。
+        :param _DisableApiTermination: <p>实例销毁保护标志，表示是否允许通过api接口删除实例。取值范围：<li>true：表示开启实例保护，不允许通过api接口删除实例</li><li>false：表示关闭实例保护，允许通过api接口删除实例</li>默认取值：false。</p>
         :type DisableApiTermination: bool
-        :param _CamRoleType: 角色类别，与CamRoleName搭配使用，该值可从CAM [ DescribeRoleList ](https://cloud.tencent.com/document/product/598/36223)或[ GetRole ](https://cloud.tencent.com/document/product/598/36221)接口返回RoleType字段获取，当前只接受user、system和service_linked三种类别。
-举例：一般CamRoleName中包含“LinkedRoleIn”（如TKE_QCSLinkedRoleInPrometheusService）时，DescribeRoleList和GetRole返回的RoleType为service_linked，则本参数也需要传递service_linked。
-该参数默认值为user，若CameRoleName为非service_linked类型，本参数可不传递。
+        :param _CamRoleType: <p>角色类别，与CamRoleName搭配使用，该值可从CAM <a href="https://cloud.tencent.com/document/product/598/36223"> DescribeRoleList </a>或<a href="https://cloud.tencent.com/document/product/598/36221"> GetRole </a>接口返回RoleType字段获取，当前只接受user、system和service_linked三种类别。<br>举例：一般CamRoleName中包含“LinkedRoleIn”（如TKE_QCSLinkedRoleInPrometheusService）时，DescribeRoleList和GetRole返回的RoleType为service_linked，则本参数也需要传递service_linked。<br>该参数默认值为user，若CameRoleName为非service_linked类型，本参数可不传递。</p>
         :type CamRoleType: str
-        :param _AutoReboot: 修改实例主机名是否自动重启实例，不传默认自动重启。
-- true: 修改主机名，并自动重启实例；
-- false: 修改主机名，不自动重启实例，需要手动重启使新主机名生效。
-注意点：本参数仅对修改主机名生效。
+        :param _AutoReboot: <p>修改实例主机名是否自动重启实例，不传默认自动重启。</p><ul><li>true: 修改主机名，并自动重启实例；</li><li>false: 修改主机名，不自动重启实例，需要手动重启使新主机名生效。<br>注意点：本参数仅对修改主机名生效。</li></ul>
         :type AutoReboot: bool
+        :param _EnableJumboFrame: <p>实例是否开启巨型帧，取值范围：<br></p><ul><li>true：表示实例开启巨型帧，只有支持巨型帧的机型可设置为true。</li><li>false：表示实例关闭巨型帧，只有支持巨型帧的机型可设置为false。<br><br>支持巨型帧的实例规格： <a href="https://cloud.tencent.com/document/product/213/11518">实例规格</a></li></ul>
+        :type EnableJumboFrame: bool
         """
         self._InstanceIds = None
         self._InstanceName = None
@@ -17511,10 +17508,11 @@ class ModifyInstancesAttributeRequest(AbstractModel):
         self._DisableApiTermination = None
         self._CamRoleType = None
         self._AutoReboot = None
+        self._EnableJumboFrame = None
 
     @property
     def InstanceIds(self):
-        r"""一个或多个待操作的实例ID。可通过[DescribeInstances](https://cloud.tencent.com/document/api/213/15728) API返回值中的`InstanceId`获取。每次请求允许操作的实例数量上限是100。
+        r"""<p>一个或多个待操作的实例ID。可通过<a href="https://cloud.tencent.com/document/api/213/15728">DescribeInstances</a> API返回值中的<code>InstanceId</code>获取。每次请求允许操作的实例数量上限是100。</p>
         :rtype: list of str
         """
         return self._InstanceIds
@@ -17525,7 +17523,7 @@ class ModifyInstancesAttributeRequest(AbstractModel):
 
     @property
     def InstanceName(self):
-        r"""修改后实例名称。可任意命名，但不得超过60个字符。
+        r"""<p>修改后实例名称。可任意命名，但不得超过60个字符。</p>
         :rtype: str
         """
         return self._InstanceName
@@ -17536,7 +17534,7 @@ class ModifyInstancesAttributeRequest(AbstractModel):
 
     @property
     def UserData(self):
-        r"""提供给实例使用的用户数据，需要以 base64 方式编码，支持的最大数据大小为 16 KB。关于获取此参数的详细介绍，请参阅 [Windows](https://cloud.tencent.com/document/product/213/17526) 和 [Linux](https://cloud.tencent.com/document/product/213/17525) 启动时运行命令。
+        r"""<p>提供给实例使用的用户数据，需要以 base64 方式编码，支持的最大数据大小为 16 KB。关于获取此参数的详细介绍，请参阅 <a href="https://cloud.tencent.com/document/product/213/17526">Windows</a> 和 <a href="https://cloud.tencent.com/document/product/213/17525">Linux</a> 启动时运行命令。</p>
         :rtype: str
         """
         return self._UserData
@@ -17547,7 +17545,7 @@ class ModifyInstancesAttributeRequest(AbstractModel):
 
     @property
     def SecurityGroups(self):
-        r"""指定实例的修改后的安全组Id列表，子机将重新关联指定列表的安全组，原本关联的安全组会被解绑。
+        r"""<p>指定实例的修改后的安全组Id列表，子机将重新关联指定列表的安全组，原本关联的安全组会被解绑。</p>
         :rtype: list of str
         """
         return self._SecurityGroups
@@ -17558,7 +17556,7 @@ class ModifyInstancesAttributeRequest(AbstractModel):
 
     @property
     def CamRoleName(self):
-        r"""给实例绑定用户角色，传空值为解绑操作
+        r"""<p>给实例绑定用户角色，传空值为解绑操作</p>
         :rtype: str
         """
         return self._CamRoleName
@@ -17569,7 +17567,7 @@ class ModifyInstancesAttributeRequest(AbstractModel):
 
     @property
     def HostName(self):
-        r"""修改后实例的主机名。<li>点号（.）和短横线（-）不能作为 HostName 的首尾字符，不能连续使用。</li><li>Windows 实例：主机名字符长度为[2, 15]，允许字母（不限制大小写）、数字和短横线（-）组成，不支持点号（.），不能全是数字。</li><li>其他类型（Linux 等）实例：主机名字符长度为[2, 60]，允许支持多个点号，点之间为一段，每段允许字母（不限制大小写）、数字和短横线（-）组成。</li>注意点：修改主机名后实例会立即重启，重启后新的主机名生效。
+        r"""<p>修改后实例的主机名。<li>点号（.）和短横线（-）不能作为 HostName 的首尾字符，不能连续使用。</li><li>Windows 实例：主机名字符长度为[2, 15]，允许字母（不限制大小写）、数字和短横线（-）组成，不支持点号（.），不能全是数字。</li><li>其他类型（Linux 等）实例：主机名字符长度为[2, 60]，允许支持多个点号，点之间为一段，每段允许字母（不限制大小写）、数字和短横线（-）组成。</li>注意点：修改主机名后实例会立即重启，重启后新的主机名生效。</p>
         :rtype: str
         """
         return self._HostName
@@ -17580,7 +17578,7 @@ class ModifyInstancesAttributeRequest(AbstractModel):
 
     @property
     def DisableApiTermination(self):
-        r"""实例销毁保护标志，表示是否允许通过api接口删除实例。取值范围：<li>true：表示开启实例保护，不允许通过api接口删除实例</li><li>false：表示关闭实例保护，允许通过api接口删除实例</li>默认取值：false。
+        r"""<p>实例销毁保护标志，表示是否允许通过api接口删除实例。取值范围：<li>true：表示开启实例保护，不允许通过api接口删除实例</li><li>false：表示关闭实例保护，允许通过api接口删除实例</li>默认取值：false。</p>
         :rtype: bool
         """
         return self._DisableApiTermination
@@ -17591,9 +17589,7 @@ class ModifyInstancesAttributeRequest(AbstractModel):
 
     @property
     def CamRoleType(self):
-        r"""角色类别，与CamRoleName搭配使用，该值可从CAM [ DescribeRoleList ](https://cloud.tencent.com/document/product/598/36223)或[ GetRole ](https://cloud.tencent.com/document/product/598/36221)接口返回RoleType字段获取，当前只接受user、system和service_linked三种类别。
-举例：一般CamRoleName中包含“LinkedRoleIn”（如TKE_QCSLinkedRoleInPrometheusService）时，DescribeRoleList和GetRole返回的RoleType为service_linked，则本参数也需要传递service_linked。
-该参数默认值为user，若CameRoleName为非service_linked类型，本参数可不传递。
+        r"""<p>角色类别，与CamRoleName搭配使用，该值可从CAM <a href="https://cloud.tencent.com/document/product/598/36223"> DescribeRoleList </a>或<a href="https://cloud.tencent.com/document/product/598/36221"> GetRole </a>接口返回RoleType字段获取，当前只接受user、system和service_linked三种类别。<br>举例：一般CamRoleName中包含“LinkedRoleIn”（如TKE_QCSLinkedRoleInPrometheusService）时，DescribeRoleList和GetRole返回的RoleType为service_linked，则本参数也需要传递service_linked。<br>该参数默认值为user，若CameRoleName为非service_linked类型，本参数可不传递。</p>
         :rtype: str
         """
         return self._CamRoleType
@@ -17604,10 +17600,7 @@ class ModifyInstancesAttributeRequest(AbstractModel):
 
     @property
     def AutoReboot(self):
-        r"""修改实例主机名是否自动重启实例，不传默认自动重启。
-- true: 修改主机名，并自动重启实例；
-- false: 修改主机名，不自动重启实例，需要手动重启使新主机名生效。
-注意点：本参数仅对修改主机名生效。
+        r"""<p>修改实例主机名是否自动重启实例，不传默认自动重启。</p><ul><li>true: 修改主机名，并自动重启实例；</li><li>false: 修改主机名，不自动重启实例，需要手动重启使新主机名生效。<br>注意点：本参数仅对修改主机名生效。</li></ul>
         :rtype: bool
         """
         return self._AutoReboot
@@ -17615,6 +17608,17 @@ class ModifyInstancesAttributeRequest(AbstractModel):
     @AutoReboot.setter
     def AutoReboot(self, AutoReboot):
         self._AutoReboot = AutoReboot
+
+    @property
+    def EnableJumboFrame(self):
+        r"""<p>实例是否开启巨型帧，取值范围：<br></p><ul><li>true：表示实例开启巨型帧，只有支持巨型帧的机型可设置为true。</li><li>false：表示实例关闭巨型帧，只有支持巨型帧的机型可设置为false。<br><br>支持巨型帧的实例规格： <a href="https://cloud.tencent.com/document/product/213/11518">实例规格</a></li></ul>
+        :rtype: bool
+        """
+        return self._EnableJumboFrame
+
+    @EnableJumboFrame.setter
+    def EnableJumboFrame(self, EnableJumboFrame):
+        self._EnableJumboFrame = EnableJumboFrame
 
 
     def _deserialize(self, params):
@@ -17627,6 +17631,7 @@ class ModifyInstancesAttributeRequest(AbstractModel):
         self._DisableApiTermination = params.get("DisableApiTermination")
         self._CamRoleType = params.get("CamRoleType")
         self._AutoReboot = params.get("AutoReboot")
+        self._EnableJumboFrame = params.get("EnableJumboFrame")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

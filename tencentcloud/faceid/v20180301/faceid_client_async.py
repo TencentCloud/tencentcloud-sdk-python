@@ -493,24 +493,6 @@ class FaceidClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
-    async def ImageRecognition(
-            self,
-            request: models.ImageRecognitionRequest,
-            opts: Dict = None,
-    ) -> models.ImageRecognitionResponse:
-        """
-        传入照片和身份信息，判断该照片与权威库的证件照是否属于同一个人（该接口已停止接入，新客户请使用<a href="https://cloud.tencent.com/document/product/1007/102203">照片人脸核身（V2.0）</a>接口）。
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "ImageRecognition"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.ImageRecognitionResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
     async def ImageRecognitionV2(
             self,
             request: models.ImageRecognitionV2Request,

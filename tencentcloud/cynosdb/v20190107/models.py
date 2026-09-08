@@ -25624,11 +25624,14 @@ class DescribeInstanceSpecsRequest(AbstractModel):
         :type DeviceType: str
         :param _ClusterLevel: <p>集群级别。例如 P0, P1。若未指定可用区，针对于不支持亲和性的可用区将降级查询非亲和性资源。</p>
         :type ClusterLevel: str
+        :param _Zone: <p>可用区</p>
+        :type Zone: str
         """
         self._DbType = None
         self._IncludeZoneStocks = None
         self._DeviceType = None
         self._ClusterLevel = None
+        self._Zone = None
 
     @property
     def DbType(self):
@@ -25674,12 +25677,24 @@ class DescribeInstanceSpecsRequest(AbstractModel):
     def ClusterLevel(self, ClusterLevel):
         self._ClusterLevel = ClusterLevel
 
+    @property
+    def Zone(self):
+        r"""<p>可用区</p>
+        :rtype: str
+        """
+        return self._Zone
+
+    @Zone.setter
+    def Zone(self, Zone):
+        self._Zone = Zone
+
 
     def _deserialize(self, params):
         self._DbType = params.get("DbType")
         self._IncludeZoneStocks = params.get("IncludeZoneStocks")
         self._DeviceType = params.get("DeviceType")
         self._ClusterLevel = params.get("ClusterLevel")
+        self._Zone = params.get("Zone")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

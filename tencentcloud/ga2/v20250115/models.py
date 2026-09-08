@@ -4423,13 +4423,13 @@ class DescribeListenersRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _GlobalAcceleratorId: 全球加速实例ID。
+        :param _GlobalAcceleratorId: <p>全球加速实例ID。</p>
         :type GlobalAcceleratorId: str
-        :param _Offset: 偏移量，默认为0。
+        :param _Offset: <p>偏移量，默认为0。</p>
         :type Offset: int
-        :param _Limit: 返回数量，默认为20，最大值为100。
+        :param _Limit: <p>返回数量。</p><p>取值范围：[1, 200]</p><p>默认值：20</p>
         :type Limit: int
-        :param _Filters: 过滤条件。  listener-id- String -（过滤条件）监听器实例ID。
+        :param _Filters: <p>过滤条件。  listener-id- String -（过滤条件）监听器实例ID。</p>
         :type Filters: list of Filter
         """
         self._GlobalAcceleratorId = None
@@ -4439,7 +4439,7 @@ class DescribeListenersRequest(AbstractModel):
 
     @property
     def GlobalAcceleratorId(self):
-        r"""全球加速实例ID。
+        r"""<p>全球加速实例ID。</p>
         :rtype: str
         """
         return self._GlobalAcceleratorId
@@ -4450,7 +4450,7 @@ class DescribeListenersRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""偏移量，默认为0。
+        r"""<p>偏移量，默认为0。</p>
         :rtype: int
         """
         return self._Offset
@@ -4461,7 +4461,7 @@ class DescribeListenersRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""返回数量，默认为20，最大值为100。
+        r"""<p>返回数量。</p><p>取值范围：[1, 200]</p><p>默认值：20</p>
         :rtype: int
         """
         return self._Limit
@@ -4472,7 +4472,7 @@ class DescribeListenersRequest(AbstractModel):
 
     @property
     def Filters(self):
-        r"""过滤条件。  listener-id- String -（过滤条件）监听器实例ID。
+        r"""<p>过滤条件。  listener-id- String -（过滤条件）监听器实例ID。</p>
         :rtype: list of Filter
         """
         return self._Filters
@@ -4509,9 +4509,9 @@ class DescribeListenersResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ListenerSet: 符合条件的监听器实例。
+        :param _ListenerSet: <p>符合条件的监听器实例。</p>
         :type ListenerSet: list of ListenerSet
-        :param _TotalCount: 符合条件的实例个数。
+        :param _TotalCount: <p>符合条件的实例个数。</p>
         :type TotalCount: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -4522,7 +4522,7 @@ class DescribeListenersResponse(AbstractModel):
 
     @property
     def ListenerSet(self):
-        r"""符合条件的监听器实例。
+        r"""<p>符合条件的监听器实例。</p>
         :rtype: list of ListenerSet
         """
         return self._ListenerSet
@@ -4533,7 +4533,7 @@ class DescribeListenersResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        r"""符合条件的实例个数。
+        r"""<p>符合条件的实例个数。</p>
         :rtype: int
         """
         return self._TotalCount

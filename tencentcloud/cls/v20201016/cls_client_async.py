@@ -760,6 +760,42 @@ class ClsClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateResourceGraph(
+            self,
+            request: models.CreateResourceGraphRequest,
+            opts: Dict = None,
+    ) -> models.CreateResourceGraphResponse:
+        """
+        创建工作区。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateResourceGraph"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateResourceGraphResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def CreateResourceGraphProductIngestTask(
+            self,
+            request: models.CreateResourceGraphProductIngestTaskRequest,
+            opts: Dict = None,
+    ) -> models.CreateResourceGraphProductIngestTaskResponse:
+        """
+        接入指定云产品。EBPF 类产品需提供 EBPFCollectRule，API 类产品仅需 Product。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateResourceGraphProductIngestTask"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateResourceGraphProductIngestTaskResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateS3Recharge(
             self,
             request: models.CreateS3RechargeRequest,
@@ -1475,6 +1511,42 @@ class ClsClient(AbstractClient):
         kwargs["action"] = "DeleteRemoteWriteTask"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DeleteRemoteWriteTaskResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteResourceGraph(
+            self,
+            request: models.DeleteResourceGraphRequest,
+            opts: Dict = None,
+    ) -> models.DeleteResourceGraphResponse:
+        """
+        删除工作区。删除前需确认是否级联清理已接入的云产品（待产品确认）。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteResourceGraph"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteResourceGraphResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteResourceGraphProductIngestTask(
+            self,
+            request: models.DeleteResourceGraphProductIngestTaskRequest,
+            opts: Dict = None,
+    ) -> models.DeleteResourceGraphProductIngestTaskResponse:
+        """
+        删除产品接入任务
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteResourceGraphProductIngestTask"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteResourceGraphProductIngestTaskResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -2543,6 +2615,186 @@ class ClsClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeResourceGraphDetail(
+            self,
+            request: models.DescribeResourceGraphDetailRequest,
+            opts: Dict = None,
+    ) -> models.DescribeResourceGraphDetailResponse:
+        """
+        查询单个云产品接入的详情，包含基本信息、实例选择、eBPF 采集规则和关联的日志主题。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeResourceGraphDetail"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeResourceGraphDetailResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeResourceGraphEntities(
+            self,
+            request: models.DescribeResourceGraphEntitiesRequest,
+            opts: Dict = None,
+    ) -> models.DescribeResourceGraphEntitiesResponse:
+        """
+        分页查询资源图谱实体列表。Filters 支持  Product / EntityClassName / Keyword 过滤；TagFilter 由于结构特殊（key 单选 + values 多选）独立成字段。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeResourceGraphEntities"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeResourceGraphEntitiesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeResourceGraphEntityDependency(
+            self,
+            request: models.DescribeResourceGraphEntityDependencyRequest,
+            opts: Dict = None,
+    ) -> models.DescribeResourceGraphEntityDependencyResponse:
+        """
+        以指定实体为中心，按 Direction（上/下游/全部）+ Hop（跳数）查询依赖拓扑，同时返回拓扑图（节点+边）、4 张卡片汇总、列表区数据、产品 tag 汇总。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeResourceGraphEntityDependency"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeResourceGraphEntityDependencyResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeResourceGraphEntityDetail(
+            self,
+            request: models.DescribeResourceGraphEntityDetailRequest,
+            opts: Dict = None,
+    ) -> models.DescribeResourceGraphEntityDetailResponse:
+        """
+        查询单个实体的完整详情，包含基本信息、动态属性、标签、关联主题。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeResourceGraphEntityDetail"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeResourceGraphEntityDetailResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeResourceGraphFailureDetail(
+            self,
+            request: models.DescribeResourceGraphFailureDetailRequest,
+            opts: Dict = None,
+    ) -> models.DescribeResourceGraphFailureDetailResponse:
+        """
+        查询资源图谱失败详情
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeResourceGraphFailureDetail"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeResourceGraphFailureDetailResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeResourceGraphIngestTaskFailureDetail(
+            self,
+            request: models.DescribeResourceGraphIngestTaskFailureDetailRequest,
+            opts: Dict = None,
+    ) -> models.DescribeResourceGraphIngestTaskFailureDetailResponse:
+        """
+        查询资源图谱失败详情
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeResourceGraphIngestTaskFailureDetail"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeResourceGraphIngestTaskFailureDetailResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeResourceGraphProductIngestTaskDetail(
+            self,
+            request: models.DescribeResourceGraphProductIngestTaskDetailRequest,
+            opts: Dict = None,
+    ) -> models.DescribeResourceGraphProductIngestTaskDetailResponse:
+        """
+        查询单个云产品接入的详情，包含基本信息、实例选择、eBPF 采集规则和关联的日志主题。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeResourceGraphProductIngestTaskDetail"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeResourceGraphProductIngestTaskDetailResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeResourceGraphProductIngestTaskList(
+            self,
+            request: models.DescribeResourceGraphProductIngestTaskListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeResourceGraphProductIngestTaskListResponse:
+        """
+        分页查询云产品接入列表，返回顶部 4 张卡片汇总 + 列表行。支持按 Status / CollectMethod / Product / Name 过滤。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeResourceGraphProductIngestTaskList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeResourceGraphProductIngestTaskListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeResourceGraphTkeClusterStatus(
+            self,
+            request: models.DescribeResourceGraphTkeClusterStatusRequest,
+            opts: Dict = None,
+    ) -> models.DescribeResourceGraphTkeClusterStatusResponse:
+        """
+        资源图谱tke集群接入状态
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeResourceGraphTkeClusterStatus"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeResourceGraphTkeClusterStatusResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeResourceGraphs(
+            self,
+            request: models.DescribeResourceGraphsRequest,
+            opts: Dict = None,
+    ) -> models.DescribeResourceGraphsResponse:
+        """
+        分页查询工作区列表，支持按 WorkAreaId / Name / Region 过滤。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeResourceGraphs"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeResourceGraphsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeS3Recharges(
             self,
             request: models.DescribeS3RechargesRequest,
@@ -3409,6 +3661,60 @@ class ClsClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def ModifyResourceGraph(
+            self,
+            request: models.ModifyResourceGraphRequest,
+            opts: Dict = None,
+    ) -> models.ModifyResourceGraphResponse:
+        """
+        编辑工作区基本信息。支持改名（仍需保持租户内唯一）和修改描述，主题地域 Region 不可修改。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyResourceGraph"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyResourceGraphResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyResourceGraphEntityTopicsRelation(
+            self,
+            request: models.ModifyResourceGraphEntityTopicsRelationRequest,
+            opts: Dict = None,
+    ) -> models.ModifyResourceGraphEntityTopicsRelationResponse:
+        """
+        修改资源图谱实体与日志主题关系
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyResourceGraphEntityTopicsRelation"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyResourceGraphEntityTopicsRelationResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyResourceGraphProductIngestTask(
+            self,
+            request: models.ModifyResourceGraphProductIngestTaskRequest,
+            opts: Dict = None,
+    ) -> models.ModifyResourceGraphProductIngestTaskResponse:
+        """
+        编辑已接入云产品的实例选择、eBPF 规则、日志主题配置。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyResourceGraphProductIngestTask"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyResourceGraphProductIngestTaskResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ModifyS3Recharge(
             self,
             request: models.ModifyS3RechargeRequest,
@@ -3640,6 +3946,42 @@ class ClsClient(AbstractClient):
         kwargs["action"] = "QueryRangeMetric"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.QueryRangeMetricResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def RetryResourceGraph(
+            self,
+            request: models.RetryResourceGraphRequest,
+            opts: Dict = None,
+    ) -> models.RetryResourceGraphResponse:
+        """
+        重试资源图谱
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "RetryResourceGraph"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.RetryResourceGraphResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def RetryResourceGraphProductIngestTask(
+            self,
+            request: models.RetryResourceGraphProductIngestTaskRequest,
+            opts: Dict = None,
+    ) -> models.RetryResourceGraphProductIngestTaskResponse:
+        """
+        重试初始化资源图谱工作区
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "RetryResourceGraphProductIngestTask"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.RetryResourceGraphProductIngestTaskResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

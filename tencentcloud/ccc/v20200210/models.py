@@ -6858,13 +6858,13 @@ class CreateUserSigRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SdkAppId: 应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+        :param _SdkAppId: <p>应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc</p>
         :type SdkAppId: int
-        :param _Uid: 用户 ID，该值必须与 ClientData 字段中 Uid 的值一致
+        :param _Uid: <p>用户 ID</p>
         :type Uid: str
-        :param _ClientData: 用户签名数据，必填字段，为标准 JSON 格式
+        :param _ClientData: <p>用户签名数据</p>
         :type ClientData: str
-        :param _ExpiredTime: 有效期，单位秒，不超过 1 小时
+        :param _ExpiredTime: <p>有效期，单位秒，不超过 1 小时</p>
         :type ExpiredTime: int
         """
         self._SdkAppId = None
@@ -6874,7 +6874,7 @@ class CreateUserSigRequest(AbstractModel):
 
     @property
     def SdkAppId(self):
-        r"""应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc
+        r"""<p>应用 ID（必填），可以查看 https://console.cloud.tencent.com/ccc</p>
         :rtype: int
         """
         return self._SdkAppId
@@ -6885,7 +6885,7 @@ class CreateUserSigRequest(AbstractModel):
 
     @property
     def Uid(self):
-        r"""用户 ID，该值必须与 ClientData 字段中 Uid 的值一致
+        r"""<p>用户 ID</p>
         :rtype: str
         """
         return self._Uid
@@ -6896,7 +6896,7 @@ class CreateUserSigRequest(AbstractModel):
 
     @property
     def ClientData(self):
-        r"""用户签名数据，必填字段，为标准 JSON 格式
+        r"""<p>用户签名数据</p>
         :rtype: str
         """
         return self._ClientData
@@ -6907,7 +6907,7 @@ class CreateUserSigRequest(AbstractModel):
 
     @property
     def ExpiredTime(self):
-        r"""有效期，单位秒，不超过 1 小时
+        r"""<p>有效期，单位秒，不超过 1 小时</p>
         :rtype: int
         """
         return self._ExpiredTime
@@ -6939,7 +6939,7 @@ class CreateUserSigResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _UserSig: 签名结果
+        :param _UserSig: <p>签名结果</p>
         :type UserSig: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -6949,7 +6949,7 @@ class CreateUserSigResponse(AbstractModel):
 
     @property
     def UserSig(self):
-        r"""签名结果
+        r"""<p>签名结果</p>
         :rtype: str
         """
         return self._UserSig

@@ -475,6 +475,24 @@ class OceanusClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeJobDetail(
+            self,
+            request: models.DescribeJobDetailRequest,
+            opts: Dict = None,
+    ) -> models.DescribeJobDetailResponse:
+        """
+        显示flink作业的Dag图，以及算子、subtask等信息
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeJobDetail"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeJobDetailResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeJobEvents(
             self,
             request: models.DescribeJobEventsRequest,

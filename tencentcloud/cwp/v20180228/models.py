@@ -18801,21 +18801,24 @@ class CreateScanMalwareSettingRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ScanPattern: 扫描模式 0 全盘扫描, 1 快速扫描
+        :param _ScanPattern: <p>扫描模式 0 全盘扫描, 1 快速扫描</p>
         :type ScanPattern: int
-        :param _HostType: 服务器分类：1:专业版服务器；2:自选服务器
+        :param _HostType: <p>服务器分类：1:专业版服务器；2:自选服务器</p>
         :type HostType: int
-        :param _QuuidList: 自选服务器时生效，主机quuid的string数组
+        :param _CustomPaths: <p>自定义路径列表，仅ScanPattern=2/3时生效：2表示仅扫描这些路径，3表示扫描时排除这些路径。最少1条，最多200条</p>
+        :type CustomPaths: list of str
+        :param _QuuidList: <p>自选服务器时生效，主机quuid的string数组</p>
         :type QuuidList: list of str
-        :param _TimeoutPeriod: 超时时间单位 秒 默认3600 秒
+        :param _TimeoutPeriod: <p>超时时间单位 秒 默认3600 秒</p>
         :type TimeoutPeriod: int
-        :param _EngineType: 1标准模式（只报严重、高危）、2增强模式（报严重、高危、中危）、3严格模式（报严重、高、中、低、提示）
+        :param _EngineType: <p>1标准模式（只报严重、高危）、2增强模式（报严重、高危、中危）、3严格模式（报严重、高、中、低、提示）</p>
         :type EngineType: int
-        :param _EnableMemShellScan: 是否开启恶意进程查杀[0:未开启,1:开启]
+        :param _EnableMemShellScan: <p>是否开启恶意进程查杀[0:未开启,1:开启]</p>
         :type EnableMemShellScan: int
         """
         self._ScanPattern = None
         self._HostType = None
+        self._CustomPaths = None
         self._QuuidList = None
         self._TimeoutPeriod = None
         self._EngineType = None
@@ -18823,7 +18826,7 @@ class CreateScanMalwareSettingRequest(AbstractModel):
 
     @property
     def ScanPattern(self):
-        r"""扫描模式 0 全盘扫描, 1 快速扫描
+        r"""<p>扫描模式 0 全盘扫描, 1 快速扫描</p>
         :rtype: int
         """
         return self._ScanPattern
@@ -18834,7 +18837,7 @@ class CreateScanMalwareSettingRequest(AbstractModel):
 
     @property
     def HostType(self):
-        r"""服务器分类：1:专业版服务器；2:自选服务器
+        r"""<p>服务器分类：1:专业版服务器；2:自选服务器</p>
         :rtype: int
         """
         return self._HostType
@@ -18844,8 +18847,19 @@ class CreateScanMalwareSettingRequest(AbstractModel):
         self._HostType = HostType
 
     @property
+    def CustomPaths(self):
+        r"""<p>自定义路径列表，仅ScanPattern=2/3时生效：2表示仅扫描这些路径，3表示扫描时排除这些路径。最少1条，最多200条</p>
+        :rtype: list of str
+        """
+        return self._CustomPaths
+
+    @CustomPaths.setter
+    def CustomPaths(self, CustomPaths):
+        self._CustomPaths = CustomPaths
+
+    @property
     def QuuidList(self):
-        r"""自选服务器时生效，主机quuid的string数组
+        r"""<p>自选服务器时生效，主机quuid的string数组</p>
         :rtype: list of str
         """
         return self._QuuidList
@@ -18856,7 +18870,7 @@ class CreateScanMalwareSettingRequest(AbstractModel):
 
     @property
     def TimeoutPeriod(self):
-        r"""超时时间单位 秒 默认3600 秒
+        r"""<p>超时时间单位 秒 默认3600 秒</p>
         :rtype: int
         """
         return self._TimeoutPeriod
@@ -18867,7 +18881,7 @@ class CreateScanMalwareSettingRequest(AbstractModel):
 
     @property
     def EngineType(self):
-        r"""1标准模式（只报严重、高危）、2增强模式（报严重、高危、中危）、3严格模式（报严重、高、中、低、提示）
+        r"""<p>1标准模式（只报严重、高危）、2增强模式（报严重、高危、中危）、3严格模式（报严重、高、中、低、提示）</p>
         :rtype: int
         """
         return self._EngineType
@@ -18878,7 +18892,7 @@ class CreateScanMalwareSettingRequest(AbstractModel):
 
     @property
     def EnableMemShellScan(self):
-        r"""是否开启恶意进程查杀[0:未开启,1:开启]
+        r"""<p>是否开启恶意进程查杀[0:未开启,1:开启]</p>
         :rtype: int
         """
         return self._EnableMemShellScan
@@ -18891,6 +18905,7 @@ class CreateScanMalwareSettingRequest(AbstractModel):
     def _deserialize(self, params):
         self._ScanPattern = params.get("ScanPattern")
         self._HostType = params.get("HostType")
+        self._CustomPaths = params.get("CustomPaths")
         self._QuuidList = params.get("QuuidList")
         self._TimeoutPeriod = params.get("TimeoutPeriod")
         self._EngineType = params.get("EngineType")
@@ -18912,7 +18927,7 @@ class CreateScanMalwareSettingResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskId: 任务id
+        :param _TaskId: <p>任务id</p>
         :type TaskId: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -18922,7 +18937,7 @@ class CreateScanMalwareSettingResponse(AbstractModel):
 
     @property
     def TaskId(self):
-        r"""任务id
+        r"""<p>任务id</p>
         :rtype: int
         """
         return self._TaskId
@@ -46764,6 +46779,8 @@ class DescribeMalwareTimingScanSettingResponse(AbstractModel):
         r"""
         :param _CheckPattern: <p>检测模式 0 全盘检测  1快速检测</p>
         :type CheckPattern: int
+        :param _CustomPaths: <p>自定义路径列表，CheckPattern=2/3时生效</p>
+        :type CustomPaths: list of str
         :param _StartTime: <p>检测周期 开始时间</p>
         :type StartTime: str
         :param _EndTime: <p>检测周期 超时结束时间</p>
@@ -46774,6 +46791,8 @@ class DescribeMalwareTimingScanSettingResponse(AbstractModel):
         :type QuuidList: list of str
         :param _MonitoringPattern: <p>监控模式 0 标准 1深度</p>
         :type MonitoringPattern: int
+        :param _MonitorCustomPaths: <p>监控自定义路径列表，MonitoringPattern=2/3时生效</p>
+        :type MonitorCustomPaths: list of str
         :param _Cycle: <p>周期 1每天</p>
         :type Cycle: int
         :param _EnableScan: <p>定时检测开关 0 关闭1 开启</p>
@@ -46808,11 +46827,13 @@ class DescribeMalwareTimingScanSettingResponse(AbstractModel):
         :type RequestId: str
         """
         self._CheckPattern = None
+        self._CustomPaths = None
         self._StartTime = None
         self._EndTime = None
         self._IsGlobal = None
         self._QuuidList = None
         self._MonitoringPattern = None
+        self._MonitorCustomPaths = None
         self._Cycle = None
         self._EnableScan = None
         self._Id = None
@@ -46840,6 +46861,17 @@ class DescribeMalwareTimingScanSettingResponse(AbstractModel):
     @CheckPattern.setter
     def CheckPattern(self, CheckPattern):
         self._CheckPattern = CheckPattern
+
+    @property
+    def CustomPaths(self):
+        r"""<p>自定义路径列表，CheckPattern=2/3时生效</p>
+        :rtype: list of str
+        """
+        return self._CustomPaths
+
+    @CustomPaths.setter
+    def CustomPaths(self, CustomPaths):
+        self._CustomPaths = CustomPaths
 
     @property
     def StartTime(self):
@@ -46895,6 +46927,17 @@ class DescribeMalwareTimingScanSettingResponse(AbstractModel):
     @MonitoringPattern.setter
     def MonitoringPattern(self, MonitoringPattern):
         self._MonitoringPattern = MonitoringPattern
+
+    @property
+    def MonitorCustomPaths(self):
+        r"""<p>监控自定义路径列表，MonitoringPattern=2/3时生效</p>
+        :rtype: list of str
+        """
+        return self._MonitorCustomPaths
+
+    @MonitorCustomPaths.setter
+    def MonitorCustomPaths(self, MonitorCustomPaths):
+        self._MonitorCustomPaths = MonitorCustomPaths
 
     @property
     def Cycle(self):
@@ -47075,11 +47118,13 @@ class DescribeMalwareTimingScanSettingResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._CheckPattern = params.get("CheckPattern")
+        self._CustomPaths = params.get("CustomPaths")
         self._StartTime = params.get("StartTime")
         self._EndTime = params.get("EndTime")
         self._IsGlobal = params.get("IsGlobal")
         self._QuuidList = params.get("QuuidList")
         self._MonitoringPattern = params.get("MonitoringPattern")
+        self._MonitorCustomPaths = params.get("MonitorCustomPaths")
         self._Cycle = params.get("Cycle")
         self._EnableScan = params.get("EnableScan")
         self._Id = params.get("Id")
@@ -87674,6 +87719,10 @@ class ModifyMalwareTimingScanSettingsRequest(AbstractModel):
         :type Cycle: int
         :param _RealTimeMonitoring: <p>实时监控 0 关闭 1开启</p>
         :type RealTimeMonitoring: int
+        :param _CustomPaths: <p>自定义路径列表，仅CheckPattern=2/3时生效：2表示仅检测这些路径，3表示检测时排除这些路径。最少1条，最多200条</p>
+        :type CustomPaths: list of str
+        :param _MonitorCustomPaths: <p>监控自定义路径列表，仅MonitoringPattern=2/3时生效：2表示仅监控这些路径，3表示监控时排除这些路径。最少1条，最多200条</p>
+        :type MonitorCustomPaths: list of str
         :param _QuuidList: <p>自选服务器时必须 主机quuid的string数组</p>
         :type QuuidList: list of str
         :param _AutoIsolation: <p>是否自动隔离 1隔离 0 不隔离</p>
@@ -87707,6 +87756,8 @@ class ModifyMalwareTimingScanSettingsRequest(AbstractModel):
         self._MonitoringPattern = None
         self._Cycle = None
         self._RealTimeMonitoring = None
+        self._CustomPaths = None
+        self._MonitorCustomPaths = None
         self._QuuidList = None
         self._AutoIsolation = None
         self._KillProcess = None
@@ -87807,6 +87858,28 @@ class ModifyMalwareTimingScanSettingsRequest(AbstractModel):
     @RealTimeMonitoring.setter
     def RealTimeMonitoring(self, RealTimeMonitoring):
         self._RealTimeMonitoring = RealTimeMonitoring
+
+    @property
+    def CustomPaths(self):
+        r"""<p>自定义路径列表，仅CheckPattern=2/3时生效：2表示仅检测这些路径，3表示检测时排除这些路径。最少1条，最多200条</p>
+        :rtype: list of str
+        """
+        return self._CustomPaths
+
+    @CustomPaths.setter
+    def CustomPaths(self, CustomPaths):
+        self._CustomPaths = CustomPaths
+
+    @property
+    def MonitorCustomPaths(self):
+        r"""<p>监控自定义路径列表，仅MonitoringPattern=2/3时生效：2表示仅监控这些路径，3表示监控时排除这些路径。最少1条，最多200条</p>
+        :rtype: list of str
+        """
+        return self._MonitorCustomPaths
+
+    @MonitorCustomPaths.setter
+    def MonitorCustomPaths(self, MonitorCustomPaths):
+        self._MonitorCustomPaths = MonitorCustomPaths
 
     @property
     def QuuidList(self):
@@ -87950,6 +88023,8 @@ class ModifyMalwareTimingScanSettingsRequest(AbstractModel):
         self._MonitoringPattern = params.get("MonitoringPattern")
         self._Cycle = params.get("Cycle")
         self._RealTimeMonitoring = params.get("RealTimeMonitoring")
+        self._CustomPaths = params.get("CustomPaths")
+        self._MonitorCustomPaths = params.get("MonitorCustomPaths")
         self._QuuidList = params.get("QuuidList")
         self._AutoIsolation = params.get("AutoIsolation")
         self._KillProcess = params.get("KillProcess")

@@ -6015,12 +6015,15 @@ class ConsumerContent(AbstractModel):
         :type TimestampAccuracy: int
         :param _JsonType: <p>投递Json格式。</p><p>枚举值：</p><ul><li>0： 转义。示例：<br>日志原文：<code>{&quot;a&quot;:&quot;aa&quot;, &quot;b&quot;:{&quot;b1&quot;:&quot;b1b1&quot;, &quot;c1&quot;:&quot;c1c1&quot;}}</code><br>投递到Ckafka：<code>{&quot;a&quot;:&quot;aa&quot;,&quot;b&quot;:&quot;{\&quot;b1\&quot;:\&quot;b1b1\&quot;, \&quot;c1\&quot;:\&quot;c1c1\&quot;}&quot;}</code></li><li>1： 和原始日志一致，不转义。示例：<br>日志原文：<code>{&quot;a&quot;:&quot;aa&quot;, &quot;b&quot;:{&quot;b1&quot;:&quot;b1b1&quot;, &quot;c1&quot;:&quot;c1c1&quot;}}</code><br>投递到Ckafka：<code>{&quot;a&quot;:&quot;aa&quot;, &quot;b&quot;:{&quot;b1&quot;:&quot;b1b1&quot;, &quot;c1&quot;:&quot;c1c1&quot;}}</code></li></ul>
         :type JsonType: int
+        :param _AutoConvertNumber: <p>数值类型自动转换开关</p><p>枚举值：</p><ul><li>true： JSON 结构中第一层级的 value 中的数字字符串（如 &quot;123&quot; ）会被自动转换为数值类型（int / float）。</li><li>false： JSON 结构中第一层级的 value 中的数字字符串（如 &quot;123&quot; ）为字符串。</li></ul><p>默认值：false</p>
+        :type AutoConvertNumber: bool
         """
         self._EnableTag = None
         self._MetaFields = None
         self._TagJsonNotTiled = None
         self._TimestampAccuracy = None
         self._JsonType = None
+        self._AutoConvertNumber = None
 
     @property
     def EnableTag(self):
@@ -6077,6 +6080,17 @@ class ConsumerContent(AbstractModel):
     def JsonType(self, JsonType):
         self._JsonType = JsonType
 
+    @property
+    def AutoConvertNumber(self):
+        r"""<p>数值类型自动转换开关</p><p>枚举值：</p><ul><li>true： JSON 结构中第一层级的 value 中的数字字符串（如 &quot;123&quot; ）会被自动转换为数值类型（int / float）。</li><li>false： JSON 结构中第一层级的 value 中的数字字符串（如 &quot;123&quot; ）为字符串。</li></ul><p>默认值：false</p>
+        :rtype: bool
+        """
+        return self._AutoConvertNumber
+
+    @AutoConvertNumber.setter
+    def AutoConvertNumber(self, AutoConvertNumber):
+        self._AutoConvertNumber = AutoConvertNumber
+
 
     def _deserialize(self, params):
         self._EnableTag = params.get("EnableTag")
@@ -6084,6 +6098,7 @@ class ConsumerContent(AbstractModel):
         self._TagJsonNotTiled = params.get("TagJsonNotTiled")
         self._TimestampAccuracy = params.get("TimestampAccuracy")
         self._JsonType = params.get("JsonType")
+        self._AutoConvertNumber = params.get("AutoConvertNumber")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -6257,36 +6272,38 @@ class ConsumerInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ConsumerId: 投递规则ID
+        :param _ConsumerId: <p>投递规则ID</p>
         :type ConsumerId: str
-        :param _TopicId: 日志主题ID
+        :param _TopicId: <p>日志主题ID</p>
         :type TopicId: str
-        :param _Effective: 投递任务是否生效
+        :param _Effective: <p>投递任务是否生效</p>
         :type Effective: bool
-        :param _Ckafka: CKafka的描述
+        :param _Ckafka: <p>CKafka的描述</p>
         :type Ckafka: :class:`tencentcloud.cls.v20201016.models.Ckafka`
-        :param _NeedContent: 是否投递日志的元数据信息
+        :param _NeedContent: <p>是否投递日志的元数据信息</p>
         :type NeedContent: bool
-        :param _Content: 如果需要投递元数据信息，元数据信息的描述
+        :param _Content: <p>如果需要投递元数据信息，元数据信息的描述</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Content: :class:`tencentcloud.cls.v20201016.models.ConsumerContent`
-        :param _Compression: 压缩方式[0:NONE；2:SNAPPY；3:LZ4]
+        :param _Compression: <p>压缩方式[0:NONE；2:SNAPPY；3:LZ4]</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Compression: int
-        :param _CreateTime: 投递任务创建毫秒时间戳
+        :param _CreateTime: <p>投递任务创建毫秒时间戳</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type CreateTime: int
-        :param _RoleArn: 角色访问描述名 [创建角色](https://cloud.tencent.com/document/product/598/19381)	
+        :param _RoleArn: <p>角色访问描述名 <a href="https://cloud.tencent.com/document/product/598/19381">创建角色</a></p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type RoleArn: str
-        :param _ExternalId: 外部ID
+        :param _ExternalId: <p>外部ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ExternalId: str
-        :param _TaskStatus: 任务运行状态。支持`0`,`1`,`2` - `0`: 停止 - `1`: 运行中 - `2`: 异常	
+        :param _TaskStatus: <p>任务运行状态。支持<code>0</code>,<code>1</code>,<code>2</code> - <code>0</code>: 停止 - <code>1</code>: 运行中 - <code>2</code>: 异常</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TaskStatus: int
-        :param _AdvancedConfig: 高级配置
+        :param _AdvancedConfig: <p>高级配置</p>
         :type AdvancedConfig: :class:`tencentcloud.cls.v20201016.models.AdvancedConsumerConfiguration`
+        :param _DSLFilter: <p>日志预过滤-数据写入 ckafka 的原始数据进行预过滤处理</p>
+        :type DSLFilter: str
         """
         self._ConsumerId = None
         self._TopicId = None
@@ -6300,10 +6317,11 @@ class ConsumerInfo(AbstractModel):
         self._ExternalId = None
         self._TaskStatus = None
         self._AdvancedConfig = None
+        self._DSLFilter = None
 
     @property
     def ConsumerId(self):
-        r"""投递规则ID
+        r"""<p>投递规则ID</p>
         :rtype: str
         """
         return self._ConsumerId
@@ -6314,7 +6332,7 @@ class ConsumerInfo(AbstractModel):
 
     @property
     def TopicId(self):
-        r"""日志主题ID
+        r"""<p>日志主题ID</p>
         :rtype: str
         """
         return self._TopicId
@@ -6325,7 +6343,7 @@ class ConsumerInfo(AbstractModel):
 
     @property
     def Effective(self):
-        r"""投递任务是否生效
+        r"""<p>投递任务是否生效</p>
         :rtype: bool
         """
         return self._Effective
@@ -6336,7 +6354,7 @@ class ConsumerInfo(AbstractModel):
 
     @property
     def Ckafka(self):
-        r"""CKafka的描述
+        r"""<p>CKafka的描述</p>
         :rtype: :class:`tencentcloud.cls.v20201016.models.Ckafka`
         """
         return self._Ckafka
@@ -6347,7 +6365,7 @@ class ConsumerInfo(AbstractModel):
 
     @property
     def NeedContent(self):
-        r"""是否投递日志的元数据信息
+        r"""<p>是否投递日志的元数据信息</p>
         :rtype: bool
         """
         return self._NeedContent
@@ -6358,7 +6376,7 @@ class ConsumerInfo(AbstractModel):
 
     @property
     def Content(self):
-        r"""如果需要投递元数据信息，元数据信息的描述
+        r"""<p>如果需要投递元数据信息，元数据信息的描述</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cls.v20201016.models.ConsumerContent`
         """
@@ -6370,7 +6388,7 @@ class ConsumerInfo(AbstractModel):
 
     @property
     def Compression(self):
-        r"""压缩方式[0:NONE；2:SNAPPY；3:LZ4]
+        r"""<p>压缩方式[0:NONE；2:SNAPPY；3:LZ4]</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -6382,7 +6400,7 @@ class ConsumerInfo(AbstractModel):
 
     @property
     def CreateTime(self):
-        r"""投递任务创建毫秒时间戳
+        r"""<p>投递任务创建毫秒时间戳</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -6394,7 +6412,7 @@ class ConsumerInfo(AbstractModel):
 
     @property
     def RoleArn(self):
-        r"""角色访问描述名 [创建角色](https://cloud.tencent.com/document/product/598/19381)	
+        r"""<p>角色访问描述名 <a href="https://cloud.tencent.com/document/product/598/19381">创建角色</a></p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -6406,7 +6424,7 @@ class ConsumerInfo(AbstractModel):
 
     @property
     def ExternalId(self):
-        r"""外部ID
+        r"""<p>外部ID</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """
@@ -6418,7 +6436,7 @@ class ConsumerInfo(AbstractModel):
 
     @property
     def TaskStatus(self):
-        r"""任务运行状态。支持`0`,`1`,`2` - `0`: 停止 - `1`: 运行中 - `2`: 异常	
+        r"""<p>任务运行状态。支持<code>0</code>,<code>1</code>,<code>2</code> - <code>0</code>: 停止 - <code>1</code>: 运行中 - <code>2</code>: 异常</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: int
         """
@@ -6430,7 +6448,7 @@ class ConsumerInfo(AbstractModel):
 
     @property
     def AdvancedConfig(self):
-        r"""高级配置
+        r"""<p>高级配置</p>
         :rtype: :class:`tencentcloud.cls.v20201016.models.AdvancedConsumerConfiguration`
         """
         return self._AdvancedConfig
@@ -6438,6 +6456,17 @@ class ConsumerInfo(AbstractModel):
     @AdvancedConfig.setter
     def AdvancedConfig(self, AdvancedConfig):
         self._AdvancedConfig = AdvancedConfig
+
+    @property
+    def DSLFilter(self):
+        r"""<p>日志预过滤-数据写入 ckafka 的原始数据进行预过滤处理</p>
+        :rtype: str
+        """
+        return self._DSLFilter
+
+    @DSLFilter.setter
+    def DSLFilter(self, DSLFilter):
+        self._DSLFilter = DSLFilter
 
 
     def _deserialize(self, params):
@@ -6459,6 +6488,7 @@ class ConsumerInfo(AbstractModel):
         if params.get("AdvancedConfig") is not None:
             self._AdvancedConfig = AdvancedConsumerConfiguration()
             self._AdvancedConfig._deserialize(params.get("AdvancedConfig"))
+        self._DSLFilter = params.get("DSLFilter")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -9722,26 +9752,24 @@ class CreateConsumerRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TopicId: 投递任务绑定的日志主题Id。
-- 通过 [获取日志主题列表](https://cloud.tencent.com/document/product/614/56454) 获取日志主题Id。
-- 通过 [创建日志主题](https://cloud.tencent.com/document/product/614/56456) 获取日志主题Id。
+        :param _TopicId: <p>投递任务绑定的日志主题Id。</p><ul><li>通过 <a href="https://cloud.tencent.com/document/product/614/56454">获取日志主题列表</a> 获取日志主题Id。</li><li>通过 <a href="https://cloud.tencent.com/document/product/614/56456">创建日志主题</a> 获取日志主题Id。</li></ul>
         :type TopicId: str
-        :param _NeedContent: 是否投递日志的元数据信息，默认为 true。
-当NeedContent为true时：字段Content有效。
-当NeedContent为false时：字段Content无效。
+        :param _NeedContent: <p>是否投递日志的元数据信息，默认为 true。<br>当NeedContent为true时：字段Content有效。<br>当NeedContent为false时：字段Content无效。</p>
         :type NeedContent: bool
-        :param _Content: 如果需要投递元数据信息，元数据信息的描述
+        :param _Content: <p>如果需要投递元数据信息，元数据信息的描述</p>
         :type Content: :class:`tencentcloud.cls.v20201016.models.ConsumerContent`
-        :param _Ckafka: CKafka的描述
+        :param _Ckafka: <p>CKafka的描述</p>
         :type Ckafka: :class:`tencentcloud.cls.v20201016.models.Ckafka`
-        :param _Compression: 投递时压缩方式，取值0，2，3。[0：NONE；2：SNAPPY；3：LZ4]
+        :param _Compression: <p>投递时压缩方式，取值0，2，3。[0：NONE；2：SNAPPY；3：LZ4]</p>
         :type Compression: int
-        :param _RoleArn: 角色访问描述名 [创建角色](https://cloud.tencent.com/document/product/598/19381)
+        :param _RoleArn: <p>角色访问描述名 <a href="https://cloud.tencent.com/document/product/598/19381">创建角色</a></p>
         :type RoleArn: str
-        :param _ExternalId: 外部ID
+        :param _ExternalId: <p>外部ID</p>
         :type ExternalId: str
-        :param _AdvancedConfig: 高级配置项
+        :param _AdvancedConfig: <p>高级配置项</p>
         :type AdvancedConfig: :class:`tencentcloud.cls.v20201016.models.AdvancedConsumerConfiguration`
+        :param _DSLFilter: <p>日志预过滤-数据写入 ckafka 的原始数据进行预过滤处理</p>
+        :type DSLFilter: str
         """
         self._TopicId = None
         self._NeedContent = None
@@ -9751,12 +9779,11 @@ class CreateConsumerRequest(AbstractModel):
         self._RoleArn = None
         self._ExternalId = None
         self._AdvancedConfig = None
+        self._DSLFilter = None
 
     @property
     def TopicId(self):
-        r"""投递任务绑定的日志主题Id。
-- 通过 [获取日志主题列表](https://cloud.tencent.com/document/product/614/56454) 获取日志主题Id。
-- 通过 [创建日志主题](https://cloud.tencent.com/document/product/614/56456) 获取日志主题Id。
+        r"""<p>投递任务绑定的日志主题Id。</p><ul><li>通过 <a href="https://cloud.tencent.com/document/product/614/56454">获取日志主题列表</a> 获取日志主题Id。</li><li>通过 <a href="https://cloud.tencent.com/document/product/614/56456">创建日志主题</a> 获取日志主题Id。</li></ul>
         :rtype: str
         """
         return self._TopicId
@@ -9767,9 +9794,7 @@ class CreateConsumerRequest(AbstractModel):
 
     @property
     def NeedContent(self):
-        r"""是否投递日志的元数据信息，默认为 true。
-当NeedContent为true时：字段Content有效。
-当NeedContent为false时：字段Content无效。
+        r"""<p>是否投递日志的元数据信息，默认为 true。<br>当NeedContent为true时：字段Content有效。<br>当NeedContent为false时：字段Content无效。</p>
         :rtype: bool
         """
         return self._NeedContent
@@ -9780,7 +9805,7 @@ class CreateConsumerRequest(AbstractModel):
 
     @property
     def Content(self):
-        r"""如果需要投递元数据信息，元数据信息的描述
+        r"""<p>如果需要投递元数据信息，元数据信息的描述</p>
         :rtype: :class:`tencentcloud.cls.v20201016.models.ConsumerContent`
         """
         return self._Content
@@ -9791,7 +9816,7 @@ class CreateConsumerRequest(AbstractModel):
 
     @property
     def Ckafka(self):
-        r"""CKafka的描述
+        r"""<p>CKafka的描述</p>
         :rtype: :class:`tencentcloud.cls.v20201016.models.Ckafka`
         """
         return self._Ckafka
@@ -9802,7 +9827,7 @@ class CreateConsumerRequest(AbstractModel):
 
     @property
     def Compression(self):
-        r"""投递时压缩方式，取值0，2，3。[0：NONE；2：SNAPPY；3：LZ4]
+        r"""<p>投递时压缩方式，取值0，2，3。[0：NONE；2：SNAPPY；3：LZ4]</p>
         :rtype: int
         """
         return self._Compression
@@ -9813,7 +9838,7 @@ class CreateConsumerRequest(AbstractModel):
 
     @property
     def RoleArn(self):
-        r"""角色访问描述名 [创建角色](https://cloud.tencent.com/document/product/598/19381)
+        r"""<p>角色访问描述名 <a href="https://cloud.tencent.com/document/product/598/19381">创建角色</a></p>
         :rtype: str
         """
         return self._RoleArn
@@ -9824,7 +9849,7 @@ class CreateConsumerRequest(AbstractModel):
 
     @property
     def ExternalId(self):
-        r"""外部ID
+        r"""<p>外部ID</p>
         :rtype: str
         """
         return self._ExternalId
@@ -9835,7 +9860,7 @@ class CreateConsumerRequest(AbstractModel):
 
     @property
     def AdvancedConfig(self):
-        r"""高级配置项
+        r"""<p>高级配置项</p>
         :rtype: :class:`tencentcloud.cls.v20201016.models.AdvancedConsumerConfiguration`
         """
         return self._AdvancedConfig
@@ -9843,6 +9868,17 @@ class CreateConsumerRequest(AbstractModel):
     @AdvancedConfig.setter
     def AdvancedConfig(self, AdvancedConfig):
         self._AdvancedConfig = AdvancedConfig
+
+    @property
+    def DSLFilter(self):
+        r"""<p>日志预过滤-数据写入 ckafka 的原始数据进行预过滤处理</p>
+        :rtype: str
+        """
+        return self._DSLFilter
+
+    @DSLFilter.setter
+    def DSLFilter(self, DSLFilter):
+        self._DSLFilter = DSLFilter
 
 
     def _deserialize(self, params):
@@ -9860,6 +9896,7 @@ class CreateConsumerRequest(AbstractModel):
         if params.get("AdvancedConfig") is not None:
             self._AdvancedConfig = AdvancedConsumerConfiguration()
             self._AdvancedConfig._deserialize(params.get("AdvancedConfig"))
+        self._DSLFilter = params.get("DSLFilter")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -13977,6 +14014,296 @@ class CreateRemoteWriteTaskResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
+
+
+class CreateResourceGraphProductIngestTaskRequest(AbstractModel):
+    r"""CreateResourceGraphProductIngestTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ResourceGraphId: <p>资源图谱id</p>
+        :type ResourceGraphId: str
+        :param _Name: <p>接入任务名称</p>
+        :type Name: str
+        :param _CloudProduct: <p>待接入的云产品；支持tke、cdb、mongodb、redis</p>
+        :type CloudProduct: str
+        :param _SelectionMode: <p>实例选择方案</p><p>枚举值：</p><ul><li>0： 所有示例</li><li>1： 按标签选择</li><li>2： 手动选择</li></ul>
+        :type SelectionMode: int
+        :param _InstanceIds: <p>实例id。当选择方式使用“指定实例”时，需要填写</p>
+        :type InstanceIds: list of str
+        :param _EBPFCollectRule: <p>eBPF 采集规则</p>
+        :type EBPFCollectRule: :class:`tencentcloud.cls.v20201016.models.EBPFCollectRule`
+        :param _Tags: <p>标签。当实例选择方案使用“按标签选择”时，需要填写</p>
+        :type Tags: list of Tag
+        """
+        self._ResourceGraphId = None
+        self._Name = None
+        self._CloudProduct = None
+        self._SelectionMode = None
+        self._InstanceIds = None
+        self._EBPFCollectRule = None
+        self._Tags = None
+
+    @property
+    def ResourceGraphId(self):
+        r"""<p>资源图谱id</p>
+        :rtype: str
+        """
+        return self._ResourceGraphId
+
+    @ResourceGraphId.setter
+    def ResourceGraphId(self, ResourceGraphId):
+        self._ResourceGraphId = ResourceGraphId
+
+    @property
+    def Name(self):
+        r"""<p>接入任务名称</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def CloudProduct(self):
+        r"""<p>待接入的云产品；支持tke、cdb、mongodb、redis</p>
+        :rtype: str
+        """
+        return self._CloudProduct
+
+    @CloudProduct.setter
+    def CloudProduct(self, CloudProduct):
+        self._CloudProduct = CloudProduct
+
+    @property
+    def SelectionMode(self):
+        r"""<p>实例选择方案</p><p>枚举值：</p><ul><li>0： 所有示例</li><li>1： 按标签选择</li><li>2： 手动选择</li></ul>
+        :rtype: int
+        """
+        return self._SelectionMode
+
+    @SelectionMode.setter
+    def SelectionMode(self, SelectionMode):
+        self._SelectionMode = SelectionMode
+
+    @property
+    def InstanceIds(self):
+        r"""<p>实例id。当选择方式使用“指定实例”时，需要填写</p>
+        :rtype: list of str
+        """
+        return self._InstanceIds
+
+    @InstanceIds.setter
+    def InstanceIds(self, InstanceIds):
+        self._InstanceIds = InstanceIds
+
+    @property
+    def EBPFCollectRule(self):
+        r"""<p>eBPF 采集规则</p>
+        :rtype: :class:`tencentcloud.cls.v20201016.models.EBPFCollectRule`
+        """
+        return self._EBPFCollectRule
+
+    @EBPFCollectRule.setter
+    def EBPFCollectRule(self, EBPFCollectRule):
+        self._EBPFCollectRule = EBPFCollectRule
+
+    @property
+    def Tags(self):
+        r"""<p>标签。当实例选择方案使用“按标签选择”时，需要填写</p>
+        :rtype: list of Tag
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+
+    def _deserialize(self, params):
+        self._ResourceGraphId = params.get("ResourceGraphId")
+        self._Name = params.get("Name")
+        self._CloudProduct = params.get("CloudProduct")
+        self._SelectionMode = params.get("SelectionMode")
+        self._InstanceIds = params.get("InstanceIds")
+        if params.get("EBPFCollectRule") is not None:
+            self._EBPFCollectRule = EBPFCollectRule()
+            self._EBPFCollectRule._deserialize(params.get("EBPFCollectRule"))
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateResourceGraphProductIngestTaskResponse(AbstractModel):
+    r"""CreateResourceGraphProductIngestTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: <p>接入任务id</p>
+        :type TaskId: str
+        :param _Status: <p>接入任务状态</p><p>枚举值：</p><ul><li>0： 初始化中</li><li>1： 正常</li><li>2： 接入失败</li><li>3： 删除中</li><li>4： 已删除</li><li>5： 删除失败</li><li>6： 修改中</li><li>7： 修改失败</li></ul>
+        :type Status: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._TaskId = None
+        self._Status = None
+        self._RequestId = None
+
+    @property
+    def TaskId(self):
+        r"""<p>接入任务id</p>
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def Status(self):
+        r"""<p>接入任务状态</p><p>枚举值：</p><ul><li>0： 初始化中</li><li>1： 正常</li><li>2： 接入失败</li><li>3： 删除中</li><li>4： 已删除</li><li>5： 删除失败</li><li>6： 修改中</li><li>7： 修改失败</li></ul>
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._Status = params.get("Status")
+        self._RequestId = params.get("RequestId")
+
+
+class CreateResourceGraphRequest(AbstractModel):
+    r"""CreateResourceGraph请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Name: <p>资源图谱名称</p>
+        :type Name: str
+        :param _Description: <p>资源图谱描述</p>
+        :type Description: str
+        :param _Tags: <p>标签描述列表，通过指定该参数可以同时绑定标签到相应的主题。最大支持10个标签键值对，同一个资源只能绑定到同一个标签键下。</p>
+        :type Tags: list of Tag
+        """
+        self._Name = None
+        self._Description = None
+        self._Tags = None
+
+    @property
+    def Name(self):
+        r"""<p>资源图谱名称</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Description(self):
+        r"""<p>资源图谱描述</p>
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def Tags(self):
+        r"""<p>标签描述列表，通过指定该参数可以同时绑定标签到相应的主题。最大支持10个标签键值对，同一个资源只能绑定到同一个标签键下。</p>
+        :rtype: list of Tag
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+
+    def _deserialize(self, params):
+        self._Name = params.get("Name")
+        self._Description = params.get("Description")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateResourceGraphResponse(AbstractModel):
+    r"""CreateResourceGraph返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
 
 
@@ -20090,6 +20417,149 @@ class DeleteRemoteWriteTaskResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DeleteResourceGraphProductIngestTaskRequest(AbstractModel):
+    r"""DeleteResourceGraphProductIngestTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ResourceGraphId: <p>资源图谱id</p>
+        :type ResourceGraphId: str
+        :param _TaskId: <p>接入任务id</p>
+        :type TaskId: str
+        """
+        self._ResourceGraphId = None
+        self._TaskId = None
+
+    @property
+    def ResourceGraphId(self):
+        r"""<p>资源图谱id</p>
+        :rtype: str
+        """
+        return self._ResourceGraphId
+
+    @ResourceGraphId.setter
+    def ResourceGraphId(self, ResourceGraphId):
+        self._ResourceGraphId = ResourceGraphId
+
+    @property
+    def TaskId(self):
+        r"""<p>接入任务id</p>
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+
+    def _deserialize(self, params):
+        self._ResourceGraphId = params.get("ResourceGraphId")
+        self._TaskId = params.get("TaskId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteResourceGraphProductIngestTaskResponse(AbstractModel):
+    r"""DeleteResourceGraphProductIngestTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteResourceGraphRequest(AbstractModel):
+    r"""DeleteResourceGraph请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ResourceGraphId: <p>待删除的资源图谱id</p>
+        :type ResourceGraphId: str
+        """
+        self._ResourceGraphId = None
+
+    @property
+    def ResourceGraphId(self):
+        r"""<p>待删除的资源图谱id</p>
+        :rtype: str
+        """
+        return self._ResourceGraphId
+
+    @ResourceGraphId.setter
+    def ResourceGraphId(self, ResourceGraphId):
+        self._ResourceGraphId = ResourceGraphId
+
+
+    def _deserialize(self, params):
+        self._ResourceGraphId = params.get("ResourceGraphId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteResourceGraphResponse(AbstractModel):
+    r"""DeleteResourceGraph返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class DeleteS3RechargeRequest(AbstractModel):
     r"""DeleteS3Recharge请求参数结构体
 
@@ -23067,12 +23537,15 @@ class DescribeConsumerOffsetsRequest(AbstractModel):
         :type TopicId: str
         :param _PartitionId: 分区id
         :type PartitionId: str
+        :param _OffsetType: 获取offset方式。 0 表示 fetch_offset，1 表示 list_offset
+        :type OffsetType: int
         """
         self._ConsumerGroup = None
         self._From = None
         self._LogsetId = None
         self._TopicId = None
         self._PartitionId = None
+        self._OffsetType = None
 
     @property
     def ConsumerGroup(self):
@@ -23129,6 +23602,17 @@ class DescribeConsumerOffsetsRequest(AbstractModel):
     def PartitionId(self, PartitionId):
         self._PartitionId = PartitionId
 
+    @property
+    def OffsetType(self):
+        r"""获取offset方式。 0 表示 fetch_offset，1 表示 list_offset
+        :rtype: int
+        """
+        return self._OffsetType
+
+    @OffsetType.setter
+    def OffsetType(self, OffsetType):
+        self._OffsetType = OffsetType
+
 
     def _deserialize(self, params):
         self._ConsumerGroup = params.get("ConsumerGroup")
@@ -23136,6 +23620,7 @@ class DescribeConsumerOffsetsRequest(AbstractModel):
         self._LogsetId = params.get("LogsetId")
         self._TopicId = params.get("TopicId")
         self._PartitionId = params.get("PartitionId")
+        self._OffsetType = params.get("OffsetType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -23250,18 +23735,14 @@ class DescribeConsumerRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TopicId: 投递任务绑定的日志主题Id。
-- 通过 [获取日志主题列表](https://cloud.tencent.com/document/product/614/56454) 获取日志主题Id。
-- 通过 [创建日志主题](https://cloud.tencent.com/document/product/614/56456) 获取日志主题Id。
+        :param _TopicId: <p>投递任务绑定的日志主题Id。</p><ul><li>通过 <a href="https://cloud.tencent.com/document/product/614/56454">获取日志主题列表</a> 获取日志主题Id。</li><li>通过 <a href="https://cloud.tencent.com/document/product/614/56456">创建日志主题</a> 获取日志主题Id。</li></ul>
         :type TopicId: str
         """
         self._TopicId = None
 
     @property
     def TopicId(self):
-        r"""投递任务绑定的日志主题Id。
-- 通过 [获取日志主题列表](https://cloud.tencent.com/document/product/614/56454) 获取日志主题Id。
-- 通过 [创建日志主题](https://cloud.tencent.com/document/product/614/56456) 获取日志主题Id。
+        r"""<p>投递任务绑定的日志主题Id。</p><ul><li>通过 <a href="https://cloud.tencent.com/document/product/614/56454">获取日志主题列表</a> 获取日志主题Id。</li><li>通过 <a href="https://cloud.tencent.com/document/product/614/56456">创建日志主题</a> 获取日志主题Id。</li></ul>
         :rtype: str
         """
         return self._TopicId
@@ -23290,17 +23771,29 @@ class DescribeConsumerResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Effective: 投递任务是否生效
+        :param _Effective: <p>投递任务是否生效</p>
         :type Effective: bool
-        :param _NeedContent: 是否投递日志的元数据信息
+        :param _NeedContent: <p>是否投递日志的元数据信息</p>
         :type NeedContent: bool
-        :param _Content: 如果需要投递元数据信息，元数据信息的描述
+        :param _Content: <p>如果需要投递元数据信息，元数据信息的描述</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type Content: :class:`tencentcloud.cls.v20201016.models.ConsumerContent`
-        :param _Ckafka: CKafka的描述
+        :param _Ckafka: <p>CKafka的描述</p>
         :type Ckafka: :class:`tencentcloud.cls.v20201016.models.Ckafka`
-        :param _Compression: 压缩方式[0:NONE；2:SNAPPY；3:LZ4]
+        :param _Compression: <p>压缩方式[0:NONE；2:SNAPPY；3:LZ4]</p>
         :type Compression: int
+        :param _CreateTime: <p>任务创建时间</p>
+        :type CreateTime: int
+        :param _RoleArn: <p>角色访问描述名 <a href="https://cloud.tencent.com/document/product/598/19381">创建角色</a></p>
+        :type RoleArn: str
+        :param _ExternalId: <p>外部ID</p>
+        :type ExternalId: str
+        :param _TaskStatus: <p>任务运行状态。支持<code>0</code>,<code>1</code>,<code>2</code>  - <code>0</code>: 停止 - <code>1</code>: 运行中 - <code>2</code>: 异常</p>
+        :type TaskStatus: int
+        :param _AdvancedConfig: <p>高级配置</p>
+        :type AdvancedConfig: :class:`tencentcloud.cls.v20201016.models.AdvancedConsumerConfiguration`
+        :param _DSLFilter: <p>日志预过滤-数据写入 ckafka 的原始数据进行预过滤处理</p>
+        :type DSLFilter: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -23309,11 +23802,17 @@ class DescribeConsumerResponse(AbstractModel):
         self._Content = None
         self._Ckafka = None
         self._Compression = None
+        self._CreateTime = None
+        self._RoleArn = None
+        self._ExternalId = None
+        self._TaskStatus = None
+        self._AdvancedConfig = None
+        self._DSLFilter = None
         self._RequestId = None
 
     @property
     def Effective(self):
-        r"""投递任务是否生效
+        r"""<p>投递任务是否生效</p>
         :rtype: bool
         """
         return self._Effective
@@ -23324,7 +23823,7 @@ class DescribeConsumerResponse(AbstractModel):
 
     @property
     def NeedContent(self):
-        r"""是否投递日志的元数据信息
+        r"""<p>是否投递日志的元数据信息</p>
         :rtype: bool
         """
         return self._NeedContent
@@ -23335,7 +23834,7 @@ class DescribeConsumerResponse(AbstractModel):
 
     @property
     def Content(self):
-        r"""如果需要投递元数据信息，元数据信息的描述
+        r"""<p>如果需要投递元数据信息，元数据信息的描述</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.cls.v20201016.models.ConsumerContent`
         """
@@ -23347,7 +23846,7 @@ class DescribeConsumerResponse(AbstractModel):
 
     @property
     def Ckafka(self):
-        r"""CKafka的描述
+        r"""<p>CKafka的描述</p>
         :rtype: :class:`tencentcloud.cls.v20201016.models.Ckafka`
         """
         return self._Ckafka
@@ -23358,7 +23857,7 @@ class DescribeConsumerResponse(AbstractModel):
 
     @property
     def Compression(self):
-        r"""压缩方式[0:NONE；2:SNAPPY；3:LZ4]
+        r"""<p>压缩方式[0:NONE；2:SNAPPY；3:LZ4]</p>
         :rtype: int
         """
         return self._Compression
@@ -23366,6 +23865,72 @@ class DescribeConsumerResponse(AbstractModel):
     @Compression.setter
     def Compression(self, Compression):
         self._Compression = Compression
+
+    @property
+    def CreateTime(self):
+        r"""<p>任务创建时间</p>
+        :rtype: int
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def RoleArn(self):
+        r"""<p>角色访问描述名 <a href="https://cloud.tencent.com/document/product/598/19381">创建角色</a></p>
+        :rtype: str
+        """
+        return self._RoleArn
+
+    @RoleArn.setter
+    def RoleArn(self, RoleArn):
+        self._RoleArn = RoleArn
+
+    @property
+    def ExternalId(self):
+        r"""<p>外部ID</p>
+        :rtype: str
+        """
+        return self._ExternalId
+
+    @ExternalId.setter
+    def ExternalId(self, ExternalId):
+        self._ExternalId = ExternalId
+
+    @property
+    def TaskStatus(self):
+        r"""<p>任务运行状态。支持<code>0</code>,<code>1</code>,<code>2</code>  - <code>0</code>: 停止 - <code>1</code>: 运行中 - <code>2</code>: 异常</p>
+        :rtype: int
+        """
+        return self._TaskStatus
+
+    @TaskStatus.setter
+    def TaskStatus(self, TaskStatus):
+        self._TaskStatus = TaskStatus
+
+    @property
+    def AdvancedConfig(self):
+        r"""<p>高级配置</p>
+        :rtype: :class:`tencentcloud.cls.v20201016.models.AdvancedConsumerConfiguration`
+        """
+        return self._AdvancedConfig
+
+    @AdvancedConfig.setter
+    def AdvancedConfig(self, AdvancedConfig):
+        self._AdvancedConfig = AdvancedConfig
+
+    @property
+    def DSLFilter(self):
+        r"""<p>日志预过滤-数据写入 ckafka 的原始数据进行预过滤处理</p>
+        :rtype: str
+        """
+        return self._DSLFilter
+
+    @DSLFilter.setter
+    def DSLFilter(self, DSLFilter):
+        self._DSLFilter = DSLFilter
 
     @property
     def RequestId(self):
@@ -23389,6 +23954,14 @@ class DescribeConsumerResponse(AbstractModel):
             self._Ckafka = Ckafka()
             self._Ckafka._deserialize(params.get("Ckafka"))
         self._Compression = params.get("Compression")
+        self._CreateTime = params.get("CreateTime")
+        self._RoleArn = params.get("RoleArn")
+        self._ExternalId = params.get("ExternalId")
+        self._TaskStatus = params.get("TaskStatus")
+        if params.get("AdvancedConfig") is not None:
+            self._AdvancedConfig = AdvancedConsumerConfiguration()
+            self._AdvancedConfig._deserialize(params.get("AdvancedConfig"))
+        self._DSLFilter = params.get("DSLFilter")
         self._RequestId = params.get("RequestId")
 
 
@@ -28649,6 +29222,1165 @@ class DescribeRemoteWriteTasksResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeResourceGraphDetailRequest(AbstractModel):
+    r"""DescribeResourceGraphDetail请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ResourceGraphId: <p>资源图谱id</p>
+        :type ResourceGraphId: str
+        """
+        self._ResourceGraphId = None
+
+    @property
+    def ResourceGraphId(self):
+        r"""<p>资源图谱id</p>
+        :rtype: str
+        """
+        return self._ResourceGraphId
+
+    @ResourceGraphId.setter
+    def ResourceGraphId(self, ResourceGraphId):
+        self._ResourceGraphId = ResourceGraphId
+
+
+    def _deserialize(self, params):
+        self._ResourceGraphId = params.get("ResourceGraphId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeResourceGraphDetailResponse(AbstractModel):
+    r"""DescribeResourceGraphDetail返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ResourceGraphDetailInfo: <p>资源图谱详情信息</p>
+        :type ResourceGraphDetailInfo: :class:`tencentcloud.cls.v20201016.models.ResourceGraphDetailInfo`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ResourceGraphDetailInfo = None
+        self._RequestId = None
+
+    @property
+    def ResourceGraphDetailInfo(self):
+        r"""<p>资源图谱详情信息</p>
+        :rtype: :class:`tencentcloud.cls.v20201016.models.ResourceGraphDetailInfo`
+        """
+        return self._ResourceGraphDetailInfo
+
+    @ResourceGraphDetailInfo.setter
+    def ResourceGraphDetailInfo(self, ResourceGraphDetailInfo):
+        self._ResourceGraphDetailInfo = ResourceGraphDetailInfo
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("ResourceGraphDetailInfo") is not None:
+            self._ResourceGraphDetailInfo = ResourceGraphDetailInfo()
+            self._ResourceGraphDetailInfo._deserialize(params.get("ResourceGraphDetailInfo"))
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeResourceGraphEntitiesRequest(AbstractModel):
+    r"""DescribeResourceGraphEntities请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ResourceGraphId: <p>资源图谱id</p>
+        :type ResourceGraphId: str
+        :param _Filters: <ul><li>Product 按【产品分组】精确匹配，可用参数：all / business_service / tke / cdb / redis / mongodb 。类型：String。必选：否</li><li>EntityClassName 按【实体类型】精确匹配，可用参数：all / app.service.application / tc.tke.cluster / tc.tkex.project / tc.cdb.instance / tc.redis.instance / tc.mongodb.instance / k8s.cluster / k8s.namespace / k8s.node / k8s.pod / k8s.ip / k8s.service / k8s.deployment / k8s.statefulset / k8s.statefulsetplus / k8s.daemonset / k8s.storageclass / k8s.persistentvolume / k8s.persistentvolumeclaim / k8s.secret。类型：String。必选：否</li><li>Name 按【实体名称】模糊匹配。类型：String。必选：否</li><li>ResourceId 按 【实体资源id】精确匹配。类型：String。必选：否</li></ul><p>注意：每次请求的 Filters 上限 10。</p>
+        :type Filters: list of Filter
+        :param _NextCursor: <p>查询偏移</p>
+        :type NextCursor: str
+        :param _Limit: <p>分页单页数量，默认 20，最大 100</p>
+        :type Limit: int
+        :param _FromTime: <p>查询开始时间</p><p>单位：毫秒</p>
+        :type FromTime: int
+        :param _ToTime: <p>查询结束时间</p><p>单位：毫秒</p>
+        :type ToTime: int
+        """
+        self._ResourceGraphId = None
+        self._Filters = None
+        self._NextCursor = None
+        self._Limit = None
+        self._FromTime = None
+        self._ToTime = None
+
+    @property
+    def ResourceGraphId(self):
+        r"""<p>资源图谱id</p>
+        :rtype: str
+        """
+        return self._ResourceGraphId
+
+    @ResourceGraphId.setter
+    def ResourceGraphId(self, ResourceGraphId):
+        self._ResourceGraphId = ResourceGraphId
+
+    @property
+    def Filters(self):
+        r"""<ul><li>Product 按【产品分组】精确匹配，可用参数：all / business_service / tke / cdb / redis / mongodb 。类型：String。必选：否</li><li>EntityClassName 按【实体类型】精确匹配，可用参数：all / app.service.application / tc.tke.cluster / tc.tkex.project / tc.cdb.instance / tc.redis.instance / tc.mongodb.instance / k8s.cluster / k8s.namespace / k8s.node / k8s.pod / k8s.ip / k8s.service / k8s.deployment / k8s.statefulset / k8s.statefulsetplus / k8s.daemonset / k8s.storageclass / k8s.persistentvolume / k8s.persistentvolumeclaim / k8s.secret。类型：String。必选：否</li><li>Name 按【实体名称】模糊匹配。类型：String。必选：否</li><li>ResourceId 按 【实体资源id】精确匹配。类型：String。必选：否</li></ul><p>注意：每次请求的 Filters 上限 10。</p>
+        :rtype: list of Filter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def NextCursor(self):
+        r"""<p>查询偏移</p>
+        :rtype: str
+        """
+        return self._NextCursor
+
+    @NextCursor.setter
+    def NextCursor(self, NextCursor):
+        self._NextCursor = NextCursor
+
+    @property
+    def Limit(self):
+        r"""<p>分页单页数量，默认 20，最大 100</p>
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def FromTime(self):
+        r"""<p>查询开始时间</p><p>单位：毫秒</p>
+        :rtype: int
+        """
+        return self._FromTime
+
+    @FromTime.setter
+    def FromTime(self, FromTime):
+        self._FromTime = FromTime
+
+    @property
+    def ToTime(self):
+        r"""<p>查询结束时间</p><p>单位：毫秒</p>
+        :rtype: int
+        """
+        return self._ToTime
+
+    @ToTime.setter
+    def ToTime(self, ToTime):
+        self._ToTime = ToTime
+
+
+    def _deserialize(self, params):
+        self._ResourceGraphId = params.get("ResourceGraphId")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._NextCursor = params.get("NextCursor")
+        self._Limit = params.get("Limit")
+        self._FromTime = params.get("FromTime")
+        self._ToTime = params.get("ToTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeResourceGraphEntitiesResponse(AbstractModel):
+    r"""DescribeResourceGraphEntities返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _NextCursor: <p>分页的游标，有值则下次分页请求原样带上，无值则表示无下一页</p>
+        :type NextCursor: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._NextCursor = None
+        self._RequestId = None
+
+    @property
+    def NextCursor(self):
+        r"""<p>分页的游标，有值则下次分页请求原样带上，无值则表示无下一页</p>
+        :rtype: str
+        """
+        return self._NextCursor
+
+    @NextCursor.setter
+    def NextCursor(self, NextCursor):
+        self._NextCursor = NextCursor
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._NextCursor = params.get("NextCursor")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeResourceGraphEntityDependencyRequest(AbstractModel):
+    r"""DescribeResourceGraphEntityDependency请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ResourceGraphId: <p>资源图谱id</p>
+        :type ResourceGraphId: str
+        :param _EntityId: <p>实体id</p>
+        :type EntityId: str
+        :param _Depth: <p>距离Entity的深度</p>
+        :type Depth: int
+        :param _Limit: <p>返回数量</p>
+        :type Limit: int
+        :param _FromTime: <p>查询范围-开始时间</p><p>单位：毫秒</p>
+        :type FromTime: int
+        :param _ToTime: <p>查询范围-结束时间</p><p>单位：毫秒</p>
+        :type ToTime: int
+        """
+        self._ResourceGraphId = None
+        self._EntityId = None
+        self._Depth = None
+        self._Limit = None
+        self._FromTime = None
+        self._ToTime = None
+
+    @property
+    def ResourceGraphId(self):
+        r"""<p>资源图谱id</p>
+        :rtype: str
+        """
+        return self._ResourceGraphId
+
+    @ResourceGraphId.setter
+    def ResourceGraphId(self, ResourceGraphId):
+        self._ResourceGraphId = ResourceGraphId
+
+    @property
+    def EntityId(self):
+        r"""<p>实体id</p>
+        :rtype: str
+        """
+        return self._EntityId
+
+    @EntityId.setter
+    def EntityId(self, EntityId):
+        self._EntityId = EntityId
+
+    @property
+    def Depth(self):
+        r"""<p>距离Entity的深度</p>
+        :rtype: int
+        """
+        return self._Depth
+
+    @Depth.setter
+    def Depth(self, Depth):
+        self._Depth = Depth
+
+    @property
+    def Limit(self):
+        r"""<p>返回数量</p>
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def FromTime(self):
+        r"""<p>查询范围-开始时间</p><p>单位：毫秒</p>
+        :rtype: int
+        """
+        return self._FromTime
+
+    @FromTime.setter
+    def FromTime(self, FromTime):
+        self._FromTime = FromTime
+
+    @property
+    def ToTime(self):
+        r"""<p>查询范围-结束时间</p><p>单位：毫秒</p>
+        :rtype: int
+        """
+        return self._ToTime
+
+    @ToTime.setter
+    def ToTime(self, ToTime):
+        self._ToTime = ToTime
+
+
+    def _deserialize(self, params):
+        self._ResourceGraphId = params.get("ResourceGraphId")
+        self._EntityId = params.get("EntityId")
+        self._Depth = params.get("Depth")
+        self._Limit = params.get("Limit")
+        self._FromTime = params.get("FromTime")
+        self._ToTime = params.get("ToTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeResourceGraphEntityDependencyResponse(AbstractModel):
+    r"""DescribeResourceGraphEntityDependency返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeResourceGraphEntityDetailRequest(AbstractModel):
+    r"""DescribeResourceGraphEntityDetail请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EntityId: <p>实体 ID</p>
+        :type EntityId: str
+        :param _ResourceGraphId: <p>资源图谱id</p>
+        :type ResourceGraphId: str
+        :param _FromTime: <p>查询范围-开始时间</p><p>单位：毫秒</p>
+        :type FromTime: int
+        :param _ToTime: <p>查询范围-结束时间</p><p>单位：毫秒</p>
+        :type ToTime: int
+        """
+        self._EntityId = None
+        self._ResourceGraphId = None
+        self._FromTime = None
+        self._ToTime = None
+
+    @property
+    def EntityId(self):
+        r"""<p>实体 ID</p>
+        :rtype: str
+        """
+        return self._EntityId
+
+    @EntityId.setter
+    def EntityId(self, EntityId):
+        self._EntityId = EntityId
+
+    @property
+    def ResourceGraphId(self):
+        r"""<p>资源图谱id</p>
+        :rtype: str
+        """
+        return self._ResourceGraphId
+
+    @ResourceGraphId.setter
+    def ResourceGraphId(self, ResourceGraphId):
+        self._ResourceGraphId = ResourceGraphId
+
+    @property
+    def FromTime(self):
+        r"""<p>查询范围-开始时间</p><p>单位：毫秒</p>
+        :rtype: int
+        """
+        return self._FromTime
+
+    @FromTime.setter
+    def FromTime(self, FromTime):
+        self._FromTime = FromTime
+
+    @property
+    def ToTime(self):
+        r"""<p>查询范围-结束时间</p><p>单位：毫秒</p>
+        :rtype: int
+        """
+        return self._ToTime
+
+    @ToTime.setter
+    def ToTime(self, ToTime):
+        self._ToTime = ToTime
+
+
+    def _deserialize(self, params):
+        self._EntityId = params.get("EntityId")
+        self._ResourceGraphId = params.get("ResourceGraphId")
+        self._FromTime = params.get("FromTime")
+        self._ToTime = params.get("ToTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeResourceGraphEntityDetailResponse(AbstractModel):
+    r"""DescribeResourceGraphEntityDetail返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeResourceGraphFailureDetailRequest(AbstractModel):
+    r"""DescribeResourceGraphFailureDetail请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ResourceGraphId: <p>资源图谱id</p>
+        :type ResourceGraphId: str
+        """
+        self._ResourceGraphId = None
+
+    @property
+    def ResourceGraphId(self):
+        r"""<p>资源图谱id</p>
+        :rtype: str
+        """
+        return self._ResourceGraphId
+
+    @ResourceGraphId.setter
+    def ResourceGraphId(self, ResourceGraphId):
+        self._ResourceGraphId = ResourceGraphId
+
+
+    def _deserialize(self, params):
+        self._ResourceGraphId = params.get("ResourceGraphId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeResourceGraphFailureDetailResponse(AbstractModel):
+    r"""DescribeResourceGraphFailureDetail返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ErrorMessage: <p>失败详情信息</p>
+        :type ErrorMessage: str
+        :param _LastFailedTime: <p>最近一次失败时间</p><p>单位：秒</p>
+        :type LastFailedTime: int
+        :param _RetryCount: <p>重试次数</p>
+        :type RetryCount: int
+        :param _FirstFailedAt: <p>首次失败时间</p><p>单位：秒</p>
+        :type FirstFailedAt: int
+        :param _Operation: <p>引起失败的操作</p>
+        :type Operation: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ErrorMessage = None
+        self._LastFailedTime = None
+        self._RetryCount = None
+        self._FirstFailedAt = None
+        self._Operation = None
+        self._RequestId = None
+
+    @property
+    def ErrorMessage(self):
+        r"""<p>失败详情信息</p>
+        :rtype: str
+        """
+        return self._ErrorMessage
+
+    @ErrorMessage.setter
+    def ErrorMessage(self, ErrorMessage):
+        self._ErrorMessage = ErrorMessage
+
+    @property
+    def LastFailedTime(self):
+        r"""<p>最近一次失败时间</p><p>单位：秒</p>
+        :rtype: int
+        """
+        return self._LastFailedTime
+
+    @LastFailedTime.setter
+    def LastFailedTime(self, LastFailedTime):
+        self._LastFailedTime = LastFailedTime
+
+    @property
+    def RetryCount(self):
+        r"""<p>重试次数</p>
+        :rtype: int
+        """
+        return self._RetryCount
+
+    @RetryCount.setter
+    def RetryCount(self, RetryCount):
+        self._RetryCount = RetryCount
+
+    @property
+    def FirstFailedAt(self):
+        r"""<p>首次失败时间</p><p>单位：秒</p>
+        :rtype: int
+        """
+        return self._FirstFailedAt
+
+    @FirstFailedAt.setter
+    def FirstFailedAt(self, FirstFailedAt):
+        self._FirstFailedAt = FirstFailedAt
+
+    @property
+    def Operation(self):
+        r"""<p>引起失败的操作</p>
+        :rtype: str
+        """
+        return self._Operation
+
+    @Operation.setter
+    def Operation(self, Operation):
+        self._Operation = Operation
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._ErrorMessage = params.get("ErrorMessage")
+        self._LastFailedTime = params.get("LastFailedTime")
+        self._RetryCount = params.get("RetryCount")
+        self._FirstFailedAt = params.get("FirstFailedAt")
+        self._Operation = params.get("Operation")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeResourceGraphIngestTaskFailureDetailRequest(AbstractModel):
+    r"""DescribeResourceGraphIngestTaskFailureDetail请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ResourceGraphId: <p>资源图谱id</p>
+        :type ResourceGraphId: str
+        :param _TaskId: <p>接入任务id</p>
+        :type TaskId: str
+        """
+        self._ResourceGraphId = None
+        self._TaskId = None
+
+    @property
+    def ResourceGraphId(self):
+        r"""<p>资源图谱id</p>
+        :rtype: str
+        """
+        return self._ResourceGraphId
+
+    @ResourceGraphId.setter
+    def ResourceGraphId(self, ResourceGraphId):
+        self._ResourceGraphId = ResourceGraphId
+
+    @property
+    def TaskId(self):
+        r"""<p>接入任务id</p>
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+
+    def _deserialize(self, params):
+        self._ResourceGraphId = params.get("ResourceGraphId")
+        self._TaskId = params.get("TaskId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeResourceGraphIngestTaskFailureDetailResponse(AbstractModel):
+    r"""DescribeResourceGraphIngestTaskFailureDetail返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ErrorMessage: <p>接入任务报错信息详情</p>
+        :type ErrorMessage: str
+        :param _LastFailedTime: <p>最近一次失败时间</p><p>单位：秒</p>
+        :type LastFailedTime: int
+        :param _RetryCount: <p>重试次数</p>
+        :type RetryCount: int
+        :param _FirstFailedAt: <p>第一次失败时间</p><p>单位：秒</p>
+        :type FirstFailedAt: int
+        :param _Operation: <p>引起失败的操作</p>
+        :type Operation: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ErrorMessage = None
+        self._LastFailedTime = None
+        self._RetryCount = None
+        self._FirstFailedAt = None
+        self._Operation = None
+        self._RequestId = None
+
+    @property
+    def ErrorMessage(self):
+        r"""<p>接入任务报错信息详情</p>
+        :rtype: str
+        """
+        return self._ErrorMessage
+
+    @ErrorMessage.setter
+    def ErrorMessage(self, ErrorMessage):
+        self._ErrorMessage = ErrorMessage
+
+    @property
+    def LastFailedTime(self):
+        r"""<p>最近一次失败时间</p><p>单位：秒</p>
+        :rtype: int
+        """
+        return self._LastFailedTime
+
+    @LastFailedTime.setter
+    def LastFailedTime(self, LastFailedTime):
+        self._LastFailedTime = LastFailedTime
+
+    @property
+    def RetryCount(self):
+        r"""<p>重试次数</p>
+        :rtype: int
+        """
+        return self._RetryCount
+
+    @RetryCount.setter
+    def RetryCount(self, RetryCount):
+        self._RetryCount = RetryCount
+
+    @property
+    def FirstFailedAt(self):
+        r"""<p>第一次失败时间</p><p>单位：秒</p>
+        :rtype: int
+        """
+        return self._FirstFailedAt
+
+    @FirstFailedAt.setter
+    def FirstFailedAt(self, FirstFailedAt):
+        self._FirstFailedAt = FirstFailedAt
+
+    @property
+    def Operation(self):
+        r"""<p>引起失败的操作</p>
+        :rtype: str
+        """
+        return self._Operation
+
+    @Operation.setter
+    def Operation(self, Operation):
+        self._Operation = Operation
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._ErrorMessage = params.get("ErrorMessage")
+        self._LastFailedTime = params.get("LastFailedTime")
+        self._RetryCount = params.get("RetryCount")
+        self._FirstFailedAt = params.get("FirstFailedAt")
+        self._Operation = params.get("Operation")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeResourceGraphProductIngestTaskDetailRequest(AbstractModel):
+    r"""DescribeResourceGraphProductIngestTaskDetail请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ResourceGraphId: <p>资源图谱id</p>
+        :type ResourceGraphId: str
+        :param _TaskId: <p>接入任务id</p>
+        :type TaskId: str
+        """
+        self._ResourceGraphId = None
+        self._TaskId = None
+
+    @property
+    def ResourceGraphId(self):
+        r"""<p>资源图谱id</p>
+        :rtype: str
+        """
+        return self._ResourceGraphId
+
+    @ResourceGraphId.setter
+    def ResourceGraphId(self, ResourceGraphId):
+        self._ResourceGraphId = ResourceGraphId
+
+    @property
+    def TaskId(self):
+        r"""<p>接入任务id</p>
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+
+    def _deserialize(self, params):
+        self._ResourceGraphId = params.get("ResourceGraphId")
+        self._TaskId = params.get("TaskId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeResourceGraphProductIngestTaskDetailResponse(AbstractModel):
+    r"""DescribeResourceGraphProductIngestTaskDetail返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProductIngestTaskDetail: <p>接入任务详情</p>
+        :type ProductIngestTaskDetail: :class:`tencentcloud.cls.v20201016.models.ProductIngestTaskDetail`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ProductIngestTaskDetail = None
+        self._RequestId = None
+
+    @property
+    def ProductIngestTaskDetail(self):
+        r"""<p>接入任务详情</p>
+        :rtype: :class:`tencentcloud.cls.v20201016.models.ProductIngestTaskDetail`
+        """
+        return self._ProductIngestTaskDetail
+
+    @ProductIngestTaskDetail.setter
+    def ProductIngestTaskDetail(self, ProductIngestTaskDetail):
+        self._ProductIngestTaskDetail = ProductIngestTaskDetail
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("ProductIngestTaskDetail") is not None:
+            self._ProductIngestTaskDetail = ProductIngestTaskDetail()
+            self._ProductIngestTaskDetail._deserialize(params.get("ProductIngestTaskDetail"))
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeResourceGraphProductIngestTaskListRequest(AbstractModel):
+    r"""DescribeResourceGraphProductIngestTaskList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ResourceGraphId: <p>资源图谱id</p>
+        :type ResourceGraphId: str
+        :param _Filters: <p>过滤条件</p><ul><li>taskId 按照【接入任务id】进行过滤，默认为模糊匹配。类型：String。必选：否 </li><li>product 按照【接入产品】进行过滤，默认为模糊匹配。类型：String。必选：否 </li><li>name 按照【接入任务名称】进行过滤，默认为模糊匹配。类型：String。必选：否 </li><li>status 按照【接入任务状态】进行过滤。类型：int。必选：否 ；0：初始化中；1：已接入；2：接入失败；3：删除中；5：删除失败<br>注意：每次请求的 Filters 的上限为10，Filter.Values 的上限为100。</li></ul>
+        :type Filters: list of Filter
+        :param _Offset: <p>分页偏移量，默认 0</p>
+        :type Offset: int
+        :param _Limit: <p>分页单页数量，默认 20，最大 100</p>
+        :type Limit: int
+        """
+        self._ResourceGraphId = None
+        self._Filters = None
+        self._Offset = None
+        self._Limit = None
+
+    @property
+    def ResourceGraphId(self):
+        r"""<p>资源图谱id</p>
+        :rtype: str
+        """
+        return self._ResourceGraphId
+
+    @ResourceGraphId.setter
+    def ResourceGraphId(self, ResourceGraphId):
+        self._ResourceGraphId = ResourceGraphId
+
+    @property
+    def Filters(self):
+        r"""<p>过滤条件</p><ul><li>taskId 按照【接入任务id】进行过滤，默认为模糊匹配。类型：String。必选：否 </li><li>product 按照【接入产品】进行过滤，默认为模糊匹配。类型：String。必选：否 </li><li>name 按照【接入任务名称】进行过滤，默认为模糊匹配。类型：String。必选：否 </li><li>status 按照【接入任务状态】进行过滤。类型：int。必选：否 ；0：初始化中；1：已接入；2：接入失败；3：删除中；5：删除失败<br>注意：每次请求的 Filters 的上限为10，Filter.Values 的上限为100。</li></ul>
+        :rtype: list of Filter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def Offset(self):
+        r"""<p>分页偏移量，默认 0</p>
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        r"""<p>分页单页数量，默认 20，最大 100</p>
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+
+    def _deserialize(self, params):
+        self._ResourceGraphId = params.get("ResourceGraphId")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeResourceGraphProductIngestTaskListResponse(AbstractModel):
+    r"""DescribeResourceGraphProductIngestTaskList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProductIngestTaskItems: <p>接入任务列表</p>
+        :type ProductIngestTaskItems: list of ProductIngestTaskItem
+        :param _TotalCount: <p>筛选后总数</p>
+        :type TotalCount: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ProductIngestTaskItems = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def ProductIngestTaskItems(self):
+        r"""<p>接入任务列表</p>
+        :rtype: list of ProductIngestTaskItem
+        """
+        return self._ProductIngestTaskItems
+
+    @ProductIngestTaskItems.setter
+    def ProductIngestTaskItems(self, ProductIngestTaskItems):
+        self._ProductIngestTaskItems = ProductIngestTaskItems
+
+    @property
+    def TotalCount(self):
+        r"""<p>筛选后总数</p>
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("ProductIngestTaskItems") is not None:
+            self._ProductIngestTaskItems = []
+            for item in params.get("ProductIngestTaskItems"):
+                obj = ProductIngestTaskItem()
+                obj._deserialize(item)
+                self._ProductIngestTaskItems.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeResourceGraphTkeClusterStatusRequest(AbstractModel):
+    r"""DescribeResourceGraphTkeClusterStatus请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterIds: <p>待检测的tke集群id</p>
+        :type ClusterIds: list of str
+        """
+        self._ClusterIds = None
+
+    @property
+    def ClusterIds(self):
+        r"""<p>待检测的tke集群id</p>
+        :rtype: list of str
+        """
+        return self._ClusterIds
+
+    @ClusterIds.setter
+    def ClusterIds(self, ClusterIds):
+        self._ClusterIds = ClusterIds
+
+
+    def _deserialize(self, params):
+        self._ClusterIds = params.get("ClusterIds")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeResourceGraphTkeClusterStatusResponse(AbstractModel):
+    r"""DescribeResourceGraphTkeClusterStatus返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ConnectedClusterInfos: <p>已接入的tke集群信息</p>
+        :type ConnectedClusterInfos: list of ResourceGraphTkeClusterInfo
+        :param _UnconnectedClusterIds: <p>未接入的tke集群id</p>
+        :type UnconnectedClusterIds: list of str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ConnectedClusterInfos = None
+        self._UnconnectedClusterIds = None
+        self._RequestId = None
+
+    @property
+    def ConnectedClusterInfos(self):
+        r"""<p>已接入的tke集群信息</p>
+        :rtype: list of ResourceGraphTkeClusterInfo
+        """
+        return self._ConnectedClusterInfos
+
+    @ConnectedClusterInfos.setter
+    def ConnectedClusterInfos(self, ConnectedClusterInfos):
+        self._ConnectedClusterInfos = ConnectedClusterInfos
+
+    @property
+    def UnconnectedClusterIds(self):
+        r"""<p>未接入的tke集群id</p>
+        :rtype: list of str
+        """
+        return self._UnconnectedClusterIds
+
+    @UnconnectedClusterIds.setter
+    def UnconnectedClusterIds(self, UnconnectedClusterIds):
+        self._UnconnectedClusterIds = UnconnectedClusterIds
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("ConnectedClusterInfos") is not None:
+            self._ConnectedClusterInfos = []
+            for item in params.get("ConnectedClusterInfos"):
+                obj = ResourceGraphTkeClusterInfo()
+                obj._deserialize(item)
+                self._ConnectedClusterInfos.append(obj)
+        self._UnconnectedClusterIds = params.get("UnconnectedClusterIds")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeResourceGraphsRequest(AbstractModel):
+    r"""DescribeResourceGraphs请求参数结构体
+
+    """
+
+
+class DescribeResourceGraphsResponse(AbstractModel):
+    r"""DescribeResourceGraphs返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeS3RechargesRequest(AbstractModel):
     r"""DescribeS3Recharges请求参数结构体
 
@@ -31199,6 +32931,357 @@ class DynamicIndex(AbstractModel):
 
     def _deserialize(self, params):
         self._Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class EBPFCollectFilters(AbstractModel):
+    r"""eBPF 三维过滤器集合
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProcessName: 进程名过滤
+        :type ProcessName: :class:`tencentcloud.cls.v20201016.models.EBPFProcessNameFilter`
+        :param _DestEndpoint: 目的端点过滤
+        :type DestEndpoint: :class:`tencentcloud.cls.v20201016.models.EBPFDestEndpointFilter`
+        :param _DNS: DNS 过滤
+        :type DNS: :class:`tencentcloud.cls.v20201016.models.EBPFDNSFilter`
+        """
+        self._ProcessName = None
+        self._DestEndpoint = None
+        self._DNS = None
+
+    @property
+    def ProcessName(self):
+        r"""进程名过滤
+        :rtype: :class:`tencentcloud.cls.v20201016.models.EBPFProcessNameFilter`
+        """
+        return self._ProcessName
+
+    @ProcessName.setter
+    def ProcessName(self, ProcessName):
+        self._ProcessName = ProcessName
+
+    @property
+    def DestEndpoint(self):
+        r"""目的端点过滤
+        :rtype: :class:`tencentcloud.cls.v20201016.models.EBPFDestEndpointFilter`
+        """
+        return self._DestEndpoint
+
+    @DestEndpoint.setter
+    def DestEndpoint(self, DestEndpoint):
+        self._DestEndpoint = DestEndpoint
+
+    @property
+    def DNS(self):
+        r"""DNS 过滤
+        :rtype: :class:`tencentcloud.cls.v20201016.models.EBPFDNSFilter`
+        """
+        return self._DNS
+
+    @DNS.setter
+    def DNS(self, DNS):
+        self._DNS = DNS
+
+
+    def _deserialize(self, params):
+        if params.get("ProcessName") is not None:
+            self._ProcessName = EBPFProcessNameFilter()
+            self._ProcessName._deserialize(params.get("ProcessName"))
+        if params.get("DestEndpoint") is not None:
+            self._DestEndpoint = EBPFDestEndpointFilter()
+            self._DestEndpoint._deserialize(params.get("DestEndpoint"))
+        if params.get("DNS") is not None:
+            self._DNS = EBPFDNSFilter()
+            self._DNS._deserialize(params.get("DNS"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class EBPFCollectRule(AbstractModel):
+    r"""eBPF 采集规则
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RuleName: <p>采集规则名称</p>
+        :type RuleName: str
+        :param _TrackTarget: <p>采集对象</p><p>枚举值：</p><ul><li>1： 所有进程</li></ul>
+        :type TrackTarget: int
+        :param _Filters: <p>三维过滤器</p>
+        :type Filters: :class:`tencentcloud.cls.v20201016.models.EBPFCollectFilters`
+        """
+        self._RuleName = None
+        self._TrackTarget = None
+        self._Filters = None
+
+    @property
+    def RuleName(self):
+        r"""<p>采集规则名称</p>
+        :rtype: str
+        """
+        return self._RuleName
+
+    @RuleName.setter
+    def RuleName(self, RuleName):
+        self._RuleName = RuleName
+
+    @property
+    def TrackTarget(self):
+        r"""<p>采集对象</p><p>枚举值：</p><ul><li>1： 所有进程</li></ul>
+        :rtype: int
+        """
+        return self._TrackTarget
+
+    @TrackTarget.setter
+    def TrackTarget(self, TrackTarget):
+        self._TrackTarget = TrackTarget
+
+    @property
+    def Filters(self):
+        r"""<p>三维过滤器</p>
+        :rtype: :class:`tencentcloud.cls.v20201016.models.EBPFCollectFilters`
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+
+    def _deserialize(self, params):
+        self._RuleName = params.get("RuleName")
+        self._TrackTarget = params.get("TrackTarget")
+        if params.get("Filters") is not None:
+            self._Filters = EBPFCollectFilters()
+            self._Filters._deserialize(params.get("Filters"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class EBPFDNSFilter(AbstractModel):
+    r"""eBPF DNS 过滤器
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Mode: <p>过滤模式</p><p>枚举值：</p><ul><li>0： 不过滤</li><li>1： 白名单</li><li>2： 黑名单</li></ul>
+        :type Mode: int
+        :param _Domains: <p>域名列表，支持 *.example.com 通配</p>
+        :type Domains: list of str
+        """
+        self._Mode = None
+        self._Domains = None
+
+    @property
+    def Mode(self):
+        r"""<p>过滤模式</p><p>枚举值：</p><ul><li>0： 不过滤</li><li>1： 白名单</li><li>2： 黑名单</li></ul>
+        :rtype: int
+        """
+        return self._Mode
+
+    @Mode.setter
+    def Mode(self, Mode):
+        self._Mode = Mode
+
+    @property
+    def Domains(self):
+        r"""<p>域名列表，支持 *.example.com 通配</p>
+        :rtype: list of str
+        """
+        return self._Domains
+
+    @Domains.setter
+    def Domains(self, Domains):
+        self._Domains = Domains
+
+
+    def _deserialize(self, params):
+        self._Mode = params.get("Mode")
+        self._Domains = params.get("Domains")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class EBPFDestEndpointFilter(AbstractModel):
+    r"""eBPF 目的 IP/端口过滤器
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Mode: <p>过滤模式</p><p>枚举值：</p><ul><li>0： 不过滤</li><li>1： 白名单</li><li>2： 黑名单</li></ul>
+        :type Mode: int
+        :param _Endpoints: <p>端点列表</p>
+        :type Endpoints: list of EBPFEndpoint
+        """
+        self._Mode = None
+        self._Endpoints = None
+
+    @property
+    def Mode(self):
+        r"""<p>过滤模式</p><p>枚举值：</p><ul><li>0： 不过滤</li><li>1： 白名单</li><li>2： 黑名单</li></ul>
+        :rtype: int
+        """
+        return self._Mode
+
+    @Mode.setter
+    def Mode(self, Mode):
+        self._Mode = Mode
+
+    @property
+    def Endpoints(self):
+        r"""<p>端点列表</p>
+        :rtype: list of EBPFEndpoint
+        """
+        return self._Endpoints
+
+    @Endpoints.setter
+    def Endpoints(self, Endpoints):
+        self._Endpoints = Endpoints
+
+
+    def _deserialize(self, params):
+        self._Mode = params.get("Mode")
+        if params.get("Endpoints") is not None:
+            self._Endpoints = []
+            for item in params.get("Endpoints"):
+                obj = EBPFEndpoint()
+                obj._deserialize(item)
+                self._Endpoints.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class EBPFEndpoint(AbstractModel):
+    r"""eBPF 目的端点（IP + 可选端口）
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _IP: 目标 IP，支持 IPv4/IPv6
+        :type IP: str
+        :param _Port: 目标端口（1-65535），为空表示仅按 IP 过滤
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Port: int
+        """
+        self._IP = None
+        self._Port = None
+
+    @property
+    def IP(self):
+        r"""目标 IP，支持 IPv4/IPv6
+        :rtype: str
+        """
+        return self._IP
+
+    @IP.setter
+    def IP(self, IP):
+        self._IP = IP
+
+    @property
+    def Port(self):
+        r"""目标端口（1-65535），为空表示仅按 IP 过滤
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: int
+        """
+        return self._Port
+
+    @Port.setter
+    def Port(self, Port):
+        self._Port = Port
+
+
+    def _deserialize(self, params):
+        self._IP = params.get("IP")
+        self._Port = params.get("Port")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class EBPFProcessNameFilter(AbstractModel):
+    r"""eBPF 进程名过滤器
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Mode: <p>过滤模式</p><p>枚举值：</p><ul><li>0： 不过滤</li><li>1： 白名单</li><li>2： 黑名单</li></ul>
+        :type Mode: int
+        :param _ProcessNames: <p>进程名列表</p>
+        :type ProcessNames: list of str
+        """
+        self._Mode = None
+        self._ProcessNames = None
+
+    @property
+    def Mode(self):
+        r"""<p>过滤模式</p><p>枚举值：</p><ul><li>0： 不过滤</li><li>1： 白名单</li><li>2： 黑名单</li></ul>
+        :rtype: int
+        """
+        return self._Mode
+
+    @Mode.setter
+    def Mode(self, Mode):
+        self._Mode = Mode
+
+    @property
+    def ProcessNames(self):
+        r"""<p>进程名列表</p>
+        :rtype: list of str
+        """
+        return self._ProcessNames
+
+    @ProcessNames.setter
+    def ProcessNames(self, ProcessNames):
+        self._ProcessNames = ProcessNames
+
+
+    def _deserialize(self, params):
+        self._Mode = params.get("Mode")
+        self._ProcessNames = params.get("ProcessNames")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -34748,48 +36831,29 @@ class KafkaConsumerContent(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Format: 消费数据格式。 0：原始内容；1：JSON。
+        :param _Format: <p>消费数据格式。 0：原始内容；1：JSON。</p>
         :type Format: int
-        :param _EnableTag: 是否投递 TAG 信息
-Format为0时，此字段不需要赋值
+        :param _EnableTag: <p>是否投递 TAG 信息<br>Format为0时，此字段不需要赋值</p>
         :type EnableTag: bool
-        :param _MetaFields: 元数据信息列表, 可选值为：\_\_SOURCE\_\_、\_\_FILENAME\_\_
-、\_\_TIMESTAMP\_\_、\_\_HOSTNAME\_\_、\_\_PKGID\_\_
-Format为0时，此字段不需要赋值
+        :param _MetaFields: <p>元数据信息列表, 可选值为：__SOURCE__、__FILENAME__<br>、__TIMESTAMP__、__HOSTNAME__、__PKGID__<br>Format为0时，此字段不需要赋值</p>
         :type MetaFields: list of str
-        :param _TagTransaction: tag数据处理方式：1:不平铺（默认值）；2:平铺。
-
-不平铺示例：
-TAG信息：`{"__TAG__":{"fieldA":200,"fieldB":"text"}}`
-不平铺：`{"__TAG__":{"fieldA":200,"fieldB":"text"}}`
-
-平铺示例：
-TAG信息：`{"__TAG__":{"fieldA":200,"fieldB":"text"}}`
-平铺：`{"__TAG__.fieldA":200,"__TAG__.fieldB":"text"}`
+        :param _TagTransaction: <p>tag数据处理方式：1:不平铺（默认值）；2:平铺。</p><p>不平铺示例：<br>TAG信息：<code>{&quot;__TAG__&quot;:{&quot;fieldA&quot;:200,&quot;fieldB&quot;:&quot;text&quot;}}</code><br>不平铺：<code>{&quot;__TAG__&quot;:{&quot;fieldA&quot;:200,&quot;fieldB&quot;:&quot;text&quot;}}</code></p><p>平铺示例：<br>TAG信息：<code>{&quot;__TAG__&quot;:{&quot;fieldA&quot;:200,&quot;fieldB&quot;:&quot;text&quot;}}</code><br>平铺：<code>{&quot;__TAG__.fieldA&quot;:200,&quot;__TAG__.fieldB&quot;:&quot;text&quot;}</code></p>
         :type TagTransaction: int
-        :param _JsonType: 消费数据Json格式：
-1：不转义（默认格式）
-2：转义
-
-投递Json格式。
-JsonType为1：和原始日志一致，不转义。示例：
-日志原文：`{"a":"aa", "b":{"b1":"b1b1", "c1":"c1c1"}}`
-投递到Ckafka：`{"a":"aa", "b":{"b1":"b1b1", "c1":"c1c1"}}`
-
-JsonType为2：转义。示例：
-日志原文：`{"a":"aa", "b":{"b1":"b1b1", "c1":"c1c1"}}`
-投递到Ckafka：`{"a":"aa","b":"{\"b1\":\"b1b1\", \"c1\":\"c1c1\"}"}`
+        :param _JsonType: <p>消费数据Json格式：<br>1：不转义（默认格式）<br>2：转义</p><p>投递Json格式。<br>JsonType为1：和原始日志一致，不转义。示例：<br>日志原文：<code>{&quot;a&quot;:&quot;aa&quot;, &quot;b&quot;:{&quot;b1&quot;:&quot;b1b1&quot;, &quot;c1&quot;:&quot;c1c1&quot;}}</code><br>投递到Ckafka：<code>{&quot;a&quot;:&quot;aa&quot;, &quot;b&quot;:{&quot;b1&quot;:&quot;b1b1&quot;, &quot;c1&quot;:&quot;c1c1&quot;}}</code></p><p>JsonType为2：转义。示例：<br>日志原文：<code>{&quot;a&quot;:&quot;aa&quot;, &quot;b&quot;:{&quot;b1&quot;:&quot;b1b1&quot;, &quot;c1&quot;:&quot;c1c1&quot;}}</code><br>投递到Ckafka：<code>{&quot;a&quot;:&quot;aa&quot;,&quot;b&quot;:&quot;{\&quot;b1\&quot;:\&quot;b1b1\&quot;, \&quot;c1\&quot;:\&quot;c1c1\&quot;}&quot;}</code></p>
         :type JsonType: int
+        :param _AutoConvertNumber: <p>数值类型自动转换开关</p><p>枚举值：</p><ul><li>true： JSON 结构中第一层级的 value 中的数字字符串（如 &quot;123&quot; ）会被自动转换为数值类型（int / float）。</li><li>false： JSON 结构中第一层级的 value 中的数字字符串（如 &quot;123&quot; ）为字符串。</li></ul><p>默认值：false</p>
+        :type AutoConvertNumber: bool
         """
         self._Format = None
         self._EnableTag = None
         self._MetaFields = None
         self._TagTransaction = None
         self._JsonType = None
+        self._AutoConvertNumber = None
 
     @property
     def Format(self):
-        r"""消费数据格式。 0：原始内容；1：JSON。
+        r"""<p>消费数据格式。 0：原始内容；1：JSON。</p>
         :rtype: int
         """
         return self._Format
@@ -34800,8 +36864,7 @@ JsonType为2：转义。示例：
 
     @property
     def EnableTag(self):
-        r"""是否投递 TAG 信息
-Format为0时，此字段不需要赋值
+        r"""<p>是否投递 TAG 信息<br>Format为0时，此字段不需要赋值</p>
         :rtype: bool
         """
         return self._EnableTag
@@ -34812,9 +36875,7 @@ Format为0时，此字段不需要赋值
 
     @property
     def MetaFields(self):
-        r"""元数据信息列表, 可选值为：\_\_SOURCE\_\_、\_\_FILENAME\_\_
-、\_\_TIMESTAMP\_\_、\_\_HOSTNAME\_\_、\_\_PKGID\_\_
-Format为0时，此字段不需要赋值
+        r"""<p>元数据信息列表, 可选值为：__SOURCE__、__FILENAME__<br>、__TIMESTAMP__、__HOSTNAME__、__PKGID__<br>Format为0时，此字段不需要赋值</p>
         :rtype: list of str
         """
         return self._MetaFields
@@ -34825,15 +36886,7 @@ Format为0时，此字段不需要赋值
 
     @property
     def TagTransaction(self):
-        r"""tag数据处理方式：1:不平铺（默认值）；2:平铺。
-
-不平铺示例：
-TAG信息：`{"__TAG__":{"fieldA":200,"fieldB":"text"}}`
-不平铺：`{"__TAG__":{"fieldA":200,"fieldB":"text"}}`
-
-平铺示例：
-TAG信息：`{"__TAG__":{"fieldA":200,"fieldB":"text"}}`
-平铺：`{"__TAG__.fieldA":200,"__TAG__.fieldB":"text"}`
+        r"""<p>tag数据处理方式：1:不平铺（默认值）；2:平铺。</p><p>不平铺示例：<br>TAG信息：<code>{&quot;__TAG__&quot;:{&quot;fieldA&quot;:200,&quot;fieldB&quot;:&quot;text&quot;}}</code><br>不平铺：<code>{&quot;__TAG__&quot;:{&quot;fieldA&quot;:200,&quot;fieldB&quot;:&quot;text&quot;}}</code></p><p>平铺示例：<br>TAG信息：<code>{&quot;__TAG__&quot;:{&quot;fieldA&quot;:200,&quot;fieldB&quot;:&quot;text&quot;}}</code><br>平铺：<code>{&quot;__TAG__.fieldA&quot;:200,&quot;__TAG__.fieldB&quot;:&quot;text&quot;}</code></p>
         :rtype: int
         """
         return self._TagTransaction
@@ -34844,18 +36897,7 @@ TAG信息：`{"__TAG__":{"fieldA":200,"fieldB":"text"}}`
 
     @property
     def JsonType(self):
-        r"""消费数据Json格式：
-1：不转义（默认格式）
-2：转义
-
-投递Json格式。
-JsonType为1：和原始日志一致，不转义。示例：
-日志原文：`{"a":"aa", "b":{"b1":"b1b1", "c1":"c1c1"}}`
-投递到Ckafka：`{"a":"aa", "b":{"b1":"b1b1", "c1":"c1c1"}}`
-
-JsonType为2：转义。示例：
-日志原文：`{"a":"aa", "b":{"b1":"b1b1", "c1":"c1c1"}}`
-投递到Ckafka：`{"a":"aa","b":"{\"b1\":\"b1b1\", \"c1\":\"c1c1\"}"}`
+        r"""<p>消费数据Json格式：<br>1：不转义（默认格式）<br>2：转义</p><p>投递Json格式。<br>JsonType为1：和原始日志一致，不转义。示例：<br>日志原文：<code>{&quot;a&quot;:&quot;aa&quot;, &quot;b&quot;:{&quot;b1&quot;:&quot;b1b1&quot;, &quot;c1&quot;:&quot;c1c1&quot;}}</code><br>投递到Ckafka：<code>{&quot;a&quot;:&quot;aa&quot;, &quot;b&quot;:{&quot;b1&quot;:&quot;b1b1&quot;, &quot;c1&quot;:&quot;c1c1&quot;}}</code></p><p>JsonType为2：转义。示例：<br>日志原文：<code>{&quot;a&quot;:&quot;aa&quot;, &quot;b&quot;:{&quot;b1&quot;:&quot;b1b1&quot;, &quot;c1&quot;:&quot;c1c1&quot;}}</code><br>投递到Ckafka：<code>{&quot;a&quot;:&quot;aa&quot;,&quot;b&quot;:&quot;{\&quot;b1\&quot;:\&quot;b1b1\&quot;, \&quot;c1\&quot;:\&quot;c1c1\&quot;}&quot;}</code></p>
         :rtype: int
         """
         return self._JsonType
@@ -34864,6 +36906,17 @@ JsonType为2：转义。示例：
     def JsonType(self, JsonType):
         self._JsonType = JsonType
 
+    @property
+    def AutoConvertNumber(self):
+        r"""<p>数值类型自动转换开关</p><p>枚举值：</p><ul><li>true： JSON 结构中第一层级的 value 中的数字字符串（如 &quot;123&quot; ）会被自动转换为数值类型（int / float）。</li><li>false： JSON 结构中第一层级的 value 中的数字字符串（如 &quot;123&quot; ）为字符串。</li></ul><p>默认值：false</p>
+        :rtype: bool
+        """
+        return self._AutoConvertNumber
+
+    @AutoConvertNumber.setter
+    def AutoConvertNumber(self, AutoConvertNumber):
+        self._AutoConvertNumber = AutoConvertNumber
+
 
     def _deserialize(self, params):
         self._Format = params.get("Format")
@@ -34871,6 +36924,7 @@ JsonType为2：转义。示例：
         self._MetaFields = params.get("MetaFields")
         self._TagTransaction = params.get("TagTransaction")
         self._JsonType = params.get("JsonType")
+        self._AutoConvertNumber = params.get("AutoConvertNumber")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -40501,28 +42555,26 @@ class ModifyConsumerRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TopicId: 投递任务绑定的日志主题Id。
-- 通过 [获取日志主题列表](https://cloud.tencent.com/document/product/614/56454) 获取日志主题Id。
-- 通过 [创建日志主题](https://cloud.tencent.com/document/product/614/56456) 获取日志主题Id。
+        :param _TopicId: <p>投递任务绑定的日志主题Id。</p><ul><li>通过 <a href="https://cloud.tencent.com/document/product/614/56454">获取日志主题列表</a> 获取日志主题Id。</li><li>通过 <a href="https://cloud.tencent.com/document/product/614/56456">创建日志主题</a> 获取日志主题Id。</li></ul>
         :type TopicId: str
-        :param _Effective: 投递任务是否生效，默认不生效
+        :param _Effective: <p>投递任务是否生效，默认不生效</p>
         :type Effective: bool
-        :param _NeedContent: 是否投递日志的元数据信息，默认为 true。
-当NeedContent为true时：字段Content有效。
-当NeedContent为false时：字段Content无效。
+        :param _NeedContent: <p>是否投递日志的元数据信息，默认为 true。<br>当NeedContent为true时：字段Content有效。<br>当NeedContent为false时：字段Content无效。</p>
         :type NeedContent: bool
-        :param _Content: 如果需要投递元数据信息，元数据信息的描述
+        :param _Content: <p>如果需要投递元数据信息，元数据信息的描述</p>
         :type Content: :class:`tencentcloud.cls.v20201016.models.ConsumerContent`
-        :param _Ckafka: CKafka的描述
+        :param _Ckafka: <p>CKafka的描述</p>
         :type Ckafka: :class:`tencentcloud.cls.v20201016.models.Ckafka`
-        :param _Compression: 投递时压缩方式，取值0，2，3。[0：NONE；2：SNAPPY；3：LZ4]
+        :param _Compression: <p>投递时压缩方式，取值0，2，3。[0：NONE；2：SNAPPY；3：LZ4]</p>
         :type Compression: int
-        :param _RoleArn: 角色访问描述名 [创建角色](https://cloud.tencent.com/document/product/598/19381)
+        :param _RoleArn: <p>角色访问描述名 <a href="https://cloud.tencent.com/document/product/598/19381">创建角色</a></p>
         :type RoleArn: str
-        :param _ExternalId: 外部ID
+        :param _ExternalId: <p>外部ID</p>
         :type ExternalId: str
-        :param _AdvancedConfig: 高级配置
+        :param _AdvancedConfig: <p>高级配置</p>
         :type AdvancedConfig: :class:`tencentcloud.cls.v20201016.models.AdvancedConsumerConfiguration`
+        :param _DSLFilter: <p>日志预过滤-数据写入 ckafka 的原始数据进行预过滤处理</p>
+        :type DSLFilter: str
         """
         self._TopicId = None
         self._Effective = None
@@ -40533,12 +42585,11 @@ class ModifyConsumerRequest(AbstractModel):
         self._RoleArn = None
         self._ExternalId = None
         self._AdvancedConfig = None
+        self._DSLFilter = None
 
     @property
     def TopicId(self):
-        r"""投递任务绑定的日志主题Id。
-- 通过 [获取日志主题列表](https://cloud.tencent.com/document/product/614/56454) 获取日志主题Id。
-- 通过 [创建日志主题](https://cloud.tencent.com/document/product/614/56456) 获取日志主题Id。
+        r"""<p>投递任务绑定的日志主题Id。</p><ul><li>通过 <a href="https://cloud.tencent.com/document/product/614/56454">获取日志主题列表</a> 获取日志主题Id。</li><li>通过 <a href="https://cloud.tencent.com/document/product/614/56456">创建日志主题</a> 获取日志主题Id。</li></ul>
         :rtype: str
         """
         return self._TopicId
@@ -40549,7 +42600,7 @@ class ModifyConsumerRequest(AbstractModel):
 
     @property
     def Effective(self):
-        r"""投递任务是否生效，默认不生效
+        r"""<p>投递任务是否生效，默认不生效</p>
         :rtype: bool
         """
         return self._Effective
@@ -40560,9 +42611,7 @@ class ModifyConsumerRequest(AbstractModel):
 
     @property
     def NeedContent(self):
-        r"""是否投递日志的元数据信息，默认为 true。
-当NeedContent为true时：字段Content有效。
-当NeedContent为false时：字段Content无效。
+        r"""<p>是否投递日志的元数据信息，默认为 true。<br>当NeedContent为true时：字段Content有效。<br>当NeedContent为false时：字段Content无效。</p>
         :rtype: bool
         """
         return self._NeedContent
@@ -40573,7 +42622,7 @@ class ModifyConsumerRequest(AbstractModel):
 
     @property
     def Content(self):
-        r"""如果需要投递元数据信息，元数据信息的描述
+        r"""<p>如果需要投递元数据信息，元数据信息的描述</p>
         :rtype: :class:`tencentcloud.cls.v20201016.models.ConsumerContent`
         """
         return self._Content
@@ -40584,7 +42633,7 @@ class ModifyConsumerRequest(AbstractModel):
 
     @property
     def Ckafka(self):
-        r"""CKafka的描述
+        r"""<p>CKafka的描述</p>
         :rtype: :class:`tencentcloud.cls.v20201016.models.Ckafka`
         """
         return self._Ckafka
@@ -40595,7 +42644,7 @@ class ModifyConsumerRequest(AbstractModel):
 
     @property
     def Compression(self):
-        r"""投递时压缩方式，取值0，2，3。[0：NONE；2：SNAPPY；3：LZ4]
+        r"""<p>投递时压缩方式，取值0，2，3。[0：NONE；2：SNAPPY；3：LZ4]</p>
         :rtype: int
         """
         return self._Compression
@@ -40606,7 +42655,7 @@ class ModifyConsumerRequest(AbstractModel):
 
     @property
     def RoleArn(self):
-        r"""角色访问描述名 [创建角色](https://cloud.tencent.com/document/product/598/19381)
+        r"""<p>角色访问描述名 <a href="https://cloud.tencent.com/document/product/598/19381">创建角色</a></p>
         :rtype: str
         """
         return self._RoleArn
@@ -40617,7 +42666,7 @@ class ModifyConsumerRequest(AbstractModel):
 
     @property
     def ExternalId(self):
-        r"""外部ID
+        r"""<p>外部ID</p>
         :rtype: str
         """
         return self._ExternalId
@@ -40628,7 +42677,7 @@ class ModifyConsumerRequest(AbstractModel):
 
     @property
     def AdvancedConfig(self):
-        r"""高级配置
+        r"""<p>高级配置</p>
         :rtype: :class:`tencentcloud.cls.v20201016.models.AdvancedConsumerConfiguration`
         """
         return self._AdvancedConfig
@@ -40636,6 +42685,17 @@ class ModifyConsumerRequest(AbstractModel):
     @AdvancedConfig.setter
     def AdvancedConfig(self, AdvancedConfig):
         self._AdvancedConfig = AdvancedConfig
+
+    @property
+    def DSLFilter(self):
+        r"""<p>日志预过滤-数据写入 ckafka 的原始数据进行预过滤处理</p>
+        :rtype: str
+        """
+        return self._DSLFilter
+
+    @DSLFilter.setter
+    def DSLFilter(self, DSLFilter):
+        self._DSLFilter = DSLFilter
 
 
     def _deserialize(self, params):
@@ -40654,6 +42714,7 @@ class ModifyConsumerRequest(AbstractModel):
         if params.get("AdvancedConfig") is not None:
             self._AdvancedConfig = AdvancedConsumerConfiguration()
             self._AdvancedConfig._deserialize(params.get("AdvancedConfig"))
+        self._DSLFilter = params.get("DSLFilter")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -44445,6 +46506,365 @@ class ModifyRemoteWriteTaskRequest(AbstractModel):
 
 class ModifyRemoteWriteTaskResponse(AbstractModel):
     r"""ModifyRemoteWriteTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyResourceGraphEntityTopicsRelationRequest(AbstractModel):
+    r"""ModifyResourceGraphEntityTopicsRelation请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ResourceGraphId: <p>资源图谱id</p>
+        :type ResourceGraphId: str
+        :param _EntityId: <p>实体id</p><p>仅支持手动关联tke以下实体：node、pod、deployment、statefulset、daemonset</p>
+        :type EntityId: str
+        :param _TopicInfos: <p>资源图谱实体关联的topic</p>
+        :type TopicInfos: list of ResourceGraphEntityRelatedTopic
+        """
+        self._ResourceGraphId = None
+        self._EntityId = None
+        self._TopicInfos = None
+
+    @property
+    def ResourceGraphId(self):
+        r"""<p>资源图谱id</p>
+        :rtype: str
+        """
+        return self._ResourceGraphId
+
+    @ResourceGraphId.setter
+    def ResourceGraphId(self, ResourceGraphId):
+        self._ResourceGraphId = ResourceGraphId
+
+    @property
+    def EntityId(self):
+        r"""<p>实体id</p><p>仅支持手动关联tke以下实体：node、pod、deployment、statefulset、daemonset</p>
+        :rtype: str
+        """
+        return self._EntityId
+
+    @EntityId.setter
+    def EntityId(self, EntityId):
+        self._EntityId = EntityId
+
+    @property
+    def TopicInfos(self):
+        r"""<p>资源图谱实体关联的topic</p>
+        :rtype: list of ResourceGraphEntityRelatedTopic
+        """
+        return self._TopicInfos
+
+    @TopicInfos.setter
+    def TopicInfos(self, TopicInfos):
+        self._TopicInfos = TopicInfos
+
+
+    def _deserialize(self, params):
+        self._ResourceGraphId = params.get("ResourceGraphId")
+        self._EntityId = params.get("EntityId")
+        if params.get("TopicInfos") is not None:
+            self._TopicInfos = []
+            for item in params.get("TopicInfos"):
+                obj = ResourceGraphEntityRelatedTopic()
+                obj._deserialize(item)
+                self._TopicInfos.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyResourceGraphEntityTopicsRelationResponse(AbstractModel):
+    r"""ModifyResourceGraphEntityTopicsRelation返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyResourceGraphProductIngestTaskRequest(AbstractModel):
+    r"""ModifyResourceGraphProductIngestTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ResourceGraphId: <p>资源图谱id</p>
+        :type ResourceGraphId: str
+        :param _TaskId: <p>待修改的任务id</p>
+        :type TaskId: str
+        :param _SelectionMode: <p>实例选择方案</p><p>枚举值：</p><ul><li>0： 所有示例</li><li>1： 按标签选择</li><li>2： 手动选择</li></ul>
+        :type SelectionMode: int
+        :param _InstanceIds: <p>实例id。当选择方式使用“指定实例”时，需要填写</p>
+        :type InstanceIds: list of str
+        :param _EBPFCollectRule: <p>eBPF 采集规则（仅 EBPF 产品）</p>
+        :type EBPFCollectRule: :class:`tencentcloud.cls.v20201016.models.EBPFCollectRule`
+        :param _Tags: <p>标签。当实例选择方案使用“按标签选择”时，需要填写</p>
+        :type Tags: list of Tag
+        """
+        self._ResourceGraphId = None
+        self._TaskId = None
+        self._SelectionMode = None
+        self._InstanceIds = None
+        self._EBPFCollectRule = None
+        self._Tags = None
+
+    @property
+    def ResourceGraphId(self):
+        r"""<p>资源图谱id</p>
+        :rtype: str
+        """
+        return self._ResourceGraphId
+
+    @ResourceGraphId.setter
+    def ResourceGraphId(self, ResourceGraphId):
+        self._ResourceGraphId = ResourceGraphId
+
+    @property
+    def TaskId(self):
+        r"""<p>待修改的任务id</p>
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def SelectionMode(self):
+        r"""<p>实例选择方案</p><p>枚举值：</p><ul><li>0： 所有示例</li><li>1： 按标签选择</li><li>2： 手动选择</li></ul>
+        :rtype: int
+        """
+        return self._SelectionMode
+
+    @SelectionMode.setter
+    def SelectionMode(self, SelectionMode):
+        self._SelectionMode = SelectionMode
+
+    @property
+    def InstanceIds(self):
+        r"""<p>实例id。当选择方式使用“指定实例”时，需要填写</p>
+        :rtype: list of str
+        """
+        return self._InstanceIds
+
+    @InstanceIds.setter
+    def InstanceIds(self, InstanceIds):
+        self._InstanceIds = InstanceIds
+
+    @property
+    def EBPFCollectRule(self):
+        r"""<p>eBPF 采集规则（仅 EBPF 产品）</p>
+        :rtype: :class:`tencentcloud.cls.v20201016.models.EBPFCollectRule`
+        """
+        return self._EBPFCollectRule
+
+    @EBPFCollectRule.setter
+    def EBPFCollectRule(self, EBPFCollectRule):
+        self._EBPFCollectRule = EBPFCollectRule
+
+    @property
+    def Tags(self):
+        r"""<p>标签。当实例选择方案使用“按标签选择”时，需要填写</p>
+        :rtype: list of Tag
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+
+    def _deserialize(self, params):
+        self._ResourceGraphId = params.get("ResourceGraphId")
+        self._TaskId = params.get("TaskId")
+        self._SelectionMode = params.get("SelectionMode")
+        self._InstanceIds = params.get("InstanceIds")
+        if params.get("EBPFCollectRule") is not None:
+            self._EBPFCollectRule = EBPFCollectRule()
+            self._EBPFCollectRule._deserialize(params.get("EBPFCollectRule"))
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyResourceGraphProductIngestTaskResponse(AbstractModel):
+    r"""ModifyResourceGraphProductIngestTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyResourceGraphRequest(AbstractModel):
+    r"""ModifyResourceGraph请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ResourceGraphId: <p>待修改的资源图谱id</p>
+        :type ResourceGraphId: str
+        :param _Name: <p>修改后的资源图谱名称</p>
+        :type Name: str
+        :param _Description: <p>修改后的资源图谱描述</p>
+        :type Description: str
+        :param _Tags: <p>标签描述列表，通过指定该参数可以同时绑定标签到相应的主题。最大支持10个标签键值对，同一个资源只能绑定到同一个标签键下。</p>
+        :type Tags: list of Tag
+        """
+        self._ResourceGraphId = None
+        self._Name = None
+        self._Description = None
+        self._Tags = None
+
+    @property
+    def ResourceGraphId(self):
+        r"""<p>待修改的资源图谱id</p>
+        :rtype: str
+        """
+        return self._ResourceGraphId
+
+    @ResourceGraphId.setter
+    def ResourceGraphId(self, ResourceGraphId):
+        self._ResourceGraphId = ResourceGraphId
+
+    @property
+    def Name(self):
+        r"""<p>修改后的资源图谱名称</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Description(self):
+        r"""<p>修改后的资源图谱描述</p>
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def Tags(self):
+        r"""<p>标签描述列表，通过指定该参数可以同时绑定标签到相应的主题。最大支持10个标签键值对，同一个资源只能绑定到同一个标签键下。</p>
+        :rtype: list of Tag
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+
+    def _deserialize(self, params):
+        self._ResourceGraphId = params.get("ResourceGraphId")
+        self._Name = params.get("Name")
+        self._Description = params.get("Description")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyResourceGraphResponse(AbstractModel):
+    r"""ModifyResourceGraph返回参数结构体
 
     """
 
@@ -48778,6 +51198,239 @@ class PreviewLogStatistic(AbstractModel):
         
 
 
+class ProductIngestTaskDetail(AbstractModel):
+    r"""产品接入任务详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: <p>接入任务id</p>
+        :type TaskId: str
+        :param _ProductIngestTaskItem: <p>接入任务信息</p>
+        :type ProductIngestTaskItem: :class:`tencentcloud.cls.v20201016.models.ProductIngestTaskItem`
+        :param _SelectionMode: <p>接入实例选择方式</p><p>枚举值：</p><ul><li>0： 全部实例</li><li>1： 按标签筛选</li><li>2： 手动选择</li></ul>
+        :type SelectionMode: int
+        :param _InstanceIds: <p>所选实例id列表</p>
+        :type InstanceIds: list of str
+        :param _Tags: <p>所选接入实例所处范围标签</p>
+        :type Tags: list of Tag
+        :param _EBPFCollectRule: <p>eBPF 采集规则</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EBPFCollectRule: :class:`tencentcloud.cls.v20201016.models.EBPFCollectRule`
+        """
+        self._TaskId = None
+        self._ProductIngestTaskItem = None
+        self._SelectionMode = None
+        self._InstanceIds = None
+        self._Tags = None
+        self._EBPFCollectRule = None
+
+    @property
+    def TaskId(self):
+        r"""<p>接入任务id</p>
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def ProductIngestTaskItem(self):
+        r"""<p>接入任务信息</p>
+        :rtype: :class:`tencentcloud.cls.v20201016.models.ProductIngestTaskItem`
+        """
+        return self._ProductIngestTaskItem
+
+    @ProductIngestTaskItem.setter
+    def ProductIngestTaskItem(self, ProductIngestTaskItem):
+        self._ProductIngestTaskItem = ProductIngestTaskItem
+
+    @property
+    def SelectionMode(self):
+        r"""<p>接入实例选择方式</p><p>枚举值：</p><ul><li>0： 全部实例</li><li>1： 按标签筛选</li><li>2： 手动选择</li></ul>
+        :rtype: int
+        """
+        return self._SelectionMode
+
+    @SelectionMode.setter
+    def SelectionMode(self, SelectionMode):
+        self._SelectionMode = SelectionMode
+
+    @property
+    def InstanceIds(self):
+        r"""<p>所选实例id列表</p>
+        :rtype: list of str
+        """
+        return self._InstanceIds
+
+    @InstanceIds.setter
+    def InstanceIds(self, InstanceIds):
+        self._InstanceIds = InstanceIds
+
+    @property
+    def Tags(self):
+        r"""<p>所选接入实例所处范围标签</p>
+        :rtype: list of Tag
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def EBPFCollectRule(self):
+        r"""<p>eBPF 采集规则</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.cls.v20201016.models.EBPFCollectRule`
+        """
+        return self._EBPFCollectRule
+
+    @EBPFCollectRule.setter
+    def EBPFCollectRule(self, EBPFCollectRule):
+        self._EBPFCollectRule = EBPFCollectRule
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        if params.get("ProductIngestTaskItem") is not None:
+            self._ProductIngestTaskItem = ProductIngestTaskItem()
+            self._ProductIngestTaskItem._deserialize(params.get("ProductIngestTaskItem"))
+        self._SelectionMode = params.get("SelectionMode")
+        self._InstanceIds = params.get("InstanceIds")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
+        if params.get("EBPFCollectRule") is not None:
+            self._EBPFCollectRule = EBPFCollectRule()
+            self._EBPFCollectRule._deserialize(params.get("EBPFCollectRule"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ProductIngestTaskItem(AbstractModel):
+    r"""数据接入列表行
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TaskId: <p>接入任务id</p>
+        :type TaskId: str
+        :param _Name: <p>接入任务名称</p>
+        :type Name: str
+        :param _Product: <p>产品分组</p>
+        :type Product: str
+        :param _Status: <p>状态</p><p>枚举值：</p><ul><li>0： 接入中</li><li>1： 已接入</li><li>2： 接入失败</li><li>3： 删除中</li><li>4： 已删除</li><li>5： 删除失败</li></ul>
+        :type Status: int
+        :param _CreateTime: <p>接入任务创建时间</p><p>单位：ms</p>
+        :type CreateTime: int
+        :param _UpdateTime: <p>接入任务修改时间</p><p>单位：ms</p>
+        :type UpdateTime: int
+        """
+        self._TaskId = None
+        self._Name = None
+        self._Product = None
+        self._Status = None
+        self._CreateTime = None
+        self._UpdateTime = None
+
+    @property
+    def TaskId(self):
+        r"""<p>接入任务id</p>
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def Name(self):
+        r"""<p>接入任务名称</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Product(self):
+        r"""<p>产品分组</p>
+        :rtype: str
+        """
+        return self._Product
+
+    @Product.setter
+    def Product(self, Product):
+        self._Product = Product
+
+    @property
+    def Status(self):
+        r"""<p>状态</p><p>枚举值：</p><ul><li>0： 接入中</li><li>1： 已接入</li><li>2： 接入失败</li><li>3： 删除中</li><li>4： 已删除</li><li>5： 删除失败</li></ul>
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def CreateTime(self):
+        r"""<p>接入任务创建时间</p><p>单位：ms</p>
+        :rtype: int
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        r"""<p>接入任务修改时间</p><p>单位：ms</p>
+        :rtype: int
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+
+    def _deserialize(self, params):
+        self._TaskId = params.get("TaskId")
+        self._Name = params.get("Name")
+        self._Product = params.get("Product")
+        self._Status = params.get("Status")
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class QueryMetricRequest(AbstractModel):
     r"""QueryMetric请求参数结构体
 
@@ -49925,6 +52578,123 @@ class Relabeling(AbstractModel):
         
 
 
+class RelationLogset(AbstractModel):
+    r"""工作区关联的日志集
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _LogsetId: <p>日志集id</p>
+        :type LogsetId: str
+        :param _LogsetName: <p>日志集名称</p>
+        :type LogsetName: str
+        """
+        self._LogsetId = None
+        self._LogsetName = None
+
+    @property
+    def LogsetId(self):
+        r"""<p>日志集id</p>
+        :rtype: str
+        """
+        return self._LogsetId
+
+    @LogsetId.setter
+    def LogsetId(self, LogsetId):
+        self._LogsetId = LogsetId
+
+    @property
+    def LogsetName(self):
+        r"""<p>日志集名称</p>
+        :rtype: str
+        """
+        return self._LogsetName
+
+    @LogsetName.setter
+    def LogsetName(self, LogsetName):
+        self._LogsetName = LogsetName
+
+
+    def _deserialize(self, params):
+        self._LogsetId = params.get("LogsetId")
+        self._LogsetName = params.get("LogsetName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RelationTopic(AbstractModel):
+    r"""工作区关联的Topic
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TopicId: <p>日志主题id</p>
+        :type TopicId: str
+        :param _TopicName: <p>日志主题名称</p>
+        :type TopicName: str
+        :param _Type: <p>日志主题类型</p><p>枚举值：</p><ul><li>entity： 实体主题</li><li>relation： 关系主题</li><li>ebpf： ebpf采集主题</li></ul>
+        :type Type: str
+        """
+        self._TopicId = None
+        self._TopicName = None
+        self._Type = None
+
+    @property
+    def TopicId(self):
+        r"""<p>日志主题id</p>
+        :rtype: str
+        """
+        return self._TopicId
+
+    @TopicId.setter
+    def TopicId(self, TopicId):
+        self._TopicId = TopicId
+
+    @property
+    def TopicName(self):
+        r"""<p>日志主题名称</p>
+        :rtype: str
+        """
+        return self._TopicName
+
+    @TopicName.setter
+    def TopicName(self, TopicName):
+        self._TopicName = TopicName
+
+    @property
+    def Type(self):
+        r"""<p>日志主题类型</p><p>枚举值：</p><ul><li>entity： 实体主题</li><li>relation： 关系主题</li><li>ebpf： ebpf采集主题</li></ul>
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+
+    def _deserialize(self, params):
+        self._TopicId = params.get("TopicId")
+        self._TopicName = params.get("TopicName")
+        self._Type = params.get("Type")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class RemoteWriteAuthInfo(AbstractModel):
     r"""Remote Write鉴权信息
 
@@ -50307,6 +53077,524 @@ class RemoteWriteInfo(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class ResourceGraphDetailInfo(AbstractModel):
+    r"""资源图谱基本信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ResourceGraphId: <p>资源图谱id</p>
+        :type ResourceGraphId: str
+        :param _Name: <p>工作区名称</p>
+        :type Name: str
+        :param _Description: <p>工作区描述</p>
+        :type Description: str
+        :param _Status: <p>工作区状态</p><p>枚举值：</p><ul><li>0： 初始化中</li><li>1： 成功</li><li>2： 失败</li><li>3： 删除中</li><li>4： 已删除</li><li>5： 删除失败</li></ul>
+        :type Status: int
+        :param _AccessCount: <p>已接入产品数量</p>
+        :type AccessCount: int
+        :param _Products: <p>接入的产品列表</p>
+        :type Products: list of str
+        :param _CreateTime: <p>创建时间</p>
+        :type CreateTime: int
+        :param _UpdateTime: <p>更新时间</p>
+        :type UpdateTime: int
+        :param _RelationLogset: <p>关联的日志集</p>
+        :type RelationLogset: :class:`tencentcloud.cls.v20201016.models.RelationLogset`
+        :param _RelationTopics: <p>关联的topic</p>
+        :type RelationTopics: list of RelationTopic
+        :param _Tags: <p>工作区绑定的标签信息</p>
+        :type Tags: list of Tag
+        """
+        self._ResourceGraphId = None
+        self._Name = None
+        self._Description = None
+        self._Status = None
+        self._AccessCount = None
+        self._Products = None
+        self._CreateTime = None
+        self._UpdateTime = None
+        self._RelationLogset = None
+        self._RelationTopics = None
+        self._Tags = None
+
+    @property
+    def ResourceGraphId(self):
+        r"""<p>资源图谱id</p>
+        :rtype: str
+        """
+        return self._ResourceGraphId
+
+    @ResourceGraphId.setter
+    def ResourceGraphId(self, ResourceGraphId):
+        self._ResourceGraphId = ResourceGraphId
+
+    @property
+    def Name(self):
+        r"""<p>工作区名称</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Description(self):
+        r"""<p>工作区描述</p>
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def Status(self):
+        r"""<p>工作区状态</p><p>枚举值：</p><ul><li>0： 初始化中</li><li>1： 成功</li><li>2： 失败</li><li>3： 删除中</li><li>4： 已删除</li><li>5： 删除失败</li></ul>
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def AccessCount(self):
+        r"""<p>已接入产品数量</p>
+        :rtype: int
+        """
+        return self._AccessCount
+
+    @AccessCount.setter
+    def AccessCount(self, AccessCount):
+        self._AccessCount = AccessCount
+
+    @property
+    def Products(self):
+        r"""<p>接入的产品列表</p>
+        :rtype: list of str
+        """
+        return self._Products
+
+    @Products.setter
+    def Products(self, Products):
+        self._Products = Products
+
+    @property
+    def CreateTime(self):
+        r"""<p>创建时间</p>
+        :rtype: int
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        r"""<p>更新时间</p>
+        :rtype: int
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def RelationLogset(self):
+        r"""<p>关联的日志集</p>
+        :rtype: :class:`tencentcloud.cls.v20201016.models.RelationLogset`
+        """
+        return self._RelationLogset
+
+    @RelationLogset.setter
+    def RelationLogset(self, RelationLogset):
+        self._RelationLogset = RelationLogset
+
+    @property
+    def RelationTopics(self):
+        r"""<p>关联的topic</p>
+        :rtype: list of RelationTopic
+        """
+        return self._RelationTopics
+
+    @RelationTopics.setter
+    def RelationTopics(self, RelationTopics):
+        self._RelationTopics = RelationTopics
+
+    @property
+    def Tags(self):
+        r"""<p>工作区绑定的标签信息</p>
+        :rtype: list of Tag
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+
+    def _deserialize(self, params):
+        self._ResourceGraphId = params.get("ResourceGraphId")
+        self._Name = params.get("Name")
+        self._Description = params.get("Description")
+        self._Status = params.get("Status")
+        self._AccessCount = params.get("AccessCount")
+        self._Products = params.get("Products")
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
+        if params.get("RelationLogset") is not None:
+            self._RelationLogset = RelationLogset()
+            self._RelationLogset._deserialize(params.get("RelationLogset"))
+        if params.get("RelationTopics") is not None:
+            self._RelationTopics = []
+            for item in params.get("RelationTopics"):
+                obj = RelationTopic()
+                obj._deserialize(item)
+                self._RelationTopics.append(obj)
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ResourceGraphEntityRelatedTopic(AbstractModel):
+    r"""资源图谱实体关联的日志主题信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TopicId: <p>日志主题id</p>
+        :type TopicId: str
+        :param _Region: <p>日志主题所在地域</p>
+        :type Region: str
+        :param _LogType: <p>日志类型</p><p>枚举值：</p><ul><li>bussinesslog： 业务日志</li></ul>
+        :type LogType: str
+        :param _BizType: <p>日志类型</p><p>枚举值：</p><ul><li>0： 日志主题</li><li>1： 指标主题</li></ul>
+        :type BizType: int
+        """
+        self._TopicId = None
+        self._Region = None
+        self._LogType = None
+        self._BizType = None
+
+    @property
+    def TopicId(self):
+        r"""<p>日志主题id</p>
+        :rtype: str
+        """
+        return self._TopicId
+
+    @TopicId.setter
+    def TopicId(self, TopicId):
+        self._TopicId = TopicId
+
+    @property
+    def Region(self):
+        r"""<p>日志主题所在地域</p>
+        :rtype: str
+        """
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def LogType(self):
+        r"""<p>日志类型</p><p>枚举值：</p><ul><li>bussinesslog： 业务日志</li></ul>
+        :rtype: str
+        """
+        return self._LogType
+
+    @LogType.setter
+    def LogType(self, LogType):
+        self._LogType = LogType
+
+    @property
+    def BizType(self):
+        r"""<p>日志类型</p><p>枚举值：</p><ul><li>0： 日志主题</li><li>1： 指标主题</li></ul>
+        :rtype: int
+        """
+        return self._BizType
+
+    @BizType.setter
+    def BizType(self, BizType):
+        self._BizType = BizType
+
+
+    def _deserialize(self, params):
+        self._TopicId = params.get("TopicId")
+        self._Region = params.get("Region")
+        self._LogType = params.get("LogType")
+        self._BizType = params.get("BizType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ResourceGraphTkeClusterInfo(AbstractModel):
+    r"""资源图谱tke集群接入信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ClusterId: <p>tke集群id</p>
+        :type ClusterId: str
+        :param _ResourceGraphId: <p>资源图谱id</p>
+        :type ResourceGraphId: str
+        :param _ResourceGraphName: <p>资源图谱名称</p>
+        :type ResourceGraphName: str
+        :param _TaskId: <p>资源图谱接入任务id</p>
+        :type TaskId: str
+        :param _TaskName: <p>资源图谱接入任务名称</p>
+        :type TaskName: str
+        """
+        self._ClusterId = None
+        self._ResourceGraphId = None
+        self._ResourceGraphName = None
+        self._TaskId = None
+        self._TaskName = None
+
+    @property
+    def ClusterId(self):
+        r"""<p>tke集群id</p>
+        :rtype: str
+        """
+        return self._ClusterId
+
+    @ClusterId.setter
+    def ClusterId(self, ClusterId):
+        self._ClusterId = ClusterId
+
+    @property
+    def ResourceGraphId(self):
+        r"""<p>资源图谱id</p>
+        :rtype: str
+        """
+        return self._ResourceGraphId
+
+    @ResourceGraphId.setter
+    def ResourceGraphId(self, ResourceGraphId):
+        self._ResourceGraphId = ResourceGraphId
+
+    @property
+    def ResourceGraphName(self):
+        r"""<p>资源图谱名称</p>
+        :rtype: str
+        """
+        return self._ResourceGraphName
+
+    @ResourceGraphName.setter
+    def ResourceGraphName(self, ResourceGraphName):
+        self._ResourceGraphName = ResourceGraphName
+
+    @property
+    def TaskId(self):
+        r"""<p>资源图谱接入任务id</p>
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def TaskName(self):
+        r"""<p>资源图谱接入任务名称</p>
+        :rtype: str
+        """
+        return self._TaskName
+
+    @TaskName.setter
+    def TaskName(self, TaskName):
+        self._TaskName = TaskName
+
+
+    def _deserialize(self, params):
+        self._ClusterId = params.get("ClusterId")
+        self._ResourceGraphId = params.get("ResourceGraphId")
+        self._ResourceGraphName = params.get("ResourceGraphName")
+        self._TaskId = params.get("TaskId")
+        self._TaskName = params.get("TaskName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RetryResourceGraphProductIngestTaskRequest(AbstractModel):
+    r"""RetryResourceGraphProductIngestTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ResourceGraphId: <p>资源图谱id</p>
+        :type ResourceGraphId: str
+        :param _TaskId: <p>接入任务id</p>
+        :type TaskId: str
+        """
+        self._ResourceGraphId = None
+        self._TaskId = None
+
+    @property
+    def ResourceGraphId(self):
+        r"""<p>资源图谱id</p>
+        :rtype: str
+        """
+        return self._ResourceGraphId
+
+    @ResourceGraphId.setter
+    def ResourceGraphId(self, ResourceGraphId):
+        self._ResourceGraphId = ResourceGraphId
+
+    @property
+    def TaskId(self):
+        r"""<p>接入任务id</p>
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+
+    def _deserialize(self, params):
+        self._ResourceGraphId = params.get("ResourceGraphId")
+        self._TaskId = params.get("TaskId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RetryResourceGraphProductIngestTaskResponse(AbstractModel):
+    r"""RetryResourceGraphProductIngestTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class RetryResourceGraphRequest(AbstractModel):
+    r"""RetryResourceGraph请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ResourceGraphId: <p>资源图谱id</p>
+        :type ResourceGraphId: str
+        """
+        self._ResourceGraphId = None
+
+    @property
+    def ResourceGraphId(self):
+        r"""<p>资源图谱id</p>
+        :rtype: str
+        """
+        return self._ResourceGraphId
+
+    @ResourceGraphId.setter
+    def ResourceGraphId(self, ResourceGraphId):
+        self._ResourceGraphId = ResourceGraphId
+
+
+    def _deserialize(self, params):
+        self._ResourceGraphId = params.get("ResourceGraphId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RetryResourceGraphResponse(AbstractModel):
+    r"""RetryResourceGraph返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
 
 
 class RetryShipperTaskRequest(AbstractModel):

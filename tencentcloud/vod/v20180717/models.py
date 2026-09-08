@@ -39943,11 +39943,11 @@ class DescribeCurrentPlaylistRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SubAppId: <b>点播[应用](/document/product/266/14574) ID。</b>
+        :param _SubAppId: <p><b>点播<a href="/document/product/266/14574">应用</a> ID。</b></p>
         :type SubAppId: int
-        :param _RoundPlayId: 轮播播单唯一标识。
+        :param _RoundPlayId: <p>轮播播单唯一标识。</p>
         :type RoundPlayId: str
-        :param _Limit: 返回的播放列表的长度。最大10，默认值为5。
+        :param _Limit: <p>返回的播放列表的长度。最大10，默认值为5。</p>
         :type Limit: int
         """
         self._SubAppId = None
@@ -39956,7 +39956,7 @@ class DescribeCurrentPlaylistRequest(AbstractModel):
 
     @property
     def SubAppId(self):
-        r"""<b>点播[应用](/document/product/266/14574) ID。</b>
+        r"""<p><b>点播<a href="/document/product/266/14574">应用</a> ID。</b></p>
         :rtype: int
         """
         return self._SubAppId
@@ -39967,7 +39967,7 @@ class DescribeCurrentPlaylistRequest(AbstractModel):
 
     @property
     def RoundPlayId(self):
-        r"""轮播播单唯一标识。
+        r"""<p>轮播播单唯一标识。</p>
         :rtype: str
         """
         return self._RoundPlayId
@@ -39978,7 +39978,7 @@ class DescribeCurrentPlaylistRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""返回的播放列表的长度。最大10，默认值为5。
+        r"""<p>返回的播放列表的长度。最大10，默认值为5。</p>
         :rtype: int
         """
         return self._Limit
@@ -40009,7 +40009,7 @@ class DescribeCurrentPlaylistResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _CurrentPlaylist: 当前播放列表信息。
+        :param _CurrentPlaylist: <p>当前播放列表信息。</p>
         :type CurrentPlaylist: list of RoundPlayFilePlayInfo
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -40019,7 +40019,7 @@ class DescribeCurrentPlaylistResponse(AbstractModel):
 
     @property
     def CurrentPlaylist(self):
-        r"""当前播放列表信息。
+        r"""<p>当前播放列表信息。</p>
         :rtype: list of RoundPlayFilePlayInfo
         """
         return self._CurrentPlaylist

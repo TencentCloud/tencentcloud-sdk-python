@@ -164,6 +164,52 @@ class PostgresClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CloseMem0Service(self, request):
+        r"""本接口（CloseMem0Service）用于关闭实例的Mem0服务
+
+        :param request: Request instance for CloseMem0Service.
+        :type request: :class:`tencentcloud.postgres.v20170312.models.CloseMem0ServiceRequest`
+        :rtype: :class:`tencentcloud.postgres.v20170312.models.CloseMem0ServiceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CloseMem0Service", params, headers=headers)
+            response = json.loads(body)
+            model = models.CloseMem0ServiceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ClosePostgRESTService(self, request):
+        r"""本接口（ClosePostgRestService）用于关闭实例的PostgREST服务
+
+        :param request: Request instance for ClosePostgRESTService.
+        :type request: :class:`tencentcloud.postgres.v20170312.models.ClosePostgRESTServiceRequest`
+        :rtype: :class:`tencentcloud.postgres.v20170312.models.ClosePostgRESTServiceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ClosePostgRESTService", params, headers=headers)
+            response = json.loads(body)
+            model = models.ClosePostgRESTServiceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateAccount(self, request):
         r"""此接口用于创建数据账号，返回的Oid为账号唯一标识。与数据库系统表pg_roles中记录的oid一致。
 
@@ -1492,6 +1538,29 @@ class PostgresClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeMem0Service(self, request):
+        r"""本接口（DescribeMem0Service）用于查询某个实例的Mem0服务信息
+
+        :param request: Request instance for DescribeMem0Service.
+        :type request: :class:`tencentcloud.postgres.v20170312.models.DescribeMem0ServiceRequest`
+        :rtype: :class:`tencentcloud.postgres.v20170312.models.DescribeMem0ServiceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeMem0Service", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeMem0ServiceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeOrders(self, request):
         r"""本接口（DescribeOrders）用于查询订单信息。
 
@@ -1575,6 +1644,29 @@ class PostgresClient(AbstractClient):
             body = self.call("DescribeParamsEvent", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeParamsEventResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribePostgRESTService(self, request):
+        r"""本接口（DescribePostgRestService）用于查询某个实例的PostgREST服务信息
+
+        :param request: Request instance for DescribePostgRESTService.
+        :type request: :class:`tencentcloud.postgres.v20170312.models.DescribePostgRESTServiceRequest`
+        :rtype: :class:`tencentcloud.postgres.v20170312.models.DescribePostgRESTServiceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribePostgRESTService", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribePostgRESTServiceResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -2590,6 +2682,52 @@ class PostgresClient(AbstractClient):
             body = self.call("OpenDBExtranetAccess", params, headers=headers)
             response = json.loads(body)
             model = models.OpenDBExtranetAccessResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def OpenMem0Service(self, request):
+        r"""本接口（OpenMem0Service）用于开启实例Mem0服务
+
+        :param request: Request instance for OpenMem0Service.
+        :type request: :class:`tencentcloud.postgres.v20170312.models.OpenMem0ServiceRequest`
+        :rtype: :class:`tencentcloud.postgres.v20170312.models.OpenMem0ServiceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("OpenMem0Service", params, headers=headers)
+            response = json.loads(body)
+            model = models.OpenMem0ServiceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def OpenPostgRESTService(self, request):
+        r"""本接口（OpenPostgRestService）用于开启实例PostgREST服务
+
+        :param request: Request instance for OpenPostgRESTService.
+        :type request: :class:`tencentcloud.postgres.v20170312.models.OpenPostgRESTServiceRequest`
+        :rtype: :class:`tencentcloud.postgres.v20170312.models.OpenPostgRESTServiceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("OpenPostgRESTService", params, headers=headers)
+            response = json.loads(body)
+            model = models.OpenPostgRESTServiceResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

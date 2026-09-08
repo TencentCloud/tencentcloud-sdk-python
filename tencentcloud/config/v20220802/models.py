@@ -9879,6 +9879,36 @@ class OpenConfigRecorderRequest(AbstractModel):
 
     """
 
+    def __init__(self):
+        r"""
+        :param _FromMode: <p>1:从控制中心调用</p>
+        :type FromMode: int
+        """
+        self._FromMode = None
+
+    @property
+    def FromMode(self):
+        r"""<p>1:从控制中心调用</p>
+        :rtype: int
+        """
+        return self._FromMode
+
+    @FromMode.setter
+    def FromMode(self, FromMode):
+        self._FromMode = FromMode
+
+
+    def _deserialize(self, params):
+        self._FromMode = params.get("FromMode")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
 
 class OpenConfigRecorderResponse(AbstractModel):
     r"""OpenConfigRecorder返回参数结构体

@@ -530,8 +530,11 @@ class ComputerConfiguration(AbstractModel):
         r"""
         :param _WAAConfiguration: <p>waa沙箱工具配置</p>
         :type WAAConfiguration: :class:`tencentcloud.ags.v20250920.models.WAAConfiguration`
+        :param _OSWorldConfiguration: <p>配置内置 OSWorld</p>
+        :type OSWorldConfiguration: :class:`tencentcloud.ags.v20250920.models.OSWorldConfiguration`
         """
         self._WAAConfiguration = None
+        self._OSWorldConfiguration = None
 
     @property
     def WAAConfiguration(self):
@@ -544,11 +547,25 @@ class ComputerConfiguration(AbstractModel):
     def WAAConfiguration(self, WAAConfiguration):
         self._WAAConfiguration = WAAConfiguration
 
+    @property
+    def OSWorldConfiguration(self):
+        r"""<p>配置内置 OSWorld</p>
+        :rtype: :class:`tencentcloud.ags.v20250920.models.OSWorldConfiguration`
+        """
+        return self._OSWorldConfiguration
+
+    @OSWorldConfiguration.setter
+    def OSWorldConfiguration(self, OSWorldConfiguration):
+        self._OSWorldConfiguration = OSWorldConfiguration
+
 
     def _deserialize(self, params):
         if params.get("WAAConfiguration") is not None:
             self._WAAConfiguration = WAAConfiguration()
             self._WAAConfiguration._deserialize(params.get("WAAConfiguration"))
+        if params.get("OSWorldConfiguration") is not None:
+            self._OSWorldConfiguration = OSWorldConfiguration()
+            self._OSWorldConfiguration._deserialize(params.get("OSWorldConfiguration"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -3585,6 +3602,42 @@ class NetworkConfiguration(AbstractModel):
         if params.get("VpcConfig") is not None:
             self._VpcConfig = VPCConfig()
             self._VpcConfig._deserialize(params.get("VpcConfig"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class OSWorldConfiguration(AbstractModel):
+    r"""OSWorld 内置版本配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Version: <p>指定内置 OSWorld 版本</p><p>枚举值：</p><ul><li>osworld1： osworld v1</li><li>osworld2： osworld v2</li></ul><p>默认值：osworld1</p>
+        :type Version: str
+        """
+        self._Version = None
+
+    @property
+    def Version(self):
+        r"""<p>指定内置 OSWorld 版本</p><p>枚举值：</p><ul><li>osworld1： osworld v1</li><li>osworld2： osworld v2</li></ul><p>默认值：osworld1</p>
+        :rtype: str
+        """
+        return self._Version
+
+    @Version.setter
+    def Version(self, Version):
+        self._Version = Version
+
+
+    def _deserialize(self, params):
+        self._Version = params.get("Version")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

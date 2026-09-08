@@ -5042,151 +5042,6 @@ class CreateUserResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
-class CreateVmInstanceRequest(AbstractModel):
-    r"""CreateVmInstance请求参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _EnvId: 环境ID
-        :type EnvId: str
-        :param _Type: 服务器类型：
-LightHouse = 轻量云服务器
-CVM = 云服务器
-        :type Type: str
-        :param _LightHouseBundleId: 轻量云服务器套餐ID。 当Type=LightHouse时必传
-        :type LightHouseBundleId: str
-        :param _LightHouseBlueprintId: 轻量云服务器镜像ID。当Type=LightHouse时必传
-        :type LightHouseBlueprintId: str
-        :param _InstanceName: 服务器别名
-        :type InstanceName: str
-        :param _LoginConfiguration: 登录方式
-        :type LoginConfiguration: :class:`tencentcloud.tcb.v20180608.models.VMLoginConfiguration`
-        """
-        self._EnvId = None
-        self._Type = None
-        self._LightHouseBundleId = None
-        self._LightHouseBlueprintId = None
-        self._InstanceName = None
-        self._LoginConfiguration = None
-
-    @property
-    def EnvId(self):
-        r"""环境ID
-        :rtype: str
-        """
-        return self._EnvId
-
-    @EnvId.setter
-    def EnvId(self, EnvId):
-        self._EnvId = EnvId
-
-    @property
-    def Type(self):
-        r"""服务器类型：
-LightHouse = 轻量云服务器
-CVM = 云服务器
-        :rtype: str
-        """
-        return self._Type
-
-    @Type.setter
-    def Type(self, Type):
-        self._Type = Type
-
-    @property
-    def LightHouseBundleId(self):
-        r"""轻量云服务器套餐ID。 当Type=LightHouse时必传
-        :rtype: str
-        """
-        return self._LightHouseBundleId
-
-    @LightHouseBundleId.setter
-    def LightHouseBundleId(self, LightHouseBundleId):
-        self._LightHouseBundleId = LightHouseBundleId
-
-    @property
-    def LightHouseBlueprintId(self):
-        r"""轻量云服务器镜像ID。当Type=LightHouse时必传
-        :rtype: str
-        """
-        return self._LightHouseBlueprintId
-
-    @LightHouseBlueprintId.setter
-    def LightHouseBlueprintId(self, LightHouseBlueprintId):
-        self._LightHouseBlueprintId = LightHouseBlueprintId
-
-    @property
-    def InstanceName(self):
-        r"""服务器别名
-        :rtype: str
-        """
-        return self._InstanceName
-
-    @InstanceName.setter
-    def InstanceName(self, InstanceName):
-        self._InstanceName = InstanceName
-
-    @property
-    def LoginConfiguration(self):
-        r"""登录方式
-        :rtype: :class:`tencentcloud.tcb.v20180608.models.VMLoginConfiguration`
-        """
-        return self._LoginConfiguration
-
-    @LoginConfiguration.setter
-    def LoginConfiguration(self, LoginConfiguration):
-        self._LoginConfiguration = LoginConfiguration
-
-
-    def _deserialize(self, params):
-        self._EnvId = params.get("EnvId")
-        self._Type = params.get("Type")
-        self._LightHouseBundleId = params.get("LightHouseBundleId")
-        self._LightHouseBlueprintId = params.get("LightHouseBlueprintId")
-        self._InstanceName = params.get("InstanceName")
-        if params.get("LoginConfiguration") is not None:
-            self._LoginConfiguration = VMLoginConfiguration()
-            self._LoginConfiguration._deserialize(params.get("LoginConfiguration"))
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class CreateVmInstanceResponse(AbstractModel):
-    r"""CreateVmInstance返回参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self._RequestId = None
-
-    @property
-    def RequestId(self):
-        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-        :rtype: str
-        """
-        return self._RequestId
-
-    @RequestId.setter
-    def RequestId(self, RequestId):
-        self._RequestId = RequestId
-
-
-    def _deserialize(self, params):
-        self._RequestId = params.get("RequestId")
-
-
 class CustomLogConfig(AbstractModel):
     r"""安全网关自定义日志配置
 
@@ -6383,85 +6238,6 @@ class DeleteUsersResponse(AbstractModel):
         if params.get("Data") is not None:
             self._Data = DeleteUsersResp()
             self._Data._deserialize(params.get("Data"))
-        self._RequestId = params.get("RequestId")
-
-
-class DeleteVmInstanceRequest(AbstractModel):
-    r"""DeleteVmInstance请求参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _InstanceId: 服务器实例id
-        :type InstanceId: str
-        :param _EnvId: 环境id
-        :type EnvId: str
-        """
-        self._InstanceId = None
-        self._EnvId = None
-
-    @property
-    def InstanceId(self):
-        r"""服务器实例id
-        :rtype: str
-        """
-        return self._InstanceId
-
-    @InstanceId.setter
-    def InstanceId(self, InstanceId):
-        self._InstanceId = InstanceId
-
-    @property
-    def EnvId(self):
-        r"""环境id
-        :rtype: str
-        """
-        return self._EnvId
-
-    @EnvId.setter
-    def EnvId(self, EnvId):
-        self._EnvId = EnvId
-
-
-    def _deserialize(self, params):
-        self._InstanceId = params.get("InstanceId")
-        self._EnvId = params.get("EnvId")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class DeleteVmInstanceResponse(AbstractModel):
-    r"""DeleteVmInstance返回参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self._RequestId = None
-
-    @property
-    def RequestId(self):
-        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-        :rtype: str
-        """
-        return self._RequestId
-
-    @RequestId.setter
-    def RequestId(self, RequestId):
-        self._RequestId = RequestId
-
-
-    def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
 
 
@@ -10917,6 +10693,225 @@ class DescribeGatewayVersionsResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeHTTPServiceCachePurgeTaskRequest(AbstractModel):
+    r"""DescribeHTTPServiceCachePurgeTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EnvId: <p>环境ID</p>
+        :type EnvId: str
+        :param _Domain: <p>HTTPService域名</p>
+        :type Domain: str
+        :param _CacheType: <p>缓存类型</p><p>枚举值：</p><ul><li>EO： EO缓存</li><li>CDN： CDN缓存</li></ul><p>默认值：EO</p>
+        :type CacheType: str
+        :param _TaskId: <p>任务id，PurgeHTTPServiceCache返回的TaskId，可选</p>
+        :type TaskId: str
+        :param _PurgeType: <p>按刷新类型过滤</p><p>枚举值：</p><ul><li>PURGE_URL： URL 刷新</li><li>PURGE_PREFIX： 目录刷新</li><li>PURGE_HOST： Hostname 刷新</li></ul>
+        :type PurgeType: str
+        :param _StartTime: <p>查询开始时间，TaskId为空时，默认开始时间是7天前</p><p>参数格式：格式 YYYY-MM-DDTHH:mm:ss±HH:mmZ，时区为 UTC+0</p>
+        :type StartTime: str
+        :param _EndTime: <p>查询结束时间，TaskId为空时，默认结束时间是当前</p><p>参数格式：格式 YYYY-MM-DDTHH:mm:ss±HH:mmZ，时区为 UTC+0</p>
+        :type EndTime: str
+        :param _Offset: <p>分页偏移量。默认 0</p>
+        :type Offset: int
+        :param _Limit: <p>分页限制。默认20，最大值1000</p>
+        :type Limit: int
+        """
+        self._EnvId = None
+        self._Domain = None
+        self._CacheType = None
+        self._TaskId = None
+        self._PurgeType = None
+        self._StartTime = None
+        self._EndTime = None
+        self._Offset = None
+        self._Limit = None
+
+    @property
+    def EnvId(self):
+        r"""<p>环境ID</p>
+        :rtype: str
+        """
+        return self._EnvId
+
+    @EnvId.setter
+    def EnvId(self, EnvId):
+        self._EnvId = EnvId
+
+    @property
+    def Domain(self):
+        r"""<p>HTTPService域名</p>
+        :rtype: str
+        """
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def CacheType(self):
+        r"""<p>缓存类型</p><p>枚举值：</p><ul><li>EO： EO缓存</li><li>CDN： CDN缓存</li></ul><p>默认值：EO</p>
+        :rtype: str
+        """
+        return self._CacheType
+
+    @CacheType.setter
+    def CacheType(self, CacheType):
+        self._CacheType = CacheType
+
+    @property
+    def TaskId(self):
+        r"""<p>任务id，PurgeHTTPServiceCache返回的TaskId，可选</p>
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def PurgeType(self):
+        r"""<p>按刷新类型过滤</p><p>枚举值：</p><ul><li>PURGE_URL： URL 刷新</li><li>PURGE_PREFIX： 目录刷新</li><li>PURGE_HOST： Hostname 刷新</li></ul>
+        :rtype: str
+        """
+        return self._PurgeType
+
+    @PurgeType.setter
+    def PurgeType(self, PurgeType):
+        self._PurgeType = PurgeType
+
+    @property
+    def StartTime(self):
+        r"""<p>查询开始时间，TaskId为空时，默认开始时间是7天前</p><p>参数格式：格式 YYYY-MM-DDTHH:mm:ss±HH:mmZ，时区为 UTC+0</p>
+        :rtype: str
+        """
+        return self._StartTime
+
+    @StartTime.setter
+    def StartTime(self, StartTime):
+        self._StartTime = StartTime
+
+    @property
+    def EndTime(self):
+        r"""<p>查询结束时间，TaskId为空时，默认结束时间是当前</p><p>参数格式：格式 YYYY-MM-DDTHH:mm:ss±HH:mmZ，时区为 UTC+0</p>
+        :rtype: str
+        """
+        return self._EndTime
+
+    @EndTime.setter
+    def EndTime(self, EndTime):
+        self._EndTime = EndTime
+
+    @property
+    def Offset(self):
+        r"""<p>分页偏移量。默认 0</p>
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        r"""<p>分页限制。默认20，最大值1000</p>
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+
+    def _deserialize(self, params):
+        self._EnvId = params.get("EnvId")
+        self._Domain = params.get("Domain")
+        self._CacheType = params.get("CacheType")
+        self._TaskId = params.get("TaskId")
+        self._PurgeType = params.get("PurgeType")
+        self._StartTime = params.get("StartTime")
+        self._EndTime = params.get("EndTime")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeHTTPServiceCachePurgeTaskResponse(AbstractModel):
+    r"""DescribeHTTPServiceCachePurgeTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Tasks: <p>任务列表</p>
+        :type Tasks: list of HTTPServiceCachePurgeTask
+        :param _TotalCount: <p>域名总数，分页查询使用总数判断是否已经拉取到所有数据</p>
+        :type TotalCount: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Tasks = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def Tasks(self):
+        r"""<p>任务列表</p>
+        :rtype: list of HTTPServiceCachePurgeTask
+        """
+        return self._Tasks
+
+    @Tasks.setter
+    def Tasks(self, Tasks):
+        self._Tasks = Tasks
+
+    @property
+    def TotalCount(self):
+        r"""<p>域名总数，分页查询使用总数判断是否已经拉取到所有数据</p>
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Tasks") is not None:
+            self._Tasks = []
+            for item in params.get("Tasks"):
+                obj = HTTPServiceCachePurgeTask()
+                obj._deserialize(item)
+                self._Tasks.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeHTTPServiceRouteRequest(AbstractModel):
     r"""DescribeHTTPServiceRoute请求参数结构体
 
@@ -13006,193 +13001,6 @@ class DescribeUserListResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
-class DescribeVmInstancesRequest(AbstractModel):
-    r"""DescribeVmInstances请求参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _EnvId: 环境ID
-        :type EnvId: str
-        :param _Type: 服务器类型： LightHouse = 轻量云服务器 CVM = 云服务器
-        :type Type: str
-        """
-        self._EnvId = None
-        self._Type = None
-
-    @property
-    def EnvId(self):
-        r"""环境ID
-        :rtype: str
-        """
-        return self._EnvId
-
-    @EnvId.setter
-    def EnvId(self, EnvId):
-        self._EnvId = EnvId
-
-    @property
-    def Type(self):
-        r"""服务器类型： LightHouse = 轻量云服务器 CVM = 云服务器
-        :rtype: str
-        """
-        return self._Type
-
-    @Type.setter
-    def Type(self, Type):
-        self._Type = Type
-
-
-    def _deserialize(self, params):
-        self._EnvId = params.get("EnvId")
-        self._Type = params.get("Type")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class DescribeVmInstancesResponse(AbstractModel):
-    r"""DescribeVmInstances返回参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _InstanceList: 主机实例列表
-        :type InstanceList: list of VmInstance
-        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self._InstanceList = None
-        self._RequestId = None
-
-    @property
-    def InstanceList(self):
-        r"""主机实例列表
-        :rtype: list of VmInstance
-        """
-        return self._InstanceList
-
-    @InstanceList.setter
-    def InstanceList(self, InstanceList):
-        self._InstanceList = InstanceList
-
-    @property
-    def RequestId(self):
-        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-        :rtype: str
-        """
-        return self._RequestId
-
-    @RequestId.setter
-    def RequestId(self, RequestId):
-        self._RequestId = RequestId
-
-
-    def _deserialize(self, params):
-        if params.get("InstanceList") is not None:
-            self._InstanceList = []
-            for item in params.get("InstanceList"):
-                obj = VmInstance()
-                obj._deserialize(item)
-                self._InstanceList.append(obj)
-        self._RequestId = params.get("RequestId")
-
-
-class DescribeVmSpecRequest(AbstractModel):
-    r"""DescribeVmSpec请求参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _Type: 类型：
-LightHouse = 轻量云服务器
-CVM = 云服务器
-        :type Type: str
-        """
-        self._Type = None
-
-    @property
-    def Type(self):
-        r"""类型：
-LightHouse = 轻量云服务器
-CVM = 云服务器
-        :rtype: str
-        """
-        return self._Type
-
-    @Type.setter
-    def Type(self, Type):
-        self._Type = Type
-
-
-    def _deserialize(self, params):
-        self._Type = params.get("Type")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class DescribeVmSpecResponse(AbstractModel):
-    r"""DescribeVmSpec返回参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _SpecList: 规格列表
-        :type SpecList: list of VMSpec
-        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self._SpecList = None
-        self._RequestId = None
-
-    @property
-    def SpecList(self):
-        r"""规格列表
-        :rtype: list of VMSpec
-        """
-        return self._SpecList
-
-    @SpecList.setter
-    def SpecList(self, SpecList):
-        self._SpecList = SpecList
-
-    @property
-    def RequestId(self):
-        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-        :rtype: str
-        """
-        return self._RequestId
-
-    @RequestId.setter
-    def RequestId(self, RequestId):
-        self._RequestId = RequestId
-
-
-    def _deserialize(self, params):
-        if params.get("SpecList") is not None:
-            self._SpecList = []
-            for item in params.get("SpecList"):
-                obj = VMSpec()
-                obj._deserialize(item)
-                self._SpecList.append(obj)
-        self._RequestId = params.get("RequestId")
-
-
 class DestroyEnvRequest(AbstractModel):
     r"""DestroyEnv请求参数结构体
 
@@ -14961,9 +14769,9 @@ class Filter(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Name: 需要过滤的字段。过滤条件数量限制为10。
+        :param _Name: <p>需要过滤的字段。过滤条件数量限制为10。</p>
         :type Name: str
-        :param _Values: 字段的过滤值。
+        :param _Values: <p>字段的过滤值。</p>
         :type Values: list of str
         """
         self._Name = None
@@ -14971,7 +14779,7 @@ class Filter(AbstractModel):
 
     @property
     def Name(self):
-        r"""需要过滤的字段。过滤条件数量限制为10。
+        r"""<p>需要过滤的字段。过滤条件数量限制为10。</p>
         :rtype: str
         """
         return self._Name
@@ -14982,7 +14790,7 @@ class Filter(AbstractModel):
 
     @property
     def Values(self):
-        r"""字段的过滤值。
+        r"""<p>字段的过滤值。</p>
         :rtype: list of str
         """
         return self._Values
@@ -15564,6 +15372,162 @@ class HTTPServiceCacheParams(AbstractModel):
         self._NoCache = params.get("NoCache")
         self._CacheTime = params.get("CacheTime")
         self._MaxAgeTime = params.get("MaxAgeTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class HTTPServiceCachePurgeTask(AbstractModel):
+    r"""清除任务详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CacheType: <p>缓存类型</p><p>枚举值：</p><ul><li>EO： EO</li><li>TCBCDN： 云开发cdn</li></ul><p>默认值：EO</p>
+        :type CacheType: str
+        :param _TaskId: <p>任务id</p>
+        :type TaskId: str
+        :param _Status: <p>状态</p><p>枚举值：</p><ul><li>PROCESSING： 处理中</li><li>SUCCESS： 成功</li><li>FAILED： 失败</li><li>TIMEOUT： 超时</li><li>CANCELED： 取消</li></ul>
+        :type Status: str
+        :param _PurgeType: <p>刷新类型</p><p>枚举值：</p><ul><li>PURGE_URL： URL 刷新</li><li>PURGE_PREFIX： 目录刷新</li><li>PURGE_HOST： Hostname 刷新</li></ul>
+        :type PurgeType: str
+        :param _Method: <p>清除缓存分为直接删除和标记过期两种方式。URL 类型默认为“直接删除”，其它清除类型默认为“标记过期”</p><p>枚举值：</p><ul><li>INVALIDATE： 标记过期：节点缓存标记为过期，用户请求时回源校验，源站 304 则复用，200 则更新</li><li>DELETE： 直接删除：从节点直接删除缓存，用户下次请求强制回源拉新</li></ul>
+        :type Method: str
+        :param _Targets: <p>刷新目标列表（URL / 前缀 / host）</p>
+        :type Targets: list of str
+        :param _FailReason: <p>失败原因</p>
+        :type FailReason: str
+        :param _CreateTime: <p>任务创建时间</p><p>参数格式：格式 YYYY-MM-DDTHH:mm:ss±HH:mmZ，时区为 UTC+0</p>
+        :type CreateTime: str
+        :param _UpdateTime: <p>任务更新时间</p><p>参数格式：格式 YYYY-MM-DDTHH:mm:ss±HH:mmZ，时区为 UTC+0</p>
+        :type UpdateTime: str
+        """
+        self._CacheType = None
+        self._TaskId = None
+        self._Status = None
+        self._PurgeType = None
+        self._Method = None
+        self._Targets = None
+        self._FailReason = None
+        self._CreateTime = None
+        self._UpdateTime = None
+
+    @property
+    def CacheType(self):
+        r"""<p>缓存类型</p><p>枚举值：</p><ul><li>EO： EO</li><li>TCBCDN： 云开发cdn</li></ul><p>默认值：EO</p>
+        :rtype: str
+        """
+        return self._CacheType
+
+    @CacheType.setter
+    def CacheType(self, CacheType):
+        self._CacheType = CacheType
+
+    @property
+    def TaskId(self):
+        r"""<p>任务id</p>
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def Status(self):
+        r"""<p>状态</p><p>枚举值：</p><ul><li>PROCESSING： 处理中</li><li>SUCCESS： 成功</li><li>FAILED： 失败</li><li>TIMEOUT： 超时</li><li>CANCELED： 取消</li></ul>
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def PurgeType(self):
+        r"""<p>刷新类型</p><p>枚举值：</p><ul><li>PURGE_URL： URL 刷新</li><li>PURGE_PREFIX： 目录刷新</li><li>PURGE_HOST： Hostname 刷新</li></ul>
+        :rtype: str
+        """
+        return self._PurgeType
+
+    @PurgeType.setter
+    def PurgeType(self, PurgeType):
+        self._PurgeType = PurgeType
+
+    @property
+    def Method(self):
+        r"""<p>清除缓存分为直接删除和标记过期两种方式。URL 类型默认为“直接删除”，其它清除类型默认为“标记过期”</p><p>枚举值：</p><ul><li>INVALIDATE： 标记过期：节点缓存标记为过期，用户请求时回源校验，源站 304 则复用，200 则更新</li><li>DELETE： 直接删除：从节点直接删除缓存，用户下次请求强制回源拉新</li></ul>
+        :rtype: str
+        """
+        return self._Method
+
+    @Method.setter
+    def Method(self, Method):
+        self._Method = Method
+
+    @property
+    def Targets(self):
+        r"""<p>刷新目标列表（URL / 前缀 / host）</p>
+        :rtype: list of str
+        """
+        return self._Targets
+
+    @Targets.setter
+    def Targets(self, Targets):
+        self._Targets = Targets
+
+    @property
+    def FailReason(self):
+        r"""<p>失败原因</p>
+        :rtype: str
+        """
+        return self._FailReason
+
+    @FailReason.setter
+    def FailReason(self, FailReason):
+        self._FailReason = FailReason
+
+    @property
+    def CreateTime(self):
+        r"""<p>任务创建时间</p><p>参数格式：格式 YYYY-MM-DDTHH:mm:ss±HH:mmZ，时区为 UTC+0</p>
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        r"""<p>任务更新时间</p><p>参数格式：格式 YYYY-MM-DDTHH:mm:ss±HH:mmZ，时区为 UTC+0</p>
+        :rtype: str
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+
+    def _deserialize(self, params):
+        self._CacheType = params.get("CacheType")
+        self._TaskId = params.get("TaskId")
+        self._Status = params.get("Status")
+        self._PurgeType = params.get("PurgeType")
+        self._Method = params.get("Method")
+        self._Targets = params.get("Targets")
+        self._FailReason = params.get("FailReason")
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -17174,196 +17138,6 @@ class Indexkey(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
-
-
-class InquireVmPriceRequest(AbstractModel):
-    r"""InquireVmPrice请求参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _Type: 服务器类型：
-LightHouse = 轻量云服务器
-CVM = 云服务器
-        :type Type: str
-        :param _LightHouseBundleId: 轻量云服务器套餐ID。
-当Type=LightHouse时必传
-        :type LightHouseBundleId: str
-        :param _LightHouseBlueprintId: 轻量云服务器镜像ID。当Type=LightHouse时必传
-        :type LightHouseBlueprintId: str
-        """
-        self._Type = None
-        self._LightHouseBundleId = None
-        self._LightHouseBlueprintId = None
-
-    @property
-    def Type(self):
-        r"""服务器类型：
-LightHouse = 轻量云服务器
-CVM = 云服务器
-        :rtype: str
-        """
-        return self._Type
-
-    @Type.setter
-    def Type(self, Type):
-        self._Type = Type
-
-    @property
-    def LightHouseBundleId(self):
-        r"""轻量云服务器套餐ID。
-当Type=LightHouse时必传
-        :rtype: str
-        """
-        return self._LightHouseBundleId
-
-    @LightHouseBundleId.setter
-    def LightHouseBundleId(self, LightHouseBundleId):
-        self._LightHouseBundleId = LightHouseBundleId
-
-    @property
-    def LightHouseBlueprintId(self):
-        r"""轻量云服务器镜像ID。当Type=LightHouse时必传
-        :rtype: str
-        """
-        return self._LightHouseBlueprintId
-
-    @LightHouseBlueprintId.setter
-    def LightHouseBlueprintId(self, LightHouseBlueprintId):
-        self._LightHouseBlueprintId = LightHouseBlueprintId
-
-
-    def _deserialize(self, params):
-        self._Type = params.get("Type")
-        self._LightHouseBundleId = params.get("LightHouseBundleId")
-        self._LightHouseBlueprintId = params.get("LightHouseBlueprintId")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class InquireVmPriceResponse(AbstractModel):
-    r"""InquireVmPrice返回参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _Currency: 价格货币单位。取值范围CNY:人民币。USD:美元。
-        :type Currency: str
-        :param _OriginalPrice: 原价（主机原始每月价格）
-        :type OriginalPrice: float
-        :param _Discount: 折扣率
-        :type Discount: float
-        :param _DiscountPrice: 折扣后每月价格
-        :type DiscountPrice: float
-        :param _OriginalCredits: 折扣前每天资源点
-        :type OriginalCredits: float
-        :param _DiscountCredits: 折扣后每天资源点
-        :type DiscountCredits: float
-        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self._Currency = None
-        self._OriginalPrice = None
-        self._Discount = None
-        self._DiscountPrice = None
-        self._OriginalCredits = None
-        self._DiscountCredits = None
-        self._RequestId = None
-
-    @property
-    def Currency(self):
-        r"""价格货币单位。取值范围CNY:人民币。USD:美元。
-        :rtype: str
-        """
-        return self._Currency
-
-    @Currency.setter
-    def Currency(self, Currency):
-        self._Currency = Currency
-
-    @property
-    def OriginalPrice(self):
-        r"""原价（主机原始每月价格）
-        :rtype: float
-        """
-        return self._OriginalPrice
-
-    @OriginalPrice.setter
-    def OriginalPrice(self, OriginalPrice):
-        self._OriginalPrice = OriginalPrice
-
-    @property
-    def Discount(self):
-        r"""折扣率
-        :rtype: float
-        """
-        return self._Discount
-
-    @Discount.setter
-    def Discount(self, Discount):
-        self._Discount = Discount
-
-    @property
-    def DiscountPrice(self):
-        r"""折扣后每月价格
-        :rtype: float
-        """
-        return self._DiscountPrice
-
-    @DiscountPrice.setter
-    def DiscountPrice(self, DiscountPrice):
-        self._DiscountPrice = DiscountPrice
-
-    @property
-    def OriginalCredits(self):
-        r"""折扣前每天资源点
-        :rtype: float
-        """
-        return self._OriginalCredits
-
-    @OriginalCredits.setter
-    def OriginalCredits(self, OriginalCredits):
-        self._OriginalCredits = OriginalCredits
-
-    @property
-    def DiscountCredits(self):
-        r"""折扣后每天资源点
-        :rtype: float
-        """
-        return self._DiscountCredits
-
-    @DiscountCredits.setter
-    def DiscountCredits(self, DiscountCredits):
-        self._DiscountCredits = DiscountCredits
-
-    @property
-    def RequestId(self):
-        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-        :rtype: str
-        """
-        return self._RequestId
-
-    @RequestId.setter
-    def RequestId(self, RequestId):
-        self._RequestId = RequestId
-
-
-    def _deserialize(self, params):
-        self._Currency = params.get("Currency")
-        self._OriginalPrice = params.get("OriginalPrice")
-        self._Discount = params.get("Discount")
-        self._DiscountPrice = params.get("DiscountPrice")
-        self._OriginalCredits = params.get("OriginalCredits")
-        self._DiscountCredits = params.get("DiscountCredits")
-        self._RequestId = params.get("RequestId")
 
 
 class KVPair(AbstractModel):
@@ -23709,6 +23483,160 @@ class ProviderResponseParametersMap(AbstractModel):
         
 
 
+class PurgeHTTPServiceCacheRequest(AbstractModel):
+    r"""PurgeHTTPServiceCache请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EnvId: <p>环境ID</p>
+        :type EnvId: str
+        :param _Domain: <p>HTTPService域名</p>
+        :type Domain: str
+        :param _Targets: <p>Targets</p><p>参数格式：Targets 刷新目标列表，语义随 PurgeType 变化</p><p>入参限制：单次请求最多传 20 个 Target，单条 URL/prefix/host 最长 2048</p>
+        :type Targets: list of str
+        :param _CacheType: <p>需要刷新的缓存类型：CDN 或 EO</p><p>枚举值：</p><ul><li>EO： EO缓存</li><li>CDN： CDN缓存</li></ul><p>默认值：EO</p>
+        :type CacheType: str
+        :param _PurgeType: <p>PurgeType 刷新方式（purge 粒度），TCBCDN仅支持purge_url</p><p>枚举值：</p><ul><li>PURGE_URL： URL 列表（需含协议，如 https://a.com/b.jpg）</li><li>PURGE_PREFIX： URL 前缀列表（需含协议，如 https://a.com/dir/），仅EO支持</li><li>PURGE_HOST： Hostname 列表（可为 host 或 http(s)://host），仅EO支持</li></ul><p>默认值：PURGE_URL</p>
+        :type PurgeType: str
+        """
+        self._EnvId = None
+        self._Domain = None
+        self._Targets = None
+        self._CacheType = None
+        self._PurgeType = None
+
+    @property
+    def EnvId(self):
+        r"""<p>环境ID</p>
+        :rtype: str
+        """
+        return self._EnvId
+
+    @EnvId.setter
+    def EnvId(self, EnvId):
+        self._EnvId = EnvId
+
+    @property
+    def Domain(self):
+        r"""<p>HTTPService域名</p>
+        :rtype: str
+        """
+        return self._Domain
+
+    @Domain.setter
+    def Domain(self, Domain):
+        self._Domain = Domain
+
+    @property
+    def Targets(self):
+        r"""<p>Targets</p><p>参数格式：Targets 刷新目标列表，语义随 PurgeType 变化</p><p>入参限制：单次请求最多传 20 个 Target，单条 URL/prefix/host 最长 2048</p>
+        :rtype: list of str
+        """
+        return self._Targets
+
+    @Targets.setter
+    def Targets(self, Targets):
+        self._Targets = Targets
+
+    @property
+    def CacheType(self):
+        r"""<p>需要刷新的缓存类型：CDN 或 EO</p><p>枚举值：</p><ul><li>EO： EO缓存</li><li>CDN： CDN缓存</li></ul><p>默认值：EO</p>
+        :rtype: str
+        """
+        return self._CacheType
+
+    @CacheType.setter
+    def CacheType(self, CacheType):
+        self._CacheType = CacheType
+
+    @property
+    def PurgeType(self):
+        r"""<p>PurgeType 刷新方式（purge 粒度），TCBCDN仅支持purge_url</p><p>枚举值：</p><ul><li>PURGE_URL： URL 列表（需含协议，如 https://a.com/b.jpg）</li><li>PURGE_PREFIX： URL 前缀列表（需含协议，如 https://a.com/dir/），仅EO支持</li><li>PURGE_HOST： Hostname 列表（可为 host 或 http(s)://host），仅EO支持</li></ul><p>默认值：PURGE_URL</p>
+        :rtype: str
+        """
+        return self._PurgeType
+
+    @PurgeType.setter
+    def PurgeType(self, PurgeType):
+        self._PurgeType = PurgeType
+
+
+    def _deserialize(self, params):
+        self._EnvId = params.get("EnvId")
+        self._Domain = params.get("Domain")
+        self._Targets = params.get("Targets")
+        self._CacheType = params.get("CacheType")
+        self._PurgeType = params.get("PurgeType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class PurgeHTTPServiceCacheResponse(AbstractModel):
+    r"""PurgeHTTPServiceCache返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CacheType: <p>需要刷新的缓存类型：TCBCDN 或 EO</p><p>枚举值：</p><ul><li>EO： EO缓存</li><li>CDN： CDN缓存</li></ul>
+        :type CacheType: str
+        :param _TaskId: <p>刷新任务ID</p>
+        :type TaskId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._CacheType = None
+        self._TaskId = None
+        self._RequestId = None
+
+    @property
+    def CacheType(self):
+        r"""<p>需要刷新的缓存类型：TCBCDN 或 EO</p><p>枚举值：</p><ul><li>EO： EO缓存</li><li>CDN： CDN缓存</li></ul>
+        :rtype: str
+        """
+        return self._CacheType
+
+    @CacheType.setter
+    def CacheType(self, CacheType):
+        self._CacheType = CacheType
+
+    @property
+    def TaskId(self):
+        r"""<p>刷新任务ID</p>
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._CacheType = params.get("CacheType")
+        self._TaskId = params.get("TaskId")
+        self._RequestId = params.get("RequestId")
+
+
 class PushPGUserMigrationsRequest(AbstractModel):
     r"""PushPGUserMigrations请求参数结构体
 
@@ -26488,323 +26416,6 @@ class User(AbstractModel):
         
 
 
-class VMLoginConfiguration(AbstractModel):
-    r"""云服务器登录方式
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _LoginType: 登录方式。扫码登录时指定为 SCAN_LOGIN
-        :type LoginType: str
-        :param _AutoGeneratePassword: 是否自动生成密码
-        :type AutoGeneratePassword: str
-        :param _Password: 指定密码登录
-        :type Password: str
-        :param _KeyIds: 绑定密钥ID
-        :type KeyIds: list of str
-        """
-        self._LoginType = None
-        self._AutoGeneratePassword = None
-        self._Password = None
-        self._KeyIds = None
-
-    @property
-    def LoginType(self):
-        r"""登录方式。扫码登录时指定为 SCAN_LOGIN
-        :rtype: str
-        """
-        return self._LoginType
-
-    @LoginType.setter
-    def LoginType(self, LoginType):
-        self._LoginType = LoginType
-
-    @property
-    def AutoGeneratePassword(self):
-        r"""是否自动生成密码
-        :rtype: str
-        """
-        return self._AutoGeneratePassword
-
-    @AutoGeneratePassword.setter
-    def AutoGeneratePassword(self, AutoGeneratePassword):
-        self._AutoGeneratePassword = AutoGeneratePassword
-
-    @property
-    def Password(self):
-        r"""指定密码登录
-        :rtype: str
-        """
-        return self._Password
-
-    @Password.setter
-    def Password(self, Password):
-        self._Password = Password
-
-    @property
-    def KeyIds(self):
-        r"""绑定密钥ID
-        :rtype: list of str
-        """
-        return self._KeyIds
-
-    @KeyIds.setter
-    def KeyIds(self, KeyIds):
-        self._KeyIds = KeyIds
-
-
-    def _deserialize(self, params):
-        self._LoginType = params.get("LoginType")
-        self._AutoGeneratePassword = params.get("AutoGeneratePassword")
-        self._Password = params.get("Password")
-        self._KeyIds = params.get("KeyIds")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class VMPrice(AbstractModel):
-    r"""虚拟主机价格
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _Currency: 价格货币单位。取值范围CNY:人民币。USD:美元。
-        :type Currency: str
-        :param _OriginalPrice: 原始价格
-        :type OriginalPrice: float
-        :param _Discount: 折扣率
-        :type Discount: float
-        :param _DiscountPrice: 折扣后的价格
-        :type DiscountPrice: float
-        :param _OriginalCredits: 折扣前每天资源点
-        :type OriginalCredits: float
-        :param _DiscountCredits: 折扣后每天所需资源点
-        :type DiscountCredits: float
-        """
-        self._Currency = None
-        self._OriginalPrice = None
-        self._Discount = None
-        self._DiscountPrice = None
-        self._OriginalCredits = None
-        self._DiscountCredits = None
-
-    @property
-    def Currency(self):
-        r"""价格货币单位。取值范围CNY:人民币。USD:美元。
-        :rtype: str
-        """
-        return self._Currency
-
-    @Currency.setter
-    def Currency(self, Currency):
-        self._Currency = Currency
-
-    @property
-    def OriginalPrice(self):
-        r"""原始价格
-        :rtype: float
-        """
-        return self._OriginalPrice
-
-    @OriginalPrice.setter
-    def OriginalPrice(self, OriginalPrice):
-        self._OriginalPrice = OriginalPrice
-
-    @property
-    def Discount(self):
-        r"""折扣率
-        :rtype: float
-        """
-        return self._Discount
-
-    @Discount.setter
-    def Discount(self, Discount):
-        self._Discount = Discount
-
-    @property
-    def DiscountPrice(self):
-        r"""折扣后的价格
-        :rtype: float
-        """
-        return self._DiscountPrice
-
-    @DiscountPrice.setter
-    def DiscountPrice(self, DiscountPrice):
-        self._DiscountPrice = DiscountPrice
-
-    @property
-    def OriginalCredits(self):
-        r"""折扣前每天资源点
-        :rtype: float
-        """
-        return self._OriginalCredits
-
-    @OriginalCredits.setter
-    def OriginalCredits(self, OriginalCredits):
-        self._OriginalCredits = OriginalCredits
-
-    @property
-    def DiscountCredits(self):
-        r"""折扣后每天所需资源点
-        :rtype: float
-        """
-        return self._DiscountCredits
-
-    @DiscountCredits.setter
-    def DiscountCredits(self, DiscountCredits):
-        self._DiscountCredits = DiscountCredits
-
-
-    def _deserialize(self, params):
-        self._Currency = params.get("Currency")
-        self._OriginalPrice = params.get("OriginalPrice")
-        self._Discount = params.get("Discount")
-        self._DiscountPrice = params.get("DiscountPrice")
-        self._OriginalCredits = params.get("OriginalCredits")
-        self._DiscountCredits = params.get("DiscountCredits")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class VMSpec(AbstractModel):
-    r"""VM规格
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _Type: LightHouse=轻量云服务器
-CVM=云服务器
-        :type Type: str
-        :param _LightHouseSpec: 轻量云服务器规格。
-当Type=LightHouse时有效
-        :type LightHouseSpec: :class:`tencentcloud.tcb.v20180608.models.VMSpecLightHouse`
-        :param _Price: 价格信息
-        :type Price: :class:`tencentcloud.tcb.v20180608.models.VMPrice`
-        """
-        self._Type = None
-        self._LightHouseSpec = None
-        self._Price = None
-
-    @property
-    def Type(self):
-        r"""LightHouse=轻量云服务器
-CVM=云服务器
-        :rtype: str
-        """
-        return self._Type
-
-    @Type.setter
-    def Type(self, Type):
-        self._Type = Type
-
-    @property
-    def LightHouseSpec(self):
-        r"""轻量云服务器规格。
-当Type=LightHouse时有效
-        :rtype: :class:`tencentcloud.tcb.v20180608.models.VMSpecLightHouse`
-        """
-        return self._LightHouseSpec
-
-    @LightHouseSpec.setter
-    def LightHouseSpec(self, LightHouseSpec):
-        self._LightHouseSpec = LightHouseSpec
-
-    @property
-    def Price(self):
-        r"""价格信息
-        :rtype: :class:`tencentcloud.tcb.v20180608.models.VMPrice`
-        """
-        return self._Price
-
-    @Price.setter
-    def Price(self, Price):
-        self._Price = Price
-
-
-    def _deserialize(self, params):
-        self._Type = params.get("Type")
-        if params.get("LightHouseSpec") is not None:
-            self._LightHouseSpec = VMSpecLightHouse()
-            self._LightHouseSpec._deserialize(params.get("LightHouseSpec"))
-        if params.get("Price") is not None:
-            self._Price = VMPrice()
-            self._Price._deserialize(params.get("Price"))
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class VMSpecLightHouse(AbstractModel):
-    r"""vm规格
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _BundleId: LH主机的BundleId
-        :type BundleId: str
-        :param _BundleConfig: 主机配置详情json
-        :type BundleConfig: str
-        """
-        self._BundleId = None
-        self._BundleConfig = None
-
-    @property
-    def BundleId(self):
-        r"""LH主机的BundleId
-        :rtype: str
-        """
-        return self._BundleId
-
-    @BundleId.setter
-    def BundleId(self, BundleId):
-        self._BundleId = BundleId
-
-    @property
-    def BundleConfig(self):
-        r"""主机配置详情json
-        :rtype: str
-        """
-        return self._BundleConfig
-
-    @BundleConfig.setter
-    def BundleConfig(self, BundleConfig):
-        self._BundleConfig = BundleConfig
-
-
-    def _deserialize(self, params):
-        self._BundleId = params.get("BundleId")
-        self._BundleConfig = params.get("BundleConfig")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
 class ValueDetail(AbstractModel):
     r"""资源用量明细结构
 
@@ -26923,9 +26534,9 @@ class Variable(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Key: 变量的名称
+        :param _Key: <p>变量的名称</p>
         :type Key: str
-        :param _Value: 变量的值
+        :param _Value: <p>变量的值</p>
         :type Value: str
         """
         self._Key = None
@@ -26933,7 +26544,7 @@ class Variable(AbstractModel):
 
     @property
     def Key(self):
-        r"""变量的名称
+        r"""<p>变量的名称</p>
         :rtype: str
         """
         return self._Key
@@ -26944,7 +26555,7 @@ class Variable(AbstractModel):
 
     @property
     def Value(self):
-        r"""变量的值
+        r"""<p>变量的值</p>
         :rtype: str
         """
         return self._Value
@@ -27434,72 +27045,6 @@ class VerifyHTTPServiceRouteResponse(AbstractModel):
             self._EO = VerifyHTTPServiceRouteCheckItem()
             self._EO._deserialize(params.get("EO"))
         self._RequestId = params.get("RequestId")
-
-
-class VmInstance(AbstractModel):
-    r"""云主机实例
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _InstanceId: 实例id
-        :type InstanceId: str
-        :param _Status: 实例状态
-        :type Status: str
-        :param _Region: 实例地域
-        :type Region: str
-        """
-        self._InstanceId = None
-        self._Status = None
-        self._Region = None
-
-    @property
-    def InstanceId(self):
-        r"""实例id
-        :rtype: str
-        """
-        return self._InstanceId
-
-    @InstanceId.setter
-    def InstanceId(self, InstanceId):
-        self._InstanceId = InstanceId
-
-    @property
-    def Status(self):
-        r"""实例状态
-        :rtype: str
-        """
-        return self._Status
-
-    @Status.setter
-    def Status(self, Status):
-        self._Status = Status
-
-    @property
-    def Region(self):
-        r"""实例地域
-        :rtype: str
-        """
-        return self._Region
-
-    @Region.setter
-    def Region(self, Region):
-        self._Region = Region
-
-
-    def _deserialize(self, params):
-        self._InstanceId = params.get("InstanceId")
-        self._Status = params.get("Status")
-        self._Region = params.get("Region")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
 
 
 class WxGatewayCustomConfig(AbstractModel):

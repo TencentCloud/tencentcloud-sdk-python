@@ -38541,6 +38541,8 @@ class TestServiceProviderConnectionRequest(AbstractModel):
         :type CMRPrivateNetworkTunnelId: str
         :param _Capability: <p>对应模型的能力</p><p>枚举值：</p><ul><li>chat： 生文能力</li><li>embedding： 向量能力</li></ul>
         :type Capability: str
+        :param _EndpointPath: <p>端点路径</p>
+        :type EndpointPath: str
         """
         self._Models = None
         self._ProviderKey = None
@@ -38555,6 +38557,7 @@ class TestServiceProviderConnectionRequest(AbstractModel):
         self._HealthCheckProtocol = None
         self._CMRPrivateNetworkTunnelId = None
         self._Capability = None
+        self._EndpointPath = None
 
     @property
     def Models(self):
@@ -38699,6 +38702,17 @@ class TestServiceProviderConnectionRequest(AbstractModel):
     def Capability(self, Capability):
         self._Capability = Capability
 
+    @property
+    def EndpointPath(self):
+        r"""<p>端点路径</p>
+        :rtype: str
+        """
+        return self._EndpointPath
+
+    @EndpointPath.setter
+    def EndpointPath(self, EndpointPath):
+        self._EndpointPath = EndpointPath
+
 
     def _deserialize(self, params):
         self._Models = params.get("Models")
@@ -38714,6 +38728,7 @@ class TestServiceProviderConnectionRequest(AbstractModel):
         self._HealthCheckProtocol = params.get("HealthCheckProtocol")
         self._CMRPrivateNetworkTunnelId = params.get("CMRPrivateNetworkTunnelId")
         self._Capability = params.get("Capability")
+        self._EndpointPath = params.get("EndpointPath")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
