@@ -27,7 +27,7 @@ class AdpClient(AbstractClient):
 
 
     def CopyAgentFromApp(self, request):
-        r"""创建Agent
+        r"""复制 Agent（目前仅支持claw模式））
 
         :param request: Request instance for CopyAgentFromApp.
         :type request: :class:`tencentcloud.adp.v20260520.models.CopyAgentFromAppRequest`
@@ -132,6 +132,29 @@ class AdpClient(AbstractClient):
             body = self.call("CreateAppTrigger", params, headers=headers)
             response = json.loads(body)
             model = models.CreateAppTriggerResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CreateChannel(self, request):
+        r"""创建渠道（通过scene区分B端应用发布渠道与C端IM渠道）
+
+        :param request: Request instance for CreateChannel.
+        :type request: :class:`tencentcloud.adp.v20260520.models.CreateChannelRequest`
+        :rtype: :class:`tencentcloud.adp.v20260520.models.CreateChannelResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateChannel", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateChannelResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -431,6 +454,29 @@ class AdpClient(AbstractClient):
             body = self.call("DeleteAppTrigger", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteAppTriggerResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteChannel(self, request):
+        r"""删除渠道（通过scene区分场景）
+
+        :param request: Request instance for DeleteChannel.
+        :type request: :class:`tencentcloud.adp.v20260520.models.DeleteChannelRequest`
+        :rtype: :class:`tencentcloud.adp.v20260520.models.DeleteChannelResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteChannel", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteChannelResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -868,6 +914,52 @@ class AdpClient(AbstractClient):
             body = self.call("DescribeAuditLogMeta", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeAuditLogMetaResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeChannel(self, request):
+        r"""获取渠道详情（scene区分场景）
+
+        :param request: Request instance for DescribeChannel.
+        :type request: :class:`tencentcloud.adp.v20260520.models.DescribeChannelRequest`
+        :rtype: :class:`tencentcloud.adp.v20260520.models.DescribeChannelResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeChannel", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeChannelResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeChannelList(self, request):
+        r"""获取渠道列表（scene区分场景）
+
+        :param request: Request instance for DescribeChannelList.
+        :type request: :class:`tencentcloud.adp.v20260520.models.DescribeChannelListRequest`
+        :rtype: :class:`tencentcloud.adp.v20260520.models.DescribeChannelListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeChannelList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeChannelListResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1535,6 +1627,29 @@ class AdpClient(AbstractClient):
             body = self.call("ModifyAppTrigger", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyAppTriggerResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyChannel(self, request):
+        r"""修改渠道（支持修改备注与企微机器人渠道回调机器人ID）
+
+        :param request: Request instance for ModifyChannel.
+        :type request: :class:`tencentcloud.adp.v20260520.models.ModifyChannelRequest`
+        :rtype: :class:`tencentcloud.adp.v20260520.models.ModifyChannelResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyChannel", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyChannelResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

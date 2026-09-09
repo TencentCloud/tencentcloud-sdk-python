@@ -4751,6 +4751,57 @@ class ComputeResourceAdvanceParams(AbstractModel):
         
 
 
+class ConfSubContext(AbstractModel):
+    r"""配置下发参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FileName: 配置文件名字
+        :type FileName: str
+        :param _Params: 配置文件参数,需要转为base64
+        :type Params: str
+        """
+        self._FileName = None
+        self._Params = None
+
+    @property
+    def FileName(self):
+        r"""配置文件名字
+        :rtype: str
+        """
+        return self._FileName
+
+    @FileName.setter
+    def FileName(self, FileName):
+        self._FileName = FileName
+
+    @property
+    def Params(self):
+        r"""配置文件参数,需要转为base64
+        :rtype: str
+        """
+        return self._Params
+
+    @Params.setter
+    def Params(self, Params):
+        self._Params = Params
+
+
+    def _deserialize(self, params):
+        self._FileName = params.get("FileName")
+        self._Params = params.get("Params")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ConfigModifyInfoV2(AbstractModel):
     r"""资源调度 - 队列修改信息
 
@@ -11384,6 +11435,157 @@ class DescribeEmrOverviewMetricsResponse(AbstractModel):
                 obj = OverviewMetricData()
                 obj._deserialize(item)
                 self._Result.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeExportConfsRequest(AbstractModel):
+    r"""DescribeExportConfs请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: <p>实例ID</p>
+        :type InstanceId: str
+        :param _ExportConfContexts: <p>指定需要导出的配置</p>
+        :type ExportConfContexts: list of ExportConfContext
+        :param _ExportType: <p>导出类型</p><p>枚举值：</p><ul><li>0： 全部配置</li><li>1： 只导出自定义和修改过的配置</li></ul>
+        :type ExportType: int
+        :param _Ip: <p>节点ip</p>
+        :type Ip: str
+        :param _ConfGroupName: <p>配置组名称</p>
+        :type ConfGroupName: str
+        """
+        self._InstanceId = None
+        self._ExportConfContexts = None
+        self._ExportType = None
+        self._Ip = None
+        self._ConfGroupName = None
+
+    @property
+    def InstanceId(self):
+        r"""<p>实例ID</p>
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def ExportConfContexts(self):
+        r"""<p>指定需要导出的配置</p>
+        :rtype: list of ExportConfContext
+        """
+        return self._ExportConfContexts
+
+    @ExportConfContexts.setter
+    def ExportConfContexts(self, ExportConfContexts):
+        self._ExportConfContexts = ExportConfContexts
+
+    @property
+    def ExportType(self):
+        r"""<p>导出类型</p><p>枚举值：</p><ul><li>0： 全部配置</li><li>1： 只导出自定义和修改过的配置</li></ul>
+        :rtype: int
+        """
+        return self._ExportType
+
+    @ExportType.setter
+    def ExportType(self, ExportType):
+        self._ExportType = ExportType
+
+    @property
+    def Ip(self):
+        r"""<p>节点ip</p>
+        :rtype: str
+        """
+        return self._Ip
+
+    @Ip.setter
+    def Ip(self, Ip):
+        self._Ip = Ip
+
+    @property
+    def ConfGroupName(self):
+        r"""<p>配置组名称</p>
+        :rtype: str
+        """
+        return self._ConfGroupName
+
+    @ConfGroupName.setter
+    def ConfGroupName(self, ConfGroupName):
+        self._ConfGroupName = ConfGroupName
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        if params.get("ExportConfContexts") is not None:
+            self._ExportConfContexts = []
+            for item in params.get("ExportConfContexts"):
+                obj = ExportConfContext()
+                obj._deserialize(item)
+                self._ExportConfContexts.append(obj)
+        self._ExportType = params.get("ExportType")
+        self._Ip = params.get("Ip")
+        self._ConfGroupName = params.get("ConfGroupName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeExportConfsResponse(AbstractModel):
+    r"""DescribeExportConfs返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ExportConfParamList: <p>导出配置参数</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ExportConfParamList: list of ExportConfMeta
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ExportConfParamList = None
+        self._RequestId = None
+
+    @property
+    def ExportConfParamList(self):
+        r"""<p>导出配置参数</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of ExportConfMeta
+        """
+        return self._ExportConfParamList
+
+    @ExportConfParamList.setter
+    def ExportConfParamList(self, ExportConfParamList):
+        self._ExportConfParamList = ExportConfParamList
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("ExportConfParamList") is not None:
+            self._ExportConfParamList = []
+            for item in params.get("ExportConfParamList"):
+                obj = ExportConfMeta()
+                obj._deserialize(item)
+                self._ExportConfParamList.append(obj)
         self._RequestId = params.get("RequestId")
 
 
@@ -21296,6 +21498,161 @@ class Execution(AbstractModel):
         
 
 
+class ExportConfContext(AbstractModel):
+    r"""指定要导出配置的上下文结构
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ServiceType: <p>服务配置</p>
+        :type ServiceType: int
+        :param _FileName: <p>文件名</p>
+        :type FileName: str
+        :param _ServiceName: <p>服务名称</p>
+        :type ServiceName: str
+        """
+        self._ServiceType = None
+        self._FileName = None
+        self._ServiceName = None
+
+    @property
+    def ServiceType(self):
+        r"""<p>服务配置</p>
+        :rtype: int
+        """
+        return self._ServiceType
+
+    @ServiceType.setter
+    def ServiceType(self, ServiceType):
+        self._ServiceType = ServiceType
+
+    @property
+    def FileName(self):
+        r"""<p>文件名</p>
+        :rtype: str
+        """
+        return self._FileName
+
+    @FileName.setter
+    def FileName(self, FileName):
+        self._FileName = FileName
+
+    @property
+    def ServiceName(self):
+        r"""<p>服务名称</p>
+        :rtype: str
+        """
+        return self._ServiceName
+
+    @ServiceName.setter
+    def ServiceName(self, ServiceName):
+        self._ServiceName = ServiceName
+
+
+    def _deserialize(self, params):
+        self._ServiceType = params.get("ServiceType")
+        self._FileName = params.get("FileName")
+        self._ServiceName = params.get("ServiceName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ExportConfMeta(AbstractModel):
+    r"""导出配置结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ServiceName: <p>组件名称</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ServiceName: str
+        :param _Classification: <p>文件名</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Classification: str
+        :param _ServiceVersion: <p>组件版本</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ServiceVersion: str
+        :param _Properties: <p>导出配置参数</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Properties: str
+        """
+        self._ServiceName = None
+        self._Classification = None
+        self._ServiceVersion = None
+        self._Properties = None
+
+    @property
+    def ServiceName(self):
+        r"""<p>组件名称</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ServiceName
+
+    @ServiceName.setter
+    def ServiceName(self, ServiceName):
+        self._ServiceName = ServiceName
+
+    @property
+    def Classification(self):
+        r"""<p>文件名</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Classification
+
+    @Classification.setter
+    def Classification(self, Classification):
+        self._Classification = Classification
+
+    @property
+    def ServiceVersion(self):
+        r"""<p>组件版本</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ServiceVersion
+
+    @ServiceVersion.setter
+    def ServiceVersion(self, ServiceVersion):
+        self._ServiceVersion = ServiceVersion
+
+    @property
+    def Properties(self):
+        r"""<p>导出配置参数</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._Properties
+
+    @Properties.setter
+    def Properties(self, Properties):
+        self._Properties = Properties
+
+
+    def _deserialize(self, params):
+        self._ServiceName = params.get("ServiceName")
+        self._Classification = params.get("Classification")
+        self._ServiceVersion = params.get("ServiceVersion")
+        self._Properties = params.get("Properties")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class ExternalAccess(AbstractModel):
     r"""容器集群外部访问设置
 
@@ -29898,6 +30255,155 @@ class ModifySLInstanceResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyServiceParamsByExportConfsRequest(AbstractModel):
+    r"""ModifyServiceParamsByExportConfs请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: <p>集群id</p>
+        :type InstanceId: str
+        :param _ExportConfParamList: <p>导入配置项</p>
+        :type ExportConfParamList: list of ExportConfMeta
+        :param _IpList: <p>ip</p>
+        :type IpList: list of str
+        :param _ConfGroupName: <p>配置组</p>
+        :type ConfGroupName: str
+        """
+        self._InstanceId = None
+        self._ExportConfParamList = None
+        self._IpList = None
+        self._ConfGroupName = None
+
+    @property
+    def InstanceId(self):
+        r"""<p>集群id</p>
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def ExportConfParamList(self):
+        r"""<p>导入配置项</p>
+        :rtype: list of ExportConfMeta
+        """
+        return self._ExportConfParamList
+
+    @ExportConfParamList.setter
+    def ExportConfParamList(self, ExportConfParamList):
+        self._ExportConfParamList = ExportConfParamList
+
+    @property
+    def IpList(self):
+        r"""<p>ip</p>
+        :rtype: list of str
+        """
+        return self._IpList
+
+    @IpList.setter
+    def IpList(self, IpList):
+        self._IpList = IpList
+
+    @property
+    def ConfGroupName(self):
+        r"""<p>配置组</p>
+        :rtype: str
+        """
+        return self._ConfGroupName
+
+    @ConfGroupName.setter
+    def ConfGroupName(self, ConfGroupName):
+        self._ConfGroupName = ConfGroupName
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        if params.get("ExportConfParamList") is not None:
+            self._ExportConfParamList = []
+            for item in params.get("ExportConfParamList"):
+                obj = ExportConfMeta()
+                obj._deserialize(item)
+                self._ExportConfParamList.append(obj)
+        self._IpList = params.get("IpList")
+        self._ConfGroupName = params.get("ConfGroupName")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyServiceParamsByExportConfsResponse(AbstractModel):
+    r"""ModifyServiceParamsByExportConfs返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FlowId: <p>流程id</p>
+        :type FlowId: int
+        :param _WaitModifyConfList: <p>变更项</p>
+        :type WaitModifyConfList: list of ConfSubContext
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._FlowId = None
+        self._WaitModifyConfList = None
+        self._RequestId = None
+
+    @property
+    def FlowId(self):
+        r"""<p>流程id</p>
+        :rtype: int
+        """
+        return self._FlowId
+
+    @FlowId.setter
+    def FlowId(self, FlowId):
+        self._FlowId = FlowId
+
+    @property
+    def WaitModifyConfList(self):
+        r"""<p>变更项</p>
+        :rtype: list of ConfSubContext
+        """
+        return self._WaitModifyConfList
+
+    @WaitModifyConfList.setter
+    def WaitModifyConfList(self, WaitModifyConfList):
+        self._WaitModifyConfList = WaitModifyConfList
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._FlowId = params.get("FlowId")
+        if params.get("WaitModifyConfList") is not None:
+            self._WaitModifyConfList = []
+            for item in params.get("WaitModifyConfList"):
+                obj = ConfSubContext()
+                obj._deserialize(item)
+                self._WaitModifyConfList.append(obj)
         self._RequestId = params.get("RequestId")
 
 

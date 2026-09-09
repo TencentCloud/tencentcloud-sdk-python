@@ -9083,21 +9083,21 @@ class DescribeMongoDBProcessListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例 ID。可通过 [DescribeDiagDBInstances](https://cloud.tencent.com/document/api/1130/57798) 接口获取。
+        :param _InstanceId: <p>实例 ID。可通过 <a href="https://cloud.tencent.com/document/api/1130/57798">DescribeDiagDBInstances</a> 接口获取。</p>
         :type InstanceId: str
-        :param _Product: 服务产品类型，支持值：mongodb
+        :param _Product: <p>服务产品类型，支持值：mongodb</p>
         :type Product: str
-        :param _ID: 线程的ID，用于筛选线程列表。
+        :param _ID: <p>线程的ID，用于筛选线程列表。</p>
         :type ID: int
-        :param _Host: 线程的操作主机地址，用于筛选线程列表。
+        :param _Host: <p>线程的操作主机地址，用于筛选线程列表。</p>
         :type Host: str
-        :param _DB: 线程的操作数据库，用于筛选线程列表,如果是多个 使用 ','  分割
+        :param _DB: <p>线程的操作数据库，用于筛选线程列表,如果是多个 使用 &#39;,&#39;  分割</p>
         :type DB: str
-        :param _Type: 命令类型 ,如果是多个 使用 ','  分割
+        :param _Type: <p>命令类型 ,如果是多个 使用 &#39;,&#39;  分割</p>
         :type Type: str
-        :param _Time: 线程的操作时长最小值，单位秒，用于筛选操作时长大于该值的线程列表。
+        :param _Time: <p>线程的操作时长最小值，单位秒，用于筛选操作时长大于该值的线程列表。</p>
         :type Time: int
-        :param _Limit: 返回数量，默认20。
+        :param _Limit: <p>返回数量，默认20。</p>
         :type Limit: int
         """
         self._InstanceId = None
@@ -9111,7 +9111,7 @@ class DescribeMongoDBProcessListRequest(AbstractModel):
 
     @property
     def InstanceId(self):
-        r"""实例 ID。可通过 [DescribeDiagDBInstances](https://cloud.tencent.com/document/api/1130/57798) 接口获取。
+        r"""<p>实例 ID。可通过 <a href="https://cloud.tencent.com/document/api/1130/57798">DescribeDiagDBInstances</a> 接口获取。</p>
         :rtype: str
         """
         return self._InstanceId
@@ -9122,7 +9122,7 @@ class DescribeMongoDBProcessListRequest(AbstractModel):
 
     @property
     def Product(self):
-        r"""服务产品类型，支持值：mongodb
+        r"""<p>服务产品类型，支持值：mongodb</p>
         :rtype: str
         """
         return self._Product
@@ -9133,7 +9133,7 @@ class DescribeMongoDBProcessListRequest(AbstractModel):
 
     @property
     def ID(self):
-        r"""线程的ID，用于筛选线程列表。
+        r"""<p>线程的ID，用于筛选线程列表。</p>
         :rtype: int
         """
         return self._ID
@@ -9144,7 +9144,7 @@ class DescribeMongoDBProcessListRequest(AbstractModel):
 
     @property
     def Host(self):
-        r"""线程的操作主机地址，用于筛选线程列表。
+        r"""<p>线程的操作主机地址，用于筛选线程列表。</p>
         :rtype: str
         """
         return self._Host
@@ -9155,7 +9155,7 @@ class DescribeMongoDBProcessListRequest(AbstractModel):
 
     @property
     def DB(self):
-        r"""线程的操作数据库，用于筛选线程列表,如果是多个 使用 ','  分割
+        r"""<p>线程的操作数据库，用于筛选线程列表,如果是多个 使用 &#39;,&#39;  分割</p>
         :rtype: str
         """
         return self._DB
@@ -9166,7 +9166,7 @@ class DescribeMongoDBProcessListRequest(AbstractModel):
 
     @property
     def Type(self):
-        r"""命令类型 ,如果是多个 使用 ','  分割
+        r"""<p>命令类型 ,如果是多个 使用 &#39;,&#39;  分割</p>
         :rtype: str
         """
         return self._Type
@@ -9177,7 +9177,7 @@ class DescribeMongoDBProcessListRequest(AbstractModel):
 
     @property
     def Time(self):
-        r"""线程的操作时长最小值，单位秒，用于筛选操作时长大于该值的线程列表。
+        r"""<p>线程的操作时长最小值，单位秒，用于筛选操作时长大于该值的线程列表。</p>
         :rtype: int
         """
         return self._Time
@@ -9188,7 +9188,7 @@ class DescribeMongoDBProcessListRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""返回数量，默认20。
+        r"""<p>返回数量，默认20。</p>
         :rtype: int
         """
         return self._Limit
@@ -9224,7 +9224,7 @@ class DescribeMongoDBProcessListResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ProcessList: 数据
+        :param _ProcessList: <p>数据</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ProcessList: :class:`tencentcloud.dbbrain.v20210527.models.MongoDBProcessList`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -9235,7 +9235,7 @@ class DescribeMongoDBProcessListResponse(AbstractModel):
 
     @property
     def ProcessList(self):
-        r"""数据
+        r"""<p>数据</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.dbbrain.v20210527.models.MongoDBProcessList`
         """

@@ -20,6 +20,9 @@ FAILEDOPERATION_QUERYDATA = 'FailedOperation.QueryData'
 # RPC服务调用失败。
 FAILEDOPERATION_RPCSERVICECALLFAILED = 'FailedOperation.RPCServiceCallFailed'
 
+# 操作中出现非预期的错误
+FAILEDOPERATION_UNEXPECTEDERROR = 'FailedOperation.UnexpectedError'
+
 # 内部错误。
 INTERNALERROR = 'InternalError'
 
@@ -130,6 +133,9 @@ MISSINGPARAMETER_COMMONPARAM = 'MissingParameter.CommonParam'
 
 # 内置目录，禁止删除
 OPERATIONDENIED_DIRECTORYDELETENOTALLOWED = 'OperationDenied.DirectoryDeleteNotAllowed'
+
+# 操作被拒绝，无管理员权限。
+OPERATIONDENIED_NOADMINISTRATORPRIVILEGE = 'OperationDenied.NoAdministratorPrivilege'
 
 # 终端导出任务同一时间仅允许一个，请稍后再试。
 REQUESTLIMITEXCEEDED_DEVICEDOWNLOADTASK = 'RequestLimitExceeded.DeviceDownloadTask'

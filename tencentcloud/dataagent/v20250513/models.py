@@ -2100,135 +2100,6 @@ class GetKnowledgeBaseListResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
-class GetSessionDetailsRequest(AbstractModel):
-    r"""GetSessionDetails请求参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _InstanceId: 实例ID
-        :type InstanceId: str
-        :param _SessionId: 会话ID
-        :type SessionId: str
-        """
-        self._InstanceId = None
-        self._SessionId = None
-
-    @property
-    def InstanceId(self):
-        r"""实例ID
-        :rtype: str
-        """
-        return self._InstanceId
-
-    @InstanceId.setter
-    def InstanceId(self, InstanceId):
-        self._InstanceId = InstanceId
-
-    @property
-    def SessionId(self):
-        r"""会话ID
-        :rtype: str
-        """
-        return self._SessionId
-
-    @SessionId.setter
-    def SessionId(self, SessionId):
-        self._SessionId = SessionId
-
-
-    def _deserialize(self, params):
-        self._InstanceId = params.get("InstanceId")
-        self._SessionId = params.get("SessionId")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class GetSessionDetailsResponse(AbstractModel):
-    r"""GetSessionDetails返回参数结构体
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _RecordList: 会话记录详情
-        :type RecordList: list of Record
-        :param _RecordCount: 记录总数
-        :type RecordCount: int
-        :param _RunRecord: 当前在运行的record信息
-        :type RunRecord: str
-        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-        :type RequestId: str
-        """
-        self._RecordList = None
-        self._RecordCount = None
-        self._RunRecord = None
-        self._RequestId = None
-
-    @property
-    def RecordList(self):
-        r"""会话记录详情
-        :rtype: list of Record
-        """
-        return self._RecordList
-
-    @RecordList.setter
-    def RecordList(self, RecordList):
-        self._RecordList = RecordList
-
-    @property
-    def RecordCount(self):
-        r"""记录总数
-        :rtype: int
-        """
-        return self._RecordCount
-
-    @RecordCount.setter
-    def RecordCount(self, RecordCount):
-        self._RecordCount = RecordCount
-
-    @property
-    def RunRecord(self):
-        r"""当前在运行的record信息
-        :rtype: str
-        """
-        return self._RunRecord
-
-    @RunRecord.setter
-    def RunRecord(self, RunRecord):
-        self._RunRecord = RunRecord
-
-    @property
-    def RequestId(self):
-        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
-        :rtype: str
-        """
-        return self._RequestId
-
-    @RequestId.setter
-    def RequestId(self, RequestId):
-        self._RequestId = RequestId
-
-
-    def _deserialize(self, params):
-        if params.get("RecordList") is not None:
-            self._RecordList = []
-            for item in params.get("RecordList"):
-                obj = Record()
-                obj._deserialize(item)
-                self._RecordList.append(obj)
-        self._RecordCount = params.get("RecordCount")
-        self._RunRecord = params.get("RunRecord")
-        self._RequestId = params.get("RequestId")
-
-
 class GetUploadJobDetailsRequest(AbstractModel):
     r"""GetUploadJobDetails请求参数结构体
 
@@ -3834,63 +3705,284 @@ class QueryUserAuthorityResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
-class Record(AbstractModel):
-    r"""问答结构
+class QueryUserSessionDetailRequest(AbstractModel):
+    r"""QueryUserSessionDetail请求参数结构体
 
     """
 
     def __init__(self):
         r"""
-        :param _Question: 问题内容
-        :type Question: str
-        :param _Answer: 回答内容
-        :type Answer: str
-        :param _Think: 思考内容
-        :type Think: str
-        :param _TaskList: 任务列表
-        :type TaskList: list of Task
-        :param _CreateTime: 记录创建时间
-        :type CreateTime: str
-        :param _UpdateTime: 记录更新时间
-        :type UpdateTime: str
-        :param _RecordId: 记录id
-        :type RecordId: str
-        :param _FinalSummary: 总结内容
-        :type FinalSummary: str
-        :param _SessionId: 会话ID
+        :param _SessionId: <p>会话id</p>
         :type SessionId: str
-        :param _Feedback: 1=赞，2=踩，0=无反馈
-        :type Feedback: int
-        :param _DbInfo: 数据库信息
-        :type DbInfo: str
-        :param _ErrorContext: 错误信息
-        :type ErrorContext: str
-        :param _TaskListStr: TaskList的string字符串
-        :type TaskListStr: str
-        :param _KnowledgeBaseIds: 知识库id列表
-        :type KnowledgeBaseIds: list of str
-        :param _Context: 上下文
-        :type Context: str
+        :param _Limit: <p>分页参数</p>
+        :type Limit: int
+        :param _Offset: <p>偏移量</p>
+        :type Offset: int
+        :param _InstanceId: <p>实例id</p>
+        :type InstanceId: str
         """
+        self._SessionId = None
+        self._Limit = None
+        self._Offset = None
+        self._InstanceId = None
+
+    @property
+    def SessionId(self):
+        r"""<p>会话id</p>
+        :rtype: str
+        """
+        return self._SessionId
+
+    @SessionId.setter
+    def SessionId(self, SessionId):
+        self._SessionId = SessionId
+
+    @property
+    def Limit(self):
+        r"""<p>分页参数</p>
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        r"""<p>偏移量</p>
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def InstanceId(self):
+        r"""<p>实例id</p>
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+
+    def _deserialize(self, params):
+        self._SessionId = params.get("SessionId")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        self._InstanceId = params.get("InstanceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class QueryUserSessionDetailResponse(AbstractModel):
+    r"""QueryUserSessionDetail返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SubAccountUin: <p>用户 Id</p>
+        :type SubAccountUin: str
+        :param _SessionId: <p>会话id</p>
+        :type SessionId: str
+        :param _RecordList: <p>会话详情数组</p>
+        :type RecordList: list of RecordList
+        :param _TotalCount: <p>记录总数</p>
+        :type TotalCount: int
+        :param _RunRecord: <p>运行中的聊天请求, 返回为json字符串</p>
+        :type RunRecord: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._SubAccountUin = None
+        self._SessionId = None
+        self._RecordList = None
+        self._TotalCount = None
+        self._RunRecord = None
+        self._RequestId = None
+
+    @property
+    def SubAccountUin(self):
+        r"""<p>用户 Id</p>
+        :rtype: str
+        """
+        return self._SubAccountUin
+
+    @SubAccountUin.setter
+    def SubAccountUin(self, SubAccountUin):
+        self._SubAccountUin = SubAccountUin
+
+    @property
+    def SessionId(self):
+        r"""<p>会话id</p>
+        :rtype: str
+        """
+        return self._SessionId
+
+    @SessionId.setter
+    def SessionId(self, SessionId):
+        self._SessionId = SessionId
+
+    @property
+    def RecordList(self):
+        r"""<p>会话详情数组</p>
+        :rtype: list of RecordList
+        """
+        return self._RecordList
+
+    @RecordList.setter
+    def RecordList(self, RecordList):
+        self._RecordList = RecordList
+
+    @property
+    def TotalCount(self):
+        r"""<p>记录总数</p>
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RunRecord(self):
+        r"""<p>运行中的聊天请求, 返回为json字符串</p>
+        :rtype: str
+        """
+        return self._RunRecord
+
+    @RunRecord.setter
+    def RunRecord(self, RunRecord):
+        self._RunRecord = RunRecord
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._SubAccountUin = params.get("SubAccountUin")
+        self._SessionId = params.get("SessionId")
+        if params.get("RecordList") is not None:
+            self._RecordList = []
+            for item in params.get("RecordList"):
+                obj = RecordList()
+                obj._deserialize(item)
+                self._RecordList.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RunRecord = params.get("RunRecord")
+        self._RequestId = params.get("RequestId")
+
+
+class RecordList(AbstractModel):
+    r"""记录列表
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Context: <p>会话上下文</p>
+        :type Context: str
+        :param _RecordId: <p>记录id</p>
+        :type RecordId: str
+        :param _TraceId: <p>追踪id</p>
+        :type TraceId: str
+        :param _SessionId: <p>会话id</p>
+        :type SessionId: str
+        :param _Question: <p>问题</p>
+        :type Question: str
+        :param _Answer: <p>回答</p>
+        :type Answer: str
+        :param _Feedback: <p>0-否定反馈, 1-肯定反馈</p>
+        :type Feedback: int
+        :param _ErrorContext: <p>错误信息</p>
+        :type ErrorContext: str
+        :param _CreateTime: <p>创建时间</p>
+        :type CreateTime: str
+        :param _UpdateTime: <p>更新时间</p>
+        :type UpdateTime: str
+        :param _Model: <p>模型信息</p>
+        :type Model: str
+        """
+        self._Context = None
+        self._RecordId = None
+        self._TraceId = None
+        self._SessionId = None
         self._Question = None
         self._Answer = None
-        self._Think = None
-        self._TaskList = None
+        self._Feedback = None
+        self._ErrorContext = None
         self._CreateTime = None
         self._UpdateTime = None
-        self._RecordId = None
-        self._FinalSummary = None
-        self._SessionId = None
-        self._Feedback = None
-        self._DbInfo = None
-        self._ErrorContext = None
-        self._TaskListStr = None
-        self._KnowledgeBaseIds = None
-        self._Context = None
+        self._Model = None
+
+    @property
+    def Context(self):
+        r"""<p>会话上下文</p>
+        :rtype: str
+        """
+        return self._Context
+
+    @Context.setter
+    def Context(self, Context):
+        self._Context = Context
+
+    @property
+    def RecordId(self):
+        r"""<p>记录id</p>
+        :rtype: str
+        """
+        return self._RecordId
+
+    @RecordId.setter
+    def RecordId(self, RecordId):
+        self._RecordId = RecordId
+
+    @property
+    def TraceId(self):
+        r"""<p>追踪id</p>
+        :rtype: str
+        """
+        return self._TraceId
+
+    @TraceId.setter
+    def TraceId(self, TraceId):
+        self._TraceId = TraceId
+
+    @property
+    def SessionId(self):
+        r"""<p>会话id</p>
+        :rtype: str
+        """
+        return self._SessionId
+
+    @SessionId.setter
+    def SessionId(self, SessionId):
+        self._SessionId = SessionId
 
     @property
     def Question(self):
-        r"""问题内容
+        r"""<p>问题</p>
         :rtype: str
         """
         return self._Question
@@ -3901,7 +3993,7 @@ class Record(AbstractModel):
 
     @property
     def Answer(self):
-        r"""回答内容
+        r"""<p>回答</p>
         :rtype: str
         """
         return self._Answer
@@ -3911,30 +4003,30 @@ class Record(AbstractModel):
         self._Answer = Answer
 
     @property
-    def Think(self):
-        r"""思考内容
-        :rtype: str
+    def Feedback(self):
+        r"""<p>0-否定反馈, 1-肯定反馈</p>
+        :rtype: int
         """
-        return self._Think
+        return self._Feedback
 
-    @Think.setter
-    def Think(self, Think):
-        self._Think = Think
+    @Feedback.setter
+    def Feedback(self, Feedback):
+        self._Feedback = Feedback
 
     @property
-    def TaskList(self):
-        r"""任务列表
-        :rtype: list of Task
+    def ErrorContext(self):
+        r"""<p>错误信息</p>
+        :rtype: str
         """
-        return self._TaskList
+        return self._ErrorContext
 
-    @TaskList.setter
-    def TaskList(self, TaskList):
-        self._TaskList = TaskList
+    @ErrorContext.setter
+    def ErrorContext(self, ErrorContext):
+        self._ErrorContext = ErrorContext
 
     @property
     def CreateTime(self):
-        r"""记录创建时间
+        r"""<p>创建时间</p>
         :rtype: str
         """
         return self._CreateTime
@@ -3945,7 +4037,7 @@ class Record(AbstractModel):
 
     @property
     def UpdateTime(self):
-        r"""记录更新时间
+        r"""<p>更新时间</p>
         :rtype: str
         """
         return self._UpdateTime
@@ -3955,320 +4047,29 @@ class Record(AbstractModel):
         self._UpdateTime = UpdateTime
 
     @property
-    def RecordId(self):
-        r"""记录id
+    def Model(self):
+        r"""<p>模型信息</p>
         :rtype: str
         """
-        return self._RecordId
+        return self._Model
 
-    @RecordId.setter
-    def RecordId(self, RecordId):
-        self._RecordId = RecordId
-
-    @property
-    def FinalSummary(self):
-        r"""总结内容
-        :rtype: str
-        """
-        return self._FinalSummary
-
-    @FinalSummary.setter
-    def FinalSummary(self, FinalSummary):
-        self._FinalSummary = FinalSummary
-
-    @property
-    def SessionId(self):
-        r"""会话ID
-        :rtype: str
-        """
-        return self._SessionId
-
-    @SessionId.setter
-    def SessionId(self, SessionId):
-        self._SessionId = SessionId
-
-    @property
-    def Feedback(self):
-        r"""1=赞，2=踩，0=无反馈
-        :rtype: int
-        """
-        return self._Feedback
-
-    @Feedback.setter
-    def Feedback(self, Feedback):
-        self._Feedback = Feedback
-
-    @property
-    def DbInfo(self):
-        r"""数据库信息
-        :rtype: str
-        """
-        return self._DbInfo
-
-    @DbInfo.setter
-    def DbInfo(self, DbInfo):
-        self._DbInfo = DbInfo
-
-    @property
-    def ErrorContext(self):
-        r"""错误信息
-        :rtype: str
-        """
-        return self._ErrorContext
-
-    @ErrorContext.setter
-    def ErrorContext(self, ErrorContext):
-        self._ErrorContext = ErrorContext
-
-    @property
-    def TaskListStr(self):
-        r"""TaskList的string字符串
-        :rtype: str
-        """
-        return self._TaskListStr
-
-    @TaskListStr.setter
-    def TaskListStr(self, TaskListStr):
-        self._TaskListStr = TaskListStr
-
-    @property
-    def KnowledgeBaseIds(self):
-        r"""知识库id列表
-        :rtype: list of str
-        """
-        return self._KnowledgeBaseIds
-
-    @KnowledgeBaseIds.setter
-    def KnowledgeBaseIds(self, KnowledgeBaseIds):
-        self._KnowledgeBaseIds = KnowledgeBaseIds
-
-    @property
-    def Context(self):
-        r"""上下文
-        :rtype: str
-        """
-        return self._Context
-
-    @Context.setter
-    def Context(self, Context):
-        self._Context = Context
+    @Model.setter
+    def Model(self, Model):
+        self._Model = Model
 
 
     def _deserialize(self, params):
+        self._Context = params.get("Context")
+        self._RecordId = params.get("RecordId")
+        self._TraceId = params.get("TraceId")
+        self._SessionId = params.get("SessionId")
         self._Question = params.get("Question")
         self._Answer = params.get("Answer")
-        self._Think = params.get("Think")
-        if params.get("TaskList") is not None:
-            self._TaskList = []
-            for item in params.get("TaskList"):
-                obj = Task()
-                obj._deserialize(item)
-                self._TaskList.append(obj)
+        self._Feedback = params.get("Feedback")
+        self._ErrorContext = params.get("ErrorContext")
         self._CreateTime = params.get("CreateTime")
         self._UpdateTime = params.get("UpdateTime")
-        self._RecordId = params.get("RecordId")
-        self._FinalSummary = params.get("FinalSummary")
-        self._SessionId = params.get("SessionId")
-        self._Feedback = params.get("Feedback")
-        self._DbInfo = params.get("DbInfo")
-        self._ErrorContext = params.get("ErrorContext")
-        self._TaskListStr = params.get("TaskListStr")
-        self._KnowledgeBaseIds = params.get("KnowledgeBaseIds")
-        self._Context = params.get("Context")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class StepExpand(AbstractModel):
-    r"""步骤扩展结构
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _Title: 标题
-        :type Title: str
-        :param _Status: 状态
-        :type Status: str
-        :param _CellIds: cellid数组
-        :type CellIds: list of str
-        """
-        self._Title = None
-        self._Status = None
-        self._CellIds = None
-
-    @property
-    def Title(self):
-        r"""标题
-        :rtype: str
-        """
-        return self._Title
-
-    @Title.setter
-    def Title(self, Title):
-        self._Title = Title
-
-    @property
-    def Status(self):
-        r"""状态
-        :rtype: str
-        """
-        return self._Status
-
-    @Status.setter
-    def Status(self, Status):
-        self._Status = Status
-
-    @property
-    def CellIds(self):
-        r"""cellid数组
-        :rtype: list of str
-        """
-        return self._CellIds
-
-    @CellIds.setter
-    def CellIds(self, CellIds):
-        self._CellIds = CellIds
-
-
-    def _deserialize(self, params):
-        self._Title = params.get("Title")
-        self._Status = params.get("Status")
-        self._CellIds = params.get("CellIds")
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
-
-
-class StepInfo(AbstractModel):
-    r"""任务步骤
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _Id: 步骤id
-        :type Id: int
-        :param _Name: 步骤名称
-        :type Name: str
-        :param _Status: 步骤状态
-        :type Status: str
-        :param _Type: 类型(text/expand)
-        :type Type: str
-        :param _Summary: 总结
-        :type Summary: str
-        :param _Expand: 步骤扩展结构
-        :type Expand: :class:`tencentcloud.dataagent.v20250513.models.StepExpand`
-        :param _Desc: 描述
-        :type Desc: str
-        """
-        self._Id = None
-        self._Name = None
-        self._Status = None
-        self._Type = None
-        self._Summary = None
-        self._Expand = None
-        self._Desc = None
-
-    @property
-    def Id(self):
-        r"""步骤id
-        :rtype: int
-        """
-        return self._Id
-
-    @Id.setter
-    def Id(self, Id):
-        self._Id = Id
-
-    @property
-    def Name(self):
-        r"""步骤名称
-        :rtype: str
-        """
-        return self._Name
-
-    @Name.setter
-    def Name(self, Name):
-        self._Name = Name
-
-    @property
-    def Status(self):
-        r"""步骤状态
-        :rtype: str
-        """
-        return self._Status
-
-    @Status.setter
-    def Status(self, Status):
-        self._Status = Status
-
-    @property
-    def Type(self):
-        r"""类型(text/expand)
-        :rtype: str
-        """
-        return self._Type
-
-    @Type.setter
-    def Type(self, Type):
-        self._Type = Type
-
-    @property
-    def Summary(self):
-        r"""总结
-        :rtype: str
-        """
-        return self._Summary
-
-    @Summary.setter
-    def Summary(self, Summary):
-        self._Summary = Summary
-
-    @property
-    def Expand(self):
-        r"""步骤扩展结构
-        :rtype: :class:`tencentcloud.dataagent.v20250513.models.StepExpand`
-        """
-        return self._Expand
-
-    @Expand.setter
-    def Expand(self, Expand):
-        self._Expand = Expand
-
-    @property
-    def Desc(self):
-        r"""描述
-        :rtype: str
-        """
-        return self._Desc
-
-    @Desc.setter
-    def Desc(self, Desc):
-        self._Desc = Desc
-
-
-    def _deserialize(self, params):
-        self._Id = params.get("Id")
-        self._Name = params.get("Name")
-        self._Status = params.get("Status")
-        self._Type = params.get("Type")
-        self._Summary = params.get("Summary")
-        if params.get("Expand") is not None:
-            self._Expand = StepExpand()
-            self._Expand._deserialize(params.get("Expand"))
-        self._Desc = params.get("Desc")
+        self._Model = params.get("Model")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4371,92 +4172,6 @@ class StopChatAIResponse(AbstractModel):
     def _deserialize(self, params):
         self._SessionId = params.get("SessionId")
         self._RequestId = params.get("RequestId")
-
-
-class Task(AbstractModel):
-    r"""任务信息
-
-    """
-
-    def __init__(self):
-        r"""
-        :param _Id: 任务ID
-        :type Id: int
-        :param _Name: 任务名称
-        :type Name: str
-        :param _Status: 任务状态
-        :type Status: str
-        :param _StepInfoList: 任务步骤列表
-        :type StepInfoList: list of StepInfo
-        """
-        self._Id = None
-        self._Name = None
-        self._Status = None
-        self._StepInfoList = None
-
-    @property
-    def Id(self):
-        r"""任务ID
-        :rtype: int
-        """
-        return self._Id
-
-    @Id.setter
-    def Id(self, Id):
-        self._Id = Id
-
-    @property
-    def Name(self):
-        r"""任务名称
-        :rtype: str
-        """
-        return self._Name
-
-    @Name.setter
-    def Name(self, Name):
-        self._Name = Name
-
-    @property
-    def Status(self):
-        r"""任务状态
-        :rtype: str
-        """
-        return self._Status
-
-    @Status.setter
-    def Status(self, Status):
-        self._Status = Status
-
-    @property
-    def StepInfoList(self):
-        r"""任务步骤列表
-        :rtype: list of StepInfo
-        """
-        return self._StepInfoList
-
-    @StepInfoList.setter
-    def StepInfoList(self, StepInfoList):
-        self._StepInfoList = StepInfoList
-
-
-    def _deserialize(self, params):
-        self._Id = params.get("Id")
-        self._Name = params.get("Name")
-        self._Status = params.get("Status")
-        if params.get("StepInfoList") is not None:
-            self._StepInfoList = []
-            for item in params.get("StepInfoList"):
-                obj = StepInfo()
-                obj._deserialize(item)
-                self._StepInfoList.append(obj)
-        memeber_set = set(params.keys())
-        for name, value in vars(self).items():
-            property_name = name[1:]
-            if property_name in memeber_set:
-                memeber_set.remove(property_name)
-        if len(memeber_set) > 0:
-            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
-        
 
 
 class UploadAndCommitFileRequest(AbstractModel):

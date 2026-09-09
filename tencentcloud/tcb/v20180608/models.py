@@ -19765,7 +19765,7 @@ class ModifyEnvRequest(AbstractModel):
         r"""
         :param _EnvId: <p>环境ID</p>
         :type EnvId: str
-        :param _Alias: <p>环境备注名，要以a-z开头，不能包含 a-zA-z0-9- 以外的字符</p>
+        :param _Alias: <p>环境备注名</p><p>入参限制：最大长度为32</p>
         :type Alias: str
         :param _CustomQps: <p>按量计费QPS上限，大于套餐配额时生效。-1表示关闭QPS按量计费。</p>
         :type CustomQps: int
@@ -19787,7 +19787,7 @@ class ModifyEnvRequest(AbstractModel):
 
     @property
     def Alias(self):
-        r"""<p>环境备注名，要以a-z开头，不能包含 a-zA-z0-9- 以外的字符</p>
+        r"""<p>环境备注名</p><p>入参限制：最大长度为32</p>
         :rtype: str
         """
         return self._Alias

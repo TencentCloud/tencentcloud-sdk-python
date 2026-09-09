@@ -536,6 +536,9 @@ class EssClient(AbstractClient):
         3. 该接口返回的签署链接适用于APP集成的场景，支持APP打开或浏览器直接打开，**不支持微信小程序嵌入**。
         4. 因h5涉及人脸身份认证能力基于慧眼人脸核身，对Android和iOS系统均有一定要求， 因此<font color='red'>App嵌入H5签署合同需要按照慧眼提供的<a href="https://cloud.tencent.com/document/product/1007/61076">慧眼人脸核身兼容性文档</a>做兼容性适配</font>。
         5. <font color='red'>iframe 嵌入暂不支持人脸相关操作</font>，包括设置密码等需要进行的人脸核验。
+        6. 生成批量签署或合同组签署链接时，需通过以下参数重新指定签署配置( `SignatureTypes`和`ApproverSignTypes`的配置将覆盖合同发起时设置的签名类型和身份认证方式，并应用于本次生成的批量签署或合同组签署链接。)
+           - `SignatureTypes`：指定签名类型；未传入时，<font color='red'>默认使用手写签名</font>。
+           - `ApproverSignTypes`：指定签署人的身份认证方式；未传入时，<font color='red'>默认使用人脸认证</font>。
 
         :param request: Request instance for CreateBatchQuickSignUrl.
         :type request: :class:`tencentcloud.ess.v20201111.models.CreateBatchQuickSignUrlRequest`
@@ -995,7 +998,8 @@ class EssClient(AbstractClient):
 
     def CreateFileConvertTask(self, request):
         r"""此接口（CreateFileConvertTask）用来将word、excel、html、图片、txt类型文件转换为PDF文件。<br />
-        <font color="red">原功能接口: </font><a href="https://qian.tencent.com/developers/companyApis/templatesAndFiles/CreateConvertTaskApi" target="_blank">创建文件转换任务（CreateConvertTaskApi）</a><br />
+
+
         前提条件：源文件已经通过 <a href="https://qian.tencent.com/developers/companyApis/templatesAndFiles/UploadFiles" target="_blank">文件上传接口</a>完成上传，并得到了源文件的资源Id。<br />
         适用场景1：已经上传了一个word文件，希望将该word文件转换成pdf文件后发起合同
         适用场景2：已经上传了一个jpg图片文件，希望将该图片文件转换成pdf文件后发起合同<br />
@@ -2522,24 +2526,29 @@ class EssClient(AbstractClient):
 
 
     def CreateSchemeUrl(self, request):
-        r"""获取跳转至腾讯电子签小程序的签署链接
+        r"""本接口（CreateSchemeUrl）用于获取跳转至腾讯电子签小程序的签署链接，签署人点击链接后即可跳转到腾讯电子签小程序完成合同的查看、填写与签署等操作。
 
-        适用场景：如果需要签署人在自己的APP、小程序、H5应用中签署，可以通过此接口获取跳转腾讯电子签小程序的签署跳转链接。
-
+        ### 1.1 适用场景
+        当需要签署人在贵方自有的 APP、小程序、H5、公众号等应用中发起或完成签署时，可通过此接口获取跳转至腾讯电子签小程序的签署链接，并结合短信、页面按钮、二维码等方式触达签署人。
         跳转到小程序的实现，参考微信官方文档（分为<a href="https://developers.weixin.qq.com/miniprogram/dev/api/navigate/wx.navigateToMiniProgram.html">全屏</a>、<a href="https://developers.weixin.qq.com/miniprogram/dev/framework/open-ability/openEmbeddedMiniProgram.html">半屏</a>两种方式），如何配置也可以请参考: <a href="https://qian.tencent.com/developers/company/openwxminiprogram">跳转电子签小程序配置</a>
 
-        注：
+        ### 1.2 注意事项
         <ul><li>1. 如果签署人是在PC端扫码签署，可以通过生成跳转链接自主转换成二维码，让签署人在PC端扫码签署</li>
         <li>2. 签署链接的有效期为<font color="red">90天</font>，超过有效期链接不可用</li>
         <li>3. 如果需跳转详情页（即PathType值为1）进行填写或签署合同，需指定签署方信息:姓名、手机号码、企业名称等，才能生成正确的跳转链接</li>
-        <li>4. <font color="red">生成的链路后面不能再增加参数</font>（会出现覆盖链接中已有参数导致错误）</li></ul>
+        <li>4. <font color="red">生成的链路后面不能再增加参数</font>（会出现覆盖链接中已有参数导致错误）</li>
+        <li>5. <font color="red">签署链接与签署人一一对应，仅限对应签署人本人打开</font>。例如给签署人A生成的链接只能A本人打开，其他人打开会提示无权限，不同签署人的链接不能混用</li></ul>
 
+
+        ### 1.3 腾讯电子签小程序AppID
         其中小程序的原始Id如下，或者查看小程序信息自助获取。
 
         | 小程序 | AppID | 原始ID |
         | ------------ | ------------ | ------------ |
         | 腾讯电子签（正式版） | wxa023b292fd19d41d | gh_da88f6188665 |
         | 腾讯电子签Demo | wx371151823f6f3edf | gh_39a5d3de69fa |
+
+        <font color="red">注：如果客户在线上小程序环境中打开的是腾讯电子签的测试版本小程序（腾讯电子签Demo），需要联系其前端将跳转配置中小程序的 AppID 从 `腾讯电子签Demo（wx371151823f6f3edf）` 更换为 `腾讯电子签（正式版）（wxa023b292fd19d41d）`。</font>
 
         :param request: Request instance for CreateSchemeUrl.
         :type request: :class:`tencentcloud.ess.v20201111.models.CreateSchemeUrlRequest`
@@ -3474,7 +3483,8 @@ class EssClient(AbstractClient):
 
     def DescribeFileConvertTask(self, request):
         r"""此接口（DescribeFileConvertTask）用来查询转换任务的状态。如需发起转换任务，请使用<a href="https://qian.tencent.com/developers/companyApis/templatesAndFiles/CreateFileConvertTask" target="_blank">创建文件转换任务接口</a>进行资源文件的转换操作<br />
-        <font color="red">原功能接口: </font><a href="https://qian.tencent.com/developers/companyApis/templatesAndFiles/GetTaskResultApi" target="_blank">查询转换任务状态（GetTaskResultApi）</a><br />
+
+
         前提条件：已调用 <a href="https://qian.tencent.com/developers/companyApis/templatesAndFiles/CreateFileConvertTask" target="_blank">创建文件转换任务接口</a>进行文件转换，并得到了返回的转换任务Id。<br />
 
         适用场景：已创建一个文件转换任务，想查询该文件转换任务的状态，或获取转换后的文件资源Id。<br />

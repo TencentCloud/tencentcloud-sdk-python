@@ -964,6 +964,8 @@ class AgentPluginConfig(AbstractModel):
         :type AuthType: int
         :param _OAuthConsent: <p>OAuth 授权同意模式；0-开发者授权；1-使用者授权（仅在auth_type=3时生效）</p>
         :type OAuthConsent: int
+        :param _CredentialConfig: <p>凭证配置</p>
+        :type CredentialConfig: :class:`tencentcloud.adp.v20260520.models.AgentPluginCredentialConfig`
         """
         self._PluginId = None
         self._HeaderParameterList = None
@@ -971,6 +973,7 @@ class AgentPluginConfig(AbstractModel):
         self._EnableCamRoleAuth = None
         self._AuthType = None
         self._OAuthConsent = None
+        self._CredentialConfig = None
 
     @property
     def PluginId(self):
@@ -1038,6 +1041,17 @@ class AgentPluginConfig(AbstractModel):
     def OAuthConsent(self, OAuthConsent):
         self._OAuthConsent = OAuthConsent
 
+    @property
+    def CredentialConfig(self):
+        r"""<p>凭证配置</p>
+        :rtype: :class:`tencentcloud.adp.v20260520.models.AgentPluginCredentialConfig`
+        """
+        return self._CredentialConfig
+
+    @CredentialConfig.setter
+    def CredentialConfig(self, CredentialConfig):
+        self._CredentialConfig = CredentialConfig
+
 
     def _deserialize(self, params):
         self._PluginId = params.get("PluginId")
@@ -1056,6 +1070,148 @@ class AgentPluginConfig(AbstractModel):
         self._EnableCamRoleAuth = params.get("EnableCamRoleAuth")
         self._AuthType = params.get("AuthType")
         self._OAuthConsent = params.get("OAuthConsent")
+        if params.get("CredentialConfig") is not None:
+            self._CredentialConfig = AgentPluginCredentialConfig()
+            self._CredentialConfig._deserialize(params.get("CredentialConfig"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AgentPluginCredentialConfig(AbstractModel):
+    r"""Agent 插件凭据配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AuthValueSource: <p>插件鉴权值来源</p><p>枚举值：</p><ul><li>0： 未指定</li><li>1： 使用插件默认鉴权值，仅 APIKey/AccessKey 支持</li><li>2： 引用凭证</li><li>3： 引用变量</li></ul>
+        :type AuthValueSource: int
+        :param _CredentialId: <p>凭证ID</p><p>入参限制：AuthValueSource=2时必填</p>
+        :type CredentialId: str
+        :param _ParamList: <p>参数配置</p>
+        :type ParamList: list of AgentPluginCredentialParam
+        """
+        self._AuthValueSource = None
+        self._CredentialId = None
+        self._ParamList = None
+
+    @property
+    def AuthValueSource(self):
+        r"""<p>插件鉴权值来源</p><p>枚举值：</p><ul><li>0： 未指定</li><li>1： 使用插件默认鉴权值，仅 APIKey/AccessKey 支持</li><li>2： 引用凭证</li><li>3： 引用变量</li></ul>
+        :rtype: int
+        """
+        return self._AuthValueSource
+
+    @AuthValueSource.setter
+    def AuthValueSource(self, AuthValueSource):
+        self._AuthValueSource = AuthValueSource
+
+    @property
+    def CredentialId(self):
+        r"""<p>凭证ID</p><p>入参限制：AuthValueSource=2时必填</p>
+        :rtype: str
+        """
+        return self._CredentialId
+
+    @CredentialId.setter
+    def CredentialId(self, CredentialId):
+        self._CredentialId = CredentialId
+
+    @property
+    def ParamList(self):
+        r"""<p>参数配置</p>
+        :rtype: list of AgentPluginCredentialParam
+        """
+        return self._ParamList
+
+    @ParamList.setter
+    def ParamList(self, ParamList):
+        self._ParamList = ParamList
+
+
+    def _deserialize(self, params):
+        self._AuthValueSource = params.get("AuthValueSource")
+        self._CredentialId = params.get("CredentialId")
+        if params.get("ParamList") is not None:
+            self._ParamList = []
+            for item in params.get("ParamList"):
+                obj = AgentPluginCredentialParam()
+                obj._deserialize(item)
+                self._ParamList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AgentPluginCredentialParam(AbstractModel):
+    r"""Agent 插件凭据参数配置（变量模式）
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _KeyLocation: <p>参数位置</p><p>枚举值：</p><ul><li>0： Header 鉴权</li><li>1： Query 鉴权</li></ul>
+        :type KeyLocation: int
+        :param _Name: <p>参数名称</p>
+        :type Name: str
+        :param _Input: <p>参数取值来源</p>
+        :type Input: :class:`tencentcloud.adp.v20260520.models.AgentInput`
+        """
+        self._KeyLocation = None
+        self._Name = None
+        self._Input = None
+
+    @property
+    def KeyLocation(self):
+        r"""<p>参数位置</p><p>枚举值：</p><ul><li>0： Header 鉴权</li><li>1： Query 鉴权</li></ul>
+        :rtype: int
+        """
+        return self._KeyLocation
+
+    @KeyLocation.setter
+    def KeyLocation(self, KeyLocation):
+        self._KeyLocation = KeyLocation
+
+    @property
+    def Name(self):
+        r"""<p>参数名称</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Input(self):
+        r"""<p>参数取值来源</p>
+        :rtype: :class:`tencentcloud.adp.v20260520.models.AgentInput`
+        """
+        return self._Input
+
+    @Input.setter
+    def Input(self, Input):
+        self._Input = Input
+
+
+    def _deserialize(self, params):
+        self._KeyLocation = params.get("KeyLocation")
+        self._Name = params.get("Name")
+        if params.get("Input") is not None:
+            self._Input = AgentInput()
+            self._Input._deserialize(params.get("Input"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7221,6 +7377,72 @@ class CallSource(AbstractModel):
         
 
 
+class CallbackConfig(AbstractModel):
+    r"""回调配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CallbackAesKey: <p>回调AESKey</p>
+        :type CallbackAesKey: str
+        :param _CallbackToken: <p>回调Token</p>
+        :type CallbackToken: str
+        :param _CallbackUrl: <p>回调URL</p>
+        :type CallbackUrl: str
+        """
+        self._CallbackAesKey = None
+        self._CallbackToken = None
+        self._CallbackUrl = None
+
+    @property
+    def CallbackAesKey(self):
+        r"""<p>回调AESKey</p>
+        :rtype: str
+        """
+        return self._CallbackAesKey
+
+    @CallbackAesKey.setter
+    def CallbackAesKey(self, CallbackAesKey):
+        self._CallbackAesKey = CallbackAesKey
+
+    @property
+    def CallbackToken(self):
+        r"""<p>回调Token</p>
+        :rtype: str
+        """
+        return self._CallbackToken
+
+    @CallbackToken.setter
+    def CallbackToken(self, CallbackToken):
+        self._CallbackToken = CallbackToken
+
+    @property
+    def CallbackUrl(self):
+        r"""<p>回调URL</p>
+        :rtype: str
+        """
+        return self._CallbackUrl
+
+    @CallbackUrl.setter
+    def CallbackUrl(self, CallbackUrl):
+        self._CallbackUrl = CallbackUrl
+
+
+    def _deserialize(self, params):
+        self._CallbackAesKey = params.get("CallbackAesKey")
+        self._CallbackToken = params.get("CallbackToken")
+        self._CallbackUrl = params.get("CallbackUrl")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CamAuthConfig(AbstractModel):
     r"""CAM授权信息
 
@@ -7370,6 +7592,407 @@ class CategoryPermission(AbstractModel):
         self._CanAdd = params.get("CanAdd")
         self._CanDelete = params.get("CanDelete")
         self._CanEdit = params.get("CanEdit")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class Channel(AbstractModel):
+    r"""渠道信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ChannelId: <p>渠道ID</p>
+        :type ChannelId: str
+        :param _ChannelStatus: <p>渠道状态（仅B端）：1-未发布，2-运行中，3-已下线（与ConnectStatus互斥）</p>
+        :type ChannelStatus: int
+        :param _ConnectStatus: <p>连接状态（仅C端）：1-初始，2-连接成功，3-连接失败（与ChannelStatus互斥）</p>
+        :type ConnectStatus: int
+        :param _CreateTime: <p>创建时间（Unix秒）</p>
+        :type CreateTime: str
+        :param _Spec: <p>渠道规格</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Spec: :class:`tencentcloud.adp.v20260520.models.ChannelSpec`
+        :param _UpdateTime: <p>更新时间（Unix秒）</p>
+        :type UpdateTime: str
+        :param _Updater: <p>最后更新人</p>
+        :type Updater: str
+        """
+        self._ChannelId = None
+        self._ChannelStatus = None
+        self._ConnectStatus = None
+        self._CreateTime = None
+        self._Spec = None
+        self._UpdateTime = None
+        self._Updater = None
+
+    @property
+    def ChannelId(self):
+        r"""<p>渠道ID</p>
+        :rtype: str
+        """
+        return self._ChannelId
+
+    @ChannelId.setter
+    def ChannelId(self, ChannelId):
+        self._ChannelId = ChannelId
+
+    @property
+    def ChannelStatus(self):
+        r"""<p>渠道状态（仅B端）：1-未发布，2-运行中，3-已下线（与ConnectStatus互斥）</p>
+        :rtype: int
+        """
+        return self._ChannelStatus
+
+    @ChannelStatus.setter
+    def ChannelStatus(self, ChannelStatus):
+        self._ChannelStatus = ChannelStatus
+
+    @property
+    def ConnectStatus(self):
+        r"""<p>连接状态（仅C端）：1-初始，2-连接成功，3-连接失败（与ChannelStatus互斥）</p>
+        :rtype: int
+        """
+        return self._ConnectStatus
+
+    @ConnectStatus.setter
+    def ConnectStatus(self, ConnectStatus):
+        self._ConnectStatus = ConnectStatus
+
+    @property
+    def CreateTime(self):
+        r"""<p>创建时间（Unix秒）</p>
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def Spec(self):
+        r"""<p>渠道规格</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.adp.v20260520.models.ChannelSpec`
+        """
+        return self._Spec
+
+    @Spec.setter
+    def Spec(self, Spec):
+        self._Spec = Spec
+
+    @property
+    def UpdateTime(self):
+        r"""<p>更新时间（Unix秒）</p>
+        :rtype: str
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+    @property
+    def Updater(self):
+        r"""<p>最后更新人</p>
+        :rtype: str
+        """
+        return self._Updater
+
+    @Updater.setter
+    def Updater(self, Updater):
+        self._Updater = Updater
+
+
+    def _deserialize(self, params):
+        self._ChannelId = params.get("ChannelId")
+        self._ChannelStatus = params.get("ChannelStatus")
+        self._ConnectStatus = params.get("ConnectStatus")
+        self._CreateTime = params.get("CreateTime")
+        if params.get("Spec") is not None:
+            self._Spec = ChannelSpec()
+            self._Spec._deserialize(params.get("Spec"))
+        self._UpdateTime = params.get("UpdateTime")
+        self._Updater = params.get("Updater")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ChannelSpec(AbstractModel):
+    r"""渠道规格（聚合场景/类型/名称/备注/配置）
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ChannelName: <p>渠道名称</p>
+        :type ChannelName: str
+        :param _ChannelType: <p>渠道类型，详见ChannelType枚举</p><p>枚举值：</p><ul><li>10000： 微信服务号(Wechat)</li><li>10002： 企微应用(WeComApp)</li><li>10004： 微信客服(WechatCustomerService)</li><li>10009： 企微智能机器人(WeComRobot)</li><li>10013： 钉钉机器人(DingTalk)</li><li>10014： 企微智能机器人WebSocket(WeComRobot)</li><li>10015： 微信ClawBot(WechatClawBot)</li><li>10011： LINE(Line)</li><li>10012： Telegram(Telegram)</li><li>10016： 飞书机器人(Lark) </li></ul><p>C端场景（Scene=1时）只支持10014和10015</p>
+        :type ChannelType: int
+        :param _Description: <p>备注</p>
+        :type Description: str
+        :param _DingTalk: <p>钉钉机器人配置</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type DingTalk: :class:`tencentcloud.adp.v20260520.models.DingTalkChannelConfig`
+        :param _Lark: <p>飞书机器人配置</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Lark: :class:`tencentcloud.adp.v20260520.models.LarkChannelConfig`
+        :param _Line: <p>LINE配置</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Line: :class:`tencentcloud.adp.v20260520.models.LineChannelConfig`
+        :param _Scene: <p>渠道场景：0-B端场景，1-C端场景</p>
+        :type Scene: int
+        :param _Telegram: <p>Telegram配置</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Telegram: :class:`tencentcloud.adp.v20260520.models.TelegramChannelConfig`
+        :param _UserAgent: <p>归属用户+Agent运行态标识（C端）</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UserAgent: :class:`tencentcloud.adp.v20260520.models.UserAgentReference`
+        :param _Wechat: <p>微信公众号/小程序配置</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Wechat: :class:`tencentcloud.adp.v20260520.models.WechatChannelConfig`
+        :param _WechatClawBot: <p>微信ClawBot配置</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WechatClawBot: :class:`tencentcloud.adp.v20260520.models.WechatClawBotChannelConfig`
+        :param _WechatCustomerService: <p>微信客服配置</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WechatCustomerService: :class:`tencentcloud.adp.v20260520.models.WechatCustomerServiceChannelConfig`
+        :param _WecomApp: <p>企微应用配置</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WecomApp: :class:`tencentcloud.adp.v20260520.models.WecomAppChannelConfig`
+        :param _WecomRobot: <p>企微机器人配置</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type WecomRobot: :class:`tencentcloud.adp.v20260520.models.WecomRobotChannelConfig`
+        """
+        self._ChannelName = None
+        self._ChannelType = None
+        self._Description = None
+        self._DingTalk = None
+        self._Lark = None
+        self._Line = None
+        self._Scene = None
+        self._Telegram = None
+        self._UserAgent = None
+        self._Wechat = None
+        self._WechatClawBot = None
+        self._WechatCustomerService = None
+        self._WecomApp = None
+        self._WecomRobot = None
+
+    @property
+    def ChannelName(self):
+        r"""<p>渠道名称</p>
+        :rtype: str
+        """
+        return self._ChannelName
+
+    @ChannelName.setter
+    def ChannelName(self, ChannelName):
+        self._ChannelName = ChannelName
+
+    @property
+    def ChannelType(self):
+        r"""<p>渠道类型，详见ChannelType枚举</p><p>枚举值：</p><ul><li>10000： 微信服务号(Wechat)</li><li>10002： 企微应用(WeComApp)</li><li>10004： 微信客服(WechatCustomerService)</li><li>10009： 企微智能机器人(WeComRobot)</li><li>10013： 钉钉机器人(DingTalk)</li><li>10014： 企微智能机器人WebSocket(WeComRobot)</li><li>10015： 微信ClawBot(WechatClawBot)</li><li>10011： LINE(Line)</li><li>10012： Telegram(Telegram)</li><li>10016： 飞书机器人(Lark) </li></ul><p>C端场景（Scene=1时）只支持10014和10015</p>
+        :rtype: int
+        """
+        return self._ChannelType
+
+    @ChannelType.setter
+    def ChannelType(self, ChannelType):
+        self._ChannelType = ChannelType
+
+    @property
+    def Description(self):
+        r"""<p>备注</p>
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def DingTalk(self):
+        r"""<p>钉钉机器人配置</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.adp.v20260520.models.DingTalkChannelConfig`
+        """
+        return self._DingTalk
+
+    @DingTalk.setter
+    def DingTalk(self, DingTalk):
+        self._DingTalk = DingTalk
+
+    @property
+    def Lark(self):
+        r"""<p>飞书机器人配置</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.adp.v20260520.models.LarkChannelConfig`
+        """
+        return self._Lark
+
+    @Lark.setter
+    def Lark(self, Lark):
+        self._Lark = Lark
+
+    @property
+    def Line(self):
+        r"""<p>LINE配置</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.adp.v20260520.models.LineChannelConfig`
+        """
+        return self._Line
+
+    @Line.setter
+    def Line(self, Line):
+        self._Line = Line
+
+    @property
+    def Scene(self):
+        r"""<p>渠道场景：0-B端场景，1-C端场景</p>
+        :rtype: int
+        """
+        return self._Scene
+
+    @Scene.setter
+    def Scene(self, Scene):
+        self._Scene = Scene
+
+    @property
+    def Telegram(self):
+        r"""<p>Telegram配置</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.adp.v20260520.models.TelegramChannelConfig`
+        """
+        return self._Telegram
+
+    @Telegram.setter
+    def Telegram(self, Telegram):
+        self._Telegram = Telegram
+
+    @property
+    def UserAgent(self):
+        r"""<p>归属用户+Agent运行态标识（C端）</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.adp.v20260520.models.UserAgentReference`
+        """
+        return self._UserAgent
+
+    @UserAgent.setter
+    def UserAgent(self, UserAgent):
+        self._UserAgent = UserAgent
+
+    @property
+    def Wechat(self):
+        r"""<p>微信公众号/小程序配置</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.adp.v20260520.models.WechatChannelConfig`
+        """
+        return self._Wechat
+
+    @Wechat.setter
+    def Wechat(self, Wechat):
+        self._Wechat = Wechat
+
+    @property
+    def WechatClawBot(self):
+        r"""<p>微信ClawBot配置</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.adp.v20260520.models.WechatClawBotChannelConfig`
+        """
+        return self._WechatClawBot
+
+    @WechatClawBot.setter
+    def WechatClawBot(self, WechatClawBot):
+        self._WechatClawBot = WechatClawBot
+
+    @property
+    def WechatCustomerService(self):
+        r"""<p>微信客服配置</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.adp.v20260520.models.WechatCustomerServiceChannelConfig`
+        """
+        return self._WechatCustomerService
+
+    @WechatCustomerService.setter
+    def WechatCustomerService(self, WechatCustomerService):
+        self._WechatCustomerService = WechatCustomerService
+
+    @property
+    def WecomApp(self):
+        r"""<p>企微应用配置</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.adp.v20260520.models.WecomAppChannelConfig`
+        """
+        return self._WecomApp
+
+    @WecomApp.setter
+    def WecomApp(self, WecomApp):
+        self._WecomApp = WecomApp
+
+    @property
+    def WecomRobot(self):
+        r"""<p>企微机器人配置</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.adp.v20260520.models.WecomRobotChannelConfig`
+        """
+        return self._WecomRobot
+
+    @WecomRobot.setter
+    def WecomRobot(self, WecomRobot):
+        self._WecomRobot = WecomRobot
+
+
+    def _deserialize(self, params):
+        self._ChannelName = params.get("ChannelName")
+        self._ChannelType = params.get("ChannelType")
+        self._Description = params.get("Description")
+        if params.get("DingTalk") is not None:
+            self._DingTalk = DingTalkChannelConfig()
+            self._DingTalk._deserialize(params.get("DingTalk"))
+        if params.get("Lark") is not None:
+            self._Lark = LarkChannelConfig()
+            self._Lark._deserialize(params.get("Lark"))
+        if params.get("Line") is not None:
+            self._Line = LineChannelConfig()
+            self._Line._deserialize(params.get("Line"))
+        self._Scene = params.get("Scene")
+        if params.get("Telegram") is not None:
+            self._Telegram = TelegramChannelConfig()
+            self._Telegram._deserialize(params.get("Telegram"))
+        if params.get("UserAgent") is not None:
+            self._UserAgent = UserAgentReference()
+            self._UserAgent._deserialize(params.get("UserAgent"))
+        if params.get("Wechat") is not None:
+            self._Wechat = WechatChannelConfig()
+            self._Wechat._deserialize(params.get("Wechat"))
+        if params.get("WechatClawBot") is not None:
+            self._WechatClawBot = WechatClawBotChannelConfig()
+            self._WechatClawBot._deserialize(params.get("WechatClawBot"))
+        if params.get("WechatCustomerService") is not None:
+            self._WechatCustomerService = WechatCustomerServiceChannelConfig()
+            self._WechatCustomerService._deserialize(params.get("WechatCustomerService"))
+        if params.get("WecomApp") is not None:
+            self._WecomApp = WecomAppChannelConfig()
+            self._WecomApp._deserialize(params.get("WecomApp"))
+        if params.get("WecomRobot") is not None:
+            self._WecomRobot = WecomRobotChannelConfig()
+            self._WecomRobot._deserialize(params.get("WecomRobot"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -10411,6 +11034,117 @@ class CreateAppTriggerResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateChannelRequest(AbstractModel):
+    r"""CreateChannel请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AppId: <p>应用业务ID</p>
+        :type AppId: str
+        :param _Spec: <p>渠道规格（场景/类型/名称/备注/配置，必填）</p>
+        :type Spec: :class:`tencentcloud.adp.v20260520.models.ChannelSpec`
+        """
+        self._AppId = None
+        self._Spec = None
+
+    @property
+    def AppId(self):
+        r"""<p>应用业务ID</p>
+        :rtype: str
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def Spec(self):
+        r"""<p>渠道规格（场景/类型/名称/备注/配置，必填）</p>
+        :rtype: :class:`tencentcloud.adp.v20260520.models.ChannelSpec`
+        """
+        return self._Spec
+
+    @Spec.setter
+    def Spec(self, Spec):
+        self._Spec = Spec
+
+
+    def _deserialize(self, params):
+        self._AppId = params.get("AppId")
+        if params.get("Spec") is not None:
+            self._Spec = ChannelSpec()
+            self._Spec._deserialize(params.get("Spec"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateChannelResponse(AbstractModel):
+    r"""CreateChannel返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ChannelId: <p>渠道ID</p>
+        :type ChannelId: str
+        :param _QrcodeUrl: <p>二维码URL（扫码类渠道创建后回填，其他场景为空）</p>
+        :type QrcodeUrl: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ChannelId = None
+        self._QrcodeUrl = None
+        self._RequestId = None
+
+    @property
+    def ChannelId(self):
+        r"""<p>渠道ID</p>
+        :rtype: str
+        """
+        return self._ChannelId
+
+    @ChannelId.setter
+    def ChannelId(self, ChannelId):
+        self._ChannelId = ChannelId
+
+    @property
+    def QrcodeUrl(self):
+        r"""<p>二维码URL（扫码类渠道创建后回填，其他场景为空）</p>
+        :rtype: str
+        """
+        return self._QrcodeUrl
+
+    @QrcodeUrl.setter
+    def QrcodeUrl(self, QrcodeUrl):
+        self._QrcodeUrl = QrcodeUrl
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._ChannelId = params.get("ChannelId")
+        self._QrcodeUrl = params.get("QrcodeUrl")
+        self._RequestId = params.get("RequestId")
+
+
 class CreateConversationRequest(AbstractModel):
     r"""CreateConversation请求参数结构体
 
@@ -12296,6 +13030,100 @@ class DeleteAppTriggerRequest(AbstractModel):
 
 class DeleteAppTriggerResponse(AbstractModel):
     r"""DeleteAppTrigger返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteChannelRequest(AbstractModel):
+    r"""DeleteChannel请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AppId: <p>应用业务ID</p>
+        :type AppId: str
+        :param _ChannelId: <p>渠道业务ID</p>
+        :type ChannelId: str
+        :param _Scene: <p>渠道场景：0-B端场景，1-C端场景</p>
+        :type Scene: int
+        """
+        self._AppId = None
+        self._ChannelId = None
+        self._Scene = None
+
+    @property
+    def AppId(self):
+        r"""<p>应用业务ID</p>
+        :rtype: str
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def ChannelId(self):
+        r"""<p>渠道业务ID</p>
+        :rtype: str
+        """
+        return self._ChannelId
+
+    @ChannelId.setter
+    def ChannelId(self, ChannelId):
+        self._ChannelId = ChannelId
+
+    @property
+    def Scene(self):
+        r"""<p>渠道场景：0-B端场景，1-C端场景</p>
+        :rtype: int
+        """
+        return self._Scene
+
+    @Scene.setter
+    def Scene(self, Scene):
+        self._Scene = Scene
+
+
+    def _deserialize(self, params):
+        self._AppId = params.get("AppId")
+        self._ChannelId = params.get("ChannelId")
+        self._Scene = params.get("Scene")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteChannelResponse(AbstractModel):
+    r"""DeleteChannel返回参数结构体
 
     """
 
@@ -14705,6 +15533,281 @@ class DescribeAuditLogMetaResponse(AbstractModel):
                 obj = AuditLogMetaField()
                 obj._deserialize(item)
                 self._BizObjects.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeChannelListRequest(AbstractModel):
+    r"""DescribeChannelList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AppId: <p>应用业务ID</p>
+        :type AppId: str
+        :param _Scene: <p>渠道场景：0-B端场景，1-C端场景</p>
+        :type Scene: int
+        :param _FilterList: <p>过滤条件（可选，支持ChannelType/ChannelStatus等维度）</p>
+        :type FilterList: list of Filter
+        :param _PageNumber: <p>页码（从1开始）</p>
+        :type PageNumber: int
+        :param _PageSize: <p>每页数量（最大100）</p>
+        :type PageSize: int
+        """
+        self._AppId = None
+        self._Scene = None
+        self._FilterList = None
+        self._PageNumber = None
+        self._PageSize = None
+
+    @property
+    def AppId(self):
+        r"""<p>应用业务ID</p>
+        :rtype: str
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def Scene(self):
+        r"""<p>渠道场景：0-B端场景，1-C端场景</p>
+        :rtype: int
+        """
+        return self._Scene
+
+    @Scene.setter
+    def Scene(self, Scene):
+        self._Scene = Scene
+
+    @property
+    def FilterList(self):
+        r"""<p>过滤条件（可选，支持ChannelType/ChannelStatus等维度）</p>
+        :rtype: list of Filter
+        """
+        return self._FilterList
+
+    @FilterList.setter
+    def FilterList(self, FilterList):
+        self._FilterList = FilterList
+
+    @property
+    def PageNumber(self):
+        r"""<p>页码（从1开始）</p>
+        :rtype: int
+        """
+        return self._PageNumber
+
+    @PageNumber.setter
+    def PageNumber(self, PageNumber):
+        self._PageNumber = PageNumber
+
+    @property
+    def PageSize(self):
+        r"""<p>每页数量（最大100）</p>
+        :rtype: int
+        """
+        return self._PageSize
+
+    @PageSize.setter
+    def PageSize(self, PageSize):
+        self._PageSize = PageSize
+
+
+    def _deserialize(self, params):
+        self._AppId = params.get("AppId")
+        self._Scene = params.get("Scene")
+        if params.get("FilterList") is not None:
+            self._FilterList = []
+            for item in params.get("FilterList"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._FilterList.append(obj)
+        self._PageNumber = params.get("PageNumber")
+        self._PageSize = params.get("PageSize")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeChannelListResponse(AbstractModel):
+    r"""DescribeChannelList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ChannelList: <p>渠道列表</p>
+        :type ChannelList: list of Channel
+        :param _TotalCount: <p>总数</p>
+        :type TotalCount: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ChannelList = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def ChannelList(self):
+        r"""<p>渠道列表</p>
+        :rtype: list of Channel
+        """
+        return self._ChannelList
+
+    @ChannelList.setter
+    def ChannelList(self, ChannelList):
+        self._ChannelList = ChannelList
+
+    @property
+    def TotalCount(self):
+        r"""<p>总数</p>
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("ChannelList") is not None:
+            self._ChannelList = []
+            for item in params.get("ChannelList"):
+                obj = Channel()
+                obj._deserialize(item)
+                self._ChannelList.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeChannelRequest(AbstractModel):
+    r"""DescribeChannel请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AppId: <p>应用业务ID</p>
+        :type AppId: str
+        :param _ChannelId: <p>渠道业务ID</p>
+        :type ChannelId: str
+        :param _Scene: <p>渠道场景：0-B端场景，1-C端场景</p>
+        :type Scene: int
+        """
+        self._AppId = None
+        self._ChannelId = None
+        self._Scene = None
+
+    @property
+    def AppId(self):
+        r"""<p>应用业务ID</p>
+        :rtype: str
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def ChannelId(self):
+        r"""<p>渠道业务ID</p>
+        :rtype: str
+        """
+        return self._ChannelId
+
+    @ChannelId.setter
+    def ChannelId(self, ChannelId):
+        self._ChannelId = ChannelId
+
+    @property
+    def Scene(self):
+        r"""<p>渠道场景：0-B端场景，1-C端场景</p>
+        :rtype: int
+        """
+        return self._Scene
+
+    @Scene.setter
+    def Scene(self, Scene):
+        self._Scene = Scene
+
+
+    def _deserialize(self, params):
+        self._AppId = params.get("AppId")
+        self._ChannelId = params.get("ChannelId")
+        self._Scene = params.get("Scene")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeChannelResponse(AbstractModel):
+    r"""DescribeChannel返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Channel: <p>渠道信息（含spec）</p>
+        :type Channel: :class:`tencentcloud.adp.v20260520.models.Channel`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Channel = None
+        self._RequestId = None
+
+    @property
+    def Channel(self):
+        r"""<p>渠道信息（含spec）</p>
+        :rtype: :class:`tencentcloud.adp.v20260520.models.Channel`
+        """
+        return self._Channel
+
+    @Channel.setter
+    def Channel(self, Channel):
+        self._Channel = Channel
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Channel") is not None:
+            self._Channel = Channel()
+            self._Channel._deserialize(params.get("Channel"))
         self._RequestId = params.get("RequestId")
 
 
@@ -18673,6 +19776,57 @@ class DigitalHumanConfig(AbstractModel):
         
 
 
+class DingTalkChannelConfig(AbstractModel):
+    r"""钉钉机器人渠道配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AppKey: <p>钉钉机器人ClientId（AppKey）</p>
+        :type AppKey: str
+        :param _AppSecret: <p>钉钉机器人ClientSecret（AppSecret）</p>
+        :type AppSecret: str
+        """
+        self._AppKey = None
+        self._AppSecret = None
+
+    @property
+    def AppKey(self):
+        r"""<p>钉钉机器人ClientId（AppKey）</p>
+        :rtype: str
+        """
+        return self._AppKey
+
+    @AppKey.setter
+    def AppKey(self, AppKey):
+        self._AppKey = AppKey
+
+    @property
+    def AppSecret(self):
+        r"""<p>钉钉机器人ClientSecret（AppSecret）</p>
+        :rtype: str
+        """
+        return self._AppSecret
+
+    @AppSecret.setter
+    def AppSecret(self, AppSecret):
+        self._AppSecret = AppSecret
+
+
+    def _deserialize(self, params):
+        self._AppKey = params.get("AppKey")
+        self._AppSecret = params.get("AppSecret")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DuplexBilling(AbstractModel):
     r"""DuplexBilling
 
@@ -19527,6 +20681,123 @@ class IntervalSchedule(AbstractModel):
         self._StartAt = params.get("StartAt")
         self._Unit = params.get("Unit")
         self._Value = params.get("Value")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class LarkChannelConfig(AbstractModel):
+    r"""飞书机器人渠道配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AppId: <p>飞书机器人AppId</p>
+        :type AppId: str
+        :param _AppSecret: <p>飞书机器人AppSecret</p>
+        :type AppSecret: str
+        """
+        self._AppId = None
+        self._AppSecret = None
+
+    @property
+    def AppId(self):
+        r"""<p>飞书机器人AppId</p>
+        :rtype: str
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def AppSecret(self):
+        r"""<p>飞书机器人AppSecret</p>
+        :rtype: str
+        """
+        return self._AppSecret
+
+    @AppSecret.setter
+    def AppSecret(self, AppSecret):
+        self._AppSecret = AppSecret
+
+
+    def _deserialize(self, params):
+        self._AppId = params.get("AppId")
+        self._AppSecret = params.get("AppSecret")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class LineChannelConfig(AbstractModel):
+    r"""LINE渠道配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AccessToken: <p>LINE Channel Access Token</p>
+        :type AccessToken: str
+        :param _CallbackUrl: <p>LINE回调地址</p>
+        :type CallbackUrl: str
+        :param _ChannelSecret: <p>LINE Channel Secret</p>
+        :type ChannelSecret: str
+        """
+        self._AccessToken = None
+        self._CallbackUrl = None
+        self._ChannelSecret = None
+
+    @property
+    def AccessToken(self):
+        r"""<p>LINE Channel Access Token</p>
+        :rtype: str
+        """
+        return self._AccessToken
+
+    @AccessToken.setter
+    def AccessToken(self, AccessToken):
+        self._AccessToken = AccessToken
+
+    @property
+    def CallbackUrl(self):
+        r"""<p>LINE回调地址</p>
+        :rtype: str
+        """
+        return self._CallbackUrl
+
+    @CallbackUrl.setter
+    def CallbackUrl(self, CallbackUrl):
+        self._CallbackUrl = CallbackUrl
+
+    @property
+    def ChannelSecret(self):
+        r"""<p>LINE Channel Secret</p>
+        :rtype: str
+        """
+        return self._ChannelSecret
+
+    @ChannelSecret.setter
+    def ChannelSecret(self, ChannelSecret):
+        self._ChannelSecret = ChannelSecret
+
+
+    def _deserialize(self, params):
+        self._AccessToken = params.get("AccessToken")
+        self._CallbackUrl = params.get("CallbackUrl")
+        self._ChannelSecret = params.get("ChannelSecret")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -21703,6 +22974,134 @@ class ModifyAppTriggerRequest(AbstractModel):
 
 class ModifyAppTriggerResponse(AbstractModel):
     r"""ModifyAppTrigger返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyChannelRequest(AbstractModel):
+    r"""ModifyChannel请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AppId: <p>应用业务ID</p>
+        :type AppId: str
+        :param _ChannelId: <p>渠道业务ID</p>
+        :type ChannelId: str
+        :param _Scene: <p>渠道场景：0-B端场景，1-C端场景</p>
+        :type Scene: int
+        :param _Spec: <p>待更新的渠道规格</p>
+        :type Spec: :class:`tencentcloud.adp.v20260520.models.ChannelSpec`
+        :param _UpdateMask: <p>更新字段掩码,<br>B端(Scene=0)：支持：【spec.description&quot; ,&quot;spec.wecom_robot.callback.wecom_robot_id&quot;】<br>C端(Scene=1)：支持：【&quot;spec.description&quot; , &quot;spec.wecom_robot.websocket.bot_id&quot; ,&quot;spec.wecom_robot.websocket.bot_secret&quot;】</p>
+        :type UpdateMask: :class:`tencentcloud.adp.v20260520.models.FieldMask`
+        """
+        self._AppId = None
+        self._ChannelId = None
+        self._Scene = None
+        self._Spec = None
+        self._UpdateMask = None
+
+    @property
+    def AppId(self):
+        r"""<p>应用业务ID</p>
+        :rtype: str
+        """
+        return self._AppId
+
+    @AppId.setter
+    def AppId(self, AppId):
+        self._AppId = AppId
+
+    @property
+    def ChannelId(self):
+        r"""<p>渠道业务ID</p>
+        :rtype: str
+        """
+        return self._ChannelId
+
+    @ChannelId.setter
+    def ChannelId(self, ChannelId):
+        self._ChannelId = ChannelId
+
+    @property
+    def Scene(self):
+        r"""<p>渠道场景：0-B端场景，1-C端场景</p>
+        :rtype: int
+        """
+        return self._Scene
+
+    @Scene.setter
+    def Scene(self, Scene):
+        self._Scene = Scene
+
+    @property
+    def Spec(self):
+        r"""<p>待更新的渠道规格</p>
+        :rtype: :class:`tencentcloud.adp.v20260520.models.ChannelSpec`
+        """
+        return self._Spec
+
+    @Spec.setter
+    def Spec(self, Spec):
+        self._Spec = Spec
+
+    @property
+    def UpdateMask(self):
+        r"""<p>更新字段掩码,<br>B端(Scene=0)：支持：【spec.description&quot; ,&quot;spec.wecom_robot.callback.wecom_robot_id&quot;】<br>C端(Scene=1)：支持：【&quot;spec.description&quot; , &quot;spec.wecom_robot.websocket.bot_id&quot; ,&quot;spec.wecom_robot.websocket.bot_secret&quot;】</p>
+        :rtype: :class:`tencentcloud.adp.v20260520.models.FieldMask`
+        """
+        return self._UpdateMask
+
+    @UpdateMask.setter
+    def UpdateMask(self, UpdateMask):
+        self._UpdateMask = UpdateMask
+
+
+    def _deserialize(self, params):
+        self._AppId = params.get("AppId")
+        self._ChannelId = params.get("ChannelId")
+        self._Scene = params.get("Scene")
+        if params.get("Spec") is not None:
+            self._Spec = ChannelSpec()
+            self._Spec._deserialize(params.get("Spec"))
+        if params.get("UpdateMask") is not None:
+            self._UpdateMask = FieldMask()
+            self._UpdateMask._deserialize(params.get("UpdateMask"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyChannelResponse(AbstractModel):
+    r"""ModifyChannel返回参数结构体
 
     """
 
@@ -26442,6 +27841,62 @@ class SkillClassification(AbstractModel):
         
 
 
+class SkillCorpShareConfig(AbstractModel):
+    r"""Skill 企业共享配置。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ShareScope: <table><tbody><tr><td>枚举项</td><td>枚举值</td><td>描述</td></tr><tr><td>SHARE_SCOPE_TYPE_UNSPECIFIED</td><td>0</td><td></td></tr><tr><td>SHARE_SCOPE_TYPE_ALL</td><td>1</td><td></td></tr><tr><td>SHARE_SCOPE_TYPE_ACCOUNT</td><td>2</td><td></td></tr><tr><td>SHARE_SCOPE_TYPE_SPACE</td><td>3</td><td></td></tr></tbody></table><p>枚举值：</p><ul><li>0： 未指定</li><li>1： 全企业共享</li><li>3： 按空间共享</li></ul>
+        :type ShareScope: int
+        :param _ShareScopeList: <p>共享范围信息，仅支持空间；StrId 为空间ID，Name 为空间名称</p>
+        :type ShareScopeList: list of Identity
+        """
+        self._ShareScope = None
+        self._ShareScopeList = None
+
+    @property
+    def ShareScope(self):
+        r"""<table><tbody><tr><td>枚举项</td><td>枚举值</td><td>描述</td></tr><tr><td>SHARE_SCOPE_TYPE_UNSPECIFIED</td><td>0</td><td></td></tr><tr><td>SHARE_SCOPE_TYPE_ALL</td><td>1</td><td></td></tr><tr><td>SHARE_SCOPE_TYPE_ACCOUNT</td><td>2</td><td></td></tr><tr><td>SHARE_SCOPE_TYPE_SPACE</td><td>3</td><td></td></tr></tbody></table><p>枚举值：</p><ul><li>0： 未指定</li><li>1： 全企业共享</li><li>3： 按空间共享</li></ul>
+        :rtype: int
+        """
+        return self._ShareScope
+
+    @ShareScope.setter
+    def ShareScope(self, ShareScope):
+        self._ShareScope = ShareScope
+
+    @property
+    def ShareScopeList(self):
+        r"""<p>共享范围信息，仅支持空间；StrId 为空间ID，Name 为空间名称</p>
+        :rtype: list of Identity
+        """
+        return self._ShareScopeList
+
+    @ShareScopeList.setter
+    def ShareScopeList(self, ShareScopeList):
+        self._ShareScopeList = ShareScopeList
+
+
+    def _deserialize(self, params):
+        self._ShareScope = params.get("ShareScope")
+        if params.get("ShareScopeList") is not None:
+            self._ShareScopeList = []
+            for item in params.get("ShareScopeList"):
+                obj = Identity()
+                obj._deserialize(item)
+                self._ShareScopeList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class SkillDetail(AbstractModel):
     r"""skill详情
 
@@ -26638,22 +28093,24 @@ class SkillProfile(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _CreateTime: 创建时间（Unix秒）
+        :param _CreateTime: <p>创建时间（Unix秒）</p>
         :type CreateTime: str
-        :param _Creator: 创建者
+        :param _Creator: <p>创建者</p>
         :type Creator: str
-        :param _Description: Skill 描述
+        :param _Description: <p>Skill 描述</p>
         :type Description: str
-        :param _DisplayDescription: Skill 展示描述
+        :param _DisplayDescription: <p>Skill 展示描述</p>
         :type DisplayDescription: str
-        :param _DisplayName: Skill 展示名称
+        :param _DisplayName: <p>Skill 展示名称</p>
         :type DisplayName: str
-        :param _IconUrl: Skill 图标
+        :param _IconUrl: <p>Skill 图标</p>
         :type IconUrl: str
-        :param _Name: Skill 名称
+        :param _Name: <p>Skill 名称</p>
         :type Name: str
-        :param _UpdateTime: 更新时间（Unix秒）
+        :param _UpdateTime: <p>更新时间（Unix秒）</p>
         :type UpdateTime: str
+        :param _SpaceId: <p>空间</p>
+        :type SpaceId: str
         """
         self._CreateTime = None
         self._Creator = None
@@ -26663,10 +28120,11 @@ class SkillProfile(AbstractModel):
         self._IconUrl = None
         self._Name = None
         self._UpdateTime = None
+        self._SpaceId = None
 
     @property
     def CreateTime(self):
-        r"""创建时间（Unix秒）
+        r"""<p>创建时间（Unix秒）</p>
         :rtype: str
         """
         return self._CreateTime
@@ -26677,7 +28135,7 @@ class SkillProfile(AbstractModel):
 
     @property
     def Creator(self):
-        r"""创建者
+        r"""<p>创建者</p>
         :rtype: str
         """
         return self._Creator
@@ -26688,7 +28146,7 @@ class SkillProfile(AbstractModel):
 
     @property
     def Description(self):
-        r"""Skill 描述
+        r"""<p>Skill 描述</p>
         :rtype: str
         """
         return self._Description
@@ -26699,7 +28157,7 @@ class SkillProfile(AbstractModel):
 
     @property
     def DisplayDescription(self):
-        r"""Skill 展示描述
+        r"""<p>Skill 展示描述</p>
         :rtype: str
         """
         return self._DisplayDescription
@@ -26710,7 +28168,7 @@ class SkillProfile(AbstractModel):
 
     @property
     def DisplayName(self):
-        r"""Skill 展示名称
+        r"""<p>Skill 展示名称</p>
         :rtype: str
         """
         return self._DisplayName
@@ -26721,7 +28179,7 @@ class SkillProfile(AbstractModel):
 
     @property
     def IconUrl(self):
-        r"""Skill 图标
+        r"""<p>Skill 图标</p>
         :rtype: str
         """
         return self._IconUrl
@@ -26732,7 +28190,7 @@ class SkillProfile(AbstractModel):
 
     @property
     def Name(self):
-        r"""Skill 名称
+        r"""<p>Skill 名称</p>
         :rtype: str
         """
         return self._Name
@@ -26743,7 +28201,7 @@ class SkillProfile(AbstractModel):
 
     @property
     def UpdateTime(self):
-        r"""更新时间（Unix秒）
+        r"""<p>更新时间（Unix秒）</p>
         :rtype: str
         """
         return self._UpdateTime
@@ -26751,6 +28209,17 @@ class SkillProfile(AbstractModel):
     @UpdateTime.setter
     def UpdateTime(self, UpdateTime):
         self._UpdateTime = UpdateTime
+
+    @property
+    def SpaceId(self):
+        r"""<p>空间</p>
+        :rtype: str
+        """
+        return self._SpaceId
+
+    @SpaceId.setter
+    def SpaceId(self, SpaceId):
+        self._SpaceId = SpaceId
 
 
     def _deserialize(self, params):
@@ -26762,6 +28231,7 @@ class SkillProfile(AbstractModel):
         self._IconUrl = params.get("IconUrl")
         self._Name = params.get("Name")
         self._UpdateTime = params.get("UpdateTime")
+        self._SpaceId = params.get("SpaceId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -26961,25 +28431,20 @@ class SkillShare(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ApprovalId: 审批ID
+        :param _ApprovalId: <p>审批ID</p>
         :type ApprovalId: str
-        :param _ShareSkillId: 共享后关联的新 skill_id
+        :param _ShareSkillId: <p>共享后关联的新 skill_id</p>
         :type ShareSkillId: str
-        :param _ShareVersion: 共享版本，如 1.0.0
+        :param _ShareVersion: <p>共享版本，如 1.0.0</p>
         :type ShareVersion: str
-        :param _ShareVersionId: 共享版本ID
+        :param _ShareVersionId: <p>共享版本ID</p>
         :type ShareVersionId: str
-        :param _SkillId: 原 skill_id
+        :param _SkillId: <p>原 skill_id</p>
         :type SkillId: str
-        :param _Status: 共享状态
-
-枚举值:
-| uint | 描述 |
-| --- | --- |
-| 0 | 未共享 |
-| 1 | 已共享 |
-| 2 | 审批中 |
+        :param _Status: <p>共享状态</p><p>枚举值:<br>| uint | 描述 |<br>| --- | --- |<br>| 0 | 未共享 |<br>| 1 | 已共享 |<br>| 2 | 审批中 |</p>
         :type Status: int
+        :param _CorpShareConfig: <p>企业共享范围</p>
+        :type CorpShareConfig: :class:`tencentcloud.adp.v20260520.models.SkillCorpShareConfig`
         """
         self._ApprovalId = None
         self._ShareSkillId = None
@@ -26987,10 +28452,11 @@ class SkillShare(AbstractModel):
         self._ShareVersionId = None
         self._SkillId = None
         self._Status = None
+        self._CorpShareConfig = None
 
     @property
     def ApprovalId(self):
-        r"""审批ID
+        r"""<p>审批ID</p>
         :rtype: str
         """
         return self._ApprovalId
@@ -27001,7 +28467,7 @@ class SkillShare(AbstractModel):
 
     @property
     def ShareSkillId(self):
-        r"""共享后关联的新 skill_id
+        r"""<p>共享后关联的新 skill_id</p>
         :rtype: str
         """
         return self._ShareSkillId
@@ -27012,7 +28478,7 @@ class SkillShare(AbstractModel):
 
     @property
     def ShareVersion(self):
-        r"""共享版本，如 1.0.0
+        r"""<p>共享版本，如 1.0.0</p>
         :rtype: str
         """
         return self._ShareVersion
@@ -27023,7 +28489,7 @@ class SkillShare(AbstractModel):
 
     @property
     def ShareVersionId(self):
-        r"""共享版本ID
+        r"""<p>共享版本ID</p>
         :rtype: str
         """
         return self._ShareVersionId
@@ -27034,7 +28500,7 @@ class SkillShare(AbstractModel):
 
     @property
     def SkillId(self):
-        r"""原 skill_id
+        r"""<p>原 skill_id</p>
         :rtype: str
         """
         return self._SkillId
@@ -27045,14 +28511,7 @@ class SkillShare(AbstractModel):
 
     @property
     def Status(self):
-        r"""共享状态
-
-枚举值:
-| uint | 描述 |
-| --- | --- |
-| 0 | 未共享 |
-| 1 | 已共享 |
-| 2 | 审批中 |
+        r"""<p>共享状态</p><p>枚举值:<br>| uint | 描述 |<br>| --- | --- |<br>| 0 | 未共享 |<br>| 1 | 已共享 |<br>| 2 | 审批中 |</p>
         :rtype: int
         """
         return self._Status
@@ -27060,6 +28519,17 @@ class SkillShare(AbstractModel):
     @Status.setter
     def Status(self, Status):
         self._Status = Status
+
+    @property
+    def CorpShareConfig(self):
+        r"""<p>企业共享范围</p>
+        :rtype: :class:`tencentcloud.adp.v20260520.models.SkillCorpShareConfig`
+        """
+        return self._CorpShareConfig
+
+    @CorpShareConfig.setter
+    def CorpShareConfig(self, CorpShareConfig):
+        self._CorpShareConfig = CorpShareConfig
 
 
     def _deserialize(self, params):
@@ -27069,6 +28539,9 @@ class SkillShare(AbstractModel):
         self._ShareVersionId = params.get("ShareVersionId")
         self._SkillId = params.get("SkillId")
         self._Status = params.get("Status")
+        if params.get("CorpShareConfig") is not None:
+            self._CorpShareConfig = SkillCorpShareConfig()
+            self._CorpShareConfig._deserialize(params.get("CorpShareConfig"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -27280,31 +28753,27 @@ class SkillVersion(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _AnalysisInfo: 检测信息
+        :param _AnalysisInfo: <p>检测信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type AnalysisInfo: :class:`tencentcloud.adp.v20260520.models.SkillAnalysisInfo`
-        :param _Version: 当前生效版本号
+        :param _Version: <p>当前生效版本号</p>
         :type Version: str
-        :param _VersionId: 当前生效版本ID
+        :param _VersionId: <p>当前生效版本ID</p>
         :type VersionId: str
-        :param _VersionStatus:     Skill 版本发布流程状态：
-      - 0 INITIALIZED      初始化（版本初始态）
-      - 1 AUDITING         审核中（f_analysis_status ∈ {PENDING, RUNNING}）
-      - 2 PENDING_RELEASE  待发布（低/中风险，等用户确认上架）
-      - 3 RELEASED         已发布
-      - 4 UNRELEASED       未发布（HIGH / UNAVAILABLE / FAILED / 用户放弃，含历史"不通过"语义）
-    与 SkillAnalysisStatus 解耦：前者是用户视角发布生命周期，后者是安全检测阶段。
+        :param _VersionStatus: <p>Skill 版本发布流程状态：</p><pre><code>  - 0 INITIALIZED      初始化（版本初始态）  - 1 AUDITING         审核中（f_analysis_status ∈ {PENDING, RUNNING}）  - 2 PENDING_RELEASE  待发布（低/中风险，等用户确认上架）  - 3 RELEASED         已发布  - 4 UNRELEASED       未发布（HIGH / UNAVAILABLE / FAILED / 用户放弃，含历史&quot;不通过&quot;语义）与 SkillAnalysisStatus 解耦：前者是用户视角发布生命周期，后者是安全检测阶段。</code></pre>
         :type VersionStatus: int
-        :param _SkillMd5: Skill包的md5信息
+        :param _SkillMd5: <p>Skill包的md5信息</p>
         :type SkillMd5: str
-        :param _SkillUrl: 版本包地址
+        :param _SkillUrl: <p>版本包地址</p>
         :type SkillUrl: str
-        :param _CreateTime: 版本创建时间（Unix秒）
+        :param _CreateTime: <p>版本创建时间（Unix秒）</p>
         :type CreateTime: str
-        :param _SkillMarkdownUrl: skill md文档
+        :param _SkillMarkdownUrl: <p>skill md文档</p>
         :type SkillMarkdownUrl: str
-        :param _UpdateDesc: 版本变更说明
+        :param _UpdateDesc: <p>版本变更说明</p>
         :type UpdateDesc: str
+        :param _Updater: <p>变更用户</p>
+        :type Updater: str
         """
         self._AnalysisInfo = None
         self._Version = None
@@ -27315,10 +28784,11 @@ class SkillVersion(AbstractModel):
         self._CreateTime = None
         self._SkillMarkdownUrl = None
         self._UpdateDesc = None
+        self._Updater = None
 
     @property
     def AnalysisInfo(self):
-        r"""检测信息
+        r"""<p>检测信息</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.adp.v20260520.models.SkillAnalysisInfo`
         """
@@ -27330,7 +28800,7 @@ class SkillVersion(AbstractModel):
 
     @property
     def Version(self):
-        r"""当前生效版本号
+        r"""<p>当前生效版本号</p>
         :rtype: str
         """
         return self._Version
@@ -27341,7 +28811,7 @@ class SkillVersion(AbstractModel):
 
     @property
     def VersionId(self):
-        r"""当前生效版本ID
+        r"""<p>当前生效版本ID</p>
         :rtype: str
         """
         return self._VersionId
@@ -27352,13 +28822,7 @@ class SkillVersion(AbstractModel):
 
     @property
     def VersionStatus(self):
-        r"""    Skill 版本发布流程状态：
-      - 0 INITIALIZED      初始化（版本初始态）
-      - 1 AUDITING         审核中（f_analysis_status ∈ {PENDING, RUNNING}）
-      - 2 PENDING_RELEASE  待发布（低/中风险，等用户确认上架）
-      - 3 RELEASED         已发布
-      - 4 UNRELEASED       未发布（HIGH / UNAVAILABLE / FAILED / 用户放弃，含历史"不通过"语义）
-    与 SkillAnalysisStatus 解耦：前者是用户视角发布生命周期，后者是安全检测阶段。
+        r"""<p>Skill 版本发布流程状态：</p><pre><code>  - 0 INITIALIZED      初始化（版本初始态）  - 1 AUDITING         审核中（f_analysis_status ∈ {PENDING, RUNNING}）  - 2 PENDING_RELEASE  待发布（低/中风险，等用户确认上架）  - 3 RELEASED         已发布  - 4 UNRELEASED       未发布（HIGH / UNAVAILABLE / FAILED / 用户放弃，含历史&quot;不通过&quot;语义）与 SkillAnalysisStatus 解耦：前者是用户视角发布生命周期，后者是安全检测阶段。</code></pre>
         :rtype: int
         """
         return self._VersionStatus
@@ -27369,7 +28833,7 @@ class SkillVersion(AbstractModel):
 
     @property
     def SkillMd5(self):
-        r"""Skill包的md5信息
+        r"""<p>Skill包的md5信息</p>
         :rtype: str
         """
         return self._SkillMd5
@@ -27380,7 +28844,7 @@ class SkillVersion(AbstractModel):
 
     @property
     def SkillUrl(self):
-        r"""版本包地址
+        r"""<p>版本包地址</p>
         :rtype: str
         """
         return self._SkillUrl
@@ -27391,7 +28855,7 @@ class SkillVersion(AbstractModel):
 
     @property
     def CreateTime(self):
-        r"""版本创建时间（Unix秒）
+        r"""<p>版本创建时间（Unix秒）</p>
         :rtype: str
         """
         return self._CreateTime
@@ -27402,7 +28866,7 @@ class SkillVersion(AbstractModel):
 
     @property
     def SkillMarkdownUrl(self):
-        r"""skill md文档
+        r"""<p>skill md文档</p>
         :rtype: str
         """
         return self._SkillMarkdownUrl
@@ -27413,7 +28877,7 @@ class SkillVersion(AbstractModel):
 
     @property
     def UpdateDesc(self):
-        r"""版本变更说明
+        r"""<p>版本变更说明</p>
         :rtype: str
         """
         return self._UpdateDesc
@@ -27421,6 +28885,17 @@ class SkillVersion(AbstractModel):
     @UpdateDesc.setter
     def UpdateDesc(self, UpdateDesc):
         self._UpdateDesc = UpdateDesc
+
+    @property
+    def Updater(self):
+        r"""<p>变更用户</p>
+        :rtype: str
+        """
+        return self._Updater
+
+    @Updater.setter
+    def Updater(self, Updater):
+        self._Updater = Updater
 
 
     def _deserialize(self, params):
@@ -27435,6 +28910,7 @@ class SkillVersion(AbstractModel):
         self._CreateTime = params.get("CreateTime")
         self._SkillMarkdownUrl = params.get("SkillMarkdownUrl")
         self._UpdateDesc = params.get("UpdateDesc")
+        self._Updater = params.get("Updater")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -27720,6 +29196,42 @@ class SystemVariable(AbstractModel):
     def _deserialize(self, params):
         self._Description = params.get("Description")
         self._Name = params.get("Name")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TelegramChannelConfig(AbstractModel):
+    r"""Telegram渠道配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BotToken: <p>Telegram Bot Token</p>
+        :type BotToken: str
+        """
+        self._BotToken = None
+
+    @property
+    def BotToken(self):
+        r"""<p>Telegram Bot Token</p>
+        :rtype: str
+        """
+        return self._BotToken
+
+    @BotToken.setter
+    def BotToken(self, BotToken):
+        self._BotToken = BotToken
+
+
+    def _deserialize(self, params):
+        self._BotToken = params.get("BotToken")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -29034,6 +30546,57 @@ class UsageSummary(AbstractModel):
         
 
 
+class UserAgentReference(AbstractModel):
+    r"""用户+Agent归属引用
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AgentId: <p>claw agent 运行态标识</p>
+        :type AgentId: str
+        :param _UserId: <p>归属用户标识</p>
+        :type UserId: str
+        """
+        self._AgentId = None
+        self._UserId = None
+
+    @property
+    def AgentId(self):
+        r"""<p>claw agent 运行态标识</p>
+        :rtype: str
+        """
+        return self._AgentId
+
+    @AgentId.setter
+    def AgentId(self, AgentId):
+        self._AgentId = AgentId
+
+    @property
+    def UserId(self):
+        r"""<p>归属用户标识</p>
+        :rtype: str
+        """
+        return self._UserId
+
+    @UserId.setter
+    def UserId(self, UserId):
+        self._UserId = UserId
+
+
+    def _deserialize(self, params):
+        self._AgentId = params.get("AgentId")
+        self._UserId = params.get("UserId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Variable(AbstractModel):
     r"""变量信息
 
@@ -29047,7 +30610,7 @@ class Variable(AbstractModel):
         :type DefaultValue: str
         :param _Description: <p>变量描述</p>
         :type Description: str
-        :param _ModuleType: <p>模块类型。枚举值: 1:环境参数, 2:应用参数, 3:系统参数, -1:所有参数</p>
+        :param _ModuleType: <p>变量模块类型</p><p>枚举值：</p><ul><li>0： API参数</li><li>1： 环境参数</li><li>2： 应用参数</li><li>3： 系统参数</li></ul>
         :type ModuleType: int
         :param _Name: <p>变量名称</p>
         :type Name: str
@@ -29059,6 +30622,10 @@ class Variable(AbstractModel):
         :type EnableEndpoints: bool
         :param _EndpointList: <p>网络策略列表(支持: 精确域名、*.通配子域名、可带协议/端口/路径前缀)</p>
         :type EndpointList: list of str
+        :param _IsBuiltin: <p>是否内置变量</p>
+        :type IsBuiltin: bool
+        :param _EnableSandbox: <p>是否可注入到沙箱环境</p>
+        :type EnableSandbox: bool
         """
         self._DefaultFileName = None
         self._DefaultValue = None
@@ -29069,6 +30636,8 @@ class Variable(AbstractModel):
         self._VariableId = None
         self._EnableEndpoints = None
         self._EndpointList = None
+        self._IsBuiltin = None
+        self._EnableSandbox = None
 
     @property
     def DefaultFileName(self):
@@ -29105,7 +30674,7 @@ class Variable(AbstractModel):
 
     @property
     def ModuleType(self):
-        r"""<p>模块类型。枚举值: 1:环境参数, 2:应用参数, 3:系统参数, -1:所有参数</p>
+        r"""<p>变量模块类型</p><p>枚举值：</p><ul><li>0： API参数</li><li>1： 环境参数</li><li>2： 应用参数</li><li>3： 系统参数</li></ul>
         :rtype: int
         """
         return self._ModuleType
@@ -29169,6 +30738,28 @@ class Variable(AbstractModel):
     def EndpointList(self, EndpointList):
         self._EndpointList = EndpointList
 
+    @property
+    def IsBuiltin(self):
+        r"""<p>是否内置变量</p>
+        :rtype: bool
+        """
+        return self._IsBuiltin
+
+    @IsBuiltin.setter
+    def IsBuiltin(self, IsBuiltin):
+        self._IsBuiltin = IsBuiltin
+
+    @property
+    def EnableSandbox(self):
+        r"""<p>是否可注入到沙箱环境</p>
+        :rtype: bool
+        """
+        return self._EnableSandbox
+
+    @EnableSandbox.setter
+    def EnableSandbox(self, EnableSandbox):
+        self._EnableSandbox = EnableSandbox
+
 
     def _deserialize(self, params):
         self._DefaultFileName = params.get("DefaultFileName")
@@ -29180,6 +30771,8 @@ class Variable(AbstractModel):
         self._VariableId = params.get("VariableId")
         self._EnableEndpoints = params.get("EnableEndpoints")
         self._EndpointList = params.get("EndpointList")
+        self._IsBuiltin = params.get("IsBuiltin")
+        self._EnableSandbox = params.get("EnableSandbox")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -29297,6 +30890,617 @@ class VoiceConfig(AbstractModel):
         self._TimbreKey = params.get("TimbreKey")
         self._VoiceName = params.get("VoiceName")
         self._VoiceType = params.get("VoiceType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class WechatChannelConfig(AbstractModel):
+    r"""微信公众号/小程序渠道配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _QrcodeUrl: <p>授权二维码URL（创建后回填）</p>
+        :type QrcodeUrl: str
+        :param _WechatAppId: <p>公众号/小程序AppId（授权后回填）</p>
+        :type WechatAppId: str
+        :param _WechatRefreshToken: <p>公众号/小程序RefreshToken（授权后回填）</p>
+        :type WechatRefreshToken: str
+        """
+        self._QrcodeUrl = None
+        self._WechatAppId = None
+        self._WechatRefreshToken = None
+
+    @property
+    def QrcodeUrl(self):
+        r"""<p>授权二维码URL（创建后回填）</p>
+        :rtype: str
+        """
+        return self._QrcodeUrl
+
+    @QrcodeUrl.setter
+    def QrcodeUrl(self, QrcodeUrl):
+        self._QrcodeUrl = QrcodeUrl
+
+    @property
+    def WechatAppId(self):
+        r"""<p>公众号/小程序AppId（授权后回填）</p>
+        :rtype: str
+        """
+        return self._WechatAppId
+
+    @WechatAppId.setter
+    def WechatAppId(self, WechatAppId):
+        self._WechatAppId = WechatAppId
+
+    @property
+    def WechatRefreshToken(self):
+        r"""<p>公众号/小程序RefreshToken（授权后回填）</p>
+        :rtype: str
+        """
+        return self._WechatRefreshToken
+
+    @WechatRefreshToken.setter
+    def WechatRefreshToken(self, WechatRefreshToken):
+        self._WechatRefreshToken = WechatRefreshToken
+
+
+    def _deserialize(self, params):
+        self._QrcodeUrl = params.get("QrcodeUrl")
+        self._WechatAppId = params.get("WechatAppId")
+        self._WechatRefreshToken = params.get("WechatRefreshToken")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class WechatClawBotChannelConfig(AbstractModel):
+    r"""微信ClawBot渠道配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BotId: <p>ClawBot机器人ID（扫码后回填）</p>
+        :type BotId: str
+        :param _BotToken: <p>ClawBot机器人Token（扫码后回填）</p>
+        :type BotToken: str
+        :param _QrcodeStatus: <p>二维码状态（wait/confirmed/expired）</p>
+        :type QrcodeStatus: str
+        :param _QrcodeUrl: <p>二维码URL（创建后回填）</p>
+        :type QrcodeUrl: str
+        :param _WechatUserId: <p>微信用户ID（扫码后回填）</p>
+        :type WechatUserId: str
+        """
+        self._BotId = None
+        self._BotToken = None
+        self._QrcodeStatus = None
+        self._QrcodeUrl = None
+        self._WechatUserId = None
+
+    @property
+    def BotId(self):
+        r"""<p>ClawBot机器人ID（扫码后回填）</p>
+        :rtype: str
+        """
+        return self._BotId
+
+    @BotId.setter
+    def BotId(self, BotId):
+        self._BotId = BotId
+
+    @property
+    def BotToken(self):
+        r"""<p>ClawBot机器人Token（扫码后回填）</p>
+        :rtype: str
+        """
+        return self._BotToken
+
+    @BotToken.setter
+    def BotToken(self, BotToken):
+        self._BotToken = BotToken
+
+    @property
+    def QrcodeStatus(self):
+        r"""<p>二维码状态（wait/confirmed/expired）</p>
+        :rtype: str
+        """
+        return self._QrcodeStatus
+
+    @QrcodeStatus.setter
+    def QrcodeStatus(self, QrcodeStatus):
+        self._QrcodeStatus = QrcodeStatus
+
+    @property
+    def QrcodeUrl(self):
+        r"""<p>二维码URL（创建后回填）</p>
+        :rtype: str
+        """
+        return self._QrcodeUrl
+
+    @QrcodeUrl.setter
+    def QrcodeUrl(self, QrcodeUrl):
+        self._QrcodeUrl = QrcodeUrl
+
+    @property
+    def WechatUserId(self):
+        r"""<p>微信用户ID（扫码后回填）</p>
+        :rtype: str
+        """
+        return self._WechatUserId
+
+    @WechatUserId.setter
+    def WechatUserId(self, WechatUserId):
+        self._WechatUserId = WechatUserId
+
+
+    def _deserialize(self, params):
+        self._BotId = params.get("BotId")
+        self._BotToken = params.get("BotToken")
+        self._QrcodeStatus = params.get("QrcodeStatus")
+        self._QrcodeUrl = params.get("QrcodeUrl")
+        self._WechatUserId = params.get("WechatUserId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class WechatCustomerServiceChannelConfig(AbstractModel):
+    r"""微信客服渠道配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _AgentSecret: <p>企业微信应用Secret</p>
+        :type AgentSecret: str
+        :param _Avatar: <p>头像URL</p>
+        :type Avatar: str
+        :param _Callback: <p>回调配置</p>
+        :type Callback: :class:`tencentcloud.adp.v20260520.models.CallbackConfig`
+        :param _CustomerServiceId: <p>客服账号ID</p>
+        :type CustomerServiceId: str
+        :param _Name: <p>客服账号名称</p>
+        :type Name: str
+        :param _ShareCodeUrl: <p>客服形象二维码URL</p>
+        :type ShareCodeUrl: str
+        :param _WecomCorpId: <p>企业微信企业ID</p>
+        :type WecomCorpId: str
+        """
+        self._AgentSecret = None
+        self._Avatar = None
+        self._Callback = None
+        self._CustomerServiceId = None
+        self._Name = None
+        self._ShareCodeUrl = None
+        self._WecomCorpId = None
+
+    @property
+    def AgentSecret(self):
+        r"""<p>企业微信应用Secret</p>
+        :rtype: str
+        """
+        return self._AgentSecret
+
+    @AgentSecret.setter
+    def AgentSecret(self, AgentSecret):
+        self._AgentSecret = AgentSecret
+
+    @property
+    def Avatar(self):
+        r"""<p>头像URL</p>
+        :rtype: str
+        """
+        return self._Avatar
+
+    @Avatar.setter
+    def Avatar(self, Avatar):
+        self._Avatar = Avatar
+
+    @property
+    def Callback(self):
+        r"""<p>回调配置</p>
+        :rtype: :class:`tencentcloud.adp.v20260520.models.CallbackConfig`
+        """
+        return self._Callback
+
+    @Callback.setter
+    def Callback(self, Callback):
+        self._Callback = Callback
+
+    @property
+    def CustomerServiceId(self):
+        r"""<p>客服账号ID</p>
+        :rtype: str
+        """
+        return self._CustomerServiceId
+
+    @CustomerServiceId.setter
+    def CustomerServiceId(self, CustomerServiceId):
+        self._CustomerServiceId = CustomerServiceId
+
+    @property
+    def Name(self):
+        r"""<p>客服账号名称</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def ShareCodeUrl(self):
+        r"""<p>客服形象二维码URL</p>
+        :rtype: str
+        """
+        return self._ShareCodeUrl
+
+    @ShareCodeUrl.setter
+    def ShareCodeUrl(self, ShareCodeUrl):
+        self._ShareCodeUrl = ShareCodeUrl
+
+    @property
+    def WecomCorpId(self):
+        r"""<p>企业微信企业ID</p>
+        :rtype: str
+        """
+        return self._WecomCorpId
+
+    @WecomCorpId.setter
+    def WecomCorpId(self, WecomCorpId):
+        self._WecomCorpId = WecomCorpId
+
+
+    def _deserialize(self, params):
+        self._AgentSecret = params.get("AgentSecret")
+        self._Avatar = params.get("Avatar")
+        if params.get("Callback") is not None:
+            self._Callback = CallbackConfig()
+            self._Callback._deserialize(params.get("Callback"))
+        self._CustomerServiceId = params.get("CustomerServiceId")
+        self._Name = params.get("Name")
+        self._ShareCodeUrl = params.get("ShareCodeUrl")
+        self._WecomCorpId = params.get("WecomCorpId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class WecomAppChannelConfig(AbstractModel):
+    r"""企微应用渠道配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Callback: <p>回调配置</p>
+        :type Callback: :class:`tencentcloud.adp.v20260520.models.CallbackConfig`
+        :param _ThirdChannelCorpId: <p>第三方企业ID</p>
+        :type ThirdChannelCorpId: str
+        :param _ThirdChannelId: <p>第三方渠道ID</p>
+        :type ThirdChannelId: str
+        :param _WecomAgentId: <p>企微应用ID</p>
+        :type WecomAgentId: str
+        :param _WecomAgentSecret: <p>企微应用Secret</p>
+        :type WecomAgentSecret: str
+        :param _WecomCorpId: <p>企业ID</p>
+        :type WecomCorpId: str
+        """
+        self._Callback = None
+        self._ThirdChannelCorpId = None
+        self._ThirdChannelId = None
+        self._WecomAgentId = None
+        self._WecomAgentSecret = None
+        self._WecomCorpId = None
+
+    @property
+    def Callback(self):
+        r"""<p>回调配置</p>
+        :rtype: :class:`tencentcloud.adp.v20260520.models.CallbackConfig`
+        """
+        return self._Callback
+
+    @Callback.setter
+    def Callback(self, Callback):
+        self._Callback = Callback
+
+    @property
+    def ThirdChannelCorpId(self):
+        r"""<p>第三方企业ID</p>
+        :rtype: str
+        """
+        return self._ThirdChannelCorpId
+
+    @ThirdChannelCorpId.setter
+    def ThirdChannelCorpId(self, ThirdChannelCorpId):
+        self._ThirdChannelCorpId = ThirdChannelCorpId
+
+    @property
+    def ThirdChannelId(self):
+        r"""<p>第三方渠道ID</p>
+        :rtype: str
+        """
+        return self._ThirdChannelId
+
+    @ThirdChannelId.setter
+    def ThirdChannelId(self, ThirdChannelId):
+        self._ThirdChannelId = ThirdChannelId
+
+    @property
+    def WecomAgentId(self):
+        r"""<p>企微应用ID</p>
+        :rtype: str
+        """
+        return self._WecomAgentId
+
+    @WecomAgentId.setter
+    def WecomAgentId(self, WecomAgentId):
+        self._WecomAgentId = WecomAgentId
+
+    @property
+    def WecomAgentSecret(self):
+        r"""<p>企微应用Secret</p>
+        :rtype: str
+        """
+        return self._WecomAgentSecret
+
+    @WecomAgentSecret.setter
+    def WecomAgentSecret(self, WecomAgentSecret):
+        self._WecomAgentSecret = WecomAgentSecret
+
+    @property
+    def WecomCorpId(self):
+        r"""<p>企业ID</p>
+        :rtype: str
+        """
+        return self._WecomCorpId
+
+    @WecomCorpId.setter
+    def WecomCorpId(self, WecomCorpId):
+        self._WecomCorpId = WecomCorpId
+
+
+    def _deserialize(self, params):
+        if params.get("Callback") is not None:
+            self._Callback = CallbackConfig()
+            self._Callback._deserialize(params.get("Callback"))
+        self._ThirdChannelCorpId = params.get("ThirdChannelCorpId")
+        self._ThirdChannelId = params.get("ThirdChannelId")
+        self._WecomAgentId = params.get("WecomAgentId")
+        self._WecomAgentSecret = params.get("WecomAgentSecret")
+        self._WecomCorpId = params.get("WecomCorpId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class WecomRobotCallbackAccess(AbstractModel):
+    r"""企微机器人回调接入配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Callback: <p>回调配置</p>
+        :type Callback: :class:`tencentcloud.adp.v20260520.models.CallbackConfig`
+        :param _RobotName: <p>机器人名称</p>
+        :type RobotName: str
+        :param _WecomCorpId: <p>企微企业ID</p>
+        :type WecomCorpId: str
+        :param _WecomRobotId: <p>企微机器人ID</p>
+        :type WecomRobotId: str
+        """
+        self._Callback = None
+        self._RobotName = None
+        self._WecomCorpId = None
+        self._WecomRobotId = None
+
+    @property
+    def Callback(self):
+        r"""<p>回调配置</p>
+        :rtype: :class:`tencentcloud.adp.v20260520.models.CallbackConfig`
+        """
+        return self._Callback
+
+    @Callback.setter
+    def Callback(self, Callback):
+        self._Callback = Callback
+
+    @property
+    def RobotName(self):
+        r"""<p>机器人名称</p>
+        :rtype: str
+        """
+        return self._RobotName
+
+    @RobotName.setter
+    def RobotName(self, RobotName):
+        self._RobotName = RobotName
+
+    @property
+    def WecomCorpId(self):
+        r"""<p>企微企业ID</p>
+        :rtype: str
+        """
+        return self._WecomCorpId
+
+    @WecomCorpId.setter
+    def WecomCorpId(self, WecomCorpId):
+        self._WecomCorpId = WecomCorpId
+
+    @property
+    def WecomRobotId(self):
+        r"""<p>企微机器人ID</p>
+        :rtype: str
+        """
+        return self._WecomRobotId
+
+    @WecomRobotId.setter
+    def WecomRobotId(self, WecomRobotId):
+        self._WecomRobotId = WecomRobotId
+
+
+    def _deserialize(self, params):
+        if params.get("Callback") is not None:
+            self._Callback = CallbackConfig()
+            self._Callback._deserialize(params.get("Callback"))
+        self._RobotName = params.get("RobotName")
+        self._WecomCorpId = params.get("WecomCorpId")
+        self._WecomRobotId = params.get("WecomRobotId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class WecomRobotChannelConfig(AbstractModel):
+    r"""企微机器人渠道配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Callback: <p>回调接入配置</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Callback: :class:`tencentcloud.adp.v20260520.models.WecomRobotCallbackAccess`
+        :param _Websocket: <p>WebSocket长连接配置</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Websocket: :class:`tencentcloud.adp.v20260520.models.WecomRobotWebsocketAccess`
+        """
+        self._Callback = None
+        self._Websocket = None
+
+    @property
+    def Callback(self):
+        r"""<p>回调接入配置</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.adp.v20260520.models.WecomRobotCallbackAccess`
+        """
+        return self._Callback
+
+    @Callback.setter
+    def Callback(self, Callback):
+        self._Callback = Callback
+
+    @property
+    def Websocket(self):
+        r"""<p>WebSocket长连接配置</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.adp.v20260520.models.WecomRobotWebsocketAccess`
+        """
+        return self._Websocket
+
+    @Websocket.setter
+    def Websocket(self, Websocket):
+        self._Websocket = Websocket
+
+
+    def _deserialize(self, params):
+        if params.get("Callback") is not None:
+            self._Callback = WecomRobotCallbackAccess()
+            self._Callback._deserialize(params.get("Callback"))
+        if params.get("Websocket") is not None:
+            self._Websocket = WecomRobotWebsocketAccess()
+            self._Websocket._deserialize(params.get("Websocket"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class WecomRobotWebsocketAccess(AbstractModel):
+    r"""企微机器人WebSocket接入配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BindType: <p>绑定类型：1-扫码绑定，2-填写表单绑定</p>
+        :type BindType: int
+        :param _BotId: <p>企微机器人BotId</p>
+        :type BotId: str
+        :param _BotSecret: <p>企微机器人BotSecret</p>
+        :type BotSecret: str
+        """
+        self._BindType = None
+        self._BotId = None
+        self._BotSecret = None
+
+    @property
+    def BindType(self):
+        r"""<p>绑定类型：1-扫码绑定，2-填写表单绑定</p>
+        :rtype: int
+        """
+        return self._BindType
+
+    @BindType.setter
+    def BindType(self, BindType):
+        self._BindType = BindType
+
+    @property
+    def BotId(self):
+        r"""<p>企微机器人BotId</p>
+        :rtype: str
+        """
+        return self._BotId
+
+    @BotId.setter
+    def BotId(self, BotId):
+        self._BotId = BotId
+
+    @property
+    def BotSecret(self):
+        r"""<p>企微机器人BotSecret</p>
+        :rtype: str
+        """
+        return self._BotSecret
+
+    @BotSecret.setter
+    def BotSecret(self, BotSecret):
+        self._BotSecret = BotSecret
+
+
+    def _deserialize(self, params):
+        self._BindType = params.get("BindType")
+        self._BotId = params.get("BotId")
+        self._BotSecret = params.get("BotSecret")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

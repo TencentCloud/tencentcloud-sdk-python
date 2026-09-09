@@ -13264,6 +13264,8 @@ class Instance(AbstractModel):
         :param _LatestOperationErrorMsg: <p>实例的最新操作错误信息。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type LatestOperationErrorMsg: str
+        :param _EnableJumboFrame: <p>实例是否开启巨型帧</p>
+        :type EnableJumboFrame: bool
         :param _Metadata: <p>自定义metadata，本参数对应创建 CVM时指定的Metadata 信息。<strong>注：内测中</strong>。</p>
         :type Metadata: :class:`tencentcloud.cvm.v20170312.models.Metadata`
         :param _PublicIPv6Addresses: <p>实例绑定的公网IPv6地址。</p>
@@ -13315,6 +13317,7 @@ class Instance(AbstractModel):
         self._DefaultLoginUser = None
         self._DefaultLoginPort = None
         self._LatestOperationErrorMsg = None
+        self._EnableJumboFrame = None
         self._Metadata = None
         self._PublicIPv6Addresses = None
         self._CpuTopology = None
@@ -13795,6 +13798,17 @@ class Instance(AbstractModel):
         self._LatestOperationErrorMsg = LatestOperationErrorMsg
 
     @property
+    def EnableJumboFrame(self):
+        r"""<p>实例是否开启巨型帧</p>
+        :rtype: bool
+        """
+        return self._EnableJumboFrame
+
+    @EnableJumboFrame.setter
+    def EnableJumboFrame(self, EnableJumboFrame):
+        self._EnableJumboFrame = EnableJumboFrame
+
+    @property
     def Metadata(self):
         r"""<p>自定义metadata，本参数对应创建 CVM时指定的Metadata 信息。<strong>注：内测中</strong>。</p>
         :rtype: :class:`tencentcloud.cvm.v20170312.models.Metadata`
@@ -13904,6 +13918,7 @@ class Instance(AbstractModel):
         self._DefaultLoginUser = params.get("DefaultLoginUser")
         self._DefaultLoginPort = params.get("DefaultLoginPort")
         self._LatestOperationErrorMsg = params.get("LatestOperationErrorMsg")
+        self._EnableJumboFrame = params.get("EnableJumboFrame")
         if params.get("Metadata") is not None:
             self._Metadata = Metadata()
             self._Metadata._deserialize(params.get("Metadata"))

@@ -2931,14 +2931,14 @@ class HyperParam(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _HiCache: HiCache缓存
+        :param _HiCache: <p>HiCache缓存</p>
         :type HiCache: :class:`tencentcloud.hai.v20230812.models.HiCacheInfo`
         """
         self._HiCache = None
 
     @property
     def HiCache(self):
-        r"""HiCache缓存
+        r"""<p>HiCache缓存</p>
         :rtype: :class:`tencentcloud.hai.v20230812.models.HiCacheInfo`
         """
         return self._HiCache

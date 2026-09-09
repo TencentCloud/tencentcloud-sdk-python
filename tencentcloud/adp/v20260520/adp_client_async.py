@@ -31,7 +31,7 @@ class AdpClient(AbstractClient):
             opts: Dict = None,
     ) -> models.CopyAgentFromAppResponse:
         """
-        创建Agent
+        复制 Agent（目前仅支持claw模式））
         """
         
         kwargs = {}
@@ -110,6 +110,24 @@ class AdpClient(AbstractClient):
         kwargs["action"] = "CreateAppTrigger"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.CreateAppTriggerResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def CreateChannel(
+            self,
+            request: models.CreateChannelRequest,
+            opts: Dict = None,
+    ) -> models.CreateChannelResponse:
+        """
+        创建渠道（通过scene区分B端应用发布渠道与C端IM渠道）
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateChannel"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateChannelResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -344,6 +362,24 @@ class AdpClient(AbstractClient):
         kwargs["action"] = "DeleteAppTrigger"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DeleteAppTriggerResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteChannel(
+            self,
+            request: models.DeleteChannelRequest,
+            opts: Dict = None,
+    ) -> models.DeleteChannelResponse:
+        """
+        删除渠道（通过scene区分场景）
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteChannel"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteChannelResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -686,6 +722,42 @@ class AdpClient(AbstractClient):
         kwargs["action"] = "DescribeAuditLogMeta"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeAuditLogMetaResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeChannel(
+            self,
+            request: models.DescribeChannelRequest,
+            opts: Dict = None,
+    ) -> models.DescribeChannelResponse:
+        """
+        获取渠道详情（scene区分场景）
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeChannel"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeChannelResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeChannelList(
+            self,
+            request: models.DescribeChannelListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeChannelListResponse:
+        """
+        获取渠道列表（scene区分场景）
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeChannelList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeChannelListResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -1208,6 +1280,24 @@ class AdpClient(AbstractClient):
         kwargs["action"] = "ModifyAppTrigger"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ModifyAppTriggerResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyChannel(
+            self,
+            request: models.ModifyChannelRequest,
+            opts: Dict = None,
+    ) -> models.ModifyChannelResponse:
+        """
+        修改渠道（支持修改备注与企微机器人渠道回调机器人ID）
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyChannel"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyChannelResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

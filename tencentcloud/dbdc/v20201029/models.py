@@ -934,7 +934,7 @@ class CreateDBCustomNodesRequest(AbstractModel):
         :type ClientToken: str
         :param _ChargeType: <p>计费模式</p><p>枚举值：</p><ul><li>PREPAID： 包年包月</li><li>POSTPAID： 按量付费</li></ul><p>默认值：默认为包年包月(PREPAID)</p>
         :type ChargeType: str
-        :param _NetworkMode: <p>访问主机的网络模式</p><p>枚举值：</p><ul><li>privatelink： 四层网络联通，放通SSH 通路</li><li>cross_tenant_eni： 三层网络联通，双网卡模式</li></ul><p>默认值：默认值为：privatelink</p>
+        :param _NetworkMode: <p>访问主机的网络模式</p><p>枚举值：</p><ul><li>cross_tenant_eni： 三层网络联通，双网卡模式</li></ul><p>默认值：默认值为：cross_tenant_eni</p><p>原 privatelink 访问主机的网络模式已下线。</p>
         :type NetworkMode: str
         :param _SystemDisk: <p>系统盘配置</p><p>入参限制：仅云盘版机型支持，如DB.SA5机型。本地盘机型DB.AT5机型不支持设置</p>
         :type SystemDisk: :class:`tencentcloud.dbdc.v20201029.models.SystemDisk`
@@ -1139,7 +1139,7 @@ class CreateDBCustomNodesRequest(AbstractModel):
 
     @property
     def NetworkMode(self):
-        r"""<p>访问主机的网络模式</p><p>枚举值：</p><ul><li>privatelink： 四层网络联通，放通SSH 通路</li><li>cross_tenant_eni： 三层网络联通，双网卡模式</li></ul><p>默认值：默认值为：privatelink</p>
+        r"""<p>访问主机的网络模式</p><p>枚举值：</p><ul><li>cross_tenant_eni： 三层网络联通，双网卡模式</li></ul><p>默认值：默认值为：cross_tenant_eni</p><p>原 privatelink 访问主机的网络模式已下线。</p>
         :rtype: str
         """
         return self._NetworkMode
@@ -1543,6 +1543,8 @@ class DBCustomClusterNode(AbstractModel):
         :param _SecurityGroupIds: <p>节点绑定的安全组</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type SecurityGroupIds: list of str
+        :param _LatestRunningTaskType: <p>节点最新进行中的任务类型</p><p>枚举值：</p><ul><li>add-nodes-to-cluster： 添加节点到集群</li><li>remove-nodes-from-cluster： 从集群中移除节点</li><li>modify-nodes-attributes： 修改节点属性</li><li>modify-nodes-drg： 修改节点置放群组</li></ul>
+        :type LatestRunningTaskType: str
         """
         self._NodeId = None
         self._NodeName = None
@@ -1554,6 +1556,7 @@ class DBCustomClusterNode(AbstractModel):
         self._NetworkMode = None
         self._EniIP = None
         self._SecurityGroupIds = None
+        self._LatestRunningTaskType = None
 
     @property
     def NodeId(self):
@@ -1668,6 +1671,17 @@ class DBCustomClusterNode(AbstractModel):
     def SecurityGroupIds(self, SecurityGroupIds):
         self._SecurityGroupIds = SecurityGroupIds
 
+    @property
+    def LatestRunningTaskType(self):
+        r"""<p>节点最新进行中的任务类型</p><p>枚举值：</p><ul><li>add-nodes-to-cluster： 添加节点到集群</li><li>remove-nodes-from-cluster： 从集群中移除节点</li><li>modify-nodes-attributes： 修改节点属性</li><li>modify-nodes-drg： 修改节点置放群组</li></ul>
+        :rtype: str
+        """
+        return self._LatestRunningTaskType
+
+    @LatestRunningTaskType.setter
+    def LatestRunningTaskType(self, LatestRunningTaskType):
+        self._LatestRunningTaskType = LatestRunningTaskType
+
 
     def _deserialize(self, params):
         self._NodeId = params.get("NodeId")
@@ -1680,6 +1694,7 @@ class DBCustomClusterNode(AbstractModel):
         self._NetworkMode = params.get("NetworkMode")
         self._EniIP = params.get("EniIP")
         self._SecurityGroupIds = params.get("SecurityGroupIds")
+        self._LatestRunningTaskType = params.get("LatestRunningTaskType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2066,6 +2081,8 @@ class DBCustomNode(AbstractModel):
         :type SecurityGroupIds: list of str
         :param _DisasterRecoverGroupId: <p>置放群组ID</p>
         :type DisasterRecoverGroupId: str
+        :param _LatestRunningTaskType: <p>节点最新进行中的任务类型</p><p>枚举值：</p><ul><li>add-nodes-to-cluster： 添加节点到集群</li><li>remove-nodes-from-cluster： 从集群中移除节点</li><li>modify-nodes-attributes： 修改节点属性</li><li>modify-nodes-drg： 修改节点置放群组</li></ul>
+        :type LatestRunningTaskType: str
         """
         self._NodeId = None
         self._NodeName = None
@@ -2096,6 +2113,7 @@ class DBCustomNode(AbstractModel):
         self._EniIP = None
         self._SecurityGroupIds = None
         self._DisasterRecoverGroupId = None
+        self._LatestRunningTaskType = None
 
     @property
     def NodeId(self):
@@ -2420,6 +2438,17 @@ class DBCustomNode(AbstractModel):
     def DisasterRecoverGroupId(self, DisasterRecoverGroupId):
         self._DisasterRecoverGroupId = DisasterRecoverGroupId
 
+    @property
+    def LatestRunningTaskType(self):
+        r"""<p>节点最新进行中的任务类型</p><p>枚举值：</p><ul><li>add-nodes-to-cluster： 添加节点到集群</li><li>remove-nodes-from-cluster： 从集群中移除节点</li><li>modify-nodes-attributes： 修改节点属性</li><li>modify-nodes-drg： 修改节点置放群组</li></ul>
+        :rtype: str
+        """
+        return self._LatestRunningTaskType
+
+    @LatestRunningTaskType.setter
+    def LatestRunningTaskType(self, LatestRunningTaskType):
+        self._LatestRunningTaskType = LatestRunningTaskType
+
 
     def _deserialize(self, params):
         self._NodeId = params.get("NodeId")
@@ -2463,6 +2492,7 @@ class DBCustomNode(AbstractModel):
         self._EniIP = params.get("EniIP")
         self._SecurityGroupIds = params.get("SecurityGroupIds")
         self._DisasterRecoverGroupId = params.get("DisasterRecoverGroupId")
+        self._LatestRunningTaskType = params.get("LatestRunningTaskType")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -8600,11 +8630,20 @@ class ModifyDBCustomClusterAttributesRequest(AbstractModel):
         r"""
         :param _ClusterId: <p>集群ID</p><p>参数格式：dbcc-hj7gab15</p>
         :type ClusterId: str
+        :param _ClusterIds: <p>集群 ID 列表</p><p>入参限制：最多支持 100 个</p><p>ClusterId 和 ClusterIds 必须传一个且不能同时传</p>
+        :type ClusterIds: list of str
         :param _DeletionProtection: <p>是否启用集群删除保护</p><p>枚举值：</p><ul><li>true： 启用</li><li>false： 不启用</li></ul>
         :type DeletionProtection: bool
+        :param _ClusterName: <p>集群名称</p><p>入参限制：最长128个字符</p>
+        :type ClusterName: str
+        :param _ClusterDescription: <p>集群描述</p><p>入参限制：最长200个字符</p>
+        :type ClusterDescription: str
         """
         self._ClusterId = None
+        self._ClusterIds = None
         self._DeletionProtection = None
+        self._ClusterName = None
+        self._ClusterDescription = None
 
     @property
     def ClusterId(self):
@@ -8618,6 +8657,17 @@ class ModifyDBCustomClusterAttributesRequest(AbstractModel):
         self._ClusterId = ClusterId
 
     @property
+    def ClusterIds(self):
+        r"""<p>集群 ID 列表</p><p>入参限制：最多支持 100 个</p><p>ClusterId 和 ClusterIds 必须传一个且不能同时传</p>
+        :rtype: list of str
+        """
+        return self._ClusterIds
+
+    @ClusterIds.setter
+    def ClusterIds(self, ClusterIds):
+        self._ClusterIds = ClusterIds
+
+    @property
     def DeletionProtection(self):
         r"""<p>是否启用集群删除保护</p><p>枚举值：</p><ul><li>true： 启用</li><li>false： 不启用</li></ul>
         :rtype: bool
@@ -8628,10 +8678,35 @@ class ModifyDBCustomClusterAttributesRequest(AbstractModel):
     def DeletionProtection(self, DeletionProtection):
         self._DeletionProtection = DeletionProtection
 
+    @property
+    def ClusterName(self):
+        r"""<p>集群名称</p><p>入参限制：最长128个字符</p>
+        :rtype: str
+        """
+        return self._ClusterName
+
+    @ClusterName.setter
+    def ClusterName(self, ClusterName):
+        self._ClusterName = ClusterName
+
+    @property
+    def ClusterDescription(self):
+        r"""<p>集群描述</p><p>入参限制：最长200个字符</p>
+        :rtype: str
+        """
+        return self._ClusterDescription
+
+    @ClusterDescription.setter
+    def ClusterDescription(self, ClusterDescription):
+        self._ClusterDescription = ClusterDescription
+
 
     def _deserialize(self, params):
         self._ClusterId = params.get("ClusterId")
+        self._ClusterIds = params.get("ClusterIds")
         self._DeletionProtection = params.get("DeletionProtection")
+        self._ClusterName = params.get("ClusterName")
+        self._ClusterDescription = params.get("ClusterDescription")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -9155,6 +9230,8 @@ class ModifyDBCustomNodeAttributesRequest(AbstractModel):
         r"""
         :param _NodeId: <p>节点ID</p><p>参数格式：dbcn-hq98qjym</p>
         :type NodeId: str
+        :param _NodeIds: <p>节点 ID 列表</p><p>入参限制：最多支持 100 个</p><p>NodeId 和 NodeIds 必须传一个且不能同时传</p>
+        :type NodeIds: list of str
         :param _HostName: <p>主机 HostName</p><p>入参限制：参数设置规则参见：<a href="https://cloud.tencent.com/document/api/1322/132929">创建 DB Custom 节点接口</a>的 HostName 参数说明。</p><p>注意：节点在没有加入到集群之前才支持修改主机 HostName。</p>
         :type HostName: str
         :param _NodeName: <p>节点名称</p><p>入参限制：参数设置规则参见：<a href="https://cloud.tencent.com/document/api/1322/132929">创建 DB Custom 节点接口</a>的 NodeName 参数说明。</p>
@@ -9163,6 +9240,7 @@ class ModifyDBCustomNodeAttributesRequest(AbstractModel):
         :type AutoReboot: bool
         """
         self._NodeId = None
+        self._NodeIds = None
         self._HostName = None
         self._NodeName = None
         self._AutoReboot = None
@@ -9177,6 +9255,17 @@ class ModifyDBCustomNodeAttributesRequest(AbstractModel):
     @NodeId.setter
     def NodeId(self, NodeId):
         self._NodeId = NodeId
+
+    @property
+    def NodeIds(self):
+        r"""<p>节点 ID 列表</p><p>入参限制：最多支持 100 个</p><p>NodeId 和 NodeIds 必须传一个且不能同时传</p>
+        :rtype: list of str
+        """
+        return self._NodeIds
+
+    @NodeIds.setter
+    def NodeIds(self, NodeIds):
+        self._NodeIds = NodeIds
 
     @property
     def HostName(self):
@@ -9214,6 +9303,7 @@ class ModifyDBCustomNodeAttributesRequest(AbstractModel):
 
     def _deserialize(self, params):
         self._NodeId = params.get("NodeId")
+        self._NodeIds = params.get("NodeIds")
         self._HostName = params.get("HostName")
         self._NodeName = params.get("NodeName")
         self._AutoReboot = params.get("AutoReboot")

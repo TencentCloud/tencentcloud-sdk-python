@@ -317,7 +317,7 @@ class TeoClient(AbstractClient):
             opts: Dict = None,
     ) -> models.CreateCustomizeErrorPageResponse:
         """
-        创建自定义错误页面。
+        创建自定义响应页面。
         """
         
         kwargs = {}
@@ -3414,7 +3414,7 @@ class TeoClient(AbstractClient):
             opts: Dict = None,
     ) -> models.ModifyCustomErrorPageResponse:
         """
-        修改自定义错误页面。
+        修改自定义响应页面。
         """
         
         kwargs = {}

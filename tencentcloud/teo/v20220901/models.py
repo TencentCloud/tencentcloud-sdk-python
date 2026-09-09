@@ -10847,15 +10847,15 @@ class CreateCustomizeErrorPageRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ZoneId: 站点 ID。
+        :param _ZoneId: <p>站点 ID。</p>
         :type ZoneId: str
-        :param _Name: 自定义错误页名称，名称为 2-30 个字符。
+        :param _Name: <p>自定义响应页面名称，名称为 2-30 个字符。</p>
         :type Name: str
-        :param _ContentType: 自定义错误页面类型，取值有：<li>text/html； </li><li>application/json；</li><li>text/plain；</li><li>text/xml。</li>
+        :param _ContentType: <p>自定义响应页面类型，取值有：</p><ul><li>text/html</li><li>application/json</li><li>plain/text</li><li>text/xml</li><li>text/css</li><li>text/javascript</li><li>application/javascript</li><li>text/markdown</li></ul>
         :type ContentType: str
-        :param _Description: 自定义错误页面描述，描述不超过 60 个字符。
+        :param _Description: <p>自定义响应页面描述，描述不超过 60 个字符。</p>
         :type Description: str
-        :param _Content: 自定义错误页面内容，内容不超过 2KB。
+        :param _Content: <p>自定义响应页面内容，内容不超过 16KB。</p>
         :type Content: str
         """
         self._ZoneId = None
@@ -10866,7 +10866,7 @@ class CreateCustomizeErrorPageRequest(AbstractModel):
 
     @property
     def ZoneId(self):
-        r"""站点 ID。
+        r"""<p>站点 ID。</p>
         :rtype: str
         """
         return self._ZoneId
@@ -10877,7 +10877,7 @@ class CreateCustomizeErrorPageRequest(AbstractModel):
 
     @property
     def Name(self):
-        r"""自定义错误页名称，名称为 2-30 个字符。
+        r"""<p>自定义响应页面名称，名称为 2-30 个字符。</p>
         :rtype: str
         """
         return self._Name
@@ -10888,7 +10888,7 @@ class CreateCustomizeErrorPageRequest(AbstractModel):
 
     @property
     def ContentType(self):
-        r"""自定义错误页面类型，取值有：<li>text/html； </li><li>application/json；</li><li>text/plain；</li><li>text/xml。</li>
+        r"""<p>自定义响应页面类型，取值有：</p><ul><li>text/html</li><li>application/json</li><li>plain/text</li><li>text/xml</li><li>text/css</li><li>text/javascript</li><li>application/javascript</li><li>text/markdown</li></ul>
         :rtype: str
         """
         return self._ContentType
@@ -10899,7 +10899,7 @@ class CreateCustomizeErrorPageRequest(AbstractModel):
 
     @property
     def Description(self):
-        r"""自定义错误页面描述，描述不超过 60 个字符。
+        r"""<p>自定义响应页面描述，描述不超过 60 个字符。</p>
         :rtype: str
         """
         return self._Description
@@ -10910,7 +10910,7 @@ class CreateCustomizeErrorPageRequest(AbstractModel):
 
     @property
     def Content(self):
-        r"""自定义错误页面内容，内容不超过 2KB。
+        r"""<p>自定义响应页面内容，内容不超过 16KB。</p>
         :rtype: str
         """
         return self._Content
@@ -10943,7 +10943,7 @@ class CreateCustomizeErrorPageResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _PageId: 页面 ID。
+        :param _PageId: <p>自定义响应页面 ID。</p>
         :type PageId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -10953,7 +10953,7 @@ class CreateCustomizeErrorPageResponse(AbstractModel):
 
     @property
     def PageId(self):
-        r"""页面 ID。
+        r"""<p>自定义响应页面 ID。</p>
         :rtype: str
         """
         return self._PageId
@@ -46801,17 +46801,17 @@ class ModifyCustomErrorPageRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _PageId: 自定义错误页面 ID。
+        :param _PageId: <p>自定义响应页面 ID。</p>
         :type PageId: str
-        :param _ZoneId: 站点 ID。
+        :param _ZoneId: <p>站点 ID。</p>
         :type ZoneId: str
-        :param _Name: 自定义错误页名称，名称为2 - 60个字符。
+        :param _Name: <p>自定义响应页面名称，名称为 2 - 60 个字符。</p>
         :type Name: str
-        :param _Description: 自定义错误页描述，描述内容不超过60个字符。
+        :param _Description: <p>自定义响应页面描述，描述内容不超过 60 个字符。</p>
         :type Description: str
-        :param _ContentType: 自定义错误页面类型，取值有：<li>text/html。 </li><li>application/json。</li><li>plain/text。</li><li>text/xml。</li>
+        :param _ContentType: <p>自定义响应页面类型，取值有：</p><ul><li>text/html</li><li>application/json</li><li>plain/text</li><li>text/xml</li><li>text/css</li><li>text/javascript</li><li>application/javascript</li><li>text/markdown</li></ul>
         :type ContentType: str
-        :param _Content: 自定义错误页面内容。内容不超过 2KB。
+        :param _Content: <p>自定义响应页面内容。内容不超过 16KB。</p>
         :type Content: str
         """
         self._PageId = None
@@ -46823,7 +46823,7 @@ class ModifyCustomErrorPageRequest(AbstractModel):
 
     @property
     def PageId(self):
-        r"""自定义错误页面 ID。
+        r"""<p>自定义响应页面 ID。</p>
         :rtype: str
         """
         return self._PageId
@@ -46834,7 +46834,7 @@ class ModifyCustomErrorPageRequest(AbstractModel):
 
     @property
     def ZoneId(self):
-        r"""站点 ID。
+        r"""<p>站点 ID。</p>
         :rtype: str
         """
         return self._ZoneId
@@ -46845,7 +46845,7 @@ class ModifyCustomErrorPageRequest(AbstractModel):
 
     @property
     def Name(self):
-        r"""自定义错误页名称，名称为2 - 60个字符。
+        r"""<p>自定义响应页面名称，名称为 2 - 60 个字符。</p>
         :rtype: str
         """
         return self._Name
@@ -46856,7 +46856,7 @@ class ModifyCustomErrorPageRequest(AbstractModel):
 
     @property
     def Description(self):
-        r"""自定义错误页描述，描述内容不超过60个字符。
+        r"""<p>自定义响应页面描述，描述内容不超过 60 个字符。</p>
         :rtype: str
         """
         return self._Description
@@ -46867,7 +46867,7 @@ class ModifyCustomErrorPageRequest(AbstractModel):
 
     @property
     def ContentType(self):
-        r"""自定义错误页面类型，取值有：<li>text/html。 </li><li>application/json。</li><li>plain/text。</li><li>text/xml。</li>
+        r"""<p>自定义响应页面类型，取值有：</p><ul><li>text/html</li><li>application/json</li><li>plain/text</li><li>text/xml</li><li>text/css</li><li>text/javascript</li><li>application/javascript</li><li>text/markdown</li></ul>
         :rtype: str
         """
         return self._ContentType
@@ -46878,7 +46878,7 @@ class ModifyCustomErrorPageRequest(AbstractModel):
 
     @property
     def Content(self):
-        r"""自定义错误页面内容。内容不超过 2KB。
+        r"""<p>自定义响应页面内容。内容不超过 16KB。</p>
         :rtype: str
         """
         return self._Content

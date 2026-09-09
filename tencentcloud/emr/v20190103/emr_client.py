@@ -696,6 +696,29 @@ class EmrClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeExportConfs(self, request):
+        r"""查询导出配置
+
+        :param request: Request instance for DescribeExportConfs.
+        :type request: :class:`tencentcloud.emr.v20190103.models.DescribeExportConfsRequest`
+        :rtype: :class:`tencentcloud.emr.v20190103.models.DescribeExportConfsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeExportConfs", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeExportConfsResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeGlobalConfig(self, request):
         r"""查询YARN资源调度的全局配置
 
@@ -1960,6 +1983,29 @@ class EmrClient(AbstractClient):
             body = self.call("ModifySLInstanceBasic", params, headers=headers)
             response = json.loads(body)
             model = models.ModifySLInstanceBasicResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyServiceParamsByExportConfs(self, request):
+        r"""配置导入下发
+
+        :param request: Request instance for ModifyServiceParamsByExportConfs.
+        :type request: :class:`tencentcloud.emr.v20190103.models.ModifyServiceParamsByExportConfsRequest`
+        :rtype: :class:`tencentcloud.emr.v20190103.models.ModifyServiceParamsByExportConfsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyServiceParamsByExportConfs", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyServiceParamsByExportConfsResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

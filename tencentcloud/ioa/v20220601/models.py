@@ -4219,6 +4219,42 @@ class DescribeBusinessResourceData(AbstractModel):
         :type ConnectorGroupType: str
         :param _DomainSuffix: <p>域名后缀</p>
         :type DomainSuffix: str
+        :param _ConnectivityCheckSwitch: <p>连通性检查开关，0-关闭 1-开启，默认1(只支持32位)</p>
+        :type ConnectivityCheckSwitch: int
+        :param _ConnectivityCheckInterval: <p>连通性检查测试间隔数值，最小为1，默认1(只支持32位)</p>
+        :type ConnectivityCheckInterval: int
+        :param _ConnectivityCheckIntervalUnit: <p>连通性检查测试间隔单位 minutes/hours/days，默认hours</p>
+        :type ConnectivityCheckIntervalUnit: str
+        :param _URLAuditState: <p>URL审计开关：0-关闭 1-开启，默认0</p>
+        :type URLAuditState: int
+        :param _URLAuditId: <p>URL审计证书ID列表，多个用分号分隔</p>
+        :type URLAuditId: str
+        :param _URLPath: <p>URL审计路径，多个用分号分隔</p>
+        :type URLPath: str
+        :param _ReachableType: <p>检测方式：0-未检测 1-主动 2-流量</p>
+        :type ReachableType: int
+        :param _APISecretName: <p>API密钥名称</p>
+        :type APISecretName: str
+        :param _APISecretKey: <p>API密钥Key</p>
+        :type APISecretKey: str
+        :param _EnableSensitiveRes: <p>是否为敏感资源：0-否 1-是</p>
+        :type EnableSensitiveRes: int
+        :param _EnableIPPolicy: <p>用户接入IP限制开关：0-不启用 1-启用</p>
+        :type EnableIPPolicy: int
+        :param _IPPolicyAttr: <p>IP分组属性：0-白名单 1-黑名单</p>
+        :type IPPolicyAttr: int
+        :param _IPPolicyIds: <p>IP分组ID列表</p>
+        :type IPPolicyIds: list of int
+        :param _IPPolicyNames: <p>IP分组名称（分号分隔）</p>
+        :type IPPolicyNames: str
+        :param _EnableUserAgent: <p>访问浏览器规则开关：0-不启用 1-启用</p>
+        :type EnableUserAgent: int
+        :param _UserAgentAttr: <p>浏览器规则属性：0-白名单 1-黑名单</p>
+        :type UserAgentAttr: int
+        :param _UserAgentIds: <p>浏览器规则ID列表</p>
+        :type UserAgentIds: list of str
+        :param _UserAgentNames: <p>浏览器规则名称（分号分隔）</p>
+        :type UserAgentNames: str
         """
         self._ServiceId = None
         self._ServiceName = None
@@ -4262,6 +4298,24 @@ class DescribeBusinessResourceData(AbstractModel):
         self._WebGwNoAuth = None
         self._ConnectorGroupType = None
         self._DomainSuffix = None
+        self._ConnectivityCheckSwitch = None
+        self._ConnectivityCheckInterval = None
+        self._ConnectivityCheckIntervalUnit = None
+        self._URLAuditState = None
+        self._URLAuditId = None
+        self._URLPath = None
+        self._ReachableType = None
+        self._APISecretName = None
+        self._APISecretKey = None
+        self._EnableSensitiveRes = None
+        self._EnableIPPolicy = None
+        self._IPPolicyAttr = None
+        self._IPPolicyIds = None
+        self._IPPolicyNames = None
+        self._EnableUserAgent = None
+        self._UserAgentAttr = None
+        self._UserAgentIds = None
+        self._UserAgentNames = None
 
     @property
     def ServiceId(self):
@@ -4764,6 +4818,204 @@ class DescribeBusinessResourceData(AbstractModel):
     def DomainSuffix(self, DomainSuffix):
         self._DomainSuffix = DomainSuffix
 
+    @property
+    def ConnectivityCheckSwitch(self):
+        r"""<p>连通性检查开关，0-关闭 1-开启，默认1(只支持32位)</p>
+        :rtype: int
+        """
+        return self._ConnectivityCheckSwitch
+
+    @ConnectivityCheckSwitch.setter
+    def ConnectivityCheckSwitch(self, ConnectivityCheckSwitch):
+        self._ConnectivityCheckSwitch = ConnectivityCheckSwitch
+
+    @property
+    def ConnectivityCheckInterval(self):
+        r"""<p>连通性检查测试间隔数值，最小为1，默认1(只支持32位)</p>
+        :rtype: int
+        """
+        return self._ConnectivityCheckInterval
+
+    @ConnectivityCheckInterval.setter
+    def ConnectivityCheckInterval(self, ConnectivityCheckInterval):
+        self._ConnectivityCheckInterval = ConnectivityCheckInterval
+
+    @property
+    def ConnectivityCheckIntervalUnit(self):
+        r"""<p>连通性检查测试间隔单位 minutes/hours/days，默认hours</p>
+        :rtype: str
+        """
+        return self._ConnectivityCheckIntervalUnit
+
+    @ConnectivityCheckIntervalUnit.setter
+    def ConnectivityCheckIntervalUnit(self, ConnectivityCheckIntervalUnit):
+        self._ConnectivityCheckIntervalUnit = ConnectivityCheckIntervalUnit
+
+    @property
+    def URLAuditState(self):
+        r"""<p>URL审计开关：0-关闭 1-开启，默认0</p>
+        :rtype: int
+        """
+        return self._URLAuditState
+
+    @URLAuditState.setter
+    def URLAuditState(self, URLAuditState):
+        self._URLAuditState = URLAuditState
+
+    @property
+    def URLAuditId(self):
+        r"""<p>URL审计证书ID列表，多个用分号分隔</p>
+        :rtype: str
+        """
+        return self._URLAuditId
+
+    @URLAuditId.setter
+    def URLAuditId(self, URLAuditId):
+        self._URLAuditId = URLAuditId
+
+    @property
+    def URLPath(self):
+        r"""<p>URL审计路径，多个用分号分隔</p>
+        :rtype: str
+        """
+        return self._URLPath
+
+    @URLPath.setter
+    def URLPath(self, URLPath):
+        self._URLPath = URLPath
+
+    @property
+    def ReachableType(self):
+        r"""<p>检测方式：0-未检测 1-主动 2-流量</p>
+        :rtype: int
+        """
+        return self._ReachableType
+
+    @ReachableType.setter
+    def ReachableType(self, ReachableType):
+        self._ReachableType = ReachableType
+
+    @property
+    def APISecretName(self):
+        r"""<p>API密钥名称</p>
+        :rtype: str
+        """
+        return self._APISecretName
+
+    @APISecretName.setter
+    def APISecretName(self, APISecretName):
+        self._APISecretName = APISecretName
+
+    @property
+    def APISecretKey(self):
+        r"""<p>API密钥Key</p>
+        :rtype: str
+        """
+        return self._APISecretKey
+
+    @APISecretKey.setter
+    def APISecretKey(self, APISecretKey):
+        self._APISecretKey = APISecretKey
+
+    @property
+    def EnableSensitiveRes(self):
+        r"""<p>是否为敏感资源：0-否 1-是</p>
+        :rtype: int
+        """
+        return self._EnableSensitiveRes
+
+    @EnableSensitiveRes.setter
+    def EnableSensitiveRes(self, EnableSensitiveRes):
+        self._EnableSensitiveRes = EnableSensitiveRes
+
+    @property
+    def EnableIPPolicy(self):
+        r"""<p>用户接入IP限制开关：0-不启用 1-启用</p>
+        :rtype: int
+        """
+        return self._EnableIPPolicy
+
+    @EnableIPPolicy.setter
+    def EnableIPPolicy(self, EnableIPPolicy):
+        self._EnableIPPolicy = EnableIPPolicy
+
+    @property
+    def IPPolicyAttr(self):
+        r"""<p>IP分组属性：0-白名单 1-黑名单</p>
+        :rtype: int
+        """
+        return self._IPPolicyAttr
+
+    @IPPolicyAttr.setter
+    def IPPolicyAttr(self, IPPolicyAttr):
+        self._IPPolicyAttr = IPPolicyAttr
+
+    @property
+    def IPPolicyIds(self):
+        r"""<p>IP分组ID列表</p>
+        :rtype: list of int
+        """
+        return self._IPPolicyIds
+
+    @IPPolicyIds.setter
+    def IPPolicyIds(self, IPPolicyIds):
+        self._IPPolicyIds = IPPolicyIds
+
+    @property
+    def IPPolicyNames(self):
+        r"""<p>IP分组名称（分号分隔）</p>
+        :rtype: str
+        """
+        return self._IPPolicyNames
+
+    @IPPolicyNames.setter
+    def IPPolicyNames(self, IPPolicyNames):
+        self._IPPolicyNames = IPPolicyNames
+
+    @property
+    def EnableUserAgent(self):
+        r"""<p>访问浏览器规则开关：0-不启用 1-启用</p>
+        :rtype: int
+        """
+        return self._EnableUserAgent
+
+    @EnableUserAgent.setter
+    def EnableUserAgent(self, EnableUserAgent):
+        self._EnableUserAgent = EnableUserAgent
+
+    @property
+    def UserAgentAttr(self):
+        r"""<p>浏览器规则属性：0-白名单 1-黑名单</p>
+        :rtype: int
+        """
+        return self._UserAgentAttr
+
+    @UserAgentAttr.setter
+    def UserAgentAttr(self, UserAgentAttr):
+        self._UserAgentAttr = UserAgentAttr
+
+    @property
+    def UserAgentIds(self):
+        r"""<p>浏览器规则ID列表</p>
+        :rtype: list of str
+        """
+        return self._UserAgentIds
+
+    @UserAgentIds.setter
+    def UserAgentIds(self, UserAgentIds):
+        self._UserAgentIds = UserAgentIds
+
+    @property
+    def UserAgentNames(self):
+        r"""<p>浏览器规则名称（分号分隔）</p>
+        :rtype: str
+        """
+        return self._UserAgentNames
+
+    @UserAgentNames.setter
+    def UserAgentNames(self, UserAgentNames):
+        self._UserAgentNames = UserAgentNames
+
 
     def _deserialize(self, params):
         self._ServiceId = params.get("ServiceId")
@@ -4808,6 +5060,24 @@ class DescribeBusinessResourceData(AbstractModel):
         self._WebGwNoAuth = params.get("WebGwNoAuth")
         self._ConnectorGroupType = params.get("ConnectorGroupType")
         self._DomainSuffix = params.get("DomainSuffix")
+        self._ConnectivityCheckSwitch = params.get("ConnectivityCheckSwitch")
+        self._ConnectivityCheckInterval = params.get("ConnectivityCheckInterval")
+        self._ConnectivityCheckIntervalUnit = params.get("ConnectivityCheckIntervalUnit")
+        self._URLAuditState = params.get("URLAuditState")
+        self._URLAuditId = params.get("URLAuditId")
+        self._URLPath = params.get("URLPath")
+        self._ReachableType = params.get("ReachableType")
+        self._APISecretName = params.get("APISecretName")
+        self._APISecretKey = params.get("APISecretKey")
+        self._EnableSensitiveRes = params.get("EnableSensitiveRes")
+        self._EnableIPPolicy = params.get("EnableIPPolicy")
+        self._IPPolicyAttr = params.get("IPPolicyAttr")
+        self._IPPolicyIds = params.get("IPPolicyIds")
+        self._IPPolicyNames = params.get("IPPolicyNames")
+        self._EnableUserAgent = params.get("EnableUserAgent")
+        self._UserAgentAttr = params.get("UserAgentAttr")
+        self._UserAgentIds = params.get("UserAgentIds")
+        self._UserAgentNames = params.get("UserAgentNames")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

@@ -388,7 +388,7 @@ class TeoClient(AbstractClient):
 
 
     def CreateCustomizeErrorPage(self, request):
-        r"""创建自定义错误页面。
+        r"""创建自定义响应页面。
 
         :param request: Request instance for CreateCustomizeErrorPage.
         :type request: :class:`tencentcloud.teo.v20220901.models.CreateCustomizeErrorPageRequest`
@@ -4330,7 +4330,7 @@ class TeoClient(AbstractClient):
 
 
     def ModifyCustomErrorPage(self, request):
-        r"""修改自定义错误页面。
+        r"""修改自定义响应页面。
 
         :param request: Request instance for ModifyCustomErrorPage.
         :type request: :class:`tencentcloud.teo.v20220901.models.ModifyCustomErrorPageRequest`

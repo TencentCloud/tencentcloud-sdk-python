@@ -223,24 +223,6 @@ class DataagentClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
-    async def GetSessionDetails(
-            self,
-            request: models.GetSessionDetailsRequest,
-            opts: Dict = None,
-    ) -> models.GetSessionDetailsResponse:
-        """
-        获取用户会话记录详情列表
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "GetSessionDetails"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.GetSessionDetailsResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
     async def GetUploadJobDetails(
             self,
             request: models.GetUploadJobDetailsRequest,
@@ -398,6 +380,24 @@ class DataagentClient(AbstractClient):
         kwargs["action"] = "QueryUserAuthority"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.QueryUserAuthorityResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def QueryUserSessionDetail(
+            self,
+            request: models.QueryUserSessionDetailRequest,
+            opts: Dict = None,
+    ) -> models.QueryUserSessionDetailResponse:
+        """
+        查询用户会话详情
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "QueryUserSessionDetail"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.QueryUserSessionDetailResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

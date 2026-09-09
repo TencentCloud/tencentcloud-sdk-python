@@ -550,6 +550,24 @@ class EmrClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeExportConfs(
+            self,
+            request: models.DescribeExportConfsRequest,
+            opts: Dict = None,
+    ) -> models.DescribeExportConfsResponse:
+        """
+        查询导出配置
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeExportConfs"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeExportConfsResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeGlobalConfig(
             self,
             request: models.DescribeGlobalConfigRequest,
@@ -1543,6 +1561,24 @@ class EmrClient(AbstractClient):
         kwargs["action"] = "ModifySLInstanceBasic"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ModifySLInstanceBasicResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyServiceParamsByExportConfs(
+            self,
+            request: models.ModifyServiceParamsByExportConfsRequest,
+            opts: Dict = None,
+    ) -> models.ModifyServiceParamsByExportConfsResponse:
+        """
+        配置导入下发
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyServiceParamsByExportConfs"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyServiceParamsByExportConfsResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

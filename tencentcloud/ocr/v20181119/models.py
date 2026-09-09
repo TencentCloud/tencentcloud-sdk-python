@@ -23124,6 +23124,183 @@ class RailwayTicketInfo(AbstractModel):
         
 
 
+class ReasoningConfig(AbstractModel):
+    r"""推理输出配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _OutputMode: <p>实际使用的推理输出模式：enum 或 string。</p>
+        :type OutputMode: str
+        :param _EnumValues: <p>枚举值集合，仅在 OutputMode=enum 时生效。  VLM 输出必须精确命中此集合中的某个值。</p>
+        :type EnumValues: list of str
+        :param _MaxLength: <p>文本输出最大长度，仅在 OutputMode=string 时生效。</p><p>取值范围：[1, 500]</p><p>默认值：200</p>
+        :type MaxLength: int
+        :param _EnableImageInput: <p>是否在推理调用时向 VLM 传入原图进行多模态理解。  true（默认）：VLM 同时接收原图和渲染后的 Prompt，具备多模态理解能力，可直接&quot;看&quot;图片内容进行推理。  false：不传入原图，仅以渲染后的 Prompt（含变量注入值）进行纯文本推理。适用于推理逻辑完全基于结构化出参字段（如水印文字、置信度比较等）的场景，可降低推理延迟和计费成本。  建议：当 ReasoningPrompt 中未涉及&quot;观察图片&quot;、&quot;直接看图&quot;等多模态指令，且推理规则完全基于 ${变量名} 引用的文字结果时，可设为 false 以优化性能。</p>
+        :type EnableImageInput: bool
+        """
+        self._OutputMode = None
+        self._EnumValues = None
+        self._MaxLength = None
+        self._EnableImageInput = None
+
+    @property
+    def OutputMode(self):
+        r"""<p>实际使用的推理输出模式：enum 或 string。</p>
+        :rtype: str
+        """
+        return self._OutputMode
+
+    @OutputMode.setter
+    def OutputMode(self, OutputMode):
+        self._OutputMode = OutputMode
+
+    @property
+    def EnumValues(self):
+        r"""<p>枚举值集合，仅在 OutputMode=enum 时生效。  VLM 输出必须精确命中此集合中的某个值。</p>
+        :rtype: list of str
+        """
+        return self._EnumValues
+
+    @EnumValues.setter
+    def EnumValues(self, EnumValues):
+        self._EnumValues = EnumValues
+
+    @property
+    def MaxLength(self):
+        r"""<p>文本输出最大长度，仅在 OutputMode=string 时生效。</p><p>取值范围：[1, 500]</p><p>默认值：200</p>
+        :rtype: int
+        """
+        return self._MaxLength
+
+    @MaxLength.setter
+    def MaxLength(self, MaxLength):
+        self._MaxLength = MaxLength
+
+    @property
+    def EnableImageInput(self):
+        r"""<p>是否在推理调用时向 VLM 传入原图进行多模态理解。  true（默认）：VLM 同时接收原图和渲染后的 Prompt，具备多模态理解能力，可直接&quot;看&quot;图片内容进行推理。  false：不传入原图，仅以渲染后的 Prompt（含变量注入值）进行纯文本推理。适用于推理逻辑完全基于结构化出参字段（如水印文字、置信度比较等）的场景，可降低推理延迟和计费成本。  建议：当 ReasoningPrompt 中未涉及&quot;观察图片&quot;、&quot;直接看图&quot;等多模态指令，且推理规则完全基于 ${变量名} 引用的文字结果时，可设为 false 以优化性能。</p>
+        :rtype: bool
+        """
+        return self._EnableImageInput
+
+    @EnableImageInput.setter
+    def EnableImageInput(self, EnableImageInput):
+        self._EnableImageInput = EnableImageInput
+
+
+    def _deserialize(self, params):
+        self._OutputMode = params.get("OutputMode")
+        self._EnumValues = params.get("EnumValues")
+        self._MaxLength = params.get("MaxLength")
+        self._EnableImageInput = params.get("EnableImageInput")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ReasoningResult(AbstractModel):
+    r"""VLM 推理结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _OutputMode: <p>实际使用的推理输出模式：enum 或 string。</p>
+        :type OutputMode: str
+        :param _EnumValue: <p>枚举模式下的推理结果值。当 OutputMode=enum 时返回，必定命中请求中 EnumValues 的某个值。 若 VLM 输出无法匹配任何枚举值，则返回 <strong>UNCERTAIN</strong>。</p>
+        :type EnumValue: str
+        :param _TextValue: <p>文本模式下的推理结果值。当 OutputMode=string 时返回。 若 VLM 无法得出结论，则返回 <strong>UNCERTAIN</strong>。</p>
+        :type TextValue: str
+        :param _RawOutput: <p>VLM 原始输出文本（未经过结构化校验）。</p>
+        :type RawOutput: str
+        :param _RenderedPrompt: <p>变量替换后的实际 Prompt（脱敏后）。</p>
+        :type RenderedPrompt: str
+        """
+        self._OutputMode = None
+        self._EnumValue = None
+        self._TextValue = None
+        self._RawOutput = None
+        self._RenderedPrompt = None
+
+    @property
+    def OutputMode(self):
+        r"""<p>实际使用的推理输出模式：enum 或 string。</p>
+        :rtype: str
+        """
+        return self._OutputMode
+
+    @OutputMode.setter
+    def OutputMode(self, OutputMode):
+        self._OutputMode = OutputMode
+
+    @property
+    def EnumValue(self):
+        r"""<p>枚举模式下的推理结果值。当 OutputMode=enum 时返回，必定命中请求中 EnumValues 的某个值。 若 VLM 输出无法匹配任何枚举值，则返回 <strong>UNCERTAIN</strong>。</p>
+        :rtype: str
+        """
+        return self._EnumValue
+
+    @EnumValue.setter
+    def EnumValue(self, EnumValue):
+        self._EnumValue = EnumValue
+
+    @property
+    def TextValue(self):
+        r"""<p>文本模式下的推理结果值。当 OutputMode=string 时返回。 若 VLM 无法得出结论，则返回 <strong>UNCERTAIN</strong>。</p>
+        :rtype: str
+        """
+        return self._TextValue
+
+    @TextValue.setter
+    def TextValue(self, TextValue):
+        self._TextValue = TextValue
+
+    @property
+    def RawOutput(self):
+        r"""<p>VLM 原始输出文本（未经过结构化校验）。</p>
+        :rtype: str
+        """
+        return self._RawOutput
+
+    @RawOutput.setter
+    def RawOutput(self, RawOutput):
+        self._RawOutput = RawOutput
+
+    @property
+    def RenderedPrompt(self):
+        r"""<p>变量替换后的实际 Prompt（脱敏后）。</p>
+        :rtype: str
+        """
+        return self._RenderedPrompt
+
+    @RenderedPrompt.setter
+    def RenderedPrompt(self, RenderedPrompt):
+        self._RenderedPrompt = RenderedPrompt
+
+
+    def _deserialize(self, params):
+        self._OutputMode = params.get("OutputMode")
+        self._EnumValue = params.get("EnumValue")
+        self._TextValue = params.get("TextValue")
+        self._RawOutput = params.get("RawOutput")
+        self._RenderedPrompt = params.get("RenderedPrompt")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class RecognizeAgentRequest(AbstractModel):
     r"""RecognizeAgent请求参数结构体
 
@@ -41472,10 +41649,16 @@ class VerifyScenePhotoRequest(AbstractModel):
         :type ImageUrl: str
         :param _ImageBase64: <p>图片的 Base64 值。要求图片经Base64编码后不超过 10M。</p>
         :type ImageBase64: str
+        :param _ReasoningPrompt: <p>推理 Prompt 模板，默认使用 VLM 对图片进行理解推理，同时支持使用 ${变量名} 进行推理。传入该参数即开启推理流程。</p><p>入参限制：长度限制：1–2000 字符</p>
+        :type ReasoningPrompt: str
+        :param _ReasoningConfig: <p>推理输出配置。当 ReasoningPrompt 传入时建议同步传入，未传入时使用默认配置（OutputMode=enum, EnumValues=[&quot;true&quot;,&quot;false&quot;], EnableImageInput=true）。</p>
+        :type ReasoningConfig: :class:`tencentcloud.ocr.v20181119.models.ReasoningConfig`
         """
         self._Scene = None
         self._ImageUrl = None
         self._ImageBase64 = None
+        self._ReasoningPrompt = None
+        self._ReasoningConfig = None
 
     @property
     def Scene(self):
@@ -41510,11 +41693,37 @@ class VerifyScenePhotoRequest(AbstractModel):
     def ImageBase64(self, ImageBase64):
         self._ImageBase64 = ImageBase64
 
+    @property
+    def ReasoningPrompt(self):
+        r"""<p>推理 Prompt 模板，默认使用 VLM 对图片进行理解推理，同时支持使用 ${变量名} 进行推理。传入该参数即开启推理流程。</p><p>入参限制：长度限制：1–2000 字符</p>
+        :rtype: str
+        """
+        return self._ReasoningPrompt
+
+    @ReasoningPrompt.setter
+    def ReasoningPrompt(self, ReasoningPrompt):
+        self._ReasoningPrompt = ReasoningPrompt
+
+    @property
+    def ReasoningConfig(self):
+        r"""<p>推理输出配置。当 ReasoningPrompt 传入时建议同步传入，未传入时使用默认配置（OutputMode=enum, EnumValues=[&quot;true&quot;,&quot;false&quot;], EnableImageInput=true）。</p>
+        :rtype: :class:`tencentcloud.ocr.v20181119.models.ReasoningConfig`
+        """
+        return self._ReasoningConfig
+
+    @ReasoningConfig.setter
+    def ReasoningConfig(self, ReasoningConfig):
+        self._ReasoningConfig = ReasoningConfig
+
 
     def _deserialize(self, params):
         self._Scene = params.get("Scene")
         self._ImageUrl = params.get("ImageUrl")
         self._ImageBase64 = params.get("ImageBase64")
+        self._ReasoningPrompt = params.get("ReasoningPrompt")
+        if params.get("ReasoningConfig") is not None:
+            self._ReasoningConfig = ReasoningConfig()
+            self._ReasoningConfig._deserialize(params.get("ReasoningConfig"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -41544,6 +41753,10 @@ class VerifyScenePhotoResponse(AbstractModel):
         :type TextWatermark: :class:`tencentcloud.ocr.v20181119.models.SceneWarnInfo`
         :param _WatermarkContent: <p>水印内容，当未检测到文字水印时不返回，返回多组水印时以 | 分隔。</p>
         :type WatermarkContent: str
+        :param _Template: <p>模板图片提示</p>
+        :type Template: :class:`tencentcloud.ocr.v20181119.models.SceneWarnInfo`
+        :param _ReasoningResult: <p>VLM 推理结果。仅当请求中传入 ReasoningPrompt 时返回，否则不返回此字段。</p>
+        :type ReasoningResult: :class:`tencentcloud.ocr.v20181119.models.ReasoningResult`
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -41553,6 +41766,8 @@ class VerifyScenePhotoResponse(AbstractModel):
         self._Screenshot = None
         self._TextWatermark = None
         self._WatermarkContent = None
+        self._Template = None
+        self._ReasoningResult = None
         self._RequestId = None
 
     @property
@@ -41622,6 +41837,28 @@ class VerifyScenePhotoResponse(AbstractModel):
         self._WatermarkContent = WatermarkContent
 
     @property
+    def Template(self):
+        r"""<p>模板图片提示</p>
+        :rtype: :class:`tencentcloud.ocr.v20181119.models.SceneWarnInfo`
+        """
+        return self._Template
+
+    @Template.setter
+    def Template(self, Template):
+        self._Template = Template
+
+    @property
+    def ReasoningResult(self):
+        r"""<p>VLM 推理结果。仅当请求中传入 ReasoningPrompt 时返回，否则不返回此字段。</p>
+        :rtype: :class:`tencentcloud.ocr.v20181119.models.ReasoningResult`
+        """
+        return self._ReasoningResult
+
+    @ReasoningResult.setter
+    def ReasoningResult(self, ReasoningResult):
+        self._ReasoningResult = ReasoningResult
+
+    @property
     def RequestId(self):
         r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :rtype: str
@@ -41650,6 +41887,12 @@ class VerifyScenePhotoResponse(AbstractModel):
             self._TextWatermark = SceneWarnInfo()
             self._TextWatermark._deserialize(params.get("TextWatermark"))
         self._WatermarkContent = params.get("WatermarkContent")
+        if params.get("Template") is not None:
+            self._Template = SceneWarnInfo()
+            self._Template._deserialize(params.get("Template"))
+        if params.get("ReasoningResult") is not None:
+            self._ReasoningResult = ReasoningResult()
+            self._ReasoningResult._deserialize(params.get("ReasoningResult"))
         self._RequestId = params.get("RequestId")
 
 

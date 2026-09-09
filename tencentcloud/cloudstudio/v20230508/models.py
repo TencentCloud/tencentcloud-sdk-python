@@ -25,32 +25,30 @@ class CreateWorkspaceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Name: 工作空间名称, 长度限制 2~64
+        :param _Name: <p>工作空间名称, 长度限制 2~64</p>
         :type Name: str
-        :param _Description: 工作空间描述, 长度限制 0~255
+        :param _Description: <p>工作空间描述, 长度限制 0~255</p>
         :type Description: str
-        :param _Specs: 工作空间规格。Standard: 2C4G, Calculation: 4C8G, Profession: 8C16G. 默认是 Standard。
+        :param _Specs: <p>工作空间规格。Standard: 2C4G, Calculation: 4C8G, Profession: 8C16G. 默认是 Standard。</p>
         :type Specs: str
-        :param _Image: 工作空间基础镜像名称, 默认会使用 All In One 镜像, 长度限制 1~255
+        :param _Image: <p>工作空间基础镜像名称, 默认会使用 All In One 镜像, 长度限制 1~255</p>
         :type Image: str
-        :param _Repository: Git 仓库. 工作空间启动时会自动克隆该仓库
+        :param _Repository: <p>Git 仓库. 工作空间启动时会自动克隆该仓库</p>
         :type Repository: :class:`tencentcloud.cloudstudio.v20230508.models.GitRepository`
-        :param _Envs: 环境变量. 会被注入到工作空间中
+        :param _Envs: <p>环境变量. 会被注入到工作空间中</p>
         :type Envs: list of Env
-        :param _Extensions: 预装插件. 工作空间启动时, 会自动安装这些插件。长度限制: 0~10
+        :param _Extensions: <p>预装插件. 工作空间启动时, 会自动安装这些插件。长度限制: 0~10</p>
         :type Extensions: list of str
-        :param _Lifecycle: 工作空间生命周期钩子.  分为三个阶段 init, start, destroy. 分别表示工作空间数据初始化阶段, 工作空间启动阶段, 工作空间关闭阶段.  用户可以自定义 shell 命令. 
+        :param _Lifecycle: <p>工作空间生命周期钩子.  分为三个阶段 init, start, destroy. 分别表示工作空间数据初始化阶段, 工作空间启动阶段, 工作空间关闭阶段.  用户可以自定义 shell 命令.</p>
         :type Lifecycle: :class:`tencentcloud.cloudstudio.v20230508.models.LifeCycle`
-        :param _TenantAppId: 应用名称
+        :param _TenantAppId: <p>应用名称</p>
         :type TenantAppId: int
-        :param _TenantUin: 用户UIN
+        :param _TenantUin: <p>用户UIN</p>
         :type TenantUin: str
-        :param _TenantUniqVpcId: VPCID
+        :param _TenantUniqVpcId: <p>VPCID</p>
         :type TenantUniqVpcId: str
-        :param _TenantSubnetId: 子网ID
+        :param _TenantSubnetId: <p>子网ID</p>
         :type TenantSubnetId: str
-        :param _Region: 地域
-        :type Region: str
         """
         self._Name = None
         self._Description = None
@@ -64,11 +62,10 @@ class CreateWorkspaceRequest(AbstractModel):
         self._TenantUin = None
         self._TenantUniqVpcId = None
         self._TenantSubnetId = None
-        self._Region = None
 
     @property
     def Name(self):
-        r"""工作空间名称, 长度限制 2~64
+        r"""<p>工作空间名称, 长度限制 2~64</p>
         :rtype: str
         """
         return self._Name
@@ -79,7 +76,7 @@ class CreateWorkspaceRequest(AbstractModel):
 
     @property
     def Description(self):
-        r"""工作空间描述, 长度限制 0~255
+        r"""<p>工作空间描述, 长度限制 0~255</p>
         :rtype: str
         """
         return self._Description
@@ -90,7 +87,7 @@ class CreateWorkspaceRequest(AbstractModel):
 
     @property
     def Specs(self):
-        r"""工作空间规格。Standard: 2C4G, Calculation: 4C8G, Profession: 8C16G. 默认是 Standard。
+        r"""<p>工作空间规格。Standard: 2C4G, Calculation: 4C8G, Profession: 8C16G. 默认是 Standard。</p>
         :rtype: str
         """
         return self._Specs
@@ -101,7 +98,7 @@ class CreateWorkspaceRequest(AbstractModel):
 
     @property
     def Image(self):
-        r"""工作空间基础镜像名称, 默认会使用 All In One 镜像, 长度限制 1~255
+        r"""<p>工作空间基础镜像名称, 默认会使用 All In One 镜像, 长度限制 1~255</p>
         :rtype: str
         """
         return self._Image
@@ -112,7 +109,7 @@ class CreateWorkspaceRequest(AbstractModel):
 
     @property
     def Repository(self):
-        r"""Git 仓库. 工作空间启动时会自动克隆该仓库
+        r"""<p>Git 仓库. 工作空间启动时会自动克隆该仓库</p>
         :rtype: :class:`tencentcloud.cloudstudio.v20230508.models.GitRepository`
         """
         return self._Repository
@@ -123,7 +120,7 @@ class CreateWorkspaceRequest(AbstractModel):
 
     @property
     def Envs(self):
-        r"""环境变量. 会被注入到工作空间中
+        r"""<p>环境变量. 会被注入到工作空间中</p>
         :rtype: list of Env
         """
         return self._Envs
@@ -134,7 +131,7 @@ class CreateWorkspaceRequest(AbstractModel):
 
     @property
     def Extensions(self):
-        r"""预装插件. 工作空间启动时, 会自动安装这些插件。长度限制: 0~10
+        r"""<p>预装插件. 工作空间启动时, 会自动安装这些插件。长度限制: 0~10</p>
         :rtype: list of str
         """
         return self._Extensions
@@ -145,7 +142,7 @@ class CreateWorkspaceRequest(AbstractModel):
 
     @property
     def Lifecycle(self):
-        r"""工作空间生命周期钩子.  分为三个阶段 init, start, destroy. 分别表示工作空间数据初始化阶段, 工作空间启动阶段, 工作空间关闭阶段.  用户可以自定义 shell 命令. 
+        r"""<p>工作空间生命周期钩子.  分为三个阶段 init, start, destroy. 分别表示工作空间数据初始化阶段, 工作空间启动阶段, 工作空间关闭阶段.  用户可以自定义 shell 命令.</p>
         :rtype: :class:`tencentcloud.cloudstudio.v20230508.models.LifeCycle`
         """
         return self._Lifecycle
@@ -156,7 +153,7 @@ class CreateWorkspaceRequest(AbstractModel):
 
     @property
     def TenantAppId(self):
-        r"""应用名称
+        r"""<p>应用名称</p>
         :rtype: int
         """
         return self._TenantAppId
@@ -167,7 +164,7 @@ class CreateWorkspaceRequest(AbstractModel):
 
     @property
     def TenantUin(self):
-        r"""用户UIN
+        r"""<p>用户UIN</p>
         :rtype: str
         """
         return self._TenantUin
@@ -178,7 +175,7 @@ class CreateWorkspaceRequest(AbstractModel):
 
     @property
     def TenantUniqVpcId(self):
-        r"""VPCID
+        r"""<p>VPCID</p>
         :rtype: str
         """
         return self._TenantUniqVpcId
@@ -189,7 +186,7 @@ class CreateWorkspaceRequest(AbstractModel):
 
     @property
     def TenantSubnetId(self):
-        r"""子网ID
+        r"""<p>子网ID</p>
         :rtype: str
         """
         return self._TenantSubnetId
@@ -197,17 +194,6 @@ class CreateWorkspaceRequest(AbstractModel):
     @TenantSubnetId.setter
     def TenantSubnetId(self, TenantSubnetId):
         self._TenantSubnetId = TenantSubnetId
-
-    @property
-    def Region(self):
-        r"""地域
-        :rtype: str
-        """
-        return self._Region
-
-    @Region.setter
-    def Region(self, Region):
-        self._Region = Region
 
 
     def _deserialize(self, params):
@@ -232,7 +218,6 @@ class CreateWorkspaceRequest(AbstractModel):
         self._TenantUin = params.get("TenantUin")
         self._TenantUniqVpcId = params.get("TenantUniqVpcId")
         self._TenantSubnetId = params.get("TenantSubnetId")
-        self._Region = params.get("Region")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -250,9 +235,9 @@ class CreateWorkspaceResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SpaceKey: 工作空间 SpaceKey
+        :param _SpaceKey: <p>工作空间 SpaceKey</p>
         :type SpaceKey: str
-        :param _Name: 工作空间名称
+        :param _Name: <p>工作空间名称</p>
         :type Name: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -263,7 +248,7 @@ class CreateWorkspaceResponse(AbstractModel):
 
     @property
     def SpaceKey(self):
-        r"""工作空间 SpaceKey
+        r"""<p>工作空间 SpaceKey</p>
         :rtype: str
         """
         return self._SpaceKey
@@ -274,7 +259,7 @@ class CreateWorkspaceResponse(AbstractModel):
 
     @property
     def Name(self):
-        r"""工作空间名称
+        r"""<p>工作空间名称</p>
         :rtype: str
         """
         return self._Name

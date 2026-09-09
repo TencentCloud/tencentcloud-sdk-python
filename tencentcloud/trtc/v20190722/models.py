@@ -1876,23 +1876,26 @@ class ControlAIConversationRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskId: 任务唯一标识
+        :param _TaskId: <p>任务唯一标识</p>
         :type TaskId: str
-        :param _Command: 控制命令，目前支持命令如下：- ServerPushText，服务端发送文本给AI机器人，AI机器人会播报该文本. - InvokeLLM，服务端发送文本给大模型，触发对话
+        :param _Command: <p>控制命令，目前支持命令如下：- ServerPushText，服务端发送文本给AI机器人，AI机器人会播报该文本. - InvokeLLM，服务端发送文本给大模型，触发对话。- TransparentData，透传信息给客户端。</p>
         :type Command: str
-        :param _ServerPushText: 服务端发送播报文本命令，当Command为ServerPushText时必填
+        :param _ServerPushText: <p>服务端发送播报文本命令，当Command为ServerPushText时必填</p>
         :type ServerPushText: :class:`tencentcloud.trtc.v20190722.models.ServerPushText`
-        :param _InvokeLLM: 服务端发送命令主动请求大模型,当Command为InvokeLLM时会把content请求到大模型,头部增加X-Invoke-LLM="1"
+        :param _InvokeLLM: <p>服务端发送命令主动请求大模型,当Command为InvokeLLM时会把content请求到大模型,头部增加X-Invoke-LLM=&quot;1&quot;</p>
         :type InvokeLLM: :class:`tencentcloud.trtc.v20190722.models.InvokeLLM`
+        :param _TransparentData: <p>ai对话需要透传给客户端的信息</p>
+        :type TransparentData: :class:`tencentcloud.trtc.v20190722.models.TransparentData`
         """
         self._TaskId = None
         self._Command = None
         self._ServerPushText = None
         self._InvokeLLM = None
+        self._TransparentData = None
 
     @property
     def TaskId(self):
-        r"""任务唯一标识
+        r"""<p>任务唯一标识</p>
         :rtype: str
         """
         return self._TaskId
@@ -1903,7 +1906,7 @@ class ControlAIConversationRequest(AbstractModel):
 
     @property
     def Command(self):
-        r"""控制命令，目前支持命令如下：- ServerPushText，服务端发送文本给AI机器人，AI机器人会播报该文本. - InvokeLLM，服务端发送文本给大模型，触发对话
+        r"""<p>控制命令，目前支持命令如下：- ServerPushText，服务端发送文本给AI机器人，AI机器人会播报该文本. - InvokeLLM，服务端发送文本给大模型，触发对话。- TransparentData，透传信息给客户端。</p>
         :rtype: str
         """
         return self._Command
@@ -1914,7 +1917,7 @@ class ControlAIConversationRequest(AbstractModel):
 
     @property
     def ServerPushText(self):
-        r"""服务端发送播报文本命令，当Command为ServerPushText时必填
+        r"""<p>服务端发送播报文本命令，当Command为ServerPushText时必填</p>
         :rtype: :class:`tencentcloud.trtc.v20190722.models.ServerPushText`
         """
         return self._ServerPushText
@@ -1925,7 +1928,7 @@ class ControlAIConversationRequest(AbstractModel):
 
     @property
     def InvokeLLM(self):
-        r"""服务端发送命令主动请求大模型,当Command为InvokeLLM时会把content请求到大模型,头部增加X-Invoke-LLM="1"
+        r"""<p>服务端发送命令主动请求大模型,当Command为InvokeLLM时会把content请求到大模型,头部增加X-Invoke-LLM=&quot;1&quot;</p>
         :rtype: :class:`tencentcloud.trtc.v20190722.models.InvokeLLM`
         """
         return self._InvokeLLM
@@ -1933,6 +1936,17 @@ class ControlAIConversationRequest(AbstractModel):
     @InvokeLLM.setter
     def InvokeLLM(self, InvokeLLM):
         self._InvokeLLM = InvokeLLM
+
+    @property
+    def TransparentData(self):
+        r"""<p>ai对话需要透传给客户端的信息</p>
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.TransparentData`
+        """
+        return self._TransparentData
+
+    @TransparentData.setter
+    def TransparentData(self, TransparentData):
+        self._TransparentData = TransparentData
 
 
     def _deserialize(self, params):
@@ -1944,6 +1958,9 @@ class ControlAIConversationRequest(AbstractModel):
         if params.get("InvokeLLM") is not None:
             self._InvokeLLM = InvokeLLM()
             self._InvokeLLM._deserialize(params.get("InvokeLLM"))
+        if params.get("TransparentData") is not None:
+            self._TransparentData = TransparentData()
+            self._TransparentData._deserialize(params.get("TransparentData"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -20549,6 +20566,42 @@ class TranslationParam(AbstractModel):
                 obj = TerminologyItem()
                 obj._deserialize(item)
                 self._Terminologies.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class TransparentData(AbstractModel):
+    r"""ai对话需要透传给客户端的数据
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Data: <p>透传给客户端的信息</p>
+        :type Data: str
+        """
+        self._Data = None
+
+    @property
+    def Data(self):
+        r"""<p>透传给客户端的信息</p>
+        :rtype: str
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+
+    def _deserialize(self, params):
+        self._Data = params.get("Data")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

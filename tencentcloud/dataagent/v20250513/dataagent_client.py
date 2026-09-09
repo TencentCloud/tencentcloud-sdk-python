@@ -269,29 +269,6 @@ class DataagentClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def GetSessionDetails(self, request):
-        r"""获取用户会话记录详情列表
-
-        :param request: Request instance for GetSessionDetails.
-        :type request: :class:`tencentcloud.dataagent.v20250513.models.GetSessionDetailsRequest`
-        :rtype: :class:`tencentcloud.dataagent.v20250513.models.GetSessionDetailsResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("GetSessionDetails", params, headers=headers)
-            response = json.loads(body)
-            model = models.GetSessionDetailsResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def GetUploadJobDetails(self, request):
         r"""查询上传任务
 
@@ -490,6 +467,29 @@ class DataagentClient(AbstractClient):
             body = self.call("QueryUserAuthority", params, headers=headers)
             response = json.loads(body)
             model = models.QueryUserAuthorityResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def QueryUserSessionDetail(self, request):
+        r"""查询用户会话详情
+
+        :param request: Request instance for QueryUserSessionDetail.
+        :type request: :class:`tencentcloud.dataagent.v20250513.models.QueryUserSessionDetailRequest`
+        :rtype: :class:`tencentcloud.dataagent.v20250513.models.QueryUserSessionDetailResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("QueryUserSessionDetail", params, headers=headers)
+            response = json.loads(body)
+            model = models.QueryUserSessionDetailResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
