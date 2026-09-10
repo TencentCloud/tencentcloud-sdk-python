@@ -561,6 +561,8 @@ class CreateNativeNodePoolParam(AbstractModel):
         :type AutomationService: bool
         :param _Password: <p>原生节点池密码</p>
         :type Password: str
+        :param _CustomImage: <p>自定义镜像 ID</p>
+        :type CustomImage: str
         """
         self._Scaling = None
         self._SubnetIds = None
@@ -587,6 +589,7 @@ class CreateNativeNodePoolParam(AbstractModel):
         self._MachineType = None
         self._AutomationService = None
         self._Password = None
+        self._CustomImage = None
 
     @property
     def Scaling(self):
@@ -863,6 +866,17 @@ class CreateNativeNodePoolParam(AbstractModel):
     def Password(self, Password):
         self._Password = Password
 
+    @property
+    def CustomImage(self):
+        r"""<p>自定义镜像 ID</p>
+        :rtype: str
+        """
+        return self._CustomImage
+
+    @CustomImage.setter
+    def CustomImage(self, CustomImage):
+        self._CustomImage = CustomImage
+
 
     def _deserialize(self, params):
         if params.get("Scaling") is not None:
@@ -914,6 +928,7 @@ class CreateNativeNodePoolParam(AbstractModel):
         self._MachineType = params.get("MachineType")
         self._AutomationService = params.get("AutomationService")
         self._Password = params.get("Password")
+        self._CustomImage = params.get("CustomImage")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -6375,6 +6390,9 @@ class NativeNodePoolInfo(AbstractModel):
         :type DataDisks: list of DataDisk
         :param _MachineType: <p>原生节点机型 Native, NativeCVM</p>
         :type MachineType: str
+        :param _CustomImage: <p>自定义镜像 ID</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CustomImage: str
         """
         self._Scaling = None
         self._SubnetIds = None
@@ -6398,6 +6416,7 @@ class NativeNodePoolInfo(AbstractModel):
         self._InternetAccessible = None
         self._DataDisks = None
         self._MachineType = None
+        self._CustomImage = None
 
     @property
     def Scaling(self):
@@ -6648,6 +6667,18 @@ class NativeNodePoolInfo(AbstractModel):
     def MachineType(self, MachineType):
         self._MachineType = MachineType
 
+    @property
+    def CustomImage(self):
+        r"""<p>自定义镜像 ID</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CustomImage
+
+    @CustomImage.setter
+    def CustomImage(self, CustomImage):
+        self._CustomImage = CustomImage
+
 
     def _deserialize(self, params):
         if params.get("Scaling") is not None:
@@ -6691,6 +6722,7 @@ class NativeNodePoolInfo(AbstractModel):
                 obj._deserialize(item)
                 self._DataDisks.append(obj)
         self._MachineType = params.get("MachineType")
+        self._CustomImage = params.get("CustomImage")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -8507,6 +8539,8 @@ class UpdateNativeNodePoolParam(AbstractModel):
         :type AutomationService: bool
         :param _Password: <p>原生节点池密码</p>
         :type Password: str
+        :param _CustomImage: <p>自定义镜像 ID</p>
+        :type CustomImage: str
         """
         self._Scaling = None
         self._SubnetIds = None
@@ -8533,6 +8567,7 @@ class UpdateNativeNodePoolParam(AbstractModel):
         self._GPUConfigs = None
         self._AutomationService = None
         self._Password = None
+        self._CustomImage = None
 
     @property
     def Scaling(self):
@@ -8809,6 +8844,17 @@ class UpdateNativeNodePoolParam(AbstractModel):
     def Password(self, Password):
         self._Password = Password
 
+    @property
+    def CustomImage(self):
+        r"""<p>自定义镜像 ID</p>
+        :rtype: str
+        """
+        return self._CustomImage
+
+    @CustomImage.setter
+    def CustomImage(self, CustomImage):
+        self._CustomImage = CustomImage
+
 
     def _deserialize(self, params):
         if params.get("Scaling") is not None:
@@ -8858,6 +8904,7 @@ class UpdateNativeNodePoolParam(AbstractModel):
                 self._GPUConfigs.append(obj)
         self._AutomationService = params.get("AutomationService")
         self._Password = params.get("Password")
+        self._CustomImage = params.get("CustomImage")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

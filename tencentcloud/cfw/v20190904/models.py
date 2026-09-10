@@ -7655,6 +7655,402 @@ class CustomWhiteRule(AbstractModel):
         
 
 
+class DataLeakOutAlertEvent(AbstractModel):
+    r"""NDR出站数据泄露-告警事件
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RiskID: 风险ID
+        :type RiskID: str
+        :param _InstanceId: 实例ID
+        :type InstanceId: str
+        :param _InstanceName: 实例名称
+        :type InstanceName: str
+        :param _InstanceType: 实例类型
+        :type InstanceType: str
+        :param _Region: 地域
+        :type Region: str
+        :param _SrcIP: 源IP
+        :type SrcIP: str
+        :param _DstIPPort: 目的IP端口，多个以逗号连接：1.1.1.1:80,1.1.1.1:8080
+        :type DstIPPort: str
+        :param _Hostname: hostname
+        :type Hostname: str
+        :param _DstServiceType: 目的服务类型
+        :type DstServiceType: str
+        :param _DstServiceName: 目的服务名称
+        :type DstServiceName: str
+        :param _LeakTypeSet: 以逗号连接的敏感类型ID集合: 10001,10002,10003
+        :type LeakTypeSet: str
+        :param _EventCount: 事件数量
+        :type EventCount: int
+        :param _FirstIdentificationTime: 首次识别时间
+        :type FirstIdentificationTime: str
+        :param _LatestIdentificationTime: 最近识别时间
+        :type LatestIdentificationTime: str
+        :param _Level: 风险等级
+        :type Level: int
+        :param _Status: 处置状态
+        :type Status: int
+        :param _Comment: 备注
+        :type Comment: str
+        :param _ApiPattern: API
+        :type ApiPattern: str
+        :param _AnalysisStatus: AI分析状态
+        :type AnalysisStatus: int
+        :param _AnalysisFailReason: AI分析失败原因（失败时）
+        :type AnalysisFailReason: str
+        :param _ApiBizType: API业务类型
+        :type ApiBizType: str
+        :param _RiskScenario: 风险类型（风险场景）
+        :type RiskScenario: str
+        :param _AiSuggestedLevel: AI建议风险等级
+        :type AiSuggestedLevel: int
+        :param _DstGeoLocation: 目的IP地理信息
+        :type DstGeoLocation: str
+        :param _HighestLevel: 最高敏感等级
+        :type HighestLevel: str
+        """
+        self._RiskID = None
+        self._InstanceId = None
+        self._InstanceName = None
+        self._InstanceType = None
+        self._Region = None
+        self._SrcIP = None
+        self._DstIPPort = None
+        self._Hostname = None
+        self._DstServiceType = None
+        self._DstServiceName = None
+        self._LeakTypeSet = None
+        self._EventCount = None
+        self._FirstIdentificationTime = None
+        self._LatestIdentificationTime = None
+        self._Level = None
+        self._Status = None
+        self._Comment = None
+        self._ApiPattern = None
+        self._AnalysisStatus = None
+        self._AnalysisFailReason = None
+        self._ApiBizType = None
+        self._RiskScenario = None
+        self._AiSuggestedLevel = None
+        self._DstGeoLocation = None
+        self._HighestLevel = None
+
+    @property
+    def RiskID(self):
+        r"""风险ID
+        :rtype: str
+        """
+        return self._RiskID
+
+    @RiskID.setter
+    def RiskID(self, RiskID):
+        self._RiskID = RiskID
+
+    @property
+    def InstanceId(self):
+        r"""实例ID
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def InstanceName(self):
+        r"""实例名称
+        :rtype: str
+        """
+        return self._InstanceName
+
+    @InstanceName.setter
+    def InstanceName(self, InstanceName):
+        self._InstanceName = InstanceName
+
+    @property
+    def InstanceType(self):
+        r"""实例类型
+        :rtype: str
+        """
+        return self._InstanceType
+
+    @InstanceType.setter
+    def InstanceType(self, InstanceType):
+        self._InstanceType = InstanceType
+
+    @property
+    def Region(self):
+        r"""地域
+        :rtype: str
+        """
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def SrcIP(self):
+        r"""源IP
+        :rtype: str
+        """
+        return self._SrcIP
+
+    @SrcIP.setter
+    def SrcIP(self, SrcIP):
+        self._SrcIP = SrcIP
+
+    @property
+    def DstIPPort(self):
+        r"""目的IP端口，多个以逗号连接：1.1.1.1:80,1.1.1.1:8080
+        :rtype: str
+        """
+        return self._DstIPPort
+
+    @DstIPPort.setter
+    def DstIPPort(self, DstIPPort):
+        self._DstIPPort = DstIPPort
+
+    @property
+    def Hostname(self):
+        r"""hostname
+        :rtype: str
+        """
+        return self._Hostname
+
+    @Hostname.setter
+    def Hostname(self, Hostname):
+        self._Hostname = Hostname
+
+    @property
+    def DstServiceType(self):
+        r"""目的服务类型
+        :rtype: str
+        """
+        return self._DstServiceType
+
+    @DstServiceType.setter
+    def DstServiceType(self, DstServiceType):
+        self._DstServiceType = DstServiceType
+
+    @property
+    def DstServiceName(self):
+        r"""目的服务名称
+        :rtype: str
+        """
+        return self._DstServiceName
+
+    @DstServiceName.setter
+    def DstServiceName(self, DstServiceName):
+        self._DstServiceName = DstServiceName
+
+    @property
+    def LeakTypeSet(self):
+        r"""以逗号连接的敏感类型ID集合: 10001,10002,10003
+        :rtype: str
+        """
+        return self._LeakTypeSet
+
+    @LeakTypeSet.setter
+    def LeakTypeSet(self, LeakTypeSet):
+        self._LeakTypeSet = LeakTypeSet
+
+    @property
+    def EventCount(self):
+        r"""事件数量
+        :rtype: int
+        """
+        return self._EventCount
+
+    @EventCount.setter
+    def EventCount(self, EventCount):
+        self._EventCount = EventCount
+
+    @property
+    def FirstIdentificationTime(self):
+        r"""首次识别时间
+        :rtype: str
+        """
+        return self._FirstIdentificationTime
+
+    @FirstIdentificationTime.setter
+    def FirstIdentificationTime(self, FirstIdentificationTime):
+        self._FirstIdentificationTime = FirstIdentificationTime
+
+    @property
+    def LatestIdentificationTime(self):
+        r"""最近识别时间
+        :rtype: str
+        """
+        return self._LatestIdentificationTime
+
+    @LatestIdentificationTime.setter
+    def LatestIdentificationTime(self, LatestIdentificationTime):
+        self._LatestIdentificationTime = LatestIdentificationTime
+
+    @property
+    def Level(self):
+        r"""风险等级
+        :rtype: int
+        """
+        return self._Level
+
+    @Level.setter
+    def Level(self, Level):
+        self._Level = Level
+
+    @property
+    def Status(self):
+        r"""处置状态
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Comment(self):
+        r"""备注
+        :rtype: str
+        """
+        return self._Comment
+
+    @Comment.setter
+    def Comment(self, Comment):
+        self._Comment = Comment
+
+    @property
+    def ApiPattern(self):
+        r"""API
+        :rtype: str
+        """
+        return self._ApiPattern
+
+    @ApiPattern.setter
+    def ApiPattern(self, ApiPattern):
+        self._ApiPattern = ApiPattern
+
+    @property
+    def AnalysisStatus(self):
+        r"""AI分析状态
+        :rtype: int
+        """
+        return self._AnalysisStatus
+
+    @AnalysisStatus.setter
+    def AnalysisStatus(self, AnalysisStatus):
+        self._AnalysisStatus = AnalysisStatus
+
+    @property
+    def AnalysisFailReason(self):
+        r"""AI分析失败原因（失败时）
+        :rtype: str
+        """
+        return self._AnalysisFailReason
+
+    @AnalysisFailReason.setter
+    def AnalysisFailReason(self, AnalysisFailReason):
+        self._AnalysisFailReason = AnalysisFailReason
+
+    @property
+    def ApiBizType(self):
+        r"""API业务类型
+        :rtype: str
+        """
+        return self._ApiBizType
+
+    @ApiBizType.setter
+    def ApiBizType(self, ApiBizType):
+        self._ApiBizType = ApiBizType
+
+    @property
+    def RiskScenario(self):
+        r"""风险类型（风险场景）
+        :rtype: str
+        """
+        return self._RiskScenario
+
+    @RiskScenario.setter
+    def RiskScenario(self, RiskScenario):
+        self._RiskScenario = RiskScenario
+
+    @property
+    def AiSuggestedLevel(self):
+        r"""AI建议风险等级
+        :rtype: int
+        """
+        return self._AiSuggestedLevel
+
+    @AiSuggestedLevel.setter
+    def AiSuggestedLevel(self, AiSuggestedLevel):
+        self._AiSuggestedLevel = AiSuggestedLevel
+
+    @property
+    def DstGeoLocation(self):
+        r"""目的IP地理信息
+        :rtype: str
+        """
+        return self._DstGeoLocation
+
+    @DstGeoLocation.setter
+    def DstGeoLocation(self, DstGeoLocation):
+        self._DstGeoLocation = DstGeoLocation
+
+    @property
+    def HighestLevel(self):
+        r"""最高敏感等级
+        :rtype: str
+        """
+        return self._HighestLevel
+
+    @HighestLevel.setter
+    def HighestLevel(self, HighestLevel):
+        self._HighestLevel = HighestLevel
+
+
+    def _deserialize(self, params):
+        self._RiskID = params.get("RiskID")
+        self._InstanceId = params.get("InstanceId")
+        self._InstanceName = params.get("InstanceName")
+        self._InstanceType = params.get("InstanceType")
+        self._Region = params.get("Region")
+        self._SrcIP = params.get("SrcIP")
+        self._DstIPPort = params.get("DstIPPort")
+        self._Hostname = params.get("Hostname")
+        self._DstServiceType = params.get("DstServiceType")
+        self._DstServiceName = params.get("DstServiceName")
+        self._LeakTypeSet = params.get("LeakTypeSet")
+        self._EventCount = params.get("EventCount")
+        self._FirstIdentificationTime = params.get("FirstIdentificationTime")
+        self._LatestIdentificationTime = params.get("LatestIdentificationTime")
+        self._Level = params.get("Level")
+        self._Status = params.get("Status")
+        self._Comment = params.get("Comment")
+        self._ApiPattern = params.get("ApiPattern")
+        self._AnalysisStatus = params.get("AnalysisStatus")
+        self._AnalysisFailReason = params.get("AnalysisFailReason")
+        self._ApiBizType = params.get("ApiBizType")
+        self._RiskScenario = params.get("RiskScenario")
+        self._AiSuggestedLevel = params.get("AiSuggestedLevel")
+        self._DstGeoLocation = params.get("DstGeoLocation")
+        self._HighestLevel = params.get("HighestLevel")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class DatabaseWhiteListRuleData(AbstractModel):
     r"""数据库白名单规则数据
 
@@ -17632,6 +18028,270 @@ class DescribeNDRAssetIdentificationListResponse(AbstractModel):
                 obj = FieldOption()
                 obj._deserialize(item)
                 self._InstanceTypeOptions.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeNDRDataLeakOutAlertListRequest(AbstractModel):
+    r"""DescribeNDRDataLeakOutAlertList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Limit: 每页条数
+        :type Limit: int
+        :param _Offset: 偏移量
+        :type Offset: int
+        :param _Order: 排序方式，asc正序 desc倒序
+        :type Order: str
+        :param _By: 排序字段
+        :type By: str
+        :param _Filters: 查询过滤条件，多个条件之间为AND的关系
+        :type Filters: list of OperatorFilter
+        """
+        self._Limit = None
+        self._Offset = None
+        self._Order = None
+        self._By = None
+        self._Filters = None
+
+    @property
+    def Limit(self):
+        r"""每页条数
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        r"""偏移量
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Order(self):
+        r"""排序方式，asc正序 desc倒序
+        :rtype: str
+        """
+        return self._Order
+
+    @Order.setter
+    def Order(self, Order):
+        self._Order = Order
+
+    @property
+    def By(self):
+        r"""排序字段
+        :rtype: str
+        """
+        return self._By
+
+    @By.setter
+    def By(self, By):
+        self._By = By
+
+    @property
+    def Filters(self):
+        r"""查询过滤条件，多个条件之间为AND的关系
+        :rtype: list of OperatorFilter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+
+    def _deserialize(self, params):
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        self._Order = params.get("Order")
+        self._By = params.get("By")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = OperatorFilter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeNDRDataLeakOutAlertListResponse(AbstractModel):
+    r"""DescribeNDRDataLeakOutAlertList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Total: 符合查询条件的总条数
+        :type Total: int
+        :param _Data: 查询结果列表
+        :type Data: list of DataLeakOutAlertEvent
+        :param _InstanceTypeOptions: 实例类型可选项
+        :type InstanceTypeOptions: list of FieldOption
+        :param _RegionOptions: 地域可选项
+        :type RegionOptions: list of FieldOption
+        :param _DstServiceTypeOptions: 目标服务类型可选项
+        :type DstServiceTypeOptions: list of FieldOption
+        :param _RiskScenarioOptions: 风险场景（类型）可选项
+        :type RiskScenarioOptions: list of FieldOption
+        :param _AnalysisStatusOptions: AI分析任务状态可选项
+        :type AnalysisStatusOptions: list of FieldOption
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Total = None
+        self._Data = None
+        self._InstanceTypeOptions = None
+        self._RegionOptions = None
+        self._DstServiceTypeOptions = None
+        self._RiskScenarioOptions = None
+        self._AnalysisStatusOptions = None
+        self._RequestId = None
+
+    @property
+    def Total(self):
+        r"""符合查询条件的总条数
+        :rtype: int
+        """
+        return self._Total
+
+    @Total.setter
+    def Total(self, Total):
+        self._Total = Total
+
+    @property
+    def Data(self):
+        r"""查询结果列表
+        :rtype: list of DataLeakOutAlertEvent
+        """
+        return self._Data
+
+    @Data.setter
+    def Data(self, Data):
+        self._Data = Data
+
+    @property
+    def InstanceTypeOptions(self):
+        r"""实例类型可选项
+        :rtype: list of FieldOption
+        """
+        return self._InstanceTypeOptions
+
+    @InstanceTypeOptions.setter
+    def InstanceTypeOptions(self, InstanceTypeOptions):
+        self._InstanceTypeOptions = InstanceTypeOptions
+
+    @property
+    def RegionOptions(self):
+        r"""地域可选项
+        :rtype: list of FieldOption
+        """
+        return self._RegionOptions
+
+    @RegionOptions.setter
+    def RegionOptions(self, RegionOptions):
+        self._RegionOptions = RegionOptions
+
+    @property
+    def DstServiceTypeOptions(self):
+        r"""目标服务类型可选项
+        :rtype: list of FieldOption
+        """
+        return self._DstServiceTypeOptions
+
+    @DstServiceTypeOptions.setter
+    def DstServiceTypeOptions(self, DstServiceTypeOptions):
+        self._DstServiceTypeOptions = DstServiceTypeOptions
+
+    @property
+    def RiskScenarioOptions(self):
+        r"""风险场景（类型）可选项
+        :rtype: list of FieldOption
+        """
+        return self._RiskScenarioOptions
+
+    @RiskScenarioOptions.setter
+    def RiskScenarioOptions(self, RiskScenarioOptions):
+        self._RiskScenarioOptions = RiskScenarioOptions
+
+    @property
+    def AnalysisStatusOptions(self):
+        r"""AI分析任务状态可选项
+        :rtype: list of FieldOption
+        """
+        return self._AnalysisStatusOptions
+
+    @AnalysisStatusOptions.setter
+    def AnalysisStatusOptions(self, AnalysisStatusOptions):
+        self._AnalysisStatusOptions = AnalysisStatusOptions
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Total = params.get("Total")
+        if params.get("Data") is not None:
+            self._Data = []
+            for item in params.get("Data"):
+                obj = DataLeakOutAlertEvent()
+                obj._deserialize(item)
+                self._Data.append(obj)
+        if params.get("InstanceTypeOptions") is not None:
+            self._InstanceTypeOptions = []
+            for item in params.get("InstanceTypeOptions"):
+                obj = FieldOption()
+                obj._deserialize(item)
+                self._InstanceTypeOptions.append(obj)
+        if params.get("RegionOptions") is not None:
+            self._RegionOptions = []
+            for item in params.get("RegionOptions"):
+                obj = FieldOption()
+                obj._deserialize(item)
+                self._RegionOptions.append(obj)
+        if params.get("DstServiceTypeOptions") is not None:
+            self._DstServiceTypeOptions = []
+            for item in params.get("DstServiceTypeOptions"):
+                obj = FieldOption()
+                obj._deserialize(item)
+                self._DstServiceTypeOptions.append(obj)
+        if params.get("RiskScenarioOptions") is not None:
+            self._RiskScenarioOptions = []
+            for item in params.get("RiskScenarioOptions"):
+                obj = FieldOption()
+                obj._deserialize(item)
+                self._RiskScenarioOptions.append(obj)
+        if params.get("AnalysisStatusOptions") is not None:
+            self._AnalysisStatusOptions = []
+            for item in params.get("AnalysisStatusOptions"):
+                obj = FieldOption()
+                obj._deserialize(item)
+                self._AnalysisStatusOptions.append(obj)
         self._RequestId = params.get("RequestId")
 
 

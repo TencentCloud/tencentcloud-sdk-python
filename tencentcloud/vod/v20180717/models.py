@@ -3405,6 +3405,91 @@ class AiContentReviewTaskInput(AbstractModel):
         
 
 
+class AiCutOutConfig(AbstractModel):
+    r"""智能抠图配置。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Switch: <p>能力配置开关，可选值：  ON：开启； OFF：关闭。 默认值：ON。</p>
+        :type Switch: str
+        :param _Type: <p>抠图目标类型指定：&quot;foreground&quot; / &quot;pattern&quot;</p>
+        :type Type: str
+        :param _PatternConfig: <p>图案抠图配置。仅在Type为pattern时生效。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PatternConfig: :class:`tencentcloud.vod.v20180717.models.PatternConfig`
+        :param _Model: <p>抠图模型选择，可不填。</p><p>枚举值：</p><ul><li>auto： 自动选择合适的模型</li><li>WAND-cutout-1.0-lite： 标准版，速度最快</li><li>WAND-cutout-2.0-lite： 增强版，速度更快</li><li>WAND-cutout-2.0-flash： 增强版，质量-速度平衡</li><li>WAND-cutout-3.0-lite： 增强版，速度更快</li><li>WAND-cutout-3.0-flash： 增强版，质量-速度平衡</li></ul>
+        :type Model: str
+        """
+        self._Switch = None
+        self._Type = None
+        self._PatternConfig = None
+        self._Model = None
+
+    @property
+    def Switch(self):
+        r"""<p>能力配置开关，可选值：  ON：开启； OFF：关闭。 默认值：ON。</p>
+        :rtype: str
+        """
+        return self._Switch
+
+    @Switch.setter
+    def Switch(self, Switch):
+        self._Switch = Switch
+
+    @property
+    def Type(self):
+        r"""<p>抠图目标类型指定：&quot;foreground&quot; / &quot;pattern&quot;</p>
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def PatternConfig(self):
+        r"""<p>图案抠图配置。仅在Type为pattern时生效。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.vod.v20180717.models.PatternConfig`
+        """
+        return self._PatternConfig
+
+    @PatternConfig.setter
+    def PatternConfig(self, PatternConfig):
+        self._PatternConfig = PatternConfig
+
+    @property
+    def Model(self):
+        r"""<p>抠图模型选择，可不填。</p><p>枚举值：</p><ul><li>auto： 自动选择合适的模型</li><li>WAND-cutout-1.0-lite： 标准版，速度最快</li><li>WAND-cutout-2.0-lite： 增强版，速度更快</li><li>WAND-cutout-2.0-flash： 增强版，质量-速度平衡</li><li>WAND-cutout-3.0-lite： 增强版，速度更快</li><li>WAND-cutout-3.0-flash： 增强版，质量-速度平衡</li></ul>
+        :rtype: str
+        """
+        return self._Model
+
+    @Model.setter
+    def Model(self, Model):
+        self._Model = Model
+
+
+    def _deserialize(self, params):
+        self._Switch = params.get("Switch")
+        self._Type = params.get("Type")
+        if params.get("PatternConfig") is not None:
+            self._PatternConfig = PatternConfig()
+            self._PatternConfig._deserialize(params.get("PatternConfig"))
+        self._Model = params.get("Model")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AiRecognitionResult(AbstractModel):
     r"""智能识别结果。
 
@@ -77396,6 +77481,102 @@ class ParseStreamingManifestResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class PatternConfig(AbstractModel):
+    r"""印花提取配置。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TransparencyThreshold: <p>透明度阈值</p><p>取值范围：[0, 255]</p><p>默认值：30</p>
+        :type TransparencyThreshold: int
+        :param _OpaqueThreshold: <p>不透明阈值，必须大于TransparencyThreshold</p><p>取值范围：[0, 255]</p><p>默认值：127</p>
+        :type OpaqueThreshold: int
+        :param _EdgeSamplingStep: <p>边缘采样步数</p><p>取值范围：[1, 10]</p><p>默认值：5</p>
+        :type EdgeSamplingStep: int
+        :param _EdgeExpansionStep: <p>边缘扩展步数</p><p>默认值：5</p>
+        :type EdgeExpansionStep: int
+        :param _EdgeBlendingIntensity: <p>边缘融合强度</p><p>取值范围：[0.0, 1.0]</p><p>默认值：0.5</p>
+        :type EdgeBlendingIntensity: float
+        """
+        self._TransparencyThreshold = None
+        self._OpaqueThreshold = None
+        self._EdgeSamplingStep = None
+        self._EdgeExpansionStep = None
+        self._EdgeBlendingIntensity = None
+
+    @property
+    def TransparencyThreshold(self):
+        r"""<p>透明度阈值</p><p>取值范围：[0, 255]</p><p>默认值：30</p>
+        :rtype: int
+        """
+        return self._TransparencyThreshold
+
+    @TransparencyThreshold.setter
+    def TransparencyThreshold(self, TransparencyThreshold):
+        self._TransparencyThreshold = TransparencyThreshold
+
+    @property
+    def OpaqueThreshold(self):
+        r"""<p>不透明阈值，必须大于TransparencyThreshold</p><p>取值范围：[0, 255]</p><p>默认值：127</p>
+        :rtype: int
+        """
+        return self._OpaqueThreshold
+
+    @OpaqueThreshold.setter
+    def OpaqueThreshold(self, OpaqueThreshold):
+        self._OpaqueThreshold = OpaqueThreshold
+
+    @property
+    def EdgeSamplingStep(self):
+        r"""<p>边缘采样步数</p><p>取值范围：[1, 10]</p><p>默认值：5</p>
+        :rtype: int
+        """
+        return self._EdgeSamplingStep
+
+    @EdgeSamplingStep.setter
+    def EdgeSamplingStep(self, EdgeSamplingStep):
+        self._EdgeSamplingStep = EdgeSamplingStep
+
+    @property
+    def EdgeExpansionStep(self):
+        r"""<p>边缘扩展步数</p><p>默认值：5</p>
+        :rtype: int
+        """
+        return self._EdgeExpansionStep
+
+    @EdgeExpansionStep.setter
+    def EdgeExpansionStep(self, EdgeExpansionStep):
+        self._EdgeExpansionStep = EdgeExpansionStep
+
+    @property
+    def EdgeBlendingIntensity(self):
+        r"""<p>边缘融合强度</p><p>取值范围：[0.0, 1.0]</p><p>默认值：0.5</p>
+        :rtype: float
+        """
+        return self._EdgeBlendingIntensity
+
+    @EdgeBlendingIntensity.setter
+    def EdgeBlendingIntensity(self, EdgeBlendingIntensity):
+        self._EdgeBlendingIntensity = EdgeBlendingIntensity
+
+
+    def _deserialize(self, params):
+        self._TransparencyThreshold = params.get("TransparencyThreshold")
+        self._OpaqueThreshold = params.get("OpaqueThreshold")
+        self._EdgeSamplingStep = params.get("EdgeSamplingStep")
+        self._EdgeExpansionStep = params.get("EdgeExpansionStep")
+        self._EdgeBlendingIntensity = params.get("EdgeBlendingIntensity")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class PersistenceCompleteTask(AbstractModel):
     r"""剪辑固化任务信息。
 
@@ -80678,10 +80859,13 @@ class ProcessImageAsyncTask(AbstractModel):
         :param _BeautyConfig: <p>图片美颜配置。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type BeautyConfig: :class:`tencentcloud.vod.v20180717.models.ImageBeautyConfig`
+        :param _AiCutOutConfig: <p>Ai抠图配置</p>
+        :type AiCutOutConfig: :class:`tencentcloud.vod.v20180717.models.AiCutOutConfig`
         """
         self._EncodeConfig = None
         self._EnhanceConfig = None
         self._BeautyConfig = None
+        self._AiCutOutConfig = None
 
     @property
     def EncodeConfig(self):
@@ -80719,6 +80903,17 @@ class ProcessImageAsyncTask(AbstractModel):
     def BeautyConfig(self, BeautyConfig):
         self._BeautyConfig = BeautyConfig
 
+    @property
+    def AiCutOutConfig(self):
+        r"""<p>Ai抠图配置</p>
+        :rtype: :class:`tencentcloud.vod.v20180717.models.AiCutOutConfig`
+        """
+        return self._AiCutOutConfig
+
+    @AiCutOutConfig.setter
+    def AiCutOutConfig(self, AiCutOutConfig):
+        self._AiCutOutConfig = AiCutOutConfig
+
 
     def _deserialize(self, params):
         if params.get("EncodeConfig") is not None:
@@ -80730,6 +80925,9 @@ class ProcessImageAsyncTask(AbstractModel):
         if params.get("BeautyConfig") is not None:
             self._BeautyConfig = ImageBeautyConfig()
             self._BeautyConfig._deserialize(params.get("BeautyConfig"))
+        if params.get("AiCutOutConfig") is not None:
+            self._AiCutOutConfig = AiCutOutConfig()
+            self._AiCutOutConfig._deserialize(params.get("AiCutOutConfig"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

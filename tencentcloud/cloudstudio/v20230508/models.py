@@ -293,11 +293,11 @@ class CreateWorkspaceTokenRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SpaceKey: 工作空间 SpaceKey
+        :param _SpaceKey: <p>工作空间 SpaceKey</p>
         :type SpaceKey: str
-        :param _TokenExpiredLimitSec: token过期时间，单位是秒，默认 3600
+        :param _TokenExpiredLimitSec: <p>token过期时间，单位是秒，默认 3600</p>
         :type TokenExpiredLimitSec: int
-        :param _Policies: token 授权策略，可选值为 workspace-run-only, all。默认为 workspace-run-only
+        :param _Policies: <p>token 授权策略，可选值为 workspace-run-only, all。默认为 workspace-run-only</p>
         :type Policies: list of str
         """
         self._SpaceKey = None
@@ -306,7 +306,7 @@ class CreateWorkspaceTokenRequest(AbstractModel):
 
     @property
     def SpaceKey(self):
-        r"""工作空间 SpaceKey
+        r"""<p>工作空间 SpaceKey</p>
         :rtype: str
         """
         return self._SpaceKey
@@ -317,7 +317,7 @@ class CreateWorkspaceTokenRequest(AbstractModel):
 
     @property
     def TokenExpiredLimitSec(self):
-        r"""token过期时间，单位是秒，默认 3600
+        r"""<p>token过期时间，单位是秒，默认 3600</p>
         :rtype: int
         """
         return self._TokenExpiredLimitSec
@@ -328,7 +328,7 @@ class CreateWorkspaceTokenRequest(AbstractModel):
 
     @property
     def Policies(self):
-        r"""token 授权策略，可选值为 workspace-run-only, all。默认为 workspace-run-only
+        r"""<p>token 授权策略，可选值为 workspace-run-only, all。默认为 workspace-run-only</p>
         :rtype: list of str
         """
         return self._Policies
@@ -359,9 +359,9 @@ class CreateWorkspaceTokenResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _Token: 访问工作空间临时凭证
+        :param _Token: <p>访问工作空间临时凭证</p>
         :type Token: str
-        :param _ExpiredTime: token 过期时间
+        :param _ExpiredTime: <p>token 过期时间</p>
         :type ExpiredTime: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -372,7 +372,7 @@ class CreateWorkspaceTokenResponse(AbstractModel):
 
     @property
     def Token(self):
-        r"""访问工作空间临时凭证
+        r"""<p>访问工作空间临时凭证</p>
         :rtype: str
         """
         return self._Token
@@ -383,7 +383,7 @@ class CreateWorkspaceTokenResponse(AbstractModel):
 
     @property
     def ExpiredTime(self):
-        r"""token 过期时间
+        r"""<p>token 过期时间</p>
         :rtype: str
         """
         return self._ExpiredTime
@@ -934,19 +934,19 @@ class ModifyWorkspaceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SpaceKey: 工作空间 SpaceKey. 更新该工作空间的属性
+        :param _SpaceKey: <p>工作空间 SpaceKey. 更新该工作空间的属性</p>
         :type SpaceKey: str
-        :param _Name: 工作空间名称
+        :param _Name: <p>工作空间名称</p>
         :type Name: str
-        :param _Description: 工作空间描述
+        :param _Description: <p>工作空间描述</p>
         :type Description: str
-        :param _Specs: 工作空间规格。STANDARD: 2C4G, CALCULATION: 4C8G, PROFESSION: 8C16G. 默认是 STANDARD。
+        :param _Specs: <p>工作空间规格。STANDARD: 2C4G, CALCULATION: 4C8G, PROFESSION: 8C16G. 默认是 STANDARD。</p>
         :type Specs: str
-        :param _Envs: 环境变量. 会被注入到工作空间中
+        :param _Envs: <p>环境变量. 会被注入到工作空间中</p>
         :type Envs: list of Env
-        :param _Extensions: 预装插件. 工作空间启动时, 会自动安装这些插件 
+        :param _Extensions: <p>预装插件. 工作空间启动时, 会自动安装这些插件</p>
         :type Extensions: list of str
-        :param _Lifecycle: 工作空间生命周期钩子.  分为三个阶段 init, start, destroy. 分别表示工作空间数据初始化阶段, 工作空间启动阶段, 工作空间关闭阶段.  用户可以自定义 shell 命令. 
+        :param _Lifecycle: <p>工作空间生命周期钩子.  分为三个阶段 init, start, destroy. 分别表示工作空间数据初始化阶段, 工作空间启动阶段, 工作空间关闭阶段.  用户可以自定义 shell 命令.</p>
         :type Lifecycle: :class:`tencentcloud.cloudstudio.v20230508.models.LifeCycle`
         """
         self._SpaceKey = None
@@ -959,7 +959,7 @@ class ModifyWorkspaceRequest(AbstractModel):
 
     @property
     def SpaceKey(self):
-        r"""工作空间 SpaceKey. 更新该工作空间的属性
+        r"""<p>工作空间 SpaceKey. 更新该工作空间的属性</p>
         :rtype: str
         """
         return self._SpaceKey
@@ -970,7 +970,7 @@ class ModifyWorkspaceRequest(AbstractModel):
 
     @property
     def Name(self):
-        r"""工作空间名称
+        r"""<p>工作空间名称</p>
         :rtype: str
         """
         return self._Name
@@ -981,7 +981,7 @@ class ModifyWorkspaceRequest(AbstractModel):
 
     @property
     def Description(self):
-        r"""工作空间描述
+        r"""<p>工作空间描述</p>
         :rtype: str
         """
         return self._Description
@@ -992,7 +992,7 @@ class ModifyWorkspaceRequest(AbstractModel):
 
     @property
     def Specs(self):
-        r"""工作空间规格。STANDARD: 2C4G, CALCULATION: 4C8G, PROFESSION: 8C16G. 默认是 STANDARD。
+        r"""<p>工作空间规格。STANDARD: 2C4G, CALCULATION: 4C8G, PROFESSION: 8C16G. 默认是 STANDARD。</p>
         :rtype: str
         """
         return self._Specs
@@ -1003,7 +1003,7 @@ class ModifyWorkspaceRequest(AbstractModel):
 
     @property
     def Envs(self):
-        r"""环境变量. 会被注入到工作空间中
+        r"""<p>环境变量. 会被注入到工作空间中</p>
         :rtype: list of Env
         """
         return self._Envs
@@ -1014,7 +1014,7 @@ class ModifyWorkspaceRequest(AbstractModel):
 
     @property
     def Extensions(self):
-        r"""预装插件. 工作空间启动时, 会自动安装这些插件 
+        r"""<p>预装插件. 工作空间启动时, 会自动安装这些插件</p>
         :rtype: list of str
         """
         return self._Extensions
@@ -1025,7 +1025,7 @@ class ModifyWorkspaceRequest(AbstractModel):
 
     @property
     def Lifecycle(self):
-        r"""工作空间生命周期钩子.  分为三个阶段 init, start, destroy. 分别表示工作空间数据初始化阶段, 工作空间启动阶段, 工作空间关闭阶段.  用户可以自定义 shell 命令. 
+        r"""<p>工作空间生命周期钩子.  分为三个阶段 init, start, destroy. 分别表示工作空间数据初始化阶段, 工作空间启动阶段, 工作空间关闭阶段.  用户可以自定义 shell 命令.</p>
         :rtype: :class:`tencentcloud.cloudstudio.v20230508.models.LifeCycle`
         """
         return self._Lifecycle

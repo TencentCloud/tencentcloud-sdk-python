@@ -73,7 +73,7 @@ class AdpClient(AbstractClient):
 
 
     def CreateAgent(self, request):
-        r"""创建Agent
+        r"""创建Agent（目前仅支持claw模式）
 
         :param request: Request instance for CreateAgent.
         :type request: :class:`tencentcloud.adp.v20260520.models.CreateAgentRequest`

@@ -67,7 +67,7 @@ class AdpClient(AbstractClient):
             opts: Dict = None,
     ) -> models.CreateAgentResponse:
         """
-        创建Agent
+        创建Agent（目前仅支持claw模式）
         """
         
         kwargs = {}

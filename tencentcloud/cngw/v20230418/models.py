@@ -433,6 +433,57 @@ class AIGWCacheAwareRouteConfig(AbstractModel):
         
 
 
+class AIGWChangeSummary(AbstractModel):
+    r"""版本变更的兼容变更，破坏变更数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Breaking: <p>破坏性变更数</p>
+        :type Breaking: int
+        :param _Compatible: <p>兼容性变更数</p>
+        :type Compatible: int
+        """
+        self._Breaking = None
+        self._Compatible = None
+
+    @property
+    def Breaking(self):
+        r"""<p>破坏性变更数</p>
+        :rtype: int
+        """
+        return self._Breaking
+
+    @Breaking.setter
+    def Breaking(self, Breaking):
+        self._Breaking = Breaking
+
+    @property
+    def Compatible(self):
+        r"""<p>兼容性变更数</p>
+        :rtype: int
+        """
+        return self._Compatible
+
+    @Compatible.setter
+    def Compatible(self, Compatible):
+        self._Compatible = Compatible
+
+
+    def _deserialize(self, params):
+        self._Breaking = params.get("Breaking")
+        self._Compatible = params.get("Compatible")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AIGWConsumerGroupBrief(AbstractModel):
     r"""AI 网关中消费者组简要信息
 
@@ -525,6 +576,57 @@ class AIGWConsumerModelScope(AbstractModel):
     def _deserialize(self, params):
         self._ScopeType = params.get("ScopeType")
         self._AllowList = params.get("AllowList")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AIGWCreateMCPRouteResult(AbstractModel):
+    r"""新建MCP路由结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RouteId: <p>路由ID</p>
+        :type RouteId: str
+        :param _Success: <p>结果</p>
+        :type Success: bool
+        """
+        self._RouteId = None
+        self._Success = None
+
+    @property
+    def RouteId(self):
+        r"""<p>路由ID</p>
+        :rtype: str
+        """
+        return self._RouteId
+
+    @RouteId.setter
+    def RouteId(self, RouteId):
+        self._RouteId = RouteId
+
+    @property
+    def Success(self):
+        r"""<p>结果</p>
+        :rtype: bool
+        """
+        return self._Success
+
+    @Success.setter
+    def Success(self, Success):
+        self._Success = Success
+
+
+    def _deserialize(self, params):
+        self._RouteId = params.get("RouteId")
+        self._Success = params.get("Success")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -882,6 +984,72 @@ class AIGWForwardDesensitizeConfig(AbstractModel):
                 self._CustomRules.append(obj)
         self._PlaceholderFormat = params.get("PlaceholderFormat")
         self._OnFailure = params.get("OnFailure")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AIGWHeaderRule(AbstractModel):
+    r"""MCP路由 Header规则对象
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Key: <p>Header的Key</p>
+        :type Key: str
+        :param _MatchType: <p>Header匹配规则</p><p>枚举值：</p><ul><li>Exact： 精确</li><li>Prefix： 前缀</li><li>Regex： 正则</li></ul>
+        :type MatchType: str
+        :param _Value: <p>Header匹配的值</p>
+        :type Value: str
+        """
+        self._Key = None
+        self._MatchType = None
+        self._Value = None
+
+    @property
+    def Key(self):
+        r"""<p>Header的Key</p>
+        :rtype: str
+        """
+        return self._Key
+
+    @Key.setter
+    def Key(self, Key):
+        self._Key = Key
+
+    @property
+    def MatchType(self):
+        r"""<p>Header匹配规则</p><p>枚举值：</p><ul><li>Exact： 精确</li><li>Prefix： 前缀</li><li>Regex： 正则</li></ul>
+        :rtype: str
+        """
+        return self._MatchType
+
+    @MatchType.setter
+    def MatchType(self, MatchType):
+        self._MatchType = MatchType
+
+    @property
+    def Value(self):
+        r"""<p>Header匹配的值</p>
+        :rtype: str
+        """
+        return self._Value
+
+    @Value.setter
+    def Value(self, Value):
+        self._Value = Value
+
+
+    def _deserialize(self, params):
+        self._Key = params.get("Key")
+        self._MatchType = params.get("MatchType")
+        self._Value = params.get("Value")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2509,6 +2677,334 @@ class AIGWLogDesensitizeConfig(AbstractModel):
         
 
 
+class AIGWMCPRoute(AbstractModel):
+    r"""MCP路由对象
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CreateTime: <p>创建时间</p>
+        :type CreateTime: str
+        :param _Expression: <p>路由表达式</p>
+        :type Expression: str
+        :param _HeaderMatch: <p>Header匹配规则</p>
+        :type HeaderMatch: list of AIGWHeaderRule
+        :param _IsDefault: <p>是否为默认路由</p><p>枚举值：</p><ul><li>true： 是</li><li>false： 否</li></ul>
+        :type IsDefault: bool
+        :param _Methods: <p>http path</p>
+        :type Methods: list of str
+        :param _Name: <p>路由名称</p>
+        :type Name: str
+        :param _Path: <p>路由路径</p>
+        :type Path: str
+        :param _PathMatchType: <p>路径匹配方式</p><p>枚举值：</p><ul><li>Exact： 精确</li><li>Prefix： 前缀</li><li>Regex： 正则</li></ul>
+        :type PathMatchType: str
+        :param _Priority: <p>优先级</p>
+        :type Priority: int
+        :param _RouteId: <p>路由ID</p>
+        :type RouteId: str
+        :param _Status: <p>启用/禁用状态</p><p>枚举值：</p><ul><li>Enabled： 启用</li><li>Disabled： 禁用</li></ul>
+        :type Status: str
+        :param _PreserveHost: <p>是否开启保留原Host功能</p>
+        :type PreserveHost: bool
+        """
+        self._CreateTime = None
+        self._Expression = None
+        self._HeaderMatch = None
+        self._IsDefault = None
+        self._Methods = None
+        self._Name = None
+        self._Path = None
+        self._PathMatchType = None
+        self._Priority = None
+        self._RouteId = None
+        self._Status = None
+        self._PreserveHost = None
+
+    @property
+    def CreateTime(self):
+        r"""<p>创建时间</p>
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def Expression(self):
+        r"""<p>路由表达式</p>
+        :rtype: str
+        """
+        return self._Expression
+
+    @Expression.setter
+    def Expression(self, Expression):
+        self._Expression = Expression
+
+    @property
+    def HeaderMatch(self):
+        r"""<p>Header匹配规则</p>
+        :rtype: list of AIGWHeaderRule
+        """
+        return self._HeaderMatch
+
+    @HeaderMatch.setter
+    def HeaderMatch(self, HeaderMatch):
+        self._HeaderMatch = HeaderMatch
+
+    @property
+    def IsDefault(self):
+        r"""<p>是否为默认路由</p><p>枚举值：</p><ul><li>true： 是</li><li>false： 否</li></ul>
+        :rtype: bool
+        """
+        return self._IsDefault
+
+    @IsDefault.setter
+    def IsDefault(self, IsDefault):
+        self._IsDefault = IsDefault
+
+    @property
+    def Methods(self):
+        r"""<p>http path</p>
+        :rtype: list of str
+        """
+        return self._Methods
+
+    @Methods.setter
+    def Methods(self, Methods):
+        self._Methods = Methods
+
+    @property
+    def Name(self):
+        r"""<p>路由名称</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Path(self):
+        r"""<p>路由路径</p>
+        :rtype: str
+        """
+        return self._Path
+
+    @Path.setter
+    def Path(self, Path):
+        self._Path = Path
+
+    @property
+    def PathMatchType(self):
+        r"""<p>路径匹配方式</p><p>枚举值：</p><ul><li>Exact： 精确</li><li>Prefix： 前缀</li><li>Regex： 正则</li></ul>
+        :rtype: str
+        """
+        return self._PathMatchType
+
+    @PathMatchType.setter
+    def PathMatchType(self, PathMatchType):
+        self._PathMatchType = PathMatchType
+
+    @property
+    def Priority(self):
+        r"""<p>优先级</p>
+        :rtype: int
+        """
+        return self._Priority
+
+    @Priority.setter
+    def Priority(self, Priority):
+        self._Priority = Priority
+
+    @property
+    def RouteId(self):
+        r"""<p>路由ID</p>
+        :rtype: str
+        """
+        return self._RouteId
+
+    @RouteId.setter
+    def RouteId(self, RouteId):
+        self._RouteId = RouteId
+
+    @property
+    def Status(self):
+        r"""<p>启用/禁用状态</p><p>枚举值：</p><ul><li>Enabled： 启用</li><li>Disabled： 禁用</li></ul>
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def PreserveHost(self):
+        r"""<p>是否开启保留原Host功能</p>
+        :rtype: bool
+        """
+        return self._PreserveHost
+
+    @PreserveHost.setter
+    def PreserveHost(self, PreserveHost):
+        self._PreserveHost = PreserveHost
+
+
+    def _deserialize(self, params):
+        self._CreateTime = params.get("CreateTime")
+        self._Expression = params.get("Expression")
+        if params.get("HeaderMatch") is not None:
+            self._HeaderMatch = []
+            for item in params.get("HeaderMatch"):
+                obj = AIGWHeaderRule()
+                obj._deserialize(item)
+                self._HeaderMatch.append(obj)
+        self._IsDefault = params.get("IsDefault")
+        self._Methods = params.get("Methods")
+        self._Name = params.get("Name")
+        self._Path = params.get("Path")
+        self._PathMatchType = params.get("PathMatchType")
+        self._Priority = params.get("Priority")
+        self._RouteId = params.get("RouteId")
+        self._Status = params.get("Status")
+        self._PreserveHost = params.get("PreserveHost")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AIGWMCPRouteCheckResult(AbstractModel):
+    r"""MCP路由规则的校验结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ConflictRouteId: <p>冲突路由ID</p>
+        :type ConflictRouteId: str
+        :param _IsConflict: <p>是否冲突</p><p>枚举值：</p><ul><li>true： 冲突</li><li>false： 未冲突</li></ul>
+        :type IsConflict: bool
+        :param _Reason: <p>冲突原因</p>
+        :type Reason: str
+        """
+        self._ConflictRouteId = None
+        self._IsConflict = None
+        self._Reason = None
+
+    @property
+    def ConflictRouteId(self):
+        r"""<p>冲突路由ID</p>
+        :rtype: str
+        """
+        return self._ConflictRouteId
+
+    @ConflictRouteId.setter
+    def ConflictRouteId(self, ConflictRouteId):
+        self._ConflictRouteId = ConflictRouteId
+
+    @property
+    def IsConflict(self):
+        r"""<p>是否冲突</p><p>枚举值：</p><ul><li>true： 冲突</li><li>false： 未冲突</li></ul>
+        :rtype: bool
+        """
+        return self._IsConflict
+
+    @IsConflict.setter
+    def IsConflict(self, IsConflict):
+        self._IsConflict = IsConflict
+
+    @property
+    def Reason(self):
+        r"""<p>冲突原因</p>
+        :rtype: str
+        """
+        return self._Reason
+
+    @Reason.setter
+    def Reason(self, Reason):
+        self._Reason = Reason
+
+
+    def _deserialize(self, params):
+        self._ConflictRouteId = params.get("ConflictRouteId")
+        self._IsConflict = params.get("IsConflict")
+        self._Reason = params.get("Reason")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AIGWMCPRouteListResult(AbstractModel):
+    r"""MCP 路由列表分页查询结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DataList: <p>路由列表</p>
+        :type DataList: list of AIGWMCPRoute
+        :param _TotalCount: <p>总数</p>
+        :type TotalCount: int
+        """
+        self._DataList = None
+        self._TotalCount = None
+
+    @property
+    def DataList(self):
+        r"""<p>路由列表</p>
+        :rtype: list of AIGWMCPRoute
+        """
+        return self._DataList
+
+    @DataList.setter
+    def DataList(self, DataList):
+        self._DataList = DataList
+
+    @property
+    def TotalCount(self):
+        r"""<p>总数</p>
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+
+    def _deserialize(self, params):
+        if params.get("DataList") is not None:
+            self._DataList = []
+            for item in params.get("DataList"):
+                obj = AIGWMCPRoute()
+                obj._deserialize(item)
+                self._DataList.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AIGWMCPServer(AbstractModel):
     r"""MCP Server详情
 
@@ -3312,6 +3808,158 @@ class AIGWMCPToolACLListResult(AbstractModel):
                 obj = AIGWMCPToolACLItem()
                 obj._deserialize(item)
                 self._DataList.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AIGWMCPToolVersion(AbstractModel):
+    r"""mcp tool版本信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CreateTime: <p>创建时间</p>
+        :type CreateTime: str
+        :param _Creator: <p>创建者</p>
+        :type Creator: str
+        :param _IsActive: <p>是否生效</p>
+        :type IsActive: bool
+        :param _TotalParam: <p>总参数</p>
+        :type TotalParam: int
+        :param _Version: <p>版本号</p>
+        :type Version: str
+        """
+        self._CreateTime = None
+        self._Creator = None
+        self._IsActive = None
+        self._TotalParam = None
+        self._Version = None
+
+    @property
+    def CreateTime(self):
+        r"""<p>创建时间</p>
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def Creator(self):
+        r"""<p>创建者</p>
+        :rtype: str
+        """
+        return self._Creator
+
+    @Creator.setter
+    def Creator(self, Creator):
+        self._Creator = Creator
+
+    @property
+    def IsActive(self):
+        r"""<p>是否生效</p>
+        :rtype: bool
+        """
+        return self._IsActive
+
+    @IsActive.setter
+    def IsActive(self, IsActive):
+        self._IsActive = IsActive
+
+    @property
+    def TotalParam(self):
+        r"""<p>总参数</p>
+        :rtype: int
+        """
+        return self._TotalParam
+
+    @TotalParam.setter
+    def TotalParam(self, TotalParam):
+        self._TotalParam = TotalParam
+
+    @property
+    def Version(self):
+        r"""<p>版本号</p>
+        :rtype: str
+        """
+        return self._Version
+
+    @Version.setter
+    def Version(self, Version):
+        self._Version = Version
+
+
+    def _deserialize(self, params):
+        self._CreateTime = params.get("CreateTime")
+        self._Creator = params.get("Creator")
+        self._IsActive = params.get("IsActive")
+        self._TotalParam = params.get("TotalParam")
+        self._Version = params.get("Version")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AIGWMCPToolVersionList(AbstractModel):
+    r"""分页查询返回的mcp tool version列表
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _MCPToolVersions: <p>mcp. tool 版本详情</p>
+        :type MCPToolVersions: list of AIGWMCPToolVersion
+        :param _TotalCount: <p>总数</p>
+        :type TotalCount: int
+        """
+        self._MCPToolVersions = None
+        self._TotalCount = None
+
+    @property
+    def MCPToolVersions(self):
+        r"""<p>mcp. tool 版本详情</p>
+        :rtype: list of AIGWMCPToolVersion
+        """
+        return self._MCPToolVersions
+
+    @MCPToolVersions.setter
+    def MCPToolVersions(self, MCPToolVersions):
+        self._MCPToolVersions = MCPToolVersions
+
+    @property
+    def TotalCount(self):
+        r"""<p>总数</p>
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+
+    def _deserialize(self, params):
+        if params.get("MCPToolVersions") is not None:
+            self._MCPToolVersions = []
+            for item in params.get("MCPToolVersions"):
+                obj = AIGWMCPToolVersion()
+                obj._deserialize(item)
+                self._MCPToolVersions.append(obj)
         self._TotalCount = params.get("TotalCount")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -4326,6 +4974,543 @@ class AIGWQueryParamCredentialConfig(AbstractModel):
         
 
 
+class AIGWQuota(AbstractModel):
+    r"""AI网关配额
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: <p>Id</p>
+        :type Id: str
+        :param _ResourceType: <p>资源类型</p><p>枚举值：</p><ul><li>Consumer： 消费者</li></ul>
+        :type ResourceType: str
+        :param _ResourceId: <p>资源 id</p>
+        :type ResourceId: str
+        :param _ResourceName: <p>资源名字</p><p>如消费者名字</p>
+        :type ResourceName: str
+        :param _QuotaType: <p>配额类型</p><p>枚举值：</p><ul><li>RequestCount： 请求数</li><li>TotalToken： 总 token</li><li>Cost： 成本</li></ul>
+        :type QuotaType: str
+        :param _PeriodUnit: <p>配额周期单位</p><p>枚举值：</p><ul><li>Day： 天</li><li>Week： 周</li><li>Month： 月</li></ul>
+        :type PeriodUnit: str
+        :param _QuotaLimit: <p>配额</p>
+        :type QuotaLimit: int
+        :param _Enabled: <p>启用</p>
+        :type Enabled: bool
+        :param _CreateTime: <p>创建时间</p><p>参数格式：YYYY-MM-DD hh:mm:ss</p>
+        :type CreateTime: str
+        :param _ModifyTime: <p>更新时间</p><p>参数格式：YYYY-MM-DD hh:mm:ss</p>
+        :type ModifyTime: str
+        :param _Source: <p>配额类型，手动配额还是默认配额</p>
+        :type Source: str
+        :param _ExceedAction: <p>配额超限行为</p><p>枚举值：</p><ul><li>Reject： 拒绝请求</li><li>AllowOverage： 允许超支</li></ul>
+        :type ExceedAction: str
+        :param _CacheHitStat: <p>缓存是否计入限额</p><p>枚举值：</p><ul><li>Full： 全量计入</li><li>Exclude： 不计入网关缓存命中部分</li></ul>
+        :type CacheHitStat: str
+        """
+        self._Id = None
+        self._ResourceType = None
+        self._ResourceId = None
+        self._ResourceName = None
+        self._QuotaType = None
+        self._PeriodUnit = None
+        self._QuotaLimit = None
+        self._Enabled = None
+        self._CreateTime = None
+        self._ModifyTime = None
+        self._Source = None
+        self._ExceedAction = None
+        self._CacheHitStat = None
+
+    @property
+    def Id(self):
+        r"""<p>Id</p>
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def ResourceType(self):
+        r"""<p>资源类型</p><p>枚举值：</p><ul><li>Consumer： 消费者</li></ul>
+        :rtype: str
+        """
+        return self._ResourceType
+
+    @ResourceType.setter
+    def ResourceType(self, ResourceType):
+        self._ResourceType = ResourceType
+
+    @property
+    def ResourceId(self):
+        r"""<p>资源 id</p>
+        :rtype: str
+        """
+        return self._ResourceId
+
+    @ResourceId.setter
+    def ResourceId(self, ResourceId):
+        self._ResourceId = ResourceId
+
+    @property
+    def ResourceName(self):
+        r"""<p>资源名字</p><p>如消费者名字</p>
+        :rtype: str
+        """
+        return self._ResourceName
+
+    @ResourceName.setter
+    def ResourceName(self, ResourceName):
+        self._ResourceName = ResourceName
+
+    @property
+    def QuotaType(self):
+        r"""<p>配额类型</p><p>枚举值：</p><ul><li>RequestCount： 请求数</li><li>TotalToken： 总 token</li><li>Cost： 成本</li></ul>
+        :rtype: str
+        """
+        return self._QuotaType
+
+    @QuotaType.setter
+    def QuotaType(self, QuotaType):
+        self._QuotaType = QuotaType
+
+    @property
+    def PeriodUnit(self):
+        r"""<p>配额周期单位</p><p>枚举值：</p><ul><li>Day： 天</li><li>Week： 周</li><li>Month： 月</li></ul>
+        :rtype: str
+        """
+        return self._PeriodUnit
+
+    @PeriodUnit.setter
+    def PeriodUnit(self, PeriodUnit):
+        self._PeriodUnit = PeriodUnit
+
+    @property
+    def QuotaLimit(self):
+        r"""<p>配额</p>
+        :rtype: int
+        """
+        return self._QuotaLimit
+
+    @QuotaLimit.setter
+    def QuotaLimit(self, QuotaLimit):
+        self._QuotaLimit = QuotaLimit
+
+    @property
+    def Enabled(self):
+        r"""<p>启用</p>
+        :rtype: bool
+        """
+        return self._Enabled
+
+    @Enabled.setter
+    def Enabled(self, Enabled):
+        self._Enabled = Enabled
+
+    @property
+    def CreateTime(self):
+        r"""<p>创建时间</p><p>参数格式：YYYY-MM-DD hh:mm:ss</p>
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def ModifyTime(self):
+        r"""<p>更新时间</p><p>参数格式：YYYY-MM-DD hh:mm:ss</p>
+        :rtype: str
+        """
+        return self._ModifyTime
+
+    @ModifyTime.setter
+    def ModifyTime(self, ModifyTime):
+        self._ModifyTime = ModifyTime
+
+    @property
+    def Source(self):
+        r"""<p>配额类型，手动配额还是默认配额</p>
+        :rtype: str
+        """
+        return self._Source
+
+    @Source.setter
+    def Source(self, Source):
+        self._Source = Source
+
+    @property
+    def ExceedAction(self):
+        r"""<p>配额超限行为</p><p>枚举值：</p><ul><li>Reject： 拒绝请求</li><li>AllowOverage： 允许超支</li></ul>
+        :rtype: str
+        """
+        return self._ExceedAction
+
+    @ExceedAction.setter
+    def ExceedAction(self, ExceedAction):
+        self._ExceedAction = ExceedAction
+
+    @property
+    def CacheHitStat(self):
+        r"""<p>缓存是否计入限额</p><p>枚举值：</p><ul><li>Full： 全量计入</li><li>Exclude： 不计入网关缓存命中部分</li></ul>
+        :rtype: str
+        """
+        return self._CacheHitStat
+
+    @CacheHitStat.setter
+    def CacheHitStat(self, CacheHitStat):
+        self._CacheHitStat = CacheHitStat
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._ResourceType = params.get("ResourceType")
+        self._ResourceId = params.get("ResourceId")
+        self._ResourceName = params.get("ResourceName")
+        self._QuotaType = params.get("QuotaType")
+        self._PeriodUnit = params.get("PeriodUnit")
+        self._QuotaLimit = params.get("QuotaLimit")
+        self._Enabled = params.get("Enabled")
+        self._CreateTime = params.get("CreateTime")
+        self._ModifyTime = params.get("ModifyTime")
+        self._Source = params.get("Source")
+        self._ExceedAction = params.get("ExceedAction")
+        self._CacheHitStat = params.get("CacheHitStat")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AIGWQuotaDetail(AbstractModel):
+    r"""AI 网关配额详情
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Id: <p>id</p>
+        :type Id: str
+        :param _ResourceType: <p>资源类型</p><p>枚举值：</p><ul><li>Consumer： 消费者</li></ul>
+        :type ResourceType: str
+        :param _ResourceId: <p>资源id</p>
+        :type ResourceId: str
+        :param _ResourceName: <p>资源名字</p>
+        :type ResourceName: str
+        :param _QuotaType: <p>配额类型</p><p>枚举值：</p><ul><li>RequestCount： 请求数</li><li>TotalToken： token总数</li><li>Cost： 成本</li></ul>
+        :type QuotaType: str
+        :param _PeriodUnit: <p>配额单位</p><p>枚举值：</p><ul><li>Day： 天</li><li>Week： 周</li><li>Month： 月</li></ul>
+        :type PeriodUnit: str
+        :param _QuotaLimit: <p>配额</p><p>如果是成本则数值单位是分，如 1000 表示 10.00 元</p>
+        :type QuotaLimit: int
+        :param _Enabled: <p>启用</p>
+        :type Enabled: bool
+        :param _Used: <p>用量</p>
+        :type Used: int
+        :param _UsageRate: <p>使用率</p>
+        :type UsageRate: float
+        :param _AlarmLevel: <p>预警级别</p><p>枚举值：</p><ul><li>Normal： 正常</li><li>Warning： 预警</li><li>NearLimit： 临近超限</li><li>Exceeded： 超限</li></ul>
+        :type AlarmLevel: str
+        :param _Source: <p>配额规则来源</p><p>枚举值：</p><ul><li>Manual： 手动配置</li><li>Default： 默认配额</li></ul>
+        :type Source: str
+        :param _ExceedAction: <p>配额超限行为</p><p>枚举值：</p><ul><li>Reject： 拒绝请求</li><li>AllowOverage： 允许超支</li></ul>
+        :type ExceedAction: str
+        :param _CreateTime: <p>创建时间</p><p>参数格式：YYYY-MM-DD hh:mm:ss</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type CreateTime: str
+        :param _ModifyTime: <p>更新时间</p><p>参数格式：YYYY-MM-DD hh:mm:ss</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ModifyTime: str
+        :param _CacheHitStat: <p>缓存是否计入限额</p><p>枚举值：</p><ul><li>Full： 全量计入</li><li>Exclude： 不计入网关缓存命中部分</li></ul>
+        :type CacheHitStat: str
+        """
+        self._Id = None
+        self._ResourceType = None
+        self._ResourceId = None
+        self._ResourceName = None
+        self._QuotaType = None
+        self._PeriodUnit = None
+        self._QuotaLimit = None
+        self._Enabled = None
+        self._Used = None
+        self._UsageRate = None
+        self._AlarmLevel = None
+        self._Source = None
+        self._ExceedAction = None
+        self._CreateTime = None
+        self._ModifyTime = None
+        self._CacheHitStat = None
+
+    @property
+    def Id(self):
+        r"""<p>id</p>
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+    @property
+    def ResourceType(self):
+        r"""<p>资源类型</p><p>枚举值：</p><ul><li>Consumer： 消费者</li></ul>
+        :rtype: str
+        """
+        return self._ResourceType
+
+    @ResourceType.setter
+    def ResourceType(self, ResourceType):
+        self._ResourceType = ResourceType
+
+    @property
+    def ResourceId(self):
+        r"""<p>资源id</p>
+        :rtype: str
+        """
+        return self._ResourceId
+
+    @ResourceId.setter
+    def ResourceId(self, ResourceId):
+        self._ResourceId = ResourceId
+
+    @property
+    def ResourceName(self):
+        r"""<p>资源名字</p>
+        :rtype: str
+        """
+        return self._ResourceName
+
+    @ResourceName.setter
+    def ResourceName(self, ResourceName):
+        self._ResourceName = ResourceName
+
+    @property
+    def QuotaType(self):
+        r"""<p>配额类型</p><p>枚举值：</p><ul><li>RequestCount： 请求数</li><li>TotalToken： token总数</li><li>Cost： 成本</li></ul>
+        :rtype: str
+        """
+        return self._QuotaType
+
+    @QuotaType.setter
+    def QuotaType(self, QuotaType):
+        self._QuotaType = QuotaType
+
+    @property
+    def PeriodUnit(self):
+        r"""<p>配额单位</p><p>枚举值：</p><ul><li>Day： 天</li><li>Week： 周</li><li>Month： 月</li></ul>
+        :rtype: str
+        """
+        return self._PeriodUnit
+
+    @PeriodUnit.setter
+    def PeriodUnit(self, PeriodUnit):
+        self._PeriodUnit = PeriodUnit
+
+    @property
+    def QuotaLimit(self):
+        r"""<p>配额</p><p>如果是成本则数值单位是分，如 1000 表示 10.00 元</p>
+        :rtype: int
+        """
+        return self._QuotaLimit
+
+    @QuotaLimit.setter
+    def QuotaLimit(self, QuotaLimit):
+        self._QuotaLimit = QuotaLimit
+
+    @property
+    def Enabled(self):
+        r"""<p>启用</p>
+        :rtype: bool
+        """
+        return self._Enabled
+
+    @Enabled.setter
+    def Enabled(self, Enabled):
+        self._Enabled = Enabled
+
+    @property
+    def Used(self):
+        r"""<p>用量</p>
+        :rtype: int
+        """
+        return self._Used
+
+    @Used.setter
+    def Used(self, Used):
+        self._Used = Used
+
+    @property
+    def UsageRate(self):
+        r"""<p>使用率</p>
+        :rtype: float
+        """
+        return self._UsageRate
+
+    @UsageRate.setter
+    def UsageRate(self, UsageRate):
+        self._UsageRate = UsageRate
+
+    @property
+    def AlarmLevel(self):
+        r"""<p>预警级别</p><p>枚举值：</p><ul><li>Normal： 正常</li><li>Warning： 预警</li><li>NearLimit： 临近超限</li><li>Exceeded： 超限</li></ul>
+        :rtype: str
+        """
+        return self._AlarmLevel
+
+    @AlarmLevel.setter
+    def AlarmLevel(self, AlarmLevel):
+        self._AlarmLevel = AlarmLevel
+
+    @property
+    def Source(self):
+        r"""<p>配额规则来源</p><p>枚举值：</p><ul><li>Manual： 手动配置</li><li>Default： 默认配额</li></ul>
+        :rtype: str
+        """
+        return self._Source
+
+    @Source.setter
+    def Source(self, Source):
+        self._Source = Source
+
+    @property
+    def ExceedAction(self):
+        r"""<p>配额超限行为</p><p>枚举值：</p><ul><li>Reject： 拒绝请求</li><li>AllowOverage： 允许超支</li></ul>
+        :rtype: str
+        """
+        return self._ExceedAction
+
+    @ExceedAction.setter
+    def ExceedAction(self, ExceedAction):
+        self._ExceedAction = ExceedAction
+
+    @property
+    def CreateTime(self):
+        r"""<p>创建时间</p><p>参数格式：YYYY-MM-DD hh:mm:ss</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def ModifyTime(self):
+        r"""<p>更新时间</p><p>参数格式：YYYY-MM-DD hh:mm:ss</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._ModifyTime
+
+    @ModifyTime.setter
+    def ModifyTime(self, ModifyTime):
+        self._ModifyTime = ModifyTime
+
+    @property
+    def CacheHitStat(self):
+        r"""<p>缓存是否计入限额</p><p>枚举值：</p><ul><li>Full： 全量计入</li><li>Exclude： 不计入网关缓存命中部分</li></ul>
+        :rtype: str
+        """
+        return self._CacheHitStat
+
+    @CacheHitStat.setter
+    def CacheHitStat(self, CacheHitStat):
+        self._CacheHitStat = CacheHitStat
+
+
+    def _deserialize(self, params):
+        self._Id = params.get("Id")
+        self._ResourceType = params.get("ResourceType")
+        self._ResourceId = params.get("ResourceId")
+        self._ResourceName = params.get("ResourceName")
+        self._QuotaType = params.get("QuotaType")
+        self._PeriodUnit = params.get("PeriodUnit")
+        self._QuotaLimit = params.get("QuotaLimit")
+        self._Enabled = params.get("Enabled")
+        self._Used = params.get("Used")
+        self._UsageRate = params.get("UsageRate")
+        self._AlarmLevel = params.get("AlarmLevel")
+        self._Source = params.get("Source")
+        self._ExceedAction = params.get("ExceedAction")
+        self._CreateTime = params.get("CreateTime")
+        self._ModifyTime = params.get("ModifyTime")
+        self._CacheHitStat = params.get("CacheHitStat")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AIGWQuotaList(AbstractModel):
+    r"""AI网关配额列表
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TotalCount: <p>总数</p>
+        :type TotalCount: int
+        :param _DataList: <p>配额列表</p>
+        :type DataList: list of AIGWQuota
+        """
+        self._TotalCount = None
+        self._DataList = None
+
+    @property
+    def TotalCount(self):
+        r"""<p>总数</p>
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def DataList(self):
+        r"""<p>配额列表</p>
+        :rtype: list of AIGWQuota
+        """
+        return self._DataList
+
+    @DataList.setter
+    def DataList(self, DataList):
+        self._DataList = DataList
+
+
+    def _deserialize(self, params):
+        self._TotalCount = params.get("TotalCount")
+        if params.get("DataList") is not None:
+            self._DataList = []
+            for item in params.get("DataList"):
+                obj = AIGWQuota()
+                obj._deserialize(item)
+                self._DataList.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AIGWRedisConfig(AbstractModel):
     r"""精确缓存 redis 配置
 
@@ -5311,6 +6496,339 @@ class BindCloudNativeAPIGatewaySecretKeyResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CNAPIGwAIServiceSource(AbstractModel):
+    r"""AI服务来源
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SourceName: <p>服务来源</p>
+        :type SourceName: str
+        :param _SourceId: <p>服务ID</p>
+        :type SourceId: str
+        :param _SourceType: <p>来源类型</p>
+        :type SourceType: str
+        :param _SourceProduct: <p>来源产品</p>
+        :type SourceProduct: str
+        :param _SourceInfo: <p>来源配置信息</p>
+        :type SourceInfo: :class:`tencentcloud.cngw.v20230418.models.CNAPIGwAIServiceSourceInfo`
+        :param _Description: <p>描述</p>
+        :type Description: str
+        :param _CreateTime: <p>创建时间</p>
+        :type CreateTime: str
+        :param _UpdateTime: <p>更新时间</p>
+        :type UpdateTime: str
+        """
+        self._SourceName = None
+        self._SourceId = None
+        self._SourceType = None
+        self._SourceProduct = None
+        self._SourceInfo = None
+        self._Description = None
+        self._CreateTime = None
+        self._UpdateTime = None
+
+    @property
+    def SourceName(self):
+        r"""<p>服务来源</p>
+        :rtype: str
+        """
+        return self._SourceName
+
+    @SourceName.setter
+    def SourceName(self, SourceName):
+        self._SourceName = SourceName
+
+    @property
+    def SourceId(self):
+        r"""<p>服务ID</p>
+        :rtype: str
+        """
+        return self._SourceId
+
+    @SourceId.setter
+    def SourceId(self, SourceId):
+        self._SourceId = SourceId
+
+    @property
+    def SourceType(self):
+        r"""<p>来源类型</p>
+        :rtype: str
+        """
+        return self._SourceType
+
+    @SourceType.setter
+    def SourceType(self, SourceType):
+        self._SourceType = SourceType
+
+    @property
+    def SourceProduct(self):
+        r"""<p>来源产品</p>
+        :rtype: str
+        """
+        return self._SourceProduct
+
+    @SourceProduct.setter
+    def SourceProduct(self, SourceProduct):
+        self._SourceProduct = SourceProduct
+
+    @property
+    def SourceInfo(self):
+        r"""<p>来源配置信息</p>
+        :rtype: :class:`tencentcloud.cngw.v20230418.models.CNAPIGwAIServiceSourceInfo`
+        """
+        return self._SourceInfo
+
+    @SourceInfo.setter
+    def SourceInfo(self, SourceInfo):
+        self._SourceInfo = SourceInfo
+
+    @property
+    def Description(self):
+        r"""<p>描述</p>
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def CreateTime(self):
+        r"""<p>创建时间</p>
+        :rtype: str
+        """
+        return self._CreateTime
+
+    @CreateTime.setter
+    def CreateTime(self, CreateTime):
+        self._CreateTime = CreateTime
+
+    @property
+    def UpdateTime(self):
+        r"""<p>更新时间</p>
+        :rtype: str
+        """
+        return self._UpdateTime
+
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
+
+
+    def _deserialize(self, params):
+        self._SourceName = params.get("SourceName")
+        self._SourceId = params.get("SourceId")
+        self._SourceType = params.get("SourceType")
+        self._SourceProduct = params.get("SourceProduct")
+        if params.get("SourceInfo") is not None:
+            self._SourceInfo = CNAPIGwAIServiceSourceInfo()
+            self._SourceInfo._deserialize(params.get("SourceInfo"))
+        self._Description = params.get("Description")
+        self._CreateTime = params.get("CreateTime")
+        self._UpdateTime = params.get("UpdateTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CNAPIGwAIServiceSourceAuth(AbstractModel):
+    r"""AI的服务来源授权信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Username: <p>账号</p>
+        :type Username: str
+        :param _Password: <p>密码</p>
+        :type Password: str
+        :param _AccessToken: <p>接入Token</p>
+        :type AccessToken: str
+        """
+        self._Username = None
+        self._Password = None
+        self._AccessToken = None
+
+    @property
+    def Username(self):
+        r"""<p>账号</p>
+        :rtype: str
+        """
+        return self._Username
+
+    @Username.setter
+    def Username(self, Username):
+        self._Username = Username
+
+    @property
+    def Password(self):
+        r"""<p>密码</p>
+        :rtype: str
+        """
+        return self._Password
+
+    @Password.setter
+    def Password(self, Password):
+        self._Password = Password
+
+    @property
+    def AccessToken(self):
+        r"""<p>接入Token</p>
+        :rtype: str
+        """
+        return self._AccessToken
+
+    @AccessToken.setter
+    def AccessToken(self, AccessToken):
+        self._AccessToken = AccessToken
+
+
+    def _deserialize(self, params):
+        self._Username = params.get("Username")
+        self._Password = params.get("Password")
+        self._AccessToken = params.get("AccessToken")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CNAPIGwAIServiceSourceInfo(AbstractModel):
+    r"""AI 的服务来源配置信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _InstanceId: <p>服务来源实例id</p>
+        :type InstanceId: str
+        :param _Auth: <p>授权信息</p>
+        :type Auth: :class:`tencentcloud.cngw.v20230418.models.CNAPIGwAIServiceSourceAuth`
+        :param _Addresses: <p>地址列表</p>
+        :type Addresses: list of str
+        """
+        self._InstanceId = None
+        self._Auth = None
+        self._Addresses = None
+
+    @property
+    def InstanceId(self):
+        r"""<p>服务来源实例id</p>
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def Auth(self):
+        r"""<p>授权信息</p>
+        :rtype: :class:`tencentcloud.cngw.v20230418.models.CNAPIGwAIServiceSourceAuth`
+        """
+        return self._Auth
+
+    @Auth.setter
+    def Auth(self, Auth):
+        self._Auth = Auth
+
+    @property
+    def Addresses(self):
+        r"""<p>地址列表</p>
+        :rtype: list of str
+        """
+        return self._Addresses
+
+    @Addresses.setter
+    def Addresses(self, Addresses):
+        self._Addresses = Addresses
+
+
+    def _deserialize(self, params):
+        self._InstanceId = params.get("InstanceId")
+        if params.get("Auth") is not None:
+            self._Auth = CNAPIGwAIServiceSourceAuth()
+            self._Auth._deserialize(params.get("Auth"))
+        self._Addresses = params.get("Addresses")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CNAPIGwAIServiceSourceList(AbstractModel):
+    r"""AI数据源列表
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DataList: <p>MCP服务列表</p>
+        :type DataList: list of CNAPIGwAIServiceSource
+        :param _TotalCount: <p>总数</p>
+        :type TotalCount: int
+        """
+        self._DataList = None
+        self._TotalCount = None
+
+    @property
+    def DataList(self):
+        r"""<p>MCP服务列表</p>
+        :rtype: list of CNAPIGwAIServiceSource
+        """
+        return self._DataList
+
+    @DataList.setter
+    def DataList(self, DataList):
+        self._DataList = DataList
+
+    @property
+    def TotalCount(self):
+        r"""<p>总数</p>
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+
+    def _deserialize(self, params):
+        if params.get("DataList") is not None:
+            self._DataList = []
+            for item in params.get("DataList"):
+                obj = CNAPIGwAIServiceSource()
+                obj._deserialize(item)
+                self._DataList.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CNAPIGwConsumer(AbstractModel):
     r"""消费者结构
 
@@ -5928,6 +7446,286 @@ class CNAPIGwMCPTool(AbstractModel):
         self._UpdateTime = params.get("UpdateTime")
         self._Status = params.get("Status")
         self._CurrentVersion = params.get("CurrentVersion")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CNAPIGwMCPToolImportResult(AbstractModel):
+    r"""MCP Tools的导入结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FailedMessage: <p>导入失败的原因信息</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type FailedMessage: str
+        :param _Method: <p>请求方法</p>
+        :type Method: str
+        :param _Name: <p>MCP Tool 名字</p>
+        :type Name: str
+        :param _Path: <p>MCP Tool的请求路径</p>
+        :type Path: str
+        :param _Status: <p>导入结果</p><p>枚举值：</p><ul><li>Waiting： 等待导入</li><li>Success： 导入成功</li><li>Failed： 导入失败</li></ul>
+        :type Status: str
+        :param _UpstreamUrl: <p>虚拟MCP Server的Tool的完整后端地址</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type UpstreamUrl: str
+        """
+        self._FailedMessage = None
+        self._Method = None
+        self._Name = None
+        self._Path = None
+        self._Status = None
+        self._UpstreamUrl = None
+
+    @property
+    def FailedMessage(self):
+        r"""<p>导入失败的原因信息</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._FailedMessage
+
+    @FailedMessage.setter
+    def FailedMessage(self, FailedMessage):
+        self._FailedMessage = FailedMessage
+
+    @property
+    def Method(self):
+        r"""<p>请求方法</p>
+        :rtype: str
+        """
+        return self._Method
+
+    @Method.setter
+    def Method(self, Method):
+        self._Method = Method
+
+    @property
+    def Name(self):
+        r"""<p>MCP Tool 名字</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Path(self):
+        r"""<p>MCP Tool的请求路径</p>
+        :rtype: str
+        """
+        return self._Path
+
+    @Path.setter
+    def Path(self, Path):
+        self._Path = Path
+
+    @property
+    def Status(self):
+        r"""<p>导入结果</p><p>枚举值：</p><ul><li>Waiting： 等待导入</li><li>Success： 导入成功</li><li>Failed： 导入失败</li></ul>
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def UpstreamUrl(self):
+        r"""<p>虚拟MCP Server的Tool的完整后端地址</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._UpstreamUrl
+
+    @UpstreamUrl.setter
+    def UpstreamUrl(self, UpstreamUrl):
+        self._UpstreamUrl = UpstreamUrl
+
+
+    def _deserialize(self, params):
+        self._FailedMessage = params.get("FailedMessage")
+        self._Method = params.get("Method")
+        self._Name = params.get("Name")
+        self._Path = params.get("Path")
+        self._Status = params.get("Status")
+        self._UpstreamUrl = params.get("UpstreamUrl")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CNAPIGwMCPToolImportTaskResult(AbstractModel):
+    r"""MCP Tools导入任务的进度
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FailedCount: <p>导入失败的数量</p>
+        :type FailedCount: int
+        :param _ProcessedCount: <p>已处理导入Tool的总数</p>
+        :type ProcessedCount: int
+        :param _SuccessCount: <p>成功导入的Tool数量</p>
+        :type SuccessCount: int
+        :param _TaskEndTime: <p>任务结束时间</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskEndTime: str
+        :param _TaskId: <p>任务ID</p>
+        :type TaskId: str
+        :param _TaskStartTime: <p>任务开始时间</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type TaskStartTime: str
+        :param _TaskStatus: <p>任务状态</p><p>枚举值：</p><ul><li>Running： 运行中</li><li>End： 结束</li></ul>
+        :type TaskStatus: str
+        :param _ToolsImportResult: <p>导入结果详情</p>
+        :type ToolsImportResult: list of CNAPIGwMCPToolImportResult
+        :param _TotalCount: <p>待导入Tools的总数</p>
+        :type TotalCount: int
+        """
+        self._FailedCount = None
+        self._ProcessedCount = None
+        self._SuccessCount = None
+        self._TaskEndTime = None
+        self._TaskId = None
+        self._TaskStartTime = None
+        self._TaskStatus = None
+        self._ToolsImportResult = None
+        self._TotalCount = None
+
+    @property
+    def FailedCount(self):
+        r"""<p>导入失败的数量</p>
+        :rtype: int
+        """
+        return self._FailedCount
+
+    @FailedCount.setter
+    def FailedCount(self, FailedCount):
+        self._FailedCount = FailedCount
+
+    @property
+    def ProcessedCount(self):
+        r"""<p>已处理导入Tool的总数</p>
+        :rtype: int
+        """
+        return self._ProcessedCount
+
+    @ProcessedCount.setter
+    def ProcessedCount(self, ProcessedCount):
+        self._ProcessedCount = ProcessedCount
+
+    @property
+    def SuccessCount(self):
+        r"""<p>成功导入的Tool数量</p>
+        :rtype: int
+        """
+        return self._SuccessCount
+
+    @SuccessCount.setter
+    def SuccessCount(self, SuccessCount):
+        self._SuccessCount = SuccessCount
+
+    @property
+    def TaskEndTime(self):
+        r"""<p>任务结束时间</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TaskEndTime
+
+    @TaskEndTime.setter
+    def TaskEndTime(self, TaskEndTime):
+        self._TaskEndTime = TaskEndTime
+
+    @property
+    def TaskId(self):
+        r"""<p>任务ID</p>
+        :rtype: str
+        """
+        return self._TaskId
+
+    @TaskId.setter
+    def TaskId(self, TaskId):
+        self._TaskId = TaskId
+
+    @property
+    def TaskStartTime(self):
+        r"""<p>任务开始时间</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._TaskStartTime
+
+    @TaskStartTime.setter
+    def TaskStartTime(self, TaskStartTime):
+        self._TaskStartTime = TaskStartTime
+
+    @property
+    def TaskStatus(self):
+        r"""<p>任务状态</p><p>枚举值：</p><ul><li>Running： 运行中</li><li>End： 结束</li></ul>
+        :rtype: str
+        """
+        return self._TaskStatus
+
+    @TaskStatus.setter
+    def TaskStatus(self, TaskStatus):
+        self._TaskStatus = TaskStatus
+
+    @property
+    def ToolsImportResult(self):
+        r"""<p>导入结果详情</p>
+        :rtype: list of CNAPIGwMCPToolImportResult
+        """
+        return self._ToolsImportResult
+
+    @ToolsImportResult.setter
+    def ToolsImportResult(self, ToolsImportResult):
+        self._ToolsImportResult = ToolsImportResult
+
+    @property
+    def TotalCount(self):
+        r"""<p>待导入Tools的总数</p>
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+
+    def _deserialize(self, params):
+        self._FailedCount = params.get("FailedCount")
+        self._ProcessedCount = params.get("ProcessedCount")
+        self._SuccessCount = params.get("SuccessCount")
+        self._TaskEndTime = params.get("TaskEndTime")
+        self._TaskId = params.get("TaskId")
+        self._TaskStartTime = params.get("TaskStartTime")
+        self._TaskStatus = params.get("TaskStatus")
+        if params.get("ToolsImportResult") is not None:
+            self._ToolsImportResult = []
+            for item in params.get("ToolsImportResult"):
+                obj = CNAPIGwMCPToolImportResult()
+                obj._deserialize(item)
+                self._ToolsImportResult.append(obj)
+        self._TotalCount = params.get("TotalCount")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -6830,6 +8628,364 @@ class CNAPIGwSecretKey(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class CNAPIGwSecretKeyList(AbstractModel):
+    r"""密钥列表
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SecretKeys: 密钥列表
+        :type SecretKeys: list of CNAPIGwSecretKey
+        :param _TotalCount: 总数
+        :type TotalCount: int
+        """
+        self._SecretKeys = None
+        self._TotalCount = None
+
+    @property
+    def SecretKeys(self):
+        r"""密钥列表
+        :rtype: list of CNAPIGwSecretKey
+        """
+        return self._SecretKeys
+
+    @SecretKeys.setter
+    def SecretKeys(self, SecretKeys):
+        self._SecretKeys = SecretKeys
+
+    @property
+    def TotalCount(self):
+        r"""总数
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+
+    def _deserialize(self, params):
+        if params.get("SecretKeys") is not None:
+            self._SecretKeys = []
+            for item in params.get("SecretKeys"):
+                obj = CNAPIGwSecretKey()
+                obj._deserialize(item)
+                self._SecretKeys.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CheckCloudNativeAPIGatewayMCPRouteMatchRequest(AbstractModel):
+    r"""CheckCloudNativeAPIGatewayMCPRouteMatch请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GatewayId: <p>网关 ID</p>
+        :type GatewayId: str
+        :param _ServerId: <p>MCP Server ID</p>
+        :type ServerId: str
+        :param _ExcludeRouteId: <p>Modify时用于排除自身的Route ID</p>
+        :type ExcludeRouteId: str
+        :param _HeaderMatch: <p>Head匹配规则</p>
+        :type HeaderMatch: list of AIGWHeaderRule
+        :param _Methods: <p>http method</p>
+        :type Methods: list of str
+        :param _Path: <p>路径</p>
+        :type Path: str
+        :param _PathMatchType: <p>path的匹配方式</p><p>枚举值：</p><ul><li>Exact： 精确</li><li>Prefix： 前缀</li><li>Regex： 正则</li></ul>
+        :type PathMatchType: str
+        """
+        self._GatewayId = None
+        self._ServerId = None
+        self._ExcludeRouteId = None
+        self._HeaderMatch = None
+        self._Methods = None
+        self._Path = None
+        self._PathMatchType = None
+
+    @property
+    def GatewayId(self):
+        r"""<p>网关 ID</p>
+        :rtype: str
+        """
+        return self._GatewayId
+
+    @GatewayId.setter
+    def GatewayId(self, GatewayId):
+        self._GatewayId = GatewayId
+
+    @property
+    def ServerId(self):
+        r"""<p>MCP Server ID</p>
+        :rtype: str
+        """
+        return self._ServerId
+
+    @ServerId.setter
+    def ServerId(self, ServerId):
+        self._ServerId = ServerId
+
+    @property
+    def ExcludeRouteId(self):
+        r"""<p>Modify时用于排除自身的Route ID</p>
+        :rtype: str
+        """
+        return self._ExcludeRouteId
+
+    @ExcludeRouteId.setter
+    def ExcludeRouteId(self, ExcludeRouteId):
+        self._ExcludeRouteId = ExcludeRouteId
+
+    @property
+    def HeaderMatch(self):
+        r"""<p>Head匹配规则</p>
+        :rtype: list of AIGWHeaderRule
+        """
+        return self._HeaderMatch
+
+    @HeaderMatch.setter
+    def HeaderMatch(self, HeaderMatch):
+        self._HeaderMatch = HeaderMatch
+
+    @property
+    def Methods(self):
+        r"""<p>http method</p>
+        :rtype: list of str
+        """
+        return self._Methods
+
+    @Methods.setter
+    def Methods(self, Methods):
+        self._Methods = Methods
+
+    @property
+    def Path(self):
+        r"""<p>路径</p>
+        :rtype: str
+        """
+        return self._Path
+
+    @Path.setter
+    def Path(self, Path):
+        self._Path = Path
+
+    @property
+    def PathMatchType(self):
+        r"""<p>path的匹配方式</p><p>枚举值：</p><ul><li>Exact： 精确</li><li>Prefix： 前缀</li><li>Regex： 正则</li></ul>
+        :rtype: str
+        """
+        return self._PathMatchType
+
+    @PathMatchType.setter
+    def PathMatchType(self, PathMatchType):
+        self._PathMatchType = PathMatchType
+
+
+    def _deserialize(self, params):
+        self._GatewayId = params.get("GatewayId")
+        self._ServerId = params.get("ServerId")
+        self._ExcludeRouteId = params.get("ExcludeRouteId")
+        if params.get("HeaderMatch") is not None:
+            self._HeaderMatch = []
+            for item in params.get("HeaderMatch"):
+                obj = AIGWHeaderRule()
+                obj._deserialize(item)
+                self._HeaderMatch.append(obj)
+        self._Methods = params.get("Methods")
+        self._Path = params.get("Path")
+        self._PathMatchType = params.get("PathMatchType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CheckCloudNativeAPIGatewayMCPRouteMatchResponse(AbstractModel):
+    r"""CheckCloudNativeAPIGatewayMCPRouteMatch返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: <p>是否冲突</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: :class:`tencentcloud.cngw.v20230418.models.AIGWMCPRouteCheckResult`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        r"""<p>是否冲突</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.cngw.v20230418.models.AIGWMCPRouteCheckResult`
+        """
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self._Result = AIGWMCPRouteCheckResult()
+            self._Result._deserialize(params.get("Result"))
+        self._RequestId = params.get("RequestId")
+
+
+class CheckCloudNativeAPIGatewayMCPToolVersionExistRequest(AbstractModel):
+    r"""CheckCloudNativeAPIGatewayMCPToolVersionExist请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GatewayId: <p>网关实例 id</p>
+        :type GatewayId: str
+        :param _ServerId: <p>MCPserverId</p>
+        :type ServerId: str
+        :param _ToolId: <p>工具 id</p>
+        :type ToolId: str
+        :param _ToolVersion: <p>mcp tool版本id</p>
+        :type ToolVersion: str
+        """
+        self._GatewayId = None
+        self._ServerId = None
+        self._ToolId = None
+        self._ToolVersion = None
+
+    @property
+    def GatewayId(self):
+        r"""<p>网关实例 id</p>
+        :rtype: str
+        """
+        return self._GatewayId
+
+    @GatewayId.setter
+    def GatewayId(self, GatewayId):
+        self._GatewayId = GatewayId
+
+    @property
+    def ServerId(self):
+        r"""<p>MCPserverId</p>
+        :rtype: str
+        """
+        return self._ServerId
+
+    @ServerId.setter
+    def ServerId(self, ServerId):
+        self._ServerId = ServerId
+
+    @property
+    def ToolId(self):
+        r"""<p>工具 id</p>
+        :rtype: str
+        """
+        return self._ToolId
+
+    @ToolId.setter
+    def ToolId(self, ToolId):
+        self._ToolId = ToolId
+
+    @property
+    def ToolVersion(self):
+        r"""<p>mcp tool版本id</p>
+        :rtype: str
+        """
+        return self._ToolVersion
+
+    @ToolVersion.setter
+    def ToolVersion(self, ToolVersion):
+        self._ToolVersion = ToolVersion
+
+
+    def _deserialize(self, params):
+        self._GatewayId = params.get("GatewayId")
+        self._ServerId = params.get("ServerId")
+        self._ToolId = params.get("ToolId")
+        self._ToolVersion = params.get("ToolVersion")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CheckCloudNativeAPIGatewayMCPToolVersionExistResponse(AbstractModel):
+    r"""CheckCloudNativeAPIGatewayMCPToolVersionExist返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: <p>版本是否存在</p>
+        :type Result: bool
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        r"""<p>版本是否存在</p>
+        :rtype: bool
+        """
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Result = params.get("Result")
+        self._RequestId = params.get("RequestId")
 
 
 class CloudNativeAPIGatewayLLMModelAPI(AbstractModel):
@@ -8295,6 +10451,305 @@ class CloudNativeAPIGatewayLLMModelServiceRouteWeightedStrategy(AbstractModel):
         
 
 
+class CompareCloudNativeAPIGatewayMCPToolVersionRequest(AbstractModel):
+    r"""CompareCloudNativeAPIGatewayMCPToolVersion请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _BaseVersion: <p>对比源版本号</p>
+        :type BaseVersion: str
+        :param _GatewayId: <p>网关实例 id</p>
+        :type GatewayId: str
+        :param _ServerId: <p>MCPserverId</p>
+        :type ServerId: str
+        :param _TargetVersion: <p>对比目标版本号</p>
+        :type TargetVersion: str
+        :param _ToolId: <p>工具 id</p>
+        :type ToolId: str
+        """
+        self._BaseVersion = None
+        self._GatewayId = None
+        self._ServerId = None
+        self._TargetVersion = None
+        self._ToolId = None
+
+    @property
+    def BaseVersion(self):
+        r"""<p>对比源版本号</p>
+        :rtype: str
+        """
+        return self._BaseVersion
+
+    @BaseVersion.setter
+    def BaseVersion(self, BaseVersion):
+        self._BaseVersion = BaseVersion
+
+    @property
+    def GatewayId(self):
+        r"""<p>网关实例 id</p>
+        :rtype: str
+        """
+        return self._GatewayId
+
+    @GatewayId.setter
+    def GatewayId(self, GatewayId):
+        self._GatewayId = GatewayId
+
+    @property
+    def ServerId(self):
+        r"""<p>MCPserverId</p>
+        :rtype: str
+        """
+        return self._ServerId
+
+    @ServerId.setter
+    def ServerId(self, ServerId):
+        self._ServerId = ServerId
+
+    @property
+    def TargetVersion(self):
+        r"""<p>对比目标版本号</p>
+        :rtype: str
+        """
+        return self._TargetVersion
+
+    @TargetVersion.setter
+    def TargetVersion(self, TargetVersion):
+        self._TargetVersion = TargetVersion
+
+    @property
+    def ToolId(self):
+        r"""<p>工具 id</p>
+        :rtype: str
+        """
+        return self._ToolId
+
+    @ToolId.setter
+    def ToolId(self, ToolId):
+        self._ToolId = ToolId
+
+
+    def _deserialize(self, params):
+        self._BaseVersion = params.get("BaseVersion")
+        self._GatewayId = params.get("GatewayId")
+        self._ServerId = params.get("ServerId")
+        self._TargetVersion = params.get("TargetVersion")
+        self._ToolId = params.get("ToolId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CompareCloudNativeAPIGatewayMCPToolVersionResponse(AbstractModel):
+    r"""CompareCloudNativeAPIGatewayMCPToolVersion返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: <p>对比总结</p>
+        :type Result: :class:`tencentcloud.cngw.v20230418.models.AIGWChangeSummary`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        r"""<p>对比总结</p>
+        :rtype: :class:`tencentcloud.cngw.v20230418.models.AIGWChangeSummary`
+        """
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self._Result = AIGWChangeSummary()
+            self._Result._deserialize(params.get("Result"))
+        self._RequestId = params.get("RequestId")
+
+
+class CreateCloudNativeAPIGatewayAIServiceSourceRequest(AbstractModel):
+    r"""CreateCloudNativeAPIGatewayAIServiceSource请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GatewayId: <p>实例 ID</p>
+        :type GatewayId: str
+        :param _SourceType: <p>来源类型:</p><ul><li>MCPRegistry:  mcp 注册中心</li></ul>
+        :type SourceType: str
+        :param _SourceName: <p>服务来源名字</p>
+        :type SourceName: str
+        :param _SourceProduct: <p>来源产品：- TSFNacos：TSF Nacos</p>
+        :type SourceProduct: str
+        :param _SourceInfo: <p>来源详情</p>
+        :type SourceInfo: :class:`tencentcloud.cngw.v20230418.models.CNAPIGwAIServiceSourceInfo`
+        :param _Description: <p>描述</p>
+        :type Description: str
+        """
+        self._GatewayId = None
+        self._SourceType = None
+        self._SourceName = None
+        self._SourceProduct = None
+        self._SourceInfo = None
+        self._Description = None
+
+    @property
+    def GatewayId(self):
+        r"""<p>实例 ID</p>
+        :rtype: str
+        """
+        return self._GatewayId
+
+    @GatewayId.setter
+    def GatewayId(self, GatewayId):
+        self._GatewayId = GatewayId
+
+    @property
+    def SourceType(self):
+        r"""<p>来源类型:</p><ul><li>MCPRegistry:  mcp 注册中心</li></ul>
+        :rtype: str
+        """
+        return self._SourceType
+
+    @SourceType.setter
+    def SourceType(self, SourceType):
+        self._SourceType = SourceType
+
+    @property
+    def SourceName(self):
+        r"""<p>服务来源名字</p>
+        :rtype: str
+        """
+        return self._SourceName
+
+    @SourceName.setter
+    def SourceName(self, SourceName):
+        self._SourceName = SourceName
+
+    @property
+    def SourceProduct(self):
+        r"""<p>来源产品：- TSFNacos：TSF Nacos</p>
+        :rtype: str
+        """
+        return self._SourceProduct
+
+    @SourceProduct.setter
+    def SourceProduct(self, SourceProduct):
+        self._SourceProduct = SourceProduct
+
+    @property
+    def SourceInfo(self):
+        r"""<p>来源详情</p>
+        :rtype: :class:`tencentcloud.cngw.v20230418.models.CNAPIGwAIServiceSourceInfo`
+        """
+        return self._SourceInfo
+
+    @SourceInfo.setter
+    def SourceInfo(self, SourceInfo):
+        self._SourceInfo = SourceInfo
+
+    @property
+    def Description(self):
+        r"""<p>描述</p>
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+
+    def _deserialize(self, params):
+        self._GatewayId = params.get("GatewayId")
+        self._SourceType = params.get("SourceType")
+        self._SourceName = params.get("SourceName")
+        self._SourceProduct = params.get("SourceProduct")
+        if params.get("SourceInfo") is not None:
+            self._SourceInfo = CNAPIGwAIServiceSourceInfo()
+            self._SourceInfo._deserialize(params.get("SourceInfo"))
+        self._Description = params.get("Description")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateCloudNativeAPIGatewayAIServiceSourceResponse(AbstractModel):
+    r"""CreateCloudNativeAPIGatewayAIServiceSource返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: <p>创建结果</p>
+        :type Result: :class:`tencentcloud.cngw.v20230418.models.CNAPIGwCreateCommonResult`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        r"""<p>创建结果</p>
+        :rtype: :class:`tencentcloud.cngw.v20230418.models.CNAPIGwCreateCommonResult`
+        """
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self._Result = CNAPIGwCreateCommonResult()
+            self._Result._deserialize(params.get("Result"))
+        self._RequestId = params.get("RequestId")
+
+
 class CreateCloudNativeAPIGatewayConsumerGroupRequest(AbstractModel):
     r"""CreateCloudNativeAPIGatewayConsumerGroup请求参数结构体
 
@@ -9480,6 +11935,214 @@ class CreateCloudNativeAPIGatewayLLMModelServiceResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class CreateCloudNativeAPIGatewayMCPRouteRequest(AbstractModel):
+    r"""CreateCloudNativeAPIGatewayMCPRoute请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GatewayId: <p>网关ID</p>
+        :type GatewayId: str
+        :param _ServerId: <p>MCP Server ID</p>
+        :type ServerId: str
+        :param _Description: <p>描述</p>
+        :type Description: str
+        :param _HeaderMatch: <p>Header匹配规则</p>
+        :type HeaderMatch: list of AIGWHeaderRule
+        :param _Methods: <p>http method</p>
+        :type Methods: list of str
+        :param _Name: <p>路由名称</p>
+        :type Name: str
+        :param _Path: <p>路径</p>
+        :type Path: str
+        :param _PathMatchType: <p>路径匹配规则</p><p>枚举值：</p><ul><li>Exact： 精确</li><li>Prefix： 前缀</li><li>Regex： 正则</li></ul>
+        :type PathMatchType: str
+        :param _Priority: <p>route优先级</p>
+        :type Priority: int
+        """
+        self._GatewayId = None
+        self._ServerId = None
+        self._Description = None
+        self._HeaderMatch = None
+        self._Methods = None
+        self._Name = None
+        self._Path = None
+        self._PathMatchType = None
+        self._Priority = None
+
+    @property
+    def GatewayId(self):
+        r"""<p>网关ID</p>
+        :rtype: str
+        """
+        return self._GatewayId
+
+    @GatewayId.setter
+    def GatewayId(self, GatewayId):
+        self._GatewayId = GatewayId
+
+    @property
+    def ServerId(self):
+        r"""<p>MCP Server ID</p>
+        :rtype: str
+        """
+        return self._ServerId
+
+    @ServerId.setter
+    def ServerId(self, ServerId):
+        self._ServerId = ServerId
+
+    @property
+    def Description(self):
+        r"""<p>描述</p>
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def HeaderMatch(self):
+        r"""<p>Header匹配规则</p>
+        :rtype: list of AIGWHeaderRule
+        """
+        return self._HeaderMatch
+
+    @HeaderMatch.setter
+    def HeaderMatch(self, HeaderMatch):
+        self._HeaderMatch = HeaderMatch
+
+    @property
+    def Methods(self):
+        r"""<p>http method</p>
+        :rtype: list of str
+        """
+        return self._Methods
+
+    @Methods.setter
+    def Methods(self, Methods):
+        self._Methods = Methods
+
+    @property
+    def Name(self):
+        r"""<p>路由名称</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
+    def Path(self):
+        r"""<p>路径</p>
+        :rtype: str
+        """
+        return self._Path
+
+    @Path.setter
+    def Path(self, Path):
+        self._Path = Path
+
+    @property
+    def PathMatchType(self):
+        r"""<p>路径匹配规则</p><p>枚举值：</p><ul><li>Exact： 精确</li><li>Prefix： 前缀</li><li>Regex： 正则</li></ul>
+        :rtype: str
+        """
+        return self._PathMatchType
+
+    @PathMatchType.setter
+    def PathMatchType(self, PathMatchType):
+        self._PathMatchType = PathMatchType
+
+    @property
+    def Priority(self):
+        r"""<p>route优先级</p>
+        :rtype: int
+        """
+        return self._Priority
+
+    @Priority.setter
+    def Priority(self, Priority):
+        self._Priority = Priority
+
+
+    def _deserialize(self, params):
+        self._GatewayId = params.get("GatewayId")
+        self._ServerId = params.get("ServerId")
+        self._Description = params.get("Description")
+        if params.get("HeaderMatch") is not None:
+            self._HeaderMatch = []
+            for item in params.get("HeaderMatch"):
+                obj = AIGWHeaderRule()
+                obj._deserialize(item)
+                self._HeaderMatch.append(obj)
+        self._Methods = params.get("Methods")
+        self._Name = params.get("Name")
+        self._Path = params.get("Path")
+        self._PathMatchType = params.get("PathMatchType")
+        self._Priority = params.get("Priority")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateCloudNativeAPIGatewayMCPRouteResponse(AbstractModel):
+    r"""CreateCloudNativeAPIGatewayMCPRoute返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: <p>操作结果</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: :class:`tencentcloud.cngw.v20230418.models.AIGWCreateMCPRouteResult`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        r"""<p>操作结果</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.cngw.v20230418.models.AIGWCreateMCPRouteResult`
+        """
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self._Result = AIGWCreateMCPRouteResult()
+            self._Result._deserialize(params.get("Result"))
+        self._RequestId = params.get("RequestId")
+
+
 class CreateCloudNativeAPIGatewayMCPServerRequest(AbstractModel):
     r"""CreateCloudNativeAPIGatewayMCPServer请求参数结构体
 
@@ -10323,6 +12986,100 @@ class DefaultKongRoute(AbstractModel):
         
 
 
+class DeleteCloudNativeAPIGatewayAIServiceSourceRequest(AbstractModel):
+    r"""DeleteCloudNativeAPIGatewayAIServiceSource请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GatewayId: <p>实例 ID</p>
+        :type GatewayId: str
+        :param _SourceId: <p>服务来源id</p>
+        :type SourceId: str
+        :param _SourceType: <p>服务来源类型</p><p>枚举值：</p><ul><li>Registry： 普通注册中心</li><li>MCPRegistry： MCP注册中心</li><li>DNS： 域名服务</li></ul>
+        :type SourceType: str
+        """
+        self._GatewayId = None
+        self._SourceId = None
+        self._SourceType = None
+
+    @property
+    def GatewayId(self):
+        r"""<p>实例 ID</p>
+        :rtype: str
+        """
+        return self._GatewayId
+
+    @GatewayId.setter
+    def GatewayId(self, GatewayId):
+        self._GatewayId = GatewayId
+
+    @property
+    def SourceId(self):
+        r"""<p>服务来源id</p>
+        :rtype: str
+        """
+        return self._SourceId
+
+    @SourceId.setter
+    def SourceId(self, SourceId):
+        self._SourceId = SourceId
+
+    @property
+    def SourceType(self):
+        r"""<p>服务来源类型</p><p>枚举值：</p><ul><li>Registry： 普通注册中心</li><li>MCPRegistry： MCP注册中心</li><li>DNS： 域名服务</li></ul>
+        :rtype: str
+        """
+        return self._SourceType
+
+    @SourceType.setter
+    def SourceType(self, SourceType):
+        self._SourceType = SourceType
+
+
+    def _deserialize(self, params):
+        self._GatewayId = params.get("GatewayId")
+        self._SourceId = params.get("SourceId")
+        self._SourceType = params.get("SourceType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteCloudNativeAPIGatewayAIServiceSourceResponse(AbstractModel):
+    r"""DeleteCloudNativeAPIGatewayAIServiceSource返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class DeleteCloudNativeAPIGatewayConsumerGroupRequest(AbstractModel):
     r"""DeleteCloudNativeAPIGatewayConsumerGroup请求参数结构体
 
@@ -10669,6 +13426,100 @@ class DeleteCloudNativeAPIGatewayLLMModelServiceResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DeleteCloudNativeAPIGatewayMCPRouteRequest(AbstractModel):
+    r"""DeleteCloudNativeAPIGatewayMCPRoute请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GatewayId: <p>网关ID</p>
+        :type GatewayId: str
+        :param _RouteId: <p>路由ID</p>
+        :type RouteId: str
+        :param _ServerId: <p>MCP Server ID</p>
+        :type ServerId: str
+        """
+        self._GatewayId = None
+        self._RouteId = None
+        self._ServerId = None
+
+    @property
+    def GatewayId(self):
+        r"""<p>网关ID</p>
+        :rtype: str
+        """
+        return self._GatewayId
+
+    @GatewayId.setter
+    def GatewayId(self, GatewayId):
+        self._GatewayId = GatewayId
+
+    @property
+    def RouteId(self):
+        r"""<p>路由ID</p>
+        :rtype: str
+        """
+        return self._RouteId
+
+    @RouteId.setter
+    def RouteId(self, RouteId):
+        self._RouteId = RouteId
+
+    @property
+    def ServerId(self):
+        r"""<p>MCP Server ID</p>
+        :rtype: str
+        """
+        return self._ServerId
+
+    @ServerId.setter
+    def ServerId(self, ServerId):
+        self._ServerId = ServerId
+
+
+    def _deserialize(self, params):
+        self._GatewayId = params.get("GatewayId")
+        self._RouteId = params.get("RouteId")
+        self._ServerId = params.get("ServerId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteCloudNativeAPIGatewayMCPRouteResponse(AbstractModel):
+    r"""DeleteCloudNativeAPIGatewayMCPRoute返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class DeleteCloudNativeAPIGatewayMCPServerRequest(AbstractModel):
     r"""DeleteCloudNativeAPIGatewayMCPServer请求参数结构体
 
@@ -10839,6 +13690,130 @@ class DeleteCloudNativeAPIGatewayMCPToolResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteCloudNativeAPIGatewayMCPToolVersionRequest(AbstractModel):
+    r"""DeleteCloudNativeAPIGatewayMCPToolVersion请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GatewayId: <p>网关实例 id</p>
+        :type GatewayId: str
+        :param _ServerId: <p>MCPserverId</p>
+        :type ServerId: str
+        :param _ToolId: <p>工具 id</p>
+        :type ToolId: str
+        :param _ToolVersion: <p>mcp tool版本</p>
+        :type ToolVersion: str
+        """
+        self._GatewayId = None
+        self._ServerId = None
+        self._ToolId = None
+        self._ToolVersion = None
+
+    @property
+    def GatewayId(self):
+        r"""<p>网关实例 id</p>
+        :rtype: str
+        """
+        return self._GatewayId
+
+    @GatewayId.setter
+    def GatewayId(self, GatewayId):
+        self._GatewayId = GatewayId
+
+    @property
+    def ServerId(self):
+        r"""<p>MCPserverId</p>
+        :rtype: str
+        """
+        return self._ServerId
+
+    @ServerId.setter
+    def ServerId(self, ServerId):
+        self._ServerId = ServerId
+
+    @property
+    def ToolId(self):
+        r"""<p>工具 id</p>
+        :rtype: str
+        """
+        return self._ToolId
+
+    @ToolId.setter
+    def ToolId(self, ToolId):
+        self._ToolId = ToolId
+
+    @property
+    def ToolVersion(self):
+        r"""<p>mcp tool版本</p>
+        :rtype: str
+        """
+        return self._ToolVersion
+
+    @ToolVersion.setter
+    def ToolVersion(self, ToolVersion):
+        self._ToolVersion = ToolVersion
+
+
+    def _deserialize(self, params):
+        self._GatewayId = params.get("GatewayId")
+        self._ServerId = params.get("ServerId")
+        self._ToolId = params.get("ToolId")
+        self._ToolVersion = params.get("ToolVersion")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteCloudNativeAPIGatewayMCPToolVersionResponse(AbstractModel):
+    r"""DeleteCloudNativeAPIGatewayMCPToolVersion返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: <p>删除mcp tool版本结果</p>
+        :type Result: bool
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        r"""<p>删除mcp tool版本结果</p>
+        :rtype: bool
+        """
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Result = params.get("Result")
         self._RequestId = params.get("RequestId")
 
 
@@ -11048,6 +14023,359 @@ class DescribeCNGWServicesWithRoutesResponse(AbstractModel):
     def _deserialize(self, params):
         if params.get("Result") is not None:
             self._Result = KongServiceWithRoutes()
+            self._Result._deserialize(params.get("Result"))
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeCloudNativeAPIGatewayAIQuotaListRequest(AbstractModel):
+    r"""DescribeCloudNativeAPIGatewayAIQuotaList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GatewayId: <p>网关实例Id</p>
+        :type GatewayId: str
+        :param _Offset: <p>开始位置</p>
+        :type Offset: int
+        :param _Limit: <p>每页数量</p>
+        :type Limit: int
+        :param _Filters: <p>过滤条件</p>
+        :type Filters: list of Filter
+        :param _AlarmLevels: <p>配额预警级别</p><p>枚举值：</p><ul><li>Normal： 正常</li><li>Warning： 预警</li><li>NearLimit： 临近超限</li><li>Exceeded： 超限</li></ul>
+        :type AlarmLevels: list of str
+        """
+        self._GatewayId = None
+        self._Offset = None
+        self._Limit = None
+        self._Filters = None
+        self._AlarmLevels = None
+
+    @property
+    def GatewayId(self):
+        r"""<p>网关实例Id</p>
+        :rtype: str
+        """
+        return self._GatewayId
+
+    @GatewayId.setter
+    def GatewayId(self, GatewayId):
+        self._GatewayId = GatewayId
+
+    @property
+    def Offset(self):
+        r"""<p>开始位置</p>
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        r"""<p>每页数量</p>
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Filters(self):
+        r"""<p>过滤条件</p>
+        :rtype: list of Filter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+    @property
+    def AlarmLevels(self):
+        r"""<p>配额预警级别</p><p>枚举值：</p><ul><li>Normal： 正常</li><li>Warning： 预警</li><li>NearLimit： 临近超限</li><li>Exceeded： 超限</li></ul>
+        :rtype: list of str
+        """
+        return self._AlarmLevels
+
+    @AlarmLevels.setter
+    def AlarmLevels(self, AlarmLevels):
+        self._AlarmLevels = AlarmLevels
+
+
+    def _deserialize(self, params):
+        self._GatewayId = params.get("GatewayId")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        self._AlarmLevels = params.get("AlarmLevels")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCloudNativeAPIGatewayAIQuotaListResponse(AbstractModel):
+    r"""DescribeCloudNativeAPIGatewayAIQuotaList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: <p>配额列表</p>
+        :type Result: :class:`tencentcloud.cngw.v20230418.models.AIGWQuotaList`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        r"""<p>配额列表</p>
+        :rtype: :class:`tencentcloud.cngw.v20230418.models.AIGWQuotaList`
+        """
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self._Result = AIGWQuotaList()
+            self._Result._deserialize(params.get("Result"))
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeCloudNativeAPIGatewayAIQuotaRequest(AbstractModel):
+    r"""DescribeCloudNativeAPIGatewayAIQuota请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GatewayId: <p>网关实例Id</p>
+        :type GatewayId: str
+        :param _Id: <p>配额 id</p>
+        :type Id: str
+        """
+        self._GatewayId = None
+        self._Id = None
+
+    @property
+    def GatewayId(self):
+        r"""<p>网关实例Id</p>
+        :rtype: str
+        """
+        return self._GatewayId
+
+    @GatewayId.setter
+    def GatewayId(self, GatewayId):
+        self._GatewayId = GatewayId
+
+    @property
+    def Id(self):
+        r"""<p>配额 id</p>
+        :rtype: str
+        """
+        return self._Id
+
+    @Id.setter
+    def Id(self, Id):
+        self._Id = Id
+
+
+    def _deserialize(self, params):
+        self._GatewayId = params.get("GatewayId")
+        self._Id = params.get("Id")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCloudNativeAPIGatewayAIQuotaResponse(AbstractModel):
+    r"""DescribeCloudNativeAPIGatewayAIQuota返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: <p>配额详情</p>
+        :type Result: :class:`tencentcloud.cngw.v20230418.models.AIGWQuotaDetail`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        r"""<p>配额详情</p>
+        :rtype: :class:`tencentcloud.cngw.v20230418.models.AIGWQuotaDetail`
+        """
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self._Result = AIGWQuotaDetail()
+            self._Result._deserialize(params.get("Result"))
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeCloudNativeAPIGatewayAIServiceSourceListRequest(AbstractModel):
+    r"""DescribeCloudNativeAPIGatewayAIServiceSourceList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GatewayId: 实例 ID
+        :type GatewayId: str
+        :param _Limit: 分页大小
+        :type Limit: int
+        :param _Offset: 分页偏移
+        :type Offset: int
+        """
+        self._GatewayId = None
+        self._Limit = None
+        self._Offset = None
+
+    @property
+    def GatewayId(self):
+        r"""实例 ID
+        :rtype: str
+        """
+        return self._GatewayId
+
+    @GatewayId.setter
+    def GatewayId(self, GatewayId):
+        self._GatewayId = GatewayId
+
+    @property
+    def Limit(self):
+        r"""分页大小
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        r"""分页偏移
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+
+    def _deserialize(self, params):
+        self._GatewayId = params.get("GatewayId")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCloudNativeAPIGatewayAIServiceSourceListResponse(AbstractModel):
+    r"""DescribeCloudNativeAPIGatewayAIServiceSourceList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: MCP Server 列表结果
+        :type Result: :class:`tencentcloud.cngw.v20230418.models.CNAPIGwAIServiceSourceList`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        r"""MCP Server 列表结果
+        :rtype: :class:`tencentcloud.cngw.v20230418.models.CNAPIGwAIServiceSourceList`
+        """
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self._Result = CNAPIGwAIServiceSourceList()
             self._Result._deserialize(params.get("Result"))
         self._RequestId = params.get("RequestId")
 
@@ -12095,6 +15423,134 @@ class DescribeCloudNativeAPIGatewayLLMTokenUsageStatisticsResponse(AbstractModel
         self._RequestId = params.get("RequestId")
 
 
+class DescribeCloudNativeAPIGatewayMCPRouteListRequest(AbstractModel):
+    r"""DescribeCloudNativeAPIGatewayMCPRouteList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GatewayId: <p>网关ID</p>
+        :type GatewayId: str
+        :param _ServerId: <p>MCP Server ID</p>
+        :type ServerId: str
+        :param _Limit: <p>分页限制</p>
+        :type Limit: int
+        :param _Offset: <p>分页偏移</p>
+        :type Offset: int
+        """
+        self._GatewayId = None
+        self._ServerId = None
+        self._Limit = None
+        self._Offset = None
+
+    @property
+    def GatewayId(self):
+        r"""<p>网关ID</p>
+        :rtype: str
+        """
+        return self._GatewayId
+
+    @GatewayId.setter
+    def GatewayId(self, GatewayId):
+        self._GatewayId = GatewayId
+
+    @property
+    def ServerId(self):
+        r"""<p>MCP Server ID</p>
+        :rtype: str
+        """
+        return self._ServerId
+
+    @ServerId.setter
+    def ServerId(self, ServerId):
+        self._ServerId = ServerId
+
+    @property
+    def Limit(self):
+        r"""<p>分页限制</p>
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        r"""<p>分页偏移</p>
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+
+    def _deserialize(self, params):
+        self._GatewayId = params.get("GatewayId")
+        self._ServerId = params.get("ServerId")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCloudNativeAPIGatewayMCPRouteListResponse(AbstractModel):
+    r"""DescribeCloudNativeAPIGatewayMCPRouteList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: <p>路由列表信息</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: :class:`tencentcloud.cngw.v20230418.models.AIGWMCPRouteListResult`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        r"""<p>路由列表信息</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.cngw.v20230418.models.AIGWMCPRouteListResult`
+        """
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self._Result = AIGWMCPRouteListResult()
+            self._Result._deserialize(params.get("Result"))
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeCloudNativeAPIGatewayMCPServerACLRequest(AbstractModel):
     r"""DescribeCloudNativeAPIGatewayMCPServerACL请求参数结构体
 
@@ -12650,6 +16106,102 @@ class DescribeCloudNativeAPIGatewayMCPToolACLListResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeCloudNativeAPIGatewayMCPToolImportTaskRequest(AbstractModel):
+    r"""DescribeCloudNativeAPIGatewayMCPToolImportTask请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GatewayId: <p>网关实例ID</p>
+        :type GatewayId: str
+        :param _MCPServerId: <p>MCP Server ID</p>
+        :type MCPServerId: str
+        """
+        self._GatewayId = None
+        self._MCPServerId = None
+
+    @property
+    def GatewayId(self):
+        r"""<p>网关实例ID</p>
+        :rtype: str
+        """
+        return self._GatewayId
+
+    @GatewayId.setter
+    def GatewayId(self, GatewayId):
+        self._GatewayId = GatewayId
+
+    @property
+    def MCPServerId(self):
+        r"""<p>MCP Server ID</p>
+        :rtype: str
+        """
+        return self._MCPServerId
+
+    @MCPServerId.setter
+    def MCPServerId(self, MCPServerId):
+        self._MCPServerId = MCPServerId
+
+
+    def _deserialize(self, params):
+        self._GatewayId = params.get("GatewayId")
+        self._MCPServerId = params.get("MCPServerId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCloudNativeAPIGatewayMCPToolImportTaskResponse(AbstractModel):
+    r"""DescribeCloudNativeAPIGatewayMCPToolImportTask返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: <p>导入任务的进度</p>
+        :type Result: :class:`tencentcloud.cngw.v20230418.models.CNAPIGwMCPToolImportTaskResult`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        r"""<p>导入任务的进度</p>
+        :rtype: :class:`tencentcloud.cngw.v20230418.models.CNAPIGwMCPToolImportTaskResult`
+        """
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self._Result = CNAPIGwMCPToolImportTaskResult()
+            self._Result._deserialize(params.get("Result"))
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeCloudNativeAPIGatewayMCPToolListRequest(AbstractModel):
     r"""DescribeCloudNativeAPIGatewayMCPToolList请求参数结构体
 
@@ -12870,6 +16422,271 @@ class DescribeCloudNativeAPIGatewayMCPToolResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeCloudNativeAPIGatewayMCPToolVersionListRequest(AbstractModel):
+    r"""DescribeCloudNativeAPIGatewayMCPToolVersionList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GatewayId: <p>网关实例 id</p>
+        :type GatewayId: str
+        :param _ServerId: <p>MCPserverId</p>
+        :type ServerId: str
+        :param _ToolId: <p>工具 id</p>
+        :type ToolId: str
+        :param _Limit: <p>分页查询limit</p>
+        :type Limit: int
+        :param _Offset: <p>分页查询偏移</p>
+        :type Offset: int
+        """
+        self._GatewayId = None
+        self._ServerId = None
+        self._ToolId = None
+        self._Limit = None
+        self._Offset = None
+
+    @property
+    def GatewayId(self):
+        r"""<p>网关实例 id</p>
+        :rtype: str
+        """
+        return self._GatewayId
+
+    @GatewayId.setter
+    def GatewayId(self, GatewayId):
+        self._GatewayId = GatewayId
+
+    @property
+    def ServerId(self):
+        r"""<p>MCPserverId</p>
+        :rtype: str
+        """
+        return self._ServerId
+
+    @ServerId.setter
+    def ServerId(self, ServerId):
+        self._ServerId = ServerId
+
+    @property
+    def ToolId(self):
+        r"""<p>工具 id</p>
+        :rtype: str
+        """
+        return self._ToolId
+
+    @ToolId.setter
+    def ToolId(self, ToolId):
+        self._ToolId = ToolId
+
+    @property
+    def Limit(self):
+        r"""<p>分页查询limit</p>
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        r"""<p>分页查询偏移</p>
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+
+    def _deserialize(self, params):
+        self._GatewayId = params.get("GatewayId")
+        self._ServerId = params.get("ServerId")
+        self._ToolId = params.get("ToolId")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCloudNativeAPIGatewayMCPToolVersionListResponse(AbstractModel):
+    r"""DescribeCloudNativeAPIGatewayMCPToolVersionList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: <p>tool版本列表</p>
+        :type Result: :class:`tencentcloud.cngw.v20230418.models.AIGWMCPToolVersionList`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        r"""<p>tool版本列表</p>
+        :rtype: :class:`tencentcloud.cngw.v20230418.models.AIGWMCPToolVersionList`
+        """
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self._Result = AIGWMCPToolVersionList()
+            self._Result._deserialize(params.get("Result"))
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeCloudNativeAPIGatewayMCPToolVersionRequest(AbstractModel):
+    r"""DescribeCloudNativeAPIGatewayMCPToolVersion请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GatewayId: <p>网关实例 id</p>
+        :type GatewayId: str
+        :param _ServerId: <p>MCPserverId</p>
+        :type ServerId: str
+        :param _ToolId: <p>工具 id</p>
+        :type ToolId: str
+        :param _ToolVersion: <p>tool版本id</p>
+        :type ToolVersion: str
+        """
+        self._GatewayId = None
+        self._ServerId = None
+        self._ToolId = None
+        self._ToolVersion = None
+
+    @property
+    def GatewayId(self):
+        r"""<p>网关实例 id</p>
+        :rtype: str
+        """
+        return self._GatewayId
+
+    @GatewayId.setter
+    def GatewayId(self, GatewayId):
+        self._GatewayId = GatewayId
+
+    @property
+    def ServerId(self):
+        r"""<p>MCPserverId</p>
+        :rtype: str
+        """
+        return self._ServerId
+
+    @ServerId.setter
+    def ServerId(self, ServerId):
+        self._ServerId = ServerId
+
+    @property
+    def ToolId(self):
+        r"""<p>工具 id</p>
+        :rtype: str
+        """
+        return self._ToolId
+
+    @ToolId.setter
+    def ToolId(self, ToolId):
+        self._ToolId = ToolId
+
+    @property
+    def ToolVersion(self):
+        r"""<p>tool版本id</p>
+        :rtype: str
+        """
+        return self._ToolVersion
+
+    @ToolVersion.setter
+    def ToolVersion(self, ToolVersion):
+        self._ToolVersion = ToolVersion
+
+
+    def _deserialize(self, params):
+        self._GatewayId = params.get("GatewayId")
+        self._ServerId = params.get("ServerId")
+        self._ToolId = params.get("ToolId")
+        self._ToolVersion = params.get("ToolVersion")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCloudNativeAPIGatewayMCPToolVersionResponse(AbstractModel):
+    r"""DescribeCloudNativeAPIGatewayMCPToolVersion返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: <p>tool版本的json snapshot</p>
+        :type Result: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        r"""<p>tool版本的json snapshot</p>
+        :rtype: str
+        """
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Result = params.get("Result")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeCloudNativeAPIGatewayMCPToolsFromFileRequest(AbstractModel):
     r"""DescribeCloudNativeAPIGatewayMCPToolsFromFile请求参数结构体
 
@@ -12992,6 +16809,132 @@ class DescribeCloudNativeAPIGatewayMCPToolsFromFileResponse(AbstractModel):
     def _deserialize(self, params):
         if params.get("Result") is not None:
             self._Result = CNAPIGwParseMCPToolsResult()
+            self._Result._deserialize(params.get("Result"))
+        self._RequestId = params.get("RequestId")
+
+
+class DescribeCloudNativeAPIGatewaySecretKeyListRequest(AbstractModel):
+    r"""DescribeCloudNativeAPIGatewaySecretKeyList请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GatewayId: <p>实例 ID</p>
+        :type GatewayId: str
+        :param _Limit: <p>每页条数，范围 [1, 100]，默认 10。</p>
+        :type Limit: int
+        :param _Offset: <p>起始位置，从 0 开始。</p>
+        :type Offset: int
+        :param _ResourceType: <p>密钥归属资源类型。UseToBind=true 时必填。</p><p>枚举值：</p><ul><li>Consumer：消费者</li><li>ModelService：模型服务</li></ul>
+        :type ResourceType: str
+        """
+        self._GatewayId = None
+        self._Limit = None
+        self._Offset = None
+        self._ResourceType = None
+
+    @property
+    def GatewayId(self):
+        r"""<p>实例 ID</p>
+        :rtype: str
+        """
+        return self._GatewayId
+
+    @GatewayId.setter
+    def GatewayId(self, GatewayId):
+        self._GatewayId = GatewayId
+
+    @property
+    def Limit(self):
+        r"""<p>每页条数，范围 [1, 100]，默认 10。</p>
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def Offset(self):
+        r"""<p>起始位置，从 0 开始。</p>
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def ResourceType(self):
+        r"""<p>密钥归属资源类型。UseToBind=true 时必填。</p><p>枚举值：</p><ul><li>Consumer：消费者</li><li>ModelService：模型服务</li></ul>
+        :rtype: str
+        """
+        return self._ResourceType
+
+    @ResourceType.setter
+    def ResourceType(self, ResourceType):
+        self._ResourceType = ResourceType
+
+
+    def _deserialize(self, params):
+        self._GatewayId = params.get("GatewayId")
+        self._Limit = params.get("Limit")
+        self._Offset = params.get("Offset")
+        self._ResourceType = params.get("ResourceType")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeCloudNativeAPIGatewaySecretKeyListResponse(AbstractModel):
+    r"""DescribeCloudNativeAPIGatewaySecretKeyList返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: <p>密钥列表</p>
+        :type Result: :class:`tencentcloud.cngw.v20230418.models.CNAPIGwSecretKeyList`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        r"""<p>密钥列表</p>
+        :rtype: :class:`tencentcloud.cngw.v20230418.models.CNAPIGwSecretKeyList`
+        """
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Result") is not None:
+            self._Result = CNAPIGwSecretKeyList()
             self._Result._deserialize(params.get("Result"))
         self._RequestId = params.get("RequestId")
 
@@ -14663,6 +18606,147 @@ class ListFilter(AbstractModel):
         
 
 
+class ModifyCloudNativeAPIGatewayAIServiceSourceRequest(AbstractModel):
+    r"""ModifyCloudNativeAPIGatewayAIServiceSource请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GatewayId: <p>实例 ID</p>
+        :type GatewayId: str
+        :param _SourceName: <p>服务来源名字</p>
+        :type SourceName: str
+        :param _SourceType: <p>服务来源类型</p><p>枚举值：</p><ul><li>Registry： 普通注册中心</li><li>MCPRegistry： MCP注册中心</li><li>DNS： 域名服务</li></ul>
+        :type SourceType: str
+        :param _SourceId: <p>服务来源id</p>
+        :type SourceId: str
+        :param _Description: <p>描述</p>
+        :type Description: str
+        :param _SourceInfo: <p>来源信息</p>
+        :type SourceInfo: :class:`tencentcloud.cngw.v20230418.models.CNAPIGwAIServiceSourceInfo`
+        """
+        self._GatewayId = None
+        self._SourceName = None
+        self._SourceType = None
+        self._SourceId = None
+        self._Description = None
+        self._SourceInfo = None
+
+    @property
+    def GatewayId(self):
+        r"""<p>实例 ID</p>
+        :rtype: str
+        """
+        return self._GatewayId
+
+    @GatewayId.setter
+    def GatewayId(self, GatewayId):
+        self._GatewayId = GatewayId
+
+    @property
+    def SourceName(self):
+        r"""<p>服务来源名字</p>
+        :rtype: str
+        """
+        return self._SourceName
+
+    @SourceName.setter
+    def SourceName(self, SourceName):
+        self._SourceName = SourceName
+
+    @property
+    def SourceType(self):
+        r"""<p>服务来源类型</p><p>枚举值：</p><ul><li>Registry： 普通注册中心</li><li>MCPRegistry： MCP注册中心</li><li>DNS： 域名服务</li></ul>
+        :rtype: str
+        """
+        return self._SourceType
+
+    @SourceType.setter
+    def SourceType(self, SourceType):
+        self._SourceType = SourceType
+
+    @property
+    def SourceId(self):
+        r"""<p>服务来源id</p>
+        :rtype: str
+        """
+        return self._SourceId
+
+    @SourceId.setter
+    def SourceId(self, SourceId):
+        self._SourceId = SourceId
+
+    @property
+    def Description(self):
+        r"""<p>描述</p>
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def SourceInfo(self):
+        r"""<p>来源信息</p>
+        :rtype: :class:`tencentcloud.cngw.v20230418.models.CNAPIGwAIServiceSourceInfo`
+        """
+        return self._SourceInfo
+
+    @SourceInfo.setter
+    def SourceInfo(self, SourceInfo):
+        self._SourceInfo = SourceInfo
+
+
+    def _deserialize(self, params):
+        self._GatewayId = params.get("GatewayId")
+        self._SourceName = params.get("SourceName")
+        self._SourceType = params.get("SourceType")
+        self._SourceId = params.get("SourceId")
+        self._Description = params.get("Description")
+        if params.get("SourceInfo") is not None:
+            self._SourceInfo = CNAPIGwAIServiceSourceInfo()
+            self._SourceInfo._deserialize(params.get("SourceInfo"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyCloudNativeAPIGatewayAIServiceSourceResponse(AbstractModel):
+    r"""ModifyCloudNativeAPIGatewayAIServiceSource返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
 class ModifyCloudNativeAPIGatewayConsumerGroupRequest(AbstractModel):
     r"""ModifyCloudNativeAPIGatewayConsumerGroup请求参数结构体
 
@@ -15709,6 +19793,321 @@ class ModifyCloudNativeAPIGatewayLLMModelServiceResponse(AbstractModel):
     @property
     def Result(self):
         r"""<p>是否成功</p>
+        :rtype: bool
+        """
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Result = params.get("Result")
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyCloudNativeAPIGatewayMCPRouteRequest(AbstractModel):
+    r"""ModifyCloudNativeAPIGatewayMCPRoute请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GatewayId: <p>网关ID</p>
+        :type GatewayId: str
+        :param _RouteId: <p>Route ID</p>
+        :type RouteId: str
+        :param _ServerId: <p>MCP Server ID</p>
+        :type ServerId: str
+        :param _Description: <p>描述</p>
+        :type Description: str
+        :param _HeaderMatch: <p>Header 匹配规则</p>
+        :type HeaderMatch: list of AIGWHeaderRule
+        :param _Methods: <p>http method</p>
+        :type Methods: list of str
+        :param _Path: <p>路径</p>
+        :type Path: str
+        :param _PathMatchType: <p>匹配规则</p><p>枚举值：</p><ul><li>Exact： 精确</li><li>Prefix： 前缀</li><li>Regex： 正则</li></ul>
+        :type PathMatchType: str
+        :param _Priority: <p>路由优先级</p>
+        :type Priority: int
+        """
+        self._GatewayId = None
+        self._RouteId = None
+        self._ServerId = None
+        self._Description = None
+        self._HeaderMatch = None
+        self._Methods = None
+        self._Path = None
+        self._PathMatchType = None
+        self._Priority = None
+
+    @property
+    def GatewayId(self):
+        r"""<p>网关ID</p>
+        :rtype: str
+        """
+        return self._GatewayId
+
+    @GatewayId.setter
+    def GatewayId(self, GatewayId):
+        self._GatewayId = GatewayId
+
+    @property
+    def RouteId(self):
+        r"""<p>Route ID</p>
+        :rtype: str
+        """
+        return self._RouteId
+
+    @RouteId.setter
+    def RouteId(self, RouteId):
+        self._RouteId = RouteId
+
+    @property
+    def ServerId(self):
+        r"""<p>MCP Server ID</p>
+        :rtype: str
+        """
+        return self._ServerId
+
+    @ServerId.setter
+    def ServerId(self, ServerId):
+        self._ServerId = ServerId
+
+    @property
+    def Description(self):
+        r"""<p>描述</p>
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def HeaderMatch(self):
+        r"""<p>Header 匹配规则</p>
+        :rtype: list of AIGWHeaderRule
+        """
+        return self._HeaderMatch
+
+    @HeaderMatch.setter
+    def HeaderMatch(self, HeaderMatch):
+        self._HeaderMatch = HeaderMatch
+
+    @property
+    def Methods(self):
+        r"""<p>http method</p>
+        :rtype: list of str
+        """
+        return self._Methods
+
+    @Methods.setter
+    def Methods(self, Methods):
+        self._Methods = Methods
+
+    @property
+    def Path(self):
+        r"""<p>路径</p>
+        :rtype: str
+        """
+        return self._Path
+
+    @Path.setter
+    def Path(self, Path):
+        self._Path = Path
+
+    @property
+    def PathMatchType(self):
+        r"""<p>匹配规则</p><p>枚举值：</p><ul><li>Exact： 精确</li><li>Prefix： 前缀</li><li>Regex： 正则</li></ul>
+        :rtype: str
+        """
+        return self._PathMatchType
+
+    @PathMatchType.setter
+    def PathMatchType(self, PathMatchType):
+        self._PathMatchType = PathMatchType
+
+    @property
+    def Priority(self):
+        r"""<p>路由优先级</p>
+        :rtype: int
+        """
+        return self._Priority
+
+    @Priority.setter
+    def Priority(self, Priority):
+        self._Priority = Priority
+
+
+    def _deserialize(self, params):
+        self._GatewayId = params.get("GatewayId")
+        self._RouteId = params.get("RouteId")
+        self._ServerId = params.get("ServerId")
+        self._Description = params.get("Description")
+        if params.get("HeaderMatch") is not None:
+            self._HeaderMatch = []
+            for item in params.get("HeaderMatch"):
+                obj = AIGWHeaderRule()
+                obj._deserialize(item)
+                self._HeaderMatch.append(obj)
+        self._Methods = params.get("Methods")
+        self._Path = params.get("Path")
+        self._PathMatchType = params.get("PathMatchType")
+        self._Priority = params.get("Priority")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyCloudNativeAPIGatewayMCPRouteResponse(AbstractModel):
+    r"""ModifyCloudNativeAPIGatewayMCPRoute返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class ModifyCloudNativeAPIGatewayMCPRouteStatusRequest(AbstractModel):
+    r"""ModifyCloudNativeAPIGatewayMCPRouteStatus请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GatewayId: <p>网关ID</p>
+        :type GatewayId: str
+        :param _RouteId: <p>路由ID</p>
+        :type RouteId: str
+        :param _ServerId: <p>MCP Server ID</p>
+        :type ServerId: str
+        :param _Status: <p>启用/禁用状态</p><p>枚举值：</p><ul><li>Enabled： 启用</li><li>Disabled： 禁用</li></ul>
+        :type Status: str
+        """
+        self._GatewayId = None
+        self._RouteId = None
+        self._ServerId = None
+        self._Status = None
+
+    @property
+    def GatewayId(self):
+        r"""<p>网关ID</p>
+        :rtype: str
+        """
+        return self._GatewayId
+
+    @GatewayId.setter
+    def GatewayId(self, GatewayId):
+        self._GatewayId = GatewayId
+
+    @property
+    def RouteId(self):
+        r"""<p>路由ID</p>
+        :rtype: str
+        """
+        return self._RouteId
+
+    @RouteId.setter
+    def RouteId(self, RouteId):
+        self._RouteId = RouteId
+
+    @property
+    def ServerId(self):
+        r"""<p>MCP Server ID</p>
+        :rtype: str
+        """
+        return self._ServerId
+
+    @ServerId.setter
+    def ServerId(self, ServerId):
+        self._ServerId = ServerId
+
+    @property
+    def Status(self):
+        r"""<p>启用/禁用状态</p><p>枚举值：</p><ul><li>Enabled： 启用</li><li>Disabled： 禁用</li></ul>
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+
+    def _deserialize(self, params):
+        self._GatewayId = params.get("GatewayId")
+        self._RouteId = params.get("RouteId")
+        self._ServerId = params.get("ServerId")
+        self._Status = params.get("Status")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ModifyCloudNativeAPIGatewayMCPRouteStatusResponse(AbstractModel):
+    r"""ModifyCloudNativeAPIGatewayMCPRouteStatus返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: <p>操作结果</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Result: bool
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        r"""<p>操作结果</p>
+注意：此字段可能返回 null，表示取不到有效值。
         :rtype: bool
         """
         return self._Result
@@ -17138,6 +21537,130 @@ class RemoveCloudNativeAPIGatewayConsumerInGroupResponse(AbstractModel):
 
 
     def _deserialize(self, params):
+        self._RequestId = params.get("RequestId")
+
+
+class RollbackCloudNativeAPIGatewayMCPToolVersionRequest(AbstractModel):
+    r"""RollbackCloudNativeAPIGatewayMCPToolVersion请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _GatewayId: <p>网关实例 id</p>
+        :type GatewayId: str
+        :param _ServerId: <p>MCPserverId</p>
+        :type ServerId: str
+        :param _ToolId: <p>工具 id</p>
+        :type ToolId: str
+        :param _ToolVersion: <p>mcp tool版本</p>
+        :type ToolVersion: str
+        """
+        self._GatewayId = None
+        self._ServerId = None
+        self._ToolId = None
+        self._ToolVersion = None
+
+    @property
+    def GatewayId(self):
+        r"""<p>网关实例 id</p>
+        :rtype: str
+        """
+        return self._GatewayId
+
+    @GatewayId.setter
+    def GatewayId(self, GatewayId):
+        self._GatewayId = GatewayId
+
+    @property
+    def ServerId(self):
+        r"""<p>MCPserverId</p>
+        :rtype: str
+        """
+        return self._ServerId
+
+    @ServerId.setter
+    def ServerId(self, ServerId):
+        self._ServerId = ServerId
+
+    @property
+    def ToolId(self):
+        r"""<p>工具 id</p>
+        :rtype: str
+        """
+        return self._ToolId
+
+    @ToolId.setter
+    def ToolId(self, ToolId):
+        self._ToolId = ToolId
+
+    @property
+    def ToolVersion(self):
+        r"""<p>mcp tool版本</p>
+        :rtype: str
+        """
+        return self._ToolVersion
+
+    @ToolVersion.setter
+    def ToolVersion(self, ToolVersion):
+        self._ToolVersion = ToolVersion
+
+
+    def _deserialize(self, params):
+        self._GatewayId = params.get("GatewayId")
+        self._ServerId = params.get("ServerId")
+        self._ToolId = params.get("ToolId")
+        self._ToolVersion = params.get("ToolVersion")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RollbackCloudNativeAPIGatewayMCPToolVersionResponse(AbstractModel):
+    r"""RollbackCloudNativeAPIGatewayMCPToolVersion返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Result: <p>操作结果</p>
+        :type Result: bool
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Result = None
+        self._RequestId = None
+
+    @property
+    def Result(self):
+        r"""<p>操作结果</p>
+        :rtype: bool
+        """
+        return self._Result
+
+    @Result.setter
+    def Result(self, Result):
+        self._Result = Result
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._Result = params.get("Result")
         self._RequestId = params.get("RequestId")
 
 

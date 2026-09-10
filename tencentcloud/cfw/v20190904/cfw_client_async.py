@@ -1431,6 +1431,24 @@ class CfwClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeNDRDataLeakOutAlertList(
+            self,
+            request: models.DescribeNDRDataLeakOutAlertListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeNDRDataLeakOutAlertListResponse:
+        """
+        DescribeNDRDataLeakOutAlertList -- 查询NDR数据泄露出站告警列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeNDRDataLeakOutAlertList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeNDRDataLeakOutAlertListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeNatAcRule(
             self,
             request: models.DescribeNatAcRuleRequest,

@@ -397,6 +397,29 @@ class TcbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateFunction(self, request):
+        r"""创建云函数
+
+        :param request: Request instance for CreateFunction.
+        :type request: :class:`tencentcloud.tcb.v20180608.models.CreateFunctionRequest`
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.CreateFunctionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateFunction", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateFunctionResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateHTTPServiceRoute(self, request):
         r"""本接口CreateHTTPServiceRoute用于创建HTTP访问服务路由。如果不传Domain.Routes，仅创建域名信息。首次创建域名后需要调用DescribeHTTPServiceRoute查询域名状态，如果状态是PROCESSING，需要轮询查询域名状态直到SUCCESS或者FAIL。如果状态是FAIL，可以删除后重新创建。创建成功后域名可能无法访问，原因是异步下发的路由，可通过http或者https探测路由是否下发，如果http访问返回404或者https访问握手失败，可等待一会再试，直到访问正常。此外HTTP访问服务提供了默认域名，通过DescribeHTTPServiceRoute接口可直接获取默认域名。
 
@@ -653,6 +676,31 @@ class TcbClient(AbstractClient):
             body = self.call("DeleteCloudAppVersion", params, headers=headers)
             response = json.loads(body)
             model = models.DeleteCloudAppVersionResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteFunction(self, request):
+        r"""删除云函数。
+
+        删除指定环境下的云函数。调用接口后，若通过 GetFunction 接口查询不到该函数，则表示删除成功。
+
+        :param request: Request instance for DeleteFunction.
+        :type request: :class:`tencentcloud.tcb.v20180608.models.DeleteFunctionRequest`
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.DeleteFunctionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteFunction", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteFunctionResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1770,6 +1818,29 @@ class TcbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DownloadFunction(self, request):
+        r"""获取云函数地址并下载zip包
+
+        :param request: Request instance for DownloadFunction.
+        :type request: :class:`tencentcloud.tcb.v20180608.models.DownloadFunctionRequest`
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.DownloadFunctionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DownloadFunction", params, headers=headers)
+            response = json.loads(body)
+            model = models.DownloadFunctionResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def ExecutePGSql(self, request):
         r"""在Postgres数据库上执行SQL
 
@@ -1793,6 +1864,29 @@ class TcbClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def GetFunction(self, request):
+        r"""获取云函数详情
+
+        :param request: Request instance for GetFunction.
+        :type request: :class:`tencentcloud.tcb.v20180608.models.GetFunctionRequest`
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.GetFunctionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("GetFunction", params, headers=headers)
+            response = json.loads(body)
+            model = models.GetFunctionResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def GetProviders(self, request):
         r"""查询指定云开发环境下的身份认证源列表。返回该环境已配置的所有身份认证源信息，包括第三方登录（OAuth、OIDC、SAML）、微信小程序登录、自定义登录和邮箱登录等。返回结果包含认证源基本信息、关联应用、配置状态及启用情况。若自定义登录或邮箱登录的身份源尚未创建，接口会自动追加一个默认关闭状态的身份源记录。
 
@@ -1807,6 +1901,29 @@ class TcbClient(AbstractClient):
             body = self.call("GetProviders", params, headers=headers)
             response = json.loads(body)
             model = models.GetProvidersResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ListFunctions(self, request):
+        r"""该接口根据传入的查询参数返回相关函数信息。
+
+        :param request: Request instance for ListFunctions.
+        :type request: :class:`tencentcloud.tcb.v20180608.models.ListFunctionsRequest`
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.ListFunctionsResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ListFunctions", params, headers=headers)
+            response = json.loads(body)
+            model = models.ListFunctionsResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -2468,6 +2585,52 @@ class TcbClient(AbstractClient):
             body = self.call("UpdateAIModel", params, headers=headers)
             response = json.loads(body)
             model = models.UpdateAIModelResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def UpdateFunctionCode(self, request):
+        r"""更新云函数代码
+
+        :param request: Request instance for UpdateFunctionCode.
+        :type request: :class:`tencentcloud.tcb.v20180608.models.UpdateFunctionCodeRequest`
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.UpdateFunctionCodeResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UpdateFunctionCode", params, headers=headers)
+            response = json.loads(body)
+            model = models.UpdateFunctionCodeResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def UpdateFunctionConfiguration(self, request):
+        r"""该接口根据传入参数更新函数配置。
+
+        :param request: Request instance for UpdateFunctionConfiguration.
+        :type request: :class:`tencentcloud.tcb.v20180608.models.UpdateFunctionConfigurationRequest`
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.UpdateFunctionConfigurationResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("UpdateFunctionConfiguration", params, headers=headers)
+            response = json.loads(body)
+            model = models.UpdateFunctionConfigurationResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

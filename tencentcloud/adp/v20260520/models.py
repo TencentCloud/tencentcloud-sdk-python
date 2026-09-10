@@ -162,6 +162,198 @@ class AIOptimizeModel(AbstractModel):
         
 
 
+class AccessKeyAuthConfig(AbstractModel):
+    r"""AccessKey鉴权配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ParamList: <p>Access Key字段配置</p>
+        :type ParamList: list of AccessKeyParamConfig
+        :param _PassThroughConfig: <p>Access Key透传配置</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PassThroughConfig: :class:`tencentcloud.adp.v20260520.models.AccessKeyPassThroughConfig`
+        :param _UsageMode: <p>Access Key 使用模式</p><p>枚举值：</p><ul><li>1： Access Key透传</li></ul>
+        :type UsageMode: int
+        """
+        self._ParamList = None
+        self._PassThroughConfig = None
+        self._UsageMode = None
+
+    @property
+    def ParamList(self):
+        r"""<p>Access Key字段配置</p>
+        :rtype: list of AccessKeyParamConfig
+        """
+        return self._ParamList
+
+    @ParamList.setter
+    def ParamList(self, ParamList):
+        self._ParamList = ParamList
+
+    @property
+    def PassThroughConfig(self):
+        r"""<p>Access Key透传配置</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.adp.v20260520.models.AccessKeyPassThroughConfig`
+        """
+        return self._PassThroughConfig
+
+    @PassThroughConfig.setter
+    def PassThroughConfig(self, PassThroughConfig):
+        self._PassThroughConfig = PassThroughConfig
+
+    @property
+    def UsageMode(self):
+        r"""<p>Access Key 使用模式</p><p>枚举值：</p><ul><li>1： Access Key透传</li></ul>
+        :rtype: int
+        """
+        return self._UsageMode
+
+    @UsageMode.setter
+    def UsageMode(self, UsageMode):
+        self._UsageMode = UsageMode
+
+
+    def _deserialize(self, params):
+        if params.get("ParamList") is not None:
+            self._ParamList = []
+            for item in params.get("ParamList"):
+                obj = AccessKeyParamConfig()
+                obj._deserialize(item)
+                self._ParamList.append(obj)
+        if params.get("PassThroughConfig") is not None:
+            self._PassThroughConfig = AccessKeyPassThroughConfig()
+            self._PassThroughConfig._deserialize(params.get("PassThroughConfig"))
+        self._UsageMode = params.get("UsageMode")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AccessKeyParamConfig(AbstractModel):
+    r"""Access Key 字段配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FieldType: <p>Access Key 字段类型，1:AccessKeyId，2:AccessKeySecret，3:SessionToken</p>
+        :type FieldType: int
+        :param _IsRequired: <p>是否必填</p>
+        :type IsRequired: bool
+        :param _ParamName: <p>header/query 字段名</p>
+        :type ParamName: str
+        :param _ParamValue: <p>AccessKey密钥默认值，允许为空</p>
+        :type ParamValue: str
+        """
+        self._FieldType = None
+        self._IsRequired = None
+        self._ParamName = None
+        self._ParamValue = None
+
+    @property
+    def FieldType(self):
+        r"""<p>Access Key 字段类型，1:AccessKeyId，2:AccessKeySecret，3:SessionToken</p>
+        :rtype: int
+        """
+        return self._FieldType
+
+    @FieldType.setter
+    def FieldType(self, FieldType):
+        self._FieldType = FieldType
+
+    @property
+    def IsRequired(self):
+        r"""<p>是否必填</p>
+        :rtype: bool
+        """
+        return self._IsRequired
+
+    @IsRequired.setter
+    def IsRequired(self, IsRequired):
+        self._IsRequired = IsRequired
+
+    @property
+    def ParamName(self):
+        r"""<p>header/query 字段名</p>
+        :rtype: str
+        """
+        return self._ParamName
+
+    @ParamName.setter
+    def ParamName(self, ParamName):
+        self._ParamName = ParamName
+
+    @property
+    def ParamValue(self):
+        r"""<p>AccessKey密钥默认值，允许为空</p>
+        :rtype: str
+        """
+        return self._ParamValue
+
+    @ParamValue.setter
+    def ParamValue(self, ParamValue):
+        self._ParamValue = ParamValue
+
+
+    def _deserialize(self, params):
+        self._FieldType = params.get("FieldType")
+        self._IsRequired = params.get("IsRequired")
+        self._ParamName = params.get("ParamName")
+        self._ParamValue = params.get("ParamValue")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AccessKeyPassThroughConfig(AbstractModel):
+    r"""Access Key 透传配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _KeyLocation: <p>Access Key 字段统一注入位置，0:Header，1:Query</p>
+        :type KeyLocation: int
+        """
+        self._KeyLocation = None
+
+    @property
+    def KeyLocation(self):
+        r"""<p>Access Key 字段统一注入位置，0:Header，1:Query</p>
+        :rtype: int
+        """
+        return self._KeyLocation
+
+    @KeyLocation.setter
+    def KeyLocation(self, KeyLocation):
+        self._KeyLocation = KeyLocation
+
+
+    def _deserialize(self, params):
+        self._KeyLocation = params.get("KeyLocation")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AccountInfo(AbstractModel):
     r"""员工信息
 
@@ -7014,20 +7206,23 @@ class AuthConfig(AbstractModel):
         r"""
         :param _AuthType: <p>授权方式。</p><p>枚举值：</p><ul><li>0：无鉴权</li><li>1：API Key 鉴权</li><li>2：CAM 授权</li><li>3：OAuth 2.0 授权</li></ul>
         :type AuthType: int
-        :param _ApiKeyAuthConfig: API Key授权配置
+        :param _ApiKeyAuthConfig: <p>API Key授权配置</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ApiKeyAuthConfig: :class:`tencentcloud.adp.v20260520.models.ApiKeyAuthConfig`
-        :param _CamAuthConfig: CAM授权配置
+        :param _CamAuthConfig: <p>CAM授权配置</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type CamAuthConfig: :class:`tencentcloud.adp.v20260520.models.CamAuthConfig`
-        :param _OAuthConfig: OAuth2.0授权配置
+        :param _OAuthConfig: <p>OAuth2.0授权配置</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type OAuthConfig: :class:`tencentcloud.adp.v20260520.models.OAuthConfig`
+        :param _AccessKeyAuthConfig: <p>AccessKey授权配置</p>
+        :type AccessKeyAuthConfig: :class:`tencentcloud.adp.v20260520.models.AccessKeyAuthConfig`
         """
         self._AuthType = None
         self._ApiKeyAuthConfig = None
         self._CamAuthConfig = None
         self._OAuthConfig = None
+        self._AccessKeyAuthConfig = None
 
     @property
     def AuthType(self):
@@ -7042,7 +7237,7 @@ class AuthConfig(AbstractModel):
 
     @property
     def ApiKeyAuthConfig(self):
-        r"""API Key授权配置
+        r"""<p>API Key授权配置</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.adp.v20260520.models.ApiKeyAuthConfig`
         """
@@ -7054,7 +7249,7 @@ class AuthConfig(AbstractModel):
 
     @property
     def CamAuthConfig(self):
-        r"""CAM授权配置
+        r"""<p>CAM授权配置</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.adp.v20260520.models.CamAuthConfig`
         """
@@ -7066,7 +7261,7 @@ class AuthConfig(AbstractModel):
 
     @property
     def OAuthConfig(self):
-        r"""OAuth2.0授权配置
+        r"""<p>OAuth2.0授权配置</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.adp.v20260520.models.OAuthConfig`
         """
@@ -7075,6 +7270,17 @@ class AuthConfig(AbstractModel):
     @OAuthConfig.setter
     def OAuthConfig(self, OAuthConfig):
         self._OAuthConfig = OAuthConfig
+
+    @property
+    def AccessKeyAuthConfig(self):
+        r"""<p>AccessKey授权配置</p>
+        :rtype: :class:`tencentcloud.adp.v20260520.models.AccessKeyAuthConfig`
+        """
+        return self._AccessKeyAuthConfig
+
+    @AccessKeyAuthConfig.setter
+    def AccessKeyAuthConfig(self, AccessKeyAuthConfig):
+        self._AccessKeyAuthConfig = AccessKeyAuthConfig
 
 
     def _deserialize(self, params):
@@ -7088,6 +7294,9 @@ class AuthConfig(AbstractModel):
         if params.get("OAuthConfig") is not None:
             self._OAuthConfig = OAuthConfig()
             self._OAuthConfig._deserialize(params.get("OAuthConfig"))
+        if params.get("AccessKeyAuthConfig") is not None:
+            self._AccessKeyAuthConfig = AccessKeyAuthConfig()
+            self._AccessKeyAuthConfig._deserialize(params.get("AccessKeyAuthConfig"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -7450,29 +7659,29 @@ class CamAuthConfig(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _RoleName: 角色名称
+        :param _RoleName: <p>角色名称</p>
         :type RoleName: str
-        :param _KeyLocation: 密钥位置 HEADER/QUERY
-
-枚举值:
-| uint | 描述 |
-| --- | --- |
-| 0 | 头鉴权 |
-| 1 | 请求信息鉴权 |
+        :param _KeyLocation: <p>密钥位置 HEADER/QUERY</p><p>枚举值:<br>| uint | 描述 |<br>| --- | --- |<br>| 0 | 头鉴权 |<br>| 1 | 请求信息鉴权 |</p>
         :type KeyLocation: int
-        :param _SecretIdName: SecretId字段名称
+        :param _SecretIdName: <p>SecretId字段名称</p>
         :type SecretIdName: str
-        :param _SecretKeyName: SecretKey字段名称
+        :param _SecretKeyName: <p>SecretKey字段名称</p>
         :type SecretKeyName: str
+        :param _ParamList: <p>CAM Access Key 字段配置</p>
+        :type ParamList: list of AccessKeyParamConfig
+        :param _SupportRoleAuth: <p>是否支持CAM角色授权</p>
+        :type SupportRoleAuth: bool
         """
         self._RoleName = None
         self._KeyLocation = None
         self._SecretIdName = None
         self._SecretKeyName = None
+        self._ParamList = None
+        self._SupportRoleAuth = None
 
     @property
     def RoleName(self):
-        r"""角色名称
+        r"""<p>角色名称</p>
         :rtype: str
         """
         return self._RoleName
@@ -7483,13 +7692,7 @@ class CamAuthConfig(AbstractModel):
 
     @property
     def KeyLocation(self):
-        r"""密钥位置 HEADER/QUERY
-
-枚举值:
-| uint | 描述 |
-| --- | --- |
-| 0 | 头鉴权 |
-| 1 | 请求信息鉴权 |
+        r"""<p>密钥位置 HEADER/QUERY</p><p>枚举值:<br>| uint | 描述 |<br>| --- | --- |<br>| 0 | 头鉴权 |<br>| 1 | 请求信息鉴权 |</p>
         :rtype: int
         """
         return self._KeyLocation
@@ -7500,7 +7703,7 @@ class CamAuthConfig(AbstractModel):
 
     @property
     def SecretIdName(self):
-        r"""SecretId字段名称
+        r"""<p>SecretId字段名称</p>
         :rtype: str
         """
         return self._SecretIdName
@@ -7511,7 +7714,7 @@ class CamAuthConfig(AbstractModel):
 
     @property
     def SecretKeyName(self):
-        r"""SecretKey字段名称
+        r"""<p>SecretKey字段名称</p>
         :rtype: str
         """
         return self._SecretKeyName
@@ -7520,12 +7723,41 @@ class CamAuthConfig(AbstractModel):
     def SecretKeyName(self, SecretKeyName):
         self._SecretKeyName = SecretKeyName
 
+    @property
+    def ParamList(self):
+        r"""<p>CAM Access Key 字段配置</p>
+        :rtype: list of AccessKeyParamConfig
+        """
+        return self._ParamList
+
+    @ParamList.setter
+    def ParamList(self, ParamList):
+        self._ParamList = ParamList
+
+    @property
+    def SupportRoleAuth(self):
+        r"""<p>是否支持CAM角色授权</p>
+        :rtype: bool
+        """
+        return self._SupportRoleAuth
+
+    @SupportRoleAuth.setter
+    def SupportRoleAuth(self, SupportRoleAuth):
+        self._SupportRoleAuth = SupportRoleAuth
+
 
     def _deserialize(self, params):
         self._RoleName = params.get("RoleName")
         self._KeyLocation = params.get("KeyLocation")
         self._SecretIdName = params.get("SecretIdName")
         self._SecretKeyName = params.get("SecretKeyName")
+        if params.get("ParamList") is not None:
+            self._ParamList = []
+            for item in params.get("ParamList"):
+                obj = AccessKeyParamConfig()
+                obj._deserialize(item)
+                self._ParamList.append(obj)
+        self._SupportRoleAuth = params.get("SupportRoleAuth")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -12018,11 +12250,14 @@ class CreateSkillShareRequest(AbstractModel):
         :type SpaceId: str
         :param _VersionId: <p>必填，被共享的版本id（必须高于已共享版本）</p>
         :type VersionId: str
+        :param _CorpShareConfig: <p>共享配置</p>
+        :type CorpShareConfig: :class:`tencentcloud.adp.v20260520.models.SkillCorpShareConfig`
         """
         self._ApplyRemark = None
         self._SkillId = None
         self._SpaceId = None
         self._VersionId = None
+        self._CorpShareConfig = None
 
     @property
     def ApplyRemark(self):
@@ -12068,12 +12303,26 @@ class CreateSkillShareRequest(AbstractModel):
     def VersionId(self, VersionId):
         self._VersionId = VersionId
 
+    @property
+    def CorpShareConfig(self):
+        r"""<p>共享配置</p>
+        :rtype: :class:`tencentcloud.adp.v20260520.models.SkillCorpShareConfig`
+        """
+        return self._CorpShareConfig
+
+    @CorpShareConfig.setter
+    def CorpShareConfig(self, CorpShareConfig):
+        self._CorpShareConfig = CorpShareConfig
+
 
     def _deserialize(self, params):
         self._ApplyRemark = params.get("ApplyRemark")
         self._SkillId = params.get("SkillId")
         self._SpaceId = params.get("SpaceId")
         self._VersionId = params.get("VersionId")
+        if params.get("CorpShareConfig") is not None:
+            self._CorpShareConfig = SkillCorpShareConfig()
+            self._CorpShareConfig._deserialize(params.get("CorpShareConfig"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -17896,22 +18145,24 @@ class DescribePluginSummaryListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SpaceId: 空间ID，查询空间内的插件列表时使用
+        :param _SpaceId: <p>空间ID，查询空间内的插件列表时使用</p>
         :type SpaceId: str
-        :param _FilterList: 过滤条件列表 支持：PluginKind、CategoryKey、PluginSource、PluginId、PluginClass、BillingType
+        :param _FilterList: <p>过滤条件列表，支持 PluginKind、CategoryKey、PluginSource、PluginId、PluginClass、BillingType、AuthType、IsShared、IsCreatedByMe</p>
         :type FilterList: list of Filter
         :param _IsFavoriteOnly: <p>是否只返回已收藏插件。取 true 时，仅返回当前用户已收藏的插件；取 false 或不传时不按收藏状态过滤。</p>
         :type IsFavoriteOnly: bool
         :param _Module: <p>插件展示场景。不传或取 0 时不限定场景。</p><p>枚举值：</p><ul><li>0：不限定场景</li><li>1：Agent 模式</li><li>2：工作流</li><li>3：智能工作台</li></ul>
         :type Module: int
-        :param _PageNumber: 页码 从0开始
+        :param _PageNumber: <p>页码 从0开始</p>
         :type PageNumber: int
-        :param _PageSize: 每页大小
+        :param _PageSize: <p>每页大小</p>
         :type PageSize: int
-        :param _Query: 查询内容 模糊匹配：插件名称/插件描述/工具名称/工具描述
+        :param _Query: <p>查询内容 模糊匹配：插件名称/插件描述/工具名称/工具描述</p>
         :type Query: str
         :param _SortType: <p>排序方式。</p><p>枚举值：</p><ul><li>0：未指定，默认排序</li><li>1：按相关性排序</li><li>2：按更新时间排序</li><li>3：默认排序</li><li>4：按热度排序</li></ul>
         :type SortType: int
+        :param _PluginSpaceRelation: <p>筛选当前空间/企业共享插件</p><p>取值范围：[0, 2]</p>
+        :type PluginSpaceRelation: int
         """
         self._SpaceId = None
         self._FilterList = None
@@ -17921,10 +18172,11 @@ class DescribePluginSummaryListRequest(AbstractModel):
         self._PageSize = None
         self._Query = None
         self._SortType = None
+        self._PluginSpaceRelation = None
 
     @property
     def SpaceId(self):
-        r"""空间ID，查询空间内的插件列表时使用
+        r"""<p>空间ID，查询空间内的插件列表时使用</p>
         :rtype: str
         """
         return self._SpaceId
@@ -17935,7 +18187,7 @@ class DescribePluginSummaryListRequest(AbstractModel):
 
     @property
     def FilterList(self):
-        r"""过滤条件列表 支持：PluginKind、CategoryKey、PluginSource、PluginId、PluginClass、BillingType
+        r"""<p>过滤条件列表，支持 PluginKind、CategoryKey、PluginSource、PluginId、PluginClass、BillingType、AuthType、IsShared、IsCreatedByMe</p>
         :rtype: list of Filter
         """
         return self._FilterList
@@ -17968,7 +18220,7 @@ class DescribePluginSummaryListRequest(AbstractModel):
 
     @property
     def PageNumber(self):
-        r"""页码 从0开始
+        r"""<p>页码 从0开始</p>
         :rtype: int
         """
         return self._PageNumber
@@ -17979,7 +18231,7 @@ class DescribePluginSummaryListRequest(AbstractModel):
 
     @property
     def PageSize(self):
-        r"""每页大小
+        r"""<p>每页大小</p>
         :rtype: int
         """
         return self._PageSize
@@ -17990,7 +18242,7 @@ class DescribePluginSummaryListRequest(AbstractModel):
 
     @property
     def Query(self):
-        r"""查询内容 模糊匹配：插件名称/插件描述/工具名称/工具描述
+        r"""<p>查询内容 模糊匹配：插件名称/插件描述/工具名称/工具描述</p>
         :rtype: str
         """
         return self._Query
@@ -18010,6 +18262,17 @@ class DescribePluginSummaryListRequest(AbstractModel):
     def SortType(self, SortType):
         self._SortType = SortType
 
+    @property
+    def PluginSpaceRelation(self):
+        r"""<p>筛选当前空间/企业共享插件</p><p>取值范围：[0, 2]</p>
+        :rtype: int
+        """
+        return self._PluginSpaceRelation
+
+    @PluginSpaceRelation.setter
+    def PluginSpaceRelation(self, PluginSpaceRelation):
+        self._PluginSpaceRelation = PluginSpaceRelation
+
 
     def _deserialize(self, params):
         self._SpaceId = params.get("SpaceId")
@@ -18025,6 +18288,7 @@ class DescribePluginSummaryListRequest(AbstractModel):
         self._PageSize = params.get("PageSize")
         self._Query = params.get("Query")
         self._SortType = params.get("SortType")
+        self._PluginSpaceRelation = params.get("PluginSpaceRelation")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -18042,9 +18306,9 @@ class DescribePluginSummaryListResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _PluginList: plugin_list
+        :param _PluginList: <p>plugin_list</p>
         :type PluginList: list of PluginSummary
-        :param _TotalCount: total_count
+        :param _TotalCount: <p>total_count</p>
         :type TotalCount: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -18055,7 +18319,7 @@ class DescribePluginSummaryListResponse(AbstractModel):
 
     @property
     def PluginList(self):
-        r"""plugin_list
+        r"""<p>plugin_list</p>
         :rtype: list of PluginSummary
         """
         return self._PluginList
@@ -18066,7 +18330,7 @@ class DescribePluginSummaryListResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        r"""total_count
+        r"""<p>total_count</p>
         :rtype: int
         """
         return self._TotalCount
@@ -18553,10 +18817,13 @@ class DescribeSkillReferenceListResponse(AbstractModel):
         r"""
         :param _ReferenceList: <p>按 SkillRefType 分组的引用汇总：某类型 total_count = 0 时不入组（不返回空占位） 本期同时落 OPENCLAW / AGENT / CORP_ASSISTANT 三路</p>
         :type ReferenceList: list of SkillReferenceGroup
+        :param _AllowForceModify: <p>当前用户是否允许强制删除有引用的Skill</p>
+        :type AllowForceModify: bool
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._ReferenceList = None
+        self._AllowForceModify = None
         self._RequestId = None
 
     @property
@@ -18569,6 +18836,17 @@ class DescribeSkillReferenceListResponse(AbstractModel):
     @ReferenceList.setter
     def ReferenceList(self, ReferenceList):
         self._ReferenceList = ReferenceList
+
+    @property
+    def AllowForceModify(self):
+        r"""<p>当前用户是否允许强制删除有引用的Skill</p>
+        :rtype: bool
+        """
+        return self._AllowForceModify
+
+    @AllowForceModify.setter
+    def AllowForceModify(self, AllowForceModify):
+        self._AllowForceModify = AllowForceModify
 
     @property
     def RequestId(self):
@@ -18589,6 +18867,7 @@ class DescribeSkillReferenceListResponse(AbstractModel):
                 obj = SkillReferenceGroup()
                 obj._deserialize(item)
                 self._ReferenceList.append(obj)
+        self._AllowForceModify = params.get("AllowForceModify")
         self._RequestId = params.get("RequestId")
 
 
@@ -20340,7 +20619,7 @@ class FileParseModel(AbstractModel):
 
 
 class Filter(AbstractModel):
-    r"""列表通用过滤条件（多个 Filter 之间为 AND 关系，同一 Filter 的多个 value_list 为 OR 关系）
+    r"""列表通用过滤条件（多个 Filter 之间为 AND 关系，同一 Filter 的多个 value_list 为 OR 关系；BETWEEN 时 value_list 必须恰好 2 个元素表示闭区间 [start, end]）
 
     """
 
@@ -20348,7 +20627,7 @@ class Filter(AbstractModel):
         r"""
         :param _Name: 过滤字段名
         :type Name: str
-        :param _Operator: 操作符，默认 IN（向后兼容）<table><tr><td>枚举项</td><td>枚举值</td><td>描述</td></tr><tr><td>FILTER_OPERATOR_IN</td><td>0</td><td>属于 value_list（默认值，向后兼容；value_list 不可为空）</td></tr><tr><td>FILTER_OPERATOR_NOT_IN</td><td>1</td><td>不属于 value_list（value_list 不可为空）</td></tr></table>
+        :param _Operator: 操作符，默认 IN（向后兼容）<table><tr><td>枚举项</td><td>枚举值</td><td>描述</td></tr><tr><td>FILTER_OPERATOR_IN</td><td>0</td><td>属于 value_list（默认值，向后兼容；value_list 不可为空）</td></tr><tr><td>FILTER_OPERATOR_NOT_IN</td><td>1</td><td>不属于 value_list（value_list 不可为空）</td></tr><tr><td>FILTER_OPERATOR_BETWEEN</td><td>2</td><td>之间（闭区间 [start, end]；value_list 必须恰好 2 个元素，允许其一为空表示单边开区间）</td></tr></table>
         :type Operator: int
         :param _ValueList: 过滤值数组
         :type ValueList: list of str
@@ -20370,7 +20649,7 @@ class Filter(AbstractModel):
 
     @property
     def Operator(self):
-        r"""操作符，默认 IN（向后兼容）<table><tr><td>枚举项</td><td>枚举值</td><td>描述</td></tr><tr><td>FILTER_OPERATOR_IN</td><td>0</td><td>属于 value_list（默认值，向后兼容；value_list 不可为空）</td></tr><tr><td>FILTER_OPERATOR_NOT_IN</td><td>1</td><td>不属于 value_list（value_list 不可为空）</td></tr></table>
+        r"""操作符，默认 IN（向后兼容）<table><tr><td>枚举项</td><td>枚举值</td><td>描述</td></tr><tr><td>FILTER_OPERATOR_IN</td><td>0</td><td>属于 value_list（默认值，向后兼容；value_list 不可为空）</td></tr><tr><td>FILTER_OPERATOR_NOT_IN</td><td>1</td><td>不属于 value_list（value_list 不可为空）</td></tr><tr><td>FILTER_OPERATOR_BETWEEN</td><td>2</td><td>之间（闭区间 [start, end]；value_list 必须恰好 2 个元素，允许其一为空表示单边开区间）</td></tr></table>
         :rtype: int
         """
         return self._Operator
@@ -25606,31 +25885,62 @@ class PluginSummary(AbstractModel):
 
     def __init__(self):
         r"""
+        :param _Config: <p>插件配置信息</p>
+        :type Config: :class:`tencentcloud.adp.v20260520.models.PluginConfig`
+        :param _IsShared: <p>是否已配置共享</p>
+        :type IsShared: bool
         :param _Operation: <p>插件运营管理信息</p>
         :type Operation: :class:`tencentcloud.adp.v20260520.models.PluginOperation`
         :param _PluginId: <p>插件id</p>
         :type PluginId: str
         :param _Profile: <p>插件基础信息</p>
         :type Profile: :class:`tencentcloud.adp.v20260520.models.PluginProfile`
+        :param _SpaceId: <p>插件所属空间 ID；内置插件为空</p>
+        :type SpaceId: str
         :param _Statistics: <p>插件统计信息</p>
         :type Statistics: :class:`tencentcloud.adp.v20260520.models.PluginStatistics`
         :param _Status: <p>插件状态，1:可用，2:不可用 </p><p>枚举值：</p><ul><li>1： 可用</li><li>2： 不可用</li></ul>
         :type Status: int
-        :param _UserState: <p>用户维度的插件状态信息</p>
-        :type UserState: :class:`tencentcloud.adp.v20260520.models.PluginUserState`
-        :param _Config: <p>插件配置信息</p>
-        :type Config: :class:`tencentcloud.adp.v20260520.models.PluginConfig`
         :param _ToolList: <p>工具信息</p>
         :type ToolList: list of ToolSummary
+        :param _UserState: <p>用户维度的插件状态信息</p>
+        :type UserState: :class:`tencentcloud.adp.v20260520.models.PluginUserState`
+        :param _UpdateTime: <p>更新时间，Unix时间戳</p><p>单位：秒</p>
+        :type UpdateTime: str
         """
+        self._Config = None
+        self._IsShared = None
         self._Operation = None
         self._PluginId = None
         self._Profile = None
+        self._SpaceId = None
         self._Statistics = None
         self._Status = None
-        self._UserState = None
-        self._Config = None
         self._ToolList = None
+        self._UserState = None
+        self._UpdateTime = None
+
+    @property
+    def Config(self):
+        r"""<p>插件配置信息</p>
+        :rtype: :class:`tencentcloud.adp.v20260520.models.PluginConfig`
+        """
+        return self._Config
+
+    @Config.setter
+    def Config(self, Config):
+        self._Config = Config
+
+    @property
+    def IsShared(self):
+        r"""<p>是否已配置共享</p>
+        :rtype: bool
+        """
+        return self._IsShared
+
+    @IsShared.setter
+    def IsShared(self, IsShared):
+        self._IsShared = IsShared
 
     @property
     def Operation(self):
@@ -25666,6 +25976,17 @@ class PluginSummary(AbstractModel):
         self._Profile = Profile
 
     @property
+    def SpaceId(self):
+        r"""<p>插件所属空间 ID；内置插件为空</p>
+        :rtype: str
+        """
+        return self._SpaceId
+
+    @SpaceId.setter
+    def SpaceId(self, SpaceId):
+        self._SpaceId = SpaceId
+
+    @property
     def Statistics(self):
         r"""<p>插件统计信息</p>
         :rtype: :class:`tencentcloud.adp.v20260520.models.PluginStatistics`
@@ -25688,6 +26009,17 @@ class PluginSummary(AbstractModel):
         self._Status = Status
 
     @property
+    def ToolList(self):
+        r"""<p>工具信息</p>
+        :rtype: list of ToolSummary
+        """
+        return self._ToolList
+
+    @ToolList.setter
+    def ToolList(self, ToolList):
+        self._ToolList = ToolList
+
+    @property
     def UserState(self):
         r"""<p>用户维度的插件状态信息</p>
         :rtype: :class:`tencentcloud.adp.v20260520.models.PluginUserState`
@@ -25699,29 +26031,22 @@ class PluginSummary(AbstractModel):
         self._UserState = UserState
 
     @property
-    def Config(self):
-        r"""<p>插件配置信息</p>
-        :rtype: :class:`tencentcloud.adp.v20260520.models.PluginConfig`
+    def UpdateTime(self):
+        r"""<p>更新时间，Unix时间戳</p><p>单位：秒</p>
+        :rtype: str
         """
-        return self._Config
+        return self._UpdateTime
 
-    @Config.setter
-    def Config(self, Config):
-        self._Config = Config
-
-    @property
-    def ToolList(self):
-        r"""<p>工具信息</p>
-        :rtype: list of ToolSummary
-        """
-        return self._ToolList
-
-    @ToolList.setter
-    def ToolList(self, ToolList):
-        self._ToolList = ToolList
+    @UpdateTime.setter
+    def UpdateTime(self, UpdateTime):
+        self._UpdateTime = UpdateTime
 
 
     def _deserialize(self, params):
+        if params.get("Config") is not None:
+            self._Config = PluginConfig()
+            self._Config._deserialize(params.get("Config"))
+        self._IsShared = params.get("IsShared")
         if params.get("Operation") is not None:
             self._Operation = PluginOperation()
             self._Operation._deserialize(params.get("Operation"))
@@ -25729,22 +26054,21 @@ class PluginSummary(AbstractModel):
         if params.get("Profile") is not None:
             self._Profile = PluginProfile()
             self._Profile._deserialize(params.get("Profile"))
+        self._SpaceId = params.get("SpaceId")
         if params.get("Statistics") is not None:
             self._Statistics = PluginStatistics()
             self._Statistics._deserialize(params.get("Statistics"))
         self._Status = params.get("Status")
-        if params.get("UserState") is not None:
-            self._UserState = PluginUserState()
-            self._UserState._deserialize(params.get("UserState"))
-        if params.get("Config") is not None:
-            self._Config = PluginConfig()
-            self._Config._deserialize(params.get("Config"))
         if params.get("ToolList") is not None:
             self._ToolList = []
             for item in params.get("ToolList"):
                 obj = ToolSummary()
                 obj._deserialize(item)
                 self._ToolList.append(obj)
+        if params.get("UserState") is not None:
+            self._UserState = PluginUserState()
+            self._UserState._deserialize(params.get("UserState"))
+        self._UpdateTime = params.get("UpdateTime")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

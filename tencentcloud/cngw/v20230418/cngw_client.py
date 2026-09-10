@@ -95,6 +95,98 @@ class CngwClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CheckCloudNativeAPIGatewayMCPRouteMatch(self, request):
+        r"""上传插件前置操作，获取COS相关信息
+
+        :param request: Request instance for CheckCloudNativeAPIGatewayMCPRouteMatch.
+        :type request: :class:`tencentcloud.cngw.v20230418.models.CheckCloudNativeAPIGatewayMCPRouteMatchRequest`
+        :rtype: :class:`tencentcloud.cngw.v20230418.models.CheckCloudNativeAPIGatewayMCPRouteMatchResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CheckCloudNativeAPIGatewayMCPRouteMatch", params, headers=headers)
+            response = json.loads(body)
+            model = models.CheckCloudNativeAPIGatewayMCPRouteMatchResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CheckCloudNativeAPIGatewayMCPToolVersionExist(self, request):
+        r"""修改云原生智能网关MCP Tool
+
+        :param request: Request instance for CheckCloudNativeAPIGatewayMCPToolVersionExist.
+        :type request: :class:`tencentcloud.cngw.v20230418.models.CheckCloudNativeAPIGatewayMCPToolVersionExistRequest`
+        :rtype: :class:`tencentcloud.cngw.v20230418.models.CheckCloudNativeAPIGatewayMCPToolVersionExistResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CheckCloudNativeAPIGatewayMCPToolVersionExist", params, headers=headers)
+            response = json.loads(body)
+            model = models.CheckCloudNativeAPIGatewayMCPToolVersionExistResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CompareCloudNativeAPIGatewayMCPToolVersion(self, request):
+        r"""修改云原生智能网关MCP Tool
+
+        :param request: Request instance for CompareCloudNativeAPIGatewayMCPToolVersion.
+        :type request: :class:`tencentcloud.cngw.v20230418.models.CompareCloudNativeAPIGatewayMCPToolVersionRequest`
+        :rtype: :class:`tencentcloud.cngw.v20230418.models.CompareCloudNativeAPIGatewayMCPToolVersionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CompareCloudNativeAPIGatewayMCPToolVersion", params, headers=headers)
+            response = json.loads(body)
+            model = models.CompareCloudNativeAPIGatewayMCPToolVersionResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def CreateCloudNativeAPIGatewayAIServiceSource(self, request):
+        r"""创建云原生网关AI服务来源
+
+        :param request: Request instance for CreateCloudNativeAPIGatewayAIServiceSource.
+        :type request: :class:`tencentcloud.cngw.v20230418.models.CreateCloudNativeAPIGatewayAIServiceSourceRequest`
+        :rtype: :class:`tencentcloud.cngw.v20230418.models.CreateCloudNativeAPIGatewayAIServiceSourceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateCloudNativeAPIGatewayAIServiceSource", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateCloudNativeAPIGatewayAIServiceSourceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateCloudNativeAPIGatewayConsumer(self, request):
         r"""创建AI网关消费者。
 
@@ -187,6 +279,29 @@ class CngwClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateCloudNativeAPIGatewayMCPRoute(self, request):
+        r"""上传插件前置操作，获取COS相关信息
+
+        :param request: Request instance for CreateCloudNativeAPIGatewayMCPRoute.
+        :type request: :class:`tencentcloud.cngw.v20230418.models.CreateCloudNativeAPIGatewayMCPRouteRequest`
+        :rtype: :class:`tencentcloud.cngw.v20230418.models.CreateCloudNativeAPIGatewayMCPRouteResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateCloudNativeAPIGatewayMCPRoute", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateCloudNativeAPIGatewayMCPRouteResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateCloudNativeAPIGatewayMCPServer(self, request):
         r"""创建AI网关MCP Server
 
@@ -247,6 +362,29 @@ class CngwClient(AbstractClient):
             body = self.call("CreateCloudNativeAPIGatewaySecretKey", params, headers=headers)
             response = json.loads(body)
             model = models.CreateCloudNativeAPIGatewaySecretKeyResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DeleteCloudNativeAPIGatewayAIServiceSource(self, request):
+        r"""删除云原生网关AI服务来源
+
+        :param request: Request instance for DeleteCloudNativeAPIGatewayAIServiceSource.
+        :type request: :class:`tencentcloud.cngw.v20230418.models.DeleteCloudNativeAPIGatewayAIServiceSourceRequest`
+        :rtype: :class:`tencentcloud.cngw.v20230418.models.DeleteCloudNativeAPIGatewayAIServiceSourceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteCloudNativeAPIGatewayAIServiceSource", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteCloudNativeAPIGatewayAIServiceSourceResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -348,6 +486,29 @@ class CngwClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DeleteCloudNativeAPIGatewayMCPRoute(self, request):
+        r"""上传插件前置操作，获取COS相关信息
+
+        :param request: Request instance for DeleteCloudNativeAPIGatewayMCPRoute.
+        :type request: :class:`tencentcloud.cngw.v20230418.models.DeleteCloudNativeAPIGatewayMCPRouteRequest`
+        :rtype: :class:`tencentcloud.cngw.v20230418.models.DeleteCloudNativeAPIGatewayMCPRouteResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteCloudNativeAPIGatewayMCPRoute", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteCloudNativeAPIGatewayMCPRouteResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DeleteCloudNativeAPIGatewayMCPServer(self, request):
         r"""删除AI网关MCP服务
 
@@ -394,6 +555,29 @@ class CngwClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DeleteCloudNativeAPIGatewayMCPToolVersion(self, request):
+        r"""修改云原生智能网关MCP Tool
+
+        :param request: Request instance for DeleteCloudNativeAPIGatewayMCPToolVersion.
+        :type request: :class:`tencentcloud.cngw.v20230418.models.DeleteCloudNativeAPIGatewayMCPToolVersionRequest`
+        :rtype: :class:`tencentcloud.cngw.v20230418.models.DeleteCloudNativeAPIGatewayMCPToolVersionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DeleteCloudNativeAPIGatewayMCPToolVersion", params, headers=headers)
+            response = json.loads(body)
+            model = models.DeleteCloudNativeAPIGatewayMCPToolVersionResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DeleteCloudNativeAPIGatewaySecretKey(self, request):
         r"""删除消费者密钥（被绑定时需先解绑）。
 
@@ -431,6 +615,75 @@ class CngwClient(AbstractClient):
             body = self.call("DescribeCNGWServicesWithRoutes", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeCNGWServicesWithRoutesResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeCloudNativeAPIGatewayAIQuota(self, request):
+        r"""查询AI网关配额
+
+        :param request: Request instance for DescribeCloudNativeAPIGatewayAIQuota.
+        :type request: :class:`tencentcloud.cngw.v20230418.models.DescribeCloudNativeAPIGatewayAIQuotaRequest`
+        :rtype: :class:`tencentcloud.cngw.v20230418.models.DescribeCloudNativeAPIGatewayAIQuotaResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeCloudNativeAPIGatewayAIQuota", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeCloudNativeAPIGatewayAIQuotaResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeCloudNativeAPIGatewayAIQuotaList(self, request):
+        r"""查询AI配额配置列表
+
+        :param request: Request instance for DescribeCloudNativeAPIGatewayAIQuotaList.
+        :type request: :class:`tencentcloud.cngw.v20230418.models.DescribeCloudNativeAPIGatewayAIQuotaListRequest`
+        :rtype: :class:`tencentcloud.cngw.v20230418.models.DescribeCloudNativeAPIGatewayAIQuotaListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeCloudNativeAPIGatewayAIQuotaList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeCloudNativeAPIGatewayAIQuotaListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeCloudNativeAPIGatewayAIServiceSourceList(self, request):
+        r"""查询云原生网关AI服务来源
+
+        :param request: Request instance for DescribeCloudNativeAPIGatewayAIServiceSourceList.
+        :type request: :class:`tencentcloud.cngw.v20230418.models.DescribeCloudNativeAPIGatewayAIServiceSourceListRequest`
+        :rtype: :class:`tencentcloud.cngw.v20230418.models.DescribeCloudNativeAPIGatewayAIServiceSourceListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeCloudNativeAPIGatewayAIServiceSourceList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeCloudNativeAPIGatewayAIServiceSourceListResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -624,6 +877,29 @@ class CngwClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeCloudNativeAPIGatewayMCPRouteList(self, request):
+        r"""上传插件前置操作，获取COS相关信息
+
+        :param request: Request instance for DescribeCloudNativeAPIGatewayMCPRouteList.
+        :type request: :class:`tencentcloud.cngw.v20230418.models.DescribeCloudNativeAPIGatewayMCPRouteListRequest`
+        :rtype: :class:`tencentcloud.cngw.v20230418.models.DescribeCloudNativeAPIGatewayMCPRouteListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeCloudNativeAPIGatewayMCPRouteList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeCloudNativeAPIGatewayMCPRouteListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeCloudNativeAPIGatewayMCPServer(self, request):
         r"""查询AI 网关MCP服务信息
 
@@ -762,6 +1038,29 @@ class CngwClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeCloudNativeAPIGatewayMCPToolImportTask(self, request):
+        r"""查询批量导入MCP Tools的任务进度
+
+        :param request: Request instance for DescribeCloudNativeAPIGatewayMCPToolImportTask.
+        :type request: :class:`tencentcloud.cngw.v20230418.models.DescribeCloudNativeAPIGatewayMCPToolImportTaskRequest`
+        :rtype: :class:`tencentcloud.cngw.v20230418.models.DescribeCloudNativeAPIGatewayMCPToolImportTaskResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeCloudNativeAPIGatewayMCPToolImportTask", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeCloudNativeAPIGatewayMCPToolImportTaskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeCloudNativeAPIGatewayMCPToolList(self, request):
         r"""查询 AI 网关MCP Tool 列表
 
@@ -776,6 +1075,52 @@ class CngwClient(AbstractClient):
             body = self.call("DescribeCloudNativeAPIGatewayMCPToolList", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeCloudNativeAPIGatewayMCPToolListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeCloudNativeAPIGatewayMCPToolVersion(self, request):
+        r"""修改云原生智能网关MCP Tool
+
+        :param request: Request instance for DescribeCloudNativeAPIGatewayMCPToolVersion.
+        :type request: :class:`tencentcloud.cngw.v20230418.models.DescribeCloudNativeAPIGatewayMCPToolVersionRequest`
+        :rtype: :class:`tencentcloud.cngw.v20230418.models.DescribeCloudNativeAPIGatewayMCPToolVersionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeCloudNativeAPIGatewayMCPToolVersion", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeCloudNativeAPIGatewayMCPToolVersionResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def DescribeCloudNativeAPIGatewayMCPToolVersionList(self, request):
+        r"""修改云原生智能网关MCP Tool
+
+        :param request: Request instance for DescribeCloudNativeAPIGatewayMCPToolVersionList.
+        :type request: :class:`tencentcloud.cngw.v20230418.models.DescribeCloudNativeAPIGatewayMCPToolVersionListRequest`
+        :rtype: :class:`tencentcloud.cngw.v20230418.models.DescribeCloudNativeAPIGatewayMCPToolVersionListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeCloudNativeAPIGatewayMCPToolVersionList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeCloudNativeAPIGatewayMCPToolVersionListResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -831,6 +1176,29 @@ class CngwClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeCloudNativeAPIGatewaySecretKeyList(self, request):
+        r"""查询密钥列表。
+
+        :param request: Request instance for DescribeCloudNativeAPIGatewaySecretKeyList.
+        :type request: :class:`tencentcloud.cngw.v20230418.models.DescribeCloudNativeAPIGatewaySecretKeyListRequest`
+        :rtype: :class:`tencentcloud.cngw.v20230418.models.DescribeCloudNativeAPIGatewaySecretKeyListResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeCloudNativeAPIGatewaySecretKeyList", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeCloudNativeAPIGatewaySecretKeyListResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeCloudNativeAPIGatewaySecretKeyValue(self, request):
         r"""查询密钥明文值（KMS 类型密钥不可获取）。
 
@@ -845,6 +1213,29 @@ class CngwClient(AbstractClient):
             body = self.call("DescribeCloudNativeAPIGatewaySecretKeyValue", params, headers=headers)
             response = json.loads(body)
             model = models.DescribeCloudNativeAPIGatewaySecretKeyValueResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyCloudNativeAPIGatewayAIServiceSource(self, request):
+        r"""修改云原生网关AI服务来源
+
+        :param request: Request instance for ModifyCloudNativeAPIGatewayAIServiceSource.
+        :type request: :class:`tencentcloud.cngw.v20230418.models.ModifyCloudNativeAPIGatewayAIServiceSourceRequest`
+        :rtype: :class:`tencentcloud.cngw.v20230418.models.ModifyCloudNativeAPIGatewayAIServiceSourceResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyCloudNativeAPIGatewayAIServiceSource", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyCloudNativeAPIGatewayAIServiceSourceResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -937,6 +1328,52 @@ class CngwClient(AbstractClient):
             body = self.call("ModifyCloudNativeAPIGatewayLLMModelService", params, headers=headers)
             response = json.loads(body)
             model = models.ModifyCloudNativeAPIGatewayLLMModelServiceResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyCloudNativeAPIGatewayMCPRoute(self, request):
+        r"""上传插件前置操作，获取COS相关信息
+
+        :param request: Request instance for ModifyCloudNativeAPIGatewayMCPRoute.
+        :type request: :class:`tencentcloud.cngw.v20230418.models.ModifyCloudNativeAPIGatewayMCPRouteRequest`
+        :rtype: :class:`tencentcloud.cngw.v20230418.models.ModifyCloudNativeAPIGatewayMCPRouteResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyCloudNativeAPIGatewayMCPRoute", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyCloudNativeAPIGatewayMCPRouteResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def ModifyCloudNativeAPIGatewayMCPRouteStatus(self, request):
+        r"""上传插件前置操作，获取COS相关信息
+
+        :param request: Request instance for ModifyCloudNativeAPIGatewayMCPRouteStatus.
+        :type request: :class:`tencentcloud.cngw.v20230418.models.ModifyCloudNativeAPIGatewayMCPRouteStatusRequest`
+        :rtype: :class:`tencentcloud.cngw.v20230418.models.ModifyCloudNativeAPIGatewayMCPRouteStatusResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("ModifyCloudNativeAPIGatewayMCPRouteStatus", params, headers=headers)
+            response = json.loads(body)
+            model = models.ModifyCloudNativeAPIGatewayMCPRouteStatusResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:
@@ -1167,6 +1604,29 @@ class CngwClient(AbstractClient):
             body = self.call("RemoveCloudNativeAPIGatewayConsumerInGroup", params, headers=headers)
             response = json.loads(body)
             model = models.RemoveCloudNativeAPIGatewayConsumerInGroupResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def RollbackCloudNativeAPIGatewayMCPToolVersion(self, request):
+        r"""修改云原生智能网关MCP Tool
+
+        :param request: Request instance for RollbackCloudNativeAPIGatewayMCPToolVersion.
+        :type request: :class:`tencentcloud.cngw.v20230418.models.RollbackCloudNativeAPIGatewayMCPToolVersionRequest`
+        :rtype: :class:`tencentcloud.cngw.v20230418.models.RollbackCloudNativeAPIGatewayMCPToolVersionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("RollbackCloudNativeAPIGatewayMCPToolVersion", params, headers=headers)
+            response = json.loads(body)
+            model = models.RollbackCloudNativeAPIGatewayMCPToolVersionResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

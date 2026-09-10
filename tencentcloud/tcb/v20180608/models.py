@@ -625,6 +625,117 @@ class AddProviderResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class AgentRuntimeCodeImageConfig(AbstractModel):
+    r"""Agent 创建云函数镜像配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ImageType: 镜像仓库类型，个人版或者企业版：personal/enterprise
+        :type ImageType: str
+        :param _ImageUri: {domain}/{namespace}/{imageName}:{tag}@{digest}
+        :type ImageUri: str
+        :param _RegistryId: 用于企业版TCR获取镜像拉取临时凭证，ImageType为"enterprise"时必填
+        :type RegistryId: str
+        :param _Command: 容器的启动命令。该参数为可选参数，如果不填写，则默认使用 Dockerfile 中的 Entrypoint。传入规范，填写可运行的指令，例如 python
+        :type Command: str
+        :param _Args: 容器的启动参数。该参数为可选参数，如果不填写，则默认使用 Dockerfile 中的 CMD。传入规范，以“空格”作为参数的分割标识，例如 -u app.py
+        :type Args: str
+        :param _ContainerImageAccelerate: 镜像加速开关，默认False
+        :type ContainerImageAccelerate: bool
+        """
+        self._ImageType = None
+        self._ImageUri = None
+        self._RegistryId = None
+        self._Command = None
+        self._Args = None
+        self._ContainerImageAccelerate = None
+
+    @property
+    def ImageType(self):
+        r"""镜像仓库类型，个人版或者企业版：personal/enterprise
+        :rtype: str
+        """
+        return self._ImageType
+
+    @ImageType.setter
+    def ImageType(self, ImageType):
+        self._ImageType = ImageType
+
+    @property
+    def ImageUri(self):
+        r"""{domain}/{namespace}/{imageName}:{tag}@{digest}
+        :rtype: str
+        """
+        return self._ImageUri
+
+    @ImageUri.setter
+    def ImageUri(self, ImageUri):
+        self._ImageUri = ImageUri
+
+    @property
+    def RegistryId(self):
+        r"""用于企业版TCR获取镜像拉取临时凭证，ImageType为"enterprise"时必填
+        :rtype: str
+        """
+        return self._RegistryId
+
+    @RegistryId.setter
+    def RegistryId(self, RegistryId):
+        self._RegistryId = RegistryId
+
+    @property
+    def Command(self):
+        r"""容器的启动命令。该参数为可选参数，如果不填写，则默认使用 Dockerfile 中的 Entrypoint。传入规范，填写可运行的指令，例如 python
+        :rtype: str
+        """
+        return self._Command
+
+    @Command.setter
+    def Command(self, Command):
+        self._Command = Command
+
+    @property
+    def Args(self):
+        r"""容器的启动参数。该参数为可选参数，如果不填写，则默认使用 Dockerfile 中的 CMD。传入规范，以“空格”作为参数的分割标识，例如 -u app.py
+        :rtype: str
+        """
+        return self._Args
+
+    @Args.setter
+    def Args(self, Args):
+        self._Args = Args
+
+    @property
+    def ContainerImageAccelerate(self):
+        r"""镜像加速开关，默认False
+        :rtype: bool
+        """
+        return self._ContainerImageAccelerate
+
+    @ContainerImageAccelerate.setter
+    def ContainerImageAccelerate(self, ContainerImageAccelerate):
+        self._ContainerImageAccelerate = ContainerImageAccelerate
+
+
+    def _deserialize(self, params):
+        self._ImageType = params.get("ImageType")
+        self._ImageUri = params.get("ImageUri")
+        self._RegistryId = params.get("RegistryId")
+        self._Command = params.get("Command")
+        self._Args = params.get("Args")
+        self._ContainerImageAccelerate = params.get("ContainerImageAccelerate")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AllocateEnvRequest(AbstractModel):
     r"""AllocateEnv请求参数结构体
 
@@ -2659,6 +2770,140 @@ class ClusterDetail(AbstractModel):
         
 
 
+class CodeReq(AbstractModel):
+    r"""base64编码后的代码块
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ZipFile: 包含函数代码的zip格式文件
+        :type ZipFile: str
+        :param _CosBucketName: 对象存储桶名称（填写存储桶名称自定义部分，不包含-appid）
+
+        :type CosBucketName: str
+        :param _CosObjectName: 对象存储中代码包文件路径，以/开头
+
+        :type CosObjectName: str
+        :param _CosBucketRegion: 对象存储的地域，地域为北京时需要传入ap-beijing,北京一区时需要传递ap-beijing-1，其他的地域不需要传递。
+
+        :type CosBucketRegion: str
+        :param _TempCosObjectName: 如果是从TempCos创建的话，需要传入TempCosObjectName
+        :type TempCosObjectName: str
+        :param _DemoId: 如果是通过Demo创建的话，需要传入DemoId
+
+        :type DemoId: str
+        :param _CosTimestamp: 上传云开发cos后返回的时间戳
+        :type CosTimestamp: str
+        """
+        self._ZipFile = None
+        self._CosBucketName = None
+        self._CosObjectName = None
+        self._CosBucketRegion = None
+        self._TempCosObjectName = None
+        self._DemoId = None
+        self._CosTimestamp = None
+
+    @property
+    def ZipFile(self):
+        r"""包含函数代码的zip格式文件
+        :rtype: str
+        """
+        return self._ZipFile
+
+    @ZipFile.setter
+    def ZipFile(self, ZipFile):
+        self._ZipFile = ZipFile
+
+    @property
+    def CosBucketName(self):
+        r"""对象存储桶名称（填写存储桶名称自定义部分，不包含-appid）
+
+        :rtype: str
+        """
+        return self._CosBucketName
+
+    @CosBucketName.setter
+    def CosBucketName(self, CosBucketName):
+        self._CosBucketName = CosBucketName
+
+    @property
+    def CosObjectName(self):
+        r"""对象存储中代码包文件路径，以/开头
+
+        :rtype: str
+        """
+        return self._CosObjectName
+
+    @CosObjectName.setter
+    def CosObjectName(self, CosObjectName):
+        self._CosObjectName = CosObjectName
+
+    @property
+    def CosBucketRegion(self):
+        r"""对象存储的地域，地域为北京时需要传入ap-beijing,北京一区时需要传递ap-beijing-1，其他的地域不需要传递。
+
+        :rtype: str
+        """
+        return self._CosBucketRegion
+
+    @CosBucketRegion.setter
+    def CosBucketRegion(self, CosBucketRegion):
+        self._CosBucketRegion = CosBucketRegion
+
+    @property
+    def TempCosObjectName(self):
+        r"""如果是从TempCos创建的话，需要传入TempCosObjectName
+        :rtype: str
+        """
+        return self._TempCosObjectName
+
+    @TempCosObjectName.setter
+    def TempCosObjectName(self, TempCosObjectName):
+        self._TempCosObjectName = TempCosObjectName
+
+    @property
+    def DemoId(self):
+        r"""如果是通过Demo创建的话，需要传入DemoId
+
+        :rtype: str
+        """
+        return self._DemoId
+
+    @DemoId.setter
+    def DemoId(self, DemoId):
+        self._DemoId = DemoId
+
+    @property
+    def CosTimestamp(self):
+        r"""上传云开发cos后返回的时间戳
+        :rtype: str
+        """
+        return self._CosTimestamp
+
+    @CosTimestamp.setter
+    def CosTimestamp(self, CosTimestamp):
+        self._CosTimestamp = CosTimestamp
+
+
+    def _deserialize(self, params):
+        self._ZipFile = params.get("ZipFile")
+        self._CosBucketName = params.get("CosBucketName")
+        self._CosObjectName = params.get("CosObjectName")
+        self._CosBucketRegion = params.get("CosBucketRegion")
+        self._TempCosObjectName = params.get("TempCosObjectName")
+        self._DemoId = params.get("DemoId")
+        self._CosTimestamp = params.get("CosTimestamp")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class CreateAIModelRequest(AbstractModel):
     r"""CreateAIModel请求参数结构体
 
@@ -4096,6 +4341,537 @@ class CreateEnvResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._EnvId = params.get("EnvId")
+        self._RequestId = params.get("RequestId")
+
+
+class CreateFunctionRequest(AbstractModel):
+    r"""CreateFunction请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FunctionName: <p>创建的函数名称</p>
+        :type FunctionName: str
+        :param _EnvId: <p>环境ID</p>
+        :type EnvId: str
+        :param _Handler: <p>函数处理方法名称</p>
+        :type Handler: str
+        :param _MemorySize: <p>函数运行时内存大小</p>
+        :type MemorySize: int
+        :param _Timeout: <p>函数最长执行时间</p>
+        :type Timeout: int
+        :param _UseGpu: <p>此参数公司内部展示。是否使用GPU进行计算</p>
+        :type UseGpu: str
+        :param _InstallDependency: <p>在线依赖安装</p>
+        :type InstallDependency: str
+        :param _Stamp: <p>此参数公司内部展示。用于小程序，GPU集群，不对外</p>
+        :type Stamp: str
+        :param _Role: <p>函数绑定的角色</p>
+        :type Role: str
+        :param _Description: <p>函数描述</p>
+        :type Description: str
+        :param _Runtime: <p>函数运行环境</p>
+        :type Runtime: str
+        :param _ClsTopicId: <p>函数日志投递到的CLS TopicID</p>
+        :type ClsTopicId: str
+        :param _ClsLogsetId: <p>函数日志投递到的CLS LogsetID</p>
+        :type ClsLogsetId: str
+        :param _Code: <p>包含函数代码文件的zip格式文件</p>
+        :type Code: :class:`tencentcloud.tcb.v20180608.models.CodeReq`
+        :param _PrivateConfig: <p>云函数配置项</p>
+        :type PrivateConfig: :class:`tencentcloud.tcb.v20180608.models.PrivateConfig`
+        :param _Type: <p>函数类型，默认值为Event，创建触发器函数请填写Event，创建HTTP函数级服务请填写HTTP</p>
+        :type Type: str
+        :param _ProtocolType: <p>HTTP函数支持的访问协议。当前支持WebSockets协议，值为WS</p>
+        :type ProtocolType: str
+        :param _Environment: <p>环境变量</p>
+        :type Environment: :class:`tencentcloud.tcb.v20180608.models.FunctionEnvironment`
+        :param _InitTimeout: <p>函数初始化超时时间，默认 65s，镜像部署函数默认 90s。</p>
+        :type InitTimeout: int
+        :param _CodeSource: <p>代码来源，支持ZipFile, Cos, Demo 其中之一</p>
+        :type CodeSource: str
+        :param _VpcConfig: <p>函数的私有网络配置</p>
+        :type VpcConfig: :class:`tencentcloud.tcb.v20180608.models.FunctionVpcConfig`
+        :param _Layers: <p>函数要关联的Layer版本列表，Layer会按照在列表中顺序依次覆盖。</p>
+        :type Layers: list of FunctionLayer
+        :param _PublicNetConfig: <p>公网访问配置</p>
+        :type PublicNetConfig: :class:`tencentcloud.tcb.v20180608.models.FunctionPublicNetConfig`
+        :param _AsyncRunEnable: <p>是否开启异步属性，TRUE 为开启，FALSE为关闭</p>
+        :type AsyncRunEnable: str
+        :param _TraceEnable: <p>是否开启事件追踪，TRUE 为开启，FALSE为关闭</p>
+        :type TraceEnable: str
+        :param _AutoCreateClsTopic: <p>是否自动创建cls主题，TRUE 为开启，FALSE为关闭</p>
+        :type AutoCreateClsTopic: str
+        :param _AutoDeployClsTopicIndex: <p>是否自动创建cls索引，TRUE 为开启，FALSE为关闭</p>
+        :type AutoDeployClsTopicIndex: str
+        :param _DnsCache: <p>是否开启Dns缓存能力。只支持EVENT函数。默认为FALSE，TRUE 为开启，FALSE为关闭</p>
+        :type DnsCache: str
+        :param _EipConfig: <p>EipConfig固定ip配置</p>
+        :type EipConfig: :class:`tencentcloud.tcb.v20180608.models.FunctionEipConfigFixed`
+        """
+        self._FunctionName = None
+        self._EnvId = None
+        self._Handler = None
+        self._MemorySize = None
+        self._Timeout = None
+        self._UseGpu = None
+        self._InstallDependency = None
+        self._Stamp = None
+        self._Role = None
+        self._Description = None
+        self._Runtime = None
+        self._ClsTopicId = None
+        self._ClsLogsetId = None
+        self._Code = None
+        self._PrivateConfig = None
+        self._Type = None
+        self._ProtocolType = None
+        self._Environment = None
+        self._InitTimeout = None
+        self._CodeSource = None
+        self._VpcConfig = None
+        self._Layers = None
+        self._PublicNetConfig = None
+        self._AsyncRunEnable = None
+        self._TraceEnable = None
+        self._AutoCreateClsTopic = None
+        self._AutoDeployClsTopicIndex = None
+        self._DnsCache = None
+        self._EipConfig = None
+
+    @property
+    def FunctionName(self):
+        r"""<p>创建的函数名称</p>
+        :rtype: str
+        """
+        return self._FunctionName
+
+    @FunctionName.setter
+    def FunctionName(self, FunctionName):
+        self._FunctionName = FunctionName
+
+    @property
+    def EnvId(self):
+        r"""<p>环境ID</p>
+        :rtype: str
+        """
+        return self._EnvId
+
+    @EnvId.setter
+    def EnvId(self, EnvId):
+        self._EnvId = EnvId
+
+    @property
+    def Handler(self):
+        r"""<p>函数处理方法名称</p>
+        :rtype: str
+        """
+        return self._Handler
+
+    @Handler.setter
+    def Handler(self, Handler):
+        self._Handler = Handler
+
+    @property
+    def MemorySize(self):
+        r"""<p>函数运行时内存大小</p>
+        :rtype: int
+        """
+        return self._MemorySize
+
+    @MemorySize.setter
+    def MemorySize(self, MemorySize):
+        self._MemorySize = MemorySize
+
+    @property
+    def Timeout(self):
+        r"""<p>函数最长执行时间</p>
+        :rtype: int
+        """
+        return self._Timeout
+
+    @Timeout.setter
+    def Timeout(self, Timeout):
+        self._Timeout = Timeout
+
+    @property
+    def UseGpu(self):
+        r"""<p>此参数公司内部展示。是否使用GPU进行计算</p>
+        :rtype: str
+        """
+        return self._UseGpu
+
+    @UseGpu.setter
+    def UseGpu(self, UseGpu):
+        self._UseGpu = UseGpu
+
+    @property
+    def InstallDependency(self):
+        r"""<p>在线依赖安装</p>
+        :rtype: str
+        """
+        return self._InstallDependency
+
+    @InstallDependency.setter
+    def InstallDependency(self, InstallDependency):
+        self._InstallDependency = InstallDependency
+
+    @property
+    def Stamp(self):
+        r"""<p>此参数公司内部展示。用于小程序，GPU集群，不对外</p>
+        :rtype: str
+        """
+        return self._Stamp
+
+    @Stamp.setter
+    def Stamp(self, Stamp):
+        self._Stamp = Stamp
+
+    @property
+    def Role(self):
+        r"""<p>函数绑定的角色</p>
+        :rtype: str
+        """
+        return self._Role
+
+    @Role.setter
+    def Role(self, Role):
+        self._Role = Role
+
+    @property
+    def Description(self):
+        r"""<p>函数描述</p>
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def Runtime(self):
+        r"""<p>函数运行环境</p>
+        :rtype: str
+        """
+        return self._Runtime
+
+    @Runtime.setter
+    def Runtime(self, Runtime):
+        self._Runtime = Runtime
+
+    @property
+    def ClsTopicId(self):
+        r"""<p>函数日志投递到的CLS TopicID</p>
+        :rtype: str
+        """
+        return self._ClsTopicId
+
+    @ClsTopicId.setter
+    def ClsTopicId(self, ClsTopicId):
+        self._ClsTopicId = ClsTopicId
+
+    @property
+    def ClsLogsetId(self):
+        r"""<p>函数日志投递到的CLS LogsetID</p>
+        :rtype: str
+        """
+        return self._ClsLogsetId
+
+    @ClsLogsetId.setter
+    def ClsLogsetId(self, ClsLogsetId):
+        self._ClsLogsetId = ClsLogsetId
+
+    @property
+    def Code(self):
+        r"""<p>包含函数代码文件的zip格式文件</p>
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.CodeReq`
+        """
+        return self._Code
+
+    @Code.setter
+    def Code(self, Code):
+        self._Code = Code
+
+    @property
+    def PrivateConfig(self):
+        r"""<p>云函数配置项</p>
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.PrivateConfig`
+        """
+        return self._PrivateConfig
+
+    @PrivateConfig.setter
+    def PrivateConfig(self, PrivateConfig):
+        self._PrivateConfig = PrivateConfig
+
+    @property
+    def Type(self):
+        r"""<p>函数类型，默认值为Event，创建触发器函数请填写Event，创建HTTP函数级服务请填写HTTP</p>
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def ProtocolType(self):
+        r"""<p>HTTP函数支持的访问协议。当前支持WebSockets协议，值为WS</p>
+        :rtype: str
+        """
+        return self._ProtocolType
+
+    @ProtocolType.setter
+    def ProtocolType(self, ProtocolType):
+        self._ProtocolType = ProtocolType
+
+    @property
+    def Environment(self):
+        r"""<p>环境变量</p>
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.FunctionEnvironment`
+        """
+        return self._Environment
+
+    @Environment.setter
+    def Environment(self, Environment):
+        self._Environment = Environment
+
+    @property
+    def InitTimeout(self):
+        r"""<p>函数初始化超时时间，默认 65s，镜像部署函数默认 90s。</p>
+        :rtype: int
+        """
+        return self._InitTimeout
+
+    @InitTimeout.setter
+    def InitTimeout(self, InitTimeout):
+        self._InitTimeout = InitTimeout
+
+    @property
+    def CodeSource(self):
+        r"""<p>代码来源，支持ZipFile, Cos, Demo 其中之一</p>
+        :rtype: str
+        """
+        return self._CodeSource
+
+    @CodeSource.setter
+    def CodeSource(self, CodeSource):
+        self._CodeSource = CodeSource
+
+    @property
+    def VpcConfig(self):
+        r"""<p>函数的私有网络配置</p>
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.FunctionVpcConfig`
+        """
+        return self._VpcConfig
+
+    @VpcConfig.setter
+    def VpcConfig(self, VpcConfig):
+        self._VpcConfig = VpcConfig
+
+    @property
+    def Layers(self):
+        r"""<p>函数要关联的Layer版本列表，Layer会按照在列表中顺序依次覆盖。</p>
+        :rtype: list of FunctionLayer
+        """
+        return self._Layers
+
+    @Layers.setter
+    def Layers(self, Layers):
+        self._Layers = Layers
+
+    @property
+    def PublicNetConfig(self):
+        r"""<p>公网访问配置</p>
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.FunctionPublicNetConfig`
+        """
+        return self._PublicNetConfig
+
+    @PublicNetConfig.setter
+    def PublicNetConfig(self, PublicNetConfig):
+        self._PublicNetConfig = PublicNetConfig
+
+    @property
+    def AsyncRunEnable(self):
+        r"""<p>是否开启异步属性，TRUE 为开启，FALSE为关闭</p>
+        :rtype: str
+        """
+        return self._AsyncRunEnable
+
+    @AsyncRunEnable.setter
+    def AsyncRunEnable(self, AsyncRunEnable):
+        self._AsyncRunEnable = AsyncRunEnable
+
+    @property
+    def TraceEnable(self):
+        r"""<p>是否开启事件追踪，TRUE 为开启，FALSE为关闭</p>
+        :rtype: str
+        """
+        return self._TraceEnable
+
+    @TraceEnable.setter
+    def TraceEnable(self, TraceEnable):
+        self._TraceEnable = TraceEnable
+
+    @property
+    def AutoCreateClsTopic(self):
+        r"""<p>是否自动创建cls主题，TRUE 为开启，FALSE为关闭</p>
+        :rtype: str
+        """
+        return self._AutoCreateClsTopic
+
+    @AutoCreateClsTopic.setter
+    def AutoCreateClsTopic(self, AutoCreateClsTopic):
+        self._AutoCreateClsTopic = AutoCreateClsTopic
+
+    @property
+    def AutoDeployClsTopicIndex(self):
+        r"""<p>是否自动创建cls索引，TRUE 为开启，FALSE为关闭</p>
+        :rtype: str
+        """
+        return self._AutoDeployClsTopicIndex
+
+    @AutoDeployClsTopicIndex.setter
+    def AutoDeployClsTopicIndex(self, AutoDeployClsTopicIndex):
+        self._AutoDeployClsTopicIndex = AutoDeployClsTopicIndex
+
+    @property
+    def DnsCache(self):
+        r"""<p>是否开启Dns缓存能力。只支持EVENT函数。默认为FALSE，TRUE 为开启，FALSE为关闭</p>
+        :rtype: str
+        """
+        return self._DnsCache
+
+    @DnsCache.setter
+    def DnsCache(self, DnsCache):
+        self._DnsCache = DnsCache
+
+    @property
+    def EipConfig(self):
+        r"""<p>EipConfig固定ip配置</p>
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.FunctionEipConfigFixed`
+        """
+        return self._EipConfig
+
+    @EipConfig.setter
+    def EipConfig(self, EipConfig):
+        self._EipConfig = EipConfig
+
+
+    def _deserialize(self, params):
+        self._FunctionName = params.get("FunctionName")
+        self._EnvId = params.get("EnvId")
+        self._Handler = params.get("Handler")
+        self._MemorySize = params.get("MemorySize")
+        self._Timeout = params.get("Timeout")
+        self._UseGpu = params.get("UseGpu")
+        self._InstallDependency = params.get("InstallDependency")
+        self._Stamp = params.get("Stamp")
+        self._Role = params.get("Role")
+        self._Description = params.get("Description")
+        self._Runtime = params.get("Runtime")
+        self._ClsTopicId = params.get("ClsTopicId")
+        self._ClsLogsetId = params.get("ClsLogsetId")
+        if params.get("Code") is not None:
+            self._Code = CodeReq()
+            self._Code._deserialize(params.get("Code"))
+        if params.get("PrivateConfig") is not None:
+            self._PrivateConfig = PrivateConfig()
+            self._PrivateConfig._deserialize(params.get("PrivateConfig"))
+        self._Type = params.get("Type")
+        self._ProtocolType = params.get("ProtocolType")
+        if params.get("Environment") is not None:
+            self._Environment = FunctionEnvironment()
+            self._Environment._deserialize(params.get("Environment"))
+        self._InitTimeout = params.get("InitTimeout")
+        self._CodeSource = params.get("CodeSource")
+        if params.get("VpcConfig") is not None:
+            self._VpcConfig = FunctionVpcConfig()
+            self._VpcConfig._deserialize(params.get("VpcConfig"))
+        if params.get("Layers") is not None:
+            self._Layers = []
+            for item in params.get("Layers"):
+                obj = FunctionLayer()
+                obj._deserialize(item)
+                self._Layers.append(obj)
+        if params.get("PublicNetConfig") is not None:
+            self._PublicNetConfig = FunctionPublicNetConfig()
+            self._PublicNetConfig._deserialize(params.get("PublicNetConfig"))
+        self._AsyncRunEnable = params.get("AsyncRunEnable")
+        self._TraceEnable = params.get("TraceEnable")
+        self._AutoCreateClsTopic = params.get("AutoCreateClsTopic")
+        self._AutoDeployClsTopicIndex = params.get("AutoDeployClsTopicIndex")
+        self._DnsCache = params.get("DnsCache")
+        if params.get("EipConfig") is not None:
+            self._EipConfig = FunctionEipConfigFixed()
+            self._EipConfig._deserialize(params.get("EipConfig"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class CreateFunctionResponse(AbstractModel):
+    r"""CreateFunction返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SCFErrorCode: <p>调用scf返回的错误码</p>
+        :type SCFErrorCode: str
+        :param _SCFErrorMsg: <p>错误码对应的描述信息</p>
+        :type SCFErrorMsg: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._SCFErrorCode = None
+        self._SCFErrorMsg = None
+        self._RequestId = None
+
+    @property
+    def SCFErrorCode(self):
+        r"""<p>调用scf返回的错误码</p>
+        :rtype: str
+        """
+        return self._SCFErrorCode
+
+    @SCFErrorCode.setter
+    def SCFErrorCode(self, SCFErrorCode):
+        self._SCFErrorCode = SCFErrorCode
+
+    @property
+    def SCFErrorMsg(self):
+        r"""<p>错误码对应的描述信息</p>
+        :rtype: str
+        """
+        return self._SCFErrorMsg
+
+    @SCFErrorMsg.setter
+    def SCFErrorMsg(self, SCFErrorMsg):
+        self._SCFErrorMsg = SCFErrorMsg
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._SCFErrorCode = params.get("SCFErrorCode")
+        self._SCFErrorMsg = params.get("SCFErrorMsg")
         self._RequestId = params.get("RequestId")
 
 
@@ -5807,6 +6583,115 @@ class DeleteCloudAppVersionResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._Result = params.get("Result")
+        self._RequestId = params.get("RequestId")
+
+
+class DeleteFunctionRequest(AbstractModel):
+    r"""DeleteFunction请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EnvId: <p>环境 ID。可通过 DescribeEnvs 接口获取。</p>
+        :type EnvId: str
+        :param _FunctionName: <p>函数名称。最大 60 字符，以字母开头，支持字母、数字、下划线和连字符。可通过 ListFunctions 或 GetFunction 获取。</p>
+        :type FunctionName: str
+        :param _Qualifier: <p>函数版本。取值：$LATEST（最新版本）。不填默认 $LATEST。当前仅支持 $LATEST。</p>
+        :type Qualifier: str
+        """
+        self._EnvId = None
+        self._FunctionName = None
+        self._Qualifier = None
+
+    @property
+    def EnvId(self):
+        r"""<p>环境 ID。可通过 DescribeEnvs 接口获取。</p>
+        :rtype: str
+        """
+        return self._EnvId
+
+    @EnvId.setter
+    def EnvId(self, EnvId):
+        self._EnvId = EnvId
+
+    @property
+    def FunctionName(self):
+        r"""<p>函数名称。最大 60 字符，以字母开头，支持字母、数字、下划线和连字符。可通过 ListFunctions 或 GetFunction 获取。</p>
+        :rtype: str
+        """
+        return self._FunctionName
+
+    @FunctionName.setter
+    def FunctionName(self, FunctionName):
+        self._FunctionName = FunctionName
+
+    @property
+    def Qualifier(self):
+        r"""<p>函数版本。取值：$LATEST（最新版本）。不填默认 $LATEST。当前仅支持 $LATEST。</p>
+        :rtype: str
+        """
+        return self._Qualifier
+
+    @Qualifier.setter
+    def Qualifier(self, Qualifier):
+        self._Qualifier = Qualifier
+
+
+    def _deserialize(self, params):
+        self._EnvId = params.get("EnvId")
+        self._FunctionName = params.get("FunctionName")
+        self._Qualifier = params.get("Qualifier")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DeleteFunctionResponse(AbstractModel):
+    r"""DeleteFunction返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FunctionId: <p>函数 ID，仅 CBF 云函数返回</p>
+        :type FunctionId: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._FunctionId = None
+        self._RequestId = None
+
+    @property
+    def FunctionId(self):
+        r"""<p>函数 ID，仅 CBF 云函数返回</p>
+        :rtype: str
+        """
+        return self._FunctionId
+
+    @FunctionId.setter
+    def FunctionId(self, FunctionId):
+        self._FunctionId = FunctionId
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._FunctionId = params.get("FunctionId")
         self._RequestId = params.get("RequestId")
 
 
@@ -13336,6 +14221,160 @@ class DestroyStaticStoreResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DownloadFunctionRequest(AbstractModel):
+    r"""DownloadFunction请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FunctionName: <p>函数的名称</p>
+        :type FunctionName: str
+        :param _EnvId: <p>环境ID</p>
+        :type EnvId: str
+        :param _Qualifier: <p>函数的版本</p>
+        :type Qualifier: str
+        """
+        self._FunctionName = None
+        self._EnvId = None
+        self._Qualifier = None
+
+    @property
+    def FunctionName(self):
+        r"""<p>函数的名称</p>
+        :rtype: str
+        """
+        return self._FunctionName
+
+    @FunctionName.setter
+    def FunctionName(self, FunctionName):
+        self._FunctionName = FunctionName
+
+    @property
+    def EnvId(self):
+        r"""<p>环境ID</p>
+        :rtype: str
+        """
+        return self._EnvId
+
+    @EnvId.setter
+    def EnvId(self, EnvId):
+        self._EnvId = EnvId
+
+    @property
+    def Qualifier(self):
+        r"""<p>函数的版本</p>
+        :rtype: str
+        """
+        return self._Qualifier
+
+    @Qualifier.setter
+    def Qualifier(self, Qualifier):
+        self._Qualifier = Qualifier
+
+
+    def _deserialize(self, params):
+        self._FunctionName = params.get("FunctionName")
+        self._EnvId = params.get("EnvId")
+        self._Qualifier = params.get("Qualifier")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DownloadFunctionResponse(AbstractModel):
+    r"""DownloadFunction返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SCFErrorCode: <p>调用SCF报错的错误码</p>
+        :type SCFErrorCode: str
+        :param _SCFErrorMsg: <p>调用SCF报错的错误信息</p>
+        :type SCFErrorMsg: str
+        :param _Url: <p>返回的不跨域url</p>
+        :type Url: str
+        :param _CodeSha256: <p>函数的SHA256编码</p>
+        :type CodeSha256: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._SCFErrorCode = None
+        self._SCFErrorMsg = None
+        self._Url = None
+        self._CodeSha256 = None
+        self._RequestId = None
+
+    @property
+    def SCFErrorCode(self):
+        r"""<p>调用SCF报错的错误码</p>
+        :rtype: str
+        """
+        return self._SCFErrorCode
+
+    @SCFErrorCode.setter
+    def SCFErrorCode(self, SCFErrorCode):
+        self._SCFErrorCode = SCFErrorCode
+
+    @property
+    def SCFErrorMsg(self):
+        r"""<p>调用SCF报错的错误信息</p>
+        :rtype: str
+        """
+        return self._SCFErrorMsg
+
+    @SCFErrorMsg.setter
+    def SCFErrorMsg(self, SCFErrorMsg):
+        self._SCFErrorMsg = SCFErrorMsg
+
+    @property
+    def Url(self):
+        r"""<p>返回的不跨域url</p>
+        :rtype: str
+        """
+        return self._Url
+
+    @Url.setter
+    def Url(self, Url):
+        self._Url = Url
+
+    @property
+    def CodeSha256(self):
+        r"""<p>函数的SHA256编码</p>
+        :rtype: str
+        """
+        return self._CodeSha256
+
+    @CodeSha256.setter
+    def CodeSha256(self, CodeSha256):
+        self._CodeSha256 = CodeSha256
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._SCFErrorCode = params.get("SCFErrorCode")
+        self._SCFErrorMsg = params.get("SCFErrorMsg")
+        self._Url = params.get("Url")
+        self._CodeSha256 = params.get("CodeSha256")
+        self._RequestId = params.get("RequestId")
+
+
 class DropIndex(AbstractModel):
     r"""本类型用于UpdateTable接口中描述待删除索引信息
 
@@ -14813,6 +15852,396 @@ class Filter(AbstractModel):
         
 
 
+class Function(AbstractModel):
+    r"""云函数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ModTime: <p>修改时间</p>
+        :type ModTime: str
+        :param _AddTime: <p>创建时间</p>
+        :type AddTime: str
+        :param _Runtime: <p>运行时</p>
+        :type Runtime: str
+        :param _FunctionName: <p>函数名称</p>
+        :type FunctionName: str
+        :param _FunctionId: <p>函数ID</p>
+        :type FunctionId: str
+        :param _Namespace: <p>命名空间</p>
+        :type Namespace: str
+        :param _Status: <p>函数状态，状态值</p>
+        :type Status: str
+        :param _StatusDesc: <p>函数状态详情</p>
+        :type StatusDesc: str
+        :param _Description: <p>函数描述</p>
+        :type Description: str
+        :param _Tags: <p>函数标签</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tags: list of Tag
+        :param _Type: <p>函数类型，取值为 HTTP 或者 Event</p>
+        :type Type: str
+        :param _StatusReasons: <p>函数状态失败原因</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type StatusReasons: list of StatusReason
+        :param _TotalProvisionedConcurrencyMem: <p>函数所有版本预置并发内存总和</p>
+        :type TotalProvisionedConcurrencyMem: int
+        :param _ReservedConcurrencyMem: <p>函数并发保留内存</p>
+        :type ReservedConcurrencyMem: int
+        :param _AsyncRunEnable: <p>函数异步属性，取值 TRUE 或者 FALSE</p>
+        :type AsyncRunEnable: str
+        :param _TraceEnable: <p>异步函数是否开启调用追踪，取值 TRUE 或者 FALSE</p>
+        :type TraceEnable: str
+        """
+        self._ModTime = None
+        self._AddTime = None
+        self._Runtime = None
+        self._FunctionName = None
+        self._FunctionId = None
+        self._Namespace = None
+        self._Status = None
+        self._StatusDesc = None
+        self._Description = None
+        self._Tags = None
+        self._Type = None
+        self._StatusReasons = None
+        self._TotalProvisionedConcurrencyMem = None
+        self._ReservedConcurrencyMem = None
+        self._AsyncRunEnable = None
+        self._TraceEnable = None
+
+    @property
+    def ModTime(self):
+        r"""<p>修改时间</p>
+        :rtype: str
+        """
+        return self._ModTime
+
+    @ModTime.setter
+    def ModTime(self, ModTime):
+        self._ModTime = ModTime
+
+    @property
+    def AddTime(self):
+        r"""<p>创建时间</p>
+        :rtype: str
+        """
+        return self._AddTime
+
+    @AddTime.setter
+    def AddTime(self, AddTime):
+        self._AddTime = AddTime
+
+    @property
+    def Runtime(self):
+        r"""<p>运行时</p>
+        :rtype: str
+        """
+        return self._Runtime
+
+    @Runtime.setter
+    def Runtime(self, Runtime):
+        self._Runtime = Runtime
+
+    @property
+    def FunctionName(self):
+        r"""<p>函数名称</p>
+        :rtype: str
+        """
+        return self._FunctionName
+
+    @FunctionName.setter
+    def FunctionName(self, FunctionName):
+        self._FunctionName = FunctionName
+
+    @property
+    def FunctionId(self):
+        r"""<p>函数ID</p>
+        :rtype: str
+        """
+        return self._FunctionId
+
+    @FunctionId.setter
+    def FunctionId(self, FunctionId):
+        self._FunctionId = FunctionId
+
+    @property
+    def Namespace(self):
+        r"""<p>命名空间</p>
+        :rtype: str
+        """
+        return self._Namespace
+
+    @Namespace.setter
+    def Namespace(self, Namespace):
+        self._Namespace = Namespace
+
+    @property
+    def Status(self):
+        r"""<p>函数状态，状态值</p>
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def StatusDesc(self):
+        r"""<p>函数状态详情</p>
+        :rtype: str
+        """
+        return self._StatusDesc
+
+    @StatusDesc.setter
+    def StatusDesc(self, StatusDesc):
+        self._StatusDesc = StatusDesc
+
+    @property
+    def Description(self):
+        r"""<p>函数描述</p>
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def Tags(self):
+        r"""<p>函数标签</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of Tag
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def Type(self):
+        r"""<p>函数类型，取值为 HTTP 或者 Event</p>
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def StatusReasons(self):
+        r"""<p>函数状态失败原因</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of StatusReason
+        """
+        return self._StatusReasons
+
+    @StatusReasons.setter
+    def StatusReasons(self, StatusReasons):
+        self._StatusReasons = StatusReasons
+
+    @property
+    def TotalProvisionedConcurrencyMem(self):
+        r"""<p>函数所有版本预置并发内存总和</p>
+        :rtype: int
+        """
+        return self._TotalProvisionedConcurrencyMem
+
+    @TotalProvisionedConcurrencyMem.setter
+    def TotalProvisionedConcurrencyMem(self, TotalProvisionedConcurrencyMem):
+        self._TotalProvisionedConcurrencyMem = TotalProvisionedConcurrencyMem
+
+    @property
+    def ReservedConcurrencyMem(self):
+        r"""<p>函数并发保留内存</p>
+        :rtype: int
+        """
+        return self._ReservedConcurrencyMem
+
+    @ReservedConcurrencyMem.setter
+    def ReservedConcurrencyMem(self, ReservedConcurrencyMem):
+        self._ReservedConcurrencyMem = ReservedConcurrencyMem
+
+    @property
+    def AsyncRunEnable(self):
+        r"""<p>函数异步属性，取值 TRUE 或者 FALSE</p>
+        :rtype: str
+        """
+        return self._AsyncRunEnable
+
+    @AsyncRunEnable.setter
+    def AsyncRunEnable(self, AsyncRunEnable):
+        self._AsyncRunEnable = AsyncRunEnable
+
+    @property
+    def TraceEnable(self):
+        r"""<p>异步函数是否开启调用追踪，取值 TRUE 或者 FALSE</p>
+        :rtype: str
+        """
+        return self._TraceEnable
+
+    @TraceEnable.setter
+    def TraceEnable(self, TraceEnable):
+        self._TraceEnable = TraceEnable
+
+
+    def _deserialize(self, params):
+        self._ModTime = params.get("ModTime")
+        self._AddTime = params.get("AddTime")
+        self._Runtime = params.get("Runtime")
+        self._FunctionName = params.get("FunctionName")
+        self._FunctionId = params.get("FunctionId")
+        self._Namespace = params.get("Namespace")
+        self._Status = params.get("Status")
+        self._StatusDesc = params.get("StatusDesc")
+        self._Description = params.get("Description")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
+        self._Type = params.get("Type")
+        if params.get("StatusReasons") is not None:
+            self._StatusReasons = []
+            for item in params.get("StatusReasons"):
+                obj = StatusReason()
+                obj._deserialize(item)
+                self._StatusReasons.append(obj)
+        self._TotalProvisionedConcurrencyMem = params.get("TotalProvisionedConcurrencyMem")
+        self._ReservedConcurrencyMem = params.get("ReservedConcurrencyMem")
+        self._AsyncRunEnable = params.get("AsyncRunEnable")
+        self._TraceEnable = params.get("TraceEnable")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class FunctionEipConfig(AbstractModel):
+    r"""云函数公网访问固定ip配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EipStatus: Eip开启状态，取值['ENABLE','DISABLE']
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EipStatus: str
+        """
+        self._EipStatus = None
+
+    @property
+    def EipStatus(self):
+        r"""Eip开启状态，取值['ENABLE','DISABLE']
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._EipStatus
+
+    @EipStatus.setter
+    def EipStatus(self, EipStatus):
+        self._EipStatus = EipStatus
+
+
+    def _deserialize(self, params):
+        self._EipStatus = params.get("EipStatus")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class FunctionEipConfigFixed(AbstractModel):
+    r"""固定 IP 配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EipFixed: <p>是否固定 IP，TRUE / FALSE</p>
+        :type EipFixed: str
+        """
+        self._EipFixed = None
+
+    @property
+    def EipFixed(self):
+        r"""<p>是否固定 IP，TRUE / FALSE</p>
+        :rtype: str
+        """
+        return self._EipFixed
+
+    @EipFixed.setter
+    def EipFixed(self, EipFixed):
+        self._EipFixed = EipFixed
+
+
+    def _deserialize(self, params):
+        self._EipFixed = params.get("EipFixed")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class FunctionEnvironment(AbstractModel):
+    r"""函数的环境变量参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Variables: 环境变量数组
+        :type Variables: list of Variable
+        """
+        self._Variables = None
+
+    @property
+    def Variables(self):
+        r"""环境变量数组
+        :rtype: list of Variable
+        """
+        return self._Variables
+
+    @Variables.setter
+    def Variables(self, Variables):
+        self._Variables = Variables
+
+
+    def _deserialize(self, params):
+        if params.get("Variables") is not None:
+            self._Variables = []
+            for item in params.get("Variables"):
+                obj = Variable()
+                obj._deserialize(item)
+                self._Variables.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class FunctionInfo(AbstractModel):
     r"""函数的信息
 
@@ -14856,6 +16285,261 @@ class FunctionInfo(AbstractModel):
     def _deserialize(self, params):
         self._Namespace = params.get("Namespace")
         self._Region = params.get("Region")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class FunctionLayer(AbstractModel):
+    r"""云函数Layer版本
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _LayerName: <p>层名称</p>
+        :type LayerName: str
+        :param _LayerVersion: <p>层版本号</p>
+        :type LayerVersion: int
+        """
+        self._LayerName = None
+        self._LayerVersion = None
+
+    @property
+    def LayerName(self):
+        r"""<p>层名称</p>
+        :rtype: str
+        """
+        return self._LayerName
+
+    @LayerName.setter
+    def LayerName(self, LayerName):
+        self._LayerName = LayerName
+
+    @property
+    def LayerVersion(self):
+        r"""<p>层版本号</p>
+        :rtype: int
+        """
+        return self._LayerVersion
+
+    @LayerVersion.setter
+    def LayerVersion(self, LayerVersion):
+        self._LayerVersion = LayerVersion
+
+
+    def _deserialize(self, params):
+        self._LayerName = params.get("LayerName")
+        self._LayerVersion = params.get("LayerVersion")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class FunctionPublicNetConfig(AbstractModel):
+    r"""云函数公网访问配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _PublicNetStatus: 是否开启公网访问能力取值['DISABLE','ENABLE']
+注意：此字段可能返回 null，表示取不到有效值。
+        :type PublicNetStatus: str
+        :param _EipConfig: Eip配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :type EipConfig: :class:`tencentcloud.tcb.v20180608.models.FunctionEipConfig`
+        """
+        self._PublicNetStatus = None
+        self._EipConfig = None
+
+    @property
+    def PublicNetStatus(self):
+        r"""是否开启公网访问能力取值['DISABLE','ENABLE']
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: str
+        """
+        return self._PublicNetStatus
+
+    @PublicNetStatus.setter
+    def PublicNetStatus(self, PublicNetStatus):
+        self._PublicNetStatus = PublicNetStatus
+
+    @property
+    def EipConfig(self):
+        r"""Eip配置
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.FunctionEipConfig`
+        """
+        return self._EipConfig
+
+    @EipConfig.setter
+    def EipConfig(self, EipConfig):
+        self._EipConfig = EipConfig
+
+
+    def _deserialize(self, params):
+        self._PublicNetStatus = params.get("PublicNetStatus")
+        if params.get("EipConfig") is not None:
+            self._EipConfig = FunctionEipConfig()
+            self._EipConfig._deserialize(params.get("EipConfig"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class FunctionTrigger(AbstractModel):
+    r"""触发器类型
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ModTime: <p>触发器最后修改时间</p>
+        :type ModTime: str
+        :param _Type: <p>触发器类型</p>
+        :type Type: str
+        :param _TriggerDesc: <p>触发器详细配置</p>
+        :type TriggerDesc: str
+        :param _TriggerName: <p>触发器名称</p>
+        :type TriggerName: str
+        :param _AddTime: <p>触发器创建时间</p>
+        :type AddTime: str
+        """
+        self._ModTime = None
+        self._Type = None
+        self._TriggerDesc = None
+        self._TriggerName = None
+        self._AddTime = None
+
+    @property
+    def ModTime(self):
+        r"""<p>触发器最后修改时间</p>
+        :rtype: str
+        """
+        return self._ModTime
+
+    @ModTime.setter
+    def ModTime(self, ModTime):
+        self._ModTime = ModTime
+
+    @property
+    def Type(self):
+        r"""<p>触发器类型</p>
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def TriggerDesc(self):
+        r"""<p>触发器详细配置</p>
+        :rtype: str
+        """
+        return self._TriggerDesc
+
+    @TriggerDesc.setter
+    def TriggerDesc(self, TriggerDesc):
+        self._TriggerDesc = TriggerDesc
+
+    @property
+    def TriggerName(self):
+        r"""<p>触发器名称</p>
+        :rtype: str
+        """
+        return self._TriggerName
+
+    @TriggerName.setter
+    def TriggerName(self, TriggerName):
+        self._TriggerName = TriggerName
+
+    @property
+    def AddTime(self):
+        r"""<p>触发器创建时间</p>
+        :rtype: str
+        """
+        return self._AddTime
+
+    @AddTime.setter
+    def AddTime(self, AddTime):
+        self._AddTime = AddTime
+
+
+    def _deserialize(self, params):
+        self._ModTime = params.get("ModTime")
+        self._Type = params.get("Type")
+        self._TriggerDesc = params.get("TriggerDesc")
+        self._TriggerName = params.get("TriggerName")
+        self._AddTime = params.get("AddTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class FunctionVpcConfig(AbstractModel):
+    r"""私有网络参数配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VpcId: <p>私有网络 的 id</p>
+        :type VpcId: str
+        :param _SubnetId: <p>子网的 id</p>
+        :type SubnetId: str
+        """
+        self._VpcId = None
+        self._SubnetId = None
+
+    @property
+    def VpcId(self):
+        r"""<p>私有网络 的 id</p>
+        :rtype: str
+        """
+        return self._VpcId
+
+    @VpcId.setter
+    def VpcId(self, VpcId):
+        self._VpcId = VpcId
+
+    @property
+    def SubnetId(self):
+        r"""<p>子网的 id</p>
+        :rtype: str
+        """
+        return self._SubnetId
+
+    @SubnetId.setter
+    def SubnetId(self, SubnetId):
+        self._SubnetId = SubnetId
+
+
+    def _deserialize(self, params):
+        self._VpcId = params.get("VpcId")
+        self._SubnetId = params.get("SubnetId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -15037,6 +16721,617 @@ class GatewayVersionItem(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class GetFunctionRequest(AbstractModel):
+    r"""GetFunction请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EnvId: <p>环境Id</p>
+        :type EnvId: str
+        :param _FunctionName: <p>函数名</p>
+        :type FunctionName: str
+        :param _Qualifier: <p>函数的版本</p>
+        :type Qualifier: str
+        :param _Namespace: <p>环境</p>
+        :type Namespace: str
+        :param _ShowCode: <p>是否返回代码</p>
+        :type ShowCode: str
+        """
+        self._EnvId = None
+        self._FunctionName = None
+        self._Qualifier = None
+        self._Namespace = None
+        self._ShowCode = None
+
+    @property
+    def EnvId(self):
+        r"""<p>环境Id</p>
+        :rtype: str
+        """
+        return self._EnvId
+
+    @EnvId.setter
+    def EnvId(self, EnvId):
+        self._EnvId = EnvId
+
+    @property
+    def FunctionName(self):
+        r"""<p>函数名</p>
+        :rtype: str
+        """
+        return self._FunctionName
+
+    @FunctionName.setter
+    def FunctionName(self, FunctionName):
+        self._FunctionName = FunctionName
+
+    @property
+    def Qualifier(self):
+        r"""<p>函数的版本</p>
+        :rtype: str
+        """
+        return self._Qualifier
+
+    @Qualifier.setter
+    def Qualifier(self, Qualifier):
+        self._Qualifier = Qualifier
+
+    @property
+    def Namespace(self):
+        r"""<p>环境</p>
+        :rtype: str
+        """
+        return self._Namespace
+
+    @Namespace.setter
+    def Namespace(self, Namespace):
+        self._Namespace = Namespace
+
+    @property
+    def ShowCode(self):
+        r"""<p>是否返回代码</p>
+        :rtype: str
+        """
+        return self._ShowCode
+
+    @ShowCode.setter
+    def ShowCode(self, ShowCode):
+        self._ShowCode = ShowCode
+
+
+    def _deserialize(self, params):
+        self._EnvId = params.get("EnvId")
+        self._FunctionName = params.get("FunctionName")
+        self._Qualifier = params.get("Qualifier")
+        self._Namespace = params.get("Namespace")
+        self._ShowCode = params.get("ShowCode")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class GetFunctionResponse(AbstractModel):
+    r"""GetFunction返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ModTime: <p>函数最后修改时间</p>
+        :type ModTime: str
+        :param _CodeInfo: <p>函数代码（&gt;1M 不返回）</p>
+        :type CodeInfo: str
+        :param _Description: <p>函数描述</p>
+        :type Description: str
+        :param _Triggers: <p>触发器列表</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Triggers: list of FunctionTrigger
+        :param _Handler: <p>入口函数</p>
+        :type Handler: str
+        :param _CodeSize: <p>代码大小（字节）</p>
+        :type CodeSize: int
+        :param _Timeout: <p>超时时间（秒）</p>
+        :type Timeout: int
+        :param _FunctionVersion: <p>函数版本</p>
+        :type FunctionVersion: str
+        :param _MemorySize: <p>内存大小（MB）</p>
+        :type MemorySize: int
+        :param _Runtime: <p>运行环境</p>
+        :type Runtime: str
+        :param _FunctionName: <p>函数名称</p>
+        :type FunctionName: str
+        :param _VpcConfig: <p>VPC 配置</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type VpcConfig: :class:`tencentcloud.tcb.v20180608.models.FunctionVpcConfig`
+        :param _UseGpu: <p>是否使用 GPU (&quot;TRUE&quot;/&quot;FALSE&quot;)</p>
+        :type UseGpu: str
+        :param _CodeResult: <p>代码校验结果 (&quot;success&quot;/&quot;failed&quot;)</p>
+        :type CodeResult: str
+        :param _ErrNo: <p>代码错误码</p>
+        :type ErrNo: int
+        :param _Namespace: <p>命名空间</p>
+        :type Namespace: str
+        :param _Role: <p>角色</p>
+        :type Role: str
+        :param _InstallDependency: <p>是否自动安装依赖 (&quot;TRUE&quot;/&quot;FALSE&quot;)</p>
+        :type InstallDependency: str
+        :param _Status: <p>函数状态 (&quot;Active&quot;, &quot;Inactive&quot; 等)</p>
+        :type Status: str
+        :param _FunctionId: <p>函数 ID</p>
+        :type FunctionId: str
+        :param _Tags: <p>标签列表</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Tags: list of Tag
+        :param _Type: <p>函数类型 (&quot;HTTP&quot; 或 &quot;Event&quot;)</p>
+        :type Type: str
+        :param _L5Enable: <p>是否启用 L5 (&quot;TRUE&quot;/&quot;FALSE&quot;)</p>
+        :type L5Enable: str
+        :param _AddTime: <p>函数创建时间</p>
+        :type AddTime: str
+        :param _OnsEnable: <p>对应scf.GetFunction接口的OnsEnable，是否启用 Ons (&quot;TRUE&quot;/&quot;FALSE&quot;)</p>
+        :type OnsEnable: str
+        :param _AvailableStatus: <p>计费状态 (&quot;Available&quot; 等)</p>
+        :type AvailableStatus: str
+        :param _Qualifier: <p>函数版本（查询时传入的）</p>
+        :type Qualifier: str
+        :param _InitTimeout: <p>初始化超时时间（秒）</p>
+        :type InitTimeout: int
+        :param _AsyncRunEnable: <p>是否开启异步 (&quot;TRUE&quot;/&quot;FALSE&quot;)</p>
+        :type AsyncRunEnable: str
+        :param _TraceEnable: <p>是否开启事件追踪 (&quot;TRUE&quot;/&quot;FALSE&quot;)</p>
+        :type TraceEnable: str
+        :param _ImageConfig: <p>镜像配置</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type ImageConfig: :class:`tencentcloud.tcb.v20180608.models.AgentRuntimeCodeImageConfig`
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._ModTime = None
+        self._CodeInfo = None
+        self._Description = None
+        self._Triggers = None
+        self._Handler = None
+        self._CodeSize = None
+        self._Timeout = None
+        self._FunctionVersion = None
+        self._MemorySize = None
+        self._Runtime = None
+        self._FunctionName = None
+        self._VpcConfig = None
+        self._UseGpu = None
+        self._CodeResult = None
+        self._ErrNo = None
+        self._Namespace = None
+        self._Role = None
+        self._InstallDependency = None
+        self._Status = None
+        self._FunctionId = None
+        self._Tags = None
+        self._Type = None
+        self._L5Enable = None
+        self._AddTime = None
+        self._OnsEnable = None
+        self._AvailableStatus = None
+        self._Qualifier = None
+        self._InitTimeout = None
+        self._AsyncRunEnable = None
+        self._TraceEnable = None
+        self._ImageConfig = None
+        self._RequestId = None
+
+    @property
+    def ModTime(self):
+        r"""<p>函数最后修改时间</p>
+        :rtype: str
+        """
+        return self._ModTime
+
+    @ModTime.setter
+    def ModTime(self, ModTime):
+        self._ModTime = ModTime
+
+    @property
+    def CodeInfo(self):
+        r"""<p>函数代码（&gt;1M 不返回）</p>
+        :rtype: str
+        """
+        return self._CodeInfo
+
+    @CodeInfo.setter
+    def CodeInfo(self, CodeInfo):
+        self._CodeInfo = CodeInfo
+
+    @property
+    def Description(self):
+        r"""<p>函数描述</p>
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def Triggers(self):
+        r"""<p>触发器列表</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of FunctionTrigger
+        """
+        return self._Triggers
+
+    @Triggers.setter
+    def Triggers(self, Triggers):
+        self._Triggers = Triggers
+
+    @property
+    def Handler(self):
+        r"""<p>入口函数</p>
+        :rtype: str
+        """
+        return self._Handler
+
+    @Handler.setter
+    def Handler(self, Handler):
+        self._Handler = Handler
+
+    @property
+    def CodeSize(self):
+        r"""<p>代码大小（字节）</p>
+        :rtype: int
+        """
+        return self._CodeSize
+
+    @CodeSize.setter
+    def CodeSize(self, CodeSize):
+        self._CodeSize = CodeSize
+
+    @property
+    def Timeout(self):
+        r"""<p>超时时间（秒）</p>
+        :rtype: int
+        """
+        return self._Timeout
+
+    @Timeout.setter
+    def Timeout(self, Timeout):
+        self._Timeout = Timeout
+
+    @property
+    def FunctionVersion(self):
+        r"""<p>函数版本</p>
+        :rtype: str
+        """
+        return self._FunctionVersion
+
+    @FunctionVersion.setter
+    def FunctionVersion(self, FunctionVersion):
+        self._FunctionVersion = FunctionVersion
+
+    @property
+    def MemorySize(self):
+        r"""<p>内存大小（MB）</p>
+        :rtype: int
+        """
+        return self._MemorySize
+
+    @MemorySize.setter
+    def MemorySize(self, MemorySize):
+        self._MemorySize = MemorySize
+
+    @property
+    def Runtime(self):
+        r"""<p>运行环境</p>
+        :rtype: str
+        """
+        return self._Runtime
+
+    @Runtime.setter
+    def Runtime(self, Runtime):
+        self._Runtime = Runtime
+
+    @property
+    def FunctionName(self):
+        r"""<p>函数名称</p>
+        :rtype: str
+        """
+        return self._FunctionName
+
+    @FunctionName.setter
+    def FunctionName(self, FunctionName):
+        self._FunctionName = FunctionName
+
+    @property
+    def VpcConfig(self):
+        r"""<p>VPC 配置</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.FunctionVpcConfig`
+        """
+        return self._VpcConfig
+
+    @VpcConfig.setter
+    def VpcConfig(self, VpcConfig):
+        self._VpcConfig = VpcConfig
+
+    @property
+    def UseGpu(self):
+        r"""<p>是否使用 GPU (&quot;TRUE&quot;/&quot;FALSE&quot;)</p>
+        :rtype: str
+        """
+        return self._UseGpu
+
+    @UseGpu.setter
+    def UseGpu(self, UseGpu):
+        self._UseGpu = UseGpu
+
+    @property
+    def CodeResult(self):
+        r"""<p>代码校验结果 (&quot;success&quot;/&quot;failed&quot;)</p>
+        :rtype: str
+        """
+        return self._CodeResult
+
+    @CodeResult.setter
+    def CodeResult(self, CodeResult):
+        self._CodeResult = CodeResult
+
+    @property
+    def ErrNo(self):
+        r"""<p>代码错误码</p>
+        :rtype: int
+        """
+        return self._ErrNo
+
+    @ErrNo.setter
+    def ErrNo(self, ErrNo):
+        self._ErrNo = ErrNo
+
+    @property
+    def Namespace(self):
+        r"""<p>命名空间</p>
+        :rtype: str
+        """
+        return self._Namespace
+
+    @Namespace.setter
+    def Namespace(self, Namespace):
+        self._Namespace = Namespace
+
+    @property
+    def Role(self):
+        r"""<p>角色</p>
+        :rtype: str
+        """
+        return self._Role
+
+    @Role.setter
+    def Role(self, Role):
+        self._Role = Role
+
+    @property
+    def InstallDependency(self):
+        r"""<p>是否自动安装依赖 (&quot;TRUE&quot;/&quot;FALSE&quot;)</p>
+        :rtype: str
+        """
+        return self._InstallDependency
+
+    @InstallDependency.setter
+    def InstallDependency(self, InstallDependency):
+        self._InstallDependency = InstallDependency
+
+    @property
+    def Status(self):
+        r"""<p>函数状态 (&quot;Active&quot;, &quot;Inactive&quot; 等)</p>
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def FunctionId(self):
+        r"""<p>函数 ID</p>
+        :rtype: str
+        """
+        return self._FunctionId
+
+    @FunctionId.setter
+    def FunctionId(self, FunctionId):
+        self._FunctionId = FunctionId
+
+    @property
+    def Tags(self):
+        r"""<p>标签列表</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of Tag
+        """
+        return self._Tags
+
+    @Tags.setter
+    def Tags(self, Tags):
+        self._Tags = Tags
+
+    @property
+    def Type(self):
+        r"""<p>函数类型 (&quot;HTTP&quot; 或 &quot;Event&quot;)</p>
+        :rtype: str
+        """
+        return self._Type
+
+    @Type.setter
+    def Type(self, Type):
+        self._Type = Type
+
+    @property
+    def L5Enable(self):
+        r"""<p>是否启用 L5 (&quot;TRUE&quot;/&quot;FALSE&quot;)</p>
+        :rtype: str
+        """
+        return self._L5Enable
+
+    @L5Enable.setter
+    def L5Enable(self, L5Enable):
+        self._L5Enable = L5Enable
+
+    @property
+    def AddTime(self):
+        r"""<p>函数创建时间</p>
+        :rtype: str
+        """
+        return self._AddTime
+
+    @AddTime.setter
+    def AddTime(self, AddTime):
+        self._AddTime = AddTime
+
+    @property
+    def OnsEnable(self):
+        r"""<p>对应scf.GetFunction接口的OnsEnable，是否启用 Ons (&quot;TRUE&quot;/&quot;FALSE&quot;)</p>
+        :rtype: str
+        """
+        return self._OnsEnable
+
+    @OnsEnable.setter
+    def OnsEnable(self, OnsEnable):
+        self._OnsEnable = OnsEnable
+
+    @property
+    def AvailableStatus(self):
+        r"""<p>计费状态 (&quot;Available&quot; 等)</p>
+        :rtype: str
+        """
+        return self._AvailableStatus
+
+    @AvailableStatus.setter
+    def AvailableStatus(self, AvailableStatus):
+        self._AvailableStatus = AvailableStatus
+
+    @property
+    def Qualifier(self):
+        r"""<p>函数版本（查询时传入的）</p>
+        :rtype: str
+        """
+        return self._Qualifier
+
+    @Qualifier.setter
+    def Qualifier(self, Qualifier):
+        self._Qualifier = Qualifier
+
+    @property
+    def InitTimeout(self):
+        r"""<p>初始化超时时间（秒）</p>
+        :rtype: int
+        """
+        return self._InitTimeout
+
+    @InitTimeout.setter
+    def InitTimeout(self, InitTimeout):
+        self._InitTimeout = InitTimeout
+
+    @property
+    def AsyncRunEnable(self):
+        r"""<p>是否开启异步 (&quot;TRUE&quot;/&quot;FALSE&quot;)</p>
+        :rtype: str
+        """
+        return self._AsyncRunEnable
+
+    @AsyncRunEnable.setter
+    def AsyncRunEnable(self, AsyncRunEnable):
+        self._AsyncRunEnable = AsyncRunEnable
+
+    @property
+    def TraceEnable(self):
+        r"""<p>是否开启事件追踪 (&quot;TRUE&quot;/&quot;FALSE&quot;)</p>
+        :rtype: str
+        """
+        return self._TraceEnable
+
+    @TraceEnable.setter
+    def TraceEnable(self, TraceEnable):
+        self._TraceEnable = TraceEnable
+
+    @property
+    def ImageConfig(self):
+        r"""<p>镜像配置</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.AgentRuntimeCodeImageConfig`
+        """
+        return self._ImageConfig
+
+    @ImageConfig.setter
+    def ImageConfig(self, ImageConfig):
+        self._ImageConfig = ImageConfig
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._ModTime = params.get("ModTime")
+        self._CodeInfo = params.get("CodeInfo")
+        self._Description = params.get("Description")
+        if params.get("Triggers") is not None:
+            self._Triggers = []
+            for item in params.get("Triggers"):
+                obj = FunctionTrigger()
+                obj._deserialize(item)
+                self._Triggers.append(obj)
+        self._Handler = params.get("Handler")
+        self._CodeSize = params.get("CodeSize")
+        self._Timeout = params.get("Timeout")
+        self._FunctionVersion = params.get("FunctionVersion")
+        self._MemorySize = params.get("MemorySize")
+        self._Runtime = params.get("Runtime")
+        self._FunctionName = params.get("FunctionName")
+        if params.get("VpcConfig") is not None:
+            self._VpcConfig = FunctionVpcConfig()
+            self._VpcConfig._deserialize(params.get("VpcConfig"))
+        self._UseGpu = params.get("UseGpu")
+        self._CodeResult = params.get("CodeResult")
+        self._ErrNo = params.get("ErrNo")
+        self._Namespace = params.get("Namespace")
+        self._Role = params.get("Role")
+        self._InstallDependency = params.get("InstallDependency")
+        self._Status = params.get("Status")
+        self._FunctionId = params.get("FunctionId")
+        if params.get("Tags") is not None:
+            self._Tags = []
+            for item in params.get("Tags"):
+                obj = Tag()
+                obj._deserialize(item)
+                self._Tags.append(obj)
+        self._Type = params.get("Type")
+        self._L5Enable = params.get("L5Enable")
+        self._AddTime = params.get("AddTime")
+        self._OnsEnable = params.get("OnsEnable")
+        self._AvailableStatus = params.get("AvailableStatus")
+        self._Qualifier = params.get("Qualifier")
+        self._InitTimeout = params.get("InitTimeout")
+        self._AsyncRunEnable = params.get("AsyncRunEnable")
+        self._TraceEnable = params.get("TraceEnable")
+        if params.get("ImageConfig") is not None:
+            self._ImageConfig = AgentRuntimeCodeImageConfig()
+            self._ImageConfig._deserialize(params.get("ImageConfig"))
+        self._RequestId = params.get("RequestId")
 
 
 class GetProvidersRequest(AbstractModel):
@@ -17189,6 +19484,217 @@ class KVPair(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class ListFunctionsRequest(AbstractModel):
+    r"""ListFunctions请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EnvId: <p>命名空间</p>
+        :type EnvId: str
+        :param _Order: <p>以升序还是降序的方式返回结果，可选值 ASC 和 DESC</p>
+        :type Order: str
+        :param _Orderby: <p>根据哪个字段进行返回结果排序,支持以下字段：AddTime, ModTime, FunctionName</p>
+        :type Orderby: str
+        :param _Offset: <p>数据偏移量，默认值为 0</p>
+        :type Offset: int
+        :param _Limit: <p>返回数据长度，默认值为 20</p>
+        :type Limit: int
+        :param _SearchKey: <p>支持FunctionName模糊匹配</p>
+        :type SearchKey: str
+        :param _Description: <p>函数描述，支持模糊搜索</p>
+        :type Description: str
+        :param _Filters: <p>过滤特定属性或者有特定标签的函数。- 传值方式key-value 进行传值 例如：&quot;Filters&quot;: [{ &quot;Name&quot;: &quot;Status&quot;, &quot;Values&quot;: [&quot;CreateFailed&quot;,&quot;Creating&quot;]}, {&quot;Name&quot;: &quot;Type&quot;,&quot;Values&quot;: [&quot;HTTP&quot;]}]上述条件的函数是，函数状态为创建失败或者创建中，且函数类型为 HTTP 函数如果通过标签进行过滤：- tag:tag-key - String - 是否必填：否 - （过滤条件）按照标签键值对进行过滤。 tag-key使用具体的标签键进行替换。示例值：&quot;Filters&quot;: [{&quot;Name&quot;:&quot;tag-dmtest&quot;,&quot;Values&quot;:[&quot;dmtest&quot;]}]入参限制：1.每次请求的Filters的上限为10，Filter.Values的上限为5。2.[VpcId&#39;, &#39;SubnetId&#39;, &#39;ClsTopicId&#39;, &#39;ClsLogsetId&#39;, &#39;Role&#39;, &#39;CfsId&#39;, &#39;CfsMountInsId&#39;, &#39;Eip&#39;] 过滤的Name 为这些属性时， values 只能传一个值3.[&#39;Status&#39;, &#39;Runtime&#39;, &#39;Type&#39;, &#39;PublicNetStatus&#39;, &#39;AsyncRunEnable&#39;, &#39;TraceEnable&#39;, &#39;Stamp&#39;] 过滤的Name 为这些属性时 ，values 可以传多个值</p>
+        :type Filters: list of Filter
+        """
+        self._EnvId = None
+        self._Order = None
+        self._Orderby = None
+        self._Offset = None
+        self._Limit = None
+        self._SearchKey = None
+        self._Description = None
+        self._Filters = None
+
+    @property
+    def EnvId(self):
+        r"""<p>命名空间</p>
+        :rtype: str
+        """
+        return self._EnvId
+
+    @EnvId.setter
+    def EnvId(self, EnvId):
+        self._EnvId = EnvId
+
+    @property
+    def Order(self):
+        r"""<p>以升序还是降序的方式返回结果，可选值 ASC 和 DESC</p>
+        :rtype: str
+        """
+        return self._Order
+
+    @Order.setter
+    def Order(self, Order):
+        self._Order = Order
+
+    @property
+    def Orderby(self):
+        r"""<p>根据哪个字段进行返回结果排序,支持以下字段：AddTime, ModTime, FunctionName</p>
+        :rtype: str
+        """
+        return self._Orderby
+
+    @Orderby.setter
+    def Orderby(self, Orderby):
+        self._Orderby = Orderby
+
+    @property
+    def Offset(self):
+        r"""<p>数据偏移量，默认值为 0</p>
+        :rtype: int
+        """
+        return self._Offset
+
+    @Offset.setter
+    def Offset(self, Offset):
+        self._Offset = Offset
+
+    @property
+    def Limit(self):
+        r"""<p>返回数据长度，默认值为 20</p>
+        :rtype: int
+        """
+        return self._Limit
+
+    @Limit.setter
+    def Limit(self, Limit):
+        self._Limit = Limit
+
+    @property
+    def SearchKey(self):
+        r"""<p>支持FunctionName模糊匹配</p>
+        :rtype: str
+        """
+        return self._SearchKey
+
+    @SearchKey.setter
+    def SearchKey(self, SearchKey):
+        self._SearchKey = SearchKey
+
+    @property
+    def Description(self):
+        r"""<p>函数描述，支持模糊搜索</p>
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def Filters(self):
+        r"""<p>过滤特定属性或者有特定标签的函数。- 传值方式key-value 进行传值 例如：&quot;Filters&quot;: [{ &quot;Name&quot;: &quot;Status&quot;, &quot;Values&quot;: [&quot;CreateFailed&quot;,&quot;Creating&quot;]}, {&quot;Name&quot;: &quot;Type&quot;,&quot;Values&quot;: [&quot;HTTP&quot;]}]上述条件的函数是，函数状态为创建失败或者创建中，且函数类型为 HTTP 函数如果通过标签进行过滤：- tag:tag-key - String - 是否必填：否 - （过滤条件）按照标签键值对进行过滤。 tag-key使用具体的标签键进行替换。示例值：&quot;Filters&quot;: [{&quot;Name&quot;:&quot;tag-dmtest&quot;,&quot;Values&quot;:[&quot;dmtest&quot;]}]入参限制：1.每次请求的Filters的上限为10，Filter.Values的上限为5。2.[VpcId&#39;, &#39;SubnetId&#39;, &#39;ClsTopicId&#39;, &#39;ClsLogsetId&#39;, &#39;Role&#39;, &#39;CfsId&#39;, &#39;CfsMountInsId&#39;, &#39;Eip&#39;] 过滤的Name 为这些属性时， values 只能传一个值3.[&#39;Status&#39;, &#39;Runtime&#39;, &#39;Type&#39;, &#39;PublicNetStatus&#39;, &#39;AsyncRunEnable&#39;, &#39;TraceEnable&#39;, &#39;Stamp&#39;] 过滤的Name 为这些属性时 ，values 可以传多个值</p>
+        :rtype: list of Filter
+        """
+        return self._Filters
+
+    @Filters.setter
+    def Filters(self, Filters):
+        self._Filters = Filters
+
+
+    def _deserialize(self, params):
+        self._EnvId = params.get("EnvId")
+        self._Order = params.get("Order")
+        self._Orderby = params.get("Orderby")
+        self._Offset = params.get("Offset")
+        self._Limit = params.get("Limit")
+        self._SearchKey = params.get("SearchKey")
+        self._Description = params.get("Description")
+        if params.get("Filters") is not None:
+            self._Filters = []
+            for item in params.get("Filters"):
+                obj = Filter()
+                obj._deserialize(item)
+                self._Filters.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class ListFunctionsResponse(AbstractModel):
+    r"""ListFunctions返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Functions: <p>函数列表</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Functions: list of Function
+        :param _TotalCount: <p>总数</p>
+        :type TotalCount: int
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Functions = None
+        self._TotalCount = None
+        self._RequestId = None
+
+    @property
+    def Functions(self):
+        r"""<p>函数列表</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: list of Function
+        """
+        return self._Functions
+
+    @Functions.setter
+    def Functions(self, Functions):
+        self._Functions = Functions
+
+    @property
+    def TotalCount(self):
+        r"""<p>总数</p>
+        :rtype: int
+        """
+        return self._TotalCount
+
+    @TotalCount.setter
+    def TotalCount(self, TotalCount):
+        self._TotalCount = TotalCount
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Functions") is not None:
+            self._Functions = []
+            for item in params.get("Functions"):
+                obj = Function()
+                obj._deserialize(item)
+                self._Functions.append(obj)
+        self._TotalCount = params.get("TotalCount")
+        self._RequestId = params.get("RequestId")
 
 
 class ListPGUserMigrationsRequest(AbstractModel):
@@ -22602,6 +25108,42 @@ class PreviewPGUserMigrationsResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class PrivateConfig(AbstractModel):
+    r"""云函数配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Language: 云函数的语言
+        :type Language: str
+        """
+        self._Language = None
+
+    @property
+    def Language(self):
+        r"""云函数的语言
+        :rtype: str
+        """
+        return self._Language
+
+    @Language.setter
+    def Language(self, Language):
+        self._Language = Language
+
+
+    def _deserialize(self, params):
+        self._Language = params.get("Language")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class Provider(AbstractModel):
     r"""身份源配置信息。描述云开发环境下用户登录身份源的完整配置，定义了用户通过何种方式进入系统并完成身份认证。支持多种类型：包括标准协议身份源（OAuth 2.0、OIDC、SAML 2.0）、内置身份源（邮箱登录、自定义登录）以及通过插件机制扩展的身份源（如 CAS）。每个身份源包含认证配置、启用状态、用户自动注册策略、信息透传模式等核心属性，是登录认证流程的核心数据结构。
 
@@ -25548,6 +28090,57 @@ class StaticStoreInfo(AbstractModel):
         
 
 
+class StatusReason(AbstractModel):
+    r"""状态原因描述
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ErrorCode: <p>错误码</p>
+        :type ErrorCode: str
+        :param _ErrorMessage: <p>错误描述</p>
+        :type ErrorMessage: str
+        """
+        self._ErrorCode = None
+        self._ErrorMessage = None
+
+    @property
+    def ErrorCode(self):
+        r"""<p>错误码</p>
+        :rtype: str
+        """
+        return self._ErrorCode
+
+    @ErrorCode.setter
+    def ErrorCode(self, ErrorCode):
+        self._ErrorCode = ErrorCode
+
+    @property
+    def ErrorMessage(self):
+        r"""<p>错误描述</p>
+        :rtype: str
+        """
+        return self._ErrorMessage
+
+    @ErrorMessage.setter
+    def ErrorMessage(self, ErrorMessage):
+        self._ErrorMessage = ErrorMessage
+
+
+    def _deserialize(self, params):
+        self._ErrorCode = params.get("ErrorCode")
+        self._ErrorMessage = params.get("ErrorMessage")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class StorageInfo(AbstractModel):
     r"""StorageInfo 资源信息
 
@@ -26106,6 +28699,572 @@ class UpdateAIModelResponse(AbstractModel):
 
     def _deserialize(self, params):
         self._Count = params.get("Count")
+        self._RequestId = params.get("RequestId")
+
+
+class UpdateFunctionCodeRequest(AbstractModel):
+    r"""UpdateFunctionCode请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _FunctionName: <p>创建的函数名称</p>
+        :type FunctionName: str
+        :param _EnvId: <p>环境ID</p>
+        :type EnvId: str
+        :param _Handler: <p>函数处理方法名称</p>
+        :type Handler: str
+        :param _Namespace: <p>函数所属命名空间</p>
+        :type Namespace: str
+        :param _InstallDependency: <p>在线依赖安装</p>
+        :type InstallDependency: str
+        :param _Publish: <p>在更新时是否同步发布新版本，默认为：FALSE，不发布 示例值：FALSE</p>
+        :type Publish: str
+        :param _Code: <p>包含函数代码文件的zip格式文件</p>
+        :type Code: :class:`tencentcloud.tcb.v20180608.models.CodeReq`
+        :param _CodeSource: <p>代码来源方式，支持 ZipFile, Cos, Inline 之一 示例值：Cos</p>
+        :type CodeSource: str
+        """
+        self._FunctionName = None
+        self._EnvId = None
+        self._Handler = None
+        self._Namespace = None
+        self._InstallDependency = None
+        self._Publish = None
+        self._Code = None
+        self._CodeSource = None
+
+    @property
+    def FunctionName(self):
+        r"""<p>创建的函数名称</p>
+        :rtype: str
+        """
+        return self._FunctionName
+
+    @FunctionName.setter
+    def FunctionName(self, FunctionName):
+        self._FunctionName = FunctionName
+
+    @property
+    def EnvId(self):
+        r"""<p>环境ID</p>
+        :rtype: str
+        """
+        return self._EnvId
+
+    @EnvId.setter
+    def EnvId(self, EnvId):
+        self._EnvId = EnvId
+
+    @property
+    def Handler(self):
+        r"""<p>函数处理方法名称</p>
+        :rtype: str
+        """
+        return self._Handler
+
+    @Handler.setter
+    def Handler(self, Handler):
+        self._Handler = Handler
+
+    @property
+    def Namespace(self):
+        r"""<p>函数所属命名空间</p>
+        :rtype: str
+        """
+        return self._Namespace
+
+    @Namespace.setter
+    def Namespace(self, Namespace):
+        self._Namespace = Namespace
+
+    @property
+    def InstallDependency(self):
+        r"""<p>在线依赖安装</p>
+        :rtype: str
+        """
+        return self._InstallDependency
+
+    @InstallDependency.setter
+    def InstallDependency(self, InstallDependency):
+        self._InstallDependency = InstallDependency
+
+    @property
+    def Publish(self):
+        r"""<p>在更新时是否同步发布新版本，默认为：FALSE，不发布 示例值：FALSE</p>
+        :rtype: str
+        """
+        return self._Publish
+
+    @Publish.setter
+    def Publish(self, Publish):
+        self._Publish = Publish
+
+    @property
+    def Code(self):
+        r"""<p>包含函数代码文件的zip格式文件</p>
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.CodeReq`
+        """
+        return self._Code
+
+    @Code.setter
+    def Code(self, Code):
+        self._Code = Code
+
+    @property
+    def CodeSource(self):
+        r"""<p>代码来源方式，支持 ZipFile, Cos, Inline 之一 示例值：Cos</p>
+        :rtype: str
+        """
+        return self._CodeSource
+
+    @CodeSource.setter
+    def CodeSource(self, CodeSource):
+        self._CodeSource = CodeSource
+
+
+    def _deserialize(self, params):
+        self._FunctionName = params.get("FunctionName")
+        self._EnvId = params.get("EnvId")
+        self._Handler = params.get("Handler")
+        self._Namespace = params.get("Namespace")
+        self._InstallDependency = params.get("InstallDependency")
+        self._Publish = params.get("Publish")
+        if params.get("Code") is not None:
+            self._Code = CodeReq()
+            self._Code._deserialize(params.get("Code"))
+        self._CodeSource = params.get("CodeSource")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateFunctionCodeResponse(AbstractModel):
+    r"""UpdateFunctionCode返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SCFErrorCode: <p>调用scf返回的错误码</p>
+        :type SCFErrorCode: str
+        :param _SCFErrorMsg: <p>错误码对应的描述信息</p>
+        :type SCFErrorMsg: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._SCFErrorCode = None
+        self._SCFErrorMsg = None
+        self._RequestId = None
+
+    @property
+    def SCFErrorCode(self):
+        r"""<p>调用scf返回的错误码</p>
+        :rtype: str
+        """
+        return self._SCFErrorCode
+
+    @SCFErrorCode.setter
+    def SCFErrorCode(self, SCFErrorCode):
+        self._SCFErrorCode = SCFErrorCode
+
+    @property
+    def SCFErrorMsg(self):
+        r"""<p>错误码对应的描述信息</p>
+        :rtype: str
+        """
+        return self._SCFErrorMsg
+
+    @SCFErrorMsg.setter
+    def SCFErrorMsg(self, SCFErrorMsg):
+        self._SCFErrorMsg = SCFErrorMsg
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._SCFErrorCode = params.get("SCFErrorCode")
+        self._SCFErrorMsg = params.get("SCFErrorMsg")
+        self._RequestId = params.get("RequestId")
+
+
+class UpdateFunctionConfigurationRequest(AbstractModel):
+    r"""UpdateFunctionConfiguration请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _EnvId: <p>环境ID</p>
+        :type EnvId: str
+        :param _FunctionName: <p>要修改的函数名称</p>
+        :type FunctionName: str
+        :param _Description: <p>函数描述。最大支持 1000 个英文字母、数字、空格、逗号和英文句号，支持中文</p>
+        :type Description: str
+        :param _MemorySize: <p>函数运行时内存大小，默认为 128 M，可选范围64M、128 M-3072 M，以 128MB 为阶梯。</p>
+        :type MemorySize: int
+        :param _Timeout: <p>函数最长执行时间，单位为秒，可选值范围 1-900 秒，默认为 3 秒</p>
+        :type Timeout: int
+        :param _Environment: <p>函数的环境变量</p>
+        :type Environment: :class:`tencentcloud.tcb.v20180608.models.FunctionEnvironment`
+        :param _VpcConfig: <p>函数的私有网络配置</p>
+        :type VpcConfig: :class:`tencentcloud.tcb.v20180608.models.FunctionVpcConfig`
+        :param _PublicNetConfig: <p>公网访问配置</p>
+        :type PublicNetConfig: :class:`tencentcloud.tcb.v20180608.models.FunctionPublicNetConfig`
+        :param _Runtime: <p>函数运行环境，创建时指定，目前不支持修改。</p>
+        :type Runtime: str
+        :param _Role: <p>函数绑定的角色</p>
+        :type Role: str
+        :param _InstallDependency: <p>在线依赖安装，TRUE 表示安装，仅支持 Node.js 函数。 </p><p>默认值：FALSE</p>
+        :type InstallDependency: str
+        :param _ClsTopicId: <p>日志投递到的cls日志集ID</p>
+        :type ClsTopicId: str
+        :param _ClsLogsetId: <p>日志投递到的cls Topic ID</p>
+        :type ClsLogsetId: str
+        :param _Publish: <p>在更新时是否同步发布新版本</p><p>默认值：FALSE</p>
+        :type Publish: str
+        :param _L5Enable: <p>是否开启L5访问能力，TRUE 为开启，FALSE为关闭</p>
+        :type L5Enable: str
+        :param _Layers: <p>函数要关联的层版本列表，层的版本会按照在列表中顺序依次覆盖。</p>
+        :type Layers: list of FunctionLayer
+        :param _InitTimeout: <p>函数初始化执行超时时间</p>
+        :type InitTimeout: int
+        :param _DnsCache: <p>是否开启Dns缓存能力。只支持EVENT函数。</p><p>默认值：FALSE</p>
+        :type DnsCache: str
+        :param _IgnoreSysLog: <p>忽略系统日志上报</p>
+        :type IgnoreSysLog: str
+        :param _EipConfig: <p>固定IP配置</p>
+        :type EipConfig: list of FunctionEipConfigFixed
+        """
+        self._EnvId = None
+        self._FunctionName = None
+        self._Description = None
+        self._MemorySize = None
+        self._Timeout = None
+        self._Environment = None
+        self._VpcConfig = None
+        self._PublicNetConfig = None
+        self._Runtime = None
+        self._Role = None
+        self._InstallDependency = None
+        self._ClsTopicId = None
+        self._ClsLogsetId = None
+        self._Publish = None
+        self._L5Enable = None
+        self._Layers = None
+        self._InitTimeout = None
+        self._DnsCache = None
+        self._IgnoreSysLog = None
+        self._EipConfig = None
+
+    @property
+    def EnvId(self):
+        r"""<p>环境ID</p>
+        :rtype: str
+        """
+        return self._EnvId
+
+    @EnvId.setter
+    def EnvId(self, EnvId):
+        self._EnvId = EnvId
+
+    @property
+    def FunctionName(self):
+        r"""<p>要修改的函数名称</p>
+        :rtype: str
+        """
+        return self._FunctionName
+
+    @FunctionName.setter
+    def FunctionName(self, FunctionName):
+        self._FunctionName = FunctionName
+
+    @property
+    def Description(self):
+        r"""<p>函数描述。最大支持 1000 个英文字母、数字、空格、逗号和英文句号，支持中文</p>
+        :rtype: str
+        """
+        return self._Description
+
+    @Description.setter
+    def Description(self, Description):
+        self._Description = Description
+
+    @property
+    def MemorySize(self):
+        r"""<p>函数运行时内存大小，默认为 128 M，可选范围64M、128 M-3072 M，以 128MB 为阶梯。</p>
+        :rtype: int
+        """
+        return self._MemorySize
+
+    @MemorySize.setter
+    def MemorySize(self, MemorySize):
+        self._MemorySize = MemorySize
+
+    @property
+    def Timeout(self):
+        r"""<p>函数最长执行时间，单位为秒，可选值范围 1-900 秒，默认为 3 秒</p>
+        :rtype: int
+        """
+        return self._Timeout
+
+    @Timeout.setter
+    def Timeout(self, Timeout):
+        self._Timeout = Timeout
+
+    @property
+    def Environment(self):
+        r"""<p>函数的环境变量</p>
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.FunctionEnvironment`
+        """
+        return self._Environment
+
+    @Environment.setter
+    def Environment(self, Environment):
+        self._Environment = Environment
+
+    @property
+    def VpcConfig(self):
+        r"""<p>函数的私有网络配置</p>
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.FunctionVpcConfig`
+        """
+        return self._VpcConfig
+
+    @VpcConfig.setter
+    def VpcConfig(self, VpcConfig):
+        self._VpcConfig = VpcConfig
+
+    @property
+    def PublicNetConfig(self):
+        r"""<p>公网访问配置</p>
+        :rtype: :class:`tencentcloud.tcb.v20180608.models.FunctionPublicNetConfig`
+        """
+        return self._PublicNetConfig
+
+    @PublicNetConfig.setter
+    def PublicNetConfig(self, PublicNetConfig):
+        self._PublicNetConfig = PublicNetConfig
+
+    @property
+    def Runtime(self):
+        r"""<p>函数运行环境，创建时指定，目前不支持修改。</p>
+        :rtype: str
+        """
+        return self._Runtime
+
+    @Runtime.setter
+    def Runtime(self, Runtime):
+        self._Runtime = Runtime
+
+    @property
+    def Role(self):
+        r"""<p>函数绑定的角色</p>
+        :rtype: str
+        """
+        return self._Role
+
+    @Role.setter
+    def Role(self, Role):
+        self._Role = Role
+
+    @property
+    def InstallDependency(self):
+        r"""<p>在线依赖安装，TRUE 表示安装，仅支持 Node.js 函数。 </p><p>默认值：FALSE</p>
+        :rtype: str
+        """
+        return self._InstallDependency
+
+    @InstallDependency.setter
+    def InstallDependency(self, InstallDependency):
+        self._InstallDependency = InstallDependency
+
+    @property
+    def ClsTopicId(self):
+        r"""<p>日志投递到的cls日志集ID</p>
+        :rtype: str
+        """
+        return self._ClsTopicId
+
+    @ClsTopicId.setter
+    def ClsTopicId(self, ClsTopicId):
+        self._ClsTopicId = ClsTopicId
+
+    @property
+    def ClsLogsetId(self):
+        r"""<p>日志投递到的cls Topic ID</p>
+        :rtype: str
+        """
+        return self._ClsLogsetId
+
+    @ClsLogsetId.setter
+    def ClsLogsetId(self, ClsLogsetId):
+        self._ClsLogsetId = ClsLogsetId
+
+    @property
+    def Publish(self):
+        r"""<p>在更新时是否同步发布新版本</p><p>默认值：FALSE</p>
+        :rtype: str
+        """
+        return self._Publish
+
+    @Publish.setter
+    def Publish(self, Publish):
+        self._Publish = Publish
+
+    @property
+    def L5Enable(self):
+        r"""<p>是否开启L5访问能力，TRUE 为开启，FALSE为关闭</p>
+        :rtype: str
+        """
+        return self._L5Enable
+
+    @L5Enable.setter
+    def L5Enable(self, L5Enable):
+        self._L5Enable = L5Enable
+
+    @property
+    def Layers(self):
+        r"""<p>函数要关联的层版本列表，层的版本会按照在列表中顺序依次覆盖。</p>
+        :rtype: list of FunctionLayer
+        """
+        return self._Layers
+
+    @Layers.setter
+    def Layers(self, Layers):
+        self._Layers = Layers
+
+    @property
+    def InitTimeout(self):
+        r"""<p>函数初始化执行超时时间</p>
+        :rtype: int
+        """
+        return self._InitTimeout
+
+    @InitTimeout.setter
+    def InitTimeout(self, InitTimeout):
+        self._InitTimeout = InitTimeout
+
+    @property
+    def DnsCache(self):
+        r"""<p>是否开启Dns缓存能力。只支持EVENT函数。</p><p>默认值：FALSE</p>
+        :rtype: str
+        """
+        return self._DnsCache
+
+    @DnsCache.setter
+    def DnsCache(self, DnsCache):
+        self._DnsCache = DnsCache
+
+    @property
+    def IgnoreSysLog(self):
+        r"""<p>忽略系统日志上报</p>
+        :rtype: str
+        """
+        return self._IgnoreSysLog
+
+    @IgnoreSysLog.setter
+    def IgnoreSysLog(self, IgnoreSysLog):
+        self._IgnoreSysLog = IgnoreSysLog
+
+    @property
+    def EipConfig(self):
+        r"""<p>固定IP配置</p>
+        :rtype: list of FunctionEipConfigFixed
+        """
+        return self._EipConfig
+
+    @EipConfig.setter
+    def EipConfig(self, EipConfig):
+        self._EipConfig = EipConfig
+
+
+    def _deserialize(self, params):
+        self._EnvId = params.get("EnvId")
+        self._FunctionName = params.get("FunctionName")
+        self._Description = params.get("Description")
+        self._MemorySize = params.get("MemorySize")
+        self._Timeout = params.get("Timeout")
+        if params.get("Environment") is not None:
+            self._Environment = FunctionEnvironment()
+            self._Environment._deserialize(params.get("Environment"))
+        if params.get("VpcConfig") is not None:
+            self._VpcConfig = FunctionVpcConfig()
+            self._VpcConfig._deserialize(params.get("VpcConfig"))
+        if params.get("PublicNetConfig") is not None:
+            self._PublicNetConfig = FunctionPublicNetConfig()
+            self._PublicNetConfig._deserialize(params.get("PublicNetConfig"))
+        self._Runtime = params.get("Runtime")
+        self._Role = params.get("Role")
+        self._InstallDependency = params.get("InstallDependency")
+        self._ClsTopicId = params.get("ClsTopicId")
+        self._ClsLogsetId = params.get("ClsLogsetId")
+        self._Publish = params.get("Publish")
+        self._L5Enable = params.get("L5Enable")
+        if params.get("Layers") is not None:
+            self._Layers = []
+            for item in params.get("Layers"):
+                obj = FunctionLayer()
+                obj._deserialize(item)
+                self._Layers.append(obj)
+        self._InitTimeout = params.get("InitTimeout")
+        self._DnsCache = params.get("DnsCache")
+        self._IgnoreSysLog = params.get("IgnoreSysLog")
+        if params.get("EipConfig") is not None:
+            self._EipConfig = []
+            for item in params.get("EipConfig"):
+                obj = FunctionEipConfigFixed()
+                obj._deserialize(item)
+                self._EipConfig.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class UpdateFunctionConfigurationResponse(AbstractModel):
+    r"""UpdateFunctionConfiguration返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RequestId = None
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
         self._RequestId = params.get("RequestId")
 
 

@@ -326,17 +326,20 @@ class ChangeInstanceMasterRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例 ID，如：kee-6ubh****。
+        :param _InstanceId: <p>实例 ID，如：kee-6ubh****。</p>
         :type InstanceId: str
-        :param _NodeId: 副本节点 ID。
+        :param _GroupId: <p>副本节点组 ID，请通过接口DescribeInstanceReplicas获取多 AZ备节点组的 ID 信息。</p>
+        :type GroupId: int
+        :param _NodeId: <p>副本节点 ID。</p>
         :type NodeId: str
         """
         self._InstanceId = None
+        self._GroupId = None
         self._NodeId = None
 
     @property
     def InstanceId(self):
-        r"""实例 ID，如：kee-6ubh****。
+        r"""<p>实例 ID，如：kee-6ubh****。</p>
         :rtype: str
         """
         return self._InstanceId
@@ -346,8 +349,19 @@ class ChangeInstanceMasterRequest(AbstractModel):
         self._InstanceId = InstanceId
 
     @property
+    def GroupId(self):
+        r"""<p>副本节点组 ID，请通过接口DescribeInstanceReplicas获取多 AZ备节点组的 ID 信息。</p>
+        :rtype: int
+        """
+        return self._GroupId
+
+    @GroupId.setter
+    def GroupId(self, GroupId):
+        self._GroupId = GroupId
+
+    @property
     def NodeId(self):
-        r"""副本节点 ID。
+        r"""<p>副本节点 ID。</p>
         :rtype: str
         """
         return self._NodeId
@@ -359,6 +373,7 @@ class ChangeInstanceMasterRequest(AbstractModel):
 
     def _deserialize(self, params):
         self._InstanceId = params.get("InstanceId")
+        self._GroupId = params.get("GroupId")
         self._NodeId = params.get("NodeId")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -377,7 +392,7 @@ class ChangeInstanceMasterResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskId: 异步任务 ID。
+        :param _TaskId: <p>异步任务 ID。</p>
         :type TaskId: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -387,7 +402,7 @@ class ChangeInstanceMasterResponse(AbstractModel):
 
     @property
     def TaskId(self):
-        r"""异步任务 ID。
+        r"""<p>异步任务 ID。</p>
         :rtype: int
         """
         return self._TaskId
@@ -738,6 +753,8 @@ class CreateInstancesRequest(AbstractModel):
         :type AutoRenew: int
         :param _SecurityGroupIdList: <p>给实例设置安全组 ID 数组。</p>
         :type SecurityGroupIdList: list of str
+        :param _NodeSet: <p>实例的节点信息。</p><ul><li>包含节点ID、节点类型、节点可用区 ID等。具体信息，请参见<a href="https://cloud.tencent.com/document/product/1520/86230#NodeInfo">NodeInfo</a> 。</li><li>目前支持传入节点的类型（主节点或者副本节点），节点的可用区。未指定该参数时，系统将默认创建单可用区架构实例。</li></ul>
+        :type NodeSet: list of NodeInfo
         :param _ResourceTags: <p>给实例绑定标签。</p>
         :type ResourceTags: list of ResourceTag
         :param _MemSize: <p>极速版，单分片持久化内存容量。<b>MachineMemory</b>与持久内存容量<b>MemSize</b>为固定搭配，即2GB内存，固定分配8GB的持久内存，不可选择。具体信息，请参见<a href="https://cloud.tencent.com/document/product/1520/80808">产品规格</a>。</p><p>单位：GB。</p>
@@ -768,6 +785,7 @@ class CreateInstancesRequest(AbstractModel):
         self._VPort = None
         self._AutoRenew = None
         self._SecurityGroupIdList = None
+        self._NodeSet = None
         self._ResourceTags = None
         self._MemSize = None
         self._DiskSize = None
@@ -963,6 +981,17 @@ class CreateInstancesRequest(AbstractModel):
         self._SecurityGroupIdList = SecurityGroupIdList
 
     @property
+    def NodeSet(self):
+        r"""<p>实例的节点信息。</p><ul><li>包含节点ID、节点类型、节点可用区 ID等。具体信息，请参见<a href="https://cloud.tencent.com/document/product/1520/86230#NodeInfo">NodeInfo</a> 。</li><li>目前支持传入节点的类型（主节点或者副本节点），节点的可用区。未指定该参数时，系统将默认创建单可用区架构实例。</li></ul>
+        :rtype: list of NodeInfo
+        """
+        return self._NodeSet
+
+    @NodeSet.setter
+    def NodeSet(self, NodeSet):
+        self._NodeSet = NodeSet
+
+    @property
     def ResourceTags(self):
         r"""<p>给实例绑定标签。</p>
         :rtype: list of ResourceTag
@@ -1047,6 +1076,12 @@ class CreateInstancesRequest(AbstractModel):
         self._VPort = params.get("VPort")
         self._AutoRenew = params.get("AutoRenew")
         self._SecurityGroupIdList = params.get("SecurityGroupIdList")
+        if params.get("NodeSet") is not None:
+            self._NodeSet = []
+            for item in params.get("NodeSet"):
+                obj = NodeInfo()
+                obj._deserialize(item)
+                self._NodeSet.append(obj)
         if params.get("ResourceTags") is not None:
             self._ResourceTags = []
             for item in params.get("ResourceTags"):
@@ -8901,22 +8936,22 @@ class UpgradeInstanceRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceId: 实例 ID。
+        :param _InstanceId: <p>实例 ID。</p>
         :type InstanceId: str
-        :param _MemSize: 配置变更后，每个分片持久化内存容量，单位：GB。
-<ul><li>KeeWiDB 内存容量<b>MachineMemory</b>与持久内存容量<b>MemSize</b>为固定搭配，即2GB内存，固定分配8GB的持久内存，不可选择。具体信息，请参见[产品规格](https://cloud.tencent.com/document/product/1520/80808)。</li><li>变更实例内存、持久化内存与磁盘、变更实例的分片数量，每次只能变更一项。</li></ul>
+        :param _MemSize: <p>配置变更后，每个分片持久化内存容量，单位：GB。</p><ul><li>KeeWiDB 内存容量<b>MachineMemory</b>与持久内存容量<b>MemSize</b>为固定搭配，即2GB内存，固定分配8GB的持久内存，不可选择。具体信息，请参见[产品规格](https://cloud.tencent.com/document/product/1520/80808)。</li><li>变更实例内存、持久化内存与磁盘、变更实例的分片数量，每次只能变更一项。</li></ul>
         :type MemSize: int
-        :param _MachineCpu: CPU 核数，可忽略不传
+        :param _MachineCpu: <p>CPU 核数，可忽略不传</p>
         :type MachineCpu: int
-        :param _MachineMemory: 实例内存容量，单位：GB。
-<ul><li>KeeWiDB 内存容量<b>MachineMemory</b>与持久内存容量<b>MemSize</b>为固定搭配，即2GB内存，固定分配8GB的持久内存，不可选择。具体信息，请参见[产品规格](https://cloud.tencent.com/document/product/1520/80808)。</li><li>变更实例内存、持久化内存与磁盘、变更实例的分片数量，每次只能变更一项。</li></ul>
+        :param _MachineMemory: <p>实例内存容量，单位：GB。</p><ul><li>KeeWiDB 内存容量<b>MachineMemory</b>与持久内存容量<b>MemSize</b>为固定搭配，即2GB内存，固定分配8GB的持久内存，不可选择。具体信息，请参见[产品规格](https://cloud.tencent.com/document/product/1520/80808)。</li><li>变更实例内存、持久化内存与磁盘、变更实例的分片数量，每次只能变更一项。</li></ul>
         :type MachineMemory: int
-        :param _ShardNum: 配置变更后，分片数量。
-<ul><li>增加后分片的数量务必为增加之前数量的整数倍。分片数量支持选择3、5、6、8、9、10、12、15、16、18、20、21、24、25、27、30、32、33、35、36、39、40、42、45、48、50、51、54、55、56、57、60、63、64分片。</li><li>变更实例内存、持久化内存与磁盘、变更实例的分片数量，每次只能变更一项。</li></ul>
+        :param _ShardNum: <p>配置变更后，分片数量。</p><ul><li>增加后分片的数量务必为增加之前数量的整数倍。分片数量支持选择3、5、6、8、9、10、12、15、16、18、20、21、24、25、27、30、32、33、35、36、39、40、42、45、48、50、51、54、55、56、57、60、63、64分片。</li><li>变更实例内存、持久化内存与磁盘、变更实例的分片数量，每次只能变更一项。</li></ul>
         :type ShardNum: int
-        :param _DiskSize: 配置变更后，每个分片硬盘的容量。单位：GB。
-<ul><li>每一缓存分片容量，对应的磁盘容量范围不同。具体信息，请参见[产品规格](https://cloud.tencent.com/document/product/1520/80808)。</li><li>变更实例内存、持久化内存与磁盘、变更实例的分片数量，每次只能变更一项。</li></ul>
+        :param _DiskSize: <p>配置变更后，每个分片硬盘的容量。单位：GB。</p><ul><li>每一缓存分片容量，对应的磁盘容量范围不同。具体信息，请参见[产品规格](https://cloud.tencent.com/document/product/1520/80808)。</li><li>变更实例内存、持久化内存与磁盘、变更实例的分片数量，每次只能变更一项。</li></ul>
         :type DiskSize: int
+        :param _ReplicasNum: <p>配置变更后，副本数量。需要和NodeSet参数一起传递。</p><p>取值范围：[1, 2]</p>
+        :type ReplicasNum: int
+        :param _NodeSet: <p>配置变更后，副本节点信息。</p><ul><li>增加副本：可不传NodeId</li><li>删除副本：需传保留节点的NodeId</li></ul>
+        :type NodeSet: list of NodeInfo
         """
         self._InstanceId = None
         self._MemSize = None
@@ -8924,10 +8959,12 @@ class UpgradeInstanceRequest(AbstractModel):
         self._MachineMemory = None
         self._ShardNum = None
         self._DiskSize = None
+        self._ReplicasNum = None
+        self._NodeSet = None
 
     @property
     def InstanceId(self):
-        r"""实例 ID。
+        r"""<p>实例 ID。</p>
         :rtype: str
         """
         return self._InstanceId
@@ -8938,8 +8975,7 @@ class UpgradeInstanceRequest(AbstractModel):
 
     @property
     def MemSize(self):
-        r"""配置变更后，每个分片持久化内存容量，单位：GB。
-<ul><li>KeeWiDB 内存容量<b>MachineMemory</b>与持久内存容量<b>MemSize</b>为固定搭配，即2GB内存，固定分配8GB的持久内存，不可选择。具体信息，请参见[产品规格](https://cloud.tencent.com/document/product/1520/80808)。</li><li>变更实例内存、持久化内存与磁盘、变更实例的分片数量，每次只能变更一项。</li></ul>
+        r"""<p>配置变更后，每个分片持久化内存容量，单位：GB。</p><ul><li>KeeWiDB 内存容量<b>MachineMemory</b>与持久内存容量<b>MemSize</b>为固定搭配，即2GB内存，固定分配8GB的持久内存，不可选择。具体信息，请参见[产品规格](https://cloud.tencent.com/document/product/1520/80808)。</li><li>变更实例内存、持久化内存与磁盘、变更实例的分片数量，每次只能变更一项。</li></ul>
         :rtype: int
         """
         return self._MemSize
@@ -8950,7 +8986,7 @@ class UpgradeInstanceRequest(AbstractModel):
 
     @property
     def MachineCpu(self):
-        r"""CPU 核数，可忽略不传
+        r"""<p>CPU 核数，可忽略不传</p>
         :rtype: int
         """
         return self._MachineCpu
@@ -8961,8 +8997,7 @@ class UpgradeInstanceRequest(AbstractModel):
 
     @property
     def MachineMemory(self):
-        r"""实例内存容量，单位：GB。
-<ul><li>KeeWiDB 内存容量<b>MachineMemory</b>与持久内存容量<b>MemSize</b>为固定搭配，即2GB内存，固定分配8GB的持久内存，不可选择。具体信息，请参见[产品规格](https://cloud.tencent.com/document/product/1520/80808)。</li><li>变更实例内存、持久化内存与磁盘、变更实例的分片数量，每次只能变更一项。</li></ul>
+        r"""<p>实例内存容量，单位：GB。</p><ul><li>KeeWiDB 内存容量<b>MachineMemory</b>与持久内存容量<b>MemSize</b>为固定搭配，即2GB内存，固定分配8GB的持久内存，不可选择。具体信息，请参见[产品规格](https://cloud.tencent.com/document/product/1520/80808)。</li><li>变更实例内存、持久化内存与磁盘、变更实例的分片数量，每次只能变更一项。</li></ul>
         :rtype: int
         """
         return self._MachineMemory
@@ -8973,8 +9008,7 @@ class UpgradeInstanceRequest(AbstractModel):
 
     @property
     def ShardNum(self):
-        r"""配置变更后，分片数量。
-<ul><li>增加后分片的数量务必为增加之前数量的整数倍。分片数量支持选择3、5、6、8、9、10、12、15、16、18、20、21、24、25、27、30、32、33、35、36、39、40、42、45、48、50、51、54、55、56、57、60、63、64分片。</li><li>变更实例内存、持久化内存与磁盘、变更实例的分片数量，每次只能变更一项。</li></ul>
+        r"""<p>配置变更后，分片数量。</p><ul><li>增加后分片的数量务必为增加之前数量的整数倍。分片数量支持选择3、5、6、8、9、10、12、15、16、18、20、21、24、25、27、30、32、33、35、36、39、40、42、45、48、50、51、54、55、56、57、60、63、64分片。</li><li>变更实例内存、持久化内存与磁盘、变更实例的分片数量，每次只能变更一项。</li></ul>
         :rtype: int
         """
         return self._ShardNum
@@ -8985,8 +9019,7 @@ class UpgradeInstanceRequest(AbstractModel):
 
     @property
     def DiskSize(self):
-        r"""配置变更后，每个分片硬盘的容量。单位：GB。
-<ul><li>每一缓存分片容量，对应的磁盘容量范围不同。具体信息，请参见[产品规格](https://cloud.tencent.com/document/product/1520/80808)。</li><li>变更实例内存、持久化内存与磁盘、变更实例的分片数量，每次只能变更一项。</li></ul>
+        r"""<p>配置变更后，每个分片硬盘的容量。单位：GB。</p><ul><li>每一缓存分片容量，对应的磁盘容量范围不同。具体信息，请参见[产品规格](https://cloud.tencent.com/document/product/1520/80808)。</li><li>变更实例内存、持久化内存与磁盘、变更实例的分片数量，每次只能变更一项。</li></ul>
         :rtype: int
         """
         return self._DiskSize
@@ -8994,6 +9027,28 @@ class UpgradeInstanceRequest(AbstractModel):
     @DiskSize.setter
     def DiskSize(self, DiskSize):
         self._DiskSize = DiskSize
+
+    @property
+    def ReplicasNum(self):
+        r"""<p>配置变更后，副本数量。需要和NodeSet参数一起传递。</p><p>取值范围：[1, 2]</p>
+        :rtype: int
+        """
+        return self._ReplicasNum
+
+    @ReplicasNum.setter
+    def ReplicasNum(self, ReplicasNum):
+        self._ReplicasNum = ReplicasNum
+
+    @property
+    def NodeSet(self):
+        r"""<p>配置变更后，副本节点信息。</p><ul><li>增加副本：可不传NodeId</li><li>删除副本：需传保留节点的NodeId</li></ul>
+        :rtype: list of NodeInfo
+        """
+        return self._NodeSet
+
+    @NodeSet.setter
+    def NodeSet(self, NodeSet):
+        self._NodeSet = NodeSet
 
 
     def _deserialize(self, params):
@@ -9003,6 +9058,13 @@ class UpgradeInstanceRequest(AbstractModel):
         self._MachineMemory = params.get("MachineMemory")
         self._ShardNum = params.get("ShardNum")
         self._DiskSize = params.get("DiskSize")
+        self._ReplicasNum = params.get("ReplicasNum")
+        if params.get("NodeSet") is not None:
+            self._NodeSet = []
+            for item in params.get("NodeSet"):
+                obj = NodeInfo()
+                obj._deserialize(item)
+                self._NodeSet.append(obj)
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -9020,9 +9082,9 @@ class UpgradeInstanceResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DealId: 交易ID。
+        :param _DealId: <p>交易ID。</p>
         :type DealId: str
-        :param _DealName: 订单号。
+        :param _DealName: <p>订单号。</p>
         :type DealName: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -9035,7 +9097,7 @@ class UpgradeInstanceResponse(AbstractModel):
     def DealId(self):
         warnings.warn("parameter `DealId` is deprecated", DeprecationWarning) 
 
-        r"""交易ID。
+        r"""<p>交易ID。</p>
         :rtype: str
         """
         return self._DealId
@@ -9048,7 +9110,7 @@ class UpgradeInstanceResponse(AbstractModel):
 
     @property
     def DealName(self):
-        r"""订单号。
+        r"""<p>订单号。</p>
         :rtype: str
         """
         return self._DealName

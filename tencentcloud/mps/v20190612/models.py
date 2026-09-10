@@ -211,6 +211,591 @@ class AIAnalysisTemplateItem(AbstractModel):
         
 
 
+class AIDubbingTaskInput(AbstractModel):
+    r"""AI配音任务
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Definition: <p>AI配音模板id。</p>
+        :type Definition: int
+        :param _RawParameter: <p>AI配音自定义参数，当 Definition 填 0 时有效。 该参数用于高度定制场景，建议您优先使用 Definition 指定配音参数。</p>
+        :type RawParameter: :class:`tencentcloud.mps.v20190612.models.RawAIDubbingParameter`
+        :param _OverrideParameter: <p>AI配音自定义参数，当 Definition 不填 0 时有效。 当填写了该结构中的部分配音参数时，将使用填写的参数覆盖AI配音模板中的参数。 该参数用于高度定制场景，建议您仅使用 Definition 指定配音参数。</p>
+        :type OverrideParameter: :class:`tencentcloud.mps.v20190612.models.OverrideAIDubbingParameter`
+        :param _OutputStorage: <p>文件的目标存储，不填则继承上层的 OutputStorage 值。</p>
+        :type OutputStorage: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
+        :param _SrcSubtitleInfo: <p>外部源字幕文件信息。</p>
+        :type SrcSubtitleInfo: :class:`tencentcloud.mps.v20190612.models.MediaInputInfo`
+        :param _DstSubtitleInfos: <p>外部字幕文件信息，译文字幕。</p>
+        :type DstSubtitleInfos: list of DstSubtitleInput
+        :param _OutputObjectPath: <p>文件的输出路径，可以为相对路径或者绝对路径。<br>若需定义输出路径，路径需以<code>.{format}</code>结尾。变量名请参考 <a href="https://cloud.tencent.com/document/product/862/37039">文件名变量说明</a>。<br>相对路径示例：</p><li>文件名_{变量名}.{format}</li><li>文件名.{format}</li>绝对路径示例：<li>/自定义路径/文件名_{变量名}.{format}</li><p><strong>注意</strong>：目前不支持<code>BatchProcessMedia</code>接口。</p>
+        :type OutputObjectPath: str
+        :param _ExtendedParameter: <p>AI配音扩展参数，序列化的 json 字符串。</p>
+        :type ExtendedParameter: str
+        :param _DramaId: <p>关联剧集ID。<br>注意：配音模式为按角色智能配音时此值生效。</p>
+        :type DramaId: str
+        """
+        self._Definition = None
+        self._RawParameter = None
+        self._OverrideParameter = None
+        self._OutputStorage = None
+        self._SrcSubtitleInfo = None
+        self._DstSubtitleInfos = None
+        self._OutputObjectPath = None
+        self._ExtendedParameter = None
+        self._DramaId = None
+
+    @property
+    def Definition(self):
+        r"""<p>AI配音模板id。</p>
+        :rtype: int
+        """
+        return self._Definition
+
+    @Definition.setter
+    def Definition(self, Definition):
+        self._Definition = Definition
+
+    @property
+    def RawParameter(self):
+        r"""<p>AI配音自定义参数，当 Definition 填 0 时有效。 该参数用于高度定制场景，建议您优先使用 Definition 指定配音参数。</p>
+        :rtype: :class:`tencentcloud.mps.v20190612.models.RawAIDubbingParameter`
+        """
+        return self._RawParameter
+
+    @RawParameter.setter
+    def RawParameter(self, RawParameter):
+        self._RawParameter = RawParameter
+
+    @property
+    def OverrideParameter(self):
+        r"""<p>AI配音自定义参数，当 Definition 不填 0 时有效。 当填写了该结构中的部分配音参数时，将使用填写的参数覆盖AI配音模板中的参数。 该参数用于高度定制场景，建议您仅使用 Definition 指定配音参数。</p>
+        :rtype: :class:`tencentcloud.mps.v20190612.models.OverrideAIDubbingParameter`
+        """
+        return self._OverrideParameter
+
+    @OverrideParameter.setter
+    def OverrideParameter(self, OverrideParameter):
+        self._OverrideParameter = OverrideParameter
+
+    @property
+    def OutputStorage(self):
+        r"""<p>文件的目标存储，不填则继承上层的 OutputStorage 值。</p>
+        :rtype: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
+        """
+        return self._OutputStorage
+
+    @OutputStorage.setter
+    def OutputStorage(self, OutputStorage):
+        self._OutputStorage = OutputStorage
+
+    @property
+    def SrcSubtitleInfo(self):
+        r"""<p>外部源字幕文件信息。</p>
+        :rtype: :class:`tencentcloud.mps.v20190612.models.MediaInputInfo`
+        """
+        return self._SrcSubtitleInfo
+
+    @SrcSubtitleInfo.setter
+    def SrcSubtitleInfo(self, SrcSubtitleInfo):
+        self._SrcSubtitleInfo = SrcSubtitleInfo
+
+    @property
+    def DstSubtitleInfos(self):
+        r"""<p>外部字幕文件信息，译文字幕。</p>
+        :rtype: list of DstSubtitleInput
+        """
+        return self._DstSubtitleInfos
+
+    @DstSubtitleInfos.setter
+    def DstSubtitleInfos(self, DstSubtitleInfos):
+        self._DstSubtitleInfos = DstSubtitleInfos
+
+    @property
+    def OutputObjectPath(self):
+        r"""<p>文件的输出路径，可以为相对路径或者绝对路径。<br>若需定义输出路径，路径需以<code>.{format}</code>结尾。变量名请参考 <a href="https://cloud.tencent.com/document/product/862/37039">文件名变量说明</a>。<br>相对路径示例：</p><li>文件名_{变量名}.{format}</li><li>文件名.{format}</li>绝对路径示例：<li>/自定义路径/文件名_{变量名}.{format}</li><p><strong>注意</strong>：目前不支持<code>BatchProcessMedia</code>接口。</p>
+        :rtype: str
+        """
+        return self._OutputObjectPath
+
+    @OutputObjectPath.setter
+    def OutputObjectPath(self, OutputObjectPath):
+        self._OutputObjectPath = OutputObjectPath
+
+    @property
+    def ExtendedParameter(self):
+        r"""<p>AI配音扩展参数，序列化的 json 字符串。</p>
+        :rtype: str
+        """
+        return self._ExtendedParameter
+
+    @ExtendedParameter.setter
+    def ExtendedParameter(self, ExtendedParameter):
+        self._ExtendedParameter = ExtendedParameter
+
+    @property
+    def DramaId(self):
+        r"""<p>关联剧集ID。<br>注意：配音模式为按角色智能配音时此值生效。</p>
+        :rtype: str
+        """
+        return self._DramaId
+
+    @DramaId.setter
+    def DramaId(self, DramaId):
+        self._DramaId = DramaId
+
+
+    def _deserialize(self, params):
+        self._Definition = params.get("Definition")
+        if params.get("RawParameter") is not None:
+            self._RawParameter = RawAIDubbingParameter()
+            self._RawParameter._deserialize(params.get("RawParameter"))
+        if params.get("OverrideParameter") is not None:
+            self._OverrideParameter = OverrideAIDubbingParameter()
+            self._OverrideParameter._deserialize(params.get("OverrideParameter"))
+        if params.get("OutputStorage") is not None:
+            self._OutputStorage = TaskOutputStorage()
+            self._OutputStorage._deserialize(params.get("OutputStorage"))
+        if params.get("SrcSubtitleInfo") is not None:
+            self._SrcSubtitleInfo = MediaInputInfo()
+            self._SrcSubtitleInfo._deserialize(params.get("SrcSubtitleInfo"))
+        if params.get("DstSubtitleInfos") is not None:
+            self._DstSubtitleInfos = []
+            for item in params.get("DstSubtitleInfos"):
+                obj = DstSubtitleInput()
+                obj._deserialize(item)
+                self._DstSubtitleInfos.append(obj)
+        self._OutputObjectPath = params.get("OutputObjectPath")
+        self._ExtendedParameter = params.get("ExtendedParameter")
+        self._DramaId = params.get("DramaId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AIDubbingTaskOutput(AbstractModel):
+    r"""AI配音结果信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _OriginSubtitlePath: <p>基于画面提取的字幕文件路径。</p>
+        :type OriginSubtitlePath: str
+        :param _TranslateSubtitlePath: <p>基于画面提取的字幕翻译文件路径。</p>
+        :type TranslateSubtitlePath: str
+        :param _VoiceClonedVideo: <p>音色克隆后的视频文件地址</p>
+        :type VoiceClonedVideo: str
+        :param _VoiceClonedMarkFile: <p>音色克隆的标注文件地址</p>
+        :type VoiceClonedMarkFile: str
+        :param _VideoPath: <p>视频输出路径。</p>
+        :type VideoPath: str
+        :param _OriginSubtitleFileId: <p>基于画面提取的字幕文件FileId。</p>
+        :type OriginSubtitleFileId: str
+        :param _TranslateSubtitleFileId: <p>基于画面提取的字幕翻译文件FileId    。</p>
+        :type TranslateSubtitleFileId: str
+        :param _SpeakerPath: <p>标记文件路径。</p>
+        :type SpeakerPath: str
+        :param _SpeakerFileId: <p>标记文件Fileid。</p>
+        :type SpeakerFileId: str
+        :param _EraseVideoFileId: <p>擦除视频输出FileId。</p>
+        :type EraseVideoFileId: str
+        :param _EraseVideoPath: <p>擦除视频输出路径。</p>
+        :type EraseVideoPath: str
+        :param _DstAudioPath: <p>译文配音音频文件路径。</p>
+        :type DstAudioPath: str
+        :param _DstAudioFileId: <p>译文配音音频文件FileId。</p>
+        :type DstAudioFileId: str
+        :param _DubbingEditInfoUrl: <p>音色克隆编辑信息</p><p>用于音色克隆二次修改的编辑信息</p>
+        :type DubbingEditInfoUrl: str
+        :param _SubtitlePos: <p>擦除的字幕位置。<strong>注意</strong>：仅对字幕提取且开启返回字幕位置时有效。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type SubtitlePos: :class:`tencentcloud.mps.v20190612.models.SubtitlePosition`
+        :param _OutputStorage: <p>AI配音任务输出文件的存储位置。</p>
+        :type OutputStorage: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
+        """
+        self._OriginSubtitlePath = None
+        self._TranslateSubtitlePath = None
+        self._VoiceClonedVideo = None
+        self._VoiceClonedMarkFile = None
+        self._VideoPath = None
+        self._OriginSubtitleFileId = None
+        self._TranslateSubtitleFileId = None
+        self._SpeakerPath = None
+        self._SpeakerFileId = None
+        self._EraseVideoFileId = None
+        self._EraseVideoPath = None
+        self._DstAudioPath = None
+        self._DstAudioFileId = None
+        self._DubbingEditInfoUrl = None
+        self._SubtitlePos = None
+        self._OutputStorage = None
+
+    @property
+    def OriginSubtitlePath(self):
+        r"""<p>基于画面提取的字幕文件路径。</p>
+        :rtype: str
+        """
+        return self._OriginSubtitlePath
+
+    @OriginSubtitlePath.setter
+    def OriginSubtitlePath(self, OriginSubtitlePath):
+        self._OriginSubtitlePath = OriginSubtitlePath
+
+    @property
+    def TranslateSubtitlePath(self):
+        r"""<p>基于画面提取的字幕翻译文件路径。</p>
+        :rtype: str
+        """
+        return self._TranslateSubtitlePath
+
+    @TranslateSubtitlePath.setter
+    def TranslateSubtitlePath(self, TranslateSubtitlePath):
+        self._TranslateSubtitlePath = TranslateSubtitlePath
+
+    @property
+    def VoiceClonedVideo(self):
+        r"""<p>音色克隆后的视频文件地址</p>
+        :rtype: str
+        """
+        return self._VoiceClonedVideo
+
+    @VoiceClonedVideo.setter
+    def VoiceClonedVideo(self, VoiceClonedVideo):
+        self._VoiceClonedVideo = VoiceClonedVideo
+
+    @property
+    def VoiceClonedMarkFile(self):
+        r"""<p>音色克隆的标注文件地址</p>
+        :rtype: str
+        """
+        return self._VoiceClonedMarkFile
+
+    @VoiceClonedMarkFile.setter
+    def VoiceClonedMarkFile(self, VoiceClonedMarkFile):
+        self._VoiceClonedMarkFile = VoiceClonedMarkFile
+
+    @property
+    def VideoPath(self):
+        r"""<p>视频输出路径。</p>
+        :rtype: str
+        """
+        return self._VideoPath
+
+    @VideoPath.setter
+    def VideoPath(self, VideoPath):
+        self._VideoPath = VideoPath
+
+    @property
+    def OriginSubtitleFileId(self):
+        r"""<p>基于画面提取的字幕文件FileId。</p>
+        :rtype: str
+        """
+        return self._OriginSubtitleFileId
+
+    @OriginSubtitleFileId.setter
+    def OriginSubtitleFileId(self, OriginSubtitleFileId):
+        self._OriginSubtitleFileId = OriginSubtitleFileId
+
+    @property
+    def TranslateSubtitleFileId(self):
+        r"""<p>基于画面提取的字幕翻译文件FileId    。</p>
+        :rtype: str
+        """
+        return self._TranslateSubtitleFileId
+
+    @TranslateSubtitleFileId.setter
+    def TranslateSubtitleFileId(self, TranslateSubtitleFileId):
+        self._TranslateSubtitleFileId = TranslateSubtitleFileId
+
+    @property
+    def SpeakerPath(self):
+        r"""<p>标记文件路径。</p>
+        :rtype: str
+        """
+        return self._SpeakerPath
+
+    @SpeakerPath.setter
+    def SpeakerPath(self, SpeakerPath):
+        self._SpeakerPath = SpeakerPath
+
+    @property
+    def SpeakerFileId(self):
+        r"""<p>标记文件Fileid。</p>
+        :rtype: str
+        """
+        return self._SpeakerFileId
+
+    @SpeakerFileId.setter
+    def SpeakerFileId(self, SpeakerFileId):
+        self._SpeakerFileId = SpeakerFileId
+
+    @property
+    def EraseVideoFileId(self):
+        r"""<p>擦除视频输出FileId。</p>
+        :rtype: str
+        """
+        return self._EraseVideoFileId
+
+    @EraseVideoFileId.setter
+    def EraseVideoFileId(self, EraseVideoFileId):
+        self._EraseVideoFileId = EraseVideoFileId
+
+    @property
+    def EraseVideoPath(self):
+        r"""<p>擦除视频输出路径。</p>
+        :rtype: str
+        """
+        return self._EraseVideoPath
+
+    @EraseVideoPath.setter
+    def EraseVideoPath(self, EraseVideoPath):
+        self._EraseVideoPath = EraseVideoPath
+
+    @property
+    def DstAudioPath(self):
+        r"""<p>译文配音音频文件路径。</p>
+        :rtype: str
+        """
+        return self._DstAudioPath
+
+    @DstAudioPath.setter
+    def DstAudioPath(self, DstAudioPath):
+        self._DstAudioPath = DstAudioPath
+
+    @property
+    def DstAudioFileId(self):
+        r"""<p>译文配音音频文件FileId。</p>
+        :rtype: str
+        """
+        return self._DstAudioFileId
+
+    @DstAudioFileId.setter
+    def DstAudioFileId(self, DstAudioFileId):
+        self._DstAudioFileId = DstAudioFileId
+
+    @property
+    def DubbingEditInfoUrl(self):
+        r"""<p>音色克隆编辑信息</p><p>用于音色克隆二次修改的编辑信息</p>
+        :rtype: str
+        """
+        return self._DubbingEditInfoUrl
+
+    @DubbingEditInfoUrl.setter
+    def DubbingEditInfoUrl(self, DubbingEditInfoUrl):
+        self._DubbingEditInfoUrl = DubbingEditInfoUrl
+
+    @property
+    def SubtitlePos(self):
+        r"""<p>擦除的字幕位置。<strong>注意</strong>：仅对字幕提取且开启返回字幕位置时有效。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.SubtitlePosition`
+        """
+        return self._SubtitlePos
+
+    @SubtitlePos.setter
+    def SubtitlePos(self, SubtitlePos):
+        self._SubtitlePos = SubtitlePos
+
+    @property
+    def OutputStorage(self):
+        r"""<p>AI配音任务输出文件的存储位置。</p>
+        :rtype: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
+        """
+        return self._OutputStorage
+
+    @OutputStorage.setter
+    def OutputStorage(self, OutputStorage):
+        self._OutputStorage = OutputStorage
+
+
+    def _deserialize(self, params):
+        self._OriginSubtitlePath = params.get("OriginSubtitlePath")
+        self._TranslateSubtitlePath = params.get("TranslateSubtitlePath")
+        self._VoiceClonedVideo = params.get("VoiceClonedVideo")
+        self._VoiceClonedMarkFile = params.get("VoiceClonedMarkFile")
+        self._VideoPath = params.get("VideoPath")
+        self._OriginSubtitleFileId = params.get("OriginSubtitleFileId")
+        self._TranslateSubtitleFileId = params.get("TranslateSubtitleFileId")
+        self._SpeakerPath = params.get("SpeakerPath")
+        self._SpeakerFileId = params.get("SpeakerFileId")
+        self._EraseVideoFileId = params.get("EraseVideoFileId")
+        self._EraseVideoPath = params.get("EraseVideoPath")
+        self._DstAudioPath = params.get("DstAudioPath")
+        self._DstAudioFileId = params.get("DstAudioFileId")
+        self._DubbingEditInfoUrl = params.get("DubbingEditInfoUrl")
+        if params.get("SubtitlePos") is not None:
+            self._SubtitlePos = SubtitlePosition()
+            self._SubtitlePos._deserialize(params.get("SubtitlePos"))
+        if params.get("OutputStorage") is not None:
+            self._OutputStorage = TaskOutputStorage()
+            self._OutputStorage._deserialize(params.get("OutputStorage"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class AIDubbingTaskResult(AbstractModel):
+    r"""AI配音任务结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Status: <p>任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。</p>
+        :type Status: str
+        :param _ErrCodeExt: <p>错误码，空字符串表示成功，其他值表示失败，取值请参考 <a href="https://cloud.tencent.com/document/product/862/50369#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81">媒体处理类错误码</a> 列表。</p>
+        :type ErrCodeExt: str
+        :param _Message: <p>错误信息。</p>
+        :type Message: str
+        :param _Input: <p>AI配音任务输入。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Input: :class:`tencentcloud.mps.v20190612.models.AIDubbingTaskInput`
+        :param _Output: <p>AI配音任务输出。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :type Output: :class:`tencentcloud.mps.v20190612.models.AIDubbingTaskOutput`
+        :param _Progress: <p>任务进度。</p>
+        :type Progress: int
+        :param _BeginProcessTime: <p>任务开始执行的时间，采用 ISO 日期格式。</p>
+        :type BeginProcessTime: str
+        :param _FinishTime: <p>任务执行完毕的时间，采用 ISO 日期格式。</p>
+        :type FinishTime: str
+        """
+        self._Status = None
+        self._ErrCodeExt = None
+        self._Message = None
+        self._Input = None
+        self._Output = None
+        self._Progress = None
+        self._BeginProcessTime = None
+        self._FinishTime = None
+
+    @property
+    def Status(self):
+        r"""<p>任务状态，有 PROCESSING，SUCCESS 和 FAIL 三种。</p>
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def ErrCodeExt(self):
+        r"""<p>错误码，空字符串表示成功，其他值表示失败，取值请参考 <a href="https://cloud.tencent.com/document/product/862/50369#.E8.A7.86.E9.A2.91.E5.A4.84.E7.90.86.E7.B1.BB.E9.94.99.E8.AF.AF.E7.A0.81">媒体处理类错误码</a> 列表。</p>
+        :rtype: str
+        """
+        return self._ErrCodeExt
+
+    @ErrCodeExt.setter
+    def ErrCodeExt(self, ErrCodeExt):
+        self._ErrCodeExt = ErrCodeExt
+
+    @property
+    def Message(self):
+        r"""<p>错误信息。</p>
+        :rtype: str
+        """
+        return self._Message
+
+    @Message.setter
+    def Message(self, Message):
+        self._Message = Message
+
+    @property
+    def Input(self):
+        r"""<p>AI配音任务输入。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AIDubbingTaskInput`
+        """
+        return self._Input
+
+    @Input.setter
+    def Input(self, Input):
+        self._Input = Input
+
+    @property
+    def Output(self):
+        r"""<p>AI配音任务输出。</p>
+注意：此字段可能返回 null，表示取不到有效值。
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AIDubbingTaskOutput`
+        """
+        return self._Output
+
+    @Output.setter
+    def Output(self, Output):
+        self._Output = Output
+
+    @property
+    def Progress(self):
+        r"""<p>任务进度。</p>
+        :rtype: int
+        """
+        return self._Progress
+
+    @Progress.setter
+    def Progress(self, Progress):
+        self._Progress = Progress
+
+    @property
+    def BeginProcessTime(self):
+        r"""<p>任务开始执行的时间，采用 ISO 日期格式。</p>
+        :rtype: str
+        """
+        return self._BeginProcessTime
+
+    @BeginProcessTime.setter
+    def BeginProcessTime(self, BeginProcessTime):
+        self._BeginProcessTime = BeginProcessTime
+
+    @property
+    def FinishTime(self):
+        r"""<p>任务执行完毕的时间，采用 ISO 日期格式。</p>
+        :rtype: str
+        """
+        return self._FinishTime
+
+    @FinishTime.setter
+    def FinishTime(self, FinishTime):
+        self._FinishTime = FinishTime
+
+
+    def _deserialize(self, params):
+        self._Status = params.get("Status")
+        self._ErrCodeExt = params.get("ErrCodeExt")
+        self._Message = params.get("Message")
+        if params.get("Input") is not None:
+            self._Input = AIDubbingTaskInput()
+            self._Input._deserialize(params.get("Input"))
+        if params.get("Output") is not None:
+            self._Output = AIDubbingTaskOutput()
+            self._Output._deserialize(params.get("Output"))
+        self._Progress = params.get("Progress")
+        self._BeginProcessTime = params.get("BeginProcessTime")
+        self._FinishTime = params.get("FinishTime")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class AIRecognitionTemplateItem(AbstractModel):
     r"""视频内容识别模板详情
 
@@ -632,45 +1217,47 @@ class ActivityPara(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TranscodeTask: 视频转码任务
+        :param _TranscodeTask: <p>视频转码任务</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TranscodeTask: :class:`tencentcloud.mps.v20190612.models.TranscodeTaskInput`
-        :param _AnimatedGraphicTask: 视频转动图任务
+        :param _AnimatedGraphicTask: <p>视频转动图任务</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type AnimatedGraphicTask: :class:`tencentcloud.mps.v20190612.models.AnimatedGraphicTaskInput`
-        :param _SnapshotByTimeOffsetTask: 视频按时间点截图任务
+        :param _SnapshotByTimeOffsetTask: <p>视频按时间点截图任务</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type SnapshotByTimeOffsetTask: :class:`tencentcloud.mps.v20190612.models.SnapshotByTimeOffsetTaskInput`
-        :param _SampleSnapshotTask: 视频采样截图任务
+        :param _SampleSnapshotTask: <p>视频采样截图任务</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type SampleSnapshotTask: :class:`tencentcloud.mps.v20190612.models.SampleSnapshotTaskInput`
-        :param _ImageSpriteTask: 视频截雪碧图任务
+        :param _ImageSpriteTask: <p>视频截雪碧图任务</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ImageSpriteTask: :class:`tencentcloud.mps.v20190612.models.ImageSpriteTaskInput`
-        :param _AdaptiveDynamicStreamingTask: 转自适应码流任务
+        :param _AdaptiveDynamicStreamingTask: <p>转自适应码流任务</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type AdaptiveDynamicStreamingTask: :class:`tencentcloud.mps.v20190612.models.AdaptiveDynamicStreamingTaskInput`
-        :param _AiContentReviewTask: 视频内容审核类型任务
+        :param _AiContentReviewTask: <p>视频内容审核类型任务</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type AiContentReviewTask: :class:`tencentcloud.mps.v20190612.models.AiContentReviewTaskInput`
-        :param _AiAnalysisTask: 视频内容分析类型任务
+        :param _AiAnalysisTask: <p>视频内容分析类型任务</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type AiAnalysisTask: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskInput`
-        :param _AiRecognitionTask: 视频内容识别类型任务
+        :param _AiRecognitionTask: <p>视频内容识别类型任务</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type AiRecognitionTask: :class:`tencentcloud.mps.v20190612.models.AiRecognitionTaskInput`
-        :param _QualityControlTask: 媒体质检任务
+        :param _QualityControlTask: <p>媒体质检任务</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type QualityControlTask: :class:`tencentcloud.mps.v20190612.models.AiQualityControlTaskInput`
-        :param _ExecRulesTask: 任务条件判断
+        :param _ExecRulesTask: <p>任务条件判断</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ExecRulesTask: :class:`tencentcloud.mps.v20190612.models.ExecRulesTask`
-        :param _SmartSubtitlesTask: 智能字幕任务
+        :param _SmartSubtitlesTask: <p>智能字幕任务</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type SmartSubtitlesTask: :class:`tencentcloud.mps.v20190612.models.SmartSubtitlesTaskInput`
-        :param _SmartEraseTask: 智能擦除任务
+        :param _SmartEraseTask: <p>智能擦除任务</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type SmartEraseTask: :class:`tencentcloud.mps.v20190612.models.SmartEraseTaskInput`
+        :param _AIDubbingTask: <p>AI配音任务。</p>
+        :type AIDubbingTask: :class:`tencentcloud.mps.v20190612.models.AIDubbingTaskInput`
         """
         self._TranscodeTask = None
         self._AnimatedGraphicTask = None
@@ -685,10 +1272,11 @@ class ActivityPara(AbstractModel):
         self._ExecRulesTask = None
         self._SmartSubtitlesTask = None
         self._SmartEraseTask = None
+        self._AIDubbingTask = None
 
     @property
     def TranscodeTask(self):
-        r"""视频转码任务
+        r"""<p>视频转码任务</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mps.v20190612.models.TranscodeTaskInput`
         """
@@ -700,7 +1288,7 @@ class ActivityPara(AbstractModel):
 
     @property
     def AnimatedGraphicTask(self):
-        r"""视频转动图任务
+        r"""<p>视频转动图任务</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mps.v20190612.models.AnimatedGraphicTaskInput`
         """
@@ -712,7 +1300,7 @@ class ActivityPara(AbstractModel):
 
     @property
     def SnapshotByTimeOffsetTask(self):
-        r"""视频按时间点截图任务
+        r"""<p>视频按时间点截图任务</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mps.v20190612.models.SnapshotByTimeOffsetTaskInput`
         """
@@ -724,7 +1312,7 @@ class ActivityPara(AbstractModel):
 
     @property
     def SampleSnapshotTask(self):
-        r"""视频采样截图任务
+        r"""<p>视频采样截图任务</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mps.v20190612.models.SampleSnapshotTaskInput`
         """
@@ -736,7 +1324,7 @@ class ActivityPara(AbstractModel):
 
     @property
     def ImageSpriteTask(self):
-        r"""视频截雪碧图任务
+        r"""<p>视频截雪碧图任务</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mps.v20190612.models.ImageSpriteTaskInput`
         """
@@ -748,7 +1336,7 @@ class ActivityPara(AbstractModel):
 
     @property
     def AdaptiveDynamicStreamingTask(self):
-        r"""转自适应码流任务
+        r"""<p>转自适应码流任务</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mps.v20190612.models.AdaptiveDynamicStreamingTaskInput`
         """
@@ -760,7 +1348,7 @@ class ActivityPara(AbstractModel):
 
     @property
     def AiContentReviewTask(self):
-        r"""视频内容审核类型任务
+        r"""<p>视频内容审核类型任务</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mps.v20190612.models.AiContentReviewTaskInput`
         """
@@ -772,7 +1360,7 @@ class ActivityPara(AbstractModel):
 
     @property
     def AiAnalysisTask(self):
-        r"""视频内容分析类型任务
+        r"""<p>视频内容分析类型任务</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mps.v20190612.models.AiAnalysisTaskInput`
         """
@@ -784,7 +1372,7 @@ class ActivityPara(AbstractModel):
 
     @property
     def AiRecognitionTask(self):
-        r"""视频内容识别类型任务
+        r"""<p>视频内容识别类型任务</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mps.v20190612.models.AiRecognitionTaskInput`
         """
@@ -796,7 +1384,7 @@ class ActivityPara(AbstractModel):
 
     @property
     def QualityControlTask(self):
-        r"""媒体质检任务
+        r"""<p>媒体质检任务</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mps.v20190612.models.AiQualityControlTaskInput`
         """
@@ -808,7 +1396,7 @@ class ActivityPara(AbstractModel):
 
     @property
     def ExecRulesTask(self):
-        r"""任务条件判断
+        r"""<p>任务条件判断</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mps.v20190612.models.ExecRulesTask`
         """
@@ -820,7 +1408,7 @@ class ActivityPara(AbstractModel):
 
     @property
     def SmartSubtitlesTask(self):
-        r"""智能字幕任务
+        r"""<p>智能字幕任务</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mps.v20190612.models.SmartSubtitlesTaskInput`
         """
@@ -832,7 +1420,7 @@ class ActivityPara(AbstractModel):
 
     @property
     def SmartEraseTask(self):
-        r"""智能擦除任务
+        r"""<p>智能擦除任务</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mps.v20190612.models.SmartEraseTaskInput`
         """
@@ -841,6 +1429,17 @@ class ActivityPara(AbstractModel):
     @SmartEraseTask.setter
     def SmartEraseTask(self, SmartEraseTask):
         self._SmartEraseTask = SmartEraseTask
+
+    @property
+    def AIDubbingTask(self):
+        r"""<p>AI配音任务。</p>
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AIDubbingTaskInput`
+        """
+        return self._AIDubbingTask
+
+    @AIDubbingTask.setter
+    def AIDubbingTask(self, AIDubbingTask):
+        self._AIDubbingTask = AIDubbingTask
 
 
     def _deserialize(self, params):
@@ -883,6 +1482,9 @@ class ActivityPara(AbstractModel):
         if params.get("SmartEraseTask") is not None:
             self._SmartEraseTask = SmartEraseTaskInput()
             self._SmartEraseTask._deserialize(params.get("SmartEraseTask"))
+        if params.get("AIDubbingTask") is not None:
+            self._AIDubbingTask = AIDubbingTaskInput()
+            self._AIDubbingTask._deserialize(params.get("AIDubbingTask"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -900,45 +1502,47 @@ class ActivityResItem(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TranscodeTask: 转码任务输出
+        :param _TranscodeTask: <p>转码任务输出</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type TranscodeTask: :class:`tencentcloud.mps.v20190612.models.MediaProcessTaskTranscodeResult`
-        :param _AnimatedGraphicTask: 转动图任务输出
+        :param _AnimatedGraphicTask: <p>转动图任务输出</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type AnimatedGraphicTask: :class:`tencentcloud.mps.v20190612.models.MediaProcessTaskAnimatedGraphicResult`
-        :param _SnapshotByTimeOffsetTask: 时间点截图任务输出
+        :param _SnapshotByTimeOffsetTask: <p>时间点截图任务输出</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type SnapshotByTimeOffsetTask: :class:`tencentcloud.mps.v20190612.models.MediaProcessTaskSnapshotByTimeOffsetResult`
-        :param _SampleSnapshotTask: 采样截图任务输出
+        :param _SampleSnapshotTask: <p>采样截图任务输出</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type SampleSnapshotTask: :class:`tencentcloud.mps.v20190612.models.MediaProcessTaskSampleSnapshotResult`
-        :param _ImageSpriteTask: 雪碧图任务输出
+        :param _ImageSpriteTask: <p>雪碧图任务输出</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ImageSpriteTask: :class:`tencentcloud.mps.v20190612.models.MediaProcessTaskImageSpriteResult`
-        :param _AdaptiveDynamicStreamingTask: 自适应码流任务输出
+        :param _AdaptiveDynamicStreamingTask: <p>自适应码流任务输出</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type AdaptiveDynamicStreamingTask: :class:`tencentcloud.mps.v20190612.models.MediaProcessTaskAdaptiveDynamicStreamingResult`
-        :param _RecognitionTask: 识别任务输出
+        :param _RecognitionTask: <p>识别任务输出</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type RecognitionTask: :class:`tencentcloud.mps.v20190612.models.ScheduleRecognitionTaskResult`
-        :param _ReviewTask: 审核任务输出
+        :param _ReviewTask: <p>审核任务输出</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ReviewTask: :class:`tencentcloud.mps.v20190612.models.ScheduleReviewTaskResult`
-        :param _AnalysisTask: 分析任务输出
+        :param _AnalysisTask: <p>分析任务输出</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type AnalysisTask: :class:`tencentcloud.mps.v20190612.models.ScheduleAnalysisTaskResult`
-        :param _QualityControlTask: 媒体质检任务输出
+        :param _QualityControlTask: <p>媒体质检任务输出</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type QualityControlTask: :class:`tencentcloud.mps.v20190612.models.ScheduleQualityControlTaskResult`
-        :param _ExecRuleTask: 条件判断任务输出
+        :param _ExecRuleTask: <p>条件判断任务输出</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ExecRuleTask: :class:`tencentcloud.mps.v20190612.models.ScheduleExecRuleTaskResult`
-        :param _SmartSubtitlesTask: 智能字幕任务输出
+        :param _SmartSubtitlesTask: <p>智能字幕任务输出</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type SmartSubtitlesTask: :class:`tencentcloud.mps.v20190612.models.ScheduleSmartSubtitleTaskResult`
-        :param _SmartEraseTask: 智能擦除任务输出
+        :param _SmartEraseTask: <p>智能擦除任务输出</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type SmartEraseTask: :class:`tencentcloud.mps.v20190612.models.SmartEraseTaskResult`
+        :param _AIDubbingTask: <p>AI配音任务输出。</p>
+        :type AIDubbingTask: :class:`tencentcloud.mps.v20190612.models.AIDubbingTaskResult`
         """
         self._TranscodeTask = None
         self._AnimatedGraphicTask = None
@@ -953,10 +1557,11 @@ class ActivityResItem(AbstractModel):
         self._ExecRuleTask = None
         self._SmartSubtitlesTask = None
         self._SmartEraseTask = None
+        self._AIDubbingTask = None
 
     @property
     def TranscodeTask(self):
-        r"""转码任务输出
+        r"""<p>转码任务输出</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mps.v20190612.models.MediaProcessTaskTranscodeResult`
         """
@@ -968,7 +1573,7 @@ class ActivityResItem(AbstractModel):
 
     @property
     def AnimatedGraphicTask(self):
-        r"""转动图任务输出
+        r"""<p>转动图任务输出</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mps.v20190612.models.MediaProcessTaskAnimatedGraphicResult`
         """
@@ -980,7 +1585,7 @@ class ActivityResItem(AbstractModel):
 
     @property
     def SnapshotByTimeOffsetTask(self):
-        r"""时间点截图任务输出
+        r"""<p>时间点截图任务输出</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mps.v20190612.models.MediaProcessTaskSnapshotByTimeOffsetResult`
         """
@@ -992,7 +1597,7 @@ class ActivityResItem(AbstractModel):
 
     @property
     def SampleSnapshotTask(self):
-        r"""采样截图任务输出
+        r"""<p>采样截图任务输出</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mps.v20190612.models.MediaProcessTaskSampleSnapshotResult`
         """
@@ -1004,7 +1609,7 @@ class ActivityResItem(AbstractModel):
 
     @property
     def ImageSpriteTask(self):
-        r"""雪碧图任务输出
+        r"""<p>雪碧图任务输出</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mps.v20190612.models.MediaProcessTaskImageSpriteResult`
         """
@@ -1016,7 +1621,7 @@ class ActivityResItem(AbstractModel):
 
     @property
     def AdaptiveDynamicStreamingTask(self):
-        r"""自适应码流任务输出
+        r"""<p>自适应码流任务输出</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mps.v20190612.models.MediaProcessTaskAdaptiveDynamicStreamingResult`
         """
@@ -1028,7 +1633,7 @@ class ActivityResItem(AbstractModel):
 
     @property
     def RecognitionTask(self):
-        r"""识别任务输出
+        r"""<p>识别任务输出</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mps.v20190612.models.ScheduleRecognitionTaskResult`
         """
@@ -1040,7 +1645,7 @@ class ActivityResItem(AbstractModel):
 
     @property
     def ReviewTask(self):
-        r"""审核任务输出
+        r"""<p>审核任务输出</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mps.v20190612.models.ScheduleReviewTaskResult`
         """
@@ -1052,7 +1657,7 @@ class ActivityResItem(AbstractModel):
 
     @property
     def AnalysisTask(self):
-        r"""分析任务输出
+        r"""<p>分析任务输出</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mps.v20190612.models.ScheduleAnalysisTaskResult`
         """
@@ -1064,7 +1669,7 @@ class ActivityResItem(AbstractModel):
 
     @property
     def QualityControlTask(self):
-        r"""媒体质检任务输出
+        r"""<p>媒体质检任务输出</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mps.v20190612.models.ScheduleQualityControlTaskResult`
         """
@@ -1076,7 +1681,7 @@ class ActivityResItem(AbstractModel):
 
     @property
     def ExecRuleTask(self):
-        r"""条件判断任务输出
+        r"""<p>条件判断任务输出</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mps.v20190612.models.ScheduleExecRuleTaskResult`
         """
@@ -1088,7 +1693,7 @@ class ActivityResItem(AbstractModel):
 
     @property
     def SmartSubtitlesTask(self):
-        r"""智能字幕任务输出
+        r"""<p>智能字幕任务输出</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mps.v20190612.models.ScheduleSmartSubtitleTaskResult`
         """
@@ -1100,7 +1705,7 @@ class ActivityResItem(AbstractModel):
 
     @property
     def SmartEraseTask(self):
-        r"""智能擦除任务输出
+        r"""<p>智能擦除任务输出</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mps.v20190612.models.SmartEraseTaskResult`
         """
@@ -1109,6 +1714,17 @@ class ActivityResItem(AbstractModel):
     @SmartEraseTask.setter
     def SmartEraseTask(self, SmartEraseTask):
         self._SmartEraseTask = SmartEraseTask
+
+    @property
+    def AIDubbingTask(self):
+        r"""<p>AI配音任务输出。</p>
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AIDubbingTaskResult`
+        """
+        return self._AIDubbingTask
+
+    @AIDubbingTask.setter
+    def AIDubbingTask(self, AIDubbingTask):
+        self._AIDubbingTask = AIDubbingTask
 
 
     def _deserialize(self, params):
@@ -1151,6 +1767,9 @@ class ActivityResItem(AbstractModel):
         if params.get("SmartEraseTask") is not None:
             self._SmartEraseTask = SmartEraseTaskResult()
             self._SmartEraseTask._deserialize(params.get("SmartEraseTask"))
+        if params.get("AIDubbingTask") is not None:
+            self._AIDubbingTask = AIDubbingTaskResult()
+            self._AIDubbingTask._deserialize(params.get("AIDubbingTask"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -1168,21 +1787,9 @@ class ActivityResult(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ActivityType: 原子任务类型。
-<li>Transcode：转码。</li>
-<li>SampleSnapshot：采样截图。</li>
-<li>AnimatedGraphics：转动图。</li>
-<li>SnapshotByTimeOffset：时间点截图。</li>
-<li>ImageSprites：雪碧图。</li>
-<li>AdaptiveDynamicStreaming：自适应码流。</li>
-<li>AiContentReview：内容审核。</li>
-<li>AIRecognition：智能识别。</li>
-<li>AIAnalysis：智能分析。</li>
-<li>AiQualityControl：媒体质检。</li>
-<li>SmartSubtitles：智能字幕。</li>
-<li>SmartErase：智能擦除。</li>
+        :param _ActivityType: <p>原子任务类型。</p><li>Transcode：转码。</li><li>SampleSnapshot：采样截图。</li><li>AnimatedGraphics：转动图。</li><li>SnapshotByTimeOffset：时间点截图。</li><li>ImageSprites：雪碧图。</li><li>AdaptiveDynamicStreaming：自适应码流。</li><li>AiContentReview：内容审核。</li><li>AIRecognition：智能识别。</li><li>AIAnalysis：智能分析。</li><li>AiQualityControl：媒体质检。</li><li>SmartSubtitles：智能字幕。</li><li>SmartErase：智能擦除。</li><li>Dubbing: AI配音</li>
         :type ActivityType: str
-        :param _ActivityResItem: 原子任务输出。
+        :param _ActivityResItem: <p>原子任务输出。</p>
         :type ActivityResItem: :class:`tencentcloud.mps.v20190612.models.ActivityResItem`
         """
         self._ActivityType = None
@@ -1190,19 +1797,7 @@ class ActivityResult(AbstractModel):
 
     @property
     def ActivityType(self):
-        r"""原子任务类型。
-<li>Transcode：转码。</li>
-<li>SampleSnapshot：采样截图。</li>
-<li>AnimatedGraphics：转动图。</li>
-<li>SnapshotByTimeOffset：时间点截图。</li>
-<li>ImageSprites：雪碧图。</li>
-<li>AdaptiveDynamicStreaming：自适应码流。</li>
-<li>AiContentReview：内容审核。</li>
-<li>AIRecognition：智能识别。</li>
-<li>AIAnalysis：智能分析。</li>
-<li>AiQualityControl：媒体质检。</li>
-<li>SmartSubtitles：智能字幕。</li>
-<li>SmartErase：智能擦除。</li>
+        r"""<p>原子任务类型。</p><li>Transcode：转码。</li><li>SampleSnapshot：采样截图。</li><li>AnimatedGraphics：转动图。</li><li>SnapshotByTimeOffset：时间点截图。</li><li>ImageSprites：雪碧图。</li><li>AdaptiveDynamicStreaming：自适应码流。</li><li>AiContentReview：内容审核。</li><li>AIRecognition：智能识别。</li><li>AIAnalysis：智能分析。</li><li>AiQualityControl：媒体质检。</li><li>SmartSubtitles：智能字幕。</li><li>SmartErase：智能擦除。</li><li>Dubbing: AI配音</li>
         :rtype: str
         """
         return self._ActivityType
@@ -1213,7 +1808,7 @@ class ActivityResult(AbstractModel):
 
     @property
     def ActivityResItem(self):
-        r"""原子任务输出。
+        r"""<p>原子任务输出。</p>
         :rtype: :class:`tencentcloud.mps.v20190612.models.ActivityResItem`
         """
         return self._ActivityResItem
@@ -10497,9 +11092,9 @@ class AiRecognitionTaskTransTextResultOutput(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SegmentSet: 翻译片段列表。
+        :param _SegmentSet: <p>翻译片段列表。</p>
         :type SegmentSet: list of AiRecognitionTaskTransTextSegmentItem
-        :param _SubtitlePath: 字幕文件地址。
+        :param _SubtitlePath: <p>字幕文件地址。</p>
         :type SubtitlePath: str
         """
         self._SegmentSet = None
@@ -10507,7 +11102,7 @@ class AiRecognitionTaskTransTextResultOutput(AbstractModel):
 
     @property
     def SegmentSet(self):
-        r"""翻译片段列表。
+        r"""<p>翻译片段列表。</p>
         :rtype: list of AiRecognitionTaskTransTextSegmentItem
         """
         return self._SegmentSet
@@ -10518,7 +11113,7 @@ class AiRecognitionTaskTransTextResultOutput(AbstractModel):
 
     @property
     def SubtitlePath(self):
-        r"""字幕文件地址。
+        r"""<p>字幕文件地址。</p>
         :rtype: str
         """
         return self._SubtitlePath
@@ -49259,6 +49854,453 @@ class DrmInfo(AbstractModel):
         
 
 
+class DstSubtitleInput(AbstractModel):
+    r"""AI配音外部翻译字幕信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DstSubtitleInfo: <p>外部翻译字幕信息。</p>
+        :type DstSubtitleInfo: :class:`tencentcloud.mps.v20190612.models.MediaInputInfo`
+        """
+        self._DstSubtitleInfo = None
+
+    @property
+    def DstSubtitleInfo(self):
+        r"""<p>外部翻译字幕信息。</p>
+        :rtype: :class:`tencentcloud.mps.v20190612.models.MediaInputInfo`
+        """
+        return self._DstSubtitleInfo
+
+    @DstSubtitleInfo.setter
+    def DstSubtitleInfo(self, DstSubtitleInfo):
+        self._DstSubtitleInfo = DstSubtitleInfo
+
+
+    def _deserialize(self, params):
+        if params.get("DstSubtitleInfo") is not None:
+            self._DstSubtitleInfo = MediaInputInfo()
+            self._DstSubtitleInfo._deserialize(params.get("DstSubtitleInfo"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DubbingConfig(AbstractModel):
+    r"""dubbing任务配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _DubbingMode: <p>配音类型，可选值：FullAutoEmotionClone：全自动高情感克隆配音；RoleBasedSmartDubbing：按角色智能配音；SingleVoice：指定单一音色；</p>
+        :type DubbingMode: str
+        :param _BackgroundVolume: <p>背景音音量，范围0-100</p><p>默认值：80</p>
+        :type BackgroundVolume: int
+        :param _SecondaryTuning: <p>二次微调开关，可选值：<br>ON: 开启二次微调；<br>OFF: 不开启二次微调；</p><p>默认值：OFF</p><p>仅 RoleBasedSmartDubbing 时允许设为 ON</p>
+        :type SecondaryTuning: str
+        :param _VoiceId: <p>指定音色</p><p>仅 SingleVoice 时有效且 Create 必填</p>
+        :type VoiceId: str
+        :param _DubbingVersion: <p>配音版本，可选值：v1，v2</p><p>默认值：v2</p><p>只在（FullAutoEmotionClone：全自动高情感克隆配音）模式下生效</p>
+        :type DubbingVersion: str
+        """
+        self._DubbingMode = None
+        self._BackgroundVolume = None
+        self._SecondaryTuning = None
+        self._VoiceId = None
+        self._DubbingVersion = None
+
+    @property
+    def DubbingMode(self):
+        r"""<p>配音类型，可选值：FullAutoEmotionClone：全自动高情感克隆配音；RoleBasedSmartDubbing：按角色智能配音；SingleVoice：指定单一音色；</p>
+        :rtype: str
+        """
+        return self._DubbingMode
+
+    @DubbingMode.setter
+    def DubbingMode(self, DubbingMode):
+        self._DubbingMode = DubbingMode
+
+    @property
+    def BackgroundVolume(self):
+        r"""<p>背景音音量，范围0-100</p><p>默认值：80</p>
+        :rtype: int
+        """
+        return self._BackgroundVolume
+
+    @BackgroundVolume.setter
+    def BackgroundVolume(self, BackgroundVolume):
+        self._BackgroundVolume = BackgroundVolume
+
+    @property
+    def SecondaryTuning(self):
+        r"""<p>二次微调开关，可选值：<br>ON: 开启二次微调；<br>OFF: 不开启二次微调；</p><p>默认值：OFF</p><p>仅 RoleBasedSmartDubbing 时允许设为 ON</p>
+        :rtype: str
+        """
+        return self._SecondaryTuning
+
+    @SecondaryTuning.setter
+    def SecondaryTuning(self, SecondaryTuning):
+        self._SecondaryTuning = SecondaryTuning
+
+    @property
+    def VoiceId(self):
+        r"""<p>指定音色</p><p>仅 SingleVoice 时有效且 Create 必填</p>
+        :rtype: str
+        """
+        return self._VoiceId
+
+    @VoiceId.setter
+    def VoiceId(self, VoiceId):
+        self._VoiceId = VoiceId
+
+    @property
+    def DubbingVersion(self):
+        r"""<p>配音版本，可选值：v1，v2</p><p>默认值：v2</p><p>只在（FullAutoEmotionClone：全自动高情感克隆配音）模式下生效</p>
+        :rtype: str
+        """
+        return self._DubbingVersion
+
+    @DubbingVersion.setter
+    def DubbingVersion(self, DubbingVersion):
+        self._DubbingVersion = DubbingVersion
+
+
+    def _deserialize(self, params):
+        self._DubbingMode = params.get("DubbingMode")
+        self._BackgroundVolume = params.get("BackgroundVolume")
+        self._SecondaryTuning = params.get("SecondaryTuning")
+        self._VoiceId = params.get("VoiceId")
+        self._DubbingVersion = params.get("DubbingVersion")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DubbingEmbedSubtitleConfig(AbstractModel):
+    r"""dubbing任务压制字幕配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SubtitleEmbedId: <p>压制字幕id。</p>
+        :type SubtitleEmbedId: int
+        :param _UseOriginalPos: <p>沿用原字幕位置。</p><p>默认值：1</p>
+        :type UseOriginalPos: int
+        :param _UseOriginalSize: <p>沿用原字幕字号。</p><p>默认值：1</p>
+        :type UseOriginalSize: int
+        """
+        self._SubtitleEmbedId = None
+        self._UseOriginalPos = None
+        self._UseOriginalSize = None
+
+    @property
+    def SubtitleEmbedId(self):
+        r"""<p>压制字幕id。</p>
+        :rtype: int
+        """
+        return self._SubtitleEmbedId
+
+    @SubtitleEmbedId.setter
+    def SubtitleEmbedId(self, SubtitleEmbedId):
+        self._SubtitleEmbedId = SubtitleEmbedId
+
+    @property
+    def UseOriginalPos(self):
+        r"""<p>沿用原字幕位置。</p><p>默认值：1</p>
+        :rtype: int
+        """
+        return self._UseOriginalPos
+
+    @UseOriginalPos.setter
+    def UseOriginalPos(self, UseOriginalPos):
+        self._UseOriginalPos = UseOriginalPos
+
+    @property
+    def UseOriginalSize(self):
+        r"""<p>沿用原字幕字号。</p><p>默认值：1</p>
+        :rtype: int
+        """
+        return self._UseOriginalSize
+
+    @UseOriginalSize.setter
+    def UseOriginalSize(self, UseOriginalSize):
+        self._UseOriginalSize = UseOriginalSize
+
+
+    def _deserialize(self, params):
+        self._SubtitleEmbedId = params.get("SubtitleEmbedId")
+        self._UseOriginalPos = params.get("UseOriginalPos")
+        self._UseOriginalSize = params.get("UseOriginalSize")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DubbingOutputConfig(AbstractModel):
+    r"""dubbing任务输出配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _OutputMode: <p>输出方式</p><p>枚举值：</p><ul><li>FinalVideoOnly： 默认，仅成片视频</li><li>AudioAndSubtitle： 译文音频+译文字幕</li><li>Custom： 自定义</li></ul><p>默认值：FinalVideoOnly</p><p>使用外部字幕时无译文音频+字幕返回</p>
+        :type OutputMode: str
+        :param _OutputFinalVideo: <p>输出成片视频开关</p><p>枚举值：</p><ul><li>ON： 打开</li><li>OFF： 关闭</li></ul><p>默认值：ON</p><p>仅 Custom 模式生效</p>
+        :type OutputFinalVideo: str
+        :param _OutputSubtitle: <p>输出字幕文件（同时包含原语音字幕、目标语言字幕）开关</p><p>枚举值：</p><ul><li>ON： 开启</li><li>OFF： 关闭</li></ul><p>默认值：OFF</p>
+        :type OutputSubtitle: str
+        :param _OutputDstAudio: <p>输出译文配音音频开关</p><p>枚举值：</p><ul><li>ON： 开启</li><li>OFF： 关闭</li></ul><p>默认值：OFF</p><p>仅 Custom 模式生效</p>
+        :type OutputDstAudio: str
+        :param _EmbedSubtitleConfig: <p>压制字幕配置信息。</p>
+        :type EmbedSubtitleConfig: :class:`tencentcloud.mps.v20190612.models.DubbingEmbedSubtitleConfig`
+        """
+        self._OutputMode = None
+        self._OutputFinalVideo = None
+        self._OutputSubtitle = None
+        self._OutputDstAudio = None
+        self._EmbedSubtitleConfig = None
+
+    @property
+    def OutputMode(self):
+        r"""<p>输出方式</p><p>枚举值：</p><ul><li>FinalVideoOnly： 默认，仅成片视频</li><li>AudioAndSubtitle： 译文音频+译文字幕</li><li>Custom： 自定义</li></ul><p>默认值：FinalVideoOnly</p><p>使用外部字幕时无译文音频+字幕返回</p>
+        :rtype: str
+        """
+        return self._OutputMode
+
+    @OutputMode.setter
+    def OutputMode(self, OutputMode):
+        self._OutputMode = OutputMode
+
+    @property
+    def OutputFinalVideo(self):
+        r"""<p>输出成片视频开关</p><p>枚举值：</p><ul><li>ON： 打开</li><li>OFF： 关闭</li></ul><p>默认值：ON</p><p>仅 Custom 模式生效</p>
+        :rtype: str
+        """
+        return self._OutputFinalVideo
+
+    @OutputFinalVideo.setter
+    def OutputFinalVideo(self, OutputFinalVideo):
+        self._OutputFinalVideo = OutputFinalVideo
+
+    @property
+    def OutputSubtitle(self):
+        r"""<p>输出字幕文件（同时包含原语音字幕、目标语言字幕）开关</p><p>枚举值：</p><ul><li>ON： 开启</li><li>OFF： 关闭</li></ul><p>默认值：OFF</p>
+        :rtype: str
+        """
+        return self._OutputSubtitle
+
+    @OutputSubtitle.setter
+    def OutputSubtitle(self, OutputSubtitle):
+        self._OutputSubtitle = OutputSubtitle
+
+    @property
+    def OutputDstAudio(self):
+        r"""<p>输出译文配音音频开关</p><p>枚举值：</p><ul><li>ON： 开启</li><li>OFF： 关闭</li></ul><p>默认值：OFF</p><p>仅 Custom 模式生效</p>
+        :rtype: str
+        """
+        return self._OutputDstAudio
+
+    @OutputDstAudio.setter
+    def OutputDstAudio(self, OutputDstAudio):
+        self._OutputDstAudio = OutputDstAudio
+
+    @property
+    def EmbedSubtitleConfig(self):
+        r"""<p>压制字幕配置信息。</p>
+        :rtype: :class:`tencentcloud.mps.v20190612.models.DubbingEmbedSubtitleConfig`
+        """
+        return self._EmbedSubtitleConfig
+
+    @EmbedSubtitleConfig.setter
+    def EmbedSubtitleConfig(self, EmbedSubtitleConfig):
+        self._EmbedSubtitleConfig = EmbedSubtitleConfig
+
+
+    def _deserialize(self, params):
+        self._OutputMode = params.get("OutputMode")
+        self._OutputFinalVideo = params.get("OutputFinalVideo")
+        self._OutputSubtitle = params.get("OutputSubtitle")
+        self._OutputDstAudio = params.get("OutputDstAudio")
+        if params.get("EmbedSubtitleConfig") is not None:
+            self._EmbedSubtitleConfig = DubbingEmbedSubtitleConfig()
+            self._EmbedSubtitleConfig._deserialize(params.get("EmbedSubtitleConfig"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DubbingSubtitleConfig(AbstractModel):
+    r"""dubbing任务翻译配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _SubtitleSource: <p>字幕来源。</p><p>枚举值：</p><ul><li>OCR： OCR文本识别，识别视频画面上的文本。</li><li>ASR： ASR语音识别，识别视频语音对话。</li><li>External： 外部字幕文件，提供原文/译文字幕URL。</li></ul>
+        :type SubtitleSource: str
+        :param _AsrAssistOcr: <p>使用ASR辅助OCR。</p><p>枚举值：</p><ul><li>ON： 开启使用ASR辅助OCR。</li><li>OFF： 不开启使用ASR辅助OCR。</li></ul><p>默认值：OFF</p><p>仅 SubtitleSource=OCR 时允许设为 ON</p>
+        :type AsrAssistOcr: str
+        :param _EraseOriginalSubtitle: <p>擦除原字幕。</p><p>枚举值：</p><ul><li>ON： 擦除原字幕。</li><li>OFF： 保留原字幕。</li></ul><p>默认值：OFF</p><p>SubtitleSource=External 时不允许设为 ON</p>
+        :type EraseOriginalSubtitle: str
+        :param _SelectingSubtitleAreasConfig: <p>字幕位置信息。</p>
+        :type SelectingSubtitleAreasConfig: :class:`tencentcloud.mps.v20190612.models.SelectingSubtitleAreasConfig`
+        """
+        self._SubtitleSource = None
+        self._AsrAssistOcr = None
+        self._EraseOriginalSubtitle = None
+        self._SelectingSubtitleAreasConfig = None
+
+    @property
+    def SubtitleSource(self):
+        r"""<p>字幕来源。</p><p>枚举值：</p><ul><li>OCR： OCR文本识别，识别视频画面上的文本。</li><li>ASR： ASR语音识别，识别视频语音对话。</li><li>External： 外部字幕文件，提供原文/译文字幕URL。</li></ul>
+        :rtype: str
+        """
+        return self._SubtitleSource
+
+    @SubtitleSource.setter
+    def SubtitleSource(self, SubtitleSource):
+        self._SubtitleSource = SubtitleSource
+
+    @property
+    def AsrAssistOcr(self):
+        r"""<p>使用ASR辅助OCR。</p><p>枚举值：</p><ul><li>ON： 开启使用ASR辅助OCR。</li><li>OFF： 不开启使用ASR辅助OCR。</li></ul><p>默认值：OFF</p><p>仅 SubtitleSource=OCR 时允许设为 ON</p>
+        :rtype: str
+        """
+        return self._AsrAssistOcr
+
+    @AsrAssistOcr.setter
+    def AsrAssistOcr(self, AsrAssistOcr):
+        self._AsrAssistOcr = AsrAssistOcr
+
+    @property
+    def EraseOriginalSubtitle(self):
+        r"""<p>擦除原字幕。</p><p>枚举值：</p><ul><li>ON： 擦除原字幕。</li><li>OFF： 保留原字幕。</li></ul><p>默认值：OFF</p><p>SubtitleSource=External 时不允许设为 ON</p>
+        :rtype: str
+        """
+        return self._EraseOriginalSubtitle
+
+    @EraseOriginalSubtitle.setter
+    def EraseOriginalSubtitle(self, EraseOriginalSubtitle):
+        self._EraseOriginalSubtitle = EraseOriginalSubtitle
+
+    @property
+    def SelectingSubtitleAreasConfig(self):
+        r"""<p>字幕位置信息。</p>
+        :rtype: :class:`tencentcloud.mps.v20190612.models.SelectingSubtitleAreasConfig`
+        """
+        return self._SelectingSubtitleAreasConfig
+
+    @SelectingSubtitleAreasConfig.setter
+    def SelectingSubtitleAreasConfig(self, SelectingSubtitleAreasConfig):
+        self._SelectingSubtitleAreasConfig = SelectingSubtitleAreasConfig
+
+
+    def _deserialize(self, params):
+        self._SubtitleSource = params.get("SubtitleSource")
+        self._AsrAssistOcr = params.get("AsrAssistOcr")
+        self._EraseOriginalSubtitle = params.get("EraseOriginalSubtitle")
+        if params.get("SelectingSubtitleAreasConfig") is not None:
+            self._SelectingSubtitleAreasConfig = SelectingSubtitleAreasConfig()
+            self._SelectingSubtitleAreasConfig._deserialize(params.get("SelectingSubtitleAreasConfig"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DubbingTranslateConfig(AbstractModel):
+    r"""dubbing任务翻译配置
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _VideoSrcLanguage: <p>源语言。</p>
+        :type VideoSrcLanguage: str
+        :param _TranslateDstLanguage: <p>翻译目标语言。</p>
+        :type TranslateDstLanguage: str
+        :param _SimplifyTranslation: <p>智能简化译文。</p><p>枚举值：</p><ul><li>ON： 开启智能简化译文。</li><li>OFF： 关闭智能简化译文。</li></ul><p>默认值：OFF</p>
+        :type SimplifyTranslation: str
+        """
+        self._VideoSrcLanguage = None
+        self._TranslateDstLanguage = None
+        self._SimplifyTranslation = None
+
+    @property
+    def VideoSrcLanguage(self):
+        r"""<p>源语言。</p>
+        :rtype: str
+        """
+        return self._VideoSrcLanguage
+
+    @VideoSrcLanguage.setter
+    def VideoSrcLanguage(self, VideoSrcLanguage):
+        self._VideoSrcLanguage = VideoSrcLanguage
+
+    @property
+    def TranslateDstLanguage(self):
+        r"""<p>翻译目标语言。</p>
+        :rtype: str
+        """
+        return self._TranslateDstLanguage
+
+    @TranslateDstLanguage.setter
+    def TranslateDstLanguage(self, TranslateDstLanguage):
+        self._TranslateDstLanguage = TranslateDstLanguage
+
+    @property
+    def SimplifyTranslation(self):
+        r"""<p>智能简化译文。</p><p>枚举值：</p><ul><li>ON： 开启智能简化译文。</li><li>OFF： 关闭智能简化译文。</li></ul><p>默认值：OFF</p>
+        :rtype: str
+        """
+        return self._SimplifyTranslation
+
+    @SimplifyTranslation.setter
+    def SimplifyTranslation(self, SimplifyTranslation):
+        self._SimplifyTranslation = SimplifyTranslation
+
+
+    def _deserialize(self, params):
+        self._VideoSrcLanguage = params.get("VideoSrcLanguage")
+        self._TranslateDstLanguage = params.get("TranslateDstLanguage")
+        self._SimplifyTranslation = params.get("SimplifyTranslation")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class EditMediaFileInfo(AbstractModel):
     r"""编辑点播视频文件信息
 
@@ -71759,6 +72801,95 @@ class OutputSRTSourceAddressResp(AbstractModel):
         
 
 
+class OverrideAIDubbingParameter(AbstractModel):
+    r"""AI配音自定义参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TranslateConfig: <p>翻译配置信息。</p>
+        :type TranslateConfig: :class:`tencentcloud.mps.v20190612.models.DubbingTranslateConfig`
+        :param _SubtitleConfig: <p>字幕配置信息。</p>
+        :type SubtitleConfig: :class:`tencentcloud.mps.v20190612.models.DubbingSubtitleConfig`
+        :param _DubbingConfig: <p>配音配置信息。</p>
+        :type DubbingConfig: :class:`tencentcloud.mps.v20190612.models.DubbingConfig`
+        :param _OutputConfig: <p>输出配置信息。</p>
+        :type OutputConfig: :class:`tencentcloud.mps.v20190612.models.DubbingOutputConfig`
+        """
+        self._TranslateConfig = None
+        self._SubtitleConfig = None
+        self._DubbingConfig = None
+        self._OutputConfig = None
+
+    @property
+    def TranslateConfig(self):
+        r"""<p>翻译配置信息。</p>
+        :rtype: :class:`tencentcloud.mps.v20190612.models.DubbingTranslateConfig`
+        """
+        return self._TranslateConfig
+
+    @TranslateConfig.setter
+    def TranslateConfig(self, TranslateConfig):
+        self._TranslateConfig = TranslateConfig
+
+    @property
+    def SubtitleConfig(self):
+        r"""<p>字幕配置信息。</p>
+        :rtype: :class:`tencentcloud.mps.v20190612.models.DubbingSubtitleConfig`
+        """
+        return self._SubtitleConfig
+
+    @SubtitleConfig.setter
+    def SubtitleConfig(self, SubtitleConfig):
+        self._SubtitleConfig = SubtitleConfig
+
+    @property
+    def DubbingConfig(self):
+        r"""<p>配音配置信息。</p>
+        :rtype: :class:`tencentcloud.mps.v20190612.models.DubbingConfig`
+        """
+        return self._DubbingConfig
+
+    @DubbingConfig.setter
+    def DubbingConfig(self, DubbingConfig):
+        self._DubbingConfig = DubbingConfig
+
+    @property
+    def OutputConfig(self):
+        r"""<p>输出配置信息。</p>
+        :rtype: :class:`tencentcloud.mps.v20190612.models.DubbingOutputConfig`
+        """
+        return self._OutputConfig
+
+    @OutputConfig.setter
+    def OutputConfig(self, OutputConfig):
+        self._OutputConfig = OutputConfig
+
+
+    def _deserialize(self, params):
+        if params.get("TranslateConfig") is not None:
+            self._TranslateConfig = DubbingTranslateConfig()
+            self._TranslateConfig._deserialize(params.get("TranslateConfig"))
+        if params.get("SubtitleConfig") is not None:
+            self._SubtitleConfig = DubbingSubtitleConfig()
+            self._SubtitleConfig._deserialize(params.get("SubtitleConfig"))
+        if params.get("DubbingConfig") is not None:
+            self._DubbingConfig = DubbingConfig()
+            self._DubbingConfig._deserialize(params.get("DubbingConfig"))
+        if params.get("OutputConfig") is not None:
+            self._OutputConfig = DubbingOutputConfig()
+            self._OutputConfig._deserialize(params.get("OutputConfig"))
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class OverrideEraseParameter(AbstractModel):
     r"""智能擦除自定义参数
 
@@ -74869,6 +76000,8 @@ class ProcessMediaRequest(AbstractModel):
         :type SmartSubtitlesTask: :class:`tencentcloud.mps.v20190612.models.SmartSubtitlesTaskInput`
         :param _SmartEraseTask: <p>智能擦除类型任务参数</p>
         :type SmartEraseTask: :class:`tencentcloud.mps.v20190612.models.SmartEraseTaskInput`
+        :param _AIDubbingTask: <p>AI配音类型任务参数</p>
+        :type AIDubbingTask: :class:`tencentcloud.mps.v20190612.models.AIDubbingTaskInput`
         :param _TaskNotifyConfig: <p>任务的事件通知信息，不填代表不获取事件通知。</p>
         :type TaskNotifyConfig: :class:`tencentcloud.mps.v20190612.models.TaskNotifyConfig`
         :param _TasksPriority: <p>任务流的优先级，数值越大优先级越高，取值范围是-10到 10，不填代表0。</p>
@@ -74897,6 +76030,7 @@ class ProcessMediaRequest(AbstractModel):
         self._AiQualityControlTask = None
         self._SmartSubtitlesTask = None
         self._SmartEraseTask = None
+        self._AIDubbingTask = None
         self._TaskNotifyConfig = None
         self._TasksPriority = None
         self._SessionId = None
@@ -75028,6 +76162,17 @@ class ProcessMediaRequest(AbstractModel):
         self._SmartEraseTask = SmartEraseTask
 
     @property
+    def AIDubbingTask(self):
+        r"""<p>AI配音类型任务参数</p>
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AIDubbingTaskInput`
+        """
+        return self._AIDubbingTask
+
+    @AIDubbingTask.setter
+    def AIDubbingTask(self, AIDubbingTask):
+        self._AIDubbingTask = AIDubbingTask
+
+    @property
     def TaskNotifyConfig(self):
         r"""<p>任务的事件通知信息，不填代表不获取事件通知。</p>
         :rtype: :class:`tencentcloud.mps.v20190612.models.TaskNotifyConfig`
@@ -75146,6 +76291,9 @@ class ProcessMediaRequest(AbstractModel):
         if params.get("SmartEraseTask") is not None:
             self._SmartEraseTask = SmartEraseTaskInput()
             self._SmartEraseTask._deserialize(params.get("SmartEraseTask"))
+        if params.get("AIDubbingTask") is not None:
+            self._AIDubbingTask = AIDubbingTaskInput()
+            self._AIDubbingTask._deserialize(params.get("AIDubbingTask"))
         if params.get("TaskNotifyConfig") is not None:
             self._TaskNotifyConfig = TaskNotifyConfig()
             self._TaskNotifyConfig._deserialize(params.get("TaskNotifyConfig"))
@@ -77719,6 +78867,95 @@ class RTSPPullSourceAddress(AbstractModel):
 
     def _deserialize(self, params):
         self._Url = params.get("Url")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class RawAIDubbingParameter(AbstractModel):
+    r"""AI配音自定义参数
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _TranslateConfig: <p>翻译配置信息。</p>
+        :type TranslateConfig: :class:`tencentcloud.mps.v20190612.models.DubbingTranslateConfig`
+        :param _SubtitleConfig: <p>字幕配置信息。</p>
+        :type SubtitleConfig: :class:`tencentcloud.mps.v20190612.models.DubbingSubtitleConfig`
+        :param _DubbingConfig: <p>配音配置信息。</p>
+        :type DubbingConfig: :class:`tencentcloud.mps.v20190612.models.DubbingConfig`
+        :param _OutputConfig: <p>输出配置信息。</p>
+        :type OutputConfig: :class:`tencentcloud.mps.v20190612.models.DubbingOutputConfig`
+        """
+        self._TranslateConfig = None
+        self._SubtitleConfig = None
+        self._DubbingConfig = None
+        self._OutputConfig = None
+
+    @property
+    def TranslateConfig(self):
+        r"""<p>翻译配置信息。</p>
+        :rtype: :class:`tencentcloud.mps.v20190612.models.DubbingTranslateConfig`
+        """
+        return self._TranslateConfig
+
+    @TranslateConfig.setter
+    def TranslateConfig(self, TranslateConfig):
+        self._TranslateConfig = TranslateConfig
+
+    @property
+    def SubtitleConfig(self):
+        r"""<p>字幕配置信息。</p>
+        :rtype: :class:`tencentcloud.mps.v20190612.models.DubbingSubtitleConfig`
+        """
+        return self._SubtitleConfig
+
+    @SubtitleConfig.setter
+    def SubtitleConfig(self, SubtitleConfig):
+        self._SubtitleConfig = SubtitleConfig
+
+    @property
+    def DubbingConfig(self):
+        r"""<p>配音配置信息。</p>
+        :rtype: :class:`tencentcloud.mps.v20190612.models.DubbingConfig`
+        """
+        return self._DubbingConfig
+
+    @DubbingConfig.setter
+    def DubbingConfig(self, DubbingConfig):
+        self._DubbingConfig = DubbingConfig
+
+    @property
+    def OutputConfig(self):
+        r"""<p>输出配置信息。</p>
+        :rtype: :class:`tencentcloud.mps.v20190612.models.DubbingOutputConfig`
+        """
+        return self._OutputConfig
+
+    @OutputConfig.setter
+    def OutputConfig(self, OutputConfig):
+        self._OutputConfig = OutputConfig
+
+
+    def _deserialize(self, params):
+        if params.get("TranslateConfig") is not None:
+            self._TranslateConfig = DubbingTranslateConfig()
+            self._TranslateConfig._deserialize(params.get("TranslateConfig"))
+        if params.get("SubtitleConfig") is not None:
+            self._SubtitleConfig = DubbingSubtitleConfig()
+            self._SubtitleConfig._deserialize(params.get("SubtitleConfig"))
+        if params.get("DubbingConfig") is not None:
+            self._DubbingConfig = DubbingConfig()
+            self._DubbingConfig._deserialize(params.get("DubbingConfig"))
+        if params.get("OutputConfig") is not None:
+            self._OutputConfig = DubbingOutputConfig()
+            self._OutputConfig._deserialize(params.get("OutputConfig"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -99248,10 +100485,8 @@ class WorkflowInfo(AbstractModel):
         :param _Trigger: 工作流绑定的输入规则，当上传视频命中该规则到该对象时即触发工作流。
         :type Trigger: :class:`tencentcloud.mps.v20190612.models.WorkflowTrigger`
         :param _OutputStorage: 媒体处理的文件输出存储位置。
-注意：此字段可能返回 null，表示取不到有效值。
         :type OutputStorage: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
         :param _MediaProcessTask: 媒体处理类型任务参数。
-注意：此字段可能返回 null，表示取不到有效值。
         :type MediaProcessTask: :class:`tencentcloud.mps.v20190612.models.MediaProcessTaskInput`
         :param _AiContentReviewTask: 视频内容审核类型任务参数。
 注意：此字段可能返回 null，表示取不到有效值。
@@ -99263,7 +100498,6 @@ class WorkflowInfo(AbstractModel):
 注意：此字段可能返回 null，表示取不到有效值。
         :type AiRecognitionTask: :class:`tencentcloud.mps.v20190612.models.AiRecognitionTaskInput`
         :param _TaskNotifyConfig: 任务的事件通知信息，不填代表不获取事件通知。
-注意：此字段可能返回 null，表示取不到有效值。
         :type TaskNotifyConfig: :class:`tencentcloud.mps.v20190612.models.TaskNotifyConfig`
         :param _TaskPriority: 任务流的优先级，数值越大优先级越高，取值范围是 -10 到 10，不填代表 0。
         :type TaskPriority: int
@@ -99338,7 +100572,6 @@ class WorkflowInfo(AbstractModel):
     @property
     def OutputStorage(self):
         r"""媒体处理的文件输出存储位置。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mps.v20190612.models.TaskOutputStorage`
         """
         return self._OutputStorage
@@ -99350,7 +100583,6 @@ class WorkflowInfo(AbstractModel):
     @property
     def MediaProcessTask(self):
         r"""媒体处理类型任务参数。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mps.v20190612.models.MediaProcessTaskInput`
         """
         return self._MediaProcessTask
@@ -99398,7 +100630,6 @@ class WorkflowInfo(AbstractModel):
     @property
     def TaskNotifyConfig(self):
         r"""任务的事件通知信息，不填代表不获取事件通知。
-注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mps.v20190612.models.TaskNotifyConfig`
         """
         return self._TaskNotifyConfig
@@ -99498,39 +100729,39 @@ class WorkflowTask(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TaskId: 媒体处理任务 ID。
+        :param _TaskId: <p>媒体处理任务 ID。</p>
         :type TaskId: str
-        :param _Status: 任务流状态，取值：
-<li>PROCESSING：处理中；</li>
-<li>FINISH：已完成。</li>
+        :param _Status: <p>任务流状态，取值：</p><li>PROCESSING：处理中；</li><li>FINISH：已完成。</li>
         :type Status: str
-        :param _ErrCode: 源异常时返回非0错误码，返回0 时请使用各个具体任务的 ErrCode。
+        :param _ErrCode: <p>源异常时返回非0错误码，返回0 时请使用各个具体任务的 ErrCode。</p>
         :type ErrCode: int
-        :param _Message: 源异常时返回对应异常Message，否则请使用各个具体任务的 Message。
+        :param _Message: <p>源异常时返回对应异常Message，否则请使用各个具体任务的 Message。</p>
         :type Message: str
-        :param _InputInfo: 媒体处理的目标文件信息。
+        :param _InputInfo: <p>媒体处理的目标文件信息。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type InputInfo: :class:`tencentcloud.mps.v20190612.models.MediaInputInfo`
-        :param _MetaData: 原始视频的元信息。
+        :param _MetaData: <p>原始视频的元信息。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type MetaData: :class:`tencentcloud.mps.v20190612.models.MediaMetaData`
-        :param _MediaProcessResultSet: 媒体处理任务的执行状态与结果。
+        :param _MediaProcessResultSet: <p>媒体处理任务的执行状态与结果。</p>
         :type MediaProcessResultSet: list of MediaProcessTaskResult
-        :param _AiContentReviewResultSet: 视频内容审核任务的执行状态与结果。
+        :param _AiContentReviewResultSet: <p>视频内容审核任务的执行状态与结果。</p>
         :type AiContentReviewResultSet: list of AiContentReviewResult
-        :param _AiAnalysisResultSet: 视频内容分析任务的执行状态与结果。
+        :param _AiAnalysisResultSet: <p>视频内容分析任务的执行状态与结果。</p>
         :type AiAnalysisResultSet: list of AiAnalysisResult
-        :param _AiRecognitionResultSet: 视频内容识别任务的执行状态与结果。
+        :param _AiRecognitionResultSet: <p>视频内容识别任务的执行状态与结果。</p>
         :type AiRecognitionResultSet: list of AiRecognitionResult
-        :param _AiQualityControlTaskResult: 媒体质检任务的执行状态与结果。
+        :param _AiQualityControlTaskResult: <p>媒体质检任务的执行状态与结果。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type AiQualityControlTaskResult: :class:`tencentcloud.mps.v20190612.models.ScheduleQualityControlTaskResult`
-        :param _SmartSubtitlesTaskResult: 智能字幕任务的执行结果
+        :param _SmartSubtitlesTaskResult: <p>智能字幕任务的执行结果</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type SmartSubtitlesTaskResult: list of SmartSubtitlesResult
-        :param _SmartEraseTaskResult: 智能擦除任务的执行结果
+        :param _SmartEraseTaskResult: <p>智能擦除任务的执行结果</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type SmartEraseTaskResult: :class:`tencentcloud.mps.v20190612.models.SmartEraseTaskResult`
+        :param _AiDubbingTaskResult: <p>AI配音任务的执行结果。</p>
+        :type AiDubbingTaskResult: :class:`tencentcloud.mps.v20190612.models.AIDubbingTaskResult`
         """
         self._TaskId = None
         self._Status = None
@@ -99545,10 +100776,11 @@ class WorkflowTask(AbstractModel):
         self._AiQualityControlTaskResult = None
         self._SmartSubtitlesTaskResult = None
         self._SmartEraseTaskResult = None
+        self._AiDubbingTaskResult = None
 
     @property
     def TaskId(self):
-        r"""媒体处理任务 ID。
+        r"""<p>媒体处理任务 ID。</p>
         :rtype: str
         """
         return self._TaskId
@@ -99559,9 +100791,7 @@ class WorkflowTask(AbstractModel):
 
     @property
     def Status(self):
-        r"""任务流状态，取值：
-<li>PROCESSING：处理中；</li>
-<li>FINISH：已完成。</li>
+        r"""<p>任务流状态，取值：</p><li>PROCESSING：处理中；</li><li>FINISH：已完成。</li>
         :rtype: str
         """
         return self._Status
@@ -99572,7 +100802,7 @@ class WorkflowTask(AbstractModel):
 
     @property
     def ErrCode(self):
-        r"""源异常时返回非0错误码，返回0 时请使用各个具体任务的 ErrCode。
+        r"""<p>源异常时返回非0错误码，返回0 时请使用各个具体任务的 ErrCode。</p>
         :rtype: int
         """
         return self._ErrCode
@@ -99583,7 +100813,7 @@ class WorkflowTask(AbstractModel):
 
     @property
     def Message(self):
-        r"""源异常时返回对应异常Message，否则请使用各个具体任务的 Message。
+        r"""<p>源异常时返回对应异常Message，否则请使用各个具体任务的 Message。</p>
         :rtype: str
         """
         return self._Message
@@ -99594,7 +100824,7 @@ class WorkflowTask(AbstractModel):
 
     @property
     def InputInfo(self):
-        r"""媒体处理的目标文件信息。
+        r"""<p>媒体处理的目标文件信息。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mps.v20190612.models.MediaInputInfo`
         """
@@ -99606,7 +100836,7 @@ class WorkflowTask(AbstractModel):
 
     @property
     def MetaData(self):
-        r"""原始视频的元信息。
+        r"""<p>原始视频的元信息。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mps.v20190612.models.MediaMetaData`
         """
@@ -99618,7 +100848,7 @@ class WorkflowTask(AbstractModel):
 
     @property
     def MediaProcessResultSet(self):
-        r"""媒体处理任务的执行状态与结果。
+        r"""<p>媒体处理任务的执行状态与结果。</p>
         :rtype: list of MediaProcessTaskResult
         """
         return self._MediaProcessResultSet
@@ -99629,7 +100859,7 @@ class WorkflowTask(AbstractModel):
 
     @property
     def AiContentReviewResultSet(self):
-        r"""视频内容审核任务的执行状态与结果。
+        r"""<p>视频内容审核任务的执行状态与结果。</p>
         :rtype: list of AiContentReviewResult
         """
         return self._AiContentReviewResultSet
@@ -99640,7 +100870,7 @@ class WorkflowTask(AbstractModel):
 
     @property
     def AiAnalysisResultSet(self):
-        r"""视频内容分析任务的执行状态与结果。
+        r"""<p>视频内容分析任务的执行状态与结果。</p>
         :rtype: list of AiAnalysisResult
         """
         return self._AiAnalysisResultSet
@@ -99651,7 +100881,7 @@ class WorkflowTask(AbstractModel):
 
     @property
     def AiRecognitionResultSet(self):
-        r"""视频内容识别任务的执行状态与结果。
+        r"""<p>视频内容识别任务的执行状态与结果。</p>
         :rtype: list of AiRecognitionResult
         """
         return self._AiRecognitionResultSet
@@ -99662,7 +100892,7 @@ class WorkflowTask(AbstractModel):
 
     @property
     def AiQualityControlTaskResult(self):
-        r"""媒体质检任务的执行状态与结果。
+        r"""<p>媒体质检任务的执行状态与结果。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mps.v20190612.models.ScheduleQualityControlTaskResult`
         """
@@ -99674,7 +100904,7 @@ class WorkflowTask(AbstractModel):
 
     @property
     def SmartSubtitlesTaskResult(self):
-        r"""智能字幕任务的执行结果
+        r"""<p>智能字幕任务的执行结果</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: list of SmartSubtitlesResult
         """
@@ -99686,7 +100916,7 @@ class WorkflowTask(AbstractModel):
 
     @property
     def SmartEraseTaskResult(self):
-        r"""智能擦除任务的执行结果
+        r"""<p>智能擦除任务的执行结果</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.mps.v20190612.models.SmartEraseTaskResult`
         """
@@ -99695,6 +100925,17 @@ class WorkflowTask(AbstractModel):
     @SmartEraseTaskResult.setter
     def SmartEraseTaskResult(self, SmartEraseTaskResult):
         self._SmartEraseTaskResult = SmartEraseTaskResult
+
+    @property
+    def AiDubbingTaskResult(self):
+        r"""<p>AI配音任务的执行结果。</p>
+        :rtype: :class:`tencentcloud.mps.v20190612.models.AIDubbingTaskResult`
+        """
+        return self._AiDubbingTaskResult
+
+    @AiDubbingTaskResult.setter
+    def AiDubbingTaskResult(self, AiDubbingTaskResult):
+        self._AiDubbingTaskResult = AiDubbingTaskResult
 
 
     def _deserialize(self, params):
@@ -99744,6 +100985,9 @@ class WorkflowTask(AbstractModel):
         if params.get("SmartEraseTaskResult") is not None:
             self._SmartEraseTaskResult = SmartEraseTaskResult()
             self._SmartEraseTaskResult._deserialize(params.get("SmartEraseTaskResult"))
+        if params.get("AiDubbingTaskResult") is not None:
+            self._AiDubbingTaskResult = AIDubbingTaskResult()
+            self._AiDubbingTaskResult._deserialize(params.get("AiDubbingTaskResult"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

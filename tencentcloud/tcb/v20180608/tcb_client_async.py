@@ -326,6 +326,24 @@ class TcbClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateFunction(
+            self,
+            request: models.CreateFunctionRequest,
+            opts: Dict = None,
+    ) -> models.CreateFunctionResponse:
+        """
+        创建云函数
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateFunction"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateFunctionResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateHTTPServiceRoute(
             self,
             request: models.CreateHTTPServiceRouteRequest,
@@ -531,6 +549,26 @@ class TcbClient(AbstractClient):
         kwargs["action"] = "DeleteCloudAppVersion"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DeleteCloudAppVersionResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteFunction(
+            self,
+            request: models.DeleteFunctionRequest,
+            opts: Dict = None,
+    ) -> models.DeleteFunctionResponse:
+        """
+        删除云函数。
+
+        删除指定环境下的云函数。调用接口后，若通过 GetFunction 接口查询不到该函数，则表示删除成功。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteFunction"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteFunctionResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -1414,6 +1452,24 @@ class TcbClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DownloadFunction(
+            self,
+            request: models.DownloadFunctionRequest,
+            opts: Dict = None,
+    ) -> models.DownloadFunctionResponse:
+        """
+        获取云函数地址并下载zip包
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DownloadFunction"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DownloadFunctionResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def ExecutePGSql(
             self,
             request: models.ExecutePGSqlRequest,
@@ -1432,6 +1488,24 @@ class TcbClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def GetFunction(
+            self,
+            request: models.GetFunctionRequest,
+            opts: Dict = None,
+    ) -> models.GetFunctionResponse:
+        """
+        获取云函数详情
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "GetFunction"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.GetFunctionResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def GetProviders(
             self,
             request: models.GetProvidersRequest,
@@ -1445,6 +1519,24 @@ class TcbClient(AbstractClient):
         kwargs["action"] = "GetProviders"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.GetProvidersResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ListFunctions(
+            self,
+            request: models.ListFunctionsRequest,
+            opts: Dict = None,
+    ) -> models.ListFunctionsResponse:
+        """
+        该接口根据传入的查询参数返回相关函数信息。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ListFunctions"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ListFunctionsResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -1971,6 +2063,42 @@ class TcbClient(AbstractClient):
         kwargs["action"] = "UpdateAIModel"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.UpdateAIModelResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def UpdateFunctionCode(
+            self,
+            request: models.UpdateFunctionCodeRequest,
+            opts: Dict = None,
+    ) -> models.UpdateFunctionCodeResponse:
+        """
+        更新云函数代码
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "UpdateFunctionCode"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.UpdateFunctionCodeResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def UpdateFunctionConfiguration(
+            self,
+            request: models.UpdateFunctionConfigurationRequest,
+            opts: Dict = None,
+    ) -> models.UpdateFunctionConfigurationResponse:
+        """
+        该接口根据传入参数更新函数配置。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "UpdateFunctionConfiguration"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.UpdateFunctionConfigurationResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

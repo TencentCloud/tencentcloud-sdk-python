@@ -12307,6 +12307,12 @@ class JobV1(AbstractModel):
         :type LastDiagnoseTime: str
         :param _ManagerUin: <p>负责人Uin</p>
         :type ManagerUin: str
+        :param _StartupPoint: <p>启动位点</p>
+        :type StartupPoint: str
+        :param _IsEvent: <p>是否有事件</p>
+        :type IsEvent: bool
+        :param _IsAlarm: <p>是否告警</p>
+        :type IsAlarm: bool
         """
         self._JobId = None
         self._Region = None
@@ -12359,6 +12365,9 @@ class JobV1(AbstractModel):
         self._HealthScore = None
         self._LastDiagnoseTime = None
         self._ManagerUin = None
+        self._StartupPoint = None
+        self._IsEvent = None
+        self._IsAlarm = None
 
     @property
     def JobId(self):
@@ -12964,6 +12973,39 @@ class JobV1(AbstractModel):
     def ManagerUin(self, ManagerUin):
         self._ManagerUin = ManagerUin
 
+    @property
+    def StartupPoint(self):
+        r"""<p>启动位点</p>
+        :rtype: str
+        """
+        return self._StartupPoint
+
+    @StartupPoint.setter
+    def StartupPoint(self, StartupPoint):
+        self._StartupPoint = StartupPoint
+
+    @property
+    def IsEvent(self):
+        r"""<p>是否有事件</p>
+        :rtype: bool
+        """
+        return self._IsEvent
+
+    @IsEvent.setter
+    def IsEvent(self, IsEvent):
+        self._IsEvent = IsEvent
+
+    @property
+    def IsAlarm(self):
+        r"""<p>是否告警</p>
+        :rtype: bool
+        """
+        return self._IsAlarm
+
+    @IsAlarm.setter
+    def IsAlarm(self, IsAlarm):
+        self._IsAlarm = IsAlarm
+
 
     def _deserialize(self, params):
         self._JobId = params.get("JobId")
@@ -13024,6 +13066,9 @@ class JobV1(AbstractModel):
         self._HealthScore = params.get("HealthScore")
         self._LastDiagnoseTime = params.get("LastDiagnoseTime")
         self._ManagerUin = params.get("ManagerUin")
+        self._StartupPoint = params.get("StartupPoint")
+        self._IsEvent = params.get("IsEvent")
+        self._IsAlarm = params.get("IsAlarm")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

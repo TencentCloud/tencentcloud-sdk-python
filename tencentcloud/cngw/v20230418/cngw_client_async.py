@@ -79,6 +79,78 @@ class CngwClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CheckCloudNativeAPIGatewayMCPRouteMatch(
+            self,
+            request: models.CheckCloudNativeAPIGatewayMCPRouteMatchRequest,
+            opts: Dict = None,
+    ) -> models.CheckCloudNativeAPIGatewayMCPRouteMatchResponse:
+        """
+        上传插件前置操作，获取COS相关信息
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CheckCloudNativeAPIGatewayMCPRouteMatch"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CheckCloudNativeAPIGatewayMCPRouteMatchResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def CheckCloudNativeAPIGatewayMCPToolVersionExist(
+            self,
+            request: models.CheckCloudNativeAPIGatewayMCPToolVersionExistRequest,
+            opts: Dict = None,
+    ) -> models.CheckCloudNativeAPIGatewayMCPToolVersionExistResponse:
+        """
+        修改云原生智能网关MCP Tool
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CheckCloudNativeAPIGatewayMCPToolVersionExist"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CheckCloudNativeAPIGatewayMCPToolVersionExistResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def CompareCloudNativeAPIGatewayMCPToolVersion(
+            self,
+            request: models.CompareCloudNativeAPIGatewayMCPToolVersionRequest,
+            opts: Dict = None,
+    ) -> models.CompareCloudNativeAPIGatewayMCPToolVersionResponse:
+        """
+        修改云原生智能网关MCP Tool
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CompareCloudNativeAPIGatewayMCPToolVersion"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CompareCloudNativeAPIGatewayMCPToolVersionResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def CreateCloudNativeAPIGatewayAIServiceSource(
+            self,
+            request: models.CreateCloudNativeAPIGatewayAIServiceSourceRequest,
+            opts: Dict = None,
+    ) -> models.CreateCloudNativeAPIGatewayAIServiceSourceResponse:
+        """
+        创建云原生网关AI服务来源
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateCloudNativeAPIGatewayAIServiceSource"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateCloudNativeAPIGatewayAIServiceSourceResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateCloudNativeAPIGatewayConsumer(
             self,
             request: models.CreateCloudNativeAPIGatewayConsumerRequest,
@@ -151,6 +223,24 @@ class CngwClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateCloudNativeAPIGatewayMCPRoute(
+            self,
+            request: models.CreateCloudNativeAPIGatewayMCPRouteRequest,
+            opts: Dict = None,
+    ) -> models.CreateCloudNativeAPIGatewayMCPRouteResponse:
+        """
+        上传插件前置操作，获取COS相关信息
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateCloudNativeAPIGatewayMCPRoute"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateCloudNativeAPIGatewayMCPRouteResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateCloudNativeAPIGatewayMCPServer(
             self,
             request: models.CreateCloudNativeAPIGatewayMCPServerRequest,
@@ -200,6 +290,24 @@ class CngwClient(AbstractClient):
         kwargs["action"] = "CreateCloudNativeAPIGatewaySecretKey"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.CreateCloudNativeAPIGatewaySecretKeyResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DeleteCloudNativeAPIGatewayAIServiceSource(
+            self,
+            request: models.DeleteCloudNativeAPIGatewayAIServiceSourceRequest,
+            opts: Dict = None,
+    ) -> models.DeleteCloudNativeAPIGatewayAIServiceSourceResponse:
+        """
+        删除云原生网关AI服务来源
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteCloudNativeAPIGatewayAIServiceSource"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteCloudNativeAPIGatewayAIServiceSourceResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -277,6 +385,24 @@ class CngwClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DeleteCloudNativeAPIGatewayMCPRoute(
+            self,
+            request: models.DeleteCloudNativeAPIGatewayMCPRouteRequest,
+            opts: Dict = None,
+    ) -> models.DeleteCloudNativeAPIGatewayMCPRouteResponse:
+        """
+        上传插件前置操作，获取COS相关信息
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteCloudNativeAPIGatewayMCPRoute"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteCloudNativeAPIGatewayMCPRouteResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DeleteCloudNativeAPIGatewayMCPServer(
             self,
             request: models.DeleteCloudNativeAPIGatewayMCPServerRequest,
@@ -313,6 +439,24 @@ class CngwClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DeleteCloudNativeAPIGatewayMCPToolVersion(
+            self,
+            request: models.DeleteCloudNativeAPIGatewayMCPToolVersionRequest,
+            opts: Dict = None,
+    ) -> models.DeleteCloudNativeAPIGatewayMCPToolVersionResponse:
+        """
+        修改云原生智能网关MCP Tool
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DeleteCloudNativeAPIGatewayMCPToolVersion"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DeleteCloudNativeAPIGatewayMCPToolVersionResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DeleteCloudNativeAPIGatewaySecretKey(
             self,
             request: models.DeleteCloudNativeAPIGatewaySecretKeyRequest,
@@ -344,6 +488,60 @@ class CngwClient(AbstractClient):
         kwargs["action"] = "DescribeCNGWServicesWithRoutes"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeCNGWServicesWithRoutesResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeCloudNativeAPIGatewayAIQuota(
+            self,
+            request: models.DescribeCloudNativeAPIGatewayAIQuotaRequest,
+            opts: Dict = None,
+    ) -> models.DescribeCloudNativeAPIGatewayAIQuotaResponse:
+        """
+        查询AI网关配额
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeCloudNativeAPIGatewayAIQuota"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeCloudNativeAPIGatewayAIQuotaResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeCloudNativeAPIGatewayAIQuotaList(
+            self,
+            request: models.DescribeCloudNativeAPIGatewayAIQuotaListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeCloudNativeAPIGatewayAIQuotaListResponse:
+        """
+        查询AI配额配置列表
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeCloudNativeAPIGatewayAIQuotaList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeCloudNativeAPIGatewayAIQuotaListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeCloudNativeAPIGatewayAIServiceSourceList(
+            self,
+            request: models.DescribeCloudNativeAPIGatewayAIServiceSourceListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeCloudNativeAPIGatewayAIServiceSourceListResponse:
+        """
+        查询云原生网关AI服务来源
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeCloudNativeAPIGatewayAIServiceSourceList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeCloudNativeAPIGatewayAIServiceSourceListResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -493,6 +691,24 @@ class CngwClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeCloudNativeAPIGatewayMCPRouteList(
+            self,
+            request: models.DescribeCloudNativeAPIGatewayMCPRouteListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeCloudNativeAPIGatewayMCPRouteListResponse:
+        """
+        上传插件前置操作，获取COS相关信息
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeCloudNativeAPIGatewayMCPRouteList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeCloudNativeAPIGatewayMCPRouteListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeCloudNativeAPIGatewayMCPServer(
             self,
             request: models.DescribeCloudNativeAPIGatewayMCPServerRequest,
@@ -601,6 +817,24 @@ class CngwClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeCloudNativeAPIGatewayMCPToolImportTask(
+            self,
+            request: models.DescribeCloudNativeAPIGatewayMCPToolImportTaskRequest,
+            opts: Dict = None,
+    ) -> models.DescribeCloudNativeAPIGatewayMCPToolImportTaskResponse:
+        """
+        查询批量导入MCP Tools的任务进度
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeCloudNativeAPIGatewayMCPToolImportTask"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeCloudNativeAPIGatewayMCPToolImportTaskResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeCloudNativeAPIGatewayMCPToolList(
             self,
             request: models.DescribeCloudNativeAPIGatewayMCPToolListRequest,
@@ -614,6 +848,42 @@ class CngwClient(AbstractClient):
         kwargs["action"] = "DescribeCloudNativeAPIGatewayMCPToolList"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeCloudNativeAPIGatewayMCPToolListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeCloudNativeAPIGatewayMCPToolVersion(
+            self,
+            request: models.DescribeCloudNativeAPIGatewayMCPToolVersionRequest,
+            opts: Dict = None,
+    ) -> models.DescribeCloudNativeAPIGatewayMCPToolVersionResponse:
+        """
+        修改云原生智能网关MCP Tool
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeCloudNativeAPIGatewayMCPToolVersion"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeCloudNativeAPIGatewayMCPToolVersionResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def DescribeCloudNativeAPIGatewayMCPToolVersionList(
+            self,
+            request: models.DescribeCloudNativeAPIGatewayMCPToolVersionListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeCloudNativeAPIGatewayMCPToolVersionListResponse:
+        """
+        修改云原生智能网关MCP Tool
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeCloudNativeAPIGatewayMCPToolVersionList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeCloudNativeAPIGatewayMCPToolVersionListResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -655,6 +925,24 @@ class CngwClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def DescribeCloudNativeAPIGatewaySecretKeyList(
+            self,
+            request: models.DescribeCloudNativeAPIGatewaySecretKeyListRequest,
+            opts: Dict = None,
+    ) -> models.DescribeCloudNativeAPIGatewaySecretKeyListResponse:
+        """
+        查询密钥列表。
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "DescribeCloudNativeAPIGatewaySecretKeyList"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.DescribeCloudNativeAPIGatewaySecretKeyListResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def DescribeCloudNativeAPIGatewaySecretKeyValue(
             self,
             request: models.DescribeCloudNativeAPIGatewaySecretKeyValueRequest,
@@ -668,6 +956,24 @@ class CngwClient(AbstractClient):
         kwargs["action"] = "DescribeCloudNativeAPIGatewaySecretKeyValue"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.DescribeCloudNativeAPIGatewaySecretKeyValueResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyCloudNativeAPIGatewayAIServiceSource(
+            self,
+            request: models.ModifyCloudNativeAPIGatewayAIServiceSourceRequest,
+            opts: Dict = None,
+    ) -> models.ModifyCloudNativeAPIGatewayAIServiceSourceResponse:
+        """
+        修改云原生网关AI服务来源
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyCloudNativeAPIGatewayAIServiceSource"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyCloudNativeAPIGatewayAIServiceSourceResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -740,6 +1046,42 @@ class CngwClient(AbstractClient):
         kwargs["action"] = "ModifyCloudNativeAPIGatewayLLMModelService"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.ModifyCloudNativeAPIGatewayLLMModelServiceResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyCloudNativeAPIGatewayMCPRoute(
+            self,
+            request: models.ModifyCloudNativeAPIGatewayMCPRouteRequest,
+            opts: Dict = None,
+    ) -> models.ModifyCloudNativeAPIGatewayMCPRouteResponse:
+        """
+        上传插件前置操作，获取COS相关信息
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyCloudNativeAPIGatewayMCPRoute"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyCloudNativeAPIGatewayMCPRouteResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def ModifyCloudNativeAPIGatewayMCPRouteStatus(
+            self,
+            request: models.ModifyCloudNativeAPIGatewayMCPRouteStatusRequest,
+            opts: Dict = None,
+    ) -> models.ModifyCloudNativeAPIGatewayMCPRouteStatusResponse:
+        """
+        上传插件前置操作，获取COS相关信息
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "ModifyCloudNativeAPIGatewayMCPRouteStatus"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.ModifyCloudNativeAPIGatewayMCPRouteStatusResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         
@@ -920,6 +1262,24 @@ class CngwClient(AbstractClient):
         kwargs["action"] = "RemoveCloudNativeAPIGatewayConsumerInGroup"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.RemoveCloudNativeAPIGatewayConsumerInGroupResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def RollbackCloudNativeAPIGatewayMCPToolVersion(
+            self,
+            request: models.RollbackCloudNativeAPIGatewayMCPToolVersionRequest,
+            opts: Dict = None,
+    ) -> models.RollbackCloudNativeAPIGatewayMCPToolVersionResponse:
+        """
+        修改云原生智能网关MCP Tool
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "RollbackCloudNativeAPIGatewayMCPToolVersion"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.RollbackCloudNativeAPIGatewayMCPToolVersionResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

@@ -2282,10 +2282,10 @@ class EssbasicClient(AbstractClient):
             opts: Dict = None,
     ) -> models.CreateSignUrlsResponse:
         """
-        本接口用于获取跳转至腾讯电子签小程序的签署链接，签署人点击链接后即可跳转到腾讯电子签小程序完成合同的查看、填写与签署等操作。
+        本接口用于获取跳转至腾讯电子签小程序的签署链接，签署人点击链接后即可<font color="red">跳转到腾讯电子签小程序</font>完成合同的查看、填写与签署等操作。
 
         ### 1.1 适用场景
-        当需要签署人在贵方自有的 APP、小程序、H5、公众号等应用中发起或完成签署时，可通过此接口获取跳转至腾讯电子签小程序的签署链接，并结合短信、页面按钮、二维码等方式触达签署人。
+        当需要签署人在贵方自有的 APP、小程序、H5、公众号等应用中发起或完成签署时，可通过此接口获取跳转至腾讯电子签小程序的签署链接，并结合企业自己的短信、页面按钮、二维码等方式触达签署人。
         跳转到小程序的实现，参考微信官方文档（分为<a href="https://developers.weixin.qq.com/miniprogram/dev/api/navigate/wx.navigateToMiniProgram.html">全屏</a>、<a href="https://developers.weixin.qq.com/miniprogram/dev/framework/open-ability/openEmbeddedMiniProgram.html">半屏</a>两种方式），如何配置也可以请参考: <a href="https://qian.tencent.com/developers/partner/openwxminiprogram">跳转电子签小程序配置</a>
 
         ### 1.2 注意事项
@@ -2302,7 +2302,7 @@ class EssbasicClient(AbstractClient):
         | 腾讯电子签（正式版） | wxa023b292fd19d41d | gh_da88f6188665 |
         | 腾讯电子签Demo | wx371151823f6f3edf | gh_39a5d3de69fa |
 
-        <font color="red">注：如果客户在线上小程序环境中打开的是腾讯电子签的测试版本小程序（腾讯电子签Demo），需要联系其前端将跳转配置中小程序的 AppID 从 `腾讯电子签Demo（wx371151823f6f3edf）` 更换为 `腾讯电子签（正式版）（wxa023b292fd19d41d）`。</font>
+        <font color="red">注：如果客户在线上小程序环境中打开的是腾讯电子签的测试版本小程序（腾讯电子签Demo），需要联系其前端将跳转配置中小程序的 AppID 从 腾讯电子签Demo 更换为 腾讯电子签（正式版）。</font>
 
         ### 1.4主要使用场景EndPoint分类
 

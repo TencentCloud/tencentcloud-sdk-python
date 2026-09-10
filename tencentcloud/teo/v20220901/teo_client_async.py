@@ -3007,7 +3007,8 @@ class TeoClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DownloadL4LogsResponse:
         """
-        本接口（DownloadL4Logs）用于下载四层离线日志。
+        本接口（DownloadL4Logs）用于获取四层代理业务的离线日志下载链接。
+        **注意：**仅当离线日志功能开启期间，EO 才会存储相关离线日志并提供下载服务。具体功能介绍请见[文档](https://cloud.tencent.com/document/product/1552/73660)。
         """
         
         kwargs = {}
@@ -3025,7 +3026,8 @@ class TeoClient(AbstractClient):
             opts: Dict = None,
     ) -> models.DownloadL7LogsResponse:
         """
-        本接口（DownloadL7Logs）下载七层离线日志。
+        本接口（DownloadL7Logs）用于获取七层域名业务的离线日志下载链接。
+        **注意：**仅当离线日志功能开启期间，EO 才会存储相关离线日志并提供下载服务。具体功能介绍请见[文档](https://cloud.tencent.com/document/product/1552/73660)。
         """
         
         kwargs = {}

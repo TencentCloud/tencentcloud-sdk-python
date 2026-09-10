@@ -46745,15 +46745,15 @@ class UserInfo(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _UserId: 用户在平台的编号
+        :param _UserId: <p>用户在平台中的编号（UserId）</p><p>UserId 获取方式：<a href="https://qcloudimg.tencent-cloud.cn/raw/6b054d6161b04c24855de15cb243f6bf.png" target="_blank">点击查看</a></p>
         :type UserId: str
-        :param _Channel: 用户的来源渠道，一般不用传，特定场景根据接口说明传值
+        :param _Channel: <p>用户的来源渠道，一般不用传，特定场景根据接口说明传值</p>
         :type Channel: str
-        :param _OpenId: 用户在渠道的编号，一般不用传，特定场景根据接口说明传值
+        :param _OpenId: <p>用户在渠道的编号，一般不用传，特定场景根据接口说明传值</p>
         :type OpenId: str
-        :param _ClientIp: 用户真实IP，内部字段，暂未开放
+        :param _ClientIp: <p>用户真实IP，内部字段，暂未开放</p>
         :type ClientIp: str
-        :param _ProxyIp: 用户代理IP，内部字段，暂未开放
+        :param _ProxyIp: <p>用户代理IP，内部字段，暂未开放</p>
         :type ProxyIp: str
         """
         self._UserId = None
@@ -46764,7 +46764,7 @@ class UserInfo(AbstractModel):
 
     @property
     def UserId(self):
-        r"""用户在平台的编号
+        r"""<p>用户在平台中的编号（UserId）</p><p>UserId 获取方式：<a href="https://qcloudimg.tencent-cloud.cn/raw/6b054d6161b04c24855de15cb243f6bf.png" target="_blank">点击查看</a></p>
         :rtype: str
         """
         return self._UserId
@@ -46777,7 +46777,7 @@ class UserInfo(AbstractModel):
     def Channel(self):
         warnings.warn("parameter `Channel` is deprecated", DeprecationWarning) 
 
-        r"""用户的来源渠道，一般不用传，特定场景根据接口说明传值
+        r"""<p>用户的来源渠道，一般不用传，特定场景根据接口说明传值</p>
         :rtype: str
         """
         return self._Channel
@@ -46792,7 +46792,7 @@ class UserInfo(AbstractModel):
     def OpenId(self):
         warnings.warn("parameter `OpenId` is deprecated", DeprecationWarning) 
 
-        r"""用户在渠道的编号，一般不用传，特定场景根据接口说明传值
+        r"""<p>用户在渠道的编号，一般不用传，特定场景根据接口说明传值</p>
         :rtype: str
         """
         return self._OpenId
@@ -46807,7 +46807,7 @@ class UserInfo(AbstractModel):
     def ClientIp(self):
         warnings.warn("parameter `ClientIp` is deprecated", DeprecationWarning) 
 
-        r"""用户真实IP，内部字段，暂未开放
+        r"""<p>用户真实IP，内部字段，暂未开放</p>
         :rtype: str
         """
         return self._ClientIp
@@ -46822,7 +46822,7 @@ class UserInfo(AbstractModel):
     def ProxyIp(self):
         warnings.warn("parameter `ProxyIp` is deprecated", DeprecationWarning) 
 
-        r"""用户代理IP，内部字段，暂未开放
+        r"""<p>用户代理IP，内部字段，暂未开放</p>
         :rtype: str
         """
         return self._ProxyIp

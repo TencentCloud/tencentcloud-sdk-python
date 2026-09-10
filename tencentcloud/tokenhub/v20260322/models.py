@@ -9448,18 +9448,22 @@ class UsageSeries(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _TotalToken: <p>[tokens 族]总 token 数用量时间周期内的 JSON 字符串形式，如 <code>&quot;[12,null,15]&quot;</code>。</p>
+        :param _TotalToken: <p>[tokens / apikey_usage 族]总 token 数用量时间周期内的 JSON 字符串形式，如 <code>&quot;[12,null,15]&quot;</code>。</p>
         :type TotalToken: str
-        :param _InputTotalToken: <p>[tokens 族]输入 token 数用量时间周期内的 JSON 字符串形式，如 <code>&quot;[7,null,9]&quot;</code>。</p>
+        :param _InputTotalToken: <p>[tokens / apikey_usage 族]输入 token 数用量时间周期内的 JSON 字符串形式，如 <code>&quot;[7,null,9]&quot;</code>。</p>
         :type InputTotalToken: str
-        :param _OutputTotalToken: <p>[tokens 族]输出 token 数用量时间周期内的 JSON 字符串形式，如 <code>&quot;[5,null,6]&quot;</code>。</p>
+        :param _OutputTotalToken: <p>[tokens / apikey_usage 族]输出 token 数用量时间周期内的 JSON 字符串形式，如 <code>&quot;[5,null,6]&quot;</code>。</p>
         :type OutputTotalToken: str
-        :param _CacheTotalToken: <p>[tokens 族]读缓存 token 数用量时间周期内的 JSON 字符串形式，如<code>&quot;[5,null,6]&quot;</code>。</p>
+        :param _CacheTotalToken: <p>[tokens / apikey_usage 族]读缓存 token 数用量时间周期内的 JSON 字符串形式，如<code>&quot;[5,null,6]&quot;</code>。</p>
         :type CacheTotalToken: str
         :param _SearchRequestCount: <p>[search 族] 搜索请求数用量时间周期内的 JSON 字符串形式，如<code>&quot;[5,null,6]&quot;</code>。</p>
         :type SearchRequestCount: str
         :param _SearchCount: <p>[search 族] 搜索引擎调用次数用量时间周期内的 JSON 字符串形式，如<code>&quot;[5,null,6]&quot;</code>。</p>
         :type SearchCount: str
+        :param _RequestCount: <p>[apikey_usage 族] 请求次数在时间周期内的 JSON 字符串形式，如 <code>&quot;[12,null,15]&quot;</code>。</p>
+        :type RequestCount: str
+        :param _RequestFailCount: <p>[apikey_usage 族] 请求失败次数在时间周期内的 JSON 字符串形式，如 &quot;[12,null,15]&quot;。</p>
+        :type RequestFailCount: str
         """
         self._TotalToken = None
         self._InputTotalToken = None
@@ -9467,10 +9471,12 @@ class UsageSeries(AbstractModel):
         self._CacheTotalToken = None
         self._SearchRequestCount = None
         self._SearchCount = None
+        self._RequestCount = None
+        self._RequestFailCount = None
 
     @property
     def TotalToken(self):
-        r"""<p>[tokens 族]总 token 数用量时间周期内的 JSON 字符串形式，如 <code>&quot;[12,null,15]&quot;</code>。</p>
+        r"""<p>[tokens / apikey_usage 族]总 token 数用量时间周期内的 JSON 字符串形式，如 <code>&quot;[12,null,15]&quot;</code>。</p>
         :rtype: str
         """
         return self._TotalToken
@@ -9481,7 +9487,7 @@ class UsageSeries(AbstractModel):
 
     @property
     def InputTotalToken(self):
-        r"""<p>[tokens 族]输入 token 数用量时间周期内的 JSON 字符串形式，如 <code>&quot;[7,null,9]&quot;</code>。</p>
+        r"""<p>[tokens / apikey_usage 族]输入 token 数用量时间周期内的 JSON 字符串形式，如 <code>&quot;[7,null,9]&quot;</code>。</p>
         :rtype: str
         """
         return self._InputTotalToken
@@ -9492,7 +9498,7 @@ class UsageSeries(AbstractModel):
 
     @property
     def OutputTotalToken(self):
-        r"""<p>[tokens 族]输出 token 数用量时间周期内的 JSON 字符串形式，如 <code>&quot;[5,null,6]&quot;</code>。</p>
+        r"""<p>[tokens / apikey_usage 族]输出 token 数用量时间周期内的 JSON 字符串形式，如 <code>&quot;[5,null,6]&quot;</code>。</p>
         :rtype: str
         """
         return self._OutputTotalToken
@@ -9503,7 +9509,7 @@ class UsageSeries(AbstractModel):
 
     @property
     def CacheTotalToken(self):
-        r"""<p>[tokens 族]读缓存 token 数用量时间周期内的 JSON 字符串形式，如<code>&quot;[5,null,6]&quot;</code>。</p>
+        r"""<p>[tokens / apikey_usage 族]读缓存 token 数用量时间周期内的 JSON 字符串形式，如<code>&quot;[5,null,6]&quot;</code>。</p>
         :rtype: str
         """
         return self._CacheTotalToken
@@ -9534,6 +9540,28 @@ class UsageSeries(AbstractModel):
     def SearchCount(self, SearchCount):
         self._SearchCount = SearchCount
 
+    @property
+    def RequestCount(self):
+        r"""<p>[apikey_usage 族] 请求次数在时间周期内的 JSON 字符串形式，如 <code>&quot;[12,null,15]&quot;</code>。</p>
+        :rtype: str
+        """
+        return self._RequestCount
+
+    @RequestCount.setter
+    def RequestCount(self, RequestCount):
+        self._RequestCount = RequestCount
+
+    @property
+    def RequestFailCount(self):
+        r"""<p>[apikey_usage 族] 请求失败次数在时间周期内的 JSON 字符串形式，如 &quot;[12,null,15]&quot;。</p>
+        :rtype: str
+        """
+        return self._RequestFailCount
+
+    @RequestFailCount.setter
+    def RequestFailCount(self, RequestFailCount):
+        self._RequestFailCount = RequestFailCount
+
 
     def _deserialize(self, params):
         self._TotalToken = params.get("TotalToken")
@@ -9542,6 +9570,8 @@ class UsageSeries(AbstractModel):
         self._CacheTotalToken = params.get("CacheTotalToken")
         self._SearchRequestCount = params.get("SearchRequestCount")
         self._SearchCount = params.get("SearchCount")
+        self._RequestCount = params.get("RequestCount")
+        self._RequestFailCount = params.get("RequestFailCount")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -9553,24 +9583,28 @@ class UsageSeries(AbstractModel):
 
 
 class UsageStats(AbstractModel):
-    r"""时间周期内的统计聚合值（按 metric key 索引）。声明 tokens / search 两族字段都在本 schema 中，按 MetricKeys 实际返回取值，参见响应顶层 `MetricKeys` 字段。
+    r"""时间周期内的统计聚合值，按 MetricKeys 实际返回取值，参见响应顶层 `MetricKeys` 字段。
 
     """
 
     def __init__(self):
         r"""
-        :param _TotalToken: <p>[tokens 族] 时间周期内的累计总 token 数。</p>
+        :param _TotalToken: <p>[tokens / apikey_usage 族] 时间周期内的累计总 token 数。</p>
         :type TotalToken: int
-        :param _InputTotalToken: <p>[tokens 族] 时间周期内的累计输入 token 数。</p>
+        :param _InputTotalToken: <p>[tokens / apikey_usage 族] 时间周期内的累计输入 token 数。</p>
         :type InputTotalToken: int
-        :param _OutputTotalToken: <p>[tokens 族] 时间周期内的累计输出 token 数。</p>
+        :param _OutputTotalToken: <p>[tokens / apikey_usage 族] 时间周期内的累计输出 token 数。</p>
         :type OutputTotalToken: int
-        :param _CacheTotalToken: <p>[tokens 族] 时间周期内的累计读缓存 token 数（命中缓存部分）</p>
+        :param _CacheTotalToken: <p>[tokens / apikey_usage 族] 时间周期内的累计读缓存 token 数（命中缓存部分）注意：CacheTotalToken 是 InputTotalToken 的子集（已包含在内）。</p>
         :type CacheTotalToken: int
-        :param _SearchRequestCount: <p>[search 族] 整段累计联网搜索请求数</p>
+        :param _SearchRequestCount: <p>[search 族] 时间周期内的累计联网搜索请求数</p>
         :type SearchRequestCount: int
-        :param _SearchCount: <p>[search 族] 整段累计搜索引擎调用次数</p>
+        :param _SearchCount: <p>[search 族] 时间周期内的累计搜索引擎调用次数</p>
         :type SearchCount: int
+        :param _RequestCount: <p>[apikey_usage 族] 时间周期内的累计请求次数</p>
+        :type RequestCount: int
+        :param _RequestFailCount: <p>[apikey_usage 族] 时间周期内的累计请求失败次数</p>
+        :type RequestFailCount: int
         """
         self._TotalToken = None
         self._InputTotalToken = None
@@ -9578,10 +9612,12 @@ class UsageStats(AbstractModel):
         self._CacheTotalToken = None
         self._SearchRequestCount = None
         self._SearchCount = None
+        self._RequestCount = None
+        self._RequestFailCount = None
 
     @property
     def TotalToken(self):
-        r"""<p>[tokens 族] 时间周期内的累计总 token 数。</p>
+        r"""<p>[tokens / apikey_usage 族] 时间周期内的累计总 token 数。</p>
         :rtype: int
         """
         return self._TotalToken
@@ -9592,7 +9628,7 @@ class UsageStats(AbstractModel):
 
     @property
     def InputTotalToken(self):
-        r"""<p>[tokens 族] 时间周期内的累计输入 token 数。</p>
+        r"""<p>[tokens / apikey_usage 族] 时间周期内的累计输入 token 数。</p>
         :rtype: int
         """
         return self._InputTotalToken
@@ -9603,7 +9639,7 @@ class UsageStats(AbstractModel):
 
     @property
     def OutputTotalToken(self):
-        r"""<p>[tokens 族] 时间周期内的累计输出 token 数。</p>
+        r"""<p>[tokens / apikey_usage 族] 时间周期内的累计输出 token 数。</p>
         :rtype: int
         """
         return self._OutputTotalToken
@@ -9614,7 +9650,7 @@ class UsageStats(AbstractModel):
 
     @property
     def CacheTotalToken(self):
-        r"""<p>[tokens 族] 时间周期内的累计读缓存 token 数（命中缓存部分）</p>
+        r"""<p>[tokens / apikey_usage 族] 时间周期内的累计读缓存 token 数（命中缓存部分）注意：CacheTotalToken 是 InputTotalToken 的子集（已包含在内）。</p>
         :rtype: int
         """
         return self._CacheTotalToken
@@ -9625,7 +9661,7 @@ class UsageStats(AbstractModel):
 
     @property
     def SearchRequestCount(self):
-        r"""<p>[search 族] 整段累计联网搜索请求数</p>
+        r"""<p>[search 族] 时间周期内的累计联网搜索请求数</p>
         :rtype: int
         """
         return self._SearchRequestCount
@@ -9636,7 +9672,7 @@ class UsageStats(AbstractModel):
 
     @property
     def SearchCount(self):
-        r"""<p>[search 族] 整段累计搜索引擎调用次数</p>
+        r"""<p>[search 族] 时间周期内的累计搜索引擎调用次数</p>
         :rtype: int
         """
         return self._SearchCount
@@ -9644,6 +9680,28 @@ class UsageStats(AbstractModel):
     @SearchCount.setter
     def SearchCount(self, SearchCount):
         self._SearchCount = SearchCount
+
+    @property
+    def RequestCount(self):
+        r"""<p>[apikey_usage 族] 时间周期内的累计请求次数</p>
+        :rtype: int
+        """
+        return self._RequestCount
+
+    @RequestCount.setter
+    def RequestCount(self, RequestCount):
+        self._RequestCount = RequestCount
+
+    @property
+    def RequestFailCount(self):
+        r"""<p>[apikey_usage 族] 时间周期内的累计请求失败次数</p>
+        :rtype: int
+        """
+        return self._RequestFailCount
+
+    @RequestFailCount.setter
+    def RequestFailCount(self, RequestFailCount):
+        self._RequestFailCount = RequestFailCount
 
 
     def _deserialize(self, params):
@@ -9653,6 +9711,8 @@ class UsageStats(AbstractModel):
         self._CacheTotalToken = params.get("CacheTotalToken")
         self._SearchRequestCount = params.get("SearchRequestCount")
         self._SearchCount = params.get("SearchCount")
+        self._RequestCount = params.get("RequestCount")
+        self._RequestFailCount = params.get("RequestFailCount")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
