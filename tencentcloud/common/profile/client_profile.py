@@ -59,7 +59,6 @@ class ClientProfile(object):
 
         self.retryer = retryer
 
-
 class RegionBreakerProfile(object):
     """RegionBreaker profile.
 

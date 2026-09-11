@@ -41,6 +41,9 @@ from tencentcloud.common.http.request import RequestInternal
 from tencentcloud.common.profile.client_profile import ClientProfile, RegionBreakerProfile
 from tencentcloud.common.sign import Sign
 from tencentcloud.common.circuit_breaker import CircuitBreaker
+from tencentcloud.common.domain_failover import (
+    DomainFailoverManager, _classify_exception, is_failover_triggered,
+)
 from tencentcloud.common.retry import NoopRetryer
 
 warnings.filterwarnings("ignore", module="tencentcloud", category=UserWarning)
@@ -89,6 +92,10 @@ class AbstractClient(object):
             if self.profile.region_breaker_profile is None:
                 self.profile.region_breaker_profile = RegionBreakerProfile()
             self.circuit_breaker = CircuitBreaker(self.profile.region_breaker_profile)
+
+        # Domain-level failover manager (SDK internal mechanism, completely transparent to users, .com → .com.cn → .cn)
+        self.domain_failover = DomainFailoverManager()
+
         if self.profile.request_client:
             self.request_client = self._sdkVersion + "; " + self.profile.request_client
         else:
@@ -427,16 +434,71 @@ class AbstractClient(object):
             headers["X-TC-TraceId"] = str(uuid.uuid4())
         if not self.profile.disable_region_breaker:
             return self._call_with_region_breaker(action, params, options, headers)
-        req = RequestInternal(self._get_endpoint(options=options),
-                              self.profile.httpProfile.reqMethod,
-                              self._requestPath,
-                              header=headers)
-        self._build_req_inter(action, params, req, options)
 
+        # apigw_endpoint explicitly specified by user, skip domain switching
         if self.profile.httpProfile.apigw_endpoint:
+            req = RequestInternal(self._get_endpoint(options=options),
+                                  self.profile.httpProfile.reqMethod,
+                                  self._requestPath,
+                                  header=headers)
+            self._build_req_inter(action, params, req, options)
             req.host = self.profile.httpProfile.apigw_endpoint
             req.header["Host"] = req.host
-        return self.request.send_request(req)
+            return self.request.send_request(req)
+
+        origin_endpoint = self._get_endpoint(options=options)
+        return self._call_with_domain_failover(origin_endpoint, action, params, options, headers)
+
+    def _call_with_domain_failover(self, origin_endpoint, action, params, options, headers):
+        """Try sequentially in candidate domain order, switch to next candidate upon first switchable exception.
+
+        Each candidate carries independent circuit breaker; any success resets the failure count for that candidate.
+        All candidates fail, throw the last TencentCloudSDKException (exception chain preserved).
+        """
+        usable = self.domain_failover.iter_available_candidates(origin_endpoint)
+        last_err = None
+
+        for idx, (cand_host, breaker, generation) in enumerate(usable):
+            # Each candidate needs to reconstruct req and resign (because Host changes, TC3 signature
+            # `host:` also needs to change). Note headers is an external dictionary, to avoid signature residue
+            # polluting the next candidate, deep copy here.
+            cand_headers = dict(headers)
+            req = RequestInternal(cand_host,
+                                  self.profile.httpProfile.reqMethod,
+                                  self._requestPath,
+                                  header=cand_headers)
+            self._build_req_inter(action, params, req, options)
+            # Override Host to ensure even old signature versions (HmacSHA1/256) without Host set can work
+            req.header["Host"] = cand_host
+
+            # ProxyConnection.request_host will serve as fallback for setdefault("Host") during request;
+            # To ensure HTTP layer also sees correct Host, synchronize here (does not affect rootDomain configuration).
+            prev_request_host = self.request.conn.request_host
+            self.request.conn.request_host = cand_host
+            try:
+                resp = self.request.send_request(req)
+                breaker.after_requests(generation, True)
+                return resp
+            except TencentCloudSDKException as e:
+                kind = _classify_exception(e)
+                if is_failover_triggered(kind):
+                # Trigger switch: report failure and try next candidate
+                    breaker.after_requests(generation, False)
+                    last_err = e
+                    logger.debug(
+                        "domain_failover: candidate=%s kind=%s err=%s, try next",
+                        cand_host, kind, e)
+                    continue
+            # Non-network exceptions: no switch, throw directly; doesn't affect circuit breaker count (avoid business error pollution)
+                raise
+            finally:
+                self.request.conn.request_host = prev_request_host
+
+        # All candidates failed: throw the last exception (exception chain preserved via `raise ... from e`)
+        if last_err is not None:
+            raise last_err
+        # Theoretically shouldn't reach here
+        raise TencentCloudSDKException("ClientNetworkError", "all failover candidates failed")
 
     def call(self, action, params, options=None, headers=None):
 
