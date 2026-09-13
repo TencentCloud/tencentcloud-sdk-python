@@ -25381,16 +25381,15 @@ class RecognizeThaiIDCardOCRRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ImageBase64: 图片的 Base64 值。要求图片经Base64编码后不超过 10M，分辨率建议500*800以上，支持PNG、JPG、JPEG、BMP格式。建议卡片部分占据图片2/3以上。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+        :param _ImageBase64: <p>图片的 Base64 值。要求图片经Base64编码后不超过 7M，分辨率建议500*800以上，支持PNG、JPG、JPEG、BMP格式。建议卡片部分占据图片2/3以上。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。</p>
         :type ImageBase64: str
-        :param _BackImageBase64: 卡证背面图片的 Base64 值。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经Base64编码后不超过 10M。图片下载时间不超过 3 秒。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+        :param _BackImageBase64: <p>卡证背面图片的 Base64 值。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经Base64编码后不超过 7M。图片下载时间不超过 3 秒。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。</p>
         :type BackImageBase64: str
-        :param _ImageUrl: 图片的 Url 地址。要求图片经Base64编码后不超过 10M，分辨率建议500*800以上，支持PNG、JPG、JPEG、BMP格式。建议卡片部分占据图片2/3以上。建议图片存储于腾讯云，可保障更高的下载速度和稳定性。
+        :param _ImageUrl: <p>图片的 Url 地址。要求图片经Base64编码后不超过 7M，分辨率建议500*800以上，支持PNG、JPG、JPEG、BMP格式。建议卡片部分占据图片2/3以上。建议图片存储于腾讯云，可保障更高的下载速度和稳定性。</p>
         :type ImageUrl: str
-        :param _BackImageUrl: 卡证背面图片的 Url 地址。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经 Base64 编码后不超过 10M。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+        :param _BackImageUrl: <p>卡证背面图片的 Url 地址。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经 Base64 编码后不超过 7M。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。</p>
         :type BackImageUrl: str
-        :param _CropPortrait: 图片开关。默认为false，不返回泰国身份证头像照片的base64编码。
-设置为true时，返回旋转矫正后的泰国身份证头像照片的base64编码
+        :param _CropPortrait: <p>图片开关。默认为false，不返回泰国身份证头像照片的base64编码。<br>设置为true时，返回旋转矫正后的泰国身份证头像照片的base64编码</p>
         :type CropPortrait: bool
         """
         self._ImageBase64 = None
@@ -25401,7 +25400,7 @@ class RecognizeThaiIDCardOCRRequest(AbstractModel):
 
     @property
     def ImageBase64(self):
-        r"""图片的 Base64 值。要求图片经Base64编码后不超过 10M，分辨率建议500*800以上，支持PNG、JPG、JPEG、BMP格式。建议卡片部分占据图片2/3以上。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+        r"""<p>图片的 Base64 值。要求图片经Base64编码后不超过 7M，分辨率建议500*800以上，支持PNG、JPG、JPEG、BMP格式。建议卡片部分占据图片2/3以上。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。</p>
         :rtype: str
         """
         return self._ImageBase64
@@ -25412,7 +25411,7 @@ class RecognizeThaiIDCardOCRRequest(AbstractModel):
 
     @property
     def BackImageBase64(self):
-        r"""卡证背面图片的 Base64 值。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经Base64编码后不超过 10M。图片下载时间不超过 3 秒。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。
+        r"""<p>卡证背面图片的 Base64 值。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经Base64编码后不超过 7M。图片下载时间不超过 3 秒。图片的 ImageUrl、ImageBase64 必须提供一个，如果都提供，只使用 ImageUrl。</p>
         :rtype: str
         """
         return self._BackImageBase64
@@ -25423,7 +25422,7 @@ class RecognizeThaiIDCardOCRRequest(AbstractModel):
 
     @property
     def ImageUrl(self):
-        r"""图片的 Url 地址。要求图片经Base64编码后不超过 10M，分辨率建议500*800以上，支持PNG、JPG、JPEG、BMP格式。建议卡片部分占据图片2/3以上。建议图片存储于腾讯云，可保障更高的下载速度和稳定性。
+        r"""<p>图片的 Url 地址。要求图片经Base64编码后不超过 7M，分辨率建议500*800以上，支持PNG、JPG、JPEG、BMP格式。建议卡片部分占据图片2/3以上。建议图片存储于腾讯云，可保障更高的下载速度和稳定性。</p>
         :rtype: str
         """
         return self._ImageUrl
@@ -25434,7 +25433,7 @@ class RecognizeThaiIDCardOCRRequest(AbstractModel):
 
     @property
     def BackImageUrl(self):
-        r"""卡证背面图片的 Url 地址。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经 Base64 编码后不超过 10M。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。
+        r"""<p>卡证背面图片的 Url 地址。支持的图片格式：PNG、JPG、JPEG，暂不支持 GIF 格式。支持的图片大小：所下载图片经 Base64 编码后不超过 7M。图片下载时间不超过 3 秒。图片存储于腾讯云的 Url 可保障更高的下载速度和稳定性，建议图片存储于腾讯云。非腾讯云存储的 Url 速度和稳定性可能受一定影响。</p>
         :rtype: str
         """
         return self._BackImageUrl
@@ -25445,8 +25444,7 @@ class RecognizeThaiIDCardOCRRequest(AbstractModel):
 
     @property
     def CropPortrait(self):
-        r"""图片开关。默认为false，不返回泰国身份证头像照片的base64编码。
-设置为true时，返回旋转矫正后的泰国身份证头像照片的base64编码
+        r"""<p>图片开关。默认为false，不返回泰国身份证头像照片的base64编码。<br>设置为true时，返回旋转矫正后的泰国身份证头像照片的base64编码</p>
         :rtype: bool
         """
         return self._CropPortrait
@@ -25479,47 +25477,41 @@ class RecognizeThaiIDCardOCRResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ID: 身份证号码
+        :param _ID: <p>身份证号码</p>
         :type ID: str
-        :param _ThaiName: 泰文姓名
+        :param _ThaiName: <p>泰文姓名</p>
         :type ThaiName: str
-        :param _EnFirstName: 英文姓名
+        :param _EnFirstName: <p>英文姓名</p>
         :type EnFirstName: str
-        :param _EnLastName: 英文姓名
+        :param _EnLastName: <p>英文姓名</p>
         :type EnLastName: str
-        :param _IssueDate: 泰文签发日期
+        :param _IssueDate: <p>泰文签发日期</p>
         :type IssueDate: str
-        :param _ExpirationDate: 泰文到期日期
+        :param _ExpirationDate: <p>泰文到期日期</p>
         :type ExpirationDate: str
-        :param _EnIssueDate: 英文签发日期
+        :param _EnIssueDate: <p>英文签发日期</p>
         :type EnIssueDate: str
-        :param _EnExpirationDate: 英文到期日期
+        :param _EnExpirationDate: <p>英文到期日期</p>
         :type EnExpirationDate: str
-        :param _Birthday: 泰文出生日期
+        :param _Birthday: <p>泰文出生日期</p>
         :type Birthday: str
-        :param _EnBirthday: 英文出生日期
+        :param _EnBirthday: <p>英文出生日期</p>
         :type EnBirthday: str
-        :param _Religion: 宗教信仰
+        :param _Religion: <p>宗教信仰</p>
         :type Religion: str
-        :param _SerialNumber: 序列号
+        :param _SerialNumber: <p>序列号</p>
         :type SerialNumber: str
-        :param _Address: 地址
+        :param _Address: <p>地址</p>
         :type Address: str
-        :param _LaserID: 背面号码
+        :param _LaserID: <p>背面号码</p>
         :type LaserID: str
-        :param _PortraitImage: 证件人像照片抠取
+        :param _PortraitImage: <p>证件人像照片抠取</p>
         :type PortraitImage: str
-        :param _WarnCardInfos: 告警码
--9101 证件边框不完整告警
--9102 证件复印件告警
--9103 证件翻拍告警
--9107 证件反光告警
--9108 证件模糊告警
--9109 告警能力未开通
+        :param _WarnCardInfos: <p>告警码<br>-9101 证件边框不完整告警<br>-9102 证件复印件告警<br>-9103 证件翻拍告警<br>-9104 证件PS告警<br>-9107 证件反光告警<br>-9108 证件模糊告警<br>-9109 告警能力未开通</p>
         :type WarnCardInfos: list of int
-        :param _AdvancedInfo: 该字段已废弃， 将固定返回"1"，不建议使用。 
+        :param _AdvancedInfo: <p>该字段已废弃， 将固定返回&quot;1&quot;，不建议使用。</p>
         :type AdvancedInfo: str
-        :param _CardCount: 卡证正面图片中，证件主体的数量（仅请求曼谷地域[ap-bangkok]返回）
+        :param _CardCount: <p>卡证正面图片中，证件主体的数量（仅请求曼谷地域[ap-bangkok]返回）</p>
         :type CardCount: int
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -25546,7 +25538,7 @@ class RecognizeThaiIDCardOCRResponse(AbstractModel):
 
     @property
     def ID(self):
-        r"""身份证号码
+        r"""<p>身份证号码</p>
         :rtype: str
         """
         return self._ID
@@ -25557,7 +25549,7 @@ class RecognizeThaiIDCardOCRResponse(AbstractModel):
 
     @property
     def ThaiName(self):
-        r"""泰文姓名
+        r"""<p>泰文姓名</p>
         :rtype: str
         """
         return self._ThaiName
@@ -25568,7 +25560,7 @@ class RecognizeThaiIDCardOCRResponse(AbstractModel):
 
     @property
     def EnFirstName(self):
-        r"""英文姓名
+        r"""<p>英文姓名</p>
         :rtype: str
         """
         return self._EnFirstName
@@ -25579,7 +25571,7 @@ class RecognizeThaiIDCardOCRResponse(AbstractModel):
 
     @property
     def EnLastName(self):
-        r"""英文姓名
+        r"""<p>英文姓名</p>
         :rtype: str
         """
         return self._EnLastName
@@ -25590,7 +25582,7 @@ class RecognizeThaiIDCardOCRResponse(AbstractModel):
 
     @property
     def IssueDate(self):
-        r"""泰文签发日期
+        r"""<p>泰文签发日期</p>
         :rtype: str
         """
         return self._IssueDate
@@ -25601,7 +25593,7 @@ class RecognizeThaiIDCardOCRResponse(AbstractModel):
 
     @property
     def ExpirationDate(self):
-        r"""泰文到期日期
+        r"""<p>泰文到期日期</p>
         :rtype: str
         """
         return self._ExpirationDate
@@ -25612,7 +25604,7 @@ class RecognizeThaiIDCardOCRResponse(AbstractModel):
 
     @property
     def EnIssueDate(self):
-        r"""英文签发日期
+        r"""<p>英文签发日期</p>
         :rtype: str
         """
         return self._EnIssueDate
@@ -25623,7 +25615,7 @@ class RecognizeThaiIDCardOCRResponse(AbstractModel):
 
     @property
     def EnExpirationDate(self):
-        r"""英文到期日期
+        r"""<p>英文到期日期</p>
         :rtype: str
         """
         return self._EnExpirationDate
@@ -25634,7 +25626,7 @@ class RecognizeThaiIDCardOCRResponse(AbstractModel):
 
     @property
     def Birthday(self):
-        r"""泰文出生日期
+        r"""<p>泰文出生日期</p>
         :rtype: str
         """
         return self._Birthday
@@ -25645,7 +25637,7 @@ class RecognizeThaiIDCardOCRResponse(AbstractModel):
 
     @property
     def EnBirthday(self):
-        r"""英文出生日期
+        r"""<p>英文出生日期</p>
         :rtype: str
         """
         return self._EnBirthday
@@ -25656,7 +25648,7 @@ class RecognizeThaiIDCardOCRResponse(AbstractModel):
 
     @property
     def Religion(self):
-        r"""宗教信仰
+        r"""<p>宗教信仰</p>
         :rtype: str
         """
         return self._Religion
@@ -25667,7 +25659,7 @@ class RecognizeThaiIDCardOCRResponse(AbstractModel):
 
     @property
     def SerialNumber(self):
-        r"""序列号
+        r"""<p>序列号</p>
         :rtype: str
         """
         return self._SerialNumber
@@ -25678,7 +25670,7 @@ class RecognizeThaiIDCardOCRResponse(AbstractModel):
 
     @property
     def Address(self):
-        r"""地址
+        r"""<p>地址</p>
         :rtype: str
         """
         return self._Address
@@ -25689,7 +25681,7 @@ class RecognizeThaiIDCardOCRResponse(AbstractModel):
 
     @property
     def LaserID(self):
-        r"""背面号码
+        r"""<p>背面号码</p>
         :rtype: str
         """
         return self._LaserID
@@ -25700,7 +25692,7 @@ class RecognizeThaiIDCardOCRResponse(AbstractModel):
 
     @property
     def PortraitImage(self):
-        r"""证件人像照片抠取
+        r"""<p>证件人像照片抠取</p>
         :rtype: str
         """
         return self._PortraitImage
@@ -25711,13 +25703,7 @@ class RecognizeThaiIDCardOCRResponse(AbstractModel):
 
     @property
     def WarnCardInfos(self):
-        r"""告警码
--9101 证件边框不完整告警
--9102 证件复印件告警
--9103 证件翻拍告警
--9107 证件反光告警
--9108 证件模糊告警
--9109 告警能力未开通
+        r"""<p>告警码<br>-9101 证件边框不完整告警<br>-9102 证件复印件告警<br>-9103 证件翻拍告警<br>-9104 证件PS告警<br>-9107 证件反光告警<br>-9108 证件模糊告警<br>-9109 告警能力未开通</p>
         :rtype: list of int
         """
         return self._WarnCardInfos
@@ -25730,7 +25716,7 @@ class RecognizeThaiIDCardOCRResponse(AbstractModel):
     def AdvancedInfo(self):
         warnings.warn("parameter `AdvancedInfo` is deprecated", DeprecationWarning) 
 
-        r"""该字段已废弃， 将固定返回"1"，不建议使用。 
+        r"""<p>该字段已废弃， 将固定返回&quot;1&quot;，不建议使用。</p>
         :rtype: str
         """
         return self._AdvancedInfo
@@ -25743,7 +25729,7 @@ class RecognizeThaiIDCardOCRResponse(AbstractModel):
 
     @property
     def CardCount(self):
-        r"""卡证正面图片中，证件主体的数量（仅请求曼谷地域[ap-bangkok]返回）
+        r"""<p>卡证正面图片中，证件主体的数量（仅请求曼谷地域[ap-bangkok]返回）</p>
         :rtype: int
         """
         return self._CardCount

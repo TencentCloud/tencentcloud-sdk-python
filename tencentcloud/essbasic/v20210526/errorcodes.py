@@ -71,7 +71,7 @@ FAILEDOPERATION_QRCODETEMPLATEID = 'FailedOperation.QrCodeTemplateId'
 # 员工已实名。
 FAILEDOPERATION_STAFFALREADYVERIFY = 'FailedOperation.StaffAlreadyVerify'
 
-# 无法撤销，用户已开通自动签。
+# 无法撤销，用户已开通授权签。
 FAILEDOPERATION_USERAUTOSIGNENABLEALREADY = 'FailedOperation.UserAutoSignEnableAlready'
 
 # 无法撤销，用户未生成开通链接。
@@ -413,7 +413,7 @@ OPERATIONDENIED_AUTHTAG = 'OperationDenied.AuthTag'
 # 应用号已被禁止。
 OPERATIONDENIED_BANNEDAPPLICATION = 'OperationDenied.BannedApplication'
 
-# 文件发起静默签未开通白名单。
+# 文件发起授权签未开通白名单。
 OPERATIONDENIED_BYFILESSERVERSIGNFORBID = 'OperationDenied.ByFilesServerSignForbid'
 
 # 抄送方存在相同抄送人，请检查修改后重试。
@@ -458,7 +458,7 @@ OPERATIONDENIED_NOIDENTITYVERIFY = 'OperationDenied.NoIdentityVerify'
 # 无权限进行操作
 OPERATIONDENIED_NOPERMISSIONUSERESOURCE = 'OperationDenied.NoPermissionUseResource'
 
-# 本企业自动签印章无权限使用
+# 本企业授权签印章无权限使用
 OPERATIONDENIED_NOPERMISSIONUSESERVERSIGNSEAL = 'OperationDenied.NoPermissionUseServerSignSeal'
 
 # 流程配额不足。
@@ -491,7 +491,7 @@ OPERATIONDENIED_OVERSEAABILITYNOTOPEN = 'OperationDenied.OverseaAbilityNotOpen'
 # 该用户名下没有可用签名
 OPERATIONDENIED_PERSONHASNOSIGNATURE = 'OperationDenied.PersonHasNoSignature'
 
-# 该用户已关闭或者未开启自动签服务
+# 该用户已关闭或者未开启授权签服务
 OPERATIONDENIED_PERSONNOOPENSERVERSIGN = 'OperationDenied.PersonNoOpenServerSign'
 
 # 出证计费额度不足。

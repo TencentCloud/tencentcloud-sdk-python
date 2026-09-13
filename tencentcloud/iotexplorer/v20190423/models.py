@@ -965,6 +965,95 @@ class BatchCreateTWeSeeRecognitionTaskResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class BatchCreateTWeSeeSubscriptionRequest(AbstractModel):
+    r"""BatchCreateTWeSeeSubscription请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Entries: 待开通的订阅列表
+        :type Entries: list of SeeCreateSubscriptionEntry
+        """
+        self._Entries = None
+
+    @property
+    def Entries(self):
+        r"""待开通的订阅列表
+        :rtype: list of SeeCreateSubscriptionEntry
+        """
+        return self._Entries
+
+    @Entries.setter
+    def Entries(self, Entries):
+        self._Entries = Entries
+
+
+    def _deserialize(self, params):
+        if params.get("Entries") is not None:
+            self._Entries = []
+            for item in params.get("Entries"):
+                obj = SeeCreateSubscriptionEntry()
+                obj._deserialize(item)
+                self._Entries.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BatchCreateTWeSeeSubscriptionResponse(AbstractModel):
+    r"""BatchCreateTWeSeeSubscription返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Results: 订阅开通结果列表
+        :type Results: list of SeeCreateSubscriptionResult
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Results = None
+        self._RequestId = None
+
+    @property
+    def Results(self):
+        r"""订阅开通结果列表
+        :rtype: list of SeeCreateSubscriptionResult
+        """
+        return self._Results
+
+    @Results.setter
+    def Results(self, Results):
+        self._Results = Results
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Results") is not None:
+            self._Results = []
+            for item in params.get("Results"):
+                obj = SeeCreateSubscriptionResult()
+                obj._deserialize(item)
+                self._Results.append(obj)
+        self._RequestId = params.get("RequestId")
+
+
 class BatchInvokeTWeSeeRecognitionTaskRequest(AbstractModel):
     r"""BatchInvokeTWeSeeRecognitionTask请求参数结构体
 
@@ -1148,6 +1237,95 @@ class BatchProductionInfo(AbstractModel):
         if len(memeber_set) > 0:
             warnings.warn("%s fileds are useless." % ",".join(memeber_set))
         
+
+
+class BatchRenewTWeSeeSubscriptionRequest(AbstractModel):
+    r"""BatchRenewTWeSeeSubscription请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Entries: 待续费的订阅列表
+        :type Entries: list of SeeRenewSubscriptionEntry
+        """
+        self._Entries = None
+
+    @property
+    def Entries(self):
+        r"""待续费的订阅列表
+        :rtype: list of SeeRenewSubscriptionEntry
+        """
+        return self._Entries
+
+    @Entries.setter
+    def Entries(self, Entries):
+        self._Entries = Entries
+
+
+    def _deserialize(self, params):
+        if params.get("Entries") is not None:
+            self._Entries = []
+            for item in params.get("Entries"):
+                obj = SeeRenewSubscriptionEntry()
+                obj._deserialize(item)
+                self._Entries.append(obj)
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class BatchRenewTWeSeeSubscriptionResponse(AbstractModel):
+    r"""BatchRenewTWeSeeSubscription返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Results: 订阅续费结果列表
+        :type Results: list of SeeRenewSubscriptionResult
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._Results = None
+        self._RequestId = None
+
+    @property
+    def Results(self):
+        r"""订阅续费结果列表
+        :rtype: list of SeeRenewSubscriptionResult
+        """
+        return self._Results
+
+    @Results.setter
+    def Results(self, Results):
+        self._Results = Results
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        if params.get("Results") is not None:
+            self._Results = []
+            for item in params.get("Results"):
+                obj = SeeRenewSubscriptionResult()
+                obj._deserialize(item)
+                self._Results.append(obj)
+        self._RequestId = params.get("RequestId")
 
 
 class BatchUpdateFirmwareRequest(AbstractModel):
@@ -42485,6 +42663,233 @@ class SeeComprehensionResult(AbstractModel):
         
 
 
+class SeeCreateSubscriptionEntry(AbstractModel):
+    r"""待开通的 TWeSee 预付费订阅信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProductId: 产品 ID
+        :type ProductId: str
+        :param _DeviceName: 设备名称
+        :type DeviceName: str
+        :param _ServiceType: 算法类型。可选值：
+
+- `VID_COMP`：视频理解
+- `IMG_COMP`：图片理解
+        :type ServiceType: str
+        :param _ServiceTier: 套餐规格。可选值：
+
+- `BASIC`：基础版
+- `ADVANCED`：高级版
+        :type ServiceTier: str
+        :param _Period: 订阅购买时长，单位：月
+        :type Period: int
+        :param _CustomOrderId: 自定义订单 ID
+        :type CustomOrderId: str
+        :param _RenewFlag: 续费标识。可选值：
+
+- `NOTIFY_AND_MANUAL_RENEW`：到期前通知并手动续费（默认）
+- `NOTIFY_AND_AUTO_RENEW`：到期前通知并自动续费
+- `DISABLE_NOTIFY_AND_MANUAL_RENEW`：不通知且手动续费
+        :type RenewFlag: str
+        :param _ChannelId: 通道 ID
+        :type ChannelId: int
+        """
+        self._ProductId = None
+        self._DeviceName = None
+        self._ServiceType = None
+        self._ServiceTier = None
+        self._Period = None
+        self._CustomOrderId = None
+        self._RenewFlag = None
+        self._ChannelId = None
+
+    @property
+    def ProductId(self):
+        r"""产品 ID
+        :rtype: str
+        """
+        return self._ProductId
+
+    @ProductId.setter
+    def ProductId(self, ProductId):
+        self._ProductId = ProductId
+
+    @property
+    def DeviceName(self):
+        r"""设备名称
+        :rtype: str
+        """
+        return self._DeviceName
+
+    @DeviceName.setter
+    def DeviceName(self, DeviceName):
+        self._DeviceName = DeviceName
+
+    @property
+    def ServiceType(self):
+        r"""算法类型。可选值：
+
+- `VID_COMP`：视频理解
+- `IMG_COMP`：图片理解
+        :rtype: str
+        """
+        return self._ServiceType
+
+    @ServiceType.setter
+    def ServiceType(self, ServiceType):
+        self._ServiceType = ServiceType
+
+    @property
+    def ServiceTier(self):
+        r"""套餐规格。可选值：
+
+- `BASIC`：基础版
+- `ADVANCED`：高级版
+        :rtype: str
+        """
+        return self._ServiceTier
+
+    @ServiceTier.setter
+    def ServiceTier(self, ServiceTier):
+        self._ServiceTier = ServiceTier
+
+    @property
+    def Period(self):
+        r"""订阅购买时长，单位：月
+        :rtype: int
+        """
+        return self._Period
+
+    @Period.setter
+    def Period(self, Period):
+        self._Period = Period
+
+    @property
+    def CustomOrderId(self):
+        r"""自定义订单 ID
+        :rtype: str
+        """
+        return self._CustomOrderId
+
+    @CustomOrderId.setter
+    def CustomOrderId(self, CustomOrderId):
+        self._CustomOrderId = CustomOrderId
+
+    @property
+    def RenewFlag(self):
+        r"""续费标识。可选值：
+
+- `NOTIFY_AND_MANUAL_RENEW`：到期前通知并手动续费（默认）
+- `NOTIFY_AND_AUTO_RENEW`：到期前通知并自动续费
+- `DISABLE_NOTIFY_AND_MANUAL_RENEW`：不通知且手动续费
+        :rtype: str
+        """
+        return self._RenewFlag
+
+    @RenewFlag.setter
+    def RenewFlag(self, RenewFlag):
+        self._RenewFlag = RenewFlag
+
+    @property
+    def ChannelId(self):
+        r"""通道 ID
+        :rtype: int
+        """
+        return self._ChannelId
+
+    @ChannelId.setter
+    def ChannelId(self, ChannelId):
+        self._ChannelId = ChannelId
+
+
+    def _deserialize(self, params):
+        self._ProductId = params.get("ProductId")
+        self._DeviceName = params.get("DeviceName")
+        self._ServiceType = params.get("ServiceType")
+        self._ServiceTier = params.get("ServiceTier")
+        self._Period = params.get("Period")
+        self._CustomOrderId = params.get("CustomOrderId")
+        self._RenewFlag = params.get("RenewFlag")
+        self._ChannelId = params.get("ChannelId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SeeCreateSubscriptionResult(AbstractModel):
+    r"""TWeSee 预付费订阅开通结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _OrderId: 订单 ID
+        :type OrderId: str
+        :param _Status: 订单状态
+        :type Status: str
+        :param _ResourceId: 资源 ID
+        :type ResourceId: str
+        """
+        self._OrderId = None
+        self._Status = None
+        self._ResourceId = None
+
+    @property
+    def OrderId(self):
+        r"""订单 ID
+        :rtype: str
+        """
+        return self._OrderId
+
+    @OrderId.setter
+    def OrderId(self, OrderId):
+        self._OrderId = OrderId
+
+    @property
+    def Status(self):
+        r"""订单状态
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def ResourceId(self):
+        r"""资源 ID
+        :rtype: str
+        """
+        return self._ResourceId
+
+    @ResourceId.setter
+    def ResourceId(self, ResourceId):
+        self._ResourceId = ResourceId
+
+
+    def _deserialize(self, params):
+        self._OrderId = params.get("OrderId")
+        self._Status = params.get("Status")
+        self._ResourceId = params.get("ResourceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class SeeDeleteTaskCondition(AbstractModel):
     r"""TWeSee 任务删除条件
 
@@ -42974,6 +43379,189 @@ class SeePersonInfo(AbstractModel):
         
 
 
+class SeeRenewSubscriptionEntry(AbstractModel):
+    r"""待续费的 TWeSee 预付费订阅信息
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _ProductId: 产品 ID
+        :type ProductId: str
+        :param _DeviceName: 设备名称
+        :type DeviceName: str
+        :param _ServiceType: 算法类型。可选值：
+
+- `VID_COMP`：视频理解
+- `IMG_COMP`：图片理解
+        :type ServiceType: str
+        :param _Period: 续费时长，单位：月
+        :type Period: int
+        :param _CustomOrderId: 自定义订单 ID
+        :type CustomOrderId: str
+        :param _ChannelId: 通道 ID
+        :type ChannelId: int
+        """
+        self._ProductId = None
+        self._DeviceName = None
+        self._ServiceType = None
+        self._Period = None
+        self._CustomOrderId = None
+        self._ChannelId = None
+
+    @property
+    def ProductId(self):
+        r"""产品 ID
+        :rtype: str
+        """
+        return self._ProductId
+
+    @ProductId.setter
+    def ProductId(self, ProductId):
+        self._ProductId = ProductId
+
+    @property
+    def DeviceName(self):
+        r"""设备名称
+        :rtype: str
+        """
+        return self._DeviceName
+
+    @DeviceName.setter
+    def DeviceName(self, DeviceName):
+        self._DeviceName = DeviceName
+
+    @property
+    def ServiceType(self):
+        r"""算法类型。可选值：
+
+- `VID_COMP`：视频理解
+- `IMG_COMP`：图片理解
+        :rtype: str
+        """
+        return self._ServiceType
+
+    @ServiceType.setter
+    def ServiceType(self, ServiceType):
+        self._ServiceType = ServiceType
+
+    @property
+    def Period(self):
+        r"""续费时长，单位：月
+        :rtype: int
+        """
+        return self._Period
+
+    @Period.setter
+    def Period(self, Period):
+        self._Period = Period
+
+    @property
+    def CustomOrderId(self):
+        r"""自定义订单 ID
+        :rtype: str
+        """
+        return self._CustomOrderId
+
+    @CustomOrderId.setter
+    def CustomOrderId(self, CustomOrderId):
+        self._CustomOrderId = CustomOrderId
+
+    @property
+    def ChannelId(self):
+        r"""通道 ID
+        :rtype: int
+        """
+        return self._ChannelId
+
+    @ChannelId.setter
+    def ChannelId(self, ChannelId):
+        self._ChannelId = ChannelId
+
+
+    def _deserialize(self, params):
+        self._ProductId = params.get("ProductId")
+        self._DeviceName = params.get("DeviceName")
+        self._ServiceType = params.get("ServiceType")
+        self._Period = params.get("Period")
+        self._CustomOrderId = params.get("CustomOrderId")
+        self._ChannelId = params.get("ChannelId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class SeeRenewSubscriptionResult(AbstractModel):
+    r"""TWeSee 预付费订阅续费结果
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _OrderId: 订单 ID
+        :type OrderId: str
+        :param _Status: 订单状态
+        :type Status: str
+        :param _ResourceId: 资源 ID
+        :type ResourceId: str
+        """
+        self._OrderId = None
+        self._Status = None
+        self._ResourceId = None
+
+    @property
+    def OrderId(self):
+        r"""订单 ID
+        :rtype: str
+        """
+        return self._OrderId
+
+    @OrderId.setter
+    def OrderId(self, OrderId):
+        self._OrderId = OrderId
+
+    @property
+    def Status(self):
+        r"""订单状态
+        :rtype: str
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def ResourceId(self):
+        r"""资源 ID
+        :rtype: str
+        """
+        return self._ResourceId
+
+    @ResourceId.setter
+    def ResourceId(self, ResourceId):
+        self._ResourceId = ResourceId
+
+
+    def _deserialize(self, params):
+        self._OrderId = params.get("OrderId")
+        self._Status = params.get("Status")
+        self._ResourceId = params.get("ResourceId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
 class SeeStatItem(AbstractModel):
     r"""TWeSee 统计数据点
 
@@ -43281,6 +43869,8 @@ class SeeTaskInfo(AbstractModel):
         :type UpdateTime: int
         :param _COSURI: <p>直传 COS 的对象 URI</p>
         :type COSURI: str
+        :param _InputURL: <p>任务的输入 URL</p>
+        :type InputURL: str
         """
         self._TaskId = None
         self._Status = None
@@ -43300,6 +43890,7 @@ class SeeTaskInfo(AbstractModel):
         self._CreateTime = None
         self._UpdateTime = None
         self._COSURI = None
+        self._InputURL = None
 
     @property
     def TaskId(self):
@@ -43499,6 +44090,17 @@ class SeeTaskInfo(AbstractModel):
     def COSURI(self, COSURI):
         self._COSURI = COSURI
 
+    @property
+    def InputURL(self):
+        r"""<p>任务的输入 URL</p>
+        :rtype: str
+        """
+        return self._InputURL
+
+    @InputURL.setter
+    def InputURL(self, InputURL):
+        self._InputURL = InputURL
+
 
     def _deserialize(self, params):
         self._TaskId = params.get("TaskId")
@@ -43536,6 +44138,7 @@ class SeeTaskInfo(AbstractModel):
         self._CreateTime = params.get("CreateTime")
         self._UpdateTime = params.get("UpdateTime")
         self._COSURI = params.get("COSURI")
+        self._InputURL = params.get("InputURL")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -47787,6 +48390,10 @@ class TargetInfo(AbstractModel):
         :type ChannelId: int
         :param _Thumbnail: <p>缩略图路径</p>
         :type Thumbnail: str
+        :param _Confidence: <p>搜索结果置信度</p><p>枚举值：</p><ul><li>high： 高（精准匹配，或包括性的匹配）</li><li>medium： 中（近义匹配）</li><li>low： 低（模糊匹配，部分要素与用户 Query 可能不符合）</li></ul>
+        :type Confidence: str
+        :param _TaskInfo: <p>任务信息</p><p>当入参 WithTaskInfo = true 时，出参中会返回任务信息</p>
+        :type TaskInfo: :class:`tencentcloud.iotexplorer.v20190423.models.SeeTaskInfo`
         """
         self._Id = None
         self._ProductId = None
@@ -47797,6 +48404,8 @@ class TargetInfo(AbstractModel):
         self._Summary = None
         self._ChannelId = None
         self._Thumbnail = None
+        self._Confidence = None
+        self._TaskInfo = None
 
     @property
     def Id(self):
@@ -47897,6 +48506,28 @@ class TargetInfo(AbstractModel):
     def Thumbnail(self, Thumbnail):
         self._Thumbnail = Thumbnail
 
+    @property
+    def Confidence(self):
+        r"""<p>搜索结果置信度</p><p>枚举值：</p><ul><li>high： 高（精准匹配，或包括性的匹配）</li><li>medium： 中（近义匹配）</li><li>low： 低（模糊匹配，部分要素与用户 Query 可能不符合）</li></ul>
+        :rtype: str
+        """
+        return self._Confidence
+
+    @Confidence.setter
+    def Confidence(self, Confidence):
+        self._Confidence = Confidence
+
+    @property
+    def TaskInfo(self):
+        r"""<p>任务信息</p><p>当入参 WithTaskInfo = true 时，出参中会返回任务信息</p>
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.SeeTaskInfo`
+        """
+        return self._TaskInfo
+
+    @TaskInfo.setter
+    def TaskInfo(self, TaskInfo):
+        self._TaskInfo = TaskInfo
+
 
     def _deserialize(self, params):
         self._Id = params.get("Id")
@@ -47908,6 +48539,10 @@ class TargetInfo(AbstractModel):
         self._Summary = params.get("Summary")
         self._ChannelId = params.get("ChannelId")
         self._Thumbnail = params.get("Thumbnail")
+        self._Confidence = params.get("Confidence")
+        if params.get("TaskInfo") is not None:
+            self._TaskInfo = SeeTaskInfo()
+            self._TaskInfo._deserialize(params.get("TaskInfo"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

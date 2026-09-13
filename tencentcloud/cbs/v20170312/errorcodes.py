@@ -125,6 +125,9 @@ LIMITEXCEEDED_TAGQUOTALIMITEXCEEDED = 'LimitExceeded.TagQuotaLimitExceeded'
 # 缺少参数错误。
 MISSINGPARAMETER = 'MissingParameter'
 
+# 账号访问密钥存在泄露风险，当前资源购买操作已被限制。
+OPERATIONDENIED_ACCOUNTSECURITYRISK = 'OperationDenied.AccountSecurityRisk'
+
 # 资源繁忙，请稍后重试。
 RESOURCEBUSY = 'ResourceBusy'
 
@@ -179,6 +182,9 @@ RESOURCEUNAVAILABLE_NOTPORTABLE = 'ResourceUnavailable.NotPortable'
 # 云盘不支持退还。
 RESOURCEUNAVAILABLE_NOTSUPPORTREFUND = 'ResourceUnavailable.NotSupportRefund'
 
+# 资源不支持快照能力。
+RESOURCEUNAVAILABLE_NOTSUPPORTSNAPSHOT = 'ResourceUnavailable.NotSupportSnapshot'
+
 # 资源不支持此操作。
 RESOURCEUNAVAILABLE_NOTSUPPORTED = 'ResourceUnavailable.NotSupported'
 
@@ -232,6 +238,9 @@ UNSUPPORTEDOPERATION_DISKENCRYPT = 'UnsupportedOperation.DiskEncrypt'
 
 # 云盘挂载的实例未关机。
 UNSUPPORTEDOPERATION_INSTANCENOTSTOPPED = 'UnsupportedOperation.InstanceNotStopped'
+
+# 共享型云硬盘不支持创建快照。
+UNSUPPORTEDOPERATION_SHAREDISKNOTSUPPORTSNAP = 'UnsupportedOperation.ShareDiskNotSupportSnap'
 
 # 该快照已经共享，请先解除共享。
 UNSUPPORTEDOPERATION_SNAPHASSHARED = 'UnsupportedOperation.SnapHasShared'

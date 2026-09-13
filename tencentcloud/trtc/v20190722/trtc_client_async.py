@@ -61,6 +61,24 @@ class TrtcClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def CreateAudioModerationSync(
+            self,
+            request: models.CreateAudioModerationSyncRequest,
+            opts: Dict = None,
+    ) -> models.CreateAudioModerationSyncResponse:
+        """
+        短音频同步内容理解接口
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "CreateAudioModerationSync"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.CreateAudioModerationSyncResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def CreateCloudModeration(
             self,
             request: models.CreateCloudModerationRequest,

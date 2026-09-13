@@ -976,7 +976,7 @@ class AuthorizedUser(AbstractModel):
 
 
 class AutoSignConfig(AbstractModel):
-    r"""自动签开启、签署相关配置
+    r"""“授权签”开启、签署相关配置
 
     """
 
@@ -3721,10 +3721,9 @@ class ChannelCreateDynamicFlowApproverRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _FillDynamicFlowList: 动态合同信息
-
+        :param _FillDynamicFlowList: <p>动态合同信息</p>
         :type FillDynamicFlowList: list of DynamicFlowInfo
-        :param _Agent: 关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。 此接口下面信息必填。 <ul> <li>渠道应用标识: Agent.AppId</li> <li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId</li> <li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li> </ul> 第三方平台子客企业和员工必须已经经过实名认证	
+        :param _Agent: <p>关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。 此接口下面信息必填。 <ul> <li>渠道应用标识: Agent.AppId</li> <li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId</li> <li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li> </ul> 第三方平台子客企业和员工必须已经经过实名认证</p>
         :type Agent: :class:`tencentcloud.essbasic.v20210526.models.Agent`
         """
         self._FillDynamicFlowList = None
@@ -3732,8 +3731,7 @@ class ChannelCreateDynamicFlowApproverRequest(AbstractModel):
 
     @property
     def FillDynamicFlowList(self):
-        r"""动态合同信息
-
+        r"""<p>动态合同信息</p>
         :rtype: list of DynamicFlowInfo
         """
         return self._FillDynamicFlowList
@@ -3744,7 +3742,7 @@ class ChannelCreateDynamicFlowApproverRequest(AbstractModel):
 
     @property
     def Agent(self):
-        r"""关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。 此接口下面信息必填。 <ul> <li>渠道应用标识: Agent.AppId</li> <li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId</li> <li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li> </ul> 第三方平台子客企业和员工必须已经经过实名认证	
+        r"""<p>关于渠道应用的相关信息，包括渠道应用标识、第三方平台子客企业标识及第三方平台子客企业中的员工标识等内容，您可以参阅开发者中心所提供的 Agent 结构体以获取详细定义。 此接口下面信息必填。 <ul> <li>渠道应用标识: Agent.AppId</li> <li>第三方平台子客企业标识: Agent.ProxyOrganizationOpenId</li> <li>第三方平台子客企业中的员工标识: Agent. ProxyOperator.OpenId</li> </ul> 第三方平台子客企业和员工必须已经经过实名认证</p>
         :rtype: :class:`tencentcloud.essbasic.v20210526.models.Agent`
         """
         return self._Agent
@@ -3781,7 +3779,7 @@ class ChannelCreateDynamicFlowApproverResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DynamicFlowResultList: 动态合同补充结果列表
+        :param _DynamicFlowResultList: <p>动态合同补充结果列表</p>
         :type DynamicFlowResultList: list of DynamicFlowResult
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
@@ -3791,7 +3789,7 @@ class ChannelCreateDynamicFlowApproverResponse(AbstractModel):
 
     @property
     def DynamicFlowResultList(self):
-        r"""动态合同补充结果列表
+        r"""<p>动态合同补充结果列表</p>
         :rtype: list of DynamicFlowResult
         """
         return self._DynamicFlowResultList
@@ -4240,7 +4238,7 @@ class ChannelCreateFlowByFilesRequest(AbstractModel):
         :type CustomShowMap: str
         :param _CustomerData: <p>调用方自定义的个性化字段(可自定义此名称)，并以base64方式编码，支持的最大数据大小为 1000长度。</p><p>在合同状态变更的回调信息等场景中，该字段的信息将原封不动地透传给贵方。回调的相关说明可参考开发者中心的<a href="https://qian.tencent.com/developers/partner/callback_types_contracts_sign" target="_blank">回调通知</a>模块。</p>
         :type CustomerData: str
-        :param _NeedSignReview: <p>发起方企业的签署人进行签署操作前，是否需要企业内部走审批流程，取值如下：</p><ul><li> **false**：（默认）不需要审批，直接签署。</li><li> **true**：需要走审批流程。当到对应参与人签署时，会阻塞其签署操作，等待企业内部审批完成。</li></ul>企业可以通过ChannelCreateFlowSignReview审批接口通知腾讯电子签平台企业内部审批结果<ul><li> 如果企业通知腾讯电子签平台审核通过，签署方可继续签署动作。</li><li> 如果企业通知腾讯电子签平台审核未通过，平台将继续阻塞签署方的签署动作，直到企业通知平台审核通过。</li></ul>注：<code>此功能可用于与企业内部的审批流程进行关联，支持手动、静默签署合同</code>
+        :param _NeedSignReview: <p>发起方企业的签署人进行签署操作前，是否需要企业内部走审批流程，取值如下：</p><ul><li> **false**：（默认）不需要审批，直接签署。</li><li> **true**：需要走审批流程。当到对应参与人签署时，会阻塞其签署操作，等待企业内部审批完成。</li></ul>企业可以通过ChannelCreateFlowSignReview审批接口通知腾讯电子签平台企业内部审批结果<ul><li> 如果企业通知腾讯电子签平台审核通过，签署方可继续签署动作。</li><li> 如果企业通知腾讯电子签平台审核未通过，平台将继续阻塞签署方的签署动作，直到企业通知平台审核通过。</li></ul>注：<code>此功能可用于与企业内部的审批流程进行关联，支持手动、授权签署合同</code>
         :type NeedSignReview: bool
         :param _ApproverVerifyType: <p>签署人校验方式<br>VerifyCheck: 人脸识别（默认）<br>MobileCheck：手机号验证，用户手机号和参与方手机号（ApproverMobile）相同即可查看合同内容（当手写签名方式为OCR_ESIGN时，该校验方式无效，因为这种签名方式依赖实名认证）<br>参数说明：可选人脸识别或手机号验证两种方式，若选择后者，未实名个人签署方在签署合同时，无需经过实名认证和意愿确认两次人脸识别，该能力仅适用于个人签署方。</p>
         :type ApproverVerifyType: str
@@ -4250,7 +4248,7 @@ class ChannelCreateFlowByFilesRequest(AbstractModel):
         :type CcInfos: list of CcInfo
         :param _CcNotifyType: <p>可以设置以下时间节点来给抄送人发送短信通知来查看合同内容：</p><ul><li> **0**：合同发起时通知（默认值）</li><li> **1**：签署完成后通知</li></ul>
         :type CcNotifyType: int
-        :param _AutoSignScene: <p>个人自动签名的使用场景包括以下, 个人自动签署(即ApproverType设置成个人自动签署时)业务此值必传：</p><ul><li> **E_PRESCRIPTION_AUTO_SIGN**：电子处方单（医疗自动签）  </li><li> **OTHER** :  通用场景</li></ul>注: <code>个人自动签名场景是白名单功能，使用前请与对接的客户经理联系沟通。</code>
+        :param _AutoSignScene: <p>个人授权签名的使用场景包括以下, 个人授权签署(即ApproverType设置成个人授权签署时)业务此值必传：</p><ul><li> **E_PRESCRIPTION_AUTO_SIGN**：电子处方单（医疗授权签）  </li><li> **OTHER** :  通用场景</li></ul>注: <code>个人授权签名场景是白名单功能，使用前请与对接的客户经理联系沟通。</code>
         :type AutoSignScene: str
         :param _Operator: <p>操作者的信息，不用传</p>
         :type Operator: :class:`tencentcloud.essbasic.v20210526.models.UserInfo`
@@ -4431,7 +4429,7 @@ class ChannelCreateFlowByFilesRequest(AbstractModel):
 
     @property
     def NeedSignReview(self):
-        r"""<p>发起方企业的签署人进行签署操作前，是否需要企业内部走审批流程，取值如下：</p><ul><li> **false**：（默认）不需要审批，直接签署。</li><li> **true**：需要走审批流程。当到对应参与人签署时，会阻塞其签署操作，等待企业内部审批完成。</li></ul>企业可以通过ChannelCreateFlowSignReview审批接口通知腾讯电子签平台企业内部审批结果<ul><li> 如果企业通知腾讯电子签平台审核通过，签署方可继续签署动作。</li><li> 如果企业通知腾讯电子签平台审核未通过，平台将继续阻塞签署方的签署动作，直到企业通知平台审核通过。</li></ul>注：<code>此功能可用于与企业内部的审批流程进行关联，支持手动、静默签署合同</code>
+        r"""<p>发起方企业的签署人进行签署操作前，是否需要企业内部走审批流程，取值如下：</p><ul><li> **false**：（默认）不需要审批，直接签署。</li><li> **true**：需要走审批流程。当到对应参与人签署时，会阻塞其签署操作，等待企业内部审批完成。</li></ul>企业可以通过ChannelCreateFlowSignReview审批接口通知腾讯电子签平台企业内部审批结果<ul><li> 如果企业通知腾讯电子签平台审核通过，签署方可继续签署动作。</li><li> 如果企业通知腾讯电子签平台审核未通过，平台将继续阻塞签署方的签署动作，直到企业通知平台审核通过。</li></ul>注：<code>此功能可用于与企业内部的审批流程进行关联，支持手动、授权签署合同</code>
         :rtype: bool
         """
         return self._NeedSignReview
@@ -4486,7 +4484,7 @@ class ChannelCreateFlowByFilesRequest(AbstractModel):
 
     @property
     def AutoSignScene(self):
-        r"""<p>个人自动签名的使用场景包括以下, 个人自动签署(即ApproverType设置成个人自动签署时)业务此值必传：</p><ul><li> **E_PRESCRIPTION_AUTO_SIGN**：电子处方单（医疗自动签）  </li><li> **OTHER** :  通用场景</li></ul>注: <code>个人自动签名场景是白名单功能，使用前请与对接的客户经理联系沟通。</code>
+        r"""<p>个人授权签名的使用场景包括以下, 个人授权签署(即ApproverType设置成个人授权签署时)业务此值必传：</p><ul><li> **E_PRESCRIPTION_AUTO_SIGN**：电子处方单（医疗授权签）  </li><li> **OTHER** :  通用场景</li></ul>注: <code>个人授权签名场景是白名单功能，使用前请与对接的客户经理联系沟通。</code>
         :rtype: str
         """
         return self._AutoSignScene
@@ -5669,7 +5667,7 @@ class ChannelCreateMultiFlowSignQRCodeRequest(AbstractModel):
         :type MaxFlowNum: int
         :param _FlowEffectiveDay: <p>合同流程的签署有效期限，若未设定签署截止日期，则默认为自合同流程创建起的7天内截止。 若在签署截止日期前未完成签署，合同状态将变更为已过期，从而导致合同无效。 最长设定期限不得超过30天。</p>
         :type FlowEffectiveDay: int
-        :param _FlowDisplayType: <p>在短信通知、填写、签署流程中，若标题、按钮、合同详情等地方存在“合同”字样时，可根据此配置指定文案，可选文案如下：<br> <ul><li> <b>0</b> :合同（默认值）</li> <li> <b>1</b> :文件</li> <li> <b>2</b> :协议</li><li> <b>3</b> :文书</li></ul></p><p>效果如下:<br><img src="https://qcloudimg.tencent-cloud.cn/raw/e4a2c4d638717cc901d3dbd5137c9bbc.png" alt="FlowDisplayType"></p><p>枚举值：</p><ul><li>0： 合同</li><li>1： 文件</li><li>2： 协议</li><li>3： 文书</li></ul><p>默认值：0</p>
+        :param _FlowDisplayType: <p>在短信通知、填写、签署流程中，若标题、按钮、合同详情等地方存在“合同”字样时，可根据此配置指定文案，可选文案如下： </p><p>枚举值：</p><ul><li>0： 合同</li><li>1： 文件</li><li>2： 协议</li><li>3： 文书</li></ul><p>默认值：0</p><p>效果如下:<br><img src="https://qcloudimg.tencent-cloud.cn/raw/e4a2c4d638717cc901d3dbd5137c9bbc.png" alt="FlowDisplayType"></p>
         :type FlowDisplayType: int
         :param _QrEffectiveDay: <p>二维码的有效期限，默认为7天，最高设定不得超过90天。 一旦超过二维码的有效期限，该二维码将自动失效。</p>
         :type QrEffectiveDay: int
@@ -5766,7 +5764,7 @@ class ChannelCreateMultiFlowSignQRCodeRequest(AbstractModel):
 
     @property
     def FlowDisplayType(self):
-        r"""<p>在短信通知、填写、签署流程中，若标题、按钮、合同详情等地方存在“合同”字样时，可根据此配置指定文案，可选文案如下：<br> <ul><li> <b>0</b> :合同（默认值）</li> <li> <b>1</b> :文件</li> <li> <b>2</b> :协议</li><li> <b>3</b> :文书</li></ul></p><p>效果如下:<br><img src="https://qcloudimg.tencent-cloud.cn/raw/e4a2c4d638717cc901d3dbd5137c9bbc.png" alt="FlowDisplayType"></p><p>枚举值：</p><ul><li>0： 合同</li><li>1： 文件</li><li>2： 协议</li><li>3： 文书</li></ul><p>默认值：0</p>
+        r"""<p>在短信通知、填写、签署流程中，若标题、按钮、合同详情等地方存在“合同”字样时，可根据此配置指定文案，可选文案如下： </p><p>枚举值：</p><ul><li>0： 合同</li><li>1： 文件</li><li>2： 协议</li><li>3： 文书</li></ul><p>默认值：0</p><p>效果如下:<br><img src="https://qcloudimg.tencent-cloud.cn/raw/e4a2c4d638717cc901d3dbd5137c9bbc.png" alt="FlowDisplayType"></p>
         :rtype: int
         """
         return self._FlowDisplayType
@@ -6902,7 +6900,7 @@ class ChannelCreatePreparedPersonalEsignRequest(AbstractModel):
         :type Operator: :class:`tencentcloud.essbasic.v20210526.models.UserInfo`
         :param _IdCardType: <p>证件类型，支持以下类型</p><ul><li>ID_CARD : 中国大陆居民身份证 (默认值)</li><li>HONGKONG_AND_MACAO : 中国港澳居民来往内地通行证</li><li>HONGKONG_MACAO_AND_TAIWAN : 中国港澳台居民居住证(格式同中国大陆居民身份证)</li><li>OTHER_CARD_TYPE : 其他</li></ul><p>注: <code>其他证件类型为白名单功能，使用前请联系对接的客户经理沟通。</code></p>
         :type IdCardType: str
-        :param _Mobile: <p>手机号码；当需要开通自动签时，该参数必传</p>
+        :param _Mobile: <p>手机号码；当需要开通授权签时，该参数必传</p>
         :type Mobile: str
         :param _FileId: <p>印章图片文件 id取值：填写的FileId通过UploadFiles接口上传文件获取。</p>
         :type FileId: str
@@ -6999,7 +6997,7 @@ class ChannelCreatePreparedPersonalEsignRequest(AbstractModel):
 
     @property
     def Mobile(self):
-        r"""<p>手机号码；当需要开通自动签时，该参数必传</p>
+        r"""<p>手机号码；当需要开通授权签时，该参数必传</p>
         :rtype: str
         """
         return self._Mobile
@@ -8116,9 +8114,9 @@ class ChannelCreateUserAutoSignSealUrlRequest(AbstractModel):
         r"""
         :param _Agent: <p>渠道应用相关信息。</p>
         :type Agent: :class:`tencentcloud.essbasic.v20210526.models.Agent`
-        :param _SceneKey: <p>自动签使用的场景值, 可以选择的场景值如下:</p><ul><li> **E_PRESCRIPTION_AUTO_SIGN** :  电子处方场景</li><li> **OTHER** :  通用场景</li></ul>
+        :param _SceneKey: <p>“授权签”使用的场景值, 可以选择的场景值如下:<ul><li> <strong>E_PRESCRIPTION_AUTO_SIGN</strong> :  电子处方场景</li><li> <strong>OTHER</strong> :  通用场景</li></ul></p>
         :type SceneKey: str
-        :param _UserInfo: <p>自动签开通个人用户信息，包括名字，身份证等。</p>
+        :param _UserInfo: <p>“授权签”开通个人用户信息，包括名字，身份证等。</p>
         :type UserInfo: :class:`tencentcloud.essbasic.v20210526.models.UserThreeFactor`
         :param _Operator: <p>执行本接口操作的员工信息。<br>注: <code>在调用此接口时，请确保指定的员工已获得所需的接口调用权限，并具备接口传入的相应资源的数据权限。</code></p>
         :type Operator: :class:`tencentcloud.essbasic.v20210526.models.UserInfo`
@@ -8147,7 +8145,7 @@ class ChannelCreateUserAutoSignSealUrlRequest(AbstractModel):
 
     @property
     def SceneKey(self):
-        r"""<p>自动签使用的场景值, 可以选择的场景值如下:</p><ul><li> **E_PRESCRIPTION_AUTO_SIGN** :  电子处方场景</li><li> **OTHER** :  通用场景</li></ul>
+        r"""<p>“授权签”使用的场景值, 可以选择的场景值如下:<ul><li> <strong>E_PRESCRIPTION_AUTO_SIGN</strong> :  电子处方场景</li><li> <strong>OTHER</strong> :  通用场景</li></ul></p>
         :rtype: str
         """
         return self._SceneKey
@@ -8158,7 +8156,7 @@ class ChannelCreateUserAutoSignSealUrlRequest(AbstractModel):
 
     @property
     def UserInfo(self):
-        r"""<p>自动签开通个人用户信息，包括名字，身份证等。</p>
+        r"""<p>“授权签”开通个人用户信息，包括名字，身份证等。</p>
         :rtype: :class:`tencentcloud.essbasic.v20210526.models.UserThreeFactor`
         """
         return self._UserInfo
@@ -8235,7 +8233,7 @@ class ChannelCreateUserAutoSignSealUrlResponse(AbstractModel):
         :type AppId: str
         :param _AppOriginalId: <p>腾讯电子签小程序的原始Id，用于其他小程序/APP等应用跳转至腾讯电子签小程序使用。</p>
         :type AppOriginalId: str
-        :param _Url: <p>个人用户自动签的开通链接, 短链或者长链接形式。过期时间受 <code>ExpiredTime</code> 参数控制。</p>
+        :param _Url: <p>个人用户“授权签”的开通链接, 短链或者长链接形式。过期时间受 <code>ExpiredTime</code> 参数控制。</p>
         :type Url: str
         :param _Path: <p>腾讯电子签小程序的跳转路径，用于其他小程序/APP等应用跳转至腾讯电子签小程序使用。</p>
         :type Path: str
@@ -8275,7 +8273,7 @@ class ChannelCreateUserAutoSignSealUrlResponse(AbstractModel):
 
     @property
     def Url(self):
-        r"""<p>个人用户自动签的开通链接, 短链或者长链接形式。过期时间受 <code>ExpiredTime</code> 参数控制。</p>
+        r"""<p>个人用户“授权签”的开通链接, 短链或者长链接形式。过期时间受 <code>ExpiredTime</code> 参数控制。</p>
         :rtype: str
         """
         return self._Url
@@ -11564,7 +11562,7 @@ class ChannelVerifyPdfResponse(AbstractModel):
 
 class CommonApproverOption(AbstractModel):
     r"""签署人配置信息。
-    此参数对子客和自动签无效，不允许进行修改。
+    此参数对子客和“授权签”无效，不允许进行修改。
 
     """
 
@@ -16367,7 +16365,7 @@ class CreatePartnerAutoSignAuthUrlRequest(AbstractModel):
         :type AuthorizedOrganizationId: str
         :param _AuthorizedOrganizationName: <p>被授企业名称/授权方企业的名字，如果是企业之间授权和AuthorizedOrganizationId二选一传入即可。请确认该名称与企业营业执照中注册的名称一致。</p><p>注: </p><ol><li>如果名称中包含英文括号()，请使用中文括号（）代替。</li><li>被授权企业必须和当前企业在同一应用号下</li></ol>
         :type AuthorizedOrganizationName: str
-        :param _PlatformAppAuthorization: <p>是否给平台应用授权</p><ul><li><strong>true</strong>: 表示是，授权平台应用。在此情况下，无需设置<code>AuthorizedOrganizationIds</code>和<code>AuthorizedOrganizationNames</code>。</li><li><strong>false</strong>: （默认）表示否，不是授权平台应用。</li></ul><p> 注：授权给平台应用需要开通【基于子客授权第三方应用可文件发起子客自动签署】白名单，请联系运营经理开通。</p>
+        :param _PlatformAppAuthorization: <p>是否给平台应用授权</p><ul><li><strong>true</strong>: 表示是，授权平台应用。在此情况下，无需设置<code>AuthorizedOrganizationIds</code>和<code>AuthorizedOrganizationNames</code>。</li><li><strong>false</strong>: （默认）表示否，不是授权平台应用。</li></ul><p> 注：授权给平台应用需要开通【基于子客授权第三方应用可文件发起子客授权签署】白名单，请联系运营经理开通。</p>
         :type PlatformAppAuthorization: bool
         :param _SealTypes: <p>在设置印章授权时，可以指定特定的印章类型，以确保在授权过程中只使用相应类型的印章。</p><p>枚举值：</p><ul><li>OFFICIAL： 企业公章，用于代表企业对外的正式文件和重要事务的认证。</li><li>CONTRACT： 合同专用章，专门用于签署各类合同</li><li>FINANCE： 财务专用章，用于企业的财务相关文件，如发票、收据等财务凭证的认证。</li><li>PERSONNEL： 人事专用章，用于人事管理相关文件，如劳动合同、人事任命等。</li><li>OTHER： 其他类型印章，包含子类型</li></ul>
         :type SealTypes: list of str
@@ -16433,7 +16431,7 @@ class CreatePartnerAutoSignAuthUrlRequest(AbstractModel):
 
     @property
     def PlatformAppAuthorization(self):
-        r"""<p>是否给平台应用授权</p><ul><li><strong>true</strong>: 表示是，授权平台应用。在此情况下，无需设置<code>AuthorizedOrganizationIds</code>和<code>AuthorizedOrganizationNames</code>。</li><li><strong>false</strong>: （默认）表示否，不是授权平台应用。</li></ul><p> 注：授权给平台应用需要开通【基于子客授权第三方应用可文件发起子客自动签署】白名单，请联系运营经理开通。</p>
+        r"""<p>是否给平台应用授权</p><ul><li><strong>true</strong>: 表示是，授权平台应用。在此情况下，无需设置<code>AuthorizedOrganizationIds</code>和<code>AuthorizedOrganizationNames</code>。</li><li><strong>false</strong>: （默认）表示否，不是授权平台应用。</li></ul><p> 注：授权给平台应用需要开通【基于子客授权第三方应用可文件发起子客授权签署】白名单，请联系运营经理开通。</p>
         :rtype: bool
         """
         return self._PlatformAppAuthorization
@@ -17395,7 +17393,7 @@ class CreateSignUrlsRequest(AbstractModel):
         :type FlowGroupId: str
         :param _Endpoint: <p>签署链接类型,可以设置的参数如下</p><ul><li> **WEIXINAPP** :(默认)跳转电子签小程序的http_url, 短信通知或者H5跳转适合此类型 ，此时返回短链</li><li> **CHANNEL** :带有H5引导页的跳转电子签小程序的链接(<b>GenerateType非ALL时候不能设置成CHANNEL</b>)</li><li> **APP** :第三方App或小程序跳转电子签小程序的path, App或者小程序跳转适合此类型</li><li> **LONGURL2WEIXINAPP** :跳转电子签小程序的链接, H5跳转适合此类型，此时返回长链</li></ul><p><strong>注：</strong>动态签署人场景，如果签署链接类型设置为<code>APP</code>，则仅支持跳转到封面页。</p><p>详细使用场景可以参考接口描述说明中的 <strong>主要使用场景EndPoint分类</strong></p>
         :type Endpoint: str
-        :param _GenerateType: <p>签署链接生成类型，可以选择的类型如下</p><ul><li><strong>ALL</strong>：（默认）为所有签署方生成签署链接，但不包括自动签署（静默签署）的签署方。注意：<strong>此中类型不支持多个合同ID（FlowIds）</strong>。</li><li><strong>CHANNEL</strong>：适用于第三方子企业的员工签署方。</li><li><strong>NOT_CHANNEL</strong>：适用于SaaS平台企业的员工签署方。</li><li><strong>PERSON</strong>：适用于个人或自然人签署方。</li><li><strong>FOLLOWER</strong>：适用于关注方，目前指合同的抄送方。</li><li><strong>RECIPIENT</strong>：根据RecipientId生成对应的签署链接，适用于动态添加签署人的情况。</li></ul>
+        :param _GenerateType: <p>签署链接生成类型，可以选择的类型如下</p><p>枚举值：</p><ul><li>ALL： 为所有签署方生成签署链接，但不包括授权签署的签署方。注意：此中类型不支持多个合同ID（FlowIds）。</li><li>CHANNEL： 适用于第三方子企业的员工签署方。</li><li>NOT_CHANNEL： 适用于SaaS平台企业的员工签署方。</li><li>PERSON： 适用于个人或自然人签署方。</li><li>FOLLOWER： 适用于关注方，目前指合同的抄送方。</li><li>RECIPIENT： 根据RecipientId生成对应的签署链接，适用于动态添加签署人的情况。</li></ul><p>默认值：ALL</p>
         :type GenerateType: str
         :param _OrganizationName: <p>SaaS平台企业员工签署方的企业名称如果名称中包含英文括号()，请使用中文括号（）代替。  注:  <code>1.GenerateType为&quot;NOT_CHANNEL&quot;时必填</code> <code>2.获取B端动态签署人领取链接时,可指定此字段来预先设定签署人的企业,预设后只能以该企业身份去领取合同并完成签署</code></p>
         :type OrganizationName: str
@@ -17495,7 +17493,7 @@ class CreateSignUrlsRequest(AbstractModel):
 
     @property
     def GenerateType(self):
-        r"""<p>签署链接生成类型，可以选择的类型如下</p><ul><li><strong>ALL</strong>：（默认）为所有签署方生成签署链接，但不包括自动签署（静默签署）的签署方。注意：<strong>此中类型不支持多个合同ID（FlowIds）</strong>。</li><li><strong>CHANNEL</strong>：适用于第三方子企业的员工签署方。</li><li><strong>NOT_CHANNEL</strong>：适用于SaaS平台企业的员工签署方。</li><li><strong>PERSON</strong>：适用于个人或自然人签署方。</li><li><strong>FOLLOWER</strong>：适用于关注方，目前指合同的抄送方。</li><li><strong>RECIPIENT</strong>：根据RecipientId生成对应的签署链接，适用于动态添加签署人的情况。</li></ul>
+        r"""<p>签署链接生成类型，可以选择的类型如下</p><p>枚举值：</p><ul><li>ALL： 为所有签署方生成签署链接，但不包括授权签署的签署方。注意：此中类型不支持多个合同ID（FlowIds）。</li><li>CHANNEL： 适用于第三方子企业的员工签署方。</li><li>NOT_CHANNEL： 适用于SaaS平台企业的员工签署方。</li><li>PERSON： 适用于个人或自然人签署方。</li><li>FOLLOWER： 适用于关注方，目前指合同的抄送方。</li><li>RECIPIENT： 根据RecipientId生成对应的签署链接，适用于动态添加签署人的情况。</li></ul><p>默认值：ALL</p>
         :rtype: str
         """
         return self._GenerateType
@@ -24544,7 +24542,7 @@ class GetDownloadFlowUrlResponse(AbstractModel):
 
 
 class HasAuthOrganization(AbstractModel):
-    r"""授权企业列表（目前仅用于“企业自动签 -> 合作企业授权”）
+    r"""授权企业列表（目前仅用于“企业“授权签” -> 合作企业授权”）
 
     """
 

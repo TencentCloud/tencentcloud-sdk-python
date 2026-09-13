@@ -13318,6 +13318,8 @@ class AigcImageTaskInput(AbstractModel):
         :type Seed: int
         :param _SceneType: <p>场景类型。取值如下：<li>当 ModelName 为 Hunyuan 时：   3d_panorama 表示全景图；</li><li>其他 ModelName 暂不支持。</li></p>
         :type SceneType: str
+        :param _ExtInfo: <p>透传参数。</p>
+        :type ExtInfo: str
         """
         self._ModelName = None
         self._ModelVersion = None
@@ -13329,6 +13331,7 @@ class AigcImageTaskInput(AbstractModel):
         self._OutputConfig = None
         self._Seed = None
         self._SceneType = None
+        self._ExtInfo = None
 
     @property
     def ModelName(self):
@@ -13440,6 +13443,17 @@ class AigcImageTaskInput(AbstractModel):
     def SceneType(self, SceneType):
         self._SceneType = SceneType
 
+    @property
+    def ExtInfo(self):
+        r"""<p>透传参数。</p>
+        :rtype: str
+        """
+        return self._ExtInfo
+
+    @ExtInfo.setter
+    def ExtInfo(self, ExtInfo):
+        self._ExtInfo = ExtInfo
+
 
     def _deserialize(self, params):
         self._ModelName = params.get("ModelName")
@@ -13459,6 +13473,7 @@ class AigcImageTaskInput(AbstractModel):
             self._OutputConfig._deserialize(params.get("OutputConfig"))
         self._Seed = params.get("Seed")
         self._SceneType = params.get("SceneType")
+        self._ExtInfo = params.get("ExtInfo")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -15370,6 +15385,8 @@ class AigcVideoTaskInput(AbstractModel):
         :type SceneType: str
         :param _Seed: <p>模型随机种子。</p>
         :type Seed: int
+        :param _ExtInfo: <p>透传参数。</p>
+        :type ExtInfo: str
         """
         self._ModelName = None
         self._ModelVersion = None
@@ -15385,6 +15402,7 @@ class AigcVideoTaskInput(AbstractModel):
         self._InputRegion = None
         self._SceneType = None
         self._Seed = None
+        self._ExtInfo = None
 
     @property
     def ModelName(self):
@@ -15540,6 +15558,17 @@ class AigcVideoTaskInput(AbstractModel):
     def Seed(self, Seed):
         self._Seed = Seed
 
+    @property
+    def ExtInfo(self):
+        r"""<p>透传参数。</p>
+        :rtype: str
+        """
+        return self._ExtInfo
+
+    @ExtInfo.setter
+    def ExtInfo(self, ExtInfo):
+        self._ExtInfo = ExtInfo
+
 
     def _deserialize(self, params):
         self._ModelName = params.get("ModelName")
@@ -15568,6 +15597,7 @@ class AigcVideoTaskInput(AbstractModel):
         self._InputRegion = params.get("InputRegion")
         self._SceneType = params.get("SceneType")
         self._Seed = params.get("Seed")
+        self._ExtInfo = params.get("ExtInfo")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

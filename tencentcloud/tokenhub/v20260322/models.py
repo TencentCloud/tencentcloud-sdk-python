@@ -4436,8 +4436,10 @@ class DescribeUsageRankListRequest(AbstractModel):
         :type StartTime: str
         :param _EndTime: <p>结束时间（开区间），RFC3339 格式。与 StartTime 的跨度最大 90 天。</p>
         :type EndTime: str
-        :param _MetricType: <p>指标族切换字段。</p><ul><li>tokens（默认）：Token 消耗图（statistics=sum），支持 Dimension = apikey/endpoint/model</li><li>search【待上线】：联网搜索调用次数（statistics=sum），仅支持 Dimension = model</li><li>其他值返回 InvalidParameter。</li></ul><p>枚举值：</p><ul><li>tokens： tokens</li></ul>
+        :param _MetricType: <p>指标族切换字段。</p><ul><li>tokens（默认）：Token 用量消耗（statistics=sum），支持 Dimension = apikey/endpoint/model</li><li>search：联网搜索调用次数（statistics=sum），仅支持 Dimension = model</li><li>apikey_usage: APIKey 锚定用量统计（某 APIKey 下按模型或接入点展开）（statistics=sum），支持 Dimension = endpoint/model</li><li>其他值返回 InvalidParameter。</li></ul>
         :type MetricType: str
+        :param _Anchor: <p>锚定对象，用于缩小统计范围「在哪个具体对象之内」，MetricType 为 apikey_usage 时必填。<br>各 MetricType 是否支持/如何使用 Anchor，见 MetricType 字段说明。</p>
+        :type Anchor: str
         :param _Target: <p>维度过滤值。空字符串表示查询全部对象，非空时仅查询指定单个对象（如指定 APIKey ID）。最大 256 字符。</p>
         :type Target: str
         :param _Period: <p>统计粒度（秒）。取值：60、300、3600、86400。必须不小于跨度对应下限：跨度 ≤ 1 天 → 60；1 ~ 5 天 → 300；5 ~ 10 天 → 3600；&gt; 10 天 → 86400。仅 ShowAll=false 时使用。</p>
@@ -4446,15 +4448,19 @@ class DescribeUsageRankListRequest(AbstractModel):
         :type Offset: int
         :param _ShowAll: <p>是否返回全量结果。</p><ul><li>false（默认）：按 Offset 分页返回 TopList（每页 10 条），每个对象包含<br>Series 时序点用于绘制曲线。</li><li>true：忽略 Offset，返回全量对象列表，不返回 Series（CSV 导出场景）。</li></ul>
         :type ShowAll: bool
+        :param _SortKey: <p>排序指标键（可选），具体值见响应 MetricKeys。为空时按 <code>MetricKeys[0]</code> 降序排序（tokens/apikey_usage 族为 TotalToken，search 族为 SearchRequestCount）。非法值返回 InvalidParameter。</p>
+        :type SortKey: str
         """
         self._Dimension = None
         self._StartTime = None
         self._EndTime = None
         self._MetricType = None
+        self._Anchor = None
         self._Target = None
         self._Period = None
         self._Offset = None
         self._ShowAll = None
+        self._SortKey = None
 
     @property
     def Dimension(self):
@@ -4491,7 +4497,7 @@ class DescribeUsageRankListRequest(AbstractModel):
 
     @property
     def MetricType(self):
-        r"""<p>指标族切换字段。</p><ul><li>tokens（默认）：Token 消耗图（statistics=sum），支持 Dimension = apikey/endpoint/model</li><li>search【待上线】：联网搜索调用次数（statistics=sum），仅支持 Dimension = model</li><li>其他值返回 InvalidParameter。</li></ul><p>枚举值：</p><ul><li>tokens： tokens</li></ul>
+        r"""<p>指标族切换字段。</p><ul><li>tokens（默认）：Token 用量消耗（statistics=sum），支持 Dimension = apikey/endpoint/model</li><li>search：联网搜索调用次数（statistics=sum），仅支持 Dimension = model</li><li>apikey_usage: APIKey 锚定用量统计（某 APIKey 下按模型或接入点展开）（statistics=sum），支持 Dimension = endpoint/model</li><li>其他值返回 InvalidParameter。</li></ul>
         :rtype: str
         """
         return self._MetricType
@@ -4499,6 +4505,17 @@ class DescribeUsageRankListRequest(AbstractModel):
     @MetricType.setter
     def MetricType(self, MetricType):
         self._MetricType = MetricType
+
+    @property
+    def Anchor(self):
+        r"""<p>锚定对象，用于缩小统计范围「在哪个具体对象之内」，MetricType 为 apikey_usage 时必填。<br>各 MetricType 是否支持/如何使用 Anchor，见 MetricType 字段说明。</p>
+        :rtype: str
+        """
+        return self._Anchor
+
+    @Anchor.setter
+    def Anchor(self, Anchor):
+        self._Anchor = Anchor
 
     @property
     def Target(self):
@@ -4544,16 +4561,29 @@ class DescribeUsageRankListRequest(AbstractModel):
     def ShowAll(self, ShowAll):
         self._ShowAll = ShowAll
 
+    @property
+    def SortKey(self):
+        r"""<p>排序指标键（可选），具体值见响应 MetricKeys。为空时按 <code>MetricKeys[0]</code> 降序排序（tokens/apikey_usage 族为 TotalToken，search 族为 SearchRequestCount）。非法值返回 InvalidParameter。</p>
+        :rtype: str
+        """
+        return self._SortKey
+
+    @SortKey.setter
+    def SortKey(self, SortKey):
+        self._SortKey = SortKey
+
 
     def _deserialize(self, params):
         self._Dimension = params.get("Dimension")
         self._StartTime = params.get("StartTime")
         self._EndTime = params.get("EndTime")
         self._MetricType = params.get("MetricType")
+        self._Anchor = params.get("Anchor")
         self._Target = params.get("Target")
         self._Period = params.get("Period")
         self._Offset = params.get("Offset")
         self._ShowAll = params.get("ShowAll")
+        self._SortKey = params.get("SortKey")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -4573,9 +4603,9 @@ class DescribeUsageRankListResponse(AbstractModel):
         r"""
         :param _Dimension: <p>回填请求的统计维度。</p>
         :type Dimension: str
-        :param _MetricType: <p>回填请求的指标族：tokens / search 。</p>
+        :param _MetricType: <p>回填请求的指标族：取值同入参 MetricType（tokens / search / apikey_usage）</p><p>枚举值：</p><ul><li>tokens： tokens</li></ul>
         :type MetricType: str
-        :param _MetricKeys: <p>本次响应中 Stats / Series / PageStats / TotalStats 实际包含的 metric key 列表，按MetricType 区分：tokens=[Total,Input,Output,Cache]、search=[SearchRequestCount,SearchCount]</p>
+        :param _MetricKeys: <p>本次响应中 Stats / Series / PageStats / TotalStats 实际包含的 metric key 列表，按MetricType 区分：<br>tokens=[TotalToken, InputTotalToken, OutputTotalToken, CacheTotalToken]<br>search=[SearchRequestCount,SearchCount]<br>apikey_usage=[TotalToken, InputTotalToken, OutputTotalToken, CacheTotalToken, RequestCount, RequestFailCount]</p>
         :type MetricKeys: list of str
         :param _ViewName: <p>视图（数据来源）</p>
         :type ViewName: str
@@ -4593,12 +4623,14 @@ class DescribeUsageRankListResponse(AbstractModel):
         :type Limit: int
         :param _Timestamps: <p>Series 数组对应的时间戳序列（Unix 秒）。ShowAll=true 时为空数组。</p>
         :type Timestamps: list of int
-        :param _TopList: <p>对象排行列表，按<code>MetricKeys[0]</code>降序排序。ShowAll=false 时为当前页 10 个对象（含 Series）；ShowAll=true 时为全量对象（不含 Series，用于 CSV 导出）。</p>
+        :param _TopList: <p>对象排行列表，按 SortKey 降序排序。ShowAll=false 时为当前页 10 个对象（含 Series）；ShowAll=true 时为全量对象（不含 Series，用于 CSV 导出）。</p>
         :type TopList: list of UsageRankItem
         :param _PageStats: <p>分页统计结果</p>
         :type PageStats: :class:`tencentcloud.tokenhub.v20260322.models.UsageStats`
         :param _TotalStats: <p>总统计结果</p>
         :type TotalStats: :class:`tencentcloud.tokenhub.v20260322.models.UsageStats`
+        :param _SortKey: <p>排序指标键</p>
+        :type SortKey: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
@@ -4616,6 +4648,7 @@ class DescribeUsageRankListResponse(AbstractModel):
         self._TopList = None
         self._PageStats = None
         self._TotalStats = None
+        self._SortKey = None
         self._RequestId = None
 
     @property
@@ -4631,7 +4664,7 @@ class DescribeUsageRankListResponse(AbstractModel):
 
     @property
     def MetricType(self):
-        r"""<p>回填请求的指标族：tokens / search 。</p>
+        r"""<p>回填请求的指标族：取值同入参 MetricType（tokens / search / apikey_usage）</p><p>枚举值：</p><ul><li>tokens： tokens</li></ul>
         :rtype: str
         """
         return self._MetricType
@@ -4642,7 +4675,7 @@ class DescribeUsageRankListResponse(AbstractModel):
 
     @property
     def MetricKeys(self):
-        r"""<p>本次响应中 Stats / Series / PageStats / TotalStats 实际包含的 metric key 列表，按MetricType 区分：tokens=[Total,Input,Output,Cache]、search=[SearchRequestCount,SearchCount]</p>
+        r"""<p>本次响应中 Stats / Series / PageStats / TotalStats 实际包含的 metric key 列表，按MetricType 区分：<br>tokens=[TotalToken, InputTotalToken, OutputTotalToken, CacheTotalToken]<br>search=[SearchRequestCount,SearchCount]<br>apikey_usage=[TotalToken, InputTotalToken, OutputTotalToken, CacheTotalToken, RequestCount, RequestFailCount]</p>
         :rtype: list of str
         """
         return self._MetricKeys
@@ -4741,7 +4774,7 @@ class DescribeUsageRankListResponse(AbstractModel):
 
     @property
     def TopList(self):
-        r"""<p>对象排行列表，按<code>MetricKeys[0]</code>降序排序。ShowAll=false 时为当前页 10 个对象（含 Series）；ShowAll=true 时为全量对象（不含 Series，用于 CSV 导出）。</p>
+        r"""<p>对象排行列表，按 SortKey 降序排序。ShowAll=false 时为当前页 10 个对象（含 Series）；ShowAll=true 时为全量对象（不含 Series，用于 CSV 导出）。</p>
         :rtype: list of UsageRankItem
         """
         return self._TopList
@@ -4771,6 +4804,17 @@ class DescribeUsageRankListResponse(AbstractModel):
     @TotalStats.setter
     def TotalStats(self, TotalStats):
         self._TotalStats = TotalStats
+
+    @property
+    def SortKey(self):
+        r"""<p>排序指标键</p>
+        :rtype: str
+        """
+        return self._SortKey
+
+    @SortKey.setter
+    def SortKey(self, SortKey):
+        self._SortKey = SortKey
 
     @property
     def RequestId(self):
@@ -4808,6 +4852,7 @@ class DescribeUsageRankListResponse(AbstractModel):
         if params.get("TotalStats") is not None:
             self._TotalStats = UsageStats()
             self._TotalStats._deserialize(params.get("TotalStats"))
+        self._SortKey = params.get("SortKey")
         self._RequestId = params.get("RequestId")
 
 

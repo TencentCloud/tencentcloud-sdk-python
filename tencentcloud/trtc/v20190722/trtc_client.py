@@ -72,6 +72,29 @@ class TrtcClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def CreateAudioModerationSync(self, request):
+        r"""短音频同步内容理解接口
+
+        :param request: Request instance for CreateAudioModerationSync.
+        :type request: :class:`tencentcloud.trtc.v20190722.models.CreateAudioModerationSyncRequest`
+        :rtype: :class:`tencentcloud.trtc.v20190722.models.CreateAudioModerationSyncResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("CreateAudioModerationSync", params, headers=headers)
+            response = json.loads(body)
+            model = models.CreateAudioModerationSyncResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def CreateCloudModeration(self, request):
         r"""启动AI 内容理解功能，完成房间内的音视频切片，视频截帧，或者录制音频流，投递到AI内容理解，完成内容识别。您可以通过此接口实现如下目标：
         ●指定内容参数（ModerationParams）来指定内容理解需要的详细参数。

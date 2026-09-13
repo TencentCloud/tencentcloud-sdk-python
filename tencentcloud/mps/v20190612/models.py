@@ -93186,7 +93186,7 @@ class TextToSpeechAsyncRequest(AbstractModel):
         :type Text: str
         :param _VoiceId: <p>音色ID</p>
         :type VoiceId: str
-        :param _TextLang: <p>文本语言，默认中文</p>
+        :param _TextLang: <p>文本语言，不填时默认自动探测</p>
         :type TextLang: str
         :param _ExtParam: <p>扩展参数，json字符串</p><p>synExt Object 语音合成扩展参数<br>  duration Float 合成音频时长，单位秒，示例：5.2<br>  sampleRate Integer 合成音频采样率，默认16000，支持[8000,16000,22050,32000,44100]<br>  pitch Integer 音调，默认0原音色输出，取值[-12, 12]</p><p>transExt Object 翻译扩展参数<br>  transInfo Object<br>   transDst String 目标语言，如en<br>  transRequirement String 翻译要求</p>
         :type ExtParam: str
@@ -93220,7 +93220,7 @@ class TextToSpeechAsyncRequest(AbstractModel):
 
     @property
     def TextLang(self):
-        r"""<p>文本语言，默认中文</p>
+        r"""<p>文本语言，不填时默认自动探测</p>
         :rtype: str
         """
         return self._TextLang

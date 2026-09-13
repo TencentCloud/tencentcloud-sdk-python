@@ -79,6 +79,24 @@ class IotexplorerClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
+    async def BatchCreateTWeSeeSubscription(
+            self,
+            request: models.BatchCreateTWeSeeSubscriptionRequest,
+            opts: Dict = None,
+    ) -> models.BatchCreateTWeSeeSubscriptionResponse:
+        """
+        批量开通 TWeSee 预付费订阅
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "BatchCreateTWeSeeSubscription"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.BatchCreateTWeSeeSubscriptionResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
     async def BatchInvokeTWeSeeRecognitionTask(
             self,
             request: models.BatchInvokeTWeSeeRecognitionTaskRequest,
@@ -92,6 +110,24 @@ class IotexplorerClient(AbstractClient):
         kwargs["action"] = "BatchInvokeTWeSeeRecognitionTask"
         kwargs["params"] = request._serialize()
         kwargs["resp_cls"] = models.BatchInvokeTWeSeeRecognitionTaskResponse
+        kwargs["headers"] = request.headers
+        kwargs["opts"] = opts or {}
+        
+        return await self.call_and_deserialize(**kwargs)
+        
+    async def BatchRenewTWeSeeSubscription(
+            self,
+            request: models.BatchRenewTWeSeeSubscriptionRequest,
+            opts: Dict = None,
+    ) -> models.BatchRenewTWeSeeSubscriptionResponse:
+        """
+        批量续费 TWeSee 预付费订阅
+        """
+        
+        kwargs = {}
+        kwargs["action"] = "BatchRenewTWeSeeSubscription"
+        kwargs["params"] = request._serialize()
+        kwargs["resp_cls"] = models.BatchRenewTWeSeeSubscriptionResponse
         kwargs["headers"] = request.headers
         kwargs["opts"] = opts or {}
         

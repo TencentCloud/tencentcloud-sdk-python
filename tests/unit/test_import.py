@@ -494,6 +494,11 @@ def test_import_dataagent_v20250513():
     from tencentcloud.dataagent.v20250513 import models
 
 
+def test_import_databuddy_v20260715():
+    from tencentcloud.databuddy.v20260715 import databuddy_client
+    from tencentcloud.databuddy.v20260715 import models
+
+
 def test_import_dayu_v20180709():
     from tencentcloud.dayu.v20180709 import dayu_client
     from tencentcloud.dayu.v20180709 import models

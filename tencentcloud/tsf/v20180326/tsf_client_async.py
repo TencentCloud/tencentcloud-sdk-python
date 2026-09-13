@@ -3182,26 +3182,6 @@ class TsfClient(AbstractClient):
         
         return await self.call_and_deserialize(**kwargs)
         
-    async def ReassociateBusinessLogConfig(
-            self,
-            request: models.ReassociateBusinessLogConfigRequest,
-            opts: Dict = None,
-    ) -> models.ReassociateBusinessLogConfigResponse:
-        """
-        后端服务已经删除这个接口,  API 接口下线处理
-
-        重关联业务日志配置
-        """
-        
-        kwargs = {}
-        kwargs["action"] = "ReassociateBusinessLogConfig"
-        kwargs["params"] = request._serialize()
-        kwargs["resp_cls"] = models.ReassociateBusinessLogConfigResponse
-        kwargs["headers"] = request.headers
-        kwargs["opts"] = opts or {}
-        
-        return await self.call_and_deserialize(**kwargs)
-        
     async def ReleaseApiGroup(
             self,
             request: models.ReleaseApiGroupRequest,

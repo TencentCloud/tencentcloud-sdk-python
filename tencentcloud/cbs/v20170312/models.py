@@ -2562,17 +2562,19 @@ class CreateSnapshotRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _DiskId: 需要创建快照的云硬盘ID，可通过[DescribeDisks](/document/product/362/16315)接口查询。
+        :param _DiskId: <p>需要创建快照的云硬盘ID，可通过<a href="/document/product/362/16315">DescribeDisks</a>接口查询。</p>
         :type DiskId: str
-        :param _SnapshotName: 快照名称，不传则新快照名称默认为“未命名”。
+        :param _SnapshotName: <p>快照名称，不传则新快照名称默认为“未命名”。</p>
         :type SnapshotName: str
-        :param _Deadline: 快照的到期时间，到期后该快照将会自动删除,需要传入UTC时间下的ISO-8601标准时间格式,例如:2022-01-08T09:47:55+00:00,。到期时间最小可设置为一天后的当前时间。
+        :param _Deadline: <p>快照的到期时间，到期后该快照将会自动删除，需要传入UTC时间下的ISO-8601标准时间格式，例如:2022-01-08T09:47:55+00:00。到期时间最小可设置为一天后的当前时间。</p>
         :type Deadline: str
-        :param _DiskBackupId: 云硬盘备份点ID。传入此参数时，将通过备份点创建快照。备份点 ID 可以通过[DescribeDiskBackups](/document/product/362/80278)接口查询。
+        :param _DiskBackupId: <p>云硬盘备份点ID。传入此参数时，将通过备份点创建快照。备份点 ID 可以通过<a href="/document/product/362/80278">DescribeDiskBackups</a>接口查询。</p>
         :type DiskBackupId: str
-        :param _Tags: 快照绑定的标签。
+        :param _Tags: <p>快照绑定的标签。</p>
         :type Tags: list of Tag
-        :param _DiskUsage: 快照关联云硬盘类型, SYSTEM_DISK: 系统盘, DATA_DISK: 数据盘,非必填参数，不填时快照类型与云盘类型保持一致， 该参数基于某些场景用户需要将系统盘创建出数据盘快照共享使用。
+        :param _LocalSnap: <p>是否创建极速快照。</p><p>极速快照数据存储在云硬盘所在的存储集群上，可实现秒级创建和回滚。该功能当前通过白名单控制开放。</p>
+        :type LocalSnap: bool
+        :param _DiskUsage: <p>快照关联云硬盘类型, SYSTEM_DISK: 系统盘, DATA_DISK: 数据盘,非必填参数，不填时快照类型与云盘类型保持一致， 该参数基于某些场景用户需要将系统盘创建出数据盘快照共享使用。</p>
         :type DiskUsage: str
         """
         self._DiskId = None
@@ -2580,11 +2582,12 @@ class CreateSnapshotRequest(AbstractModel):
         self._Deadline = None
         self._DiskBackupId = None
         self._Tags = None
+        self._LocalSnap = None
         self._DiskUsage = None
 
     @property
     def DiskId(self):
-        r"""需要创建快照的云硬盘ID，可通过[DescribeDisks](/document/product/362/16315)接口查询。
+        r"""<p>需要创建快照的云硬盘ID，可通过<a href="/document/product/362/16315">DescribeDisks</a>接口查询。</p>
         :rtype: str
         """
         return self._DiskId
@@ -2595,7 +2598,7 @@ class CreateSnapshotRequest(AbstractModel):
 
     @property
     def SnapshotName(self):
-        r"""快照名称，不传则新快照名称默认为“未命名”。
+        r"""<p>快照名称，不传则新快照名称默认为“未命名”。</p>
         :rtype: str
         """
         return self._SnapshotName
@@ -2606,7 +2609,7 @@ class CreateSnapshotRequest(AbstractModel):
 
     @property
     def Deadline(self):
-        r"""快照的到期时间，到期后该快照将会自动删除,需要传入UTC时间下的ISO-8601标准时间格式,例如:2022-01-08T09:47:55+00:00,。到期时间最小可设置为一天后的当前时间。
+        r"""<p>快照的到期时间，到期后该快照将会自动删除，需要传入UTC时间下的ISO-8601标准时间格式，例如:2022-01-08T09:47:55+00:00。到期时间最小可设置为一天后的当前时间。</p>
         :rtype: str
         """
         return self._Deadline
@@ -2617,7 +2620,7 @@ class CreateSnapshotRequest(AbstractModel):
 
     @property
     def DiskBackupId(self):
-        r"""云硬盘备份点ID。传入此参数时，将通过备份点创建快照。备份点 ID 可以通过[DescribeDiskBackups](/document/product/362/80278)接口查询。
+        r"""<p>云硬盘备份点ID。传入此参数时，将通过备份点创建快照。备份点 ID 可以通过<a href="/document/product/362/80278">DescribeDiskBackups</a>接口查询。</p>
         :rtype: str
         """
         return self._DiskBackupId
@@ -2628,7 +2631,7 @@ class CreateSnapshotRequest(AbstractModel):
 
     @property
     def Tags(self):
-        r"""快照绑定的标签。
+        r"""<p>快照绑定的标签。</p>
         :rtype: list of Tag
         """
         return self._Tags
@@ -2638,8 +2641,19 @@ class CreateSnapshotRequest(AbstractModel):
         self._Tags = Tags
 
     @property
+    def LocalSnap(self):
+        r"""<p>是否创建极速快照。</p><p>极速快照数据存储在云硬盘所在的存储集群上，可实现秒级创建和回滚。该功能当前通过白名单控制开放。</p>
+        :rtype: bool
+        """
+        return self._LocalSnap
+
+    @LocalSnap.setter
+    def LocalSnap(self, LocalSnap):
+        self._LocalSnap = LocalSnap
+
+    @property
     def DiskUsage(self):
-        r"""快照关联云硬盘类型, SYSTEM_DISK: 系统盘, DATA_DISK: 数据盘,非必填参数，不填时快照类型与云盘类型保持一致， 该参数基于某些场景用户需要将系统盘创建出数据盘快照共享使用。
+        r"""<p>快照关联云硬盘类型, SYSTEM_DISK: 系统盘, DATA_DISK: 数据盘,非必填参数，不填时快照类型与云盘类型保持一致， 该参数基于某些场景用户需要将系统盘创建出数据盘快照共享使用。</p>
         :rtype: str
         """
         return self._DiskUsage
@@ -2660,6 +2674,7 @@ class CreateSnapshotRequest(AbstractModel):
                 obj = Tag()
                 obj._deserialize(item)
                 self._Tags.append(obj)
+        self._LocalSnap = params.get("LocalSnap")
         self._DiskUsage = params.get("DiskUsage")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
@@ -2678,7 +2693,7 @@ class CreateSnapshotResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _SnapshotId: 新创建的快照ID。
+        :param _SnapshotId: <p>新创建的快照ID。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type SnapshotId: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
@@ -2689,7 +2704,7 @@ class CreateSnapshotResponse(AbstractModel):
 
     @property
     def SnapshotId(self):
-        r"""新创建的快照ID。
+        r"""<p>新创建的快照ID。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: str
         """

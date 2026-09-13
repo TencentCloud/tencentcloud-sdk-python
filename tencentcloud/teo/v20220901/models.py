@@ -40920,58 +40920,41 @@ class InferenceEnvironmentVariable(AbstractModel):
         
 
 
-class InferenceHardwareSpecification(AbstractModel):
-    r"""推理硬件规格信息。
+class InferenceHardwareConfig(AbstractModel):
+    r"""推理服务硬件配置。
 
     """
 
     def __init__(self):
         r"""
-        :param _Spec: 规格标识。
-        :type Spec: str
-        :param _Name: 规格名称。
-        :type Name: str
-        :param _CPUNum: CPU 核数。
-        :type CPUNum: float
-        :param _MemSize: 内存大小。单位为 MB。
-        :type MemSize: int
-        :param _GPUNum: GPU 卡数。
+        :param _GPUNum: <p>推理服务单个实例分配的 GPU 卡数，当前仅支持整数值，且必须为 <code>HardwareSpecId</code> 对应规格的 <code>AllowedGPUNums</code> 中的可选值。</p><p>若不填充，则使用所选 <code>HardwareSpecId</code> 规格对应的默认 <code>GPUNum</code> 值。</p>
         :type GPUNum: float
-        :param _GPUMemSize: 显存大小。单位为 MB。
-        :type GPUMemSize: int
+        :param _CPUNum: <p>推理服务单个实例分配的 CPU 核数，当前仅支持整数值。</p><p>若不填充，则使用所选 <code>HardwareSpecId</code> 规格对应的默认 <code>CPUNum</code> 值。</p>
+        :type CPUNum: float
+        :param _MemSize: <p>推理服务单实例分配的内存大小。</p><p>单位：MB</p><p>若不填充，则使用所选 <code>HardwareSpecId</code> 对应规格的默认 <code>MemSize</code> 值；若填充，则必须为 <code>1024</code> 的整数倍。</p>
+        :type MemSize: int
+        :param _DiskSize: <p>推理服务单实例分配的临时磁盘大小。</p><p>单位：MB</p><p>若不填充，则使用所选 <code>HardwareSpecId</code> 对应规格的默认 <code>DiskSize</code> 值；若填充，则必须为 <code>1024</code> 的整数倍。</p>
+        :type DiskSize: int
         """
-        self._Spec = None
-        self._Name = None
+        self._GPUNum = None
         self._CPUNum = None
         self._MemSize = None
-        self._GPUNum = None
-        self._GPUMemSize = None
+        self._DiskSize = None
 
     @property
-    def Spec(self):
-        r"""规格标识。
-        :rtype: str
+    def GPUNum(self):
+        r"""<p>推理服务单个实例分配的 GPU 卡数，当前仅支持整数值，且必须为 <code>HardwareSpecId</code> 对应规格的 <code>AllowedGPUNums</code> 中的可选值。</p><p>若不填充，则使用所选 <code>HardwareSpecId</code> 规格对应的默认 <code>GPUNum</code> 值。</p>
+        :rtype: float
         """
-        return self._Spec
+        return self._GPUNum
 
-    @Spec.setter
-    def Spec(self, Spec):
-        self._Spec = Spec
-
-    @property
-    def Name(self):
-        r"""规格名称。
-        :rtype: str
-        """
-        return self._Name
-
-    @Name.setter
-    def Name(self, Name):
-        self._Name = Name
+    @GPUNum.setter
+    def GPUNum(self, GPUNum):
+        self._GPUNum = GPUNum
 
     @property
     def CPUNum(self):
-        r"""CPU 核数。
+        r"""<p>推理服务单个实例分配的 CPU 核数，当前仅支持整数值。</p><p>若不填充，则使用所选 <code>HardwareSpecId</code> 规格对应的默认 <code>CPUNum</code> 值。</p>
         :rtype: float
         """
         return self._CPUNum
@@ -40982,7 +40965,7 @@ class InferenceHardwareSpecification(AbstractModel):
 
     @property
     def MemSize(self):
-        r"""内存大小。单位为 MB。
+        r"""<p>推理服务单实例分配的内存大小。</p><p>单位：MB</p><p>若不填充，则使用所选 <code>HardwareSpecId</code> 对应规格的默认 <code>MemSize</code> 值；若填充，则必须为 <code>1024</code> 的整数倍。</p>
         :rtype: int
         """
         return self._MemSize
@@ -40992,8 +40975,174 @@ class InferenceHardwareSpecification(AbstractModel):
         self._MemSize = MemSize
 
     @property
+    def DiskSize(self):
+        r"""<p>推理服务单实例分配的临时磁盘大小。</p><p>单位：MB</p><p>若不填充，则使用所选 <code>HardwareSpecId</code> 对应规格的默认 <code>DiskSize</code> 值；若填充，则必须为 <code>1024</code> 的整数倍。</p>
+        :rtype: int
+        """
+        return self._DiskSize
+
+    @DiskSize.setter
+    def DiskSize(self, DiskSize):
+        self._DiskSize = DiskSize
+
+
+    def _deserialize(self, params):
+        self._GPUNum = params.get("GPUNum")
+        self._CPUNum = params.get("CPUNum")
+        self._MemSize = params.get("MemSize")
+        self._DiskSize = params.get("DiskSize")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class InferenceHardwareConfigForModify(AbstractModel):
+    r"""推理服务资源硬件配置的修改参数。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _CPUNum: <p>推理服务单实例分配的 CPU 核数，当前仅支持整数值。</p><p>若不填充，则不修改。</p>
+        :type CPUNum: float
+        :param _MemSize: <p>推理服务单实例分配的内存大小。</p><p>单位：MB</p><p>若不填充，则不修改；若填写，则必须为 <code>1024</code> 的整数倍。</p>
+        :type MemSize: int
+        :param _DiskSize: <p>推理服务单实例分配的临时磁盘大小。</p><p>单位：MB</p><p>若不填充，则不修改；若填充，则必须为 <code>1024</code> 的整数倍。</p>
+        :type DiskSize: int
+        """
+        self._CPUNum = None
+        self._MemSize = None
+        self._DiskSize = None
+
+    @property
+    def CPUNum(self):
+        r"""<p>推理服务单实例分配的 CPU 核数，当前仅支持整数值。</p><p>若不填充，则不修改。</p>
+        :rtype: float
+        """
+        return self._CPUNum
+
+    @CPUNum.setter
+    def CPUNum(self, CPUNum):
+        self._CPUNum = CPUNum
+
+    @property
+    def MemSize(self):
+        r"""<p>推理服务单实例分配的内存大小。</p><p>单位：MB</p><p>若不填充，则不修改；若填写，则必须为 <code>1024</code> 的整数倍。</p>
+        :rtype: int
+        """
+        return self._MemSize
+
+    @MemSize.setter
+    def MemSize(self, MemSize):
+        self._MemSize = MemSize
+
+    @property
+    def DiskSize(self):
+        r"""<p>推理服务单实例分配的临时磁盘大小。</p><p>单位：MB</p><p>若不填充，则不修改；若填充，则必须为 <code>1024</code> 的整数倍。</p>
+        :rtype: int
+        """
+        return self._DiskSize
+
+    @DiskSize.setter
+    def DiskSize(self, DiskSize):
+        self._DiskSize = DiskSize
+
+
+    def _deserialize(self, params):
+        self._CPUNum = params.get("CPUNum")
+        self._MemSize = params.get("MemSize")
+        self._DiskSize = params.get("DiskSize")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class InferenceHardwareSpecification(AbstractModel):
+    r"""推理硬件规格信息。
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Spec: <p>规格标识。已废弃，参考使用字段 <code>HardwareSpecId</code>。</p>
+        :type Spec: str
+        :param _HardwareSpecId: <p>规格唯一标识 ID。</p>
+        :type HardwareSpecId: str
+        :param _Name: <p>规格名称。</p>
+        :type Name: str
+        :param _GPUNum: <p>规格默认分配的 GPU 卡数。</p>
+        :type GPUNum: float
+        :param _CPUNum: <p>规格默认分配的 CPU 核数。</p>
+        :type CPUNum: float
+        :param _MemSize: <p>规格默认分配的内存大小。</p><p>单位：MB</p>
+        :type MemSize: int
+        :param _GPUMemSize: <p>规格默认分配的显存大小。</p><p>单位：MB</p>
+        :type GPUMemSize: int
+        :param _DiskSize: <p>规格默认分配的磁盘大小。</p><p>单位：MB</p>
+        :type DiskSize: int
+        :param _AllowedGPUNums: <p>规格当前支持的 GPU 卡数列表。</p><p>若不填充或填充空数组，则仅支持规格默认分配的 GPU 卡数。</p>
+        :type AllowedGPUNums: list of float
+        """
+        self._Spec = None
+        self._HardwareSpecId = None
+        self._Name = None
+        self._GPUNum = None
+        self._CPUNum = None
+        self._MemSize = None
+        self._GPUMemSize = None
+        self._DiskSize = None
+        self._AllowedGPUNums = None
+
+    @property
+    def Spec(self):
+        warnings.warn("parameter `Spec` is deprecated", DeprecationWarning) 
+
+        r"""<p>规格标识。已废弃，参考使用字段 <code>HardwareSpecId</code>。</p>
+        :rtype: str
+        """
+        return self._Spec
+
+    @Spec.setter
+    def Spec(self, Spec):
+        warnings.warn("parameter `Spec` is deprecated", DeprecationWarning) 
+
+        self._Spec = Spec
+
+    @property
+    def HardwareSpecId(self):
+        r"""<p>规格唯一标识 ID。</p>
+        :rtype: str
+        """
+        return self._HardwareSpecId
+
+    @HardwareSpecId.setter
+    def HardwareSpecId(self, HardwareSpecId):
+        self._HardwareSpecId = HardwareSpecId
+
+    @property
+    def Name(self):
+        r"""<p>规格名称。</p>
+        :rtype: str
+        """
+        return self._Name
+
+    @Name.setter
+    def Name(self, Name):
+        self._Name = Name
+
+    @property
     def GPUNum(self):
-        r"""GPU 卡数。
+        r"""<p>规格默认分配的 GPU 卡数。</p>
         :rtype: float
         """
         return self._GPUNum
@@ -41003,8 +41152,30 @@ class InferenceHardwareSpecification(AbstractModel):
         self._GPUNum = GPUNum
 
     @property
+    def CPUNum(self):
+        r"""<p>规格默认分配的 CPU 核数。</p>
+        :rtype: float
+        """
+        return self._CPUNum
+
+    @CPUNum.setter
+    def CPUNum(self, CPUNum):
+        self._CPUNum = CPUNum
+
+    @property
+    def MemSize(self):
+        r"""<p>规格默认分配的内存大小。</p><p>单位：MB</p>
+        :rtype: int
+        """
+        return self._MemSize
+
+    @MemSize.setter
+    def MemSize(self, MemSize):
+        self._MemSize = MemSize
+
+    @property
     def GPUMemSize(self):
-        r"""显存大小。单位为 MB。
+        r"""<p>规格默认分配的显存大小。</p><p>单位：MB</p>
         :rtype: int
         """
         return self._GPUMemSize
@@ -41013,14 +41184,39 @@ class InferenceHardwareSpecification(AbstractModel):
     def GPUMemSize(self, GPUMemSize):
         self._GPUMemSize = GPUMemSize
 
+    @property
+    def DiskSize(self):
+        r"""<p>规格默认分配的磁盘大小。</p><p>单位：MB</p>
+        :rtype: int
+        """
+        return self._DiskSize
+
+    @DiskSize.setter
+    def DiskSize(self, DiskSize):
+        self._DiskSize = DiskSize
+
+    @property
+    def AllowedGPUNums(self):
+        r"""<p>规格当前支持的 GPU 卡数列表。</p><p>若不填充或填充空数组，则仅支持规格默认分配的 GPU 卡数。</p>
+        :rtype: list of float
+        """
+        return self._AllowedGPUNums
+
+    @AllowedGPUNums.setter
+    def AllowedGPUNums(self, AllowedGPUNums):
+        self._AllowedGPUNums = AllowedGPUNums
+
 
     def _deserialize(self, params):
         self._Spec = params.get("Spec")
+        self._HardwareSpecId = params.get("HardwareSpecId")
         self._Name = params.get("Name")
+        self._GPUNum = params.get("GPUNum")
         self._CPUNum = params.get("CPUNum")
         self._MemSize = params.get("MemSize")
-        self._GPUNum = params.get("GPUNum")
         self._GPUMemSize = params.get("GPUMemSize")
+        self._DiskSize = params.get("DiskSize")
+        self._AllowedGPUNums = params.get("AllowedGPUNums")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -41074,28 +41270,34 @@ class InferenceResourceConfig(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ScalingMode: 扩容缩容的方式。取值有：<li>Auto：根据请求量自动调整实例数量；</li><li>Manual：人工设置固定的实例数量。</li>
+        :param _ScalingMode: <p>扩容缩容的方式。取值有：<li>Auto：根据请求量自动调整实例数量；</li><li>Manual：人工设置固定的实例数量。</li></p>
         :type ScalingMode: str
-        :param _HardwareSpec: 硬件规格。
+        :param _HardwareSpec: <p>硬件规格标识。已废弃，请参考使用 <code>HardwareSpecId</code>。</p>
         :type HardwareSpec: str
-        :param _AutoScalingConfig: 推理服务自动伸缩配置。当 ScalingMode 为 Auto 时必填。
+        :param _HardwareSpecId: <p>硬件规格唯一标识 ID，可通过 <code>DescribeInferenceHardwareSpecifications</code> 接口获取当前站点支持的硬件规格。</p><p>系统默认按照所选 <code>HardwareSpecId</code> 对应的硬件规格配置推理服务所需资源；如需调整，可通过 <code>HardwareConfig</code> 自定义硬件资源配置。</p>
+        :type HardwareSpecId: str
+        :param _HardwareConfig: <p>推理服务硬件配置。</p><p>作为入参时，若未填充则按照所选 <code>HardwareSpecId</code> 规格的默认值配置硬件资源；若填充则优先按照填写值进行配置。</p>
+        :type HardwareConfig: :class:`tencentcloud.teo.v20220901.models.InferenceHardwareConfig`
+        :param _AutoScalingConfig: <p>推理服务自动伸缩配置。当 ScalingMode 为 Auto 时必填。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type AutoScalingConfig: :class:`tencentcloud.teo.v20220901.models.InferenceAutoScalingConfig`
-        :param _ManualInstanceConfig: 推理服务人工设置实例配置。当 ScalingMode 为 Manual 时必填。
+        :param _ManualInstanceConfig: <p>推理服务人工设置实例配置。当 ScalingMode 为 Manual 时必填。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :type ManualInstanceConfig: :class:`tencentcloud.teo.v20220901.models.InferenceManualInstanceConfig`
-        :param _Concurrency: 单实例的并发数。默认值为 1。
+        :param _Concurrency: <p>单实例的并发数。默认值为 1。</p>
         :type Concurrency: int
         """
         self._ScalingMode = None
         self._HardwareSpec = None
+        self._HardwareSpecId = None
+        self._HardwareConfig = None
         self._AutoScalingConfig = None
         self._ManualInstanceConfig = None
         self._Concurrency = None
 
     @property
     def ScalingMode(self):
-        r"""扩容缩容的方式。取值有：<li>Auto：根据请求量自动调整实例数量；</li><li>Manual：人工设置固定的实例数量。</li>
+        r"""<p>扩容缩容的方式。取值有：<li>Auto：根据请求量自动调整实例数量；</li><li>Manual：人工设置固定的实例数量。</li></p>
         :rtype: str
         """
         return self._ScalingMode
@@ -41106,18 +41308,44 @@ class InferenceResourceConfig(AbstractModel):
 
     @property
     def HardwareSpec(self):
-        r"""硬件规格。
+        warnings.warn("parameter `HardwareSpec` is deprecated", DeprecationWarning) 
+
+        r"""<p>硬件规格标识。已废弃，请参考使用 <code>HardwareSpecId</code>。</p>
         :rtype: str
         """
         return self._HardwareSpec
 
     @HardwareSpec.setter
     def HardwareSpec(self, HardwareSpec):
+        warnings.warn("parameter `HardwareSpec` is deprecated", DeprecationWarning) 
+
         self._HardwareSpec = HardwareSpec
 
     @property
+    def HardwareSpecId(self):
+        r"""<p>硬件规格唯一标识 ID，可通过 <code>DescribeInferenceHardwareSpecifications</code> 接口获取当前站点支持的硬件规格。</p><p>系统默认按照所选 <code>HardwareSpecId</code> 对应的硬件规格配置推理服务所需资源；如需调整，可通过 <code>HardwareConfig</code> 自定义硬件资源配置。</p>
+        :rtype: str
+        """
+        return self._HardwareSpecId
+
+    @HardwareSpecId.setter
+    def HardwareSpecId(self, HardwareSpecId):
+        self._HardwareSpecId = HardwareSpecId
+
+    @property
+    def HardwareConfig(self):
+        r"""<p>推理服务硬件配置。</p><p>作为入参时，若未填充则按照所选 <code>HardwareSpecId</code> 规格的默认值配置硬件资源；若填充则优先按照填写值进行配置。</p>
+        :rtype: :class:`tencentcloud.teo.v20220901.models.InferenceHardwareConfig`
+        """
+        return self._HardwareConfig
+
+    @HardwareConfig.setter
+    def HardwareConfig(self, HardwareConfig):
+        self._HardwareConfig = HardwareConfig
+
+    @property
     def AutoScalingConfig(self):
-        r"""推理服务自动伸缩配置。当 ScalingMode 为 Auto 时必填。
+        r"""<p>推理服务自动伸缩配置。当 ScalingMode 为 Auto 时必填。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.teo.v20220901.models.InferenceAutoScalingConfig`
         """
@@ -41129,7 +41357,7 @@ class InferenceResourceConfig(AbstractModel):
 
     @property
     def ManualInstanceConfig(self):
-        r"""推理服务人工设置实例配置。当 ScalingMode 为 Manual 时必填。
+        r"""<p>推理服务人工设置实例配置。当 ScalingMode 为 Manual 时必填。</p>
 注意：此字段可能返回 null，表示取不到有效值。
         :rtype: :class:`tencentcloud.teo.v20220901.models.InferenceManualInstanceConfig`
         """
@@ -41141,7 +41369,7 @@ class InferenceResourceConfig(AbstractModel):
 
     @property
     def Concurrency(self):
-        r"""单实例的并发数。默认值为 1。
+        r"""<p>单实例的并发数。默认值为 1。</p>
         :rtype: int
         """
         return self._Concurrency
@@ -41154,6 +41382,10 @@ class InferenceResourceConfig(AbstractModel):
     def _deserialize(self, params):
         self._ScalingMode = params.get("ScalingMode")
         self._HardwareSpec = params.get("HardwareSpec")
+        self._HardwareSpecId = params.get("HardwareSpecId")
+        if params.get("HardwareConfig") is not None:
+            self._HardwareConfig = InferenceHardwareConfig()
+            self._HardwareConfig._deserialize(params.get("HardwareConfig"))
         if params.get("AutoScalingConfig") is not None:
             self._AutoScalingConfig = InferenceAutoScalingConfig()
             self._AutoScalingConfig._deserialize(params.get("AutoScalingConfig"))
@@ -41178,23 +41410,26 @@ class InferenceResourceConfigForModify(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _ScalingMode: 扩容缩容的方式。取值有：<li>Auto：根据请求量自动调整实例数量；</li><li>Manual：人工设置固定的实例数量。</li>
+        :param _ScalingMode: <p>扩容缩容的方式。取值有：<li>Auto：根据请求量自动调整实例数量；</li><li>Manual：人工设置固定的实例数量。</li></p>
         :type ScalingMode: str
-        :param _AutoScalingConfig: 推理服务自动伸缩配置。当 ScalingMode 为 Auto 时必填。
+        :param _AutoScalingConfig: <p>推理服务自动伸缩配置。当 ScalingMode 为 Auto 时必填。</p>
         :type AutoScalingConfig: :class:`tencentcloud.teo.v20220901.models.InferenceAutoScalingConfig`
-        :param _ManualInstanceConfig: 推理服务人工设置实例配置。当 ScalingMode 为 Manual 时必填。
+        :param _ManualInstanceConfig: <p>推理服务人工设置实例配置。当 ScalingMode 为 Manual 时必填。</p>
         :type ManualInstanceConfig: :class:`tencentcloud.teo.v20220901.models.InferenceManualInstanceConfig`
-        :param _Concurrency: 单实例的并发数。默认值为 1。
+        :param _Concurrency: <p>单实例的并发数。默认值为 1。</p>
         :type Concurrency: int
+        :param _HardwareConfig: <p>推理服务的硬件资源配置。</p>
+        :type HardwareConfig: :class:`tencentcloud.teo.v20220901.models.InferenceHardwareConfigForModify`
         """
         self._ScalingMode = None
         self._AutoScalingConfig = None
         self._ManualInstanceConfig = None
         self._Concurrency = None
+        self._HardwareConfig = None
 
     @property
     def ScalingMode(self):
-        r"""扩容缩容的方式。取值有：<li>Auto：根据请求量自动调整实例数量；</li><li>Manual：人工设置固定的实例数量。</li>
+        r"""<p>扩容缩容的方式。取值有：<li>Auto：根据请求量自动调整实例数量；</li><li>Manual：人工设置固定的实例数量。</li></p>
         :rtype: str
         """
         return self._ScalingMode
@@ -41205,7 +41440,7 @@ class InferenceResourceConfigForModify(AbstractModel):
 
     @property
     def AutoScalingConfig(self):
-        r"""推理服务自动伸缩配置。当 ScalingMode 为 Auto 时必填。
+        r"""<p>推理服务自动伸缩配置。当 ScalingMode 为 Auto 时必填。</p>
         :rtype: :class:`tencentcloud.teo.v20220901.models.InferenceAutoScalingConfig`
         """
         return self._AutoScalingConfig
@@ -41216,7 +41451,7 @@ class InferenceResourceConfigForModify(AbstractModel):
 
     @property
     def ManualInstanceConfig(self):
-        r"""推理服务人工设置实例配置。当 ScalingMode 为 Manual 时必填。
+        r"""<p>推理服务人工设置实例配置。当 ScalingMode 为 Manual 时必填。</p>
         :rtype: :class:`tencentcloud.teo.v20220901.models.InferenceManualInstanceConfig`
         """
         return self._ManualInstanceConfig
@@ -41227,7 +41462,7 @@ class InferenceResourceConfigForModify(AbstractModel):
 
     @property
     def Concurrency(self):
-        r"""单实例的并发数。默认值为 1。
+        r"""<p>单实例的并发数。默认值为 1。</p>
         :rtype: int
         """
         return self._Concurrency
@@ -41235,6 +41470,17 @@ class InferenceResourceConfigForModify(AbstractModel):
     @Concurrency.setter
     def Concurrency(self, Concurrency):
         self._Concurrency = Concurrency
+
+    @property
+    def HardwareConfig(self):
+        r"""<p>推理服务的硬件资源配置。</p>
+        :rtype: :class:`tencentcloud.teo.v20220901.models.InferenceHardwareConfigForModify`
+        """
+        return self._HardwareConfig
+
+    @HardwareConfig.setter
+    def HardwareConfig(self, HardwareConfig):
+        self._HardwareConfig = HardwareConfig
 
 
     def _deserialize(self, params):
@@ -41246,6 +41492,9 @@ class InferenceResourceConfigForModify(AbstractModel):
             self._ManualInstanceConfig = InferenceManualInstanceConfig()
             self._ManualInstanceConfig._deserialize(params.get("ManualInstanceConfig"))
         self._Concurrency = params.get("Concurrency")
+        if params.get("HardwareConfig") is not None:
+            self._HardwareConfig = InferenceHardwareConfigForModify()
+            self._HardwareConfig._deserialize(params.get("HardwareConfig"))
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]

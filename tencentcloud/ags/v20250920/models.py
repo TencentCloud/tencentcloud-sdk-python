@@ -2593,26 +2593,35 @@ class DescribeSandboxInstanceListRequest(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceIds: 沙箱实例ID列表，指定要查询的实例。如果为空则查询所有实例。最大支持100个ID
+        :param _InstanceIds: <p>沙箱实例ID列表，指定要查询的实例。如果为空则查询所有实例。最大支持100个ID</p>
         :type InstanceIds: list of str
-        :param _ToolId: 沙箱工具ID，指定时查询该沙箱模板下的实例，为空则查询所有沙箱模板的实例
+        :param _ToolId: <p>沙箱工具ID，指定时查询该沙箱模板下的实例，为空则查询所有沙箱模板的实例</p>
         :type ToolId: str
-        :param _Offset: 偏移量，默认为0
+        :param _Offset: <p>偏移量，默认为0</p>
         :type Offset: int
-        :param _Limit: 返回数量，默认为20，最大值为100
+        :param _Limit: <p>返回数量，默认为20，最大值为100</p>
         :type Limit: int
-        :param _Filters: 过滤条件
+        :param _Filters: <p>过滤条件</p>
         :type Filters: list of Filter
+        :param _MaxResults: <p>每次调用返回的最大结果数。如果查询返回的时候有NextToken返回，您可以使用NextToken值获取更多页结果， 当NextToke返回空或者返回的结果数量小于MaxResults时，表示没有更多数据了。允许的最大页面大小为 100。</p>
+        :type MaxResults: int
+        :param _NextToken: <p>如果NextToken返回非空字符串 ，表示还有更多可用结果。 NextToken是每个页面唯一的分页令牌。使用返回的令牌再次调用以检索下一页。需要保持所有其他参数不变。每个分页令牌在 24 小时后过期。</p>
+        :type NextToken: str
+        :param _NeedTotalCount: <p>是否返回符合当前查询条件的沙箱实例总数，仅在使用 MaxResults/NextToken 分页时生效。设置为 true 时，首次请求（NextToken 为空）计算并返回精确的 TotalCount；后续使用 NextToken 翻页时返回首次请求计算的 TotalCount，分页期间该值保持不变。重新发起不带 NextToken 的请求时将重新计算。使用 NextToken 翻页时，本参数及其他查询参数必须与首次请求保持一致。默认值为 false，此时 TotalCount 返回 0。</p>
+        :type NeedTotalCount: bool
         """
         self._InstanceIds = None
         self._ToolId = None
         self._Offset = None
         self._Limit = None
         self._Filters = None
+        self._MaxResults = None
+        self._NextToken = None
+        self._NeedTotalCount = None
 
     @property
     def InstanceIds(self):
-        r"""沙箱实例ID列表，指定要查询的实例。如果为空则查询所有实例。最大支持100个ID
+        r"""<p>沙箱实例ID列表，指定要查询的实例。如果为空则查询所有实例。最大支持100个ID</p>
         :rtype: list of str
         """
         return self._InstanceIds
@@ -2623,7 +2632,7 @@ class DescribeSandboxInstanceListRequest(AbstractModel):
 
     @property
     def ToolId(self):
-        r"""沙箱工具ID，指定时查询该沙箱模板下的实例，为空则查询所有沙箱模板的实例
+        r"""<p>沙箱工具ID，指定时查询该沙箱模板下的实例，为空则查询所有沙箱模板的实例</p>
         :rtype: str
         """
         return self._ToolId
@@ -2634,7 +2643,7 @@ class DescribeSandboxInstanceListRequest(AbstractModel):
 
     @property
     def Offset(self):
-        r"""偏移量，默认为0
+        r"""<p>偏移量，默认为0</p>
         :rtype: int
         """
         return self._Offset
@@ -2645,7 +2654,7 @@ class DescribeSandboxInstanceListRequest(AbstractModel):
 
     @property
     def Limit(self):
-        r"""返回数量，默认为20，最大值为100
+        r"""<p>返回数量，默认为20，最大值为100</p>
         :rtype: int
         """
         return self._Limit
@@ -2656,7 +2665,7 @@ class DescribeSandboxInstanceListRequest(AbstractModel):
 
     @property
     def Filters(self):
-        r"""过滤条件
+        r"""<p>过滤条件</p>
         :rtype: list of Filter
         """
         return self._Filters
@@ -2664,6 +2673,39 @@ class DescribeSandboxInstanceListRequest(AbstractModel):
     @Filters.setter
     def Filters(self, Filters):
         self._Filters = Filters
+
+    @property
+    def MaxResults(self):
+        r"""<p>每次调用返回的最大结果数。如果查询返回的时候有NextToken返回，您可以使用NextToken值获取更多页结果， 当NextToke返回空或者返回的结果数量小于MaxResults时，表示没有更多数据了。允许的最大页面大小为 100。</p>
+        :rtype: int
+        """
+        return self._MaxResults
+
+    @MaxResults.setter
+    def MaxResults(self, MaxResults):
+        self._MaxResults = MaxResults
+
+    @property
+    def NextToken(self):
+        r"""<p>如果NextToken返回非空字符串 ，表示还有更多可用结果。 NextToken是每个页面唯一的分页令牌。使用返回的令牌再次调用以检索下一页。需要保持所有其他参数不变。每个分页令牌在 24 小时后过期。</p>
+        :rtype: str
+        """
+        return self._NextToken
+
+    @NextToken.setter
+    def NextToken(self, NextToken):
+        self._NextToken = NextToken
+
+    @property
+    def NeedTotalCount(self):
+        r"""<p>是否返回符合当前查询条件的沙箱实例总数，仅在使用 MaxResults/NextToken 分页时生效。设置为 true 时，首次请求（NextToken 为空）计算并返回精确的 TotalCount；后续使用 NextToken 翻页时返回首次请求计算的 TotalCount，分页期间该值保持不变。重新发起不带 NextToken 的请求时将重新计算。使用 NextToken 翻页时，本参数及其他查询参数必须与首次请求保持一致。默认值为 false，此时 TotalCount 返回 0。</p>
+        :rtype: bool
+        """
+        return self._NeedTotalCount
+
+    @NeedTotalCount.setter
+    def NeedTotalCount(self, NeedTotalCount):
+        self._NeedTotalCount = NeedTotalCount
 
 
     def _deserialize(self, params):
@@ -2677,6 +2719,9 @@ class DescribeSandboxInstanceListRequest(AbstractModel):
                 obj = Filter()
                 obj._deserialize(item)
                 self._Filters.append(obj)
+        self._MaxResults = params.get("MaxResults")
+        self._NextToken = params.get("NextToken")
+        self._NeedTotalCount = params.get("NeedTotalCount")
         memeber_set = set(params.keys())
         for name, value in vars(self).items():
             property_name = name[1:]
@@ -2694,20 +2739,23 @@ class DescribeSandboxInstanceListResponse(AbstractModel):
 
     def __init__(self):
         r"""
-        :param _InstanceSet: 沙箱实例列表
+        :param _InstanceSet: <p>沙箱实例列表</p>
         :type InstanceSet: list of SandboxInstance
-        :param _TotalCount: 符合条件的实例总数
+        :param _TotalCount: <p>符合条件的实例总数</p>
         :type TotalCount: int
+        :param _NextToken: <p>如果NextToken返回非空字符串 ，表示还有更多可用结果。 NextToken是每个页面唯一的分页令牌。使用返回的令牌再次调用以检索下一页。需要保持所有其他参数不变。每个分页令牌在 24 小时后过期。</p>
+        :type NextToken: str
         :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
         :type RequestId: str
         """
         self._InstanceSet = None
         self._TotalCount = None
+        self._NextToken = None
         self._RequestId = None
 
     @property
     def InstanceSet(self):
-        r"""沙箱实例列表
+        r"""<p>沙箱实例列表</p>
         :rtype: list of SandboxInstance
         """
         return self._InstanceSet
@@ -2718,7 +2766,7 @@ class DescribeSandboxInstanceListResponse(AbstractModel):
 
     @property
     def TotalCount(self):
-        r"""符合条件的实例总数
+        r"""<p>符合条件的实例总数</p>
         :rtype: int
         """
         return self._TotalCount
@@ -2726,6 +2774,17 @@ class DescribeSandboxInstanceListResponse(AbstractModel):
     @TotalCount.setter
     def TotalCount(self, TotalCount):
         self._TotalCount = TotalCount
+
+    @property
+    def NextToken(self):
+        r"""<p>如果NextToken返回非空字符串 ，表示还有更多可用结果。 NextToken是每个页面唯一的分页令牌。使用返回的令牌再次调用以检索下一页。需要保持所有其他参数不变。每个分页令牌在 24 小时后过期。</p>
+        :rtype: str
+        """
+        return self._NextToken
+
+    @NextToken.setter
+    def NextToken(self, NextToken):
+        self._NextToken = NextToken
 
     @property
     def RequestId(self):
@@ -2747,6 +2806,7 @@ class DescribeSandboxInstanceListResponse(AbstractModel):
                 obj._deserialize(item)
                 self._InstanceSet.append(obj)
         self._TotalCount = params.get("TotalCount")
+        self._NextToken = params.get("NextToken")
         self._RequestId = params.get("RequestId")
 
 

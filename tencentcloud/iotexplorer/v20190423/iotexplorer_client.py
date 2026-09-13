@@ -95,6 +95,29 @@ class IotexplorerClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def BatchCreateTWeSeeSubscription(self, request):
+        r"""批量开通 TWeSee 预付费订阅
+
+        :param request: Request instance for BatchCreateTWeSeeSubscription.
+        :type request: :class:`tencentcloud.iotexplorer.v20190423.models.BatchCreateTWeSeeSubscriptionRequest`
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.BatchCreateTWeSeeSubscriptionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("BatchCreateTWeSeeSubscription", params, headers=headers)
+            response = json.loads(body)
+            model = models.BatchCreateTWeSeeSubscriptionResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def BatchInvokeTWeSeeRecognitionTask(self, request):
         r"""批量同步执行 TWeSee 语义理解任务
 
@@ -109,6 +132,29 @@ class IotexplorerClient(AbstractClient):
             body = self.call("BatchInvokeTWeSeeRecognitionTask", params, headers=headers)
             response = json.loads(body)
             model = models.BatchInvokeTWeSeeRecognitionTaskResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
+    def BatchRenewTWeSeeSubscription(self, request):
+        r"""批量续费 TWeSee 预付费订阅
+
+        :param request: Request instance for BatchRenewTWeSeeSubscription.
+        :type request: :class:`tencentcloud.iotexplorer.v20190423.models.BatchRenewTWeSeeSubscriptionRequest`
+        :rtype: :class:`tencentcloud.iotexplorer.v20190423.models.BatchRenewTWeSeeSubscriptionResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("BatchRenewTWeSeeSubscription", params, headers=headers)
+            response = json.loads(body)
+            model = models.BatchRenewTWeSeeSubscriptionResponse()
             model._deserialize(response["Response"])
             return model
         except Exception as e:

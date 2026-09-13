@@ -4058,31 +4058,6 @@ class TsfClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
-    def ReassociateBusinessLogConfig(self, request):
-        r"""后端服务已经删除这个接口,  API 接口下线处理
-
-        重关联业务日志配置
-
-        :param request: Request instance for ReassociateBusinessLogConfig.
-        :type request: :class:`tencentcloud.tsf.v20180326.models.ReassociateBusinessLogConfigRequest`
-        :rtype: :class:`tencentcloud.tsf.v20180326.models.ReassociateBusinessLogConfigResponse`
-
-        """
-        try:
-            params = request._serialize()
-            headers = request.headers
-            body = self.call("ReassociateBusinessLogConfig", params, headers=headers)
-            response = json.loads(body)
-            model = models.ReassociateBusinessLogConfigResponse()
-            model._deserialize(response["Response"])
-            return model
-        except Exception as e:
-            if isinstance(e, TencentCloudSDKException):
-                raise
-            else:
-                raise TencentCloudSDKException(type(e).__name__, str(e))
-
-
     def ReleaseApiGroup(self, request):
         r"""发布Api分组
 

@@ -18031,6 +18031,675 @@ class DescribeNDRAssetIdentificationListResponse(AbstractModel):
         self._RequestId = params.get("RequestId")
 
 
+class DescribeNDRDataLeakOutAlertDetailRequest(AbstractModel):
+    r"""DescribeNDRDataLeakOutAlertDetail请求参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RiskId: 风险事件ID
+        :type RiskId: str
+        """
+        self._RiskId = None
+
+    @property
+    def RiskId(self):
+        r"""风险事件ID
+        :rtype: str
+        """
+        return self._RiskId
+
+    @RiskId.setter
+    def RiskId(self, RiskId):
+        self._RiskId = RiskId
+
+
+    def _deserialize(self, params):
+        self._RiskId = params.get("RiskId")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
+
+
+class DescribeNDRDataLeakOutAlertDetailResponse(AbstractModel):
+    r"""DescribeNDRDataLeakOutAlertDetail返回参数结构体
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _RiskID: 风险事件ID
+        :type RiskID: str
+        :param _InstanceId: 资产实例ID
+        :type InstanceId: str
+        :param _InstanceName: 资产实例名称
+        :type InstanceName: str
+        :param _InstanceType: 资产实例类型
+        :type InstanceType: str
+        :param _Region: 资产所在地域
+        :type Region: str
+        :param _SrcIP: 源IP
+        :type SrcIP: str
+        :param _DstIPPort: 目的IP端口
+        :type DstIPPort: str
+        :param _Hostname: 目的Host
+        :type Hostname: str
+        :param _DstServiceType: 目的服务类型
+        :type DstServiceType: str
+        :param _DstServiceName: 目的服务名称
+        :type DstServiceName: str
+        :param _ApiPattern: 访问API
+        :type ApiPattern: str
+        :param _DstGeoLocation: 目的IP地理信息
+        :type DstGeoLocation: str
+        :param _AppProto: 应用层协议
+        :type AppProto: str
+        :param _LeakTypeSet: 敏感类型集合
+        :type LeakTypeSet: str
+        :param _EventCount: 事件数量
+        :type EventCount: int
+        :param _LeakDataCount: 敏感数据数量
+        :type LeakDataCount: int
+        :param _Level: 原始风险等级
+        :type Level: int
+        :param _Status: 处置状态
+        :type Status: int
+        :param _Comment: 处置备注
+        :type Comment: str
+        :param _FirstIdentificationTime: 首次识别时间
+        :type FirstIdentificationTime: str
+        :param _LatestIdentificationTime: 最近识别时间
+        :type LatestIdentificationTime: str
+        :param _AnalysisStatus: AI任务分析状态
+        :type AnalysisStatus: int
+        :param _AnalysisFailReason: AI任务失败原因
+        :type AnalysisFailReason: str
+        :param _LastAnalysisTime: 最近一次AI分析时间
+        :type LastAnalysisTime: str
+        :param _ApiBizType: API业务类型
+        :type ApiBizType: str
+        :param _ApiBizDescription: API业务描述
+        :type ApiBizDescription: str
+        :param _RiskScenario: 风险场景（类型）
+        :type RiskScenario: str
+        :param _RiskScenarioDetail: 风险场景（类型）描述
+        :type RiskScenarioDetail: str
+        :param _RiskSummary: 风险总结（概览）
+        :type RiskSummary: str
+        :param _RiskBasis: 推断依据
+        :type RiskBasis: str
+        :param _ImpactScope: 风险影响范围
+        :type ImpactScope: str
+        :param _AiSuggestedLevel: AI建议风险等级
+        :type AiSuggestedLevel: int
+        :param _DisposalSuggestions: 处置建议
+        :type DisposalSuggestions: list of DisposalSuggestionItem
+        :param _HttpRequestHeader: http请求头
+        :type HttpRequestHeader: str
+        :param _HttpRequestBody: http请求体
+        :type HttpRequestBody: str
+        :param _HttpResponseHeader: http响应头
+        :type HttpResponseHeader: str
+        :param _HttpResponseBody: http响应体
+        :type HttpResponseBody: str
+        :param _LeakDataEntries: 敏感数据条目
+        :type LeakDataEntries: str
+        :param _MaskStatus: 脱敏状态
+        :type MaskStatus: str
+        :param _HighestLevel: 最高敏感等级
+        :type HighestLevel: str
+        :param _RequestId: 唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :type RequestId: str
+        """
+        self._RiskID = None
+        self._InstanceId = None
+        self._InstanceName = None
+        self._InstanceType = None
+        self._Region = None
+        self._SrcIP = None
+        self._DstIPPort = None
+        self._Hostname = None
+        self._DstServiceType = None
+        self._DstServiceName = None
+        self._ApiPattern = None
+        self._DstGeoLocation = None
+        self._AppProto = None
+        self._LeakTypeSet = None
+        self._EventCount = None
+        self._LeakDataCount = None
+        self._Level = None
+        self._Status = None
+        self._Comment = None
+        self._FirstIdentificationTime = None
+        self._LatestIdentificationTime = None
+        self._AnalysisStatus = None
+        self._AnalysisFailReason = None
+        self._LastAnalysisTime = None
+        self._ApiBizType = None
+        self._ApiBizDescription = None
+        self._RiskScenario = None
+        self._RiskScenarioDetail = None
+        self._RiskSummary = None
+        self._RiskBasis = None
+        self._ImpactScope = None
+        self._AiSuggestedLevel = None
+        self._DisposalSuggestions = None
+        self._HttpRequestHeader = None
+        self._HttpRequestBody = None
+        self._HttpResponseHeader = None
+        self._HttpResponseBody = None
+        self._LeakDataEntries = None
+        self._MaskStatus = None
+        self._HighestLevel = None
+        self._RequestId = None
+
+    @property
+    def RiskID(self):
+        r"""风险事件ID
+        :rtype: str
+        """
+        return self._RiskID
+
+    @RiskID.setter
+    def RiskID(self, RiskID):
+        self._RiskID = RiskID
+
+    @property
+    def InstanceId(self):
+        r"""资产实例ID
+        :rtype: str
+        """
+        return self._InstanceId
+
+    @InstanceId.setter
+    def InstanceId(self, InstanceId):
+        self._InstanceId = InstanceId
+
+    @property
+    def InstanceName(self):
+        r"""资产实例名称
+        :rtype: str
+        """
+        return self._InstanceName
+
+    @InstanceName.setter
+    def InstanceName(self, InstanceName):
+        self._InstanceName = InstanceName
+
+    @property
+    def InstanceType(self):
+        r"""资产实例类型
+        :rtype: str
+        """
+        return self._InstanceType
+
+    @InstanceType.setter
+    def InstanceType(self, InstanceType):
+        self._InstanceType = InstanceType
+
+    @property
+    def Region(self):
+        r"""资产所在地域
+        :rtype: str
+        """
+        return self._Region
+
+    @Region.setter
+    def Region(self, Region):
+        self._Region = Region
+
+    @property
+    def SrcIP(self):
+        r"""源IP
+        :rtype: str
+        """
+        return self._SrcIP
+
+    @SrcIP.setter
+    def SrcIP(self, SrcIP):
+        self._SrcIP = SrcIP
+
+    @property
+    def DstIPPort(self):
+        r"""目的IP端口
+        :rtype: str
+        """
+        return self._DstIPPort
+
+    @DstIPPort.setter
+    def DstIPPort(self, DstIPPort):
+        self._DstIPPort = DstIPPort
+
+    @property
+    def Hostname(self):
+        r"""目的Host
+        :rtype: str
+        """
+        return self._Hostname
+
+    @Hostname.setter
+    def Hostname(self, Hostname):
+        self._Hostname = Hostname
+
+    @property
+    def DstServiceType(self):
+        r"""目的服务类型
+        :rtype: str
+        """
+        return self._DstServiceType
+
+    @DstServiceType.setter
+    def DstServiceType(self, DstServiceType):
+        self._DstServiceType = DstServiceType
+
+    @property
+    def DstServiceName(self):
+        r"""目的服务名称
+        :rtype: str
+        """
+        return self._DstServiceName
+
+    @DstServiceName.setter
+    def DstServiceName(self, DstServiceName):
+        self._DstServiceName = DstServiceName
+
+    @property
+    def ApiPattern(self):
+        r"""访问API
+        :rtype: str
+        """
+        return self._ApiPattern
+
+    @ApiPattern.setter
+    def ApiPattern(self, ApiPattern):
+        self._ApiPattern = ApiPattern
+
+    @property
+    def DstGeoLocation(self):
+        r"""目的IP地理信息
+        :rtype: str
+        """
+        return self._DstGeoLocation
+
+    @DstGeoLocation.setter
+    def DstGeoLocation(self, DstGeoLocation):
+        self._DstGeoLocation = DstGeoLocation
+
+    @property
+    def AppProto(self):
+        r"""应用层协议
+        :rtype: str
+        """
+        return self._AppProto
+
+    @AppProto.setter
+    def AppProto(self, AppProto):
+        self._AppProto = AppProto
+
+    @property
+    def LeakTypeSet(self):
+        r"""敏感类型集合
+        :rtype: str
+        """
+        return self._LeakTypeSet
+
+    @LeakTypeSet.setter
+    def LeakTypeSet(self, LeakTypeSet):
+        self._LeakTypeSet = LeakTypeSet
+
+    @property
+    def EventCount(self):
+        r"""事件数量
+        :rtype: int
+        """
+        return self._EventCount
+
+    @EventCount.setter
+    def EventCount(self, EventCount):
+        self._EventCount = EventCount
+
+    @property
+    def LeakDataCount(self):
+        r"""敏感数据数量
+        :rtype: int
+        """
+        return self._LeakDataCount
+
+    @LeakDataCount.setter
+    def LeakDataCount(self, LeakDataCount):
+        self._LeakDataCount = LeakDataCount
+
+    @property
+    def Level(self):
+        r"""原始风险等级
+        :rtype: int
+        """
+        return self._Level
+
+    @Level.setter
+    def Level(self, Level):
+        self._Level = Level
+
+    @property
+    def Status(self):
+        r"""处置状态
+        :rtype: int
+        """
+        return self._Status
+
+    @Status.setter
+    def Status(self, Status):
+        self._Status = Status
+
+    @property
+    def Comment(self):
+        r"""处置备注
+        :rtype: str
+        """
+        return self._Comment
+
+    @Comment.setter
+    def Comment(self, Comment):
+        self._Comment = Comment
+
+    @property
+    def FirstIdentificationTime(self):
+        r"""首次识别时间
+        :rtype: str
+        """
+        return self._FirstIdentificationTime
+
+    @FirstIdentificationTime.setter
+    def FirstIdentificationTime(self, FirstIdentificationTime):
+        self._FirstIdentificationTime = FirstIdentificationTime
+
+    @property
+    def LatestIdentificationTime(self):
+        r"""最近识别时间
+        :rtype: str
+        """
+        return self._LatestIdentificationTime
+
+    @LatestIdentificationTime.setter
+    def LatestIdentificationTime(self, LatestIdentificationTime):
+        self._LatestIdentificationTime = LatestIdentificationTime
+
+    @property
+    def AnalysisStatus(self):
+        r"""AI任务分析状态
+        :rtype: int
+        """
+        return self._AnalysisStatus
+
+    @AnalysisStatus.setter
+    def AnalysisStatus(self, AnalysisStatus):
+        self._AnalysisStatus = AnalysisStatus
+
+    @property
+    def AnalysisFailReason(self):
+        r"""AI任务失败原因
+        :rtype: str
+        """
+        return self._AnalysisFailReason
+
+    @AnalysisFailReason.setter
+    def AnalysisFailReason(self, AnalysisFailReason):
+        self._AnalysisFailReason = AnalysisFailReason
+
+    @property
+    def LastAnalysisTime(self):
+        r"""最近一次AI分析时间
+        :rtype: str
+        """
+        return self._LastAnalysisTime
+
+    @LastAnalysisTime.setter
+    def LastAnalysisTime(self, LastAnalysisTime):
+        self._LastAnalysisTime = LastAnalysisTime
+
+    @property
+    def ApiBizType(self):
+        r"""API业务类型
+        :rtype: str
+        """
+        return self._ApiBizType
+
+    @ApiBizType.setter
+    def ApiBizType(self, ApiBizType):
+        self._ApiBizType = ApiBizType
+
+    @property
+    def ApiBizDescription(self):
+        r"""API业务描述
+        :rtype: str
+        """
+        return self._ApiBizDescription
+
+    @ApiBizDescription.setter
+    def ApiBizDescription(self, ApiBizDescription):
+        self._ApiBizDescription = ApiBizDescription
+
+    @property
+    def RiskScenario(self):
+        r"""风险场景（类型）
+        :rtype: str
+        """
+        return self._RiskScenario
+
+    @RiskScenario.setter
+    def RiskScenario(self, RiskScenario):
+        self._RiskScenario = RiskScenario
+
+    @property
+    def RiskScenarioDetail(self):
+        r"""风险场景（类型）描述
+        :rtype: str
+        """
+        return self._RiskScenarioDetail
+
+    @RiskScenarioDetail.setter
+    def RiskScenarioDetail(self, RiskScenarioDetail):
+        self._RiskScenarioDetail = RiskScenarioDetail
+
+    @property
+    def RiskSummary(self):
+        r"""风险总结（概览）
+        :rtype: str
+        """
+        return self._RiskSummary
+
+    @RiskSummary.setter
+    def RiskSummary(self, RiskSummary):
+        self._RiskSummary = RiskSummary
+
+    @property
+    def RiskBasis(self):
+        r"""推断依据
+        :rtype: str
+        """
+        return self._RiskBasis
+
+    @RiskBasis.setter
+    def RiskBasis(self, RiskBasis):
+        self._RiskBasis = RiskBasis
+
+    @property
+    def ImpactScope(self):
+        r"""风险影响范围
+        :rtype: str
+        """
+        return self._ImpactScope
+
+    @ImpactScope.setter
+    def ImpactScope(self, ImpactScope):
+        self._ImpactScope = ImpactScope
+
+    @property
+    def AiSuggestedLevel(self):
+        r"""AI建议风险等级
+        :rtype: int
+        """
+        return self._AiSuggestedLevel
+
+    @AiSuggestedLevel.setter
+    def AiSuggestedLevel(self, AiSuggestedLevel):
+        self._AiSuggestedLevel = AiSuggestedLevel
+
+    @property
+    def DisposalSuggestions(self):
+        r"""处置建议
+        :rtype: list of DisposalSuggestionItem
+        """
+        return self._DisposalSuggestions
+
+    @DisposalSuggestions.setter
+    def DisposalSuggestions(self, DisposalSuggestions):
+        self._DisposalSuggestions = DisposalSuggestions
+
+    @property
+    def HttpRequestHeader(self):
+        r"""http请求头
+        :rtype: str
+        """
+        return self._HttpRequestHeader
+
+    @HttpRequestHeader.setter
+    def HttpRequestHeader(self, HttpRequestHeader):
+        self._HttpRequestHeader = HttpRequestHeader
+
+    @property
+    def HttpRequestBody(self):
+        r"""http请求体
+        :rtype: str
+        """
+        return self._HttpRequestBody
+
+    @HttpRequestBody.setter
+    def HttpRequestBody(self, HttpRequestBody):
+        self._HttpRequestBody = HttpRequestBody
+
+    @property
+    def HttpResponseHeader(self):
+        r"""http响应头
+        :rtype: str
+        """
+        return self._HttpResponseHeader
+
+    @HttpResponseHeader.setter
+    def HttpResponseHeader(self, HttpResponseHeader):
+        self._HttpResponseHeader = HttpResponseHeader
+
+    @property
+    def HttpResponseBody(self):
+        r"""http响应体
+        :rtype: str
+        """
+        return self._HttpResponseBody
+
+    @HttpResponseBody.setter
+    def HttpResponseBody(self, HttpResponseBody):
+        self._HttpResponseBody = HttpResponseBody
+
+    @property
+    def LeakDataEntries(self):
+        r"""敏感数据条目
+        :rtype: str
+        """
+        return self._LeakDataEntries
+
+    @LeakDataEntries.setter
+    def LeakDataEntries(self, LeakDataEntries):
+        self._LeakDataEntries = LeakDataEntries
+
+    @property
+    def MaskStatus(self):
+        r"""脱敏状态
+        :rtype: str
+        """
+        return self._MaskStatus
+
+    @MaskStatus.setter
+    def MaskStatus(self, MaskStatus):
+        self._MaskStatus = MaskStatus
+
+    @property
+    def HighestLevel(self):
+        r"""最高敏感等级
+        :rtype: str
+        """
+        return self._HighestLevel
+
+    @HighestLevel.setter
+    def HighestLevel(self, HighestLevel):
+        self._HighestLevel = HighestLevel
+
+    @property
+    def RequestId(self):
+        r"""唯一请求 ID，由服务端生成，每次请求都会返回（若请求因其他原因未能抵达服务端，则该次请求不会获得 RequestId）。定位问题时需要提供该次请求的 RequestId。
+        :rtype: str
+        """
+        return self._RequestId
+
+    @RequestId.setter
+    def RequestId(self, RequestId):
+        self._RequestId = RequestId
+
+
+    def _deserialize(self, params):
+        self._RiskID = params.get("RiskID")
+        self._InstanceId = params.get("InstanceId")
+        self._InstanceName = params.get("InstanceName")
+        self._InstanceType = params.get("InstanceType")
+        self._Region = params.get("Region")
+        self._SrcIP = params.get("SrcIP")
+        self._DstIPPort = params.get("DstIPPort")
+        self._Hostname = params.get("Hostname")
+        self._DstServiceType = params.get("DstServiceType")
+        self._DstServiceName = params.get("DstServiceName")
+        self._ApiPattern = params.get("ApiPattern")
+        self._DstGeoLocation = params.get("DstGeoLocation")
+        self._AppProto = params.get("AppProto")
+        self._LeakTypeSet = params.get("LeakTypeSet")
+        self._EventCount = params.get("EventCount")
+        self._LeakDataCount = params.get("LeakDataCount")
+        self._Level = params.get("Level")
+        self._Status = params.get("Status")
+        self._Comment = params.get("Comment")
+        self._FirstIdentificationTime = params.get("FirstIdentificationTime")
+        self._LatestIdentificationTime = params.get("LatestIdentificationTime")
+        self._AnalysisStatus = params.get("AnalysisStatus")
+        self._AnalysisFailReason = params.get("AnalysisFailReason")
+        self._LastAnalysisTime = params.get("LastAnalysisTime")
+        self._ApiBizType = params.get("ApiBizType")
+        self._ApiBizDescription = params.get("ApiBizDescription")
+        self._RiskScenario = params.get("RiskScenario")
+        self._RiskScenarioDetail = params.get("RiskScenarioDetail")
+        self._RiskSummary = params.get("RiskSummary")
+        self._RiskBasis = params.get("RiskBasis")
+        self._ImpactScope = params.get("ImpactScope")
+        self._AiSuggestedLevel = params.get("AiSuggestedLevel")
+        if params.get("DisposalSuggestions") is not None:
+            self._DisposalSuggestions = []
+            for item in params.get("DisposalSuggestions"):
+                obj = DisposalSuggestionItem()
+                obj._deserialize(item)
+                self._DisposalSuggestions.append(obj)
+        self._HttpRequestHeader = params.get("HttpRequestHeader")
+        self._HttpRequestBody = params.get("HttpRequestBody")
+        self._HttpResponseHeader = params.get("HttpResponseHeader")
+        self._HttpResponseBody = params.get("HttpResponseBody")
+        self._LeakDataEntries = params.get("LeakDataEntries")
+        self._MaskStatus = params.get("MaskStatus")
+        self._HighestLevel = params.get("HighestLevel")
+        self._RequestId = params.get("RequestId")
+
+
 class DescribeNDRDataLeakOutAlertListRequest(AbstractModel):
     r"""DescribeNDRDataLeakOutAlertList请求参数结构体
 
@@ -22838,6 +23507,87 @@ class DescribeVpcFwGroupSwitchResponse(AbstractModel):
                 self._SwitchList.append(obj)
         self._Total = params.get("Total")
         self._RequestId = params.get("RequestId")
+
+
+class DisposalSuggestionItem(AbstractModel):
+    r"""处置建议-条目
+
+    """
+
+    def __init__(self):
+        r"""
+        :param _Action: 处置动作
+        :type Action: str
+        :param _Target: 处置对象
+        :type Target: str
+        :param _Priority: 处置优先级
+        :type Priority: str
+        :param _Suggestion: 处置建议
+        :type Suggestion: str
+        """
+        self._Action = None
+        self._Target = None
+        self._Priority = None
+        self._Suggestion = None
+
+    @property
+    def Action(self):
+        r"""处置动作
+        :rtype: str
+        """
+        return self._Action
+
+    @Action.setter
+    def Action(self, Action):
+        self._Action = Action
+
+    @property
+    def Target(self):
+        r"""处置对象
+        :rtype: str
+        """
+        return self._Target
+
+    @Target.setter
+    def Target(self, Target):
+        self._Target = Target
+
+    @property
+    def Priority(self):
+        r"""处置优先级
+        :rtype: str
+        """
+        return self._Priority
+
+    @Priority.setter
+    def Priority(self, Priority):
+        self._Priority = Priority
+
+    @property
+    def Suggestion(self):
+        r"""处置建议
+        :rtype: str
+        """
+        return self._Suggestion
+
+    @Suggestion.setter
+    def Suggestion(self, Suggestion):
+        self._Suggestion = Suggestion
+
+
+    def _deserialize(self, params):
+        self._Action = params.get("Action")
+        self._Target = params.get("Target")
+        self._Priority = params.get("Priority")
+        self._Suggestion = params.get("Suggestion")
+        memeber_set = set(params.keys())
+        for name, value in vars(self).items():
+            property_name = name[1:]
+            if property_name in memeber_set:
+                memeber_set.remove(property_name)
+        if len(memeber_set) > 0:
+            warnings.warn("%s fileds are useless." % ",".join(memeber_set))
+        
 
 
 class DnsVpcSwitch(AbstractModel):

@@ -1822,6 +1822,29 @@ class CfwClient(AbstractClient):
                 raise TencentCloudSDKException(type(e).__name__, str(e))
 
 
+    def DescribeNDRDataLeakOutAlertDetail(self, request):
+        r"""DescribeNDRDataLeakOutAlertDetail -- 查询出站数据泄露风险详情
+
+        :param request: Request instance for DescribeNDRDataLeakOutAlertDetail.
+        :type request: :class:`tencentcloud.cfw.v20190904.models.DescribeNDRDataLeakOutAlertDetailRequest`
+        :rtype: :class:`tencentcloud.cfw.v20190904.models.DescribeNDRDataLeakOutAlertDetailResponse`
+
+        """
+        try:
+            params = request._serialize()
+            headers = request.headers
+            body = self.call("DescribeNDRDataLeakOutAlertDetail", params, headers=headers)
+            response = json.loads(body)
+            model = models.DescribeNDRDataLeakOutAlertDetailResponse()
+            model._deserialize(response["Response"])
+            return model
+        except Exception as e:
+            if isinstance(e, TencentCloudSDKException):
+                raise
+            else:
+                raise TencentCloudSDKException(type(e).__name__, str(e))
+
+
     def DescribeNDRDataLeakOutAlertList(self, request):
         r"""DescribeNDRDataLeakOutAlertList -- 查询NDR数据泄露出站告警列表
 
